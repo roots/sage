@@ -42,7 +42,7 @@ function roots_settings_page() { ?>
 	<div id="icon-options-general" class="icon32"></div>
 	<h2>Roots Settings</h2>
 	
-<?php if ($_GET['settings-updated'] === 'true') { ?>
+<?php if (isset($_GET['settings-updated']) && $_GET['settings-updated'] === 'true') { ?>
 	<div id="setting-error-settings_updated" class="updated settings-error"><p><strong>Settings saved.</strong></p></div>
 <?php } ?>
 	
