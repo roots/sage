@@ -293,7 +293,7 @@ function roots_excerpt_length($length) {
 }
 
 function roots_continue_reading_link() {
-	return ' <a href="' . get_permalink() . '">' . __( 'Continue&hellip;', 'roots' ) . '</a>';
+	return ' <a href="' . get_permalink() . '">' . __( 'Continued', 'roots' ) . '</a>';
 }
 
 function roots_auto_excerpt_more($more) {
