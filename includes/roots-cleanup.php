@@ -18,7 +18,7 @@ function roots_add_rewrites() {
 		'img/(.*)'      => 'wp-content/themes/roots/img/$1',
 		'plugins/(.*)'  => 'wp-content/plugins/$1'
 	);
-	$wp_rewrite->non_wp_rules = $roots_new_non_wp_rules . $wp_rewrite->non_wp_rules;
+	$wp_rewrite->non_wp_rules += $roots_new_non_wp_rules;
 }
 
 add_action('generate_rewrite_rules', 'roots_add_rewrites');
