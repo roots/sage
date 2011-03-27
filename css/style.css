@@ -105,16 +105,9 @@ hr { background: #ddd; color: #ddd; }
 	text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.15);
 }
 #nav-main ul li a:hover, 
-#nav-main ul li.current_page_item > a, 
-#nav-main ul li.current_page_parent > a, 
-#nav-main ul li.current_page_ancestor > a, 
-#nav-main ul li.current-cat > a, 
-#nav-main ul li.current-cat-parent > a, 
-#nav-main ul li.current-category-ancestor > a, 
 #nav-main ul li.current-menu-item > a, 
 #nav-main ul li.current-menu-parent > a, 
-#nav-main ul li.current-post-parent > a, 
-#nav-main ul li.current-post-ancestor > a,
+#nav-main ul li.current-menu-ancestor > a, 
 #nav-main ul li:hover > a { 
 	color: #73C8FF; 
 }
@@ -141,16 +134,9 @@ hr { background: #ddd; color: #ddd; }
 
 }
 #nav-main ul ul li a:hover, 
-#nav-main ul ul li.current_page_item > a, 
-#nav-main ul ul li.current_page_parent > a, 
-#nav-main ul ul li.current_page_ancestor > a, 
-#nav-main ul ul li.current-cat > a, 
-#nav-main ul ul li.current-cat-parent > a, 
-#nav-main ul ul li.current-category-ancestor > a, 
 #nav-main ul ul li.current-menu-item > a, 
 #nav-main ul ul li.current-menu-parent > a, 
-#nav-main ul ul li.current-post-parent > a, 
-#nav-main ul ul li.current-post-ancestor > a,
+#nav-main ul ul li.current-menu-ancestor > a, 
 #nav-main ul ul li:hover > a {
 	color: #06c; 
 }
