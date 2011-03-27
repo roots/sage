@@ -107,4 +107,4 @@ Everything else:
 
 ## Summary:
 
-Roots is a starting WordPress theme made for developers that’s based on HTML5 Boilerplate, Blueprint CSS and Starkers that will help you rapidly create brochure sites and blogs.
+Roots is a starting WordPress theme made for developers that's based on HTML5 Boilerplate, Blueprint CSS and Starkers that will help you rapidly create brochure sites and blogs.
