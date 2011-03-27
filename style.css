@@ -1,0 +1,34 @@
+/*
+Theme Name:         Roots
+Theme URI:          http://www.rootstheme.com/
+Description:        Starting theme based on HTML5 Boilerplate, Blueprint CSS and Starkers
+Version:            3.0.0
+Author:             Ben Word
+Author URI:         http://benword.com/
+Tags:               roots, boilerplate, blueprint, starkers
+
+License:            The Unlicense
+License URI:        http://unlicense.org/
+
+Updated:            March 28 2011
+
+Changelog:
+3.0.0 [03-28-2011]  Changed name from BB to Roots, updated various areas to match the latest changes to HTML5 Boilerplate, changed the theme
+                    markup based on hCard/Readability Guidelines and work by Jonathan Neal, theme activation now creates the navigation menus and
+                    automatically sets their locations, permalink structure is now set to /%year%/%postname%/ for performance reasons, uploads
+                    folder is now /assets/ and not organized by month and date, all static folders in /wp-content/themes/roots/ (css/, js/, img/)
+                    now rewrite to the root (/css/, /js/, /img/), /wp-content/plugins/ now rewrites to /plugins/, more root relative URLs on
+                    WordPress functions, search results (/?s=query) now rewrites to /search/query/, l10n.js is deregistered, gallery shortcode has
+                    been changed to output <figure> and <figcaption> and now links to the file by default, added more loop.php templates, made the
+                    HTML editor have a monospaced font, added front-page.php, updated CSS for Gravity Forms 1.5, added searchform.php template
+2.4.0 [01-25-2011]  Added a notification when saving the theme settings, added support for navigation menus, created function that makes sure there
+                    is a Home page on theme activation, updated various areas to match the latest changes to HTML5 Boilerplate
+2.3.0 [12-08-2010]  Logo is no longer an <h1>, added ARIA roles again, changed ul#nav to nav#nav-main, added vCard to footer, made all URL's root 
+                    relative, added Twitter and Facebook widgets to footer, added SEO optimized robots.txt from WordPress codex
+2.2.0 [09-20-2010]  Added asynchronous Google Analytics, updated .htaccess with latest changes from HTML5 Boilerplate
+2.1.0 [08-19-2010]  Removed optimizeLegibility from headings, updated jQuery to latest version, implemented HTML5 Boilerplate .htaccess
+2.0.1 [08-02-2010]  Added some presentational CSS classes, added footer widget, more Gravity Forms default styling
+2.0.0 [07-19-2010]  Added HTML5 Boilerplate changes, implemented loop.php, wp_head cleanup, added page-subpages.php template
+1.5.0 [04-15-2010]  Integrated Paul Irish's frontend-pro-template (the original HTML5 Boilerplate)
+1.0.0 [12-18-2009]  Added Blueprint CSS to Starkers
+*/

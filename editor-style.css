@@ -1,0 +1,7 @@
+/*
+Theme Name:         Roots
+Description:        Used to style the TinyMCE editor
+*/
+
+img.left, p img.left, .alignleft { margin: 0 1.5em 1.5em 0; float: left; }
+img.right, p img.right, .alignright { margin: 0 0 1.5em 1.5em; float: right; }
