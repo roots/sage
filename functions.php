@@ -28,14 +28,6 @@ register_nav_menus(
 	)
 );
 
-// make sure the menu fallback (wp_list_pages) adds the home link
-function roots_page_menu_args($args) {
-	$args['show_home'] = true;
-	return $args;
-}
-
-add_filter('wp_page_menu_args', 'roots_page_menu_args');
-
 // remove container from menus
 function roots_nav_menu_args($args = ''){
 	$args['container'] = false;
