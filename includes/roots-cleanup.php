@@ -28,7 +28,6 @@ add_action('admin_init', 'roots_flush_rewrites');
 function roots_clean_assets($content) {
     $theme_name = next(explode('/themes/', $content));
     $current_path = '/wp-content/themes/' . $theme_name;
-    //$current_path = '/wp-content/themes/roots';
     $new_path = '';
     $content = str_replace($current_path, $new_path, $content);
     return $content;
