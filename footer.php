@@ -1,4 +1,4 @@
-		<footer id="content-info" class="span-24" role="contentinfo">
+		<footer id="content-info" class="<?php echo CONTAINER_CLASS; ?>" role="contentinfo">
 			<div class="container">
 				<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar("Footer") ) : ?>
 				<?php endif; ?>

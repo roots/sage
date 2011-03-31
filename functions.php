@@ -7,6 +7,47 @@ include_once('includes/roots-ob.php');			// output buffer
 include_once('includes/roots-cleanup.php');		// code cleanup/removal
 include_once('includes/roots-htaccess.php');	// h5bp htaccess
 
+// set the value of the main container class depending on the selected grid framework
+$roots_selected_css_framework = get_option('roots_css_framework');
+if (!defined('CONTAINER_CLASS')){
+	if ($roots_selected_css_framework === 'blueprint')
+		define('CONTAINER_CLASS', 'span-24');
+	elseif ($roots_selected_css_framework === '960gs_12')
+		define('CONTAINER_CLASS', 'container_12');
+	elseif ($roots_selected_css_framework === '960gs_16')
+		define('CONTAINER_CLASS', 'container_16');	
+	elseif ($roots_selected_css_framework === '960gs_24')
+		define('CONTAINER_CLASS', 'container_24');
+	else define('CONTAINER_CLASS', '');
+
+}
+
+function get_roots_css_framework_stylesheets(){
+	$roots_selected_css_framework = get_option('roots_css_framework');
+	if ($roots_selected_css_framework === 'blueprint'){
+		return '<link rel="stylesheet" href="/css/blueprint/screen.css">';
+	}
+	elseif ($roots_selected_css_framework === '960gs_12' || $roots_selected_css_framework === '960gs_16'){
+		return <<<EOD
+		<link rel="stylesheet" href="/css/960gs/reset.css">
+		<link rel="stylesheet" href="/css/960gs/text.css">
+		<link rel="stylesheet" href="/css/960gs/960.css">		
+EOD;
+	}
+	elseif ($roots_selected_css_framework === '960gs_24'){
+		return <<<EOD
+		<link rel="stylesheet" href=""$roots_style_sheet_uri"/css/960gs/reset.css">
+		<link rel="stylesheet" href=""$roots_style_sheet_uri"/css/960gs/text.css">
+		<link rel="stylesheet" href=""$roots_style_sheet_uri"/css/960gs/960_24_col.css">		
+EOD;
+	}
+	else {
+		return '';
+	}
+}
+
+
+	
 // set the maximum 'Large' image width to the Blueprint grid maximum width
 if (!isset($content_width)) $content_width = 950;
 

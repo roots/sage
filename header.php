@@ -10,7 +10,7 @@
 	
 	<meta name="viewport" content="width=device-width; initial-scale=1.0">
 
-	<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/css/blueprint/screen.css">
+	<?php echo get_roots_css_framework_stylesheets(); ?>
 <?php if (class_exists('RGForms')) { ?>
 	<link rel="stylesheet" href="<?php echo plugins_url(); ?>/gravityforms/css/forms.css">
 <?php } ?>
@@ -37,10 +37,10 @@
 </head>
 <body <?php $page_slug = $post->post_name; body_class($page_slug); ?>>
 	<div id="wrap" class="container" role="document">
-		<header id="banner" class="span-24" role="banner">
+		<header id="banner" class="<?php echo CONTAINER_CLASS; ?>" role="banner">
 			<div class="container">
 				<a id="logo" href="<?php site_url(); ?>/"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/logo.png" width="300" height="75" alt="<?php bloginfo('name'); ?>"></a>
-				<nav id="nav-main" class="span-24" role="navigation">
+				<nav id="nav-main" class="<?php echo CONTAINER_CLASS; ?>" role="navigation">
 					<?php wp_nav_menu(array('theme_location' => 'primary_navigation')); ?>
 				</nav>
 				<nav id="nav-utility">
