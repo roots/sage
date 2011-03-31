@@ -8,10 +8,12 @@ function roots_admin_init() {
 	
   //wp_register_script('roots_codemirror', "$site_url/wp-content/themes/roots/includes/js/codemirror/codemirror.js");
   //wp_enqueue_script('roots_codemirror');
+  
+  $theme_name = next(explode('/themes/', get_template_directory()));
 
 	wp_enqueue_script('jquery-ui-tabs');
-	wp_register_style('roots_admin', "$site_url/wp-content/themes/roots/includes/css/admin.css");
-	wp_register_script('roots_admin', "$site_url/wp-content/themes/roots/includes/js/scripts.js");
+	wp_register_style('roots_admin', "$site_url/wp-content/themes/$theme_name/includes/css/admin.css");
+	wp_register_script('roots_admin', "$site_url/wp-content/themes/$theme_name/includes/js/scripts.js");
 	wp_enqueue_style('roots_admin');	
 	wp_enqueue_script('roots_admin');
 }

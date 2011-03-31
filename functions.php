@@ -1,5 +1,8 @@
 <?php
 
+//get active theme directory name (lets you rename roots)
+$theme_name = next(explode('/themes/', get_template_directory()));
+
 include_once('includes/roots-activation.php');	// activation
 include_once('includes/roots-admin.php');		// admin additions/mods
 include_once('includes/roots-options.php');		// theme options menu

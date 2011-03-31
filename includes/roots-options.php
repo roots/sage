@@ -6,8 +6,11 @@ add_action('admin_menu', 'roots_create_menu');
 function roots_create_menu() {
 	$icon = get_template_directory_uri() . '/includes/images/icon-roots.png';
 
-	// create menu
-	add_object_page('Roots Settings', 'Roots', 'administrator', 'roots', 'roots_settings_page', $icon);
+  // create menu
+
+  $theme_name = get_current_theme();
+  
+	add_object_page($theme_name . ' Settings', $theme_name, 'administrator', 'roots', 'roots_settings_page', $icon);
 	
 	// call register settings function
 	add_action('admin_init', 'roots_register_settings');
@@ -40,7 +43,7 @@ function roots_settings_page() { ?>
 
 <div class="wrap">
 	<div id="icon-options-general" class="icon32"></div>
-	<h2>Roots Settings</h2>
+  <h2><?php echo get_current_theme(); ?> Settings</h2>
 	
 <?php if (isset($_GET['settings-updated']) && $_GET['settings-updated'] === 'true') { ?>
 	<div id="setting-error-settings_updated" class="updated settings-error"><p><strong>Settings saved.</strong></p></div>
