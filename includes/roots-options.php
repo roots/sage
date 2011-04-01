@@ -78,22 +78,24 @@ function roots_settings_page() { ?>
 			</ul>
 			<div id="general">
 				<ul class="options clearfix">	
-					<li>
-						<label class="settings-label">Css Grid Framework</label>
-						<input id="roots_blueprint" name="roots_css_framework" type="radio" <?php echo get_option('roots_css_framework') === 'blueprint' ?  'checked' : ''; ?> value="blueprint" /><label for="roots_blueprint">Blueprint</label>
-						<input id="roots_960gs_12" name="roots_css_framework" type="radio" <?php echo get_option('roots_css_framework') === '960gs_12' ?  'checked' : ''; ?> value="960gs_12" /><label for="roots_960gs_12">960gs (12 cols)</label>
-						<input id="roots_960gs_16" name="roots_css_framework" type="radio" <?php echo get_option('roots_css_framework') === '960gs_16' ?  'checked' : ''; ?> value="960gs_16" /><label for="roots_960gs_16">960gs (16 cols)</label>
-						<input id="roots_960gs_24" name="roots_css_framework" type="radio" <?php echo get_option('roots_css_framework') === '960gs_24' ?  'checked' : ''; ?> value="960gs_24" /><label for="roots_960gs_24">960gs (24 cols)</label>
+					<li class="clearfix">
+						<label class="settings-label">CSS Grid Framework</label>
+						<div class="container">
+							<input id="roots_blueprint" name="roots_css_framework" type="radio" <?php echo get_option('roots_css_framework') === 'blueprint' ? 'checked' : ''; ?> value="blueprint" /> <label for="roots_blueprint">Blueprint CSS</label><br />
+							<input id="roots_960gs_12" name="roots_css_framework" type="radio" <?php echo get_option('roots_css_framework') === '960gs_12' ? 'checked' : ''; ?> value="960gs_12" /> <label for="roots_960gs_12">960gs (12 cols)</label><br />
+							<input id="roots_960gs_16" name="roots_css_framework" type="radio" <?php echo get_option('roots_css_framework') === '960gs_16' ? 'checked' : ''; ?> value="960gs_16" /> <label for="roots_960gs_16">960gs (16 cols)</label><br />
+							<input id="roots_960gs_24" name="roots_css_framework" type="radio" <?php echo get_option('roots_css_framework') === '960gs_24' ? 'checked' : ''; ?> value="960gs_24" /> <label for="roots_960gs_24">960gs (24 cols)</label>
+						</div>
 					</li>
 					<li>	
 						<label class="settings-label">Class for #main</label>
 						<input name="roots_main_class" type="text" value="<?php echo get_option('roots_main_class'); ?>" class="text" />
-						<span class="note">Enter your Blueprint CSS grid classes (use <a href="http://ianli.com/labs/blueprinter/">Blueprinter</a> to create a non-default grid)</span>
+						<span class="note">Enter your grid classes</span>
 					</li>
 					<li>
 						<label class="settings-label">Class for #sidebar</label>
 						<input name="roots_sidebar_class" type="text" value="<?php echo get_option('roots_sidebar_class'); ?>" class="text" />
-						<span class="note">Enter your Blueprint CSS grid classes (use <a href="http://ianli.com/labs/blueprinter/">Blueprinter</a> to create a non-default grid)</span>
+						<span class="note">Enter your grid classes</span>
 					</li>									
 					<li>
 						<label class="settings-label">Google Analytics Tracking ID</label>

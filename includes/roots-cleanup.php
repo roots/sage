@@ -126,7 +126,7 @@ function roots_head_cleanup() {
 		if (!$id = $wp_the_query->get_queried_object_id())
 			return;
 		$link = get_permalink($id);
-		echo "	<link rel=\"canonical\" href=\"$link\">\n";
+		echo "<link rel=\"canonical\" href=\"$link\">\n";
 	}
 	add_action('wp_head', 'roots_rel_canonical');	
 	

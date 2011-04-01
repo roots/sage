@@ -11,58 +11,57 @@ include_once('includes/roots-cleanup.php');		// code cleanup/removal
 include_once('includes/roots-htaccess.php');	// h5bp htaccess
 
 // set the value of the main container class depending on the selected grid framework
-$roots_selected_css_framework = get_option('roots_css_framework');
-if (!defined('CONTAINER_CLASS')){
-	if ($roots_selected_css_framework === 'blueprint'){
-		define('CONTAINER_CLASS', 'span-24');
-		define('IS_960_GS',False);
-	}
-	elseif ($roots_selected_css_framework === '960gs_12'){
-		define('CONTAINER_CLASS', 'container_12');
-		define('IS_960_GS',True);
-	}	
-	elseif ($roots_selected_css_framework === '960gs_16'){
-		define('CONTAINER_CLASS', 'container_16');	
-		define('IS_960_GS',True);
-	}
-	elseif ($roots_selected_css_framework === '960gs_24'){
-		define('CONTAINER_CLASS', 'container_24');
-		define('IS_960_GS',True);
-	}
-	else {
-		define('CONTAINER_CLASS', '');
-		define('IS_960_GS',False);
-	}
-
-}
-
-function get_roots_css_framework_stylesheets(){
-	$roots_selected_css_framework = get_option('roots_css_framework');
-	if ($roots_selected_css_framework === 'blueprint'){
-		return '<link rel="stylesheet" href="/css/blueprint/screen.css">';
-	}
-	elseif ($roots_selected_css_framework === '960gs_12' || $roots_selected_css_framework === '960gs_16'){
-		return <<<EOD
-		<link rel="stylesheet" href="/css/960gs/reset.css">
-		<link rel="stylesheet" href="/css/960gs/text.css">
-		<link rel="stylesheet" href="/css/960gs/960.css">		
-EOD;
-	}
-	elseif ($roots_selected_css_framework === '960gs_24'){
-		return <<<EOD
-		<link rel="stylesheet" href=""$roots_style_sheet_uri"/css/960gs/reset.css">
-		<link rel="stylesheet" href=""$roots_style_sheet_uri"/css/960gs/text.css">
-		<link rel="stylesheet" href=""$roots_style_sheet_uri"/css/960gs/960_24_col.css">		
-EOD;
-	}
-	else {
-		return '';
+$roots_css_framework = get_option('roots_css_framework');
+if (!defined('roots_container_class')) {
+	switch ($roots_css_framework) {
+		case 'blueprint':
+			define('roots_container_class', 'span-24');
+			define('is_960gs', false);
+		case '960gs_12':
+			define('roots_container_class', 'container_12');
+			define('IS_960GS', true);
+			define('is_960gs_12', true);
+		case '960gs_16':
+			define('roots_container_class', 'container_16');
+			define('is_960gs', true);
+			define('is_960gs_16', true);
+		case '960gs_24':
+			define('roots_container_class', 'container_24');
+			define('is_960gs', true);
+			define('is_960gs_24', true);
+		default:
+			define('roots_container_class', '');
+			define('is_960gs', false);
 	}
 }
 
-function get_roots_960gs_cleardiv() {
-	if (IS_960_GS) return "<div class=\"clear\" ></div>";
-	else return "";
+function get_roots_css_framework_stylesheets() {
+	$css_uri = get_stylesheet_directory_uri();
+	$styles = '';
+
+	if (!is_960gs) {
+		$styles .= "<link rel=\"stylesheet\" href=\"$css_uri/css/blueprint/screen.css\">\n";
+	} elseif (is_960gs_12 == 1 || is_960gs_16 == 1) {
+		$styles .= "<link rel=\"stylesheet\" href=\"$css_uri/css/960/reset.css\">\n";
+		$styles .= "\t<link rel=\"stylesheet\" href=\"$css_uri/css/960/text.css\">\n";
+		$styles .= "\t<link rel=\"stylesheet\" href=\"$css_uri/css/960/960.css\">\n";
+	} elseif (is_960gs_24 == 1) {
+		$styles .= "<link rel=\"stylesheet\" href=\"$css_uri/css/960/reset.css\">\n";
+		$styles .= "\t<link rel=\"stylesheet\" href=\"$css_uri/css/960/text.css\">\n";
+		$styles .= "\t<link rel=\"stylesheet\" href=\"$css_uri/css/960/960_24_col.css\">\n";
+	}
+
+	if (class_exists('RGForms')) {
+		$styles .= "\t<link rel=\"stylesheet\" href=\"" . plugins_url(). "/gravityforms/css/forms.css\">\n";
+	}
+
+	$styles .= "\t<link rel=\"stylesheet\" href=\"$css_uri/css/style.css\">\n";
+
+	if (!is_960gs) {
+		$styles .= "\t<!--[if lt IE 8]>i<link rel=\"stylesheet\" href=\"$css_uri/css/blueprint/ie.css\"><![endif]-->\n";
+	}
+
+  return $styles;
 }
 	
 // set the maximum 'Large' image width to the Blueprint grid maximum width

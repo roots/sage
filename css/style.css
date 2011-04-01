@@ -90,7 +90,7 @@ textarea { overflow: auto; }
 	-webkit-border-radius: 6px; 
 	border-radius: 6px;
 }
-#nav-main ul li { float: left; } 
+#nav-main ul li { float: left; margin: 0; } 
 #nav-main ul li:hover { position: relative; }
 #nav-main ul li a { 
 	text-decoration: none; 

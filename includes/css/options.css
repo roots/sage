@@ -19,6 +19,7 @@ body.toplevel_page_roots .ui-widget-content .ui-state-active,
 body.toplevel_page_roots .ui-widget-header .ui-state-active { background: #fff !important; }
 
 ul.options li { clear: both; margin-bottom: 8px; }
+ul.options li .container { float: left; }
 ul.options label.settings-label { font-size: 1em; font-weight: 700; float: left; width: 250px; margin: 3px 0 0 0; }
 ul.options input.text { float: left; width: 300px; }
 ul.options span.note { clear: both; float: left; margin: 2px 0 8px 250px; display: block; font-size: 0.8em; line-height: 1.5em; }

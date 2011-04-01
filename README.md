@@ -2,6 +2,17 @@
 
 ## Changelog:
 
+### 3.1.0: April 1st, 2011
+
+<ul>
+	<li>Added support for 960.gs thanks to John Liuti</li>
+	<li>Added more onto the <code>.htaccess</code> from HTML5 Boilerplate</li>
+	<li>Made the theme directory and name renamable</li>
+</ul>
+
+#### Contributors
+[John Liuti](http://twitter.com/JohnLiuti), [Jeremiah Wall](http://jeremiahwall.com/)
+
 ### 3.0.0: March 28th, 2011
 
 <ul>
@@ -98,6 +109,7 @@ Major components:
 
 * HTML5 Boileplate: [The Unlicense](http://unlicense.org)
 * Blueprint CSS: Modified MIT License
+* 960 Grid System: MIT/GPL license
 * Modernizr: MIT/BSD license
 * jQuery: MIT/GPL license
 
