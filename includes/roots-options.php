@@ -4,17 +4,34 @@
 add_action('admin_menu', 'roots_create_menu');
 
 function roots_create_menu() {
-	$icon = get_template_directory_uri() . '/includes/images/icon-roots.png';
+	$icon = get_template_directory_uri() . '/includes/img/icon-roots.png';
 
-  // create menu
-
-  $theme_name = get_current_theme();
-  
+	// create menu
+	$theme_name = get_current_theme();
 	add_object_page($theme_name . ' Settings', $theme_name, 'administrator', 'roots', 'roots_settings_page', $icon);
 	
 	// call register settings function
 	add_action('admin_init', 'roots_register_settings');
 
+	// add js
+	wp_enqueue_script('jquery-ui-tabs');
+
+	// add css
+	add_action('admin_print_styles-toplevel_page_roots', 'roots_admin_styles');
+}
+
+function roots_admin_styles() {
+	$site_url = site_url();
+	$theme_name = next(explode('/themes/', get_template_directory()));
+
+	wp_register_style('roots_options_css', "$site_url/wp-content/themes/$theme_name/includes/css/options.css");
+	wp_enqueue_style('roots_options_css');
+	
+	wp_register_script('roots_options_js', "$site_url/wp-content/themes/$theme_name/includes/js/options.js");
+	wp_enqueue_script('roots_options_js');	
+
+	wp_register_style('jquery-ui-css', "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/themes/smoothness/jquery-ui.css");
+	wp_enqueue_style('jquery-ui-css');
 }
 
 function roots_register_settings() {
@@ -111,5 +128,4 @@ function roots_settings_page() { ?>
 
 	</form>
 </div>
-
 <?php } ?>
