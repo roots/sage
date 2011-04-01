@@ -25,6 +25,7 @@
 				<?php } ?>
 				
 			</div>
+			<?php echo get_roots_960gs_cleardiv() ?>
 		</footer>
 	</div><!-- /#wrap -->
 <?php wp_footer(); ?>

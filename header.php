@@ -11,12 +11,17 @@
 	<meta name="viewport" content="width=device-width; initial-scale=1.0">
 
 	<?php echo get_roots_css_framework_stylesheets(); ?>
-<?php if (class_exists('RGForms')) { ?>
-	<link rel="stylesheet" href="<?php echo plugins_url(); ?>/gravityforms/css/forms.css">
-<?php } ?>
+	
+	<?php if (class_exists('RGForms')) { ?>
+		<link rel="stylesheet" href="<?php echo plugins_url(); ?>/gravityforms/css/forms.css">
+	<?php } ?>
+	
 	<link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/css/style.css">
-	<!--[if lt IE 8]><link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/css/blueprint/ie.css"><![endif]-->
-
+	
+	<?php if(!IS_960_GS) { ?>
+		<!--[if lt IE 8]><link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/css/blueprint/ie.css"><![endif]-->
+	<?php } ?>
+	
 	<link rel="alternate" type="application/rss+xml" title="<?php bloginfo('name'); ?> Feed" href="<?php site_url(); ?>/feed/">
 
 	<script src="<?php echo get_stylesheet_directory_uri(); ?>/js/libs/modernizr-1.7.min.js"></script>
@@ -26,14 +31,14 @@
 	<?php wp_head(); ?>
 
 	<script src="<?php echo get_stylesheet_directory_uri(); ?>/js/scripts.js"></script>
-<?php if (get_option('roots_google_analytics') !== "") { ?>
-	<script>
-		var _gaq=[["_setAccount","<?php echo get_option('roots_google_analytics') ?>"],["_trackPageview"]];
-		(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
-		g.src=("https:"==location.protocol?"//ssl":"//www")+".google-analytics.com/ga.js";
-		s.parentNode.insertBefore(g,s)}(document,"script"));
-	</script>
-<?php } ?>
+	<?php if (get_option('roots_google_analytics') !== "") { ?>
+		<script>
+			var _gaq=[["_setAccount","<?php echo get_option('roots_google_analytics') ?>"],["_trackPageview"]];
+			(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
+			g.src=("https:"==location.protocol?"//ssl":"//www")+".google-analytics.com/ga.js";
+			s.parentNode.insertBefore(g,s)}(document,"script"));
+		</script>
+	<?php } ?>
 </head>
 <body <?php $page_slug = $post->post_name; body_class($page_slug); ?>>
 	<div id="wrap" class="container" role="document">
@@ -47,4 +52,7 @@
 					<?php wp_nav_menu(array('theme_location' => 'utility_navigation')); ?>
 				</nav>				
 			</div>
+			<?php echo get_roots_960gs_cleardiv() ?>
 		</header>
+
+		

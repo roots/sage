@@ -11,5 +11,6 @@
 					<?php get_sidebar(); ?>
 				</div>
 			</aside><!-- /#sidebar -->
+			<?php echo get_roots_960gs_cleardiv() ?>
 		</div><!-- /#content -->
 <?php get_footer(); ?>

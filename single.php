@@ -9,6 +9,7 @@
 				<div class="container">
 					<?php get_sidebar(); ?>
 				</div>
-			</aside><!-- /#sidebar -->				
+			</aside><!-- /#sidebar -->			
+			<?php echo get_roots_960gs_cleardiv() ?>	
 		</div><!-- /#content -->
 <?php get_footer(); ?>

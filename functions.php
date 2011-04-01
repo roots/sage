@@ -10,15 +10,26 @@ include_once('includes/roots-htaccess.php');	// h5bp htaccess
 // set the value of the main container class depending on the selected grid framework
 $roots_selected_css_framework = get_option('roots_css_framework');
 if (!defined('CONTAINER_CLASS')){
-	if ($roots_selected_css_framework === 'blueprint')
+	if ($roots_selected_css_framework === 'blueprint'){
 		define('CONTAINER_CLASS', 'span-24');
-	elseif ($roots_selected_css_framework === '960gs_12')
+		define('IS_960_GS',False);
+	}
+	elseif ($roots_selected_css_framework === '960gs_12'){
 		define('CONTAINER_CLASS', 'container_12');
-	elseif ($roots_selected_css_framework === '960gs_16')
+		define('IS_960_GS',True);
+	}	
+	elseif ($roots_selected_css_framework === '960gs_16'){
 		define('CONTAINER_CLASS', 'container_16');	
-	elseif ($roots_selected_css_framework === '960gs_24')
+		define('IS_960_GS',True);
+	}
+	elseif ($roots_selected_css_framework === '960gs_24'){
 		define('CONTAINER_CLASS', 'container_24');
-	else define('CONTAINER_CLASS', '');
+		define('IS_960_GS',True);
+	}
+	else {
+		define('CONTAINER_CLASS', '');
+		define('IS_960_GS',False);
+	}
 
 }
 
@@ -46,10 +57,13 @@ EOD;
 	}
 }
 
-
+function get_roots_960gs_cleardiv() {
+	if (IS_960_GS) return "<div class=\"clear\" ></div>";
+	else return "";
+}
 	
 // set the maximum 'Large' image width to the Blueprint grid maximum width
-if (!isset($content_width)) $content_width = 950;
+if (!isset($content_width)) $roots_selected_css_framework === 'blueprint' ? $content_width = 950 : $content_width = 940;
 
 // tell the TinyMCE editor to use editor-style.css
 // if you have issues with getting the editor to show your changes then use the following line:
