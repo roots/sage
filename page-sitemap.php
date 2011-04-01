@@ -3,7 +3,7 @@
 Template Name: Sitemap
 */
 get_header(); ?>
-		<div id="content" class="span-24">	
+		<div id="content" class="<?php echo CONTAINER_CLASS; ?>">	
 			<div id="main" class="<?php echo get_option('roots_main_class'); ?>" role="main">
 				<div class="container">
 					<?php get_template_part('loop', 'page'); ?>
@@ -20,5 +20,6 @@ get_header(); ?>
 					<?php get_sidebar(); ?>
 				</div>
 			</aside><!-- /#sidebar -->
+			<?php echo get_roots_960gs_cleardiv() ?>
 		</div><!-- /#content -->
 <?php get_footer(); ?>

@@ -36,6 +36,7 @@ function roots_admin_styles() {
 
 function roots_register_settings() {
 	// register our settings
+	register_setting('roots-settings-group', 'roots_css_framework');	
 	register_setting('roots-settings-group', 'roots_main_class');
 	register_setting('roots-settings-group', 'roots_sidebar_class');
 	register_setting('roots-settings-group', 'roots_google_analytics');
@@ -51,6 +52,7 @@ function roots_register_settings() {
 	register_setting('roots-settings-group', 'roots_footer_vcard');
 	
 	// add default settings
+	add_option('roots_css_framework', 'blueprint');
 	add_option('roots_main_class', 'span-14 append-1');
 	add_option('roots_sidebar_class', 'span-8 prepend-1 last');	
 	add_option('roots_google_analytics', '');	
@@ -77,6 +79,13 @@ function roots_settings_page() { ?>
 			<div id="general">
 				<ul class="options clearfix">	
 					<li>
+						<label class="settings-label">Css Grid Framework</label>
+						<input id="roots_blueprint" name="roots_css_framework" type="radio" <?php echo get_option('roots_css_framework') === 'blueprint' ?  'checked' : ''; ?> value="blueprint" /><label for="roots_blueprint">Blueprint</label>
+						<input id="roots_960gs_12" name="roots_css_framework" type="radio" <?php echo get_option('roots_css_framework') === '960gs_12' ?  'checked' : ''; ?> value="960gs_12" /><label for="roots_960gs_12">960gs (12 cols)</label>
+						<input id="roots_960gs_16" name="roots_css_framework" type="radio" <?php echo get_option('roots_css_framework') === '960gs_16' ?  'checked' : ''; ?> value="960gs_16" /><label for="roots_960gs_16">960gs (16 cols)</label>
+						<input id="roots_960gs_24" name="roots_css_framework" type="radio" <?php echo get_option('roots_css_framework') === '960gs_24' ?  'checked' : ''; ?> value="960gs_24" /><label for="roots_960gs_24">960gs (24 cols)</label>
+					</li>
+					<li>	
 						<label class="settings-label">Class for #main</label>
 						<input name="roots_main_class" type="text" value="<?php echo get_option('roots_main_class'); ?>" class="text" />
 						<span class="note">Enter your Blueprint CSS grid classes (use <a href="http://ianli.com/labs/blueprinter/">Blueprinter</a> to create a non-default grid)</span>
