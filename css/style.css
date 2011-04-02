@@ -13,8 +13,6 @@ h1, h2, h3, h4, h5, h6 { text-shadow: 0 1px 1px rgba(0, 0, 0, 0.15); }
 
 ul.none { margin: 0 0 1.5em 0; padding: 0; list-style: none; }
 .icon { vertical-align: middle; }
-.large { line-height: 1.5em; }
-.center { text-align: center; }
 .aligncenter { display: block; margin: 0 auto; }
 img.left, p img.left, .alignleft { margin: 0 1.5em 1.5em 0; float: left; }
 img.right, p img.right, .alignright { margin: 0 0 1.5em 1.5em; float: right; }
@@ -68,7 +66,6 @@ textarea { overflow: auto; }
 
 /* Grid */
 #wrap { }
-hr { background: #ddd; color: #ddd; }
 
 
 /* HEADER
@@ -93,7 +90,7 @@ hr { background: #ddd; color: #ddd; }
 	-webkit-border-radius: 6px; 
 	border-radius: 6px;
 }
-#nav-main ul li { float: left; } 
+#nav-main ul li { float: left; margin: 0; } 
 #nav-main ul li:hover { position: relative; }
 #nav-main ul li a { 
 	text-decoration: none; 
@@ -398,6 +395,7 @@ img.ui-datepicker-trigger { vertical-align: middle; }
 
 /* Search */
 #searchform #s { padding: 5px; }
+#searchform #searchsubmit { -moz-appearance: textfield; -webkit-appearance: textfield; }
 
 
 /* INTERNET EXPLORER

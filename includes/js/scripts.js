@@ -2,8 +2,6 @@ jQuery.noConflict();
      
 jQuery(document).ready(function(){
 
-	jQuery("#tabs").tabs();
-	
 //	var editor = CodeMirror.fromTextArea('content', {
 //		height: "350px",
 //		parserfile: "parsexml.js",

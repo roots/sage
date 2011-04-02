@@ -3,8 +3,8 @@
 Template Name: Full Width
 */
 get_header(); ?>
-		<div id="content" class="<?php echo CONTAINER_CLASS; ?>">	
-			<div id="main" class="<?php echo CONTAINER_CLASS; ?>" role="main">
+		<div id="content" class="<?php echo roots_container_class; ?>">	
+			<div id="main" class="<?php echo roots_container_class; ?>" role="main">
 				<div class="container">
 					<?php get_template_part('loop', 'page'); ?>
 				</div>

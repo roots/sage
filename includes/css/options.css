@@ -1,0 +1,29 @@
+/* theme options */
+#tabs { margin-top: 1em; }
+body.toplevel_page_roots .ui-widget { font-size: 1em !important; font-family: inherit !important; }
+body.toplevel_page_roots .ui-widget-header {
+	/* match #wp-head */
+	background: #d9d9d9;
+	background: -moz-linear-gradient(bottom, #d7d7d7, #e4e4e4) !important;
+	background: -webkit-gradient(linear, left bottom, left top, from(#d7d7d7), to(#e4e4e4)) !important;
+}
+
+body.toplevel_page_roots .ui-state-default, 
+body.toplevel_page_roots .ui-widget-content .ui-state-default, 
+body.toplevel_page_roots .ui-widget-header .ui-state-default {
+	/* match #adminmenu a.menu-top */
+	background: url(../images/menu-bits.gif) repeat-x scroll left -379px #F1F1F1 !important;
+}
+body.toplevel_page_roots .ui-state-active, 
+body.toplevel_page_roots .ui-widget-content .ui-state-active, 
+body.toplevel_page_roots .ui-widget-header .ui-state-active { background: #fff !important; }
+
+ul.options li { clear: both; margin-bottom: 8px; }
+ul.options li .container { float: left; }
+ul.options label.settings-label { font-size: 1em; font-weight: 700; float: left; width: 250px; margin: 3px 0 0 0; }
+ul.options input.text { float: left; width: 300px; }
+ul.options span.note { clear: both; float: left; margin: 2px 0 8px 250px; display: block; font-size: 0.8em; line-height: 1.5em; }
+
+ul.options div.address { float: left; }
+ul.options div.address label { clear: both; float: left; width: 160px; margin: 3px 10px 0 0; }
+ul.options div.address input.text { float: left; width: 200px; }

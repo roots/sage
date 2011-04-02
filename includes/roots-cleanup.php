@@ -10,12 +10,13 @@ function roots_flush_rewrites() {
 	$wp_rewrite->flush_rules();
 }
 
-function roots_add_rewrites() {
+function roots_add_rewrites($content) {
+  $theme_name = next(explode('/themes/', get_template_directory()));
 	global $wp_rewrite;
 	$roots_new_non_wp_rules = array(
-		'css/(.*)'      => 'wp-content/themes/roots/css/$1',
-		'js/(.*)'       => 'wp-content/themes/roots/js/$1',
-		'img/(.*)'      => 'wp-content/themes/roots/img/$1',
+		'css/(.*)'      => 'wp-content/themes/'. $theme_name . '/css/$1',
+		'js/(.*)'       => 'wp-content/themes/'. $theme_name . '/js/$1',
+		'img/(.*)'      => 'wp-content/themes/'. $theme_name . '/img/$1',
 		'plugins/(.*)'  => 'wp-content/plugins/$1'
 	);
 	$wp_rewrite->non_wp_rules += $roots_new_non_wp_rules;
@@ -25,7 +26,8 @@ add_action('generate_rewrite_rules', 'roots_add_rewrites');
 add_action('admin_init', 'roots_flush_rewrites');
 
 function roots_clean_assets($content) {
-    $current_path = '/wp-content/themes/roots';
+    $theme_name = next(explode('/themes/', $content));
+    $current_path = '/wp-content/themes/' . $theme_name;
     $new_path = '';
     $content = str_replace($current_path, $new_path, $content);
     return $content;
@@ -124,7 +126,7 @@ function roots_head_cleanup() {
 		if (!$id = $wp_the_query->get_queried_object_id())
 			return;
 		$link = get_permalink($id);
-		echo "	<link rel=\"canonical\" href=\"$link\">\n";
+		echo "<link rel=\"canonical\" href=\"$link\">\n";
 	}
 	add_action('wp_head', 'roots_rel_canonical');	
 	

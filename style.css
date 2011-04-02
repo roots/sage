@@ -2,7 +2,7 @@
 Theme Name:         Roots
 Theme URI:          http://www.rootstheme.com/
 Description:        Starting theme based on HTML5 Boilerplate, Blueprint CSS and Starkers
-Version:            3.0.0
+Version:            3.1.0
 Author:             Ben Word
 Author URI:         http://benword.com/
 Tags:               roots, boilerplate, blueprint, starkers
@@ -10,9 +10,11 @@ Tags:               roots, boilerplate, blueprint, starkers
 License:            The Unlicense
 License URI:        http://unlicense.org/
 
-Updated:            March 28 2011
+Updated:            April 1 2011
 
 Changelog:
+3.1.0 [04-01-2011]  Added support for 960.gs thanks to John Liuti, added more onto the .htaccess from HTML5 Boilerplate, made the theme directory
+                    and name renamable
 3.0.0 [03-28-2011]  Changed name from BB to Roots, updated various areas to match the latest changes to HTML5 Boilerplate, changed the theme
                     markup based on hCard/Readability Guidelines and work by Jonathan Neal, theme activation now creates the navigation menus and
                     automatically sets their locations, permalink structure is now set to /%year%/%postname%/ for performance reasons, uploads

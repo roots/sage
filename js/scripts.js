@@ -4,7 +4,7 @@ $(document).ready(function() {
 //		fx: "fade"
 //	});
 
-//	$("dl.gallery-item a").attr("rel","gallery");
-//	$("dl.gallery-item a[rel='gallery']").fancybox();
+//	$("figure.gallery-item a").attr("rel","gallery");
+//	$("figure.gallery-item a[rel='gallery']").fancybox();
 
 });

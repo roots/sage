@@ -1,4 +1,4 @@
-		<footer id="content-info" class="<?php echo CONTAINER_CLASS; ?>" role="contentinfo">
+		<footer id="content-info" class="<?php echo roots_container_class; ?>" role="contentinfo">
 			<div class="container">
 				<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar("Footer") ) : ?>
 				<?php endif; ?>
@@ -25,7 +25,6 @@
 				<?php } ?>
 				
 			</div>
-			<?php echo get_roots_960gs_cleardiv() ?>
 		</footer>
 	</div><!-- /#wrap -->
 <?php wp_footer(); ?>

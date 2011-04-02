@@ -5,15 +5,17 @@ add_action('admin_init', 'roots_admin_init');
 
 function roots_admin_init() {
 	$site_url = site_url();
+	$theme_name = next(explode('/themes/', get_template_directory()));
 	
-  //wp_register_script('roots_codemirror', "$site_url/wp-content/themes/roots/includes/js/codemirror/codemirror.js");
-  //wp_enqueue_script('roots_codemirror');
+	//wp_register_script('roots_codemirror', "$site_url/wp-content/themes/roots/includes/js/codemirror/codemirror.js");
+	//wp_enqueue_script('roots_codemirror');
 
-	wp_enqueue_script('jquery-ui-tabs');
-	wp_register_style('roots_admin', "$site_url/wp-content/themes/roots/includes/css/admin.css");
-	wp_register_script('roots_admin', "$site_url/wp-content/themes/roots/includes/js/scripts.js");
-	wp_enqueue_style('roots_admin');	
-	wp_enqueue_script('roots_admin');
+	wp_register_style('roots_admin_css', "$site_url/wp-content/themes/$theme_name/includes/css/admin.css");
+	wp_enqueue_style('roots_admin_css');
+	
+	wp_register_script('roots_admin_js', "$site_url/wp-content/themes/$theme_name/includes/js/scripts.js");
+	wp_enqueue_script('roots_admin_js');
+
 }
 
 // check to see if the tagline is set to default
