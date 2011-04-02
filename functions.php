@@ -19,7 +19,7 @@ if (!defined('roots_container_class')) {
 			define('is_960gs', false);
 		case '960gs_12':
 			define('roots_container_class', 'container_12');
-			define('IS_960GS', true);
+			define('is_960gs', true);
 			define('is_960gs_12', true);
 		case '960gs_16':
 			define('roots_container_class', 'container_16');
