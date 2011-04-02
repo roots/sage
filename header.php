@@ -15,8 +15,8 @@
 	<link rel="alternate" type="application/rss+xml" title="<?php bloginfo('name'); ?> Feed" href="<?php site_url(); ?>/feed/">
 
 	<script src="<?php echo get_stylesheet_directory_uri(); ?>/js/libs/modernizr-1.7.min.js"></script>
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
-	<script>window.jQuery || document.write("<script src='<?php echo get_stylesheet_directory_uri(); ?>/js/libs/jquery-1.5.1.min.js'>\x3C/script>")</script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+	<script>window.jQuery || document.write("<script src='<?php echo get_stylesheet_directory_uri(); ?>/js/libs/jquery-1.5.2.min.js'>\x3C/script>")</script>
 
 	<?php wp_head(); ?>
 
