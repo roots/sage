@@ -40,6 +40,9 @@ function roots_register_settings() {
 	register_setting('roots-settings-group', 'roots_main_class');
 	register_setting('roots-settings-group', 'roots_sidebar_class');
 	register_setting('roots-settings-group', 'roots_google_analytics');
+	register_setting('roots-settings-group', 'roots_autohide_sidebar');
+	register_setting('roots-settings-group', 'roots_autohide_sidebar_threshold');
+	register_setting('roots-settings-group', 'roots_autoresize_img');
 	register_setting('roots-settings-group', 'roots_post_author');
 	register_setting('roots-settings-group', 'roots_post_tweet');
 	register_setting('roots-settings-group', 'roots_footer_social_share');
@@ -56,6 +59,9 @@ function roots_register_settings() {
 	add_option('roots_main_class', 'span-14 append-1');
 	add_option('roots_sidebar_class', 'span-8 prepend-1 last');	
 	add_option('roots_google_analytics', '');	
+	add_option('roots_autohide_sidebar', 'checked');
+	add_option('roots_autohide_sidebar_threshold', '960');
+	add_option('roots_autoresize_img', 'checked');
 }
 
 function roots_settings_page() { ?>
@@ -97,6 +103,19 @@ function roots_settings_page() { ?>
 						<input name="roots_sidebar_class" type="text" value="<?php echo get_option('roots_sidebar_class'); ?>" class="text" />
 						<span class="note">Enter your grid classes</span>
 					</li>									
+					<li>
+						<label class="settings-label">Flexible Layout</label>
+						<div class="container">
+							<input id="roots_autohide_sidebar" name="roots_autohide_sidebar" type="checkbox" <?php echo get_option('roots_autohide_sidebar') === 'checked' ? 'checked' : ''; ?> value="checked" />
+							<label for="roots_autohide_sidebar">
+								Auto-hide sidebar when screen width becomes less than <input id="roots_autohide_sidebar_threshold" name="roots_autohide_sidebar_threshold" type="text" size="4" value="<?php echo get_option('roots_autohide_sidebar_threshold')?>"/>px
+							</label><br/>
+							<input id="roots_autoresize_img" name="roots_autoresize_img" type="checkbox" <?php echo get_option('roots_autoresize_img') === 'checked' ? 'checked' : ''; ?> value="checked" />
+							<label for="roots_autoresize_img">
+								Auto-resize images
+							</label>
+						</div>
+					</li>						
 					<li>
 						<label class="settings-label">Google Analytics Tracking ID</label>
 						<input name="roots_google_analytics" type="text" value="<?php echo get_option('roots_google_analytics'); ?>" class="text" />

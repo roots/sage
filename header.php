@@ -29,6 +29,52 @@
 		s.parentNode.insertBefore(g,s)}(document,"script"));
 	</script>
 <?php } ?>
+
+	<!-- Flexible Layout -->
+	<script>
+	$(document).ready(function() {
+	<?php if (get_option('roots_autoresize_img') == 'checked') { ?>
+		// Flexible images
+		$("img").removeAttr("width").removeAttr("height").css("max-width", "100%");
+	<?php } ?>
+
+	<?php if (get_option('roots_autohide_sidebar') == 'checked') { ?>
+		// Hide sidebar when window width becomes less than <?php echo get_option('roots_autohide_sidebar_threshold'); ?>px
+		$(window).bind("resize", function (e){
+			if ($(window).width() < <?php echo get_option('roots_autohide_sidebar_threshold'); ?>) {
+				// Hide sidebar
+				$("#sidebar").hide();
+
+				// Remove grid classes to make the layout flexible
+				$("#banner, #nav-main, #content, #main, #content-info")
+					.each(function(i) {
+						if (!$(this).data("class")) {
+							$(this).data("class", $(this).attr("class"));
+						}
+					})
+					.removeAttr("class")
+					.css("width", "100%");
+
+				$(".container").css("width", "97.5%");
+			} else {
+				// Show sidebar
+				$("#sidebar").show();
+
+				// Restore grid classes
+				$("#banner, #nav-main, #content, #main, #content-info")
+					.each(function(i) {
+						$(this)
+							.attr("class", $(this).data("class"))
+							.removeData("class")
+							.css("width", "");
+					});
+
+				$(".container").css("width", "");
+			}
+		});
+	<?php } ?>
+	});
+	</script>
 </head>
 <body <?php $page_slug = $post->post_name; body_class($page_slug); ?>>
 	<div id="wrap" class="container" role="document">
