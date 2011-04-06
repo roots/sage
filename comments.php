@@ -3,7 +3,7 @@
 	<li <?php comment_class(); ?>>
 		<article id="comment-<?php comment_ID(); ?>">
 			<header class="comment-author vcard">
-				<?php echo get_avatar($comment,$size='32',$default='<path_to_url>' ); ?>
+				<?php echo get_avatar($comment,$size='32'); ?>
 				<?php printf(__('<cite class="fn">%s</cite>'), get_comment_author_link()) ?>
 				<time datetime="<?php echo comment_date('c') ?>"><a href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ) ?>"><?php printf(__('%1$s'), get_comment_date(),  get_comment_time()) ?></a></time>
 				<?php edit_comment_link(__('(Edit)'),'  ','') ?>

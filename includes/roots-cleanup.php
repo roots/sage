@@ -57,7 +57,8 @@ add_action('template_redirect', 'roots_nice_search_redirect');
 // inspired by http://www.456bereastreet.com/archive/201010/how_to_make_wordpress_urls_root_relative/
 // thanks to Scott Walkinshaw (scottwalkinshaw.com)
 function roots_root_relative_url($input) {
-	return preg_replace('!' . get_home_url() .  '/!', '/', $input);
+  preg_match('/(https?:\/\/[^\/]+)/', $input, $matches);
+  return str_replace(end($matches), '', $input);
 }
 
 //add_filter('site_url', 'roots_root_relative_url'); // this will break URLs sent out in emails, possibly more
