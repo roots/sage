@@ -12,44 +12,57 @@ include_once('includes/roots-htaccess.php');	// h5bp htaccess
 
 // set the value of the main container class depending on the selected grid framework
 $roots_css_framework = get_option('roots_css_framework');
+
 if (!defined('roots_container_class')) {
 	switch ($roots_css_framework) {
 		case 'blueprint':
 			define('roots_container_class', 'span-24');
-			define('is_960gs', false);
+			define('is_blueprint', true);
+            break;
 		case '960gs_12':
 			define('roots_container_class', 'container_12');
 			define('is_960gs', true);
 			define('is_960gs_12', true);
+            break;
 		case '960gs_16':
 			define('roots_container_class', 'container_16');
 			define('is_960gs', true);
 			define('is_960gs_16', true);
+            break;
 		case '960gs_24':
 			define('roots_container_class', 'container_24');
 			define('is_960gs', true);
 			define('is_960gs_24', true);
+            break;
+        case '1140gs':
+			define('roots_container_class', 'row');
+			define('is_1140gs', true);
+            break;
 		default:
+            define('roots_sub_container_class', '');
 			define('roots_container_class', '');
-			define('is_960gs', false);
 	}
 }
+
 
 function get_roots_css_framework_stylesheets() {
 	$css_uri = get_stylesheet_directory_uri();
 	$styles = '';
 
-	if (!is_960gs) {
+	if (defined('is_blueprint')) {
 		$styles .= "<link rel=\"stylesheet\" href=\"$css_uri/css/blueprint/screen.css\">\n";
-	} elseif (is_960gs_12 == 1 || is_960gs_16 == 1) {
+	} elseif (defined('is_960gs_12') || defined('is_960gs_16')) {
 		$styles .= "<link rel=\"stylesheet\" href=\"$css_uri/css/960/reset.css\">\n";
 		$styles .= "\t<link rel=\"stylesheet\" href=\"$css_uri/css/960/text.css\">\n";
 		$styles .= "\t<link rel=\"stylesheet\" href=\"$css_uri/css/960/960.css\">\n";
-	} elseif (is_960gs_24 == 1) {
+	} elseif ( defined('is_960gs_24')) {
 		$styles .= "<link rel=\"stylesheet\" href=\"$css_uri/css/960/reset.css\">\n";
 		$styles .= "\t<link rel=\"stylesheet\" href=\"$css_uri/css/960/text.css\">\n";
 		$styles .= "\t<link rel=\"stylesheet\" href=\"$css_uri/css/960/960_24_col.css\">\n";
-	}
+	} elseif ( defined('is_1140gs')){
+	    $styles .= "<!--[if lte IE 9]><link rel=\"stylesheet\" href=\"$css_uri/css/1140/ie.css\" type=\"text/css\" media=\"screen\" /><![endif]-->\n";
+        $styles .= "\t<link rel=\"stylesheet\" href=\"$css_uri/css/1140/1140.css\" type=\"text/css\" media=\"screen\" />\n";
+    }
 
 	if (class_exists('RGForms')) {
 		$styles .= "\t<link rel=\"stylesheet\" href=\"" . plugins_url(). "/gravityforms/css/forms.css\">\n";
@@ -57,15 +70,21 @@ function get_roots_css_framework_stylesheets() {
 
 	$styles .= "\t<link rel=\"stylesheet\" href=\"$css_uri/css/style.css\">\n";
 
-	if (!is_960gs) {
+	if (defined(is_blueprint) && is_blueprint == 1) {
 		$styles .= "\t<!--[if lt IE 8]>i<link rel=\"stylesheet\" href=\"$css_uri/css/blueprint/ie.css\"><![endif]-->\n";
 	}
 
   return $styles;
 }
-	
+
 // set the maximum 'Large' image width to the Blueprint grid maximum width
-if (!isset($content_width)) $roots_selected_css_framework === 'blueprint' ? $content_width = 950 : $content_width = 940;
+if (defined(is_blueprint)) {
+    $content_width = 950;
+} elseif (defined(is_960gs)) {
+    $content_width = 940;
+} elseif (defined(is_1140gs)) {
+    $content_width = 1140;
+}
 
 // tell the TinyMCE editor to use editor-style.css
 // if you have issues with getting the editor to show your changes then use the following line:
@@ -97,7 +116,7 @@ add_filter('wp_nav_menu_args', 'roots_nav_menu_args');
 $sidebars = array('Sidebar', 'Footer');
 foreach ($sidebars as $sidebar) {
 	register_sidebar(array('name'=> $sidebar,
-		'before_widget' => '<article id="%1$s" class="widget %2$s"><div class="container">',
+		'before_widget' => '<article id="%1$s" class="widget %2$s"><div class="roots-container">',
 		'after_widget' => '</div></article>',
 		'before_title' => '<h3>',
 		'after_title' => '</h3>'
@@ -130,3 +149,4 @@ function roots_robots() {
 }
 
 ?>
+

@@ -1,8 +1,8 @@
 		<footer id="content-info" class="<?php echo roots_container_class; ?>" role="contentinfo">
-			<div class="container">
+			<div class="roots-container">
 				<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar("Footer") ) : ?>
 				<?php endif; ?>
-				
+
 				<p class="copy"><small>&copy; <?php echo date('Y'); ?> <?php bloginfo('name'); ?></small></p>
 				<?php if (get_option('roots_footer_social_share') == 'checked') { ?>
 				<p class="social">
@@ -23,10 +23,11 @@
 					<a class="email" href="mailto:<?php echo get_option('roots_vcard_email'); ?>"><?php echo get_option('roots_vcard_email'); ?></a>
 				</p>
 				<?php } ?>
-				
+
 			</div>
 		</footer>
 	</div><!-- /#wrap -->
 <?php wp_footer(); ?>
 </body>
 </html>
+
