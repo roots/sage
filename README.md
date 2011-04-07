@@ -2,6 +2,17 @@
 
 ## Changelog:
 
+### 3.1.1: April 7th, 2011
+
+<ul>
+	<li>Fixed relative path function to work correctly when WordPress is installed in a subdirectory</li>
+	<li>Updated jQuery to 1.5.2</li>
+	<li>Fixed comments to show avatars correctly</li>
+</ul>
+
+#### Contributors
+[Jenny Jui-Shan Liang](http://jsliang.twgogo.org/)
+
 ### 3.1.0: April 1st, 2011
 
 <ul>
