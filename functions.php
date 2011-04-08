@@ -147,6 +147,4 @@ function roots_robots() {
 	echo "Allow: /wp-content/uploads\n";
 	echo "Allow: /assets";
 }
-
 ?>
-
