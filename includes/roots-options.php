@@ -1,25 +1,52 @@
 <?php
 
-// create custom plugin settings menu
-add_action('admin_menu', 'roots_create_menu');
+#// create custom plugin settings menu
+#add_action('admin_menu', 'roots_create_menu');
 
-function roots_create_menu() {
-	$icon = get_template_directory_uri() . '/includes/img/icon-roots.png';
+#function roots_create_menu() {
+#	$icon = get_template_directory_uri() . '/includes/img/icon-roots.png';
 
-	// create menu
-	$theme_name = get_current_theme();
-	add_object_page($theme_name . ' Settings', $theme_name, 'administrator', 'roots', 'roots_settings_page', $icon);
+#	// create menu
+#	$theme_name = get_current_theme();
+#	add_object_page($theme_name . ' Settings', $theme_name, 'administrator', 'roots', 'roots_settings_page', $icon);
 
-	// call register settings function
-	add_action('admin_init', 'roots_register_settings');
+#	// call register settings function
+#	add_action('admin_init', 'roots_register_settings');
 
-	// add js
-	wp_enqueue_script('jquery-ui-tabs');
+#	// add js
+#	wp_enqueue_script('jquery-ui-tabs');
 
-	// add css
-	add_action('admin_print_styles-toplevel_page_roots', 'roots_admin_styles');
+#	// add css
+#	add_action('admin_print_styles-toplevel_page_roots', 'roots_admin_styles');
+#}
+
+
+/* 
+ * Helper function to return the theme option value. If no value has been saved, it returns $default.
+ * Needed because options are saved as serialized strings.
+ *
+ * This code allows the theme to work without errors if the Options Framework plugin has been disabled.
+ */
+
+if ( !function_exists( 'of_get_option' ) ) {
+	function of_get_option($name, $default = 'false') {
+	
+		$optionsframework_settings = get_option('optionsframework');
+	
+		// Gets the unique option id
+		$option_name = $optionsframework_settings['id'];
+	
+		if ( get_option($option_name) ) {
+			$options = get_option($option_name);
+		}
+		
+		if ( !empty($options[$name]) ) {
+			return $options[$name];
+		} else {
+			return $default;
+		}
+	}
 }
-
 function roots_admin_styles() {
 	$site_url = site_url();
 	$theme_name = next(explode('/themes/', get_template_directory()));
@@ -34,29 +61,29 @@ function roots_admin_styles() {
 	wp_enqueue_style('jquery-ui-css');
 }
 
-function roots_register_settings() {
-	// register our settings
-	register_setting('roots-settings-group', 'roots_css_framework');
-	register_setting('roots-settings-group', 'roots_main_class');
-	register_setting('roots-settings-group', 'roots_sidebar_class');
-	register_setting('roots-settings-group', 'roots_google_analytics');
-	register_setting('roots-settings-group', 'roots_post_author');
-	register_setting('roots-settings-group', 'roots_post_tweet');
-	register_setting('roots-settings-group', 'roots_footer_social_share');
-	register_setting('roots-settings-group', 'roots_vcard_street-address');
-	register_setting('roots-settings-group', 'roots_vcard_locality');
-	register_setting('roots-settings-group', 'roots_vcard_region');
-	register_setting('roots-settings-group', 'roots_vcard_postal-code');
-	register_setting('roots-settings-group', 'roots_vcard_tel');
-	register_setting('roots-settings-group', 'roots_vcard_email');
-	register_setting('roots-settings-group', 'roots_footer_vcard');
+#function roots_register_settings() {
+#	// register our settings
+#	register_setting('roots-settings-group', 'roots_css_framework');
+#	register_setting('roots-settings-group', 'roots_main_class');
+#	register_setting('roots-settings-group', 'roots_sidebar_class');
+#	register_setting('roots-settings-group', 'roots_google_analytics');
+#	register_setting('roots-settings-group', 'roots_post_author');
+#	register_setting('roots-settings-group', 'roots_post_tweet');
+#	register_setting('roots-settings-group', 'roots_footer_social_share');
+#	register_setting('roots-settings-group', 'roots_vcard_street-address');
+#	register_setting('roots-settings-group', 'roots_vcard_locality');
+#	register_setting('roots-settings-group', 'roots_vcard_region');
+#	register_setting('roots-settings-group', 'roots_vcard_postal-code');
+#	register_setting('roots-settings-group', 'roots_vcard_tel');
+#	register_setting('roots-settings-group', 'roots_vcard_email');
+#	register_setting('roots-settings-group', 'roots_footer_vcard');
 
-	// add default settings
-	add_option('roots_css_framework', 'blueprint');
-	add_option('roots_main_class', 'span-14 append-1');
-	add_option('roots_sidebar_class', 'span-8 prepend-1 last');
-	add_option('roots_google_analytics', '');
-}
+#	// add default settings
+#	add_option('roots_css_framework', 'blueprint');
+#	add_option('roots_main_class', 'span-14 append-1');
+#	add_option('roots_sidebar_class', 'span-8 prepend-1 last');
+#	add_option('roots_google_analytics', '');
+#}
 
 function roots_settings_page() { ?>
 
