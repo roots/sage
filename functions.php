@@ -1,6 +1,6 @@
 <?php
 
-//get active theme directory name (lets you rename roots)
+// get active theme directory name (lets you rename roots)
 $theme_name = next(explode('/themes/', get_template_directory()));
 
 include_once('includes/roots-activation.php');	// activation
@@ -16,39 +16,36 @@ if (!defined('roots_container_class')) {
 	switch ($roots_css_framework) {
 		case 'blueprint':
 			define('roots_container_class', 'span-24');
-			define('is_960gs', false);
 		case '960gs_12':
 			define('roots_container_class', 'container_12');
-			define('is_960gs', true);
-			define('is_960gs_12', true);
 		case '960gs_16':
 			define('roots_container_class', 'container_16');
-			define('is_960gs', true);
-			define('is_960gs_16', true);
 		case '960gs_24':
 			define('roots_container_class', 'container_24');
-			define('is_960gs', true);
-			define('is_960gs_24', true);
+		case '1140':
+			define('roots_container_class', 'container');
 		default:
 			define('roots_container_class', '');
-			define('is_960gs', false);
 	}
 }
 
-function get_roots_css_framework_stylesheets() {
+function get_roots_stylesheets() {
+  $roots_css_framework = get_option('roots_css_framework');
 	$css_uri = get_stylesheet_directory_uri();
 	$styles = '';
 
-	if (!is_960gs) {
+	if ($roots_css_framework === 'blueprint') {
 		$styles .= "<link rel=\"stylesheet\" href=\"$css_uri/css/blueprint/screen.css\">\n";
-	} elseif (is_960gs_12 == 1 || is_960gs_16 == 1) {
+	} elseif ($roots_css_framework === '960gs_12' || $roots_css_framework === '960gs_16') {
 		$styles .= "<link rel=\"stylesheet\" href=\"$css_uri/css/960/reset.css\">\n";
 		$styles .= "\t<link rel=\"stylesheet\" href=\"$css_uri/css/960/text.css\">\n";
 		$styles .= "\t<link rel=\"stylesheet\" href=\"$css_uri/css/960/960.css\">\n";
-	} elseif (is_960gs_24 == 1) {
+	} elseif ($roots_css_framework === '960gs_24') {
 		$styles .= "<link rel=\"stylesheet\" href=\"$css_uri/css/960/reset.css\">\n";
 		$styles .= "\t<link rel=\"stylesheet\" href=\"$css_uri/css/960/text.css\">\n";
 		$styles .= "\t<link rel=\"stylesheet\" href=\"$css_uri/css/960/960_24_col.css\">\n";
+	} elseif ($roots_css_framework === '1140') {
+		$styles .= "<link rel=\"stylesheet\" href=\"$css_uri/css/1140/1140.css\">\n";
 	}
 
 	if (class_exists('RGForms')) {
@@ -57,16 +54,32 @@ function get_roots_css_framework_stylesheets() {
 
 	$styles .= "\t<link rel=\"stylesheet\" href=\"$css_uri/css/style.css\">\n";
 
-	if (!is_960gs) {
-		$styles .= "\t<!--[if lt IE 8]>i<link rel=\"stylesheet\" href=\"$css_uri/css/blueprint/ie.css\"><![endif]-->\n";
+	if ($roots_css_framework === 'blueprint') {
+		$styles .= "\t<!--[if lt IE 8]><link rel=\"stylesheet\" href=\"$css_uri/css/blueprint/ie.css\"><![endif]-->\n";
+	} elseif ($roots_css_framework === '1140') {
+		$styles .= "\t<!--[if lt IE 8]><link rel=\"stylesheet\" href=\"$css_uri/css/1140/ie.css\"><![endif]-->\n";
 	}
 
-  return $styles;
+	return $styles;
 }
 	
-// set the maximum 'Large' image width to the Blueprint grid maximum width
-if (!isset($content_width)) $roots_selected_css_framework === 'blueprint' ? $content_width = 950 : $content_width = 940;
-
+// set the maximum 'Large' image width to the maximum grid width
+if (!isset($content_width)) {
+  switch ($roots_css_framework) {
+    case 'blueprint' :
+		$content_width = 950;
+    case '960gs_12' :
+		$content_width = 940;
+    case '960gs_16' :
+		$content_width = 940;
+    case '960gs_24' :
+		$content_width = 940;
+    case '1140' :
+		$content_width = 1140;
+    default :
+		$content_width = 950;
+  }
+}
 // tell the TinyMCE editor to use editor-style.css
 // if you have issues with getting the editor to show your changes then use the following line:
 // add_editor_style('editor-style.css?' . time());

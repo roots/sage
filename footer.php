@@ -1,3 +1,7 @@
+	<?php if (get_option('roots_css_framework') === '1140') { ?>
+		</div><!-- /.row -->
+		<div class="row">
+	<?php } ?>		
 		<footer id="content-info" class="<?php echo roots_container_class; ?>" role="contentinfo">
 			<div class="container">
 				<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar("Footer") ) : ?>
@@ -23,9 +27,11 @@
 					<a class="email" href="mailto:<?php echo get_option('roots_vcard_email'); ?>"><?php echo get_option('roots_vcard_email'); ?></a>
 				</p>
 				<?php } ?>
-				
-			</div>
+			</div>	
 		</footer>
+	<?php if (get_option('roots_css_framework') === '1140') { ?>
+		</div><!-- /.row -->
+	<?php } ?>		
 	</div><!-- /#wrap -->
 <?php wp_footer(); ?>
 </body>

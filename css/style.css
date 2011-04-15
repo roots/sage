@@ -2,7 +2,7 @@
 --------------------------------------------------------------------------------------------------------------------------------------------------- */
 /* Typography */
 html { overflow-y: scroll; }
-body { background: #fff; }
+body { background: #fff; font-family: sans-serif; }
 
 a { color: #06c; }
 a:hover, a:focus { color:#09f; }
@@ -58,10 +58,8 @@ a:link { -webkit-tap-highlight-color: #3399FF; }
 }
 
 /* Forms */
-input, select, textarea { font-family: sans-serif; font-size: 1em; }
-button, input, select, textarea { margin: 0; }
+button, input, select, textarea { width: auto; overflow: visible; margin: 0; font-family: sans-serif; font-size: 1em; }
 label, input[type=button], input[type=submit], button { cursor: pointer; }
-button { width: auto; overflow: visible; }
 textarea { overflow: auto; }
 
 /* Grid */
@@ -70,7 +68,8 @@ textarea { overflow: auto; }
 
 /* HEADER
 --------------------------------------------------------------------------------------------------------------------------------------------------- */
-#banner { position: relative; margin: 16px auto; z-index: 1000; }
+#banner { position: relative; margin: 16px auto 0; z-index: 1000; }
+#banner .container { padding: 0; }
 
 #logo { float: left; width: 300px; height: 75px; margin: 0 0 16px; padding: 0; }
 
@@ -82,7 +81,7 @@ textarea { overflow: auto; }
 	background-image: linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));	
 	position: relative; 
 	list-style: none; 
-	margin: 0; 
+	margin: 0 0 16px 0; 
 	padding: 0;
 	float: left; 
 	width: 100%;
@@ -150,9 +149,10 @@ textarea { overflow: auto; }
 /* CONTENT
 --------------------------------------------------------------------------------------------------------------------------------------------------- */
 #content { margin-bottom: 24px; }
-#content .container { width: auto; position: relative; }
+#content .container { width: auto; position: relative; padding: 0; }
 
 #main { position: relative; }
+#main .container { padding: 0; }
 
 /* Posts */
 .hentry header { margin-bottom: 1.5em; }
@@ -202,7 +202,7 @@ figure.gallery-item figcaption { display: none; }
 
 /* Primary Sidebar */
 #sidebar { position: relative; }
-#sidebar .container { width: auto; }
+#sidebar .container { width: auto; padding: 0; }
 #sidebar .widget { clear: both; margin-bottom: 1.5em; }
 #sidebar .widget .gform_wrapper ul { padding: 0; list-style-type: none; }
 
@@ -210,7 +210,7 @@ figure.gallery-item figcaption { display: none; }
 /* FOOTER
 --------------------------------------------------------------------------------------------------------------------------------------------------- */
 #content-info { clear: both; position: relative; }
-#content-info > .container { padding-bottom: 1.5em; }
+#content-info > .container { padding: 0 0 1.5em; }
 
 #content-info ul.menu { margin: 0 0 24px; padding: 0; list-style-type: none; }
 #content-info ul.menu li { display: inline; margin-right: 1em; }

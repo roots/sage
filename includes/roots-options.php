@@ -84,7 +84,8 @@ function roots_settings_page() { ?>
 							<input id="roots_blueprint" name="roots_css_framework" type="radio" <?php echo get_option('roots_css_framework') === 'blueprint' ? 'checked' : ''; ?> value="blueprint" /> <label for="roots_blueprint">Blueprint CSS</label><br />
 							<input id="roots_960gs_12" name="roots_css_framework" type="radio" <?php echo get_option('roots_css_framework') === '960gs_12' ? 'checked' : ''; ?> value="960gs_12" /> <label for="roots_960gs_12">960gs (12 cols)</label><br />
 							<input id="roots_960gs_16" name="roots_css_framework" type="radio" <?php echo get_option('roots_css_framework') === '960gs_16' ? 'checked' : ''; ?> value="960gs_16" /> <label for="roots_960gs_16">960gs (16 cols)</label><br />
-							<input id="roots_960gs_24" name="roots_css_framework" type="radio" <?php echo get_option('roots_css_framework') === '960gs_24' ? 'checked' : ''; ?> value="960gs_24" /> <label for="roots_960gs_24">960gs (24 cols)</label>
+							<input id="roots_960gs_24" name="roots_css_framework" type="radio" <?php echo get_option('roots_css_framework') === '960gs_24' ? 'checked' : ''; ?> value="960gs_24" /> <label for="roots_960gs_24">960gs (24 cols)</label><br />
+							<input id="roots_1140" name="roots_css_framework" type="radio" <?php echo get_option('roots_css_framework') === '1140' ? 'checked' : ''; ?> value="1140" /> <label for="roots_1140">1140</label>
 						</div>
 					</li>
 					<li>	
