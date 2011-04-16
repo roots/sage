@@ -1,6 +1,6 @@
 <?php
 
-//get active theme directory name (lets you rename roots)
+// get active theme directory name (lets you rename roots)
 $theme_name = next(explode('/themes/', get_template_directory()));
 
 include_once('includes/roots-activation.php');	// activation
@@ -12,57 +12,41 @@ include_once('includes/roots-htaccess.php');	// h5bp htaccess
 
 // set the value of the main container class depending on the selected grid framework
 $roots_css_framework = get_option('roots_css_framework');
-
 if (!defined('roots_container_class')) {
 	switch ($roots_css_framework) {
 		case 'blueprint':
 			define('roots_container_class', 'span-24');
-			define('is_blueprint', true);
-            break;
 		case '960gs_12':
 			define('roots_container_class', 'container_12');
-			define('is_960gs', true);
-			define('is_960gs_12', true);
-            break;
 		case '960gs_16':
 			define('roots_container_class', 'container_16');
-			define('is_960gs', true);
-			define('is_960gs_16', true);
-            break;
 		case '960gs_24':
 			define('roots_container_class', 'container_24');
-			define('is_960gs', true);
-			define('is_960gs_24', true);
-            break;
-        case '1140gs':
-			define('roots_container_class', 'row');
-			define('is_1140gs', true);
-            break;
+		case '1140':
+			define('roots_container_class', 'container');
 		default:
-            define('roots_sub_container_class', '');
 			define('roots_container_class', '');
 	}
 }
 
-
-function get_roots_css_framework_stylesheets() {
+function get_roots_stylesheets() {
+  $roots_css_framework = get_option('roots_css_framework');
 	$css_uri = get_stylesheet_directory_uri();
 	$styles = '';
 
-	if (defined('is_blueprint')) {
+	if ($roots_css_framework === 'blueprint') {
 		$styles .= "<link rel=\"stylesheet\" href=\"$css_uri/css/blueprint/screen.css\">\n";
-	} elseif (defined('is_960gs_12') || defined('is_960gs_16')) {
+	} elseif ($roots_css_framework === '960gs_12' || $roots_css_framework === '960gs_16') {
 		$styles .= "<link rel=\"stylesheet\" href=\"$css_uri/css/960/reset.css\">\n";
 		$styles .= "\t<link rel=\"stylesheet\" href=\"$css_uri/css/960/text.css\">\n";
 		$styles .= "\t<link rel=\"stylesheet\" href=\"$css_uri/css/960/960.css\">\n";
-	} elseif ( defined('is_960gs_24')) {
+	} elseif ($roots_css_framework === '960gs_24') {
 		$styles .= "<link rel=\"stylesheet\" href=\"$css_uri/css/960/reset.css\">\n";
 		$styles .= "\t<link rel=\"stylesheet\" href=\"$css_uri/css/960/text.css\">\n";
 		$styles .= "\t<link rel=\"stylesheet\" href=\"$css_uri/css/960/960_24_col.css\">\n";
-	} elseif ( defined('is_1140gs')){
-	    $styles .= "<!--[if lte IE 9]><link rel=\"stylesheet\" href=\"$css_uri/css/1140/ie.css\" type=\"text/css\" media=\"screen\" /><![endif]-->\n";
-        $styles .= "\t<link rel=\"stylesheet\" href=\"$css_uri/css/1140/1140.css\" type=\"text/css\" media=\"screen\" />\n";
-    }
+	} elseif ($roots_css_framework === '1140') {
+		$styles .= "<link rel=\"stylesheet\" href=\"$css_uri/css/1140/1140.css\">\n";
+	}
 
 	if (class_exists('RGForms')) {
 		$styles .= "\t<link rel=\"stylesheet\" href=\"" . plugins_url(). "/gravityforms/css/forms.css\">\n";
@@ -70,22 +54,32 @@ function get_roots_css_framework_stylesheets() {
 
 	$styles .= "\t<link rel=\"stylesheet\" href=\"$css_uri/css/style.css\">\n";
 
-	if (defined(is_blueprint) && is_blueprint == 1) {
-		$styles .= "\t<!--[if lt IE 8]>i<link rel=\"stylesheet\" href=\"$css_uri/css/blueprint/ie.css\"><![endif]-->\n";
+	if ($roots_css_framework === 'blueprint') {
+		$styles .= "\t<!--[if lt IE 8]><link rel=\"stylesheet\" href=\"$css_uri/css/blueprint/ie.css\"><![endif]-->\n";
+	} elseif ($roots_css_framework === '1140') {
+		$styles .= "\t<!--[if lt IE 8]><link rel=\"stylesheet\" href=\"$css_uri/css/1140/ie.css\"><![endif]-->\n";
 	}
 
-  return $styles;
+	return $styles;
 }
-
-// set the maximum 'Large' image width to the Blueprint grid maximum width
-if (defined(is_blueprint)) {
-    $content_width = 950;
-} elseif (defined(is_960gs)) {
-    $content_width = 940;
-} elseif (defined(is_1140gs)) {
-    $content_width = 1140;
+	
+// set the maximum 'Large' image width to the maximum grid width
+if (!isset($content_width)) {
+  switch ($roots_css_framework) {
+    case 'blueprint' :
+		$content_width = 950;
+    case '960gs_12' :
+		$content_width = 940;
+    case '960gs_16' :
+		$content_width = 940;
+    case '960gs_24' :
+		$content_width = 940;
+    case '1140' :
+		$content_width = 1140;
+    default :
+		$content_width = 950;
+  }
 }
-
 // tell the TinyMCE editor to use editor-style.css
 // if you have issues with getting the editor to show your changes then use the following line:
 // add_editor_style('editor-style.css?' . time());
@@ -116,7 +110,7 @@ add_filter('wp_nav_menu_args', 'roots_nav_menu_args');
 $sidebars = array('Sidebar', 'Footer');
 foreach ($sidebars as $sidebar) {
 	register_sidebar(array('name'=> $sidebar,
-		'before_widget' => '<article id="%1$s" class="widget %2$s"><div class="roots-container">',
+		'before_widget' => '<article id="%1$s" class="widget %2$s"><div class="container">',
 		'after_widget' => '</div></article>',
 		'before_title' => '<h3>',
 		'after_title' => '</h3>'
@@ -147,4 +141,5 @@ function roots_robots() {
 	echo "Allow: /wp-content/uploads\n";
 	echo "Allow: /assets";
 }
+
 ?>

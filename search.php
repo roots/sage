@@ -1,16 +1,15 @@
 <?php get_header(); ?>
-		<div id="content" class="<?php echo roots_container_class; ?>">
+		<div id="content" class="<?php echo roots_container_class; ?>">	
 			<div id="main" class="<?php echo get_option('roots_main_class'); ?>">
-				<div class="roots-container">
-					<h1>Search Results for <?php echo get_search_query(); ?></h1>
+				<div class="container">
+					<h1>Search Results for <?php echo get_search_query(); ?></h1>				
 					<?php get_template_part('loop', 'search'); ?>
 				</div>
 			</div><!-- /#main -->
 			<aside id="sidebar" class="<?php echo get_option('roots_sidebar_class'); ?>" role="complementary">
-				<div class="roots-container">
+				<div class="container">
 					<?php get_sidebar(); ?>
 				</div>
 			</aside><!-- /#sidebar -->
 		</div><!-- /#content -->
 <?php get_footer(); ?>
-
