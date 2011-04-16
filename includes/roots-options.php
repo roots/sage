@@ -1,24 +1,20 @@
 <?php 
 
-#// create custom plugin settings menu
-#add_action('admin_menu', 'roots_create_menu');
+// create custom plugin settings menu
+add_action('admin_menu', 'roots_create_menu');
 
-#function roots_create_menu() {
-#	$icon = get_template_directory_uri() . '/includes/img/icon-roots.png';
+function roots_create_menu() {
+	$icon = get_template_directory_uri() . '/includes/img/icon-roots.png';
 
-#	// create menu
-#	$theme_name = get_current_theme();
-#	add_object_page($theme_name . ' Settings', $theme_name, 'administrator', 'roots', 'roots_settings_page', $icon);
+	// create menu
+	$theme_name = get_current_theme();
+	$of_page = add_object_page($theme_name . ' Settings', $theme_name, 'administrator', 'roots', 'optionsframework_page', $icon);
 
-#	// call register settings function
-#	add_action('admin_init', 'roots_register_settings');
-
-#	// add js
-#	wp_enqueue_script('jquery-ui-tabs');
-
-#	// add css
-#	add_action('admin_print_styles-toplevel_page_roots', 'roots_admin_styles');
-#}
+	// Adds actions to hook in the required css and javascript
+	add_action("admin_print_styles-$of_page",'optionsframework_load_styles');
+	add_action("admin_print_scripts-$of_page", 'optionsframework_load_scripts');
+}
+#	$of_page = add_submenu_page('themes.php', 'Theme Options', 'Theme Options', 'edit_theme_options', 'options-framework','optionsframework_page');
 
 
 /* 
