@@ -2,6 +2,16 @@
 
 ## Changelog:
 
+### 3.2.0: April 15th, 2011
+
+<ul>
+	<li>Added support for the 1140px Grid</li>
+	<li>Updated the conditional comment code to match latest changes to HTML5 Boilerplate</li>
+</ul>
+
+#### Contributors
+[John Liuti](http://twitter.com/JohnLiuti)
+
 ### 3.1.1: April 7th, 2011
 
 <ul>
