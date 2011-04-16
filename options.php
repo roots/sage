@@ -66,6 +66,7 @@ function optionsframework_options() {
 						"type" => "heading");
 
 	$roots_available_grid_framework = array('roots_blueprint' => 'Blueprint', 'roots_960gs_12' => '960gs (12 cols)', 'roots_960gs_16' => '960gs (16 cols)', 'roots_960gs_24' => '960gs (24 cols)', 'roots_1140gs' => '1140gs');
+
 	$options[] = array( "name" => "CSS Grid Framework",
 						"desc" => "Please select your css grid framework",
 						"id" => "roots_css_framework",
@@ -73,126 +74,86 @@ function optionsframework_options() {
 						"type" => "radio",
 						"options" => $roots_available_grid_framework);
 							
-	$options[] = array( "name" => "Input Text Mini",
-						"desc" => "A mini text input field.",
-						"id" => "example_text_mini",
-						"std" => "Default",
-						"class" => "mini",
+	$options[] = array( "name" => "Class for #main",
+						"desc" => "Enter your grid classes",
+						"id" => "roots_main_class",
+						"std" => "span-14 append-1",
 						"type" => "text");
-								
-	$options[] = array( "name" => "Input Text",
-						"desc" => "A text input field.",
-						"id" => "example_text",
-						"std" => "Default Value",
+
+	$options[] = array( "name" => "Class for #sidebar",
+						"desc" => "Enter your grid classes",
+						"id" => "roots_sidebar_class",
+						"std" => "span-8 prepend-1 last",
 						"type" => "text");
-							
-	$options[] = array( "name" => "Textarea",
-						"desc" => "Textarea description.",
-						"id" => "example_textarea",
-						"std" => "Default Text",
-						"type" => "textarea"); 
-						
-	$options[] = array( "name" => "Input Select Small",
-						"desc" => "Small Select Box.",
-						"id" => "example_select",
-						"std" => "three",
-						"type" => "select",
-						"class" => "mini", //mini, tiny, small
-						"options" => $test_array);			 
-						
-	$options[] = array( "name" => "Input Select Wide",
-						"desc" => "A wider select box.",
-						"id" => "example_select_wide",
-						"std" => "two",
-						"type" => "select",
-						"options" => $test_array);
-						
-	$options[] = array( "name" => "Select a Category",
-						"desc" => "Passed an array of categories with cat_ID and cat_name",
-						"id" => "example_select_categories",
-						"type" => "select",
-						"options" => $options_categories);
-						
-	$options[] = array( "name" => "Select a Page",
-						"desc" => "Passed an pages with ID and post_title",
-						"id" => "example_select_pages",
-						"type" => "select",
-						"options" => $options_pages);
-						
-	$options[] = array( "name" => "Input Radio (one)",
-						"desc" => "Radio select with default options 'one'.",
-						"id" => "example_radio",
-						"std" => "one",
-						"type" => "radio",
-						"options" => $test_array);
-							
-	$options[] = array( "name" => "Example Info",
-						"desc" => "This is just some example information you can put in the panel.",
-						"type" => "info");
-											
-	$options[] = array( "name" => "Input Checkbox",
-						"desc" => "Example checkbox, defaults to true.",
-						"id" => "example_checkbox",
-						"std" => "true",
-						"type" => "checkbox");
-						
-	$options[] = array( "name" => "Advanced Settings",
-						"type" => "heading");
-						
-	$options[] = array( "name" => "Check to Show a Hidden Text Input",
-						"desc" => "Click here and see what happens.",
-						"id" => "example_showhidden",
+
+	$options[] = array( "name" => "Google Analytics Tracking ID",
+						"desc" => "Enter your UA-XXXXX-X ID",
+						"id" => "roots_google_analytics",
+						"std" => "",
+						"type" => "text");
+
+	$options[] = array( "name" => "Display Post Author",
+						"desc" => "Show the post author",
+						"id" => "roots_post_author",
 						"std" => "false",
 						"type" => "checkbox");
-	
-	$options[] = array( "name" => "Hidden Text Input",
-						"desc" => "This option is hidden unless activated by a checkbox click.",
-						"id" => "example_text_hidden",
-						"std" => "Hello",
-						"class" => "hidden",
-						"type" => "text");
-						
-	$options[] = array( "name" => "Uploader Test",
-						"desc" => "This creates a full size uploader that previews the image.",
-						"id" => "example_uploader",
-						"type" => "upload");
-						
-	$options[] = array( "name" => "Example Image Selector",
-						"desc" => "Images for layout.",
-						"id" => "example_images",
-						"std" => "2c-l-fixed",
-						"type" => "images",
-						"options" => array(
-							'1col-fixed' => $imagepath . '1col.png',
-							'2c-r-fixed' => $imagepath . '2cr.png',
-							'2c-l-fixed' => $imagepath . '2cl.png',
-							'3c-fixed' => $imagepath . '3cm.png',
-							'3c-r-fixed' => $imagepath . '3cr.png')
-						);
-						
-	$options[] = array( "name" =>  "Example Background",
-						"desc" => "Change the background CSS.",
-						"id" => "example_background",
-						"std" => $background_defaults, 
-						"type" => "background");
-								
-	$options[] = array( "name" => "Multicheck",
-						"desc" => "Multicheck description.",
-						"id" => "example_multicheck",
-						"std" => $multicheck_defaults, // These items get checked by default
-						"type" => "multicheck",
-						"options" => $multicheck_array);
-							
-	$options[] = array( "name" => "Colorpicker",
-						"desc" => "No color selected by default.",
-						"id" => "example_colorpicker",
+
+	$options[] = array( "name" => "Post Tweet Button",
+						"desc" => "Enable Tweet button on posts",
+						"id" => "roots_post_tweet",
+						"std" => "false",
+						"type" => "checkbox");
+
+	$options[] = array( "name" => "Footer Social Share Buttons",
+						"desc" => "Enable official Twitter and Facebook buttons in the footer",
+						"id" => "roots_footer_social_share",
+						"std" => "false",
+						"type" => "checkbox");
+
+	$options[] = array( "name" => "Footer vCard",
+						"type" => "heading");
+
+	$options[] = array( "name" => "Footer vCard",
+						"desc" => "Enable vCard in the footer",
+						"id" => "roots_footer_vcard",
+						"std" => "false",
+						"type" => "checkbox");
+
+	$options[] = array( "name" => "Street Address",
+						"desc" => "",
+						"id" => "roots_vcard_street-address",
 						"std" => "",
-						"type" => "color");
-						
-	$options[] = array( "name" => "Typography",
-						"desc" => "Example typography.",
-						"id" => "example_typography",
-						"std" => array('size' => '12px','face' => 'verdana','style' => 'bold italic','color' => '#123456'),
-						"type" => "typography");			
+						"type" => "text");
+
+	$options[] = array( "name" => "City",
+						"desc" => "",
+						"id" => "roots_vcard_locality",
+						"std" => "",
+						"type" => "text");
+
+	$options[] = array( "name" => "State",
+						"desc" => "",
+						"id" => "roots_vcard_region",
+						"std" => "",
+						"type" => "text");
+
+	$options[] = array( "name" => "Zipcode",
+						"desc" => "",
+						"id" => "roots_vcard_postal-code",
+						"std" => "",
+						"type" => "text");
+
+	$options[] = array( "name" => "Telephone Number",
+						"desc" => "",
+						"id" => "roots_vcard_tel",
+						"std" => "",
+						"type" => "text");
+
+	$options[] = array( "name" => "Email address",
+						"desc" => "",
+						"id" => "roots_vcard_email",
+						"std" => "",
+						"type" => "text");
+
 	return $options;
 }

@@ -27,8 +27,13 @@
  *
  * This code allows the theme to work without errors if the Options Framework plugin has been disabled.
  */
+if (!is_writable($home_path . '.htaccess')) {
 
+};
 if ( !function_exists( 'of_get_option' ) ) {
+
+	//Throws a notice message
+	add_action('admin_notices', create_function('', "echo '<div class=\"error\"><p>" . sprintf(__('To enable the theme option page please install  <a href="http://wordpress.org/extend/plugins/options-framework/">the options framework plugin</a> by Devin Price', 'roots')) . "</p></div>';"));
 	function of_get_option($name, $default = 'false') {
 	
 		$optionsframework_settings = get_option('optionsframework');
@@ -47,6 +52,7 @@ if ( !function_exists( 'of_get_option' ) ) {
 		}
 	}
 }
+
 function roots_admin_styles() {
 	$site_url = site_url();
 	$theme_name = next(explode('/themes/', get_template_directory()));
