@@ -2,6 +2,12 @@
 
 ## Changelog:
 
+### 3.2.1: April 20th, 2011
+
+<ul>
+  <li>Added support for child themes</li>
+</ul>
+
 ### 3.2.0: April 15th, 2011
 
 <ul>
