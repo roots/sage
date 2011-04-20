@@ -1,5 +1,9 @@
 <?php
 
+$theme_name = next(explode('/themes/', get_stylesheet_directory()));
+$theme_data = get_theme_data(ABSPATH . 'wp-content/themes/' . $theme_name . '/style.css');
+
+// Rewrites DO NOT happen for child themes
 // rewrite /wp-content/themes/roots/css/ to /css/
 // rewrite /wp-content/themes/roots/js/  to /js/
 // rewrite /wp-content/themes/roots/img/ to /js/
@@ -11,7 +15,7 @@ function roots_flush_rewrites() {
 }
 
 function roots_add_rewrites($content) {
-  $theme_name = next(explode('/themes/', get_template_directory()));
+  $theme_name = next(explode('/themes/', get_stylesheet_directory()));
 	global $wp_rewrite;
 	$roots_new_non_wp_rules = array(
 		'css/(.*)'      => 'wp-content/themes/'. $theme_name . '/css/$1',
@@ -22,7 +26,6 @@ function roots_add_rewrites($content) {
 	$wp_rewrite->non_wp_rules += $roots_new_non_wp_rules;
 }
 
-add_action('generate_rewrite_rules', 'roots_add_rewrites');
 add_action('admin_init', 'roots_flush_rewrites');
 
 function roots_clean_assets($content) {
@@ -32,8 +35,6 @@ function roots_clean_assets($content) {
     $content = str_replace($current_path, $new_path, $content);
     return $content;
 }
-add_filter('bloginfo', 'roots_clean_assets');
-add_filter('stylesheet_directory_uri', 'roots_clean_assets');
 
 function roots_clean_plugins($content) {
     $current_path = '/wp-content/plugins';
@@ -41,7 +42,14 @@ function roots_clean_plugins($content) {
     $content = str_replace($current_path, $new_path, $content);
     return $content;
 }
-add_filter('plugins_url', 'roots_clean_plugins');
+
+// only use clean urls if the theme isn't a child
+if ($theme_data['Template'] === '') {
+  add_action('generate_rewrite_rules', 'roots_add_rewrites');
+  add_filter('plugins_url', 'roots_clean_plugins');
+  add_filter('bloginfo', 'roots_clean_assets');
+  add_filter('stylesheet_directory_uri', 'roots_clean_assets');
+}
 
 // redirect /?s to /search/
 // http://txfx.net/wordpress-plugins/nice-search/
