@@ -21,13 +21,13 @@ function roots_create_menu() {
 }
 
 function roots_admin_styles() {
-	$site_url = site_url();
+	$home_url = home_url();
 	$theme_name = next(explode('/themes/', get_template_directory()));
 
-	wp_register_style('roots_options_css', "$site_url/wp-content/themes/$theme_name/includes/css/options.css");
+	wp_register_style('roots_options_css', "$home_url/wp-content/themes/$theme_name/includes/css/options.css");
 	wp_enqueue_style('roots_options_css');
 	
-	wp_register_script('roots_options_js', "$site_url/wp-content/themes/$theme_name/includes/js/options.js");
+	wp_register_script('roots_options_js', "$home_url/wp-content/themes/$theme_name/includes/js/options.js");
 	wp_enqueue_script('roots_options_js');	
 
 	wp_register_style('jquery-ui-css', "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/themes/smoothness/jquery-ui.css");

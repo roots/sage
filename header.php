@@ -12,7 +12,7 @@
 
 	<?php echo get_roots_stylesheets(); ?>
 	
-	<link rel="alternate" type="application/rss+xml" title="<?php bloginfo('name'); ?> Feed" href="<?php site_url(); ?>/feed/">
+	<link rel="alternate" type="application/rss+xml" title="<?php bloginfo('name'); ?> Feed" href="<?php echo home_url(); ?>/feed/">
 
 	<script src="<?php echo get_stylesheet_directory_uri(); ?>/js/libs/modernizr-1.7.min.js"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
@@ -39,7 +39,7 @@
 	<?php } ?>	
 		<header id="banner" class="<?php echo roots_container_class; ?>" role="banner">
 			<div class="container">
-				<a id="logo" href="<?php site_url(); ?>/"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/logo.png" width="300" height="75" alt="<?php bloginfo('name'); ?>"></a>
+				<a id="logo" href="<?php echo home_url(); ?>/"><img src="<?php echo get_stylesheet_directory_uri(); ?>/img/logo.png" width="300" height="75" alt="<?php bloginfo('name'); ?>"></a>
 				<nav id="nav-main" class="<?php echo roots_container_class; ?>" role="navigation">
 					<?php wp_nav_menu(array('theme_location' => 'primary_navigation')); ?>
 				</nav>
