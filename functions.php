@@ -16,16 +16,22 @@ if (!defined('roots_container_class')) {
 	switch ($roots_css_framework) {
 		case 'blueprint':
 			define('roots_container_class', 'span-24');
+      break;
 		case '960gs_12':
 			define('roots_container_class', 'container_12');
+      break;
 		case '960gs_16':
 			define('roots_container_class', 'container_16');
+      break;
 		case '960gs_24':
 			define('roots_container_class', 'container_24');
+      break;
 		case '1140':
 			define('roots_container_class', 'container');
+      break;
 		default:
 			define('roots_container_class', '');
+      break;
 	}
 }
 
@@ -66,18 +72,24 @@ function get_roots_stylesheets() {
 // set the maximum 'Large' image width to the maximum grid width
 if (!isset($content_width)) {
   switch ($roots_css_framework) {
-    case 'blueprint' :
-		$content_width = 950;
-    case '960gs_12' :
-		$content_width = 940;
-    case '960gs_16' :
-		$content_width = 940;
-    case '960gs_24' :
-		$content_width = 940;
-    case '1140' :
-		$content_width = 1140;
-    default :
-		$content_width = 950;
+    case 'blueprint':
+		  $content_width = 950;
+      break;
+    case '960gs_12':
+		  $content_width = 940;
+      break;
+    case '960gs_16':
+		  $content_width = 940;
+      break;
+    case '960gs_24':
+		  $content_width = 940;
+      break;
+    case '1140':
+		  $content_width = 1140;
+      break;
+    default:
+		  $content_width = 950;
+      break;
   }
 }
 // tell the TinyMCE editor to use editor-style.css

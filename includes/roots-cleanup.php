@@ -255,13 +255,13 @@ function roots_gallery_shortcode($attr) {
 		// make the gallery link to the file by default instead of the attachment
 		// thanks to Matt Price (countingrows.com)
 		switch($attr['link']) {
-      case 'file' : 
+      case 'file': 
         $link = wp_get_attachment_link($id, $size, false, false);
         break;
-      case 'attachment' :
+      case 'attachment':
         $link = wp_get_attachment_link($id, $size, true, false);
         break;
-      default :
+      default:
         $link = wp_get_attachment_link($id, $size, false, false);
         break;
 		}
