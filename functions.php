@@ -31,33 +31,33 @@ if (!defined('roots_container_class')) {
 
 function get_roots_stylesheets() {
   $roots_css_framework = get_option('roots_css_framework');
-	$css_uri = get_stylesheet_directory_uri();
+	$template_uri = get_template_directory_uri();
 	$styles = '';
 
 	if ($roots_css_framework === 'blueprint') {
-		$styles .= "<link rel=\"stylesheet\" href=\"$css_uri/css/blueprint/screen.css\">\n";
+		$styles .= "<link rel=\"stylesheet\" href=\"$template_uri/css/blueprint/screen.css\">\n";
 	} elseif ($roots_css_framework === '960gs_12' || $roots_css_framework === '960gs_16') {
-		$styles .= "<link rel=\"stylesheet\" href=\"$css_uri/css/960/reset.css\">\n";
-		$styles .= "\t<link rel=\"stylesheet\" href=\"$css_uri/css/960/text.css\">\n";
-		$styles .= "\t<link rel=\"stylesheet\" href=\"$css_uri/css/960/960.css\">\n";
+		$styles .= "<link rel=\"stylesheet\" href=\"$template_uri/css/960/reset.css\">\n";
+		$styles .= "\t<link rel=\"stylesheet\" href=\"$template_uri/css/960/text.css\">\n";
+		$styles .= "\t<link rel=\"stylesheet\" href=\"$template_uri/css/960/960.css\">\n";
 	} elseif ($roots_css_framework === '960gs_24') {
-		$styles .= "<link rel=\"stylesheet\" href=\"$css_uri/css/960/reset.css\">\n";
-		$styles .= "\t<link rel=\"stylesheet\" href=\"$css_uri/css/960/text.css\">\n";
-		$styles .= "\t<link rel=\"stylesheet\" href=\"$css_uri/css/960/960_24_col.css\">\n";
+		$styles .= "<link rel=\"stylesheet\" href=\"$template_uri/css/960/reset.css\">\n";
+		$styles .= "\t<link rel=\"stylesheet\" href=\"$template_uri/css/960/text.css\">\n";
+		$styles .= "\t<link rel=\"stylesheet\" href=\"$template_uri/css/960/960_24_col.css\">\n";
 	} elseif ($roots_css_framework === '1140') {
-		$styles .= "<link rel=\"stylesheet\" href=\"$css_uri/css/1140/1140.css\">\n";
+		$styles .= "<link rel=\"stylesheet\" href=\"$template_uri/css/1140/1140.css\">\n";
 	}
 
 	if (class_exists('RGForms')) {
 		$styles .= "\t<link rel=\"stylesheet\" href=\"" . plugins_url(). "/gravityforms/css/forms.css\">\n";
 	}
 
-	$styles .= "\t<link rel=\"stylesheet\" href=\"$css_uri/css/style.css\">\n";
+	$styles .= "\t<link rel=\"stylesheet\" href=\"$template_uri/css/style.css\">\n";
 
 	if ($roots_css_framework === 'blueprint') {
-		$styles .= "\t<!--[if lt IE 8]><link rel=\"stylesheet\" href=\"$css_uri/css/blueprint/ie.css\"><![endif]-->\n";
+		$styles .= "\t<!--[if lt IE 8]><link rel=\"stylesheet\" href=\"$template_uri/css/blueprint/ie.css\"><![endif]-->\n";
 	} elseif ($roots_css_framework === '1140') {
-		$styles .= "\t<!--[if lt IE 8]><link rel=\"stylesheet\" href=\"$css_uri/css/1140/ie.css\"><![endif]-->\n";
+		$styles .= "\t<!--[if lt IE 8]><link rel=\"stylesheet\" href=\"$template_uri/css/1140/ie.css\"><![endif]-->\n";
 	}
 
 	return $styles;
