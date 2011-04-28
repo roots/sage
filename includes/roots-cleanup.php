@@ -105,17 +105,17 @@ add_action('pre_get_posts', 'roots_relative_feed_urls' );
 
 // remove dir and set lang="en" as default (rather than en-US)
 function roots_language_attributes() {
-        $attributes = array();
-	        $output = '';         
-			if (!defined('WP_LANG')) {
-				$attributes[] = "lang=\"en\"";
-			} else if ($lang = get_bloginfo('language')) {
-	           $attributes[] = "lang=\"$lang\"";
-	        }
-	
-	        $output = implode(' ', $attributes);
-	        $output = apply_filters('roots_language_attributes', $output);
-	        echo $output;    
+	$attributes = array();
+	$output = '';
+	if (!defined('WP_LANG')) {
+		$attributes[] = "lang=\"en\"";
+	} else if ($lang = get_bloginfo('language')) {
+		$attributes[] = "lang=\"$lang\"";
+	}
+
+	$output = implode(' ', $attributes);
+	$output = apply_filters('roots_language_attributes', $output);
+	echo $output;
 }
 
 add_filter('language_attributes', 'roots_language_attributes');
