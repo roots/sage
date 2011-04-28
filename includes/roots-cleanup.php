@@ -45,11 +45,11 @@ function roots_clean_plugins($content) {
 
 // only use clean urls if the theme isn't a child or an MU (Network) install
 if ((!defined('WP_ALLOW_MULTISITE') || (defined('WP_ALLOW_MULTISITE') && WP_ALLOW_MULTISITE !== true)) && $theme_data['Template'] === '') {
-  add_action('generate_rewrite_rules', 'roots_add_rewrites');
-  add_filter('plugins_url', 'roots_clean_plugins');
-  add_filter('bloginfo', 'roots_clean_assets');
-  add_filter('stylesheet_directory_uri', 'roots_clean_assets');
-  add_filter('template_directory_uri', 'roots_clean_assets');
+	add_action('generate_rewrite_rules', 'roots_add_rewrites');
+	add_filter('plugins_url', 'roots_clean_plugins');
+	add_filter('bloginfo', 'roots_clean_assets');
+	add_filter('stylesheet_directory_uri', 'roots_clean_assets');
+	add_filter('template_directory_uri', 'roots_clean_assets');
 }
 
 // redirect /?s to /search/
@@ -66,8 +66,8 @@ add_action('template_redirect', 'roots_nice_search_redirect');
 // inspired by http://www.456bereastreet.com/archive/201010/how_to_make_wordpress_urls_root_relative/
 // thanks to Scott Walkinshaw (scottwalkinshaw.com)
 function roots_root_relative_url($input) {
-  preg_match('/(https?:\/\/[^\/]+)/', $input, $matches);
-  return str_replace(end($matches), '', $input);
+	preg_match('/(https?:\/\/[^\/]+)/', $input, $matches);
+	return str_replace(end($matches), '', $input);
 }
 
 //add_filter('site_url', 'roots_root_relative_url'); // this will break URLs sent out in emails, possibly more
@@ -102,6 +102,24 @@ function roots_relative_feed_urls() {
 }
 
 add_action('pre_get_posts', 'roots_relative_feed_urls' );
+
+// remove dir and set lang="en" as default (rather than en-US)
+function roots_language_attributes() {
+        $attributes = array();
+	        $output = '';         
+			if (!defined('WP_LANG')) {
+				$attributes[] = "lang=\"en\"";
+			} else if ($lang = get_bloginfo('language')) {
+	           $attributes[] = "lang=\"$lang\"";
+	        }
+	
+	        $output = implode(' ', $attributes);
+	        $output = apply_filters('roots_language_attributes', $output);
+	        echo $output;    
+}
+
+add_filter('language_attributes', 'roots_language_attributes');
+
 
 // remove WordPress version from RSS feed
 function roots_no_generator() { return ''; }
