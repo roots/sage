@@ -59,8 +59,9 @@ a:link { -webkit-tap-highlight-color: #3399FF; }
 
 /* Forms */
 button, input, select, textarea { width: auto; overflow: visible; margin: 0; font-family: sans-serif; font-size: 1em; }
-label, input[type=button], input[type=submit], button { cursor: pointer; }
+label, input[type=button], input[type=submit], input[type=image], button { cursor: pointer; }
 textarea { overflow: auto; }
+input::-moz-focus-inner, button::-moz-focus-inner { border: 0; padding: 0; }
 
 /* Grid */
 #wrap { }
@@ -432,6 +433,7 @@ img.ui-datepicker-trigger { vertical-align: middle; }
   pre, blockquote { border: 1px solid #999; page-break-inside: avoid; }
   thead { display: table-header-group; }
   tr, img { page-break-inside: avoid; }
+  img { max-width: 100% !important; }
   @page { margin: 0.5cm; }
   p, h2, h3 { orphans: 3; widows: 3; }
   h2, h3 { page-break-after: avoid; }	
