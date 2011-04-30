@@ -13,7 +13,7 @@ function optionsframework_option_name() {
 	$themename = $themename['Name'];
 	$themename = preg_replace("/\W/", "", strtolower($themename) );
 	
-	$optionsframework_settings = get_option('optionsframework');
+	$optionsframework_settings = of_get_option('optionsframework');
 	$optionsframework_settings['id'] = $themename;
 	update_option('optionsframework', $optionsframework_settings);
 	
@@ -65,12 +65,12 @@ function optionsframework_options() {
 	$options[] = array( "name" => "General Roots Settings",
 						"type" => "heading");
 
-	$roots_available_grid_framework = array('roots_blueprint' => 'Blueprint', 'roots_960gs_12' => '960gs (12 cols)', 'roots_960gs_16' => '960gs (16 cols)', 'roots_960gs_24' => '960gs (24 cols)', 'roots_1140gs' => '1140gs');
+	$roots_available_grid_framework = array('blueprint' => 'Blueprint', '960gs_12' => '960gs (12 cols)', '960gs_16' => '960gs (16 cols)', '960gs_24' => '960gs (24 cols)', '1140gs' => '1140gs');
 
 	$options[] = array( "name" => "CSS Grid Framework",
 						"desc" => "Please select your css grid framework",
 						"id" => "roots_css_framework",
-						"std" => "roots_blueprint",
+						"std" => "blueprint",
 						"type" => "radio",
 						"options" => $roots_available_grid_framework);
 							
@@ -95,19 +95,19 @@ function optionsframework_options() {
 	$options[] = array( "name" => "Display Post Author",
 						"desc" => "Show the post author",
 						"id" => "roots_post_author",
-						"std" => "false",
+						"std" => "",
 						"type" => "checkbox");
 
 	$options[] = array( "name" => "Post Tweet Button",
 						"desc" => "Enable Tweet button on posts",
 						"id" => "roots_post_tweet",
-						"std" => "false",
+						"std" => "",
 						"type" => "checkbox");
 
 	$options[] = array( "name" => "Footer Social Share Buttons",
 						"desc" => "Enable official Twitter and Facebook buttons in the footer",
 						"id" => "roots_footer_social_share",
-						"std" => "false",
+						"std" => "",
 						"type" => "checkbox");
 
 	$options[] = array( "name" => "Footer vCard",
@@ -116,12 +116,12 @@ function optionsframework_options() {
 	$options[] = array( "name" => "Footer vCard",
 						"desc" => "Enable vCard in the footer",
 						"id" => "roots_footer_vcard",
-						"std" => "false",
+						"std" => "",
 						"type" => "checkbox");
 
 	$options[] = array( "name" => "Street Address",
 						"desc" => "",
-						"id" => "roots_vcard_street-address",
+						"id" => "roots_vcard_streetaddress",
 						"std" => "",
 						"type" => "text");
 

@@ -4,12 +4,12 @@ Template Name: Custom
 */
 get_header(); ?>
 		<div id="content" class="<?php echo roots_container_class; ?>">	
-			<div id="main" class="<?php echo get_option('roots_main_class'); ?>" role="main">
+			<div id="main" class="<?php echo of_get_option('roots_main_class'); ?>" role="main">
 				<div class="container">
 					<?php get_template_part('loop', 'page'); ?>
 				</div>
 			</div><!-- /#main -->
-			<aside id="sidebar" class="<?php echo get_option('roots_sidebar_class'); ?>" role="complementary">
+			<aside id="sidebar" class="<?php echo of_get_option('roots_sidebar_class'); ?>" role="complementary">
 				<div class="container">
 					<?php get_sidebar(); ?>
 				</div>

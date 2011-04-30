@@ -19,13 +19,13 @@
 	<script>window.jQuery || document.write("<script src='<?php echo get_template_directory_uri(); ?>/js/libs/jquery-1.5.2.min.js'>\x3C/script>")</script>
 
 	<?php wp_head(); ?>
-<?php if (get_option('roots_css_framework') === '1140') { ?>
+<?php if (of_get_option('roots_css_framework') === '1140') { ?>
 	<script src="<?php echo get_template_directory_uri(); ?>/js/css3-mediaqueries.js"></script>
 <?php } ?>	
 	<script src="<?php echo get_template_directory_uri(); ?>/js/scripts.js"></script>
-<?php if (get_option('roots_google_analytics') !== "") { ?>
+<?php if (of_get_option('roots_google_analytics') !== "") { ?>
 	<script>
-		var _gaq=[["_setAccount","<?php echo get_option('roots_google_analytics') ?>"],["_trackPageview"]];
+		var _gaq=[["_setAccount","<?php echo of_get_option('roots_google_analytics') ?>"],["_trackPageview"]];
 		(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
 		g.src=("https:"==location.protocol?"//ssl":"//www")+".google-analytics.com/ga.js";
 		s.parentNode.insertBefore(g,s)}(document,"script"));
@@ -34,7 +34,7 @@
 </head>
 <body <?php $page_slug = $post->post_name; body_class($page_slug); ?>>
 	<div id="wrap" class="container" role="document">
-	<?php if (get_option('roots_css_framework') === '1140') { ?>
+	<?php if (of_get_option('roots_css_framework') === '1140') { ?>
 		<div class="row">
 	<?php } ?>	
 		<header id="banner" class="<?php echo roots_container_class; ?>" role="banner">
@@ -48,9 +48,9 @@
 				</nav>				
 			</div>
 		</header>
-	<?php if (get_option('roots_css_framework') === '1140') { ?>
+	<?php if (of_get_option('roots_css_framework') === '1140') { ?>
 		</div><!-- /.row -->
 	<?php } ?>
-	<?php if (get_option('roots_css_framework') === '1140') { ?>
+	<?php if (of_get_option('roots_css_framework') === '1140') { ?>
 		<div class="row">
-	<?php } ?>
+   <?php } ?>
