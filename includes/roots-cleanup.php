@@ -1,5 +1,9 @@
 <?php
 
+$theme_name = next(explode('/themes/', get_stylesheet_directory()));
+$theme_data = get_theme_data(ABSPATH . 'wp-content/themes/' . $theme_name . '/style.css');
+
+// Rewrites DO NOT happen for child themes
 // rewrite /wp-content/themes/roots/css/ to /css/
 // rewrite /wp-content/themes/roots/js/  to /js/
 // rewrite /wp-content/themes/roots/img/ to /js/
@@ -11,7 +15,7 @@ function roots_flush_rewrites() {
 }
 
 function roots_add_rewrites($content) {
-  $theme_name = next(explode('/themes/', get_template_directory()));
+  $theme_name = next(explode('/themes/', get_stylesheet_directory()));
 	global $wp_rewrite;
 	$roots_new_non_wp_rules = array(
 		'css/(.*)'      => 'wp-content/themes/'. $theme_name . '/css/$1',
@@ -22,7 +26,6 @@ function roots_add_rewrites($content) {
 	$wp_rewrite->non_wp_rules += $roots_new_non_wp_rules;
 }
 
-add_action('generate_rewrite_rules', 'roots_add_rewrites');
 add_action('admin_init', 'roots_flush_rewrites');
 
 function roots_clean_assets($content) {
@@ -32,8 +35,6 @@ function roots_clean_assets($content) {
     $content = str_replace($current_path, $new_path, $content);
     return $content;
 }
-add_filter('bloginfo', 'roots_clean_assets');
-add_filter('stylesheet_directory_uri', 'roots_clean_assets');
 
 function roots_clean_plugins($content) {
     $current_path = '/wp-content/plugins';
@@ -41,7 +42,15 @@ function roots_clean_plugins($content) {
     $content = str_replace($current_path, $new_path, $content);
     return $content;
 }
-add_filter('plugins_url', 'roots_clean_plugins');
+
+// only use clean urls if the theme isn't a child or an MU (Network) install
+if ((!defined('WP_ALLOW_MULTISITE') || (defined('WP_ALLOW_MULTISITE') && WP_ALLOW_MULTISITE !== true)) && $theme_data['Template'] === '') {
+	add_action('generate_rewrite_rules', 'roots_add_rewrites');
+	add_filter('plugins_url', 'roots_clean_plugins');
+	add_filter('bloginfo', 'roots_clean_assets');
+	add_filter('stylesheet_directory_uri', 'roots_clean_assets');
+	add_filter('template_directory_uri', 'roots_clean_assets');
+}
 
 // redirect /?s to /search/
 // http://txfx.net/wordpress-plugins/nice-search/
@@ -57,14 +66,15 @@ add_action('template_redirect', 'roots_nice_search_redirect');
 // inspired by http://www.456bereastreet.com/archive/201010/how_to_make_wordpress_urls_root_relative/
 // thanks to Scott Walkinshaw (scottwalkinshaw.com)
 function roots_root_relative_url($input) {
-  preg_match('/(https?:\/\/[^\/]+)/', $input, $matches);
-  return str_replace(end($matches), '', $input);
+	preg_match('/(https?:\/\/[^\/]+)/', $input, $matches);
+	return str_replace(end($matches), '', $input);
 }
 
 //add_filter('site_url', 'roots_root_relative_url'); // this will break URLs sent out in emails, possibly more
 add_filter('bloginfo_url', 'roots_root_relative_url');
 add_filter('theme_root_uri', 'roots_root_relative_url');
 add_filter('stylesheet_directory_uri', 'roots_root_relative_url');
+add_filter('template_directory_uri', 'roots_root_relative_url');
 add_filter('the_permalink', 'roots_root_relative_url');
 add_filter('wp_list_pages', 'roots_root_relative_url');
 add_filter('wp_list_categories', 'roots_root_relative_url');
@@ -92,6 +102,24 @@ function roots_relative_feed_urls() {
 }
 
 add_action('pre_get_posts', 'roots_relative_feed_urls' );
+
+// remove dir and set lang="en" as default (rather than en-US)
+function roots_language_attributes() {
+	$attributes = array();
+	$output = '';
+	if (!defined('WP_LANG')) {
+		$attributes[] = "lang=\"en\"";
+	} else if ($lang = get_bloginfo('language')) {
+		$attributes[] = "lang=\"$lang\"";
+	}
+
+	$output = implode(' ', $attributes);
+	$output = apply_filters('roots_language_attributes', $output);
+	echo $output;
+}
+
+add_filter('language_attributes', 'roots_language_attributes');
+
 
 // remove WordPress version from RSS feed
 function roots_no_generator() { return ''; }
@@ -247,13 +275,13 @@ function roots_gallery_shortcode($attr) {
 		// make the gallery link to the file by default instead of the attachment
 		// thanks to Matt Price (countingrows.com)
 		switch($attr['link']) {
-      case 'file' : 
+      case 'file': 
         $link = wp_get_attachment_link($id, $size, false, false);
         break;
-      case 'attachment' :
+      case 'attachment':
         $link = wp_get_attachment_link($id, $size, true, false);
         break;
-      default :
+      default:
         $link = wp_get_attachment_link($id, $size, false, false);
         break;
 		}
