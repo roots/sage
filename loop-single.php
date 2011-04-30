@@ -5,12 +5,12 @@
 		<header>
 			<h1 class="entry-title"><?php the_title(); ?></h1>
 			<time class="updated" datetime="<?php the_time('c'); ?>" pubdate>Posted on <?php the_time('l, F jS, Y') ?> at <?php the_time() ?>.</time>
-			<?php if (get_option('roots_post_author') == 'checked') { ?>
+			<?php if (of_get_option('roots_post_author') == 'checked') { ?>
 			<p class="byline author vcard">
 				Written by <span class="fn"><?php the_author(); ?></span>
 			</p>
 			<?php } ?>
-			<?php if (get_option('roots_post_tweet') == 'checked') { ?>
+			<?php if (of_get_option('roots_post_tweet') == 'checked') { ?>
 			<a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
 			<?php } ?>
 		</header>
