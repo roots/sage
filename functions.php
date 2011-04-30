@@ -11,7 +11,7 @@ include_once('includes/roots-cleanup.php');		// code cleanup/removal
 include_once('includes/roots-htaccess.php');	// h5bp htaccess
 
 // set the value of the main container class depending on the selected grid framework
-$roots_css_framework = get_option('roots_css_framework');
+$roots_css_framework = of_get_option('roots_css_framework');
 if (!defined('roots_container_class')) {
 	switch ($roots_css_framework) {
 		case 'blueprint':
@@ -36,7 +36,7 @@ if (!defined('roots_container_class')) {
 }
 
 function get_roots_stylesheets() {
-  $roots_css_framework = get_option('roots_css_framework');
+   $roots_css_framework = of_get_option('roots_css_framework');
 	$template_uri = get_template_directory_uri();
 	$styles = '';
 

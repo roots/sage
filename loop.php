@@ -14,7 +14,7 @@
 			<header>
 				<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 				<time pubdate datetime="<?php the_time('c'); ?>">Posted on <?php the_time('l, F jS, Y') ?> at <?php the_time() ?>.</time>
-				<?php if (get_option('roots_post_author') == 'checked') { ?>
+				<?php if (of_get_option('roots_post_author') == 'checked') { ?>
 				<p class="byline author vcard">
 					Written by <span class="fn"><?php the_author(); ?></span>
 				</p>
