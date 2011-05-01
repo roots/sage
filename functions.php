@@ -36,7 +36,7 @@ if (!defined('roots_container_class')) {
 }
 
 function get_roots_stylesheets() {
-  $roots_css_framework = get_option('roots_css_framework');
+	$roots_css_framework = get_option('roots_css_framework');
 	$template_uri = get_template_directory_uri();
 	$styles = '';
 
@@ -71,25 +71,25 @@ function get_roots_stylesheets() {
 	
 // set the maximum 'Large' image width to the maximum grid width
 if (!isset($content_width)) {
-  switch ($roots_css_framework) {
+	switch ($roots_css_framework) {
     case 'blueprint':
 		  $content_width = 950;
-      break;
+	break;
     case '960gs_12':
 		  $content_width = 940;
-      break;
+	break;
     case '960gs_16':
 		  $content_width = 940;
-      break;
+	break;
     case '960gs_24':
 		  $content_width = 940;
-      break;
+	break;
     case '1140':
 		  $content_width = 1140;
-      break;
+	break;
     default:
 		  $content_width = 950;
-      break;
+	break;
   }
 }
 // tell the TinyMCE editor to use editor-style.css
@@ -105,8 +105,8 @@ add_theme_support('post-thumbnails');
 add_theme_support('menus');
 register_nav_menus(
 	array(
-	  'primary_navigation' => 'Primary Navigation',
-	  'utility_navigation' => 'Utility Navigation'
+		'primary_navigation' => 'Primary Navigation',
+		'utility_navigation' => 'Utility Navigation'
 	)
 );
 

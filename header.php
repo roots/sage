@@ -50,7 +50,5 @@
 		</header>
 	<?php if (get_option('roots_css_framework') === '1140') { ?>
 		</div><!-- /.row -->
-	<?php } ?>
-	<?php if (get_option('roots_css_framework') === '1140') { ?>
 		<div class="row">
 	<?php } ?>
