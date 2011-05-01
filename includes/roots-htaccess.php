@@ -108,6 +108,7 @@ function roots_add_htaccess($rules) {
 	$rules .= "\nAddType application/x-chrome-extension crx";
 	$rules .= "\nAddType application/x-xpinstall        xpi";
 	$rules .= "\nAddType application/octet-stream       safariextz";
+	$rules .= "\nAddType text/x-vcard       			vcf";
 	$rules .= "\n";
 	$rules .= "\n";
 	$rules .= "\n";

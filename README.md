@@ -2,6 +2,32 @@
 
 ## Changelog:
 
+### 3.2.2: April 24th, 2011
+<ul>
+	<li>Bugfixes</li>
+</ul>
+
+### 3.2.1: April 20th, 2011
+
+<ul>
+	<li>Added support for child themes</li>
+</ul>
+
+### 3.2.0: April 15th, 2011
+
+<ul>
+	<li>Added support for the 1140px Grid</li>
+	<li>Updated the conditional comment code to match latest changes to HTML5 Boilerplate</li>
+</ul>
+
+### 3.1.1: April 7th, 2011
+
+<ul>
+	<li>Fixed relative path function to work correctly when WordPress is installed in a subdirectory</li>
+	<li>Updated jQuery to 1.5.2</li>
+	<li>Fixed comments to show avatars correctly</li>
+</ul>
+
 ### 3.1.0: April 1st, 2011
 
 <ul>
@@ -9,9 +35,6 @@
 	<li>Added more onto the <code>.htaccess</code> from HTML5 Boilerplate</li>
 	<li>Made the theme directory and name renamable</li>
 </ul>
-
-#### Contributors
-[John Liuti](http://twitter.com/JohnLiuti), [Jeremiah Wall](http://jeremiahwall.com/)
 
 ### 3.0.0: March 28th, 2011
 
@@ -34,9 +57,6 @@
 	<li>Updated CSS for Gravity Forms 1.5</li>
 	<li>Added <code>searchform.php template</code></li>
 </ul>
-	
-#### Contributors
-[Scott Walkinshaw](http://www.scottwalkinshaw.com/), [Matthew Price](http://www.matthewaprice.com/), [Kyle Geminden](http://www.kylegeminden.com/), [Steve Jothen](http://twitter.com/sjothen)
 
 ### 2.4.0: January 25th, 2011
 
@@ -103,15 +123,20 @@
 	<li>Added Blueprint CSS to Starkers</li>
 </ul>
 
+## Contributors:
+
+[Scott Walkinshaw](http://www.scottwalkinshaw.com/), [Matthew Price](http://www.matthewaprice.com/), [Kyle Geminden](http://www.kylegeminden.com/), [Steve Jothen](http://twitter.com/sjothen), [John Liuti](http://twitter.com/JohnLiuti), [Jeremiah Wall](http://jeremiahwall.com/), [Jenny Jui-Shan Liang](http://jsliang.twgogo.org/)
+
 ## License:
 
 Major components:
 
-* HTML5 Boileplate: [The Unlicense](http://unlicense.org)
+* HTML5 Boilerplate: [The Unlicense](http://unlicense.org)
 * Blueprint CSS: Modified MIT License
-* 960 Grid System: MIT/GPL license
-* Modernizr: MIT/BSD license
-* jQuery: MIT/GPL license
+* 960 Grid System: MIT/GPL License
+* The 1140px Grid: CC BY-SA 3.0 Australia License
+* Modernizr: MIT/BSD License
+* jQuery: MIT/GPL License
 
 Everything else:
 
@@ -119,4 +144,4 @@ Everything else:
 
 ## Summary:
 
-Roots is a starting WordPress theme made for developers that's based on HTML5 Boilerplate, Blueprint CSS and Starkers that will help you rapidly create brochure sites and blogs.
+Roots is a starting WordPress theme made for developers that's based on HTML5 Boilerplate, Blueprint CSS/960 Grid System/1140 Grid and Starkers that will help you rapidly create brochure sites and blogs.

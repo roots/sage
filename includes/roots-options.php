@@ -4,7 +4,9 @@
 add_action('admin_menu', 'roots_create_menu');
 
 function roots_create_menu() {
-	$icon = get_template_directory_uri() . '/includes/img/icon-roots.png';
+	$home_url = home_url();
+	$theme_name = next(explode('/themes/', get_template_directory()));
+	$icon = "$home_url/wp-content/themes/$theme_name/includes/img/icon-roots.png";
 
 	// create menu
 	$theme_name = get_current_theme();
@@ -21,13 +23,13 @@ function roots_create_menu() {
 }
 
 function roots_admin_styles() {
-	$site_url = site_url();
+	$home_url = home_url();
 	$theme_name = next(explode('/themes/', get_template_directory()));
 
-	wp_register_style('roots_options_css', "$site_url/wp-content/themes/$theme_name/includes/css/options.css");
+	wp_register_style('roots_options_css', "$home_url/wp-content/themes/$theme_name/includes/css/options.css");
 	wp_enqueue_style('roots_options_css');
 	
-	wp_register_script('roots_options_js', "$site_url/wp-content/themes/$theme_name/includes/js/options.js");
+	wp_register_script('roots_options_js', "$home_url/wp-content/themes/$theme_name/includes/js/options.js");
 	wp_enqueue_script('roots_options_js');	
 
 	wp_register_style('jquery-ui-css', "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/themes/smoothness/jquery-ui.css");
@@ -84,7 +86,8 @@ function roots_settings_page() { ?>
 							<input id="roots_blueprint" name="roots_css_framework" type="radio" <?php echo get_option('roots_css_framework') === 'blueprint' ? 'checked' : ''; ?> value="blueprint" /> <label for="roots_blueprint">Blueprint CSS</label><br />
 							<input id="roots_960gs_12" name="roots_css_framework" type="radio" <?php echo get_option('roots_css_framework') === '960gs_12' ? 'checked' : ''; ?> value="960gs_12" /> <label for="roots_960gs_12">960gs (12 cols)</label><br />
 							<input id="roots_960gs_16" name="roots_css_framework" type="radio" <?php echo get_option('roots_css_framework') === '960gs_16' ? 'checked' : ''; ?> value="960gs_16" /> <label for="roots_960gs_16">960gs (16 cols)</label><br />
-							<input id="roots_960gs_24" name="roots_css_framework" type="radio" <?php echo get_option('roots_css_framework') === '960gs_24' ? 'checked' : ''; ?> value="960gs_24" /> <label for="roots_960gs_24">960gs (24 cols)</label>
+							<input id="roots_960gs_24" name="roots_css_framework" type="radio" <?php echo get_option('roots_css_framework') === '960gs_24' ? 'checked' : ''; ?> value="960gs_24" /> <label for="roots_960gs_24">960gs (24 cols)</label><br />
+							<input id="roots_1140" name="roots_css_framework" type="radio" <?php echo get_option('roots_css_framework') === '1140' ? 'checked' : ''; ?> value="1140" /> <label for="roots_1140">1140</label>
 						</div>
 					</li>
 					<li>	
