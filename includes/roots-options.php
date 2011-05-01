@@ -4,7 +4,9 @@
 add_action('admin_menu', 'roots_create_menu');
 
 function roots_create_menu() {
-	$icon = get_template_directory_uri() . '/includes/img/icon-roots.png';
+	$home_url = home_url();
+	$theme_name = next(explode('/themes/', get_template_directory()));
+	$icon = "$home_url/wp-content/themes/$theme_name/includes/img/icon-roots.png";
 
 	// create menu
 	$theme_name = get_current_theme();
