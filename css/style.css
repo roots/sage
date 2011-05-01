@@ -395,8 +395,7 @@ img.ui-datepicker-trigger { vertical-align: middle; }
 #mapp0_poweredby, #mapp1_poweredby, #mapp2_poweredby, #mapp3_poweredby, #mapp4_poweredby, #mapp5_poweredby, #mapp6_poweredby, #mapp7_poweredby, #mapp8_poweredby, #mapp9_poweredby, #mapp10_poweredby { display: none !important; } /* remove MapPress credit */
 
 /* Search */
-#searchform #s { padding: 5px; }
-#searchform #searchsubmit { -moz-appearance: textfield; -webkit-appearance: textfield; }
+#searchform #s { padding: 5px; -moz-appearance: textfield; -webkit-appearance: textfield; }
 
 
 /* INTERNET EXPLORER
