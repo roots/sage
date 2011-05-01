@@ -15,7 +15,7 @@ function roots_flush_rewrites() {
 }
 
 function roots_add_rewrites($content) {
-  $theme_name = next(explode('/themes/', get_stylesheet_directory()));
+	$theme_name = next(explode('/themes/', get_stylesheet_directory()));
 	global $wp_rewrite;
 	$roots_new_non_wp_rules = array(
 		'css/(.*)'      => 'wp-content/themes/'. $theme_name . '/css/$1',
@@ -70,7 +70,7 @@ function roots_root_relative_url($input) {
 	return str_replace(end($matches), '', $input);
 }
 
-//add_filter('site_url', 'roots_root_relative_url'); // this will break URLs sent out in emails, possibly more
+
 add_filter('bloginfo_url', 'roots_root_relative_url');
 add_filter('theme_root_uri', 'roots_root_relative_url');
 add_filter('stylesheet_directory_uri', 'roots_root_relative_url');
@@ -90,7 +90,7 @@ add_filter('month_link', 'roots_root_relative_url');
 add_filter('day_link', 'roots_root_relative_url');
 add_filter('year_link', 'roots_root_relative_url');
 add_filter('tag_link', 'roots_root_relative_url');
-// add_filter('post_link', 'roots_root_relative_url');
+
 
 // remove root relative URLs on any attachments in the feed
 function roots_relative_feed_urls() {
@@ -148,7 +148,7 @@ function roots_head_cleanup() {
 	add_action('wp_head', 'roots_noindex');
 	
 	remove_action('wp_head', 'rel_canonical');	
-		function roots_rel_canonical() {
+	function roots_rel_canonical() {
 		if (!is_singular())
 			return;
 		global $wp_the_query;

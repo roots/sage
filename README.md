@@ -123,7 +123,8 @@
 	<li>Added Blueprint CSS to Starkers</li>
 </ul>
 
-## Contributors
+## Contributors:
+
 [Scott Walkinshaw](http://www.scottwalkinshaw.com/), [Matthew Price](http://www.matthewaprice.com/), [Kyle Geminden](http://www.kylegeminden.com/), [Steve Jothen](http://twitter.com/sjothen), [John Liuti](http://twitter.com/JohnLiuti), [Jeremiah Wall](http://jeremiahwall.com/), [Jenny Jui-Shan Liang](http://jsliang.twgogo.org/)
 
 ## License:
@@ -143,4 +144,4 @@ Everything else:
 
 ## Summary:
 
-Roots is a starting WordPress theme made for developers that's based on HTML5 Boilerplate, Blueprint CSS (or 960.gs) and Starkers that will help you rapidly create brochure sites and blogs.
+Roots is a starting WordPress theme made for developers that's based on HTML5 Boilerplate, Blueprint CSS/960 Grid System/1140 Grid and Starkers that will help you rapidly create brochure sites and blogs.
