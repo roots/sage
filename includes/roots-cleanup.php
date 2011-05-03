@@ -274,17 +274,9 @@ function roots_gallery_shortcode($attr) {
 	foreach ( $attachments as $id => $attachment ) {
 		// make the gallery link to the file by default instead of the attachment
 		// thanks to Matt Price (countingrows.com)
-		switch($attr['link']) {
-      case 'file': 
-        $link = wp_get_attachment_link($id, $size, false, false);
-        break;
-      case 'attachment':
-        $link = wp_get_attachment_link($id, $size, true, false);
-        break;
-      default:
-        $link = wp_get_attachment_link($id, $size, false, false);
-        break;
-		}
+    $link = isset($attr['link']) && $attr['link'] === 'attachment' ? 
+      wp_get_attachment_link($id, $size, true, false) : 
+      wp_get_attachment_link($id, $size, false, false);
 		$output .= "
 			<{$icontag} class=\"gallery-item\">
 				$link
