@@ -25,7 +25,7 @@
 	<script src="<?php echo get_template_directory_uri(); ?>/js/scripts.js"></script>
 <?php if (get_option('roots_google_analytics') !== "") { ?>
 	<script>
-		var _gaq=[["_setAccount","<?php echo get_option('roots_google_analytics') ?>"],["_trackPageview"]];
+		var _gaq=[["_setAccount","<?php echo get_option('roots_google_analytics') ?>"],["_trackPageview"],["_trackPageLoadTime"]];
 		(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
 		g.src=("https:"==location.protocol?"//ssl":"//www")+".google-analytics.com/ga.js";
 		s.parentNode.insertBefore(g,s)}(document,"script"));
