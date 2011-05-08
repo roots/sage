@@ -1,10 +1,10 @@
 /* GENERAL
 --------------------------------------------------------------------------------------------------------------------------------------------------- */
 /* Typography */
-html { overflow-y: scroll; }
+html { overflow-y: scroll; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%; }
 body { background: #fff; font-family: sans-serif; }
 
-a { color: #06c; }
+a { color: #06c; -webkit-tap-highlight-color: #06c; }
 a:hover, a:focus { color:#09f; }
 a:hover, a:active { outline: none; }
 a:active, input.button:active { outline: 0; position: relative; top: 1px; }
@@ -408,20 +408,15 @@ img.ui-datepicker-trigger { vertical-align: middle; }
 
 /* MEDIA QUERIES
 --------------------------------------------------------------------------------------------------------------------------------------------------- */
-@media all and (orientation: portrait) {
-	/* Style adjustments for portrait mode goes here */
+@media only screen and (min-width: 480px) {
+	/* Style adjustments for viewports 480px and over go here */
 
-}
+}/*/mediaquery*/
 
-@media all and (orientation: landscape) {
-	/* Style adjustments for landscape mode goes here */
+@media only screen and (min-width: 768px) {
+	/* Style adjustments for viewports 768px and over go here */
 
-}
-
-@media screen and (max-device-width: 480px) {
-	/* Grade-A Mobile Browsers (Opera Mobile, iPhone Safari, Android Chrome) */
-
-}
+}/*/mediaquery*/
 
 @media print {
   * { background: transparent !important; color: black !important; text-shadow: none !important; filter: none !important; -ms-filter: none !important; } 

@@ -15,6 +15,7 @@
 	<link rel="alternate" type="application/rss+xml" title="<?php bloginfo('name'); ?> Feed" href="<?php echo home_url(); ?>/feed/">
 
 	<script src="<?php echo get_template_directory_uri(); ?>/js/libs/modernizr-1.7.min.js"></script>
+	<script src="<?php echo get_template_directory_uri(); ?>/js/libs/respond.min.js"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
 	<script>window.jQuery || document.write("<script src='<?php echo get_template_directory_uri(); ?>/js/libs/jquery-1.6.min.js'>\x3C/script>")</script>
 
