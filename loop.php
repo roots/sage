@@ -24,7 +24,7 @@
 	<?php if (is_archive() || is_search()) : // Only display excerpts for archives and search ?>
 			<?php the_excerpt(); ?>
 	<?php else : ?>
-			<?php the_content('Continue&hellip;'); ?>
+			<?php the_content(); ?>
 	<?php endif; ?>
 			</div>
 			<footer>

@@ -21,11 +21,7 @@
 				<?php } ?>
 			</header>
 			<div class="entry-content">
-	<?php if (is_archive() || is_search()) : // Only display excerpts for archives and search ?>
-			<?php the_excerpt(); ?>
-	<?php else : ?>
-			<?php the_content('Continue&hellip;'); ?>
-	<?php endif; ?>
+				<?php the_excerpt(); ?>
 			</div>
 			<footer>
 				<?php $tag = get_the_tags(); if (!$tag) { } else { ?><p><?php the_tags(); ?></p><?php } ?>

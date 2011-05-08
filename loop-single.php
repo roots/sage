@@ -15,7 +15,7 @@
 			<?php } ?>
 		</header>
 		<div class="entry-content">
-			<?php the_content('<p>'.__('Read the rest of this entry &raquo;', 'roots').'</p>'); ?>
+			<?php the_content(); ?>
 		</div>
 		<footer>
 			<?php wp_link_pages(array('before' => '<nav id="page-nav"><p>' . __('Pages:', 'roots'), 'after' => '</p></nav>' )); ?>
