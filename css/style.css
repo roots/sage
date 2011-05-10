@@ -4,8 +4,8 @@
 html { overflow-y: scroll; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%; }
 body { background: #fff; font-family: sans-serif; }
 
-a { color: #06c; -webkit-tap-highlight-color: #06c; }
-a:hover, a:focus { color:#09f; }
+a { color: #06c; }
+a:hover, a:focus { color: #09f; }
 a:hover, a:active { outline: none; }
 a:active, input.button:active { outline: 0; position: relative; top: 1px; }
 
@@ -25,9 +25,9 @@ img.right, p img.right, .alignright { margin: 0 0 1.5em 1.5em; float: right; }
 .visuallyhidden.focusable:focus { clip: auto; height: auto; margin: 0; overflow: visible; position: static; width: auto; }
 .invisible { visibility: hidden; }
 
-::-moz-selection { text-shadow: none; background: #3399FF; color: #fff; }
-::selection { text-shadow: none; background: #3399FF; color: #fff; }
-a:link { -webkit-tap-highlight-color: #3399FF; }
+::-moz-selection { text-shadow: none; background: #3399ff; color: #fff; }
+::selection { text-shadow: none; background: #3399ff; color: #fff; }
+a:link { -webkit-tap-highlight-color: #3399ff; }
 
 .button, #post-nav a, #comments-nav a {
 	display: inline-block;
@@ -106,7 +106,7 @@ input::-moz-focus-inner, button::-moz-focus-inner { border: 0; padding: 0; }
 #nav-main ul li.current-menu-parent > a, 
 #nav-main ul li.current-menu-ancestor > a, 
 #nav-main ul li:hover > a { 
-	color: #73C8FF; 
+	color: #73c8ff; 
 }
 
 #nav-main ul ul { 
@@ -115,7 +115,7 @@ input::-moz-focus-inner, button::-moz-focus-inner { border: 0; padding: 0; }
 	top: 100%;
 	left: 0;
 	width: 200px; 
-	background: #73C8FF; 
+	background: #73c8ff; 
 	padding: 0; 
 	-moz-border-radius: 0; 
 	-webkit-border-radius: 0; 
