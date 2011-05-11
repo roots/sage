@@ -2,6 +2,15 @@
 
 ## Changelog:
 
+### 3.2.3: May 10th, 2011
+<ul>
+	<li>Bugfixes</li>
+	<li>Added <code>language_attributes()</code> to <code>&lt;html&gt;</code></li>
+	<li>Matching latest changes to HTML5 Boilerplate and Blueprint CSS</li>
+	<li>Updated jQuery to 1.6</li>
+</ul>
+
+
 ### 3.2.2: April 24th, 2011
 <ul>
 	<li>Bugfixes</li>

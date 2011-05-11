@@ -63,11 +63,11 @@ function roots_nice_search_redirect() {
 add_action('template_redirect', 'roots_nice_search_redirect');
 
 function roots_search_query($escaped = true) {
-  $query = apply_filters('roots_search_query', get_query_var('s'));
-  if ($escaped) {
-    $query = esc_attr( $query );
-  }
-  return urldecode($query);
+	$query = apply_filters('roots_search_query', get_query_var('s'));
+	if ($escaped) {
+    	$query = esc_attr( $query );
+	}
+  	return urldecode($query);
 }
 
 add_filter('get_search_query', 'roots_search_query');
@@ -79,7 +79,6 @@ function roots_root_relative_url($input) {
 	preg_match('/(https?:\/\/[^\/]+)/', $input, $matches);
 	return str_replace(end($matches), '', $input);
 }
-
 
 add_filter('bloginfo_url', 'roots_root_relative_url');
 add_filter('theme_root_uri', 'roots_root_relative_url');
@@ -100,7 +99,7 @@ add_filter('day_link', 'roots_root_relative_url');
 add_filter('year_link', 'roots_root_relative_url');
 add_filter('tag_link', 'roots_root_relative_url');
 
-//Leaving plugins_url alone to avoid potential issues (such as Gravity Forms)
+// Leaving plugins_url alone in admin to avoid potential issues (such as Gravity Forms)
 if (!is_admin()) {
   add_filter('plugins_url', 'roots_root_relative_url');
 }
