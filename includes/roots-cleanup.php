@@ -56,11 +56,21 @@ if ((!defined('WP_ALLOW_MULTISITE') || (defined('WP_ALLOW_MULTISITE') && WP_ALLO
 // http://txfx.net/wordpress-plugins/nice-search/
 function roots_nice_search_redirect() {
 	if (is_search() && strpos($_SERVER['REQUEST_URI'], '/wp-admin/') === false && strpos($_SERVER['REQUEST_URI'], '/search/') === false) {
-		wp_redirect(home_url('/search/' . str_replace( array(' ', '%20'), array('+', '+'), get_query_var( 's' ))));
-		exit();
+		wp_redirect(home_url('/search/' . str_replace(array(' ', '%20'), array('+', '+'), urlencode(get_query_var( 's' )))), 301);
+    exit();
 	}
 }
 add_action('template_redirect', 'roots_nice_search_redirect');
+
+function roots_search_query($escaped = true) {
+  $query = apply_filters('roots_search_query', get_query_var('s'));
+  if ($escaped) {
+    $query = esc_attr( $query );
+  }
+  return urldecode($query);
+}
+
+add_filter('get_search_query', 'roots_search_query');
 
 // root relative URLs for everything
 // inspired by http://www.456bereastreet.com/archive/201010/how_to_make_wordpress_urls_root_relative/
@@ -85,12 +95,15 @@ add_filter('the_content_more_link', 'roots_root_relative_url');
 add_filter('the_tags', 'roots_root_relative_url');
 add_filter('get_pagenum_link', 'roots_root_relative_url');
 add_filter('get_comment_link', 'roots_root_relative_url');
-add_filter('plugins_url', 'roots_root_relative_url');
 add_filter('month_link', 'roots_root_relative_url');
 add_filter('day_link', 'roots_root_relative_url');
 add_filter('year_link', 'roots_root_relative_url');
 add_filter('tag_link', 'roots_root_relative_url');
 
+//Leaving plugins_url alone to avoid potential issues (such as Gravity Forms)
+if (!is_admin()) {
+  add_filter('plugins_url', 'roots_root_relative_url');
+}
 
 // remove root relative URLs on any attachments in the feed
 function roots_relative_feed_urls() {
