@@ -53,8 +53,8 @@ if (is_admin() && 'themes.php' === $pagenow && isset( $_GET['activated'])) {
 	
 	// automatically create menus and set their locations
 	// add all pages to the Primary Navigation
-	$primary_nav_id = wp_create_nav_menu('Primary Navigation', array('slug' => 'primary_navigation'));
-	$utility_nav_id = wp_create_nav_menu('Utility Navigation', array('slug' => 'utility_navigation'));
+	$primary_nav_id = wp_create_nav_menu('Roots Primary Navigation', array('slug' => 'roots_primary_navigation'));
+	$utility_nav_id = wp_create_nav_menu('Roots Utility Navigation', array('slug' => 'roots_utility_navigation'));
 	set_theme_mod('nav_menu_locations', array(
 		'primary_navigation' => $primary_nav_id, 
 		'utility_navigation' => $utility_nav_id
