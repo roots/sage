@@ -16,8 +16,8 @@
 
 	<script src="<?php echo get_template_directory_uri(); ?>/js/libs/modernizr-1.7.min.js"></script>
 	<script src="<?php echo get_template_directory_uri(); ?>/js/libs/respond.min.js"></script>
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
-	<script>window.jQuery || document.write("<script src='<?php echo get_template_directory_uri(); ?>/js/libs/jquery-1.6.min.js'>\x3C/script>")</script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="<?php echo get_template_directory_uri(); ?>/js/libs/jquery-1.6.1.min.js">\x3C/script>')</script>
 
 	<?php wp_head(); ?>
 <?php if (get_option('roots_css_framework') === '1140') { ?>
@@ -26,10 +26,10 @@
 	<script src="<?php echo get_template_directory_uri(); ?>/js/scripts.js"></script>
 <?php if (get_option('roots_google_analytics') !== "") { ?>
 	<script>
-		var _gaq=[["_setAccount","<?php echo get_option('roots_google_analytics') ?>"],["_trackPageview"],["_trackPageLoadTime"]];
+		var _gaq=[['_setAccount','<?php echo get_option('roots_google_analytics') ?>'],['_trackPageview'],['_trackPageLoadTime']];
 		(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
-		g.src=("https:"==location.protocol?"//ssl":"//www")+".google-analytics.com/ga.js";
-		s.parentNode.insertBefore(g,s)}(document,"script"));
+		g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+		s.parentNode.insertBefore(g,s)}(document,'script'));
 	</script>
 <?php } ?>
 </head>
