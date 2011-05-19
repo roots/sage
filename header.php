@@ -41,7 +41,7 @@
 		<header id="banner" class="<?php echo roots_container_class; ?>" role="banner">
 			<div class="container">
 				<a id="logo" href="<?php echo home_url(); ?>/"><img src="<?php echo get_template_directory_uri(); ?>/img/logo.png" width="300" height="75" alt="<?php bloginfo('name'); ?>"></a>
-				<nav id="nav-main" class="<?php echo roots_container_class; ?>" role="navigation">
+				<nav id="nav-main" role="navigation">
 					<?php wp_nav_menu(array('theme_location' => 'primary_navigation')); ?>
 				</nav>
 				<nav id="nav-utility">
