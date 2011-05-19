@@ -53,12 +53,16 @@ if (is_admin() && 'themes.php' === $pagenow && isset( $_GET['activated'])) {
 	
 	// automatically create menus and set their locations
 	// add all pages to the Primary Navigation
-	$primary_nav_id = wp_create_nav_menu('Primary Navigation', array('slug' => 'primary_navigation'));
-	$utility_nav_id = wp_create_nav_menu('Utility Navigation', array('slug' => 'utility_navigation'));
-	set_theme_mod('nav_menu_locations', array(
-		'primary_navigation' => $primary_nav_id, 
-		'utility_navigation' => $utility_nav_id
-	));	
+	$roots_nav_theme_mod = false;
+	if (!has_nav_menu('primary_navigation')) {
+		$primary_nav_id = wp_create_nav_menu('Primary Navigation', array('slug' => 'primary_navigation'));
+		$roots_nav_theme_mod['primary_navigation'] = $primary_nav_id;
+	}	
+	if (!has_nav_menu('utility_navigation')) {
+		$utility_nav_id = wp_create_nav_menu('Utility Navigation', array('slug' => 'utility_navigation'));
+		$roots_nav_theme_mod['utility_navigation'] = $utility_nav_id;
+	}
+	if ($roots_nav_theme_mod) { set_theme_mod('nav_menu_locations', $roots_nav_theme_mod ); }
 	
 	$primary_nav = wp_get_nav_menu_object('Primary Navigation');
 	$primary_nav_term_id = (int) $primary_nav->term_id;	
