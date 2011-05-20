@@ -2,6 +2,13 @@
 
 ## Changelog:
 
+### 3.2.4: May 19th, 2011
+<ul>
+	<li>Bugfixes</li>
+	<li>Matching latest changes to HTML5 Boilerplate and Blueprint CSS</li>
+	<li>Updated jQuery to 1.6.1</li>
+</ul>
+
 ### 3.2.3: May 10th, 2011
 <ul>
 	<li>Bugfixes</li>
@@ -9,7 +16,6 @@
 	<li>Matching latest changes to HTML5 Boilerplate and Blueprint CSS</li>
 	<li>Updated jQuery to 1.6</li>
 </ul>
-
 
 ### 3.2.2: April 24th, 2011
 <ul>
@@ -134,7 +140,7 @@
 
 ## Contributors:
 
-[Scott Walkinshaw](http://www.scottwalkinshaw.com/), [Matthew Price](http://www.matthewaprice.com/), [Kyle Geminden](http://www.kylegeminden.com/), [Steve Jothen](http://twitter.com/sjothen), [John Liuti](http://twitter.com/JohnLiuti), [Jeremiah Wall](http://jeremiahwall.com/), [Jenny Jui-Shan Liang](http://jsliang.twgogo.org/)
+[Scott Walkinshaw](http://www.scottwalkinshaw.com/), [Matthew Price](http://www.matthewaprice.com/), [Kyle Geminden](http://www.kylegeminden.com/), [Steve Jothen](http://twitter.com/sjothen), [John Liuti](http://twitter.com/JohnLiuti), [Jeremiah Wall](http://jeremiahwall.com/), [Jenny Jui-Shan Liang](http://jsliang.twgogo.org/), [Mason Stewart](http://masondesu.com/)
 
 ## License:
 
