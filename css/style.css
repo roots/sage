@@ -19,6 +19,7 @@ img.right, p img.right, .alignright { margin: 0 0 1.5em 1.5em; float: right; }
 .wp-caption { border: 1px solid #ddd; text-align: center; background: #eee; padding: 14px 10px 6px 10px; margin: 15px 10px; }
 .wp-caption-text { margin: 0; }
 .ir { display: block; text-indent: -999em; overflow: hidden; background-repeat: no-repeat; text-align: left; direction: ltr; }
+.ir br { display: none; }
 .hidden { display: none; visibility: hidden; }
 .visuallyhidden { border: 0; clip: rect(0 0 0 0); height: 1px; margin: -1px; overflow: hidden; padding: 0; position: absolute; width: 1px; }
 .visuallyhidden.focusable:active,
@@ -400,10 +401,10 @@ img.ui-datepicker-trigger { vertical-align: middle; }
 
 /* INTERNET EXPLORER
 --------------------------------------------------------------------------------------------------------------------------------------------------- */
-.ie7 #nav-main ul li { zoom: 1; }
+.oldie #nav-main ul li { *zoom: 1; }
 
 /* Clearfixes */
-.ie7 #commentform, .ie7 #post-nav, .ie7 #comments-nav { display: inline-block; }
+.oldie #commentform, .oldie #post-nav, .oldie #comments-nav { display: *inline-block; }
 
 
 /* MEDIA QUERIES
