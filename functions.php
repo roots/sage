@@ -3,12 +3,12 @@
 // get active theme directory name (lets you rename roots)
 $theme_name = next(explode('/themes/', get_template_directory()));
 
-include_once('includes/roots-activation.php');	// activation
-include_once('includes/roots-admin.php');		// admin additions/mods
-include_once('includes/roots-options.php');		// theme options menu
-include_once('includes/roots-ob.php');			// output buffer
-include_once('includes/roots-cleanup.php');		// code cleanup/removal
-include_once('includes/roots-htaccess.php');	// h5bp htaccess
+include_once('inc/roots-activation.php');	// activation
+include_once('inc/roots-admin.php');		// admin additions/mods
+include_once('inc/roots-options.php');		// theme options menu
+include_once('inc/roots-ob.php');			// output buffer
+include_once('inc/roots-cleanup.php');		// code cleanup/removal
+include_once('inc/roots-htaccess.php');	// h5bp htaccess
 
 // set the value of the main container class depending on the selected grid framework
 $roots_css_framework = get_option('roots_css_framework');
