@@ -1,8 +1,6 @@
-	<?php if (get_option('roots_css_framework') === '1140') { ?>
-		</div><!-- /.row -->
-		<div class="row">
-	<?php } ?>		
+	<?php roots_footer_before(); ?>
 		<footer id="content-info" class="<?php echo roots_container_class; ?>" role="contentinfo">
+			<?php roots_footer_inside(); ?>
 			<div class="container">
 				<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar("Footer") ) : ?>
 				<?php endif; ?>
@@ -29,10 +27,9 @@
 				<?php } ?>
 			</div>	
 		</footer>
-	<?php if (get_option('roots_css_framework') === '1140') { ?>
-		</div><!-- /.row -->
-	<?php } ?>		
+		<?php roots_footer_after(); ?>	
 	</div><!-- /#wrap -->
 <?php wp_footer(); ?>
+<?php roots_footer(); ?>
 </body>
 </html>

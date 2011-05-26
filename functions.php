@@ -9,6 +9,8 @@ include_once('inc/roots-options.php');		// theme options menu
 include_once('inc/roots-ob.php');			// output buffer
 include_once('inc/roots-cleanup.php');		// code cleanup/removal
 include_once('inc/roots-htaccess.php');		// h5bp htaccess
+include_once('inc/roots-hooks.php');		// hooks
+include_once('inc/roots-actions.php');		// actions
 include_once('inc/roots-custom.php');		// custom functions
 
 // set the value of the main container class depending on the selected grid framework
