@@ -21,9 +21,7 @@
 
 	<?php wp_head(); ?>
 	<?php roots_head(); ?>
-<?php if (get_option('roots_css_framework') === '1140') { ?>
-	<script src="<?php echo get_template_directory_uri(); ?>/js/css3-mediaqueries.js"></script>
-<?php } ?>	
+
 	<script src="<?php echo get_template_directory_uri(); ?>/js/scripts.js"></script>
 <?php if (get_option('roots_google_analytics') !== "") { ?>
 	<script>
