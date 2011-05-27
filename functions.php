@@ -6,7 +6,6 @@ $theme_name = next(explode('/themes/', get_template_directory()));
 include_once('inc/roots-activation.php');	// activation
 include_once('inc/roots-admin.php');		// admin additions/mods
 include_once('inc/roots-options.php');		// theme options menu
-include_once('inc/roots-ob.php');			// output buffer
 include_once('inc/roots-cleanup.php');		// code cleanup/removal
 include_once('inc/roots-htaccess.php');		// h5bp htaccess
 include_once('inc/roots-hooks.php');		// hooks
