@@ -1,7 +1,8 @@
 <?php  
 
 function roots_get_home_path() {
-	$home = trailingslashit(get_option( 'home' ));
+        if (isset($_GET['lang'])) $home = str_replace($_GET['lang'].'/','',trailingslashit(get_option('home')));
+        else $home = trailingslashit(get_option('home'));
 	$siteurl = trailingslashit(get_option( 'siteurl' ));
 	if ( $home != '' && $home != $siteurl ) {
 	        $wp_path_rel_to_home = str_replace($home, '', $siteurl); /* $siteurl - $home */
