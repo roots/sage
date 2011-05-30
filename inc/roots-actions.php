@@ -5,6 +5,7 @@ add_action('roots_header_before', 'roots_1140_header_before');
 add_action('roots_header_after', 'roots_1140_header_after');
 add_action('roots_footer_before', 'roots_1140_footer_before');
 add_action('roots_footer_after', 'roots_1140_footer_after');
+add_action('roots_post_inside_before', 'roots_page_breadcrumb');
 
 function roots_1140_head() {
 	$options = roots_get_theme_options();
@@ -47,6 +48,16 @@ function roots_1140_footer_after() {
 	if ($roots_css_framework === '1140') {
 		echo "</div><!-- /.row -->";
 	}	
+}
+
+function roots_page_breadcrumb() {
+	global $post;
+	if (function_exists('yoast_breadcrumb')) { 
+		if (is_page() && $post->post_parent) { 
+			yoast_breadcrumb('<p id="breadcrumbs">','</p>'); 
+		} 
+	}
+	wp_reset_postdata();
 }
 
 ?>
