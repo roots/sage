@@ -1,8 +1,5 @@
 <?php
 
-// get active theme directory name (lets you rename roots)
-$theme_name = next(explode('/themes/', get_template_directory()));
-
 include_once('inc/roots-activation.php');	// activation
 include_once('inc/roots-admin.php');		// admin additions/mods
 include_once('inc/roots-options.php');		// theme options menu
@@ -12,28 +9,20 @@ include_once('inc/roots-hooks.php');		// hooks
 include_once('inc/roots-actions.php');		// actions
 include_once('inc/roots-custom.php');		// custom functions
 
+// get active theme directory name
+// this allows you to rename the theme directory without breaking anything
+$theme_name = next(explode('/themes/', get_template_directory()));
+
 // set the value of the main container class depending on the selected grid framework
 $roots_css_framework = get_option('roots_css_framework');
 if (!defined('roots_container_class')) {
 	switch ($roots_css_framework) {
-		case 'blueprint':
-			define('roots_container_class', 'span-24');
-      break;
-		case '960gs_12':
-			define('roots_container_class', 'container_12');
-      break;
-		case '960gs_16':
-			define('roots_container_class', 'container_16');
-      break;
-		case '960gs_24':
-			define('roots_container_class', 'container_24');
-      break;
-		case '1140':
-			define('roots_container_class', 'container');
-      break;
-		default:
-			define('roots_container_class', '');
-      break;
+		case 'blueprint':	define('roots_container_class', 'span-24');			break;
+		case '960gs_12':	define('roots_container_class', 'container_12');	break;
+		case '960gs_16':	define('roots_container_class', 'container_16');    break;
+		case '960gs_24':	define('roots_container_class', 'container_24');    break;
+		case '1140':		define('roots_container_class', 'container');       break;
+		default:			define('roots_container_class', '');				break;
 	}
 }
 
@@ -74,26 +63,15 @@ function get_roots_stylesheets() {
 // set the maximum 'Large' image width to the maximum grid width
 if (!isset($content_width)) {
 	switch ($roots_css_framework) {
-    case 'blueprint':
-		  $content_width = 950;
-	break;
-    case '960gs_12':
-		  $content_width = 940;
-	break;
-    case '960gs_16':
-		  $content_width = 940;
-	break;
-    case '960gs_24':
-		  $content_width = 940;
-	break;
-    case '1140':
-		  $content_width = 1140;
-	break;
-    default:
-		  $content_width = 950;
-	break;
-  }
+	    case 'blueprint':	$content_width = 950;	break;
+	    case '960gs_12':	$content_width = 940;	break;
+	    case '960gs_16':	$content_width = 940;	break;
+	    case '960gs_24':	$content_width = 940;	break;
+	    case '1140':		$content_width = 1140;	break;
+	    default:			$content_width = 950;	break;
+	}
 }
+
 // tell the TinyMCE editor to use editor-style.css
 // if you have issues with getting the editor to show your changes then use the following line:
 // add_editor_style('editor-style.css?' . time());
@@ -113,7 +91,7 @@ register_nav_menus(
 );
 
 // remove container from menus
-function roots_nav_menu_args($args = ''){
+function roots_nav_menu_args($args = '') {
 	$args['container'] = false;
 	return $args;
 }
