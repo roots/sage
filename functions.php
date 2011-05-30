@@ -7,6 +7,7 @@ locate_template(array('inc/roots-cleanup.php'), true, true);	// code cleanup/rem
 locate_template(array('inc/roots-htaccess.php'), true, true);	// h5bp htaccess
 locate_template(array('inc/roots-hooks.php'), true, true);		// hooks
 locate_template(array('inc/roots-actions.php'), true, true);	// actions
+locate_template(array('inc/roots-widgets.php'), true, true);	// widgets
 locate_template(array('inc/roots-custom.php'), true, true);		// custom functions
 
 // get active theme directory name
