@@ -1,24 +1,12 @@
 <?php  
 
-function roots_get_home_path() {
-	$home = trailingslashit(get_option( 'home' ));
-	$siteurl = trailingslashit(get_option( 'siteurl' ));
-	if ( $home != '' && $home != $siteurl ) {
-	        $wp_path_rel_to_home = str_replace($home, '', $siteurl); /* $siteurl - $home */
-	        $pos = strpos($_SERVER["SCRIPT_FILENAME"], $wp_path_rel_to_home);
-	        $home_path = substr($_SERVER["SCRIPT_FILENAME"], 0, $pos);
-		$home_path = trailingslashit( $home_path );
-	} else {
-		$home_path = ABSPATH;
-	}
-	return $home_path;
+function roots_htaccess_writable() {
+	if (!is_writable(get_home_path() . '.htaccess')) {
+		add_action('admin_notices', create_function('', "echo '<div class=\"error\"><p>" . sprintf(__('Please make sure your <a href="%s">.htaccess</a> file is writeable ', 'roots'), admin_url('options-permalink.php')) . "</p></div>';"));
+	};
 }
 
-$home_path = roots_get_home_path();
-
-if (!is_writable($home_path . '.htaccess')) {
-	add_action('admin_notices', create_function('', "echo '<div class=\"error\"><p>" . sprintf(__('Please make sure your <a href="%s">htaccess</a> file is writeable ', 'roots'), admin_url('options-permalink.php')) . "</p></div>';"));
-};
+add_action('admin_init', 'roots_htaccess_writable');
 
 // thanks to Scott Walkinshaw (scottwalkinshaw.com)
 
