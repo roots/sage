@@ -123,7 +123,7 @@ function theme_options_render_page() {
 				<tr valign="top"><th scope="row"><?php _e('#main CSS Classes', 'roots'); ?></th>
 					<td>
 						<fieldset><legend class="screen-reader-text"><span><?php _e('#main CSS Classes', 'roots'); ?></span></legend>
-							<input type="text" name="roots_theme_options[css_main_class]" id="css_main_class" value="<?php echo esc_attr($options['css_main_class']); ?>" />
+							<input type="text" name="roots_theme_options[css_main_class]" id="css_main_class" value="<?php echo esc_attr($options['css_main_class']); ?>" class="regular-text" />
 							<br />
 							<small class="description"><?php printf( __('Default: %s', 'roots'), $default_options['css_main_class']); ?></small>
 						</fieldset>
@@ -133,7 +133,7 @@ function theme_options_render_page() {
 				<tr valign="top"><th scope="row"><?php _e('#sidebar CSS Classes', 'roots'); ?></th>
 					<td>
 						<fieldset><legend class="screen-reader-text"><span><?php _e('#sidebar CSS Classes', 'roots'); ?></span></legend>
-							<input type="text" name="roots_theme_options[css_sidebar_class]" id="css_sidebar_class" value="<?php echo esc_attr($options['css_sidebar_class']); ?>" />
+							<input type="text" name="roots_theme_options[css_sidebar_class]" id="css_sidebar_class" value="<?php echo esc_attr($options['css_sidebar_class']); ?>" class="regular-text" />
 							<br />
 							<small class="description"><?php printf( __('Default: %s', 'roots'), $default_options['css_sidebar_class']); ?></small>
 						</fieldset>
@@ -145,7 +145,7 @@ function theme_options_render_page() {
 						<fieldset><legend class="screen-reader-text"><span><?php _e('Google Analytics ID', 'roots'); ?></span></legend>
 							<input type="text" name="roots_theme_options[google_analytics_id]" id="google_analytics_id" value="<?php echo esc_attr($options['google_analytics_id']); ?>" />
 							<br />
-							<small class="description"><?php printf( __('Enter your UA-XXXXX-X ID', 'roots')); ?></small>
+							<small class="description"><?php printf(__('Enter your UA-XXXXX-X ID', 'roots')); ?></small>
 						</fieldset>
 					</td>
 				</tr>							
@@ -173,12 +173,6 @@ function roots_theme_options_validate($input) {
 		
 	if (isset($input['google_analytics_id']))
 		$output['google_analytics_id'] = $input['google_analytics_id'];			
-
-	// Link color must be 3 or 6 hexadecimal characters
-//	if ( isset( $input['link_color'] ) && preg_match( '/^#?([a-f0-9]{3}){1,2}$/i', $input['link_color'] ) )
-//		$output['link_color'] = '#' . strtolower( ltrim( $input['link_color'], '#' ) );
-
-
 
 	return apply_filters('roots_theme_options_validate', $output, $input, $defaults);
 }
