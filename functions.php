@@ -1,13 +1,13 @@
 <?php
 
-include_once('inc/roots-activation.php');	// activation
-include_once('inc/roots-admin.php');		// admin additions/mods
-include_once('inc/roots-options.php');		// theme options menu
-include_once('inc/roots-cleanup.php');		// code cleanup/removal
-include_once('inc/roots-htaccess.php');		// h5bp htaccess
-include_once('inc/roots-hooks.php');		// hooks
-include_once('inc/roots-actions.php');		// actions
-include_once('inc/roots-custom.php');		// custom functions
+locate_template(array('inc/roots-activation.php'), true, true);	// activation
+locate_template(array('inc/roots-admin.php'), true, true);		// admin additions/mods
+locate_template(array('inc/roots-options.php'), true, true);	// theme options menu
+locate_template(array('inc/roots-cleanup.php'), true, true);	// code cleanup/removal
+locate_template(array('inc/roots-htaccess.php'), true, true);	// h5bp htaccess
+locate_template(array('inc/roots-hooks.php'), true, true);		// hooks
+locate_template(array('inc/roots-actions.php'), true, true);	// actions
+locate_template(array('inc/roots-custom.php'), true, true);		// custom functions
 
 // get active theme directory name
 // this allows you to rename the theme directory without breaking anything
