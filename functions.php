@@ -14,7 +14,8 @@ include_once('inc/roots-custom.php');		// custom functions
 $theme_name = next(explode('/themes/', get_template_directory()));
 
 // set the value of the main container class depending on the selected grid framework
-$roots_css_framework = get_option('roots_css_framework');
+$options = roots_get_theme_options();
+$roots_css_framework = $options['css_grid_framework'];
 if (!defined('roots_container_class')) {
 	switch ($roots_css_framework) {
 		case 'blueprint':	define('roots_container_class', 'span-24');			break;
@@ -27,7 +28,9 @@ if (!defined('roots_container_class')) {
 }
 
 function get_roots_stylesheets() {
-	$roots_css_framework = get_option('roots_css_framework');
+	$options = roots_get_theme_options();
+	$roots_css_framework = $options['css_grid_framework'];
+	
 	$template_uri = get_template_directory_uri();
 	$styles = '';
 

@@ -1,145 +1,186 @@
-<?php 
+<?php
 
-// create custom plugin settings menu
-add_action('admin_menu', 'roots_create_menu');
-
-function roots_create_menu() {
+function roots_admin_enqueue_scripts($hook_suffix) {
+	if ($hook_suffix != 'appearance_page_theme_options')
+		return;
+		
 	$home_url = home_url();
 	$theme_name = next(explode('/themes/', get_template_directory()));
-	$icon = "$home_url/wp-content/themes/$theme_name/inc/img/icon-roots.png";
-
-	// create menu
-	$theme_name = get_current_theme();
-	add_object_page($theme_name . ' Settings', $theme_name, 'administrator', 'roots', 'roots_settings_page', $icon);
 	
-	// call register settings function
-	add_action('admin_init', 'roots_register_settings');
+	wp_enqueue_style('roots-theme-options', "$home_url/wp-content/themes/$theme_name/inc/css/theme-options.css");
+	wp_enqueue_script('roots-theme-options', "$home_url/wp-content/themes/$theme_name/inc/js/theme-options.js");
+}
+add_action('admin_enqueue_scripts', 'roots_admin_enqueue_scripts');
 
-	// add js
-	wp_enqueue_script('jquery-ui-tabs');
+function roots_theme_options_init() {
 
-	// add css
-	add_action('admin_print_styles-toplevel_page_roots', 'roots_admin_styles');
+	if (false === roots_get_theme_options())
+		add_option('roots_theme_options', roots_get_default_theme_options());
+
+	register_setting(
+		'roots_options',
+		'roots_theme_options',
+		'roots_theme_options_validate'
+	);
+}
+add_action('admin_init', 'roots_theme_options_init');
+
+function roots_option_page_capability($capability) {
+	return 'edit_theme_options';
+}
+add_filter('option_page_capability_roots_options', 'roots_option_page_capability');
+
+function roots_theme_options_add_page() {
+	add_theme_page(
+		__('Theme Options', 'roots'),
+		__('Theme Options', 'roots'),
+		'edit_theme_options',
+		'theme_options',
+		'theme_options_render_page'
+	);
+}
+add_action('admin_menu', 'roots_theme_options_add_page');
+
+function roots_grid_framework() {
+	$grid_options = array(
+		'blueprint' => array(
+			'value' => 'blueprint',
+			'label' => __('Blueprint CSS', 'roots'),
+		),
+		'960gs_12' => array(
+			'value' => '960gs_12',
+			'label' => __('960gs (12 cols)', 'roots'),
+		),
+		'960gs_16' => array(
+			'value' => '960gs_16',
+			'label' => __('960gs (16 cols)', 'roots'),
+		),
+		'960gs_24' => array(
+			'value' => '960gs_24',
+			'label' => __('960gs (24 cols)', 'roots'),
+		),				
+		'1140' => array(
+			'value' => '1140',
+			'label' => __('1140', 'roots'),
+		),
+	);
+
+	return apply_filters('roots_grid_framework', $grid_options);
 }
 
-function roots_admin_styles() {
-	$home_url = home_url();
-	$theme_name = next(explode('/themes/', get_template_directory()));
+function roots_get_default_theme_options() {
+	$default_theme_options = array(
+		'css_grid_framework'	=> 'blueprint',
+		'css_main_class'		=> 'span-14 append-1',
+		'css_sidebar_class'		=> 'span-8 prepend-1 last',
+		'google_analytics_id'	=> ''
+	);
 
-	wp_register_style('roots_options_css', "$home_url/wp-content/themes/$theme_name/inc/css/options.css");
-	wp_enqueue_style('roots_options_css');
-	
-	wp_register_script('roots_options_js', "$home_url/wp-content/themes/$theme_name/inc/js/options.js");
-	wp_enqueue_script('roots_options_js');	
-
-	wp_register_style('jquery-ui-css', "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/themes/smoothness/jquery-ui.css");
-	wp_enqueue_style('jquery-ui-css');
+	return apply_filters('roots_default_theme_options', $default_theme_options);
 }
 
-function roots_register_settings() {
-	// register our settings
-	register_setting('roots-settings-group', 'roots_css_framework');	
-	register_setting('roots-settings-group', 'roots_main_class');
-	register_setting('roots-settings-group', 'roots_sidebar_class');
-	register_setting('roots-settings-group', 'roots_google_analytics');
-	register_setting('roots-settings-group', 'roots_post_author');
-	register_setting('roots-settings-group', 'roots_post_tweet');
-	register_setting('roots-settings-group', 'roots_footer_social_share');
-	register_setting('roots-settings-group', 'roots_vcard_street-address');
-	register_setting('roots-settings-group', 'roots_vcard_locality');
-	register_setting('roots-settings-group', 'roots_vcard_region');
-	register_setting('roots-settings-group', 'roots_vcard_postal-code');
-	register_setting('roots-settings-group', 'roots_vcard_tel');
-	register_setting('roots-settings-group', 'roots_vcard_email');
-	register_setting('roots-settings-group', 'roots_footer_vcard');
-	
-	// add default settings
-	add_option('roots_css_framework', 'blueprint');
-	add_option('roots_main_class', 'span-14 append-1');
-	add_option('roots_sidebar_class', 'span-8 prepend-1 last');	
-	add_option('roots_google_analytics', '');	
+function roots_get_theme_options() {
+	return get_option('roots_theme_options');
 }
 
-function roots_settings_page() { ?>
+function theme_options_render_page() {
+	?>
+	<div class="wrap">
+		<?php screen_icon(); ?>
+		<h2><?php printf(__('%s Theme Options', 'roots'), get_current_theme()); ?></h2>
+		<?php settings_errors(); ?>
 
-<div class="wrap">
-	<div id="icon-options-general" class="icon32"></div>
-  <h2><?php echo get_current_theme(); ?> Settings</h2>
+		<form method="post" action="options.php">
+			<?php
+				settings_fields('roots_options');
+				$options = roots_get_theme_options();
+				$default_options = roots_get_default_theme_options();
+			?>
+
+			<table class="form-table">
+
+				<tr valign="top" class="radio-option"><th scope="row"><?php _e('CSS Grid Framework', 'roots'); ?></th>
+					<td>
+						<fieldset><legend class="screen-reader-text"><span><?php _e('CSS Grid Framework', 'roots'); ?></span></legend>
+						<?php
+							foreach (roots_grid_framework() as $grid_framework) {
+								?>
+								<div class="layout">
+								<label class="description">
+									<input type="radio" name="roots_theme_options[css_grid_framework]" value="<?php echo esc_attr($grid_framework['value']); ?>" <?php checked($options['css_grid_framework'], $grid_framework['value']); ?> />
+									<span>
+										<?php echo $grid_framework['label']; ?>
+									</span>
+								</label>
+								</div>
+								<?php
+							}
+						?>
+						</fieldset>
+					</td>
+				</tr>
+
+				<tr valign="top"><th scope="row"><?php _e('#main CSS Classes', 'roots'); ?></th>
+					<td>
+						<fieldset><legend class="screen-reader-text"><span><?php _e('#main CSS Classes', 'roots'); ?></span></legend>
+							<input type="text" name="roots_theme_options[css_main_class]" id="css_main_class" value="<?php echo esc_attr($options['css_main_class']); ?>" />
+							<br />
+							<small class="description"><?php printf( __('Default: %s', 'roots'), $default_options['css_main_class']); ?></small>
+						</fieldset>
+					</td>
+				</tr>
+				
+				<tr valign="top"><th scope="row"><?php _e('#sidebar CSS Classes', 'roots'); ?></th>
+					<td>
+						<fieldset><legend class="screen-reader-text"><span><?php _e('#sidebar CSS Classes', 'roots'); ?></span></legend>
+							<input type="text" name="roots_theme_options[css_sidebar_class]" id="css_sidebar_class" value="<?php echo esc_attr($options['css_sidebar_class']); ?>" />
+							<br />
+							<small class="description"><?php printf( __('Default: %s', 'roots'), $default_options['css_sidebar_class']); ?></small>
+						</fieldset>
+					</td>
+				</tr>
+				
+				<tr valign="top"><th scope="row"><?php _e('Google Analytics ID', 'roots'); ?></th>
+					<td>
+						<fieldset><legend class="screen-reader-text"><span><?php _e('Google Analytics ID', 'roots'); ?></span></legend>
+							<input type="text" name="roots_theme_options[google_analytics_id]" id="google_analytics_id" value="<?php echo esc_attr($options['google_analytics_id']); ?>" />
+							<br />
+							<small class="description"><?php printf( __('Enter your UA-XXXXX-X ID', 'roots')); ?></small>
+						</fieldset>
+					</td>
+				</tr>							
+				
+			</table>
+
+			<?php submit_button(); ?>
+		</form>
+	</div>	
 	
-<?php if (isset($_GET['settings-updated']) && $_GET['settings-updated'] === 'true') { ?>
-	<div id="setting-error-settings_updated" class="updated settings-error"><p><strong>Settings saved.</strong></p></div>
-<?php } ?>
+	<?php
+}
+
+function roots_theme_options_validate($input) {
+	$output = $defaults = roots_get_default_theme_options();
 	
-	<form method="post" action="options.php">
-			
-		<?php settings_fields('roots-settings-group'); ?>
+	if (isset( $input['css_grid_framework']) && array_key_exists($input['css_grid_framework'], roots_grid_framework()))
+		$output['css_grid_framework'] = $input['css_grid_framework'];		
 		
-		<div id="tabs">
-			<ul>
-				<li><a href="#general">General</a></li>
-			</ul>
-			<div id="general">
-				<ul class="options clearfix">	
-					<li class="clearfix">
-						<label class="settings-label">CSS Grid Framework</label>
-						<div class="container">
-							<input id="roots_blueprint" name="roots_css_framework" type="radio" <?php echo get_option('roots_css_framework') === 'blueprint' ? 'checked' : ''; ?> value="blueprint" /> <label for="roots_blueprint">Blueprint CSS</label><br />
-							<input id="roots_960gs_12" name="roots_css_framework" type="radio" <?php echo get_option('roots_css_framework') === '960gs_12' ? 'checked' : ''; ?> value="960gs_12" /> <label for="roots_960gs_12">960gs (12 cols)</label><br />
-							<input id="roots_960gs_16" name="roots_css_framework" type="radio" <?php echo get_option('roots_css_framework') === '960gs_16' ? 'checked' : ''; ?> value="960gs_16" /> <label for="roots_960gs_16">960gs (16 cols)</label><br />
-							<input id="roots_960gs_24" name="roots_css_framework" type="radio" <?php echo get_option('roots_css_framework') === '960gs_24' ? 'checked' : ''; ?> value="960gs_24" /> <label for="roots_960gs_24">960gs (24 cols)</label><br />
-							<input id="roots_1140" name="roots_css_framework" type="radio" <?php echo get_option('roots_css_framework') === '1140' ? 'checked' : ''; ?> value="1140" /> <label for="roots_1140">1140</label>
-						</div>
-					</li>
-					<li>	
-						<label class="settings-label">Class for #main</label>
-						<input name="roots_main_class" type="text" value="<?php echo get_option('roots_main_class'); ?>" class="text" />
-						<span class="note">Enter your grid classes</span>
-					</li>
-					<li>
-						<label class="settings-label">Class for #sidebar</label>
-						<input name="roots_sidebar_class" type="text" value="<?php echo get_option('roots_sidebar_class'); ?>" class="text" />
-						<span class="note">Enter your grid classes</span>
-					</li>									
-					<li>
-						<label class="settings-label">Google Analytics Tracking ID</label>
-						<input name="roots_google_analytics" type="text" value="<?php echo get_option('roots_google_analytics'); ?>" class="text" />
-						<span class="note">Enter your UA-XXXXX-X ID</span>
-					</li>
-					<li>
-						<label class="settings-label">Display Post Author</label>
-						<input id="roots_post_author" name="roots_post_author" type="checkbox" <?php echo get_option('roots_post_author') === 'checked' ? 'checked' : ''; ?> value="checked" /> <label for="roots_post_author">Show the post author</label>
-					</li>						
-					<li>
-						<label class="settings-label">Post Tweet Button</label>
-						<input id="roots_post_tweet" name="roots_post_tweet" type="checkbox" <?php echo get_option('roots_post_tweet') === 'checked' ? 'checked' : ''; ?> value="checked" /> <label for="roots_post_tweet">Enable Tweet button on posts</label>
-					</li>						
-					<li>
-						<label class="settings-label">Footer Social Share Buttons</label>
-						<input id="roots_footer_social_share" name="roots_footer_social_share" type="checkbox" <?php echo get_option('roots_footer_social_share') === 'checked' ?  'checked' : ''; ?> value="checked" /> <label for="roots_footer_social_share">Enable official Twitter and Facebook buttons in the footer</label>
-					</li>					
-					<li>
-						<label class="settings-label">Footer vCard</label>
-						<input id="roots_footer_vcard" name="roots_footer_vcard" type="checkbox" <?php echo get_option('roots_footer_vcard') === 'checked' ?  'checked' : ''; ?> value="checked" /> <label for="roots_footer_vcard">Enable vCard in the footer</label>
-					</li>											
-					<li class="clearfix">
-						<label class="settings-label">vCard Information</label>
-						<div class="address">
-							<label for="roots_vcard_street-address">Street Address</label> <input id="roots_vcard_street-address" name="roots_vcard_street-address" type="text" value="<?php echo get_option('roots_vcard_street-address'); ?>" class="text" />
-							<label for="roots_vcard_locality">City</label> <input id="roots_vcard_locality" name="roots_vcard_locality" type="text" value="<?php echo get_option('roots_vcard_locality'); ?>" class="text" />
-							<label for="roots_vcard_region">State</label> <input id="roots_vcard_region" name="roots_vcard_region" type="text" value="<?php echo get_option('roots_vcard_region'); ?>" class="text" />
-							<label for="roots_vcard_postal-code">Zipcode</label> <input id="roots_vcard_postal-code" name="roots_vcard_postal-code" type="text" value="<?php echo get_option('roots_vcard_postal-code'); ?>" class="text" />
-							<label for="roots_vcard_tel">Telephone Number</label> <input id="roots_vcard_tel" name="roots_vcard_tel" type="text" value="<?php echo get_option('roots_vcard_tel'); ?>" class="text" />
-							<label for="roots_vcard_email">Email Address</label> <input id="roots_vcard_email" name="roots_vcard_email" type="text" value="<?php echo get_option('roots_vcard_email'); ?>" class="text" />
-						</div>
-					</li>
-				</ul>
-			</div>		
-		</div>		
+	if (isset($input['css_main_class']))
+		$output['css_main_class'] = $input['css_main_class'];
 		
-		<p class="submit">
-			<input type="submit" class="button-primary" value="Save Changes" />
-		</p>
+	if (isset($input['css_sidebar_class']))
+		$output['css_sidebar_class'] = $input['css_sidebar_class'];	
+		
+	if (isset($input['google_analytics_id']))
+		$output['google_analytics_id'] = $input['google_analytics_id'];			
 
-	</form>
-</div>
-<?php } ?>
+	// Link color must be 3 or 6 hexadecimal characters
+//	if ( isset( $input['link_color'] ) && preg_match( '/^#?([a-f0-9]{3}){1,2}$/i', $input['link_color'] ) )
+//		$output['link_color'] = '#' . strtolower( ltrim( $input['link_color'], '#' ) );
+
+
+
+	return apply_filters('roots_theme_options_validate', $output, $input, $defaults);
+}
+
+?>

@@ -23,9 +23,13 @@
 	<?php roots_head(); ?>
 
 	<script src="<?php echo get_template_directory_uri(); ?>/js/scripts.js"></script>
-<?php if (get_option('roots_google_analytics') !== "") { ?>
+	<?php
+		$options = roots_get_theme_options();
+		$google_analytics_id = $options['google_analytics_id'];
+		if ($google_analytics_id !== '') { ?>
+
 	<script>
-		var _gaq=[['_setAccount','<?php echo get_option('roots_google_analytics') ?>'],['_trackPageview'],['_trackPageLoadTime']];
+		var _gaq=[['_setAccount','<?php echo esc_attr($options['google_analytics_id']); ?>'],['_trackPageview'],['_trackPageLoadTime']];
 		(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
 		g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
 		s.parentNode.insertBefore(g,s)}(document,'script'));

@@ -14,11 +14,7 @@
 			<header>
 				<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 				<time pubdate datetime="<?php the_time('c'); ?>"><?php printf(__('Posted on %s at %s.', 'roots'), get_the_time('l, F jS, Y'), get_the_time()); ?></time>
-				<?php if (get_option('roots_post_author') == 'checked') { ?>
-				<p class="byline author vcard">
-					<?php _e('Written by', 'roots'); ?> <span class="fn"><?php the_author(); ?></span>
-				</p>
-				<?php } ?>
+				<p class="byline author vcard"><?php _e('Written by', 'roots'); ?> <span class="fn"><?php the_author(); ?></span></p>
 			</header>
 			<div class="entry-content">
 				<?php the_excerpt(); ?>

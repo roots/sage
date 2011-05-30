@@ -161,7 +161,6 @@ input::-moz-focus-inner, button::-moz-focus-inner { border: 0; padding: 0; }
 .hentry h1 { line-height: 1.2em; margin-bottom: 0.2em; }
 .hentry h2:first-child { line-height: 1.2em; margin-bottom: 0; }
 .hentry h2 a { text-decoration: none; }
-.hentry iframe.twitter-share-button { position: absolute; top: 0; right: 0; width: 110px; height: 20px; }
 .hentry time { display: block; font-size: 1.2em; position: relative; }
 .hentry p.byline { }
 
@@ -218,12 +217,6 @@ figure.gallery-item figcaption { display: none; }
 #content-info ul.menu li { display: inline; margin-right: 1em; }
 
 #content-info p.copy small { font-size: 1em; }
-
-#content-info p.social .twitter-share-button { float: left; }
-#content-info p.social .fb_iframe_widget { float: left; }
-
-#content-info p.vcard { position: absolute; top: 0; right: 0; margin: 0; text-align: right; }
-#content-info p.vcard a.fn { font-size: 14px; }
 
 
 /* WIDGETS & PLUGINS
