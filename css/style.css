@@ -394,10 +394,10 @@ img.ui-datepicker-trigger { vertical-align: middle; }
 
 /* INTERNET EXPLORER
 --------------------------------------------------------------------------------------------------------------------------------------------------- */
-.oldie #nav-main ul li { *zoom: 1; }
+.ie7 #nav-main ul li { zoom: 1; }
 
 /* Clearfixes */
-.oldie #commentform, .oldie #post-nav, .oldie #comments-nav { display: *inline-block; }
+.ie7 #commentform, .ie7 #post-nav, .ie7 #comments-nav { display: inline-block; }
 
 
 /* MEDIA QUERIES
