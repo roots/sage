@@ -19,12 +19,13 @@ $options = roots_get_theme_options();
 $roots_css_framework = $options['css_grid_framework'];
 if (!defined('roots_container_class')) {
 	switch ($roots_css_framework) {
-		case 'blueprint':	define('roots_container_class', 'span-24');			break;
-		case '960gs_12':	define('roots_container_class', 'container_12');	break;
-		case '960gs_16':	define('roots_container_class', 'container_16');    break;
-		case '960gs_24':	define('roots_container_class', 'container_24');    break;
-		case '1140':		define('roots_container_class', 'container');       break;
-		default:			define('roots_container_class', '');				break;
+		case 'blueprint':	define('roots_container_class', 'span-24');					break;
+		case '960gs_12':	define('roots_container_class', 'container_12');			break;
+		case '960gs_16':	define('roots_container_class', 'container_16');    		break;
+		case '960gs_24':	define('roots_container_class', 'container_24');    		break;
+		case '1140':		define('roots_container_class', 'container');       		break;
+		case 'adapt':		define('roots_container_class', 'container_12 clearfix');	break;
+		default:			define('roots_container_class', '');						break;
 	}
 }
 
@@ -47,6 +48,11 @@ function get_roots_stylesheets() {
 		$styles .= "\t<link rel=\"stylesheet\" href=\"$template_uri/css/960/960_24_col.css\">\n";
 	} elseif ($roots_css_framework === '1140') {
 		$styles .= "<link rel=\"stylesheet\" href=\"$template_uri/css/1140/1140.css\">\n";
+	} elseif ($roots_css_framework === 'adapt') {
+		$styles .= "<link rel=\"stylesheet\" href=\"$template_uri/css/adapt/master.css\">\n";
+		$styles .= "\t<noscript>\n";
+		$styles .= "\t<link rel=\"stylesheet\" href=\"$template_uri/css/adapt/mobile.css\">\n";
+		$styles .= "\t</noscript>\n";
 	}
 
 	if (class_exists('RGForms')) {

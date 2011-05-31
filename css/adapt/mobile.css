@@ -1,0 +1,20 @@
+.grid_1,
+.grid_2,
+.grid_3,
+.grid_4,
+.grid_5,
+.grid_6,
+.grid_7,
+.grid_8,
+.grid_9,
+.grid_10,
+.grid_11,
+.grid_12 {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.align_center,
+.align_right {
+  text-align: left;
+}

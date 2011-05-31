@@ -63,6 +63,10 @@ function roots_grid_framework() {
 			'value' => '1140',
 			'label' => __('1140', 'roots'),
 		),
+		'adapt' => array(
+			'value' => 'adapt',
+			'label' => __('Adapt.js', 'roots'),
+		),		
 	);
 
 	return apply_filters('roots_grid_framework', $grid_options);
