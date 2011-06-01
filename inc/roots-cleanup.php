@@ -132,13 +132,37 @@ function roots_language_attributes() {
 
 add_filter('language_attributes', 'roots_language_attributes');
 
-
 // remove WordPress version from RSS feed
 function roots_no_generator() { return ''; }
 add_filter('the_generator', 'roots_no_generator');
 
-
 // cleanup wp_head
+function roots_noindex() {
+	if ('0' == get_option('blog_public'))
+	echo "<meta name=\"robots\" content=\"noindex,nofollow\">\n";
+}	
+
+function roots_rel_canonical() {
+	if (!is_singular())
+		return;
+	global $wp_the_query;
+	if (!$id = $wp_the_query->get_queried_object_id())
+		return;
+	$link = get_permalink($id);
+	echo "<link rel=\"canonical\" href=\"$link\">\n";
+}
+
+// remove CSS from recent comments widget
+function roots_remove_recent_comments_style() {
+	global $wp_widget_factory;
+	remove_action( 'wp_head', array($wp_widget_factory->widgets['WP_Widget_Recent_Comments'], 'recent_comments_style') );
+}
+
+// remove CSS from gallery
+function roots_gallery_style($css) {
+	return preg_replace("#<style type='text/css'>(.*?)</style>#s", '', $css);
+}
+
 function roots_head_cleanup() {
 	// http://wpengineer.com/1438/wordpress-header/
 	remove_action('wp_head', 'feed_links', 2);
@@ -151,25 +175,12 @@ function roots_head_cleanup() {
 	remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0);
 	remove_action('wp_head', 'wp_generator');
 	remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0);
-	
 	remove_action('wp_head', 'noindex', 1);	
-	function roots_noindex() {
-		if ('0' == get_option('blog_public'))
-		echo "<meta name=\"robots\" content=\"noindex,nofollow\">\n";
-	}	
 	add_action('wp_head', 'roots_noindex');
-	
 	remove_action('wp_head', 'rel_canonical');	
-	function roots_rel_canonical() {
-		if (!is_singular())
-			return;
-		global $wp_the_query;
-		if (!$id = $wp_the_query->get_queried_object_id())
-			return;
-		$link = get_permalink($id);
-		echo "<link rel=\"canonical\" href=\"$link\">\n";
-	}
-	add_action('wp_head', 'roots_rel_canonical');	
+	add_action('wp_head', 'roots_rel_canonical');
+	add_action('wp_head', 'roots_remove_recent_comments_style', 1);	
+	add_filter('gallery_style', 'roots_gallery_style');
 	
 	// stop Gravity Forms from outputting CSS since it's linked in header.php
 	if (class_exists('RGForms')) {
@@ -187,28 +198,11 @@ function roots_head_cleanup() {
 		wp_deregister_script('jquery');
 		wp_register_script('jquery', '', '', '', true);
 	}	
-	
-	// remove CSS from recent comments widget
-	function roots_recent_comments_style() {
-		global $wp_widget_factory;
-		remove_action( 'wp_head', array($wp_widget_factory->widgets['WP_Widget_Recent_Comments'], 'recent_comments_style') );
-	}
-	
-	add_action('wp_head', 'roots_recent_comments_style', 1);
-
-	// remove CSS from gallery
-	function roots_gallery_style($css) {
-		return preg_replace("#<style type='text/css'>(.*?)</style>#s", '', $css);
-	}
-	
-	add_filter('gallery_style', 'roots_gallery_style');
 }
 
 add_action('init', 'roots_head_cleanup');
 
 // cleanup gallery_shortcode()
-remove_shortcode('gallery');
-
 function roots_gallery_shortcode($attr) {
 	global $post, $wp_locale;
 
@@ -309,8 +303,8 @@ function roots_gallery_shortcode($attr) {
 	return $output;
 }
 
+remove_shortcode('gallery');
 add_shortcode('gallery', 'roots_gallery_shortcode');
-
 
 // http://www.deluxeblogtips.com/2011/01/remove-dashboard-widgets-in-wordpress.html
 function roots_remove_dashboard_widgets() {
@@ -337,5 +331,13 @@ function roots_auto_excerpt_more($more) {
 
 add_filter('excerpt_length', 'roots_excerpt_length');
 add_filter('excerpt_more', 'roots_auto_excerpt_more');
+
+// remove container from menus
+function roots_nav_menu_args($args = '') {
+	$args['container'] = false;
+	return $args;
+}
+
+add_filter('wp_nav_menu_args', 'roots_nav_menu_args');
 
 ?>

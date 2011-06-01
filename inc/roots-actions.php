@@ -9,8 +9,8 @@ add_action('roots_footer_after', 'roots_1140_footer_after');
 add_action('roots_post_inside_before', 'roots_page_breadcrumb');
 
 function roots_1140_head() {
-	$options = roots_get_theme_options();
-	$roots_css_framework = $options['css_grid_framework'];
+	global $roots_options;
+	$roots_css_framework = $roots_options['css_framework'];
 	$template_uri = get_template_directory_uri();
 	if ($roots_css_framework === '1140') {
 		echo "<script src=\"$template_uri/js/libs/css3-mediaqueries.js\"></script>";
@@ -18,8 +18,8 @@ function roots_1140_head() {
 }
 
 function roots_adapt_head() {
-	$options = roots_get_theme_options();
-	$roots_css_framework = $options['css_grid_framework'];
+	global $roots_options;
+	$roots_css_framework = $roots_options['css_framework'];
 	$template_uri = get_template_directory_uri();
 	if ($roots_css_framework === 'adapt') {
 		echo "<script>\n";
@@ -41,16 +41,16 @@ function roots_adapt_head() {
 }
 
 function roots_1140_header_before() {
-	$options = roots_get_theme_options();
-	$roots_css_framework = $options['css_grid_framework'];
+	global $roots_options;
+	$roots_css_framework = $roots_options['css_framework'];
 	if ($roots_css_framework === '1140') {
 		echo "<div class=\"row\">";
 	}	
 }
 
 function roots_1140_header_after() {
-	$options = roots_get_theme_options();
-	$roots_css_framework = $options['css_grid_framework'];
+	global $roots_options;
+	$roots_css_framework = $roots_options['css_framework'];
 	if ($roots_css_framework === '1140') {
 		echo "</div><!-- /.row -->";
 		echo "<div class=\"row\">";
@@ -58,8 +58,8 @@ function roots_1140_header_after() {
 }
 
 function roots_1140_footer_before() {
-	$options = roots_get_theme_options();
-	$roots_css_framework = $options['css_grid_framework'];
+	global $roots_options;
+	$roots_css_framework = $roots_options['css_framework'];
 	if ($roots_css_framework === '1140') {
 		echo "</div><!-- /.row -->";
 		echo "<div class=\"row\">";
@@ -67,8 +67,8 @@ function roots_1140_footer_before() {
 }
 
 function roots_1140_footer_after() {
-	$options = roots_get_theme_options();
-	$roots_css_framework = $options['css_grid_framework'];
+	global $roots_options;
+	$roots_css_framework = $roots_options['css_framework'];
 	if ($roots_css_framework === '1140') {
 		echo "</div><!-- /.row -->";
 	}	
@@ -81,7 +81,6 @@ function roots_page_breadcrumb() {
 			yoast_breadcrumb('<p id="breadcrumbs">','</p>'); 
 		} 
 	}
-	wp_reset_postdata();
 }
 
 ?>

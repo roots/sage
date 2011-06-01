@@ -1,8 +1,8 @@
 <?php get_header(); ?>
 	<?php roots_content_before(); ?>
-		<div id="content" class="<?php echo roots_container_class; ?>">	
+		<div id="content" class="<?php echo $roots_options['container_class']; ?>">	
 		<?php roots_main_before(); ?>
-			<div id="main" class="<?php echo $options['css_main_class']; ?>" role="main">
+			<div id="main" class="<?php echo $roots_options['main_class']; ?>" role="main">
 				<div class="container">
 					<h1><?php _e('Search Results for', 'roots'); ?> <?php echo get_search_query(); ?></h1>
 					<?php roots_loop_before(); ?>
@@ -12,7 +12,7 @@
 			</div><!-- /#main -->
 		<?php roots_main_after(); ?>
 		<?php roots_sidebar_before(); ?>			
-			<aside id="sidebar" class="<?php echo $options['css_sidebar_class']; ?>" role="complementary">
+			<aside id="sidebar" class="<?php echo $roots_options['sidebar_class']; ?>" role="complementary">
 			<?php roots_sidebar_inside_before(); ?>
 				<div class="container">
 					<?php get_sidebar(); ?>

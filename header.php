@@ -24,12 +24,12 @@
 
 	<script src="<?php echo get_template_directory_uri(); ?>/js/scripts.js"></script>
 	<?php
-		$options = roots_get_theme_options();
-		$google_analytics_id = $options['google_analytics_id'];
+		global $roots_options;
+		$google_analytics_id = $roots_options['google_analytics_id'];
 		if ($google_analytics_id !== '') { ?>
 
 	<script>
-		var _gaq=[['_setAccount','<?php echo esc_attr($options['google_analytics_id']); ?>'],['_trackPageview'],['_trackPageLoadTime']];
+		var _gaq=[['_setAccount','<?php echo esc_attr($roots_options['google_analytics_id']); ?>'],['_trackPageview'],['_trackPageLoadTime']];
 		(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
 		g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
 		s.parentNode.insertBefore(g,s)}(document,'script'));
@@ -40,7 +40,7 @@
 	<?php roots_wrap_before(); ?>
 	<div id="wrap" class="container" role="document">
 	<?php roots_header_before(); ?>
-		<header id="banner" class="<?php echo roots_container_class; ?>" role="banner">
+		<header id="banner" class="<?php global $roots_options; echo $roots_options['container_class']; ?>" role="banner">
 			<?php roots_header_inside(); ?>
 			<div class="container">
 				<a id="logo" href="<?php echo home_url(); ?>/"><img src="<?php echo get_template_directory_uri(); ?>/img/logo.png" width="300" height="75" alt="<?php bloginfo('name'); ?>"></a>

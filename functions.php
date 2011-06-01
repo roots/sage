@@ -10,28 +10,15 @@ locate_template(array('inc/roots-actions.php'), true, true);	// actions
 locate_template(array('inc/roots-widgets.php'), true, true);	// widgets
 locate_template(array('inc/roots-custom.php'), true, true);		// custom functions
 
+$roots_options = roots_get_theme_options();
+
 // get active theme directory name
 // this allows you to rename the theme directory without breaking anything
 $theme_name = next(explode('/themes/', get_template_directory()));
 
-// set the value of the main container class depending on the selected grid framework
-$options = roots_get_theme_options();
-$roots_css_framework = $options['css_grid_framework'];
-if (!defined('roots_container_class')) {
-	switch ($roots_css_framework) {
-		case 'blueprint':	define('roots_container_class', 'span-24');					break;
-		case '960gs_12':	define('roots_container_class', 'container_12');			break;
-		case '960gs_16':	define('roots_container_class', 'container_16');    		break;
-		case '960gs_24':	define('roots_container_class', 'container_24');    		break;
-		case '1140':		define('roots_container_class', 'container');       		break;
-		case 'adapt':		define('roots_container_class', 'container_12 clearfix');	break;
-		default:			define('roots_container_class', '');						break;
-	}
-}
-
 function get_roots_stylesheets() {
-	$options = roots_get_theme_options();
-	$roots_css_framework = $options['css_grid_framework'];
+	global $roots_options;
+	$roots_css_framework = $roots_options['css_framework'];
 	
 	$template_uri = get_template_directory_uri();
 	$styles = '';
@@ -72,6 +59,8 @@ function get_roots_stylesheets() {
 	
 // set the maximum 'Large' image width to the maximum grid width
 if (!isset($content_width)) {
+	global $roots_options;
+	$roots_css_framework = $roots_options['css_framework'];
 	switch ($roots_css_framework) {
 	    case 'blueprint':	$content_width = 950;	break;
 	    case '960gs_12':	$content_width = 940;	break;
@@ -99,14 +88,6 @@ register_nav_menus(
 		'utility_navigation' => 'Utility Navigation'
 	)
 );
-
-// remove container from menus
-function roots_nav_menu_args($args = '') {
-	$args['container'] = false;
-	return $args;
-}
-
-add_filter('wp_nav_menu_args', 'roots_nav_menu_args');
 
 // create widget areas: sidebar, footer
 $sidebars = array('Sidebar', 'Footer');

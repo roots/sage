@@ -13,7 +13,6 @@ function roots_admin_enqueue_scripts($hook_suffix) {
 add_action('admin_enqueue_scripts', 'roots_admin_enqueue_scripts');
 
 function roots_theme_options_init() {
-
 	if (false === roots_get_theme_options())
 		add_option('roots_theme_options', roots_get_default_theme_options());
 
@@ -41,8 +40,8 @@ function roots_theme_options_add_page() {
 }
 add_action('admin_menu', 'roots_theme_options_add_page');
 
-function roots_grid_framework() {
-	$grid_options = array(
+function roots_css_framework() {
+	$framework_options = array(
 		'blueprint' => array(
 			'value' => 'blueprint',
 			'label' => __('Blueprint CSS', 'roots'),
@@ -69,14 +68,15 @@ function roots_grid_framework() {
 		),		
 	);
 
-	return apply_filters('roots_grid_framework', $grid_options);
+	return apply_filters('roots_css_framework', $framework_options);
 }
 
 function roots_get_default_theme_options() {
 	$default_theme_options = array(
-		'css_grid_framework'	=> 'blueprint',
-		'css_main_class'		=> 'span-14 append-1',
-		'css_sidebar_class'		=> 'span-8 prepend-1 last',
+		'css_framework'			=> 'blueprint',
+		'container_class'		=> 'span-24',
+		'main_class'			=> 'span-14 append-1',
+		'sidebar_class'			=> 'span-8 prepend-1 last',
 		'google_analytics_id'	=> ''
 	);
 
@@ -97,8 +97,8 @@ function theme_options_render_page() {
 		<form method="post" action="options.php">
 			<?php
 				settings_fields('roots_options');
-				$options = roots_get_theme_options();
-				$default_options = roots_get_default_theme_options();
+				$roots_options = roots_get_theme_options();
+				$roots_default_options = roots_get_default_theme_options();
 			?>
 
 			<table class="form-table">
@@ -107,13 +107,13 @@ function theme_options_render_page() {
 					<td>
 						<fieldset><legend class="screen-reader-text"><span><?php _e('CSS Grid Framework', 'roots'); ?></span></legend>
 						<?php
-							foreach (roots_grid_framework() as $grid_framework) {
+							foreach (roots_css_framework() as $css_framework) {
 								?>
 								<div class="layout">
 								<label class="description">
-									<input type="radio" name="roots_theme_options[css_grid_framework]" value="<?php echo esc_attr($grid_framework['value']); ?>" <?php checked($options['css_grid_framework'], $grid_framework['value']); ?> />
+									<input type="radio" name="roots_theme_options[css_framework]" value="<?php echo esc_attr($css_framework['value']); ?>" <?php checked($roots_options['css_framework'], $css_framework['value']); ?> />
 									<span>
-										<?php echo $grid_framework['label']; ?>
+										<?php echo $css_framework['label']; ?>
 									</span>
 								</label>
 								</div>
@@ -127,9 +127,9 @@ function theme_options_render_page() {
 				<tr valign="top"><th scope="row"><?php _e('#main CSS Classes', 'roots'); ?></th>
 					<td>
 						<fieldset><legend class="screen-reader-text"><span><?php _e('#main CSS Classes', 'roots'); ?></span></legend>
-							<input type="text" name="roots_theme_options[css_main_class]" id="css_main_class" value="<?php echo esc_attr($options['css_main_class']); ?>" class="regular-text" />
+							<input type="text" name="roots_theme_options[main_class]" id="main_class" value="<?php echo esc_attr($roots_options['main_class']); ?>" class="regular-text" />
 							<br />
-							<small class="description"><?php printf( __('Default: %s', 'roots'), $default_options['css_main_class']); ?></small>
+							<small class="description"><?php printf( __('Default: %s', 'roots'), $roots_default_options['main_class']); ?></small>
 						</fieldset>
 					</td>
 				</tr>
@@ -137,9 +137,9 @@ function theme_options_render_page() {
 				<tr valign="top"><th scope="row"><?php _e('#sidebar CSS Classes', 'roots'); ?></th>
 					<td>
 						<fieldset><legend class="screen-reader-text"><span><?php _e('#sidebar CSS Classes', 'roots'); ?></span></legend>
-							<input type="text" name="roots_theme_options[css_sidebar_class]" id="css_sidebar_class" value="<?php echo esc_attr($options['css_sidebar_class']); ?>" class="regular-text" />
+							<input type="text" name="roots_theme_options[sidebar_class]" id="sidebar_class" value="<?php echo esc_attr($roots_options['sidebar_class']); ?>" class="regular-text" />
 							<br />
-							<small class="description"><?php printf( __('Default: %s', 'roots'), $default_options['css_sidebar_class']); ?></small>
+							<small class="description"><?php printf( __('Default: %s', 'roots'), $roots_default_options['sidebar_class']); ?></small>
 						</fieldset>
 					</td>
 				</tr>
@@ -147,7 +147,7 @@ function theme_options_render_page() {
 				<tr valign="top"><th scope="row"><?php _e('Google Analytics ID', 'roots'); ?></th>
 					<td>
 						<fieldset><legend class="screen-reader-text"><span><?php _e('Google Analytics ID', 'roots'); ?></span></legend>
-							<input type="text" name="roots_theme_options[google_analytics_id]" id="google_analytics_id" value="<?php echo esc_attr($options['google_analytics_id']); ?>" />
+							<input type="text" name="roots_theme_options[google_analytics_id]" id="google_analytics_id" value="<?php echo esc_attr($roots_options['google_analytics_id']); ?>" />
 							<br />
 							<small class="description"><?php printf(__('Enter your UA-XXXXX-X ID', 'roots')); ?></small>
 						</fieldset>
@@ -165,15 +165,35 @@ function theme_options_render_page() {
 
 function roots_theme_options_validate($input) {
 	$output = $defaults = roots_get_default_theme_options();
+
+	if (isset($input['css_framework']) && array_key_exists($input['css_framework'], roots_css_framework()))
+		$output['css_framework'] = $input['css_framework'];	
+
+	// set the value of the main container class depending on the selected grid framework
+	if ($output['css_framework'] = 'blueprint') {
+		$output['container_class'] = 'span-24';
+	}
+	if ($output['css_framework'] = '960gs_12') {
+		$output['container_class'] = 'container_12';
+	}
+	if ($output['css_framework'] = '960gs_16') {
+		$output['container_class'] = 'container_16';
+	}
+	if ($output['css_framework'] = '960gs_24') {
+		$output['container_class'] = 'container_24';
+	}
+	if ($output['css_framework'] = '1140') {
+		$output['container_class'] = 'container';
+	}
+	if ($output['css_framework'] = 'adapt') {
+		$output['container_class'] = 'container_12 clearfix';
+	}
 	
-	if (isset( $input['css_grid_framework']) && array_key_exists($input['css_grid_framework'], roots_grid_framework()))
-		$output['css_grid_framework'] = $input['css_grid_framework'];		
+	if (isset($input['main_class']))
+		$output['main_class'] = $input['main_class'];
 		
-	if (isset($input['css_main_class']))
-		$output['css_main_class'] = $input['css_main_class'];
-		
-	if (isset($input['css_sidebar_class']))
-		$output['css_sidebar_class'] = $input['css_sidebar_class'];	
+	if (isset($input['sidebar_class']))
+		$output['sidebar_class'] = $input['sidebar_class'];	
 		
 	if (isset($input['google_analytics_id']))
 		$output['google_analytics_id'] = $input['google_analytics_id'];			
