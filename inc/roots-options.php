@@ -175,6 +175,7 @@ function roots_theme_options_validate($input) {
 	       case '960gs_12': $output['container_class'] = 'container_12'; break;
 	       case '960gs_16': $output['container_class'] = 'container_16'; break;
 	       case '960gs_24': $output['container_class'] = 'container_24'; break;
+	       case '1140': $output['container_class'] = 'container'; break;
 	       case 'adapt': $output['container_class'] = 'container_12 clearfix'; break;
 	}
 	
