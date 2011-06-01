@@ -170,23 +170,12 @@ function roots_theme_options_validate($input) {
 		$output['css_framework'] = $input['css_framework'];	
 
 	// set the value of the main container class depending on the selected grid framework
-	if ($output['css_framework'] = 'blueprint') {
-		$output['container_class'] = 'span-24';
-	}
-	if ($output['css_framework'] = '960gs_12') {
-		$output['container_class'] = 'container_12';
-	}
-	if ($output['css_framework'] = '960gs_16') {
-		$output['container_class'] = 'container_16';
-	}
-	if ($output['css_framework'] = '960gs_24') {
-		$output['container_class'] = 'container_24';
-	}
-	if ($output['css_framework'] = '1140') {
-		$output['container_class'] = 'container';
-	}
-	if ($output['css_framework'] = 'adapt') {
-		$output['container_class'] = 'container_12 clearfix';
+	switch ($input['css_framework']) {
+	       case 'blueprint': $output['container_class'] = 'span-24'; break;
+	       case '960gs_12': $output['container_class'] = 'container_12'; break;
+	       case '960gs_16': $output['container_class'] = 'container_16'; break;
+	       case '960gs_24': $output['container_class'] = 'container_24'; break;
+	       case 'adapt': $output['container_class'] = 'container_12 clearfix'; break;
 	}
 	
 	if (isset($input['main_class']))
