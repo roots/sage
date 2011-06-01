@@ -14,7 +14,7 @@ body {
 }
 
 h1 {
-  background: #eee url(../images/h1.png) no-repeat right center;
+  background: #eee;
   border-bottom: 1px solid #ccc;
   padding: 10px 90px 10px 15px;
   text-shadow: #fff 0 1px 0;
