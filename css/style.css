@@ -405,12 +405,12 @@ img.ui-datepicker-trigger { vertical-align: middle; }
 @media only screen and (min-width: 480px) {
 	/* Style adjustments for viewports 480px and over go here */
 
-}/*/mediaquery*/
+}
 
 @media only screen and (min-width: 768px) {
 	/* Style adjustments for viewports 768px and over go here */
 
-}/*/mediaquery*/
+}
 
 @media print {
   * { background: transparent !important; color: black !important; text-shadow: none !important; filter: none !important; -ms-filter: none !important; } 
