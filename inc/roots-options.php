@@ -87,10 +87,7 @@ function roots_get_default_theme_options() {
 }
 
 function roots_get_theme_options() {
-	$roots_options = get_option('roots_theme_options');
-	if (false === $roots_options)
-		return roots_get_default_theme_options();
-	return $roots_options;
+	return get_option('roots_theme_options', roots_get_default_theme_options());
 }
 
 function theme_options_render_page() {
