@@ -30,13 +30,16 @@ function roots_option_page_capability($capability) {
 add_filter('option_page_capability_roots_options', 'roots_option_page_capability');
 
 function roots_theme_options_add_page() {
-	add_theme_page(
+	$theme_page = add_theme_page(
 		__('Theme Options', 'roots'),
 		__('Theme Options', 'roots'),
 		'edit_theme_options',
 		'theme_options',
 		'theme_options_render_page'
 	);
+
+	if (!$theme_page)
+		return;
 }
 add_action('admin_menu', 'roots_theme_options_add_page');
 
@@ -84,7 +87,10 @@ function roots_get_default_theme_options() {
 }
 
 function roots_get_theme_options() {
-	return get_option('roots_theme_options');
+	$roots_options = get_option('roots_theme_options');
+	if (false === $roots_options)
+		return roots_get_default_theme_options();
+	return $roots_options;
 }
 
 function theme_options_render_page() {
@@ -105,7 +111,7 @@ function theme_options_render_page() {
 
 				<tr valign="top" class="radio-option"><th scope="row"><?php _e('CSS Grid Framework', 'roots'); ?></th>
 					<td>
-						<fieldset><legend class="screen-reader-text"><span><?php _e('CSS Grid Framework', 'roots'); ?></span></legend>
+						<fieldset><legend class="assistive-text"><span><?php _e('CSS Grid Framework', 'roots'); ?></span></legend>
 						<?php
 							foreach (roots_css_framework() as $css_framework) {
 								?>
@@ -126,7 +132,7 @@ function theme_options_render_page() {
 
 				<tr valign="top"><th scope="row"><?php _e('#main CSS Classes', 'roots'); ?></th>
 					<td>
-						<fieldset><legend class="screen-reader-text"><span><?php _e('#main CSS Classes', 'roots'); ?></span></legend>
+						<fieldset><legend class="assistive-text"><span><?php _e('#main CSS Classes', 'roots'); ?></span></legend>
 							<input type="text" name="roots_theme_options[main_class]" id="main_class" value="<?php echo esc_attr($roots_options['main_class']); ?>" class="regular-text" />
 							<br />
 							<small class="description"><?php printf( __('Default: %s', 'roots'), $roots_default_options['main_class']); ?></small>
@@ -136,7 +142,7 @@ function theme_options_render_page() {
 				
 				<tr valign="top"><th scope="row"><?php _e('#sidebar CSS Classes', 'roots'); ?></th>
 					<td>
-						<fieldset><legend class="screen-reader-text"><span><?php _e('#sidebar CSS Classes', 'roots'); ?></span></legend>
+						<fieldset><legend class="assistive-text"><span><?php _e('#sidebar CSS Classes', 'roots'); ?></span></legend>
 							<input type="text" name="roots_theme_options[sidebar_class]" id="sidebar_class" value="<?php echo esc_attr($roots_options['sidebar_class']); ?>" class="regular-text" />
 							<br />
 							<small class="description"><?php printf( __('Default: %s', 'roots'), $roots_default_options['sidebar_class']); ?></small>
@@ -146,7 +152,7 @@ function theme_options_render_page() {
 				
 				<tr valign="top"><th scope="row"><?php _e('Google Analytics ID', 'roots'); ?></th>
 					<td>
-						<fieldset><legend class="screen-reader-text"><span><?php _e('Google Analytics ID', 'roots'); ?></span></legend>
+						<fieldset><legend class="assistive-text"><span><?php _e('Google Analytics ID', 'roots'); ?></span></legend>
 							<input type="text" name="roots_theme_options[google_analytics_id]" id="google_analytics_id" value="<?php echo esc_attr($roots_options['google_analytics_id']); ?>" />
 							<br />
 							<small class="description"><?php printf(__('Enter your UA-XXXXX-X ID', 'roots')); ?></small>
