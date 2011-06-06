@@ -64,18 +64,22 @@ if (is_admin() && 'themes.php' === $pagenow && isset( $_GET['activated'])) {
 	}
 	if ($roots_nav_theme_mod) { set_theme_mod('nav_menu_locations', $roots_nav_theme_mod ); }
 	
-	$primary_nav = wp_get_nav_menu_object('Primary Navigation');
-	$primary_nav_term_id = (int) $primary_nav->term_id;	
-	$pages = get_pages();
-	foreach($pages as $page) {
-		$item = array(
-			'menu-item-object-id' => $page->ID,
-			'menu-item-object' => 'page',
-			'menu-item-type' => 'post_type',
-			'menu-item-status' => 'publish'
-		);
-		wp_update_nav_menu_item($primary_nav_term_id, 0, $item);
-	}
+   $primary_nav = wp_get_nav_menu_object('Primary Navigation');
+
+   $primary_nav_term_id = (int) $primary_nav->term_id;
+   $menu_items= wp_get_nav_menu_items($primary_nav_term_id);
+   if(!$menu_items || empty($menu_items)){
+      $pages = get_pages();
+      foreach($pages as $page) {
+         $item = array(
+            'menu-item-object-id' => $page->ID,
+            'menu-item-object' => 'page',
+            'menu-item-type' => 'post_type',
+            'menu-item-status' => 'publish'
+         );
+         wp_update_nav_menu_item($primary_nav_term_id, 0, $item);
+      }
+   }
 
 }
 
