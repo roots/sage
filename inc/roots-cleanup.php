@@ -76,8 +76,13 @@ add_filter('get_search_query', 'roots_search_query');
 // inspired by http://www.456bereastreet.com/archive/201010/how_to_make_wordpress_urls_root_relative/
 // thanks to Scott Walkinshaw (scottwalkinshaw.com)
 function roots_root_relative_url($input) {
-	preg_match('/(https?:\/\/[^\/]+)/', $input, $matches);
-	return str_replace(end($matches), '', $input);
+	preg_match('/(https?:\/\/[^\/|"]+)/', $input, $matches);
+  // make sure we aren't making external links relative
+  if (strpos($matches[0], site_url()) === false) {
+    return $input;
+  } else {
+    return str_replace(end($matches), '', $input);
+  }
 }
 
 add_filter('bloginfo_url', 'roots_root_relative_url');
