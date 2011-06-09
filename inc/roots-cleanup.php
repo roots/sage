@@ -103,6 +103,7 @@ add_filter('month_link', 'roots_root_relative_url');
 add_filter('day_link', 'roots_root_relative_url');
 add_filter('year_link', 'roots_root_relative_url');
 add_filter('tag_link', 'roots_root_relative_url');
+add_filter('the_author_posts_link', 'roots_root_relative_url');
 
 // Leaving plugins_url alone in admin to avoid potential issues (such as Gravity Forms)
 if (!is_admin()) {
@@ -357,7 +358,7 @@ class roots_nav_walker extends Walker_Nav_Menu {
     $class_names = $value = '';
     $classes = empty( $item->classes ) ? array() : (array) $item->classes;
 
-    $classes = array_filter($classes, 'check_current');
+    $classes = array_filter($classes, 'roots_check_current');
 
     $class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item ) );
     $class_names = $class_names ? ' class="' . esc_attr( $class_names ) . '"' : '';
@@ -382,9 +383,8 @@ class roots_nav_walker extends Walker_Nav_Menu {
   }
 }
 
-function check_current($val) {
+function roots_check_current($val) {
   return preg_match('/current-menu/', $val);
 }
-
 
 ?>

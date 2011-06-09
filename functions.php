@@ -123,4 +123,10 @@ function roots_robots() {
 	echo "Allow: /assets";
 }
 
+function roots_author_link($link) {
+  return str_replace('<a ', '<a class="fn" rel="author"', $link);
+}
+
+add_filter('the_author_posts_link', 'roots_author_link');
+
 ?>
