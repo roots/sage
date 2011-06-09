@@ -78,7 +78,7 @@ add_filter('get_search_query', 'roots_search_query');
 function roots_root_relative_url($input) {
 	preg_match('/(https?:\/\/[^\/|"]+)/', $input, $matches);
   // make sure we aren't making external links relative
-  if (strpos($matches[0], site_url()) === false) {
+  if (isset($matches[0]) && strpos($matches[0], site_url()) === false) {
     return $input;
   } else {
     return str_replace(end($matches), '', $input);
