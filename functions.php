@@ -82,12 +82,10 @@ add_theme_support('post-thumbnails');
 // add_theme_support('post-formats', array('aside', 'gallery', 'link', 'image', 'quote', 'status', 'video', 'audio', 'chat'));
 
 add_theme_support('menus');
-register_nav_menus(
-	array(
-		'primary_navigation' => 'Primary Navigation',
-		'utility_navigation' => 'Utility Navigation'
-	)
-);
+register_nav_menus(array(
+	'primary_navigation' => __('Primary Navigation', 'roots'),
+	'utility_navigation' => __('Utility Navigation', 'roots')
+));
 
 // create widget areas: sidebar, footer
 $sidebars = array('Sidebar', 'Footer');
