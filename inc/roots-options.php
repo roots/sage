@@ -1,7 +1,7 @@
 <?php
 
 function roots_admin_enqueue_scripts($hook_suffix) {
-	if ($hook_suffix != 'appearance_page_theme_options')
+	if ($hook_suffix !== 'appearance_page_theme_options')
 		return;
 		
 	$home_url = home_url();
@@ -80,7 +80,8 @@ function roots_get_default_theme_options() {
 		'container_class'		=> 'span-24',
 		'main_class'			=> 'span-14 append-1',
 		'sidebar_class'			=> 'span-8 prepend-1 last',
-		'google_analytics_id'	=> ''
+		'google_analytics_id'	=> '',
+    'clean_menu' => true
 	);
 
 	return apply_filters('roots_default_theme_options', $default_theme_options);
@@ -156,6 +157,29 @@ function theme_options_render_page() {
 						</fieldset>
 					</td>
 				</tr>							
+
+				<tr valign="top"><th scope="row"><?php _e('Cleanup Menu Output', 'roots'); ?></th>
+					<td>
+						<fieldset><legend class="assistive-text"><span><?php _e('Cleanup Menu Output', 'roots'); ?></span></legend>
+              <div class="layout">
+              <label class="description">
+                <input type="radio" name="roots_theme_options[clean_menu]" value="yes" <?php checked($roots_options['clean_menu'], true); ?> />
+                <span>
+                  <?php echo _e('Yes', 'roots'); ?>
+                </span>
+              </label>
+              </div>
+              <div class="layout">
+              <label class="description">
+                <input type="radio" name="roots_theme_options[clean_menu]" value="no" <?php checked($roots_options['clean_menu'], false); ?> />
+                <span>
+                  <?php echo _e('No', 'roots'); ?>
+                </span>
+              </label>
+              </div>
+						</fieldset>
+					</td>
+				</tr>							
 				
 			</table>
 
@@ -190,6 +214,9 @@ function roots_theme_options_validate($input) {
 		
 	if (isset($input['google_analytics_id']))
 		$output['google_analytics_id'] = $input['google_analytics_id'];			
+
+	if (isset($input['clean_menu']))
+		$output['clean_menu'] = ($input['clean_menu'] === 'yes') ? true : false;			
 
 	return apply_filters('roots_theme_options_validate', $output, $input, $defaults);
 }
