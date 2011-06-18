@@ -109,7 +109,7 @@ function theme_options_render_page() {
 
 				<tr valign="top" class="radio-option"><th scope="row"><?php _e('CSS Grid Framework', 'roots'); ?></th>
 					<td>
-						<fieldset><legend class="assistive-text"><span><?php _e('CSS Grid Framework', 'roots'); ?></span></legend>
+						<fieldset><legend class="screen-reader-text"><span><?php _e('CSS Grid Framework', 'roots'); ?></span></legend>
 						<?php
 							foreach (roots_css_framework() as $css_framework) {
 								?>
@@ -130,7 +130,7 @@ function theme_options_render_page() {
 
 				<tr valign="top"><th scope="row"><?php _e('#main CSS Classes', 'roots'); ?></th>
 					<td>
-						<fieldset><legend class="assistive-text"><span><?php _e('#main CSS Classes', 'roots'); ?></span></legend>
+						<fieldset><legend class="screen-reader-text"><span><?php _e('#main CSS Classes', 'roots'); ?></span></legend>
 							<input type="text" name="roots_theme_options[main_class]" id="main_class" value="<?php echo esc_attr($roots_options['main_class']); ?>" class="regular-text" />
 							<br />
 							<small class="description"><?php printf( __('Default: %s', 'roots'), $roots_default_options['main_class']); ?></small>
@@ -140,7 +140,7 @@ function theme_options_render_page() {
 				
 				<tr valign="top"><th scope="row"><?php _e('#sidebar CSS Classes', 'roots'); ?></th>
 					<td>
-						<fieldset><legend class="assistive-text"><span><?php _e('#sidebar CSS Classes', 'roots'); ?></span></legend>
+						<fieldset><legend class="screen-reader-text"><span><?php _e('#sidebar CSS Classes', 'roots'); ?></span></legend>
 							<input type="text" name="roots_theme_options[sidebar_class]" id="sidebar_class" value="<?php echo esc_attr($roots_options['sidebar_class']); ?>" class="regular-text" />
 							<br />
 							<small class="description"><?php printf( __('Default: %s', 'roots'), $roots_default_options['sidebar_class']); ?></small>
@@ -150,7 +150,7 @@ function theme_options_render_page() {
 				
 				<tr valign="top"><th scope="row"><?php _e('Google Analytics ID', 'roots'); ?></th>
 					<td>
-						<fieldset><legend class="assistive-text"><span><?php _e('Google Analytics ID', 'roots'); ?></span></legend>
+						<fieldset><legend class="screen-reader-text"><span><?php _e('Google Analytics ID', 'roots'); ?></span></legend>
 							<input type="text" name="roots_theme_options[google_analytics_id]" id="google_analytics_id" value="<?php echo esc_attr($roots_options['google_analytics_id']); ?>" />
 							<br />
 							<small class="description"><?php printf(__('Enter your UA-XXXXX-X ID', 'roots')); ?></small>
@@ -160,7 +160,7 @@ function theme_options_render_page() {
 
 				<tr valign="top"><th scope="row"><?php _e('Cleanup Menu Output', 'roots'); ?></th>
 					<td>
-						<fieldset><legend class="assistive-text"><span><?php _e('Cleanup Menu Output', 'roots'); ?></span></legend>
+						<fieldset><legend class="screen-reader-text"><span><?php _e('Cleanup Menu Output', 'roots'); ?></span></legend>
               <div class="layout">
               <label class="description">
                 <input type="radio" name="roots_theme_options[clean_menu]" value="yes" <?php checked($roots_options['clean_menu'], true); ?> />
