@@ -1,6 +1,7 @@
 <?php 
 
 add_action('roots_head', 'roots_google_analytics');
+add_action('roots_head', 'roots_fout_b_gone');
 add_action('roots_head', 'roots_1140_head');
 add_action('roots_head', 'roots_adapt_head');
 add_action('roots_header_before', 'roots_1140_header_before');
@@ -11,15 +12,27 @@ add_action('roots_post_inside_before', 'roots_page_breadcrumb');
 
 function roots_google_analytics() {
 	global $roots_options;
-	$google_analytics_id = $roots_options['google_analytics_id'];
-	$get_google_analytics_id = esc_attr($roots_options['google_analytics_id']);
-	if ($google_analytics_id !== '') {
+	$roots_google_analytics_id = $roots_options['google_analytics_id'];
+	$get_roots_google_analytics_id = esc_attr($roots_options['google_analytics_id']);
+	if ($roots_google_analytics_id !== '') {
 		echo "\n\t<script>\n";
-		echo "\t\tvar _gaq=[['_setAccount','$get_google_analytics_id'],['_trackPageview'],['_trackPageLoadTime']];\n";
+		echo "\t\tvar _gaq=[['_setAccount','$get_roots_google_analytics_id'],['_trackPageview'],['_trackPageLoadTime']];\n";
 		echo "\t\t(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;\n";
 		echo "\t\tg.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';\n";
 		echo "\t\ts.parentNode.insertBefore(g,s)}(document,'script'));\n";
 		echo "\t</script>\n";
+	}	
+}
+
+function roots_fout_b_gone() {
+	global $roots_options;
+	$roots_fout_b_gone = $roots_options['fout_b_gone'];
+	$template_uri = get_template_directory_uri();
+	if ($roots_fout_b_gone === true) {
+		echo "\t<script src=\"$template_uri/js/libs/foutbgone.min.js\"></script>\n";
+		echo "\t<script>\n";
+		echo "\t\tfbg.hideFOUT('asap', 100);\n";
+		echo "\t</script>";
 	}	
 }
 

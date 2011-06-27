@@ -81,7 +81,8 @@ function roots_get_default_theme_options() {
 		'main_class'			=> 'span-14 append-1',
 		'sidebar_class'			=> 'span-8 prepend-1 last',
 		'google_analytics_id'	=> '',
-    'clean_menu' => true
+    	'clean_menu' 			=> true,
+    	'fout_b_gone'			=> false
 	);
 
 	return apply_filters('roots_default_theme_options', $default_theme_options);
@@ -161,25 +162,40 @@ function theme_options_render_page() {
 				<tr valign="top"><th scope="row"><?php _e('Cleanup Menu Output', 'roots'); ?></th>
 					<td>
 						<fieldset><legend class="screen-reader-text"><span><?php _e('Cleanup Menu Output', 'roots'); ?></span></legend>
-              <div class="layout">
-              <label class="description">
-                <input type="radio" name="roots_theme_options[clean_menu]" value="yes" <?php checked($roots_options['clean_menu'], true); ?> />
-                <span>
-                  <?php echo _e('Yes', 'roots'); ?>
-                </span>
-              </label>
-              </div>
-              <div class="layout">
-              <label class="description">
-                <input type="radio" name="roots_theme_options[clean_menu]" value="no" <?php checked($roots_options['clean_menu'], false); ?> />
-                <span>
-                  <?php echo _e('No', 'roots'); ?>
-                </span>
-              </label>
-              </div>
+							<div>
+								<label class="description">
+									<input type="radio" name="roots_theme_options[clean_menu]" value="yes" <?php checked($roots_options['clean_menu'], true); ?> />
+									<span><?php echo _e('Yes', 'roots'); ?></span>
+								</label>
+							</div>
+							<div>
+								<label class="description">
+									<input type="radio" name="roots_theme_options[clean_menu]" value="no" <?php checked($roots_options['clean_menu'], false); ?> />
+									<span><?php echo _e('No', 'roots'); ?></span>
+								</label>
+							</div>
 						</fieldset>
 					</td>
-				</tr>							
+				</tr>
+				
+				<tr valign="top"><th scope="row"><?php _e('Enable FOUT-B-Gone', 'roots'); ?></th>
+					<td>
+						<fieldset><legend class="screen-reader-text"><span><?php _e('Enable FOUT-B-Gone', 'roots'); ?></span></legend>
+							<div>
+								<label class="description">
+									<input type="radio" name="roots_theme_options[fout_b_gone]" value="yes" <?php checked($roots_options['fout_b_gone'], true); ?> />
+									<span><?php echo _e('Yes', 'roots'); ?></span>
+								</label>
+							</div>
+							<div>
+								<label class="description">
+									<input type="radio" name="roots_theme_options[fout_b_gone]" value="no" <?php checked($roots_options['fout_b_gone'], false); ?> />
+									<span><?php echo _e('No', 'roots'); ?></span>
+								</label>
+							</div>
+						</fieldset>
+					</td>
+				</tr>										
 				
 			</table>
 
@@ -216,7 +232,10 @@ function roots_theme_options_validate($input) {
 		$output['google_analytics_id'] = $input['google_analytics_id'];			
 
 	if (isset($input['clean_menu']))
-		$output['clean_menu'] = ($input['clean_menu'] === 'yes') ? true : false;			
+		$output['clean_menu'] = ($input['clean_menu'] === 'yes') ? true : false;
+		
+	if (isset($input['fout_b_gone']))
+		$output['fout_b_gone'] = ($input['fout_b_gone'] === 'yes') ? true : false;		
 
 	return apply_filters('roots_theme_options_validate', $output, $input, $defaults);
 }
