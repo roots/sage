@@ -14,7 +14,7 @@
 			<header>
 				<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
 				<time pubdate datetime="<?php the_time('c'); ?>"><?php printf( __('Posted on %s at %s.','roots'), get_the_time('l, F jS, Y'), get_the_time()) ?></time>
-        <p class="byline author vcard"><?php the_author_posts_link(); ?></p>
+				<p class="byline author vcard"><?php _e('Written by', 'roots'); ?> <?php the_author_posts_link(); ?></p>
 			</header>
 			<div class="entry-content">
 		<?php if (is_archive() || is_search()) : // Only display excerpts for archives and search ?>
