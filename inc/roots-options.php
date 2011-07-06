@@ -68,6 +68,10 @@ function roots_css_framework() {
 		'adapt' => array(
 			'value' => 'adapt',
 			'label' => __('Adapt.js', 'roots'),
+      ),
+      'none' => array(
+			'value' => 'none',
+			'label' => __('None', 'roots'),
 		),		
 	);
 
