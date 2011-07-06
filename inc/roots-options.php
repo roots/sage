@@ -1,7 +1,7 @@
 <?php
 
 function roots_admin_enqueue_scripts($hook_suffix) {
-	if ($hook_suffix != 'appearance_page_theme_options')
+	if ($hook_suffix !== 'appearance_page_theme_options')
 		return;
 		
 	$home_url = home_url();
@@ -68,6 +68,10 @@ function roots_css_framework() {
 		'adapt' => array(
 			'value' => 'adapt',
 			'label' => __('Adapt.js', 'roots'),
+      ),
+      'none' => array(
+			'value' => 'none',
+			'label' => __('None', 'roots'),
 		),		
 	);
 
@@ -80,7 +84,9 @@ function roots_get_default_theme_options() {
 		'container_class'		=> 'span-24',
 		'main_class'			=> 'span-14 append-1',
 		'sidebar_class'			=> 'span-8 prepend-1 last',
-		'google_analytics_id'	=> ''
+		'google_analytics_id'	=> '',
+    	'clean_menu' 			=> true,
+    	'fout_b_gone'			=> false
 	);
 
 	return apply_filters('roots_default_theme_options', $default_theme_options);
@@ -108,7 +114,7 @@ function theme_options_render_page() {
 
 				<tr valign="top" class="radio-option"><th scope="row"><?php _e('CSS Grid Framework', 'roots'); ?></th>
 					<td>
-						<fieldset><legend class="assistive-text"><span><?php _e('CSS Grid Framework', 'roots'); ?></span></legend>
+						<fieldset><legend class="screen-reader-text"><span><?php _e('CSS Grid Framework', 'roots'); ?></span></legend>
 						<?php
 							foreach (roots_css_framework() as $css_framework) {
 								?>
@@ -129,7 +135,7 @@ function theme_options_render_page() {
 
 				<tr valign="top"><th scope="row"><?php _e('#main CSS Classes', 'roots'); ?></th>
 					<td>
-						<fieldset><legend class="assistive-text"><span><?php _e('#main CSS Classes', 'roots'); ?></span></legend>
+						<fieldset><legend class="screen-reader-text"><span><?php _e('#main CSS Classes', 'roots'); ?></span></legend>
 							<input type="text" name="roots_theme_options[main_class]" id="main_class" value="<?php echo esc_attr($roots_options['main_class']); ?>" class="regular-text" />
 							<br />
 							<small class="description"><?php printf( __('Default: %s', 'roots'), $roots_default_options['main_class']); ?></small>
@@ -139,7 +145,7 @@ function theme_options_render_page() {
 				
 				<tr valign="top"><th scope="row"><?php _e('#sidebar CSS Classes', 'roots'); ?></th>
 					<td>
-						<fieldset><legend class="assistive-text"><span><?php _e('#sidebar CSS Classes', 'roots'); ?></span></legend>
+						<fieldset><legend class="screen-reader-text"><span><?php _e('#sidebar CSS Classes', 'roots'); ?></span></legend>
 							<input type="text" name="roots_theme_options[sidebar_class]" id="sidebar_class" value="<?php echo esc_attr($roots_options['sidebar_class']); ?>" class="regular-text" />
 							<br />
 							<small class="description"><?php printf( __('Default: %s', 'roots'), $roots_default_options['sidebar_class']); ?></small>
@@ -149,13 +155,51 @@ function theme_options_render_page() {
 				
 				<tr valign="top"><th scope="row"><?php _e('Google Analytics ID', 'roots'); ?></th>
 					<td>
-						<fieldset><legend class="assistive-text"><span><?php _e('Google Analytics ID', 'roots'); ?></span></legend>
+						<fieldset><legend class="screen-reader-text"><span><?php _e('Google Analytics ID', 'roots'); ?></span></legend>
 							<input type="text" name="roots_theme_options[google_analytics_id]" id="google_analytics_id" value="<?php echo esc_attr($roots_options['google_analytics_id']); ?>" />
 							<br />
 							<small class="description"><?php printf(__('Enter your UA-XXXXX-X ID', 'roots')); ?></small>
 						</fieldset>
 					</td>
 				</tr>							
+
+				<tr valign="top"><th scope="row"><?php _e('Cleanup Menu Output', 'roots'); ?></th>
+					<td>
+						<fieldset><legend class="screen-reader-text"><span><?php _e('Cleanup Menu Output', 'roots'); ?></span></legend>
+							<div>
+								<label class="description">
+									<input type="radio" name="roots_theme_options[clean_menu]" value="yes" <?php checked($roots_options['clean_menu'], true); ?> />
+									<span><?php echo _e('Yes', 'roots'); ?></span>
+								</label>
+							</div>
+							<div>
+								<label class="description">
+									<input type="radio" name="roots_theme_options[clean_menu]" value="no" <?php checked($roots_options['clean_menu'], false); ?> />
+									<span><?php echo _e('No', 'roots'); ?></span>
+								</label>
+							</div>
+						</fieldset>
+					</td>
+				</tr>
+				
+				<tr valign="top"><th scope="row"><?php _e('Enable FOUT-B-Gone', 'roots'); ?></th>
+					<td>
+						<fieldset><legend class="screen-reader-text"><span><?php _e('Enable FOUT-B-Gone', 'roots'); ?></span></legend>
+							<div>
+								<label class="description">
+									<input type="radio" name="roots_theme_options[fout_b_gone]" value="yes" <?php checked($roots_options['fout_b_gone'], true); ?> />
+									<span><?php echo _e('Yes', 'roots'); ?></span>
+								</label>
+							</div>
+							<div>
+								<label class="description">
+									<input type="radio" name="roots_theme_options[fout_b_gone]" value="no" <?php checked($roots_options['fout_b_gone'], false); ?> />
+									<span><?php echo _e('No', 'roots'); ?></span>
+								</label>
+							</div>
+						</fieldset>
+					</td>
+				</tr>										
 				
 			</table>
 
@@ -190,6 +234,12 @@ function roots_theme_options_validate($input) {
 		
 	if (isset($input['google_analytics_id']))
 		$output['google_analytics_id'] = $input['google_analytics_id'];			
+
+	if (isset($input['clean_menu']))
+		$output['clean_menu'] = ($input['clean_menu'] === 'yes') ? true : false;
+		
+	if (isset($input['fout_b_gone']))
+		$output['fout_b_gone'] = ($input['fout_b_gone'] === 'yes') ? true : false;		
 
 	return apply_filters('roots_theme_options_validate', $output, $input, $defaults);
 }
