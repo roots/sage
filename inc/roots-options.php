@@ -69,6 +69,10 @@ function roots_css_framework() {
 			'value' => 'adapt',
 			'label' => __('Adapt.js', 'roots'),
 		),		
+		'less' => array(
+			'value' => 'less',
+			'label' => __('Less Framework', 'roots'),
+		),		
 	);
 
 	return apply_filters('roots_css_framework', $framework_options);
@@ -220,6 +224,7 @@ function roots_theme_options_validate($input) {
 	       case '960gs_24': $output['container_class'] = 'container_24'; break;
 	       case '1140': $output['container_class'] = 'container'; break;
 	       case 'adapt': $output['container_class'] = 'container_12 clearfix'; break;
+	       case 'less': $output['container_class'] = 'body'; break;
 	}
 	
 	if (isset($input['main_class']))

@@ -93,8 +93,10 @@ function roots_get_stylesheets() {
 		$styles .= "\t<noscript>\n";
 		$styles .= "\t<link rel=\"stylesheet\" href=\"$template_uri/css/adapt/mobile.css\">\n";
 		$styles .= "\t</noscript>\n";
+	} elseif ($roots_css_framework === 'less') {
+		$styles .= "<link rel=\"stylesheet\" href=\"$template_uri/css/less/less.css\">\n";
 	}
-
+	
 	if (class_exists('RGForms')) {
 		$styles .= "\t<link rel=\"stylesheet\" href=\"" . plugins_url(). "/gravityforms/css/forms.css\">\n";
 	}
@@ -106,7 +108,7 @@ function roots_get_stylesheets() {
 	} elseif ($roots_css_framework === '1140') {
 		$styles .= "\t<!--[if lt IE 8]><link rel=\"stylesheet\" href=\"$template_uri/css/1140/ie.css\"><![endif]-->\n";
 	}
-
+	
 	echo $styles;
 }
 
