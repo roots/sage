@@ -77,21 +77,21 @@ function roots_get_stylesheets() {
 	$styles = '';
 
 	if ($roots_css_framework === 'blueprint') {
-		$styles .= "<link rel=\"stylesheet\" href=\"$template_uri/css/blueprint/screen.css\">\n";
+    $styles .= stylesheet_link_tag('/blueprint/screen.css');
 	} elseif ($roots_css_framework === '960gs_12' || $roots_css_framework === '960gs_16') {
-		$styles .= "<link rel=\"stylesheet\" href=\"$template_uri/css/960/reset.css\">\n";
-		$styles .= "\t<link rel=\"stylesheet\" href=\"$template_uri/css/960/text.css\">\n";
-		$styles .= "\t<link rel=\"stylesheet\" href=\"$template_uri/css/960/960.css\">\n";
+    $styles .= stylesheet_link_tag('/960/reset.css');
+    $styles .= stylesheet_link_tag('/960/text.css', 1);
+    $styles .= stylesheet_link_tag('/960/960.css', 1);
 	} elseif ($roots_css_framework === '960gs_24') {
-		$styles .= "<link rel=\"stylesheet\" href=\"$template_uri/css/960/reset.css\">\n";
-		$styles .= "\t<link rel=\"stylesheet\" href=\"$template_uri/css/960/text.css\">\n";
-		$styles .= "\t<link rel=\"stylesheet\" href=\"$template_uri/css/960/960_24_col.css\">\n";
+    $styles .= stylesheet_link_tag('/960/reset.css');
+    $styles .= stylesheet_link_tag('/960/text.css', 1);
+    $styles .= stylesheet_link_tag('/960/960_24_col.css', 1);
 	} elseif ($roots_css_framework === '1140') {
-		$styles .= "<link rel=\"stylesheet\" href=\"$template_uri/css/1140/1140.css\">\n";
+    $styles .= stylesheet_link_tag('/1140/1140.css');
 	} elseif ($roots_css_framework === 'adapt') {
-		$styles .= "<link rel=\"stylesheet\" href=\"$template_uri/css/adapt/master.css\">\n";
+    $styles .= stylesheet_link_tag('/adapt/master.css');
 		$styles .= "\t<noscript>\n";
-		$styles .= "\t<link rel=\"stylesheet\" href=\"$template_uri/css/adapt/mobile.css\">\n";
+    $styles .= stylesheet_link_tag('/adapt/mobile.css', 1);
 		$styles .= "\t</noscript>\n";
 	}
 
@@ -99,15 +99,25 @@ function roots_get_stylesheets() {
 		$styles .= "\t<link rel=\"stylesheet\" href=\"" . plugins_url(). "/gravityforms/css/forms.css\">\n";
 	}
 
-	$styles .= "\t<link rel=\"stylesheet\" href=\"$template_uri/css/style.css\">\n";
+  $styles .= stylesheet_link_tag('/style.css', 1);
 
 	if ($roots_css_framework === 'blueprint') {
-		$styles .= "\t<!--[if lt IE 8]><link rel=\"stylesheet\" href=\"$template_uri/css/blueprint/ie.css\"><![endif]-->\n";
+		$styles .= "\t<!--[if lt IE 8]>" . stylesheet_link_tag('/blueprint/ie.css', 0, false) . "<![endif]-->\n";
 	} elseif ($roots_css_framework === '1140') {
-		$styles .= "\t<!--[if lt IE 8]><link rel=\"stylesheet\" href=\"$template_uri/css/1140/ie.css\"><![endif]-->\n";
+		$styles .= "\t<!--[if lt IE 8]>" . stylesheet_link_tag('/1140/ie.css', 0, false) . "<![endif]-->\n";
 	}
 
 	echo $styles;
+}
+
+function stylesheet_link_tag($file, $tabs = 0, $newline = true) {
+  $i = 0;
+  $indent = '';
+  while ($i < $tabs) {
+    $indent .= "\t";
+    $i++;
+  }
+  return $indent . '<link rel="stylesheet" href="' . get_template_directory_uri() . '/css' . $file . '">' . ($newline ? "\n" : "");
 }
 
 function roots_1140_header_before() {
