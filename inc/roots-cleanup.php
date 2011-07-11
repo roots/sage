@@ -132,15 +132,16 @@ add_action('pre_get_posts', 'roots_relative_feed_urls' );
 function roots_language_attributes() {
 	$attributes = array();
 	$output = '';
-	if (!defined('WP_LANG')) {
-		$attributes[] = "lang=\"en\"";
-	} else if ($lang = get_bloginfo('language')) {
-		$attributes[] = "lang=\"$lang\"";
-	}
+  $lang = get_bloginfo('language');
+  if ($lang && $lang !== 'en-US') {
+    $attributes[] = "lang=\"$lang\"";
+  } else {
+    $attributes[] = 'lang="en"';
+  }
 
 	$output = implode(' ', $attributes);
 	$output = apply_filters('roots_language_attributes', $output);
-	echo $output;
+	return $output;
 }
 
 add_filter('language_attributes', 'roots_language_attributes');
