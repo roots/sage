@@ -152,8 +152,8 @@ add_filter('the_generator', 'roots_no_generator');
 
 // cleanup wp_head
 function roots_noindex() {
-	if ('0' == get_option('blog_public'))
-	echo "<meta name=\"robots\" content=\"noindex,nofollow\">\n";
+	if (get_option('blog_public') === '0')
+	echo '<meta name="robots" content="noindex,nofollow">', "\n";
 }	
 
 function roots_rel_canonical() {
@@ -163,7 +163,7 @@ function roots_rel_canonical() {
 	if (!$id = $wp_the_query->get_queried_object_id())
 		return;
 	$link = get_permalink($id);
-	echo "<link rel=\"canonical\" href=\"$link\">\n";
+	echo "\t<link rel=\"canonical\" href=\"$link\">\n";
 }
 
 // remove CSS from recent comments widget
@@ -176,7 +176,7 @@ function roots_remove_recent_comments_style() {
 
 // remove CSS from gallery
 function roots_gallery_style($css) {
-	return preg_replace("#<style type='text/css'>(.*?)</style>#s", '', $css);
+	return preg_replace("/<style type='text/css'>(.*?)</style>/s", '', $css);
 }
 
 function roots_head_cleanup() {
