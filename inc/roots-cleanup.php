@@ -76,13 +76,20 @@ add_filter('get_search_query', 'roots_search_query');
 // inspired by http://www.456bereastreet.com/archive/201010/how_to_make_wordpress_urls_root_relative/
 // thanks to Scott Walkinshaw (scottwalkinshaw.com)
 function roots_root_relative_url($input) {
-	preg_match('/(https?:\/\/[^\/|"]+)/', $input, $matches);
-	// make sure we aren't making external links relative
-	if (isset($matches[0]) && strpos($matches[0], site_url()) === false) {
-		return $input;
-	} else {
-		return str_replace(end($matches), '', $input);
-	}
+	$output = preg_replace_callback(
+    '/(https?:\/\/[^\/|"]+)([^"]+)?/',
+    create_function(
+      '$matches',
+      // if full URL is site_url, return a slash for relative root
+      'if (isset($matches[0]) && $matches[0] === site_url()) { return "/";' .
+      // if domain is equal to site_url, then make URL relative 
+      '} elseif (isset($matches[1]) && strpos($matches[1], site_url()) !== false) { return "$matches[2]";' .
+      // if domain is not equal to site_url, do not make external link relative
+      '} else { return $matches[0]; };'
+    ),
+    $input
+  );
+  return $output;
 }
 
 add_filter('bloginfo_url', 'roots_root_relative_url');
