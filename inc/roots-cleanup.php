@@ -76,13 +76,20 @@ add_filter('get_search_query', 'roots_search_query');
 // inspired by http://www.456bereastreet.com/archive/201010/how_to_make_wordpress_urls_root_relative/
 // thanks to Scott Walkinshaw (scottwalkinshaw.com)
 function roots_root_relative_url($input) {
-	preg_match('/(https?:\/\/[^\/|"]+)/', $input, $matches);
-	// make sure we aren't making external links relative
-	if (isset($matches[0]) && strpos($matches[0], site_url()) === false) {
-		return $input;
-	} else {
-		return str_replace(end($matches), '', $input);
-	}
+	$output = preg_replace_callback(
+    '/(https?:\/\/[^\/|"]+)([^"]+)?/',
+    create_function(
+      '$matches',
+      // if full URL is site_url, return a slash for relative root
+      'if (isset($matches[0]) && $matches[0] === site_url()) { return "/";' .
+      // if domain is equal to site_url, then make URL relative 
+      '} elseif (isset($matches[0]) && strpos($matches[0], site_url()) !== false) { return $matches[2];' .
+      // if domain is not equal to site_url, do not make external link relative
+      '} else { return $matches[0]; };'
+    ),
+    $input
+  );
+  return $output;
 }
 
 add_filter('bloginfo_url', 'roots_root_relative_url');
@@ -125,15 +132,16 @@ add_action('pre_get_posts', 'roots_relative_feed_urls' );
 function roots_language_attributes() {
 	$attributes = array();
 	$output = '';
-	if (!defined('WP_LANG')) {
-		$attributes[] = "lang=\"en\"";
-	} else if ($lang = get_bloginfo('language')) {
-		$attributes[] = "lang=\"$lang\"";
-	}
+  $lang = get_bloginfo('language');
+  if ($lang && $lang !== 'en-US') {
+    $attributes[] = "lang=\"$lang\"";
+  } else {
+    $attributes[] = 'lang="en"';
+  }
 
 	$output = implode(' ', $attributes);
 	$output = apply_filters('roots_language_attributes', $output);
-	echo $output;
+	return $output;
 }
 
 add_filter('language_attributes', 'roots_language_attributes');
@@ -144,8 +152,8 @@ add_filter('the_generator', 'roots_no_generator');
 
 // cleanup wp_head
 function roots_noindex() {
-	if ('0' == get_option('blog_public'))
-	echo "<meta name=\"robots\" content=\"noindex,nofollow\">\n";
+	if (get_option('blog_public') === '0')
+	echo '<meta name="robots" content="noindex,nofollow">', "\n";
 }	
 
 function roots_rel_canonical() {
@@ -155,7 +163,7 @@ function roots_rel_canonical() {
 	if (!$id = $wp_the_query->get_queried_object_id())
 		return;
 	$link = get_permalink($id);
-	echo "<link rel=\"canonical\" href=\"$link\">\n";
+	echo "\t<link rel=\"canonical\" href=\"$link\">\n";
 }
 
 // remove CSS from recent comments widget
@@ -168,7 +176,7 @@ function roots_remove_recent_comments_style() {
 
 // remove CSS from gallery
 function roots_gallery_style($css) {
-	return preg_replace("#<style type='text/css'>(.*?)</style>#s", '', $css);
+	return preg_replace("/<style type='text/css'>(.*?)</style>/s", '', $css);
 }
 
 function roots_head_cleanup() {

@@ -18,7 +18,7 @@ class roots_vcard extends WP_Widget {
 		$email = $instance['email'];
 	?>
 		<?php echo $before_widget; ?>
-		<?php if ($title) echo $before_title . $title . $after_title; ?>  
+		<?php if ($title) echo $before_title, $title, $after_title; ?>  
 		<p class="vcard">
 			<a class="fn org url" href="<?php echo home_url('/'); ?>"><?php bloginfo('name'); ?></a><br>
 			<span class="adr">
