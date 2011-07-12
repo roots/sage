@@ -93,6 +93,8 @@ function roots_get_stylesheets() {
 		$styles .= "\t<noscript>\n";
     $styles .= stylesheet_link_tag('/adapt/mobile.css', 1);
 		$styles .= "\t</noscript>\n";
+	} elseif ($roots_css_framework === 'less') {
+    $styles .= stylesheet_link_tag('/less/less.css');
 	}
 
 	if (class_exists('RGForms')) {
