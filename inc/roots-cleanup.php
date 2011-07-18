@@ -176,7 +176,7 @@ function roots_remove_recent_comments_style() {
 
 // remove CSS from gallery
 function roots_gallery_style($css) {
-	return preg_replace("/<style type='text/css'>(.*?)</style>/s", '', $css);
+	return preg_replace("/<style type='text\/css'>(.*?)<\/style>/s", '', $css);
 }
 
 function roots_head_cleanup() {
