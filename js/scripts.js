@@ -1,10 +1,10 @@
-$(document).ready(function() {
+jQuery(document).ready(function() {
 
-//	$('#cycle').cycle({
+//	jQuery('#cycle').cycle({
 //		fx: 'fade'
 //	});
 
-//	$('figure.gallery-item a').attr('rel','gallery');
-//	$('figure.gallery-item a[rel="gallery"]').fancybox();
+//	jQuery('figure.gallery-item a').attr('rel','gallery');
+//	jQuery('figure.gallery-item a[rel="gallery"]').fancybox();
 
 });
