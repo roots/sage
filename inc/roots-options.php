@@ -104,8 +104,8 @@ $roots_css_frameworks = array(
 		'label'   => __('Less Framework 4', 'roots'),
     'classes' => array(
       'container' => 'container',
-      'main'    => 'grid_6',
-      'sidebar' => 'grid_4'
+      'main'    => '',
+      'sidebar' => ''
     )
   ),
   'none' => array(
