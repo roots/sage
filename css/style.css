@@ -1,9 +1,10 @@
 /* =============================================================================
-   HTML5 element display
+   HTML5 display definitions
    ========================================================================== */
 
 article, aside, details, figcaption, figure, footer, header, hgroup, nav, section { display: block; }
-audio[controls], canvas, video { display: inline-block; *display: inline; *zoom: 1; }
+audio, canvas, video { display: inline-block; *display: inline; *zoom: 1; }
+audio:not([controls]) { display: none; }
 
 
 /* =============================================================================
@@ -106,7 +107,7 @@ nav ul, nav ol { list-style: none; margin: 0; padding: 0; }
    Embedded content
    ========================================================================== */
 
-img { border: 0; -ms-interpolation-mode: bicubic; }
+img { border: 0; -ms-interpolation-mode: bicubic; vertical-align: middle; }
 
 svg:not(:root) { overflow: hidden; }
 
@@ -125,13 +126,15 @@ figure { margin: 0; }
 form { margin: 0; }
 fieldset { border: 0; margin: 0; padding: 0; }
 
-legend { border: 0; *margin-left: -7px; padding: 0; }
-
 label { cursor: pointer; }
+
+legend { border: 0; *margin-left: -7px; padding: 0; }
 
 button, input, select, textarea { font-size: 100%; margin: 0; vertical-align: baseline; *vertical-align: middle; }
 
 button, input { line-height: normal; *overflow: visible; }
+
+table button, table input { *overflow: auto; }
 
 button, input[type="button"], input[type="reset"], input[type="submit"] { cursor: pointer; -webkit-appearance: button; }
 
@@ -140,7 +143,7 @@ input[type="search"] { -moz-box-sizing: content-box; -webkit-box-sizing: content
 
 button::-moz-focus-inner, input::-moz-focus-inner { border: 0; padding: 0; }
 
-textarea { overflow: auto; vertical-align: top; }
+textarea { overflow: auto; vertical-align: top; resize: vertical; }
 
 input:valid, textarea:valid {  }
 input:invalid, textarea:invalid { background-color: #f0dddd; }
@@ -532,9 +535,10 @@ img.ui-datepicker-trigger { vertical-align: middle; }
    Please define your styles before this section.
    ========================================================================== */
 
-.ir { display: block; text-indent: -999em; overflow: hidden; background-repeat: no-repeat; text-align: left; direction: ltr; }
+.ir { display: block; border: 0; text-indent: -999em; overflow: hidden; background-color: transparent; background-repeat: no-repeat; text-align: left; direction: ltr; }
 .ir br { display: none; }
 
+[hidden] { display: none; visibility: hidden; }
 .hidden { display: none; visibility: hidden; }
 
 .visuallyhidden { border: 0; clip: rect(0 0 0 0); height: 1px; margin: -1px; overflow: hidden; padding: 0; position: absolute; width: 1px; }
@@ -573,7 +577,7 @@ img.ui-datepicker-trigger { vertical-align: middle; }
  
 @media print {
 	* { background: transparent !important; color: black !important; text-shadow: none !important; filter:none !important; -ms-filter: none !important; }
-	a, a:visited { color: #444 !important; text-decoration: underline; }
+	a, a:visited { text-decoration: underline; }
 	a[href]:after { content: " (" attr(href) ")"; }
 	abbr[title]:after { content: " (" attr(title) ")"; }
 	.ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after { content: ""; }
@@ -583,5 +587,5 @@ img.ui-datepicker-trigger { vertical-align: middle; }
 	img { max-width: 100% !important; }
 	@page { margin: 0.5cm; }
 	p, h2, h3 { orphans: 3; widows: 3; }
-	h2, h3{ page-break-after: avoid; }
+	h2, h3 { page-break-after: avoid; }
 }
