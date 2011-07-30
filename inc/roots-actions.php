@@ -73,7 +73,6 @@ function roots_get_stylesheets() {
 	global $roots_options;
 	$roots_css_framework = $roots_options['css_framework'];
 	
-	$template_uri = get_template_directory_uri();
 	$styles = '';
 
 	if ($roots_css_framework === 'blueprint') {
@@ -101,7 +100,12 @@ function roots_get_stylesheets() {
 		$styles .= "\t<link rel=\"stylesheet\" href=\"" . plugins_url(). "/gravityforms/css/forms.css\">\n";
 	}
 
-  $styles .= stylesheet_link_tag('/style.css', 1);
+  if (is_child_theme()) {
+    $styles .= stylesheet_link_tag('/style.css', 1);
+		$styles .= "\t<link rel=\"stylesheet\" href=\"" . get_stylesheet_uri(). "\">\n";
+  } else {
+    $styles .= stylesheet_link_tag('/style.css', 1);
+  }
 
 	if ($roots_css_framework === 'blueprint') {
 		$styles .= "\t<!--[if lt IE 8]>" . stylesheet_link_tag('/blueprint/ie.css', 0, false) . "<![endif]-->\n";

@@ -1,7 +1,6 @@
 <?php
 
 $theme_name = next(explode('/themes/', get_stylesheet_directory()));
-$theme_data = get_theme_data(ABSPATH . 'wp-content/themes/' . $theme_name . '/style.css');
 
 // Rewrites DO NOT happen for child themes
 // rewrite /wp-content/themes/roots/css/ to /css/
@@ -44,7 +43,7 @@ function roots_clean_plugins($content) {
 }
 
 // only use clean urls if the theme isn't a child or an MU (Network) install
-if ((!defined('WP_ALLOW_MULTISITE') || (defined('WP_ALLOW_MULTISITE') && WP_ALLOW_MULTISITE !== true)) && $theme_data['Template'] === '') {
+if ((!defined('WP_ALLOW_MULTISITE') || (defined('WP_ALLOW_MULTISITE') && WP_ALLOW_MULTISITE !== true)) && !is_child_theme()) {
 	add_action('generate_rewrite_rules', 'roots_add_rewrites');
 	add_filter('plugins_url', 'roots_clean_plugins');
 	add_filter('bloginfo', 'roots_clean_assets');
