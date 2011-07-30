@@ -18,7 +18,7 @@ function roots_add_h5bp_htaccess($rules) {
 	define('WP_CONTENT_DIR', ABSPATH . 'wp-content');	
 
 	$theme_name = next(explode('/themes/', get_template_directory()));
-	$filename = WP_CONTENT_DIR . '/themes/' . $theme_name . '/inc/h5bp-.htaccess';
+	$filename = WP_CONTENT_DIR . '/themes/' . $theme_name . '/inc/h5bp-htaccess';
 
 	$rules .= $wp_filesystem->get_contents($filename);
 	
