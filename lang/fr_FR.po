@@ -1,0 +1,365 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Jonathan Liuti <liuti.john@gmail.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+
+#. Text in echo
+#: comments.php:80
+#: comments.php:84
+msgid " (required)"
+msgstr "(obligatoire)"
+
+#. Text in echo
+#: inc/roots-options.php:127
+#: inc/roots-options.php:129
+msgid "#main CSS Classes"
+msgstr "Classes CSS #main  "
+
+#. Text in echo
+#: inc/roots-options.php:137
+#: inc/roots-options.php:139
+msgid "#sidebar CSS Classes"
+msgstr "Classes CSS #sidebar "
+
+#. Text in function
+#: comments.php:46
+msgid "% Responses to"
+msgstr "% Réponses à"
+
+#. Text in function
+#: comments.php:8
+msgid "%1$s"
+msgstr ""
+
+#. Text in function
+#: inc/roots-options.php:94
+msgid "%s Theme Options"
+msgstr "%s Options de thème"
+
+#. Text in function
+#: comments.php:53
+msgid "&larr; Older comments"
+msgstr "&larr; Commentaires plus anciens"
+
+#. Text in function
+#: loop-search.php:33
+#: loop.php:37
+msgid "&larr; Older posts"
+msgstr "&larr; Articles plus anciens"
+
+#. Text in function
+#: comments.php:9
+msgid "(Edit)"
+msgstr "(Editer)"
+
+#. Text in function
+#: inc/roots-options.php:1
+msgid "1140"
+msgstr "1140"
+
+#. Text in function
+#: inc/roots-options.php:1
+msgid "960gs (12 cols)"
+msgstr "960gs (12 cols)"
+
+#. Text in function
+#: inc/roots-options.php:1
+msgid "960gs (16 cols)"
+msgstr "960gs (16 cols)"
+
+#. Text in function
+#: inc/roots-options.php:1
+msgid "960gs (24 cols)"
+msgstr "960gs (24 cols)"
+
+#. Text in function
+#: comments.php:7
+msgid "<cite class=\"fn\">%s</cite>"
+msgstr "<cite class=\"fn\">%s</cite>"
+
+#. Text in function
+#: inc/roots-options.php:1
+msgid "Adapt.js"
+msgstr "Adapt.js"
+
+#. Text in echo
+#: page-sitemap.php:18
+msgid "Archives"
+msgstr "Archives"
+
+#. Text in function
+#: inc/roots-options.php:1
+msgid "Blueprint CSS"
+msgstr "Blueprint CSS"
+
+#. Text in echo
+#: inc/roots-options.php:106
+#: inc/roots-options.php:108
+msgid "CSS Grid Framework"
+msgstr "Framework CSS en grille "
+
+#. Text in echo
+#: 404.php:13
+msgid "Check your spelling"
+msgstr "Vérifier votre syntaxe"
+
+#. Text in echo
+#: inc/roots-widgets.php:61
+msgid "City/Locality:"
+msgstr "Ville/Localité:"
+
+#. Text in echo
+#: 404.php:15
+msgid "Click the <a href=\"javascript:history.back()\">Back</a> button"
+msgstr "Click the <a href=\"javascript:history.back()\">Retour</a> button"
+
+#. Text in echo
+#: comments.php:93
+msgid "Comment"
+msgstr "Commentaire"
+
+#. Text in echo
+#: comments.php:63
+msgid "Comments are closed."
+msgstr "Les commentaires sont fermés"
+
+#. Text in function
+#: inc/roots-cleanup.php:1
+msgid "Continued"
+msgstr "Suite"
+
+#. Text in function
+#: inc/roots-options.php:132
+#: inc/roots-options.php:142
+msgid "Default: %s"
+msgstr "Defaut: %s"
+
+#. Text in echo
+#: comments.php:84
+msgid "Email (will not be published)"
+msgstr "Email (ne sera pas publié)"
+
+#. Text in echo
+#: inc/roots-widgets.php:77
+msgid "Email:"
+msgstr "Email:"
+
+#. Text in function
+#: inc/roots-options.php:152
+msgid "Enter your UA-XXXXX-X ID"
+msgstr "Entrez votre ID UA-XXXXX-X"
+
+#. Text in echo
+#: 404.php:7
+msgid "File Not Found"
+msgstr "Fichier non trouvé"
+
+#. Text in echo
+#: inc/roots-options.php:147
+#: inc/roots-options.php:149
+msgid "Google Analytics ID"
+msgstr " ID Google Analytics"
+
+#. Text in echo
+#: index.php:7
+msgid "Latest Posts"
+msgstr "Dernier Articles"
+
+#. Text in function
+#: comments.php:70
+msgid "Leave a Reply"
+msgstr "Répondre"
+
+#. Text in function
+#: comments.php:70
+msgid "Leave a Reply to %s"
+msgstr "Répondre à  %s"
+
+#. Text in echo
+#: comments.php:77
+msgid "Log out &raquo;"
+msgstr "Déconnexion &raquo;"
+
+#. Text in function
+#: comments.php:77
+msgid "Log out of this account"
+msgstr "Déconnexion de ce compte"
+
+#. Text in function
+#: comments.php:77
+msgid "Logged in as <a href=\"%s/wp-admin/profile.php\">%s</a>."
+msgstr "Connecté en tant que <a href=\"%s/wp-admin/profile.php\">%s</a>."
+
+#. Text in echo
+#: comments.php:80
+msgid "Name"
+msgstr "Nom"
+
+#. Text in function
+#: comments.php:54
+msgid "Newer comments &rarr;"
+msgstr "Commentaires plus récents &rarr;"
+
+#. Text in function
+#: loop-search.php:34
+#: loop.php:38
+msgid "Newer posts &rarr;"
+msgstr "Articles plus récents &rarr;"
+
+#. Text in function
+#: comments.php:46
+msgid "No Responses to"
+msgstr "Pas de réponse."
+
+#. Text in function
+#: comments.php:46
+msgid "One Response to"
+msgstr "1 réponse"
+
+#. Text in echo
+#: page-sitemap.php:14
+msgid "Pages"
+msgstr "Pages"
+
+#. Text in function
+#: loop-page.php:7
+#: loop-single.php:17
+msgid "Pages:"
+msgstr "Pages:"
+
+#. Text in function
+#: comments.php:28
+msgid "Please do not load this page directly. Thanks!"
+msgstr "Veuillez ne pas charger cette page directement. Merci!"
+
+#. Text in function
+#: inc/roots-htaccess.php:1
+msgid "Please make sure your <a href=\"%s\">.htaccess</a> file is writeable "
+msgstr "Veuillez vérifier que votre fichier <a href=\"%s\">.htaccess</a> est accessible en écriture"
+
+#. Text in echo
+#: 404.php:11
+msgid "Please try the following:"
+msgstr "Veuillez essayez les actions suivantes:"
+
+#. Text in function
+#: inc/roots-admin.php:1
+msgid "Please update your <a href=\"%s\">site tagline</a>"
+msgstr "Veuillez mettre à jour votre <a href=\"%s\">slogan de site</a>"
+
+#. Text in function
+#: loop-single.php:8
+#: loop-search.php:16
+#: loop.php:16
+msgid "Posted on %s at %s."
+msgstr "Ajouté le %s à %s"
+
+#. Text in echo
+#: page-sitemap.php:16
+msgid "Posts"
+msgstr "Articles"
+
+#. Text in function
+#: 404.php:14
+msgid "Return to the <a href=\"%s\">home page</a>"
+msgstr "Revenir à la <a href=\"%s\">page d'accueil</a>"
+
+#. Text in function
+#: inc/roots-widgets.php:1
+msgid "Roots: vCard"
+msgstr "Roots: vCard"
+
+#. Text in echo
+#: searchform.php:3
+#: searchform.php:4
+msgid "Search"
+msgstr "Recherche"
+
+#. Text in echo
+#: search.php:7
+msgid "Search Results for"
+msgstr "Résultat de recherche pour"
+
+#. Text in echo
+#: searchform.php:2
+msgid "Search for:"
+msgstr "Rechercher pour:"
+
+#. Text in echo
+#: loop-search.php:4
+#: loop.php:4
+msgid "Sorry, no results were found."
+msgstr "Désolé, aucun résultat n'a été trouvé."
+
+#. Text in echo
+#: inc/roots-widgets.php:65
+msgid "State/Region:"
+msgstr "Etat/Région:"
+
+#. Text in echo
+#: inc/roots-widgets.php:57
+msgid "Street Address:"
+msgstr "Rue:"
+
+#. Text in echo
+#: comments.php:96
+msgid "Submit Comment"
+msgstr "Ajouter un commentaire"
+
+#. Text in echo
+#: inc/roots-widgets.php:73
+msgid "Telephone:"
+msgstr "Téléphone:"
+
+#. Text in echo
+#: 404.php:9
+msgid "The page you are looking for might have been removed, had its name changed, or is temporarily unavailable."
+msgstr "La page que vous recherchez a changé de nom ou est temporairement inaccessible"
+
+#. Text in function
+#: inc/roots-options.php:1
+msgid "Theme Options"
+msgstr "Options de thème"
+
+#. Text in echo
+#: comments.php:36
+msgid "This post is password protected. Enter the password to view comments."
+msgstr "Cet article est protégé par mot de passe. Entrez le mot de passe pour voir les commentaires."
+
+#. Text in echo
+#: inc/roots-widgets.php:53
+msgid "Title (optional):"
+msgstr "Titre (facultatif):"
+
+#. Text in echo
+#: comments.php:88
+msgid "Website"
+msgstr "Site web"
+
+#. Text in echo
+#: loop-single.php:10
+#: loop-search.php:17
+msgid "Written by"
+msgstr "Ecrit par"
+
+#. Text in function
+#: comments.php:73
+msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
+msgstr "Vous devez être <a href=\"%s\">connecté</a> pour ajouter un commentaire."
+
+#. Text in echo
+#: comments.php:14
+msgid "Your comment is awaiting moderation."
+msgstr "Votre commentaire est en attente de modération."
+
+#. Text in echo
+#: inc/roots-widgets.php:69
+msgid "Zipcode/Postal Code:"
+msgstr "Code Zip/ Code postal:"
+
