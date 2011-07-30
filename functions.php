@@ -1,4 +1,5 @@
 <?php
+load_theme_textdomain('roots');
 
 locate_template(array('inc/roots-activation.php'), true, true);	// activation
 locate_template(array('inc/roots-admin.php'), true, true);		// admin additions/mods
@@ -11,7 +12,6 @@ locate_template(array('inc/roots-widgets.php'), true, true);	// widgets
 locate_template(array('inc/roots-custom.php'), true, true);		// custom functions
 
 $roots_options = roots_get_theme_options();
-
 // set the maximum 'Large' image width to the maximum grid width
 if (!isset($content_width)) {
 	global $roots_options;
