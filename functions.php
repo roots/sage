@@ -12,62 +12,17 @@ locate_template(array('inc/roots-custom.php'), true, true);		// custom functions
 
 $roots_options = roots_get_theme_options();
 
-// get active theme directory name
-// this allows you to rename the theme directory without breaking anything
-$theme_name = next(explode('/themes/', get_template_directory()));
-
-function get_roots_stylesheets() {
-	global $roots_options;
-	$roots_css_framework = $roots_options['css_framework'];
-	
-	$template_uri = get_template_directory_uri();
-	$styles = '';
-
-	if ($roots_css_framework === 'blueprint') {
-		$styles .= "<link rel=\"stylesheet\" href=\"$template_uri/css/blueprint/screen.css\">\n";
-	} elseif ($roots_css_framework === '960gs_12' || $roots_css_framework === '960gs_16') {
-		$styles .= "<link rel=\"stylesheet\" href=\"$template_uri/css/960/reset.css\">\n";
-		$styles .= "\t<link rel=\"stylesheet\" href=\"$template_uri/css/960/text.css\">\n";
-		$styles .= "\t<link rel=\"stylesheet\" href=\"$template_uri/css/960/960.css\">\n";
-	} elseif ($roots_css_framework === '960gs_24') {
-		$styles .= "<link rel=\"stylesheet\" href=\"$template_uri/css/960/reset.css\">\n";
-		$styles .= "\t<link rel=\"stylesheet\" href=\"$template_uri/css/960/text.css\">\n";
-		$styles .= "\t<link rel=\"stylesheet\" href=\"$template_uri/css/960/960_24_col.css\">\n";
-	} elseif ($roots_css_framework === '1140') {
-		$styles .= "<link rel=\"stylesheet\" href=\"$template_uri/css/1140/1140.css\">\n";
-	} elseif ($roots_css_framework === 'adapt') {
-		$styles .= "<link rel=\"stylesheet\" href=\"$template_uri/css/adapt/master.css\">\n";
-		$styles .= "\t<noscript>\n";
-		$styles .= "\t<link rel=\"stylesheet\" href=\"$template_uri/css/adapt/mobile.css\">\n";
-		$styles .= "\t</noscript>\n";
-	}
-
-	if (class_exists('RGForms')) {
-		$styles .= "\t<link rel=\"stylesheet\" href=\"" . plugins_url(). "/gravityforms/css/forms.css\">\n";
-	}
-
-	$styles .= "\t<link rel=\"stylesheet\" href=\"$template_uri/css/style.css\">\n";
-
-	if ($roots_css_framework === 'blueprint') {
-		$styles .= "\t<!--[if lt IE 8]><link rel=\"stylesheet\" href=\"$template_uri/css/blueprint/ie.css\"><![endif]-->\n";
-	} elseif ($roots_css_framework === '1140') {
-		$styles .= "\t<!--[if lt IE 8]><link rel=\"stylesheet\" href=\"$template_uri/css/1140/ie.css\"><![endif]-->\n";
-	}
-
-	return $styles;
-}
-	
 // set the maximum 'Large' image width to the maximum grid width
 if (!isset($content_width)) {
 	global $roots_options;
 	$roots_css_framework = $roots_options['css_framework'];
 	switch ($roots_css_framework) {
-	    case 'blueprint':	$content_width = 950;	break;
-	    case '960gs_12':	$content_width = 940;	break;
-	    case '960gs_16':	$content_width = 940;	break;
-	    case '960gs_24':	$content_width = 940;	break;
-	    case '1140':		$content_width = 1140;	break;
-	    default:			$content_width = 950;	break;
+	    case 'blueprint': 	$content_width = 950;	break;
+	    case '960gs_12': 	$content_width = 940;	break;
+	    case '960gs_16': 	$content_width = 940;	break;
+	    case '960gs_24': 	$content_width = 940;	break;
+	    case '1140': 		$content_width = 1140;	break;
+	    default: 			$content_width = 950;	break;
 	}
 }
 
@@ -82,12 +37,10 @@ add_theme_support('post-thumbnails');
 // add_theme_support('post-formats', array('aside', 'gallery', 'link', 'image', 'quote', 'status', 'video', 'audio', 'chat'));
 
 add_theme_support('menus');
-register_nav_menus(
-	array(
-		'primary_navigation' => 'Primary Navigation',
-		'utility_navigation' => 'Utility Navigation'
-	)
-);
+register_nav_menus(array(
+	'primary_navigation' => __('Primary Navigation', 'roots'),
+	'utility_navigation' => __('Utility Navigation', 'roots')
+));
 
 // create widget areas: sidebar, footer
 $sidebars = array('Sidebar', 'Footer');
@@ -124,5 +77,11 @@ function roots_robots() {
 	echo "Allow: /wp-content/uploads\n";
 	echo "Allow: /assets";
 }
+
+function roots_author_link($link) {
+  return str_replace('<a ', '<a class="fn" rel="author"', $link);
+}
+
+add_filter('the_author_posts_link', 'roots_author_link');
 
 ?>

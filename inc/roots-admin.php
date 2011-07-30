@@ -7,9 +7,6 @@ function roots_admin_init() {
 	$home_url = home_url();
 	$theme_name = next(explode('/themes/', get_template_directory()));
 	
-	//wp_register_script('roots_codemirror', "$home_url/wp-content/themes/roots/inc/js/codemirror/codemirror.js");
-	//wp_enqueue_script('roots_codemirror');
-
 	wp_register_style('roots_admin_css', "$home_url/wp-content/themes/$theme_name/inc/css/admin.css");
 	wp_enqueue_style('roots_admin_css');
 	

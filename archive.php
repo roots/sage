@@ -4,7 +4,17 @@
 		<?php roots_main_before(); ?>
 			<div id="main" class="<?php echo $roots_options['main_class']; ?>" role="main">
 				<div class="container">
-					<h1><?php single_cat_title(); ?></h1>
+					<h1>
+						<?php if (is_day()) : ?>
+							<?php printf(__('Daily Archives: %s', 'roots'), get_the_date()); ?>
+						<?php elseif (is_month()) : ?>
+							<?php printf(__('Monthly Archives: %s', 'roots'), get_the_date('F Y')); ?>
+						<?php elseif (is_year()) : ?>
+							<?php printf(__('Yearly Archives: %s', 'roots'), get_the_date('Y')); ?>
+						<?php else : ?>
+							<?php single_cat_title(); ?>
+						<?php endif; ?>
+					</h1>
 					<?php roots_loop_before(); ?>
 					<?php get_template_part('loop', 'category'); ?>
 					<?php roots_loop_after(); ?>

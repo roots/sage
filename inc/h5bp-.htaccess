@@ -1,0 +1,284 @@
+# ----------------------------------------------------------------------
+# Better website experience for IE users
+# ----------------------------------------------------------------------
+
+# Force the latest IE version, in various cases when it may fall back to IE7 mode
+#  github.com/rails/rails/commit/123eb25#commitcomment-118920
+# Use ChromeFrame if it's installed for a better experience for the poor IE folk
+
+<IfModule mod_setenvif.c>
+  <IfModule mod_headers.c>
+    BrowserMatch MSIE ie
+    Header set X-UA-Compatible "IE=Edge,chrome=1" env=ie
+  </IfModule>
+</IfModule>
+
+<IfModule mod_headers.c>
+# Because X-UA-Compatible isn't sent to non-IE (to save header bytes),
+# We need to inform proxies that content changes based on UA
+  Header append Vary User-Agent
+# Cache control is set only if mod_headers is enabled, so that's unncessary to declare
+</IfModule>
+
+
+# ----------------------------------------------------------------------
+# Cross-domain AJAX requests
+# ----------------------------------------------------------------------
+
+# Serve cross-domain ajax requests, disabled.   
+# enable-cors.org
+# code.google.com/p/html5security/wiki/CrossOriginRequestSecurity
+
+#  <IfModule mod_headers.c>
+#    Header set Access-Control-Allow-Origin "*"
+#  </IfModule>
+
+
+
+# ----------------------------------------------------------------------
+# Webfont access
+# ----------------------------------------------------------------------
+
+# Allow access from all domains for webfonts.
+# Alternatively you could only whitelist your
+# subdomains like "sub.domain.com".
+
+<FilesMatch "\.(ttf|otf|eot|woff|font.css)$">
+  <IfModule mod_headers.c>
+    Header set Access-Control-Allow-Origin "*"
+  </IfModule>
+</FilesMatch>
+
+
+
+# ----------------------------------------------------------------------
+# Proper MIME type for all files
+# ----------------------------------------------------------------------
+
+# Audio
+AddType audio/ogg                      oga ogg
+AddType audio/mp4                      m4a
+
+# Video
+AddType video/ogg                      ogv
+AddType video/mp4                      mp4 m4v
+AddType video/webm                     webm
+
+# Proper svg serving. Required for svg webfonts on iPad
+#   twitter.com/FontSquirrel/status/14855840545
+AddType     image/svg+xml              svg svgz 
+AddEncoding gzip                       svgz
+                                       
+# Webfonts                             
+AddType application/vnd.ms-fontobject  eot
+AddType application/x-font-ttf    ttf ttc
+AddType font/opentype                  otf
+AddType application/x-font-woff        woff
+
+# Assorted types                                      
+AddType image/x-icon                   ico
+AddType image/webp                     webp
+AddType text/cache-manifest            appcache manifest
+AddType text/x-component               htc
+AddType application/x-chrome-extension crx
+AddType application/x-xpinstall        xpi
+AddType application/octet-stream       safariextz
+AddType text/x-vcard                   vcf
+
+
+
+# ----------------------------------------------------------------------
+# Gzip compression
+# ----------------------------------------------------------------------
+
+<IfModule mod_deflate.c>
+
+# Force deflate for mangled headers developer.yahoo.com/blogs/ydn/posts/2010/12/pushing-beyond-gzipping/
+<IfModule mod_setenvif.c>
+  <IfModule mod_headers.c>
+    SetEnvIfNoCase ^(Accept-EncodXng|X-cept-Encoding|X{15}|~{15}|-{15})$ ^((gzip|deflate)\s,?\s(gzip|deflate)?|X{4,13}|~{4,13}|-{4,13})$ HAVE_Accept-Encoding
+    RequestHeader append Accept-Encoding "gzip,deflate" env=HAVE_Accept-Encoding
+  </IfModule>
+</IfModule>
+
+# HTML, TXT, CSS, JavaScript, JSON, XML, HTC:
+<IfModule filter_module>
+  FilterDeclare   COMPRESS
+  FilterProvider  COMPRESS  DEFLATE resp=Content-Type $text/html
+  FilterProvider  COMPRESS  DEFLATE resp=Content-Type $text/css
+  FilterProvider  COMPRESS  DEFLATE resp=Content-Type $text/javascript
+  FilterProvider  COMPRESS  DEFLATE resp=Content-Type $text/plain
+  FilterProvider  COMPRESS  DEFLATE resp=Content-Type $text/xml
+  FilterProvider  COMPRESS  DEFLATE resp=Content-Type $text/x-component
+  FilterProvider  COMPRESS  DEFLATE resp=Content-Type $application/javascript
+  FilterProvider  COMPRESS  DEFLATE resp=Content-Type $application/json
+  FilterProvider  COMPRESS  DEFLATE resp=Content-Type $application/xml
+  FilterProvider  COMPRESS  DEFLATE resp=Content-Type $application/x-javascript
+  FilterChain     COMPRESS
+  FilterProtocol  COMPRESS  DEFLATE change=yes;byteranges=no
+</IfModule>
+
+<IfModule !mod_filter.c>
+  # Legacy versions of Apache
+  AddOutputFilterByType DEFLATE text/html text/plain text/css application/json
+  AddOutputFilterByType DEFLATE text/javascript application/javascript application/x-javascript 
+  AddOutputFilterByType DEFLATE text/xml application/xml text/x-component
+</IfModule>
+
+# Webfonts and SVG:
+  <FilesMatch "\.(ttf|otf|eot|svg)$" >
+    SetOutputFilter DEFLATE
+  </FilesMatch>
+</IfModule>
+
+
+
+# ----------------------------------------------------------------------
+# Stop screen flicker in IE on CSS rollovers
+# ----------------------------------------------------------------------
+
+# The following directives stop screen flicker in IE on CSS rollovers - in
+# combination with the "ExpiresByType" rules for images (see above). If
+# needed, un-comment the following rules.
+
+# BrowserMatch "MSIE" brokenvary=1
+# BrowserMatch "Mozilla/4.[0-9]{2}" brokenvary=1
+# BrowserMatch "Opera" !brokenvary
+# SetEnvIf brokenvary 1 force-no-vary
+
+
+
+# ----------------------------------------------------------------------
+# Cookie setting from iframes
+# ----------------------------------------------------------------------
+
+# Allow cookies to be set from iframes (for IE only)
+# If needed, uncomment and specify a path or regex in the Location directive
+
+# <IfModule mod_headers.c>
+#   <Location />
+#     Header set P3P "policyref=\"/w3c/p3p.xml\", CP=\"IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT\""
+#   </Location>
+# </IfModule>
+
+
+
+# ----------------------------------------------------------------------
+# Prevent SSL cert warnings
+# ----------------------------------------------------------------------
+
+# Rewrite secure requests properly to prevent SSL cert warnings, e.g. prevent 
+# https://www.domain.com when your cert only allows https://secure.domain.com
+# Uncomment the following lines to use this feature.
+
+# <IfModule mod_rewrite.c>
+#   RewriteCond %{SERVER_PORT} !^443
+#   RewriteRule (.*) https://example-domain-please-change-me.com/$1 [R=301,L]
+# </IfModule>
+
+
+
+# ----------------------------------------------------------------------
+# Prevent 404 errors for non-existing redirected folders
+# ----------------------------------------------------------------------
+
+# without -MultiViews, Apache will give a 404 for a rewrite if a folder of the same name does not exist 
+#   e.g. /blog/hello : webmasterworld.com/apache/3808792.htm
+
+Options -MultiViews 
+
+
+
+# ----------------------------------------------------------------------
+# UTF-8 encoding
+# ----------------------------------------------------------------------
+
+# Use UTF-8 encoding for anything served text/plain or text/html
+AddDefaultCharset utf-8
+
+# Force UTF-8 for a number of file formats
+AddCharset utf-8 .html .css .js .xml .json .rss
+
+
+
+# ----------------------------------------------------------------------
+# A little more security
+# ----------------------------------------------------------------------
+
+
+# Do we want to advertise the exact version number of Apache we're running?
+# Probably not.
+## This can only be enabled if used in httpd.conf - It will not work in .htaccess
+# ServerTokens Prod
+
+
+# "-Indexes" will have Apache block users from browsing folders without a default document
+# Usually you should leave this activated, because you shouldn't allow everybody to surf through
+# every folder on your server (which includes rather private places like CMS system folders).
+Options -Indexes
+
+
+# Block access to "hidden" directories whose names begin with a period. This
+# includes directories used by version control systems such as Subversion or Git.
+<IfModule mod_rewrite.c>
+  RewriteRule "(^|/)\." - [F]
+</IfModule>
+
+
+# If your server is not already configured as such, the following directive
+# should be uncommented in order to set PHP's register_globals option to OFF.
+# This closes a major security hole that is abused by most XSS (cross-site
+# scripting) attacks. For more information: http://php.net/register_globals
+#
+# IF REGISTER_GLOBALS DIRECTIVE CAUSES 500 INTERNAL SERVER ERRORS :
+#
+# Your server does not allow PHP directives to be set via .htaccess. In that
+# case you must make this change in your php.ini file instead. If you are
+# using a commercial web host, contact the administrators for assistance in
+# doing this. Not all servers allow local php.ini files, and they should
+# include all PHP configurations (not just this one), or you will effectively
+# reset everything to PHP defaults. Consult www.php.net for more detailed
+# information about setting PHP directives.
+
+# php_flag register_globals Off
+
+# Rename session cookie to something else, than PHPSESSID
+# php_value session.name sid
+
+# Do not show you are using php
+# php_flag expose_php Off
+
+# Level of log detail - log all errors
+# php_value error_reporting -1
+
+# Write errors to log file
+# php_flag log_errors On
+
+# Do not display errors in browser (production - Off, development - On)
+# php_flag display_errors Off
+
+# Do not display startup errors (production - Off, development - On)
+# php_flag display_startup_errors Off
+
+# Format errors in plain text
+# php_flag html_errors Off
+
+# Show multiple occurrence of error
+# php_flag ignore_repeated_errors Off
+
+# Show same errors from different sources
+# php_flag ignore_repeated_source Off
+
+# Size limit for error messages
+# php_value log_errors_max_len 1024
+
+# Don't precede error with string (doesn't accept empty string, use whitespace if you need)
+# php_value error_prepend_string " "
+
+# Don't prepend to error (doesn't accept empty string, use whitespace if you need)
+# php_value error_append_string " "
+
+# Increase cookie security
+<IfModule php5_module>
+	php_value session.cookie_httponly true
+</IfModule>

@@ -76,8 +76,20 @@ add_filter('get_search_query', 'roots_search_query');
 // inspired by http://www.456bereastreet.com/archive/201010/how_to_make_wordpress_urls_root_relative/
 // thanks to Scott Walkinshaw (scottwalkinshaw.com)
 function roots_root_relative_url($input) {
-	preg_match('/(https?:\/\/[^\/]+)/', $input, $matches);
-	return str_replace(end($matches), '', $input);
+	$output = preg_replace_callback(
+    '/(https?:\/\/[^\/|"]+)([^"]+)?/',
+    create_function(
+      '$matches',
+      // if full URL is site_url, return a slash for relative root
+      'if (isset($matches[0]) && $matches[0] === site_url()) { return "/";' .
+      // if domain is equal to site_url, then make URL relative 
+      '} elseif (isset($matches[0]) && strpos($matches[0], site_url()) !== false) { return $matches[2];' .
+      // if domain is not equal to site_url, do not make external link relative
+      '} else { return $matches[0]; };'
+    ),
+    $input
+  );
+  return $output;
 }
 
 add_filter('bloginfo_url', 'roots_root_relative_url');
@@ -98,10 +110,11 @@ add_filter('month_link', 'roots_root_relative_url');
 add_filter('day_link', 'roots_root_relative_url');
 add_filter('year_link', 'roots_root_relative_url');
 add_filter('tag_link', 'roots_root_relative_url');
+add_filter('the_author_posts_link', 'roots_root_relative_url');
 
 // Leaving plugins_url alone in admin to avoid potential issues (such as Gravity Forms)
 if (!is_admin()) {
-  add_filter('plugins_url', 'roots_root_relative_url');
+	add_filter('plugins_url', 'roots_root_relative_url');
 }
 
 // remove root relative URLs on any attachments in the feed
@@ -119,15 +132,16 @@ add_action('pre_get_posts', 'roots_relative_feed_urls' );
 function roots_language_attributes() {
 	$attributes = array();
 	$output = '';
-	if (!defined('WP_LANG')) {
-		$attributes[] = "lang=\"en\"";
-	} else if ($lang = get_bloginfo('language')) {
-		$attributes[] = "lang=\"$lang\"";
-	}
+  $lang = get_bloginfo('language');
+  if ($lang && $lang !== 'en-US') {
+    $attributes[] = "lang=\"$lang\"";
+  } else {
+    $attributes[] = 'lang="en"';
+  }
 
 	$output = implode(' ', $attributes);
 	$output = apply_filters('roots_language_attributes', $output);
-	echo $output;
+	return $output;
 }
 
 add_filter('language_attributes', 'roots_language_attributes');
@@ -138,8 +152,8 @@ add_filter('the_generator', 'roots_no_generator');
 
 // cleanup wp_head
 function roots_noindex() {
-	if ('0' == get_option('blog_public'))
-	echo "<meta name=\"robots\" content=\"noindex,nofollow\">\n";
+	if (get_option('blog_public') === '0')
+	echo '<meta name="robots" content="noindex,nofollow">', "\n";
 }	
 
 function roots_rel_canonical() {
@@ -149,7 +163,7 @@ function roots_rel_canonical() {
 	if (!$id = $wp_the_query->get_queried_object_id())
 		return;
 	$link = get_permalink($id);
-	echo "<link rel=\"canonical\" href=\"$link\">\n";
+	echo "\t<link rel=\"canonical\" href=\"$link\">\n";
 }
 
 // remove CSS from recent comments widget
@@ -162,7 +176,7 @@ function roots_remove_recent_comments_style() {
 
 // remove CSS from gallery
 function roots_gallery_style($css) {
-	return preg_replace("#<style type='text/css'>(.*?)</style>#s", '', $css);
+	return preg_replace("/<style type='text\/css'>(.*?)<\/style>/s", '', $css);
 }
 
 function roots_head_cleanup() {
@@ -341,5 +355,44 @@ function roots_nav_menu_args($args = '') {
 }
 
 add_filter('wp_nav_menu_args', 'roots_nav_menu_args');
+
+class roots_nav_walker extends Walker_Nav_Menu {
+	function start_el(&$output, $item, $depth, $args) {
+		global $wp_query;
+	    $indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
+
+	    $slug = sanitize_title($item->title);
+
+	    $class_names = $value = '';
+	    $classes = empty( $item->classes ) ? array() : (array) $item->classes;
+
+	    $classes = array_filter($classes, 'roots_check_current');
+
+	    $class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item ) );
+	    $class_names = $class_names ? ' class="' . esc_attr( $class_names ) . '"' : '';
+
+	    $id = apply_filters( 'nav_menu_item_id', 'menu-' . $slug, $item, $args );
+	    $id = strlen( $id ) ? ' id="' . esc_attr( $id ) . '"' : '';
+
+	    $output .= $indent . '<li' . $id . $class_names . '>';
+
+	    $attributes  = ! empty( $item->attr_title ) ? ' title="'  . esc_attr( $item->attr_title ) .'"' : '';
+	    $attributes .= ! empty( $item->target )     ? ' target="' . esc_attr( $item->target     ) .'"' : '';
+	    $attributes .= ! empty( $item->xfn )        ? ' rel="'    . esc_attr( $item->xfn        ) .'"' : '';
+	    $attributes .= ! empty( $item->url )        ? ' href="'   . esc_attr( $item->url        ) .'"' : '';
+
+	    $item_output = $args->before;
+	    $item_output .= '<a'. $attributes .'>';
+	    $item_output .= $args->link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $args->link_after;
+	    $item_output .= '</a>';
+	    $item_output .= $args->after;
+
+	    $output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
+	}
+}
+
+function roots_check_current($val) {
+	return preg_match('/current-menu/', $val);
+}
 
 ?>
