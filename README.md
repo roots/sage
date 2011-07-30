@@ -2,6 +2,26 @@
 
 ## Changelog:
 
+### 3.5.0: July 30th, 2011
+<ul>
+	<li>Complete rewrite of theme options based on Twenty Eleven</li>
+	<li>CSS frameworks: refactored code added default classes for each framework</li>
+	<li>CSS frameworks: added support for Adapt.js and LESS</li>
+	<li>CSS frameworks: added option for None</li>
+	<li>Added support for WPML and theme translation</li>
+	<li>Added option for cleaner nav menu output</li>
+	<li>Added option for FOUT-B-Gone</li>
+	<li>Added authorship del attribute to post author link</li>
+	<li>Activation bugfix for pages being added multiple times</li>
+	<li>Bugfixes to the root relative URL function</li>
+	<li>Child themes will now load their CSS automatically and properly</li>
+	<li>HTML5 Boilerplate updates (including Normalize.css, Modernizr 2.0, and Respond.js)</li>
+	<li>Cleaner way of including HTML5 Boilerplate's <code>.htaccess</code></li>
+	<li>Added hooks &amp; actions (and moved lots of code into them)</li>
+	<li>Renamed <code>includes/</code> directory to <code>inc/</code></li>
+	<li>Added a blank <code>inc/roots-custom.php</code> file</li>
+</ul>
+
 ### 3.2.4: May 19th, 2011
 <ul>
 	<li>Bugfixes</li>
@@ -140,7 +160,7 @@
 
 ## Contributors:
 
-[Scott Walkinshaw](http://www.scottwalkinshaw.com/), [Matthew Price](http://www.matthewaprice.com/), [Kyle Geminden](http://www.kylegeminden.com/), [Steve Jothen](http://twitter.com/sjothen), [John Liuti](http://twitter.com/JohnLiuti), [Jeremiah Wall](http://jeremiahwall.com/), [Jenny Jui-Shan Liang](http://jsliang.twgogo.org/), [Mason Stewart](http://masondesu.com/)
+[Scott Walkinshaw](http://www.scottwalkinshaw.com/), [Matthew Price](http://www.matthewaprice.com/), [Kyle Geminden](http://www.kylegeminden.com/), [Steve Jothen](http://twitter.com/sjothen), [John Liuti](http://twitter.com/JohnLiuti), [Jeremiah Wall](http://jeremiahwall.com/), [Jenny Jui-Shan Liang](http://jsliang.twgogo.org/), [Mason Stewart](http://masondesu.com/), [Dejan Panovski](http://webdesignplus.mk/), [Cesar Vargas](http://www.limitlis.com/)
 
 ## License:
 
