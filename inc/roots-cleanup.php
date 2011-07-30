@@ -91,29 +91,27 @@ function roots_root_relative_url($input) {
   return $output;
 }
 
-add_filter('bloginfo_url', 'roots_root_relative_url');
-add_filter('theme_root_uri', 'roots_root_relative_url');
-add_filter('stylesheet_directory_uri', 'roots_root_relative_url');
-add_filter('template_directory_uri', 'roots_root_relative_url');
-add_filter('the_permalink', 'roots_root_relative_url');
-add_filter('wp_list_pages', 'roots_root_relative_url');
-add_filter('wp_list_categories', 'roots_root_relative_url');
-add_filter('wp_nav_menu', 'roots_root_relative_url');
-add_filter('wp_get_attachment_url', 'roots_root_relative_url');
-add_filter('wp_get_attachment_link', 'roots_root_relative_url');
-add_filter('the_content_more_link', 'roots_root_relative_url');
-add_filter('the_tags', 'roots_root_relative_url');
-add_filter('get_pagenum_link', 'roots_root_relative_url');
-add_filter('get_comment_link', 'roots_root_relative_url');
-add_filter('month_link', 'roots_root_relative_url');
-add_filter('day_link', 'roots_root_relative_url');
-add_filter('year_link', 'roots_root_relative_url');
-add_filter('tag_link', 'roots_root_relative_url');
-add_filter('the_author_posts_link', 'roots_root_relative_url');
-
-// Leaving plugins_url alone in admin to avoid potential issues (such as Gravity Forms)
 if (!is_admin()) {
-	add_filter('plugins_url', 'roots_root_relative_url');
+	add_filter('bloginfo_url', 'roots_root_relative_url');
+	add_filter('theme_root_uri', 'roots_root_relative_url');
+	add_filter('stylesheet_directory_uri', 'roots_root_relative_url');
+	add_filter('template_directory_uri', 'roots_root_relative_url');
+	add_filter('plugins_url', 'roots_root_relative_url');	
+	add_filter('the_permalink', 'roots_root_relative_url');
+	add_filter('wp_list_pages', 'roots_root_relative_url');
+	add_filter('wp_list_categories', 'roots_root_relative_url');
+	add_filter('wp_nav_menu', 'roots_root_relative_url');
+	add_filter('wp_get_attachment_url', 'roots_root_relative_url');
+	add_filter('wp_get_attachment_link', 'roots_root_relative_url');
+	add_filter('the_content_more_link', 'roots_root_relative_url');
+	add_filter('the_tags', 'roots_root_relative_url');
+	add_filter('get_pagenum_link', 'roots_root_relative_url');
+	add_filter('get_comment_link', 'roots_root_relative_url');
+	add_filter('month_link', 'roots_root_relative_url');
+	add_filter('day_link', 'roots_root_relative_url');
+	add_filter('year_link', 'roots_root_relative_url');
+	add_filter('tag_link', 'roots_root_relative_url');
+	add_filter('the_author_posts_link', 'roots_root_relative_url');
 }
 
 // remove root relative URLs on any attachments in the feed
@@ -125,18 +123,18 @@ function roots_relative_feed_urls() {
 	}
 }
 
-add_action('pre_get_posts', 'roots_relative_feed_urls' );
+add_action('pre_get_posts', 'roots_relative_feed_urls');
 
 // remove dir and set lang="en" as default (rather than en-US)
 function roots_language_attributes() {
 	$attributes = array();
 	$output = '';
-  $lang = get_bloginfo('language');
-  if ($lang && $lang !== 'en-US') {
-    $attributes[] = "lang=\"$lang\"";
-  } else {
-    $attributes[] = 'lang="en"';
-  }
+	$lang = get_bloginfo('language');
+	if ($lang && $lang !== 'en-US') {
+		$attributes[] = "lang=\"$lang\"";
+	} else {
+		$attributes[] = 'lang="en"';
+	}
 
 	$output = implode(' ', $attributes);
 	$output = apply_filters('roots_language_attributes', $output);
