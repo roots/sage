@@ -1,3 +1,22 @@
+# Apache configuration file
+# httpd.apache.org/docs/2.2/mod/quickreference.html
+
+# Note .htaccess files are an overhead, this logic should be in your Apache config if possible
+# httpd.apache.org/docs/2.2/howto/htaccess.html
+
+# Techniques in here adapted from all over, including:
+#   Kroc Camen: camendesign.com/.htaccess
+#   perishablepress.com/press/2006/01/10/stupid-htaccess-tricks/
+#   Sample .htaccess file of CMS MODx: modxcms.com
+
+
+###
+### If you run a webserver other than apache, consider:
+### github.com/paulirish/html5-boilerplate-server-configs
+###
+
+
+
 # ----------------------------------------------------------------------
 # Better website experience for IE users
 # ----------------------------------------------------------------------
@@ -17,7 +36,7 @@
 # Because X-UA-Compatible isn't sent to non-IE (to save header bytes),
 # We need to inform proxies that content changes based on UA
   Header append Vary User-Agent
-# Cache control is set only if mod_headers is enabled, so that's unncessary to declare
+# Cache control is set only if mod_headers is enabled, so that's unnecessary to declare
 </IfModule>
 
 
@@ -41,9 +60,9 @@
 
 # Allow access from all domains for webfonts.
 # Alternatively you could only whitelist your
-# subdomains like "sub.domain.com".
+# subdomains like "subdomain.example.com".
 
-<FilesMatch "\.(ttf|otf|eot|woff|font.css)$">
+<FilesMatch "\.(ttf|ttc|otf|eot|woff|font.css)$">
   <IfModule mod_headers.c>
     Header set Access-Control-Allow-Origin "*"
   </IfModule>
@@ -88,52 +107,6 @@ AddType text/x-vcard                   vcf
 
 
 # ----------------------------------------------------------------------
-# Gzip compression
-# ----------------------------------------------------------------------
-
-<IfModule mod_deflate.c>
-
-# Force deflate for mangled headers developer.yahoo.com/blogs/ydn/posts/2010/12/pushing-beyond-gzipping/
-<IfModule mod_setenvif.c>
-  <IfModule mod_headers.c>
-    SetEnvIfNoCase ^(Accept-EncodXng|X-cept-Encoding|X{15}|~{15}|-{15})$ ^((gzip|deflate)\s,?\s(gzip|deflate)?|X{4,13}|~{4,13}|-{4,13})$ HAVE_Accept-Encoding
-    RequestHeader append Accept-Encoding "gzip,deflate" env=HAVE_Accept-Encoding
-  </IfModule>
-</IfModule>
-
-# HTML, TXT, CSS, JavaScript, JSON, XML, HTC:
-<IfModule filter_module>
-  FilterDeclare   COMPRESS
-  FilterProvider  COMPRESS  DEFLATE resp=Content-Type $text/html
-  FilterProvider  COMPRESS  DEFLATE resp=Content-Type $text/css
-  FilterProvider  COMPRESS  DEFLATE resp=Content-Type $text/javascript
-  FilterProvider  COMPRESS  DEFLATE resp=Content-Type $text/plain
-  FilterProvider  COMPRESS  DEFLATE resp=Content-Type $text/xml
-  FilterProvider  COMPRESS  DEFLATE resp=Content-Type $text/x-component
-  FilterProvider  COMPRESS  DEFLATE resp=Content-Type $application/javascript
-  FilterProvider  COMPRESS  DEFLATE resp=Content-Type $application/json
-  FilterProvider  COMPRESS  DEFLATE resp=Content-Type $application/xml
-  FilterProvider  COMPRESS  DEFLATE resp=Content-Type $application/x-javascript
-  FilterChain     COMPRESS
-  FilterProtocol  COMPRESS  DEFLATE change=yes;byteranges=no
-</IfModule>
-
-<IfModule !mod_filter.c>
-  # Legacy versions of Apache
-  AddOutputFilterByType DEFLATE text/html text/plain text/css application/json
-  AddOutputFilterByType DEFLATE text/javascript application/javascript application/x-javascript 
-  AddOutputFilterByType DEFLATE text/xml application/xml text/x-component
-</IfModule>
-
-# Webfonts and SVG:
-  <FilesMatch "\.(ttf|otf|eot|svg)$" >
-    SetOutputFilter DEFLATE
-  </FilesMatch>
-</IfModule>
-
-
-
-# ----------------------------------------------------------------------
 # Stop screen flicker in IE on CSS rollovers
 # ----------------------------------------------------------------------
 
@@ -168,7 +141,7 @@ AddType text/x-vcard                   vcf
 # ----------------------------------------------------------------------
 
 # Rewrite secure requests properly to prevent SSL cert warnings, e.g. prevent 
-# https://www.domain.com when your cert only allows https://secure.domain.com
+# https://www.example.com when your cert only allows https://secure.example.com
 # Uncomment the following lines to use this feature.
 
 # <IfModule mod_rewrite.c>
@@ -197,7 +170,7 @@ Options -MultiViews
 AddDefaultCharset utf-8
 
 # Force UTF-8 for a number of file formats
-AddCharset utf-8 .html .css .js .xml .json .rss
+AddCharset utf-8 .html .css .js .xml .json .rss .atom
 
 
 
@@ -261,6 +234,7 @@ Options -Indexes
 # php_flag display_startup_errors Off
 
 # Format errors in plain text
+# Note: Leave this setting 'On' for xdebug's var_dump() output
 # php_flag html_errors Off
 
 # Show multiple occurrence of error

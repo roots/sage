@@ -100,7 +100,7 @@ sub { bottom: -0.25em; }
 
 ul, ol { margin: 1em 0; padding: 0 0 0 40px; }
 dd { margin: 0 0 0 40px; }
-nav ul, nav ol { list-style: none; margin: 0; padding: 0; }
+nav ul, nav ol { list-style: none; list-style-image: none; margin: 0; padding: 0; }
 
 
 /* =============================================================================
@@ -139,7 +139,8 @@ table button, table input { *overflow: auto; }
 button, input[type="button"], input[type="reset"], input[type="submit"] { cursor: pointer; -webkit-appearance: button; }
 
 input[type="checkbox"], input[type="radio"] { box-sizing: border-box; }
-input[type="search"] { -moz-box-sizing: content-box; -webkit-box-sizing: content-box; box-sizing: content-box; }
+input[type="search"] { -webkit-appearance: textfield; -moz-box-sizing: content-box; -webkit-box-sizing: content-box; box-sizing: content-box; }
+input[type="search"]::-webkit-search-decoration { -webkit-appearance: none; }
 
 button::-moz-focus-inner, input::-moz-focus-inner { border: 0; padding: 0; }
 
