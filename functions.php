@@ -1,10 +1,9 @@
 <?php
 
 locate_template(array('inc/roots-activation.php'), true, true);	// activation
-locate_template(array('inc/roots-admin.php'), true, true);		// admin additions/mods
 locate_template(array('inc/roots-options.php'), true, true);	// theme options menu
 locate_template(array('inc/roots-cleanup.php'), true, true);	// code cleanup/removal
-locate_template(array('inc/roots-htaccess.php'), true, true);	// h5bp htaccess
+locate_template(array('inc/roots-htaccess.php'), true, true);	// assets rewrites and h5bp htaccess
 locate_template(array('inc/roots-hooks.php'), true, true);		// hooks
 locate_template(array('inc/roots-actions.php'), true, true);	// actions
 locate_template(array('inc/roots-widgets.php'), true, true);	// widgets
@@ -53,35 +52,5 @@ foreach ($sidebars as $sidebar) {
 	));
 }
 
-// add to robots.txt
-// http://codex.wordpress.org/Search_Engine_Optimization_for_WordPress#Robots.txt_Optimization
-add_action('do_robots', 'roots_robots');
-
-function roots_robots() {
-	echo "Disallow: /cgi-bin\n";
-	echo "Disallow: /wp-admin\n";
-	echo "Disallow: /wp-includes\n";
-	echo "Disallow: /wp-content/plugins\n";
-	echo "Disallow: /plugins\n";
-	echo "Disallow: /wp-content/cache\n";
-	echo "Disallow: /wp-content/themes\n";
-	echo "Disallow: /trackback\n";
-	echo "Disallow: /feed\n";
-	echo "Disallow: /comments\n";
-	echo "Disallow: /category/*/*\n";
-	echo "Disallow: */trackback\n";
-	echo "Disallow: */feed\n";
-	echo "Disallow: */comments\n";
-	echo "Disallow: /*?*\n";
-	echo "Disallow: /*?\n";
-	echo "Allow: /wp-content/uploads\n";
-	echo "Allow: /assets";
-}
-
-function roots_author_link($link) {
-  return str_replace('<a ', '<a class="fn" rel="author"', $link);
-}
-
-add_filter('the_author_posts_link', 'roots_author_link');
 
 ?>

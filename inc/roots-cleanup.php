@@ -1,58 +1,5 @@
 <?php
 
-$theme_name = next(explode('/themes/', get_stylesheet_directory()));
-
-// Rewrites DO NOT happen for child themes
-// rewrite /wp-content/themes/roots/css/ to /css/
-// rewrite /wp-content/themes/roots/js/  to /js/
-// rewrite /wp-content/themes/roots/img/ to /js/
-// rewrite /wp-content/plugins/ to /plugins/
-
-function roots_flush_rewrites() {
-	global $wp_rewrite;
-	$wp_rewrite->flush_rules();
-}
-
-function roots_add_rewrites($content) {
-	$theme_name = next(explode('/themes/', get_stylesheet_directory()));
-	global $wp_rewrite;
-	$roots_new_non_wp_rules = array(
-		'css/(.*)'      => 'wp-content/themes/'. $theme_name . '/css/$1',
-		'js/(.*)'       => 'wp-content/themes/'. $theme_name . '/js/$1',
-		'img/(.*)'      => 'wp-content/themes/'. $theme_name . '/img/$1',
-		'plugins/(.*)'  => 'wp-content/plugins/$1'
-	);
-	$wp_rewrite->non_wp_rules += $roots_new_non_wp_rules;
-}
-
-add_action('admin_init', 'roots_flush_rewrites');
-
-function roots_clean_assets($content) {
-    $theme_name = next(explode('/themes/', $content));
-    $current_path = '/wp-content/themes/' . $theme_name;
-    $new_path = '';
-    $content = str_replace($current_path, $new_path, $content);
-    return $content;
-}
-
-function roots_clean_plugins($content) {
-    $current_path = '/wp-content/plugins';
-    $new_path = '/plugins';
-    $content = str_replace($current_path, $new_path, $content);
-    return $content;
-}
-
-// only use clean urls if the theme isn't a child or an MU (Network) install
-if ((!defined('WP_ALLOW_MULTISITE') || (defined('WP_ALLOW_MULTISITE') && WP_ALLOW_MULTISITE !== true)) && !is_child_theme()) {
-	add_action('generate_rewrite_rules', 'roots_add_rewrites');
-	if (!is_admin()) { 
-		add_filter('plugins_url', 'roots_clean_plugins');
-		add_filter('bloginfo', 'roots_clean_assets');
-		add_filter('stylesheet_directory_uri', 'roots_clean_assets');
-		add_filter('template_directory_uri', 'roots_clean_assets');
-	}
-}
-
 // redirect /?s to /search/
 // http://txfx.net/wordpress-plugins/nice-search/
 function roots_nice_search_redirect() {
@@ -393,5 +340,60 @@ class roots_nav_walker extends Walker_Nav_Menu {
 function roots_check_current($val) {
 	return preg_match('/current-menu/', $val);
 }
+
+// add to robots.txt
+// http://codex.wordpress.org/Search_Engine_Optimization_for_WordPress#Robots.txt_Optimization
+function roots_robots() {
+	echo "Disallow: /cgi-bin\n";
+	echo "Disallow: /wp-admin\n";
+	echo "Disallow: /wp-includes\n";
+	echo "Disallow: /wp-content/plugins\n";
+	echo "Disallow: /plugins\n";
+	echo "Disallow: /wp-content/cache\n";
+	echo "Disallow: /wp-content/themes\n";
+	echo "Disallow: /trackback\n";
+	echo "Disallow: /feed\n";
+	echo "Disallow: /comments\n";
+	echo "Disallow: /category/*/*\n";
+	echo "Disallow: */trackback\n";
+	echo "Disallow: */feed\n";
+	echo "Disallow: */comments\n";
+	echo "Disallow: /*?*\n";
+	echo "Disallow: /*?\n";
+	echo "Allow: /wp-content/uploads\n";
+	echo "Allow: /assets";
+}
+
+add_action('do_robots', 'roots_robots');
+
+function roots_author_link($link) {
+	return str_replace('<a ', '<a class="fn" rel="author"', $link);
+}
+
+add_filter('the_author_posts_link', 'roots_author_link');
+
+// check to see if the tagline is set to default
+// show an admin notice to update if it hasn't been changed
+// you want to change this or remove it because it's used as the description in the RSS feed
+if (get_option('blogdescription') === 'Just another WordPress site') { 
+	add_action('admin_notices', create_function('', "echo '<div class=\"error\"><p>" . sprintf(__('Please update your <a href="%s">site tagline</a>', 'roots'), admin_url('options-general.php')) . "</p></div>';"));
+};
+
+// set the post revisions to 5 unless the constant
+// was set in wp-config.php to avoid DB bloat
+if (!defined('WP_POST_REVISIONS')) define('WP_POST_REVISIONS', 5);
+
+// allow more tags in TinyMCE including iframes
+function roots_change_mce_options($options) {
+	$ext = 'pre[id|name|class|style],iframe[align|longdesc|name|width|height|frameborder|scrolling|marginheight|marginwidth|src]';	
+	if (isset($initArray['extended_valid_elements'])) {
+		$options['extended_valid_elements'] .= ',' . $ext;
+	} else {
+		$options['extended_valid_elements'] = $ext;
+	}
+	return $options;
+}
+
+add_filter('tiny_mce_before_init', 'roots_change_mce_options');
 
 ?>
