@@ -14,15 +14,14 @@
 	
 	<link rel="alternate" type="application/rss+xml" title="<?php bloginfo('name'); ?> Feed" href="<?php echo home_url(); ?>/feed/">
 
-	<script src="<?php echo get_template_directory_uri(); ?>/js/libs/modernizr-2.0.min.js"></script>
-	<script src="<?php echo get_template_directory_uri(); ?>/js/libs/respond.min.js"></script>
+	<script src="<?php echo get_template_directory_uri(); ?>/js/libs/modernizr-2.0.6.min.js"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
 	<script>window.jQuery || document.write('<script src="<?php echo get_template_directory_uri(); ?>/js/libs/jquery-1.6.2.min.js"><\/script>')</script>
 
 	<?php wp_head(); ?>
 	<?php roots_head(); ?>
 
-	<script src="<?php echo get_template_directory_uri(); ?>/js/scripts.js"></script>
+	<script defer src="<?php echo get_template_directory_uri(); ?>/js/scripts.js"></script>
 </head>
 
 <body <?php $page_slug = $post->post_name; body_class($page_slug); ?>>
