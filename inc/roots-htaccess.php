@@ -9,8 +9,6 @@ if (stristr($_SERVER['SERVER_SOFTWARE'], 'apache') !== false) {
 	
 	add_action('admin_init', 'roots_htaccess_writable');
 	
-	$theme_name = next(explode('/themes/', get_stylesheet_directory()));
-	
 	// Rewrites DO NOT happen for child themes
 	// rewrite /wp-content/themes/roots/css/ to /css/
 	// rewrite /wp-content/themes/roots/js/  to /js/

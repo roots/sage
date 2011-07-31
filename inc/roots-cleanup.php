@@ -13,9 +13,9 @@ add_action('template_redirect', 'roots_nice_search_redirect');
 function roots_search_query($escaped = true) {
 	$query = apply_filters('roots_search_query', get_query_var('s'));
 	if ($escaped) {
-    	$query = esc_attr( $query );
+    	$query = esc_attr($query);
 	}
-  	return urldecode($query);
+ 	return urldecode($query);
 }
 
 add_filter('get_search_query', 'roots_search_query');
@@ -98,16 +98,21 @@ add_filter('the_generator', 'roots_no_generator');
 
 // cleanup wp_head
 function roots_noindex() {
-	if (get_option('blog_public') === '0')
-	echo '<meta name="robots" content="noindex,nofollow">', "\n";
+	if (get_option('blog_public') === '0') {
+    echo '<meta name="robots" content="noindex,nofollow">', "\n";
+  }
 }	
 
 function roots_rel_canonical() {
-	if (!is_singular())
+	if (!is_singular()) {
 		return;
+  }
+
 	global $wp_the_query;
-	if (!$id = $wp_the_query->get_queried_object_id())
+	if (!$id = $wp_the_query->get_queried_object_id()) {
 		return;
+  }
+
 	$link = get_permalink($id);
 	echo "\t<link rel=\"canonical\" href=\"$link\">\n";
 }
@@ -151,12 +156,9 @@ function roots_head_cleanup() {
 
 	// deregister l10n.js (new since WordPress 3.1)
 	// why you might want to keep it: http://wordpress.stackexchange.com/questions/5451/what-does-l10n-js-do-in-wordpress-3-1-and-how-do-i-remove-it/5484#5484
-	if (!is_admin()) {
-		wp_deregister_script('l10n');
-	}	
-	
 	// don't load jQuery through WordPress since it's linked in header.php
 	if (!is_admin()) {
+		wp_deregister_script('l10n');
 		wp_deregister_script('jquery');
 		wp_register_script('jquery', '', '', '', true);
 	}	

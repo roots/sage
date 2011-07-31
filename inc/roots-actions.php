@@ -75,25 +75,33 @@ function roots_get_stylesheets() {
 	
 	$styles = '';
 
-	if ($roots_css_framework === 'blueprint') {
-    $styles .= stylesheet_link_tag('/blueprint/screen.css');
-	} elseif ($roots_css_framework === '960gs_12' || $roots_css_framework === '960gs_16') {
-    $styles .= stylesheet_link_tag('/960/reset.css');
-    $styles .= stylesheet_link_tag('/960/text.css', 1);
-    $styles .= stylesheet_link_tag('/960/960.css', 1);
-	} elseif ($roots_css_framework === '960gs_24') {
-    $styles .= stylesheet_link_tag('/960/reset.css');
-    $styles .= stylesheet_link_tag('/960/text.css', 1);
-    $styles .= stylesheet_link_tag('/960/960_24_col.css', 1);
-	} elseif ($roots_css_framework === '1140') {
-    $styles .= stylesheet_link_tag('/1140/1140.css');
-	} elseif ($roots_css_framework === 'adapt') {
-    $styles .= stylesheet_link_tag('/adapt/master.css');
-		$styles .= "\t<noscript>\n";
-    $styles .= stylesheet_link_tag('/adapt/mobile.css', 1);
-		$styles .= "\t</noscript>\n";
-	} elseif ($roots_css_framework === 'less') {
-    $styles .= stylesheet_link_tag('/less/less.css');
+  switch ($roots_css_framework) {
+    case 'blueprint' :
+      $styles .= stylesheet_link_tag('/blueprint/screen.css');
+      break;
+    case '960gs_12' :
+    case '960gs_16' :
+      $styles .= stylesheet_link_tag('/960/reset.css');
+      $styles .= stylesheet_link_tag('/960/text.css', 1);
+      $styles .= stylesheet_link_tag('/960/960.css', 1);
+      break;
+    case '960gs_24' :
+      $styles .= stylesheet_link_tag('/960/reset.css');
+      $styles .= stylesheet_link_tag('/960/text.css', 1);
+      $styles .= stylesheet_link_tag('/960/960_24_col.css', 1);
+      break;
+    case '1140' :
+      $styles .= stylesheet_link_tag('/1140/1140.css');
+      break;
+    case 'adapt' :
+      $styles .= stylesheet_link_tag('/adapt/master.css');
+      $styles .= "\t<noscript>\n";
+      $styles .= stylesheet_link_tag('/adapt/mobile.css', 1);
+      $styles .= "\t</noscript>\n";
+      break;
+    case 'less' :
+      $styles .= stylesheet_link_tag('/less/less.css');
+      break;
 	}
 
 	if (class_exists('RGForms')) {
@@ -107,10 +115,13 @@ function roots_get_stylesheets() {
     $styles .= stylesheet_link_tag('/style.css', 1);
   }
 
-	if ($roots_css_framework === 'blueprint') {
-		$styles .= "\t<!--[if lt IE 8]>" . stylesheet_link_tag('/blueprint/ie.css', 0, false) . "<![endif]-->\n";
-	} elseif ($roots_css_framework === '1140') {
-		$styles .= "\t<!--[if lt IE 8]>" . stylesheet_link_tag('/1140/ie.css', 0, false) . "<![endif]-->\n";
+  switch ($roots_css_framework) {
+    case 'blueprint' :
+      $styles .= "\t<!--[if lt IE 8]>" . stylesheet_link_tag('/blueprint/ie.css', 0, false) . "<![endif]-->\n";
+      break;
+    case '1140' :
+      $styles .= "\t<!--[if lt IE 8]>" . stylesheet_link_tag('/1140/ie.css', 0, false) . "<![endif]-->\n";
+      break;
 	}
 
 	echo $styles;
