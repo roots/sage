@@ -4,11 +4,8 @@ function roots_admin_enqueue_scripts($hook_suffix) {
 	if ($hook_suffix !== 'appearance_page_theme_options')
 		return;
 		
-	$home_url = home_url();
-	$theme_name = next(explode('/themes/', get_template_directory()));
-	
-	wp_enqueue_style('roots-theme-options', "$home_url/wp-content/themes/$theme_name/inc/css/theme-options.css");
-	wp_enqueue_script('roots-theme-options', "$home_url/wp-content/themes/$theme_name/inc/js/theme-options.js");
+	wp_enqueue_style('roots-theme-options', get_template_directory_uri() . '/inc/css/theme-options.css');
+	wp_enqueue_script('roots-theme-options', get_template_directory_uri() . '/inc/js/theme-options.js');
 }
 add_action('admin_enqueue_scripts', 'roots_admin_enqueue_scripts');
 

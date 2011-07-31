@@ -45,10 +45,12 @@ function roots_clean_plugins($content) {
 // only use clean urls if the theme isn't a child or an MU (Network) install
 if ((!defined('WP_ALLOW_MULTISITE') || (defined('WP_ALLOW_MULTISITE') && WP_ALLOW_MULTISITE !== true)) && !is_child_theme()) {
 	add_action('generate_rewrite_rules', 'roots_add_rewrites');
-	add_filter('plugins_url', 'roots_clean_plugins');
-	add_filter('bloginfo', 'roots_clean_assets');
-	add_filter('stylesheet_directory_uri', 'roots_clean_assets');
-	add_filter('template_directory_uri', 'roots_clean_assets');
+	if (!is_admin()) { 
+		add_filter('plugins_url', 'roots_clean_plugins');
+		add_filter('bloginfo', 'roots_clean_assets');
+		add_filter('stylesheet_directory_uri', 'roots_clean_assets');
+		add_filter('template_directory_uri', 'roots_clean_assets');
+	}
 }
 
 // redirect /?s to /search/
