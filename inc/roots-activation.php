@@ -10,6 +10,7 @@ if (is_admin() && 'themes.php' === $pagenow && isset( $_GET['activated'])) {
 	// set WordPress to have the front page display the Home page as a static page
 	$default_pages = array('Home');
 	$existing_pages = get_pages();
+  $temp = array();
 
 	foreach ($existing_pages as $page) {
 		$temp[] = $page->post_title;
