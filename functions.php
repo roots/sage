@@ -1,4 +1,5 @@
 <?php
+load_theme_textdomain('roots');
 
 require_once get_template_directory() . '/inc/roots-activation.php'; 	// activation
 require_once get_template_directory() . '/inc/roots-options.php'; 		// theme options
@@ -10,7 +11,6 @@ require_once get_template_directory() . '/inc/roots-widgets.php'; 		// widgets
 require_once get_template_directory() . '/inc/roots-custom.php'; 		// custom functions
 
 $roots_options = roots_get_theme_options();
-
 // set the maximum 'Large' image width to the maximum grid width
 if (!isset($content_width)) {
 	global $roots_options;
