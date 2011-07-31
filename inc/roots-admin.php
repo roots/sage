@@ -1,20 +1,5 @@
 <?php
 
-// admin CSS and JS
-add_action('admin_init', 'roots_admin_init');
-
-function roots_admin_init() {
-	$home_url = home_url();
-	$theme_name = next(explode('/themes/', get_template_directory()));
-	
-	wp_register_style('roots_admin_css', "$home_url/wp-content/themes/$theme_name/inc/css/admin.css");
-	wp_enqueue_style('roots_admin_css');
-	
-	wp_register_script('roots_admin_js', "$home_url/wp-content/themes/$theme_name/inc/js/scripts.js");
-	wp_enqueue_script('roots_admin_js');
-
-}
-
 // check to see if the tagline is set to default
 // show an admin notice to update if it hasn't been changed
 // you want to change this or remove it because it's used as the description in the RSS feed
