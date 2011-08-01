@@ -5,13 +5,13 @@
 ### 3.5.0: July 30th, 2011
 <ul>
 	<li>Complete rewrite of theme options based on Twenty Eleven</li>
-	<li>CSS frameworks: refactored code added default classes for each framework</li>
+	<li>CSS frameworks: refactored code and added default classes for each framework</li>
 	<li>CSS frameworks: added support for Adapt.js and LESS</li>
 	<li>CSS frameworks: added option for None</li>
 	<li>Added support for WPML and theme translation</li>
 	<li>Added option for cleaner nav menu output</li>
 	<li>Added option for FOUT-B-Gone</li>
-	<li>Added authorship del attribute to post author link</li>
+	<li>Added authorship rel attribute to post author link</li>
 	<li>Activation bugfix for pages being added multiple times</li>
 	<li>Bugfixes to the root relative URL function</li>
 	<li>Child themes will now load their CSS automatically and properly</li>
@@ -79,8 +79,8 @@
 	<li>Changed the theme markup based on hCard/Readability Guidelines and work by Jonathan Neal</li>
 	<li>Theme activation now creates the navigation menus and automatically sets their locations</li>
 	<li>Permalink structure is now set to <code>/%year%/%postname%/</code> for performance reasons</li>
-	<li>Uploads folder is now /assets/ and not organized by month and date</li>
-	<li>All static folders in <code>/wp-content/themes/roots/</code> (css/, js/, img/) now rewrite to the root (<code>/css/</code>, <code>/js/</code>, <code>/img/</code>)</li>
+	<li>Uploads folder is now <code>/assets/</code> and not organized by month and date</li>
+	<li>All static folders in <code>/wp-content/themes/roots/</code> (<code>css/</code>, <code>js/</code>, <code>img/</code>) now rewrite to the root (<code>/css/</code>, <code>/js/</code>, <code>/img/</code>)</li>
 	<li><code>/wp-content/plugins/</code> now rewrites to <code>/plugins/</code></li>
 	<li>More root relative URLs on WordPress functions</li>
 	<li>Search results (<code>/?s=query</code>) now rewrites to <code>/search/query/</code></li>
