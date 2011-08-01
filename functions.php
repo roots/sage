@@ -34,7 +34,9 @@ function roots_setup() {
 	// add_editor_style('editor-style.css?' . time());
 	add_editor_style('editor-style.css');
 	
+	// http://codex.wordpress.org/Post_Thumbnails
 	add_theme_support('post-thumbnails');
+	// set_post_thumbnail_size(150, 150, false);
 	
 	// http://codex.wordpress.org/Post_Formats
 	// add_theme_support('post-formats', array('aside', 'gallery', 'link', 'image', 'quote', 'status', 'video', 'audio', 'chat'));
