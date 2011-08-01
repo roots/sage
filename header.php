@@ -34,7 +34,7 @@
 			<div class="container">
 	
 				<a id="logo" href="<?php echo home_url(); ?>/">
-					<img src="<?php echo get_template_directory_uri(); ?>/img/logo.png" width="300" height="75" alt="<?php bloginfo('name'); ?>">
+					<img src="<?php echo get_header_image(); ?>" width="<?php echo HEADER_IMAGE_WIDTH; ?>" height="<?php echo HEADER_IMAGE_HEIGHT; ?>" alt="<?php bloginfo('name'); ?>">
 				</a>
 				
 				<?php if ($roots_options['clean_menu']) { ?>
