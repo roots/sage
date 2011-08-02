@@ -40,6 +40,18 @@ function roots_theme_options_add_page() {
 }
 add_action('admin_menu', 'roots_theme_options_add_page');
 
+function roots_admin_bar_render() {
+	global $wp_admin_bar;
+
+	$wp_admin_bar->add_menu(array(
+		'parent' => 'appearance',
+		'id' => 'theme_options',
+		'title' => __('Theme Options', 'roots'),
+		'href' => admin_url( 'themes.php?page=theme_options')
+	));
+}
+add_action('wp_before_admin_bar_render', 'roots_admin_bar_render');
+
 global $roots_css_frameworks;
 $roots_css_frameworks = array(
 	'blueprint' => array(
