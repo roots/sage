@@ -160,7 +160,7 @@
 
 ## Contributors:
 
-[Scott Walkinshaw](http://www.scottwalkinshaw.com/), [Matthew Price](http://www.matthewaprice.com/), [Kyle Geminden](http://www.kylegeminden.com/), [Steve Jothen](http://twitter.com/sjothen), [John Liuti](http://twitter.com/JohnLiuti), [Jeremiah Wall](http://jeremiahwall.com/), [Jenny Jui-Shan Liang](http://jsliang.twgogo.org/), [Mason Stewart](http://masondesu.com/), [Dejan Panovski](http://webdesignplus.mk/), [Cesar Vargas](http://www.limitlis.com/)
+[Scott Walkinshaw](http://www.scottwalkinshaw.com/), [Matthew Price](http://www.matthewaprice.com/), [Kyle Geminden](http://www.kylegeminden.com/), [Steve Jothen](http://twitter.com/sjothen), [John Liuti](http://twitter.com/JohnLiuti), [Jeremiah Wall](http://jeremiahwall.com/), [Jenny Jui-Shan Liang](http://jsliang.twgogo.org/), [Mason Stewart](http://masondesu.com/), [Dejan Panovski](http://webdesignplus.mk/), [Cesar Vargas](http://www.limitlis.com/), [Matthew Wrather](http://www.wrathercreative.com/)
 
 ## License:
 
