@@ -50,7 +50,7 @@ if (stristr($_SERVER['SERVER_SOFTWARE'], 'apache') !== false) {
 	}
 	
 	// only use clean urls if the theme isn't a child or an MU (Network) install
-	if ((!defined('WP_ALLOW_MULTISITE') || (defined('WP_ALLOW_MULTISITE') && WP_ALLOW_MULTISITE !== true)) && !is_child_theme()) {
+	if (!is_multisite() && !is_child_theme()) {
 		add_action('generate_rewrite_rules', 'roots_add_rewrites');
 		if (!is_admin()) { 
 			add_filter('plugins_url', 'roots_clean_plugins');
