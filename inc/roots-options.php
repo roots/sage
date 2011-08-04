@@ -174,7 +174,7 @@ function roots_theme_options_render_page() {
 			<?php
 				settings_fields('roots_options');
 				$roots_options = roots_get_theme_options();
-				$roots_default_options = roots_get_default_theme_options();
+				$roots_default_options = roots_get_default_theme_options($roots_options['css_framework']);
 			?>
 
 			<table class="form-table">
