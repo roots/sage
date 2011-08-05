@@ -104,12 +104,12 @@ function roots_noindex() {
 function roots_rel_canonical() {
 	if (!is_singular()) {
 		return;
-  }
+	}
 
 	global $wp_the_query;
 	if (!$id = $wp_the_query->get_queried_object_id()) {
 		return;
-  }
+	}
 
 	$link = get_permalink($id);
 	echo "\t<link rel=\"canonical\" href=\"$link\">\n";
@@ -283,16 +283,12 @@ function roots_excerpt_length($length) {
 	return 40;
 }
 
-function roots_continue_reading_link() {
-	return ' <a href="' . get_permalink() . '">' . __( 'Continued', 'roots' ) . '</a>';
-}
-
-function roots_auto_excerpt_more($more) {
-	return ' &hellip;' . roots_continue_reading_link();
+function roots_excerpt_more($more) {
+	return ' &hellip; <a href="' . get_permalink() . '">' . __( 'Continued', 'roots' ) . '</a>';
 }
 
 add_filter('excerpt_length', 'roots_excerpt_length');
-add_filter('excerpt_more', 'roots_auto_excerpt_more');
+add_filter('excerpt_more', 'roots_excerpt_more');
 
 // remove container from menus
 function roots_nav_menu_args($args = '') {
