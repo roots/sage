@@ -25,19 +25,19 @@ add_filter('get_search_query', 'roots_search_query');
 // thanks to Scott Walkinshaw (scottwalkinshaw.com)
 function roots_root_relative_url($input) {
 	$output = preg_replace_callback(
-    '/(https?:\/\/[^\/|"]+)([^"]+)?/',
-    create_function(
-      '$matches',
-      // if full URL is site_url, return a slash for relative root
-      'if (isset($matches[0]) && $matches[0] === site_url()) { return "/";' .
-      // if domain is equal to site_url, then make URL relative 
-      '} elseif (isset($matches[0]) && strpos($matches[0], site_url()) !== false) { return $matches[2];' .
-      // if domain is not equal to site_url, do not make external link relative
-      '} else { return $matches[0]; };'
-    ),
-    $input
-  );
-  return $output;
+	'/(https?:\/\/[^\/|"]+)([^"]+)?/',
+	create_function(
+		'$matches',
+		// if full URL is site_url, return a slash for relative root
+		'if (isset($matches[0]) && $matches[0] === site_url()) { return "/";' .
+		// if domain is equal to site_url, then make URL relative 
+		'} elseif (isset($matches[0]) && strpos($matches[0], site_url()) !== false) { return $matches[2];' .
+		// if domain is not equal to site_url, do not make external link relative
+		'} else { return $matches[0]; };'
+	),
+	$input
+	);
+	return $output;
 }
 
 if (!is_admin()) {
@@ -50,8 +50,6 @@ if (!is_admin()) {
 	add_filter('wp_list_pages', 'roots_root_relative_url');
 	add_filter('wp_list_categories', 'roots_root_relative_url');
 	add_filter('wp_nav_menu', 'roots_root_relative_url');
-	add_filter('wp_get_attachment_url', 'roots_root_relative_url');
-	add_filter('wp_get_attachment_link', 'roots_root_relative_url');
 	add_filter('the_content_more_link', 'roots_root_relative_url');
 	add_filter('the_tags', 'roots_root_relative_url');
 	add_filter('get_pagenum_link', 'roots_root_relative_url');
@@ -64,15 +62,15 @@ if (!is_admin()) {
 }
 
 // remove root relative URLs on any attachments in the feed
-function roots_relative_feed_urls() {
-	global $wp_query;
-	if (is_feed()) {
-		remove_filter('wp_get_attachment_url', 'roots_root_relative_url');
-		remove_filter('wp_get_attachment_link', 'roots_root_relative_url');
+function roots_root_relative_attachment_urls() {
+//	global $wp_query;
+	if (!is_feed()) {
+		add_filter('wp_get_attachment_url', 'roots_root_relative_url');
+		add_filter('wp_get_attachment_link', 'roots_root_relative_url');
 	}
 }
 
-add_action('pre_get_posts', 'roots_relative_feed_urls');
+add_action('pre_get_posts', 'roots_root_relative_attachment_urls');
 
 // remove dir and set lang="en" as default (rather than en-US)
 function roots_language_attributes() {
@@ -368,18 +366,28 @@ function roots_robots() {
 
 add_action('do_robots', 'roots_robots');
 
+// http://www.google.com/support/webmasters/bin/answer.py?answer=1229920
 function roots_author_link($link) {
 	return str_replace('<a ', '<a class="fn" rel="author"', $link);
 }
 
 add_filter('the_author_posts_link', 'roots_author_link');
 
+// we don't need to self-close these tags in html5:
+// <img>, <input>
+function roots_remove_self_closing_tags($input) {
+	return str_replace(' />', '>', $input);
+}
+
+add_filter('get_avatar', 'roots_remove_self_closing_tags');
+add_filter('comment_id_fields', 'roots_remove_self_closing_tags');
+
 // check to see if the tagline is set to default
 // show an admin notice to update if it hasn't been changed
 // you want to change this or remove it because it's used as the description in the RSS feed
 if (get_option('blogdescription') === 'Just another WordPress site') { 
 	add_action('admin_notices', create_function('', "echo '<div class=\"error\"><p>" . sprintf(__('Please update your <a href="%s">site tagline</a>', 'roots'), admin_url('options-general.php')) . "</p></div>';"));
-};
+}
 
 // set the post revisions to 5 unless the constant
 // was set in wp-config.php to avoid DB bloat
