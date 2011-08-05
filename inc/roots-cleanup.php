@@ -5,9 +5,10 @@
 function roots_nice_search_redirect() {
 	if (is_search() && strpos($_SERVER['REQUEST_URI'], '/wp-admin/') === false && strpos($_SERVER['REQUEST_URI'], '/search/') === false) {
 		wp_redirect(home_url('/search/' . str_replace(array(' ', '%20'), array('+', '+'), urlencode(get_query_var( 's' )))), 301);
-    exit();
+	    exit();
 	}
 }
+
 add_action('template_redirect', 'roots_nice_search_redirect');
 
 function roots_search_query($escaped = true) {
@@ -25,17 +26,17 @@ add_filter('get_search_query', 'roots_search_query');
 // thanks to Scott Walkinshaw (scottwalkinshaw.com)
 function roots_root_relative_url($input) {
 	$output = preg_replace_callback(
-	'/(https?:\/\/[^\/|"]+)([^"]+)?/',
-	create_function(
-		'$matches',
-		// if full URL is site_url, return a slash for relative root
-		'if (isset($matches[0]) && $matches[0] === site_url()) { return "/";' .
-		// if domain is equal to site_url, then make URL relative 
-		'} elseif (isset($matches[0]) && strpos($matches[0], site_url()) !== false) { return $matches[2];' .
-		// if domain is not equal to site_url, do not make external link relative
-		'} else { return $matches[0]; };'
-	),
-	$input
+		'/(https?:\/\/[^\/|"]+)([^"]+)?/',
+		create_function(
+			'$matches',
+			// if full URL is site_url, return a slash for relative root
+			'if (isset($matches[0]) && $matches[0] === site_url()) { return "/";' .
+			// if domain is equal to site_url, then make URL relative 
+			'} elseif (isset($matches[0]) && strpos($matches[0], site_url()) !== false) { return $matches[2];' .
+			// if domain is not equal to site_url, do not make external link relative
+			'} else { return $matches[0]; };'
+		),
+		$input
 	);
 	return $output;
 }
@@ -63,7 +64,6 @@ if (!is_admin()) {
 
 // remove root relative URLs on any attachments in the feed
 function roots_root_relative_attachment_urls() {
-//	global $wp_query;
 	if (!is_feed()) {
 		add_filter('wp_get_attachment_url', 'roots_root_relative_url');
 		add_filter('wp_get_attachment_link', 'roots_root_relative_url');
@@ -97,8 +97,8 @@ add_filter('the_generator', 'roots_no_generator');
 // cleanup wp_head
 function roots_noindex() {
 	if (get_option('blog_public') === '0') {
-    echo '<meta name="robots" content="noindex,nofollow">', "\n";
-  }
+		echo '<meta name="robots" content="noindex,nofollow">', "\n";
+	}
 }	
 
 function roots_rel_canonical() {
@@ -385,8 +385,14 @@ add_filter('comment_id_fields', 'roots_remove_self_closing_tags');
 // check to see if the tagline is set to default
 // show an admin notice to update if it hasn't been changed
 // you want to change this or remove it because it's used as the description in the RSS feed
+function roots_notice_tagline() {
+	echo '<div class="error">';
+	echo '<p>' . sprintf(__('Please update your <a href="%s">site tagline</a>', 'roots'), admin_url('options-general.php')) . '</p>';
+	echo '</div>';
+}
+
 if (get_option('blogdescription') === 'Just another WordPress site') { 
-	add_action('admin_notices', create_function('', "echo '<div class=\"error\"><p>" . sprintf(__('Please update your <a href="%s">site tagline</a>', 'roots'), admin_url('options-general.php')) . "</p></div>';"));
+	add_action('admin_notices', 'roots_notice_tagline');
 }
 
 // set the post revisions to 5 unless the constant
