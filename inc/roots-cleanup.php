@@ -80,7 +80,7 @@ if (!is_admin() && $roots_options['root_relative_urls']) {
 
 // remove root relative URLs on any attachments in the feed
 function roots_root_relative_attachment_urls() {
-	if (!is_feed()) {
+	if (!is_feed() && $roots_options['root_relative_urls']) {
 		add_filter('wp_get_attachment_url', 'roots_root_relative_url');
 		add_filter('wp_get_attachment_link', 'roots_root_relative_url');
 	}
