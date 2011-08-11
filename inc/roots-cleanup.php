@@ -44,23 +44,24 @@ function roots_root_relative_url($input) {
 // Terrible workaround to remove the duplicate subfolder in the src of JS/CSS tags
 // Example: /subfolder/subfolder/css/style.css 
 function roots_fix_duplicate_subfolder_urls($input) {
-  $output = roots_root_relative_url($input);
-  preg_match_all('!([^/]+)/([^/]+)!', $output, $matches);
-  if (isset($matches[1]) && isset($matches[2])) {
-    if ($matches[1][0] === $matches[2][0]) {
-      $output = substr($output, strlen($matches[1][0]) + 1);
-    }
-  }
-  return $output;
+	$output = roots_root_relative_url($input);
+	preg_match_all('!([^/]+)/([^/]+)!', $output, $matches);
+	if (isset($matches[1]) && isset($matches[2])) {
+		if ($matches[1][0] === $matches[2][0]) {
+			$output = substr($output, strlen($matches[1][0]) + 1);
+		}
+	}
+	return $output;
 }
 
-if (!is_admin()) {
+$roots_options = roots_get_theme_options();
+if (!is_admin() && $roots_options['root_relative_urls']) {
 	add_filter('bloginfo_url', 'roots_root_relative_url');
 	add_filter('theme_root_uri', 'roots_root_relative_url');
 	add_filter('stylesheet_directory_uri', 'roots_root_relative_url');
 	add_filter('template_directory_uri', 'roots_root_relative_url');
-  add_filter('script_loader_src', 'roots_fix_duplicate_subfolder_urls');
-  add_filter('style_loader_src', 'roots_fix_duplicate_subfolder_urls');
+	add_filter('script_loader_src', 'roots_fix_duplicate_subfolder_urls');
+	add_filter('style_loader_src', 'roots_fix_duplicate_subfolder_urls');
 	add_filter('plugins_url', 'roots_root_relative_url');	
 	add_filter('the_permalink', 'roots_root_relative_url');
 	add_filter('wp_list_pages', 'roots_root_relative_url');

@@ -150,6 +150,7 @@ function roots_get_default_theme_options() {
 		'main_class'			=> $default_framework_settings['classes']['main'],
 		'sidebar_class'			=> $default_framework_settings['classes']['sidebar'],
 		'google_analytics_id'	=> '',
+		'root_relative_urls'	=> true,
 		'clean_menu'			=> true,
 		'fout_b_gone'			=> false
 	);
@@ -218,7 +219,18 @@ function roots_theme_options_render_page() {
 							<small class="description"><?php printf(__('Enter your UA-XXXXX-X ID', 'roots')); ?></small>
 						</fieldset>
 					</td>
-				</tr>							
+				</tr>
+				
+				<tr valign="top"><th scope="row"><?php _e('Enable Root Relative URLs', 'roots'); ?></th>
+					<td>
+						<fieldset><legend class="screen-reader-text"><span><?php _e('Enable Root Relative URLs', 'roots'); ?></span></legend>
+							<select name="roots_theme_options[root_relative_urls]" id="roots_theme_options[root_relative_urls]">
+								<option value="yes" <?php selected($roots_options['root_relative_urls'], true); ?>><?php echo _e('Yes', 'roots'); ?></option>						
+								<option value="no" <?php selected($roots_options['root_relative_urls'], false); ?>><?php echo _e('No', 'roots'); ?></option>						
+							</select>							
+						</fieldset>
+					</td>
+				</tr>										
 
 				<tr valign="top"><th scope="row"><?php _e('Cleanup Menu Output', 'roots'); ?></th>
 					<td>
@@ -269,6 +281,9 @@ function roots_theme_options_validate($input) {
 		
 	if (isset($input['google_analytics_id']))
 		$output['google_analytics_id'] = $input['google_analytics_id'];			
+
+	if (isset($input['root_relative_urls']))
+		$output['root_relative_urls'] = ($input['root_relative_urls'] === 'yes') ? true : false;
 
 	if (isset($input['clean_menu']))
 		$output['clean_menu'] = ($input['clean_menu'] === 'yes') ? true : false;
