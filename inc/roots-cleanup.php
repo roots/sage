@@ -379,13 +379,6 @@ function roots_robots() {
 
 add_action('do_robots', 'roots_robots');
 
-// http://www.google.com/support/webmasters/bin/answer.py?answer=1229920
-function roots_author_link($link) {
-	return str_replace('<a ', '<a class="fn" rel="author"', $link);
-}
-
-add_filter('the_author_posts_link', 'roots_author_link');
-
 // we don't need to self-close these tags in html5:
 // <img>, <input>
 function roots_remove_self_closing_tags($input) {
