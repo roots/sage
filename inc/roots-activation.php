@@ -1,5 +1,120 @@
 <?php
 
+function roots_theme_activation_init() {
+//	register_setting('roots_activation');
+}
+add_action('admin_init', 'roots_theme_activation_init');
+
+function roots_activation_page_capability($capability) {
+	return 'edit_theme_options';
+}
+add_filter('option_page_capability_roots_activation', 'roots_activation_page_capability');
+
+function roots_theme_activation_add_page() {
+	$theme_page = add_theme_page(
+		__('Theme Activation', 'roots'),
+		__('Theme Activation', 'roots'),
+		'edit_theme_options',
+		'theme_activation',
+		'roots_theme_activation_render_page'
+	);
+
+	if (!$theme_page)
+		return;
+}
+add_action('admin_menu', 'roots_theme_activation_add_page');
+
+function roots_theme_activation_render_page() { ?>
+
+	<div class="wrap">
+		<?php screen_icon(); ?>
+		<h2><?php printf(__('%s Theme Activation', 'roots'), get_current_theme()); ?></h2>
+		<?php settings_errors(); ?>
+		
+		<div class="updated">
+			<p><strong><?php echo _e('Hello.', 'roots'); ?></strong></p>
+		</div>
+		
+		<form method="post" action="options.php">
+			<?php
+			//	settings_fields('roots_activation');
+			?>
+					
+			<table class="form-table">
+			
+				<tr valign="top"><th scope="row"><?php _e('Create static front page?', 'roots'); ?></th>
+					<td>
+						<fieldset><legend class="screen-reader-text"><span><?php _e('Create static front page?', 'roots'); ?></span></legend>
+							<select name="create_front_page" id="create_front_page">
+								<option selected="selected" value="yes"><?php echo _e('Yes', 'roots'); ?></option>
+								<option value="no"><?php echo _e('No', 'roots'); ?></option>
+							</select>							
+							<br />
+							<small class="description"><?php printf(__('Create a page called Home and set it to be the static front page', 'roots')); ?></small>
+						</fieldset>
+					</td>
+				</tr>
+				
+				<tr valign="top"><th scope="row"><?php _e('Change permalink structure?', 'roots'); ?></th>
+					<td>
+						<fieldset><legend class="screen-reader-text"><span><?php _e('Update permalink structure?', 'roots'); ?></span></legend>
+							<select name="change_permalink_structure" id="change_permalink_structure">
+								<option selected="selected" value="yes"><?php echo _e('Yes', 'roots'); ?></option>
+								<option value="no"><?php echo _e('No', 'roots'); ?></option>
+							</select>
+							<br />
+							<small class="description"><?php printf(__('Change permalink structure to /&#37;year&#37;/&#37;postname&#37;/', 'roots')); ?></small>
+						</fieldset>
+					</td>
+				</tr>
+				
+				<tr valign="top"><th scope="row"><?php _e('Change uploads folder?', 'roots'); ?></th>
+					<td>
+						<fieldset><legend class="screen-reader-text"><span><?php _e('Update uploads folder?', 'roots'); ?></span></legend>
+							<select name="change_uploads_folder" id="change_uploads_folder">
+								<option selected="selected" value="yes"><?php echo _e('Yes', 'roots'); ?></option>
+								<option value="no"><?php echo _e('No', 'roots'); ?></option>
+							</select>							
+							<br />
+							<small class="description"><?php printf(__('Change uploads folder to /assets/ instead of /wp-content/uploads/', 'roots')); ?></small>
+						</fieldset>
+					</td>
+				</tr>
+				
+				<tr valign="top"><th scope="row"><?php _e('Create navigation menus?', 'roots'); ?></th>
+					<td>
+						<fieldset><legend class="screen-reader-text"><span><?php _e('Update uploads folder?', 'roots'); ?></span></legend>
+							<select name="update_permalink_structure" id="update_permalink_structure">
+								<option selected="selected" value="yes"><?php echo _e('Yes', 'roots'); ?></option>
+								<option value="no"><?php echo _e('No', 'roots'); ?></option>
+							</select>							
+							<br />
+							<small class="description"><?php printf(__('Create the Primary and Utility Navigation menus and set their locations', 'roots')); ?></small>
+						</fieldset>
+					</td>
+				</tr>
+				
+				<tr valign="top"><th scope="row"><?php _e('Add pages to menu?', 'roots'); ?></th>
+					<td>
+						<fieldset><legend class="screen-reader-text"><span><?php _e('Add pages to menu?', 'roots'); ?></span></legend>
+							<select name="add_pages_to_primary_navigation" id="add_pages_to_primary_navigation">
+								<option selected="selected" value="yes"><?php echo _e('Yes', 'roots'); ?></option>
+								<option value="no"><?php echo _e('No', 'roots'); ?></option>
+							</select>							
+							<br />
+							<small class="description"><?php printf(__('Add all current published pages to the Primary Navigation', 'roots')); ?></small>
+						</fieldset>
+					</td>
+				</tr>													
+				
+			</table>
+			
+			<?php submit_button(); ?>
+		</form>		
+	</div>
+
+<?php }
+
 // http://foolswisdom.com/wp-activate-theme-actio/
 
 global $pagenow;
