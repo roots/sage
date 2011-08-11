@@ -140,9 +140,10 @@ function roots_add_frameworks_object_script() {
 }
 add_action('admin_head', 'roots_add_frameworks_object_script');
 
-function roots_get_default_theme_options() {
+function roots_get_default_theme_options( $default_framework = '' ) {
 	global $roots_css_frameworks;
-	$default_framework = 'blueprint';
+	if ( $default_framework == '' )
+		$default_framework = apply_filters('roots_default_css_framework', 'blueprint');
 	$default_framework_settings = $roots_css_frameworks[$default_framework];
 	$default_theme_options = array(
 		'css_framework'			=> $default_framework,
@@ -174,7 +175,7 @@ function roots_theme_options_render_page() {
 			<?php
 				settings_fields('roots_options');
 				$roots_options = roots_get_theme_options();
-				$roots_default_options = roots_get_default_theme_options();
+				$roots_default_options = roots_get_default_theme_options($roots_options['css_framework']);
 			?>
 
 			<table class="form-table">
