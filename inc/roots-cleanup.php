@@ -26,7 +26,7 @@ add_filter('get_search_query', 'roots_search_query');
 // thanks to Scott Walkinshaw (scottwalkinshaw.com)
 function roots_root_relative_url($input) {
 	$output = preg_replace_callback(
-		'/(https?:\/\/[^\/|"]+)([^"]+)?/',
+		'!(https?://[^/|"]+)([^"]+)?!',
 		create_function(
 			'$matches',
 			// if full URL is site_url, return a slash for relative root
@@ -41,11 +41,26 @@ function roots_root_relative_url($input) {
 	return $output;
 }
 
+// Terrible workaround to remove the duplicate subfolder in the src of JS/CSS tags
+// Example: /subfolder/subfolder/css/style.css 
+function roots_fix_duplicate_subfolder_urls($input) {
+  $output = roots_root_relative_url($input);
+  preg_match_all('!([^/]+)/([^/]+)!', $output, $matches);
+  if (isset($matches[1]) && isset($matches[2])) {
+    if ($matches[1][0] === $matches[2][0]) {
+      $output = substr($output, strlen($matches[1][0]) + 1);
+    }
+  }
+  return $output;
+}
+
 if (!is_admin()) {
 	add_filter('bloginfo_url', 'roots_root_relative_url');
 	add_filter('theme_root_uri', 'roots_root_relative_url');
 	add_filter('stylesheet_directory_uri', 'roots_root_relative_url');
 	add_filter('template_directory_uri', 'roots_root_relative_url');
+  add_filter('script_loader_src', 'roots_fix_duplicate_subfolder_urls');
+  add_filter('style_loader_src', 'roots_fix_duplicate_subfolder_urls');
 	add_filter('plugins_url', 'roots_root_relative_url');	
 	add_filter('the_permalink', 'roots_root_relative_url');
 	add_filter('wp_list_pages', 'roots_root_relative_url');
@@ -125,7 +140,7 @@ function roots_remove_recent_comments_style() {
 
 // remove CSS from gallery
 function roots_gallery_style($css) {
-	return preg_replace("/<style type='text\/css'>(.*?)<\/style>/s", '', $css);
+	return preg_replace("!<style type='text/css'>(.*?)</style>!s", '', $css);
 }
 
 function roots_head_cleanup() {
@@ -383,7 +398,7 @@ add_filter('comment_id_fields', 'roots_remove_self_closing_tags');
 // you want to change this or remove it because it's used as the description in the RSS feed
 function roots_notice_tagline() {
 	echo '<div class="error">';
-	echo '<p>' . sprintf(__('Please update your <a href="%s">site tagline</a>', 'roots'), admin_url('options-general.php')) . '</p>';
+	echo '<p>', sprintf(__('Please update your <a href="%s">site tagline</a>', 'roots'), admin_url('options-general.php')), '</p>';
 	echo '</div>';
 }
 
@@ -407,5 +422,15 @@ function roots_change_mce_options($options) {
 }
 
 add_filter('tiny_mce_before_init', 'roots_change_mce_options');
+
+//clean up the default WordPress style tags
+add_filter('style_loader_tag', 'roots_clean_style_tag');
+
+function roots_clean_style_tag($input) {
+  preg_match_all("!<link rel='stylesheet'\s?(id='[^']+')?\s+href='(.*)' type='text/css' media='(.*)' />!", $input, $matches);
+  //only display media if it's print
+  $media = $matches[3][0] === 'print' ? ' media="print"' : '';                                                                             
+  return '<link rel="stylesheet" href="' . $matches[2][0] . '"' . $media . '>' . "\n";
+}
 
 ?>

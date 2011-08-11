@@ -57,6 +57,8 @@ if (stristr($_SERVER['SERVER_SOFTWARE'], 'apache') !== false) {
 			add_filter('bloginfo', 'roots_clean_assets');
 			add_filter('stylesheet_directory_uri', 'roots_clean_assets');
 			add_filter('template_directory_uri', 'roots_clean_assets');
+      add_filter('script_loader_src', 'roots_clean_plugins');
+      add_filter('style_loader_src', 'roots_clean_plugins');
 		}
 	}
 	
