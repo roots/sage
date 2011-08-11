@@ -136,7 +136,7 @@ function roots_1140_header_before() {
 	global $roots_options;
 	$roots_css_framework = $roots_options['css_framework'];
 	if ($roots_css_framework === '1140') {
-		echo '<div class="row">', "\n";
+		echo '<div class="container"><div class="row">', "\n";
 	}	
 }
 
@@ -144,8 +144,8 @@ function roots_1140_header_after() {
 	global $roots_options;
 	$roots_css_framework = $roots_options['css_framework'];
 	if ($roots_css_framework === '1140') {
-		echo "</div><!-- /.row -->\n";
-		echo '<div class="row">', "\n";
+		echo "</div></div><!-- /.row /.container -->\n";
+		echo '<div class="container"><div class="row">', "\n";
 	}	
 }
 
@@ -153,8 +153,8 @@ function roots_1140_footer_before() {
 	global $roots_options;
 	$roots_css_framework = $roots_options['css_framework'];
 	if ($roots_css_framework === '1140') {
-		echo "</div><!-- /.row -->\n";
-    echo '<div class="row">', "\n";
+		echo "</div></div><!-- /.row /.container -->\n";
+    echo '<div class="container"><div class="row">', "\n";
 	}	
 }
 
@@ -162,7 +162,7 @@ function roots_1140_footer_after() {
 	global $roots_options;
 	$roots_css_framework = $roots_options['css_framework'];
 	if ($roots_css_framework === '1140') {
-		echo "</div><!-- /.row -->\n";
+		echo "</div></div><!-- /.row /.container -->\n";
 	}	
 }
 
