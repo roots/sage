@@ -5,13 +5,14 @@
 article, aside, details, figcaption, figure, footer, header, hgroup, nav, section { display: block; }
 audio, canvas, video { display: inline-block; *display: inline; *zoom: 1; }
 audio:not([controls]) { display: none; }
+[hidden] { display: none; }
 
 
 /* =============================================================================
    Base
    ========================================================================== */
 
-html { font-size: 100%; overflow-y: scroll; -webkit-overflow-scrolling: touch; -webkit-tap-highlight-color: rgba(0,0,0,0); -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+html { font-size: 100%; overflow-y: scroll; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
 
 body { margin: 0; font-size: 13px; line-height: 1.231; }
 
@@ -155,6 +156,7 @@ input:invalid, textarea:invalid { background-color: #f0dddd; }
    ========================================================================== */
 
 table { border-collapse: collapse; border-spacing: 0; }
+td { vertical-align: top; }
 
 
 /* =============================================================================
