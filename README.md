@@ -2,6 +2,20 @@
 
 ## Changelog:
 
+### 3.6.0: August 12th, 2011
+<ul>
+	<li>HTML5 Boilerplate 2.0 updates</li>
+	<li>Cleaner output of enqueued styles and scripts</li>
+	<li>Added option for root relative URLs</li>
+	<li>Small fixes to root relative URLs and clean assets</li>
+	<li>Updated included jQuery plugins</li>
+	<li>Added French translation (thanks @johnraz)</li>
+	<li>Added Brazilian Portuguese translation (thanks @weslly)</li>
+	<li>Switched the logo to use <code>add_custom_image_header</code></li>
+	<li>Added a function that strips unnecessary self-closing tags</li>
+	<li>Code cleanup and re-organization</li>
+</ul>
+
 ### 3.5.0: July 30th, 2011
 <ul>
 	<li>Complete rewrite of theme options based on Twenty Eleven</li>
@@ -160,7 +174,7 @@
 
 ## Contributors:
 
-[Scott Walkinshaw](http://www.scottwalkinshaw.com/), [Matthew Price](http://www.matthewaprice.com/), [Kyle Geminden](http://www.kylegeminden.com/), [Steve Jothen](http://twitter.com/sjothen), [John Liuti](http://twitter.com/JohnLiuti), [Jeremiah Wall](http://jeremiahwall.com/), [Jenny Jui-Shan Liang](http://jsliang.twgogo.org/), [Mason Stewart](http://masondesu.com/), [Dejan Panovski](http://webdesignplus.mk/), [Cesar Vargas](http://www.limitlis.com/), [Matthew Wrather](http://www.wrathercreative.com/)
+[Scott Walkinshaw](http://www.scottwalkinshaw.com/), [Matthew Price](http://www.matthewaprice.com/), [Kyle Geminden](http://www.kylegeminden.com/), [Steve Jothen](http://twitter.com/sjothen), [John Liuti](http://twitter.com/JohnLiuti), [Jeremiah Wall](http://jeremiahwall.com/), [Jenny Jui-Shan Liang](http://jsliang.twgogo.org/), [Mason Stewart](http://masondesu.com/), [Dejan Panovski](http://webdesignplus.mk/), [Cesar Vargas](http://www.limitlis.com/), [Matthew Wrather](http://www.wrathercreative.com/), [Weslly Honorato](http://about.me/weslly)
 
 ## License:
 
