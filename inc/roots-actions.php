@@ -15,13 +15,13 @@ function roots_google_analytics() {
 	global $roots_options;
 	$roots_google_analytics_id = $roots_options['google_analytics_id'];
 	$get_roots_google_analytics_id = esc_attr($roots_options['google_analytics_id']);
-	if ($roots_google_analytics_id !== '') {
+	if ($roots_google_analytics_id !== '') {	
 		echo "\n\t<script>\n";
-		echo "\t\tvar _gaq=[['_setAccount','$get_roots_google_analytics_id'],['_trackPageview'],['_trackPageLoadTime']];\n";
-		echo "\t\t(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;\n";
-		echo "\t\tg.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';\n";
-		echo "\t\ts.parentNode.insertBefore(g,s)}(document,'script'));\n";
-		echo "\t</script>\n";
+		echo "\t\twindow._gaq = [['_setAccount','$get_roots_google_analytics_id'],['_trackPageview'],['_trackPageLoadTime']];\n";
+		echo "\t\tModernizr.load({\n";
+		echo "\t\t\tload: ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js'\n";
+		echo "\t\t});\n";
+		echo "\t</script>\n";		
 	}	
 }
 
