@@ -149,7 +149,7 @@ AddType text/x-vcard                   vcf
   AddOutputFilterByType DEFLATE application/javascript
   AddOutputFilterByType DEFLATE text/xml application/xml text/x-component
   AddOutputFilterByType DEFLATE application/xhtml+xml application/rss+xml application/atom+xml
-  AddOutputFilterByType DEFLATE image/svg+xml application/vnd.ms-fontobject application/x-font-ttf font/opentype
+  AddOutputFilterByType DEFLATE image/x-icon image/svg+xml application/vnd.ms-fontobject application/x-font-ttf font/opentype
 </IfModule>
 </IfModule>
 
