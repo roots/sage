@@ -273,23 +273,31 @@ function roots_theme_options_validate($input) {
 	// set the value of the main container class depending on the selected grid framework
 	$output['container_class'] = $roots_css_frameworks[$output['css_framework']]['classes']['container'];
 
-	if (isset($input['main_class']))
-		$output['main_class'] = $input['main_class'];
+	if (isset($input['main_class'])) {
+		$output['main_class'] = wp_filter_nohtml_kses($input['main_class']);
+	}
 		
-	if (isset($input['sidebar_class']))
-		$output['sidebar_class'] = $input['sidebar_class'];	
+	if (isset($input['sidebar_class'])) {
+		$output['sidebar_class'] = wp_filter_nohtml_kses($input['sidebar_class']);
+	}
 		
-	if (isset($input['google_analytics_id']))
-		$output['google_analytics_id'] = $input['google_analytics_id'];			
+	if (isset($input['google_analytics_id'])) {
+		if (preg_match('/^ua-\d{4,9}-\d{1,4}$/i', $input['google_analytics_id'])) { 
+			$output['google_analytics_id'] = $input['google_analytics_id'];
+		}
+	}
 
-	if (isset($input['root_relative_urls']))
+	if (isset($input['root_relative_urls'])) {
 		$output['root_relative_urls'] = ($input['root_relative_urls'] === 'yes') ? true : false;
+	}
 
-	if (isset($input['clean_menu']))
+	if (isset($input['clean_menu'])) {
 		$output['clean_menu'] = ($input['clean_menu'] === 'yes') ? true : false;
+	}
 		
-	if (isset($input['fout_b_gone']))
-		$output['fout_b_gone'] = ($input['fout_b_gone'] === 'yes') ? true : false;		
+	if (isset($input['fout_b_gone'])) {
+		$output['fout_b_gone'] = ($input['fout_b_gone'] === 'yes') ? true : false;
+	}
 
 	return apply_filters('roots_theme_options_validate', $output, $input, $defaults);
 }
