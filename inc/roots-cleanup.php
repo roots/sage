@@ -55,7 +55,7 @@ function roots_fix_duplicate_subfolder_urls($input) {
 }
 
 $roots_options = roots_get_theme_options();
-if (!is_admin() && $roots_options['root_relative_urls']) {
+if (!is_admin() && !in_array($GLOBALS['pagenow'], array('wp-login.php', 'wp-register.php')) && $roots_options['root_relative_urls']) {
 	add_filter('bloginfo_url', 'roots_root_relative_url');
 	add_filter('theme_root_uri', 'roots_root_relative_url');
 	add_filter('stylesheet_directory_uri', 'roots_root_relative_url');
