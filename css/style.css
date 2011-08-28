@@ -534,6 +534,24 @@ img.ui-datepicker-trigger { vertical-align: middle; }
 
 
 /* =============================================================================
+   PLACEHOLDER Media Queries for Responsive Design.
+   These override the primary ('mobile first') styles
+   Modify as content requires.
+   ========================================================================== */
+
+@media only screen and (min-width: 480px) {
+	/* Style adjustments for viewports 480px and over go here */
+
+}
+
+@media only screen and (min-width: 768px) {
+	/* Style adjustments for viewports 768px and over go here */
+
+}
+
+
+
+/* =============================================================================
    Non-semantic helper classes
    Please define your styles before this section.
    ========================================================================== */
@@ -552,25 +570,7 @@ img.ui-datepicker-trigger { vertical-align: middle; }
 
 .clearfix:before, .clearfix:after { content: ""; display: table; }
 .clearfix:after { clear: both; }
-.clearfix { zoom: 1; }
-
-
-
-/* =============================================================================
-   PLACEHOLDER Media Queries for Responsive Design.
-   These override the primary ('mobile first') styles
-   Modify as content requires.
-   ========================================================================== */
-
-@media only screen and (min-width: 480px) {
-	/* Style adjustments for viewports 480px and over go here */
-
-}
-
-@media only screen and (min-width: 768px) {
-	/* Style adjustments for viewports 768px and over go here */
-
-}
+.clearfix { *zoom: 1; }
 
 
 
