@@ -392,14 +392,28 @@ add_filter('comment_id_fields', 'roots_remove_self_closing_tags');
 // show an admin notice to update if it hasn't been changed
 // you want to change this or remove it because it's used as the description in the RSS feed
 function roots_notice_tagline() {
-	echo '<div class="error">';
-	echo '<p>', sprintf(__('Please update your <a href="%s">site tagline</a>', 'roots'), admin_url('options-general.php')), '</p>';
-	echo '</div>';
+    global $current_user;
+	$user_id = $current_user->ID;
+    if (!get_user_meta($user_id, 'ignore_tagline_notice')) {       
+		echo '<div class="error">';
+		echo '<p>', sprintf(__('Please update your <a href="%s">site tagline</a> <a href="%s" style="float: right;">Hide Notice</a>', 'roots'), admin_url('options-general.php'), '?tagline_notice_ignore=0'), '</p>';
+		echo '</div>';        
+    }
 }
 
 if (get_option('blogdescription') === 'Just another WordPress site') { 
 	add_action('admin_notices', 'roots_notice_tagline');
 }
+
+function roots_notice_tagline_ignore() {
+	global $current_user;
+	$user_id = $current_user->ID;
+	if (isset($_GET['tagline_notice_ignore']) && '0' == $_GET['tagline_notice_ignore']) {
+		add_user_meta($user_id, 'ignore_tagline_notice', 'true', true);
+    }
+}
+
+add_action('admin_init', 'roots_notice_tagline_ignore');
 
 // set the post revisions to 5 unless the constant
 // was set in wp-config.php to avoid DB bloat
