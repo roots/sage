@@ -416,7 +416,7 @@ function roots_notice_tagline_ignore() {
 add_action('admin_init', 'roots_notice_tagline_ignore');
 
 // show an admin notice if the assets/ folder doesn't have the right permissions
-if (!is_readable('../assets') && current_user_can('administrator')) {
+if (file_exists('../assets') && !is_readable('../assets') && current_user_can('administrator')) {
 	add_action('admin_notices', create_function('', "echo '<div class=\"error\"><p>" . __('Please make sure your <code>assets/</code> folder is readable', 'roots') . "</p></div>';"));
 }
 
