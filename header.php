@@ -25,11 +25,7 @@
 	<script defer src="<?php echo get_template_directory_uri(); ?>/js/script.js"></script>
 </head>
 
-<body <?php if (isset($post)) {
-		body_class($post->post_name);
-	} else {
-		body_class();
-	}?>>
+<body <?php if (isset($post)) { body_class($post->post_name); } else { body_class(); }?>>
 
 	<?php roots_wrap_before(); ?>
 	<div id="wrap" class="container" role="document">
