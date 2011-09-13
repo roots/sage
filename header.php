@@ -25,7 +25,12 @@
 	<script defer src="<?php echo get_template_directory_uri(); ?>/js/script.js"></script>
 </head>
 
-<body <?php $page_slug = $post->post_name; body_class($page_slug); ?>>
+<body <?php if (isset($post)) {
+		$page_slug = $post->post_name;
+		body_class($page_slug);
+	} else {
+		body_class();
+	}?>>
 
 	<?php roots_wrap_before(); ?>
 	<div id="wrap" class="container" role="document">
