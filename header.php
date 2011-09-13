@@ -26,8 +26,7 @@
 </head>
 
 <body <?php if (isset($post)) {
-		$page_slug = $post->post_name;
-		body_class($page_slug);
+		body_class($post->post_name);
 	} else {
 		body_class();
 	}?>>
