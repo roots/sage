@@ -129,4 +129,21 @@ function roots_author_link($link) {
 
 add_filter('the_author_posts_link', 'roots_author_link');
 
+function roots_detect_slug() {
+	$term = get_queried_object();
+	if( is_single() )
+		$cat = get_the_category();
+
+	if( ! empty( $cat ) )
+		return $cat[0]->slug;
+	elseif( isset( $term->slug ) )
+		return $term->slug;
+	elseif( isset( $term->page_name ) )
+		return $term->page_name;
+	elseif( isset( $term->post_name ) )
+		return $term->post_name;
+	else
+		return;
+}
+
 ?>

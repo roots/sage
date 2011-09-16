@@ -36,7 +36,7 @@
 	</script>
 <?php } ?>
 </head>
-<body <?php $page_slug = $post->post_name; body_class($page_slug); ?>>
+<body <?php body_class( roots_detect_slug() ); ?>>
 	<?php roots_wrap_before(); ?>
 	<div id="wrap" class="container" role="document">
 	<?php roots_header_before(); ?>
