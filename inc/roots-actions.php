@@ -53,7 +53,7 @@ function roots_adapt_head() {
 	if ($roots_css_framework === 'adapt') {
 		echo "\n\t<script>\n";
 		echo "\t\tvar ADAPT_CONFIG = {\n";
-		echo "\t\t\tpath: '/css/adapt/',\n";
+		echo "\t\t\tpath: '$template_uri/css/adapt/',\n";
 		echo "\t\t\tdynamic: true,\n";
 		echo "\t\t\trange: [\n";
 		echo "\t\t\t\t'0px    to 760px  = mobile.css',\n";
