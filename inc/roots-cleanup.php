@@ -442,4 +442,21 @@ function roots_clean_style_tag($input) {
   return '<link rel="stylesheet" href="' . $matches[2][0] . '"' . $media . '>' . "\n";
 }
 
+function roots_body_class() {
+	$term = get_queried_object();
+	var_dump($term);
+	if (is_single())
+		$cat = get_the_category();
+	if(!empty($cat))
+		return $cat[0]->slug;
+	elseif(isset($term->slug))
+		return $term->slug;
+	elseif(isset($term->page_name))
+		return $term->page_name;
+	elseif(isset($term->post_name))
+		return $term->post_name;
+	else
+		return;
+}
+
 ?>
