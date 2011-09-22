@@ -444,7 +444,6 @@ function roots_clean_style_tag($input) {
 
 function roots_body_class() {
 	$term = get_queried_object();
-	var_dump($term);
 	if (is_single())
 		$cat = get_the_category();
 	if(!empty($cat))
