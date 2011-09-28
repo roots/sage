@@ -95,7 +95,7 @@ $roots_css_frameworks = array(
 		'label'   => __('1140', 'roots'),
 		'classes' => array(
 			'container' => 'twelvecol',
-			'main'    => 'sevencol',
+			'main'    => 'eightcol',
 			'sidebar' => 'fourcol last'
 		)
 	),
