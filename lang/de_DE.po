@@ -217,7 +217,7 @@ msgstr "Neuere Artikel &rarr;"
 #. Text in function
 #: comments.php:46
 msgid "No Responses to"
-msgstr "Keine Antwortena uf"
+msgstr "Keine Antworten auf"
 
 #. Text in function
 #: comments.php:46
@@ -302,7 +302,7 @@ msgstr "Es wurden leider keine Ergebnisse gefunden."
 #. Text in echo
 #: inc/roots-widgets.php:65
 msgid "State/Region:"
-msgstr "Land/Region"
+msgstr "Bundesland/Region"
 
 #. Text in echo
 #: inc/roots-widgets.php:57
