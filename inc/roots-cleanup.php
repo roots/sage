@@ -89,10 +89,16 @@ function roots_root_relative_attachment_urls() {
 
 add_action('pre_get_posts', 'roots_root_relative_attachment_urls');
 
-// remove dir and set lang="en" as default (rather than en-US)
+// set lang="en" as default (rather than en-US)
 function roots_language_attributes() {
 	$attributes = array();
 	$output = '';
+	if (function_exists('is_rtl')) {
+		if (is_rtl() == 'rtl') {
+			$attributes[] = 'dir="rtl"';
+		}
+	}
+	
 	$lang = get_bloginfo('language');
 	if ($lang && $lang !== 'en-US') {
 		$attributes[] = "lang=\"$lang\"";
