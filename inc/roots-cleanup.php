@@ -393,6 +393,7 @@ function roots_remove_self_closing_tags($input) {
 
 add_filter('get_avatar', 'roots_remove_self_closing_tags');
 add_filter('comment_id_fields', 'roots_remove_self_closing_tags');
+add_filter('post_thumbnail_html', 'roots_remove_self_closing_tags');
 
 // check to see if the tagline is set to default
 // show an admin notice to update if it hasn't been changed
