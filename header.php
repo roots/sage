@@ -38,36 +38,29 @@
 					<img src="<?php echo get_header_image(); ?>" width="<?php echo HEADER_IMAGE_WIDTH; ?>" height="<?php echo HEADER_IMAGE_HEIGHT; ?>" alt="<?php bloginfo('name'); ?>">
 				</a>
 				
-				<?php if ($roots_options['clean_menu']) { ?>
-					<nav id="nav-main" role="navigation">
+				<nav id="nav-main" role="navigation">
+					<?php if ($roots_options['clean_menu']) { ?>
 						<?php wp_nav_menu(array('theme_location' => 'primary_navigation', 'walker' => new roots_nav_walker())); ?>
-					</nav>
-					<?php 					
-						$utility_nav = wp_get_nav_menu_object('Utility Navigation');
-						$utility_nav_term_id = (int) $utility_nav->term_id;
-						$menu_items = wp_get_nav_menu_items($utility_nav_term_id);					
-						if ($menu_items || !empty($menu_items)) {
-					?>
-					<nav id="nav-utility">
-						<?php wp_nav_menu(array('theme_location' => 'utility_navigation', 'walker' => new roots_nav_walker())); ?>
-					</nav>
-					<?php } ?>		
-				<?php } else { ?>
-					<nav id="nav-main" role="navigation">
+					<?php } else { ?>
 						<?php wp_nav_menu(array('theme_location' => 'primary_navigation')); ?>
-					</nav>
-					<?php 					
-						$utility_nav = wp_get_nav_menu_object('Utility Navigation');
-						$utility_nav_term_id = (int) $utility_nav->term_id;
-						$menu_items = wp_get_nav_menu_items($utility_nav_term_id);					
-						if ($menu_items || !empty($menu_items)) {
-					?>
-					<nav id="nav-utility">
+					<?php } ?>
+				</nav>
+				
+				<?php 					
+					$utility_nav = wp_get_nav_menu_object('Utility Navigation');
+					$utility_nav_term_id = (int) $utility_nav->term_id;
+					$menu_items = wp_get_nav_menu_items($utility_nav_term_id);					
+					if ($menu_items || !empty($menu_items)) {
+				?>
+				<nav id="nav-utility">
+					<?php if ($roots_options['clean_menu']) { ?>
+						<?php wp_nav_menu(array('theme_location' => 'utility_navigation', 'walker' => new roots_nav_walker())); ?>
+					<?php } else { ?>
 						<?php wp_nav_menu(array('theme_location' => 'utility_navigation')); ?>
-					</nav>
-					<?php } ?>								
+					<?php } ?>
+				</nav>
 				<?php } ?>
-			
+
 			</div>
 		</header>
 	<?php roots_header_after(); ?>
