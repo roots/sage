@@ -3,7 +3,7 @@
 function roots_admin_enqueue_scripts($hook_suffix) {
 	if ($hook_suffix !== 'appearance_page_theme_options')
 		return;
-		
+
 	wp_enqueue_style('roots-theme-options', get_template_directory_uri() . '/inc/css/theme-options.css');
 	wp_enqueue_script('roots-theme-options', get_template_directory_uri() . '/inc/js/theme-options.js');
 }
@@ -127,7 +127,7 @@ $roots_css_frameworks = array(
 		)
 	)
 );
- 
+
 // Write the above array of CSS frameworks into a script tag
 function roots_add_frameworks_object_script() {
 	global $roots_css_frameworks;
@@ -184,7 +184,7 @@ function roots_theme_options_render_page() {
 						<fieldset class="roots_css_frameworks"><legend class="screen-reader-text"><span><?php _e('CSS Grid Framework', 'roots'); ?></span></legend>
 							<select name="roots_theme_options[css_framework]" id="roots_theme_options[css_framework]">
 							<?php foreach ($roots_css_frameworks as $css_framework) { ?>
-								<option value="<?php echo esc_attr($css_framework['name']); ?>" <?php selected($roots_options['css_framework'], $css_framework['name']); ?>><?php echo $css_framework['label']; ?></option>						
+								<option value="<?php echo esc_attr($css_framework['name']); ?>" <?php selected($roots_options['css_framework'], $css_framework['name']); ?>><?php echo $css_framework['label']; ?></option>
 							<?php } ?>
 							</select>
 						</fieldset>
@@ -200,7 +200,7 @@ function roots_theme_options_render_page() {
 						</fieldset>
 					</td>
 				</tr>
-				
+
 				<tr valign="top"><th scope="row"><?php _e('#sidebar CSS Classes', 'roots'); ?></th>
 					<td>
 						<fieldset><legend class="screen-reader-text"><span><?php _e('#sidebar CSS Classes', 'roots'); ?></span></legend>
@@ -210,7 +210,7 @@ function roots_theme_options_render_page() {
 						</fieldset>
 					</td>
 				</tr>
-				
+
 				<tr valign="top"><th scope="row"><?php _e('Google Analytics ID', 'roots'); ?></th>
 					<td>
 						<fieldset><legend class="screen-reader-text"><span><?php _e('Google Analytics ID', 'roots'); ?></span></legend>
@@ -220,46 +220,46 @@ function roots_theme_options_render_page() {
 						</fieldset>
 					</td>
 				</tr>
-				
+
 				<tr valign="top"><th scope="row"><?php _e('Enable Root Relative URLs', 'roots'); ?></th>
 					<td>
 						<fieldset><legend class="screen-reader-text"><span><?php _e('Enable Root Relative URLs', 'roots'); ?></span></legend>
 							<select name="roots_theme_options[root_relative_urls]" id="roots_theme_options[root_relative_urls]">
-								<option value="yes" <?php selected($roots_options['root_relative_urls'], true); ?>><?php echo _e('Yes', 'roots'); ?></option>						
-								<option value="no" <?php selected($roots_options['root_relative_urls'], false); ?>><?php echo _e('No', 'roots'); ?></option>						
-							</select>							
+								<option value="yes" <?php selected($roots_options['root_relative_urls'], true); ?>><?php echo _e('Yes', 'roots'); ?></option>
+								<option value="no" <?php selected($roots_options['root_relative_urls'], false); ?>><?php echo _e('No', 'roots'); ?></option>
+							</select>
 						</fieldset>
 					</td>
-				</tr>										
+				</tr>
 
 				<tr valign="top"><th scope="row"><?php _e('Cleanup Menu Output', 'roots'); ?></th>
 					<td>
 						<fieldset><legend class="screen-reader-text"><span><?php _e('Cleanup Menu Output', 'roots'); ?></span></legend>
 							<select name="roots_theme_options[clean_menu]" id="roots_theme_options[clean_menu]">
-								<option value="yes" <?php selected($roots_options['clean_menu'], true); ?>><?php echo _e('Yes', 'roots'); ?></option>						
-								<option value="no" <?php selected($roots_options['clean_menu'], false); ?>><?php echo _e('No', 'roots'); ?></option>						
-							</select>							
+								<option value="yes" <?php selected($roots_options['clean_menu'], true); ?>><?php echo _e('Yes', 'roots'); ?></option>
+								<option value="no" <?php selected($roots_options['clean_menu'], false); ?>><?php echo _e('No', 'roots'); ?></option>
+							</select>
 						</fieldset>
 					</td>
 				</tr>
-				
+
 				<tr valign="top"><th scope="row"><?php _e('Enable FOUT-B-Gone', 'roots'); ?></th>
 					<td>
 						<fieldset><legend class="screen-reader-text"><span><?php _e('Enable FOUT-B-Gone', 'roots'); ?></span></legend>
 							<select name="roots_theme_options[fout_b_gone]" id="roots_theme_options[fout_b_gone]">
-								<option value="yes" <?php selected($roots_options['fout_b_gone'], true); ?>><?php echo _e('Yes', 'roots'); ?></option>						
-								<option value="no" <?php selected($roots_options['fout_b_gone'], false); ?>><?php echo _e('No', 'roots'); ?></option>						
-							</select>							
+								<option value="yes" <?php selected($roots_options['fout_b_gone'], true); ?>><?php echo _e('Yes', 'roots'); ?></option>
+								<option value="no" <?php selected($roots_options['fout_b_gone'], false); ?>><?php echo _e('No', 'roots'); ?></option>
+							</select>
 						</fieldset>
 					</td>
-				</tr>										
-				
+				</tr>
+
 			</table>
 
 			<?php submit_button(); ?>
 		</form>
-	</div>	
-	
+	</div>
+
 	<?php
 }
 
@@ -268,7 +268,7 @@ function roots_theme_options_validate($input) {
 	$output = $defaults = roots_get_default_theme_options();
 
 	if (isset($input['css_framework']) && array_key_exists($input['css_framework'], $roots_css_frameworks))
-		$output['css_framework'] = $input['css_framework'];	
+		$output['css_framework'] = $input['css_framework'];
 
 	// set the value of the main container class depending on the selected grid framework
 	$output['container_class'] = $roots_css_frameworks[$output['css_framework']]['classes']['container'];
@@ -276,27 +276,45 @@ function roots_theme_options_validate($input) {
 	if (isset($input['main_class'])) {
 		$output['main_class'] = wp_filter_nohtml_kses($input['main_class']);
 	}
-		
+
 	if (isset($input['sidebar_class'])) {
 		$output['sidebar_class'] = wp_filter_nohtml_kses($input['sidebar_class']);
 	}
-		
+
 	if (isset($input['google_analytics_id'])) {
-		if (preg_match('/^ua-\d{4,9}-\d{1,4}$/i', $input['google_analytics_id'])) { 
+		if (preg_match('/^ua-\d{4,9}-\d{1,4}$/i', $input['google_analytics_id'])) {
 			$output['google_analytics_id'] = $input['google_analytics_id'];
 		}
 	}
 
 	if (isset($input['root_relative_urls'])) {
-		$output['root_relative_urls'] = ($input['root_relative_urls'] === 'yes') ? true : false;
+		if ($input['root_relative_urls'] === 'yes') {
+			$input['root_relative_urls'] = true;
+		}
+		if ($input['root_relative_urls'] === 'no') {
+			$input['root_relative_urls'] = false;
+		}
+		$output['root_relative_urls'] = $input['root_relative_urls'];
 	}
 
 	if (isset($input['clean_menu'])) {
-		$output['clean_menu'] = ($input['clean_menu'] === 'yes') ? true : false;
+		if ($input['clean_menu'] === 'yes') {
+			$input['clean_menu'] = true;
+		}
+		if ($input['clean_menu'] === 'no') {
+			$input['clean_menu'] = false;
+		}
+		$output['clean_menu'] = $input['clean_menu'];
 	}
-		
+
 	if (isset($input['fout_b_gone'])) {
-		$output['fout_b_gone'] = ($input['fout_b_gone'] === 'yes') ? true : false;
+		if ($input['fout_b_gone'] === 'yes') {
+			$input['fout_b_gone'] = true;
+		}
+		if ($input['fout_b_gone'] === 'no') {
+			$input['fout_b_gone'] = false;
+		}
+		$output['fout_b_gone'] = $input['fout_b_gone'];
 	}
 
 	return apply_filters('roots_theme_options_validate', $output, $input, $defaults);
