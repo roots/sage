@@ -75,12 +75,11 @@ if (stristr($_SERVER['SERVER_SOFTWARE'], 'apache') !== false) {
     if (is_null($wp_filesystem)) WP_Filesystem(array(), ABSPATH);
 
     $filename = __DIR__ . '/h5bp-htaccess';
-    $rules .= $wp_filesystem->get_contents($filename);
 
-    return $rules;
+    return $rules . $wp_filesystem->get_contents($filename);
   }
 
-  add_action('mod_rewrite_rules', 'roots_add_h5bp_htaccess');
+  add_filter('mod_rewrite_rules', 'roots_add_h5bp_htaccess');
 }
 
 ?>
