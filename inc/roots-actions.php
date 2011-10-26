@@ -99,6 +99,17 @@ function roots_get_stylesheets() {
       $styles .= stylesheet_link_tag('/adapt/mobile.css', 1);
       $styles .= "\t</noscript>\n";
       break;
+    case 'foundation' :
+      $styles .= stylesheet_link_tag('/foundation/globals.css');
+      $styles .= stylesheet_link_tag('/foundation/typography.css', 1);
+      $styles .= stylesheet_link_tag('/foundation/grid.css', 1);
+      $styles .= stylesheet_link_tag('/foundation/ui.css', 1);
+      $styles .= stylesheet_link_tag('/foundation/forms.css', 1);
+      $styles .= stylesheet_link_tag('/foundation/orbit.css', 1);
+      $styles .= stylesheet_link_tag('/foundation/reveal.css', 1);
+      $styles .= stylesheet_link_tag('/foundation/mobile.css', 1);
+      $styles .= stylesheet_link_tag('/foundation/app.css', 1);                                          
+      break;      
     case 'less' :
       $styles .= stylesheet_link_tag('/less/less.css');
       break;
@@ -122,6 +133,9 @@ function roots_get_stylesheets() {
     case '1140' :
       $styles .= "\t<!--[if lt IE 8]>" . stylesheet_link_tag('/1140/ie.css', 0, false) . "<![endif]-->\n";
       break;
+    case 'foundation' :
+      $styles .= "\t<!--[if lt IE 9]>" . stylesheet_link_tag('/foundation/ie.css', 0, false) . "<![endif]-->\n";
+      break;      
   }
 
   echo $styles;
