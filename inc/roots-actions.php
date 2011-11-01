@@ -82,7 +82,11 @@ function roots_foundation_head() {
     echo "\t<script src=\"$template_uri/js/libs/jquery.customforms.js\"></script>\n";
     echo "\t<script src=\"$template_uri/js/libs/jquery.placeholder.min.js\"></script>\n";
     echo "\t<!--  End Combine and Compress Javascript Files -->\n";
-    echo "\t<script src=\"$template_uri/js/libs/app.js\"></script>\n";            
+    echo "\t<script src=\"$template_uri/js/libs/app.js\"></script>\n";
+    echo "\t<!-- IE Fix for HTML 5 Tags -->\n";
+    echo "\t<!--[if lt IE 9]>\n";
+    echo "\t\t<script src=\"http://html5shiv.googlecode.com/svn/trunk/html5.js\"></script>\n";
+    echo "\t<![endif]-->\n";            
   }
 }
 
