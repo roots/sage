@@ -122,8 +122,8 @@ $roots_css_frameworks = array(
     'label'   => __('Foundation', 'roots'),
     'classes' => array(
       'container' => 'row',
-      'main'    => '',
-      'sidebar' => ''
+      'main'    => 'eight columns',
+      'sidebar' => 'four columns'
     )
   ),  
   'none' => array(
