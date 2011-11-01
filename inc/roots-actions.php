@@ -4,6 +4,7 @@ add_action('roots_head', 'roots_google_analytics');
 add_action('roots_head', 'roots_fout_b_gone');
 add_action('roots_head', 'roots_1140_head');
 add_action('roots_head', 'roots_adapt_head');
+add_action('roots_head', 'roots_foundation_head');
 add_action('roots_stylesheets', 'roots_get_stylesheets');
 add_action('roots_header_before', 'roots_1140_header_before');
 add_action('roots_header_after', 'roots_1140_header_after');
@@ -66,6 +67,22 @@ function roots_adapt_head() {
     echo "\t\t};\n";
     echo "\t</script>\n";
     echo "\t<script src=\"$template_uri/js/libs/adapt.min.js\"></script>";
+  }
+}
+
+function roots_foundation_head() {
+  global $roots_options;
+  $roots_css_framework = $roots_options['css_framework'];
+  $template_uri = get_template_directory_uri();
+  if ($roots_css_framework === 'foundation') {
+	echo "\t<!-- Combine and Compress These Javascript Files -->\n";  
+    echo "\t<script src=\"$template_uri/js/libs/jquery.reveal.js\"></script>\n";
+    echo "\t<script src=\"$template_uri/js/libs/jquery.orbit-1.3.0.js\"></script>\n";
+    echo "\t<script src=\"$template_uri/js/libs/forms.jquery.js\"></script>\n";
+    echo "\t<script src=\"$template_uri/js/libs/jquery.customforms.js\"></script>\n";
+    echo "\t<script src=\"$template_uri/js/libs/jquery.placeholder.min.js\"></script>\n";
+    echo "\t<!--  End Combine and Compress Javascript Files -->\n";
+    echo "\t<script src=\"$template_uri/js/libs/app.js\"></script>\n";            
   }
 }
 
