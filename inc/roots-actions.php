@@ -76,13 +76,13 @@ function roots_foundation_head() {
   $template_uri = get_template_directory_uri();
   if ($roots_css_framework === 'foundation') {
 	echo "\t<!-- Combine and Compress These Javascript Files -->\n";  
-    echo "\t<script src=\"$template_uri/js/libs/jquery.reveal.js\"></script>\n";
-    echo "\t<script src=\"$template_uri/js/libs/jquery.orbit-1.3.0.js\"></script>\n";
-    echo "\t<script src=\"$template_uri/js/libs/forms.jquery.js\"></script>\n";
-    echo "\t<script src=\"$template_uri/js/libs/jquery.customforms.js\"></script>\n";
-    echo "\t<script src=\"$template_uri/js/libs/jquery.placeholder.min.js\"></script>\n";
+    echo "\t<script src=\"$template_uri/js/foundation/jquery.reveal.js\"></script>\n";
+    echo "\t<script src=\"$template_uri/js/foundation/jquery.orbit-1.3.0.js\"></script>\n";
+    echo "\t<script src=\"$template_uri/js/foundation/forms.jquery.js\"></script>\n";
+    echo "\t<script src=\"$template_uri/js/foundation/jquery.customforms.js\"></script>\n";
+    echo "\t<script src=\"$template_uri/js/foundation/jquery.placeholder.min.js\"></script>\n";
     echo "\t<!--  End Combine and Compress Javascript Files -->\n";
-    echo "\t<script src=\"$template_uri/js/libs/app.js\"></script>\n";
+    echo "\t<script src=\"$template_uri/js/foundation/app.js\"></script>\n";
     echo "\t<!-- IE Fix for HTML 5 Tags -->\n";
     echo "\t<!--[if lt IE 9]>\n";
     echo "\t\t<script src=\"http://html5shiv.googlecode.com/svn/trunk/html5.js\"></script>\n";
