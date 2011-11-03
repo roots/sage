@@ -4,6 +4,7 @@ add_action('roots_head', 'roots_google_analytics');
 add_action('roots_head', 'roots_fout_b_gone');
 add_action('roots_head', 'roots_1140_head');
 add_action('roots_head', 'roots_adapt_head');
+add_action('roots_head', 'roots_foundation_head');
 add_action('roots_stylesheets', 'roots_get_stylesheets');
 add_action('roots_header_before', 'roots_1140_header_before');
 add_action('roots_header_after', 'roots_1140_header_after');
@@ -69,6 +70,26 @@ function roots_adapt_head() {
   }
 }
 
+function roots_foundation_head() {
+  global $roots_options;
+  $roots_css_framework = $roots_options['css_framework'];
+  $template_uri = get_template_directory_uri();
+  if ($roots_css_framework === 'foundation') {
+	echo "\t<!-- Combine and Compress These Javascript Files -->\n";  
+    echo "\t<script src=\"$template_uri/js/foundation/jquery.reveal.js\"></script>\n";
+    echo "\t<script src=\"$template_uri/js/foundation/jquery.orbit-1.3.0.js\"></script>\n";
+    echo "\t<script src=\"$template_uri/js/foundation/forms.jquery.js\"></script>\n";
+    echo "\t<script src=\"$template_uri/js/foundation/jquery.customforms.js\"></script>\n";
+    echo "\t<script src=\"$template_uri/js/foundation/jquery.placeholder.min.js\"></script>\n";
+    echo "\t<!--  End Combine and Compress Javascript Files -->\n";
+    echo "\t<script src=\"$template_uri/js/foundation/app.js\"></script>\n";
+    echo "\t<!-- IE Fix for HTML 5 Tags -->\n";
+    echo "\t<!--[if lt IE 9]>\n";
+    echo "\t\t<script src=\"http://html5shiv.googlecode.com/svn/trunk/html5.js\"></script>\n";
+    echo "\t<![endif]-->\n";            
+  }
+}
+
 function roots_get_stylesheets() {
   global $roots_options;
   $roots_css_framework = $roots_options['css_framework'];
@@ -99,6 +120,17 @@ function roots_get_stylesheets() {
       $styles .= stylesheet_link_tag('/adapt/mobile.css', 1);
       $styles .= "\t</noscript>\n";
       break;
+    case 'foundation' :
+      $styles .= stylesheet_link_tag('/foundation/globals.css');
+      $styles .= stylesheet_link_tag('/foundation/typography.css', 1);
+      $styles .= stylesheet_link_tag('/foundation/grid.css', 1);
+      $styles .= stylesheet_link_tag('/foundation/ui.css', 1);
+      $styles .= stylesheet_link_tag('/foundation/forms.css', 1);
+      $styles .= stylesheet_link_tag('/foundation/orbit.css', 1);
+      $styles .= stylesheet_link_tag('/foundation/reveal.css', 1);
+      $styles .= stylesheet_link_tag('/foundation/mobile.css', 1);
+      $styles .= stylesheet_link_tag('/foundation/app.css', 1);                                          
+      break;      
     case 'less' :
       $styles .= stylesheet_link_tag('/less/less.css');
       break;
@@ -122,6 +154,9 @@ function roots_get_stylesheets() {
     case '1140' :
       $styles .= "\t<!--[if lt IE 8]>" . stylesheet_link_tag('/1140/ie.css', 0, false) . "<![endif]-->\n";
       break;
+    case 'foundation' :
+      $styles .= "\t<!--[if lt IE 9]>" . stylesheet_link_tag('/foundation/ie.css', 0, false) . "<![endif]-->\n";
+      break;      
   }
 
   echo $styles;

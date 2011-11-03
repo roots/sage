@@ -117,6 +117,15 @@ $roots_css_frameworks = array(
       'sidebar' => ''
     )
   ),
+  'foundation' => array(
+    'name'     => 'foundation',
+    'label'   => __('Foundation', 'roots'),
+    'classes' => array(
+      'container' => 'row',
+      'main'    => 'eight columns',
+      'sidebar' => 'four columns'
+    )
+  ),  
   'none' => array(
     'name'     => 'none',
     'label'   => __('None', 'roots'),
