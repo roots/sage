@@ -65,16 +65,35 @@ function roots_setup() {
 
 add_action('after_setup_theme', 'roots_setup');
 
-// create widget areas: sidebar, footer
-$sidebars = array('Sidebar', 'Footer');
-foreach ($sidebars as $sidebar) {
-  register_sidebar(array('name'=> $sidebar,
-    'before_widget' => '<article id="%1$s" class="widget %2$s"><div class="container">',
-    'after_widget' => '</div></article>',
-    'before_title' => '<h3>',
-    'after_title' => '</h3>'
-  ));
+/**
+ * Register default roots sidebars.
+ * Hook into 'widgets_init' function with a lower priority in your child
+ * theme to remove these sidebars.
+ */
+function roots_register_sidebars() {
+  register_sidebar(
+    array(
+      'id'=> 'roots-sidebar',  
+      'name' => __('Sidebar', 'roots'),
+      'description' => __('Sidebar', 'roots'),
+      'before_widget' => '<article id="%1$s" class="widget %2$s"><div class="container">',
+      'after_widget' => '</div></article>',
+      'before_title' => '<h3>',
+      'after_title' => '</h3>'
+    ));
+  register_sidebar(
+    array(
+      'id'=> 'roots-footer',  
+      'name' => __('Footer', 'roots'),
+      'description' => __('Footer', 'roots'),
+      'before_widget' => '<article id="%1$s" class="widget %2$s"><div class="container">',
+      'after_widget' => '</div></article>',
+      'before_title' => '<h3>',
+      'after_title' => '</h3>'
+    ));
 }
+
+add_action( 'widgets_init', 'roots_register_sidebars' );
 
 // return post entry meta information
 function roots_entry_meta() {
