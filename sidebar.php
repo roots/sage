@@ -1,1 +1,1 @@
-<?php dynamic_sidebar("Sidebar"); ?>
+<?php dynamic_sidebar('roots-sidebar'); ?>
