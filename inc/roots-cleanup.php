@@ -24,10 +24,10 @@ add_filter('get_search_query', 'roots_search_query');
 // fix for empty search query
 // http://wordpress.org/support/topic/blank-search-sends-you-to-the-homepage#post-1772565
 function roots_request_filter($query_vars) {
-    if(isset($_GET['s']) && empty($_GET['s'])) {
-        $query_vars['s'] = " ";
-    }
-    return $query_vars;
+  if (isset($_GET['s']) && empty($_GET['s'])) {
+    $query_vars['s'] = " ";
+  }
+  return $query_vars;
 }
 
 add_filter('request', 'roots_request_filter');
