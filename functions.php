@@ -1,5 +1,7 @@
 <?php // https://github.com/retlehs/roots/wiki
 
+if (!defined('__DIR__')) define('__DIR__', dirname(__FILE__));
+
 require_once get_template_directory() . '/inc/roots-activation.php';  // activation
 require_once get_template_directory() . '/inc/roots-options.php';     // theme options
 require_once get_template_directory() . '/inc/roots-cleanup.php';     // cleanup
