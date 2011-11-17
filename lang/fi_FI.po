@@ -1,0 +1,367 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Ismo Vuorinen <ivuorinen@gmail.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"X-Poedit-Language: Finnish\n"
+"X-Poedit-Country: FINLAND\n"
+
+#. Text in echo
+#: comments.php:80
+#: comments.php:84
+msgid " (required)"
+msgstr "(pakollinen)"
+
+#. Text in echo
+#: inc/roots-options.php:127
+#: inc/roots-options.php:129
+msgid "#main CSS Classes"
+msgstr "#main CSS-luokat"
+
+#. Text in echo
+#: inc/roots-options.php:137
+#: inc/roots-options.php:139
+msgid "#sidebar CSS Classes"
+msgstr "#sidebar CSS-luokat"
+
+#. Text in function
+#: comments.php:46
+msgid "% Responses to"
+msgstr "% vastausta artikkeliin"
+
+#. Text in function
+#: comments.php:8
+msgid "%1$s"
+msgstr "%1$s"
+
+#. Text in function
+#: inc/roots-options.php:94
+msgid "%s Theme Options"
+msgstr "%s-teeman asetukset"
+
+#. Text in function
+#: comments.php:53
+msgid "&larr; Older comments"
+msgstr "&larr; Vanhemmat kommentit"
+
+#. Text in function
+#: loop-search.php:33
+#: loop.php:37
+msgid "&larr; Older posts"
+msgstr "&larr; Vanhemmat artikkelit"
+
+#. Text in function
+#: comments.php:9
+msgid "(Edit)"
+msgstr "(muokkaa)"
+
+#. Text in function
+#: inc/roots-options.php:1
+msgid "1140"
+msgstr "1140"
+
+#. Text in function
+#: inc/roots-options.php:1
+msgid "960gs (12 cols)"
+msgstr "960gs (12 palstaa)"
+
+#. Text in function
+#: inc/roots-options.php:1
+msgid "960gs (16 cols)"
+msgstr "960gs (16 palstaa)"
+
+#. Text in function
+#: inc/roots-options.php:1
+msgid "960gs (24 cols)"
+msgstr "960gs (24 palstaa)"
+
+#. Text in function
+#: comments.php:7
+msgid "<cite class=\"fn\">%s</cite>"
+msgstr "<cite class=\"fn\">%s</cite>"
+
+#. Text in function
+#: inc/roots-options.php:1
+msgid "Adapt.js"
+msgstr "Adapt.js"
+
+#. Text in echo
+#: page-sitemap.php:18
+msgid "Archives"
+msgstr "Arkistot"
+
+#. Text in function
+#: inc/roots-options.php:1
+msgid "Blueprint CSS"
+msgstr "Blueprint CSS"
+
+#. Text in echo
+#: inc/roots-options.php:106
+#: inc/roots-options.php:108
+msgid "CSS Grid Framework"
+msgstr "CSS Grid runkorakenne"
+
+#. Text in echo
+#: 404.php:13
+msgid "Check your spelling"
+msgstr "Tarkista oikeinkirjoitus"
+
+#. Text in echo
+#: inc/roots-widgets.php:61
+msgid "City/Locality:"
+msgstr "Kaupunki/Sijainti:"
+
+#. Text in echo
+#: 404.php:15
+msgid "Click the <a href=\"javascript:history.back()\">Back</a> button"
+msgstr "Klikkaa <a href=\"javascript:history.back()\">Takaisin</a>-nappia"
+
+#. Text in echo
+#: comments.php:93
+msgid "Comment"
+msgstr "Kommentti"
+
+#. Text in echo
+#: comments.php:63
+msgid "Comments are closed."
+msgstr "Kommentit ovat suljettu."
+
+#. Text in function
+#: inc/roots-cleanup.php:1
+msgid "Continued"
+msgstr "Jatkettu"
+
+#. Text in function
+#: inc/roots-options.php:132
+#: inc/roots-options.php:142
+msgid "Default: %s"
+msgstr "Oletus: %s"
+
+#. Text in echo
+#: comments.php:84
+msgid "Email (will not be published)"
+msgstr "Sähköposti (ei julkaista)"
+
+#. Text in echo
+#: inc/roots-widgets.php:77
+msgid "Email:"
+msgstr "Sähköposti:"
+
+#. Text in function
+#: inc/roots-options.php:152
+msgid "Enter your UA-XXXXX-X ID"
+msgstr "Anna UA-XXXX-X -koodisi"
+
+#. Text in echo
+#: 404.php:7
+msgid "File Not Found"
+msgstr "Tiedostoa ei löydetty"
+
+#. Text in echo
+#: inc/roots-options.php:147
+#: inc/roots-options.php:149
+msgid "Google Analytics ID"
+msgstr "Google Analytics -tunniste"
+
+#. Text in echo
+#: index.php:7
+msgid "Latest Posts"
+msgstr "Viimeisimmät artikkelit"
+
+#. Text in function
+#: comments.php:70
+msgid "Leave a Reply"
+msgstr "Jätä kommentti"
+
+#. Text in function
+#: comments.php:70
+msgid "Leave a Reply to %s"
+msgstr "Jätä kommenttisi artikkeliin %s"
+
+#. Text in echo
+#: comments.php:77
+msgid "Log out &raquo;"
+msgstr "Kirjaudu ulos &raquo;"
+
+#. Text in function
+#: comments.php:77
+msgid "Log out of this account"
+msgstr "Kirjaudu ulos tästä tunnuksesta"
+
+#. Text in function
+#: comments.php:77
+msgid "Logged in as <a href=\"%s/wp-admin/profile.php\">%s</a>."
+msgstr "Kirjautuneena tunnuksella <a href=\"%s/wp-admin/profile.php\">%s</a>."
+
+#. Text in echo
+#: comments.php:80
+msgid "Name"
+msgstr "Nimi"
+
+#. Text in function
+#: comments.php:54
+msgid "Newer comments &rarr;"
+msgstr "Uudemmat kommentit &rarr;"
+
+#. Text in function
+#: loop-search.php:34
+#: loop.php:38
+msgid "Newer posts &rarr;"
+msgstr "Uudemmat artikkelit &rarr;"
+
+#. Text in function
+#: comments.php:46
+msgid "No Responses to"
+msgstr "Ei kommentteja artikkeliin"
+
+#. Text in function
+#: comments.php:46
+msgid "One Response to"
+msgstr "Yksi kommentti artikkeliin"
+
+#. Text in echo
+#: page-sitemap.php:14
+msgid "Pages"
+msgstr "Sivut"
+
+#. Text in function
+#: loop-page.php:7
+#: loop-single.php:17
+msgid "Pages:"
+msgstr "Sivut:"
+
+#. Text in function
+#: comments.php:28
+msgid "Please do not load this page directly. Thanks!"
+msgstr "Ethän lataa tätä sivua suoraan. Kiitos!"
+
+#. Text in function
+#: inc/roots-htaccess.php:1
+msgid "Please make sure your <a href=\"%s\">.htaccess</a> file is writeable "
+msgstr "Tarkistathan että <a href=\"%s\">.htaccess</a>-tiedostosi on muokattavissa"
+
+#. Text in echo
+#: 404.php:11
+msgid "Please try the following:"
+msgstr "Kokeilethan seuraavaa:"
+
+#. Text in function
+#: inc/roots-admin.php:1
+msgid "Please update your <a href=\"%s\">site tagline</a>"
+msgstr "Päivitäthän <a href=\"%s\">sivustosi kuvauksen</a>"
+
+#. Text in function
+#: loop-single.php:8
+#: loop-search.php:16
+#: loop.php:16
+msgid "Posted on %s at %s."
+msgstr "Julkaistu %s klo %s."
+
+#. Text in echo
+#: page-sitemap.php:16
+msgid "Posts"
+msgstr "Artikkelit"
+
+#. Text in function
+#: 404.php:14
+msgid "Return to the <a href=\"%s\">home page</a>"
+msgstr "Palaa <a href=\"%s\">etusivulle</a>"
+
+#. Text in function
+#: inc/roots-widgets.php:1
+msgid "Roots: vCard"
+msgstr "Roots: vCard"
+
+#. Text in echo
+#: searchform.php:3
+#: searchform.php:4
+msgid "Search"
+msgstr "Hae"
+
+#. Text in echo
+#: search.php:7
+msgid "Search Results for"
+msgstr "Hakutulokset haulle"
+
+#. Text in echo
+#: searchform.php:2
+msgid "Search for:"
+msgstr "Hae termillä:"
+
+#. Text in echo
+#: loop-search.php:4
+#: loop.php:4
+msgid "Sorry, no results were found."
+msgstr "Pahoittelut, ei hakutuloksia."
+
+#. Text in echo
+#: inc/roots-widgets.php:65
+msgid "State/Region:"
+msgstr "Osavaltio/Alue:"
+
+#. Text in echo
+#: inc/roots-widgets.php:57
+msgid "Street Address:"
+msgstr "Katuosoite:"
+
+#. Text in echo
+#: comments.php:96
+msgid "Submit Comment"
+msgstr "Lähetä kommentti"
+
+#. Text in echo
+#: inc/roots-widgets.php:73
+msgid "Telephone:"
+msgstr "Puhelinnumero:"
+
+#. Text in echo
+#: 404.php:9
+msgid "The page you are looking for might have been removed, had its name changed, or is temporarily unavailable."
+msgstr "Hakemasi sivu on mahdollisesti poistettu, sen nimi on muutettu, tai se ei ole väliaikasesti saatavilla."
+
+#. Text in function
+#: inc/roots-options.php:1
+msgid "Theme Options"
+msgstr "Teeman asetukset"
+
+#. Text in echo
+#: comments.php:36
+msgid "This post is password protected. Enter the password to view comments."
+msgstr "Tämä artikkeli on salasanasuojattu. Anna salasana nähdäksesi sisällön."
+
+#. Text in echo
+#: inc/roots-widgets.php:53
+msgid "Title (optional):"
+msgstr "Otsikko (vapaaehtoinen):"
+
+#. Text in echo
+#: comments.php:88
+msgid "Website"
+msgstr "Nettisivu"
+
+#. Text in echo
+#: loop-single.php:10
+#: loop-search.php:17
+msgid "Written by"
+msgstr "Kirjoittaja:"
+
+#. Text in function
+#: comments.php:73
+msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
+msgstr "Sinun pitää <a href=\"%s\">kirjautua</a> kommentointia varten."
+
+#. Text in echo
+#: comments.php:14
+msgid "Your comment is awaiting moderation."
+msgstr "Kommenttisi on moderointijonossa."
+
+#. Text in echo
+#: inc/roots-widgets.php:69
+msgid "Zipcode/Postal Code:"
+msgstr "Postinumero:"
+
