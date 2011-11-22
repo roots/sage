@@ -101,40 +101,32 @@ function roots_bootstrap_head() {
   $roots_bootstrap_js = $roots_options['bootstrap_javascript'];
   $roots_bootstrap_less_js = $roots_options['bootstrap_less_javascript'];  
   $template_uri = get_template_directory_uri();
-  if ($roots_css_framework === 'bootstrap') {
-    echo "\t<!--[if lt IE 9]>\n";
-    echo "\t\t<script src=\"http://html5shim.googlecode.com/svn/trunk/html5.js\"></script>\n";
-    echo "\t<![endif]-->\n";            
-  }
   if ($roots_css_framework === 'bootstrap_less') {
-    echo "\t<!--[if lt IE 9]>\n";
-    echo "\t\t<script src=\"http://html5shim.googlecode.com/svn/trunk/html5.js\"></script>\n";
-    echo "\t<![endif]-->\n";  
     echo "\t<script src=\"$template_uri/js/bootstrap/less-1.1.3.min.js\"></script>\n";     
   }  
   if ($roots_bootstrap_js === true) {
   	$roots_options['bootstrap_less_javascript'] = false;
   	
+  	echo "\t<script src=\"$template_uri/js/bootstrap/bootstrap-modal.js\"></script>\n";
     echo "\t<script src=\"$template_uri/js/bootstrap/bootstrap-alerts.js\"></script>\n";
-    echo "\t<script src=\"$template_uri/js/bootstrap/bootstrap-buttons.js\"></script>\n";
-    echo "\t<script src=\"$template_uri/js/bootstrap/bootstrap-dropdown.js\"></script>\n";
-    echo "\t<script src=\"$template_uri/js/bootstrap/bootstrap-modal.js\"></script>\n";
+    echo "\t<script src=\"$template_uri/js/bootstrap/bootstrap-twipsy.js\"></script>\n"; 
     echo "\t<script src=\"$template_uri/js/bootstrap/bootstrap-popover.js\"></script>\n";
+    echo "\t<script src=\"$template_uri/js/bootstrap/bootstrap-dropdown.js\"></script>\n";
     echo "\t<script src=\"$template_uri/js/bootstrap/bootstrap-scrollspy.js\"></script>\n";
     echo "\t<script src=\"$template_uri/js/bootstrap/bootstrap-tabs.js\"></script>\n";
-    echo "\t<script src=\"$template_uri/js/bootstrap/bootstrap-twipsy.js\"></script>\n";                            
+    echo "\t<script src=\"$template_uri/js/bootstrap/bootstrap-buttons.js\"></script>\n";                           
   }
   if ($roots_bootstrap_less_js === true) {
   	$roots_options['bootstrap_javascript'] = false;
   	
+  	echo "\t<script src=\"$template_uri/js/bootstrap/bootstrap-modal.js\"></script>\n";
     echo "\t<script src=\"$template_uri/js/bootstrap/bootstrap-alerts.js\"></script>\n";
-    echo "\t<script src=\"$template_uri/js/bootstrap/bootstrap-buttons.js\"></script>\n";
-    echo "\t<script src=\"$template_uri/js/bootstrap/bootstrap-dropdown.js\"></script>\n";
-    echo "\t<script src=\"$template_uri/js/bootstrap/bootstrap-modal.js\"></script>\n";
+    echo "\t<script src=\"$template_uri/js/bootstrap/bootstrap-twipsy.js\"></script>\n"; 
     echo "\t<script src=\"$template_uri/js/bootstrap/bootstrap-popover.js\"></script>\n";
+    echo "\t<script src=\"$template_uri/js/bootstrap/bootstrap-dropdown.js\"></script>\n";
     echo "\t<script src=\"$template_uri/js/bootstrap/bootstrap-scrollspy.js\"></script>\n";
     echo "\t<script src=\"$template_uri/js/bootstrap/bootstrap-tabs.js\"></script>\n";
-    echo "\t<script src=\"$template_uri/js/bootstrap/bootstrap-twipsy.js\"></script>\n";                            
+    echo "\t<script src=\"$template_uri/js/bootstrap/bootstrap-buttons.js\"></script>\n";                             
   }  
 }
 
