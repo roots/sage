@@ -1,0 +1,368 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Project-Id-Version: Lauraogbeate.com Danish translations\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: CabGFX / Benjamin Media <feedback@benjamin.dk>\n"
+"MIME-Version: 1.0\n"
+"X-Poedit-Language: Danish\n"
+"X-Poedit-Country: DENMARK\n"
+"X-Poedit-SourceCharset: utf-8\n"
+
+#. Text in echo
+#: comments.php:80
+#: comments.php:84
+msgid " (required)"
+msgstr "(påkrævet)"
+
+#. Text in echo
+#: inc/roots-options.php:127
+#: inc/roots-options.php:129
+msgid "#main CSS Classes"
+msgstr "#main CSS Classes"
+
+#. Text in echo
+#: inc/roots-options.php:137
+#: inc/roots-options.php:139
+msgid "#sidebar CSS Classes"
+msgstr "#sidebar CSS Classes"
+
+#. Text in function
+#: comments.php:46
+msgid "% Responses to"
+msgstr "% Svar til"
+
+#. Text in function
+#: comments.php:8
+msgid "%1$s"
+msgstr "%1$s"
+
+#. Text in function
+#: inc/roots-options.php:94
+msgid "%s Theme Options"
+msgstr "%s Theme Options"
+
+#. Text in function
+#: comments.php:53
+msgid "&larr; Older comments"
+msgstr "&larr; Ældre kommentarer"
+
+#. Text in function
+#: loop-search.php:33
+#: loop.php:37
+msgid "&larr; Older posts"
+msgstr "&larr; Older posts"
+
+#. Text in function
+#: comments.php:9
+msgid "(Edit)"
+msgstr "(Redig&eacute;r)"
+
+#. Text in function
+#: inc/roots-options.php:1
+msgid "1140"
+msgstr "1140"
+
+#. Text in function
+#: inc/roots-options.php:1
+msgid "960gs (12 cols)"
+msgstr "960gs (12 cols)"
+
+#. Text in function
+#: inc/roots-options.php:1
+msgid "960gs (16 cols)"
+msgstr "960gs (16 cols)"
+
+#. Text in function
+#: inc/roots-options.php:1
+msgid "960gs (24 cols)"
+msgstr "960gs (24 cols)"
+
+#. Text in function
+#: comments.php:7
+msgid "<cite class=\"fn\">%s</cite>"
+msgstr "<cite class=\"fn\">%s</cite>"
+
+#. Text in function
+#: inc/roots-options.php:1
+msgid "Adapt.js"
+msgstr "Adapt.js"
+
+#. Text in echo
+#: page-sitemap.php:18
+msgid "Archives"
+msgstr "Arkiver"
+
+#. Text in function
+#: inc/roots-options.php:1
+msgid "Blueprint CSS"
+msgstr "Blueprint CSS"
+
+#. Text in echo
+#: inc/roots-options.php:106
+#: inc/roots-options.php:108
+msgid "CSS Grid Framework"
+msgstr "CSS Grid Framework"
+
+#. Text in echo
+#: 404.php:13
+msgid "Check your spelling"
+msgstr "Kontroll&eacute;r stavning"
+
+#. Text in echo
+#: inc/roots-widgets.php:61
+msgid "City/Locality:"
+msgstr "By/Område:"
+
+#. Text in echo
+#: 404.php:15
+msgid "Click the <a href=\"javascript:history.back()\">Back</a> button"
+msgstr "Klik <a href=\"javascript:history.back()\">Tilbage</a> knappen"
+
+#. Text in echo
+#: comments.php:93
+msgid "Comment"
+msgstr "Kommentar"
+
+#. Text in echo
+#: comments.php:63
+msgid "Comments are closed."
+msgstr "Kommentarer er lukket."
+
+#. Text in function
+#: inc/roots-cleanup.php:1
+msgid "Continued"
+msgstr "Fortsættes"
+
+#. Text in function
+#: inc/roots-options.php:132
+#: inc/roots-options.php:142
+msgid "Default: %s"
+msgstr "Standard: %s"
+
+#. Text in echo
+#: comments.php:84
+msgid "Email (will not be published)"
+msgstr "Email (bliver ikke offentliggjort)"
+
+#. Text in echo
+#: inc/roots-widgets.php:77
+msgid "Email:"
+msgstr "Email:"
+
+#. Text in function
+#: inc/roots-options.php:152
+msgid "Enter your UA-XXXXX-X ID"
+msgstr "Skriv dit UA-XXXXX-X ID"
+
+#. Text in echo
+#: 404.php:7
+msgid "File Not Found"
+msgstr "Filen blev ikke fundet"
+
+#. Text in echo
+#: inc/roots-options.php:147
+#: inc/roots-options.php:149
+msgid "Google Analytics ID"
+msgstr "Google Analytics ID"
+
+#. Text in echo
+#: index.php:7
+msgid "Latest Posts"
+msgstr "Seneste indlæg"
+
+#. Text in function
+#: comments.php:70
+msgid "Leave a Reply"
+msgstr "Skriv et svar"
+
+#. Text in function
+#: comments.php:70
+msgid "Leave a Reply to %s"
+msgstr "Skriv et svar til %s"
+
+#. Text in echo
+#: comments.php:77
+msgid "Log out &raquo;"
+msgstr "Log ud &raquo;"
+
+#. Text in function
+#: comments.php:77
+msgid "Log out of this account"
+msgstr "Log ud af denne konto"
+
+#. Text in function
+#: comments.php:77
+msgid "Logged in as <a href=\"%s/wp-admin/profile.php\">%s</a>."
+msgstr "Logget ind som <a href=\"%s/wp-admin/profile.php\">%s</a>."
+
+#. Text in echo
+#: comments.php:80
+msgid "Name"
+msgstr "Navn"
+
+#. Text in function
+#: comments.php:54
+msgid "Newer comments &rarr;"
+msgstr "Nyere kommentarer &rarr;"
+
+#. Text in function
+#: loop-search.php:34
+#: loop.php:38
+msgid "Newer posts &rarr;"
+msgstr "Nyere indlæg &rarr;"
+
+#. Text in function
+#: comments.php:46
+msgid "No Responses to"
+msgstr "Ingen svar til"
+
+#. Text in function
+#: comments.php:46
+msgid "One Response to"
+msgstr "Et svar til"
+
+#. Text in echo
+#: page-sitemap.php:14
+msgid "Pages"
+msgstr "Sider"
+
+#. Text in function
+#: loop-page.php:7
+#: loop-single.php:17
+msgid "Pages:"
+msgstr "Sider:"
+
+#. Text in function
+#: comments.php:28
+msgid "Please do not load this page directly. Thanks!"
+msgstr "Indlæs venligst ikke denne side direkte. Tak!"
+
+#. Text in function
+#: inc/roots-htaccess.php:1
+msgid "Please make sure your <a href=\"%s\">.htaccess</a> file is writeable "
+msgstr "Tjek venligst at din <a href=\"%s\">.htaccess</a> fil er skrivbar"
+
+#. Text in echo
+#: 404.php:11
+msgid "Please try the following:"
+msgstr "Prøv venligst følgende:"
+
+#. Text in function
+#: inc/roots-admin.php:1
+msgid "Please update your <a href=\"%s\">site tagline</a>"
+msgstr "Opdat&eacute;r venligst din <a href=\"%s\">sides tagline</a>"
+
+#. Text in function
+#: loop-single.php:8
+#: loop-search.php:16
+#: loop.php:16
+msgid "Posted on %s at %s."
+msgstr "Skrevet %s kl. %s."
+
+#. Text in echo
+#: page-sitemap.php:16
+msgid "Posts"
+msgstr "Indlæg"
+
+#. Text in function
+#: 404.php:14
+msgid "Return to the <a href=\"%s\">home page</a>"
+msgstr "Gå tilbage til <a href=\"%s\">forsiden</a>"
+
+#. Text in function
+#: inc/roots-widgets.php:1
+msgid "Roots: vCard"
+msgstr "Roots: vCard"
+
+#. Text in echo
+#: searchform.php:3
+#: searchform.php:4
+msgid "Search"
+msgstr "Søg"
+
+#. Text in echo
+#: search.php:7
+msgid "Search Results for"
+msgstr "Søgeresultater for"
+
+#. Text in echo
+#: searchform.php:2
+msgid "Search for:"
+msgstr "Søg efter:"
+
+#. Text in echo
+#: loop-search.php:4
+#: loop.php:4
+msgid "Sorry, no results were found."
+msgstr "Beklager, der blev ikke fundet nogen resultater."
+
+#. Text in echo
+#: inc/roots-widgets.php:65
+msgid "State/Region:"
+msgstr "Stat/Region:"
+
+#. Text in echo
+#: inc/roots-widgets.php:57
+msgid "Street Address:"
+msgstr "Adresse"
+
+#. Text in echo
+#: comments.php:96
+msgid "Submit Comment"
+msgstr "Gem kommentar"
+
+#. Text in echo
+#: inc/roots-widgets.php:73
+msgid "Telephone:"
+msgstr "Telefon:"
+
+#. Text in echo
+#: 404.php:9
+msgid "The page you are looking for might have been removed, had its name changed, or is temporarily unavailable."
+msgstr "Siden du leder efter er enten blevet fjernet, omdøbt eller midlertidigt utilgængelig."
+
+#. Text in function
+#: inc/roots-options.php:1
+msgid "Theme Options"
+msgstr "Theme Options"
+
+#. Text in echo
+#: comments.php:36
+msgid "This post is password protected. Enter the password to view comments."
+msgstr "Dette indlæg er beskyttet med adgangskode. Skriv din kode for at se kommentarer."
+
+#. Text in echo
+#: inc/roots-widgets.php:53
+msgid "Title (optional):"
+msgstr "Titel (valgfri):"
+
+#. Text in echo
+#: comments.php:88
+msgid "Website"
+msgstr "Hjemmeside"
+
+#. Text in echo
+#: loop-single.php:10
+#: loop-search.php:17
+msgid "Written by"
+msgstr "Skrevet af"
+
+#. Text in function
+#: comments.php:73
+msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
+msgstr "Du skal være <a href=\"%s\">logget ind</a> for at skrive en kommentar."
+
+#. Text in echo
+#: comments.php:14
+msgid "Your comment is awaiting moderation."
+msgstr "Din kommentar afventer godkendelse."
+
+#. Text in echo
+#: inc/roots-widgets.php:69
+msgid "Zipcode/Postal Code:"
+msgstr "Postnr.:"
+
