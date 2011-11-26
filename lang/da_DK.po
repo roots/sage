@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Lauraogbeate.com Danish translations\n"
 "POT-Creation-Date: \n"
 "PO-Revision-Date: \n"
-"Last-Translator: \n"
+"Last-Translator: Casper Klenz-Kitenge <hi@cabgfx.com>\n"
 "Language-Team: CabGFX / Benjamin Media <feedback@benjamin.dk>\n"
 "MIME-Version: 1.0\n"
 "X-Poedit-Language: Danish\n"
@@ -54,7 +54,7 @@ msgstr "&larr; Ældre kommentarer"
 #: loop-search.php:33
 #: loop.php:37
 msgid "&larr; Older posts"
-msgstr "&larr; Older posts"
+msgstr "&larr; Ældre indlæg"
 
 #. Text in function
 #: comments.php:9
