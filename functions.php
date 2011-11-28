@@ -2,14 +2,14 @@
 
 if (!defined('__DIR__')) define('__DIR__', dirname(__FILE__));
 
-require_once get_template_directory() . '/inc/roots-activation.php';  // activation
-require_once get_template_directory() . '/inc/roots-options.php';     // theme options
-require_once get_template_directory() . '/inc/roots-cleanup.php';     // cleanup
-require_once get_template_directory() . '/inc/roots-htaccess.php';    // rewrites for assets, h5bp htaccess
-require_once get_template_directory() . '/inc/roots-hooks.php';     // hooks
-require_once get_template_directory() . '/inc/roots-actions.php';     // actions
-require_once get_template_directory() . '/inc/roots-widgets.php';     // widgets
-require_once get_template_directory() . '/inc/roots-custom.php';    // custom functions
+require_once locate_template( '/inc/roots-activation.php' );  // activation
+require_once locate_template( '/inc/roots-options.php' );     // theme options
+require_once locate_template( '/inc/roots-cleanup.php' );     // cleanup
+require_once locate_template( '/inc/roots-htaccess.php' );    // rewrites for assets, h5bp htaccess
+require_once locate_template( '/inc/roots-hooks.php' );     // hooks
+require_once locate_template( '/inc/roots-actions.php' );     // actions
+require_once locate_template( '/inc/roots-widgets.php' );     // widgets
+require_once locate_template( '/inc/roots-custom.php' );    // custom functions
 
 $roots_options = roots_get_theme_options();
 
