@@ -98,8 +98,6 @@ function roots_foundation_head() {
 function roots_bootstrap_head() {
   global $roots_options;
   $roots_css_framework = $roots_options['css_framework'];
-  $roots_bootstrap_js = $roots_options['bootstrap_javascript'];
-  $roots_bootstrap_less_js = $roots_options['bootstrap_less_javascript'];  
   if (isset($roots_options['bootstrap_javascript'])) {
   $roots_bootstrap_js = $roots_options['bootstrap_javascript']; }
   if (isset($roots_options['bootstrap_less_javascript'])) {
