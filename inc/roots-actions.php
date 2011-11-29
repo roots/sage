@@ -100,6 +100,10 @@ function roots_bootstrap_head() {
   $roots_css_framework = $roots_options['css_framework'];
   $roots_bootstrap_js = $roots_options['bootstrap_javascript'];
   $roots_bootstrap_less_js = $roots_options['bootstrap_less_javascript'];  
+  if (isset($roots_options['bootstrap_javascript'])) {
+  $roots_bootstrap_js = $roots_options['bootstrap_javascript']; }
+  if (isset($roots_options['bootstrap_less_javascript'])) {
+  $roots_bootstrap_less_js = $roots_options['bootstrap_less_javascript']; }  
   $template_uri = get_template_directory_uri();
   if ($roots_css_framework === 'bootstrap_less') {
     echo "\t<script src=\"$template_uri/js/bootstrap/less-1.1.3.min.js\"></script>\n";     
