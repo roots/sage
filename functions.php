@@ -24,6 +24,8 @@ if (!isset($content_width)) {
       case '960gs_24':  $content_width = 940; break;
       case '1140':    $content_width = 1140;  break;
       case 'adapt':   $content_width = 940; break;
+      case 'bootstrap':   $content_width = 940; break;
+      case 'foundation':   $content_width = 980; break;
       default:      $content_width = 950; break;
   }
 }
