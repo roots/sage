@@ -1,35 +1,74 @@
-/* =============================================================================
-   HTML5 display definitions
-   ========================================================================== */
+/*
+ * HTML5 ✰ Boilerplate
+ *
+ * Detailed information about this CSS: h5bp.com/css
+ *
+ * ==|== normalize ==========================================================
+ */
 
 article, aside, details, figcaption, figure, footer, header, hgroup, nav, section { display: block; }
 audio, canvas, video { display: inline-block; *display: inline; *zoom: 1; }
 audio:not([controls]) { display: none; }
 [hidden] { display: none; }
 
-
-/* =============================================================================
-   Base
-   ========================================================================== */
-
 html { font-size: 100%; overflow-y: scroll; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
-
-body { margin: 0; font-size: 13px; line-height: 1.231; }
-
+body { margin: 0; /* add your base font-size and line-height here */ }
 body, button, input, select, textarea { font-family: sans-serif; color: #222; }
 
 ::-moz-selection { background: #fe57a1; color: #fff; text-shadow: none; }
 ::selection { background: #fe57a1; color: #fff; text-shadow: none; }
 
+a { color: #00e; }
+a:visited { color: #551a8b; }
+a:hover { color: #06e; }
+a:focus { outline: thin dotted; }
+a:hover, a:active { outline: 0; }
+a:active, input.button:active { outline: 0; position: relative; top: 1px; }
 
-/* =============================================================================
-   Links
-   ========================================================================== */
+abbr[title] { border-bottom: 1px dotted; }
+b, strong { font-weight: bold; }
+blockquote { margin: 1em 40px; }
+dfn { font-style: italic; }
+hr { display: block; height: 1px; border: 0; border-top: 1px solid #ccc; margin: 1em 0; padding: 0; }
+ins { background: #ff9; color: #000; text-decoration: none; }
+mark { background: #ff0; color: #000; font-style: italic; font-weight: bold; }
+pre, code, kbd, samp { font-family: monospace, serif; _font-family: 'courier new', monospace; font-size: 1em; }
+pre { white-space: pre; white-space: pre-wrap; word-wrap: break-word; }
+q { quotes: none; }
+q:before, q:after { content: ""; content: none; }
+small { font-size: 85%; }
+sub, sup { font-size: 75%; line-height: 0; position: relative; vertical-align: baseline; }
+sup { top: -0.5em; }
+sub { bottom: -0.25em; }
+ul, ol { margin: 1em 0; padding: 0 0 0 40px; }
+dd { margin: 0 0 0 40px; }
+nav ul, nav ol { list-style: none; list-style-image: none; margin: 0; padding: 0; }
+img { border: 0; -ms-interpolation-mode: bicubic; vertical-align: middle; }
+svg:not(:root) { overflow: hidden; }
+figure { margin: 0; }
 
-a { color: #06c; }
-a:visited { color: #06c; }
-a:focus { color: #09f; outline: thin dotted; }
-a:hover, a:active { color: #09f; outline: 0; }
+form { margin: 0; }
+fieldset { border: 0; margin: 0; padding: 0; }
+label { cursor: pointer; }
+legend { border: 0; *margin-left: -7px; padding: 0; }
+button, input, select, textarea { font-size: 100%; margin: 0; vertical-align: baseline; *vertical-align: middle; }
+button, input { line-height: normal; }
+button, input[type="button"], input[type="reset"], input[type="submit"] { cursor: pointer; -webkit-appearance: button; *overflow: visible; }
+input[type="checkbox"], input[type="radio"] { box-sizing: border-box; padding: 0; }
+input[type="search"] { -webkit-appearance: textfield; -moz-box-sizing: content-box; -webkit-box-sizing: content-box; box-sizing: content-box; }
+input[type="search"]::-webkit-search-decoration { -webkit-appearance: none; }
+button::-moz-focus-inner, input::-moz-focus-inner { border: 0; padding: 0; }
+textarea { overflow: auto; vertical-align: top; resize: vertical; }
+input:valid, textarea:valid {  }
+input:invalid, textarea:invalid { background-color: #f0dddd; }
+
+table { border-collapse: collapse; border-spacing: 0; }
+td { vertical-align: top; }
+
+
+
+/* ==|== roots styles ======================================================= */
+
 a:active, input.button:active { outline: 0; position: relative; top: 1px; }
 
 .button, #post-nav a, #comments-nav a {
@@ -60,103 +99,8 @@ a:active, input.button:active { outline: 0; position: relative; top: 1px; }
   color: #fff;
 }
 
-
-/* =============================================================================
-   Typography
-   ========================================================================== */
-
-abbr[title] { border-bottom: 1px dotted; }
-
-b, strong { font-weight: bold; }
-
-blockquote { margin: 1em 40px; }
-
-dfn { font-style: italic; }
-
 h1, h2, h3, h4, h5, h6 { text-shadow: 0 1px 1px rgba(0, 0, 0, 0.15); }
 
-hr { display: block; height: 1px; border: 0; border-top: 1px solid #ccc; margin: 1em 0; padding: 0; }
-
-ins { background: #ff9; color: #000; text-decoration: none; }
-
-mark { background: #ff0; color: #000; font-style: italic; font-weight: bold; }
-
-pre, code, kbd, samp { font-family: monospace, serif; _font-family: 'courier new', monospace; font-size: 1em; }
-
-pre { white-space: pre; white-space: pre-wrap; word-wrap: break-word; }
-
-q { quotes: none; }
-q:before, q:after { content: ""; content: none; }
-
-small { font-size: 85%; }
-
-sub, sup { font-size: 75%; line-height: 0; position: relative; vertical-align: baseline; }
-sup { top: -0.5em; }
-sub { bottom: -0.25em; }
-
-
-/* =============================================================================
-   Lists
-   ========================================================================== */
-
-ul, ol { margin: 1em 0; padding: 0 0 0 40px; }
-dd { margin: 0 0 0 40px; }
-nav ul, nav ol { list-style: none; list-style-image: none; margin: 0; padding: 0; }
-
-
-/* =============================================================================
-   Embedded content
-   ========================================================================== */
-
-img { border: 0; -ms-interpolation-mode: bicubic; vertical-align: middle; }
-
-svg:not(:root) { overflow: hidden; }
-
-
-/* =============================================================================
-   Figures
-   ========================================================================== */
-
-figure { margin: 0; }
-
-
-/* =============================================================================
-   Forms
-   ========================================================================== */
-
-form { margin: 0; }
-fieldset { border: 0; margin: 0; padding: 0; }
-
-label { cursor: pointer; }
-
-legend { border: 0; *margin-left: -7px; padding: 0; }
-
-button, input, select, textarea { font-size: 100%; margin: 0; vertical-align: baseline; *vertical-align: middle; }
-
-button, input { line-height: normal; *overflow: visible; }
-
-table button, table input { *overflow: auto; }
-
-button, input[type="button"], input[type="reset"], input[type="submit"] { cursor: pointer; -webkit-appearance: button; }
-
-input[type="checkbox"], input[type="radio"] { box-sizing: border-box; padding: 0; }
-input[type="search"] { -webkit-appearance: textfield; -moz-box-sizing: content-box; -webkit-box-sizing: content-box; box-sizing: content-box; }
-input[type="search"]::-webkit-search-decoration { -webkit-appearance: none; }
-
-button::-moz-focus-inner, input::-moz-focus-inner { border: 0; padding: 0; }
-
-textarea { overflow: auto; vertical-align: top; resize: vertical; }
-
-input:valid, textarea:valid {  }
-input:invalid, textarea:invalid { background-color: #f0dddd; }
-
-
-/* =============================================================================
-   Tables
-   ========================================================================== */
-
-table { border-collapse: collapse; border-spacing: 0; }
-td { vertical-align: top; }
 
 
 /* =============================================================================
@@ -241,6 +185,7 @@ td { vertical-align: top; }
 #nav-utility ul li a { display: block; float: left; padding: 2px 6px; }
 
 
+
 /* =============================================================================
    Content
    ========================================================================== */
@@ -249,12 +194,15 @@ td { vertical-align: top; }
 #content .container { width: auto; position: relative; padding: 0; }
 
 
+
 /* =============================================================================
-   Main content area
+   Primary Content
    ========================================================================== */
 
 #main { position: relative; }
 #main .container { padding: 0; }
+
+
 
 /* =============================================================================
    Sidebar
@@ -264,6 +212,7 @@ td { vertical-align: top; }
 #sidebar .container { width: auto; padding: 0; }
 #sidebar .widget { clear: both; margin-bottom: 1.5em; }
 #sidebar .widget .gform_wrapper ul { padding: 0; list-style-type: none; }
+
 
 
 /* =============================================================================
@@ -278,8 +227,9 @@ td { vertical-align: top; }
 .hentry p.byline { }
 
 
+
 /* =============================================================================
-   Post and comment navigation
+   Post & Comment Navigation
    ========================================================================== */
 
 #post-nav { clear: both; *display: inline-block; }
@@ -295,8 +245,9 @@ td { vertical-align: top; }
 #comments-nav .comments-next a { float: right; }
 
 
+
 /* =============================================================================
-   Post comments
+   Post Comments
    ========================================================================== */
 
 ol.commentlist img.avatar { float: left; margin-right: 10px; }
@@ -310,8 +261,9 @@ ol.commentlist .comment-reply-link { display: block; margin-bottom: 1.5em; }
 #commentform:after { content: "\0020"; display: block; height: 0; clear: both; visibility: hidden; overflow: hidden; }
 
 
+
 /* =============================================================================
-   Gallery
+   Galleries
    ========================================================================== */
 
 figure.gallery-item { float: left; margin: 0 1em 1em 0; position: relative; }
@@ -328,6 +280,7 @@ figure.gallery-item a:hover img { border-color: #ccc; }
 figure.gallery-item figcaption { display: none; }
 
 
+
 /* =============================================================================
    Footer
    ========================================================================== */
@@ -339,6 +292,7 @@ figure.gallery-item figcaption { display: none; }
 #content-info ul.menu li { display: inline; margin-right: 1em; }
 
 #content-info p.copy small { font-size: 1em; }
+
 
 
 /* =============================================================================
@@ -466,6 +420,7 @@ img.ui-datepicker-trigger { vertical-align: middle; }
 .gform_wrapper .top_label .gfield_error { width: auto; }
 
 
+
 /* =============================================================================
    Search form
    ========================================================================== */
@@ -474,19 +429,7 @@ img.ui-datepicker-trigger { vertical-align: middle; }
 
 
 
-/* =============================================================================
-   WordPress generated classes
-   ========================================================================== */
-
-.aligncenter { display: block; margin: 0 auto; }
-.alignleft { margin: 0 1.5em 1.5em 0; float: left; }
-.alignright { margin: 0 0 1.5em 1.5em; float: right; }
-
-.wp-caption { border: 1px solid #ddd; text-align: center; background: #eee; padding: 14px 10px 6px 10px; margin: 15px 10px; }
-.wp-caption-text { margin: 0; }
-
-
-/* =============================================================================
+/* ==|== media queries ======================================================
    PLACEHOLDER Media Queries for Responsive Design.
    These override the primary ('mobile first') styles
    Modify as content requires.
@@ -504,35 +447,37 @@ img.ui-datepicker-trigger { vertical-align: middle; }
 
 
 
-/* =============================================================================
-   Non-semantic helper classes
-   Please define your styles before this section.
+/* ==|== wordpress generated classes ========================================
+   See: http://codex.wordpress.org/CSS#WordPress_Generated_Classes
    ========================================================================== */
 
-.ir { display: block; border: 0; text-indent: -999em; overflow: hidden; background-color: transparent; background-repeat: no-repeat; text-align: left; direction: ltr; }
+.aligncenter { display: block; margin: 0 auto; }
+.alignleft { margin: 0 1.5em 1.5em 0; float: left; }
+.alignright { margin: 0 0 1.5em 1.5em; float: right; }
+
+.wp-caption { border: 1px solid #ddd; text-align: center; background: #eee; padding: 14px 10px 6px 10px; margin: 15px 10px; }
+.wp-caption-text { margin: 0; }
+
+
+
+/* ==|== non-semantic helper classes ======================================== */
+
+.ir { display: block; border: 0; text-indent: -999em; overflow: hidden; background-color: transparent; background-repeat: no-repeat; text-align: left; direction: ltr; *line-height: 0; }
 .ir br { display: none; }
-
-[hidden] { display: none; visibility: hidden; }
-.hidden { display: none; visibility: hidden; }
-
+.hidden { display: none !important; visibility: hidden; }
 .visuallyhidden { border: 0; clip: rect(0 0 0 0); height: 1px; margin: -1px; overflow: hidden; padding: 0; position: absolute; width: 1px; }
-
 .visuallyhidden.focusable:active, .visuallyhidden.focusable:focus { clip: auto; height: auto; margin: 0; overflow: visible; position: static; width: auto; }
-
 .invisible { visibility: hidden; }
-
 .clearfix:before, .clearfix:after { content: ""; display: table; }
 .clearfix:after { clear: both; }
 .clearfix { *zoom: 1; }
 
 
 
-/* =============================================================================
-   Print styles
-   ========================================================================== */
+/* ==|== print styles ======================================================= */
 
 @media print {
-  * { background: transparent !important; color: black !important; text-shadow: none !important; filter:none !important; -ms-filter: none !important; }
+  * { background: transparent !important; color: black !important; box-shadow:none !important; text-shadow: none !important; filter:none !important; -ms-filter: none !important; }
   a, a:visited { text-decoration: underline; }
   a[href]:after { content: " (" attr(href) ")"; }
   abbr[title]:after { content: " (" attr(title) ")"; }
