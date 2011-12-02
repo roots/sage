@@ -56,3 +56,7 @@ Anyone and everyone is welcome to contribute. There are several ways you can hel
 * Modernizr: MIT/BSD license
 * Respond.js: MIT/GPL license
 * Normalize.css: Public Domain
+
+### Everything else:
+
+The Unlicense (aka: public domain)
