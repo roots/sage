@@ -421,12 +421,4 @@ function roots_theme_options_validate($input) {
   return apply_filters('roots_theme_options_validate', $output, $input, $defaults);
 }
 
-//Remove this function. Only useful for development.
-
-function roots_deactivation() {
-    delete_option("roots_theme_options");
-}
-
-register_deactivation_hook( __FILE__, 'roots_deactivation' );
-
 ?>
