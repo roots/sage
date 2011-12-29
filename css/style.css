@@ -112,6 +112,12 @@ h1, h2, h3, h4, h5, h6 { text-shadow: 0 1px 1px rgba(0, 0, 0, 0.15); }
 
 #logo { float: left; width: 300px; height: 75px; margin: 0 0 16px; padding: 0; }
 
+#nav-main {
+	/* Clearing floats: http://www.quirksmode.org/css/clearing.html */
+	overflow: hidden;
+	width: 100%;
+}
+
 #nav-main ul {
   background: #06c;
   background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));
