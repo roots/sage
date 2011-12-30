@@ -74,26 +74,21 @@ add_action('after_setup_theme', 'roots_setup');
 // hook into 'widgets_init' function with a lower priority in your
 // child theme to remove these sidebars
 function roots_register_sidebars() {
-  register_sidebar(
-    array(
-      'id'=> 'roots-sidebar',
-      'name' => __('Sidebar', 'roots'),
-      'description' => __('Sidebar', 'roots'),
-      'before_widget' => '<article id="%1$s" class="widget %2$s"><div class="container">',
-      'after_widget' => '</div></article>',
-      'before_title' => '<h3>',
-      'after_title' => '</h3>'
-    ));
-  register_sidebar(
-    array(
-      'id'=> 'roots-footer',
-      'name' => __('Footer', 'roots'),
-      'description' => __('Footer', 'roots'),
-      'before_widget' => '<article id="%1$s" class="widget %2$s"><div class="container">',
-      'after_widget' => '</div></article>',
-      'before_title' => '<h3>',
-      'after_title' => '</h3>'
-    ));
+  $sidebars = array( 'Sidebar', 'Footer' );
+
+  foreach( $sidebars as $sidebar ) {
+    register_sidebar(
+      array(
+        'id'=> 'roots-' . strtolower( $sidebar ),  
+        'name' => __( $sidebar, 'roots' ),
+        'description' => __( $sidebar, 'roots' ),
+        'before_widget' => '<article id="%1$s" class="widget %2$s"><div class="container">',
+        'after_widget' => '</div></article>',
+        'before_title' => '<h3>',
+        'after_title' => '</h3>'
+      )
+    );
+  }
 }
 
 add_action('widgets_init', 'roots_register_sidebars');
