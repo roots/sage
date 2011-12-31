@@ -26,20 +26,48 @@ if (stristr($_SERVER['SERVER_SOFTWARE'], 'apache') !== false) {
     $wp_rewrite->flush_rules();
   }
 
-  function roots_add_rewrites($content) {
-    $theme_name = next(explode('/themes/', get_stylesheet_directory()));
-    global $wp_rewrite;
-    $roots_new_non_wp_rules = array(
-      'css/(.*)'      => 'wp-content/themes/'. $theme_name . '/css/$1',
-      'js/(.*)'       => 'wp-content/themes/'. $theme_name . '/js/$1',
-      'img/(.*)'      => 'wp-content/themes/'. $theme_name . '/img/$1',
-      'plugins/(.*)'  => 'wp-content/plugins/$1'
-    );
-    $wp_rewrite->non_wp_rules += $roots_new_non_wp_rules;
-  }
 
-  add_action('admin_init', 'roots_flush_rewrites');
+	function roots_add_rewrites($content)
+	{
+		global $wp_rewrite;
+	
+		// FIXME: Old and wrong way.
+		$theme_name = next(explode('/themes/', get_stylesheet_directory()));
+		$roots_new_non_wp_rulesOld = array(
+		  'css/(.*)'		=> 'wp-content/themes/'. $theme_name . '/css/$1',
+		  'js/(.*)'			=> 'wp-content/themes/'. $theme_name . '/js/$1',
+		  'img/(.*)'		=> 'wp-content/themes/'. $theme_name . '/img/$1',
+		  'plugins/(.*)'	=> 'wp-content/plugins/$1'
+		);
+	
+	
+		// XXX 'wp-content' could be another directory:
+		// 
+		// You can use content_url(), plugins_url(), etc:
+		// @link http://codex.wordpress.org/Determining_Plugin_and_Content_Directories
+		// You can use too constants WP_CONTENT_URL, WP_PLUGINS etc...
+		// or simple, instead get_stylesheet_directory()
+		// use get_stylesheet_directory_uri() to get content structure through theme files.
+		// --------------------------------------------------- /
+		// Themes:
+		$baseRewriteThemes		= str_replace(home_url(), '', get_stylesheet_directory_uri());
+		// Plugins:
+		$baseRewritePlugins		= str_replace(home_url(), '', plugins_url());
+		$roots_new_non_wp_rules	= array(
+		  'css/(.*)'		=> $baseRewriteThemes	. '/css/$1',
+		  'js/(.*)'			=> $baseRewriteThemes	. '/js/$1',
+		  'img/(.*)'		=> $baseRewriteThemes	. '/img/$1',
+		  'plugins/(.*)'	=> $baseRewritePlugins	. '/$1'
+		);
+	
+		// TESTS: FIXMEvar_dump($roots_new_non_wp_rulesOld);var_dump($roots_new_non_wp_rules);exit(__FILE__ . '::' . __LINE__);
+	
+		// Build:
+		$wp_rewrite->non_wp_rules += $roots_new_non_wp_rules;
+	}
+	add_action('admin_init', 'roots_flush_rewrites');
 
+	// FIXME: See function above ('wp-content' issue).
   function roots_clean_assets($content) {
       $theme_name = next(explode('/themes/', $content));
       $current_path = '/wp-content/themes/' . $theme_name;
