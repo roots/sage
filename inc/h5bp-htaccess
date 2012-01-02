@@ -6,6 +6,9 @@
 ### This contains the HTML5 Boilerplate .htaccess that can be found at:
 ###  github.com/h5bp/html5-boilerplate/blob/master/.htaccess
 ###
+### Added:
+###  Block access to access to WordPress files that reveal version information.
+###
 ### Commented out by default:
 ###  Expires headers:      Use WP Super Cache or W3 Total Cache (unless using the H5BP build script)
 ###  ETag removal:         Use WP Super Cache or W3 Total Cache (unless using the H5BP build script)
@@ -488,6 +491,14 @@ AddCharset utf-8 .css .js .xml .json .rss .atom
 # This files may be left by some text/html editors and
 # pose a great security danger, when someone can access them
 <FilesMatch "\.(bak|config|sql|fla|psd|ini|log|sh|inc|~|swp)$">
+  Order allow,deny
+  Deny from all
+  Satisfy All
+</FilesMatch>
+
+
+# Block access to WordPress files that reveal version information.
+<FilesMatch "^(wp-config\.php|readme\.html|license\.txt)">
   Order allow,deny
   Deny from all
   Satisfy All
