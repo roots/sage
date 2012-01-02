@@ -79,7 +79,7 @@ function roots_register_sidebars() {
   foreach( $sidebars as $sidebar ) {
     register_sidebar(
       array(
-        'id'=> 'roots-' . strtolower( $sidebar ),  
+        'id'=> 'roots-' . strtolower( $sidebar ),
         'name' => __( $sidebar, 'roots' ),
         'description' => __( $sidebar, 'roots' ),
         'before_widget' => '<article id="%1$s" class="widget %2$s"><div class="container">',
@@ -95,7 +95,7 @@ add_action('widgets_init', 'roots_register_sidebars');
 
 // return post entry meta information
 function roots_entry_meta() {
-  echo '<time class="updated" datetime="'. get_the_time('c') .'" pubdate>'. sprintf(__('Posted on %s at %s.', 'roots'), get_the_time('l, F jS, Y'), get_the_time()) .'</time>';
+  echo '<time class="updated" datetime="'. get_the_time('c') .'" pubdate>'. sprintf(__('Posted on %s at %s.', 'roots'), get_the_date(), get_the_time()) .'</time>';
   echo '<p class="byline author vcard">'. __('Written by', 'roots') .' <a href="'. get_author_posts_url(get_the_author_meta('id')) .'" rel="author" class="fn">'. get_the_author() .'</a></p>';
 }
 
