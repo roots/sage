@@ -4,7 +4,7 @@
 
 ###
 ### This contains the HTML5 Boilerplate .htaccess that can be found at:
-###  github.com/paulirish/html5-boilerplate/blob/master/.htaccess
+###  github.com/h5bp/html5-boilerplate/blob/master/.htaccess
 ###
 ### Commented out by default:
 ###  Expires headers:      Use WP Super Cache or W3 Total Cache (unless using the H5BP build script)
@@ -54,15 +54,19 @@
 # CORS-enabled images (@crossorigin)
 # ----------------------------------------------------------------------
 
-# Send CORS headers if browsers request them; enabled by default.
+# Send CORS headers if browsers request them; enabled by default for images.
 # developer.mozilla.org/en/CORS_Enabled_Image
 # blog.chromium.org/2011/07/using-cross-domain-images-in-webgl-and.html
 # hacks.mozilla.org/2011/11/using-cors-to-load-webgl-textures-from-cross-domain-images/
+# wiki.mozilla.org/Security/Reviews/crossoriginAttribute
 
 <IfModule mod_setenvif.c>
   <IfModule mod_headers.c>
-    SetEnvIf Origin ":" IS_CORS
-    Header set Access-Control-Allow-Origin "*" env=IS_CORS
+    # mod_headers, y u no match by Content-Type?!
+    <FilesMatch "\.(gif|png|jpe?g|svg|svgz|ico|webp)$">
+      SetEnvIf Origin ":" IS_CORS
+      Header set Access-Control-Allow-Origin "*" env=IS_CORS
+    </FilesMatch>
   </IfModule>
 </IfModule>
 
@@ -102,7 +106,7 @@ AddType video/ogg                      ogv
 AddType video/mp4                      mp4 m4v
 AddType video/webm                     webm
 
-# SVG.
+# SVG
 #   Required for svg webfonts on iPad
 #   twitter.com/FontSquirrel/status/14855840545
 AddType     image/svg+xml              svg svgz
@@ -110,20 +114,21 @@ AddEncoding gzip                       svgz
 
 # Webfonts
 AddType application/vnd.ms-fontobject  eot
-AddType application/x-font-ttf    ttf ttc
+AddType application/x-font-ttf         ttf ttc
 AddType font/opentype                  otf
 AddType application/x-font-woff        woff
 
 # Assorted types
-AddType image/x-icon                   ico
-AddType image/webp                     webp
-AddType text/cache-manifest            appcache manifest
-AddType text/x-component               htc
-AddType application/x-chrome-extension crx
-AddType application/x-opera-extension  oex
-AddType application/x-xpinstall        xpi
-AddType application/octet-stream       safariextz
-AddType text/x-vcard                   vcf
+AddType image/x-icon                        ico
+AddType image/webp                          webp
+AddType text/cache-manifest                 appcache manifest
+AddType text/x-component                    htc
+AddType application/x-chrome-extension      crx
+AddType application/x-opera-extension       oex
+AddType application/x-xpinstall             xpi
+AddType application/octet-stream            safariextz
+AddType application/x-web-app-manifest+json webapp
+AddType text/x-vcard                        vcf
 
 
 
@@ -332,6 +337,18 @@ AddType text/x-vcard                   vcf
 
 
 # ----------------------------------------------------------------------
+# Apache Performance Tuning
+# ----------------------------------------------------------------------
+
+# Without -SymLinksIfOwnerMatch Apache will have to issue extra system calls to check up on symlinks.
+# For highest performance and no symlink protection set +FollowSymLinks and -SymLinksIfOwnerMatch
+# httpd.apache.org/docs/current/misc/perf-tuning.html#symlinks
+
+Options -SymLinksIfOwnerMatch
+
+
+
+# ----------------------------------------------------------------------
 # Suppress or force the "www." at the beginning of URLs
 # ----------------------------------------------------------------------
 
@@ -435,7 +452,7 @@ AddType text/x-vcard                   vcf
 AddDefaultCharset utf-8
 
 # Force UTF-8 for a number of file formats
-AddCharset utf-8 .html .css .js .xml .json .rss .atom
+AddCharset utf-8 .css .js .xml .json .rss .atom
 
 
 
@@ -461,6 +478,8 @@ AddCharset utf-8 .html .css .js .xml .json .rss .atom
 # Block access to "hidden" directories whose names begin with a period. This
 # includes directories used by version control systems such as Subversion or Git.
 <IfModule mod_rewrite.c>
+  RewriteCond %{SCRIPT_FILENAME} -d
+  RewriteCond %{SCRIPT_FILENAME} -f
   RewriteRule "(^|/)\." - [F]
 </IfModule>
 
