@@ -172,16 +172,15 @@ function roots_get_default_theme_options($default_framework = '') {
   if ($default_framework == '') { $default_framework = apply_filters('roots_default_css_framework', 'blueprint'); }
   $default_framework_settings = $roots_css_frameworks[$default_framework];
   $default_theme_options = array(
-    'css_framework'     => $default_framework,
-    'container_class'   => $default_framework_settings['classes']['container'],
-    'main_class'      => $default_framework_settings['classes']['main'],
-    'sidebar_class'     => $default_framework_settings['classes']['sidebar'],
-    'google_analytics_id' => '',
-    'root_relative_urls'  => true,
-    'clean_menu'      => true,
-    'fout_b_gone'     => false,
-    'bootstrap_javascript'  => false,
-	'bootstrap_less_javascript'  => false
+    'css_framework'             => $default_framework,
+    'container_class'           => $default_framework_settings['classes']['container'],
+    'main_class'                => $default_framework_settings['classes']['main'],
+    'sidebar_class'             => $default_framework_settings['classes']['sidebar'],
+    'google_analytics_id'       => '',
+    'root_relative_urls'        => true,
+    'clean_menu'                => true,
+    'bootstrap_javascript'      => false,
+    'bootstrap_less_javascript' => false
   );
 
   return apply_filters('roots_default_theme_options', $default_theme_options);
@@ -298,17 +297,6 @@ function roots_theme_options_render_page() {
           </td>
         </tr>
 
-        <tr valign="top"><th scope="row"><?php _e('Enable FOUT-B-Gone', 'roots'); ?></th>
-          <td>
-            <fieldset><legend class="screen-reader-text"><span><?php _e('Enable FOUT-B-Gone', 'roots'); ?></span></legend>
-              <select name="roots_theme_options[fout_b_gone]" id="roots_theme_options[fout_b_gone]">
-                <option value="yes" <?php selected($roots_options['fout_b_gone'], true); ?>><?php echo _e('Yes', 'roots'); ?></option>
-                <option value="no" <?php selected($roots_options['fout_b_gone'], false); ?>><?php echo _e('No', 'roots'); ?></option>
-              </select>
-            </fieldset>
-          </td>
-        </tr>
-
       </table>
 
       <?php submit_button(); ?>
@@ -360,16 +348,6 @@ function roots_theme_options_validate($input) {
       $input['clean_menu'] = false;
     }
     $output['clean_menu'] = $input['clean_menu'];
-  }
-
-  if (isset($input['fout_b_gone'])) {
-    if ($input['fout_b_gone'] === 'yes') {
-      $input['fout_b_gone'] = true;
-    }
-    if ($input['fout_b_gone'] === 'no') {
-      $input['fout_b_gone'] = false;
-    }
-    $output['fout_b_gone'] = $input['fout_b_gone'];
   }
 
   if (isset($input['bootstrap_javascript'])) {
