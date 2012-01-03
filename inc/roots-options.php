@@ -153,7 +153,7 @@ $roots_css_frameworks = array(
       'sidebar'   => 'span5',
       'fullwidth' => 'span16'
     )
-  ),        
+  ),
   'none' => array(
     'name'     => 'none',
     'label'    => __('None', 'roots'),
@@ -252,7 +252,7 @@ function roots_theme_options_render_page() {
           </td>
         </tr>
         
-        <tr valign="top"><th scope="row"><?php _e('#fullwidth CSS Classes', 'roots'); ?></th>
+        <tr valign="top"><th scope="row"><?php _e('Full Width CSS Classes', 'roots'); ?></th>
           <td>
             <fieldset><legend class="screen-reader-text"><span><?php _e('#fullwidth CSS Classes', 'roots'); ?></span></legend>
               <input type="text" name="roots_theme_options[fullwidth_class]" id="fullwidth_class" value="<?php echo esc_attr($roots_options['fullwidth_class']); ?>" class="regular-text" />
@@ -261,7 +261,7 @@ function roots_theme_options_render_page() {
             </fieldset>
           </td>
         </tr>
-          
+
 <?php if($roots_options['css_framework'] == 'bootstrap') { ?>
         <tr valign="top"><th scope="row"><?php _e('Bootstrap Javascript Packages', 'roots'); ?></th>
           <td>
@@ -272,9 +272,9 @@ function roots_theme_options_render_page() {
               </select>
             </fieldset>
           </td>
-        </tr> 
+        </tr>
         <?php } ?>
-        
+
 <?php if($roots_options['css_framework'] == 'bootstrap_less') { ?>
         <tr valign="top"><th scope="row"><?php _e('Bootstrap Javascript Packages', 'roots'); ?></th>
           <td>
@@ -285,9 +285,9 @@ function roots_theme_options_render_page() {
               </select>
             </fieldset>
           </td>
-        </tr> 
-        <?php } ?>        
-        
+        </tr>
+        <?php } ?>
+
         <tr valign="top"><th scope="row"><?php _e('Google Analytics ID', 'roots'); ?></th>
           <td>
             <fieldset><legend class="screen-reader-text"><span><?php _e('Google Analytics ID', 'roots'); ?></span></legend>
@@ -397,7 +397,7 @@ function roots_theme_options_validate($input) {
     }
     $output['fout_b_gone'] = $input['fout_b_gone'];
   }
-  
+
   if (isset($input['bootstrap_javascript'])) {
     if ($input['bootstrap_javascript'] === 'yes') {
       $input['bootstrap_javascript'] = true;
@@ -416,7 +416,7 @@ function roots_theme_options_validate($input) {
       $input['bootstrap_less_javascript'] = false;
     }
     $output['bootstrap_less_javascript'] = $input['bootstrap_less_javascript'];
-  }     
+  }
 
   return apply_filters('roots_theme_options_validate', $output, $input, $defaults);
 }

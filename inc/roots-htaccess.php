@@ -68,6 +68,7 @@ if (stristr($_SERVER['SERVER_SOFTWARE'], 'apache') !== false) {
     }
   }
 
+  // add the contents of h5bp-htaccess into the .htaccess file
   function roots_add_h5bp_htaccess($rules) {
     global $wp_filesystem;
 
@@ -80,6 +81,7 @@ if (stristr($_SERVER['SERVER_SOFTWARE'], 'apache') !== false) {
   }
 
   add_filter('mod_rewrite_rules', 'roots_add_h5bp_htaccess');
+
 }
 
 ?>
