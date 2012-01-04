@@ -145,7 +145,7 @@ $roots_css_frameworks = array(
       'main'    => 'span11',
       'sidebar' => 'span5'
     )
-  ),        
+  ),
   'none' => array(
     'name'     => 'none',
     'label'   => __('None', 'roots'),
@@ -174,22 +174,15 @@ function roots_get_default_theme_options($default_framework = '') {
   if ($default_framework == '') { $default_framework = apply_filters('roots_default_css_framework', 'blueprint'); }
   $default_framework_settings = $roots_css_frameworks[$default_framework];
   $default_theme_options = array(
-    'css_framework'     => $default_framework,
-    'container_class'   => $default_framework_settings['classes']['container'],
-    'main_class'      => $default_framework_settings['classes']['main'],
-    'sidebar_class'     => $default_framework_settings['classes']['sidebar'],
-    'google_analytics_id' => '',
-    'root_relative_urls'  => true,
-    'clean_menu'      => true,
-    'fout_b_gone'     => false,
-    'bootstrap_javascript'  => false,
-    'bootstrap_less_javascript'  => false,    
-    'first_install_done' => false,
-    'create_front_page' => false,
-    'change_permalink_structure' => false,
-    'change_uploads_folder' => false,
-    'update_permalink_structure' => false,
-    'add_pages_to_primary_navigation' => false,               
+    'css_framework'             => $default_framework,
+    'container_class'           => $default_framework_settings['classes']['container'],
+    'main_class'                => $default_framework_settings['classes']['main'],
+    'sidebar_class'             => $default_framework_settings['classes']['sidebar'],
+    'google_analytics_id'       => '',
+    'root_relative_urls'        => true,
+    'clean_menu'                => true,
+    'bootstrap_javascript'      => false,
+    'bootstrap_less_javascript' => false
   );
 
   return apply_filters('roots_default_theme_options', $default_theme_options);
@@ -231,7 +224,7 @@ function roots_theme_options_render_page() {
           </td>
         </tr>
 
-        <tr valign="top"><th scope="row"><?php _e('#main CSS Classes', 'roots'); ?></th>
+        <tr valign="top"><th scope="row"><?php _e('#main CSS	 Classes', 'roots'); ?></th>
           <td>
             <fieldset><legend class="screen-reader-text"><span><?php _e('#main CSS Classes', 'roots'); ?></span></legend>
               <input type="text" name="roots_theme_options[main_class]" id="main_class" value="<?php echo esc_attr($roots_options['main_class']); ?>" class="regular-text" />
@@ -250,7 +243,7 @@ function roots_theme_options_render_page() {
             </fieldset>
           </td>
         </tr>
-          
+
 <?php if($roots_options['css_framework'] == 'bootstrap') { ?>
         <tr valign="top"><th scope="row"><?php _e('Bootstrap Javascript Packages', 'roots'); ?></th>
           <td>
@@ -261,9 +254,9 @@ function roots_theme_options_render_page() {
               </select>
             </fieldset>
           </td>
-        </tr> 
+        </tr>
         <?php } ?>
-        
+
 <?php if($roots_options['css_framework'] == 'bootstrap_less') { ?>
         <tr valign="top"><th scope="row"><?php _e('Bootstrap Javascript Packages', 'roots'); ?></th>
           <td>
@@ -274,9 +267,9 @@ function roots_theme_options_render_page() {
               </select>
             </fieldset>
           </td>
-        </tr> 
-        <?php } ?>        
-        
+        </tr>
+        <?php } ?>
+
         <tr valign="top"><th scope="row"><?php _e('Google Analytics ID', 'roots'); ?></th>
           <td>
             <fieldset><legend class="screen-reader-text"><span><?php _e('Google Analytics ID', 'roots'); ?></span></legend>
@@ -304,17 +297,6 @@ function roots_theme_options_render_page() {
               <select name="roots_theme_options[clean_menu]" id="roots_theme_options[clean_menu]">
                 <option value="yes" <?php selected($roots_options['clean_menu'], true); ?>><?php echo _e('Yes', 'roots'); ?></option>
                 <option value="no" <?php selected($roots_options['clean_menu'], false); ?>><?php echo _e('No', 'roots'); ?></option>
-              </select>
-            </fieldset>
-          </td>
-        </tr>
-
-        <tr valign="top"><th scope="row"><?php _e('Enable FOUT-B-Gone', 'roots'); ?></th>
-          <td>
-            <fieldset><legend class="screen-reader-text"><span><?php _e('Enable FOUT-B-Gone', 'roots'); ?></span></legend>
-              <select name="roots_theme_options[fout_b_gone]" id="roots_theme_options[fout_b_gone]">
-                <option value="yes" <?php selected($roots_options['fout_b_gone'], true); ?>><?php echo _e('Yes', 'roots'); ?></option>
-                <option value="no" <?php selected($roots_options['fout_b_gone'], false); ?>><?php echo _e('No', 'roots'); ?></option>
               </select>
             </fieldset>
           </td>
@@ -373,16 +355,6 @@ function roots_theme_options_validate($input) {
     $output['clean_menu'] = $input['clean_menu'];
   }
 
-  if (isset($input['fout_b_gone'])) {
-    if ($input['fout_b_gone'] === 'yes') {
-      $input['fout_b_gone'] = true;
-    }
-    if ($input['fout_b_gone'] === 'no') {
-      $input['fout_b_gone'] = false;
-    }
-    $output['fout_b_gone'] = $input['fout_b_gone'];
-  }
-  
   if (isset($input['bootstrap_javascript'])) {
     if ($input['bootstrap_javascript'] === 'yes') {
       $input['bootstrap_javascript'] = true;
@@ -401,54 +373,7 @@ function roots_theme_options_validate($input) {
       $input['bootstrap_less_javascript'] = false;
     }
     $output['bootstrap_less_javascript'] = $input['bootstrap_less_javascript'];
-  }     
-  
-  if (isset($input['first_install_done'])) {
-    if ($input['first_install_done'] === '1') {
-      $input['first_install_done'] = true;
-    }  
-    $output['first_install_done'] = $input['first_install_done'];
-  }
 
-  if (isset($input['bootstrap_less_javascript'])) {
-    if ($input['bootstrap_less_javascript'] === 'yes') {
-      $input['bootstrap_less_javascript'] = true;
-    }
-    if ($input['bootstrap_less_javascript'] === 'no') {
-      $input['bootstrap_less_javascript'] = false;
-    }
-    $output['bootstrap_less_javascript'] = $input['bootstrap_less_javascript'];
-  }    
-  
-  if (isset($input['bootstrap_less_javascript'])) {
-    if ($input['bootstrap_less_javascript'] === 'yes') {
-      $input['bootstrap_less_javascript'] = true;
-    }
-    if ($input['bootstrap_less_javascript'] === 'no') {
-      $input['bootstrap_less_javascript'] = false;
-    }
-    $output['bootstrap_less_javascript'] = $input['bootstrap_less_javascript'];
-  }    
-  
-  if (isset($input['bootstrap_less_javascript'])) {
-    if ($input['bootstrap_less_javascript'] === 'yes') {
-      $input['bootstrap_less_javascript'] = true;
-    }
-    if ($input['bootstrap_less_javascript'] === 'no') {
-      $input['bootstrap_less_javascript'] = false;
-    }
-    $output['bootstrap_less_javascript'] = $input['bootstrap_less_javascript'];
-  }    
-  
-  if (isset($input['bootstrap_less_javascript'])) {
-    if ($input['bootstrap_less_javascript'] === 'yes') {
-      $input['bootstrap_less_javascript'] = true;
-    }
-    if ($input['bootstrap_less_javascript'] === 'no') {
-      $input['bootstrap_less_javascript'] = false;
-    }
-    $output['bootstrap_less_javascript'] = $input['bootstrap_less_javascript'];
-  }      
   return apply_filters('roots_theme_options_validate', $output, $input, $defaults);
 }
 
