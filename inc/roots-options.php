@@ -373,8 +373,9 @@ function roots_theme_options_validate($input) {
       $input['bootstrap_less_javascript'] = false;
     }
     $output['bootstrap_less_javascript'] = $input['bootstrap_less_javascript'];
-
+  }
   return apply_filters('roots_theme_options_validate', $output, $input, $defaults);
+  
 }
 
 ?>
