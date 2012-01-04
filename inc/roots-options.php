@@ -27,13 +27,18 @@ function roots_option_page_capability($capability) {
 add_filter('option_page_capability_roots_options', 'roots_option_page_capability');
 
 function roots_theme_options_add_page() {
-  $theme_page = add_theme_page(
-    __('Theme Options', 'roots'),
-    __('Theme Options', 'roots'),
-    'edit_theme_options',
-    'theme_options',
-    'roots_theme_options_render_page'
-  );
+  
+  $roots_options = roots_get_theme_options();
+  $roots_activation_options = roots_get_theme_activation_options();
+  if($roots_activation_options['first_install_done']){   
+    $theme_page = add_theme_page(
+        __('Theme Options', 'roots'),
+        __('Theme Options', 'roots'),
+        'edit_theme_options',
+        'theme_options',
+        'roots_theme_options_render_page'
+    );
+  }
 
   if (!$theme_page)
     return;
@@ -143,7 +148,7 @@ $roots_css_frameworks = array(
       'main'    => 'span11',
       'sidebar' => 'span5'
     )
-  ),
+  ),        
   'none' => array(
     'name'     => 'none',
     'label'   => __('None', 'roots'),
@@ -172,15 +177,15 @@ function roots_get_default_theme_options($default_framework = '') {
   if ($default_framework == '') { $default_framework = apply_filters('roots_default_css_framework', 'blueprint'); }
   $default_framework_settings = $roots_css_frameworks[$default_framework];
   $default_theme_options = array(
-    'css_framework'             => $default_framework,
-    'container_class'           => $default_framework_settings['classes']['container'],
-    'main_class'                => $default_framework_settings['classes']['main'],
-    'sidebar_class'             => $default_framework_settings['classes']['sidebar'],
-    'google_analytics_id'       => '',
-    'root_relative_urls'        => true,
-    'clean_menu'                => true,
-    'bootstrap_javascript'      => false,
-    'bootstrap_less_javascript' => false
+    'css_framework'     => $default_framework,
+    'container_class'   => $default_framework_settings['classes']['container'],
+    'main_class'      => $default_framework_settings['classes']['main'],
+    'sidebar_class'     => $default_framework_settings['classes']['sidebar'],
+    'google_analytics_id' => '',
+    'root_relative_urls'  => true,
+    'clean_menu'      => true,
+    'bootstrap_javascript'  => false,
+    'bootstrap_less_javascript'  => false,              
   );
 
   return apply_filters('roots_default_theme_options', $default_theme_options);
@@ -192,6 +197,7 @@ function roots_get_theme_options() {
 
 function roots_theme_options_render_page() {
   global $roots_css_frameworks;
+
   ?>
   <div class="wrap">
     <?php screen_icon(); ?>
@@ -204,7 +210,7 @@ function roots_theme_options_render_page() {
         $roots_options = roots_get_theme_options();
         $roots_default_options = roots_get_default_theme_options($roots_options['css_framework']);
       ?>
-
+      <input type="hidden" value="1" name="roots_theme_options[first_install_done]" />
       <table class="form-table">
 
         <tr valign="top" class="radio-option"><th scope="row"><?php _e('CSS Grid Framework', 'roots'); ?></th>
@@ -238,7 +244,7 @@ function roots_theme_options_render_page() {
             </fieldset>
           </td>
         </tr>
-
+          
 <?php if($roots_options['css_framework'] == 'bootstrap') { ?>
         <tr valign="top"><th scope="row"><?php _e('Bootstrap Javascript Packages', 'roots'); ?></th>
           <td>
@@ -249,9 +255,9 @@ function roots_theme_options_render_page() {
               </select>
             </fieldset>
           </td>
-        </tr>
+        </tr> 
         <?php } ?>
-
+        
 <?php if($roots_options['css_framework'] == 'bootstrap_less') { ?>
         <tr valign="top"><th scope="row"><?php _e('Bootstrap Javascript Packages', 'roots'); ?></th>
           <td>
@@ -262,9 +268,9 @@ function roots_theme_options_render_page() {
               </select>
             </fieldset>
           </td>
-        </tr>
-        <?php } ?>
-
+        </tr> 
+        <?php } ?>        
+        
         <tr valign="top"><th scope="row"><?php _e('Google Analytics ID', 'roots'); ?></th>
           <td>
             <fieldset><legend class="screen-reader-text"><span><?php _e('Google Analytics ID', 'roots'); ?></span></legend>
@@ -368,8 +374,8 @@ function roots_theme_options_validate($input) {
       $input['bootstrap_less_javascript'] = false;
     }
     $output['bootstrap_less_javascript'] = $input['bootstrap_less_javascript'];
-  }
-
+  }     
+  
   return apply_filters('roots_theme_options_validate', $output, $input, $defaults);
 }
 
