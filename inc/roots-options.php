@@ -27,16 +27,19 @@ function roots_option_page_capability($capability) {
 add_filter('option_page_capability_roots_options', 'roots_option_page_capability');
 
 function roots_theme_options_add_page() {
-  $theme_page = add_theme_page(
-    __('Theme Options', 'roots'),
-    __('Theme Options', 'roots'),
-    'edit_theme_options',
-    'theme_options',
-    'roots_theme_options_render_page'
-  );
 
-  if (!$theme_page)
-    return;
+  $roots_options = roots_get_theme_options();
+  $roots_activation_options = roots_get_theme_activation_options();
+  if ($roots_activation_options['first_run']) {
+    $theme_page = add_theme_page(
+        __('Theme Options', 'roots'),
+        __('Theme Options', 'roots'),
+        'edit_theme_options',
+        'theme_options',
+        'roots_theme_options_render_page'
+    );
+  }
+
 }
 add_action('admin_menu', 'roots_theme_options_add_page');
 
@@ -44,10 +47,10 @@ function roots_admin_bar_render() {
   global $wp_admin_bar;
 
   $wp_admin_bar->add_menu(array(
-    'parent' => 'appearance',
-    'id' => 'theme_options',
-    'title' => __('Theme Options', 'roots'),
-    'href' => admin_url( 'themes.php?page=theme_options')
+    'parent'  => 'appearance',
+    'id'      => 'theme_options',
+    'title'   => __('Theme Options', 'roots'),
+    'href'    => admin_url('themes.php?page=theme_options')
   ));
 }
 add_action('wp_before_admin_bar_render', 'roots_admin_bar_render');
@@ -55,7 +58,7 @@ add_action('wp_before_admin_bar_render', 'roots_admin_bar_render');
 global $roots_css_frameworks;
 $roots_css_frameworks = array(
   'blueprint' => array(
-    'name'     => 'blueprint',
+    'name'      => 'blueprint',
     'label'     => __('Blueprint CSS', 'roots'),
     'classes'   => array(
       'container' => 'span-24',
@@ -64,12 +67,12 @@ $roots_css_frameworks = array(
     )
   ),
   '960gs_12' => array(
-    'name'     => '960gs_12',
+    'name'    => '960gs_12',
     'label'   => __('960gs (12 cols)', 'roots'),
     'classes' => array(
       'container' => 'container_12',
-      'main'    => 'grid_7 suffix_1',
-      'sidebar' => 'grid_4'
+      'main'      => 'grid_7 suffix_1',
+      'sidebar'   => 'grid_4'
     )
   ),
   '960gs_16' => array(
@@ -77,80 +80,80 @@ $roots_css_frameworks = array(
     'label'    => __('960gs (16 cols)', 'roots'),
     'classes'  => array(
       'container' => 'container_16',
-      'main'    => 'grid_9 suffix_1',
-      'sidebar' => 'grid_6'
+      'main'      => 'grid_9 suffix_1',
+      'sidebar'   => 'grid_6'
     )
   ),
   '960gs_24' => array(
-    'name'     => '960gs_24',
+    'name'    => '960gs_24',
     'label'   => __('960gs (24 cols)', 'roots'),
     'classes' => array(
       'container' => 'container_24',
-      'main'    => 'grid_15 suffix_1',
-      'sidebar' => 'grid_8'
+      'main'      => 'grid_15 suffix_1',
+      'sidebar'   => 'grid_8'
     )
   ),
   '1140' => array(
-    'name'     => '1140',
+    'name'    => '1140',
     'label'   => __('1140', 'roots'),
     'classes' => array(
       'container' => '',
-      'main'    => 'eightcol',
-      'sidebar' => 'fourcol last'
+      'main'      => 'eightcol',
+      'sidebar'   => 'fourcol last'
     )
   ),
   'adapt' => array(
-    'name'     => 'adapt',
+    'name'    => 'adapt',
     'label'   => __('Adapt.js', 'roots'),
     'classes' => array(
       'container' => 'container_12 clearfix',
-      'main'    => 'grid_7 suffix_1',
-      'sidebar' => 'grid_4'
+      'main'      => 'grid_7 suffix_1',
+      'sidebar'   => 'grid_4'
     )
   ),
   'less' => array(
-    'name'     => 'less',
+    'name'    => 'less',
     'label'   => __('Less Framework 4', 'roots'),
     'classes' => array(
       'container' => 'container',
-      'main'    => '',
-      'sidebar' => ''
+      'main'      => '',
+      'sidebar'   => ''
     )
   ),
   'foundation' => array(
-    'name'     => 'foundation',
+    'name'    => 'foundation',
     'label'   => __('Foundation', 'roots'),
     'classes' => array(
       'container' => 'row',
-      'main'    => 'eight columns',
-      'sidebar' => 'four columns'
+      'main'      => 'eight columns',
+      'sidebar'   => 'four columns'
     )
   ),
   'bootstrap' => array(
-    'name'     => 'bootstrap',
+    'name'    => 'bootstrap',
     'label'   => __('Bootstrap', 'roots'),
     'classes' => array(
       'container' => 'row',
-      'main'    => 'span11',
-      'sidebar' => 'span5'
+      'main'      => 'span11',
+      'sidebar'   => 'span5'
     )
   ),
   'bootstrap_less' => array(
-    'name'     => 'bootstrap_less',
+    'name'    => 'bootstrap_less',
     'label'   => __('Bootstrap w/ Less', 'roots'),
     'classes' => array(
       'container' => 'row',
-      'main'    => 'span11',
-      'sidebar' => 'span5'
+      'main'      => 'span11',
+      'sidebar'   => 'span5'
     )
   ),
   'none' => array(
-    'name'     => 'none',
+    'name'    => 'none',
     'label'   => __('None', 'roots'),
     'classes' => array(
       'container' => '',
-      'main'    => '',
-      'sidebar' => ''
+      'main'      => '',
+      'sidebar'   => ''
     )
   )
 );
@@ -180,7 +183,7 @@ function roots_get_default_theme_options($default_framework = '') {
     'root_relative_urls'        => true,
     'clean_menu'                => true,
     'bootstrap_javascript'      => false,
-    'bootstrap_less_javascript' => false
+    'bootstrap_less_javascript' => false,
   );
 
   return apply_filters('roots_default_theme_options', $default_theme_options);
@@ -192,6 +195,7 @@ function roots_get_theme_options() {
 
 function roots_theme_options_render_page() {
   global $roots_css_frameworks;
+
   ?>
   <div class="wrap">
     <?php screen_icon(); ?>
@@ -204,7 +208,7 @@ function roots_theme_options_render_page() {
         $roots_options = roots_get_theme_options();
         $roots_default_options = roots_get_default_theme_options($roots_options['css_framework']);
       ?>
-
+      <input type="hidden" value="1" name="roots_theme_options[first_run]" />
       <table class="form-table">
 
         <tr valign="top" class="radio-option"><th scope="row"><?php _e('CSS Grid Framework', 'roots'); ?></th>
@@ -224,7 +228,7 @@ function roots_theme_options_render_page() {
             <fieldset><legend class="screen-reader-text"><span><?php _e('#main CSS Classes', 'roots'); ?></span></legend>
               <input type="text" name="roots_theme_options[main_class]" id="main_class" value="<?php echo esc_attr($roots_options['main_class']); ?>" class="regular-text" />
               <br />
-                      <small class="description"><?php _e('Default:', 'roots'); ?> <span><?php echo $roots_default_options['main_class']; ?></span></small>
+              <small class="description"><?php _e('Default:', 'roots'); ?> <span><?php echo $roots_default_options['main_class']; ?></span></small>
             </fieldset>
           </td>
         </tr>
@@ -234,12 +238,12 @@ function roots_theme_options_render_page() {
             <fieldset><legend class="screen-reader-text"><span><?php _e('#sidebar CSS Classes', 'roots'); ?></span></legend>
               <input type="text" name="roots_theme_options[sidebar_class]" id="sidebar_class" value="<?php echo esc_attr($roots_options['sidebar_class']); ?>" class="regular-text" />
               <br />
-                      <small class="description"><?php _e('Default:', 'roots'); ?> <span><?php echo $roots_default_options['sidebar_class']; ?></span></small>
+              <small class="description"><?php _e('Default:', 'roots'); ?> <span><?php echo $roots_default_options['sidebar_class']; ?></span></small>
             </fieldset>
           </td>
         </tr>
 
-<?php if($roots_options['css_framework'] == 'bootstrap') { ?>
+        <?php if($roots_options['css_framework'] == 'bootstrap') { ?>
         <tr valign="top"><th scope="row"><?php _e('Bootstrap Javascript Packages', 'roots'); ?></th>
           <td>
             <fieldset class="roots_bootstrap_js"><legend class="screen-reader-text"><span><?php _e('Enable Bootstrap Javascript', 'roots'); ?></span></legend>
@@ -252,7 +256,7 @@ function roots_theme_options_render_page() {
         </tr>
         <?php } ?>
 
-<?php if($roots_options['css_framework'] == 'bootstrap_less') { ?>
+        <?php if($roots_options['css_framework'] == 'bootstrap_less') { ?>
         <tr valign="top"><th scope="row"><?php _e('Bootstrap Javascript Packages', 'roots'); ?></th>
           <td>
             <fieldset class="roots_bootstrap_js"><legend class="screen-reader-text"><span><?php _e('Enable Bootstrap Javascript', 'roots'); ?></span></legend>

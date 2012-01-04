@@ -419,7 +419,7 @@ function roots_notice_tagline() {
     }
 }
 
-if (get_option('blogdescription') === 'Just another WordPress site') {
+if ((get_option('blogdescription') === 'Just another WordPress site') && isset($_GET['page']) != 'theme_activation_options') {
   add_action('admin_notices', 'roots_notice_tagline');
 }
 
@@ -428,7 +428,7 @@ function roots_notice_tagline_ignore() {
   $user_id = $current_user->ID;
   if (isset($_GET['tagline_notice_ignore']) && '0' == $_GET['tagline_notice_ignore']) {
     add_user_meta($user_id, 'ignore_tagline_notice', 'true', true);
-    }
+  }
 }
 
 add_action('admin_init', 'roots_notice_tagline_ignore');
