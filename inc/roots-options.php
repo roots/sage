@@ -1,5 +1,4 @@
 <?php
-
 function roots_admin_enqueue_scripts($hook_suffix) {
   if ($hook_suffix !== 'appearance_page_theme_options')
     return;
@@ -26,19 +25,22 @@ function roots_option_page_capability($capability) {
 }
 add_filter('option_page_capability_roots_options', 'roots_option_page_capability');
 
-function roots_theme_options_add_page() {
-  $theme_page = add_theme_page(
-    __('Theme Options', 'roots'),
-    __('Theme Options', 'roots'),
-    'edit_theme_options',
-    'theme_options',
-    'roots_theme_options_render_page'
-  );
-
+function roots_theme_options_add_page() {    
+  $roots_activation_options = roots_get_theme_activation_options();
+  $roots_options = roots_get_theme_options();
+  if($roots_activation_options['first_install_done']){   
+    $theme_page = add_theme_page(
+        __('Theme Options', 'roots'),
+        __('Theme Options', 'roots'),
+        'edit_theme_options',
+        'theme_options',
+        'roots_theme_options_render_page'
+    );
+  }
   if (!$theme_page)
     return;
 }
-add_action('admin_menu', 'roots_theme_options_add_page');
+add_action('admin_menu', 'roots_theme_options_add_page',10);
 
 function roots_admin_bar_render() {
   global $wp_admin_bar;
@@ -190,8 +192,11 @@ function roots_get_theme_options() {
   return get_option('roots_theme_options', roots_get_default_theme_options());
 }
 
+
+
 function roots_theme_options_render_page() {
   global $roots_css_frameworks;
+
   ?>
   <div class="wrap">
     <?php screen_icon(); ?>
@@ -204,7 +209,7 @@ function roots_theme_options_render_page() {
         $roots_options = roots_get_theme_options();
         $roots_default_options = roots_get_default_theme_options($roots_options['css_framework']);
       ?>
-
+      <input type="hidden" value="1" name="roots_theme_options[first_install_done]" />
       <table class="form-table">
 
         <tr valign="top" class="radio-option"><th scope="row"><?php _e('CSS Grid Framework', 'roots'); ?></th>
@@ -219,7 +224,7 @@ function roots_theme_options_render_page() {
           </td>
         </tr>
 
-        <tr valign="top"><th scope="row"><?php _e('#main CSS Classes', 'roots'); ?></th>
+        <tr valign="top"><th scope="row"><?php _e('#main CSS	 Classes', 'roots'); ?></th>
           <td>
             <fieldset><legend class="screen-reader-text"><span><?php _e('#main CSS Classes', 'roots'); ?></span></legend>
               <input type="text" name="roots_theme_options[main_class]" id="main_class" value="<?php echo esc_attr($roots_options['main_class']); ?>" class="regular-text" />
@@ -369,8 +374,8 @@ function roots_theme_options_validate($input) {
     }
     $output['bootstrap_less_javascript'] = $input['bootstrap_less_javascript'];
   }
-
   return apply_filters('roots_theme_options_validate', $output, $input, $defaults);
+  
 }
 
 ?>
