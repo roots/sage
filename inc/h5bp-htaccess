@@ -1,5 +1,4 @@
 
-
 # BEGIN HTML5 Boilerplate .htaccess
 
 ###
@@ -336,18 +335,6 @@ AddType text/x-vcard                        vcf
 #   Options +FollowSymlinks
 #   RewriteEngine On
 # </IfModule>
-
-
-
-# ----------------------------------------------------------------------
-# Apache Performance Tuning
-# ----------------------------------------------------------------------
-
-# Without -SymLinksIfOwnerMatch Apache will have to issue extra system calls to check up on symlinks.
-# For highest performance and no symlink protection set +FollowSymLinks and -SymLinksIfOwnerMatch
-# httpd.apache.org/docs/current/misc/perf-tuning.html#symlinks
-
-Options -SymLinksIfOwnerMatch
 
 
 
