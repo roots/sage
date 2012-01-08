@@ -63,7 +63,8 @@ $roots_css_frameworks = array(
     'classes'   => array(
       'container' => 'span-24',
       'main'      => 'span-14 append-1',
-      'sidebar'   => 'span-8 prepend-1 last'
+      'sidebar'   => 'span-8 prepend-1 last',
+      'fullwidth' => 'span-24'
     )
   ),
   '960gs_12' => array(
@@ -72,7 +73,8 @@ $roots_css_frameworks = array(
     'classes' => array(
       'container' => 'container_12',
       'main'      => 'grid_7 suffix_1',
-      'sidebar'   => 'grid_4'
+      'sidebar'   => 'grid_4',
+      'fullwidth' => 'grid_12'
     )
   ),
   '960gs_16' => array(
@@ -81,7 +83,8 @@ $roots_css_frameworks = array(
     'classes'  => array(
       'container' => 'container_16',
       'main'      => 'grid_9 suffix_1',
-      'sidebar'   => 'grid_6'
+      'sidebar'   => 'grid_6',
+      'fullwidth' => 'grid_16'
     )
   ),
   '960gs_24' => array(
@@ -90,16 +93,18 @@ $roots_css_frameworks = array(
     'classes' => array(
       'container' => 'container_24',
       'main'      => 'grid_15 suffix_1',
-      'sidebar'   => 'grid_8'
+      'sidebar'   => 'grid_8',
+      'fullwidth' => 'grid_24'
     )
   ),
   '1140' => array(
     'name'    => '1140',
     'label'   => __('1140', 'roots'),
     'classes' => array(
-      'container' => '',
+      'container' => 'row',
       'main'      => 'eightcol',
-      'sidebar'   => 'fourcol last'
+      'sidebar'   => 'fourcol last',
+      'fullwidth' => 'twelvecol'
     )
   ),
   'adapt' => array(
@@ -108,7 +113,8 @@ $roots_css_frameworks = array(
     'classes' => array(
       'container' => 'container_12 clearfix',
       'main'      => 'grid_7 suffix_1',
-      'sidebar'   => 'grid_4'
+      'sidebar'   => 'grid_4',
+      'fullwidth' => 'grid_12'
     )
   ),
   'less' => array(
@@ -117,7 +123,8 @@ $roots_css_frameworks = array(
     'classes' => array(
       'container' => 'container',
       'main'      => '',
-      'sidebar'   => ''
+      'sidebar'   => '',
+      'fullwidth' => ''
     )
   ),
   'foundation' => array(
@@ -126,7 +133,8 @@ $roots_css_frameworks = array(
     'classes' => array(
       'container' => 'row',
       'main'      => 'eight columns',
-      'sidebar'   => 'four columns'
+      'sidebar'   => 'four columns',
+      'fullwidth' => 'twelve columns'
     )
   ),
   'bootstrap' => array(
@@ -135,7 +143,8 @@ $roots_css_frameworks = array(
     'classes' => array(
       'container' => 'row',
       'main'      => 'span11',
-      'sidebar'   => 'span5'
+      'sidebar'   => 'span5',
+      'fullwidth' => 'span16'
     )
   ),
   'bootstrap_less' => array(
@@ -144,7 +153,8 @@ $roots_css_frameworks = array(
     'classes' => array(
       'container' => 'row',
       'main'      => 'span11',
-      'sidebar'   => 'span5'
+      'sidebar'   => 'span5',
+      'fullwidth' => 'span16'
     )
   ),
   'none' => array(
@@ -153,7 +163,8 @@ $roots_css_frameworks = array(
     'classes' => array(
       'container' => '',
       'main'      => '',
-      'sidebar'   => ''
+      'sidebar'   => '',
+      'fullwidth' => ''
     )
   )
 );
@@ -179,6 +190,7 @@ function roots_get_default_theme_options($default_framework = '') {
     'container_class'           => $default_framework_settings['classes']['container'],
     'main_class'                => $default_framework_settings['classes']['main'],
     'sidebar_class'             => $default_framework_settings['classes']['sidebar'],
+    'fullwidth_class'           => $default_framework_settings['classes']['fullwidth'],
     'google_analytics_id'       => '',
     'root_relative_urls'        => true,
     'clean_menu'                => true,
@@ -239,6 +251,16 @@ function roots_theme_options_render_page() {
               <input type="text" name="roots_theme_options[sidebar_class]" id="sidebar_class" value="<?php echo esc_attr($roots_options['sidebar_class']); ?>" class="regular-text" />
               <br />
               <small class="description"><?php _e('Default:', 'roots'); ?> <span><?php echo $roots_default_options['sidebar_class']; ?></span></small>
+            </fieldset>
+          </td>
+        </tr>
+
+        <tr valign="top"><th scope="row"><?php _e('Full Width CSS Classes', 'roots'); ?></th>
+          <td>
+            <fieldset><legend class="screen-reader-text"><span><?php _e('#fullwidth CSS Classes', 'roots'); ?></span></legend>
+              <input type="text" name="roots_theme_options[fullwidth_class]" id="fullwidth_class" value="<?php echo esc_attr($roots_options['fullwidth_class']); ?>" class="regular-text" />
+              <br />
+              <small class="description"><?php _e('Default:', 'roots'); ?> <span><?php echo $roots_default_options['fullwidth_class']; ?></span></small>
             </fieldset>
           </td>
         </tr>
@@ -326,6 +348,10 @@ function roots_theme_options_validate($input) {
 
   if (isset($input['sidebar_class'])) {
     $output['sidebar_class'] = wp_filter_nohtml_kses($input['sidebar_class']);
+  }
+
+  if (isset($input['fullwidth_class'])) {
+    $output['fullwidth_class'] = wp_filter_nohtml_kses($input['fullwidth_class']);
   }
 
   if (isset($input['google_analytics_id'])) {
