@@ -1,8 +1,8 @@
 # [Roots Theme](http://rootstheme.com/)
 
-Roots is a starting WordPress theme made for developers that’s based on [HTML5 Boilerplate](http://html5boilerplate.com/) and Starkers that will help you rapidly create brochure sites and blogs.
+Roots is a starting WordPress theme made for developers that’s based on [HTML5 Boilerplate](http://html5boilerplate.com/), Starkers, and the most popular CSS frameworks.
 
-Roots includes support for Blueprint CSS, 960 Grid System, 1140px Grid, Adapt.js, LESS, Foundation, and Bootstrap with the ability to set site-wide classes for the main content area and the sidebar. There's also the option to not use any CSS framework.
+Roots includes support for Blueprint CSS, 960 Grid System, 1140px Grid, Adapt.js, Less Framework, Foundation, and Bootstrap with the ability to set site-wide classes for the main content area and the sidebar. There's also the option to not use any CSS framework.
 
 ## Quick start
 
@@ -21,7 +21,7 @@ Roots includes support for Blueprint CSS, 960 Grid System, 1140px Grid, Adapt.js
 * The gallery shortcode has been modified to use `<figure>` and `<figcaption>`
 * `wp_head` has been cleaned up along with the output of enqueued styles and scripts
 * Robots.txt optimized for SEO
-* [Multilingual ready](http://www.rootstheme.com/wpml/) (English, French, Italian, Dutch, Brazilian Portuguese, Macedonian, Finnish, and Danish)
+* [Multilingual ready](http://www.rootstheme.com/wpml/) (English, Spanish, French, Italian, Dutch, Brazilian Portuguese, Macedonian, Finnish, Danish, and Turkish)
 
 ### Theme Options
 ![Theme Options](http://www.rootstheme.com/img/roots-settings.png)
@@ -49,13 +49,16 @@ Anyone and everyone is welcome to contribute. There are several ways you can hel
 ### Major components:
 
 * HTML5 Boilerplate: The Unlicense
+* Modernizr: MIT/BSD license
+* jQuery: MIT/GPL license
+* Normalize.css: Public Domain
 * Blueprint CSS: Modified MIT License
 * 960 Grid System: MIT/GPL License
 * The 1140px Grid: CC BY-SA 3.0 Australia License
-* jQuery: MIT/GPL license
-* Modernizr: MIT/BSD license
-* Respond.js: MIT/GPL license
-* Normalize.css: Public Domain
+* Adapt.js: MIT/GPL license
+* Less Framework 4: MIT license
+* Foundation: MIT license
+* Bootstrap: Apache 2.0 license
 
 ### Everything else:
 
