@@ -11,6 +11,12 @@
               <?php printf(__('Monthly Archives: %s', 'roots'), get_the_date('F Y')); ?>
             <?php elseif (is_year()) : ?>
               <?php printf(__('Yearly Archives: %s', 'roots'), get_the_date('Y')); ?>
+            <?php elseif (is_author()) : ?>
+              <?php
+                global $post;
+                $author_id = $post->post_author;
+                printf(__('Author Archives: %s', 'roots'), get_the_author_meta('user_nicename', $author_id));
+              ?>
             <?php else : ?>
               <?php single_cat_title(); ?>
             <?php endif; ?>
