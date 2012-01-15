@@ -251,13 +251,9 @@ h1, h2, h3, h4, h5, h6 { text-shadow: 0 1px 1px rgba(0, 0, 0, 0.15); }
 
 ol.commentlist img.avatar { float: left; margin-right: 10px; }
 ol.commentlist time { display: block; font-size: 1em; margin-bottom: 0.5em; position: relative; }
-ol.commentlist .comment-reply-link { display: block; margin-bottom: 1.5em; }
-#commentform { *display: inline-block; }
-#commentform p { margin-bottom: 1em; }
 #commentform label { display: block; }
 #commentform textarea { display: block; }
 #commentform input.button { margin-top: 0.5em; }
-#commentform:after { content: "\0020"; display: block; height: 0; clear: both; visibility: hidden; overflow: hidden; }
 
 
 
