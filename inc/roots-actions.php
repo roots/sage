@@ -14,7 +14,6 @@ add_action('roots_header_before', 'roots_bootstrap_header_before');
 add_action('roots_header_after', 'roots_bootstrap_header_after');
 add_action('roots_footer_before', 'roots_bootstrap_footer_before');
 add_action('roots_footer_after', 'roots_bootstrap_footer_after');
-add_action('roots_post_inside_before', 'roots_page_breadcrumb');
 
 function roots_google_analytics() {
   global $roots_options;
@@ -67,7 +66,7 @@ function roots_foundation_head() {
   $roots_css_framework = $roots_options['css_framework'];
   $template_uri = get_template_directory_uri();
   if ($roots_css_framework === 'foundation') {
-	echo "\t<!-- Combine and Compress These Javascript Files -->\n";
+    echo "\t<!-- Combine and Compress These Javascript Files -->\n";
     echo "\t<script src=\"$template_uri/js/foundation/jquery.reveal.js\"></script>\n";
     echo "\t<script src=\"$template_uri/js/foundation/jquery.orbit-1.3.0.js\"></script>\n";
     echo "\t<script src=\"$template_uri/js/foundation/forms.jquery.js\"></script>\n";
@@ -93,7 +92,6 @@ function roots_bootstrap_head() {
   }
   if ($roots_bootstrap_js === true) {
   	$roots_options['bootstrap_less_javascript'] = false;
-
   	echo "\t<script src=\"$template_uri/js/bootstrap/bootstrap-modal.js\"></script>\n";
     echo "\t<script src=\"$template_uri/js/bootstrap/bootstrap-alerts.js\"></script>\n";
     echo "\t<script src=\"$template_uri/js/bootstrap/bootstrap-twipsy.js\"></script>\n";
@@ -105,7 +103,6 @@ function roots_bootstrap_head() {
   }
   if ($roots_bootstrap_less_js === true) {
   	$roots_options['bootstrap_javascript'] = false;
-
   	echo "\t<script src=\"$template_uri/js/bootstrap/bootstrap-modal.js\"></script>\n";
     echo "\t<script src=\"$template_uri/js/bootstrap/bootstrap-alerts.js\"></script>\n";
     echo "\t<script src=\"$template_uri/js/bootstrap/bootstrap-twipsy.js\"></script>\n";
@@ -269,15 +266,6 @@ function roots_bootstrap_footer_after() {
   $roots_css_framework = $roots_options['css_framework'];
   if ($roots_css_framework === 'bootstrap' || $roots_css_framework === 'bootstrap_less') {
     echo "</div><!-- /.container -->\n";
-  }
-}
-
-function roots_page_breadcrumb() {
-  global $post;
-  if (function_exists('yoast_breadcrumb')) {
-    if (is_page() && $post->post_parent) {
-      yoast_breadcrumb('<p id="breadcrumbs">','</p>');
-    }
   }
 }
 
