@@ -1,73 +1,136 @@
 <?php
 
-class roots_vcard extends WP_Widget {
+class Roots_Vcard_Widget extends WP_Widget {
+  function Roots_Vcard_Widget() {
+    $widget_ops = array('classname' => 'widget_roots_vcard', 'description' => __('Use this widget to add a vCard', 'roots'));
+    $this->WP_Widget('widget_roots_vcard', __('Roots: vCard', 'roots'), $widget_ops);
+    $this->alt_option_name = 'widget_roots_vcard';
 
-  function roots_vcard() {
-    $widget_ops = array('description' => 'Display a vCard');
-    parent::WP_Widget(false, __('Roots: vCard', 'roots'), $widget_ops);
+    add_action('save_post', array(&$this, 'flush_widget_cache'));
+    add_action('deleted_post', array(&$this, 'flush_widget_cache'));
+    add_action('switch_theme', array(&$this, 'flush_widget_cache'));
   }
 
   function widget($args, $instance) {
-    extract($args);
-    extract($instance);
+    $cache = wp_cache_get('widget_roots_vcard', 'widget');
+
+    if (!is_array($cache)) {
+      $cache = array();
+    }
+
+    if (!isset($args['widget_id'])) {
+      $args['widget_id'] = null;
+    }
+
+    if (isset($cache[$args['widget_id']])) {
+      echo $cache[$args['widget_id']];
+      return;
+    }
+
+    ob_start();
+    extract($args, EXTR_SKIP);
+
+    $title = apply_filters('widget_title', empty($instance['title']) ? __('vCard', 'roots') : $instance['title'], $instance, $this->id_base);
+    if (!isset($instance['street_address'])) { $instance['street_address'] = ''; }
+    if (!isset($instance['locality'])) { $instance['locality'] = ''; }
+    if (!isset($instance['region'])) { $instance['region'] = ''; }
+    if (!isset($instance['postal_code'])) { $instance['postal_code'] = ''; }
+    if (!isset($instance['tel'])) { $instance['tel'] = ''; }
+    if (!isset($instance['email'])) { $instance['email'] = ''; }
+
     echo $before_widget;
     if ($title) {
-      echo $before_title, $title, $after_title;
+      echo $before_title;
+      echo $title;
+      echo $after_title;
     }
   ?>
     <p class="vcard">
       <a class="fn org url" href="<?php echo home_url('/'); ?>"><?php bloginfo('name'); ?></a><br>
       <span class="adr">
-      <span class="street-address"><?php echo $street_address; ?></span><br>
-      <span class="locality"><?php echo $locality; ?></span>,
-      <span class="region"><?php echo $region; ?></span>
-      <span class="postal-code"><?php echo $postal_code; ?></span><br>
+        <span class="street-address"><?php echo $instance['street_address']; ?></span><br>
+        <span class="locality"><?php echo $instance['locality']; ?></span>,
+        <span class="region"><?php echo $instance['region']; ?></span>
+        <span class="postal-code"><?php echo $instance['postal_code']; ?></span><br>
       </span>
-      <span class="tel"><span class="value"><span class="hidden">+1-</span><?php echo $tel; ?></span></span><br>
-      <a class="email" href="mailto:<?php echo $email; ?>"><?php echo $email; ?></a>
+      <span class="tel"><span class="value"><span class="hidden">+1-</span><?php echo $instance['tel']; ?></span></span><br>
+      <a class="email" href="mailto:<?php echo $instance['email']; ?>"><?php echo $instance['email']; ?></a>
     </p>
-    <?php
-      echo $after_widget;
+  <?php
+    echo $after_widget;
+
+    $cache[$args['widget_id']] = ob_get_flush();
+    wp_cache_set('widget_roots_vcard', $cache, 'widget');
   }
 
   function update($new_instance, $old_instance) {
-    return $new_instance;
+    $instance = $old_instance;
+    $instance['title'] = strip_tags($new_instance['title']);
+    $instance['street_address'] = strip_tags($new_instance['street_address']);
+    $instance['locality'] = strip_tags($new_instance['locality']);
+    $instance['region'] = strip_tags($new_instance['region']);
+    $instance['postal_code'] = strip_tags($new_instance['postal_code']);
+    $instance['tel'] = strip_tags($new_instance['tel']);
+    $instance['email'] = strip_tags($new_instance['email']);
+    $this->flush_widget_cache();
+
+    $alloptions = wp_cache_get('alloptions', 'options');
+    if (isset($alloptions['widget_roots_vcard'])) {
+      delete_option('widget_roots_vcard');
+    }
+
+    return $instance;
+  }
+
+  function flush_widget_cache() {
+    wp_cache_delete('widget_roots_vcard', 'widget');
   }
 
   function form($instance) {
+    $title = isset($instance['title']) ? esc_attr($instance['title']) : '';
+    $street_address = isset($instance['street_address']) ? esc_attr($instance['street_address']) : '';
+    $locality = isset($instance['locality']) ? esc_attr($instance['locality']) : '';
+    $region = isset($instance['region']) ? esc_attr($instance['region']) : '';
+    $postal_code = isset($instance['postal_code']) ? esc_attr($instance['postal_code']) : '';
+    $tel = isset($instance['tel']) ? esc_attr($instance['tel']) : '';
+    $email = isset($instance['email']) ? esc_attr($instance['email']) : '';
   ?>
     <p>
-      <label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title (optional):', 'roots'); ?></label>
-      <input type="text" name="<?php echo $this->get_field_name('title'); ?>" value="<?php if (isset($instance['title'])) { echo esc_attr($instance['title']); } ?>" class="widefat" id="<?php if (isset($instance['title'])) { echo $this->get_field_id('title'); } ?>" />
+      <label for="<?php echo esc_attr($this->get_field_id('title')); ?>"><?php _e('Title (optional):', 'roots'); ?></label>
+      <input class="widefat" id="<?php echo esc_attr($this->get_field_id('title')); ?>" name="<?php echo esc_attr($this->get_field_name('title')); ?>" type="text" value="<?php echo esc_attr($title); ?>" />
     </p>
     <p>
-      <label for="<?php echo $this->get_field_id('street_address'); ?>"><?php _e('Street Address:', 'roots'); ?></label>
-      <input type="text" name="<?php echo $this->get_field_name('street_address'); ?>" value="<?php if (isset($instance['street_address'])) { echo esc_attr($instance['street_address']); } ?>" class="widefat" id="<?php if (isset($instance['street_address'])) { echo $this->get_field_id('street_address'); } ?>" />
+      <label for="<?php echo esc_attr($this->get_field_id('street_address')); ?>"><?php _e('Street Address:', 'roots'); ?></label>
+      <input class="widefat" id="<?php echo esc_attr($this->get_field_id('street_address')); ?>" name="<?php echo esc_attr($this->get_field_name('street_address')); ?>" type="text" value="<?php echo esc_attr($street_address); ?>" />
     </p>
     <p>
-      <label for="<?php echo $this->get_field_id('locality'); ?>"><?php _e('City/Locality:', 'roots'); ?></label>
-      <input type="text" name="<?php echo $this->get_field_name('locality'); ?>" value="<?php if (isset($instance['locality'])) { echo esc_attr($instance['locality']); } ?>" class="widefat" id="<?php if (isset($instance['locality'])) { echo $this->get_field_id('locality'); } ?>" />
+      <label for="<?php echo esc_attr($this->get_field_id('locality')); ?>"><?php _e('City/Locality:', 'roots'); ?></label>
+      <input class="widefat" id="<?php echo esc_attr($this->get_field_id('locality')); ?>" name="<?php echo esc_attr($this->get_field_name('locality')); ?>" type="text" value="<?php echo esc_attr($locality); ?>" />
     </p>
     <p>
-      <label for="<?php echo $this->get_field_id('region'); ?>"><?php _e('State/Region:', 'roots'); ?></label>
-      <input type="text" name="<?php echo $this->get_field_name('region'); ?>" value="<?php if (isset($instance['region'])) { echo esc_attr($instance['region']); } ?>" class="widefat" id="<?php if (isset($instance['region'])) { echo $this->get_field_id('region'); } ?>" />
+      <label for="<?php echo esc_attr($this->get_field_id('region')); ?>"><?php _e('State/Region:', 'roots'); ?></label>
+      <input class="widefat" id="<?php echo esc_attr($this->get_field_id('region')); ?>" name="<?php echo esc_attr($this->get_field_name('region')); ?>" type="text" value="<?php echo esc_attr($region); ?>" />
     </p>
     <p>
-      <label for="<?php echo $this->get_field_id('postal_code'); ?>"><?php _e('Zipcode/Postal Code:', 'roots'); ?></label>
-      <input type="text" name="<?php echo $this->get_field_name('postal_code'); ?>" value="<?php if (isset($instance['postal_code'])) { echo esc_attr($instance['postal_code']); } ?>" class="widefat" id="<?php if (isset($instance['postal_code'])) { echo $this->get_field_id('postal_code'); } ?>" />
+      <label for="<?php echo esc_attr($this->get_field_id('postal_code')); ?>"><?php _e('Zipcode/Postal Code:', 'roots'); ?></label>
+      <input class="widefat" id="<?php echo esc_attr($this->get_field_id('postal_code')); ?>" name="<?php echo esc_attr($this->get_field_name('postal_code')); ?>" type="text" value="<?php echo esc_attr($postal_code); ?>" />
     </p>
     <p>
-      <label for="<?php echo $this->get_field_id('tel'); ?>"><?php _e('Telephone:', 'roots'); ?></label>
-      <input type="text" name="<?php echo $this->get_field_name('tel'); ?>" value="<?php if (isset($instance['tel'])) { echo esc_attr($instance['tel']); } ?>" class="widefat" id="<?php if (isset($instance['tel'])) { echo $this->get_field_id('tel'); } ?>" />
+      <label for="<?php echo esc_attr($this->get_field_id('tel')); ?>"><?php _e('Telephone:', 'roots'); ?></label>
+      <input class="widefat" id="<?php echo esc_attr($this->get_field_id('tel')); ?>" name="<?php echo esc_attr($this->get_field_name('tel')); ?>" type="text" value="<?php echo esc_attr($tel); ?>" />
     </p>
     <p>
-      <label for="<?php echo $this->get_field_id('email'); ?>"><?php _e('Email:', 'roots'); ?></label>
-      <input type="text" name="<?php echo $this->get_field_name('email'); ?>" value="<?php if (isset($instance['email'])) { echo esc_attr($instance['email']); } ?>" class="widefat" id="<?php if (isset($instance['email'])) { echo $this->get_field_id('email'); } ?>" />
+      <label for="<?php echo esc_attr($this->get_field_id('email')); ?>"><?php _e('Email:', 'roots'); ?></label>
+      <input class="widefat" id="<?php echo esc_attr($this->get_field_id('email')); ?>" name="<?php echo esc_attr($this->get_field_name('email')); ?>" type="text" value="<?php echo esc_attr($email); ?>" />
     </p>
   <?php
   }
 }
 
-register_widget('roots_vcard');
+function roots_widget_init() {
+  register_widget('Roots_Vcard_Widget');
+}
+
+add_action('widgets_init', 'roots_widget_init');
 
 ?>
