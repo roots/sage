@@ -10,10 +10,7 @@
       </header>
 
       <?php if ($comment->comment_approved == '0') : ?>
-            <div class="notice">
-          <p class="bottom"><?php _e('Your comment is awaiting moderation.', 'roots') ?></p>
-              </div>
-
+        <p><?php _e('Your comment is awaiting moderation.', 'roots') ?></p>
       <?php endif; ?>
 
       <section class="comment">
@@ -32,9 +29,7 @@
 
   if ( post_password_required() ) { ?>
   <section id="comments">
-    <div class="notice">
-      <p class="bottom"><?php _e('This post is password protected. Enter the password to view comments.', 'roots'); ?></p>
-    </div>
+    <p><?php _e('This post is password protected. Enter the password to view comments.', 'roots'); ?></p>
   </section>
   <?php
     return;
@@ -59,9 +54,7 @@
   <?php if ( comments_open() ) : ?>
   <?php else : // comments are closed ?>
   <section id="comments">
-    <div class="notice">
-      <p class="bottom"><?php _e('Comments are closed.', 'roots') ?></p>
-    </div>
+    <p><?php _e('Comments are closed.', 'roots') ?></p>
   </section>
   <?php endif; ?>
 <?php endif; ?>
