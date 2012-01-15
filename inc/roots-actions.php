@@ -215,6 +215,7 @@ function roots_1140_header_after() {
   $roots_css_framework = $roots_options['css_framework'];
   if ($roots_css_framework === '1140') {
     echo "</div></div><!-- /.row /.container -->\n";
+    do_action('roots_1140_header_after_between');
     echo '<div class="container"><div class="row">', "\n";
   }
 }
@@ -224,6 +225,7 @@ function roots_1140_footer_before() {
   $roots_css_framework = $roots_options['css_framework'];
   if ($roots_css_framework === '1140') {
     echo "</div></div><!-- /.row /.container -->\n";
+    do_action('roots_1140_footer_before_between');
     echo '<div class="container"><div class="row">', "\n";
   }
 }
@@ -248,6 +250,7 @@ function roots_bootstrap_header_after() {
   $roots_css_framework = $roots_options['css_framework'];
   if ($roots_css_framework === 'bootstrap' || $roots_css_framework === 'bootstrap_less') {
     echo "</div><!-- /.container -->\n";
+    do_action('roots_bootstrap_header_after_between');
     echo '<div class="container">', "\n";
   }
 }
@@ -257,6 +260,7 @@ function roots_bootstrap_footer_before() {
   $roots_css_framework = $roots_options['css_framework'];
   if ($roots_css_framework === 'bootstrap' || $roots_css_framework === 'bootstrap_less') {
     echo "</div><!-- /.container -->\n";
+    do_action('roots_bootstrap_footer_before_between');
     echo '<div class="container">', "\n";
   }
 }
