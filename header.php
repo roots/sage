@@ -39,25 +39,12 @@
         </a>
 
         <nav id="nav-main" role="navigation">
-          <?php if ($roots_options['clean_menu']) { ?>
-            <?php wp_nav_menu(array('theme_location' => 'primary_navigation', 'walker' => new roots_nav_walker())); ?>
-          <?php } else { ?>
-            <?php wp_nav_menu(array('theme_location' => 'primary_navigation')); ?>
-          <?php } ?>
+          <?php wp_nav_menu(array('theme_location' => 'primary_navigation')); ?>
         </nav>
 
-        <?php
-          $utility_nav = wp_get_nav_menu_object('Utility Navigation');
-          $utility_nav_term_id = (int) $utility_nav->term_id;
-          $menu_items = wp_get_nav_menu_items($utility_nav_term_id);
-          if ($menu_items || !empty($menu_items)) {
-        ?>
+        <?php if (wp_get_nav_menu_items('Utility Navigation')) { ?>
         <nav id="nav-utility">
-          <?php if ($roots_options['clean_menu']) { ?>
-            <?php wp_nav_menu(array('theme_location' => 'utility_navigation', 'walker' => new roots_nav_walker())); ?>
-          <?php } else { ?>
-            <?php wp_nav_menu(array('theme_location' => 'utility_navigation')); ?>
-          <?php } ?>
+          <?php wp_nav_menu(array('theme_location' => 'utility_navigation')); ?>
         </nav>
         <?php } ?>
 

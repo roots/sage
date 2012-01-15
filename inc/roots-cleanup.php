@@ -1,5 +1,7 @@
 <?php
 
+$roots_options = roots_get_theme_options();
+
 // redirect /?s to /search/
 // http://txfx.net/wordpress-plugins/nice-search/
 function roots_nice_search_redirect() {
@@ -65,7 +67,6 @@ function roots_fix_duplicate_subfolder_urls($input) {
   return $output;
 }
 
-$roots_options = roots_get_theme_options();
 if (!is_admin() && !in_array($GLOBALS['pagenow'], array('wp-login.php', 'wp-register.php')) && $roots_options['root_relative_urls']) {
   add_filter('bloginfo_url', 'roots_root_relative_url');
   add_filter('theme_root_uri', 'roots_root_relative_url');
@@ -91,7 +92,7 @@ if (!is_admin() && !in_array($GLOBALS['pagenow'], array('wp-login.php', 'wp-regi
 
 // remove root relative URLs on any attachments in the feed
 function roots_root_relative_attachment_urls() {
-  $roots_options = roots_get_theme_options();
+  global $roots_options;
   if (!is_feed() && $roots_options['root_relative_urls']) {
     add_filter('wp_get_attachment_url', 'roots_root_relative_url');
     add_filter('wp_get_attachment_link', 'roots_root_relative_url');
@@ -332,44 +333,54 @@ function roots_nav_menu_args($args = '') {
 
 add_filter('wp_nav_menu_args', 'roots_nav_menu_args');
 
-class roots_nav_walker extends Walker_Nav_Menu {
-  function start_el(&$output, $item, $depth, $args) {
-    global $wp_query;
-      $indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
-
-      $slug = sanitize_title($item->title);
-
-      $class_names = $value = '';
-      $classes = empty( $item->classes ) ? array() : (array) $item->classes;
-
-      $classes = array_filter($classes, 'roots_check_current');
-
-      $class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item ) );
-      $class_names = $class_names ? ' class="' . esc_attr( $class_names ) . '"' : '';
-
-      $id = apply_filters( 'nav_menu_item_id', 'menu-' . $slug, $item, $args );
-      $id = strlen( $id ) ? ' id="' . esc_attr( $id ) . '"' : '';
-
-      $output .= $indent . '<li' . $id . $class_names . '>';
-
-      $attributes  = ! empty( $item->attr_title ) ? ' title="'  . esc_attr( $item->attr_title ) .'"' : '';
-      $attributes .= ! empty( $item->target )     ? ' target="' . esc_attr( $item->target     ) .'"' : '';
-      $attributes .= ! empty( $item->xfn )        ? ' rel="'    . esc_attr( $item->xfn        ) .'"' : '';
-      $attributes .= ! empty( $item->url )        ? ' href="'   . esc_attr( $item->url        ) .'"' : '';
-
-      $item_output = $args->before;
-      $item_output .= '<a'. $attributes .'>';
-      $item_output .= $args->link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $args->link_after;
-      $item_output .= '</a>';
-      $item_output .= $args->after;
-
-      $output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
-  }
-}
-
 function roots_check_current($val) {
   return preg_match('/current-menu/', $val);
 }
+
+class Roots_Nav_Walker extends Walker_Nav_Menu {
+  function start_el(&$output, $item, $depth, $args) {
+    global $wp_query;
+    $indent = ($depth) ? str_repeat("\t", $depth) : '';
+
+    $slug = sanitize_title($item->title);
+
+    $class_names = $value = '';
+    $classes = empty($item->classes) ? array() : (array) $item->classes;
+
+    $classes = array_filter($classes, 'roots_check_current');
+
+    $class_names = join(' ', apply_filters('nav_menu_css_class', array_filter($classes), $item));
+    $class_names = $class_names ? ' class="' . esc_attr($class_names) . '"' : '';
+
+    $id = apply_filters('nav_menu_item_id', 'menu-' . $slug, $item, $args);
+    $id = strlen($id) ? ' id="' . esc_attr( $id ) . '"' : '';
+
+    $output .= $indent . '<li' . $id . $class_names . '>';
+
+    $attributes  = ! empty($item->attr_title) ? ' title="'  . esc_attr($item->attr_title) .'"' : '';
+    $attributes .= ! empty($item->target)     ? ' target="' . esc_attr($item->target    ) .'"' : '';
+    $attributes .= ! empty($item->xfn)        ? ' rel="'    . esc_attr($item->xfn       ) .'"' : '';
+    $attributes .= ! empty($item->url)        ? ' href="'   . esc_attr($item->url       ) .'"' : '';
+
+    $item_output = $args->before;
+    $item_output .= '<a'. $attributes .'>';
+    $item_output .= $args->link_before . apply_filters('the_title', $item->title, $item->ID) . $args->link_after;
+    $item_output .= '</a>';
+    $item_output .= $args->after;
+
+    $output .= apply_filters('walker_nav_menu_start_el', $item_output, $item, $depth, $args);
+  }
+}
+
+// use the clean nav menu walker for all nav menus if the option is set
+function roots_default_wp_nav_menu_walker($args = '') {
+  global $roots_options;
+  if ($roots_options['clean_menu']) {
+    $args['walker'] = new Roots_Nav_Walker();
+  }
+  return $args;
+}
+add_filter('wp_nav_menu_args', 'roots_default_wp_nav_menu_walker');
 
 // add to robots.txt
 // http://codex.wordpress.org/Search_Engine_Optimization_for_WordPress#Robots.txt_Optimization
