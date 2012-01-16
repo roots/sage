@@ -1,5 +1,4 @@
-
-# BEGIN HTML5 Boilerplate .htaccess
+## BEGIN HTML5 Boilerplate
 
 ###
 ### This contains the HTML5 Boilerplate .htaccess that can be found at:
@@ -18,7 +17,7 @@
 ###
 ### Anytime you update this file the .htaccess file in the root of your
 ### WordPress install is automatically updated with the changes whenever
-### the admin is refreshed (see roots-htaccess.php)
+### the permalinks are flushed or set
 ###
 
 
