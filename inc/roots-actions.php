@@ -50,7 +50,7 @@ function roots_get_stylesheets() {
       $styles .= stylesheet_link_tag('/bootstrap/bootstrap.css');
       break;
     case 'bootstrap_less' :
-      $styles .= less_stylesheet_link_tag('/bootstrap/lib/bootstrap.less');
+      $styles .= stylesheet_link_tag('/bootstrap/lib/bootstrap.less', 0, true, 'stylesheet/less');
       break;
   }
 
@@ -80,14 +80,9 @@ function roots_get_stylesheets() {
   echo $styles;
 }
 
-function stylesheet_link_tag($file, $tabs = 0, $newline = true) {
+function stylesheet_link_tag($file, $tabs = 0, $newline = true, $rel = 'stylesheet') {
   $indent = str_repeat("\t", $tabs);
-  return $indent . '<link rel="stylesheet" href="' . get_template_directory_uri() . '/css' . $file . '">' . ($newline ? "\n" : "");
-}
-
-function less_stylesheet_link_tag($file, $tabs = 0, $newline = true) {
-  $indent = str_repeat("\t", $tabs);
-  return $indent . '<link rel="stylesheet/less" media="all" href="' . get_template_directory_uri() . '/css' . $file . '">' . ($newline ? "\n" : "");
+  return $indent . '<link rel="' . $rel .'" href="' . get_template_directory_uri() . '/css' . $file . '">' . ($newline ? "\n" : "");
 }
 
 add_action('roots_footer', 'roots_google_analytics');
