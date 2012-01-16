@@ -403,4 +403,40 @@ function roots_theme_options_validate($input) {
   return apply_filters('roots_theme_options_validate', $output, $input, $defaults);
 }
 
+function roots_current_framework() {
+  global $roots_options;
+  switch ($roots_options['css_framework']) {
+    case 'blueprint' :
+      return 'blueprint';
+      break;
+    case '960gs_12' :
+      return '960gs_12';
+      break;
+    case '960gs_16' :
+      return '960gs_16';
+      break;
+    case '960gs_24' :
+      return '960gs_24';
+      break;
+    case '1140' :
+      return '1140';
+      break;
+    case 'adapt' :
+      return 'adapt';
+      break;
+    case 'foundation' :
+      return 'foundation';
+      break;
+    case 'less' :
+      return 'less';
+      break;
+    case 'bootstrap' :
+      return 'bootstrap';
+      break;
+    case 'bootstrap_less' :
+      return 'bootstrap_less';
+      break;
+  }
+}
+
 ?>

@@ -19,15 +19,15 @@ if (!isset($content_width)) {
   global $roots_options;
   $roots_css_framework = $roots_options['css_framework'];
   switch ($roots_css_framework) {
-      case 'blueprint':   $content_width = 950;   break;
-      case '960gs_12':    $content_width = 940;   break;
-      case '960gs_16':    $content_width = 940;   break;
-      case '960gs_24':    $content_width = 940;   break;
-      case '1140':        $content_width = 1140;  break;
-      case 'adapt':       $content_width = 940;   break;
-      case 'bootstrap':   $content_width = 940;   break;
-      case 'foundation':  $content_width = 980;   break;
-      default:            $content_width = 950;   break;
+    case 'blueprint':   $content_width = 950;   break;
+    case '960gs_12':    $content_width = 940;   break;
+    case '960gs_16':    $content_width = 940;   break;
+    case '960gs_24':    $content_width = 940;   break;
+    case '1140':        $content_width = 1140;  break;
+    case 'adapt':       $content_width = 940;   break;
+    case 'bootstrap':   $content_width = 940;   break;
+    case 'foundation':  $content_width = 980;   break;
+    default:            $content_width = 950;   break;
   }
 }
 
