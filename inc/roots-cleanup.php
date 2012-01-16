@@ -6,7 +6,7 @@ $roots_options = roots_get_theme_options();
 // http://txfx.net/wordpress-plugins/nice-search/
 function roots_nice_search_redirect() {
   if (is_search() && strpos($_SERVER['REQUEST_URI'], '/wp-admin/') === false && strpos($_SERVER['REQUEST_URI'], '/search/') === false) {
-    wp_redirect(home_url('/search/' . str_replace(array(' ', '%20'), array('+', '+'), urlencode(get_query_var( 's' )))), 301);
+    wp_redirect(home_url('/search/' . str_replace(array(' ', '%20'), array('+', '+'), urlencode(get_query_var('s')))), 301);
       exit();
   }
 }
@@ -208,14 +208,16 @@ function roots_gallery_shortcode($attr) {
 
   // Allow plugins/themes to override the default gallery template.
   $output = apply_filters('post_gallery', '', $attr);
-  if ( $output != '' )
+  if ($output != '') {
     return $output;
+  }
 
   // We're trusting author input, so let's at least make sure it looks like a valid orderby statement
-  if ( isset( $attr['orderby'] ) ) {
-    $attr['orderby'] = sanitize_sql_orderby( $attr['orderby'] );
-    if ( !$attr['orderby'] )
-      unset( $attr['orderby'] );
+  if (isset($attr['orderby'])) {
+    $attr['orderby'] = sanitize_sql_orderby($attr['orderby']);
+    if (!$attr['orderby']) {
+      unset($attr['orderby']);
+    }
   }
 
   extract(shortcode_atts(array(
@@ -231,30 +233,32 @@ function roots_gallery_shortcode($attr) {
   ), $attr));
 
   $id = intval($id);
-  if ( 'RAND' == $order )
+  if ('RAND' == $order) {
     $orderby = 'none';
+  }
 
-  if ( !empty($include) ) {
+  if (!empty($include)) {
     $include = preg_replace( '/[^0-9,]+/', '', $include );
     $_attachments = get_posts( array('include' => $include, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby) );
 
     $attachments = array();
-    foreach ( $_attachments as $key => $val ) {
+    foreach ($_attachments as $key => $val) {
       $attachments[$val->ID] = $_attachments[$key];
     }
-  } elseif ( !empty($exclude) ) {
-    $exclude = preg_replace( '/[^0-9,]+/', '', $exclude );
-    $attachments = get_children( array('post_parent' => $id, 'exclude' => $exclude, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby) );
+  } elseif (!empty($exclude)) {
+    $exclude = preg_replace('/[^0-9,]+/', '', $exclude);
+    $attachments = get_children(array('post_parent' => $id, 'exclude' => $exclude, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby));
   } else {
-    $attachments = get_children( array('post_parent' => $id, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby) );
+    $attachments = get_children(array('post_parent' => $id, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby));
   }
 
-  if ( empty($attachments) )
+  if (empty($attachments)) {
     return '';
+  }
 
-  if ( is_feed() ) {
+  if (is_feed()) {
     $output = "\n";
-    foreach ( $attachments as $att_id => $attachment )
+    foreach ($attachments as $att_id => $attachment)
       $output .= wp_get_attachment_link($att_id, $size, true) . "\n";
     return $output;
   }
@@ -267,14 +271,15 @@ function roots_gallery_shortcode($attr) {
   $selector = "gallery-{$instance}";
 
   $gallery_style = $gallery_div = '';
-  if ( apply_filters( 'use_default_gallery_style', true ) )
+  if (apply_filters('use_default_gallery_style', true)) {
     $gallery_style = "";
-  $size_class = sanitize_html_class( $size );
+  }
+  $size_class = sanitize_html_class($size);
   $gallery_div = "<section id='$selector' class='clearfix gallery galleryid-{$id} gallery-columns-{$columns} gallery-size-{$size_class}'>";
-  $output = apply_filters( 'gallery_style', $gallery_style . "\n\t\t" . $gallery_div );
+  $output = apply_filters('gallery_style', $gallery_style . "\n\t\t" . $gallery_div);
 
   $i = 0;
-  foreach ( $attachments as $id => $attachment ) {
+  foreach ($attachments as $id => $attachment) {
     // make the gallery link to the file by default instead of the attachment
     // thanks to Matt Price (countingrows.com)
     $link = isset($attr['link']) && $attr['link'] === 'attachment' ?
@@ -284,15 +289,16 @@ function roots_gallery_shortcode($attr) {
       <{$icontag} class=\"gallery-item\">
         $link
       ";
-    if ( $captiontag && trim($attachment->post_excerpt) ) {
+    if ($captiontag && trim($attachment->post_excerpt)) {
       $output .= "
         <{$captiontag} class=\"gallery-caption\">
         " . wptexturize($attachment->post_excerpt) . "
         </{$captiontag}>";
     }
     $output .= "</{$icontag}>";
-    if ( $columns > 0 && ++$i % $columns == 0 )
+    if ($columns > 0 && ++$i % $columns == 0) {
       $output .= '';
+    }
   }
 
   $output .= "</section>\n";
@@ -422,11 +428,12 @@ add_filter('post_thumbnail_html', 'roots_remove_self_closing_tags');
 // you want to change this or remove it because it's used as the description in the RSS feed
 function roots_notice_tagline() {
     global $current_user;
-  $user_id = $current_user->ID;
+    $user_id = $current_user->ID;
+
     if (!get_user_meta($user_id, 'ignore_tagline_notice')) {
-    echo '<div class="error">';
-    echo '<p>', sprintf(__('Please update your <a href="%s">site tagline</a> <a href="%s" style="float: right;">Hide Notice</a>', 'roots'), admin_url('options-general.php'), '?tagline_notice_ignore=0'), '</p>';
-    echo '</div>';
+      echo '<div class="error">';
+      echo '<p>', sprintf(__('Please update your <a href="%s">site tagline</a> <a href="%s" style="float: right;">Hide Notice</a>', 'roots'), admin_url('options-general.php'), '?tagline_notice_ignore=0'), '</p>';
+      echo '</div>';
     }
 }
 
@@ -473,18 +480,22 @@ function roots_clean_style_tag($input) {
 
 function roots_body_class() {
   $term = get_queried_object();
-  if (is_single())
+
+  if (is_single()) {
     $cat = get_the_category();
-  if(!empty($cat))
+  }
+
+  if(!empty($cat)) {
     return $cat[0]->slug;
-  elseif(isset($term->slug))
+  } elseif(isset($term->slug)) {
     return $term->slug;
-  elseif(isset($term->page_name))
+  } elseif(isset($term->page_name)) {
     return $term->page_name;
-  elseif(isset($term->post_name))
+  } elseif(isset($term->post_name)) {
     return $term->post_name;
-  else
+  } else {
     return;
+  }
 }
 
 // first and last classes for widgets

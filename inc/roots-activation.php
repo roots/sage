@@ -218,7 +218,7 @@ function roots_theme_activation_options_validate($input) {
   return apply_filters('roots_theme_activation_options_validate', $output, $input, $defaults);
 }
 
-function roots_theme_activation_action(){
+function roots_theme_activation_action() {
   $roots_theme_activation_options = roots_get_theme_activation_options();
 
   if ($roots_theme_activation_options['create_front_page']) {
@@ -295,7 +295,7 @@ function roots_theme_activation_action(){
     }
   }
 
-  if ($roots_theme_activation_options['add_pages_to_primary_navigation']){
+  if ($roots_theme_activation_options['add_pages_to_primary_navigation']) {
     $roots_theme_activation_options['add_pages_to_primary_navigation'] = false;
 
     $primary_nav = wp_get_nav_menu_object('Primary Navigation');
