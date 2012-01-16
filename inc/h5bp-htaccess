@@ -1,6 +1,4 @@
 
-# BEGIN HTML5 Boilerplate .htaccess
-
 ###
 ### This contains the HTML5 Boilerplate .htaccess that can be found at:
 ###  github.com/h5bp/html5-boilerplate/blob/master/.htaccess
@@ -551,5 +549,3 @@ AddCharset utf-8 .css .js .xml .json .rss .atom
 <IfModule php5_module>
   php_value session.cookie_httponly true
 </IfModule>
-
-# END HTML5 Boilerplate
