@@ -5,6 +5,7 @@ if (!defined('__DIR__')) define('__DIR__', dirname(__FILE__));
 require_once locate_template('/inc/roots-activation.php');  // activation
 require_once locate_template('/inc/roots-options.php');     // theme options
 require_once locate_template('/inc/roots-cleanup.php');     // cleanup
+require_once locate_template('/inc/roots-scripts.php');     // modified scripts output
 require_once locate_template('/inc/roots-htaccess.php');    // rewrites for assets, h5bp htaccess
 require_once locate_template('/inc/roots-hooks.php');       // hooks
 require_once locate_template('/inc/roots-actions.php');     // actions
@@ -71,17 +72,15 @@ function roots_setup() {
 add_action('after_setup_theme', 'roots_setup');
 
 // http://codex.wordpress.org/Function_Reference/register_sidebar
-// hook into 'widgets_init' function with a lower priority in your
-// child theme to remove these sidebars
 function roots_register_sidebars() {
-  $sidebars = array( 'Sidebar', 'Footer' );
+  $sidebars = array('Sidebar', 'Footer');
 
-  foreach( $sidebars as $sidebar ) {
+  foreach($sidebars as $sidebar) {
     register_sidebar(
       array(
-        'id'=> 'roots-' . strtolower( $sidebar ),
-        'name' => __( $sidebar, 'roots' ),
-        'description' => __( $sidebar, 'roots' ),
+        'id'=> 'roots-' . strtolower($sidebar),
+        'name' => __($sidebar, 'roots'),
+        'description' => __($sidebar, 'roots'),
         'before_widget' => '<article id="%1$s" class="widget %2$s"><div class="container">',
         'after_widget' => '</div></article>',
         'before_title' => '<h3>',

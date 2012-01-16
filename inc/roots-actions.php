@@ -103,16 +103,10 @@ function roots_google_analytics() {
 
 // 1140 specific
 if (roots_current_framework() === '1140') {
-  add_action('roots_head', 'roots_1140_head');
   add_action('roots_header_before', 'roots_1140_header_before');
   add_action('roots_header_after', 'roots_1140_header_after');
   add_action('roots_footer_before', 'roots_1140_footer_before');
   add_action('roots_footer_after', 'roots_1140_footer_after');
-
-  function roots_1140_head() {
-    $template_uri = get_template_directory_uri();
-    echo "\t<script src=\"$template_uri/js/libs/css3-mediaqueries.js\"></script>";
-  }
 
   function roots_1140_header_before() {
     echo '<div class="container"><div class="row">', "\n";
@@ -153,64 +147,15 @@ if (roots_current_framework() === 'adapt') {
     echo "\t\t\t]\n";
     echo "\t\t};\n";
     echo "\t</script>\n";
-    echo "\t<script src=\"$template_uri/js/libs/adapt.min.js\"></script>";
-  }
-}
-
-// Foundation specific
-if (roots_current_framework() === 'foundation') {
-  add_action('roots_head', 'roots_foundation_head');
-
-  function roots_foundation_head() {
-    $template_uri = get_template_directory_uri();
-    echo "\t<script src=\"$template_uri/js/foundation/jquery.reveal.js\"></script>\n";
-    echo "\t<script src=\"$template_uri/js/foundation/jquery.orbit-1.3.0.js\"></script>\n";
-    echo "\t<script src=\"$template_uri/js/foundation/forms.jquery.js\"></script>\n";
-    echo "\t<script src=\"$template_uri/js/foundation/jquery.customforms.js\"></script>\n";
-    echo "\t<script src=\"$template_uri/js/foundation/jquery.placeholder.min.js\"></script>\n";
-    echo "\t<script src=\"$template_uri/js/foundation/app.js\"></script>\n";
   }
 }
 
 // Bootstrap specific
 if (roots_current_framework() === 'bootstrap' || roots_current_framework() === 'bootstrap_less') {
-  add_action('roots_head', 'roots_bootstrap_head');
   add_action('roots_header_before', 'roots_bootstrap_header_before');
   add_action('roots_header_after', 'roots_bootstrap_header_after');
   add_action('roots_footer_before', 'roots_bootstrap_footer_before');
   add_action('roots_footer_after', 'roots_bootstrap_footer_after');
-
-  function roots_bootstrap_head() {
-    global $roots_options;
-    $roots_bootstrap_js = $roots_options['bootstrap_javascript'];
-    $roots_bootstrap_less_js = $roots_options['bootstrap_less_javascript'];
-    $template_uri = get_template_directory_uri();
-    if (roots_current_framework() === 'bootstrap_less') {
-      echo "\t<script src=\"$template_uri/js/bootstrap/less-1.1.3.min.js\"></script>\n";
-    }
-    if ($roots_bootstrap_js === true) {
-      $roots_options['bootstrap_less_javascript'] = false;
-      echo "\t<script src=\"$template_uri/js/bootstrap/bootstrap-modal.js\"></script>\n";
-      echo "\t<script src=\"$template_uri/js/bootstrap/bootstrap-alerts.js\"></script>\n";
-      echo "\t<script src=\"$template_uri/js/bootstrap/bootstrap-twipsy.js\"></script>\n";
-      echo "\t<script src=\"$template_uri/js/bootstrap/bootstrap-popover.js\"></script>\n";
-      echo "\t<script src=\"$template_uri/js/bootstrap/bootstrap-dropdown.js\"></script>\n";
-      echo "\t<script src=\"$template_uri/js/bootstrap/bootstrap-scrollspy.js\"></script>\n";
-      echo "\t<script src=\"$template_uri/js/bootstrap/bootstrap-tabs.js\"></script>\n";
-      echo "\t<script src=\"$template_uri/js/bootstrap/bootstrap-buttons.js\"></script>\n";
-    }
-    if ($roots_bootstrap_less_js === true) {
-      $roots_options['bootstrap_javascript'] = false;
-      echo "\t<script src=\"$template_uri/js/bootstrap/bootstrap-modal.js\"></script>\n";
-      echo "\t<script src=\"$template_uri/js/bootstrap/bootstrap-alerts.js\"></script>\n";
-      echo "\t<script src=\"$template_uri/js/bootstrap/bootstrap-twipsy.js\"></script>\n";
-      echo "\t<script src=\"$template_uri/js/bootstrap/bootstrap-popover.js\"></script>\n";
-      echo "\t<script src=\"$template_uri/js/bootstrap/bootstrap-dropdown.js\"></script>\n";
-      echo "\t<script src=\"$template_uri/js/bootstrap/bootstrap-scrollspy.js\"></script>\n";
-      echo "\t<script src=\"$template_uri/js/bootstrap/bootstrap-tabs.js\"></script>\n";
-      echo "\t<script src=\"$template_uri/js/bootstrap/bootstrap-buttons.js\"></script>\n";
-    }
-  }
 
   function roots_bootstrap_header_before() {
     echo '<div class="container">', "\n";

@@ -21,8 +21,6 @@
   <?php wp_head(); ?>
   <?php roots_head(); ?>
 
-  <script defer src="<?php echo get_template_directory_uri(); ?>/js/plugins.js"></script>
-  <script defer src="<?php echo get_template_directory_uri(); ?>/js/script.js"></script>
 </head>
 
 <body <?php body_class(roots_body_class()); ?>>
