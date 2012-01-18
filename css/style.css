@@ -142,6 +142,9 @@ h1, h2, h3, h4, h5, h6 { text-shadow: 0 1px 1px rgba(0, 0, 0, 0.15); }
 #nav-main ul li.current-menu-item > a,
 #nav-main ul li.current-menu-parent > a,
 #nav-main ul li.current-menu-ancestor > a,
+#nav-main ul li.current_page_item > a,
+#nav-main ul li.current_page_parent > a,
+#nav-main ul li.current_page_ancestor > a
 #nav-main ul li:hover > a {
   color: #73c8ff;
 }
@@ -171,6 +174,9 @@ h1, h2, h3, h4, h5, h6 { text-shadow: 0 1px 1px rgba(0, 0, 0, 0.15); }
 #nav-main ul ul li.current-menu-item > a,
 #nav-main ul ul li.current-menu-parent > a,
 #nav-main ul ul li.current-menu-ancestor > a,
+#nav-main ul ul li.current_page_item > a,
+#nav-main ul ul li.current_page_parent > a,
+#nav-main ul ul li.current_page_ancestor > a
 #nav-main ul ul li:hover > a {
   color: #06c;
 }
