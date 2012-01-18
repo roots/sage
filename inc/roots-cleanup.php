@@ -340,7 +340,7 @@ function roots_nav_menu_args($args = '') {
 add_filter('wp_nav_menu_args', 'roots_nav_menu_args');
 
 function roots_check_current($val) {
-  return preg_match('/current-menu/', $val);
+  return preg_match('/current-/', $val);
 }
 
 class Roots_Nav_Walker extends Walker_Nav_Menu {
