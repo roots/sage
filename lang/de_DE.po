@@ -13,26 +13,23 @@ msgstr ""
 
 #. Text in echo
 #: comments.php:80
-#: comments.php:84
 msgid " (required)"
 msgstr "(benötigt)"
 
 #. Text in echo
 #: inc/roots-options.php:127
-#: inc/roots-options.php:129
 msgid "#main CSS Classes"
 msgstr "#main CSS Klassen"
 
 #. Text in echo
 #: inc/roots-options.php:137
-#: inc/roots-options.php:139
 msgid "#sidebar CSS Classes"
 msgstr "#sidebar CSS Klassen"
 
 #. Text in function
 #: comments.php:46
 msgid "% Responses to"
-msgstr "% Antworten auf"
+msgstr "% Anworten auf"
 
 #. Text in function
 #: comments.php:8
@@ -51,7 +48,6 @@ msgstr "&larr; Ältere Kommentare"
 
 #. Text in function
 #: loop-search.php:33
-#: loop.php:37
 msgid "&larr; Older posts"
 msgstr "&larr; Ältere Artikel"
 
@@ -68,17 +64,17 @@ msgstr "1140"
 #. Text in function
 #: inc/roots-options.php:1
 msgid "960gs (12 cols)"
-msgstr "960gs (12 cols)"
+msgstr "960gs (12 Spalten)"
 
 #. Text in function
 #: inc/roots-options.php:1
 msgid "960gs (16 cols)"
-msgstr "960gs (16 cols)"
+msgstr "960gs (16 Spalten)"
 
 #. Text in function
 #: inc/roots-options.php:1
 msgid "960gs (24 cols)"
-msgstr "960gs (24 cols)"
+msgstr "960gs (24 Spalten)"
 
 #. Text in function
 #: comments.php:7
@@ -102,7 +98,6 @@ msgstr "Blueprint CSS"
 
 #. Text in echo
 #: inc/roots-options.php:106
-#: inc/roots-options.php:108
 msgid "CSS Grid Framework"
 msgstr "CSS Grid Framework"
 
@@ -138,19 +133,18 @@ msgstr "Weiterlesen"
 
 #. Text in function
 #: inc/roots-options.php:132
-#: inc/roots-options.php:142
 msgid "Default: %s"
 msgstr "Standard: %s"
 
 #. Text in echo
 #: comments.php:84
 msgid "Email (will not be published)"
-msgstr "Email (wird nicht veröffentlicht)"
+msgstr "E-Mail (wird nicht veröffentlicht)"
 
 #. Text in echo
 #: inc/roots-widgets.php:77
 msgid "Email:"
-msgstr "Email:"
+msgstr "E-Mail:"
 
 #. Text in function
 #: inc/roots-options.php:152
@@ -164,7 +158,6 @@ msgstr "Datei nicht gefunden"
 
 #. Text in echo
 #: inc/roots-options.php:147
-#: inc/roots-options.php:149
 msgid "Google Analytics ID"
 msgstr "Google Analytics ID"
 
@@ -176,12 +169,12 @@ msgstr "Neuste Artikel"
 #. Text in function
 #: comments.php:70
 msgid "Leave a Reply"
-msgstr "Antworten"
+msgstr "Hinterlasse eine Antwort"
 
 #. Text in function
 #: comments.php:70
 msgid "Leave a Reply to %s"
-msgstr "Antworte auf %s"
+msgstr "Hinterlasse eine Antwort auf %s"
 
 #. Text in echo
 #: comments.php:77
@@ -210,7 +203,6 @@ msgstr "Neuere Kommentare &rarr;"
 
 #. Text in function
 #: loop-search.php:34
-#: loop.php:38
 msgid "Newer posts &rarr;"
 msgstr "Neuere Artikel &rarr;"
 
@@ -231,7 +223,6 @@ msgstr "Seiten"
 
 #. Text in function
 #: loop-page.php:7
-#: loop-single.php:17
 msgid "Pages:"
 msgstr "Seiten:"
 
@@ -257,8 +248,6 @@ msgstr "Bitte aktuallisiere den <a href=\"%s\">Seitenslogan</a>"
 
 #. Text in function
 #: loop-single.php:8
-#: loop-search.php:16
-#: loop.php:16
 msgid "Posted on %s at %s."
 msgstr "Veröffentlicht am %s um %s."
 
@@ -279,9 +268,8 @@ msgstr "Roots: vCard"
 
 #. Text in echo
 #: searchform.php:3
-#: searchform.php:4
 msgid "Search"
-msgstr "Suchen"
+msgstr "Suche"
 
 #. Text in echo
 #: search.php:7
@@ -295,7 +283,6 @@ msgstr "Suche nach:"
 
 #. Text in echo
 #: loop-search.php:4
-#: loop.php:4
 msgid "Sorry, no results were found."
 msgstr "Es wurden leider keine Ergebnisse gefunden."
 
@@ -332,7 +319,7 @@ msgstr "Theme-Optionen"
 #. Text in echo
 #: comments.php:36
 msgid "This post is password protected. Enter the password to view comments."
-msgstr "Dieser Artikel ist passwortgeschützt. Bitte gib das Passwort ein um die Kommentare zu sehen."
+msgstr "Dieser Artikel ist passwortgeschützt. Bitte gib das Passwort ein um Kommentare zu sehen."
 
 #. Text in echo
 #: inc/roots-widgets.php:53
@@ -346,14 +333,13 @@ msgstr "Webseite"
 
 #. Text in echo
 #: loop-single.php:10
-#: loop-search.php:17
 msgid "Written by"
 msgstr "Geschrieben von"
 
 #. Text in function
 #: comments.php:73
 msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
-msgstr "Du musst <a href=\"%s\">angemeldet</a> sein, um einen Kommentar zu schreiben."
+msgstr "Du musst <a href=\"%s\">angemeldet</a> sein, um einen Kommentar schreiben zu können."
 
 #. Text in echo
 #: comments.php:14
