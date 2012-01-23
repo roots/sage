@@ -84,7 +84,7 @@ function roots_print_scripts() {
     $wp_scripts->done[] = $handle;
 
     if (!in_array($handle, $skip_scripts)) {
-      $scripts[] = '<script defer src="' . $src . '"></script>';
+      $scripts[] = '<script src="' . $src . '"></script>';
     }
   }
 
