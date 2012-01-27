@@ -8,6 +8,17 @@ function roots_get_stylesheets() {
 
   $styles = '';
 
+  if (class_exists('RGForms')) {
+    $styles .= "\t<link rel=\"stylesheet\" href=\"" . plugins_url(). "/gravityforms/css/forms.css\">\n";
+  }
+
+  if (is_child_theme()) {
+    $styles .= stylesheet_link_tag('/style.css', 1);
+    $styles .= "\t<link rel=\"stylesheet\" href=\"" . get_stylesheet_uri(). "\">\n";
+  } else {
+    $styles .= stylesheet_link_tag('/style.css', 1);
+  }
+
   switch ($roots_css_framework) {
     case 'blueprint' :
       $styles .= stylesheet_link_tag('/blueprint/screen.css');
@@ -52,17 +63,6 @@ function roots_get_stylesheets() {
     case 'bootstrap_less' :
       $styles .= stylesheet_link_tag('/bootstrap/lib/bootstrap.less', 0, true, 'stylesheet/less');
       break;
-  }
-
-  if (class_exists('RGForms')) {
-    $styles .= "\t<link rel=\"stylesheet\" href=\"" . plugins_url(). "/gravityforms/css/forms.css\">\n";
-  }
-
-  if (is_child_theme()) {
-    $styles .= stylesheet_link_tag('/style.css', 1);
-    $styles .= "\t<link rel=\"stylesheet\" href=\"" . get_stylesheet_uri(). "\">\n";
-  } else {
-    $styles .= stylesheet_link_tag('/style.css', 1);
   }
 
   switch ($roots_css_framework) {
