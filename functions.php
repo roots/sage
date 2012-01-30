@@ -63,13 +63,13 @@ function roots_register_sidebars() {
   foreach($sidebars as $sidebar) {
     register_sidebar(
       array(
-        'id'=> 'roots-' . strtolower($sidebar),
-        'name' => __($sidebar, 'roots'),
-        'description' => __($sidebar, 'roots'),
+        'id'            => 'roots-' . sanitize_title($sidebar),
+        'name'          => __($sidebar, 'roots'),
+        'description'   => __($sidebar, 'roots'),
         'before_widget' => '<article id="%1$s" class="widget %2$s"><div class="container">',
-        'after_widget' => '</div></article>',
-        'before_title' => '<h3>',
-        'after_title' => '</h3>'
+        'after_widget'  => '</div></article>',
+        'before_title'  => '<h3>',
+        'after_title'   => '</h3>'
       )
     );
   }
