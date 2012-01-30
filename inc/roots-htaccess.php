@@ -53,6 +53,7 @@ if (stristr($_SERVER['SERVER_SOFTWARE'], 'apache') !== false) {
   if (!is_multisite() && !is_child_theme()) {
     add_action('generate_rewrite_rules', 'roots_add_rewrites');
     add_action('generate_rewrite_rules', 'roots_add_h5bp_htaccess');
+    add_action('activate_plugin', 'roots_add_h5bp_htaccess');
     if (!is_admin()) {
       add_filter('plugins_url', 'roots_clean_plugins');
       add_filter('bloginfo', 'roots_clean_assets');
@@ -67,19 +68,23 @@ if (stristr($_SERVER['SERVER_SOFTWARE'], 'apache') !== false) {
   function roots_add_h5bp_htaccess($content) {
     global $wp_rewrite;
 
+    if (!function_exists('get_home_path')) {
+      return;
+    }
+
     $home_path = get_home_path();
     $htaccess_file = $home_path . '.htaccess';
-      
+
     if ((!file_exists($htaccess_file) && is_writable($home_path) && $wp_rewrite->using_mod_rewrite_permalinks()) || is_writable($htaccess_file)) {
       if (got_mod_rewrite()) {
-        $h5bp_rules = extract_from_markers($htaccess_file, 'HTML5 Boilerplate');            
+        $h5bp_rules = extract_from_markers($htaccess_file, 'HTML5 Boilerplate');
           if ($h5bp_rules === array()) {
-            $filename = __DIR__ . '/h5bp-htaccess';    
+            $filename = __DIR__ . '/h5bp-htaccess';
           return insert_with_markers($htaccess_file, 'HTML5 Boilerplate', extract_from_markers($filename, 'HTML5 Boilerplate'));
           }
       }
     }
-    
+
     return $content;
   }
 
