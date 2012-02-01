@@ -27,16 +27,19 @@ function roots_option_page_capability($capability) {
 add_filter('option_page_capability_roots_options', 'roots_option_page_capability');
 
 function roots_theme_options_add_page() {
-  $theme_page = add_theme_page(
-    __('Theme Options', 'roots'),
-    __('Theme Options', 'roots'),
-    'edit_theme_options',
-    'theme_options',
-    'roots_theme_options_render_page'
-  );
 
-  if (!$theme_page)
-    return;
+  $roots_options = roots_get_theme_options();
+  $roots_activation_options = roots_get_theme_activation_options();
+  if ($roots_activation_options['first_run']) {
+    $theme_page = add_theme_page(
+        __('Theme Options', 'roots'),
+        __('Theme Options', 'roots'),
+        'edit_theme_options',
+        'theme_options',
+        'roots_theme_options_render_page'
+    );
+  }
+
 }
 add_action('admin_menu', 'roots_theme_options_add_page');
 
@@ -44,10 +47,10 @@ function roots_admin_bar_render() {
   global $wp_admin_bar;
 
   $wp_admin_bar->add_menu(array(
-    'parent' => 'appearance',
-    'id' => 'theme_options',
-    'title' => __('Theme Options', 'roots'),
-    'href' => admin_url( 'themes.php?page=theme_options')
+    'parent'  => 'appearance',
+    'id'      => 'theme_options',
+    'title'   => __('Theme Options', 'roots'),
+    'href'    => admin_url('themes.php?page=theme_options')
   ));
 }
 add_action('wp_before_admin_bar_render', 'roots_admin_bar_render');
@@ -55,21 +58,23 @@ add_action('wp_before_admin_bar_render', 'roots_admin_bar_render');
 global $roots_css_frameworks;
 $roots_css_frameworks = array(
   'blueprint' => array(
-    'name'     => 'blueprint',
+    'name'      => 'blueprint',
     'label'     => __('Blueprint CSS', 'roots'),
     'classes'   => array(
       'container' => 'span-24',
       'main'      => 'span-14 append-1',
-      'sidebar'   => 'span-8 prepend-1 last'
+      'sidebar'   => 'span-8 prepend-1 last',
+      'fullwidth' => 'span-24'
     )
   ),
   '960gs_12' => array(
-    'name'     => '960gs_12',
+    'name'    => '960gs_12',
     'label'   => __('960gs (12 cols)', 'roots'),
     'classes' => array(
       'container' => 'container_12',
-      'main'    => 'grid_7 suffix_1',
-      'sidebar' => 'grid_4'
+      'main'      => 'grid_7 suffix_1',
+      'sidebar'   => 'grid_4',
+      'fullwidth' => 'grid_12'
     )
   ),
   '960gs_16' => array(
@@ -77,80 +82,89 @@ $roots_css_frameworks = array(
     'label'    => __('960gs (16 cols)', 'roots'),
     'classes'  => array(
       'container' => 'container_16',
-      'main'    => 'grid_9 suffix_1',
-      'sidebar' => 'grid_6'
+      'main'      => 'grid_9 suffix_1',
+      'sidebar'   => 'grid_6',
+      'fullwidth' => 'grid_16'
     )
   ),
   '960gs_24' => array(
-    'name'     => '960gs_24',
+    'name'    => '960gs_24',
     'label'   => __('960gs (24 cols)', 'roots'),
     'classes' => array(
       'container' => 'container_24',
-      'main'    => 'grid_15 suffix_1',
-      'sidebar' => 'grid_8'
+      'main'      => 'grid_15 suffix_1',
+      'sidebar'   => 'grid_8',
+      'fullwidth' => 'grid_24'
     )
   ),
   '1140' => array(
-    'name'     => '1140',
+    'name'    => '1140',
     'label'   => __('1140', 'roots'),
     'classes' => array(
-      'container' => 'twelvecol',
-      'main'    => 'eightcol',
-      'sidebar' => 'fourcol last'
+      'container' => 'row',
+      'main'      => 'eightcol',
+      'sidebar'   => 'fourcol last',
+      'fullwidth' => 'twelvecol'
     )
   ),
   'adapt' => array(
-    'name'     => 'adapt',
+    'name'    => 'adapt',
     'label'   => __('Adapt.js', 'roots'),
     'classes' => array(
       'container' => 'container_12 clearfix',
-      'main'    => 'grid_7 suffix_1',
-      'sidebar' => 'grid_4'
+      'main'      => 'grid_7 suffix_1',
+      'sidebar'   => 'grid_4',
+      'fullwidth' => 'grid_12'
     )
   ),
   'less' => array(
-    'name'     => 'less',
+    'name'    => 'less',
     'label'   => __('Less Framework 4', 'roots'),
     'classes' => array(
       'container' => 'container',
-      'main'    => '',
-      'sidebar' => ''
+      'main'      => '',
+      'sidebar'   => '',
+      'fullwidth' => ''
     )
   ),
   'foundation' => array(
-    'name'     => 'foundation',
+    'name'    => 'foundation',
     'label'   => __('Foundation', 'roots'),
     'classes' => array(
       'container' => 'row',
-      'main'    => 'eight columns',
-      'sidebar' => 'four columns'
+      'main'      => 'eight columns',
+      'sidebar'   => 'four columns',
+      'fullwidth' => 'twelve columns'
     )
   ),
   'bootstrap' => array(
-    'name'     => 'bootstrap',
+    'name'    => 'bootstrap',
     'label'   => __('Bootstrap', 'roots'),
     'classes' => array(
       'container' => 'row',
-      'main'    => 'span11',
-      'sidebar' => 'span5'
+      'main'      => 'span9',
+      'sidebar'   => 'span3',
+      'fullwidth' => 'span12'
     )
   ),
   'bootstrap_less' => array(
-    'name'     => 'bootstrap_less',
+    'name'    => 'bootstrap_less',
     'label'   => __('Bootstrap w/ Less', 'roots'),
     'classes' => array(
       'container' => 'row',
-      'main'    => 'span11',
-      'sidebar' => 'span5'
+      'main'      => 'span9',
+      'sidebar'   => 'span3',
+      'fullwidth' => 'span12'
     )
-  ),        
+  ),
   'none' => array(
-    'name'     => 'none',
+    'name'    => 'none',
     'label'   => __('None', 'roots'),
     'classes' => array(
       'container' => '',
-      'main'    => '',
-      'sidebar' => ''
+      'main'      => '',
+      'sidebar'   => '',
+      'fullwidth' => ''
     )
   )
 );
@@ -172,16 +186,16 @@ function roots_get_default_theme_options($default_framework = '') {
   if ($default_framework == '') { $default_framework = apply_filters('roots_default_css_framework', 'blueprint'); }
   $default_framework_settings = $roots_css_frameworks[$default_framework];
   $default_theme_options = array(
-    'css_framework'     => $default_framework,
-    'container_class'   => $default_framework_settings['classes']['container'],
-    'main_class'      => $default_framework_settings['classes']['main'],
-    'sidebar_class'     => $default_framework_settings['classes']['sidebar'],
-    'google_analytics_id' => '',
-    'root_relative_urls'  => true,
-    'clean_menu'      => true,
-    'fout_b_gone'     => false,
-    'bootstrap_javascript'  => false,
-	'bootstrap_less_javascript'  => false
+    'css_framework'             => $default_framework,
+    'container_class'           => $default_framework_settings['classes']['container'],
+    'main_class'                => $default_framework_settings['classes']['main'],
+    'sidebar_class'             => $default_framework_settings['classes']['sidebar'],
+    'fullwidth_class'           => $default_framework_settings['classes']['fullwidth'],
+    'google_analytics_id'       => '',
+    'root_relative_urls'        => true,
+    'clean_menu'                => true,
+    'bootstrap_javascript'      => false,
+    'bootstrap_less_javascript' => false,
   );
 
   return apply_filters('roots_default_theme_options', $default_theme_options);
@@ -193,6 +207,7 @@ function roots_get_theme_options() {
 
 function roots_theme_options_render_page() {
   global $roots_css_frameworks;
+
   ?>
   <div class="wrap">
     <?php screen_icon(); ?>
@@ -205,7 +220,7 @@ function roots_theme_options_render_page() {
         $roots_options = roots_get_theme_options();
         $roots_default_options = roots_get_default_theme_options($roots_options['css_framework']);
       ?>
-
+      <input type="hidden" value="1" name="roots_theme_options[first_run]" />
       <table class="form-table">
 
         <tr valign="top" class="radio-option"><th scope="row"><?php _e('CSS Grid Framework', 'roots'); ?></th>
@@ -225,7 +240,7 @@ function roots_theme_options_render_page() {
             <fieldset><legend class="screen-reader-text"><span><?php _e('#main CSS Classes', 'roots'); ?></span></legend>
               <input type="text" name="roots_theme_options[main_class]" id="main_class" value="<?php echo esc_attr($roots_options['main_class']); ?>" class="regular-text" />
               <br />
-                      <small class="description"><?php _e('Default:', 'roots'); ?> <span><?php echo $roots_default_options['main_class']; ?></span></small>
+              <small class="description"><?php _e('Default:', 'roots'); ?> <span><?php echo $roots_default_options['main_class']; ?></span></small>
             </fieldset>
           </td>
         </tr>
@@ -235,12 +250,22 @@ function roots_theme_options_render_page() {
             <fieldset><legend class="screen-reader-text"><span><?php _e('#sidebar CSS Classes', 'roots'); ?></span></legend>
               <input type="text" name="roots_theme_options[sidebar_class]" id="sidebar_class" value="<?php echo esc_attr($roots_options['sidebar_class']); ?>" class="regular-text" />
               <br />
-                      <small class="description"><?php _e('Default:', 'roots'); ?> <span><?php echo $roots_default_options['sidebar_class']; ?></span></small>
+              <small class="description"><?php _e('Default:', 'roots'); ?> <span><?php echo $roots_default_options['sidebar_class']; ?></span></small>
             </fieldset>
           </td>
         </tr>
-          
-<?php if($roots_options['css_framework'] == 'bootstrap') { ?>
+
+        <tr valign="top"><th scope="row"><?php _e('Full Width CSS Classes', 'roots'); ?></th>
+          <td>
+            <fieldset><legend class="screen-reader-text"><span><?php _e('#fullwidth CSS Classes', 'roots'); ?></span></legend>
+              <input type="text" name="roots_theme_options[fullwidth_class]" id="fullwidth_class" value="<?php echo esc_attr($roots_options['fullwidth_class']); ?>" class="regular-text" />
+              <br />
+              <small class="description"><?php _e('Default:', 'roots'); ?> <span><?php echo $roots_default_options['fullwidth_class']; ?></span></small>
+            </fieldset>
+          </td>
+        </tr>
+
+        <?php if($roots_options['css_framework'] == 'bootstrap') { ?>
         <tr valign="top"><th scope="row"><?php _e('Bootstrap Javascript Packages', 'roots'); ?></th>
           <td>
             <fieldset class="roots_bootstrap_js"><legend class="screen-reader-text"><span><?php _e('Enable Bootstrap Javascript', 'roots'); ?></span></legend>
@@ -250,10 +275,10 @@ function roots_theme_options_render_page() {
               </select>
             </fieldset>
           </td>
-        </tr> 
+        </tr>
         <?php } ?>
-        
-<?php if($roots_options['css_framework'] == 'bootstrap_less') { ?>
+
+        <?php if($roots_options['css_framework'] == 'bootstrap_less') { ?>
         <tr valign="top"><th scope="row"><?php _e('Bootstrap Javascript Packages', 'roots'); ?></th>
           <td>
             <fieldset class="roots_bootstrap_js"><legend class="screen-reader-text"><span><?php _e('Enable Bootstrap Javascript', 'roots'); ?></span></legend>
@@ -263,9 +288,9 @@ function roots_theme_options_render_page() {
               </select>
             </fieldset>
           </td>
-        </tr> 
-        <?php } ?>        
-        
+        </tr>
+        <?php } ?>
+
         <tr valign="top"><th scope="row"><?php _e('Google Analytics ID', 'roots'); ?></th>
           <td>
             <fieldset><legend class="screen-reader-text"><span><?php _e('Google Analytics ID', 'roots'); ?></span></legend>
@@ -298,17 +323,6 @@ function roots_theme_options_render_page() {
           </td>
         </tr>
 
-        <tr valign="top"><th scope="row"><?php _e('Enable FOUT-B-Gone', 'roots'); ?></th>
-          <td>
-            <fieldset><legend class="screen-reader-text"><span><?php _e('Enable FOUT-B-Gone', 'roots'); ?></span></legend>
-              <select name="roots_theme_options[fout_b_gone]" id="roots_theme_options[fout_b_gone]">
-                <option value="yes" <?php selected($roots_options['fout_b_gone'], true); ?>><?php echo _e('Yes', 'roots'); ?></option>
-                <option value="no" <?php selected($roots_options['fout_b_gone'], false); ?>><?php echo _e('No', 'roots'); ?></option>
-              </select>
-            </fieldset>
-          </td>
-        </tr>
-
       </table>
 
       <?php submit_button(); ?>
@@ -334,6 +348,10 @@ function roots_theme_options_validate($input) {
 
   if (isset($input['sidebar_class'])) {
     $output['sidebar_class'] = wp_filter_nohtml_kses($input['sidebar_class']);
+  }
+
+  if (isset($input['fullwidth_class'])) {
+    $output['fullwidth_class'] = wp_filter_nohtml_kses($input['fullwidth_class']);
   }
 
   if (isset($input['google_analytics_id'])) {
@@ -362,16 +380,6 @@ function roots_theme_options_validate($input) {
     $output['clean_menu'] = $input['clean_menu'];
   }
 
-  if (isset($input['fout_b_gone'])) {
-    if ($input['fout_b_gone'] === 'yes') {
-      $input['fout_b_gone'] = true;
-    }
-    if ($input['fout_b_gone'] === 'no') {
-      $input['fout_b_gone'] = false;
-    }
-    $output['fout_b_gone'] = $input['fout_b_gone'];
-  }
-  
   if (isset($input['bootstrap_javascript'])) {
     if ($input['bootstrap_javascript'] === 'yes') {
       $input['bootstrap_javascript'] = true;
@@ -390,9 +398,45 @@ function roots_theme_options_validate($input) {
       $input['bootstrap_less_javascript'] = false;
     }
     $output['bootstrap_less_javascript'] = $input['bootstrap_less_javascript'];
-  }     
+  }
 
   return apply_filters('roots_theme_options_validate', $output, $input, $defaults);
+}
+
+function roots_current_framework() {
+  global $roots_options;
+  switch ($roots_options['css_framework']) {
+    case 'blueprint' :
+      return 'blueprint';
+      break;
+    case '960gs_12' :
+      return '960gs_12';
+      break;
+    case '960gs_16' :
+      return '960gs_16';
+      break;
+    case '960gs_24' :
+      return '960gs_24';
+      break;
+    case '1140' :
+      return '1140';
+      break;
+    case 'adapt' :
+      return 'adapt';
+      break;
+    case 'foundation' :
+      return 'foundation';
+      break;
+    case 'less' :
+      return 'less';
+      break;
+    case 'bootstrap' :
+      return 'bootstrap';
+      break;
+    case 'bootstrap_less' :
+      return 'bootstrap_less';
+      break;
+  }
 }
 
 ?>

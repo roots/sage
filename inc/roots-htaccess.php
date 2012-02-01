@@ -21,24 +21,18 @@ if (stristr($_SERVER['SERVER_SOFTWARE'], 'apache') !== false) {
   // rewrite /wp-content/themes/roots/img/ to /js/
   // rewrite /wp-content/plugins/ to /plugins/
 
-  function roots_flush_rewrites() {
-    global $wp_rewrite;
-    $wp_rewrite->flush_rules();
-  }
-
   function roots_add_rewrites($content) {
-    $theme_name = next(explode('/themes/', get_stylesheet_directory()));
     global $wp_rewrite;
+    $theme_name = next(explode('/themes/', get_stylesheet_directory()));
     $roots_new_non_wp_rules = array(
       'css/(.*)'      => 'wp-content/themes/'. $theme_name . '/css/$1',
       'js/(.*)'       => 'wp-content/themes/'. $theme_name . '/js/$1',
       'img/(.*)'      => 'wp-content/themes/'. $theme_name . '/img/$1',
       'plugins/(.*)'  => 'wp-content/plugins/$1'
     );
-    $wp_rewrite->non_wp_rules += $roots_new_non_wp_rules;
+    $wp_rewrite->non_wp_rules = $roots_new_non_wp_rules;
+    return $content;
   }
-
-  add_action('admin_init', 'roots_flush_rewrites');
 
   function roots_clean_assets($content) {
       $theme_name = next(explode('/themes/', $content));
@@ -58,6 +52,8 @@ if (stristr($_SERVER['SERVER_SOFTWARE'], 'apache') !== false) {
   // only use clean urls if the theme isn't a child or an MU (Network) install
   if (!is_multisite() && !is_child_theme()) {
     add_action('generate_rewrite_rules', 'roots_add_rewrites');
+    add_action('generate_rewrite_rules', 'roots_add_h5bp_htaccess');
+    add_action('activate_plugin', 'roots_add_h5bp_htaccess');
     if (!is_admin()) {
       add_filter('plugins_url', 'roots_clean_plugins');
       add_filter('bloginfo', 'roots_clean_assets');
@@ -68,18 +64,30 @@ if (stristr($_SERVER['SERVER_SOFTWARE'], 'apache') !== false) {
     }
   }
 
-  function roots_add_h5bp_htaccess($rules) {
-    global $wp_filesystem;
+  // add the contents of h5bp-htaccess into the .htaccess file
+  function roots_add_h5bp_htaccess($content) {
+    global $wp_rewrite;
 
-    if (!defined('FS_METHOD')) define('FS_METHOD', 'direct');
-    if (is_null($wp_filesystem)) WP_Filesystem(array(), ABSPATH);
+    if (!function_exists('get_home_path')) {
+      return;
+    }
 
-    $filename = __DIR__ . '/h5bp-htaccess';
+    $home_path = get_home_path();
+    $htaccess_file = $home_path . '.htaccess';
 
-    return $rules . $wp_filesystem->get_contents($filename);
+    if ((!file_exists($htaccess_file) && is_writable($home_path) && $wp_rewrite->using_mod_rewrite_permalinks()) || is_writable($htaccess_file)) {
+      if (got_mod_rewrite()) {
+        $h5bp_rules = extract_from_markers($htaccess_file, 'HTML5 Boilerplate');
+          if ($h5bp_rules === array()) {
+            $filename = __DIR__ . '/h5bp-htaccess';
+          return insert_with_markers($htaccess_file, 'HTML5 Boilerplate', extract_from_markers($filename, 'HTML5 Boilerplate'));
+          }
+      }
+    }
+
+    return $content;
   }
 
-  add_filter('mod_rewrite_rules', 'roots_add_h5bp_htaccess');
 }
 
 ?>

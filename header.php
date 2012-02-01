@@ -15,14 +15,12 @@
   <link rel="alternate" type="application/rss+xml" title="<?php bloginfo('name'); ?> Feed" href="<?php echo home_url(); ?>/feed/">
 
   <script src="<?php echo get_template_directory_uri(); ?>/js/libs/modernizr-2.0.6.min.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
-  <script>window.jQuery || document.write('<script src="<?php echo get_template_directory_uri(); ?>/js/libs/jquery-1.6.4.min.js"><\/script>')</script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="<?php echo get_template_directory_uri(); ?>/js/libs/jquery-1.7.1.min.js"><\/script>')</script>
 
-  <?php wp_head(); ?>
   <?php roots_head(); ?>
+  <?php wp_head(); ?>
 
-  <script defer src="<?php echo get_template_directory_uri(); ?>/js/plugins.js"></script>
-  <script defer src="<?php echo get_template_directory_uri(); ?>/js/script.js"></script>
 </head>
 
 <body <?php body_class(roots_body_class()); ?>>
@@ -35,29 +33,16 @@
       <div class="container">
 
         <a id="logo" href="<?php echo home_url(); ?>/">
-          <img src="<?php echo get_header_image(); ?>" width="<?php echo HEADER_IMAGE_WIDTH; ?>" height="<?php echo HEADER_IMAGE_HEIGHT; ?>" alt="<?php bloginfo('name'); ?>">
+          <img src="http://placehold.it/300x75" width="300" height="75" alt="<?php bloginfo('name'); ?>">
         </a>
 
         <nav id="nav-main" role="navigation">
-          <?php if ($roots_options['clean_menu']) { ?>
-            <?php wp_nav_menu(array('theme_location' => 'primary_navigation', 'walker' => new roots_nav_walker())); ?>
-          <?php } else { ?>
-            <?php wp_nav_menu(array('theme_location' => 'primary_navigation')); ?>
-          <?php } ?>
+          <?php wp_nav_menu(array('theme_location' => 'primary_navigation')); ?>
         </nav>
 
-        <?php
-          $utility_nav = wp_get_nav_menu_object('Utility Navigation');
-          $utility_nav_term_id = (int) $utility_nav->term_id;
-          $menu_items = wp_get_nav_menu_items($utility_nav_term_id);
-          if ($menu_items || !empty($menu_items)) {
-        ?>
+        <?php if (wp_get_nav_menu_items('Utility Navigation')) { ?>
         <nav id="nav-utility">
-          <?php if ($roots_options['clean_menu']) { ?>
-            <?php wp_nav_menu(array('theme_location' => 'utility_navigation', 'walker' => new roots_nav_walker())); ?>
-          <?php } else { ?>
-            <?php wp_nav_menu(array('theme_location' => 'utility_navigation')); ?>
-          <?php } ?>
+          <?php wp_nav_menu(array('theme_location' => 'utility_navigation')); ?>
         </nav>
         <?php } ?>
 

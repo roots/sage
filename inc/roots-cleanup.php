@@ -1,10 +1,12 @@
 <?php
 
+$roots_options = roots_get_theme_options();
+
 // redirect /?s to /search/
 // http://txfx.net/wordpress-plugins/nice-search/
 function roots_nice_search_redirect() {
   if (is_search() && strpos($_SERVER['REQUEST_URI'], '/wp-admin/') === false && strpos($_SERVER['REQUEST_URI'], '/search/') === false) {
-    wp_redirect(home_url('/search/' . str_replace(array(' ', '%20'), array('+', '+'), urlencode(get_query_var( 's' )))), 301);
+    wp_redirect(home_url('/search/' . str_replace(array(' ', '%20'), array('+', '+'), urlencode(get_query_var('s')))), 301);
       exit();
   }
 }
@@ -65,7 +67,6 @@ function roots_fix_duplicate_subfolder_urls($input) {
   return $output;
 }
 
-$roots_options = roots_get_theme_options();
 if (!is_admin() && !in_array($GLOBALS['pagenow'], array('wp-login.php', 'wp-register.php')) && $roots_options['root_relative_urls']) {
   add_filter('bloginfo_url', 'roots_root_relative_url');
   add_filter('theme_root_uri', 'roots_root_relative_url');
@@ -91,7 +92,7 @@ if (!is_admin() && !in_array($GLOBALS['pagenow'], array('wp-login.php', 'wp-regi
 
 // remove root relative URLs on any attachments in the feed
 function roots_root_relative_attachment_urls() {
-  $roots_options = roots_get_theme_options();
+  global $roots_options;
   if (!is_feed() && $roots_options['root_relative_urls']) {
     add_filter('wp_get_attachment_url', 'roots_root_relative_url');
     add_filter('wp_get_attachment_link', 'roots_root_relative_url');
@@ -207,14 +208,16 @@ function roots_gallery_shortcode($attr) {
 
   // Allow plugins/themes to override the default gallery template.
   $output = apply_filters('post_gallery', '', $attr);
-  if ( $output != '' )
+  if ($output != '') {
     return $output;
+  }
 
   // We're trusting author input, so let's at least make sure it looks like a valid orderby statement
-  if ( isset( $attr['orderby'] ) ) {
-    $attr['orderby'] = sanitize_sql_orderby( $attr['orderby'] );
-    if ( !$attr['orderby'] )
-      unset( $attr['orderby'] );
+  if (isset($attr['orderby'])) {
+    $attr['orderby'] = sanitize_sql_orderby($attr['orderby']);
+    if (!$attr['orderby']) {
+      unset($attr['orderby']);
+    }
   }
 
   extract(shortcode_atts(array(
@@ -230,30 +233,32 @@ function roots_gallery_shortcode($attr) {
   ), $attr));
 
   $id = intval($id);
-  if ( 'RAND' == $order )
+  if ('RAND' == $order) {
     $orderby = 'none';
+  }
 
-  if ( !empty($include) ) {
+  if (!empty($include)) {
     $include = preg_replace( '/[^0-9,]+/', '', $include );
     $_attachments = get_posts( array('include' => $include, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby) );
 
     $attachments = array();
-    foreach ( $_attachments as $key => $val ) {
+    foreach ($_attachments as $key => $val) {
       $attachments[$val->ID] = $_attachments[$key];
     }
-  } elseif ( !empty($exclude) ) {
-    $exclude = preg_replace( '/[^0-9,]+/', '', $exclude );
-    $attachments = get_children( array('post_parent' => $id, 'exclude' => $exclude, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby) );
+  } elseif (!empty($exclude)) {
+    $exclude = preg_replace('/[^0-9,]+/', '', $exclude);
+    $attachments = get_children(array('post_parent' => $id, 'exclude' => $exclude, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby));
   } else {
-    $attachments = get_children( array('post_parent' => $id, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby) );
+    $attachments = get_children(array('post_parent' => $id, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby));
   }
 
-  if ( empty($attachments) )
+  if (empty($attachments)) {
     return '';
+  }
 
-  if ( is_feed() ) {
+  if (is_feed()) {
     $output = "\n";
-    foreach ( $attachments as $att_id => $attachment )
+    foreach ($attachments as $att_id => $attachment)
       $output .= wp_get_attachment_link($att_id, $size, true) . "\n";
     return $output;
   }
@@ -266,14 +271,15 @@ function roots_gallery_shortcode($attr) {
   $selector = "gallery-{$instance}";
 
   $gallery_style = $gallery_div = '';
-  if ( apply_filters( 'use_default_gallery_style', true ) )
+  if (apply_filters('use_default_gallery_style', true)) {
     $gallery_style = "";
-  $size_class = sanitize_html_class( $size );
+  }
+  $size_class = sanitize_html_class($size);
   $gallery_div = "<section id='$selector' class='clearfix gallery galleryid-{$id} gallery-columns-{$columns} gallery-size-{$size_class}'>";
-  $output = apply_filters( 'gallery_style', $gallery_style . "\n\t\t" . $gallery_div );
+  $output = apply_filters('gallery_style', $gallery_style . "\n\t\t" . $gallery_div);
 
   $i = 0;
-  foreach ( $attachments as $id => $attachment ) {
+  foreach ($attachments as $id => $attachment) {
     // make the gallery link to the file by default instead of the attachment
     // thanks to Matt Price (countingrows.com)
     $link = isset($attr['link']) && $attr['link'] === 'attachment' ?
@@ -283,15 +289,16 @@ function roots_gallery_shortcode($attr) {
       <{$icontag} class=\"gallery-item\">
         $link
       ";
-    if ( $captiontag && trim($attachment->post_excerpt) ) {
+    if ($captiontag && trim($attachment->post_excerpt)) {
       $output .= "
         <{$captiontag} class=\"gallery-caption\">
         " . wptexturize($attachment->post_excerpt) . "
         </{$captiontag}>";
     }
     $output .= "</{$icontag}>";
-    if ( $columns > 0 && ++$i % $columns == 0 )
+    if ($columns > 0 && ++$i % $columns == 0) {
       $output .= '';
+    }
   }
 
   $output .= "</section>\n";
@@ -332,44 +339,54 @@ function roots_nav_menu_args($args = '') {
 
 add_filter('wp_nav_menu_args', 'roots_nav_menu_args');
 
-class roots_nav_walker extends Walker_Nav_Menu {
+function roots_check_current($val) {
+  return preg_match('/current-/', $val);
+}
+
+class Roots_Nav_Walker extends Walker_Nav_Menu {
   function start_el(&$output, $item, $depth, $args) {
     global $wp_query;
-      $indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
+    $indent = ($depth) ? str_repeat("\t", $depth) : '';
 
-      $slug = sanitize_title($item->title);
+    $slug = sanitize_title($item->title);
 
-      $class_names = $value = '';
-      $classes = empty( $item->classes ) ? array() : (array) $item->classes;
+    $class_names = $value = '';
+    $classes = empty($item->classes) ? array() : (array) $item->classes;
 
-      $classes = array_filter($classes, 'roots_check_current');
+    $classes = array_filter($classes, 'roots_check_current');
 
-      $class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item ) );
-      $class_names = $class_names ? ' class="' . esc_attr( $class_names ) . '"' : '';
+    $class_names = join(' ', apply_filters('nav_menu_css_class', array_filter($classes), $item));
+    $class_names = $class_names ? ' class="' . esc_attr($class_names) . '"' : '';
 
-      $id = apply_filters( 'nav_menu_item_id', 'menu-' . $slug, $item, $args );
-      $id = strlen( $id ) ? ' id="' . esc_attr( $id ) . '"' : '';
+    $id = apply_filters('nav_menu_item_id', 'menu-' . $slug, $item, $args);
+    $id = strlen($id) ? ' id="' . esc_attr( $id ) . '"' : '';
 
-      $output .= $indent . '<li' . $id . $class_names . '>';
+    $output .= $indent . '<li' . $id . $class_names . '>';
 
-      $attributes  = ! empty( $item->attr_title ) ? ' title="'  . esc_attr( $item->attr_title ) .'"' : '';
-      $attributes .= ! empty( $item->target )     ? ' target="' . esc_attr( $item->target     ) .'"' : '';
-      $attributes .= ! empty( $item->xfn )        ? ' rel="'    . esc_attr( $item->xfn        ) .'"' : '';
-      $attributes .= ! empty( $item->url )        ? ' href="'   . esc_attr( $item->url        ) .'"' : '';
+    $attributes  = ! empty($item->attr_title) ? ' title="'  . esc_attr($item->attr_title) .'"' : '';
+    $attributes .= ! empty($item->target)     ? ' target="' . esc_attr($item->target    ) .'"' : '';
+    $attributes .= ! empty($item->xfn)        ? ' rel="'    . esc_attr($item->xfn       ) .'"' : '';
+    $attributes .= ! empty($item->url)        ? ' href="'   . esc_attr($item->url       ) .'"' : '';
 
-      $item_output = $args->before;
-      $item_output .= '<a'. $attributes .'>';
-      $item_output .= $args->link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $args->link_after;
-      $item_output .= '</a>';
-      $item_output .= $args->after;
+    $item_output = $args->before;
+    $item_output .= '<a'. $attributes .'>';
+    $item_output .= $args->link_before . apply_filters('the_title', $item->title, $item->ID) . $args->link_after;
+    $item_output .= '</a>';
+    $item_output .= $args->after;
 
-      $output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
+    $output .= apply_filters('walker_nav_menu_start_el', $item_output, $item, $depth, $args);
   }
 }
 
-function roots_check_current($val) {
-  return preg_match('/current-menu/', $val);
+// use the clean nav menu walker for all nav menus if the option is set
+function roots_default_wp_nav_menu_walker($args = '') {
+  global $roots_options;
+  if ($roots_options['clean_menu']) {
+    $args['walker'] = new Roots_Nav_Walker();
+  }
+  return $args;
 }
+add_filter('wp_nav_menu_args', 'roots_default_wp_nav_menu_walker');
 
 // add to robots.txt
 // http://codex.wordpress.org/Search_Engine_Optimization_for_WordPress#Robots.txt_Optimization
@@ -411,15 +428,16 @@ add_filter('post_thumbnail_html', 'roots_remove_self_closing_tags');
 // you want to change this or remove it because it's used as the description in the RSS feed
 function roots_notice_tagline() {
     global $current_user;
-  $user_id = $current_user->ID;
+    $user_id = $current_user->ID;
+
     if (!get_user_meta($user_id, 'ignore_tagline_notice')) {
-    echo '<div class="error">';
-    echo '<p>', sprintf(__('Please update your <a href="%s">site tagline</a> <a href="%s" style="float: right;">Hide Notice</a>', 'roots'), admin_url('options-general.php'), '?tagline_notice_ignore=0'), '</p>';
-    echo '</div>';
+      echo '<div class="error">';
+      echo '<p>', sprintf(__('Please update your <a href="%s">site tagline</a> <a href="%s" style="float: right;">Hide Notice</a>', 'roots'), admin_url('options-general.php'), '?tagline_notice_ignore=0'), '</p>';
+      echo '</div>';
     }
 }
 
-if (get_option('blogdescription') === 'Just another WordPress site') {
+if ((get_option('blogdescription') === 'Just another WordPress site') && isset($_GET['page']) != 'theme_activation_options') {
   add_action('admin_notices', 'roots_notice_tagline');
 }
 
@@ -428,7 +446,7 @@ function roots_notice_tagline_ignore() {
   $user_id = $current_user->ID;
   if (isset($_GET['tagline_notice_ignore']) && '0' == $_GET['tagline_notice_ignore']) {
     add_user_meta($user_id, 'ignore_tagline_notice', 'true', true);
-    }
+  }
 }
 
 add_action('admin_init', 'roots_notice_tagline_ignore');
@@ -437,9 +455,9 @@ add_action('admin_init', 'roots_notice_tagline_ignore');
 // was set in wp-config.php to avoid DB bloat
 if (!defined('WP_POST_REVISIONS')) define('WP_POST_REVISIONS', 5);
 
-// allow more tags in TinyMCE including iframes
+// allow more tags in TinyMCE including <iframe> and <script>
 function roots_change_mce_options($options) {
-  $ext = 'pre[id|name|class|style],iframe[align|longdesc|name|width|height|frameborder|scrolling|marginheight|marginwidth|src]';
+  $ext = 'pre[id|name|class|style],iframe[align|longdesc|name|width|height|frameborder|scrolling|marginheight|marginwidth|src],script[charset|defer|language|src|type]';
   if (isset($initArray['extended_valid_elements'])) {
     $options['extended_valid_elements'] .= ',' . $ext;
   } else {
@@ -462,18 +480,22 @@ function roots_clean_style_tag($input) {
 
 function roots_body_class() {
   $term = get_queried_object();
-  if (is_single())
+
+  if (is_single()) {
     $cat = get_the_category();
-  if(!empty($cat))
+  }
+
+  if(!empty($cat)) {
     return $cat[0]->slug;
-  elseif(isset($term->slug))
+  } elseif(isset($term->slug)) {
     return $term->slug;
-  elseif(isset($term->page_name))
+  } elseif(isset($term->page_name)) {
     return $term->page_name;
-  elseif(isset($term->post_name))
+  } elseif(isset($term->post_name)) {
     return $term->post_name;
-  else
+  } else {
     return;
+  }
 }
 
 // first and last classes for widgets

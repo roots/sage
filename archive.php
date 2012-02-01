@@ -5,15 +5,24 @@
       <div id="main" class="<?php echo $roots_options['main_class']; ?>" role="main">
         <div class="container">
           <h1>
-            <?php if (is_day()) : ?>
-              <?php printf(__('Daily Archives: %s', 'roots'), get_the_date()); ?>
-            <?php elseif (is_month()) : ?>
-              <?php printf(__('Monthly Archives: %s', 'roots'), get_the_date('F Y')); ?>
-            <?php elseif (is_year()) : ?>
-              <?php printf(__('Yearly Archives: %s', 'roots'), get_the_date('Y')); ?>
-            <?php else : ?>
-              <?php single_cat_title(); ?>
-            <?php endif; ?>
+            <?php
+              $term = get_term_by('slug', get_query_var('term'), get_query_var('taxonomy'));
+              if ($term) {
+                echo $term->name;
+              } elseif (is_day()) {
+                printf(__('Daily Archives: %s', 'roots'), get_the_date());
+              } elseif (is_month()) {
+                printf(__('Monthly Archives: %s', 'roots'), get_the_date('F Y'));
+              } elseif (is_year()) {
+                printf(__('Yearly Archives: %s', 'roots'), get_the_date('Y'));
+              } elseif (is_author()) {
+                global $post;
+                $author_id = $post->post_author;
+                printf(__('Author Archives: %s', 'roots'), get_the_author_meta('user_nicename', $author_id));
+              } else {
+                single_cat_title();
+              }
+            ?>
           </h1>
           <?php roots_loop_before(); ?>
           <?php get_template_part('loop', 'category'); ?>

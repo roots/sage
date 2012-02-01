@@ -11,11 +11,11 @@
         <?php the_content(); ?>
       </div>
       <footer>
-        <?php wp_link_pages(array('before' => '<nav id="page-nav"><p>' . __('Pages:', 'roots'), 'after' => '</p></nav>' )); ?>
-        <p><?php the_tags(); ?></p>
+        <?php wp_link_pages(array('before' => '<nav id="page-nav"><p>' . __('Pages:', 'roots'), 'after' => '</p></nav>')); ?>
+       <?php $tags = get_the_tags(); if ($tags) { ?><p><?php the_tags(); ?></p><?php } ?>
       </footer>
       <?php comments_template(); ?>
       <?php roots_post_inside_after(); ?>
     </article>
   <?php roots_post_after(); ?>
-<?php endwhile; // End the loop ?>
+<?php endwhile; /* End loop */ ?>
