@@ -59,6 +59,7 @@ function roots_get_stylesheets() {
       break;
     case 'bootstrap' :
       $styles .= stylesheet_link_tag('/bootstrap/bootstrap.css');
+      $styles .= stylesheet_link_tag('/bootstrap/bootstrap-responsive.css');
       break;
     case 'bootstrap_less' :
       $styles .= stylesheet_link_tag('/bootstrap/lib/bootstrap.less', 0, true, 'stylesheet/less');
