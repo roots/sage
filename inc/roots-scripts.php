@@ -19,16 +19,16 @@ function roots_scripts() {
 
   if (roots_current_framework() === 'foundation') {
     wp_register_script('foundation-jquery-reveal', ''.$template_uri.'/js/foundation/jquery.reveal.js', false, null, false);
-    wp_register_script('foundation-jquery-orbit', ''.$template_uri.'/js/foundation/jquery.orbit-1.3.0.js', false, null, false);
-    wp_register_script('foundation-forms-jquery', ''.$template_uri.'/js/foundation/forms.jquery.js', false, null, false);
+    wp_register_script('foundation-jquery-orbit', ''.$template_uri.'/js/foundation/jquery.orbit-1.4.0.js', false, null, false);
     wp_register_script('foundation-jquery-customforms', ''.$template_uri.'/js/foundation/jquery.customforms.js', false, null, false);
     wp_register_script('foundation-jquery-placeholder', ''.$template_uri.'/js/foundation/jquery.placeholder.min.js', false, null, false);
+    wp_register_script('foundation-jquery-tooltips', ''.$template_uri.'/js/foundation/jquery.tooltips.js', false, null, false);
     wp_register_script('foundation-app', ''.$template_uri.'/js/foundation/app.js', false, null, false);
     wp_enqueue_script('foundation-jquery-reveal');
     wp_enqueue_script('foundation-jquery-orbit');
-    wp_enqueue_script('foundation-forms-jquery');
     wp_enqueue_script('foundation-jquery-customforms');
     wp_enqueue_script('foundation-jquery-placeholder');
+    wp_enqueue_script('foundation-jquery-tooltips');
     wp_enqueue_script('foundation-app');
   }
 
