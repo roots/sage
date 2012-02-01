@@ -142,9 +142,9 @@ $roots_css_frameworks = array(
     'label'   => __('Bootstrap', 'roots'),
     'classes' => array(
       'container' => 'row',
-      'main'      => 'span11',
-      'sidebar'   => 'span5',
-      'fullwidth' => 'span16'
+      'main'      => 'span9',
+      'sidebar'   => 'span3',
+      'fullwidth' => 'span12'
     )
   ),
   'bootstrap_less' => array(
@@ -152,9 +152,9 @@ $roots_css_frameworks = array(
     'label'   => __('Bootstrap w/ Less', 'roots'),
     'classes' => array(
       'container' => 'row',
-      'main'      => 'span11',
-      'sidebar'   => 'span5',
-      'fullwidth' => 'span16'
+      'main'      => 'span9',
+      'sidebar'   => 'span3',
+      'fullwidth' => 'span12'
     )
   ),
   'none' => array(
