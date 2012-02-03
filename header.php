@@ -8,7 +8,7 @@
 
   <title><?php wp_title('|', true, 'right'); bloginfo('name'); ?></title>
 
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="viewport" content="width=device-width">
 
   <?php roots_stylesheets(); ?>
 
@@ -25,27 +25,28 @@
 
 <body <?php body_class(roots_body_class()); ?>>
 
-  <?php roots_wrap_before(); ?>
-  <div id="wrap" class="container" role="document">
+  <!--[if lt IE 7]><p class="chromeframe">Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
+
   <?php roots_header_before(); ?>
-    <header id="banner" class="<?php global $roots_options; echo $roots_options['container_class']; ?>" role="banner">
+    <header id="banner" class="navbar navbar-fixed-top" role="banner">
       <?php roots_header_inside(); ?>
-      <div class="container">
-
-        <a id="logo" href="<?php echo home_url(); ?>/">
-          <img src="http://placehold.it/300x75" width="300" height="75" alt="<?php bloginfo('name'); ?>">
-        </a>
-
-        <nav id="nav-main" role="navigation">
-          <?php wp_nav_menu(array('theme_location' => 'primary_navigation')); ?>
-        </nav>
-
-        <?php if (wp_get_nav_menu_items('Utility Navigation')) { ?>
-        <nav id="nav-utility">
-          <?php wp_nav_menu(array('theme_location' => 'utility_navigation')); ?>
-        </nav>
-        <?php } ?>
-
+      <div class="navbar-inner">
+        <div class="<?php echo WRAP_CLASSES; ?>">
+         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="<?php echo home_url(); ?>/">
+            <?php bloginfo('name'); ?>
+          </a>
+          <nav id="nav-main" class="nav-collapse" role="navigation">
+            <?php wp_nav_menu(array('theme_location' => 'primary_navigation', 'walker' => new Roots_Navbar_Nav_Walker())); ?>
+          </nav>
+        </div>
       </div>
     </header>
   <?php roots_header_after(); ?>
+
+  <?php roots_wrap_before(); ?>
+  <div id="wrap" class="<?php echo WRAP_CLASSES; ?>" role="document">

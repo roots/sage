@@ -1,6 +1,9 @@
 <?php /* If there are no posts to display, such as an empty archive page */ ?>
 <?php if (!have_posts()) { ?>
-  <p><?php _e('Sorry, no results were found.', 'roots'); ?></p>
+  <div class="alert alert-block fade in">
+    <a class="close" data-dismiss="alert">×</a>
+    <p><?php _e('Sorry, no results were found.', 'roots'); ?></p>
+  </div>
   <?php get_search_form(); ?>
 <?php } ?>
 
@@ -30,8 +33,8 @@
 
 <?php /* Display navigation to next/previous pages when applicable */ ?>
 <?php if ($wp_query->max_num_pages > 1) { ?>
-  <nav id="post-nav">
-    <div class="post-previous"><?php next_posts_link(__('&larr; Older posts', 'roots')); ?></div>
-    <div class="post-next"><?php previous_posts_link(__('Newer posts &rarr;', 'roots')); ?></div>
+  <nav id="post-nav" class="pager">
+    <div class="previous"><?php next_posts_link(__('&larr; Older posts', 'roots')); ?></div>
+    <div class="next"><?php previous_posts_link(__('Newer posts &rarr;', 'roots')); ?></div>
   </nav>
 <?php } ?>

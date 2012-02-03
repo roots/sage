@@ -1,7 +1,5 @@
 <?php
 
-$roots_options = roots_get_theme_options();
-
 // redirect /?s to /search/
 // http://txfx.net/wordpress-plugins/nice-search/
 function roots_nice_search_redirect() {
@@ -67,7 +65,7 @@ function roots_fix_duplicate_subfolder_urls($input) {
   return $output;
 }
 
-if (!is_admin() && !in_array($GLOBALS['pagenow'], array('wp-login.php', 'wp-register.php')) && $roots_options['root_relative_urls']) {
+if (!is_admin() && !in_array($GLOBALS['pagenow'], array('wp-login.php', 'wp-register.php'))) {
   add_filter('bloginfo_url', 'roots_root_relative_url');
   add_filter('theme_root_uri', 'roots_root_relative_url');
   add_filter('stylesheet_directory_uri', 'roots_root_relative_url');
@@ -92,8 +90,7 @@ if (!is_admin() && !in_array($GLOBALS['pagenow'], array('wp-login.php', 'wp-regi
 
 // remove root relative URLs on any attachments in the feed
 function roots_root_relative_attachment_urls() {
-  global $roots_options;
-  if (!is_feed() && $roots_options['root_relative_urls']) {
+  if (!is_feed()) {
     add_filter('wp_get_attachment_url', 'roots_root_relative_url');
     add_filter('wp_get_attachment_link', 'roots_root_relative_url');
   }
@@ -182,11 +179,6 @@ function roots_head_cleanup() {
   add_action('wp_head', 'roots_remove_recent_comments_style', 1);
   add_filter('gallery_style', 'roots_gallery_style');
 
-  // stop Gravity Forms from outputting CSS since it's linked in header.php
-  if (class_exists('RGForms')) {
-    update_option('rg_gforms_disable_css', 1);
-  }
-
   // deregister l10n.js (new since WordPress 3.1)
   // why you might want to keep it: http://wordpress.stackexchange.com/questions/5451/what-does-l10n-js-do-in-wordpress-3-1-and-how-do-i-remove-it/5484#5484
   // don't load jQuery through WordPress since it's linked in header.php
@@ -224,8 +216,8 @@ function roots_gallery_shortcode($attr) {
     'order'      => 'ASC',
     'orderby'    => 'menu_order ID',
     'id'         => $post->ID,
-    'icontag'    => 'figure',
-    'captiontag' => 'figcaption',
+    'icontag'    => 'li',
+    'captiontag' => 'p',
     'columns'    => 3,
     'size'       => 'thumbnail',
     'include'    => '',
@@ -275,23 +267,20 @@ function roots_gallery_shortcode($attr) {
     $gallery_style = "";
   }
   $size_class = sanitize_html_class($size);
-  $gallery_div = "<section id='$selector' class='clearfix gallery galleryid-{$id} gallery-columns-{$columns} gallery-size-{$size_class}'>";
+  $gallery_div = "<ul id='$selector' class='thumbnails gallery galleryid-{$id} gallery-columns-{$columns} gallery-size-{$size_class}'>";
   $output = apply_filters('gallery_style', $gallery_style . "\n\t\t" . $gallery_div);
 
   $i = 0;
   foreach ($attachments as $id => $attachment) {
-    // make the gallery link to the file by default instead of the attachment
-    // thanks to Matt Price (countingrows.com)
-    $link = isset($attr['link']) && $attr['link'] === 'attachment' ?
-      wp_get_attachment_link($id, $size, true, false) :
-      wp_get_attachment_link($id, $size, false, false);
+    $link = isset($attr['link']) && 'file' == $attr['link'] ? wp_get_attachment_link($id, $size, false, false) : wp_get_attachment_link($id, $size, true, false);
+
     $output .= "
       <{$icontag} class=\"gallery-item\">
         $link
       ";
     if ($captiontag && trim($attachment->post_excerpt)) {
       $output .= "
-        <{$captiontag} class=\"gallery-caption\">
+        <{$captiontag} class=\"gallery-caption hidden\">
         " . wptexturize($attachment->post_excerpt) . "
         </{$captiontag}>";
     }
@@ -301,13 +290,67 @@ function roots_gallery_shortcode($attr) {
     }
   }
 
-  $output .= "</section>\n";
+  $output .= "</ul>\n";
 
   return $output;
 }
 
 remove_shortcode('gallery');
 add_shortcode('gallery', 'roots_gallery_shortcode');
+
+function roots_attachment_link_class($html) {
+  $postid = get_the_ID();
+  $html = str_replace('<a', '<a class="thumbnail"', $html);
+  return $html;
+}
+add_filter('wp_get_attachment_link', 'roots_attachment_link_class', 10, 1);
+
+// http://justintadlock.com/archives/2011/07/01/captions-in-wordpress
+function roots_caption($output, $attr, $content) {
+  /* We're not worried abut captions in feeds, so just return the output here. */
+  if ( is_feed()) {
+    return $output;
+  }
+
+  /* Set up the default arguments. */
+  $defaults = array(
+    'id' => '',
+    'align' => 'alignnone',
+    'width' => '',
+    'caption' => ''
+  );
+
+  /* Merge the defaults with user input. */
+  $attr = shortcode_atts($defaults, $attr);
+
+  /* If the width is less than 1 or there is no caption, return the content wrapped between the [caption]< tags. */
+  if (1 > $attr['width'] || empty($attr['caption'])) {
+    return $content;
+  }
+
+  /* Set up the attributes for the caption <div>. */
+  $attributes = (!empty($attr['id']) ? ' id="' . esc_attr($attr['id']) . '"' : '' );
+  $attributes .= ' class="thumbnail wp-caption ' . esc_attr($attr['align']) . '"';
+  $attributes .= ' style="width: ' . esc_attr($attr['width']) . 'px"';
+
+  /* Open the caption <div>. */
+  $output = '<div' . $attributes .'>';
+
+  /* Allow shortcodes for the content the caption was created for. */
+  $output .= do_shortcode($content);
+
+  /* Append the caption text. */
+  $output .= '<div class="caption"><p class="wp-caption-text">' . $attr['caption'] . '</p></div>';
+
+  /* Close the caption </div>. */
+  $output .= '</div>';
+
+  /* Return the formatted, clean caption. */
+  return $output;
+}
+
+add_filter('img_caption_shortcode', 'roots_caption', 10, 3);
+
 
 // http://www.deluxeblogtips.com/2011/01/remove-dashboard-widgets-in-wordpress.html
 function roots_remove_dashboard_widgets() {
@@ -321,7 +364,7 @@ add_action('admin_init', 'roots_remove_dashboard_widgets');
 
 // excerpt cleanup
 function roots_excerpt_length($length) {
-  return 40;
+  return POST_EXCERPT_LENGTH;
 }
 
 function roots_excerpt_more($more) {
@@ -331,19 +374,11 @@ function roots_excerpt_more($more) {
 add_filter('excerpt_length', 'roots_excerpt_length');
 add_filter('excerpt_more', 'roots_excerpt_more');
 
-// remove container from menus
-function roots_nav_menu_args($args = '') {
-  $args['container'] = false;
-  return $args;
-}
-
-add_filter('wp_nav_menu_args', 'roots_nav_menu_args');
-
-function roots_check_current($val) {
-  return preg_match('/current-/', $val);
-}
-
 class Roots_Nav_Walker extends Walker_Nav_Menu {
+  function check_current($val) {
+    return preg_match('/(current-)/', $val);
+  }
+
   function start_el(&$output, $item, $depth, $args) {
     global $wp_query;
     $indent = ($depth) ? str_repeat("\t", $depth) : '';
@@ -353,7 +388,7 @@ class Roots_Nav_Walker extends Walker_Nav_Menu {
     $class_names = $value = '';
     $classes = empty($item->classes) ? array() : (array) $item->classes;
 
-    $classes = array_filter($classes, 'roots_check_current');
+    $classes = array_filter($classes, array(&$this, 'check_current'));
 
     $class_names = join(' ', apply_filters('nav_menu_css_class', array_filter($classes), $item));
     $class_names = $class_names ? ' class="' . esc_attr($class_names) . '"' : '';
@@ -378,15 +413,108 @@ class Roots_Nav_Walker extends Walker_Nav_Menu {
   }
 }
 
-// use the clean nav menu walker for all nav menus if the option is set
-function roots_default_wp_nav_menu_walker($args = '') {
-  global $roots_options;
-  if ($roots_options['clean_menu']) {
+class Roots_Navbar_Nav_Walker extends Walker_Nav_Menu {
+  function check_current($val) {
+    return preg_match('/(current-)|active|dropdown/', $val);
+  }
+
+  function start_lvl(&$output, $depth) {
+    $output .= "\n<ul class=\"dropdown-menu\">\n";
+  }
+
+  function start_el(&$output, $item, $depth, $args) {
+    global $wp_query;
+    $indent = ($depth) ? str_repeat("\t", $depth) : '';
+
+    $slug = sanitize_title($item->title);
+
+    $li_attributes = '';
+    $class_names = $value = '';
+
+    $classes = empty($item->classes) ? array() : (array) $item->classes;
+    if ($args->has_children) {
+      $classes[]      = 'dropdown';
+      $li_attributes .= 'data-dropdown="dropdown"';
+    }
+    $classes[] = ($item->current) ? 'active' : '';
+    $classes = array_filter($classes, array(&$this, 'check_current'));
+
+    $class_names = join(' ', apply_filters('nav_menu_css_class', array_filter($classes), $item));
+    $class_names = $class_names ? ' class="' . esc_attr($class_names) . '"' : '';
+
+    $id = apply_filters('nav_menu_item_id', 'menu-' . $slug, $item, $args);
+    $id = strlen($id) ? ' id="' . esc_attr( $id ) . '"' : '';
+
+    $output .= $indent . '<li' . $id . $class_names . $li_attributes . '>';
+
+    $attributes  = ! empty($item->attr_title) ? ' title="'  . esc_attr($item->attr_title) .'"'    : '';
+    $attributes .= ! empty($item->target)     ? ' target="' . esc_attr($item->target    ) .'"'    : '';
+    $attributes .= ! empty($item->xfn)        ? ' rel="'    . esc_attr($item->xfn       ) .'"'    : '';
+    $attributes .= ! empty($item->url)        ? ' href="'   . esc_attr($item->url       ) .'"'    : '';
+    $attributes .= ($args->has_children)      ? ' class="dropdown-toggle" data-toggle="dropdown"' : '';
+
+    $item_output = $args->before;
+    $item_output .= '<a'. $attributes .'>';
+    $item_output .= $args->link_before . apply_filters('the_title', $item->title, $item->ID) . $args->link_after;
+    $item_output .= ($args->has_children) ? ' <b class="caret"></b>' : '';
+    $item_output .= '</a>';
+    $item_output .= $args->after;
+
+    $output .= apply_filters('walker_nav_menu_start_el', $item_output, $item, $depth, $args);
+  }
+  function display_element($element, &$children_elements, $max_depth, $depth = 0, $args, &$output) {
+    if (!$element) { return; }
+
+    $id_field = $this->db_fields['id'];
+
+    // display this element
+    if (is_array($args[0])) {
+      $args[0]['has_children'] = !empty($children_elements[$element->$id_field]);
+    } elseif (is_object($args[0])) {
+      $args[0]->has_children = !empty($children_elements[$element->$id_field]);
+    }
+    $cb_args = array_merge(array(&$output, $element, $depth), $args);
+    call_user_func_array(array(&$this, 'start_el'), $cb_args);
+
+    $id = $element->$id_field;
+
+    // descend only when the depth is right and there are childrens for this element
+    if (($max_depth == 0 || $max_depth > $depth+1) && isset($children_elements[$id])) {
+      foreach ($children_elements[$id] as $child) {
+        if (!isset($newlevel)) {
+          $newlevel = true;
+          // start the child delimiter
+          $cb_args = array_merge(array(&$output, $depth), $args);
+          call_user_func_array(array(&$this, 'start_lvl'), $cb_args);
+        }
+        $this->display_element($child, $children_elements, $max_depth, $depth + 1, $args, $output);
+      }
+      unset($children_elements[$id]);
+    }
+
+    if (isset($newlevel) && $newlevel) {
+      // end the child delimiter
+      $cb_args = array_merge(array(&$output, $depth), $args);
+      call_user_func_array(array(&$this, 'end_lvl'), $cb_args);
+    }
+
+    // end this element
+    $cb_args = array_merge(array(&$output, $element, $depth), $args);
+    call_user_func_array(array(&$this, 'end_el'), $cb_args);
+  }
+}
+
+function roots_nav_menu_args($args = '') {
+  $args['container']  = false;
+  $args['depth']      = 2;
+  $args['items_wrap'] = '<ul class="nav">%3$s</ul>';
+  if (!$args['walker']) {
     $args['walker'] = new Roots_Nav_Walker();
   }
   return $args;
 }
-add_filter('wp_nav_menu_args', 'roots_default_wp_nav_menu_walker');
+
+add_filter('wp_nav_menu_args', 'roots_nav_menu_args');
 
 // add to robots.txt
 // http://codex.wordpress.org/Search_Engine_Optimization_for_WordPress#Robots.txt_Optimization
@@ -453,7 +581,7 @@ add_action('admin_init', 'roots_notice_tagline_ignore');
 
 // set the post revisions to 5 unless the constant
 // was set in wp-config.php to avoid DB bloat
-if (!defined('WP_POST_REVISIONS')) define('WP_POST_REVISIONS', 5);
+if (!defined('WP_POST_REVISIONS')) { define('WP_POST_REVISIONS', 5); }
 
 // allow more tags in TinyMCE including <iframe> and <script>
 function roots_change_mce_options($options) {
@@ -487,11 +615,11 @@ function roots_body_class() {
 
   if(!empty($cat)) {
     return $cat[0]->slug;
-  } elseif(isset($term->slug)) {
+  } elseif (isset($term->slug)) {
     return $term->slug;
-  } elseif(isset($term->page_name)) {
+  } elseif (isset($term->page_name)) {
     return $term->page_name;
-  } elseif(isset($term->post_name)) {
+  } elseif (isset($term->post_name)) {
     return $term->post_name;
   } else {
     return;
@@ -533,5 +661,34 @@ function roots_widget_first_last_classes($params) {
 
 }
 add_filter('dynamic_sidebar_params', 'roots_widget_first_last_classes');
+
+// apply Bootstrap markup/classes to Gravity Forms (in progress)
+if (class_exists('RGForms')) {
+  update_option('rg_gforms_disable_css', 1);
+
+  // error message class
+  function roots_gform_validation_message($message, $form) {
+    $message = '<div class="alert alert-error fade in">';
+    $message .= '<a class="close" data-dismiss="alert">×</a>';
+    $message .= '<strong>There was a problem with your submission. Errors have been highlighted below.</strong>';
+    $message .= '</div>';
+    return $message;
+  }
+  add_filter('gform_validation_message', 'roots_gform_validation_message', 10, 2);
+
+  // field class
+  function roots_gform_field_css_class($classes, $field, $form) {
+    $classes .= " control-group";
+    return $classes;
+  }
+  add_action('gform_field_css_class', 'roots_gform_field_css_class', 10, 3);
+
+  // button class
+  function roots_gform_submit_button($button, $form) {
+      return "<button class='btn btn-primary' id='gform_submit_button_{$form["id"]}'><span>Submit</span></button>";
+  }
+  add_filter('gform_submit_button', 'roots_gform_submit_button', 10, 2);
+
+}
 
 ?>

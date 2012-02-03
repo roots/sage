@@ -10,7 +10,10 @@
       </header>
 
       <?php if ($comment->comment_approved == '0') { ?>
-        <p><?php _e('Your comment is awaiting moderation.', 'roots') ?></p>
+        <div class="alert alert-block fade in">
+          <a class="close" data-dismiss="alert">×</a>
+          <p><?php _e('Your comment is awaiting moderation.', 'roots'); ?></p>
+        </div>
       <?php } ?>
 
       <section class="comment">
@@ -24,7 +27,10 @@
 
 <?php if (post_password_required()) { ?>
   <section id="comments">
-    <p><?php _e('This post is password protected. Enter the password to view comments.', 'roots'); ?></p>
+    <div class="alert alert-block fade in">
+      <a class="close" data-dismiss="alert">×</a>
+      <p><?php _e('This post is password protected. Enter the password to view comments.', 'roots'); ?></p>
+    </div>
   </section><!-- /#comments -->
 <?php
   return;
@@ -39,21 +45,28 @@
     </ol>
 
     <?php if (get_comment_pages_count() > 1 && get_option('page_comments')) { // are there comments to navigate through ?>
-      <nav id="comments-nav">
-        <div class="comments-previous"><?php previous_comments_link(__('&larr; Older comments', 'roots')); ?></div>
-        <div class="comments-next"><?php next_comments_link(__('Newer comments &rarr;', 'roots')); ?></div>
+      <nav id="comments-nav" class="pager">
+        <div class="previous"><?php previous_comments_link(__('&larr; Older comments', 'roots')); ?></div>
+        <div class="next"><?php next_comments_link(__('Newer comments &rarr;', 'roots')); ?></div>
       </nav>
+
     <?php } // check for comment navigation ?>
 
     <?php if (!comments_open() && !is_page() && post_type_supports(get_post_type(), 'comments')) { ?>
-      <p><?php _e('Comments are closed.', 'roots'); ?></p>
+      <div class="alert alert-block fade in">
+        <a class="close" data-dismiss="alert">×</a>
+        <p><?php _e('Comments are closed.', 'roots'); ?></p>
+      </div>
     <?php } ?>
   </section><!-- /#comments -->
 <?php } ?>
 
 <?php if (!have_comments() && !comments_open() && !is_page() && post_type_supports(get_post_type(), 'comments')) { ?>
   <section id="comments">
-    <p><?php _e('Comments are closed.', 'roots'); ?></p>
+    <div class="alert alert-block fade in">
+      <a class="close" data-dismiss="alert">×</a>
+      <p><?php _e('Comments are closed.', 'roots'); ?></p>
+    </div>
   </section><!-- /#comments -->
 <?php } ?>
 
@@ -68,24 +81,16 @@
         <?php if (is_user_logged_in()) { ?>
           <p><?php printf(__('Logged in as <a href="%s/wp-admin/profile.php">%s</a>.', 'roots'), get_option('siteurl'), $user_identity); ?> <a href="<?php echo wp_logout_url(get_permalink()); ?>" title="<?php __('Log out of this account', 'roots'); ?>"><?php _e('Log out &raquo;', 'roots'); ?></a></p>
         <?php } else { ?>
-          <p>
-            <label for="author"><?php _e('Name', 'roots'); if ($req) _e(' (required)', 'roots'); ?></label>
-            <input type="text" class="text" name="author" id="author" value="<?php echo esc_attr($comment_author); ?>" size="22" tabindex="1" <?php if ($req) echo "aria-required='true'"; ?>>
-          </p>
-          <p>
-            <label for="email"><?php _e('Email (will not be published)', 'roots'); if ($req) _e(' (required)', 'roots'); ?></label>
-            <input type="email" class="text" name="email" id="email" value="<?php echo esc_attr($comment_author_email); ?>" size="22" tabindex="2" <?php if ($req) echo "aria-required='true'"; ?>>
-          </p>
-          <p>
-            <label for="url"><?php _e('Website', 'roots'); ?></label>
-            <input type="url" class="text" name="url" id="url" value="<?php echo esc_attr($comment_author_url); ?>" size="22" tabindex="3">
-          </p>
+          <label for="author"><?php _e('Name', 'roots'); if ($req) _e(' (required)', 'roots'); ?></label>
+          <input type="text" class="text" name="author" id="author" value="<?php echo esc_attr($comment_author); ?>" size="22" tabindex="1" <?php if ($req) echo "aria-required='true'"; ?>>
+          <label for="email"><?php _e('Email (will not be published)', 'roots'); if ($req) _e(' (required)', 'roots'); ?></label>
+          <input type="email" class="text" name="email" id="email" value="<?php echo esc_attr($comment_author_email); ?>" size="22" tabindex="2" <?php if ($req) echo "aria-required='true'"; ?>>
+          <label for="url"><?php _e('Website', 'roots'); ?></label>
+          <input type="url" class="text" name="url" id="url" value="<?php echo esc_attr($comment_author_url); ?>" size="22" tabindex="3">
         <?php } ?>
-        <p>
-          <label for="comment"><?php _e('Comment', 'roots'); ?></label>
-          <textarea name="comment" id="comment" tabindex="4"></textarea>
-        </p>
-        <p><input name="submit" class="button" type="submit" id="submit" tabindex="5" value="<?php _e('Submit Comment', 'roots'); ?>"></p>
+        <label for="comment"><?php _e('Comment', 'roots'); ?></label>
+        <textarea name="comment" id="comment" class="input-xlarge" tabindex="4"></textarea>
+        <input name="submit" class="btn btn-primary" type="submit" id="submit" tabindex="5" value="<?php _e('Submit Comment', 'roots'); ?>">
         <?php comment_id_fields(); ?>
         <?php do_action('comment_form', $post->ID); ?>
       </form>

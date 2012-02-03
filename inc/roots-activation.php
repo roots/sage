@@ -37,7 +37,7 @@ function roots_theme_activation_options_add_page() {
     );
   } else {
     if (is_admin() && isset($_GET['page']) && $_GET['page'] === 'theme_activation_options') {
-      wp_redirect(admin_url('themes.php?page=theme_options'));
+      wp_redirect(admin_url('themes.php'));
       exit;
     }
   }
@@ -121,15 +121,15 @@ function roots_theme_activation_options_render_page() { ?>
           </td>
         </tr>
 
-        <tr valign="top"><th scope="row"><?php _e('Create navigation menus?', 'roots'); ?></th>
+        <tr valign="top"><th scope="row"><?php _e('Create navigation menu?', 'roots'); ?></th>
           <td>
-            <fieldset><legend class="screen-reader-text"><span><?php _e('Create navigation menus?', 'roots'); ?></span></legend>
+            <fieldset><legend class="screen-reader-text"><span><?php _e('Create navigation menu?', 'roots'); ?></span></legend>
               <select name="roots_theme_activation_options[create_navigation_menus]" id="create_navigation_menus">
                 <option selected="selected" value="yes"><?php echo _e('Yes', 'roots'); ?></option>
                 <option value="no"><?php echo _e('No', 'roots'); ?></option>
               </select>
               <br />
-              <small class="description"><?php printf(__('Create the Primary and Utility Navigation menus and set their locations', 'roots')); ?></small>
+              <small class="description"><?php printf(__('Create the Primary Navigation menu and set the location', 'roots')); ?></small>
             </fieldset>
           </td>
         </tr>
@@ -283,11 +283,6 @@ function roots_theme_activation_action() {
     if (!has_nav_menu('primary_navigation')) {
       $primary_nav_id = wp_create_nav_menu('Primary Navigation', array('slug' => 'primary_navigation'));
       $roots_nav_theme_mod['primary_navigation'] = $primary_nav_id;
-    }
-
-    if (!has_nav_menu('utility_navigation')) {
-      $utility_nav_id = wp_create_nav_menu('Utility Navigation', array('slug' => 'utility_navigation'));
-      $roots_nav_theme_mod['utility_navigation'] = $utility_nav_id;
     }
 
     if ($roots_nav_theme_mod) {

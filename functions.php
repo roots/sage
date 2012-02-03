@@ -1,9 +1,9 @@
 <?php // https://github.com/retlehs/roots/wiki
 
-if (!defined('__DIR__')) define('__DIR__', dirname(__FILE__));
+if (!defined('__DIR__')) { define('__DIR__', dirname(__FILE__)); }
 
+require_once locate_template('/inc/roots-config.php');      // config
 require_once locate_template('/inc/roots-activation.php');  // activation
-require_once locate_template('/inc/roots-options.php');     // theme options
 require_once locate_template('/inc/roots-cleanup.php');     // cleanup
 require_once locate_template('/inc/roots-scripts.php');     // modified scripts output
 require_once locate_template('/inc/roots-htaccess.php');    // rewrites for assets, h5bp htaccess
@@ -12,25 +12,9 @@ require_once locate_template('/inc/roots-actions.php');     // actions
 require_once locate_template('/inc/roots-widgets.php');     // widgets
 require_once locate_template('/inc/roots-custom.php');      // custom functions
 
-$roots_options = roots_get_theme_options();
-
 // set the maximum 'Large' image width to the maximum grid width
 // http://wordpress.stackexchange.com/q/11766
-if (!isset($content_width)) {
-  global $roots_options;
-  $roots_css_framework = $roots_options['css_framework'];
-  switch ($roots_css_framework) {
-    case 'blueprint':   $content_width = 950;   break;
-    case '960gs_12':    $content_width = 940;   break;
-    case '960gs_16':    $content_width = 940;   break;
-    case '960gs_24':    $content_width = 940;   break;
-    case '1140':        $content_width = 1140;  break;
-    case 'adapt':       $content_width = 940;   break;
-    case 'bootstrap':   $content_width = 940;   break;
-    case 'foundation':  $content_width = 980;   break;
-    default:            $content_width = 950;   break;
-  }
-}
+if (!isset($content_width)) { $content_width = 940; }
 
 function roots_setup() {
   load_theme_textdomain('roots', get_template_directory() . '/lang');
@@ -49,8 +33,7 @@ function roots_setup() {
 
   // http://codex.wordpress.org/Function_Reference/register_nav_menus
   register_nav_menus(array(
-    'primary_navigation' => __('Primary Navigation', 'roots'),
-    'utility_navigation' => __('Utility Navigation', 'roots')
+    'primary_navigation' => __('Primary Navigation', 'roots')
   ));
 }
 
@@ -66,7 +49,7 @@ function roots_register_sidebars() {
         'id'            => 'roots-' . sanitize_title($sidebar),
         'name'          => __($sidebar, 'roots'),
         'description'   => __($sidebar, 'roots'),
-        'before_widget' => '<article id="%1$s" class="widget %2$s"><div class="container">',
+        'before_widget' => '<article id="%1$s" class="widget %2$s"><div class="widget-inner">',
         'after_widget'  => '</div></article>',
         'before_title'  => '<h3>',
         'after_title'   => '</h3>'

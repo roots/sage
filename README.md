@@ -1,8 +1,6 @@
 # [Roots Theme](http://rootstheme.com/)
 
-Roots is a starting WordPress theme made for developers that’s based on [HTML5 Boilerplate](http://html5boilerplate.com/), Starkers, and the most popular CSS frameworks.
-
-Roots includes support for Blueprint CSS, 960 Grid System, 1140px Grid, Adapt.js, Less Framework, Foundation, and Bootstrap with the ability to set site-wide classes for the main content area and the sidebar. There's also the option to not use any CSS framework.
+Roots is a starting WordPress theme made for developers that’s based on [HTML5 Boilerplate](http://html5boilerplate.com/), and Bootstrap from Twitter.
 
 ## Quick start
 
@@ -11,8 +9,8 @@ Roots includes support for Blueprint CSS, 960 Grid System, 1140px Grid, Adapt.js
 
 ## Features
 
-* HTML5 Boilerplate's markup, style, and .htaccess
-* Popular CSS frameworks included (with the option to use none)
+* HTML5 Boilerplate’s markup, style, and .htaccess
+* Bootstrap from Twitter
 * Clean URLs (no more `/wp-content/`)
 * All static theme assets are rewritten to the website root (`/css/`, `/img/`, and `/js/`)
 * Cleaner HTML output of navigation menus
@@ -22,9 +20,6 @@ Roots includes support for Blueprint CSS, 960 Grid System, 1140px Grid, Adapt.js
 * `wp_head` has been cleaned up along with the output of enqueued styles and scripts
 * Robots.txt optimized for SEO
 * [Multilingual ready](http://www.rootstheme.com/wpml/) (English, Spanish, French, Italian, Dutch, Brazilian Portuguese, Macedonian, Finnish, Danish, and Turkish)
-
-### Theme Options
-![Theme Options](http://www.rootstheme.com/img/roots-settings.png)
 
 ## Contributing
 
@@ -52,12 +47,6 @@ Anyone and everyone is welcome to contribute. There are several ways you can hel
 * Modernizr: MIT/BSD license
 * jQuery: MIT/GPL license
 * Normalize.css: Public Domain
-* Blueprint CSS: Modified MIT License
-* 960 Grid System: MIT/GPL License
-* The 1140px Grid: CC BY-SA 3.0 Australia License
-* Adapt.js: MIT/GPL license
-* Less Framework 4: MIT license
-* Foundation: MIT license
 * Bootstrap: Apache 2.0 license
 
 ### Everything else:

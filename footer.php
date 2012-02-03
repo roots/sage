@@ -1,21 +1,16 @@
+
     <?php roots_footer_before(); ?>
-    <footer id="content-info" class="<?php global $roots_options; echo $roots_options['container_class']; ?>" role="contentinfo">
+    <footer id="content-info" class="<?php echo WRAP_CLASSES; ?>" role="contentinfo">
       <?php roots_footer_inside(); ?>
-      <div class="container">
-        <?php dynamic_sidebar('roots-footer'); ?>
-        <p class="copy"><small>&copy; <?php echo date('Y'); ?> <?php bloginfo('name'); ?></small></p>
-      </div>
+      <?php dynamic_sidebar('roots-footer'); ?>
+      <p class="copy"><small>&copy; <?php echo date('Y'); ?> <?php bloginfo('name'); ?></small></p>
     </footer>
     <?php roots_footer_after(); ?>
+
   </div><!-- /#wrap -->
 
   <?php wp_footer(); ?>
   <?php roots_footer(); ?>
-
-  <!--[if lt IE 7]>
-    <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
-    <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
-  <![endif]-->
 
 </body>
 </html>
