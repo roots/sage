@@ -516,31 +516,6 @@ function roots_nav_menu_args($args = '') {
 
 add_filter('wp_nav_menu_args', 'roots_nav_menu_args');
 
-// add to robots.txt
-// http://codex.wordpress.org/Search_Engine_Optimization_for_WordPress#Robots.txt_Optimization
-function roots_robots() {
-  echo "Disallow: /cgi-bin\n";
-  echo "Disallow: /wp-admin\n";
-  echo "Disallow: /wp-includes\n";
-  echo "Disallow: /wp-content/plugins\n";
-  echo "Disallow: /plugins\n";
-  echo "Disallow: /wp-content/cache\n";
-  echo "Disallow: /wp-content/themes\n";
-  echo "Disallow: /trackback\n";
-  echo "Disallow: /feed\n";
-  echo "Disallow: /comments\n";
-  echo "Disallow: /category/*/*\n";
-  echo "Disallow: */trackback\n";
-  echo "Disallow: */feed\n";
-  echo "Disallow: */comments\n";
-  echo "Disallow: /*?*\n";
-  echo "Disallow: /*?\n";
-  echo "Allow: /wp-content/uploads\n";
-  echo "Allow: /assets";
-}
-
-add_action('do_robots', 'roots_robots');
-
 // we don't need to self-close these tags in html5:
 // <img>, <input>
 function roots_remove_self_closing_tags($input) {
