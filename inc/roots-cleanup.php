@@ -174,10 +174,13 @@ function roots_head_cleanup() {
   remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0);
   remove_action('wp_head', 'noindex', 1);
   add_action('wp_head', 'roots_noindex');
-  remove_action('wp_head', 'rel_canonical');
-  add_action('wp_head', 'roots_rel_canonical');
   add_action('wp_head', 'roots_remove_recent_comments_style', 1);
   add_filter('gallery_style', 'roots_gallery_style');
+
+  if (!class_exists('WPSEO_Frontend')) {
+    remove_action('wp_head', 'rel_canonical');
+    add_action('wp_head', 'roots_rel_canonical');
+  }
 
   // deregister l10n.js (new since WordPress 3.1)
   // why you might want to keep it: http://wordpress.stackexchange.com/questions/5451/what-does-l10n-js-do-in-wordpress-3-1-and-how-do-i-remove-it/5484#5484
