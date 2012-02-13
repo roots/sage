@@ -17,13 +17,17 @@ if (!is_admin()) {
 function roots_print_scripts() {
   global $wp_scripts;
   $wp_scripts->all_deps($wp_scripts->queue);
-  $scripts = array();
+  $scripts = $locales = array();
 
   foreach ($wp_scripts->queue as $key => $handle) {
     $skip_scripts = array('jquery', 'roots_script', 'roots_plugins');
 
     $src = $wp_scripts->registered[$handle]->src;
-    unset($wp_scripts->queue[$key]);
+
+    if ($locale = $wp_scripts->print_extra_script($handle, false)) {
+      $locales[] = $locale;
+    }
+
     $wp_scripts->done[] = $handle;
 
     if (!in_array($handle, $skip_scripts)) {
@@ -32,6 +36,13 @@ function roots_print_scripts() {
   }
 
   echo "\t" . implode("\n\t", $scripts) . "\n";
+  if (!empty($locales)) {
+    echo "\t<script>\n";
+    foreach ($locales as $locale) {
+      echo "\t\t{$locale}\n";
+    }
+    echo "\t</script>\n";
+  }
 
   $template_uri = get_template_directory_uri();
   echo "\t<script src=\"$template_uri/js/plugins.js\"></script>\n";
