@@ -16,10 +16,13 @@ if (!is_admin()) {
 
 function roots_print_scripts() {
   global $wp_scripts;
+
   $wp_scripts->all_deps($wp_scripts->queue);
   $scripts = $locales = array();
+  $queue = $wp_scripts->queue;
+  $wp_scripts->all_deps($queue);
 
-  foreach ($wp_scripts->queue as $key => $handle) {
+  foreach ($wp_scripts->to_do as $key => $handle) {
     $skip_scripts = array('jquery', 'roots_script', 'roots_plugins');
 
     $src = $wp_scripts->registered[$handle]->src;
