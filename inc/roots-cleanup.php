@@ -387,6 +387,8 @@ class Roots_Nav_Walker extends Walker_Nav_Menu {
     $indent = ($depth) ? str_repeat("\t", $depth) : '';
 
     $slug = sanitize_title($item->title);
+    $id = apply_filters('nav_menu_item_id', 'menu-' . $slug, $item, $args);
+    $id = strlen($id) ? '' . esc_attr( $id ) . '' : '';
 
     $class_names = $value = '';
     $classes = empty($item->classes) ? array() : (array) $item->classes;
@@ -394,12 +396,9 @@ class Roots_Nav_Walker extends Walker_Nav_Menu {
     $classes = array_filter($classes, array(&$this, 'check_current'));
 
     $class_names = join(' ', apply_filters('nav_menu_css_class', array_filter($classes), $item));
-    $class_names = $class_names ? ' class="' . esc_attr($class_names) . '"' : '';
+    $class_names = $class_names ? ' class="' . $id . ' ' . esc_attr($class_names) . '"' : ' class="' . $id . '"';
 
-    $id = apply_filters('nav_menu_item_id', 'menu-' . $slug, $item, $args);
-    $id = strlen($id) ? ' id="' . esc_attr( $id ) . '"' : '';
-
-    $output .= $indent . '<li' . $id . $class_names . '>';
+    $output .= $indent . '<li' . $class_names . '>';
 
     $attributes  = ! empty($item->attr_title) ? ' title="'  . esc_attr($item->attr_title) .'"' : '';
     $attributes .= ! empty($item->target)     ? ' target="' . esc_attr($item->target    ) .'"' : '';
@@ -430,6 +429,8 @@ class Roots_Navbar_Nav_Walker extends Walker_Nav_Menu {
     $indent = ($depth) ? str_repeat("\t", $depth) : '';
 
     $slug = sanitize_title($item->title);
+    $id = apply_filters('nav_menu_item_id', 'menu-' . $slug, $item, $args);
+    $id = strlen($id) ? '' . esc_attr( $id ) . '' : '';
 
     $li_attributes = '';
     $class_names = $value = '';
@@ -443,12 +444,9 @@ class Roots_Navbar_Nav_Walker extends Walker_Nav_Menu {
     $classes = array_filter($classes, array(&$this, 'check_current'));
 
     $class_names = join(' ', apply_filters('nav_menu_css_class', array_filter($classes), $item));
-    $class_names = $class_names ? ' class="' . esc_attr($class_names) . '"' : '';
+    $class_names = $class_names ? ' class="' . $id . ' ' . esc_attr($class_names) . '"' : ' class="' . $id . '"';
 
-    $id = apply_filters('nav_menu_item_id', 'menu-' . $slug, $item, $args);
-    $id = strlen($id) ? ' id="' . esc_attr( $id ) . '"' : '';
-
-    $output .= $indent . '<li' . $id . $class_names . $li_attributes . '>';
+    $output .= $indent . '<li' . $class_names . $li_attributes . '>';
 
     $attributes  = ! empty($item->attr_title) ? ' title="'  . esc_attr($item->attr_title) .'"'    : '';
     $attributes .= ! empty($item->target)     ? ' target="' . esc_attr($item->target    ) .'"'    : '';
