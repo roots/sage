@@ -438,7 +438,7 @@ class Roots_Navbar_Nav_Walker extends Walker_Nav_Menu {
     $classes = empty($item->classes) ? array() : (array) $item->classes;
     if ($args->has_children) {
       $classes[]      = 'dropdown';
-      $li_attributes .= 'data-dropdown="dropdown"';
+      $li_attributes .= ' data-dropdown="dropdown"';
     }
     $classes[] = ($item->current) ? 'active' : '';
     $classes = array_filter($classes, array(&$this, 'check_current'));
