@@ -3,6 +3,15 @@
 if (!defined('__DIR__')) { define('__DIR__', dirname(__FILE__)); }
 
 require_once locate_template('/inc/roots-config.php');      // config
+require_once locate_template('/inc/roots-utils.php');       // utility functions
+
+define('WP_BASE', wp_base_dir());
+define('THEME_NAME', next(explode('/themes/', get_template_directory())));
+define('RELATIVE_PLUGIN_PATH', str_replace(site_url() . '/', '', plugins_url()));
+define('FULL_RELATIVE_PLUGIN_PATH', WP_BASE . '/' . RELATIVE_PLUGIN_PATH);
+define('RELATIVE_CONTENT_PATH', str_replace(site_url() . '/', '', content_url()));
+define('THEME_PATH', RELATIVE_CONTENT_PATH . '/themes/' . THEME_NAME);
+
 require_once locate_template('/inc/roots-activation.php');  // activation
 require_once locate_template('/inc/roots-cleanup.php');     // cleanup
 require_once locate_template('/inc/roots-scripts.php');     // modified scripts output

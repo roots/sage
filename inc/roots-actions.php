@@ -1,7 +1,5 @@
 <?php
 
-add_action('roots_stylesheets', 'roots_get_stylesheets');
-
 function roots_get_stylesheets() {
   $styles = '';
   $styles .= stylesheet_link_tag('/style.css', 1);
@@ -25,7 +23,7 @@ function stylesheet_link_tag($file, $tabs = 0, $newline = true, $rel = 'styleshe
   return $indent . '<link rel="' . $rel .'" href="' . get_template_directory_uri() . '/css' . $file . '">' . ($newline ? "\n" : "");
 }
 
-add_action('roots_footer', 'roots_google_analytics');
+add_action('roots_stylesheets', 'roots_get_stylesheets');
 
 function roots_google_analytics() {
   $roots_google_analytics_id = GOOGLE_ANALYTICS_ID;
@@ -38,5 +36,7 @@ function roots_google_analytics() {
     echo "\t</script>\n";
   }
 }
+
+add_action('roots_footer', 'roots_google_analytics');
 
 ?>

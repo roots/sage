@@ -1,9 +1,8 @@
 <?php
 
 function roots_scripts() {
-  $template_uri = get_template_directory_uri();
-  wp_register_script('roots_plugins', ''.$template_uri.'/js/plugins.js', false, null, false);
-  wp_register_script('roots_script', ''.$template_uri.'/js/script.js', false, null, false);
+  wp_register_script('roots_plugins', THEME_PATH . '/js/plugins.js', false, null, false);
+  wp_register_script('roots_script', THEME_PATH . '/js/script.js', false, null, false);
   wp_enqueue_script('roots_plugins');
   wp_enqueue_script('roots_script');
 }
@@ -25,7 +24,8 @@ function roots_print_scripts() {
   foreach ($wp_scripts->to_do as $key => $handle) {
     $skip_scripts = array('jquery', 'roots_script', 'roots_plugins');
 
-    $src = $wp_scripts->registered[$handle]->src;
+    $src = WP_BASE . leadingslashit($wp_scripts->registered[$handle]->src);
+    $src = apply_filters('script_loader_src', $src);
 
     if ($locale = $wp_scripts->print_extra_script($handle, false)) {
       $locales[] = $locale;
