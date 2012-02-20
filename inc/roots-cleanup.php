@@ -9,7 +9,9 @@ function roots_nice_search_redirect() {
   }
 }
 
-add_action('template_redirect', 'roots_nice_search_redirect');
+if(!defined('BP_VERSION')){ //if buddypress is active, do not redirect search... buddypress doesn't like it.
+  add_action('template_redirect', 'roots_nice_search_redirect');
+}
 
 function roots_search_query($escaped = true) {
   $query = apply_filters('roots_search_query', get_query_var('s'));
