@@ -1,4 +1,4 @@
-<?
+<?php
 
 // returns WordPress subdirectory if applicable
 function wp_base_dir() {
