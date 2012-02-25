@@ -9,7 +9,7 @@ function roots_scripts() {
 
 add_action('wp_enqueue_scripts', 'roots_scripts');
 
-if (!is_admin()) {
+if (basename($_SERVER['PHP_SELF']) != 'wp-login.php' && !is_admin()) {
   add_action('wp_print_scripts', 'roots_print_scripts');
 }
 
