@@ -11,7 +11,7 @@
 
       <?php if ($comment->comment_approved == '0') { ?>
         <div class="alert alert-block fade in">
-          <a class="close" data-dismiss="alert">×</a>
+          <a class="close" data-dismiss="alert">&times;</a>
           <p><?php _e('Your comment is awaiting moderation.', 'roots'); ?></p>
         </div>
       <?php } ?>
