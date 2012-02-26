@@ -9,12 +9,13 @@ function roots_scripts() {
 
 add_action('wp_enqueue_scripts', 'roots_scripts');
 
-if (basename($_SERVER['PHP_SELF']) != 'wp-login.php' && !is_admin()) {
+if (!is_admin()) {
   add_action('wp_print_scripts', 'roots_print_scripts');
 }
 
 function roots_print_scripts() {
   global $wp_scripts;
+  if (! isset($wp_scripts)) return;
 
   $wp_scripts->all_deps($wp_scripts->queue);
   $scripts = $locales = array();
