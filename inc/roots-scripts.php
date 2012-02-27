@@ -19,6 +19,7 @@ function roots_print_scripts() {
   }
 
   global $wp_scripts;
+  if (! isset($wp_scripts)) return;
 
   if (!is_a($wp_scripts, 'WP_Scripts')) {
     return;
