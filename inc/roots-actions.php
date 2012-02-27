@@ -38,5 +38,3 @@ function roots_google_analytics() {
 }
 
 add_action('roots_footer', 'roots_google_analytics');
-
-?>

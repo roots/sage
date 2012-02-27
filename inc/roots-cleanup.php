@@ -648,5 +648,3 @@ if (class_exists('RGForms')) {
   add_filter('gform_submit_button', 'roots_gform_submit_button', 10, 2);
 
 }
-
-?>

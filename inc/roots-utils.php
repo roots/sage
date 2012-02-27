@@ -24,5 +24,3 @@ function add_filters($tags, $function) {
     add_filter($tag, $function);
   }
 }
-
-?>

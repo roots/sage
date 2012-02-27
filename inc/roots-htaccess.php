@@ -80,5 +80,3 @@ if (stristr($_SERVER['SERVER_SOFTWARE'], 'apache') !== false) {
   }
 
 }
-
-?>

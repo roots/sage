@@ -58,5 +58,3 @@ function roots_print_scripts() {
   $wp_scripts->reset();
   return $wp_scripts->done;
 }
-
-?>

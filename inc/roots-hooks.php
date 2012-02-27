@@ -30,5 +30,3 @@ function roots_footer_before() { do_action('roots_footer_before'); }
 function roots_footer_inside() { do_action('roots_footer_inside'); }
 function roots_footer_after() { do_action('roots_footer_after'); }
 function roots_footer() { do_action('roots_footer'); }
-
-?>

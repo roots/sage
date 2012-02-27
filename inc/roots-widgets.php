@@ -132,5 +132,3 @@ function roots_widget_init() {
 }
 
 add_action('widgets_init', 'roots_widget_init');
-
-?>
