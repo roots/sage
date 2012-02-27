@@ -14,7 +14,15 @@ if (!is_admin()) {
 }
 
 function roots_print_scripts() {
+  if (!is_admin()) {
+    return;
+  }
+
   global $wp_scripts;
+
+  if (!is_a($wp_scripts, 'WP_Scripts')) {
+    return;
+  }
 
   $wp_scripts->all_deps($wp_scripts->queue);
   $scripts = $locales = array();
