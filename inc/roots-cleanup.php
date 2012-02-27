@@ -627,7 +627,7 @@ if (class_exists('RGForms')) {
   // error message class
   function roots_gform_validation_message($message, $form) {
     $message = '<div class="alert alert-error fade in">';
-    $message .= '<a class="close" data-dismiss="alert">×</a>';
+    $message .= '<a class="close" data-dismiss="alert">&times;</a>';
     $message .= '<strong>There was a problem with your submission. Errors have been highlighted below.</strong>';
     $message .= '</div>';
     return $message;

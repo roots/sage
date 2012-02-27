@@ -7,7 +7,7 @@
           <h1><?php _e('File Not Found', 'roots'); ?></h1>
         </div>
         <div class="alert alert-block fade in">
-          <a class="close" data-dismiss="alert">×</a>
+          <a class="close" data-dismiss="alert">&times;</a>
           <p><?php _e('The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.', 'roots'); ?></p>
         </div>
         <p><?php _e('Please try the following:', 'roots'); ?></p>

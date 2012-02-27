@@ -11,7 +11,7 @@
 
       <?php if ($comment->comment_approved == '0') { ?>
         <div class="alert alert-block fade in">
-          <a class="close" data-dismiss="alert">×</a>
+          <a class="close" data-dismiss="alert">&times;</a>
           <p><?php _e('Your comment is awaiting moderation.', 'roots'); ?></p>
         </div>
       <?php } ?>
@@ -28,7 +28,7 @@
 <?php if (post_password_required()) { ?>
   <section id="comments">
     <div class="alert alert-block fade in">
-      <a class="close" data-dismiss="alert">×</a>
+      <a class="close" data-dismiss="alert">&times;</a>
       <p><?php _e('This post is password protected. Enter the password to view comments.', 'roots'); ?></p>
     </div>
   </section><!-- /#comments -->
@@ -54,7 +54,7 @@
 
     <?php if (!comments_open() && !is_page() && post_type_supports(get_post_type(), 'comments')) { ?>
       <div class="alert alert-block fade in">
-        <a class="close" data-dismiss="alert">×</a>
+        <a class="close" data-dismiss="alert">&times;</a>
         <p><?php _e('Comments are closed.', 'roots'); ?></p>
       </div>
     <?php } ?>
@@ -64,7 +64,7 @@
 <?php if (!have_comments() && !comments_open() && !is_page() && post_type_supports(get_post_type(), 'comments')) { ?>
   <section id="comments">
     <div class="alert alert-block fade in">
-      <a class="close" data-dismiss="alert">×</a>
+      <a class="close" data-dismiss="alert">&times;</a>
       <p><?php _e('Comments are closed.', 'roots'); ?></p>
     </div>
   </section><!-- /#comments -->
