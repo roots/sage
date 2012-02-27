@@ -14,13 +14,9 @@ if (!is_admin()) {
 }
 
 function roots_print_scripts() {
-  if (!is_admin()) {
-    return;
-  }
-
   global $wp_scripts;
 
-  if (!is_a($wp_scripts, 'WP_Scripts')) {
+  if (!isset($wp_scripts)) {
     return;
   }
 
