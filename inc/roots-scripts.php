@@ -28,7 +28,11 @@ function roots_print_scripts() {
   foreach ($wp_scripts->to_do as $key => $handle) {
     $skip_scripts = array('jquery', 'roots_script', 'roots_plugins');
 
-    $src = WP_BASE . leadingslashit($wp_scripts->registered[$handle]->src);
+    if ( substr($wp_scripts->registered[$handle]->src, 0, 4) == 'http'){
+      $src = WP_BASE . $wp_scripts->registered[$handle]->src;
+    } else {
+      $src = WP_BASE . leadingslashit($wp_scripts->registered[$handle]->src);
+    }
     $src = apply_filters('script_loader_src', $src);
 
     if ($locale = $wp_scripts->print_extra_script($handle, false)) {
