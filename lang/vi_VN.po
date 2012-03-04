@@ -1,0 +1,516 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Project-Id-Version: 1.0\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: Wordpress.com.vn <le@doobbe.com>\n"
+"MIME-Version: 1.0\n"
+"X-Poedit-Language: Vietnamese\n"
+"X-Poedit-Country: Vietnam\n"
+
+#. Text in echo
+#: comments.php:72
+#: comments.php:76
+msgid " (required)"
+msgstr "Bắt buộc"
+
+#. Text in echo
+#: inc/roots-options.php:260
+msgid "#fullwidth CSS Classes"
+msgstr "#Thuộc tính fullwidth CSS"
+
+#. Text in echo
+#: inc/roots-options.php:238
+#: inc/roots-options.php:240
+msgid "#main CSS Classes"
+msgstr "#Thuộc tính main CSS"
+
+#. Text in echo
+#: inc/roots-options.php:248
+#: inc/roots-options.php:250
+msgid "#sidebar CSS Classes"
+msgstr "#Thuộc tính sidebar CSS"
+
+#. Text in function
+#: comments.php:8
+msgid "%1$s"
+msgstr "%1$s"
+
+#. Text in function
+#: inc/roots-activation.php:70
+msgid "%s Theme Activation"
+msgstr "%s kích hoạt giao diện"
+
+#. Text in function
+#: inc/roots-options.php:214
+msgid "%s Theme Options"
+msgstr "%s tùy chọn giao diện"
+
+#. Text in function
+#: comments.php:43
+msgid "&larr; Older comments"
+msgstr "&larr; Bình luận cũ hơn"
+
+#. Text in function
+#: loop.php:34
+msgid "&larr; Older posts"
+msgstr "&larr; Bài viết cũ hơn"
+
+#. Text in function
+#: comments.php:9
+msgid "(Edit)"
+msgstr "(Chỉnh sửa)"
+
+#. Text in function
+#: inc/roots-options.php:1
+msgid "1140"
+msgstr "1140"
+
+#. Text in function
+#: inc/roots-options.php:1
+msgid "960gs (12 cols)"
+msgstr "960gs (12 cột)"
+
+#. Text in function
+#: inc/roots-options.php:1
+msgid "960gs (16 cols)"
+msgstr "960gs (16 cột)"
+
+#. Text in function
+#: inc/roots-options.php:1
+msgid "960gs (24 cols)"
+msgstr "960gs (24 cột)"
+
+#. Text in function
+#: comments.php:7
+msgid "<cite class=\"fn\">%s</cite>"
+msgstr "<cite class=\"fn\">%s</cite>"
+
+#. Text in function
+#: inc/roots-options.php:1
+msgid "Adapt.js"
+msgstr "Adapt.js"
+
+#. Text in function
+#: inc/roots-activation.php:145
+msgid "Add all current published pages to the Primary Navigation"
+msgstr "Thêm tất cả các trang hiện có vào Danh mục định hướng chính"
+
+#. Text in echo
+#: inc/roots-activation.php:137
+#: inc/roots-activation.php:139
+msgid "Add pages to menu?"
+msgstr "Thêm các trang vào trình đơn?"
+
+#. Text in function
+#: archive.php:8
+msgid "Author Archives: %s"
+msgstr "Mục lưu trữ của tác giả: %s"
+
+#. Text in function
+#: inc/roots-options.php:1
+msgid "Blueprint CSS"
+msgstr "Blueprint CSS"
+
+#. Text in function
+#: inc/roots-options.php:1
+msgid "Bootstrap"
+msgstr "Bootstrap"
+
+#. Text in echo
+#: inc/roots-options.php:282
+msgid "Bootstrap Javascript Packages"
+msgstr "Gói Javascript của Bootstrap"
+
+#. Text in function
+#: inc/roots-options.php:1
+msgid "Bootstrap w/ Less"
+msgstr "Bootstrap w/ Less"
+
+#. Text in echo
+#: inc/roots-options.php:226
+#: inc/roots-options.php:228
+msgid "CSS Grid Framework"
+msgstr "CSS Grid Framework"
+
+#. Text in function
+#: inc/roots-activation.php:106
+msgid "Change permalink structure to /&#37;postname&#37;/"
+msgstr "Thay đổi cấu trúc liên kết tĩnh thành /&#37;postname&#37;/"
+
+#. Text in echo
+#: inc/roots-activation.php:98
+msgid "Change permalink structure?"
+msgstr "Thay đổi cấu trúc liên kết tĩnh?"
+
+#. Text in function
+#: inc/roots-activation.php:119
+msgid "Change uploads folder to /assets/ instead of /wp-content/uploads/"
+msgstr "Thay đổi thư mục tải lên thành /assets/ thay vì /wp-content/uploads/"
+
+#. Text in echo
+#: inc/roots-activation.php:111
+msgid "Change uploads folder?"
+msgstr "Thay đổi thư mục tải lên?"
+
+#. Text in echo
+#: 404.php:11
+msgid "Check your spelling"
+msgstr "Kiểm tra chính tả"
+
+#. Text in echo
+#: inc/roots-widgets.php:107
+msgid "City/Locality:"
+msgstr "Thành phố/Địa phương:"
+
+#. Text in echo
+#: inc/roots-options.php:315
+#: inc/roots-options.php:317
+msgid "Cleanup Menu Output"
+msgstr "Dọn dẹp đầu ra của trình đơn"
+
+#. Text in echo
+#: 404.php:13
+msgid "Click the <a href=\"javascript:history.back()\">Back</a> button"
+msgstr "Nhấp vào nút <a href=\"javascript:history.back()\">Quay lại</a> "
+
+#. Text in echo
+#: comments.php:85
+msgid "Comment"
+msgstr "Bình luận"
+
+#. Text in echo
+#: comments.php:49
+#: comments.php:56
+msgid "Comments are closed."
+msgstr "Mục bình luận đã bị đóng."
+
+#. Text in function
+#: inc/roots-cleanup.php:1
+msgid "Continued"
+msgstr "Tiếp tục"
+
+#. Text in function
+#: inc/roots-activation.php:93
+msgid "Create a page called Home and set it to be the static front page"
+msgstr "Tạo một trang với tên là Home và thiết lập thành trang chủ tĩnh"
+
+#. Text in echo
+#: inc/roots-activation.php:124
+#: inc/roots-activation.php:126
+msgid "Create navigation menus?"
+msgstr "Tạo các trình đơn định hướng?"
+
+#. Text in echo
+#: inc/roots-activation.php:85
+#: inc/roots-activation.php:87
+msgid "Create static front page?"
+msgstr "Tạo trang chủ tĩnh?"
+
+#. Text in function
+#: inc/roots-activation.php:132
+msgid "Create the Primary and Utility Navigation menus and set their locations"
+msgstr "Tạo các danh mục trình đơn định hướng chính và tiện túc sau đó thiết lập vị trí của chúng"
+
+#. Text in function
+#: archive.php:8
+msgid "Daily Archives: %s"
+msgstr "Phần lưu trữ hàng ngày: %s"
+
+#. Text in echo
+#: inc/roots-options.php:243
+#: inc/roots-options.php:253
+#: inc/roots-options.php:263
+msgid "Default:"
+msgstr "Mặc định:"
+
+#. Text in echo
+#: comments.php:76
+msgid "Email (will not be published)"
+msgstr "Địa chỉ Email (sẽ không được công khai)"
+
+#. Text in echo
+#: inc/roots-widgets.php:123
+msgid "Email:"
+msgstr "Địa chỉ email:"
+
+#. Text in echo
+#: inc/roots-options.php:284
+msgid "Enable Bootstrap Javascript"
+msgstr "Kích hoạt Bootstrap Javascript"
+
+#. Text in echo
+#: inc/roots-options.php:304
+#: inc/roots-options.php:306
+msgid "Enable Root Relative URLs"
+msgstr "Kích hoạt Root URLs tương đối"
+
+#. Text in function
+#: inc/roots-options.php:299
+msgid "Enter your UA-XXXXX-X ID"
+msgstr "Nhập ID UA-XXXXX-X của bạn"
+
+#. Text in echo
+#: 404.php:7
+msgid "File Not Found"
+msgstr "Tập tin không tồn tại"
+
+#. Text in function
+#: inc/roots-options.php:1
+msgid "Foundation"
+msgstr "Foundation"
+
+#. Text in echo
+#: inc/roots-options.php:258
+msgid "Full Width CSS Classes"
+msgstr "Thuộc tính CSS rộng hoàn toàn"
+
+#. Text in echo
+#: inc/roots-options.php:294
+#: inc/roots-options.php:296
+msgid "Google Analytics ID"
+msgstr "Google Analytics ID"
+
+#. Text in echo
+#: index.php:7
+msgid "Latest Posts"
+msgstr "Bài viết mới nhất"
+
+#. Text in function
+#: comments.php:62
+msgid "Leave a Reply"
+msgstr "Gửi phản hồi"
+
+#. Text in function
+#: comments.php:62
+msgid "Leave a Reply to %s"
+msgstr "Gửi phản hồi cho %s"
+
+#. Text in function
+#: inc/roots-options.php:1
+msgid "Less Framework 4"
+msgstr "Less Framework 4"
+
+#. Text in echo
+#: comments.php:69
+msgid "Log out &raquo;"
+msgstr "Đăng xuất &raquo;"
+
+#. Text in function
+#: comments.php:69
+msgid "Log out of this account"
+msgstr "Đăng xuất khỏi tài khoản này"
+
+#. Text in function
+#: comments.php:69
+msgid "Logged in as <a href=\"%s/wp-admin/profile.php\">%s</a>."
+msgstr "Đăng nhập với tài khoản <a href=\"%s/wp-admin/profile.php\">%s</a>."
+
+#. Text in function
+#: archive.php:8
+msgid "Monthly Archives: %s"
+msgstr "Phần lưu trữ hàng tháng: %s"
+
+#. Text in echo
+#: comments.php:72
+msgid "Name"
+msgstr "Tên"
+
+#. Text in function
+#: comments.php:44
+msgid "Newer comments &rarr;"
+msgstr "Bình luận mới hơn"
+
+#. Text in function
+#: loop.php:35
+msgid "Newer posts &rarr;"
+msgstr "Bài viết mới hơn  &rarr;"
+
+#. Text in echo
+#: inc/roots-activation.php:142
+#: inc/roots-options.php:274
+#: inc/roots-options.php:287
+#: inc/roots-options.php:309
+#: inc/roots-options.php:320
+msgid "No"
+msgstr "Không"
+
+#. Text in function
+#: inc/roots-options.php:1
+msgid "None"
+msgstr "Trống rỗng"
+
+#. Text in function
+#: loop-single.php:14
+#: loop-page.php:7
+msgid "Pages:"
+msgstr "Các trang:"
+
+#. Text in function
+#: inc/roots-htaccess.php:1
+msgid "Please make sure your <a href=\"%s\">.htaccess</a> file is writable "
+msgstr "Hãy chắc chắn rằng <a href=\"%s\">.htaccess</a> có quyền ghi"
+
+#. Text in echo
+#: 404.php:9
+msgid "Please try the following:"
+msgstr "Hãy thử làm như sau:"
+
+#. Text in function
+#: inc/roots-cleanup.php:1
+msgid "Please update your <a href=\"%s\">site tagline</a> <a href=\"%s\" style=\"float: right;\">Hide Notice</a>"
+msgstr "Vui lòng cập nhập <a href=\"%s\">Slogan của trang</a> <a href=\"%s\" style=\"float: right;\">Ẩn thông báo này</a>"
+
+#. Text in function
+#: functions.php:1
+msgid "Posted on %s at %s."
+msgstr "Được đăng trên %s tại %s."
+
+#. Text in function
+#: functions.php:1
+msgid "Primary Navigation"
+msgstr "Danh mục định hướng chính"
+
+#. Text in function
+#: 404.php:12
+msgid "Return to the <a href=\"%s\">home page</a>"
+msgstr "Quay trở về <a href=\"%s\">trang chủ</a>"
+
+#. Text in function
+#: inc/roots-widgets.php:1
+msgid "Roots: vCard"
+msgstr "Roots: vCard"
+
+#. Text in echo
+#: searchform.php:3
+#: searchform.php:4
+msgid "Search"
+msgstr "Tìm kiếm"
+
+#. Text in echo
+#: search.php:7
+msgid "Search Results for"
+msgstr "Kết quả tìm kiếm cho"
+
+#. Text in echo
+#: searchform.php:2
+msgid "Search for:"
+msgstr "Tìm"
+
+#. Text in echo
+#: loop.php:3
+msgid "Sorry, no results were found."
+msgstr "Xin lỗi, không tìm thấy kết quả"
+
+#. Text in echo
+#: inc/roots-widgets.php:111
+msgid "State/Region:"
+msgstr "Bang/Khu vực:"
+
+#. Text in echo
+#: inc/roots-widgets.php:103
+msgid "Street Address:"
+msgstr "Địa chỉ:"
+
+#. Text in echo
+#: comments.php:88
+msgid "Submit Comment"
+msgstr "Thêm bình luận"
+
+#. Text in echo
+#: inc/roots-widgets.php:119
+msgid "Telephone:"
+msgstr "Số điện thoại:"
+
+#. Text in echo
+#: 404.php:8
+msgid "The page you are looking for might have been removed, had its name changed, or is temporarily unavailable."
+msgstr "Trang bạn đang tìm có thể đã được gỡ bỏ, đổi tên hoặc tạm thời không thể truy cập."
+
+#. Text in function
+#: inc/roots-activation.php:1
+msgid "Theme Activation"
+msgstr "Kích hoạt giao diện"
+
+#. Text in function
+#: inc/roots-options.php:1
+msgid "Theme Options"
+msgstr "Thiết lập giao diện"
+
+#. Text in echo
+#: comments.php:27
+msgid "This post is password protected. Enter the password to view comments."
+msgstr "Bài viết này được bảo vệ bằng mật khẩu. Nhập mật khẩu để đăng bình luận."
+
+#. Text in echo
+#: inc/roots-widgets.php:99
+msgid "Title (optional):"
+msgstr "Tiêu đề (không bắt buộc):"
+
+#. Text in echo
+#: inc/roots-activation.php:100
+msgid "Update permalink structure?"
+msgstr "Cập nhập cấu trúc đường dẫn tĩnh?"
+
+#. Text in echo
+#: inc/roots-activation.php:113
+msgid "Update uploads folder?"
+msgstr "Cập nhập thư mục tải lên?"
+
+#. Text in function
+#: inc/roots-widgets.php:1
+msgid "Use this widget to add a vCard"
+msgstr "Sử dụng widget để thêm vCard"
+
+#. Text in function
+#: functions.php:1
+msgid "Utility Navigation"
+msgstr "Tiện ích định hướng"
+
+#. Text in echo
+#: comments.php:80
+msgid "Website"
+msgstr "Trang Web"
+
+#. Text in function
+#: functions.php:1
+msgid "Written by"
+msgstr "Viết bởi"
+
+#. Text in function
+#: archive.php:8
+msgid "Yearly Archives: %s"
+msgstr "Phần lưu trữ hàng năm: %s"
+
+#. Text in echo
+#: inc/roots-activation.php:141
+#: inc/roots-options.php:273
+#: inc/roots-options.php:286
+#: inc/roots-options.php:308
+#: inc/roots-options.php:319
+msgid "Yes"
+msgstr "Có"
+
+#. Text in function
+#: comments.php:65
+msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
+msgstr "Bạn cần <a href=\"%s\">đăng nhập</a> để viết bình luận."
+
+#. Text in echo
+#: comments.php:13
+msgid "Your comment is awaiting moderation."
+msgstr "Bình luận của bạn đang chờ kiểm duyệt."
+
+#. Text in echo
+#: inc/roots-widgets.php:115
+msgid "Zipcode/Postal Code:"
+msgstr "Zipcode/Postal Code:"
+
+#. Text in function
+#: inc/roots-widgets.php:1
+msgid "vCard"
+msgstr "vCard"
+
