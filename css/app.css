@@ -39,6 +39,7 @@ body.admin-bar .navbar-fixed-top { top: 28px; }
    ========================================================================== */
 
 #sidebar { }
+@media (max-width: 768px) { #sidebar .form-search input { max-width: 160px; width: auto; } }
 
 
 
