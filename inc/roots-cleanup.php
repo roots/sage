@@ -490,7 +490,7 @@ class Roots_Navbar_Nav_Walker extends Walker_Nav_Menu {
 function roots_nav_menu_args($args = '') {
   $args['container']  = false;
   $args['depth']      = 2;
-  $args['items_wrap'] = '<ul class="nav">%3$s</ul>';
+  $args['items_wrap'] = '<ul class="%2$s">%3$s</ul>';
   if (!$args['walker']) {
     $args['walker'] = new Roots_Nav_Walker();
   }
