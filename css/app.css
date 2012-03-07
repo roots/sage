@@ -94,7 +94,7 @@ ol.commentlist img.avatar { float: left; margin-right: 10px; }
 
 @media (max-width: 768px) { 
   #sidebar form input, #sidebar form textarea, #sidebar form  select, #sidebar form .help-inline { 
-    max-width: 160px;
+    max-width: 190px;
     width: auto;
   }
 }
