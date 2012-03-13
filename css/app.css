@@ -92,6 +92,13 @@ ol.commentlist img.avatar { float: left; margin-right: 10px; }
    Media Queries
    ========================================================================== */
 
+@media (max-width: 768px) { 
+  #sidebar form input, #sidebar form textarea, #sidebar form  select, #sidebar form .help-inline { 
+    max-width: 190px;
+    width: auto;
+  }
+}
+
 @media (max-width: 980px) {
   /* Fix top padding when using the responsive grid with the fixed topbar */
   body {
