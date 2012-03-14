@@ -29,7 +29,7 @@ if (stristr($_SERVER['SERVER_SOFTWARE'], 'apache') !== false) {
       'img/(.*)'      => THEME_PATH . '/img/$1',
       'plugins/(.*)'  => RELATIVE_PLUGIN_PATH . '/$1'
     );
-    $wp_rewrite->non_wp_rules = $roots_new_non_wp_rules;
+    $wp_rewrite->non_wp_rules = array_merge($wp_rewrite->non_wp_rules, $roots_new_non_wp_rules);
     return $content;
   }
 
