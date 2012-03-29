@@ -378,7 +378,7 @@ msgstr "Primär Navigation"
 #. Text in function
 #: 404.php:12
 msgid "Return to the <a href=\"%s\">home page</a>"
-msgstr "Tillbaka till <a href=\"%s\">förstasidan</a>"
+msgstr "Gå tillbaka till <a href=\"%s\">förstasidan</a>"
 
 #. Text in function
 #: inc/roots-widgets.php:1
