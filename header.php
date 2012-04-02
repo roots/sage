@@ -4,7 +4,7 @@
 <!--[if IE 8]>    <html class="no-js lt-ie9" <?php language_attributes(); ?>> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" <?php language_attributes(); ?>> <!--<![endif]-->
 <head>
-  <meta charset="utf-8">
+  <meta charset="<?php bloginfo('charset'); ?>" />
 
   <title><?php wp_title('|', true, 'right'); bloginfo('name'); ?></title>
 
