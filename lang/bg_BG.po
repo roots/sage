@@ -1,0 +1,340 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Project-Id-Version: roots WP theme\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: yulian yordanov <yul.yordanov@post-scriptum.info>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"X-Poedit-Language: Bulgarian\n"
+"X-Poedit-Country: BULGARIA\n"
+"X-Poedit-SourceCharset: utf-8\n"
+
+#. Text in echo
+#: comments.php:84
+#: comments.php:86
+msgid " (required)"
+msgstr " (задължително)"
+
+#. Text in function
+#: comments.php:8
+msgid "%1$s"
+msgstr "%1$s"
+
+#. Text in function
+#: inc/roots-activation.php:70
+msgid "%s Theme Activation"
+msgstr "%s активиране"
+
+#. Text in function
+#: comments.php:49
+msgid "&larr; Older comments"
+msgstr "&larr; По-стари коментари"
+
+#. Text in function
+#: loop.php:37
+msgid "&larr; Older posts"
+msgstr "&larr; По-стари публикации"
+
+#. Text in function
+#: comments.php:9
+msgid "(Edit)"
+msgstr "(редакт.)"
+
+#. Text in function
+#: comments.php:7
+msgid "<cite class=\"fn\">%s</cite>"
+msgstr "<cite class=\"fn\">%s</cite>"
+
+#. Text in function
+#: inc/roots-activation.php:145
+msgid "Add all current published pages to the Primary Navigation"
+msgstr "Добавяне на всички публикувани страници към Основното меню"
+
+#. Text in echo
+#: inc/roots-activation.php:137
+#: inc/roots-activation.php:139
+msgid "Add pages to menu?"
+msgstr "Искате ли да добавите страниците?"
+
+#. Text in function
+#: archive.php:8
+msgid "Author Archives: %s"
+msgstr "Архив за автор: %s"
+
+#. Text in function
+#: inc/roots-activation.php:106
+msgid "Change permalink structure to /&#37;postname&#37;/"
+msgstr "Промяна структурата на връзките: /&#37;postname&#37;/"
+
+#. Text in echo
+#: inc/roots-activation.php:98
+msgid "Change permalink structure?"
+msgstr "Да се промени ли структурата на възките?"
+
+#. Text in function
+#: inc/roots-activation.php:119
+msgid "Change uploads folder to /assets/ instead of /wp-content/uploads/"
+msgstr "Променяне на папката за качените файлове на /assets/, вместо /wp-content/uploads/"
+
+#. Text in echo
+#: inc/roots-activation.php:111
+msgid "Change uploads folder?"
+msgstr "Да се промени ли папката за качени файлове?"
+
+#. Text in echo
+#: 404.php:15
+msgid "Check your spelling"
+msgstr "Проверете правописа."
+
+#. Text in echo
+#: inc/roots-widgets.php:107
+msgid "City/Locality:"
+msgstr "Град:"
+
+#. Text in echo
+#: 404.php:17
+msgid "Click the <a href=\"javascript:history.back()\">Back</a> button"
+msgstr "Натиснете бутон <a href=\"javascript:history.back()\">Назад</a>."
+
+#. Text in echo
+#: comments.php:91
+msgid "Comment"
+msgstr "Коментар"
+
+#. Text in echo
+#: comments.php:58
+#: comments.php:68
+msgid "Comments are closed."
+msgstr "Коментарите са затворени"
+
+#. Text in function
+#: inc/roots-activation.php:93
+msgid "Create a page called Home and set it to be the static front page"
+msgstr "Създаване на страница наречена Начало и задаването й като статична начална страница"
+
+#. Text in echo
+#: inc/roots-activation.php:124
+#: inc/roots-activation.php:126
+msgid "Create navigation menu?"
+msgstr "Искате ли да създадете меню?"
+
+#. Text in echo
+#: inc/roots-activation.php:85
+#: inc/roots-activation.php:87
+msgid "Create static front page?"
+msgstr "Искате ли да създадете статична начална страница?"
+
+#. Text in function
+#: inc/roots-activation.php:132
+msgid "Create the Primary Navigation menu and set the location"
+msgstr "Създаване на Основно меню и задаване на местоположението му"
+
+#. Text in function
+#: archive.php:8
+msgid "Daily Archives: %s"
+msgstr "Архив за дата: %s"
+
+#. Text in echo
+#: comments.php:86
+msgid "Email (will not be published)"
+msgstr "Е-адрес (няма да бъде публикуван)"
+
+#. Text in echo
+#: inc/roots-widgets.php:123
+msgid "Email:"
+msgstr "Е-поща:"
+
+#. Text in echo
+#: 404.php:7
+msgid "File Not Found"
+msgstr "Страницата не е намерена"
+
+#. Text in echo
+#: index.php:7
+msgid "Latest Posts"
+msgstr "Най-нови публикации"
+
+#. Text in function
+#: comments.php:75
+msgid "Leave a Reply"
+msgstr "Оставете коментар"
+
+#. Text in function
+#: comments.php:75
+msgid "Leave a Reply to %s"
+msgstr "Оставете коментар към %s"
+
+#. Text in echo
+#: comments.php:82
+msgid "Log out &raquo;"
+msgstr "Изход &raquo;"
+
+#. Text in function
+#: comments.php:82
+msgid "Log out of this account"
+msgstr "Излизане от този профил"
+
+#. Text in function
+#: comments.php:82
+msgid "Logged in as <a href=\"%s/wp-admin/profile.php\">%s</a>."
+msgstr "Вписан като: <a href=\"%s/wp-admin/profile.php\">%s</a>."
+
+#. Text in function
+#: archive.php:8
+msgid "Monthly Archives: %s"
+msgstr "Архив за месец: %s"
+
+#. Text in echo
+#: comments.php:84
+msgid "Name"
+msgstr "Име"
+
+#. Text in function
+#: comments.php:50
+msgid "Newer comments &rarr;"
+msgstr "По-нови коментари &rarr;"
+
+#. Text in function
+#: loop.php:38
+msgid "Newer posts &rarr;"
+msgstr "По-нови публикации &rarr;"
+
+#. Text in echo
+#: inc/roots-activation.php:142
+msgid "No"
+msgstr "Не"
+
+#. Text in function
+#: loop-single.php:14
+msgid "Pages:"
+msgstr "Страници:"
+
+#. Text in echo
+#: 404.php:13
+msgid "Please try the following:"
+msgstr "Моля, опитайте следното:"
+
+#. Text in function
+#: 404.php:16
+msgid "Return to the <a href=\"%s\">home page</a>"
+msgstr "Върнете се към <a href=\"%s\">началната страница</a>."
+
+#. Text in function
+#: inc/roots-widgets.php:1
+msgid "Roots: vCard"
+msgstr "Roots: vCard"
+
+#. Text in echo
+#: searchform.php:3
+#: searchform.php:4
+msgid "Search"
+msgstr "Търсене"
+
+#. Text in echo
+#: search.php:7
+msgid "Search Results for"
+msgstr "Резултати от търсенето на"
+
+#. Text in echo
+#: searchform.php:2
+msgid "Search for:"
+msgstr "Търсене на:"
+
+#. Text in echo
+#: loop.php:5
+msgid "Sorry, no results were found."
+msgstr "За съжаление няма открити резултати"
+
+#. Text in echo
+#: inc/roots-widgets.php:111
+msgid "State/Region:"
+msgstr "Държава:"
+
+#. Text in echo
+#: inc/roots-widgets.php:103
+msgid "Street Address:"
+msgstr "Улица:"
+
+#. Text in echo
+#: comments.php:93
+msgid "Submit Comment"
+msgstr "Публикуване"
+
+#. Text in echo
+#: inc/roots-widgets.php:119
+msgid "Telephone:"
+msgstr "Телефон:"
+
+#. Text in echo
+#: 404.php:11
+msgid "The page you are looking for might have been removed, had its name changed, or is temporarily unavailable."
+msgstr "Страницата, която търсите може би е премахната, преместена или временно недостъпна."
+
+#. Text in function
+#: inc/roots-activation.php:1
+msgid "Theme Activation"
+msgstr "Активиране"
+
+#. Text in echo
+#: comments.php:32
+msgid "This post is password protected. Enter the password to view comments."
+msgstr "Тази публикация е защитена с парола. Въведете паролата, за да видите коментарите."
+
+#. Text in echo
+#: inc/roots-widgets.php:99
+msgid "Title (optional):"
+msgstr "Заглавие (незадълж.)"
+
+#. Text in echo
+#: inc/roots-activation.php:100
+msgid "Update permalink structure?"
+msgstr "Искате ли да обновите структурата на връзките?"
+
+#. Text in echo
+#: inc/roots-activation.php:113
+msgid "Update uploads folder?"
+msgstr "Искате ли да обновите папката за качени файлове?"
+
+#. Text in function
+#: inc/roots-widgets.php:1
+msgid "Use this widget to add a vCard"
+msgstr "Използвайте тази джаджа, за да добавите vCard"
+
+#. Text in echo
+#: comments.php:88
+msgid "Website"
+msgstr "Уеб-страница"
+
+#. Text in function
+#: archive.php:8
+msgid "Yearly Archives: %s"
+msgstr "Архив за година: %s"
+
+#. Text in echo
+#: inc/roots-activation.php:141
+msgid "Yes"
+msgstr "Да"
+
+#. Text in function
+#: comments.php:78
+msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
+msgstr "Трябва да сте <a href=\"%s\">вписан</a>, за да публикувате коментар."
+
+#. Text in echo
+#: comments.php:15
+msgid "Your comment is awaiting moderation."
+msgstr "Коментарът Ви изчаква одобрение."
+
+#. Text in echo
+#: inc/roots-widgets.php:115
+msgid "Zipcode/Postal Code:"
+msgstr "Пощенски код:"
+
+#. Text in function
+#: inc/roots-widgets.php:1
+msgid "vCard"
+msgstr "vCard"
+
