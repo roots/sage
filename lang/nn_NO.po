@@ -449,7 +449,7 @@ msgstr "Dette innlegget er passordbeskytta. Skriv inn passord for å sjå kommen
 #. Text in echo
 #: inc/roots-widgets.php:99
 msgid "Title (optional):"
-msgstr "Tittel (valgfri):"
+msgstr "Tittel (valfri):"
 
 #. Text in echo
 #: inc/roots-activation.php:100
