@@ -59,7 +59,7 @@ msgstr "&larr; Eski yorumlar"
 #. Text in function
 #: loop.php:34
 msgid "&larr; Older posts"
-msgstr "&larr; Yeni yorumlar"
+msgstr "&larr; Eski yazılar"
 
 #. Text in function
 #: comments.php:9
@@ -136,7 +136,7 @@ msgstr "Less ile Bootstrap"
 #: inc/roots-options.php:226
 #: inc/roots-options.php:228
 msgid "CSS Grid Framework"
-msgstr "CSS Grid Altyapısı"
+msgstr "CSS Grid Framework"
 
 #. Text in function
 #: inc/roots-activation.php:106
@@ -220,7 +220,7 @@ msgstr "Birincil dolaşım menüsü ve araçlar dolaşım menüsünü oluşturup
 #. Text in function
 #: archive.php:8
 msgid "Daily Archives: %s"
-msgstr "Günlük arşiv: %s"
+msgstr "Günlük Arşiv: %s"
 
 #. Text in echo
 #: inc/roots-options.php:243
@@ -248,7 +248,7 @@ msgstr "Bootstrap Javascript&#8217;i etkinleştir"
 #: inc/roots-options.php:304
 #: inc/roots-options.php:306
 msgid "Enable Root Relative URLs"
-msgstr "Köke bağıl adresleri etkinleştir"
+msgstr "Root bağıl adresleri etkinleştir"
 
 #. Text in function
 #: inc/roots-options.php:299
@@ -329,7 +329,7 @@ msgstr "Yeni yorumlar &arr;"
 #. Text in function
 #: loop.php:35
 msgid "Newer posts &rarr;"
-msgstr "Eski yazılar &rarr;"
+msgstr "Yeni yazılar &rarr;"
 
 #. Text in echo
 #: inc/roots-activation.php:142
@@ -410,7 +410,7 @@ msgstr "Üzgünüz, sonuç bulunamadı."
 #. Text in echo
 #: inc/roots-widgets.php:111
 msgid "State/Region:"
-msgstr "Bölge:"
+msgstr "İlçe:"
 
 #. Text in echo
 #: inc/roots-widgets.php:103
@@ -430,27 +430,27 @@ msgstr "Telefon:"
 #. Text in echo
 #: 404.php:8
 msgid "The page you are looking for might have been removed, had its name changed, or is temporarily unavailable."
-msgstr "Bakmış olduğunuz sayfa kaldırılmıl olabilir, ismi değişmiş olabilir ya da geçici olarak ulaşılamıyor olabilir."
+msgstr "Görüntülemek istediğiniz sayfa kaldırılmış olabilir, ismi değişmiş olabilir ya da geçici olarak ulaşılamıyor olabilir."
 
 #. Text in function
 #: inc/roots-activation.php:1
 msgid "Theme Activation"
-msgstr "Tema etkinleştirme"
+msgstr "Tema Etkinleştirme"
 
 #. Text in function
 #: inc/roots-options.php:1
 msgid "Theme Options"
-msgstr "Tema seçenekleri"
+msgstr "Tema Seçenekleri"
 
 #. Text in echo
 #: comments.php:27
 msgid "This post is password protected. Enter the password to view comments."
-msgstr "Bu yazı parola korumalı. Yorumları görmek için parolanızı girin."
+msgstr "Bu yazı parola korumalıdır. Yorumları görmek için parolayı giriniz."
 
 #. Text in echo
 #: inc/roots-widgets.php:99
 msgid "Title (optional):"
-msgstr "Başlık (İsteğe bağlı):"
+msgstr "Başlık (isteğe bağlı):"
 
 #. Text in echo
 #: inc/roots-activation.php:100
