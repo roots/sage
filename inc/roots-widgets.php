@@ -53,7 +53,7 @@ class Roots_Vcard_Widget extends WP_Widget {
         <span class="region"><?php echo $instance['region']; ?></span>
         <span class="postal-code"><?php echo $instance['postal_code']; ?></span><br>
       </span>
-      <span class="tel"><span class="value"><span class="hidden">+1-</span><?php echo $instance['tel']; ?></span></span><br>
+      <span class="tel"><span class="value"><?php echo $instance['tel']; ?></span></span><br>
       <a class="email" href="mailto:<?php echo $instance['email']; ?>"><?php echo $instance['email']; ?></a>
     </p>
   <?php
