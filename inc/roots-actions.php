@@ -1,5 +1,13 @@
 <?php
 
+function roots_feed_link() {
+  $count = wp_count_posts('post'); if ($count->publish > 0) {
+    echo "\n\t<link rel=\"alternate\" type=\"application/rss+xml\" title=\"". get_bloginfo('name') ." Feed\" href=\"". home_url() ."/feed/\">\n";
+  }
+}
+
+add_action('roots_head', 'roots_feed_link');
+
 function roots_google_analytics() {
   $roots_google_analytics_id = GOOGLE_ANALYTICS_ID;
   if ($roots_google_analytics_id !== '') {
