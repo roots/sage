@@ -40,11 +40,11 @@ function roots_root_relative_url($input) {
     '!(https?://[^/|"]+)([^"]+)?!',
     create_function(
       '$matches',
-      // if full URL is site_url, return a slash for relative root
-      'if (isset($matches[0]) && $matches[0] === site_url()) { return "/";' .
-      // if domain is equal to site_url, then make URL relative
-      '} elseif (isset($matches[0]) && strpos($matches[0], site_url()) !== false) { return $matches[2];' .
-      // if domain is not equal to site_url, do not make external link relative
+      // if full URL is home_url("/"), return a slash for relative root
+      'if (isset($matches[0]) && $matches[0] === home_url("/")) { return "/";' .
+      // if domain is equal to home_url("/"), then make URL relative
+      '} elseif (isset($matches[0]) && strpos($matches[0], home_url("/")) !== false) { return $matches[2];' .
+      // if domain is not equal to home_url("/"), do not make external link relative
       '} else { return $matches[0]; };'
     ),
     $input
