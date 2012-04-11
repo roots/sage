@@ -92,7 +92,7 @@ ol.commentlist img.avatar { float: left; margin-right: 10px; }
    Media Queries
    ========================================================================== */
 
-@media (max-width: 980px) {
+@media (max-width: 979px) {
   /* Fix top padding when using the responsive grid with the fixed topbar */
   body {
     padding-top: 0;
