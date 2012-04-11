@@ -2,7 +2,6 @@
 
 // header.php
 function roots_head() { do_action('roots_head'); }
-function roots_stylesheets() { do_action('roots_stylesheets'); }
 function roots_wrap_before() { do_action('roots_wrap_before'); }
 function roots_header_before() { do_action('roots_header_before'); }
 function roots_header_inside() { do_action('roots_header_inside'); }

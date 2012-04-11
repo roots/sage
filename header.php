@@ -10,8 +10,6 @@
 
   <meta name="viewport" content="width=device-width">
 
-  <?php roots_stylesheets(); ?>
-
   <link rel="alternate" type="application/rss+xml" title="<?php bloginfo('name'); ?> Feed" href="<?php echo home_url(); ?>/feed/">
 
   <script src="<?php echo get_template_directory_uri(); ?>/js/libs/modernizr-2.5.3.min.js"></script>
