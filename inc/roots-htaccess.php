@@ -70,7 +70,7 @@ if (stristr($_SERVER['SERVER_SOFTWARE'], 'apache') !== false) {
       if ($mod_rewrite_enabled) {
         $h5bp_rules = extract_from_markers($htaccess_file, 'HTML5 Boilerplate');
           if ($h5bp_rules === array()) {
-            $filename = __DIR__ . '/h5bp-htaccess';
+            $filename = dirname(__FILE__) . '/h5bp-htaccess';
             return insert_with_markers($htaccess_file, 'HTML5 Boilerplate', extract_from_markers($filename, 'HTML5 Boilerplate'));
           }
       }
