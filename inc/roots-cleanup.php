@@ -638,32 +638,3 @@ function roots_widget_first_last_classes($params) {
 
 }
 add_filter('dynamic_sidebar_params', 'roots_widget_first_last_classes');
-
-// apply Bootstrap markup/classes to Gravity Forms (in progress)
-if (class_exists('RGForms')) {
-  update_option('rg_gforms_disable_css', 1);
-
-  // error message class
-  function roots_gform_validation_message($message, $form) {
-    $message = '<div class="alert alert-error fade in">';
-    $message .= '<a class="close" data-dismiss="alert">&times;</a>';
-    $message .= '<strong>There was a problem with your submission. Errors have been highlighted below.</strong>';
-    $message .= '</div>';
-    return $message;
-  }
-  add_filter('gform_validation_message', 'roots_gform_validation_message', 10, 2);
-
-  // field class
-  function roots_gform_field_css_class($classes, $field, $form) {
-    $classes .= " control-group";
-    return $classes;
-  }
-  add_action('gform_field_css_class', 'roots_gform_field_css_class', 10, 3);
-
-  // button class
-  function roots_gform_submit_button($button, $form) {
-      return "<button class='btn btn-primary' id='gform_submit_button_{$form["id"]}'><span>Submit</span></button>";
-  }
-  add_filter('gform_submit_button', 'roots_gform_submit_button', 10, 2);
-
-}
