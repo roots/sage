@@ -1,330 +1,323 @@
 msgid ""
 msgstr ""
-"Content-Type: text/plain; charset=utf-8\n"
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-04-13 16:17-0300\n"
+"PO-Revision-Date: 2012-04-13 16:17-0300\n"
+"Last-Translator: Weslly Honorato <weslly.honorato@gmail.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;__;_e\n"
+"X-Poedit-SearchPath-0: .\n"
 
-#. Text in echo
-#: comments.php:84
-#: comments.php:86
-msgid " (required)"
+#: 404.php:7
+msgid "File Not Found"
 msgstr ""
 
-#. Text in function
-#: comments.php:8
-msgid "%1$s"
+#: 404.php:11
+msgid "The page you are looking for might have been removed, had its name changed, or is temporarily unavailable."
 msgstr ""
 
-#. Text in function
-#: inc/roots-activation.php:70
-msgid "%s Theme Activation"
+#: 404.php:13
+msgid "Please try the following:"
 msgstr ""
 
-#. Text in function
-#: comments.php:49
-msgid "&larr; Older comments"
-msgstr ""
-
-#. Text in function
-#: loop.php:37
-msgid "&larr; Older posts"
-msgstr ""
-
-#. Text in function
-#: comments.php:9
-msgid "(Edit)"
-msgstr ""
-
-#. Text in function
-#: comments.php:7
-msgid "<cite class=\"fn\">%s</cite>"
-msgstr ""
-
-#. Text in function
-#: inc/roots-activation.php:145
-msgid "Add all current published pages to the Primary Navigation"
-msgstr ""
-
-#. Text in echo
-#: inc/roots-activation.php:137
-#: inc/roots-activation.php:139
-msgid "Add pages to menu?"
-msgstr ""
-
-#. Text in function
-#: archive.php:21
-msgid "Author Archives: %s"
-msgstr ""
-
-#. Text in function
-#: inc/roots-activation.php:106
-msgid "Change permalink structure to /&#37;postname&#37;/"
-msgstr ""
-
-#. Text in echo
-#: inc/roots-activation.php:98
-msgid "Change permalink structure?"
-msgstr ""
-
-#. Text in function
-#: inc/roots-activation.php:119
-msgid "Change uploads folder to /assets/ instead of /wp-content/uploads/"
-msgstr ""
-
-#. Text in echo
-#: inc/roots-activation.php:111
-msgid "Change uploads folder?"
-msgstr ""
-
-#. Text in echo
 #: 404.php:15
 msgid "Check your spelling"
 msgstr ""
 
-#. Text in echo
-#: inc/roots-widgets.php:107
-msgid "City/Locality:"
+#: 404.php:16
+#, php-format
+msgid "Return to the <a href=\"%s\">home page</a>"
 msgstr ""
 
-#. Text in echo
 #: 404.php:17
 msgid "Click the <a href=\"javascript:history.back()\">Back</a> button"
 msgstr ""
 
-#. Text in echo
-#: comments.php:91
-msgid "Comment"
+#: archive.php:13
+#, php-format
+msgid "Daily Archives: %s"
 msgstr ""
 
-#. Text in echo
+#: archive.php:15
+#, php-format
+msgid "Monthly Archives: %s"
+msgstr ""
+
+#: archive.php:17
+#, php-format
+msgid "Yearly Archives: %s"
+msgstr ""
+
+#: archive.php:21
+#, php-format
+msgid "Author Archives: %s"
+msgstr ""
+
+#: comments.php:7
+#, php-format
+msgid "<cite class=\"fn\">%s</cite>"
+msgstr ""
+
+#: comments.php:8
+#, php-format
+msgid "%1$s"
+msgstr ""
+
+#: comments.php:9
+msgid "(Edit)"
+msgstr ""
+
+#: comments.php:15
+msgid "Your comment is awaiting moderation."
+msgstr ""
+
+#: comments.php:32
+msgid "This post is password protected. Enter the password to view comments."
+msgstr ""
+
+#: comments.php:49
+msgid "&larr; Older comments"
+msgstr ""
+
+#: comments.php:50
+msgid "Newer comments &rarr;"
+msgstr ""
+
 #: comments.php:58
 #: comments.php:68
 msgid "Comments are closed."
 msgstr ""
 
-#. Text in function
-#: inc/roots-activation.php:93
-msgid "Create a page called Home and set it to be the static front page"
-msgstr ""
-
-#. Text in echo
-#: inc/roots-activation.php:124
-#: inc/roots-activation.php:126
-msgid "Create navigation menu?"
-msgstr ""
-
-#. Text in echo
-#: inc/roots-activation.php:85
-#: inc/roots-activation.php:87
-msgid "Create static front page?"
-msgstr ""
-
-#. Text in function
-#: inc/roots-activation.php:132
-msgid "Create the Primary Navigation menu and set the location"
-msgstr ""
-
-#. Text in function
-#: archive.php:13
-msgid "Daily Archives: %s"
-msgstr ""
-
-#. Text in echo
-#: comments.php:86
-msgid "Email (will not be published)"
-msgstr ""
-
-#. Text in echo
-#: inc/roots-widgets.php:123
-msgid "Email:"
-msgstr ""
-
-#. Text in echo
-#: 404.php:7
-msgid "File Not Found"
-msgstr ""
-
-#. Text in echo
-#: index.php:7
-msgid "Latest Posts"
-msgstr ""
-
-#. Text in function
 #: comments.php:75
 msgid "Leave a Reply"
 msgstr ""
 
-#. Text in function
 #: comments.php:75
+#, php-format
 msgid "Leave a Reply to %s"
 msgstr ""
 
-#. Text in echo
-#: comments.php:82
-msgid "Log out &raquo;"
+#: comments.php:78
+#, php-format
+msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
 msgstr ""
 
-#. Text in function
+#: comments.php:82
+#, php-format
+msgid "Logged in as <a href=\"%s/wp-admin/profile.php\">%s</a>."
+msgstr ""
+
 #: comments.php:82
 msgid "Log out of this account"
 msgstr ""
 
-#. Text in function
 #: comments.php:82
-msgid "Logged in as <a href=\"%s/wp-admin/profile.php\">%s</a>."
+msgid "Log out &raquo;"
 msgstr ""
 
-#. Text in function
-#: archive.php:15
-msgid "Monthly Archives: %s"
-msgstr ""
-
-#. Text in echo
 #: comments.php:84
 msgid "Name"
 msgstr ""
 
-#. Text in function
-#: comments.php:50
-msgid "Newer comments &rarr;"
+#: comments.php:84
+#: comments.php:86
+msgid " (required)"
 msgstr ""
 
-#. Text in function
+#: comments.php:86
+msgid "Email (will not be published)"
+msgstr ""
+
+#: comments.php:88
+msgid "Website"
+msgstr ""
+
+#: comments.php:91
+msgid "Comment"
+msgstr ""
+
+#: comments.php:93
+msgid "Submit Comment"
+msgstr ""
+
+#: functions.php:45
+msgid "Primary Navigation"
+msgstr ""
+
+#: functions.php:74
+#, php-format
+msgid "Posted on %s at %s."
+msgstr ""
+
+#: functions.php:75
+msgid "Written by"
+msgstr ""
+
+#: index.php:7
+msgid "Latest Posts"
+msgstr ""
+
+#: loop-single.php:14
+msgid "Pages:"
+msgstr ""
+
+#: loop.php:5
+msgid "Sorry, no results were found."
+msgstr ""
+
+#: loop.php:37
+msgid "&larr; Older posts"
+msgstr ""
+
 #: loop.php:38
 msgid "Newer posts &rarr;"
 msgstr ""
 
-#. Text in echo
-#: inc/roots-activation.php:142
-msgid "No"
+#: search.php:7
+msgid "Search Results for"
 msgstr ""
 
-#. Text in function
-#: loop-single.php:13
-msgid "Pages:"
+#: searchform.php:2
+msgid "Search for:"
 msgstr ""
 
-#. Text in echo
-#: 404.php:13
-msgid "Please try the following:"
-msgstr ""
-
-#. Text in function
-#: 404.php:16
-msgid "Return to the <a href=\"%s\">home page</a>"
-msgstr ""
-
-#. Text in function
-#: inc/roots-widgets.php:6
-msgid "Roots: vCard"
-msgstr ""
-
-#. Text in echo
 #: searchform.php:3
 #: searchform.php:4
 msgid "Search"
 msgstr ""
 
-#. Text in echo
-#: search.php:7
-msgid "Search Results for"
-msgstr ""
-
-#. Text in echo
-#: searchform.php:2
-msgid "Search for:"
-msgstr ""
-
-#. Text in echo
-#: loop.php:5
-msgid "Sorry, no results were found."
-msgstr ""
-
-#. Text in echo
-#: inc/roots-widgets.php:111
-msgid "State/Region:"
-msgstr ""
-
-#. Text in echo
-#: inc/roots-widgets.php:103
-msgid "Street Address:"
-msgstr ""
-
-#. Text in echo
-#: comments.php:93
-msgid "Submit Comment"
-msgstr ""
-
-#. Text in echo
-#: inc/roots-widgets.php:119
-msgid "Telephone:"
-msgstr ""
-
-#. Text in echo
-#: 404.php:11
-msgid "The page you are looking for might have been removed, had its name changed, or is temporarily unavailable."
-msgstr ""
-
-#. Text in function
-#: inc/roots-activation.php:70
+#: inc/roots-activation.php:32
+#: inc/roots-activation.php:33
 msgid "Theme Activation"
 msgstr ""
 
-#. Text in echo
-#: comments.php:32
-msgid "This post is password protected. Enter the password to view comments."
+#: inc/roots-activation.php:70
+#, php-format
+msgid "%s Theme Activation"
 msgstr ""
 
-#. Text in echo
-#: inc/roots-widgets.php:99
-msgid "Title (optional):"
+#: inc/roots-activation.php:85
+#: inc/roots-activation.php:87
+msgid "Create static front page?"
 msgstr ""
 
-#. Text in echo
-#: inc/roots-activation.php:100
-msgid "Update permalink structure?"
-msgstr ""
-
-#. Text in echo
-#: inc/roots-activation.php:113
-msgid "Update uploads folder?"
-msgstr ""
-
-#. Text in function
-#: inc/roots-widgets.php:5
-msgid "Use this widget to add a vCard"
-msgstr ""
-
-#. Text in echo
-#: comments.php:88
-msgid "Website"
-msgstr ""
-
-#. Text in function
-#: archive.php:17
-msgid "Yearly Archives: %s"
-msgstr ""
-
-#. Text in echo
+#: inc/roots-activation.php:89
+#: inc/roots-activation.php:102
+#: inc/roots-activation.php:115
+#: inc/roots-activation.php:128
 #: inc/roots-activation.php:141
 msgid "Yes"
 msgstr ""
 
-#. Text in function
-#: comments.php:78
-msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
+#: inc/roots-activation.php:90
+#: inc/roots-activation.php:103
+#: inc/roots-activation.php:116
+#: inc/roots-activation.php:129
+#: inc/roots-activation.php:142
+msgid "No"
 msgstr ""
 
-#. Text in echo
-#: comments.php:15
-msgid "Your comment is awaiting moderation."
+#: inc/roots-activation.php:93
+msgid "Create a page called Home and set it to be the static front page"
 msgstr ""
 
-#. Text in echo
+#: inc/roots-activation.php:98
+msgid "Change permalink structure?"
+msgstr ""
+
+#: inc/roots-activation.php:100
+msgid "Update permalink structure?"
+msgstr ""
+
+#: inc/roots-activation.php:106
+msgid "Change permalink structure to /&#37;postname&#37;/"
+msgstr ""
+
+#: inc/roots-activation.php:111
+msgid "Change uploads folder?"
+msgstr ""
+
+#: inc/roots-activation.php:113
+msgid "Update uploads folder?"
+msgstr ""
+
+#: inc/roots-activation.php:119
+msgid "Change uploads folder to /assets/ instead of /wp-content/uploads/"
+msgstr ""
+
+#: inc/roots-activation.php:124
+#: inc/roots-activation.php:126
+msgid "Create navigation menu?"
+msgstr ""
+
+#: inc/roots-activation.php:132
+msgid "Create the Primary Navigation menu and set the location"
+msgstr ""
+
+#: inc/roots-activation.php:137
+#: inc/roots-activation.php:139
+msgid "Add pages to menu?"
+msgstr ""
+
+#: inc/roots-activation.php:145
+msgid "Add all current published pages to the Primary Navigation"
+msgstr ""
+
+#: inc/roots-cleanup.php:370
+msgid "Continued"
+msgstr ""
+
+#: inc/roots-cleanup.php:538
+#, php-format
+msgid "Please update your <a href=\"%s\">site tagline</a> <a href=\"%s\" style=\"float: right;\">Hide Notice</a>"
+msgstr ""
+
+#: inc/roots-htaccess.php:11
+#, php-format
+msgid "Please make sure your <a href=\"%s\">.htaccess</a> file is writable "
+msgstr ""
+
+#: inc/roots-widgets.php:5
+msgid "Use this widget to add a vCard"
+msgstr ""
+
+#: inc/roots-widgets.php:6
+msgid "Roots: vCard"
+msgstr ""
+
+#: inc/roots-widgets.php:33
+msgid "vCard"
+msgstr ""
+
+#: inc/roots-widgets.php:99
+msgid "Title (optional):"
+msgstr ""
+
+#: inc/roots-widgets.php:103
+msgid "Street Address:"
+msgstr ""
+
+#: inc/roots-widgets.php:107
+msgid "City/Locality:"
+msgstr ""
+
+#: inc/roots-widgets.php:111
+msgid "State/Region:"
+msgstr ""
+
 #: inc/roots-widgets.php:115
 msgid "Zipcode/Postal Code:"
 msgstr ""
 
-#. Text in function
-#: inc/roots-widgets.php:33
-msgid "vCard"
+#: inc/roots-widgets.php:119
+msgid "Telephone:"
 msgstr ""
+
+#: inc/roots-widgets.php:123
+msgid "Email:"
+msgstr ""
+
