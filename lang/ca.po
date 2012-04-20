@@ -58,7 +58,7 @@ msgstr "&larr; Comentaris anteriors"
 #. Text in function
 #: loop.php:34
 msgid "&larr; Older posts"
-msgstr "&larr; Publicacions anteriors"
+msgstr "&larr; Articles anteriors"
 
 #. Text in function
 #: comments.php:9
