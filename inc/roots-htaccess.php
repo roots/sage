@@ -42,7 +42,7 @@ if (stristr($_SERVER['SERVER_SOFTWARE'], 'apache') !== false) {
   }
 
   // only use clean urls if the theme isn't a child or an MU (Network) install
-  if (!is_multisite() && !is_child_theme()) {
+  if (!is_multisite() && !is_child_theme() && get_option('permalink_structure')) {
     add_action('generate_rewrite_rules', 'roots_add_rewrites');
     add_action('generate_rewrite_rules', 'roots_add_h5bp_htaccess');
     if (!is_admin()) {
