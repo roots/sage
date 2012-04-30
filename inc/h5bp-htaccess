@@ -272,7 +272,7 @@ AddType application/x-shockwave-flash       swf
 #   ExpiresByType text/css                  "access plus 1 year"
 #   ExpiresByType application/javascript    "access plus 1 year"
 
-</IfModule>
+# </IfModule>
 
 
 
