@@ -588,6 +588,10 @@ function roots_body_class() {
     $cat = get_the_category();
   }
 
+  if (is_front_page()) {
+    return; // Avoid duplicate 'home' class when using static front page
+  }
+
   if(!empty($cat)) {
     return $cat[0]->slug;
   } elseif (isset($term->slug)) {
