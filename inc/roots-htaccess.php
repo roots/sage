@@ -4,7 +4,8 @@
 // https://github.com/retlehs/roots/wiki/Nginx
 // https://github.com/retlehs/roots/wiki/Lighttpd
 
-if (stristr($_SERVER['SERVER_SOFTWARE'], 'apache') !== false) {
+if (stristr($_SERVER['SERVER_SOFTWARE'], 'apache') || stristr($_SERVER['SERVER_SOFTWARE'], 'litespeed') !== false)  {
+
   function roots_htaccess_writable() {
     if (!is_writable(get_home_path() . '.htaccess')) {
       if (current_user_can('administrator')) {
