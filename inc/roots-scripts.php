@@ -12,7 +12,7 @@ function roots_scripts() {
   wp_enqueue_style('roots_app_style', get_template_directory_uri() . '/css/app.css', false);
 
   if (is_child_theme()) {
-    wp_enqueue_style('roots_child_style', get_stylesheet_uri();
+    wp_enqueue_style('roots_child_style', get_stylesheet_uri());
   }
 
   if (!is_admin()) {
