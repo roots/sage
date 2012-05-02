@@ -65,44 +65,46 @@ function roots_fix_duplicate_subfolder_urls($input) {
   return $output;
 }
 
-if (CLEAN_URLS) {
-  if (!is_admin() && !in_array($GLOBALS['pagenow'], array('wp-login.php', 'wp-register.php'))) {
-    $tags = array(
-      'bloginfo_url',
-      'theme_root_uri',
-      'stylesheet_directory_uri',
-      'template_directory_uri',
-      'plugins_url',
-      'the_permalink',
-      'wp_list_pages',
-      'wp_list_categories',
-      'wp_nav_menu',
-      'the_content_more_link',
-      'the_tags',
-      'get_pagenum_link',
-      'get_comment_link',
-      'month_link',
-      'day_link',
-      'year_link',
-      'tag_link',
-      'the_author_posts_link'
-    );
-  
-    add_filters($tags, 'roots_root_relative_url');
-  
-    add_filter('script_loader_src', 'roots_fix_duplicate_subfolder_urls');
-    add_filter('style_loader_src', 'roots_fix_duplicate_subfolder_urls');
+// remove root relative URLs on any attachments in the feed
+function roots_root_relative_attachment_urls() {
+  if (!is_feed()) {
+    add_filter('wp_get_attachment_url', 'roots_root_relative_url');
+    add_filter('wp_get_attachment_link', 'roots_root_relative_url');
   }
-  
-  // remove root relative URLs on any attachments in the feed
-  function roots_root_relative_attachment_urls() {
-    if (!is_feed()) {
-      add_filter('wp_get_attachment_url', 'roots_root_relative_url');
-      add_filter('wp_get_attachment_link', 'roots_root_relative_url');
-    }
 }
 
-add_action('pre_get_posts', 'roots_root_relative_attachment_urls');
+function enable_root_relative_urls() {
+  return !(is_admin() && in_array($GLOBALS['pagenow'], array('wp-login.php', 'wp-register.php'))) && ROOT_RELATIVE_URLS;
+}
+
+if (enable_root_relative_urls()) {
+  $tags = array(
+    'bloginfo_url',
+    'theme_root_uri',
+    'stylesheet_directory_uri',
+    'template_directory_uri',
+    'plugins_url',
+    'the_permalink',
+    'wp_list_pages',
+    'wp_list_categories',
+    'wp_nav_menu',
+    'the_content_more_link',
+    'the_tags',
+    'get_pagenum_link',
+    'get_comment_link',
+    'month_link',
+    'day_link',
+    'year_link',
+    'tag_link',
+    'the_author_posts_link'
+  );
+
+  add_filters($tags, 'roots_root_relative_url');
+
+  add_filter('script_loader_src', 'roots_fix_duplicate_subfolder_urls');
+  add_filter('style_loader_src', 'roots_fix_duplicate_subfolder_urls');
+  
+  add_action('pre_get_posts', 'roots_root_relative_attachment_urls');
 }
 
 // set lang="en" as default (rather than en-US)

@@ -1,6 +1,6 @@
 <?php
 
-define('CLEAN_URLS',		   true);
+define('ROOT_RELATIVE_URLS',   true);
 define('POST_EXCERPT_LENGTH',  40);
 define('BOOTSTRAP_RESPONSIVE', true);
 define('WRAP_CLASSES',         'container');
