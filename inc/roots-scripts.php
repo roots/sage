@@ -23,10 +23,11 @@ function roots_scripts() {
   if (is_single() && comments_open() && get_option('thread_comments')) {
     wp_enqueue_script('comment-reply');
   }
-
-  wp_register_script('roots_plugins', get_template_directory_uri() . '/js/plugins.js', false, null, false);
+  
+  // Not included by default since this code is used for debugging javas in the console. Uncomment next line and wp_enqueue_script below to use it.
+  //wp_register_script('roots_plugins', get_template_directory_uri() . '/js/plugins.js', false, null, false);
   wp_register_script('roots_main', get_template_directory_uri() . '/js/main.js', false, null, false);
-  wp_enqueue_script('roots_plugins');
+  //wp_enqueue_script('roots_plugins');
   wp_enqueue_script('roots_main');
 }
 
