@@ -26,9 +26,11 @@ function roots_scripts() {
   
   wp_register_script('roots_plugins', get_template_directory_uri() . '/js/plugins.js', false, null, false);
   wp_register_script('roots_main', get_template_directory_uri() . '/js/main.js', false, null, false);
+  wp_register_script('roots_bootstrap', get_template_directory_uri() . '/js/bootstrap.min.js', false, null, false);
   // Not included by default since this code is used for debugging javascript in the console. Uncomment line below to use it.
   //wp_enqueue_script('roots_plugins');
   wp_enqueue_script('roots_main');
+  wp_enqueue_script('roots_bootstrap');
 }
 
 add_action('wp_enqueue_scripts', 'roots_scripts', 100);
