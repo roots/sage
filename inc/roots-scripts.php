@@ -3,13 +3,13 @@
 function roots_scripts() {
   // Not included by default since Bootstrap's reset supersedes h5bp's. Include if you aren't using Bootstrap. 
   //wp_enqueue_style('roots_style', get_template_directory_uri() . '/css/style.css', false, null);
-  wp_enqueue_style('roots_bootstrap_style', get_template_directory_uri() . '/css/bootstrap.css');
+  wp_enqueue_style('roots_bootstrap_style', get_template_directory_uri() . '/css/bootstrap.css', false, null);
 
   if (BOOTSTRAP_RESPONSIVE) {
-    wp_enqueue_style('roots_bootstrap_responsive_style', get_template_directory_uri() . '/css/bootstrap-responsive.css', array('roots_bootstrap_style'));
+    wp_enqueue_style('roots_bootstrap_responsive_style', get_template_directory_uri() . '/css/bootstrap-responsive.css', array('roots_bootstrap_style'), null);
   }
 
-  wp_enqueue_style('roots_app_style', get_template_directory_uri() . '/css/app.css', false);
+  wp_enqueue_style('roots_app_style', get_template_directory_uri() . '/css/app.css', false, null);
 
   if (is_child_theme()) {
     wp_enqueue_style('roots_child_style', get_stylesheet_uri());
