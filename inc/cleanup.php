@@ -611,6 +611,14 @@ function roots_clean_style_tag($input) {
   return '<link rel="stylesheet" href="' . $matches[2][0] . '"' . $media . '>' . "\n";
 }
 
+function roots_body_class_filter($classes) {
+  if (current_theme_supports('bootstrap-top-navbar')) {
+    $classes[] = 'top-navbar';
+  }
+  return $classes;
+}
+add_filter('body_class', 'roots_body_class_filter');
+
 function roots_body_class() {
   $term = get_queried_object();
 
