@@ -4,7 +4,7 @@
 // https://github.com/retlehs/roots/wiki/Nginx
 // https://github.com/retlehs/roots/wiki/Lighttpd
 
-if (stristr($_SERVER['SERVER_SOFTWARE'], 'apache') || stristr($_SERVER['SERVER_SOFTWARE'], 'litespeed') !== false)  {
+if (stristr($_SERVER['SERVER_SOFTWARE'], 'apache') || stristr($_SERVER['SERVER_SOFTWARE'], 'litespeed') !== false) {
 
   function roots_htaccess_writable() {
     if (!is_writable(get_home_path() . '.htaccess')) {
@@ -44,9 +44,15 @@ if (stristr($_SERVER['SERVER_SOFTWARE'], 'apache') || stristr($_SERVER['SERVER_S
 
   // only use clean urls if the theme isn't a child or an MU (Network) install
   if (!is_multisite() && !is_child_theme() && get_option('permalink_structure')) {
-    add_action('generate_rewrite_rules', 'roots_add_rewrites');
-    add_action('generate_rewrite_rules', 'roots_add_h5bp_htaccess');
-    if (!is_admin()) {
+    if (REWRITE_URLS) {
+      add_action('generate_rewrite_rules', 'roots_add_rewrites');
+    }
+
+    if (H5BP_HTACCESS) {
+      add_action('generate_rewrite_rules', 'roots_add_h5bp_htaccess');
+    }
+
+    if (!is_admin() && REWRITE_URLS) {
       $tags = array(
         'plugins_url',
         'bloginfo',
