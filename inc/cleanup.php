@@ -74,7 +74,7 @@ function roots_root_relative_attachment_urls() {
 }
 
 function enable_root_relative_urls() {
-  return !(is_admin() && in_array($GLOBALS['pagenow'], array('wp-login.php', 'wp-register.php'))) && ROOT_RELATIVE_URLS;
+  return !(is_admin() && in_array($GLOBALS['pagenow'], array('wp-login.php', 'wp-register.php'))) && current_theme_supports('root-relative-urls');
 }
 
 if (enable_root_relative_urls()) {

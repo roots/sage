@@ -1,5 +1,30 @@
 <?php
 
+function roots_widgets_init() {
+  // Register widgetized areas
+  register_sidebar(array(
+    'name' => __('Primary Sidebar', 'roots'),
+    'id' => 'sidebar-primary',
+    'before_widget' => '<section id="%1$s" class="widget %2$s"><div class="widget-inner">',
+    'after_widget' => '</div></section>',
+    'before_title' => '<h3>',
+    'after_title' => '</h3>',
+  ));
+  register_sidebar(array(
+    'name' => __('Footer', 'roots'),
+    'id' => 'sidebar-footer',
+    'before_widget' => '<section id="%1$s" class="widget %2$s"><div class="widget-inner">',
+    'after_widget' => '</div></section>',
+    'before_title' => '<h3>',
+    'after_title' => '</h3>',
+  ));
+
+  // Register widgets
+  register_widget('Roots_Vcard_Widget');
+}
+add_action('widgets_init', 'roots_widgets_init');
+
+// Example vCard widget
 class Roots_Vcard_Widget extends WP_Widget {
   function Roots_Vcard_Widget() {
     $widget_ops = array('classname' => 'widget_roots_vcard', 'description' => __('Use this widget to add a vCard', 'roots'));
@@ -126,9 +151,3 @@ class Roots_Vcard_Widget extends WP_Widget {
   <?php
   }
 }
-
-function roots_widget_init() {
-  register_widget('Roots_Vcard_Widget');
-}
-
-add_action('widgets_init', 'roots_widget_init');

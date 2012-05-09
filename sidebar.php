@@ -1,3 +1,3 @@
 <div class="well">
-  <?php dynamic_sidebar('roots-sidebar'); ?>
+  <?php dynamic_sidebar('sidebar-primary'); ?>
 </div>

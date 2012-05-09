@@ -44,15 +44,15 @@ if (stristr($_SERVER['SERVER_SOFTWARE'], 'apache') || stristr($_SERVER['SERVER_S
 
   // only use clean urls if the theme isn't a child or an MU (Network) install
   if (!is_multisite() && !is_child_theme() && get_option('permalink_structure')) {
-    if (REWRITE_URLS) {
+    if (current_theme_supports('rewrite-urls')) {
       add_action('generate_rewrite_rules', 'roots_add_rewrites');
     }
 
-    if (H5BP_HTACCESS) {
+    if (current_theme_supports('h5bp-htaccess')) {
       add_action('generate_rewrite_rules', 'roots_add_h5bp_htaccess');
     }
 
-    if (!is_admin() && REWRITE_URLS) {
+    if (!is_admin() && current_theme_supports('rewrite-urls')) {
       $tags = array(
         'plugins_url',
         'bloginfo',
