@@ -377,6 +377,22 @@ function roots_excerpt_more($more) {
 add_filter('excerpt_length', 'roots_excerpt_length');
 add_filter('excerpt_more', 'roots_excerpt_more');
 
+// Replaces 'current-menu-item' with 'active'
+function roots_wp_nav_menu($text) {
+  $replace = array(
+    // List of menu item classes that should be changed to 'active'
+    'current-menu-item'     => 'active',
+    'current-menu-parent'   => 'active',
+    'current-menu-ancestor' => 'active',
+    'current_page_item'     => 'active',
+    'current_page_parent'   => 'active',
+    'current_page_ancestor' => 'active',
+  );
+  $text = str_replace(array_keys($replace), $replace, $text);
+  return $text;
+}
+add_filter('wp_nav_menu', 'roots_wp_nav_menu');
+
 class Roots_Nav_Walker extends Walker_Nav_Menu {
   function check_current($val) {
     return preg_match('/(current-)/', $val);
@@ -395,7 +411,12 @@ class Roots_Nav_Walker extends Walker_Nav_Menu {
 
     $classes = array_filter($classes, array(&$this, 'check_current'));
 
-    $class_names = join(' ', apply_filters('nav_menu_css_class', array_filter($classes), $item));
+    $custom_classes = get_post_meta($item->ID, '_menu_item_classes', true);
+    foreach ($custom_classes as $custom_class) {
+      $classes[] = $custom_class;
+    }
+
+    $class_names = join(' ', apply_filters('nav_menu_css_class', array_filter($classes), $item, $args));
     $class_names = $class_names ? ' class="' . $id . ' ' . esc_attr($class_names) . '"' : ' class="' . $id . '"';
 
     $output .= $indent . '<li' . $class_names . '>';
@@ -417,7 +438,7 @@ class Roots_Nav_Walker extends Walker_Nav_Menu {
 
 class Roots_Navbar_Nav_Walker extends Walker_Nav_Menu {
   function check_current($val) {
-    return preg_match('/(current-)|current_page_parent|active|dropdown/', $val);
+    return preg_match('/(current-)|active|dropdown/', $val);
   }
 
   function start_lvl(&$output, $depth) {
@@ -437,18 +458,19 @@ class Roots_Navbar_Nav_Walker extends Walker_Nav_Menu {
 
     $classes = empty($item->classes) ? array() : (array) $item->classes;
 
-    if (in_array('current_page_parent', $classes)) {
-      $classes[] = 'active';
-    }
-
     if ($args->has_children) {
       $classes[]      = 'dropdown';
       $li_attributes .= ' data-dropdown="dropdown"';
     }
-    $classes[] = ($item->current) ? 'active' : '';
+
     $classes = array_filter($classes, array(&$this, 'check_current'));
 
-    $class_names = join(' ', apply_filters('nav_menu_css_class', array_filter($classes), $item));
+    $custom_classes = get_post_meta($item->ID, '_menu_item_classes', true);
+    foreach ($custom_classes as $custom_class) {
+      $classes[] = $custom_class;
+    }
+
+    $class_names = join(' ', apply_filters('nav_menu_css_class', array_filter($classes), $item, $args));
     $class_names = $class_names ? ' class="' . $id . ' ' . esc_attr($class_names) . '"' : ' class="' . $id . '"';
 
     $output .= $indent . '<li' . $class_names . $li_attributes . '>';
@@ -512,10 +534,14 @@ class Roots_Navbar_Nav_Walker extends Walker_Nav_Menu {
 
 function roots_nav_menu_args($args = '') {
   $roots_nav_menu_args['container']  = false;
-  $roots_nav_menu_args['depth']      = 2;
   $roots_nav_menu_args['items_wrap'] = '<ul class="%2$s">%3$s</ul>';
-  $roots_nav_menu_args['walker'] = new Roots_Nav_Walker();
-  return array_merge($roots_nav_menu_args, $args);
+  if ($args['walker'] == new Roots_Navbar_Nav_Walker()) {
+    $roots_nav_menu_args['depth'] = 2;
+  }
+  if (!$args['walker']) {
+    $roots_nav_menu_args['walker'] = new Roots_Nav_Walker();
+  }
+  return array_merge($args, $roots_nav_menu_args);
 }
 
 add_filter('wp_nav_menu_args', 'roots_nav_menu_args');
