@@ -1,0 +1,340 @@
+# Gábor Udvari <gabor.udvari@gmail.com>, 2012.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-04-13 16:17-0300\n"
+"PO-Revision-Date: 2012-05-13 14:54+0200\n"
+"Last-Translator: Gábor Udvari <gabor.udvari@gmail.com>\n"
+"Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;__;_e\n"
+"X-Poedit-SearchPath-0: .\n"
+"Language: hu\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 1.4\n"
+
+#: 404.php:7
+msgid "File Not Found"
+msgstr "A fájl nem található"
+
+#: 404.php:11
+msgid ""
+"The page you are looking for might have been removed, had its name changed, "
+"or is temporarily unavailable."
+msgstr ""
+"A keresett oldalt valószínűleg eltávolították, megváltoztatták a nevét vagy "
+"ideiglenesen nem elérhető."
+
+#: 404.php:13
+msgid "Please try the following:"
+msgstr "Próbálja meg a következőket:"
+
+#: 404.php:15
+msgid "Check your spelling"
+msgstr "Ellenőrizze az elgépeléseket"
+
+#: 404.php:16
+#, php-format
+msgid "Return to the <a href=\"%s\">home page</a>"
+msgstr "Térjen vissza a <a href=\"%s\">kezdőoldalra</a>"
+
+#: 404.php:17
+msgid "Click the <a href=\"javascript:history.back()\">Back</a> button"
+msgstr "Kattintson a <a href=\"javascript:history.back()\">„Vissza”</a> gombra"
+
+#: archive.php:13
+#, php-format
+msgid "Daily Archives: %s"
+msgstr "Napi archívum: %s"
+
+#: archive.php:15
+#, php-format
+msgid "Monthly Archives: %s"
+msgstr "Havi archívum: %s"
+
+#: archive.php:17
+#, php-format
+msgid "Yearly Archives: %s"
+msgstr "Éves archívum: %s"
+
+#: archive.php:21
+#, php-format
+msgid "Author Archives: %s"
+msgstr "Szerzői archívum: %s"
+
+#: comments.php:7
+#, php-format
+msgid "<cite class=\"fn\">%s</cite>"
+msgstr "<cite class=\"fn\">%s</cite>"
+
+#: comments.php:8
+#, php-format
+msgid "%1$s"
+msgstr "%1$s"
+
+#: comments.php:9
+msgid "(Edit)"
+msgstr "(Szerkesztés)"
+
+#: comments.php:15
+msgid "Your comment is awaiting moderation."
+msgstr "A hozzászólása moderációra vár."
+
+#: comments.php:32
+msgid "This post is password protected. Enter the password to view comments."
+msgstr ""
+"Ez a bejegyzés jelszóval védett. Adja meg a jelszavát a hozzászólások "
+"megtekintéséhez."
+
+#: comments.php:49
+msgid "&larr; Older comments"
+msgstr "&larr; Régebbi hozzászólások"
+
+#: comments.php:50
+msgid "Newer comments &rarr;"
+msgstr "Újabb hozzászólások &rarr;"
+
+#: comments.php:58
+#: comments.php:68
+msgid "Comments are closed."
+msgstr "A hozzászólások lezárva."
+
+#: comments.php:75
+msgid "Leave a Reply"
+msgstr "Hozzászólás írása"
+
+#: comments.php:75
+#, php-format
+msgid "Leave a Reply to %s"
+msgstr "Hozzászólás írása: %s"
+
+#: comments.php:78
+#, php-format
+msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
+msgstr "A hozzászólás beküldéséhez <a href=\"%s\">bejelentkezés</a> szükséges."
+
+#: comments.php:82
+#, php-format
+msgid "Logged in as <a href=\"%s/wp-admin/profile.php\">%s</a>."
+msgstr "Bejelentkezve, mint <a href=\"%s/wp-admin/profile.php\">%s</a>."
+
+#: comments.php:82
+msgid "Log out of this account"
+msgstr "Kijelentkezés ebből a fiókból"
+
+#: comments.php:82
+msgid "Log out &raquo;"
+msgstr "Kijelentkezés &raquo;"
+
+#: comments.php:84
+msgid "Name"
+msgstr "Név"
+
+#: comments.php:84
+#: comments.php:86
+msgid " (required)"
+msgstr " (kötelező)"
+
+#: comments.php:86
+msgid "Email (will not be published)"
+msgstr "Email (nem lesz nyilvános)"
+
+#: comments.php:88
+msgid "Website"
+msgstr "Weboldal"
+
+#: comments.php:91
+msgid "Comment"
+msgstr "Hozzászólás"
+
+#: comments.php:93
+msgid "Submit Comment"
+msgstr "Hozzászólás beküldése"
+
+#: functions.php:45
+msgid "Primary Navigation"
+msgstr "Elsődleges navigáció"
+
+#: functions.php:74
+#, php-format
+msgid "Posted on %s at %s."
+msgstr "Beküldve %s %s."
+
+#: functions.php:75
+msgid "Written by"
+msgstr "Írta"
+
+#: index.php:7
+msgid "Latest Posts"
+msgstr "Legújabb bejegyzések"
+
+#: loop-single.php:14
+msgid "Pages:"
+msgstr "Oldalak:"
+
+#: loop.php:5
+msgid "Sorry, no results were found."
+msgstr "Elnézést, nincs találat."
+
+#: loop.php:37
+msgid "&larr; Older posts"
+msgstr "&larr; Régebbi bejegyzések"
+
+#: loop.php:38
+msgid "Newer posts &rarr;"
+msgstr "Újabb bejegyzések &rarr;"
+
+#: search.php:7
+msgid "Search Results for"
+msgstr "Keresési eredmények"
+
+#: searchform.php:2
+msgid "Search for:"
+msgstr "Keresés a következőre:"
+
+#: searchform.php:3
+#: searchform.php:4
+msgid "Search"
+msgstr "Keresés"
+
+#: inc/roots-activation.php:32
+#: inc/roots-activation.php:33
+msgid "Theme Activation"
+msgstr "Sablon aktiválása"
+
+#: inc/roots-activation.php:70
+#, php-format
+msgid "%s Theme Activation"
+msgstr "%s sablon aktiválása"
+
+#: inc/roots-activation.php:85
+#: inc/roots-activation.php:87
+msgid "Create static front page?"
+msgstr "Statikus kezdőlap beállítása"
+
+#: inc/roots-activation.php:89
+#: inc/roots-activation.php:102
+#: inc/roots-activation.php:115
+#: inc/roots-activation.php:128
+#: inc/roots-activation.php:141
+msgid "Yes"
+msgstr "Igen"
+
+#: inc/roots-activation.php:90
+#: inc/roots-activation.php:103
+#: inc/roots-activation.php:116
+#: inc/roots-activation.php:129
+#: inc/roots-activation.php:142
+msgid "No"
+msgstr "Nem"
+
+#: inc/roots-activation.php:93
+msgid "Create a page called Home and set it to be the static front page"
+msgstr "Home nevű oldal létrehozása, és beállítása statikus kezdőlapként"
+
+#: inc/roots-activation.php:98
+msgid "Change permalink structure?"
+msgstr "Állandó címek szerkezetének megváltoztatása"
+
+#: inc/roots-activation.php:100
+msgid "Update permalink structure?"
+msgstr "Állandó címek szerkezetének frissítése"
+
+#: inc/roots-activation.php:106
+msgid "Change permalink structure to /&#37;postname&#37;/"
+msgstr "Állandó címek szerkezetének megváltoztatása erre: /&#37;postname&#37;/"
+
+#: inc/roots-activation.php:111
+msgid "Change uploads folder?"
+msgstr "Feltöltési mappa megváltoztatása"
+
+#: inc/roots-activation.php:113
+msgid "Update uploads folder?"
+msgstr "Feltöltési mappa frissítése"
+
+#: inc/roots-activation.php:119
+msgid "Change uploads folder to /assets/ instead of /wp-content/uploads/"
+msgstr ""
+"Feltöltési mappa megváltoztatása az /assets/ mappára a /wp-content/uploads/ "
+"mappa helyett"
+
+#: inc/roots-activation.php:124
+#: inc/roots-activation.php:126
+msgid "Create navigation menu?"
+msgstr "Navigációs menü létrehozása"
+
+#: inc/roots-activation.php:132
+msgid "Create the Primary Navigation menu and set the location"
+msgstr "Elsődleges navigációs menü létrehozása és helyének beállítása"
+
+#: inc/roots-activation.php:137
+#: inc/roots-activation.php:139
+msgid "Add pages to menu?"
+msgstr "Oldalak hozzáadása a menühöz"
+
+#: inc/roots-activation.php:145
+msgid "Add all current published pages to the Primary Navigation"
+msgstr "Minden jelenleg publikált oldal hozzáadása az elsődleges navigációhoz"
+
+#: inc/roots-cleanup.php:370
+msgid "Continued"
+msgstr "Folytatás"
+
+#: inc/roots-cleanup.php:538
+#, php-format
+msgid ""
+"Please update your <a href=\"%s\">site tagline</a> <a href=\"%s\" "
+"style=\"float: right;\">Hide Notice</a>"
+msgstr ""
+"Frissítse az <a href=\"%s\">oldal leírását</a> <a href=\"%s\" style=\"float: "
+"right;\">Figyelmeztetés elrejtése</a>"
+
+#: inc/roots-htaccess.php:11
+#, php-format
+msgid "Please make sure your <a href=\"%s\">.htaccess</a> file is writable "
+msgstr "Győződjön meg róla, hogy a <a href=\"%s\">.htaccess</a> fájl írható "
+
+#: inc/roots-widgets.php:5
+msgid "Use this widget to add a vCard"
+msgstr "Használja ezt a widgetet egy vCard hozzáadásához"
+
+#: inc/roots-widgets.php:6
+msgid "Roots: vCard"
+msgstr "Roots: vCard"
+
+#: inc/roots-widgets.php:33
+msgid "vCard"
+msgstr "vCard"
+
+#: inc/roots-widgets.php:99
+msgid "Title (optional):"
+msgstr "Cím (nem kötelező):"
+
+#: inc/roots-widgets.php:103
+msgid "Street Address:"
+msgstr "Utca, házszám:"
+
+#: inc/roots-widgets.php:107
+msgid "City/Locality:"
+msgstr "Város/település:"
+
+#: inc/roots-widgets.php:111
+msgid "State/Region:"
+msgstr "Megye/régió:"
+
+#: inc/roots-widgets.php:115
+msgid "Zipcode/Postal Code:"
+msgstr "Irányítószám:"
+
+#: inc/roots-widgets.php:119
+msgid "Telephone:"
+msgstr "Telefon:"
+
+#: inc/roots-widgets.php:123
+msgid "Email:"
+msgstr "Email:"
+
+
