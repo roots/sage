@@ -9,6 +9,8 @@
               $term = get_term_by('slug', get_query_var('term'), get_query_var('taxonomy'));
               if ($term) {
                 echo $term->name;
+              } elseif (is_post_type_archive()) {
+                echo get_queried_object()->labels->name;
               } elseif (is_day()) {
                 printf(__('Daily Archives: %s', 'roots'), get_the_date());
               } elseif (is_month()) {
