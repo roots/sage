@@ -411,9 +411,10 @@ class Roots_Nav_Walker extends Walker_Nav_Menu {
 
     $classes = array_filter($classes, array(&$this, 'check_current'));
 
-    $custom_classes = get_post_meta($item->ID, '_menu_item_classes', true);
-    foreach ($custom_classes as $custom_class) {
-      $classes[] = $custom_class;
+    if ($custom_classes = get_post_meta($item->ID, '_menu_item_classes', true)) {
+      foreach ($custom_classes as $custom_class) {
+        $classes[] = $custom_class;
+      }
     }
 
     $class_names = join(' ', apply_filters('nav_menu_css_class', array_filter($classes), $item, $args));
