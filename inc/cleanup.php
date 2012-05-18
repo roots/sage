@@ -558,24 +558,6 @@ add_filter('get_avatar', 'roots_remove_self_closing_tags');
 add_filter('comment_id_fields', 'roots_remove_self_closing_tags');
 add_filter('post_thumbnail_html', 'roots_remove_self_closing_tags');
 
-// check to see if the tagline is set to default
-// show an admin notice to update if it hasn't been changed
-// you want to change this or remove it because it's used as the description in the RSS feed
-function roots_notice_tagline() {
-    global $current_user;
-    $user_id = $current_user->ID;
-
-    if (!get_user_meta($user_id, 'ignore_tagline_notice')) {
-      echo '<div class="error">';
-      echo '<p>', sprintf(__('Please update your <a href="%s">site tagline</a> <a href="%s" style="float: right;">Hide Notice</a>', 'roots'), admin_url('options-general.php'), '?tagline_notice_ignore=0'), '</p>';
-      echo '</div>';
-    }
-}
-
-if ((get_option('blogdescription') === 'Just another WordPress site') && isset($_GET['page']) != 'theme_activation_options') {
-  add_action('admin_notices', 'roots_notice_tagline');
-}
-
 // Don't return the default description in the RSS feed if it hasn't been changed
 function roots_remove_default_description($val) {
   if ($val === 'Just another WordPress site') {
@@ -585,16 +567,6 @@ function roots_remove_default_description($val) {
   }
 }
 add_filter('get_bloginfo_rss', 'roots_remove_default_description');
-
-function roots_notice_tagline_ignore() {
-  global $current_user;
-  $user_id = $current_user->ID;
-  if (isset($_GET['tagline_notice_ignore']) && '0' == $_GET['tagline_notice_ignore']) {
-    add_user_meta($user_id, 'ignore_tagline_notice', 'true', true);
-  }
-}
-
-add_action('admin_init', 'roots_notice_tagline_ignore');
 
 // allow more tags in TinyMCE including <iframe> and <script>
 function roots_change_mce_options($options) {
