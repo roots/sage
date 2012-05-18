@@ -1,16 +1,22 @@
 <?php
 
-// redirect /?s to /search/
-// http://txfx.net/wordpress-plugins/nice-search/
+/**
+ * Redirects search results from /?s=query to /search/query/, converts %20 to +
+ *
+ * @link http://txfx.net/wordpress-plugins/nice-search/
+ */
 function roots_nice_search_redirect() {
   if (is_search() && strpos($_SERVER['REQUEST_URI'], '/wp-admin/') === false && strpos($_SERVER['REQUEST_URI'], '/search/') === false) {
     wp_redirect(home_url('/search/' . str_replace(array(' ', '%20'), array('+', '+'), urlencode(get_query_var('s')))), 301);
-      exit();
+    exit();
   }
 }
 
 add_action('template_redirect', 'roots_nice_search_redirect');
 
+/**
+ * Fix for get_search_query() returning +'s between search terms
+ */
 function roots_search_query($escaped = true) {
   $query = apply_filters('roots_search_query', get_query_var('s'));
 
@@ -23,8 +29,12 @@ function roots_search_query($escaped = true) {
 
 add_filter('get_search_query', 'roots_search_query');
 
-// fix for empty search query
-// http://wordpress.org/support/topic/blank-search-sends-you-to-the-homepage#post-1772565
+/**
+ * Fix for empty search queries redirecting to home page
+ *
+ * @link http://wordpress.org/support/topic/blank-search-sends-you-to-the-homepage#post-1772565
+ * @link http://core.trac.wordpress.org/ticket/11330
+ */
 function roots_request_filter($query_vars) {
   if (isset($_GET['s']) && empty($_GET['s'])) {
     $query_vars['s'] = ' ';
@@ -35,19 +45,27 @@ function roots_request_filter($query_vars) {
 
 add_filter('request', 'roots_request_filter');
 
-// root relative URLs for everything
-// inspired by http://www.456bereastreet.com/archive/201010/how_to_make_wordpress_urls_root_relative/
-// thanks to Scott Walkinshaw (scottwalkinshaw.com)
+/**
+ * Root relative URLs
+ *
+ * WordPress likes to use absolute URLs on everything - let's clean that up.
+ * Inspired by http://www.456bereastreet.com/archive/201010/how_to_make_wordpress_urls_root_relative/
+ *
+ * You can enable/disable this feature in config.php:
+ * current_theme_supports('root-relative-urls');
+ *
+ * @author Scott Walkinshaw <scott.walkinshaw@gmail.com>
+ */
 function roots_root_relative_url($input) {
   $output = preg_replace_callback(
     '!(https?://[^/|"]+)([^"]+)?!',
     create_function(
       '$matches',
-      // if full URL is home_url("/"), return a slash for relative root
+      // If full URL is home_url("/"), return a slash for relative root
       'if (isset($matches[0]) && $matches[0] === home_url("/")) { return "/";' .
-      // if domain is equal to home_url("/"), then make URL relative
+      // If domain is equal to home_url("/"), then make URL relative
       '} elseif (isset($matches[0]) && strpos($matches[0], home_url("/")) !== false) { return $matches[2];' .
-      // if domain is not equal to home_url("/"), do not make external link relative
+      // If domain is not equal to home_url("/"), do not make external link relative
       '} else { return $matches[0]; };'
     ),
     $input
@@ -56,8 +74,10 @@ function roots_root_relative_url($input) {
   return $output;
 }
 
-// Terrible workaround to remove the duplicate subfolder in the src of JS/CSS tags
-// Example: /subfolder/subfolder/css/style.css
+/**
+ * Terrible workaround to remove the duplicate subfolder in the src of <script> and <link> tags
+ * Example: /subfolder/subfolder/css/style.css
+ */
 function roots_fix_duplicate_subfolder_urls($input) {
   $output = roots_root_relative_url($input);
   preg_match_all('!([^/]+)/([^/]+)!', $output, $matches);
@@ -71,20 +91,12 @@ function roots_fix_duplicate_subfolder_urls($input) {
   return $output;
 }
 
-// remove root relative URLs on any attachments in the feed
-function roots_root_relative_attachment_urls() {
-  if (!is_feed()) {
-    add_filter('wp_get_attachment_url', 'roots_root_relative_url');
-    add_filter('wp_get_attachment_link', 'roots_root_relative_url');
-  }
-}
-
 function enable_root_relative_urls() {
   return !(is_admin() && in_array($GLOBALS['pagenow'], array('wp-login.php', 'wp-register.php'))) && current_theme_supports('root-relative-urls');
 }
 
 if (enable_root_relative_urls()) {
-  $tags = array(
+  $root_rel_filters = array(
     'bloginfo_url',
     'theme_root_uri',
     'stylesheet_directory_uri',
@@ -105,7 +117,7 @@ if (enable_root_relative_urls()) {
     'the_author_posts_link'
   );
 
-  add_filters($tags, 'roots_root_relative_url');
+  add_filters($root_rel_filters, 'roots_root_relative_url');
 
   add_filter('script_loader_src', 'roots_fix_duplicate_subfolder_urls');
   add_filter('style_loader_src', 'roots_fix_duplicate_subfolder_urls');
@@ -113,7 +125,12 @@ if (enable_root_relative_urls()) {
   add_action('pre_get_posts', 'roots_root_relative_attachment_urls');
 }
 
-// set lang="en" as default (rather than en-US)
+/**
+ * Cleanup language_attributes() used in <html> tag
+ *
+ * Change lang="en-US" to lang="en"
+ * Remove dir="ltr"
+ */
 function roots_language_attributes() {
   $attributes = array();
   $output = '';
@@ -140,15 +157,40 @@ function roots_language_attributes() {
 
 add_filter('language_attributes', 'roots_language_attributes');
 
-// remove WordPress version from RSS feed
-function roots_no_generator() { return ''; }
+/**
+ * Remove the WordPress version from RSS feeds
+ */
+function roots_remove_generator() { return; }
 
-add_filter('the_generator', 'roots_no_generator');
+add_filter('the_generator', 'roots_remove_generator');
 
-// cleanup wp_head
-function roots_noindex() {
-  if (get_option('blog_public') === '0') {
-    echo '<meta name="robots" content="noindex,nofollow">', "\n";
+/**
+ * Cleanup wp_head()
+ *
+ * Remove unnecessary <link>'s
+ * Remove inline CSS used by Recent Comments widget
+ * Remove inline CSS used by posts with galleries
+ * Remove self-closing tag and change ''s to "'s on rel_canonical()
+ */
+function roots_head_cleanup() {
+  // http://wpengineer.com/1438/wordpress-header/
+  remove_action('wp_head', 'feed_links', 2);
+  remove_action('wp_head', 'feed_links_extra', 3);
+  remove_action('wp_head', 'rsd_link');
+  remove_action('wp_head', 'wlwmanifest_link');
+  remove_action('wp_head', 'index_rel_link');
+  remove_action('wp_head', 'parent_post_rel_link', 10, 0);
+  remove_action('wp_head', 'start_post_rel_link', 10, 0);
+  remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0);
+  remove_action('wp_head', 'wp_generator');
+  remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0);
+
+  add_action('wp_head', 'roots_remove_recent_comments_style', 1);
+  add_filter('gallery_style', 'roots_gallery_style');
+
+  if (!class_exists('WPSEO_Frontend')) {
+    remove_action('wp_head', 'rel_canonical');
+    add_action('wp_head', 'roots_rel_canonical');
   }
 }
 
@@ -167,7 +209,6 @@ function roots_rel_canonical() {
   echo "\t<link rel=\"canonical\" href=\"$link\">\n";
 }
 
-// remove CSS from recent comments widget
 function roots_remove_recent_comments_style() {
   global $wp_widget_factory;
 
@@ -176,51 +217,31 @@ function roots_remove_recent_comments_style() {
   }
 }
 
-// remove CSS from gallery
 function roots_gallery_style($css) {
   return preg_replace("!<style type='text/css'>(.*?)</style>!s", '', $css);
 }
 
-function roots_head_cleanup() {
-  // http://wpengineer.com/1438/wordpress-header/
-  remove_action('wp_head', 'feed_links', 2);
-  remove_action('wp_head', 'feed_links_extra', 3);
-  remove_action('wp_head', 'rsd_link');
-  remove_action('wp_head', 'wlwmanifest_link');
-  remove_action('wp_head', 'index_rel_link');
-  remove_action('wp_head', 'parent_post_rel_link', 10, 0);
-  remove_action('wp_head', 'start_post_rel_link', 10, 0);
-  remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0);
-  remove_action('wp_head', 'wp_generator');
-  remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0);
-  remove_action('wp_head', 'noindex', 1);
-  add_action('wp_head', 'roots_noindex');
-  add_action('wp_head', 'roots_remove_recent_comments_style', 1);
-  add_filter('gallery_style', 'roots_gallery_style');
-
-  if (!class_exists('WPSEO_Frontend')) {
-    remove_action('wp_head', 'rel_canonical');
-    add_action('wp_head', 'roots_rel_canonical');
-  }
-}
-
 add_action('init', 'roots_head_cleanup');
 
-// cleanup gallery_shortcode()
+/**
+ * Cleanup gallery_shortcode()
+ *
+ * Re-create the [gallery] shortcode and use thumbnails styling from Bootstrap
+ *
+ * @link http://twitter.github.com/bootstrap/components.html#thumbnails
+ */
 function roots_gallery_shortcode($attr) {
   global $post, $wp_locale;
 
   static $instance = 0;
   $instance++;
 
-  // Allow plugins/themes to override the default gallery template.
   $output = apply_filters('post_gallery', '', $attr);
 
   if ($output != '') {
     return $output;
   }
 
-  // We're trusting author input, so let's at least make sure it looks like a valid orderby statement
   if (isset($attr['orderby'])) {
     $attr['orderby'] = sanitize_sql_orderby($attr['orderby']);
     if (!$attr['orderby']) {
@@ -316,6 +337,9 @@ function roots_gallery_shortcode($attr) {
 remove_shortcode('gallery');
 add_shortcode('gallery', 'roots_gallery_shortcode');
 
+/**
+ * Add class="thumbnail" to attachment items
+ */
 function roots_attachment_link_class($html) {
   $postid = get_the_ID();
   $html = str_replace('<a', '<a class="thumbnail"', $html);
@@ -324,14 +348,16 @@ function roots_attachment_link_class($html) {
 
 add_filter('wp_get_attachment_link', 'roots_attachment_link_class', 10, 1);
 
-// http://justintadlock.com/archives/2011/07/01/captions-in-wordpress
+/**
+ * Add Bootstrap thumbnail styling to images with captions
+ *
+ * @link http://justintadlock.com/archives/2011/07/01/captions-in-wordpress
+ */
 function roots_caption($output, $attr, $content) {
-  /* We're not worried abut captions in feeds, so just return the output here. */
   if (is_feed()) {
     return $output;
   }
 
-  /* Set up the default arguments. */
   $defaults = array(
     'id' => '',
     'align' => 'alignnone',
@@ -339,39 +365,33 @@ function roots_caption($output, $attr, $content) {
     'caption' => ''
   );
 
-  /* Merge the defaults with user input. */
   $attr = shortcode_atts($defaults, $attr);
 
-  /* If the width is less than 1 or there is no caption, return the content wrapped between the [caption]< tags. */
+  // If the width is less than 1 or there is no caption, return the content wrapped between the [caption] tags
   if (1 > $attr['width'] || empty($attr['caption'])) {
     return $content;
   }
 
-  /* Set up the attributes for the caption <div>. */
+  // Set up the attributes for the caption <div>
   $attributes  = (!empty($attr['id']) ? ' id="' . esc_attr($attr['id']) . '"' : '' );
   $attributes .= ' class="thumbnail wp-caption ' . esc_attr($attr['align']) . '"';
   $attributes .= ' style="width: ' . esc_attr($attr['width']) . 'px"';
 
-  /* Open the caption <div>. */
   $output  = '<div' . $attributes .'>';
-
-  /* Allow shortcodes for the content the caption was created for. */
   $output .= do_shortcode($content);
-
-  /* Append the caption text. */
   $output .= '<div class="caption"><p class="wp-caption-text">' . $attr['caption'] . '</p></div>';
-
-  /* Close the caption </div>. */
   $output .= '</div>';
 
-  /* Return the formatted, clean caption. */
   return $output;
 }
 
 add_filter('img_caption_shortcode', 'roots_caption', 10, 3);
 
-
-// http://www.deluxeblogtips.com/2011/01/remove-dashboard-widgets-in-wordpress.html
+/**
+ * Remove unnecessary dashboard widgets
+ *
+ * @link http://www.deluxeblogtips.com/2011/01/remove-dashboard-widgets-in-wordpress.html
+ */
 function roots_remove_dashboard_widgets() {
   remove_meta_box('dashboard_incoming_links', 'dashboard', 'normal');
   remove_meta_box('dashboard_plugins', 'dashboard', 'normal');
@@ -381,22 +401,25 @@ function roots_remove_dashboard_widgets() {
 
 add_action('admin_init', 'roots_remove_dashboard_widgets');
 
-// excerpt cleanup
+/**
+ * Cleanup the_excerpt()
+ */
 function roots_excerpt_length($length) {
   return POST_EXCERPT_LENGTH;
 }
 
 function roots_excerpt_more($more) {
-  return ' &hellip; <a href="' . get_permalink() . '">' . __( 'Continued', 'roots' ) . '</a>';
+  return ' &hellip; <a href="' . get_permalink() . '">' . __('Continued', 'roots') . '</a>';
 }
 
 add_filter('excerpt_length', 'roots_excerpt_length');
 add_filter('excerpt_more', 'roots_excerpt_more');
 
-// Replaces 'current-menu-item' with 'active'
+/**
+ * Replace various active menu class names with "active"
+ */
 function roots_wp_nav_menu($text) {
   $replace = array(
-    // List of menu item classes that should be changed to 'active'
     'current-menu-item'     => 'active',
     'current-menu-parent'   => 'active',
     'current-menu-ancestor' => 'active',
@@ -411,6 +434,17 @@ function roots_wp_nav_menu($text) {
 
 add_filter('wp_nav_menu', 'roots_wp_nav_menu');
 
+/**
+ * Cleaner walker for wp_nav_menu()
+ *
+ * Walker_Nav_Menu (WordPress default) example output:
+ *   <li id="menu-item-8" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8"><a href="/">Home</a></li>
+ *   <li id="menu-item-9" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9"><a href="/sample-page/">Sample Page</a></l
+ *
+ * Roots_Nav_Walker example output:
+ *   <li class="menu-home"><a href="/">Home</a></li>
+ *   <li class="menu-sample-page"><a href="/sample-page/">Sample Page</a></li>
+ */
 class Roots_Nav_Walker extends Walker_Nav_Menu {
   function check_current($classes) {
     return preg_match('/(current-)/', $classes);
@@ -455,6 +489,10 @@ class Roots_Nav_Walker extends Walker_Nav_Menu {
   }
 }
 
+
+/**
+ * Cleaner walker for wp_nav_menu() specific to Bootstrap's Navbar
+ */
 class Roots_Navbar_Nav_Walker extends Walker_Nav_Menu {
   function check_current($classes) {
     return preg_match('/(current-)|active|dropdown/', $classes);
@@ -516,7 +554,6 @@ class Roots_Navbar_Nav_Walker extends Walker_Nav_Menu {
 
     $id_field = $this->db_fields['id'];
 
-    // display this element
     if (is_array($args[0])) {
       $args[0]['has_children'] = !empty($children_elements[$element->$id_field]);
     } elseif (is_object($args[0])) {
@@ -528,12 +565,10 @@ class Roots_Navbar_Nav_Walker extends Walker_Nav_Menu {
 
     $id = $element->$id_field;
 
-    // descend only when the depth is right and there are childrens for this element
     if (($max_depth == 0 || $max_depth > $depth+1) && isset($children_elements[$id])) {
       foreach ($children_elements[$id] as $child) {
         if (!isset($newlevel)) {
           $newlevel = true;
-          // start the child delimiter
           $cb_args = array_merge(array(&$output, $depth), $args);
           call_user_func_array(array(&$this, 'start_lvl'), $cb_args);
         }
@@ -543,17 +578,22 @@ class Roots_Navbar_Nav_Walker extends Walker_Nav_Menu {
     }
 
     if (isset($newlevel) && $newlevel) {
-      // end the child delimiter
       $cb_args = array_merge(array(&$output, $depth), $args);
       call_user_func_array(array(&$this, 'end_lvl'), $cb_args);
     }
 
-    // end this element
     $cb_args = array_merge(array(&$output, $element, $depth), $args);
     call_user_func_array(array(&$this, 'end_el'), $cb_args);
   }
 }
 
+
+/**
+ * Cleanup wp_nav_menu_args
+ *
+ * Remove the container
+ * Use Roots_Nav_Walker() by default
+ */
 function roots_nav_menu_args($args = '') {
   $roots_nav_menu_args['container']  = false;
   $roots_nav_menu_args['items_wrap'] = '<ul class="%2$s">%3$s</ul>';
@@ -571,17 +611,21 @@ function roots_nav_menu_args($args = '') {
 
 add_filter('wp_nav_menu_args', 'roots_nav_menu_args');
 
-// we don't need to self-close these tags in html5:
-// <img>, <input>
+
+/**
+ * Remove unnecessary self-closing tags
+ */
 function roots_remove_self_closing_tags($input) {
   return str_replace(' />', '>', $input);
 }
 
-add_filter('get_avatar', 'roots_remove_self_closing_tags');
-add_filter('comment_id_fields', 'roots_remove_self_closing_tags');
-add_filter('post_thumbnail_html', 'roots_remove_self_closing_tags');
+add_filter('get_avatar',          'roots_remove_self_closing_tags'); // <img />
+add_filter('comment_id_fields',   'roots_remove_self_closing_tags'); // <input />
+add_filter('post_thumbnail_html', 'roots_remove_self_closing_tags'); // <img />
 
-// Don't return the default description in the RSS feed if it hasn't been changed
+/**
+ * Don't return the default description in the RSS feed if it hasn't been changed
+ */
 function roots_remove_default_description($bloginfo) {
   $default_tagline = 'Just another WordPress site';
 
@@ -590,7 +634,9 @@ function roots_remove_default_description($bloginfo) {
 
 add_filter('get_bloginfo_rss', 'roots_remove_default_description');
 
-// allow more tags in TinyMCE including <iframe> and <script>
+/**
+ * Allow more tags in TinyMCE including <iframe> and <script>
+ */
 function roots_change_mce_options($options) {
   $ext = 'pre[id|name|class|style],iframe[align|longdesc|name|width|height|frameborder|scrolling|marginheight|marginwidth|src],script[charset|defer|language|src|type]';
 
@@ -605,17 +651,23 @@ function roots_change_mce_options($options) {
 
 add_filter('tiny_mce_before_init', 'roots_change_mce_options');
 
-//clean up the default WordPress style tags
+/**
+ * Cleanup output of stylesheet <link> tags
+ */
 add_filter('style_loader_tag', 'roots_clean_style_tag');
 
 function roots_clean_style_tag($input) {
   preg_match_all("!<link rel='stylesheet'\s?(id='[^']+')?\s+href='(.*)' type='text/css' media='(.*)' />!", $input, $matches);
-  //only display media if it's print
+  // Only display media if it's print
   $media = $matches[3][0] === 'print' ? ' media="print"' : '';
   return '<link rel="stylesheet" href="' . $matches[2][0] . '"' . $media . '>' . "\n";
 }
 
+/**
+ * Apply filters to body_class()
+ */
 function roots_body_class_filter($classes) {
+  // Add 'top-navbar' class if using Bootstrap's Navbar
   if (current_theme_supports('bootstrap-top-navbar')) {
     $classes[] = 'top-navbar';
   }
@@ -624,8 +676,11 @@ function roots_body_class_filter($classes) {
 }
 add_filter('body_class', 'roots_body_class_filter');
 
-// first and last classes for widgets
-// http://wordpress.org/support/topic/how-to-first-and-last-css-classes-for-sidebar-widgets
+/**
+ * Add additional classes onto widgets
+ *
+ * @link http://wordpress.org/support/topic/how-to-first-and-last-css-classes-for-sidebar-widgets
+ */
 function roots_widget_first_last_classes($params) {
   global $my_widget_num;
 
