@@ -586,10 +586,6 @@ function roots_notice_tagline_ignore() {
 
 add_action('admin_init', 'roots_notice_tagline_ignore');
 
-// set the post revisions to 5 unless the constant
-// was set in wp-config.php to avoid DB bloat
-if (!defined('WP_POST_REVISIONS')) { define('WP_POST_REVISIONS', 5); }
-
 // allow more tags in TinyMCE including <iframe> and <script>
 function roots_change_mce_options($options) {
   $ext = 'pre[id|name|class|style],iframe[align|longdesc|name|width|height|frameborder|scrolling|marginheight|marginwidth|src],script[charset|defer|language|src|type]';
