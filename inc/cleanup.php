@@ -674,7 +674,7 @@ function roots_widget_first_last_classes($params) {
     $class .= 'widget-last ';
   }
 
-  $params[0]['before_widget'] = str_replace('class="', $class, $params[0]['before_widget']);
+  $params[0]['before_widget'] = preg_replace('/class=\"/', "$class", $params[0]['before_widget'], 1);
 
   return $params;
 
