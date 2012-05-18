@@ -576,6 +576,16 @@ if ((get_option('blogdescription') === 'Just another WordPress site') && isset($
   add_action('admin_notices', 'roots_notice_tagline');
 }
 
+// Don't return the default description in the RSS feed if it hasn't been changed
+function roots_remove_default_description($val) {
+  if ($val === 'Just another WordPress site') {
+    return;
+  } else {
+    return $val;
+  }
+}
+add_filter('get_bloginfo_rss', 'roots_remove_default_description');
+
 function roots_notice_tagline_ignore() {
   global $current_user;
   $user_id = $current_user->ID;
