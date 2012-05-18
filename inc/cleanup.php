@@ -13,9 +13,11 @@ add_action('template_redirect', 'roots_nice_search_redirect');
 
 function roots_search_query($escaped = true) {
   $query = apply_filters('roots_search_query', get_query_var('s'));
+
   if ($escaped) {
-      $query = esc_attr($query);
+    $query = esc_attr($query);
   }
+
   return urldecode($query);
 }
 
@@ -25,8 +27,9 @@ add_filter('get_search_query', 'roots_search_query');
 // http://wordpress.org/support/topic/blank-search-sends-you-to-the-homepage#post-1772565
 function roots_request_filter($query_vars) {
   if (isset($_GET['s']) && empty($_GET['s'])) {
-    $query_vars['s'] = " ";
+    $query_vars['s'] = ' ';
   }
+
   return $query_vars;
 }
 
@@ -49,6 +52,7 @@ function roots_root_relative_url($input) {
     ),
     $input
   );
+
   return $output;
 }
 
@@ -57,11 +61,13 @@ function roots_root_relative_url($input) {
 function roots_fix_duplicate_subfolder_urls($input) {
   $output = roots_root_relative_url($input);
   preg_match_all('!([^/]+)/([^/]+)!', $output, $matches);
+
   if (isset($matches[1]) && isset($matches[2])) {
     if ($matches[1][0] === $matches[2][0]) {
       $output = substr($output, strlen($matches[1][0]) + 1);
     }
   }
+
   return $output;
 }
 
@@ -111,6 +117,7 @@ if (enable_root_relative_urls()) {
 function roots_language_attributes() {
   $attributes = array();
   $output = '';
+
   if (function_exists('is_rtl')) {
     if (is_rtl() == 'rtl') {
       $attributes[] = 'dir="rtl"';
@@ -118,6 +125,7 @@ function roots_language_attributes() {
   }
 
   $lang = get_bloginfo('language');
+
   if ($lang && $lang !== 'en-US') {
     $attributes[] = "lang=\"$lang\"";
   } else {
@@ -126,6 +134,7 @@ function roots_language_attributes() {
 
   $output = implode(' ', $attributes);
   $output = apply_filters('roots_language_attributes', $output);
+
   return $output;
 }
 
@@ -133,6 +142,7 @@ add_filter('language_attributes', 'roots_language_attributes');
 
 // remove WordPress version from RSS feed
 function roots_no_generator() { return ''; }
+
 add_filter('the_generator', 'roots_no_generator');
 
 // cleanup wp_head
@@ -143,11 +153,12 @@ function roots_noindex() {
 }
 
 function roots_rel_canonical() {
+  global $wp_the_query;
+
   if (!is_singular()) {
     return;
   }
 
-  global $wp_the_query;
   if (!$id = $wp_the_query->get_queried_object_id()) {
     return;
   }
@@ -159,6 +170,7 @@ function roots_rel_canonical() {
 // remove CSS from recent comments widget
 function roots_remove_recent_comments_style() {
   global $wp_widget_factory;
+
   if (isset($wp_widget_factory->widgets['WP_Widget_Recent_Comments'])) {
     remove_action('wp_head', array($wp_widget_factory->widgets['WP_Widget_Recent_Comments'], 'recent_comments_style'));
   }
@@ -203,6 +215,7 @@ function roots_gallery_shortcode($attr) {
 
   // Allow plugins/themes to override the default gallery template.
   $output = apply_filters('post_gallery', '', $attr);
+
   if ($output != '') {
     return $output;
   }
@@ -228,7 +241,8 @@ function roots_gallery_shortcode($attr) {
   ), $attr));
 
   $id = intval($id);
-  if ('RAND' == $order) {
+
+  if ($order === 'RAND') {
     $orderby = 'none';
   }
 
@@ -259,19 +273,20 @@ function roots_gallery_shortcode($attr) {
   }
 
   $captiontag = tag_escape($captiontag);
-  $columns = intval($columns);
-  $itemwidth = $columns > 0 ? floor(100/$columns) : 100;
-  $float = is_rtl() ? 'right' : 'left';
-
-  $selector = "gallery-{$instance}";
+  $columns    = intval($columns);
+  $itemwidth  = $columns > 0 ? floor(100/$columns) : 100;
+  $float      = is_rtl() ? 'right' : 'left';
+  $selector   = "gallery-{$instance}";
 
   $gallery_style = $gallery_div = '';
+
   if (apply_filters('use_default_gallery_style', true)) {
-    $gallery_style = "";
+    $gallery_style = '';
   }
-  $size_class = sanitize_html_class($size);
+
+  $size_class  = sanitize_html_class($size);
   $gallery_div = "<ul id='$selector' class='thumbnails gallery galleryid-{$id} gallery-columns-{$columns} gallery-size-{$size_class}'>";
-  $output = apply_filters('gallery_style', $gallery_style . "\n\t\t" . $gallery_div);
+  $output      = apply_filters('gallery_style', $gallery_style . "\n\t\t" . $gallery_div);
 
   $i = 0;
   foreach ($attachments as $id => $attachment) {
@@ -306,12 +321,13 @@ function roots_attachment_link_class($html) {
   $html = str_replace('<a', '<a class="thumbnail"', $html);
   return $html;
 }
+
 add_filter('wp_get_attachment_link', 'roots_attachment_link_class', 10, 1);
 
 // http://justintadlock.com/archives/2011/07/01/captions-in-wordpress
 function roots_caption($output, $attr, $content) {
   /* We're not worried abut captions in feeds, so just return the output here. */
-  if ( is_feed()) {
+  if (is_feed()) {
     return $output;
   }
 
@@ -332,12 +348,12 @@ function roots_caption($output, $attr, $content) {
   }
 
   /* Set up the attributes for the caption <div>. */
-  $attributes = (!empty($attr['id']) ? ' id="' . esc_attr($attr['id']) . '"' : '' );
+  $attributes  = (!empty($attr['id']) ? ' id="' . esc_attr($attr['id']) . '"' : '' );
   $attributes .= ' class="thumbnail wp-caption ' . esc_attr($attr['align']) . '"';
   $attributes .= ' style="width: ' . esc_attr($attr['width']) . 'px"';
 
   /* Open the caption <div>. */
-  $output = '<div' . $attributes .'>';
+  $output  = '<div' . $attributes .'>';
 
   /* Allow shortcodes for the content the caption was created for. */
   $output .= do_shortcode($content);
@@ -388,14 +404,16 @@ function roots_wp_nav_menu($text) {
     'current_page_parent'   => 'active',
     'current_page_ancestor' => 'active',
   );
+
   $text = str_replace(array_keys($replace), $replace, $text);
   return $text;
 }
+
 add_filter('wp_nav_menu', 'roots_wp_nav_menu');
 
 class Roots_Nav_Walker extends Walker_Nav_Menu {
-  function check_current($val) {
-    return preg_match('/(current-)/', $val);
+  function check_current($classes) {
+    return preg_match('/(current-)/', $classes);
   }
 
   function start_el(&$output, $item, $depth, $args) {
@@ -427,7 +445,7 @@ class Roots_Nav_Walker extends Walker_Nav_Menu {
     $attributes .= ! empty($item->xfn)        ? ' rel="'    . esc_attr($item->xfn       ) .'"' : '';
     $attributes .= ! empty($item->url)        ? ' href="'   . esc_attr($item->url       ) .'"' : '';
 
-    $item_output = $args->before;
+    $item_output  = $args->before;
     $item_output .= '<a'. $attributes .'>';
     $item_output .= $args->link_before . apply_filters('the_title', $item->title, $item->ID) . $args->link_after;
     $item_output .= '</a>';
@@ -438,8 +456,8 @@ class Roots_Nav_Walker extends Walker_Nav_Menu {
 }
 
 class Roots_Navbar_Nav_Walker extends Walker_Nav_Menu {
-  function check_current($val) {
-    return preg_match('/(current-)|active|dropdown/', $val);
+  function check_current($classes) {
+    return preg_match('/(current-)|active|dropdown/', $classes);
   }
 
   function start_lvl(&$output, $depth) {
@@ -451,6 +469,7 @@ class Roots_Navbar_Nav_Walker extends Walker_Nav_Menu {
     $indent = ($depth) ? str_repeat("\t", $depth) : '';
 
     $slug = sanitize_title($item->title);
+
     $id = apply_filters('nav_menu_item_id', 'menu-' . $slug, $item, $args);
     $id = strlen($id) ? '' . esc_attr( $id ) . '' : '';
 
@@ -467,9 +486,9 @@ class Roots_Navbar_Nav_Walker extends Walker_Nav_Menu {
     $classes = array_filter($classes, array(&$this, 'check_current'));
 
     if ($custom_classes = get_post_meta($item->ID, '_menu_item_classes', true)) {
-        foreach ($custom_classes as $custom_class) {
-          $classes[] = $custom_class;
-        }
+      foreach ($custom_classes as $custom_class) {
+        $classes[] = $custom_class;
+      }
     }
 
     $class_names = join(' ', apply_filters('nav_menu_css_class', array_filter($classes), $item, $args));
@@ -483,7 +502,7 @@ class Roots_Navbar_Nav_Walker extends Walker_Nav_Menu {
     $attributes .= ! empty($item->url)        ? ' href="'   . esc_attr($item->url       ) .'"'    : '';
     $attributes .= ($args->has_children)      ? ' class="dropdown-toggle" data-toggle="dropdown"' : '';
 
-    $item_output = $args->before;
+    $item_output  = $args->before;
     $item_output .= '<a'. $attributes .'>';
     $item_output .= $args->link_before . apply_filters('the_title', $item->title, $item->ID) . $args->link_after;
     $item_output .= ($args->has_children) ? ' <b class="caret"></b>' : '';
@@ -503,6 +522,7 @@ class Roots_Navbar_Nav_Walker extends Walker_Nav_Menu {
     } elseif (is_object($args[0])) {
       $args[0]->has_children = !empty($children_elements[$element->$id_field]);
     }
+
     $cb_args = array_merge(array(&$output, $element, $depth), $args);
     call_user_func_array(array(&$this, 'start_el'), $cb_args);
 
@@ -537,12 +557,15 @@ class Roots_Navbar_Nav_Walker extends Walker_Nav_Menu {
 function roots_nav_menu_args($args = '') {
   $roots_nav_menu_args['container']  = false;
   $roots_nav_menu_args['items_wrap'] = '<ul class="%2$s">%3$s</ul>';
+
   if ($args['walker'] == new Roots_Navbar_Nav_Walker()) {
     $roots_nav_menu_args['depth'] = 2;
   }
+
   if (!$args['walker']) {
     $roots_nav_menu_args['walker'] = new Roots_Nav_Walker();
   }
+
   return array_merge($args, $roots_nav_menu_args);
 }
 
@@ -559,23 +582,24 @@ add_filter('comment_id_fields', 'roots_remove_self_closing_tags');
 add_filter('post_thumbnail_html', 'roots_remove_self_closing_tags');
 
 // Don't return the default description in the RSS feed if it hasn't been changed
-function roots_remove_default_description($val) {
-  if ($val === 'Just another WordPress site') {
-    return;
-  } else {
-    return $val;
-  }
+function roots_remove_default_description($bloginfo) {
+  $default_tagline = 'Just another WordPress site';
+
+  return ($bloginfo === $default_tagline) ? '' : $bloginfo;
 }
+
 add_filter('get_bloginfo_rss', 'roots_remove_default_description');
 
 // allow more tags in TinyMCE including <iframe> and <script>
 function roots_change_mce_options($options) {
   $ext = 'pre[id|name|class|style],iframe[align|longdesc|name|width|height|frameborder|scrolling|marginheight|marginwidth|src],script[charset|defer|language|src|type]';
+
   if (isset($initArray['extended_valid_elements'])) {
     $options['extended_valid_elements'] .= ',' . $ext;
   } else {
     $options['extended_valid_elements'] = $ext;
   }
+
   return $options;
 }
 
@@ -595,6 +619,7 @@ function roots_body_class_filter($classes) {
   if (current_theme_supports('bootstrap-top-navbar')) {
     $classes[] = 'top-navbar';
   }
+
   return $classes;
 }
 add_filter('body_class', 'roots_body_class_filter');
@@ -603,6 +628,7 @@ add_filter('body_class', 'roots_body_class_filter');
 // http://wordpress.org/support/topic/how-to-first-and-last-css-classes-for-sidebar-widgets
 function roots_widget_first_last_classes($params) {
   global $my_widget_num;
+
   $this_id = $params[0]['id'];
   $arr_registered_widgets = wp_get_sidebars_widgets();
 
@@ -633,4 +659,5 @@ function roots_widget_first_last_classes($params) {
   return $params;
 
 }
+
 add_filter('dynamic_sidebar_params', 'roots_widget_first_last_classes');
