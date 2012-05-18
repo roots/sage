@@ -621,30 +621,6 @@ function roots_body_class_filter($classes) {
 }
 add_filter('body_class', 'roots_body_class_filter');
 
-function roots_body_class() {
-  $term = get_queried_object();
-
-  if (is_single()) {
-    $cat = get_the_category();
-  }
-
-  if (is_front_page()) {
-    return; // Avoid duplicate 'home' class when using static front page
-  }
-
-  if(!empty($cat)) {
-    return $cat[0]->slug;
-  } elseif (isset($term->slug)) {
-    return $term->slug;
-  } elseif (isset($term->page_name)) {
-    return $term->page_name;
-  } elseif (isset($term->post_name)) {
-    return $term->post_name;
-  } else {
-    return;
-  }
-}
-
 // first and last classes for widgets
 // http://wordpress.org/support/topic/how-to-first-and-last-css-classes-for-sidebar-widgets
 function roots_widget_first_last_classes($params) {
