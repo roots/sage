@@ -121,8 +121,6 @@ if (enable_root_relative_urls()) {
 
   add_filter('script_loader_src', 'roots_fix_duplicate_subfolder_urls');
   add_filter('style_loader_src', 'roots_fix_duplicate_subfolder_urls');
-
-  add_action('pre_get_posts', 'roots_root_relative_attachment_urls');
 }
 
 /**
