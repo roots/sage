@@ -445,7 +445,7 @@ add_filter('wp_nav_menu', 'roots_wp_nav_menu');
  */
 class Roots_Nav_Walker extends Walker_Nav_Menu {
   function check_current($classes) {
-    return preg_match('/(current-)/', $classes);
+    return preg_match('/(current[-_])/', $classes);
   }
 
   function start_el(&$output, $item, $depth, $args) {
@@ -493,7 +493,7 @@ class Roots_Nav_Walker extends Walker_Nav_Menu {
  */
 class Roots_Navbar_Nav_Walker extends Walker_Nav_Menu {
   function check_current($classes) {
-    return preg_match('/(current-)|active|dropdown/', $classes);
+    return preg_match('/(current[-_])|active|dropdown/', $classes);
   }
 
   function start_lvl(&$output, $depth) {
