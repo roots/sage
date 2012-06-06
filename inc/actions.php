@@ -10,7 +10,7 @@ add_action('roots_head', 'roots_feed_link');
 
 function roots_google_analytics() {
   $roots_google_analytics_id = GOOGLE_ANALYTICS_ID;
-  if ($roots_google_analytics_id !== '') {
+  if (!empty($roots_google_analytics_id)) {
     echo "\n\t<script>\n";
     echo "\t\tvar _gaq=[['_setAccount','$roots_google_analytics_id'],['_trackPageview']];\n";
     echo "\t\t(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];\n";

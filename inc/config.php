@@ -17,13 +17,16 @@ define('FULL_RELATIVE_PLUGIN_PATH', WP_BASE . '/' . RELATIVE_PLUGIN_PATH);
 define('RELATIVE_CONTENT_PATH',     str_replace(site_url() . '/', '', content_url()));
 define('THEME_PATH',                RELATIVE_CONTENT_PATH . '/themes/' . THEME_NAME);
 
+define( 'HOME_URL_IS_ROOT', str_replace('http://', '', home_url('/', 'http'))==$_SERVER["HTTP_HOST"] );
+
+
 // Set up the config User Interface
 function roots_config_ui() {
   // Let's make the config page visible to everyone who has the correct permissions
   add_theme_page('Configuration', 'Configuration', 'edit_theme_options', 'roots-config', 'roots_config_ui_html');
 
   // Let's check to see if we need to do anything else, and if we don't, we'll terminate this function.
-  if (!isset($_GET['page']) || !isset($_REQUEST['action']) || !current_user_can('edit_theme_options')) return false;
+  if (!isset($_GET['page']) || !isset($_REQUEST['action']) || !current_user_can('edit_theme_options')) return;
 
   if ($_GET['page'] == 'roots-config' && 'save' == $_REQUEST['action']) {
     // Since someone is trying to edit the config of the theme, let's update all of the config.
@@ -36,7 +39,7 @@ function roots_config_ui() {
       'main_classes'=> $_REQUEST[ 'main_classes' ]?$_REQUEST[ 'main_classes' ]:'span8',
       'sidebar_classes'=> $_REQUEST[ 'sidebar_classes' ]?$_REQUEST[ 'sidebar_classes' ]:'span4',
       'fullwidth_classes'=> $_REQUEST[ 'fullwidth_classes' ]?$_REQUEST[ 'fullwidth_classes' ]:'span12',
-      'google_analytics_id'=> $_REQUEST[ 'google_analytics_id' ]?$_REQUEST[ 'google_analytics_id' ]:null,
+      'google_analytics_id'=> $_REQUEST[ 'google_analytics_id' ]?$_REQUEST[ 'google_analytics_id' ]:null
     );
 
     update_option('roots_config', json_encode($new_config));
@@ -91,7 +94,7 @@ function roots_config_ui_html() {
   </div>
 
   <div style="margin-bottom: 15px">
-    <label for="google_analytics_id" style="width:170px;display:inline-block">Google Analytics ID</label>
+    <label for="google_analytics_id" style="width:170px;display:inline-block"><abbr title="It's something like UA-XXXXXXXX-X">Google Analytics ID</abbr></label>
     <input type="text" id="google_analytics_id" name="google_analytics_id" value="<?php echo $roots_config['google_analytics_id']?>">
   </div>
 
