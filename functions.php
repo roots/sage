@@ -5,17 +5,17 @@
 
 if (!defined('__DIR__')) { define('__DIR__', dirname(__FILE__)); }
 
-require_once locate_template('/inc/util.php');            // Utility functions
-require_once locate_template('/inc/config.php');          // Configuration and constants
-require_once locate_template('/inc/activation.php');      // Theme activation
-require_once locate_template('/inc/template-tags.php');   // Template tags
-require_once locate_template('/inc/cleanup.php');         // Cleanup
-require_once locate_template('/inc/scripts.php');         // Scripts and stylesheets
-require_once locate_template('/inc/htaccess.php');        // Rewrites for assets, H5BP .htaccess
-require_once locate_template('/inc/hooks.php');           // Hooks
-require_once locate_template('/inc/actions.php');         // Actions
-require_once locate_template('/inc/widgets.php');         // Sidebars and widgets
-require_once locate_template('/inc/custom.php');          // Custom functions
+locate_template('/inc/util.php', true, true);            // Utility functions
+locate_template('/inc/config.php', true, true);          // Configuration and constants
+locate_template('/inc/activation.php', true, true);      // Theme activation
+locate_template('/inc/template-tags.php', true, true);   // Template tags
+locate_template('/inc/cleanup.php', true, true);         // Cleanup
+locate_template('/inc/scripts.php', true, true);         // Scripts and stylesheets
+locate_template('/inc/htaccess.php', true, true);        // Rewrites for assets, H5BP .htaccess
+locate_template('/inc/hooks.php', true, true);           // Hooks
+locate_template('/inc/actions.php', true, true);         // Actions
+locate_template('/inc/widgets.php', true, true);         // Sidebars and widgets
+locate_template('/inc/custom.php', true, true);          // Custom functions
 
 function roots_setup() {
 
