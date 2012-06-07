@@ -1,0 +1,2 @@
+<script type="application/x-javascript">addEventListener('load',function(){setTimeout(hideAddressBar,0);},false);function hideAddressBar(){window.scrollTo(0,1);}</script>
+<!-- Hides address bar on iOS (iPhone/iPod/iPad) -->

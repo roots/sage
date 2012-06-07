@@ -32,21 +32,22 @@ function roots_config_ui() {
     // Since someone is trying to edit the config of the theme, let's update all of the config.
 
     $new_config = array(
-      'wrap_classes'=> $_REQUEST[ 'wrap_classes' ]?$_REQUEST[ 'wrap_classes' ]:'container',
-      'container_classes'=> $_REQUEST[ 'container_classes' ]?$_REQUEST[ 'container_classes' ]:'row',
-      'content_width'=> $_REQUEST[ 'content_width' ]?$_REQUEST[ 'content_width' ]:40,
-      'post_excerpt_length'=> $_REQUEST[ 'post_excerpt_length' ]?$_REQUEST[ 'post_excerpt_length' ]:40,
-      'main_classes'=> $_REQUEST[ 'main_classes' ]?$_REQUEST[ 'main_classes' ]:'span8',
-      'sidebar_classes'=> $_REQUEST[ 'sidebar_classes' ]?$_REQUEST[ 'sidebar_classes' ]:'span4',
-      'fullwidth_classes'=> $_REQUEST[ 'fullwidth_classes' ]?$_REQUEST[ 'fullwidth_classes' ]:'span12',
-      'google_analytics_id'=> $_REQUEST[ 'google_analytics_id' ]?$_REQUEST[ 'google_analytics_id' ]:null
+      'wrap_classes'=>$_REQUEST['wrap_classes']?$_REQUEST['wrap_classes']:'container',
+      'container_classes'=>$_REQUEST['container_classes']?$_REQUEST['container_classes']:'row',
+      'content_width'=>$_REQUEST['content_width']?$_REQUEST['content_width']:40,
+      'post_excerpt_length'=>$_REQUEST['post_excerpt_length']?$_REQUEST['post_excerpt_length']:40,
+      'main_classes'=>$_REQUEST['main_classes']?$_REQUEST['main_classes']:'span8',
+      'sidebar_classes'=>$_REQUEST['sidebar_classes']?$_REQUEST['sidebar_classes']:'span4',
+      'fullwidth_classes'=>$_REQUEST['fullwidth_classes']?$_REQUEST['fullwidth_classes']:'span12',
+      'google_analytics_id'=>$_REQUEST['google_analytics_id']?$_REQUEST['google_analytics_id']:null,
+      'brand_hover_glow'=>$_REQUEST['brand_hover_glow']?$_REQUEST['brand_hover_glow']:'n',
+      'ios_scroll'=>$_REQUEST['ios_scroll']?$_REQUEST['ios_scroll']:'y',
     );
 
     update_option('roots_config', json_encode($new_config));
 
-    // Now that they have been updated, we will go back to the home page
-    wp_redirect(home_url());
-    exit;
+    // Now that they have been updated, we will notify them that the changes where successfully applied.
+    if ( !defined( 'ROOTS_CONFIG_UPDATED' ) ) define( 'ROOTS_CONFIG_UPDATED', true );
   }
 }
 
@@ -57,7 +58,7 @@ function roots_config_load() {
 
   if ($roots_config=='fail') {
     // There aren't any config options in the DB. First define the defaults in JSON:
-    $roots_config = '{"wrap_classes":"container","container_classes":"row","content_width":40,"post_excerpt_length":40,"main_classes":"span8","sidebar_classes":"span4","fullwidth_classes":"span12","google_analytics_id":""}';
+    $roots_config = '{"wrap_classes":"container","container_classes":"row","content_width":40,"post_excerpt_length":40,"main_classes":"span8","sidebar_classes":"span4","fullwidth_classes":"span12","google_analytics_id":"","brand_hover_glow":"n","ios_scroll":"y"}';
 
     // And now update the config options in the DB
     update_option('roots_config', $roots_config);
@@ -80,13 +81,34 @@ define('SIDEBAR_CLASSES',           $roots_config['sidebar_classes']);
 define('FULLWIDTH_CLASSES',         $roots_config['fullwidth_classes']);
 define('GOOGLE_ANALYTICS_ID',       $roots_config['google_analytics_id']);
 
+if ($roots_config['brand_hover_glow']=='y') add_theme_support('brand-hover-glow');
+if ($roots_config['ios_scroll']=='y') add_theme_support('ios-scroll');
+
 
 function roots_config_ui_html() {
   $roots_config = roots_config_load();?>
 <form action="themes.php" method="get" style="margin-top: 20px">
 
+  <?php echo defined('ROOTS_CONFIG_UPDATED')?'<p style="color:green;font-weight:bold">Changes successfully applied!</p>':'';?>
+
   <input type="hidden" id="page" name="page" value="roots-config">
   <input type="hidden" id="action" name="action" value="save">
+
+  <div style="margin-bottom: 15px">
+    <label for="brand_hover_glow" style="width:170px;display:inline-block"><abbr title="If this is set to Yes, then your brand will be displayed in pure white and will glow whenever someone hovers over it. You can modify the amout of blur the glow has by editing /templates/header-brand-hover-glow.php">Enable Brand Glow?</abbr></label>
+    <select id="brand_hover_glow" name="brand_hover_glow">
+      <option value="y"<?php echo $roots_config['brand_hover_glow']=='y'?'Selected':''?>>Yes</option>
+      <option value="n"<?php echo $roots_config['brand_hover_glow']=='n'?'Selected':''?>>No</option>
+    </select>
+  </div>
+
+  <div style="margin-bottom: 15px">
+    <label for="ios_scroll" style="width:170px;display:inline-block">Hide address bar on iOS</label>
+    <select id="ios_scroll" name="ios_scroll">
+      <option value="y"<?php echo $roots_config['ios_scroll']=='y'?'Selected':''?>>Yes</option>
+      <option value="n"<?php echo $roots_config['ios_scroll']=='n'?'Selected':''?>>No</option>
+    </select>
+  </div>
 
   <div style="margin-bottom: 15px">
     <label for="post_excerpt_length" style="width:170px;display:inline-block">Post Excerpt Length</label>
