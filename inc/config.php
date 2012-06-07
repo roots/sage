@@ -41,7 +41,10 @@ function roots_config_ui() {
       'fullwidth_classes'=>$_REQUEST['fullwidth_classes']?$_REQUEST['fullwidth_classes']:'span12',
       'google_analytics_id'=>$_REQUEST['google_analytics_id']?$_REQUEST['google_analytics_id']:null,
       'brand_hover_glow'=>$_REQUEST['brand_hover_glow']?$_REQUEST['brand_hover_glow']:'n',
-      'ios_scroll'=>$_REQUEST['ios_scroll']?$_REQUEST['ios_scroll']:'y',
+      'brand_hover_glow_nohover_color'=>$_REQUEST['brand_hover_glow_nohover_color']?str_replace('#', '', $_REQUEST['brand_hover_glow_nohover_color']):'f0f0f0',
+      'brand_hover_glow_color'=>$_REQUEST['brand_hover_glow_color']?str_replace('#', '', $_REQUEST['brand_hover_glow_color']):'efefef',
+      'brand_hover_glow_blur'=>$_REQUEST['brand_hover_glow_blur']?str_replace('px', '', $_REQUEST['brand_hover_glow_blur']):'30',
+      'ios_scroll'=>$_REQUEST['ios_scroll']?$_REQUEST['ios_scroll']:'y'
     );
 
     update_option('roots_config', json_encode($new_config));
@@ -58,7 +61,7 @@ function roots_config_load() {
 
   if ($roots_config=='fail') {
     // There aren't any config options in the DB. First define the defaults in JSON:
-    $roots_config = '{"wrap_classes":"container","container_classes":"row","content_width":40,"post_excerpt_length":40,"main_classes":"span8","sidebar_classes":"span4","fullwidth_classes":"span12","google_analytics_id":"","brand_hover_glow":"n","ios_scroll":"y"}';
+    $roots_config = '{"wrap_classes":"container","container_classes":"row","content_width":40,"post_excerpt_length":40,"main_classes":"span8","sidebar_classes":"span4","fullwidth_classes":"span12","google_analytics_id":"","brand_hover_glow":"n","brand_hover_glow_nohover_color":"f0f0f0","brand_hover_glow_color":"efefef","brand_hover_glow_blur":"30","ios_scroll":"y"}';
 
     // And now update the config options in the DB
     update_option('roots_config', $roots_config);
@@ -81,80 +84,41 @@ define('SIDEBAR_CLASSES',           $roots_config['sidebar_classes']);
 define('FULLWIDTH_CLASSES',         $roots_config['fullwidth_classes']);
 define('GOOGLE_ANALYTICS_ID',       $roots_config['google_analytics_id']);
 
-if ($roots_config['brand_hover_glow']=='y') add_theme_support('brand-hover-glow');
+if ($roots_config['brand_hover_glow']=='y') {
+  define('BRAND_HOVER_GLOW_COLOR',    $roots_config['brand_hover_glow_color']);
+  define('BRAND_HOVER_GLOW_BLUR',     $roots_config['brand_hover_glow_blur']);
+  define('BRAND_HOVER_GLOW_NOHOVER_COLOR', $roots_config['brand_hover_glow_nohover_color']);
+  add_theme_support('brand-hover-glow');
+}
 if ($roots_config['ios_scroll']=='y') add_theme_support('ios-scroll');
 
 
 function roots_config_ui_html() {
-  $roots_config = roots_config_load();?>
-<form action="themes.php" method="get" style="margin-top: 20px">
+  $roots_config = roots_config_load();
+  wp_enqueue_style('roots-config-css', '/css/config.css');
+  wp_enqueue_script('roots-config-js', '/js/config.js')?>
+<form action="themes.php" method="get" style="margin-top: 15px" id="configform">
+  <input type="hidden" id="page" name="page" value="roots-config"><input type="hidden" id="action" name="action" value="save">
 
   <?php echo defined('ROOTS_CONFIG_UPDATED')?'<p style="color:green;font-weight:bold">Changes successfully applied!</p>':'';?>
 
-  <input type="hidden" id="page" name="page" value="roots-config">
-  <input type="hidden" id="action" name="action" value="save">
+  <div style="margin-bottom:0"><label for="brand_hover_glow"><abbr title="If this is set to Yes, then your brand will be displayed in pure white and will glow whenever someone hovers over it. You can modify the amout of blur the glow has by editing /templates/header-brand-hover-glow.php">Enable Brand Glow?</abbr></label><select id="brand_hover_glow" name="brand_hover_glow"><option value="y"<?php echo $roots_config['brand_hover_glow']=='y'?'Selected':''?>>Yes</option><option value="n"<?php echo $roots_config['brand_hover_glow']=='n'?'Selected':''?>>No</option></select></div>
+  <div id="brand_hover_glow_options" class="advanced" style="display:<?php echo $roots_config['brand_hover_glow']=='n'?'none':'block'?>"><label for="brand_hover_glow_nohover_color">Color of brand</label><input type="text" id="brand_hover_glow_nohover_color" name="brand_hover_glow_nohover_color" value="<?php echo $roots_config['brand_hover_glow_nohover_color'];?>"><br><label for="brand_hover_glow_color">Color of glow</label><input type="text" id="brand_hover_glow_color" name="brand_hover_glow_color" value="<?php echo $roots_config['brand_hover_glow_color'];?>"><br><label for="brand_hover_glow_blur">Amount of blur applied</label><input type="text" id="brand_hover_glow_blur" name="brand_hover_glow_blur" value="<?php echo $roots_config['brand_hover_glow_blur'];?>"></div>
 
-  <div style="margin-bottom: 15px">
-    <label for="brand_hover_glow" style="width:170px;display:inline-block"><abbr title="If this is set to Yes, then your brand will be displayed in pure white and will glow whenever someone hovers over it. You can modify the amout of blur the glow has by editing /templates/header-brand-hover-glow.php">Enable Brand Glow?</abbr></label>
-    <select id="brand_hover_glow" name="brand_hover_glow">
-      <option value="y"<?php echo $roots_config['brand_hover_glow']=='y'?'Selected':''?>>Yes</option>
-      <option value="n"<?php echo $roots_config['brand_hover_glow']=='n'?'Selected':''?>>No</option>
-    </select>
-  </div>
+  <div style="margin-top:15px"><label for="ios_scroll">Hide address bar on iOS</label><select id="ios_scroll" name="ios_scroll"><option value="y"<?php echo $roots_config['ios_scroll']=='y'?'Selected':''?>>Yes</option><option value="n"<?php echo $roots_config['ios_scroll']=='n'?'Selected':''?>>No</option></select></div>
+  <div><label for="post_excerpt_length">Post Excerpt Length</label><input type="text" id="post_excerpt_length" name="post_excerpt_length" value="<?php echo $roots_config['post_excerpt_length']?>"></div>
+  <div><label for="google_analytics_id"><abbr title="It's something like UA-XXXXXXXX-X">Google Analytics ID</abbr></label><input type="text" id="google_analytics_id" name="google_analytics_id" value="<?php echo $roots_config['google_analytics_id']?>" placeholder="UA-XXXXXXXX-X"></div>
+  <div><label for="wrap_classes">Wrap Classes</label><input type="text" id="wrap_classes" name="wrap_classes" value="<?php echo $roots_config['wrap_classes']?>"></div>
+  <div><label for="container_classes">Container Classes</label><input type="text" id="container_classes" name="container_classes" value="<?php echo $roots_config['container_classes']?>"></div>
+  <div><label for="main_classes">Main Classes</label><input type="text" id="main_classes" name="main_classes" value="<?php echo $roots_config['main_classes']?>"></div>
+  <div><label for="sidebar_classes">Sidebar Classes</label><input type="text" id="sidebar_classes" name="sidebar_classes" value="<?php echo $roots_config['sidebar_classes']?>"></div>
+  <div><label for="fullwidth_classes">Full-Width Classes</label><input type="text" id="fullwidth_classes" name="fullwidth_classes" value="<?php echo $roots_config['fullwidth_classes']?>"></div>
+  <div><label for="content_width">Content Width</label><input type="text" id="content_width" name="content_width" value="<?php echo $roots_config['content_width']?>"></div>
 
-  <div style="margin-bottom: 15px">
-    <label for="ios_scroll" style="width:170px;display:inline-block">Hide address bar on iOS</label>
-    <select id="ios_scroll" name="ios_scroll">
-      <option value="y"<?php echo $roots_config['ios_scroll']=='y'?'Selected':''?>>Yes</option>
-      <option value="n"<?php echo $roots_config['ios_scroll']=='n'?'Selected':''?>>No</option>
-    </select>
-  </div>
-
-  <div style="margin-bottom: 15px">
-    <label for="post_excerpt_length" style="width:170px;display:inline-block">Post Excerpt Length</label>
-    <input type="text" id="post_excerpt_length" name="post_excerpt_length" value="<?php echo $roots_config['post_excerpt_length']?>">
-  </div>
-
-  <div style="margin-bottom: 15px">
-    <label for="google_analytics_id" style="width:170px;display:inline-block"><abbr title="It's something like UA-XXXXXXXX-X">Google Analytics ID</abbr></label>
-    <input type="text" id="google_analytics_id" name="google_analytics_id" value="<?php echo $roots_config['google_analytics_id']?>">
-  </div>
-
-  <div style="margin-bottom: 15px">
-    <label for="wrap_classes" style="width:170px;display:inline-block">Wrap Classes</label>
-    <input type="text" id="wrap_classes" name="wrap_classes" value="<?php echo $roots_config['wrap_classes']?>">
-  </div>
-
-  <div style="margin-bottom: 15px">
-    <label for="container_classes" style="width:170px;display:inline-block">Container Classes</label>
-    <input type="text" id="container_classes" name="container_classes" value="<?php echo $roots_config['container_classes']?>">
-  </div>
-
-  <div style="margin-bottom: 15px">
-    <label for="main_classes" style="width:170px;display:inline-block">Main Classes</label>
-    <input type="text" id="main_classes" name="main_classes" value="<?php echo $roots_config['main_classes']?>">
-  </div>
-
-  <div style="margin-bottom: 15px">
-    <label for="sidebar_classes" style="width:170px;display:inline-block">Sidebar Classes</label>
-    <input type="text" id="sidebar_classes" name="sidebar_classes" value="<?php echo $roots_config['sidebar_classes']?>">
-  </div>
-
-  <div style="margin-bottom: 15px">
-    <label for="fullwidth_classes" style="width:170px;display:inline-block">Full-Width Classes</label>
-    <input type="text" id="fullwidth_classes" name="fullwidth_classes" value="<?php echo $roots_config['fullwidth_classes']?>">
-  </div>
-
-  <div style="margin-bottom: 15px">
-    <label for="content_width" style="width:170px;display:inline-block">Content Width</label>
-    <input type="text" id="content_width" name="content_width" value="<?php echo $roots_config['content_width']?>">
-  </div>
-
-  <span id="submit">
-   <input class="button-primary" value="Update configuration &raquo;" type="submit">
-  </span>
+  <span id="submit"><input class="button-primary" value="Update configuration &raquo;" type="submit"></span>
 </form>
 <?php
+  flush();
 }
 // Display a link in the admin section to the config UI
 add_action('admin_menu', 'roots_config_ui');
