@@ -63,13 +63,31 @@ function roots_config_load() {
   if ($roots_config=='fail') {
     // There aren't any config options in the DB. First define the defaults in JSON:
     $roots_config = '{"wrap_classes":"container","container_classes":"row","content_width":40,"post_excerpt_length":40,"main_classes":"span8","sidebar_classes":"span4","fullwidth_classes":"span12","google_analytics_id":"","remove_admin_bar":"y","brand_hover_glow":"n","brand_hover_glow_nohover_color":"f0f0f0","brand_hover_glow_color":"efefef","brand_hover_glow_blur":"30","ios_scroll":"y"}';
-
     // And now update the config options in the DB
     update_option('roots_config', $roots_config);
-
   }
-
-  $roots_config = json_decode($roots_config, true);
+  else {
+    $roots_config = json_decode($roots_config, true);
+    if (count($roots_config)<14) {
+      // 14 is the number of config options it should have. If it has less, then this is an older version of roots.
+      $new_config = array(
+        'wrap_classes'=>isset($roots_config['wrap_classes'])?$roots_config['wrap_classes']:'container',
+        'container_classes'=>isset($roots_config['container_classes'])?$roots_config['container_classes']:'row',
+        'content_width'=>isset($roots_config['content_width'])?$roots_config['content_width']:40,
+        'post_excerpt_length'=>isset($roots_config['post_excerpt_length'])?$roots_config['post_excerpt_length']:40,
+        'main_classes'=>isset($roots_config['main_classes'])?$roots_config['main_classes']:'span8',
+        'sidebar_classes'=>isset($roots_config['sidebar_classes'])?$roots_config['sidebar_classes']:'span4',
+        'fullwidth_classes'=>isset($roots_config['fullwidth_classes'])?$roots_config['fullwidth_classes']:'span12',
+        'google_analytics_id'=>isset($roots_config['google_analytics_id'])?$roots_config['google_analytics_id']:null,
+        'remove_admin_bar'=>isset($roots_config['remove_admin_bar'])?$roots_config['remove_admin_bar']:'y',
+        'brand_hover_glow'=>isset($roots_config['brand_hover_glow'])?$roots_config['brand_hover_glow']:'n',
+        'brand_hover_glow_nohover_color'=>isset($roots_config['brand_hover_glow_nohover_color'])?str_replace('#', '', $roots_config['brand_hover_glow_nohover_color']):'f0f0f0',
+        'brand_hover_glow_color'=>isset($roots_config['brand_hover_glow_color'])?str_replace('#', '', $roots_config['brand_hover_glow_color']):'efefef',
+        'brand_hover_glow_blur'=>isset($roots_config['brand_hover_glow_blur'])?str_replace('px', '', $roots_config['brand_hover_glow_blur']):'30',
+        'ios_scroll'=>isset($roots_config['ios_scroll'])?$roots_config['ios_scroll']:'y'
+      );
+    }
+  }
   return $roots_config;
 }
 
