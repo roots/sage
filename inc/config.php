@@ -40,6 +40,7 @@ function roots_config_ui() {
       'sidebar_classes'=>$_REQUEST['sidebar_classes']?$_REQUEST['sidebar_classes']:'span4',
       'fullwidth_classes'=>$_REQUEST['fullwidth_classes']?$_REQUEST['fullwidth_classes']:'span12',
       'google_analytics_id'=>$_REQUEST['google_analytics_id']?$_REQUEST['google_analytics_id']:null,
+      'remove_admin_bar'=>$_REQUEST['remove_admin_bar']?$_REQUEST['remove_admin_bar']:'y',
       'brand_hover_glow'=>$_REQUEST['brand_hover_glow']?$_REQUEST['brand_hover_glow']:'n',
       'brand_hover_glow_nohover_color'=>$_REQUEST['brand_hover_glow_nohover_color']?str_replace('#', '', $_REQUEST['brand_hover_glow_nohover_color']):'f0f0f0',
       'brand_hover_glow_color'=>$_REQUEST['brand_hover_glow_color']?str_replace('#', '', $_REQUEST['brand_hover_glow_color']):'efefef',
@@ -61,7 +62,7 @@ function roots_config_load() {
 
   if ($roots_config=='fail') {
     // There aren't any config options in the DB. First define the defaults in JSON:
-    $roots_config = '{"wrap_classes":"container","container_classes":"row","content_width":40,"post_excerpt_length":40,"main_classes":"span8","sidebar_classes":"span4","fullwidth_classes":"span12","google_analytics_id":"","brand_hover_glow":"n","brand_hover_glow_nohover_color":"f0f0f0","brand_hover_glow_color":"efefef","brand_hover_glow_blur":"30","ios_scroll":"y"}';
+    $roots_config = '{"wrap_classes":"container","container_classes":"row","content_width":40,"post_excerpt_length":40,"main_classes":"span8","sidebar_classes":"span4","fullwidth_classes":"span12","google_analytics_id":"","remove_admin_bar":"y","brand_hover_glow":"n","brand_hover_glow_nohover_color":"f0f0f0","brand_hover_glow_color":"efefef","brand_hover_glow_blur":"30","ios_scroll":"y"}';
 
     // And now update the config options in the DB
     update_option('roots_config', $roots_config);
@@ -84,6 +85,7 @@ define('SIDEBAR_CLASSES',           $roots_config['sidebar_classes']);
 define('FULLWIDTH_CLASSES',         $roots_config['fullwidth_classes']);
 define('GOOGLE_ANALYTICS_ID',       $roots_config['google_analytics_id']);
 
+if ($roots_config['remove_admin_bar']=='y') add_theme_support('header-remove-admin-bar');
 if ($roots_config['brand_hover_glow']=='y') {
   define('BRAND_HOVER_GLOW_COLOR',    $roots_config['brand_hover_glow_color']);
   define('BRAND_HOVER_GLOW_BLUR',     $roots_config['brand_hover_glow_blur']);
@@ -101,6 +103,8 @@ function roots_config_ui_html() {
   <input type="hidden" id="page" name="page" value="roots-config"><input type="hidden" id="action" name="action" value="save">
 
   <?php echo defined('ROOTS_CONFIG_UPDATED')?'<p style="color:green;font-weight:bold">Changes successfully applied!</p>':'';?>
+
+  <div style="margin-top:15px"><label for="remove_admin_bar">Remove Admin Bar</label><select id="remove_admin_bar" name="remove_admin_bar"><option value="y"<?php echo $roots_config['remove_admin_bar']=='y'?'Selected':''?>>Yes</option><option value="n"<?php echo $roots_config['remove_admin_bar']=='n'?'Selected':''?>>No</option></select></div>
 
   <div style="margin-bottom:0"><label for="brand_hover_glow"><abbr title="If this is set to Yes, then your brand will be displayed in pure white and will glow whenever someone hovers over it. You can modify the amout of blur the glow has by editing /templates/header-brand-hover-glow.php">Enable Brand Glow?</abbr></label><select id="brand_hover_glow" name="brand_hover_glow"><option value="y"<?php echo $roots_config['brand_hover_glow']=='y'?'Selected':''?>>Yes</option><option value="n"<?php echo $roots_config['brand_hover_glow']=='n'?'Selected':''?>>No</option></select></div>
   <div id="brand_hover_glow_options" class="advanced" style="display:<?php echo $roots_config['brand_hover_glow']=='n'?'none':'block'?>"><label for="brand_hover_glow_nohover_color">Color of brand</label><input type="text" id="brand_hover_glow_nohover_color" name="brand_hover_glow_nohover_color" value="<?php echo $roots_config['brand_hover_glow_nohover_color'];?>"><br><label for="brand_hover_glow_color">Color of glow</label><input type="text" id="brand_hover_glow_color" name="brand_hover_glow_color" value="<?php echo $roots_config['brand_hover_glow_color'];?>"><br><label for="brand_hover_glow_blur">Amount of blur applied</label><input type="text" id="brand_hover_glow_blur" name="brand_hover_glow_blur" value="<?php echo $roots_config['brand_hover_glow_blur'];?>"></div>

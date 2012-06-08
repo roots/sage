@@ -18,6 +18,7 @@
   <?php roots_head(); ?>
   <?php wp_head(); ?>
 
+<?php if (current_theme_supports('header-remove-admin-bar')) get_template_part('templates/header', 'remove-admin-bar');?>
 <?php if (current_theme_supports('brand-hover-glow')) get_template_part('templates/header', 'brand-hover-glow');?>
 <?php if (current_theme_supports('ios-scroll')) get_template_part('templates/mobile', 'ios-scroll');?>
 
