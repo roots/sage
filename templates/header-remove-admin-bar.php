@@ -1,0 +1,1 @@
+<?php if (is_user_logged_in()) {?><style type="text/css">html.no-touch #wpadminbar{display:none}html.no-touch header#banner{top:0}body{padding-top:30px !important}</style><?php }?>

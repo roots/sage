@@ -1,0 +1,1 @@
+<style type="text/css">.navbar .brand{color:#<?php echo BRAND_HOVER_GLOW_NOHOVER_COLOR;?>}.navbar .brand:hover{text-shadow:0px 0px <?php echo BRAND_HOVER_GLOW_BLUR;?>px #<?php echo BRAND_HOVER_GLOW_COLOR;?>}</style>

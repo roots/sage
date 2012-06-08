@@ -62,7 +62,7 @@ function roots_root_relative_url($input) {
     create_function(
       '$matches',
       // If full URL is home_url("/"), return a slash for relative root
-      'if (isset($matches[0]) && $matches[0] === home_url("/")) { return "/";' .
+      'if (isset($matches[0]) && $matches[0] === home_url("/") && HOME_URL_IS_ROOT) { return "/";' .
       // If domain is equal to home_url("/"), then make URL relative
       '} elseif (isset($matches[0]) && strpos($matches[0], home_url("/")) !== false) { return $matches[2];' .
       // If domain is not equal to home_url("/"), do not make external link relative

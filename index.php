@@ -1,4 +1,4 @@
-<?php get_header(); ?>
+﻿<?php get_header(); ?>
   <?php roots_content_before(); ?>
     <div id="content" class="<?php echo CONTAINER_CLASSES; ?>">
     <?php roots_main_before(); ?>
@@ -15,7 +15,7 @@
         <?php get_sidebar(); ?>
       <?php roots_sidebar_inside_after(); ?>
       </aside><!-- /#sidebar -->
-    <?php roots_sidebar_after(); ?>
+      <?php roots_sidebar_after(); ?>
     </div><!-- /#content -->
   <?php roots_content_after(); ?>
 <?php get_footer(); ?>
