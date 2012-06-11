@@ -11,7 +11,7 @@ if (stristr($_SERVER['SERVER_SOFTWARE'], 'apache') || stristr($_SERVER['SERVER_S
       if (current_user_can('administrator')) {
         add_action('admin_notices', create_function('', "echo '<div class=\"error\"><p>" . sprintf(__('Please make sure your <a href="%s">.htaccess</a> file is writable ', 'roots'), admin_url('options-permalink.php')) . "</p></div>';"));
       }
-    };
+    }
   }
 
   add_action('admin_init', 'roots_htaccess_writable');
