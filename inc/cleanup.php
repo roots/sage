@@ -453,8 +453,7 @@ class Roots_Nav_Walker extends Walker_Nav_Menu {
     $indent = ($depth) ? str_repeat("\t", $depth) : '';
 
     $slug = sanitize_title($item->title);
-    $id = apply_filters('nav_menu_item_id', 'menu-' . $slug, $item, $args);
-    $id = strlen($id) ? '' . esc_attr( $id ) . '' : '';
+    $id = 'menu-' . $slug;
 
     $class_names = $value = '';
     $classes = empty($item->classes) ? array() : (array) $item->classes;
@@ -505,9 +504,7 @@ class Roots_Navbar_Nav_Walker extends Walker_Nav_Menu {
     $indent = ($depth) ? str_repeat("\t", $depth) : '';
 
     $slug = sanitize_title($item->title);
-
-    $id = apply_filters('nav_menu_item_id', 'menu-' . $slug, $item, $args);
-    $id = strlen($id) ? '' . esc_attr( $id ) . '' : '';
+    $id = 'menu-' . $slug;
 
     $li_attributes = '';
     $class_names = $value = '';
