@@ -61,8 +61,8 @@ function roots_root_relative_url($input) {
     '!(https?://[^/|"]+)([^"]+)?!',
     create_function(
       '$matches',
-      // If full URL is home_url("/"), return a slash for relative root
-      'if (isset($matches[0]) && $matches[0] === home_url("/")) { return "/";' .
+      // If full URL is home_url("/") and this isn't a subdir install, return a slash for relative root
+      'if (isset($matches[0]) && $matches[0] === home_url("/") && str_replace("http://", "", home_url("/", "http"))==$_SERVER["HTTP_HOST"]) { return "/";' .
       // If domain is equal to home_url("/"), then make URL relative
       '} elseif (isset($matches[0]) && strpos($matches[0], home_url("/")) !== false) { return $matches[2];' .
       // If domain is not equal to home_url("/"), do not make external link relative
