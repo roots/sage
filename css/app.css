@@ -86,6 +86,8 @@ ol.commentlist img.avatar { float: left; margin-right: 10px; }
 .alignleft { margin: 0 20px 20px 0; float: left; }
 .alignright { margin: 0 0 20px 20px; float: right; }
 
+figure.alignnone { margin-left: 0; margin-right: 0; }
+
 
 
 /* =============================================================================

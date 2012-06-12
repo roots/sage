@@ -345,6 +345,7 @@ add_filter('wp_get_attachment_link', 'roots_attachment_link_class', 10, 1);
 
 /**
  * Add Bootstrap thumbnail styling to images with captions
+ * Use <figure> and <figcaption>
  *
  * @link http://justintadlock.com/archives/2011/07/01/captions-in-wordpress
  */
@@ -372,10 +373,10 @@ function roots_caption($output, $attr, $content) {
   $attributes .= ' class="thumbnail wp-caption ' . esc_attr($attr['align']) . '"';
   $attributes .= ' style="width: ' . esc_attr($attr['width']) . 'px"';
 
-  $output  = '<div' . $attributes .'>';
+  $output  = '<figure' . $attributes .'>';
   $output .= do_shortcode($content);
-  $output .= '<div class="caption"><p class="wp-caption-text">' . $attr['caption'] . '</p></div>';
-  $output .= '</div>';
+  $output .= '<figcaption class="caption wp-caption-text">' . $attr['caption'] . '</figcaption>';
+  $output .= '</figure>';
 
   return $output;
 }
@@ -721,3 +722,4 @@ function roots_embed_wrap($cache, $url, $attr = '', $post_ID = '') {
 
 add_filter('embed_oembed_html', 'roots_embed_wrap', 10, 4);
 add_filter('embed_googlevideo', 'roots_embed_wrap', 10, 2);
+
