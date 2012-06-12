@@ -37,6 +37,8 @@ function roots_theme_activation_options_add_page() {
     );
   } else {
     if (is_admin() && isset($_GET['page']) && $_GET['page'] === 'theme_activation_options') {
+      global $wp_rewrite;
+      $wp_rewrite->flush_rules();
       wp_redirect(admin_url('themes.php'));
       exit;
     }
