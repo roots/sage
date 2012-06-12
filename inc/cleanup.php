@@ -708,3 +708,16 @@ function roots_widget_first_last_classes($params) {
 }
 
 add_filter('dynamic_sidebar_params', 'roots_widget_first_last_classes');
+
+/**
+ * Wrap embedded media as suggested by Readability
+ *
+ * @link https://gist.github.com/965956
+ * @link http://www.readability.com/publishers/guidelines#publisher
+ */
+function roots_embed_wrap($cache, $url, $attr = '', $post_ID = '') {
+  return '<div class="entry-content-asset">' . $cache . '</div>';
+}
+
+add_filter('embed_oembed_html', 'roots_embed_wrap', 10, 4);
+add_filter('embed_googlevideo', 'roots_embed_wrap', 10, 2);
