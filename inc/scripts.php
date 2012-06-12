@@ -7,8 +7,8 @@ function roots_scripts() {
     wp_enqueue_style('roots_bootstrap_responsive_style', '/css/bootstrap-responsive.css', array('roots_bootstrap_style'), null);
   }
 
-  // If you're not using Bootstrap, include H5BP's style.css:
-  // wp_enqueue_style('roots_style', '/css/style.css', false, null);
+  // If you're not using Bootstrap, include H5BP's main.css:
+  // wp_enqueue_style('roots_style', '/css/main.css', false, null);
 
   wp_enqueue_style('roots_app_style', '/css/app.css', false, null);
 
