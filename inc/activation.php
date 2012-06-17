@@ -70,7 +70,7 @@ function roots_theme_activation_options_render_page() { ?>
   <div class="wrap">
     <?php screen_icon(); ?>
     <?php
-    if (get_bloginfo('version') <= 3.4) {
+    if ((double) get_bloginfo('version') <= 3.4) {
       $theme_name = wp_get_theme();
     } else {
       $theme_name = get_current_theme();
