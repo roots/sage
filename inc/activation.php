@@ -69,7 +69,7 @@ function roots_theme_activation_options_render_page() { ?>
 
   <div class="wrap">
     <?php screen_icon(); ?>
-    <h2><?php printf(__('%s Theme Activation', 'roots'), get_current_theme()); ?></h2>
+    <h2><?php printf(__('%s Theme Activation', 'roots'), wp_get_theme() ); ?></h2>
     <?php settings_errors(); ?>
 
     <form method="post" action="options.php">
