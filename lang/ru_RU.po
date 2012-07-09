@@ -1,0 +1,326 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: roots-russian\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-04-13 16:17-0300\n"
+"PO-Revision-Date: 2012-07-09 18:43+0400\n"
+"Last-Translator: fedor\n"
+"Language-Team: program-school.ru <fvompe@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;__;_e\n"
+"X-Poedit-Language: Russian\n"
+"X-Poedit-Country: RUSSIAN FEDERATION\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: 404.php:7
+msgid "File Not Found"
+msgstr "Файл не найден"
+
+#: 404.php:11
+msgid "The page you are looking for might have been removed, had its name changed, or is temporarily unavailable."
+msgstr "Страница, которую вы ищете, возможно, была удалена, переименована, или она временно недоступна."
+
+#: 404.php:13
+msgid "Please try the following:"
+msgstr "Пожалуйста, попробуйте следующее:"
+
+#: 404.php:15
+msgid "Check your spelling"
+msgstr "Проверьте правописание"
+
+#: 404.php:16
+#, php-format
+msgid "Return to the <a href=\"%s\">home page</a>"
+msgstr "Вернуться на <a href=\"%s\">главную страницу</a>"
+
+#: 404.php:17
+msgid "Click the <a href=\"javascript:history.back()\">Back</a> button"
+msgstr "Нажмите на кнопку <a href=\"javascript:history.back()\">назад</a>"
+
+#: archive.php:13
+#, php-format
+msgid "Daily Archives: %s"
+msgstr "Архив за день: %s"
+
+#: archive.php:15
+#, php-format
+msgid "Monthly Archives: %s"
+msgstr "Архив за месяц: %s"
+
+#: archive.php:17
+#, php-format
+msgid "Yearly Archives: %s"
+msgstr "Архив за год: %s"
+
+#: archive.php:21
+#, php-format
+msgid "Author Archives: %s"
+msgstr "Архив автора: %s"
+
+#: comments.php:7
+#, php-format
+msgid "<cite class=\"fn\">%s</cite>"
+msgstr ""
+
+#: comments.php:8
+#, php-format
+msgid "%1$s"
+msgstr ""
+
+#: comments.php:9
+msgid "(Edit)"
+msgstr "(Редактировать)"
+
+#: comments.php:15
+msgid "Your comment is awaiting moderation."
+msgstr "Ваш комментарий ожидает модерации."
+
+#: comments.php:32
+msgid "This post is password protected. Enter the password to view comments."
+msgstr "Это сообщение защищено паролем. Введите пароль для просмотра комментариев."
+
+#: comments.php:49
+msgid "&larr; Older comments"
+msgstr "&larr; Старые комментарии"
+
+#: comments.php:50
+msgid "Newer comments &rarr;"
+msgstr "Новые комментарии &rarr;"
+
+#: comments.php:58
+#: comments.php:68
+msgid "Comments are closed."
+msgstr "Комментарии закрыты."
+
+#: comments.php:75
+msgid "Leave a Reply"
+msgstr "Оставить комментарий"
+
+#: comments.php:75
+#, php-format
+msgid "Leave a Reply to %s"
+msgstr "Оставить комментарий %s"
+
+#: comments.php:78
+#, php-format
+msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
+msgstr "Вы должны быть <a href=\"%s\">залогинены</a>, чтобы оставить комментарий."
+
+#: comments.php:82
+#, php-format
+msgid "Logged in as <a href=\"%s/wp-admin/profile.php\">%s</a>."
+msgstr "Вы вошли как <a href=\"%s/wp-admin/profile.php\">%s</a>."
+
+#: comments.php:82
+msgid "Log out of this account"
+msgstr "Выход из этой учетной записи"
+
+#: comments.php:82
+msgid "Log out &raquo;"
+msgstr "Выйдите из системы »"
+
+#: comments.php:84
+msgid "Name"
+msgstr "Имя"
+
+#: comments.php:84
+#: comments.php:86
+msgid " (required)"
+msgstr " (необходимо)"
+
+#: comments.php:86
+msgid "Email (will not be published)"
+msgstr "E-mail (не публикуется)"
+
+#: comments.php:88
+msgid "Website"
+msgstr "Сайт"
+
+#: comments.php:91
+msgid "Comment"
+msgstr "Комментарий"
+
+#: comments.php:93
+msgid "Submit Comment"
+msgstr "Добавить комментарий"
+
+#: functions.php:45
+msgid "Primary Navigation"
+msgstr "Основная Навигация"
+
+#: functions.php:74
+#, php-format
+msgid "Posted on %s at %s."
+msgstr "Опубликовано %s в %s."
+
+#: functions.php:75
+msgid "Written by"
+msgstr "Написано"
+
+#: index.php:7
+msgid "Latest Posts"
+msgstr "Последние посты"
+
+#: loop-single.php:14
+msgid "Pages:"
+msgstr "Страницы:"
+
+#: loop.php:5
+msgid "Sorry, no results were found."
+msgstr "Извините, ничего не найдено."
+
+#: loop.php:37
+msgid "&larr; Older posts"
+msgstr "&larr; К предыдущему сообщения"
+
+#: loop.php:38
+msgid "Newer posts &rarr;"
+msgstr "Новые сообщения &rarr;"
+
+#: search.php:7
+msgid "Search Results for"
+msgstr "Результаты поиска"
+
+#: searchform.php:2
+msgid "Search for:"
+msgstr "Поиск:"
+
+#: searchform.php:3
+#: searchform.php:4
+msgid "Search"
+msgstr "Поиск"
+
+#: inc/roots-activation.php:32
+#: inc/roots-activation.php:33
+msgid "Theme Activation"
+msgstr "Активация темы"
+
+#: inc/roots-activation.php:70
+#, php-format
+msgid "%s Theme Activation"
+msgstr "%s Активация темы"
+
+#: inc/roots-activation.php:85
+#: inc/roots-activation.php:87
+msgid "Create static front page?"
+msgstr "Создать статичную первую страницу?"
+
+#: inc/roots-activation.php:89
+#: inc/roots-activation.php:102
+#: inc/roots-activation.php:115
+#: inc/roots-activation.php:128
+#: inc/roots-activation.php:141
+msgid "Yes"
+msgstr "Да"
+
+#: inc/roots-activation.php:90
+#: inc/roots-activation.php:103
+#: inc/roots-activation.php:116
+#: inc/roots-activation.php:129
+#: inc/roots-activation.php:142
+msgid "No"
+msgstr "Нет"
+
+#: inc/roots-activation.php:93
+msgid "Create a page called Home and set it to be the static front page"
+msgstr "Создать страницу Home и установить её как статичную первую страницу"
+
+#: inc/roots-activation.php:98
+msgid "Change permalink structure?"
+msgstr "Изменить структуру постоянных ссылок?"
+
+#: inc/roots-activation.php:100
+msgid "Update permalink structure?"
+msgstr "Обновить структуру постоянных ссылок?"
+
+#: inc/roots-activation.php:106
+msgid "Change permalink structure to /&#37;postname&#37;/"
+msgstr "Изменение структуры постоянных ссылок на /&#37;postname&#37;/"
+
+#: inc/roots-activation.php:111
+msgid "Change uploads folder?"
+msgstr "Изменить папку загрузки?"
+
+#: inc/roots-activation.php:113
+msgid "Update uploads folder?"
+msgstr "Обновить папку загрузки?"
+
+#: inc/roots-activation.php:119
+msgid "Change uploads folder to /assets/ instead of /wp-content/uploads/"
+msgstr "Поменять папку загрузки на /assets/ с /wp-content/uploads/"
+
+#: inc/roots-activation.php:124
+#: inc/roots-activation.php:126
+msgid "Create navigation menu?"
+msgstr "Создать меню навигации?"
+
+#: inc/roots-activation.php:132
+msgid "Create the Primary Navigation menu and set the location"
+msgstr "Создать меню навигации Primary Navigation"
+
+#: inc/roots-activation.php:137
+#: inc/roots-activation.php:139
+msgid "Add pages to menu?"
+msgstr "Добавить страницу в меню?"
+
+#: inc/roots-activation.php:145
+msgid "Add all current published pages to the Primary Navigation"
+msgstr "Добавить все опубликованные страницы в меню навигации Primary Navigation"
+
+#: inc/roots-cleanup.php:370
+msgid "Continued"
+msgstr "Продолжающийся"
+
+#: inc/roots-cleanup.php:538
+#, php-format
+msgid "Please update your <a href=\"%s\">site tagline</a> <a href=\"%s\" style=\"float: right;\">Hide Notice</a>"
+msgstr "Пожалуйста, обновите ваш <a href=\"%s\">лозунг для сайта</ a> <a href=\"%s\" style=\"float: right;\">Скрыть замечание</a>"
+
+#: inc/roots-htaccess.php:11
+#, php-format
+msgid "Please make sure your <a href=\"%s\">.htaccess</a> file is writable "
+msgstr "Убедитесь, что файл <a href=\"%s\">.htaccess</a> доступен для записи"
+
+#: inc/roots-widgets.php:5
+msgid "Use this widget to add a vCard"
+msgstr "Используйте этот виджет для добавления vCard"
+
+#: inc/roots-widgets.php:6
+msgid "Roots: vCard"
+msgstr ""
+
+#: inc/roots-widgets.php:33
+msgid "vCard"
+msgstr ""
+
+#: inc/roots-widgets.php:99
+msgid "Title (optional):"
+msgstr "Заголовок (необязательно):"
+
+#: inc/roots-widgets.php:103
+msgid "Street Address:"
+msgstr "Адрес:"
+
+#: inc/roots-widgets.php:107
+msgid "City/Locality:"
+msgstr "Город/Населенный пункт:"
+
+#: inc/roots-widgets.php:111
+msgid "State/Region:"
+msgstr "Штат/Регион:"
+
+#: inc/roots-widgets.php:115
+msgid "Zipcode/Postal Code:"
+msgstr "Почтовый индекс:"
+
+#: inc/roots-widgets.php:119
+msgid "Telephone:"
+msgstr "Телефон:"
+
+#: inc/roots-widgets.php:123
+msgid "Email:"
+msgstr "Почта:"
+
