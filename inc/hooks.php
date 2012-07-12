@@ -8,7 +8,7 @@ function roots_header_inside() { do_action('roots_header_inside'); }
 function roots_header_after() { do_action('roots_header_after'); }
 
 // 404.php, archive.php, front-page.php, index.php, loop-page.php, loop-single.php,
-// loop.php, page-custom.php, page-full.php, page.php, search.php, single.php
+// loop.php, content-custom.php, content-full.php, page.php, search.php, single.php
 function roots_content_before() { do_action('roots_content_before'); }
 function roots_content_after() { do_action('roots_content_after'); }
 function roots_main_before() { do_action('roots_main_before'); }
