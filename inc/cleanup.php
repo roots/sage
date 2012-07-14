@@ -589,7 +589,10 @@ class Roots_Navbar_Nav_Walker extends Walker_Nav_Menu {
  */
 function roots_nav_menu_args($args = '') {
   $roots_nav_menu_args['container']  = false;
-  $roots_nav_menu_args['items_wrap'] = '<ul class="%2$s">%3$s</ul>';
+
+  if (!$args['items_wrap']) {
+    $roots_nav_menu_args['items_wrap'] = '<ul class="%2$s">%3$s</ul>';
+  }
 
   if ($args['walker'] == new Roots_Navbar_Nav_Walker()) {
     $roots_nav_menu_args['depth'] = 2;
@@ -722,4 +725,3 @@ function roots_embed_wrap($cache, $url, $attr = '', $post_ID = '') {
 
 add_filter('embed_oembed_html', 'roots_embed_wrap', 10, 4);
 add_filter('embed_googlevideo', 'roots_embed_wrap', 10, 2);
-
