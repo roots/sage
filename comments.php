@@ -90,7 +90,7 @@
         <?php } ?>
         <label for="comment"><?php _e('Comment', 'roots'); ?></label>
         <textarea name="comment" id="comment" class="input-xlarge" tabindex="4"></textarea>
-        <input name="submit" class="btn btn-primary" type="submit" id="submit" tabindex="5" value="<?php _e('Submit Comment', 'roots'); ?>">
+        <p><input name="submit" class="btn btn-primary" type="submit" id="submit" tabindex="5" value="<?php _e('Submit Comment', 'roots'); ?>"></p>
         <?php comment_id_fields(); ?>
         <?php do_action('comment_form', $post->ID); ?>
       </form>

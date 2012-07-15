@@ -47,19 +47,10 @@ body.admin-bar .navbar-fixed-top { top: 28px; }
    ========================================================================== */
 
 .hentry header { }
-.hentry h2 a { text-decoration: none; }
-.hentry time { display: block; }
+.hentry time { }
 .hentry p.byline { }
-.hentry footer { clear: both; }
-
-
-
-/* =============================================================================
-   Post Comments
-   ========================================================================== */
-
-#comments, #respond, #submit { clear: both; display: block; }
-ol.commentlist img.avatar { float: left; margin-right: 10px; }
+.hentry .entry-content { }
+.hentry footer { }
 
 
 
@@ -67,13 +58,7 @@ ol.commentlist img.avatar { float: left; margin-right: 10px; }
    Footer
    ========================================================================== */
 
-#content-info {
-  margin-top: 45px;
-  padding: 35px 0 36px;
-  border-top: 1px solid #e5e5e5;
-}
-
-#content-info p small { font-size: 13px; }
+#content-info { }
 
 
 
@@ -83,9 +68,8 @@ ol.commentlist img.avatar { float: left; margin-right: 10px; }
    ========================================================================== */
 
 .aligncenter { display: block; margin: 0 auto; }
-.alignleft { margin: 0 20px 20px 0; float: left; }
-.alignright { margin: 0 0 20px 20px; float: right; }
-
+.alignleft { float: left; }
+.alignright { float: right; }
 figure.alignnone { margin-left: 0; margin-right: 0; }
 
 
