@@ -181,7 +181,7 @@ function roots_head_cleanup() {
   remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0);
 
   add_action('wp_head', 'roots_remove_recent_comments_style', 1);
-  add_filter('gallery_style', 'roots_gallery_style');
+  add_filter('use_default_gallery_style', '__return_null');
 
   if (!class_exists('WPSEO_Frontend')) {
     remove_action('wp_head', 'rel_canonical');
@@ -212,10 +212,6 @@ function roots_remove_recent_comments_style() {
   }
 }
 
-function roots_gallery_style($css) {
-  return preg_replace("!<style type='text/css'>(.*?)</style>!s", '', $css);
-}
-
 add_action('init', 'roots_head_cleanup');
 
 /**
@@ -225,7 +221,7 @@ add_action('init', 'roots_head_cleanup');
  *
  * @link http://twitter.github.com/bootstrap/components.html#thumbnails
  */
-function roots_gallery_shortcode($attr) {
+function roots_gallery($attr) {
   global $post, $wp_locale;
 
   static $instance = 0;
@@ -330,7 +326,7 @@ function roots_gallery_shortcode($attr) {
 }
 
 remove_shortcode('gallery');
-add_shortcode('gallery', 'roots_gallery_shortcode');
+add_shortcode('gallery', 'roots_gallery');
 
 /**
  * Add class="thumbnail" to attachment items
