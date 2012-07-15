@@ -17,9 +17,6 @@ define('SIDEBAR_CLASSES',           'span4');
 define('FULLWIDTH_CLASSES',         'span12');
 define('GOOGLE_ANALYTICS_ID',       '');
 
-// Set the post revisions to 5 unless previously set to avoid DB bloat
-if (!defined('WP_POST_REVISIONS')) { define('WP_POST_REVISIONS', 5); }
-
 define('WP_BASE',                   wp_base_dir());
 define('THEME_NAME',                next(explode('/themes/', get_template_directory())));
 define('RELATIVE_PLUGIN_PATH',      str_replace(site_url() . '/', '', plugins_url()));
