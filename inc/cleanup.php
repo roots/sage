@@ -439,7 +439,15 @@ add_filter('wp_nav_menu', 'roots_wp_nav_menu');
  */
 class Roots_Nav_Walker extends Walker_Nav_Menu {
   function check_current($classes) {
-    return preg_match('/(current[-_])/', $classes);
+    return preg_match('/(current[-_])|active|dropdown/', $classes);
+  }
+
+  function start_lvl(&$output, $depth) {
+    if (current_theme_supports('bootstrap-top-navbar')) {
+      $output .= "\n<ul class=\"dropdown-menu\">\n";
+    } else {
+      $output .= "\n<ul class=\"sub-menu\">\n";
+    }
   }
 
   function start_el(&$output, $item, $depth, $args) {
@@ -450,9 +458,17 @@ class Roots_Nav_Walker extends Walker_Nav_Menu {
     $id = 'menu-' . $slug;
 
     $class_names = $value = '';
+    $li_attributes = '';
     $classes = empty($item->classes) ? array() : (array) $item->classes;
 
     $classes = array_filter($classes, array(&$this, 'check_current'));
+
+    if (current_theme_supports('bootstrap-top-navbar')) {
+      if ($args->has_children) {
+        $classes[]      = 'dropdown';
+        $li_attributes .= ' data-dropdown="dropdown"';
+      }
+    }
 
     if ($custom_classes = get_post_meta($item->ID, '_menu_item_classes', true)) {
       foreach ($custom_classes as $custom_class) {
@@ -469,75 +485,22 @@ class Roots_Nav_Walker extends Walker_Nav_Menu {
     $attributes .= ! empty($item->target)     ? ' target="' . esc_attr($item->target    ) .'"' : '';
     $attributes .= ! empty($item->xfn)        ? ' rel="'    . esc_attr($item->xfn       ) .'"' : '';
     $attributes .= ! empty($item->url)        ? ' href="'   . esc_attr($item->url       ) .'"' : '';
+    if (current_theme_supports('bootstrap-top-navbar')) {
+      $attributes .= ($args->has_children)    ? ' class="dropdown-toggle" data-toggle="dropdown"' : '';
+    }
 
     $item_output  = $args->before;
     $item_output .= '<a'. $attributes .'>';
     $item_output .= $args->link_before . apply_filters('the_title', $item->title, $item->ID) . $args->link_after;
+    if (current_theme_supports('bootstrap-top-navbar')) {
+      $item_output .= ($args->has_children) ? ' <b class="caret"></b>' : '';
+    }
     $item_output .= '</a>';
     $item_output .= $args->after;
 
     $output .= apply_filters('walker_nav_menu_start_el', $item_output, $item, $depth, $args);
   }
-}
 
-
-/**
- * Cleaner walker for wp_nav_menu() specific to Bootstrap's Navbar
- */
-class Roots_Navbar_Nav_Walker extends Walker_Nav_Menu {
-  function check_current($classes) {
-    return preg_match('/(current[-_])|active|dropdown/', $classes);
-  }
-
-  function start_lvl(&$output, $depth) {
-    $output .= "\n<ul class=\"dropdown-menu\">\n";
-  }
-
-  function start_el(&$output, $item, $depth, $args) {
-    global $wp_query;
-    $indent = ($depth) ? str_repeat("\t", $depth) : '';
-
-    $slug = sanitize_title($item->title);
-    $id = 'menu-' . $slug;
-
-    $li_attributes = '';
-    $class_names = $value = '';
-
-    $classes = empty($item->classes) ? array() : (array) $item->classes;
-
-    if ($args->has_children) {
-      $classes[]      = 'dropdown';
-      $li_attributes .= ' data-dropdown="dropdown"';
-    }
-
-    $classes = array_filter($classes, array(&$this, 'check_current'));
-
-    if ($custom_classes = get_post_meta($item->ID, '_menu_item_classes', true)) {
-      foreach ($custom_classes as $custom_class) {
-        $classes[] = $custom_class;
-      }
-    }
-
-    $class_names = join(' ', apply_filters('nav_menu_css_class', array_filter($classes), $item, $args));
-    $class_names = $class_names ? ' class="' . $id . ' ' . esc_attr($class_names) . '"' : ' class="' . $id . '"';
-
-    $output .= $indent . '<li' . $class_names . $li_attributes . '>';
-
-    $attributes  = ! empty($item->attr_title) ? ' title="'  . esc_attr($item->attr_title) .'"'    : '';
-    $attributes .= ! empty($item->target)     ? ' target="' . esc_attr($item->target    ) .'"'    : '';
-    $attributes .= ! empty($item->xfn)        ? ' rel="'    . esc_attr($item->xfn       ) .'"'    : '';
-    $attributes .= ! empty($item->url)        ? ' href="'   . esc_attr($item->url       ) .'"'    : '';
-    $attributes .= ($args->has_children)      ? ' class="dropdown-toggle" data-toggle="dropdown"' : '';
-
-    $item_output  = $args->before;
-    $item_output .= '<a'. $attributes .'>';
-    $item_output .= $args->link_before . apply_filters('the_title', $item->title, $item->ID) . $args->link_after;
-    $item_output .= ($args->has_children) ? ' <b class="caret"></b>' : '';
-    $item_output .= '</a>';
-    $item_output .= $args->after;
-
-    $output .= apply_filters('walker_nav_menu_start_el', $item_output, $item, $depth, $args);
-  }
   function display_element($element, &$children_elements, $max_depth, $depth = 0, $args, &$output) {
     if (!$element) { return; }
 
@@ -577,6 +540,7 @@ class Roots_Navbar_Nav_Walker extends Walker_Nav_Menu {
 }
 
 
+
 /**
  * Cleanup wp_nav_menu_args
  *
@@ -590,7 +554,7 @@ function roots_nav_menu_args($args = '') {
     $roots_nav_menu_args['items_wrap'] = '<ul class="%2$s">%3$s</ul>';
   }
 
-  if ($args['walker'] == new Roots_Navbar_Nav_Walker()) {
+  if (current_theme_supports('bootstrap-top-navbar')) {
     $roots_nav_menu_args['depth'] = 2;
   }
 
