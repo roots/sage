@@ -36,9 +36,11 @@ if (stristr($_SERVER['SERVER_SOFTWARE'], 'apache') || stristr($_SERVER['SERVER_S
       'css/(.*)'      => THEME_PATH . '/css/$1',
       'js/(.*)'       => THEME_PATH . '/js/$1',
       'img/(.*)'      => THEME_PATH . '/img/$1',
-      'plugins/(.*)'  => RELATIVE_PLUGIN_PATH . '/$1',
-      'child/(.*)'    => CHILD_THEME_PATH . '/$1'
+      'plugins/(.*)'  => RELATIVE_PLUGIN_PATH . '/$1'
     );
+    if (is_child_theme()) {
+      $roots_new_non_wp_rules['child/(.*)'] = CHILD_THEME_PATH . '/$1';
+    }
     $wp_rewrite->non_wp_rules = array_merge($wp_rewrite->non_wp_rules, $roots_new_non_wp_rules);
     return $content;
   }
@@ -47,12 +49,14 @@ if (stristr($_SERVER['SERVER_SOFTWARE'], 'apache') || stristr($_SERVER['SERVER_S
     if (strpos($content, FULL_RELATIVE_PLUGIN_PATH) === 0) {
       return str_replace(FULL_RELATIVE_PLUGIN_PATH, WP_BASE . '/plugins', $content);
     } else {
-      $content = str_replace('/' . CHILD_THEME_PATH, '/child', $content);
+      if (is_child_theme()) {
+        $content = str_replace('/' . CHILD_THEME_PATH, '/child', $content);
+      }
       return str_replace('/' . THEME_PATH, '', $content);
     }
   }
 
-  //if (!is_multisite() && !is_child_theme() && get_option('permalink_structure')) {
+  if (!is_multisite() /*&& !is_child_theme()*/ && get_option('permalink_structure')) {
     if (current_theme_supports('rewrite-urls')) {
       add_action('generate_rewrite_rules', 'roots_add_rewrites');
     }
@@ -73,7 +77,7 @@ if (stristr($_SERVER['SERVER_SOFTWARE'], 'apache') || stristr($_SERVER['SERVER_S
 
       add_filters($tags, 'roots_clean_urls');
     }
-  //}
+  }
 
   // Add the contents of h5bp-htaccess into the .htaccess file
   function roots_add_h5bp_htaccess($content) {
