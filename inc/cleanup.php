@@ -411,16 +411,8 @@ add_filter('excerpt_more', 'roots_excerpt_more');
  * Replace various active menu class names with "active"
  */
 function roots_wp_nav_menu($text) {
-  $replace = array(
-    'current-menu-item'     => 'active',
-    'current-menu-parent'   => 'active',
-    'current-menu-ancestor' => 'active',
-    'current_page_item'     => 'active',
-    'current_page_parent'   => 'active',
-    'current_page_ancestor' => 'active',
-  );
-
-  $text = str_replace(array_keys($replace), $replace, $text);
+  $text = preg_replace('/(current(-menu-|[-_]page[-_])(item|parent|ancestor))/', 'active', $text);
+  $text = preg_replace('/( active){2,}/', ' active', $text);
   return $text;
 }
 
