@@ -33,45 +33,39 @@ if (stristr($_SERVER['SERVER_SOFTWARE'], 'apache') || stristr($_SERVER['SERVER_S
   function roots_add_rewrites($content) {
     global $wp_rewrite;
     $roots_new_non_wp_rules = array(
-      'css/(.*)'      => THEME_PATH . '/css/$1',
-      'js/(.*)'       => THEME_PATH . '/js/$1',
-      'img/(.*)'      => THEME_PATH . '/img/$1',
+      //'css/(.*)'      => THEME_PATH . '/css/$1',
+      //'js/(.*)'       => THEME_PATH . '/js/$1',
+      //'img/(.*)'      => THEME_PATH . '/img/$1',
       'plugins/(.*)'  => RELATIVE_PLUGIN_PATH . '/$1'
     );
-    if (is_child_theme()) {
-      $roots_new_non_wp_rules['child/js/(.*)'] = CHILD_THEME_PATH . '/$1';
-      $roots_new_non_wp_rules['child/css/(.*)'] = CHILD_THEME_PATH . '/$1';
-      $roots_new_non_wp_rules['child/(.*)'] = CHILD_THEME_PATH . '/$1'; // last; order matters
-    }
     $wp_rewrite->non_wp_rules = array_merge($wp_rewrite->non_wp_rules, $roots_new_non_wp_rules);
     return $content;
+  }
+
+  function roots_add_conditions($content) {
+    $rules = array(
+      'RewriteRule ^index\.php$ - [L]',
+      'RewriteCond %{DOCUMENT_ROOT}/' . CHILD_THEME_PATH . '/$1 -f',
+      'RewriteRule ^(.*[^/])/?$ /' . CHILD_THEME_PATH . '/$1 [QSA,L]',
+      'RewriteCond %{DOCUMENT_ROOT}/' . THEME_PATH  . '/$1 -f',
+      'RewriteRule ^(.*[^/])/?$ /' . THEME_PATH . '/$1 [QSA,L]'
+    );
+    return str_replace('RewriteRule ^index\.php$ - [L]', implode("\n", $rules), $content);
   }
 
   function roots_clean_urls($content) {
     if (strpos($content, FULL_RELATIVE_PLUGIN_PATH) === 0) {
       return str_replace(FULL_RELATIVE_PLUGIN_PATH, WP_BASE . '/plugins', $content);
     } else {
-      if (is_child_theme()) {
-      	$ext = pathinfo(strtok( $content, '?' ), PATHINFO_EXTENSION);
-      	if (empty($ext)) {
-      	  $content = str_replace('/' . CHILD_THEME_PATH, '/child', $content);
-      	} else {
-      	  $dir = '';
-      	  if ($ext == 'js') {
-      	    $dir = '/js';
-      	  } elseif ($ext == 'css') {
-      	    $dir = '/css';
-      	  }
-          $content = str_replace('/child', '/child' . $dir, $content);
-        }
-      }
+      $content = str_replace(CHILD_THEME_PATH, '', $content);
       return str_replace('/' . THEME_PATH, '', $content);
     }
   }
 
-  if (!is_multisite() /*&& !is_child_theme()*/ && get_option('permalink_structure')) {
+  if (get_option('permalink_structure')) {
     if (current_theme_supports('rewrite-urls')) {
       add_action('generate_rewrite_rules', 'roots_add_rewrites');
+      add_filter('mod_rewrite_rules', 'roots_add_conditions');
     }
 
     if (current_theme_supports('h5bp-htaccess')) {
