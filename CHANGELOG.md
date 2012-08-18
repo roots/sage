@@ -1,3 +1,11 @@
+### HEAD
+* Implement scribu's [Theme Wrapper](http://scribu.net/wordpress/theme-wrappers.html) (see `base.php`)
+* Move templates, `comments.php`, and `searchform.php` to `templates/` folder
+* Rename `loop-` files to `content-`
+* Remove all hooks except `roots_head` and `roots_footer`
+* Use `templates/page-header.php` for page titles
+* Use `head.php` for everything in `<head>`
+
 ### 5.2.0: August 18th, 2012
 * Update to jQuery 1.8.0 and Modernizr 2.6.1
 * Fix duplicate active class in `wp_nav_menu` items

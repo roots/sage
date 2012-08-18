@@ -435,11 +435,7 @@ class Roots_Nav_Walker extends Walker_Nav_Menu {
   }
 
   function start_lvl(&$output, $depth) {
-    if (current_theme_supports('bootstrap-top-navbar')) {
-      $output .= "\n<ul class=\"dropdown-menu\">\n";
-    } else {
-      $output .= "\n<ul class=\"sub-menu\">\n";
-    }
+    $output .= "\n<ul class=\"dropdown-menu\">\n";
   }
 
   function start_el(&$output, $item, $depth, $args) {
@@ -455,11 +451,9 @@ class Roots_Nav_Walker extends Walker_Nav_Menu {
 
     $classes = array_filter($classes, array(&$this, 'check_current'));
 
-    if (current_theme_supports('bootstrap-top-navbar')) {
-      if ($args->has_children) {
-        $classes[]      = 'dropdown';
-        $li_attributes .= ' data-dropdown="dropdown"';
-      }
+    if ($args->has_children) {
+      $classes[]      = 'dropdown';
+      $li_attributes .= ' data-dropdown="dropdown"';
     }
 
     if ($custom_classes = get_post_meta($item->ID, '_menu_item_classes', true)) {
@@ -477,16 +471,12 @@ class Roots_Nav_Walker extends Walker_Nav_Menu {
     $attributes .= ! empty($item->target)     ? ' target="' . esc_attr($item->target    ) .'"' : '';
     $attributes .= ! empty($item->xfn)        ? ' rel="'    . esc_attr($item->xfn       ) .'"' : '';
     $attributes .= ! empty($item->url)        ? ' href="'   . esc_attr($item->url       ) .'"' : '';
-    if (current_theme_supports('bootstrap-top-navbar')) {
-      $attributes .= ($args->has_children)    ? ' class="dropdown-toggle" data-toggle="dropdown"' : '';
-    }
+    $attributes .= ($args->has_children)    ? ' class="dropdown-toggle" data-toggle="dropdown"' : '';
 
     $item_output  = $args->before;
     $item_output .= '<a'. $attributes .'>';
     $item_output .= $args->link_before . apply_filters('the_title', $item->title, $item->ID) . $args->link_after;
-    if (current_theme_supports('bootstrap-top-navbar')) {
-      $item_output .= ($args->has_children) ? ' <b class="caret"></b>' : '';
-    }
+    $item_output .= ($args->has_children) ? ' <b class="caret"></b>' : '';
     $item_output .= '</a>';
     $item_output .= $args->after;
 
@@ -530,8 +520,6 @@ class Roots_Nav_Walker extends Walker_Nav_Menu {
     call_user_func_array(array(&$this, 'end_el'), $cb_args);
   }
 }
-
-
 
 /**
  * Cleanup wp_nav_menu_args
@@ -677,3 +665,12 @@ function roots_embed_wrap($cache, $url, $attr = '', $post_ID = '') {
 
 add_filter('embed_oembed_html', 'roots_embed_wrap', 10, 4);
 add_filter('embed_googlevideo', 'roots_embed_wrap', 10, 2);
+
+/**
+ * Tell WordPress to use searchform.php from the templates/ directory
+ */
+function roots_get_search_form() {
+  locate_template('/templates/searchform.php', true, true);
+}
+
+add_filter('get_search_form', 'roots_get_search_form');

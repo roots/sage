@@ -4,27 +4,20 @@
  *
  * Enqueue stylesheets in the following order:
  * 1. /theme/css/bootstrap.css
- * 2. /theme/css/bootstrap-responsive.css      (if enabled in config.php)
+ * 2. /theme/css/bootstrap-responsive.css
  * 3. /theme/css/app.css
  * 4. /child-theme/style.css                   (if a child theme is activated)
  *
  * Enqueue scripts in the following order:
- * 1. /theme/js/vendor/modernizr-2.6.1.min.js  (in header.php)
- * 2. jquery-1.8.0.min.js via Google CDN       (in header.php)
+ * 1. /theme/js/vendor/modernizr-2.6.1.min.js  (in head.php)
+ * 2. jquery-1.8.0.min.js via Google CDN       (in head.php)
  * 3. /theme/js/plugins.js
  * 4. /theme/js/main.js
  */
 
 function roots_scripts() {
   wp_enqueue_style('roots_bootstrap', get_template_directory_uri() . '/css/bootstrap.css', false, null);
-
-  if (current_theme_supports('bootstrap-responsive')) {
-    wp_enqueue_style('roots_bootstrap_responsive', get_template_directory_uri() . '/css/bootstrap-responsive.css', array('roots_bootstrap'), null);
-  }
-
-  // If you're not using Bootstrap, include HTML5 Boilerplate's main.css:
-  // wp_enqueue_style('roots_h5bp', get_template_directory_uri() . '/css/main.css', false, null);
-
+  wp_enqueue_style('roots_bootstrap_responsive', get_template_directory_uri() . '/css/bootstrap-responsive.css', array('roots_bootstrap'), null);
   wp_enqueue_style('roots_app', get_template_directory_uri() . '/css/app.css', false, null);
 
   // Load style.css from child theme
