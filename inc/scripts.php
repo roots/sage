@@ -9,8 +9,8 @@
  * 4. /child-theme/style.css                   (if a child theme is activated)
  *
  * Enqueue scripts in the following order:
- * 1. /theme/js/vendor/modernizr-2.5.3.min.js  (in header.php)
- * 2. jquery-1.7.2.min.js via Google CDN       (in header.php)
+ * 1. /theme/js/vendor/modernizr-2.6.1.min.js  (in header.php)
+ * 2. jquery-1.8.0.min.js via Google CDN       (in header.php)
  * 3. /theme/js/plugins.js
  * 4. /theme/js/main.js
  */
