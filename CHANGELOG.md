@@ -1,4 +1,5 @@
 ### HEAD
+* Add MIT License
 * Implement scribu's [Theme Wrapper](http://scribu.net/wordpress/theme-wrappers.html) (see `base.php`)
 * Move templates, `comments.php`, and `searchform.php` to `templates/` folder
 * Rename `loop-` files to `content-`
