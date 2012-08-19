@@ -464,6 +464,13 @@ class Roots_Nav_Walker extends Walker_Nav_Menu {
 
     $class_names = join(' ', apply_filters('nav_menu_css_class', array_filter($classes), $item, $args));
     $class_names = $class_names ? ' class="' . $id . ' ' . esc_attr($class_names) . '"' : ' class="' . $id . '"';
+    if (in_array("divider",$classes)) { 
+      $item_output = "\t" . '<li'. $class_names .'>';
+    } elseif (in_array("divider-vertical",$classes)){
+      $item_output = "\t" . '<li'. $class_names .'>';
+    } elseif (in_array("nav-header",$classes)){
+      $item_output = "\t" . '<li'. $class_names .'>'. $item->title .'';
+    } else { 
 
     $output .= $indent . '<li' . $class_names . '>';
 
@@ -479,7 +486,7 @@ class Roots_Nav_Walker extends Walker_Nav_Menu {
     $item_output .= ($args->has_children) ? ' <b class="caret"></b>' : '';
     $item_output .= '</a>';
     $item_output .= $args->after;
-
+    }
     $output .= apply_filters('walker_nav_menu_start_el', $item_output, $item, $depth, $args);
   }
 
