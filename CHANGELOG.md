@@ -1,4 +1,5 @@
 ### HEAD
+* Update to Bootstrap 2.1
 * Add MIT License
 * Implement scribu's [Theme Wrapper](http://scribu.net/wordpress/theme-wrappers.html) (see `base.php`)
 * Move `css/`, `img/`, and `js/` folders within a new `assets/` folder
