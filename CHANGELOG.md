@@ -4,6 +4,7 @@
 * Move `css/`, `img/`, and `js/` folders within a new `assets/` folder
 * Move templates, `comments.php`, and `searchform.php` to `templates/` folder
 * Rename `inc/` to `lib/`
+* Add placeholder `lib/post-types.php` and `lib/metaboxes.php` files
 * Rename `loop-` files to `content-`
 * Remove all hooks
 * Use `templates/page-header.php` for page titles
