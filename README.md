@@ -18,7 +18,7 @@ Edit `lib/config.php` to enable support for major functionality and to define co
 * Theme wrapper
 * Root relative URLs
 * Clean URLs (no more `/wp-content/`)
-* All static theme assets are rewritten to the website root (`/css/`, `/img/`, and `/js/`)
+* All static theme assets are rewritten to the website root (`/assets/css/`, `/assets/img/`, and `/assets/js/`)
 * Cleaner HTML output of navigation menus
 * Cleaner output of `wp_head` and enqueued scripts/styles
 * Posts use the [hNews](http://microformats.org/wiki/hnews) microformat

@@ -1,7 +1,9 @@
 ### HEAD
 * Add MIT License
 * Implement scribu's [Theme Wrapper](http://scribu.net/wordpress/theme-wrappers.html) (see `base.php`)
+* Move `css/`, `img/`, and `js/` folders within a new `assets/` folder
 * Move templates, `comments.php`, and `searchform.php` to `templates/` folder
+* Rename `inc/` to `lib/`
 * Rename `loop-` files to `content-`
 * Remove all hooks
 * Use `templates/page-header.php` for page titles
