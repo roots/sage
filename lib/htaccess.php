@@ -44,7 +44,7 @@ if (stristr($_SERVER['SERVER_SOFTWARE'], 'apache') || stristr($_SERVER['SERVER_S
 
   function roots_clean_urls($content) {
     if (strpos($content, FULL_RELATIVE_PLUGIN_PATH) === 0) {
-      return str_replace(FULL_RELATIVE_PLUGIN_PATH, WP_BASE . '/plugins', $content);
+      return str_replace(FULL_RELATIVE_PLUGIN_PATH, WP_BASE . '/assets/plugins, $content);
     } else {
       return str_replace('/' . THEME_PATH, '', $content);
     }
