@@ -9,7 +9,7 @@ Roots is a starting WordPress theme made for developers that’s based on [HTML5
 
 ## Configuration
 
-Edit `inc/config.php` to enable support for major functionality and to define constants that are used throughout the theme.
+Edit `lib/config.php` to enable support for major functionality and to define constants that are used throughout the theme.
 
 ## Features
 
