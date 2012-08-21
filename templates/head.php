@@ -14,5 +14,4 @@
   <script>window.jQuery || document.write('<script src="<?php echo get_template_directory_uri(); ?>/js/vendor/jquery-1.8.0.min.js"><\/script>')</script>
 
   <?php wp_head(); ?>
-  <?php roots_head(); ?>
 </head>

@@ -9,7 +9,7 @@ function roots_feed_link() {
   }
 }
 
-add_action('roots_head', 'roots_feed_link');
+add_action('wp_head', 'roots_feed_link', -2);
 
 /**
  * Add the asynchronous Google Analytics snippet from HTML5 Boilerplate
@@ -28,4 +28,4 @@ function roots_google_analytics() {
   }
 }
 
-add_action('roots_footer', 'roots_google_analytics');
+add_action('wp_footer', 'roots_google_analytics');

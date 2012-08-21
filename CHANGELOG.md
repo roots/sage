@@ -3,7 +3,7 @@
 * Implement scribu's [Theme Wrapper](http://scribu.net/wordpress/theme-wrappers.html) (see `base.php`)
 * Move templates, `comments.php`, and `searchform.php` to `templates/` folder
 * Rename `loop-` files to `content-`
-* Remove all hooks except `roots_head` and `roots_footer`
+* Remove all hooks
 * Use `templates/page-header.php` for page titles
 * Use `head.php` for everything in `<head>`
 

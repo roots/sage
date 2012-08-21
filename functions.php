@@ -5,14 +5,13 @@
 
 if (!defined('__DIR__')) { define('__DIR__', dirname(__FILE__)); }
 
-require_once locate_template('/inc/util.php');            // Utility functions
+require_once locate_template('/inc/utils.php');           // Utility functions
 require_once locate_template('/inc/config.php');          // Configuration and constants
 require_once locate_template('/inc/activation.php');      // Theme activation
 require_once locate_template('/inc/template-tags.php');   // Template tags
 require_once locate_template('/inc/cleanup.php');         // Cleanup
 require_once locate_template('/inc/scripts.php');         // Scripts and stylesheets
 require_once locate_template('/inc/htaccess.php');        // Rewrites for assets, H5BP .htaccess
-require_once locate_template('/inc/hooks.php');           // Hooks
 require_once locate_template('/inc/actions.php');         // Actions
 require_once locate_template('/inc/widgets.php');         // Sidebars and widgets
 require_once locate_template('/inc/custom.php');          // Custom functions

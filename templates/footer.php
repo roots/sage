@@ -4,4 +4,3 @@
 </footer>
 
 <?php wp_footer(); ?>
-<?php roots_footer(); ?>
