@@ -5,17 +5,18 @@
 
 if (!defined('__DIR__')) { define('__DIR__', dirname(__FILE__)); }
 
-require_once locate_template('/inc/util.php');            // Utility functions
-require_once locate_template('/inc/config.php');          // Configuration and constants
-require_once locate_template('/inc/activation.php');      // Theme activation
-require_once locate_template('/inc/template-tags.php');   // Template tags
-require_once locate_template('/inc/cleanup.php');         // Cleanup
-require_once locate_template('/inc/scripts.php');         // Scripts and stylesheets
-require_once locate_template('/inc/htaccess.php');        // Rewrites for assets, H5BP .htaccess
-require_once locate_template('/inc/hooks.php');           // Hooks
-require_once locate_template('/inc/actions.php');         // Actions
-require_once locate_template('/inc/widgets.php');         // Sidebars and widgets
-require_once locate_template('/inc/custom.php');          // Custom functions
+require_once locate_template('/lib/utils.php');           // Utility functions
+require_once locate_template('/lib/config.php');          // Configuration and constants
+require_once locate_template('/lib/activation.php');      // Theme activation
+require_once locate_template('/lib/cleanup.php');         // Cleanup
+require_once locate_template('/lib/htaccess.php');        // Rewrites for assets, H5BP .htaccess
+require_once locate_template('/lib/widgets.php');         // Sidebars and widgets
+require_once locate_template('/lib/template-tags.php');   // Template tags
+require_once locate_template('/lib/actions.php');         // Actions
+require_once locate_template('/lib/scripts.php');         // Scripts and stylesheets
+require_once locate_template('/lib/post-types.php');      // Custom post types
+require_once locate_template('/lib/metaboxes.php');       // Custom metaboxes
+require_once locate_template('/lib/custom.php');          // Custom functions
 
 function roots_setup() {
 
@@ -36,7 +37,7 @@ function roots_setup() {
   // add_theme_support('post-formats', array('aside', 'gallery', 'link', 'image', 'quote', 'status', 'video', 'audio', 'chat'));
 
   // Tell the TinyMCE editor to use a custom stylesheet
-  add_editor_style('css/editor-style.css');
+  add_editor_style('assets/css/editor-style.css');
 
 }
 

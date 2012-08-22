@@ -9,15 +9,16 @@ Roots is a starting WordPress theme made for developers that’s based on [HTML5
 
 ## Configuration
 
-Edit `inc/config.php` to enable support for major functionality and to define constants that are used throughout the theme.
+Edit `lib/config.php` to enable support for major functionality and to define constants that are used throughout the theme.
 
 ## Features
 
 * HTML5 Boilerplate’s markup and `.htaccess`
 * Bootstrap from Twitter
+* Theme wrapper
 * Root relative URLs
 * Clean URLs (no more `/wp-content/`)
-* All static theme assets are rewritten to the website root (`/css/`, `/img/`, and `/js/`)
+* All static theme assets are rewritten to the website root (`/assets/css/`, `/assets/img/`, and `/assets/js/`)
 * Cleaner HTML output of navigation menus
 * Cleaner output of `wp_head` and enqueued scripts/styles
 * Posts use the [hNews](http://microformats.org/wiki/hnews) microformat
@@ -43,17 +44,3 @@ Everyone is welcome to help improve this project. There are several ways you can
 * Mailing list: [http://groups.google.com/group/roots-theme](http://groups.google.com/group/roots-theme)
 * Twitter: [@retlehs](https://twitter.com/#!/retlehs)
 * Contributors: [https://github.com/retlehs/roots/contributors](https://github.com/retlehs/roots/contributors)
-
-## License
-
-### Major components:
-
-* HTML5 Boilerplate: The Unlicense
-* Modernizr: MIT/BSD license
-* jQuery: MIT/GPL license
-* Normalize.css: Public Domain
-* Bootstrap: Apache 2.0 license
-
-### Everything else:
-
-The Unlicense (aka: public domain)
