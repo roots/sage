@@ -60,7 +60,7 @@ if (stristr($_SERVER['SERVER_SOFTWARE'], 'apache') || stristr($_SERVER['SERVER_S
       if (is_child_theme())
         $content = str_replace(unleadingslashit(CHILD_THEME_PATH), '', $content);
         
-      return str_replace(THEME_PATH, '', $content);
+      return str_replace(leadingslashit(THEME_PATH), '', $content);
     }
   }
 
