@@ -42,19 +42,30 @@ if (stristr($_SERVER['SERVER_SOFTWARE'], 'apache') || stristr($_SERVER['SERVER_S
     return $content;
   }
 
+  function roots_add_conditions($content) {
+    $rules = array(
+      'RewriteRule ^index\.php$ - [L]',
+      'RewriteCond %{DOCUMENT_ROOT}/' . CHILD_THEME_PATH . '/$1 -f',
+      'RewriteRule ^(.*[^/])/?$ /' . CHILD_THEME_PATH . '/$1 [QSA,L]',
+      'RewriteCond %{DOCUMENT_ROOT}/' . THEME_PATH  . '/$1 -f',
+      'RewriteRule ^(.*[^/])/?$ /' . THEME_PATH . '/$1 [QSA,L]'
+    );
+    return str_replace('RewriteRule ^index\.php$ - [L]', implode("\n", $rules), $content);
+  }
+
   function roots_clean_urls($content) {
     if (strpos($content, FULL_RELATIVE_PLUGIN_PATH) === 0) {
       return str_replace(FULL_RELATIVE_PLUGIN_PATH, WP_BASE . '/plugins', $content);
     } else {
-      $content = str_replace(leadingslashit(CHILD_THEME_PATH), '', $content);
-      return str_replace(leadingslashit(THEME_PATH), '', $content);
+      $content = str_replace(CHILD_THEME_PATH, '', $content);
+      return str_replace('/' . THEME_PATH, '', $content);
     }
   }
 
   if (get_option('permalink_structure')) {
     if (current_theme_supports('rewrite-urls')) {
       add_action('generate_rewrite_rules', 'roots_add_rewrites');
-      add_action('generate_rewrite_rules', 'roots_add_custom_htaccess');
+      add_filter('mod_rewrite_rules', 'roots_add_conditions');
     }
 
     if (current_theme_supports('h5bp-htaccess')) {
@@ -88,44 +99,6 @@ if (stristr($_SERVER['SERVER_SOFTWARE'], 'apache') || stristr($_SERVER['SERVER_S
         if ($h5bp_rules === array()) {
           $filename = dirname(__FILE__) . '/h5bp-htaccess';
           return insert_with_markers($htaccess_file, 'HTML5 Boilerplate', extract_from_markers($filename, 'HTML5 Boilerplate'));
-        }
-      }
-    }
-
-    return $content;
-  }
-  
-  // Add conditions and rules to the .htaccess file
-  function roots_add_custom_htaccess($content) {
-    global $wp_rewrite;
-    $home_path = function_exists('get_home_path') ? get_home_path() : ABSPATH;
-    $htaccess_file = $home_path . '.htaccess';
-    $mod_rewrite_enabled = function_exists('got_mod_rewrite') ? got_mod_rewrite() : false;
-
-    if ((!file_exists($htaccess_file) && is_writable($home_path) && $wp_rewrite->using_mod_rewrite_permalinks()) || is_writable($htaccess_file)) {
-      if ($mod_rewrite_enabled) {
-        $rules = array(
-          'RewriteCond %{DOCUMENT_ROOT}/' . THEME_PATH . '/$1 -f', 
-          'RewriteRule ^(.*[^/])/?$ /' . THEME_PATH . '/$1 [QSA,L]'
-        );
-        
-        if (is_child_theme()) {
-          array_unshift(
-            $rules,
-            'RewriteCond %{DOCUMENT_ROOT}/' . CHILD_THEME_PATH . '/$1 -f',
-            'RewriteRule ^(.*[^/])/?$ /' . CHILD_THEME_PATH . '/$1 [QSA,L]'
-          );
-        }
-        
-        $wp_rules = extract_from_markers($htaccess_file, 'WordPress');
-        
-        if (in_array('# BEGIN Roots', $wp_rules)) {
-          return insert_with_markers($htaccess_file, 'Roots', $rules);
-        } else {
-          array_unshift($rules, '# BEGIN Roots');
-          array_push($rules, '# END Roots');
-          array_splice($wp_rules, 3, 0, $rules);
-          return insert_with_markers($htaccess_file, 'WordPress', $wp_rules);
         }
       }
     }
