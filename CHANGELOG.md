@@ -1,4 +1,5 @@
 ### HEAD
+* Add bundled docs
 * Update all templates to use [PHP Alternative Syntax](http://php.net/manual/en/control-structures.alternative-syntax.php)
 * Update to Bootstrap 2.1
 * Add MIT License
