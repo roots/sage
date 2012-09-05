@@ -1,7 +1,7 @@
 ### HEAD
+* Update to Bootstrap 2.1.1, jQuery 1.8.1, Modernizr 2.6.2
 * Add bundled docs
 * Update all templates to use [PHP Alternative Syntax](http://php.net/manual/en/control-structures.alternative-syntax.php)
-* Update to Bootstrap 2.1
 * Add MIT License
 * Implement scribu's [Theme Wrapper](http://scribu.net/wordpress/theme-wrappers.html) (see `base.php`)
 * Move `css/`, `img/`, and `js/` folders within a new `assets/` folder
