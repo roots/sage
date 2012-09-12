@@ -1,4 +1,5 @@
 ### HEAD
+* Simplify nav walker and support 3rd level dropdowns
 * Update to Bootstrap 2.1.1, jQuery 1.8.1, Modernizr 2.6.2
 * Add bundled docs
 * Update all templates to use [PHP Alternative Syntax](http://php.net/manual/en/control-structures.alternative-syntax.php)
