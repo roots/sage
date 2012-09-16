@@ -435,6 +435,15 @@ class Roots_Nav_Walker extends Walker_Nav_Menu {
       $item_html = str_replace('<a', '<a class="dropdown-toggle" data-toggle="dropdown" data-target="#"', $item_html);
       $item_html = str_replace('</a>', ' <b class="caret"></b></a>', $item_html);
     }
+    elseif (in_array('divider-vertical',$item->classes)) {
+      $item_html = '<li class="divider-vertical">';
+    }  
+    elseif (in_array('divider',$item->classes)) {
+      $item_html = '<li class="divider">';
+    }
+    elseif (in_array('nav-header',$item->classes)) {
+      $item_html = '<li class="nav-header">'. $item->title;
+    }
 
     $output .= $item_html;
   }
