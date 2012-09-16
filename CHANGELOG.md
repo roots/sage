@@ -1,4 +1,4 @@
-### HEAD
+### 6.0.0: September 16th, 2012
 * Simplify nav walker and support 3rd level dropdowns
 * Update to Bootstrap 2.1.1, jQuery 1.8.1, Modernizr 2.6.2
 * Add bundled docs
