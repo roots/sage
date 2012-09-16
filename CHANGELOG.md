@@ -1,9 +1,16 @@
-### HEAD
+### 6.0.0: September 16th, 2012
+* Simplify nav walker and support 3rd level dropdowns
+* Update to Bootstrap 2.1.1, jQuery 1.8.1, Modernizr 2.6.2
+* Add bundled docs
+* Update all templates to use [PHP Alternative Syntax](http://php.net/manual/en/control-structures.alternative-syntax.php)
 * Add MIT License
 * Implement scribu's [Theme Wrapper](http://scribu.net/wordpress/theme-wrappers.html) (see `base.php`)
+* Move `css/`, `img/`, and `js/` folders within a new `assets/` folder
 * Move templates, `comments.php`, and `searchform.php` to `templates/` folder
+* Rename `inc/` to `lib/`
+* Add placeholder `lib/post-types.php` and `lib/metaboxes.php` files
 * Rename `loop-` files to `content-`
-* Remove all hooks except `roots_head` and `roots_footer`
+* Remove all hooks
 * Use `templates/page-header.php` for page titles
 * Use `head.php` for everything in `<head>`
 
