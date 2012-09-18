@@ -23,7 +23,7 @@ class Roots_Wrapping {
 
     self::$base = substr(basename(self::$main_template), 0, -4);
 
-    if ('index' == self::$base) {
+    if (self::$base === 'index') {
       self::$base = false;
     }
 
