@@ -1,6 +1,3 @@
-[Roots Theme homepage](http://www.rootstheme.com/) | [Documentation
-table of contents](README.md)
-
 # Contributing to Roots Theme
 
 ## Reporting issues
