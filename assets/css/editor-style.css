@@ -3,10 +3,38 @@ Theme Name:         Roots
 Description:        Used to style the TinyMCE editor
 */
 
+.clearfix {
+  *zoom: 1;
+}
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.clearfix:after {
+  clear: both;
+}
+.hide-text {
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+}
+.input-block-level {
+  display: block;
+  width: 100%;
+  min-height: 30px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
 body {
+  margin: 0;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 13px;
-  line-height: 18px;
+  font-size: 14px;
+  line-height: 20px;
   color: #333333;
   background-color: #ffffff;
 }
@@ -18,21 +46,60 @@ a:hover {
   color: #005580;
   text-decoration: underline;
 }
-p {
-  margin: 0 0 9px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 13px;
-  line-height: 18px;
+.img-rounded {
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
 }
-p small {
-  font-size: 11px;
-  color: #999999;
+.img-polaroid {
+  padding: 4px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+.img-circle {
+  -webkit-border-radius: 500px;
+  -moz-border-radius: 500px;
+  border-radius: 500px;
+}
+p {
+  margin: 0 0 10px;
 }
 .lead {
-  margin-bottom: 18px;
-  font-size: 20px;
+  margin-bottom: 20px;
+  font-size: 21px;
   font-weight: 200;
-  line-height: 27px;
+  line-height: 30px;
+}
+small {
+  font-size: 85%;
+}
+strong {
+  font-weight: bold;
+}
+em {
+  font-style: italic;
+}
+cite {
+  font-style: normal;
+}
+.muted {
+  color: #999999;
+}
+.text-warning {
+  color: #c09853;
+}
+.text-error {
+  color: #b94a48;
+}
+.text-info {
+  color: #3a87ad;
+}
+.text-success {
+  color: #468847;
 }
 h1,
 h2,
@@ -40,9 +107,11 @@ h3,
 h4,
 h5,
 h6 {
-  margin: 0;
+  margin: 10px 0;
+  font-family: inherit;
   font-weight: bold;
-  color: #333333;
+  line-height: 1;
+  color: inherit;
   text-rendering: optimizelegibility;
 }
 h1 small,
@@ -52,57 +121,54 @@ h4 small,
 h5 small,
 h6 small {
   font-weight: normal;
+  line-height: 1;
   color: #999999;
 }
 h1 {
-  font-size: 30px;
-  line-height: 36px;
-}
-h1 small {
-  font-size: 18px;
+  font-size: 36px;
+  line-height: 40px;
 }
 h2 {
-  font-size: 24px;
-  line-height: 36px;
-}
-h2 small {
-  font-size: 18px;
+  font-size: 30px;
+  line-height: 40px;
 }
 h3 {
-  line-height: 27px;
+  font-size: 24px;
+  line-height: 40px;
+}
+h4 {
+  font-size: 18px;
+  line-height: 20px;
+}
+h5 {
+  font-size: 14px;
+  line-height: 20px;
+}
+h6 {
+  font-size: 12px;
+  line-height: 20px;
+}
+h1 small {
+  font-size: 24px;
+}
+h2 small {
   font-size: 18px;
 }
 h3 small {
   font-size: 14px;
 }
-h4, h5, h6 {
-  line-height: 18px;
-}
-h4 {
+h4 small {
   font-size: 14px;
 }
-h4 small {
-  font-size: 12px;
-}
-h5 {
-  font-size: 12px;
-}
-h6 {
-  font-size: 11px;
-  color: #999999;
-  text-transform: uppercase;
-}
 .page-header {
-  padding-bottom: 17px;
-  margin: 18px 0;
+  padding-bottom: 9px;
+  margin: 20px 0 30px;
   border-bottom: 1px solid #eeeeee;
 }
-.page-header h1 {
-  line-height: 1;
-}
-ul, ol {
+ul,
+ol {
   padding: 0;
-  margin: 0 0 9px 25px;
+  margin: 0 0 10px 25px;
 }
 ul ul,
 ul ol,
@@ -110,66 +176,79 @@ ol ol,
 ol ul {
   margin-bottom: 0;
 }
-ul {
-  list-style: disc;
-}
-ol {
-  list-style: decimal;
-}
 li {
-  line-height: 18px;
+  line-height: 20px;
 }
-ul.unstyled {
+ul.unstyled,
+ol.unstyled {
   margin-left: 0;
   list-style: none;
 }
 dl {
-  margin-bottom: 18px;
+  margin-bottom: 20px;
 }
-dt, dd {
-  line-height: 18px;
+dt,
+dd {
+  line-height: 20px;
 }
 dt {
   font-weight: bold;
 }
 dd {
-  margin-left: 9px;
+  margin-left: 10px;
+}
+.dl-horizontal {
+  *zoom: 1;
+}
+.dl-horizontal:before,
+.dl-horizontal:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.dl-horizontal:after {
+  clear: both;
+}
+.dl-horizontal dt {
+  float: left;
+  width: 160px;
+  clear: left;
+  text-align: right;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.dl-horizontal dd {
+  margin-left: 180px;
 }
 hr {
-  margin: 18px 0;
+  margin: 20px 0;
   border: 0;
-  border-top: 1px solid #e5e5e5;
+  border-top: 1px solid #eeeeee;
   border-bottom: 1px solid #ffffff;
 }
-strong {
-  font-weight: bold;
+abbr[title] {
+  cursor: help;
+  border-bottom: 1px dotted #999999;
 }
-em {
-  font-style: italic;
-}
-.muted {
-  color: #999999;
-}
-abbr {
+abbr.initialism {
   font-size: 90%;
   text-transform: uppercase;
-  border-bottom: 1px dotted #ddd;
-  cursor: help;
 }
 blockquote {
   padding: 0 0 0 15px;
-  margin: 0 0 18px;
+  margin: 0 0 20px;
   border-left: 5px solid #eeeeee;
 }
 blockquote p {
   margin-bottom: 0;
   font-size: 16px;
   font-weight: 300;
-  line-height: 22.5px;
+  line-height: 25px;
 }
 blockquote small {
   display: block;
-  line-height: 18px;
+  line-height: 20px;
   color: #999999;
 }
 blockquote small:before {
@@ -177,13 +256,20 @@ blockquote small:before {
 }
 blockquote.pull-right {
   float: right;
-  padding-left: 0;
   padding-right: 15px;
-  border-left: 0;
+  padding-left: 0;
   border-right: 5px solid #eeeeee;
+  border-left: 0;
 }
-blockquote.pull-right p, blockquote.pull-right small {
+blockquote.pull-right p,
+blockquote.pull-right small {
   text-align: right;
+}
+blockquote.pull-right small:before {
+  content: '';
+}
+blockquote.pull-right small:after {
+  content: '\00A0 \2014';
 }
 q:before,
 q:after,
@@ -193,19 +279,14 @@ blockquote:after {
 }
 address {
   display: block;
-  margin-bottom: 18px;
-  line-height: 18px;
+  margin-bottom: 20px;
   font-style: normal;
+  line-height: 20px;
 }
-small {
-  font-size: 100%;
-}
-cite {
-  font-style: normal;
-}
-code, pre {
+code,
+pre {
   padding: 0 3px 2px;
-  font-family: Menlo, Monaco, "Courier New", monospace;
+  font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
   font-size: 12px;
   color: #333333;
   -webkit-border-radius: 3px;
@@ -213,31 +294,38 @@ code, pre {
   border-radius: 3px;
 }
 code {
-  padding: 3px 4px;
+  padding: 2px 4px;
   color: #d14;
   background-color: #f7f7f9;
   border: 1px solid #e1e1e8;
 }
 pre {
   display: block;
-  padding: 8.5px;
-  margin: 0 0 9px;
-  font-size: 12px;
-  line-height: 18px;
+  padding: 9.5px;
+  margin: 0 0 10px;
+  font-size: 13px;
+  line-height: 20px;
+  word-break: break-all;
+  word-wrap: break-word;
+  white-space: pre;
+  white-space: pre-wrap;
   background-color: #f5f5f5;
   border: 1px solid #ccc;
   border: 1px solid rgba(0, 0, 0, 0.15);
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
-  white-space: pre;
-  white-space: pre-wrap;
-  word-break: break-all;
 }
 pre.prettyprint {
-  margin-bottom: 18px;
+  margin-bottom: 20px;
 }
 pre code {
   padding: 0;
+  color: inherit;
   background-color: transparent;
+  border: 0;
+}
+.pre-scrollable {
+  max-height: 340px;
+  overflow-y: scroll;
 }
