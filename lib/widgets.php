@@ -3,20 +3,21 @@
 function roots_widgets_init() {
   // Register widgetized areas
   register_sidebar(array(
-    'name' => __('Primary Sidebar', 'roots'),
-    'id' => 'sidebar-primary',
+    'name'          => __('Primary Sidebar', 'roots'),
+    'id'            => 'sidebar-primary',
     'before_widget' => '<section id="%1$s" class="widget %2$s"><div class="widget-inner">',
-    'after_widget' => '</div></section>',
-    'before_title' => '<h3>',
-    'after_title' => '</h3>',
+    'after_widget'  => '</div></section>',
+    'before_title'  => '<h3>',
+    'after_title'   => '</h3>',
   ));
+
   register_sidebar(array(
-    'name' => __('Footer', 'roots'),
-    'id' => 'sidebar-footer',
+    'name'          => __('Footer', 'roots'),
+    'id'            => 'sidebar-footer',
     'before_widget' => '<section id="%1$s" class="widget %2$s"><div class="widget-inner">',
-    'after_widget' => '</div></section>',
-    'before_title' => '<h3>',
-    'after_title' => '</h3>',
+    'after_widget'  => '</div></section>',
+    'before_title'  => '<h3>',
+    'after_title'   => '</h3>',
   ));
 
   // Register widgets
@@ -28,6 +29,7 @@ add_action('widgets_init', 'roots_widgets_init');
 class Roots_Vcard_Widget extends WP_Widget {
   function Roots_Vcard_Widget() {
     $widget_ops = array('classname' => 'widget_roots_vcard', 'description' => __('Use this widget to add a vCard', 'roots'));
+
     $this->WP_Widget('widget_roots_vcard', __('Roots: vCard', 'roots'), $widget_ops);
     $this->alt_option_name = 'widget_roots_vcard';
 
@@ -64,6 +66,7 @@ class Roots_Vcard_Widget extends WP_Widget {
     if (!isset($instance['email'])) { $instance['email'] = ''; }
 
     echo $before_widget;
+
     if ($title) {
       echo $before_title;
       echo $title;
@@ -100,6 +103,7 @@ class Roots_Vcard_Widget extends WP_Widget {
     $this->flush_widget_cache();
 
     $alloptions = wp_cache_get('alloptions', 'options');
+
     if (isset($alloptions['widget_roots_vcard'])) {
       delete_option('widget_roots_vcard');
     }

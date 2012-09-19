@@ -237,16 +237,16 @@ function roots_caption($output, $attr, $content) {
   }
 
   $defaults = array(
-    'id' => '',
-    'align' => 'alignnone',
-    'width' => '',
+    'id'      => '',
+    'align'   => 'alignnone',
+    'width'   => '',
     'caption' => ''
   );
 
   $attr = shortcode_atts($defaults, $attr);
 
   // If the width is less than 1 or there is no caption, return the content wrapped between the [caption] tags
-  if (1 > $attr['width'] || empty($attr['caption'])) {
+  if ($attr['width'] < 1 || empty($attr['caption'])) {
     return $content;
   }
 
