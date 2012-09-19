@@ -19,9 +19,15 @@ The `content-page.php` template is included by page templates in the theme root.
 
 The `content-single.php` template is included by single post templates in the theme root.
 
+### entry-meta.php
+
+`entry-meta.php` displays the author byline, post time, and date information.
+
 ### footer.php
 
 `footer.php` includes the Footer sidebar area and displays the site copyright information.
+
+Also included is the [asynchronous Google Analytics snippet](http://mathiasbynens.be/notes/async-analytics-snippet) from HTML5 Boilerplate if an ID is defined in `config.php`.
 
 ### head.php
 
