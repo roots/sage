@@ -11,7 +11,6 @@ require_once locate_template('/lib/activation.php');      // Theme activation
 require_once locate_template('/lib/cleanup.php');         // Cleanup
 require_once locate_template('/lib/htaccess.php');        // Rewrites for assets, H5BP .htaccess
 require_once locate_template('/lib/widgets.php');         // Sidebars and widgets
-require_once locate_template('/lib/template-tags.php');   // Template tags
 require_once locate_template('/lib/scripts.php');         // Scripts and stylesheets
 require_once locate_template('/lib/post-types.php');      // Custom post types
 require_once locate_template('/lib/metaboxes.php');       // Custom metaboxes
