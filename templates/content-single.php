@@ -2,7 +2,7 @@
   <article <?php post_class() ?> id="post-<?php the_ID(); ?>">
     <header>
       <h1 class="entry-title"><?php the_title(); ?></h1>
-      <?php roots_entry_meta(); ?>
+      <?php get_template_part('templates/entry-meta'); ?>
     </header>
     <div class="entry-content">
       <?php the_content(); ?>
