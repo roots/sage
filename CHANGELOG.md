@@ -1,6 +1,7 @@
 ### HEAD
 * Move custom entry_meta code into template
 * Move Google Analytics code into footer template
+* Add CONTRIBUTING.md to assist with the new GitHub UI
 * Add nav walker support for CSS dividers and nav-header
 
 ### 6.0.0: September 16th, 2012
