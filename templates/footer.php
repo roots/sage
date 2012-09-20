@@ -3,7 +3,7 @@
   <p>&copy; <?php echo date('Y'); ?> <?php bloginfo('name'); ?></p>
 </footer>
 
-<?php if (GOOGLE_ANALYTICS_ID): ?>
+<?php if (GOOGLE_ANALYTICS_ID) : ?>
 <script>
   var _gaq=[['_setAccount','<?php echo GOOGLE_ANALYTICS_ID; ?>'],['_trackPageview']];
   (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];

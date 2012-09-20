@@ -15,7 +15,7 @@
 
   <?php wp_head(); ?>
 
-  <?php if (has_posts()): ?>
+  <?php if (has_posts()) : ?>
   <link rel="alternate" type="application/rss+xml" title="<?php echo get_bloginfo('name') ?> Feed" href="<?php echo home_url() ?>/feed/">
   <?php endif; ?>
 </head>
