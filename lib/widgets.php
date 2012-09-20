@@ -98,11 +98,7 @@ class Roots_Vcard_Widget extends WP_Widget {
   }
 
   function update($new_instance, $old_instance) {
-    $instance = $old_instance;
-
-    foreach($this->fields as $name => $label) {
-      $instance[$name] = strip_tags($new_instance[$name]);
-    }
+    $instance = array_map('strip_tags', $new_instance);
 
     $this->flush_widget_cache();
 
