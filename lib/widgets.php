@@ -37,7 +37,7 @@ class Roots_Vcard_Widget extends WP_Widget {
     'email'          => 'Email'
   );
 
-  function Roots_Vcard_Widget() {
+  function __construct() {
     $widget_ops = array('classname' => 'widget_roots_vcard', 'description' => __('Use this widget to add a vCard', 'roots'));
 
     $this->WP_Widget('widget_roots_vcard', __('Roots: vCard', 'roots'), $widget_ops);
