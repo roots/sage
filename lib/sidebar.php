@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Determines whether or not to display the sidebar based on an array of conditional tags or page templates.
  *
@@ -35,13 +34,12 @@ class Roots_Sidebar {
   }
 
   private function check_conditional_tag($conditional_tag) {
-    $function = "is_$conditional_tag";
-    return $function();
+    $conditional_tag_function = "is_$conditional_tag";
+    return $conditional_tag_function();
   }
 
   private function check_page_template($page_template) {
     return is_page_template($page_template . self::EXTENSION);
   }
 }
-
 ?>
