@@ -9,18 +9,37 @@ add_theme_support('rewrite-urls');          // Enable URL rewrites
 add_theme_support('h5bp-htaccess');         // Enable HTML5 Boilerplate's .htaccess
 add_theme_support('bootstrap-top-navbar');  // Enable Bootstrap's fixed navbar
 
-// Define which pages shouldn't have the sidebar
-function roots_sidebar() {
-  if (is_404() || is_page_template('page-custom.php')) {
-    return false;
-  } else {
-    return true;
-  }
+
+/**
+ * Define which pages shouldn't have the sidebar
+ *
+ * See lib/sidebar.php for more details
+ */
+function roots_display_sidebar() {
+  $exclude = new Roots_Sidebar(
+    /**
+     * Conditionals tag checks (http://codex.wordpress.org/Conditional_Tags)
+     * Any of these conditional tags that return true won't show the sidebar
+     */
+    array(
+      '404',
+      'front_page'
+    ),
+    /**
+     * Page template checks (via is_page_template())
+     * Any of these page templates that return true won't show the sidebar
+     */
+    array(
+      'page-custom'
+    )
+  );
+
+  return $exclude->display;
 }
 
 // #main CSS classes
 function roots_main_class() {
-  if (roots_sidebar()) {
+  if (roots_display_sidebar()) {
     echo 'span8';
   } else {
     echo 'span12';
