@@ -4,14 +4,13 @@
  *
  * If any of the is_* conditional tags or is_page_template(template_file) checks return true, the sidebar will NOT be displayed.
  *
- * @param array list of conditional tags (http://codex.wordpress.org/Conditional_Tags) without the 'is_' prefix
- * @param array list of templates without the '.php' extension. These will be checked via is_page_template()
+ * @param array list of conditional tags (http://codex.wordpress.org/Conditional_Tags)
+ * @param array list of page templates. These will be checked via is_page_template()
  *
  * @return boolean True will display the sidebar, False will not
  *
  */
 class Roots_Sidebar {
-  const EXTENSION = '.php';
   private $conditionals;
   private $templates;
   public $display = true;
@@ -34,12 +33,11 @@ class Roots_Sidebar {
   }
 
   private function check_conditional_tag($conditional_tag) {
-    $conditional_tag_function = "is_$conditional_tag";
-    return $conditional_tag_function();
+    return $conditional_tag();
   }
 
   private function check_page_template($page_template) {
-    return is_page_template($page_template . self::EXTENSION);
+    return is_page_template($page_template);
   }
 }
 ?>
