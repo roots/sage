@@ -68,8 +68,3 @@ function is_element_empty($element) {
   $element = trim($element);
   return empty($element) ? false : true;
 }
-
-function has_posts() {
-  $count = wp_count_posts('post');
-  return ($count->publish > 0) ? true : false;
-}
