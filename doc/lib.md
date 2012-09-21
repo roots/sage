@@ -51,6 +51,10 @@ This file contains HTML5 Boilerplate's `.htaccess` which is automatically added 
 
 This file handles the clean URL rewrites and HTML5 Boilerplate `.htaccess`. [About the rewrites](rewrites.md).
 
+### init.php
+
+This file runs the initial theme setup and defines helper constants for later use
+
 ### metaboxes.php
 
 This file is a placeholder for you to put in custom metaboxes. We recommend the use of [Custom Metaboxes and Fields for WordPress](https://github.com/jaredatch/Custom-Metaboxes-and-Fields-for-WordPress).
