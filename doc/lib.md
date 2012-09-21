@@ -84,7 +84,7 @@ If you're using LESS, make sure you compile the files to the proper locations:
 JavaScript is loaded in the following order:
 
 1. `/theme/assets/js/vendor/modernizr-2.6.1.min.js` (in `head.php`)
-2. `jquery-1.8.0.min.js` via Google CDN with local fallback (in `head.php`)
+2. `jquery-1.8.2.min.js` via Google CDN with local fallback (in `head.php`)
 3. `/theme/assets/js/plugins.js`
 4. `/theme/assets/js/main.js`
 
