@@ -36,5 +36,13 @@ function roots_sidebar_class() {
 define('GOOGLE_ANALYTICS_ID', ''); // UA-XXXXX-Y
 define('POST_EXCERPT_LENGTH', 40);
 
-// Set the content width based on the theme's design and stylesheet
+/**
+* $content_width is a global variable used by WordPress for max image upload sizes and media embeds (in pixels)
+*
+* Example: If the content area is 640px wide, set $content_width = 620; so images and videos will not overflow.
+*
+* Default: 940px is the default Bootstrap container width.
+*
+* This is not required or used by Roots.
+*/
 if (!isset($content_width)) { $content_width = 940; }
