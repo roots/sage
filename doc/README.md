@@ -15,7 +15,5 @@ Roots is a starting WordPress theme made for developers that’s based on [HTML5
 
 ## Development
 
-* [Contributing to Roots](/retlehs/roots/blob/master/CONTRIBUTING.md) — Guidelines on how to
-  contribute effectively.
-* [Extending and customizing Roots](extend.md) — Going further with
-  Roots.
+* [Contributing to Roots](/retlehs/roots/blob/master/CONTRIBUTING.md) — Guidelines on how to contribute effectively.
+* [Extending and customizing Roots](extend.md) — Going further with Roots.

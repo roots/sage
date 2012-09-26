@@ -1,4 +1,5 @@
 ### HEAD
+* Re-organize configuration/setup files
 * Update to jQuery 1.8.2
 * Refactor/simplify Roots vCard Widget
 * Move custom entry_meta code into template
