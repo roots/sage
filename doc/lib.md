@@ -67,6 +67,10 @@ This file is a placeholder for you to put in [custom post types](http://codex.wo
 
 This file handles all of the CSS and JavaScript. 
 
+### sidebar.php
+
+Class which provides a simple configuration interface to define what pages you want to show the sidebar on.
+
 #### Stylesheets
 
 Stylesheets are enqueued in the following order:

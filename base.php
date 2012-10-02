@@ -17,7 +17,7 @@
       <div id="main" class="<?php roots_main_class(); ?>" role="main">
         <?php include roots_template_path(); ?>
       </div>
-      <?php if (roots_sidebar()) : ?>
+      <?php if (roots_display_sidebar()) : ?>
       <aside id="sidebar" class="<?php roots_sidebar_class(); ?>" role="complementary">
         <?php get_template_part('templates/sidebar'); ?>
       </aside>
