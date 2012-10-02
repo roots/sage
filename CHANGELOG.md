@@ -1,4 +1,4 @@
-### HEAD
+### 6.1.0: October 2nd, 2012
 * Change roots_sidebar into a more explicit configuration array
 * Re-organize configuration/setup files
 * Update to jQuery 1.8.2
