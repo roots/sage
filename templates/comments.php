@@ -17,7 +17,7 @@
       <?php endif; ?>
 
       <section class="comment">
-        <?php comment_text() ?>
+        <?php comment_text(); ?>
       </section>
 
       <?php comment_reply_link(array_merge($args, array('depth' => $depth, 'max_depth' => $args['max_depth']))); ?>
