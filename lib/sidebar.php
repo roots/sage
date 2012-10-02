@@ -13,22 +13,18 @@
 class Roots_Sidebar {
   private $conditionals;
   private $templates;
+
   public $display = true;
 
   function __construct($conditionals = array(), $templates = array()) {
     $this->conditionals = $conditionals;
     $this->templates    = $templates;
 
-    foreach($this->conditionals as $conditional_tag) {
-      if ($this->check_conditional_tag($conditional_tag)) {
-        $this->display = false;
-      }
-    }
+    $conditionals = array_map($this->check_conditional_tag, $this->conditionals);
+    $templates    = array_map($this->check_page_template, $this->templates);
 
-    foreach($this->templates as $page_template) {
-      if ($this->check_page_template($page_template)) {
-        $this->display = false;
-      }
+    if (in_array(true, $conditionals) || in_array(true, $templates)) {
+      $this->display = false;
     }
   }
 

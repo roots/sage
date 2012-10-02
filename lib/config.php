@@ -16,9 +16,9 @@ add_theme_support('bootstrap-top-navbar');  // Enable Bootstrap's fixed navbar
  * See lib/sidebar.php for more details
  */
 function roots_display_sidebar() {
-  $exclude = new Roots_Sidebar(
+  $sidebar_config = new Roots_Sidebar(
     /**
-     * Conditionals tag checks (http://codex.wordpress.org/Conditional_Tags)
+     * Conditional tag checks (http://codex.wordpress.org/Conditional_Tags)
      * Any of these conditional tags that return true won't show the sidebar
      */
     array(
@@ -34,7 +34,7 @@ function roots_display_sidebar() {
     )
   );
 
-  return $exclude->display;
+  return $sidebar_config->display;
 }
 
 // #main CSS classes
