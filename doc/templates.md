@@ -1,11 +1,11 @@
 [Roots Theme homepage](http://www.rootstheme.com/) | [Documentation
-table of contents](README.md)
+table of contents](TOC.md)
 
 # Theme templates
 
 ### comments.php
 
-The comments template wraps each comment in an `<article>` and the vCard microformat is used for comment author information. 
+The comments template wraps each comment in an `<article>` and the vCard microformat is used for comment author information.
 
 ### content.php
 

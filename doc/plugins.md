@@ -1,5 +1,5 @@
 [Roots Theme homepage](http://www.rootstheme.com/) | [Documentation
-table of contents](README.md)
+table of contents](TOC.md)
 
 # Recommended Plugins
 
@@ -10,7 +10,7 @@ table of contents](README.md)
 | [**WordPress SEO**](http://yoast.com/wordpress/seo/) | Yoast's all in one SEO solution: titles, meta descriptions, XML sitemaps, breadcrumbs & more.
 | [**WP Super Cache**](http://wordpress.org/extend/plugins/wp-super-cache/) | WP Super Cache is a static caching plugin that generates HTML files.
 | [**W3 Total Cache**](http://wordpress.org/extend/plugins/w3-total-cache/) | Improve site performance and user experience via caching.
-| [Analytics 360](http://wordpress.org/extend/plugins/analytics360/) | Pull Google Analytics and MailChimp data directly into your dashboard. 
+| [Analytics 360](http://wordpress.org/extend/plugins/analytics360/) | Pull Google Analytics and MailChimp data directly into your dashboard.
 | [Custom Metaboxes & Fields](https://github.com/jaredatch/Custom-Metaboxes-and-Fields-for-WordPress) | Easily create metaboxes with custom fields.
 | [Front-end Editor](http://scribu.net/wordpress/front-end-editor) | A WordPress plugin that enables "edit in place" functionality on your site.
 | [Options Framework](https://github.com/devinsays/options-framework-plugin) | An Options Panel Framework to help speed theme development.

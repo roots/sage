@@ -1,5 +1,5 @@
 [Roots Theme homepage](http://www.rootstheme.com/) | [Documentation
-table of contents](README.md)
+table of contents](TOC.md)
 
 # Rewrites
 
@@ -27,7 +27,7 @@ First remove the `if` statement that wraps everything, since if you're not on Ap
       rewrite ^/plugins/(.*)$ /wp-content/plugins/$1 last;
       break;
     }
-   
+
 ### Lighttpd
 
     url.rewrite-once = (

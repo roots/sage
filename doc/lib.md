@@ -1,5 +1,5 @@
 [Roots Theme homepage](http://www.rootstheme.com/) | [Documentation
-table of contents](README.md)
+table of contents](TOC.md)
 
 # Theme library
 
@@ -65,7 +65,7 @@ This file is a placeholder for you to put in [custom post types](http://codex.wo
 
 ### scripts.php
 
-This file handles all of the CSS and JavaScript. 
+This file handles all of the CSS and JavaScript.
 
 ### sidebar.php
 
@@ -80,7 +80,7 @@ Stylesheets are enqueued in the following order:
 3. `/theme/assets/css/app.css`
 4. `/child-theme/style.css` (if a child theme is activated)
 
-`app.css` should be used for your site specific styling. 
+`app.css` should be used for your site specific styling.
 
 If you're using LESS, make sure you compile the files to the proper locations:
 
@@ -100,7 +100,7 @@ jQuery is loaded in `head.php` using the same method from HTML5 Boilerplate: gra
 
 `plugins.js` contains a minified version of all the latest Bootstrap plugins.
 
-Learn about `plugins.js` and `main.js` in the HTML5 Boilerplate [JavaScript docs](https://github.com/h5bp/html5-boilerplate/blob/master/doc/js.md). 
+Learn about `plugins.js` and `main.js` in the HTML5 Boilerplate [JavaScript docs](https://github.com/h5bp/html5-boilerplate/blob/master/doc/js.md).
 
 ##### jQuery in the footer
 

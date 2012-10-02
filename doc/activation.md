@@ -1,5 +1,5 @@
 [Roots Theme homepage](http://www.rootstheme.com/) | [Documentation
-table of contents](README.md)
+table of contents](TOC.md)
 
 # Theme activation
 
@@ -7,7 +7,7 @@ Theme activation is handled by `lib/activation.php`.
 
 After you activate Roots from the WordPress admin you'll be redirected to an activation options page where you can choose to:
 
-### Create static front page	
+### Create static front page
 
 Create a page called Home and set it to be the static front page. This is normally handled from the Reading settings.
 
