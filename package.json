@@ -1,0 +1,34 @@
+{
+  "name": "roots",
+  "description": "A starting WordPress theme made for developers based on HTML5 Boilerplate & Bootstrap.",
+  "version": "6.1.0",
+  "homepage": "http://www.rootstheme.com/",
+  "author": "Ben Word <ben@benword.com>",
+  "contributors": [
+    {
+      "name": "Scott Walkinshaw",
+      "email": "scott.walkinshaw@gmail.com"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/retlehs/roots.git"
+  },
+  "bugs": {
+    "url" : "https://github.com/retlehs/roots/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/retlehs/roots/blob/master/LICENSE.md"
+    }
+  ],
+  "dependencies": {
+    "grunt": "~0.3.15",
+    "grunt-contrib": "~0.2.0",
+    "grunt-recess": "~0.1.1",
+    "uglify-js": "~1.3.3",
+    "jshint": "~0.5.9"
+  },
+  "devDependencies": {}
+}
