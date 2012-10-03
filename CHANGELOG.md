@@ -1,3 +1,6 @@
+### HEAD
+* Move nav customizations into `lib/nav.php`
+
 ### 6.1.0: October 2nd, 2012
 * Change roots_sidebar into a more explicit configuration array
 * Re-organize configuration/setup files
