@@ -20,6 +20,12 @@ function roots_display_sidebar() {
     /**
      * Conditional tag checks (http://codex.wordpress.org/Conditional_Tags)
      * Any of these conditional tags that return true won't show the sidebar
+     *
+     * To use a function that requires parameters, use the following format:
+     *
+     * array('function_name', array('arg1', 'arg2'))
+     *
+     * The second element must be an array even if there's only 1 argument.
      */
     array(
       'is_404',

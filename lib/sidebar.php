@@ -29,7 +29,11 @@ class Roots_Sidebar {
   }
 
   private function check_conditional_tag($conditional_tag) {
-    return $conditional_tag();
+    if (is_array($conditional_tag)) {
+      return call_user_func_array($conditional_tag[0], $conditional_tag[1]);
+    } else {
+      return $conditional_tag();
+    }
   }
 
   private function check_page_template($page_template) {
