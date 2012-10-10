@@ -1,4 +1,5 @@
 ### HEAD
+* Return instead of echo class names in `roots_main_class` and `roots_sidebar_class`
 * Move nav customizations into `lib/nav.php`
 
 ### 6.1.0: October 2nd, 2012
