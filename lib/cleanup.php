@@ -160,7 +160,7 @@ function roots_fix_duplicate_subfolder_urls($input) {
   $output = roots_root_relative_url($input);
   preg_match_all('!([^/]+)/([^/]+)!', $output, $matches);
 
-  if (isset($matches[1]) && isset($matches[2])) {
+  if (isset($matches[1][0]) && isset($matches[2][0])) {
     if ($matches[1][0] === $matches[2][0]) {
       $output = substr($output, strlen($matches[1][0]) + 1);
     }
