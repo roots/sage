@@ -9,7 +9,9 @@ Roots is a starting WordPress theme made for developers that’s based on [HTML5
 
 ## Configuration
 
-Edit `lib/config.php` to enable support for major functionality and to define constants that are used throughout the theme.
+Edit `lib/config.php` to enable or disable support for various theme functions and to define constants that are used throughout the theme.
+
+Edit `lib/init.php` to setup custom navigation menus and post thumbnail sizes.
 
 ## Documentation
 
@@ -37,12 +39,12 @@ Everyone is welcome to help [contribute](/retlehs/roots/blob/master/CONTRIBUTING
 * Writing or editing [docs](/retlehs/roots/blob/master/doc/TOC.md)
 * Writing or refactoring code
 * Fixing [issues](https://github.com/retlehs/roots/issues)
-* Replying to questions on the [mailing list](http://groups.google.com/group/roots-theme)
+* Replying to questions on the [Google Group](http://groups.google.com/group/roots-theme)
 
 ## Project information
 
 * Source: [https://github.com/retlehs/roots](https://github.com/retlehs/roots)
 * Web: [http://www.rootstheme.com/](http://www.rootstheme.com/)
-* Mailing list: [http://groups.google.com/group/roots-theme](http://groups.google.com/group/roots-theme)
-* Twitter: [@retlehs](https://twitter.com/#!/retlehs)
+* Google Group: [http://groups.google.com/group/roots-theme](http://groups.google.com/group/roots-theme)
+* Twitter Updates: [@retlehs](https://twitter.com/#!/retlehs)
 * Contributors: [https://github.com/retlehs/roots/contributors](https://github.com/retlehs/roots/contributors)
