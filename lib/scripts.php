@@ -16,8 +16,6 @@
  */
 
 function bc_core_scripts() {
-  wp_enqueue_style('bc_core_bootstrap', get_template_directory_uri() . '/assets/css/bootstrap.css', false, null);
-  wp_enqueue_style('bc_core_bootstrap_responsive', get_template_directory_uri() . '/assets/css/bootstrap-responsive.css', array('bc_core_bootstrap'), null);
   wp_enqueue_style('bc_core_app', get_template_directory_uri() . '/assets/css/app.css', false, null);
 
   // Load style.css from child theme
