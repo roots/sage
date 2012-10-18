@@ -12,8 +12,26 @@ function bc_core_widgets_init() {
   ));
 
   register_sidebar(array(
-    'name'          => __('Footer', 'bc_core'),
-    'id'            => 'sidebar-footer',
+    'name'          => __('Footer Left', 'bc_core'),
+    'id'            => 'sidebar-footer-left',
+    'before_widget' => '<section id="%1$s" class="widget %2$s"><div class="widget-inner">',
+    'after_widget'  => '</div></section>',
+    'before_title'  => '<h3>',
+    'after_title'   => '</h3>',
+  ));
+
+  register_sidebar(array(
+    'name'          => __('Footer Center', 'bc_core'),
+    'id'            => 'sidebar-footer-center',
+    'before_widget' => '<section id="%1$s" class="widget %2$s"><div class="widget-inner">',
+    'after_widget'  => '</div></section>',
+    'before_title'  => '<h3>',
+    'after_title'   => '</h3>',
+  ));
+
+  register_sidebar(array(
+    'name'          => __('Footer Right', 'bc_core'),
+    'id'            => 'sidebar-footer-right',
     'before_widget' => '<section id="%1$s" class="widget %2$s"><div class="widget-inner">',
     'after_widget'  => '</div></section>',
     'before_title'  => '<h3>',
