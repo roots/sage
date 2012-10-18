@@ -6,11 +6,11 @@
  * @link http://scribu.net/wordpress/theme-wrappers.html
  */
 
-function roots_template_path() {
-  return Roots_Wrapping::$main_template;
+function bc_core_template_path() {
+  return BC_core_Wrapping::$main_template;
 }
 
-class Roots_Wrapping {
+class BC_core_Wrapping {
 
   // Stores the full path to the main template file
   static $main_template;
@@ -37,7 +37,7 @@ class Roots_Wrapping {
   }
 }
 
-add_filter('template_include', array('Roots_Wrapping', 'wrap'), 99);
+add_filter('template_include', array('BC_core_Wrapping', 'wrap'), 99);
 
 // returns WordPress subdirectory if applicable
 function wp_base_dir() {

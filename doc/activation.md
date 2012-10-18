@@ -1,11 +1,11 @@
-[Roots Theme homepage](http://www.rootstheme.com/) | [Documentation
+[BC_core Theme homepage](http://www.bc_coretheme.com/) | [Documentation
 table of contents](TOC.md)
 
 # Theme activation
 
 Theme activation is handled by `lib/activation.php`.
 
-After you activate Roots from the WordPress admin you'll be redirected to an activation options page where you can choose to:
+After you activate BC_core from the WordPress admin you'll be redirected to an activation options page where you can choose to:
 
 ### Create static front page
 

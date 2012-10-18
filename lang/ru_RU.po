@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: roots-russian\n"
+"Project-Id-Version: bc_core-russian\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-04-13 16:17-0300\n"
 "PO-Revision-Date: 2012-07-09 18:43+0400\n"
@@ -193,134 +193,134 @@ msgstr "Поиск:"
 msgid "Search"
 msgstr "Поиск"
 
-#: inc/roots-activation.php:32
-#: inc/roots-activation.php:33
+#: inc/bc_core-activation.php:32
+#: inc/bc_core-activation.php:33
 msgid "Theme Activation"
 msgstr "Активация темы"
 
-#: inc/roots-activation.php:70
+#: inc/bc_core-activation.php:70
 #, php-format
 msgid "%s Theme Activation"
 msgstr "%s Активация темы"
 
-#: inc/roots-activation.php:85
-#: inc/roots-activation.php:87
+#: inc/bc_core-activation.php:85
+#: inc/bc_core-activation.php:87
 msgid "Create static front page?"
 msgstr "Создать статичную первую страницу?"
 
-#: inc/roots-activation.php:89
-#: inc/roots-activation.php:102
-#: inc/roots-activation.php:115
-#: inc/roots-activation.php:128
-#: inc/roots-activation.php:141
+#: inc/bc_core-activation.php:89
+#: inc/bc_core-activation.php:102
+#: inc/bc_core-activation.php:115
+#: inc/bc_core-activation.php:128
+#: inc/bc_core-activation.php:141
 msgid "Yes"
 msgstr "Да"
 
-#: inc/roots-activation.php:90
-#: inc/roots-activation.php:103
-#: inc/roots-activation.php:116
-#: inc/roots-activation.php:129
-#: inc/roots-activation.php:142
+#: inc/bc_core-activation.php:90
+#: inc/bc_core-activation.php:103
+#: inc/bc_core-activation.php:116
+#: inc/bc_core-activation.php:129
+#: inc/bc_core-activation.php:142
 msgid "No"
 msgstr "Нет"
 
-#: inc/roots-activation.php:93
+#: inc/bc_core-activation.php:93
 msgid "Create a page called Home and set it to be the static front page"
 msgstr "Создать страницу Home и установить её как статичную первую страницу"
 
-#: inc/roots-activation.php:98
+#: inc/bc_core-activation.php:98
 msgid "Change permalink structure?"
 msgstr "Изменить структуру постоянных ссылок?"
 
-#: inc/roots-activation.php:100
+#: inc/bc_core-activation.php:100
 msgid "Update permalink structure?"
 msgstr "Обновить структуру постоянных ссылок?"
 
-#: inc/roots-activation.php:106
+#: inc/bc_core-activation.php:106
 msgid "Change permalink structure to /&#37;postname&#37;/"
 msgstr "Изменение структуры постоянных ссылок на /&#37;postname&#37;/"
 
-#: inc/roots-activation.php:111
+#: inc/bc_core-activation.php:111
 msgid "Change uploads folder?"
 msgstr "Изменить папку загрузки?"
 
-#: inc/roots-activation.php:113
+#: inc/bc_core-activation.php:113
 msgid "Update uploads folder?"
 msgstr "Обновить папку загрузки?"
 
-#: inc/roots-activation.php:119
+#: inc/bc_core-activation.php:119
 msgid "Change uploads folder to /assets/ instead of /wp-content/uploads/"
 msgstr "Поменять папку загрузки на /assets/ с /wp-content/uploads/"
 
-#: inc/roots-activation.php:124
-#: inc/roots-activation.php:126
+#: inc/bc_core-activation.php:124
+#: inc/bc_core-activation.php:126
 msgid "Create navigation menu?"
 msgstr "Создать меню навигации?"
 
-#: inc/roots-activation.php:132
+#: inc/bc_core-activation.php:132
 msgid "Create the Primary Navigation menu and set the location"
 msgstr "Создать меню навигации Primary Navigation"
 
-#: inc/roots-activation.php:137
-#: inc/roots-activation.php:139
+#: inc/bc_core-activation.php:137
+#: inc/bc_core-activation.php:139
 msgid "Add pages to menu?"
 msgstr "Добавить страницу в меню?"
 
-#: inc/roots-activation.php:145
+#: inc/bc_core-activation.php:145
 msgid "Add all current published pages to the Primary Navigation"
 msgstr "Добавить все опубликованные страницы в меню навигации Primary Navigation"
 
-#: inc/roots-cleanup.php:370
+#: inc/bc_core-cleanup.php:370
 msgid "Continued"
 msgstr "Продолжающийся"
 
-#: inc/roots-cleanup.php:538
+#: inc/bc_core-cleanup.php:538
 #, php-format
 msgid "Please update your <a href=\"%s\">site tagline</a> <a href=\"%s\" style=\"float: right;\">Hide Notice</a>"
 msgstr "Пожалуйста, обновите ваш <a href=\"%s\">лозунг для сайта</ a> <a href=\"%s\" style=\"float: right;\">Скрыть замечание</a>"
 
-#: inc/roots-htaccess.php:11
+#: inc/bc_core-htaccess.php:11
 #, php-format
 msgid "Please make sure your <a href=\"%s\">.htaccess</a> file is writable "
 msgstr "Убедитесь, что файл <a href=\"%s\">.htaccess</a> доступен для записи"
 
-#: inc/roots-widgets.php:5
+#: inc/bc_core-widgets.php:5
 msgid "Use this widget to add a vCard"
 msgstr "Используйте этот виджет для добавления vCard"
 
-#: inc/roots-widgets.php:6
-msgid "Roots: vCard"
+#: inc/bc_core-widgets.php:6
+msgid "BC_core: vCard"
 msgstr ""
 
-#: inc/roots-widgets.php:33
+#: inc/bc_core-widgets.php:33
 msgid "vCard"
 msgstr ""
 
-#: inc/roots-widgets.php:99
+#: inc/bc_core-widgets.php:99
 msgid "Title (optional):"
 msgstr "Заголовок (необязательно):"
 
-#: inc/roots-widgets.php:103
+#: inc/bc_core-widgets.php:103
 msgid "Street Address:"
 msgstr "Адрес:"
 
-#: inc/roots-widgets.php:107
+#: inc/bc_core-widgets.php:107
 msgid "City/Locality:"
 msgstr "Город/Населенный пункт:"
 
-#: inc/roots-widgets.php:111
+#: inc/bc_core-widgets.php:111
 msgid "State/Region:"
 msgstr "Штат/Регион:"
 
-#: inc/roots-widgets.php:115
+#: inc/bc_core-widgets.php:115
 msgid "Zipcode/Postal Code:"
 msgstr "Почтовый индекс:"
 
-#: inc/roots-widgets.php:119
+#: inc/bc_core-widgets.php:119
 msgid "Telephone:"
 msgstr "Телефон:"
 
-#: inc/roots-widgets.php:123
+#: inc/bc_core-widgets.php:123
 msgid "Email:"
 msgstr "Почта:"
 

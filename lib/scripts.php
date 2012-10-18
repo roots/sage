@@ -15,14 +15,14 @@
  * 4. /theme/assets/js/main.js
  */
 
-function roots_scripts() {
-  wp_enqueue_style('roots_bootstrap', get_template_directory_uri() . '/assets/css/bootstrap.css', false, null);
-  wp_enqueue_style('roots_bootstrap_responsive', get_template_directory_uri() . '/assets/css/bootstrap-responsive.css', array('roots_bootstrap'), null);
-  wp_enqueue_style('roots_app', get_template_directory_uri() . '/assets/css/app.css', false, null);
+function bc_core_scripts() {
+  wp_enqueue_style('bc_core_bootstrap', get_template_directory_uri() . '/assets/css/bootstrap.css', false, null);
+  wp_enqueue_style('bc_core_bootstrap_responsive', get_template_directory_uri() . '/assets/css/bootstrap-responsive.css', array('bc_core_bootstrap'), null);
+  wp_enqueue_style('bc_core_app', get_template_directory_uri() . '/assets/css/app.css', false, null);
 
   // Load style.css from child theme
   if (is_child_theme()) {
-    wp_enqueue_style('roots_child', get_stylesheet_uri(), false, null);
+    wp_enqueue_style('bc_core_child', get_stylesheet_uri(), false, null);
   }
 
   // jQuery is loaded in header.php using the same method from HTML5 Boilerplate:
@@ -37,10 +37,10 @@ function roots_scripts() {
     wp_enqueue_script('comment-reply');
   }
 
-  wp_register_script('roots_plugins', get_template_directory_uri() . '/assets/js/plugins.js', false, null, false);
-  wp_register_script('roots_main', get_template_directory_uri() . '/assets/js/main.js', false, null, false);
-  wp_enqueue_script('roots_plugins');
-  wp_enqueue_script('roots_main');
+  wp_register_script('bc_core_plugins', get_template_directory_uri() . '/assets/js/plugins.js', false, null, false);
+  wp_register_script('bc_core_main', get_template_directory_uri() . '/assets/js/main.js', false, null, false);
+  wp_enqueue_script('bc_core_plugins');
+  wp_enqueue_script('bc_core_main');
 }
 
-add_action('wp_enqueue_scripts', 'roots_scripts', 100);
+add_action('wp_enqueue_scripts', 'bc_core_scripts', 100);

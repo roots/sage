@@ -18,19 +18,19 @@ msgid " (required)"
 msgstr "Bắt buộc"
 
 #. Text in echo
-#: inc/roots-options.php:260
+#: inc/bc_core-options.php:260
 msgid "#fullwidth CSS Classes"
 msgstr "#Thuộc tính fullwidth CSS"
 
 #. Text in echo
-#: inc/roots-options.php:238
-#: inc/roots-options.php:240
+#: inc/bc_core-options.php:238
+#: inc/bc_core-options.php:240
 msgid "#main CSS Classes"
 msgstr "#Thuộc tính main CSS"
 
 #. Text in echo
-#: inc/roots-options.php:248
-#: inc/roots-options.php:250
+#: inc/bc_core-options.php:248
+#: inc/bc_core-options.php:250
 msgid "#sidebar CSS Classes"
 msgstr "#Thuộc tính sidebar CSS"
 
@@ -40,12 +40,12 @@ msgid "%1$s"
 msgstr "%1$s"
 
 #. Text in function
-#: inc/roots-activation.php:70
+#: inc/bc_core-activation.php:70
 msgid "%s Theme Activation"
 msgstr "%s kích hoạt giao diện"
 
 #. Text in function
-#: inc/roots-options.php:214
+#: inc/bc_core-options.php:214
 msgid "%s Theme Options"
 msgstr "%s tùy chọn giao diện"
 
@@ -65,22 +65,22 @@ msgid "(Edit)"
 msgstr "(Chỉnh sửa)"
 
 #. Text in function
-#: inc/roots-options.php:1
+#: inc/bc_core-options.php:1
 msgid "1140"
 msgstr "1140"
 
 #. Text in function
-#: inc/roots-options.php:1
+#: inc/bc_core-options.php:1
 msgid "960gs (12 cols)"
 msgstr "960gs (12 cột)"
 
 #. Text in function
-#: inc/roots-options.php:1
+#: inc/bc_core-options.php:1
 msgid "960gs (16 cols)"
 msgstr "960gs (16 cột)"
 
 #. Text in function
-#: inc/roots-options.php:1
+#: inc/bc_core-options.php:1
 msgid "960gs (24 cols)"
 msgstr "960gs (24 cột)"
 
@@ -90,18 +90,18 @@ msgid "<cite class=\"fn\">%s</cite>"
 msgstr "<cite class=\"fn\">%s</cite>"
 
 #. Text in function
-#: inc/roots-options.php:1
+#: inc/bc_core-options.php:1
 msgid "Adapt.js"
 msgstr "Adapt.js"
 
 #. Text in function
-#: inc/roots-activation.php:145
+#: inc/bc_core-activation.php:145
 msgid "Add all current published pages to the Primary Navigation"
 msgstr "Thêm tất cả các trang hiện có vào Danh mục định hướng chính"
 
 #. Text in echo
-#: inc/roots-activation.php:137
-#: inc/roots-activation.php:139
+#: inc/bc_core-activation.php:137
+#: inc/bc_core-activation.php:139
 msgid "Add pages to menu?"
 msgstr "Thêm các trang vào trình đơn?"
 
@@ -111,48 +111,48 @@ msgid "Author Archives: %s"
 msgstr "Mục lưu trữ của tác giả: %s"
 
 #. Text in function
-#: inc/roots-options.php:1
+#: inc/bc_core-options.php:1
 msgid "Blueprint CSS"
 msgstr "Blueprint CSS"
 
 #. Text in function
-#: inc/roots-options.php:1
+#: inc/bc_core-options.php:1
 msgid "Bootstrap"
 msgstr "Bootstrap"
 
 #. Text in echo
-#: inc/roots-options.php:282
+#: inc/bc_core-options.php:282
 msgid "Bootstrap Javascript Packages"
 msgstr "Gói Javascript của Bootstrap"
 
 #. Text in function
-#: inc/roots-options.php:1
+#: inc/bc_core-options.php:1
 msgid "Bootstrap w/ Less"
 msgstr "Bootstrap w/ Less"
 
 #. Text in echo
-#: inc/roots-options.php:226
-#: inc/roots-options.php:228
+#: inc/bc_core-options.php:226
+#: inc/bc_core-options.php:228
 msgid "CSS Grid Framework"
 msgstr "CSS Grid Framework"
 
 #. Text in function
-#: inc/roots-activation.php:106
+#: inc/bc_core-activation.php:106
 msgid "Change permalink structure to /&#37;postname&#37;/"
 msgstr "Thay đổi cấu trúc liên kết tĩnh thành /&#37;postname&#37;/"
 
 #. Text in echo
-#: inc/roots-activation.php:98
+#: inc/bc_core-activation.php:98
 msgid "Change permalink structure?"
 msgstr "Thay đổi cấu trúc liên kết tĩnh?"
 
 #. Text in function
-#: inc/roots-activation.php:119
+#: inc/bc_core-activation.php:119
 msgid "Change uploads folder to /assets/ instead of /wp-content/uploads/"
 msgstr "Thay đổi thư mục tải lên thành /assets/ thay vì /wp-content/uploads/"
 
 #. Text in echo
-#: inc/roots-activation.php:111
+#: inc/bc_core-activation.php:111
 msgid "Change uploads folder?"
 msgstr "Thay đổi thư mục tải lên?"
 
@@ -162,13 +162,13 @@ msgid "Check your spelling"
 msgstr "Kiểm tra chính tả"
 
 #. Text in echo
-#: inc/roots-widgets.php:107
+#: inc/bc_core-widgets.php:107
 msgid "City/Locality:"
 msgstr "Thành phố/Địa phương:"
 
 #. Text in echo
-#: inc/roots-options.php:315
-#: inc/roots-options.php:317
+#: inc/bc_core-options.php:315
+#: inc/bc_core-options.php:317
 msgid "Cleanup Menu Output"
 msgstr "Dọn dẹp đầu ra của trình đơn"
 
@@ -189,29 +189,29 @@ msgid "Comments are closed."
 msgstr "Mục bình luận đã bị đóng."
 
 #. Text in function
-#: inc/roots-cleanup.php:1
+#: inc/bc_core-cleanup.php:1
 msgid "Continued"
 msgstr "Tiếp tục"
 
 #. Text in function
-#: inc/roots-activation.php:93
+#: inc/bc_core-activation.php:93
 msgid "Create a page called Home and set it to be the static front page"
 msgstr "Tạo một trang với tên là Home và thiết lập thành trang chủ tĩnh"
 
 #. Text in echo
-#: inc/roots-activation.php:124
-#: inc/roots-activation.php:126
+#: inc/bc_core-activation.php:124
+#: inc/bc_core-activation.php:126
 msgid "Create navigation menus?"
 msgstr "Tạo các trình đơn định hướng?"
 
 #. Text in echo
-#: inc/roots-activation.php:85
-#: inc/roots-activation.php:87
+#: inc/bc_core-activation.php:85
+#: inc/bc_core-activation.php:87
 msgid "Create static front page?"
 msgstr "Tạo trang chủ tĩnh?"
 
 #. Text in function
-#: inc/roots-activation.php:132
+#: inc/bc_core-activation.php:132
 msgid "Create the Primary and Utility Navigation menus and set their locations"
 msgstr "Tạo các danh mục trình đơn định hướng chính và tiện túc sau đó thiết lập vị trí của chúng"
 
@@ -221,9 +221,9 @@ msgid "Daily Archives: %s"
 msgstr "Phần lưu trữ hàng ngày: %s"
 
 #. Text in echo
-#: inc/roots-options.php:243
-#: inc/roots-options.php:253
-#: inc/roots-options.php:263
+#: inc/bc_core-options.php:243
+#: inc/bc_core-options.php:253
+#: inc/bc_core-options.php:263
 msgid "Default:"
 msgstr "Mặc định:"
 
@@ -233,23 +233,23 @@ msgid "Email (will not be published)"
 msgstr "Địa chỉ Email (sẽ không được công khai)"
 
 #. Text in echo
-#: inc/roots-widgets.php:123
+#: inc/bc_core-widgets.php:123
 msgid "Email:"
 msgstr "Địa chỉ email:"
 
 #. Text in echo
-#: inc/roots-options.php:284
+#: inc/bc_core-options.php:284
 msgid "Enable Bootstrap Javascript"
 msgstr "Kích hoạt Bootstrap Javascript"
 
 #. Text in echo
-#: inc/roots-options.php:304
-#: inc/roots-options.php:306
+#: inc/bc_core-options.php:304
+#: inc/bc_core-options.php:306
 msgid "Enable Root Relative URLs"
 msgstr "Kích hoạt Root URLs tương đối"
 
 #. Text in function
-#: inc/roots-options.php:299
+#: inc/bc_core-options.php:299
 msgid "Enter your UA-XXXXX-X ID"
 msgstr "Nhập ID UA-XXXXX-X của bạn"
 
@@ -259,18 +259,18 @@ msgid "File Not Found"
 msgstr "Tập tin không tồn tại"
 
 #. Text in function
-#: inc/roots-options.php:1
+#: inc/bc_core-options.php:1
 msgid "Foundation"
 msgstr "Foundation"
 
 #. Text in echo
-#: inc/roots-options.php:258
+#: inc/bc_core-options.php:258
 msgid "Full Width CSS Classes"
 msgstr "Thuộc tính CSS rộng hoàn toàn"
 
 #. Text in echo
-#: inc/roots-options.php:294
-#: inc/roots-options.php:296
+#: inc/bc_core-options.php:294
+#: inc/bc_core-options.php:296
 msgid "Google Analytics ID"
 msgstr "Google Analytics ID"
 
@@ -290,7 +290,7 @@ msgid "Leave a Reply to %s"
 msgstr "Gửi phản hồi cho %s"
 
 #. Text in function
-#: inc/roots-options.php:1
+#: inc/bc_core-options.php:1
 msgid "Less Framework 4"
 msgstr "Less Framework 4"
 
@@ -330,16 +330,16 @@ msgid "Newer posts &rarr;"
 msgstr "Bài viết mới hơn  &rarr;"
 
 #. Text in echo
-#: inc/roots-activation.php:142
-#: inc/roots-options.php:274
-#: inc/roots-options.php:287
-#: inc/roots-options.php:309
-#: inc/roots-options.php:320
+#: inc/bc_core-activation.php:142
+#: inc/bc_core-options.php:274
+#: inc/bc_core-options.php:287
+#: inc/bc_core-options.php:309
+#: inc/bc_core-options.php:320
 msgid "No"
 msgstr "Không"
 
 #. Text in function
-#: inc/roots-options.php:1
+#: inc/bc_core-options.php:1
 msgid "None"
 msgstr "Trống rỗng"
 
@@ -350,7 +350,7 @@ msgid "Pages:"
 msgstr "Các trang:"
 
 #. Text in function
-#: inc/roots-htaccess.php:1
+#: inc/bc_core-htaccess.php:1
 msgid "Please make sure your <a href=\"%s\">.htaccess</a> file is writable "
 msgstr "Hãy chắc chắn rằng <a href=\"%s\">.htaccess</a> có quyền ghi"
 
@@ -360,7 +360,7 @@ msgid "Please try the following:"
 msgstr "Hãy thử làm như sau:"
 
 #. Text in function
-#: inc/roots-cleanup.php:1
+#: inc/bc_core-cleanup.php:1
 msgid "Please update your <a href=\"%s\">site tagline</a> <a href=\"%s\" style=\"float: right;\">Hide Notice</a>"
 msgstr "Vui lòng cập nhập <a href=\"%s\">Slogan của trang</a> <a href=\"%s\" style=\"float: right;\">Ẩn thông báo này</a>"
 
@@ -380,9 +380,9 @@ msgid "Return to the <a href=\"%s\">home page</a>"
 msgstr "Quay trở về <a href=\"%s\">trang chủ</a>"
 
 #. Text in function
-#: inc/roots-widgets.php:1
-msgid "Roots: vCard"
-msgstr "Roots: vCard"
+#: inc/bc_core-widgets.php:1
+msgid "BC_core: vCard"
+msgstr "BC_core: vCard"
 
 #. Text in echo
 #: searchform.php:3
@@ -406,12 +406,12 @@ msgid "Sorry, no results were found."
 msgstr "Xin lỗi, không tìm thấy kết quả"
 
 #. Text in echo
-#: inc/roots-widgets.php:111
+#: inc/bc_core-widgets.php:111
 msgid "State/Region:"
 msgstr "Bang/Khu vực:"
 
 #. Text in echo
-#: inc/roots-widgets.php:103
+#: inc/bc_core-widgets.php:103
 msgid "Street Address:"
 msgstr "Địa chỉ:"
 
@@ -421,7 +421,7 @@ msgid "Submit Comment"
 msgstr "Thêm bình luận"
 
 #. Text in echo
-#: inc/roots-widgets.php:119
+#: inc/bc_core-widgets.php:119
 msgid "Telephone:"
 msgstr "Số điện thoại:"
 
@@ -431,12 +431,12 @@ msgid "The page you are looking for might have been removed, had its name change
 msgstr "Trang bạn đang tìm có thể đã được gỡ bỏ, đổi tên hoặc tạm thời không thể truy cập."
 
 #. Text in function
-#: inc/roots-activation.php:1
+#: inc/bc_core-activation.php:1
 msgid "Theme Activation"
 msgstr "Kích hoạt giao diện"
 
 #. Text in function
-#: inc/roots-options.php:1
+#: inc/bc_core-options.php:1
 msgid "Theme Options"
 msgstr "Thiết lập giao diện"
 
@@ -446,22 +446,22 @@ msgid "This post is password protected. Enter the password to view comments."
 msgstr "Bài viết này được bảo vệ bằng mật khẩu. Nhập mật khẩu để đăng bình luận."
 
 #. Text in echo
-#: inc/roots-widgets.php:99
+#: inc/bc_core-widgets.php:99
 msgid "Title (optional):"
 msgstr "Tiêu đề (không bắt buộc):"
 
 #. Text in echo
-#: inc/roots-activation.php:100
+#: inc/bc_core-activation.php:100
 msgid "Update permalink structure?"
 msgstr "Cập nhập cấu trúc đường dẫn tĩnh?"
 
 #. Text in echo
-#: inc/roots-activation.php:113
+#: inc/bc_core-activation.php:113
 msgid "Update uploads folder?"
 msgstr "Cập nhập thư mục tải lên?"
 
 #. Text in function
-#: inc/roots-widgets.php:1
+#: inc/bc_core-widgets.php:1
 msgid "Use this widget to add a vCard"
 msgstr "Sử dụng widget để thêm vCard"
 
@@ -486,11 +486,11 @@ msgid "Yearly Archives: %s"
 msgstr "Phần lưu trữ hàng năm: %s"
 
 #. Text in echo
-#: inc/roots-activation.php:141
-#: inc/roots-options.php:273
-#: inc/roots-options.php:286
-#: inc/roots-options.php:308
-#: inc/roots-options.php:319
+#: inc/bc_core-activation.php:141
+#: inc/bc_core-options.php:273
+#: inc/bc_core-options.php:286
+#: inc/bc_core-options.php:308
+#: inc/bc_core-options.php:319
 msgid "Yes"
 msgstr "Có"
 
@@ -505,12 +505,12 @@ msgid "Your comment is awaiting moderation."
 msgstr "Bình luận của bạn đang chờ kiểm duyệt."
 
 #. Text in echo
-#: inc/roots-widgets.php:115
+#: inc/bc_core-widgets.php:115
 msgid "Zipcode/Postal Code:"
 msgstr "Zipcode/Postal Code:"
 
 #. Text in function
-#: inc/roots-widgets.php:1
+#: inc/bc_core-widgets.php:1
 msgid "vCard"
 msgstr "vCard"
 

@@ -1,16 +1,16 @@
-[Roots Theme homepage](http://www.rootstheme.com/) | [Documentation
+[BC_core Theme homepage](http://www.bc_coretheme.com/) | [Documentation
 table of contents](TOC.md)
 
 # Usage
 
-The HTML, CSS and JavaScript in Roots comes from a combination of HTML5 Boilerplate and Twitter Bootstrap.
+The HTML, CSS and JavaScript in BC_core comes from a combination of HTML5 Boilerplate and Twitter Bootstrap.
 
 * [HTML5 Boilerplate documentation](https://github.com/h5bp/html5-boilerplate/blob/master/doc/README.md)
 * [Twitter Bootstrap documentation](http://twitter.github.com/bootstrap/getting-started.html)
 
 ## Basic structure
 
-A basic Roots theme initially looks like this:
+A basic BC_core theme initially looks like this:
 
 ```
 .
@@ -32,7 +32,7 @@ A basic Roots theme initially looks like this:
 │           └── modernizr-2.6.1.min.js
 ├── doc
 ├── lang
-│   └── roots.pot
+│   └── bc_core.pot
 ├── lib
 │   ├── actions.php
 │   ├── activation.php
@@ -90,7 +90,7 @@ The files and directory structure are adopted from [HTML5 Boilerplate's JavaScri
 
 ### doc/
 
-This directory contains all the Roots documentation. You can use it
+This directory contains all the BC_core documentation. You can use it
 as the location and basis for your own project's documentation.
 
 ### lang/
@@ -129,7 +129,7 @@ This file is used to serve the page template.
 
 ### page-custom.php
 
-An example of a custom page template. By default, this page is full width and doesn't contain a sidebar as defined in `lib/config.php`'s `roots_sidebar()` function.
+An example of a custom page template. By default, this page is full width and doesn't contain a sidebar as defined in `lib/config.php`'s `bc_core_sidebar()` function.
 
 ### single.php
 

@@ -18,14 +18,14 @@ msgid " (required)"
 msgstr "(pakollinen)"
 
 #. Text in echo
-#: inc/roots-options.php:127
-#: inc/roots-options.php:129
+#: inc/bc_core-options.php:127
+#: inc/bc_core-options.php:129
 msgid "#main CSS Classes"
 msgstr "#main CSS-luokat"
 
 #. Text in echo
-#: inc/roots-options.php:137
-#: inc/roots-options.php:139
+#: inc/bc_core-options.php:137
+#: inc/bc_core-options.php:139
 msgid "#sidebar CSS Classes"
 msgstr "#sidebar CSS-luokat"
 
@@ -40,7 +40,7 @@ msgid "%1$s"
 msgstr "%1$s"
 
 #. Text in function
-#: inc/roots-options.php:94
+#: inc/bc_core-options.php:94
 msgid "%s Theme Options"
 msgstr "%s-teeman asetukset"
 
@@ -61,22 +61,22 @@ msgid "(Edit)"
 msgstr "(muokkaa)"
 
 #. Text in function
-#: inc/roots-options.php:1
+#: inc/bc_core-options.php:1
 msgid "1140"
 msgstr "1140"
 
 #. Text in function
-#: inc/roots-options.php:1
+#: inc/bc_core-options.php:1
 msgid "960gs (12 cols)"
 msgstr "960gs (12 palstaa)"
 
 #. Text in function
-#: inc/roots-options.php:1
+#: inc/bc_core-options.php:1
 msgid "960gs (16 cols)"
 msgstr "960gs (16 palstaa)"
 
 #. Text in function
-#: inc/roots-options.php:1
+#: inc/bc_core-options.php:1
 msgid "960gs (24 cols)"
 msgstr "960gs (24 palstaa)"
 
@@ -86,7 +86,7 @@ msgid "<cite class=\"fn\">%s</cite>"
 msgstr "<cite class=\"fn\">%s</cite>"
 
 #. Text in function
-#: inc/roots-options.php:1
+#: inc/bc_core-options.php:1
 msgid "Adapt.js"
 msgstr "Adapt.js"
 
@@ -96,13 +96,13 @@ msgid "Archives"
 msgstr "Arkistot"
 
 #. Text in function
-#: inc/roots-options.php:1
+#: inc/bc_core-options.php:1
 msgid "Blueprint CSS"
 msgstr "Blueprint CSS"
 
 #. Text in echo
-#: inc/roots-options.php:106
-#: inc/roots-options.php:108
+#: inc/bc_core-options.php:106
+#: inc/bc_core-options.php:108
 msgid "CSS Grid Framework"
 msgstr "CSS Grid runkorakenne"
 
@@ -112,7 +112,7 @@ msgid "Check your spelling"
 msgstr "Tarkista oikeinkirjoitus"
 
 #. Text in echo
-#: inc/roots-widgets.php:61
+#: inc/bc_core-widgets.php:61
 msgid "City/Locality:"
 msgstr "Kaupunki/Sijainti:"
 
@@ -132,13 +132,13 @@ msgid "Comments are closed."
 msgstr "Kommentit ovat suljettu."
 
 #. Text in function
-#: inc/roots-cleanup.php:1
+#: inc/bc_core-cleanup.php:1
 msgid "Continued"
 msgstr "Jatkettu"
 
 #. Text in function
-#: inc/roots-options.php:132
-#: inc/roots-options.php:142
+#: inc/bc_core-options.php:132
+#: inc/bc_core-options.php:142
 msgid "Default: %s"
 msgstr "Oletus: %s"
 
@@ -148,12 +148,12 @@ msgid "Email (will not be published)"
 msgstr "Sähköposti (ei julkaista)"
 
 #. Text in echo
-#: inc/roots-widgets.php:77
+#: inc/bc_core-widgets.php:77
 msgid "Email:"
 msgstr "Sähköposti:"
 
 #. Text in function
-#: inc/roots-options.php:152
+#: inc/bc_core-options.php:152
 msgid "Enter your UA-XXXXX-X ID"
 msgstr "Anna UA-XXXX-X -koodisi"
 
@@ -163,8 +163,8 @@ msgid "File Not Found"
 msgstr "Tiedostoa ei löydetty"
 
 #. Text in echo
-#: inc/roots-options.php:147
-#: inc/roots-options.php:149
+#: inc/bc_core-options.php:147
+#: inc/bc_core-options.php:149
 msgid "Google Analytics ID"
 msgstr "Google Analytics -tunniste"
 
@@ -241,7 +241,7 @@ msgid "Please do not load this page directly. Thanks!"
 msgstr "Ethän lataa tätä sivua suoraan. Kiitos!"
 
 #. Text in function
-#: inc/roots-htaccess.php:1
+#: inc/bc_core-htaccess.php:1
 msgid "Please make sure your <a href=\"%s\">.htaccess</a> file is writeable "
 msgstr "Tarkistathan että <a href=\"%s\">.htaccess</a>-tiedostosi on muokattavissa"
 
@@ -251,7 +251,7 @@ msgid "Please try the following:"
 msgstr "Kokeilethan seuraavaa:"
 
 #. Text in function
-#: inc/roots-admin.php:1
+#: inc/bc_core-admin.php:1
 msgid "Please update your <a href=\"%s\">site tagline</a>"
 msgstr "Päivitäthän <a href=\"%s\">sivustosi kuvauksen</a>"
 
@@ -273,9 +273,9 @@ msgid "Return to the <a href=\"%s\">home page</a>"
 msgstr "Palaa <a href=\"%s\">etusivulle</a>"
 
 #. Text in function
-#: inc/roots-widgets.php:1
-msgid "Roots: vCard"
-msgstr "Roots: vCard"
+#: inc/bc_core-widgets.php:1
+msgid "BC_core: vCard"
+msgstr "BC_core: vCard"
 
 #. Text in echo
 #: searchform.php:3
@@ -300,12 +300,12 @@ msgid "Sorry, no results were found."
 msgstr "Pahoittelut, ei hakutuloksia."
 
 #. Text in echo
-#: inc/roots-widgets.php:65
+#: inc/bc_core-widgets.php:65
 msgid "State/Region:"
 msgstr "Osavaltio/Alue:"
 
 #. Text in echo
-#: inc/roots-widgets.php:57
+#: inc/bc_core-widgets.php:57
 msgid "Street Address:"
 msgstr "Katuosoite:"
 
@@ -315,7 +315,7 @@ msgid "Submit Comment"
 msgstr "Lähetä kommentti"
 
 #. Text in echo
-#: inc/roots-widgets.php:73
+#: inc/bc_core-widgets.php:73
 msgid "Telephone:"
 msgstr "Puhelinnumero:"
 
@@ -325,7 +325,7 @@ msgid "The page you are looking for might have been removed, had its name change
 msgstr "Hakemasi sivu on mahdollisesti poistettu, sen nimi on muutettu, tai se ei ole väliaikasesti saatavilla."
 
 #. Text in function
-#: inc/roots-options.php:1
+#: inc/bc_core-options.php:1
 msgid "Theme Options"
 msgstr "Teeman asetukset"
 
@@ -335,7 +335,7 @@ msgid "This post is password protected. Enter the password to view comments."
 msgstr "Tämä artikkeli on salasanasuojattu. Anna salasana nähdäksesi sisällön."
 
 #. Text in echo
-#: inc/roots-widgets.php:53
+#: inc/bc_core-widgets.php:53
 msgid "Title (optional):"
 msgstr "Otsikko (vapaaehtoinen):"
 
@@ -361,7 +361,7 @@ msgid "Your comment is awaiting moderation."
 msgstr "Kommenttisi on moderointijonossa."
 
 #. Text in echo
-#: inc/roots-widgets.php:69
+#: inc/bc_core-widgets.php:69
 msgid "Zipcode/Postal Code:"
 msgstr "Postinumero:"
 

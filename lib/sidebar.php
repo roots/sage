@@ -10,7 +10,7 @@
  * @return boolean True will display the sidebar, False will not
  *
  */
-class Roots_Sidebar {
+class BC_core_Sidebar {
   private $conditionals;
   private $templates;
 

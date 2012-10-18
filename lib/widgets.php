@@ -1,9 +1,9 @@
 <?php
 
-function roots_widgets_init() {
+function bc_core_widgets_init() {
   // Register widgetized areas
   register_sidebar(array(
-    'name'          => __('Primary Sidebar', 'roots'),
+    'name'          => __('Primary Sidebar', 'bc_core'),
     'id'            => 'sidebar-primary',
     'before_widget' => '<section id="%1$s" class="widget %2$s"><div class="widget-inner">',
     'after_widget'  => '</div></section>',
@@ -12,7 +12,7 @@ function roots_widgets_init() {
   ));
 
   register_sidebar(array(
-    'name'          => __('Footer', 'roots'),
+    'name'          => __('Footer', 'bc_core'),
     'id'            => 'sidebar-footer',
     'before_widget' => '<section id="%1$s" class="widget %2$s"><div class="widget-inner">',
     'after_widget'  => '</div></section>',
@@ -21,12 +21,12 @@ function roots_widgets_init() {
   ));
 
   // Register widgets
-  register_widget('Roots_Vcard_Widget');
+  register_widget('BC_core_Vcard_Widget');
 }
-add_action('widgets_init', 'roots_widgets_init');
+add_action('widgets_init', 'bc_core_widgets_init');
 
 // Example vCard widget
-class Roots_Vcard_Widget extends WP_Widget {
+class BC_core_Vcard_Widget extends WP_Widget {
   private $fields = array(
     'title'          => 'Title (optional)',
     'street_address' => 'Street Address',
@@ -38,10 +38,10 @@ class Roots_Vcard_Widget extends WP_Widget {
   );
 
   function __construct() {
-    $widget_ops = array('classname' => 'widget_roots_vcard', 'description' => __('Use this widget to add a vCard', 'roots'));
+    $widget_ops = array('classname' => 'widget_bc_core_vcard', 'description' => __('Use this widget to add a vCard', 'bc_core'));
 
-    $this->WP_Widget('widget_roots_vcard', __('Roots: vCard', 'roots'), $widget_ops);
-    $this->alt_option_name = 'widget_roots_vcard';
+    $this->WP_Widget('widget_bc_core_vcard', __('BC_core: vCard', 'bc_core'), $widget_ops);
+    $this->alt_option_name = 'widget_bc_core_vcard';
 
     add_action('save_post', array(&$this, 'flush_widget_cache'));
     add_action('deleted_post', array(&$this, 'flush_widget_cache'));
@@ -49,7 +49,7 @@ class Roots_Vcard_Widget extends WP_Widget {
   }
 
   function widget($args, $instance) {
-    $cache = wp_cache_get('widget_roots_vcard', 'widget');
+    $cache = wp_cache_get('widget_bc_core_vcard', 'widget');
 
     if (!is_array($cache)) {
       $cache = array();
@@ -67,7 +67,7 @@ class Roots_Vcard_Widget extends WP_Widget {
     ob_start();
     extract($args, EXTR_SKIP);
 
-    $title = apply_filters('widget_title', empty($instance['title']) ? __('vCard', 'roots') : $instance['title'], $instance, $this->id_base);
+    $title = apply_filters('widget_title', empty($instance['title']) ? __('vCard', 'bc_core') : $instance['title'], $instance, $this->id_base);
 
     foreach($this->fields as $name => $label) {
       if (!isset($instance[$name])) { $instance[$name] = ''; }
@@ -94,7 +94,7 @@ class Roots_Vcard_Widget extends WP_Widget {
     echo $after_widget;
 
     $cache[$args['widget_id']] = ob_get_flush();
-    wp_cache_set('widget_roots_vcard', $cache, 'widget');
+    wp_cache_set('widget_bc_core_vcard', $cache, 'widget');
   }
 
   function update($new_instance, $old_instance) {
@@ -104,15 +104,15 @@ class Roots_Vcard_Widget extends WP_Widget {
 
     $alloptions = wp_cache_get('alloptions', 'options');
 
-    if (isset($alloptions['widget_roots_vcard'])) {
-      delete_option('widget_roots_vcard');
+    if (isset($alloptions['widget_bc_core_vcard'])) {
+      delete_option('widget_bc_core_vcard');
     }
 
     return $instance;
   }
 
   function flush_widget_cache() {
-    wp_cache_delete('widget_roots_vcard', 'widget');
+    wp_cache_delete('widget_bc_core_vcard', 'widget');
   }
 
   function form($instance) {
@@ -120,7 +120,7 @@ class Roots_Vcard_Widget extends WP_Widget {
       ${$name} = isset($instance[$name]) ? esc_attr($instance[$name]) : '';
     ?>
     <p>
-      <label for="<?php echo esc_attr($this->get_field_id($name)); ?>"><?php _e("{$label}:", 'roots'); ?></label>
+      <label for="<?php echo esc_attr($this->get_field_id($name)); ?>"><?php _e("{$label}:", 'bc_core'); ?></label>
       <input class="widefat" id="<?php echo esc_attr($this->get_field_id($name)); ?>" name="<?php echo esc_attr($this->get_field_name($name)); ?>" type="text" value="<?php echo ${$name}; ?>">
     </p>
     <?php

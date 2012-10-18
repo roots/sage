@@ -140,7 +140,7 @@ msgid "Use this widget to add a vCard"
 msgstr ""
 
 #: lib/widgets.php:31
-msgid "Roots: vCard"
+msgid "BC_core: vCard"
 msgstr ""
 
 #: lib/widgets.php:58

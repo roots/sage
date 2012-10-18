@@ -1,4 +1,4 @@
-[Roots Theme homepage](http://www.rootstheme.com/) | [Documentation
+[BC_core Theme homepage](http://www.bc_coretheme.com/) | [Documentation
 table of contents](TOC.md)
 
 # Rewrites
@@ -16,14 +16,14 @@ If HTML5 Boilerplate's `.htaccess` support is enabled in `lib/config.php`, then 
 
 ## Alternative configuration
 
-First remove the `if` statement that wraps everything, since if you're not on Apache or Litespeed then Roots will not apply the functionality.
+First remove the `if` statement that wraps everything, since if you're not on Apache or Litespeed then BC_core will not apply the functionality.
 
 ### Nginx
 
     if (!-e $request_filename) {
-      rewrite ^/assets/css/(.*)$ /wp-content/themes/roots/assets/css/$1 last;
-      rewrite ^/assets/js/(.*)$ /wp-content/themes/roots/assets/js/$1 last;
-      rewrite ^/assets/img/(.*)$ /wp-content/themes/roots/assets/img/$1 last;
+      rewrite ^/assets/css/(.*)$ /wp-content/themes/bc_core/assets/css/$1 last;
+      rewrite ^/assets/js/(.*)$ /wp-content/themes/bc_core/assets/js/$1 last;
+      rewrite ^/assets/img/(.*)$ /wp-content/themes/bc_core/assets/img/$1 last;
       rewrite ^/plugins/(.*)$ /wp-content/plugins/$1 last;
       break;
     }
@@ -31,8 +31,8 @@ First remove the `if` statement that wraps everything, since if you're not on Ap
 ### Lighttpd
 
     url.rewrite-once = (
-      "^/css/(.*)$" => "/wp-content/themes/roots/css/$1",
-      "^/js/(.*)$" => "/wp-content/themes/roots/js/$1",
-      "^/img/(.*)$" => "/wp-content/themes/roots/img/$1",
+      "^/css/(.*)$" => "/wp-content/themes/bc_core/css/$1",
+      "^/js/(.*)$" => "/wp-content/themes/bc_core/js/$1",
+      "^/img/(.*)$" => "/wp-content/themes/bc_core/img/$1",
       "^/plugins/(.*)$" => "/wp-content/plugins/$1"
     )

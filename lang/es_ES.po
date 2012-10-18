@@ -18,14 +18,14 @@ msgid " (required)"
 msgstr "(campo obligatorio)"
 
 #. Text in echo
-#: inc/roots-options.php:127
-#: inc/roots-options.php:129
+#: inc/bc_core-options.php:127
+#: inc/bc_core-options.php:129
 msgid "#main CSS Classes"
 msgstr "Clases CSS de #main"
 
 #. Text in echo
-#: inc/roots-options.php:137
-#: inc/roots-options.php:139
+#: inc/bc_core-options.php:137
+#: inc/bc_core-options.php:139
 msgid "#sidebar CSS Classes"
 msgstr "Clases CSS de #sidebar"
 
@@ -40,7 +40,7 @@ msgid "%1$s"
 msgstr "%1$s"
 
 #. Text in function
-#: inc/roots-options.php:94
+#: inc/bc_core-options.php:94
 msgid "%s Theme Options"
 msgstr "%s Opciones del Tema"
 
@@ -61,22 +61,22 @@ msgid "(Edit)"
 msgstr "(Editar)"
 
 #. Text in function
-#: inc/roots-options.php:1
+#: inc/bc_core-options.php:1
 msgid "1140"
 msgstr "1140"
 
 #. Text in function
-#: inc/roots-options.php:1
+#: inc/bc_core-options.php:1
 msgid "960gs (12 cols)"
 msgstr "960gs (12 columnas)"
 
 #. Text in function
-#: inc/roots-options.php:1
+#: inc/bc_core-options.php:1
 msgid "960gs (16 cols)"
 msgstr "960gs (16 columnas)"
 
 #. Text in function
-#: inc/roots-options.php:1
+#: inc/bc_core-options.php:1
 msgid "960gs (24 cols)"
 msgstr "960gs (24 columnas)"
 
@@ -86,7 +86,7 @@ msgid "<cite class=\"fn\">%s</cite>"
 msgstr "<cite class=\"fn\">%s</cite>"
 
 #. Text in function
-#: inc/roots-options.php:1
+#: inc/bc_core-options.php:1
 msgid "Adapt.js"
 msgstr "Adapt.js"
 
@@ -96,13 +96,13 @@ msgid "Archives"
 msgstr "Archivos"
 
 #. Text in function
-#: inc/roots-options.php:1
+#: inc/bc_core-options.php:1
 msgid "Blueprint CSS"
 msgstr "Blueprint CSS"
 
 #. Text in echo
-#: inc/roots-options.php:106
-#: inc/roots-options.php:108
+#: inc/bc_core-options.php:106
+#: inc/bc_core-options.php:108
 msgid "CSS Grid Framework"
 msgstr "CSS Grid Framework"
 
@@ -112,7 +112,7 @@ msgid "Check your spelling"
 msgstr "Revisa la ortograf&iacute;a"
 
 #. Text in echo
-#: inc/roots-widgets.php:61
+#: inc/bc_core-widgets.php:61
 msgid "City/Locality:"
 msgstr "Ciudad/Localidad:"
 
@@ -132,13 +132,13 @@ msgid "Comments are closed."
 msgstr "Los comentarios est&aacute;n cerrados."
 
 #. Text in function
-#: inc/roots-cleanup.php:1
+#: inc/bc_core-cleanup.php:1
 msgid "Continued"
 msgstr "Continuado"
 
 #. Text in function
-#: inc/roots-options.php:132
-#: inc/roots-options.php:142
+#: inc/bc_core-options.php:132
+#: inc/bc_core-options.php:142
 msgid "Default: %s"
 msgstr "Defecto: %s"
 
@@ -148,12 +148,12 @@ msgid "Email (will not be published)"
 msgstr "Email (no ser&aacute; publicado)"
 
 #. Text in echo
-#: inc/roots-widgets.php:77
+#: inc/bc_core-widgets.php:77
 msgid "Email:"
 msgstr "Email:"
 
 #. Text in function
-#: inc/roots-options.php:152
+#: inc/bc_core-options.php:152
 msgid "Enter your UA-XXXXX-X ID"
 msgstr "Ingresa tu ID UA-XXXXX-X"
 
@@ -163,8 +163,8 @@ msgid "File Not Found"
 msgstr "Archivo no encontrado"
 
 #. Text in echo
-#: inc/roots-options.php:147
-#: inc/roots-options.php:149
+#: inc/bc_core-options.php:147
+#: inc/bc_core-options.php:149
 msgid "Google Analytics ID"
 msgstr "ID de Google Analytics"
 
@@ -241,7 +241,7 @@ msgid "Please do not load this page directly. Thanks!"
 msgstr "Por favor no cargues esta p&aacute;gina directamente. Gracias!"
 
 #. Text in function
-#: inc/roots-htaccess.php:1
+#: inc/bc_core-htaccess.php:1
 msgid "Please make sure your <a href=\"%s\">.htaccess</a> file is writeable "
 msgstr "Asegurare de que tu <a href=\"%s\">.htaccess</a> sea modificabile"
 
@@ -251,7 +251,7 @@ msgid "Please try the following:"
 msgstr "Por favor intenta lo siguiente:"
 
 #. Text in function
-#: inc/roots-admin.php:1
+#: inc/bc_core-admin.php:1
 msgid "Please update your <a href=\"%s\">site tagline</a>"
 msgstr "Por favor actualiza tu <a href=\"%s\">descripci&oacte;n del sitio</a>"
 
@@ -273,9 +273,9 @@ msgid "Return to the <a href=\"%s\">home page</a>"
 msgstr "Regresar a la <a href=\"%s\">p&aacute;gina de inicio</a>"
 
 #. Text in function
-#: inc/roots-widgets.php:1
-msgid "Roots: vCard"
-msgstr "Roots: vCard"
+#: inc/bc_core-widgets.php:1
+msgid "BC_core: vCard"
+msgstr "BC_core: vCard"
 
 #. Text in echo
 #: searchform.php:3
@@ -300,12 +300,12 @@ msgid "Sorry, no results were found."
 msgstr "Lo sentimos, no se encontraron resultados."
 
 #. Text in echo
-#: inc/roots-widgets.php:65
+#: inc/bc_core-widgets.php:65
 msgid "State/Region:"
 msgstr "Estado / Regi&oacute;n"
 
 #. Text in echo
-#: inc/roots-widgets.php:57
+#: inc/bc_core-widgets.php:57
 msgid "Street Address:"
 msgstr "Dirección:"
 
@@ -315,7 +315,7 @@ msgid "Submit Comment"
 msgstr "Enviar Comentario"
 
 #. Text in echo
-#: inc/roots-widgets.php:73
+#: inc/bc_core-widgets.php:73
 msgid "Telephone:"
 msgstr "Tel&eacute;fono:"
 
@@ -325,7 +325,7 @@ msgid "The page you are looking for might have been removed, had its name change
 msgstr "La p&aacute;gina que buscas puede haber sido eliminada, cambiada de nombre, o esta temporalmente no disponible."
 
 #. Text in function
-#: inc/roots-options.php:1
+#: inc/bc_core-options.php:1
 msgid "Theme Options"
 msgstr "Opciones del Tema"
 
@@ -335,7 +335,7 @@ msgid "This post is password protected. Enter the password to view comments."
 msgstr "Esta publicaci&oacute;n esta protegida con clave. Ingresa la clave para ver los comentarios."
 
 #. Text in echo
-#: inc/roots-widgets.php:53
+#: inc/bc_core-widgets.php:53
 msgid "Title (optional):"
 msgstr "T&iacute;tulo (opcional):"
 
@@ -361,7 +361,7 @@ msgid "Your comment is awaiting moderation."
 msgstr "Tu comentario est&aacute; esperando moderaci&oacute;n."
 
 #. Text in echo
-#: inc/roots-widgets.php:69
+#: inc/bc_core-widgets.php:69
 msgid "Zipcode/Postal Code:"
 msgstr "C&oacute;digo Postal:"
 

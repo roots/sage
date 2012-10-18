@@ -1,4 +1,4 @@
-# Contributing to Roots Theme
+# Contributing to bc_core Theme
 
 ## Reporting issues
 
@@ -6,7 +6,7 @@ A bug is a _demonstrable problem_ that is caused by the code in the
 repository.
 
 Please read the following guidelines for reporting bugs:
-Please read the following guidelines before you [report an issue](https://github.com/retlehs/roots/issues):
+Please read the following guidelines before you [report an issue](https://github.com/retlehs/bc_core/issues):
 
 1. **Use the GitHub issue search** &mdash; check if the issue has already been
    reported. If it has been, please comment on the existing issue.
@@ -14,8 +14,8 @@ Please read the following guidelines before you [report an issue](https://github
 2. **Check if the issue has been fixed** &mdash; the latest `master` or
    development branch may already contain a fix.
 
-3. **Isolate the problem to Roots** &mdash; make sure that the code in the
-   Roots repository is _definitely_ responsible for the issue. Switch to a default WordPress theme to confirm problems before reporting an issue. Any issues related to HTML5 Boilerplate or Bootstrap should be reported to their respected repositories.
+3. **Isolate the problem to bc_core** &mdash; make sure that the code in the
+   bc_core repository is _definitely_ responsible for the issue. Switch to a default WordPress theme to confirm problems before reporting an issue. Any issues related to HTML5 Boilerplate or Bootstrap should be reported to their respected repositories.
 
 Please try to be as detailed as possible in your report too. What is your
 environment? What steps will reproduce the issue? What browser(s) and OS
@@ -41,7 +41,7 @@ details will help people to assess and fix any potential bugs.
 A good bug report shouldn't leave people needing to chase you up to get further
 information that is required to assess or fix the bug.
 
-**[File a bug report](https://github.com/retlehs/roots/issues)**
+**[File a bug report](https://github.com/retlehs/bc_core/issues)**
 
 
 ## Pull requests
@@ -59,10 +59,10 @@ project:
 1. [Fork](http://help.github.com/fork-a-repo/) the project.
 
 2. Clone your fork (`git clone
-   https://github.com/<your-username>/roots.git`).
+   https://github.com/<your-username>/bc_core.git`).
 
 3. Add an `upstream` remote (`git remote add upstream
-   https://github.com/retlehs/roots.git`).
+   https://github.com/retlehs/bc_core.git`).
 
 4. Get the latest changes from upstream (e.g. `git pull upstream
    <dev-branch>`).

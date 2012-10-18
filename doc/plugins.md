@@ -1,12 +1,12 @@
-[Roots Theme homepage](http://www.rootstheme.com/) | [Documentation
+[BC_core Theme homepage](http://www.bc_coretheme.com/) | [Documentation
 table of contents](TOC.md)
 
 # Recommended Plugins
 
 | **Plugin Name** | **Plugin Description**
 |:----------------|:----------------------
-| [**Gravity Forms**](http://www.rootstheme.com/gravity-forms/) | With Gravity Forms you can build complex, interactive contact forms in minutes.
-| [**WPML**](http://www.rootstheme.com/wpml/) | WPML makes it easy to build multilingual sites and run them. Roots already includes translations for:<br> English, Spanish, French, Italian, Dutch, Brazilian Portuguese, Macedonian, Finnish, Danish, Turkish, Swedish, Bulgarian, Norwegian, Catalan, Polish, Hungarian, Russian.
+| [**Gravity Forms**](http://www.bc_coretheme.com/gravity-forms/) | With Gravity Forms you can build complex, interactive contact forms in minutes.
+| [**WPML**](http://www.bc_coretheme.com/wpml/) | WPML makes it easy to build multilingual sites and run them. BC_core already includes translations for:<br> English, Spanish, French, Italian, Dutch, Brazilian Portuguese, Macedonian, Finnish, Danish, Turkish, Swedish, Bulgarian, Norwegian, Catalan, Polish, Hungarian, Russian.
 | [**WordPress SEO**](http://yoast.com/wordpress/seo/) | Yoast's all in one SEO solution: titles, meta descriptions, XML sitemaps, breadcrumbs & more.
 | [**WP Super Cache**](http://wordpress.org/extend/plugins/wp-super-cache/) | WP Super Cache is a static caching plugin that generates HTML files.
 | [**W3 Total Cache**](http://wordpress.org/extend/plugins/w3-total-cache/) | Improve site performance and user experience via caching.

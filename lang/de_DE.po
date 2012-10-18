@@ -19,19 +19,19 @@ msgid " (required)"
 msgstr "(benötigt)"
 
 #. Text in echo
-#: inc/roots-options.php:260
+#: inc/bc_core-options.php:260
 msgid "#fullwidth CSS Classes"
 msgstr "#fullwidth CSS Klassen"
 
 #. Text in echo
-#: inc/roots-options.php:238
-#: inc/roots-options.php:240
+#: inc/bc_core-options.php:238
+#: inc/bc_core-options.php:240
 msgid "#main CSS Classes"
 msgstr "#main CSS Klassen"
 
 #. Text in echo
-#: inc/roots-options.php:248
-#: inc/roots-options.php:250
+#: inc/bc_core-options.php:248
+#: inc/bc_core-options.php:250
 msgid "#sidebar CSS Classes"
 msgstr "#sidebar CSS Klassen"
 
@@ -41,12 +41,12 @@ msgid "%1$s"
 msgstr "%1$s"
 
 #. Text in function
-#: inc/roots-activation.php:70
+#: inc/bc_core-activation.php:70
 msgid "%s Theme Activation"
 msgstr "%s Theme-Aktivierung"
 
 #. Text in function
-#: inc/roots-options.php:214
+#: inc/bc_core-options.php:214
 msgid "%s Theme Options"
 msgstr "%s Theme-Optionen"
 
@@ -66,22 +66,22 @@ msgid "(Edit)"
 msgstr "(Editieren)"
 
 #. Text in function
-#: inc/roots-options.php:1
+#: inc/bc_core-options.php:1
 msgid "1140"
 msgstr "1140"
 
 #. Text in function
-#: inc/roots-options.php:1
+#: inc/bc_core-options.php:1
 msgid "960gs (12 cols)"
 msgstr "960gs (12 Spalten)"
 
 #. Text in function
-#: inc/roots-options.php:1
+#: inc/bc_core-options.php:1
 msgid "960gs (16 cols)"
 msgstr "960gs (16 Spalten)"
 
 #. Text in function
-#: inc/roots-options.php:1
+#: inc/bc_core-options.php:1
 msgid "960gs (24 cols)"
 msgstr "960gs (24 Spalten)"
 
@@ -91,18 +91,18 @@ msgid "<cite class=\"fn\">%s</cite>"
 msgstr "<cite class=\"fn\">%s</cite>"
 
 #. Text in function
-#: inc/roots-options.php:1
+#: inc/bc_core-options.php:1
 msgid "Adapt.js"
 msgstr "Adapt.js"
 
 #. Text in function
-#: inc/roots-activation.php:145
+#: inc/bc_core-activation.php:145
 msgid "Add all current published pages to the Primary Navigation"
 msgstr "Füge alle aktuell veröffentlichten Seiten zur Hauptnavigation hinzu"
 
 #. Text in echo
-#: inc/roots-activation.php:137
-#: inc/roots-activation.php:139
+#: inc/bc_core-activation.php:137
+#: inc/bc_core-activation.php:139
 msgid "Add pages to menu?"
 msgstr "Füge Seiten zum Menü hinzu?"
 
@@ -112,48 +112,48 @@ msgid "Author Archives: %s"
 msgstr "Autoren Archive: %s"
 
 #. Text in function
-#: inc/roots-options.php:1
+#: inc/bc_core-options.php:1
 msgid "Blueprint CSS"
 msgstr "Blueprint CSS"
 
 #. Text in function
-#: inc/roots-options.php:1
+#: inc/bc_core-options.php:1
 msgid "Bootstrap"
 msgstr "Bootstrap"
 
 #. Text in echo
-#: inc/roots-options.php:282
+#: inc/bc_core-options.php:282
 msgid "Bootstrap Javascript Packages"
 msgstr "Bootstrap Javascript Packages"
 
 #. Text in function
-#: inc/roots-options.php:1
+#: inc/bc_core-options.php:1
 msgid "Bootstrap w/ Less"
 msgstr "Bootstrap mit Less"
 
 #. Text in echo
-#: inc/roots-options.php:226
-#: inc/roots-options.php:228
+#: inc/bc_core-options.php:226
+#: inc/bc_core-options.php:228
 msgid "CSS Grid Framework"
 msgstr "CSS Grid Framework"
 
 #. Text in function
-#: inc/roots-activation.php:106
+#: inc/bc_core-activation.php:106
 msgid "Change permalink structure to /&#37;postname&#37;/"
 msgstr "Verändere Permalinkstruktur zu /&#37;postname&#37;/"
 
 #. Text in echo
-#: inc/roots-activation.php:98
+#: inc/bc_core-activation.php:98
 msgid "Change permalink structure?"
 msgstr "Verändere Permalinkstruktur?"
 
 #. Text in function
-#: inc/roots-activation.php:119
+#: inc/bc_core-activation.php:119
 msgid "Change uploads folder to /assets/ instead of /wp-content/uploads/"
 msgstr "Ändere den Ordner zum Hochladen von /wp-content/uploads/ in /assets/"
 
 #. Text in echo
-#: inc/roots-activation.php:111
+#: inc/bc_core-activation.php:111
 msgid "Change uploads folder?"
 msgstr "Ändere Ordner zum Hochladen?"
 
@@ -163,13 +163,13 @@ msgid "Check your spelling"
 msgstr "Überprüfe deine Rechtschreibung"
 
 #. Text in echo
-#: inc/roots-widgets.php:107
+#: inc/bc_core-widgets.php:107
 msgid "City/Locality:"
 msgstr "Stadt/Lokalität:"
 
 #. Text in echo
-#: inc/roots-options.php:315
-#: inc/roots-options.php:317
+#: inc/bc_core-options.php:315
+#: inc/bc_core-options.php:317
 msgid "Cleanup Menu Output"
 msgstr "Säubere Menüausgabe"
 
@@ -190,29 +190,29 @@ msgid "Comments are closed."
 msgstr "Kommentare sind geschlossen."
 
 #. Text in function
-#: inc/roots-cleanup.php:1
+#: inc/bc_core-cleanup.php:1
 msgid "Continued"
 msgstr "Weiterlesen"
 
 #. Text in function
-#: inc/roots-activation.php:93
+#: inc/bc_core-activation.php:93
 msgid "Create a page called Home and set it to be the static front page"
 msgstr "Erstelle eine Seite Home und lege diese als statische Startseite fest"
 
 #. Text in echo
-#: inc/roots-activation.php:124
-#: inc/roots-activation.php:126
+#: inc/bc_core-activation.php:124
+#: inc/bc_core-activation.php:126
 msgid "Create navigation menus?"
 msgstr "Erstelle Navigationsmenüs?"
 
 #. Text in echo
-#: inc/roots-activation.php:85
-#: inc/roots-activation.php:87
+#: inc/bc_core-activation.php:85
+#: inc/bc_core-activation.php:87
 msgid "Create static front page?"
 msgstr "Erstelle statische Startseite?"
 
 #. Text in function
-#: inc/roots-activation.php:132
+#: inc/bc_core-activation.php:132
 msgid "Create the Primary and Utility Navigation menus and set their locations"
 msgstr "Erstelle die Haupt- und Hilfsnavigation und lege ihre Orte fest"
 
@@ -222,9 +222,9 @@ msgid "Daily Archives: %s"
 msgstr "Tägliche Archive: %s"
 
 #. Text in echo
-#: inc/roots-options.php:243
-#: inc/roots-options.php:253
-#: inc/roots-options.php:263
+#: inc/bc_core-options.php:243
+#: inc/bc_core-options.php:253
+#: inc/bc_core-options.php:263
 msgid "Default:"
 msgstr "Standard:"
 
@@ -234,23 +234,23 @@ msgid "Email (will not be published)"
 msgstr "E-Mail (wird nicht veröffentlich)"
 
 #. Text in echo
-#: inc/roots-widgets.php:123
+#: inc/bc_core-widgets.php:123
 msgid "Email:"
 msgstr "E-Mail:"
 
 #. Text in echo
-#: inc/roots-options.php:284
+#: inc/bc_core-options.php:284
 msgid "Enable Bootstrap Javascript"
 msgstr "Schalte Bootstrap Javascript ein"
 
 #. Text in echo
-#: inc/roots-options.php:304
-#: inc/roots-options.php:306
+#: inc/bc_core-options.php:304
+#: inc/bc_core-options.php:306
 msgid "Enable Root Relative URLs"
 msgstr "Schalte Root Relativ URLs ein"
 
 #. Text in function
-#: inc/roots-options.php:299
+#: inc/bc_core-options.php:299
 msgid "Enter your UA-XXXXX-X ID"
 msgstr "Gib deine UA-XXXXX-X ID ein"
 
@@ -260,18 +260,18 @@ msgid "File Not Found"
 msgstr "Datei nicht gefunden"
 
 #. Text in function
-#: inc/roots-options.php:1
+#: inc/bc_core-options.php:1
 msgid "Foundation"
 msgstr "Foundation"
 
 #. Text in echo
-#: inc/roots-options.php:258
+#: inc/bc_core-options.php:258
 msgid "Full Width CSS Classes"
 msgstr "Volle Breiteb CSS Klassen"
 
 #. Text in echo
-#: inc/roots-options.php:294
-#: inc/roots-options.php:296
+#: inc/bc_core-options.php:294
+#: inc/bc_core-options.php:296
 msgid "Google Analytics ID"
 msgstr "Google Analytics ID"
 
@@ -291,7 +291,7 @@ msgid "Leave a Reply to %s"
 msgstr "Hinterlasse eine Antwort auf %s"
 
 #. Text in function
-#: inc/roots-options.php:1
+#: inc/bc_core-options.php:1
 msgid "Less Framework 4"
 msgstr "Less Framework 4"
 
@@ -331,16 +331,16 @@ msgid "Newer posts &rarr;"
 msgstr "Neuere Artikel &rarr;"
 
 #. Text in echo
-#: inc/roots-activation.php:142
-#: inc/roots-options.php:274
-#: inc/roots-options.php:287
-#: inc/roots-options.php:309
-#: inc/roots-options.php:320
+#: inc/bc_core-activation.php:142
+#: inc/bc_core-options.php:274
+#: inc/bc_core-options.php:287
+#: inc/bc_core-options.php:309
+#: inc/bc_core-options.php:320
 msgid "No"
 msgstr "Nein"
 
 #. Text in function
-#: inc/roots-options.php:1
+#: inc/bc_core-options.php:1
 msgid "None"
 msgstr "Keine"
 
@@ -351,7 +351,7 @@ msgid "Pages:"
 msgstr "Seiten:"
 
 #. Text in function
-#: inc/roots-htaccess.php:1
+#: inc/bc_core-htaccess.php:1
 msgid "Please make sure your <a href=\"%s\">.htaccess</a> file is writable "
 msgstr "Bitte stell sicher, dass deine <a href=\"%s\">.htaccess</a> Datei beschreibbar ist"
 
@@ -361,7 +361,7 @@ msgid "Please try the following:"
 msgstr "Bitte versuche folgendes:"
 
 #. Text in function
-#: inc/roots-cleanup.php:1
+#: inc/bc_core-cleanup.php:1
 msgid "Please update your <a href=\"%s\">site tagline</a> <a href=\"%s\" style=\"float: right;\">Hide Notice</a>"
 msgstr "Please update your <a href=\"%s\">site tagline</a> <a href=\"%s\" style=\"float: right;\">Hide Notice</a> <a href=\"%s\" style=\"float: right;\">Verstecke Hinweis</a>"
 
@@ -381,9 +381,9 @@ msgid "Return to the <a href=\"%s\">home page</a>"
 msgstr "Gehe zurück zur <a href=\"%s\">Startseite</a>"
 
 #. Text in function
-#: inc/roots-widgets.php:1
-msgid "Roots: vCard"
-msgstr "Roots: vCard"
+#: inc/bc_core-widgets.php:1
+msgid "BC_core: vCard"
+msgstr "BC_core: vCard"
 
 #. Text in echo
 #: searchform.php:3
@@ -407,12 +407,12 @@ msgid "Sorry, no results were found."
 msgstr "Es wurden leider keine Ergebnisse gefunden."
 
 #. Text in echo
-#: inc/roots-widgets.php:111
+#: inc/bc_core-widgets.php:111
 msgid "State/Region:"
 msgstr "Bundesland/Region:"
 
 #. Text in echo
-#: inc/roots-widgets.php:103
+#: inc/bc_core-widgets.php:103
 msgid "Street Address:"
 msgstr "Straße:"
 
@@ -422,7 +422,7 @@ msgid "Submit Comment"
 msgstr "Kommentar abschicken"
 
 #. Text in echo
-#: inc/roots-widgets.php:119
+#: inc/bc_core-widgets.php:119
 msgid "Telephone:"
 msgstr "Telefon:"
 
@@ -432,12 +432,12 @@ msgid "The page you are looking for might have been removed, had its name change
 msgstr "Die Seite, nach der du suchst, wurde vielleicht entfernt, hat einen anderen Namen erhalten oder ist temporär nicht verfügbar."
 
 #. Text in function
-#: inc/roots-activation.php:1
+#: inc/bc_core-activation.php:1
 msgid "Theme Activation"
 msgstr "Theme-Aktivierung"
 
 #. Text in function
-#: inc/roots-options.php:1
+#: inc/bc_core-options.php:1
 msgid "Theme Options"
 msgstr "Theme-Optionen"
 
@@ -447,22 +447,22 @@ msgid "This post is password protected. Enter the password to view comments."
 msgstr "Dieser Artikel ist passwortgeschützt. Bitte gib das Passwort ein um Kommentare zu sehen."
 
 #. Text in echo
-#: inc/roots-widgets.php:99
+#: inc/bc_core-widgets.php:99
 msgid "Title (optional):"
 msgstr "Titel (optional):"
 
 #. Text in echo
-#: inc/roots-activation.php:100
+#: inc/bc_core-activation.php:100
 msgid "Update permalink structure?"
 msgstr "Erneuere Permalinkstruktur?"
 
 #. Text in echo
-#: inc/roots-activation.php:113
+#: inc/bc_core-activation.php:113
 msgid "Update uploads folder?"
 msgstr "Erneuere den Ordner zum Hochladen?"
 
 #. Text in function
-#: inc/roots-widgets.php:1
+#: inc/bc_core-widgets.php:1
 msgid "Use this widget to add a vCard"
 msgstr "Benutze dieses Widget um eine vCard hinzu zufügen."
 
@@ -487,11 +487,11 @@ msgid "Yearly Archives: %s"
 msgstr "Jährliche Archive: %s"
 
 #. Text in echo
-#: inc/roots-activation.php:141
-#: inc/roots-options.php:273
-#: inc/roots-options.php:286
-#: inc/roots-options.php:308
-#: inc/roots-options.php:319
+#: inc/bc_core-activation.php:141
+#: inc/bc_core-options.php:273
+#: inc/bc_core-options.php:286
+#: inc/bc_core-options.php:308
+#: inc/bc_core-options.php:319
 msgid "Yes"
 msgstr "Ja"
 
@@ -506,12 +506,12 @@ msgid "Your comment is awaiting moderation."
 msgstr "Dein Kommentar muss noch moderiert werden."
 
 #. Text in echo
-#: inc/roots-widgets.php:115
+#: inc/bc_core-widgets.php:115
 msgid "Zipcode/Postal Code:"
 msgstr "PLZ/Postleitzahl:"
 
 #. Text in function
-#: inc/roots-widgets.php:1
+#: inc/bc_core-widgets.php:1
 msgid "vCard"
 msgstr "vCard"
 

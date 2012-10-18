@@ -8,7 +8,7 @@
  * Remove inline CSS used by posts with galleries
  * Remove self-closing tag and change ''s to "'s on rel_canonical()
  */
-function roots_head_cleanup() {
+function bc_core_head_cleanup() {
   // Originally from http://wpengineer.com/1438/wordpress-header/
   remove_action('wp_head', 'feed_links', 2);
   remove_action('wp_head', 'feed_links_extra', 3);
@@ -25,11 +25,11 @@ function roots_head_cleanup() {
 
   if (!class_exists('WPSEO_Frontend')) {
     remove_action('wp_head', 'rel_canonical');
-    add_action('wp_head', 'roots_rel_canonical');
+    add_action('wp_head', 'bc_core_rel_canonical');
   }
 }
 
-function roots_rel_canonical() {
+function bc_core_rel_canonical() {
   global $wp_the_query;
 
   if (!is_singular()) {
@@ -44,7 +44,7 @@ function roots_rel_canonical() {
   echo "\t<link rel=\"canonical\" href=\"$link\">\n";
 }
 
-add_action('init', 'roots_head_cleanup');
+add_action('init', 'bc_core_head_cleanup');
 
 /**
  * Remove the WordPress version from RSS feeds
@@ -57,7 +57,7 @@ add_filter('the_generator', '__return_false');
  * Change lang="en-US" to lang="en"
  * Remove dir="ltr"
  */
-function roots_language_attributes() {
+function bc_core_language_attributes() {
   $attributes = array();
   $output = '';
 
@@ -76,29 +76,29 @@ function roots_language_attributes() {
   }
 
   $output = implode(' ', $attributes);
-  $output = apply_filters('roots_language_attributes', $output);
+  $output = apply_filters('bc_core_language_attributes', $output);
 
   return $output;
 }
 
-add_filter('language_attributes', 'roots_language_attributes');
+add_filter('language_attributes', 'bc_core_language_attributes');
 
 /**
  * Clean up output of stylesheet <link> tags
  */
-function roots_clean_style_tag($input) {
+function bc_core_clean_style_tag($input) {
   preg_match_all("!<link rel='stylesheet'\s?(id='[^']+')?\s+href='(.*)' type='text/css' media='(.*)' />!", $input, $matches);
   // Only display media if it's print
   $media = $matches[3][0] === 'print' ? ' media="print"' : '';
   return '<link rel="stylesheet" href="' . $matches[2][0] . '"' . $media . '>' . "\n";
 }
 
-add_filter('style_loader_tag', 'roots_clean_style_tag');
+add_filter('style_loader_tag', 'bc_core_clean_style_tag');
 
 /**
  * Add and remove body_class() classes
  */
-function roots_body_class($classes) {
+function bc_core_body_class($classes) {
   // Add 'top-navbar' class if using Bootstrap's Navbar
   // Used to add styling to account for the WordPress admin bar
   if (current_theme_supports('bootstrap-top-navbar')) {
@@ -121,7 +121,7 @@ function roots_body_class($classes) {
   return $classes;
 }
 
-add_filter('body_class', 'roots_body_class');
+add_filter('body_class', 'bc_core_body_class');
 
 /**
  * Root relative URLs
@@ -134,7 +134,7 @@ add_filter('body_class', 'roots_body_class');
  *
  * @author Scott Walkinshaw <scott.walkinshaw@gmail.com>
  */
-function roots_root_relative_url($input) {
+function bc_core_root_relative_url($input) {
   $output = preg_replace_callback(
     '!(https?://[^/|"]+)([^"]+)?!',
     create_function(
@@ -156,8 +156,8 @@ function roots_root_relative_url($input) {
  * Terrible workaround to remove the duplicate subfolder in the src of <script> and <link> tags
  * Example: /subfolder/subfolder/css/style.css
  */
-function roots_fix_duplicate_subfolder_urls($input) {
-  $output = roots_root_relative_url($input);
+function bc_core_fix_duplicate_subfolder_urls($input) {
+  $output = bc_core_root_relative_url($input);
   preg_match_all('!([^/]+)/([^/]+)!', $output, $matches);
 
   if (isset($matches[1][0]) && isset($matches[2][0])) {
@@ -169,11 +169,11 @@ function roots_fix_duplicate_subfolder_urls($input) {
   return $output;
 }
 
-function roots_enable_root_relative_urls() {
+function bc_core_enable_root_relative_urls() {
   return !(is_admin() && in_array($GLOBALS['pagenow'], array('wp-login.php', 'wp-register.php'))) && current_theme_supports('root-relative-urls');
 }
 
-if (roots_enable_root_relative_urls()) {
+if (bc_core_enable_root_relative_urls()) {
   $root_rel_filters = array(
     'bloginfo_url',
     'theme_root_uri',
@@ -195,10 +195,10 @@ if (roots_enable_root_relative_urls()) {
     'the_author_posts_link'
   );
 
-  add_filters($root_rel_filters, 'roots_root_relative_url');
+  add_filters($root_rel_filters, 'bc_core_root_relative_url');
 
-  add_filter('script_loader_src', 'roots_fix_duplicate_subfolder_urls');
-  add_filter('style_loader_src', 'roots_fix_duplicate_subfolder_urls');
+  add_filter('script_loader_src', 'bc_core_fix_duplicate_subfolder_urls');
+  add_filter('style_loader_src', 'bc_core_fix_duplicate_subfolder_urls');
 }
 
 /**
@@ -207,23 +207,23 @@ if (roots_enable_root_relative_urls()) {
  * @link https://gist.github.com/965956
  * @link http://www.readability.com/publishers/guidelines#publisher
  */
-function roots_embed_wrap($cache, $url, $attr = '', $post_ID = '') {
+function bc_core_embed_wrap($cache, $url, $attr = '', $post_ID = '') {
   return '<div class="entry-content-asset">' . $cache . '</div>';
 }
 
-add_filter('embed_oembed_html', 'roots_embed_wrap', 10, 4);
-add_filter('embed_googlevideo', 'roots_embed_wrap', 10, 2);
+add_filter('embed_oembed_html', 'bc_core_embed_wrap', 10, 4);
+add_filter('embed_googlevideo', 'bc_core_embed_wrap', 10, 2);
 
 /**
  * Add class="thumbnail" to attachment items
  */
-function roots_attachment_link_class($html) {
+function bc_core_attachment_link_class($html) {
   $postid = get_the_ID();
   $html = str_replace('<a', '<a class="thumbnail"', $html);
   return $html;
 }
 
-add_filter('wp_get_attachment_link', 'roots_attachment_link_class', 10, 1);
+add_filter('wp_get_attachment_link', 'bc_core_attachment_link_class', 10, 1);
 
 /**
  * Add Bootstrap thumbnail styling to images with captions
@@ -231,7 +231,7 @@ add_filter('wp_get_attachment_link', 'roots_attachment_link_class', 10, 1);
  *
  * @link http://justintadlock.com/archives/2011/07/01/captions-in-wordpress
  */
-function roots_caption($output, $attr, $content) {
+function bc_core_caption($output, $attr, $content) {
   if (is_feed()) {
     return $output;
   }
@@ -263,7 +263,7 @@ function roots_caption($output, $attr, $content) {
   return $output;
 }
 
-add_filter('img_caption_shortcode', 'roots_caption', 10, 3);
+add_filter('img_caption_shortcode', 'bc_core_caption', 10, 3);
 
 /**
  * Clean up gallery_shortcode()
@@ -272,7 +272,7 @@ add_filter('img_caption_shortcode', 'roots_caption', 10, 3);
  *
  * @link http://twitter.github.com/bootstrap/components.html#thumbnails
  */
-function roots_gallery($attr) {
+function bc_core_gallery($attr) {
   global $post, $wp_locale;
 
   static $instance = 0;
@@ -377,62 +377,62 @@ function roots_gallery($attr) {
 }
 
 remove_shortcode('gallery');
-add_shortcode('gallery', 'roots_gallery');
+add_shortcode('gallery', 'bc_core_gallery');
 
 /**
  * Remove unnecessary dashboard widgets
  *
  * @link http://www.deluxeblogtips.com/2011/01/remove-dashboard-widgets-in-wordpress.html
  */
-function roots_remove_dashboard_widgets() {
+function bc_core_remove_dashboard_widgets() {
   remove_meta_box('dashboard_incoming_links', 'dashboard', 'normal');
   remove_meta_box('dashboard_plugins', 'dashboard', 'normal');
   remove_meta_box('dashboard_primary', 'dashboard', 'normal');
   remove_meta_box('dashboard_secondary', 'dashboard', 'normal');
 }
 
-add_action('admin_init', 'roots_remove_dashboard_widgets');
+add_action('admin_init', 'bc_core_remove_dashboard_widgets');
 
 /**
  * Clean up the_excerpt()
  */
-function roots_excerpt_length($length) {
+function bc_core_excerpt_length($length) {
   return POST_EXCERPT_LENGTH;
 }
 
-function roots_excerpt_more($more) {
-  return ' &hellip; <a href="' . get_permalink() . '">' . __('Continued', 'roots') . '</a>';
+function bc_core_excerpt_more($more) {
+  return ' &hellip; <a href="' . get_permalink() . '">' . __('Continued', 'bc_core') . '</a>';
 }
 
-add_filter('excerpt_length', 'roots_excerpt_length');
-add_filter('excerpt_more', 'roots_excerpt_more');
+add_filter('excerpt_length', 'bc_core_excerpt_length');
+add_filter('excerpt_more', 'bc_core_excerpt_more');
 
 /**
  * Remove unnecessary self-closing tags
  */
-function roots_remove_self_closing_tags($input) {
+function bc_core_remove_self_closing_tags($input) {
   return str_replace(' />', '>', $input);
 }
 
-add_filter('get_avatar',          'roots_remove_self_closing_tags'); // <img />
-add_filter('comment_id_fields',   'roots_remove_self_closing_tags'); // <input />
-add_filter('post_thumbnail_html', 'roots_remove_self_closing_tags'); // <img />
+add_filter('get_avatar',          'bc_core_remove_self_closing_tags'); // <img />
+add_filter('comment_id_fields',   'bc_core_remove_self_closing_tags'); // <input />
+add_filter('post_thumbnail_html', 'bc_core_remove_self_closing_tags'); // <img />
 
 /**
  * Don't return the default description in the RSS feed if it hasn't been changed
  */
-function roots_remove_default_description($bloginfo) {
+function bc_core_remove_default_description($bloginfo) {
   $default_tagline = 'Just another WordPress site';
 
   return ($bloginfo === $default_tagline) ? '' : $bloginfo;
 }
 
-add_filter('get_bloginfo_rss', 'roots_remove_default_description');
+add_filter('get_bloginfo_rss', 'bc_core_remove_default_description');
 
 /**
  * Allow more tags in TinyMCE including <iframe> and <script>
  */
-function roots_change_mce_options($options) {
+function bc_core_change_mce_options($options) {
   $ext = 'pre[id|name|class|style],iframe[align|longdesc|name|width|height|frameborder|scrolling|marginheight|marginwidth|src],script[charset|defer|language|src|type]';
 
   if (isset($initArray['extended_valid_elements'])) {
@@ -444,14 +444,14 @@ function roots_change_mce_options($options) {
   return $options;
 }
 
-add_filter('tiny_mce_before_init', 'roots_change_mce_options');
+add_filter('tiny_mce_before_init', 'bc_core_change_mce_options');
 
 /**
  * Add additional classes onto widgets
  *
  * @link http://wordpress.org/support/topic/how-to-first-and-last-css-classes-for-sidebar-widgets
  */
-function roots_widget_first_last_classes($params) {
+function bc_core_widget_first_last_classes($params) {
   global $my_widget_num;
 
   $this_id = $params[0]['id'];
@@ -484,27 +484,27 @@ function roots_widget_first_last_classes($params) {
   return $params;
 }
 
-add_filter('dynamic_sidebar_params', 'roots_widget_first_last_classes');
+add_filter('dynamic_sidebar_params', 'bc_core_widget_first_last_classes');
 
 /**
  * Redirects search results from /?s=query to /search/query/, converts %20 to +
  *
  * @link http://txfx.net/wordpress-plugins/nice-search/
  */
-function roots_nice_search_redirect() {
+function bc_core_nice_search_redirect() {
   if (is_search() && strpos($_SERVER['REQUEST_URI'], '/wp-admin/') === false && strpos($_SERVER['REQUEST_URI'], '/search/') === false) {
     wp_redirect(home_url('/search/' . str_replace(array(' ', '%20'), array('+', '+'), urlencode(get_query_var('s')))), 301);
     exit();
   }
 }
 
-add_action('template_redirect', 'roots_nice_search_redirect');
+add_action('template_redirect', 'bc_core_nice_search_redirect');
 
 /**
  * Fix for get_search_query() returning +'s between search terms
  */
-function roots_search_query($escaped = true) {
-  $query = apply_filters('roots_search_query', get_query_var('s'));
+function bc_core_search_query($escaped = true) {
+  $query = apply_filters('bc_core_search_query', get_query_var('s'));
 
   if ($escaped) {
     $query = esc_attr($query);
@@ -513,7 +513,7 @@ function roots_search_query($escaped = true) {
   return urldecode($query);
 }
 
-add_filter('get_search_query', 'roots_search_query');
+add_filter('get_search_query', 'bc_core_search_query');
 
 /**
  * Fix for empty search queries redirecting to home page
@@ -521,7 +521,7 @@ add_filter('get_search_query', 'roots_search_query');
  * @link http://wordpress.org/support/topic/blank-search-sends-you-to-the-homepage#post-1772565
  * @link http://core.trac.wordpress.org/ticket/11330
  */
-function roots_request_filter($query_vars) {
+function bc_core_request_filter($query_vars) {
   if (isset($_GET['s']) && empty($_GET['s'])) {
     $query_vars['s'] = ' ';
   }
@@ -529,13 +529,13 @@ function roots_request_filter($query_vars) {
   return $query_vars;
 }
 
-add_filter('request', 'roots_request_filter');
+add_filter('request', 'bc_core_request_filter');
 
 /**
  * Tell WordPress to use searchform.php from the templates/ directory
  */
-function roots_get_search_form() {
+function bc_core_get_search_form() {
   locate_template('/templates/searchform.php', true, true);
 }
 
-add_filter('get_search_form', 'roots_get_search_form');
+add_filter('get_search_form', 'bc_core_get_search_form');

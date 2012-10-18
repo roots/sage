@@ -1,12 +1,12 @@
 ### HEAD
-* Return instead of echo class names in `roots_main_class` and `roots_sidebar_class`
+* Return instead of echo class names in `bc_core_main_class` and `bc_core_sidebar_class`
 * Move nav customizations into `lib/nav.php`
 
 ### 6.1.0: October 2nd, 2012
-* Change roots_sidebar into a more explicit configuration array
+* Change bc_core_sidebar into a more explicit configuration array
 * Re-organize configuration/setup files
 * Update to jQuery 1.8.2
-* Refactor/simplify Roots vCard Widget
+* Refactor/simplify bc_core vCard Widget
 * Move custom entry_meta code into template
 * Move Google Analytics code into footer template
 * Add CONTRIBUTING.md to assist with the new GitHub UI
@@ -31,7 +31,7 @@
 ### 5.2.0: August 18th, 2012
 * Update to jQuery 1.8.0 and Modernizr 2.6.1
 * Fix duplicate active class in `wp_nav_menu` items
-* Merge `Roots_Navbar_Nav_Walker` into `Roots_Nav_Walker`
+* Merge `bc_core_Navbar_Nav_Walker` into `bc_core_Nav_Walker`
 * Add and update code documentation
 * Use `wp_get_theme()` to get the theme name on activation
 * Use `<figure>` & `<figcaption>` for captions
@@ -62,7 +62,7 @@
 * Add a conditional feed link
 * Temporarily remove Gravity Forms customizations
 * Update to Bootstrap 2.0.2
-* Update `roots.pot` for translations
+* Update `bc_core.pot` for translations
 * Add/update languages: Vietnamese, Swedish, Bulgarian, Turkish, Norwegian, Brazilian Portugese
 * Change widgets to use `<section>` instead of `<article>`
 * Add comment-reply.js
@@ -72,22 +72,22 @@
 ### 5.0.0: February 5th, 2012
 * Remove all frameworks except Bootstrap
 * Update to Bootstrap 2.0
-* Remove `roots-options.php` and replaced with a more simple `roots-config.php`
+* Remove `bc_core-options.php` and replaced with a more simple `bc_core-config.php`
 * Now using Bootstrap markup on forms, page titles, image galleries, alerts and errors, post and comment navigation
-* Remove Roots styles from `style.css` and introduced `app.css` for site-specific CSS
-* Remove almost all previous default Roots styling
+* Remove bc_core styles from `style.css` and introduced `app.css` for site-specific CSS
+* Remove almost all previous default bc_core styling
 * Latest updates from HTML5 Boilerplate
 
 ### 4.1.0: February 1st, 2012
 * Update translations
 * HTML5 Boilerplate updates
 * Fix for Server 500 errors
-* Add `roots-scripts.php`, now using `wp_enqueue_script`
-* Re-organize `roots-actions.php`
+* Add `bc_core-scripts.php`, now using `wp_enqueue_script`
+* Re-organize `bc_core-actions.php`
 * Allow `<script>` tags in TinyMCE
 * Add full width class and search form to 404 template
 * Remove Blueprint CSS specific markup
-* Use Roots Nav Walker as default
+* Use bc_core Nav Walker as default
 * Add author name and taxonomy name to archive template title
 * Add Full Width CSS class options
 
@@ -99,7 +99,7 @@
 * Update jQuery
 * Remove included jQuery plugins
 * Clean up whitespace, switched to two spaces for tabs
-* Clean up `body_class()` some more with `roots_body_class()`
+* Clean up `body_class()` some more with `bc_core_body_class()`
 * Post meta information is now displayed using a function (similar to Twenty Eleven)
 * Bugfixes for 1140 options
 * Add first and last classes to widgets
@@ -138,7 +138,7 @@
 * Introduce cleaner way of including HTML5 Boilerplate's `.htaccess`
 * Add hooks &amp; actions
 * Rename `includes/` directory to `inc/`
-* Add a blank `inc/roots-custom.php` file
+* Add a blank `inc/bc_core-custom.php` file
 
 ### 3.2.4: May 19th, 2011
 * Bugfixes
@@ -172,13 +172,13 @@
 * Allow the theme directory and name to be renamable
 
 ### 3.0.0: March 28th, 2011
-* Change name from BB to Roots and release to the public
+* Change name from BB to bc_core and release to the public
 * Update various areas to match the latest changes to HTML5 Boilerplate
 * Change the theme markup based on hCard/Readability Guidelines and work by Jonathan Neal
 * Create the navigation menus and automatically set their locations during theme activation
 * Set permalink structure to `/%year%/%postname%/`
 * Set uploads folder to `/assets/`
-* Rewrite static folders in `/wp-content/themes/roots/` (`css/`, `js/`, `img/`) to the root (`/css/`, `/js/`, `/img/`)
+* Rewrite static folders in `/wp-content/themes/bc_core/` (`css/`, `js/`, `img/`) to the root (`/css/`, `/js/`, `/img/`)
 * Rewrite `/wp-content/plugins/` to `/plugins/`
 * Add more root relative URLs on WordPress functions
 * Search results (`/?s=query`) rewrite to `/search/query/`

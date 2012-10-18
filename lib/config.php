@@ -1,6 +1,6 @@
 <?php
 /**
- * Roots configuration
+ * BC_core configuration
  */
 
 // Enable theme features
@@ -15,8 +15,8 @@ add_theme_support('bootstrap-top-navbar');  // Enable Bootstrap's fixed navbar
  *
  * See lib/sidebar.php for more details
  */
-function roots_display_sidebar() {
-  $sidebar_config = new Roots_Sidebar(
+function bc_core_display_sidebar() {
+  $sidebar_config = new BC_core_Sidebar(
     /**
      * Conditional tag checks (http://codex.wordpress.org/Conditional_Tags)
      * Any of these conditional tags that return true won't show the sidebar
@@ -44,8 +44,8 @@ function roots_display_sidebar() {
 }
 
 // #main CSS classes
-function roots_main_class() {
-  if (roots_display_sidebar()) {
+function bc_core_main_class() {
+  if (bc_core_display_sidebar()) {
     $class = 'span8';
   } else {
     $class = 'span12';
@@ -55,7 +55,7 @@ function roots_main_class() {
 }
 
 // #sidebar CSS classes
-function roots_sidebar_class() {
+function bc_core_sidebar_class() {
   return 'span4';
 }
 
@@ -70,6 +70,6 @@ define('POST_EXCERPT_LENGTH', 40);
 *
 * Default: 940px is the default Bootstrap container width.
 *
-* This is not required or used by Roots.
+* This is not required or used by BC_core.
 */
 if (!isset($content_width)) { $content_width = 940; }

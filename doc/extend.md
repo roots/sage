@@ -1,8 +1,8 @@
-[Roots Theme homepage](http://www.rootstheme.com/) | [Documentation
+[BC_core Theme homepage](http://www.bc_coretheme.com/) | [Documentation
 table of contents](TOC.md)
 
-# Extend and customize Roots
-Here is some useful advice for how you can make your project with Roots even better.
+# Extend and customize BC_core
+Here is some useful advice for how you can make your project with BC_core even better.
 
 * [Recommended plugins](plugins.md)
 

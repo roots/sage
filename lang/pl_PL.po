@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: roots WP theme\n"
+"Project-Id-Version: bc_core WP theme\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
 "PO-Revision-Date: \n"
@@ -191,134 +191,134 @@ msgstr "Szukaj:"
 msgid "Search"
 msgstr "Szukaj"
 
-#: inc/roots-activation.php:32
-#: inc/roots-activation.php:33
+#: inc/bc_core-activation.php:32
+#: inc/bc_core-activation.php:33
 msgid "Theme Activation"
 msgstr "Аktywacja motywu"
 
-#: inc/roots-activation.php:70
+#: inc/bc_core-activation.php:70
 #, php-format
 msgid "%s Theme Activation"
 msgstr "%s Aktywacja motywu"
 
-#: inc/roots-activation.php:85
-#: inc/roots-activation.php:87
+#: inc/bc_core-activation.php:85
+#: inc/bc_core-activation.php:87
 msgid "Create static front page?"
 msgstr "Czy stworzyć statyczną stronę główną?"
 
-#: inc/roots-activation.php:89
-#: inc/roots-activation.php:102
-#: inc/roots-activation.php:115
-#: inc/roots-activation.php:128
-#: inc/roots-activation.php:141
+#: inc/bc_core-activation.php:89
+#: inc/bc_core-activation.php:102
+#: inc/bc_core-activation.php:115
+#: inc/bc_core-activation.php:128
+#: inc/bc_core-activation.php:141
 msgid "Yes"
 msgstr "Tak"
 
-#: inc/roots-activation.php:90
-#: inc/roots-activation.php:103
-#: inc/roots-activation.php:116
-#: inc/roots-activation.php:129
-#: inc/roots-activation.php:142
+#: inc/bc_core-activation.php:90
+#: inc/bc_core-activation.php:103
+#: inc/bc_core-activation.php:116
+#: inc/bc_core-activation.php:129
+#: inc/bc_core-activation.php:142
 msgid "No"
 msgstr "Nie"
 
-#: inc/roots-activation.php:93
+#: inc/bc_core-activation.php:93
 msgid "Create a page called Home and set it to be the static front page"
 msgstr "Stwórz stronę o nazwie Home i ustaw ją jako statyczną stronę główną"
 
-#: inc/roots-activation.php:98
+#: inc/bc_core-activation.php:98
 msgid "Change permalink structure?"
 msgstr "Czy zmienić strukturę permalinków?"
 
-#: inc/roots-activation.php:100
+#: inc/bc_core-activation.php:100
 msgid "Update permalink structure?"
 msgstr "Czy zaktualizować strukturę permalinków?"
 
-#: inc/roots-activation.php:106
+#: inc/bc_core-activation.php:106
 msgid "Change permalink structure to /&#37;postname&#37;/"
 msgstr "Zmień strukturę permalinków: /&#37;postname&#37;/"
 
-#: inc/roots-activation.php:111
+#: inc/bc_core-activation.php:111
 msgid "Change uploads folder?"
 msgstr "Czy zmienić folder z plikami?"
 
-#: inc/roots-activation.php:113
+#: inc/bc_core-activation.php:113
 msgid "Update uploads folder?"
 msgstr "Czy dostosować folder z plikami?"
 
-#: inc/roots-activation.php:119
+#: inc/bc_core-activation.php:119
 msgid "Change uploads folder to /assets/ instead of /wp-content/uploads/"
 msgstr "Zamień folder z plikami na /assets/ zamiast /wp-content/uploads/"
 
-#: inc/roots-activation.php:124
-#: inc/roots-activation.php:126
+#: inc/bc_core-activation.php:124
+#: inc/bc_core-activation.php:126
 msgid "Create navigation menu?"
 msgstr "Czy stworzyć menu?"
 
-#: inc/roots-activation.php:132
+#: inc/bc_core-activation.php:132
 msgid "Create the Primary Navigation menu and set the location"
 msgstr "Stwórz główne menu i ustaw jego lokalizację"
 
-#: inc/roots-activation.php:137
-#: inc/roots-activation.php:139
+#: inc/bc_core-activation.php:137
+#: inc/bc_core-activation.php:139
 msgid "Add pages to menu?"
 msgstr "Czy dodać strony do menu?"
 
-#: inc/roots-activation.php:145
+#: inc/bc_core-activation.php:145
 msgid "Add all current published pages to the Primary Navigation"
 msgstr "Dodaj wszystkie aktualnie opublikowane strony do głównego menu"
 
-#: inc/roots-cleanup.php:370
+#: inc/bc_core-cleanup.php:370
 msgid "Continued"
 msgstr "Kontynuuj"
 
-#: inc/roots-cleanup.php:538
+#: inc/bc_core-cleanup.php:538
 #, php-format
 msgid "Please update your <a href=\"%s\">site tagline</a> <a href=\"%s\" style=\"float: right;\">Hide Notice</a>"
 msgstr "Proszę zaktualizować <a href=\"%s\">tagline</a>. <a href=\"%s\" style=\"float: right;\">Ukryj wiadomość</a>"
 
-#: inc/roots-htaccess.php:11
+#: inc/bc_core-htaccess.php:11
 #, php-format
 msgid "Please make sure your <a href=\"%s\">.htaccess</a> file is writable "
 msgstr "Proszę upewnić się, że plik <a href=\"%s\">.htaccess</a> jest dostępny do zapisu "
 
-#: inc/roots-widgets.php:5
+#: inc/bc_core-widgets.php:5
 msgid "Use this widget to add a vCard"
 msgstr "Użyj tej funkcji do dodania vCard"
 
-#: inc/roots-widgets.php:6
-msgid "Roots: vCard"
-msgstr "Roots: vCard"
+#: inc/bc_core-widgets.php:6
+msgid "BC_core: vCard"
+msgstr "BC_core: vCard"
 
-#: inc/roots-widgets.php:33
+#: inc/bc_core-widgets.php:33
 msgid "vCard"
 msgstr "vCard"
 
-#: inc/roots-widgets.php:99
+#: inc/bc_core-widgets.php:99
 msgid "Title (optional):"
 msgstr "Tytuł (opcjonalny):"
 
-#: inc/roots-widgets.php:103
+#: inc/bc_core-widgets.php:103
 msgid "Street Address:"
 msgstr "Ulica:"
 
-#: inc/roots-widgets.php:107
+#: inc/bc_core-widgets.php:107
 msgid "City/Locality:"
 msgstr "Miasto lub miejscowość:"
 
-#: inc/roots-widgets.php:111
+#: inc/bc_core-widgets.php:111
 msgid "State/Region:"
 msgstr "Województwo:"
 
-#: inc/roots-widgets.php:115
+#: inc/bc_core-widgets.php:115
 msgid "Zipcode/Postal Code:"
 msgstr "Kod pocztowy:"
 
-#: inc/roots-widgets.php:119
+#: inc/bc_core-widgets.php:119
 msgid "Telephone:"
 msgstr "Тelefon:"
 
-#: inc/roots-widgets.php:123
+#: inc/bc_core-widgets.php:123
 msgid "Email:"
 msgstr "Е-mail:"
 

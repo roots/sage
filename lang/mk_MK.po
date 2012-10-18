@@ -16,14 +16,14 @@ msgid " (required)"
 msgstr "(Задолжително)"
 
 #. Text in echo
-#: inc/roots-options.php:127
-#: inc/roots-options.php:129
+#: inc/bc_core-options.php:127
+#: inc/bc_core-options.php:129
 msgid "#main CSS Classes"
 msgstr "#CSS класа за главниот лев дел"
 
 #. Text in echo
-#: inc/roots-options.php:137
-#: inc/roots-options.php:139
+#: inc/bc_core-options.php:137
+#: inc/bc_core-options.php:139
 msgid "#sidebar CSS Classes"
 msgstr "#CSS класа за десниот дел"
 
@@ -38,7 +38,7 @@ msgid "%1$s"
 msgstr "%1$s"
 
 #. Text in function
-#: inc/roots-options.php:94
+#: inc/bc_core-options.php:94
 msgid "%s Theme Options"
 msgstr "%s Опции на Темата"
 
@@ -59,22 +59,22 @@ msgid "(Edit)"
 msgstr "(Измени)"
 
 #. Text in function
-#: inc/roots-options.php:1
+#: inc/bc_core-options.php:1
 msgid "1140"
 msgstr "1140"
 
 #. Text in function
-#: inc/roots-options.php:1
+#: inc/bc_core-options.php:1
 msgid "960gs (12 cols)"
 msgstr "960gs (12 колони)"
 
 #. Text in function
-#: inc/roots-options.php:1
+#: inc/bc_core-options.php:1
 msgid "960gs (16 cols)"
 msgstr "960gs (16 колони)"
 
 #. Text in function
-#: inc/roots-options.php:1
+#: inc/bc_core-options.php:1
 msgid "960gs (24 cols)"
 msgstr "960gs (24 колони)"
 
@@ -84,7 +84,7 @@ msgid "<cite class=\"fn\">%s</cite>"
 msgstr "<cite class=\"fn\">%s</cite>"
 
 #. Text in function
-#: inc/roots-options.php:1
+#: inc/bc_core-options.php:1
 msgid "Adapt.js"
 msgstr "Adapt.js"
 
@@ -94,13 +94,13 @@ msgid "Archives"
 msgstr "Архиви"
 
 #. Text in function
-#: inc/roots-options.php:1
+#: inc/bc_core-options.php:1
 msgid "Blueprint CSS"
 msgstr "Blueprint CSS"
 
 #. Text in echo
-#: inc/roots-options.php:106
-#: inc/roots-options.php:108
+#: inc/bc_core-options.php:106
+#: inc/bc_core-options.php:108
 msgid "CSS Grid Framework"
 msgstr "CSS Grid Framework"
 
@@ -110,7 +110,7 @@ msgid "Check your spelling"
 msgstr "Проверете го правописот"
 
 #. Text in echo
-#: inc/roots-widgets.php:61
+#: inc/bc_core-widgets.php:61
 msgid "City/Locality:"
 msgstr "Град/Локација:"
 
@@ -130,13 +130,13 @@ msgid "Comments are closed."
 msgstr "Коментарите се затворени."
 
 #. Text in function
-#: inc/roots-cleanup.php:1
+#: inc/bc_core-cleanup.php:1
 msgid "Continued"
 msgstr "Продолжено"
 
 #. Text in function
-#: inc/roots-options.php:132
-#: inc/roots-options.php:142
+#: inc/bc_core-options.php:132
+#: inc/bc_core-options.php:142
 msgid "Default: %s"
 msgstr "Вообичаено: %s"
 
@@ -146,12 +146,12 @@ msgid "Email (will not be published)"
 msgstr "Е-маилот (нема да биде објавен)"
 
 #. Text in echo
-#: inc/roots-widgets.php:77
+#: inc/bc_core-widgets.php:77
 msgid "Email:"
 msgstr "Е-маил:"
 
 #. Text in function
-#: inc/roots-options.php:152
+#: inc/bc_core-options.php:152
 msgid "Enter your UA-XXXXX-X ID"
 msgstr "Внесете го вашето UA-XXXXX-X ID"
 
@@ -161,8 +161,8 @@ msgid "File Not Found"
 msgstr "Датотеката не е пронајдена"
 
 #. Text in echo
-#: inc/roots-options.php:147
-#: inc/roots-options.php:149
+#: inc/bc_core-options.php:147
+#: inc/bc_core-options.php:149
 msgid "Google Analytics ID"
 msgstr "Google Analytics ID"
 
@@ -239,7 +239,7 @@ msgid "Please do not load this page directly. Thanks!"
 msgstr "Ве молиме не ја отварајте оваа страница директно. Благодарам!"
 
 #. Text in function
-#: inc/roots-htaccess.php:1
+#: inc/bc_core-htaccess.php:1
 msgid "Please make sure your <a href=\"%s\">.htaccess</a> file is writeable "
 msgstr "Ве молиме бидете сигурни дека вашаиот <a href=\"%s\">.htaccess</a> датотека може да се запишува"
 
@@ -249,7 +249,7 @@ msgid "Please try the following:"
 msgstr "Ве молиме обидете се со следново:"
 
 #. Text in function
-#: inc/roots-admin.php:1
+#: inc/bc_core-admin.php:1
 msgid "Please update your <a href=\"%s\">site tagline</a>"
 msgstr "Ве молиме обновете го вашиот <a href=\"%s\">site tagline</a>"
 
@@ -271,9 +271,9 @@ msgid "Return to the <a href=\"%s\">home page</a>"
 msgstr "Врати се на <a href=\"%s\">главна страница</a>"
 
 #. Text in function
-#: inc/roots-widgets.php:1
-msgid "Roots: vCard"
-msgstr "Roots: vCard"
+#: inc/bc_core-widgets.php:1
+msgid "BC_core: vCard"
+msgstr "BC_core: vCard"
 
 #. Text in echo
 #: searchform.php:3
@@ -298,12 +298,12 @@ msgid "Sorry, no results were found."
 msgstr "За жал, нема резултати по пребарувањето."
 
 #. Text in echo
-#: inc/roots-widgets.php:65
+#: inc/bc_core-widgets.php:65
 msgid "State/Region:"
 msgstr "Држава/регион:"
 
 #. Text in echo
-#: inc/roots-widgets.php:57
+#: inc/bc_core-widgets.php:57
 msgid "Street Address:"
 msgstr "Улица и број:"
 
@@ -313,7 +313,7 @@ msgid "Submit Comment"
 msgstr "Прати коментар"
 
 #. Text in echo
-#: inc/roots-widgets.php:73
+#: inc/bc_core-widgets.php:73
 msgid "Telephone:"
 msgstr "Телефон:"
 
@@ -323,7 +323,7 @@ msgid "The page you are looking for might have been removed, had its name change
 msgstr "Страната која ја баравте може да е избришана, да и е сменето името, или да е привремено недостапна."
 
 #. Text in function
-#: inc/roots-options.php:1
+#: inc/bc_core-options.php:1
 msgid "Theme Options"
 msgstr "Опции на Темата"
 
@@ -333,7 +333,7 @@ msgid "This post is password protected. Enter the password to view comments."
 msgstr "Овој пост е заштитен со лозинка. Внесете ја лозинката за да ги видите коментарите."
 
 #. Text in echo
-#: inc/roots-widgets.php:53
+#: inc/bc_core-widgets.php:53
 msgid "Title (optional):"
 msgstr "Наслов (опционално):"
 
@@ -359,7 +359,7 @@ msgid "Your comment is awaiting moderation."
 msgstr "Вашиот коментар чека модерација."
 
 #. Text in echo
-#: inc/roots-widgets.php:69
+#: inc/bc_core-widgets.php:69
 msgid "Zipcode/Postal Code:"
 msgstr "Поштенски код/​​Поштенски код:"
 

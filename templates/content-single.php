@@ -8,7 +8,7 @@
       <?php the_content(); ?>
     </div>
     <footer>
-      <?php wp_link_pages(array('before' => '<nav id="page-nav"><p>' . __('Pages:', 'roots'), 'after' => '</p></nav>')); ?>
+      <?php wp_link_pages(array('before' => '<nav id="page-nav"><p>' . __('Pages:', 'bc_core'), 'after' => '</p></nav>')); ?>
       <?php the_tags('<ul class="entry-tags"><li>','</li><li>','</li></ul>'); ?>
     </footer>
     <?php comments_template('/templates/comments.php'); ?>
