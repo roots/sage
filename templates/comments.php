@@ -1,5 +1,6 @@
 <?php function bc_core_comment($comment, $args, $depth) {
   $GLOBALS['comment'] = $comment; ?>
+  <?php do_action('bc_core_pre_comment'); ?>
   <li <?php comment_class(); ?>>
     <article id="comment-<?php comment_ID(); ?>">
       <header class="comment-author vcard">
@@ -23,6 +24,7 @@
       <?php comment_reply_link(array_merge($args, array('depth' => $depth, 'max_depth' => $args['max_depth']))); ?>
 
     </article>
+    <?php do_action('bc_core_after_comment'); ?>
 <?php } ?>
 
 <?php if (post_password_required()) : ?>
@@ -35,6 +37,7 @@
 <?php endif; ?>
 
 <?php if (have_comments()) : ?>
+  <?php do_action('bc_core_pre_comments'); ?>
   <section id="comments">
     <h3><?php printf(_n('One Response to &ldquo;%2$s&rdquo;', '%1$s Responses to &ldquo;%2$s&rdquo;', get_comments_number(), 'bc_core'), number_format_i18n(get_comments_number()), get_the_title()); ?></h3>
 
@@ -57,18 +60,22 @@
       </div>
     <?php endif; ?>
   </section><!-- /#comments -->
+  <?php do_action('bc_core_after_comments'); ?>
 <?php endif; ?>
 
 <?php if (!have_comments() && !comments_open() && !is_page() && post_type_supports(get_post_type(), 'comments')) : ?>
+  <?php do_action('bc_core_pre_comments'); ?>
   <section id="comments">
     <div class="alert alert-block fade in">
       <a class="close" data-dismiss="alert">&times;</a>
       <p><?php _e('Comments are closed.', 'bc_core'); ?></p>
     </div>
   </section><!-- /#comments -->
+  <?php do_action('bc_core_after_comments'); ?>
 <?php endif; ?>
 
 <?php if (comments_open()) : ?>
+  <?php do_action('bc_core_pre_comment'); ?>
   <section id="respond">
     <h3><?php comment_form_title(__('Leave a Reply', 'bc_core'), __('Leave a Reply to %s', 'bc_core')); ?></h3>
     <p class="cancel-comment-reply"><?php cancel_comment_reply_link(); ?></p>
@@ -94,4 +101,5 @@
       </form>
     <?php endif; // if registration required and not logged in ?>
   </section><!-- /#respond -->
+  <?php do_action('bc_core_after_comment'); ?>
 <?php endif; ?>
