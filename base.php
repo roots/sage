@@ -12,6 +12,8 @@
     }
   ?>
   
+  <?php dynamic_sidebar('hero-area'); ?>
+  
   <?php do_action('bc_core_pre_wrap'); ?>
   <div id="wrap" class="container" role="document">
     <?php do_action('bc_core_pre_content'); ?>

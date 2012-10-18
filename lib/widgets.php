@@ -12,6 +12,15 @@ function bc_core_widgets_init() {
   ));
 
   register_sidebar(array(
+    'name'          => __('Hero Area', 'bc_core'),
+    'id'            => 'hero-area',
+    'before_widget' => '<div class="jumbotron masthead"><div class="container">',
+    'after_widget'  => '</div></div>',
+    'before_title'  => '<h1>',
+    'after_title'   => '</h1>',
+  ));
+
+  register_sidebar(array(
     'name'          => __('Footer Left', 'bc_core'),
     'id'            => 'sidebar-footer-left',
     'before_widget' => '<section id="%1$s" class="widget %2$s"><div class="widget-inner">',
