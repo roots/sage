@@ -1,4 +1,4 @@
-<header id="banner" class="<?php if ( function_exists( 'bootstrap_commerce_navbar_class' ) ) { bootstrap_commerce_navbar_class(); } else { ?>navbar navbar-fixed-top <?php } ?>" role="banner">
+<header id="banner" class="<?php if ( function_exists( 'bc_customizer_navbar_class' ) ) { bc_customizer_navbar_class(); } else { ?>navbar navbar-fixed-top <?php } ?>" role="banner">
   <div class="navbar-inner">
     <div class="container">
       <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
