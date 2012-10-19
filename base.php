@@ -12,6 +12,8 @@
     }
   ?>
   
+  <?php do_action('bc_core_branding'); ?>
+  
   <?php dynamic_sidebar('hero-area'); ?>
   
   <?php do_action('bc_core_pre_wrap'); ?>
