@@ -13,6 +13,7 @@
   ?>
   
   <?php do_action('bc_core_branding'); ?>
+  <?php do_action('bc_core_hero'); ?>
   
   <?php dynamic_sidebar('hero-area'); ?>
   
