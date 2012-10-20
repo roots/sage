@@ -62,7 +62,7 @@ project:
    https://github.com/<your-username>/bc_core.git`).
 
 3. Add an `upstream` remote (`git remote add upstream
-   https://github.com/retlehs/bc_core.git`).
+   https://github.com/aristath/bootstrap-commerce-core`).
 
 4. Get the latest changes from upstream (e.g. `git pull upstream
    <dev-branch>`).
