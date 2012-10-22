@@ -9,7 +9,7 @@ require_once locate_template('/lib/utils.php');                 // Utility funct
 require_once locate_template('/lib/init.php');                  // Initial theme setup and constants
 require_once locate_template('/lib/sidebar.php');               // Sidebar class
 require_once locate_template('/lib/config.php');                // Configuration
-require_once locate_template('/lib/menus.php');            // Theme activation
+require_once locate_template('/lib/menus.php');                 // Theme activation
 require_once locate_template('/lib/cleanup.php');               // Cleanup
 require_once locate_template('/lib/nav.php');                   // Custom nav modifications
 require_once locate_template('/lib/widgets.php');               // Sidebars and widgets
@@ -18,4 +18,3 @@ require_once locate_template('/lib/metaboxes.php');             // Custom metabo
 require_once locate_template('/lib/less.php');                  // Less to CSS PHP Compiler
 require_once locate_template('/lib/customizer/customizer.php'); // Customizer functions
 require_once locate_template('/lib/custom.php');                // Custom functions
-require_once locate_template('/lib/updater/licencing.php');     // Licencing to provide automatic update notifications
