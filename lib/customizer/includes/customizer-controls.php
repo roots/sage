@@ -9,7 +9,7 @@ function shoestrap_register_controls($wp_customize){
     $wp_customize,
     'shoestrap_logo_Image',
     array(
-      'label'     => __('Logo Image', 'bootstrap_commerce'),
+      'label'     => __('Logo Image', 'shoestrap'),
       'section'   => 'shoestrap_header',
       'settings'  => 'shoestrap_logo',
       'priority'  => 1
@@ -56,15 +56,15 @@ function shoestrap_register_controls($wp_customize){
  */
   // Sidebar: left/Right/Hidden
   $wp_customize->add_control( 'shoestrap_aside_layout', array(
-    'label'       => __( 'Sidebar', 'bootstrap_commerce' ),
+    'label'       => __( 'Sidebar', 'shoestrap' ),
     'section'     => 'shoestrap_layout',
     'settings'    => 'shoestrap_aside_layout',
     'type'        => 'select',
     'priority'    => 1,
     'choices'     => array(
-      'right'     => __('Right', 'bootstrap_commerce'),
-      'left'      => __('Left', 'bootstrap_commerce'),
-      'hide'      => __('Hide', 'bootstrap_commerce'),
+      'right'     => __('Right', 'shoestrap'),
+      'left'      => __('Left', 'shoestrap'),
+      'hide'      => __('Hide', 'shoestrap'),
     ),
   ));
   
@@ -72,7 +72,7 @@ function shoestrap_register_controls($wp_customize){
  * TYPOGRAPHY SECTION
  */
   $wp_customize->add_control( 'shoestrap_google_webfonts', array(
-    'label'       => __( 'Google Webfont Name', 'bootstrap_commerce' ),
+    'label'       => __( 'Google Webfont Name', 'shoestrap' ),
     'section'     => 'shoestrap_typography',
     'settings'    => 'shoestrap_google_webfonts',
     'type'        => 'text',
@@ -85,14 +85,14 @@ function shoestrap_register_controls($wp_customize){
  */
   //Text variation (light/dark)
   $wp_customize->add_control( 'shoestrap_text_variation', array(
-    'label'       => __( 'Text Variation', 'bootstrap_commerce' ),
+    'label'       => __( 'Text Variation', 'shoestrap' ),
     'section'     => 'colors',
     'settings'    => 'shoestrap_text_variation',
     'type'        => 'select',
     'priority'    => 1,
     'choices'     => array(
-      'dark'      => __('Dark', 'bootstrap_commerce'),
-      'light'     => __('Light', 'bootstrap_commerce'),
+      'dark'      => __('Dark', 'shoestrap'),
+      'light'     => __('Light', 'shoestrap'),
     ),
   ));
 
@@ -123,7 +123,7 @@ function shoestrap_register_controls($wp_customize){
  */
   // Hero region title
   $wp_customize->add_control( 'shoestrap_hero_title', array(
-    'label'       => __( 'Title', 'bootstrap_commerce' ),
+    'label'       => __( 'Title', 'shoestrap' ),
     'section'     => 'shoestrap_hero',
     'settings'    => 'shoestrap_hero_title',
     'type'        => 'text',
@@ -132,7 +132,7 @@ function shoestrap_register_controls($wp_customize){
   
   // Hero Region content
   $wp_customize->add_control( 'shoestrap_hero_content', array(
-    'label'       => __( 'Content', 'bootstrap_commerce' ),
+    'label'       => __( 'Content', 'shoestrap' ),
     'section'     => 'shoestrap_hero',
     'settings'    => 'shoestrap_hero_content',
     'type'        => 'text',
@@ -141,7 +141,7 @@ function shoestrap_register_controls($wp_customize){
   
   // Hero Region Call to action button link
   $wp_customize->add_control( 'shoestrap_hero_cta_text', array(
-    'label'       => __( 'Call To Action Button Text', 'bootstrap_commerce' ),
+    'label'       => __( 'Call To Action Button Text', 'shoestrap' ),
     'section'     => 'shoestrap_hero',
     'settings'    => 'shoestrap_hero_cta_text',
     'type'        => 'text',
@@ -150,7 +150,7 @@ function shoestrap_register_controls($wp_customize){
   
   // Hero Region Call to action button link
   $wp_customize->add_control( 'shoestrap_hero_cta_link', array(
-    'label'       => __( 'Call To Action Button Link', 'bootstrap_commerce' ),
+    'label'       => __( 'Call To Action Button Link', 'shoestrap' ),
     'section'     => 'shoestrap_hero',
     'settings'    => 'shoestrap_hero_cta_link',
     'type'        => 'text',
@@ -159,19 +159,19 @@ function shoestrap_register_controls($wp_customize){
   
   // Call to action button color
   $wp_customize->add_control( 'shoestrap_hero_cta_color', array(
-    'label'       => __( 'Call To Action Button Color', 'bootstrap_commerce' ),
+    'label'       => __( 'Call To Action Button Color', 'shoestrap' ),
     'section'     => 'shoestrap_hero',
     'settings'    => 'shoestrap_hero_cta_color',
     'type'        => 'select',
     'priority'    => 5,
     'choices'     => array(
-      'default'   => __('White', 'bootstrap_commerce'),
-      'primary'   => __('Blue', 'bootstrap_commerce'),
-      'info'      => __('Light Blue', 'bootstrap_commerce'),
-      'success'   => __('Green', 'bootstrap_commerce'),
-      'warning'   => __('Orange', 'bootstrap_commerce'),
-      'danger'    => __('Red', 'bootstrap_commerce'),
-      'inverse'   => __('Black', 'bootstrap_commerce'),
+      'default'   => __('White', 'shoestrap'),
+      'primary'   => __('Blue', 'shoestrap'),
+      'info'      => __('Light Blue', 'shoestrap'),
+      'success'   => __('Green', 'shoestrap'),
+      'warning'   => __('Orange', 'shoestrap'),
+      'danger'    => __('Red', 'shoestrap'),
+      'inverse'   => __('Black', 'shoestrap'),
     ),
   ));
 
@@ -180,7 +180,7 @@ function shoestrap_register_controls($wp_customize){
     $wp_customize,
     'hero_background',
     array(
-      'label'     => __('Background', 'bootstrap_commerce'),
+      'label'     => __('Background', 'shoestrap'),
       'section'   => 'shoestrap_hero',
       'settings'  => 'shoestrap_hero_background',
       'priority'  => 6
@@ -213,14 +213,14 @@ function shoestrap_register_controls($wp_customize){
 
   // Call to action button color
   $wp_customize->add_control( 'shoestrap_hero_visibility', array(
-    'label'       => __( 'Hero Region Visibility', 'bootstrap_commerce' ),
+    'label'       => __( 'Hero Region Visibility', 'shoestrap' ),
     'section'     => 'shoestrap_hero',
     'settings'    => 'shoestrap_hero_visibility',
     'type'        => 'select',
     'priority'    => 9,
     'choices'     => array(
-      'front'     => __('Frontpage', 'bootstrap_commerce'),
-      'site'      => __('Site-Wide', 'bootstrap_commerce'),
+      'front'     => __('Frontpage', 'shoestrap'),
+      'site'      => __('Site-Wide', 'shoestrap'),
     ),
   ));
 
@@ -245,7 +245,7 @@ function shoestrap_register_controls($wp_customize){
  */
 
   $wp_customize->add_control( 'shoestrap_facebook_link', array(
-    'label'       => __( 'Facebook Page Link', 'bootstrap_commerce' ),
+    'label'       => __( 'Facebook Page Link', 'shoestrap' ),
     'section'     => 'shoestrap_social',
     'settings'    => 'shoestrap_facebook_link',
     'type'        => 'text',
@@ -253,7 +253,7 @@ function shoestrap_register_controls($wp_customize){
   ));
 
   $wp_customize->add_control( 'shoestrap_twitter_link', array(
-    'label'       => __( 'Twitter Profile Link', 'bootstrap_commerce' ),
+    'label'       => __( 'Twitter Profile Link', 'shoestrap' ),
     'section'     => 'shoestrap_social',
     'settings'    => 'shoestrap_twitter_link',
     'type'        => 'text',
@@ -261,7 +261,7 @@ function shoestrap_register_controls($wp_customize){
   ));
 
   $wp_customize->add_control( 'shoestrap_google_plus_link', array(
-    'label'       => __( 'Google+ Profile Link', 'bootstrap_commerce' ),
+    'label'       => __( 'Google+ Profile Link', 'shoestrap' ),
     'section'     => 'shoestrap_social',
     'settings'    => 'shoestrap_google_plus_link',
     'type'        => 'text',
@@ -269,7 +269,7 @@ function shoestrap_register_controls($wp_customize){
   ));
 
   $wp_customize->add_control( 'shoestrap_pinterest_link', array(
-    'label'       => __( 'Pinterest Profile Link', 'bootstrap_commerce' ),
+    'label'       => __( 'Pinterest Profile Link', 'shoestrap' ),
     'section'     => 'shoestrap_social',
     'settings'    => 'shoestrap_pinterest_link',
     'type'        => 'text',
