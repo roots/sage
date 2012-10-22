@@ -7,7 +7,6 @@ function shoestrap_register_sections($wp_customize){
   $sections[] = array( 'slug'=>'shoestrap_header',      'title' => __('Header & Logo', 'shoestrap'),         'priority' => 1);
   $sections[] = array( 'slug'=>'shoestrap_layout',      'title' => __('Layout', 'shoestrap'),                'priority' => 2);
   $sections[] = array( 'slug'=>'shoestrap_typography',  'title' => __('Typography', 'shoestrap'),            'priority' => 3);
-  $sections[] = array( 'slug'=>'background_image',          'title' => __('General Colors', 'shoestrap'),        'priority' => 4);
   $sections[] = array( 'slug'=>'shoestrap_footer',      'title' => __('Footer', 'shoestrap'),                'priority' => 5);
   $sections[] = array( 'slug'=>'shoestrap_hero',        'title' => __('Hero', 'shoestrap'),      'priority' => 7);
   $sections[] = array( 'slug'=>'shoestrap_social',      'title' => __('Social Links', 'shoestrap'),          'priority' => 8);
