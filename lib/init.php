@@ -1,4 +1,8 @@
 <?php
+
+// Warning: Do NOT delete this function as it is used by other plugins requiring this theme.
+function bc_core_active(){}
+
 /**
  * BC_core initial setup and constants
  */
