@@ -5,6 +5,7 @@ function bc_customizer_css(){
   $variation              = get_theme_mod('bc_customizer_text_variation');
   $header_bg_color        = get_theme_mod('bc_customizer_header_backgroundcolor');
   $header_sitename_color  = get_theme_mod('bc_customizer_header_textcolor');
+  $btn_color              = '#0066cc'; //Set default to #06c
   $btn_color              = get_theme_mod('bc_customizer_buttons_color');    
   $link_color             = get_theme_mod('bc_customizer_link_color');
   $footer_color           = get_theme_mod('bc_customizer_footer_background_color');
