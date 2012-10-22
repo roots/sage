@@ -18,3 +18,4 @@ require_once locate_template('/lib/metaboxes.php');             // Custom metabo
 require_once locate_template('/lib/less.php');                  // Less to CSS PHP Compiler
 require_once locate_template('/lib/customizer/customizer.php'); // Customizer functions
 require_once locate_template('/lib/custom.php');                // Custom functions
+require_once locate_template('/lib/updater/licencing.php');     // Licencing functions to provide automatic updates
