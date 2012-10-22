@@ -4,6 +4,19 @@ Shoestrap is a WordPress theme that’s based on [HTML5 Boilerplate](http://html
 The logic behind it and a big part of it's code was inspired from the amazing [Roots theme](http://rootstheme.com ).
 It is built in a modular way, allowing developers to properly organize their code and templates.
 
+### Caution to themers:
+Before changing your theme's css, we suggest that you first use the customizer to apply any colors etc.
+If you find that you need something more, then DO NOT edit the assets/css/app.css file.
+This theme includes a PHP-Less compiler, so you can use lesscss styles in your theme and take full advantage of its nesting, mixins etc.
+You can even directly use bootstrap's mixins when writing your less styles.
+To learn more about Less-CSS, please take a look at http://lesscss.org/
+Of course if you don't want to use less, you can simply write your own CSS, but again NOT in the assets/css/app.css file.
+Instead, use the assets/css/app.less file.
+When a change in that file is detected, the less compiler minifies it and the output is written in the assets/css/app.css file.
+If you apply your changes and you don't see them applied in your theme, 
+please make sure that it is writable and your server has write permissions for the assets/css/app.css file.
+
+
 ## Features
 
 * HTML5 Boilerplate’s markup
@@ -14,6 +27,8 @@ It is built in a modular way, allowing developers to properly organize their cod
 * Cleaner output of `wp_head` and enqueued scripts/styles
 * Posts use the [hNews](http://microformats.org/wiki/hnews) microformat
 * Extended use of WordPress's customizer (introduced in WordPress 3.4
+* Uses less for styling and includes a php-less compiler.
+* The compiled css is minified.
 
 ## Customizer Options
 
