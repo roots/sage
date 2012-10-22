@@ -16,6 +16,11 @@ When a change in that file is detected, the less compiler minifies it and the ou
 If you apply your changes and you don't see them applied in your theme, 
 please make sure that it is writable and your server has write permissions for the assets/css/app.css file.
 
+## Automatic Updates
+
+This theme provides automatic updates.
+When you get this theme from http://bootstrap-commerce.com/downloads/downloads/shoepress/ a licence key will be emailed 
+which when entered and activated will provide you with automatic updates
 
 ## Features
 
