@@ -1,13 +1,13 @@
 <?php
-function bc_customizer_footer_icon(){ ?>
+function shoestrap_footer_icon(){ ?>
   <?php if (current_user_can( 'edit_theme_options' )){ ?>
     <style>
-      #bc_customizer_icon{
+      #shoestrap_icon{
         position: fixed;
         bottom: 0;
         left: 0;
       }
-      #bc_customizer_icon a{
+      #shoestrap_icon a{
         width: 100px;
         height: 20px;
         display: block;
@@ -24,11 +24,11 @@ function bc_customizer_footer_icon(){ ?>
         -o-transition: all 350ms linear;
         transition: all 350ms linear;
       }
-      #bc_customizer_icon a:hover{
+      #shoestrap_icon a:hover{
         opacity: 1;
       }
     </style>
-    <div id="bc_customizer_icon">
+    <div id="shoestrap_icon">
       <?php
       $current_url = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
       $href = add_query_arg( 'url', urlencode( $current_url ), wp_customize_url() ); ?>
@@ -37,4 +37,4 @@ function bc_customizer_footer_icon(){ ?>
   <?php } ?>
   </div>
 <?php }
-add_action( 'bc_core_after_footer', 'bc_customizer_footer_icon' );
+add_action( 'shoestrap_after_footer', 'shoestrap_footer_icon' );

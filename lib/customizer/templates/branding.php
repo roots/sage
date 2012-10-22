@@ -1,4 +1,4 @@
-<?php function bc_customizer_branding(){ ?>
+<?php function shoestrap_branding(){ ?>
   <div class="container-fluid logo-wrapper">
     <div class="logo container">
       <div class="row-fluid">
@@ -8,4 +8,4 @@
     </div>
   </div>
 <?php }
-add_action( 'bc_core_branding', 'bc_customizer_branding');
+add_action( 'shoestrap_branding', 'shoestrap_branding');

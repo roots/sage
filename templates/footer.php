@@ -20,4 +20,4 @@
 
 <?php wp_footer(); ?>
 
-<?php do_action('bc_core_after_footer');
+<?php do_action('shoestrap_after_footer');

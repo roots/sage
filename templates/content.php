@@ -1,7 +1,7 @@
 <?php if (!have_posts()) : ?>
   <div class="alert alert-block fade in">
     <a class="close" data-dismiss="alert">&times;</a>
-    <p><?php _e('Sorry, no results were found.', 'bc_core'); ?></p>
+    <p><?php _e('Sorry, no results were found.', 'shoestrap'); ?></p>
   </div>
   <?php get_search_form(); ?>
 <?php endif; ?>
@@ -23,7 +23,7 @@
 
 <?php if ($wp_query->max_num_pages > 1) : ?>
   <nav id="post-nav" class="pager">
-    <div class="previous"><?php next_posts_link(__('&larr; Older posts', 'bc_core')); ?></div>
-    <div class="next"><?php previous_posts_link(__('Newer posts &rarr;', 'bc_core')); ?></div>
+    <div class="previous"><?php next_posts_link(__('&larr; Older posts', 'shoestrap')); ?></div>
+    <div class="next"><?php previous_posts_link(__('Newer posts &rarr;', 'shoestrap')); ?></div>
   </nav>
 <?php endif; ?>

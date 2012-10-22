@@ -6,7 +6,7 @@
  * @link http://scribu.net/wordpress/theme-wrappers.html
  */
 
-function bc_core_template_path() {
+function shoestrap_template_path() {
   return BC_core_Wrapping::$main_template;
 }
 

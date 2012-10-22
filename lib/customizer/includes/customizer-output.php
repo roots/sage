@@ -1,23 +1,23 @@
 <?php
 
-function bc_customizer_css(){
+function shoestrap_css(){
   $color                  = get_theme_mod('background_color');
-  $variation              = get_theme_mod('bc_customizer_text_variation');
-  $header_bg_color        = get_theme_mod('bc_customizer_header_backgroundcolor');
-  $header_sitename_color  = get_theme_mod('bc_customizer_header_textcolor');
+  $variation              = get_theme_mod('shoestrap_text_variation');
+  $header_bg_color        = get_theme_mod('shoestrap_header_backgroundcolor');
+  $header_sitename_color  = get_theme_mod('shoestrap_header_textcolor');
   $btn_color              = '#0066cc'; //Set default to #06c
-  $btn_color              = get_theme_mod('bc_customizer_buttons_color');    
-  $link_color             = get_theme_mod('bc_customizer_link_color');
-  $footer_color           = get_theme_mod('bc_customizer_footer_background_color');
-  $webfont                = get_theme_mod('bc_customizer_google_webfonts');
-  $navbar_color           = get_theme_mod('bc_customizer_navbar_color');
-  $sidebar_location       = get_theme_mod('bc_customizer_aside_layout');
+  $btn_color              = get_theme_mod('shoestrap_buttons_color');    
+  $link_color             = get_theme_mod('shoestrap_link_color');
+  $footer_color           = get_theme_mod('shoestrap_footer_background_color');
+  $webfont                = get_theme_mod('shoestrap_google_webfonts');
+  $navbar_color           = get_theme_mod('shoestrap_navbar_color');
+  $sidebar_location       = get_theme_mod('shoestrap_aside_layout');
   ?>
   
   <style>
     .jumbotron{
-      background: <?php echo get_theme_mod('bc_customizer_hero_background_color') ?> url("<?php echo get_theme_mod( 'bc_customizer_hero_background' ); ?>");
-      color: <?php echo get_theme_mod('bc_customizer_hero_textcolor'); ?>
+      background: <?php echo get_theme_mod('shoestrap_hero_background_color') ?> url("<?php echo get_theme_mod( 'shoestrap_hero_background' ); ?>");
+      color: <?php echo get_theme_mod('shoestrap_hero_textcolor'); ?>
     }
     <?php if ($sidebar_location == 'left'){ ?>
       #main{
@@ -26,13 +26,13 @@ function bc_customizer_css(){
     <?php } ?>
     .navbar-inner, .navbar-inner ul.dropdown-menu{
       background-color: <?php echo $navbar_color; ?> !important;
-      background-image: -moz-linear-gradient(top, <?php echo $navbar_color; ?>, <?php echo bc_customizer_adjust_brightness($navbar_color, -10); ?>) !important;
-      background-image: -webkit-gradient(linear, 0 0, 0 100%, from(<?php echo $navbar_color; ?>), to(<?php echo bc_customizer_adjust_brightness($navbar_color, -10); ?>)) !important;
-      background-image: -webkit-linear-gradient(top, <?php echo $navbar_color; ?>, <?php echo bc_customizer_adjust_brightness($navbar_color, -10); ?>) !important;
-      background-image: -o-linear-gradient(top, <?php echo $navbar_color; ?>, <?php echo bc_customizer_adjust_brightness($navbar_color, -10); ?>) !important;
-      background-image: linear-gradient(to bottom, <?php echo $navbar_color; ?>, <?php echo bc_customizer_adjust_brightness($navbar_color, -10); ?>) !important;
-      filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",argb(<?php echo $navbar_color; ?>),argb(<?php echo bc_customizer_adjust_brightness($navbar_color, -10); ?>))) !important;
-      border: 1px solid <?php echo bc_customizer_adjust_brightness($navbar_color, -20); ?>;
+      background-image: -moz-linear-gradient(top, <?php echo $navbar_color; ?>, <?php echo shoestrap_adjust_brightness($navbar_color, -10); ?>) !important;
+      background-image: -webkit-gradient(linear, 0 0, 0 100%, from(<?php echo $navbar_color; ?>), to(<?php echo shoestrap_adjust_brightness($navbar_color, -10); ?>)) !important;
+      background-image: -webkit-linear-gradient(top, <?php echo $navbar_color; ?>, <?php echo shoestrap_adjust_brightness($navbar_color, -10); ?>) !important;
+      background-image: -o-linear-gradient(top, <?php echo $navbar_color; ?>, <?php echo shoestrap_adjust_brightness($navbar_color, -10); ?>) !important;
+      background-image: linear-gradient(to bottom, <?php echo $navbar_color; ?>, <?php echo shoestrap_adjust_brightness($navbar_color, -10); ?>) !important;
+      filter: e(%("progid:DXImageTransform.Microsoft.gradient(startColorstr='%d', endColorstr='%d', GradientType=0)",argb(<?php echo $navbar_color; ?>),argb(<?php echo shoestrap_adjust_brightness($navbar_color, -10); ?>))) !important;
+      border: 1px solid <?php echo shoestrap_adjust_brightness($navbar_color, -20); ?>;
     }
     .navbar .nav > li > .dropdown-menu::before{
       border-bottom: 7px solid <?php echo $navbar_color; ?>;
@@ -43,76 +43,76 @@ function bc_customizer_css(){
     .navbar-inner a, .navbar-inner .brand, .navbar .nav > li > a,
     .navbar-inner .dropdown-menu li > a,
     .navbar-inner .dropdown-menu li > a:hover, .navbar-inner .dropdown-menu li > a:focus, .navbar-inner .dropdown-submenu:hover > a{
-      <?php if (bc_customizer_get_brightness($navbar_color) >= 160){ ?>
-        color: <?php echo bc_customizer_adjust_brightness($navbar_color, -160); ?>;
+      <?php if (shoestrap_get_brightness($navbar_color) >= 160){ ?>
+        color: <?php echo shoestrap_adjust_brightness($navbar_color, -160); ?>;
       <?php } else { ?>
-        color: <?php echo bc_customizer_adjust_brightness($navbar_color, 160); ?>;
+        color: <?php echo shoestrap_adjust_brightness($navbar_color, 160); ?>;
       <?php } ?>
-      text-shadow: 0 1px 0 <?php echo bc_customizer_adjust_brightness($navbar_color, -15); ?>;
+      text-shadow: 0 1px 0 <?php echo shoestrap_adjust_brightness($navbar_color, -15); ?>;
     }
     .navbar-inner a:hover, .navbar-inner .brand:hover, .navbar .nav > li > a:hover{
-      <?php if (bc_customizer_get_brightness($navbar_color) >= 160){ ?>
-        color: <?php echo bc_customizer_adjust_brightness($navbar_color, -200); ?>;
+      <?php if (shoestrap_get_brightness($navbar_color) >= 160){ ?>
+        color: <?php echo shoestrap_adjust_brightness($navbar_color, -200); ?>;
       <?php } else { ?>
-        color: <?php echo bc_customizer_adjust_brightness($navbar_color, 200); ?>;
+        color: <?php echo shoestrap_adjust_brightness($navbar_color, 200); ?>;
       <?php } ?>
-      text-shadow: 0 1px 0 <?php echo bc_customizer_adjust_brightness($navbar_color, -15); ?>;
+      text-shadow: 0 1px 0 <?php echo shoestrap_adjust_brightness($navbar_color, -15); ?>;
     }
     .navbar .nav > .active > a, .navbar .nav > .active > a:hover, .navbar .nav > .active > a:focus{
-      <?php if (bc_customizer_get_brightness($navbar_color) >= 130){ ?>
-        color: <?php echo bc_customizer_adjust_brightness($navbar_color, -180); ?>;
-        background-color: <?php echo bc_customizer_adjust_brightness($navbar_color, -20); ?>;
+      <?php if (shoestrap_get_brightness($navbar_color) >= 130){ ?>
+        color: <?php echo shoestrap_adjust_brightness($navbar_color, -180); ?>;
+        background-color: <?php echo shoestrap_adjust_brightness($navbar_color, -20); ?>;
       <?php } else { ?>
-        color: <?php echo bc_customizer_adjust_brightness($navbar_color, 180); ?>;
-        background-color: <?php echo bc_customizer_adjust_brightness($navbar_color, 30); ?>;
+        color: <?php echo shoestrap_adjust_brightness($navbar_color, 180); ?>;
+        background-color: <?php echo shoestrap_adjust_brightness($navbar_color, 30); ?>;
       <?php } ?>
-      text-shadow: 0 1px 0 <?php echo bc_customizer_adjust_brightness($navbar_color, -15); ?>;
+      text-shadow: 0 1px 0 <?php echo shoestrap_adjust_brightness($navbar_color, -15); ?>;
     }
     .navbar .nav li.dropdown.open > .dropdown-toggle, .navbar .nav li.dropdown.active > .dropdown-toggle, .navbar .nav li.dropdown.open.active > .dropdown-toggle{
-      <?php if (bc_customizer_get_brightness($navbar_color) >= 130){ ?>
-        color: <?php echo bc_customizer_adjust_brightness($navbar_color, -180); ?>;
-        background-color: <?php echo bc_customizer_adjust_brightness($navbar_color, -40); ?>;
+      <?php if (shoestrap_get_brightness($navbar_color) >= 130){ ?>
+        color: <?php echo shoestrap_adjust_brightness($navbar_color, -180); ?>;
+        background-color: <?php echo shoestrap_adjust_brightness($navbar_color, -40); ?>;
       <?php } else { ?>
-        color: <?php echo bc_customizer_adjust_brightness($navbar_color, 180); ?>;
-        background-color: <?php echo bc_customizer_adjust_brightness($navbar_color, 50); ?>;
+        color: <?php echo shoestrap_adjust_brightness($navbar_color, 180); ?>;
+        background-color: <?php echo shoestrap_adjust_brightness($navbar_color, 50); ?>;
       <?php } ?>
-      text-shadow: 0 1px 0 <?php echo bc_customizer_adjust_brightness($navbar_color, -15); ?>;
+      text-shadow: 0 1px 0 <?php echo shoestrap_adjust_brightness($navbar_color, -15); ?>;
     }
     .navbar .nav li.dropdown > .dropdown-toggle .caret,
     .navbar .nav li.dropdown.open > .dropdown-toggle .caret, .navbar .nav li.dropdown.active > .dropdown-toggle .caret, 
     .navbar .nav li.dropdown.open.active > .dropdown-toggle .caret{
-      <?php if (bc_customizer_get_brightness($navbar_color) >= 160){ ?>
-        border-top-color: <?php echo bc_customizer_adjust_brightness($navbar_color, -160); ?>;
-        border-bottom-color: <?php echo bc_customizer_adjust_brightness($navbar_color, -160); ?>;
+      <?php if (shoestrap_get_brightness($navbar_color) >= 160){ ?>
+        border-top-color: <?php echo shoestrap_adjust_brightness($navbar_color, -160); ?>;
+        border-bottom-color: <?php echo shoestrap_adjust_brightness($navbar_color, -160); ?>;
       <?php } else { ?>
-        border-top-color: <?php echo bc_customizer_adjust_brightness($navbar_color, 160); ?>;
-        border-bottom-color: <?php echo bc_customizer_adjust_brightness($navbar_color, 160); ?>;
+        border-top-color: <?php echo shoestrap_adjust_brightness($navbar_color, 160); ?>;
+        border-bottom-color: <?php echo shoestrap_adjust_brightness($navbar_color, 160); ?>;
       <?php } ?>
     }
     a, a.active, a:hover, a.hover, a.visited, a:visited, a.link, a:link, .product-single .mp_product_meta .mp_product_price, #product_list .product .mp_product_price{color: <?php echo $link_color; ?>}
     a.btn{color: #333;}
     a.btn-primary, a.btn-info, a.btn-success, a.btn-danger, a.btn-inverse, a.btn-warning{color: #fff;}
     .dropdown-menu{background: <?php echo $color; ?>; background: #<?php echo $color; ?>;}
-    <?php if (bc_customizer_get_brightness($color) >= 130){ ?>
+    <?php if (shoestrap_get_brightness($color) >= 130){ ?>
       .dropdown-menu li > a{color: #222;}
     <?php } ?>
     .dropdown-menu .active > a, .dropdown-menu .active > a:hover{
-      <?php if (bc_customizer_get_brightness($navbar_color) >= 160){ ?>
-        background: <?php echo bc_customizer_adjust_brightness($navbar_color, -100); ?>;
-        color: <?php echo bc_customizer_adjust_brightness($navbar_color, 10); ?> !important;
+      <?php if (shoestrap_get_brightness($navbar_color) >= 160){ ?>
+        background: <?php echo shoestrap_adjust_brightness($navbar_color, -100); ?>;
+        color: <?php echo shoestrap_adjust_brightness($navbar_color, 10); ?> !important;
       <?php } else { ?>
-        background: <?php echo bc_customizer_adjust_brightness($navbar_color, 100); ?>;
-        color: <?php echo bc_customizer_adjust_brightness($navbar_color, -10); ?> !important;
+        background: <?php echo shoestrap_adjust_brightness($navbar_color, 100); ?>;
+        color: <?php echo shoestrap_adjust_brightness($navbar_color, -10); ?> !important;
       <?php } ?>
     }
     .dropdown-menu li > a:hover, .dropdown-menu li > a:focus, .dropdown-submenu:hover > a{
-      <?php if (bc_customizer_get_brightness($navbar_color) >= 160){ ?>
-        background: <?php echo bc_customizer_adjust_brightness($navbar_color, -30); ?>;
+      <?php if (shoestrap_get_brightness($navbar_color) >= 160){ ?>
+        background: <?php echo shoestrap_adjust_brightness($navbar_color, -30); ?>;
       <?php } else { ?>
-        background: <?php echo bc_customizer_adjust_brightness($navbar_color, 30); ?>;
+        background: <?php echo shoestrap_adjust_brightness($navbar_color, 30); ?>;
       <?php } ?>
     }
-    <?php if (bc_customizer_get_brightness($header_bg_color) >= 130){ ?>
+    <?php if (shoestrap_get_brightness($header_bg_color) >= 130){ ?>
       .dropdown-menu li > a:hover, .dropdown-menu li > a:focus, .dropdown-submenu:hover > a{color: #222;}
     <?php } ?>
     .logo-wrapper{background: <?php echo $header_bg_color; ?>;}
@@ -129,9 +129,9 @@ function bc_customizer_css(){
     <?php } ?>
     #footer-wrapper{background: <?php echo $footer_color; ?>}
     <?php
-    if (bc_customizer_get_brightness($footer_color) <= 160){
+    if (shoestrap_get_brightness($footer_color) <= 160){
       echo '#footer-wrapper{color: #dedede;}';
-      if (bc_customizer_get_brightness($link_color) <= 160){
+      if (shoestrap_get_brightness($link_color) <= 160){
         echo '#footer-wrapper a{color: #fff;}';
       }
     } ?>
@@ -147,7 +147,7 @@ function bc_customizer_css(){
     ));
     $less->setFormatter("compressed");
     
-    if (bc_customizer_get_brightness($btn_color) <= 160){
+    if (shoestrap_get_brightness($btn_color) <= 160){
       echo $less->compile("
         @btnColorHighlight: darken(spin(@btnColor, 5%), 10%);
 
@@ -226,8 +226,8 @@ function bc_customizer_css(){
     }?>
   </style>
 
-  <?php if ( function_exists( 'bc_customizer_typography' ) ) { bc_customizer_typography(); } ?>
+  <?php if ( function_exists( 'shoestrap_typography' ) ) { shoestrap_typography(); } ?>
 
   <?php
 }
-add_action( 'wp_head', 'bc_customizer_css', 199 );
+add_action( 'wp_head', 'shoestrap_css', 199 );

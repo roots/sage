@@ -1,6 +1,6 @@
 <?php
 
-function bc_core_phpless(){
+function shoestrap_phpless(){
   if ( !class_exists( 'lessc' ) ) {
     require_once( TEMPLATEPATH . '/lib/less_compiler/lessc.inc.php' );
   }
@@ -9,4 +9,4 @@ function bc_core_phpless(){
 
   $less->checkedCompile( TEMPLATEPATH . '/assets/css/app.less', TEMPLATEPATH . '/assets/css/app.css' );
 }
-add_action('wp_head', 'bc_core_phpless');
+add_action('wp_head', 'shoestrap_phpless');

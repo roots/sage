@@ -57,7 +57,7 @@ class BC_core_Nav_Walker extends Walker_Nav_Menu {
  * Remove the id="" on nav menu items
  * Return 'menu-slug' for nav menu classes
  */
-function bc_core_nav_menu_css_class($classes, $item) {
+function shoestrap_nav_menu_css_class($classes, $item) {
   $slug = sanitize_title($item->title);
   $classes = preg_replace('/(current(-menu-|[-_]page[-_])(item|parent|ancestor))/', 'active', $classes);
   $classes = preg_replace('/((menu|page)[-_\w+]+)+/', '', $classes);
@@ -69,7 +69,7 @@ function bc_core_nav_menu_css_class($classes, $item) {
   return array_filter($classes, 'is_element_empty');
 }
 
-add_filter('nav_menu_css_class', 'bc_core_nav_menu_css_class', 10, 2);
+add_filter('nav_menu_css_class', 'shoestrap_nav_menu_css_class', 10, 2);
 add_filter('nav_menu_item_id', '__return_null');
 
 /**
@@ -78,24 +78,24 @@ add_filter('nav_menu_item_id', '__return_null');
  * Remove the container
  * Use BC_core_Nav_Walker() by default
  */
-function bc_core_nav_menu_args($args = '') {
-  $bc_core_nav_menu_args['container'] = false;
+function shoestrap_nav_menu_args($args = '') {
+  $shoestrap_nav_menu_args['container'] = false;
 
   if (!$args['items_wrap']) {
-    $bc_core_nav_menu_args['items_wrap'] = '<ul class="%2$s">%3$s</ul>';
+    $shoestrap_nav_menu_args['items_wrap'] = '<ul class="%2$s">%3$s</ul>';
   }
 
   if (current_theme_supports('bootstrap-top-navbar')) {
-    $bc_core_nav_menu_args['depth'] = 3;
+    $shoestrap_nav_menu_args['depth'] = 3;
   }
 
   if (!$args['walker']) {
-    $bc_core_nav_menu_args['walker'] = new BC_core_Nav_Walker();
+    $shoestrap_nav_menu_args['walker'] = new BC_core_Nav_Walker();
   }
 
-  return array_merge($args, $bc_core_nav_menu_args);
+  return array_merge($args, $shoestrap_nav_menu_args);
 }
 
-add_filter('wp_nav_menu_args', 'bc_core_nav_menu_args');
+add_filter('wp_nav_menu_args', 'shoestrap_nav_menu_args');
 
 

@@ -8,7 +8,7 @@ if( !class_exists( 'EDD_SL_Theme_Updater' ) ) {
 }
  
 // retrieve our license key from the DB
-$license_key = trim( get_option( 'bc_core_license_key' ) );
+$license_key = trim( get_option( 'shoestrap_license_key' ) );
  
 // setup the updater
 $edd_updater = new EDD_SL_Theme_Updater( array( 
@@ -20,20 +20,20 @@ $edd_updater = new EDD_SL_Theme_Updater( array(
   )
 );
 
-add_action('admin_menu', 'bc_core_license_menu');
-function bc_core_license_menu() {
-  add_theme_page( 'Bootstrap Commerce Core Theme License', 'BC-Core Theme License', 'manage_options', 'bc-core-license', 'bc_core_license_page' );
+add_action('admin_menu', 'shoestrap_license_menu');
+function shoestrap_license_menu() {
+  add_theme_page( 'Bootstrap Commerce Core Theme License', 'BC-Core Theme License', 'manage_options', 'bc-core-license', 'shoestrap_license_page' );
 }
 
-function bc_core_license_page() {
-  $license  = get_option( 'bc_core_license_key' );
-  $status   = get_option( 'bc_core_license_key_status' );
+function shoestrap_license_page() {
+  $license  = get_option( 'shoestrap_license_key' );
+  $status   = get_option( 'shoestrap_license_key_status' );
   ?>
   <div class="wrap">
     <h2><?php _e('Theme License Options'); ?></h2>
     <form method="post" action="options.php">
     
-      <?php settings_fields('bc_core_license'); ?>
+      <?php settings_fields('shoestrap_license'); ?>
       
       <table class="form-table">
         <tbody>
@@ -42,8 +42,8 @@ function bc_core_license_page() {
               <?php _e('License Key'); ?>
             </th>
             <td>
-              <input id="bc_core_license_key" name="bc_core_license_key" type="text" class="regular-text" value="<?php esc_attr_e( $license ); ?>" />
-              <label class="description" for="bc_core_license_key"><?php _e('Enter your license key'); ?></label>
+              <input id="shoestrap_license_key" name="shoestrap_license_key" type="text" class="regular-text" value="<?php esc_attr_e( $license ); ?>" />
+              <label class="description" for="shoestrap_license_key"><?php _e('Enter your license key'); ?></label>
             </td>
           </tr>
           <?php if( false !== $license ) { ?>
@@ -69,21 +69,21 @@ function bc_core_license_page() {
   <?php
 }
 
-add_action('admin_init', 'bc_core_register_option');
-function bc_core_register_option() {
+add_action('admin_init', 'shoestrap_register_option');
+function shoestrap_register_option() {
   // creates our settings in the options table
-  register_setting('bc_core_license', 'bc_core_license_key', 'edd_theme_sanitize_license' );
+  register_setting('shoestrap_license', 'shoestrap_license_key', 'edd_theme_sanitize_license' );
 }
 
 function edd_theme_sanitize_license( $new ) {
-  $old = get_option( 'bc_core_license_key' );
+  $old = get_option( 'shoestrap_license_key' );
   if( $old && $old != $new ) {
-    delete_option( 'bc_core_license_key_status' ); // new license has been entered, so must reactivate
+    delete_option( 'shoestrap_license_key_status' ); // new license has been entered, so must reactivate
   }
   return $new;
 }
 
-function bc_core_activate_license() {
+function shoestrap_activate_license() {
 
   if( isset( $_POST['edd_theme_license_activate'] ) ) { 
     if( ! check_admin_referer( 'bootstrap_commerce_nonce', 'bootstrap_commerce_nonce' ) )   
@@ -91,7 +91,7 @@ function bc_core_activate_license() {
 
     global $wp_version;
 
-    $license = trim( get_option( 'bc_core_license_key' ) );
+    $license = trim( get_option( 'shoestrap_license_key' ) );
         
     $api_params = array( 
       'edd_action' => 'activate_license', 
@@ -108,18 +108,18 @@ function bc_core_activate_license() {
     
     // $license_data->license will be either "active" or "inactive"
 
-    update_option( 'bc_core_license_key_status', $license_data->license );
+    update_option( 'shoestrap_license_key_status', $license_data->license );
 
   }
 }
-add_action('admin_init', 'bc_core_activate_license');
+add_action('admin_init', 'shoestrap_activate_license');
 
 
-function bc_core_check_license() {
+function shoestrap_check_license() {
 
   global $wp_version;
 
-  $license = trim( get_option( 'bc_core_license_key' ) );
+  $license = trim( get_option( 'shoestrap_license_key' ) );
     
   $api_params = array( 
     'edd_action' => 'check_license', 

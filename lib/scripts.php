@@ -15,12 +15,12 @@
  * 4. /theme/assets/js/main.js
  */
 
-function bc_core_scripts() {
-  wp_enqueue_style('bc_core_app', get_template_directory_uri() . '/assets/css/app.css', false, null);
+function shoestrap_scripts() {
+  wp_enqueue_style('shoestrap_app', get_template_directory_uri() . '/assets/css/app.css', false, null);
 
   // Load style.css from child theme
   if (is_child_theme()) {
-    wp_enqueue_style('bc_core_child', get_stylesheet_uri(), false, null);
+    wp_enqueue_style('shoestrap_child', get_stylesheet_uri(), false, null);
   }
 
   // jQuery is loaded in header.php using the same method from HTML5 Boilerplate:
@@ -35,10 +35,10 @@ function bc_core_scripts() {
     wp_enqueue_script('comment-reply');
   }
 
-  wp_register_script('bc_core_plugins', get_template_directory_uri() . '/assets/js/plugins.js', false, null, false);
-  wp_register_script('bc_core_main', get_template_directory_uri() . '/assets/js/main.js', false, null, false);
-  wp_enqueue_script('bc_core_plugins');
-  wp_enqueue_script('bc_core_main');
+  wp_register_script('shoestrap_plugins', get_template_directory_uri() . '/assets/js/plugins.js', false, null, false);
+  wp_register_script('shoestrap_main', get_template_directory_uri() . '/assets/js/main.js', false, null, false);
+  wp_enqueue_script('shoestrap_plugins');
+  wp_enqueue_script('shoestrap_main');
 }
 
-add_action('wp_enqueue_scripts', 'bc_core_scripts', 100);
+add_action('wp_enqueue_scripts', 'shoestrap_scripts', 100);

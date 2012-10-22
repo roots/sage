@@ -1,14 +1,14 @@
 <?php
 
-function bc_customizer_enabled(){}
+function shoestrap_enabled(){}
 
-function bc_customizer_remove_controls($wp_customize){
+function shoestrap_remove_controls($wp_customize){
   $wp_customize->remove_control( 'header_textcolor');
 }
-add_action( 'customize_register', 'bc_customizer_remove_controls' );
+add_action( 'customize_register', 'shoestrap_remove_controls' );
 
-function bc_customizer_btn_class($echo = true){
-  $btn_class = get_theme_mod( 'bc_customizer_hero_cta_color' );
+function shoestrap_btn_class($echo = true){
+  $btn_class = get_theme_mod( 'shoestrap_hero_cta_color' );
 
   if ($btn_class == 'primary') {$class = 'btn btn-primary';
   } elseif ($btn_class == 'info') { $class = 'btn btn-info';
@@ -25,7 +25,7 @@ function bc_customizer_btn_class($echo = true){
   }
 }
 
-function bc_customizer_get_brightness($hex) {
+function shoestrap_get_brightness($hex) {
   // returns brightness value from 0 to 255
   // strip off any leading #
   $hex = str_replace('#', '', $hex);
@@ -37,7 +37,7 @@ function bc_customizer_get_brightness($hex) {
   return (($c_r * 299) + ($c_g * 587) + ($c_b * 114)) / 1000;
 }
 
-function bc_customizer_adjust_brightness($hex, $steps) {
+function shoestrap_adjust_brightness($hex, $steps) {
   // Steps should be between -255 and 255. Negative = darker, positive = lighter
   $steps = max(-255, min(255, $steps));
   
@@ -64,8 +64,8 @@ function bc_customizer_adjust_brightness($hex, $steps) {
   return '#'.$r_hex.$g_hex.$b_hex;
 }
 
-function bc_customizer_typography(){
-  $webfont      = get_theme_mod('bc_customizer_google_webfonts');
+function shoestrap_typography(){
+  $webfont      = get_theme_mod('shoestrap_google_webfonts');
   $f            = strlen($webfont);
   if ($f > 3){
     $webfontname  = str_replace(' ', '+', $webfont);
@@ -73,7 +73,7 @@ function bc_customizer_typography(){
   }
 }
 
-function bc_customizer_preview() {
+function shoestrap_preview() {
   ?>
   <script type="text/javascript">
   ( function( $ ){

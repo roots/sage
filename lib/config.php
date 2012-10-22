@@ -13,7 +13,7 @@ add_theme_support('bootstrap-top-navbar');  // Enable Bootstrap's fixed navbar
  *
  * See lib/sidebar.php for more details
  */
-function bc_core_display_sidebar() {
+function shoestrap_display_sidebar() {
   $sidebar_config = new BC_core_Sidebar(
     /**
      * Conditional tag checks (http://codex.wordpress.org/Conditional_Tags)
@@ -42,8 +42,8 @@ function bc_core_display_sidebar() {
 }
 
 // #main CSS classes
-function bc_core_main_class() {
-  if (bc_core_display_sidebar()) {
+function shoestrap_main_class() {
+  if (shoestrap_display_sidebar()) {
     $class = 'span8';
   } else {
     $class = 'span12';
@@ -53,7 +53,7 @@ function bc_core_main_class() {
 }
 
 // #sidebar CSS classes
-function bc_core_sidebar_class() {
+function shoestrap_sidebar_class() {
   return 'span4';
 }
 

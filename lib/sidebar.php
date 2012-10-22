@@ -20,7 +20,7 @@ class BC_core_Sidebar {
     $this->conditionals = $conditionals;
     $this->templates    = $templates;
     
-    $hide_mod = get_theme_mod( 'bc_customizer_aside_layout' );
+    $hide_mod = get_theme_mod( 'shoestrap_aside_layout' );
 
     $conditionals = array_map(array($this, 'check_conditional_tag'), $this->conditionals);
     $templates    = array_map(array($this, 'check_page_template'), $this->templates);

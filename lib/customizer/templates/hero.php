@@ -1,10 +1,10 @@
 <?php
-function bc_customizer_hero() {
-  $herotitle        = get_theme_mod( 'bc_customizer_hero_title' );
-  $herocontent      = get_theme_mod( 'bc_customizer_hero_content' );
-  $cta_text         = get_theme_mod( 'bc_customizer_hero_cta_text' );
-  $cta_link         = get_theme_mod( 'bc_customizer_hero_cta_link' );
-  $hero_visibility  = get_theme_mod( 'bc_customizer_hero_visibility' );
+function shoestrap_hero() {
+  $herotitle        = get_theme_mod( 'shoestrap_hero_title' );
+  $herocontent      = get_theme_mod( 'shoestrap_hero_content' );
+  $cta_text         = get_theme_mod( 'shoestrap_hero_cta_text' );
+  $cta_link         = get_theme_mod( 'shoestrap_hero_cta_link' );
+  $hero_visibility  = get_theme_mod( 'shoestrap_hero_visibility' );
 
   $hero = false;
   if ( $hero_visibility == 'front' ) {
@@ -27,7 +27,7 @@ function bc_customizer_hero() {
         <p><?php echo $herocontent; ?></p>
         <?php if ( !empty( $cta_text ) ) { ?>
           <p>
-            <a href="<?php echo $cta_link; ?>" class="<?php if ( function_exists( 'bc_customizer_btn_class' ) ) { bc_customizer_btn_class(); } ?>">
+            <a href="<?php echo $cta_link; ?>" class="<?php if ( function_exists( 'shoestrap_btn_class' ) ) { shoestrap_btn_class(); } ?>">
               <?php echo $cta_text; ?>
             </a>
           </p>
@@ -37,4 +37,4 @@ function bc_customizer_hero() {
     </div>
   <?php }
 }
-add_action( 'bc_core_hero', 'bc_customizer_hero' );
+add_action( 'shoestrap_hero', 'shoestrap_hero' );
