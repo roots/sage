@@ -14,7 +14,6 @@ require_once locate_template('/lib/cleanup.php');               // Cleanup
 require_once locate_template('/lib/nav.php');                   // Custom nav modifications
 require_once locate_template('/lib/widgets.php');               // Sidebars and widgets
 require_once locate_template('/lib/scripts.php');               // Scripts and stylesheets
-require_once locate_template('/lib/post-types.php');            // Custom post types
 require_once locate_template('/lib/metaboxes.php');             // Custom metaboxes
 require_once locate_template('/lib/less.php');                  // Less to CSS PHP Compiler
 require_once locate_template('/lib/customizer/customizer.php'); // Customizer functions
