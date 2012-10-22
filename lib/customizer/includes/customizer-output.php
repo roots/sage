@@ -5,15 +5,17 @@ function shoestrap_css(){
   $variation              = get_theme_mod('shoestrap_text_variation');
   $header_bg_color        = get_theme_mod('shoestrap_header_backgroundcolor');
   $header_sitename_color  = get_theme_mod('shoestrap_header_textcolor');
-  $btn_color              = '#0066cc'; //Set default to #06c
   $btn_color              = get_theme_mod('shoestrap_buttons_color');    
   $link_color             = get_theme_mod('shoestrap_link_color');
   $footer_color           = get_theme_mod('shoestrap_footer_background_color');
   $webfont                = get_theme_mod('shoestrap_google_webfonts');
   $navbar_color           = get_theme_mod('shoestrap_navbar_color');
   $sidebar_location       = get_theme_mod('shoestrap_aside_layout');
-  ?>
-  
+
+  if ( strlen( $btn_color ) < 3 ){
+    $btn_color            = '#0066cc'; // if no color has been selected, set to #0066cc. This prevents errors with the php-less compiler.
+  } ?>
+
   <style>
     .jumbotron{
       background: <?php echo get_theme_mod('shoestrap_hero_background_color') ?> url("<?php echo get_theme_mod( 'shoestrap_hero_background' ); ?>");
