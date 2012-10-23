@@ -1,7 +1,13 @@
-<footer id="content-info" class="container" role="contentinfo">
-  <?php dynamic_sidebar('sidebar-footer'); ?>
-  <p>&copy; <?php echo date('Y'); ?> <?php bloginfo('name'); ?></p>
-</footer>
+<div id="footer-wrapper" class="container-fluid">
+  <footer id="content-info" class="container" role="contentinfo">
+    <div class="row-fluid">
+      <div class="span4"><?php dynamic_sidebar('sidebar-footer-left'); ?></div>
+      <div class="span4"><?php dynamic_sidebar('sidebar-footer-center'); ?></div>
+      <div class="span4"><?php dynamic_sidebar('sidebar-footer-right'); ?></div>
+    </div>
+    <p>&copy; <?php echo date('Y'); ?> <?php bloginfo('name'); ?></p>
+  </footer>
+</div>
 
 <?php if (GOOGLE_ANALYTICS_ID) : ?>
 <script>
@@ -13,3 +19,5 @@
 <?php endif; ?>
 
 <?php wp_footer(); ?>
+
+<?php do_action('shoestrap_after_footer');
