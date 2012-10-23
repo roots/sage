@@ -16,8 +16,6 @@
  */
 
 function shoestrap_scripts() {
-  wp_enqueue_style('shoestrap_bootstrap', get_template_directory_uri() . '/assets/css/bootstrap.css', false, null);
-  wp_enqueue_style('shoestrap_bootstrap_responsive', get_template_directory_uri() . '/assets/css/bootstrap-responsive.css', array('shoestrap_bootstrap'), null);
   wp_enqueue_style('shoestrap_app', get_template_directory_uri() . '/assets/css/app.css', false, null);
 
   // Load style.css from child theme
