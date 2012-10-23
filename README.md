@@ -19,7 +19,7 @@ please make sure that it is writable and your server has write permissions for t
 ## Automatic Updates
 
 This theme provides automatic updates.
-When you get this theme from http://bootstrap-commerce.com/downloads/downloads/shoepress/ a licence key will be emailed 
+When you get this theme from http://bootstrap-commerce.com/downloads/downloads/shoestrap/ a licence key will be emailed 
 which when entered and activated will provide you with automatic updates
 
 ## Features
