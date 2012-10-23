@@ -1,0 +1,318 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-08-28 11:22-0300\n"
+"PO-Revision-Date: 2012-08-28 11:22-0300\n"
+"Last-Translator: Weslly Honorato <weslly.honorato@gmail.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;__;_e\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPath-1: ./templates\n"
+"X-Poedit-SearchPath-2: ./lib\n"
+
+#: 404.php:5
+msgid ""
+"The page you are looking for might have been removed, had its name changed, "
+"or is temporarily unavailable."
+msgstr ""
+
+#: 404.php:8
+msgid "Please try the following:"
+msgstr ""
+
+#: 404.php:10
+msgid "Check your spelling"
+msgstr ""
+
+#: 404.php:11
+#, php-format
+msgid "Return to the <a href=\"%s\">home page</a>"
+msgstr ""
+
+#: 404.php:12
+msgid "Click the <a href=\"javascript:history.back()\">Back</a> button"
+msgstr ""
+
+#: functions.php:28
+msgid "Primary Navigation"
+msgstr ""
+
+#: lib/activation.php:32 lib/activation.php:33
+msgid "Theme Activation"
+msgstr ""
+
+#: lib/activation.php:72
+#, php-format
+msgid "%s Theme Activation"
+msgstr ""
+
+#: lib/activation.php:87 lib/activation.php:89
+msgid "Create static front page?"
+msgstr ""
+
+#: lib/activation.php:91 lib/activation.php:104 lib/activation.php:117
+#: lib/activation.php:130 lib/activation.php:143
+msgid "Yes"
+msgstr ""
+
+#: lib/activation.php:92 lib/activation.php:105 lib/activation.php:118
+#: lib/activation.php:131 lib/activation.php:144
+msgid "No"
+msgstr ""
+
+#: lib/activation.php:95
+msgid "Create a page called Home and set it to be the static front page"
+msgstr ""
+
+#: lib/activation.php:100
+msgid "Change permalink structure?"
+msgstr ""
+
+#: lib/activation.php:102
+msgid "Update permalink structure?"
+msgstr ""
+
+#: lib/activation.php:108
+msgid "Change permalink structure to /&#37;postname&#37;/"
+msgstr ""
+
+#: lib/activation.php:113
+msgid "Change uploads folder?"
+msgstr ""
+
+#: lib/activation.php:115
+msgid "Update uploads folder?"
+msgstr ""
+
+#: lib/activation.php:121
+msgid "Change uploads folder to /assets/ instead of /wp-content/uploads/"
+msgstr ""
+
+#: lib/activation.php:126 lib/activation.php:128
+msgid "Create navigation menu?"
+msgstr ""
+
+#: lib/activation.php:134
+msgid "Create the Primary Navigation menu and set the location"
+msgstr ""
+
+#: lib/activation.php:139 lib/activation.php:141
+msgid "Add pages to menu?"
+msgstr ""
+
+#: lib/activation.php:147
+msgid "Add all current published pages to the Primary Navigation"
+msgstr ""
+
+#: lib/cleanup.php:404
+msgid "Continued"
+msgstr ""
+
+#: lib/htaccess.php:26
+#, php-format
+msgid "Please make sure your <a href=\"%s\">.htaccess</a> file is writable "
+msgstr ""
+
+#: lib/template-tags.php:5
+#, php-format
+msgid "Posted on %s at %s."
+msgstr ""
+
+#: lib/template-tags.php:6
+msgid "Written by"
+msgstr ""
+
+#: lib/widgets.php:6
+msgid "Primary Sidebar"
+msgstr ""
+
+#: lib/widgets.php:14
+msgid "Footer"
+msgstr ""
+
+#: lib/widgets.php:30
+msgid "Use this widget to add a vCard"
+msgstr ""
+
+#: lib/widgets.php:31
+msgid "Roots: vCard"
+msgstr ""
+
+#: lib/widgets.php:58
+msgid "vCard"
+msgstr ""
+
+#: lib/widgets.php:124
+msgid "Title (optional):"
+msgstr ""
+
+#: lib/widgets.php:128
+msgid "Street Address:"
+msgstr ""
+
+#: lib/widgets.php:132
+msgid "City/Locality:"
+msgstr ""
+
+#: lib/widgets.php:136
+msgid "State/Region:"
+msgstr ""
+
+#: lib/widgets.php:140
+msgid "Zipcode/Postal Code:"
+msgstr ""
+
+#: lib/widgets.php:144
+msgid "Telephone:"
+msgstr ""
+
+#: lib/widgets.php:148
+msgid "Email:"
+msgstr ""
+
+#: templates/comments.php:7
+#, php-format
+msgid "<cite class=\"fn\">%s</cite>"
+msgstr ""
+
+#: templates/comments.php:8
+#, php-format
+msgid "%1$s"
+msgstr ""
+
+#: templates/comments.php:9
+msgid "(Edit)"
+msgstr ""
+
+#: templates/comments.php:15
+msgid "Your comment is awaiting moderation."
+msgstr ""
+
+#: templates/comments.php:32
+msgid "This post is password protected. Enter the password to view comments."
+msgstr ""
+
+#: templates/comments.php:49
+msgid "&larr; Older comments"
+msgstr ""
+
+#: templates/comments.php:50
+msgid "Newer comments &rarr;"
+msgstr ""
+
+#: templates/comments.php:58 templates/comments.php:68
+msgid "Comments are closed."
+msgstr ""
+
+#: templates/comments.php:75
+msgid "Leave a Reply"
+msgstr ""
+
+#: templates/comments.php:75
+#, php-format
+msgid "Leave a Reply to %s"
+msgstr ""
+
+#: templates/comments.php:78
+#, php-format
+msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
+msgstr ""
+
+#: templates/comments.php:82
+#, php-format
+msgid "Logged in as <a href=\"%s/wp-admin/profile.php\">%s</a>."
+msgstr ""
+
+#: templates/comments.php:82
+msgid "Log out of this account"
+msgstr ""
+
+#: templates/comments.php:82
+msgid "Log out &raquo;"
+msgstr ""
+
+#: templates/comments.php:84
+msgid "Name"
+msgstr ""
+
+#: templates/comments.php:84 templates/comments.php:86
+msgid " (required)"
+msgstr ""
+
+#: templates/comments.php:86
+msgid "Email (will not be published)"
+msgstr ""
+
+#: templates/comments.php:88
+msgid "Website"
+msgstr ""
+
+#: templates/comments.php:91
+msgid "Comment"
+msgstr ""
+
+#: templates/comments.php:93
+msgid "Submit Comment"
+msgstr ""
+
+#: templates/content-single.php:11
+msgid "Pages:"
+msgstr ""
+
+#: templates/content.php:4
+msgid "Sorry, no results were found."
+msgstr ""
+
+#: templates/content.php:26
+msgid "&larr; Older posts"
+msgstr ""
+
+#: templates/content.php:27
+msgid "Newer posts &rarr;"
+msgstr ""
+
+#: templates/page-header.php:8
+msgid "Latest Posts"
+msgstr ""
+
+#: templates/page-header.php:17
+#, php-format
+msgid "Daily Archives: %s"
+msgstr ""
+
+#: templates/page-header.php:19
+#, php-format
+msgid "Monthly Archives: %s"
+msgstr ""
+
+#: templates/page-header.php:21
+#, php-format
+msgid "Yearly Archives: %s"
+msgstr ""
+
+#: templates/page-header.php:25
+#, php-format
+msgid "Author Archives: %s"
+msgstr ""
+
+#: templates/page-header.php:30
+#, php-format
+msgid "Search Results for %s"
+msgstr ""
+
+#: templates/page-header.php:32
+msgid "File Not Found"
+msgstr ""
+
+#: templates/searchform.php:2
+msgid "Search for:"
+msgstr ""
+
+#: templates/searchform.php:3 templates/searchform.php:4
+msgid "Search"
+msgstr ""

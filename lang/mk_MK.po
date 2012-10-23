@@ -1,0 +1,365 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Dejan Panovski <panovskidejan@gmail.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+
+#. Text in echo
+#: comments.php:80
+#: comments.php:84
+msgid " (required)"
+msgstr "(Задолжително)"
+
+#. Text in echo
+#: inc/roots-options.php:127
+#: inc/roots-options.php:129
+msgid "#main CSS Classes"
+msgstr "#CSS класа за главниот лев дел"
+
+#. Text in echo
+#: inc/roots-options.php:137
+#: inc/roots-options.php:139
+msgid "#sidebar CSS Classes"
+msgstr "#CSS класа за десниот дел"
+
+#. Text in function
+#: comments.php:46
+msgid "% Responses to"
+msgstr "% Одговорите на"
+
+#. Text in function
+#: comments.php:8
+msgid "%1$s"
+msgstr "%1$s"
+
+#. Text in function
+#: inc/roots-options.php:94
+msgid "%s Theme Options"
+msgstr "%s Опции на Темата"
+
+#. Text in function
+#: comments.php:53
+msgid "&larr; Older comments"
+msgstr "&larr; Претходни коментари"
+
+#. Text in function
+#: loop-search.php:33
+#: loop.php:37
+msgid "&larr; Older posts"
+msgstr "&larr; Претходни мислења"
+
+#. Text in function
+#: comments.php:9
+msgid "(Edit)"
+msgstr "(Измени)"
+
+#. Text in function
+#: inc/roots-options.php:1
+msgid "1140"
+msgstr "1140"
+
+#. Text in function
+#: inc/roots-options.php:1
+msgid "960gs (12 cols)"
+msgstr "960gs (12 колони)"
+
+#. Text in function
+#: inc/roots-options.php:1
+msgid "960gs (16 cols)"
+msgstr "960gs (16 колони)"
+
+#. Text in function
+#: inc/roots-options.php:1
+msgid "960gs (24 cols)"
+msgstr "960gs (24 колони)"
+
+#. Text in function
+#: comments.php:7
+msgid "<cite class=\"fn\">%s</cite>"
+msgstr "<cite class=\"fn\">%s</cite>"
+
+#. Text in function
+#: inc/roots-options.php:1
+msgid "Adapt.js"
+msgstr "Adapt.js"
+
+#. Text in echo
+#: page-sitemap.php:18
+msgid "Archives"
+msgstr "Архиви"
+
+#. Text in function
+#: inc/roots-options.php:1
+msgid "Blueprint CSS"
+msgstr "Blueprint CSS"
+
+#. Text in echo
+#: inc/roots-options.php:106
+#: inc/roots-options.php:108
+msgid "CSS Grid Framework"
+msgstr "CSS Grid Framework"
+
+#. Text in echo
+#: 404.php:13
+msgid "Check your spelling"
+msgstr "Проверете го правописот"
+
+#. Text in echo
+#: inc/roots-widgets.php:61
+msgid "City/Locality:"
+msgstr "Град/Локација:"
+
+#. Text in echo
+#: 404.php:15
+msgid "Click the <a href=\"javascript:history.back()\">Back</a> button"
+msgstr "Кликнете на <a href=\"javascript:history.back()\">Назад</a> копчето"
+
+#. Text in echo
+#: comments.php:93
+msgid "Comment"
+msgstr "Коментар"
+
+#. Text in echo
+#: comments.php:63
+msgid "Comments are closed."
+msgstr "Коментарите се затворени."
+
+#. Text in function
+#: inc/roots-cleanup.php:1
+msgid "Continued"
+msgstr "Продолжено"
+
+#. Text in function
+#: inc/roots-options.php:132
+#: inc/roots-options.php:142
+msgid "Default: %s"
+msgstr "Вообичаено: %s"
+
+#. Text in echo
+#: comments.php:84
+msgid "Email (will not be published)"
+msgstr "Е-маилот (нема да биде објавен)"
+
+#. Text in echo
+#: inc/roots-widgets.php:77
+msgid "Email:"
+msgstr "Е-маил:"
+
+#. Text in function
+#: inc/roots-options.php:152
+msgid "Enter your UA-XXXXX-X ID"
+msgstr "Внесете го вашето UA-XXXXX-X ID"
+
+#. Text in echo
+#: 404.php:7
+msgid "File Not Found"
+msgstr "Датотеката не е пронајдена"
+
+#. Text in echo
+#: inc/roots-options.php:147
+#: inc/roots-options.php:149
+msgid "Google Analytics ID"
+msgstr "Google Analytics ID"
+
+#. Text in echo
+#: index.php:7
+msgid "Latest Posts"
+msgstr "Најнови мислења"
+
+#. Text in function
+#: comments.php:70
+msgid "Leave a Reply"
+msgstr "Остави Одговор"
+
+#. Text in function
+#: comments.php:70
+msgid "Leave a Reply to %s"
+msgstr "Остави Одговор на %s"
+
+#. Text in echo
+#: comments.php:77
+msgid "Log out &raquo;"
+msgstr "Излез &raquo;"
+
+#. Text in function
+#: comments.php:77
+msgid "Log out of this account"
+msgstr "Излези од оваа сметка"
+
+#. Text in function
+#: comments.php:77
+msgid "Logged in as <a href=\"%s/wp-admin/profile.php\">%s</a>."
+msgstr "Најавен како <a href=\"%s/wp-admin/profile.php\">%s</a>."
+
+#. Text in echo
+#: comments.php:80
+msgid "Name"
+msgstr "Име"
+
+#. Text in function
+#: comments.php:54
+msgid "Newer comments &rarr;"
+msgstr "Понови коментари &rarr;"
+
+#. Text in function
+#: loop-search.php:34
+#: loop.php:38
+msgid "Newer posts &rarr;"
+msgstr "Понови постови &rarr;"
+
+#. Text in function
+#: comments.php:46
+msgid "No Responses to"
+msgstr "Нема Одговори на"
+
+#. Text in function
+#: comments.php:46
+msgid "One Response to"
+msgstr "Еден одговор на"
+
+#. Text in echo
+#: page-sitemap.php:14
+msgid "Pages"
+msgstr "Страници"
+
+#. Text in function
+#: loop-page.php:7
+#: loop-single.php:17
+msgid "Pages:"
+msgstr "Страници:"
+
+#. Text in function
+#: comments.php:28
+msgid "Please do not load this page directly. Thanks!"
+msgstr "Ве молиме не ја отварајте оваа страница директно. Благодарам!"
+
+#. Text in function
+#: inc/roots-htaccess.php:1
+msgid "Please make sure your <a href=\"%s\">.htaccess</a> file is writeable "
+msgstr "Ве молиме бидете сигурни дека вашаиот <a href=\"%s\">.htaccess</a> датотека може да се запишува"
+
+#. Text in echo
+#: 404.php:11
+msgid "Please try the following:"
+msgstr "Ве молиме обидете се со следново:"
+
+#. Text in function
+#: inc/roots-admin.php:1
+msgid "Please update your <a href=\"%s\">site tagline</a>"
+msgstr "Ве молиме обновете го вашиот <a href=\"%s\">site tagline</a>"
+
+#. Text in function
+#: loop-single.php:8
+#: loop-search.php:16
+#: loop.php:16
+msgid "Posted on %s at %s."
+msgstr "Објавено на %s во %s."
+
+#. Text in echo
+#: page-sitemap.php:16
+msgid "Posts"
+msgstr "Постови"
+
+#. Text in function
+#: 404.php:14
+msgid "Return to the <a href=\"%s\">home page</a>"
+msgstr "Врати се на <a href=\"%s\">главна страница</a>"
+
+#. Text in function
+#: inc/roots-widgets.php:1
+msgid "Roots: vCard"
+msgstr "Roots: vCard"
+
+#. Text in echo
+#: searchform.php:3
+#: searchform.php:4
+msgid "Search"
+msgstr "Барај"
+
+#. Text in echo
+#: search.php:7
+msgid "Search Results for"
+msgstr "Резултати од пребарувањето за"
+
+#. Text in echo
+#: searchform.php:2
+msgid "Search for:"
+msgstr "Пребарај за:"
+
+#. Text in echo
+#: loop-search.php:4
+#: loop.php:4
+msgid "Sorry, no results were found."
+msgstr "За жал, нема резултати по пребарувањето."
+
+#. Text in echo
+#: inc/roots-widgets.php:65
+msgid "State/Region:"
+msgstr "Држава/регион:"
+
+#. Text in echo
+#: inc/roots-widgets.php:57
+msgid "Street Address:"
+msgstr "Улица и број:"
+
+#. Text in echo
+#: comments.php:96
+msgid "Submit Comment"
+msgstr "Прати коментар"
+
+#. Text in echo
+#: inc/roots-widgets.php:73
+msgid "Telephone:"
+msgstr "Телефон:"
+
+#. Text in echo
+#: 404.php:9
+msgid "The page you are looking for might have been removed, had its name changed, or is temporarily unavailable."
+msgstr "Страната која ја баравте може да е избришана, да и е сменето името, или да е привремено недостапна."
+
+#. Text in function
+#: inc/roots-options.php:1
+msgid "Theme Options"
+msgstr "Опции на Темата"
+
+#. Text in echo
+#: comments.php:36
+msgid "This post is password protected. Enter the password to view comments."
+msgstr "Овој пост е заштитен со лозинка. Внесете ја лозинката за да ги видите коментарите."
+
+#. Text in echo
+#: inc/roots-widgets.php:53
+msgid "Title (optional):"
+msgstr "Наслов (опционално):"
+
+#. Text in echo
+#: comments.php:88
+msgid "Website"
+msgstr "Веб-страница"
+
+#. Text in echo
+#: loop-single.php:10
+#: loop-search.php:17
+msgid "Written by"
+msgstr "Напишано од"
+
+#. Text in function
+#: comments.php:73
+msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
+msgstr "Мора да бидете <a href=\"%s\">најавени</a> за да испратите коментар."
+
+#. Text in echo
+#: comments.php:14
+msgid "Your comment is awaiting moderation."
+msgstr "Вашиот коментар чека модерација."
+
+#. Text in echo
+#: inc/roots-widgets.php:69
+msgid "Zipcode/Postal Code:"
+msgstr "Поштенски код/​​Поштенски код:"
+

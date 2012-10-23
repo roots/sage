@@ -1,0 +1,367 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Project-Id-Version: Roots Theme i18n: NL_nl\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Herko Coomans <herko.coomans@gmail.com>\n"
+"Language-Team: Herko Coomans <herko.coomans@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"X-Poedit-Language: Dutch\n"
+"X-Poedit-Country: NETHERLANDS\n"
+
+#. Text in echo
+#: comments.php:80
+#: comments.php:84
+msgid " (required)"
+msgstr "(verplicht)"
+
+#. Text in echo
+#: inc/roots-options.php:127
+#: inc/roots-options.php:129
+msgid "#main CSS Classes"
+msgstr "#main CSS klassen"
+
+#. Text in echo
+#: inc/roots-options.php:137
+#: inc/roots-options.php:139
+msgid "#sidebar CSS Classes"
+msgstr "#sidebar CSS klassen"
+
+#. Text in function
+#: comments.php:46
+msgid "% Responses to"
+msgstr "% reacties op"
+
+#. Text in function
+#: comments.php:8
+msgid "%1$s"
+msgstr "%1$s"
+
+#. Text in function
+#: inc/roots-options.php:94
+msgid "%s Theme Options"
+msgstr "%s Thema Opties"
+
+#. Text in function
+#: comments.php:53
+msgid "&larr; Older comments"
+msgstr "&larr; Oudere reacties"
+
+#. Text in function
+#: loop-search.php:33
+#: loop.php:37
+msgid "&larr; Older posts"
+msgstr "&larr; Oudere berichten"
+
+#. Text in function
+#: comments.php:9
+msgid "(Edit)"
+msgstr "(Bewerk)"
+
+#. Text in function
+#: inc/roots-options.php:1
+msgid "1140"
+msgstr "1140"
+
+#. Text in function
+#: inc/roots-options.php:1
+msgid "960gs (12 cols)"
+msgstr "960gs (12 kolommen)"
+
+#. Text in function
+#: inc/roots-options.php:1
+msgid "960gs (16 cols)"
+msgstr "960gs (16 kolommen)"
+
+#. Text in function
+#: inc/roots-options.php:1
+msgid "960gs (24 cols)"
+msgstr "960gs (24 kolommen)"
+
+#. Text in function
+#: comments.php:7
+msgid "<cite class=\"fn\">%s</cite>"
+msgstr "<cite class=\"fn\">%s</cite>"
+
+#. Text in function
+#: inc/roots-options.php:1
+msgid "Adapt.js"
+msgstr "Adapt.js"
+
+#. Text in echo
+#: page-sitemap.php:18
+msgid "Archives"
+msgstr "Archieven"
+
+#. Text in function
+#: inc/roots-options.php:1
+msgid "Blueprint CSS"
+msgstr "Blueprint CSS"
+
+#. Text in echo
+#: inc/roots-options.php:106
+#: inc/roots-options.php:108
+msgid "CSS Grid Framework"
+msgstr "CSS Grid Raamwerk"
+
+#. Text in echo
+#: 404.php:13
+msgid "Check your spelling"
+msgstr "Controleer de spelling"
+
+#. Text in echo
+#: inc/roots-widgets.php:61
+msgid "City/Locality:"
+msgstr "Plaats:"
+
+#. Text in echo
+#: 404.php:15
+msgid "Click the <a href=\"javascript:history.back()\">Back</a> button"
+msgstr "Klik op de <a href=\"javascript:history.back()\">Terug</a> knop"
+
+#. Text in echo
+#: comments.php:93
+msgid "Comment"
+msgstr "Reactie"
+
+#. Text in echo
+#: comments.php:63
+msgid "Comments are closed."
+msgstr "U kunt niet meer reageren."
+
+#. Text in function
+#: inc/roots-cleanup.php:1
+msgid "Continued"
+msgstr "Lees verder"
+
+#. Text in function
+#: inc/roots-options.php:132
+#: inc/roots-options.php:142
+msgid "Default: %s"
+msgstr "Standaard: %s"
+
+#. Text in echo
+#: comments.php:84
+msgid "Email (will not be published)"
+msgstr "E-mail (wordt niet gepubliceerd)"
+
+#. Text in echo
+#: inc/roots-widgets.php:77
+msgid "Email:"
+msgstr "E-mail:"
+
+#. Text in function
+#: inc/roots-options.php:152
+msgid "Enter your UA-XXXXX-X ID"
+msgstr "Voer uw UA-XXXXX-X ID in"
+
+#. Text in echo
+#: 404.php:7
+msgid "File Not Found"
+msgstr "Bestand niet gevonden"
+
+#. Text in echo
+#: inc/roots-options.php:147
+#: inc/roots-options.php:149
+msgid "Google Analytics ID"
+msgstr "Google Analytics ID"
+
+#. Text in echo
+#: index.php:7
+msgid "Latest Posts"
+msgstr "Laatste berichten"
+
+#. Text in function
+#: comments.php:70
+msgid "Leave a Reply"
+msgstr "Reageer"
+
+#. Text in function
+#: comments.php:70
+msgid "Leave a Reply to %s"
+msgstr "Reageer op %s"
+
+#. Text in echo
+#: comments.php:77
+msgid "Log out &raquo;"
+msgstr "Afmelden &raquo;"
+
+#. Text in function
+#: comments.php:77
+msgid "Log out of this account"
+msgstr "Dit profiel afmelden"
+
+#. Text in function
+#: comments.php:77
+msgid "Logged in as <a href=\"%s/wp-admin/profile.php\">%s</a>."
+msgstr "Aangemeld als <a href=\"%s/wp-admin/profile.php\">%s</a>."
+
+#. Text in echo
+#: comments.php:80
+msgid "Name"
+msgstr "Naam"
+
+#. Text in function
+#: comments.php:54
+msgid "Newer comments &rarr;"
+msgstr "Nieuwere reacties &rarr;"
+
+#. Text in function
+#: loop-search.php:34
+#: loop.php:38
+msgid "Newer posts &rarr;"
+msgstr "Nieuwere berichten &rarr;"
+
+#. Text in function
+#: comments.php:46
+msgid "No Responses to"
+msgstr "Geen reacties op"
+
+#. Text in function
+#: comments.php:46
+msgid "One Response to"
+msgstr "Een reactie op"
+
+#. Text in echo
+#: page-sitemap.php:14
+msgid "Pages"
+msgstr "Pagina's"
+
+#. Text in function
+#: loop-page.php:7
+#: loop-single.php:17
+msgid "Pages:"
+msgstr "Pagina's:"
+
+#. Text in function
+#: comments.php:28
+msgid "Please do not load this page directly. Thanks!"
+msgstr "Deze pagina niet direct laden, a.u.b. Vriendelijk bedankt!"
+
+#. Text in function
+#: inc/roots-htaccess.php:1
+msgid "Please make sure your <a href=\"%s\">.htaccess</a> file is writeable "
+msgstr "Controleer a.u.b of uw <a href=\"%s\">.htaccess</a> bestand schrijfbaar is"
+
+#. Text in echo
+#: 404.php:11
+msgid "Please try the following:"
+msgstr "Probeer a.u.b. het volgende:"
+
+#. Text in function
+#: inc/roots-admin.php:1
+msgid "Please update your <a href=\"%s\">site tagline</a>"
+msgstr "Werk uw <a href=\"%s\">website slogan</a> bij."
+
+#. Text in function
+#: loop-single.php:8
+#: loop-search.php:16
+#: loop.php:16
+msgid "Posted on %s at %s."
+msgstr "Geplaatst op %s om %s."
+
+#. Text in echo
+#: page-sitemap.php:16
+msgid "Posts"
+msgstr "Berichten"
+
+#. Text in function
+#: 404.php:14
+msgid "Return to the <a href=\"%s\">home page</a>"
+msgstr "Terug naar de <a href=\"%s\">startpagina</a>"
+
+#. Text in function
+#: inc/roots-widgets.php:1
+msgid "Roots: vCard"
+msgstr "Roots: vCard"
+
+#. Text in echo
+#: searchform.php:3
+#: searchform.php:4
+msgid "Search"
+msgstr "Zoeken"
+
+#. Text in echo
+#: search.php:7
+msgid "Search Results for"
+msgstr "Zoekresultaten voor"
+
+#. Text in echo
+#: searchform.php:2
+msgid "Search for:"
+msgstr "Zoek naar:"
+
+#. Text in echo
+#: loop-search.php:4
+#: loop.php:4
+msgid "Sorry, no results were found."
+msgstr "Sorry, uw zoekopdracht heeft geen resultaten opgeleverd."
+
+#. Text in echo
+#: inc/roots-widgets.php:65
+msgid "State/Region:"
+msgstr "Provincie/regio:"
+
+#. Text in echo
+#: inc/roots-widgets.php:57
+msgid "Street Address:"
+msgstr "Adres:"
+
+#. Text in echo
+#: comments.php:96
+msgid "Submit Comment"
+msgstr "Reactie versturen"
+
+#. Text in echo
+#: inc/roots-widgets.php:73
+msgid "Telephone:"
+msgstr "Telefoon:"
+
+#. Text in echo
+#: 404.php:9
+msgid "The page you are looking for might have been removed, had its name changed, or is temporarily unavailable."
+msgstr "De pagina waar u naar op zoek bent is mogelijk verwijderd, van naam veranderd of is tijdelijk niet beschikbaar."
+
+#. Text in function
+#: inc/roots-options.php:1
+msgid "Theme Options"
+msgstr "Thema opties"
+
+#. Text in echo
+#: comments.php:36
+msgid "This post is password protected. Enter the password to view comments."
+msgstr "Dit bericht is beschermd met een wachtwoord. Voer het wachtwoord in om de reacties te bekijken."
+
+#. Text in echo
+#: inc/roots-widgets.php:53
+msgid "Title (optional):"
+msgstr "Titel (optioneel):"
+
+#. Text in echo
+#: comments.php:88
+msgid "Website"
+msgstr "Website"
+
+#. Text in echo
+#: loop-single.php:10
+#: loop-search.php:17
+msgid "Written by"
+msgstr "Geschreven door"
+
+#. Text in function
+#: comments.php:73
+msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
+msgstr "U dient <a href=\"%s\">aangemeld</a> te zijn om te reageren."
+
+#. Text in echo
+#: comments.php:14
+msgid "Your comment is awaiting moderation."
+msgstr "Uw reactie wacht op goedkeuring."
+
+#. Text in echo
+#: inc/roots-widgets.php:69
+msgid "Zipcode/Postal Code:"
+msgstr "Postcode:"
+

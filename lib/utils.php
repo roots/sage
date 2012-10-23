@@ -7,10 +7,10 @@
  */
 
 function shoestrap_template_path() {
-  return Showstrap_Wrapping::$main_template;
+  return Shoestrap_Wrapping::$main_template;
 }
 
-class Showstrap_Wrapping {
+class Shoestrap_Wrapping {
 
   // Stores the full path to the main template file
   static $main_template;
@@ -37,7 +37,7 @@ class Showstrap_Wrapping {
   }
 }
 
-add_filter('template_include', array('Showstrap_Wrapping', 'wrap'), 99);
+add_filter('template_include', array('Shoestrap_Wrapping', 'wrap'), 99);
 
 // returns WordPress subdirectory if applicable
 function wp_base_dir() {

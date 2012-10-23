@@ -1,0 +1,385 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-08-28 11:22-0300\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Weslly Honorato <weslly.honorato@gmail.com>\n"
+"Language-Team: \n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: 404.php:5
+msgid ""
+"The page you are looking for might have been removed, had its name changed, "
+"or is temporarily unavailable."
+msgstr ""
+"A página solicitada pode ter sido removida, renomeada ou está "
+"temporariamente indisponível."
+
+#: 404.php:8
+msgid "Please try the following:"
+msgstr "Por favor, tente o seguinte:"
+
+#: 404.php:10
+msgid "Check your spelling"
+msgstr "Verifique sua grafia"
+
+#: 404.php:11
+#, php-format
+msgid "Return to the <a href=\"%s\">home page</a>"
+msgstr "Retornar para a <a href=\"%s\">página inicial</a>"
+
+#: 404.php:12
+msgid "Click the <a href=\"javascript:history.back()\">Back</a> button"
+msgstr "Clique no botão <a href=\"javascript:history.back()\">Voltar</a>"
+
+#: functions.php:28
+msgid "Primary Navigation"
+msgstr "Navegação Primária"
+
+#: lib/activation.php:32 lib/activation.php:33
+msgid "Theme Activation"
+msgstr "Ativação do Tema"
+
+#: lib/activation.php:72
+#, php-format
+msgid "%s Theme Activation"
+msgstr "%s Ativação do Tema"
+
+#: lib/activation.php:87 lib/activation.php:89
+msgid "Create static front page?"
+msgstr "Criar uma página inicial estática?"
+
+#: lib/activation.php:91 lib/activation.php:104 lib/activation.php:117
+#: lib/activation.php:130 lib/activation.php:143
+msgid "Yes"
+msgstr "Sim"
+
+#: lib/activation.php:92 lib/activation.php:105 lib/activation.php:118
+#: lib/activation.php:131 lib/activation.php:144
+msgid "No"
+msgstr "Não"
+
+#: lib/activation.php:95
+msgid "Create a page called Home and set it to be the static front page"
+msgstr ""
+"Criar uma página chamada Home e configurá-la como a página inicial estática"
+
+#: lib/activation.php:100
+msgid "Change permalink structure?"
+msgstr "Modificar a estrutura de links permanentes?"
+
+#: lib/activation.php:102
+msgid "Update permalink structure?"
+msgstr "Atualizar a estrutura de links permanentes?"
+
+#: lib/activation.php:108
+msgid "Change permalink structure to /&#37;postname&#37;/"
+msgstr "Modificar a estrutura de links permanentes para /&#37;postname&#37;/"
+
+#: lib/activation.php:113
+msgid "Change uploads folder?"
+msgstr "Modificar a localização da pasta de uploads?"
+
+#: lib/activation.php:115
+msgid "Update uploads folder?"
+msgstr "Atualizar a pasta de uploads?"
+
+#: lib/activation.php:121
+msgid "Change uploads folder to /assets/ instead of /wp-content/uploads/"
+msgstr ""
+"Modificar a localização da pasta de uploads para /assets/ em vez de /wp-"
+"content/uploads/"
+
+#: lib/activation.php:126 lib/activation.php:128
+msgid "Create navigation menu?"
+msgstr "Criar o menu de navegação?"
+
+#: lib/activation.php:134
+msgid "Create the Primary Navigation menu and set the location"
+msgstr "Criar o menu de navegação primário e atualizar a localização"
+
+#: lib/activation.php:139 lib/activation.php:141
+msgid "Add pages to menu?"
+msgstr "Adicionar páginas ao menu?"
+
+#: lib/activation.php:147
+msgid "Add all current published pages to the Primary Navigation"
+msgstr "Adicionar todas as páginas publicadas ao menu de navegação primária"
+
+#: lib/cleanup.php:404
+msgid "Continued"
+msgstr "Continua"
+
+#: lib/htaccess.php:26
+#, php-format
+msgid "Please make sure your <a href=\"%s\">.htaccess</a> file is writable "
+msgstr ""
+"Por favor, certifique-se de que seu arquivo <a href=\"%s\">.htaccess</a> "
+"possui permissão de escrita"
+
+#: lib/template-tags.php:5
+#, php-format
+msgid "Posted on %s at %s."
+msgstr "Publicado em %s às %s."
+
+#: lib/template-tags.php:6
+msgid "Written by"
+msgstr "Escrito por"
+
+#: lib/widgets.php:6
+msgid "Primary Sidebar"
+msgstr "Barra Lateral Primária"
+
+#: lib/widgets.php:14
+msgid "Footer"
+msgstr "Rodapé"
+
+#: lib/widgets.php:30
+msgid "Use this widget to add a vCard"
+msgstr "Utilize este widget para adicionar um vCard"
+
+#: lib/widgets.php:31
+msgid "Roots: vCard"
+msgstr "Roots: vCard"
+
+#: lib/widgets.php:58
+msgid "vCard"
+msgstr "vCard"
+
+#: lib/widgets.php:124
+msgid "Title (optional):"
+msgstr "Título (opcional):"
+
+#: lib/widgets.php:128
+msgid "Street Address:"
+msgstr "Endereço:"
+
+#: lib/widgets.php:132
+msgid "City/Locality:"
+msgstr "Cidade/Localização:"
+
+#: lib/widgets.php:136
+msgid "State/Region:"
+msgstr "Estado/Região:"
+
+#: lib/widgets.php:140
+msgid "Zipcode/Postal Code:"
+msgstr "CEP/Código Postal:"
+
+#: lib/widgets.php:144
+msgid "Telephone:"
+msgstr "Telefone:"
+
+#: lib/widgets.php:148
+msgid "Email:"
+msgstr "Email:"
+
+#: templates/comments.php:7
+#, php-format
+msgid "<cite class=\"fn\">%s</cite>"
+msgstr "<cite class=\"fn\">%s</cite>"
+
+#: templates/comments.php:8
+#, php-format
+msgid "%1$s"
+msgstr "%1$s"
+
+#: templates/comments.php:9
+msgid "(Edit)"
+msgstr "(Editar)"
+
+#: templates/comments.php:15
+msgid "Your comment is awaiting moderation."
+msgstr "Seu comentário está aguardando moderação."
+
+#: templates/comments.php:32
+msgid "This post is password protected. Enter the password to view comments."
+msgstr ""
+"Este post é protegido por senha. Digite a senha para visualizar os "
+"comentários."
+
+#: templates/comments.php:49
+msgid "&larr; Older comments"
+msgstr "&larr; Comentários mais antigos"
+
+#: templates/comments.php:50
+msgid "Newer comments &rarr;"
+msgstr "Comentários mais novos &rarr;"
+
+#: templates/comments.php:58 templates/comments.php:68
+msgid "Comments are closed."
+msgstr "Os comentários estão fechados."
+
+#: templates/comments.php:75
+msgid "Leave a Reply"
+msgstr "Deixar uma Resposta"
+
+#: templates/comments.php:75
+#, php-format
+msgid "Leave a Reply to %s"
+msgstr "Deixar uma resposta para %s"
+
+#: templates/comments.php:78
+#, php-format
+msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
+msgstr ""
+"Você precisa estar <a href=\"%s\">logado</a> para postar um comentário."
+
+#: templates/comments.php:82
+#, php-format
+msgid "Logged in as <a href=\"%s/wp-admin/profile.php\">%s</a>."
+msgstr "Logado como <a href=\"%s/wp-admin/profile.php\">%s</a>."
+
+#: templates/comments.php:82
+msgid "Log out of this account"
+msgstr "Sair desta conta"
+
+#: templates/comments.php:82
+msgid "Log out &raquo;"
+msgstr "Sair &raquo;"
+
+#: templates/comments.php:84
+msgid "Name"
+msgstr "Nome"
+
+#: templates/comments.php:84 templates/comments.php:86
+msgid " (required)"
+msgstr " (obrigatório)"
+
+#: templates/comments.php:86
+msgid "Email (will not be published)"
+msgstr "Email (não será publicado)"
+
+#: templates/comments.php:88
+msgid "Website"
+msgstr "Site"
+
+#: templates/comments.php:91
+msgid "Comment"
+msgstr "Comentar"
+
+#: templates/comments.php:93
+msgid "Submit Comment"
+msgstr "Enviar Comentário"
+
+#: templates/content-single.php:11
+msgid "Pages:"
+msgstr "Páginas:"
+
+#: templates/content.php:4
+msgid "Sorry, no results were found."
+msgstr "Desculpe, nenhum resultado foi encontrado."
+
+#: templates/content.php:26
+msgid "&larr; Older posts"
+msgstr "&larr; Posts mais antigos"
+
+#: templates/content.php:27
+msgid "Newer posts &rarr;"
+msgstr "Posts mais novos &rarr;"
+
+#: templates/page-header.php:8
+msgid "Latest Posts"
+msgstr "Últimos Posts"
+
+#: templates/page-header.php:17
+#, php-format
+msgid "Daily Archives: %s"
+msgstr "Arquivos Diários: %s"
+
+#: templates/page-header.php:19
+#, php-format
+msgid "Monthly Archives: %s"
+msgstr "Arquivos Mensais: %s"
+
+#: templates/page-header.php:21
+#, php-format
+msgid "Yearly Archives: %s"
+msgstr "Arquivos Anuais: %s"
+
+#: templates/page-header.php:25
+#, php-format
+msgid "Author Archives: %s"
+msgstr "Arquivos do Autor: %s"
+
+#: templates/page-header.php:30
+#, php-format
+msgid "Search Results for %s"
+msgstr "Resultados da Busca por %s"
+
+#: templates/page-header.php:32
+msgid "File Not Found"
+msgstr "Arquivo não encontrado"
+
+#: templates/searchform.php:2
+msgid "Search for:"
+msgstr "Buscar por:"
+
+#: templates/searchform.php:3 templates/searchform.php:4
+msgid "Search"
+msgstr "Busca"
+
+#~ msgid ""
+#~ "Please update your <a href=\"%s\">site tagline</a> <a href=\"%s\" style="
+#~ "\"float: right;\">Hide Notice</a>"
+#~ msgstr ""
+#~ "Por favor, atualize a <a href=\"%s\">descrição do seu site</a> <a href="
+#~ "\"%s\" style=\"float: right;\">Fechar</a>"
+
+#~ msgid "#main CSS Classes"
+#~ msgstr "Classes de CSS para #main"
+
+#~ msgid "#sidebar CSS Classes"
+#~ msgstr "Classes de CSS para #sidebar"
+
+#~ msgid "% Responses to"
+#~ msgstr "% Respostas para"
+
+#~ msgid "1140"
+#~ msgstr "1140"
+
+#~ msgid "960gs (12 cols)"
+#~ msgstr "960gs (12 cols)"
+
+#~ msgid "960gs (16 cols)"
+#~ msgstr "960gs (16 cols)"
+
+#~ msgid "960gs (24 cols)"
+#~ msgstr "960gs (24 cols)"
+
+#~ msgid "Adapt.js"
+#~ msgstr "Adapt.js"
+
+#~ msgid "Blueprint CSS"
+#~ msgstr "Blueprint CSS"
+
+#~ msgid "CSS Grid Framework"
+#~ msgstr "Framework de CSS Grids"
+
+#~ msgid "Default: %s"
+#~ msgstr "Padrão: %s"
+
+#~ msgid "Enter your UA-XXXXX-X ID"
+#~ msgstr "Digite o seu ID UA-XXXXX-X"
+
+#~ msgid "Google Analytics ID"
+#~ msgstr "ID do Google Analytics"
+
+#~ msgid "No Responses to"
+#~ msgstr "Nenhuma Resposta para"
+
+#~ msgid "One Response to"
+#~ msgstr "Uma Resposta para"
+
+#~ msgid "Pages"
+#~ msgstr "Páginas"
+
+#~ msgid "Please do not load this page directly. Thanks!"
+#~ msgstr "Por favor, não carregue esta página diretamente. Obrigado!"
+
+#~ msgid "Posts"
+#~ msgstr "Posts"

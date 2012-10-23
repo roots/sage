@@ -1,10 +1,12 @@
 <?php
 /**
- * BC_core configuration
+ * Shoestrap configuration
  */
 
 // Enable theme features
 add_theme_support('root-relative-urls');    // Enable relative URLs
+add_theme_support('rewrite-urls');          // Enable URL rewrites
+add_theme_support('h5bp-htaccess');         // Enable HTML5 Boilerplate's .htaccess
 add_theme_support('bootstrap-top-navbar');  // Enable Bootstrap's fixed navbar
 
 
@@ -14,7 +16,7 @@ add_theme_support('bootstrap-top-navbar');  // Enable Bootstrap's fixed navbar
  * See lib/sidebar.php for more details
  */
 function shoestrap_display_sidebar() {
-  $sidebar_config = new BC_core_Sidebar(
+  $sidebar_config = new Shoestrap_Sidebar(
     /**
      * Conditional tag checks (http://codex.wordpress.org/Conditional_Tags)
      * Any of these conditional tags that return true won't show the sidebar
@@ -68,6 +70,6 @@ define('POST_EXCERPT_LENGTH', 40);
 *
 * Default: 940px is the default Bootstrap container width.
 *
-* This is not required or used by BC_core.
+* This is not required or used by Shoestrap.
 */
 if (!isset($content_width)) { $content_width = 940; }

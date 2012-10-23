@@ -7,11 +7,11 @@
  *   <li id="menu-item-8" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8"><a href="/">Home</a></li>
  *   <li id="menu-item-9" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9"><a href="/sample-page/">Sample Page</a></l
  *
- * BC_core_Nav_Walker example output:
+ * Shoestrap_Nav_Walker example output:
  *   <li class="menu-home"><a href="/">Home</a></li>
  *   <li class="menu-sample-page"><a href="/sample-page/">Sample Page</a></li>
  */
-class BC_core_Nav_Walker extends Walker_Nav_Menu {
+class Shoestrap_Nav_Walker extends Walker_Nav_Menu {
   function check_current($classes) {
     return preg_match('/(current[-_])|active|dropdown/', $classes);
   }
@@ -76,7 +76,7 @@ add_filter('nav_menu_item_id', '__return_null');
  * Clean up wp_nav_menu_args
  *
  * Remove the container
- * Use BC_core_Nav_Walker() by default
+ * Use Shoestrap_Nav_Walker() by default
  */
 function shoestrap_nav_menu_args($args = '') {
   $shoestrap_nav_menu_args['container'] = false;
@@ -90,7 +90,7 @@ function shoestrap_nav_menu_args($args = '') {
   }
 
   if (!$args['walker']) {
-    $shoestrap_nav_menu_args['walker'] = new BC_core_Nav_Walker();
+    $shoestrap_nav_menu_args['walker'] = new Shoestrap_Nav_Walker();
   }
 
   return array_merge($args, $shoestrap_nav_menu_args);

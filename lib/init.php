@@ -1,6 +1,6 @@
 <?php
 /**
- * BC_core initial setup and constants
+ * Shoestrap initial setup and constants
  */
 
 function shoestrap_setup() {

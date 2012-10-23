@@ -422,7 +422,7 @@ add_filter('post_thumbnail_html', 'shoestrap_remove_self_closing_tags'); // <img
  * Don't return the default description in the RSS feed if it hasn't been changed
  */
 function shoestrap_remove_default_description($bloginfo) {
-  $default_tagline = 'Yet Another AWESOME Site!';
+  $default_tagline = 'Just another WordPress site';
 
   return ($bloginfo === $default_tagline) ? '' : $bloginfo;
 }

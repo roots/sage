@@ -1,0 +1,324 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: roots WP theme\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-04-13 16:17-0300\n"
+"PO-Revision-Date: \n"
+"Last-Translator: yulian yordanov <yul.yordanov@post-scriptum.info>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Bulgarian\n"
+"X-Poedit-Country: BULGARIA\n"
+"X-Poedit-SourceCharset: utf-8\n"
+
+#: 404.php:7
+msgid "File Not Found"
+msgstr "Страницата не е намерена"
+
+#: 404.php:11
+msgid "The page you are looking for might have been removed, had its name changed, or is temporarily unavailable."
+msgstr "Страницата, която търсите може би е премахната, преместена или временно недостъпна."
+
+#: 404.php:13
+msgid "Please try the following:"
+msgstr "Моля, опитайте следното:"
+
+#: 404.php:15
+msgid "Check your spelling"
+msgstr "Проверете правописа."
+
+#: 404.php:16
+#, php-format
+msgid "Return to the <a href=\"%s\">home page</a>"
+msgstr "Върнете се към <a href=\"%s\">началната страница</a>."
+
+#: 404.php:17
+msgid "Click the <a href=\"javascript:history.back()\">Back</a> button"
+msgstr "Натиснете бутон <a href=\"javascript:history.back()\">Назад</a>."
+
+#: archive.php:13
+#, php-format
+msgid "Daily Archives: %s"
+msgstr "Архив за дата: %s"
+
+#: archive.php:15
+#, php-format
+msgid "Monthly Archives: %s"
+msgstr "Архив за месец: %s"
+
+#: archive.php:17
+#, php-format
+msgid "Yearly Archives: %s"
+msgstr "Архив за година: %s"
+
+#: archive.php:21
+#, php-format
+msgid "Author Archives: %s"
+msgstr "Архив за автор: %s"
+
+#: comments.php:7
+#, php-format
+msgid "<cite class=\"fn\">%s</cite>"
+msgstr "<cite class=\"fn\">%s</cite>"
+
+#: comments.php:8
+#, php-format
+msgid "%1$s"
+msgstr "%1$s"
+
+#: comments.php:9
+msgid "(Edit)"
+msgstr "(редакт.)"
+
+#: comments.php:15
+msgid "Your comment is awaiting moderation."
+msgstr "Коментарът Ви изчаква одобрение."
+
+#: comments.php:32
+msgid "This post is password protected. Enter the password to view comments."
+msgstr "Тази публикация е защитена с парола. Въведете паролата, за да видите коментарите."
+
+#: comments.php:49
+msgid "&larr; Older comments"
+msgstr "&larr; По-стари коментари"
+
+#: comments.php:50
+msgid "Newer comments &rarr;"
+msgstr "По-нови коментари &rarr;"
+
+#: comments.php:58
+#: comments.php:68
+msgid "Comments are closed."
+msgstr "Коментарите са затворени"
+
+#: comments.php:75
+msgid "Leave a Reply"
+msgstr "Оставете коментар"
+
+#: comments.php:75
+#, php-format
+msgid "Leave a Reply to %s"
+msgstr "Оставете коментар към %s"
+
+#: comments.php:78
+#, php-format
+msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
+msgstr "Трябва да сте <a href=\"%s\">вписан</a>, за да публикувате коментар."
+
+#: comments.php:82
+#, php-format
+msgid "Logged in as <a href=\"%s/wp-admin/profile.php\">%s</a>."
+msgstr "Вписан като: <a href=\"%s/wp-admin/profile.php\">%s</a>."
+
+#: comments.php:82
+msgid "Log out of this account"
+msgstr "Излизане от този профил"
+
+#: comments.php:82
+msgid "Log out &raquo;"
+msgstr "Изход &raquo;"
+
+#: comments.php:84
+msgid "Name"
+msgstr "Име"
+
+#: comments.php:84
+#: comments.php:86
+msgid " (required)"
+msgstr " (задължително)"
+
+#: comments.php:86
+msgid "Email (will not be published)"
+msgstr "Е-адрес (няма да бъде публикуван)"
+
+#: comments.php:88
+msgid "Website"
+msgstr "Уеб-страница"
+
+#: comments.php:91
+msgid "Comment"
+msgstr "Коментар"
+
+#: comments.php:93
+msgid "Submit Comment"
+msgstr "Публикуване"
+
+#: functions.php:45
+msgid "Primary Navigation"
+msgstr "Основно меню"
+
+#: functions.php:74
+#, php-format
+msgid "Posted on %s at %s."
+msgstr "Публикувано на %s в %s."
+
+#: functions.php:75
+msgid "Written by"
+msgstr "Автор"
+
+#: index.php:7
+msgid "Latest Posts"
+msgstr "Най-нови публикации"
+
+#: loop-single.php:14
+msgid "Pages:"
+msgstr "Страници:"
+
+#: loop.php:5
+msgid "Sorry, no results were found."
+msgstr "За съжаление няма открити резултати"
+
+#: loop.php:37
+msgid "&larr; Older posts"
+msgstr "&larr; По-стари публикации"
+
+#: loop.php:38
+msgid "Newer posts &rarr;"
+msgstr "По-нови публикации &rarr;"
+
+#: search.php:7
+msgid "Search Results for"
+msgstr "Резултати от търсенето на"
+
+#: searchform.php:2
+msgid "Search for:"
+msgstr "Търсене на:"
+
+#: searchform.php:3
+#: searchform.php:4
+msgid "Search"
+msgstr "Търсене"
+
+#: inc/roots-activation.php:32
+#: inc/roots-activation.php:33
+msgid "Theme Activation"
+msgstr "Активиране"
+
+#: inc/roots-activation.php:70
+#, php-format
+msgid "%s Theme Activation"
+msgstr "%s активиране"
+
+#: inc/roots-activation.php:85
+#: inc/roots-activation.php:87
+msgid "Create static front page?"
+msgstr "Искате ли да създадете статична начална страница?"
+
+#: inc/roots-activation.php:89
+#: inc/roots-activation.php:102
+#: inc/roots-activation.php:115
+#: inc/roots-activation.php:128
+#: inc/roots-activation.php:141
+msgid "Yes"
+msgstr "Да"
+
+#: inc/roots-activation.php:90
+#: inc/roots-activation.php:103
+#: inc/roots-activation.php:116
+#: inc/roots-activation.php:129
+#: inc/roots-activation.php:142
+msgid "No"
+msgstr "Не"
+
+#: inc/roots-activation.php:93
+msgid "Create a page called Home and set it to be the static front page"
+msgstr "Създаване на страница наречена Начало и задаването й като статична начална страница"
+
+#: inc/roots-activation.php:98
+msgid "Change permalink structure?"
+msgstr "Да се промени ли структурата на възките?"
+
+#: inc/roots-activation.php:100
+msgid "Update permalink structure?"
+msgstr "Искате ли да обновите структурата на връзките?"
+
+#: inc/roots-activation.php:106
+msgid "Change permalink structure to /&#37;postname&#37;/"
+msgstr "Промяна структурата на връзките: /&#37;postname&#37;/"
+
+#: inc/roots-activation.php:111
+msgid "Change uploads folder?"
+msgstr "Да се промени ли папката за качени файлове?"
+
+#: inc/roots-activation.php:113
+msgid "Update uploads folder?"
+msgstr "Искате ли да обновите папката за качени файлове?"
+
+#: inc/roots-activation.php:119
+msgid "Change uploads folder to /assets/ instead of /wp-content/uploads/"
+msgstr "Променяне на папката за качените файлове на /assets/, вместо /wp-content/uploads/"
+
+#: inc/roots-activation.php:124
+#: inc/roots-activation.php:126
+msgid "Create navigation menu?"
+msgstr "Искате ли да създадете меню?"
+
+#: inc/roots-activation.php:132
+msgid "Create the Primary Navigation menu and set the location"
+msgstr "Създаване на Основно меню и задаване на местоположението му"
+
+#: inc/roots-activation.php:137
+#: inc/roots-activation.php:139
+msgid "Add pages to menu?"
+msgstr "Искате ли да добавите страниците?"
+
+#: inc/roots-activation.php:145
+msgid "Add all current published pages to the Primary Navigation"
+msgstr "Добавяне на всички публикувани страници към Основното меню"
+
+#: inc/roots-cleanup.php:370
+msgid "Continued"
+msgstr "Още"
+
+#: inc/roots-cleanup.php:538
+#, php-format
+msgid "Please update your <a href=\"%s\">site tagline</a> <a href=\"%s\" style=\"float: right;\">Hide Notice</a>"
+msgstr "Моля, редактирайте <a href=\"%s\">описанието</a> на сайта. <a href=\"%s\" style=\"float: right;\">Скриване</a>"
+
+#: inc/roots-htaccess.php:11
+#, php-format
+msgid "Please make sure your <a href=\"%s\">.htaccess</a> file is writable "
+msgstr "Моля, уверете се че файлът <a href=\"%s\">.htaccess</a> може да се редактира"
+
+#: inc/roots-widgets.php:5
+msgid "Use this widget to add a vCard"
+msgstr "Използвайте тази джаджа, за да добавите vCard"
+
+#: inc/roots-widgets.php:6
+msgid "Roots: vCard"
+msgstr "Roots: vCard"
+
+#: inc/roots-widgets.php:33
+msgid "vCard"
+msgstr "vCard"
+
+#: inc/roots-widgets.php:99
+msgid "Title (optional):"
+msgstr "Заглавие (незадълж.)"
+
+#: inc/roots-widgets.php:103
+msgid "Street Address:"
+msgstr "Улица:"
+
+#: inc/roots-widgets.php:107
+msgid "City/Locality:"
+msgstr "Град:"
+
+#: inc/roots-widgets.php:111
+msgid "State/Region:"
+msgstr "Държава:"
+
+#: inc/roots-widgets.php:115
+msgid "Zipcode/Postal Code:"
+msgstr "Пощенски код:"
+
+#: inc/roots-widgets.php:119
+msgid "Telephone:"
+msgstr "Телефон:"
+
+#: inc/roots-widgets.php:123
+msgid "Email:"
+msgstr "Е-поща:"
+
