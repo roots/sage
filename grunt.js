@@ -55,7 +55,7 @@ module.exports = function(grunt) {
       }
     },
     watch: {
-      files: ['<config:lint.files>', 'assets/css/less/*.less', 'less/assets/less/bootstrap/*.less'],
+      files: ['<config:lint.files>', 'assets/css/less/*.less', 'assets/css/less/bootstrap/*.less'],
       tasks: 'default'
     }
   });
