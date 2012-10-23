@@ -221,7 +221,7 @@ function shoestrap_css(){
             *background-color: darken(@endColor, 5%);
           }
         }
-        .btn-primary{
+        .btn-primary, .navbar .btn-navbar:hover, .navbar .btn-navbar:active, .navbar .btn-navbar.active, .navbar .btn-navbar.disabled, .navbar .btn-navbar[disabled]{
           .buttonBackground(@btnColor, @btnColorHighlight);
         }
       ");
