@@ -20,6 +20,12 @@ function roots_display_sidebar() {
     /**
      * Conditional tag checks (http://codex.wordpress.org/Conditional_Tags)
      * Any of these conditional tags that return true won't show the sidebar
+     *
+     * To use a function that accepts arguments, use the following format:
+     *
+     * array('function_name', array('arg1', 'arg2'))
+     *
+     * The second element must be an array even if there's only 1 argument.
      */
     array(
       'is_404',
@@ -40,15 +46,17 @@ function roots_display_sidebar() {
 // #main CSS classes
 function roots_main_class() {
   if (roots_display_sidebar()) {
-    echo 'span8';
+    $class = 'span8';
   } else {
-    echo 'span12';
+    $class = 'span12';
   }
+
+  return $class;
 }
 
 // #sidebar CSS classes
 function roots_sidebar_class() {
-  echo 'span4';
+  return 'span4';
 }
 
 // Configuration values
