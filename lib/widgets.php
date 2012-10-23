@@ -12,8 +12,35 @@ function shoestrap_widgets_init() {
   ));
 
   register_sidebar(array(
-    'name'          => __('Footer', 'shoestrap'),
-    'id'            => 'sidebar-footer',
+    'name'          => __('Hero Area', 'shoestrap'),
+    'id'            => 'hero-area',
+    'before_widget' => '<div class="jumbotron masthead"><div class="container">',
+    'after_widget'  => '</div></div>',
+    'before_title'  => '<h1>',
+    'after_title'   => '</h1>',
+  ));
+
+  register_sidebar(array(
+    'name'          => __('Footer Left', 'shoestrap'),
+    'id'            => 'sidebar-footer-left',
+    'before_widget' => '<section id="%1$s" class="widget %2$s"><div class="widget-inner">',
+    'after_widget'  => '</div></section>',
+    'before_title'  => '<h3>',
+    'after_title'   => '</h3>',
+  ));
+
+  register_sidebar(array(
+    'name'          => __('Footer Center', 'shoestrap'),
+    'id'            => 'sidebar-footer-center',
+    'before_widget' => '<section id="%1$s" class="widget %2$s"><div class="widget-inner">',
+    'after_widget'  => '</div></section>',
+    'before_title'  => '<h3>',
+    'after_title'   => '</h3>',
+  ));
+
+  register_sidebar(array(
+    'name'          => __('Footer Right', 'shoestrap'),
+    'id'            => 'sidebar-footer-right',
     'before_widget' => '<section id="%1$s" class="widget %2$s"><div class="widget-inner">',
     'after_widget'  => '</div></section>',
     'before_title'  => '<h3>',
