@@ -18,6 +18,9 @@ function shoestrap_css(){
 
   <style>
     .jumbotron{
+      <?php if ( get_theme_mod( 'shoestrap_header_mode' ) == 'navbar' ) { ?>
+        margin-top: -17px;
+      <?php } ?>
       background: <?php echo get_theme_mod('shoestrap_hero_background_color') ?> url("<?php echo get_theme_mod( 'shoestrap_hero_background' ); ?>");
       color: <?php echo get_theme_mod('shoestrap_hero_textcolor'); ?>
     }

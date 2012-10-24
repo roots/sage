@@ -7,7 +7,7 @@
         <span class="icon-bar"></span>
       </a>
       <a class="brand" href="<?php echo home_url(); ?>/">
-        <?php bloginfo('name'); ?>
+        <?php navbar_brand(); ?>
       </a>
       <nav id="nav-main" class="nav-collapse" role="navigation">
         <?php

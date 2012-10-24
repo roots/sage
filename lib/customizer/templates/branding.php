@@ -8,4 +8,6 @@
     </div>
   </div>
 <?php }
-add_action( 'shoestrap_branding', 'shoestrap_branding');
+if ( get_theme_mod( 'shoestrap_header_mode' ) != 'navbar' ) {
+  add_action( 'shoestrap_branding', 'shoestrap_branding');
+}
