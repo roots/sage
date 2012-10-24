@@ -5,7 +5,7 @@ function shoestrap_css(){
   $variation              = get_theme_mod('shoestrap_text_variation');
   $header_bg_color        = get_theme_mod('shoestrap_header_backgroundcolor');
   $header_sitename_color  = get_theme_mod('shoestrap_header_textcolor');
-  $btn_color              = get_theme_mod('shoestrap_buttons_color');    
+  $btn_color              = get_theme_mod('shoestrap_buttons_color');
   $link_color             = get_theme_mod('shoestrap_link_color');
   $footer_color           = get_theme_mod('shoestrap_footer_background_color');
   $webfont                = get_theme_mod('shoestrap_google_webfonts');
@@ -186,7 +186,7 @@ function shoestrap_css(){
             *background-color: darken(@endColor, 5%);
           }
         }
-        .btn-primary{
+        .btn-primary, .navbar .btn-navbar{
           .buttonBackground(@btnColor, @btnColorHighlight);
         }
       ");
@@ -224,7 +224,7 @@ function shoestrap_css(){
             *background-color: darken(@endColor, 5%);
           }
         }
-        .btn-primary, .navbar .btn-navbar:hover, .navbar .btn-navbar:active, .navbar .btn-navbar.active, .navbar .btn-navbar.disabled, .navbar .btn-navbar[disabled]{
+        .btn-primary, .navbar .btn-navbar{
           .buttonBackground(@btnColor, @btnColorHighlight);
         }
       ");
