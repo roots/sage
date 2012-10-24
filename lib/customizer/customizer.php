@@ -12,3 +12,5 @@ require_once locate_template('/lib/customizer/includes/customizer-social.php'); 
 require_once locate_template('/lib/customizer/templates/branding.php');                   // Customizer Branding functions
 require_once locate_template('/lib/customizer/templates/footer-icon.php');                // Customizer footer icon
 require_once locate_template('/lib/customizer/templates/hero.php');                       // Hero Region
+
+require_once locate_template('/lib/customizer/includes/customizer-login.php');                       // Hero Region
