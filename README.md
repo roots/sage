@@ -1,3 +1,4 @@
+[![Build Status](https://secure.travis-ci.org/aristath/shoestrap.png)](http://travis-ci.org/aristath/shoestrap)
 # [Shoestrap](https://github.com/aristath/shoestrap)
 
 Shoestrap is a WordPress theme that’s based on [HTML5 Boilerplate](http://html5boilerplate.com/) and [Bootstrap from Twitter](http://twitter.github.com/bootstrap/).
