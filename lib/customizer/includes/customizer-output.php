@@ -153,6 +153,7 @@ function shoestrap_css(){
     $less->setFormatter("compressed");
     
     if (shoestrap_get_brightness($btn_color) <= 160){
+      // The code below is a copied from bootstrap's buttons.less + mixins.less files
       echo $less->compile("
         @btnColorHighlight: darken(spin(@btnColor, 5%), 10%);
 
