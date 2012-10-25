@@ -46,6 +46,7 @@ which when entered and activated will provide you with automatic updates
 * Change the header region background color
 * Change the header text color. This setting affects the color of your site-name when you haven’t uploaded a logo, as well as the color of your social links icons.
 * Selection of Navbar color
+* Select if branding should be on a separate Header, or included in the NavBar (caution: the changes are not visible until you save the customizer options and close the customizer)
 
 ### Layout
 
@@ -56,6 +57,7 @@ which when entered and activated will provide you with automatic updates
 ### Typography
 
 * Choose from 550+ Google Webfonts for your site
+* Apply the webfont on the Site-Name, Headers or everywhere
 
 ### Footer
 
