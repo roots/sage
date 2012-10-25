@@ -91,5 +91,3 @@ which when entered and activated will provide you with automatic updates
 ### Navigation
 
 * Select a WordPress Menu for your navbar navigation
-
-[![Build Status](https://secure.travis-ci.org/aristath/shoestrap.png)](http://travis-ci.org/aristath/shoestrap)

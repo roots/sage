@@ -88,9 +88,22 @@ function shoestrap_register_controls($wp_customize){
     'section'     => 'shoestrap_typography',
     'settings'    => 'shoestrap_google_webfonts',
     'type'        => 'text',
-    'priority'    => 2,
+    'priority'    => 1,
   ));
 
+  $wp_customize->add_control( 'shoestrap_webfonts_assign', array(
+    'label'       => __( 'Apply Webfont to:', 'shoestrap' ),
+    'section'     => 'shoestrap_typography',
+    'settings'    => 'shoestrap_webfonts_assign',
+    'type'        => 'select',
+    'priority'    => 2,
+    'choices'     => array(
+      'sitename'  => __('Site Name', 'shoestrap'),
+      'headers'   => __('Headers', 'shoestrap'),
+      'all'       => __('Everywhere', 'shoestrap'),
+    ),
+  ));
+  
   
 /*
  * GENERAL COLORS AND BACKGROUND SECTION

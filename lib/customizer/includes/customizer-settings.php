@@ -22,6 +22,7 @@ function shoestrap_register_settings($wp_customize){
   $settings[] = array( 'slug'=>'shoestrap_header_textcolor',          'default' => '#ffffff');
   $settings[] = array( 'slug'=>'shoestrap_footer_background_color',   'default' => '#ffffff');
   $settings[] = array( 'slug'=>'shoestrap_google_webfonts',           'default' => '');
+  $settings[] = array( 'slug'=>'shoestrap_webfonts_assign',           'default' => 'all');
   $settings[] = array( 'slug'=>'shoestrap_facebook_link',             'default' => '');
   $settings[] = array( 'slug'=>'shoestrap_twitter_link',              'default' => '');
   $settings[] = array( 'slug'=>'shoestrap_google_plus_link',          'default' => '');

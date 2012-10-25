@@ -11,6 +11,7 @@ function shoestrap_css(){
   $webfont                = get_theme_mod('shoestrap_google_webfonts');
   $navbar_color           = get_theme_mod('shoestrap_navbar_color');
   $sidebar_location       = get_theme_mod('shoestrap_aside_layout');
+  $assign_webfont         = get_theme_mod('shoestrap_webfonts_assign');
   
   $color                  = '#' . str_replace('#', '', $color);
   $header_bg_color        = '#' . str_replace('#', '', $header_bg_color);
@@ -149,8 +150,15 @@ function shoestrap_css(){
       #footer-wrapper{color: <?php echo shoestrap_adjust_brightness($footer_color, 150); ?>;}
       #footer-wrapper a{color: <?php echo shoestrap_adjust_brightness($footer_color, 180); ?>;}
     <?php } ?>
-    body, input, button, select, textarea, .search-query, .product-single .mp_product_meta .mp_product_price{
-      font-family: '<?php echo $webfont; ?>';
+    <?php if ( $assign_webfont == 'sitename' ) { ?>
+      .brand {
+    <?php } elseif ( $assign_webfont == 'headers' ) { ?>
+      .brand, h1, h2, h3, h4, h5 {
+    <?php } else { ?>
+      body, input, button, select, textarea, .search-query {
+    <?php } ?>
+        font-family: '<?php echo $webfont; ?>';
+      }
     }
 
     <?php
