@@ -143,11 +143,11 @@ function shoestrap_css(){
     #footer-wrapper{background: <?php echo $footer_color; ?>}
     <?php
     if (shoestrap_get_brightness($footer_color) >= 160){ ?>
-      #footer-wrapper{color: <?php echo shoestrap_adjust_brightness($navbar_color, -150); ?>;}
-      #footer-wrapper a{color: <?php echo shoestrap_adjust_brightness($navbar_color, -180); ?>;}
+      #footer-wrapper{color: <?php echo shoestrap_adjust_brightness($footer_color, -150); ?>;}
+      #footer-wrapper a{color: <?php echo shoestrap_adjust_brightness($footer_color, -180); ?>;}
     <?php } else { ?>
-      #footer-wrapper{color: <?php echo shoestrap_adjust_brightness($navbar_color, 150); ?>;}
-      #footer-wrapper a{color: <?php echo shoestrap_adjust_brightness($navbar_color, 180); ?>;}
+      #footer-wrapper{color: <?php echo shoestrap_adjust_brightness($footer_color, 150); ?>;}
+      #footer-wrapper a{color: <?php echo shoestrap_adjust_brightness($footer_color, 180); ?>;}
     <?php } ?>
     body, input, button, select, textarea, .search-query, .product-single .mp_product_meta .mp_product_price{
       font-family: '<?php echo $webfont; ?>';
