@@ -1,4 +1,3 @@
-[![Build Status](https://secure.travis-ci.org/aristath/shoestrap.png)](http://travis-ci.org/aristath/shoestrap)
 # [Shoestrap](https://github.com/aristath/shoestrap)
 
 Shoestrap is a WordPress theme that’s based on [HTML5 Boilerplate](http://html5boilerplate.com/) and [Bootstrap from Twitter](http://twitter.github.com/bootstrap/).
@@ -92,3 +91,5 @@ which when entered and activated will provide you with automatic updates
 ### Navigation
 
 * Select a WordPress Menu for your navbar navigation
+
+[![Build Status](https://secure.travis-ci.org/aristath/shoestrap.png)](http://travis-ci.org/aristath/shoestrap)
