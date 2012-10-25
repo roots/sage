@@ -72,12 +72,3 @@ function shoestrap_typography(){
     echo "<link href='http://fonts.googleapis.com/css?family=" . $webfontname . "' rel='stylesheet' type='text/css'>";
   }
 }
-
-function shoestrap_preview() {
-  ?>
-  <script type="text/javascript">
-  ( function( $ ){
-  } )( jQuery )
-  </script>
-  <?php
-}

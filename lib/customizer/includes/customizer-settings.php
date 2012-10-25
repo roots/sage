@@ -31,7 +31,5 @@ function shoestrap_register_settings($wp_customize){
   foreach($settings as $setting){
     $wp_customize->add_setting( $setting['slug'], array( 'default' => $setting['default'], 'type' => 'theme_mod', 'capability' => 'edit_theme_options' ));
   }
-  if ( $wp_customize->is_preview() && ! is_admin() )
-    add_action( 'wp_footer', 'shoestrap_preview', 21);
 }
 add_action( 'customize_register', 'shoestrap_register_settings' );

@@ -14,8 +14,5 @@ function shoestrap_register_sections($wp_customize){
   foreach($sections as $section){
     $wp_customize->add_section( $section['slug'], array( 'title' => $section['title'], 'priority' => $section['priority']));
   }
-
-  if ( $wp_customize->is_preview() && ! is_admin() )
-    add_action( 'wp_footer', 'shoestrap_preview', 21);
 }
 add_action( 'customize_register', 'shoestrap_register_sections' );

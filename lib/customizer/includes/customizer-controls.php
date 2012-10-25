@@ -287,9 +287,5 @@ function shoestrap_register_controls($wp_customize){
     'type'        => 'text',
     'priority'    => 4,
   ));
-
-
-  if ( $wp_customize->is_preview() && ! is_admin() )
-    add_action( 'wp_footer', 'shoestrap_preview', 21);
 }
 add_action( 'customize_register', 'shoestrap_register_controls' );
