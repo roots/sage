@@ -11,6 +11,14 @@ function shoestrap_css(){
   $webfont                = get_theme_mod('shoestrap_google_webfonts');
   $navbar_color           = get_theme_mod('shoestrap_navbar_color');
   $sidebar_location       = get_theme_mod('shoestrap_aside_layout');
+  
+  $color                  = '#' . str_replace('#', '', $color);
+  $header_bg_color        = '#' . str_replace('#', '', $header_bg_color);
+  $header_sitename_color  = '#' . str_replace('#', '', $header_sitename_color);
+  $btn_color              = '#' . str_replace('#', '', $btn_color);
+  $link_color             = '#' . str_replace('#', '', $link_color);
+  $footer_color           = '#' . str_replace('#', '', $footer_color);
+  $navbar_color           = '#' . str_replace('#', '', $navbar_color);
 
   if ( strlen( $btn_color ) < 3 ){
     $btn_color            = '#0066cc'; // if no color has been selected, set to #0066cc. This prevents errors with the php-less compiler.
@@ -97,7 +105,7 @@ function shoestrap_css(){
     a, a.active, a:hover, a.hover, a.visited, a:visited, a.link, a:link, .product-single .mp_product_meta .mp_product_price, #product_list .product .mp_product_price{color: <?php echo $link_color; ?>}
     a.btn{color: #333;}
     a.btn-primary, a.btn-info, a.btn-success, a.btn-danger, a.btn-inverse, a.btn-warning{color: #fff;}
-    .dropdown-menu{background: <?php echo $color; ?>; background: #<?php echo $color; ?>;}
+    .dropdown-menu{background: <?php echo $color; ?>;}
     <?php if (shoestrap_get_brightness($color) >= 130){ ?>
       .dropdown-menu li > a{color: #222;}
     <?php } ?>
@@ -122,7 +130,7 @@ function shoestrap_css(){
     <?php } ?>
     .logo-wrapper{background: <?php echo $header_bg_color; ?>;}
     .logo-wrapper .logo a{color: <?php echo $header_sitename_color; ?>;}
-    #wrap{background: <?php echo $color; ?>; background: #<?php echo $color; ?>;}
+    #wrap{background: <?php echo $color; ?>;}
     <?php
     if ($variation == 'light') { ?>
       #wrap{color: #f7f7f7;}
@@ -134,12 +142,21 @@ function shoestrap_css(){
     <?php } ?>
     #footer-wrapper{background: <?php echo $footer_color; ?>}
     <?php
-    if (shoestrap_get_brightness($footer_color) <= 160){
-      echo '#footer-wrapper{color: #dedede;}';
-      if (shoestrap_get_brightness($link_color) <= 160){
-        echo '#footer-wrapper a{color: #fff;}';
+    if (shoestrap_get_brightness($footer_color) <= 160){ ?>
+      #footer-wrapper{
+        color: <?php echo shoestrap_adjust_brightness($navbar_color, -150); ?>;
       }
-    } ?>
+      #footer-wrapper a{
+        color: <?php echo shoestrap_adjust_brightness($navbar_color, -180); ?>;
+      }
+    <?php } else { ?>
+      #footer-wrapper{
+        color: <?php echo shoestrap_adjust_brightness($navbar_color, 150); ?>;
+      }
+      #footer-wrapper a{
+        color: <?php echo shoestrap_adjust_brightness($navbar_color, 180); ?>;
+      }
+    <?php } ?>
     body, input, button, select, textarea, .search-query, .product-single .mp_product_meta .mp_product_price{
       font-family: '<?php echo $webfont; ?>';
     }
