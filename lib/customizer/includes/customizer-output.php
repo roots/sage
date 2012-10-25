@@ -13,6 +13,7 @@ function shoestrap_css(){
   $sidebar_location       = get_theme_mod('shoestrap_aside_layout');
   $assign_webfont         = get_theme_mod('shoestrap_webfonts_assign');
   
+  // Make sure colors are properly formatted
   $color                  = '#' . str_replace('#', '', $color);
   $header_bg_color        = '#' . str_replace('#', '', $header_bg_color);
   $header_sitename_color  = '#' . str_replace('#', '', $header_sitename_color);
@@ -242,7 +243,7 @@ function shoestrap_css(){
             *background-color: darken(@endColor, 5%);
           }
         }
-        .btn-primary, .navbar .btn-navbar{
+        .btn, .btn-primary, .navbar .btn-navbar{
           .buttonBackground(@btnColor, @btnColorHighlight);
         }
       ");
