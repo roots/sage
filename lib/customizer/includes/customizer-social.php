@@ -17,6 +17,9 @@ function shoestrap_social_links( $network = '' ) {
     $twitter_link = 'http://twitter.com/' . $twitter_link;
   }
   
+  // Sanitizing Facebook links
+  $facebook_link = esc_url( $facebook_link );
+
   // Echoing the links
   if ( $network == 'fb' ){ ?>
     <a href="<?php echo $facebook_link; ?>" target="_blank"><i class="icon-facebook-sign"></i></a>
