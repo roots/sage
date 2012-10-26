@@ -1,5 +1,18 @@
 <?php
 
+if ( class_exists( 'WP_Customize_Control' ) ) {
+  class Shoestrap_Customize_Textarea_Control extends WP_Customize_Control {
+    public $type = 'textarea';
+    
+    public function render_content() { ?>
+      <label>
+        <span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
+        <textarea rows="5" style="width:100%;" <?php $this->link(); ?>><?php echo esc_textarea( $this->value() ); ?></textarea>
+      </label>
+    <?php }
+  }
+}
+
 function shoestrap_register_controls($wp_customize){
   
 /*
@@ -195,21 +208,15 @@ function shoestrap_register_controls($wp_customize){
   ));
   
   // Call to action button color
-  $wp_customize->add_control( 'shoestrap_hero_cta_color', array(
+  $wp_customize->add_control( new WP_Customize_Color_Control(
+    $wp_customize,
+    'shoestrap_hero_cta_color',
+    array(
     'label'       => __( 'Call To Action Button Color', 'shoestrap' ),
-    'section'     => 'shoestrap_hero',
+      'section'   => 'shoestrap_hero',
     'settings'    => 'shoestrap_hero_cta_color',
-    'type'        => 'select',
-    'priority'    => 5,
-    'choices'     => array(
-      'default'   => __('White', 'shoestrap'),
-      'primary'   => __('Blue', 'shoestrap'),
-      'info'      => __('Light Blue', 'shoestrap'),
-      'success'   => __('Green', 'shoestrap'),
-      'warning'   => __('Orange', 'shoestrap'),
-      'danger'    => __('Red', 'shoestrap'),
-      'inverse'   => __('Black', 'shoestrap'),
-    ),
+      'priority'  => 5
+    )
   ));
 
   // Hero region background image

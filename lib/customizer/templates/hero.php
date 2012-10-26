@@ -1,5 +1,5 @@
 <?php
-function shoestrap_hero() {
+function shoestrap_hero_content() {
   $herotitle        = get_theme_mod( 'shoestrap_hero_title' );
   $herocontent      = get_theme_mod( 'shoestrap_hero_content' );
   $cta_text         = get_theme_mod( 'shoestrap_hero_cta_text' );
@@ -27,7 +27,7 @@ function shoestrap_hero() {
         <p><?php echo $herocontent; ?></p>
         <?php if ( !empty( $cta_text ) ) { ?>
           <p>
-            <a href="<?php echo $cta_link; ?>" class="<?php if ( function_exists( 'shoestrap_btn_class' ) ) { shoestrap_btn_class(); } ?>">
+            <a class="btn" href="<?php echo $cta_link; ?>">
               <?php echo $cta_text; ?>
             </a>
           </p>
@@ -37,4 +37,4 @@ function shoestrap_hero() {
     </div>
   <?php }
 }
-add_action( 'shoestrap_hero', 'shoestrap_hero' );
+add_action( 'shoestrap_hero', 'shoestrap_hero_content' );

@@ -7,24 +7,6 @@ function shoestrap_remove_controls($wp_customize){
 }
 add_action( 'customize_register', 'shoestrap_remove_controls' );
 
-function shoestrap_btn_class($echo = true){
-  $btn_class = get_theme_mod( 'shoestrap_hero_cta_color' );
-
-  if ($btn_class == 'primary') {$class = 'btn btn-primary';
-  } elseif ($btn_class == 'info') { $class = 'btn btn-info';
-  } elseif ($btn_class == 'success') { $class = 'btn btn-success';
-  } elseif ($btn_class == 'warning') { $class = 'btn btn-warning';
-  } elseif ($btn_class == 'danger') { $class = 'btn btn-danger';
-  } elseif ($btn_class == 'inverse') { $class = 'btn btn-inverse';
-  } else { $class = 'btn'; }
-
-  if ($echo) {
-    echo $class;
-  } else {
-    return $class;
-  }
-}
-
 function shoestrap_get_brightness($hex) {
   // returns brightness value from 0 to 255
   // strip off any leading #
@@ -64,11 +46,3 @@ function shoestrap_adjust_brightness($hex, $steps) {
   return '#'.$r_hex.$g_hex.$b_hex;
 }
 
-function shoestrap_typography(){
-  $webfont      = get_theme_mod('shoestrap_google_webfonts');
-  $f            = strlen($webfont);
-  if ($f > 3){
-    $webfontname  = str_replace(' ', '+', $webfont);
-    echo "<link href='http://fonts.googleapis.com/css?family=" . $webfontname . "' rel='stylesheet' type='text/css'>";
-  }
-}

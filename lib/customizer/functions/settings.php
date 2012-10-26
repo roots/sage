@@ -11,7 +11,7 @@ function shoestrap_register_settings($wp_customize){
   $settings[] = array( 'slug'=>'shoestrap_hero_content',              'default' => '');
   $settings[] = array( 'slug'=>'shoestrap_hero_cta_text',             'default' => '');
   $settings[] = array( 'slug'=>'shoestrap_hero_cta_link',             'default' => '');
-  $settings[] = array( 'slug'=>'shoestrap_hero_cta_color',            'default' => 'primary');
+  $settings[] = array( 'slug'=>'shoestrap_hero_cta_color',            'default' => '#0066bb');
   $settings[] = array( 'slug'=>'shoestrap_hero_background',           'default' => '');
   $settings[] = array( 'slug'=>'shoestrap_hero_background_color',     'default' => '#333333');
   $settings[] = array( 'slug'=>'shoestrap_hero_textcolor',            'default' => '#ffffff');

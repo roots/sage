@@ -17,7 +17,11 @@ require_once locate_template('/lib/widgets.php');               // Sidebars and 
 require_once locate_template('/lib/scripts.php');               // Scripts and stylesheets
 require_once locate_template('/lib/post-types.php');            // Custom post types
 require_once locate_template('/lib/metaboxes.php');             // Custom metaboxes
-require_once locate_template('/lib/less.php');                  // Less to CSS PHP Compiler
+
+if ( !class_exists( 'lessc' ) ) {
+  require_once locate_template('/lib/less.php');                // Less to CSS PHP Compiler
+}
+
 require_once locate_template('/lib/customizer/customizer.php'); // Customizer functions
 require_once locate_template('/lib/custom.php');                // Custom functions
 require_once locate_template('/lib/updater/licencing.php');     // Licencing functions to provide automatic updates
