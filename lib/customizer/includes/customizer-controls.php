@@ -62,6 +62,18 @@ function shoestrap_register_controls($wp_customize){
     )
   ));
 
+  $wp_customize->add_control( 'shoestrap_header_mode', array(
+    'label'       => __( 'Show Login/Logout Link (No preview)', 'shoestrap' ),
+    'section'     => 'shoestrap_header',
+    'settings'    => 'shoestrap_header_loginlink',
+    'type'        => 'select',
+    'priority'    => 1,
+    'choices'     => array(
+      '1'         => __('Show', 'shoestrap'),
+      '0'         => __('Hide', 'shoestrap'),
+    ),
+  ));
+  
 
 /*
  * LAYOUT SECTION
