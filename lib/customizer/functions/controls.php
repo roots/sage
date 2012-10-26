@@ -75,7 +75,7 @@ function shoestrap_register_controls($wp_customize){
     )
   ));
 
-  $wp_customize->add_control( 'shoestrap_header_mode', array(
+  $wp_customize->add_control( 'shoestrap_header_loginlink', array(
     'label'       => __( 'Show Login/Logout Link (No preview)', 'shoestrap' ),
     'section'     => 'shoestrap_header',
     'settings'    => 'shoestrap_header_loginlink',
@@ -213,7 +213,7 @@ function shoestrap_register_controls($wp_customize){
     'shoestrap_hero_cta_color',
     array(
     'label'       => __( 'Call To Action Button Color', 'shoestrap' ),
-      'section'   => 'shoestrap_hero',
+    'section'     => 'shoestrap_hero',
     'settings'    => 'shoestrap_hero_cta_color',
       'priority'  => 5
     )
