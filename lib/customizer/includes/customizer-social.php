@@ -7,6 +7,17 @@ function shoestrap_social_links( $network = '' ) {
   $gplus_link     = get_theme_mod('shoestrap_google_plus_link');
   $pinterest_link = get_theme_mod('shoestrap_pinterest_link');
   
+  
+  // Sanitizing twitter links and making them compatible with @username
+  
+  if( strpos ( $twitter_link, 'twitter.'  ) !== false ) {
+    $newvalue = esc_url( $twitter_link );
+  } else {
+    $twitter_link = ltrim( $twitter_link, '@');
+    $twitter_link = 'http://twitter.com/' . $twitter_link;
+  }
+  
+  // Echoing the links
   if ( $network == 'fb' ){ ?>
     <a href="<?php echo $facebook_link; ?>" target="_blank"><i class="icon-facebook-sign"></i></a>
   <?php }
