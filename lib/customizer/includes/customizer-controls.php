@@ -278,7 +278,7 @@ function shoestrap_register_controls($wp_customize){
   ));
 
   $wp_customize->add_control( 'shoestrap_twitter_link', array(
-    'label'       => __( 'Twitter Profile Link', 'shoestrap' ),
+    'label'       => __( 'Twitter URL or @username', 'shoestrap' ),
     'section'     => 'shoestrap_social',
     'settings'    => 'shoestrap_twitter_link',
     'type'        => 'text',
