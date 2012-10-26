@@ -287,5 +287,5 @@ function shoestrap_login_button() {
 }
 $show_login_link = get_theme_mod( 'shoestrap_header_loginlink' );
 if ( $show_login_link != '0' ) {
-  add_action( 'shoestrap_nav_top_right', 'shoestrap_login_button' );
+  add_action( 'shoestrap_nav_top_right', 'shoestrap_login_button', 8 );
 }
