@@ -6,7 +6,7 @@ function shoestrap_register_controls($wp_customize){
  * HEADER AND BRANDING
  */
   $wp_customize->add_control( 'shoestrap_header_mode', array(
-    'label'       => __( 'Branding Mode', 'shoestrap' ),
+    'label'       => __( 'Branding Mode (No preview)', 'shoestrap' ),
     'section'     => 'shoestrap_header',
     'settings'    => 'shoestrap_header_mode',
     'type'        => 'select',
