@@ -93,3 +93,7 @@ which when entered and activated will provide you with automatic updates
 ### Navigation
 
 * Select a WordPress Menu for your navbar navigation
+
+### Advanced
+* Header Scripts - Allows users to enter their own css and/or scripts on the Head of the document
+* Footer Scripts - Allows users to enter their own css and/or scripts on the Footer of the document
