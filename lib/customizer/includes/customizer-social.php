@@ -20,6 +20,12 @@ function shoestrap_social_links( $network = '' ) {
   // Sanitizing Facebook links
   $facebook_link = esc_url( $facebook_link );
 
+  // Sanitizing Google+ links
+  $gplus_link = esc_url( $gplus_link );
+
+  // Sanitizing Pinterest links
+  $pinterest_link = esc_url( $pinterest_link );
+
   // Echoing the links
   if ( $network == 'fb' ){ ?>
     <a href="<?php echo $facebook_link; ?>" target="_blank"><i class="icon-facebook-sign"></i></a>
