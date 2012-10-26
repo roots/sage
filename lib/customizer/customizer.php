@@ -2,6 +2,7 @@
 
 add_theme_support( 'custom-background' );
 
+require_once locate_template('/lib/customizer/includes/customizer-textarea.php');         // Create Customizer Custom Textarea Control
 require_once locate_template('/lib/customizer/includes/customizer-sections.php');         // Create Customizer Sections
 require_once locate_template('/lib/customizer/includes/customizer-settings.php');         // Create Customizer Settings
 require_once locate_template('/lib/customizer/includes/customizer-controls.php');         // Create Customizer Controls
