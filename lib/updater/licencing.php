@@ -15,7 +15,7 @@ $edd_updater = new Shoestrap_Theme_Updater( array(
   'author'          => 'Aristeides Stathopoulos'  // author of this plugin
 ));
 
-add_action('admin_menu', 'shoestrap_license_menu');
+add_action( 'admin_menu', 'shoestrap_license_menu' );
 function shoestrap_license_menu() {
   add_theme_page( 'Shoestrap Theme License', 'Shoestrap Theme License', 'manage_options', 'shoestrap-license', 'shoestrap_license_page' );
 }
@@ -25,10 +25,10 @@ function shoestrap_license_page() {
   $status   = get_option( 'shoestrap_license_key_status' );
   ?>
   <div class="wrap">
-    <h2><?php _e('Shoestrap Theme License'); ?></h2>
+    <h2><?php _e( 'Shoestrap Theme License' ); ?></h2>
     <form method="post" action="options.php">
     
-      <?php settings_fields('shoestrap_license'); ?>
+      <?php settings_fields( 'shoestrap_license' ); ?>
       
       <table class="form-table">
         <tbody>
@@ -42,24 +42,24 @@ function shoestrap_license_page() {
           </tr>
           <tr valign="top"> 
             <th scope="row" valign="top">
-              <?php _e('License Key'); ?>
+              <?php _e( 'License Key' ); ?>
             </th>
             <td>
               <input id="shoestrap_license_key" name="shoestrap_license_key" type="text" class="regular-text" value="<?php esc_attr_e( $license ); ?>" />
-              <label class="description" for="shoestrap_license_key"><?php _e('Enter your license key'); ?></label>
+              <label class="description" for="shoestrap_license_key"><?php _e( 'Enter your license key' ); ?></label>
             </td>
           </tr>
           <?php if( false !== $license ) { ?>
             <tr valign="top"> 
               <th scope="row" valign="top">
-                <?php _e('Activate License'); ?>
+                <?php _e( 'Activate License' ); ?>
               </th>
               <td>
                 <?php if( $status !== false && $status == 'valid' ) { ?>
-                  <span style="color:green;"><?php _e('active'); ?></span>
+                  <span style="color:green;"><?php _e( 'active' ); ?></span>
                 <?php } else {
                   wp_nonce_field( 'bootstrap_commerce_nonce', 'bootstrap_commerce_nonce' ); ?>
-                  <input type="submit" class="button-secondary" name="edd_theme_license_activate" value="<?php _e('Activate License'); ?>"/>
+                  <input type="submit" class="button-secondary" name="edd_theme_license_activate" value="<?php _e( 'Activate License' ); ?>"/>
                 <?php } ?>
               </td>
             </tr>
@@ -72,10 +72,10 @@ function shoestrap_license_page() {
   <?php
 }
 
-add_action('admin_init', 'shoestrap_register_option');
+add_action( 'admin_init', 'shoestrap_register_option' );
 function shoestrap_register_option() {
   // creates our settings in the options table
-  register_setting('shoestrap_license', 'shoestrap_license_key', 'edd_theme_sanitize_license' );
+  register_setting( 'shoestrap_license', 'shoestrap_license_key', 'edd_theme_sanitize_license' );
 }
 
 function edd_theme_sanitize_license( $new ) {
@@ -115,7 +115,7 @@ function shoestrap_activate_license() {
 
   }
 }
-add_action('admin_init', 'shoestrap_activate_license');
+add_action( 'admin_init', 'shoestrap_activate_license' );
 
 
 function shoestrap_check_license() {
