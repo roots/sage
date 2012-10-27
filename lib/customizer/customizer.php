@@ -22,6 +22,7 @@ require_once locate_template('/lib/customizer/styles/hero.php');            // H
 require_once locate_template('/lib/customizer/styles/footer.php');          // Footer
 require_once locate_template('/lib/customizer/styles/login.php');           // Login link
 require_once locate_template('/lib/customizer/styles/advanced.php');        // Custom CSS and/or JS on the head and the footer
+require_once locate_template('/lib/customizer/styles/affix.php');        // Custom CSS and/or JS on the head and the footer
 
 //Templating changes
 require_once locate_template('/lib/customizer/templates/branding.php');     // Customizer Branding functions

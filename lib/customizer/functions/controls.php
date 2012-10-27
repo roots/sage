@@ -105,6 +105,18 @@ function shoestrap_register_controls($wp_customize){
     ),
   ));
   
+  $wp_customize->add_control( 'shoestrap_aside_affix', array(
+    'label'       => __( '"Affix" Sidebar', 'shoestrap' ),
+    'section'     => 'shoestrap_layout',
+    'settings'    => 'shoestrap_aside_affix',
+    'type'        => 'select',
+    'priority'    => 2,
+    'choices'     => array(
+      'normal'    => __('Normal', 'shoestrap'),
+      'affix'     => __('Affix', 'shoestrap'),
+    ),
+  ));
+  
 /*
  * TYPOGRAPHY SECTION
  */
