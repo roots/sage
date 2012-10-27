@@ -1,7 +1,7 @@
 # [Shoestrap](https://github.com/aristath/shoestrap)
 
 Shoestrap is a WordPress theme that’s based on [HTML5 Boilerplate](http://html5boilerplate.com/) and [Bootstrap from Twitter](http://twitter.github.com/bootstrap/).
-The logic behind it and a big part of it's code was inspired from the amazing [Roots theme](http://rootstheme.com ).
+The logic behind it and a big part of it's code was taken from the amazing [Roots theme](http://rootstheme.com ).
 It is built in a modular way, allowing developers to properly organize their code and templates.
 
 ### Caution to themers:
