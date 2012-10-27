@@ -46,3 +46,24 @@ function shoestrap_adjust_brightness($hex, $steps) {
   return '#'.$r_hex.$g_hex.$b_hex;
 }
 
+function shoestrap_customize_preview() { ?>
+  <script type="text/javascript">
+    ( function( $ ){
+      // the blogname
+      wp.customize('blogname',function( value ) {
+        value.bind(function(to) {
+          $('a.brand').html(to);
+        });
+      });
+      
+      //the Header Region Background Color
+      wp.customize( 'shoestrap_header_backgroundcolor', function( value ) {
+        value.bind( function( to ) {
+          $('.logo-wrapper').css('background', to ? '#' + to : '' );
+        });
+      });
+    
+    } )( jQuery )
+    </script>
+    <?php
+}

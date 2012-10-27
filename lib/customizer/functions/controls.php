@@ -349,5 +349,8 @@ function shoestrap_register_controls($wp_customize){
     'priority'    => 2,
   )));
 
+  if ( $wp_customize->is_preview() && ! is_admin() ) {
+    add_action( 'wp_footer', 'shoestrap_customize_preview', 21);
+  }
 }
 add_action( 'customize_register', 'shoestrap_register_controls' );
