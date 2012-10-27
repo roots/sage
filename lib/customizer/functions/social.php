@@ -5,10 +5,10 @@
  */
 function shoestrap_social_links( $network = '' ) {
   
-  $facebook_link  = get_theme_mod('shoestrap_facebook_link');
-  $twitter_link   = get_theme_mod('shoestrap_twitter_link');
-  $gplus_link     = get_theme_mod('shoestrap_google_plus_link');
-  $pinterest_link = get_theme_mod('shoestrap_pinterest_link');
+  $facebook_link  = get_theme_mod( 'shoestrap_facebook_link' );
+  $twitter_link   = get_theme_mod( 'shoestrap_twitter_link' );
+  $gplus_link     = get_theme_mod( 'shoestrap_google_plus_link' );
+  $pinterest_link = get_theme_mod( 'shoestrap_pinterest_link' );
   
   
   // Sanitizing twitter links and making them compatible with @username

@@ -13,12 +13,12 @@ function shoestrap_login_logo() {
  * Alters the login screen according to our customizer options
  */
 function shoestrap_login_scripts() {
-  $color                  = get_theme_mod('background_color' );
-  $variation              = get_theme_mod('shoestrap_text_variation');
-  $header_bg_color        = get_theme_mod('shoestrap_header_backgroundcolor');
-  $header_sitename_color  = get_theme_mod('shoestrap_header_textcolor');
-  $btn_color              = get_theme_mod('shoestrap_buttons_color');
-  $link_color             = get_theme_mod('shoestrap_link_color');
+  $color                  = get_theme_mod( 'background_color' );
+  $variation              = get_theme_mod( 'shoestrap_text_variation' );
+  $header_bg_color        = get_theme_mod( 'shoestrap_header_backgroundcolor' );
+  $header_sitename_color  = get_theme_mod( 'shoestrap_header_textcolor' );
+  $btn_color              = get_theme_mod( 'shoestrap_buttons_color' );
+  $link_color             = get_theme_mod( 'shoestrap_link_color' );
 
   // $background is the saved custom image, or the default image.
   $background = get_background_image();
@@ -182,12 +182,12 @@ function shoestrap_login_scripts() {
     if ( class_exists( 'lessc' ) ) {
       $less = new lessc;
       
-      $less->setVariables(array(
+      $less->setVariables( array(
           "btnColor"  => $btn_color,
       ));
-      $less->setFormatter("compressed");
+      $less->setFormatter( "compressed" );
       
-      if (shoestrap_get_brightness($btn_color) <= 160){
+      if ( shoestrap_get_brightness( $btn_color ) <= 160){
         echo $less->compile("
           @btnColorHighlight: darken(spin(@btnColor, 5%), 10%);
   

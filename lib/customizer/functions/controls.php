@@ -20,7 +20,7 @@ if ( class_exists( 'WP_Customize_Control' ) ) {
 /*
  * Create the controls in the customizer.
  */
-function shoestrap_register_controls($wp_customize){
+function shoestrap_register_controls( $wp_customize ){
   
 /*
  * HEADER AND BRANDING
@@ -34,17 +34,17 @@ function shoestrap_register_controls($wp_customize){
     'type'        => 'select',
     'priority'    => 1,
     'choices'     => array(
-      'header'    => __('Header', 'shoestrap'),
-      'navbar'    => __('NavBar', 'shoestrap'),
+      'header'    => __( 'Header', 'shoestrap' ),
+      'navbar'    => __( 'NavBar', 'shoestrap' ),
     ),
   ));
   
   // Logo Image uploader
-  $wp_customize->add_control(new WP_Customize_Image_Control(
+  $wp_customize->add_control( new WP_Customize_Image_Control(
     $wp_customize,
     'shoestrap_logo_Image',
     array(
-      'label'     => __('Logo Image', 'shoestrap'),
+      'label'     => __( 'Logo Image', 'shoestrap' ),
       'section'   => 'shoestrap_header',
       'settings'  => 'shoestrap_logo',
       'priority'  => 2
@@ -95,8 +95,8 @@ function shoestrap_register_controls($wp_customize){
     'type'        => 'select',
     'priority'    => 1,
     'choices'     => array(
-      '1'         => __('Show', 'shoestrap'),
-      '0'         => __('Hide', 'shoestrap'),
+      '1'         => __( 'Show', 'shoestrap' ),
+      '0'         => __( 'Hide', 'shoestrap' ),
     ),
   ));
   
@@ -113,9 +113,9 @@ function shoestrap_register_controls($wp_customize){
     'type'        => 'select',
     'priority'    => 1,
     'choices'     => array(
-      'right'     => __('Right', 'shoestrap'),
-      'left'      => __('Left', 'shoestrap'),
-      'hide'      => __('Hide', 'shoestrap'),
+      'right'     => __( 'Right', 'shoestrap' ),
+      'left'      => __( 'Left', 'shoestrap' ),
+      'hide'      => __( 'Hide', 'shoestrap' ),
     ),
   ));
   
@@ -127,8 +127,8 @@ function shoestrap_register_controls($wp_customize){
     'type'        => 'select',
     'priority'    => 2,
     'choices'     => array(
-      'normal'    => __('Normal', 'shoestrap'),
-      'affix'     => __('Affix', 'shoestrap'),
+      'normal'    => __( 'Normal', 'shoestrap' ),
+      'affix'     => __( 'Affix', 'shoestrap' ),
     ),
   ));
   
@@ -153,9 +153,9 @@ function shoestrap_register_controls($wp_customize){
     'type'        => 'select',
     'priority'    => 2,
     'choices'     => array(
-      'sitename'  => __('Site Name', 'shoestrap'),
-      'headers'   => __('Headers', 'shoestrap'),
-      'all'       => __('Everywhere', 'shoestrap'),
+      'sitename'  => __( 'Site Name', 'shoestrap' ),
+      'headers'   => __( 'Headers', 'shoestrap' ),
+      'all'       => __( 'Everywhere', 'shoestrap' ),
     ),
   ));
   
@@ -172,8 +172,8 @@ function shoestrap_register_controls($wp_customize){
     'type'        => 'select',
     'priority'    => 1,
     'choices'     => array(
-      'dark'      => __('Dark', 'shoestrap'),
-      'light'     => __('Light', 'shoestrap'),
+      'dark'      => __( 'Dark', 'shoestrap' ),
+      'light'     => __( 'Light', 'shoestrap' ),
     ),
   ));
   
@@ -254,11 +254,11 @@ function shoestrap_register_controls($wp_customize){
   ));
 
   // Hero region background image
-  $wp_customize->add_control(new WP_Customize_Image_Control(
+  $wp_customize->add_control( new WP_Customize_Image_Control(
     $wp_customize,
     'hero_background',
     array(
-      'label'     => __('Background', 'shoestrap'),
+      'label'     => __( 'Background', 'shoestrap' ),
       'section'   => 'shoestrap_hero',
       'settings'  => 'shoestrap_hero_background',
       'priority'  => 6
@@ -297,8 +297,8 @@ function shoestrap_register_controls($wp_customize){
     'type'        => 'select',
     'priority'    => 9,
     'choices'     => array(
-      'front'     => __('Frontpage', 'shoestrap'),
-      'site'      => __('Site-Wide', 'shoestrap'),
+      'front'     => __( 'Frontpage', 'shoestrap' ),
+      'site'      => __( 'Site-Wide', 'shoestrap' ),
     ),
   ));
 

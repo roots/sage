@@ -13,11 +13,11 @@ function shoestrap_logo() {
     }
     printf(
       $image,
-      get_theme_mod('shoestrap_logo'),
-      get_bloginfo('name')
+      get_theme_mod( 'shoestrap_logo' ),
+      get_bloginfo( 'name' )
     );
   } else {
-    bloginfo('name');
+    bloginfo( 'name' );
   }
 }
 
@@ -28,6 +28,6 @@ function navbar_brand() {
   if ( get_theme_mod( 'shoestrap_header_mode' ) == 'navbar' ) {
     shoestrap_logo();
   } else {
-      bloginfo('name');
+      bloginfo( 'name' );
   }
 }
