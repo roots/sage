@@ -1,7 +1,7 @@
 <?php
 
 function shoestrap_buttons_css() {
-  $btn_color = get_theme_mod('shoestrap_buttons_color');
+  $btn_color = get_theme_mod( 'shoestrap_buttons_color' );
 
   // Make sure colors are properly formatted
   $btn_color = '#' . str_replace( '#', '', $btn_color );

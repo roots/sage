@@ -1,8 +1,8 @@
 <?php
 
 function shoestrap_typography_css() {
-  $webfont        = get_theme_mod('shoestrap_google_webfonts'); 
-  $assign_webfont = get_theme_mod('shoestrap_webfonts_assign');
+  $webfont        = get_theme_mod( 'shoestrap_google_webfonts' ); 
+  $assign_webfont = get_theme_mod( 'shoestrap_webfonts_assign' );
   ?>
   <style>
     <?php if ( $assign_webfont == 'sitename' ) { ?>
@@ -24,8 +24,8 @@ function shoestrap_typography_webfont() {
   if ($f > 3){
     $webfontname = str_replace( ' ', '+', $webfont );
     
-    wp_register_style('googleFonts', 'http://fonts.googleapis.com/css?family=' . $webfontname );
-    wp_enqueue_style( 'googleFonts');
+    wp_register_style( 'googleFonts', 'http://fonts.googleapis.com/css?family=' . $webfontname );
+    wp_enqueue_style( 'googleFonts' );
   }
 }
 add_action( 'wp_head', 'shoestrap_typography_webfont', 201 );
