@@ -25,13 +25,21 @@ function shoestrap_license_page() {
   $status   = get_option( 'shoestrap_license_key_status' );
   ?>
   <div class="wrap">
-    <h2><?php _e('Shoestrap Theme License Options'); ?></h2>
+    <h2><?php _e('Shoestrap Theme License'); ?></h2>
     <form method="post" action="options.php">
     
       <?php settings_fields('shoestrap_license'); ?>
       
       <table class="form-table">
         <tbody>
+          <tr>
+            <td colspan="2">
+              <strong>This theme is an OpenSource project and is provided without any charge.</strong><br />
+              If you wish to enable automatic updates, you can visit <a href="http://bootstrap-commerce.com/downloads/downloads/shoestrap/" target="_blank">this page</a>
+              and get a free licence. By entering and <strong>activating</strong> it, whenever a new version is available you will be notified in your dashboard.
+              If you wish to help this project, you can do so by helping out on the <a href="https://github.com/aristath/shoestrap/issues?state=open" target="_blank">github project issue queue</a> 
+            </td>
+          </tr>
           <tr valign="top"> 
             <th scope="row" valign="top">
               <?php _e('License Key'); ?>
