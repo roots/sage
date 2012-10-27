@@ -1,5 +1,8 @@
 <?php
 
+/*
+ * Echoes the social network links
+ */
 function shoestrap_social_links( $network = '' ) {
   
   $facebook_link  = get_theme_mod('shoestrap_facebook_link');

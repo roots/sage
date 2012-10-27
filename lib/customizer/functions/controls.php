@@ -1,5 +1,9 @@
 <?php
 
+/*
+ * This class creates a custom textarea control to be used in the "advanced" settings of the theme.
+ * This will allow users to add their custom css & sripts right from the customizer
+ */
 if ( class_exists( 'WP_Customize_Control' ) ) {
   class Shoestrap_Customize_Textarea_Control extends WP_Customize_Control {
     public $type = 'textarea';
@@ -13,11 +17,16 @@ if ( class_exists( 'WP_Customize_Control' ) ) {
   }
 }
 
+/*
+ * Create the controls in the customizer.
+ */
 function shoestrap_register_controls($wp_customize){
   
 /*
  * HEADER AND BRANDING
  */
+ 
+ // Header mode (Header/Navbar)
   $wp_customize->add_control( 'shoestrap_header_mode', array(
     'label'       => __( 'Branding Mode (No preview)', 'shoestrap' ),
     'section'     => 'shoestrap_header',
@@ -30,7 +39,8 @@ function shoestrap_register_controls($wp_customize){
     ),
   ));
   
-   $wp_customize->add_control(new WP_Customize_Image_Control(
+  // Logo Image uploader
+  $wp_customize->add_control(new WP_Customize_Image_Control(
     $wp_customize,
     'shoestrap_logo_Image',
     array(
@@ -40,7 +50,8 @@ function shoestrap_register_controls($wp_customize){
       'priority'  => 2
     )
   ));
-
+  
+  // Header Background
   $wp_customize->add_control( new WP_Customize_Color_Control(
     $wp_customize,
     'shoestrap_header_backgroundcolor',
@@ -51,7 +62,8 @@ function shoestrap_register_controls($wp_customize){
       'priority'  => 3
     )
   ));
-
+  
+  // Header textcolor
   $wp_customize->add_control( new WP_Customize_Color_Control(
     $wp_customize,
     'shoestrap_header_textcolor',
@@ -63,7 +75,7 @@ function shoestrap_register_controls($wp_customize){
     )
   ));
 
-  // Navbar theme variation (light/dark)
+  // Navbar background color
   $wp_customize->add_control( new WP_Customize_Color_Control(
     $wp_customize,
     'shoestrap_navbar_color',
@@ -74,7 +86,8 @@ function shoestrap_register_controls($wp_customize){
       'priority'  => 5
     )
   ));
-
+  
+  // Show/Hide the login link
   $wp_customize->add_control( 'shoestrap_header_loginlink', array(
     'label'       => __( 'Show Login/Logout Link (No preview)', 'shoestrap' ),
     'section'     => 'shoestrap_header',
@@ -91,6 +104,7 @@ function shoestrap_register_controls($wp_customize){
 /*
  * LAYOUT SECTION
  */
+ 
   // Sidebar: left/Right/Hidden
   $wp_customize->add_control( 'shoestrap_aside_layout', array(
     'label'       => __( 'Sidebar', 'shoestrap' ),
@@ -105,6 +119,7 @@ function shoestrap_register_controls($wp_customize){
     ),
   ));
   
+  // "Affix" Sidebar (see http://twitter.github.com/bootstrap/javascript.html#affix)
   $wp_customize->add_control( 'shoestrap_aside_affix', array(
     'label'       => __( '"Affix" Sidebar', 'shoestrap' ),
     'section'     => 'shoestrap_layout',
@@ -120,6 +135,8 @@ function shoestrap_register_controls($wp_customize){
 /*
  * TYPOGRAPHY SECTION
  */
+  
+  // Enter the name of the Webfont to be used
   $wp_customize->add_control( 'shoestrap_google_webfonts', array(
     'label'       => __( 'Google Webfont Name', 'shoestrap' ),
     'section'     => 'shoestrap_typography',
@@ -127,7 +144,8 @@ function shoestrap_register_controls($wp_customize){
     'type'        => 'text',
     'priority'    => 1,
   ));
-
+  
+  // Select target of the webfont
   $wp_customize->add_control( 'shoestrap_webfonts_assign', array(
     'label'       => __( 'Apply Webfont to:', 'shoestrap' ),
     'section'     => 'shoestrap_typography',
@@ -145,6 +163,7 @@ function shoestrap_register_controls($wp_customize){
 /*
  * GENERAL COLORS AND BACKGROUND SECTION
  */
+ 
   //Text variation (light/dark)
   $wp_customize->add_control( 'shoestrap_text_variation', array(
     'label'       => __( 'Text Variation', 'shoestrap' ),
@@ -157,7 +176,8 @@ function shoestrap_register_controls($wp_customize){
       'light'     => __('Light', 'shoestrap'),
     ),
   ));
-
+  
+  // Links color
   $wp_customize->add_control( new WP_Customize_Color_Control(
     $wp_customize,
     'shoestrap_link_color',
@@ -168,7 +188,8 @@ function shoestrap_register_controls($wp_customize){
       'priority'  => 2
     )
   ));
-
+  
+  // Buttons color
   $wp_customize->add_control( new WP_Customize_Color_Control(
     $wp_customize,
     'shoestrap_buttons_color',
@@ -183,6 +204,7 @@ function shoestrap_register_controls($wp_customize){
 /*
  * HERO SECTION
  */
+ 
   // Hero region title
   $wp_customize->add_control( 'shoestrap_hero_title', array(
     'label'       => __( 'Title', 'shoestrap' ),
@@ -201,7 +223,7 @@ function shoestrap_register_controls($wp_customize){
     'priority'    => 2
   ));
   
-  // Hero Region Call to action button link
+  // Hero Region Call to action button label
   $wp_customize->add_control( 'shoestrap_hero_cta_text', array(
     'label'       => __( 'Call To Action Button Text', 'shoestrap' ),
     'section'     => 'shoestrap_hero',
@@ -255,7 +277,7 @@ function shoestrap_register_controls($wp_customize){
     )
   ));
   
- // region textcolor
+ // Hero region textcolor
   $wp_customize->add_control( new WP_Customize_Color_Control(
     $wp_customize,
     'shoestrap_hero_textcolor',
@@ -267,7 +289,7 @@ function shoestrap_register_controls($wp_customize){
     )
   ));
 
-  // Call to action button color
+  // Visibility of the Hero region (frontpage/site-wide)
   $wp_customize->add_control( 'shoestrap_hero_visibility', array(
     'label'       => __( 'Hero Region Visibility', 'shoestrap' ),
     'section'     => 'shoestrap_hero',
@@ -295,11 +317,11 @@ function shoestrap_register_controls($wp_customize){
     )
   ));
 
-
 /*
  * SOCIAL LINKS SECTION
  */
-
+ 
+  // Facebook link
   $wp_customize->add_control( 'shoestrap_facebook_link', array(
     'label'       => __( 'Facebook Page Link', 'shoestrap' ),
     'section'     => 'shoestrap_social',
@@ -308,6 +330,7 @@ function shoestrap_register_controls($wp_customize){
     'priority'    => 1,
   ));
 
+  // Twitter link
   $wp_customize->add_control( 'shoestrap_twitter_link', array(
     'label'       => __( 'Twitter URL or @username', 'shoestrap' ),
     'section'     => 'shoestrap_social',
@@ -316,6 +339,7 @@ function shoestrap_register_controls($wp_customize){
     'priority'    => 2,
   ));
 
+  // Google+ link
   $wp_customize->add_control( 'shoestrap_google_plus_link', array(
     'label'       => __( 'Google+ Profile Link', 'shoestrap' ),
     'section'     => 'shoestrap_social',
@@ -324,6 +348,7 @@ function shoestrap_register_controls($wp_customize){
     'priority'    => 3,
   ));
 
+  // Pinterest link
   $wp_customize->add_control( 'shoestrap_pinterest_link', array(
     'label'       => __( 'Pinterest Profile Link', 'shoestrap' ),
     'section'     => 'shoestrap_social',
@@ -335,6 +360,8 @@ function shoestrap_register_controls($wp_customize){
 /*
  * ADVANCED SECTION
  */
+ 
+  // Header scripts (css/js)
   $wp_customize->add_control( new Shoestrap_Customize_Textarea_Control( $wp_customize, 'shoestrap_advanced_head', array(
     'label'       => 'Header Scripts (CSS/JS)',
     'section'     => 'shoestrap_advanced',
@@ -342,6 +369,7 @@ function shoestrap_register_controls($wp_customize){
     'priority'    => 1,
   )));
 
+  // Footer scripts (css/js)
   $wp_customize->add_control( new Shoestrap_Customize_Textarea_Control( $wp_customize, 'shoestrap_advanced_footer', array(
     'label'       => 'Footer Scripts (CSS/JS)',
     'section'     => 'shoestrap_advanced',
@@ -349,6 +377,7 @@ function shoestrap_register_controls($wp_customize){
     'priority'    => 2,
   )));
 
+  // Preview extras
   if ( $wp_customize->is_preview() && ! is_admin() ) {
     add_action( 'wp_footer', 'shoestrap_customize_preview', 21);
   }

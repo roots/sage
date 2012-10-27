@@ -1,5 +1,8 @@
 <?php
 
+/*
+ * Adds settings to the customizer
+ */
 function shoestrap_register_settings($wp_customize){
 
   $settings = array();

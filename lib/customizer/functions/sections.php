@@ -1,5 +1,8 @@
 <?php
 
+/*
+ * Adds sections to the customizer
+ */
 function shoestrap_register_sections($wp_customize){
   
   // remove default sections

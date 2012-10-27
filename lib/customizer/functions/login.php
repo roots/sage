@@ -1,11 +1,17 @@
 <?php
 
+/*
+ * The login logo
+ */
 function shoestrap_login_logo() {
     if ( get_theme_mod( 'shoestrap_logo' ) ) {
       echo( get_theme_mod( 'shoestrap_logo' ) );
     }
 }
 
+/*
+ * Alters the login screen according to our customizer options
+ */
 function shoestrap_login_scripts() {
   $color                  = get_theme_mod('background_color' );
   $variation              = get_theme_mod('shoestrap_text_variation');
@@ -263,6 +269,9 @@ function shoestrap_login_scripts() {
 <?php }
 add_action( 'login_enqueue_scripts', 'shoestrap_login_scripts' );
 
+/*
+ * Alters the link of the login screen logo
+ */
 function shoestrap_login_url( $url ) {
     return get_bloginfo( 'url' );
 }

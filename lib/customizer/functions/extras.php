@@ -2,11 +2,18 @@
 
 function shoestrap_enabled(){}
 
+/*
+ * Removes core controls
+ */
 function shoestrap_remove_controls($wp_customize){
   $wp_customize->remove_control( 'header_textcolor');
 }
 add_action( 'customize_register', 'shoestrap_remove_controls' );
 
+/*
+ * Gets the brightness of the $hex color.
+ * Returns a value between 0 and 255
+ */
 function shoestrap_get_brightness($hex) {
   // returns brightness value from 0 to 255
   // strip off any leading #
@@ -19,6 +26,10 @@ function shoestrap_get_brightness($hex) {
   return (($c_r * 299) + ($c_g * 587) + ($c_b * 114)) / 1000;
 }
 
+/*
+ * Adjexts brightness of the $hex color.
+ * the $steps variable is a value between -255 (darken) and 255 (lighten)
+ */
 function shoestrap_adjust_brightness($hex, $steps) {
   // Steps should be between -255 and 255. Negative = darker, positive = lighter
   $steps = max(-255, min(255, $steps));
@@ -46,6 +57,9 @@ function shoestrap_adjust_brightness($hex, $steps) {
   return '#'.$r_hex.$g_hex.$b_hex;
 }
 
+/*
+ * Customizer preview function
+ */
 function shoestrap_customize_preview() { ?>
   <script type="text/javascript">
     ( function( $ ){
