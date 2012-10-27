@@ -1,4 +1,4 @@
-<?php function shoestrap_branding(){ ?>
+<?php function shoestrap_branding() { ?>
   <div class="container-fluid logo-wrapper">
     <div class="logo container">
       <div class="row-fluid">
@@ -9,5 +9,5 @@
   </div>
 <?php }
 if ( get_theme_mod( 'shoestrap_header_mode' ) != 'navbar' ) {
-  add_action( 'shoestrap_branding', 'shoestrap_branding');
+  add_action( 'shoestrap_branding', 'shoestrap_branding' );
 }

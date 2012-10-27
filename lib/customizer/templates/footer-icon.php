@@ -1,5 +1,5 @@
 <?php
-function shoestrap_footer_icon(){ ?>
+function shoestrap_footer_icon() { ?>
   <?php if (current_user_can( 'edit_theme_options' )){ ?>
     <style>
     </style>
