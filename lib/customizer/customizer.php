@@ -28,3 +28,4 @@ require_once locate_template( '/lib/customizer/templates/branding.php' );     //
 require_once locate_template( '/lib/customizer/templates/footer-icon.php' );  // Customizer footer icon
 require_once locate_template( '/lib/customizer/templates/hero.php' );         // Hero Region
 require_once locate_template( '/lib/customizer/templates/loginbutton.php' );  // Login button
+require_once locate_template( '/lib/customizer/templates/social-links.php' ); // Social Links

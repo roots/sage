@@ -31,16 +31,16 @@ function shoestrap_social_links( $network = '' ) {
 
   // Echoing the links
   if ( $network == 'fb' ){ ?>
-    <a href="<?php echo $facebook_link; ?>" target="_blank"><i class="icon-facebook-sign"></i></a>
+    <li class=" social-networks"><a href="<?php echo $facebook_link; ?>" target="_blank"><i class="icon-facebook-sign"></i></a></li>
   <?php }
   elseif ( $network == 'tw' ) { ?>
-    <a href="<?php echo $twitter_link; ?>" target="_blank"><i class="icon-twitter-sign"></i></a>
+    <li class=" social-networks"><a href="<?php echo $twitter_link; ?>" target="_blank"><i class="icon-twitter-sign"></i></a></li>
   <?php }
   elseif ( $network == 'gp' ) { ?>
-    <a href="<?php echo $gplus_link; ?>" target="_blank"><i class="icon-google-plus-sign"></i></a>
+    <li class=" social-networks"><a href="<?php echo $gplus_link; ?>" target="_blank"><i class="icon-google-plus-sign"></i></a></li>
   <?php }
   elseif ( $network == 'pi' ) { ?>
-    <a href="<?php echo $pinterest_link; ?>" target="_blank"><i class="icon-pinterest-sign"></i></a>
+    <li class=" social-networks"><a href="<?php echo $pinterest_link; ?>" target="_blank"><i class="icon-pinterest-sign"></i></a></li>
   <?php }
 }
 

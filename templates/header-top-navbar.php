@@ -16,9 +16,9 @@
           endif;
         ?>
       </nav>
-      <nav id="nav-main" class="nav nav-collapse pull-right">
+      <ul id="nav-main" class="nav nav-collapse pull-right">
         <?php do_action('shoestrap_nav_top_right'); ?>
-      </nav>
+      </ul>
     </div>
   </div>
 </header>
