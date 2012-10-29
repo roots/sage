@@ -24,8 +24,8 @@ require_once locate_template( '/lib/customizer/styles/advanced.php' );        //
 require_once locate_template( '/lib/customizer/styles/affix.php' );           // Custom CSS and/or JS on the head and the footer
 
 //Templating changes
+require_once locate_template( '/lib/customizer/templates/social-links.php' ); // Social Links
 require_once locate_template( '/lib/customizer/templates/branding.php' );     // Customizer Branding functions
 require_once locate_template( '/lib/customizer/templates/footer-icon.php' );  // Customizer footer icon
 require_once locate_template( '/lib/customizer/templates/hero.php' );         // Hero Region
 require_once locate_template( '/lib/customizer/templates/loginbutton.php' );  // Login button
-require_once locate_template( '/lib/customizer/templates/social-links.php' ); // Social Links

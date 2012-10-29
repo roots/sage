@@ -77,7 +77,14 @@ function shoestrap_customize_preview() { ?>
         });
       });
     
+      //the Header Region Background Color
+      wp.customize( 'background_color', function( value ) {
+        value.bind( function( to ) {
+          $( '#wrap' ).css( 'background', to ? '#' + to : '' );
+        });
+      });
+    
     } )( jQuery )
-    </script>
+  </script>
     <?php
 }
