@@ -1,4 +1,5 @@
 ### HEAD
+* Update to Bootstrap 2.2.0
 * Return instead of echo class names in `roots_main_class` and `roots_sidebar_class`
 * Move nav customizations into `lib/nav.php`
 
