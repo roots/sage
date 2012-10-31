@@ -9,19 +9,22 @@ function shoestrap_hero_content() {
   $hero = false;
   if ( $hero_visibility == 'front' ) {
     if ( is_front_page() ) {
-      if ( !empty( $herotitle ) )   { $hero = true; }
-      if ( !empty( $herocontent ) ) { $hero = true; }
-      if ( !empty( $cta_text ) )    { $hero = true; }
+      if ( !empty( $herotitle ) )                   { $hero = true; }
+      if ( !empty( $herocontent ) )                 { $hero = true; }
+      if ( !empty( $cta_text ) )                    { $hero = true; }
+      if ( has_action( 'shoestrap_hero_inside' ) )  { $hero = true; }
     }
   } else {
-    if ( !empty( $herotitle ) )   { $hero = true; }
-    if ( !empty( $herocontent ) ) { $hero = true; }
-    if ( !empty( $cta_text ) )    { $hero = true; }
+      if ( !empty( $herotitle ) )                   { $hero = true; }
+      if ( !empty( $herocontent ) )                 { $hero = true; }
+      if ( !empty( $cta_text ) )                    { $hero = true; }
+      if ( has_action( 'shoestrap_hero_inside' ) )  { $hero = true; }
   }
 
   if ($hero == true) { ?>
     <div class="jumbotron masthead">
       <div class="container">
+        <?php do_action('shoestrap_hero_inside'); ?>
 
         <h1><?php echo $herotitle; ?></h1>
         <p><?php echo $herocontent; ?></p>
