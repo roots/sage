@@ -9,4 +9,4 @@ function shoestrap_phpless(){
 
   $less->checkedCompile( TEMPLATEPATH . '/assets/css/app.less', TEMPLATEPATH . '/assets/css/app.css' );
 }
-add_action('wp_head', 'shoestrap_phpless');
+add_action('wp', 'shoestrap_phpless');
