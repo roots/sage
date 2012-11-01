@@ -16,13 +16,11 @@ function roots_theme_activation_options_init() {
     'roots_theme_activation_options_validate'
   );
 }
-
 add_action('admin_init', 'roots_theme_activation_options_init');
 
 function roots_activation_options_page_capability($capability) {
   return 'edit_theme_options';
 }
-
 add_filter('option_page_capability_roots_activation_options', 'roots_activation_options_page_capability');
 
 function roots_theme_activation_options_add_page() {
@@ -43,9 +41,7 @@ function roots_theme_activation_options_add_page() {
       exit;
     }
   }
-
 }
-
 add_action('admin_menu', 'roots_theme_activation_options_add_page', 50);
 
 function roots_get_default_theme_activation_options() {
@@ -66,10 +62,9 @@ function roots_get_theme_activation_options() {
 }
 
 function roots_theme_activation_options_render_page() { ?>
-
   <div class="wrap">
     <?php screen_icon(); ?>
-    <h2><?php printf(__('%s Theme Activation', 'roots'), wp_get_theme() ); ?></h2>
+    <h2><?php printf(__('%s Theme Activation', 'roots'), wp_get_theme()); ?></h2>
     <?php settings_errors(); ?>
 
     <form method="post" action="options.php">
@@ -80,7 +75,7 @@ function roots_theme_activation_options_render_page() { ?>
         $roots_default_activation_options = roots_get_default_theme_activation_options();
       ?>
 
-      <input type="hidden" value="1" name="roots_theme_activation_options[first_run]" />
+      <input type="hidden" value="1" name="roots_theme_activation_options[first_run]">
 
       <table class="form-table">
 
@@ -91,7 +86,7 @@ function roots_theme_activation_options_render_page() { ?>
                 <option selected="selected" value="yes"><?php echo _e('Yes', 'roots'); ?></option>
                 <option value="no"><?php echo _e('No', 'roots'); ?></option>
               </select>
-              <br />
+              <br>
               <small class="description"><?php printf(__('Create a page called Home and set it to be the static front page', 'roots')); ?></small>
             </fieldset>
           </td>
@@ -104,7 +99,7 @@ function roots_theme_activation_options_render_page() { ?>
                 <option selected="selected" value="yes"><?php echo _e('Yes', 'roots'); ?></option>
                 <option value="no"><?php echo _e('No', 'roots'); ?></option>
               </select>
-              <br />
+              <br>
               <small class="description"><?php printf(__('Change permalink structure to /&#37;postname&#37;/', 'roots')); ?></small>
             </fieldset>
           </td>
@@ -117,7 +112,7 @@ function roots_theme_activation_options_render_page() { ?>
                 <option selected="selected" value="yes"><?php echo _e('Yes', 'roots'); ?></option>
                 <option value="no"><?php echo _e('No', 'roots'); ?></option>
               </select>
-              <br />
+              <br>
               <small class="description"><?php printf(__('Change uploads folder to /assets/ instead of /wp-content/uploads/', 'roots')); ?></small>
             </fieldset>
           </td>
@@ -130,7 +125,7 @@ function roots_theme_activation_options_render_page() { ?>
                 <option selected="selected" value="yes"><?php echo _e('Yes', 'roots'); ?></option>
                 <option value="no"><?php echo _e('No', 'roots'); ?></option>
               </select>
-              <br />
+              <br>
               <small class="description"><?php printf(__('Create the Primary Navigation menu and set the location', 'roots')); ?></small>
             </fieldset>
           </td>
@@ -143,7 +138,7 @@ function roots_theme_activation_options_render_page() { ?>
                 <option selected="selected" value="yes"><?php echo _e('Yes', 'roots'); ?></option>
                 <option value="no"><?php echo _e('No', 'roots'); ?></option>
               </select>
-              <br />
+              <br>
               <small class="description"><?php printf(__('Add all current published pages to the Primary Navigation', 'roots')); ?></small>
             </fieldset>
           </td>
@@ -260,12 +255,12 @@ function roots_theme_activation_action() {
 
   if ($roots_theme_activation_options['change_permalink_structure']) {
     $roots_theme_activation_options['change_permalink_structure'] = false;
+    global $wp_rewrite;
 
     if (get_option('permalink_structure') !== '/%postname%/') {
-      update_option('permalink_structure', '/%postname%/');
+      $wp_rewrite->set_permalink_structure('/%postname%/');
     }
 
-    global $wp_rewrite;
     $wp_rewrite->init();
     $wp_rewrite->flush_rules();
   }
@@ -282,9 +277,13 @@ function roots_theme_activation_action() {
 
     $roots_nav_theme_mod = false;
 
-    if (!has_nav_menu('primary_navigation')) {
+    $existing_nav = wp_get_nav_menu_object('Primary Navigation');
+    if (!$existing_nav) {
       $primary_nav_id = wp_create_nav_menu('Primary Navigation', array('slug' => 'primary_navigation'));
       $roots_nav_theme_mod['primary_navigation'] = $primary_nav_id;
+    } else {
+      $primary_nav = wp_get_nav_menu_object('Primary Navigation');
+      $roots_nav_theme_mod['primary_navigation'] = $primary_nav->term_id;
     }
 
     if ($roots_nav_theme_mod) {
@@ -314,11 +313,9 @@ function roots_theme_activation_action() {
 
   update_option('roots_theme_activation_options', $roots_theme_activation_options);
 }
-
 add_action('admin_init','roots_theme_activation_action');
 
-function roots_deactivation_action() {
-  update_option('roots_theme_activation_options', roots_get_default_theme_activation_options());
+function roots_deactivation() {
+  delete_option('roots_theme_activation_options');
 }
-
-add_action('switch_theme', 'roots_deactivation_action');
+add_action('switch_theme', 'roots_deactivation');
