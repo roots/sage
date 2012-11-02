@@ -34,17 +34,16 @@ A basic Roots theme initially looks like this:
 ├── lang
 │   └── roots.pot
 ├── lib
-│   ├── actions.php
 │   ├── activation.php
 │   ├── cleanup.php
 │   ├── config.php
 │   ├── custom.php
 │   ├── h5bp-htaccess
 │   ├── htaccess.php
-│   ├── metaboxes.php
-│   ├── post-types.php
+│   ├── init.php
+│   ├── nav.php
 │   ├── scripts.php
-│   ├── template-tags.php
+│   ├── sidebar.php
 │   ├── utils.php
 │   └── widgets.php
 ├── templates
@@ -52,6 +51,7 @@ A basic Roots theme initially looks like this:
 │   ├── content.php
 │   ├── content-page.php
 │   ├── content-single.php
+│   ├── entry-meta.php
 │   ├── footer.php
 │   ├── head.php
 │   ├── header.php
