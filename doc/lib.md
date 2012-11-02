@@ -50,17 +50,9 @@ This file handles the clean URL rewrites and HTML5 Boilerplate `.htaccess`. [Abo
 
 This file runs the initial theme setup and defines helper constants for later use
 
-### metaboxes.php
-
-This file is a placeholder for you to put in custom metaboxes. We recommend the use of [Custom Metaboxes and Fields for WordPress](https://github.com/jaredatch/Custom-Metaboxes-and-Fields-for-WordPress).
-
 ### nav.php
 
 This file contains all the custom nav modifications (for Bootstrap) and clean up.
-
-### post-types.php
-
-This file is a placeholder for you to put in [custom post types](http://codex.wordpress.org/Function_Reference/register_post_type) and [taxonomies](http://codex.wordpress.org/Function_Reference/register_taxonomy).
 
 ### scripts.php
 

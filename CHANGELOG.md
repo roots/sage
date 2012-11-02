@@ -1,4 +1,6 @@
 ### HEAD
+* Remove `lib/post-types.php` and `lib/metaboxes.php`
+* Make sure Primary Navigation menu always gets created and has the location set upon activation, update activation permalink method
 * Update to Bootstrap 2.2.1
 * Update conditional feed method
 * Update to Bootstrap 2.2.0
