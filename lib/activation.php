@@ -155,7 +155,7 @@ function roots_theme_activation_options_render_page() { ?>
 function roots_theme_activation_options_validate($input) {
   $output = $defaults = roots_get_default_theme_activation_options();
 
-  $options = Array(
+  $options = array(
     'first_run'                       => 1,
     'create_front_page'               => 'yes',
     'change_permalink_structure'      => 'yes',
