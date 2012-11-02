@@ -35,6 +35,7 @@ function shoestrap_register_settings($wp_customize){
   $settings[] = array( 'slug'=>'shoestrap_buttons_color',             'default' => '#0066bb');
   $settings[] = array( 'slug'=>'shoestrap_advanced_head',             'default' => '');
   $settings[] = array( 'slug'=>'shoestrap_advanced_footer',           'default' => '');
+  $settings[] = array( 'slug'=>'shoestrap_responsive',                'default' => '1');
 
   foreach( $settings as $setting ){
     $wp_customize->add_setting( $setting['slug'], array( 'default' => $setting['default'], 'type' => 'theme_mod', 'capability' => 'edit_theme_options' ) );

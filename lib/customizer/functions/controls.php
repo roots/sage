@@ -105,13 +105,26 @@ function shoestrap_register_controls( $wp_customize ){
  * LAYOUT SECTION
  */
  
+  // Responsive/Fixed-Width layout
+  $wp_customize->add_control( 'shoestrap_responsive', array(
+    'label'       => __( '"Affix" Sidebar', 'shoestrap' ),
+    'section'     => 'shoestrap_layout',
+    'settings'    => 'shoestrap_responsive',
+    'type'        => 'select',
+    'priority'    => 1,
+    'choices'     => array(
+      '1'         => __( 'Responsive', 'shoestrap' ),
+      '0'         => __( 'Fixed-Width', 'shoestrap' ),
+    ),
+  ));
+  
   // Sidebar: left/Right/Hidden
   $wp_customize->add_control( 'shoestrap_aside_layout', array(
     'label'       => __( 'Sidebar', 'shoestrap' ),
     'section'     => 'shoestrap_layout',
     'settings'    => 'shoestrap_aside_layout',
     'type'        => 'select',
-    'priority'    => 1,
+    'priority'    => 2,
     'choices'     => array(
       'right'     => __( 'Right', 'shoestrap' ),
       'left'      => __( 'Left', 'shoestrap' ),
@@ -125,7 +138,7 @@ function shoestrap_register_controls( $wp_customize ){
     'section'     => 'shoestrap_layout',
     'settings'    => 'shoestrap_aside_affix',
     'type'        => 'select',
-    'priority'    => 2,
+    'priority'    => 3,
     'choices'     => array(
       'normal'    => __( 'Normal', 'shoestrap' ),
       'affix'     => __( 'Affix', 'shoestrap' ),

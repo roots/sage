@@ -1,0 +1,82 @@
+@import "bootstrap-less/bootstrap.less";
+
+// Required from wordpress.org
+.wp-caption{}
+.wp-caption-text{}
+.sticky{}
+.gallery-caption{}
+.bypostauthor{}
+
+#wrap{padding: 20px;}
+
+/* Fixed Topbar Navigation */
+body{
+  &.top-navbar { padding-top: 60px; }
+  &.admin-bar{
+    .navbar-fixed-top { top: 28px; }
+  }
+}
+
+.aligncenter { display: block; margin: 0 auto; }
+
+.alignleft { float: left; }
+
+.alignright { float: right; }
+
+figure.alignnone { margin-left: 0; margin-right: 0; }
+
+.logo-wrapper{margin-top: -20px;
+  .logo{padding: 20px 0;
+    a.brand{text-decoration: none;}
+  }
+  .dropdown{
+    .dropdown-menu{
+      a{color: #333;
+        &:hover{color: #fff;}
+      }
+    }
+  }
+  .nav-pills > li > a:hover{background: rgba(255, 255, 255, 0.2);}
+  .nav-tabs .open .dropdown-toggle, .nav-pills .open .dropdown-toggle, .nav > li.dropdown.open.active > a:hover{background: rgba(255, 255, 255, 0.2);}
+}
+
+.jumbotron{padding: 50px 0; text-align: center; text-shadow: 0 1px 3px rgba(0, 0, 0, .4), 0 0 30px rgba(0, 0, 0, .075); font-size: 40px; line-height: 1.25;
+  h1{font-size: 100px; line-height: 1; letter-spacing: -2;}
+  p{margin-bottom: 10px;
+    a.btn{padding: 14px 24px; font-size: 24px;}
+  }
+}
+
+.commerce-frontpage{
+  .pagination{display: none;}
+}
+
+.admin-customize{position: fixed; bottom: 0; left: 0; width: 100px; height: 100px; background: url("../img/bottom-corner.png") no-repeat bottom left; opacity: 0.5;
+  a{display: block; color: #fff !important; text-decoration: none; position: fixed; bottom: 13px; left: 3px; font-size: 50px;}
+  &:hover{opacity: 1;}
+}
+
+ul.social-links{
+  .social-links{font-size: 25px; float: left;
+    a{text-decoration: none; opacity: 0.8;
+      &:hover{opacity: 1;}
+    }
+  }
+}
+
+.navbar .nav li.cart .btn-cart{.btn; margin-top: 3px;}
+
+#shoestrap_icon{position: fixed; bottom: 0; left: 0;
+  a{ width: 100px; height: 20px; display: block; background: url("../img/bottom-corner.png") no-repeat bottom left; color: #fff; font-size: 50px; opacity: 0.3; text-decoration: none; padding: 60px 0 20px 5px; -webkit-transition: all 350ms linear; -moz-transition: all 350ms linear; -ms-transition: all 350ms linear; -o-transition: all 350ms linear; transition: all 350ms linear;
+    &:hover{opacity: 1;}
+  }
+}
+
+.social-networks{list-style: none; list-style-type: none; font-size: 22px;}
+
+#sidebar ul{list-style: none; list-style-type: none; margin: 0; border-bottom: 1px solid rgba(100, 100, 100, 0.1); .border-radius(4px);
+  li{border: 1px solid rgba(100, 100, 100, 0.1); border-bottom: 0; .border-radius(4px);
+    a{padding:8px; display: block; text-decoration: none;
+    }
+  }
+}
