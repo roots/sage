@@ -7,9 +7,18 @@ function shoestrap_css_hero() {
   $shoestrap_hero_background        = get_theme_mod( 'shoestrap_hero_background' );
   $shoestrap_hero_cta_color         = get_theme_mod( 'shoestrap_hero_cta_color' );
   
-  if ( $shoestrap_hero_cta_color == 'default' || $shoestrap_hero_cta_color == '' || $shoestrap_hero_cta_color == 'primary' || $shoestrap_hero_cta_color == 'info' || $shoestrap_hero_cta_color == 'success' || $shoestrap_hero_cta_color == 'danger' || $shoestrap_hero_cta_color == 'warning' || $shoestrap_hero_cta_color == 'inverse' ) {
-    $shoestrap_hero_cta_color = '#0066cc';
+  if ( $shoestrap_hero_cta_color == 'default' ) {
+    $shoestrap_hero_cta_color = '#ffffff';
   }
+  
+  // Compatibility hack for users that have upgraded from Shoestrap version 1.0.2 and below
+  // and have not changed the button color. (Previously was class-based).
+  if ($shoestrap_hero_cta_color == 'primary') { $shoestrap_hero_cta_color = '#0088cc'; }
+  if ( $shoestrap_hero_cta_color == 'info' ) { $shoestrap_hero_cta_color = '#5bc0de'; }
+  if ( $shoestrap_hero_cta_color == 'success' ) { $shoestrap_hero_cta_color = '#62c462'; }
+  if ( $shoestrap_hero_cta_color == 'danger' ) { $shoestrap_hero_cta_color = '#ee5f5b'; }
+  if ( $shoestrap_hero_cta_color == 'warning' ) { $shoestrap_hero_cta_color = '#f89406'; }
+  if ( $shoestrap_hero_cta_color == 'inverse' ) { $shoestrap_hero_cta_color = '#444444'; }
 
   // Make sure colors are properly formatted
   $shoestrap_hero_background_color  = '#' . str_replace( '#', '', $shoestrap_hero_background_color );
