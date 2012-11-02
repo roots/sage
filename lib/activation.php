@@ -75,7 +75,7 @@ function roots_theme_activation_options_render_page() { ?>
         $roots_default_activation_options = roots_get_default_theme_activation_options();
       ?>
 
-      <input type="hidden" value="1" name="roots_theme_activation_options[first_run]">
+      <input type="hidden" value="true" name="roots_theme_activation_options[first_run]">
 
       <table class="form-table">
 
@@ -83,8 +83,8 @@ function roots_theme_activation_options_render_page() { ?>
           <td>
             <fieldset><legend class="screen-reader-text"><span><?php _e('Create static front page?', 'roots'); ?></span></legend>
               <select name="roots_theme_activation_options[create_front_page]" id="create_front_page">
-                <option selected="selected" value="yes"><?php echo _e('Yes', 'roots'); ?></option>
-                <option value="no"><?php echo _e('No', 'roots'); ?></option>
+                <option selected="selected" value="true"><?php echo _e('Yes', 'roots'); ?></option>
+                <option value="false"><?php echo _e('No', 'roots'); ?></option>
               </select>
               <br>
               <small class="description"><?php printf(__('Create a page called Home and set it to be the static front page', 'roots')); ?></small>
@@ -96,8 +96,8 @@ function roots_theme_activation_options_render_page() { ?>
           <td>
             <fieldset><legend class="screen-reader-text"><span><?php _e('Update permalink structure?', 'roots'); ?></span></legend>
               <select name="roots_theme_activation_options[change_permalink_structure]" id="change_permalink_structure">
-                <option selected="selected" value="yes"><?php echo _e('Yes', 'roots'); ?></option>
-                <option value="no"><?php echo _e('No', 'roots'); ?></option>
+                <option selected="selected" value="true"><?php echo _e('Yes', 'roots'); ?></option>
+                <option value="false"><?php echo _e('No', 'roots'); ?></option>
               </select>
               <br>
               <small class="description"><?php printf(__('Change permalink structure to /&#37;postname&#37;/', 'roots')); ?></small>
@@ -109,8 +109,8 @@ function roots_theme_activation_options_render_page() { ?>
           <td>
             <fieldset><legend class="screen-reader-text"><span><?php _e('Update uploads folder?', 'roots'); ?></span></legend>
               <select name="roots_theme_activation_options[change_uploads_folder]" id="change_uploads_folder">
-                <option selected="selected" value="yes"><?php echo _e('Yes', 'roots'); ?></option>
-                <option value="no"><?php echo _e('No', 'roots'); ?></option>
+                <option selected="selected" value="true"><?php echo _e('Yes', 'roots'); ?></option>
+                <option value="false"><?php echo _e('No', 'roots'); ?></option>
               </select>
               <br>
               <small class="description"><?php printf(__('Change uploads folder to /assets/ instead of /wp-content/uploads/', 'roots')); ?></small>
@@ -122,8 +122,8 @@ function roots_theme_activation_options_render_page() { ?>
           <td>
             <fieldset><legend class="screen-reader-text"><span><?php _e('Create navigation menu?', 'roots'); ?></span></legend>
               <select name="roots_theme_activation_options[create_navigation_menus]" id="create_navigation_menus">
-                <option selected="selected" value="yes"><?php echo _e('Yes', 'roots'); ?></option>
-                <option value="no"><?php echo _e('No', 'roots'); ?></option>
+                <option selected="selected" value="true"><?php echo _e('Yes', 'roots'); ?></option>
+                <option value="false"><?php echo _e('No', 'roots'); ?></option>
               </select>
               <br>
               <small class="description"><?php printf(__('Create the Primary Navigation menu and set the location', 'roots')); ?></small>
@@ -135,8 +135,8 @@ function roots_theme_activation_options_render_page() { ?>
           <td>
             <fieldset><legend class="screen-reader-text"><span><?php _e('Add pages to menu?', 'roots'); ?></span></legend>
               <select name="roots_theme_activation_options[add_pages_to_primary_navigation]" id="add_pages_to_primary_navigation">
-                <option selected="selected" value="yes"><?php echo _e('Yes', 'roots'); ?></option>
-                <option value="no"><?php echo _e('No', 'roots'); ?></option>
+                <option selected="selected" value="true"><?php echo _e('Yes', 'roots'); ?></option>
+                <option value="false"><?php echo _e('No', 'roots'); ?></option>
               </select>
               <br>
               <small class="description"><?php printf(__('Add all current published pages to the Primary Navigation', 'roots')); ?></small>
@@ -156,17 +156,17 @@ function roots_theme_activation_options_validate($input) {
   $output = $defaults = roots_get_default_theme_activation_options();
 
   $options = array(
-    'first_run'                       => 1,
-    'create_front_page'               => 'yes',
-    'change_permalink_structure'      => 'yes',
-    'change_uploads_folder'           => 'yes',
-    'create_navigation_menus'         => 'yes',
-    'add_pages_to_primary_navigation' => 'yes'
+    'first_run',
+    'create_front_page',
+    'change_permalink_structure',
+    'change_uploads_folder',
+    'create_navigation_menus',
+    'add_pages_to_primary_navigation'
   );
 
-  foreach($options as $name => $value) {
-    if (isset($input[$name])) {
-      $input[$name]  = ($input[$name] === $value) ? true : false;
+  foreach($options as $option_name) {
+    if (isset($input[$option_name])) {
+      $input[$option_name] = ($input[$option_name] === 'true') ? true : false;
       $output[$name] = $input[$name];
     }
   }
