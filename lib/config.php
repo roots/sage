@@ -15,6 +15,7 @@ add_theme_support('bootstrap-top-navbar');  // Enable Bootstrap's fixed navbar
  *
  * See lib/sidebar.php for more details
  */
+ if ( !function_exists('roots_display_sidebar') ) {
 function roots_display_sidebar() {
   $sidebar_config = new Roots_Sidebar(
     /**
@@ -42,7 +43,7 @@ function roots_display_sidebar() {
 
   return $sidebar_config->display;
 }
-
+}
 // #main CSS classes
 function roots_main_class() {
   if (roots_display_sidebar()) {
