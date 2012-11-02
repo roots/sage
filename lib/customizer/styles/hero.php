@@ -7,6 +7,10 @@ function shoestrap_css_hero() {
   $shoestrap_hero_background        = get_theme_mod( 'shoestrap_hero_background' );
   $shoestrap_hero_cta_color         = get_theme_mod( 'shoestrap_hero_cta_color' );
   
+  if ( $shoestrap_hero_cta_color == 'default' || $shoestrap_hero_cta_color == '' || $shoestrap_hero_cta_color == 'primary' || $shoestrap_hero_cta_color == 'info' || $shoestrap_hero_cta_color == 'success' || $shoestrap_hero_cta_color == 'danger' || $shoestrap_hero_cta_color == 'warning' || $shoestrap_hero_cta_color == 'inverse' ) {
+    $shoestrap_hero_cta_color = '#0066cc';
+  }
+
   // Make sure colors are properly formatted
   $shoestrap_hero_background_color  = '#' . str_replace( '#', '', $shoestrap_hero_background_color );
   $shoestrap_hero_textcolor         = '#' . str_replace( '#', '', $shoestrap_hero_textcolor );
@@ -15,7 +19,8 @@ function shoestrap_css_hero() {
   // if no color has been selected, set to #0066cc. This prevents errors with the php-less compiler.
   if ( strlen( $shoestrap_hero_cta_color ) < 3 ){
     $shoestrap_hero_cta_color = '#0066cc';
-  } ?>
+  } 
+  ?>
 
   <style>
     .jumbotron{
