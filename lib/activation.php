@@ -155,61 +155,20 @@ function roots_theme_activation_options_render_page() { ?>
 function roots_theme_activation_options_validate($input) {
   $output = $defaults = roots_get_default_theme_activation_options();
 
-  if (isset($input['first_run'])) {
-    if ($input['first_run'] === '1') {
-      $input['first_run'] = true;
-    }
-    $output['first_run'] = $input['first_run'];
-  }
+  $options = Array(
+    'first_run'                       => 1,
+    'create_front_page'               => 'yes',
+    'change_permalink_structure'      => 'yes',
+    'change_uploads_folder'           => 'yes',
+    'create_navigation_menus'         => 'yes',
+    'add_pages_to_primary_navigation' => 'yes'
+  );
 
-  if (isset($input['create_front_page'])) {
-    if ($input['create_front_page'] === 'yes') {
-      $input['create_front_page'] = true;
+  foreach($options as $name => $value) {
+    if (isset($input[$name])) {
+      $input[$name]  = ($input[$name] === $value) ? true : false;
+      $output[$name] = $input[$name];
     }
-    if ($input['create_front_page'] === 'no') {
-      $input['create_front_page'] = false;
-    }
-    $output['create_front_page'] = $input['create_front_page'];
-  }
-
-  if (isset($input['change_permalink_structure'])) {
-    if ($input['change_permalink_structure'] === 'yes') {
-      $input['change_permalink_structure'] = true;
-    }
-    if ($input['change_permalink_structure'] === 'no') {
-      $input['change_permalink_structure'] = false;
-    }
-    $output['change_permalink_structure'] = $input['change_permalink_structure'];
-  }
-
-  if (isset($input['change_uploads_folder'])) {
-    if ($input['change_uploads_folder'] === 'yes') {
-      $input['change_uploads_folder'] = true;
-    }
-    if ($input['change_uploads_folder'] === 'no') {
-      $input['change_uploads_folder'] = false;
-    }
-    $output['change_uploads_folder'] = $input['change_uploads_folder'];
-  }
-
-  if (isset($input['create_navigation_menus'])) {
-    if ($input['create_navigation_menus'] === 'yes') {
-      $input['create_navigation_menus'] = true;
-    }
-    if ($input['create_navigation_menus'] === 'no') {
-      $input['create_navigation_menus'] = false;
-    }
-    $output['create_navigation_menus'] = $input['create_navigation_menus'];
-  }
-
-  if (isset($input['add_pages_to_primary_navigation'])) {
-    if ($input['add_pages_to_primary_navigation'] === 'yes') {
-      $input['add_pages_to_primary_navigation'] = true;
-    }
-    if ($input['add_pages_to_primary_navigation'] === 'no') {
-      $input['add_pages_to_primary_navigation'] = false;
-    }
-    $output['add_pages_to_primary_navigation'] = $input['add_pages_to_primary_navigation'];
   }
 
   return apply_filters('roots_theme_activation_options_validate', $output, $input, $defaults);
