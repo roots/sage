@@ -277,12 +277,11 @@ function shoestrap_theme_activation_action() {
 
     $shoestrap_nav_theme_mod = false;
 
-    $existing_nav = wp_get_nav_menu_object('Primary Navigation');
-    if (!$existing_nav) {
+    $primary_nav = wp_get_nav_menu_object('Primary Navigation');
+    if (!$primary_nav) {
       $primary_nav_id = wp_create_nav_menu('Primary Navigation', array('slug' => 'primary_navigation'));
       $shoestrap_nav_theme_mod['primary_navigation'] = $primary_nav_id;
     } else {
-      $primary_nav = wp_get_nav_menu_object('Primary Navigation');
       $shoestrap_nav_theme_mod['primary_navigation'] = $primary_nav->term_id;
     }
 
