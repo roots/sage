@@ -60,7 +60,7 @@ class Shoestrap_Nav_Walker extends Walker_Nav_Menu {
 function shoestrap_nav_menu_css_class($classes, $item) {
   $slug = sanitize_title($item->title);
   $classes = preg_replace('/(current(-menu-|[-_]page[-_])(item|parent|ancestor))/', 'active', $classes);
-  $classes = preg_replace('/((menu|page)[-_\w+]+)+/', '', $classes);
+  $classes = preg_replace('/^((menu|page)[-_\w+]+)+/', '', $classes);
 
   $classes[] = 'menu-' . $slug;
 
