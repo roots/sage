@@ -15,8 +15,6 @@ require_once locate_template('/lib/nav.php');                   // Custom nav mo
 require_once locate_template('/lib/htaccess.php');              // Rewrites for assets, H5BP .htaccess
 require_once locate_template('/lib/widgets.php');               // Sidebars and widgets
 require_once locate_template('/lib/scripts.php');               // Scripts and stylesheets
-require_once locate_template('/lib/post-types.php');            // Custom post types
-require_once locate_template('/lib/metaboxes.php');             // Custom metaboxes
 
 if ( !class_exists( 'lessc' ) ) {
   require_once locate_template('/lib/less.php');                // Less to CSS PHP Compiler
