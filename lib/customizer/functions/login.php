@@ -13,8 +13,7 @@ function shoestrap_login_logo() {
  * Alters the login screen according to our customizer options
  */
 function shoestrap_login_scripts() {
-  $color                  = get_theme_mod( 'background_color' );
-  $variation              = get_theme_mod( 'shoestrap_text_variation' );
+  $color                  = get_theme_mod( 'shoestrap_background_color' );
   $header_bg_color        = get_theme_mod( 'shoestrap_header_backgroundcolor' );
   $header_sitename_color  = get_theme_mod( 'shoestrap_header_textcolor' );
   $btn_color              = get_theme_mod( 'shoestrap_buttons_color' );
@@ -22,10 +21,6 @@ function shoestrap_login_scripts() {
 
   // $background is the saved custom image, or the default image.
   $background = get_background_image();
-
-  // $color is the saved custom color.
-  // A default has to be specified in style.css. It will not be printed here.
-  $color = get_theme_mod( 'background_color' );
 
   if ( ! $background && ! $color )
     return;
