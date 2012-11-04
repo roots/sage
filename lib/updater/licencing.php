@@ -9,7 +9,7 @@ $license_key = trim( get_option( 'shoestrap_license_key' ) );
 // setup the updater
 $edd_updater = new Shoestrap_Theme_Updater( array(
   'remote_api_url'  => SHOESTRAP_STORE_URL,       // our store URL that is running EDD
-  'version'         => '1.1.1',                   // current version number
+  'version'         => '1.1.2',                   // current version number
   'license'         => $license_key,              // license key (used get_option above to retrieve from DB)
   'item_name'       => SHOESTRAP_THEME_NAME,      // name of this plugin
   'author'          => 'Aristeides Stathopoulos'  // author of this plugin
