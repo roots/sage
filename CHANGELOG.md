@@ -1,4 +1,5 @@
 ### HEAD
+* Use `entry-summary` class for excerpts per Readability's Article Publishing Guidelines
 * Remove `lib/post-types.php` and `lib/metaboxes.php`
 * Make sure Primary Navigation menu always gets created and has the location set upon activation, update activation permalink method
 * Update to Bootstrap 2.2.1
