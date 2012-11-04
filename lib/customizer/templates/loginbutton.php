@@ -1,6 +1,9 @@
 <?php
 
 function shoestrap_login_button() {
+    
+  $show_login_link = get_theme_mod( 'shoestrap_header_loginlink' );
+  
   $content = '<li>';
   if ( is_user_logged_in() ){
     $link  = wp_logout_url( get_permalink() );
@@ -15,9 +18,8 @@ function shoestrap_login_button() {
   $content .= '</a>';
   $content .= '</li>';
   
-  echo $content;
+  if ( $show_login_link != '0' ) {
+    echo $content;
+  }
 }
-$show_login_link = get_theme_mod( 'shoestrap_header_loginlink' );
-if ( $show_login_link != '0' ) {
-  add_action( 'shoestrap_nav_top_right', 'shoestrap_login_button', 8 );
-}
+add_action( 'shoestrap_nav_top_right', 'shoestrap_login_button', 8 );
