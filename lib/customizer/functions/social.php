@@ -43,7 +43,3 @@ function shoestrap_social_links( $network = '' ) {
     <li class="social-networks"><a href="<?php echo $pinterest_link; ?>" target="_blank"><i class="icon-pinterest-sign"></i></a></li>
   <?php }
 }
-
-if ( get_theme_mod( 'shoestrap_header_mode' ) == 'navbar' ) {
-  add_action( 'shoestrap_nav_top_right', 'shoestrap_social_links' );
-}
