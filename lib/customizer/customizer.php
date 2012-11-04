@@ -22,6 +22,7 @@ require_once locate_template( '/lib/customizer/styles/hero.php' );            //
 require_once locate_template( '/lib/customizer/styles/footer.php' );          // Footer
 require_once locate_template( '/lib/customizer/styles/advanced.php' );        // Custom CSS and/or JS on the head and the footer
 require_once locate_template( '/lib/customizer/styles/affix.php' );           // 
+require_once locate_template( '/lib/customizer/styles/sidebar.php' );         // Sidebar Class
 
 //Templating changes
 require_once locate_template( '/lib/customizer/templates/social-links.php' ); // Social Links
