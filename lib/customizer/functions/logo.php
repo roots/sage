@@ -17,7 +17,9 @@ function shoestrap_logo() {
       get_bloginfo( 'name' )
     );
   } else {
+    echo '<span class="sitename">';
     bloginfo( 'name' );
+    echo '</span>';
   }
 }
 
@@ -28,6 +30,6 @@ function navbar_brand() {
   if ( get_theme_mod( 'shoestrap_header_mode' ) == 'navbar' ) {
     shoestrap_logo();
   } else {
-      bloginfo( 'name' );
+    bloginfo( 'name' );
   }
 }

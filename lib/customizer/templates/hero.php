@@ -26,10 +26,10 @@ function shoestrap_hero_content() {
       <div class="container">
         <?php do_action('shoestrap_hero_inside'); ?>
 
-        <h1><?php echo $herotitle; ?></h1>
-        <p><?php echo $herocontent; ?></p>
+        <h1 class="hero-title"><?php echo $herotitle; ?></h1>
+        <p class="hero-content"><?php echo $herocontent; ?></p>
         <?php if ( !empty( $cta_text ) ) { ?>
-          <p>
+          <p class="hero-button">
             <a class="btn" href="<?php echo $cta_link; ?>">
               <?php echo $cta_text; ?>
             </a>
