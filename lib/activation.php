@@ -26,7 +26,7 @@ add_filter('option_page_capability_roots_activation_options', 'roots_activation_
 function roots_theme_activation_options_add_page() {
   $roots_activation_options = roots_get_theme_activation_options();
 
-  if (!$roots_activation_options['first_run'] === 'true') {
+  if ($roots_activation_options['first_run'] === 'true') {
     $theme_page = add_theme_page(
       __('Theme Activation', 'roots'),
       __('Theme Activation', 'roots'),
