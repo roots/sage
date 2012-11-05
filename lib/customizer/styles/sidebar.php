@@ -180,7 +180,8 @@ function shoestrap_sidebars_positioning_css() {
   
   // Primary - Main - Secondary
   if ( $primary_location == 'left' && $secondary_location == 'right' ) {
-    $css = '#secondary{float: right;} @media (min-width: 768px){#main{position: absolute;}}';
+    $css = '#secondary{float: right;}';
+    // $css .= '@media (min-width: 768px){#sidebar, #secondary{position: absolute;}}';
   }
   // Primary - Secondary - Main
   if ( $primary_location == 'left' && $secondary_location == 'center' ) {
@@ -196,14 +197,15 @@ function shoestrap_sidebars_positioning_css() {
   }
   // Secondary - Main - Primary
   if ( $primary_location == 'right' && $secondary_location == 'left' ) {
-    $css = '#sidebar{float: right;} @media (min-width: 768px){#main{position: absolute;}}';
+    $css = '#sidebar{float: right;}';
+    // $css .= '@media (min-width: 768px){#main{position: absolute;}}';
   }
   // Secondary - Primary - Main
   if ( $primary_location == 'left' && $secondary_location == 'left' ) {
-    $css = '#main{float: right;} @media (min-width: 768px){#main, #sidebar{position: absolute;}}';
-  }
-  echo '<style>';
-  echo $css;
-  echo '</style>';
+    $css = '#main{float: right;}';
+    // $css .= '@media (min-width: 768px){#main, #sidebar{position: absolute;}}';
+  } ?>
+  <style> <?php echo $css; ?> </style>
+  <?php
 }
 add_action( 'wp_head', 'shoestrap_sidebars_positioning_css' );

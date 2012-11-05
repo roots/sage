@@ -157,10 +157,10 @@ function shoestrap_register_controls( $wp_customize ){
     'type'        => 'select',
     'priority'    => 4,
     'choices'     => array(
-      'right'     => __( 'Right', 'shoestrap' ),
-      'left'      => __( 'Left', 'shoestrap' ),
+      // 'right'     => __( 'Right', 'shoestrap' ),
+      // 'left'      => __( 'Left', 'shoestrap' ),
       'center'    => __( 'Center', 'shoestrap' ),
-      'hide'      => __( 'Hide', 'shoestrap' ),
+      // 'hide'      => __( 'Hide', 'shoestrap' ),
     ),
   ));
   
