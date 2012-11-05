@@ -44,7 +44,7 @@ function shoestrap_display_sidebar() {
 // #main CSS classes
 function shoestrap_main_class() {
   if (shoestrap_display_sidebar()) {
-    $class = shoestrap_sidebar_width( 'main' );
+    $class = shoestrap_sidebars_calculate( 'main' );
   } else {
     $class = 'span12';
   }
@@ -53,8 +53,12 @@ function shoestrap_main_class() {
 }
 
 // #sidebar CSS classes
-function shoestrap_sidebar_class() {
-  return shoestrap_sidebar_width( 'sidebar' );
+function shoestrap_sidebar_class( $sidebar = 'primary' ) {
+  if ( $sidebar == 'secondary' ) {
+    return shoestrap_sidebars_calculate( 'secondary' );
+  } else {
+    return shoestrap_sidebars_calculate( 'primary' );
+  }
 }
 
 // Configuration values

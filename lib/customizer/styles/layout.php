@@ -6,7 +6,7 @@ function shoestrap_layout_css() {
 
   <style>
     <?php if ( $sidebar_location == 'left' ) { ?>
-      #main{ float: right; }
+      /*#main{ float: right; }*/
     <?php } ?>
   </style>
   <?php

@@ -12,6 +12,15 @@ function shoestrap_widgets_init() {
   ));
 
   register_sidebar(array(
+    'name'          => __('Secondary Sidebar', 'shoestrap'),
+    'id'            => 'sidebar-secondary',
+    'before_widget' => '<section id="%1$s" class="widget %2$s"><div class="widget-inner">',
+    'after_widget'  => '</div></section>',
+    'before_title'  => '<h3>',
+    'after_title'   => '</h3>',
+  ));
+
+  register_sidebar(array(
     'name'          => __('Hero Area', 'shoestrap'),
     'id'            => 'hero-area',
     'before_widget' => '<div class="jumbotron masthead"><div class="container">',

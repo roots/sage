@@ -119,9 +119,9 @@ function shoestrap_register_controls( $wp_customize ){
     ),
   ));
   
-  // Sidebar: left/Right/Hidden
+  // Primary Sidebar: left/Right/Hidden
   $wp_customize->add_control( 'shoestrap_aside_layout', array(
-    'label'       => __( 'Sidebar', 'shoestrap' ),
+    'label'       => __( 'Primary Sidebar', 'shoestrap' ),
     'section'     => 'shoestrap_layout',
     'settings'    => 'shoestrap_aside_layout',
     'type'        => 'select',
@@ -133,9 +133,9 @@ function shoestrap_register_controls( $wp_customize ){
     ),
   ));
   
-  // Responsive/Fixed-Width layout
+  // Primary Sidebar width
   $wp_customize->add_control( 'shoestrap_aside_width', array(
-    'label'       => __( 'Sidebar Width', 'shoestrap' ),
+    'label'       => __( 'Primary Sidebar Width', 'shoestrap' ),
     'section'     => 'shoestrap_layout',
     'settings'    => 'shoestrap_aside_width',
     'type'        => 'select',
@@ -146,6 +146,35 @@ function shoestrap_register_controls( $wp_customize ){
       '4'         => __( '4/12', 'shoestrap' ),
       '5'         => __( '5/12', 'shoestrap' ),
       '6'         => __( '6/12', 'shoestrap' ),
+    ),
+  ));
+  
+  // Secondary Sidebar: left/Right/Hidden
+  $wp_customize->add_control( 'shoestrap_secondary_layout', array(
+    'label'       => __( 'Secondary Sidebar', 'shoestrap' ),
+    'section'     => 'shoestrap_layout',
+    'settings'    => 'shoestrap_secondary_layout',
+    'type'        => 'select',
+    'priority'    => 4,
+    'choices'     => array(
+      // 'right'     => __( 'Right', 'shoestrap' ),
+      // 'left'      => __( 'Left', 'shoestrap' ),
+      'center'    => __( 'Center', 'shoestrap' ),
+      // 'hide'      => __( 'Hide', 'shoestrap' ),
+    ),
+  ));
+  
+  // Secondary Sidebar width
+  $wp_customize->add_control( 'shoestrap_secondary_width', array(
+    'label'       => __( 'Secondary Sidebar Width', 'shoestrap' ),
+    'section'     => 'shoestrap_layout',
+    'settings'    => 'shoestrap_secondary_width',
+    'type'        => 'select',
+    'priority'    => 5,
+    'choices'     => array(
+      '2'         => __( '2/12', 'shoestrap' ),
+      '3'         => __( '3/12', 'shoestrap' ),
+      '4'         => __( '4/12', 'shoestrap' ),
     ),
   ));
   
