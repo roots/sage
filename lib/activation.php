@@ -75,7 +75,7 @@ function roots_theme_activation_options_render_page() { ?>
         $roots_default_activation_options = roots_get_default_theme_activation_options();
       ?>
 
-      <input type="hidden" value="1" name="roots_theme_activation_options[first_run]">
+      <input type="hidden" value="true" name="roots_theme_activation_options[first_run]">
 
       <table class="form-table">
 
@@ -83,8 +83,8 @@ function roots_theme_activation_options_render_page() { ?>
           <td>
             <fieldset><legend class="screen-reader-text"><span><?php _e('Create static front page?', 'roots'); ?></span></legend>
               <select name="roots_theme_activation_options[create_front_page]" id="create_front_page">
-                <option selected="selected" value="yes"><?php echo _e('Yes', 'roots'); ?></option>
-                <option value="no"><?php echo _e('No', 'roots'); ?></option>
+                <option selected="selected" value="true"><?php echo _e('Yes', 'roots'); ?></option>
+                <option value="false"><?php echo _e('No', 'roots'); ?></option>
               </select>
               <br>
               <small class="description"><?php printf(__('Create a page called Home and set it to be the static front page', 'roots')); ?></small>
@@ -96,8 +96,8 @@ function roots_theme_activation_options_render_page() { ?>
           <td>
             <fieldset><legend class="screen-reader-text"><span><?php _e('Update permalink structure?', 'roots'); ?></span></legend>
               <select name="roots_theme_activation_options[change_permalink_structure]" id="change_permalink_structure">
-                <option selected="selected" value="yes"><?php echo _e('Yes', 'roots'); ?></option>
-                <option value="no"><?php echo _e('No', 'roots'); ?></option>
+                <option selected="selected" value="true"><?php echo _e('Yes', 'roots'); ?></option>
+                <option value="false"><?php echo _e('No', 'roots'); ?></option>
               </select>
               <br>
               <small class="description"><?php printf(__('Change permalink structure to /&#37;postname&#37;/', 'roots')); ?></small>
@@ -109,8 +109,8 @@ function roots_theme_activation_options_render_page() { ?>
           <td>
             <fieldset><legend class="screen-reader-text"><span><?php _e('Update uploads folder?', 'roots'); ?></span></legend>
               <select name="roots_theme_activation_options[change_uploads_folder]" id="change_uploads_folder">
-                <option selected="selected" value="yes"><?php echo _e('Yes', 'roots'); ?></option>
-                <option value="no"><?php echo _e('No', 'roots'); ?></option>
+                <option selected="selected" value="true"><?php echo _e('Yes', 'roots'); ?></option>
+                <option value="false"><?php echo _e('No', 'roots'); ?></option>
               </select>
               <br>
               <small class="description"><?php printf(__('Change uploads folder to /assets/ instead of /wp-content/uploads/', 'roots')); ?></small>
@@ -122,8 +122,8 @@ function roots_theme_activation_options_render_page() { ?>
           <td>
             <fieldset><legend class="screen-reader-text"><span><?php _e('Create navigation menu?', 'roots'); ?></span></legend>
               <select name="roots_theme_activation_options[create_navigation_menus]" id="create_navigation_menus">
-                <option selected="selected" value="yes"><?php echo _e('Yes', 'roots'); ?></option>
-                <option value="no"><?php echo _e('No', 'roots'); ?></option>
+                <option selected="selected" value="true"><?php echo _e('Yes', 'roots'); ?></option>
+                <option value="false"><?php echo _e('No', 'roots'); ?></option>
               </select>
               <br>
               <small class="description"><?php printf(__('Create the Primary Navigation menu and set the location', 'roots')); ?></small>
@@ -135,8 +135,8 @@ function roots_theme_activation_options_render_page() { ?>
           <td>
             <fieldset><legend class="screen-reader-text"><span><?php _e('Add pages to menu?', 'roots'); ?></span></legend>
               <select name="roots_theme_activation_options[add_pages_to_primary_navigation]" id="add_pages_to_primary_navigation">
-                <option selected="selected" value="yes"><?php echo _e('Yes', 'roots'); ?></option>
-                <option value="no"><?php echo _e('No', 'roots'); ?></option>
+                <option selected="selected" value="true"><?php echo _e('Yes', 'roots'); ?></option>
+                <option value="false"><?php echo _e('No', 'roots'); ?></option>
               </select>
               <br>
               <small class="description"><?php printf(__('Add all current published pages to the Primary Navigation', 'roots')); ?></small>
@@ -155,61 +155,20 @@ function roots_theme_activation_options_render_page() { ?>
 function roots_theme_activation_options_validate($input) {
   $output = $defaults = roots_get_default_theme_activation_options();
 
-  if (isset($input['first_run'])) {
-    if ($input['first_run'] === '1') {
-      $input['first_run'] = true;
-    }
-    $output['first_run'] = $input['first_run'];
-  }
+  $options = array(
+    'first_run',
+    'create_front_page',
+    'change_permalink_structure',
+    'change_uploads_folder',
+    'create_navigation_menus',
+    'add_pages_to_primary_navigation'
+  );
 
-  if (isset($input['create_front_page'])) {
-    if ($input['create_front_page'] === 'yes') {
-      $input['create_front_page'] = true;
+  foreach($options as $option_name) {
+    if (isset($input[$option_name])) {
+      $input[$option_name] = ($input[$option_name] === 'true') ? true : false;
+      $output[$option_name] = $input[$option_name];
     }
-    if ($input['create_front_page'] === 'no') {
-      $input['create_front_page'] = false;
-    }
-    $output['create_front_page'] = $input['create_front_page'];
-  }
-
-  if (isset($input['change_permalink_structure'])) {
-    if ($input['change_permalink_structure'] === 'yes') {
-      $input['change_permalink_structure'] = true;
-    }
-    if ($input['change_permalink_structure'] === 'no') {
-      $input['change_permalink_structure'] = false;
-    }
-    $output['change_permalink_structure'] = $input['change_permalink_structure'];
-  }
-
-  if (isset($input['change_uploads_folder'])) {
-    if ($input['change_uploads_folder'] === 'yes') {
-      $input['change_uploads_folder'] = true;
-    }
-    if ($input['change_uploads_folder'] === 'no') {
-      $input['change_uploads_folder'] = false;
-    }
-    $output['change_uploads_folder'] = $input['change_uploads_folder'];
-  }
-
-  if (isset($input['create_navigation_menus'])) {
-    if ($input['create_navigation_menus'] === 'yes') {
-      $input['create_navigation_menus'] = true;
-    }
-    if ($input['create_navigation_menus'] === 'no') {
-      $input['create_navigation_menus'] = false;
-    }
-    $output['create_navigation_menus'] = $input['create_navigation_menus'];
-  }
-
-  if (isset($input['add_pages_to_primary_navigation'])) {
-    if ($input['add_pages_to_primary_navigation'] === 'yes') {
-      $input['add_pages_to_primary_navigation'] = true;
-    }
-    if ($input['add_pages_to_primary_navigation'] === 'no') {
-      $input['add_pages_to_primary_navigation'] = false;
-    }
-    $output['add_pages_to_primary_navigation'] = $input['add_pages_to_primary_navigation'];
   }
 
   return apply_filters('roots_theme_activation_options_validate', $output, $input, $defaults);
