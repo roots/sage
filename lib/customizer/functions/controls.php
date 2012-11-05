@@ -150,17 +150,17 @@ function shoestrap_register_controls( $wp_customize ){
   ));
   
   // "Affix" Sidebar (see http://twitter.github.com/bootstrap/javascript.html#affix)
-  $wp_customize->add_control( 'shoestrap_aside_affix', array(
-    'label'       => __( '"Affix" Sidebar', 'shoestrap' ),
-    'section'     => 'shoestrap_layout',
-    'settings'    => 'shoestrap_aside_affix',
-    'type'        => 'select',
-    'priority'    => 4,
-    'choices'     => array(
-      'normal'    => __( 'Normal', 'shoestrap' ),
-      'affix'     => __( 'Affix', 'shoestrap' ),
-    ),
-  ));
+  // $wp_customize->add_control( 'shoestrap_aside_affix', array(
+    // 'label'       => __( '"Affix" Sidebar', 'shoestrap' ),
+    // 'section'     => 'shoestrap_layout',
+    // 'settings'    => 'shoestrap_aside_affix',
+    // 'type'        => 'select',
+    // 'priority'    => 4,
+    // 'choices'     => array(
+      // 'normal'    => __( 'Normal', 'shoestrap' ),
+      // 'affix'     => __( 'Affix', 'shoestrap' ),
+    // ),
+  // ));
   
 /*
  * TYPOGRAPHY SECTION
