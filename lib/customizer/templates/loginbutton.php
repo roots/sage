@@ -12,7 +12,7 @@ function shoestrap_login_button() {
     $link  = wp_login_url( get_permalink() );
     $label = __( 'Login/Register', 'shoestrap' );
   }
-  $content .= '<a class="pull-right" style="padding: 10px;" href="' . $link . '">';
+  $content = '<a class="pull-right" style="padding: 10px;" href="' . $link . '">';
   $content .= '<i class="icon-user"></i> ' . $label;
   $content .= '</a>';
   
