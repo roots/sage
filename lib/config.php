@@ -44,7 +44,7 @@ function shoestrap_display_sidebar() {
 // #main CSS classes
 function shoestrap_main_class() {
   if (shoestrap_display_sidebar()) {
-    $class = shoestrap_sidebar_width();
+    $class = shoestrap_sidebar_width( 'main' );
   } else {
     $class = 'span12';
   }
