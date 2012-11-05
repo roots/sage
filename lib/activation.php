@@ -25,7 +25,8 @@ add_filter('option_page_capability_roots_activation_options', 'roots_activation_
 
 function roots_theme_activation_options_add_page() {
   $roots_activation_options = roots_get_theme_activation_options();
-  if (!$roots_activation_options['first_run']) {
+
+  if (!$roots_activation_options['first_run'] === 'true') {
     $theme_page = add_theme_page(
       __('Theme Activation', 'roots'),
       __('Theme Activation', 'roots'),
@@ -237,6 +238,7 @@ function roots_theme_activation_action() {
     $roots_nav_theme_mod = false;
 
     $primary_nav = wp_get_nav_menu_object('Primary Navigation');
+
     if (!$primary_nav) {
       $primary_nav_id = wp_create_nav_menu('Primary Navigation', array('slug' => 'primary_navigation'));
       $roots_nav_theme_mod['primary_navigation'] = $primary_nav_id;
@@ -255,6 +257,7 @@ function roots_theme_activation_action() {
     $primary_nav = wp_get_nav_menu_object('Primary Navigation');
     $primary_nav_term_id = (int) $primary_nav->term_id;
     $menu_items= wp_get_nav_menu_items($primary_nav_term_id);
+
     if (!$menu_items || empty($menu_items)) {
       $pages = get_pages();
       foreach($pages as $page) {
