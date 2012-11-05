@@ -1,6 +1,6 @@
 <?php
 
-function shoestrap_sidebar_width( $target, $echo = false ) {
+function shoestrap_sidebar_width( $target, $offset = '', $echo = false ) {
   $first  = get_theme_mod( 'shoestrap_aside_width' );
   $second = get_theme_mod( 'shoestrap_secondary_width' );
   
@@ -99,6 +99,10 @@ function shoestrap_sidebar_width( $target, $echo = false ) {
     $class = $main;
   }
   
+  if ( $offset ) {
+    $class = $class . ' offset' . $offset;
+  }
+  
   if ( $echo ) {
     echo $class;
   } else {
@@ -106,38 +110,100 @@ function shoestrap_sidebar_width( $target, $echo = false ) {
   }
 }
 
-function shoestrap_secondary_sidebar_position() {
+function shoestrap_sidebars_calculate( $target = 'main', $echo = false ) {
+    
+  $primary_width      = get_theme_mod( 'shoestrap_aside_width' );
+  $secondary_width    = get_theme_mod( 'shoestrap_secondary_width' );
+  $primary_location   = get_theme_mod( 'shoestrap_aside_layout' );
+  $secondary_location = get_theme_mod( 'shoestrap_secondary_layout' );
   
-  $primary   = get_theme_mod( 'shoestrap_aside_layout' );
-  $secondary = get_theme_mod( 'shoestrap_secondary_layout' );
   
   // Primary - Main - Secondary
-  if ( $primary == 'left' && $secondary == 'right' ) {
-    
+  if ( $primary_location == 'left' && $secondary_location == 'right' ) {
+    $main_class      = shoestrap_sidebar_width( 'main', $primary_width );
+    $primary_class   = shoestrap_sidebar_width( 'primary' );
+    $secondary_class = shoestrap_sidebar_width( 'secondary' );
   }
   
   // Primary - Secondary - Main
-  if ( $primary == 'left' && $secondary == 'center' ) {
-    
+  if ( $primary_location == 'left' && $secondary_location == 'center' ) {
+    $main_class      = shoestrap_sidebar_width( 'main' );
+    $primary_class   = shoestrap_sidebar_width( 'primary' );
+    $secondary_class = shoestrap_sidebar_width( 'secondary' );
   }
   
   // Main - Primary - Secondary
-  if ( $primary == 'right' && $secondary == 'right' ) {
-    
+  if ( $primary_location == 'right' && $secondary_location == 'right' ) {
+    $main_class      = shoestrap_sidebar_width( 'main' );
+    $primary_class   = shoestrap_sidebar_width( 'primary' );
+    $secondary_class = shoestrap_sidebar_width( 'secondary' );
   }
   
   // Main - Secondary - Primary
-  if ( $primary == 'right' && $secondary == 'center' ) {
-    
+  if ( $primary_location == 'right' && $secondary_location == 'center' ) {
+    $main_class      = shoestrap_sidebar_width( 'main' );
+    $primary_class   = shoestrap_sidebar_width( 'primary' );
+    $secondary_class = shoestrap_sidebar_width( 'secondary' );
   }
   
   // Secondary - Main - Primary
-  if ( $primary == 'right' && $secondary == 'left' ) {
-    
+  if ( $primary_location == 'right' && $secondary_location == 'left' ) {
+    $main_class      = shoestrap_sidebar_width( 'main', $secondary_width );
+    $primary_class   = shoestrap_sidebar_width( 'primary' );
+    $secondary_class = shoestrap_sidebar_width( 'secondary' );
   }
   
   // Secondary - Primary - Main
-  if ( $primary == 'left' && $secondary == 'left' ) {
-    
+  if ( $primary_location == 'left' && $secondary_location == 'left' ) {
+    $main_class      = shoestrap_sidebar_width( 'main', $secondary_width + $primary_width);
+    $primary_class   = shoestrap_sidebar_width( 'primary', $secondary_width );
+    $secondary_class = shoestrap_sidebar_width( 'secondary' );
+  }
+  if ( $target == 'primary' ) {
+    $class = $primary_class;
+  } elseif ( $target == 'secondary' ) {
+    $class = $secondary_class;
+  } else {
+    $class = $main_class;
+  }
+  
+  if ( $echo ) {
+    echo $class;
+  } else {
+    return $class;
   }
 }
+
+function shoestrap_sidebars_positioning_css() {
+  $primary_location   = get_theme_mod( 'shoestrap_aside_layout' );
+  $secondary_location = get_theme_mod( 'shoestrap_secondary_layout' );
+  
+  // Primary - Main - Secondary
+  if ( $primary_location == 'left' && $secondary_location == 'right' ) {
+    $css = '#secondary{float: right;} @media (min-width: 768px){#main{position: absolute;}}';
+  }
+  // Primary - Secondary - Main
+  if ( $primary_location == 'left' && $secondary_location == 'center' ) {
+    $css = '#main{float: right;}';
+  }
+  // Main - Primary - Secondary
+  if ( $primary_location == 'right' && $secondary_location == 'right' ) {
+    $css = '';
+  }
+  // Main - Secondary - Primary
+  if ( $primary_location == 'right' && $secondary_location == 'center' ) {
+    $css = '#sidebar{float: right;}';
+  }
+  // Secondary - Main - Primary
+  if ( $primary_location == 'right' && $secondary_location == 'left' ) {
+    $css = '#sidebar{float: right;} @media (min-width: 768px){#main{position: absolute;}}';
+  }
+  // Secondary - Primary - Main
+  if ( $primary_location == 'left' && $secondary_location == 'left' ) {
+    $css = '#main{float: right;} @media (min-width: 768px){#main, #sidebar{position: absolute;}}';
+  }
+  echo '<style>';
+  echo $css;
+  echo '</style>';
+}
+add_action( 'wp_head', 'shoestrap_sidebars_positioning_css' );
