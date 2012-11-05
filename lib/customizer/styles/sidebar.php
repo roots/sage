@@ -105,3 +105,39 @@ function shoestrap_sidebar_width( $target, $echo = false ) {
     return $class;
   }
 }
+
+function shoestrap_secondary_sidebar_position() {
+  
+  $primary   = get_theme_mod( 'shoestrap_aside_layout' );
+  $secondary = get_theme_mod( 'shoestrap_secondary_layout' );
+  
+  // Primary - Main - Secondary
+  if ( $primary == 'left' && $secondary == 'right' ) {
+    
+  }
+  
+  // Primary - Secondary - Main
+  if ( $primary == 'left' && $secondary == 'center' ) {
+    
+  }
+  
+  // Main - Primary - Secondary
+  if ( $primary == 'right' && $secondary == 'right' ) {
+    
+  }
+  
+  // Main - Secondary - Primary
+  if ( $primary == 'right' && $secondary == 'center' ) {
+    
+  }
+  
+  // Secondary - Main - Primary
+  if ( $primary == 'right' && $secondary == 'left' ) {
+    
+  }
+  
+  // Secondary - Primary - Main
+  if ( $primary == 'left' && $secondary == 'left' ) {
+    
+  }
+}
