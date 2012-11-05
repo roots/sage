@@ -8,7 +8,7 @@ function shoestrap_background_css() {
   ?>
   
   <style>
-    body.custom-background{ background-color: <?php echo $color; ?>; }
+    body.custom-background, body{ background-color: <?php echo $color; ?>; }
     #wrap{ background: <?php echo $color; ?>; }
   </style>
   <?php
