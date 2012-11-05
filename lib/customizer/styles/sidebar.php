@@ -7,19 +7,19 @@ function shoestrap_sidebar_width( $target, $echo = false ) {
   if ( !is_active_sidebar( 'sidebar-secondary' ) ) {
     if ( $first == '2' ) {
       $main    = 'span10';
-      $sidebar = 'span2';
+      $primary = 'span2';
     } elseif ( $first == '3' ) {
       $main    = 'span9';
-      $sidebar = 'span3';
+      $primary = 'span3';
     } elseif ( $first == '5' ) {
       $main    = 'span7';
-      $sidebar = 'span5';
+      $primary = 'span5';
     } elseif ( $first == '6' ) {
       $main    = 'span6';
-      $sidebar = 'span6';
+      $primary = 'span6';
     } else { // default value
       $main    = 'span8';
-      $sidebar = 'span4';
+      $primary = 'span4';
     }
   } else {
     if ( $second == '2' ) {
