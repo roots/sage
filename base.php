@@ -29,7 +29,12 @@
       <?php if (shoestrap_display_sidebar()) : ?>
       <aside id="sidebar" class="<?php echo shoestrap_sidebar_class(); ?>" role="complementary">
         <?php do_action('shoestrap_pre_sidebar'); ?>
-        <?php get_template_part('templates/sidebar'); ?>
+        <?php get_template_part('templates/primary-sidebar'); ?>
+        <?php do_action('shoestrap_after_sidebar'); ?>
+      </aside>
+      <aside id="secondary" class="<?php echo shoestrap_sidebar_class( 'secondary' ); ?>" role="complementary">
+        <?php do_action('shoestrap_pre_sidebar'); ?>
+        <?php get_template_part('templates/secondary-sidebar'); ?>
         <?php do_action('shoestrap_after_sidebar'); ?>
       </aside>
       <?php endif; ?>
