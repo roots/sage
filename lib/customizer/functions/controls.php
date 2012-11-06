@@ -119,9 +119,9 @@ function shoestrap_register_controls( $wp_customize ){
     ),
   ));
   
-  // Laoyout selection
+  // Layout selection
   $wp_customize->add_control( 'shoestrap_layout', array(
-    'label'       => __( 'Primary Sidebar', 'shoestrap' ),
+    'label'       => __( 'Layout', 'shoestrap' ),
     'section'     => 'shoestrap_layout',
     'settings'    => 'shoestrap_layout',
     'type'        => 'select',
