@@ -11,11 +11,10 @@ function shoestrap_register_settings( $wp_customize ){
   $settings   = array();
   $settings[] = array( 'slug' => 'shoestrap_background_color',          'default' => $background_color );
   $settings[] = array( 'slug' => 'shoestrap_navbar_color',              'default' => '#ffffff' );
-  $settings[] = array( 'slug' => 'shoestrap_aside_layout',              'default' => 'right' );
+  $settings[] = array( 'slug' => 'shoestrap_layout',                    'default' => 'mp' );
   $settings[] = array( 'slug' => 'shoestrap_aside_affix',               'default' => 'normal' );
   $settings[] = array( 'slug' => 'shoestrap_aside_width',               'default' => '4' );
-  $settings[] = array( 'slug' => 'shoestrap_secondary_layout',          'default' => 'center' );
-  $settings[] = array( 'slug' => 'shoestrap_secondary_width',           'default' => '4' );
+  $settings[] = array( 'slug' => 'shoestrap_secondary_width',           'default' => '3' );
   $settings[] = array( 'slug' => 'shoestrap_link_color',                'default' => '#0088cc' );
   $settings[] = array( 'slug' => 'shoestrap_hero_title',                'default' => '' );
   $settings[] = array( 'slug' => 'shoestrap_hero_content',              'default' => '' );

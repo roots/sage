@@ -119,17 +119,25 @@ function shoestrap_register_controls( $wp_customize ){
     ),
   ));
   
-  // Primary Sidebar: left/Right/Hidden
-  $wp_customize->add_control( 'shoestrap_aside_layout', array(
+  // Laoyout selection
+  $wp_customize->add_control( 'shoestrap_layout', array(
     'label'       => __( 'Primary Sidebar', 'shoestrap' ),
     'section'     => 'shoestrap_layout',
-    'settings'    => 'shoestrap_aside_layout',
+    'settings'    => 'shoestrap_layout',
     'type'        => 'select',
     'priority'    => 2,
     'choices'     => array(
-      'right'     => __( 'Right', 'shoestrap' ),
-      'left'      => __( 'Left', 'shoestrap' ),
-      'hide'      => __( 'Hide', 'shoestrap' ),
+      'm'         => __( 'Main only', 'shoestrap' ),
+      'mp'        => __( 'Main-Primary', 'shoestrap' ),
+      'pm'        => __( 'Primary-Main', 'shoestrap' ),
+      'ms'        => __( 'Main-Secondary', 'shoestrap' ),
+      'sm'        => __( 'Secondary-Main', 'shoestrap' ),
+      'mps'       => __( 'Main-Primary-Secondary', 'shoestrap' ),
+      'msp'       => __( 'Main-Secondary-Primary', 'shoestrap' ),
+      'pms'       => __( 'Primary-Main-Secondary', 'shoestrap' ),
+      'psm'       => __( 'Primary-Secondary-Main', 'shoestrap' ),
+      'smp'       => __( 'Secondary-Main-Primary', 'shoestrap' ),
+      'spm'       => __( 'Secondary-Primary-Main', 'shoestrap' ),
     ),
   ));
   
@@ -146,21 +154,6 @@ function shoestrap_register_controls( $wp_customize ){
       '4'         => __( '4/12', 'shoestrap' ),
       '5'         => __( '5/12', 'shoestrap' ),
       '6'         => __( '6/12', 'shoestrap' ),
-    ),
-  ));
-  
-  // Secondary Sidebar: left/Right/Hidden
-  $wp_customize->add_control( 'shoestrap_secondary_layout', array(
-    'label'       => __( 'Secondary Sidebar', 'shoestrap' ),
-    'section'     => 'shoestrap_layout',
-    'settings'    => 'shoestrap_secondary_layout',
-    'type'        => 'select',
-    'priority'    => 4,
-    'choices'     => array(
-      // 'right'     => __( 'Right', 'shoestrap' ),
-      // 'left'      => __( 'Left', 'shoestrap' ),
-      'center'    => __( 'Center', 'shoestrap' ),
-      // 'hide'      => __( 'Hide', 'shoestrap' ),
     ),
   ));
   
