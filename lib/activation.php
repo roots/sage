@@ -26,7 +26,7 @@ add_filter('option_page_capability_shoestrap_activation_options', 'shoestrap_act
 function shoestrap_theme_activation_options_add_page() {
   $shoestrap_activation_options = shoestrap_get_theme_activation_options();
 
-  if (!$shoestrap_activation_options['first_run'] === 'true') {
+  if ($shoestrap_activation_options['first_run'] === 'true') {
     $theme_page = add_theme_page(
       __('Theme Activation', 'shoestrap'),
       __('Theme Activation', 'shoestrap'),
