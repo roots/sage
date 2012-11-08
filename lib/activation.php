@@ -167,7 +167,7 @@ function shoestrap_theme_activation_options_validate($input) {
   foreach($options as $option_name) {
     if (isset($input[$option_name])) {
       $input[$option_name] = ($input[$option_name] === 'true') ? true : false;
-      $output[$name] = $input[$name];
+      $output[$option_name] = $input[$option_name];
     }
   }
 
