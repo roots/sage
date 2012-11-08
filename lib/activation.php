@@ -26,7 +26,7 @@ add_filter('option_page_capability_shoestrap_activation_options', 'shoestrap_act
 function shoestrap_theme_activation_options_add_page() {
   $shoestrap_activation_options = shoestrap_get_theme_activation_options();
 
-  if ($shoestrap_activation_options['first_run'] === 'true') {
+  if ($shoestrap_activation_options['first_run']) {
     $theme_page = add_theme_page(
       __('Theme Activation', 'shoestrap'),
       __('Theme Activation', 'shoestrap'),
@@ -47,7 +47,7 @@ add_action('admin_menu', 'shoestrap_theme_activation_options_add_page', 50);
 
 function shoestrap_get_default_theme_activation_options() {
   $default_theme_activation_options = array(
-    'first_run'                       => false,
+    'first_run'                       => true,
     'create_front_page'               => false,
     'change_permalink_structure'      => false,
     'change_uploads_folder'           => false,
@@ -76,7 +76,7 @@ function shoestrap_theme_activation_options_render_page() { ?>
         $shoestrap_default_activation_options = shoestrap_get_default_theme_activation_options();
       ?>
 
-      <input type="hidden" value="true" name="shoestrap_theme_activation_options[first_run]">
+      <input type="hidden" value="false" name="shoestrap_theme_activation_options[first_run]">
 
       <table class="form-table">
 
