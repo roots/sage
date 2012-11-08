@@ -25,7 +25,8 @@ add_filter('option_page_capability_shoestrap_activation_options', 'shoestrap_act
 
 function shoestrap_theme_activation_options_add_page() {
   $shoestrap_activation_options = shoestrap_get_theme_activation_options();
-  if (!$shoestrap_activation_options['first_run']) {
+
+  if (!$shoestrap_activation_options['first_run'] === 'true') {
     $theme_page = add_theme_page(
       __('Theme Activation', 'shoestrap'),
       __('Theme Activation', 'shoestrap'),
@@ -237,6 +238,7 @@ function shoestrap_theme_activation_action() {
     $shoestrap_nav_theme_mod = false;
 
     $primary_nav = wp_get_nav_menu_object('Primary Navigation');
+
     if (!$primary_nav) {
       $primary_nav_id = wp_create_nav_menu('Primary Navigation', array('slug' => 'primary_navigation'));
       $shoestrap_nav_theme_mod['primary_navigation'] = $primary_nav_id;
@@ -255,6 +257,7 @@ function shoestrap_theme_activation_action() {
     $primary_nav = wp_get_nav_menu_object('Primary Navigation');
     $primary_nav_term_id = (int) $primary_nav->term_id;
     $menu_items= wp_get_nav_menu_items($primary_nav_term_id);
+
     if (!$menu_items || empty($menu_items)) {
       $pages = get_pages();
       foreach($pages as $page) {
