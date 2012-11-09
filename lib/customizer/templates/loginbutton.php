@@ -12,9 +12,9 @@ function shoestrap_login_button() {
     $link  = wp_login_url( get_permalink() );
     $label = __( 'Login/Register', 'shoestrap' );
   }
-  $content = '<a class="pull-right login-link" style="padding: 10px;" href="' . $link . '">';
+  $content = '<ul class="pull-right nav nav-collapse"><li><a class="pull-right login-link" style="padding: 10px;" href="' . $link . '">';
   $content .= '<i class="icon-user"></i> ' . $label;
-  $content .= '</a>';
+  $content .= '</a></li></ul>';
   
   if ( $show_login_link != '0' ) {
     echo $content;

@@ -26,7 +26,6 @@ function shoestrap_navbar_css(){
     .navbar .nav > li > .dropdown-menu::after{
       border-bottom: 6px solid <?php echo $navbar_color; ?>;
     }
-    .navbar-inner .login-link,
     .navbar-inner a, .navbar-inner .brand, .navbar .nav > li > a,
     .navbar-inner .dropdown-menu li > a,
     .navbar-inner .dropdown-menu li > a:hover, .navbar-inner .dropdown-menu li > a:focus, .navbar-inner .dropdown-submenu:hover > a{
