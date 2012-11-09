@@ -26,6 +26,20 @@ function shoestrap_navbar_css(){
     .navbar .nav > li > .dropdown-menu::after{
       border-bottom: 6px solid <?php echo $navbar_color; ?>;
     }
+    .btn.btn-navbar{
+      <?php if ( shoestrap_get_brightness( $navbar_color ) >= 160 ) { ?>
+        background: <?php echo shoestrap_adjust_brightness( $navbar_color, -40 ); ?>;
+      <?php } else { ?>
+        background: <?php echo shoestrap_adjust_brightness( $navbar_color, 40 ); ?>;
+      <?php } ?>
+    }
+    .btn.btn-navbar:hover, .btn.btn-navbar:active, .btn.btn-navbar:enabled{
+      <?php if ( shoestrap_get_brightness( $navbar_color ) >= 160 ) { ?>
+        background: <?php echo shoestrap_adjust_brightness( $navbar_color, -30 ); ?>;
+      <?php } else { ?>
+        background: <?php echo shoestrap_adjust_brightness( $navbar_color, 30 ); ?>;
+      <?php } ?>
+    }
     .navbar-inner a, .navbar-inner .brand, .navbar .nav > li > a,
     .navbar-inner .dropdown-menu li > a,
     .navbar-inner .dropdown-menu li > a:hover, .navbar-inner .dropdown-menu li > a:focus, .navbar-inner .dropdown-submenu:hover > a{

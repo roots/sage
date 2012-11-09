@@ -56,7 +56,7 @@ function shoestrap_buttons_css() {
               *background-color: darken(@endColor, 5%);
             }
           }
-          .btn-primary, .navbar .btn-navbar{
+          .btn, .btn-primary{
             .buttonBackground(@btnColor, @btnColorHighlight);
           }
         ");
@@ -94,7 +94,7 @@ function shoestrap_buttons_css() {
               *background-color: darken(@endColor, 5%);
             }
           }
-          .btn, .btn-primary, .navbar .btn-navbar{
+          .btn, .btn-primary{
             .buttonBackground(@btnColor, @btnColorHighlight);
           }
         ");
