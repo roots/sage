@@ -421,6 +421,51 @@ function shoestrap_register_controls( $wp_customize ){
     'priority'    => 4,
   ));
 
+  // Facebook share buttons on posts
+  $wp_customize->add_control( 'shoestrap_facebook_on_posts', array(
+    'label'       => __( 'Share Buttons on Posts: Facebook', 'shoestrap' ),
+    'section'     => 'shoestrap_social',
+    'settings'    => 'shoestrap_facebook_on_posts',
+    'type'        => 'checkbox',
+    'priority'    => 5,
+  ));
+
+  // Twitter share buttons on posts
+  $wp_customize->add_control( 'shoestrap_twitter_on_posts', array(
+    'label'       => __( 'Share Buttons on Posts: Twitter', 'shoestrap' ),
+    'section'     => 'shoestrap_social',
+    'settings'    => 'shoestrap_twitter_on_posts',
+    'type'        => 'checkbox',
+    'priority'    => 6,
+  ));
+
+  // Google Plus share buttons on posts
+  $wp_customize->add_control( 'shoestrap_gplus_on_posts', array(
+    'label'       => __( 'Share Buttons on Posts: Google Plus', 'shoestrap' ),
+    'section'     => 'shoestrap_social',
+    'settings'    => 'shoestrap_gplus_on_posts',
+    'type'        => 'checkbox',
+    'priority'    => 7,
+  ));
+
+  // Linkedin share buttons on posts
+  $wp_customize->add_control( 'shoestrap_linkedin_on_posts', array(
+    'label'       => __( 'Share Buttons on Posts: Linkedin', 'shoestrap' ),
+    'section'     => 'shoestrap_social',
+    'settings'    => 'shoestrap_linkedin_on_posts',
+    'type'        => 'checkbox',
+    'priority'    => 8,
+  ));
+
+  // Pinterest share buttons on posts
+  $wp_customize->add_control( 'shoestrap_pinterest_on_posts', array(
+    'label'       => __( 'Share Buttons on Posts: Pinterest', 'shoestrap' ),
+    'section'     => 'shoestrap_social',
+    'settings'    => 'shoestrap_pinterest_on_posts',
+    'type'        => 'checkbox',
+    'priority'    => 9,
+  ));
+
 /*
  * ADVANCED SECTION
  */
