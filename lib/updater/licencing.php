@@ -14,7 +14,7 @@ $test_license = trim( get_option( 'shoestrap_license_key' ) );
 
 $shoestrap_updater = new EDD_SL_Theme_Updater( array( 
     'remote_api_url'  => SHOESTRAP_SL_STORE_URL,
-    'version'         => '1.1.3',
+    'version'         => '1.14',
     'license'         => $test_license,
     'item_name'       => SHOESTRAP_SL_THEME_NAME,
     'author'          => 'Aristeides Stathopoulos'
