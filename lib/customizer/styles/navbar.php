@@ -10,6 +10,10 @@ function shoestrap_navbar_css(){
   ?>
 
   <style>
+    <?php if ( get_theme_mod( 'shoestrap_logo' ) ) {
+      if ( get_theme_mod( 'shoestrap_header_mode' ) == 'navbar' ) { ?>
+        .navbar a.brand{padding: 5px 20px 5px;}
+    <?php } } ?>
     .navbar-inner, .navbar-inner ul.dropdown-menu{
       background-color: <?php echo $navbar_color; ?> !important;
       background-image: -moz-linear-gradient(top, <?php echo $navbar_color; ?>, <?php echo shoestrap_adjust_brightness( $navbar_color, -10 ); ?>) !important;

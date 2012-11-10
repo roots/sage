@@ -7,7 +7,7 @@
 function shoestrap_logo() {
   if ( get_theme_mod( 'shoestrap_logo' ) ) {
     if ( get_theme_mod( 'shoestrap_header_mode' ) == 'navbar' ) {
-      $image = '<img id="site-logo" src="%s" alt="%s" style="height:20px; width:auto;">';
+      $image = '<img id="site-logo" src="%s" alt="%s" style="max-height:30px; width:auto;">';
     } else {
       $image = '<img id="site-logo" src="%s" alt="%s" style="max-width:100%%; height:auto;">';
     }
