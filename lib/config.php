@@ -15,28 +15,26 @@ add_theme_support('bootstrap-top-navbar');  // Enable Bootstrap's fixed navbar
  */
 function shoestrap_display_sidebar() {
   $sidebar_config = new Shoestrap_Sidebar(
-    /**
-     * Conditional tag checks (http://codex.wordpress.org/Conditional_Tags)
-     * Any of these conditional tags that return true won't show the sidebar
-     *
-     * To use a function that accepts arguments, use the following format:
-     *
-     * array('function_name', array('arg1', 'arg2'))
-     *
-     * The second element must be an array even if there's only 1 argument.
-     */
-    array(
-      'is_404',
-      'is_front_page'
-    ),
-    /**
-     * Page template checks (via is_page_template())
-     * Any of these page templates that return true won't show the sidebar
-     */
-    array(
-      'page-custom.php'
-    )
-  );
+  if ( get_theme_mod( 'shoestrap_sidebar_on_front' ) != 'show') {
+    $sidebar_config = new Roots_Sidebar(
+      array(
+        'is_404',
+        'is_front_page'
+      ),
+      array(
+        'page-custom.php'
+      )
+    );
+  } else {
+    $sidebar_config = new Roots_Sidebar(
+      array(
+        'is_404',
+      ),
+      array(
+        'page-custom.php'
+      )
+    );
+  }
 
   return $sidebar_config->display;
 }

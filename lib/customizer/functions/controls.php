@@ -171,6 +171,19 @@ function shoestrap_register_controls( $wp_customize ){
     ),
   ));
   
+  // Show sidebars on the Home Page
+  $wp_customize->add_control( 'shoestrap_sidebar_on_front', array(
+    'label'       => __( 'Show sidebars on the Home Page', 'shoestrap' ),
+    'section'     => 'shoestrap_layout',
+    'settings'    => 'shoestrap_sidebar_on_front',
+    'type'        => 'select',
+    'priority'    => 6,
+    'choices'     => array(
+      'show'         => __( 'Show', 'shoestrap' ),
+      'hide'         => __( 'Hide', 'shoestrap' )
+    ),
+  ));
+  
   // "Affix" Sidebar (see http://twitter.github.com/bootstrap/javascript.html#affix)
   // $wp_customize->add_control( 'shoestrap_aside_affix', array(
     // 'label'       => __( '"Affix" Sidebar', 'shoestrap' ),
