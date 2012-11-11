@@ -14,7 +14,6 @@ add_theme_support('bootstrap-top-navbar');  // Enable Bootstrap's fixed navbar
  * See lib/sidebar.php for more details
  */
 function shoestrap_display_sidebar() {
-  $sidebar_config = new Shoestrap_Sidebar(
   if ( get_theme_mod( 'shoestrap_sidebar_on_front' ) != 'show') {
     $sidebar_config = new Roots_Sidebar(
       array(
