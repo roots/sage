@@ -15,7 +15,7 @@ add_theme_support('bootstrap-top-navbar');  // Enable Bootstrap's fixed navbar
  */
 function shoestrap_display_sidebar() {
   if ( get_theme_mod( 'shoestrap_sidebar_on_front' ) != 'show') {
-    $sidebar_config = new Roots_Sidebar(
+    $sidebar_config = new Shoestrap_Sidebar(
       array(
         'is_404',
         'is_front_page'
@@ -25,7 +25,7 @@ function shoestrap_display_sidebar() {
       )
     );
   } else {
-    $sidebar_config = new Roots_Sidebar(
+    $sidebar_config = new Shoestrap_Sidebar(
       array(
         'is_404',
       ),
