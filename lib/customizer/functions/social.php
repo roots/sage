@@ -44,12 +44,24 @@ function shoestrap_social_links( $network = '' ) {
   <?php }
 }
 
-add_action( 'shoestrap_pre_entry_meta', 'shoestrap_social_share_template' );
-function shoestrap_social_share_template() { 
+add_action( 'the_content', 'shoestrap_social_share_singlular' );
+function shoestrap_social_share_singlular( $content ) { 
   global $post;
-  ?>
-  <div class="shareme clearfix" data-url="<?php echo get_permalink( $post->ID ); ?>" data-text="<?php echo get_the_title( $post->ID ); ?> "></div>
-  <?php
+  $social_location = get_theme_mod( 'shoestrap_single_social_position' );
+  $social = '';
+  
+  if( is_singular() && is_main_query() ) {
+    $social = '<div class="shareme clearfix" data-url="' . get_permalink( $post->ID ) . '" data-text="' . get_the_title( $post->ID ) . '"></div>';
+  }
+  if ( $social_location == 'top' ) {
+    return $social . $content;
+  } elseif ( $social_location == 'bottom' ) {
+    return $content . $social;
+  } elseif ( $social_location == 'both' ) {
+    return $social . $content . $social;
+  } else {
+    return $content;
+  }
 }
 
 function shoestrap_theme_enqueue_scripts() {

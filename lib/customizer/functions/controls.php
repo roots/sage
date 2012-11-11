@@ -466,6 +466,22 @@ function shoestrap_register_controls( $wp_customize ){
     'priority'    => 9,
   ));
 
+  // Visibility of the Hero region (frontpage/site-wide)
+  $wp_customize->add_control( 'shoestrap_single_social_position', array(
+    'label'       => __( 'Location of social shares', 'shoestrap' ),
+    'section'     => 'shoestrap_social',
+    'settings'    => 'shoestrap_single_social_position',
+    'type'        => 'select',
+    'priority'    => 10,
+    'choices'     => array(
+      'top'       => __( 'Top', 'shoestrap' ),
+      'bottom'    => __( 'Bottom', 'shoestrap' ),
+      'both'      => __( 'Both', 'shoestrap' ),
+      'none'      => __( 'None', 'shoestrap' )
+    ),
+  ));
+
+
 /*
  * ADVANCED SECTION
  */
