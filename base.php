@@ -19,7 +19,7 @@
       </div>
       <?php if (roots_display_sidebar()) : ?>
       <aside id="sidebar" class="<?php echo roots_sidebar_class(); ?>" role="complementary">
-        <?php echo roots_sidebar_path(); ?>
+        <?php include roots_sidebar_path(); ?>
       </aside>
       <?php endif; ?>
     </div><!-- /#content -->
