@@ -25,7 +25,7 @@ function shoestrap_license_page() {
 
   ?>
   <div class="postbox">
-    <h3 class="hndle" style="padding: 7px 10px;"><span><?php _e( 'Shoestrap Child theme Licence Key', 'shoestrap' ); ?></span></h3>
+    <h3 class="hndle" style="padding: 7px 10px;"><span><?php _e( 'Shoestrap theme Licence Key', 'shoestrap' ); ?></span></h3>
     <div class="inside">
 
       <strong>This theme is an OpenSource project and is provided free of charge.</strong><br />
