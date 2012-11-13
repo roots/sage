@@ -22,4 +22,5 @@ if ( !class_exists( 'lessc' ) ) {
 
 require_once locate_template('/lib/customizer/customizer.php'); // Customizer functions
 require_once locate_template('/lib/custom.php');                // Custom functions
-require_once locate_template('/lib/updater/licencing.php');     // Licencing functions to provide automatic updates
+require_once locate_template('/lib/admin/admin.php');           // Admin page
+require_once locate_template('/lib/admin/licencing.php');       // Licencing to allow auto-updates
