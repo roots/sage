@@ -26,3 +26,10 @@ Create the Primary Navigation menu and set the location. This is normally handle
 ### Add pages to menu
 
 Add all published pages to the Primary Navigation. On a fresh install, this will add the new Home page and existing Sample Page to the navigation.
+
+## Troubleshooting
+
+If it's a fresh Wordpress installation you're trying to activate Roots for, you will be warned to make sure that your `.htaccess`
+file is writable. Such file, though, won't exist if you don't have already enabled permalinks.
+
+So, in case you see that error message, try opening Settings / Permalinks from your Wordpress Dashboard and enabling one of the options other than `Default`.
