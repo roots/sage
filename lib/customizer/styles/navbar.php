@@ -1,5 +1,8 @@
 <?php
 
+/*
+ * Applies the styles to the navbar.
+ */
 function shoestrap_navbar_css(){
   $header_bg_color  = get_theme_mod( 'shoestrap_header_backgroundcolor' );
   $navbar_color     = get_theme_mod( 'shoestrap_navbar_color' );
@@ -14,7 +17,7 @@ function shoestrap_navbar_css(){
       if ( get_theme_mod( 'shoestrap_header_mode' ) == 'navbar' ) { ?>
         .navbar a.brand{padding: 5px 20px 5px;}
     <?php } } ?>
-    .navbar-inner, .navbar-inner ul.dropdown-menu{
+    .navbar-inner, .navbar-inner ul.dropdown-menu, #main-subnav.subnav-fixed{
       background-color: <?php echo $navbar_color; ?> !important;
       background-image: -moz-linear-gradient(top, <?php echo $navbar_color; ?>, <?php echo shoestrap_adjust_brightness( $navbar_color, -10 ); ?>) !important;
       background-image: -webkit-gradient(linear, 0 0, 0 100%, from(<?php echo $navbar_color; ?>), to(<?php echo shoestrap_adjust_brightness( $navbar_color, -10 ); ?>)) !important;
@@ -117,3 +120,41 @@ function shoestrap_navbar_css(){
   <?php
 }
 add_action( 'wp_head', 'shoestrap_navbar_css', 199 );
+
+/*
+ * The below script allows our extra navbar
+ * to be fixed on the top of the page
+ * when users scroll down.
+ */
+function shoestrap_subnav_script() {
+  $navbar     = get_theme_mod( 'shoestrap_extra_display_navigation' );
+  $navbar_top = get_theme_mod( 'shoestrap_navbar_top' );
+  if ( $navbar == 1 && $navbar_top == 0 ) { ?>
+    <script>
+    !function ($) { $(function(){
+    // fix sub nav on scroll
+    var $win = $(window)
+      , $nav = $('#main-subnav')
+      , navTop = $('#main-subnav').length && $('#main-subnav').offset().top - 40
+      , isFixed = 0
+
+    processScroll()
+
+    $win.on('scroll', processScroll)
+
+    function processScroll() {
+      var i, scrollTop = $win.scrollTop()
+      if (scrollTop >= navTop && !isFixed) {
+        isFixed = 1
+        $nav.addClass('subnav-fixed')
+      } else if (scrollTop <= navTop && isFixed) {
+        isFixed = 0
+        $nav.removeClass('subnav-fixed')
+      }
+    }
+  })
+}(window.jQuery)    </script>
+  <?php }
+  
+}
+add_action( 'wp_head', 'shoestrap_subnav_script' );
