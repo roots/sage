@@ -57,6 +57,19 @@ function shoestrap_adjust_brightness( $hex, $steps ) {
   return '#'.$r_hex.$g_hex.$b_hex;
 }
 
+/*
+ * If the user has selected to not display the top navbar,then hide it.
+ * To do that, we 'll remove the bootstrap-top-navbar theme support
+ * (it is on by default).
+ */
+add_action( 'wp', 'shoestrap_hide_navbar' );
+function shoestrap_hide_navbar() {
+  $navbar = get_theme_mod( 'shoestrap_navbar_top' );
+  if ( $navbar == 0 ) {
+    remove_theme_support( 'bootstrap-top-navbar' );
+  }
+}
+
 /**
  * Bind JS handlers to make Theme Customizer preview reload changes asynchronously.
  *
