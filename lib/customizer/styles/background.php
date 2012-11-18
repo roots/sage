@@ -1,5 +1,8 @@
 <?php
 
+/*
+ * Applies the background color to the page.
+ */
 function shoestrap_background_css() {
   $color = get_theme_mod( 'shoestrap_background_color' );
   

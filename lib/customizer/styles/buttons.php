@@ -1,5 +1,11 @@
 <?php
 
+/*
+ * Applies css to the buttons.
+ * 
+ * Uses the lesscss compiler to calculate gradients etc.
+ * This is derived from bootstrap's buttons.less file.
+ */
 function shoestrap_buttons_css() {
   $btn_color = get_theme_mod( 'shoestrap_buttons_color' );
 

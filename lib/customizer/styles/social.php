@@ -1,5 +1,8 @@
 <?php
 
+/*
+ * Apply any css needed for the social sharing buttons.
+ */
 function shoestrap_social_share_styles() {
   $googleplus   = get_theme_mod( 'shoestrap_gplus_on_posts' );
   $facebook     = get_theme_mod( 'shoestrap_facebook_on_posts' );

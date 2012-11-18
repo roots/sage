@@ -1,5 +1,8 @@
 <?php
 
+/*
+ * Applies the background to the footer.
+ */
 function shoestrap_footer_css() {
   $footer_color = get_theme_mod( 'shoestrap_footer_background_color' );
   

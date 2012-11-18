@@ -1,5 +1,8 @@
 <?php
 
+/*
+ * Applies css to the branding area (extra header).
+ */
 function shoestrap_branding_css() {
   $header_bg_color        = get_theme_mod( 'shoestrap_header_backgroundcolor' );
   $header_sitename_color  = get_theme_mod( 'shoestrap_header_textcolor' );
