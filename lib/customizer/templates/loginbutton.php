@@ -16,7 +16,7 @@ function shoestrap_login_button() {
   $content .= '<i class="icon-user"></i> ' . $label;
   $content .= '</a></li></ul>';
   
-  if ( $show_login_link != '0' ) {
+  if ( $show_login_link != 0 ) {
     echo $content;
   }
 }
