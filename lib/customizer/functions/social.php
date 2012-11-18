@@ -44,7 +44,10 @@ function shoestrap_social_links( $network = '' ) {
   <?php }
 }
 
-add_action( 'the_content', 'shoestrap_social_share_singlular' );
+/*
+ * Alters the content to add social share buttons.
+ * The buttons will be on the top, bottom or both of single entries.
+ */
 function shoestrap_social_share_singlular( $content ) { 
   global $post;
   $social_location = get_theme_mod( 'shoestrap_single_social_position' );
@@ -63,7 +66,13 @@ function shoestrap_social_share_singlular( $content ) {
     return $content;
   }
 }
+add_action( 'the_content', 'shoestrap_social_share_singlular' );
 
+/*
+ * Enqueues the sharre script.
+ * 
+ * For more info on sharre check out http://sharrre.com/
+ */
 function shoestrap_theme_enqueue_scripts() {
   //sharrre, social share 
   wp_enqueue_script( 'shoestrap-sharrre', get_stylesheet_directory_uri() . '/lib/customizer/sharrre/jquery.sharrre.min.js', false, false, true );
