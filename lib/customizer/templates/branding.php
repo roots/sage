@@ -1,7 +1,7 @@
 <?php
 
 function shoestrap_branding() {
-  if ( get_theme_mod( 'shoestrap_header_mode' ) == 'header' ) { ?>
+  if ( get_theme_mod( 'shoestrap_extra_branding' ) == 1 ) { ?>
     <div class="container-fluid logo-wrapper">
       <div class="logo container">
         <div class="row-fluid">
