@@ -6,11 +6,7 @@
  */
 function shoestrap_logo() {
   if ( get_theme_mod( 'shoestrap_logo' ) ) {
-    if ( get_theme_mod( 'shoestrap_header_mode' ) == 'navbar' ) {
-      $image = '<img id="site-logo" src="%s" alt="%s" style="max-height:30px; width:auto;">';
-    } else {
-      $image = '<img id="site-logo" src="%s" alt="%s" style="max-width:100%%; height:auto;">';
-    }
+    $image = '<img id="site-logo" src="%s" alt="%s" style="max-width:100%%; height:auto;">';
     printf(
       $image,
       get_theme_mod( 'shoestrap_logo' ),
@@ -24,11 +20,24 @@ function shoestrap_logo() {
 }
 
 /*
- * Extra function for the navbar logo
+ * Extra function for the navbar logo.
+ * Same as the shoestrap_logo function,
+ * with just a minor css tweak.
  */
-function navbar_brand() {
-  if ( get_theme_mod( 'shoestrap_header_mode' ) == 'navbar' ) {
-    shoestrap_logo();
+function shoestrap_navbar_brand() {
+  if ( get_theme_mod( 'shoestrap_navbar_logo' ) != 0 ) {
+    if ( get_theme_mod( 'shoestrap_logo' ) ) {
+      $image = '<img id="site-logo" src="%s" alt="%s" style="max-height:20px; width:auto;">';
+      printf(
+        $image,
+        get_theme_mod( 'shoestrap_logo' ),
+        get_bloginfo( 'name' )
+      );
+    } else {
+      echo '<span class="sitename">';
+      bloginfo( 'name' );
+      echo '</span>';
+    }
   } else {
     bloginfo( 'name' );
   }
