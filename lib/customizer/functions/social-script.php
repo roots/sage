@@ -1,5 +1,9 @@
 <?php
 
+/*
+ * The script for sharrre buttons.
+ * For more info on configuration and other options check out http://sharrre.com/
+ */
 function shoestrap_social_sharrre_script() {
   $googleplus   = get_theme_mod( 'shoestrap_gplus_on_posts' );
   $facebook     = get_theme_mod( 'shoestrap_facebook_on_posts' );
