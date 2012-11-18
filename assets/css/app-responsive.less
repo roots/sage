@@ -91,3 +91,16 @@ ul.social-networks{
     &:hover{opacity: 1;}
   }
 }
+
+@media (min-width: 980px) {
+  .subnav-fixed {position: fixed; top: 0; left: 0; right: 0; height: 40px; z-index: 1020;
+    .nav {margin: 0 auto;
+      > li:first-child {
+        > a, a:hover {.border-radius(0px);}
+      }
+    }
+    .navbar-inner{border: 0 !important;}
+  }
+  
+  body.admin-bar .subnav-fixed{top: 28px;}
+}
