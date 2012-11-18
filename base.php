@@ -8,14 +8,16 @@
     // Use Bootstrap's navbar if enabled in config.php
     if (current_theme_supports('bootstrap-top-navbar')) {
       get_template_part('templates/header-top-navbar');
-    } else {
-      get_template_part('templates/header');
     }
   ?>
   
   <?php do_action('shoestrap_branding'); ?>
   <?php do_action('shoestrap_hero'); ?>
   
+  <?php if ( get_theme_mod( 'shoestrap_extra_display_navigation' ) == 1 ) {
+      get_template_part('templates/navbar');
+  } ?>
+
   <?php dynamic_sidebar('hero-area'); ?>
   
   <?php do_action('shoestrap_pre_wrap'); ?>
