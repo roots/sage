@@ -71,11 +71,7 @@ function shoestrap_custom_builder_register_settings( $wp_customize ){
 
   // Forms
   // -------------------------
-  $settings[] = array( 'slug' => 'shoestrap_cb_inputbackground',          'default' => '' );
-  $settings[] = array( 'slug' => 'shoestrap_cb_inputborder',              'default' => '' );
-  $settings[] = array( 'slug' => 'shoestrap_cb_inputborderradius',        'default' => '' );
-  $settings[] = array( 'slug' => 'shoestrap_cb_inputdisabledbackground',  'default' => '' );
-  $settings[] = array( 'slug' => 'shoestrap_cb_formactionsbackground',    'default' => '' );
+  $settings[] = array( 'slug' => 'shoestrap_cb_inputbackground',          'default' => '#ffffff' );
   $settings[] = array( 'slug' => 'shoestrap_cb_inputheight',              'default' => 30 );
 
   foreach( $settings as $setting ){
