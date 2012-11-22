@@ -36,6 +36,14 @@ function shoestrap_custom_builder_register_settings( $wp_customize ){
   // -------------------------
   $settings[] = array( 'slug' => 'shoestrap_cb_linkcolor',      'default' => '#0088cc' );
   $settings[] = array( 'slug' => 'shoestrap_cb_linkcolorhover', 'default' => '#005580' );
+
+  // Typography
+  // -------------------------
+  $settings[] = array( 'slug' => 'shoestrap_cb_sansfontfamily',   'default' => '"Helvetica Neue", Helvetica, Arial, sans-serif' );
+  $settings[] = array( 'slug' => 'shoestrap_cb_seriffontfamily',  'default' => 'Georgia, "Times New Roman", Times, serif' );
+  $settings[] = array( 'slug' => 'shoestrap_cb_monofontfamily',   'default' => 'Monaco, Menlo, Consolas, "Courier New", monospace' );
+  $settings[] = array( 'slug' => 'shoestrap_cb_basefontsize',     'default' => 14 );
+  $settings[] = array( 'slug' => 'shoestrap_cb_baselineheight',   'default' => 20 );
   
   foreach( $settings as $setting ){
     $wp_customize->add_setting( $setting['slug'], array( 'default' => $setting['default'], 'type' => 'theme_mod', 'capability' => 'edit_theme_options' ) );
