@@ -31,7 +31,12 @@ function shoestrap_custom_builder_register_settings( $wp_customize ){
   // -------------------------
   $settings[] = array( 'slug' => 'shoestrap_cb_bodybackground', 'default' => '#ffffff' );
   $settings[] = array( 'slug' => 'shoestrap_cb_textcolor',      'default' => '#333333' );
-
+  
+  // Links
+  // -------------------------
+  $settings[] = array( 'slug' => 'shoestrap_cb_linkcolor',      'default' => '#0088cc' );
+  $settings[] = array( 'slug' => 'shoestrap_cb_linkcolorhover', 'default' => '#005580' );
+  
   foreach( $settings as $setting ){
     $wp_customize->add_setting( $setting['slug'], array( 'default' => $setting['default'], 'type' => 'theme_mod', 'capability' => 'edit_theme_options' ) );
   }
