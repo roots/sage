@@ -24,3 +24,5 @@ require_once locate_template('/lib/customizer/customizer.php'); // Customizer fu
 require_once locate_template('/lib/custom.php');                // Custom functions
 require_once locate_template('/lib/admin/admin.php');           // Admin page
 require_once locate_template('/lib/admin/licencing.php');       // Licencing to allow auto-updates
+
+require_once locate_template('/lib/custom-builder/custom-builder.php');
