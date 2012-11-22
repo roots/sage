@@ -59,6 +59,16 @@ function shoestrap_custom_builder_register_settings( $wp_customize ){
   $settings[] = array( 'slug' => 'shoestrap_cb_tablebackgroundhover',   'default' => '#f5f5f5' );
   $settings[] = array( 'slug' => 'shoestrap_cb_tableborder',            'default' => '#dddddd' );
   
+  // Buttons
+  // -------------------------
+  $settings[] = array( 'slug' => 'shoestrap_cb_btnbackground',        'default' => '#ffffff' );
+  $settings[] = array( 'slug' => 'shoestrap_cb_btnprimarybackground', 'default' => '#0088cc' );
+  $settings[] = array( 'slug' => 'shoestrap_cb_btninfobackground',    'default' => '#5bc0de' );
+  $settings[] = array( 'slug' => 'shoestrap_cb_btnsuccessbackground', 'default' => '#62c462' );
+  $settings[] = array( 'slug' => 'shoestrap_cb_btnwarningbackground', 'default' => '#fbb450' );
+  $settings[] = array( 'slug' => 'shoestrap_cb_btndangerbackground',  'default' => '#ee5f5b' );
+  $settings[] = array( 'slug' => 'shoestrap_cb_btninversebackground', 'default' => '#444444' );
+
   foreach( $settings as $setting ){
     $wp_customize->add_setting( $setting['slug'], array( 'default' => $setting['default'], 'type' => 'theme_mod', 'capability' => 'edit_theme_options' ) );
   }
