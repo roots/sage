@@ -45,6 +45,13 @@ function shoestrap_custom_builder_register_settings( $wp_customize ){
   $settings[] = array( 'slug' => 'shoestrap_cb_basefontsize',     'default' => 14 );
   $settings[] = array( 'slug' => 'shoestrap_cb_baselineheight',   'default' => 20 );
   
+  // Component sizing
+  // -------------------------
+  $settings[] = array( 'slug' => 'shoestrap_cb_fontsizelarge',    'default' => 1.25 );
+  $settings[] = array( 'slug' => 'shoestrap_cb_fontsizesmall',    'default' => 0.85 );
+  $settings[] = array( 'slug' => 'shoestrap_cb_fontsizemini',     'default' => 0.75 );
+  $settings[] = array( 'slug' => 'shoestrap_cb_baseborderradius', 'default' => 4 );
+
   foreach( $settings as $setting ){
     $wp_customize->add_setting( $setting['slug'], array( 'default' => $setting['default'], 'type' => 'theme_mod', 'capability' => 'edit_theme_options' ) );
   }
