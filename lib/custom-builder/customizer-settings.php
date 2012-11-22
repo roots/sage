@@ -52,6 +52,13 @@ function shoestrap_custom_builder_register_settings( $wp_customize ){
   $settings[] = array( 'slug' => 'shoestrap_cb_fontsizemini',     'default' => 0.75 );
   $settings[] = array( 'slug' => 'shoestrap_cb_baseborderradius', 'default' => 4 );
 
+  // Tables
+  // -------------------------
+  $settings[] = array( 'slug' => 'shoestrap_cb_tablebackground',        'default' => '' ); // transparent
+  $settings[] = array( 'slug' => 'shoestrap_cb_tablebackgroundaccent',  'default' => '#f9f9f9' );
+  $settings[] = array( 'slug' => 'shoestrap_cb_tablebackgroundhover',   'default' => '#f5f5f5' );
+  $settings[] = array( 'slug' => 'shoestrap_cb_tableborder',            'default' => '#dddddd' );
+  
   foreach( $settings as $setting ){
     $wp_customize->add_setting( $setting['slug'], array( 'default' => $setting['default'], 'type' => 'theme_mod', 'capability' => 'edit_theme_options' ) );
   }
