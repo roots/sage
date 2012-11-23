@@ -8,8 +8,7 @@ function shoestrap_custom_builder_rewrite_variables() {
   // open the variables file
   $fh = fopen($variables_file, 'w');
   // the content of the variables file
-  $variables_content = '
-//
+  $variables_content = '//
 // Variables
 // --------------------------------------------------
 
@@ -310,7 +309,7 @@ function shoestrap_custom_builder_rewrite_variables() {
 // 768px-979px
 @fluidGridColumnWidth768:      percentage(@gridColumnWidth768/@gridRowWidth768);
 @fluidGridGutterWidth768:      percentage(@gridGutterWidth768/@gridRowWidth768);
-  ';
+';
   
   // write the content to the variations file
   fwrite($fh, $variables_content);
