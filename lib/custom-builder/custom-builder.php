@@ -30,6 +30,14 @@
 function shoestrap_custom_builder_rewrite_variables() {
   $bodyBackground     = '#fff';
   $textColor          = '#333';
+  $blue               = '#049cdb';
+  $blueDark           = '#0064cd';
+  $green              = '#46a546';
+  $red                = '#9d261d';
+  $yellow             = '#ffc40d';
+  $orange             = '#f89406';
+  $pink               = '#c3325f';
+  $purple             = '#7a43b6';
   
   if ( shoestrap_get_brightness( $bodyBackground ) >= 128 ) {
     $black        = shoestrap_adjust_brightness( $textColor, 64 );
@@ -71,14 +79,14 @@ function shoestrap_custom_builder_rewrite_variables() {
 
 // Accent colors
 // -------------------------
-@blue:                  #049cdb;
-@blueDark:              #0064cd;
-@green:                 #46a546;
-@red:                   #9d261d;
-@yellow:                #ffc40d;
-@orange:                #f89406;
-@pink:                  #c3325f;
-@purple:                #7a43b6;
+@blue:                  ' . $blue . ';
+@blueDark:              ' . $blueDark . ';
+@green:                 ' . $green . ';
+@red:                   ' . $red . ';
+@yellow:                ' . $yellow . ';
+@orange:                ' . $orange . ';
+@pink:                  ' . $pink . ';
+@purple:                ' . $purple . ';
 
 
 // Scaffolding
