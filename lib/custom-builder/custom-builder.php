@@ -38,7 +38,14 @@ function shoestrap_custom_builder_rewrite_variables() {
   $orange             = '#f89406';
   $pink               = '#c3325f';
   $purple             = '#7a43b6';
+  $linkColor          = '#08c';
+  $sansFontFamily     = '"Helvetica Neue", Helvetica, Arial, sans-serif';
+  $serifFontFamily    = 'Georgia, "Times New Roman", Times, serif';
+  $monoFontFamily     = 'Monaco, Menlo, Consolas, "Courier New", monospace';
+  $baseFontSize       = 14;
+  $baseLineHeight     = 20;
   
+  // calculate shadows of gray, depending on background and textcolor
   if ( shoestrap_get_brightness( $bodyBackground ) >= 128 ) {
     $black        = shoestrap_adjust_brightness( $textColor, 64 );
     $grayDarker   = shoestrap_adjust_brightness( $textColor, 32 );
@@ -51,7 +58,14 @@ function shoestrap_custom_builder_rewrite_variables() {
   $grayLight    = shoestrap_mix_colors( $textColor, $bodyBackground, 50 );
   $grayLighter  = shoestrap_mix_colors( $textColor, $bodyBackground, 8 );
   $white        = $bodyBackground;
-
+  
+  // Link color (on hover) based on background brightness
+  if ( shoestrap_get_brightness( $bodyBackground ) >= 128 ) {
+    $linkColorHover = 'darken(@linkColor, 15%)';
+  } else {
+    $linkColorHover = 'lighten(@linkColor, 15%)';
+  }
+  
   // locate the variables file
   $variables_file = locate_template( '/assets/css/bootstrap-less/variables.less' );
   // open the variables file
@@ -91,25 +105,25 @@ function shoestrap_custom_builder_rewrite_variables() {
 
 // Scaffolding
 // -------------------------
-@bodyBackground:        @white;
-@textColor:             @grayDark;
+@bodyBackground:        ' . $bodyBackground . ';
+@textColor:             ' . $textColor . ';
 
 
 // Links
 // -------------------------
-@linkColor:             #08c;
-@linkColorHover:        darken(@linkColor, 15%);
+@linkColor:             ' . $linkColor . ';
+@linkColorHover:        ' . $linkColorHover . ';
 
 
 // Typography
 // -------------------------
-@sansFontFamily:        "Helvetica Neue", Helvetica, Arial, sans-serif;
-@serifFontFamily:       Georgia, "Times New Roman", Times, serif;
-@monoFontFamily:        Monaco, Menlo, Consolas, "Courier New", monospace;
+@sansFontFamily:        ' . $sansFontFamily . ';
+@serifFontFamily:       ' . $serifFontFamily . ';
+@monoFontFamily:        ' . $monoFontFamily . ';
 
-@baseFontSize:          14px;
+@baseFontSize:          ' . $baseFontSize . 'px;
 @baseFontFamily:        @sansFontFamily;
-@baseLineHeight:        20px;
+@baseLineHeight:        ' . $baseLineHeight . 'px;
 @altFontFamily:         @serifFontFamily;
 
 @headingsFontFamily:    inherit; // empty to use BS default, @baseFontFamily
