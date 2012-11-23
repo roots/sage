@@ -67,12 +67,23 @@ function shoestrap_custom_builder_rewrite_variables() {
   $borderRadiusSmall  = round( $baseBorderRadius * 3 / 4 );
 
   // Link color (on hover) based on background brightness
-  if ( shoestrap_get_brightness( $bodyBackground ) >= 128 ) {
+  if ( shoestrap_get_brightness( $bodyBackground ) >= 50 ) {
     $linkColorHover = 'darken(@linkColor, 15%)';
   } else {
     $linkColorHover = 'lighten(@linkColor, 15%)';
   }
   
+  // Table accents and border based on bodyBackground
+  if ( shoestrap_get_brightness( $bodyBackground ) >= 50 ) {
+    $tableBackgroundAccent  = shoestrap_adjust_brightness( $bodyBackground, -6 );
+    $tableBackgroundHover   = shoestrap_adjust_brightness( $bodyBackground, -10 );
+    $tableBorder            = shoestrap_adjust_brightness( $bodyBackground, -34 );
+  } else {
+    $tableBackgroundAccent  = shoestrap_adjust_brightness( $bodyBackground, 6 );
+    $tableBackgroundHover   = shoestrap_adjust_brightness( $bodyBackground, 10 );
+    $tableBorder            = shoestrap_adjust_brightness( $bodyBackground, 34 );
+  }
+
   // locate the variables file
   $variables_file = locate_template( '/assets/css/bootstrap-less/variables.less' );
   // open the variables file
@@ -158,9 +169,9 @@ function shoestrap_custom_builder_rewrite_variables() {
 // Tables
 // -------------------------
 @tableBackground:                   transparent; // overall background-color
-@tableBackgroundAccent:             #f9f9f9; // for striping
-@tableBackgroundHover:              #f5f5f5; // for hover
-@tableBorder:                       #ddd; // table and cell border
+@tableBackgroundAccent:             ' . $tableBackgroundAccent . '; // for striping
+@tableBackgroundHover:              ' . $tableBackgroundHover . '; // for hover
+@tableBorder:                       ' . $tableBorder . '; // table and cell border
 
 // Buttons
 // -------------------------
