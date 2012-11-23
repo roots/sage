@@ -1,6 +1,32 @@
 <?php
 
-add_action( 'wp', 'shoestrap_custom_builder_rewrite_variables' );
+/*
+ * The content below is a copy of bootstrap's variables.less file.
+ * 
+ * Some options are user-configurable and stored as theme mods.
+ * We try to minimize the options and simplify the user environment.
+ * In order to do that, we 'll have to provide a minimum amunt of options 
+ * and calculate the rest based on the user's selections.
+ * 
+ * based on the textcolor and bodybackground, we can calculate the following options:
+ * @black, @grayDarker, @grayDark, @gray, @grayLight, @grayLighter, @white
+ * 
+ * based on the baseBorderRadius we can calculate the borderRadiusLarge and borderRadiusSmall.
+ * 
+ * Only one option per button color is necessary.
+ * 
+ * The forms and dropdowns can both be derived from the text and background colors.
+ * baseLineHeight can also be calculated from the baseFontSize,
+ * but it's preferable to have a separate setting for that,
+ * since some fonts have weirdline height (especially if using Google Webfonts.)
+ * 
+ * The "form states and alerts" section can also be completely automated.
+ * We can derive colors from other settings and based on the bodyBackground,
+ * make the colors we need. :)
+ * 
+ * Responsive and layouts in general will be a little trickier,
+ * we'll have to find a way to make is a simple and intuitive as possible.
+ */
 function shoestrap_custom_builder_rewrite_variables() {
   
   // locate the variables file
@@ -316,3 +342,4 @@ function shoestrap_custom_builder_rewrite_variables() {
   // close the file
   fclose($fh);
 }
+add_action( 'wp', 'shoestrap_custom_builder_rewrite_variables' );
