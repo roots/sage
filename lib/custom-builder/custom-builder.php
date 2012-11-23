@@ -48,6 +48,14 @@ function shoestrap_custom_builder_rewrite_variables() {
   $fontSizeSmall      = 0.85;
   $fontSizeMini       = 0.75;
   $baseBorderRadius   = 4;
+  $btnPrimaryBackground   = '@linkColor';
+  $btnBackgroundHighlight = 'darken(' . $bodyBackground . ', 10%)';
+  $btnInfoBackground      = '#5bc0de';
+  $btnSuccessBackground   = '#62c462';
+  $btnWarningBackground   = 'lighten(@orange, 15%)';
+  $btnDangerBackground    = '#ee5f5b';
+  $btnDangerBackground    = '#ee5f5b';
+  
   
   // calculate shadows of gray, depending on background and textcolor
   if ( shoestrap_get_brightness( $bodyBackground ) >= 128 ) {
@@ -175,27 +183,26 @@ function shoestrap_custom_builder_rewrite_variables() {
 
 // Buttons
 // -------------------------
-@btnBackground:                     @white;
+@btnBackground:                     ' . $bodyBackground . ';
 @btnBackgroundHighlight:            darken(@white, 10%);
-@btnBorder:                         #bbb;
 
-@btnPrimaryBackground:              @linkColor;
+@btnPrimaryBackground:              ' . $btnPrimaryBackground . ';
 @btnPrimaryBackgroundHighlight:     spin(@btnPrimaryBackground, 20%);
 
-@btnInfoBackground:                 #5bc0de;
-@btnInfoBackgroundHighlight:        #2f96b4;
+@btnInfoBackground:                 ' . $btnInfoBackground . ';
+@btnInfoBackgroundHighlight:        darken(spin(@btnInfoBackground, 15%), 7%);
 
-@btnSuccessBackground:              #62c462;
-@btnSuccessBackgroundHighlight:     #51a351;
+@btnSuccessBackground:              ' . $btnSuccessBackground . ';
+@btnSuccessBackgroundHighlight:     darken(spin(@btnSuccessBackground, 15%), 7%);
 
-@btnWarningBackground:              lighten(@orange, 15%);
-@btnWarningBackgroundHighlight:     @orange;
+@btnWarningBackground:              ' . $btnWarningBackground . ';
+@btnWarningBackgroundHighlight:     darken(@btnWarningBackground, 15%);
 
-@btnDangerBackground:               #ee5f5b;
-@btnDangerBackgroundHighlight:      #bd362f;
+@btnDangerBackground:               ' . $btnDangerBackground . ';
+@btnDangerBackgroundHighlight:      darken(spin(@btnDangerBackground, 15%), 7%);
 
-@btnInverseBackground:              #444;
-@btnInverseBackgroundHighlight:     @grayDarker;
+@btnInverseBackground:              @grayDark;
+@btnInverseBackgroundHighlight:     darken(@grayDark, 10%);
 
 
 // Forms

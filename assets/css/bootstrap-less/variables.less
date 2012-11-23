@@ -84,27 +84,26 @@
 
 // Buttons
 // -------------------------
-@btnBackground:                     @white;
+@btnBackground:                     #fff;
 @btnBackgroundHighlight:            darken(@white, 10%);
-@btnBorder:                         #bbb;
 
 @btnPrimaryBackground:              @linkColor;
 @btnPrimaryBackgroundHighlight:     spin(@btnPrimaryBackground, 20%);
 
 @btnInfoBackground:                 #5bc0de;
-@btnInfoBackgroundHighlight:        #2f96b4;
+@btnInfoBackgroundHighlight:        darken(spin(@btnInfoBackground, 15%), 7%);
 
 @btnSuccessBackground:              #62c462;
-@btnSuccessBackgroundHighlight:     #51a351;
+@btnSuccessBackgroundHighlight:     darken(spin(@btnSuccessBackground, 15%), 7%);
 
 @btnWarningBackground:              lighten(@orange, 15%);
-@btnWarningBackgroundHighlight:     @orange;
+@btnWarningBackgroundHighlight:     darken(@btnWarningBackground, 15%);
 
 @btnDangerBackground:               #ee5f5b;
-@btnDangerBackgroundHighlight:      #bd362f;
+@btnDangerBackgroundHighlight:      darken(spin(@btnDangerBackground, 15%), 7%);
 
-@btnInverseBackground:              #444;
-@btnInverseBackgroundHighlight:     @grayDarker;
+@btnInverseBackground:              @grayDark;
+@btnInverseBackgroundHighlight:     darken(@grayDark, 10%);
 
 
 // Forms
