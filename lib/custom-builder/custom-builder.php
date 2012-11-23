@@ -29,6 +29,71 @@
  */
 function shoestrap_custom_builder_rewrite_variables() {
   
+  if ( shoestrap_get_brightness( $textColor ) < 64 && shoestrap_get_brightness( $bodyBackground ) <= 150 )
+    $black        = '';
+    $grayDarker   = '';
+    $grayDark     = '';
+    $gray         = '';
+    $grayLight    = '';
+    $grayLighter  = '';
+    $white        = '';
+  if ( shoestrap_get_brightness( $textColor ) < 64 &&  shoestrap_get_brightness( $bodyBackground ) > 150 )
+    $black        = '';
+    $grayDarker   = '';
+    $grayDark     = '';
+    $gray         = '';
+    $grayLight    = '';
+    $grayLighter  = '';
+    $white        = '';
+  if ( shoestrap_get_brightness( $textColor ) >= 64 && shoestrap_get_brightness( $textColor ) < 128 && shoestrap_get_brightness( $bodyBackground ) <= 150 )
+    $black        = '';
+    $grayDarker   = '';
+    $grayDark     = '';
+    $gray         = '';
+    $grayLight    = '';
+    $grayLighter  = '';
+    $white        = '';
+  if ( shoestrap_get_brightness( $textColor ) >= 64 && shoestrap_get_brightness( $textColor ) < 128 && shoestrap_get_brightness( $bodyBackground ) > 150 )
+    $black        = '';
+    $grayDarker   = '';
+    $grayDark     = '';
+    $gray         = '';
+    $grayLight    = '';
+    $grayLighter  = '';
+    $white        = '';
+  if ( shoestrap_get_brightness( $textColor ) >= 128 && shoestrap_get_brightness( $textColor ) < 192 && shoestrap_get_brightness( $bodyBackground ) <= 150 )
+    $black        = '';
+    $grayDarker   = '';
+    $grayDark     = '';
+    $gray         = '';
+    $grayLight    = '';
+    $grayLighter  = '';
+    $white        = '';
+  if ( shoestrap_get_brightness( $textColor ) >= 128 && shoestrap_get_brightness( $textColor ) < 192 && shoestrap_get_brightness( $bodyBackground ) > 150 )
+    $black        = '';
+    $grayDarker   = '';
+    $grayDark     = '';
+    $gray         = '';
+    $grayLight    = '';
+    $grayLighter  = '';
+    $white        = '';
+  if ( shoestrap_get_brightness( $textColor ) >= 192 && shoestrap_get_brightness( $bodyBackground ) <= 150 )
+    $black        = '';
+    $grayDarker   = '';
+    $grayDark     = '';
+    $gray         = '';
+    $grayLight    = '';
+    $grayLighter  = '';
+    $white        = '';
+  if ( shoestrap_get_brightness( $textColor ) >= 192 && shoestrap_get_brightness( $bodyBackground ) > 150 )
+    $black        = '';
+    $grayDarker   = '';
+    $grayDark     = '';
+    $gray         = '';
+    $grayLight    = '';
+    $grayLighter  = '';
+    $white        = '';
+
   // locate the variables file
   $variables_file = locate_template( '/assets/css/bootstrap-less/variables.less' );
   // open the variables file
