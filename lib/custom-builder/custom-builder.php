@@ -44,6 +44,10 @@ function shoestrap_custom_builder_rewrite_variables() {
   $monoFontFamily     = 'Monaco, Menlo, Consolas, "Courier New", monospace';
   $baseFontSize       = 14;
   $baseLineHeight     = 20;
+  $fontSizeLarge      = 1.25;
+  $fontSizeSmall      = 0.85;
+  $fontSizeMini       = 0.75;
+  $baseBorderRadius   = 4;
   
   // calculate shadows of gray, depending on background and textcolor
   if ( shoestrap_get_brightness( $bodyBackground ) >= 128 ) {
@@ -59,6 +63,9 @@ function shoestrap_custom_builder_rewrite_variables() {
   $grayLighter  = shoestrap_mix_colors( $textColor, $bodyBackground, 8 );
   $white        = $bodyBackground;
   
+  $borderRadiusLarge  = round( $baseBorderRadius * 1.5 );
+  $borderRadiusSmall  = round( $baseBorderRadius * 3 / 4 );
+
   // Link color (on hover) based on background brightness
   if ( shoestrap_get_brightness( $bodyBackground ) >= 128 ) {
     $linkColorHover = 'darken(@linkColor, 15%)';
@@ -135,17 +142,17 @@ function shoestrap_custom_builder_rewrite_variables() {
 // -------------------------
 // Based on 14px font-size and 20px line-height
 
-@fontSizeLarge:         @baseFontSize * 1.25; // ~18px
-@fontSizeSmall:         @baseFontSize * 0.85; // ~12px
-@fontSizeMini:          @baseFontSize * 0.75; // ~11px
+@fontSizeLarge:         @baseFontSize * ' . $fontSizeLarge . '; // ~18px
+@fontSizeSmall:         @baseFontSize * ' . $fontSizeSmall . '; // ~12px
+@fontSizeMini:          @baseFontSize * ' . $fontSizeMini . '; // ~11px
 
 @paddingLarge:          11px 19px; // 44px
 @paddingSmall:          2px 10px;  // 26px
 @paddingMini:           1px 6px;   // 24px
 
-@baseBorderRadius:      4px;
-@borderRadiusLarge:     6px;
-@borderRadiusSmall:     3px;
+@baseBorderRadius:      ' . $baseBorderRadius . 'px;
+@borderRadiusLarge:     ' . $borderRadiusLarge . 'px;
+@borderRadiusSmall:     ' . $borderRadiusSmall . 'px;
 
 
 // Tables
