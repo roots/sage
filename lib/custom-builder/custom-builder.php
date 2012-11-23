@@ -97,14 +97,20 @@ function shoestrap_custom_builder_rewrite_variables() {
     $tableBackgroundHover   = shoestrap_adjust_brightness( $bodyBackground, 10 );
     $tableBorder            = shoestrap_adjust_brightness( $bodyBackground, 34 );
   }
-
+  
+  // Grid Columns
   $gridColumnNormal = number_format( ( $gridWidthNormal - ( $gridGutterNormal * ( $gridColumns - 1 ) ) ) / $gridColumns, 2 );
   $gridColumnWide   = number_format( ( $gridWidthWide - ( $gridGutterWide * ( $gridColumns - 1 ) ) ) / $gridColumns, 2 );
   $gridColumnNarrow = number_format( ( $gridWidthNarrow - ( $gridGutterNormal * ( $gridColumns - 1 ) ) ) / $gridColumns, 2 );
   
+  // width of input elements
   $horizontalComponentOffset = 3 * $gridColumnNormal;
+  
+  // NavBar width
   $navbarCollapseWidth = ( ( $gridWidthNormal + ( 2 * $gridGutterNormal ) ) - 1 );
   
+  // Calculate the text color of navbars based on the navbar background color.
+  // Dark backgrounds call for light-colored text and vice-versa.
   if ( shoestrap_get_brightness( $navbarBackgroundHighlight ) >= 150 ) {
     $navbarText                 = shoestrap_adjust_brightness( $navbarBackgroundHighlight, -150 );
     $navbarLinkColorHover       = shoestrap_adjust_brightness( $navbarBackgroundHighlight, -190 );
@@ -372,14 +378,14 @@ function shoestrap_custom_builder_rewrite_variables() {
 
 // Tooltips and popovers
 // -------------------------
-@tooltipColor:            #fff;
-@tooltipBackground:       #000;
+@tooltipColor:            @white;
+@tooltipBackground:       @black;
 @tooltipArrowWidth:       5px;
 @tooltipArrowColor:       @tooltipBackground;
 
-@popoverBackground:       #fff;
+@popoverBackground:       @white;
 @popoverArrowWidth:       10px;
-@popoverArrowColor:       #fff;
+@popoverArrowColor:       @white;
 @popoverTitleBackground:  darken(@popoverBackground, 3%);
 
 // Special enhancement for popovers
@@ -425,8 +431,8 @@ function shoestrap_custom_builder_rewrite_variables() {
 ';
   
   // write the content to the variations file
-  fwrite($fh, $variables_content);
+  fwrite( $fh, $variables_content );
   // close the file
-  fclose($fh);
+  fclose( $fh );
 }
 add_action( 'wp', 'shoestrap_custom_builder_rewrite_variables' );

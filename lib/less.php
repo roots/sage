@@ -8,7 +8,7 @@ function shoestrap_phpless(){
     require_once( TEMPLATEPATH . '/lib/less_compiler/lessc.inc.php' );
   }
   $less = new lessc;
-  $less->setFormatter( "compressed" );
+  // $less->setFormatter( "compressed" );
   
   if ( $shoestrap_responsive == '0' ) {
     $less->checkedCompile( TEMPLATEPATH . '/assets/css/app-fixed.less', TEMPLATEPATH . '/assets/css/app-fixed.css' );

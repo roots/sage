@@ -25,4 +25,4 @@ require_once locate_template('/lib/custom.php');                // Custom functi
 require_once locate_template('/lib/admin/admin.php');           // Admin page
 require_once locate_template('/lib/admin/licencing.php');       // Licencing to allow auto-updates
 
-require_once locate_template('/lib/custom-builder/custom-builder.php');
+// require_once locate_template('/lib/custom-builder/custom-builder.php');
