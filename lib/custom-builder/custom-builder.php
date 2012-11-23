@@ -28,18 +28,20 @@
  * we'll have to find a way to make is a simple and intuitive as possible.
  */
 function shoestrap_custom_builder_rewrite_variables() {
+  $bodyBackground     = '#fff';
+  $textColor          = '#333';
   
   if ( shoestrap_get_brightness( $bodyBackground ) >= 128 ) {
     $black        = shoestrap_adjust_brightness( $textColor, 64 );
     $grayDarker   = shoestrap_adjust_brightness( $textColor, 32 );
   } else {
     $black        = shoestrap_adjust_brightness( $textColor, -64 );
-    $grayDarker   = shoestrap_adjust_brightness( $textColor, -32 );
+    $grayDarker   = shoestrap_adjust_brightness( $textColor, -17 );
   }
   $grayDark     = $textColor;
-  $gray         = shoestrap_mix_colors( $textColor, $bodyBackground, 75 );
+  $gray         = shoestrap_mix_colors( $textColor, $bodyBackground, 83 );
   $grayLight    = shoestrap_mix_colors( $textColor, $bodyBackground, 50 );
-  $grayLighter  = shoestrap_mix_colors( $textColor, $bodyBackground, 25 );
+  $grayLighter  = shoestrap_mix_colors( $textColor, $bodyBackground, 8 );
   $white        = $bodyBackground;
 
   // locate the variables file
@@ -58,13 +60,13 @@ function shoestrap_custom_builder_rewrite_variables() {
 
 // Grays
 // -------------------------
-@black:                 #000;
-@grayDarker:            #222;
-@grayDark:              #333;
-@gray:                  #555;
-@grayLight:             #999;
-@grayLighter:           #eee;
-@white:                 #fff;
+@black:                 ' . $black . ';
+@grayDarker:            ' . $grayDarker . ';
+@grayDark:              ' . $grayDark . ';
+@gray:                  ' . $gray . ';
+@grayLight:             ' . $grayLight . ';
+@grayLighter:           ' . $grayLighter . ';
+@white:                 ' . $white . ';
 
 
 // Accent colors
