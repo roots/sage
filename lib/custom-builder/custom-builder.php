@@ -28,8 +28,8 @@
  * we'll have to find a way to make is a simple and intuitive as possible.
  */
 function shoestrap_custom_builder_rewrite_variables() {
-  $bodyBackground     = '#fff';
-  $textColor          = '#333';
+  $bodyBackground     = '#ffffff';
+  $textColor          = '#333333';
   $blue               = '#049cdb';
   $blueDark           = '#0064cd';
   $green              = '#46a546';
@@ -38,7 +38,7 @@ function shoestrap_custom_builder_rewrite_variables() {
   $orange             = '#f89406';
   $pink               = '#c3325f';
   $purple             = '#7a43b6';
-  $linkColor          = '#08c';
+  $linkColor          = '#0088cc';
   $sansFontFamily     = '"Helvetica Neue", Helvetica, Arial, sans-serif';
   $serifFontFamily    = 'Georgia, "Times New Roman", Times, serif';
   $monoFontFamily     = 'Monaco, Menlo, Consolas, "Courier New", monospace';
@@ -61,14 +61,15 @@ function shoestrap_custom_builder_rewrite_variables() {
   $gridWidthNarrow        = 768;
   $gridGutterNormal       = 20;
   $gridGutterWide         = 30;
+  $navbarBackgroundHighlight = '#ffffff';
   
   // calculate shadows of gray, depending on background and textcolor
   if ( shoestrap_get_brightness( $bodyBackground ) >= 128 ) {
-    $black        = shoestrap_adjust_brightness( $textColor, 64 );
-    $grayDarker   = shoestrap_adjust_brightness( $textColor, 32 );
-  } else {
     $black        = shoestrap_adjust_brightness( $textColor, -64 );
     $grayDarker   = shoestrap_adjust_brightness( $textColor, -17 );
+  } else {
+    $black        = shoestrap_adjust_brightness( $textColor, 64 );
+    $grayDarker   = shoestrap_adjust_brightness( $textColor, 17 );
   }
   $grayDark     = $textColor;
   $gray         = shoestrap_mix_colors( $textColor, $bodyBackground, 83 );
@@ -100,6 +101,21 @@ function shoestrap_custom_builder_rewrite_variables() {
   $gridColumnNormal = number_format( ( $gridWidthNormal - ( $gridGutterNormal * ( $gridColumns - 1 ) ) ) / $gridColumns, 2 );
   $gridColumnWide   = number_format( ( $gridWidthWide - ( $gridGutterWide * ( $gridColumns - 1 ) ) ) / $gridColumns, 2 );
   $gridColumnNarrow = number_format( ( $gridWidthNarrow - ( $gridGutterNormal * ( $gridColumns - 1 ) ) ) / $gridColumns, 2 );
+  
+  $horizontalComponentOffset = 3 * $gridColumnNormal;
+  $navbarCollapseWidth = ( ( $gridWidthNormal + ( 2 * $gridGutterNormal ) ) - 1 );
+  
+  if ( shoestrap_get_brightness( $navbarBackgroundHighlight ) >= 150 ) {
+    $navbarText                 = shoestrap_adjust_brightness( $navbarBackgroundHighlight, -150 );
+    $navbarLinkColorHover       = shoestrap_adjust_brightness( $navbarBackgroundHighlight, -190 );
+    $navbarLinkColorActive      = shoestrap_adjust_brightness( $navbarBackgroundHighlight, -120 );
+    $navbarLinkBackgroundActive = 'darken(@navbarBackground, 5%)';
+  } else {
+    $navbarText             = shoestrap_adjust_brightness( $navbarBackgroundHighlight, 150 );
+    $navbarLinkColorHover   = shoestrap_adjust_brightness( $navbarBackgroundHighlight, 190 );
+    $navbarLinkColorActive  = shoestrap_adjust_brightness( $navbarBackgroundHighlight, 120 );
+    $navbarLinkBackgroundActive = 'lighten(@navbarBackground, 5%)';
+  }
 
   // locate the variables file
   $variables_file = locate_template( '/assets/css/bootstrap-less/variables.less' );
@@ -274,7 +290,7 @@ function shoestrap_custom_builder_rewrite_variables() {
 
 // Horizontal forms & lists
 // -------------------------
-@horizontalComponentOffset:       180px;
+@horizontalComponentOffset:       ' . $horizontalComponentOffset . 'px;
 
 
 // Wells
@@ -284,20 +300,20 @@ function shoestrap_custom_builder_rewrite_variables() {
 
 // Navbar
 // -------------------------
-@navbarCollapseWidth:             979px;
+@navbarCollapseWidth:             ' . $navbarCollapseWidth . 'px;
 @navbarCollapseDesktopWidth:      @navbarCollapseWidth + 1;
 
 @navbarHeight:                    40px;
-@navbarBackgroundHighlight:       @white;
+@navbarBackgroundHighlight:       ' . $navbarBackgroundHighlight . ';
 @navbarBackground:                darken(@navbarBackgroundHighlight, 5%);
 @navbarBorder:                    darken(@navbarBackground, 12%);
 
-@navbarText:                      #777;
-@navbarLinkColor:                 #777;
-@navbarLinkColorHover:            @grayDark;
-@navbarLinkColorActive:           @gray;
+@navbarText:                      ' . $navbarText . ';
+@navbarLinkColor:                 @navbatText;
+@navbarLinkColorHover:            ' . $navbarLinkColorHover . ';
+@navbarLinkColorActive:           ' . $navbarLinkColorActive . ';
 @navbarLinkBackgroundHover:       transparent;
-@navbarLinkBackgroundActive:      darken(@navbarBackground, 5%);
+@navbarLinkBackgroundActive:      ' . $navbarLinkBackgroundActive . ';
 
 @navbarBrandColor:                @navbarLinkColor;
 
@@ -323,9 +339,9 @@ function shoestrap_custom_builder_rewrite_variables() {
 
 // Pagination
 // -------------------------
-@paginationBackground:                #fff;
-@paginationBorder:                    #ddd;
-@paginationActiveBackground:          #f5f5f5;
+@paginationBackground:                @white;
+@paginationBorder:                    @tableBorder;
+@paginationActiveBackground:          @tableBackgroundHover;
 
 
 // Hero unit
