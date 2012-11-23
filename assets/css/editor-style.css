@@ -31,7 +31,6 @@ Description:        Used to style the TinyMCE editor
   box-sizing: border-box;
 }
 body {
-  margin: 0;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 20px;
@@ -92,14 +91,26 @@ cite {
 .text-warning {
   color: #c09853;
 }
+a.text-warning:hover {
+  color: #a47e3c;
+}
 .text-error {
   color: #b94a48;
+}
+a.text-error:hover {
+  color: #953b39;
 }
 .text-info {
   color: #3a87ad;
 }
+a.text-info:hover {
+  color: #2d6987;
+}
 .text-success {
   color: #468847;
+}
+a.text-success:hover {
+  color: #356635;
 }
 h1,
 h2,
@@ -110,7 +121,7 @@ h6 {
   margin: 10px 0;
   font-family: inherit;
   font-weight: bold;
-  line-height: 1;
+  line-height: 20px;
   color: inherit;
   text-rendering: optimizelegibility;
 }
@@ -124,35 +135,34 @@ h6 small {
   line-height: 1;
   color: #999999;
 }
-h1 {
-  font-size: 36px;
+h1,
+h2,
+h3 {
   line-height: 40px;
+}
+h1 {
+  font-size: 38.5px;
 }
 h2 {
-  font-size: 30px;
-  line-height: 40px;
+  font-size: 31.5px;
 }
 h3 {
-  font-size: 24px;
-  line-height: 40px;
+  font-size: 24.5px;
 }
 h4 {
-  font-size: 18px;
-  line-height: 20px;
+  font-size: 17.5px;
 }
 h5 {
   font-size: 14px;
-  line-height: 20px;
 }
 h6 {
-  font-size: 12px;
-  line-height: 20px;
+  font-size: 11.9px;
 }
 h1 small {
-  font-size: 24px;
+  font-size: 24.5px;
 }
 h2 small {
-  font-size: 18px;
+  font-size: 17.5px;
 }
 h3 small {
   font-size: 14px;
@@ -227,7 +237,8 @@ hr {
   border-top: 1px solid #eeeeee;
   border-bottom: 1px solid #ffffff;
 }
-abbr[title] {
+abbr[title],
+abbr[data-original-title] {
   cursor: help;
   border-bottom: 1px dotted #999999;
 }

@@ -11,10 +11,9 @@
  *   /wp-content/themes/themename/img/ to /img/
  *   /wp-content/plugins/              to /plugins/
  *
- * If you aren't using Apache, alternate configuration settings can be found in the wiki.
+ * If you aren't using Apache, alternate configuration settings can be found in the docs.
  *
- * @link https://github.com/retlehs/roots/wiki/Nginx
- * @link https://github.com/retlehs/roots/wiki/Lighttpd
+ * @link https://github.com/retlehs/roots/blob/master/doc/rewrites.md
  */
 
 if (stristr($_SERVER['SERVER_SOFTWARE'], 'apache') || stristr($_SERVER['SERVER_SOFTWARE'], 'litespeed') !== false) {
