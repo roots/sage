@@ -58,6 +58,42 @@ function shoestrap_adjust_brightness( $hex, $steps ) {
 }
 
 /*
+ * Mixes 2 hex colors.
+ * the "percentage" variable is the percent of the first color
+ * to be used it the mix. default is 50 (equal mix)
+ */
+function shoestrap_mix_colors( $hex1, $hex2, $percentage ) {
+
+  // Format the hex color string
+  $hex1 = str_replace( '#', '', $hex1 );
+  if ( strlen( $hex1 ) == 3 ) {
+      $hex1 = str_repeat( substr( $hex1, 0, 1 ), 2 ).str_repeat( substr( $hex1, 1, 1 ), 2 ).str_repeat( substr( $hex1, 2, 1 ), 2 );
+  }
+  $hex2 = str_replace( '#', '', $hex2 );
+  if ( strlen( $hex2 ) == 3 ) {
+      $hex2 = str_repeat( substr( $hex2, 0, 1 ), 2 ).str_repeat( substr( $hex2, 1, 1 ), 2 ).str_repeat( substr( $hex2, 2, 1 ), 2 );
+  }
+  
+  // Get decimal values
+  $r1 = hexdec( substr( $hex1, 0, 2 ) );
+  $g1 = hexdec( substr( $hex1, 2, 2 ) );
+  $b1 = hexdec( substr( $hex1, 4, 2 ) );
+  $r2 = hexdec( substr( $hex2, 0, 2 ) );
+  $g2 = hexdec( substr( $hex2, 2, 2 ) );
+  $b2 = hexdec( substr( $hex2, 4, 2 ) );
+  
+  $r  = ( $percentage * $r1 + ( 100 - $percentage ) * $r2 ) / 100;
+  $g  = ( $percentage * $g1 + ( 100 - $percentage ) * $g2 ) / 100;
+  $b  = ( $percentage * $b1 + ( 100 - $percentage ) * $b2 ) / 100;
+
+  $r_hex = str_pad( dechex( $r ), 2, '0', STR_PAD_LEFT );
+  $g_hex = str_pad( dechex( $g ), 2, '0', STR_PAD_LEFT );
+  $b_hex = str_pad( dechex( $b ), 2, '0', STR_PAD_LEFT );
+  
+  return '#'.$r_hex.$g_hex.$b_hex;
+}
+
+/*
  * If the user has selected to not display the top navbar,then hide it.
  * To do that, we 'll remove the bootstrap-top-navbar theme support
  * (it is on by default).

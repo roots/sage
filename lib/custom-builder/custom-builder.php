@@ -29,70 +29,18 @@
  */
 function shoestrap_custom_builder_rewrite_variables() {
   
-  if ( shoestrap_get_brightness( $textColor ) < 64 && shoestrap_get_brightness( $bodyBackground ) <= 150 )
-    $black        = shoestrap_adjust_brightness( $textColor, 20 );
-    $grayDarker   = $textColor;
-    $grayDark     = shoestrap_adjust_brightness( $textColor, -5 );
-    $gray         = shoestrap_adjust_brightness( $textColor, -15 );
-    $grayLight    = shoestrap_adjust_brightness( $textColor, -25 );
-    $grayLighter  = shoestrap_adjust_brightness( $textColor, -45 );
-    $white        = shoestrap_adjust_brightness( $textColor, -64 );
-  if ( shoestrap_get_brightness( $textColor ) < 64 &&  shoestrap_get_brightness( $bodyBackground ) > 150 )
-    $black        = shoestrap_adjust_brightness( $textColor, -20 );
-    $grayDarker   = $textColor;
-    $grayDark     = shoestrap_adjust_brightness( $textColor, 5 );
-    $gray         = shoestrap_adjust_brightness( $textColor, 15 );
-    $grayLight    = shoestrap_adjust_brightness( $textColor, 25 );
-    $grayLighter  = shoestrap_adjust_brightness( $textColor, 45 );
-    $white        = shoestrap_adjust_brightness( $textColor, 64 );
-  if ( shoestrap_get_brightness( $textColor ) >= 64 && shoestrap_get_brightness( $textColor ) < 128 && shoestrap_get_brightness( $bodyBackground ) <= 150 )
-    $black        = shoestrap_adjust_brightness( $textColor, 128 );
-    $grayDarker   = $textColor;
-    $grayDark     = shoestrap_adjust_brightness( $textColor, -15 );
-    $gray         = shoestrap_adjust_brightness( $textColor, -45 );
-    $grayLight    = shoestrap_adjust_brightness( $textColor, -64 );
-    $grayLighter  = shoestrap_adjust_brightness( $textColor, -92 );
-    $white        = shoestrap_adjust_brightness( $textColor, -128 );
-  if ( shoestrap_get_brightness( $textColor ) >= 64 && shoestrap_get_brightness( $textColor ) < 128 && shoestrap_get_brightness( $bodyBackground ) > 150 )
-    $black        = shoestrap_adjust_brightness( $textColor, -128 );
-    $grayDarker   = $textColor;
-    $grayDark     = shoestrap_adjust_brightness( $textColor, 15 );
-    $gray         = shoestrap_adjust_brightness( $textColor, 45 );
-    $grayLight    = shoestrap_adjust_brightness( $textColor, 64 );
-    $grayLighter  = shoestrap_adjust_brightness( $textColor, 92 );
-    $white        = shoestrap_adjust_brightness( $textColor, 128 );
-  if ( shoestrap_get_brightness( $textColor ) >= 128 && shoestrap_get_brightness( $textColor ) < 192 && shoestrap_get_brightness( $bodyBackground ) <= 150 )
-    $black        = shoestrap_adjust_brightness( $textColor, 192 );
-    $grayDarker   = $textColor;
-    $grayDark     = shoestrap_adjust_brightness( $textColor, -15 );
-    $gray         = shoestrap_adjust_brightness( $textColor, -45 );
-    $grayLight    = shoestrap_adjust_brightness( $textColor, -92 );
-    $grayLighter  = shoestrap_adjust_brightness( $textColor, -128 );
-    $white        = shoestrap_adjust_brightness( $textColor, -192 );
-  if ( shoestrap_get_brightness( $textColor ) >= 128 && shoestrap_get_brightness( $textColor ) < 192 && shoestrap_get_brightness( $bodyBackground ) > 150 )
-    $black        = shoestrap_adjust_brightness( $textColor, -192 );
-    $grayDarker   = shoestrap_adjust_brightness( $textColor, -128 );
-    $grayDark     = $textColor;
-    $gray         = shoestrap_adjust_brightness( $textColor, 45 );
-    $grayLight    = shoestrap_adjust_brightness( $textColor, 92 );
-    $grayLighter  = shoestrap_adjust_brightness( $textColor, 128 );
-    $white        = shoestrap_adjust_brightness( $textColor, 192 );
-  if ( shoestrap_get_brightness( $textColor ) >= 192 && shoestrap_get_brightness( $bodyBackground ) <= 150 )
-    $black        = shoestrap_adjust_brightness( $textColor, 256 );
+  if ( shoestrap_get_brightness( $bodyBackground ) >= 128 ) {
+    $black        = shoestrap_adjust_brightness( $textColor, 64 );
     $grayDarker   = shoestrap_adjust_brightness( $textColor, 32 );
-    $grayDark     = $textColor;
-    $gray         = shoestrap_adjust_brightness( $textColor, -32 );
-    $grayLight    = shoestrap_adjust_brightness( $textColor, -64 );
-    $grayLighter  = shoestrap_adjust_brightness( $textColor, -192 );
-    $white        = shoestrap_adjust_brightness( $textColor, -256 );
-  if ( shoestrap_get_brightness( $textColor ) >= 192 && shoestrap_get_brightness( $bodyBackground ) > 150 )
-    $black        = shoestrap_adjust_brightness( $textColor, -256 );
+  } else {
+    $black        = shoestrap_adjust_brightness( $textColor, -64 );
     $grayDarker   = shoestrap_adjust_brightness( $textColor, -32 );
-    $grayDark     = $textColor;
-    $gray         = shoestrap_adjust_brightness( $textColor, 32 );
-    $grayLight    = shoestrap_adjust_brightness( $textColor, 64 );
-    $grayLighter  = shoestrap_adjust_brightness( $textColor, 192 );
-    $white        = shoestrap_adjust_brightness( $textColor, 256 );
+  }
+  $grayDark     = $textColor;
+  $gray         = shoestrap_mix_colors( $textColor, $bodyBackground, 75 );
+  $grayLight    = shoestrap_mix_colors( $textColor, $bodyBackground, 50 );
+  $grayLighter  = shoestrap_mix_colors( $textColor, $bodyBackground, 25 );
+  $white        = $bodyBackground;
 
   // locate the variables file
   $variables_file = locate_template( '/assets/css/bootstrap-less/variables.less' );
