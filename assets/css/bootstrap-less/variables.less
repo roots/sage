@@ -109,10 +109,10 @@
 // Forms
 // -------------------------
 @inputBackground:               @white;
-@inputBorder:                   #ccc;
+@inputBorder:                   mix(@grayLight, @grayLighter);
 @inputBorderRadius:             @baseBorderRadius;
 @inputDisabledBackground:       @grayLighter;
-@formActionsBackground:         #f5f5f5;
+@formActionsBackground:         @tableBackgroundHover;
 @inputHeight:                   @baseLineHeight + 10px; // base line-height + 8px vertical padding + 2px top/bottom border
 
 
@@ -120,7 +120,7 @@
 // -------------------------
 @dropdownBackground:            @white;
 @dropdownBorder:                rgba(0,0,0,.2);
-@dropdownDividerTop:            #e5e5e5;
+@dropdownDividerTop:            @grayLighter;
 @dropdownDividerBottom:         @white;
 
 @dropdownLinkColor:             @grayDark;
@@ -171,7 +171,7 @@
 
 // Wells
 // -------------------------
-@wellBackground:                  #f5f5f5;
+@wellBackground:                  @tableBackgroundHover;
 
 
 // Navbar
@@ -180,7 +180,7 @@
 @navbarCollapseDesktopWidth:      @navbarCollapseWidth + 1;
 
 @navbarHeight:                    40px;
-@navbarBackgroundHighlight:       #ffffff;
+@navbarBackgroundHighlight:       @white;
 @navbarBackground:                darken(@navbarBackgroundHighlight, 5%);
 @navbarBorder:                    darken(@navbarBackground, 12%);
 
@@ -271,30 +271,30 @@
 // Default 940px grid
 // -------------------------
 @gridColumns:             12;
-@gridColumnWidth:         60px;
+@gridColumnWidth:         940px;
 @gridGutterWidth:         20px;
-@gridRowWidth:            (@gridColumns * @gridColumnWidth) + (@gridGutterWidth * (@gridColumns - 1));
+@gridRowWidth:            940px;
 
 // 1200px min
-@gridColumnWidth1200:     70px;
+@gridColumnWidth1200:     72.50px;
 @gridGutterWidth1200:     30px;
-@gridRowWidth1200:        (@gridColumns * @gridColumnWidth1200) + (@gridGutterWidth1200 * (@gridColumns - 1));
+@gridRowWidth1200:        1200px;
 
 // 768px-979px
-@gridColumnWidth768:      42px;
+@gridColumnWidth768:      45.67px;
 @gridGutterWidth768:      20px;
-@gridRowWidth768:         (@gridColumns * @gridColumnWidth768) + (@gridGutterWidth768 * (@gridColumns - 1));
+@gridRowWidth768:         768px;
 
 
 // Fluid grid
 // -------------------------
-@fluidGridColumnWidth:    percentage(@gridColumnWidth/@gridRowWidth);
-@fluidGridGutterWidth:    percentage(@gridGutterWidth/@gridRowWidth);
+@fluidGridColumnWidth:    percentage(0.0638);
+@fluidGridGutterWidth:    percentage(0.0213);
 
 // 1200px min
-@fluidGridColumnWidth1200:     percentage(@gridColumnWidth1200/@gridRowWidth1200);
-@fluidGridGutterWidth1200:     percentage(@gridGutterWidth1200/@gridRowWidth1200);
+@fluidGridColumnWidth1200:     percentage(0.0604);
+@fluidGridGutterWidth1200:     percentage(0.0250);
 
 // 768px-979px
-@fluidGridColumnWidth768:      percentage(@gridColumnWidth768/@gridRowWidth768);
-@fluidGridGutterWidth768:      percentage(@gridGutterWidth768/@gridRowWidth768);
+@fluidGridColumnWidth768:      percentage(0.0595);
+@fluidGridGutterWidth768:      percentage(0.0260);

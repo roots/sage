@@ -55,7 +55,12 @@ function shoestrap_custom_builder_rewrite_variables() {
   $btnWarningBackground   = 'lighten(@orange, 15%)';
   $btnDangerBackground    = '#ee5f5b';
   $btnDangerBackground    = '#ee5f5b';
-  
+  $gridColumns            = 12;
+  $gridWidthNormal        = 940;
+  $gridWidthWide          = 1200;
+  $gridWidthNarrow        = 768;
+  $gridGutterNormal       = 20;
+  $gridGutterWide         = 30;
   
   // calculate shadows of gray, depending on background and textcolor
   if ( shoestrap_get_brightness( $bodyBackground ) >= 128 ) {
@@ -91,6 +96,10 @@ function shoestrap_custom_builder_rewrite_variables() {
     $tableBackgroundHover   = shoestrap_adjust_brightness( $bodyBackground, 10 );
     $tableBorder            = shoestrap_adjust_brightness( $bodyBackground, 34 );
   }
+
+  $gridColumnNormal = number_format( ( $gridWidthNormal - ( $gridGutterNormal * ( $gridColumns - 1 ) ) ) / $gridColumns, 2 );
+  $gridColumnWide   = number_format( ( $gridWidthWide - ( $gridGutterWide * ( $gridColumns - 1 ) ) ) / $gridColumns, 2 );
+  $gridColumnNarrow = number_format( ( $gridWidthNarrow - ( $gridGutterNormal * ( $gridColumns - 1 ) ) ) / $gridColumns, 2 );
 
   // locate the variables file
   $variables_file = locate_template( '/assets/css/bootstrap-less/variables.less' );
@@ -208,10 +217,10 @@ function shoestrap_custom_builder_rewrite_variables() {
 // Forms
 // -------------------------
 @inputBackground:               @white;
-@inputBorder:                   #ccc;
+@inputBorder:                   mix(@grayLight, @grayLighter);
 @inputBorderRadius:             @baseBorderRadius;
 @inputDisabledBackground:       @grayLighter;
-@formActionsBackground:         #f5f5f5;
+@formActionsBackground:         @tableBackgroundHover;
 @inputHeight:                   @baseLineHeight + 10px; // base line-height + 8px vertical padding + 2px top/bottom border
 
 
@@ -219,7 +228,7 @@ function shoestrap_custom_builder_rewrite_variables() {
 // -------------------------
 @dropdownBackground:            @white;
 @dropdownBorder:                rgba(0,0,0,.2);
-@dropdownDividerTop:            #e5e5e5;
+@dropdownDividerTop:            @grayLighter;
 @dropdownDividerBottom:         @white;
 
 @dropdownLinkColor:             @grayDark;
@@ -270,7 +279,7 @@ function shoestrap_custom_builder_rewrite_variables() {
 
 // Wells
 // -------------------------
-@wellBackground:                  #f5f5f5;
+@wellBackground:                  @tableBackgroundHover;
 
 
 // Navbar
@@ -279,7 +288,7 @@ function shoestrap_custom_builder_rewrite_variables() {
 @navbarCollapseDesktopWidth:      @navbarCollapseWidth + 1;
 
 @navbarHeight:                    40px;
-@navbarBackgroundHighlight:       #ffffff;
+@navbarBackgroundHighlight:       @white;
 @navbarBackground:                darken(@navbarBackgroundHighlight, 5%);
 @navbarBorder:                    darken(@navbarBackground, 12%);
 
@@ -369,34 +378,34 @@ function shoestrap_custom_builder_rewrite_variables() {
 
 // Default 940px grid
 // -------------------------
-@gridColumns:             12;
-@gridColumnWidth:         60px;
-@gridGutterWidth:         20px;
-@gridRowWidth:            (@gridColumns * @gridColumnWidth) + (@gridGutterWidth * (@gridColumns - 1));
+@gridColumns:             ' . $gridColumns . ';
+@gridColumnWidth:         ' . $gridWidthNormal . 'px;
+@gridGutterWidth:         ' . $gridGutterNormal . 'px;
+@gridRowWidth:            ' . $gridWidthNormal . 'px;
 
 // 1200px min
-@gridColumnWidth1200:     70px;
-@gridGutterWidth1200:     30px;
-@gridRowWidth1200:        (@gridColumns * @gridColumnWidth1200) + (@gridGutterWidth1200 * (@gridColumns - 1));
+@gridColumnWidth1200:     ' . $gridColumnWide . 'px;
+@gridGutterWidth1200:     ' . $gridGutterWide . 'px;
+@gridRowWidth1200:        ' . $gridWidthWide . 'px;
 
 // 768px-979px
-@gridColumnWidth768:      42px;
-@gridGutterWidth768:      20px;
-@gridRowWidth768:         (@gridColumns * @gridColumnWidth768) + (@gridGutterWidth768 * (@gridColumns - 1));
+@gridColumnWidth768:      ' . $gridColumnNarrow . 'px;
+@gridGutterWidth768:      ' . $gridGutterNormal . 'px;
+@gridRowWidth768:         ' . $gridWidthNarrow . 'px;
 
 
 // Fluid grid
 // -------------------------
-@fluidGridColumnWidth:    percentage(@gridColumnWidth/@gridRowWidth);
-@fluidGridGutterWidth:    percentage(@gridGutterWidth/@gridRowWidth);
+@fluidGridColumnWidth:    percentage(' . number_format( ( $gridColumnNormal / $gridWidthNormal ), 4 ). ');
+@fluidGridGutterWidth:    percentage(' . number_format( ( $gridGutterNormal / $gridWidthNormal ), 4 ) . ');
 
 // 1200px min
-@fluidGridColumnWidth1200:     percentage(@gridColumnWidth1200/@gridRowWidth1200);
-@fluidGridGutterWidth1200:     percentage(@gridGutterWidth1200/@gridRowWidth1200);
+@fluidGridColumnWidth1200:     percentage(' . number_format( ( $gridColumnWide / $gridWidthWide ), 4 ) . ');
+@fluidGridGutterWidth1200:     percentage(' . number_format( ( $gridGutterWide / $gridWidthWide ), 4 ) . ');
 
 // 768px-979px
-@fluidGridColumnWidth768:      percentage(@gridColumnWidth768/@gridRowWidth768);
-@fluidGridGutterWidth768:      percentage(@gridGutterWidth768/@gridRowWidth768);
+@fluidGridColumnWidth768:      percentage(' . number_format( ( $gridColumnNarrow / $gridWidthNarrow ), 4 ) . ');
+@fluidGridGutterWidth768:      percentage(' . number_format( ( $gridGutterNormal / $gridWidthNarrow), 4 ) . ');
 ';
   
   // write the content to the variations file
