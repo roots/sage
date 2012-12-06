@@ -28,8 +28,8 @@ A basic Roots theme initially looks like this:
 │       ├── main.js
 │       ├── plugins.js (includes bootstrap.js)
 │       └── vendor
-│           ├── jquery-1.8.2.min.js
-│           └── modernizr-2.6.1.min.js
+│           ├── jquery-1.8.3.min.js
+│           └── modernizr-2.6.2.min.js
 ├── doc
 ├── lang
 │   └── roots.pot

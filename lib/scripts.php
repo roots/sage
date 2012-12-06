@@ -30,7 +30,7 @@ function roots_scripts() {
   // It's kept in the header instead of footer to avoid conflicts with plugins.
   if (!is_admin()) {
     wp_deregister_script('jquery');
-    wp_register_script('jquery', '', '', '1.8.2', false);
+    wp_register_script('jquery', '', '', '1.8.3', false);
   }
 
   if (is_single() && comments_open() && get_option('thread_comments')) {
