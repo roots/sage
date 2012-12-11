@@ -142,7 +142,7 @@ AddType application/x-shockwave-flash       swf
 # ----------------------------------------------------------------------
 
 # e.g. Inside of script.combined.js you could have
-#   <!--#include file="libs/jquery-1.8.2.min.js" -->
+#   <!--#include file="libs/jquery-1.8.3.min.js" -->
 #   <!--#include file="plugins/jquery.idletimer.js" -->
 # and they would be included into this single file.
 

@@ -1,4 +1,6 @@
 ### HEAD
+* Update to Bootstrap 2.2.2
+* Update to jQuery 1.8.3
 * Use `entry-summary` class for excerpts per Readability's Article Publishing Guidelines
 * Cleanup/refactor `lib/activation.php`
 * Remove `lib/post-types.php` and `lib/metaboxes.php`
