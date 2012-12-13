@@ -7,13 +7,7 @@
  */
 
 function roots_sidebar_path() {
-  $main_template = roots_template_path();
-
-  $base = substr(basename($main_template), 0, -4);
-
-  if ($base === 'index') {
-    $base = false;
-  }
+  $base = Roots_Wrapping::$base;
 
   $templates = array('templates/sidebar.php');
 
