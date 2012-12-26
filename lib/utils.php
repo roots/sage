@@ -6,6 +6,18 @@
  * @link http://scribu.net/wordpress/theme-wrappers.html
  */
 
+function roots_sidebar_path() {
+  $base = Roots_Wrapping::$base;
+
+  $templates = array('templates/sidebar.php');
+
+  if ($base) {
+    array_unshift($templates, sprintf('templates/sidebar-%s.php', $base ));
+  }
+
+  return locate_template($templates);
+}
+
 function roots_template_path() {
   return Roots_Wrapping::$main_template;
 }
