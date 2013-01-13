@@ -1,4 +1,8 @@
-### HEAD
+### 6.2.0: January 13th, 2013
+* Implement latest Nice Search
+* Update [gallery] shortcode
+* Add Simplified Chinese, Indonesian, Korean translations
+* Move template title to `lib/utils.php`
 * Update to Bootstrap 2.2.2
 * Update to jQuery 1.8.3
 * Use `entry-summary` class for excerpts per Readability's Article Publishing Guidelines

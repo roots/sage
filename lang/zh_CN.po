@@ -1,0 +1,329 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-08-28 11:22-0300\n"
+"PO-Revision-Date: \n"
+"Last-Translator: yuanl <yuanl.lee@gmail.com>\n"
+"Language-Team: \n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Simplified Chinese\n"
+"X-Poedit-Country: China\n"
+"X-Poedit-SourceCharset: utf-8\n"
+
+#: 404.php:5
+msgid "The page you are looking for might have been removed, had its name changed, or is temporarily unavailable."
+msgstr "你所寻找的页面可能已经被删除、修改名称，或是目前暂时无法使用。"
+
+#: 404.php:8
+msgid "Please try the following:"
+msgstr "请试着："
+
+#: 404.php:10
+msgid "Check your spelling"
+msgstr "检查拼写是否正确"
+
+#: 404.php:11
+#, php-format
+msgid "Return to the <a href=\"%s\">home page</a>"
+msgstr "回到<a href=\"%s\">首页</a>"
+
+#: 404.php:12
+msgid "Click the <a href=\"javascript:history.back()\">Back</a> button"
+msgstr "点击<a href=\"javascript:history.back()\">返回</a>按钮"
+
+#: functions.php:28
+msgid "Primary Navigation"
+msgstr "主要导航"
+
+#: lib/activation.php:32
+#: lib/activation.php:33
+msgid "Theme Activation"
+msgstr "启用主题"
+
+#: lib/activation.php:72
+#, php-format
+msgid "%s Theme Activation"
+msgstr "启用主题 %s"
+
+#: lib/activation.php:87
+#: lib/activation.php:89
+msgid "Create static front page?"
+msgstr "是否建立静态首页？"
+
+#: lib/activation.php:91
+#: lib/activation.php:104
+#: lib/activation.php:117
+#: lib/activation.php:130
+#: lib/activation.php:143
+msgid "Yes"
+msgstr "是"
+
+#: lib/activation.php:92
+#: lib/activation.php:105
+#: lib/activation.php:118
+#: lib/activation.php:131
+#: lib/activation.php:144
+msgid "No"
+msgstr "否"
+
+#: lib/activation.php:95
+msgid "Create a page called Home and set it to be the static front page"
+msgstr "建立一个名为 Home 的页面并设置为静态首页"
+
+#: lib/activation.php:100
+msgid "Change permalink structure?"
+msgstr "是否修改固定网址结构？"
+
+#: lib/activation.php:102
+msgid "Update permalink structure?"
+msgstr "是否更新固定网址结构？"
+
+#: lib/activation.php:108
+msgid "Change permalink structure to /&#37;postname&#37;/"
+msgstr "修改固定网址结构为 /&#37;postname&#37;/"
+
+#: lib/activation.php:113
+msgid "Change uploads folder?"
+msgstr "是否修改上传文件夹？"
+
+#: lib/activation.php:115
+msgid "Update uploads folder?"
+msgstr "是否更新上传文件夹？"
+
+#: lib/activation.php:121
+msgid "Change uploads folder to /assets/ instead of /wp-content/uploads/"
+msgstr "将上传目录由 /wp-content/uploads 修改为 /assets/"
+
+#: lib/activation.php:126
+#: lib/activation.php:128
+msgid "Create navigation menu?"
+msgstr "是否建立导航菜单？"
+
+#: lib/activation.php:134
+msgid "Create the Primary Navigation menu and set the location"
+msgstr "建立主要导航菜单并且设定位置"
+
+#: lib/activation.php:139
+#: lib/activation.php:141
+msgid "Add pages to menu?"
+msgstr "是否添加页面到菜单？"
+
+#: lib/activation.php:147
+msgid "Add all current published pages to the Primary Navigation"
+msgstr "添加所有已发表的页面到主要导航"
+
+#: lib/cleanup.php:404
+msgid "Continued"
+msgstr "继续阅读"
+
+#: lib/htaccess.php:26
+#, php-format
+msgid "Please make sure your <a href=\"%s\">.htaccess</a> file is writable "
+msgstr "请确定你的 <a href=\"%s\">.htaccess</a> 文件可以正常写入"
+
+#: lib/template-tags.php:5
+#, php-format
+msgid "Posted on %s at %s."
+msgstr "发表于 %s %s"
+
+#: lib/template-tags.php:6
+msgid "Written by"
+msgstr "作者"
+
+#: lib/widgets.php:6
+msgid "Primary Sidebar"
+msgstr "主要侧边栏"
+
+#: lib/widgets.php:14
+msgid "Footer"
+msgstr "页脚"
+
+#: lib/widgets.php:30
+msgid "Use this widget to add a vCard"
+msgstr "使用此小工具来添加 vCard使用此模組以新增 vCard"
+
+#: lib/widgets.php:31
+msgid "Roots: vCard"
+msgstr "Roots: vCard"
+
+#: lib/widgets.php:58
+msgid "vCard"
+msgstr "vCard"
+
+#: lib/widgets.php:124
+msgid "Title (optional):"
+msgstr "标题（可选）："
+
+#: lib/widgets.php:128
+msgid "Street Address:"
+msgstr "地址："
+
+#: lib/widgets.php:132
+msgid "City/Locality:"
+msgstr "城市："
+
+#: lib/widgets.php:136
+msgid "State/Region:"
+msgstr "州："
+
+#: lib/widgets.php:140
+msgid "Zipcode/Postal Code:"
+msgstr "邮政编码："
+
+#: lib/widgets.php:144
+msgid "Telephone:"
+msgstr "电话："
+
+#: lib/widgets.php:148
+msgid "Email:"
+msgstr "电子邮件地址："
+
+#: templates/comments.php:7
+#, php-format
+msgid "<cite class=\"fn\">%s</cite>"
+msgstr "<cite class=\"fn\">%s</cite>"
+
+#: templates/comments.php:8
+#, php-format
+msgid "%1$s"
+msgstr "%1$s"
+
+#: templates/comments.php:9
+msgid "(Edit)"
+msgstr "（编辑）"
+
+#: templates/comments.php:15
+msgid "Your comment is awaiting moderation."
+msgstr "你的留言正在审核中。"
+
+#: templates/comments.php:32
+msgid "This post is password protected. Enter the password to view comments."
+msgstr "此文受密码保护。查看评论需请你输入密码。"
+
+#: templates/comments.php:49
+msgid "&larr; Older comments"
+msgstr "&larr; 旧评论"
+
+#: templates/comments.php:50
+msgid "Newer comments &rarr;"
+msgstr "新评论 &rarr;"
+
+#: templates/comments.php:58
+#: templates/comments.php:68
+msgid "Comments are closed."
+msgstr "评论已被关闭。"
+
+#: templates/comments.php:75
+msgid "Leave a Reply"
+msgstr "发表评论"
+
+#: templates/comments.php:75
+#, php-format
+msgid "Leave a Reply to %s"
+msgstr "对 %s 发表评论"
+
+#: templates/comments.php:78
+#, php-format
+msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
+msgstr "抱歉，你必须要<a href=\"%s\">登录</a>才能发表评论喔！"
+
+#: templates/comments.php:82
+#, php-format
+msgid "Logged in as <a href=\"%s/wp-admin/profile.php\">%s</a>."
+msgstr "已登录为 <a href=\"%s/wp-admin/profile.php\">%s</a>。"
+
+#: templates/comments.php:82
+msgid "Log out of this account"
+msgstr "退出登录此账号"
+
+#: templates/comments.php:82
+msgid "Log out &raquo;"
+msgstr "退出登录 &raquo;"
+
+#: templates/comments.php:84
+msgid "Name"
+msgstr "姓名"
+
+#: templates/comments.php:84
+#: templates/comments.php:86
+msgid " (required)"
+msgstr "（必填）"
+
+#: templates/comments.php:86
+msgid "Email (will not be published)"
+msgstr "电子邮件地址（并不会被公开）"
+
+#: templates/comments.php:88
+msgid "Website"
+msgstr "网站"
+
+#: templates/comments.php:91
+msgid "Comment"
+msgstr "评论"
+
+#: templates/comments.php:93
+msgid "Submit Comment"
+msgstr "提交评论"
+
+#: templates/content-single.php:11
+msgid "Pages:"
+msgstr "页面："
+
+#: templates/content.php:4
+msgid "Sorry, no results were found."
+msgstr "抱歉，没有搜索结果。"
+
+#: templates/content.php:26
+msgid "&larr; Older posts"
+msgstr "&larr; 旧文章"
+
+#: templates/content.php:27
+msgid "Newer posts &rarr;"
+msgstr "新文章 &rarr;"
+
+#: templates/page-header.php:8
+msgid "Latest Posts"
+msgstr "最新的文章"
+
+#: templates/page-header.php:17
+#, php-format
+msgid "Daily Archives: %s"
+msgstr "按日归档： %s"
+
+#: templates/page-header.php:19
+#, php-format
+msgid "Monthly Archives: %s"
+msgstr "按月归档： %s"
+
+#: templates/page-header.php:21
+#, php-format
+msgid "Yearly Archives: %s"
+msgstr "按年归档： %s"
+
+#: templates/page-header.php:25
+#, php-format
+msgid "Author Archives: %s"
+msgstr "按作者归档： %s"
+
+#: templates/page-header.php:30
+#, php-format
+msgid "Search Results for %s"
+msgstr "搜索结果： %s"
+
+#: templates/page-header.php:32
+msgid "File Not Found"
+msgstr "找不到文件"
+
+#: templates/searchform.php:2
+msgid "Search for:"
+msgstr "搜索："
+
+#: templates/searchform.php:3
+#: templates/searchform.php:4
+msgid "Search"
+msgstr "搜索"
+

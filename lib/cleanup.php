@@ -273,10 +273,17 @@ add_filter('img_caption_shortcode', 'roots_caption', 10, 3);
  * @link http://twitter.github.com/bootstrap/components.html#thumbnails
  */
 function roots_gallery($attr) {
-  global $post, $wp_locale;
+  $post = get_post();
 
   static $instance = 0;
   $instance++;
+
+  if (!empty($attr['ids'])) {
+    if (empty($attr['orderby'])) {
+      $attr['orderby'] = 'post__in';
+    }
+    $attr['include'] = $attr['ids'];
+  }
 
   $output = apply_filters('post_gallery', '', $attr);
 
@@ -295,8 +302,9 @@ function roots_gallery($attr) {
     'order'      => 'ASC',
     'orderby'    => 'menu_order ID',
     'id'         => $post->ID,
-    'icontag'    => 'li',
-    'captiontag' => 'p',
+    'itemtag'    => '',
+    'icontag'    => '',
+    'captiontag' => '',
     'columns'    => 3,
     'size'       => 'thumbnail',
     'include'    => '',
@@ -310,15 +318,13 @@ function roots_gallery($attr) {
   }
 
   if (!empty($include)) {
-    $include = preg_replace( '/[^0-9,]+/', '', $include );
-    $_attachments = get_posts( array('include' => $include, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby) );
+    $_attachments = get_posts(array('include' => $include, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby));
 
     $attachments = array();
     foreach ($_attachments as $key => $val) {
       $attachments[$val->ID] = $_attachments[$key];
     }
   } elseif (!empty($exclude)) {
-    $exclude = preg_replace('/[^0-9,]+/', '', $exclude);
     $attachments = get_children(array('post_parent' => $id, 'exclude' => $exclude, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby));
   } else {
     $attachments = get_children(array('post_parent' => $id, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby));
@@ -330,48 +336,26 @@ function roots_gallery($attr) {
 
   if (is_feed()) {
     $output = "\n";
-    foreach ($attachments as $att_id => $attachment)
+    foreach ($attachments as $att_id => $attachment) {
       $output .= wp_get_attachment_link($att_id, $size, true) . "\n";
+    }
     return $output;
   }
 
-  $captiontag = tag_escape($captiontag);
-  $columns    = intval($columns);
-  $itemwidth  = $columns > 0 ? floor(100/$columns) : 100;
-  $float      = is_rtl() ? 'right' : 'left';
-  $selector   = "gallery-{$instance}";
-
-  $gallery_style = $gallery_div = '';
-
-  if (apply_filters('use_default_gallery_style', true)) {
-    $gallery_style = '';
-  }
-
-  $size_class  = sanitize_html_class($size);
-  $gallery_div = "<ul id='$selector' class='thumbnails gallery galleryid-{$id} gallery-columns-{$columns} gallery-size-{$size_class}'>";
-  $output      = apply_filters('gallery_style', $gallery_style . "\n\t\t" . $gallery_div);
+  $output = '<ul class="thumbnails gallery">';
 
   $i = 0;
   foreach ($attachments as $id => $attachment) {
     $link = isset($attr['link']) && 'file' == $attr['link'] ? wp_get_attachment_link($id, $size, false, false) : wp_get_attachment_link($id, $size, true, false);
 
-    $output .= "
-      <{$icontag} class=\"gallery-item\">
-        $link
-      ";
-    if ($captiontag && trim($attachment->post_excerpt)) {
-      $output .= "
-        <{$captiontag} class=\"gallery-caption hidden\">
-        " . wptexturize($attachment->post_excerpt) . "
-        </{$captiontag}>";
+    $output .= '<li>' . $link;
+    if (trim($attachment->post_excerpt)) {
+      $output .= '<div class="caption hidden">' . wptexturize($attachment->post_excerpt) . '</div>';
     }
-    $output .= "</{$icontag}>";
-    if ($columns > 0 && ++$i % $columns == 0) {
-      $output .= '';
-    }
+    $output .= '</li>';
   }
 
-  $output .= "</ul>\n";
+  $output .= '</ul>';
 
   return $output;
 }
@@ -492,28 +476,19 @@ add_filter('dynamic_sidebar_params', 'roots_widget_first_last_classes');
  * @link http://txfx.net/wordpress-plugins/nice-search/
  */
 function roots_nice_search_redirect() {
-  if (is_search() && strpos($_SERVER['REQUEST_URI'], '/wp-admin/') === false && strpos($_SERVER['REQUEST_URI'], '/search/') === false) {
-    wp_redirect(home_url('/search/' . str_replace(array(' ', '%20'), array('+', '+'), urlencode(get_query_var('s')))), 301);
+  global $wp_rewrite;
+  if (!isset($wp_rewrite) || !is_object($wp_rewrite) || !$wp_rewrite->using_permalinks()) {
+    return;
+  }
+
+  $search_base = $wp_rewrite->search_base;
+  if (is_search() && !is_admin() && strpos($_SERVER['REQUEST_URI'], "/{$search_base}/") === false) {
+    wp_redirect(home_url("/{$search_base}/" . urlencode(get_query_var('s'))));
     exit();
   }
 }
 
 add_action('template_redirect', 'roots_nice_search_redirect');
-
-/**
- * Fix for get_search_query() returning +'s between search terms
- */
-function roots_search_query($escaped = true) {
-  $query = apply_filters('roots_search_query', get_query_var('s'));
-
-  if ($escaped) {
-    $query = esc_attr($query);
-  }
-
-  return urldecode($query);
-}
-
-add_filter('get_search_query', 'roots_search_query');
 
 /**
  * Fix for empty search queries redirecting to home page
