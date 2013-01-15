@@ -10,7 +10,7 @@
  *
  * Enqueue scripts in the following order:
  * 1. /theme/assets/js/vendor/modernizr-2.6.2.min.js  (in head.php)
- * 2. jquery-1.8.2.min.js via Google CDN              (in head.php)
+ * 2. jquery-1.9.0.min.js via Google CDN              (in head.php)
  * 3. /theme/assets/js/plugins.js
  * 4. /theme/assets/js/main.js
  */
@@ -30,7 +30,7 @@ function roots_scripts() {
   // It's kept in the header instead of footer to avoid conflicts with plugins.
   if (!is_admin()) {
     wp_deregister_script('jquery');
-    wp_register_script('jquery', '', '', '1.8.3', false);
+    wp_register_script('jquery', '', '', '1.9.0', false);
   }
 
   if (is_single() && comments_open() && get_option('thread_comments')) {
