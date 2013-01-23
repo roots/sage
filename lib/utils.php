@@ -45,8 +45,11 @@ function roots_template_path() {
   return Roots_Wrapping::$main_template;
 }
 
-class Roots_Wrapping {
+function roots_sidebar_path() {
+  return Roots_Wrapping::sidebar();
+}
 
+class Roots_Wrapping {
   // Stores the full path to the main template file
   static $main_template;
 
@@ -65,7 +68,17 @@ class Roots_Wrapping {
     $templates = array('base.php');
 
     if (self::$base) {
-      array_unshift($templates, sprintf('base-%s.php', self::$base ));
+      array_unshift($templates, sprintf('base-%s.php', self::$base));
+    }
+
+    return locate_template($templates);
+  }
+
+  static function sidebar() {
+    $templates = array('templates/sidebar.php');
+
+    if (self::$base) {
+      array_unshift($templates, sprintf('templates/sidebar-%s.php', self::$base));
     }
 
     return locate_template($templates);
