@@ -18,6 +18,10 @@ Edit `lib/config.php` to enable or disable support for various theme functions a
 
 Edit `lib/init.php` to setup custom navigation menus and post thumbnail sizes.
 
+## Getting Help
+
+search or ask on the [roots google group](http://groups.google.com/group/roots-theme)
+
 ## Going Deeper
 
 * [Code structure](usage.md) — Overview of the project contents.
