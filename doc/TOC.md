@@ -12,6 +12,8 @@ Roots is a starting WordPress theme made for developers that’s based on [HTML5
 
 ## Configuration
 
+Most configuration of your new site will be handled in the Wordpress Admin GUI. However there are several options for the theme that will require you to read and edit the contents of two files:
+
 Edit `lib/config.php` to enable or disable support for various theme functions and to define constants that are used throughout the theme. For instance, this file will determine when and where the sidebar shows up, and this is where you put your Google Analytics ID
 
 Edit `lib/init.php` to setup custom navigation menus and post thumbnail sizes.
