@@ -23,7 +23,13 @@ Edit `lib/init.php` to setup custom navigation menus and post thumbnail sizes.
 * [Code structure](usage.md) — Overview of the project contents.
 * [FAQ](faq.md) — Frequently asked questions, along with their answers.
 
-## Development
+## Development and Contributions
 
 * [Contributing to Roots](/retlehs/roots/blob/master/CONTRIBUTING.md) — Guidelines on how to contribute effectively.
 * [Extending and customizing Roots](extend.md) — Going further with Roots.
+* Reporting issues (please read [issue guidelines](https://github.com/necolas/issue-guidelines))
+* Suggesting new features
+* Writing or editing [docs](/retlehs/roots/blob/master/doc/TOC.md)
+* Writing or refactoring code
+* Fixing [issues](https://github.com/retlehs/roots/issues)
+* Replying to questions on the [Google Group](http://groups.google.com/group/roots-theme)
