@@ -9,7 +9,7 @@ No. You don't normally replace the foundations of a house once it has been
 built. There is nothing stopping you from trying to work in the latest changes
 but you'll have to assess the costs/benefits of doing so.
 
-### I got 99 problems but a sidebar aint one.
+### I got 99 problems but a sidebar ain't one.
 
 Look at the [sidebars explained post](https://groups.google.com/forum/?fromgroups=#!topic/roots-theme/7CQn48DEPCI)
 
