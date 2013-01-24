@@ -1,4 +1,4 @@
-# [Roots Theme](http://www.rootstheme.com/)
+# [Roots](http://www.rootstheme.com/) = WordPress + Bootstrap + Boilerplate
 
 Roots is a WordPress theme made for developers that’s based on [HTML5 Boilerplate](http://html5boilerplate.com/) and [Bootstrap from Twitter](http://twitter.github.com/bootstrap/).
 
