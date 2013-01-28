@@ -23,6 +23,7 @@ This file is used to enable various theme features, define which pages get the s
 2. [Rewrites](rewrites.md)
 3. HTML5 Boilerplate's `.htaccess`
 4. Bootstrap's top navbar
+5. Nice Search (redirect `/?s=` to `/search/`)
 
 If you don't want to use one of the features, either comment out the line or remove it.
 

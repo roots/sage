@@ -8,6 +8,7 @@ add_theme_support('root-relative-urls');    // Enable relative URLs
 add_theme_support('rewrite-urls');          // Enable URL rewrites
 add_theme_support('h5bp-htaccess');         // Enable HTML5 Boilerplate's .htaccess
 add_theme_support('bootstrap-top-navbar');  // Enable Bootstrap's fixed navbar
+add_theme_support('nice-search');           // Enable /?s= to /search/ redirect
 
 
 /**

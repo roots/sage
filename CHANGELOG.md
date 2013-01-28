@@ -1,4 +1,5 @@
 ### HEAD
+* Enable `add_theme_support` for Nice Search
 * Replace ID's with classes
 * Add support for dynamic sidebar templates
 * Fix PHP notice on search with no results
