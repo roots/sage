@@ -13,7 +13,7 @@ This file handles the various WordPress clean up. [About the clean up](cleanup.m
 
 ### config.php
 
-This file is used to enable various theme features, define which pages get the sidebar, set the CSS classes for `#main` and `#sidebar`, set a Google Analytics ID, and set the post excerpt length.
+This file is used to enable various theme features, define which pages get the sidebar, set the CSS classes for `.main` and `.sidebar`, set a Google Analytics ID, and set the post excerpt length.
 
 #### Enable theme features
 
@@ -107,7 +107,7 @@ The theme wrapper is used to serve all of the template files. [About the theme w
 
 This file registers the custom sidebars and custom widgets. There are two initial sidebars:
 
-1. Primary Sidebar (used by `templates/sidebar.php`, included from `base.php` within `#sidebar`)
+1. Primary Sidebar (used by `templates/sidebar.php`, included from `base.php` within `.sidebar`)
 2. Footer (used by `templates/footer.php`)
 
 The included vCard widget can be used to build additional, custom widgets.
