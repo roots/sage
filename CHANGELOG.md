@@ -1,4 +1,5 @@
 ### HEAD
+* Replace ID's with classes
 * Add support for dynamic sidebar templates
 * Fix PHP notice on search with no results
 * Update to jQuery 1.9.0
