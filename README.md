@@ -5,7 +5,7 @@ Roots is a starting WordPress theme made for developers that’s based on [HTML5
 ## Installation
 
 * Clone the git repo - `git clone git://github.com/retlehs/roots.git` - or [download it](https://github.com/retlehs/roots/zipball/master)
-* Reference the [theme activation](/retlehs/roots/blob/master/doc/activation.md) documentation to understand everything that happens once you activate Roots
+* Reference the [theme activation](doc/activation.md) documentation to understand everything that happens once you activate Roots
 
 ## Configuration
 
@@ -15,7 +15,7 @@ Edit `lib/init.php` to setup custom navigation menus and post thumbnail sizes.
 
 ## Documentation
 
-Take a look at the [documentation table of contents](/retlehs/roots/blob/master/doc/TOC.md).
+Take a look at the [documentation table of contents](doc/TOC.md).
 
 ## Features
 
@@ -32,11 +32,11 @@ Take a look at the [documentation table of contents](/retlehs/roots/blob/master/
 
 ## Contributing
 
-Everyone is welcome to help [contribute](/retlehs/roots/blob/master/CONTRIBUTING.md) and improve this project. There are several ways you can contribute:
+Everyone is welcome to help [contribute](CONTRIBUTING.md) and improve this project. There are several ways you can contribute:
 
 * Reporting issues (please read [issue guidelines](https://github.com/necolas/issue-guidelines))
 * Suggesting new features
-* Writing or editing [docs](/retlehs/roots/blob/master/doc/TOC.md)
+* Writing or editing [docs](doc/TOC.md)
 * Writing or refactoring code
 * Fixing [issues](https://github.com/retlehs/roots/issues)
 * Replying to questions on the [Google Group](http://groups.google.com/group/roots-theme)
