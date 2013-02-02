@@ -13,6 +13,7 @@ msgstr ""
 "X-Poedit-Basepath: ../\n"
 "X-Poedit-Language: French\n"
 "X-Poedit-Country: FRANCE\n"
+"Plural-Forms: nplurals=2; plural=(n > 1)\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPath-1: ./templates\n"
 "X-Poedit-SearchPath-2: ./lib\n"
@@ -202,6 +203,12 @@ msgstr "Votre commentaire est en attente de modération."
 #: templates/comments.php:32
 msgid "This post is password protected. Enter the password to view comments."
 msgstr "Cet article est protégé par mot de passe. Entrez le mot de passe pour voir les commentaires."
+
+#: templates/comments.php:39
+msgid "One Response to &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s Responses to &ldquo;%2$s&rdquo;"
+msgstr[0] "Une réponse à &ldquo;%2$s&rdquo;"
+msgstr[1] "%1$s résponses à &ldquo;%2$s&rdquo;"
 
 #: templates/comments.php:49
 #: templates/comments.php:51
