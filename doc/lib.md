@@ -87,12 +87,12 @@ If you're using LESS, make sure you compile the files to the proper locations:
 
 JavaScript is loaded in the following order:
 
-1. `/theme/assets/js/vendor/modernizr-2.6.2.min.js`
-2. `jquery-1.9.0.min.js` via Google CDN with local fallback
-3. `/theme/assets/js/plugins.js`
-4. `/theme/assets/js/main.js`
+1. `jquery-1.9.0.min.js` via Google CDN with local fallback
+2. `/theme/assets/js/vendor/modernizr-2.6.2.min.js`
+3. `/theme/assets/js/plugins.js` (in footer)
+4. `/theme/assets/js/main.js` (in footer)
 
-jQuery is loaded in `head.php` using the same method from HTML5 Boilerplate: grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline. It's kept in the header instead of footer to avoid conflicts with plugins.
+jQuery is loaded using the same method from HTML5 Boilerplate: grab Google CDN's jQuery, with a protocol relative URL; fallback to local if offline. It's kept in the header instead of footer to avoid conflicts with plugins.
 
 `plugins.js` contains a minified version of all the latest Bootstrap plugins.
 
