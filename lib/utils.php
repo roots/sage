@@ -5,7 +5,56 @@
  *
  * @link http://scribu.net/wordpress/theme-wrappers.html
  */
+function roots_template_path() {
+  return Roots_Wrapping::$main_template;
+}
 
+function roots_sidebar_path() {
+  return Roots_Wrapping::sidebar();
+}
+
+class Roots_Wrapping {
+  // Stores the full path to the main template file
+  static $main_template;
+
+  // Stores the base name of the template file; e.g. 'page' for 'page.php' etc.
+  static $base;
+
+  static function wrap($template) {
+    self::$main_template = $template;
+
+    self::$base = substr(basename(self::$main_template), 0, -4);
+
+    if (self::$base === 'index') {
+      self::$base = false;
+    }
+
+    $templates = array('base.php');
+
+    if (self::$base) {
+      array_unshift($templates, sprintf('base-%s.php', self::$base));
+    }
+
+    return locate_template($templates);
+  }
+
+  static function sidebar() {
+    $templates = array('templates/sidebar.php');
+
+    if (self::$base) {
+      array_unshift($templates, sprintf('templates/sidebar-%s.php', self::$base));
+    }
+
+    return locate_template($templates);
+  }
+}
+
+add_filter('template_include', array('Roots_Wrapping', 'wrap'), 99);
+
+
+/**
+ * Page titles
+ */
 function roots_title() {
   if (is_home()) {
     if (get_option('page_for_posts', true)) {
@@ -41,38 +90,18 @@ function roots_title() {
   }
 }
 
-function roots_template_path() {
-  return Roots_Wrapping::$main_template;
-}
-
-class Roots_Wrapping {
-
-  // Stores the full path to the main template file
-  static $main_template;
-
-  // Stores the base name of the template file; e.g. 'page' for 'page.php' etc.
-  static $base;
-
-  static function wrap($template) {
-    self::$main_template = $template;
-
-    self::$base = substr(basename(self::$main_template), 0, -4);
-
-    if (self::$base === 'index') {
-      self::$base = false;
+/**
+ * Show an admin notice if .htaccess isn't writable
+ */
+function roots_htaccess_writable() {
+  if (!is_writable(get_home_path() . '.htaccess')) {
+    if (current_user_can('administrator')) {
+      add_action('admin_notices', create_function('', "echo '<div class=\"error\"><p>" . sprintf(__('Please make sure your <a href="%s">.htaccess</a> file is writable ', 'roots'), admin_url('options-permalink.php')) . "</p></div>';"));
     }
-
-    $templates = array('base.php');
-
-    if (self::$base) {
-      array_unshift($templates, sprintf('base-%s.php', self::$base ));
-    }
-
-    return locate_template($templates);
   }
 }
 
-add_filter('template_include', array('Roots_Wrapping', 'wrap'), 99);
+add_action('admin_init', 'roots_htaccess_writable');
 
 // returns WordPress subdirectory if applicable
 function wp_base_dir() {

@@ -360,8 +360,10 @@ function roots_gallery($attr) {
   return $output;
 }
 
-remove_shortcode('gallery');
-add_shortcode('gallery', 'roots_gallery');
+if (current_theme_supports('bootstrap-gallery')) {
+  remove_shortcode('gallery');
+  add_shortcode('gallery', 'roots_gallery');
+}
 
 /**
  * Remove unnecessary dashboard widgets
@@ -488,7 +490,9 @@ function roots_nice_search_redirect() {
   }
 }
 
-add_action('template_redirect', 'roots_nice_search_redirect');
+if (current_theme_supports('nice-search')) {
+  add_action('template_redirect', 'roots_nice_search_redirect');
+}
 
 /**
  * Fix for empty search queries redirecting to home page

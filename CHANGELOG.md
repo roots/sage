@@ -1,4 +1,8 @@
 ### HEAD
+* Enable `add_theme_support` for Nice Search
+* Replace ID's with classes
+* Add support for dynamic sidebar templates
+* Fix PHP notice on search with no results
 * Update to jQuery 1.9.0
 
 ### 6.2.0: January 13th, 2013

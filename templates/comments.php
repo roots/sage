@@ -1,7 +1,7 @@
 <?php function roots_comment($comment, $args, $depth) {
   $GLOBALS['comment'] = $comment; ?>
   <li <?php comment_class(); ?>>
-    <article id="comment-<?php comment_ID(); ?>">
+    <article class="comment-<?php comment_ID(); ?>">
       <header class="comment-author vcard">
         <?php echo get_avatar($comment, $size = '32'); ?>
         <?php printf(__('<cite class="fn">%s</cite>', 'roots'), get_comment_author_link()); ?>
@@ -43,7 +43,7 @@
     </ol>
 
     <?php if (get_comment_pages_count() > 1 && get_option('page_comments')) : // are there comments to navigate through ?>
-      <nav id="comments-nav" class="pager">
+      <nav>
         <ul class="pager">
           <?php if (get_previous_comments_link()) : ?>
             <li class="previous"><?php previous_comments_link(__('&larr; Older comments', 'roots')); ?></li>

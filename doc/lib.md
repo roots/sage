@@ -13,7 +13,7 @@ This file handles the various WordPress clean up. [About the clean up](cleanup.m
 
 ### config.php
 
-This file is used to enable various theme features, define which pages get the sidebar, set the CSS classes for `#main` and `#sidebar`, set a Google Analytics ID, and set the post excerpt length.
+This file is used to enable various theme features, define which pages get the sidebar, set the CSS classes for `.main` and `.sidebar`, set a Google Analytics ID, and set the post excerpt length.
 
 #### Enable theme features
 
@@ -23,6 +23,7 @@ This file is used to enable various theme features, define which pages get the s
 2. [Rewrites](rewrites.md)
 3. HTML5 Boilerplate's `.htaccess`
 4. Bootstrap's top navbar
+5. Nice Search (redirect `/?s=` to `/search/`)
 
 If you don't want to use one of the features, either comment out the line or remove it.
 
@@ -44,7 +45,7 @@ This file contains HTML5 Boilerplate's `.htaccess` which is automatically added 
 
 ### htaccess.php
 
-This file handles the clean URL rewrites and HTML5 Boilerplate `.htaccess`. [About the rewrites](rewrites.md).
+This file handles the HTML5 Boilerplate `.htaccess`.
 
 ### init.php
 
@@ -53,6 +54,10 @@ This file runs the initial theme setup and defines helper constants for later us
 ### nav.php
 
 This file contains all the custom nav modifications (for Bootstrap) and clean up.
+
+### rewrites.php
+
+This file handles the clean URL rewrites. [About the rewrites](rewrites.md).
 
 ### scripts.php
 
@@ -82,8 +87,8 @@ If you're using LESS, make sure you compile the files to the proper locations:
 
 JavaScript is loaded in the following order:
 
-1. `/theme/assets/js/vendor/modernizr-2.6.2.min.js` (in `head.php`)
-2. `jquery-1.9.0.min.js` via Google CDN with local fallback (in `head.php`)
+1. `/theme/assets/js/vendor/modernizr-2.6.2.min.js`
+2. `jquery-1.9.0.min.js` via Google CDN with local fallback
 3. `/theme/assets/js/plugins.js`
 4. `/theme/assets/js/main.js`
 
@@ -107,7 +112,7 @@ The theme wrapper is used to serve all of the template files. [About the theme w
 
 This file registers the custom sidebars and custom widgets. There are two initial sidebars:
 
-1. Primary Sidebar (used by `templates/sidebar.php`, included from `base.php` within `#sidebar`)
+1. Primary Sidebar (used by `templates/sidebar.php`, included from `base.php` within `.sidebar`)
 2. Footer (used by `templates/footer.php`)
 
 The included vCard widget can be used to build additional, custom widgets.

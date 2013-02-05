@@ -1,2 +1,5 @@
 <?php get_template_part('templates/page', 'header'); ?>
-<?php get_template_part('templates/content', get_post_format()); ?>
+<?php
+  $format = have_posts() ? get_post_format() : false;
+  get_template_part('templates/content', $format);
+?>
