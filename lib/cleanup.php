@@ -360,8 +360,10 @@ function roots_gallery($attr) {
   return $output;
 }
 
-remove_shortcode('gallery');
-add_shortcode('gallery', 'roots_gallery');
+if (current_theme_supports('bootstrap-gallery')) {
+  remove_shortcode('gallery');
+  add_shortcode('gallery', 'roots_gallery');
+}
 
 /**
  * Remove unnecessary dashboard widgets
