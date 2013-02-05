@@ -9,10 +9,10 @@
  * 4. /child-theme/style.css (if a child theme is activated)
  *
  * Enqueue scripts in the following order:
- * 1. /theme/assets/js/vendor/modernizr-2.6.2.min.js
- * 2. jquery-1.9.0.min.js via Google CDN
- * 3. /theme/assets/js/plugins.js
- * 4. /theme/assets/js/main.js
+ * 1. jquery-1.9.0.min.js via Google CDN
+ * 2. /theme/assets/js/vendor/modernizr-2.6.2.min.js
+ * 3. /theme/assets/js/plugins.js (in footer)
+ * 4. /theme/assets/js/main.js    (in footer)
  */
 
 function roots_scripts() {
@@ -30,7 +30,7 @@ function roots_scripts() {
   // It's kept in the header instead of footer to avoid conflicts with plugins.
   if (!is_admin()) {
     wp_deregister_script('jquery');
-    wp_register_script('jquery', '//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js', array('modernizr'), null, false);
+    wp_register_script('jquery', '//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js', false, null, false);
   }
 
   if (is_single() && comments_open() && get_option('thread_comments')) {
@@ -38,10 +38,10 @@ function roots_scripts() {
   }
 
   wp_register_script('modernizr', get_template_directory_uri() . '/assets/js/vendor/modernizr-2.6.2.min.js', false, null, false);
-  wp_register_script('roots_plugins', get_template_directory_uri() . '/assets/js/plugins.js', false, null, false);
-  wp_register_script('roots_main', get_template_directory_uri() . '/assets/js/main.js', false, null, false);
-  wp_enqueue_script('modernizr');
+  wp_register_script('roots_plugins', get_template_directory_uri() . '/assets/js/plugins.js', false, null, true);
+  wp_register_script('roots_main', get_template_directory_uri() . '/assets/js/main.js', false, null, true);
   wp_enqueue_script('jquery');
+  wp_enqueue_script('modernizr');
   wp_enqueue_script('roots_plugins');
   wp_enqueue_script('roots_main');
 }
