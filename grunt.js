@@ -55,13 +55,21 @@ module.exports = function(grunt) {
       }
     },
     watch: {
-      files: ['<config:lint.files>', 'assets/css/less/*.less', 'assets/css/less/bootstrap/*.less'],
-      tasks: 'default'
+      js: {
+        files: ['<config:lint.files>'],
+        tasks: 'js'
+      },
+      css: {
+        files: ['assets/css/less/*.less', 'assets/css/less/bootstrap/*.less'],
+        tasks: 'css'
+      }
     }
   });
 
   grunt.loadTasks('build/tasks');
   grunt.registerTask('default', 'lint recess concat min mincss enqueue_ver');
+  grunt.registerTask('js', 'lint concat min enqueue_ver');
+  grunt.registerTask('css', 'recess mincss enqueue_ver');
   grunt.loadNpmTasks('grunt-contrib');
   grunt.loadNpmTasks('grunt-recess');
 };
