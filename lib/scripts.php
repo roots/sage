@@ -25,8 +25,8 @@ function roots_scripts() {
     wp_enqueue_style('roots_child', get_stylesheet_uri(), false, null);
   }
 
-  // jQuery is loaded in header.php using the same method from HTML5 Boilerplate:
-  // Grab Google CDN's latest jQuery with a protocol relative URL; fall back to local if offline
+  // jQuery is loaded using the same method from HTML5 Boilerplate:
+  // Grab Google CDN's latest jQuery with a protocol relative URL; fallback to local if offline
   // It's kept in the header instead of footer to avoid conflicts with plugins.
   if (!is_admin()) {
     wp_deregister_script('jquery');
