@@ -42,6 +42,7 @@ A basic Roots theme initially looks like this:
 │   ├── htaccess.php
 │   ├── init.php
 │   ├── nav.php
+│   ├── rewrites.php
 │   ├── scripts.php
 │   ├── sidebar.php
 │   ├── utils.php

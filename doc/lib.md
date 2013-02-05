@@ -45,7 +45,7 @@ This file contains HTML5 Boilerplate's `.htaccess` which is automatically added 
 
 ### htaccess.php
 
-This file handles the clean URL rewrites and HTML5 Boilerplate `.htaccess`. [About the rewrites](rewrites.md).
+This file handles the HTML5 Boilerplate `.htaccess`.
 
 ### init.php
 
@@ -54,6 +54,10 @@ This file runs the initial theme setup and defines helper constants for later us
 ### nav.php
 
 This file contains all the custom nav modifications (for Bootstrap) and clean up.
+
+### rewrites.php
+
+This file handles the clean URL rewrites. [About the rewrites](rewrites.md).
 
 ### scripts.php
 
