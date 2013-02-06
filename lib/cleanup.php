@@ -192,7 +192,8 @@ if (roots_enable_root_relative_urls()) {
     'day_link',
     'year_link',
     'tag_link',
-    'the_author_posts_link'
+    'the_author_posts_link',
+    'wp_get_attachment_url'
   );
 
   add_filters($root_rel_filters, 'roots_root_relative_url');
