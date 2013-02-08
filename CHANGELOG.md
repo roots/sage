@@ -1,4 +1,20 @@
 ### HEAD
+* Update to jQuery 1.9.1
+* Output author title with `get_the_author()`
+* Add EditorConfig
+* Update 404 template based on H5BP
+* Update H5BP's included .htaccess
+* Don't show comments on passworded posts
+* Add `do_action('get_header')` for WooSidebars compatibility
+* Simplify entry meta
+* Allow `get_search_form()` to be called more than once per request
+* Move plugins.js and main.js to footer
+* JavaScript clean up (everything is now enqueued)
+* Remove conditional feed
+* Introduce `add_theme_support('bootstrap-gallery')`
+* Rewrites organization (introduce `lib/rewrites.php`)
+* Fix `add_editor_style` path
+* Updated translations: French, Bulgarian, Turkish, Korean
 * Enable `add_theme_support` for Nice Search
 * Replace ID's with classes
 * Add support for dynamic sidebar templates
