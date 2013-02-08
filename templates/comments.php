@@ -1,3 +1,9 @@
+<?php
+  if (post_password_required()) {
+    return;
+  }
+?>
+
 <?php function roots_comment($comment, $args, $depth) {
   $GLOBALS['comment'] = $comment; ?>
   <li <?php comment_class(); ?>>
@@ -24,15 +30,6 @@
 
     </article>
 <?php } ?>
-
-<?php if (post_password_required()) : ?>
-  <section id="comments">
-    <div class="alert alert-block fade in">
-      <a class="close" data-dismiss="alert">&times;</a>
-      <p><?php _e('This post is password protected. Enter the password to view comments.', 'roots'); ?></p>
-    </div>
-  </section><!-- /#comments -->
-<?php endif; ?>
 
 <?php if (have_comments()) : ?>
   <section id="comments">

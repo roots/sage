@@ -513,8 +513,10 @@ add_filter('request', 'roots_request_filter');
 /**
  * Tell WordPress to use searchform.php from the templates/ directory
  */
-function roots_get_search_form() {
-  locate_template('/templates/searchform.php', true, true);
+function roots_get_search_form($argument) {
+  if ($argument === '') {
+    locate_template('/templates/searchform.php', true, false);
+  }
 }
 
 add_filter('get_search_form', 'roots_get_search_form');
