@@ -1,4 +1,5 @@
 ### HEAD
+* Update to Bootstrap 2.3.0
 * Update to jQuery 1.9.1
 * Output author title with `get_the_author()`
 * Add EditorConfig
