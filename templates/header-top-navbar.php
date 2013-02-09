@@ -1,4 +1,4 @@
-<header class="banner navbar navbar-fixed-top" role="banner">
+<header class="banner navbar navbar-static-top" role="banner">
   <div class="navbar-inner">
     <div class="container">
       <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
