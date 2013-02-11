@@ -67,3 +67,16 @@ function roots_jquery_local_fallback($src, $handle) {
 if (!is_admin()) {
   add_filter('script_loader_src', 'roots_jquery_local_fallback', 10, 2);
 }
+
+function roots_google_analytics() { ?>
+<script>
+  var _gaq=[['_setAccount','<?php echo GOOGLE_ANALYTICS_ID; ?>'],['_trackPageview']];
+  (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g,s)}(document,'script'));
+</script>
+<?php }
+
+if (GOOGLE_ANALYTICS_ID) {
+  add_action('wp_footer', 'roots_google_analytics', 20);
+}
