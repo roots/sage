@@ -1,324 +1,283 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: roots WP theme\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: \n"
-"PO-Revision-Date: \n"
-"Last-Translator: \n"
-"Language-Team: Kazik <netboy@netboy.pl>\n"
-"MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-Language: Polish\n"
-"X-Poedit-Country: Poland\n"
-"X-Poedit-SourceCharset: utf-8\n"
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Kazik <netboy@netboy.pl>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"X-Generator: Poedit 1.5.5\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: 404.php:7
-msgid "File Not Found"
-msgstr "Nie znaleziono pliku"
+#: 404.php:5
+msgid ""
+"The page you are looking for might have been removed, had its name changed, "
+"or is temporarily unavailable."
+msgstr ""
+"Strona której szukasz nie istnieje, została przeniesiona lub jest tymczasowo "
+"niedostępna."
 
-#: 404.php:11
-msgid "The page you are looking for might have been removed, had its name changed, or is temporarily unavailable."
-msgstr "Strona której szukasz nie istnieje, została przeniesiona lub jest tymczasowo niedostępna."
-
-#: 404.php:13
+#: 404.php:8
 msgid "Please try the following:"
 msgstr "Spróbuj następujących czynności:"
 
-#: 404.php:15
+#: 404.php:10
 msgid "Check your spelling"
 msgstr "Sprawdź poprawność pisowni"
 
-#: 404.php:16
-#, php-format
+#: 404.php:11
 msgid "Return to the <a href=\"%s\">home page</a>"
 msgstr "Powrót do <a href=\"%s\">strony głównej</a>"
 
-#: 404.php:17
+#: 404.php:12
 msgid "Click the <a href=\"javascript:history.back()\">Back</a> button"
 msgstr "Kliknij <a href=\"javascript:history.back()\">Powrót</a>"
 
-#: archive.php:13
-#, php-format
-msgid "Daily Archives: %s"
-msgstr "Dzienne archiwa: %s"
-
-#: archive.php:15
-#, php-format
-msgid "Monthly Archives: %s"
-msgstr "Miesięczne archiwa: %s"
-
-#: archive.php:17
-#, php-format
-msgid "Yearly Archives: %s"
-msgstr "Roczne archiwa: %s"
-
-#: archive.php:21
-#, php-format
-msgid "Author Archives: %s"
-msgstr "Аrchiwa autora: %s"
-
-#: comments.php:7
-#, php-format
-msgid "<cite class=\"fn\">%s</cite>"
-msgstr "<cite class=\"fn\">%s</cite>"
-
-#: comments.php:8
-#, php-format
-msgid "%1$s"
-msgstr "%1$s"
-
-#: comments.php:9
-msgid "(Edit)"
-msgstr "(Edytuj)"
-
-#: comments.php:15
-msgid "Your comment is awaiting moderation."
-msgstr "Twój komentarz oczekuje na moderację."
-
-#: comments.php:32
-msgid "This post is password protected. Enter the password to view comments."
-msgstr "Ten artykuł jest chroniony hasłem. Podaj hasło aby zobaczyć komentarze."
-
-#: comments.php:49
-msgid "&larr; Older comments"
-msgstr "&larr; Starsze komentarze"
-
-#: comments.php:50
-msgid "Newer comments &rarr;"
-msgstr "Nowsze komentarze &rarr;"
-
-#: comments.php:58
-#: comments.php:68
-msgid "Comments are closed."
-msgstr "Komentarze są zamknięte."
-
-#: comments.php:75
-msgid "Leave a Reply"
-msgstr "Pozostaw odpowiedź"
-
-#: comments.php:75
-#, php-format
-msgid "Leave a Reply to %s"
-msgstr "Pozostaw odpowiedź dla %s"
-
-#: comments.php:78
-#, php-format
-msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
-msgstr "Musisz być <a href=\"%s\">zalogowany</a> aby wysłać komentarz."
-
-#: comments.php:82
-#, php-format
-msgid "Logged in as <a href=\"%s/wp-admin/profile.php\">%s</a>."
-msgstr "Zalogowany jako: <a href=\"%s/wp-admin/profile.php\">%s</a>."
-
-#: comments.php:82
-msgid "Log out of this account"
-msgstr "Wyloguj się z tego konta"
-
-#: comments.php:82
-msgid "Log out &raquo;"
-msgstr "Wyloguj się &raquo;"
-
-#: comments.php:84
-msgid "Name"
-msgstr "Imię"
-
-#: comments.php:84
-#: comments.php:86
-msgid " (required)"
-msgstr " (wymagane)"
-
-#: comments.php:86
-msgid "Email (will not be published)"
-msgstr "E-mail (nie zostanie opublikowany)"
-
-#: comments.php:88
-msgid "Website"
-msgstr "Strona WWW"
-
-#: comments.php:91
-msgid "Comment"
-msgstr "Komentarz"
-
-#: comments.php:93
-msgid "Submit Comment"
-msgstr "Dodaj komentarz"
-
-#: functions.php:45
-msgid "Primary Navigation"
-msgstr "Główna nawigacja"
-
-#: functions.php:74
-#, php-format
-msgid "Posted on %s at %s."
-msgstr "Wysłane w dniu %s o %s."
-
-#: functions.php:75
-msgid "Written by"
-msgstr "Napisane przez"
-
-#: index.php:7
-msgid "Latest Posts"
-msgstr "Ostatnie artykuły"
-
-#: loop-single.php:14
-msgid "Pages:"
-msgstr "Strony:"
-
-#: loop.php:5
-msgid "Sorry, no results were found."
-msgstr "Przepraszamy, nic nie znaleziono."
-
-#: loop.php:37
-msgid "&larr; Older posts"
-msgstr "&larr; Starsze artykuły"
-
-#: loop.php:38
-msgid "Newer posts &rarr;"
-msgstr "Nowsze artykuły &rarr;"
-
-#: search.php:7
-msgid "Search Results for"
-msgstr "Wyniki wyszukiwania dla"
-
-#: searchform.php:2
-msgid "Search for:"
-msgstr "Szukaj:"
-
-#: searchform.php:3
-#: searchform.php:4
-msgid "Search"
-msgstr "Szukaj"
-
-#: inc/roots-activation.php:32
-#: inc/roots-activation.php:33
+#: lib/activation.php:31 lib/activation.php:32
 msgid "Theme Activation"
-msgstr "Аktywacja motywu"
+msgstr "Aktywacja szablonu"
 
-#: inc/roots-activation.php:70
-#, php-format
+#: lib/activation.php:68
 msgid "%s Theme Activation"
-msgstr "%s Aktywacja motywu"
+msgstr "%s Aktywacja szablonu"
 
-#: inc/roots-activation.php:85
-#: inc/roots-activation.php:87
+#: lib/activation.php:83 lib/activation.php:85
 msgid "Create static front page?"
 msgstr "Czy stworzyć statyczną stronę główną?"
 
-#: inc/roots-activation.php:89
-#: inc/roots-activation.php:102
-#: inc/roots-activation.php:115
-#: inc/roots-activation.php:128
-#: inc/roots-activation.php:141
+#: lib/activation.php:87 lib/activation.php:100 lib/activation.php:113
+#: lib/activation.php:126 lib/activation.php:139
 msgid "Yes"
 msgstr "Tak"
 
-#: inc/roots-activation.php:90
-#: inc/roots-activation.php:103
-#: inc/roots-activation.php:116
-#: inc/roots-activation.php:129
-#: inc/roots-activation.php:142
+#: lib/activation.php:88 lib/activation.php:101 lib/activation.php:114
+#: lib/activation.php:127 lib/activation.php:140
 msgid "No"
 msgstr "Nie"
 
-#: inc/roots-activation.php:93
+#: lib/activation.php:91
 msgid "Create a page called Home and set it to be the static front page"
 msgstr "Stwórz stronę o nazwie Home i ustaw ją jako statyczną stronę główną"
 
-#: inc/roots-activation.php:98
+#: lib/activation.php:96
 msgid "Change permalink structure?"
 msgstr "Czy zmienić strukturę permalinków?"
 
-#: inc/roots-activation.php:100
+#: lib/activation.php:98
 msgid "Update permalink structure?"
 msgstr "Czy zaktualizować strukturę permalinków?"
 
-#: inc/roots-activation.php:106
+#: lib/activation.php:104
 msgid "Change permalink structure to /&#37;postname&#37;/"
 msgstr "Zmień strukturę permalinków: /&#37;postname&#37;/"
 
-#: inc/roots-activation.php:111
+#: lib/activation.php:109
 msgid "Change uploads folder?"
 msgstr "Czy zmienić folder z plikami?"
 
-#: inc/roots-activation.php:113
+#: lib/activation.php:111
 msgid "Update uploads folder?"
 msgstr "Czy dostosować folder z plikami?"
 
-#: inc/roots-activation.php:119
+#: lib/activation.php:117
 msgid "Change uploads folder to /assets/ instead of /wp-content/uploads/"
-msgstr "Zamień folder z plikami na /assets/ zamiast /wp-content/uploads/"
+msgstr "Zmień nazwę folderu z plikami na /assets/ zamiast /wp-content/uploads/"
 
-#: inc/roots-activation.php:124
-#: inc/roots-activation.php:126
+#: lib/activation.php:122 lib/activation.php:124
 msgid "Create navigation menu?"
 msgstr "Czy stworzyć menu?"
 
-#: inc/roots-activation.php:132
+#: lib/activation.php:130
 msgid "Create the Primary Navigation menu and set the location"
-msgstr "Stwórz główne menu i ustaw jego lokalizację"
+msgstr "Stwórz główne menu i ustaw jego pozycję"
 
-#: inc/roots-activation.php:137
-#: inc/roots-activation.php:139
+#: lib/activation.php:135 lib/activation.php:137
 msgid "Add pages to menu?"
 msgstr "Czy dodać strony do menu?"
 
-#: inc/roots-activation.php:145
+#: lib/activation.php:143
 msgid "Add all current published pages to the Primary Navigation"
 msgstr "Dodaj wszystkie aktualnie opublikowane strony do głównego menu"
 
-#: inc/roots-cleanup.php:370
+#: lib/cleanup.php:388
 msgid "Continued"
 msgstr "Kontynuuj"
 
-#: inc/roots-cleanup.php:538
-#, php-format
-msgid "Please update your <a href=\"%s\">site tagline</a> <a href=\"%s\" style=\"float: right;\">Hide Notice</a>"
-msgstr "Proszę zaktualizować <a href=\"%s\">tagline</a>. <a href=\"%s\" style=\"float: right;\">Ukryj wiadomość</a>"
-
-#: inc/roots-htaccess.php:11
-#, php-format
+#: lib/htaccess.php:25
 msgid "Please make sure your <a href=\"%s\">.htaccess</a> file is writable "
-msgstr "Proszę upewnić się, że plik <a href=\"%s\">.htaccess</a> jest dostępny do zapisu "
+msgstr ""
+"Proszę upewnij się, że plik <a href=\"%s\">.htaccess</a> jest dostępny do "
+"zapisu "
 
-#: inc/roots-widgets.php:5
+#: lib/init.php:13
+msgid "Primary Navigation"
+msgstr "Główna nawigacja"
+
+#: lib/utils.php:14
+msgid "Latest Posts"
+msgstr "Ostatnie posty"
+
+#: lib/utils.php:23
+msgid "Daily Archives: %s"
+msgstr "Dzienne archiwa: %s"
+
+#: lib/utils.php:25
+msgid "Monthly Archives: %s"
+msgstr "Miesięczne archiwa: %s"
+
+#: lib/utils.php:27
+msgid "Yearly Archives: %s"
+msgstr "Roczne archiwa: %s"
+
+#: lib/utils.php:31
+msgid "Author Archives: %s"
+msgstr "Archiwa autora: %s"
+
+#: lib/utils.php:36
+msgid "Search Results for %s"
+msgstr "Wyniki wyszukiwania: %s"
+
+#: lib/utils.php:38
+msgid "File Not Found"
+msgstr "Nie znaleziono pliku"
+
+#: lib/widgets.php:6
+msgid "Primary Sidebar"
+msgstr "Główny sidebar"
+
+#: lib/widgets.php:15
+msgid "Footer"
+msgstr "Stopka"
+
+#: lib/widgets.php:41
 msgid "Use this widget to add a vCard"
-msgstr "Użyj tej funkcji do dodania vCard"
+msgstr "Użyj tego widgetu do dodania karty (vCard)"
 
-#: inc/roots-widgets.php:6
+#: lib/widgets.php:43
 msgid "Roots: vCard"
 msgstr "Roots: vCard"
 
-#: inc/roots-widgets.php:33
+#: lib/widgets.php:70
 msgid "vCard"
 msgstr "vCard"
 
-#: inc/roots-widgets.php:99
-msgid "Title (optional):"
-msgstr "Tytuł (opcjonalny):"
+#: templates/comments.php:7
+msgid "<cite class=\"fn\">%s</cite>"
+msgstr "<cite class=\"fn\">%s</cite>"
 
-#: inc/roots-widgets.php:103
-msgid "Street Address:"
-msgstr "Ulica:"
+#: templates/comments.php:8
+msgid "%1$s"
+msgstr "%1$s"
 
-#: inc/roots-widgets.php:107
-msgid "City/Locality:"
-msgstr "Miasto lub miejscowość:"
+#: templates/comments.php:9
+msgid "(Edit)"
+msgstr "(Edytuj)"
 
-#: inc/roots-widgets.php:111
-msgid "State/Region:"
-msgstr "Województwo:"
+#: templates/comments.php:15
+msgid "Your comment is awaiting moderation."
+msgstr "Twój komentarz oczekuje na moderację."
 
-#: inc/roots-widgets.php:115
-msgid "Zipcode/Postal Code:"
-msgstr "Kod pocztowy:"
+#: templates/comments.php:32
+msgid "This post is password protected. Enter the password to view comments."
+msgstr ""
+"Ten artykuł jest chroniony hasłem. Podaj hasło aby zobaczyć komentarze."
 
-#: inc/roots-widgets.php:119
-msgid "Telephone:"
-msgstr "Тelefon:"
+#: templates/comments.php:39
+msgid "One Response to &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s Responses to &ldquo;%2$s&rdquo;"
+msgstr[0] "Jedna odpowiedź na &ldquo;%2$s&rdquo;"
+msgstr[1] "%1$s Odpowiedzi na &ldquo;%2$s&rdquo;"
 
-#: inc/roots-widgets.php:123
-msgid "Email:"
-msgstr "Е-mail:"
+#: templates/comments.php:49 templates/comments.php:51
+msgid "&larr; Older comments"
+msgstr "&larr; Starsze komentarze"
 
+#: templates/comments.php:54 templates/comments.php:56
+msgid "Newer comments &rarr;"
+msgstr "Nowsze komentarze &rarr;"
+
+#: templates/comments.php:66 templates/comments.php:76
+msgid "Comments are closed."
+msgstr "Komentarze są zamknięte."
+
+#: templates/comments.php:83
+msgid "Leave a Reply"
+msgstr "Pozostaw odpowiedź"
+
+#: templates/comments.php:83
+msgid "Leave a Reply to %s"
+msgstr "Pozostaw odpowiedź na %s"
+
+#: templates/comments.php:86
+msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
+msgstr "Musisz być <a href=\"%s\">zalogowany</a> aby wysłać komentarz."
+
+#: templates/comments.php:90
+msgid "Logged in as <a href=\"%s/wp-admin/profile.php\">%s</a>."
+msgstr "Zalogowany jako: <a href=\"%s/wp-admin/profile.php\">%s</a>."
+
+#: templates/comments.php:90
+msgid "Log out of this account"
+msgstr "Wyloguj się z tego konta"
+
+#: templates/comments.php:90
+msgid "Log out &raquo;"
+msgstr "Wyloguj się &raquo;"
+
+#: templates/comments.php:92
+msgid "Name"
+msgstr "Imię"
+
+#: templates/comments.php:92 templates/comments.php:94
+msgid " (required)"
+msgstr " (wymagane)"
+
+#: templates/comments.php:94
+msgid "Email (will not be published)"
+msgstr "E-mail (nie zostanie opublikowany)"
+
+#: templates/comments.php:96
+msgid "Website"
+msgstr "Strona WWW"
+
+#: templates/comments.php:99
+msgid "Comment"
+msgstr "Komentarz"
+
+#: templates/comments.php:101
+msgid "Submit Comment"
+msgstr "Dodaj komentarz"
+
+#: templates/content-single.php:11
+msgid "Pages:"
+msgstr "Strony:"
+
+#: templates/content.php:4
+msgid "Sorry, no results were found."
+msgstr "Przepraszamy, brak rezultatów wyszukiwania."
+
+#: templates/content.php:28 templates/content.php:30
+msgid "&larr; Older posts"
+msgstr "&larr; Starsze posty"
+
+#: templates/content.php:33 templates/content.php:35
+msgid "Newer posts &rarr;"
+msgstr "Nowsze posty &rarr;"
+
+#: templates/entry-meta.php:1
+msgid "Posted on %s at %s."
+msgstr "Wysłane %s o %s."
+
+#: templates/entry-meta.php:2
+msgid "Written by"
+msgstr "Napisane przez"
+
+#: templates/searchform.php:2
+msgid "Search for:"
+msgstr "Szukaj:"
+
+#: templates/searchform.php:3 templates/searchform.php:4
+msgid "Search"
+msgstr "Szukaj"
