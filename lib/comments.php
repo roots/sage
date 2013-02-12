@@ -43,9 +43,8 @@ class Roots_Walker_Comment extends Walker_Comment {
       <?php edit_comment_link(__('(Edit)', 'roots'), '', ''); ?>
 
       <?php if ($comment->comment_approved == '0') : ?>
-        <div class="alert alert-block fade in">
-          <a class="close" data-dismiss="alert">&times;</a>
-          <p><?php _e('Your comment is awaiting moderation.', 'roots'); ?></p>
+        <div class="alert">
+          <?php _e('Your comment is awaiting moderation.', 'roots'); ?>
         </div>
       <?php endif; ?>
 
