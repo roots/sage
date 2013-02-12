@@ -42,6 +42,20 @@ Bulgarian, Catalan, Danish, Dutch, English, Finnish, French, German, Hungarian,
 Indonesian, Italian, Korean, Macedonian, Norwegian, Polish, Russian, Simplified
 Chinese, Spanish, Swedish, Traditional Chinese, Turkish, Vietnamese)
 
+### Build Script
+
+The [grunt branch](https://github.com/retlehs/roots/tree/grunt) contains a build
+script powered by grunt. More information can be found at [Integrating grunt.js with Roots](http://benword.com/integrating-grunt-js-with-roots/).
+
+* Easily compile LESS files
+* Minification and concatenation without plugins
+* Fewer requests made to the server (one CSS file, one main JS file besides
+Modernizr and jQuery)
+* Ensures valid JavaScript
+* Others working on your project are able to use the same build script and have
+a unified development process
+* Code is optimized for production use
+
 ## Contributing
 
 Everyone is welcome to help [contribute](CONTRIBUTING.md) and improve this project.
