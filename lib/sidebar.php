@@ -40,4 +40,3 @@ class Roots_Sidebar {
     return is_page_template($page_template);
   }
 }
-?>

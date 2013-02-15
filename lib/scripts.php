@@ -1,6 +1,6 @@
 <?php
 /**
- * Scripts and stylesheets
+ * Enqueue scripts and stylesheets
  *
  * Enqueue stylesheets in the following order:
  * 1. /theme/assets/css/bootstrap.css
@@ -14,7 +14,6 @@
  * 3. /theme/assets/js/plugins.js (in footer)
  * 4. /theme/assets/js/main.js    (in footer)
  */
-
 function roots_scripts() {
   wp_enqueue_style('roots_bootstrap', get_template_directory_uri() . '/assets/css/bootstrap.css', false, null);
   wp_enqueue_style('roots_bootstrap_responsive', get_template_directory_uri() . '/assets/css/bootstrap-responsive.css', array('roots_bootstrap'), null);
@@ -45,7 +44,6 @@ function roots_scripts() {
   wp_enqueue_script('roots_plugins');
   wp_enqueue_script('roots_main');
 }
-
 add_action('wp_enqueue_scripts', 'roots_scripts', 100);
 
 // http://wordpress.stackexchange.com/a/12450
@@ -63,7 +61,6 @@ function roots_jquery_local_fallback($src, $handle) {
 
   return $src;
 }
-
 if (!is_admin()) {
   add_filter('script_loader_src', 'roots_jquery_local_fallback', 10, 2);
 }
@@ -76,7 +73,6 @@ function roots_google_analytics() { ?>
     s.parentNode.insertBefore(g,s)}(document,'script'));
 </script>
 <?php }
-
 if (GOOGLE_ANALYTICS_ID) {
   add_action('wp_footer', 'roots_google_analytics', 20);
 }

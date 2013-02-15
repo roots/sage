@@ -1,11 +1,4 @@
 <?php
-
-function roots_get_avatar($avatar) {
-  $avatar = str_replace("class='avatar", "class='avatar pull-left media-object", $avatar);
-  return $avatar;
-}
-add_filter('get_avatar', 'roots_get_avatar');
-
 /**
  * Use Bootstrap's media object for listing comments
  *
@@ -61,3 +54,9 @@ class Roots_Walker_Comment extends Walker_Comment {
     echo "</li>\n";
   }
 }
+
+function roots_get_avatar($avatar) {
+  $avatar = str_replace("class='avatar", "class='avatar pull-left media-object", $avatar);
+  return $avatar;
+}
+add_filter('get_avatar', 'roots_get_avatar');
