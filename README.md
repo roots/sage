@@ -1,65 +1,74 @@
-# [Roots Theme](http://rootstheme.com/)
+# [Roots Theme](http://www.rootstheme.com/)
 
-Roots is a starting WordPress theme made for developers that’s based on [HTML5 Boilerplate](http://html5boilerplate.com/), Starkers, and the most popular CSS frameworks.
+Roots is a starting WordPress theme made for developers that’s based on
+[HTML5 Boilerplate](http://html5boilerplate.com/) and [Bootstrap from Twitter](http://twitter.github.com/bootstrap/).
 
-Roots includes support for Blueprint CSS, 960 Grid System, 1140px Grid, Adapt.js, Less Framework, Foundation, and Bootstrap with the ability to set site-wide classes for the main content area and the sidebar. There's also the option to not use any CSS framework.
+* Source: [https://github.com/retlehs/roots](https://github.com/retlehs/roots)
+* Home Page: [http://www.rootstheme.com/](http://www.rootstheme.com/)
+* Twitter: [@retlehs](https://twitter.com/retlehs)
+* Google Group: [http://groups.google.com/group/roots-theme](http://groups.google.com/group/roots-theme)
 
-## Quick start
+## Installation
 
 * Clone the git repo - `git clone git://github.com/retlehs/roots.git` - or [download it](https://github.com/retlehs/roots/zipball/master)
-* Read [Theme Activation](https://github.com/retlehs/roots/wiki/Theme-activation) to understand everything that happens once you activate Roots
+* Reference the [theme activation](doc/activation.md) documentation to understand
+everything that happens once you activate Roots
+
+## Configuration
+
+Edit `lib/config.php` to enable or disable support for various theme functions
+and to define constants that are used throughout the theme.
+
+Edit `lib/init.php` to setup custom navigation menus and post thumbnail sizes.
+
+## Documentation
+
+Take a look at the [documentation table of contents](doc/TOC.md).
 
 ## Features
 
-* HTML5 Boilerplate's markup, style, and .htaccess
-* Popular CSS frameworks included (with the option to use none)
-* Clean URLs (no more `/wp-content/`)
-* All static theme assets are rewritten to the website root (`/css/`, `/img/`, and `/js/`)
-* Cleaner HTML output of navigation menus
+* HTML5 Boilerplate’s markup and `.htaccess`
+* Bootstrap from Twitter
+* [Theme wrapper](doc/wrapper.md)
 * Root relative URLs
-* Posts use the hNews microformat
-* The gallery shortcode has been modified to use `<figure>` and `<figcaption>`
-* `wp_head` has been cleaned up along with the output of enqueued styles and scripts
-* Robots.txt optimized for SEO
-* [Multilingual ready](http://www.rootstheme.com/wpml/) (English, Spanish, French, Italian, Dutch, Brazilian Portuguese, Macedonian, Finnish, Danish, and Turkish)
+* Clean URLs (no more `/wp-content/`)
+* All static theme assets are rewritten to the website root (`/assets/css/`,
+`/assets/img/`, and `/assets/js/`)
+* Cleaner HTML output of navigation menus
+* Cleaner output of `wp_head` and enqueued scripts/styles
+* Posts use the [hNews](http://microformats.org/wiki/hnews) microformat
+* [Multilingual ready](http://www.rootstheme.com/wpml/) (Brazilian Portuguese,
+Bulgarian, Catalan, Danish, Dutch, English, Finnish, French, German, Hungarian,
+Indonesian, Italian, Korean, Macedonian, Norwegian, Polish, Russian, Simplified
+Chinese, Spanish, Swedish, Traditional Chinese, Turkish, Vietnamese)
 
-### Theme Options
-![Theme Options](http://www.rootstheme.com/img/roots-settings.png)
+### Build Script
+
+The [grunt branch](https://github.com/retlehs/roots/tree/grunt) contains a build
+script powered by grunt. More information can be found at [Integrating grunt.js with Roots](http://benword.com/integrating-grunt-js-with-roots/).
+
+* Easily compile LESS files
+* Minification and concatenation without plugins
+* Fewer requests made to the server (one CSS file, one main JS file besides
+Modernizr and jQuery)
+* Ensures valid JavaScript
+* Others working on your project are able to use the same build script and have
+a unified development process
+* Code is optimized for production use
 
 ## Contributing
 
-Anyone and everyone is welcome to contribute. There are several ways you can help out:
+Everyone is welcome to help [contribute](CONTRIBUTING.md) and improve this project.
+There are several ways you can contribute:
 
-1. Raising [issues](https://github.com/retlehs/roots/issues) on GitHub
-2. Sending pull requests for bug fixes or new features and improvements
-3. Making the [docs](https://github.com/retlehs/roots/wiki) better
-4. Replying to questions on the [mailing list](http://groups.google.com/group/roots-theme)
+* Reporting issues (please read [issue guidelines](https://github.com/necolas/issue-guidelines))
+* Suggesting new features
+* Writing or editing [docs](doc/TOC.md)
+* Writing or refactoring code
+* Fixing [issues](https://github.com/retlehs/roots/issues)
+* Replying to questions on the [Google Group](http://groups.google.com/group/roots-theme)
 
-## Project information
+## Support
 
-* Source: [https://github.com/retlehs/roots](https://github.com/retlehs/roots)
-* Web: [http://rootstheme.com/](http://rootstheme.com/)
-* Docs: [https://github.com/retlehs/roots/wiki](https://github.com/retlehs/roots/wiki)
-* Mailing list: [http://groups.google.com/group/roots-theme](http://groups.google.com/group/roots-theme)
-* Twitter: [@retlehs](https://twitter.com/#!/retlehs)
-* Contributors: [https://github.com/retlehs/roots/contributors](https://github.com/retlehs/roots/contributors)
-
-## License
-
-### Major components:
-
-* HTML5 Boilerplate: The Unlicense
-* Modernizr: MIT/BSD license
-* jQuery: MIT/GPL license
-* Normalize.css: Public Domain
-* Blueprint CSS: Modified MIT License
-* 960 Grid System: MIT/GPL License
-* The 1140px Grid: CC BY-SA 3.0 Australia License
-* Adapt.js: MIT/GPL license
-* Less Framework 4: MIT license
-* Foundation: MIT license
-* Bootstrap: Apache 2.0 license
-
-### Everything else:
-
-The Unlicense (aka: public domain)
+Use the [Google Group](http://groups.google.com/group/roots-theme) to ask
+questions and get support.

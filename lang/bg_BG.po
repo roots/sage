@@ -1,0 +1,318 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: roots WP theme\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: yulian yordanov <yul.yordanov@gmail.com>\n"
+"Language-Team: \n"
+"Language: bg_BG\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Generator: Poedit 1.5.4\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: 404.php:5
+msgid ""
+"The page you are looking for might have been removed, had its name changed, "
+"or is temporarily unavailable."
+msgstr ""
+"Страницата, която търсите може би е премахната, преместена или временно "
+"недостъпна."
+
+#: 404.php:8
+msgid "Please try the following:"
+msgstr "Моля, опитайте следното:"
+
+#: 404.php:10
+msgid "Check your spelling"
+msgstr "Проверете правописа."
+
+#: 404.php:11
+msgid "Return to the <a href=\"%s\">home page</a>"
+msgstr "Върнете се към <a href=\"%s\">началната страница</a>."
+
+#: 404.php:12
+msgid "Click the <a href=\"javascript:history.back()\">Back</a> button"
+msgstr "Натиснете бутон <a href=\"javascript:history.back()\">Назад</a>."
+
+#: lib/activation.php:31 lib/activation.php:32
+msgid "Theme Activation"
+msgstr "Активиране"
+
+#: lib/activation.php:68
+msgid "%s Theme Activation"
+msgstr "%s активиране"
+
+#: lib/activation.php:83 lib/activation.php:85
+msgid "Create static front page?"
+msgstr "Искате ли да създадете статична начална страница?"
+
+#: lib/activation.php:87 lib/activation.php:100 lib/activation.php:113
+#: lib/activation.php:126 lib/activation.php:139
+msgid "Yes"
+msgstr "Да"
+
+#: lib/activation.php:88 lib/activation.php:101 lib/activation.php:114
+#: lib/activation.php:127 lib/activation.php:140
+msgid "No"
+msgstr "Не"
+
+#: lib/activation.php:91
+msgid "Create a page called Home and set it to be the static front page"
+msgstr ""
+"Създаване на страница наречена Начало и задаването й като статична начална "
+"страница"
+
+#: lib/activation.php:96
+msgid "Change permalink structure?"
+msgstr "Да се промени ли структурата на възките?"
+
+#: lib/activation.php:98
+msgid "Update permalink structure?"
+msgstr "Искате ли да обновите структурата на връзките?"
+
+#: lib/activation.php:104
+msgid "Change permalink structure to /&#37;postname&#37;/"
+msgstr "Промяна структурата на връзките: /&#37;postname&#37;/"
+
+#: lib/activation.php:109
+msgid "Change uploads folder?"
+msgstr "Да се промени ли папката за качени файлове?"
+
+#: lib/activation.php:111
+msgid "Update uploads folder?"
+msgstr "Искате ли да обновите папката за качени файлове?"
+
+#: lib/activation.php:117
+msgid "Change uploads folder to /assets/ instead of /wp-content/uploads/"
+msgstr ""
+"Променяне на папката за качените файлове на /assets/, вместо /wp-content/"
+"uploads/"
+
+#: lib/activation.php:122 lib/activation.php:124
+msgid "Create navigation menu?"
+msgstr "Искате ли да създадете меню?"
+
+#: lib/activation.php:130
+msgid "Create the Primary Navigation menu and set the location"
+msgstr "Създаване на Основно меню и задаване на местоположението му"
+
+#: lib/activation.php:135 lib/activation.php:137
+msgid "Add pages to menu?"
+msgstr "Искате ли да добавите страници?"
+
+#: lib/activation.php:143
+msgid "Add all current published pages to the Primary Navigation"
+msgstr "Добавяне на всички публикувани страници към Основното меню"
+
+#: lib/cleanup.php:388
+msgid "Continued"
+msgstr "Още"
+
+#: lib/htaccess.php:25
+msgid "Please make sure your <a href=\"%s\">.htaccess</a> file is writable "
+msgstr ""
+"Моля, уверете се че файлът <a href=\"%s\">.htaccess</a> може да се редактира"
+
+#: lib/init.php:13
+msgid "Primary Navigation"
+msgstr "Основно меню"
+
+#: lib/utils.php:14
+msgid "Latest Posts"
+msgstr "Най-нови публикации"
+
+#: lib/utils.php:23
+msgid "Daily Archives: %s"
+msgstr "Архив за дата: %s"
+
+#: lib/utils.php:25
+msgid "Monthly Archives: %s"
+msgstr "Архив за месец: %s"
+
+#: lib/utils.php:27
+msgid "Yearly Archives: %s"
+msgstr "Архив за година: %s"
+
+#: lib/utils.php:31
+msgid "Author Archives: %s"
+msgstr "Архив за автор: %s"
+
+#: lib/utils.php:36
+msgid "Search Results for %s"
+msgstr "Резултати от търсенето на %s"
+
+#: lib/utils.php:38
+msgid "File Not Found"
+msgstr "Страницата не е намерена"
+
+#: lib/widgets.php:6
+msgid "Primary Sidebar"
+msgstr "Главен сайдбар"
+
+#: lib/widgets.php:15
+msgid "Footer"
+msgstr "Футър"
+
+#: lib/widgets.php:41
+msgid "Use this widget to add a vCard"
+msgstr "Използвайте тази джаджа, за да добавите vCard"
+
+#: lib/widgets.php:43
+msgid "Roots: vCard"
+msgstr "Roots: vCard"
+
+#: lib/widgets.php:70
+msgid "vCard"
+msgstr "vCard"
+
+#: templates/comments.php:7
+msgid "<cite class=\"fn\">%s</cite>"
+msgstr "<cite class=\"fn\">%s</cite>"
+
+#: templates/comments.php:8
+msgid "%1$s"
+msgstr "%1$s"
+
+#: templates/comments.php:9
+msgid "(Edit)"
+msgstr "(редакт.)"
+
+#: templates/comments.php:15
+msgid "Your comment is awaiting moderation."
+msgstr "Коментарът Ви изчаква одобрение."
+
+#: templates/comments.php:32
+msgid "This post is password protected. Enter the password to view comments."
+msgstr ""
+"Тази публикация е защитена с парола. Въведете паролата, за да видите "
+"коментарите."
+
+#: templates/comments.php:39
+msgid "One Response to &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s Responses to &ldquo;%2$s&rdquo;"
+msgstr[0] "Един отговор към &ldquo;%2$s&rdquo;"
+msgstr[1] "%1$s отговора към &ldquo;%2$s&rdquo;"
+
+#: templates/comments.php:49 templates/comments.php:51
+msgid "&larr; Older comments"
+msgstr "&larr; По-стари коментари"
+
+#: templates/comments.php:54 templates/comments.php:56
+msgid "Newer comments &rarr;"
+msgstr "По-нови коментари &rarr;"
+
+#: templates/comments.php:66 templates/comments.php:76
+msgid "Comments are closed."
+msgstr "Коментарите са изключени"
+
+#: templates/comments.php:83
+msgid "Leave a Reply"
+msgstr "Оставете коментар"
+
+#: templates/comments.php:83
+msgid "Leave a Reply to %s"
+msgstr "Оставете коментар към %s"
+
+#: templates/comments.php:86
+msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
+msgstr "Трябва да сте <a href=\"%s\">вписан</a>, за да публикувате коментар."
+
+#: templates/comments.php:90
+msgid "Logged in as <a href=\"%s/wp-admin/profile.php\">%s</a>."
+msgstr "Вписан като: <a href=\"%s/wp-admin/profile.php\">%s</a>."
+
+#: templates/comments.php:90
+msgid "Log out of this account"
+msgstr "Излизане от този профил"
+
+#: templates/comments.php:90
+msgid "Log out &raquo;"
+msgstr "Изход &raquo;"
+
+#: templates/comments.php:92
+msgid "Name"
+msgstr "Име"
+
+#: templates/comments.php:92 templates/comments.php:94
+msgid " (required)"
+msgstr " (задължително)"
+
+#: templates/comments.php:94
+msgid "Email (will not be published)"
+msgstr "Е-адрес (няма да бъде публикуван)"
+
+#: templates/comments.php:96
+msgid "Website"
+msgstr "Уеб-страница"
+
+#: templates/comments.php:99
+msgid "Comment"
+msgstr "Коментар"
+
+#: templates/comments.php:101
+msgid "Submit Comment"
+msgstr "Публикуване"
+
+#: templates/content-single.php:11
+msgid "Pages:"
+msgstr "Страници:"
+
+#: templates/content.php:4
+msgid "Sorry, no results were found."
+msgstr "За съжаление няма открити резултати"
+
+#: templates/content.php:28 templates/content.php:30
+msgid "&larr; Older posts"
+msgstr "&larr; По-стари публикации"
+
+#: templates/content.php:33 templates/content.php:35
+msgid "Newer posts &rarr;"
+msgstr "По-нови публикации &rarr;"
+
+#: templates/entry-meta.php:1
+msgid "Posted on %s at %s."
+msgstr "Публикувано на %s в %s."
+
+#: templates/entry-meta.php:2
+msgid "Written by"
+msgstr "Автор"
+
+#: templates/searchform.php:2
+msgid "Search for:"
+msgstr "Търсене на:"
+
+#: templates/searchform.php:3 templates/searchform.php:4
+msgid "Search"
+msgstr "Търсене"
+
+#~ msgid ""
+#~ "Please update your <a href=\"%s\">site tagline</a> <a href=\"%s\" style="
+#~ "\"float: right;\">Hide Notice</a>"
+#~ msgstr ""
+#~ "Моля, редактирайте <a href=\"%s\">описанието</a> на сайта. <a href=\"%s\" "
+#~ "style=\"float: right;\">Скриване</a>"
+
+#~ msgid "Title (optional):"
+#~ msgstr "Заглавие (незадълж.)"
+
+#~ msgid "Street Address:"
+#~ msgstr "Улица:"
+
+#~ msgid "City/Locality:"
+#~ msgstr "Град:"
+
+#~ msgid "State/Region:"
+#~ msgstr "Държава:"
+
+#~ msgid "Zipcode/Postal Code:"
+#~ msgstr "Пощенски код:"
+
+#~ msgid "Telephone:"
+#~ msgstr "Телефон:"
+
+#~ msgid "Email:"
+#~ msgstr "Е-поща:"
