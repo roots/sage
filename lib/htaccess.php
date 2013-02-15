@@ -2,8 +2,6 @@
 /**
  * Add HTML5 Boilerplate's .htaccess via WordPress
  */
-
-// Add the contents of h5bp-htaccess into .htaccess
 function roots_add_h5bp_htaccess($content) {
   global $wp_rewrite;
   $home_path = function_exists('get_home_path') ? get_home_path() : ABSPATH;

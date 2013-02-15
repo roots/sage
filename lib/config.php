@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Enable theme features
  */

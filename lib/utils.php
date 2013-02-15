@@ -1,7 +1,6 @@
 <?php
-
 /**
- * Theme Wrapper
+ * Theme wrapper
  *
  * @link http://scribu.net/wordpress/theme-wrappers.html
  */
@@ -48,9 +47,7 @@ class Roots_Wrapping {
     return locate_template($templates);
   }
 }
-
 add_filter('template_include', array('Roots_Wrapping', 'wrap'), 99);
-
 
 /**
  * Page titles
@@ -98,10 +95,11 @@ function roots_htaccess_writable() {
     }
   }
 }
-
 add_action('admin_init', 'roots_htaccess_writable');
 
-// returns WordPress subdirectory if applicable
+/**
+ * Return WordPress subdirectory if applicable
+ */
 function wp_base_dir() {
   preg_match('!(https?://[^/|"]+)([^"]+)?!', site_url(), $matches);
   if (count($matches) === 3) {
@@ -111,7 +109,9 @@ function wp_base_dir() {
   }
 }
 
-// opposite of built in WP functions for trailing slashes
+/**
+ * Opposite of built in WP functions for trailing slashes
+ */
 function leadingslashit($string) {
   return '/' . unleadingslashit($string);
 }
