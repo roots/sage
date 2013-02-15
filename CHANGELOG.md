@@ -1,3 +1,10 @@
+### HEAD
+* Simplify alerts
+* Remove disabled post nav links
+* Use Bootstrap media object for listing comments
+* Move Google Analytics to `lib/scripts.php`
+* Static top navbar instead of fixed
+
 ### 6.3.0: February 8th, 2013
 * Update to Bootstrap 2.3.0
 * Update to jQuery 1.9.1
