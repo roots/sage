@@ -1,8 +1,7 @@
 <?php get_template_part('templates/page', 'header'); ?>
 
-<div class="alert alert-block fade in">
-  <a class="close" data-dismiss="alert">&times;</a>
-  <p><?php _e('Sorry, but the page you were trying to view does not exist.', 'roots'); ?></p>
+<div class="alert">
+  <?php _e('Sorry, but the page you were trying to view does not exist.', 'roots'); ?>
 </div>
 
 <p><?php _e('It looks like this was the result of either:', 'roots'); ?></p>

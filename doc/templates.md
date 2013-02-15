@@ -27,8 +27,6 @@ The `content-single.php` template is included by single post templates in the th
 
 `footer.php` includes the Footer sidebar area and displays the site copyright information.
 
-Also included is the [asynchronous Google Analytics snippet](http://mathiasbynens.be/notes/async-analytics-snippet) from HTML5 Boilerplate if an ID is defined in `config.php`.
-
 ### head.php
 
 `head.php` includes everything in the `<head>`.

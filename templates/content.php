@@ -1,7 +1,6 @@
 <?php if (!have_posts()) : ?>
-  <div class="alert alert-block fade in">
-    <a class="close" data-dismiss="alert">&times;</a>
-    <p><?php _e('Sorry, no results were found.', 'roots'); ?></p>
+  <div class="alert">
+    <?php _e('Sorry, no results were found.', 'roots'); ?>
   </div>
   <?php get_search_form(); ?>
 <?php endif; ?>
@@ -26,13 +25,9 @@
     <ul class="pager">
       <?php if (get_next_posts_link()) : ?>
         <li class="previous"><?php next_posts_link(__('&larr; Older posts', 'roots')); ?></li>
-      <?php else: ?>
-        <li class="previous disabled"><a><?php _e('&larr; Older posts', 'roots'); ?></a></li>
       <?php endif; ?>
       <?php if (get_previous_posts_link()) : ?>
         <li class="next"><?php previous_posts_link(__('Newer posts &rarr;', 'roots')); ?></li>
-      <?php else: ?>
-        <li class="next disabled"><a><?php _e('Newer posts &rarr;', 'roots'); ?></a></li>
       <?php endif; ?>
     </ul>
   </nav>
