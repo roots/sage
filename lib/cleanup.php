@@ -142,6 +142,13 @@ function roots_root_relative_url($input) {
     ),
     $input
   );
+  
+  // detect and correct for subdir installs
+  if($subdir = parse_url(home_url(), PHP_URL_PATH)) {
+  	if(substr($output, 0, strlen($subdir)) == (substr($output, strlen($subdir), strlen($subdir)))) {
+  		$output = substr($output, strlen($subdir));
+  	}
+  }
 
   return $output;
 }
