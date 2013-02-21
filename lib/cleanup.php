@@ -124,6 +124,11 @@ add_filter('body_class', 'roots_body_class');
  * @author Scott Walkinshaw <scott.walkinshaw@gmail.com>
  */
 function roots_root_relative_url($input) {
+  // fix for site_url != home_url()
+  if(!is_admin() && site_url() != home_url()) {
+  	$input = str_replace(site_url(), "", $input);
+  }
+  
   $output = preg_replace_callback(
     '!(https?://[^/|"]+)([^"]+)?!',
     create_function(
@@ -137,22 +142,12 @@ function roots_root_relative_url($input) {
     ),
     $input
   );
-
-  return $output;
-}
-
-/**
- * Terrible workaround to remove the duplicate subfolder in the src of <script> and <link> tags
- * Example: /subfolder/subfolder/css/style.css
- */
-function roots_fix_duplicate_subfolder_urls($input) {
-  $output = roots_root_relative_url($input);
-  preg_match_all('!([^/]+)/([^/]+)!', $output, $matches);
-
-  if (isset($matches[1][0]) && isset($matches[2][0])) {
-    if ($matches[1][0] === $matches[2][0]) {
-      $output = substr($output, strlen($matches[1][0]) + 1);
-    }
+  
+  // detect and correct for subdir installs
+  if($subdir = parse_url(home_url(), PHP_URL_PATH)) {
+  	if(substr($output, 0, strlen($subdir)) == (substr($output, strlen($subdir), strlen($subdir)))) {
+  		$output = substr($output, strlen($subdir));
+  	}
   }
 
   return $output;
@@ -181,13 +176,12 @@ if (roots_enable_root_relative_urls()) {
     'day_link',
     'year_link',
     'tag_link',
-    'the_author_posts_link'
+    'the_author_posts_link',
+  	'script_loader_src',
+  	'style_loader_src'
   );
 
   add_filters($root_rel_filters, 'roots_root_relative_url');
-
-  add_filter('script_loader_src', 'roots_fix_duplicate_subfolder_urls');
-  add_filter('style_loader_src', 'roots_fix_duplicate_subfolder_urls');
 }
 
 /**
