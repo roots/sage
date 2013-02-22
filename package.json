@@ -1,34 +1,28 @@
 {
   "name": "roots",
-  "description": "A starting WordPress theme made for developers based on HTML5 Boilerplate & Bootstrap.",
   "version": "6.3.0",
-  "homepage": "http://www.rootstheme.com/",
   "author": "Ben Word <ben@benword.com>",
-  "contributors": [
-    {
-      "name": "Scott Walkinshaw",
-      "email": "scott.walkinshaw@gmail.com"
-    }
-  ],
+  "homepage": "http://www.rootstheme.com",
   "repository": {
     "type": "git",
-    "url": "https://github.com/retlehs/roots.git"
+    "url": "git://github.com/retlehs/roots.git"
   },
   "bugs": {
     "url" : "https://github.com/retlehs/roots/issues"
   },
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "https://github.com/retlehs/roots/blob/master/LICENSE.md"
-    }
-  ],
-  "dependencies": {
-    "grunt": "~0.3.15",
-    "grunt-contrib": "~0.2.0",
-    "grunt-recess": "~0.1.1",
-    "uglify-js": "~1.3.3",
-    "jshint": "~0.5.9"
+  "licenses": [{
+    "type": "MIT",
+    "url": "http://opensource.org/licenses/MIT"
+  }],
+  "engines": {
+    "node": ">= 0.8.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "grunt": "~0.4.0",
+    "grunt-contrib-clean": "~0.4.0",
+    "grunt-contrib-jshint": "~0.1.1",
+    "grunt-contrib-uglify": "~0.1.1",
+    "grunt-contrib-watch": "~0.2.0",
+    "grunt-recess": "~0.3.0"
+  }
 }
