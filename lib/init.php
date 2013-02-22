@@ -2,9 +2,7 @@
 /**
  * Roots initial setup and constants
  */
-
 function roots_setup() {
-
   // Make theme available for translation
   load_theme_textdomain('roots', get_template_directory() . '/lang');
 
@@ -23,9 +21,7 @@ function roots_setup() {
 
   // Tell the TinyMCE editor to use a custom stylesheet
   add_editor_style('/assets/css/editor-style.css');
-
 }
-
 add_action('after_setup_theme', 'roots_setup');
 
 // Backwards compatibility for older than PHP 5.3.0

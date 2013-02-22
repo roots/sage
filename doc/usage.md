@@ -5,7 +5,7 @@ table of contents](TOC.md)
 
 The HTML, CSS and JavaScript in Roots comes from a combination of HTML5 Boilerplate and Twitter Bootstrap.
 
-* [HTML5 Boilerplate documentation](https://github.com/h5bp/html5-boilerplate/blob/master/doc/README.md)
+* [HTML5 Boilerplate documentation](https://github.com/h5bp/html5-boilerplate/blob/master/README.md)
 * [Twitter Bootstrap documentation](http://twitter.github.com/bootstrap/getting-started.html)
 
 ## Basic structure

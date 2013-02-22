@@ -15,7 +15,6 @@
  *
  * @link https://github.com/retlehs/roots/blob/master/doc/rewrites.md
  */
-
 function roots_add_rewrites($content) {
   global $wp_rewrite;
   $roots_new_non_wp_rules = array(
