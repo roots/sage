@@ -4,11 +4,12 @@
  *
  * Enqueue stylesheets in the following order:
  * 1. /theme/assets/css/main.min.css
+ * 2. /child-theme/style.css (if a child theme is activated)
  *
  * Enqueue scripts in the following order:
  * 1. jquery-1.9.1.min.js via Google CDN
  * 2. /theme/assets/js/vendor/modernizr-2.6.2.min.js
- * 3. /theme/assets/js/scripts.min.js
+ * 3. /theme/assets/js/main.min.js (in footer)
  */
 function roots_scripts() {
   wp_enqueue_style('roots_main', get_template_directory_uri() . '/assets/css/main.min.css', false, '99a8db779c85fab09c1780951893470f');

@@ -1,7 +1,7 @@
 // Modified http://paulirish.com/2009/markup-based-unobtrusive-comprehensive-dom-ready-execution/
 // Only fires on body class (working off strictly WordPress body_class)
 
-ExampleSite = {
+var ExampleSite = {
   // All pages
   common: {
     init: function() {
@@ -23,7 +23,7 @@ ExampleSite = {
   }
 };
 
-UTIL = {
+var UTIL = {
   fire: function(func, funcname, args) {
     var namespace = ExampleSite;
     funcname = (funcname === undefined) ? 'init' : funcname;
