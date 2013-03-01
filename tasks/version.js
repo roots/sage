@@ -20,8 +20,8 @@ module.exports = function(grunt) {
     var hashJs = md5('assets/js/scripts.min.js');
 
     // Update scripts.php to reference the new versions
-    var regexCss = /(wp_enqueue_style\('roots_css',(\s*[^,]+,){2})\s*[^\)]+\);/;
-    var regexJs = /(wp_register_script\('roots_js',(\s*[^,]+,){2})\s*[^,]+,\s*([^\)]+)\);/;
+    var regexCss = /(wp_enqueue_style\('roots_main',(\s*[^,]+,){2})\s*[^\)]+\);/;
+    var regexJs = /(wp_register_script\('roots_scripts',(\s*[^,]+,){2})\s*[^,]+,\s*([^\)]+)\);/;
 
     var content = grunt.file.read(scriptsPhp);
     content = content.replace(regexCss, "\$1 '" + hashCss + "');");
