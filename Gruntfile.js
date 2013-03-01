@@ -38,7 +38,7 @@ module.exports = function(grunt) {
             'assets/js/plugins/bootstrap/bootstrap-carousel.js',
             'assets/js/plugins/bootstrap/bootstrap-collapse.js',
             'assets/js/plugins/bootstrap/bootstrap-dropdown.js',
-            'assets/js/plugins/bootstrap/bootstrap-modla.js',
+            'assets/js/plugins/bootstrap/bootstrap-modal.js',
             'assets/js/plugins/bootstrap/bootstrap-tooltip.js',
             'assets/js/plugins/bootstrap/bootstrap-popover.js',
             'assets/js/plugins/bootstrap/bootstrap-scrollspy.js',
