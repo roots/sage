@@ -14,6 +14,7 @@ add_theme_support('nice-search');           // Enable /?s= to /search/ redirect
  */
 define('GOOGLE_ANALYTICS_ID', ''); // UA-XXXXX-Y
 define('POST_EXCERPT_LENGTH', 40);
+define('LOCAL_ENVIRONMENT', TRUE);
 
 /**
  * .main classes

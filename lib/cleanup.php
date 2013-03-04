@@ -489,3 +489,16 @@ function roots_get_search_form($argument) {
   }
 }
 add_filter('get_search_form', 'roots_get_search_form');
+
+/**
+ * Remove extra menus / maintain source control / disble access to file changes when on production server
+ */
+function roots_environment_toggle() {
+  remove_menu_page('upload.php');
+  if (LOCAL_ENVIRONMENT)
+    return;
+  remove_submenu_page('themes.php', 'themes.php' );
+  remove_submenu_page('themes.php', 'theme-editor.php' );
+  remove_menu_page('plugins.php');
+}
+add_action('admin_init', 'roots_environment_toggle');
