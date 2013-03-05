@@ -27,9 +27,16 @@ If HTML5 Boilerplate's `.htaccess` support is enabled in `lib/config.php`, then 
 
 ### Lighttpd
 
-    url.rewrite-once = (
-      "^/css/(.*)$" => "/wp-content/themes/roots/css/$1",
-      "^/js/(.*)$" => "/wp-content/themes/roots/js/$1",
-      "^/img/(.*)$" => "/wp-content/themes/roots/img/$1",
-      "^/plugins/(.*)$" => "/wp-content/plugins/$1"
-    )
+This defines if your WP is in a subfolder or not.
+var.wpdir = "/"
+
+This handles the custom assets/plugins directory calls.
+url.rewrite-once = ("^" + wpdir + "(assets)\/.*/?" => "/wp-content/themes/roots/$0",
+                    "^" + wpdir + "(plugins)\/.*/?" => "/wp-content/$0");
+
+And this is the "standard" wordpress setup handling wordpress rewrites properly. Plese note the rewrite-once += bit of it cause its what makes the above addendum work.
+url.rewrite-once += ("^" + wpdir + "(wp-.+).*/?" => "$0",
+                     "^" + wpdir + "(sitemap.xml)" => "$0",
+                     "^" + wpdir + "(xmlrpc.php)" => "$0",
+                     "^" + wpdir + "keyword/([A-Za-z_0-9-])/?$" => wpdir + "index.php?keyword=$1",
+                     "^" + wpdir + "(.+)/?$" => wpdir + "index.php/$1") 
