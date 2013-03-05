@@ -1,4 +1,5 @@
 ### HEAD
+* Update to Bootstrap 2.3.1
 * Simplify alerts
 * Remove disabled post nav links
 * Use Bootstrap media object for listing comments

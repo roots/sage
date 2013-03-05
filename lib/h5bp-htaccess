@@ -5,7 +5,7 @@
 ### https://github.com/h5bp/server-configs/blob/master/apache/.htaccess
 ###
 ### Added:
-###   Block access to access to WordPress files that reveal version information.
+###   Block access to WordPress files that reveal version information.
 ###
 ### Removed:
 ###   Expires headers:      Use W3 Total Cache
