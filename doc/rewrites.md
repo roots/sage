@@ -18,6 +18,8 @@ If HTML5 Boilerplate's `.htaccess` support is enabled in `lib/config.php`, then 
 
 ### Nginx
 
+Include these in your Nginx config, before the PHP fastcgi block (`location ~ \.php$`).
+
     location ~ ^/assets/(img|js|css)/(.*)$ {
       try_files $uri $uri/ /wp-content/themes/roots/assets/$1/$2;
     }
