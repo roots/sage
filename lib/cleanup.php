@@ -497,11 +497,8 @@ function roots_environment_toggle() {
   remove_menu_page('upload.php');
   if (LOCAL_ENVIRONMENT)
     return;
-  remove_submenu_page('themes.php', 'themes.php' );
-  remove_submenu_page('themes.php', 'theme-editor.php' );
-  remove_menu_page('plugins.php');
-  
-  remove_submenu_page('index.php', 'update-core.php' );
-  add_filter( 'pre_site_transient_update_core', create_function( '$a', "return null;" ) );
+  define('DISALLOW_FILE_EDIT', true);
+  define('DISALLOW_FILE_MODS', true);
+  //perhaps define('FORCE_SSL_ADMIN',true);
 }
 add_action('admin_init', 'roots_environment_toggle');
