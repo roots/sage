@@ -29,7 +29,7 @@ class Roots_Walker_Comment extends Walker_Comment {
     extract($args, EXTR_SKIP); ?>
 
   <li <?php comment_class('media comment-' . get_comment_ID()); ?>>
-    <?php echo get_avatar($comment, $size = '64'); ?>
+    <a href="<?php comment_author_url(); ?>" class="pull-left"><?php echo get_avatar($comment, $size = '64'); ?></a>
     <div class="media-body">
       <h4 class="media-heading"><?php echo get_comment_author_link(); ?></h4>
       <time datetime="<?php echo comment_date('c'); ?>"><a href="<?php echo htmlspecialchars(get_comment_link($comment->comment_ID)); ?>"><?php printf(__('%1$s', 'roots'), get_comment_date(),  get_comment_time()); ?></a></time>
@@ -56,7 +56,7 @@ class Roots_Walker_Comment extends Walker_Comment {
 }
 
 function roots_get_avatar($avatar) {
-  $avatar = str_replace("class='avatar", "class='avatar pull-left media-object", $avatar);
-  return $avatar;
+	$avatar = preg_replace ('#class=([\'"])([^\\1]+)\\1#Ui', "class=\\1\\2 media-object\\1", $avatar);
+    return $avatar;
 }
 add_filter('get_avatar', 'roots_get_avatar');
