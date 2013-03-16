@@ -1,7 +1,7 @@
 <?php get_template_part('templates/head'); ?>
 <body <?php body_class(); ?>>
 
-  <!--[if lt IE 7]><div class="alert">Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</div><![endif]-->
+  <?php echo roots_ancient_browser(); ?>
 
   <?php
     do_action('get_header');
