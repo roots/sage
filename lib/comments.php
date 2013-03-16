@@ -51,7 +51,7 @@ class Roots_Walker_Comment extends Walker_Comment {
       call_user_func($args['end-callback'], $comment, $args, $depth);
       return;
     }
-    echo "</li>\n";
+    echo "</div></li>\n";
   }
 }
 
