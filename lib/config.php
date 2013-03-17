@@ -8,7 +8,6 @@ add_theme_support('h5bp-htaccess');         // Enable HTML5 Boilerplate's .htacc
 add_theme_support('bootstrap-top-navbar');  // Enable Bootstrap's top navbar
 add_theme_support('bootstrap-gallery');     // Enable Bootstrap's thumbnails component on [gallery]
 add_theme_support('nice-search');           // Enable /?s= to /search/ redirect
-add_theme_support('jquery-cdn');            // Enable to load jQuery from the Google CDN
 
 /**
  * Configuration values
@@ -22,7 +21,7 @@ define('POST_EXCERPT_LENGTH', 40);
 function roots_main_class() {
   if (roots_display_sidebar()) {
     // Classes on pages with the sidebar
-    $class = 'span8';
+    $class = 'span9';
   } else {
     // Classes on full width pages
     $class = 'span12';
@@ -35,7 +34,7 @@ function roots_main_class() {
  * .sidebar classes
  */
 function roots_sidebar_class() {
-  return 'span4';
+  return 'span3';
 }
 
 /**

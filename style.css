@@ -1,11 +1,18 @@
 /*
-Theme Name:         Roots
-Theme URI:          http://www.rootstheme.com/
-Description:        Roots is a starting WordPress theme made for developers that's based on HTML5 Boilerplate and Bootstrap. <a href="https://github.com/retlehs/roots/contributors">Contribute on GitHub</a>
-Version:            6.3.0
-Author:             Ben Word
-Author URI:         http://benword.com/
+Theme Name:         Atkore Theme
+Theme URI:          http://atkore.com
+Description:        A child theme for roots theme. 
+Version:            1.0
+Author:             Maintain Web
+Author URI:         http://maintainweb.co
+Template:           roots-master
+
 
 License:            MIT License
 License URI:        http://opensource.org/licenses/MIT
 */
+
+@import url(assets/css/atkore.css);
+
+
+
