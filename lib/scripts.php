@@ -22,9 +22,10 @@ function roots_scripts() {
   // jQuery is loaded using the same method from HTML5 Boilerplate:
   // Grab Google CDN's latest jQuery with a protocol relative URL; fallback to local if offline
   // It's kept in the header instead of footer to avoid conflicts with plugins.
-  if (!is_admin()) {
+  if (!is_admin() && current_theme_supports('jquery-cdn')) {
     wp_deregister_script('jquery');
     wp_register_script('jquery', '//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js', false, null, false);
+    add_filter('script_loader_src', 'roots_jquery_local_fallback', 10, 2);
   }
 
   if (is_single() && comments_open() && get_option('thread_comments')) {
@@ -53,9 +54,6 @@ function roots_jquery_local_fallback($src, $handle) {
   }
 
   return $src;
-}
-if (!is_admin()) {
-  add_filter('script_loader_src', 'roots_jquery_local_fallback', 10, 2);
 }
 
 function roots_google_analytics() { ?>
