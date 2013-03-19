@@ -7268,7 +7268,7 @@ a.badge:focus {
 }
 
 /*!
- * Roots 6.1.0
+ * Roots 6.3.0
  */
 
 .clearfix {
@@ -7463,7 +7463,7 @@ figure.alignnone {
 @media (max-width: 979px) {
   {
     /* Fix top padding when using the responsive grid with the fixed topbar */
-  
+
   }
   body.top-navbar {
     padding-top: 0;
