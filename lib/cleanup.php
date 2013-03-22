@@ -81,6 +81,20 @@ function roots_language_attributes() {
 add_filter('language_attributes', 'roots_language_attributes');
 
 /**
+ * Manage output of wp_title()
+ */
+function roots_wp_title($title) {
+  if (is_feed()) {
+    return $title;
+  }
+
+  $title .= get_bloginfo('name');
+
+  return $title;
+}
+add_filter('wp_title', 'roots_wp_title', 10);
+
+/**
  * Clean up output of stylesheet <link> tags
  */
 function roots_clean_style_tag($input) {
@@ -128,7 +142,7 @@ function roots_root_relative_url($input) {
   if(!is_admin() && site_url() != home_url() && stristr($input, 'wp-includes') === false) {
   	$input = str_replace(site_url(), "", $input);
   }
-  
+
   $output = preg_replace_callback(
     '!(https?://[^/|"]+)([^"]+)?!',
     create_function(
@@ -142,7 +156,7 @@ function roots_root_relative_url($input) {
     ),
     $input
   );
-  
+
   // detect and correct for subdir installs
   if($subdir = parse_url(home_url(), PHP_URL_PATH)) {
   	if(substr($output, 0, strlen($subdir)) == (substr($output, strlen($subdir), strlen($subdir)))) {
@@ -154,7 +168,7 @@ function roots_root_relative_url($input) {
 }
 
 function roots_enable_root_relative_urls() {
-  return !(is_admin() && in_array($GLOBALS['pagenow'], array('wp-login.php', 'wp-register.php'))) && current_theme_supports('root-relative-urls');
+  return !(is_admin() || in_array($GLOBALS['pagenow'], array('wp-login.php', 'wp-register.php'))) && current_theme_supports('root-relative-urls');
 }
 
 if (roots_enable_root_relative_urls()) {
