@@ -12,7 +12,8 @@ License:            MIT License
 License URI:        http://opensource.org/licenses/MIT
 */
 
-@import url(assets/css/atkore.css);
-
-
-
+@font-face {
+font-family: "Atkore";
+src: url('assets/font/AkzidenzGrotConBQ-Medium.otf'),
+     url('assets/font/AkzidenzGrotConBQ-Medium.eot'); /* IE9+ */
+}

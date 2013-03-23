@@ -1,29 +1,22 @@
-@font-face {
-font-family: "Atkore";
-src: url('/assets/fonts/AkzidenzGrotConBQ-Medium.otf'),
-     url('/assets/fonts/AkzidenzGrotConBQ-Medium.eot'); /* IE9+ */
-}
+@import "variables.less"; // Modify this for custom colors, font-sizes, etc
+@import "mixins.less";
+@import "sequence.less";
 
-@atkore-primary: #10A424; // green
-@atkore-secondary: #00336D;  // dark blue
-@atkore-tertiary: #0077af; // light blue
+@atkore-primary-color: #10A424; // green
+@atkore-secondary-color: #00336D;  // dark blue
+@atkore-tertiary-color: #0077af; // light blue
 
 @atkore-primary-font-family: "Atkore", Arial, "Helvetica Neue", Helvetica, Geneva, sans-serif;
 @atkore-secondary-font-family: Arial, "Helvetica Neue", Helvetica, Geneva, sans-serif;
 
-@base-grey: #DDDDDD;
-@base-dark-grey: #C2C2C2;
-
-@radius: 7px;
-
 @vertical-spacing: 20px;
 
-.radius-more (@radius-more: 15px;){
-  -webkit-border-radius: @radius-more;
-  -moz-border-radius: @radius-more;
-  -ms-border-radius: @radius-more;
-  -o-border-radius: @radius-more;
-  border-radius: @radius-more;
+.radius-more (@borderRadiusLarge: 15px;){
+  -webkit-border-radius: @borderRadiusLarge;
+  -moz-border-radius: @borderRadiusLarge;
+  -ms-border-radius: @borderRadiusLarge;
+  -o-border-radius: @borderRadiusLarge;
+  border-radius: @borderRadiusLarge;
 }
 
 
@@ -43,11 +36,11 @@ src: url('/assets/fonts/AkzidenzGrotConBQ-Medium.otf'),
 }
 
 .navbar-inner {
-  -webkit-border-radius: @radius;
-  -moz-border-radius: @radius;
-  -ms-border-radius: @radius;
-  -o-border-radius: @radius;
-  border-radius: @radius;
+  -webkit-border-radius: @baseBorderRadius;
+  -moz-border-radius: @baseBorderRadius;
+  -ms-border-radius: @baseBorderRadius;
+  -o-border-radius: @baseBorderRadius;
+  border-radius: @baseBorderRadius;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -56,17 +49,17 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h2 {
-  color: @atkore-secondary;
+  color: @atkore-secondary-color;
 }
 
 h3 {
   font-family: @atkore-secondary-font-family;
-  color: @atkore-secondary;
+  color: @atkore-secondary-color;
   text-transform: uppercase;
   font-weight: bold;
 }
 
-.rounded-corners-rightside (@radius-right-side: 0 @radius @radius 0) {
+.rounded-corners-rightside (@radius-right-side: 0 @baseBorderRadius @baseBorderRadius 0) {
   -webkit-border-radius: @radius-right-side;
   -moz-border-radius: @radius-right-side;
   -ms-border-radius: @radius-right-side;
@@ -131,11 +124,11 @@ h3 {
 }
 
 .navbar .nav>li>a {
-  color: @base-dark-grey;
+  color: @gray;
 }
 
 .navbar .nav > li.active > a {
-  color: @atkore-primary;
+  color: @atkore-primary-color;
 }
 
 .dropdown-menu>li>a:hover,
@@ -185,19 +178,19 @@ h3 {
   display: block;
   font-weight: bold;
   font-size: 12px;
-  color: @atkore-tertiary;
+  color: @atkore-tertiary-color;
   margin: 0px 0px 0px 7px;
   padding: 0 10px;
   text-align: center;
   vertical-align: middle;
-  background-color: @base-grey;
-  border: 1px solid @base-dark-grey;
+  background-color: @grayLighter;
+  border: 1px solid @gray;
 }
 
 .mini-nav li a:hover {
   text-decoration: none;
-  background-color: @base-dark-grey;
-  color: @atkore-secondary;
+  background-color: @gray;
+  color: @atkore-secondary-color;
 }
 
 .pill-radius {
@@ -221,7 +214,7 @@ body.page-child .nav.nav-stacked > li:first-child > a {
 }
 
 body.page-child .nav.nav-stacked > li:first-child > a {
-  border-top: 1px solid @base-grey;
+  border-top: 1px solid @grayLighter;
 }
 
 .nav.nav-stacked > li > a,
@@ -237,7 +230,7 @@ body.page-child .nav.nav-stacked > li:first-child > a {
 body.page-parent .nav.nav-stacked > li:first-child > a:after {
   content: " ";
   position: relative;
-  background-color: @atkore-primary;
+  background-color: @atkore-primary-color;
   display: inline-block;
   z-index: 10;
   float: right;
@@ -249,7 +242,7 @@ body.page-parent .nav.nav-stacked > li:first-child > a:after {
   padding-bottom: 0;
   margin-top: -8px;
   width: 60px;
-  border: 18px solid @atkore-primary;
+  border: 18px solid @atkore-primary-color;
   margin-right: -40px;
 }
 
@@ -264,10 +257,10 @@ body.page-child .nav.nav-stacked > li:first-child > a:after {
 .nav.nav-stacked > li.active > a:hover,
 .nav.nav-stacked > li.active > a:focus {
   color: rgba(255,255,255,1);
-  background: url(/assets/arrow-right-white.png) no-repeat 10px center @atkore-primary;
+  background: url(/assets/arrow-right-white.png) no-repeat 10px center @atkore-primary-color;
   font-family: @atkore-secondary-font-family;
   border: 0;
-  border-bottom: 1px solid @atkore-primary;
+  border-bottom: 1px solid @atkore-primary-color;
   font-weight: bold;
   padding-left: 25px; 
 }
@@ -285,7 +278,7 @@ body.page-child .nav.nav-stacked > li:first-child.active > a {
 
 .nav.nav-stacked > li > a:hover,
 body.page-child .nav.nav-stacked > li:first-child > a:hover {
-  background-color: @base-grey;
+  background-color: @grayLighter;
   cursor: pointer;
 }
 
@@ -294,7 +287,7 @@ body.page-child .nav.nav-stacked > li:first-child > a:hover {
 /*! GRADIENT DIVIDER */
 
 .divider-top {
-  border-bottom: 1px solid @base-dark-grey;
+  border-bottom: 1px solid @grayLight;
   width: 100%;
   position: relative;
   height: @vertical-spacing;
@@ -314,7 +307,7 @@ body.page-child .nav.nav-stacked > li:first-child > a:hover {
 }
 
 .divider-bottom {
-  border-top: 1px solid @base-dark-grey;
+  border-top: 1px solid @grayLight;
   width: 100%;
   position: relative;
   height: @vertical-spacing;
@@ -389,15 +382,15 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', e
   -o-box-sizing:border-box;
   box-sizing:border-box;
   margin-top: @vertical-spacing;
-  border-right: 1px dashed @base-dark-grey;
+  border-right: 1px dashed @grayLight;
 }
 
 
 
 .page-header {
-  background-color: @atkore-secondary;
+  background-color: @atkore-secondary-color;
   .rounded-corners-rightside;
-  border-left: 15px solid @atkore-primary;
+  border-left: 15px solid @atkore-primary-color;
   border-bottom: none;
   overflow: visible;
   min-height: 140px;
@@ -424,7 +417,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', e
 
 .page-header h2 {
   font-family: @atkore-secondary-font-family;
-  color: @atkore-tertiary;
+  color: @atkore-tertiary-color;
   font-weight: normal;
   font-size: 24px;
   text-transform: none;
@@ -433,10 +426,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', e
 }
 
 .nav-footer {
-  background-color: @base-grey;
+  background-color: @grayLighter;
   margin: @vertical-spacing auto;
   padding: 0 20px;
-  border: 1px solid @base-dark-grey;
+  border: 1px solid @grayLight;
   .radius-more;
 }
 
@@ -447,7 +440,7 @@ ul.footer-menu > li {
 }
 
 .footer-menu a {
-  color: @atkore-tertiary;
+  color: @atkore-tertiary-color;
 }
 
 
@@ -455,75 +448,7 @@ ul.footer-menu > li {
   
 }
 
-body.home .content {
-  margin-top: 450px;
-}
 
-.carousel-wrap {
-  height: 450px;
-  width: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  display: block;
-  z-index: 0;
-}
-
-.background-image {
-  background-repeat: no-repeat;
-  height: 450px;
-  width: 100%;
-  position: absolute;
-  z-index: 0;
-
-}
-
-#top-section {
-  position: relative;
-  z-index: 100;
-}
-
-#homeCarousel.carousel .item {
-  height: 450px;
-}
-
-.carousel-indicators-wrap {
-  width: 100%;
-  height: 34px;
-  margin: 0 auto;
-  border-top: 1px solid #ffffff;
-  text-align: center;
-  background-color: @atkore-primary;
-}
-
-.carousel-indicators {
-  position: relative;
-  top: 10px;
-  margin: 0 auto;
-  width: 100px;
-}
-
-.carousel-inner ul li {
-  display: inline-block;
-}
-
-.carousel-control.right {
-  text-indent: -9999px;
-  background: url(http://dev.atkore.local/assets/arrow-right-white.png) center center no-repeat rgba(0,0,0,0.7);
-}
-
-
-.carousel-control.left {
-  text-indent: -9999px;
-  background: url(http://dev.atkore.local/assets/arrow-right-white.png) center center no-repeat rgba(0,0,0,0.7);
-  -moz-transform: scaleX(-1);
-  -o-transform: scaleX(-1);
-  -webkit-transform: scaleX(-1);
-  transform: scaleX(-1);
-  filter: FlipH;
-  -ms-filter: "FlipH";
-}
 
 footer.content-info {
   margin-bottom: @vertical-spacing * 2;
