@@ -15,6 +15,7 @@ add_theme_support('jquery-cdn');            // Enable to load jQuery from the Go
  */
 define('GOOGLE_ANALYTICS_ID', ''); // UA-XXXXX-Y
 define('POST_EXCERPT_LENGTH', 40);
+define('LOCAL_ENVIRONMENT', TRUE);
 
 /**
  * .main classes

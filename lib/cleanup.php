@@ -503,3 +503,16 @@ function roots_get_search_form($argument) {
   }
 }
 add_filter('get_search_form', 'roots_get_search_form');
+
+/**
+ * Remove extra menus / maintain source control / disble access to file changes when on production server
+ */
+function roots_environment_toggle() {
+  remove_menu_page('upload.php');
+  if (LOCAL_ENVIRONMENT)
+    return;
+  define('DISALLOW_FILE_EDIT', true);
+  define('DISALLOW_FILE_MODS', true);
+  //perhaps define('FORCE_SSL_ADMIN',true);
+}
+add_action('admin_init', 'roots_environment_toggle');
