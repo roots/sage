@@ -10,7 +10,7 @@
  *   /wp-content/themes/themename/js/  	to /js/
  *   /wp-content/themes/themename/img/ 	to /img/
  *   /wp-content/plugins/              	to /plugins/
- *   /wp-inclides/                  		to /includes/
+ *   /wp-includes/                  	to /includes/
  *
  * If you aren't using Apache, alternate configuration settings can be found in the docs.
  *
@@ -23,13 +23,13 @@ function roots_add_rewrites($content) {
     'assets/js/(.*)'       	=> THEME_PATH . '/assets/js/$1',
     'assets/img/(.*)'      	=> THEME_PATH . '/assets/img/$1',
     'plugins/(.*)'         	=> RELATIVE_PLUGIN_PATH . '/$1',
-	'includes/(.*)'			=> RELATIVE_INCLUDES_PATH . '$1',
+    'includes/(.*)'		=> RELATIVE_INCLUDES_PATH . '$1',
   );
   $wp_rewrite->non_wp_rules = array_merge($wp_rewrite->non_wp_rules, $roots_new_non_wp_rules);
 
-  echo '<pre>';
-  print_r($wp_rewrite->non_wp_rules);
-  echo '</pre>';
+  //echo '<pre>';
+  //print_r($wp_rewrite->non_wp_rules);
+  //echo '</pre>';
   
   return $content;
 }
