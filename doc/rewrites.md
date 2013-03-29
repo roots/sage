@@ -11,6 +11,7 @@ Rewrite:
 2. `/wp-content/themes/themename/assets/js/` to `/assets/js/`
 3. `/wp-content/themes/themename/assets/img/` to `/assets/img/`
 4. `/wp-content/plugins/` -> `/plugins/`
+5. `/wp-includes/` -> `/includes/`
 
 If HTML5 Boilerplate's `.htaccess` support is enabled in `lib/config.php`, then the `generate_rewrite_rules()` filter is used to automatically add the contents of `lib/h5bp-htaccess` to your `.htaccess` file.
 
@@ -26,6 +27,9 @@ Include these in your Nginx config, before the PHP fastcgi block (`location ~ \.
     location ~ ^/plugins/(.*)$ {
       try_files $uri $uri/ /wp-content/plugins/$1;
     }
+    location ~ ^/includes/(.*)$ {
+      try_files $uri $uri/ /wp-includes/$1;
+    }
 
 ### Lighttpd
 
@@ -34,4 +38,5 @@ Include these in your Nginx config, before the PHP fastcgi block (`location ~ \.
       "^/js/(.*)$" => "/wp-content/themes/roots/js/$1",
       "^/img/(.*)$" => "/wp-content/themes/roots/img/$1",
       "^/plugins/(.*)$" => "/wp-content/plugins/$1"
+      "^/inclides/(.*)$" => "/wp-includes/$1"
     )

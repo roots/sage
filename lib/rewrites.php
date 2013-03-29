@@ -6,10 +6,11 @@
  * @todo https://github.com/retlehs/roots/issues/461
  *
  * Rewrite:
- *   /wp-content/themes/themename/css/ to /css/
- *   /wp-content/themes/themename/js/  to /js/
- *   /wp-content/themes/themename/img/ to /img/
- *   /wp-content/plugins/              to /plugins/
+ *   /wp-content/themes/themename/css/  to /css/
+ *   /wp-content/themes/themename/js/  	to /js/
+ *   /wp-content/themes/themename/img/ 	to /img/
+ *   /wp-content/plugins/              	to /plugins/
+ *   /wp-includes/                  	to /includes/
  *
  * If you aren't using Apache, alternate configuration settings can be found in the docs.
  *
@@ -18,18 +19,28 @@
 function roots_add_rewrites($content) {
   global $wp_rewrite;
   $roots_new_non_wp_rules = array(
-    'assets/css/(.*)'      => THEME_PATH . '/assets/css/$1',
-    'assets/js/(.*)'       => THEME_PATH . '/assets/js/$1',
-    'assets/img/(.*)'      => THEME_PATH . '/assets/img/$1',
-    'plugins/(.*)'         => RELATIVE_PLUGIN_PATH . '/$1'
+    'assets/css/(.*)'      	=> THEME_PATH . '/assets/css/$1',
+    'assets/js/(.*)'       	=> THEME_PATH . '/assets/js/$1',
+    'assets/img/(.*)'      	=> THEME_PATH . '/assets/img/$1',
+    'plugins/(.*)'         	=> RELATIVE_PLUGIN_PATH . '/$1',
+    'includes/(.*)'		=> RELATIVE_INCLUDES_PATH . '$1',
   );
   $wp_rewrite->non_wp_rules = array_merge($wp_rewrite->non_wp_rules, $roots_new_non_wp_rules);
+
+  //echo '<pre>';
+  //print_r($wp_rewrite->non_wp_rules);
+  //echo '</pre>';
+  
   return $content;
 }
 
 function roots_clean_urls($content) {
   if (strpos($content, FULL_RELATIVE_PLUGIN_PATH) === 0) {
     return str_replace(FULL_RELATIVE_PLUGIN_PATH, WP_BASE . '/plugins', $content);
+  } elseif (strpos($content, FULL_RELATIVE_INCLUDES_PATH)) {
+    return str_replace(FULL_RELATIVE_INCLUDES_PATH, WP_BASE . '/includes/', $content);
+  } elseif (strpos($content, RELATIVE_INCLUDES_PATH)) {
+    return str_replace(RELATIVE_INCLUDES_PATH, 'includes/', $content);
   } else {
     return str_replace('/' . THEME_PATH, '', $content);
   }
@@ -43,6 +54,7 @@ if (!is_multisite() && !is_child_theme() && get_option('permalink_structure')) {
   if (!is_admin() && current_theme_supports('rewrites')) {
     $tags = array(
       'plugins_url',
+      'includes_url',
       'bloginfo',
       'stylesheet_directory_uri',
       'template_directory_uri',

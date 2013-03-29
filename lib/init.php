@@ -34,5 +34,7 @@ define('WP_BASE',                   wp_base_dir());
 define('THEME_NAME',                next($get_theme_name));
 define('RELATIVE_PLUGIN_PATH',      str_replace(site_url() . '/', '', plugins_url()));
 define('FULL_RELATIVE_PLUGIN_PATH', WP_BASE . '/' . RELATIVE_PLUGIN_PATH);
+define('RELATIVE_INCLUDES_PATH',      str_replace(site_url() . '/', '', includes_url()));
+define('FULL_RELATIVE_INCLUDES_PATH', WP_BASE . '/' . RELATIVE_INCLUDES_PATH);
 define('RELATIVE_CONTENT_PATH',     str_replace(site_url() . '/', '', content_url()));
 define('THEME_PATH',                RELATIVE_CONTENT_PATH . '/themes/' . THEME_NAME);

@@ -19,6 +19,10 @@ Change permalink structure to `/%postname%/`. This is normally handled from the 
 
 Change uploads folder to `/assets/` instead of `/wp-content/uploads/`. This is normally handled from the Media settings.
 
+### Change wp-includes folder
+
+Change wp-includes folder to `/includes/` instead of `/wp-includes/`. This is normally handled from the Media settings.
+
 ### Create navigation menu
 
 Create the Primary Navigation menu and set the location. This is normally handled from the Menus section under Appearance.
