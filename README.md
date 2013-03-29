@@ -31,9 +31,8 @@ Take a look at the [documentation table of contents](doc/TOC.md).
 * Bootstrap from Twitter
 * [Theme wrapper](doc/wrapper.md)
 * Root relative URLs
-* Clean URLs (no more `/wp-content/`)
-* All static theme assets are rewritten to the website root (`/assets/css/`,
-`/assets/img/`, and `/assets/js/`)
+* Clean URLs (no more `/wp-content/`, `/wp-includes/` )
+* All static theme assets are rewritten to the website root (`/assets/css/`, `/assets/img/`, and `/assets/js/`)
 * Cleaner HTML output of navigation menus
 * Cleaner output of `wp_head` and enqueued scripts/styles
 * Posts use the [hNews](http://microformats.org/wiki/hnews) microformat
