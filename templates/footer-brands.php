@@ -1,39 +1,41 @@
+<?php
+$posttype = 'brand';
+$brands_per_slide = 5;
+$number_of_posts = 15;
+$startframe = 0;
+$exclude = array('-4988','-4952','-4950','-4948','-4946','-4944','-4931','-4929');
+$args = array(
+  'post_type'     => $posttype,
+  'post__not_in'  => $exclude,
+  'posts_per_page' => $number_of_posts
+);
+$the_query = new WP_Query( $args );
+$classes = 'item';
+?>
 <div class="brands-footer">
   <div id="brandsCarousel" class="carousel slide">
-    <!-- Carousel items -->
     <div class="carousel-inner">
-      <div class="active item">
+    <?php $i = 0 ?>
+      <div class="item active">
         <ul>
-          <li><a href="http://www.alliedeg.com" target="_blank"><img id="img-17" class="desaturate" alt="" src="http://placehold.it/150x60" /></a></li>
-          <li><a href="http://www.columbiambf.ca" target="_blank"><img id="img-18" class="desaturate" alt="" src="http://placehold.it/150x60" /></a></li>
-          <li><a href="http://www.afcweb.com" target="_blank"><img id="img-16" class="desaturate" alt="" src="http://placehold.it/150x60" /></a></li>
-          <li><a href="http://www.kaf-tech.com" target="_blank"><img id="img-11" class="desaturate" alt="" src="http://placehold.it/150x60" /></a></li>
-          <li><a href="http://www.easternwire.com" target="_blank"><img id="img-20" class="desaturate" alt="" src="http://placehold.it/150x60" /></a></li>
+          <?php while ($the_query->have_posts()) : $the_query->the_post();?>
+          <?php if( $i == 5 ) : ?>
         </ul>
-      </div>
+      </div><!-- /.item -->
+      <?php $i = 0 ?>
       <div class="item">
         <ul>
-          <li><a href="http://www.unistrut.com" target="_blank"><img id="img-12" class="desaturate" alt="" src="http://placehold.it/150x60" /></a></li>
-          <li><a href="http://www.unistrutconstruction.com" target="_blank"><img id="img-13" class="desaturate" alt="" src="http://placehold.it/150x60" /></a></li>
-          <li><a href="http://www.copecabletray.com" target="_blank"><img id="img-19" class="desaturate" width="110" height="44" alt="" src="http://placehold.it/150x60" /></a></li>
-          <li><a href="http://www.acroba.eu" target="_blank"><img id="img-14" class="desaturate" src="http://placehold.it/150x60" alt="" /></a></li>
-          <li><a href="http://www.afcweb.com/acs-uni-fab.html" target="_blank"><img id="img-15" class="desaturate" alt="" src="http://placehold.it/150x60" /></a></li>
-        </ul>
-      </div>
-      <div class="item">
-        <ul>
-          <li><a href="http://www.power-strut.com" target="_blank"><img id="img-22" class="desaturate" width="144" height="44" alt="" src="/assets/logos/22.png" /></a></li>
-          <li><a href="http://www.razorribbon.com" target="_blank"><img id="img-razorribbon" class="desaturate" width="138" height="31" alt="" src="/assets/logos/razorribbon.png" /></a></li>
-          <li><a href="http://www.atc-mechanical.com/tectron" target="_blank"><img id="img-tectron" class="desaturate" width="172" height="24" alt="" src="/assets/logos/23.png" /></a></li>
-          <li><a href="http://www.flexhead.com" target="_blank"><img id="img-FH" class="desaturate" width="150" height="47" alt="" src="/assets/logos/24.png" /></a></li>   
-          <li><a href="http://www.sprinkflex.com" target="_blank"><img id="img-SF" class="desaturate" width="139" height="47" alt="" src="/assets/logos/25.png" /></a></li>
+          <?php endif; ?>
+          <li <?php post_class();?>><a class="brandpopover" data-toggle="popover" data-trigger="hover" data-placement="top" data-content="<?php the_field('brand_description');?>" title="<?php the_title();?>" href="<?php the_field('brand_website');?>"><?php if ( has_post_thumbnail() ) { the_post_thumbnail('full', array('class' => '')); } ?></a></li>
+          <?php $i++ ?>
+          <?php endwhile; ?>
         </ul>
       </div>
     </div>
-    <!-- Carousel nav -->
     <div class="carousel-control-wrapper">
       <a class="carousel-control left" href="#brandsCarousel" data-slide="prev">&lsaquo;</a>
       <a class="carousel-control right" href="#brandsCarousel" data-slide="next">&rsaquo;</a>
     </div>
   </div>
 </div>
+<?php wp_reset_query();?>

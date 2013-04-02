@@ -1,0 +1,71 @@
+/*!
+ * Bootstrap Form Helpers
+ *
+ * Copyright 2013 Vincent Lamanna, Inc
+ * Licensed under the Apache License v2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Designed and built by @vincent lamanna.
+ */
+
+.icon-flag-AUD, .icon-flag-CHF, .icon-flag-DKK, .icon-flag-EUR, .icon-flag-XAF, .icon-flag-XCD, .icon-flag-XOF, .icon-flag-XPF, .icon-flag-ZAR{
+	background: url(../img/bootstrap-formhelpers-currencies.flags.png) no-repeat;
+}
+
+.selectbox-options > .icon-flag-AUD, .icon-flag-CHF, .icon-flag-DKK, .icon-flag-EUR, .icon-flag-XAF, .icon-flag-XCD, .icon-flag-XOF, .icon-flag-XPF, .icon-flag-ZAR {
+	margin-right: 5px;
+}
+
+.icon-flag-AUD{
+	background-position: -32px 0px;
+	width: 16px;
+	height: 16px;
+}
+
+.icon-flag-CHF{
+	background-position: -224px 0px;
+	width: 16px;
+	height: 16px;
+}
+
+.icon-flag-DKK{
+	background-position: -64px -16px;
+	width: 16px;
+	height: 16px;
+}
+
+.icon-flag-EUR{
+	background-position: -96px -16px;
+	width: 16px;
+	height: 16px;
+}
+
+.icon-flag-XAF{
+	background-position: -160px -80px;
+	width: 16px;
+	height: 16px;
+}
+
+.icon-flag-XCD{
+	background-position: -176px -80px;
+	width: 16px;
+	height: 16px;
+}
+
+.icon-flag-XOF{
+	background-position: -192px -80px;
+	width: 16px;
+	height: 16px;
+}
+
+.icon-flag-XPF{
+	background-position: -208px -80px;
+	width: 16px;
+	height: 16px;
+}
+
+.icon-flag-ZAR{
+	background-position: -224px -80px;
+	width: 16px;
+	height: 16px;
+}

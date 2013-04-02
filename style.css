@@ -13,7 +13,14 @@ License URI:        http://opensource.org/licenses/MIT
 */
 
 @font-face {
-font-family: "Atkore";
-src: url('assets/font/AkzidenzGrotConBQ-Medium.otf'),
-     url('assets/font/AkzidenzGrotConBQ-Medium.eot'); /* IE9+ */
+    font-family: 'atkore';
+    src: url('assets/font/akzidenzgrotconbq-medium-webfont.otf');
+    src: url('assets/font/akzidenzgrotconbq-medium-webfont.eot');
+    src: url('assets/font/akzidenzgrotconbq-medium-webfont.eot?#iefix') format('embedded-opentype'),
+         url('assets/font/akzidenzgrotconbq-medium-webfont.woff') format('woff'),
+         url('assets/font/akzidenzgrotconbq-medium-webfont.ttf') format('truetype'),
+         url('assets/font/akzidenzgrotconbq-medium-webfont.svg#akzidenz-grotesk_condensed_Rg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
 }

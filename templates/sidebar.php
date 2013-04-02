@@ -1,6 +1,20 @@
 <section class="widget">
   <div class="widget-inner">
-  <?php
+<?php 
+  $queried_post_type = get_query_var('post_type');
+    if ( is_single() && 'product' ==  $queried_post_type || is_post_type_archive('product') ) { ?>
+    <?php $menu = 'Products & Services'; ?>
+    <nav class="nav-sidebar" role="navigation">
+      <?php wp_nav_menu(array('menu' => $menu, 'menu_class' => 'nav nav-list')); ?>
+    </nav>
+<?php } elseif ( is_single() && 'resource' ==  $queried_post_type || is_post_type_archive('resource') ) { ?>
+    <?php $menu = 'Resources'; ?>
+    <nav class="nav-sidebar" role="navigation">
+      <?php wp_nav_menu(array('menu' => $menu, 'menu_class' => 'nav nav-list')); ?>
+    </nav>
+<?php } else { ?>
+
+<?php
   /* Sidebar Menu based on Page Title */
   $menu = '';
   if( is_page() ) { 
@@ -14,9 +28,10 @@
   	$menu = $parent->post_title;
   }
   ?>
-    <nav class="nav-sidebar nav-collapse" role="navigation">
-      <?php wp_nav_menu(array('menu' => $menu, 'menu_class' => 'nav nav-tabs nav-stacked')); ?>
+    <nav class="nav-sidebar" role="navigation">
+      <?php wp_nav_menu(array('menu' => $menu, 'menu_class' => 'nav nav-list')); ?>
     </nav>
+<?php } ?>
   </div>
 </section>
 <?php dynamic_sidebar('sidebar-primary'); ?>

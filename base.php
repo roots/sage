@@ -12,11 +12,11 @@
       get_template_part('templates/header');
     }
   ?>
+  <?php if ( is_front_page() ) : ?>
+      <?php get_template_part('templates/sequence', 'home'); ?>
+  <?php endif; ?>
 
   <div class="wrap container" role="document">
-    <?php if ( is_front_page() ) : ?>
-      <?php get_template_part('templates/sequence', 'home'); ?>
-    <?php endif; ?>
     <?php if ( ! is_front_page() ) : ?>
       <?php get_template_part('templates/divider', 'top'); ?>
     <?php endif; ?>

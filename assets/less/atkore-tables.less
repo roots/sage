@@ -1,0 +1,33 @@
+// ! TABLES
+
+table.table {
+	-webkit-box-shadow: 0 0 10px rgba(0,0,0,0.3);
+	   -moz-box-shadow: 0 0 10px rgba(0,0,0,0.3);
+	        box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+table th {
+  color: #fff;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: percentage(0.8);
+  line-height: percentage(1.0)!important;
+  background-color: lighten(@primary-color, 10%);
+  white-space: pre-line;
+}
+
+
+.table-bordered th {
+	-webkit-box-shadow: inset 0 -4px 3px -3px rgba(0,0,0,0.3);
+	   -moz-box-shadow: inset 0 -4px 3px -3px rgba(0,0,0,0.3);
+	        box-shadow: inset 0 -4px 3px -3px rgba(0,0,0,0.3);
+  border-left: 1px solid @primary-color;
+}
+
+table th {
+  background-color: @primary-color;
+}
+
+table td {
+  white-space: pre-line;
+}
