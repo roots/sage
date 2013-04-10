@@ -138,9 +138,9 @@ add_filter('body_class', 'roots_body_class');
  * @author Scott Walkinshaw <scott.walkinshaw@gmail.com>
  */
 function roots_root_relative_url($input) {
-  // fix for site_url != home_url()
-  if(!is_admin() && site_url() != home_url() && stristr($input, 'wp-includes') === false) {
-  	$input = str_replace(site_url(), "", $input);
+  // Fix for site_url() != home_url()
+  if (!is_admin() && site_url() != home_url() && stristr($input, 'wp-includes') === false) {
+    $input = str_replace(site_url(), '', $input);
   }
 
   $output = preg_replace_callback(
@@ -158,10 +158,10 @@ function roots_root_relative_url($input) {
   );
 
   // detect and correct for subdir installs
-  if($subdir = parse_url(home_url(), PHP_URL_PATH)) {
-  	if(substr($output, 0, strlen($subdir)) == (substr($output, strlen($subdir), strlen($subdir)))) {
-  		$output = substr($output, strlen($subdir));
-  	}
+  if ($subdir = parse_url(home_url(), PHP_URL_PATH)) {
+    if (substr($output, 0, strlen($subdir)) == (substr($output, strlen($subdir), strlen($subdir)))) {
+      $output = substr($output, strlen($subdir));
+    }
   }
 
   return $output;
@@ -191,8 +191,8 @@ if (roots_enable_root_relative_urls()) {
     'year_link',
     'tag_link',
     'the_author_posts_link',
-  	'script_loader_src',
-  	'style_loader_src'
+    'script_loader_src',
+    'style_loader_src'
   );
 
   add_filters($root_rel_filters, 'roots_root_relative_url');
