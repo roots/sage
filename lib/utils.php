@@ -86,6 +86,13 @@ function roots_title() {
 }
 
 /**
+* Ancient browser alert
+*/
+function roots_ancient_browser() {
+  return '<!--[if lt IE 7]><div class="alert">Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</div><![endif]-->';
+}
+
+/**
  * Show an admin notice if .htaccess isn't writable
  */
 function roots_htaccess_writable() {
