@@ -28,14 +28,14 @@ function roots_add_rewrites($content) {
 }
 
 function roots_clean_urls($content) {
-  if (strpos($content, FULL_RELATIVE_PLUGIN_PATH) === 0) {
-    return str_replace(FULL_RELATIVE_PLUGIN_PATH, WP_BASE . '/plugins', $content);
+  if (strpos($content, RELATIVE_PLUGIN_PATH) > 0) {
+    return str_replace('/' . RELATIVE_PLUGIN_PATH,  '/plugins', $content);
   } else {
     return str_replace('/' . THEME_PATH, '', $content);
   }
 }
 
-if (!is_multisite() && !is_child_theme() && get_option('permalink_structure')) {
+if (!is_multisite() && !is_child_theme()) {
   if (current_theme_supports('rewrites')) {
     add_action('generate_rewrite_rules', 'roots_add_rewrites');
   }

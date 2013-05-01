@@ -29,23 +29,7 @@ If you don't want to use one of the features, either comment out the line or rem
 
 #### Define which pages shouldn't have the sidebar
 
-`roots_display_sidebar()` is used to define which pages shouldn't get the sidebar. By default, the 404, front `front-page.php` and `page-custom.php` templates are full width. If you would like to remove the sidebar from additional pages, add in the appropriate conditional or page template name.
-
-### h5bp-htaccess
-
-This file contains HTML5 Boilerplate's `.htaccess` which is automatically added by `htaccess.php` if enabled in `config.php`. There are a few changes to the H5BP version:
-
-* Added block to access WordPress files that reveal version information (`wp-config.php`, `readme.html`, `license.txt`)
-* Commented out expires headers (we recommend the use of [W3 Total Cache](http://wordpress.org/extend/plugins/w3-total-cache/))
-* Commented out ETag removal (we recommend the use of [W3 Total Cache](http://wordpress.org/extend/plugins/w3-total-cache/))
-* Commented out start rewrite engine (handled by WordPress)
-* Commented out suppress/force www (handled by WordPress)
-* Commented out `Options -MultiViews` (causes a server 500 error on most shared hosts)
-* Commented out custom 404 page (handled by WordPress)
-
-### htaccess.php
-
-This file handles the HTML5 Boilerplate `.htaccess`.
+`roots_display_sidebar()` is used to define which pages shouldn't get the sidebar. By default, the 404, front `front-page.php` and `template-custom.php` templates are full width. If you would like to remove the sidebar from additional pages, add in the appropriate conditional or page template name.
 
 ### init.php
 
