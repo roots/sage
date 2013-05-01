@@ -38,8 +38,6 @@ A basic Roots theme initially looks like this:
 │   ├── cleanup.php
 │   ├── config.php
 │   ├── custom.php
-│   ├── h5bp-htaccess
-│   ├── htaccess.php
 │   ├── init.php
 │   ├── nav.php
 │   ├── rewrites.php

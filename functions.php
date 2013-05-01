@@ -11,7 +11,6 @@ require_once locate_template('/lib/cleanup.php');         // Cleanup
 require_once locate_template('/lib/nav.php');             // Custom nav modifications
 require_once locate_template('/lib/comments.php');        // Custom comments modifications
 require_once locate_template('/lib/rewrites.php');        // URL rewriting for assets
-require_once locate_template('/lib/htaccess.php');        // HTML5 Boilerplate .htaccess
 require_once locate_template('/lib/widgets.php');         // Sidebars and widgets
 require_once locate_template('/lib/scripts.php');         // Scripts and stylesheets
 require_once locate_template('/lib/custom.php');          // Custom functions

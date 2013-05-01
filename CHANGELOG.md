@@ -1,4 +1,5 @@
 ### HEAD
+* Move HTML5 Boilerplate's .htaccess to a [plugin](https://github.com/retlehs/wp-h5bp-htaccess)
 * Rename page-custom.php to template-custom.php
 * Don't warn about unwritable htaccess if that option is disabled
 * Add missing collapse class for top navbar
