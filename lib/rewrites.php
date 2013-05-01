@@ -35,7 +35,7 @@ function roots_clean_urls($content) {
   }
 }
 
-if (!is_multisite() && !is_child_theme() && get_option('permalink_structure')) {
+if (!is_multisite() && !is_child_theme()) {
   if (current_theme_supports('rewrites')) {
     add_action('generate_rewrite_rules', 'roots_add_rewrites');
   }
