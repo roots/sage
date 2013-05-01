@@ -1,4 +1,5 @@
 ### HEAD
+* Rename page-custom.php to template-custom.php
 * Don't warn about unwritable htaccess if that option is disabled
 * Add missing collapse class for top navbar
 * Add comment template

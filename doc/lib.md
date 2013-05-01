@@ -29,7 +29,7 @@ If you don't want to use one of the features, either comment out the line or rem
 
 #### Define which pages shouldn't have the sidebar
 
-`roots_display_sidebar()` is used to define which pages shouldn't get the sidebar. By default, the 404, front `front-page.php` and `page-custom.php` templates are full width. If you would like to remove the sidebar from additional pages, add in the appropriate conditional or page template name.
+`roots_display_sidebar()` is used to define which pages shouldn't get the sidebar. By default, the 404, front `front-page.php` and `template-custom.php` templates are full width. If you would like to remove the sidebar from additional pages, add in the appropriate conditional or page template name.
 
 ### h5bp-htaccess
 

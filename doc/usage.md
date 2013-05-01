@@ -65,10 +65,10 @@ A basic Roots theme initially looks like this:
 ├── functions.php
 ├── index.php
 ├── page.php
-├── page-custom.php
 ├── screenshot.png
 ├── single.php
-└── style.css
+├── style.css
+└── template-custom.php
 ```
 
 What follows is a general overview of each major part and how to use them.
@@ -128,10 +128,6 @@ This file is used to serve all of the archive templates.
 
 This file is used to serve the page template.
 
-### page-custom.php
-
-An example of a custom page template. By default, this page is full width and doesn't contain a sidebar as defined in `lib/config.php`'s `roots_sidebar()` function.
-
 ### single.php
 
 This file is used to serve the single post template.
@@ -139,3 +135,7 @@ This file is used to serve the single post template.
 ### style.css
 
 This file is used to tell WordPress that we're a theme. None of the actual CSS is contained in this file.
+
+### template-custom.php
+
+An example of a custom page template. By default, this page is full width and doesn't contain a sidebar as defined in `lib/config.php`'s `roots_sidebar()` function.
