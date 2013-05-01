@@ -138,32 +138,7 @@ add_filter('body_class', 'roots_body_class');
  * @author Scott Walkinshaw <scott.walkinshaw@gmail.com>
  */
 function roots_root_relative_url($input) {
-  // Fix for site_url() != home_url()
-  if (!is_admin() && site_url() != home_url() && stristr($input, 'wp-includes') === false) {
-    $input = str_replace(site_url(), '', $input);
-  }
-
-  $output = preg_replace_callback(
-    '!(https?://[^/|"]+)([^"]+)?!',
-    create_function(
-      '$matches',
-      // If full URL is home_url("/") and this isn't a subdir install, return a slash for relative root
-      'if (isset($matches[0]) && $matches[0] === home_url("/") && str_replace("http://", "", home_url("/", "http"))==$_SERVER["HTTP_HOST"]) { return "/";' .
-      // If domain is equal to home_url("/"), then make URL relative
-      '} elseif (isset($matches[0]) && strpos($matches[0], home_url("/")) !== false) { return $matches[2];' .
-      // If domain is not equal to home_url("/"), do not make external link relative
-      '} else { return $matches[0]; };'
-    ),
-    $input
-  );
-
-  // detect and correct for subdir installs
-  if ($subdir = parse_url(home_url(), PHP_URL_PATH)) {
-    if (substr($output, 0, strlen($subdir)) == (substr($output, strlen($subdir), strlen($subdir)))) {
-      $output = substr($output, strlen($subdir));
-    }
-  }
-
+  $output = wp_make_link_relative($input);
   return $output;
 }
 
@@ -174,10 +149,6 @@ function roots_enable_root_relative_urls() {
 if (roots_enable_root_relative_urls()) {
   $root_rel_filters = array(
     'bloginfo_url',
-    'theme_root_uri',
-    'stylesheet_directory_uri',
-    'template_directory_uri',
-    'plugins_url',
     'the_permalink',
     'wp_list_pages',
     'wp_list_categories',

@@ -1,4 +1,5 @@
 ### HEAD
+* Fix issues with root relative URLs and rewrites on non-standard setups
 * Make sure rewrites are added to .htaccess immediately after activation
 * Move HTML5 Boilerplate's .htaccess to a [plugin](https://github.com/retlehs/wp-h5bp-htaccess)
 * Rename page-custom.php to template-custom.php
