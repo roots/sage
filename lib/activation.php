@@ -190,7 +190,11 @@ function roots_theme_activation_action() {
     $roots_theme_activation_options['change_uploads_folder'] = false;
 
     update_option('uploads_use_yearmonth_folders', 0);
-    update_option('upload_path', 'assets');
+    if (!is_multisite()) {
+      update_option('upload_path', 'assets');
+    } else {
+      update_option('upload_path', '');
+    }
   }
 
   if ($roots_theme_activation_options['create_navigation_menus'] === 'true') {
