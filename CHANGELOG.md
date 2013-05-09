@@ -1,3 +1,6 @@
+### HEAD
+* Fix relative external URLs issue
+
 ### 6.4.0: May 1st, 2013
 * Fix Theme Activation page issues
 * Fix issues with root relative URLs and rewrites on non-standard setups

@@ -138,8 +138,16 @@ add_filter('body_class', 'roots_body_class');
  * @author Scott Walkinshaw <scott.walkinshaw@gmail.com>
  */
 function roots_root_relative_url($input) {
-  $output = wp_make_link_relative($input);
-  return $output;
+  $parsed_url  = parse_url(site_url());
+  $site_domain = $parsed_url['host'];
+
+  preg_match('|https?://([^/]+)(/.*)|i', $input, $matches);
+
+  if (isset($matches[1]) && isset($matches[2]) && $matches[1] === $site_domain) {
+    return wp_make_link_relative($input);
+  } else {
+    return $input;
+  }
 }
 
 function roots_enable_root_relative_urls() {
@@ -152,7 +160,7 @@ if (roots_enable_root_relative_urls()) {
     'the_permalink',
     'wp_list_pages',
     'wp_list_categories',
-    'wp_nav_menu',
+    'roots_wp_nav_menu_item',
     'the_content_more_link',
     'the_tags',
     'get_pagenum_link',
