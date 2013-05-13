@@ -34,7 +34,7 @@ class Roots_Wrapping {
       array_unshift($templates, sprintf('base-%s.php', self::$base));
     }
 
-    $templates = apply_filters('roots_wrapping_base', $templates);
+    $templates = apply_filters('roots_wrap_base', $templates);
     return locate_template($templates);
   }
 
@@ -45,7 +45,7 @@ class Roots_Wrapping {
       array_unshift($templates, sprintf('templates/sidebar-%s.php', self::$base));
     }
 
-    $templates = apply_filters('roots_wrapping_sidebar', $templates);
+    $templates = apply_filters('roots_wrap_sidebar', $templates);
     return locate_template($templates);
   }
 }
