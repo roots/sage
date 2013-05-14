@@ -95,17 +95,6 @@ function roots_wp_title($title) {
 add_filter('wp_title', 'roots_wp_title', 10);
 
 /**
- * Clean up output of stylesheet <link> tags
- */
-function roots_clean_style_tag($input) {
-  preg_match_all("!<link rel='stylesheet'\s?(id='[^']+')?\s+href='(.*)' type='text/css' media='(.*)' />!", $input, $matches);
-  // Only display media if it's print
-  $media = $matches[3][0] === 'print' ? ' media="print"' : '';
-  return '<link rel="stylesheet" href="' . $matches[2][0] . '"' . $media . '>' . "\n";
-}
-add_filter('style_loader_tag', 'roots_clean_style_tag');
-
-/**
  * Add and remove body_class() classes
  */
 function roots_body_class($classes) {
