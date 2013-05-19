@@ -547,7 +547,7 @@ function shoestrap_customizer_init( $wp_customize ) {
   $settings[] = array(
     'setting'   => 'advanced_head',
     'type'      => 'textarea',
-    'default'   => '',
+    'default'   => '<style></style>',
     'label'     => __( 'Header Scripts (CSS/JS)', 'shoestrap' ),
     'section'   => 'advanced',
     'priority'  => 1
@@ -556,7 +556,7 @@ function shoestrap_customizer_init( $wp_customize ) {
   $settings[] = array(
     'setting'   => 'advanced_footer',
     'type'      => 'textarea',
-    'default'   => '',
+    'default'   => '<script></script>',
     'label'     => __( 'Footer Scripts (CSS/JS)', 'shoestrap' ),
     'section'   => 'advanced',
     'priority'  => 3
@@ -712,7 +712,7 @@ function shoestrap_customizer_init( $wp_customize ) {
         'type'        => 'theme_mod',
         'capability'  => 'edit_theme_options'
       ));
-      $wp_customize->add_control( new Shoestrap_Customize_Textarea_Control( $wp_customize, 'advanced_head', array(
+      $wp_customize->add_control( new Shoestrap_Customize_Textarea_Control( $wp_customize, $setting['setting'], array(
         'label'     => $setting['label'],
         'section'   => $setting['section'],
         'settings'  => $setting['setting'],
