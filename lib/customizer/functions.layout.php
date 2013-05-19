@@ -17,25 +17,25 @@ function shoestrap_section_class( $target, $echo = false ) {
   $wrap       = false;
 
   if ( is_active_sidebar( 'sidebar-secondary' ) && is_active_sidebar( 'sidebar-primary' ) ) {
-    if ( $layout >= 4 ) {
+    if ( $layout >= 3 ) {
       $main       = $base . ceil( ( 12 - $first ) * ( 12 - $second ) / 12 );
       $primary    = $base . ( 12 - ceil( ( 12 - $first ) * ( 12 - $second ) / 12 ) );
       $secondary  = $base . $second;
       $wrapper    = $base . ( 12 - $second );
       $wrap       = true;
-    } elseif ( $layout >= 2 ) {
+    } elseif ( $layout >= 1 ) {
       $main       = $base . ( 12 - $first );
       $primary    = $base . $first;
       $secondary  = NULL;
     }
   } elseif ( !is_active_sidebar( 'sidebar-secondary' ) && is_active_sidebar( 'sidebar-primary' ) ) {
-    if ( $layout >= 2 ) {
+    if ( $layout >= 1 ) {
       $main       = $base . ( 12 - $first );
       $primary    = $base . $first;
       $secondary  = NULL;
     }
   } elseif ( is_active_sidebar( 'sidebar-secondary' ) && !is_active_sidebar( 'sidebar-primary' ) ) {
-    if ( $layout >= 4 ) {
+    if ( $layout >= 3 ) {
       $main       = $base . ( 12 - $second );
       $secondary  = $base . $second;
     }
@@ -75,38 +75,6 @@ function shoestrap_section_class( $target, $echo = false ) {
  * If any css should be applied to fix the layout, enter it here.
  */
 function shoestrap_sidebars_positioning_css() {
-  
   $layout = get_theme_mod( 'shoestrap_layout' );
-  $fluid  = get_theme_mod( 'shoestrap_fluid' );
-
-  $css = '';
-
-  // When the primary sidebar is first, set its margin-left to 0 since it has to go to the *left*
-  if ( $layout == 'pm' || $layout == 'pms' || $layout == 'psm' ) {
-    $css .= '#wrap #content #sidebar { margin-left: 0; }';
-  }
-  // When the secondary sidebar is first, set its margin-left to 0 since it has to go to the *left*
-  if ( $layout == 'sm' || $layout == 'smp' || $layout == 'spm' || $layout == 'pms' ) {
-    $css .= '#content #secondary { margin-left: 0; }';
-  }
-
-  // Float the main region to the right when needed
-  if ( $layout == 'pm' || $layout == 'sm' || $layout == 'pms' || $layout == 'psm' || $layout == 'spm' ) {
-    $css .= '#main { float: right; }';
-  }
-
-  // Float the main sidebar to the right when needed
-  if ( $layout == 'msp' ) {
-    $css .= '#sidebar { float: right; }';
-  }
-
-  // Float the main + primary wrapper div to the right when needed
-  if ( $layout == 'smp' || $layout == 'spm' ) {
-    $css .= '#wrap .m_p_wrap { float: right; }';
-  }
-
-  echo '<style>';
-  echo $css;
-  echo '</style>';
 }
 add_action( 'wp_head', 'shoestrap_sidebars_positioning_css' );

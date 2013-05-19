@@ -478,12 +478,12 @@ function shoestrap_customizer_init( $wp_customize ) {
     'section'   => 'layout',
     'priority'  => 2,
     'choices'   => array(
-      1         => __( 'Full Width', 'shoestrap' ),
-      2         => __( 'Right Sidebar', 'shoestrap' ),
-      3         => __( 'Left Sidebar', 'shoestrap' ),
-      4         => __( '2 Left Sidebars', 'shoestrap' ),
-      5         => __( '2 Right Sidebars', 'shoestrap' ),
-      6         => __( 'Split Sidebars', 'shoestrap' ),
+      0         => __( 'Full Width', 'shoestrap' ),
+      1         => __( 'Right Sidebar', 'shoestrap' ),
+      2         => __( 'Left Sidebar', 'shoestrap' ),
+      3         => __( '2 Left Sidebars', 'shoestrap' ),
+      4         => __( '2 Right Sidebars', 'shoestrap' ),
+      5         => __( 'Split Sidebars', 'shoestrap' ),
     )
   );
 

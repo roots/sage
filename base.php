@@ -28,13 +28,13 @@
       <div class="main <?php shoestrap_section_class( 'main', true ); ?>" role="main">
         <?php include roots_template_path(); ?>
       </div><!-- /.main -->
-      <?php if ( roots_display_sidebar() && get_theme_mod( 'layout' ) > 1 ) : ?>
+      <?php if ( roots_display_sidebar() && get_theme_mod( 'layout' ) > 0 ) : ?>
       <aside class="sidebar <?php shoestrap_section_class( 'primary', true ); ?>" role="complementary">
         <?php include roots_sidebar_path(); ?>
       </aside><!-- /.sidebar -->
       <?php endif; ?>
       <?php if ( shoestrap_section_class( 'wrap' ) ) : ?></div></div><?php endif; ?>
-      <?php if ( get_theme_mod( 'layout' ) >= 4 && is_active_sidebar( 'sidebar-secondary' ) ) : ?>
+      <?php if ( get_theme_mod( 'layout' ) >= 3 && is_active_sidebar( 'sidebar-secondary' ) ) : ?>
         <aside class="sidebar secondary <?php shoestrap_section_class( 'secondary', true ); ?>" role="complementary">
           <?php dynamic_sidebar('sidebar-secondary'); ?>
         </aside><!-- /.sidebar -->
