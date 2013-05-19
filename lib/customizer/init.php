@@ -520,14 +520,10 @@ function shoestrap_customizer_init( $wp_customize ) {
   $settings[] = array(
     'setting'   => 'layout_sidebar_on_front', 
     'default'   => 'hide',
-    'type'      => 'select', 
+    'type'      => 'checkbox', 
     'label'     => __( 'Show sidebars on the Home Page', 'shoestrap' ),
     'section'   => 'layout',
     'priority'  => 6,
-    'choices'   => array(
-      'show'    => __( 'Show', 'shoestrap' ),
-      'hide'    => __( 'Hide', 'shoestrap' )
-    )
   );
 
   $settings[] = array(
