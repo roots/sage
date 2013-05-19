@@ -1,3 +1,4 @@
 <?php
-
-// Custom functions
+/**
+ * Custom functions
+ */

@@ -5,7 +5,7 @@ table of contents](TOC.md)
 
 The HTML, CSS and JavaScript in Roots comes from a combination of HTML5 Boilerplate and Twitter Bootstrap.
 
-* [HTML5 Boilerplate documentation](https://github.com/h5bp/html5-boilerplate/blob/master/doc/README.md)
+* [HTML5 Boilerplate documentation](https://github.com/h5bp/html5-boilerplate/blob/master/README.md)
 * [Twitter Bootstrap documentation](http://twitter.github.com/bootstrap/getting-started.html)
 
 ## Basic structure
@@ -28,23 +28,21 @@ A basic Roots theme initially looks like this:
 │       ├── main.js
 │       ├── plugins.js (includes bootstrap.js)
 │       └── vendor
-│           ├── jquery-1.8.2.min.js
-│           └── modernizr-2.6.1.min.js
+│           ├── jquery-1.9.1.min.js
+│           └── modernizr-2.6.2.min.js
 ├── doc
 ├── lang
 │   └── roots.pot
 ├── lib
-│   ├── actions.php
 │   ├── activation.php
 │   ├── cleanup.php
 │   ├── config.php
 │   ├── custom.php
-│   ├── h5bp-htaccess
-│   ├── htaccess.php
-│   ├── metaboxes.php
-│   ├── post-types.php
+│   ├── init.php
+│   ├── nav.php
+│   ├── rewrites.php
 │   ├── scripts.php
-│   ├── template-tags.php
+│   ├── sidebar.php
 │   ├── utils.php
 │   └── widgets.php
 ├── templates
@@ -52,6 +50,7 @@ A basic Roots theme initially looks like this:
 │   ├── content.php
 │   ├── content-page.php
 │   ├── content-single.php
+│   ├── entry-meta.php
 │   ├── footer.php
 │   ├── head.php
 │   ├── header.php
@@ -64,10 +63,10 @@ A basic Roots theme initially looks like this:
 ├── functions.php
 ├── index.php
 ├── page.php
-├── page-custom.php
 ├── screenshot.png
 ├── single.php
-└── style.css
+├── style.css
+└── template-custom.php
 ```
 
 What follows is a general overview of each major part and how to use them.
@@ -127,10 +126,6 @@ This file is used to serve all of the archive templates.
 
 This file is used to serve the page template.
 
-### page-custom.php
-
-An example of a custom page template. By default, this page is full width and doesn't contain a sidebar as defined in `lib/config.php`'s `roots_sidebar()` function.
-
 ### single.php
 
 This file is used to serve the single post template.
@@ -138,3 +133,7 @@ This file is used to serve the single post template.
 ### style.css
 
 This file is used to tell WordPress that we're a theme. None of the actual CSS is contained in this file.
+
+### template-custom.php
+
+An example of a custom page template. By default, this page is full width and doesn't contain a sidebar as defined in `lib/config.php`'s `roots_sidebar()` function.

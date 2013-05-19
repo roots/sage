@@ -1,0 +1,315 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Chih-Wei Lee <dlackty@gmail.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"X-Poedit-Language: Traditional Chinese\n"
+"X-Poedit-Country: TAIWAN\n"
+"X-Poedit-SourceCharset: utf-8\n"
+
+#: 404.php:5
+msgid ""
+"The page you are looking for might have been removed, had its name changed, "
+"or is temporarily unavailable."
+msgstr "你所尋找的頁面可能已經被移除、修改名稱，或是目前暫時無法使用。"
+
+#: 404.php:8
+msgid "Please try the following:"
+msgstr "請試著："
+
+#: 404.php:10
+msgid "Check your spelling"
+msgstr "檢查拼字是否錯誤"
+
+#: 404.php:11
+#, php-format
+msgid "Return to the <a href=\"%s\">home page</a>"
+msgstr "回到<a href=\"%s\">首頁</a>"
+
+#: 404.php:12
+msgid "Click the <a href=\"javascript:history.back()\">Back</a> button"
+msgstr "點擊<a href=\"javascript:history.back()\">上一頁</a>按鈕"
+
+#: functions.php:28
+msgid "Primary Navigation"
+msgstr "主要導覽"
+
+#: lib/activation.php:32 lib/activation.php:33
+msgid "Theme Activation"
+msgstr "啟用佈景主題"
+
+#: lib/activation.php:72
+#, php-format
+msgid "%s Theme Activation"
+msgstr "啓用佈景主題 %s"
+
+#: lib/activation.php:87 lib/activation.php:89
+msgid "Create static front page?"
+msgstr "建立靜態首頁？"
+
+#: lib/activation.php:91 lib/activation.php:104 lib/activation.php:117
+#: lib/activation.php:130 lib/activation.php:143
+msgid "Yes"
+msgstr "是"
+
+#: lib/activation.php:92 lib/activation.php:105 lib/activation.php:118
+#: lib/activation.php:131 lib/activation.php:144
+msgid "No"
+msgstr "否"
+
+#: lib/activation.php:95
+msgid "Create a page called Home and set it to be the static front page"
+msgstr "建立一個 Homepage 頁面並設定為靜態首頁"
+
+#: lib/activation.php:100
+msgid "Change permalink structure?"
+msgstr "修改固定網址結構？"
+
+#: lib/activation.php:102
+msgid "Update permalink structure?"
+msgstr "更新固定網址結構？"
+
+#: lib/activation.php:108
+msgid "Change permalink structure to /&#37;postname&#37;/"
+msgstr "修改固定網址結構為 /&#37;postname&#37;/"
+
+#: lib/activation.php:113
+msgid "Change uploads folder?"
+msgstr "修改上傳資料夾？"
+
+#: lib/activation.php:115
+msgid "Update uploads folder?"
+msgstr "更新上傳資料夾？"
+
+#: lib/activation.php:121
+msgid "Change uploads folder to /assets/ instead of /wp-content/uploads/"
+msgstr "將上傳目錄由 /wp-content/uploads 修改為 /assets/"
+
+#: lib/activation.php:126 lib/activation.php:128
+msgid "Create navigation menu?"
+msgstr "建立導覽選單？"
+
+#: lib/activation.php:134
+msgid "Create the Primary Navigation menu and set the location"
+msgstr "建立主要導覽選單並且設定位置"
+
+#: lib/activation.php:139 lib/activation.php:141
+msgid "Add pages to menu?"
+msgstr "新增頁面到選單？"
+
+#: lib/activation.php:147
+msgid "Add all current published pages to the Primary Navigation"
+msgstr "新增所有已發表的頁面到主要導覽"
+
+#: lib/cleanup.php:404
+msgid "Continued"
+msgstr "繼續閱讀"
+
+#: lib/htaccess.php:26
+#, php-format
+msgid "Please make sure your <a href=\"%s\">.htaccess</a> file is writable "
+msgstr "請確定你的的 <a href=\"%s\">.htaccess</a> 檔案可以正常寫入"
+
+#: lib/template-tags.php:5
+#, php-format
+msgid "Posted on %s at %s."
+msgstr "發表於 %s %s"
+
+#: lib/template-tags.php:6
+msgid "Written by"
+msgstr "作者"
+
+#: lib/widgets.php:6
+msgid "Primary Sidebar"
+msgstr "主要側邊欄"
+
+#: lib/widgets.php:14
+msgid "Footer"
+msgstr "頁尾"
+
+#: lib/widgets.php:30
+msgid "Use this widget to add a vCard"
+msgstr "使用此模組以新增 vCard"
+
+#: lib/widgets.php:31
+msgid "Roots: vCard"
+msgstr "Roots: vCard"
+
+#: lib/widgets.php:58
+msgid "vCard"
+msgstr "vCard"
+
+#: lib/widgets.php:124
+msgid "Title (optional):"
+msgstr "標題（非必要）："
+
+#: lib/widgets.php:128
+msgid "Street Address:"
+msgstr "地址："
+
+#: lib/widgets.php:132
+msgid "City/Locality:"
+msgstr "城市："
+
+#: lib/widgets.php:136
+msgid "State/Region:"
+msgstr "州："
+
+#: lib/widgets.php:140
+msgid "Zipcode/Postal Code:"
+msgstr "郵遞區號："
+
+#: lib/widgets.php:144
+msgid "Telephone:"
+msgstr "電話："
+
+#: lib/widgets.php:148
+msgid "Email:"
+msgstr "電子郵件位址："
+
+#: templates/comments.php:7
+#, php-format
+msgid "<cite class=\"fn\">%s</cite>"
+msgstr "<cite class=\"fn\">%s</cite>"
+
+#: templates/comments.php:8
+#, php-format
+msgid "%1$s"
+msgstr "%1$s"
+
+#: templates/comments.php:9
+msgid "(Edit)"
+msgstr "（編輯）"
+
+#: templates/comments.php:15
+msgid "Your comment is awaiting moderation."
+msgstr "你的留言正在審核中。"
+
+#: templates/comments.php:32
+msgid "This post is password protected. Enter the password to view comments."
+msgstr "此文受密碼保護。請輸入你的密碼檢視迴響。"
+
+#: templates/comments.php:49
+msgid "&larr; Older comments"
+msgstr "&larr; 舊迴響"
+
+#: templates/comments.php:50
+msgid "Newer comments &rarr;"
+msgstr "新迴響 &rarr;"
+
+#: templates/comments.php:58 templates/comments.php:68
+msgid "Comments are closed."
+msgstr "迴響已被關閉。"
+
+#: templates/comments.php:75
+msgid "Leave a Reply"
+msgstr "發表迴響"
+
+#: templates/comments.php:75
+#, php-format
+msgid "Leave a Reply to %s"
+msgstr "對 %s 發表迴響\""
+
+#: templates/comments.php:78
+#, php-format
+msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
+msgstr "抱歉，你必須要<a href=\"%s\">登入</a>才能發表迴響喔！"
+
+#: templates/comments.php:82
+#, php-format
+msgid "Logged in as <a href=\"%s/wp-admin/profile.php\">%s</a>."
+msgstr "已登入為 <a href=\"%s/wp-admin/profile.php\">%s</a>。"
+
+#: templates/comments.php:82
+msgid "Log out of this account"
+msgstr "登出此賬號"
+
+#: templates/comments.php:82
+msgid "Log out &raquo;"
+msgstr "登出 &raquo;"
+
+#: templates/comments.php:84
+msgid "Name"
+msgstr "姓名"
+
+#: templates/comments.php:84 templates/comments.php:86
+msgid " (required)"
+msgstr "（必）"
+
+#: templates/comments.php:86
+msgid "Email (will not be published)"
+msgstr "電子郵件位址（並不會被公開）"
+
+#: templates/comments.php:88
+msgid "Website"
+msgstr "網站"
+
+#: templates/comments.php:91
+msgid "Comment"
+msgstr "迴響"
+
+#: templates/comments.php:93
+msgid "Submit Comment"
+msgstr "送出迴響"
+
+#: templates/content-single.php:11
+msgid "Pages:"
+msgstr "頁面："
+
+#: templates/content.php:4
+msgid "Sorry, no results were found."
+msgstr "抱歉，沒有搜尋結果。"
+
+#: templates/content.php:26
+msgid "&larr; Older posts"
+msgstr "&larr; 舊文章"
+
+#: templates/content.php:27
+msgid "Newer posts &rarr;"
+msgstr "新文章 &rarr;"
+
+#: templates/page-header.php:8
+msgid "Latest Posts"
+msgstr "最新的文章"
+
+#: templates/page-header.php:17
+#, php-format
+msgid "Daily Archives: %s"
+msgstr "日彙整： %s"
+
+#: templates/page-header.php:19
+#, php-format
+msgid "Monthly Archives: %s"
+msgstr "月彙整： %s"
+
+#: templates/page-header.php:21
+#, php-format
+msgid "Yearly Archives: %s"
+msgstr "年彙整： %s"
+
+#: templates/page-header.php:25
+#, php-format
+msgid "Author Archives: %s"
+msgstr "作者彙整： %s"
+
+#: templates/page-header.php:30
+#, php-format
+msgid "Search Results for %s"
+msgstr "搜尋結果： %s"
+
+#: templates/page-header.php:32
+msgid "File Not Found"
+msgstr "找不到檔案"
+
+#: templates/searchform.php:2
+msgid "Search for:"
+msgstr "搜尋："
+
+#: templates/searchform.php:3 templates/searchform.php:4
+msgid "Search"
+msgstr "搜尋"

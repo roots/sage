@@ -1,4 +1,70 @@
 ### HEAD
+* Fix relative external URLs issue
+
+### 6.4.0: May 1st, 2013
+* Fix Theme Activation page issues
+* Fix issues with root relative URLs and rewrites on non-standard setups
+* Make sure rewrites are added to .htaccess immediately after activation
+* Move HTML5 Boilerplate's .htaccess to a [plugin](https://github.com/retlehs/wp-h5bp-htaccess)
+* Rename page-custom.php to template-custom.php
+* Don't warn about unwritable htaccess if that option is disabled
+* Add missing collapse class for top navbar
+* Add comment template
+* Update is_dropdown evaluation in nav walker
+* Re-organize archives template
+* Add missing comment ID
+* hNews consistency with entry-title class
+* Add `wp_title()` filter
+* Fix missing closing div in comments
+* Fix for navbar dropdowns
+* Add option for using jQuery on Google CDN
+* Correct logic in `roots_enable_root_relative_urls`
+* Add Greek translation, update Brazilian Portuguese translation
+* Update to Bootstrap 2.3.1
+* Simplify alerts
+* Remove disabled post nav links
+* Use Bootstrap media object for listing comments
+* Move Google Analytics to `lib/scripts.php`
+* Static top navbar instead of fixed
+
+### 6.3.0: February 8th, 2013
+* Update to Bootstrap 2.3.0
+* Update to jQuery 1.9.1
+* Output author title with `get_the_author()`
+* Add EditorConfig
+* Update 404 template based on H5BP
+* Update H5BP's included .htaccess
+* Don't show comments on passworded posts
+* Add `do_action('get_header')` for WooSidebars compatibility
+* Simplify entry meta
+* Allow `get_search_form()` to be called more than once per request
+* Move plugins.js and main.js to footer
+* JavaScript clean up (everything is now enqueued)
+* Remove conditional feed
+* Introduce `add_theme_support('bootstrap-gallery')`
+* Rewrites organization (introduce `lib/rewrites.php`)
+* Fix `add_editor_style` path
+* Updated translations: French, Bulgarian, Turkish, Korean
+* Enable `add_theme_support` for Nice Search
+* Replace ID's with classes
+* Add support for dynamic sidebar templates
+* Fix PHP notice on search with no results
+* Update to jQuery 1.9.0
+
+### 6.2.0: January 13th, 2013
+* Implement latest Nice Search
+* Update [gallery] shortcode
+* Add Simplified Chinese, Indonesian, Korean translations
+* Move template title to `lib/utils.php`
+* Update to Bootstrap 2.2.2
+* Update to jQuery 1.8.3
+* Use `entry-summary` class for excerpts per Readability's Article Publishing Guidelines
+* Cleanup/refactor `lib/activation.php`
+* Remove `lib/post-types.php` and `lib/metaboxes.php`
+* Make sure Primary Navigation menu always gets created and has the location set upon activation, update activation permalink method
+* Update to Bootstrap 2.2.1
+* Update conditional feed method
+* Update to Bootstrap 2.2.0
 * Return instead of echo class names in `roots_main_class` and `roots_sidebar_class`
 * Move nav customizations into `lib/nav.php`
 

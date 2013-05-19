@@ -3,7 +3,7 @@ table of contents](TOC.md)
 
 # Rewrites
 
-Rewrites are handled by `lib/htaccess.php`. Rewrites currently do not happen for child themes or network installs.
+Rewrites are handled by `lib/rewrites.php`. Rewrites currently do not happen for child themes or network installs.
 
 Rewrite:
 
@@ -12,20 +12,17 @@ Rewrite:
 3. `/wp-content/themes/themename/assets/img/` to `/assets/img/`
 4. `/wp-content/plugins/` -> `/plugins/`
 
-If HTML5 Boilerplate's `.htaccess` support is enabled in `lib/config.php`, then the `generate_rewrite_rules()` filter is used to automatically add the contents of `lib/h5bp-htaccess` to your `.htaccess` file.
-
-## Alternative configuration
-
-First remove the `if` statement that wraps everything, since if you're not on Apache or Litespeed then Roots will not apply the functionality.
+## Alternative server configurations
 
 ### Nginx
 
-    if (!-e $request_filename) {
-      rewrite ^/assets/css/(.*)$ /wp-content/themes/roots/assets/css/$1 last;
-      rewrite ^/assets/js/(.*)$ /wp-content/themes/roots/assets/js/$1 last;
-      rewrite ^/assets/img/(.*)$ /wp-content/themes/roots/assets/img/$1 last;
-      rewrite ^/plugins/(.*)$ /wp-content/plugins/$1 last;
-      break;
+Include these in your Nginx config, before the PHP fastcgi block (`location ~ \.php$`).
+
+    location ~ ^/assets/(img|js|css)/(.*)$ {
+      try_files $uri $uri/ /wp-content/themes/roots/assets/$1/$2;
+    }
+    location ~ ^/plugins/(.*)$ {
+      try_files $uri $uri/ /wp-content/plugins/$1;
     }
 
 ### Lighttpd

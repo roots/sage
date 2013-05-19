@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Clean up wp_head()
  *
@@ -43,7 +42,6 @@ function roots_rel_canonical() {
   $link = get_permalink($id);
   echo "\t<link rel=\"canonical\" href=\"$link\">\n";
 }
-
 add_action('init', 'roots_head_cleanup');
 
 /**
@@ -80,8 +78,21 @@ function roots_language_attributes() {
 
   return $output;
 }
-
 add_filter('language_attributes', 'roots_language_attributes');
+
+/**
+ * Manage output of wp_title()
+ */
+function roots_wp_title($title) {
+  if (is_feed()) {
+    return $title;
+  }
+
+  $title .= get_bloginfo('name');
+
+  return $title;
+}
+add_filter('wp_title', 'roots_wp_title', 10);
 
 /**
  * Clean up output of stylesheet <link> tags
@@ -92,19 +103,12 @@ function roots_clean_style_tag($input) {
   $media = $matches[3][0] === 'print' ? ' media="print"' : '';
   return '<link rel="stylesheet" href="' . $matches[2][0] . '"' . $media . '>' . "\n";
 }
-
 add_filter('style_loader_tag', 'roots_clean_style_tag');
 
 /**
  * Add and remove body_class() classes
  */
 function roots_body_class($classes) {
-  // Add 'top-navbar' class if using Bootstrap's Navbar
-  // Used to add styling to account for the WordPress admin bar
-  if (current_theme_supports('bootstrap-top-navbar')) {
-    $classes[] = 'top-navbar';
-  }
-
   // Add post/page slug
   if (is_single() || is_page() && !is_front_page()) {
     $classes[] = basename(get_permalink());
@@ -120,7 +124,6 @@ function roots_body_class($classes) {
 
   return $classes;
 }
-
 add_filter('body_class', 'roots_body_class');
 
 /**
@@ -135,55 +138,26 @@ add_filter('body_class', 'roots_body_class');
  * @author Scott Walkinshaw <scott.walkinshaw@gmail.com>
  */
 function roots_root_relative_url($input) {
-  $output = preg_replace_callback(
-    '!(https?://[^/|"]+)([^"]+)?!',
-    create_function(
-      '$matches',
-      // If full URL is home_url("/") and this isn't a subdir install, return a slash for relative root
-      'if (isset($matches[0]) && $matches[0] === home_url("/") && str_replace("http://", "", home_url("/", "http"))==$_SERVER["HTTP_HOST"]) { return "/";' .
-      // If domain is equal to home_url("/"), then make URL relative
-      '} elseif (isset($matches[0]) && strpos($matches[0], home_url("/")) !== false) { return $matches[2];' .
-      // If domain is not equal to home_url("/"), do not make external link relative
-      '} else { return $matches[0]; };'
-    ),
-    $input
-  );
+  preg_match('|https?://([^/]+)(/.*)|i', $input, $matches);
 
-  return $output;
-}
-
-/**
- * Terrible workaround to remove the duplicate subfolder in the src of <script> and <link> tags
- * Example: /subfolder/subfolder/css/style.css
- */
-function roots_fix_duplicate_subfolder_urls($input) {
-  $output = roots_root_relative_url($input);
-  preg_match_all('!([^/]+)/([^/]+)!', $output, $matches);
-
-  if (isset($matches[1][0]) && isset($matches[2][0])) {
-    if ($matches[1][0] === $matches[2][0]) {
-      $output = substr($output, strlen($matches[1][0]) + 1);
-    }
+  if (isset($matches[1]) && isset($matches[2]) && $matches[1] === $_SERVER['SERVER_NAME']) {
+    return wp_make_link_relative($input);
+  } else {
+    return $input;
   }
-
-  return $output;
 }
 
 function roots_enable_root_relative_urls() {
-  return !(is_admin() && in_array($GLOBALS['pagenow'], array('wp-login.php', 'wp-register.php'))) && current_theme_supports('root-relative-urls');
+  return !(is_admin() || in_array($GLOBALS['pagenow'], array('wp-login.php', 'wp-register.php'))) && current_theme_supports('root-relative-urls');
 }
 
 if (roots_enable_root_relative_urls()) {
   $root_rel_filters = array(
     'bloginfo_url',
-    'theme_root_uri',
-    'stylesheet_directory_uri',
-    'template_directory_uri',
-    'plugins_url',
     'the_permalink',
     'wp_list_pages',
     'wp_list_categories',
-    'wp_nav_menu',
+    'roots_wp_nav_menu_item',
     'the_content_more_link',
     'the_tags',
     'get_pagenum_link',
@@ -192,13 +166,12 @@ if (roots_enable_root_relative_urls()) {
     'day_link',
     'year_link',
     'tag_link',
-    'the_author_posts_link'
+    'the_author_posts_link',
+    'script_loader_src',
+    'style_loader_src'
   );
 
   add_filters($root_rel_filters, 'roots_root_relative_url');
-
-  add_filter('script_loader_src', 'roots_fix_duplicate_subfolder_urls');
-  add_filter('style_loader_src', 'roots_fix_duplicate_subfolder_urls');
 }
 
 /**
@@ -210,7 +183,6 @@ if (roots_enable_root_relative_urls()) {
 function roots_embed_wrap($cache, $url, $attr = '', $post_ID = '') {
   return '<div class="entry-content-asset">' . $cache . '</div>';
 }
-
 add_filter('embed_oembed_html', 'roots_embed_wrap', 10, 4);
 add_filter('embed_googlevideo', 'roots_embed_wrap', 10, 2);
 
@@ -222,7 +194,6 @@ function roots_attachment_link_class($html) {
   $html = str_replace('<a', '<a class="thumbnail"', $html);
   return $html;
 }
-
 add_filter('wp_get_attachment_link', 'roots_attachment_link_class', 10, 1);
 
 /**
@@ -262,7 +233,6 @@ function roots_caption($output, $attr, $content) {
 
   return $output;
 }
-
 add_filter('img_caption_shortcode', 'roots_caption', 10, 3);
 
 /**
@@ -273,10 +243,17 @@ add_filter('img_caption_shortcode', 'roots_caption', 10, 3);
  * @link http://twitter.github.com/bootstrap/components.html#thumbnails
  */
 function roots_gallery($attr) {
-  global $post, $wp_locale;
+  $post = get_post();
 
   static $instance = 0;
   $instance++;
+
+  if (!empty($attr['ids'])) {
+    if (empty($attr['orderby'])) {
+      $attr['orderby'] = 'post__in';
+    }
+    $attr['include'] = $attr['ids'];
+  }
 
   $output = apply_filters('post_gallery', '', $attr);
 
@@ -295,8 +272,9 @@ function roots_gallery($attr) {
     'order'      => 'ASC',
     'orderby'    => 'menu_order ID',
     'id'         => $post->ID,
-    'icontag'    => 'li',
-    'captiontag' => 'p',
+    'itemtag'    => '',
+    'icontag'    => '',
+    'captiontag' => '',
     'columns'    => 3,
     'size'       => 'thumbnail',
     'include'    => '',
@@ -310,15 +288,13 @@ function roots_gallery($attr) {
   }
 
   if (!empty($include)) {
-    $include = preg_replace( '/[^0-9,]+/', '', $include );
-    $_attachments = get_posts( array('include' => $include, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby) );
+    $_attachments = get_posts(array('include' => $include, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby));
 
     $attachments = array();
     foreach ($_attachments as $key => $val) {
       $attachments[$val->ID] = $_attachments[$key];
     }
   } elseif (!empty($exclude)) {
-    $exclude = preg_replace('/[^0-9,]+/', '', $exclude);
     $attachments = get_children(array('post_parent' => $id, 'exclude' => $exclude, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby));
   } else {
     $attachments = get_children(array('post_parent' => $id, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby));
@@ -330,54 +306,33 @@ function roots_gallery($attr) {
 
   if (is_feed()) {
     $output = "\n";
-    foreach ($attachments as $att_id => $attachment)
+    foreach ($attachments as $att_id => $attachment) {
       $output .= wp_get_attachment_link($att_id, $size, true) . "\n";
+    }
     return $output;
   }
 
-  $captiontag = tag_escape($captiontag);
-  $columns    = intval($columns);
-  $itemwidth  = $columns > 0 ? floor(100/$columns) : 100;
-  $float      = is_rtl() ? 'right' : 'left';
-  $selector   = "gallery-{$instance}";
-
-  $gallery_style = $gallery_div = '';
-
-  if (apply_filters('use_default_gallery_style', true)) {
-    $gallery_style = '';
-  }
-
-  $size_class  = sanitize_html_class($size);
-  $gallery_div = "<ul id='$selector' class='thumbnails gallery galleryid-{$id} gallery-columns-{$columns} gallery-size-{$size_class}'>";
-  $output      = apply_filters('gallery_style', $gallery_style . "\n\t\t" . $gallery_div);
+  $output = '<ul class="thumbnails gallery">';
 
   $i = 0;
   foreach ($attachments as $id => $attachment) {
     $link = isset($attr['link']) && 'file' == $attr['link'] ? wp_get_attachment_link($id, $size, false, false) : wp_get_attachment_link($id, $size, true, false);
 
-    $output .= "
-      <{$icontag} class=\"gallery-item\">
-        $link
-      ";
-    if ($captiontag && trim($attachment->post_excerpt)) {
-      $output .= "
-        <{$captiontag} class=\"gallery-caption hidden\">
-        " . wptexturize($attachment->post_excerpt) . "
-        </{$captiontag}>";
+    $output .= '<li>' . $link;
+    if (trim($attachment->post_excerpt)) {
+      $output .= '<div class="caption hidden">' . wptexturize($attachment->post_excerpt) . '</div>';
     }
-    $output .= "</{$icontag}>";
-    if ($columns > 0 && ++$i % $columns == 0) {
-      $output .= '';
-    }
+    $output .= '</li>';
   }
 
-  $output .= "</ul>\n";
+  $output .= '</ul>';
 
   return $output;
 }
-
-remove_shortcode('gallery');
-add_shortcode('gallery', 'roots_gallery');
+if (current_theme_supports('bootstrap-gallery')) {
+  remove_shortcode('gallery');
+  add_shortcode('gallery', 'roots_gallery');
+}
 
 /**
  * Remove unnecessary dashboard widgets
@@ -390,7 +345,6 @@ function roots_remove_dashboard_widgets() {
   remove_meta_box('dashboard_primary', 'dashboard', 'normal');
   remove_meta_box('dashboard_secondary', 'dashboard', 'normal');
 }
-
 add_action('admin_init', 'roots_remove_dashboard_widgets');
 
 /**
@@ -403,7 +357,6 @@ function roots_excerpt_length($length) {
 function roots_excerpt_more($more) {
   return ' &hellip; <a href="' . get_permalink() . '">' . __('Continued', 'roots') . '</a>';
 }
-
 add_filter('excerpt_length', 'roots_excerpt_length');
 add_filter('excerpt_more', 'roots_excerpt_more');
 
@@ -413,7 +366,6 @@ add_filter('excerpt_more', 'roots_excerpt_more');
 function roots_remove_self_closing_tags($input) {
   return str_replace(' />', '>', $input);
 }
-
 add_filter('get_avatar',          'roots_remove_self_closing_tags'); // <img />
 add_filter('comment_id_fields',   'roots_remove_self_closing_tags'); // <input />
 add_filter('post_thumbnail_html', 'roots_remove_self_closing_tags'); // <img />
@@ -423,10 +375,8 @@ add_filter('post_thumbnail_html', 'roots_remove_self_closing_tags'); // <img />
  */
 function roots_remove_default_description($bloginfo) {
   $default_tagline = 'Just another WordPress site';
-
   return ($bloginfo === $default_tagline) ? '' : $bloginfo;
 }
-
 add_filter('get_bloginfo_rss', 'roots_remove_default_description');
 
 /**
@@ -443,7 +393,6 @@ function roots_change_mce_options($options) {
 
   return $options;
 }
-
 add_filter('tiny_mce_before_init', 'roots_change_mce_options');
 
 /**
@@ -483,7 +432,6 @@ function roots_widget_first_last_classes($params) {
 
   return $params;
 }
-
 add_filter('dynamic_sidebar_params', 'roots_widget_first_last_classes');
 
 /**
@@ -492,28 +440,20 @@ add_filter('dynamic_sidebar_params', 'roots_widget_first_last_classes');
  * @link http://txfx.net/wordpress-plugins/nice-search/
  */
 function roots_nice_search_redirect() {
-  if (is_search() && strpos($_SERVER['REQUEST_URI'], '/wp-admin/') === false && strpos($_SERVER['REQUEST_URI'], '/search/') === false) {
-    wp_redirect(home_url('/search/' . str_replace(array(' ', '%20'), array('+', '+'), urlencode(get_query_var('s')))), 301);
+  global $wp_rewrite;
+  if (!isset($wp_rewrite) || !is_object($wp_rewrite) || !$wp_rewrite->using_permalinks()) {
+    return;
+  }
+
+  $search_base = $wp_rewrite->search_base;
+  if (is_search() && !is_admin() && strpos($_SERVER['REQUEST_URI'], "/{$search_base}/") === false) {
+    wp_redirect(home_url("/{$search_base}/" . urlencode(get_query_var('s'))));
     exit();
   }
 }
-
-add_action('template_redirect', 'roots_nice_search_redirect');
-
-/**
- * Fix for get_search_query() returning +'s between search terms
- */
-function roots_search_query($escaped = true) {
-  $query = apply_filters('roots_search_query', get_query_var('s'));
-
-  if ($escaped) {
-    $query = esc_attr($query);
-  }
-
-  return urldecode($query);
+if (current_theme_supports('nice-search')) {
+  add_action('template_redirect', 'roots_nice_search_redirect');
 }
-
-add_filter('get_search_query', 'roots_search_query');
 
 /**
  * Fix for empty search queries redirecting to home page
@@ -528,14 +468,14 @@ function roots_request_filter($query_vars) {
 
   return $query_vars;
 }
-
 add_filter('request', 'roots_request_filter');
 
 /**
  * Tell WordPress to use searchform.php from the templates/ directory
  */
-function roots_get_search_form() {
-  locate_template('/templates/searchform.php', true, true);
+function roots_get_search_form($argument) {
+  if ($argument === '') {
+    locate_template('/templates/searchform.php', true, false);
+  }
 }
-
 add_filter('get_search_form', 'roots_get_search_form');

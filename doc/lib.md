@@ -13,7 +13,7 @@ This file handles the various WordPress clean up. [About the clean up](cleanup.m
 
 ### config.php
 
-This file is used to enable various theme features, define which pages get the sidebar, set the CSS classes for `#main` and `#sidebar`, set a Google Analytics ID, and set the post excerpt length.
+This file is used to enable various theme features, define which pages get the sidebar, set the CSS classes for `.main` and `.sidebar`, set a Google Analytics ID, and set the post excerpt length.
 
 #### Enable theme features
 
@@ -23,44 +23,25 @@ This file is used to enable various theme features, define which pages get the s
 2. [Rewrites](rewrites.md)
 3. HTML5 Boilerplate's `.htaccess`
 4. Bootstrap's top navbar
+5. Nice Search (redirect `/?s=` to `/search/`)
 
 If you don't want to use one of the features, either comment out the line or remove it.
 
 #### Define which pages shouldn't have the sidebar
 
-`roots_display_sidebar()` is used to define which pages shouldn't get the sidebar. By default, the 404, front `front-page.php` and `page-custom.php` templates are full width. If you would like to remove the sidebar from additional pages, add in the appropriate conditional or page template name.
-
-### h5bp-htaccess
-
-This file contains HTML5 Boilerplate's `.htaccess` which is automatically added by `htaccess.php` if enabled in `config.php`. There are a few changes to the H5BP version:
-
-* Added block to access WordPress files that reveal version information (`wp-config.php`, `readme.html`, `license.txt`)
-* Commented out expires headers (we recommend the use of [W3 Total Cache](http://wordpress.org/extend/plugins/w3-total-cache/))
-* Commented out ETag removal (we recommend the use of [W3 Total Cache](http://wordpress.org/extend/plugins/w3-total-cache/))
-* Commented out start rewrite engine (handled by WordPress)
-* Commented out suppress/force www (handled by WordPress)
-* Commented out `Options -MultiViews` (causes a server 500 error on most shared hosts)
-* Commented out custom 404 page (handled by WordPress)
-
-### htaccess.php
-
-This file handles the clean URL rewrites and HTML5 Boilerplate `.htaccess`. [About the rewrites](rewrites.md).
+`roots_display_sidebar()` is used to define which pages shouldn't get the sidebar. By default, the 404, front `front-page.php` and `template-custom.php` templates are full width. If you would like to remove the sidebar from additional pages, add in the appropriate conditional or page template name.
 
 ### init.php
 
 This file runs the initial theme setup and defines helper constants for later use
 
-### metaboxes.php
-
-This file is a placeholder for you to put in custom metaboxes. We recommend the use of [Custom Metaboxes and Fields for WordPress](https://github.com/jaredatch/Custom-Metaboxes-and-Fields-for-WordPress).
-
 ### nav.php
 
 This file contains all the custom nav modifications (for Bootstrap) and clean up.
 
-### post-types.php
+### rewrites.php
 
-This file is a placeholder for you to put in [custom post types](http://codex.wordpress.org/Function_Reference/register_post_type) and [taxonomies](http://codex.wordpress.org/Function_Reference/register_taxonomy).
+This file handles the clean URL rewrites. [About the rewrites](rewrites.md).
 
 ### scripts.php
 
@@ -90,12 +71,12 @@ If you're using LESS, make sure you compile the files to the proper locations:
 
 JavaScript is loaded in the following order:
 
-1. `/theme/assets/js/vendor/modernizr-2.6.1.min.js` (in `head.php`)
-2. `jquery-1.8.2.min.js` via Google CDN with local fallback (in `head.php`)
-3. `/theme/assets/js/plugins.js`
-4. `/theme/assets/js/main.js`
+1. `jquery-1.9.1.min.js` via Google CDN with local fallback
+2. `/theme/assets/js/vendor/modernizr-2.6.2.min.js`
+3. `/theme/assets/js/plugins.js` (in footer)
+4. `/theme/assets/js/main.js` (in footer)
 
-jQuery is loaded in `head.php` using the same method from HTML5 Boilerplate: grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline. It's kept in the header instead of footer to avoid conflicts with plugins.
+jQuery is loaded using the same method from HTML5 Boilerplate: grab Google CDN's jQuery, with a protocol relative URL; fallback to local if offline. It's kept in the header instead of footer to avoid conflicts with plugins.
 
 `plugins.js` contains a minified version of all the latest Bootstrap plugins.
 
@@ -115,7 +96,7 @@ The theme wrapper is used to serve all of the template files. [About the theme w
 
 This file registers the custom sidebars and custom widgets. There are two initial sidebars:
 
-1. Primary Sidebar (used by `templates/sidebar.php`, included from `base.php` within `#sidebar`)
+1. Primary Sidebar (used by `templates/sidebar.php`, included from `base.php` within `.sidebar`)
 2. Footer (used by `templates/footer.php`)
 
 The included vCard widget can be used to build additional, custom widgets.

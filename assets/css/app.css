@@ -10,11 +10,7 @@ body { }
    Header
    ========================================================================== */
 
-#banner { }
-
-/* Fixed Topbar Navigation */
-body.top-navbar { padding-top: 60px; }
-body.admin-bar .navbar-fixed-top { top: 28px; }
+.banner { }
 
 
 
@@ -22,7 +18,7 @@ body.admin-bar .navbar-fixed-top { top: 28px; }
    Content
    ========================================================================== */
 
-#content { }
+.content { }
 
 
 
@@ -30,7 +26,7 @@ body.admin-bar .navbar-fixed-top { top: 28px; }
    Primary Content
    ========================================================================== */
 
-#main { }
+.main { }
 
 
 
@@ -38,7 +34,7 @@ body.admin-bar .navbar-fixed-top { top: 28px; }
    Sidebar
    ========================================================================== */
 
-#sidebar { }
+.sidebar { }
 
 
 
@@ -48,7 +44,7 @@ body.admin-bar .navbar-fixed-top { top: 28px; }
 
 .hentry header { }
 .hentry time { }
-.hentry p.byline { }
+.hentry .byline { }
 .hentry .entry-content { }
 .hentry footer { }
 
@@ -58,7 +54,7 @@ body.admin-bar .navbar-fixed-top { top: 28px; }
    Footer
    ========================================================================== */
 
-#content-info { }
+.content-info { }
 
 
 
@@ -78,9 +74,6 @@ figure.alignnone { margin-left: 0; margin-right: 0; }
    Media Queries
    ========================================================================== */
 
-@media (max-width: 979px) {
-  /* Fix top padding when using the responsive grid with the fixed topbar */
-  body.top-navbar {
-    padding-top: 0;
-  }
+@media (max-width: 767px) {
+
 }

@@ -4,6 +4,19 @@
 
 Roots is a starting WordPress theme made for developers that’s based on [HTML5 Boilerplate](http://html5boilerplate.com/) and [Bootstrap from Twitter](http://twitter.github.com/bootstrap/).
 
+## Installation
+
+* Clone the git repo - `git clone git://github.com/retlehs/roots.git` - or [download it](https://github.com/retlehs/roots/zipball/master)
+* Reference the [theme activation](activation.md) documentation to understand
+everything that happens once you activate Roots
+
+## Configuration
+
+Edit `lib/config.php` to enable or disable support for various theme functions
+and to define constants that are used throughout the theme.
+
+Edit `lib/init.php` to setup custom navigation menus and post thumbnail sizes.
+
 ## Getting started
 
 * [Usage](usage.md) — Overview of the project contents.
@@ -15,5 +28,5 @@ Roots is a starting WordPress theme made for developers that’s based on [HTML5
 
 ## Development
 
-* [Contributing to Roots](/retlehs/roots/blob/master/CONTRIBUTING.md) — Guidelines on how to contribute effectively.
+* [Contributing to Roots](../CONTRIBUTING.md) — Guidelines on how to contribute effectively.
 * [Extending and customizing Roots](extend.md) — Going further with Roots.

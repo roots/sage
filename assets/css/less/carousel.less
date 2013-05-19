@@ -15,50 +15,51 @@
   position: relative;
 }
 
-.carousel {
+.carousel-inner {
 
-  .item {
+  > .item {
     display: none;
     position: relative;
     .transition(.6s ease-in-out left);
+
+    // Account for jankitude on images
+    > img,
+    > a > img {
+      display: block;
+      line-height: 1;
+    }
   }
 
-  // Account for jankitude on images
-  .item > img {
-    display: block;
-    line-height: 1;
-  }
+  > .active,
+  > .next,
+  > .prev { display: block; }
 
-  .active,
-  .next,
-  .prev { display: block; }
-
-  .active {
+  > .active {
     left: 0;
   }
 
-  .next,
-  .prev {
+  > .next,
+  > .prev {
     position: absolute;
     top: 0;
     width: 100%;
   }
 
-  .next {
+  > .next {
     left: 100%;
   }
-  .prev {
+  > .prev {
     left: -100%;
   }
-  .next.left,
-  .prev.right {
+  > .next.left,
+  > .prev.right {
     left: 0;
   }
 
-  .active.left {
+  > .active.left {
     left: -100%;
   }
-  .active.right {
+  > .active.right {
     left: 100%;
   }
 
@@ -97,14 +98,40 @@
     right: 15px;
   }
 
-  // Hover state
-  &:hover {
+  // Hover/focus state
+  &:hover,
+  &:focus {
     color: @white;
     text-decoration: none;
     .opacity(90);
   }
 }
 
+// Carousel indicator pips
+// -----------------------------
+.carousel-indicators {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  z-index: 5;
+  margin: 0;
+  list-style: none;
+
+  li {
+    display: block;
+    float: left;
+    width: 10px;
+    height: 10px;
+    margin-left: 5px;
+    text-indent: -999px;
+    background-color: #ccc;
+    background-color: rgba(255,255,255,.25);
+    border-radius: 5px;
+  }
+  .active {
+    background-color: #fff;
+  }
+}
 
 // Caption for text below images
 // -----------------------------

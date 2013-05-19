@@ -1,7 +1,12 @@
-/*
-Theme Name:         Roots
-Description:        Used to style the TinyMCE editor
-*/
+/**
+ * Updating this file with Bootstrap changes:
+ *
+ * 1. Go to http://twitter.github.com/bootstrap/customize.html
+ * 2. Un-toggle everything
+ * 3. Check: 'Body type and links', 'Headings, body, etc', 'Code and pre'
+ * 4. Download
+ * 5. Remove margin property on body tag
+ */
 
 .clearfix {
   *zoom: 1;
@@ -31,7 +36,6 @@ Description:        Used to style the TinyMCE editor
   box-sizing: border-box;
 }
 body {
-  margin: 0;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 20px;
@@ -42,7 +46,8 @@ a {
   color: #0088cc;
   text-decoration: none;
 }
-a:hover {
+a:hover,
+a:focus {
   color: #005580;
   text-decoration: underline;
 }
@@ -89,17 +94,46 @@ cite {
 .muted {
   color: #999999;
 }
+a.muted:hover,
+a.muted:focus {
+  color: #808080;
+}
 .text-warning {
   color: #c09853;
+}
+a.text-warning:hover,
+a.text-warning:focus {
+  color: #a47e3c;
 }
 .text-error {
   color: #b94a48;
 }
+a.text-error:hover,
+a.text-error:focus {
+  color: #953b39;
+}
 .text-info {
   color: #3a87ad;
 }
+a.text-info:hover,
+a.text-info:focus {
+  color: #2d6987;
+}
 .text-success {
   color: #468847;
+}
+a.text-success:hover,
+a.text-success:focus {
+  color: #356635;
+}
+.text-left {
+  text-align: left;
+}
+.text-right {
+  text-align: right;
+}
+.text-center {
+  text-align: center;
 }
 h1,
 h2,
@@ -110,7 +144,7 @@ h6 {
   margin: 10px 0;
   font-family: inherit;
   font-weight: bold;
-  line-height: 1;
+  line-height: 20px;
   color: inherit;
   text-rendering: optimizelegibility;
 }
@@ -124,35 +158,34 @@ h6 small {
   line-height: 1;
   color: #999999;
 }
-h1 {
-  font-size: 36px;
+h1,
+h2,
+h3 {
   line-height: 40px;
+}
+h1 {
+  font-size: 38.5px;
 }
 h2 {
-  font-size: 30px;
-  line-height: 40px;
+  font-size: 31.5px;
 }
 h3 {
-  font-size: 24px;
-  line-height: 40px;
+  font-size: 24.5px;
 }
 h4 {
-  font-size: 18px;
-  line-height: 20px;
+  font-size: 17.5px;
 }
 h5 {
   font-size: 14px;
-  line-height: 20px;
 }
 h6 {
-  font-size: 12px;
-  line-height: 20px;
+  font-size: 11.9px;
 }
 h1 small {
-  font-size: 24px;
+  font-size: 24.5px;
 }
 h2 small {
-  font-size: 18px;
+  font-size: 17.5px;
 }
 h3 small {
   font-size: 14px;
@@ -183,6 +216,21 @@ ul.unstyled,
 ol.unstyled {
   margin-left: 0;
   list-style: none;
+}
+ul.inline,
+ol.inline {
+  margin-left: 0;
+  list-style: none;
+}
+ul.inline > li,
+ol.inline > li {
+  display: inline-block;
+  *display: inline;
+  /* IE7 inline-block hack */
+
+  *zoom: 1;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 dl {
   margin-bottom: 20px;
@@ -227,7 +275,8 @@ hr {
   border-top: 1px solid #eeeeee;
   border-bottom: 1px solid #ffffff;
 }
-abbr[title] {
+abbr[title],
+abbr[data-original-title] {
   cursor: help;
   border-bottom: 1px dotted #999999;
 }
@@ -242,9 +291,9 @@ blockquote {
 }
 blockquote p {
   margin-bottom: 0;
-  font-size: 16px;
+  font-size: 17.5px;
   font-weight: 300;
-  line-height: 25px;
+  line-height: 1.25;
 }
 blockquote small {
   display: block;
@@ -298,6 +347,7 @@ code {
   color: #d14;
   background-color: #f7f7f9;
   border: 1px solid #e1e1e8;
+  white-space: nowrap;
 }
 pre {
   display: block;
@@ -322,6 +372,8 @@ pre.prettyprint {
 pre code {
   padding: 0;
   color: inherit;
+  white-space: pre;
+  white-space: pre-wrap;
   background-color: transparent;
   border: 0;
 }
