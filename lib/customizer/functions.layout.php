@@ -18,8 +18,8 @@ function shoestrap_section_class( $target, $echo = false ) {
 
   if ( is_active_sidebar( 'sidebar-secondary' ) && is_active_sidebar( 'sidebar-primary' ) ) {
     if ( $layout >= 4 ) {
-      $main       = $base . ( 12 - $first - $second );
-      $primary    = $base . $first;
+      $main       = $base . ceil( ( 12 - $first ) * ( 12 - $second ) / 12 );
+      $primary    = $base . ( 12 - ceil( ( 12 - $first ) * ( 12 - $second ) / 12 ) );
       $secondary  = $base . $second;
       $wrapper    = $base . ( 12 - $second );
       $wrap       = true;
