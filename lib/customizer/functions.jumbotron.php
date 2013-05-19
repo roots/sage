@@ -7,7 +7,9 @@
 function jumbotron_content() {
   $hero = false;
     if ( ( get_theme_mod( 'jumbotron_visibility' ) == 1 && is_front_page() ) || get_theme_mod( 'jumbotron_visibility' ) != 1 ) {
-      $hero = true;
+      if ( is_active_sidebar( 'Jumbotron' ) ) {
+        $hero = true;
+      }
     }
 
   if ( $hero == true ) :
@@ -16,7 +18,7 @@ function jumbotron_content() {
     if ( get_theme_mod( 'jumbotron_nocontainer' ) != 1 )
       echo '<div class="container">';
 
-    dynamic_sidebar('hero-area');
+    dynamic_sidebar('Jumbotron');
 
     if ( get_theme_mod( 'jumbotron_nocontainer' ) != 1 )
       echo '</div>';

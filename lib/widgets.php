@@ -23,8 +23,8 @@ function roots_widgets_init() {
   ));
 
   register_sidebar(array(
-    'name'          => __('Hero Area', 'shoestrap'),
-    'id'            => 'hero-area',
+    'name'          => __('Jumbotron', 'shoestrap'),
+    'id'            => 'jumbotron',
     'before_widget' => '<section id="%1$s"><div class="section-inner">',
     'after_widget'  => '</div></section>',
     'before_title'  => '<h1>',
