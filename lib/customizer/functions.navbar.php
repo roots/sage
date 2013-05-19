@@ -32,7 +32,7 @@ function shoestrap_navbar_searchbox() {
     <?php
   }
 }
-add_action( 'shoestrap_nav_top_right', 'shoestrap_navbar_searchbox', 11 );
+add_action( 'shoestrap_post_main_nav', 'shoestrap_navbar_searchbox', 11 );
 
 /*
  * The template for the navbar login link
