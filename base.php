@@ -28,7 +28,7 @@
       <div class="main <?php shoestrap_section_class( 'main', true ); ?>" role="main">
         <?php include roots_template_path(); ?>
       </div><!-- /.main -->
-      <?php if ( roots_display_sidebar() && get_theme_mod( 'layout' ) > 0 ) : ?>
+      <?php if ( get_theme_mod( 'layout' ) != 0 && ( roots_display_sidebar() || ( is_front_page() && get_theme_mod( 'layout_sidebar_on_front' ) == 1 ) ) ) : ?>
       <aside class="sidebar <?php shoestrap_section_class( 'primary', true ); ?>" role="complementary">
         <?php include roots_sidebar_path(); ?>
       </aside><!-- /.sidebar -->
