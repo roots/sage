@@ -1,0 +1,168 @@
+
+@rounded-corners {
+	border-radius: 10px;
+}
+
+.bold {
+	@font-size: 20px;
+	font-size: @font-size;
+	font-weight: bold;
+}
+
+body #window {
+	@rounded-corners;
+	.bold;
+	line-height: @font-size * 1.5;
+}
+
+#bundle {
+  .button {
+    display: block;
+    border: 1px solid black;
+    background-color: grey;
+    &:hover { background-color: white }
+  }
+}
+#header a {
+  color: orange;
+  #bundle > .button; // mixin the button class
+}
+
+div {
+	@abstract {
+		hello: world;
+		b {
+			color: blue;
+		}
+	}
+
+	@abstract > b;
+	@abstract;
+}
+
+@poop {
+	big: baby;
+}
+
+body {
+	div;
+}
+
+// not using > to list mixins
+
+.hello {
+  .world {
+    color: blue;
+  }
+}
+
+.foobar {
+  .hello .world;
+}
+
+
+.butter {
+	.this .one .isnt .found;
+}
+
+
+// arguments
+
+.spam(@something: 100, @dad: land) {
+	@wow: 23434;
+    foo: @arguments;
+    bar: @arguments;
+}
+
+.eggs {
+    .spam(1px, 2px);
+    .spam();
+}
+
+.first(@one, @two, @three, @four: cool) {
+	cool: @arguments;
+}
+
+#hello {
+	.first(one, two, three);
+}
+
+#hello-important {
+	.first(one, two, three) !important;	
+}
+
+.rad(@name) {
+	cool: @arguments;
+}
+
+#world {
+	@hello: "world";
+	.rad("@{hello}");
+}
+
+.second(@x, @y:skip, @z: me) {
+	things: @arguments;
+}
+
+#another {
+	.second(red, blue, green);
+	.second(red blue green);
+}
+
+
+.another(@x, @y:skip, @z:me) {
+  .cool {
+    color: @arguments;
+  }
+}
+
+#day {
+	.another(one,two, three);
+	.another(one two three);
+}
+
+
+.to-be-important() {
+  color: red;
+  @color: red;
+  height: 20px;
+
+  pre {
+    color: @color;
+  }
+}
+
+.mix-suffix {
+  .to-be-important() !important;
+}
+
+
+
+
+#search-all {
+  .red() {
+    color:#f00 !important;
+  }
+}
+
+#search-all {
+  .green() {
+    color: #0f0 !important;
+  }
+}
+
+.search-test {
+	#search-all > .red();
+	#search-all > .green();
+}
+
+
+// mixin self without infinite loop
+.cowboy() {
+	color: blue;
+}
+
+.cowboy {
+	.cowboy;
+}
+

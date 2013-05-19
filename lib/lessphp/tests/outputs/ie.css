@@ -1,0 +1,9 @@
+foo {
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=1,startColorstr=#c0ff3300,endColorstr=#ff000000);
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=1,startColorstr=#c0ff3300,endColorstr=#ff000000);
+}
+foo {
+  filter: alpha(opacity=20);
+  filter: alpha(opacity=20,enabled=true);
+  filter: blaznicate(foo=bar,baz=bang bip,bart=#fa4600);
+}

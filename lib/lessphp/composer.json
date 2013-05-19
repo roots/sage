@@ -1,0 +1,25 @@
+{
+    "name": "leafo/lessphp",
+    "type": "library",
+    "description": "lessphp is a compiler for LESS written in PHP.",
+    "homepage": "http://leafo.net/lessphp/",
+    "license": [
+      "MIT",
+      "GPL-3.0"
+    ],
+    "authors": [
+        {
+            "name": "Leaf Corcoran",
+            "email": "leafot@gmail.com",
+            "homepage": "http://leafo.net"
+        }
+    ],
+    "autoload": {
+        "classmap": ["lessc.inc.php"]
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.3-dev"
+        }
+    }
+}

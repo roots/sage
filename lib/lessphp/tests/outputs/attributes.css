@@ -1,0 +1,105 @@
+* {
+  color: blue;
+}
+E {
+  color: blue;
+}
+E[foo] {
+  color: blue;
+}
+[foo] {
+  color: blue;
+}
+[foo] .helloWorld {
+  color: blue;
+}
+[foo].helloWorld {
+  color: blue;
+}
+E[foo="barbar"] {
+  color: blue;
+}
+E[foo~="hello#$@%@$#^"] {
+  color: blue;
+}
+E[foo^="color: green;"] {
+  color: blue;
+}
+E[foo$="239023"] {
+  color: blue;
+}
+E[foo*="29302"] {
+  color: blue;
+}
+E[foo|="239032"] {
+  color: blue;
+}
+E:root {
+  color: blue;
+}
+E:nth-child(odd) {
+  color: blue;
+}
+E:nth-child(2n+1) {
+  color: blue;
+}
+E:nth-child(5) {
+  color: blue;
+}
+E:nth-last-child(-n+2) {
+  color: blue;
+}
+E:nth-of-type(2n) {
+  color: blue;
+}
+E:nth-last-of-type(n) {
+  color: blue;
+}
+E:first-child {
+  color: blue;
+}
+E:last-child {
+  color: blue;
+}
+E:first-of-type {
+  color: blue;
+}
+E:last-of-type {
+  color: blue;
+}
+E:only-child {
+  color: blue;
+}
+E:only-of-type {
+  color: blue;
+}
+E:empty {
+  color: blue;
+}
+E:lang(en) {
+  color: blue;
+}
+E::first-line {
+  color: blue;
+}
+E::before {
+  color: blue;
+}
+E#id {
+  color: blue;
+}
+E:not(:link) {
+  color: blue;
+}
+E F {
+  color: blue;
+}
+E > F {
+  color: blue;
+}
+E + F {
+  color: blue;
+}
+E ~ F {
+  color: blue;
+}

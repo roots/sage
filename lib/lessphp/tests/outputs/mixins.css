@@ -1,0 +1,86 @@
+.bold {
+  font-size: 20px;
+  font-weight: bold;
+}
+body #window {
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 30px;
+}
+#bundle .button {
+  display: block;
+  border: 1px solid black;
+  background-color: grey;
+}
+#bundle .button:hover {
+  background-color: white;
+}
+#header a {
+  color: orange;
+  display: block;
+  border: 1px solid black;
+  background-color: grey;
+}
+#header a:hover {
+  background-color: white;
+}
+div {
+  color: blue;
+  hello: world;
+}
+div b {
+  color: blue;
+}
+body {
+  color: blue;
+  hello: world;
+}
+body b {
+  color: blue;
+}
+.hello .world {
+  color: blue;
+}
+.foobar {
+  color: blue;
+}
+.eggs {
+  foo: 1px 2px;
+  bar: 1px 2px;
+  foo: 100 land;
+  bar: 100 land;
+}
+#hello {
+  cool: one two three cool;
+}
+#hello-important {
+  cool: one two three cool !important;
+}
+#world {
+  cool: "world";
+}
+#another {
+  things: red blue green;
+  things: red blue green skip me;
+}
+#day .cool {
+  color: one two three;
+}
+#day .cool {
+  color: one two three skip me;
+}
+.mix-suffix {
+  color: red !important;
+  height: 20px !important;
+}
+.mix-suffix pre {
+  color: red;
+}
+.search-test {
+  color: #f00 !important;
+  color: #0f0 !important;
+}
+.cowboy {
+  color: blue;
+}

@@ -1,0 +1,100 @@
+
+@tester {
+	p, div { height: 10px; }
+}
+
+#test1 {
+	div { color: red; }
+	@tester;
+}
+
+
+@cool {
+	a,b,i { width: 1px; }
+}
+
+#test2 {
+	b { color: red; }
+	@cool;
+}
+
+#test3 {
+	@cool;
+	b { color: red; }
+}
+
+@cooler {
+	a { margin: 1px; }
+}
+
+#test4 {
+	a, div, html { color: blue; }
+	@cooler;
+}
+
+@hi {
+	img, strong { float: right; }
+}
+
+#test5 {
+	img, strong { padding: 2px; }
+	@hi;
+}
+
+@nested {
+	div, span {
+		a {
+			color: red;
+		}
+	}
+}
+
+#test6 {
+	div, span {
+		a {
+			line-height: 10px;
+		}
+	}
+	@nested;
+}
+
+@broken-nesting {
+	div, span {
+		strong, b { 
+			color: red;
+		}
+	}
+
+}
+
+#test7 {
+	div {
+		strong { 
+			margin: 1px;
+		}
+	}
+	@broken-nesting;
+}
+
+
+@another-nest {
+	a,b {
+		i {
+			color: red;
+		}
+
+		s {
+			color: blue;
+		}
+	}
+}
+
+#test8 {
+	a, b {
+		i,s {
+			background: red;
+		}
+	}
+	@another-nest;
+}
+

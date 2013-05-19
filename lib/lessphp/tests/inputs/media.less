@@ -1,0 +1,68 @@
+@media screen, 3D {
+	P { color: green; }
+}
+@media print {
+	body { font-size: 10pt }
+}
+@media screen {
+	body { font-size: 13px }
+}
+@media screen, print {
+	body { line-height: 1.2 }
+}
+
+@media all and (min-width: 0px) {
+	body { line-height: 1.2 }
+}
+
+@media all and (min-width: 0) {
+	body { line-height: 1.2 }
+}
+
+@media
+	screen and (min-width: 102.5em) and (max-width: 117.9375em),
+	screen and (min-width: 150em) {
+    body { color: blue }
+}
+
+
+@media screen and (min-height: 100px + 10px) {
+	body { color: red; }
+}
+
+@cool: 100px;
+
+@media screen and (height: @cool) and (width: @cool + 10), (size: @cool + 20) {
+	body { color: red; }
+}
+
+
+// media bubbling
+
+@media test {
+	div {
+		height: 20px;
+		@media (hello) {
+			color: red;
+
+			pre {
+				color: orange;
+			}
+		}
+	}
+}
+
+// should not cross boundary
+@media yeah {
+	@page {
+		@media cool {
+			color: red;
+		}
+	}
+}
+
+// variable in query
+@mobile: ~"(max-width: 599px)";
+@media @mobile {
+	.helloworld { color: blue }
+}

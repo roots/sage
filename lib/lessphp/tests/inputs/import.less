@@ -1,0 +1,56 @@
+
+@import 'file1.less'; // file found and imported
+
+@import "not-found";
+
+@import "something.css" media;
+@import url("something.css") media;
+@import url(something.css) media, screen, print; 
+
+@color: maroon;
+
+@import url(file2); // found and imported
+
+body { 
+	line-height: 10em;
+	@colors;
+}
+
+div {
+	@color: fuchsia;
+	@import "file2";
+}
+
+
+.mixin-import() {
+	@import "file3";
+}
+
+.one {
+	.mixin-import();
+	color: blue;
+}
+
+.two {
+	.mixin-import();
+}
+
+
+#merge-import-mixins {
+	@import "a";
+	@import "b";
+	div { .just-a-class; }
+}
+
+
+@import "inner/file1";
+
+
+// test bubbling variables up from imports, while preserving order
+
+pre {
+	color: @someValue;
+}
+
+@import "file3";
+

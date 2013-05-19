@@ -1,0 +1,102 @@
+body {
+  color: #ff0000;
+  color: #ffffff;
+  color: #000000;
+  color: #996d33;
+  color: rgba(153,109,51,0.3);
+  lighten: #ffffff;
+  lighten: #7c8df2;
+  lighten: rgba(222,140,129,0.5);
+  darken: #d6d6d6;
+  darken: #0d1e81;
+  darken: rgba(18,42,185,0.5);
+  saturate: #f1eded;
+  saturate: #0025fe;
+  saturate: rgba(10,44,244,0.5);
+  desaturate: #efefef;
+  desaturate: #3349cb;
+  desaturate: rgba(36,62,218,0.5);
+  spin: #efefef;
+  spin: #2d17e7;
+  spin: rgba(59,23,231,0.5);
+  spin: #efefef;
+  spin: #1769e7;
+  spin: rgba(23,119,231,0.5);
+  one: #abcdef;
+  one: #abcdef;
+  two: rgba(2,159,35,0.9);
+  two: rgba(2,159,35,0.9);
+  three: rgba(1,2,3,0.6);
+  three: rgba(1,2,3,0.6);
+  four: rgba(1,2,3,0);
+  four: rgba(1,2,3,0);
+  hue: 282;
+  sat: 33;
+  lit: 12;
+  what: #dff1da;
+  zero: #343434;
+  zero: #003468;
+  zero: #000000;
+  zero: #ffffff;
+  zero: #000000;
+  zero: #ffffff;
+  zero: #ffffff;
+  zero: #ffffff;
+  zero: #1d5612;
+  zero: #56124b;
+  zero: #000000;
+  zero: #ffffff;
+}
+alpha {
+  g: 0;
+  g: 1;
+}
+fade {
+  f: rgba(255,0,0,0.5);
+  f: rgba(255,255,255,0.2);
+  f: rgba(34,23,64,0.5);
+}
+.mix {
+  color: #808080;
+  color: rgba(6,3,2,-0.25);
+}
+.contrast {
+  color: #0000ff;
+  color: #ff0000;
+}
+.percent {
+  per: 50%;
+}
+.colorz {
+  color: #ebebeb;
+  color: #ff9100;
+  color: #000000;
+}
+body {
+  start: #fcf8e3;
+  spin: #fcf4e3;
+  chained: #fbeed5;
+  direct: #fbefd5;
+}
+pre {
+  spin: #f2dee1;
+}
+dd {
+  background-color: #f5f5f5;
+}
+.ops {
+  c: #4d0000;
+  c: #004000;
+  c: #020002;
+  c: #ffffff;
+  c: #fb8173;
+  c: 132 / #ff0000;
+  c: 132 - #ff0000;
+  c: 132- #ff0000;
+}
+.transparent {
+  r: 0;
+  g: 0;
+  b: 0;
+  a: 0;
+}

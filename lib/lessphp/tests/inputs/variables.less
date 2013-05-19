@@ -1,0 +1,45 @@
+@a: 2;
+@x: @a * @a;
+@y: @x + 1;
+@z: @y + @x * 2;
+@m: @z % @y;
+ 
+@nice-blue: #5B83AD;
+@light-blue: @nice-blue + #111;
+
+@rgb-color: rgb(20%, 15%, 80%);
+@rgba-color: rgba(23,68,149,0.5);
+ 
+@b: @a * 10px;
+@c: #888;
+@fonts: "Trebuchet MS", Verdana, sans-serif;
+ 
+.variables {
+  width: @z + 1cm; // 14cm
+  height: @b + @x + 0px; // 24px
+  margin-top: -@b; // -20px
+  margin-bottom: 10 - -@b; // 30px
+  @d: @c + #001;
+  color: @d;
+  background: @light-blue;
+  font-family: @fonts;
+  margin: @m + 0px; // 3px
+  font: 10px/12px serif;
+  font: 120%/120% serif;
+}
+
+.external {
+  color: @c;
+  border: 1px solid @rgb-color;
+  background: @rgba-color;
+  padding: @nonexistant + 4px;
+}
+
+@hello: 44px;
+@something: "hello";
+@cool: something;
+
+color: @@something;
+color: @@@cool;
+
+

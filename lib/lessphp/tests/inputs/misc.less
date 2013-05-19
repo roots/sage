@@ -1,0 +1,93 @@
+
+@color: #fff;
+@base_path: "/assets/images/";
+@images: @base_path + "test/"; 
+.topbar { background: url(@{images}topbar.png); }
+.hello { test: empty-function(@images, 40%, to(@color)); }
+
+.css3 {
+	background-image: -webkit-gradient(linear, 0% 0%, 0% 90%, 
+		from(#E9A000), to(#A37000));
+}
+
+
+/**
+
+Here is a block comment
+
+**/
+
+
+// this is a comment
+
+.test, /*hello*/.world {
+	border: 1px solid red; // world
+	/* another property */
+	color: url(http://mage-page.com);
+	string: "hello /* this is not a comment */";
+	world: "// neither is this";
+	string: 'hello /* this is not a comment */' /*what if this is a comment */;
+	world: '// neither is this' // hell world;
+	;
+	what-/*something?*/ever: 100px;
+	background: url(/*no comment here*/);
+}
+
+
+.urls {
+	@var: "http://google.com";
+	background: url(@var);
+	background: url(@{var});
+	background: url("@{var}");
+}
+
+.mix(@arg) { color: @arg; }
+@aaa: aaa;
+@bbb: bbb;
+// make sure the opening selector isn't too greedy
+.cool {.mix("@{aaa}, @{bbb}")}
+.cool();
+
+.cool("{hello");
+.cool('{hello');
+
+
+// merging of mixins
+.span-17 { float: left; }
+.span-17 { width: 660px; }
+
+.x {.span-17;}
+
+.hi {
+	pre {
+		color: red;
+	}
+}
+
+.hi {
+	pre {
+		color: blue;
+	}
+}
+
+.rad {
+	.hi;
+}
+
+
+hello {
+	numbers: 1.0 0.1 .1 1.;
+	numbers: 1.0s 0.1s .1s 1.s;
+	numbers: -1.0s -0.1s -.1s -1.s;
+	numbers: -1.0 -0.1 -.1 -1.;
+}
+
+
+#string {
+	hello: 'what\'s going on here';
+	hello: 'blah blag @{ blah blah';
+
+	join: 3434 + "hello";
+	join: 3434 + hello;
+}
+

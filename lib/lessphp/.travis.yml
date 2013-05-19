@@ -1,0 +1,5 @@
+language: php
+script: phpunit tests
+php:
+  - 5.3
+  - 5.4

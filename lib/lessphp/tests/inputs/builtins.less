@@ -1,0 +1,73 @@
+// builtin
+
+@something: "hello world";
+@color: #112233;
+@color2: rgba(44,55,66, .6);
+
+body {
+	color: @something;
+
+	@num: 7 / 6;
+	height: @num + 4;
+	height: floor(@num) + 4px;
+	height: ceil(@num) + 4px;
+
+	@num2: 2 / 3;
+	width: @num2;
+	width: round(@num2);
+	width: floor(@num2);
+	width: ceil(@num2);
+	width: round(10px / 3);
+
+	color: rgbahex(@color);
+	color: rgbahex(@color2);
+	color: argb(@color2);
+}
+
+
+format {
+  @r: 32;
+  format: %("rgb(%d, %d, %d)", @r, 128, 64);
+  format-string: %("hello %s", "world");
+  format-multiple: %("hello %s %d", "earth", 2);
+  format-url-encode: %('red is %A', #ff0000);
+  eformat: e(%("rgb(%d, %d, %d)", @r, 128, 64));
+}
+
+
+#functions {
+	str: isstring("hello");
+	str: isstring(one, two);
+
+	num: isnumber(2323px);
+	num: isnumber(2323);
+	num: isnumber(4/5);
+	num: isnumber("hello");
+
+	col: iscolor(red);
+	col: iscolor(hello);
+	col: iscolor(rgba(0,0,0,0.3));
+	col: iscolor(#fff);
+
+	key: iskeyword(hello);
+	key: iskeyword(3D);
+
+	px: ispixel(10px);
+	px: ispixel(10);
+
+	per: ispercentage(10%);
+	per: ispercentage(10);
+
+	em: isem(10em);
+	em: isem(10);
+}
+
+
+#unit {
+	@unit: "em";
+	height: unit(10px);
+	height: unit(10px, "s");
+	height: unit(10px, @unit);
+	height: unit(0.07407s) * 100%;
+}
+

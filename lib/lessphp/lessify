@@ -1,0 +1,23 @@
+#!/usr/bin/php
+<?php
+
+if (php_sapi_name() != "cli") { 
+	err($fa.$argv[0]." must be run in the command line.");
+	exit(1);
+}
+$exe = array_shift($argv); // remove filename
+
+if (!$fname = array_shift($argv)) {
+	exit("Usage: ".$exe." input-file\n");
+}
+
+require "lessify.inc.php";
+
+try  {
+	$parser = new lessify($fname);
+	echo $parser->parse();
+} catch (exception $e) {
+	exit("Fatal error: ".$e->getMessage()."\n");
+}
+
+

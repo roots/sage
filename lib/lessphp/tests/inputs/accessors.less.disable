@@ -1,0 +1,36 @@
+/* accessors */
+
+#defaults {
+	@width: 960px;
+	@color: black;
+	.something {
+		@space: 10px;
+		@hello {
+			color: green;
+		}
+	}
+}
+
+.article { color: #294366; }
+
+.comment {
+	width: #defaults[@width];
+	color: .article['color']; 
+	padding: #defaults > .something[@space];
+}
+
+.wow {
+	height: .comment['width'];
+	background-color: .comment['color']; 
+	color: #defaults > .something > @hello['color'];
+
+	padding: #defaults > non-existant['padding'];
+	margin: #defaults > .something['non-existant'];
+}
+
+.mix {
+	#defaults;
+	font-size: .something[@space];
+}
+
+

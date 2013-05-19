@@ -1,0 +1,76 @@
+default .underline {
+  border-bottom: 1px solid green;
+}
+default #header {
+  color: black;
+  border: 1px solid #dd44dd;
+}
+default #header .navigation {
+  font-size: 12px;
+}
+default #header .navigation a {
+  border-bottom: 1px solid green;
+}
+default #header .logo {
+  width: 300px;
+}
+default #header .logo:hover {
+  text-decoration: none;
+}
+variables .variables {
+  width: 14cm;
+  height: 24px;
+  color: #888;
+  background: #6c94be;
+  font-family: "Trebuchet MS", Verdana, sans-serif;
+}
+mixins .bordered {
+  border-top: dotted 1px black;
+  border-bottom: solid 2px black;
+}
+mixins #menu a {
+  color: #111;
+  border-top: dotted 1px black;
+  border-bottom: solid 2px black;
+}
+mixins .post a {
+  color: red;
+  border-top: dotted 1px black;
+  border-bottom: solid 2px black;
+}
+nested-rules #header {
+  color: black;
+}
+nested-rules #header .navigation {
+  font-size: 12px;
+}
+nested-rules #header .logo {
+  width: 300px;
+}
+nested-rules #header .logo:hover {
+  text-decoration: none;
+}
+namespaces #bundle .button {
+  display: block;
+  border: 1px solid black;
+  background-color: grey;
+}
+namespaces #bundle .button:hover {
+  background-color: white;
+}
+namespaces #header a {
+  color: orange;
+  display: block;
+  border: 1px solid black;
+  background-color: grey;
+}
+namespaces #header a:hover {
+  background-color: white;
+}
+mixin-functions body {
+  padding: 2.0em;
+  color: red;
+  margin: 10px;
+  height: 12px;
+  border-bottom: 1px solid green;
+}

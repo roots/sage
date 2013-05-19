@@ -1,0 +1,28 @@
+
+@hello: "utf-8";
+@charset @hello;
+
+@-moz-document url-prefix(){
+	div {
+		color: red;
+	}
+}
+
+@page :left { margin-left: 4cm; }
+@page :right { margin-left: 3cm; }
+@page { margin: 2cm }
+
+@-ms-viewport {
+    width: device-width;
+}
+@-moz-viewport {
+    width: device-width;
+}
+@-o-viewport {
+    width: device-width;
+}
+@viewport {
+    width: device-width;
+}
+
+

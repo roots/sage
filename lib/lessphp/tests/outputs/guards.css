@@ -1,0 +1,27 @@
+dd {
+  color: yellow;
+}
+b {
+  color: red;
+  color: blue;
+  color: blue;
+}
+img {
+  color: green;
+  color: teal;
+}
+body {
+  color: purple;
+  color: silver;
+  color: purple;
+}
+div {
+  color: blue;
+}
+link {
+  color: true red;
+  color: true #fff;
+  color: true #fffddd;
+  color: true #000000;
+  color: true rgba(0,0,0,0.34);
+}

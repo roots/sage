@@ -1,0 +1,20 @@
+
+body {
+	@hello: "world";
+	border: e("this is simple");
+	border: e(this is simple); // bug in lessjs
+	border: e("this is simple", "cool lad");
+	border: e(1232);
+	border: e(@hello);
+	border: e("one" + 'more'); // no string addition lessjs
+	border: e(); // syntax error lessjs
+
+	line-height: ~"eating rice";
+	line-height: ~"string cheese";
+	line-height: a b c ~"string me" d e f;
+	line-height: ~"string @{hello}";
+}
+
+.class {
+	filter: ~"progid:DXImageTransform.Microsoft.AlphaImageLoader(src='image.png')";
+}

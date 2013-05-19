@@ -1,0 +1,17 @@
+@font-face {
+  font-family: Graublau Sans Web;
+  src: url(fonts/GraublauWeb.otf) format("opentype");
+}
+@font-face {
+  font-family: Gentium;
+  src: url('fonts/Gentium.ttf');
+}
+@font-face {
+  font-family: Gentium;
+  src: url("fonts/GentiumItalic.ttf");
+  font-style: italic;
+}
+h2 {
+  font-family: Gentium;
+  crazy: maroon;
+}

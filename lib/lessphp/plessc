@@ -1,0 +1,250 @@
+#!/usr/bin/env php
+<?php
+// Command line utility to compile LESS to STDOUT
+// Leaf Corcoran <leafot@gmail.com>, 2012
+
+$exe = array_shift($argv); // remove filename
+
+$HELP = <<<EOT
+Usage: $exe [options] input-file [output-file]
+
+Options include:
+
+    -h, --help  Show this message
+    -v          Print the version
+    -f=format   Set the output format, includes "default", "compressed"
+    -c          Keep /* */ comments in output
+    -r          Read from STDIN instead of input-file
+    -w          Watch input-file, and compile to output-file if it is changed
+    -T          Dump formatted parse tree
+    -X          Dump raw parse tree
+
+
+EOT;
+
+$opts = getopt('hvrwncXTf:', array('help'));
+while (count($argv) > 0 && preg_match('/^-([-hvrwncXT]$|[f]=)/', $argv[0])) {
+	array_shift($argv);
+}
+
+function has() {
+	global $opts;
+	foreach (func_get_args() as $arg) {
+		if (isset($opts[$arg])) return true;
+	}
+	return false;
+}
+
+if (has("h", "help")) {
+	exit($HELP);
+}
+
+error_reporting(E_ALL);
+$path  = realpath(dirname(__FILE__)).'/';
+
+require $path."lessc.inc.php";
+
+$VERSION = lessc::$VERSION;
+
+$fa = "Fatal Error: ";
+function err($msg) {
+	fwrite(STDERR, $msg."\n");
+}
+
+if (php_sapi_name() != "cli") {
+	err($fa.$argv[0]." must be run in the command line.");
+	exit(1);
+}
+
+function make_less($fname = null) {
+	global $opts;
+	$l = new lessc($fname);
+
+	if (has("f")) {
+		$format = $opts["f"];
+		if ($format != "default") $l->setFormatter($format);
+	}
+
+	if (has("c")) {
+		$l->setPreserveComments(true);
+	}
+
+	return $l;
+}
+
+function process($data, $import = null) {
+	global $fa;
+
+	$l = make_less();
+	if ($import) $l->importDir = $import;
+
+	try {
+		echo $l->parse($data);
+		exit(0);
+	} catch (exception $ex) {
+		err($fa."\n".str_repeat('=', 20)."\n".
+			$ex->getMessage());
+		exit(1);
+	}
+}
+
+if (has("v")) {
+	exit($VERSION."\n");
+}
+
+if (has("r")) {
+	if (!empty($argv)) {
+		$data = $argv[0];
+	} else {
+		$data = "";
+		while (!feof(STDIN)) {
+			$data .= fread(STDIN, 8192);
+		}
+	}
+	exit(process($data));
+}
+
+if (has("w")) {
+	// need two files
+	if (!is_file($in = array_shift($argv)) ||
+		null == $out = array_shift($argv))
+	{
+		err($fa.$exe." -w infile outfile");
+		exit(1);
+	}
+
+	echo "Watching ".$in.
+		(has("n") ? ' with notifications' : '').
+		", press Ctrl + c to exit.\n";
+
+	$cache = $in;
+	$last_action = 0;
+	while (true) {
+		clearstatcache();
+
+		// check if anything has changed since last fail
+		$updated = false;
+		if (is_array($cache)) {
+			foreach ($cache['files'] as $fname=>$_) {
+				if (filemtime($fname) > $last_action) {
+					$updated = true;
+					break;
+				}
+			}
+		} else $updated = true;
+
+		// try to compile it
+		if ($updated) {
+			$last_action = time();
+
+			try {
+				$cache = lessc::cexecute($cache);
+				echo "Writing updated file: ".$out."\n";
+				if (!file_put_contents($out, $cache['compiled'])) {
+					err($fa."Could not write to file ".$out);
+					exit(1);
+				}
+			} catch (exception $ex) {
+				echo "\nFatal Error:\n".str_repeat('=', 20)."\n".
+					$ex->getMessage()."\n\n";
+
+				if (has("n")) {
+					`notify-send -u critical "compile failed" "{$ex->getMessage()}"`;
+				}
+			}
+		}
+
+		sleep(1);
+	}
+	exit(0);
+}
+
+if (!$fname = array_shift($argv)) {
+	echo $HELP;
+	exit(1);
+}
+
+function dumpValue($node, $depth = 0) {
+	if (is_object($node)) {
+		$indent = str_repeat("  ", $depth);
+		$out = array();
+		foreach ($node->props as $prop) {
+			$out[] = $indent . dumpValue($prop, $depth + 1);
+		}
+		$out = implode("\n", $out);
+		if (!empty($node->tags)) {
+			$out = "+ ".implode(", ", $node->tags)."\n".$out;
+		}
+		return $out;
+	} elseif (is_array($node)) {
+		if (empty($node)) return "[]";
+		$type = $node[0];
+		if ($type == "block")
+			return dumpValue($node[1], $depth);
+
+		$out = array();
+		foreach ($node as $value) {
+			$out[] = dumpValue($value, $depth);
+		}
+		return "{ ".implode(", ", $out)." }";
+	} else {
+		if (is_string($node) && preg_match("/[\s,]/", $node)) {
+			return '"'.$node.'"';
+		}
+		return $node; // normal value
+	}
+}
+
+
+function stripValue($o, $toStrip) {
+	if (is_array($o) || is_object($o)) {
+		$isObject = is_object($o);
+		$o = (array)$o;
+		foreach ($toStrip as $removeKey) {
+			if (!empty($o[$removeKey])) {
+				$o[$removeKey] = "*stripped*";
+			}
+		}
+
+		foreach ($o as $k => $v) {
+			$o[$k] = stripValue($v, $toStrip);
+		}
+
+		if ($isObject) {
+			$o = (object)$o;
+		}
+	}
+
+	return $o;
+}
+
+function dumpWithoutParent($o, $alsoStrip=array()) {
+	$toStrip = array_merge(array("parent"), $alsoStrip);
+	print_r(stripValue($o, $toStrip));
+}
+
+try {
+	$less = make_less($fname);
+	if (has("T", "X")) {
+		$parser = new lessc_parser($less, $fname);
+		$tree = $parser->parse(file_get_contents($fname));
+		if (has("X"))
+			$out = print_r($tree, 1);
+		else
+			$out = dumpValue($tree)."\n";
+	} else {
+		$out = $less->parse();
+	}
+
+	if (!$fout = array_shift($argv)) {
+		echo $out;
+	} else {
+		file_put_contents($fout, $out);
+	}
+
+} catch (exception $ex) {
+	err($fa.$ex->getMessage());
+	exit(1);
+}
+
+?>

@@ -1,0 +1,40 @@
+
+
+@a: 10;
+@some {
+	@b: @a + 10;
+	div {
+		@c: @b + 10;
+		other {
+			@d: @c + 10;
+			world {
+				@e: @d + 10;
+				height: @e;
+			}
+		}
+	}
+}
+
+
+body {
+	@some;
+}
+
+@some;
+
+.test(@x: 10) {
+	height: @x;	
+	.test(@y: 11) {
+		height: @y;	
+		.test(@z: 12) {
+			height: @z;	
+		}
+		.test;
+	}
+	.test;
+}
+
+pre {
+	.test;
+}
+
