@@ -48,23 +48,24 @@ function shoestrap_navbar_login_link() {
     $link  = wp_login_url( get_permalink() );
     $label = __( 'Login/Register', 'shoestrap' );
   }
-  $content = '<ul class="pull-right nav nav-collapse">';
-  $content .= '<li class="dropdown">';
-  $content .= '<a href="#" class="pull-right dropdown-toggle" data-toggle="dropdown">';
-  $content .= '<i class="icon-user"></i><b class="caret"></b>';
-  $content .= '<ul class="dropdown-menu">';
-  $content .= '<li>';
-  $content .= '<a href="' . $link . '">' . $label . '</a>';
-  $content .= '</li>';
-  $content .= do_action( 'shoestrap_login_link_additions' );
-  $content .= '</ul>';
-  $content .= '</li></ul>';
+  $content = '
+  <ul class="pull-right nav nav-collapse">
+    <li class="dropdown">
+      <a href="#" class="pull-right dropdown-toggle" data-toggle="dropdown">
+      <i class="glyphicon glyphicon-user"></i>
+      <b class="caret"></b>
+      <ul class="dropdown-menu">
+        <li><a href="' . $link . '">' . $label . '</a></li>'
+        . do_action( 'shoestrap_login_link_additions' ) . 
+      '</ul>
+    </li>
+  </ul>';
   
   if ( $primary_login_link == 1 ) {
     echo $content;
   }
 }
-add_action( 'shoestrap_nav_top_right', 'shoestrap_navbar_login_link', 11 );
+add_action( 'shoestrap_post_main_nav', 'shoestrap_navbar_login_link', 11 );
 
 function shoestrap_navbar_class() {
   $pos  = get_theme_mod( 'navbar_position' );
