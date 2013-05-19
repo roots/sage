@@ -14,12 +14,102 @@ function roots_widgets_init() {
   ));
 
   register_sidebar(array(
-    'name'          => __('Footer', 'roots'),
-    'id'            => 'sidebar-footer',
-    'before_widget' => '<section class="widget %1$s %2$s"><div class="widget-inner">',
+    'name'          => __('Secondary Sidebar', 'shoestrap'),
+    'id'            => 'sidebar-secondary',
+    'before_widget' => '<section id="%1$s" class="panel widget %2$s"><div class="widget-inner">',
     'after_widget'  => '</div></section>',
-    'before_title'  => '<h3>',
-    'after_title'   => '</h3>',
+    'before_title'  => '<div class="panel-heading">',
+    'after_title'   => '</div>',
+  ));
+
+  register_sidebar(array(
+    'name'          => __('Hero Area', 'shoestrap'),
+    'id'            => 'hero-area',
+    'before_widget' => '<section id="%1$s"><div class="section-inner">',
+    'after_widget'  => '</div></section>',
+    'before_title'  => '<h1>',
+    'after_title'   => '</h1>',
+  ));
+
+  register_sidebar(array(
+    'name'          => __('Header Area', 'shoestrap'),
+    'id'            => 'header-area',
+    'before_widget' => '<div class="container">',
+    'after_widget'  => '</div>',
+    'before_title'  => '<h1>',
+    'after_title'   => '</h1>',
+  ));
+
+  register_sidebar(array(
+    'name'          => __('Footer Left', 'shoestrap'),
+    'id'            => 'sidebar-footer-left',
+    'before_widget' => '<section id="%1$s" class="panel widget %2$s"><div class="widget-inner">',
+    'after_widget'  => '</div></section>',
+    'before_title'  => '<div class="panel-heading">',
+    'after_title'   => '</div>',
+  ));
+
+  register_sidebar(array(
+    'name'          => __('Footer Center', 'shoestrap'),
+    'id'            => 'sidebar-footer-center',
+    'before_widget' => '<section id="%1$s" class="panel widget %2$s"><div class="widget-inner">',
+    'after_widget'  => '</div></section>',
+    'before_title'  => '<div class="panel-heading">',
+    'after_title'   => '</div>',
+  ));
+
+  register_sidebar(array(
+    'name'          => __('Footer Right', 'shoestrap'),
+    'id'            => 'sidebar-footer-right',
+    'before_widget' => '<section id="%1$s" class="panel widget %2$s"><div class="widget-inner">',
+    'after_widget'  => '</div></section>',
+    'before_title'  => '<div class="panel-heading">',
+    'after_title'   => '</div>',
+  ));
+
+  register_sidebar(array(
+    'name'          => __('Navbar Slide-Down Top', 'shoestrap'),
+    'id'            => 'navbar-slide-down-top',
+    'before_widget' => '<section id="%1$s" class="panel widget %2$s"><div class="widget-inner">',
+    'after_widget'  => '</div></section>',
+    'before_title'  => '<div class="panel-heading">',
+    'after_title'   => '</div>',
+  ));
+
+  register_sidebar(array(
+    'name'          => __('Navbar Slide-Down 1', 'shoestrap'),
+    'id'            => 'navbar-slide-down-1',
+    'before_widget' => '<section id="%1$s" class="panel widget %2$s"><div class="widget-inner">',
+    'after_widget'  => '</div></section>',
+    'before_title'  => '<div class="panel-heading">',
+    'after_title'   => '</div>',
+  ));
+
+  register_sidebar(array(
+    'name'          => __('Navbar Slide-Down 2', 'shoestrap'),
+    'id'            => 'navbar-slide-down-2',
+    'before_widget' => '<section id="%1$s" class="panel widget %2$s"><div class="widget-inner">',
+    'after_widget'  => '</div></section>',
+    'before_title'  => '<div class="panel-heading">',
+    'after_title'   => '</div>',
+  ));
+
+  register_sidebar(array(
+    'name'          => __('Navbar Slide-Down 3', 'shoestrap'),
+    'id'            => 'navbar-slide-down-3',
+    'before_widget' => '<section id="%1$s" class="panel widget %2$s"><div class="widget-inner">',
+    'after_widget'  => '</div></section>',
+    'before_title'  => '<div class="panel-heading">',
+    'after_title'   => '</div>',
+  ));
+
+  register_sidebar(array(
+    'name'          => __('Navbar Slide-Down 4', 'shoestrap'),
+    'id'            => 'navbar-slide-down-4',
+    'before_widget' => '<section id="%1$s" class="panel widget %2$s"><div class="widget-inner">',
+    'after_widget'  => '</div></section>',
+    'before_title'  => '<div class="panel-heading">',
+    'after_title'   => '</div>',
   ));
 
   // Widgets
