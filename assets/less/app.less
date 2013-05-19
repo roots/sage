@@ -1,0 +1,282 @@
+// Required from wordpress.org
+.wp-caption {}
+.wp-caption-text {}
+.sticky {}
+.gallery-caption {}
+.bypostauthor {}
+
+.aligncenter {
+  display: block;
+  margin: 0 auto;
+}
+
+// alignleft floating for images
+.alignleft {
+  float: left;
+}
+
+// alignright floating for images
+.alignright {
+  float: right;
+}
+
+figure.alignnone {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+// Hack for the fluid layouts
+.container.fluid {
+  max-width: 98%;
+}
+
+// Add a 30px padding on the top of #wrap
+@media screen and (min-width: @screen-small) {
+  #wrap {
+    padding: @grid-gutter-width;
+  }
+}
+
+// Add padding & margins to the body and navbarsaccording to our primary navbar selections
+body {
+  &.top-navbar {
+    &.admin-bar {
+      padding-top: 53px;
+      .topnavbar {
+        &.navbar-fixed-top {
+          padding-top: 85px;
+        }
+      }
+    }
+  }
+  .navbar.navbar-static-top {
+    margin-bottom: 0;
+  }
+  &.bottom-navbar {
+    padding-bottom: 64px;
+  }
+}
+
+// responsive hacks for the navbar
+@media screen and (min-width: @screen-small) {
+  body {
+    &.top-navbar {
+      padding-top: 60px;
+    }
+    &.bottom-navbar {
+      padding-bottom: 60px;
+    }
+  }
+}
+
+// styling the bottom left corner button
+#shoestrap_icon {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  a {
+    width: 100px;
+    height: 20px;
+    display: block;
+    background: url("../img/bottom-corner.png") no-repeat bottom left;
+    color: #fff;
+    font-size: 40px;
+    opacity: 0.3;
+    text-decoration: none;
+    padding: 80px 0 40px 5px;
+    -webkit-transition: all 350ms linear;
+    -moz-transition: all 350ms linear;
+    -ms-transition: all 350ms linear;
+    -o-transition: all 350ms linear;
+    transition: all 350ms linear;
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+// Styling the (+) button on the navbar 
+a.toggle-nav {
+  background: url("../img/plus-toggle-white.png") no-repeat center center;
+  position: relative;
+  top: 12px;
+  width: 16px;
+  height: 16px;
+  display:block;
+  opacity:0.4;
+  z-index:1;
+  float: left;
+  font-size: 20px;
+  text-decoration: none;
+  -webkit-transition:all 500ms ease-in-out;
+  -moz-transition:all 500ms ease-in-out;
+  -o-transition:all 500ms ease-in-out;
+  -ms-transition:all 500ms ease-in-out;
+  &.open {
+    -moz-transform:rotate(135deg);
+    -webkit-transform:rotate(135deg);
+    -o-transform:rotate(135deg);
+    -ms-transform:rotate(135deg);
+    transform:rotate(135deg);
+    opacity:0.8;
+    -moz-transform-origin:center center
+  }
+  &.black {
+    background: url("../img/plus-toggle-black.png") no-repeat center center;
+  }
+}
+
+// Megadrop styles
+#megaDrop {
+  display: none;
+  padding: 20px 10px;
+}
+
+// Adding bootstrap btn styles to wordpress's .button elements
+.button {
+  .btn;
+  .btn-default;
+}
+
+// Styling lists in widgets
+.widget-inner {
+  ul {
+    .list-group;
+    li {
+      .list-group-item;
+      ul {
+        display: none;
+      }
+      &:hover {
+        ul {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+// make sure that images do don exceed the maximum width of their parent element
+.thumbnail {
+  max-width: 100%;
+  height: auto;
+}
+
+// Styles for the social sharing buttons that are generated from the sharrre script
+#social-sharing{
+  .clearfix;
+  .shareme {
+    .box{
+      .btn;
+      .btn-small;
+      display:inline-block;
+      position:relative;
+      float:left;
+      clear:both;
+      overflow:hidden;
+      -webkit-transition:all 0.3s linear;
+      -moz-transition:all 0.3s linear;
+      -o-transition:all 0.3s linear;
+      transition:all 0.3s linear;
+    }
+    .left{
+      display:block;
+      white-space:nowrap;
+      -webkit-transition:all 0.2s linear;
+      -moz-transition:all 0.2s linear;
+      -o-transition:all 0.2s linear;
+      transition:all 0.2s linear;
+    }
+    .middle{
+      position:absolute;
+      top:0px;
+      right:40px;
+      width:0px;
+      white-space:nowrap;
+      text-align:left;
+      overflow:hidden;
+      -webkit-transition:width 0.3s linear;
+      -moz-transition:width 0.3s linear;
+      -o-transition:width 0.3s linear;
+      transition:width 0.3s linear;
+      a{
+        padding: 3px 0;
+        display: inline-block;
+        width: 30px;
+        height: 100%;
+        text-align:center;
+        float:left;
+        &:hover{
+          text-decoration:none;
+        }
+      }
+    }
+    .right{
+      position:absolute;
+      right:0px;
+      top:0px;
+      height:100%;
+      width: 3em;
+      text-align:center;
+      line-height:22px;
+    }
+  }
+}
+
+@media (max-width: @navbarCollapseWidth) {
+  /* Fix top padding when using the responsive grid with the fixed topbar */
+  body.top-navbar {
+    padding-top: 0;
+  }
+}
+
+// Hide the bottom left corner button (customizer) on small screens
+@media (max-width: @gridColumnWidth768 - 1) {
+  .admin-customize {
+    display: none;
+  }
+}
+
+// Styling the '.label-tag' tag
+.label {
+  &.label-tag {
+    background: @gray-lighter;
+    -webkit-transition:all 0.2s linear;
+    -moz-transition:all 0.2s linear;
+    -o-transition:all 0.3s linear;
+    transition:all 0.3s linear;
+    a {
+      color: @text-color;
+      -webkit-transition:all 0.3s linear;
+      -moz-transition:all 0.3s linear;
+      -o-transition:all 0.3s linear;
+      transition:all 0.3s linear;
+      &:hover {
+        text-decoration: none;
+      }
+    }
+    &:hover {
+      background: @gray;
+      a {
+        color: @body-bg;
+      }
+    }
+  }
+}
+
+// 
+@media (min-width: @screen-small) {
+  .meta-row {
+    height: 1.7em;
+    overflow: hidden;
+   &:hover {
+      overflow: visible;
+    }
+    .tags-container {
+      background: @body-bg;
+      position: absolute;
+      line-height: 1.7em;
+      z-index: 99;
+    }
+  }
+}
