@@ -5075,3 +5075,6 @@ fieldset[disabled] #social-sharing .shareme .box {
     z-index: 99;
   }
 }
+.topnavbar input.search-query {
+  margin-top: 20px;
+}
