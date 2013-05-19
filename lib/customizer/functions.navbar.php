@@ -1,5 +1,11 @@
 <?php
 
+function shoestrap_disable_navbar() {
+  if ( get_theme_mod( 'navbar_toggle' ) != 1 )
+    remove_theme_support('bootstrap-top-navbar');  // Disable Bootstrap's top navbar
+}
+add_action( 'wp', 'shoestrap_disable_navbar' );
+
 function shoestrap_nav_class_pull() {
   if ( get_theme_mod( 'navbar_nav_right' ) == '1' ) {
     $ul = 'nav navbar-nav pull-right';
