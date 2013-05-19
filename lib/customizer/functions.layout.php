@@ -14,6 +14,7 @@ function shoestrap_section_class( $target, $echo = false ) {
   $primary    = NULL;
   $secondary  = NULL;
   $wrapper    = NULL;
+  $wrap       = false;
 
   if ( is_active_sidebar( 'sidebar-secondary' ) && is_active_sidebar( 'sidebar-primary' ) ) {
     if ( $layout >= 4 ) {
@@ -21,6 +22,7 @@ function shoestrap_section_class( $target, $echo = false ) {
       $primary    = $base . $first;
       $secondary  = $base . $second;
       $wrapper    = $base . ( 12 - $second );
+      $wrap       = true;
     } elseif ( $layout >= 2 ) {
       $main       = $base . ( 12 - $first );
       $primary    = $base . $first;
@@ -64,6 +66,9 @@ function shoestrap_section_class( $target, $echo = false ) {
     echo $class;
   else
     return $class;
+
+  if ( $target == 'wrap' )
+    return $wrap;
 }
 
 /*
