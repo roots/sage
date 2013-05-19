@@ -413,7 +413,7 @@ function shoestrap_customizer_init( $wp_customize ) {
     'label'     => __( 'NavBar Positioning', 'shoestrap' ),
     'section'   => 'navbar',
     'priority'  => 32,
-    'choises'   => array(
+    'choices'   => array(
       0         => __( 'Normal', 'shoestrap' ),
       1         => __( 'Fixed to Top', 'shoestrap' ),
       2         => __( 'Fixed to Bottom', 'shoestrap' )
@@ -427,7 +427,7 @@ function shoestrap_customizer_init( $wp_customize ) {
     'label'     => __( 'Webfont weight:', 'shoestrap' ),
     'section'   => 'typography',
     'priority'  => 4,
-    'choises'   => array(
+    'choices'   => array(
       200     => __( '200', 'shoestrap' ),
       300     => __( '300', 'shoestrap' ),
       400     => __( '400', 'shoestrap' ),
@@ -445,7 +445,7 @@ function shoestrap_customizer_init( $wp_customize ) {
     'label'     => __( 'Webfont character set:', 'shoestrap' ),
     'section'   => 'typography',
     'priority'  => 5,
-    'choises'   => array(
+    'choices'   => array(
       'cyrillic'      => __( 'Cyrillic', 'shoestrap' ),
       'cyrillic-ext'  => __( 'Cyrillic Extended', 'shoestrap' ),
       'greek'         => __( 'Greek', 'shoestrap' ),
@@ -463,7 +463,7 @@ function shoestrap_customizer_init( $wp_customize ) {
     'label'     => __( 'Apply Webfont to:', 'shoestrap' ),
     'section'   => 'typography',
     'priority'  => 6,
-    'choises'   => array(
+    'choices'   => array(
       'sitename'  => __( 'Site Name', 'shoestrap' ),
       'headers'   => __( 'Headers', 'shoestrap' ),
       'all'       => __( 'Everywhere', 'shoestrap' )
@@ -473,17 +473,17 @@ function shoestrap_customizer_init( $wp_customize ) {
   $settings[] = array(
     'setting'   => 'layout_layout', 
     'default'   => 'mp',
-    'type'      => 'select', 
+    'type'      => 'radio', 
     'label'     => __( 'Layout', 'shoestrap' ), 
     'section'   => 'layout',
     'priority'  => 2,
-    'choises'   => array(
-      'm'       => __( 'Main only', 'shoestrap' ),
-      'mp'      => __( 'Main-Primary', 'shoestrap' ),
-      'pm'      => __( 'Primary-Main', 'shoestrap' ),
-      'mps'     => __( 'Main-Primary-Secondary', 'shoestrap' ),
-      'pms'     => __( 'Primary-Main-Secondary', 'shoestrap' ),
-      'psm'     => __( 'Primary-Secondary-Main', 'shoestrap' ),
+    'choices'   => array(
+      1         => __( 'Full Width', 'shoestrap' ),
+      2         => __( 'Right Sidebar', 'shoestrap' ),
+      3         => __( 'Left Sidebar', 'shoestrap' ),
+      4         => __( '2 Left Sidebars', 'shoestrap' ),
+      5         => __( '2 Right Sidebars', 'shoestrap' ),
+      6         => __( 'Split Sidebars', 'shoestrap' ),
     )
   );
 
@@ -494,7 +494,7 @@ function shoestrap_customizer_init( $wp_customize ) {
     'label'     => __( 'Primary Sidebar Width', 'shoestrap' ),
     'section'   => 'layout',
     'priority'  => 3,
-    'choises'   => array(
+    'choices'   => array(
       2         => '2/12',
       3         => '3/12',
       4         => '4/12',
@@ -510,7 +510,7 @@ function shoestrap_customizer_init( $wp_customize ) {
     'label'     => __( 'Secondary Sidebar Width', 'shoestrap' ),
     'section'   => 'layout',
     'priority'  => 5,
-    'choises'   => array(
+    'choices'   => array(
       2         => '2/12',
       3         => '3/12',
       4         => '4/12'
@@ -524,7 +524,7 @@ function shoestrap_customizer_init( $wp_customize ) {
     'label'     => __( 'Show sidebars on the Home Page', 'shoestrap' ),
     'section'   => 'layout',
     'priority'  => 6,
-    'choises'   => array(
+    'choices'   => array(
       'show'    => __( 'Show', 'shoestrap' ),
       'hide'    => __( 'Hide', 'shoestrap' )
     )
@@ -695,7 +695,7 @@ function shoestrap_customizer_init( $wp_customize ) {
         'settings'  => $setting['setting'],
         'type'      => 'select',
         'priority'  => $setting['priority'],
-        'choices'   => $setting['choises']
+        'choices'   => $setting['choices']
       ));
     } elseif ( $setting['type'] == 'checkbox' ) {
       $wp_customize->add_setting( $setting[ 'setting' ], array(
