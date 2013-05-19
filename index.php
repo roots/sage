@@ -1,5 +1,6 @@
 <?php get_template_part('templates/page', 'header'); ?>
 
+<?php do_action( 'shoestrap_index_begin' ); ?>
 <?php if (!have_posts()) : ?>
   <div class="alert">
     <?php _e('Sorry, no results were found.', 'roots'); ?>
@@ -8,7 +9,13 @@
 <?php endif; ?>
 
 <?php while (have_posts()) : the_post(); ?>
-  <?php get_template_part('templates/content', get_post_format()); ?>
+  <?php do_action( 'shoestrap_in_loop_start_action' ); ?>
+  <?php
+  if ( !has_action( 'shoestrap_article_content' ) )
+    get_template_part('templates/content', get_post_format());
+  else
+    do_action( 'shoestrap_article_content' );
+  ?>
 <?php endwhile; ?>
 
 <?php if ($wp_query->max_num_pages > 1) : ?>
@@ -19,3 +26,4 @@
     </ul>
   </nav>
 <?php endif; ?>
+<?php do_action( 'shoestrap_index_end' ); ?>

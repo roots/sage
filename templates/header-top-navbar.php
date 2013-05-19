@@ -9,6 +9,7 @@
       <a class="brand" href="<?php echo home_url(); ?>/">
         <?php bloginfo('name'); ?>
       </a>
+      <?php do_action( 'shoestrap_pre_main_nav' ); ?>
       <nav class="nav-main nav-collapse collapse" role="navigation">
         <?php
           if (has_nav_menu('primary_navigation')) :
@@ -16,6 +17,8 @@
           endif;
         ?>
       </nav>
+      <?php do_action( 'shoestrap_post_main_nav' ); ?>
     </div>
   </div>
+  <?php do_action( 'shoestrap_post_navbar' ); ?>
 </header>

@@ -13,8 +13,17 @@
     }
   ?>
 
+  <?php if ( has_action( 'shoestrap_below_top_navbar' ) ) : ?>
+    <div class="before-main-wrapper">
+      <?php do_action('shoestrap_below_top_navbar'); ?>
+    </div>
+  <?php endif; ?>
+
+  <?php do_action('shoestrap_pre_wrap'); ?>
   <div class="wrap container" role="document">
+    <?php do_action('shoestrap_pre_content'); ?>
     <div class="content row">
+      <?php do_action('shoestrap_pre_main'); ?>
       <div class="main <?php echo roots_main_class(); ?>" role="main">
         <?php include roots_template_path(); ?>
       </div><!-- /.main -->
@@ -24,9 +33,13 @@
       </aside><!-- /.sidebar -->
       <?php endif; ?>
     </div><!-- /.content -->
+    <?php do_action('shoestrap_after_content'); ?>
   </div><!-- /.wrap -->
+  <?php do_action('shoestrap_after_wrap'); ?>
 
+  <?php do_action('shoestrap_pre_footer'); ?>
   <?php get_template_part('templates/footer'); ?>
+  <?php do_action('shoestrap_after_footer'); ?>
 
 </body>
 </html>
