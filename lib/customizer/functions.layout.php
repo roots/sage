@@ -3,79 +3,67 @@
 /*
  * Calculates the classes of the main area, main sidebar and secondary sidebar
  */
-function shoestrap_sidebar_class_calc( $target, $offset = '', $echo = false ) {
-  $first  = get_theme_mod( 'shoestrap_aside_width' );
-  $second = get_theme_mod( 'shoestrap_secondary_width' );
-  $layout = get_theme_mod( 'shoestrap_layout' );
-  $fluid  = get_theme_mod( 'shoestrap_fluid' );
+function shoestrap_section_class( $target, $echo = false ) {
+  $layout = get_theme_mod( 'layout' );
+  $first  = get_theme_mod( 'layout_primary_width' );
+  $second = get_theme_mod( 'layout_secondary_width' );
   
-  // If secondary sidebar is empty, ignore it.
-  if ( !is_active_sidebar( 'sidebar-secondary' ) ) {
-    $main      = 'col col-lg-' . ( 12 - $first );
-    $primary   = 'col col-lg-' . $first;
-  // If secondary sidebar is not empty, do not ignore it.
-  } else {
-    $main      = 'col col-lg-' . ( 12 - $first - $second );
-    $primary   = 'col col-lg-' . $first;
-    $secondary = 'col col-lg-' . $second;
+  $base   = 'col col-lg-';
+  // Set some defaults so that we can change them depending on the selected template
+  $main       = $base . 12;
+  $primary    = NULL;
+  $secondary  = NULL;
+  $wrapper    = NULL;
+
+  if ( is_active_sidebar( 'sidebar-secondary' ) && is_active_sidebar( 'sidebar-primary' ) ) {
+    if ( $layout >= 4 ) {
+      $main       = $base . ( 12 - $first - $second );
+      $primary    = $base . $first;
+      $secondary  = $base . $second;
+      $wrapper    = $base . ( 12 - $second );
+    } elseif ( $layout >= 2 ) {
+      $main       = $base . ( 12 - $first );
+      $primary    = $base . $first;
+      $secondary  = NULL;
+    }
+  } elseif ( !is_active_sidebar( 'sidebar-secondary' ) && is_active_sidebar( 'sidebar-primary' ) ) {
+    if ( $layout >= 2 ) {
+      $main       = $base . ( 12 - $first );
+      $primary    = $base . $first;
+      $secondary  = NULL;
+    }
+  } elseif ( is_active_sidebar( 'sidebar-secondary' ) && !is_active_sidebar( 'sidebar-primary' ) ) {
+    if ( $layout >= 4 ) {
+      $main       = $base . ( 12 - $second );
+      $secondary  = $base . $second;
+    }
   }
 
-  if ( ( $layout == 'pms' ) || ( $layout == 'mps' ) || ( $layout == 'smp' ) || ( $layout == 'spm' ) ) {
-    $main = 'col col-lg-' . ( 12 - $first );
-  }
-
-  $main_primary = 'col col-lg-' . ( 12 - $second );
-  
-  // If the layout is "Main only", the main area should have a class of col col-lg-12
-  if ( $layout == 'm' ) {
-    $main = 'col col-lg-12';
-  }
-  
-  // If the layout contains only the main area and primary sidebar, ignore the secondary sidebar width
-  if ( in_array( $layout, array( 'mp', 'pm' ) ) ) {
-    $main = 'col col-lg-' . ( 12 - $first );
-  }
-  
-  // If the layout contains only the main area and secondary sidebar, ignore the primary sidebar width
-  if ( in_array( $layout, array( 'ms', 'sm' ) ) ) {
-    $main = 'col col-lg-' . ( 12 - $second );
-  }
-  
   // Overrides main region class when selected template is page-full.php
   if ( is_page_template('page-full.php') ) {
-    $main = 'col col-lg-12';
+    $main         = $base . 12;
   }
 
   // Overrides main and primary region classes when selected template is page-primary-sidebar.php
   if ( is_page_template('page-primary-sidebar.php') ) {
-    $main      = 'col col-lg-' . ( 12 - $first );
-    $primary   = 'col col-lg-' . $first;
+    $main      = $base . ( 12 - $first );
+    $primary   = $base . $first;
   }  
 
-  if ( $target == 'primary' ) {
-    // return the primary class
+  if ( $target == 'primary' )
     $class = $primary;
-  } elseif ( $target == 'secondary' ) {
-    // return the secondary class
+  elseif ( $target == 'secondary' )
     $class = $secondary;
-  } elseif ( $target == 'main-primary' ) {
-    $class = $main_primary;
-  } else {
-    // return the main class
+  elseif ( $target == 'wrapper' )
+    $class = $wrapper;
+  else
     $class = $main;
-  }
-  
-  // if we've selected an offset, add it here.
-  if ( $offset ) {
-    $class = $class . ' offset' . $offset;
-  }
-  
-  // Echo or return the result.
-  if ( $echo ) {
+
+  // echo or return the result.
+  if ( $echo )
     echo $class;
-  } else {
+  else
     return $class;
-  }
 }
 
 /*
