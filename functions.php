@@ -19,6 +19,15 @@ require_once locate_template('/lib/lessphp/lessc.inc.php');   // Include the les
 require_once locate_template('/lib/image_resize/resize.php'); // Include the Image Resizer
 require_once locate_template('/lib/resize.php');              // Adding helper image resizing functions
 
-require_once locate_template('/lib/customizer/init.php');               // Initialize the Customizer
-require_once locate_template('/lib/customizer/helper.functions.php');   // Helper functions for the customizer
-require_once locate_template('/lib/customizer/compiler.php');           // LESSPHP Compiler for Bootstrap 3
+require_once locate_template('/lib/customizer/init.php');                     // Initialize the Customizer
+require_once locate_template('/lib/customizer/helper.functions.php');         // Helper functions for the customizer
+require_once locate_template('/lib/customizer/compiler.php');                 // LESSPHP Compiler for Bootstrap 3
+require_once locate_template('/lib/customizer/functions.advanced.php');       // Extra functions for the "Advanced" Customizer section
+require_once locate_template('/lib/customizer/functions.featured-image.php'); // Extra functions for the "Featured Image" Customizer section
+require_once locate_template('/lib/customizer/functions.footer.php');         // Extra functions for the "Footer" Customizer section
+require_once locate_template('/lib/customizer/functions.header.php');         // Extra functions for the "Header" Customizer section
+require_once locate_template('/lib/customizer/functions.jumbotron.php');      // Extra functions for the "Jumbotron (Hero)" Customizer section
+require_once locate_template('/lib/customizer/functions.layout.php');         // Extra functions for the "Layout" Customizer section
+require_once locate_template('/lib/customizer/functions.logo.php');           // Extra functions for the "Logo" Customizer section
+require_once locate_template('/lib/customizer/functions.navbar.php');         // Extra functions for the "NavBar" Customizer section
+require_once locate_template('/lib/customizer/functions.typography.php');     // Extra functions for the "Typography" Customizer section
