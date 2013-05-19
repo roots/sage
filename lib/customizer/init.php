@@ -471,7 +471,7 @@ function shoestrap_customizer_init( $wp_customize ) {
   );
 
   $settings[] = array(
-    'setting'   => 'layout_layout', 
+    'setting'   => 'layout', 
     'default'   => 'mp',
     'type'      => 'radio', 
     'label'     => __( 'Layout', 'shoestrap' ), 
