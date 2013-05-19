@@ -5,7 +5,7 @@ function shoestrap_footer_css() {
   $cl = get_theme_mod( 'footer_color' );
   
   echo '<style>';
-  echo '#footer-wrapper{background:' . $bg . '; color:' . $cl . ';}';
+  echo 'footer.content-info{background:' . $bg . '; color:' . $cl . ';}';
   echo '</style>';
 }
 add_action( 'wp_head', 'shoestrap_footer_css' );
