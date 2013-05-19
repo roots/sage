@@ -59,3 +59,15 @@ function shoestrap_navbar_login_link() {
   }
 }
 add_action( 'shoestrap_nav_top_right', 'shoestrap_navbar_login_link', 11 );
+
+function shoestrap_navbar_class() {
+  $pos  = get_theme_mod( 'navbar_position' );
+
+  if ( $pos == 1 )
+    $class = 'navbar navbar-fixed-top';
+  elseif ( $pos == 2 )
+    $class = 'navbar navbar-fixed-bottom';
+  else $class = 'navbar navbar-static-top';
+
+  return $class;
+}
