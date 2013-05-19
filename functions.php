@@ -15,6 +15,7 @@ require_once locate_template('/lib/widgets.php');         // Sidebars and widget
 require_once locate_template('/lib/scripts.php');         // Scripts and stylesheets
 require_once locate_template('/lib/custom.php');          // Custom functions
 
-require_once locate_template('/lib/customizer/init.php');     // Initialize the Customizer
 require_once locate_template('/lib/lessphp/lessc.inc.php');   // Include the less compiler
 require_once locate_template('/lib/image_resize/resize.php'); // Include the Image Resizer
+
+require_once locate_template('/lib/customizer/init.php');     // Initialize the Customizer
