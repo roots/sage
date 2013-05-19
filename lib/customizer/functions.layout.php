@@ -90,3 +90,10 @@ function shoestrap_sidebars_positioning_css() {
 
 }
 add_action( 'wp_head', 'shoestrap_sidebars_positioning_css' );
+
+function shoestrap_container_class() {
+  $fluid = get_theme_mod( 'fluid' );
+
+  if ( $fluid != 1 )
+    return 'container';
+}

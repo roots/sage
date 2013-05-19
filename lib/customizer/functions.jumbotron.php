@@ -16,7 +16,7 @@ function jumbotron_content() {
     echo '<div class="jumbotron">';
 
     if ( get_theme_mod( 'jumbotron_nocontainer' ) != 1 )
-      echo '<div class="container">';
+      echo '<div class="' . shoestrap_container_class() . '">';
 
     dynamic_sidebar('Jumbotron');
 

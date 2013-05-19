@@ -1,5 +1,5 @@
 <header id="banner" class="topnavbar <?php echo shoestrap_navbar_class(); ?>" role="banner">
-  <div class="container">
+  <div class="<?php echo shoestrap_container_class(); ?>">
   <a class="btn navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>

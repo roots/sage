@@ -20,7 +20,7 @@
   <?php endif; ?>
 
   <?php do_action('shoestrap_pre_wrap'); ?>
-  <div class="wrap container" role="document">
+  <div class="wrap <?php echo shoestrap_container_class(); ?>" role="document">
     <?php do_action('shoestrap_pre_content'); ?>
     <div class="content row">
       <?php do_action('shoestrap_pre_main'); ?>

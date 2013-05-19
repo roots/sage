@@ -260,7 +260,7 @@ function shoestrap_customizer_init( $wp_customize ) {
   );
 
   $settings[] = array(
-    'setting'   => 'layout_fluid',
+    'setting'   => 'fluid',
     'default'   => '',
     'type'      => 'checkbox', 
     'label'     => __( 'Fluid Layout', 'shoestrap' ), 
