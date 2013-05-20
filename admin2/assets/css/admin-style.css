@@ -6,8 +6,9 @@
 	display:none!important
 } /* disable the admin notices */
 #of_container {
-	margin: 15px;
-	width: 785px;
+	margin: 1%;
+	width: 98%;
+	min-width: 940px;
 	position:relative;
 	z-index: 0
 }
@@ -15,18 +16,6 @@
 	height: 70px;
 	background:#f1f1f1;
 	border: 1px solid #ccc;
-	-webkit-border-radius: 6px 6px 0 0;
-	-moz-border-radius: 6px 6px 0 0;
-	border-radius: 6px 6px 0 0;
-	background-image: -ms-linear-gradient(top,#f9f9f9,#ececec);
-	background-image: -moz-linear-gradient(top,#f9f9f9,#ececec);
-	background-image: -o-linear-gradient(top,#f9f9f9,#ececec);
-	background-image: -webkit-gradient(linear,left top,left bottom,from(#f9f9f9),to(#ececec));
-	background-image: -webkit-linear-gradient(top,#f9f9f9,#ececec);
-	background-image: linear-gradient(top,#f9f9f9,#ececec);
-	-moz-box-shadow: inset 0 1px 0 #fff;
-	-webkit-box-shadow: inset 0 1px 0 #fff;
-	box-shadow: inset 0 1px 0 #fff;
 }
 #of_container #header .logo {
 	float: left;
@@ -102,7 +91,7 @@ border-radius: 2px;
 	float: left;
 	position: relative;
 	z-index: 9999;
-	width: 160px;
+	width: 20%;
 }
 #of_container #of-nav ul {
 	margin:0;
@@ -132,14 +121,14 @@ border-radius: 2px;
 	background-repeat: no-repeat;
 	background-position: 13px 10px;
 	font-weight:bold;
-	font-size: 12px;
+	font-size: 14px;
 	text-decoration: none;
 	color: #555;
 	opacity: 0.5;
 }
 #of_container #of-nav ul li.current a {
 	background-color: #fcfcfc;
-	color: #797979;
+	color: #333;
 	opacity: 1;
 }
 
@@ -160,10 +149,10 @@ border-radius: 2px;
 #of_container #content {
 	float: left;
 	min-height: 500px;
-	width: 595px;
+	width: 78%;
 	margin-left: -1px;
-	padding: 0 14px;
-	font-family: "Lucida Grande", Sans-serif;
+	padding: 0 1%;
+	font-family: "Open Sans", Sans-serif;
 	background-color: #FCFCFC;
 	border-left: 1px solid #d8d8d8;
 	-moz-box-shadow: inset 0 1px 0 #fff;
@@ -181,15 +170,15 @@ border-radius: 2px;
 }
 #of_container #content .section .controls {
 	float: left;
-	width: 345px;
-	margin: 0 15px 0 0;
+	width: 50%;
+	margin: 0 1% 0 0;
 }
 #of_container #content .section .explain {
 	float: left;
-	width: 225px;
-	padding: 0 10px 0 0;
-	font-size: 11px;
-	color: #999999;
+	width: 48%;
+	padding: 0 1% 0 0;
+	font-size: 14px;
+	color: #555;
 }
 #of_container #content .section-checkbox .controls {
 	width:25px
@@ -298,9 +287,6 @@ border-radius: 2px;
 
 
 #of_container textarea, #of_container input, #of_container select, #of_container button{
-	-webkit-border-radius: 3px;
-	-moz-border-radius: 3px;
-	border-radius: 3px;
 	border-style:solid;
 	border-width:1px;
 }

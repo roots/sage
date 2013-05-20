@@ -1,0 +1,31 @@
+.wp-full-overlay-sidebar-content .button {
+
+	padding: 0px 5px;
+	line-height: 20px;
+	height: 20px;
+}
+.tipsy { z-index: 999999; font-size: 11px; }
+
+.switch-options a.tooltip {
+	margin-left: 10px;
+	margin-top: 4px;
+
+}
+
+.customize-control .mini {
+	width: 50px !important;
+	margin-right: 5px;
+}
+.ui-slider {
+	width: 150px;
+	margin-right: 5px;
+}
+.customizer-text input {
+	width: 215px !important;
+	margin-right: 5px !important;
+}
+
+.customize-control .sliderui input[type="text"] {
+	margin-right: 8px;
+}
+

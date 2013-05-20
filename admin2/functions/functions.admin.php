@@ -81,6 +81,7 @@ function of_get_header_classes_array()
 function of_get_options() {
 	$data = get_theme_mods();
 	$data = apply_filters('of_options_after_load', $data);
+
 	return $data;
 }
 
@@ -93,7 +94,8 @@ function of_get_options() {
  * @uses update_option()
  * @return void
  */
-function of_save_options($data) {
+function of_save_options($data)
+{
 	$data = apply_filters('of_options_before_save', $data);
 	foreach ($data as $k=>$v) {
 		set_theme_mod( $k, $v );
