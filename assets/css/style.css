@@ -5076,6 +5076,12 @@ fieldset[disabled] #social-sharing .shareme .box {
     line-height: 1.7em;
     z-index: 99;
   }
+  .meta-row i.glyphicon {
+    color: #5bc0de;
+  }
+  .meta-row i.glyphicon.glyphicon-comment {
+    color: #f0ad4e;
+  }
 }
 .topnavbar input.search-query {
   margin-top: 20px;
