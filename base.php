@@ -26,6 +26,7 @@
       <?php do_action('shoestrap_pre_main'); ?>
       <?php if ( shoestrap_section_class( 'wrap' ) ) : ?><div class="mp_wrap <?php shoestrap_section_class( 'wrapper', true ); ?>"><div class="row"><?php endif; ?>
       <div class="main <?php shoestrap_section_class( 'main', true ); ?>" role="main">
+        <?php do_action('shoestrap_breadcrumbs'); ?>
         <?php include roots_template_path(); ?>
       </div><!-- /.main -->
       <?php if ( ( get_theme_mod( 'layout' ) != 0 && ( roots_display_sidebar() ) ) || ( is_front_page() && get_theme_mod( 'layout_sidebar_on_front' ) == 1 ) ) : ?>
