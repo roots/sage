@@ -2,6 +2,7 @@
 /**
  * Enable theme features
  */
+add_theme_support('post-thumbnails');
 add_theme_support('root-relative-urls');    // Enable relative URLs
 add_theme_support('rewrites');              // Enable URL rewrites
 add_theme_support('bootstrap-top-navbar');  // Enable Bootstrap's top navbar
