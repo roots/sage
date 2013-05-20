@@ -244,14 +244,6 @@ function shoestrap_customizer_init( $wp_customize ) {
   );
 
   $settings[] = array(
-    'setting'   => 'navbar_usermenu',
-    'default'   => '',
-    'type'      => 'checkbox', 
-    'label'     => __( 'Show Login/Logout Link', 'shoestrap' ), 
-    'section'   => 'navbar', 'priority' => 5
-  );
-
-  $settings[] = array(
     'setting'   => 'navbar_altmenu',
     'default'   => '',
     'type'      => 'checkbox', 
