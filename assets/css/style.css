@@ -1114,6 +1114,11 @@ select[multiple],
 select[size] {
   height: auto;
 }
+select optgroup {
+  font-size: inherit;
+  font-style: inherit;
+  font-family: inherit;
+}
 input[type="file"]:focus,
 input[type="radio"]:focus,
 input[type="checkbox"]:focus {
@@ -3277,8 +3282,8 @@ button.close {
   margin-top: 4px;
 }
 .navbar-form {
-  margin-top: 21px;
-  margin-bottom: 21px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 .navbar-form input,
 .navbar-form select,
