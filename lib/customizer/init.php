@@ -745,20 +745,6 @@ if ( class_exists( 'WP_Customize_Control' ) ) {
  * and is used to display additional help between between the other controls
  */
 if ( class_exists( 'WP_Customize_Control' ) ) {
-  class Shoestrap_Customize_Label_Control extends WP_Customize_Control {
-    public $type = 'label';
-
-    public function render_content() { ?>
-      <span class="customize-control-helptext"><?php echo esc_html( $this->label ); ?></span><hr style="background: #666; height: 1px" />
-    <?php }
-  }
-}
-
-/*
- * This class creates a custom control. This control is called "label"
- * and is used to display additional help between between the other controls
- */
-if ( class_exists( 'WP_Customize_Control' ) ) {
   class Shoestrap_Google_WebFont_Control extends WP_Customize_Control {
     public $type = 'select';
 
