@@ -5,6 +5,25 @@ jQuery.noConflict();
 jQuery(document).ready(function($){
 
 
+/* Not sure if I like the wordpress pointer. Here's how to do it though...
+	$('.pointer').live('click', function() {
+		var parent = $(this).closest('li').attr('id');
+
+		var header = $.trim($('#'+parent+' .customize-control-title').text());
+		var body = $(this).attr('title');
+		var content = "<h3>"+header+"<\/h3><p>"+body+"<\/p>";
+
+		$('#'+parent + ' .customize-control-title').pointer({
+	        content: content,
+	        position: 'left',
+	        close: function() {
+	            // This function is fired when you click the close button
+	        }
+      	}).pointer('open');
+
+	})
+*/
+
 	// Display last current tab
 	if ($.cookie("of_current_opt") === null) {
 	} else {

@@ -1,6 +1,6 @@
 /*-----------------------------------------------------------------------------------
 /* Admin styles
-/*-----------------------------------------------------------------------------------*/ 
+/*-----------------------------------------------------------------------------------*/
 
 .updated, .error {
 	display:none!important
@@ -224,7 +224,7 @@ border-radius: 2px;
 	color:#777;
 }
 
-#of_container #content .section-info .controls .of-info ._icon { 
+#of_container #content .section-info .controls .of-info ._icon {
 	height:16px; width:16px;
 	margin: 0 10px 0 0;
 	float: left;
@@ -289,7 +289,7 @@ border-radius: 2px;
 	border-width:1px;
 	border-style:dashed;
 	height:40px;}
-	
+
 #of_container #content .section-slider li.placeholder {
 	background:#f9f9f9;
 	border-width:1px;
@@ -318,7 +318,7 @@ border-radius: 2px;
 	background-color: #f9f9f9;
 }
 
-#of_container .controls input:focus, #of_container .controls textarea:focus { 
+#of_container .controls input:focus, #of_container .controls textarea:focus {
 	background-color: #fff;
 	border-color: #ccc #e6e6e6 #e6e6e6 #ccc;
 	outline:0;
@@ -597,13 +597,13 @@ color: #464646;
 	margin-left: 100px;
 }
 
-#of_container .screenshot { 
+#of_container .screenshot {
 	max-width:340px;
 	margin-bottom:9px;
 }
 
 #of_container .of-uploaded-image {
-	
+
 }
 
 #of_container .of-option-image {
@@ -616,7 +616,7 @@ color: #464646;
 	-webkit-border-radius: 3px;
 	border-radius: 3px;
 }
-#of_container .select_wrapper {
+#of_container .select_wrapper, #customize-controls .select_wrapper {
 -moz-border-radius: 4px;
 -webkit-border-radius: 4px;
 border-radius: 4px;
@@ -637,7 +637,7 @@ color: #888;
 position:relative;
 }
 
-#of_container .select_wrapper:hover {background-color:#f9f9f9;}
+#of_container .select_wrapper:hover, #customize-controls .select_wrapper:hover {background-color:#f9f9f9;}
 
 #of_container .mini .controls select, #of_container #content .section .mini .controls, #of_container  .controls .typography-size, #of_container  .controls .border-width,#of_container  .controls .mini,#of_container .mini .controls input, #of_container #content .mini .controls {width: 70px;}
 #of_container  .controls .typography-face {width: 145px;}
@@ -711,8 +711,8 @@ position:relative;
 }
 	#of_container a:hover.slide_edit_button {
 	background: url(../images/dropdown-arrow.png) no-repeat 9px 11px;}
-	
-#of_container a.slide_delete_button { 
+
+#of_container a.slide_delete_button {
 	float: right;
 	margin: 0 0 0 7px;
 	width:16px;
@@ -720,7 +720,7 @@ position:relative;
 	background: url(../images/icon-delete.png) no-repeat
 }
 
-#of_container .select_wrapper span {
+#of_container .select_wrapper span, #customize-controls .select_wrapper span {
 height: 26px;
 line-height: 26px;
 z-index: 2;
@@ -729,7 +729,7 @@ position:absolute;
 left:0;
 }
 
-#of_container .select_wrapper .select {
+#of_container .select_wrapper .select, #customize-controls .select_wrapper .select {
 cursor: pointer;
 height: 28px;
 margin: 0;
@@ -739,7 +739,7 @@ opacity: 0;
 padding: 0;
 position: relative;
 width: inherit;
-z-index: 4;	
+z-index: 4;
 }
 
 #of_backup {
@@ -818,18 +818,18 @@ html body * span.clear, html body * div.clear, html body * li.clear, html body *
 
   /* Rounded corners */
   .tipsy-inner { border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; }
-  
+
   /* Uncomment for shadow */
   /*.tipsy-inner { box-shadow: 0 0 5px #000000; -webkit-box-shadow: 0 0 5px #000000; -moz-box-shadow: 0 0 5px #000000; }*/
-  
+
   .tipsy-arrow { position: absolute; width: 0; height: 0; line-height: 0; border: 5px dashed #000; }
-  
+
   /* Rules to colour arrows */
   .tipsy-arrow-n { border-bottom-color: #000; }
   .tipsy-arrow-s { border-top-color: #000; }
   .tipsy-arrow-e { border-left-color: #000; }
   .tipsy-arrow-w { border-right-color: #000; }
-  
+
 	.tipsy-n .tipsy-arrow { top: 0px; left: 50%; margin-left: -5px; border-bottom-style: solid; border-top: none; border-left-color: transparent; border-right-color: transparent; }
     .tipsy-nw .tipsy-arrow { top: 0; left: 10px; border-bottom-style: solid; border-top: none; border-left-color: transparent; border-right-color: transparent;}
     .tipsy-ne .tipsy-arrow { top: 0; right: 10px; border-bottom-style: solid; border-top: none;  border-left-color: transparent; border-right-color: transparent;}
@@ -838,7 +838,7 @@ html body * span.clear, html body * div.clear, html body * li.clear, html body *
     .tipsy-se .tipsy-arrow { bottom: 0; right: 10px; border-top-style: solid; border-bottom: none; border-left-color: transparent; border-right-color: transparent; }
   .tipsy-e .tipsy-arrow { right: 0; top: 50%; margin-top: -5px; border-left-style: solid; border-right: none; border-top-color: transparent; border-bottom-color: transparent; }
   .tipsy-w .tipsy-arrow { left: 0; top: 50%; margin-top: -5px; border-right-style: solid; border-left: none; border-top-color: transparent; border-bottom-color: transparent; }
-  
+
 
 /*-------------------------------------------------------------------------------------------*/
 /* Switch

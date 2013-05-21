@@ -4,19 +4,22 @@
 	line-height: 20px;
 	height: 20px;
 }
-.tipsy { z-index: 999999; font-size: 11px; }
+.tipsy { z-index: 999999; font-size: 13px; line-height: 16px; }
+.tipsy-inner {
+}
 
 .switch-options a.tooltip {
 	margin-left: 10px;
 	margin-top: 4px;
 
 }
+<div class="tipsy tipsy-w" style="top: 383.5px; left: 262px; visibility: visible; display: block; opacity: 0.9;"><div class="tipsy-arrow tipsy-arrow-w"></div><div class="tipsy-inner">A text input field.</div></div>
 
 .customize-control .mini {
 	width: 50px !important;
 	margin-right: 5px;
 }
-.ui-slider {
+.sliderui .ui-slider {
 	width: 150px;
 	margin-right: 5px;
 }
@@ -29,3 +32,25 @@
 	margin-right: 8px;
 }
 
+.customizer-color .iris-slider-offset {
+	top: 0 !important;
+	bottom: 0 !important;
+}
+.customizer-color .ui-slider-vertical {
+	width: 26px;
+	height: auto;
+}
+.customizer-color .ui-slider {
+	background: transparent;
+}
+.ui-slider-handle {
+	outline: none !important;
+}
+
+.wp-pointer {
+	z-index: 999999 !important;
+	position: absolute;
+}
+.select_wrapper {
+	width: 250px !important;
+}
