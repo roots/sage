@@ -45,3 +45,19 @@ function shoestrap_navbar_class() {
 
   return $class;
 }
+
+function shoestrap_secondary_navbar() {
+  if (has_nav_menu('secondary_navigation')) : ?>
+    <div class="navbar">
+      <div class="<?php echo shoestrap_container_class(); ?>">
+        <a class="btn navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </a>
+        <?php wp_nav_menu( array( 'theme_location' => 'secondary_navigation', 'menu_class' => 'nav navbar-nav' ) ); ?>
+      </div>
+    </div>
+  <?php endif;
+}
+add_action( 'shoestrap_pre_content', 'shoestrap_secondary_navbar' );
