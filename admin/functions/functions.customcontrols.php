@@ -649,8 +649,8 @@ class Customize_SMOF_Switch_Control extends WP_Customize_Control {
 				<span class="customize-control-title">
 					<?php echo esc_html( $this->label ); ?>
 				</span>
-				<label class="cb-enable<? if ($this->value() == 0) echo " selected"; ?>" data-id="layout_sidebar_on_front"><span><?php echo $smof_details[$this->id]['on'] ? $smof_details[$this->id]['on']: "On"  ?></span></label>
-				<label class="cb-disable<? if ($this->value() != 0) echo " selected"; ?>" data-id="layout_sidebar_on_front"><span><?php echo $smof_details[$this->id]['off'] ? $smof_details[$this->id]['off']: "Off"  ?></span></label>
+				<label class="cb-enable<? if ($this->value() != 0) echo " selected"; ?>" data-id="layout_sidebar_on_front"><span><?php echo $smof_details[$this->id]['on'] ? $smof_details[$this->id]['on']: "On"  ?></span></label>
+				<label class="cb-disable<? if ($this->value() == 0) echo " selected"; ?>" data-id="layout_sidebar_on_front"><span><?php echo $smof_details[$this->id]['off'] ? $smof_details[$this->id]['off']: "Off"  ?></span></label>
 				<input type="checkbox" id="<?php echo $this->id; ?>" class="checkbox of-input main_checkbox" name="<?php echo $this->id; ?>" <?php echo $this->get_link(); ?> value="0" <?php if ($this->value() == 0) echo 'checked="checked"'; ?> />
 				<?php if ($smof_details[$this->id]['desc'] != "") { ?>
 					<a href="#" class="button tooltip" title="<?php echo strip_tags($smof_details[$this->id]['desc']); ?>">?</a>

@@ -1,0 +1,58 @@
+/* CSS crunched with Crunch - http://crunchapp.net/ */
+.shadow { box-shadow: 0 1px 2px 0 #555555; }
+ 
+.divider {
+	border-style: solid;
+	border-width: 0 1px 0 1px;
+	border-color: transparent #444444 transparent #888888; }
+ 
+.gradient { background: linear-gradient(top, #7a7a7a 0%, #6c6c6c 50%, #545454 51%, #6a6a6a 100%); }
+ 
+.hovereffect { background: linear-gradient(top, #545454 0%, #434343 50%, #333333 51%, #505050 100%); }
+ 
+@font-face {
+	font-family: 'AsapRegular';
+	src: url('fonts/Asap-Regular-webfont.eot');
+	src: url('fonts/Asap-Regular-webfont.eot?#iefix') format('embedded-opentype'),url('fonts/Asap-Regular-webfont.woff') format('woff'),url('fonts/Asap-Regular-webfont.ttf') format('truetype'),url('fonts/Asap-Regular-webfont.svg#AsapRegular') format('svg');
+	font-weight: normal;
+	font-style: normal; }
+ 
+body {
+	background: #a2a2a2;
+	font-family: AsapRegular,sans-serif;
+	font-size: 11pt; }
+ 
+nav {
+	margin: 50px auto 0;
+	width: 788px;
+	height: 45px;
+	border-radius: 3px;
+	border: 1px solid #505050;
+	box-shadow: 0 1px 2px 0 #555555; }
+ 
+	nav ul {
+		padding: 0;
+		margin: 0; }
+ 
+		nav ul li { display: inline; }
+ 
+			nav ul li a {
+				text-decoration: none;
+				display: inline-block;
+				float: left;
+				width: 156px;
+				height: 45px;
+				text-align: center;
+				line-height: 300%;
+				color: #f2f2f2;
+				text-shadow: 1px 1px 0px #000000;
+				border-style: solid;
+				border-width: 0 1px 0 1px;
+				border-color: transparent #444444 transparent #888888;
+				background: linear-gradient(top, #7a7a7a 0%, #6c6c6c 50%, #545454 51%, #6a6a6a 100%); }
+ 
+				nav ul li a:hover { background: linear-gradient(top, #545454 0%, #434343 50%, #333333 51%, #505050 100%); }
+ 
+			nav ul li:first-child a { border-left: none; }
+ 
+			nav ul li:last-child a { border-right: none; }

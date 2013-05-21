@@ -3,9 +3,25 @@ add_action( 'customize_controls_init', 'smof_customize_init' );
 add_action( 'customize_preview_init', 'smof_preview_init' );
 add_action( 'customize_register', 'smof_customize_register' );
 
+// Generates the CSS from less on save IF a less file has been changed
+//if (get_theme_mod('less-dirty') == "true") {
+  //add_action('customize_save', 'saveCSS', 100);
+add_action('customize_save', 'regenCSS', 100);
+function regenCSS( $wp_customize ) {
+	checkCSSRegen();
+	set_theme_mod('regen-css', time()+3);
+}
+function checkCSSRegen() {
+	if (get_theme_mod('regen-css') != "" && get_theme_mod('regen-css') < time()) {
+		shoestrap_makecss();
+	  	remove_theme_mod('regen-css');
+	}
+}
+
 $smof_details = array();
 
-function smof_customize_init() {
+function smof_customize_init( $wp_customize ) {
+	checkCSSRegen();
 	// Get Javascript
 	of_load_only();
 	// Have to change the javascript for the customizer
@@ -24,16 +40,21 @@ function smof_customize_init() {
 	wp_enqueue_style('smofcustomizer', ADMIN_DIR .'assets/css/customizer.css');
 }
 
-function smof_preview_init() {
-	echo "here2";
+function smof_preview_init( $wp_customize ) {
+	echo "<pre>";
+	print_r(get_theme_mods());
+	global $smof_data, $smof_details;
 	wp_enqueue_script('lessjs', ADMIN_DIR .'assets/js/less.js');
-	wp_enqueue_style('preview-bootstrap', get_template_directory_uri() . '/assets/less/bootstrap/bootstrap.less');
-	add_filter('preview-bootstrap', 'less_loader');
-	wp_enqueue_style('preview-app', get_template_directory_uri() . '/assets/less/app.less');
-	add_filter('preview-app', 'less_loader');
-	wp_enqueue_script('lessjs', ADMIN_DIR .'assets/js/preview.js');
-	//wp_enqueue_script('variables', ADMIN_DIR .'assets/js/less.js');
+	wp_enqueue_style('preview-less', get_template_directory_uri() . '/assets/less/preview.less');
+	add_filter('preview-less', 'less_loader');
+	wp_enqueue_script('preview-js', ADMIN_DIR .'assets/js/preview.js');
+	$data['data'] = $smof_data;
+	$data['variables'] = $smof_details;
+	//$data['script'] = postMessageHandlersJS();
+	wp_localize_script( 'preview-js', 'smofPost', $data );
+	wp_enqueue_script('variables', ADMIN_DIR .'assets/js/less.js');
 
+	wp_localize_script( 'preview-js', 'lessData', shoestrap_complete_less() );
 
 
 //get_template_directory_uri()
@@ -47,6 +68,34 @@ function smof_preview_init() {
 
 
 
+}
+
+function postMessageHandlersJS() {
+	global $smof_data, $smof_details;
+	$script = "";
+	foreach ($smof_details as $option) {
+		if ($option['less'] == true) {
+			$script .="
+	            wp.customize( option , function( value ) {
+	                value.bind( function( to ) {
+	                    console.log('Setting customize bind: '+option);
+	                    var variable = '@'+option;
+	//                    less.modifyVars({
+	  //                      variable : '#5B83AD'
+	    //                });
+	                console.log(option);
+
+	                });
+	            });
+
+
+
+			";
+
+
+
+		}
+	}
 }
 
 

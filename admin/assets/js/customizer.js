@@ -151,7 +151,7 @@ jQuery(document).ready(function($){
 		var parent = $(this).parents('.switch-options');
 		jQuery('.cb-disable',parent).removeClass('selected');
 		jQuery(this).addClass('selected');
-		jQuery('.main_checkbox',parent).attr('checked', true);
+		jQuery('.main_checkbox',parent).attr('checked', false);
 
 		//fold/unfold related options
 		var obj = jQuery(this);
@@ -165,7 +165,7 @@ jQuery(document).ready(function($){
 		var parent = $(this).parents('.switch-options');
 		jQuery('.cb-enable',parent).removeClass('selected');
 		jQuery(this).addClass('selected');
-		jQuery('.main_checkbox',parent).attr('checked', false);
+		jQuery('.main_checkbox',parent).attr('checked', true);
 
 		//fold/unfold related options
 		var obj = jQuery(this);

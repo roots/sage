@@ -78,8 +78,6 @@ function shoestrap_compile_css( $method = 'php' ) {
 function shoestrap_makecss() {
   shoestrap_compile_css();
 }
-// Generates the CSS from less on save
-add_filter('customize_save', 'shoestrap_makecss');
 
 
 /*

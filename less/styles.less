@@ -1,0 +1,46 @@
+@import "config.less";
+/* Font */
+
+
+
+/* Body */
+body {
+	background: @bg;
+	font-family: AsapRegular, sans-serif;
+	font-size: 11pt;
+}
+nav {
+	margin: 50px auto 0;
+	width: 788px;
+	height: 45px;
+	.border;
+	.shadow;
+	ul {
+		padding: 0;
+		margin: 0;
+		li {
+			display: inline;
+			a {
+				text-decoration: none;
+				display: inline-block;
+				float: left;
+				width: 156px;
+				height: 45px;
+				text-align: center;
+				line-height: 300%;
+				.textcolor(#f2f2f2); // You can change this line
+				.divider;
+				.gradient;
+				&:hover {
+					.hovereffect;
+				}
+			}
+		}
+		li:first-child a {
+			border-left: none;
+		}
+		li:last-child a {
+			border-right: none;
+		}
+	}
+}

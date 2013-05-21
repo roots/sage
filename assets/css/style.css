@@ -3175,7 +3175,7 @@ button.close {
   margin-bottom: 20px;
   padding-left: 15px;
   padding-right: 15px;
-  background-color: #1bfc5f;
+  background-color: #42db18;
   border-radius: 4px;
 }
 .navbar:before,
@@ -3199,8 +3199,8 @@ button.close {
   margin-bottom: 15px;
 }
 .navbar-nav > li > a {
-  padding-top: 15px;
-  padding-bottom: 15px;
+  padding-top: 25px;
+  padding-bottom: 25px;
   color: #777777;
   line-height: 20px;
   border-radius: 4px;
@@ -3214,12 +3214,12 @@ button.close {
 .navbar-nav > .active > a:hover,
 .navbar-nav > .active > a:focus {
   color: #555555;
-  background-color: #03e146;
+  background-color: #34ad13;
 }
 .navbar-nav > .disabled > a,
 .navbar-nav > .disabled > a:hover,
 .navbar-nav > .disabled > a:focus {
-  color: #03f34c;
+  color: #39bd15;
   background-color: transparent;
 }
 .navbar-static-top {
@@ -3282,8 +3282,8 @@ button.close {
   margin-top: 4px;
 }
 .navbar-form {
-  margin-top: 7px;
-  margin-bottom: 7px;
+  margin-top: 17px;
+  margin-bottom: 17px;
 }
 .navbar-form input,
 .navbar-form select,
@@ -3314,7 +3314,7 @@ button.close {
 .navbar-nav > .open > a,
 .navbar-nav > .open > a:hover,
 .navbar-nav > .open > a:focus {
-  background-color: #03e146;
+  background-color: #34ad13;
   color: #555555;
 }
 .navbar-nav > .dropdown > a .caret {
@@ -3428,11 +3428,11 @@ button.close {
   }
 }
 .navbar-btn {
-  margin-top: 7px;
+  margin-top: 17px;
 }
 .navbar-text {
-  margin-top: 15px;
-  margin-bottom: 15px;
+  margin-top: 25px;
+  margin-bottom: 25px;
 }
 .navbar-link {
   color: #777777;
@@ -4751,14 +4751,14 @@ body .navbar.navbar-static-top {
   margin-bottom: 0;
 }
 body.bottom-navbar {
-  padding-bottom: 50px;
+  padding-bottom: 70px;
 }
 @media screen and (min-width: 768px) {
   body.top-navbar {
-    padding-top: 50px;
+    padding-top: 70px;
   }
   body.bottom-navbar {
-    padding-bottom: 50px;
+    padding-bottom: 70px;
   }
 }
 #shoestrap_icon {
@@ -5089,5 +5089,5 @@ fieldset[disabled] #social-sharing .shareme .box {
   }
 }
 .topnavbar input.search-query {
-  margin-top: 7px;
+  margin-top: 17px;
 }
