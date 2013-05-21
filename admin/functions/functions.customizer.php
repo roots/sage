@@ -1,5 +1,6 @@
 <?php
 add_action( 'customize_controls_init', 'smof_customize_init' );
+add_action( 'customize_preview_init', 'smof_preview_init' );
 add_action( 'customize_register', 'smof_customize_register' );
 
 $smof_details = array();
@@ -8,7 +9,7 @@ function smof_customize_init() {
 	// Get Javascript
 	of_load_only();
 	// Have to change the javascript for the customizer
-	wp_dequeue_script('smof', ADMIN_DIR .'assets/js/smof.js', array( 'jquery' ));
+	wp_dequeue_script('smof', ADMIN_DIR .'assets/js/smof.js');
 	wp_enqueue_style('wp-pointer');
     wp_enqueue_script('wp-pointer');
 	wp_enqueue_script('smofcustomizerjs', ADMIN_DIR .'assets/js/customizer.js');
@@ -21,12 +22,38 @@ function smof_customize_init() {
 	wp_enqueue_style('color-picker', ADMIN_DIR . 'assets/css/colorpicker.css');
 	wp_enqueue_style('jquery-ui-custom-admin', ADMIN_DIR .'assets/css/jquery-ui-custom.css');
 	wp_enqueue_style('smofcustomizer', ADMIN_DIR .'assets/css/customizer.css');
+}
+
+function smof_preview_init() {
+	echo "here2";
+	wp_enqueue_script('lessjs', ADMIN_DIR .'assets/js/less.js');
+	wp_enqueue_style('preview-bootstrap', get_template_directory_uri() . '/assets/less/bootstrap/bootstrap.less');
+	add_filter('preview-bootstrap', 'less_loader');
+	wp_enqueue_style('preview-app', get_template_directory_uri() . '/assets/less/app.less');
+	add_filter('preview-app', 'less_loader');
+	wp_enqueue_script('lessjs', ADMIN_DIR .'assets/js/preview.js');
+	//wp_enqueue_script('variables', ADMIN_DIR .'assets/js/less.js');
+
+
+
+//get_template_directory_uri()
+
+// <link rel="stylesheet/less" href="/path/to/bootstrap.less">
+// <link rel="stylesheet/less" href="/path/to/app.less">
+// //new variables.less
+// <script src="/path/to/less.js"></script>
+
 
 
 
 
 }
 
+
+//do stuff here to find and replace the rel attribute
+function less_loader($tag){
+	return str_replace('rel="stylesheet"', 'rel="stylesheet/less"', $tag);
+}
 
 
 function smof_customize_register($wp_customize) {
@@ -36,6 +63,7 @@ function smof_customize_register($wp_customize) {
 	global $smof_data, $of_options, $smof_details;
 	$section = array();
 	$section_set = true;
+	//echo shoestrap_variables_less();
 
 	foreach($of_options as $option) {
 		$smof_details[$option['id']] = $option;
@@ -50,6 +78,9 @@ function smof_customize_register($wp_customize) {
 				'capabilities' 	=> 'manage_theme_options',
 				'default'		=>	$option['std']
 			);
+		if ($option['less'] == true) {
+			$customSetting['transport'] = 'postMessage';
+		}
 		if ($section_set == false && is_array($section)) {
 			$wp_customize->add_section($section['id'], array(
 				'title' 		=> $section['name'],

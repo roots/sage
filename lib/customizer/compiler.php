@@ -38,12 +38,12 @@ function shoestrap_css( $target = 'path', $echo = false ) {
  * This function can be used to compile a less file to css using the lessphp compiler
  */
 function shoestrap_phpless_compiler() {
-  
+
   if ( !class_exists( 'lessc' ) )
     require_once locate_template( '/lib/less_compiler/lessc.inc.php' );
 
   $less = new lessc;
-  
+
   if ( get_option( 'shoestrap_minimize_css' ) == 1 )
     $less->setFormatter( "compressed" );
 
@@ -78,16 +78,18 @@ function shoestrap_compile_css( $method = 'php' ) {
 function shoestrap_makecss() {
   shoestrap_compile_css();
 }
-add_action( 'wp', 'shoestrap_makecss' );
+// Generates the CSS from less on save
+add_filter('customize_save', 'shoestrap_makecss');
+
 
 /*
  * The content below is a copy of bootstrap's variables.less file.
- * 
+ *
  * Some options are user-configurable and stored as theme mods.
  * We try to minimize the options and simplify the user environment.
- * In order to do that, we 'll have to provide a minimum amount of options 
+ * In order to do that, we 'll have to provide a minimum amount of options
  * and calculate the rest based on the user's selections.
- * 
+ *
  */
 function shoestrap_variables_less() {
 

@@ -270,7 +270,7 @@ $of_options[] = array(
   "desc"      => "Pick a background color for the NavBar. Default: #eeeeee.",
   "id"        => "navbar_bg",
   "std"       => "#eeeeee",
-  "less"      => true,
+  //"less"      => true,
   "customizer"=> array(),
   "type"      => "color"
 );

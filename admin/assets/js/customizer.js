@@ -27,12 +27,14 @@ jQuery(document).ready(function($){
 	// Display last current tab
 	if ($.cookie("of_current_opt") === null) {
 	} else {
+		//console.log($.cookie("of_current_opt").replace("#of-option-","#customize-section-"));
 		$($.cookie("of_current_opt").replace("#of-option-","#customize-section-")).addClass("open");
 	}
 
 	//Current Menu Class
 	$('.control-section').click(function(){
 		if ($(this).hasClass('open')) {
+			//console.log($.cookie("of_current_opt").replace("#of-option-","#customize-section-"));
 			$.cookie('of_current_opt', $(this).attr('id').replace("customize-section-", "#of-option-"), { expires: 7, path: '/' });
 		} else {
 			$.cookie('of_current_opt', "", { expires: 0, path: '/' });

@@ -21,7 +21,7 @@ require_once locate_template('/lib/resize.php');              // Adding helper i
 require_once locate_template('/lib/breadcrumbs.php');         // The Breadcrumbs Class and function
 
 
-// require_once locate_template('/lib/customizer/init.php');                     // Initialize the Customizer
+ require_once locate_template('/lib/customizer/init.php');                     // Initialize the Customizer
 require_once locate_template('/lib/customizer/helper.functions.php');         // Helper functions for the customizer
 require_once locate_template('/lib/customizer/compiler.php');                 // LESSPHP Compiler for Bootstrap 3
 require_once locate_template('/lib/customizer/functions.advanced.php');       // Extra functions for the "Advanced" Customizer section
