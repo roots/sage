@@ -19,17 +19,21 @@
 	width: 50px !important;
 	margin-right: 5px;
 }
-.sliderui .ui-slider {
-	width: 150px;
+.customizer-sliderui .ui-slider {
+	width: 150px !important;
 	margin-right: 5px;
 }
+
 .customizer-text input {
 	width: 215px !important;
 	margin-right: 5px !important;
 }
 
-.customize-control .sliderui input[type="text"] {
+
+
+.customize-control .customizer-sliderui input[type="text"] {
 	margin-right: 8px;
+	width: 50px;
 }
 
 .customizer-color .iris-slider-offset {

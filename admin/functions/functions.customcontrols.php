@@ -27,7 +27,7 @@ class Customize_SMOF_Select_Control extends WP_Customize_Control {
 			if(!isset($value['mod'])) $value['mod'] = '';
 			if($value['mod'] == 'mini') { $mini = 'mini';}
 			$output .= '<div class="select_wrapper ' . $mini . '">';
-			$output .= '<select '.$this->link().' data-customize-setting-link="'.$value['id'].'" class="select of-input" name="'.$value['id'].'" id="'. $value['id'] .'">';
+			$output .= '<select data-customize-setting-link="'.$value['id'].'" class="select of-input" name="'.$value['id'].'" id="'. $value['id'] .'">';
 			foreach ($value['options'] as $select_ID => $option) {
 				$output .= '<option id="' . $select_ID . '" value="'.$option.'" ' . selected($smof_data[$value['id']], $option, false) . ' />'.$option.'</option>';
 			 }
@@ -627,7 +627,7 @@ class Customize_SMOF_Sliderui_Control extends WP_Customize_Control {
 			$output .= '<div id="'.$this->id.'-slider" class="smof_sliderui" style="margin-left: 7px;" '. $s_data .'></div>';
     	?>
 	        <label>
-	        	<div class="sliderui">
+	        	<div class="customizer-sliderui">
 					<span class="customize-control-title">
 						<?php echo esc_html( $this->label ); ?>
 					</span>
