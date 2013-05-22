@@ -29,4 +29,5 @@ function shoestrap_background_css() {
   }
   echo '<style>body{' . trim( $style ) . ';}</style>';
 }
-add_action( 'wp_head', 'shoestrap_background_css' );
+if ( get_theme_mod( 'background_image_toggle' ) == 1 )
+  add_action( 'wp_head', 'shoestrap_background_css' );
