@@ -6,7 +6,7 @@ function shoestrap_background_css() {
   if ( get_theme_mod( 'background_image_toggle' ) == 1 )
     $background = set_url_scheme( get_theme_mod( 'background_image') );
   else
-    $background = set_url_scheme( get_theme_mod('bg_pattern') );
+    $background = get_theme_mod('bg_pattern');
   
   // $color is the saved custom color.
   // A default has to be specified in style.css. It will not be printed here.
@@ -34,5 +34,5 @@ function shoestrap_background_css() {
   }
   echo '<style>body{' . trim( $style ) . ';}</style>';
 }
-if ( get_theme_mod('background_image_toggle') == 1 || get_theme_mod('bg_pattern') == 1 )
+if ( get_theme_mod('background_image_toggle') == 1 || get_theme_mod('bg_pattern_toggle') == 1 )
   add_action( 'wp_head', 'shoestrap_background_css' );
