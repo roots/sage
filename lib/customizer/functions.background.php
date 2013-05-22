@@ -9,7 +9,7 @@ function shoestrap_background_css() {
   
   // $color is the saved custom color.
   // A default has to be specified in style.css. It will not be printed here.
-  $color = $smof_data['jumbotron_bg'];
+  $color = get_theme_mod( 'jumbotron_bg' );
 
   if ( ! $background && ! $color )
     return;
@@ -19,7 +19,7 @@ function shoestrap_background_css() {
   if ( $background ) {
     $image = " background-image: url('$background');";
 
-    $repeat = $smof_data['background_repeat'];
+    $repeat = get_theme_mod( 'background_repeat' );
     if ( ! in_array( $repeat, array( 'no-repeat', 'repeat-x', 'repeat-y', 'repeat' ) ) )
       $repeat = 'repeat';
     $repeat = " background-repeat: $repeat;";
