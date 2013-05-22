@@ -51,7 +51,11 @@ function shoestrap_section_class( $target, $echo = false ) {
   if ( is_page_template('page-primary-sidebar.php') ) {
     $main      = $base . ( 12 - $first );
     $primary   = $base . $first;
-  }  
+  }
+
+  // Overrides the main region class when on the frontpage and sidebars are set to not being displayed there.
+  if ( is_front_page() && get_theme_mod( 'layout_sidebar_on_front' ) != 1 )
+    $main      = $base . 12;
 
   if ( $target == 'primary' )
     $class = $primary;
