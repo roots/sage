@@ -1,4 +1,6 @@
 ### HEAD
+* Move `/assets/css/less/` to `/assets/less/`
+* Add wrapper templates filter
 * Fix relative external URLs issue
 
 ### 6.4.0: May 1st, 2013
