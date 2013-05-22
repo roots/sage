@@ -132,6 +132,7 @@ if (!function_exists('of_options')) {
       "name"      => __("Archives Featured Image Width", "shoestrap"),
       "desc"      => __("Select the width of your featured images on post archives. Default: 550px", "shoestrap"),
       "id"        => "feat_img_archive_width",
+      "fold"      => "feat_img_archive",
       "std"       => 550,
       "min"       => 100,
       "step"      => 1,
@@ -143,6 +144,7 @@ if (!function_exists('of_options')) {
       "name"      => __("Archives Featured Image Height", "shoestrap"),
       "desc"      => __("Select the height of your featured images on post archives. Default: 300px", "shoestrap"),
       "id"        => "feat_img_archive_height",
+      "fold"      => "feat_img_archive",
       "std"       => 300,
       "min"       => 50,
       "step"      => 1,
@@ -162,6 +164,7 @@ if (!function_exists('of_options')) {
       "name"      => __("Posts Featured Image Width", "shoestrap"),
       "desc"      => __("Select the width of your featured images on single posts. Default: 550px", "shoestrap"),
       "id"        => "feat_img_post_width",
+      "fold"      => "feat_img_post",
       "std"       => 550,
       "min"       => 100,
       "step"      => 1,
@@ -173,6 +176,7 @@ if (!function_exists('of_options')) {
       "name"      => __("Posts Featured Image Height", "shoestrap"),
       "desc"      => __("Select the height of your featured images on single posts. Default: 300px", "shoestrap"),
       "id"        => "feat_img_post_height",
+      "fold"      => "feat_img_post",
       "std"       => 300,
       "min"       => 50,
       "step"      => 1,
@@ -248,9 +252,19 @@ if (!function_exists('of_options')) {
     );
 
     $of_options[] = array(
+      "name"      => __("Custom Grid", "shoestrap"),
+      "desc"      => "<strong>" . __("CAUTION:", "shoestrap") . "</strong> " . __("Only use this if you know what you are doing, as changing these values might break the way your site looks on some devices. The default settings should be fine for the vast majority of sites.", "shoestrap"),
+      "id"        => "custom_grid",
+      "customizer"=> array(),
+      "std"       => 0,
+      "type"      => "switch"
+    );
+
+    $of_options[] = array(
       "name"      => __("Tiny Screen Width", "shoestrap"),
       "desc"      => __("The width of Tiny screens. This is used to calculate the responsive layout breakpoints. Suitable for phones. Default: 480px", "shoestrap"),
       "id"        => "layout_screen_tiny",
+      "fold"      => "custom_grid",
       "std"       => 480,
       "min"       => 320,
       "step"      => 2,
@@ -264,6 +278,7 @@ if (!function_exists('of_options')) {
       "name"      => __("Small Screen Width", "shoestrap"),
       "desc"      => __("The width of Small screens. This is used to calculate the responsive layout breakpoints. Suitable for tablets and small screens. Default: 768px", "shoestrap"),
       "id"        => "layout_screen_small",
+      "fold"      => "custom_grid",
       "std"       => 768,
       "min"       => 320,
       "step"      => 2,
@@ -278,6 +293,7 @@ if (!function_exists('of_options')) {
       "name"      => __("Medium Screen Width", "shoestrap"),
       "desc"      => __("The width of Normal screens. This is used to calculate the responsive layout breakpoints. Suitable for medium screens. Default: 992px", "shoestrap"),
       "id"        => "layout_screen_medium",
+      "fold"      => "custom_grid",
       "std"       => 992,
       "min"       => 320,
       "step"      => 2,
@@ -291,6 +307,7 @@ if (!function_exists('of_options')) {
       "name"      => __("Large Screen Width", "shoestrap"),
       "desc"      => __("The width of Large screens. This is used to calculate the responsive layout breakpoints. Suitable for large screens. Default: 1200px", "shoestrap"),
       "id"        => "layout_screen_large",
+      "fold"      => "custom_grid",
       "std"       => 1200,
       "min"       => 320,
       "step"      => 2,
@@ -304,6 +321,7 @@ if (!function_exists('of_options')) {
       "name"      => __("Columns Gutter", "shoestrap"),
       "desc"      => __("The space between the columns in your grid. Default: 30px", "shoestrap"),
       "id"        => "layout_gutter",
+      "fold"      => "custom_grid",
       "std"       => 30,
       "min"       => 0,
       "step"      => 2,
@@ -545,6 +563,7 @@ if (!function_exists('of_options')) {
       "name"      => __("Background Repeat", "shoestrap"),
       "desc"      => __("Select how (or if) the selected background should be tiled. Default: Tile", "shoestrap"),
       "id"        => "jumbotron_bg_repeat",
+      "fold"      => "jumbotron_bg_img",
       "std"       => "repeat",
       "type"      => "radio",
       "options"   => array(
@@ -559,6 +578,7 @@ if (!function_exists('of_options')) {
       "name"      => __("Background Alignment", "shoestrap"),
       "desc"      => __("Select how the selected background should be horizontally aligned. Default: Left", "shoestrap"),
       "id"        => "jumbotron_bg_pos_x",
+      "fold"      => "jumbotron_bg_img",
       "std"       => "repeat",
       "type"      => "radio",
       "options"   => array(
