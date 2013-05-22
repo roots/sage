@@ -16,20 +16,20 @@ A basic Roots theme initially looks like this:
 .
 ├── assets
 │   ├── css
-│   │   ├── less
-│   │   │   │── bootstrap.less
-│   │   │   └── responsive.less
 │   │   │── app.css
 │   │   │── bootstrap.css
 │   │   │── bootstrap-responsive.css
 │   │   │── editor-style.css
 │   ├── img
-│   └── js
-│       ├── main.js
-│       ├── plugins.js (includes bootstrap.js)
-│       └── vendor
-│           ├── jquery-1.9.1.min.js
-│           └── modernizr-2.6.2.min.js
+│   ├── js
+│   │   ├── main.js
+│   │   ├── plugins.js (includes bootstrap.js)
+│   │   └── vendor
+│   │       ├── jquery-1.9.1.min.js
+│   │       └── modernizr-2.6.2.min.js
+│   └── less
+│   │   │── bootstrap.less
+│   │   └── responsive.less
 ├── doc
 ├── lang
 │   └── roots.pot
