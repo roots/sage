@@ -40,69 +40,7 @@ function smof_customize_init( $wp_customize ) {
 	wp_enqueue_style('smofcustomizer', ADMIN_DIR .'assets/css/customizer.css');
 }
 
-function shoestrap_complete_less2() {
-  $bootstrap_less = shoestrap_variables_less() . '
 
-// Core variables and mixins
-// @import "'.get_template_directory_uri().'/assets/less/bootstrap/variables";
-@import "'.get_template_directory_uri().'/assets/less/bootstrap/mixins";
-
-// Reset
-@import "'.get_template_directory_uri().'/assets/less/bootstrap/normalize";
-@import "'.get_template_directory_uri().'/assets/less/bootstrap/print";
-
-// Core CSS
-@import "'.get_template_directory_uri().'/assets/less/bootstrap/scaffolding";
-@import "'.get_template_directory_uri().'/assets/less/bootstrap/type";
-@import "'.get_template_directory_uri().'/assets/less/bootstrap/code";
-@import "'.get_template_directory_uri().'/assets/less/bootstrap/grid";
-
-@import "'.get_template_directory_uri().'/assets/less/bootstrap/tables";
-@import "'.get_template_directory_uri().'/assets/less/bootstrap/forms";
-@import "'.get_template_directory_uri().'/assets/less/bootstrap/buttons";
-
-// Components: common
-@import "'.get_template_directory_uri().'/assets/less/bootstrap/component-animations";
-//@import "'.get_template_directory_uri().'/assets/fonts/elusive-webfont";
-@import "'.get_template_directory_uri().'/assets/less/bootstrap/dropdowns";
-@import "'.get_template_directory_uri().'/assets/less/bootstrap/list-group";
-@import "'.get_template_directory_uri().'/assets/less/bootstrap/panels";
-@import "'.get_template_directory_uri().'/assets/less/bootstrap/wells";
-@import "'.get_template_directory_uri().'/assets/less/bootstrap/close";
-
-// Components: Nav
-@import "'.get_template_directory_uri().'/assets/less/bootstrap/navs";
-@import "'.get_template_directory_uri().'/assets/less/bootstrap/navbar";
-@import "'.get_template_directory_uri().'/assets/less/bootstrap/button-groups";
-@import "'.get_template_directory_uri().'/assets/less/bootstrap/breadcrumbs";
-@import "'.get_template_directory_uri().'/assets/less/bootstrap/pagination";
-@import "'.get_template_directory_uri().'/assets/less/bootstrap/pager";
-
-// Components: Popovers
-@import "'.get_template_directory_uri().'/assets/less/bootstrap/modals";
-@import "'.get_template_directory_uri().'/assets/less/bootstrap/tooltip";
-@import "'.get_template_directory_uri().'/assets/less/bootstrap/popovers";
-
-// Components: Misc
-@import "'.get_template_directory_uri().'/assets/less/bootstrap/alerts";
-@import "'.get_template_directory_uri().'/assets/less/bootstrap/thumbnails";
-@import "'.get_template_directory_uri().'/assets/less/bootstrap/media";
-@import "'.get_template_directory_uri().'/assets/less/bootstrap/labels";
-@import "'.get_template_directory_uri().'/assets/less/bootstrap/badges";
-@import "'.get_template_directory_uri().'/assets/less/bootstrap/progress-bars";
-@import "'.get_template_directory_uri().'/assets/less/bootstrap/accordion";
-@import "'.get_template_directory_uri().'/assets/less/bootstrap/carousel";
-@import "'.get_template_directory_uri().'/assets/less/bootstrap/jumbotron";
-
-// Utility classes
-@import "'.get_template_directory_uri().'/assets/less/bootstrap/utilities"; // Has to be last to override when necessary
-@import "'.get_template_directory_uri().'/assets/less/bootstrap/responsive-utilities";
-
-@import "'.get_template_directory_uri().'/assets/less/app"; // Custom Shoestrap less-css
-';
-
-  return $bootstrap_less;
-}
 
 function smof_preview_init( $wp_customize ) {
 	//echo "<pre>";
@@ -129,7 +67,7 @@ function smof_preview_init( $wp_customize ) {
         rootpath: "http://localhost/wordpress3/wp-content/themes/shoestrap/less/"// a path to add on to the start of every url
                             //resource
     };
-</script><style type="text/less">'.shoestrap_complete_less2().'</style>';
+</script><style type="text/less">'.shoestrap_complete_less_preview().'</style>';
 	//print '<link rel="stylesheet/less" type="text/css" href="'.get_template_directory_uri() . '/assets/less/preview.less'.'">';
 	wp_enqueue_script('less-js', ADMIN_DIR .'/assets/js/less-1.3.3.min.js');
 	wp_enqueue_script('preview-js', ADMIN_DIR .'assets/js/preview.js');
