@@ -124,8 +124,6 @@ if (!function_exists('of_options')) {
       "name"      => __("Featured Images on Archives", "shoestrap"),
       "desc"      => __("Display featured Images on post archives (such as categories, tags, month view etc). Default: OFF.", "shoestrap"),
       "id"        => "feat_img_archive",
-      "less"      => true,
-      "customizer"=> array(),
       "std"       => 0,
       "type"      => "switch"
     );
@@ -138,8 +136,6 @@ if (!function_exists('of_options')) {
       "min"       => 100,
       "step"      => 1,
       "max"       => 1600,
-      "less"      => true,
-      "customizer"=> array(),
       "type"      => "sliderui"
     );
 
@@ -151,8 +147,6 @@ if (!function_exists('of_options')) {
       "min"       => 50,
       "step"      => 1,
       "max"       => 1000,
-      "less"      => true,
-      "customizer"=> array(),
       "type"      => "sliderui"
     );
 
@@ -160,8 +154,6 @@ if (!function_exists('of_options')) {
       "name"      => __("Featured Images on Posts", "shoestrap"),
       "desc"      => __("Display featured Images on posts. Default: OFF.", "shoestrap"),
       "id"        => "feat_img_post",
-      "less"      => true,
-      "customizer"=> array(),
       "std"       => 0,
       "type"      => "switch"
     );
@@ -174,8 +166,6 @@ if (!function_exists('of_options')) {
       "min"       => 100,
       "step"      => 1,
       "max"       => 1600,
-      "less"      => true,
-      "customizer"=> array(),
       "type"      => "sliderui"
     );
 
@@ -187,8 +177,6 @@ if (!function_exists('of_options')) {
       "min"       => 50,
       "step"      => 1,
       "max"       => 1000,
-      "less"      => true,
-      "customizer"=> array(),
       "type"      => "sliderui"
     );
 
@@ -204,7 +192,6 @@ if (!function_exists('of_options')) {
       "id"        => "layout",
       "std"       => get_theme_mod('layout', 1),
       "type"      => "images",
-      "less"      => true,
       "customizer"=> array(),
       "options"   => array(
         0         => get_template_directory_uri() . '/assets/img/m.png',
@@ -220,7 +207,6 @@ if (!function_exists('of_options')) {
       "name"      => __("Show sidebars on the frontpage", "shoestrap"),
       "desc"      => __("OFF by default. If you want to display the sidebars in your frontpage, turn this ON.", "shoestrap"),
       "id"        => "layout_sidebar_on_front",
-      "less"      => true,
       "customizer"=> array(),
       "std"       => 0,
       "type"      => "switch"
@@ -230,7 +216,6 @@ if (!function_exists('of_options')) {
       "name"      => __("Fluid Layout", "shoestrap"),
       "desc"      => __("OFF by default. If you turn this ON, then the layout of your site will become fluid, spanning accross the whole width of your screen.", "shoestrap"),
       "id"        => "fluid",
-      "less"      => true,
       "customizer"=> array(),
       "std"       => 0,
       "type"      => "switch"
@@ -245,7 +230,6 @@ if (!function_exists('of_options')) {
       "step"      => 1,
       "max"       => 6,
       "advanced"  => true,
-      "less"      => true,
       "customizer"=> array(),
       "type"      => "sliderui"
     );
@@ -259,7 +243,6 @@ if (!function_exists('of_options')) {
       "step"      => 1,
       "max"       => 4,
       "advanced"  => true,
-      "less"      => true,
       "customizer"=> array(),
       "type"      => "sliderui"
     );
@@ -274,7 +257,6 @@ if (!function_exists('of_options')) {
       "max"       => 1600,
       "advanced"  => true,
       "less"      => true,
-      "customizer"=> array(),
       "type"      => "sliderui"
     );
 
@@ -288,7 +270,6 @@ if (!function_exists('of_options')) {
       "max"       => 1600,
       "advanced"  => true,
       "less"      => true,
-      "customizer"=> array(),
       "type"      => "sliderui",
 
     );
@@ -303,7 +284,6 @@ if (!function_exists('of_options')) {
       "max"       => 1600,
       "advanced"  => true,
       "less"      => true,
-      "customizer"=> array(),
       "type"      => "sliderui"
     );
 
@@ -317,7 +297,6 @@ if (!function_exists('of_options')) {
       "max"       => 1600,
       "advanced"  => true,
       "less"      => true,
-      "customizer"=> array(),
       "type"      => "sliderui"
     );
 
@@ -331,7 +310,6 @@ if (!function_exists('of_options')) {
       "max"       => 100,
       "advanced"  => true,
       "less"      => true,
-      "customizer"=> array(),
       "type"      => "sliderui"
     );
 
@@ -433,7 +411,6 @@ if (!function_exists('of_options')) {
       "desc"      => __("ON by default. If you want to hide your main navbar you can do it here. When you do, the main menu will still be displayed but not styled as a navbar. If you want to completely disable it, then please visit the customizer and on the \"Navigation\" section, select \"None\".", "shoestrap"),
       "id"        => "navbar_toggle",
       "std"       => 1,
-      "less"      => true,
       "customizer"=> array(),
       "type"      => "switch"
     );
@@ -443,7 +420,6 @@ if (!function_exists('of_options')) {
       "desc"      => __("Default: ON", "shoestrap"),
       "id"        => "navbar_brand",
       "std"       => 1,
-      "less"      => true,
       "customizer"=> array(),
       "type"      => "switch"
     );
@@ -453,7 +429,6 @@ if (!function_exists('of_options')) {
       "desc"      => __("If this option is OFF, or there is no logo available, then the sitename will be displayed instead. Default: ON", "shoestrap"),
       "id"        => "navbar_logo",
       "std"       => 1,
-      "less"      => true,
       "customizer"=> array(),
       "type"      => "switch"
     );
@@ -482,7 +457,6 @@ if (!function_exists('of_options')) {
       "name"      => __("Display social links in the Navbar.", "shoestrap"),
       "desc"      => __("Display social links in the Navbar. These can be setup in the \"Social\" section on the left. Default: OFF", "shoestrap"),
       "id"        => "navbar_social",
-      "less"      => true,
       "customizer"=> array(),
       "std"       => 0,
       "type"      => "switch"
@@ -492,7 +466,6 @@ if (!function_exists('of_options')) {
       "name"      => __("Search", "shoestrap"),
       "desc"      => __("Display a search form in the Navbar. Default: OFF", "shoestrap"),
       "id"        => "navbar_search",
-      "less"      => true,
       "customizer"=> array(),
       "std"       => 0,
       "type"      => "switch"
@@ -503,7 +476,6 @@ if (!function_exists('of_options')) {
       "desc"      => __("Floats the primary navigation to the right. Default: OFF", "shoestrap"),
       "id"        => "navbar_nav_right",
       "std"       => 0,
-      "less"      => true,
       "customizer"=> array(),
       "type"      => "switch"
     );
@@ -514,7 +486,6 @@ if (!function_exists('of_options')) {
       "id"        => "navbar_position",
       "std"       => 0,
       "type"      => "select",
-      "less"      => true,
       "customizer"=> array(),
       "options"   => array(
         0         => __( 'Normal', 'shoestrap' ),
@@ -542,7 +513,6 @@ if (!function_exists('of_options')) {
       "desc"      => __("You can use an alternative menu style for your NavBars. OFF by default. ", "shoestrap"),
       "id"        => "navbar_altmenu",
       "std"       => 0,
-      "less"      => true,
       "customizer"=> array(),
       "type"      => "switch"
     );
@@ -599,7 +569,7 @@ if (!function_exists('of_options')) {
     );
 
     $of_options[] = array(
-      "name"      => __("Jumbotron Color", "shoestrap"),
+      "name"      => __("Jumbotron Text Color", "shoestrap"),
       "desc"      => __("Select the text color for your Jumbotron area. Please note that this area will only be visible if you assign a widget to the \"Jumbotron\" Widget Area. Default: #333333.", "shoestrap"),
       "id"        => "jumbotron_color",
       "std"       => "#333333",
@@ -612,7 +582,6 @@ if (!function_exists('of_options')) {
       "name"      => __("Display Jumbotron only on the Frontpage.", "shoestrap"),
       "desc"      => __("When Turned OFF, the Jumbotron area is displayed in all your pages. If you wish to completely disable the Jumbotron, then please remove the widgets assigned to its area and it will no longer be displayed. Default: ON", "shoestrap"),
       "id"        => "jumbotron_visibility",
-      "less"      => true,
       "customizer"=> array(),
       "std"       => 1,
       "type"      => "switch"
@@ -622,7 +591,6 @@ if (!function_exists('of_options')) {
       "name"      => __("Full-Width", "shoestrap"),
       "desc"      => __("When Turned ON, the Jumbotron is no longer restricted by the width of your page, taking over the full width of your screen. This option is useful when you have assigned a slider widget on the Jumbotron area and you want its width to be the maximum width of the screen. Default: OFF.", "shoestrap"),
       "id"        => "jumbotron_nocontainer",
-      "less"      => true,
       "customizer"=> array(),
       "std"       => 1,
       "type"      => "switch"
@@ -632,7 +600,6 @@ if (!function_exists('of_options')) {
       "name"      => __("Use fittext script for the title.", "shoestrap"),
       "desc"      => __("Use the fittext script to enlarge or scale-down the font-size of the widget title to fit the Jumbotron area. Default: OFF", "shoestrap"),
       "id"        => "jumbotron_title_fit",
-      "less"      => true,
       "customizer"=> array(),
       "std"       => 0,
       "type"      => "switch"
@@ -642,7 +609,6 @@ if (!function_exists('of_options')) {
       "name"      => __("Center-align the content.", "shoestrap"),
       "desc"      => __("Turn this on to center-align the contents of the Jumbotron area. Default: OFF", "shoestrap"),
       "id"        => "jumbotron_title_fit",
-      "less"      => true,
       "customizer"=> array(),
       "std"       => 0,
       "type"      => "switch"
@@ -658,7 +624,6 @@ if (!function_exists('of_options')) {
       "name"      => __("Display the Header.", "shoestrap"),
       "desc"      => __("Turn this ON to display the header. Default: OFF", "shoestrap"),
       "id"        => "header_toggle",
-      "less"      => true,
       "customizer"=> array(),
       "std"       => 0,
       "type"      => "switch"
@@ -668,7 +633,6 @@ if (!function_exists('of_options')) {
       "name"      => __("Display branding on your Header.", "shoestrap"),
       "desc"      => __("Turn this ON to display branding (Sitename or Logo)on your Header. Default: ON", "shoestrap"),
       "id"        => "header_branding",
-      "less"      => true,
       "customizer"=> array(),
       "std"       => 1,
       "type"      => "switch"
@@ -679,7 +643,6 @@ if (!function_exists('of_options')) {
       "desc"      => __("Select the background color for your header. Default: #EEEEEE.", "shoestrap"),
       "id"        => "header_bg",
       "std"       => "#EEEEEE",
-      "less"      => true,
       "customizer"=> array(),
       "type"      => "color"
     );
@@ -689,7 +652,6 @@ if (!function_exists('of_options')) {
       "desc"      => __("Select the text color for your header. Default: #333333.", "shoestrap"),
       "id"        => "header_color",
       "std"       => "#333333",
-      "less"      => true,
       "customizer"=> array(),
       "type"      => "color"
     );
@@ -705,7 +667,6 @@ if (!function_exists('of_options')) {
       "desc"      => __("Select the background color for your footer. Default: #ffffff.", "shoestrap"),
       "id"        => "footer_bg",
       "std"       => "#ffffff",
-      "less"      => true,
       "customizer"=> array(),
       "type"      => "color"
     );
@@ -715,7 +676,6 @@ if (!function_exists('of_options')) {
       "desc"      => __("Select the text color for your footer. Default: #333333.", "shoestrap"),
       "id"        => "footer_color",
       "std"       => "#333333",
-      "less"      => true,
       "customizer"=> array(),
       "type"      => "color"
     );
