@@ -5,6 +5,7 @@ jQuery.noConflict();
 jQuery(document).ready(function($){
 
 
+
 /* Not sure if I like the wordpress pointer. Here's how to do it though...
 	$('.pointer').live('click', function() {
 		var parent = $(this).closest('li').attr('id');

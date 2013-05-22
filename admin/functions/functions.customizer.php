@@ -3,30 +3,39 @@ add_action( 'customize_controls_init', 'smof_customize_init' );
 add_action( 'customize_preview_init', 'smof_preview_init' );
 add_action( 'customize_register', 'smof_customize_register' );
 
-$customizerView = true;
 
 // Generates the CSS from less on save IF a less file has been changed
-//if (get_theme_mod('less-dirty') == "true") {
-  //add_action('customize_save', 'saveCSS', 100);
-add_action('customize_save', 'regenCSS', 100);
-function regenCSS( $wp_customize ) {
-	checkCSSRegen();
-	set_theme_mod('regen-css', time()+3);
+function shoestrapCSSRegen() {
+    $nonce = $_POST['nonce'];
+
+	header("Content-type: application/json");
+    // check to see if the submitted nonce matches
+    if ( ! wp_verify_nonce( $nonce, 'wp_ajax_shoestrap_makecss' ) ) {
+        echo json_encode(
+            array('response' => 'failed', 'message' => 'Verify nonce failed!')
+        );
+        exit;
+    }
+    // permission allow to Super Admin and Admin only
+    if ( current_user_can( 'activate_plugins' ) ) {
+        shoestrap_makecss();
+        echo json_encode(
+            array('response' => 'success', 'message' => 'CSS Regenerated')
+        );
+    } else {
+        echo json_encode(
+            array('response' => 'failed', 'message' => 'Insufficient permissions!')
+        );
+    }
+    exit;
 }
-function checkCSSRegen() {
-	if (get_theme_mod('regen-css') != "" && get_theme_mod('regen-css') < time()) {
-		shoestrap_makecss();
-	  	remove_theme_mod('regen-css');
-	}
-}
+// Ajax call
+add_action('wp_ajax_shoestrapCSSRegen', 'shoestrapCSSRegen');
+
 
 $smof_details = array();
 
-
-
-
 function smof_customize_init( $wp_customize ) {
-	checkCSSRegen();
 	// Get Javascript
 	of_load_only();
 	// Have to change the javascript for the customizer
@@ -34,7 +43,11 @@ function smof_customize_init( $wp_customize ) {
 	wp_enqueue_style('wp-pointer');
     wp_enqueue_script('wp-pointer');
 	wp_enqueue_script('smofcustomizerjs', ADMIN_DIR .'assets/js/customizer.js');
-
+	wp_enqueue_script('smof-regenCSS', ADMIN_DIR .'assets/js/smof-regenCSS.js', array( 'jquery' ));
+	wp_localize_script( 'smof-regenCSS', 'regenCSSAjax', array(
+		'adminUrl'		=> 	admin_url(),
+		'nonce'		=> 	js_escape( wp_create_nonce( 'wp_ajax_shoestrap_makecss' ) )
+	));
 	// Get styles
 	of_style_only();
 	wp_enqueue_style('smofcustomizer', ADMIN_DIR .'assets/css/customizer.css');
