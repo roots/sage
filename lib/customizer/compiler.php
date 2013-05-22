@@ -79,7 +79,6 @@ function shoestrap_makecss() {
   shoestrap_compile_css();
 }
 
-
 /*
  * The content below is a copy of bootstrap's variables.less file.
  *
@@ -582,11 +581,15 @@ function shoestrap_variables_less() {
   return $variables;
 }
 
-function shoestrap_complete_less($url = false) {
-  if ($url == true) {
-    $bootsrap = get_template_directory_uri().'/assets/less/bootstrap/';
-    $fonts = get_template_directory_uri().'/assets/fonts/';;
-    $less = get_template_directory_uri().'/assets/less/';
+function shoestrap_complete_less( $url = false ) {
+  if ( $url == true ) {
+    $bootstrap    = get_template_directory_uri() . '/assets/less/bootstrap/';
+    $fonts        = get_template_directory_uri().'/assets/fonts/';
+    $less         = get_template_directory_uri().'/assets/less/';
+  } else {
+    $bootstrap    = NULL;
+    $fonts        = NULL;
+    $less         = NULL;
   }
   $bootstrap_less = shoestrap_variables_less() . '
 /*!
@@ -600,59 +603,59 @@ function shoestrap_complete_less($url = false) {
  */
 
 // Core variables and mixins
-// @import "'.$bootsrap.'variables";
-@import "'.$bootsrap.'mixins";
+// @import "'.$bootstrap.'variables";
+@import "'.$bootstrap.'mixins";
 
 // Reset
-@import "'.$bootsrap.'normalize";
-@import "'.$bootsrap.'print";
+@import "'.$bootstrap.'normalize";
+@import "'.$bootstrap.'print";
 
 // Core CSS
-@import "'.$bootsrap.'scaffolding";
-@import "'.$bootsrap.'type";
-@import "'.$bootsrap.'code";
-@import "'.$bootsrap.'grid";
+@import "'.$bootstrap.'scaffolding";
+@import "'.$bootstrap.'type";
+@import "'.$bootstrap.'code";
+@import "'.$bootstrap.'grid";
 
-@import "'.$bootsrap.'tables";
-@import "'.$bootsrap.'forms";
-@import "'.$bootsrap.'buttons";
+@import "'.$bootstrap.'tables";
+@import "'.$bootstrap.'forms";
+@import "'.$bootstrap.'buttons";
 
 // Components: common
-@import "'.$bootsrap.'component-animations";
+@import "'.$bootstrap.'component-animations";
 @import "'.$fonts.'elusive-webfont";
-@import "'.$bootsrap.'dropdowns";
-@import "'.$bootsrap.'list-group";
-@import "'.$bootsrap.'panels";
-@import "'.$bootsrap.'wells";
-@import "'.$bootsrap.'close";
+@import "'.$bootstrap.'dropdowns";
+@import "'.$bootstrap.'list-group";
+@import "'.$bootstrap.'panels";
+@import "'.$bootstrap.'wells";
+@import "'.$bootstrap.'close";
 
 // Components: Nav
-@import "'.$bootsrap.'navs";
-@import "'.$bootsrap.'navbar";
-@import "'.$bootsrap.'button-groups";
-@import "'.$bootsrap.'breadcrumbs";
-@import "'.$bootsrap.'pagination";
-@import "'.$bootsrap.'pager";
+@import "'.$bootstrap.'navs";
+@import "'.$bootstrap.'navbar";
+@import "'.$bootstrap.'button-groups";
+@import "'.$bootstrap.'breadcrumbs";
+@import "'.$bootstrap.'pagination";
+@import "'.$bootstrap.'pager";
 
 // Components: Popovers
-@import "'.$bootsrap.'modals";
-@import "'.$bootsrap.'tooltip";
-@import "'.$bootsrap.'popovers";
+@import "'.$bootstrap.'modals";
+@import "'.$bootstrap.'tooltip";
+@import "'.$bootstrap.'popovers";
 
 // Components: Misc
-@import "'.$bootsrap.'alerts";
-@import "'.$bootsrap.'thumbnails";
-@import "'.$bootsrap.'media";
-@import "'.$bootsrap.'labels";
-@import "'.$bootsrap.'badges";
-@import "'.$bootsrap.'progress-bars";
-@import "'.$bootsrap.'accordion";
-@import "'.$bootsrap.'carousel";
-@import "'.$bootsrap.'jumbotron";
+@import "'.$bootstrap.'alerts";
+@import "'.$bootstrap.'thumbnails";
+@import "'.$bootstrap.'media";
+@import "'.$bootstrap.'labels";
+@import "'.$bootstrap.'badges";
+@import "'.$bootstrap.'progress-bars";
+@import "'.$bootstrap.'accordion";
+@import "'.$bootstrap.'carousel";
+@import "'.$bootstrap.'jumbotron";
 
 // Utility classes
-@import "'.$bootsrap.'utilities"; // Has to be last to override when necessary
-@import "'.$bootsrap.'responsive-utilities";
+@import "'.$bootstrap.'utilities"; // Has to be last to override when necessary
+@import "'.$bootstrap.'responsive-utilities";
 
 @import "'.$less.'app"; // Custom Shoestrap less-css
 ';
