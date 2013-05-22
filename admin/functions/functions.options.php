@@ -41,18 +41,18 @@ if (!function_exists('of_options')) {
 
 
     //Background Images Reader
-    $bg_images_path = STYLESHEETPATH. '/images/bg/'; // change this to where you store your bg images
-    $bg_images_url = get_bloginfo('template_url').'/images/bg/'; // change this to where you store your bg images
+    $bg_images_path = STYLESHEETPATH. '/assets/img/patterns';
+    $bg_images_url = get_bloginfo('template_url').'/assets/img/patterns/';
     $bg_images = array();
 
     if ( is_dir($bg_images_path) ) {
-        if ($bg_images_dir = opendir($bg_images_path) ) {
-            while ( ($bg_images_file = readdir($bg_images_dir)) !== false ) {
-                if(stristr($bg_images_file, ".png") !== false || stristr($bg_images_file, ".jpg") !== false) {
-                    $bg_images[] = $bg_images_url . $bg_images_file;
-                }
-            }
+      if ( $bg_images_dir = opendir( $bg_images_path ) ) {
+        while ( ( $bg_images_file = readdir( $bg_images_dir ) ) !== false ) {
+          if( stristr( $bg_images_file, ".png" ) !== false || stristr( $bg_images_file, ".jpg" ) !== false) {
+            $bg_images[] = $bg_images_url . $bg_images_file;
+          }
         }
+      }
     }
 
 
@@ -94,6 +94,14 @@ if (!function_exists('of_options')) {
       "id"        => "logo",
       "std"       => "",
       "type"      => "media"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Show BreadCrumbs", "shoestrap"),
+      "desc"      => __("Display Breadcrumbs. Default: OFF.", "shoestrap"),
+      "id"        => "breadcrumbs",
+      "std"       => 0,
+      "type"      => "switch"
     );
 
     $of_options[] = array(
@@ -182,6 +190,76 @@ if (!function_exists('of_options')) {
       "step"      => 1,
       "max"       => 1000,
       "type"      => "sliderui"
+    );
+
+    // General Options
+    $of_options[] = array(
+      "name"      => __("Background Image", "shoestrap"),
+      "type"      => "heading"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Upload a custom Background Image", "shoestrap"),
+      "desc"      => __("Enable this option to upload a custom background image for your site. Default: OFF.", "shoestrap"),
+      "id"        => "background_image_toggle",
+      "std"       => 0,
+      "type"      => "switch"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Background Image", "shoestrap"),
+      "desc"      => __("Upload a Background image using the media uploader, or define the URL directly.", "shoestrap"),
+      "id"        => "background_image",
+      "fold"      => "background_image_toggle",
+      "std"       => "",
+      "type"      => "media"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Background Repeat", "shoestrap"),
+      "desc"      => __("Select how (or if) the selected background should be tiled. Default: Tile", "shoestrap"),
+      "id"        => "background_repeat",
+      "fold"      => "background_image_toggle",
+      "std"       => "repeat",
+      "type"      => "radio",
+      "options"   => array(
+        'no-repeat'  => __( 'No Repeat', 'shoestrap' ),
+        'repeat'     => __( 'Tile', 'shoestrap' ),
+        'repeat-x'   => __( 'Tile Horizontally', 'shoestrap' ),
+        'repeat-y'   => __( 'Tile Vertically', 'shoestrap' ),
+      ),
+    );
+
+    $of_options[] = array(
+      "name"      => __("Background Alignment", "shoestrap"),
+      "desc"      => __("Select how the selected background should be horizontally aligned. Default: Left", "shoestrap"),
+      "id"        => "background_position_x",
+      "fold"      => "background_image_toggle",
+      "std"       => "repeat",
+      "type"      => "radio",
+      "options"   => array(
+        'left'    => __( 'Left', 'shoestrap' ),
+        'right'   => __( 'Right', 'shoestrap' ),
+        'center'  => __( 'Center', 'shoestrap' ),
+      ),
+    );
+
+    $of_options[] = array(
+      "name"      => __("Use a Background Pattern", "shoestrap"),
+      "desc"      => __("Select one of the already existing Background Patterns. Default: OFF.", "shoestrap"),
+      "id"        => "bg_pattern_toggle",
+      "std"       => 0,
+      "type"      => "switch"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Choose a Background Pattern", "shoestrap"),
+      "desc"      => __("Select a background pattern.", "shoestrap"),
+      "id"        => "bg_pattern",
+      "fold"      => "bg_pattern_toggle",
+      "std"       => "",
+      "type"      => "tiles",
+      "options"   => $bg_images,
     );
 
     // Layout Settings
@@ -418,7 +496,6 @@ if (!function_exists('of_options')) {
     );
 
     // NavBar Settings
-
     $of_options[] = array(
       "name"      => __("NavBar Settings", "shoestrap"),
       "type"      => "heading"
@@ -437,6 +514,7 @@ if (!function_exists('of_options')) {
       "name"      => __("Display Branding (Sitename or Logo)", "shoestrap"),
       "desc"      => __("Default: ON", "shoestrap"),
       "id"        => "navbar_brand",
+      "fold"      => "navbar_toggle",
       "std"       => 1,
       "customizer"=> array(),
       "type"      => "switch"
@@ -446,6 +524,7 @@ if (!function_exists('of_options')) {
       "name"      => __("Use Logo (if available) for branding", "shoestrap"),
       "desc"      => __("If this option is OFF, or there is no logo available, then the sitename will be displayed instead. Default: ON", "shoestrap"),
       "id"        => "navbar_logo",
+      "fold"      => "navbar_toggle",
       "std"       => 1,
       "customizer"=> array(),
       "type"      => "switch"
@@ -455,6 +534,7 @@ if (!function_exists('of_options')) {
       "name"      => __("NavBar Background Color", "shoestrap"),
       "desc"      => __("Pick a background color for the NavBar. Default: #eeeeee.", "shoestrap"),
       "id"        => "navbar_bg",
+      "fold"      => "navbar_toggle",
       "std"       => "#eeeeee",
       "less"      => true,
       "customizer"=> array(),
@@ -465,6 +545,7 @@ if (!function_exists('of_options')) {
       "name"      => __("NavBar Text Color", "shoestrap"),
       "desc"      => __("Pick a color for the NavBar text. This applies to menu items and the Sitename (if no logo is uploaded). Default: #777777.", "shoestrap"),
       "id"        => "navbar_color",
+      "fold"      => "navbar_toggle",
       "std"       => "#777777",
       "less"      => true,
       "customizer"=> array(),
@@ -475,6 +556,7 @@ if (!function_exists('of_options')) {
       "name"      => __("Display social links in the Navbar.", "shoestrap"),
       "desc"      => __("Display social links in the Navbar. These can be setup in the \"Social\" section on the left. Default: OFF", "shoestrap"),
       "id"        => "navbar_social",
+      "fold"      => "navbar_toggle",
       "customizer"=> array(),
       "std"       => 0,
       "type"      => "switch"
@@ -484,6 +566,7 @@ if (!function_exists('of_options')) {
       "name"      => __("Search", "shoestrap"),
       "desc"      => __("Display a search form in the Navbar. Default: OFF", "shoestrap"),
       "id"        => "navbar_search",
+      "fold"      => "navbar_toggle",
       "customizer"=> array(),
       "std"       => 0,
       "type"      => "switch"
@@ -493,6 +576,7 @@ if (!function_exists('of_options')) {
       "name"      => __("Float menu to the right", "shoestrap"),
       "desc"      => __("Floats the primary navigation to the right. Default: OFF", "shoestrap"),
       "id"        => "navbar_nav_right",
+      "fold"      => "navbar_toggle",
       "std"       => 0,
       "customizer"=> array(),
       "type"      => "switch"
@@ -502,6 +586,7 @@ if (!function_exists('of_options')) {
       "name"      => __("NavBar Positioning", "shoestrap"),
       "desc"      => __("Using this option you can set the navbar to be fixed to top, fixed to bottom or normal. When you're using one of the \"fixed\" options, the navbar will stay fixed on the top or bottom of the page. Default: Normal", "shoestrap"),
       "id"        => "navbar_position",
+      "fold"      => "navbar_toggle",
       "std"       => 0,
       "type"      => "select",
       "customizer"=> array(),
@@ -516,6 +601,7 @@ if (!function_exists('of_options')) {
       "name"      => __("Navbar Height", "shoestrap"),
       "desc"      => __("Select the height of the Navbar. If you're using a logo then this should be equal or greater than its height.", "shoestrap"),
       "id"        => "navbar_height",
+      "fold"      => "navbar_toggle",
       "std"       => 50,
       "min"       => 10,
       "step"      => 1,
@@ -530,6 +616,7 @@ if (!function_exists('of_options')) {
       "name"      => __("Alternative style for NavBars", "shoestrap"),
       "desc"      => __("You can use an alternative menu style for your NavBars. OFF by default. ", "shoestrap"),
       "id"        => "navbar_altmenu",
+      "fold"      => "navbar_toggle",
       "std"       => 0,
       "customizer"=> array(),
       "type"      => "switch"
@@ -553,7 +640,7 @@ if (!function_exists('of_options')) {
 
     $of_options[] = array(
       "name"      => __("Background Image", "shoestrap"),
-      "desc"      => __("Upload a logo image using the media uploader, or define the URL directly. Use the shortcodes [site_url] or [site_url_secure] for setting default URLs", "shoestrap"),
+      "desc"      => __("Upload a Background image using the media uploader, or define the URL directly. Use the shortcodes [site_url] or [site_url_secure] for setting default URLs", "shoestrap"),
       "id"        => "jumbotron_bg_img",
       "std"       => "",
       "type"      => "media"
@@ -732,3 +819,5 @@ if (!function_exists('of_options')) {
     );
   }
 }
+
+remove_filter('of_options_before_save', 'of_filter_save_media_upload');
