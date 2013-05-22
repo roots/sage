@@ -582,7 +582,12 @@ function shoestrap_variables_less() {
   return $variables;
 }
 
-function shoestrap_complete_less() {
+function shoestrap_complete_less($url = false) {
+  if ($url == true) {
+    $bootsrap = get_template_directory_uri().'/assets/less/bootstrap/';
+    $fonts = get_template_directory_uri().'/assets/fonts/';;
+    $less = get_template_directory_uri().'/assets/less/';
+  }
   $bootstrap_less = shoestrap_variables_less() . '
 /*!
  * Bootstrap v3.0.0
@@ -595,127 +600,68 @@ function shoestrap_complete_less() {
  */
 
 // Core variables and mixins
-// @import "variables";
-@import "mixins";
+// @import "'.$bootsrap.'variables";
+@import "'.$bootsrap.'mixins";
 
 // Reset
-@import "normalize";
-@import "print";
+@import "'.$bootsrap.'normalize";
+@import "'.$bootsrap.'print";
 
 // Core CSS
-@import "scaffolding";
-@import "type";
-@import "code";
-@import "grid";
+@import "'.$bootsrap.'scaffolding";
+@import "'.$bootsrap.'type";
+@import "'.$bootsrap.'code";
+@import "'.$bootsrap.'grid";
 
-@import "tables";
-@import "forms";
-@import "buttons";
+@import "'.$bootsrap.'tables";
+@import "'.$bootsrap.'forms";
+@import "'.$bootsrap.'buttons";
 
 // Components: common
-@import "component-animations";
-@import "elusive-webfont";
-@import "dropdowns";
-@import "list-group";
-@import "panels";
-@import "wells";
-@import "close";
+@import "'.$bootsrap.'component-animations";
+@import "'.$fonts.'elusive-webfont";
+@import "'.$bootsrap.'dropdowns";
+@import "'.$bootsrap.'list-group";
+@import "'.$bootsrap.'panels";
+@import "'.$bootsrap.'wells";
+@import "'.$bootsrap.'close";
 
 // Components: Nav
-@import "navs";
-@import "navbar";
-@import "button-groups";
-@import "breadcrumbs";
-@import "pagination";
-@import "pager";
+@import "'.$bootsrap.'navs";
+@import "'.$bootsrap.'navbar";
+@import "'.$bootsrap.'button-groups";
+@import "'.$bootsrap.'breadcrumbs";
+@import "'.$bootsrap.'pagination";
+@import "'.$bootsrap.'pager";
 
 // Components: Popovers
-@import "modals";
-@import "tooltip";
-@import "popovers";
+@import "'.$bootsrap.'modals";
+@import "'.$bootsrap.'tooltip";
+@import "'.$bootsrap.'popovers";
 
 // Components: Misc
-@import "alerts";
-@import "thumbnails";
-@import "media";
-@import "labels";
-@import "badges";
-@import "progress-bars";
-@import "accordion";
-@import "carousel";
-@import "jumbotron";
+@import "'.$bootsrap.'alerts";
+@import "'.$bootsrap.'thumbnails";
+@import "'.$bootsrap.'media";
+@import "'.$bootsrap.'labels";
+@import "'.$bootsrap.'badges";
+@import "'.$bootsrap.'progress-bars";
+@import "'.$bootsrap.'accordion";
+@import "'.$bootsrap.'carousel";
+@import "'.$bootsrap.'jumbotron";
 
 // Utility classes
-@import "utilities"; // Has to be last to override when necessary
-@import "responsive-utilities";
+@import "'.$bootsrap.'utilities"; // Has to be last to override when necessary
+@import "'.$bootsrap.'responsive-utilities";
 
-@import "app"; // Custom Shoestrap less-css
+//@import "'.$less.'app"; // Custom Shoestrap less-css
 ';
 
-  return $bootstrap_less;
+if ($url == true) {
+  $bootstrap_less .="
+    @elusiveWebfontPath: '".$fonts."';
+  ";
 }
-
-function shoestrap_complete_less_preview() {
-  $bootstrap_less = shoestrap_variables_less() . '
-
-// Core variables and mixins
-// @import "'.get_template_directory_uri().'/assets/less/bootstrap/variables";
-@import "'.get_template_directory_uri().'/assets/less/bootstrap/mixins";
-
-// Reset
-@import "'.get_template_directory_uri().'/assets/less/bootstrap/normalize";
-@import "'.get_template_directory_uri().'/assets/less/bootstrap/print";
-
-// Core CSS
-@import "'.get_template_directory_uri().'/assets/less/bootstrap/scaffolding";
-@import "'.get_template_directory_uri().'/assets/less/bootstrap/type";
-@import "'.get_template_directory_uri().'/assets/less/bootstrap/code";
-@import "'.get_template_directory_uri().'/assets/less/bootstrap/grid";
-
-@import "'.get_template_directory_uri().'/assets/less/bootstrap/tables";
-@import "'.get_template_directory_uri().'/assets/less/bootstrap/forms";
-@import "'.get_template_directory_uri().'/assets/less/bootstrap/buttons";
-
-// Components: common
-@import "'.get_template_directory_uri().'/assets/less/bootstrap/component-animations";
-@import "'.get_template_directory_uri().'/assets/fonts/elusive-webfont";
-@elusiveWebfontPath: "'.get_template_directory_uri().'/assets/fonts/";
-@import "'.get_template_directory_uri().'/assets/less/bootstrap/dropdowns";
-@import "'.get_template_directory_uri().'/assets/less/bootstrap/list-group";
-@import "'.get_template_directory_uri().'/assets/less/bootstrap/panels";
-@import "'.get_template_directory_uri().'/assets/less/bootstrap/wells";
-@import "'.get_template_directory_uri().'/assets/less/bootstrap/close";
-
-// Components: Nav
-@import "'.get_template_directory_uri().'/assets/less/bootstrap/navs";
-@import "'.get_template_directory_uri().'/assets/less/bootstrap/navbar";
-@import "'.get_template_directory_uri().'/assets/less/bootstrap/button-groups";
-@import "'.get_template_directory_uri().'/assets/less/bootstrap/breadcrumbs";
-@import "'.get_template_directory_uri().'/assets/less/bootstrap/pagination";
-@import "'.get_template_directory_uri().'/assets/less/bootstrap/pager";
-
-// Components: Popovers
-@import "'.get_template_directory_uri().'/assets/less/bootstrap/modals";
-@import "'.get_template_directory_uri().'/assets/less/bootstrap/tooltip";
-@import "'.get_template_directory_uri().'/assets/less/bootstrap/popovers";
-
-// Components: Misc
-@import "'.get_template_directory_uri().'/assets/less/bootstrap/alerts";
-@import "'.get_template_directory_uri().'/assets/less/bootstrap/thumbnails";
-@import "'.get_template_directory_uri().'/assets/less/bootstrap/media";
-@import "'.get_template_directory_uri().'/assets/less/bootstrap/labels";
-@import "'.get_template_directory_uri().'/assets/less/bootstrap/badges";
-@import "'.get_template_directory_uri().'/assets/less/bootstrap/progress-bars";
-@import "'.get_template_directory_uri().'/assets/less/bootstrap/accordion";
-@import "'.get_template_directory_uri().'/assets/less/bootstrap/carousel";
-@import "'.get_template_directory_uri().'/assets/less/bootstrap/jumbotron";
-
-// Utility classes
-@import "'.get_template_directory_uri().'/assets/less/bootstrap/utilities"; // Has to be last to override when necessary
-@import "'.get_template_directory_uri().'/assets/less/bootstrap/responsive-utilities";
-
-//@import "'.get_template_directory_uri().'/assets/less/app"; // Custom Shoestrap less-css
-';
 
   return $bootstrap_less;
 }
