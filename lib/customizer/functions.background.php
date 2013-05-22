@@ -1,7 +1,6 @@
 <?php
 
 function shoestrap_background_css() {
-  global $smof_data;
   // $background is the saved custom image, or the default image.
   if ( get_theme_mod( 'background_image_toggle' ) == 1 )
     $background = set_url_scheme( get_theme_mod( 'background_image') );
