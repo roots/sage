@@ -210,7 +210,7 @@ function shoestrap_customizer_init( $wp_customize ) {
     }
   }
 }
-//add_action( 'customize_register', 'shoestrap_customizer_init' );
+add_action( 'customize_register', 'shoestrap_customizer_init' );
 
 /*
  * This class creates a custom textarea control to be used in the "advanced" settings of the theme.
