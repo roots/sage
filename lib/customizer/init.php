@@ -1,6 +1,8 @@
 <?php
 
 
+
+
 function shoestrap_customizer_init( $wp_customize ) {
 
   $sections   = array();

@@ -13,7 +13,12 @@
  * 4. /theme/assets/js/main.js    (in footer)
  */
 function roots_scripts() {
-  wp_enqueue_style('shoestrap_css', get_template_directory_uri() . '/assets/css/style.css', false, null);
+
+  // Ensure we're not on the customize page. Conflicts with LESS
+  global $wp_customize;
+  if ( !isset( $wp_customize ) ) {
+    wp_enqueue_style('shoestrap_css', get_template_directory_uri() . '/assets/css/style.css', false, null);
+  }
 
   // Load style.css from child theme
   if (is_child_theme()) {

@@ -20,8 +20,8 @@
 	margin-right: 5px;
 }
 .customizer-sliderui .ui-slider {
-	width: 145px !important;
-	margin-right: 5px;
+	width: 142px !important;
+	margin-right: 12px;
 }
 
 .customizer-text input {
@@ -57,4 +57,7 @@
 }
 .select_wrapper {
 	width: 250px !important;
+}
+.wp-color-result {
+	top: 0;
 }

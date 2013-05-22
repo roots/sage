@@ -3,6 +3,8 @@ add_action( 'customize_controls_init', 'smof_customize_init' );
 add_action( 'customize_preview_init', 'smof_preview_init' );
 add_action( 'customize_register', 'smof_customize_register' );
 
+$customizerView = true;
+
 // Generates the CSS from less on save IF a less file has been changed
 //if (get_theme_mod('less-dirty') == "true") {
   //add_action('customize_save', 'saveCSS', 100);
@@ -20,6 +22,9 @@ function checkCSSRegen() {
 
 $smof_details = array();
 
+
+
+
 function smof_customize_init( $wp_customize ) {
 	checkCSSRegen();
 	// Get Javascript
@@ -29,46 +34,134 @@ function smof_customize_init( $wp_customize ) {
 	wp_enqueue_style('wp-pointer');
     wp_enqueue_script('wp-pointer');
 	wp_enqueue_script('smofcustomizerjs', ADMIN_DIR .'assets/js/customizer.js');
-  	//wp_register_script('smofcustomizerjs', ADMIN_DIR . 'assets/js/customizer.js', true, null, true);
-  	//wp_enqueue_script('smofcustomizerjs');
 
 	// Get styles
 	of_style_only();
-	wp_enqueue_style('admin-style', ADMIN_DIR . 'assets/css/admin-style.css');
-	wp_enqueue_style('color-picker', ADMIN_DIR . 'assets/css/colorpicker.css');
-	wp_enqueue_style('jquery-ui-custom-admin', ADMIN_DIR .'assets/css/jquery-ui-custom.css');
 	wp_enqueue_style('smofcustomizer', ADMIN_DIR .'assets/css/customizer.css');
 }
 
+function shoestrap_complete_less2() {
+  $bootstrap_less = shoestrap_variables_less() . '
+
+// Core variables and mixins
+// @import "'.get_template_directory_uri().'/assets/less/bootstrap/variables";
+@import "'.get_template_directory_uri().'/assets/less/bootstrap/mixins";
+
+// Reset
+@import "'.get_template_directory_uri().'/assets/less/bootstrap/normalize";
+@import "'.get_template_directory_uri().'/assets/less/bootstrap/print";
+
+// Core CSS
+@import "'.get_template_directory_uri().'/assets/less/bootstrap/scaffolding";
+@import "'.get_template_directory_uri().'/assets/less/bootstrap/type";
+@import "'.get_template_directory_uri().'/assets/less/bootstrap/code";
+@import "'.get_template_directory_uri().'/assets/less/bootstrap/grid";
+
+@import "'.get_template_directory_uri().'/assets/less/bootstrap/tables";
+@import "'.get_template_directory_uri().'/assets/less/bootstrap/forms";
+@import "'.get_template_directory_uri().'/assets/less/bootstrap/buttons";
+
+// Components: common
+@import "'.get_template_directory_uri().'/assets/less/bootstrap/component-animations";
+//@import "'.get_template_directory_uri().'/assets/fonts/elusive-webfont";
+@import "'.get_template_directory_uri().'/assets/less/bootstrap/dropdowns";
+@import "'.get_template_directory_uri().'/assets/less/bootstrap/list-group";
+@import "'.get_template_directory_uri().'/assets/less/bootstrap/panels";
+@import "'.get_template_directory_uri().'/assets/less/bootstrap/wells";
+@import "'.get_template_directory_uri().'/assets/less/bootstrap/close";
+
+// Components: Nav
+@import "'.get_template_directory_uri().'/assets/less/bootstrap/navs";
+@import "'.get_template_directory_uri().'/assets/less/bootstrap/navbar";
+@import "'.get_template_directory_uri().'/assets/less/bootstrap/button-groups";
+@import "'.get_template_directory_uri().'/assets/less/bootstrap/breadcrumbs";
+@import "'.get_template_directory_uri().'/assets/less/bootstrap/pagination";
+@import "'.get_template_directory_uri().'/assets/less/bootstrap/pager";
+
+// Components: Popovers
+@import "'.get_template_directory_uri().'/assets/less/bootstrap/modals";
+@import "'.get_template_directory_uri().'/assets/less/bootstrap/tooltip";
+@import "'.get_template_directory_uri().'/assets/less/bootstrap/popovers";
+
+// Components: Misc
+@import "'.get_template_directory_uri().'/assets/less/bootstrap/alerts";
+@import "'.get_template_directory_uri().'/assets/less/bootstrap/thumbnails";
+@import "'.get_template_directory_uri().'/assets/less/bootstrap/media";
+@import "'.get_template_directory_uri().'/assets/less/bootstrap/labels";
+@import "'.get_template_directory_uri().'/assets/less/bootstrap/badges";
+@import "'.get_template_directory_uri().'/assets/less/bootstrap/progress-bars";
+@import "'.get_template_directory_uri().'/assets/less/bootstrap/accordion";
+@import "'.get_template_directory_uri().'/assets/less/bootstrap/carousel";
+@import "'.get_template_directory_uri().'/assets/less/bootstrap/jumbotron";
+
+// Utility classes
+@import "'.get_template_directory_uri().'/assets/less/bootstrap/utilities"; // Has to be last to override when necessary
+@import "'.get_template_directory_uri().'/assets/less/bootstrap/responsive-utilities";
+
+@import "'.get_template_directory_uri().'/assets/less/app"; // Custom Shoestrap less-css
+';
+
+  return $bootstrap_less;
+}
+
 function smof_preview_init( $wp_customize ) {
-	echo "<pre>";
-	print_r(get_theme_mods());
+	//echo "<pre>";
+	//print_r(get_theme_mods());
+
+
 	global $smof_data, $smof_details;
-	wp_enqueue_script('lessjs', ADMIN_DIR .'assets/js/less.js');
-	wp_enqueue_style('preview-less', get_template_directory_uri() . '/assets/less/preview.less');
-	add_filter('preview-less', 'less_loader');
+	wp_dequeue_style('shoestrap_css');
+	wp_deregister_style('shoestrap_css');
+
+	//print '<style type="text/less">'.shoestrap_complete_less().'</style>';
+	print '<script type="text/javascript">
+    less = {
+        env: "development", // or "production"
+        async: false,       // load imports async
+        fileAsync: false,   // load imports async when in a page under
+                            // a file protocol
+        poll: 1000,         // when in watch mode, time in ms between polls
+        functions: {},      // user functions, keyed by name
+        dumpLineNumbers: "comments", // or "mediaQuery" or "all"
+        relativeUrls: false,// whether to adjust urls to be relative
+                            // if false, urls are already relative to the
+                            // entry less file
+        rootpath: "http://localhost/wordpress3/wp-content/themes/shoestrap/less/"// a path to add on to the start of every url
+                            //resource
+    };
+</script><style type="text/less">'.shoestrap_complete_less2().'</style>';
+	//print '<link rel="stylesheet/less" type="text/css" href="'.get_template_directory_uri() . '/assets/less/preview.less'.'">';
+	wp_enqueue_script('less-js', ADMIN_DIR .'/assets/js/less-1.3.3.min.js');
 	wp_enqueue_script('preview-js', ADMIN_DIR .'assets/js/preview.js');
-	$data['data'] = $smof_data;
-	$data['variables'] = $smof_details;
 	//$data['script'] = postMessageHandlersJS();
-	wp_localize_script( 'preview-js', 'smofPost', $data );
-	wp_enqueue_script('variables', ADMIN_DIR .'assets/js/less.js');
-
-	wp_localize_script( 'preview-js', 'lessData', shoestrap_complete_less() );
-
-
-//get_template_directory_uri()
-
-// <link rel="stylesheet/less" href="/path/to/bootstrap.less">
-// <link rel="stylesheet/less" href="/path/to/app.less">
-// //new variables.less
-// <script src="/path/to/less.js"></script>
-
-
-
-
+	wp_localize_script( 'preview-js', 'smofPost', array(
+			'data'			=> $smof_data,
+			'variables'		=> $smof_details
+		)
+	 );
 
 }
+
+
+
+function enqueue_less_styles($tag, $handle) {
+    global $wp_styles;
+    $match_pattern = '/\.less$/U';
+    if ( preg_match( $match_pattern, $wp_styles->registered[$handle]->src ) ) {
+        $handle = $wp_styles->registered[$handle]->handle;
+        $media = $wp_styles->registered[$handle]->args;
+        $href = $wp_styles->registered[$handle]->src . '?ver=' . $wp_styles->registered[$handle]->ver;
+        $rel = isset($wp_styles->registered[$handle]->extra['alt']) && $wp_styles->registered[$handle]->extra['alt'] ? 'alternate stylesheet' : 'stylesheet';
+        $title = isset($wp_styles->registered[$handle]->extra['title']) ? "title='" . esc_attr( $wp_styles->registered[$handle]->extra['title'] ) . "'" : '';
+
+        $tag = "<link rel='stylesheet/less' id='$handle' $title href='$href' type='text/less' media='$media' />";
+    }
+    return $tag;
+}
+
+
+
+
 
 function postMessageHandlersJS() {
 	global $smof_data, $smof_details;
@@ -101,8 +194,10 @@ function postMessageHandlersJS() {
 
 //do stuff here to find and replace the rel attribute
 function less_loader($tag){
+	echo "here!";
 	return str_replace('rel="stylesheet"', 'rel="stylesheet/less"', $tag);
 }
+
 
 
 function smof_customize_register($wp_customize) {
@@ -128,7 +223,7 @@ function smof_customize_register($wp_customize) {
 				'default'		=>	$option['std']
 			);
 		if ($option['less'] == true) {
-			$customSetting['transport'] = 'postMessage';
+			//$customSetting['transport'] = 'postMessage';
 		}
 		if ($section_set == false && is_array($section)) {
 			$wp_customize->add_section($section['id'], array(

@@ -3,20 +3,6 @@ jQuery.noConflict();
 /** Fire up jQuery - let's dance!
  */
 
-less = {
-    env: "development", // or "production"
-    async: false,       // load imports async
-    fileAsync: false,   // load imports async when in a page under
-                        // a file protocol
-    poll: 1000,         // when in watch mode, time in ms between polls
-    functions: {},      // user functions, keyed by name
-    dumpLineNumbers: "comments", // or "mediaQuery" or "all"
-    relativeUrls: false,// whether to adjust url's to be relative
-                        // if false, url's are already relative to the
-                        // entry less file
-    rootpath: ":/a.com/"// a path to add on to the start of every url
-                        //resource
-};
 
 
 jQuery(document).ready(function($){
@@ -31,13 +17,14 @@ console.log(lessData);
 
 function setHandler(name) {
     wp.customize( name , function( value ) {
-        console.log('Setting customize: '+name);
+        //console.log('Setting customize: '+name);
         value.bind( function( to ) {
-            console.log('Setting customize bind: '+name);
+            //console.log('Setting customize bind: '+name);
             var variable = '@'+name;
-            //less.modifyVars({
-            //    variable : '#5B83AD'
-            //});
+            console.log(variable);
+            less.modifyVars({
+                variable : to
+            });
             //console.log(name+" - "+to);
         });
     });
