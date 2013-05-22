@@ -48,8 +48,8 @@ function shoestrap_phpless_compiler() {
     $less->setFormatter( "compressed" );
 
   $less->setImportDir( array(
-    get_template_directory() . '/assets/less',
     get_template_directory() . '/assets/less/bootstrap',
+    get_template_directory() . '/assets/less',
     get_template_directory() . '/assets/fonts',
   ) );
   $css = $less->compile( shoestrap_complete_less() );
