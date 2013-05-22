@@ -654,7 +654,7 @@ function shoestrap_complete_less($url = false) {
 @import "'.$bootsrap.'utilities"; // Has to be last to override when necessary
 @import "'.$bootsrap.'responsive-utilities";
 
-//@import "'.$less.'app"; // Custom Shoestrap less-css
+@import "'.$less.'app"; // Custom Shoestrap less-css
 ';
 
 if ($url == true) {
