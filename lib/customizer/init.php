@@ -13,10 +13,6 @@ function shoestrap_customizer_init( $wp_customize ) {
     $wp_customize->add_section( $section['slug'], array( 'title' => $section['title'], 'priority' => $section['priority'] ) );
   }
 
-  // Remove the default "background" control
-  $wp_customize->remove_control( 'background_color' );
-  $wp_customize->remove_control( 'header_textcolor');
-
   // Background Color hack
   $background_color = get_theme_mod( 'background_color' );
   $background_color = '#' . str_replace( '#', '', $background_color );
