@@ -21,22 +21,6 @@ if (!function_exists('of_options')) {
     $of_options_select  = array("one","two","three","four","five");
     $of_options_radio   = array("one" => "One","two" => "Two","three" => "Three","four" => "Four","five" => "Five");
 
-    //Sample Homepage blocks for the layout manager (sorter)
-    $of_options_homepage_blocks = array
-    (
-      "disabled" => array (
-        "placebo"     => "placebo", //REQUIRED!
-        "block_one"   => "Block One",
-        "block_two"   => "Block Two",
-        "block_three" => "Block Three",
-      ),
-      "enabled" => array (
-        "placebo"     => "placebo", //REQUIRED!
-        "block_four"  => "Block Four",
-      ),
-    );
-
-
     //Stylesheets Reader
     $alt_stylesheet_path = LAYOUT_PATH;
     $alt_stylesheets = array();
@@ -91,678 +75,680 @@ if (!function_exists('of_options')) {
     $of_options_image_link_to = array("image" => "The Image","post" => "The Post");
 
 
-/*-----------------------------------------------------------------------------------*/
-/* The Options Array */
-/*-----------------------------------------------------------------------------------*/
-
-// Set the Options Array
-global $of_options;
-
-// General Options
-$of_options[] = array(
-  "name"      => "General",
-  "type"      => "heading"
-);
-
-$of_options[] = array(
-  "name"      => "Logo",
-  "desc"      => "Upload a logo image using the media uploader, or define the URL directly. Use the shortcodes [site_url] or [site_url_secure] for setting default URLs",
-  "id"        => "logo",
-  "std"       => "",
-  "type"      => "media"
-);
-
-$of_options[] = array(
-  "name"      => "No gradients - \"Flat\" look.",
-  "desc"      => "This option will disable all gradients in your site, giving it a cleaner look. Default: OFF.",
-  "id"        => "general_flat",
-  "less"      => true,
-  "customizer"=> array(),
-  "std"       => 0,
-  "type"      => "switch"
-);
-
-$of_options[] = array(
-  "name"      => "Border-Radius",
-  "desc"      => "You can adjust the corner-radius of all elements in your site here. This will affect buttons, navbars, widgets and many more. Default: 4",
-  "id"        => "layout_secondary_width",
-  "std"       => 4,
-  "min"       => 0,
-  "step"      => 1,
-  "max"       => 50,
-  "advanced"  => true,
-  "less"      => true,
-  "customizer"=> array(),
-  "type"      => "sliderui"
-);
-
-$of_options[] = array(
-  "name"      => "Featured Images on Archives",
-  "desc"      => "Display featured Images on post archives (such as categories, tags, month view etc). Default: OFF.",
-  "id"        => "feat_img_archive",
-  "less"      => true,
-  "customizer"=> array(),
-  "std"       => 0,
-  "type"      => "switch"
-);
-
-$of_options[] = array(
-  "name"      => "Archives Featured Image Width",
-  "desc"      => "Select the width of your featured images on post archives. Default: 550px",
-  "id"        => "feat_img_archive_width",
-  "std"       => 550,
-  "min"       => 100,
-  "step"      => 1,
-  "max"       => 1600,
-  "less"      => true,
-  "customizer"=> array(),
-  "type"      => "sliderui"
-);
-
-$of_options[] = array(
-  "name"      => "Archives Featured Image Height",
-  "desc"      => "Select the height of your featured images on post archives. Default: 300px",
-  "id"        => "feat_img_archive_height",
-  "std"       => 300,
-  "min"       => 50,
-  "step"      => 1,
-  "max"       => 1000,
-  "less"      => true,
-  "customizer"=> array(),
-  "type"      => "sliderui"
-);
-
-$of_options[] = array(
-  "name"      => "Featured Images on Posts",
-  "desc"      => "Display featured Images on posts. Default: OFF.",
-  "id"        => "feat_img_post",
-  "less"      => true,
-  "customizer"=> array(),
-  "std"       => 0,
-  "type"      => "switch"
-);
-
-$of_options[] = array(
-  "name"      => "Posts Featured Image Width",
-  "desc"      => "Select the width of your featured images on single posts. Default: 550px",
-  "id"        => "feat_img_post_width",
-  "std"       => 550,
-  "min"       => 100,
-  "step"      => 1,
-  "max"       => 1600,
-  "less"      => true,
-  "customizer"=> array(),
-  "type"      => "sliderui"
-);
-
-$of_options[] = array(
-  "name"      => "Posts Featured Image Height",
-  "desc"      => "Select the height of your featured images on single posts. Default: 300px",
-  "id"        => "feat_img_post_height",
-  "std"       => 300,
-  "min"       => 50,
-  "step"      => 1,
-  "max"       => 1000,
-  "less"      => true,
-  "customizer"=> array(),
-  "type"      => "sliderui"
-);
-
-// Layout Settings
-$of_options[] = array(
-  "name"      => "Layout Settings",
-  "type"      => "heading"
-);
-
-$of_options[] = array(
-  "name"      => "Main Layout",
-  "desc"      => "Select main content and sidebar alignment. Choose between 1, 2 or 3 column layout.",
-  "id"        => "layout",
-  "std"       => get_theme_mod('layout', 1),
-  "type"      => "images",
-  "less"      => true,
-  "customizer"=> array(),
-  "options"   => array(
-    0         => get_template_directory_uri() . '/assets/img/m.png',
-    1         => get_template_directory_uri() . '/assets/img/mp.png',
-    2         => get_template_directory_uri() . '/assets/img/pm.png',
-    3         => get_template_directory_uri() . '/assets/img/psm.png',
-    4         => get_template_directory_uri() . '/assets/img/mps.png',
-    5         => get_template_directory_uri() . '/assets/img/pms.png',
-  )
-);
-
-$of_options[] = array(
-  "name"      => "Show sidebars on the frontpage",
-  "desc"      => "OFF by default. If you want to display the sidebars in your frontpage, turn this ON.",
-  "id"        => "layout_sidebar_on_front",
-  "less"      => true,
-  "customizer"=> array(),
-  "std"       => 0,
-  "type"      => "switch"
-);
-
-$of_options[] = array(
-  "name"      => "Fluid Layout",
-  "desc"      => "OFF by default. If you turn this ON, then the layout of your site will become fluid, spanning accross the whole width of your screen.",
-  "id"        => "fluid",
-  "less"      => true,
-  "customizer"=> array(),
-  "std"       => 0,
-  "type"      => "switch"
-);
-
-$of_options[] = array(
-  "name"      => "Primary Sidebar Width",
-  "desc"      => "Select the width of the Primary Sidebar. Please note that the values represent grid columns. The total width of the page is 12 columns, so selecting 4 here will make the primary sidebar to have a width of 1/3 (4/12) of the total page width.",
-  "id"        => "layout_primary_width",
-  "std"       => 4,
-  "min"       => 2,
-  "step"      => 1,
-  "max"       => 6,
-  "advanced"  => true,
-  "less"      => true,
-  "customizer"=> array(),
-  "type"      => "sliderui"
-);
-
-$of_options[] = array(
-  "name"      => "Secondary Sidebar Width",
-  "desc"      => "Select the width of the Secondary Sidebar. Please note that the values represent grid columns. The total width of the page is 12 columns, so selecting 4 here will make the secondary sidebar to have a width of 1/3 (4/12) of the total page width.",
-  "id"        => "layout_secondary_width",
-  "std"       => 3,
-  "min"       => 2,
-  "step"      => 1,
-  "max"       => 4,
-  "advanced"  => true,
-  "less"      => true,
-  "customizer"=> array(),
-  "type"      => "sliderui"
-);
-
-$of_options[] = array(
-  "name"      => "Tiny Screen Width",
-  "desc"      => "The width of Tiny screens. This is used to calculate the responsive layout breakpoints. Suitable for phones. Default: 480px",
-  "id"        => "layout_screen_tiny",
-  "std"       => 480,
-  "min"       => 320,
-  "step"      => 2,
-  "max"       => 1600,
-  "advanced"  => true,
-  "less"      => true,
-  "customizer"=> array(),
-  "type"      => "sliderui"
-);
-
-$of_options[] = array(
-  "name"      => "Small Screen Width",
-  "desc"      => "The width of Small screens. This is used to calculate the responsive layout breakpoints. Suitable for tablets and small screens. Default: 768px",
-  "id"        => "layout_screen_small",
-  "std"       => 768,
-  "min"       => 320,
-  "step"      => 2,
-  "max"       => 1600,
-  "advanced"  => true,
-  "less"      => true,
-  "customizer"=> array(),
-  "type"      => "sliderui",
-
-);
-
-$of_options[] = array(
-  "name"      => "Medium Screen Width",
-  "desc"      => "The width of Normal screens. This is used to calculate the responsive layout breakpoints. Suitable for medium screens. Default: 992px",
-  "id"        => "layout_screen_medium",
-  "std"       => 992,
-  "min"       => 320,
-  "step"      => 2,
-  "max"       => 1600,
-  "advanced"  => true,
-  "less"      => true,
-  "customizer"=> array(),
-  "type"      => "sliderui"
-);
-
-$of_options[] = array(
-  "name"      => "Large Screen Width",
-  "desc"      => "The width of Large screens. This is used to calculate the responsive layout breakpoints. Suitable for large screens. Default: 1200px",
-  "id"        => "layout_screen_large",
-  "std"       => 1200,
-  "min"       => 320,
-  "step"      => 2,
-  "max"       => 1600,
-  "advanced"  => true,
-  "less"      => true,
-  "customizer"=> array(),
-  "type"      => "sliderui"
-);
-
-$of_options[] = array(
-  "name"      => "Columns Gutter",
-  "desc"      => "The space between the columns in your grid. Default: 30px",
-  "id"        => "layout_gutter",
-  "std"       => 30,
-  "min"       => 0,
-  "step"      => 2,
-  "max"       => 100,
-  "advanced"  => true,
-  "less"      => true,
-  "customizer"=> array(),
-  "type"      => "sliderui"
-);
-
-// Colors
-$of_options[] = array(
-  "name"      => "Site Colors",
-  "type"      => "heading"
-);
-
-$of_options[] = array(
-  "name"      => "Background Color",
-  "desc"      => "Pick a background color for your site. Default: #ffffff.",
-  "id"        => "color_body_bg",
-  "std"       => "#ffffff",
-  "less"      => true,
-  "customizer"=> array(),
-  "type"      => "color"
-);
-
-$of_options[] = array(
-  "name"      => "Text Color",
-  "desc"      => "Pick a color for your site's main text. Default: #333333.",
-  "id"        => "color_text",
-  "std"       => "#333333",
-  "less"      => true,
-  "customizer"=> array(),
-  "type"      => "color"
-);
-
-$of_options[] = array(
-  "name"      => "Links Color",
-  "desc"      => "Pick a color for your site's links. Default: #428bca.",
-  "id"        => "color_links",
-  "std"       => "#428bca",
-  "less"      => true,
-  "customizer"=> array(),
-  "type"      => "color"
-);
-
-$of_options[] = array(
-  "name"      => "Brand Colors: Primary",
-  "desc"      => "Select your primary branding color. This will affect various areas of your site, including the color of your primary buttons, the background of some elements and many more. Default: #428bca.",
-  "id"        => "color_brand_primary",
-  "std"       => "#428bca",
-  "less"      => true,
-  "customizer"=> array(),
-  "type"      => "color"
-);
-
-$of_options[] = array(
-  "name"      => "Brand Colors: Success",
-  "desc"      => "Select your branding color for success messages etc. Default: #5cb85c.",
-  "id"        => "color_brand_success",
-  "std"       => "#5cb85c",
-  "less"      => true,
-  "customizer"=> array(),
-  "type"      => "color"
-);
-
-$of_options[] = array(
-  "name"      => "Brand Colors: Warning",
-  "desc"      => "Select your branding color for warning messages etc. Default: #f0ad4e.",
-  "id"        => "color_brand_warning",
-  "std"       => "#f0ad4e",
-  "less"      => true,
-  "customizer"=> array(),
-  "type"      => "color"
-);
-
-$of_options[] = array(
-  "name"      => "Brand Colors: Danger",
-  "desc"      => "Select your branding color for success messages etc. Default: #d9534f.",
-  "id"        => "color_brand_danger",
-  "std"       => "#d9534f",
-  "less"      => true,
-  "customizer"=> array(),
-  "type"      => "color"
-);
-
-$of_options[] = array(
-  "name"      => "Brand Colors: Info",
-  "desc"      => "Select your branding color for info messages etc. It will also be used for the Search button color as well as other areas where it semantically makes sense to use an \"info\" class. Default: #5bc0de.",
-  "id"        => "color_brand_info",
-  "std"       => "#5bc0de",
-  "less"      => true,
-  "customizer"=> array(),
-  "type"      => "color"
-);
-
-// NavBar Settings
-
-$of_options[] = array(
-  "name"      => "NavBar Settings",
-  "type"      => "heading"
-);
-
-$of_options[] = array(
-  "name"      => "Show the Main NavBar",
-  "desc"      => "ON by default. If you want to hide your main navbar you can do it here. When you do, the main menu will still be displayed but not styled as a navbar. If you want to completely disable it, then please visit the customizer and on the \"Navigation\" section, select \"None\".",
-  "id"        => "navbar_toggle",
-  "std"       => 1,
-  "less"      => true,
-  "customizer"=> array(),
-  "type"      => "switch"
-);
-
-$of_options[] = array(
-  "name"      => "Display Branding (Sitename or Logo)",
-  "desc"      => "Default: ON",
-  "id"        => "navbar_brand",
-  "std"       => 1,
-  "less"      => true,
-  "customizer"=> array(),
-  "type"      => "switch"
-);
-
-$of_options[] = array(
-  "name"      => "Use Logo (if available) for branding",
-  "desc"      => "If this option is OFF, or there is no logo available, then the sitename will be displayed instead. Default: ON",
-  "id"        => "navbar_logo",
-  "std"       => 1,
-  "less"      => true,
-  "customizer"=> array(),
-  "type"      => "switch"
-);
-
-$of_options[] = array(
-  "name"      => "NavBar Background Color",
-  "desc"      => "Pick a background color for the NavBar. Default: #eeeeee.",
-  "id"        => "navbar_bg",
-  "std"       => "#eeeeee",
-  "less"      => true,
-  "customizer"=> array(),
-  "type"      => "color"
-);
-
-$of_options[] = array(
-  "name"      => "NavBar Text Color",
-  "desc"      => "Pick a color for the NavBar text. This applies to menu items and the Sitename (if no logo is uploaded). Default: #777777.",
-  "id"        => "navbar_color",
-  "std"       => "#777777",
-  "less"      => true,
-  "customizer"=> array(),
-  "type"      => "color"
-);
-
-$of_options[] = array(
-  "name"      => "Display social links in the Navbar.",
-  "desc"      => "Display social links in the Navbar. These can be setup in the \"Social\" section on the left. Default: OFF",
-  "id"        => "navbar_social",
-  "less"      => true,
-  "customizer"=> array(),
-  "std"       => 0,
-  "type"      => "switch"
-);
-
-$of_options[] = array(
-  "name"      => "Search",
-  "desc"      => "Display a search form in the Navbar. Default: OFF",
-  "id"        => "navbar_search",
-  "less"      => true,
-  "customizer"=> array(),
-  "std"       => 0,
-  "type"      => "switch"
-);
-
-$of_options[] = array(
-  "name"      => "Float menu to the right",
-  "desc"      => "Floats the primary navigation to the right. Default: OFF",
-  "id"        => "navbar_nav_right",
-  "std"       => 0,
-  "less"      => true,
-  "customizer"=> array(),
-  "type"      => "switch"
-);
-
-$of_options[] = array(
-  "name"      => "NavBar Positioning",
-  "desc"      => "Using this option you can set the navbar to be fixed to top, fixed to bottom or normal. When you're using one of the \"fixed\" options, the navbar will stay fixed on the top or bottom of the page. Default: Normal",
-  "id"        => "navbar_position",
-  "std"       => 0,
-  "type"      => "select",
-  "less"      => true,
-  "customizer"=> array(),
-  "options"   => array(
-    0         => __( 'Normal', 'shoestrap' ),
-    1         => __( 'Fixed to Top', 'shoestrap' ),
-    2         => __( 'Fixed to Bottom', 'shoestrap' )
-  )
-);
-
-$of_options[] = array(
-  "name"      => "Navbar Height",
-  "desc"      => "Select the height of the Navbar. If you're using a logo then this should be equal or greater than its height.",
-  "id"        => "navbar_height",
-  "std"       => 50,
-  "min"       => 10,
-  "step"      => 1,
-  "max"       => 600,
-  "less"      => true,
-  "customizer"=> array(),
-  "type"      => "sliderui"
-);
-
-// TODO: Make this a dropdown or an image control so that people can select among more than 1 styles.
-$of_options[] = array(
-  "name"      => "Alternative style for NavBars",
-  "desc"      => "You can use an alternative menu style for your NavBars. OFF by default. ",
-  "id"        => "navbar_altmenu",
-  "std"       => 0,
-  "less"      => true,
-  "customizer"=> array(),
-  "type"      => "switch"
-);
-
-// Jumbotron (Hero)
-$of_options[] = array(
-  "name"      => "Jumbotron",
-  "type"      => "heading"
-);
-
-$of_options[] = array(
-  "name"      => "Jumbotron Background Color",
-  "desc"      => "Select the background color for your Jumbotron area. Please note that this area will only be visible if you assign a widget to the \"Jumbotron\" Widget Area. Default: #EEEEEE.",
-  "id"        => "jumbotron_bg",
-  "std"       => "#EEEEEE",
-  "less"      => true,
-  "customizer"=> array(),
-  "type"      => "color"
-);
-
-$of_options[] = array(
-  "name"      => "Background Image",
-  "desc"      => "Upload a logo image using the media uploader, or define the URL directly. Use the shortcodes [site_url] or [site_url_secure] for setting default URLs",
-  "id"        => "jumbotron_bg_img",
-  "std"       => "",
-  "type"      => "media"
-);
-
-$of_options[] = array(
-  "name"      => "Background Repeat",
-  "desc"      => "Select how (or if) the selected background should be tiled. Default: Tile",
-  "id"        => "jumbotron_bg_repeat",
-  "std"       => "repeat",
-  "type"      => "radio",
-  "options"   => array(
-    'no-repeat'  => __( 'No Repeat', 'shoestrap' ),
-    'repeat'     => __( 'Tile', 'shoestrap' ),
-    'repeat-x'   => __( 'Tile Horizontally', 'shoestrap' ),
-    'repeat-y'   => __( 'Tile Vertically', 'shoestrap' ),
-  ),
-);
-
-$of_options[] = array(
-  "name"      => "Background Alignment",
-  "desc"      => "Select how the selected background should be horizontally aligned. Default: Left",
-  "id"        => "jumbotron_bg_pos_x",
-  "std"       => "repeat",
-  "type"      => "radio",
-  "options"   => array(
-    'left'    => __( 'Left', 'shoestrap' ),
-    'right'   => __( 'Right', 'shoestrap' ),
-    'center'  => __( 'Center', 'shoestrap' ),
-  ),
-);
-
-$of_options[] = array(
-  "name"      => "Jumbotron Color",
-  "desc"      => "Select the text color for your Jumbotron area. Please note that this area will only be visible if you assign a widget to the \"Jumbotron\" Widget Area. Default: #333333.",
-  "id"        => "jumbotron_color",
-  "std"       => "#333333",
-  "less"      => true,
-  "customizer"=> array(),
-  "type"      => "color"
-);
-
-$of_options[] = array(
-  "name"      => "Display Jumbotron only on the Frontpage.",
-  "desc"      => "When Turned OFF, the Jumbotron area is displayed in all your pages. If you wish to completely disable the Jumbotron, then please remove the widgets assigned to its area and it will no longer be displayed. Default: ON",
-  "id"        => "jumbotron_visibility",
-  "less"      => true,
-  "customizer"=> array(),
-  "std"       => 1,
-  "type"      => "switch"
-);
-
-$of_options[] = array(
-  "name"      => "Full-Width",
-  "desc"      => "When Turned ON, the Jumbotron is no longer restricted by the width of your page, taking over the full width of your screen. This option is useful when you have assigned a slider widget on the Jumbotron area and you want its width to be the maximum width of the screen. Default: OFF.",
-  "id"        => "jumbotron_nocontainer",
-  "less"      => true,
-  "customizer"=> array(),
-  "std"       => 1,
-  "type"      => "switch"
-);
-
-$of_options[] = array(
-  "name"      => "Use fittext script for the title.",
-  "desc"      => "Use the fittext script to enlarge or scale-down the font-size of the widget title to fit the Jumbotron area. Default: OFF",
-  "id"        => "jumbotron_title_fit",
-  "less"      => true,
-  "customizer"=> array(),
-  "std"       => 0,
-  "type"      => "switch"
-);
-
-$of_options[] = array(
-  "name"      => "Center-align the content.",
-  "desc"      => "Turn this on to center-align the contents of the Jumbotron area. Default: OFF",
-  "id"        => "jumbotron_title_fit",
-  "less"      => true,
-  "customizer"=> array(),
-  "std"       => 0,
-  "type"      => "switch"
-);
-
-// Header
-$of_options[] = array(
-  "name"      => "Header",
-  "type"      => "heading"
-);
-
-$of_options[] = array(
-  "name"      => "Display the Header.",
-  "desc"      => "Turn this ON to display the header. Default: OFF",
-  "id"        => "header_toggle",
-  "less"      => true,
-  "customizer"=> array(),
-  "std"       => 0,
-  "type"      => "switch"
-);
-
-$of_options[] = array(
-  "name"      => "Display branding on your Header.",
-  "desc"      => "Turn this ON to display branding (Sitename or Logo)on your Header. Default: ON",
-  "id"        => "header_branding",
-  "less"      => true,
-  "customizer"=> array(),
-  "std"       => 1,
-  "type"      => "switch"
-);
-
-$of_options[] = array(
-  "name"      => "Header Background Color",
-  "desc"      => "Select the background color for your header. Default: #EEEEEE.",
-  "id"        => "header_bg",
-  "std"       => "#EEEEEE",
-  "less"      => true,
-  "customizer"=> array(),
-  "type"      => "color"
-);
-
-$of_options[] = array(
-  "name"      => "Header Text Color",
-  "desc"      => "Select the text color for your header. Default: #333333.",
-  "id"        => "header_color",
-  "std"       => "#333333",
-  "less"      => true,
-  "customizer"=> array(),
-  "type"      => "color"
-);
-
-// Footer
-$of_options[] = array(
-  "name"      => "Footer",
-  "type"      => "heading"
-);
-
-$of_options[] = array(
-  "name"      => "Footer Background Color",
-  "desc"      => "Select the background color for your footer. Default: #ffffff.",
-  "id"        => "footer_bg",
-  "std"       => "#ffffff",
-  "less"      => true,
-  "customizer"=> array(),
-  "type"      => "color"
-);
-
-$of_options[] = array(
-  "name"      => "Footer Text Color",
-  "desc"      => "Select the text color for your footer. Default: #333333.",
-  "id"        => "footer_color",
-  "std"       => "#333333",
-  "less"      => true,
-  "customizer"=> array(),
-  "type"      => "color"
-);
-
-$of_options[] = array(
-  "name"      => "Footer Text",
-  "desc"      => "The text that will be displayed in your footer. Default: your site's name.",
-  "id"        => "footer_text",
-  "std"       => get_bloginfo( 'name' ),
-  "type"      => "text"
-);
-
-
-// Backup Options
-$of_options[] = array(  "name"    => "Backup Options",
-            "type"    => "heading"
-        );
-
-$of_options[] = array(  "name"    => "Backup and Restore Options",
-            "id"    => "of_backup",
-            "std"     => "",
-            "type"    => "backup",
-            "desc"    => 'You can use the two buttons below to backup your current options, and then restore it back at a later time. This is useful if you want to experiment on the options but would like to keep the old settings in case you need it back.',
-        );
-
-$of_options[] = array(  "name"    => "Transfer Theme Options Data",
-            "id"    => "of_transfer",
-            "std"     => "",
-            "type"    => "transfer",
-            "desc"    => 'You can tranfer the saved options data between different installs by copying the text inside the text box. To import data from another install, replace the data in the text box with the one from another install and click "Import Options".',
-        );
-
+    /*-----------------------------------------------------------------------------------*/
+    /* The Options Array */
+    /*-----------------------------------------------------------------------------------*/
+
+    // Set the Options Array
+    global $of_options;
+
+    // General Options
+    $of_options[] = array(
+      "name"      => __("General", "shoestrap"),
+      "type"      => "heading"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Logo", "shoestrap"),
+      "desc"      => __("Upload a logo image using the media uploader, or define the URL directly. Use the shortcodes [site_url] or [site_url_secure] for setting default URLs", "shoestrap"),
+      "id"        => "logo",
+      "std"       => "",
+      "type"      => "media"
+    );
+
+    $of_options[] = array(
+      "name"      => __("No gradients - \"Flat\" look.", "shoestrap"),
+      "desc"      => __("This option will disable all gradients in your site, giving it a cleaner look. Default: OFF.", "shoestrap"),
+      "id"        => "general_flat",
+      "less"      => true,
+      "customizer"=> array(),
+      "std"       => 0,
+      "type"      => "switch"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Border-Radius", "shoestrap"),
+      "desc"      => __("You can adjust the corner-radius of all elements in your site here. This will affect buttons, navbars, widgets and many more. Default: 4", "shoestrap"),
+      "id"        => "layout_secondary_width",
+      "std"       => 4,
+      "min"       => 0,
+      "step"      => 1,
+      "max"       => 50,
+      "advanced"  => true,
+      "less"      => true,
+      "customizer"=> array(),
+      "type"      => "sliderui"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Featured Images on Archives", "shoestrap"),
+      "desc"      => __("Display featured Images on post archives (such as categories, tags, month view etc). Default: OFF.", "shoestrap"),
+      "id"        => "feat_img_archive",
+      "less"      => true,
+      "customizer"=> array(),
+      "std"       => 0,
+      "type"      => "switch"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Archives Featured Image Width", "shoestrap"),
+      "desc"      => __("Select the width of your featured images on post archives. Default: 550px", "shoestrap"),
+      "id"        => "feat_img_archive_width",
+      "std"       => 550,
+      "min"       => 100,
+      "step"      => 1,
+      "max"       => 1600,
+      "less"      => true,
+      "customizer"=> array(),
+      "type"      => "sliderui"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Archives Featured Image Height", "shoestrap"),
+      "desc"      => __("Select the height of your featured images on post archives. Default: 300px", "shoestrap"),
+      "id"        => "feat_img_archive_height",
+      "std"       => 300,
+      "min"       => 50,
+      "step"      => 1,
+      "max"       => 1000,
+      "less"      => true,
+      "customizer"=> array(),
+      "type"      => "sliderui"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Featured Images on Posts", "shoestrap"),
+      "desc"      => __("Display featured Images on posts. Default: OFF.", "shoestrap"),
+      "id"        => "feat_img_post",
+      "less"      => true,
+      "customizer"=> array(),
+      "std"       => 0,
+      "type"      => "switch"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Posts Featured Image Width", "shoestrap"),
+      "desc"      => __("Select the width of your featured images on single posts. Default: 550px", "shoestrap"),
+      "id"        => "feat_img_post_width",
+      "std"       => 550,
+      "min"       => 100,
+      "step"      => 1,
+      "max"       => 1600,
+      "less"      => true,
+      "customizer"=> array(),
+      "type"      => "sliderui"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Posts Featured Image Height", "shoestrap"),
+      "desc"      => __("Select the height of your featured images on single posts. Default: 300px", "shoestrap"),
+      "id"        => "feat_img_post_height",
+      "std"       => 300,
+      "min"       => 50,
+      "step"      => 1,
+      "max"       => 1000,
+      "less"      => true,
+      "customizer"=> array(),
+      "type"      => "sliderui"
+    );
+
+    // Layout Settings
+    $of_options[] = array(
+      "name"      => __("Layout Settings", "shoestrap"),
+      "type"      => "heading"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Main Layout", "shoestrap"),
+      "desc"      => __("Select main content and sidebar alignment. Choose between 1, 2 or 3 column layout.", "shoestrap"),
+      "id"        => "layout",
+      "std"       => get_theme_mod('layout', 1),
+      "type"      => "images",
+      "less"      => true,
+      "customizer"=> array(),
+      "options"   => array(
+        0         => get_template_directory_uri() . '/assets/img/m.png',
+        1         => get_template_directory_uri() . '/assets/img/mp.png',
+        2         => get_template_directory_uri() . '/assets/img/pm.png',
+        3         => get_template_directory_uri() . '/assets/img/psm.png',
+        4         => get_template_directory_uri() . '/assets/img/mps.png',
+        5         => get_template_directory_uri() . '/assets/img/pms.png',
+      )
+    );
+
+    $of_options[] = array(
+      "name"      => __("Show sidebars on the frontpage", "shoestrap"),
+      "desc"      => __("OFF by default. If you want to display the sidebars in your frontpage, turn this ON.", "shoestrap"),
+      "id"        => "layout_sidebar_on_front",
+      "less"      => true,
+      "customizer"=> array(),
+      "std"       => 0,
+      "type"      => "switch"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Fluid Layout", "shoestrap"),
+      "desc"      => __("OFF by default. If you turn this ON, then the layout of your site will become fluid, spanning accross the whole width of your screen.", "shoestrap"),
+      "id"        => "fluid",
+      "less"      => true,
+      "customizer"=> array(),
+      "std"       => 0,
+      "type"      => "switch"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Primary Sidebar Width", "shoestrap"),
+      "desc"      => __("Select the width of the Primary Sidebar. Please note that the values represent grid columns. The total width of the page is 12 columns, so selecting 4 here will make the primary sidebar to have a width of 1/3 (4/12) of the total page width.", "shoestrap"),
+      "id"        => "layout_primary_width",
+      "std"       => 4,
+      "min"       => 2,
+      "step"      => 1,
+      "max"       => 6,
+      "advanced"  => true,
+      "less"      => true,
+      "customizer"=> array(),
+      "type"      => "sliderui"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Secondary Sidebar Width", "shoestrap"),
+      "desc"      => __("Select the width of the Secondary Sidebar. Please note that the values represent grid columns. The total width of the page is 12 columns, so selecting 4 here will make the secondary sidebar to have a width of 1/3 (4/12) of the total page width.", "shoestrap"),
+      "id"        => "layout_secondary_width",
+      "std"       => 3,
+      "min"       => 2,
+      "step"      => 1,
+      "max"       => 4,
+      "advanced"  => true,
+      "less"      => true,
+      "customizer"=> array(),
+      "type"      => "sliderui"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Tiny Screen Width", "shoestrap"),
+      "desc"      => __("The width of Tiny screens. This is used to calculate the responsive layout breakpoints. Suitable for phones. Default: 480px", "shoestrap"),
+      "id"        => "layout_screen_tiny",
+      "std"       => 480,
+      "min"       => 320,
+      "step"      => 2,
+      "max"       => 1600,
+      "advanced"  => true,
+      "less"      => true,
+      "customizer"=> array(),
+      "type"      => "sliderui"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Small Screen Width", "shoestrap"),
+      "desc"      => __("The width of Small screens. This is used to calculate the responsive layout breakpoints. Suitable for tablets and small screens. Default: 768px", "shoestrap"),
+      "id"        => "layout_screen_small",
+      "std"       => 768,
+      "min"       => 320,
+      "step"      => 2,
+      "max"       => 1600,
+      "advanced"  => true,
+      "less"      => true,
+      "customizer"=> array(),
+      "type"      => "sliderui",
+
+    );
+
+    $of_options[] = array(
+      "name"      => __("Medium Screen Width", "shoestrap"),
+      "desc"      => __("The width of Normal screens. This is used to calculate the responsive layout breakpoints. Suitable for medium screens. Default: 992px", "shoestrap"),
+      "id"        => "layout_screen_medium",
+      "std"       => 992,
+      "min"       => 320,
+      "step"      => 2,
+      "max"       => 1600,
+      "advanced"  => true,
+      "less"      => true,
+      "customizer"=> array(),
+      "type"      => "sliderui"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Large Screen Width", "shoestrap"),
+      "desc"      => __("The width of Large screens. This is used to calculate the responsive layout breakpoints. Suitable for large screens. Default: 1200px", "shoestrap"),
+      "id"        => "layout_screen_large",
+      "std"       => 1200,
+      "min"       => 320,
+      "step"      => 2,
+      "max"       => 1600,
+      "advanced"  => true,
+      "less"      => true,
+      "customizer"=> array(),
+      "type"      => "sliderui"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Columns Gutter", "shoestrap"),
+      "desc"      => __("The space between the columns in your grid. Default: 30px", "shoestrap"),
+      "id"        => "layout_gutter",
+      "std"       => 30,
+      "min"       => 0,
+      "step"      => 2,
+      "max"       => 100,
+      "advanced"  => true,
+      "less"      => true,
+      "customizer"=> array(),
+      "type"      => "sliderui"
+    );
+
+    // Colors
+    $of_options[] = array(
+      "name"      => __("Site Colors", "shoestrap"),
+      "type"      => "heading"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Background Color", "shoestrap"),
+      "desc"      => __("Pick a background color for your site. Default: #ffffff.", "shoestrap"),
+      "id"        => "color_body_bg",
+      "std"       => "#ffffff",
+      "less"      => true,
+      "customizer"=> array(),
+      "type"      => "color"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Text Color", "shoestrap"),
+      "desc"      => __("Pick a color for your site's main text. Default: #333333.", "shoestrap"),
+      "id"        => "color_text",
+      "std"       => "#333333",
+      "less"      => true,
+      "customizer"=> array(),
+      "type"      => "color"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Links Color", "shoestrap"),
+      "desc"      => __("Pick a color for your site's links. Default: #428bca.", "shoestrap"),
+      "id"        => "color_links",
+      "std"       => "#428bca",
+      "less"      => true,
+      "customizer"=> array(),
+      "type"      => "color"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Brand Colors: Primary", "shoestrap"),
+      "desc"      => __("Select your primary branding color. This will affect various areas of your site, including the color of your primary buttons, the background of some elements and many more. Default: #428bca.", "shoestrap"),
+      "id"        => "color_brand_primary",
+      "std"       => "#428bca",
+      "less"      => true,
+      "customizer"=> array(),
+      "type"      => "color"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Brand Colors: Success", "shoestrap"),
+      "desc"      => __("Select your branding color for success messages etc. Default: #5cb85c.", "shoestrap"),
+      "id"        => "color_brand_success",
+      "std"       => "#5cb85c",
+      "less"      => true,
+      "customizer"=> array(),
+      "type"      => "color"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Brand Colors: Warning", "shoestrap"),
+      "desc"      => __("Select your branding color for warning messages etc. Default: #f0ad4e.", "shoestrap"),
+      "id"        => "color_brand_warning",
+      "std"       => "#f0ad4e",
+      "less"      => true,
+      "customizer"=> array(),
+      "type"      => "color"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Brand Colors: Danger", "shoestrap"),
+      "desc"      => __("Select your branding color for success messages etc. Default: #d9534f.", "shoestrap"),
+      "id"        => "color_brand_danger",
+      "std"       => "#d9534f",
+      "less"      => true,
+      "customizer"=> array(),
+      "type"      => "color"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Brand Colors: Info", "shoestrap"),
+      "desc"      => __("Select your branding color for info messages etc. It will also be used for the Search button color as well as other areas where it semantically makes sense to use an \"info\" class. Default: #5bc0de.", "shoestrap"),
+      "id"        => "color_brand_info",
+      "std"       => "#5bc0de",
+      "less"      => true,
+      "customizer"=> array(),
+      "type"      => "color"
+    );
+
+    // NavBar Settings
+
+    $of_options[] = array(
+      "name"      => __("NavBar Settings", "shoestrap"),
+      "type"      => "heading"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Show the Main NavBar", "shoestrap"),
+      "desc"      => __("ON by default. If you want to hide your main navbar you can do it here. When you do, the main menu will still be displayed but not styled as a navbar. If you want to completely disable it, then please visit the customizer and on the \"Navigation\" section, select \"None\".", "shoestrap"),
+      "id"        => "navbar_toggle",
+      "std"       => 1,
+      "less"      => true,
+      "customizer"=> array(),
+      "type"      => "switch"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Display Branding (Sitename or Logo)", "shoestrap"),
+      "desc"      => __("Default: ON", "shoestrap"),
+      "id"        => "navbar_brand",
+      "std"       => 1,
+      "less"      => true,
+      "customizer"=> array(),
+      "type"      => "switch"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Use Logo (if available) for branding", "shoestrap"),
+      "desc"      => __("If this option is OFF, or there is no logo available, then the sitename will be displayed instead. Default: ON", "shoestrap"),
+      "id"        => "navbar_logo",
+      "std"       => 1,
+      "less"      => true,
+      "customizer"=> array(),
+      "type"      => "switch"
+    );
+
+    $of_options[] = array(
+      "name"      => __("NavBar Background Color", "shoestrap"),
+      "desc"      => __("Pick a background color for the NavBar. Default: #eeeeee.", "shoestrap"),
+      "id"        => "navbar_bg",
+      "std"       => "#eeeeee",
+      "less"      => true,
+      "customizer"=> array(),
+      "type"      => "color"
+    );
+
+    $of_options[] = array(
+      "name"      => __("NavBar Text Color", "shoestrap"),
+      "desc"      => __("Pick a color for the NavBar text. This applies to menu items and the Sitename (if no logo is uploaded). Default: #777777.", "shoestrap"),
+      "id"        => "navbar_color",
+      "std"       => "#777777",
+      "less"      => true,
+      "customizer"=> array(),
+      "type"      => "color"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Display social links in the Navbar.", "shoestrap"),
+      "desc"      => __("Display social links in the Navbar. These can be setup in the \"Social\" section on the left. Default: OFF", "shoestrap"),
+      "id"        => "navbar_social",
+      "less"      => true,
+      "customizer"=> array(),
+      "std"       => 0,
+      "type"      => "switch"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Search", "shoestrap"),
+      "desc"      => __("Display a search form in the Navbar. Default: OFF", "shoestrap"),
+      "id"        => "navbar_search",
+      "less"      => true,
+      "customizer"=> array(),
+      "std"       => 0,
+      "type"      => "switch"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Float menu to the right", "shoestrap"),
+      "desc"      => __("Floats the primary navigation to the right. Default: OFF", "shoestrap"),
+      "id"        => "navbar_nav_right",
+      "std"       => 0,
+      "less"      => true,
+      "customizer"=> array(),
+      "type"      => "switch"
+    );
+
+    $of_options[] = array(
+      "name"      => __("NavBar Positioning", "shoestrap"),
+      "desc"      => __("Using this option you can set the navbar to be fixed to top, fixed to bottom or normal. When you're using one of the \"fixed\" options, the navbar will stay fixed on the top or bottom of the page. Default: Normal", "shoestrap"),
+      "id"        => "navbar_position",
+      "std"       => 0,
+      "type"      => "select",
+      "less"      => true,
+      "customizer"=> array(),
+      "options"   => array(
+        0         => __( 'Normal', 'shoestrap' ),
+        1         => __( 'Fixed to Top', 'shoestrap' ),
+        2         => __( 'Fixed to Bottom', 'shoestrap' )
+      )
+    );
+
+    $of_options[] = array(
+      "name"      => __("Navbar Height", "shoestrap"),
+      "desc"      => __("Select the height of the Navbar. If you're using a logo then this should be equal or greater than its height.", "shoestrap"),
+      "id"        => "navbar_height",
+      "std"       => 50,
+      "min"       => 10,
+      "step"      => 1,
+      "max"       => 600,
+      "less"      => true,
+      "customizer"=> array(),
+      "type"      => "sliderui"
+    );
+
+    // TODO: Make this a dropdown or an image control so that people can select among more than 1 styles.
+    $of_options[] = array(
+      "name"      => __("Alternative style for NavBars", "shoestrap"),
+      "desc"      => __("You can use an alternative menu style for your NavBars. OFF by default. ", "shoestrap"),
+      "id"        => "navbar_altmenu",
+      "std"       => 0,
+      "less"      => true,
+      "customizer"=> array(),
+      "type"      => "switch"
+    );
+
+    // Jumbotron (Hero)
+    $of_options[] = array(
+      "name"      => __("Jumbotron", "shoestrap"),
+      "type"      => "heading"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Jumbotron Background Color", "shoestrap"),
+      "desc"      => __("Select the background color for your Jumbotron area. Please note that this area will only be visible if you assign a widget to the \"Jumbotron\" Widget Area. Default: #EEEEEE.", "shoestrap"),
+      "id"        => "jumbotron_bg",
+      "std"       => "#EEEEEE",
+      "less"      => true,
+      "customizer"=> array(),
+      "type"      => "color"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Background Image", "shoestrap"),
+      "desc"      => __("Upload a logo image using the media uploader, or define the URL directly. Use the shortcodes [site_url] or [site_url_secure] for setting default URLs", "shoestrap"),
+      "id"        => "jumbotron_bg_img",
+      "std"       => "",
+      "type"      => "media"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Background Repeat", "shoestrap"),
+      "desc"      => __("Select how (or if) the selected background should be tiled. Default: Tile", "shoestrap"),
+      "id"        => "jumbotron_bg_repeat",
+      "std"       => "repeat",
+      "type"      => "radio",
+      "options"   => array(
+        'no-repeat'  => __( 'No Repeat', 'shoestrap' ),
+        'repeat'     => __( 'Tile', 'shoestrap' ),
+        'repeat-x'   => __( 'Tile Horizontally', 'shoestrap' ),
+        'repeat-y'   => __( 'Tile Vertically', 'shoestrap' ),
+      ),
+    );
+
+    $of_options[] = array(
+      "name"      => __("Background Alignment", "shoestrap"),
+      "desc"      => __("Select how the selected background should be horizontally aligned. Default: Left", "shoestrap"),
+      "id"        => "jumbotron_bg_pos_x",
+      "std"       => "repeat",
+      "type"      => "radio",
+      "options"   => array(
+        'left'    => __( 'Left', 'shoestrap' ),
+        'right'   => __( 'Right', 'shoestrap' ),
+        'center'  => __( 'Center', 'shoestrap' ),
+      ),
+    );
+
+    $of_options[] = array(
+      "name"      => __("Jumbotron Color", "shoestrap"),
+      "desc"      => __("Select the text color for your Jumbotron area. Please note that this area will only be visible if you assign a widget to the \"Jumbotron\" Widget Area. Default: #333333.", "shoestrap"),
+      "id"        => "jumbotron_color",
+      "std"       => "#333333",
+      "less"      => true,
+      "customizer"=> array(),
+      "type"      => "color"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Display Jumbotron only on the Frontpage.", "shoestrap"),
+      "desc"      => __("When Turned OFF, the Jumbotron area is displayed in all your pages. If you wish to completely disable the Jumbotron, then please remove the widgets assigned to its area and it will no longer be displayed. Default: ON", "shoestrap"),
+      "id"        => "jumbotron_visibility",
+      "less"      => true,
+      "customizer"=> array(),
+      "std"       => 1,
+      "type"      => "switch"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Full-Width", "shoestrap"),
+      "desc"      => __("When Turned ON, the Jumbotron is no longer restricted by the width of your page, taking over the full width of your screen. This option is useful when you have assigned a slider widget on the Jumbotron area and you want its width to be the maximum width of the screen. Default: OFF.", "shoestrap"),
+      "id"        => "jumbotron_nocontainer",
+      "less"      => true,
+      "customizer"=> array(),
+      "std"       => 1,
+      "type"      => "switch"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Use fittext script for the title.", "shoestrap"),
+      "desc"      => __("Use the fittext script to enlarge or scale-down the font-size of the widget title to fit the Jumbotron area. Default: OFF", "shoestrap"),
+      "id"        => "jumbotron_title_fit",
+      "less"      => true,
+      "customizer"=> array(),
+      "std"       => 0,
+      "type"      => "switch"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Center-align the content.", "shoestrap"),
+      "desc"      => __("Turn this on to center-align the contents of the Jumbotron area. Default: OFF", "shoestrap"),
+      "id"        => "jumbotron_title_fit",
+      "less"      => true,
+      "customizer"=> array(),
+      "std"       => 0,
+      "type"      => "switch"
+    );
+
+    // Header
+    $of_options[] = array(
+      "name"      => __("Header", "shoestrap"),
+      "type"      => "heading"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Display the Header.", "shoestrap"),
+      "desc"      => __("Turn this ON to display the header. Default: OFF", "shoestrap"),
+      "id"        => "header_toggle",
+      "less"      => true,
+      "customizer"=> array(),
+      "std"       => 0,
+      "type"      => "switch"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Display branding on your Header.", "shoestrap"),
+      "desc"      => __("Turn this ON to display branding (Sitename or Logo)on your Header. Default: ON", "shoestrap"),
+      "id"        => "header_branding",
+      "less"      => true,
+      "customizer"=> array(),
+      "std"       => 1,
+      "type"      => "switch"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Header Background Color", "shoestrap"),
+      "desc"      => __("Select the background color for your header. Default: #EEEEEE.", "shoestrap"),
+      "id"        => "header_bg",
+      "std"       => "#EEEEEE",
+      "less"      => true,
+      "customizer"=> array(),
+      "type"      => "color"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Header Text Color", "shoestrap"),
+      "desc"      => __("Select the text color for your header. Default: #333333.", "shoestrap"),
+      "id"        => "header_color",
+      "std"       => "#333333",
+      "less"      => true,
+      "customizer"=> array(),
+      "type"      => "color"
+    );
+
+    // Footer
+    $of_options[] = array(
+      "name"      => __("Footer", "shoestrap"),
+      "type"      => "heading"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Footer Background Color", "shoestrap"),
+      "desc"      => __("Select the background color for your footer. Default: #ffffff.", "shoestrap"),
+      "id"        => "footer_bg",
+      "std"       => "#ffffff",
+      "less"      => true,
+      "customizer"=> array(),
+      "type"      => "color"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Footer Text Color", "shoestrap"),
+      "desc"      => __("Select the text color for your footer. Default: #333333.", "shoestrap"),
+      "id"        => "footer_color",
+      "std"       => "#333333",
+      "less"      => true,
+      "customizer"=> array(),
+      "type"      => "color"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Footer Text", "shoestrap"),
+      "desc"      => __("The text that will be displayed in your footer. Default: your site's name.", "shoestrap"),
+      "id"        => "footer_text",
+      "std"       => get_bloginfo( 'name' ),
+      "type"      => "text"
+    );
+
+
+    // Backup Options
+    $of_options[] = array(
+      "name"      => __("Backup Options", "shoestrap"),
+      "type"      => "heading"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Backup and Restore Options", "shoestrap"),
+      "id"        => "of_backup",
+      "std"       => "",
+      "type"      => "backup",
+      "desc"      => __('You can use the two buttons below to backup your current options, and then restore it back at a later time. This is useful if you want to experiment on the options but would like to keep the old settings in case you need it back.', "shoestrap"),
+    );
+
+    $of_options[] = array(
+      "name"      => __("Transfer Theme Options Data", "shoestrap"),
+      "id"        => "of_transfer",
+      "std"       => "",
+      "type"      => "transfer",
+      "desc"      => __('You can tranfer the saved options data between different installs by copying the text inside the text box. To import data from another install, replace the data in the text box with the one from another install and click "Import Options".', "shoestrap"),
+    );
   }
 }
