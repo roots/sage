@@ -17,8 +17,8 @@ function shoestrap_section_class( $target, $echo = false ) {
 
   if ( is_active_sidebar( 'sidebar-secondary' ) && is_active_sidebar( 'sidebar-primary' ) ) {
     if ( $layout == 5 ) {
-      $main       = $base . ( 12 - floor( ( 12 * $first ) / ( 12 - $secondary ) ) );
-      $primary    = $base . floor( ( 12 * $first ) / ( 12 - $secondary ) );
+      $main       = $base . ( 12 - floor( ( 12 * $first ) / ( 12 - $second ) ) );
+      $primary    = $base . floor( ( 12 * $first ) / ( 12 - $second ) );
       $secondary  = $base . $second;
       $wrapper    = $base . ( 12 - $second );
     } elseif ( $layout >= 3 ) {
