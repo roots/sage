@@ -108,6 +108,7 @@ $of_options[] = array( 	"name" 		=> "Home Settings",
 
 $of_options[] = array( 	"name" 		=> "Hello there!",
 						"desc" 		=> "",
+						"less"		=> true,
 						"id" 		=> "introduction",
 						"std" 		=> "<h3 style=\"margin: 0 0 10px;\">Welcome to the Options Framework demo.</h3>
 						This is a slightly modified version of the original options framework by Devin Price with a couple of aesthetical improvements on the interface and some cool additional features. If you want to learn how to setup these options or just need general help on using it feel free to visit my blog at <a href=\"http://aquagraphite.com/2011/09/29/slightly-modded-options-framework/\">AquaGraphite.com</a>",
@@ -118,6 +119,7 @@ $of_options[] = array( 	"name" 		=> "Hello there!",
 $of_options[] = array( "name" => "Media Uploader",
 					"desc" => "Upload images using the native media uploader, or define the URL directly.  The framework will make sure the actual site URL is not stored in the setting, to make migrating WordPress installations easier.",
 					"id" => "media_upload",
+						"less"		=> true,
 					// Use the shortcodes [site_url] or [site_url_secure] for setting default URLs
 					"std" => "",
 					"type" => "media");
@@ -125,6 +127,7 @@ $of_options[] = array( "name" => "Media Uploader",
 $of_options[] = array( "name" => "Media Uploader Min",
 					"desc" => "Upload images using native media uploader. This is a min version, meaning it has no url to copy paste. Perfect for logo.",
 					"id" => "media_upload_2",
+						"less"		=> true,
 					// Use the shortcodes [site_url] or [site_url_secure] for setting default URLs
 					"std" => "",
 					"mod" => "min",
@@ -134,6 +137,7 @@ $of_options[] = array( 	"name" 		=> "JQuery UI Slider example 1",
 						"desc" 		=> "JQuery UI slider description.<br /> Min: 1, max: 500, step: 3, default value: 45",
 						"id" 		=> "slider_example_1",
 						"std" 		=> "45",
+						"less"		=> true,
 						"min" 		=> "1",
 						"step"		=> "3",
 						"max" 		=> "500",
@@ -144,6 +148,7 @@ $of_options[] = array( 	"name" 		=> "JQuery UI Slider example 1 with steps(5)",
 						"desc" 		=> "JQuery UI slider description.<br /> Min: 0, max: 300, step: 5, default value: 75",
 						"id" 		=> "slider_example_2",
 						"std" 		=> "75",
+						"less"		=> true,
 						"min" 		=> "0",
 						"step"		=> "5",
 						"max" 		=> "300",
@@ -153,6 +158,7 @@ $of_options[] = array( 	"name" 		=> "JQuery UI Slider example 1 with steps(5)",
 $of_options[] = array( 	"name" 		=> "Switch 1",
 						"desc" 		=> "Switch OFF",
 						"id" 		=> "switch_ex1",
+						"less"		=> true,
 						"std" 		=> 0,
 						"type" 		=> "switch"
 				);
@@ -160,6 +166,7 @@ $of_options[] = array( 	"name" 		=> "Switch 1",
 $of_options[] = array( 	"name" 		=> "Switch 2",
 						"desc" 		=> "Switch ON",
 						"id" 		=> "switch_ex2",
+						"less"		=> true,
 						"std" 		=> 1,
 						"type" 		=> "switch"
 				);
@@ -167,6 +174,7 @@ $of_options[] = array( 	"name" 		=> "Switch 2",
 $of_options[] = array( 	"name" 		=> "Switch 3",
 						"desc" 		=> "Switch with custom labels",
 						"id" 		=> "switch_ex3",
+						"less"		=> true,
 						"std" 		=> 0,
 						"on" 		=> "Enable",
 						"off" 		=> "Disable",
@@ -174,6 +182,7 @@ $of_options[] = array( 	"name" 		=> "Switch 3",
 				);
 
 $of_options[] = array( 	"name" 		=> "Switch 4",
+						"less"		=> true,
 						"desc" 		=> "Switch OFF with hidden options. ;)",
 						"id" 		=> "switch_ex4",
 						"std" 		=> 0,
@@ -182,6 +191,7 @@ $of_options[] = array( 	"name" 		=> "Switch 4",
 				);
 
 $of_options[] = array( 	"name" 		=> "Hidden option 1",
+						"less"		=> true,
 						"desc" 		=> "This is a sample hidden option controlled by a <strong>switch</strong> button",
 						"id" 		=> "hidden_switch_ex1",
 						"std" 		=> "Hi, I\'m just a text input - nr 1",
@@ -190,6 +200,7 @@ $of_options[] = array( 	"name" 		=> "Hidden option 1",
 				);
 
 $of_options[] = array( 	"name" 		=> "Hidden option 2",
+						"less"		=> true,
 						"desc" 		=> "This is a sample hidden option controlled by a <strong>switch</strong> button",
 						"id" 		=> "hidden_switch_ex2",
 						"std" 		=> "Hi, I\'m just a text input - nr 2",
@@ -199,6 +210,7 @@ $of_options[] = array( 	"name" 		=> "Hidden option 2",
 
 
 $of_options[] = array( 	"name" 		=> "Homepage Layout Manager",
+						"less"		=> true,
 						"desc" 		=> "Organize how you want the layout to appear on the homepage",
 						"id" 		=> "homepage_blocks",
 						"std" 		=> $of_options_homepage_blocks,
@@ -206,6 +218,7 @@ $of_options[] = array( 	"name" 		=> "Homepage Layout Manager",
 				);
 
 $of_options[] = array( 	"name" 		=> "Slider Options",
+						"less"		=> true,
 						"desc" 		=> "Unlimited slider with drag and drop sortings.",
 						"id" 		=> "pingu_slider",
 						"std" 		=> "",
@@ -213,6 +226,7 @@ $of_options[] = array( 	"name" 		=> "Slider Options",
 				);
 
 $of_options[] = array( 	"name" 		=> "Background Images",
+						"less"		=> true,
 						"desc" 		=> "Select a background pattern.",
 						"id" 		=> "custom_bg",
 						"std" 		=> $bg_images_url."bg0.png",
@@ -221,6 +235,7 @@ $of_options[] = array( 	"name" 		=> "Background Images",
 				);
 
 $of_options[] = array( 	"name" 		=> "Typography",
+						"less"		=> true,
 						"desc" 		=> "Typography option with each property can be called individually.",
 						"id" 		=> "custom_type",
 						"std" 		=> array('size' => '12px','style' => 'bold italic'),
@@ -228,6 +243,7 @@ $of_options[] = array( 	"name" 		=> "Typography",
 				);
 
 $of_options[] = array( 	"name" 		=> "General Settings",
+						"less"		=> true,
 						"type" 		=> "heading"
 				);
 
@@ -236,6 +252,7 @@ $of_options[] = array( 	"name" 		=> "Main Layout",
 						"desc" 		=> "Select main content and sidebar alignment. Choose between 1, 2 or 3 column layout.",
 						"id" 		=> "layout",
 						"std" 		=> "2c-l-fixed.css",
+						"less"		=> true,
 						"type" 		=> "images",
 						"options" 	=> array(
 							'1col-fixed.css' 	=> $url . '1col.png',
@@ -247,6 +264,7 @@ $of_options[] = array( 	"name" 		=> "Main Layout",
 				);
 
 $of_options[] = array( 	"name" 		=> "Custom Favicon",
+						"less"		=> true,
 						"desc" 		=> "Upload a 16px x 16px Png/Gif image that will represent your website's favicon.",
 						"id" 		=> "custom_favicon",
 						"std" 		=> "",
@@ -254,6 +272,7 @@ $of_options[] = array( 	"name" 		=> "Custom Favicon",
 				);
 
 $of_options[] = array( 	"name" 		=> "Tracking Code",
+						"less"		=> true,
 						"desc" 		=> "Paste your Google Analytics (or other) tracking code here. This will be added into the footer template of your theme.",
 						"id" 		=> "google_analytics",
 						"std" 		=> "",
@@ -261,6 +280,7 @@ $of_options[] = array( 	"name" 		=> "Tracking Code",
 				);
 
 $of_options[] = array( 	"name" 		=> "Footer Text",
+						"less"		=> true,
 						"desc" 		=> "You can use the following shortcodes in your footer text: [wp-link] [theme-link] [loginout-link] [blog-title] [blog-link] [the-year]",
 						"id" 		=> "footer_text",
 						"std" 		=> "Powered by [wp-link]. Built on the [theme-link].",
@@ -272,6 +292,7 @@ $of_options[] = array( 	"name" 		=> "Styling Options",
 				);
 
 $of_options[] = array( 	"name" 		=> "Theme Stylesheet",
+						"less"		=> true,
 						"desc" 		=> "Select your themes alternative color scheme.",
 						"id" 		=> "alt_stylesheet",
 						"std" 		=> "default.css",
@@ -280,6 +301,7 @@ $of_options[] = array( 	"name" 		=> "Theme Stylesheet",
 				);
 
 $of_options[] = array( 	"name" 		=> "Body Background Color",
+						"less"		=> true,
 						"desc" 		=> "Pick a background color for the theme (default: #fff).",
 						"id" 		=> "body_background",
 						"std" 		=> "",
@@ -287,6 +309,7 @@ $of_options[] = array( 	"name" 		=> "Body Background Color",
 				);
 
 $of_options[] = array( 	"name" 		=> "Header Background Color",
+						"less"		=> true,
 						"desc" 		=> "Pick a background color for the header (default: #fff).",
 						"id" 		=> "header_background",
 						"std" 		=> "",
@@ -294,6 +317,7 @@ $of_options[] = array( 	"name" 		=> "Header Background Color",
 				);
 
 $of_options[] = array( 	"name" 		=> "Footer Background Color",
+						"less"		=> true,
 						"desc" 		=> "Pick a background color for the footer (default: #fff).",
 						"id" 		=> "footer_background",
 						"std" 		=> "",
@@ -302,12 +326,14 @@ $of_options[] = array( 	"name" 		=> "Footer Background Color",
 
 $of_options[] = array( 	"name" 		=> "Body Font",
 						"desc" 		=> "Specify the body font properties",
+						"less"		=> true,
 						"id" 		=> "body_font",
 						"std" 		=> array('size' => '12px','face' => 'arial','style' => 'normal','color' => '#000000'),
 						"type" 		=> "typography"
 				);
 
 $of_options[] = array( 	"name" 		=> "Custom CSS",
+						"less"		=> true,
 						"desc" 		=> "Quickly add some CSS to your theme by adding it to this block.",
 						"id" 		=> "custom_css",
 						"std" 		=> "",
@@ -321,6 +347,7 @@ $of_options[] = array( 	"name" 		=> "Example Options",
 $of_options[] = array( 	"name" 		=> "Typography",
 						"desc" 		=> "This is a typographic specific option.",
 						"id" 		=> "typography",
+						"less"		=> true,
 						"std" 		=> array(
 											'size'  => '12px',
 											'face'  => 'verdana',
@@ -333,6 +360,7 @@ $of_options[] = array( 	"name" 		=> "Typography",
 $of_options[] = array( 	"name" 		=> "Border",
 						"desc" 		=> "This is a border specific option.",
 						"id" 		=> "border",
+						"less"		=> true,
 						"std" 		=> array(
 											'width' => '2',
 											'style' => 'dotted',
@@ -343,6 +371,7 @@ $of_options[] = array( 	"name" 		=> "Border",
 
 $of_options[] = array( 	"name" 		=> "Colorpicker",
 						"desc" 		=> "No color selected.",
+						"less"		=> true,
 						"id" 		=> "example_colorpicker",
 						"std" 		=> "",
 						"type" 		=> "color"
@@ -350,6 +379,7 @@ $of_options[] = array( 	"name" 		=> "Colorpicker",
 
 $of_options[] = array( 	"name" 		=> "Colorpicker (default #2098a8)",
 						"desc" 		=> "Color selected.",
+						"less"		=> true,
 						"id" 		=> "example_colorpicker_2",
 						"std" 		=> "#2098a8",
 						"type" 		=> "color"
@@ -358,6 +388,7 @@ $of_options[] = array( 	"name" 		=> "Colorpicker (default #2098a8)",
 $of_options[] = array( 	"name" 		=> "Upload",
 						"desc" 		=> "An image uploader without text input.",
 						"id" 		=> "uploader",
+						"less"		=> true,
 						"std" 		=> "",
 						"type" 		=> "upload"
 				);
@@ -365,6 +396,7 @@ $of_options[] = array( 	"name" 		=> "Upload",
 $of_options[] = array( 	"name" 		=> "Upload Min",
 						"desc" 		=> "An image uploader with text input.",
 						"id" 		=> "uploader2",
+						"less"		=> true,
 						"std" 		=> "",
 						"mod" 		=> "min",
 						"type" 		=> "upload"
@@ -373,6 +405,7 @@ $of_options[] = array( 	"name" 		=> "Upload Min",
 $of_options[] = array( 	"name" 		=> "Input Text",
 						"desc" 		=> "A text input field.",
 						"id" 		=> "test_text",
+						"less"		=> true,
 						"std" 		=> "Default Value",
 						"type" 		=> "text"
 				);
@@ -381,6 +414,7 @@ $of_options[] = array( 	"name" 		=> "Input Checkbox (false)",
 						"desc" 		=> "Example checkbox with false selected.",
 						"id" 		=> "example_checkbox_false",
 						"std" 		=> 0,
+						"less"		=> true,
 						"type" 		=> "checkbox"
 				);
 
@@ -388,6 +422,7 @@ $of_options[] = array( 	"name" 		=> "Input Checkbox (true)",
 						"desc" 		=> "Example checkbox with true selected.",
 						"id" 		=> "example_checkbox_true",
 						"std" 		=> 1,
+						"less"		=> true,
 						"type" 		=> "checkbox"
 				);
 
@@ -396,6 +431,7 @@ $of_options[] = array( 	"name" 		=> "Normal Select",
 						"id" 		=> "example_select",
 						"std" 		=> "three",
 						"type" 		=> "select",
+						"less"		=> true,
 						"options" 	=> $of_options_select
 				);
 
@@ -404,6 +440,7 @@ $of_options[] = array( 	"name" 		=> "Mini Select",
 						"id" 		=> "example_select_2",
 						"std" 		=> "two",
 						"type" 		=> "select2",
+						"less"		=> true,
 						"class" 	=> "mini", //mini, tiny, small
 						"options" 	=> $of_options_radio
 				);
@@ -412,6 +449,7 @@ $of_options[] = array( 	"name" 		=> "Google Font Select",
 						"desc" 		=> "Some description. Note that this is a custom text added added from options file.",
 						"id" 		=> "g_select",
 						"std" 		=> "Select a font",
+						"less"		=> true,
 						"type" 		=> "select_google_font",
 						"preview" 	=> array(
 										"text" => "This is my preview text!", //this is the text from preview box
@@ -430,6 +468,7 @@ $of_options[] = array( 	"name" 		=> "Google Font Select2",
 						"desc" 		=> "Some description.",
 						"id" 		=> "g_select2",
 						"std" 		=> "Select a font",
+						"less"		=> true,
 						"type" 		=> "select_google_font",
 						"options" 	=> array(
 										"none" => "Select a font",//please, always use this key: "none"
@@ -443,6 +482,7 @@ $of_options[] = array( 	"name" 		=> "Google Font Select2",
 $of_options[] = array( 	"name" 		=> "Input Radio (one)",
 						"desc" 		=> "Radio select with default of 'one'.",
 						"id" 		=> "example_radio",
+						"less"		=> true,
 						"std" 		=> "one",
 						"type" 		=> "radio",
 						"options" 	=> $of_options_radio
@@ -452,6 +492,7 @@ $url =  ADMIN_DIR . 'assets/images/';
 $of_options[] = array( 	"name" 		=> "Image Select",
 						"desc" 		=> "Use radio buttons as images.",
 						"id" 		=> "images",
+						"less"		=> true,
 						"std" 		=> "warning.css",
 						"type" 		=> "images",
 						"options" 	=> array(
@@ -464,6 +505,7 @@ $of_options[] = array( 	"name" 		=> "Image Select",
 $of_options[] = array( 	"name" 		=> "Textarea",
 						"desc" 		=> "Textarea description.",
 						"id" 		=> "example_textarea",
+						"less"		=> true,
 						"std" 		=> "Default Text",
 						"type" 		=> "textarea"
 				);
@@ -471,6 +513,7 @@ $of_options[] = array( 	"name" 		=> "Textarea",
 $of_options[] = array( 	"name" 		=> "Multicheck",
 						"desc" 		=> "Multicheck description.",
 						"id" 		=> "example_multicheck",
+						"less"		=> true,
 						"std" 		=> array("three","two"),
 						"type" 		=> "multicheck",
 						"options" 	=> $of_options_radio
@@ -479,6 +522,7 @@ $of_options[] = array( 	"name" 		=> "Multicheck",
 $of_options[] = array( 	"name" 		=> "Select a Category",
 						"desc" 		=> "A list of all the categories being used on the site.",
 						"id" 		=> "example_category",
+						"less"		=> true,
 						"std" 		=> "Select a category:",
 						"type" 		=> "select",
 						"options" 	=> $of_categories
@@ -492,6 +536,7 @@ $of_options[] = array( 	"name" 		=> "Advanced Settings",
 $of_options[] = array( 	"name" 		=> "Folding Checkbox",
 						"desc" 		=> "This checkbox will hide/show a couple of options group. Try it out!",
 						"id" 		=> "offline",
+						"less"		=> true,
 						"std" 		=> 0,
 						"folds" 	=> 1,
 						"type" 		=> "checkbox"
@@ -500,6 +545,7 @@ $of_options[] = array( 	"name" 		=> "Folding Checkbox",
 $of_options[] = array( 	"name" 		=> "Hidden option 1",
 						"desc" 		=> "This is a sample hidden option 1",
 						"id" 		=> "hidden_option_1",
+						"less"		=> true,
 						"std" 		=> "Hi, I\'m just a text input",
 						"fold" 		=> "offline", /* the checkbox hook */
 						"type" 		=> "text"
@@ -508,6 +554,7 @@ $of_options[] = array( 	"name" 		=> "Hidden option 1",
 $of_options[] = array( 	"name" 		=> "Hidden option 2",
 						"desc" 		=> "This is a sample hidden option 2",
 						"id" 		=> "hidden_option_2",
+						"less"		=> true,
 						"std" 		=> "Hi, I\'m just a text input",
 						"fold" 		=> "offline", /* the checkbox hook */
 						"type" 		=> "text"
@@ -516,6 +563,7 @@ $of_options[] = array( 	"name" 		=> "Hidden option 2",
 $of_options[] = array( 	"name" 		=> "Hello there!",
 						"desc" 		=> "",
 						"id" 		=> "introduction_2",
+						"less"		=> true,
 						"std" 		=> "<h3 style=\"margin: 0 0 10px;\">Grouped Options.</h3>
 						You can group a bunch of options under a single heading by removing the 'name' value from the options array except for the first option in the group.",
 						"icon" 		=> true,
@@ -526,6 +574,7 @@ $of_options[] = array( 	"name" 		=> "Hello there!",
 										"desc" 		=> "Color 1.",
 										"id" 		=> "example_colorpicker_3",
 										"std" 		=> "#2098a8",
+						"less"		=> true,
 										"type" 		=> "color"
 								);
 
@@ -533,6 +582,7 @@ $of_options[] = array( 	"name" 		=> "Hello there!",
 										"desc" 		=> "Color 2.",
 										"id" 		=> "example_colorpicker_4",
 										"std" 		=> "#2098a8",
+						"less"		=> true,
 										"type" 		=> "color"
 								);
 
@@ -540,11 +590,13 @@ $of_options[] = array( 	"name" 		=> "Hello there!",
 										"desc" 		=> "Color 3.",
 										"id" 		=> "example_colorpicker_5",
 										"std" 		=> "#2098a8",
+						"less"		=> true,
 										"type" 		=> "color"
 								);
 
 				$of_options[] = array( 	"name" 		=> "",
 										"desc" 		=> "Color 4.",
+						"less"		=> true,
 										"id" 		=> "example_colorpicker_6",
 										"std" 		=> "#2098a8",
 										"type" 		=> "color"

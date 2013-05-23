@@ -36,3 +36,5 @@ require_once locate_template('/lib/customizer/functions.background.php');       
 // require_once locate_template('/lib/customizer/functions.typography.php');     // Extra functions for the "Typography" Customizer section
 
 require_once locate_template('/admin/index.php'); // Slightly Modified Options Framework
+
+require_once locate_template('/lib/shortcodes/init.php');                     // Initialize the Shortcodes plugin
