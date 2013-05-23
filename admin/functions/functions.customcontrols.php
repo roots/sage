@@ -16,9 +16,11 @@ class Customize_SMOF_Text_Control extends WP_Customize_Control {
         ?>
 
         <label class="customizer-text">
-			<span class="customize-control-title">
-				<?php echo esc_html( $this->label ); ?>
-			</span>
+        	<?php if ($smof_details[$this->id]['name'] != "") { ?>
+				<span class="customize-control-title">
+					<?php echo esc_html( $this->label ); ?>
+				</span>
+			<?php } ?>
 			<input type="text" class="<?php echo $class; ?>" value="<?php echo esc_attr( $this->value() ); ?>" <?php $this->link(); ?> />
 			<?php if ($smof_details[$this->id]['desc'] != "") { ?><a href="#" class="button tooltip" title="<?php echo strip_tags(esc_html($smof_details[$this->id]['desc'])); ?>">?</a><a href="#" class="button pointer" style="display: none;" title="<?php echo strip_tags(esc_html($smof_details[$this->id]['desc'])); ?>">P</a><?php } ?>
 		</label>
@@ -52,10 +54,10 @@ class Customize_SMOF_Select_Control extends WP_Customize_Control {
 		<label class="customizer-select">
 			<span class="customize-control-title">
 				<?php echo esc_html( $this->label ); ?>
+			</span>
 				<?php if ($smof_details[$this->id]['desc'] != "") { ?>
 					<a href="#" class="button tooltip" title="<?php echo strip_tags(esc_html($smof_details[$this->id]['desc'])); ?>">?</a>
 				<?php } ?>
-			</span>
 			<?php echo $output; ?>
 		</label>
 		<?php

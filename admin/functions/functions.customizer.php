@@ -3,7 +3,6 @@ add_action( 'customize_controls_init', 'smof_customize_init' );
 add_action( 'customize_preview_init', 'smof_preview_init' );
 add_action( 'customize_register', 'smof_customize_register' );
 
-
 // Generates the CSS from less on save IF a less file has been changed
 function shoestrapCSSRegen() {
     $nonce = $_POST['nonce'];
@@ -56,10 +55,6 @@ function smof_customize_init( $wp_customize ) {
 
 
 function smof_preview_init( $wp_customize ) {
-	//echo "<pre>";
-	//print_r(get_theme_mods());
-
-
 	global $smof_data, $smof_details;
 	wp_dequeue_style('shoestrap_css');
 	wp_deregister_style('shoestrap_css');
@@ -150,7 +145,10 @@ function smof_customize_register($wp_customize) {
 	global $smof_data, $of_options, $smof_details;
 	$section = array();
 	$section_set = true;
-	//echo shoestrap_variables_less();
+	$order = array(
+		'heading' => -100,
+		'option'  => -100,
+		);
 
 	foreach($of_options as $option) {
 		$smof_details[$option['id']] = $option;
@@ -170,6 +168,9 @@ function smof_customize_register($wp_customize) {
 			//$customSetting['transport'] = 'postMessage';
 		}
 		if ($section_set == false && is_array($section)) {
+			if (!isset($section['priority'])) {
+				$section['priority'] = $order['heading'];
+			}
 			$wp_customize->add_section($section['id'], array(
 				'title' 		=> $section['name'],
 				'priority'		=> $section['priority'],
@@ -177,12 +178,21 @@ function smof_customize_register($wp_customize) {
 			) );
 			$section_set = true;
 		}
+		if ($option['type'] != 'heading') {
+			if (!isset($option['priority'])) {
+				$option['priority'] = $order['option'];
+			}
+		}
 		switch( $option['type'] ) {
 			case 'heading':
 				// We don't want to put up the section unless it's used by something visible in the customizer
 				$section = $option;
 				$section['id'] = strtolower(str_replace(" ", "", $option['name']));
 				$section_set = false;
+				$order = array(
+					'option'  => -100,
+				);
+				$order['heading']++;
 				break;
 			case 'text':
 				$wp_customize->add_setting( $option['id'], $customSetting);
@@ -190,6 +200,7 @@ function smof_customize_register($wp_customize) {
 					'label'   => $option['name'],
 					'section' => $section['id'],
 					'settings'=> $option['id'],
+					'priority'=> $option['priority']
 				) ) );
 				break;
 			case 'select':
@@ -198,6 +209,7 @@ function smof_customize_register($wp_customize) {
 					'label'   => $option['name'],
 					'section' => $section['id'],
 					'settings'=> $option['id'],
+					'priority'=> $option['priority']
 				) ) );
 				break;
 			case 'textarea':
@@ -206,6 +218,7 @@ function smof_customize_register($wp_customize) {
 					'label'   => $option['name'],
 					'section' => $section['id'],
 					'settings'=> $option['id'],
+					'priority'=> $option['priority']
 				) ) );
 				break;
 			case 'radio':
@@ -214,6 +227,7 @@ function smof_customize_register($wp_customize) {
 					'label'   => $option['name'],
 					'section' => $section['id'],
 					'settings'=> $option['id'],
+					'priority'=> $option['priority']
 				) ) );
 				break;
 			case 'checkbox':
@@ -222,6 +236,7 @@ function smof_customize_register($wp_customize) {
 					'label'   => $option['name'],
 					'section' => $section['id'],
 					'settings'=> $option['id'],
+					'priority'=> $option['priority']
 				) ) );
 				break;
 			case 'multicheck':
@@ -230,6 +245,7 @@ function smof_customize_register($wp_customize) {
 					'label'   => $option['name'],
 					'section' => $section['id'],
 					'settings'=> $option['id'],
+					'priority'=> $option['priority']
 				) ) );
 				break;
 			case 'upload':
@@ -238,6 +254,7 @@ function smof_customize_register($wp_customize) {
 					'label'   => $option['name'],
 					'section' => $section['id'],
 					'settings'=> $option['id'],
+					'priority'=> $option['priority']
 				) ) );
 				break;
 			case 'media':
@@ -246,6 +263,7 @@ function smof_customize_register($wp_customize) {
 					'label'   => $option['name'],
 					'section' => $section['id'],
 					'settings'=> $option['id'],
+					'priority'=> $option['priority']
 				) ) );
 				break;
 			case 'color':
@@ -254,6 +272,7 @@ function smof_customize_register($wp_customize) {
 					'label'   => $option['name'],
 					'section' => $section['id'],
 					'settings'=> $option['id'],
+					'priority'=> $option['priority']
 				) ) );
 				break;
 			case 'typography':
@@ -262,6 +281,7 @@ function smof_customize_register($wp_customize) {
 					'label'   => $option['name'],
 					'section' => $section['id'],
 					'settings'=> $option['id'],
+					'priority'=> $option['priority']
 				) ) );
 				break;
 			case 'border':
@@ -270,6 +290,7 @@ function smof_customize_register($wp_customize) {
 					'label'   => $option['name'],
 					'section' => $section['id'],
 					'settings'=> $option['id'],
+					'priority'=> $option['priority']
 				) ) );
 				break;
 			case 'images':
@@ -278,6 +299,7 @@ function smof_customize_register($wp_customize) {
 					'label'   => $option['name'],
 					'section' => $section['id'],
 					'settings'=> $option['id'],
+					'priority'=> $option['priority']
 				) ) );
 				break;
 			case 'info':
@@ -286,6 +308,7 @@ function smof_customize_register($wp_customize) {
 					'label'   => $option['name'],
 					'section' => $section['id'],
 					'settings'=> $option['id'],
+					'priority'=> $option['priority']
 				) ) );
 				break;
 			case 'image':
@@ -294,6 +317,7 @@ function smof_customize_register($wp_customize) {
 					'label'   => $option['name'],
 					'section' => $section['id'],
 					'settings'=> $option['id'],
+					'priority'=> $option['priority']
 				) ) );
 				break;
 			case 'slider':
@@ -302,6 +326,7 @@ function smof_customize_register($wp_customize) {
 					'label'   => $option['name'],
 					'section' => $section['id'],
 					'settings'=> $option['id'],
+					'priority'=> $option['priority']
 				) ) );
 				break;
 			case 'sorter':
@@ -310,6 +335,7 @@ function smof_customize_register($wp_customize) {
 					'label'   => $option['name'],
 					'section' => $section['id'],
 					'settings'=> $option['id'],
+					'priority'=> $option['priority']
 				) ) );
 				break;
 			case 'titles':
@@ -318,6 +344,7 @@ function smof_customize_register($wp_customize) {
 					'label'   => $option['name'],
 					'section' => $section['id'],
 					'settings'=> $option['id'],
+					'priority'=> $option['priority']
 				) ) );
 				break;
 			case 'select_google_font':
@@ -326,6 +353,7 @@ function smof_customize_register($wp_customize) {
 					'label'   => $option['name'],
 					'section' => $section['id'],
 					'settings'=> $option['id'],
+					'priority'=> $option['priority']
 				) ) );
 				break;
 			case 'sliderui':
@@ -334,6 +362,7 @@ function smof_customize_register($wp_customize) {
 					'label'   => $option['name'],
 					'section' => $section['id'],
 					'settings'=> $option['id'],
+					'priority'=> $option['priority']
 				) ) );
 				break;
 			case 'switch':
@@ -342,11 +371,15 @@ function smof_customize_register($wp_customize) {
 					'label'   => $option['name'],
 					'section' => $section['id'],
 					'settings'=> $option['id'],
+					'priority'=> $option['priority']
 				) ) );
 				break;
 			default:
 
 				break;
+		}
+		if ($option['type'] != 'heading') {
+			$order['option']++;
 		}
 	}
 }
