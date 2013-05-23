@@ -1,15 +1,26 @@
 <?
+
+function formatTooltip($string) {
+
+	return $string;
+}
+
 class Customize_SMOF_Text_Control extends WP_Customize_Control {
     public $type = 'text';
     public function render_content() {
     	global $smof_details;
+    	$class = "";
+    	if (isset($smof_details[$this->id]['less'])) {
+    		$class = " lessDirty";
+    	}
         ?>
+
         <label class="customizer-text">
 			<span class="customize-control-title">
 				<?php echo esc_html( $this->label ); ?>
 			</span>
-			<input type="text" value="<?php echo esc_attr( $this->value() ); ?>" <?php $this->link(); ?> />
-			<?php if ($smof_details[$this->id]['desc'] != "") { ?><a href="#" class="button tooltip" title="<?php echo strip_tags($smof_details[$this->id]['desc']); ?>">?</a><a href="#" class="button pointer" style="display: none;" title="<?php echo strip_tags($smof_details[$this->id]['desc']); ?>">P</a><?php } ?>
+			<input type="text" class="<?php echo $class; ?>" value="<?php echo esc_attr( $this->value() ); ?>" <?php $this->link(); ?> />
+			<?php if ($smof_details[$this->id]['desc'] != "") { ?><a href="#" class="button tooltip" title="<?php echo strip_tags(esc_html($smof_details[$this->id]['desc'])); ?>">?</a><a href="#" class="button pointer" style="display: none;" title="<?php echo strip_tags(esc_html($smof_details[$this->id]['desc'])); ?>">P</a><?php } ?>
 		</label>
         <?php
     }
@@ -19,6 +30,10 @@ class Customize_SMOF_Select_Control extends WP_Customize_Control {
     public $type = 'select';
     public function render_content() {
     	global $smof_details;
+    	$class = "";
+    	if (isset($smof_details[$this->id]['less'])) {
+    		$class = " lessDirty";
+    	}
     	$value = $smof_details[$this->id];
 		if ( empty( $smof_details[$this->id]['options'] ) )
 			return;
@@ -27,7 +42,7 @@ class Customize_SMOF_Select_Control extends WP_Customize_Control {
 			if(!isset($value['mod'])) $value['mod'] = '';
 			if($value['mod'] == 'mini') { $mini = 'mini';}
 			$output .= '<div class="select_wrapper ' . $mini . '">';
-			$output .= '<select data-customize-setting-link="'.$value['id'].'" class="select of-input" name="'.$value['id'].'" id="'. $value['id'] .'">';
+			$output .= '<select data-customize-setting-link="'.$value['id'].'" class="select of-input'.$class.'" name="'.$value['id'].'" id="'. $value['id'] .'">';
 			foreach ($value['options'] as $select_ID => $option) {
 				$output .= '<option id="' . $select_ID . '" value="'.$option.'" ' . selected($smof_data[$value['id']], $option, false) . ' />'.$option.'</option>';
 			 }
@@ -38,7 +53,7 @@ class Customize_SMOF_Select_Control extends WP_Customize_Control {
 			<span class="customize-control-title">
 				<?php echo esc_html( $this->label ); ?>
 				<?php if ($smof_details[$this->id]['desc'] != "") { ?>
-					<a href="#" class="button tooltip" title="<?php echo strip_tags($smof_details[$this->id]['desc']); ?>">?</a>
+					<a href="#" class="button tooltip" title="<?php echo strip_tags(esc_html($smof_details[$this->id]['desc'])); ?>">?</a>
 				<?php } ?>
 			</span>
 			<?php echo $output; ?>
@@ -50,10 +65,14 @@ class Customize_SMOF_Textarea_Control extends WP_Customize_Control {
     public $type = 'textarea';
     public function render_content() {
     	global $smof_details;
+    	$class = "";
+    	if (isset($smof_details[$this->id]['less'])) {
+    		$class = " lessDirty";
+    	}
         ?>
 		    <label class="customizer-textarea">
-		        <span class="customize-control-title"><?php echo esc_html( $this->label ); ?> <?php if ($smof_details[$this->id]['desc'] != "") { ?><a href="#" class="button tooltip" title="<?php echo strip_tags($smof_details[$this->id]['desc']); ?>">?</a><?php } ?></span>
-		        <textarea class="of-input" rows="5" style="width:100%;" <?php $this->link(); ?>><?php echo esc_textarea( $this->value() ); ?></textarea>
+		        <span class="customize-control-title"><?php echo esc_html( $this->label ); ?> <?php if ($smof_details[$this->id]['desc'] != "") { ?><a href="#" class="button tooltip" title="<?php echo strip_tags(esc_html($smof_details[$this->id]['desc'])); ?>">?</a><?php } ?></span>
+		        <textarea class="of-input<?php echo $class; ?>" rows="5" style="width:100%;" <?php $this->link(); ?>><?php echo esc_textarea( $this->value() ); ?></textarea>
 		    </label>
         <?php
     }
@@ -62,7 +81,10 @@ class Customize_SMOF_Radio_Control extends WP_Customize_Control {
     public $type = 'radio';
     public function render_content() {
     	global $smof_details;
-
+		$class = "";
+    	if (isset($smof_details[$this->id]['less'])) {
+    		$class = " lessDirty";
+    	}
 		if ( empty( $smof_details[$this->id]['options'] ) )
 			return;
 
@@ -72,14 +94,14 @@ class Customize_SMOF_Radio_Control extends WP_Customize_Control {
 			<span class="customize-control-title">
 				<?php echo esc_html( $this->label ); ?>
 				<?php if ($smof_details[$this->id]['desc'] != "") { ?>
-					<a href="#" class="button tooltip" title="<?php echo strip_tags($smof_details[$this->id]['desc']); ?>">?</a>
+					<a href="#" class="button tooltip" title="<?php echo strip_tags(esc_html($smof_details[$this->id]['desc'])); ?>">?</a>
 				<?php } ?>
 			</span>
 		<?php
 		foreach ( $smof_details[$this->id]['options'] as $value => $label ) :
 			?>
 			<label class="customizer-radio">
-				<input type="radio" value="<?php echo esc_attr( $value ); ?>" name="<?php echo esc_attr( $name ); ?>" <?php $this->link(); checked( $this->value(), $value ); ?> />
+				<input type="radio" class="<?php echo $class; ?>" value="<?php echo esc_attr( $value ); ?>" name="<?php echo esc_attr( $name ); ?>" <?php $this->link(); checked( $this->value(), $value ); ?> />
 				<?php echo esc_html( $label ); ?><br/>
 			</label>
 			<?php
@@ -90,12 +112,16 @@ class Customize_SMOF_Checkbox_Control extends WP_Customize_Control {
     public $type = 'text';
     public function render_content() {
     	global $smof_details;
+    	$class = "";
+    	if (isset($smof_details[$this->id]['less'])) {
+    		$class = " lessDirty";
+    	}
         ?>
         <label class="customizer-checkbox">
-				<input type="checkbox" value="<?php echo esc_attr( $this->value() ); ?>" <?php $this->link(); checked( $this->value() ); ?> />
+				<input type="checkbox" class="<?php echo $class; ?>" value="<?php echo esc_attr( $this->value() ); ?>" <?php $this->link(); checked( $this->value() ); ?> />
 				<strong><?php echo esc_html( $this->label ); ?></strong>
 				<?php if ($smof_details[$this->id]['desc'] != "") { ?>
-					<a href="#" class="button tooltip" title="<?php echo strip_tags($smof_details[$this->id]['desc']); ?>">?</a>
+					<a href="#" class="button tooltip" title="<?php echo strip_tags(esc_html($smof_details[$this->id]['desc'])); ?>">?</a>
 				<?php } ?>
 		</label>
         <?php
@@ -106,15 +132,19 @@ class Customize_SMOF_Multicheck_Control extends WP_Customize_Control {
     public $type = 'text';
     public function render_content() {
     	global $smof_details;
+    	$class = "";
+    	if (isset($smof_details[$this->id]['less'])) {
+    		$class = " lessDirty";
+    	}
         ?>
         <label class="customizer-text">
 			<span class="customize-control-title">
 				<?php echo esc_html( $this->label ); ?>
 				<?php if ($smof_details[$this->id]['desc'] != "") { ?>
-					<a href="#" class="button tooltip" title="<?php echo strip_tags($smof_details[$this->id]['desc']); ?>">?</a>
+					<a href="#" class="button tooltip" title="<?php echo strip_tags(esc_html($smof_details[$this->id]['desc'])); ?>">?</a>
 				<?php } ?>
 			</span>
-			<input type="text" value="<?php echo esc_attr( $this->value() ); ?>" <?php $this->link(); ?> />
+			<input type="text" class="<?php echo $class; ?>" value="<?php echo esc_attr( $this->value() ); ?>" <?php $this->link(); ?> />
 		</label>
         <?php
     }
@@ -160,17 +190,21 @@ class Customize_SMOF_Upload_Control extends WP_Customize_Control {
 	 */
 	public function render_content() {
 		global $smof_details;
+		$class = "";
+    	if (isset($smof_details[$this->id]['less'])) {
+    		$class = " lessDirty";
+    	}
 		?>
 		<label>
 			<span class="customize-control-title">
 				<?php echo esc_html( $this->label ); ?>
 				<?php if ($smof_details[$this->id]['desc'] != "") { ?>
-					<a href="#" class="button tooltip" title="<?php echo strip_tags($smof_details[$this->id]['desc']); ?>">?</a>
+					<a href="#" class="button tooltip" title="<?php echo strip_tags(esc_html($smof_details[$this->id]['desc'])); ?>">?</a>
 				<?php } ?>
 			</span>
 			<div>
-				<a href="#" class="button-secondary upload"><?php _e( 'Upload' ); ?></a>
-				<a href="#" class="remove"><?php _e( 'Remove' ); ?></a>
+				<a href="#" class="button-secondary upload<?php echo $class; ?>"><?php _e( 'Upload' ); ?></a>
+				<a href="#" class="remove<?php echo $class; ?>"><?php _e( 'Remove' ); ?></a>
 			</div>
 		</label>
 		<?php
@@ -180,15 +214,19 @@ class Customize_SMOF_Media_Control extends WP_Customize_Control {
     public $type = 'text';
     public function render_content() {
     	global $smof_details;
+    	$class = "";
+    	if (isset($smof_details[$this->id]['less'])) {
+    		$class = " lessDirty";
+    	}
         ?>
         <label class="customizer-text">
 			<span class="customize-control-title">
 				<?php echo esc_html( $this->label ); ?>
 				<?php if ($smof_details[$this->id]['desc'] != "") { ?>
-					<a href="#" class="button tooltip" title="<?php echo strip_tags($smof_details[$this->id]['desc']); ?>">?</a>
+					<a href="#" class="button tooltip" title="<?php echo strip_tags(esc_html($smof_details[$this->id]['desc'])); ?>">?</a>
 				<?php } ?>
 			</span>
-			<input type="text" value="<?php echo esc_attr( $this->value() ); ?>" <?php $this->link(); ?> />
+			<input type="text" class="<?php echo $class; ?>" value="<?php echo esc_attr( $this->value() ); ?>" <?php $this->link(); ?> />
 		</label>
         <?php
     }
@@ -251,6 +289,10 @@ class Customize_SMOF_Color_Control extends WP_Customize_Control {
 	 */
 	public function render_content() {
 		global $smof_details;
+		$class = "";
+    	if (isset($smof_details[$this->id]['less'])) {
+    		$class = " lessDirty";
+    	}
 		$this_default = $this->setting->default;
 		$default_attr = '';
 		if ( $this_default ) {
@@ -264,11 +306,11 @@ class Customize_SMOF_Color_Control extends WP_Customize_Control {
 			<span class="customize-control-title">
 				<?php echo esc_html( $this->label ); ?>
 				<?php if ($smof_details[$this->id]['desc'] != "") { ?>
-					<a href="#" class="button tooltip" title="<?php echo strip_tags($smof_details[$this->id]['desc']); ?>">?</a>
+					<a href="#" class="button tooltip" title="<?php echo strip_tags(esc_html($smof_details[$this->id]['desc'])); ?>">?</a>
 				<?php } ?>
 			</span>
 			<div class="customize-control-content">
-				<input class="color-picker-hex" type="text" maxlength="7" placeholder="<?php esc_attr_e( 'Hex Value' ); ?>"<?php echo $default_attr ?> />
+				<input class="color-picker-hex<?php echo $class; ?>" type="text" maxlength="7" placeholder="<?php esc_attr_e( 'Hex Value' ); ?>"<?php echo $default_attr ?> />
 			</div>
 		</label>
 		<?php
@@ -279,15 +321,19 @@ class Customize_SMOF_Typography_Control extends WP_Customize_Control {
     public $type = 'text';
     public function render_content() {
     	global $smof_details;
+    	$class = "";
+    	if (isset($smof_details[$this->id]['less'])) {
+    		$class = " lessDirty";
+    	}
         ?>
         <label class="customizer-text">
 			<span class="customize-control-title">
 				<?php echo esc_html( $this->label ); ?>
 				<?php if ($smof_details[$this->id]['desc'] != "") { ?>
-					<a href="#" class="button tooltip" title="<?php echo strip_tags($smof_details[$this->id]['desc']); ?>">?</a>
+					<a href="#" class="button tooltip" title="<?php echo strip_tags(esc_html($smof_details[$this->id]['desc'])); ?>">?</a>
 				<?php } ?>
 			</span>
-			<input type="text" value="<?php echo esc_attr( $this->value() ); ?>" <?php $this->link(); ?> />
+			<input type="text" class="<?php echo $class; ?>" value="<?php echo esc_attr( $this->value() ); ?>" <?php $this->link(); ?> />
 		</label>
         <?php
     }
@@ -296,15 +342,19 @@ class Customize_SMOF_Border_Control extends WP_Customize_Control {
     public $type = 'text';
     public function render_content() {
     	global $smof_details;
+    	$class = "";
+    	if (isset($smof_details[$this->id]['less'])) {
+    		$class = " lessDirty";
+    	}
         ?>
         <label class="customizer-text">
 			<span class="customize-control-title">
 				<?php echo esc_html( $this->label ); ?>
 				<?php if ($smof_details[$this->id]['desc'] != "") { ?>
-					<a href="#" class="button tooltip" title="<?php echo strip_tags($smof_details[$this->id]['desc']); ?>">?</a>
+					<a href="#" class="button tooltip" title="<?php echo strip_tags(esc_html($smof_details[$this->id]['desc'])); ?>">?</a>
 				<?php } ?>
 			</span>
-			<input type="text" value="<?php echo esc_attr( $this->value() ); ?>" <?php $this->link(); ?> />
+			<input type="text" class="<?php echo $class; ?>" value="<?php echo esc_attr( $this->value() ); ?>" <?php $this->link(); ?> />
 		</label>
         <?php
     }
@@ -314,15 +364,19 @@ class Customize_SMOF_Images_Control extends WP_Customize_Control {
     public $type = 'text';
     public function render_content() {
     	global $smof_details;
+    	$class = "";
+    	if (isset($smof_details[$this->id]['less'])) {
+    		$class = " lessDirty";
+    	}
         ?>
         <label class="customizer-text">
 			<span class="customize-control-title">
 				<?php echo esc_html( $this->label ); ?>
 				<?php if ($smof_details[$this->id]['desc'] != "") { ?>
-					<a href="#" class="button tooltip" title="<?php echo strip_tags($smof_details[$this->id]['desc']); ?>">?</a>
+					<a href="#" class="button tooltip" title="<?php echo strip_tags(esc_html($smof_details[$this->id]['desc'])); ?>">?</a>
 				<?php } ?>
 			</span>
-			<input type="text" value="<?php echo esc_attr( $this->value() ); ?>" <?php $this->link(); ?> />
+			<input type="text" class="<?php echo $class; ?>" value="<?php echo esc_attr( $this->value() ); ?>" <?php $this->link(); ?> />
 		</label>
         <?php
     }
@@ -331,15 +385,19 @@ class Customize_SMOF_Info_Control extends WP_Customize_Control {
     public $type = 'text';
     public function render_content() {
     	global $smof_details;
+    	$class = "";
+    	if (isset($smof_details[$this->id]['less'])) {
+    		$class = " lessDirty";
+    	}
         ?>
         <label class="customizer-text">
 			<span class="customize-control-title">
 				<?php echo esc_html( $this->label ); ?>
 				<?php if ($smof_details[$this->id]['desc'] != "") { ?>
-					<a href="#" class="button tooltip" title="<?php echo strip_tags($smof_details[$this->id]['desc']); ?>">?</a>
+					<a href="#" class="button tooltip" title="<?php echo strip_tags(esc_html($smof_details[$this->id]['desc'])); ?>">?</a>
 				<?php } ?>
 			</span>
-			<input type="text" value="<?php echo esc_attr( $this->value() ); ?>" <?php $this->link(); ?> />
+			<input type="text" class="<?php echo $class; ?>" value="<?php echo esc_attr( $this->value() ); ?>" <?php $this->link(); ?> />
 		</label>
         <?php
     }
@@ -406,6 +464,10 @@ class Customize_SMOF_Image_Control extends WP_Customize_Control {
 	 */
 	public function render_content() {
 		global $smof_details;
+		$class = "";
+    	if (isset($smof_details[$this->id]['less'])) {
+    		$class = " lessDirty";
+    	}
 		$src = $this->value();
 		if ( isset( $this->get_url ) )
 			$src = call_user_func( $this->get_url, $src );
@@ -415,7 +477,7 @@ class Customize_SMOF_Image_Control extends WP_Customize_Control {
 			<span class="customize-control-title">
 				<?php echo esc_html( $this->label ); ?>
 				<?php if ($smof_details[$this->id]['desc'] != "") { ?>
-					<a href="#" class="button tooltip" title="<?php echo strip_tags($smof_details[$this->id]['desc']); ?>">?</a>
+					<a href="#" class="button tooltip" title="<?php echo strip_tags(esc_html($smof_details[$this->id]['desc'])); ?>">?</a>
 				<?php } ?>
 			</span>
 
@@ -449,7 +511,7 @@ class Customize_SMOF_Image_Control extends WP_Customize_Control {
 			</div>
 
 			<div class="actions">
-				<a href="#" class="remove"><?php _e( 'Remove Image' ); ?></a>
+				<a href="#" class="remove<?php echo $class; ?>"><?php _e( 'Remove Image' ); ?></a>
 			</div>
 		</div>
 		<?php
@@ -531,15 +593,19 @@ class Customize_SMOF_Slider_Control extends WP_Customize_Control {
     public $type = 'text';
     public function render_content() {
     	global $smof_details;
+    	$class = "";
+    	if (isset($smof_details[$this->id]['less'])) {
+    		$class = " lessDirty";
+    	}
         ?>
         <label class="customizer-text">
 			<span class="customize-control-title">
 				<?php echo esc_html( $this->label ); ?>
 				<?php if ($smof_details[$this->id]['desc'] != "") { ?>
-					<a href="#" class="button tooltip" title="<?php echo strip_tags($smof_details[$this->id]['desc']); ?>">?</a>
+					<a href="#" class="button tooltip" title="<?php echo strip_tags(esc_html($smof_details[$this->id]['desc'])); ?>">?</a>
 				<?php } ?>
 			</span>
-			<input type="text" value="<?php echo esc_attr( $this->value() ); ?>" <?php $this->link(); ?> />
+			<input type="text" class="<?php echo $class; ?>" value="<?php echo esc_attr( $this->value() ); ?>" <?php $this->link(); ?> />
 		</label>
         <?php
     }
@@ -548,15 +614,19 @@ class Customize_SMOF_Sorter_Control extends WP_Customize_Control {
     public $type = 'text';
     public function render_content() {
     	global $smof_details;
+    	$class = "";
+    	if (isset($smof_details[$this->id]['less'])) {
+    		$class = " lessDirty";
+    	}
         ?>
         <label class="customizer-text">
 			<span class="customize-control-title">
 				<?php echo esc_html( $this->label ); ?>
 				<?php if ($smof_details[$this->id]['desc'] != "") { ?>
-					<a href="#" class="button tooltip" title="<?php echo strip_tags($smof_details[$this->id]['desc']); ?>">?</a>
+					<a href="#" class="button tooltip" title="<?php echo strip_tags(esc_html($smof_details[$this->id]['desc'])); ?>">?</a>
 				<?php } ?>
 			</span>
-			<input type="text" value="<?php echo esc_attr( $this->value() ); ?>" <?php $this->link(); ?> />
+			<input type="text" class="<?php echo $class; ?>" value="<?php echo esc_attr( $this->value() ); ?>" <?php $this->link(); ?> />
 		</label>
         <?php
     }
@@ -565,15 +635,19 @@ class Customize_SMOF_Titles_Control extends WP_Customize_Control {
     public $type = 'text';
     public function render_content() {
     	global $smof_details;
+    	$class = "";
+    	if (isset($smof_details[$this->id]['less'])) {
+    		$class = " lessDirty";
+    	}
         ?>
         <label class="customizer-text">
 			<span class="customize-control-title">
 				<?php echo esc_html( $this->label ); ?>
 				<?php if ($smof_details[$this->id]['desc'] != "") { ?>
-					<a href="#" class="button tooltip" title="<?php echo strip_tags($smof_details[$this->id]['desc']); ?>">?</a>
+					<a href="#" class="button tooltip" title="<?php echo strip_tags(esc_html($smof_details[$this->id]['desc'])); ?>">?</a>
 				<?php } ?>
 			</span>
-			<input type="text" value="<?php echo esc_attr( $this->value() ); ?>" <?php $this->link(); ?> />
+			<input type="text" class="<?php echo $class; ?>" value="<?php echo esc_attr( $this->value() ); ?>" <?php $this->link(); ?> />
 		</label>
         <?php
     }
@@ -582,15 +656,19 @@ class Customize_SMOF_SelectGoogleFont_Control extends WP_Customize_Control {
     public $type = 'text';
     public function render_content() {
     	global $smof_details;
+    	$class = "";
+    	if (isset($smof_details[$this->id]['less'])) {
+    		$class = " lessDirty";
+    	}
         ?>
         <label class="customizer-text">
 			<span class="customize-control-title">
 				<?php echo esc_html( $this->label ); ?>
 				<?php if ($smof_details[$this->id]['desc'] != "") { ?>
-					<a href="#" class="button tooltip" title="<?php echo strip_tags($smof_details[$this->id]['desc']); ?>">?</a>
+					<a href="#" class="button tooltip" title="<?php echo strip_tags(esc_html($smof_details[$this->id]['desc'])); ?>">?</a>
 				<?php } ?>
 			</span>
-			<input type="text" value="<?php echo esc_attr( $this->value() ); ?>" <?php $this->link(); ?> />
+			<input type="text" class="<?php echo $class; ?>" value="<?php echo esc_attr( $this->value() ); ?>" <?php $this->link(); ?> />
 		</label>
         <?php
     }
@@ -599,6 +677,10 @@ class Customize_SMOF_Sliderui_Control extends WP_Customize_Control {
     public $type = 'text';
     public function render_content() {
     	global $smof_details;
+    	$class = "";
+    	if (isset($smof_details[$this->id]['less'])) {
+    		$class = " lessDirty";
+    	}
 			add_action($this->id, array($this, $this->id));
 
 			$s_val = $s_min = $s_max = $s_step = $s_edit = '';//no errors, please
@@ -623,7 +705,7 @@ class Customize_SMOF_Sliderui_Control extends WP_Customize_Control {
 			$s_data = 'data-id="'.$this->id.'" data-val="'.$this->value().'" data-min="'.$s_min.'" data-max="'.$s_max.'" data-step="'.$s_step.'"';
 
 			//html output
-			$output .= '<input type="text" '.$this->get_link().' name="'.$this->id.'" id="'.$this->id.'" value="'. $this->value() .'" class="mini" '. $s_edit .' />';
+			$output .= '<input type="text" '.$this->get_link().' name="'.$this->id.'" id="'.$this->id.'" value="'. $this->value() .'" class="mini'.$class.'" '. $s_edit .' />';
 			$output .= '<div id="'.$this->id.'-slider" class="smof_sliderui" style="margin-left: 7px;" '. $s_data .'></div>';
     	?>
 	        <label>
@@ -633,7 +715,7 @@ class Customize_SMOF_Sliderui_Control extends WP_Customize_Control {
 					</span>
 					<?php echo $output; ?>
 					<?php if ($smof_details[$this->id]['desc'] != "") { ?>
-						<a href="#" class="button tooltip" title="<?php echo strip_tags($smof_details[$this->id]['desc']); ?>">?</a>
+						<a href="#" class="button tooltip" title="<?php echo strip_tags(esc_html($smof_details[$this->id]['desc'])); ?>">?</a>
 					<?php } ?>
 				</div>
 			</label>
@@ -644,6 +726,10 @@ class Customize_SMOF_Switch_Control extends WP_Customize_Control {
     public $type = 'text';
     public function render_content() {
     	global $smof_details;
+    	$class = "";
+    	if (isset($smof_details[$this->id]['less'])) {
+    		$class = " lessDirty";
+    	}
         ?>
 	        <label class="customizer-switch switch-options">
 				<span class="customize-control-title">
@@ -651,9 +737,9 @@ class Customize_SMOF_Switch_Control extends WP_Customize_Control {
 				</span>
 				<label class="cb-enable<? if ($this->value() != 0) echo " selected"; ?>" data-id="layout_sidebar_on_front"><span><?php echo $smof_details[$this->id]['on'] ? $smof_details[$this->id]['on']: "On"  ?></span></label>
 				<label class="cb-disable<? if ($this->value() == 0) echo " selected"; ?>" data-id="layout_sidebar_on_front"><span><?php echo $smof_details[$this->id]['off'] ? $smof_details[$this->id]['off']: "Off"  ?></span></label>
-				<input type="checkbox" id="<?php echo $this->id; ?>" class="checkbox of-input main_checkbox" name="<?php echo $this->id; ?>" <?php echo $this->get_link(); ?> value="0" <?php if ($this->value() == 0) echo 'checked="checked"'; ?> />
+				<input type="checkbox" id="<?php echo $this->id; ?>" class="checkbox of-input main_checkbox<?php echo $class; ?>" name="<?php echo $this->id; ?>" <?php echo $this->get_link(); ?> value="0" <?php if ($this->value() == 0) echo 'checked="checked"'; ?> />
 				<?php if ($smof_details[$this->id]['desc'] != "") { ?>
-					<a href="#" class="button tooltip" title="<?php echo strip_tags($smof_details[$this->id]['desc']); ?>">?</a>
+					<a href="#" class="button tooltip" title="<?php echo strip_tags(esc_html($smof_details[$this->id]['desc'])); ?>">?</a>
 				<?php } ?>
 			</label>
         <?php

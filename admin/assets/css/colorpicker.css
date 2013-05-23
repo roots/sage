@@ -80,7 +80,8 @@
 	text-align: right;
 	margin: 0;
 	padding: 0;
-	height: 12px;
+
+	height: 15px;
 }
 .colorpicker_hex {
 	position: absolute;

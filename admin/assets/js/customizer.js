@@ -4,7 +4,13 @@ jQuery.noConflict();
  */
 jQuery(document).ready(function($){
 
+	// Used to denote LESS changes
+	$('body').append('<input type="hidden" id="lessRegen" value="" />');
 
+	$('.lessDirty').live('change', function() {
+		console.log('Value changed, dirty!');
+		$('#lessRegen').val('dirty');
+	});
 
 /* Not sure if I like the wordpress pointer. Here's how to do it though...
 	$('.pointer').live('click', function() {

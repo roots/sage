@@ -143,14 +143,6 @@ function postMessageHandlersJS() {
 }
 
 
-//do stuff here to find and replace the rel attribute
-function less_loader($tag){
-	echo "here!";
-	return str_replace('rel="stylesheet"', 'rel="stylesheet/less"', $tag);
-}
-
-
-
 function smof_customize_register($wp_customize) {
 	// Classes for all the custom controls
 	include_once('functions.customcontrols.php');
@@ -174,6 +166,7 @@ function smof_customize_register($wp_customize) {
 				'default'		=>	$option['std']
 			);
 		if ($option['less'] == true) {
+			//echo $option['id']."-";
 			//$customSetting['transport'] = 'postMessage';
 		}
 		if ($section_set == false && is_array($section)) {
