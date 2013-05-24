@@ -850,9 +850,10 @@ if (!function_exists('of_options')) {
       "type"      => "heading"
     );
 
+    $url = admin_url( 'options-permalink.php' );
     $of_options[] = array(
       "name"      => __("URL Rewrites", "shoestrap"),
-      "desc"      => __("Please read this before enabling this option: <a target='_blank' href='https://github.com/aristath/shoestrap/blob/stable/doc/rewrites.md'>Read here</a>. This option requires changes to yout .htaccess file. Default: OFF", "shoestrap"),
+      "desc"      => __("Rewrites URLs, masking partially the fact that you're using WordPress. Please note that after you enable or disable this option, you should visit the <a href='$url'>permalinks menu</a> and press <strong>save</strong>. This option requires that your .htaccess file is writable by your webserver. Default: OFF", "shoestrap"),
       "id"        => "rewrites",
       "std"       => 0,
       "type"      => "switch"
