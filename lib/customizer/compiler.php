@@ -108,8 +108,6 @@ function shoestrap_variables_less() {
   $text_color       = '#' . str_replace( '#', '', shoestrap_getVariable( 'color_text' ) );
   $link_color       = '#' . str_replace( '#', '', shoestrap_getVariable( 'color_links' ) );
   $sans_serif       = shoestrap_getVariable( 'typography_sans_serif' );
-  $serif            = shoestrap_getVariable( 'typography_serif' );
-  $monospace        = shoestrap_getVariable( 'typography_monospace' );
   $font_size_base   = filter_var( shoestrap_getVariable( 'typography_font_size_base' ), FILTER_SANITIZE_NUMBER_INT );
   $border_radius    = filter_var( shoestrap_getVariable( 'general_border_radius' ), FILTER_SANITIZE_NUMBER_INT );
   $navbar_color     = '#' . str_replace( '#', '', shoestrap_getVariable( 'navbar_color' ) );
@@ -213,8 +211,8 @@ function shoestrap_variables_less() {
 // -------------------------
 
 @font-family-sans-serif:  ' . $sans_serif . ';
-@font-family-serif:       ' . $serif . ';
-@font-family-monospace:   ' . $monospace . ';
+@font-family-serif:       Georgia, "Times New Roman", Times, serif;
+@font-family-monospace:   Monaco, Menlo, Consolas, "Courier New", monospace;
 @font-family-base:        @font-family-sans-serif;
 
 @font-size-base:          ' . $font_size_base . 'px;

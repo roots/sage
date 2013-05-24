@@ -804,38 +804,32 @@ if (!function_exists('of_options')) {
       "type"      => "text"
     );
 
-// REPLACE
+    // Footer
     $of_options[] = array(
-      "name"      => __("typography_font_size_base", "shoestrap"),
-      "desc"      => __("typography_font_size_base", "shoestrap"),
+      "name"      => __("Typography", "shoestrap"),
+      "type"      => "heading"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Font Size Base", "shoestrap"),
+      "desc"      => __("The basic font size. Based on this, all the other text elements will also be calculated (for example titles etc).", "shoestrap"),
       "id"        => "typography_font_size_base",
       "std"       => 14,
-      "type"      => "text"
+      "min"       => 9,
+      "step"      => 1,
+      "max"       => 22,
+      "less"      => true,
+      "customizer"=> array(),
+      "type"      => "sliderui"
     );
+
     $of_options[] = array(
-      "name"      => __("typography_sans_serif", "shoestrap"),
-      "desc"      => __("typography_sans_serif", "shoestrap"),
+      "name"      => __("Font", "shoestrap"),
+      "desc"      => __("The main font for your site.", "shoestrap"),
       "id"        => "typography_sans_serif",
       "std"       => "'Helvetica Neue', Helvetica, Arial, sans-serif",
       "type"      => "text"
     );
-    $of_options[] = array(
-      "name"      => __("typography_serif", "shoestrap"),
-      "desc"      => __("typography_serif", "shoestrap"),
-      "id"        => "typography_serif",
-      "std"       => "Georgia, 'Times New Roman', Times, serif",
-      "type"      => "text"
-    );
-    $of_options[] = array(
-      "name"      => __("typography_monospace", "shoestrap"),
-      "desc"      => __("typography_monospace", "shoestrap"),
-      "id"        => "typography_monospace",
-      "std"       => "Monaco, Menlo, Consolas, 'Courier New', monospace",
-      "type"      => "text"
-    );
-
-
-
 
     // Predefined Styles
     $of_options[] = array(
