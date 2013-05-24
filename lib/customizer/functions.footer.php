@@ -3,7 +3,7 @@
 function shoestrap_footer_css() {
   $bg = get_theme_mod( 'footer_bg' );
   $cl = get_theme_mod( 'footer_color' );
-  
+
   echo '<style>';
   echo 'footer.content-info{background:' . $bg . '; color:' . $cl . ';}';
   echo '</style>';
@@ -14,8 +14,10 @@ add_action( 'wp_head', 'shoestrap_footer_css' );
  * Creates the customizer icon on the bottom-left corner of our site
  * (visible only by admins)
  */
-function footer_icon() { ?>
-  <?php if (current_user_can( 'edit_theme_options' )){ ?>
+function footer_icon() {
+  global $wp_customize;
+  ?>
+  <?php if (current_user_can( 'edit_theme_options' ) && !isset( $wp_customize ) ){ ?>
     <style>
     </style>
     <div id="shoestrap_icon">
