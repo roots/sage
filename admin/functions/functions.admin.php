@@ -14,22 +14,22 @@
  *
  * @since 1.0.0
  */
-function of_head() { do_action( 'of_head' ); }
+function of_head() {
+  do_action( 'of_head' );
+}
 
 /**
  * Add default options upon activation else DB does not exist
  *
  * @since 1.0.0
  */
-function of_option_setup()
-{
-	global $of_options, $options_machine;
-	$options_machine = new Options_Machine($of_options);
+function of_option_setup() {
+  global $of_options, $options_machine;
+  $options_machine = new Options_Machine( $of_options );
 
-	if (!of_get_options())
-	{
-		of_save_options($options_machine->Defaults);
-	}
+  if ( !of_get_options() ) {
+    of_save_options( $options_machine->Defaults );
+  }
 }
 
 /**
@@ -38,19 +38,15 @@ function of_option_setup()
  * @since 1.0.0
  */
 function optionsframework_admin_message() {
-
-	//Tweaked the message on theme activate
-	?>
-    <script type="text/javascript">
-    jQuery(function(){
-
-        var message = '<p>This theme comes with an <a href="<?php echo admin_url('admin.php?page=optionsframework'); ?>">options panel</a> to configure settings. This theme also supports widgets, please visit the <a href="<?php echo admin_url('widgets.php'); ?>">widgets settings page</a> to configure them.</p>';
-    	jQuery('.themes-php #message2').html(message);
-
-    });
-    </script>
-    <?php
-
+  //Tweaked the message on theme activate
+  ?>
+  <script type="text/javascript">
+    jQuery( function(){
+      var message = '<p>This theme comes with an <a href="<?php echo admin_url( 'admin.php?page=optionsframework' ); ?>">options panel</a> to configure settings. This theme also supports widgets, please visit the <a href="<?php echo admin_url( 'widgets.php' ); ?>">widgets settings page</a> to configure them.</p>';
+      jQuery( '.themes-php #message2' ).html( message );
+    } );
+  </script>
+  <?php
 }
 
 /**
@@ -58,17 +54,14 @@ function optionsframework_admin_message() {
  *
  * @since 1.0.0
  */
-function of_get_header_classes_array()
-{
-	global $of_options;
+function of_get_header_classes_array() {
+  global $of_options;
 
-	foreach ($of_options as $value)
-	{
-		if ($value['type'] == 'heading')
-			$hooks[] = str_replace(' ','',strtolower($value['name']));
-	}
-
-	return $hooks;
+  foreach ( $of_options as $value ) {
+    if ( $value['type'] == 'heading' )
+      $hooks[] = str_replace( ' ','',strtolower( $value['name'] ) );
+  }
+  return $hooks;
 }
 
 /**
@@ -79,9 +72,9 @@ function of_get_header_classes_array()
  * @return array
  */
 function of_get_options() {
-	$data = get_theme_mods();
-	$data = apply_filters('of_options_after_load', $data);
-	return $data;
+  $data = get_theme_mods();
+  $data = apply_filters( 'of_options_after_load', $data );
+  return $data;
 }
 
 /**
@@ -93,32 +86,31 @@ function of_get_options() {
  * @uses update_option()
  * @return void
  */
-function of_save_options($data, $key=OPTIONS) {
-  	global $smof_details;
+function of_save_options( $data, $key=OPTIONS ) {
+  global $smof_details;
+  $data = apply_filters( 'of_options_before_save', $data );
+  $old  = get_theme_mods();
 
-	$data = apply_filters('of_options_before_save', $data);
+  if ( $key == BACKUPS ) {
+    set_theme_mod( BACKUPS, $data );
+  } else {
+    foreach ( $data as $k=>$v )
+      set_theme_mod( $k, $v );
 
-    $old = get_theme_mods();
-    if ($key == BACKUPS) {
-    	set_theme_mod(BACKUPS, $data);
+    if ( $key == "IMPORT" || $key == "RESET" || $key == "RESTORE" ) {
+      shoestrap_makecss();
     } else {
-		foreach ($data as $k=>$v) {
-			set_theme_mod( $k, $v );
-		}
-		if ($key == "IMPORT" || $key == "RESET" || $key == "RESTORE") {
-			shoestrap_makecss();
-		} else {
-			// Find if we changed a less variable, and if so, recompile the CSS.
-			foreach ($smof_details as $key=>$option) {
-				if ($option['less'] == true) {
-				  if ($old[$key] != $data[$key]) {
-				    shoestrap_makecss();
-				    break;
-				  }
-				}
-			}
-		}
+      // Find if we changed a less variable, and if so, recompile the CSS.
+      foreach ( $smof_details as $key=>$option ) {
+        if ( $option['less'] == true ) {
+          if ( $old[$key] != $data[$key] ) {
+            shoestrap_makecss();
+            break;
+          }
+        }
+      }
     }
+  }
 }
 
 
@@ -128,5 +120,5 @@ function of_save_options($data, $key=OPTIONS) {
  * @since forever
  */
 
-$data = of_get_options();
-$smof_data = of_get_options();
+$data       = of_get_options();
+$smof_data  = of_get_options();
