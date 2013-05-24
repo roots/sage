@@ -64,6 +64,7 @@ jQuery(document).ready(function($){
 			return ++counter < 6 && window.setTimeout(init, counter * 500);
 	}
 
+	//$('.smof_buttonset').buttonset();
 
 	//Masked Inputs (images as radio buttons)
 	$('.of-radio-img-img').click(function(){
@@ -82,6 +83,10 @@ jQuery(document).ready(function($){
 	$('.of-radio-tile-label').hide();
 	$('.of-radio-tile-img').show();
 	$('.of-radio-tile-radio').hide();
+	$('.of-radio-img-img').live('click', function() {
+		$(this).closest('.controls').find('input').removeAttr('checked');
+		$('#'+$(this).attr('rel')).click();
+	});
 
 	// Style Select
 	(function ($) {
