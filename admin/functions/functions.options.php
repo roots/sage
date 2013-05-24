@@ -921,7 +921,19 @@ if (!function_exists('of_options')) {
       "fold"      => "footer_widget_area_toggle",
       "customizer"=> array(),
       "type"      => "color"
-    );      
+    );
+
+    $of_options[] = array(
+      "name"      => __("Footer Background Opacity", "shoestrap"),
+      "desc"      => __("Select the opacity level for the footer bar. Default: 100%.", "shoestrap"),
+      "id"        => "footer_widget_area_opacity",
+      "fold"      => "footer_widget_area_toggle",
+      "std"       => 100,
+      "min"       => 30,
+      "max"       => 100,
+      "customizer"=> array(),      
+      "type"      => "sliderui"
+    );              
 
     $of_options[] = array(
       "name"      => __("Font Color", "shoestrap"),
