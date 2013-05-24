@@ -380,22 +380,6 @@ function roots_remove_default_description($bloginfo) {
 add_filter('get_bloginfo_rss', 'roots_remove_default_description');
 
 /**
- * Allow more tags in TinyMCE including <iframe> and <script>
- */
-function roots_change_mce_options($options) {
-  $ext = 'pre[id|name|class|style],iframe[align|longdesc|name|width|height|frameborder|scrolling|marginheight|marginwidth|src],script[charset|defer|language|src|type]';
-
-  if (isset($initArray['extended_valid_elements'])) {
-    $options['extended_valid_elements'] .= ',' . $ext;
-  } else {
-    $options['extended_valid_elements'] = $ext;
-  }
-
-  return $options;
-}
-add_filter('tiny_mce_before_init', 'roots_change_mce_options');
-
-/**
  * Redirects search results from /?s=query to /search/query/, converts %20 to +
  *
  * @link http://txfx.net/wordpress-plugins/nice-search/

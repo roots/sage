@@ -1,4 +1,5 @@
 ### HEAD
+* Remove TinyMCE valid elements tweaks (no longer necessary)
 * Remove additional widget classes
 * Move `/assets/css/less/` to `/assets/less/`
 * Add wrapper templates filter
