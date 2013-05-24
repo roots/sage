@@ -212,8 +212,19 @@ if (!function_exists('of_options')) {
     );
 
     $of_options[] = array(
+      "name"      => __("Background position", "shoestrap"),
+      "desc"      => __("Changes how the background image or pattern is displayed from scroll to fixed position. Default: Scroll.", "shoestrap"),
+      "id"        => "background_fixed_toggle",
+      "std"       => 0,
+      "on"        => __("Fixed", "shoestrap"),
+      "off"       => __("Scroll", "shoestrap"),
+      "type"      => "switch"
+    );
+
+
+    $of_options[] = array(
       "name"      => __("Upload a custom Background Image", "shoestrap"),
-      "desc"      => __("Enable this option to upload a custom background image for your site. Default: OFF.", "shoestrap"),
+      "desc"      => __("Enable this option to upload a custom background image for your site. This will override any patterns you may have selected. Default: OFF.", "shoestrap"),
       "id"        => "background_image_toggle",
       "std"       => 0,
       "type"      => "switch"
@@ -229,11 +240,13 @@ if (!function_exists('of_options')) {
     );
 
     $of_options[] = array(
-      "name"      => __("Customize Background Positioning", "shoestrap"),
-      "desc"      => __("Allows the user to modify how the background displays. By default it is full width and stretched to fill the page. Default: Off.", "shoestrap"),
+      "name"      => __("Background Image Positioning", "shoestrap"),
+      "desc"      => __("Allows the user to modify how the background displays. By default it is full width and stretched to fill the page. Default: Full Width.", "shoestrap"),
       "id"        => "background_image_position_toggle",
       "std"       => 0,
       "fold"      => "background_image_toggle",
+      "on"        => __("Custom", "shoestrap"),
+      "off"       => __("Full Width", "shoestrap"),
       "type"      => "switch"
     );
 
@@ -269,7 +282,7 @@ if (!function_exists('of_options')) {
     $of_options[] = array(
       "name"      => __("Use a Background Pattern", "shoestrap"),
       "desc"      => __("Select one of the already existing Background Patterns. Default: OFF.", "shoestrap"),
-      "id"        => "bg_pattern_toggle",
+      "id"        => "background_pattern_toggle",
       "std"       => 0,
       "type"      => "switch"
     );
@@ -277,8 +290,8 @@ if (!function_exists('of_options')) {
     $of_options[] = array(
       "name"      => __("Choose a Background Pattern", "shoestrap"),
       "desc"      => __("Select a background pattern.", "shoestrap"),
-      "id"        => "bg_pattern",
-      "fold"      => "bg_pattern_toggle",
+      "id"        => "background_pattern",
+      "fold"      => "background_pattern_toggle",
       "std"       => "",
       "type"      => "tiles",
       "options"   => $bg_images,
@@ -315,6 +328,30 @@ if (!function_exists('of_options')) {
       "std"       => 0,
       "type"      => "switch"
     );
+
+    $of_options[] = array(
+      "name"      => __("\"Boxed\" view", "shoestrap"),
+      "desc"      => __("By enabling this option, the navbar does not extend to the full length of the screen, giving a \"boxed\" look to your site. Default: OFF", "shoestrap"),
+      "id"        => "navbar_boxed",
+      "fold"      => "navbar_toggle",
+      "std"       => 0,
+      "customizer"=> array(),
+      "type"      => "switch"
+    );
+
+    $of_options[] = array(
+      "name"      => __("\"Boxed\" view margin from top", "shoestrap"),
+      "desc"      => __("This will add a margin above the navbar. Useful if you've enabled the 'Boxed' mode above. Default: 0px", "shoestrap"),
+      "id"        => "navbar_margin_top",
+      "fold"      => "navbar_boxed",
+      "std"       => 0,
+      "min"       => 0,
+      "step"      => 1,
+      "max"       => 120,
+      "advanced"  => true,
+      "customizer"=> array(),
+      "type"      => "sliderui"
+    );    
 
     $of_options[] = array(
       "name"      => __("Fluid Layout", "shoestrap"),
@@ -540,30 +577,6 @@ if (!function_exists('of_options')) {
       "std"       => 1,
       "customizer"=> array(),
       "type"      => "switch"
-    );
-
-    $of_options[] = array(
-      "name"      => __("\"Boxed\" view", "shoestrap"),
-      "desc"      => __("By enabling this option, the navbar does not extend to the full length of the screen, giving a \"boxed\" look to your site. Default: OFF", "shoestrap"),
-      "id"        => "navbar_boxed",
-      "fold"      => "navbar_toggle",
-      "std"       => 0,
-      "customizer"=> array(),
-      "type"      => "switch"
-    );
-
-    $of_options[] = array(
-      "name"      => __("Navbar Margin from top", "shoestrap"),
-      "desc"      => __("This will add a margin above the navbar. Useful if you've enabled the 'Boxed' mode above. Default: 0px", "shoestrap"),
-      "id"        => "navbar_margin_top",
-      "fold"      => "navbar_boxed",
-      "std"       => 0,
-      "min"       => 0,
-      "step"      => 1,
-      "max"       => 120,
-      "advanced"  => true,
-      "customizer"=> array(),
-      "type"      => "sliderui"
     );
 
     $of_options[] = array(
