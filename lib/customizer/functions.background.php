@@ -19,7 +19,7 @@ function shoestrap_background_css() {
   if ( $background ) {
     $image = " background-image: url('$background');";
 
-    if (get_theme_mod('background_image_position_toggle') == 0) {
+    if (get_theme_mod('background_image_position_toggle') == 0 && get_theme_mod('bg_pattern_toggle') != 1) {
       $style .= "background-attachment: fixed;";
       $style .= "background-size: cover;";
       $style .= "background-position: 50% 50%;";
