@@ -83,17 +83,22 @@ function shoestrap_section_class( $target, $echo = false ) {
 /*
  * If any css should be applied to fix the layout, enter it here.
  */
-function shoestrap_sidebars_positioning_css() {
+function shoestrap_layout_css() {
   $layout = shoestrap_getVariable( 'layout' );
+  $boxed  = shoestrap_getVariable( 'navbar_boxed' );
+  $margin = shoestrap_getVariable( 'navbar_margin_top' );
 
   echo '<style>';
   if ( $layout == 2 || $layout == 3 || $layout == 5 )
     echo 'div.main{float:right;}';
 
+  if ( $boxed == 1 && $margin != 0 )
+    echo '#boxed-container{margin-top:' . $margin . 'px;}';
+
   echo '</style>';
 
 }
-add_action( 'wp_head', 'shoestrap_sidebars_positioning_css' );
+add_action( 'wp_head', 'shoestrap_layout_css' );
 
 function shoestrap_container_class() {
   $fluid = shoestrap_getVariable( 'fluid' );

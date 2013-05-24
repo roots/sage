@@ -1,5 +1,6 @@
 <?php get_template_part('templates/head'); ?>
 <body <?php body_class(); ?>>
+  <?php if ( shoestrap_getVariable( 'navbar_boxed' ) == 1 ) :?><div id="boxed-container" class="container"><?php endif; ?>
 
   <!--[if lt IE 7]><div class="alert">Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</div><![endif]-->
 
@@ -20,7 +21,7 @@
   <?php endif; ?>
 
   <?php do_action('shoestrap_pre_wrap'); ?>
-  <div class="wrap <?php echo shoestrap_container_class(); ?>" role="document">
+  <div class="wrap main-section <?php echo shoestrap_container_class(); ?>" role="document">
     <?php do_action('shoestrap_pre_content'); ?>
     <div class="content row">
       <?php do_action('shoestrap_pre_main'); ?>
@@ -30,7 +31,7 @@
         <?php include roots_template_path(); ?>
       </div><!-- /.main -->
       <?php if ( ( get_theme_mod( 'layout' ) != 0 && ( roots_display_sidebar() ) ) || ( is_front_page() && get_theme_mod( 'layout_sidebar_on_front' ) == 1 ) ) : ?>
-        <?php if ( ( !is_front_page() && get_theme_mod( 'layout_sidebar_on_front' ) != 1 ) || ( is_front_page() && get_theme_mod( 'layout_sidebar_on_front' ) == 1 ) ) : ?>
+        <?php if ( !is_front_page() || ( is_front_page() && get_theme_mod( 'layout_sidebar_on_front' ) == 1 ) ) : ?>
           <aside class="sidebar <?php shoestrap_section_class( 'primary', true ); ?>" role="complementary">
             <?php include roots_sidebar_path(); ?>
           </aside><!-- /.sidebar -->
@@ -38,7 +39,7 @@
       <?php endif; ?>
       <?php if ( shoestrap_section_class( 'wrap' ) ) : ?></div></div><?php endif; ?>
       <?php if ( get_theme_mod( 'layout' ) >= 3 && is_active_sidebar( 'sidebar-secondary' ) ) : ?>
-        <?php if ( ( !is_front_page() && get_theme_mod( 'layout_sidebar_on_front' ) != 1 ) || ( is_front_page() && get_theme_mod( 'layout_sidebar_on_front' ) == 1 ) ) : ?>
+        <?php if ( !is_front_page() || ( is_front_page() && get_theme_mod( 'layout_sidebar_on_front' ) == 1 ) ) : ?>
           <aside class="sidebar secondary <?php shoestrap_section_class( 'secondary', true ); ?>" role="complementary">
             <?php dynamic_sidebar('sidebar-secondary'); ?>
           </aside><!-- /.sidebar -->
@@ -53,5 +54,6 @@
   <?php get_template_part('templates/footer'); ?>
   <?php do_action('shoestrap_after_footer'); ?>
 
+<?php if ( shoestrap_getVariable( 'navbar_boxed' ) == 1 ) :?></div>><?php endif; ?>
 </body>
 </html>

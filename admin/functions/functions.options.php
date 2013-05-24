@@ -543,6 +543,30 @@ if (!function_exists('of_options')) {
     );
 
     $of_options[] = array(
+      "name"      => __("\"Boxed\" view", "shoestrap"),
+      "desc"      => __("By enabling this option, the navbar does not extend to the full length of the screen, giving a \"boxed\" look to your site. Default: OFF", "shoestrap"),
+      "id"        => "navbar_boxed",
+      "fold"      => "navbar_toggle",
+      "std"       => 0,
+      "customizer"=> array(),
+      "type"      => "switch"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Navbar Margin from top", "shoestrap"),
+      "desc"      => __("This will add a margin above the navbar. Useful if you've enabled the 'Boxed' mode above. Default: 0px", "shoestrap"),
+      "id"        => "navbar_margin_top",
+      "fold"      => "navbar_boxed",
+      "std"       => 0,
+      "min"       => 0,
+      "step"      => 1,
+      "max"       => 120,
+      "advanced"  => true,
+      "customizer"=> array(),
+      "type"      => "sliderui"
+    );
+
+    $of_options[] = array(
       "name"      => __("Use Logo (if available) for branding", "shoestrap"),
       "desc"      => __("If this option is OFF, or there is no logo available, then the sitename will be displayed instead. Default: ON", "shoestrap"),
       "id"        => "navbar_logo",

@@ -1,6 +1,7 @@
 <?php
 
 function shoestrap_background_css() {
+  $background_color = '#' . str_replace( '#', '', shoestrap_getVariable( 'color_body_bg' ) );
   // $background is the saved custom image, or the default image.
   if ( shoestrap_getVariable( 'background_image_toggle' ) == 1 )
     $background = set_url_scheme( shoestrap_getVariable( 'background_image') );
@@ -39,7 +40,7 @@ function shoestrap_background_css() {
 
     $style .= $image . $repeat . $position;
   }
-  echo '<style>body{' . trim( $style ) . ';}</style>';
+  echo '<style>body{' . trim( $style ) . ';}.wrap.main-section{background:' . $background_color . ';}</style>';
 }
 if ( shoestrap_getVariable('background_image_toggle') == 1 || shoestrap_getVariable('bg_pattern_toggle') == 1 )
   add_action( 'wp_head', 'shoestrap_background_css' );
