@@ -1,4 +1,5 @@
 ### HEAD
+* Remove additional widget classes
 * Move `/assets/css/less/` to `/assets/less/`
 * Add wrapper templates filter
 * Fix relative external URLs issue
