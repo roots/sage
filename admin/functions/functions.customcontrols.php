@@ -312,7 +312,7 @@ class Customize_SMOF_Border_Control extends WP_Customize_Control {
     global $smof_details;
 
 ?>
-        <label class="customizer-text">
+    <label class="customizer-text">
       <span class="customize-control-title">
         <?php echo esc_html( $this->label ); ?>
         <?php if ( $smof_details[$this->id]['desc'] != "" ) { ?>
@@ -326,21 +326,51 @@ class Customize_SMOF_Border_Control extends WP_Customize_Control {
 }
 
 class Customize_SMOF_Images_Control extends WP_Customize_Control {
-  public $type = 'text';
+  public $type = 'radio';
   public function render_content() {
-    global $smof_details;
+    global $smof_details, $smof_data;
 
-?>
-        <label class="customizer-text">
+          $i = 0;
+          $value = $smof_details[$this->id];
+
+          $select_value = (isset($smof_data[$value['id']])) ? $smof_data[$value['id']] : '';
+
+          foreach ($value['options'] as $key => $option)
+          {
+          $i++;
+
+            $checked = '';
+            $selected = '';
+            if(NULL!=checked($select_value, $key, false)) {
+              $checked = checked($select_value, $key, false);
+              $selected = 'of-radio-img-selected';
+            }
+            $output .= '<span>';
+            //$output .= '<input type="radio" id="of-radio-img-' . $value['id'] . $i . '" class="checkbox of-radio-img-radio2" value="'.$key.'" name="'.$value['id'].'" '.$checked.' '.$this->link().' />';
+            // Wordpress $this->link() won't work unless it's not in PHP style. Annoying.
+            ?>
+              <input type="radio" id="of-radio-img-<?php echo $value['id'] . $i; ?>" class="checkbox of-radio-img-radio" value="<?php echo $key; ?>" name="<?php echo $value['id']; ?>" <?php echo $checked; ?> <?php $this->link(); ?> />
+            <?php
+            $output .= '<div class="of-radio-img-label">'. $key .'</div>';
+            $output .= '<img src="'.$option.'" alt="" class="of-radio-img-img '. $selected .'" rel="of-radio-img-'. $value['id'] . $i.'" />';
+            $output .= '</span>';
+
+
+          }
+      ?>
+    <label class="customizer-text">
       <span class="customize-control-title">
         <?php echo esc_html( $this->label ); ?>
         <?php if ( $smof_details[$this->id]['desc'] != "" ) { ?>
           <a href="#" class="button tooltip" title="<?php echo strip_tags( esc_html( $smof_details[$this->id]['desc'] ) ); ?>">?</a>
         <?php } ?>
       </span>
-      <input type="text" value="<?php echo esc_attr( $this->value() ); ?>" <?php $this->link(); ?> />
+      <span class="controls">
+        <?php echo $output; ?>
+      </span>
     </label>
-        <?php
+
+    <?php
   }
 }
 class Customize_SMOF_Info_Control extends WP_Customize_Control {

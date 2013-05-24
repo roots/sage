@@ -61,3 +61,11 @@
 .wp-color-result {
 	top: 0;
 }
+.of-radio-img-img {
+	margin-right: 10px !important;
+
+}
+
+.controls .of-radio-img-selected {
+	border:3px solid #ccc !important;
+}
