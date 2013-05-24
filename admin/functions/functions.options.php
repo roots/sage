@@ -129,6 +129,19 @@ if (!function_exists('of_options')) {
     );
 
     $of_options[] = array(
+      "name"      => __("Padding Base", "shoestrap"),
+      "desc"      => __("You can adjust the padding base. This affects buttons size and lots of other cool stuff too! Default: 8", "shoestrap"),
+      "id"        => "padding_base",
+      "std"       => 8,
+      "min"       => 0,
+      "step"      => 1,
+      "max"       => 20,
+      "advanced"  => true,
+      "less"      => true,
+      "type"      => "sliderui"
+    );
+
+    $of_options[] = array(
       "name"      => __("Featured Images on Archives", "shoestrap"),
       "desc"      => __("Display featured Images on post archives (such as categories, tags, month view etc). Default: OFF.", "shoestrap"),
       "id"        => "feat_img_archive",

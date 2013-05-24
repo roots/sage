@@ -110,6 +110,7 @@ function shoestrap_variables_less() {
   $sans_serif       = shoestrap_getVariable( 'typography_sans_serif' );
   $font_size_base   = filter_var( shoestrap_getVariable( 'typography_font_size_base' ), FILTER_SANITIZE_NUMBER_INT );
   $border_radius    = filter_var( shoestrap_getVariable( 'general_border_radius' ), FILTER_SANITIZE_NUMBER_INT );
+  $padding_base     = intval( shoestrap_getVariable( 'padding_base' ) );
   $navbar_color     = '#' . str_replace( '#', '', shoestrap_getVariable( 'navbar_color' ) );
   $navbar_bg        = '#' . str_replace( '#', '', shoestrap_getVariable( 'navbar_bg' ) );
   $jumbotron_bg     = '#' . str_replace( '#', '', shoestrap_getVariable( 'jumbotron_bg' ) );
@@ -231,14 +232,14 @@ function shoestrap_variables_less() {
 // -------------------------
 // Based on 14px font-size and 1.428 line-height (~20px to start)
 
-@padding-base-vertical:          8px;
-@padding-base-horizontal:        12px;
+@padding-base-vertical:          ' . $padding_base . 'px;
+@padding-base-horizontal:        ' . round( $padding_base * 1.5 ) . 'px;
 
-@padding-large-vertical:         14px;
-@padding-large-horizontal:       16px;
+@padding-large-vertical:         ' . round( $padding_base * 1.75 ) . 'px;
+@padding-large-horizontal:       ' . ( $padding_base * 2 ) . 'px;
 
-@padding-small-vertical:         5px;
-@padding-small-horizontal:       10px;
+@padding-small-vertical:         ' . round( $padding_base * 0.625 ) . 'px;
+@padding-small-horizontal:       ' . round( $padding_base * 1.25 ) . 'px;
 
 @border-radius-base:      ' . $border_radius . 'px;
 @border-radius-large:     ceil(@border-radius-base * 1.5);
