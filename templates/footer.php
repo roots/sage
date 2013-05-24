@@ -1,3 +1,4 @@
+<?php do_action( 'shoestrap_before_footer' );?>
 <footer class="content-info" role="contentinfo">
   <div class="<?php echo shoestrap_container_class(); ?>">
     <?php dynamic_sidebar('sidebar-footer'); ?>

@@ -859,11 +859,21 @@ if (!function_exists('of_options')) {
     $of_options[] = array(
       "name"      => __("Footer Background Color", "shoestrap"),
       "desc"      => __("Select the background color for your footer. Default: #ffffff.", "shoestrap"),
-      "id"        => "footer_bg",
+      "id"        => "footer_background",
       "std"       => "#ffffff",
       "customizer"=> array(),
       "type"      => "color"
     );
+    $of_options[] = array(
+      "name"      => __("Footer Background Opacity", "shoestrap"),
+      "desc"      => __("Select the opacity level for the footer bar. Default: 100%.", "shoestrap"),
+      "id"        => "footer_opacity",
+      "std"       => 100,
+      "min"       => 30,
+      "max"       => 100,
+      "customizer"=> array(),      
+      "type"      => "sliderui"
+    );    
 
     $of_options[] = array(
       "name"      => __("Footer Text Color", "shoestrap"),
@@ -879,8 +889,88 @@ if (!function_exists('of_options')) {
       "desc"      => __("The text that will be displayed in your footer. Default: your site's name.", "shoestrap"),
       "id"        => "footer_text",
       "std"       => get_bloginfo( 'name' ),
-      "type"      => "text"
+      "type"      => "textarea"
     );
+
+    $of_options[] = array(
+      "name"    => __("Footer box info.", "shoestrap"),
+      "desc"    => "",
+      "id"    => "",
+      "less"    => true,
+      "std"     => "<h3 style=\"margin: 0 0 10px;\">".__("Footer Widget Box Area", "shoestrap").".</h3>".__("Below you can enable the footer widget area. This area allows you to create dynamic widget areas.", "shoestrap"),
+      "icon"    => true,
+      "type"    => "info"      
+    );      
+
+    $of_options[] = array(
+      "name"      => __("Footer widget area.", "shoestrap"),
+      "desc"      => __("Turn this ON to display a footer widget area with dynamic sidebars. Default: Enable", "shoestrap"),
+      "id"        => "footer_widget_area_toggle",
+      "customizer"=> array(),
+      "std"       => 1,
+      "on"        => __("Enable", "shoestrap"),
+      "off"        => __("Disable", "shoestrap"),
+      "type"      => "switch"
+    );        
+
+    $of_options[] = array(
+      "name"      => __("Background Color", "shoestrap"),
+      "desc"      => __("Select the text color for your footer. Default: #333333.", "shoestrap"),
+      "id"        => "footer_widget_area_background",
+      "std"       => "#333333",
+      "fold"      => "footer_widget_area_toggle",
+      "customizer"=> array(),
+      "type"      => "color"
+    );      
+
+    $of_options[] = array(
+      "name"      => __("Font Color", "shoestrap"),
+      "desc"      => __("Select the text color for your footer widget box. Default: #333333.", "shoestrap"),
+      "id"        => "footer_widget_area_color",
+      "std"       => "#333333",
+      "fold"      => "footer_widget_area_toggle",
+      "customizer"=> array(),
+      "type"      => "color"
+    );  
+
+    $of_options[] = array(
+      "name"      => __("Number of Sidebars", "shoestrap"),
+      "desc"      => __("Choose the number of sidebars you want for the footer widget box. You can choose from 1-4 sidebars. They will be dynamically resized and equally spaced. Default: 3.", "shoestrap"),
+      "id"        => "footer_widget_area_sidebars",
+      "min"       => 1,
+      "max"       => 4,
+      "std"       => 3,
+      "fold"      => "footer_widget_area_toggle",
+      "customizer"=> array(),      
+      "type"      => "sliderui"
+    ); 
+
+    $of_options[] = array(  
+        "name"    => "Border Top",
+        "desc"    => "This is a border specific option.",
+        "id"    => "footer_widget_area_border_top",
+        "less"    => true,
+        "std"     => array(
+                  'width' => '2',
+                  'style' => 'dotted',
+                  'color' => '#444444'
+                ),
+        "fold"      => "footer_widget_area_toggle",
+        "type"    => "border"
+    );   
+         $of_options[] = array(  
+        "name"    => "Border Bottom",
+        "desc"    => "This is a border specific option.",
+        "id"    => "footer_widget_area_border_bottom",
+        "less"    => true,
+        "std"     => array(
+                  'width' => '2',
+                  'style' => 'dotted',
+                  'color' => '#444444'
+                ),
+        "fold"      => "footer_widget_area_toggle",
+        "type"    => "border"
+    );   
 
     // Footer
     $of_options[] = array(
