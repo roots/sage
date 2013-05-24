@@ -184,7 +184,6 @@ function roots_embed_wrap($cache, $url, $attr = '', $post_ID = '') {
   return '<div class="entry-content-asset">' . $cache . '</div>';
 }
 add_filter('embed_oembed_html', 'roots_embed_wrap', 10, 4);
-add_filter('embed_googlevideo', 'roots_embed_wrap', 10, 2);
 
 /**
  * Add class="thumbnail" to attachment items
