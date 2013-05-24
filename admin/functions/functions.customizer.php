@@ -180,6 +180,14 @@ function smof_customize_register($wp_customize) {
 		'heading' => -100,
 		'option'  => -100,
 		);
+$defaults = array(
+	'default-color'          => '',
+	'default-image'          => '',
+	'wp-head-callback'       => '',
+	'admin-head-callback'    => '',
+	'admin-preview-callback' => ''
+);
+add_theme_support( 'custom-background', $defaults );
 
 	foreach($of_options as $option) {
 		$smof_details[$option['id']] = $option;
@@ -290,12 +298,15 @@ function smof_customize_register($wp_customize) {
 				break;
 			case 'media':
 				$wp_customize->add_setting( $option['id'], $customSetting);
-				$wp_customize->add_control( new Customize_SMOF_Media_Control( $wp_customize, $option['id'], array(
+
+				$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, $option['id'], array(
 					'label'   => $option['name'],
 					'section' => $section['id'],
 					'settings'=> $option['id'],
 					'priority'=> $option['priority']
 				) ) );
+
+
 				break;
 			case 'color':
 				$wp_customize->add_setting( $option['id'], $customSetting);
@@ -334,14 +345,7 @@ function smof_customize_register($wp_customize) {
 				) ) );
 				break;
 			case 'info':
-				$wp_customize->add_setting( $option['id'], $customSetting);
-				$wp_customize->add_control( new Customize_SMOF_Info_Control( $wp_customize, $option['id'], array(
-					'label'   => $option['name'],
-					'section' => $section['id'],
-					'settings'=> $option['id'],
-					'priority'=> $option['priority']
-				) ) );
-				break;
+				// Not useful in the customizer
 			case 'image':
 				$wp_customize->add_setting( $option['id'], $customSetting);
 				$wp_customize->add_control( new Customize_SMOF_Image_Control( $wp_customize, $option['id'], array(

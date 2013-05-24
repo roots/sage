@@ -46,10 +46,10 @@ class Customize_SMOF_Select_Control extends WP_Customize_Control {
     <label class="customizer-select">
       <span class="customize-control-title">
         <?php echo esc_html( $this->label ); ?>
-      </span>
         <?php if ( $smof_details[$this->id]['desc'] != "" ) { ?>
           <a href="#" class="button tooltip" title="<?php echo strip_tags( esc_html( $smof_details[$this->id]['desc'] ) ); ?>">?</a>
         <?php } ?>
+      </span>
       <?php echo $output; ?>
     </label>
     <?php
@@ -111,20 +111,52 @@ class Customize_SMOF_Checkbox_Control extends WP_Customize_Control {
 }
 
 class Customize_SMOF_Multicheck_Control extends WP_Customize_Control {
-  public $type = 'text';
+  public $type = 'multicheck';
   public function render_content() {
     global $smof_details;
-?>
-        <label class="customizer-text">
+      $value = $smof_details[$this->id];
+      //create array of defaults
+      if ($value['type'] == 'multicheck'){
+        if (is_array($value['std'])){
+          foreach($value['std'] as $i=>$key){
+            $defaults[$value['id']][$key] = true;
+          }
+        } else {
+            $defaults[$value['id']][$value['std']] = true;
+        }
+      } else {
+        if (isset($value['id'])) $defaults[$value['id']] = $value['std'];
+      }
+
+      (isset($smof_data[$value['id']]))? $multi_stored = $smof_data[$value['id']] : $multi_stored="";
+  ?>
+    <label class="customizer-text">
       <span class="customize-control-title">
         <?php echo esc_html( $this->label ); ?>
         <?php if ( $smof_details[$this->id]['desc'] != "" ) { ?>
           <a href="#" class="button tooltip" title="<?php echo strip_tags( esc_html( $smof_details[$this->id]['desc'] ) ); ?>">?</a>
         <?php } ?>
       </span>
-      <input type="text" value="<?php echo esc_attr( $this->value() ); ?>" <?php $this->link(); ?> />
     </label>
+  <?php
+      foreach ($value['options'] as $key => $option) {
+        if (!isset($multi_stored[$key])) {$multi_stored[$key] = '';}
+        $of_key_string = $value['id'] . '_' . $key;
+        ?>
+
+        <label class="customizer-checkbox">
+          <input type="checkbox" <?php $this->link(); ?> class="checkbox of-input" data-customize-setting-link="<?php echo $value['id'].'['.$key.']'; ?>" name="<?php echo $value['id'].'['.$key.']'; ?>" id="<?php echo $of_key_string; ?>" value="1" <?php echo checked($multi_stored[$key], 1, false); ?> />
+          <?php echo $option; ?>
+        </label><br />
+        
+        
+    <?php 
+      } 
+    ?> 
+    
         <?php
+
+
   }
 }
 
