@@ -831,6 +831,52 @@ if (!function_exists('of_options')) {
       "type"      => "text"
     );
 
+    // Advanced Settings
+    $of_options[] = array(
+      "name"      => __("Advanced Settings", "shoestrap"),
+      "type"      => "heading"
+    );
+
+    $of_options[] = array(
+      "name"      => __("URL Rewrites", "shoestrap"),
+      "desc"      => __("Please read this before enabling this option: <a target='_blank' href='https://github.com/aristath/shoestrap/blob/stable/doc/rewrites.md'>Read here</a>. This option requires changes to yout .htaccess file. Default: OFF", "shoestrap"),
+      "id"        => "rewrites",
+      "std"       => 0,
+      "type"      => "switch"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Root Relative URLs", "shoestrap"),
+      "desc"      => __("Return URLs such as <em>/assets/css/style.css</em> instead of <em>http://example.com/assets/css/style.css</em>. Default: ON", "shoestrap"),
+      "id"        => "root_relative_urls",
+      "std"       => 1,
+      "type"      => "switch"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Enable Nice Search", "shoestrap"),
+      "desc"      => __("Redirects /?s=query to /search/query/, convert %20 to +. Default: ON", "shoestrap"),
+      "id"        => "nice_search",
+      "std"       => 1,
+      "type"      => "switch"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Custom CSS", "shoestrap"),
+      "desc"      => __("You can write your custom CSS here.", "shoestrap"),
+      "id"        => "user_css",
+      "std"       => "",
+      "type"      => "textarea"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Custom JS", "shoestrap"),
+      "desc"      => __("You can write your custom JavaScript/jQuery here.", "shoestrap"),
+      "id"        => "user_js",
+      "std"       => "",
+      "type"      => "textarea"
+    );
+
     // Predefined Styles
     $of_options[] = array(
       "name"      => __("Predefined Styles", "shoestrap"),
