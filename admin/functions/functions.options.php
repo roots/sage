@@ -39,10 +39,9 @@ if (!function_exists('of_options')) {
         }
     }
 
-
-    //Background Patterns Reader
-    $bg_images_path = STYLESHEETPATH. '/assets/img/patterns';
-    $bg_images_url = get_bloginfo('template_url').'/assets/img/patterns/';
+    //Background Images Reader
+    $bg_images_path = STYLESHEETPATH. '/assets/img/backgrounds';
+    $bg_images_url = get_bloginfo('template_url').'/assets/img/backgrounds/';
     $bg_images = array();
 
     if ( is_dir($bg_images_path) ) {
@@ -50,6 +49,22 @@ if (!function_exists('of_options')) {
         while ( ( $bg_images_file = readdir( $bg_images_dir ) ) !== false ) {
           if( stristr( $bg_images_file, ".png" ) !== false || stristr( $bg_images_file, ".jpg" ) !== false) {
             $bg_images[] = $bg_images_url . $bg_images_file;
+          }
+        }
+      }
+    }
+
+
+    //Background Patterns Reader
+    $bg_pattern_images_path = STYLESHEETPATH. '/assets/img/patterns';
+    $bg_pattern_images_url = get_bloginfo('template_url').'/assets/img/patterns/';
+    $bg_pattern_images = array();
+
+    if ( is_dir($bg_pattern_images_path) ) {
+      if ( $bg_pattern_images_dir = opendir( $bg_pattern_images_path ) ) {
+        while ( ( $bg_pattern_images_file = readdir( $bg_pattern_images_dir ) ) !== false ) {
+          if( stristr( $bg_pattern_images_file, ".png" ) !== false || stristr( $bg_pattern_images_file, ".jpg" ) !== false) {
+            $bg_pattern_images[] = $bg_pattern_images_url . $bg_pattern_images_file;
           }
         }
       }
@@ -207,7 +222,7 @@ if (!function_exists('of_options')) {
 
     // General Options
     $of_options[] = array(
-      "name"      => __("Background Image", "shoestrap"),
+      "name"      => __("Background", "shoestrap"),
       "type"      => "heading"
     );
 
@@ -223,7 +238,7 @@ if (!function_exists('of_options')) {
 
 
     $of_options[] = array(
-      "name"      => __("Upload a custom Background Image", "shoestrap"),
+      "name"      => __("Use a Background Image", "shoestrap"),
       "desc"      => __("Enable this option to upload a custom background image for your site. This will override any patterns you may have selected. Default: OFF.", "shoestrap"),
       "id"        => "background_image_toggle",
       "std"       => 0,
@@ -231,13 +246,26 @@ if (!function_exists('of_options')) {
     );
 
     $of_options[] = array(
-      "name"      => __("Background Image", "shoestrap"),
-      "desc"      => __("Upload a Background image using the media uploader, or define the URL directly.", "shoestrap"),
+      "name"      => __("Choose a Background Image", "shoestrap"),
+      "desc"      => __("Select a background pattern.", "shoestrap"),
       "id"        => "background_image",
+      "fold"      => "background_image_toggle",
+      "std"       => "",
+      "type"      => "tiles",
+      "options"   => $bg_images,
+    );
+
+
+    $of_options[] = array(
+      "name"      => __("Upload a Custom Background Image", "shoestrap"),
+      "desc"      => __("Upload a Custom Background image using the media uploader, or define the URL directly. This will override any above image selected.", "shoestrap"),
+      "id"        => "background_custom_image",
       "fold"      => "background_image_toggle",
       "std"       => "",
       "type"      => "media"
     );
+
+
 
     $of_options[] = array(
       "name"      => __("Background Image Positioning", "shoestrap"),
@@ -294,7 +322,7 @@ if (!function_exists('of_options')) {
       "fold"      => "background_pattern_toggle",
       "std"       => "",
       "type"      => "tiles",
-      "options"   => $bg_images,
+      "options"   => $bg_pattern_images,
     );
 
     // Layout Settings

@@ -4,7 +4,12 @@ function shoestrap_background_css() {
   $background_color = '#' . str_replace( '#', '', shoestrap_getVariable( 'color_body_bg' ) );
   // $background is the saved custom image, or the default image.
   if ( shoestrap_getVariable( 'background_image_toggle' ) == 1 ) {
-    $background = set_url_scheme( shoestrap_getVariable( 'background_image') );
+    if ( shoestrap_getVariable( 'background_custom_image' ) != "" ) {
+      $background = set_url_scheme( shoestrap_getVariable( 'background_custom_image') );  
+    } else {
+      $background = set_url_scheme( shoestrap_getVariable( 'background_image') );  
+    }
+    
   } else if ( shoestrap_getVariable('background_pattern') != "" ) {
     $background = shoestrap_getVariable('background_pattern');
   }
