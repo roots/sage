@@ -5,11 +5,11 @@
  * If no custom logo is uploaded, use the sitename
  */
 function shoestrap_logo() {
-  if ( get_theme_mod( 'logo' ) ) {
+  if ( shoestrap_getVariable( 'logo' ) ) {
     $image = '<img id="site-logo" src="%s" alt="%s">';
     printf(
       $image,
-      get_theme_mod( 'logo' ),
+      shoestrap_getVariable( 'logo' ),
       get_bloginfo( 'name' )
     );
   } else {

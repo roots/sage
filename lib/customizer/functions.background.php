@@ -2,14 +2,14 @@
 
 function shoestrap_background_css() {
   // $background is the saved custom image, or the default image.
-  if ( get_theme_mod( 'background_image_toggle' ) == 1 )
-    $background = set_url_scheme( get_theme_mod( 'background_image') );
+  if ( shoestrap_getVariable( 'background_image_toggle' ) == 1 )
+    $background = set_url_scheme( shoestrap_getVariable( 'background_image') );
   else
-    $background = get_theme_mod('bg_pattern');
+    $background = shoestrap_getVariable('bg_pattern');
 
   // $color is the saved custom color.
   // A default has to be specified in style.css. It will not be printed here.
-  $color = get_theme_mod( 'jumbotron_bg' );
+  $color = shoestrap_getVariable( 'jumbotron_bg' );
 
   if ( ! $background && ! $color )
     return;
@@ -19,18 +19,18 @@ function shoestrap_background_css() {
   if ( $background ) {
     $image = " background-image: url('$background');";
 
-    if (get_theme_mod('background_image_position_toggle') == 0 && get_theme_mod('bg_pattern_toggle') != 1) {
+    if (shoestrap_getVariable('background_image_position_toggle') == 0 && shoestrap_getVariable('bg_pattern_toggle') == 0) {
       $style .= "background-attachment: fixed;";
       $style .= "background-size: cover;";
       $style .= "background-position: 50% 50%;";
       $style .= "background-repeat: no-repeat no-repeat;";
     } else {
-      $repeat = get_theme_mod( 'background_repeat' );
+      $repeat = shoestrap_getVariable( 'background_repeat' );
       if ( ! in_array( $repeat, array( 'no-repeat', 'repeat-x', 'repeat-y', 'repeat' ) ) )
         $repeat = 'repeat';
       $repeat = " background-repeat: $repeat;";
 
-      $position = get_theme_mod( 'background_position_x', 'left' );
+      $position = shoestrap_getVariable( 'background_position_x', 'left' );
       if ( ! in_array( $position, array( 'center', 'right', 'left' ) ) )
         $position = 'left';
       $position = " background-position: top $position;";
@@ -41,5 +41,5 @@ function shoestrap_background_css() {
   }
   echo '<style>body{' . trim( $style ) . ';}</style>';
 }
-if ( get_theme_mod('background_image_toggle') == 1 || get_theme_mod('bg_pattern_toggle') == 1 )
+if ( shoestrap_getVariable('background_image_toggle') == 1 || shoestrap_getVariable('bg_pattern_toggle') == 1 )
   add_action( 'wp_head', 'shoestrap_background_css' );

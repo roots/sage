@@ -1,13 +1,13 @@
 <?php
 
 function shoestrap_disable_navbar() {
-  if ( get_theme_mod( 'navbar_toggle' ) != 1 )
+  if ( shoestrap_getVariable( 'navbar_toggle' ) != 1 )
     remove_theme_support('bootstrap-top-navbar');  // Disable Bootstrap's top navbar
 }
 add_action( 'wp', 'shoestrap_disable_navbar' );
 
 function shoestrap_nav_class_pull() {
-  if ( get_theme_mod( 'navbar_nav_right' ) == '1' ) {
+  if ( shoestrap_getVariable( 'navbar_nav_right' ) == '1' ) {
     $ul = 'nav navbar-nav pull-right';
   } else {
     $ul = 'nav navbar-nav';
@@ -19,7 +19,7 @@ function shoestrap_nav_class_pull() {
  * The template for the primary navbar searchbox
  */
 function shoestrap_navbar_searchbox() {
-  $show_searchbox = get_theme_mod( 'navbar_search' );
+  $show_searchbox = shoestrap_getVariable( 'navbar_search' );
   if ( $show_searchbox == '1' ) { ?>
     <ul class="pull-right nav nav-collapse"><li>
     <?php do_action('shoestrap_pre_searchform'); ?>
@@ -35,7 +35,7 @@ function shoestrap_navbar_searchbox() {
 add_action( 'shoestrap_post_main_nav', 'shoestrap_navbar_searchbox', 11 );
 
 function shoestrap_navbar_class() {
-  $pos  = get_theme_mod( 'navbar_position' );
+  $pos  = shoestrap_getVariable( 'navbar_position' );
 
   if ( $pos == 1 )
     $class = 'navbar navbar-fixed-top';

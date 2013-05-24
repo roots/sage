@@ -5,9 +5,9 @@
  */
 function shoestrap_add_featured_image_on_archives() {
   // Get the customizer options
-  $archive_feat_img_toggle  = get_theme_mod( 'feat_img_archive', 1 );
-  $archive_feat_img_width   = get_theme_mod( 'feat_img_archive_width', 550 );
-  $archive_feat_img_height  = get_theme_mod( 'feat_img_archive_height', 330 );
+  $archive_feat_img_toggle  = shoestrap_getVariable( 'feat_img_archive' );
+  $archive_feat_img_width   = shoestrap_getVariable( 'feat_img_archive_width' );
+  $archive_feat_img_height  = shoestrap_getVariable( 'feat_img_archive_height' );
 
   $url    = wp_get_attachment_url( get_post_thumbnail_id() );
   $width  = $archive_feat_img_width;
@@ -31,9 +31,9 @@ add_action( 'shoestrap_entry_summary_begin', 'shoestrap_add_featured_image_on_ar
  */
 function shoestrap_add_featured_image_on_posts() {
   // Get the customizer options
-  $post_feat_img_toggle = get_theme_mod( 'feat_img_post', 1 );
-  $post_feat_img_width  = get_theme_mod( 'feat_img_post_width', 550 );
-  $post_feat_img_height = get_theme_mod( 'feat_img_post_height', 330 );
+  $post_feat_img_toggle = shoestrap_getVariable( 'feat_img_post' );
+  $post_feat_img_width  = shoestrap_getVariable( 'feat_img_post_width' );
+  $post_feat_img_height = shoestrap_getVariable( 'feat_img_post_height' );
 
   $url    = wp_get_attachment_url( get_post_thumbnail_id() );
   $width  = $post_feat_img_width;

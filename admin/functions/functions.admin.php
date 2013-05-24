@@ -93,29 +93,32 @@ function of_get_options() {
  * @uses update_option()
  * @return void
  */
-function of_save_options($data) {
-  	global $of_options;
-  	// Make the $of_options into a proper array
-  	$smof_details = array();
-	foreach($of_options as $option) {
-		$smof_details[$option['id']] = $option;
-	}
+function of_save_options($data, $key=OPTIONS) {
+  	global $smof_details;
 
 	$data = apply_filters('of_options_before_save', $data);
-    $old = get_theme_mods();
-	foreach ($data as $k=>$v) {
-		set_theme_mod( $k, $v );
-	}
 
-	// Find if we changed a less variable, and if so, recompile the CSS.
-	foreach ($smof_details as $key=>$option) {
-		if ($option['less'] == true) {
-		  if ($old[$option['id']] != $data[$option['id']]) {
-		    shoestrap_makecss();
-		    break;
-		  }
+    $old = get_theme_mods();
+    if ($key == BACKUPS) {
+    	set_theme_mod(BACKUPS, $data);
+    } else {
+		foreach ($data as $k=>$v) {
+			set_theme_mod( $k, $v );
 		}
-	}
+		if ($key == "IMPORT" || $key == "RESET" || $key == "RESTORE") {
+			shoestrap_makecss();
+		} else {
+			// Find if we changed a less variable, and if so, recompile the CSS.
+			foreach ($smof_details as $key=>$option) {
+				if ($option['less'] == true) {
+				  if ($old[$key] != $data[$key]) {
+				    shoestrap_makecss();
+				    break;
+				  }
+				}
+			}
+		}
+    }
 }
 
 

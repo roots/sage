@@ -88,6 +88,9 @@ function smof_preview_init( $wp_customize ) {
 	wp_deregister_style('shoestrap_css');
 
 	//print '<style type="text/less">'.shoestrap_complete_less().'</style>';
+	file_put_contents(str_replace(".css", ".less", shoestrap_css()), shoestrap_complete_less(true));
+	print '<link rel="stylesheet/less" type="text/less" href="'.str_replace(".css", ".less", shoestrap_css('url')).'">';
+
 	print '<script type="text/javascript">
     less = {
         env: "development", // or "production"
@@ -103,7 +106,7 @@ function smof_preview_init( $wp_customize ) {
         rootpath: "http://localhost/wordpress3/wp-content/themes/shoestrap/less/"// a path to add on to the start of every url
                             //resource
     };
-</script><style type="text/less">'.shoestrap_complete_less(true).'</style>';
+</script>';
 	//print '<link rel="stylesheet/less" type="text/css" href="'.get_template_directory_uri() . '/assets/less/preview.less'.'">';
 	wp_enqueue_script('less-js', ADMIN_DIR .'/assets/js/less-1.3.3.min.js');
 	wp_enqueue_script('preview-js', ADMIN_DIR .'assets/js/preview.js');

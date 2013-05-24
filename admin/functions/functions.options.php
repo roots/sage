@@ -80,7 +80,7 @@ if (!function_exists('of_options')) {
     /*-----------------------------------------------------------------------------------*/
 
     // Set the Options Array
-    global $of_options;
+    global $of_options, $smof_details;
 
     // General Options
     $of_options[] = array(
@@ -164,7 +164,7 @@ if (!function_exists('of_options')) {
       "name"      => __("Featured Images on Posts", "shoestrap"),
       "desc"      => __("Display featured Images on posts. Default: OFF.", "shoestrap"),
       "id"        => "feat_img_post",
-      "std"       => 0,
+      "std"       => 1,
       "type"      => "switch"
     );
 
@@ -185,7 +185,7 @@ if (!function_exists('of_options')) {
       "desc"      => __("Select the height of your featured images on single posts. Default: 300px", "shoestrap"),
       "id"        => "feat_img_post_height",
       "fold"      => "feat_img_post",
-      "std"       => 300,
+      "std"       => 330,
       "min"       => 50,
       "step"      => 1,
       "max"       => 1000,
@@ -675,7 +675,7 @@ if (!function_exists('of_options')) {
       "desc"      => __("Select how the selected background should be horizontally aligned. Default: Left", "shoestrap"),
       "id"        => "jumbotron_bg_pos_x",
       "fold"      => "jumbotron_bg_img",
-      "std"       => "repeat",
+      "std"       => "left",
       "type"      => "radio",
       "options"   => array(
         'left'    => __( 'Left', 'shoestrap' ),
@@ -804,6 +804,65 @@ if (!function_exists('of_options')) {
       "type"      => "text"
     );
 
+// REPLACE
+    $of_options[] = array(
+      "name"      => __("general_border_radius", "shoestrap"),
+      "desc"      => __("general_border_radius", "shoestrap"),
+      "id"        => "general_border_radius",
+      "std"       => 4,
+      "type"      => "text"
+    );
+    $of_options[] = array(
+      "name"      => __("typography_font_size_base", "shoestrap"),
+      "desc"      => __("typography_font_size_base", "shoestrap"),
+      "id"        => "typography_font_size_base",
+      "std"       => 14,
+      "type"      => "text"
+    );
+    $of_options[] = array(
+      "name"      => __("typography_sans_serif", "shoestrap"),
+      "desc"      => __("typography_sans_serif", "shoestrap"),
+      "id"        => "typography_sans_serif",
+      "std"       => "'Helvetica Neue', Helvetica, Arial, sans-serif",
+      "type"      => "text"
+    );
+    $of_options[] = array(
+      "name"      => __("typography_serif", "shoestrap"),
+      "desc"      => __("typography_serif", "shoestrap"),
+      "id"        => "typography_serif",
+      "std"       => "Georgia, 'Times New Roman', Times, serif",
+      "type"      => "text"
+    );
+    $of_options[] = array(
+      "name"      => __("typography_monospace", "shoestrap"),
+      "desc"      => __("typography_monospace", "shoestrap"),
+      "id"        => "typography_monospace",
+      "std"       => "Menlo, Monaco, 'Courier New', monospace",
+      "type"      => "text"
+    );
+
+
+
+
+    // Predefined Styles
+    $of_options[] = array(
+      "name"      => __("Predefined Styles", "shoestrap"),
+      "type"      => "heading"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Predefined Style", "shoestrap"),
+      "desc"      => __("Using this option you can set the navbar to be fixed to top, fixed to bottom or normal. When you're using one of the \"fixed\" options, the navbar will stay fixed on the top or bottom of the page. Default: Normal", "shoestrap"),
+      "id"        => "predesigned_style",
+      "std"       => 0,
+      "type"      => "select",
+      "customizer"=> array(),
+      "options"   => array(
+        0         => __( 'Select a style', 'shoestrap' ),
+        1         => __( 'Fixed to Top', 'shoestrap' ),
+        2         => __( 'Fixed to Bottom', 'shoestrap' )
+      )
+    );
 
     // Backup Options
     $of_options[] = array(
@@ -826,6 +885,13 @@ if (!function_exists('of_options')) {
       "type"      => "transfer",
       "desc"      => __('You can tranfer the saved options data between different installs by copying the text inside the text box. To import data from another install, replace the data in the text box with the one from another install and click "Import Options".', "shoestrap"),
     );
+
+    $smof_details = array();
+    foreach($of_options as $option) {
+      $smof_details[$option['id']] = $option;
+    }
+
+
   }
 }
 

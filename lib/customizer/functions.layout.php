@@ -4,10 +4,10 @@
  * Calculates the classes of the main area, main sidebar and secondary sidebar
  */
 function shoestrap_section_class( $target, $echo = false ) {
-  $layout = intval( get_theme_mod( 'layout' ) );
-  $first  = intval( get_theme_mod( 'layout_primary_width' ) );
-  $second = intval( get_theme_mod( 'layout_secondary_width' ) );
-  
+  $layout = intval( shoestrap_getVariable( 'layout' ) );
+  $first  = intval( shoestrap_getVariable( 'layout_primary_width' ) );
+  $second = intval( shoestrap_getVariable( 'layout_secondary_width' ) );
+
   $base   = 'col col-lg-';
   // Set some defaults so that we can change them depending on the selected template
   $main       = $base . 12;
@@ -54,7 +54,7 @@ function shoestrap_section_class( $target, $echo = false ) {
   }
 
   // Overrides the main region class when on the frontpage and sidebars are set to not being displayed there.
-  if ( is_front_page() && get_theme_mod( 'layout_sidebar_on_front' ) != 1 )
+  if ( is_front_page() && shoestrap_getVariable( 'layout_sidebar_on_front' ) != 1 )
     $main      = $base . 12;
 
   if ( $target == 'primary' )
@@ -84,7 +84,7 @@ function shoestrap_section_class( $target, $echo = false ) {
  * If any css should be applied to fix the layout, enter it here.
  */
 function shoestrap_sidebars_positioning_css() {
-  $layout = get_theme_mod( 'layout' );
+  $layout = shoestrap_getVariable( 'layout' );
 
   echo '<style>';
   if ( $layout == 2 || $layout == 3 || $layout == 5 )
@@ -96,7 +96,7 @@ function shoestrap_sidebars_positioning_css() {
 add_action( 'wp_head', 'shoestrap_sidebars_positioning_css' );
 
 function shoestrap_container_class() {
-  $fluid = get_theme_mod( 'fluid' );
+  $fluid = shoestrap_getVariable( 'fluid' );
 
   if ( $fluid != 1 )
     return 'container';

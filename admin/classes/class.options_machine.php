@@ -447,7 +447,7 @@ class Options_Machine {
 				case 'backup':
 
 					$instructions = $value['desc'];
-					$backup = get_option(BACKUPS);
+					$backup = get_theme_mod(BACKUPS);
 
 					if(!isset($backup['backup_log'])) {
 						$log = 'No backups yet';

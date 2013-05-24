@@ -1,5 +1,4 @@
 <?php
-
 // Prevent Direct Access with homepage redirect
 if ( !defined( 'DB_NAME' ) ) {
   header('Location: http://'.$_SERVER['SERVER_NAME'].'/');
@@ -79,6 +78,16 @@ function shoestrap_makecss() {
   shoestrap_compile_css();
 }
 
+// Gets the current values from SMOF, and if not there, grabs the defaults
+function shoestrap_getVariable($key) {
+  global $smof_details;
+  $value = get_theme_mod($key);
+  if ($value == "") {
+    $value = $smof_details[$key]['std'];
+  }
+  return $value;
+}
+
 /*
  * The content below is a copy of bootstrap's variables.less file.
  *
@@ -90,28 +99,29 @@ function shoestrap_makecss() {
  */
 function shoestrap_variables_less() {
 
-  $body_bg          = '#' . str_replace( '#', '', get_theme_mod( 'color_body_bg' ) );
-  $brand_primary    = '#' . str_replace( '#', '', get_theme_mod( 'color_brand_primary' ) );
-  $brand_success    = '#' . str_replace( '#', '', get_theme_mod( 'color_brand_success' ) );
-  $brand_warning    = '#' . str_replace( '#', '', get_theme_mod( 'color_brand_warning' ) );
-  $brand_danger     = '#' . str_replace( '#', '', get_theme_mod( 'color_brand_danger' ) );
-  $brand_info       = '#' . str_replace( '#', '', get_theme_mod( 'color_brand_info' ) );
-  $text_color       = '#' . str_replace( '#', '', get_theme_mod( 'color_text' ) );
-  $link_color       = '#' . str_replace( '#', '', get_theme_mod( 'color_links' ) );
-  $sans_serif       = get_theme_mod( 'typography_sans_serif' );
-  $serif            = get_theme_mod( 'typography_serif' );
-  $font_size_base   = filter_var( get_theme_mod( 'typography_font_size_base', '14' ), FILTER_SANITIZE_NUMBER_INT );
-  $border_radius    = filter_var( get_theme_mod( 'general_border_radius', '4' ), FILTER_SANITIZE_NUMBER_INT );
-  $navbar_color     = '#' . str_replace( '#', '', get_theme_mod( 'navbar_color' ) );
-  $navbar_bg        = '#' . str_replace( '#', '', get_theme_mod( 'navbar_bg' ) );
-  $jumbotron_bg     = '#' . str_replace( '#', '', get_theme_mod( 'jumbotron_bg' ) );
-  $jumbotron_color  = '#' . str_replace( '#', '', get_theme_mod( 'jumbotron_color' ) );
-  $screen_tiny      = filter_var( get_theme_mod( 'layout_screen_tiny' ), FILTER_SANITIZE_NUMBER_INT );
-  $screen_small     = filter_var( get_theme_mod( 'layout_screen_small' ), FILTER_SANITIZE_NUMBER_INT );
-  $screen_medium    = filter_var( get_theme_mod( 'layout_screen_medium' ), FILTER_SANITIZE_NUMBER_INT );
-  $screen_large     = filter_var( get_theme_mod( 'layout_screen_large' ), FILTER_SANITIZE_NUMBER_INT );
-  $gutter           = filter_var( get_theme_mod( 'layout_gutter' ), FILTER_SANITIZE_NUMBER_INT );
-  $navbar_height    = filter_var( get_theme_mod( 'navbar_height' ), FILTER_SANITIZE_NUMBER_INT );
+  $body_bg          = '#' . str_replace( '#', '', shoestrap_getVariable( 'color_body_bg' ) );
+  $brand_primary    = '#' . str_replace( '#', '', shoestrap_getVariable( 'color_brand_primary' ) );
+  $brand_success    = '#' . str_replace( '#', '', shoestrap_getVariable( 'color_brand_success' ) );
+  $brand_warning    = '#' . str_replace( '#', '', shoestrap_getVariable( 'color_brand_warning' ) );
+  $brand_danger     = '#' . str_replace( '#', '', shoestrap_getVariable( 'color_brand_danger' ) );
+  $brand_info       = '#' . str_replace( '#', '', shoestrap_getVariable( 'color_brand_info' ) );
+  $text_color       = '#' . str_replace( '#', '', shoestrap_getVariable( 'color_text' ) );
+  $link_color       = '#' . str_replace( '#', '', shoestrap_getVariable( 'color_links' ) );
+  $sans_serif       = shoestrap_getVariable( 'typography_sans_serif' );
+  $serif            = shoestrap_getVariable( 'typography_serif' );
+  $monospace        = shoestrap_getVariable( 'typography_monospace' );
+  $font_size_base   = filter_var( shoestrap_getVariable( 'typography_font_size_base' ), FILTER_SANITIZE_NUMBER_INT );
+  $border_radius    = filter_var( shoestrap_getVariable( 'general_border_radius' ), FILTER_SANITIZE_NUMBER_INT );
+  $navbar_color     = '#' . str_replace( '#', '', shoestrap_getVariable( 'navbar_color' ) );
+  $navbar_bg        = '#' . str_replace( '#', '', shoestrap_getVariable( 'navbar_bg' ) );
+  $jumbotron_bg     = '#' . str_replace( '#', '', shoestrap_getVariable( 'jumbotron_bg' ) );
+  $jumbotron_color  = '#' . str_replace( '#', '', shoestrap_getVariable( 'jumbotron_color' ) );
+  $screen_tiny      = filter_var( shoestrap_getVariable( 'layout_screen_tiny' ), FILTER_SANITIZE_NUMBER_INT );
+  $screen_small     = filter_var( shoestrap_getVariable( 'layout_screen_small' ), FILTER_SANITIZE_NUMBER_INT );
+  $screen_medium    = filter_var( shoestrap_getVariable( 'layout_screen_medium' ), FILTER_SANITIZE_NUMBER_INT );
+  $screen_large     = filter_var( shoestrap_getVariable( 'layout_screen_large' ), FILTER_SANITIZE_NUMBER_INT );
+  $gutter           = filter_var( shoestrap_getVariable( 'layout_gutter' ), FILTER_SANITIZE_NUMBER_INT );
+  $navbar_height    = filter_var( shoestrap_getVariable( 'navbar_height' ), FILTER_SANITIZE_NUMBER_INT );
 
   // Calculate the gray shadows based on the body background.
   // We basically create 2 "presets": light and dark.
@@ -204,7 +214,7 @@ function shoestrap_variables_less() {
 
 @font-family-sans-serif:  ' . $sans_serif . ';
 @font-family-serif:       ' . $serif . ';
-@font-family-monospace:   Monaco, Menlo, Consolas, "Courier New", monospace;
+@font-family-monospace:   ' . $monospace . ';
 @font-family-base:        @font-family-sans-serif;
 
 @font-size-base:          ' . $font_size_base . 'px;
@@ -661,9 +671,8 @@ function shoestrap_complete_less( $url = false ) {
 ';
 
 if ($url == true) {
-  $bootstrap_less .="
-    @elusiveWebfontPath: '".$fonts."';
-  ";
+  $bootstrap_less .="@elusiveWebfontPath: '".$fonts." // Elusive webfonts path';
+";
 }
 
   return $bootstrap_less;

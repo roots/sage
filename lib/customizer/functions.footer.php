@@ -1,8 +1,8 @@
 <?php
 
 function shoestrap_footer_css() {
-  $bg = get_theme_mod( 'footer_bg' );
-  $cl = get_theme_mod( 'footer_color' );
+  $bg = shoestrap_getVariable( 'footer_bg' );
+  $cl = shoestrap_getVariable( 'footer_color' );
 
   echo '<style>';
   echo 'footer.content-info{background:' . $bg . '; color:' . $cl . ';}';

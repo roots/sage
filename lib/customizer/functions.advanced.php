@@ -27,7 +27,7 @@
  * Anything users enter in the advanced section will not be filtered.
  */
 function shoestrap_custom_header_scripts() {
-  $header_scripts = get_theme_mod( 'advanced_head' );
+  $header_scripts = shoestrap_getVariable( 'advanced_head' );
   echo $header_scripts;
 }
 add_action( 'wp_head', 'shoestrap_custom_header_scripts', 200 );
@@ -41,7 +41,7 @@ add_action( 'wp_head', 'shoestrap_custom_header_scripts', 200 );
  * Anything users enter in the advanced section will not be filtered.
  */
 function shoestrap_custom_footer_scripts() {
-  $footer_scripts = get_theme_mod( 'advanced_footer' );
+  $footer_scripts = shoestrap_getVariable( 'advanced_footer' );
   echo $footer_scripts;
 }
 add_action( 'shoestrap_after_footer', 'shoestrap_custom_footer_scripts', 200 );

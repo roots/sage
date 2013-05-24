@@ -213,20 +213,21 @@ function of_ajax_callback()
 	elseif($save_type == 'restore_options')
 	{
 
-		$smof_data = get_option(BACKUPS);
+		$smof_data = get_theme_mod(BACKUPS);
 
-		update_option(OPTIONS, $smof_data);
+		foreach ($smof_data as $k=>$v) {
+			set_theme_mod($k, $v);
+		}
 
-		of_save_options($smof_data);
+		of_save_options($smof_data, 'RESTORE');
+
 
 		die('1');
 	}
 	elseif($save_type == 'import_options'){
 
-
-		$smof_data = unserialize(base64_decode($smof_data)); //100% safe - ignore theme check nag
-		of_save_options($smof_data);
-
+		$smof_data = unserialize(base64_decode($_POST['data'])); //100% safe - ignore theme check nag
+		of_save_options($smof_data, 'IMPORT');
 
 		die('1');
 	}
@@ -236,14 +237,16 @@ function of_ajax_callback()
 		wp_parse_str(stripslashes($_POST['data']), $smof_data);
 		unset($smof_data['security']);
 		unset($smof_data['of_save']);
-		of_save_options($smof_data);
-
+		of_save_options($smof_data, "IMPORT");
 
 		die('1');
 	}
 	elseif ($save_type == 'reset')
 	{
-		of_save_options($options_machine->Defaults);
+
+		of_save_options($options_machine->Defaults, 'RESET');
+
+
 
         die('1'); //options reset
 	}
