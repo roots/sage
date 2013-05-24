@@ -117,7 +117,7 @@ if (!function_exists('of_options')) {
     $of_options[] = array(
       "name"      => __("Border-Radius", "shoestrap"),
       "desc"      => __("You can adjust the corner-radius of all elements in your site here. This will affect buttons, navbars, widgets and many more. Default: 4", "shoestrap"),
-      "id"        => "layout_secondary_width",
+      "id"        => "general_border_radius",
       "std"       => 4,
       "min"       => 0,
       "step"      => 1,
@@ -806,13 +806,6 @@ if (!function_exists('of_options')) {
 
 // REPLACE
     $of_options[] = array(
-      "name"      => __("general_border_radius", "shoestrap"),
-      "desc"      => __("general_border_radius", "shoestrap"),
-      "id"        => "general_border_radius",
-      "std"       => 4,
-      "type"      => "text"
-    );
-    $of_options[] = array(
       "name"      => __("typography_font_size_base", "shoestrap"),
       "desc"      => __("typography_font_size_base", "shoestrap"),
       "id"        => "typography_font_size_base",
@@ -837,7 +830,7 @@ if (!function_exists('of_options')) {
       "name"      => __("typography_monospace", "shoestrap"),
       "desc"      => __("typography_monospace", "shoestrap"),
       "id"        => "typography_monospace",
-      "std"       => "Menlo, Monaco, 'Courier New', monospace",
+      "std"       => "Monaco, Menlo, Consolas, 'Courier New', monospace",
       "type"      => "text"
     );
 
