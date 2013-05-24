@@ -21,6 +21,25 @@ function shoestrap_footer_css() {
 }
 add_action( 'wp_head', 'shoestrap_footer_css' );
 
+
+/*
+ * Creates the customizer icon on the bottom-left corner of our site
+ * (visible only by admins)
+ */
+function shoestrap_footer_widget_area_sidebars() {
+  // Register the custom footer sidebars
+  if (shoestrap_getVariable( 'footer_widget_area_toggle') == 1 ) {
+    for ($i = 1; $i <= intval(shoestrap_getVariable( 'footer_widget_area_sidebars' )); $i++){
+      register_sidebar(array(
+        'name' => __( 'Footer Widget Area' )." ".$i,
+        'id' => 'footer-widget-sidebar-'.$i,
+        'description' => __( '' ),
+      ));    
+    }
+  }
+}
+add_action( 'widgets_init', 'shoestrap_footer_widget_area_sidebars' );
+
 /*
  * Creates the customizer icon on the bottom-left corner of our site
  * (visible only by admins)
@@ -49,8 +68,20 @@ function footer_widget_area() {
         
     }
   </style>  
-  <div id="footer_widget_area">
+  <div id="footer_widget_area" class="row">
 
+  <?php
+    $columns = 12/intval(shoestrap_getVariable( 'footer_widget_area_sidebars' ));
+    for ($i = 1; $i < $columns; $i++){
+      ?>
+      <div class="col col-lg-<?php echo $columns; ?>">
+        <?php dynamic_sidebar( 'footer-widget-sidebar-'.$i ); ?> 
+      </div>
+      <?php
+    }
+
+
+   ?>
   </div>
   
   
@@ -77,3 +108,5 @@ function footer_icon() {
   </div>
 <?php }
 add_action( 'shoestrap_after_footer', 'footer_icon' );
+
+

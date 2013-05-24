@@ -2,6 +2,9 @@
 /**
  * Roots includes
  */
+
+require_once locate_template('/admin/index.php'); // Slightly Modified Options Framework
+
 require_once locate_template('/lib/utils.php');           // Utility functions
 require_once locate_template('/lib/init.php');            // Initial theme setup and constants
 require_once locate_template('/lib/sidebar.php');         // Sidebar class
@@ -35,19 +38,9 @@ require_once locate_template('/lib/customizer/functions.navbar.php');         //
 require_once locate_template('/lib/customizer/functions.background.php');         // Extra functions for the "NavBar" Customizer section
 // require_once locate_template('/lib/customizer/functions.typography.php');     // Extra functions for the "Typography" Customizer section
 
-require_once locate_template('/admin/index.php'); // Slightly Modified Options Framework
+
 
 require_once locate_template('/lib/shortcodes/init.php');                     // Initialize the Shortcodes plugin
 
 
 
-// Register the custom footer sidebars
-if (shoestrap_getVariable( 'footer_widget_area_toggle') == 1 ) {
-	for ($i = 1; $i <= intval(shoestrap_getVariable( 'footer_widget_area_sidebars' )); $i++){
-	  register_sidebar(array(
-	    'name' => __( 'Footer Widget Area' )." ".$i,
-	    'id' => 'footer-widget-sidebar-'.$i,
-	    'description' => __( '' ),
-	  ));    
-	}
-}

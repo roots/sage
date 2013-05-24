@@ -112,6 +112,9 @@ function roots_widgets_init() {
     'after_title'   => '</div>',
   ));
 
+  // Dynamic footer sidebars
+  do_action('shoestrap_footer_widget_area_sidebars');
+
   // Widgets
   register_widget('Roots_Vcard_Widget');
 }
