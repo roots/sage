@@ -69,3 +69,6 @@
 .controls .of-radio-img-selected {
 	border:3px solid #ccc !important;
 }
+.customizer-checkbox .checkbox {
+	width: auto !important;
+}
