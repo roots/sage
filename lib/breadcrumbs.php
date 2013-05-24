@@ -328,8 +328,10 @@ class Shoestrap_Breadcrumb {
 }
 
 function shoestrap_breadcrumbs() {
- 
-   $templates = array(
+  if (is_front_page()) { // No breadcrumbs on the front page
+    return;
+  }
+  $templates = array(
     'before'    => '<ul class="breadcrumb">',
     'after'     => '</ul>',
     'standard'  => '<li itemscope itemtype="http://data-vocabulary.org/Breadcrumb">%s</li>',
@@ -339,7 +341,7 @@ function shoestrap_breadcrumbs() {
   $options = array(
     'show_htfpt' => true
   );
- 
+
   $breadcrumb = new Shoestrap_Breadcrumb( $templates, $options );
 }
 if ( get_theme_mod( 'breadcrumbs' ) == 1 )
