@@ -2,7 +2,7 @@
 add_action( 'customize_controls_init', 'smof_customize_init' );
 add_action( 'customize_preview_init', 'smof_preview_init' );
 add_action( 'customize_register', 'smof_customize_register' );
-
+/*
 // Generates the CSS from less on save IF a less file has been changed
 function shoestrapCSSRegen() {
     $nonce = $_POST['nonce'];
@@ -28,9 +28,34 @@ function shoestrapCSSRegen() {
     }
     exit;
 }
-// Ajax call
+// Ajax call, remove when customize_save_after is in place!
 add_action('wp_ajax_shoestrapCSSRegen', 'shoestrapCSSRegen');
+*/
 
+// Easiest way to do saving.
+add_action('customize_save', 'shoestrap_preSave');
+add_action('customize_save_after', 'shoestrap_generateCSS');
+
+// Store the old SMOF values
+function shoestrap_preSave() {
+  set_theme_mod('shoestrap_customizer_preSave', get_theme_mods());
+}
+
+// Compare less values to see if we need to rebuild the CSS
+function shoestrap_generateCSS() {
+  global $smof_details;
+  $old = get_theme_mod('shoestrap_customizer_preSave');
+  remove_theme_mod('shoestrap_customizer_preSave'); // Cleanup
+  $new = get_theme_mods();
+  foreach ($smof_details as $key=>$option) {
+    if ($option['less'] == true) {
+      if ($old[$option['id']] != $new[$option['id']]) {
+        shoestrap_makecss();
+        break;
+      }
+    }
+  }
+}
 
 $smof_details = array();
 
@@ -41,12 +66,15 @@ function smof_customize_init( $wp_customize ) {
 	wp_dequeue_script('smof', ADMIN_DIR .'assets/js/smof.js');
 	wp_enqueue_style('wp-pointer');
     wp_enqueue_script('wp-pointer');
+    // Remove when code is in place!
 	wp_enqueue_script('smofcustomizerjs', ADMIN_DIR .'assets/js/customizer.js');
+	/*
 	wp_enqueue_script('smof-regenCSS', ADMIN_DIR .'assets/js/smof-regenCSS.js', array( 'jquery' ));
 	wp_localize_script( 'smof-regenCSS', 'regenCSSAjax', array(
 		'adminUrl'		=> 	admin_url(),
 		'nonce'		=> 	js_escape( wp_create_nonce( 'wp_ajax_shoestrap_makecss' ) )
 	));
+	*/
 	// Get styles
 	of_style_only();
 	wp_enqueue_style('smofcustomizer', ADMIN_DIR .'assets/css/customizer.css');
