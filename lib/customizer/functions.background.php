@@ -6,7 +6,7 @@ function shoestrap_background_css() {
     $background = set_url_scheme( get_theme_mod( 'background_image') );
   else
     $background = get_theme_mod('bg_pattern');
-  
+
   // $color is the saved custom color.
   // A default has to be specified in style.css. It will not be printed here.
   $color = get_theme_mod( 'jumbotron_bg' );
@@ -19,15 +19,23 @@ function shoestrap_background_css() {
   if ( $background ) {
     $image = " background-image: url('$background');";
 
-    $repeat = get_theme_mod( 'background_repeat' );
-    if ( ! in_array( $repeat, array( 'no-repeat', 'repeat-x', 'repeat-y', 'repeat' ) ) )
-      $repeat = 'repeat';
-    $repeat = " background-repeat: $repeat;";
+    if (get_theme_mod('background_image_position_toggle') == 0) {
+      $style .= "background-attachment: fixed;";
+      $style .= "background-size: cover;";
+      $style .= "background-position: 50% 50%;";
+      $style .= "background-repeat: no-repeat no-repeat;";
+    } else {
+      $repeat = get_theme_mod( 'background_repeat' );
+      if ( ! in_array( $repeat, array( 'no-repeat', 'repeat-x', 'repeat-y', 'repeat' ) ) )
+        $repeat = 'repeat';
+      $repeat = " background-repeat: $repeat;";
 
-    $position = get_theme_mod( 'background_position_x', 'left' );
-    if ( ! in_array( $position, array( 'center', 'right', 'left' ) ) )
-      $position = 'left';
-    $position = " background-position: top $position;";
+      $position = get_theme_mod( 'background_position_x', 'left' );
+      if ( ! in_array( $position, array( 'center', 'right', 'left' ) ) )
+        $position = 'left';
+      $position = " background-position: top $position;";
+    }
+
 
     $style .= $image . $repeat . $position;
   }

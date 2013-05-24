@@ -40,7 +40,7 @@ if (!function_exists('of_options')) {
     }
 
 
-    //Background Images Reader
+    //Background Patterns Reader
     $bg_images_path = STYLESHEETPATH. '/assets/img/patterns';
     $bg_images_url = get_bloginfo('template_url').'/assets/img/patterns/';
     $bg_images = array();
@@ -216,10 +216,19 @@ if (!function_exists('of_options')) {
     );
 
     $of_options[] = array(
+      "name"      => __("Customize Background Positioning", "shoestrap"),
+      "desc"      => __("Allows the user to modify how the background displays. By default it is full width and stretched to fill the page. Default: Off.", "shoestrap"),
+      "id"        => "background_image_position_toggle",
+      "std"       => 0,
+      "fold"      => "background_image_toggle",
+      "type"      => "switch"
+    );
+
+    $of_options[] = array(
       "name"      => __("Background Repeat", "shoestrap"),
       "desc"      => __("Select how (or if) the selected background should be tiled. Default: Tile", "shoestrap"),
       "id"        => "background_repeat",
-      "fold"      => "background_image_toggle",
+      "fold"      => "background_image_position_toggle",
       "std"       => "repeat",
       "type"      => "radio",
       "options"   => array(
@@ -234,7 +243,7 @@ if (!function_exists('of_options')) {
       "name"      => __("Background Alignment", "shoestrap"),
       "desc"      => __("Select how the selected background should be horizontally aligned. Default: Left", "shoestrap"),
       "id"        => "background_position_x",
-      "fold"      => "background_image_toggle",
+      "fold"      => "background_image_position_toggle",
       "std"       => "repeat",
       "type"      => "radio",
       "options"   => array(
