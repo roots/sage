@@ -39,7 +39,7 @@ function shoestrap_background_css() {
       $repeat = shoestrap_getVariable( 'background_repeat' );
       if ( ! in_array( $repeat, array( 'no-repeat', 'repeat-x', 'repeat-y', 'repeat' ) ) )
         $repeat = 'repeat';
-      $repeat = " background-repeat: $repeat $repeat;";
+      $repeat = " background-repeat: $repeat;";
 
       $position = shoestrap_getVariable( 'background_position_x', 'left' );
       if ( ! in_array( $position, array( 'center', 'right', 'left' ) ) )
