@@ -8,6 +8,7 @@ function shoestrap_footer_css() {
 ?>
   <style>
     footer.content-info{
+
       color:<?php echo $cl ?>;     
     <?php if ($opacity != 1 && $opacity != "") : ?>
       background: rgba(<?php echo $rgb; ?>,<?php echo $opacity; ?>);
@@ -28,7 +29,7 @@ add_action( 'wp_head', 'shoestrap_footer_css' );
  */
 function shoestrap_footer_widget_area_sidebars() {
   // Register the custom footer sidebars
-  if (shoestrap_getVariable( 'footer_widget_area_toggle') == 1 ) {
+  if (shoestrap_getVariable( 'footer_widget_area_sidebars') > 0 ) {
     for ($i = 1; $i <= intval(shoestrap_getVariable( 'footer_widget_area_sidebars' )); $i++){
       register_sidebar(array(
         'name' => __( 'Footer Widget Area' )." ".$i,
@@ -46,7 +47,7 @@ add_action( 'widgets_init', 'shoestrap_footer_widget_area_sidebars' );
  */
 function footer_widget_area() {
   global $wp_customize;
-  if (shoestrap_getVariable( 'footer_widget_area_toggle' == 0 ))
+  if (shoestrap_getVariable( 'footer_widget_area_sidebars') == 0 )
     return;
 
 
