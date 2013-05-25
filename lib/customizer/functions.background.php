@@ -30,7 +30,6 @@ function shoestrap_background_css() {
 
   if ( $background ) {
     $image = " background-image: url('$background');";
-
     if (shoestrap_getVariable('background_image_position_toggle') == 0) {
       $style .= "background-size: cover;";
       $style .= "background-position: 50% 50%;";
@@ -47,12 +46,8 @@ function shoestrap_background_css() {
         $position = 'left';
       $position = " background-position: top $position;";
     } else { // Pattern!
-      echo "here@!";
       $style .= "background-position: top left;";
-
     }
-
-
     $style .= $image . $repeat . $position;
   }
   echo '<style>body{' . trim( $style ) . ';}.wrap.main-section{background:' . $background_color . ';}</style>';
