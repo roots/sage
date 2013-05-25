@@ -56,6 +56,8 @@ function footer_widget_area() {
   $cl = shoestrap_getVariable( 'footer_widget_area_color' );
   $opacity = (intval(shoestrap_getVariable( 'footer_widget_area_opacity' )))/100;
   $rgb = shoestrap_get_rgb($bg, true);  
+  $bt = shoestrap_getVariable( 'footer_widget_area_border_top' );
+  $bb = shoestrap_getVariable( 'footer_widget_area_border_bottom' );
   ?>
   <style>
     #footer_widget_area{
@@ -65,12 +67,18 @@ function footer_widget_area() {
     <?php else : ?>
       background: <?php echo $bg ?>; 
     <?php endif; ?>
-        
+      padding: 0px 5px 20px 5px;
+      border-top: <?php echo $bt['width']?>px <?php echo $bt['style']?> <?php echo $bt['color']?>;
+      border-bottom: <?php echo $bb['width']?>px <?php echo $bb['style']?> <?php echo $bb['color']?>;
+    }
+    #footer_widget_area li {
+      list-style: none;
     }
   </style>  
   <div id="footer_widget_area" class="row">
 
   <?php
+  
     $columns = 12/intval(shoestrap_getVariable( 'footer_widget_area_sidebars' ));
     for ($i = 1; $i < $columns; $i++){
       ?>
