@@ -39,7 +39,7 @@ function roots_widgets_init() {
     'before_title'  => '<h1>',
     'after_title'   => '</h1>',
   ));
-
+/*
   register_sidebar(array(
     'name'          => __('Footer Left', 'shoestrap'),
     'id'            => 'sidebar-footer-left',
@@ -66,7 +66,12 @@ function roots_widgets_init() {
     'before_title'  => '<div class="panel-heading">',
     'after_title'   => '</div>',
   ));
+*/
+  
+  do_action('shoestrap_footer_widget_area_sidebars'); // Dynamic footer sidebars
+  do_action('shoestrap_slide_down_widget_area_sidebars'); // Dynamic slide-down sidebars
 
+/*
   register_sidebar(array(
     'name'          => __('Navbar Slide-Down Top', 'shoestrap'),
     'id'            => 'navbar-slide-down-top',
@@ -112,8 +117,7 @@ function roots_widgets_init() {
     'after_title'   => '</div>',
   ));
 
-  // Dynamic footer sidebars
-  do_action('shoestrap_footer_widget_area_sidebars');
+*/
 
   // Widgets
   register_widget('Roots_Vcard_Widget');
