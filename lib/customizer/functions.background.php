@@ -10,7 +10,7 @@ function shoestrap_background_css() {
       $background = set_url_scheme( shoestrap_getVariable( 'background_image') );  
     }
     
-  } else if ( shoestrap_getVariable('background_pattern') != "" ) {
+  } else if ( shoestrap_getVariable('background_pattern_toggle') != 0 && shoestrap_getVariable('background_pattern') != "" ) {
     $background = shoestrap_getVariable('background_pattern');
   }
   // $color is the saved custom color.
