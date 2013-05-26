@@ -48,7 +48,8 @@ jQuery(document).ready(function($){
 			fade: true,
 			gravity: 'w',
 			opacity: 0.9,
-			live: true
+			live: true,
+			html: true,
 		});
 	}
 

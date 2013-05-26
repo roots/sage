@@ -77,20 +77,22 @@ function footer_widget_area() {
     }
   </style>  
   <div id="footer_widget_area" class="row">
+  <div class="<?php echo shoestrap_container_class(); ?>">
 
-  <?php
-  
-    $columns = 12/intval(shoestrap_getVariable( 'footer_widget_area_sidebars' ));
-    for ($i = 1; $i < $columns; $i++){
-      ?>
-      <div class="col col-lg-<?php echo $columns; ?>">
-        <?php dynamic_sidebar( 'footer-widget-sidebar-'.$i ); ?> 
-      </div>
-      <?php
-    }
+    <?php
+
+      $columns = 12/shoestrap_getVariable( 'footer_widget_area_sidebars' );
+      for ($i = 1; $i <= $columns+1; $i++){
+        ?>
+        <div class="col col-lg-<?php echo $columns; ?>">
+          <?php dynamic_sidebar( 'footer-widget-sidebar-'.$i ); ?> 
+        </div>
+        <?php
+      }
 
 
-   ?>
+     ?>
+    </div>
   </div>
   
   

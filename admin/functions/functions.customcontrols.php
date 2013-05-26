@@ -1,8 +1,18 @@
 <?php
 
-function formatTooltip( $string ) {
-
-  return $string;
+// Adds a fold class if it exists
+function shoestrap_checkFold($id) {
+  global $smof_details;
+  //hide items in checkbox group
+  $fold='';
+  if (array_key_exists("fold",$smof_details[$id])) {
+    if ($smof_data[$smof_details[$id]['fold']]) {
+      $fold=" f_".$smof_details[$id]['fold']." ";
+    } else {
+      $fold=" f_".$smof_details[$id]['fold']." temphide ";
+    }
+  } 
+  return $fold; 
 }
 
 class Customize_SMOF_Text_Control extends WP_Customize_Control {
@@ -11,7 +21,7 @@ class Customize_SMOF_Text_Control extends WP_Customize_Control {
     global $smof_details;
 ?>
 
-        <label class="customizer-text">
+    <label class="customizer-text">
           <?php if ( $smof_details[$this->id]['name'] != "" ) { ?>
         <span class="customize-control-title">
           <?php echo esc_html( $this->label ); ?>
@@ -99,7 +109,7 @@ class Customize_SMOF_Checkbox_Control extends WP_Customize_Control {
   public function render_content() {
     global $smof_details;
 ?>
-        <label class="customizer-checkbox">
+    <label class="customizer-checkbox">
         <input type="checkbox" value="<?php echo esc_attr( $this->value() ); ?>" <?php $this->link(); checked( $this->value() ); ?> />
         <strong><?php echo esc_html( $this->label ); ?></strong>
         <?php if ( $smof_details[$this->id]['desc'] != "" ) { ?>
@@ -130,7 +140,7 @@ class Customize_SMOF_Multicheck_Control extends WP_Customize_Control {
 
       (isset($smof_data[$value['id']]))? $multi_stored = $smof_data[$value['id']] : $multi_stored="";
   ?>
-    <label class="customizer-text">
+    <label class="customizer-multicheck">
       <span class="customize-control-title">
         <?php echo esc_html( $this->label ); ?>
         <?php if ( $smof_details[$this->id]['desc'] != "" ) { ?>
@@ -201,7 +211,7 @@ class Customize_SMOF_Upload_Control extends WP_Customize_Control {
   public function render_content() {
     global $smof_details;
 ?>
-    <label>
+    <label class="customizer-upload">
       <span class="customize-control-title">
         <?php echo esc_html( $this->label ); ?>
         <?php if ( $smof_details[$this->id]['desc'] != "" ) { ?>
@@ -221,7 +231,7 @@ class Customize_SMOF_Media_Control extends WP_Customize_Control {
   public function render_content() {
     global $smof_details;
 ?>
-        <label class="customizer-text">
+    <label class="customizer-mediacontrol">
       <span class="customize-control-title">
         <?php echo esc_html( $this->label ); ?>
         <?php if ( $smof_details[$this->id]['desc'] != "" ) { ?>
@@ -326,7 +336,7 @@ class Customize_SMOF_Typography_Control extends WP_Customize_Control {
     global $smof_details;
 
 ?>
-        <label class="customizer-text">
+    <label class="customizer-typography">
       <span class="customize-control-title">
         <?php echo esc_html( $this->label ); ?>
         <?php if ( $smof_details[$this->id]['desc'] != "" ) { ?>
@@ -344,7 +354,7 @@ class Customize_SMOF_Border_Control extends WP_Customize_Control {
     global $smof_details;
 
 ?>
-    <label class="customizer-text">
+    <label class="customizer-border">
       <span class="customize-control-title">
         <?php echo esc_html( $this->label ); ?>
         <?php if ( $smof_details[$this->id]['desc'] != "" ) { ?>
@@ -390,7 +400,7 @@ class Customize_SMOF_Images_Control extends WP_Customize_Control {
 
           }
       ?>
-    <label class="customizer-text">
+    <label class="customizer-images">
       <span class="customize-control-title">
         <?php echo esc_html( $this->label ); ?>
         <?php if ( $smof_details[$this->id]['desc'] != "" ) { ?>
@@ -411,7 +421,7 @@ class Customize_SMOF_Info_Control extends WP_Customize_Control {
     global $smof_details;
 
 ?>
-        <label class="customizer-text">
+    <label class="customizer-info">
       <span class="customize-control-title">
         <?php echo esc_html( $this->label ); ?>
         <?php if ( $smof_details[$this->id]['desc'] != "" ) { ?>
@@ -619,7 +629,7 @@ class Customize_SMOF_Slider_Control extends WP_Customize_Control {
     global $smof_details;
 
 ?>
-        <label class="customizer-text">
+    <label class="customizer-slider">
       <span class="customize-control-title">
         <?php echo esc_html( $this->label ); ?>
         <?php if ( $smof_details[$this->id]['desc'] != "" ) { ?>
@@ -637,7 +647,7 @@ class Customize_SMOF_Sorter_Control extends WP_Customize_Control {
     global $smof_details;
 
 ?>
-        <label class="customizer-text">
+    <label class="customizer-sorter">
       <span class="customize-control-title">
         <?php echo esc_html( $this->label ); ?>
         <?php if ( $smof_details[$this->id]['desc'] != "" ) { ?>
@@ -655,7 +665,7 @@ class Customize_SMOF_Titles_Control extends WP_Customize_Control {
     global $smof_details;
 
 ?>
-        <label class="customizer-text">
+    <label class="customizer-titles">
       <span class="customize-control-title">
         <?php echo esc_html( $this->label ); ?>
         <?php if ( $smof_details[$this->id]['desc'] != "" ) { ?>
@@ -673,7 +683,7 @@ class Customize_SMOF_SelectGoogleFont_Control extends WP_Customize_Control {
     global $smof_details;
 
 ?>
-        <label class="customizer-text">
+    <label class="customizer-googlefont">
       <span class="customize-control-title">
         <?php echo esc_html( $this->label ); ?>
         <?php if ( $smof_details[$this->id]['desc'] != "" ) { ?>
@@ -716,8 +726,7 @@ class Customize_SMOF_Sliderui_Control extends WP_Customize_Control {
     $output .= '<input type="text" '.$this->get_link().' name="'.$this->id.'" id="'.$this->id.'" value="'. $this->value() .'" class="mini" '. $s_edit .' />';
     $output .= '<div id="'.$this->id.'-slider" class="smof_sliderui" style="margin-left: 7px;" '. $s_data .'></div>';
 ?>
-          <label>
-            <div class="customizer-sliderui">
+      <label class="customizer-sliderui">
           <span class="customize-control-title">
             <?php echo esc_html( $this->label ); ?>
           </span>
@@ -725,7 +734,6 @@ class Customize_SMOF_Sliderui_Control extends WP_Customize_Control {
           <?php if ( $smof_details[$this->id]['desc'] != "" ) { ?>
             <a href="#" class="button tooltip" title="<?php echo strip_tags( esc_html( $smof_details[$this->id]['desc'] ) ); ?>">?</a>
           <?php } ?>
-        </div>
       </label>
         <?php
   }
@@ -736,7 +744,7 @@ class Customize_SMOF_Switch_Control extends WP_Customize_Control {
     global $smof_details;
 
 ?>
-          <label class="customizer-switch switch-options">
+      <label class="customizer-switch switch-options">
         <span class="customize-control-title">
           <?php echo esc_html( $this->label ); ?>
         </span>
