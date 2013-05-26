@@ -104,6 +104,17 @@ if (!function_exists('of_options')) {
     );
 
     $of_options[] = array(
+      "name"      => "",
+      "desc"      => "",
+      "id"        => "help1",
+      "std"       => "<h3 style=\"margin: 0 0 10px;\">General theme Options</h3>
+                      In this section you can define some basic options for your theme,
+                      such as upload a logo, show or hide the breadcrumbs and more.",
+      "icon"      => true,
+      "type"      => "info"
+    );
+
+    $of_options[] = array(
       "name"      => __("Logo", "shoestrap"),
       "desc"      => __("Upload a logo image using the media uploader, or define the URL directly. Use the shortcodes [site_url] or [site_url_secure] for setting default URLs", "shoestrap"),
       "id"        => "logo",
@@ -127,6 +138,16 @@ if (!function_exists('of_options')) {
       "customizer"=> array(),
       "std"       => 0,
       "type"      => "switch"
+    );
+
+    $of_options[] = array(
+      "name"      => "",
+      "desc"      => "",
+      "id"        => "help2",
+      "std"       => "<h3 style=\"margin: 0 0 10px;\">Border-Radius and Padding Base</h3>
+                      These 2 settings affect varius areas of your site, most notably buttons.",
+      "icon"      => true,
+      "type"      => "info"
     );
 
     $of_options[] = array(
@@ -154,6 +175,18 @@ if (!function_exists('of_options')) {
       "advanced"  => true,
       "less"      => true,
       "type"      => "sliderui"
+    );
+
+    $of_options[] = array(
+      "name"      => "",
+      "desc"      => "",
+      "id"        => "help3",
+      "std"       => "<h3 style=\"margin: 0 0 10px;\">Featured Images</h3>
+                      Here you can select if you want to display the featured images in post archives and individual posts.
+                      Please note that these apply to posts, pages, as well as custom post types.
+                      You can select image sizes independently for archives and individual posts view.",
+      "icon"      => true,
+      "type"      => "info"
     );
 
     $of_options[] = array(
@@ -227,13 +260,17 @@ if (!function_exists('of_options')) {
     );
 
     $of_options[] = array(
-      "name"      => __("Background position", "shoestrap"),
-      "desc"      => __("Changes how the background image or pattern is displayed from scroll to fixed position. Default: Scroll.", "shoestrap"),
-      "id"        => "background_fixed_toggle",
-      "std"       => 0,
-      "on"        => __("Fixed", "shoestrap"),
-      "off"       => __("Scroll", "shoestrap"),
-      "type"      => "switch"
+      "name"      => "",
+      "desc"      => "",
+      "id"        => "help4",
+      "std"       => "<h3 style=\"margin: 0 0 10px;\">Background Images</h3>
+                      If you want a background image, you can select one here.
+                      You can either upload a custom image, or use one of our pre-defined image patterns.
+                      If you both upload a custom image and select a pattern, your custom image will override the selected pattern.
+                      Please note that the image only applies to the area on the right and left of the main content area,
+                      to ensure better content readability. You can also set the background position to be fixed or scroll!",
+      "icon"      => true,
+      "type"      => "info"
     );
 
     $of_options[] = array(
@@ -311,10 +348,31 @@ if (!function_exists('of_options')) {
       "options"   => $bg_pattern_images,
     );
 
+    $of_options[] = array(
+      "name"      => __("Background position", "shoestrap"),
+      "desc"      => __("Changes how the background image or pattern is displayed from scroll to fixed position. Default: Scroll.", "shoestrap"),
+      "id"        => "background_fixed_toggle",
+      "std"       => 0,
+      "on"        => __("Fixed", "shoestrap"),
+      "off"       => __("Scroll", "shoestrap"),
+      "type"      => "switch"
+    );
+
     // Layout Settings
     $of_options[] = array(
       "name"      => __("Layout Settings", "shoestrap"),
       "type"      => "heading"
+    );
+
+    $of_options[] = array(
+      "name"      => "",
+      "desc"      => "",
+      "id"        => "help5",
+      "std"       => "<h3 style=\"margin: 0 0 10px;\">Layout Options</h3>
+                      In this area you can select your site's layout, the width of your sidebars,
+                      as well as other, more advanced options.",
+      "icon"      => true,
+      "type"      => "info"
     );
 
     $of_options[] = array(
@@ -489,6 +547,21 @@ if (!function_exists('of_options')) {
     );
 
     $of_options[] = array(
+      "name"      => "",
+      "desc"      => "",
+      "id"        => "help6",
+      "std"       => "<h3 style=\"margin: 0 0 10px;\">Colors</h3>
+                      The Background color you select will also affect other elements on your site,
+                      such as table borders, widgets colors, input elements, dropdowns etc.
+                      The branding colors you select will be used throughout the site in various elements.
+                      One of the most important settings in your branding is your primary color,
+                      since this will be used more often.
+                      ",
+      "icon"      => true,
+      "type"      => "info"
+    );
+
+    $of_options[] = array(
       "name"      => __("Background Color", "shoestrap"),
       "desc"      => __("Pick a background color for your site. Default: #ffffff.", "shoestrap"),
       "id"        => "color_body_bg",
@@ -572,6 +645,19 @@ if (!function_exists('of_options')) {
     $of_options[] = array(
       "name"      => __("NavBar Settings", "shoestrap"),
       "type"      => "heading"
+    );
+
+    $url = admin_url( 'nav-menus.php' );
+    $of_options[] = array(
+      "name"      => "",
+      "desc"      => "",
+      "id"        => "help7",
+      "std"       => "<h3 style=\"margin: 0 0 10px;\">Layout Options</h3>
+                      You can activate or deactivate your Primary NavBar here, and define its properties.
+                      Please note that you might have to manually create a menu if it doesn't already exist
+                      and add items to it from <a href=\"$url\">this page</a>.",
+      "icon"      => true,
+      "type"      => "info"
     );
 
     $of_options[] = array(
@@ -701,6 +787,21 @@ if (!function_exists('of_options')) {
       "type"      => "heading"
     );
 
+    $url = admin_url( 'widgets.php' );
+    $of_options[] = array(
+      "name"      => "",
+      "desc"      => "",
+      "id"        => "help8",
+      "std"       => "<h3 style=\"margin: 0 0 10px;\">Jumbotron</h3>
+                      A \"Jumbotron\", also known as \"Hero\" area,
+                      is an area in your site where you can display in a prominent position things that matter to you.
+                      This can be a slideshow, some text or whatever else you wish.
+                      This area is implemented as a widget area, so in order for something to be displayed
+                      you will have to add a widget from <a href=\"$url\">here</a>.",
+      "icon"      => true,
+      "type"      => "info"
+    );
+
     $of_options[] = array(
       "name"      => __("Jumbotron Background Color", "shoestrap"),
       "desc"      => __("Select the background color for your Jumbotron area. Please note that this area will only be visible if you assign a widget to the \"Jumbotron\" Widget Area. Default: #EEEEEE.", "shoestrap"),
@@ -800,6 +901,18 @@ if (!function_exists('of_options')) {
       "type"      => "heading"
     );
 
+    $url = admin_url( 'widgets.php' );
+    $of_options[] = array(
+      "name"      => "",
+      "desc"      => "",
+      "id"        => "help9",
+      "std"       => "<h3 style=\"margin: 0 0 10px;\">Jumbotron</h3>
+                      You can enable an extra header from here. In this header you can add your logo, and any other widgets you wish.
+                      To add widgets on your header, visit <a href=\"$url\">this page</a>.",
+      "icon"      => true,
+      "type"      => "info"
+    );
+
     $of_options[] = array(
       "name"      => __("Display the Header.", "shoestrap"),
       "desc"      => __("Turn this ON to display the header. Default: OFF", "shoestrap"),
@@ -879,8 +992,8 @@ if (!function_exists('of_options')) {
     );
 
     $of_options[] = array(
-      "name"      => "Footer Widget Area Border Top",
-      "desc"      => "This is a border specific option.",
+      "name"      => "Footer Top Border",
+      "desc"      => "Select the border options for your Footer",
       "id"        => "footer_widget_area_border_top",
       "type"      => "border",
       "std"       => array(
@@ -921,6 +1034,18 @@ if (!function_exists('of_options')) {
     $of_options[] = array(
       "name"      => __("Advanced Settings", "shoestrap"),
       "type"      => "heading"
+    );
+
+    $url = admin_url( 'widgets.php' );
+    $of_options[] = array(
+      "name"      => "",
+      "desc"      => "",
+      "id"        => "help10",
+      "std"       => "<h3 style=\"margin: 0 0 10px;\">CAUTION</h3>
+                      The settings bellow can pottentially harm your site if you do not properly comprehend them and what they do.
+                      If unsure, simply let them be.",
+      "icon"      => true,
+      "type"      => "info"
     );
 
     $url = admin_url( 'options-permalink.php' );
