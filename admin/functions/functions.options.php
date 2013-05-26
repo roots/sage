@@ -236,7 +236,6 @@ if (!function_exists('of_options')) {
       "type"      => "switch"
     );
 
-
     $of_options[] = array(
       "name"      => __("Use a Background Image", "shoestrap"),
       "desc"      => __("Enable this option to upload a custom background image for your site. This will override any patterns you may have selected. Default: OFF.", "shoestrap"),
@@ -246,26 +245,13 @@ if (!function_exists('of_options')) {
     );
 
     $of_options[] = array(
-      "name"      => __("Choose a Background Image", "shoestrap"),
-      "desc"      => __("Select a background pattern.", "shoestrap"),
-      "id"        => "background_image",
-      "fold"      => "background_image_toggle",
-      "std"       => "",
-      "type"      => "tiles",
-      "options"   => $bg_images,
-    );
-
-
-    $of_options[] = array(
       "name"      => __("Upload a Custom Background Image", "shoestrap"),
       "desc"      => __("Upload a Custom Background image using the media uploader, or define the URL directly. This will override any above image selected.", "shoestrap"),
-      "id"        => "background_custom_image",
+      "id"        => "background_image",
       "fold"      => "background_image_toggle",
       "std"       => "",
       "type"      => "media"
     );
-
-
 
     $of_options[] = array(
       "name"      => __("Background Image Positioning", "shoestrap"),
@@ -893,89 +879,18 @@ if (!function_exists('of_options')) {
     );
 
     $of_options[] = array(
-      "name"    => __("Footer Widgets Area", "shoestrap"),
-      "desc"    => "",
-      "id"    => "",
-      "less"    => true,
-      "std"     => "<h3 style=\"margin: 0 0 10px;\">".__("Footer Widget Area", "shoestrap").".</h3>".__("Below you can enable the footer widget area. This area allows you to create dynamic widget areas.", "shoestrap"),
-      "icon"    => true,
-      "type"    => "info"      
-    );      
-
-    
-    $of_options[] = array(
-      "name"      => __("Footer Widget Area", "shoestrap"),
-      "desc"      => __("Turn this ON to display a footer widget area with dynamic sidebars. Default: Enable", "shoestrap"),
-      "id"        => "footer_widget_area_sidebars",
-      "std"       => 3,
-      "type"      => "images",
-      "customizer"=> array(),
-      "options"   => array(
-        0         => get_template_directory_uri() . '/admin/assets/images/layout-off.png',
-        1         => get_template_directory_uri() . '/admin/assets/images/footer-widgets-1.png',
-        2         => get_template_directory_uri() . '/admin/assets/images/footer-widgets-2.png',
-        3         => get_template_directory_uri() . '/admin/assets/images/footer-widgets-3.png',
-        4         => get_template_directory_uri() . '/admin/assets/images/footer-widgets-4.png',
+      "name"      => "Footer Widget Area Border Top",
+      "desc"      => "This is a border specific option.",
+      "id"        => "footer_widget_area_border_top",
+      "type"      => "border",
+      "std"       => array(
+        'width'   => '2',
+        'style'   => 'solid',
+        'color'   => shoestrap_getVariable( 'color_brand_info' ),
       )
-    );       
-
-    $of_options[] = array(
-      "name"      => __("Footer Widget Area Background Color", "shoestrap"),
-      "desc"      => __("Select the text color for your footer. Default: #333333.", "shoestrap"),
-      "id"        => "footer_widget_area_background",
-      "std"       => "#333333",
-      "customizer"=> array(),
-      "type"      => "color"
     );
 
-    $of_options[] = array(
-      "name"      => __("Footer Widget Area Background Opacity", "shoestrap"),
-      "desc"      => __("Select the opacity level for the footer bar. Default: 100%.", "shoestrap"),
-      "id"        => "footer_widget_area_opacity",
-      "std"       => 100,
-      "min"       => 30,
-      "max"       => 100,
-      "customizer"=> array(),      
-      "type"      => "sliderui"
-    );              
-
-    $of_options[] = array(
-      "name"      => __("Footer Widget Area Font Color", "shoestrap"),
-      "desc"      => __("Select the text color for your footer widget box. Default: #333333.", "shoestrap"),
-      "id"        => "footer_widget_area_color",
-      "std"       => "#333333",
-      "customizer"=> array(),
-      "type"      => "color"
-    );  
-
-    $of_options[] = array(  
-        "name"    => "Footer Widget Area Border Top",
-        "desc"    => "This is a border specific option.",
-        "id"    => "footer_widget_area_border_top",
-        "less"    => true,
-        "std"     => array(
-                  'width' => '2',
-                  'style' => 'dotted',
-                  'color' => '#444444'
-                ),
-        "fold"      => "footer_widget_area_toggle",
-        "type"    => "border"
-    );   
-         $of_options[] = array(  
-        "name"    => "Footer Widget Area Border Bottom",
-        "desc"    => "This is a border specific option.",
-        "id"    => "footer_widget_area_border_bottom",
-        "less"    => true,
-        "std"     => array(
-                  'width' => '2',
-                  'style' => 'dotted',
-                  'color' => '#444444'
-                ),
-        "fold"      => "footer_widget_area_toggle",
-        "type"    => "border"
-    );   
-
-    // Footer
+    // Typography
     $of_options[] = array(
       "name"      => __("Typography", "shoestrap"),
       "type"      => "heading"

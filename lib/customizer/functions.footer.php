@@ -42,66 +42,7 @@ function shoestrap_footer_widget_area_sidebars() {
 add_action( 'widgets_init', 'shoestrap_footer_widget_area_sidebars' );
 
 /*
- * Creates the customizer icon on the bottom-left corner of our site
- * (visible only by admins)
- */
-function footer_widget_area() {
-  global $wp_customize;
-  if (shoestrap_getVariable( 'footer_widget_area_sidebars') == 0 )
-    return;
-
-
-
-
-  $bg = shoestrap_getVariable( 'footer_widget_area_background' );
-  $cl = shoestrap_getVariable( 'footer_widget_area_color' );
-  $opacity = (intval(shoestrap_getVariable( 'footer_widget_area_opacity' )))/100;
-  $rgb = shoestrap_get_rgb($bg, true);  
-  $bt = shoestrap_getVariable( 'footer_widget_area_border_top' );
-  $bb = shoestrap_getVariable( 'footer_widget_area_border_bottom' );
-  ?>
-  <style>
-    #footer_widget_area{
-      color:<?php echo $cl ?>;     
-    <?php if ($opacity != 1 && $opacity != "") : ?>
-      background: rgba(<?php echo $rgb; ?>,<?php echo $opacity; ?>);
-    <?php else : ?>
-      background: <?php echo $bg ?>; 
-    <?php endif; ?>
-      padding: 0px 5px 20px 5px;
-      border-top: <?php echo $bt['width']?>px <?php echo $bt['style']?> <?php echo $bt['color']?>;
-      border-bottom: <?php echo $bb['width']?>px <?php echo $bb['style']?> <?php echo $bb['color']?>;
-    }
-    #footer_widget_area li {
-      list-style: none;
-    }
-  </style>  
-  <div id="footer_widget_area" class="row">
-  <div class="<?php echo shoestrap_container_class(); ?>">
-
-    <?php
-
-      $columns = 12/shoestrap_getVariable( 'footer_widget_area_sidebars' );
-      for ($i = 1; $i <= $columns+1; $i++){
-        ?>
-        <div class="col col-lg-<?php echo $columns; ?>">
-          <?php dynamic_sidebar( 'footer-widget-sidebar-'.$i ); ?> 
-        </div>
-        <?php
-      }
-
-
-     ?>
-    </div>
-  </div>
-  
-  
-<?php }
-add_action( 'shoestrap_before_footer', 'footer_widget_area' );
-
-/*
- * Creates the customizer icon on the bottom-left corner of our site
- * (visible only by admins)
+ * Creates the customizer icon (visible only by admins)
  */
 function footer_icon() {
   global $wp_customize;
