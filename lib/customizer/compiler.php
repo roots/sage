@@ -572,7 +572,7 @@ function shoestrap_variables_less() {
 @screen-tablet-max:          @screen-small-max;
 
 // Large screen / wide desktop
-@screen-large:               ' . $screen_large . ' px;
+@screen-large:               ' . $screen_large . 'px;
 @screen-large-desktop:       @screen-large;
 
 
