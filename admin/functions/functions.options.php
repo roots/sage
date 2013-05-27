@@ -97,6 +97,8 @@ if (!function_exists('of_options')) {
     // Set the Options Array
     global $of_options, $smof_details;
 
+    $of_options = array();
+
     // General Options
     $of_options[] = array(
       "name"      => __("General", "shoestrap"),
@@ -120,6 +122,7 @@ if (!function_exists('of_options')) {
       "id"        => "logo",
       "std"       => "",
       "type"      => "media"
+      "customizer"=> array(),
     );
 
     $of_options[] = array(
@@ -128,6 +131,7 @@ if (!function_exists('of_options')) {
       "id"        => "breadcrumbs",
       "std"       => 0,
       "type"      => "switch"
+      "customizer"=> array(),
     );
 
     $of_options[] = array(
@@ -138,6 +142,7 @@ if (!function_exists('of_options')) {
       "customizer"=> array(),
       "std"       => 0,
       "type"      => "switch"
+      "customizer"=> array(),
     );
 
     $of_options[] = array(
@@ -160,7 +165,6 @@ if (!function_exists('of_options')) {
       "max"       => 50,
       "advanced"  => true,
       "less"      => true,
-      "customizer"=> array(),
       "type"      => "sliderui"
     );
 
@@ -195,6 +199,7 @@ if (!function_exists('of_options')) {
       "id"        => "feat_img_archive",
       "std"       => 0,
       "type"      => "switch"
+      "customizer"=> array(),
     );
 
     $of_options[] = array(
@@ -227,6 +232,7 @@ if (!function_exists('of_options')) {
       "id"        => "feat_img_post",
       "std"       => 1,
       "type"      => "switch"
+      "customizer"=> array(),
     );
 
     $of_options[] = array(
@@ -288,6 +294,7 @@ if (!function_exists('of_options')) {
       "fold"      => "background_image_toggle",
       "std"       => "",
       "type"      => "media"
+      "customizer"=> array(),
     );
 
     $of_options[] = array(
@@ -313,6 +320,7 @@ if (!function_exists('of_options')) {
         'repeat'     => __( 'Tile', 'shoestrap' ),
         'repeat-x'   => __( 'Tile Horizontally', 'shoestrap' ),
         'repeat-y'   => __( 'Tile Vertically', 'shoestrap' ),
+      "customizer"=> array(),
       ),
     );
 
@@ -327,6 +335,7 @@ if (!function_exists('of_options')) {
         'left'    => __( 'Left', 'shoestrap' ),
         'right'   => __( 'Right', 'shoestrap' ),
         'center'  => __( 'Center', 'shoestrap' ),
+      "customizer"=> array(),
       ),
     );
 
@@ -390,6 +399,7 @@ if (!function_exists('of_options')) {
         4         => get_template_directory_uri() . '/admin/assets/images/3cr.png',
         5         => get_template_directory_uri() . '/admin/assets/images/3cm.png',
       )
+      "customizer"=> array(),
     );
 
     $of_options[] = array(
@@ -421,7 +431,6 @@ if (!function_exists('of_options')) {
       "step"      => 1,
       "max"       => 120,
       "advanced"  => true,
-      "customizer"=> array(),
       "type"      => "sliderui"
     );    
 
@@ -443,7 +452,6 @@ if (!function_exists('of_options')) {
       "step"      => 1,
       "max"       => 6,
       "advanced"  => true,
-      "customizer"=> array(),
       "type"      => "sliderui"
     );
 
@@ -456,7 +464,6 @@ if (!function_exists('of_options')) {
       "step"      => 1,
       "max"       => 4,
       "advanced"  => true,
-      "customizer"=> array(),
       "type"      => "sliderui"
     );
 
@@ -464,7 +471,6 @@ if (!function_exists('of_options')) {
       "name"      => __("Custom Grid", "shoestrap"),
       "desc"      => "<strong>" . __("CAUTION:", "shoestrap") . "</strong> " . __("Only use this if you know what you are doing, as changing these values might break the way your site looks on some devices. The default settings should be fine for the vast majority of sites.", "shoestrap"),
       "id"        => "custom_grid",
-      "customizer"=> array(),
       "std"       => 0,
       "type"      => "switch"
     );
@@ -766,7 +772,6 @@ if (!function_exists('of_options')) {
       "step"      => 1,
       "max"       => 600,
       "less"      => true,
-      "customizer"=> array(),
       "type"      => "sliderui"
     );
 
@@ -817,6 +822,7 @@ if (!function_exists('of_options')) {
       "desc"      => __("Upload a Background image using the media uploader, or define the URL directly. Use the shortcodes [site_url] or [site_url_secure] for setting default URLs", "shoestrap"),
       "id"        => "jumbotron_bg_img",
       "std"       => "",
+      "customizer"=> array(),
       "type"      => "media"
     );
 
@@ -833,6 +839,7 @@ if (!function_exists('of_options')) {
         'repeat-x'   => __( 'Tile Horizontally', 'shoestrap' ),
         'repeat-y'   => __( 'Tile Vertically', 'shoestrap' ),
       ),
+      "customizer"=> array(),
     );
 
     $of_options[] = array(
@@ -847,6 +854,7 @@ if (!function_exists('of_options')) {
         'right'   => __( 'Right', 'shoestrap' ),
         'center'  => __( 'Center', 'shoestrap' ),
       ),
+      "customizer"=> array(),
     );
 
     $of_options[] = array(
@@ -970,7 +978,6 @@ if (!function_exists('of_options')) {
       "std"       => 100,
       "min"       => 30,
       "max"       => 100,
-      "customizer"=> array(),      
       "type"      => "sliderui"
     );    
 
@@ -1018,7 +1025,6 @@ if (!function_exists('of_options')) {
       "step"      => 1,
       "max"       => 22,
       "less"      => true,
-      "customizer"=> array(),
       "type"      => "sliderui"
     );
 
@@ -1028,6 +1034,7 @@ if (!function_exists('of_options')) {
       "id"        => "typography_sans_serif",
       "std"       => "'Helvetica Neue', Helvetica, Arial, sans-serif",
       "type"      => "text"
+      "customizer"=> array(),
     );
 
     // Advanced Settings
