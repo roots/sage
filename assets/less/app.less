@@ -280,3 +280,14 @@ a.toggle-nav {
     margin-top: ( @navbar-height - @input-height-base ) / 2;
   }
 }
+
+.jumbotron {
+  border-radius: 0px;
+
+}
+
+#boxed-container {
+  .jumbotron {
+    .border-bottom-radius(@border-radius-large)
+  }
+}

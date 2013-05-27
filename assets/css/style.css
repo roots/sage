@@ -5081,3 +5081,10 @@ fieldset[disabled] #social-sharing .shareme .box {
 .topnavbar input.search-query {
   margin-top: 7px;
 }
+.jumbotron {
+  border-radius: 0px;
+}
+#boxed-container .jumbotron {
+  border-bottom-right-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
