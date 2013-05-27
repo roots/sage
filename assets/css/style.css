@@ -833,7 +833,7 @@ pre code {
     max-width: 940px;
   }
 }
-@media screen and (min-width: 1200 px) {
+@media screen and (min-width: 1200px) {
   .container {
     max-width: 1170px;
   }
