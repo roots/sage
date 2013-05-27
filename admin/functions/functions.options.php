@@ -330,11 +330,11 @@ if (!function_exists('of_options')) {
       "fold"      => "background_image_position_toggle",
       "std"       => "repeat",
       "type"      => "radio",
+      "customizer"=> array(),
       "options"   => array(
         'left'    => __( 'Left', 'shoestrap' ),
         'right'   => __( 'Right', 'shoestrap' ),
         'center'  => __( 'Center', 'shoestrap' ),
-      "customizer"=> array(),
       ),
     );
 
@@ -1033,6 +1033,108 @@ if (!function_exists('of_options')) {
       "std"       => "'Helvetica Neue', Helvetica, Arial, sans-serif",
       "type"      => "text",
       "customizer"=> array(),
+    );
+
+    // Social
+    $of_options[] = array(
+      "name"      => __("Social Settings", "shoestrap"),
+      "type"      => "heading"
+    );
+
+    $of_options[] = array(
+      "name"      => "Facebook Link",
+      "desc"      => "A link to your facebook profile/page.",
+      "id"        => "fb_link",
+      "std"       => "",
+      "type"      => "text"
+    );
+
+    $of_options[] = array(
+      "name"      => "Twitter Link",
+      "desc"      => "A link to your twitter profile.",
+      "id"        => "tw_link",
+      "std"       => "",
+      "type"      => "text"
+    );
+
+    $of_options[] = array(
+      "name"      => "Google Plus Link",
+      "desc"      => "A link to your Google+ profile/page.",
+      "id"        => "gp_link",
+      "std"       => "",
+      "type"      => "text"
+    );
+
+    $of_options[] = array(
+      "name"      => "Youtube Link",
+      "desc"      => "A link to your YouTube profile/page.",
+      "id"        => "yt_link",
+      "std"       => "",
+      "type"      => "text"
+    );
+
+    $of_options[] = array(
+      "name"      => "LinkedIn Link",
+      "desc"      => "A link to your Linked-in profile/page.",
+      "id"        => "li_link",
+      "std"       => "",
+      "type"      => "text"
+    );
+
+    $of_options[] = array(
+      "name"      => "Pinterest Link",
+      "desc"      => "A link to your Pinterest profile/page.",
+      "id"        => "pi_link",
+      "std"       => "",
+      "type"      => "text"
+    );
+
+    $of_options[] = array(
+      "name"      => "Vimeo Link",
+      "desc"      => "A link to your Vimeo profile/page.",
+      "id"        => "vi_link",
+      "std"       => "",
+      "type"      => "text"
+    );
+
+    $of_options[] = array(
+      "name"      => "Tumblr Link",
+      "desc"      => "A link to your Tumblr profile/page.",
+      "id"        => "tu_link",
+      "std"       => "",
+      "type"      => "text"
+    );
+
+    $of_options[] = array(
+      "name"      => "Github Link",
+      "desc"      => "A link to your Github profile/page.",
+      "id"        => "gi_link",
+      "std"       => "",
+      "type"      => "text"
+    );
+
+    $of_options[] = array(
+      "name"      => "MySpace Link",
+      "desc"      => "A link to your MySpace profile/page.",
+      "id"        => "my_link",
+      "std"       => "",
+      "type"      => "text"
+    );
+
+    $of_options[] = array(
+      "name"      => "Vkontakte Link",
+      "desc"      => "A link to your Vkontakte profile/page.",
+      "id"        => "vk_link",
+      "std"       => "",
+      "type"      => "text"
+    );
+
+    $of_options[] = array(
+      "name"      => "SoundCloud Link",
+      "desc"      => "A link to your SoundCloud profile/page.",
+      "id"        => "sc_link",
+      "std"       => "",
+      "type"      => "text"
     );
 
     // Advanced Settings
