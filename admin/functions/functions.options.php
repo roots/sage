@@ -121,7 +121,7 @@ if (!function_exists('of_options')) {
       "desc"      => __("Upload a logo image using the media uploader, or define the URL directly. Use the shortcodes [site_url] or [site_url_secure] for setting default URLs", "shoestrap"),
       "id"        => "logo",
       "std"       => "",
-      "type"      => "media"
+      "type"      => "media",
       "customizer"=> array(),
     );
 
@@ -130,7 +130,7 @@ if (!function_exists('of_options')) {
       "desc"      => __("Display Breadcrumbs. Default: OFF.", "shoestrap"),
       "id"        => "breadcrumbs",
       "std"       => 0,
-      "type"      => "switch"
+      "type"      => "switch",
       "customizer"=> array(),
     );
 
@@ -141,8 +141,7 @@ if (!function_exists('of_options')) {
       "less"      => true,
       "customizer"=> array(),
       "std"       => 0,
-      "type"      => "switch"
-      "customizer"=> array(),
+      "type"      => "switch",
     );
 
     $of_options[] = array(
@@ -198,7 +197,7 @@ if (!function_exists('of_options')) {
       "desc"      => __("Display featured Images on post archives (such as categories, tags, month view etc). Default: OFF.", "shoestrap"),
       "id"        => "feat_img_archive",
       "std"       => 0,
-      "type"      => "switch"
+      "type"      => "switch",
       "customizer"=> array(),
     );
 
@@ -231,7 +230,7 @@ if (!function_exists('of_options')) {
       "desc"      => __("Display featured Images on posts. Default: OFF.", "shoestrap"),
       "id"        => "feat_img_post",
       "std"       => 1,
-      "type"      => "switch"
+      "type"      => "switch",
       "customizer"=> array(),
     );
 
@@ -293,7 +292,7 @@ if (!function_exists('of_options')) {
       "id"        => "background_image",
       "fold"      => "background_image_toggle",
       "std"       => "",
-      "type"      => "media"
+      "type"      => "media",
       "customizer"=> array(),
     );
 
@@ -320,8 +319,8 @@ if (!function_exists('of_options')) {
         'repeat'     => __( 'Tile', 'shoestrap' ),
         'repeat-x'   => __( 'Tile Horizontally', 'shoestrap' ),
         'repeat-y'   => __( 'Tile Vertically', 'shoestrap' ),
-      "customizer"=> array(),
       ),
+      "customizer"=> array(),
     );
 
     $of_options[] = array(
@@ -399,7 +398,6 @@ if (!function_exists('of_options')) {
         4         => get_template_directory_uri() . '/admin/assets/images/3cr.png',
         5         => get_template_directory_uri() . '/admin/assets/images/3cm.png',
       )
-      "customizer"=> array(),
     );
 
     $of_options[] = array(
@@ -1033,7 +1031,7 @@ if (!function_exists('of_options')) {
       "desc"      => __("The main font for your site.", "shoestrap"),
       "id"        => "typography_sans_serif",
       "std"       => "'Helvetica Neue', Helvetica, Arial, sans-serif",
-      "type"      => "text"
+      "type"      => "text",
       "customizer"=> array(),
     );
 
