@@ -895,7 +895,7 @@ if (!function_exists('of_options')) {
     $of_options[] = array(
       "name"      => __("Center-align the content.", "shoestrap"),
       "desc"      => __("Turn this on to center-align the contents of the Jumbotron area. Default: OFF", "shoestrap"),
-      "id"        => "jumbotron_title_fit",
+      "id"        => "jumbotron_center",
       "customizer"=> array(),
       "std"       => 0,
       "type"      => "switch"

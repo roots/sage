@@ -66,3 +66,14 @@ function shoestrap_jumbotron_css() {
   echo '</style>';
 }
 add_action( 'wp_head', 'shoestrap_jumbotron_css' );
+
+/*
+ * Enables the fittext.js for h1 headings
+ */
+function jumbotron_fittext() {
+  if ( shoestrap_getVariable( 'jumbotron_title_fit' ) == 1 ) {
+    echo '<script src="assets/js/vendor/jquery.fittext.js"></script>';
+    echo '<script>jQuery(".jumbotron h1").fitText(1.3);</script>';
+  }      
+}
+add_action( 'wp_footer', 'jumbotron_fittext', 10 );
