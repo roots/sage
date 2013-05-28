@@ -876,7 +876,7 @@ if (!function_exists('of_options')) {
 
     $of_options[] = array(
       "name"      => __("Full-Width", "shoestrap"),
-      "desc"      => __("When Turned ON, the Jumbotron is no longer restricted by the width of your page, taking over the full width of your screen. This option is useful when you have assigned a slider widget on the Jumbotron area and you want its width to be the maximum width of the screen. Default: OFF.", "shoestrap"),
+      "desc"      => __("When Turned ON, the Jumbotron is no longer restricted by the width of your page, taking over the full width of your screen. This option is useful when you have assigned a slider widget on the Jumbotron area and you want its width to be the maximum width of the screen. Default: OFF. Notice: Boxed view should be OFF.", "shoestrap"),
       "id"        => "jumbotron_nocontainer",
       "customizer"=> array(),
       "std"       => 1,
