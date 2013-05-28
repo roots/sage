@@ -29,7 +29,8 @@ function shoestrap_navbar_searchbox() {
 add_action( 'shoestrap_post_main_nav', 'shoestrap_navbar_searchbox', 11 );
 
 function shoestrap_navbar_class() {
-  $pos  = shoestrap_getVariable( 'navbar_position' );
+  $pos    = shoestrap_getVariable( 'navbar_position' );
+  $style  = shoestrap_getVariable( 'navbar_style' );
 
   if ( $pos == 1 )
     $class = 'navbar navbar-fixed-top';
@@ -37,7 +38,7 @@ function shoestrap_navbar_class() {
     $class = 'navbar navbar-fixed-bottom';
   else $class = 'navbar navbar-static-top';
 
-  return $class;
+  return $class . ' style' . $style;
 }
 
 function shoestrap_secondary_navbar() {

@@ -291,3 +291,17 @@ a.toggle-nav {
     .border-bottom-radius(@border-radius-large)
   }
 }
+
+.navbar {
+  &.style1 {
+    li > a {
+      padding-bottom: (((@navbar-height - @line-height-computed) / 2) - 3);
+    }
+    .active > a,
+    .active > a:hover,
+    .active > a:focus {
+      background: @navbar-bg;
+      border-bottom: 3px inset @brand-primary;
+    }
+  }
+}

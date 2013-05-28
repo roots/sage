@@ -773,15 +773,22 @@ if (!function_exists('of_options')) {
       "type"      => "sliderui"
     );
 
-    // TODO: Make this a dropdown or an image control so that people can select among more than 1 styles.
     $of_options[] = array(
-      "name"      => __("Alternative style for NavBars", "shoestrap"),
+      "name"      => __("Menu Style", "shoestrap"),
       "desc"      => __("You can use an alternative menu style for your NavBars. OFF by default. ", "shoestrap"),
-      "id"        => "navbar_altmenu",
-      "fold"      => "navbar_toggle",
+      "id"        => "navbar_style",
       "std"       => 0,
+      "type"      => "images",
       "customizer"=> array(),
-      "type"      => "switch"
+      "options"   => array(
+        // TODO: create images and styles
+        0         => get_template_directory_uri() . '/admin/assets/images/1c.png',
+        1         => get_template_directory_uri() . '/admin/assets/images/2cr.png',
+        2         => get_template_directory_uri() . '/admin/assets/images/2cl.png',
+        3         => get_template_directory_uri() . '/admin/assets/images/3cl.png',
+        4         => get_template_directory_uri() . '/admin/assets/images/3cr.png',
+        5         => get_template_directory_uri() . '/admin/assets/images/3cm.png',
+      )
     );
 
     // Jumbotron (Hero)

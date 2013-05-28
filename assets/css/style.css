@@ -5088,3 +5088,12 @@ fieldset[disabled] #social-sharing .shareme .box {
   border-bottom-right-radius: 6px;
   border-bottom-left-radius: 6px;
 }
+.navbar.style1 li > a {
+  padding-bottom: 12px;
+}
+.navbar.style1 .active > a,
+.navbar.style1 .active > a:hover,
+.navbar.style1 .active > a:focus {
+  background: #eeeeee;
+  border-bottom: 3px inset #428bca;
+}
