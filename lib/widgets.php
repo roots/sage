@@ -39,10 +39,10 @@ function roots_widgets_init() {
     'before_title'  => '<h1>',
     'after_title'   => '</h1>',
   ));
-/*
+
   register_sidebar(array(
-    'name'          => __('Footer Left', 'shoestrap'),
-    'id'            => 'sidebar-footer-left',
+    'name'          => __('Footer Widget Area 1', 'shoestrap'),
+    'id'            => 'sidebar-footer-1',
     'before_widget' => '<section id="%1$s" class="panel widget %2$s"><div class="widget-inner">',
     'after_widget'  => '</div></section>',
     'before_title'  => '<div class="panel-heading">',
@@ -50,8 +50,8 @@ function roots_widgets_init() {
   ));
 
   register_sidebar(array(
-    'name'          => __('Footer Center', 'shoestrap'),
-    'id'            => 'sidebar-footer-center',
+    'name'          => __('Footer Widget Area 2', 'shoestrap'),
+    'id'            => 'sidebar-footer-2',
     'before_widget' => '<section id="%1$s" class="panel widget %2$s"><div class="widget-inner">',
     'after_widget'  => '</div></section>',
     'before_title'  => '<div class="panel-heading">',
@@ -59,14 +59,22 @@ function roots_widgets_init() {
   ));
 
   register_sidebar(array(
-    'name'          => __('Footer Right', 'shoestrap'),
-    'id'            => 'sidebar-footer-right',
+    'name'          => __('Footer Widget Area 3', 'shoestrap'),
+    'id'            => 'sidebar-footer-3',
     'before_widget' => '<section id="%1$s" class="panel widget %2$s"><div class="widget-inner">',
     'after_widget'  => '</div></section>',
     'before_title'  => '<div class="panel-heading">',
     'after_title'   => '</div>',
   ));
-*/
+
+  register_sidebar(array(
+    'name'          => __('Footer Widget Area 4', 'shoestrap'),
+    'id'            => 'sidebar-footer-4',
+    'before_widget' => '<section id="%1$s" class="panel widget %2$s"><div class="widget-inner">',
+    'after_widget'  => '</div></section>',
+    'before_title'  => '<div class="panel-heading">',
+    'after_title'   => '</div>',
+  ));
   
   do_action('shoestrap_footer_widget_area_sidebars'); // Dynamic footer sidebars
   do_action('shoestrap_slide_down_widget_area_sidebars'); // Dynamic slide-down sidebars

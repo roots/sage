@@ -1015,6 +1015,8 @@ if (!function_exists('of_options')) {
       )
     );
 
+    do_action('shoestrap_pro_footer');
+
     // Typography
     $of_options[] = array(
       "name"      => __("Typography", "shoestrap"),
@@ -1244,6 +1246,8 @@ if (!function_exists('of_options')) {
       "type"      => "transfer",
       "desc"      => __('You can tranfer the saved options data between different installs by copying the text inside the text box. To import data from another install, replace the data in the text box with the one from another install and click "Import Options".', "shoestrap"),
     );
+
+    do_action('smof_options_modifier');
 
     $smof_details = array();
     foreach($of_options as $option) {
