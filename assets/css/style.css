@@ -5106,3 +5106,7 @@ fieldset[disabled] #social-sharing .shareme .box {
   background: #eeeeee;
   border-top: 3px inset #428bca;
 }
+.navbar a.navbar-brand img {
+  max-height: 20px;
+  width: auto;
+}
