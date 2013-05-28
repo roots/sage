@@ -20,7 +20,6 @@ require_once locate_template('/lib/custom.php');          // Custom functions
 
 require_once locate_template('/lib/lessphp/lessc.inc.php');   // Include the less compiler
 require_once locate_template('/lib/image_resize/resize.php'); // Include the Image Resizer
-require_once locate_template('/lib/resize.php');              // Adding helper image resizing functions
 require_once locate_template('/lib/breadcrumbs.php');         // The Breadcrumbs Class and function
 
 
