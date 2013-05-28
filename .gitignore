@@ -2,3 +2,5 @@
 # Read about how to use .gitignore: https://help.github.com/articles/ignoring-files
 assets/css/style.css
 assets/css/style.less
+
+assets/css/style.css

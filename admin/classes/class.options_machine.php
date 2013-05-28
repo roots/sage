@@ -116,7 +116,7 @@ class Options_Machine {
 					$output .= '<div class="select_wrapper ' . $mini . '">';
 					$output .= '<select class="select of-input" name="'.$value['id'].'" id="'. $value['id'] .'">';
 					foreach ($value['options'] as $select_ID => $option) {
-						$output .= '<option id="' . $select_ID . '" value="'.$option.'" ' . selected($smof_data[$value['id']], $option, false) . ' />'.$option.'</option>';
+						$output .= '<option id="' . $select_ID . '" value="'.$select_ID.'" ' . selected($smof_data[$value['id']], $option, false) . ' />'.$option.'</option>';
 					 }
 					$output .= '</select></div>';
 				break;

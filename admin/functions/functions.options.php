@@ -751,7 +751,7 @@ if (!function_exists('of_options')) {
       "id"        => "navbar_position",
       "fold"      => "navbar_toggle",
       "std"       => 0,
-      "type"      => "radio",
+      "type"      => "select",
       "customizer"=> array(),
       "options"   => array(
         0         => __( 'Normal', 'shoestrap' ),
