@@ -9,7 +9,9 @@ if ( get_theme_mod( 'root_relative_urls' ) == 1  )
 if ( get_theme_mod( 'rewrites' ) == 1 )
   add_theme_support('rewrites');              // Enable URL rewrites
 
-add_theme_support('bootstrap-top-navbar');  // Enable Bootstrap's top navbar
+if ( get_theme_mod( 'navbar_toggle' ) == 1 )
+  add_theme_support('bootstrap-top-navbar');  // Enable Bootstrap's top navbar
+
 add_theme_support('bootstrap-gallery');     // Enable Bootstrap's thumbnails component on [gallery]
 
 if ( get_theme_mod( 'nice_search' ) == 1 )
