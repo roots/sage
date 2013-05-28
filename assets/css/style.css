@@ -5097,3 +5097,12 @@ fieldset[disabled] #social-sharing .shareme .box {
   background: #eeeeee;
   border-bottom: 3px inset #428bca;
 }
+.navbar.style2 li > a {
+  padding-top: 12px;
+}
+.navbar.style2 .active > a,
+.navbar.style2 .active > a:hover,
+.navbar.style2 .active > a:focus {
+  background: #eeeeee;
+  border-top: 3px inset #428bca;
+}

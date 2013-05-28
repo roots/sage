@@ -304,4 +304,15 @@ a.toggle-nav {
       border-bottom: 3px inset @brand-primary;
     }
   }
+  &.style2 {
+    li > a {
+      padding-top: (((@navbar-height - @line-height-computed) / 2) - 3);
+    }
+    .active > a,
+    .active > a:hover,
+    .active > a:focus {
+      background: @navbar-bg;
+      border-top: 3px inset @brand-primary;
+    }
+  }
 }
