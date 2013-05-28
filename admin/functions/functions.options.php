@@ -1006,7 +1006,7 @@ if (!function_exists('of_options')) {
     $of_options[] = array(
       "name"      => "Footer Top Border",
       "desc"      => "Select the border options for your Footer",
-      "id"        => "footer_widget_area_border_top",
+      "id"        => "footer_border_top",
       "type"      => "border",
       "std"       => array(
         'width'   => '2',

@@ -1,24 +1,26 @@
 <?php
 
 function shoestrap_footer_css() {
-  $bg = shoestrap_getVariable( 'footer_background' );
-  $cl = shoestrap_getVariable( 'footer_color' );
-  $opacity = (intval(shoestrap_getVariable( 'footer_opacity' )))/100;
-  $rgb = shoestrap_get_rgb($bg, true);
-?>
-  <style>
-    footer.content-info{
+  $bg       = shoestrap_getVariable( 'footer_background' );
+  $cl       = shoestrap_getVariable( 'footer_color' );
+  $opacity  = (intval(shoestrap_getVariable( 'footer_opacity' )))/100;
+  $rgb      = shoestrap_get_rgb($bg, true);
+  $border   = shoestrap_getVariable( 'footer_border_top' );
 
-      color:<?php echo $cl ?>;     
-    <?php if ($opacity != 1 && $opacity != "") : ?>
-      background: rgba(<?php echo $rgb; ?>,<?php echo $opacity; ?>);
-    <?php else : ?>
-      background: <?php echo $bg ?>; 
-    <?php endif; ?>
-        
-    }
-  </style>
-<?php
+  $style = '<style>';
+  $style .= 'footer.content-info{';
+  $style .= 'color:' . $cl . ';';
+  if ( $opacity != 1 && $opacity != "" ) :
+    $style .= 'background: rgba(' . $rgb . ',' . $opacity . ');';
+  else :
+    $style .= 'background:' . $bg . ';';
+  endif;
+
+  $style .= 'border-top:' . $border['width'] . 'px ' . $border['style'] . ' ' . $border['color'] . ';';
+  $style .= '}';
+  $style .= '</style>';
+
+  echo $style;
 }
 add_action( 'wp_head', 'shoestrap_footer_css' );
 
