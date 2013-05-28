@@ -5,7 +5,7 @@
 .updated, .error {
 	display:none!important
 } /* disable the admin notices */
-{
+#of_container{
 	margin: 15px;
 	width: 785px;
 	position:relative;
