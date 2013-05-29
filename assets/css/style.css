@@ -5084,10 +5084,6 @@ fieldset[disabled] #social-sharing .shareme .box {
 .jumbotron {
   border-radius: 0px;
 }
-#boxed-container .jumbotron {
-  border-bottom-right-radius: 6px;
-  border-bottom-left-radius: 6px;
-}
 .navbar.style1 li > a {
   padding-bottom: 12px;
 }
