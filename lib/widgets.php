@@ -7,10 +7,10 @@ function roots_widgets_init() {
   register_sidebar(array(
     'name'          => __('Primary Sidebar', 'roots'),
     'id'            => 'sidebar-primary',
-    'before_widget' => '<section class="widget %1$s %2$s"><div class="widget-inner">',
+    'before_widget' => '<section id="%1$s" class="panel widget %2$s"><div class="widget-inner">',
     'after_widget'  => '</div></section>',
-    'before_title'  => '<h3>',
-    'after_title'   => '</h3>',
+    'before_title'  => '<div class="panel-heading">',
+    'after_title'   => '</div>',
   ));
 
   register_sidebar(array(
