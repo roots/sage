@@ -150,7 +150,7 @@ if (!function_exists('of_options')) {
 
     $of_options[] = array(
       "name"      => __("Logo", "shoestrap"),
-      "desc"      => __("Upload a logo image using the media uploader, or define the URL directly. Use the shortcodes [site_url] or [site_url_secure] for setting default URLs", "shoestrap"),
+      "desc"      => __("Upload a logo image using the media uploader, or define the URL directly.", "shoestrap"),
       "id"        => "logo",
       "std"       => "",
       "type"      => "media",
@@ -319,7 +319,7 @@ if (!function_exists('of_options')) {
 
     $of_options[] = array(
       "name"      => __("Upload a Custom Background Image", "shoestrap"),
-      "desc"      => __("Upload a Custom Background image using the media uploader, or define the URL directly. This will override any above image selected.", "shoestrap"),
+      "desc"      => __("Upload a Custom Background image using the media uploader, or define the URL directly.", "shoestrap"),
       "id"        => "background_image",
       "fold"      => "background_image_toggle",
       "std"       => "",
@@ -685,7 +685,7 @@ if (!function_exists('of_options')) {
       "name"      => "",
       "desc"      => "",
       "id"        => "help7",
-      "std"       => "<h3 style=\"margin: 0 0 10px;\">Layout Options</h3>
+      "std"       => "<h3 style=\"margin: 0 0 10px;\">NavBar Options</h3>
                       <p>You can activate or deactivate your Primary NavBar here, and define its properties.
                       Please note that you might have to manually create a menu if it doesn't already exist
                       and add items to it from <a href=\"$url\">this page</a>.</p>",
