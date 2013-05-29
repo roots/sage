@@ -71,10 +71,22 @@ add_action( 'wp_head', 'shoestrap_jumbotron_css' );
  * Enables the fittext.js for h1 headings
  */
 function jumbotron_fittext() {
-  // Should only show on the front page if it's enabled
-  if ( shoestrap_getVariable( 'jumbotron_title_fit' ) == 1 && shoestrap_getVariable( 'jumbotron_visibility' ) == 1 && is_front_page() ) {
-    echo '<script src="assets/js/vendor/jquery.fittext.js"></script>';
+  $fittext_toggle   = shoestrap_getVariable( 'jumbotron_title_fit' );
+  $jumbo_visibility = shoestrap_getVariable( 'jumbotron_visibility' );
+
+  // Should only show on the front page if it's enabled, or site-wide when appropriate
+  if ( $fittext_toggle == 1 && ( $jumbo_visibility == 0 && ( $jumbo_visibility == 1 && is_front_page() ) ) )
     echo '<script>jQuery(".jumbotron h1").fitText(1.3);</script>';
-  }      
 }
 add_action( 'wp_footer', 'jumbotron_fittext', 10 );
+
+function jumbotron_fittext_enqueue_script() {
+  $fittext_toggle   = shoestrap_getVariable( 'jumbotron_title_fit' );
+  $jumbo_visibility = shoestrap_getVariable( 'jumbotron_visibility' );
+
+  if ( $fittext_toggle == 1 && ( $jumbo_visibility == 0 && ( $jumbo_visibility == 1 && is_front_page() ) ) ) {
+    wp_register_script('fittext', get_template_directory_uri() . '/assets/js/vendor/jquery.fittext.js', false, null, false);
+    wp_enqueue_script('fittext');
+  }
+}
+add_action('wp_enqueue_scripts', 'jumbotron_fittext_enqueue_script', 120);
