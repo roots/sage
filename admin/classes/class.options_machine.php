@@ -450,9 +450,6 @@ class Options_Machine {
 
 					$output .= '<div class="backup-box">';
 					$output .= '<div class="instructions">'.$instructions."</div>\n";
-					//$output .= '<p><strong>'. __('Last Backup : ').'<span class="backup-log">'.$log.'</span></strong></p></div>'."\n";
-					//$output .= '<a href="#" id="of_backup_button" class="button" title="Backup Options">Backup My Current Styles</a>';
-					//$output .= '<a href="#" id="of_restore_button" class="button" title="Restore Options">Restore Options</a>';
 					$output .= '<div class="select_wrapper">';
 
 					$output .= '<select class="select of-input presetSelect" name="'.$value['id'].'" id="'. $value['id'] .'">';
@@ -460,7 +457,7 @@ class Options_Machine {
 						$output .= '<option></option>';
 					}
 					$preview = "";
-					
+
 					foreach ($value['options'] as $select_ID => $option) {
 						$name = explode('.',$select_ID);
 						$name = ucfirst($name[0]);
@@ -470,7 +467,9 @@ class Options_Machine {
 						$output .= '<option id="' . $select_ID . '" data-preview="'.PRESETS_URL.$option['preview'].'" value="'.$option['style'].'" ' . selected($smof_data[$value['id']], $option['style'], false) . ' />'.$name.'</option>';
 					}
 					$output .= '</select></div>';
+					$output .= '<p><a href="#" id="of_import_preset_button" class="button" title="Restore Preset">Import Preset</a></p>';
 					$output .= '</div><div id="presetPreview"><img src="'.$preview.'" style="max-width: 100%;" alt="" /></div>';
+					
 
 				break;				
 

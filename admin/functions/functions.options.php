@@ -149,6 +149,54 @@ if (!function_exists('of_options')) {
     );
 
     $of_options[] = array(
+      "name"      => __("Custom Favicon TODO", "shoestrap"),
+      "desc"      => __("You can put url of an ico image that will represent your website's favicon (16px x 16px)", "shoestrap"),
+      "id"        => "favicon",
+      "std"       => "",
+      "type"      => "media",
+      "customizer"=> array(),
+    );
+
+    $of_options[] = array(
+      "name"      => __("Apple iPhone Icon TODO", "shoestrap"),
+      "desc"      => __("Icon for Apple iPhone (57px x 57px)", "shoestrap"),
+      "id"        => "iphone_icon",
+      "std"       => "",
+      "type"      => "media",
+      "customizer"=> array(),
+    );
+
+    $of_options[] = array(
+      "name"      => __("Apple iPhone Retina Icon TODO", "shoestrap"),
+      "desc"      => __("Icon for Apple iPhone Retina Version (114px x 114px)", "shoestrap"),
+      "id"        => "iphone_retina_icon",
+      "std"       => "",
+      "type"      => "media",
+      "customizer"=> array(),
+    );
+
+    $of_options[] = array(
+      "name"      => __("Apple iPad Icon TODO", "shoestrap"),
+      "desc"      => __("Icon for Apple iPhone (72px x 72px)", "shoestrap"),
+      "id"        => "ipad_icon",
+      "std"       => "",
+      "type"      => "media",
+      "customizer"=> array(),
+    );    
+
+    $of_options[] = array(
+      "name"      => __("Apple iPad Retina Icon TODO", "shoestrap"),
+      "desc"      => __("Icon for Apple iPhone Retina (72px x 72px)", "shoestrap"),
+      "id"        => "ipad_retina_icon",
+      "std"       => "",
+      "type"      => "media",
+      "customizer"=> array(),
+    );    
+
+
+  
+
+    $of_options[] = array(
       "name"      => __("Logo", "shoestrap"),
       "desc"      => __("Upload a logo image using the media uploader, or define the URL directly.", "shoestrap"),
       "id"        => "logo",
@@ -158,13 +206,27 @@ if (!function_exists('of_options')) {
     );
 
     $of_options[] = array(
-      "name"      => __("Show BreadCrumbs", "shoestrap"),
-      "desc"      => __("Display Breadcrumbs. Default: OFF.", "shoestrap"),
-      "id"        => "breadcrumbs",
-      "std"       => 0,
+      "name"      => __("Upload Retina Logo TODO", "shoestrap"),
+      "desc"      => __("By enabling your site can be retina ready. Requires a logo re-uploaded at 2x the size desired. Default: Off", "shoestrap"),
+      "id"        => "retina_logo_toggle",
+      "std"       => "",
       "type"      => "switch",
       "customizer"=> array(),
-    );
+    );  
+
+    $of_options[] = array(
+      "name"      => "",
+      "desc"      => "",
+      "id"        => "retina_help",
+      "std"       => "<h3 style=\"margin: 0 0 10px;\">Retina Logo</h3>
+                      <p>Upload a logo that is exactly 2x the size you want to typically display. A version will then be generated for general site use. If you have previously uploaded a logo, you will need to re-upload it to generate the proper versions.</p>",
+      "icon"      => true,
+      "fold"      => "retina_logo_toggle",
+      "type"      => "info"
+    );     
+
+
+
 
     $of_options[] = array(
       "name"      => __("No gradients - \"Flat\" look.", "shoestrap"),
@@ -174,6 +236,26 @@ if (!function_exists('of_options')) {
       "std"       => 0,
       "type"      => "switch",
     );
+
+    $of_options[] = array(
+      "name"      => __("Tracking Code TODO", "shoestrap"),
+      "desc"      => __("Paste your Google Analytics (or other) tracking code here. This will be added into the footer template of your theme.", "shoestrap"),
+      "id"        => "tracking_code",
+      "std"       => 0,
+      "type"      => "textarea",
+    );    
+
+    $of_options[] = array(
+      "name"      => __("Allow comments on pages TODO", "shoestrap"),
+      "desc"      => __("Allow comments on regular pages.", "shoestrap"),
+      "id"        => "tracking_code",
+      "std"       => 0,
+      "type"      => "checkbox",
+    ); 
+
+
+
+
 
     $of_options[] = array(
       "name"      => "",
@@ -211,87 +293,112 @@ if (!function_exists('of_options')) {
       "type"      => "sliderui"
     );
 
+// Colors
+    $of_options[] = array(
+      "name"      => __("Branding Options", "shoestrap"),
+      "type"      => "heading"
+    );
+
     $of_options[] = array(
       "name"      => "",
       "desc"      => "",
-      "id"        => "help3",
-      "std"       => "<h3 style=\"margin: 0 0 10px;\">Featured Images</h3>
-                      <p>Here you can select if you want to display the featured images in post archives and individual posts.
-                      Please note that these apply to posts, pages, as well as custom post types.
-                      You can select image sizes independently for archives and individual posts view.</p>",
+      "id"        => "help6",
+      "std"       => "<h3 style=\"margin: 0 0 10px;\">Colors</h3>
+                      <p>The primary color you select will also affect other elements on your site,
+                      such as table borders, widgets colors, input elements, dropdowns etc.
+                      The branding colors you select will be used throughout the site in various elements.
+                      One of the most important settings in your branding is your primary color,
+                      since this will be used more often.</p>
+                      ",
       "icon"      => true,
       "type"      => "info"
     );
 
     $of_options[] = array(
-      "name"      => __("Featured Images on Archives", "shoestrap"),
-      "desc"      => __("Display featured Images on post archives (such as categories, tags, month view etc). Default: OFF.", "shoestrap"),
-      "id"        => "feat_img_archive",
-      "std"       => 0,
-      "type"      => "switch",
+      "name"      => __("Primary Color", "shoestrap"),
+      "desc"      => __("Pick a background color for your site. Default: #ffffff.", "shoestrap"),
+      "id"        => "color_body_bg",
+      "std"       => "#ffffff",
+      "less"      => true,
       "customizer"=> array(),
+      "type"      => "color"
     );
 
     $of_options[] = array(
-      "name"      => __("Archives Featured Image Width", "shoestrap"),
-      "desc"      => __("Select the width of your featured images on post archives. Default: 550px", "shoestrap"),
-      "id"        => "feat_img_archive_width",
-      "fold"      => "feat_img_archive",
-      "std"       => 550,
-      "min"       => 100,
-      "step"      => 1,
-      "max"       => 1600,
-      "type"      => "sliderui"
-    );
-
-    $of_options[] = array(
-      "name"      => __("Archives Featured Image Height", "shoestrap"),
-      "desc"      => __("Select the height of your featured images on post archives. Default: 300px", "shoestrap"),
-      "id"        => "feat_img_archive_height",
-      "fold"      => "feat_img_archive",
-      "std"       => 300,
-      "min"       => 50,
-      "step"      => 1,
-      "max"       => 1000,
-      "type"      => "sliderui"
-    );
-
-    $of_options[] = array(
-      "name"      => __("Featured Images on Posts", "shoestrap"),
-      "desc"      => __("Display featured Images on posts. Default: OFF.", "shoestrap"),
-      "id"        => "feat_img_post",
-      "std"       => 1,
-      "type"      => "switch",
+      "name"      => __("Text Color", "shoestrap"),
+      "desc"      => __("Pick a color for your site's main text. Default: #333333.", "shoestrap"),
+      "id"        => "color_text",
+      "std"       => "#333333",
+      "less"      => true,
       "customizer"=> array(),
+      "type"      => "color"
     );
 
     $of_options[] = array(
-      "name"      => __("Posts Featured Image Width", "shoestrap"),
-      "desc"      => __("Select the width of your featured images on single posts. Default: 550px", "shoestrap"),
-      "id"        => "feat_img_post_width",
-      "fold"      => "feat_img_post",
-      "std"       => 550,
-      "min"       => 100,
-      "step"      => 1,
-      "max"       => 1600,
-      "type"      => "sliderui"
+      "name"      => __("Links Color", "shoestrap"),
+      "desc"      => __("Pick a color for your site's links. Default: #428bca.", "shoestrap"),
+      "id"        => "color_links",
+      "std"       => "#428bca",
+      "less"      => true,
+      "customizer"=> array(),
+      "type"      => "color"
     );
 
     $of_options[] = array(
-      "name"      => __("Posts Featured Image Height", "shoestrap"),
-      "desc"      => __("Select the height of your featured images on single posts. Default: 300px", "shoestrap"),
-      "id"        => "feat_img_post_height",
-      "fold"      => "feat_img_post",
-      "std"       => 330,
-      "min"       => 50,
-      "step"      => 1,
-      "max"       => 1000,
-      "type"      => "sliderui"
+      "name"      => __("Brand Colors: Primary", "shoestrap"),
+      "desc"      => __("Select your primary branding color. This will affect various areas of your site, including the color of your primary buttons, the background of some elements and many more. Default: #428bca.", "shoestrap"),
+      "id"        => "color_brand_primary",
+      "std"       => "#428bca",
+      "less"      => true,
+      "customizer"=> array(),
+      "type"      => "color"
     );
 
-    // General Options
     $of_options[] = array(
-      "name"      => __("Background", "shoestrap"),
+      "name"      => __("Brand Colors: Success", "shoestrap"),
+      "desc"      => __("Select your branding color for success messages etc. Default: #5cb85c.", "shoestrap"),
+      "id"        => "color_brand_success",
+      "std"       => "#5cb85c",
+      "less"      => true,
+      "customizer"=> array(),
+      "type"      => "color"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Brand Colors: Warning", "shoestrap"),
+      "desc"      => __("Select your branding color for warning messages etc. Default: #f0ad4e.", "shoestrap"),
+      "id"        => "color_brand_warning",
+      "std"       => "#f0ad4e",
+      "less"      => true,
+      "customizer"=> array(),
+      "type"      => "color"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Brand Colors: Danger", "shoestrap"),
+      "desc"      => __("Select your branding color for success messages etc. Default: #d9534f.", "shoestrap"),
+      "id"        => "color_brand_danger",
+      "std"       => "#d9534f",
+      "less"      => true,
+      "customizer"=> array(),
+      "type"      => "color"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Brand Colors: Info", "shoestrap"),
+      "desc"      => __("Select your branding color for info messages etc. It will also be used for the Search button color as well as other areas where it semantically makes sense to use an \"info\" class. Default: #5bc0de.", "shoestrap"),
+      "id"        => "color_brand_info",
+      "std"       => "#5bc0de",
+      "less"      => true,
+      "customizer"=> array(),
+      "type"      => "color"
+    );
+
+
+
+    // Background Options
+    $of_options[] = array(
+      "name"      => __("Background Options", "shoestrap"),
       "type"      => "heading"
     );
 
@@ -573,106 +680,7 @@ if (!function_exists('of_options')) {
       "type"      => "sliderui"
     );
 
-    // Colors
-    $of_options[] = array(
-      "name"      => __("Site Colors", "shoestrap"),
-      "type"      => "heading"
-    );
-
-    $of_options[] = array(
-      "name"      => "",
-      "desc"      => "",
-      "id"        => "help6",
-      "std"       => "<h3 style=\"margin: 0 0 10px;\">Colors</h3>
-                      <p>The Background color you select will also affect other elements on your site,
-                      such as table borders, widgets colors, input elements, dropdowns etc.
-                      The branding colors you select will be used throughout the site in various elements.
-                      One of the most important settings in your branding is your primary color,
-                      since this will be used more often.</p>
-                      ",
-      "icon"      => true,
-      "type"      => "info"
-    );
-
-    $of_options[] = array(
-      "name"      => __("Background Color", "shoestrap"),
-      "desc"      => __("Pick a background color for your site. Default: #ffffff.", "shoestrap"),
-      "id"        => "color_body_bg",
-      "std"       => "#ffffff",
-      "less"      => true,
-      "customizer"=> array(),
-      "type"      => "color"
-    );
-
-    $of_options[] = array(
-      "name"      => __("Text Color", "shoestrap"),
-      "desc"      => __("Pick a color for your site's main text. Default: #333333.", "shoestrap"),
-      "id"        => "color_text",
-      "std"       => "#333333",
-      "less"      => true,
-      "customizer"=> array(),
-      "type"      => "color"
-    );
-
-    $of_options[] = array(
-      "name"      => __("Links Color", "shoestrap"),
-      "desc"      => __("Pick a color for your site's links. Default: #428bca.", "shoestrap"),
-      "id"        => "color_links",
-      "std"       => "#428bca",
-      "less"      => true,
-      "customizer"=> array(),
-      "type"      => "color"
-    );
-
-    $of_options[] = array(
-      "name"      => __("Brand Colors: Primary", "shoestrap"),
-      "desc"      => __("Select your primary branding color. This will affect various areas of your site, including the color of your primary buttons, the background of some elements and many more. Default: #428bca.", "shoestrap"),
-      "id"        => "color_brand_primary",
-      "std"       => "#428bca",
-      "less"      => true,
-      "customizer"=> array(),
-      "type"      => "color"
-    );
-
-    $of_options[] = array(
-      "name"      => __("Brand Colors: Success", "shoestrap"),
-      "desc"      => __("Select your branding color for success messages etc. Default: #5cb85c.", "shoestrap"),
-      "id"        => "color_brand_success",
-      "std"       => "#5cb85c",
-      "less"      => true,
-      "customizer"=> array(),
-      "type"      => "color"
-    );
-
-    $of_options[] = array(
-      "name"      => __("Brand Colors: Warning", "shoestrap"),
-      "desc"      => __("Select your branding color for warning messages etc. Default: #f0ad4e.", "shoestrap"),
-      "id"        => "color_brand_warning",
-      "std"       => "#f0ad4e",
-      "less"      => true,
-      "customizer"=> array(),
-      "type"      => "color"
-    );
-
-    $of_options[] = array(
-      "name"      => __("Brand Colors: Danger", "shoestrap"),
-      "desc"      => __("Select your branding color for success messages etc. Default: #d9534f.", "shoestrap"),
-      "id"        => "color_brand_danger",
-      "std"       => "#d9534f",
-      "less"      => true,
-      "customizer"=> array(),
-      "type"      => "color"
-    );
-
-    $of_options[] = array(
-      "name"      => __("Brand Colors: Info", "shoestrap"),
-      "desc"      => __("Select your branding color for info messages etc. It will also be used for the Search button color as well as other areas where it semantically makes sense to use an \"info\" class. Default: #5bc0de.", "shoestrap"),
-      "id"        => "color_brand_info",
-      "std"       => "#5bc0de",
-      "less"      => true,
-      "customizer"=> array(),
-      "type"      => "color"
-    );
+    
 
     // NavBar Settings
     $of_options[] = array(
@@ -685,7 +693,7 @@ if (!function_exists('of_options')) {
       "name"      => "",
       "desc"      => "",
       "id"        => "help7",
-      "std"       => "<h3 style=\"margin: 0 0 10px;\">NavBar Options</h3>
+      "std"       => "<h3 style=\"margin: 0 0 10px;\">Navbar Options</h3>
                       <p>You can activate or deactivate your Primary NavBar here, and define its properties.
                       Please note that you might have to manually create a menu if it doesn't already exist
                       and add items to it from <a href=\"$url\">this page</a>.</p>",
@@ -1071,139 +1079,355 @@ if (!function_exists('of_options')) {
       "type"      => "text",
     );
 
-    // Social
+
+    // Blog Options
     $of_options[] = array(
-      "name"      => __("Social Settings", "shoestrap"),
+      "name"      => __("Blog Options", "shoestrap"),
       "type"      => "heading"
     );
 
     $of_options[] = array(
-      "name"      => "Share to Facebook",
+      "name"      => __("Show BreadCrumbs", "shoestrap"),
+      "desc"      => __("Display Breadcrumbs. Default: OFF.", "shoestrap"),
+      "id"        => "breadcrumbs",
+      "std"       => 0,
+      "type"      => "switch",
+      "customizer"=> array(),
+    );    
+
+    $of_options[] = array(
+      "name"      => "",
       "desc"      => "",
-      "id"        => "fb_share",
+      "id"        => "help3",
+      "std"       => "<h3 style=\"margin: 0 0 10px;\">Featured Images</h3>
+                      <p>Here you can select if you want to display the featured images in post archives and individual posts.
+                      Please note that these apply to posts, pages, as well as custom post types.
+                      You can select image sizes independently for archives and individual posts view.</p>",
+      "icon"      => true,
+      "type"      => "info"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Featured Images on Archives", "shoestrap"),
+      "desc"      => __("Display featured Images on post archives (such as categories, tags, month view etc). Default: OFF.", "shoestrap"),
+      "id"        => "feat_img_archive",
+      "std"       => 0,
+      "type"      => "switch",
+      "customizer"=> array(),
+    );
+
+    $of_options[] = array(
+      "name"      => __("Archives Featured Image Width", "shoestrap"),
+      "desc"      => __("Select the width of your featured images on post archives. Default: 550px", "shoestrap"),
+      "id"        => "feat_img_archive_width",
+      "fold"      => "feat_img_archive",
+      "std"       => 550,
+      "min"       => 100,
+      "step"      => 1,
+      "max"       => 1600,
+      "type"      => "sliderui"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Archives Featured Image Height", "shoestrap"),
+      "desc"      => __("Select the height of your featured images on post archives. Default: 300px", "shoestrap"),
+      "id"        => "feat_img_archive_height",
+      "fold"      => "feat_img_archive",
+      "std"       => 300,
+      "min"       => 50,
+      "step"      => 1,
+      "max"       => 1000,
+      "type"      => "sliderui"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Featured Images on Posts", "shoestrap"),
+      "desc"      => __("Display featured Images on posts. Default: OFF.", "shoestrap"),
+      "id"        => "feat_img_post",
+      "std"       => 1,
+      "type"      => "switch",
+      "customizer"=> array(),
+    );
+
+    $of_options[] = array(
+      "name"      => __("Posts Featured Image Width", "shoestrap"),
+      "desc"      => __("Select the width of your featured images on single posts. Default: 550px", "shoestrap"),
+      "id"        => "feat_img_post_width",
+      "fold"      => "feat_img_post",
+      "std"       => 550,
+      "min"       => 100,
+      "step"      => 1,
+      "max"       => 1600,
+      "type"      => "sliderui"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Posts Featured Image Height", "shoestrap"),
+      "desc"      => __("Select the height of your featured images on single posts. Default: 300px", "shoestrap"),
+      "id"        => "feat_img_post_height",
+      "fold"      => "feat_img_post",
+      "std"       => 330,
+      "min"       => 50,
+      "step"      => 1,
+      "max"       => 1000,
+      "type"      => "sliderui"
+    );
+
+    // Social
+    $of_options[] = array(
+      "name"      => __("Social Sharing Box", "shoestrap"),
+      "type"      => "heading"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Facebook", "shoestrap"),
+      "desc"      => "Show the Facebook sharing icon in blog posts.",
+      "id"        => "facebook_share",
       "std"       => "",
       "type"      => "switch"
     );
 
     $of_options[] = array(
-      "name"      => "Share to Twitter",
-      "desc"      => "",
-      "id"        => "tw_share",
+      "name"      => "Twitter",
+      "desc"      => "Show the Twitter sharing icon in blog posts.",
+      "id"        => "twitter_share",
       "std"       => "",
       "type"      => "switch"
     );
 
     $of_options[] = array(
-      "name"      => "Share to Google Plus Link",
-      "desc"      => "",
-      "id"        => "gp_share",
+      "name"      => "Reddit",
+      "desc"      => "Show the Reddit sharing icon in blog posts.",
+      "id"        => "reddit_share",
       "std"       => "",
       "type"      => "switch"
     );
 
     $of_options[] = array(
-      "name"      => "Share to Pinterest",
-      "desc"      => "",
-      "id"        => "pi_share",
+      "name"      => "LinkedIn",
+      "desc"      => "Show the LinkedIn sharing icon in blog posts.",
+      "id"        => "linkedin_share",
       "std"       => "",
       "type"      => "switch"
     );
 
     $of_options[] = array(
-      "name"      => "Facebook Link",
-      "desc"      => "A link to your facebook profile/page.",
-      "id"        => "fb_link",
+      "name"      => "Google+",
+      "desc"      => "Show the Google+ sharing icon in blog posts.",
+      "id"        => "google_plus_share",
+      "std"       => "",
+      "type"      => "switch"
+    );
+
+    $of_options[] = array(
+      "name"      => "Tumblr",
+      "desc"      => "Show the Tumblr sharing icon in blog posts.",
+      "id"        => "tumblr_share",
+      "std"       => "",
+      "type"      => "switch"
+    );  
+
+    $of_options[] = array(
+      "name"      => "Pinterest",
+      "desc"      => "Show the Pinterest sharing icon in blog posts.",
+      "id"        => "pinterest_share",
+      "std"       => "",
+      "type"      => "switch"
+    ); 
+
+    $of_options[] = array(
+      "name"      => "Email",
+      "desc"      => "Show the email sharing icon in blog posts.",
+      "id"        => "email_share",
+      "std"       => "",
+      "type"      => "switch"
+    );               
+
+    // Social
+    $of_options[] = array(
+      "name"      => __("Social Sharing", "shoestrap"),
+      "type"      => "heading"
+    );
+
+    $of_options[] = array(
+      "name"      => "Blogger TODO",
+      "desc"      => "Provide the link you desire and the Blogger icon will appear. To remove it, just leave it blank.",
+      "id"        => "blogger_link",
       "std"       => "",
       "type"      => "text"
     );
 
     $of_options[] = array(
-      "name"      => "Twitter Link",
-      "desc"      => "A link to your twitter profile.",
-      "id"        => "tw_link",
+      "name"      => "DeviantART TODO",
+      "desc"      => "Provide the link you desire and the DeviantART icon will appear. To remove it, just leave it blank.",
+      "id"        => "deviantart_link",
       "std"       => "",
       "type"      => "text"
     );
 
     $of_options[] = array(
-      "name"      => "Google Plus Link",
-      "desc"      => "A link to your Google+ profile/page.",
-      "id"        => "gp_link",
+      "name"      => "Digg TODO",
+      "desc"      => "Provide the link you desire and the Digg icon will appear. To remove it, just leave it blank.",
+      "id"        => "digg_link",
+      "std"       => "",
+      "type"      => "text"
+    );  
+
+    $of_options[] = array(
+      "name"      => "Dribbble TODO",
+      "desc"      => "Provide the link you desire and the Dribbble icon will appear. To remove it, just leave it blank.",
+      "id"        => "dribbble_link",
+      "std"       => "",
+      "type"      => "text"
+    ); 
+
+    $of_options[] = array(
+      "name"      => "Facebook",
+      "desc"      => "Provide the link you desire and the Facebook icon will appear. To remove it, just leave it blank.",
+      "id"        => "facebook_link",
       "std"       => "",
       "type"      => "text"
     );
 
     $of_options[] = array(
-      "name"      => "Youtube Link",
-      "desc"      => "A link to your YouTube profile/page.",
-      "id"        => "yt_link",
+      "name"      => "Flickr",
+      "desc"      => "Provide the link you desire and the Flickr icon will appear. To remove it, just leave it blank.",
+      "id"        => "flickr_link",
+      "std"       => "",
+      "type"      => "text"
+    );    
+
+    $of_options[] = array(
+      "name"      => "Forrst TODO",
+      "desc"      => "Provide the link you desire and the Flickr icon will appear. To remove it, just leave it blank.",
+      "id"        => "forrst_link",
+      "std"       => "",
+      "type"      => "text"
+    );    
+
+    $of_options[] = array(
+      "name"      => "Github",
+      "desc"      => "Provide the link you desire and the Github icon will appear. To remove it, just leave it blank.",
+      "id"        => "github_link",
+      "std"       => "",
+      "type"      => "text"
+    );    
+
+    $of_options[] = array(
+      "name"      => "Google+",
+      "desc"      => "Provide the link you desire and the Google+ icon will appear. To remove it, just leave it blank.",
+      "id"        => "google_plus_link",
       "std"       => "",
       "type"      => "text"
     );
 
     $of_options[] = array(
-      "name"      => "LinkedIn Link",
-      "desc"      => "A link to your Linked-in profile/page.",
-      "id"        => "li_link",
+      "name"      => "LinkedIn",
+      "desc"      => "Provide the link you desire and the LinkedIn icon will appear. To remove it, just leave it blank.",
+      "id"        => "linkedin_link",
       "std"       => "",
       "type"      => "text"
     );
 
     $of_options[] = array(
-      "name"      => "Pinterest Link",
-      "desc"      => "A link to your Pinterest profile/page.",
-      "id"        => "pi_link",
+      "name"      => "MySpace",
+      "desc"      => "Provide the link you desire and the MySpace icon will appear. To remove it, just leave it blank.",
+      "id"        => "myspace_link",
       "std"       => "",
       "type"      => "text"
     );
 
     $of_options[] = array(
-      "name"      => "Vimeo Link",
-      "desc"      => "A link to your Vimeo profile/page.",
-      "id"        => "vi_link",
+      "name"      => "Pinterest",
+      "desc"      => "Provide the link you desire and the Pinterest icon will appear. To remove it, just leave it blank.",
+      "id"        => "pinterest_link",
       "std"       => "",
       "type"      => "text"
     );
 
     $of_options[] = array(
-      "name"      => "Tumblr Link",
-      "desc"      => "A link to your Tumblr profile/page.",
-      "id"        => "tu_link",
+      "name"      => "Reddit TODO",
+      "desc"      => "Provide the link you desire and the Reddit icon will appear. To remove it, just leave it blank.",
+      "id"        => "reddit_link",
+      "std"       => "",
+      "type"      => "text"
+    );    
+
+    $of_options[] = array(
+      "name"      => "RSS TODO",
+      "desc"      => "Provide the link you desire and the RSS icon will appear. To remove it, just leave it blank.",
+      "id"        => "rss_link",
       "std"       => "",
       "type"      => "text"
     );
 
     $of_options[] = array(
-      "name"      => "Github Link",
-      "desc"      => "A link to your Github profile/page.",
-      "id"        => "gi_link",
+      "name"      => "Skype TODO",
+      "desc"      => "Provide the link you desire and the Skype icon will appear. To remove it, just leave it blank.",
+      "id"        => "skype_link",
       "std"       => "",
       "type"      => "text"
     );
 
     $of_options[] = array(
-      "name"      => "MySpace Link",
-      "desc"      => "A link to your MySpace profile/page.",
-      "id"        => "my_link",
+      "name"      => "SoundCloud",
+      "desc"      => "Provide the link you desire and the SoundCloud icon will appear. To remove it, just leave it blank.",
+      "id"        => "soundcloud_link",
       "std"       => "",
       "type"      => "text"
     );
 
     $of_options[] = array(
-      "name"      => "Vkontakte Link",
-      "desc"      => "A link to your Vkontakte profile/page.",
-      "id"        => "vk_link",
+      "name"      => "Tumblr",
+      "desc"      => "Provide the link you desire and the Tumblr icon will appear. To remove it, just leave it blank.",
+      "id"        => "tumblr_link",
       "std"       => "",
       "type"      => "text"
     );
 
     $of_options[] = array(
-      "name"      => "SoundCloud Link",
-      "desc"      => "A link to your SoundCloud profile/page.",
-      "id"        => "sc_link",
+      "name"      => "Twitter",
+      "desc"      => "Provide the link you desire and the Twitter icon will appear. To remove it, just leave it blank.",
+      "id"        => "twitter_link",
       "std"       => "",
       "type"      => "text"
     );
+
+    $of_options[] = array(
+      "name"      => "Vimeo",
+      "desc"      => "Provide the link you desire and the Vimeo icon will appear. To remove it, just leave it blank.",
+      "id"        => "vimeo_link",
+      "std"       => "",
+      "type"      => "text"
+    );
+
+
+    $of_options[] = array(
+      "name"      => "Vkontakte",
+      "desc"      => "Provide the link you desire and the Vkontakte icon will appear. To remove it, just leave it blank.",
+      "id"        => "vkontakte_link",
+      "std"       => "",
+      "type"      => "text"
+    );
+
+    $of_options[] = array(
+      "name"      => "Yahoo TODO",
+      "desc"      => "Provide the link you desire and the Yahoo icon will appear. To remove it, just leave it blank.",
+      "id"        => "yahoo_link",
+      "std"       => "",
+      "type"      => "text"
+    );    
+
+    $of_options[] = array(
+      "name"      => "YouTube Link",
+      "desc"      => "Provide the link you desire and the YouTube icon will appear. To remove it, just leave it blank.",
+      "id"        => "youtube_link",
+      "std"       => "",
+      "type"      => "text"
+    );
+
+
+
 
     // Advanced Settings
     $of_options[] = array(
