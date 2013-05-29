@@ -73,7 +73,7 @@ function smof_preview_init( $wp_customize ) {
       functions: {},      // user functions, keyed by name
       dumpLineNumbers: "comments", // or "mediaQuery" or "all"
       relativeUrls: false,// whether to adjust urls to be relative if false, urls are already relative to the entry less file
-      rootpath: "http://localhost/wordpress3/wp-content/themes/shoestrap/less/"// a path to add on to the start of every url resource
+      rootpath: "<?php get_template_directory_uri(); ?>/assets/less/"
     };
   </script>';
   wp_enqueue_script( 'less-js', ADMIN_DIR .'/assets/js/less-1.3.3.min.js' );
