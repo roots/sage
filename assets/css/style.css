@@ -3199,8 +3199,8 @@ button.close {
   margin-bottom: 15px;
 }
 .navbar-nav > li > a {
-  padding-top: 15px;
-  padding-bottom: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
   color: #777777;
   line-height: 20px;
   border-radius: 4px;
@@ -3282,8 +3282,8 @@ button.close {
   margin-top: 4px;
 }
 .navbar-form {
-  margin-top: 7px;
-  margin-bottom: 7px;
+  margin-top: -3px;
+  margin-bottom: -3px;
 }
 .navbar-form input,
 .navbar-form select,
@@ -3428,11 +3428,11 @@ button.close {
   }
 }
 .navbar-btn {
-  margin-top: 7px;
+  margin-top: -3px;
 }
 .navbar-text {
-  margin-top: 15px;
-  margin-bottom: 15px;
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 .navbar-link {
   color: #777777;
@@ -4751,14 +4751,14 @@ body .navbar.navbar-static-top {
   margin-bottom: 0;
 }
 body.bottom-navbar {
-  padding-bottom: 50px;
+  padding-bottom: 30px;
 }
 @media screen and (min-width: 768px) {
   body.top-navbar {
-    padding-top: 50px;
+    padding-top: 30px;
   }
   body.bottom-navbar {
-    padding-bottom: 50px;
+    padding-bottom: 30px;
   }
 }
 #shoestrap_icon {
@@ -5079,28 +5079,65 @@ fieldset[disabled] #social-sharing .shareme .box {
   }
 }
 .topnavbar input.search-query {
-  margin-top: 7px;
+  margin-top: -3px;
 }
 .jumbotron {
   border-radius: 0px;
 }
 .navbar.style1 li > a {
-  padding-bottom: 12px;
+  padding-bottom: 2px;
 }
 .navbar.style1 .active > a,
 .navbar.style1 .active > a:hover,
 .navbar.style1 .active > a:focus {
   background: #eeeeee;
-  border-bottom: 3px inset #428bca;
+  border-bottom: 3px solid #428bca;
 }
 .navbar.style2 li > a {
-  padding-top: 12px;
+  padding-top: 2px;
 }
 .navbar.style2 .active > a,
 .navbar.style2 .active > a:hover,
 .navbar.style2 .active > a:focus {
   background: #eeeeee;
-  border-top: 3px inset #428bca;
+  border-top: 3px solid #428bca;
+}
+.navbar.style3 {
+  border-top: 5px solid #428bca;
+}
+.navbar.style3 .active > a,
+.navbar.style3 .active > a:hover,
+.navbar.style3 .active > a:focus {
+  border-top: 5px solid #f0ad4e;
+  margin-top: -5px;
+}
+.navbar.style4 {
+  border-top: 5px solid #428bca;
+}
+.navbar.style4 .active > a,
+.navbar.style4 .active > a:hover,
+.navbar.style4 .active > a:focus {
+  background: #428bca;
+  color: #ffffff;
+}
+.navbar.style5 .active > a,
+.navbar.style5 .active > a:hover,
+.navbar.style5 .active > a:focus {
+  background: #ffffff;
+  color: #428bca;
+}
+.navbar.style6 {
+  border-bottom: 5px solid #428bca;
+}
+.navbar.style6 .active > a,
+.navbar.style6 .active > a:hover,
+.navbar.style6 .active > a:focus {
+  background: #eeeeee;
+  border-bottom: 5px solid #f0ad4e;
+  margin-bottom: -5px;
+}
+.navbar a.navbar-brand {
+  padding: 5px;
 }
 .navbar a.navbar-brand img {
   max-height: 20px;

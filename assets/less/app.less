@@ -301,7 +301,7 @@ a.toggle-nav {
     .active > a:hover,
     .active > a:focus {
       background: @navbar-bg;
-      border-bottom: 3px inset @brand-primary;
+      border-bottom: 3px solid @brand-primary;
     }
   }
   &.style2 {
@@ -312,14 +312,57 @@ a.toggle-nav {
     .active > a:hover,
     .active > a:focus {
       background: @navbar-bg;
-      border-top: 3px inset @brand-primary;
+      border-top: 3px solid @brand-primary;
+    }
+  }
+  &.style3 {
+    border-top: 5px solid @brand-primary;
+    .active > a,
+    .active > a:hover,
+    .active > a:focus {
+      border-top: 5px solid @brand-warning;
+      margin-top: -5px;
+    }
+  }
+  &.style4 {
+    border-top: 5px solid @brand-primary;
+    li > a {
+    }
+    .active > a,
+    .active > a:hover,
+    .active > a:focus {
+      background: @brand-primary;
+      color: @body-bg;
+    }
+  }
+  &.style5 {
+    .active > a,
+    .active > a:hover,
+    .active > a:focus {
+      background: @body-bg;
+      color: @link-color;
+    }
+  }
+  &.style6 {
+    border-bottom: 5px solid @brand-primary;
+    li > a {
+    }
+    .active > a,
+    .active > a:hover,
+    .active > a:focus {
+      background: @navbar-bg;
+      border-bottom: 5px solid @brand-warning;
+      margin-bottom: -5px;
     }
   }
 }
 
-.navbar a.navbar-brand img {
-  max-height: (@navbar-height - 30);
-  width: auto;
+.navbar a.navbar-brand {
+  padding: 5px;
+  img {
+    max-height: (@navbar-height - 10);
+    width: auto;
+  }
 }
 
 .wrap.main-section{
