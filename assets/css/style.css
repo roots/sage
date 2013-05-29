@@ -5106,3 +5106,6 @@ fieldset[disabled] #social-sharing .shareme .box {
   max-height: 20px;
   width: auto;
 }
+.wrap.main-section {
+  margin-top: 2em;
+}
