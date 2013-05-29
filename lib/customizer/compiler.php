@@ -669,7 +669,7 @@ function shoestrap_complete_less( $url = false ) {
 ';
 
 if ($url == true) {
-  $bootstrap_less .="@elusiveWebfontPath: '".$fonts." // Elusive webfonts path';
+  $bootstrap_less .="@elusiveWebfontPath: '".$fonts."'; // Elusive webfonts path;
 ";
 }
 
