@@ -90,3 +90,9 @@ function jumbotron_fittext_enqueue_script() {
   }
 }
 add_action('wp_enqueue_scripts', 'jumbotron_fittext_enqueue_script', 120);
+
+function shoestrap_conditional_jumbo_section_removal( $wp_customize ) {
+  if ( !is_active_sidebar( 'jumbotron' ) )
+    $wp_customize->remove_section( 'jumbotron');
+}
+add_action( 'customize_register', 'shoestrap_conditional_jumbo_section_removal' );
