@@ -11,7 +11,7 @@ function shoestrap_featured_image() {
   $crop   = true;
   $retina = false;
 
-  if ( '' != get_the_post_thumbnail() ):
+  if ( has_post_thumbnail() && '' != get_the_post_thumbnail() ):
     $image = matthewruddy_image_resize( $url, $width, $height, $crop, $retina );
     echo '<a href="' . get_permalink() . '"><img src="' . $image['url'] . '" /></a>';
   endif;
