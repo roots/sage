@@ -17,7 +17,7 @@ function smof_customize_register( $wp_customize ) {
     'admin-head-callback'    => '',
     'admin-preview-callback' => ''
   );
-  add_theme_support( 'custom-background', $defaults );
+  
   foreach( $of_options as $option ) {
     $smof_details[$option['id']] = $option;
 
