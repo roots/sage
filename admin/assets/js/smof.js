@@ -736,6 +736,18 @@ jQuery(document).ready(function($){
 		GoogleFontSelect( this, mainID );
 	});
 
+	// Fix the container width
+	$('.presetSelect').change(function(d) {
+		var url = $(this).find(':selected').data('preview');
+		var parent = $('#presetPreview').closest('.section').attr('id');
+		$('#presetPreview').css('width',$('#'+parent).width()+'px');
+		$('#presetPreview').fadeOut('fast', function() {
+			if (url != "") {
+				$('#presetPreview').html('<img src="'+url+'" style="max-width: 100%;" alt="" />');					
+				$('#presetPreview').fadeIn();
+			}
+		});
+	});
 
 
 }); //end doc ready

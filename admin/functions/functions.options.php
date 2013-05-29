@@ -70,6 +70,38 @@ if (!function_exists('of_options')) {
       }
     }
 
+    //Preset Styles Reader
+    $preset_styles_path = STYLESHEETPATH. '/admin/presets';
+
+    $preset_styles_url = get_bloginfo('template_url').'/admin/presets/';
+    $preset_styles = array();
+
+    if ( is_dir($preset_styles_path) ) {
+
+      if ( $preset_styles_dir = opendir( $preset_styles_path ) ) {
+        while ( ( $preset_styles_file = readdir( $preset_styles_dir ) ) !== false ) {
+
+          if( stristr( $preset_styles_file, ".txt" ) !== false) {
+            $array = array();
+            $pre = $preset_styles_url . $preset_styles_file;
+            $explode = explode("/", $pre);
+            $style = end($explode);
+            $key = explode('.',$style);
+            $preset_styles[$key[0]]['style'] = $style;
+          }
+          if( stristr( $preset_styles_file, ".png" ) !== false || stristr( $preset_styles_file, ".jpg" ) !== false) {
+            $preview = $preset_styles_url . $preset_styles_file;
+            $preview = explode("/", $preview);
+            $preview = end($preview);
+
+            $key = explode('.',$preview);
+            $preset_styles[$key[0]]['preview'] = $preview;
+          }
+
+        }
+      }
+    }
+
 
     /*-----------------------------------------------------------------------------------*/
     /* TO DO: Add options/functions that use these */
@@ -1205,25 +1237,20 @@ if (!function_exists('of_options')) {
       "type"      => "textarea"
     );
 
-    // Predefined Styles
+    // Presets Styles
     $of_options[] = array(
-      "name"      => __("Predefined Styles", "shoestrap"),
+      "name"      => __("Preset Styles", "shoestrap"),
       "type"      => "heading"
     );
 
     $of_options[] = array(
-      "name"      => __("Predefined Style", "shoestrap"),
-      "desc"      => __("Using this option you can set the navbar to be fixed to top, fixed to bottom or normal. When you're using one of the \"fixed\" options, the navbar will stay fixed on the top or bottom of the page. Default: Normal", "shoestrap"),
-      "id"        => "predesigned_style",
-      "std"       => 0,
-      "type"      => "select",
-      "customizer"=> array(),
-      "options"   => array(
-        0         => __( 'Select a style', 'shoestrap' ),
-        1         => __( 'Fixed to Top', 'shoestrap' ),
-        2         => __( 'Fixed to Bottom', 'shoestrap' )
-      )
-    );
+      "name"      => __("Choose a Preset", "shoestrap"),
+      "desc"      => __("Select a site preset. You can load it in and replace your current styles.", "shoestrap"),
+      "id"        => "design_preset",
+      "std"       => "",
+      "type"      => "presets",
+      "options"   => $preset_styles,
+    );    
 
     // Backup Options
     $of_options[] = array(

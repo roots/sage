@@ -43,6 +43,8 @@ if( function_exists( 'wp_get_theme' ) ) {
 define( 'SMOF_VERSION', '1.4.4' );
 define( 'ADMIN_PATH', TEMPLATEPATH . '/admin/' );
 define( 'ADMIN_DIR', get_template_directory_uri() . '/admin/' );
+define( 'PRESETS_PATH', TEMPLATEPATH . '/admin/presets/' );
+define( 'PRESETS_URL', get_bloginfo('template_url') . '/admin/presets/' );
 define( 'LAYOUT_PATH', ADMIN_PATH . 'layouts/' );
 define( 'THEMENAME', $theme_name );
 /* Theme version, uri, and the author uri are not completely necessary, but may be helpful in adding functionality */
