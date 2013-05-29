@@ -71,7 +71,8 @@ add_action( 'wp_head', 'shoestrap_jumbotron_css' );
  * Enables the fittext.js for h1 headings
  */
 function jumbotron_fittext() {
-  if ( shoestrap_getVariable( 'jumbotron_title_fit' ) == 1 ) {
+  // Should only show on the front page if it's enabled
+  if ( shoestrap_getVariable( 'jumbotron_title_fit' ) == 1 && shoestrap_getVariable( 'jumbotron_visibility' ) == 1 && is_front_page() ) {
     echo '<script src="assets/js/vendor/jquery.fittext.js"></script>';
     echo '<script>jQuery(".jumbotron h1").fitText(1.3);</script>';
   }      
