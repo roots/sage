@@ -47,7 +47,6 @@ function shoestrap_phpless_compiler() {
     $less->setFormatter( "compressed" );
 
   $less->setImportDir( array(
-    get_template_directory() . '/assets/less/bootstrap',
     get_template_directory() . '/assets/less',
     get_template_directory() . '/assets/fonts',
   ) );
@@ -592,7 +591,7 @@ function shoestrap_variables_less() {
 
 function shoestrap_complete_less( $url = false ) {
   if ( $url == true ) {
-    $bootstrap    = get_template_directory_uri() . '/assets/less/bootstrap/';
+    $bootstrap    = get_template_directory_uri().'/assets/less/';
     $fonts        = get_template_directory_uri().'/assets/fonts/';
     $less         = get_template_directory_uri().'/assets/less/';
   } else {
