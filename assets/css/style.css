@@ -5107,7 +5107,7 @@ fieldset[disabled] #social-sharing .shareme .box {
   width: auto;
 }
 .wrap.main-section {
-  padding-top: 30px;
+  margin-top: 2em;
 }
 .btn-group.social-share a {
   padding: 5px 1px;
@@ -5122,7 +5122,6 @@ fieldset[disabled] #social-sharing .shareme .box {
 }
 .btn-group.social-share:hover a {
   padding: 5px 10px;
-  width: ;
   color: #fff;
   color: rgba(255,255,255,0.9);
   width: auto;
