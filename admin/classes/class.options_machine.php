@@ -116,7 +116,7 @@ class Options_Machine {
 					$output .= '<div class="select_wrapper ' . $mini . '">';
 					$output .= '<select class="select of-input" name="'.$value['id'].'" id="'. $value['id'] .'">';
 					foreach ($value['options'] as $select_ID => $option) {
-						$output .= '<option id="' . $select_ID . '" value="'.$option.'" ' . selected($smof_data[$value['id']], $option, false) . ' />'.$option.'</option>';
+						$output .= '<option id="' . $select_ID . '" value="'.$select_ID.'" ' . selected($smof_data[$value['id']], $option, false) . ' />'.$option.'</option>';
 					 }
 					$output .= '</select></div>';
 				break;
@@ -442,6 +442,32 @@ class Options_Machine {
 					}
 
 				break;
+
+				//backup and restore options data
+				case 'presets':
+
+					$instructions = $value['desc'];
+
+					$output .= '<div class="backup-box">';
+					$output .= '<div class="instructions">'.$instructions."</div>\n";
+					//$output .= '<p><strong>'. __('Last Backup : ').'<span class="backup-log">'.$log.'</span></strong></p></div>'."\n";
+					//$output .= '<a href="#" id="of_backup_button" class="button" title="Backup Options">Backup My Current Styles</a>';
+					//$output .= '<a href="#" id="of_restore_button" class="button" title="Restore Options">Restore Options</a>';
+					$output .= '<div class="select_wrapper">';
+
+					$output .= '<select class="select of-input presetSelect" name="'.$value['id'].'" id="'. $value['id'] .'">';
+					if ($smof_data[$value['id']] == "") {
+						$output .= '<option></option>';
+					}
+					foreach ($value['options'] as $select_ID => $option) {
+						$name = explode('.',$select_ID);
+						$name = ucfirst($name[0]);
+						$output .= '<option id="' . $select_ID . '" data-preview="'.PRESETS_URL.$option['preview'].'" value="'.$option['style'].'" ' . selected($smof_data[$value['id']], $option['style'], false) . ' />'.$name.'</option>';
+					}
+					$output .= '</select></div>';
+					$output .= '</div><div id="presetPreview" class="hide"></div>';
+
+				break;				
 
 				//backup and restore options data
 				case 'backup':

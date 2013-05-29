@@ -39,8 +39,8 @@ require_once locate_template('/lib/customizer/functions.social.php');         //
 // require_once locate_template('/lib/customizer/functions.typography.php');     // Extra functions for the "Typography" Customizer section
 
 
-
-require_once locate_template('/lib/shortcodes/init.php');                     // Initialize the Shortcodes plugin
-
-
+// Add extra features
+if (locate_template('/pro/init.php')) {
+	require_once locate_template('/pro/init.php');                     
+}
 

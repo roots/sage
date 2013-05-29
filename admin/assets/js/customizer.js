@@ -3,26 +3,31 @@ jQuery.noConflict();
 /** Fire up jQuery - let's dance!
  */
 jQuery(document).ready(function($){
+	var pointerid = "";
+	$('.customize-section').live('click', function() {
+		// Fix the scroll to the top on click.
+		//$('.wp-full-overlay-sidebar-content').animate({scrollTop:$($('#customize-header-actions').height()}, 500);
+	});
 
-
-/* Not sure if I like the wordpress pointer. Here's how to do it though...
-	$('.pointer').live('click', function() {
+	$('.customizerInfo').live('click', function() {
 		var parent = $(this).closest('li').attr('id');
-
-		var header = $.trim($('#'+parent+' .customize-control-title').text());
-		var body = $(this).attr('title');
-		var content = "<h3>"+header+"<\/h3><p>"+body+"<\/p>";
-
-		$('#'+parent + ' .customize-control-title').pointer({
-	        content: content,
+		pointerid = "#"+parent;
+		$(pointerid).pointer({
+	        content: $(pointerid+'-content').html(),
 	        position: 'left',
 	        close: function() {
 	            // This function is fired when you click the close button
 	        }
       	}).pointer('open');
+	});
 
-	})
-*/
+	// Close when the user scrolls on the page. Keep it clean
+	$('.wp-full-overlay-sidebar-content').scroll(function() {
+  		if (pointerid != "") {
+			$(pointerid).pointer('close');
+  		}
+  		pointerid = "";
+	});
 
 	// Display last current tab
 	if ($.cookie("of_current_opt") === null) {

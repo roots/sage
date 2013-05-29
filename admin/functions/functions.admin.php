@@ -90,7 +90,7 @@ function of_save_options( $data, $key=OPTIONS ) {
   global $smof_details;
   $data     = apply_filters( 'of_options_before_save', $data );
   $old      = get_theme_mods();
-  $changed  = false; // set $changed to false by default.
+  $lessChanged  = false; // set $lessChanged to false by default.
 
   if ( $key == BACKUPS ) {
     set_theme_mod( BACKUPS, $data );
@@ -99,19 +99,19 @@ function of_save_options( $data, $key=OPTIONS ) {
       set_theme_mod( $k, $v );
 
     if ( $key == "IMPORT" || $key == "RESET" || $key == "RESTORE" ) {
-      $changed = true;
+      $lessChanged = true;
     } else {
-      // Find if we changed a less variable, and if so, recompile the CSS.
+      // Find if we changed a LESS variable, and if so, recompile the CSS.
       foreach ( $smof_details as $key=>$option ) {
         if ( $option['less'] == true ) {
           if ( $old[$key] != $data[$key] ) {
-            $changed = true;
+            $lessChanged = true;
           }
         }
       }
     }
   }
-  if ( $changed == true )
+  if ( $lessChanged == true )
     shoestrap_makecss();
 }
 
