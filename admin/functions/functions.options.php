@@ -171,7 +171,6 @@ if (!function_exists('of_options')) {
       "desc"      => __("This option will disable all gradients in your site, giving it a cleaner look. Default: OFF.", "shoestrap"),
       "id"        => "general_flat",
       "less"      => true,
-      "customizer"=> array(),
       "std"       => 0,
       "type"      => "switch",
     );
@@ -352,7 +351,6 @@ if (!function_exists('of_options')) {
         'repeat-x'   => __( 'Tile Horizontally', 'shoestrap' ),
         'repeat-y'   => __( 'Tile Vertically', 'shoestrap' ),
       ),
-      "customizer"=> array(),
     );
 
     $of_options[] = array(
@@ -362,7 +360,6 @@ if (!function_exists('of_options')) {
       "fold"      => "background_image_position_toggle",
       "std"       => "repeat",
       "type"      => "radio",
-      "customizer"=> array(),
       "options"   => array(
         'left'    => __( 'Left', 'shoestrap' ),
         'right'   => __( 'Right', 'shoestrap' ),
@@ -876,7 +873,6 @@ if (!function_exists('of_options')) {
         'repeat-x'   => __( 'Tile Horizontally', 'shoestrap' ),
         'repeat-y'   => __( 'Tile Vertically', 'shoestrap' ),
       ),
-      "customizer"=> array(),
     );
 
     $of_options[] = array(
@@ -891,7 +887,6 @@ if (!function_exists('of_options')) {
         'right'   => __( 'Right', 'shoestrap' ),
         'center'  => __( 'Center', 'shoestrap' ),
       ),
-      "customizer"=> array(),
     );
 
     $of_options[] = array(
@@ -1032,6 +1027,7 @@ if (!function_exists('of_options')) {
       "desc"      => __("The text that will be displayed in your footer. Default: your site's name.", "shoestrap"),
       "id"        => "footer_text",
       "std"       => get_bloginfo( 'name' ),
+      "customizer"=> array(),
       "type"      => "textarea"
     );
 
@@ -1073,7 +1069,6 @@ if (!function_exists('of_options')) {
       "id"        => "typography_sans_serif",
       "std"       => "'Helvetica Neue', Helvetica, Arial, sans-serif",
       "type"      => "text",
-      "customizer"=> array(),
     );
 
     // Social
