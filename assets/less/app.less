@@ -325,3 +325,23 @@ a.toggle-nav {
 .wrap.main-section{
   margin-top: 2em;
 }
+
+.btn-group.social-share {
+  a {
+    padding: @padding-small-vertical 1px;
+    .transition-duration(0.3s);
+    width: 0;
+    color: none; // fallback
+    color: transparent; // fallback
+    color: rgba(255,255,255,0);
+  }
+  &:hover {
+    a {
+      padding: @padding-small-vertical @padding-small-horizontal;
+      width: @baseFontSize;
+      color: #fff; // fallback
+      color: rgba(255,255,255,.9);
+      width: auto;
+    }
+  }
+}

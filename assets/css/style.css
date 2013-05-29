@@ -5109,3 +5109,21 @@ fieldset[disabled] #social-sharing .shareme .box {
 .wrap.main-section {
   margin-top: 2em;
 }
+.btn-group.social-share a {
+  padding: 5px 1px;
+  -webkit-transition-duration: 0.3s;
+  -moz-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  width: 0;
+  color: none;
+  color: transparent;
+  color: rgba(255,255,255,0);
+}
+.btn-group.social-share:hover a {
+  padding: 5px 10px;
+  width: ;
+  color: #fff;
+  color: rgba(255,255,255,0.9);
+  width: auto;
+}

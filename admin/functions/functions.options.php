@@ -1078,6 +1078,38 @@ if (!function_exists('of_options')) {
     );
 
     $of_options[] = array(
+      "name"      => "Share to Facebook",
+      "desc"      => "",
+      "id"        => "fb_share",
+      "std"       => "",
+      "type"      => "switch"
+    );
+
+    $of_options[] = array(
+      "name"      => "Share to Twitter",
+      "desc"      => "",
+      "id"        => "tw_share",
+      "std"       => "",
+      "type"      => "switch"
+    );
+
+    $of_options[] = array(
+      "name"      => "Share to Google Plus Link",
+      "desc"      => "",
+      "id"        => "gp_share",
+      "std"       => "",
+      "type"      => "switch"
+    );
+
+    $of_options[] = array(
+      "name"      => "Share to Pinterest",
+      "desc"      => "",
+      "id"        => "pi_share",
+      "std"       => "",
+      "type"      => "switch"
+    );
+
+    $of_options[] = array(
       "name"      => "Facebook Link",
       "desc"      => "A link to your facebook profile/page.",
       "id"        => "fb_link",
