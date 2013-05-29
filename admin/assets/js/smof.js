@@ -748,6 +748,7 @@ jQuery(document).ready(function($){
 			}
 		});
 	});
-
+	var parent = $('#presetPreview').closest('.section').attr('id');
+	$('#presetPreview').css('width',$('#'+parent).width()+'px');	
 
 }); //end doc ready

@@ -459,13 +459,18 @@ class Options_Machine {
 					if ($smof_data[$value['id']] == "") {
 						$output .= '<option></option>';
 					}
+					$preview = "";
+					
 					foreach ($value['options'] as $select_ID => $option) {
 						$name = explode('.',$select_ID);
 						$name = ucfirst($name[0]);
+						if ($select_ID == str_replace(".txt", "", $smof_data[$value['id']])) {
+							$preview = PRESETS_URL.$option['preview'];
+						}
 						$output .= '<option id="' . $select_ID . '" data-preview="'.PRESETS_URL.$option['preview'].'" value="'.$option['style'].'" ' . selected($smof_data[$value['id']], $option['style'], false) . ' />'.$name.'</option>';
 					}
 					$output .= '</select></div>';
-					$output .= '</div><div id="presetPreview" class="hide"></div>';
+					$output .= '</div><div id="presetPreview"><img src="'.$preview.'" style="max-width: 100%;" alt="" /></div>';
 
 				break;				
 
