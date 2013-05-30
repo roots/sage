@@ -42,8 +42,8 @@ if (!function_exists('of_options_shoestrap')) {
     }
 
     //Background Images Reader
-    $bg_images_path = ADMINPATH. '../lib/admin/assets/img/backgrounds';
-    $bg_images_url = get_bloginfo('template_url').'/assets/img/backgrounds/';
+    $bg_images_path = get_template_directory() . '/lib/assets/img/backgrounds';
+    $bg_images_url = get_bloginfo('template_url').'/lib/assets/img/backgrounds/';
     $bg_images = array();
 
     if ( is_dir($bg_images_path) ) {
@@ -58,8 +58,8 @@ if (!function_exists('of_options_shoestrap')) {
 
 
     //Background Patterns Reader
-    $bg_pattern_images_path = ADMINPATH. '../lib/admin/assets/img/patterns';
-    $bg_pattern_images_url = get_bloginfo('template_url').'/assets/img/patterns/';
+    $bg_pattern_images_path = get_template_directory() . '/lib/assets/img/patterns';
+    $bg_pattern_images_url = get_bloginfo('template_url').'/lib/assets/img/patterns/';
     $bg_pattern_images = array();
 
     if ( is_dir($bg_pattern_images_path) ) {
@@ -73,9 +73,9 @@ if (!function_exists('of_options_shoestrap')) {
     }
 
     //Preset Styles Reader
-    $preset_styles_path = ADMINPATH. '../lib/admin/presets';
+    $preset_styles_path = get_template_directory() . '/lib/admin/presets';
 
-    $preset_styles_url = get_bloginfo('template_url').'/admin/presets/';
+    $preset_styles_url = get_bloginfo('template_url').'/lib/admin/presets/';
     $preset_styles = array();
 
     if ( is_dir($preset_styles_path) ) {
@@ -151,8 +151,8 @@ if (!function_exists('of_options_shoestrap')) {
     );
 
     $of_options[] = array(
-      "name"      => __("Custom Favicon TODO", "shoestrap"),
-      "desc"      => __("You can put url of an ico image that will represent your website's favicon (16px x 16px)", "shoestrap"),
+      "name"      => __("Custom Favicon", "shoestrap"),
+      "desc"      => __("You can put url of an ico image that will represent your website's favicon (32px x 32px)", "shoestrap"),
       "id"        => "favicon",
       "std"       => "",
       "type"      => "media",
@@ -160,43 +160,13 @@ if (!function_exists('of_options_shoestrap')) {
     );
 
     $of_options[] = array(
-      "name"      => __("Apple iPhone Icon TODO", "shoestrap"),
-      "desc"      => __("Icon for Apple iPhone (57px x 57px)", "shoestrap"),
-      "id"        => "iphone_icon",
+      "name"      => __("Apple Icon", "shoestrap"),
+      "desc"      => __("This will create icons for Apple iPhone (57px x 57px), Apple iPhone Retina Version (114px x 114px), Apple iPad (72px x 72px) and Apple iPad Retina (144px x 144px). Please note that for better results the image you upload should be at least 144px x 144px.", "shoestrap"),
+      "id"        => "apple_icon",
       "std"       => "",
       "type"      => "media",
       "customizer"=> array(),
     );
-
-    $of_options[] = array(
-      "name"      => __("Apple iPhone Retina Icon TODO", "shoestrap"),
-      "desc"      => __("Icon for Apple iPhone Retina Version (114px x 114px)", "shoestrap"),
-      "id"        => "iphone_retina_icon",
-      "std"       => "",
-      "type"      => "media",
-      "customizer"=> array(),
-    );
-
-    $of_options[] = array(
-      "name"      => __("Apple iPad Icon TODO", "shoestrap"),
-      "desc"      => __("Icon for Apple iPhone (72px x 72px)", "shoestrap"),
-      "id"        => "ipad_icon",
-      "std"       => "",
-      "type"      => "media",
-      "customizer"=> array(),
-    );    
-
-    $of_options[] = array(
-      "name"      => __("Apple iPad Retina Icon TODO", "shoestrap"),
-      "desc"      => __("Icon for Apple iPhone Retina (72px x 72px)", "shoestrap"),
-      "id"        => "ipad_retina_icon",
-      "std"       => "",
-      "type"      => "media",
-      "customizer"=> array(),
-    );    
-
-
-  
 
     $of_options[] = array(
       "name"      => __("Logo", "shoestrap"),
@@ -214,7 +184,7 @@ if (!function_exists('of_options_shoestrap')) {
       "std"       => "",
       "type"      => "switch",
       "customizer"=> array(),
-    );  
+    );
 
     $of_options[] = array(
       "name"      => "",
@@ -225,7 +195,7 @@ if (!function_exists('of_options_shoestrap')) {
       "icon"      => true,
       "fold"      => "retina_logo_toggle",
       "type"      => "info"
-    );     
+    );
 
 
 
@@ -245,7 +215,7 @@ if (!function_exists('of_options_shoestrap')) {
       "id"        => "tracking_code",
       "std"       => 0,
       "type"      => "textarea",
-    );    
+    );
 
     $of_options[] = array(
       "name"      => __("Allow comments on pages TODO", "shoestrap"),
@@ -253,7 +223,7 @@ if (!function_exists('of_options_shoestrap')) {
       "id"        => "tracking_code",
       "std"       => 0,
       "type"      => "checkbox",
-    ); 
+    );
 
 
 
@@ -568,7 +538,7 @@ if (!function_exists('of_options_shoestrap')) {
       "max"       => 120,
       "advanced"  => true,
       "type"      => "sliderui"
-    );    
+    );
 
     $of_options[] = array(
       "name"      => __("Fluid Layout", "shoestrap"),
@@ -682,7 +652,7 @@ if (!function_exists('of_options_shoestrap')) {
       "type"      => "sliderui"
     );
 
-    
+
 
     // NavBar Settings
     $of_options[] = array(
@@ -1021,7 +991,7 @@ if (!function_exists('of_options_shoestrap')) {
       "min"       => 30,
       "max"       => 100,
       "type"      => "sliderui"
-    );    
+    );
 
     $of_options[] = array(
       "name"      => __("Footer Text Color", "shoestrap"),
@@ -1095,7 +1065,7 @@ if (!function_exists('of_options_shoestrap')) {
       "std"       => 0,
       "type"      => "switch",
       "customizer"=> array(),
-    );    
+    );
 
     $of_options[] = array(
       "name"      => "",
@@ -1227,7 +1197,7 @@ if (!function_exists('of_options_shoestrap')) {
       "id"        => "tumblr_share",
       "std"       => "",
       "type"      => "switch"
-    );  
+    );
 
     $of_options[] = array(
       "name"      => "Pinterest",
@@ -1235,7 +1205,7 @@ if (!function_exists('of_options_shoestrap')) {
       "id"        => "pinterest_share",
       "std"       => "",
       "type"      => "switch"
-    ); 
+    );
 
     $of_options[] = array(
       "name"      => "Email",
@@ -1243,7 +1213,7 @@ if (!function_exists('of_options_shoestrap')) {
       "id"        => "email_share",
       "std"       => "",
       "type"      => "switch"
-    );               
+    );
 
     // Social
     $of_options[] = array(
@@ -1273,7 +1243,7 @@ if (!function_exists('of_options_shoestrap')) {
       "id"        => "digg_link",
       "std"       => "",
       "type"      => "text"
-    );  
+    );
 
     $of_options[] = array(
       "name"      => "Dribbble TODO",
@@ -1281,7 +1251,7 @@ if (!function_exists('of_options_shoestrap')) {
       "id"        => "dribbble_link",
       "std"       => "",
       "type"      => "text"
-    ); 
+    );
 
     $of_options[] = array(
       "name"      => "Facebook",
@@ -1297,7 +1267,7 @@ if (!function_exists('of_options_shoestrap')) {
       "id"        => "flickr_link",
       "std"       => "",
       "type"      => "text"
-    );    
+    );
 
     $of_options[] = array(
       "name"      => "Forrst TODO",
@@ -1305,7 +1275,7 @@ if (!function_exists('of_options_shoestrap')) {
       "id"        => "forrst_link",
       "std"       => "",
       "type"      => "text"
-    );    
+    );
 
     $of_options[] = array(
       "name"      => "Github",
@@ -1313,7 +1283,7 @@ if (!function_exists('of_options_shoestrap')) {
       "id"        => "github_link",
       "std"       => "",
       "type"      => "text"
-    );    
+    );
 
     $of_options[] = array(
       "name"      => "Google+",
@@ -1353,7 +1323,7 @@ if (!function_exists('of_options_shoestrap')) {
       "id"        => "reddit_link",
       "std"       => "",
       "type"      => "text"
-    );    
+    );
 
     $of_options[] = array(
       "name"      => "RSS TODO",
@@ -1418,7 +1388,7 @@ if (!function_exists('of_options_shoestrap')) {
       "id"        => "yahoo_link",
       "std"       => "",
       "type"      => "text"
-    );    
+    );
 
     $of_options[] = array(
       "name"      => "YouTube Link",
@@ -1503,7 +1473,7 @@ if (!function_exists('of_options_shoestrap')) {
       "std"       => "",
       "type"      => "presets",
       "options"   => $preset_styles,
-    );    
+    );
 
     // Backup Options
     $of_options[] = array(
