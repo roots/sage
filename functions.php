@@ -36,11 +36,12 @@ require_once locate_template('/lib/customizer/functions.logo.php');           //
 require_once locate_template('/lib/customizer/functions.navbar.php');         // Extra functions for the "NavBar" Customizer section
 require_once locate_template('/lib/customizer/functions.background.php');     // Extra functions for the "Background" Customizer section
 require_once locate_template('/lib/customizer/functions.social.php');         // Initialize the social networks
+require_once locate_template('/lib/customizer/functions.icons.php');          // Favicon and Apple Icons
 // require_once locate_template('/lib/customizer/functions.typography.php');     // Extra functions for the "Typography" Customizer section
 
 
 // Add extra features
 if (locate_template('/pro/init.php')) {
-	require_once locate_template('/pro/init.php');                     
+	require_once locate_template('/pro/init.php');
 }
 
