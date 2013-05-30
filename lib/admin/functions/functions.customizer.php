@@ -44,12 +44,17 @@ function smof_customize_init( $wp_customize ) {
   of_load_only();
   // Have to change the javascript for the customizer
   wp_dequeue_script( 'smof', ADMIN_DIR .'assets/js/smof.js' );
+
+  of_style_only();
+  wp_dequeue_style('admin-style', ADMIN_DIR . 'assets/css/admin-style.css');
+  wp_enqueue_style('admin-style-shoestrap', get_template_directory_uri() . '/lib/admin/assets/css/admin-style.css');
+
   wp_enqueue_style( 'wp-pointer' );
   wp_enqueue_script( 'wp-pointer' );
   // Remove when code is in place!
   wp_enqueue_script('smofcustomizerjs', ADMIN_DIR .'../lib/admin/assets/js/customizer.js');
   // Get styles
-  of_style_only();
+
   wp_enqueue_style('smofcustomizer', ADMIN_DIR .'../lib/admin/assets/css/customizer.css');
 }
 add_action( 'customize_controls_init', 'smof_customize_init' );
