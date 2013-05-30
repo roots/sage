@@ -3199,8 +3199,8 @@ button.close {
   margin-bottom: 15px;
 }
 .navbar-nav > li > a {
-  padding-top: 5px;
-  padding-bottom: 5px;
+  padding-top: 17px;
+  padding-bottom: 17px;
   color: #777777;
   line-height: 20px;
   border-radius: 4px;
@@ -3282,8 +3282,8 @@ button.close {
   margin-top: 4px;
 }
 .navbar-form {
-  margin-top: -3px;
-  margin-bottom: -3px;
+  margin-top: 9px;
+  margin-bottom: 9px;
 }
 .navbar-form input,
 .navbar-form select,
@@ -3428,11 +3428,11 @@ button.close {
   }
 }
 .navbar-btn {
-  margin-top: -3px;
+  margin-top: 9px;
 }
 .navbar-text {
-  margin-top: 5px;
-  margin-bottom: 5px;
+  margin-top: 17px;
+  margin-bottom: 17px;
 }
 .navbar-link {
   color: #777777;
@@ -4751,14 +4751,14 @@ body .navbar.navbar-static-top {
   margin-bottom: 0;
 }
 body.bottom-navbar {
-  padding-bottom: 30px;
+  padding-bottom: 54px;
 }
 @media screen and (min-width: 768px) {
   body.top-navbar {
-    padding-top: 30px;
+    padding-top: 54px;
   }
   body.bottom-navbar {
-    padding-bottom: 30px;
+    padding-bottom: 54px;
   }
 }
 #shoestrap_icon {
@@ -5079,13 +5079,13 @@ fieldset[disabled] #social-sharing .shareme .box {
   }
 }
 .topnavbar input.search-query {
-  margin-top: -3px;
+  margin-top: 9px;
 }
 .jumbotron {
   border-radius: 0px;
 }
 .navbar.style1 li > a {
-  padding-bottom: 2px;
+  padding-bottom: 14px;
 }
 .navbar.style1 .active > a,
 .navbar.style1 .active > a:hover,
@@ -5094,7 +5094,7 @@ fieldset[disabled] #social-sharing .shareme .box {
   border-bottom: 3px solid #428bca;
 }
 .navbar.style2 li > a {
-  padding-top: 2px;
+  padding-top: 14px;
 }
 .navbar.style2 .active > a,
 .navbar.style2 .active > a:hover,
@@ -5140,7 +5140,7 @@ fieldset[disabled] #social-sharing .shareme .box {
   padding: 5px;
 }
 .navbar a.navbar-brand img {
-  max-height: 20px;
+  max-height: 44px;
   width: auto;
 }
 .wrap.main-section {
