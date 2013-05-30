@@ -13,7 +13,6 @@
 	margin-top: 4px;
 
 }
-<div class="tipsy tipsy-w" style="top: 383.5px; left: 262px; visibility: visible; display: block; opacity: 0.9;"><div class="tipsy-arrow tipsy-arrow-w"></div><div class="tipsy-inner">A text input field.</div></div>
 
 .customize-control .mini {
 	width: 50px !important;
@@ -72,3 +71,4 @@
 .customizer-checkbox .checkbox {
 	width: auto !important;
 }
+.hide {display: none;}
