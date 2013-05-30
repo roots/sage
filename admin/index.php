@@ -2,14 +2,20 @@
 /*
 Title		: SMOF
 Description	: Slightly Modified Options Framework
-Version		: 1.4.4
+Version		: 1.5
 Author		: Syamil MJ
 Author URI	: http://aquagraphite.com
 License		: GPLv3 - http://www.gnu.org/copyleft/gpl.html
+
 Credits		: Thematic Options Panel - http://wptheming.com/2010/11/thematic-options-panel-v2/
-		 	  KIA Thematic Options Panel - https://github.com/helgatheviking/thematic-options-KIA
 		 	  Woo Themes - http://woothemes.com/
 		 	  Option Tree - http://wordpress.org/extend/plugins/option-tree/
+
+Contributors: Syamil MJ - http://aquagraphite.com
+			  Andrei Surdu - http://smartik.ws/
+			  Jonah Dahlquist - http://nucleussystems.com/
+			  partnuz - https://github.com/partnuz
+			  Alex Poslavsky - https://github.com/plovs
 */
 
 /**
@@ -32,7 +38,7 @@ if( function_exists( 'wp_get_theme' ) ) {
 	$theme_uri = $theme_obj->get('ThemeURI');
 	$author_uri = $theme_obj->get('AuthorURI');
 } else {
-	$theme_data = get_theme_data( TEMPLATEPATH.'/style.css' );
+	$theme_data = get_theme_data( get_template_directory().'/style.css' );
 	$theme_version = $theme_data['Version'];
 	$theme_name = $theme_data['Name'];
 	$theme_uri = $theme_data['ThemeURI'];
@@ -40,11 +46,15 @@ if( function_exists( 'wp_get_theme' ) ) {
 }
 
 
-define( 'SMOF_VERSION', '1.4.4' );
-define( 'ADMIN_PATH', TEMPLATEPATH . '/admin/' );
-define( 'ADMIN_DIR', get_template_directory_uri() . '/admin/' );
-define( 'PRESETS_PATH', TEMPLATEPATH . '/admin/presets/' );
-define( 'PRESETS_URL', get_bloginfo('template_url') . '/admin/presets/' );
+define( 'SMOF_VERSION', '1.5' );
+
+if( !defined('ADMIN_PATH') )
+	define( 'ADMIN_PATH', get_template_directory() . '/admin/' );
+if( !defined('ADMIN_DIR') )
+	define( 'ADMIN_DIR', get_template_directory_uri() . '/admin/' );
+
+define( 'ADMIN_IMAGES', ADMIN_DIR . 'assets/images/' );
+
 define( 'LAYOUT_PATH', ADMIN_PATH . 'layouts/' );
 define( 'THEMENAME', $theme_name );
 /* Theme version, uri, and the author uri are not completely necessary, but may be helpful in adding functionality */
@@ -52,8 +62,7 @@ define( 'THEMEVERSION', $theme_version );
 define( 'THEMEURI', $theme_uri );
 define( 'THEMEAUTHORURI', $author_uri );
 
-define( 'OPTIONS', $theme_name.'_options' );
-define( 'BACKUPS',$theme_name.'_backups' );
+define( 'BACKUPS','backups' );
 
 /**
  * Required action filters
@@ -66,7 +75,6 @@ if (is_admin() && isset($_GET['activated'] ) && $pagenow == "themes.php" ) add_a
 add_action('admin_head', 'optionsframework_admin_message');
 add_action('admin_init','optionsframework_admin_init');
 add_action('admin_menu', 'optionsframework_add_admin');
-add_action( 'init', 'optionsframework_mlu_init');
 
 /**
  * Required Files

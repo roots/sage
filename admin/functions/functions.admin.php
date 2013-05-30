@@ -1,4 +1,5 @@
 <?php
+
 /**
  * SMOF Admin
  *
@@ -7,29 +8,29 @@
  * @since       1.4.0
  * @author      Syamil MJ
  */
-
+ 
 
 /**
  * Head Hook
  *
  * @since 1.0.0
  */
-function of_head() {
-  do_action( 'of_head' );
-}
+function of_head() { do_action( 'of_head' ); }
 
 /**
  * Add default options upon activation else DB does not exist
  *
  * @since 1.0.0
  */
-function of_option_setup() {
-  global $of_options, $options_machine;
-  $options_machine = new Options_Machine( $of_options );
-
-  if ( !of_get_options() ) {
-    of_save_options( $options_machine->Defaults );
-  }
+function of_option_setup()	
+{
+	global $of_options, $options_machine;
+	$options_machine = new Options_Machine($of_options);
+		
+	if (!of_get_options())
+	{
+		of_save_options($options_machine->Defaults);
+	}
 }
 
 /**
@@ -37,16 +38,20 @@ function of_option_setup() {
  *
  * @since 1.0.0
  */
-function optionsframework_admin_message() {
-  //Tweaked the message on theme activate
-  ?>
-  <script type="text/javascript">
-    jQuery( function(){
-      var message = '<p>This theme comes with an <a href="<?php echo admin_url( 'admin.php?page=optionsframework' ); ?>">options panel</a> to configure settings. This theme also supports widgets, please visit the <a href="<?php echo admin_url( 'widgets.php' ); ?>">widgets settings page</a> to configure them.</p>';
-      jQuery( '.themes-php #message2' ).html( message );
-    } );
-  </script>
-  <?php
+function optionsframework_admin_message() { 
+	
+	//Tweaked the message on theme activate
+	?>
+    <script type="text/javascript">
+    jQuery(function(){
+    	
+        var message = '<p>This theme comes with an <a href="<?php echo admin_url('admin.php?page=optionsframework'); ?>">options panel</a> to configure settings. This theme also supports widgets, please visit the <a href="<?php echo admin_url('widgets.php'); ?>">widgets settings page</a> to configure them.</p>';
+    	jQuery('.themes-php #message2').html(message);
+    
+    });
+    </script>
+    <?php
+	
 }
 
 /**
@@ -54,14 +59,17 @@ function optionsframework_admin_message() {
  *
  * @since 1.0.0
  */
-function of_get_header_classes_array() {
-  global $of_options;
-
-  foreach ( $of_options as $value ) {
-    if ( $value['type'] == 'heading' )
-      $hooks[] = str_replace( ' ','',strtolower( $value['name'] ) );
-  }
-  return $hooks;
+function of_get_header_classes_array() 
+{
+	global $of_options;
+	
+	foreach ($of_options as $value) 
+	{
+		if ($value['type'] == 'heading')
+			$hooks[] = str_replace(' ','',strtolower($value['name']));	
+	}
+	
+	return $hooks;
 }
 
 /**
@@ -71,10 +79,21 @@ function of_get_header_classes_array() {
  * @since 1.4.0
  * @return array
  */
-function of_get_options() {
-  $data = get_theme_mods();
-  $data = apply_filters( 'of_options_after_load', $data );
-  return $data;
+function of_get_options($key = "") {
+	
+	if ($key != "") { // Get one specific value
+		$data = get_theme_mod($key, $data);
+	} else { // Get all values
+		$data = get_theme_mods();		
+	}
+	
+	if (empty($data)) { // Let's check to make sure this isn't empty
+		//$data = of_save_options($options_machine->Defaults);
+	}
+	$data = apply_filters('of_options_after_load', $data);
+
+	return $data;
+
 }
 
 /**
@@ -86,33 +105,16 @@ function of_get_options() {
  * @uses update_option()
  * @return void
  */
-function of_save_options( $data, $key=OPTIONS ) {
-  global $smof_details;
-  $data     = apply_filters( 'of_options_before_save', $data );
-  $old      = get_theme_mods();
-  $lessChanged  = false; // set $lessChanged to false by default.
-
-  if ( $key == BACKUPS ) {
-    set_theme_mod( BACKUPS, $data );
-  } else {
-    foreach ( $data as $k=>$v )
-      set_theme_mod( $k, $v );
-
-    if ( $key == "IMPORT" || $key == "RESET" || $key == "RESTORE" ) {
-      $lessChanged = true;
-    } else {
-      // Find if we changed a LESS variable, and if so, recompile the CSS.
-      foreach ( $smof_details as $key=>$option ) {
-        if ( $option['less'] == true ) {
-          if ( $old[$key] != $data[$key] ) {
-            $lessChanged = true;
-          }
-        }
-      }
-    }
-  }
-  if ( $lessChanged == true )
-    shoestrap_makecss();
+function of_save_options($data, $key = "")
+{
+	$data = apply_filters('of_options_before_save', $data);
+	if ($key != "") { // Update one specific value
+		set_theme_mod($key, $data);
+	} else { // Update all values in $data
+		foreach ( $data as $k=>$v ) {
+	    	set_theme_mod($k, $v);
+	  	}		
+	}
 }
 
 
@@ -122,5 +124,5 @@ function of_save_options( $data, $key=OPTIONS ) {
  * @since forever
  */
 
-$data       = of_get_options();
-$smof_data  = of_get_options();
+$data = of_get_options();
+$smof_data = of_get_options();
