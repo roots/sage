@@ -1,5 +1,8 @@
 <?php
 
+require_once locate_template('/admin/index.php'); // Slightly Modified Options Framework
+require_once locate_template('/lib/admin/init.php'); // Shoestrap SMOF modifications
+
 require_once locate_template('/lib/functions/lessphp/lessc.inc.php');   // Include the less compiler
 require_once locate_template('/lib/functions/image_resize/resize.php'); // Include the Image Resizer
 require_once locate_template('/lib/functions/breadcrumbs.php');         // The Breadcrumbs Class and function
@@ -19,6 +22,6 @@ require_once locate_template('/lib/functions/functions.social.php');         // 
 require_once locate_template('/lib/functions/functions.icons.php');          // Favicon and Apple Icons
 
 // Add extra features
-if (locate_template('/pro/init.php')) {
- require_once locate_template('/pro/init.php');
+if (locate_template('/lib/extensions/init.php')) {
+ require_once locate_template('/lib/extensions/init.php');
 }
