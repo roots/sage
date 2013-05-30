@@ -11,7 +11,7 @@ function shoestrap_icons() {
   $ipad_icon_retina   = matthewruddy_image_resize( $apple_icon_url, 72, 72, true, true );
   ?>
 
-  <?php if( $favicon != '' ) : ?>
+  <?php if( $favicon_url != '' ) : ?>
     <link rel="shortcut icon" href="<?php echo $favicon['url'] ?>" type="image/x-icon" />
   <?php endif;?>
 
