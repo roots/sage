@@ -44,14 +44,14 @@ if ( isset( $wp_version ) && version_compare( $wp_version, '3.5' ) >= 0 ) {
 		// Get default size from database
 		$width = ( $width )  ? $width : get_option( 'thumbnail_size_w' );
 		$height = ( $height ) ? $height : get_option( 'thumbnail_size_h' );
-		  
+
 		// Allow for different retina sizes
 		$retina = $retina ? ( $retina === true ? 2 : $retina ) : 1;
 
 		// Get the image file path
 		$file_path = parse_url( $url );
 		$file_path = $_SERVER['DOCUMENT_ROOT'] . $file_path['path'];
-		
+
 		// Check for Multisite
 		if ( is_multisite() ) {
 			global $blog_id;
@@ -64,7 +64,10 @@ if ( isset( $wp_version ) && version_compare( $wp_version, '3.5' ) >= 0 ) {
 		$dest_height = $height * $retina;
 
 		// File name suffix (appended to original file name)
-		$suffix = "{$dest_width}x{$dest_height}";
+		$suffix_width = ( $dest_width / $retina );
+		$suffix_height = ( $dest_height / $retina );
+		$suffix_retina = ( $retina != 1 ) ? '@' . $retina . 'x' : NULL;
+		$suffix = "{$suffix_width}x{$suffix_height}{$suffix_retina}";
 
 		// Some additional info about the image
 		$info = pathinfo( $file_path );
@@ -73,13 +76,16 @@ if ( isset( $wp_version ) && version_compare( $wp_version, '3.5' ) >= 0 ) {
 		$name = wp_basename( $file_path, ".$ext" );
 
 		// Suffix applied to filename
-		$suffix = "{$dest_width}x{$dest_height}";
+		$suffix_width = ( $dest_width / $retina );
+		$suffix_height = ( $dest_height / $retina );
+		$suffix_retina = ( $retina != 1 ) ? '@' . $retina . 'x' : NULL;
+		$suffix = "{$suffix_width}x{$suffix_height}{$suffix_retina}";
 
 		// Get the destination file name
 		$dest_file_name = "{$dir}/{$name}-{$suffix}.{$ext}";
 
 		if ( !file_exists( $dest_file_name ) ) {
-			
+
 			/*
 			 *  Bail if this image isn't in the Media Library.
 			 *  We only want to resize Media Library images, so we can be sure they get deleted correctly when appropriate.
@@ -117,7 +123,6 @@ if ( isset( $wp_version ) && version_compare( $wp_version, '3.5' ) >= 0 ) {
 					$src_h = round( $orig_height / $cmp_y * $cmp_x );
 					$src_y = round( ( $orig_height - ( $orig_height / $cmp_y * $cmp_x ) ) / 2 );
 				}
-
 			}
 
 			// Time to crop the image!
@@ -146,7 +151,6 @@ if ( isset( $wp_version ) && version_compare( $wp_version, '3.5' ) >= 0 ) {
 				'height' => $resized_height,
 				'type' => $resized_type
 			);
-
 		}
 		else {
 			$image_array = array(
@@ -203,7 +207,10 @@ else {
 		$name = wp_basename( $file_path, ".$ext" );
 
 		// Suffix applied to filename
-		$suffix = "{$dest_width}x{$dest_height}";
+		$suffix_width = ( $dest_width / $retina );
+		$suffix_height = ( $dest_height / $retina );
+		$suffix_retina = ( $retina != 1 ) ? '@' . $retina . 'x' : NULL;
+		$suffix = "{$suffix_width}x{$suffix_height}{$suffix_retina}";
 
 		// Get the destination file name
 		$dest_file_name = "{$dir}/{$name}-{$suffix}.{$ext}";
