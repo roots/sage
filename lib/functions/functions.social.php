@@ -12,7 +12,7 @@ function shoestrap_navbar_social_links() {
   $networks[] = array( 'url' => shoestrap_getVariable( 'facebook_link' ), 'icon' => 'facebook',   'fullname' => 'Facebook' );
   $networks[] = array( 'url' => shoestrap_getVariable( 'flickr_link' ), 'icon' => 'flickr',   'fullname' => 'Flickr' );
   $networks[] = array( 'url' => shoestrap_getVariable( 'forrst_link' ), 'icon' => 'forrst',   'fullname' => 'Forrst' );
-  $networks[] = array( 'url' => shoestrap_getVariable( 'github_link' ), 'icon' => 'github',     'fullname' => 'Github' );
+  $networks[] = array( 'url' => shoestrap_getVariable( 'github_link' ), 'icon' => 'github',     'fullname' => 'GitHub' );
   $networks[] = array( 'url' => shoestrap_getVariable( 'google_plus_link' ), 'icon' => 'googleplus', 'fullname' => 'Google+' );
   $networks[] = array( 'url' => shoestrap_getVariable( 'linkedin_link' ), 'icon' => 'linkedin',   'fullname' => 'LinkedIn' );
   $networks[] = array( 'url' => shoestrap_getVariable( 'myspace_link' ), 'icon' => 'myspace',    'fullname' => 'Myspace' );
@@ -31,6 +31,7 @@ function shoestrap_navbar_social_links() {
   // The base class for icons that will be used
   $baseclass  = 'glyphicon glyphicon-';
 
+
   // Build the content
   $content = '';
   $content .= '<ul class="nav navbar-nav pull-right">';
@@ -44,7 +45,7 @@ function shoestrap_navbar_social_links() {
   // populate the networks 
   foreach ( $networks as $network ) {
     if ( strlen( $network['url'] ) > 7 ) :
-      // add thie $show variable to check if the user has actually entered a url in any of the available networks
+      // add the $show variable to check if the user has actually entered a url in any of the available networks
       $show     = true;
       $content .= '<li>';
       $content .= '<a href="' . $network['url'] . '" target="_blank">';
@@ -56,7 +57,7 @@ function shoestrap_navbar_social_links() {
   $content .= '</ul></li></ul>';
 
   // If the user has selected to show social links in the navbar, AND has entered a URL, echo the content.
-  if ( shoestrap_getVariable( 'navbar_social' ) == 1 && $show == true )
+  //if ( shoestrap_getVariable( 'navbar_social' ) == 1 && $show == true )
     echo $content;
 }
 add_action( 'shoestrap_post_main_nav', 'shoestrap_navbar_social_links' );
@@ -71,7 +72,7 @@ function shoestrap_social_sharing() {
   $networks[] = array( 'on' => shoestrap_getVariable( 'google_plus_share' ), 'icon' => 'googleplus', 'fullname' => 'Google+' );
   $networks[] = array( 'on' => shoestrap_getVariable( 'tumblr_share' ), 'icon' => 'tumblr', 'fullname' => 'Tumblr' );
   $networks[] = array( 'on' => shoestrap_getVariable( 'pinterest_share' ), 'icon' => 'pinterest',  'fullname' => 'Pinterest' );
-  $networks[] = array( 'on' => shoestrap_getVariable( 'email_share' ), 'icon' => 'email', 'fullname' => 'Email' );  
+  $networks[] = array( 'on' => shoestrap_getVariable( 'email_share' ), 'icon' => 'envelope', 'fullname' => 'Email' );  
 
   $twittername = '';
 
@@ -96,8 +97,8 @@ function shoestrap_social_sharing() {
       elseif ( $network['icon'] == 'reddit' )
         $url    = 'http://reddit.com/submit?url=' .get_permalink() . '&amp;title=' . get_the_title();
       elseif ( $network['icon'] == 'tumblr' )
-        $url    = 'http://www.tumblr.com/share/link?url=' .get_permalink() . '&amp;name=' . get_the_title() . "&amp;description="; // Add description
-      elseif ( $network['icon'] == 'email' )
+        $url    = 'http://www.tumblr.com/share/link?url=' .urlencode(get_permalink()) . '&amp;name=' . urlencode(get_the_title()) . "&amp;description=".urlencode(the_excerpt()); // Add description
+      elseif ( $network['icon'] == 'envelope' )
         $url    = 'mailto:?subject=' .get_the_title() . '&amp;body=' . get_permalink();
       elseif ( $network['icon'] == 'googleplus' )
         $url    = 'https://plus.google.com/share?url=' . get_permalink();
