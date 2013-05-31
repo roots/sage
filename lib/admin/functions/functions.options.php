@@ -937,9 +937,9 @@ if (!function_exists('of_options_shoestrap')) {
       "name"      => "",
       "desc"      => "",
       "id"        => "help9",
-      "std"       => "<h3 style=\"margin: 0 0 10px;\">Jumbotron</h3>
-                      <p>You can enable an extra header from here. In this header you can add your logo, and any other widgets you wish.
-                      To add widgets on your header, visit <a href=\"$url\">this page</a>.</p>",
+      "std"       => "<h3 style=\"margin: 0 0 10px;\">Extra Branding Area</h3>
+                      <p>You can enable an extra branding/header area. In this header you can add your logo, and any other widgets you wish.
+                      To add widgets on your header, visit <a href=\"$url\">this page</a> and add your widgets to the <strong>Header</strong> Widget Area.</p>",
       "icon"      => true,
       "type"      => "info"
     );
