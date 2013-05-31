@@ -1337,7 +1337,7 @@ select:focus:invalid:focus {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  padding: 6px 8px;
+  padding: 8px 12px;
   font-size: 14px;
   font-weight: normal;
   line-height: 1.428571429;
@@ -4587,7 +4587,7 @@ a.list-group-item.active > .badge,
   font-weight: 200;
   line-height: 2.1428571435;
   color: #333333;
-  background-color: #eeeeee;
+  background-color: #EEEEEE;
 }
 .jumbotron h1 {
   line-height: 1;
