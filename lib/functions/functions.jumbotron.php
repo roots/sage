@@ -5,22 +5,33 @@
  * according to what we've entered in the customizer
  */
 function jumbotron_content() {
-  $hero = false;
-    if ( ( shoestrap_getVariable( 'jumbotron_visibility' ) == 1 && is_front_page() ) || shoestrap_getVariable( 'jumbotron_visibility' ) != 1 ) {
-      if ( is_active_sidebar( 'Jumbotron' ) ) {
-        $hero = true;
-      }
+  $hero         = false;
+  $site_style   = shoestrap_getVariable( 'site_style' );
+  $visibility   = shoestrap_getVariable( 'jumbotron_visibility' );
+  $nocontainer  = shoestrap_getVariable( 'jumbotron_nocontainer' );
+
+  if ( ( $visibility == 1 && is_front_page() ) || $visibility != 1 ) {
+    if ( is_active_sidebar( 'Jumbotron' ) ) {
+      $hero = true;
     }
+  }
 
   if ( $hero == true ) :
+
+    if ( $site_style == 'boxed' && $nocontainer != 1 )
+      echo '<div class="' . shoestrap_container_class() . '">';
+
     echo '<div class="jumbotron">';
 
-    if ( shoestrap_getVariable( 'jumbotron_nocontainer' ) != 1 )
+    if ( $nocontainer != 1 && $site_style == 'wide' || $site_style == 'boxed' )
       echo '<div class="' . shoestrap_container_class() . '">';
 
     dynamic_sidebar('Jumbotron');
 
-    if ( shoestrap_getVariable( 'jumbotron_nocontainer' ) != 1 )
+    if ( $nocontainer != 1 && $site_style == 'wide' || $site_style == 'boxed' )
+      echo '</div>';
+
+    if ( $site_style == 'boxed' && $nocontainer != 1 )
       echo '</div>';
 
     echo '</div>';

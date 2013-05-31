@@ -1,9 +1,9 @@
 <?php get_template_part('templates/head'); ?>
 <body <?php body_class(); ?>>
-  <?php if ( shoestrap_getVariable( 'navbar_boxed' ) == 1 ) :?><div id="boxed-container" class="container"><?php endif; ?>
 
   <!--[if lt IE 7]><div class="alert">Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</div><![endif]-->
 
+  <?php if ( shoestrap_getVariable( 'site_style' ) == 'boxed' ) :?><div class="container boxed-container"><?php endif; ?>
   <?php
     do_action('get_header');
     // Use Bootstrap's navbar if enabled in config.php
@@ -13,6 +13,7 @@
       get_template_part('templates/header');
     }
   ?>
+  <?php if ( shoestrap_getVariable( 'site_style' ) == 'boxed' ) :?></div><?php endif; ?>
 
   <?php if ( has_action( 'shoestrap_below_top_navbar' ) ) : ?>
     <div class="before-main-wrapper">
@@ -50,10 +51,11 @@
   </div><!-- /.wrap -->
   <?php do_action('shoestrap_after_wrap'); ?>
 
+  <?php if ( shoestrap_getVariable( 'site_style' ) == 'boxed' ) :?><div class="container boxed-container"><?php endif; ?>
   <?php do_action('shoestrap_pre_footer'); ?>
   <?php get_template_part('templates/footer'); ?>
   <?php do_action('shoestrap_after_footer'); ?>
+  <?php if ( shoestrap_getVariable( 'site_style' ) == 'boxed' ) :?></div><?php endif; ?>
 
-<?php if ( shoestrap_getVariable( 'navbar_boxed' ) == 1 ) :?></div>><?php endif; ?>
 </body>
 </html>

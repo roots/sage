@@ -85,7 +85,7 @@ function shoestrap_section_class( $target, $echo = false ) {
  */
 function shoestrap_layout_css() {
   $layout = shoestrap_getVariable( 'layout' );
-  $boxed  = shoestrap_getVariable( 'navbar_boxed' );
+  $style  = shoestrap_getVariable( 'site_style' );
   $margin = shoestrap_getVariable( 'navbar_margin_top' );
 
   echo '<style>';
@@ -101,8 +101,8 @@ function shoestrap_layout_css() {
 add_action( 'wp_head', 'shoestrap_layout_css' );
 
 function shoestrap_container_class() {
-  $fluid = shoestrap_getVariable( 'fluid' );
+  $site_style = shoestrap_getVariable( 'site_style' );
 
-  if ( $fluid != 1 )
+  if ( $site_style != 'fluid' )
     return 'container';
 }

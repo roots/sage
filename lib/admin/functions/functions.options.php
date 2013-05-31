@@ -506,7 +506,7 @@ if (!function_exists('of_options_shoestrap')) {
         4         => get_template_directory_uri() . '/lib/admin/assets/images/3cr.png',
         5         => get_template_directory_uri() . '/lib/admin/assets/images/3cm.png',
       )
-    );    
+    );
 
     $of_options[] = array(
       "name"      => __("Site Style", "shoestrap"),
@@ -516,9 +516,9 @@ if (!function_exists('of_options_shoestrap')) {
       "type"      => "select",
       "customizer"=> array(),
       "options"   => array(
-        'wide'=>"Wide",
-        'boxed'=>"Boxed",
-        'fluid'=>"Fluid",
+        'wide'    =>"Wide",
+        'boxed'   =>"Boxed",
+        'fluid'   =>"Fluid",
       )
     );
 
@@ -549,16 +549,6 @@ if (!function_exists('of_options_shoestrap')) {
     );
 
     $of_options[] = array(
-      "name"      => __("\"Boxed\" view", "shoestrap"),
-      "desc"      => __("By enabling this option, the navbar does not extend to the full length of the screen, giving a \"boxed\" look to your site. Default: OFF", "shoestrap"),
-      "id"        => "navbar_boxed",
-      "fold"      => "navbar_toggle",
-      "std"       => 0,
-      "customizer"=> array(),
-      "type"      => "switch"
-    );
-
-    $of_options[] = array(
       "name"      => __("\"Boxed\" view margin from top", "shoestrap"),
       "desc"      => __("This will add a margin above the navbar. Useful if you've enabled the 'Boxed' mode above. Default: 0px", "shoestrap"),
       "id"        => "navbar_margin_top",
@@ -569,15 +559,6 @@ if (!function_exists('of_options_shoestrap')) {
       "max"       => 120,
       "advanced"  => true,
       "type"      => "sliderui"
-    );
-
-    $of_options[] = array(
-      "name"      => __("Fluid Layout", "shoestrap"),
-      "desc"      => __("OFF by default. If you turn this ON, then the layout of your site will become fluid, spanning accross the whole width of your screen.", "shoestrap"),
-      "id"        => "fluid",
-      "customizer"=> array(),
-      "std"       => 0,
-      "type"      => "switch"
     );
 
     $of_options[] = array(
@@ -921,7 +902,7 @@ if (!function_exists('of_options_shoestrap')) {
 
     $of_options[] = array(
       "name"      => __("Full-Width", "shoestrap"),
-      "desc"      => __("When Turned ON, the Jumbotron is no longer restricted by the width of your page, taking over the full width of your screen. This option is useful when you have assigned a slider widget on the Jumbotron area and you want its width to be the maximum width of the screen. Default: OFF. Notice: Boxed view should be OFF.", "shoestrap"),
+      "desc"      => __("When Turned ON, the Jumbotron is no longer restricted by the width of your page, taking over the full width of your screen. This option is useful when you have assigned a slider widget on the Jumbotron area and you want its width to be the maximum width of the screen. Default: OFF.", "shoestrap"),
       "id"        => "jumbotron_nocontainer",
       "customizer"=> array(),
       "std"       => 1,
@@ -1196,7 +1177,7 @@ if (!function_exists('of_options_shoestrap')) {
       "id"        => "google_plus_share",
       "std"       => "",
       "type"      => "switch"
-    );    
+    );
 
     $of_options[] = array(
       "name"      => __("LinkedIn", "shoestrap"),
@@ -1236,7 +1217,7 @@ if (!function_exists('of_options_shoestrap')) {
       "id"        => "twitter_share",
       "std"       => "",
       "type"      => "switch"
-    );    
+    );
 
     $of_options[] = array(
       "name"      => __("Email", "shoestrap"),
