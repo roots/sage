@@ -116,7 +116,7 @@ class Options_Machine {
 					$output .= '<div class="select_wrapper ' . $mini . '">';
 					$output .= '<select class="select of-input" name="'.$value['id'].'" id="'. $value['id'] .'">';
 					foreach ($value['options'] as $select_ID => $option) {			
-						$output .= '<option id="' . $select_ID . '" value="'.$option.'" ' . selected($smof_data[$value['id']], $option, false) . ' />'.$option.'</option>';	 
+						$output .= '<option id="' . $select_ID . '" value="'.$select_ID.'" ' . selected($smof_data[$value['id']], $option, false) . ' />'.$option.'</option>';	 
 					 } 
 					$output .= '</select></div>';
 				break;
@@ -180,10 +180,9 @@ class Options_Machine {
 				case "color":
 					$default_color = '';
 					if ( isset($value['std']) ) {
-						if ( $smof_data[$value['id']] !=  $value['std'] )
-							$default_color = ' data-default-color="' .$value['std'] . '" ';
+						$default_color = ' data-default-color="' .$value['std'] . '" ';
 					}
-					$output .= '<input name="' . $value['id'] . '" id="' . $value['id'] . '" class="of-color"  type="text" value="' . $smof_data[$value['id']] . '"' . $default_color .' />';
+					$output .= '<input name="' . $value['id'] . '" id="' . $value['id'] . '" class="of-color" maxlength="7" placeholder="Hex Value" type="text" value="' . $smof_data[$value['id']] . '"' . $default_color .' />';
 		 	
 				break;
 

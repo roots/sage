@@ -492,7 +492,7 @@ if (!function_exists('of_options_shoestrap')) {
     );
 
     $of_options[] = array(
-      "name"      => __("Main Layout", "shoestrap"),
+      "name"      => __("Layout", "shoestrap"),
       "desc"      => __("Select main content and sidebar alignment. Choose between 1, 2 or 3 column layout.", "shoestrap"),
       "id"        => "layout",
       "std"       => get_theme_mod('layout', 1),
@@ -506,7 +506,38 @@ if (!function_exists('of_options_shoestrap')) {
         4         => get_template_directory_uri() . '/lib/admin/assets/images/3cr.png',
         5         => get_template_directory_uri() . '/lib/admin/assets/images/3cm.png',
       )
+    );    
+
+    $of_options[] = array(
+      "name"      => __("Site Style", "shoestrap"),
+      "desc"      => __("Select the default site layout. Default: Wide", "shoestrap"),
+      "id"        => "site_style",
+      "std"       => "wide",
+      "type"      => "select",
+      "customizer"=> array(),
+      "options"   => array(
+        'wide'=>"Wide",
+        'boxed'=>"Boxed",
+        'fluid'=>"Fluid",
+      )
     );
+
+    $of_options[] = array(
+      "name"      => __("NavBar Positioning", "shoestrap"),
+      "desc"      => __("Using this option you can set the navbar to be fixed to top, fixed to bottom or normal. When you're using one of the \"fixed\" options, the navbar will stay fixed on the top or bottom of the page. Default: Normal", "shoestrap"),
+      "id"        => "navbar_position",
+      "fold"      => "navbar_toggle",
+      "std"       => 0,
+      "type"      => "select",
+      "customizer"=> array(),
+      "options"   => array(
+        0         => __( 'Normal', 'shoestrap' ),
+        1         => __( 'Fixed to Top', 'shoestrap' ),
+        2         => __( 'Fixed to Bottom', 'shoestrap' ),
+      )
+    );
+
+
 
     $of_options[] = array(
       "name"      => __("Show sidebars on the frontpage", "shoestrap"),
