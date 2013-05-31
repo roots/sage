@@ -922,6 +922,18 @@ if (!function_exists('of_options_shoestrap')) {
       "type"      => "switch"
     );
 
+    $of_options[] = array(
+      "name"      => "Jumbotron Bottom Border",
+      "desc"      => __("Select the border options for your Jumbotron", "shoestrap"),
+      "id"        => "jumbotron_border_bottom",
+      "type"      => "border",
+      "std"       => array(
+        'width'   => '0',
+        'style'   => 'solid',
+        'color'   => "#428bca",
+      )
+    );
+
     // Header
     $of_options[] = array(
       "name"      => __("Header", "shoestrap"),

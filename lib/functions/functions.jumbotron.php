@@ -42,6 +42,7 @@ add_action( 'shoestrap_below_top_navbar', 'jumbotron_content', 10 );
 
 function shoestrap_jumbotron_css() {
   $center = shoestrap_getVariable( 'jumbotron_center' );
+  $border = shoestrap_getVariable( 'jumbotron_border_bottom' );
 
   // $background is the saved custom image, or the default image.
   $background = set_url_scheme( shoestrap_getVariable( 'jumbotron_bg_img' ) );
@@ -52,7 +53,7 @@ function shoestrap_jumbotron_css() {
   if ( ! $background && ! $color )
     return;
 
-  $style = $color ? "background-color: #$color;" : '';
+  $style = $color ? "background-color: $color;" : '';
 
   if ( $background ) {
     $image = " background-image: url('$background');";
@@ -65,7 +66,7 @@ function shoestrap_jumbotron_css() {
     $position = shoestrap_getVariable( 'jumbotron_bg_pos_x' );
     if ( ! in_array( $position, array( 'center', 'right', 'left' ) ) )
       $position = 'left';
-    $position = " background-position: top $position;";
+    $position = " background-position: top $position";
 
     $style .= $image . $repeat . $position;
   }
@@ -73,6 +74,9 @@ function shoestrap_jumbotron_css() {
   echo '.jumbotron{' . trim( $style ) . ';}';
   if ( $center == 1 )
     echo '.jumbotron{text-align: center;}';
+
+  if ( $border['width'] > 0 )
+    echo '.jumbotron{border-bottom:' . $border['width'] . 'px ' . $border['style'] . ' ' . $border['color'] . ';}';
 
   echo '</style>';
 }
