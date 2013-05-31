@@ -1,4 +1,5 @@
 <?php
+
 // Prevent Direct Access with homepage redirect
 if ( !defined( 'DB_NAME' ) ) {
   header('Location: http://'.$_SERVER['SERVER_NAME'].'/');

@@ -144,61 +144,10 @@ if (!function_exists('of_options_shoestrap')) {
       "desc"      => "",
       "id"        => "help1",
       "std"       => "<h3 style=\"margin: 0 0 10px;\">General theme Options</h3>
-                      <p>In this section you can define some basic options for your theme,
-                      such as upload a logo, show or hide the breadcrumbs and more.</p>",
+                      <p>In this section you can define some basic options for your theme.</p>",
       "icon"      => true,
       "type"      => "info"
     );
-
-    $of_options[] = array(
-      "name"      => __("Custom Favicon", "shoestrap"),
-      "desc"      => __("You can put url of an ico image that will represent your website's favicon (32px x 32px)", "shoestrap"),
-      "id"        => "favicon",
-      "std"       => "",
-      "type"      => "media",
-      "customizer"=> array(),
-    );
-
-    $of_options[] = array(
-      "name"      => __("Apple Icon", "shoestrap"),
-      "desc"      => __("This will create icons for Apple iPhone (57px x 57px), Apple iPhone Retina Version (114px x 114px), Apple iPad (72px x 72px) and Apple iPad Retina (144px x 144px). Please note that for better results the image you upload should be at least 144px x 144px.", "shoestrap"),
-      "id"        => "apple_icon",
-      "std"       => "",
-      "type"      => "media",
-      "customizer"=> array(),
-    );
-
-    $of_options[] = array(
-      "name"      => __("Logo", "shoestrap"),
-      "desc"      => __("Upload a logo image using the media uploader, or define the URL directly.", "shoestrap"),
-      "id"        => "logo",
-      "std"       => "",
-      "type"      => "media",
-      "customizer"=> array(),
-    );
-
-    $of_options[] = array(
-      "name"      => __("Upload Retina Logo TODO", "shoestrap"),
-      "desc"      => __("By enabling your site can be retina ready. Requires a logo re-uploaded at 2x the size desired. Default: Off", "shoestrap"),
-      "id"        => "retina_logo_toggle",
-      "std"       => "",
-      "type"      => "switch",
-      "customizer"=> array(),
-    );
-
-    $of_options[] = array(
-      "name"      => "",
-      "desc"      => "",
-      "id"        => "retina_help",
-      "std"       => "<h3 style=\"margin: 0 0 10px;\">Retina Logo</h3>
-                      <p>Upload a logo that is exactly 2x the size you want to typically display. A version will then be generated for general site use. If you have previously uploaded a logo, you will need to re-upload it to generate the proper versions.</p>",
-      "icon"      => true,
-      "fold"      => "retina_logo_toggle",
-      "type"      => "info"
-    );
-
-
-
 
     $of_options[] = array(
       "name"      => __("No gradients - \"Flat\" look.", "shoestrap"),
@@ -224,10 +173,6 @@ if (!function_exists('of_options_shoestrap')) {
       "std"       => 0,
       "type"      => "checkbox",
     );
-
-
-
-
 
     $of_options[] = array(
       "name"      => "",
@@ -265,7 +210,7 @@ if (!function_exists('of_options_shoestrap')) {
       "type"      => "sliderui"
     );
 
-// Colors
+// Branding Options
     $of_options[] = array(
       "name"      => __("Branding Options", "shoestrap"),
       "type"      => "heading"
@@ -284,6 +229,53 @@ if (!function_exists('of_options_shoestrap')) {
                       ",
       "icon"      => true,
       "type"      => "info"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Logo", "shoestrap"),
+      "desc"      => __("Upload a logo image using the media uploader, or define the URL directly.", "shoestrap"),
+      "id"        => "logo",
+      "std"       => "",
+      "type"      => "media",
+      "customizer"=> array(),
+    );
+
+    $of_options[] = array(
+      "name"      => __("Upload Retina Logo TODO", "shoestrap"),
+      "desc"      => __("By enabling your site can be retina ready. Requires a logo re-uploaded at 2x the size desired. Default: Off", "shoestrap"),
+      "id"        => "retina_logo_toggle",
+      "std"       => "",
+      "type"      => "switch",
+      "customizer"=> array(),
+    );
+
+    $of_options[] = array(
+      "name"      => "",
+      "desc"      => "",
+      "id"        => "retina_help",
+      "std"       => "<h3 style=\"margin: 0 0 10px;\">Retina Logo</h3>
+                      <p>Upload a logo that is exactly 2x the size you want to typically display. A version will then be generated for general site use. If you have previously uploaded a logo, you will need to re-upload it to generate the proper versions.</p>",
+      "icon"      => true,
+      "fold"      => "retina_logo_toggle",
+      "type"      => "info"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Custom Favicon", "shoestrap"),
+      "desc"      => __("You can put url of an ico image that will represent your website's favicon (32px x 32px)", "shoestrap"),
+      "id"        => "favicon",
+      "std"       => "",
+      "type"      => "media",
+      "customizer"=> array(),
+    );
+
+    $of_options[] = array(
+      "name"      => __("Apple Icon", "shoestrap"),
+      "desc"      => __("This will create icons for Apple iPhone (57px x 57px), Apple iPhone Retina Version (114px x 114px), Apple iPad (72px x 72px) and Apple iPad Retina (144px x 144px). Please note that for better results the image you upload should be at least 144px x 144px.", "shoestrap"),
+      "id"        => "apple_icon",
+      "std"       => "",
+      "type"      => "media",
+      "customizer"=> array(),
     );
 
     $of_options[] = array(
@@ -530,7 +522,7 @@ if (!function_exists('of_options_shoestrap')) {
       "customizer"=> array(),
       "std"       => 0,
       "type"      => "switch"
-    );    
+    );
 
 /*
     $of_options[] = array(
