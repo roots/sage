@@ -695,6 +695,25 @@ if (!function_exists('of_options_shoestrap')) {
     );
 
     $of_options[] = array(
+      "name"      => __("Menu Style", "shoestrap"),
+      "desc"      => __("You can use an alternative menu style for your NavBars. OFF by default. ", "shoestrap"),
+      "id"        => "navbar_style",
+      "fold"      => "navbar_toggle",
+      "std"       => 0,
+      "type"      => "select",
+      "customizer"=> array(),
+      "options"   => array(
+        0         => __( "Default", "shoestrap"),
+        1         => __( "Style", "shoestrap") . " 1",
+        2         => __( "Style", "shoestrap") . " 2",
+        3         => __( "Style", "shoestrap") . " 3",
+        4         => __( "Style", "shoestrap") . " 4",
+        5         => __( "Style", "shoestrap") . " 5",
+        6         => __( "Style", "shoestrap") . " 6",
+      )
+    );
+
+    $of_options[] = array(
       "name"      => __("Display Branding (Sitename or Logo)", "shoestrap"),
       "desc"      => __("Default: ON", "shoestrap"),
       "id"        => "navbar_brand",
@@ -792,24 +811,6 @@ if (!function_exists('of_options_shoestrap')) {
       "max"       => 600,
       "less"      => true,
       "type"      => "sliderui"
-    );
-
-    $of_options[] = array(
-      "name"      => __("Menu Style", "shoestrap"),
-      "desc"      => __("You can use an alternative menu style for your NavBars. OFF by default. ", "shoestrap"),
-      "id"        => "navbar_style",
-      "std"       => 0,
-      "type"      => "images",
-      "customizer"=> array(),
-      "options"   => array(
-        // TODO: create images and styles
-        0         => get_template_directory_uri() . '/lib/admin/assets/images/1c.png',
-        1         => get_template_directory_uri() . '/lib/admin/assets/images/2cr.png',
-        2         => get_template_directory_uri() . '/lib/admin/assets/images/2cl.png',
-        3         => get_template_directory_uri() . '/lib/admin/assets/images/3cl.png',
-        4         => get_template_directory_uri() . '/lib/admin/assets/images/3cr.png',
-        5         => get_template_directory_uri() . '/lib/admin/assets/images/3cm.png',
-      )
     );
 
     // Jumbotron (Hero)
