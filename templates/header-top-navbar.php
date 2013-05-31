@@ -7,7 +7,7 @@
     </a>
 
     <?php if ( get_theme_mod( 'navbar_brand' ) != 0 ) : ?>
-      <a class="navbar-brand" href="<?php echo home_url(); ?>/">
+      <a class="navbar-brand <?php shoestrap_branding_class(); ?>" href="<?php echo home_url(); ?>/">
         <?php if ( get_theme_mod( 'navbar_logo' ) == 1 ) : ?>
           <?php shoestrap_logo(); ?>
         <?php else : ?>

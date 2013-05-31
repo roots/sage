@@ -18,3 +18,10 @@ function shoestrap_logo() {
     echo '</span>';
   }
 }
+
+function shoestrap_branding_class() {
+    if ( shoestrap_getVariable( 'logo' ) )
+      echo 'logo';
+    else
+      echo 'text';
+}
