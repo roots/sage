@@ -3,30 +3,30 @@
 function shoestrap_navbar_social_links() {
   // An array of the available networks
   $networks   = array();
-  
+
   // Started on the new stuff, not done yet.
-  $networks[] = array( 'url' => shoestrap_getVariable( 'blogger_link' ), 'icon' => 'blogger',   'fullname' => 'Blogger' );
-  $networks[] = array( 'url' => shoestrap_getVariable( 'deviantart_link' ), 'icon' => 'deviantart',   'fullname' => 'DeviantART' );
-  $networks[] = array( 'url' => shoestrap_getVariable( 'digg_link' ), 'icon' => 'digg',   'fullname' => 'Digg' );
-  $networks[] = array( 'url' => shoestrap_getVariable( 'dribbble_link' ), 'icon' => 'dribbble',   'fullname' => 'Dribbble' );
-  $networks[] = array( 'url' => shoestrap_getVariable( 'facebook_link' ), 'icon' => 'facebook',   'fullname' => 'Facebook' );
-  $networks[] = array( 'url' => shoestrap_getVariable( 'flickr_link' ), 'icon' => 'flickr',   'fullname' => 'Flickr' );
-  $networks[] = array( 'url' => shoestrap_getVariable( 'forrst_link' ), 'icon' => 'forrst',   'fullname' => 'Forrst' );
-  $networks[] = array( 'url' => shoestrap_getVariable( 'github_link' ), 'icon' => 'github',     'fullname' => 'GitHub' );
-  $networks[] = array( 'url' => shoestrap_getVariable( 'google_plus_link' ), 'icon' => 'googleplus', 'fullname' => 'Google+' );
-  $networks[] = array( 'url' => shoestrap_getVariable( 'linkedin_link' ), 'icon' => 'linkedin',   'fullname' => 'LinkedIn' );
-  $networks[] = array( 'url' => shoestrap_getVariable( 'myspace_link' ), 'icon' => 'myspace',    'fullname' => 'Myspace' );
-  $networks[] = array( 'url' => shoestrap_getVariable( 'pinterest_link' ), 'icon' => 'pinterest',  'fullname' => 'Pinterest' );
-  $networks[] = array( 'url' => shoestrap_getVariable( 'reddit_link' ), 'icon' => 'reddit',  'fullname' => 'Reddit' );  
-  $networks[] = array( 'url' => shoestrap_getVariable( 'rss_link' ), 'icon' => 'rss',  'fullname' => 'RSS' );  
-  $networks[] = array( 'url' => shoestrap_getVariable( 'skype_link' ), 'icon' => 'skype', 'fullname' => 'Skype' );
-  $networks[] = array( 'url' => shoestrap_getVariable( 'soundcloud_link' ), 'icon' => 'soundcloud', 'fullname' => 'SoundCloud' );
-  $networks[] = array( 'url' => shoestrap_getVariable( 'tumblr_link' ), 'icon' => 'tumblr',     'fullname' => 'Tumblr' );
-  $networks[] = array( 'url' => shoestrap_getVariable( 'twitter_link' ), 'icon' => 'twitter',    'fullname' => 'Twitter' );
-  $networks[] = array( 'url' => shoestrap_getVariable( 'vimeo_link' ), 'icon' => 'vimeo',      'fullname' => 'Vimeo' );
-  $networks[] = array( 'url' => shoestrap_getVariable( 'vkontakte' ), 'icon' => 'vkontakte',  'fullname' => 'Vkontakte' );
-  $networks[] = array( 'url' => shoestrap_getVariable( 'yahoo_link' ), 'icon' => 'yahoo',    'fullname' => 'Yahoo' );
-  $networks[] = array( 'url' => shoestrap_getVariable( 'youtube_link' ), 'icon' => 'youtube',    'fullname' => 'YouTube' );
+  $networks[] = array( 'url' => shoestrap_getVariable( 'blogger_link' ),      'icon' => 'blogger',    'fullname' => 'Blogger' );
+  $networks[] = array( 'url' => shoestrap_getVariable( 'deviantart_link' ),   'icon' => 'deviantart', 'fullname' => 'DeviantART' );
+  $networks[] = array( 'url' => shoestrap_getVariable( 'digg_link' ),         'icon' => 'digg',       'fullname' => 'Digg' );
+  $networks[] = array( 'url' => shoestrap_getVariable( 'dribbble_link' ),     'icon' => 'dribbble',   'fullname' => 'Dribbble' );
+  $networks[] = array( 'url' => shoestrap_getVariable( 'facebook_link' ),     'icon' => 'facebook',   'fullname' => 'Facebook' );
+  $networks[] = array( 'url' => shoestrap_getVariable( 'flickr_link' ),       'icon' => 'flickr',     'fullname' => 'Flickr' );
+  $networks[] = array( 'url' => shoestrap_getVariable( 'forrst_link' ),       'icon' => 'forrst',     'fullname' => 'Forrst' );
+  $networks[] = array( 'url' => shoestrap_getVariable( 'github_link' ),       'icon' => 'github',     'fullname' => 'GitHub' );
+  $networks[] = array( 'url' => shoestrap_getVariable( 'google_plus_link' ),  'icon' => 'googleplus', 'fullname' => 'Google+' );
+  $networks[] = array( 'url' => shoestrap_getVariable( 'linkedin_link' ),     'icon' => 'linkedin',   'fullname' => 'LinkedIn' );
+  $networks[] = array( 'url' => shoestrap_getVariable( 'myspace_link' ),      'icon' => 'myspace',    'fullname' => 'Myspace' );
+  $networks[] = array( 'url' => shoestrap_getVariable( 'pinterest_link' ),    'icon' => 'pinterest',  'fullname' => 'Pinterest' );
+  $networks[] = array( 'url' => shoestrap_getVariable( 'reddit_link' ),       'icon' => 'reddit',     'fullname' => 'Reddit' );
+  $networks[] = array( 'url' => shoestrap_getVariable( 'rss_link' ),          'icon' => 'rss',        'fullname' => 'RSS' );
+  $networks[] = array( 'url' => shoestrap_getVariable( 'skype_link' ),        'icon' => 'skype',      'fullname' => 'Skype' );
+  $networks[] = array( 'url' => shoestrap_getVariable( 'soundcloud_link' ),   'icon' => 'soundcloud', 'fullname' => 'SoundCloud' );
+  $networks[] = array( 'url' => shoestrap_getVariable( 'tumblr_link' ),       'icon' => 'tumblr',     'fullname' => 'Tumblr' );
+  $networks[] = array( 'url' => shoestrap_getVariable( 'twitter_link' ),      'icon' => 'twitter',    'fullname' => 'Twitter' );
+  $networks[] = array( 'url' => shoestrap_getVariable( 'vimeo_link' ),        'icon' => 'vimeo',      'fullname' => 'Vimeo' );
+  $networks[] = array( 'url' => shoestrap_getVariable( 'vkontakte' ),         'icon' => 'vkontakte',  'fullname' => 'Vkontakte' );
+  $networks[] = array( 'url' => shoestrap_getVariable( 'yahoo_link' ),        'icon' => 'yahoo',      'fullname' => 'Yahoo' );
+  $networks[] = array( 'url' => shoestrap_getVariable( 'youtube_link' ),      'icon' => 'youtube',    'fullname' => 'YouTube' );
 
   // The base class for icons that will be used
   $baseclass  = 'glyphicon glyphicon-';
@@ -42,7 +42,7 @@ function shoestrap_navbar_social_links() {
   $content .= '</a>';
   $content .= '<ul class="dropdown-menu dropdown-social">';
 
-  // populate the networks 
+  // populate the networks
   foreach ( $networks as $network ) {
     if ( strlen( $network['url'] ) > 7 ) :
       // add the $show variable to check if the user has actually entered a url in any of the available networks
@@ -65,14 +65,14 @@ add_action( 'shoestrap_post_main_nav', 'shoestrap_navbar_social_links' );
 function shoestrap_social_sharing() {
   // An array of the available networks
   $networks   = array();
-  $networks[] = array( 'on' => shoestrap_getVariable( 'facebook_share' ), 'icon' => 'facebook',   'fullname' => 'Facebook' );
-  $networks[] = array( 'on' => shoestrap_getVariable( 'twitter_share' ), 'icon' => 'twitter',    'fullname' => 'Twitter' );
-  $networks[] = array( 'on' => shoestrap_getVariable( 'reddit_share' ), 'icon' => 'reddit',    'fullname' => 'Reddit' );
-  $networks[] = array( 'on' => shoestrap_getVariable( 'linkedin_share' ), 'icon' => 'linkedin',    'fullname' => 'LinkedIn' );
-  $networks[] = array( 'on' => shoestrap_getVariable( 'google_plus_share' ), 'icon' => 'googleplus', 'fullname' => 'Google+' );
-  $networks[] = array( 'on' => shoestrap_getVariable( 'tumblr_share' ), 'icon' => 'tumblr', 'fullname' => 'Tumblr' );
-  $networks[] = array( 'on' => shoestrap_getVariable( 'pinterest_share' ), 'icon' => 'pinterest',  'fullname' => 'Pinterest' );
-  $networks[] = array( 'on' => shoestrap_getVariable( 'email_share' ), 'icon' => 'envelope', 'fullname' => 'Email' );  
+  $networks[] = array( 'on' => shoestrap_getVariable( 'facebook_share' ),     'icon' => 'facebook',   'fullname' => 'Facebook' );
+  $networks[] = array( 'on' => shoestrap_getVariable( 'twitter_share' ),      'icon' => 'twitter',    'fullname' => 'Twitter' );
+  $networks[] = array( 'on' => shoestrap_getVariable( 'reddit_share' ),       'icon' => 'reddit',     'fullname' => 'Reddit' );
+  $networks[] = array( 'on' => shoestrap_getVariable( 'linkedin_share' ),     'icon' => 'linkedin',   'fullname' => 'LinkedIn' );
+  $networks[] = array( 'on' => shoestrap_getVariable( 'google_plus_share' ),  'icon' => 'googleplus', 'fullname' => 'Google+' );
+  $networks[] = array( 'on' => shoestrap_getVariable( 'tumblr_share' ),       'icon' => 'tumblr',     'fullname' => 'Tumblr' );
+  $networks[] = array( 'on' => shoestrap_getVariable( 'pinterest_share' ),    'icon' => 'pinterest',  'fullname' => 'Pinterest' );
+  $networks[] = array( 'on' => shoestrap_getVariable( 'email_share' ),        'icon' => 'envelope',   'fullname' => 'Email' );
 
   $twittername = '';
 
