@@ -92,7 +92,7 @@ function shoestrap_layout_css() {
   if ( $layout == 2 || $layout == 3 || $layout == 5 )
     echo 'div.main{float:right;}';
 
-  if ( $boxed == 1 && $margin != 0 )
+  if ( $style == 'boxed' && $margin != 0 )
     echo '#boxed-container{margin-top:' . $margin . 'px;}';
 
   echo '</style>';
