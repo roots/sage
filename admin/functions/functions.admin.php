@@ -107,14 +107,32 @@ function of_get_options($key = "") {
  */
 function of_save_options($data, $key = "")
 {
-	$data = apply_filters('of_options_before_save', $data);
-	if ($key != "") { // Update one specific value
-		set_theme_mod($key, $data);
-	} else { // Update all values in $data
-		foreach ( $data as $k=>$v ) {
-	    	set_theme_mod($k, $v);
-	  	}		
-	}
+  global $smof_details;
+  $data     = apply_filters( 'of_options_before_save', $data );
+  $old      = get_theme_mods();
+  $lessChanged  = false; // set $lessChanged to false by default.
+
+  if ( $key == BACKUPS ) {
+    set_theme_mod( BACKUPS, $data );
+  } else {
+    foreach ( $data as $k=>$v )
+      set_theme_mod( $k, $v );
+
+    if ( $key == "IMPORT" || $key == "RESET" || $key == "RESTORE" ) {
+      $lessChanged = true;
+    } else {
+      // Find if we changed a LESS variable, and if so, recompile the CSS.
+      foreach ( $smof_details as $key=>$option ) {
+        if ( $option['less'] == true ) {
+          if ( $old[$key] != $data[$key] ) {
+            $lessChanged = true;
+          }
+        }
+      }
+    }
+  }
+  if ( $lessChanged == true )
+    shoestrap_makecss();
 }
 
 
