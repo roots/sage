@@ -135,7 +135,7 @@ if (!function_exists('of_options_shoestrap')) {
 
     // General Options
     $of_options[] = array(
-      "name"      => __("General", "shoestrap"),
+      "name"      => __("General Options", "shoestrap"),
       "type"      => "heading"
     );
 
@@ -468,7 +468,7 @@ if (!function_exists('of_options_shoestrap')) {
 
     // Layout Settings
     $of_options[] = array(
-      "name"      => __("Layout Settings", "shoestrap"),
+      "name"      => __("Layout Options", "shoestrap"),
       "type"      => "heading"
     );
 
@@ -662,7 +662,7 @@ if (!function_exists('of_options_shoestrap')) {
 
     // NavBar Settings
     $of_options[] = array(
-      "name"      => __("NavBar Settings", "shoestrap"),
+      "name"      => __("NavBar Options", "shoestrap"),
       "type"      => "heading"
     );
 
@@ -809,7 +809,7 @@ if (!function_exists('of_options_shoestrap')) {
 
     // Jumbotron (Hero)
     $of_options[] = array(
-      "name"      => __("Jumbotron", "shoestrap"),
+      "name"      => __("Jumbotron Options", "shoestrap"),
       "type"      => "heading"
     );
 
@@ -936,7 +936,7 @@ if (!function_exists('of_options_shoestrap')) {
 
     // Header
     $of_options[] = array(
-      "name"      => __("Header", "shoestrap"),
+      "name"      => __("Header Options", "shoestrap"),
       "type"      => "heading"
     );
 
@@ -990,7 +990,7 @@ if (!function_exists('of_options_shoestrap')) {
 
     // Footer
     $of_options[] = array(
-      "name"      => __("Footer", "shoestrap"),
+      "name"      => __("Footer Options", "shoestrap"),
       "type"      => "heading"
     );
 
@@ -1046,7 +1046,7 @@ if (!function_exists('of_options_shoestrap')) {
 
     // Typography
     $of_options[] = array(
-      "name"      => __("Typography", "shoestrap"),
+      "name"      => __("Typography Options", "shoestrap"),
       "type"      => "heading"
     );
 
@@ -1166,7 +1166,7 @@ if (!function_exists('of_options_shoestrap')) {
 
     // Social
     $of_options[] = array(
-      "name"      => __("Social Sharing Box", "shoestrap"),
+      "name"      => __("Social Sharing", "shoestrap"),
       "type"      => "heading"
     );
 
@@ -1236,7 +1236,7 @@ if (!function_exists('of_options_shoestrap')) {
 
     // Social
     $of_options[] = array(
-      "name"      => __("Social Sharing", "shoestrap"),
+      "name"      => __("Social Links", "shoestrap"),
       "type"      => "heading"
     );
 
@@ -1422,7 +1422,7 @@ if (!function_exists('of_options_shoestrap')) {
 
     // Advanced Settings
     $of_options[] = array(
-      "name"      => __("Advanced Settings", "shoestrap"),
+      "name"      => __("Advanced Options", "shoestrap"),
       "type"      => "heading"
     );
 
