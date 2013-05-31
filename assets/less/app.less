@@ -362,6 +362,12 @@ a.toggle-nav {
   img {
     max-height: (@navbar-height - 10);
     width: auto;
+  &.logo {
+    height: @navbar-height;
+  }
+  &.text {
+    padding: ((@navbar-height - @line-height-computed) / 2) 15px;
+    max-width: 100%;
   }
 }
 
