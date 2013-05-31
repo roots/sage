@@ -74,7 +74,8 @@ function roots_title() {
     } elseif (is_year()) {
       printf(__('Yearly Archives: %s', 'roots'), get_the_date('Y'));
     } elseif (is_author()) {
-      printf(__('Author Archives: %s', 'roots'), get_the_author());
+      $author = get_queried_object();
+      printf(__('Author Archives: %s', 'roots'), $author->display_name);
     } else {
       single_cat_title();
     }
