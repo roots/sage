@@ -658,11 +658,136 @@ if (!function_exists('of_options_shoestrap')) {
       "type"      => "sliderui"
     );
 
-
-
-    // NavBar Settings
+    // Jumbotron (Hero)
     $of_options[] = array(
-      "name"      => __("NavBar Options", "shoestrap"),
+      "name"      => __("Jumbotron Options", "shoestrap"),
+      "type"      => "heading"
+    );
+
+    $url = admin_url( 'widgets.php' );
+    $of_options[] = array(
+      "name"      => "",
+      "desc"      => "",
+      "id"        => "help8",
+      "std"       => "<h3 style=\"margin: 0 0 10px;\">Jumbotron</h3>
+                      <p>A \"Jumbotron\", also known as \"Hero\" area,
+                      is an area in your site where you can display in a prominent position things that matter to you.
+                      This can be a slideshow, some text or whatever else you wish.
+                      This area is implemented as a widget area, so in order for something to be displayed
+                      you will have to add a widget from <a href=\"$url\">here</a>.</p>",
+      "icon"      => true,
+      "type"      => "info"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Jumbotron Background Color", "shoestrap"),
+      "desc"      => __("Select the background color for your Jumbotron area. Please note that this area will only be visible if you assign a widget to the \"Jumbotron\" Widget Area. Default: #EEEEEE.", "shoestrap"),
+      "id"        => "jumbotron_bg",
+      "std"       => "#EEEEEE",
+      "less"      => true,
+      "customizer"=> array(),
+      "type"      => "color"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Background Image", "shoestrap"),
+      "desc"      => __("Upload a Background image using the media uploader, or define the URL directly. Use the shortcodes [site_url] or [site_url_secure] for setting default URLs", "shoestrap"),
+      "id"        => "jumbotron_bg_img",
+      "std"       => "",
+      "customizer"=> array(),
+      "type"      => "media"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Background Repeat", "shoestrap"),
+      "desc"      => __("Select how (or if) the selected background should be tiled. Default: Tile", "shoestrap"),
+      "id"        => "jumbotron_bg_repeat",
+      "fold"      => "jumbotron_bg_img",
+      "std"       => "repeat",
+      "type"      => "radio",
+      "options"   => array(
+        'no-repeat'  => __( 'No Repeat', 'shoestrap' ),
+        'repeat'     => __( 'Tile', 'shoestrap' ),
+        'repeat-x'   => __( 'Tile Horizontally', 'shoestrap' ),
+        'repeat-y'   => __( 'Tile Vertically', 'shoestrap' ),
+      ),
+    );
+
+    $of_options[] = array(
+      "name"      => __("Background Alignment", "shoestrap"),
+      "desc"      => __("Select how the selected background should be horizontally aligned. Default: Left", "shoestrap"),
+      "id"        => "jumbotron_bg_pos_x",
+      "fold"      => "jumbotron_bg_img",
+      "std"       => "left",
+      "type"      => "radio",
+      "options"   => array(
+        'left'    => __( 'Left', 'shoestrap' ),
+        'right'   => __( 'Right', 'shoestrap' ),
+        'center'  => __( 'Center', 'shoestrap' ),
+      ),
+    );
+
+    $of_options[] = array(
+      "name"      => __("Jumbotron Text Color", "shoestrap"),
+      "desc"      => __("Select the text color for your Jumbotron area. Please note that this area will only be visible if you assign a widget to the \"Jumbotron\" Widget Area. Default: #333333.", "shoestrap"),
+      "id"        => "jumbotron_color",
+      "std"       => "#333333",
+      "less"      => true,
+      "customizer"=> array(),
+      "type"      => "color"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Display Jumbotron only on the Frontpage.", "shoestrap"),
+      "desc"      => __("When Turned OFF, the Jumbotron area is displayed in all your pages. If you wish to completely disable the Jumbotron, then please remove the widgets assigned to its area and it will no longer be displayed. Default: ON", "shoestrap"),
+      "id"        => "jumbotron_visibility",
+      "customizer"=> array(),
+      "std"       => 1,
+      "type"      => "switch"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Full-Width", "shoestrap"),
+      "desc"      => __("When Turned ON, the Jumbotron is no longer restricted by the width of your page, taking over the full width of your screen. This option is useful when you have assigned a slider widget on the Jumbotron area and you want its width to be the maximum width of the screen. Default: OFF.", "shoestrap"),
+      "id"        => "jumbotron_nocontainer",
+      "customizer"=> array(),
+      "std"       => 1,
+      "type"      => "switch"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Use fittext script for the title.", "shoestrap"),
+      "desc"      => __("Use the fittext script to enlarge or scale-down the font-size of the widget title to fit the Jumbotron area. Default: OFF", "shoestrap"),
+      "id"        => "jumbotron_title_fit",
+      "customizer"=> array(),
+      "std"       => 0,
+      "type"      => "switch"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Center-align the content.", "shoestrap"),
+      "desc"      => __("Turn this on to center-align the contents of the Jumbotron area. Default: OFF", "shoestrap"),
+      "id"        => "jumbotron_center",
+      "customizer"=> array(),
+      "std"       => 0,
+      "type"      => "switch"
+    );
+
+    $of_options[] = array(
+      "name"      => "Jumbotron Bottom Border",
+      "desc"      => __("Select the border options for your Jumbotron", "shoestrap"),
+      "id"        => "jumbotron_border_bottom",
+      "type"      => "border",
+      "std"       => array(
+        'width'   => '0',
+        'style'   => 'solid',
+        'color'   => "#428bca",
+      )
+    );
+
+    // Header
+    $of_options[] = array(
+      "name"      => __("Header Options", "shoestrap"),
       "type"      => "heading"
     );
 
@@ -805,139 +930,6 @@ if (!function_exists('of_options_shoestrap')) {
       "max"       => 600,
       "less"      => true,
       "type"      => "sliderui"
-    );
-
-    // Jumbotron (Hero)
-    $of_options[] = array(
-      "name"      => __("Jumbotron Options", "shoestrap"),
-      "type"      => "heading"
-    );
-
-    $url = admin_url( 'widgets.php' );
-    $of_options[] = array(
-      "name"      => "",
-      "desc"      => "",
-      "id"        => "help8",
-      "std"       => "<h3 style=\"margin: 0 0 10px;\">Jumbotron</h3>
-                      <p>A \"Jumbotron\", also known as \"Hero\" area,
-                      is an area in your site where you can display in a prominent position things that matter to you.
-                      This can be a slideshow, some text or whatever else you wish.
-                      This area is implemented as a widget area, so in order for something to be displayed
-                      you will have to add a widget from <a href=\"$url\">here</a>.</p>",
-      "icon"      => true,
-      "type"      => "info"
-    );
-
-    $of_options[] = array(
-      "name"      => __("Jumbotron Background Color", "shoestrap"),
-      "desc"      => __("Select the background color for your Jumbotron area. Please note that this area will only be visible if you assign a widget to the \"Jumbotron\" Widget Area. Default: #EEEEEE.", "shoestrap"),
-      "id"        => "jumbotron_bg",
-      "std"       => "#EEEEEE",
-      "less"      => true,
-      "customizer"=> array(),
-      "type"      => "color"
-    );
-
-    $of_options[] = array(
-      "name"      => __("Background Image", "shoestrap"),
-      "desc"      => __("Upload a Background image using the media uploader, or define the URL directly. Use the shortcodes [site_url] or [site_url_secure] for setting default URLs", "shoestrap"),
-      "id"        => "jumbotron_bg_img",
-      "std"       => "",
-      "customizer"=> array(),
-      "type"      => "media"
-    );
-
-    $of_options[] = array(
-      "name"      => __("Background Repeat", "shoestrap"),
-      "desc"      => __("Select how (or if) the selected background should be tiled. Default: Tile", "shoestrap"),
-      "id"        => "jumbotron_bg_repeat",
-      "fold"      => "jumbotron_bg_img",
-      "std"       => "repeat",
-      "type"      => "radio",
-      "options"   => array(
-        'no-repeat'  => __( 'No Repeat', 'shoestrap' ),
-        'repeat'     => __( 'Tile', 'shoestrap' ),
-        'repeat-x'   => __( 'Tile Horizontally', 'shoestrap' ),
-        'repeat-y'   => __( 'Tile Vertically', 'shoestrap' ),
-      ),
-    );
-
-    $of_options[] = array(
-      "name"      => __("Background Alignment", "shoestrap"),
-      "desc"      => __("Select how the selected background should be horizontally aligned. Default: Left", "shoestrap"),
-      "id"        => "jumbotron_bg_pos_x",
-      "fold"      => "jumbotron_bg_img",
-      "std"       => "left",
-      "type"      => "radio",
-      "options"   => array(
-        'left'    => __( 'Left', 'shoestrap' ),
-        'right'   => __( 'Right', 'shoestrap' ),
-        'center'  => __( 'Center', 'shoestrap' ),
-      ),
-    );
-
-    $of_options[] = array(
-      "name"      => __("Jumbotron Text Color", "shoestrap"),
-      "desc"      => __("Select the text color for your Jumbotron area. Please note that this area will only be visible if you assign a widget to the \"Jumbotron\" Widget Area. Default: #333333.", "shoestrap"),
-      "id"        => "jumbotron_color",
-      "std"       => "#333333",
-      "less"      => true,
-      "customizer"=> array(),
-      "type"      => "color"
-    );
-
-    $of_options[] = array(
-      "name"      => __("Display Jumbotron only on the Frontpage.", "shoestrap"),
-      "desc"      => __("When Turned OFF, the Jumbotron area is displayed in all your pages. If you wish to completely disable the Jumbotron, then please remove the widgets assigned to its area and it will no longer be displayed. Default: ON", "shoestrap"),
-      "id"        => "jumbotron_visibility",
-      "customizer"=> array(),
-      "std"       => 1,
-      "type"      => "switch"
-    );
-
-    $of_options[] = array(
-      "name"      => __("Full-Width", "shoestrap"),
-      "desc"      => __("When Turned ON, the Jumbotron is no longer restricted by the width of your page, taking over the full width of your screen. This option is useful when you have assigned a slider widget on the Jumbotron area and you want its width to be the maximum width of the screen. Default: OFF.", "shoestrap"),
-      "id"        => "jumbotron_nocontainer",
-      "customizer"=> array(),
-      "std"       => 1,
-      "type"      => "switch"
-    );
-
-    $of_options[] = array(
-      "name"      => __("Use fittext script for the title.", "shoestrap"),
-      "desc"      => __("Use the fittext script to enlarge or scale-down the font-size of the widget title to fit the Jumbotron area. Default: OFF", "shoestrap"),
-      "id"        => "jumbotron_title_fit",
-      "customizer"=> array(),
-      "std"       => 0,
-      "type"      => "switch"
-    );
-
-    $of_options[] = array(
-      "name"      => __("Center-align the content.", "shoestrap"),
-      "desc"      => __("Turn this on to center-align the contents of the Jumbotron area. Default: OFF", "shoestrap"),
-      "id"        => "jumbotron_center",
-      "customizer"=> array(),
-      "std"       => 0,
-      "type"      => "switch"
-    );
-
-    $of_options[] = array(
-      "name"      => "Jumbotron Bottom Border",
-      "desc"      => __("Select the border options for your Jumbotron", "shoestrap"),
-      "id"        => "jumbotron_border_bottom",
-      "type"      => "border",
-      "std"       => array(
-        'width'   => '0',
-        'style'   => 'solid',
-        'color'   => "#428bca",
-      )
-    );
-
-    // Header
-    $of_options[] = array(
-      "name"      => __("Header Options", "shoestrap"),
-      "type"      => "heading"
     );
 
     $url = admin_url( 'widgets.php' );
