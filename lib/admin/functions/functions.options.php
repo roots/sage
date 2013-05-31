@@ -818,7 +818,7 @@ if (!function_exists('of_options_shoestrap')) {
     );
 
     $of_options[] = array(
-      "name"      => __("Menu Style", "shoestrap"),
+      "name"      => __("NavBar Menu Style", "shoestrap"),
       "desc"      => __("You can use an alternative menu style for your NavBars. OFF by default. ", "shoestrap"),
       "id"        => "navbar_style",
       "fold"      => "navbar_toggle",
@@ -837,7 +837,7 @@ if (!function_exists('of_options_shoestrap')) {
     );
 
     $of_options[] = array(
-      "name"      => __("Display Branding (Sitename or Logo)", "shoestrap"),
+      "name"      => __("Display Branding (Sitename or Logo) on the NavBar", "shoestrap"),
       "desc"      => __("Default: ON", "shoestrap"),
       "id"        => "navbar_brand",
       "fold"      => "navbar_toggle",
@@ -847,7 +847,7 @@ if (!function_exists('of_options_shoestrap')) {
     );
 
     $of_options[] = array(
-      "name"      => __("Use Logo (if available) for branding", "shoestrap"),
+      "name"      => __("Use Logo (if available) for branding on the NavBar", "shoestrap"),
       "desc"      => __("If this option is OFF, or there is no logo available, then the sitename will be displayed instead. Default: ON", "shoestrap"),
       "id"        => "navbar_logo",
       "fold"      => "navbar_toggle",
@@ -879,7 +879,7 @@ if (!function_exists('of_options_shoestrap')) {
     );
 
     $of_options[] = array(
-      "name"      => __("Display social links in the Navbar.", "shoestrap"),
+      "name"      => __("Display social links in the NavBar.", "shoestrap"),
       "desc"      => __("Display social links in the Navbar. These can be setup in the \"Social\" section on the left. Default: OFF", "shoestrap"),
       "id"        => "navbar_social",
       "fold"      => "navbar_toggle",
@@ -889,7 +889,7 @@ if (!function_exists('of_options_shoestrap')) {
     );
 
     $of_options[] = array(
-      "name"      => __("Search", "shoestrap"),
+      "name"      => __("Search form on the NavBar", "shoestrap"),
       "desc"      => __("Display a search form in the Navbar. Default: OFF", "shoestrap"),
       "id"        => "navbar_search",
       "fold"      => "navbar_toggle",
@@ -899,7 +899,7 @@ if (!function_exists('of_options_shoestrap')) {
     );
 
     $of_options[] = array(
-      "name"      => __("Float menu to the right", "shoestrap"),
+      "name"      => __("Float NavBar menu to the right", "shoestrap"),
       "desc"      => __("Floats the primary navigation to the right. Default: OFF", "shoestrap"),
       "id"        => "navbar_nav_right",
       "fold"      => "navbar_toggle",
