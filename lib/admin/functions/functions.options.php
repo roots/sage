@@ -804,9 +804,13 @@ if (!function_exists('of_options_shoestrap')) {
       "type"      => "info"
     );
 
+    $url = admin_url( 'nav-menus.php?action=locations' );
     $of_options[] = array(
       "name"      => __("Show the Main NavBar", "shoestrap"),
-      "desc"      => __("ON by default. If you want to hide your main navbar you can do it here. When you do, the main menu will still be displayed but not styled as a navbar. If you want to completely disable it, then please visit the customizer and on the \"Navigation\" section, select \"None\".", "shoestrap"),
+      "desc"      => __("ON by default. If you want to hide your main navbar you can do it here.
+                        When you do, the main menu will still be displayed but not styled as a navbar.
+                        If you want to completely disable it, then please click on <a target='_blank' href='$url'>this link</a>
+                        and make sure that no menu is selected for your Primary Navigation."),
       "id"        => "navbar_toggle",
       "std"       => 1,
       "customizer"=> array(),
