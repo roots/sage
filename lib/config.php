@@ -22,7 +22,7 @@ add_theme_support('jquery-cdn');            // Enable to load jQuery from the Go
 /**
  * Configuration values
  */
-define('GOOGLE_ANALYTICS_ID', ''); // UA-XXXXX-Y
+define('GOOGLE_ANALYTICS_ID', get_theme_mod('analytics_id')); // UA-XXXXX-Y
 define('POST_EXCERPT_LENGTH', 40);
 
 /**

@@ -210,11 +210,11 @@ if (!function_exists('of_options_shoestrap')) {
     );
 
     $of_options[] = array(
-      "name"      => __("Tracking Code TODO", "shoestrap"),
-      "desc"      => __("Paste your Google Analytics (or other) tracking code here. This will be added into the footer template of your theme.", "shoestrap"),
-      "id"        => "tracking_code",
+      "name"      => __("Google Analytics ID", "shoestrap"),
+      "desc"      => __("Paste your Google Analytics ID here to enable analytics tracking. Your user ID should be in the form of UA-XXXXX-Y.", "shoestrap"),
+      "id"        => "analytics_id",
       "std"       => 0,
-      "type"      => "textarea",
+      "type"      => "text",
     );
 
     $of_options[] = array(
