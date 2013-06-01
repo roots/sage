@@ -30,7 +30,7 @@ function shoepress_optionsframework_admin_init_before($data) {
 	global $smof_details;
 
 	if (empty($data['smof_data']['smof_init']) || empty($smof_details)) {
-		foreach ($data['of_option'] as $option) {
+		foreach ($data['of_options'] as $option) {
 			if ($option['id'] != "")
 				$smof_details[$option['id']] = $option;
 		}
