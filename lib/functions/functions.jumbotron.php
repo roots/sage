@@ -45,39 +45,70 @@ function shoestrap_jumbotron_css() {
   $border = shoestrap_getVariable( 'jumbotron_border_bottom' );
 
   // $background is the saved custom image, or the default image.
-  $background = set_url_scheme( shoestrap_getVariable( 'jumbotron_bg_img' ) );
-  // $color is the saved custom color.
-  // A default has to be specified in style.css. It will not be printed here.
-  $color = shoestrap_getVariable( 'jumbotron_bg' );
+  if ( shoestrap_getVariable( 'jumbotron_background_image_toggle' ) == 1 ) {
+    if ( shoestrap_getVariable( 'jumbotron_background_custom_image' ) != "" )
+      $background = set_url_scheme( shoestrap_getVariable( 'jumbotron_background_custom_image' ) );
+    else if ( shoestrap_getVariable( 'jumbotron_background_image' ) != "" )
+      $background = set_url_scheme( shoestrap_getVariable( 'jumbotron_background_image' ) );
+  } else if ( shoestrap_getVariable( 'jumbotron_background_pattern_toggle' ) == 1 && shoestrap_getVariable( 'jumbotron_background_pattern' ) != "" ) {
+    $background = shoestrap_getVariable( 'jumbotron_background_pattern' );
+  }
+
+  if (shoestrap_getVariable( 'jumbotron_background_color' ) != "") {
+    $color = '#' . str_replace( '#', '', shoestrap_getVariable( 'jumbotron_background_color' ) );
+  }
 
   if ( ! $background && ! $color )
     return;
 
   $style = $color ? "background-color: $color;" : '';
 
-  if ( $background ) {
-    $image = " background-image: url('$background');";
-
-    $repeat = shoestrap_getVariable( 'jumbotron_bg_repeat' );
-    if ( ! in_array( $repeat, array( 'no-repeat', 'repeat-x', 'repeat-y', 'repeat' ) ) )
-      $repeat = 'repeat';
-    $repeat = " background-repeat: $repeat;";
-
-    $position = shoestrap_getVariable( 'jumbotron_bg_pos_x' );
-    if ( ! in_array( $position, array( 'center', 'right', 'left' ) ) )
-      $position = 'left';
-    $position = " background-position: top $position";
-
-    $style .= $image . $repeat . $position;
+  if ( shoestrap_getVariable( 'jumbotron_background_fixed_toggle' ) == 1 ) {
+    $style .= "background-attachment: fixed;";
   }
-  echo '<style>';
-  echo '.jumbotron{' . trim( $style ) . ';}';
+
+  if ( $background ) {
+    $image .= "background-image: url( '$background' );";
+  }
+
+  if ( shoestrap_getVariable( 'jumbotron_background_image_toggle' ) == 1 && ( shoestrap_getVariable( 'jumbotron_background_custom_image' ) != "" || shoestrap_getVariable( 'jumbotron_background_image' ) != "" ) ) {
+    if ( shoestrap_getVariable( 'jumbotron_background_image_position_toggle' ) == 0 ) {
+      if ( shoestrap_getVariable( 'jumbotron_background_fixed_toggle' ) == 1 ) {
+        $style .= "background-position: 50% 50%;";
+        $style .= "background-size: cover;";
+      } else {
+        $style .= "background-position: 50% 0%;";
+        $style .= "background-size: contain;";
+        $style .= "background-repeat: no-repeat;";
+      }
+    } else { // Not fixed position, custom
+      $repeat = shoestrap_getVariable( 'jumbotron_background_repeat' );
+      if ( ! in_array( $repeat, array( 'no-repeat', 'repeat-x', 'repeat-y', 'repeat' ) ) ) {
+        $repeat = 'repeat';
+      }
+      if ($repeat == "no-repeat") {
+        $style .= "background-size: auto;";
+      }
+      $repeat = " background-repeat: $repeat;";
+      $position = shoestrap_getVariable( 'jumbotron_background_position_x', 'left' );
+      if ( ! in_array( $position, array( 'center', 'right', 'left' ) ) ) {
+        $position = 'left';
+      }
+      $position = " background-position: top $position;";
+    }
+  } 
+
+  $style .= $image . $repeat . $position;
   if ( $center == 1 )
-    echo '.jumbotron{text-align: center;}';
+    $style .= 'text-align: center;';
 
   if ( $border['width'] > 0 )
-    echo '.jumbotron{border-bottom:' . $border['width'] . 'px ' . $border['style'] . ' ' . $border['color'] . ';}';
+    $style .= 'border-bottom:' . $border['width'] . 'px ' . $border['style'] . ' ' . $border['color'] . ';';
 
+  
+  echo '<style type="text/css" id="jumbotron">';
+  echo '.jumbotron {' . trim( $style ) . '}';
+  echo $color ? ".jumbotron{background: $color;}" : '';
   echo '</style>';
 }
 add_action( 'wp_head', 'shoestrap_jumbotron_css' );

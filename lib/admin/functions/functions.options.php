@@ -467,15 +467,7 @@ if (!function_exists('of_options_shoestrap')) {
     );
 
 
-    $of_options[] = array(
-      "name"      => __("Background position", "shoestrap"),
-      "desc"      => __("Changes how the background image or pattern is displayed from scroll to fixed position. Default: Fixed.", "shoestrap"),
-      "id"        => "background_fixed_toggle",
-      "std"       => 1,
-      "on"        => __("Fixed", "shoestrap"),
-      "off"       => __("Scroll", "shoestrap"),
-      "type"      => "switch"
-    );
+
 
     $of_options[] = array(
       "name"      => "",
@@ -490,6 +482,16 @@ if (!function_exists('of_options_shoestrap')) {
       "icon"      => true,
       "type"      => "info"
     );
+
+    $of_options[] = array(
+      "name"      => __("Background position", "shoestrap"),
+      "desc"      => __("Changes how the background image or pattern is displayed from scroll to fixed position. Default: Fixed.", "shoestrap"),
+      "id"        => "background_fixed_toggle",
+      "std"       => 1,
+      "on"        => __("Fixed", "shoestrap"),
+      "off"       => __("Scroll", "shoestrap"),
+      "type"      => "switch"
+    );    
 
     $of_options[] = array(
       "name"      => __("Use a Background Image", "shoestrap"),
@@ -772,20 +774,51 @@ if (!function_exists('of_options_shoestrap')) {
       "type"      => "color"
     );
 
+
     $of_options[] = array(
-      "name"      => __("Background Image", "shoestrap"),
-      "desc"      => __("Upload a Background image using the media uploader, or define the URL directly. Use the shortcodes [site_url] or [site_url_secure] for setting default URLs", "shoestrap"),
-      "id"        => "jumbotron_bg_img",
+      "name"      => __("Background position", "shoestrap"),
+      "desc"      => __("Changes how the background image or pattern is displayed from scroll to fixed position. Default: Fixed.", "shoestrap"),
+      "id"        => "jumbotron_background_fixed_toggle",
+      "std"       => 1,
+      "on"        => __("Fixed", "shoestrap"),
+      "off"       => __("Scroll", "shoestrap"),
+      "type"      => "switch"
+    );    
+
+    $of_options[] = array(
+      "name"      => __("Use a Background Image", "shoestrap"),
+      "desc"      => __("Enable this option to upload a custom background image for your site. This will override any patterns you may have selected. Default: OFF.", "shoestrap"),
+      "id"        => "jumbotron_background_image_toggle",
+      "std"       => 0,
+      "type"      => "switch"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Upload a Custom Background Image", "shoestrap"),
+      "desc"      => __("Upload a Custom Background image using the media uploader, or define the URL directly.", "shoestrap"),
+      "id"        => "jumbotron_background_image",
+      "fold"      => "jumbotron_background_image_toggle",
       "std"       => "",
+      "type"      => "media",
       "customizer"=> array(),
-      "type"      => "media"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Background Image Positioning", "shoestrap"),
+      "desc"      => __("Allows the user to modify how the background displays. By default it is full width and stretched to fill the page. Default: Full Width.", "shoestrap"),
+      "id"        => "jumbotron_background_image_position_toggle",
+      "std"       => 0,
+      "fold"      => "jumbotron_background_image_toggle",
+      "on"        => __("Custom", "shoestrap"),
+      "off"       => __("Full Width", "shoestrap"),
+      "type"      => "switch"
     );
 
     $of_options[] = array(
       "name"      => __("Background Repeat", "shoestrap"),
       "desc"      => __("Select how (or if) the selected background should be tiled. Default: Tile", "shoestrap"),
-      "id"        => "jumbotron_bg_repeat",
-      "fold"      => "jumbotron_bg_img",
+      "id"        => "jumbotron_background_repeat",
+      "fold"      => "jumbotron_background_image_position_toggle",
       "std"       => "repeat",
       "type"      => "radio",
       "options"   => array(
@@ -799,9 +832,9 @@ if (!function_exists('of_options_shoestrap')) {
     $of_options[] = array(
       "name"      => __("Background Alignment", "shoestrap"),
       "desc"      => __("Select how the selected background should be horizontally aligned. Default: Left", "shoestrap"),
-      "id"        => "jumbotron_bg_pos_x",
-      "fold"      => "jumbotron_bg_img",
-      "std"       => "left",
+      "id"        => "jumbotron_background_position_x",
+      "fold"      => "jumbotron_background_image_position_toggle",
+      "std"       => "repeat",
       "type"      => "radio",
       "options"   => array(
         'left'    => __( 'Left', 'shoestrap' ),
@@ -809,6 +842,25 @@ if (!function_exists('of_options_shoestrap')) {
         'center'  => __( 'Center', 'shoestrap' ),
       ),
     );
+
+    $of_options[] = array(
+      "name"      => __("Use a Background Pattern", "shoestrap"),
+      "desc"      => __("Select one of the already existing Background Patterns. Default: OFF.", "shoestrap"),
+      "id"        => "jumbotron_background_pattern_toggle",
+      "std"       => 0,
+      "type"      => "switch"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Choose a Background Pattern", "shoestrap"),
+      "desc"      => __("Select a background pattern.", "shoestrap"),
+      "id"        => "jumbotron_background_pattern",
+      "fold"      => "jumbotron_background_pattern_toggle",
+      "std"       => "",
+      "type"      => "tiles",
+      "options"   => $bg_pattern_images,
+    );
+
 
     $of_options[] = array(
       "name"      => __("Jumbotron Text Color", "shoestrap"),
