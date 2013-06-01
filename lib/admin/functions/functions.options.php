@@ -133,76 +133,7 @@ if (!function_exists('of_options_shoestrap')) {
 
     $of_options = array();
 
-    // General Options
-    $of_options[] = array(
-      "name"      => __("General Options", "shoestrap"),
-      "type"      => "heading"
-    );
-
-    $of_options[] = array(
-      "name"      => "",
-      "desc"      => "",
-      "id"        => "help1",
-      "std"       => "<h3 style=\"margin: 0 0 10px;\">General theme Options</h3>
-                      <p>In this section you can define some basic options for your theme.</p>",
-      "icon"      => true,
-      "type"      => "info"
-    );
-
-    $of_options[] = array(
-      "name"      => __("No gradients - \"Flat\" look.", "shoestrap"),
-      "desc"      => __("This option will disable all gradients in your site, giving it a cleaner look. Default: OFF.", "shoestrap"),
-      "id"        => "general_flat",
-      "less"      => true,
-      "std"       => 0,
-      "type"      => "switch",
-    );
-
-    $of_options[] = array(
-      "name"      => __("Google Analytics ID", "shoestrap"),
-      "desc"      => __("Paste your Google Analytics ID here to enable analytics tracking. Your user ID should be in the form of UA-XXXXX-Y.", "shoestrap"),
-      "id"        => "analytics_id",
-      "std"       => "",
-      "type"      => "text",
-    );
-
-    $of_options[] = array(
-      "name"      => "",
-      "desc"      => "",
-      "id"        => "help2",
-      "std"       => "<h3 style=\"margin: 0 0 10px;\">Border-Radius and Padding Base</h3>
-                      <p>The following settings affect various areas of your site, most notably buttons.</p>",
-      "icon"      => true,
-      "type"      => "info"
-    );
-
-    $of_options[] = array(
-      "name"      => __("Border-Radius", "shoestrap"),
-      "desc"      => __("You can adjust the corner-radius of all elements in your site here. This will affect buttons, navbars, widgets and many more. Default: 4", "shoestrap"),
-      "id"        => "general_border_radius",
-      "std"       => 4,
-      "min"       => 0,
-      "step"      => 1,
-      "max"       => 50,
-      "advanced"  => true,
-      "less"      => true,
-      "type"      => "sliderui"
-    );
-
-    $of_options[] = array(
-      "name"      => __("Padding Base", "shoestrap"),
-      "desc"      => __("You can adjust the padding base. This affects buttons size and lots of other cool stuff too! Default: 8", "shoestrap"),
-      "id"        => "padding_base",
-      "std"       => 8,
-      "min"       => 0,
-      "step"      => 1,
-      "max"       => 20,
-      "advanced"  => true,
-      "less"      => true,
-      "type"      => "sliderui"
-    );
-
-// Branding Options
+    // Branding Options
     $of_options[] = array(
       "name"      => __("Branding Options", "shoestrap"),
       "type"      => "heading"
@@ -553,7 +484,7 @@ if (!function_exists('of_options_shoestrap')) {
       "less"      => true,
       "customizer"=> array(),
       "type"      => "color"
-    );    
+    );
 
 
     $of_options[] = array(
@@ -564,7 +495,7 @@ if (!function_exists('of_options_shoestrap')) {
       "on"        => __("Fixed", "shoestrap"),
       "off"       => __("Scroll", "shoestrap"),
       "type"      => "switch"
-    );    
+    );
 
     $of_options[] = array(
       "name"      => "",
@@ -1393,6 +1324,59 @@ if (!function_exists('of_options_shoestrap')) {
     $of_options[] = array(
       "name"      => __("Advanced Options", "shoestrap"),
       "type"      => "heading"
+    );
+
+    $of_options[] = array(
+      "name"      => __("No gradients - \"Flat\" look.", "shoestrap"),
+      "desc"      => __("This option will disable all gradients in your site, giving it a cleaner look. Default: OFF.", "shoestrap"),
+      "id"        => "general_flat",
+      "less"      => true,
+      "std"       => 0,
+      "type"      => "switch",
+    );
+
+    $of_options[] = array(
+      "name"      => __("Google Analytics ID", "shoestrap"),
+      "desc"      => __("Paste your Google Analytics ID here to enable analytics tracking. Your user ID should be in the form of UA-XXXXX-Y.", "shoestrap"),
+      "id"        => "analytics_id",
+      "std"       => "",
+      "type"      => "text",
+    );
+
+    $of_options[] = array(
+      "name"      => "",
+      "desc"      => "",
+      "id"        => "help2",
+      "std"       => "<h3 style=\"margin: 0 0 10px;\">Border-Radius and Padding Base</h3>
+                      <p>The following settings affect various areas of your site, most notably buttons.</p>",
+      "icon"      => true,
+      "type"      => "info"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Border-Radius", "shoestrap"),
+      "desc"      => __("You can adjust the corner-radius of all elements in your site here. This will affect buttons, navbars, widgets and many more. Default: 4", "shoestrap"),
+      "id"        => "general_border_radius",
+      "std"       => 4,
+      "min"       => 0,
+      "step"      => 1,
+      "max"       => 50,
+      "advanced"  => true,
+      "less"      => true,
+      "type"      => "sliderui"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Padding Base", "shoestrap"),
+      "desc"      => __("You can adjust the padding base. This affects buttons size and lots of other cool stuff too! Default: 8", "shoestrap"),
+      "id"        => "padding_base",
+      "std"       => 8,
+      "min"       => 0,
+      "step"      => 1,
+      "max"       => 20,
+      "advanced"  => true,
+      "less"      => true,
+      "type"      => "sliderui"
     );
 
     $url = admin_url( 'widgets.php' );
