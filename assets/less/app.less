@@ -359,11 +359,12 @@ a.toggle-nav {
 
 .navbar a.navbar-brand {
   padding: 5px;
-  img {
-    max-height: (@navbar-height - 10);
-    width: auto;
   &.logo {
     height: @navbar-height;
+    img {
+      max-height: (@navbar-height - 10);
+      width: auto;
+    }
   }
   &.text {
     padding: ((@navbar-height - @line-height-computed) / 2) 15px;
