@@ -1,3 +1,16 @@
+#of_container {
+	width: auto;
+	margin: 0;
+	position: absolute;
+	top: 45px;
+	bottom: 45px;
+	left: 0;
+	right: 0;
+	overflow: auto;
+}
+#of_container .button {
+	m2rgin: auto;
+}
 .wp-full-overlay-sidebar-content .button {
 
 	padding: 0px 5px;
@@ -9,8 +22,8 @@
 }
 
 .switch-options a.tooltip {
-	margin-left: 10px;
-	margin-top: 4px;
+	margin-left: 10px !important;
+	margin-top: 4px !important;
 
 }
 

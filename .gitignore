@@ -4,3 +4,5 @@ assets/css/style.css
 assets/css/style.less
 pro/
 lib/extensions
+lib/functions/lessphp
+

@@ -5,10 +5,10 @@
  *    Function to save the current SMOF values for comparison. 
  *    Needed to hijack the customizer's save options
  */
-function shoestrap_preSave() {
+function shoestrap_customize_save() {
   set_theme_mod( 'shoestrap_customizer_preSave', get_theme_mods() );
 }
-add_action('customize_save', 'shoestrap_preSave');
+add_action('customize_save', 'shoestrap_customize_save');
 
 
 /*
@@ -33,8 +33,6 @@ function shoestrap_generateCSS() {
 }
 add_action('customize_save_after', 'shoestrap_generateCSS');
 
-$smof_details = array();
-
 /*
  *    Adds everthing needed to the customizer pane in the customizer
  *    IE, this is how we interact with the customizer.
@@ -46,8 +44,6 @@ function smof_customize_init( $wp_customize ) {
   wp_dequeue_script( 'smof', ADMIN_DIR .'assets/js/smof.js' );
 
   of_style_only();
-  wp_dequeue_style('admin-style', ADMIN_DIR . 'assets/css/admin-style.css');
-  wp_enqueue_style('admin-style-shoestrap', get_template_directory_uri() . '/lib/admin/assets/css/admin-style.css');
 
   wp_enqueue_style( 'wp-pointer' );
   wp_enqueue_script( 'wp-pointer' );

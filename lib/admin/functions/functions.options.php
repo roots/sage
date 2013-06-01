@@ -162,16 +162,8 @@ if (!function_exists('of_options_shoestrap')) {
       "name"      => __("Google Analytics ID", "shoestrap"),
       "desc"      => __("Paste your Google Analytics ID here to enable analytics tracking. Your user ID should be in the form of UA-XXXXX-Y.", "shoestrap"),
       "id"        => "analytics_id",
-      "std"       => 0,
+      "std"       => "",
       "type"      => "text",
-    );
-
-    $of_options[] = array(
-      "name"      => __("Allow comments on pages TODO", "shoestrap"),
-      "desc"      => __("Allow comments on regular pages.", "shoestrap"),
-      "id"        => "tracking_code",
-      "std"       => 0,
-      "type"      => "checkbox",
     );
 
     $of_options[] = array(
@@ -179,7 +171,7 @@ if (!function_exists('of_options_shoestrap')) {
       "desc"      => "",
       "id"        => "help2",
       "std"       => "<h3 style=\"margin: 0 0 10px;\">Border-Radius and Padding Base</h3>
-                      <p>These 2 settings affect varius areas of your site, most notably buttons.</p>",
+                      <p>The following settings affect various areas of your site, most notably buttons.</p>",
       "icon"      => true,
       "type"      => "info"
     );
@@ -217,21 +209,6 @@ if (!function_exists('of_options_shoestrap')) {
     );
 
     $of_options[] = array(
-      "name"      => "",
-      "desc"      => "",
-      "id"        => "help6",
-      "std"       => "<h3 style=\"margin: 0 0 10px;\">Colors</h3>
-                      <p>The primary color you select will also affect other elements on your site,
-                      such as table borders, widgets colors, input elements, dropdowns etc.
-                      The branding colors you select will be used throughout the site in various elements.
-                      One of the most important settings in your branding is your primary color,
-                      since this will be used more often.</p>
-                      ",
-      "icon"      => true,
-      "type"      => "info"
-    );
-
-    $of_options[] = array(
       "name"      => __("Logo", "shoestrap"),
       "desc"      => __("Upload a logo image using the media uploader, or define the URL directly.", "shoestrap"),
       "id"        => "logo",
@@ -266,7 +243,6 @@ if (!function_exists('of_options_shoestrap')) {
       "id"        => "favicon",
       "std"       => "",
       "type"      => "media",
-      "customizer"=> array(),
     );
 
     $of_options[] = array(
@@ -275,17 +251,22 @@ if (!function_exists('of_options_shoestrap')) {
       "id"        => "apple_icon",
       "std"       => "",
       "type"      => "media",
-      "customizer"=> array(),
     );
 
+
     $of_options[] = array(
-      "name"      => __("Primary Color", "shoestrap"),
-      "desc"      => __("Pick a background color for your site. Default: #ffffff.", "shoestrap"),
-      "id"        => "color_body_bg",
-      "std"       => "#ffffff",
-      "less"      => true,
-      "customizer"=> array(),
-      "type"      => "color"
+      "name"      => "",
+      "desc"      => "",
+      "id"        => "help6",
+      "std"       => "<h3 style=\"margin: 0 0 10px;\">Colors</h3>
+                      <p>The primary color you select will also affect other elements on your site,
+                      such as table borders, widgets colors, input elements, dropdowns etc.
+                      The branding colors you select will be used throughout the site in various elements.
+                      One of the most important settings in your branding is your primary color,
+                      since this will be used more often.</p>
+                      ",
+      "icon"      => true,
+      "type"      => "info"
     );
 
     $of_options[] = array(
@@ -563,6 +544,28 @@ if (!function_exists('of_options_shoestrap')) {
       "type"      => "heading"
     );
 
+
+    $of_options[] = array(
+      "name"      => __("Background Color", "shoestrap"),
+      "desc"      => __("Select a background color for your site. Default: #ffffff.", "shoestrap"),
+      "id"        => "color_body_bg",
+      "std"       => "#ffffff",
+      "less"      => true,
+      "customizer"=> array(),
+      "type"      => "color"
+    );    
+
+
+    $of_options[] = array(
+      "name"      => __("Background position", "shoestrap"),
+      "desc"      => __("Changes how the background image or pattern is displayed from scroll to fixed position. Default: Fixed.", "shoestrap"),
+      "id"        => "background_fixed_toggle",
+      "std"       => 1,
+      "on"        => __("Fixed", "shoestrap"),
+      "off"       => __("Scroll", "shoestrap"),
+      "type"      => "switch"
+    );    
+
     $of_options[] = array(
       "name"      => "",
       "desc"      => "",
@@ -651,16 +654,6 @@ if (!function_exists('of_options_shoestrap')) {
       "std"       => "",
       "type"      => "tiles",
       "options"   => $bg_pattern_images,
-    );
-
-    $of_options[] = array(
-      "name"      => __("Background position", "shoestrap"),
-      "desc"      => __("Changes how the background image or pattern is displayed from scroll to fixed position. Default: Scroll.", "shoestrap"),
-      "id"        => "background_fixed_toggle",
-      "std"       => 0,
-      "on"        => __("Fixed", "shoestrap"),
-      "off"       => __("Scroll", "shoestrap"),
-      "type"      => "switch"
     );
 
     // Layout Settings

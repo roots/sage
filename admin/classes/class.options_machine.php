@@ -25,6 +25,34 @@ class Options_Machine {
 		
 	}
 
+	/** 
+	 * Sanitize option
+	 *
+	 * Sanitize & returns default values if don't exist
+	 * 
+	 * Notes:
+	 	- For further uses, you can check for the $value['type'] and performs
+	 	  more speficic sanitization on the option
+	 	- The ultimate objective of this function is to prevent the "undefined index"
+	 	  errors some authors are having due to malformed options array
+	 */
+	function sanitize_option( $value ) {
+
+		$defaults = array(
+			"name" 		=> "",
+			"desc" 		=> "",
+			"id" 		=> "",
+			"std" 		=> "",
+			"mod"		=> "",
+			"type" 		=> ""
+		);
+
+		$value = wp_parse_args( $value, $defaults );
+
+		return $value;
+
+	}
+
 
 	/**
 	 * Process options data and build option fields
@@ -38,17 +66,24 @@ class Options_Machine {
 	 */
 	public static function optionsframework_machine($options) {
 
-	    $data = of_get_options();
 	    $smof_data = of_get_options();
-		
+		$data = $smof_data;
+
 		$defaults = array();   
 	    $counter = 0;
 		$menu = '';
 		$output = '';
 		
+		do_action('optionsframework_machine_before', array(
+				'options'	=> $options,
+				'smof_data'	=> $smof_data,
+			));
 		
 		foreach ($options as $value) {
-		
+			
+			// sanitize option
+			$value = self::sanitize_option($value);
+
 			$counter++;
 			$val = '';
 			
@@ -116,7 +151,7 @@ class Options_Machine {
 					$output .= '<div class="select_wrapper ' . $mini . '">';
 					$output .= '<select class="select of-input" name="'.$value['id'].'" id="'. $value['id'] .'">';
 					foreach ($value['options'] as $select_ID => $option) {			
-						$output .= '<option id="' . $select_ID . '" value="'.$select_ID.'" ' . selected($smof_data[$value['id']], $option, false) . ' />'.$option.'</option>';	 
+						$output .= '<option id="' . $select_ID . '" value="'.$option.'" ' . selected($smof_data[$value['id']], $option, false) . ' />'.$option.'</option>';	 
 					 } 
 					$output .= '</select></div>';
 				break;
@@ -180,9 +215,10 @@ class Options_Machine {
 				case "color":
 					$default_color = '';
 					if ( isset($value['std']) ) {
-						$default_color = ' data-default-color="' .$value['std'] . '" ';
+						if ( $smof_data[$value['id']] !=  $value['std'] )
+							$default_color = ' data-default-color="' .$value['std'] . '" ';
 					}
-					$output .= '<input name="' . $value['id'] . '" id="' . $value['id'] . '" class="of-color" maxlength="7" placeholder="Hex Value" type="text" value="' . $smof_data[$value['id']] . '"' . $default_color .' />';
+					$output .= '<input name="' . $value['id'] . '" id="' . $value['id'] . '" class="of-color"  type="text" value="' . $smof_data[$value['id']] . '"' . $default_color .' />';
 		 	
 				break;
 
@@ -446,7 +482,9 @@ class Options_Machine {
 				
 					$instructions = $value['desc'];
 					$backup = of_get_options(BACKUPS);
-					
+					$init = of_get_options('smof_init');
+
+
 					if(!isset($backup['backup_log'])) {
 						$log = 'No backups yet';
 					} else {
@@ -585,6 +623,15 @@ class Options_Machine {
 				break;
 				
 			}
+
+			do_action('optionsframework_machine_loop', array(
+					'options'	=> $options,
+					'smof_data'	=> $smof_data,
+					'defaults'	=> $defaults,
+					'counter'	=> $counter,
+					'menu'		=> $menu,
+					'output'	=> $output
+				));
 			
 			//description of each option
 			if ( $value['type'] != 'heading') { 
@@ -600,6 +647,15 @@ class Options_Machine {
 		}
 		
 	    $output .= '</div>';
+
+	    do_action('optionsframework_machine_after', array(
+					'options'	=> $options,
+					'smof_data'	=> $smof_data,
+					'defaults'	=> $defaults,
+					'counter'	=> $counter,
+					'menu'		=> $menu,
+					'output'	=> $output
+				));
 	    
 	    return array($output,$menu,$defaults);
 	    

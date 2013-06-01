@@ -7,8 +7,8 @@ function smof_customize_register( $wp_customize ) {
   $section = array();
   $section_set = true;
   $order = array(
-    'heading' => -100,
-    'option'  => -100,
+    'heading' => -500,
+    'option'  => -500,
   );
   $defaults = array(
     'default-color'          => '',
@@ -17,9 +17,12 @@ function smof_customize_register( $wp_customize ) {
     'admin-head-callback'    => '',
     'admin-preview-callback' => ''
   );
+
   
   foreach( $of_options as $option ) {
-    $smof_details[$option['id']] = $option;
+    if ($option['customizer'] != true && $option['type'] != 'heading') {
+      //continue;
+    }
 
     $customSetting = array(
       'type'          => 'theme_mod',
@@ -27,10 +30,14 @@ function smof_customize_register( $wp_customize ) {
       'default'       =>  $option['std']
     );
 
-    if ( $section_set == false && is_array( $section ) ) {
-      if ( !isset($section['priority'] ) )
-        $section['priority'] = $order['heading'];
+    //Change the item priority if not set
+    if ( $option['type'] != 'heading' && !isset( $option['priority'] ) ) {
+      $option['priority'] = $order['option'];
+      $order['option']++;
+    }   
 
+    // Add the section
+    if ( $section_set == false && is_array( $section ) ) {
       $wp_customize->add_section($section['id'], array(
         'title'       => $section['name'],
         'priority'    => $section['priority'],
@@ -39,8 +46,6 @@ function smof_customize_register( $wp_customize ) {
       $section_set = true;
     }
 
-    if ( $option['type'] != 'heading' && !isset( $option['priority'] ) )
-      $option['priority'] = $order['option'];
 
     switch( $option['type'] ) {
       case 'heading':
@@ -48,10 +53,13 @@ function smof_customize_register( $wp_customize ) {
         $section        = $option;
         $section['id']  = strtolower( str_replace( " ", "", $option['name'] ) );
         $section_set    = false;
-        $order          = array(
-          'option'      => -100,
-        );
-        $order['heading']++;
+        $order['option']=-500;
+        if (!empty( $option['priority'] ) ) {
+          $section['priority'] = $option['priority'];
+        } else {
+          $section['priority'] = $order['heading'];
+          $order['heading']++;          
+        }
         break;
 
       case 'text':
@@ -145,9 +153,6 @@ function smof_customize_register( $wp_customize ) {
         break;
     }
 
-    if ( $option['type'] != 'heading' ) {
-      $order['option']++;
-    }
   }
 }
 add_action( 'customize_register', 'smof_customize_register' );
