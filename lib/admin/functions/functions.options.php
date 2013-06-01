@@ -201,26 +201,6 @@ if (!function_exists('of_options_shoestrap')) {
     );
 
     $of_options[] = array(
-      "name"      => __("Text Color", "shoestrap"),
-      "desc"      => __("Pick a color for your site's main text. Default: #333333.", "shoestrap"),
-      "id"        => "color_text",
-      "std"       => "#333333",
-      "less"      => true,
-      "customizer"=> array(),
-      "type"      => "color"
-    );
-
-    $of_options[] = array(
-      "name"      => __("Links Color", "shoestrap"),
-      "desc"      => __("Pick a color for your site's links. Default: #428bca.", "shoestrap"),
-      "id"        => "color_links",
-      "std"       => "#428bca",
-      "less"      => true,
-      "customizer"=> array(),
-      "type"      => "color"
-    );
-
-    $of_options[] = array(
       "name"      => __("Brand Colors: Primary", "shoestrap"),
       "desc"      => __("Select your primary branding color. This will affect various areas of your site, including the color of your primary buttons, the background of some elements and many more. Default: #428bca.", "shoestrap"),
       "id"        => "color_brand_primary",
@@ -960,6 +940,26 @@ if (!function_exists('of_options_shoestrap')) {
       "max"       => 22,
       "less"      => true,
       "type"      => "sliderui"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Text Color", "shoestrap"),
+      "desc"      => __("Pick a color for your site's main text. Default: #333333.", "shoestrap"),
+      "id"        => "color_text",
+      "std"       => "#333333",
+      "less"      => true,
+      "customizer"=> array(),
+      "type"      => "color"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Links Color", "shoestrap"),
+      "desc"      => __("Pick a color for your site's links. Default: #428bca.", "shoestrap"),
+      "id"        => "color_links",
+      "std"       => "#428bca",
+      "less"      => true,
+      "customizer"=> array(),
+      "type"      => "color"
     );
 
     $of_options[] = array(
