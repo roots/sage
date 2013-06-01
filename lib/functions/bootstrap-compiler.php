@@ -594,11 +594,9 @@ function shoestrap_complete_less( $url = false ) {
   if ( $url == true ) {
     $bootstrap    = get_template_directory_uri().'/assets/less/';
     $fonts        = get_template_directory_uri().'/assets/fonts/';
-    $less         = get_template_directory_uri().'/assets/less/';
   } else {
     $bootstrap    = NULL;
     $fonts        = NULL;
-    $less         = NULL;
   }
   $bootstrap_less = shoestrap_variables_less() . '
 /*!
@@ -666,7 +664,8 @@ function shoestrap_complete_less( $url = false ) {
 @import "'.$bootstrap.'utilities"; // Has to be last to override when necessary
 @import "'.$bootstrap.'responsive-utilities";
 
-@import "'.$less.'app"; // Custom Shoestrap less-css
+// Custom Shoestrap less-css
+// @import "'.$bootstrap.'app";
 ';
 
 if ($url == true) {
