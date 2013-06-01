@@ -133,31 +133,6 @@ if (!function_exists('of_options_shoestrap')) {
 
     $of_options = array();
 
-    // General Options
-    $of_options[] = array(
-      "name"      => __("General Options", "shoestrap"),
-      "type"      => "heading"
-    );
-
-    $of_options[] = array(
-      "name"      => "",
-      "desc"      => "",
-      "id"        => "help1",
-      "std"       => "<h3 style=\"margin: 0 0 10px;\">General theme Options</h3>
-                      <p>In this section you can define some basic options for your theme.</p>",
-      "icon"      => true,
-      "type"      => "info"
-    );
-
-    $of_options[] = array(
-      "name"      => __("No gradients - \"Flat\" look.", "shoestrap"),
-      "desc"      => __("This option will disable all gradients in your site, giving it a cleaner look. Default: OFF.", "shoestrap"),
-      "id"        => "general_flat",
-      "less"      => true,
-      "std"       => 0,
-      "type"      => "switch",
-    );
-
     // Branding Options
     $of_options[] = array(
       "name"      => __("Branding Options", "shoestrap"),
@@ -1349,6 +1324,15 @@ if (!function_exists('of_options_shoestrap')) {
     $of_options[] = array(
       "name"      => __("Advanced Options", "shoestrap"),
       "type"      => "heading"
+    );
+
+    $of_options[] = array(
+      "name"      => __("No gradients - \"Flat\" look.", "shoestrap"),
+      "desc"      => __("This option will disable all gradients in your site, giving it a cleaner look. Default: OFF.", "shoestrap"),
+      "id"        => "general_flat",
+      "less"      => true,
+      "std"       => 0,
+      "type"      => "switch",
     );
 
     $of_options[] = array(
