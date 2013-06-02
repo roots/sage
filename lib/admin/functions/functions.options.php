@@ -133,21 +133,6 @@ if (!function_exists('of_options_shoestrap')) {
 
     $of_options = array();
 
-    // Presets Styles
-    $of_options[] = array(
-      "name"      => __("Preset Styles", "shoestrap"),
-      "type"      => "heading"
-    );
-
-    $of_options[] = array(
-      "name"      => __("Choose a Preset", "shoestrap"),
-      "desc"      => __("Select a site preset. You can load it in and replace your current styles.", "shoestrap"),
-      "id"        => "design_preset",
-      "std"       => "",
-      "type"      => "presets",
-      "options"   => $preset_styles,
-    );
-
     // Backup Options
     $of_options[] = array(
       "name"      => __("Backup Options", "shoestrap"),
