@@ -665,7 +665,7 @@ function shoestrap_complete_less( $url = false ) {
 @import "'.$bootstrap.'responsive-utilities";
 
 // Custom Shoestrap less-css
-// @import "'.$bootstrap.'app";
+@import "'.$bootstrap.'app";
 ';
 
 if ($url == true) {
