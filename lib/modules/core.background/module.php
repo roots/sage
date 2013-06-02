@@ -152,3 +152,5 @@ if ( !function_exists( 'shoestrap_module_background_options' ) ) {
   }
 }
 add_action( 'init', 'shoestrap_module_background_options', 60 );
+
+include_once( dirname(__FILE__).'/functions.background.php' );

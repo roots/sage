@@ -9,17 +9,6 @@ require_once locate_template('/lib/functions/breadcrumbs.php');              // 
 
 require_once locate_template('/lib/functions/helper.functions.php');         // Helper functions for the customizer
 require_once locate_template('/lib/functions/bootstrap-compiler.php');       // LESSPHP Compiler for Bootstrap 3
-require_once locate_template('/lib/functions/functions.advanced.php');       // Extra functions for the "Advanced" Customizer section
-require_once locate_template('/lib/functions/functions.featured-image.php'); // Extra functions for the "Featured Image" Customizer section
-require_once locate_template('/lib/functions/functions.footer.php');         // Extra functions for the "Footer" Customizer section
-require_once locate_template('/lib/functions/functions.header.php');         // Extra functions for the "Header" Customizer section
-require_once locate_template('/lib/functions/functions.jumbotron.php');      // Extra functions for the "Jumbotron (Hero)" Customizer section
-require_once locate_template('/lib/functions/functions.layout.php');         // Extra functions for the "Layout" Customizer section
-require_once locate_template('/lib/functions/functions.logo.php');           // Extra functions for the "Logo" Customizer section
-require_once locate_template('/lib/functions/functions.navbar.php');         // Extra functions for the "NavBar" Customizer section
-require_once locate_template('/lib/functions/functions.background.php');     // Extra functions for the "Background" Customizer section
-require_once locate_template('/lib/functions/functions.social.php');         // Initialize the social networks
-require_once locate_template('/lib/functions/functions.icons.php');          // Favicon and Apple Icons
 
 // Include all modules
 $modules_path = new RecursiveDirectoryIterator(locate_template('/lib/modules/'));
