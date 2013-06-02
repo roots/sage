@@ -138,4 +138,7 @@ if ( !function_exists( 'shoestrap_module_branding_options' ) ) {
     }
   }
 }
-add_action( 'init', 'shoestrap_module_branding_options' );
+add_action( 'init', 'shoestrap_module_branding_options', 50 );
+
+include_once( dirname(__FILE__).'/functions.logo.php' );
+include_once( dirname(__FILE__).'/functions.icons.php' );

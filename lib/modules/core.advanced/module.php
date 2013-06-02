@@ -133,4 +133,6 @@ if ( !function_exists('shoestrap_module_advanced_options' ) ) {
     }
   }
 }
-add_action( 'init', 'shoestrap_module_advanced_options' );
+add_action( 'init', 'shoestrap_module_advanced_options', 95 );
+
+include_once( dirname(__FILE__).'/functions.advanced.php' );

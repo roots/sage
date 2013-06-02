@@ -11,7 +11,7 @@ if ( !function_exists( 'shoestrap_module_background_options' ) ) {
     $bg_pattern_images_url  = get_bloginfo( 'template_url' ) . '/lib/assets/img/patterns/';
     $bg_pattern_images      = array();
 
-    if ( is_dir($bg_pattern_images_path) ) {
+    if ( is_dir( $bg_pattern_images_path ) ) {
       if ( $bg_pattern_images_dir = opendir( $bg_pattern_images_path ) ) {
         while ( ( $bg_pattern_images_file = readdir( $bg_pattern_images_dir ) ) !== false ) {
           if( stristr( $bg_pattern_images_file, ".png" ) !== false || stristr( $bg_pattern_images_file, ".jpg" ) !== false)
@@ -151,4 +151,6 @@ if ( !function_exists( 'shoestrap_module_background_options' ) ) {
     }
   }
 }
-add_action( 'init', 'shoestrap_module_background_options' );
+add_action( 'init', 'shoestrap_module_background_options', 60 );
+
+include_once( dirname(__FILE__).'/functions.background.php' );
