@@ -194,4 +194,4 @@ if ( !function_exists( 'shoestrap_module_layout_options' ) ) {
     }
   }
 }
-add_action( 'init','shoestrap_module_layout_options' );
+add_action( 'init','shoestrap_module_layout_options', 55 );

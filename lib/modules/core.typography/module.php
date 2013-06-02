@@ -66,4 +66,4 @@ if ( !function_exists( 'shoestrap_module_typography_options' ) ) {
     }
   }
 }
-add_action( 'init', 'shoestrap_module_typography_options' );
+add_action( 'init', 'shoestrap_module_typography_options', 80 );
