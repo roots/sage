@@ -20,18 +20,15 @@ require_once locate_template('/lib/functions/functions.navbar.php');         // 
 require_once locate_template('/lib/functions/functions.background.php');     // Extra functions for the "Background" Customizer section
 require_once locate_template('/lib/functions/functions.social.php');         // Initialize the social networks
 require_once locate_template('/lib/functions/functions.icons.php');          // Favicon and Apple Icons
-require_once locate_template('/lib/modules/core.background/module.php');
-require_once locate_template('/lib/modules/core.branding/module.php');
-require_once locate_template('/lib/modules/core.header/module.php');
-require_once locate_template('/lib/modules/core.layout/module.php');
-require_once locate_template('/lib/modules/core.jumbotron/module.php');
-require_once locate_template('/lib/modules/core.footer/module.php');
-require_once locate_template('/lib/modules/core.typography/module.php');
-require_once locate_template('/lib/modules/core.blog/module.php');
-require_once locate_template('/lib/modules/core.social/module.php');
-require_once locate_template('/lib/modules/core.advanced/module.php');
-require_once locate_template('/lib/modules/core.presets/module.php');
-require_once locate_template('/lib/modules/core.backup/module.php');
+
+// Include all modules
+$modules_path = new RecursiveDirectoryIterator(locate_template('/lib/modules/'));
+$recIterator  = new RecursiveIteratorIterator($modules_path);
+$regex        = new RegexIterator($recIterator, '/\/module.php$/i');
+
+foreach($regex as $item) {
+  require_once $item->getPathname();
+}
 
 // Add extra features
 if (locate_template('/lib/extensions/init.php')) {
