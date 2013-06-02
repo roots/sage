@@ -58,14 +58,12 @@ if ( !function_exists( 'shoestrap_module_typography_options' ) ) {
       "std"       => "'Helvetica Neue', Helvetica, Arial, sans-serif",
       "type"      => "text",
     );
-    do_action('smof_options_modifier');
+    do_action( 'shoestrap_module_typography_options_modifier' );
 
     $smof_details = array();
-    foreach($of_options as $option) {
+    foreach( $of_options as $option ) {
       $smof_details[$option['id']] = $option;
     }
-
-
   }
 }
 add_action( 'init', 'shoestrap_module_typography_options' );

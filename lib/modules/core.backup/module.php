@@ -1,6 +1,8 @@
 <?php
 
-
+/*
+ * The backup core options for the Shoestrap theme
+ */
 if ( !function_exists( 'shoestrap_module_backup_options' ) ) {
   function shoestrap_module_backup_options() {
 

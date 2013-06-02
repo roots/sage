@@ -1,7 +1,9 @@
 <?php
 
-
-if ( !function_exists('shoestrap_module_header_options') ) {
+/*
+ * The header core options for the Shoestrap theme
+ */
+if ( !function_exists( 'shoestrap_module_header_options' ) ) {
   function shoestrap_module_header_options() {
 
     /*-----------------------------------------------------------------------------------*/
@@ -213,11 +215,9 @@ if ( !function_exists('shoestrap_module_header_options') ) {
     do_action( 'shoestrap_module_header_options_modifier' );
 
     $smof_details = array();
-    foreach($of_options as $option) {
+    foreach( $of_options as $option ) {
       $smof_details[$option['id']] = $option;
     }
   }
 }
-
-remove_filter('of_options_before_save', 'of_filter_save_media_upload');
-add_action('init','shoestrap_module_header_options');
+add_action( 'init', 'shoestrap_module_header_options' );

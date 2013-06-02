@@ -3,7 +3,7 @@
 /*
  * The branding core options for the Shoestrap theme
  */
-if ( !function_exists('shoestrap_module_branding_options') ) {
+if ( !function_exists( 'shoestrap_module_branding_options' ) ) {
   function shoestrap_module_branding_options() {
 
     /*-----------------------------------------------------------------------------------*/
@@ -133,9 +133,9 @@ if ( !function_exists('shoestrap_module_branding_options') ) {
     do_action( 'shoestrap_module_branding_options_modifier' );
 
     $smof_details = array();
-    foreach($of_options as $option) {
+    foreach( $of_options as $option ) {
       $smof_details[$option['id']] = $option;
     }
   }
 }
-add_action('init','shoestrap_module_branding_options');
+add_action( 'init', 'shoestrap_module_branding_options' );

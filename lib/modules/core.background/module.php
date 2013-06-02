@@ -3,7 +3,7 @@
 /*
  * The background core options for the Shoestrap theme
  */
-if (!function_exists('shoestrap_module_background_options')) {
+if ( !function_exists( 'shoestrap_module_background_options' ) ) {
   function shoestrap_module_background_options() {
 
     //Background Patterns Reader
@@ -33,7 +33,6 @@ if (!function_exists('shoestrap_module_background_options')) {
       "type"      => "heading"
     );
 
-
     $of_options[] = array(
       "name"      => __("Background Color", "shoestrap"),
       "desc"      => __("Select a background color for your site. Default: #ffffff.", "shoestrap"),
@@ -43,9 +42,6 @@ if (!function_exists('shoestrap_module_background_options')) {
       "customizer"=> array(),
       "type"      => "color"
     );
-
-
-
 
     $of_options[] = array(
       "name"      => "",
@@ -69,7 +65,7 @@ if (!function_exists('shoestrap_module_background_options')) {
       "on"        => __("Fixed", "shoestrap"),
       "off"       => __("Scroll", "shoestrap"),
       "type"      => "switch"
-    );    
+    );
 
     $of_options[] = array(
       "name"      => __("Use a Background Image", "shoestrap"),
@@ -147,7 +143,7 @@ if (!function_exists('shoestrap_module_background_options')) {
       "options"   => $bg_pattern_images,
     );
 
-    do_action('smof_options_modifier');
+    do_action( 'shoestrap_module_background_options_modifier' );
 
     $smof_details = array();
     foreach( $of_options as $option ) {

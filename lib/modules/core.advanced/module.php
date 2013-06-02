@@ -1,6 +1,8 @@
 <?php
 
-
+/*
+ * The advanced core options for the Shoestrap theme
+ */
 if ( !function_exists('shoestrap_module_advanced_options' ) ) {
   function shoestrap_module_advanced_options() {
 
@@ -129,8 +131,6 @@ if ( !function_exists('shoestrap_module_advanced_options' ) ) {
     foreach($of_options as $option) {
       $smof_details[$option['id']] = $option;
     }
-
-
   }
 }
 add_action( 'init', 'shoestrap_module_advanced_options' );

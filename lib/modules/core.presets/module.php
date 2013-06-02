@@ -1,6 +1,8 @@
 <?php
 
-
+/*
+ * The presets core options for the Shoestrap theme
+ */
 if ( !function_exists( 'shoestrap_module_presets_options' ) ) {
   function shoestrap_module_presets_options() {
 
@@ -85,4 +87,4 @@ if ( !function_exists( 'shoestrap_module_presets_options' ) ) {
     }
   }
 }
-add_action('init','shoestrap_module_presets_options');
+add_action( 'init','shoestrap_module_presets_options' );

@@ -30,7 +30,6 @@ if ( !function_exists( 'shoestrap_module_layout_options' ) ) {
       "type"      => "info"
     );
 
-
     $of_options[] = array(
       "name"      => __("Site Style", "shoestrap"),
       "desc"      => __("Select the default site layout. Default: Wide", "shoestrap"),
@@ -187,10 +186,10 @@ if ( !function_exists( 'shoestrap_module_layout_options' ) ) {
       "type"      => "sliderui"
     );
 
-    do_action('smof_options_modifier');
+    do_action( 'shoestrap_module_layout_options_modifier' );
 
     $smof_details = array();
-    foreach($of_options as $option) {
+    foreach( $of_options as $option ) {
       $smof_details[$option['id']] = $option;
     }
   }

@@ -70,7 +70,7 @@ if ( !function_exists( 'shoestrap_module_footer_options' ) ) {
     do_action( 'shoestrap_module_footer_options_modifier' );
 
     $smof_details = array();
-    foreach($of_options as $option) {
+    foreach( $of_options as $option ) {
       $smof_details[$option['id']] = $option;
     }
   }
