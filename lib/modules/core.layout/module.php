@@ -52,12 +52,12 @@ if ( !function_exists( 'shoestrap_module_layout_options' ) ) {
       "type"      => "images",
       "customizer"=> array(),
       "options"   => array(
-        0         => get_template_directory_uri() . '/lib/admin/assets/images/1c.png',
-        1         => get_template_directory_uri() . '/lib/admin/assets/images/2cr.png',
-        2         => get_template_directory_uri() . '/lib/admin/assets/images/2cl.png',
-        3         => get_template_directory_uri() . '/lib/admin/assets/images/3cl.png',
-        4         => get_template_directory_uri() . '/lib/admin/assets/images/3cr.png',
-        5         => get_template_directory_uri() . '/lib/admin/assets/images/3cm.png',
+        0         => get_template_directory_uri() . SMOF_DIR . '/addons/assets/images/1c.png',
+        1         => get_template_directory_uri() . SMOF_DIR . '/addons/assets/images/2cr.png',
+        2         => get_template_directory_uri() . SMOF_DIR . '/addons/assets/images/2cl.png',
+        3         => get_template_directory_uri() . SMOF_DIR . '/addons/assets/images/3cl.png',
+        4         => get_template_directory_uri() . SMOF_DIR . '/addons/assets/images/3cr.png',
+        5         => get_template_directory_uri() . SMOF_DIR . '/addons/assets/images/3cm.png',
       )
     );
 

@@ -53,9 +53,9 @@ if( !defined('SMOF_DIR') )
   define( 'SMOF_DIR','/lib/modules/core.admin/');
 
 if( !defined('ADMIN_PATH') )
-  define( 'ADMIN_PATH', dirname(__FILE__) . "/Options-Framework/admin/" );
+  define( 'ADMIN_PATH', get_template_directory() . SMOF_DIR . "Options-Framework/admin/" );
 if( !defined('ADMIN_DIR') )
-  define( 'ADMIN_DIR', get_template_directory_uri() . "Options-Framework/admin/");
+  define( 'ADMIN_DIR', get_template_directory_uri() . SMOF_DIR . "/Options-Framework/admin/");
 
 
 
