@@ -24,13 +24,13 @@ Contributors: Syamil MJ - http://aquagraphite.com
  * @since 1.4.0
  */
 $theme_version = '';
-	    
+
 if( function_exists( 'wp_get_theme' ) ) {
 	if( is_child_theme() ) {
 		$temp_obj = wp_get_theme();
 		$theme_obj = wp_get_theme( $temp_obj->get('Template') );
 	} else {
-		$theme_obj = wp_get_theme();    
+		$theme_obj = wp_get_theme();
 	}
 
 	$theme_version = $theme_obj->get('Version');
@@ -49,9 +49,9 @@ if( function_exists( 'wp_get_theme' ) ) {
 define( 'SMOF_VERSION', '1.5' );
 
 if( !defined('ADMIN_PATH') )
-	define( 'ADMIN_PATH', get_template_directory() . '/admin/' );
+	define( 'ADMIN_PATH', get_template_directory() . '/lib/modules/core.admin/' );
 if( !defined('ADMIN_DIR') )
-	define( 'ADMIN_DIR', get_template_directory_uri() . '/admin/' );
+	define( 'ADMIN_DIR', get_template_directory_uri() . '/lib/modules/core.admin/' );
 
 define( 'ADMIN_IMAGES', ADMIN_DIR . 'assets/images/' );
 
@@ -80,7 +80,7 @@ add_action('admin_menu', 'optionsframework_add_admin');
  * Required Files
  *
  * @since 1.0.0
- */ 
+ */
 require_once ( ADMIN_PATH . 'functions/functions.load.php' );
 require_once ( ADMIN_PATH . 'classes/class.options_machine.php' );
 

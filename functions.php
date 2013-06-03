@@ -15,4 +15,5 @@ require_once locate_template('/lib/widgets.php');         // Sidebars and widget
 require_once locate_template('/lib/scripts.php');         // Scripts and stylesheets
 require_once locate_template('/lib/custom.php');          // Custom functions
 
-require_once locate_template('/lib/functions/init.php');  // Extra functions
+// Load the modules
+require_once locate_template('/lib/modules/load.modules.php');
