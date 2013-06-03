@@ -33,12 +33,12 @@ function shoestrap_typography_customizer( $wp_customize ) {
   }
 
   // Content of the Google Font
-  $wp_customize->add_control( new Shoestrap_Google_WebFont_Control( $wp_customize, 'typography_google_webfont', array(
-    'label'       => 'Google Webfont',
-    'section'     => 'shoestrap_typography',
-    'settings'    => 'typography_google_webfont',
-    'priority'    => 3,
-  )));
+  // $wp_customize->add_control( new Shoestrap_Google_WebFont_Control( $wp_customize, 'typography_google_webfont', array(
+  //   'label'       => 'Google Webfont',
+  //   'section'     => 'shoestrap_typography',
+  //   'settings'    => 'typography_google_webfont',
+  //   'priority'    => 3,
+  // )));
 
   //if ( $wp_customize->is_preview() && ! is_admin() )
     //add_action( 'wp_footer', 'shoestrap_customizer_typography_preview', 21 );
