@@ -7,8 +7,8 @@ if ( !function_exists( 'shoestrap_module_background_options' ) ) {
   function shoestrap_module_background_options() {
 
     //Background Patterns Reader
-    $bg_pattern_images_path = get_template_directory() . '/lib/assets/img/patterns';
-    $bg_pattern_images_url  = get_bloginfo( 'template_url' ) . '/lib/assets/img/patterns/';
+    $bg_pattern_images_path = get_template_directory() . '/assets/img/patterns';
+    $bg_pattern_images_url  = get_template_directory_uri() . '/assets/img/patterns/';
     $bg_pattern_images      = array();
 
     if ( is_dir( $bg_pattern_images_path ) ) {
