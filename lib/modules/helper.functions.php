@@ -107,9 +107,21 @@ function shoestrap_mix_colors( $hex1, $hex2, $percentage ) {
   return '#'.$r_hex.$g_hex.$b_hex;
 }
 
-// Redirect tosettings page on theme activation
+// Redirect to settings page on theme activation
 global $pagenow;
 if ( is_admin() && isset( $_GET['activated'] ) && $pagenow == 'themes.php' ) {
   wp_redirect( admin_url( 'themes.php?page=optionsframework' ) );
   exit;
 }
+
+function shoestrap_check_css_file_permissions() {
+  $css_folder = locate_template('/assets/css/');
+  $css_file   = shoestrap_css();
+
+  if ( !is_writable( $css_folder ) )
+    chmod( $css_folder, 0664 );
+
+  if ( !is_writable() )
+    chmod( $css_file, 0664 );
+}
+add_action( 'init', 'shoestrap_check_css_file_permissions' );
