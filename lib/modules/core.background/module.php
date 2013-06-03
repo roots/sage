@@ -19,6 +19,7 @@ if ( !function_exists( 'shoestrap_module_background_options' ) ) {
         }
       }
     }
+    
 
     /*-----------------------------------------------------------------------------------*/
     /* The Options Array */

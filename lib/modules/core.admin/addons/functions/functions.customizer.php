@@ -48,10 +48,10 @@ function smof_customize_init( $wp_customize ) {
   wp_enqueue_style( 'wp-pointer' );
   wp_enqueue_script( 'wp-pointer' );
   // Remove when code is in place!
-  wp_enqueue_script('smofcustomizerjs', ADMIN_DIR .'../lib/admin/assets/js/customizer.js');
+  wp_enqueue_script('smofcustomizerjs', get_template_directory_uri() . SMOF_DIR . 'addons/assets/js/customizer.js');
   // Get styles
 
-  wp_enqueue_style('smofcustomizer', ADMIN_DIR .'../lib/admin/assets/css/customizer.css');
+  wp_enqueue_style('smofcustomizer', get_template_directory_uri() . SMOF_DIR .'addons/assets/css/customizer.css');
 }
 add_action( 'customize_controls_init', 'smof_customize_init' );
 
@@ -63,7 +63,7 @@ function smof_preview_init( $wp_customize ) {
   wp_dequeue_style( 'shoestrap_css' );
   wp_deregister_style( 'shoestrap_css' );
 
-  file_put_contents( str_replace( ".css", ".less", shoestrap_css() ), shoestrap_complete_less( true ) );
+  $less = shoestrap_compile_css('less');
   print '<link rel="stylesheet/less" type="text/less" href="'.str_replace( ".css", ".less", shoestrap_css( 'url' ) ).'">';
   print '<script type="text/javascript">
     less = {
@@ -77,8 +77,8 @@ function smof_preview_init( $wp_customize ) {
       rootpath: "<?php get_template_directory_uri(); ?>/assets/less/"
     };
   </script>';
-  wp_enqueue_script( 'less-js', ADMIN_DIR .'../lib/admin/assets/js/less-1.3.3.min.js' );
-  wp_enqueue_script( 'preview-js', ADMIN_DIR .'../lib/admin/assets/js/preview.js' );
+  wp_enqueue_script( 'less-js', get_template_directory_uri() . SMOF_DIR . 'addons/assets/js/less-1.3.3.min.js' );
+  wp_enqueue_script( 'preview-js', get_template_directory_uri() . SMOF_DIR . 'addons/assets/js/preview.js' );
   wp_localize_script( 'preview-js', 'smofPost', array(
     'data'      => $smof_data,
     'variables' => $smof_details

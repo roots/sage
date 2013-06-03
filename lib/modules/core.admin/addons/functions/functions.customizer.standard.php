@@ -20,9 +20,7 @@ function smof_customize_register( $wp_customize ) {
 
   
   foreach( $of_options as $option ) {
-    if ($option['customizer'] != true && $option['type'] != 'heading') {
-      //continue;
-    }
+
 
     $customSetting = array(
       'type'          => 'theme_mod',
@@ -46,6 +44,10 @@ function smof_customize_register( $wp_customize ) {
       $section_set = true;
     }
 
+    if ( !array_key_exists("customizer", $smof_details[$option['id']]) ) {
+      //echo $option['id'];
+      //continue;      
+    }
 
     switch( $option['type'] ) {
       case 'heading':

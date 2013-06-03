@@ -71,7 +71,7 @@ define( 'BACKUPS','backups' );
  *
  * @since 1.0.0
  */
-if (is_admin() && isset($_GET['activated'] ) && $pagenow == "themes.php" ) add_action('admin_head','of_option_setup');
+//if (is_admin() && isset($_GET['activated'] ) && $pagenow == "themes.php" ) add_action('admin_head','of_option_setup');
 add_action('admin_head', 'optionsframework_admin_message');
 add_action('admin_init','optionsframework_admin_init');
 add_action('admin_menu', 'optionsframework_add_admin');

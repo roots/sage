@@ -66,14 +66,18 @@ class Options_Machine {
 	 */
 	public static function optionsframework_machine($options) {
 
-	    $data = of_get_options();
 	    $smof_data = of_get_options();
-		
+		$data = $smof_data;
+
 		$defaults = array();   
 	    $counter = 0;
 		$menu = '';
 		$output = '';
 		
+		do_action('optionsframework_machine_before', array(
+				'options'	=> $options,
+				'smof_data'	=> $smof_data,
+			));
 		
 		foreach ($options as $value) {
 			
@@ -146,8 +150,12 @@ class Options_Machine {
 					if($value['mod'] == 'mini') { $mini = 'mini';}
 					$output .= '<div class="select_wrapper ' . $mini . '">';
 					$output .= '<select class="select of-input" name="'.$value['id'].'" id="'. $value['id'] .'">';
-					foreach ($value['options'] as $select_ID => $option) {			
-						$output .= '<option id="' . $select_ID . '" value="'.$option.'" ' . selected($smof_data[$value['id']], $option, false) . ' />'.$option.'</option>';	 
+
+					foreach ($value['options'] as $select_ID => $option) {
+						$theValue = $option;
+						if (!is_numeric($select_ID))
+							$theValue = $select_ID;
+						$output .= '<option id="' . $select_ID . '" value="'.$theValue.'" ' . selected($smof_data[$value['id']], $option, false) . ' />'.$option.'</option>';	 
 					 } 
 					$output .= '</select></div>';
 				break;
@@ -454,21 +462,21 @@ class Options_Machine {
 					
 					$i = 0;
 					$select_value = isset($smof_data[$value['id']]) && !empty($smof_data[$value['id']]) ? $smof_data[$value['id']] : '';
-					
-					foreach ($value['options'] as $key => $option) 
-					{ 
-					$i++;
-			
-						$checked = '';
-						$selected = '';
-						if(NULL!=checked($select_value, $option, false)) {
-							$checked = checked($select_value, $option, false);
-							$selected = 'of-radio-tile-selected';  
+					if (is_array($value['options'])) {
+						foreach ($value['options'] as $key => $option) { 
+						$i++;
+				
+							$checked = '';
+							$selected = '';
+							if(NULL!=checked($select_value, $option, false)) {
+								$checked = checked($select_value, $option, false);
+								$selected = 'of-radio-tile-selected';  
+							}
+							$output .= '<span>';
+							$output .= '<input type="radio" id="of-radio-tile-' . $value['id'] . $i . '" class="checkbox of-radio-tile-radio" value="'.$option.'" name="'.$value['id'].'" '.$checked.' />';
+							$output .= '<div class="of-radio-tile-img '. $selected .'" style="background: url('.$option.')" onClick="document.getElementById(\'of-radio-tile-'. $value['id'] . $i.'\').checked = true;"></div>';
+							$output .= '</span>';				
 						}
-						$output .= '<span>';
-						$output .= '<input type="radio" id="of-radio-tile-' . $value['id'] . $i . '" class="checkbox of-radio-tile-radio" value="'.$option.'" name="'.$value['id'].'" '.$checked.' />';
-						$output .= '<div class="of-radio-tile-img '. $selected .'" style="background: url('.$option.')" onClick="document.getElementById(\'of-radio-tile-'. $value['id'] . $i.'\').checked = true;"></div>';
-						$output .= '</span>';				
 					}
 					
 				break;
@@ -478,7 +486,9 @@ class Options_Machine {
 				
 					$instructions = $value['desc'];
 					$backup = of_get_options(BACKUPS);
-					
+					$init = of_get_options('smof_init');
+
+
 					if(!isset($backup['backup_log'])) {
 						$log = 'No backups yet';
 					} else {
@@ -617,6 +627,15 @@ class Options_Machine {
 				break;
 				
 			}
+
+			do_action('optionsframework_machine_loop', array(
+					'options'	=> $options,
+					'smof_data'	=> $smof_data,
+					'defaults'	=> $defaults,
+					'counter'	=> $counter,
+					'menu'		=> $menu,
+					'output'	=> $output
+				));
 			
 			//description of each option
 			if ( $value['type'] != 'heading') { 
@@ -632,6 +651,15 @@ class Options_Machine {
 		}
 		
 	    $output .= '</div>';
+
+	    do_action('optionsframework_machine_after', array(
+					'options'	=> $options,
+					'smof_data'	=> $smof_data,
+					'defaults'	=> $defaults,
+					'counter'	=> $counter,
+					'menu'		=> $menu,
+					'output'	=> $output
+				));
 	    
 	    return array($output,$menu,$defaults);
 	    
