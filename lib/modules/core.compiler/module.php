@@ -1,4 +1,4 @@
 <?php
 
-include_once( dirname(__FILE__).'/less.inc.php' );
-include_once( dirname(__FILE__).'/bootstrap-compiler.php' );
+locate_template( '/lib/modules/core.compiler/less.inc.php' );
+locate_template( '/lib/modules/core.compiler/bootstrap-compiler.php' );
