@@ -1,4 +1,5 @@
 ### HEAD
+* Update to Bootstrap 2.3.2
 * Update to Google Universal Analytics
 * Remove post tags from templates
 * Remove TinyMCE valid elements tweaks (no longer necessary)
