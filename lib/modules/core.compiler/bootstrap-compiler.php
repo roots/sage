@@ -78,16 +78,6 @@ function shoestrap_makecss() {
   shoestrap_compile_css();
 }
 
-// Gets the current values from SMOF, and if not there, grabs the defaults
-function shoestrap_getVariable($key) {
-  global $smof_details;
-  $value = get_theme_mod($key);
-  if ($value == "") {
-    $value = $smof_details[$key]['std'];
-  }
-  return $value;
-}
-
 /*
  * The content below is a copy of bootstrap's variables.less file.
  *
