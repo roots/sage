@@ -1,4 +1,5 @@
 ### HEAD
+* Change media directory from `/assets/` to `/media/`
 * Update to Bootstrap 2.3.2
 * Update to Google Universal Analytics
 * Update to jQuery 1.10.1
