@@ -1,6 +1,9 @@
 ### HEAD
 * Update to Bootstrap 2.3.2
 * Update to Google Universal Analytics
+* Update to jQuery 1.10.1
+* Show author display name for author archives
+* Add Serbian translation
 * Remove post tags from templates
 * Remove TinyMCE valid elements tweaks (no longer necessary)
 * Remove additional widget classes
