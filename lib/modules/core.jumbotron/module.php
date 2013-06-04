@@ -6,6 +6,20 @@
 if ( !function_exists( 'shoestrap_module_jumbotron_options' ) ) {
   function shoestrap_module_jumbotron_options() {
 
+    //Background Patterns Reader
+    $bg_pattern_images_path = get_template_directory() . '/assets/img/patterns';
+    $bg_pattern_images_url  = get_template_directory_uri() . '/assets/img/patterns/';
+    $bg_pattern_images      = array();
+
+    if ( is_dir( $bg_pattern_images_path ) ) {
+      if ( $bg_pattern_images_dir = opendir( $bg_pattern_images_path ) ) {
+        while ( ( $bg_pattern_images_file = readdir( $bg_pattern_images_dir ) ) !== false ) {
+          if( stristr( $bg_pattern_images_file, ".png" ) !== false || stristr( $bg_pattern_images_file, ".jpg" ) !== false)
+            $bg_pattern_images[] = $bg_pattern_images_url . $bg_pattern_images_file;
+        }
+      }
+    }
+
     /*-----------------------------------------------------------------------------------*/
     /* The Options Array */
     /*-----------------------------------------------------------------------------------*/
