@@ -24,6 +24,7 @@ Contributors: Syamil MJ - http://aquagraphite.com
  * @since 1.4.0
  */
 $theme_version = '';
+$smof_output = '';
 	    
 if( function_exists( 'wp_get_theme' ) ) {
 	if( is_child_theme() ) {

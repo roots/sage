@@ -130,7 +130,7 @@ function of_save_options($data, $key = null) {
 		set_theme_mod($key, $data);
 	} else { // Update all values in $data
 		foreach ( $data as $k=>$v ) {
-			if ($smof_data[$k] != $v || !isset($smof_data[$k])) { // Only write to the DB when we need to
+			if (!isset($smof_data[$k]) || $smof_data[$k] != $v) { // Only write to the DB when we need to
 				set_theme_mod($k, $v);
 			}
 	  	}
