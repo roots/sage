@@ -425,39 +425,78 @@ class Options_Machine {
 				
 				//drag & drop block manager
 				case 'sorter':
-				
-					$sortlists = isset($smof_data[$value['id']]) && !empty($smof_data[$value['id']]) ? $smof_data[$value['id']] : $value['std'];
-					
-					$output .= '<div id="'.$value['id'].'" class="sorter">';
-					
-					
-					if ($sortlists) {
-					
-						foreach ($sortlists as $group=>$sortlist) {
-						
-							$output .= '<ul id="'.$value['id'].'_'.$group.'" class="sortlist_'.$value['id'].'">';
-							$output .= '<h3>'.$group.'</h3>';
-							
-							foreach ($sortlist as $key => $list) {
-							
-								$output .= '<input class="sorter-placebo" type="hidden" name="'.$value['id'].'['.$group.'][placebo]" value="placebo">';
-									
-								if ($key != "placebo") {
-								
-									$output .= '<li id="'.$key.'" class="sortee">';
-									$output .= '<input class="position" type="hidden" name="'.$value['id'].'['.$group.']['.$key.']" value="'.$list.'">';
-									$output .= $list;
-									$output .= '</li>';
-									
-								}
-								
-							}
-							
-							$output .= '</ul>';
-						}
+
+				    // Make sure to get list of all the default blocks first
+				    $all_blocks = $value['std'];
+
+				    $temp = array(); // holds default blocks
+				    $temp2 = array(); // holds saved blocks
+
+					foreach($all_blocks as $blocks) {
+					    $temp = array_merge($temp, $blocks);
 					}
-					
-					$output .= '</div>';
+
+				    $sortlists = isset($data[$value['id']]) && !empty($data[$value['id']]) ? $data[$value['id']] : $value['std'];
+
+				    foreach( $sortlists as $sortlist ) {
+					$temp2 = array_merge($temp2, $sortlist);
+				    }
+
+				    // now let's compare if we have anything missing
+				    foreach($temp as $k => $v) {
+					if(!array_key_exists($k, $temp2)) {
+					    $sortlists['disabled'][$k] = $v;
+					}
+				    }
+
+				    // now check if saved blocks has blocks not registered under default blocks
+				    foreach( $sortlists as $key => $sortlist ) {
+					foreach($sortlist as $k => $v) {
+					    if(!array_key_exists($k, $temp)) {
+						unset($sortlist[$k]);
+					    }
+					}
+					$sortlists[$key] = $sortlist;
+				    }
+
+				    // assuming all sync'ed, now get the correct naming for each block
+				    foreach( $sortlists as $key => $sortlist ) {
+					foreach($sortlist as $k => $v) {
+					    $sortlist[$k] = $temp[$k];
+					}
+					$sortlists[$key] = $sortlist;
+				    }
+
+				    $output .= '<div id="'.$value['id'].'" class="sorter">';
+
+
+				    if ($sortlists) {
+
+					foreach ($sortlists as $group=>$sortlist) {
+
+					    $output .= '<ul id="'.$value['id'].'_'.$group.'" class="sortlist_'.$value['id'].'">';
+					    $output .= '<h3>'.$group.'</h3>';
+
+					    foreach ($sortlist as $key => $list) {
+
+						$output .= '<input class="sorter-placebo" type="hidden" name="'.$value['id'].'['.$group.'][placebo]" value="placebo">';
+
+						if ($key != "placebo") {
+
+						    $output .= '<li id="'.$key.'" class="sortee">';
+						    $output .= '<input class="position" type="hidden" name="'.$value['id'].'['.$group.']['.$key.']" value="'.$list.'">';
+						    $output .= $list;
+						    $output .= '</li>';
+
+						}
+
+					    }
+
+					    $output .= '</ul>';
+					}
+				    }
+
+				    $output .= '</div>';
 				break;
 				
 				//background images option
