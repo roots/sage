@@ -19,7 +19,7 @@ if ( !function_exists( 'shoestrap_module_background_options' ) ) {
         }
       }
     }
-    
+
 
     /*-----------------------------------------------------------------------------------*/
     /* The Options Array */
@@ -59,16 +59,6 @@ if ( !function_exists( 'shoestrap_module_background_options' ) ) {
     );
 
     $of_options[] = array(
-      "name"      => __("Background position", "shoestrap"),
-      "desc"      => __("Changes how the background image or pattern is displayed from scroll to fixed position. Default: Fixed.", "shoestrap"),
-      "id"        => "background_fixed_toggle",
-      "std"       => 1,
-      "on"        => __("Fixed", "shoestrap"),
-      "off"       => __("Scroll", "shoestrap"),
-      "type"      => "switch"
-    );
-
-    $of_options[] = array(
       "name"      => __("Use a Background Image", "shoestrap"),
       "desc"      => __("Enable this option to upload a custom background image for your site. This will override any patterns you may have selected. Default: OFF.", "shoestrap"),
       "id"        => "background_image_toggle",
@@ -84,6 +74,16 @@ if ( !function_exists( 'shoestrap_module_background_options' ) ) {
       "std"       => "",
       "type"      => "media",
       "customizer"=> array(),
+    );
+
+    $of_options[] = array(
+      "name"      => __("Background position", "shoestrap"),
+      "desc"      => __("Changes how the background image or pattern is displayed from scroll to fixed position. Default: Fixed.", "shoestrap"),
+      "id"        => "background_fixed_toggle",
+      "std"       => 1,
+      "on"        => __("Fixed", "shoestrap"),
+      "off"       => __("Scroll", "shoestrap"),
+      "type"      => "switch"
     );
 
     $of_options[] = array(
