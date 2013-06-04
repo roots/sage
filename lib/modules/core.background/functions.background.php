@@ -15,6 +15,12 @@ function shoestrap_background_css( ) {
     $color = '#' . str_replace( '#', '', shoestrap_getVariable( 'color_body_bg' ) );
   }
 
+  if ( shoestrap_getVariable( 'background_color_opacity' ) != 1 ) {
+    $rgb      = shoestrap_get_rgb( $color, true );
+    $opacity  = ( intval( shoestrap_getVariable( 'background_color_opacity' ) ) )/100;
+    $color    = 'rgba(' . $rgb . ',' . $opacity . ')';
+  }
+
   if ( ! $background && ! $color )
     return;
 
@@ -53,10 +59,10 @@ function shoestrap_background_css( ) {
       }
       $position = " background-position: top $position;";
     }
-  } 
+  }
 
   $style .= $image . $repeat . $position;
-  
+
   echo '<style type="text/css" id="background">';
   echo 'body {' . trim( $style ) . '}';
   echo $color ? ".wrap.main-section{background: $color;}" : '';

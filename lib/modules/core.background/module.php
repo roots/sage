@@ -41,7 +41,19 @@ if ( !function_exists( 'shoestrap_module_background_options' ) ) {
       "std"       => "#ffffff",
       "less"      => true,
       "customizer"=> array(),
-      "type"      => "color"
+      "type"      => "color",
+    );
+
+    $of_options[] = array(
+      "name"      => __("Background Color Opacity", "shoestrap"),
+      "desc"      => __("If you're using a background image or pattern, you might want to change the opacity of the background color. This will make your main content area semi-transparent so that the background image is visible. Default: 100", "shoestrap"),
+      "id"        => "background_color_opacity",
+      "std"       => 100,
+      "min"       => 0,
+      "step"      => 1,
+      "max"       => 100,
+      "advanced"  => true,
+      "type"      => "sliderui",
     );
 
     $of_options[] = array(
