@@ -106,10 +106,3 @@ function shoestrap_mix_colors( $hex1, $hex2, $percentage ) {
 
   return '#'.$r_hex.$g_hex.$b_hex;
 }
-
-// Redirect to settings page on theme activation
-global $pagenow;
-if ( is_admin() && isset( $_GET['activated'] ) && $pagenow == 'themes.php' ) {
-  wp_redirect( admin_url( 'themes.php?page=optionsframework' ) );
-  exit;
-}
