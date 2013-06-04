@@ -56,3 +56,11 @@ function shoestrap_secondary_navbar() {
   <?php endif;
 }
 add_action( 'shoestrap_pre_content', 'shoestrap_secondary_navbar' );
+
+function shoestrap_navbar_css() {
+  if ( shoestrap_getVariable( 'logo_top_margin' ) != 1 )
+    $style = '<style>.navbar a.navbar-brand.logo {margin-top:' . shoestrap_getVariable( 'logo_top_margin' ) . 'px; }</style>';
+
+  echo $style;
+}
+add_action( 'wp_head', 'shoestrap_navbar_css' );

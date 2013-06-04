@@ -85,6 +85,19 @@ if ( !function_exists( 'shoestrap_module_header_options' ) ) {
     );
 
     $of_options[] = array(
+      "name"      => __("Logo Margin from top", "shoestrap"),
+      "desc"      => __("Tweak the margin from top of the logo in your Navbar. Minimum: -30px, Maximum: 30px. Default: 0", "shoestrap"),
+      "id"        => "logo_top_margin",
+      "fold"      => "navbar_logo",
+      "std"       => 0,
+      "min"       => -30,
+      "step"      => 1,
+      "max"       => 30,
+      "less"      => true,
+      "type"      => "sliderui"
+    );
+
+    $of_options[] = array(
       "name"      => __("NavBar Background Color", "shoestrap"),
       "desc"      => __("Pick a background color for the NavBar. Default: #eeeeee.", "shoestrap"),
       "id"        => "navbar_bg",
