@@ -155,7 +155,7 @@ if ( !function_exists( 'shoestrap_module_header_options' ) ) {
       "id"        => "navbar_position",
       "fold"      => "navbar_toggle",
       "std"       => 0,
-      "type"      => "select",
+      "type"      => "radio",
       "customizer"=> array(),
       "options"   => array(
         0         => __( 'Normal', 'shoestrap' ),
