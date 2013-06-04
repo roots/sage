@@ -35,7 +35,7 @@ if ( !function_exists( 'shoestrap_module_layout_options' ) ) {
       "desc"      => __("Select the default site layout. Default: Wide", "shoestrap"),
       "id"        => "site_style",
       "std"       => "wide",
-      "type"      => "radio",
+      "type"      => "select",
       "customizer"=> array(),
       "options"   => array(
         'wide'    =>"Wide",

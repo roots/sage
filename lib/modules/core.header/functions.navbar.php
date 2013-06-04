@@ -32,13 +32,13 @@ function shoestrap_navbar_class() {
   $pos    = shoestrap_getVariable( 'navbar_position' );
   $style  = shoestrap_getVariable( 'navbar_style' );
 
-  if ( $pos == 1 )
+  if ( $pos == 'fixedtop' )
     $class = 'navbar navbar-fixed-top';
-  elseif ( $pos == 2 )
+  elseif ( $pos == 'fixedbottom' )
     $class = 'navbar navbar-fixed-bottom';
   else $class = 'navbar navbar-static-top';
 
-  return $class . ' style' . $style;
+  return $class . ' ' . $style;
 }
 
 function shoestrap_secondary_navbar() {

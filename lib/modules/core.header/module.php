@@ -54,13 +54,13 @@ if ( !function_exists( 'shoestrap_module_header_options' ) ) {
       "type"      => "select",
       "customizer"=> array(),
       "options"   => array(
-        0         => __( "Default", "shoestrap"),
-        1         => __( "Style", "shoestrap") . " 1",
-        2         => __( "Style", "shoestrap") . " 2",
-        3         => __( "Style", "shoestrap") . " 3",
-        4         => __( "Style", "shoestrap") . " 4",
-        5         => __( "Style", "shoestrap") . " 5",
-        6         => __( "Style", "shoestrap") . " 6",
+        'default' => __( "Default", "shoestrap"),
+        'style1'  => __( "Style", "shoestrap") . " 1",
+        'style2'  => __( "Style", "shoestrap") . " 2",
+        'style3'  => __( "Style", "shoestrap") . " 3",
+        'style4'  => __( "Style", "shoestrap") . " 4",
+        'style5'  => __( "Style", "shoestrap") . " 5",
+        'style6'  => __( "Style", "shoestrap") . " 6",
       )
     );
 
@@ -155,12 +155,12 @@ if ( !function_exists( 'shoestrap_module_header_options' ) ) {
       "id"        => "navbar_position",
       "fold"      => "navbar_toggle",
       "std"       => 0,
-      "type"      => "radio",
+      "type"      => "select",
       "customizer"=> array(),
       "options"   => array(
-        0         => __( 'Normal', 'shoestrap' ),
-        1         => __( 'Fixed to Top', 'shoestrap' ),
-        2         => __( 'Fixed to Bottom', 'shoestrap' ),
+        'normal'      => __( 'Normal', 'shoestrap' ),
+        'fixedtop'    => __( 'Fixed to Top', 'shoestrap' ),
+        'fixedbottom' => __( 'Fixed to Bottom', 'shoestrap' ),
       )
     );
 

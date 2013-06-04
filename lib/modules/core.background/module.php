@@ -103,7 +103,7 @@ if ( !function_exists( 'shoestrap_module_background_options' ) ) {
       "id"        => "background_repeat",
       "fold"      => "background_image_position_toggle",
       "std"       => "repeat",
-      "type"      => "radio",
+      "type"      => "select",
       "options"   => array(
         'no-repeat'  => __( 'No Repeat', 'shoestrap' ),
         'repeat'     => __( 'Tile', 'shoestrap' ),
@@ -118,7 +118,7 @@ if ( !function_exists( 'shoestrap_module_background_options' ) ) {
       "id"        => "background_position_x",
       "fold"      => "background_image_position_toggle",
       "std"       => "repeat",
-      "type"      => "radio",
+      "type"      => "select",
       "options"   => array(
         'left'    => __( 'Left', 'shoestrap' ),
         'right'   => __( 'Right', 'shoestrap' ),
