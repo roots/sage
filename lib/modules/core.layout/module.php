@@ -88,9 +88,9 @@ if ( !function_exists( 'shoestrap_module_layout_options' ) ) {
       "desc"      => __("Select the width of the Primary Sidebar. Please note that the values represent grid columns. The total width of the page is 12 columns, so selecting 4 here will make the primary sidebar to have a width of 1/3 (4/12) of the total page width.", "shoestrap"),
       "id"        => "layout_primary_width",
       "std"       => 4,
-      "min"       => 2,
+      "min"       => 1,
       "step"      => 1,
-      "max"       => 6,
+      "max"       => 11,
       "advanced"  => true,
       "type"      => "sliderui"
     );
@@ -100,9 +100,9 @@ if ( !function_exists( 'shoestrap_module_layout_options' ) ) {
       "desc"      => __("Select the width of the Secondary Sidebar. Please note that the values represent grid columns. The total width of the page is 12 columns, so selecting 4 here will make the secondary sidebar to have a width of 1/3 (4/12) of the total page width.", "shoestrap"),
       "id"        => "layout_secondary_width",
       "std"       => 3,
-      "min"       => 2,
+      "min"       => 1,
       "step"      => 1,
-      "max"       => 4,
+      "max"       => 11,
       "advanced"  => true,
       "type"      => "sliderui"
     );
