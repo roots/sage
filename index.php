@@ -18,6 +18,8 @@
   ?>
 <?php endwhile; ?>
 
+<?php do_action( 'shoestrap_index_end' ); ?>
+
 <?php if ($wp_query->max_num_pages > 1) : ?>
   <nav class="post-nav">
     <ul class="pager">
@@ -26,4 +28,3 @@
     </ul>
   </nav>
 <?php endif; ?>
-<?php do_action( 'shoestrap_index_end' ); ?>
