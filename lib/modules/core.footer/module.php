@@ -21,9 +21,9 @@ if ( !function_exists( 'shoestrap_module_footer_options' ) ) {
 
     $of_options[] = array(
       "name"      => __("Footer Background Color", "shoestrap"),
-      "desc"      => __("Select the background color for your footer. Default: #ffffff.", "shoestrap"),
+      "desc"      => __("Select the background color for your footer. Default: #282a2b.", "shoestrap"),
       "id"        => "footer_background",
-      "std"       => "#ffffff",
+      "std"       => "#282a2b",
       "customizer"=> array(),
       "type"      => "color"
     );
@@ -39,9 +39,9 @@ if ( !function_exists( 'shoestrap_module_footer_options' ) ) {
 
     $of_options[] = array(
       "name"      => __("Footer Text Color", "shoestrap"),
-      "desc"      => __("Select the text color for your footer. Default: #333333.", "shoestrap"),
+      "desc"      => __("Select the text color for your footer. Default: #8C8989.", "shoestrap"),
       "id"        => "footer_color",
-      "std"       => "#333333",
+      "std"       => "#8C8989",
       "customizer"=> array(),
       "type"      => "color"
     );
@@ -63,7 +63,7 @@ if ( !function_exists( 'shoestrap_module_footer_options' ) ) {
       "std"       => array(
         'width'   => '2',
         'style'   => 'solid',
-        'color'   => shoestrap_getVariable( 'color_brand_info' ),
+        'color'   => '#4B4C4D',
       )
     );
 

@@ -77,7 +77,11 @@ class Options_Machine {
 				'options'	=> $options,
 				'smof_data'	=> $smof_data,
 			));
-		$output .= $smof_output;
+		if ($output != $smof_output) {
+			$output .= $smof_output;	
+			$smof_outout = "";
+		}
+		
 		
 		foreach ($options as $value) {
 			
@@ -128,8 +132,8 @@ class Options_Machine {
 			 } 
 			 //End Heading
 
-			if (!isset($smof_data[$value['id']]) && $value['type'] != "heading")
-				continue;
+			//if (!isset($smof_data[$value['id']]) && $value['type'] != "heading")
+			//	continue;
 			
 			//switch statement to handle various options type                              
 			switch ( $value['type'] ) {
@@ -158,7 +162,10 @@ class Options_Machine {
 						$theValue = $option;
 						if (!is_numeric($select_ID))
 							$theValue = $select_ID;
-						$output .= '<option id="' . $select_ID . '" value="'.$theValue.'" ' . selected($smof_data[$value['id']], $option, false) . ' />'.$option.'</option>';	 
+						$selected = "";
+						if ($smof_data[$value['id']] == $theValue)
+							$selected = ' selected="selected"';
+						$output .= '<option id="' . $select_ID . '" value="'.$theValue.'" ' . $selected . ' />'.$option.'</option>';	 
 					 } 
 					$output .= '</select></div>';
 				break;
@@ -210,14 +217,7 @@ class Options_Machine {
 						$output .= '<input type="checkbox" class="checkbox of-input" name="'.$value['id'].'['.$key.']'.'" id="'. $of_key_string .'" value="1" '. checked($multi_stored[$key], 1, false) .' /><label class="multicheck" for="'. $of_key_string .'">'. $option .'</label><br />';								
 					}			 
 				break;
-				/*
-				//colorpicker option
-				case 'color':		
-					$output .= '<div id="' . $value['id'] . '_picker" class="colorSelector"><div style="background-color: '.$smof_data[$value['id']].'"></div></div>';
-					$output .= '<input class="of-color" name="'.$value['id'].'" id="'. $value['id'] .'" type="text" value="'. $smof_data[$value['id']] .'" />';
-				break;
-				*/
-
+				
 				// Color picker
 				case "color":
 					$default_color = '';
@@ -679,7 +679,11 @@ class Options_Machine {
 					'output'	=> $output,
 					'value'		=> $value
 				));
-			$output .= $smof_output;
+			if ($output != $smof_output) {
+				$output .= $smof_output;	
+				$smof_outout = "";
+			}
+
 			
 			//description of each option
 			if ( $value['type'] != 'heading') { 
@@ -705,7 +709,11 @@ class Options_Machine {
 					'output'		=> $output,
 					'value'			=> $value
 				));
-	    $output .= $smof_output;
+		if ($output != $smof_output) {
+			$output .= $smof_output;	
+			$smof_outout = "";
+		}
+
 	    
 	    return array($output,$menu,$defaults);
 	    
@@ -844,88 +852,6 @@ class Options_Machine {
 	
 		return $slider;
 		
-	}
-
-
-	/**
-	 * Media Uploader Using the WordPress Media Library.
-	 *
-	 * Parameters:
-	 * - string $_id - A token to identify this field (the name).
-	 * - string $_value - The value of the field, if present.
-	 * - string $_desc - An optional description of the field.
-	 *
-	 */
-
-	public static function optionsframework_uploader( $_id, $_value, $_name = '' ) {
-
-		$data = of_get_options();
-	    $smof_data = of_get_options();
-		
-	    $upload = $smof_data[$_id];
-		
-		
-	    if ( $upload != "") { $val = $upload; } else {$val = $_value;}
-	    
-
-		$output = '';
-		$id = '';
-		$class = '';
-		$int = '';
-		$value = '';
-		$name = '';
-		
-		$id = strip_tags( strtolower( $_id ) );
-		
-		// If a value is passed and we don't have a stored value, use the value that's passed through.
-		if ( $_value != '' && $value == '' ) {
-			$value = $_value;
-		}
-		
-		if ( $_name != '' ) {
-			$name = $_name;
-		}
-		else {
-			$name = $upload.'['.$id.']';
-		}
-		
-		if ( $value ) {
-			$class = ' has-file';
-		}
-		$output .= '<input id="' . $id . '" class="upload' . $class . '" type="text" name="'.$name.'" value="' . $value . '" placeholder="' . __('No file chosen', 'options_framework_theme') .'" />' . "\n";
-		if ( function_exists( 'wp_enqueue_media' ) ) {
-			if ( ( $value == '' ) ) {
-				$output .= '<span id="upload-' . $id . '" class="button media_upload_button">Upload</span>' . "\n";
-			} else {
-				$output .= '<span id="remove-' . $id . '" class="button remove-file">Remove</span>' . "\n";
-			}
-		} else {
-			$output .= '<p><i>' . __( 'Upgrade your version of WordPress for full media support.', 'options_framework_theme' ) . '</i></p>';
-		}
-		
-		$output .= '<div class="screenshot" id="' . $id . '-image">' . "\n";
-		
-		if ( $value != '' ) { 
-			$remove = '<a class="remove-image">Remove</a>';
-			$image = preg_match( '/(^.*\.jpg|jpeg|png|gif|ico*)/i', $value );
-			if ( $image ) {
-				$output .= '<img src="' . $value . '" alt="" />'.$remove.'';
-			} else {
-				$parts = explode( "/", $value );
-				for( $i = 0; $i < sizeof( $parts ); ++$i ) {
-					$title = $parts[$i];
-				}
-
-				// No output preview if it's not an image.			
-				$output .= '';
-			
-				// Standard generic output if it's not an image.	
-				$title = __( 'View File', 'options_framework_theme' );
-				$output .= '<div class="no-image"><span class="file_link"><a href="' . $value . '" target="_blank" rel="external">'.$title.'</a></span></div>';
-			}	
-		}
-		$output .= '</div>' . "\n";
-		return $output;
 	}
 
 	

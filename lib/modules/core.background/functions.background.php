@@ -63,7 +63,7 @@ function shoestrap_background_css( ) {
 
   $style .= $image . $repeat . $position;
 
-  echo '<style type="text/css" id="background">';
+  echo '<style type="text/css" id="core.background">';
   echo 'body {' . trim( $style ) . '}';
   echo $color ? ".wrap.main-section{background: $color;}" : '';
   echo '</style>';

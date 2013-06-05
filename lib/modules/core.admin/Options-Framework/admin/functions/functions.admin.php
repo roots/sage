@@ -1,5 +1,4 @@
 <?php
-
 /**
  * SMOF Admin
  *
@@ -24,23 +23,13 @@ function of_head() { do_action( 'of_head' ); }
  */
 function of_option_setup()	
 {
-	global $of_options, $options_machine, $smof_data;
-	do_action('of_option_setup_before', array(
-		'of_options'=>$of_options, 'options_machine'=>$options_machine, 'smof_data'=>$smof_data
-	));
+	global $of_options, $options_machine;
 	$options_machine = new Options_Machine($of_options);
-
-	if (empty($smof_data) || !isset($smof_data['smof_init'])) { // Let's set the values if the theme's already been active
+		
+	if (!of_get_options())
+	{
 		of_save_options($options_machine->Defaults);
-		of_save_options(date('r'), 'smof_init');
-		$smof_data = of_get_options();
-		$data = $smof_data;
 	}
-	do_action('of_option_setup_after', array(
-		'of_options'=>$of_options, 'options_machine'=>$options_machine, 'smof_data'=>$smof_data
-	));
-
-
 }
 
 /**
@@ -90,10 +79,12 @@ function of_get_header_classes_array()
  * @return array
  */
 function of_get_options($key = null, $data = null) {
+
 	do_action('of_get_options_before', array(
 		'key'=>$key, 'data'=>$data
 	));
 	if ($key != null) { // Get one specific value
+
 		$data = get_theme_mod($key, $data);
 	} else { // Get all values
 		$data = get_theme_mods();		
@@ -115,14 +106,17 @@ function of_get_options($key = null, $data = null) {
  * @uses update_option()
  * @return void
  */
+
 function of_save_options($data, $key = null) {
 	global $smof_data;
+
     if (empty($data))
         return;	
     do_action('of_save_options_before', array(
 		'key'=>$key, 'data'=>$data
 	));
 	$data = apply_filters('of_options_before_save', $data);
+
 	if ($key != null) { // Update one specific value
 		if ($key == BACKUPS) {
 			unset($data['smof_init']); // Don't want to change this.
@@ -148,6 +142,6 @@ function of_save_options($data, $key = null) {
  * @since forever
  */
 
-
+$data = of_get_options();
 $smof_data = of_get_options();
 $data = $smof_data;
