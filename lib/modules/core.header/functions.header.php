@@ -31,7 +31,7 @@ function shoestrap_header_css() {
   $cl = shoestrap_getVariable( 'header_color' );
 
   if ( shoestrap_getVariable( 'header_toggle' ) == 1 ) {
-    echo '<style>.header-wrapper{background:' . $bg . '; color:' . $cl . ';}</style>';
+    echo '<style id="core.header">.header-wrapper{background:' . $bg . '; color:' . $cl . ';}</style>';
   }
 }
 add_action( 'wp_head', 'shoestrap_header_css' );

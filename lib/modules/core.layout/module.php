@@ -83,6 +83,27 @@ if ( !function_exists( 'shoestrap_module_layout_options' ) ) {
       "type"      => "sliderui"
     );
 
+
+    $of_options[] = array(
+      "name"      => __("Show Breadcrumbs", "shoestrap"),
+      "desc"      => __("Display Breadcrumbs. Default: OFF.", "shoestrap"),
+      "id"        => "breadcrumbs",
+      "std"       => 0,
+      "type"      => "switch",
+      "customizer"=> array(),
+    );
+
+    $of_options[] = array(
+      "name"      => __("Breadcrumbs Location", "shoestrap"),
+      "desc"      => __("Display Breadcrumbs. Default: OFF.", "shoestrap"),
+      "id"        => "breadcrumbs",
+      "std"       => 0,
+      "on"        => "In Header",
+      "off"        => "Below Header",
+      "type"      => "switch",
+      "customizer"=> array(),
+    );        
+
     $of_options[] = array(
       "name"      => __("Primary Sidebar Width", "shoestrap"),
       "desc"      => __("Select the width of the Primary Sidebar. Please note that the values represent grid columns. The total width of the page is 12 columns, so selecting 4 here will make the primary sidebar to have a width of 1/3 (4/12) of the total page width.", "shoestrap"),

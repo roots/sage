@@ -172,7 +172,7 @@ if ( !function_exists( 'shoestrap_module_header_options' ) ) {
       "std"       => 50,
       "min"       => 10,
       "step"      => 1,
-      "max"       => 600,
+      "max"       => 120,
       "less"      => true,
       "type"      => "sliderui"
     );
