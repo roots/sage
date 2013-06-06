@@ -54,22 +54,22 @@ function shoestrap_css_not_writeable($array){
       }
       if (!is_writable($filename_less)) {
         $css = shoestrap_compile_css('less');
-      }      
-      if (!is_writable($filename) || !is_writable($filename_less)) { 
+      }
+      if (!is_writable($filename) || !is_writable($filename_less)) {
         echo '<div class="error"><p>';
         echo __( "The following file(s) are not writable and must be so in order to utilize this theme. Please update their permissions.", "shoestrap");
         if (!is_writable($filename)) {
           echo '<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="'.$url.'" target="_blank">'.$url.'</a>';
         }
         if (!$filename_less) {
-          echo '<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="'.str_replace(".css", ".less", $url).'" target="_blank">'.str_replace(".css", ".less", $url).'</a>';  
+          echo '<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="'.str_replace(".css", ".less", $url).'" target="_blank">'.str_replace(".css", ".less", $url).'</a>';
         }
         echo '</p></div>';
       }
-    }    
+    }
   }
 }
-add_action( 'admin_notices', 'shoestrap_css_not_writeable');  
+add_action( 'admin_notices', 'shoestrap_css_not_writeable');
 
 
 /*
@@ -145,11 +145,16 @@ function shoestrap_variables_less() {
   $navbar_bg        = '#' . str_replace( '#', '', shoestrap_getVariable( 'navbar_bg' ) );
   $jumbotron_bg     = '#' . str_replace( '#', '', shoestrap_getVariable( 'jumbotron_bg' ) );
   $jumbotron_color  = '#' . str_replace( '#', '', shoestrap_getVariable( 'jumbotron_color' ) );
-  $screen_tiny      = filter_var( shoestrap_getVariable( 'layout_screen_tiny' ), FILTER_SANITIZE_NUMBER_INT );
-  $screen_small     = filter_var( shoestrap_getVariable( 'layout_screen_small' ), FILTER_SANITIZE_NUMBER_INT );
-  $screen_medium    = filter_var( shoestrap_getVariable( 'layout_screen_medium' ), FILTER_SANITIZE_NUMBER_INT );
-  $screen_large     = filter_var( shoestrap_getVariable( 'layout_screen_large' ), FILTER_SANITIZE_NUMBER_INT );
-  $gutter           = filter_var( shoestrap_getVariable( 'layout_gutter' ), FILTER_SANITIZE_NUMBER_INT );
+
+  $container_tablet         = filter_var( shoestrap_getVariable( 'container_tablet' ), FILTER_SANITIZE_NUMBER_INT );
+  $container_desktop        = filter_var( shoestrap_getVariable( 'container_desktop' ), FILTER_SANITIZE_NUMBER_INT );
+  $container_large_desktop  = filter_var( shoestrap_getVariable( 'container_large_desktop' ), FILTER_SANITIZE_NUMBER_INT );
+  $gutter                   = filter_var( shoestrap_getVariable( 'layout_gutter' ), FILTER_SANITIZE_NUMBER_INT );
+
+  $screen_small     = ( $container_tablet + $gutter );
+  $screen_medium    = ( $container_desktop + $gutter );
+  $screen_large     = ( $container_large_desktop + $gutter );
+
   $navbar_height    = filter_var( shoestrap_getVariable( 'navbar_height' ), FILTER_SANITIZE_NUMBER_INT );
 
   // Calculate the gray shadows based on the body background.
@@ -331,8 +336,6 @@ function shoestrap_variables_less() {
 @input-height-base:              (@line-height-computed + (@padding-base-vertical * 2));
 @input-height-large:             (@line-height-computed + (@padding-large-vertical * 2));
 @input-height-small:             (@line-height-computed + (@padding-small-vertical * 2));
-
-@form-actions-bg:                 ' . $table_bg_hover . ';
 
 
 // Dropdowns
@@ -586,7 +589,7 @@ function shoestrap_variables_less() {
 // --------------------------------------------------
 
 // Tiny screen / phone
-@screen-tiny:                ' . $screen_tiny . 'px;
+@screen-tiny:                480px;
 @screen-phone:               @screen-tiny;
 
 // Small screen / tablet
@@ -604,6 +607,19 @@ function shoestrap_variables_less() {
 // Large screen / wide desktop
 @screen-large:               ' . $screen_large . 'px;
 @screen-large-desktop:       @screen-large;
+
+
+// Container sizes
+// --------------------------------------------------
+
+// Small screen / tablet
+@container-tablet:          ' . $container_tablet . 'px;
+
+// Medium screen / desktop
+@container-desktop:         ' . $container_desktop . 'px;
+
+// Large screen / wide desktop
+@container-large-desktop:   ' . $container_large_desktop . 'px;
 
 
 // Grid system
