@@ -306,14 +306,20 @@ a.toggle-nav {
   }
   &.style2 {
     li > a {
-      padding-top: (((@navbar-height - @line-height-computed) / 2) - 3);
+      padding-top: (((@navbar-height - @line-height-computed) / 2));
     }
     .active > a,
     .active > a:hover,
     .active > a:focus {
       background: @navbar-bg;
       border-top: 3px solid @brand-primary;
+      padding-top: (((@navbar-height - @line-height-computed) / 2) - 3);
     }
+    li ul li > a {
+      border-top: none !important;
+      padding-top: 0 !important;
+    }
+
   }
   &.style3 {
     border-top: 5px solid @brand-primary;

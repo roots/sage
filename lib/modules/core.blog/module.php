@@ -20,13 +20,40 @@ if ( !function_exists( 'shoestrap_module_blog_options' ) ) {
     );
 
     $of_options[] = array(
-      "name"      => __("Show BreadCrumbs", "shoestrap"),
-      "desc"      => __("Display Breadcrumbs. Default: OFF.", "shoestrap"),
-      "id"        => "breadcrumbs",
+      "name"      => __("Custom Blog Layout", "shoestrap"),
+      "desc"      => __("Set a default layout for your blob/post pages. Default: OFF.", "shoestrap"),
+      "id"        => "blog_layout_toggle",
       "std"       => 0,
       "type"      => "switch",
       "customizer"=> array(),
-    );
+    );   
+
+    $of_options[] = array(
+      "name"      => __("Comments on Blog", "shoestrap"),
+      "desc"      => __("Enable comments on the blog. Default: On.", "shoestrap"),
+      "id"        => "blog_comments_toggle",
+      "std"       => 1,
+      "type"      => "switch",
+      "customizer"=> array(),
+    ); 
+
+    $of_options[] = array(
+      "name"      => __("Blog Layout", "shoestrap"),
+      "desc"      => __("Override your default stylings. Choose between 1, 2 or 3 column layout.", "shoestrap"),
+      "id"        => "blog_layout",
+      "std"       => get_theme_mod('layout', 1),
+      "type"      => "images",
+      "fold"      => "blog_layout_toggle",
+      "customizer"=> array(),
+      "options"   => array(
+        0         => get_template_directory_uri() . SMOF_DIR . '/addons/assets/images/1c.png',
+        1         => get_template_directory_uri() . SMOF_DIR . '/addons/assets/images/2cr.png',
+        2         => get_template_directory_uri() . SMOF_DIR . '/addons/assets/images/2cl.png',
+        3         => get_template_directory_uri() . SMOF_DIR . '/addons/assets/images/3cl.png',
+        4         => get_template_directory_uri() . SMOF_DIR . '/addons/assets/images/3cr.png',
+        5         => get_template_directory_uri() . SMOF_DIR . '/addons/assets/images/3cm.png',
+      )
+    );    
 
     $of_options[] = array(
       "name"      => "",
@@ -117,3 +144,11 @@ if ( !function_exists( 'shoestrap_module_blog_options' ) ) {
 add_action( 'init','shoestrap_module_blog_options', 75 );
 
 include_once( dirname(__FILE__).'/functions.featured-image.php' );
+
+
+function shoestrap_core_blog_comments_toggle() {
+  if (!is_page() && !shoestrap_getVariable('blog_comments_toggle')) {
+    add_filter('get_comments_number', '__return_false', 10, 3);
+  }
+}
+add_action( 'init','shoestrap_core_blog_comments_toggle', 76 );

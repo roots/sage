@@ -5,7 +5,8 @@
  */
 function shoestrap_user_css() {
   $header_scripts = shoestrap_getVariable( 'user_css' );
-  echo '<style>' . $header_scripts . '</style>';
+  if (trim($header_scripts) != "")
+  	echo '<style id="core.advanced-user-css">' . $header_scripts . '</style>';
 }
 add_action( 'wp_head', 'shoestrap_user_css', 200 );
 
@@ -14,6 +15,7 @@ add_action( 'wp_head', 'shoestrap_user_css', 200 );
  */
 function shoestrap_user_js() {
   $footer_scripts = shoestrap_getVariable( 'user_js' );
-  echo '<script>' . $footer_scripts . '</script>';
+  if (trim($footer_scripts) != "")
+  	echo '<script id="core.advanced-user-js">' . $footer_scripts . '</script>';
 }
 add_action( 'wp_footer', 'shoestrap_user_js', 200 );

@@ -874,13 +874,11 @@ p.switch-options{ margin: 0; }
 	float: left;
 	width: 70px;
 	margin-left: 5px;
+	margin-top: 6px;
 	padding: 3px;
 }
 #of_container .controls .wp-color-result.wp-picker-open {
-top: -2px;
-}
-#of_container .controls .wp-picker-clear {
-margin-top: 0 !important;
+top: -3px;
 }
 #of_container #content .section-color .controls {
 width: 345px;

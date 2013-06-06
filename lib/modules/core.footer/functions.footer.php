@@ -7,7 +7,7 @@ function shoestrap_footer_css() {
   $rgb      = shoestrap_get_rgb($bg, true);
   $border   = shoestrap_getVariable( 'footer_border_top' );
 
-  $style = '<style>';
+  $style = '<style id="core.footer-css">';
   $style .= 'footer.content-info{';
   $style .= 'color:' . $cl . ';';
   if ( $opacity != 1 && $opacity != "" ) :

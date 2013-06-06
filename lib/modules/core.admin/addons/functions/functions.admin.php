@@ -38,14 +38,5 @@ function shoepress_optionsframework_admin_init_before($data) {
 }
 add_action('optionsframework_admin_init_before', 'shoepress_optionsframework_admin_init_before');
 
-// Gets the current values from SMOF, and if not there, grabs the defaults
-function shoestrap_getVariable($key) {
-  global $smof_details;
-  $value = get_theme_mod($key);
-  if ($value == "") {
-    $value = $smof_details[$key]['std'];
-  }
-  return $value;
-}
 
 ?>
