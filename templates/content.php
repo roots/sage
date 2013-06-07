@@ -13,6 +13,7 @@
 
     do_action( 'shoestrap_post_entry_summary' )
     ?>
+    <div class="clearfix"></div>
   </div>
   <?php if ( has_action( 'shoestrap_entry_footer' ) ) : ?>
   <footer>

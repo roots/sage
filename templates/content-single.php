@@ -8,6 +8,7 @@
       <?php do_action( 'shoestrap_before_the_content' ); ?>
       <?php the_content(); ?>
       <?php do_action( 'shoestrap_after_the_content' ); ?>
+      <div class="clearfix"></div>
     </div>
     <footer>
       <?php wp_link_pages(array('before' => '<nav class="page-nav"><p>' . __('Pages:', 'roots'), 'after' => '</p></nav>')); ?>
