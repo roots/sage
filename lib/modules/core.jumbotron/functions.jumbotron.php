@@ -73,12 +73,12 @@ function shoestrap_jumbotron_css() {
 
   if ( shoestrap_getVariable( 'jumbotron_background_image_toggle' ) == 1 && ( shoestrap_getVariable( 'jumbotron_background_custom_image' ) != "" || shoestrap_getVariable( 'jumbotron_background_image' ) != "" ) ) {
     if ( shoestrap_getVariable( 'jumbotron_background_image_position_toggle' ) == 0 ) {
-      if ( shoestrap_getVariable( 'jumbotron_background_fixed_toggle' ) == 1 ) {
-        $style .= "background-position: 50% 50%;";
-        $style .= "background-size: cover;";
-      } else {
-        $style .= "background-position: 50% 0%;";
-        $style .= "background-size: contain;";
+      $style .= "background-size: cover;";
+      $style .= "-webkit-background-size: cover;";
+      $style .= "-moz-background-size: cover;";
+      $style .= "-o-background-size: cover;";
+      $style .= "background-position: 50% 50%;";
+      if ( shoestrap_getVariable( 'jumbotron_background_fixed_toggle' ) == 0 ) {
         $style .= "background-repeat: no-repeat;";
       }
     } else { // Not fixed position, custom
