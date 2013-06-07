@@ -24,23 +24,21 @@ function shoestrap_footer_css() {
   
   $style .= '#copyright-bar { ';
     $style .= 'line-height: 30px;';
-    $style .= 'padding-left: 20px;';
   $style .= '}';
 
-  $style .= '#footer-social-bar { ';
-    $style .= 'padding-right: 20px;';
+  $style .= '#footer_social_bar { ';
     $style .= 'line-height: 30px;';
     $style .= 'font-size: 16px;';
     $style .= 'text-align: right;';
   $style .= '}';
 
-  $style .= '#footer-social-bar a { ';
-    $style .= 'margin-left: 15px;';
-
+  $style .= '#footer_social_bar a { ';
+    $style .= 'margin-left: 9px;';
+    $style .= 'padding: 3px;';
     $style .= 'color:' . $cl . ';';
   $style .= '}';
 
-  $style .= '#footer-social-bar a:hover, #footer-social-bar a:active { ';
+  $style .= '#footer_social_bar a:hover, #footer_social_bar a:active { ';
     $style .= 'color:' . $cl_brand . ' !important;';
     $style .= 'text-decoration:none;';
   $style .= '}';  
@@ -107,15 +105,12 @@ function shoestrap_footer_html() {
         <article class="<?php echo shoestrap_container_class(); ?>">
           <div id="copyright-bar" class="col col-lg-<?php echo $width; ?>"><?php echo $ftext; ?></div>
           <?php if ($social && count($networks) > 0) : ?>
-          <div id="footer-social-bar" class="col col-lg-<?php echo $social_width; ?>">
+          <div id="footer_social_bar" class="col col-lg-<?php echo $social_width; ?>">
           <?php 
             foreach ($networks as $network) {
               if ($network['url'] == "")
                 continue;
               ?>
-
-              
-
                 <a href="<?php echo $network['url']; ?>"<?php echo $blank;?> data-toggle="tooltip" data-placement="top" title="" data-original-title="Tooltip on top"><span class="glyphicon glyphicon-<?php echo $network['icon']; ?>"></span></a>
               <?php
             }
