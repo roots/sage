@@ -85,14 +85,14 @@ function shoestrap_section_class( $target, $echo = false ) {
  */
 function shoestrap_layout_css() {
   $layout = shoestrap_getVariable( 'layout' );
-  $style  = shoestrap_getVariable( 'site_style' );
+  $site_style  = shoestrap_getVariable( 'site_style' );
   $margin = shoestrap_getVariable( 'navbar_margin_top' );
 
-  echo '<style>';
+  echo '<style type="text/css" id="core.layout">';
   if ( $layout == 2 || $layout == 3 || $layout == 5 )
     echo 'div.main{float:right;}';
 
-  if ( $style == 'boxed' && $margin != 0 )
+  if ( $site_style == 'boxed' && $margin != 0 )
     echo '#boxed-container{margin-top:' . $margin . 'px;}';
 
   echo '</style>';
