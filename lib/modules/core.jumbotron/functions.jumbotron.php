@@ -96,7 +96,7 @@ function shoestrap_jumbotron_css() {
       }
       $position = " background-position: top $position;";
     }
-  } 
+  }
 
   $style .= $image . $repeat . $position;
   if ( $center == 1 )
@@ -105,9 +105,9 @@ function shoestrap_jumbotron_css() {
   if ( $border['width'] > 0 )
     $style .= 'border-bottom:' . $border['width'] . 'px ' . $border['style'] . ' ' . $border['color'] . ';';
 
-  
+
   echo '<style type="text/css" id="jumbotron">';
-  echo '.jumbotron {' . trim( $style ) . '}';
+  echo '.jumbotron, .before-main-wrapper {' . trim( $style ) . '}';
   echo $color ? ".jumbotron{background: $color;}" : '';
   echo '</style>';
 }
