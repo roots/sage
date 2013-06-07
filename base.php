@@ -1,7 +1,7 @@
 <?php get_template_part('templates/head'); ?>
 <body <?php body_class(); ?>>
 
-  <!--[if lt IE 7]><div class="alert">Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</div><![endif]-->
+  <!--[if lt IE 7]><div class="alert">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</div><![endif]-->
 
   <?php if ( shoestrap_getVariable( 'site_style' ) == 'boxed' ) :?><div class="container boxed-container"><?php endif; ?>
   <?php
