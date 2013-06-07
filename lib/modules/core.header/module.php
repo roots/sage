@@ -244,3 +244,4 @@ add_action( 'init', 'shoestrap_module_header_options', 65 );
 
 include_once( dirname(__FILE__).'/functions.navbar.php' );
 include_once( dirname(__FILE__).'/functions.header.php' );
+include_once( dirname(__FILE__).'/functions.slide-down.php' );
