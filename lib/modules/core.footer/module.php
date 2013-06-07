@@ -48,9 +48,9 @@ if ( !function_exists( 'shoestrap_module_footer_options' ) ) {
 
     $of_options[] = array(
       "name"      => __("Footer Text", "shoestrap"),
-      "desc"      => __("The text that will be displayed in your footer. Default: your site's name.", "shoestrap"),
+      "desc"      => __("The text that will be displayed in your footer. You can use [year] and [sitename] and they will be replaced appropriately. Default: &copy; [year] [sitename]", "shoestrap"),
       "id"        => "footer_text",
-      "std"       => get_bloginfo( 'name' ),
+      "std"       => '&copy; [year] [sitename]',
       "customizer"=> array(),
       "type"      => "textarea"
     );
@@ -65,6 +65,39 @@ if ( !function_exists( 'shoestrap_module_footer_options' ) ) {
         'style'   => 'solid',
         'color'   => '#4B4C4D',
       )
+    );
+
+    $of_options[] = array(
+      "name"      => __("Show social icons in footer", "shoestrap"),
+      "desc"      => __("Show social icons in the footer. Default: On.", "shoestrap"),
+      "id"        => "footer_social_toggle",
+      "std"       => 0,
+      "customizer"=> array(),
+      "type"      => "switch"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Footer social links column width", "shoestrap"),
+      "desc"      => __("You can customize the width of the footer social links area. The footer text width will be adjusted accordingly. Default: 5.", "shoestrap"),
+      "id"        => "footer_social_width",
+      "fold"      => 'footer_social_toggle',
+      "std"       => 6,
+      "min"       => 3,
+      "step"      => 1,
+      "max"       => 10,
+      "customizer"=> array(),
+      "type"      => "sliderui"
+    );    
+
+        
+    $of_options[] = array(
+      "name"      => __("Footer social icons open new window", "shoestrap"),
+      "desc"      => __("Social icons in footer will open a new window. Default: On.", "shoestrap"),
+      "id"        => "footer_social_new_window_toggle",
+      "fold"      => 'footer_social_toggle',
+      "std"       => 1,
+      "customizer"=> array(),
+      "type"      => "switch"
     );
 
     do_action( 'shoestrap_module_footer_options_modifier' );

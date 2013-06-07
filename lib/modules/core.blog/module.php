@@ -29,15 +29,6 @@ if ( !function_exists( 'shoestrap_module_blog_options' ) ) {
     );   
 
     $of_options[] = array(
-      "name"      => __("Comments on Blog", "shoestrap"),
-      "desc"      => __("Enable comments on the blog. Default: On.", "shoestrap"),
-      "id"        => "blog_comments_toggle",
-      "std"       => 1,
-      "type"      => "switch",
-      "customizer"=> array(),
-    ); 
-
-    $of_options[] = array(
       "name"      => __("Blog Layout", "shoestrap"),
       "desc"      => __("Override your default stylings. Choose between 1, 2 or 3 column layout.", "shoestrap"),
       "id"        => "blog_layout",
@@ -53,7 +44,16 @@ if ( !function_exists( 'shoestrap_module_blog_options' ) ) {
         4         => get_template_directory_uri() . SMOF_DIR . '/addons/assets/images/3cr.png',
         5         => get_template_directory_uri() . SMOF_DIR . '/addons/assets/images/3cm.png',
       )
-    );    
+    );        
+
+    $of_options[] = array(
+      "name"      => __("Comments on Blog", "shoestrap"),
+      "desc"      => __("Enable comments on the blog. Default: On.", "shoestrap"),
+      "id"        => "blog_comments_toggle",
+      "std"       => 1,
+      "type"      => "switch",
+      "customizer"=> array(),
+    ); 
 
     $of_options[] = array(
       "name"      => "",

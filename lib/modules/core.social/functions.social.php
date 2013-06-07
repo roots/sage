@@ -1,6 +1,6 @@
 <?php
 
-function shoestrap_navbar_social_links() {
+function shoestrap_get_social_links() {
   // An array of the available networks
   $networks   = array();
 
@@ -28,9 +28,16 @@ function shoestrap_navbar_social_links() {
   $networks[] = array( 'url' => shoestrap_getVariable( 'yahoo_link' ),        'icon' => 'yahoo',      'fullname' => 'Yahoo' );
   $networks[] = array( 'url' => shoestrap_getVariable( 'youtube_link' ),      'icon' => 'youtube',    'fullname' => 'YouTube' );
 
+  return $networks;
+}
+
+function shoestrap_navbar_social_links() {
+  
+  // Get all the social networks the user is using
+  $networks = shoestrap_get_social_links();
+
   // The base class for icons that will be used
   $baseclass  = 'glyphicon glyphicon-';
-
 
   // Build the content
   $content = '';

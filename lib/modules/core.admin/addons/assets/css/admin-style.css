@@ -1,5 +1,5 @@
 .smof_footer_info {
-	display: none;
+	display: none !important;
 }
 #of_container .button-primary {
 	background-color: #21759B;

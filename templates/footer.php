@@ -7,5 +7,5 @@
     </div>
   </footer>
 <?php } else { do_action( 'shoestrap_footer_override' ); } ?>
-
+<?php do_action( 'shoestrap_after_footer' );?>
 <?php wp_footer();
