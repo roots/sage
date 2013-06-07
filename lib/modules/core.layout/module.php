@@ -102,7 +102,7 @@ if ( !function_exists( 'shoestrap_module_layout_options' ) ) {
       "off"        => "Below Header",
       "type"      => "switch",
       "customizer"=> array(),
-    );        
+    );
 
     $of_options[] = array(
       "name"      => __("Primary Sidebar Width", "shoestrap"),
@@ -137,28 +137,28 @@ if ( !function_exists( 'shoestrap_module_layout_options' ) ) {
     );
 
     $of_options[] = array(
-      "name"      => __("Tiny Screen Width", "shoestrap"),
-      "desc"      => __("The width of Tiny screens. This is used to calculate the responsive layout breakpoints. Suitable for phones. Default: 480px", "shoestrap"),
-      "id"        => "layout_screen_tiny",
+      "name"      => __("Tablet Container Width", "shoestrap"),
+      "desc"      => __("The width of Tablet screens. This is used to calculate the responsive layout breakpoints. Suitable for phones. Default: 728px", "shoestrap"),
+      "id"        => "container_tablet",
       "fold"      => "custom_grid",
-      "std"       => 480,
-      "min"       => 320,
+      "std"       => 728,
+      "min"       => 620,
       "step"      => 2,
-      "max"       => 1600,
+      "max"       => 2100,
       "advanced"  => true,
       "less"      => true,
       "type"      => "sliderui"
     );
 
     $of_options[] = array(
-      "name"      => __("Small Screen Width", "shoestrap"),
-      "desc"      => __("The width of Small screens. This is used to calculate the responsive layout breakpoints. Suitable for tablets and small screens. Default: 768px", "shoestrap"),
-      "id"        => "layout_screen_small",
+      "name"      => __("Desktop Container Width", "shoestrap"),
+      "desc"      => __("The width of normal screens. This is used to calculate the responsive layout breakpoints. Suitable for medium & normal screens. Default: 940px", "shoestrap"),
+      "id"        => "container_desktop",
       "fold"      => "custom_grid",
-      "std"       => 768,
-      "min"       => 320,
+      "std"       => 940,
+      "min"       => 620,
       "step"      => 2,
-      "max"       => 1600,
+      "max"       => 2100,
       "advanced"  => true,
       "less"      => true,
       "type"      => "sliderui",
@@ -166,28 +166,14 @@ if ( !function_exists( 'shoestrap_module_layout_options' ) ) {
     );
 
     $of_options[] = array(
-      "name"      => __("Medium Screen Width", "shoestrap"),
-      "desc"      => __("The width of Normal screens. This is used to calculate the responsive layout breakpoints. Suitable for medium screens. Default: 992px", "shoestrap"),
-      "id"        => "layout_screen_medium",
+      "name"      => __("Large Desktop Container Width", "shoestrap"),
+      "desc"      => __("The width of Large Desktop screens. This is used to calculate the responsive layout breakpoints. Suitable for large screens. Default: 1170px", "shoestrap"),
+      "id"        => "container_large_desktop",
       "fold"      => "custom_grid",
-      "std"       => 992,
-      "min"       => 320,
+      "std"       => 1170,
+      "min"       => 620,
       "step"      => 2,
-      "max"       => 1600,
-      "advanced"  => true,
-      "less"      => true,
-      "type"      => "sliderui"
-    );
-
-    $of_options[] = array(
-      "name"      => __("Large Screen Width", "shoestrap"),
-      "desc"      => __("The width of Large screens. This is used to calculate the responsive layout breakpoints. Suitable for large screens. Default: 1200px", "shoestrap"),
-      "id"        => "layout_screen_large",
-      "fold"      => "custom_grid",
-      "std"       => 1200,
-      "min"       => 320,
-      "step"      => 2,
-      "max"       => 1600,
+      "max"       => 2100,
       "advanced"  => true,
       "less"      => true,
       "type"      => "sliderui"

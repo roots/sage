@@ -5152,13 +5152,18 @@ fieldset[disabled] #social-sharing .shareme .box {
   border-bottom: 3px solid #428bca;
 }
 .navbar.style2 li > a {
-  padding-top: 12px;
+  padding-top: 15px;
 }
 .navbar.style2 .active > a,
 .navbar.style2 .active > a:hover,
 .navbar.style2 .active > a:focus {
   background: #eeeeee;
   border-top: 3px solid #428bca;
+  padding-top: 12px;
+}
+.navbar.style2 li ul li > a {
+  border-top: none !important;
+  padding-top: 0 !important;
 }
 .navbar.style3 {
   border-top: 5px solid #428bca;
