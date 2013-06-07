@@ -125,6 +125,16 @@ if ( !function_exists('shoestrap_module_advanced_options' ) ) {
       "type"      => "textarea"
     );
 
+    $of_options[] = array(
+      "name"      => __("Debug Hooks", "shoestrap"),
+      "desc"      => __("Turn on very useful debug hooks. These will only be visible to admins. Default: Off.", "shoestrap"),
+      "id"        => "debug_hooks",
+      "std"       => 0,
+      "customizer"=> array(),
+      "type"      => "switch"
+    );
+
+
     do_action( 'shoestrap_module_advanced_options_modifier' );
 
     $smof_details = array();
@@ -136,3 +146,11 @@ if ( !function_exists('shoestrap_module_advanced_options' ) ) {
 add_action( 'init', 'shoestrap_module_advanced_options', 95 );
 
 include_once( dirname(__FILE__).'/functions.advanced.php' );
+include_once( dirname(__FILE__).'/debug-hooks.php' );
+
+function shoestrap_debug_hooks() {
+  if (is_admin() && shoestrap_getVariable( 'debug_hooks') == 1) {
+    list_hooks();
+  }
+}
+add_action( 'shoestrap_after_the_content', 'shoestrap_debug_hooks' );
