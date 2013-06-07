@@ -50,7 +50,7 @@ if ( !function_exists( 'shoestrap_module_header_options' ) ) {
       "desc"      => __("You can use an alternative menu style for your NavBars. OFF by default. ", "shoestrap"),
       "id"        => "navbar_style",
       "fold"      => "navbar_toggle",
-      "std"       => 0,
+      "std"       => 'default',
       "type"      => "select",
       "customizer"=> array(),
       "options"   => array(
@@ -152,16 +152,23 @@ if ( !function_exists( 'shoestrap_module_header_options' ) ) {
     $of_options[] = array(
       "name"      => __("NavBar Positioning", "shoestrap"),
       "desc"      => __("Using this option you can set the navbar to be fixed to top, fixed to bottom or normal. When you're using one of the \"fixed\" options, the navbar will stay fixed on the top or bottom of the page. Default: Normal", "shoestrap"),
-      "id"        => "navbar_position",
+      "id"        => "navbar_fixed",
       "fold"      => "navbar_toggle",
       "std"       => 0,
-      "type"      => "select",
-      "customizer"=> array(),
-      "options"   => array(
-        'normal'      => __( 'Normal', 'shoestrap' ),
-        'fixedtop'    => __( 'Fixed to Top', 'shoestrap' ),
-        'fixedbottom' => __( 'Fixed to Bottom', 'shoestrap' ),
-      )
+      "on"        => __("Fixed", "shoestrap"),
+      "off"       => __("Scroll", "shoestrap"),
+      "type"      => "switch"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Fixed NavBar Position", "shoestrap"),
+      "desc"      => __("Using this option you can set the navbar to be fixed to top, fixed to bottom or normal. When you're using one of the \"fixed\" options, the navbar will stay fixed on the top or bottom of the page. Default: Normal", "shoestrap"),
+      "id"        => "navbar_fixed_position",
+      "fold"      => "navbar_toggle",
+      "std"       => 0,
+      "on"        => __("Bottom", "shoestrap"),
+      "off"       => __("Top", "shoestrap"),
+      "type"      => "switch"
     );
 
     $of_options[] = array(

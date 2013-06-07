@@ -29,14 +29,18 @@ function shoestrap_navbar_searchbox() {
 add_action( 'shoestrap_post_main_nav', 'shoestrap_navbar_searchbox', 11 );
 
 function shoestrap_navbar_class() {
-  $pos    = shoestrap_getVariable( 'navbar_position' );
-  $style  = shoestrap_getVariable( 'navbar_style' );
+  $fixed    = shoestrap_getVariable( 'navbar_fixed' );
+  $fixedpos = shoestrap_getVariable( 'navbar_fixed_position' );
+  $style    = shoestrap_getVariable( 'navbar_style' );
 
-  if ( $pos == 'fixedtop' )
-    $class = 'navbar navbar-fixed-top';
-  elseif ( $pos == 'fixedbottom' )
-    $class = 'navbar navbar-fixed-bottom';
-  else $class = 'navbar navbar-static-top';
+  if ( $fixed != 1 ) {
+    $class = 'navbar navbar-static-top';
+  } else {
+    if ( $fixedpos == 1 )
+      $class = 'navbar navbar-fixed-bottom';
+    else
+      $class = 'navbar navbar-fixed-top';
+  }
 
   return $class . ' ' . $style;
 }
