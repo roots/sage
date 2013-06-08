@@ -149,8 +149,39 @@ include_once( dirname(__FILE__).'/functions.advanced.php' );
 include_once( dirname(__FILE__).'/debug-hooks.php' );
 
 function shoestrap_debug_hooks() {
-  if (is_admin() && shoestrap_getVariable( 'debug_hooks') == 1) {
-    list_hooks();
+  global $smof_data;
+  if (current_user_can( 'administrator' ) && shoestrap_getVariable( 'debug_hooks') == 1) {
+    ?>
+      <div class="panel wiget-inner clearfix">
+        <div class="panel-heading">Debug Information</div>
+        <ul class="nav nav-tabs" id="debugTabs">
+          <li class="active"><a href="#SMOFData">SMOF Data</a></li>
+          <li><a href="#hooksdebug">Wordpress Hooks</a></li>
+        </ul>
+        <div class="tab-content">
+          <div class="tab-pane active" id="SMOFData">
+            <?php 
+              $smof_data_r = print_r($smof_data, true);
+              $smof_data_r_sans = htmlspecialchars($smof_data_r, ENT_QUOTES);
+              echo "<pre>".$smof_data_r_sans."<pre>";
+             ?>
+          </div>
+          <div class="tab-pane" id="hooksdebug"><?php echo list_hooks(); ?></div>
+        </div>
+      </div>
+      <script>
+
+    /** Fire up jQuery - let's dance! 
+     */
+        jQuery(document).ready(function($){      
+          $('#debugTabs a').click(function (e) {
+            e.preventDefault();
+            $(this).tab('show');
+          })
+        })
+      </script>
+    <?php
+
   }
 }
 add_action( 'shoestrap_after_the_content', 'shoestrap_debug_hooks' );
