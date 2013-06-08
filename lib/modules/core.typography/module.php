@@ -58,6 +58,58 @@ if ( !function_exists( 'shoestrap_module_typography_options' ) ) {
       "std"       => "'Helvetica Neue', Helvetica, Arial, sans-serif",
       "type"      => "text",
     );
+
+    $of_options[] = array(  "name"    => "Typography",
+        "desc"    => "Typography option with each property can be called individually.",
+        "id"    => "typography_sans_serif2",
+        "std"     => array('face'=>'Helvetica','size' => '12px','style' => 'bold italic', 'color'=>'black'),
+        "type"    => "typography"
+    );
+
+
+    $of_options[] = array(
+      "name"      => __("Base Font Family", "shoestrap"),
+      "desc"      => __("The main font for your site.", "shoestrap"),
+      "id"        => "base_font_family",
+      "std"       => "Open Sans",
+      "preview"   => array(
+              "text" => "This is my preview text!", //this is the text from preview box
+              "size" => "30px" //this is the text size from preview box
+      ),
+      "type"    => "select_google_font",
+      "options"   => array(
+        "Open Sans" => "Open Sans",
+        "Loved by the King" => "Loved By the King",
+        "Tangerine" => "Tangerine",
+        "Terminal Dosis" => "Terminal Dosis"
+      )    
+    );  
+
+         $of_options[] = array(
+      "name"      => __("Base Font Family", "shoestrap"),
+      "desc"      => __("The main font for your site.", "shoestrap"),
+      "id"        => "base_font_family_test",
+      "std"       => "Open Sans",
+      "preview"   => array(
+              "text" => "This is my preview text!", //this is the text from preview box
+              "size" => "30px" //this is the text size from preview box
+      ),
+      "type"    => "select_google_font_hybrid",
+      "options"   => array(
+        "Open Sans" => "Open Sans",
+        "Loved by the King" => "Loved By the King",
+        "Tangerine" => "Tangerine",
+        "Terminal Dosis" => "Terminal Dosis"
+      ), 
+      "standard"   => array(
+        "Open Sans" => "Open Sans",
+        "Loved by the King" => "Loved By the King",
+        "Tangerine" => "Tangerine",
+        "Terminal Dosis" => "Terminal Dosis"
+      )     
+    ); 
+
+
     do_action( 'shoestrap_module_typography_options_modifier' );
 
     $smof_details = array();
@@ -69,3 +121,4 @@ if ( !function_exists( 'shoestrap_module_typography_options' ) ) {
 add_action( 'init', 'shoestrap_module_typography_options', 80 );
 
 include_once( dirname(__FILE__).'/functions.typography.php' );
+add_action( 'optionsframework_machine_loop', 'shoestrap_add_typography_class_case' );
