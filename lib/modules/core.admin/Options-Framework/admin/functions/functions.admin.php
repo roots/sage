@@ -81,6 +81,7 @@ function of_get_header_classes_array()
  * @return array
  */
 function of_get_options($key = null, $data = null) {
+	global $smof_data;
 
 	do_action('of_get_options_before', array(
 		'key'=>$key, 'data'=>$data
@@ -88,9 +89,14 @@ function of_get_options($key = null, $data = null) {
 	if ($key != null) { // Get one specific value
 		$data = get_theme_mod($key, $data);
 	} else { // Get all values
-		$data = get_theme_mods();		
+		$data = get_theme_mods();	
 	}
 	$data = apply_filters('of_options_after_load', $data);
+	if ($key == null) {
+		$smof_data = $data;
+	} else {
+		$smof_data[$key] = $data;
+	}
 	do_action('of_option_setup_before', array(
 		'key'=>$key, 'data'=>$data
 	));
@@ -141,8 +147,8 @@ function of_save_options($data, $key = null) {
  * @since forever
  */
 
+
+
 $data = of_get_options();
-$smof_data = of_get_options();
 if (!isset($smof_details))
 	$smof_details = array();
-$data = $smof_data;
