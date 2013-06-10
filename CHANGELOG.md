@@ -1,4 +1,15 @@
 ### HEAD
+* Change media directory from `/assets/` to `/media/`
+* Update to Bootstrap 2.3.2
+* Update to Google Universal Analytics
+* Update to jQuery 1.10.1
+* Show author display name for author archives
+* Add Serbian translation
+* Remove post tags from templates
+* Remove TinyMCE valid elements tweaks (no longer necessary)
+* Remove additional widget classes
+* Move `/assets/css/less/` to `/assets/less/`
+* Add wrapper templates filter
 * Fix relative external URLs issue
 
 ### 6.4.0: May 1st, 2013

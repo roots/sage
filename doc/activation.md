@@ -17,7 +17,7 @@ Change permalink structure to `/%postname%/`. This is normally handled from the 
 
 ### Change uploads folder
 
-Change uploads folder to `/assets/` instead of `/wp-content/uploads/`. This is normally handled from the Media settings.
+Change uploads folder to `/media/` instead of `/wp-content/uploads/`.
 
 ### Create navigation menu
 

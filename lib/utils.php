@@ -34,6 +34,7 @@ class Roots_Wrapping {
       array_unshift($templates, sprintf('base-%s.php', self::$base));
     }
 
+    $templates = apply_filters('roots_wrap_base', $templates);
     return locate_template($templates);
   }
 
@@ -44,6 +45,7 @@ class Roots_Wrapping {
       array_unshift($templates, sprintf('templates/sidebar-%s.php', self::$base));
     }
 
+    $templates = apply_filters('roots_wrap_sidebar', $templates);
     return locate_template($templates);
   }
 }
@@ -72,7 +74,8 @@ function roots_title() {
     } elseif (is_year()) {
       printf(__('Yearly Archives: %s', 'roots'), get_the_date('Y'));
     } elseif (is_author()) {
-      printf(__('Author Archives: %s', 'roots'), get_the_author());
+      $author = get_queried_object();
+      printf(__('Author Archives: %s', 'roots'), $author->display_name);
     } else {
       single_cat_title();
     }

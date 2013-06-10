@@ -99,8 +99,8 @@ add_filter('wp_title', 'roots_wp_title', 10);
  */
 function roots_clean_style_tag($input) {
   preg_match_all("!<link rel='stylesheet'\s?(id='[^']+')?\s+href='(.*)' type='text/css' media='(.*)' />!", $input, $matches);
-  // Only display media if it's print
-  $media = $matches[3][0] === 'print' ? ' media="print"' : '';
+  // Only display media if it is meaningful
+  $media = $matches[3][0] !== '' && $matches[3][0] !== 'all' ? ' media="' . $matches[3][0] . '"' : '';
   return '<link rel="stylesheet" href="' . $matches[2][0] . '"' . $media . '>' . "\n";
 }
 add_filter('style_loader_tag', 'roots_clean_style_tag');
@@ -184,7 +184,6 @@ function roots_embed_wrap($cache, $url, $attr = '', $post_ID = '') {
   return '<div class="entry-content-asset">' . $cache . '</div>';
 }
 add_filter('embed_oembed_html', 'roots_embed_wrap', 10, 4);
-add_filter('embed_googlevideo', 'roots_embed_wrap', 10, 2);
 
 /**
  * Add class="thumbnail" to attachment items
@@ -378,61 +377,6 @@ function roots_remove_default_description($bloginfo) {
   return ($bloginfo === $default_tagline) ? '' : $bloginfo;
 }
 add_filter('get_bloginfo_rss', 'roots_remove_default_description');
-
-/**
- * Allow more tags in TinyMCE including <iframe> and <script>
- */
-function roots_change_mce_options($options) {
-  $ext = 'pre[id|name|class|style],iframe[align|longdesc|name|width|height|frameborder|scrolling|marginheight|marginwidth|src],script[charset|defer|language|src|type]';
-
-  if (isset($initArray['extended_valid_elements'])) {
-    $options['extended_valid_elements'] .= ',' . $ext;
-  } else {
-    $options['extended_valid_elements'] = $ext;
-  }
-
-  return $options;
-}
-add_filter('tiny_mce_before_init', 'roots_change_mce_options');
-
-/**
- * Add additional classes onto widgets
- *
- * @link http://wordpress.org/support/topic/how-to-first-and-last-css-classes-for-sidebar-widgets
- */
-function roots_widget_first_last_classes($params) {
-  global $my_widget_num;
-
-  $this_id = $params[0]['id'];
-  $arr_registered_widgets = wp_get_sidebars_widgets();
-
-  if (!$my_widget_num) {
-    $my_widget_num = array();
-  }
-
-  if (!isset($arr_registered_widgets[$this_id]) || !is_array($arr_registered_widgets[$this_id])) {
-    return $params;
-  }
-
-  if (isset($my_widget_num[$this_id])) {
-    $my_widget_num[$this_id] ++;
-  } else {
-    $my_widget_num[$this_id] = 1;
-  }
-
-  $class = 'class="widget-' . $my_widget_num[$this_id] . ' ';
-
-  if ($my_widget_num[$this_id] == 1) {
-    $class .= 'widget-first ';
-  } elseif ($my_widget_num[$this_id] == count($arr_registered_widgets[$this_id])) {
-    $class .= 'widget-last ';
-  }
-
-  $params[0]['before_widget'] = preg_replace('/class=\"/', "$class", $params[0]['before_widget'], 1);
-
-  return $params;
-}
-add_filter('dynamic_sidebar_params', 'roots_widget_first_last_classes');
 
 /**
  * Redirects search results from /?s=query to /search/query/, converts %20 to +

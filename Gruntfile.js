@@ -21,9 +21,9 @@ module.exports = function(grunt) {
         },
         files: {
           'assets/css/main.min.css': [
-            'assets/css/less/bootstrap/bootstrap.less',
-            'assets/css/less/bootstrap/responsive.less',
-            'assets/css/less/app.less'
+            'assets/less/bootstrap/bootstrap.less',
+            'assets/less/bootstrap/responsive.less',
+            'assets/less/app.less'
           ]
         }
       }
@@ -53,8 +53,8 @@ module.exports = function(grunt) {
     watch: {
       less: {
         files: [
-          'assets/css/less/*.less',
-          'assets/css/less/bootstrap/*.less'
+          'assets/less/*.less',
+          'assets/less/bootstrap/*.less'
         ],
         tasks: ['recess', 'version']
       },
