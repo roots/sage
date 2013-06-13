@@ -1,6 +1,5 @@
 <?php
 
-
 /*
  * Gets the rgb value of the $hex color.
  * Returns an array.
@@ -116,3 +115,12 @@ function shoestrap_getVariable($key) {
   }
   return $value;
 }
+
+
+function shoestrap_remove_admin_bar() {
+  if (shoestrap_getVariable( 'advanced_wordpress_disable_admin_bar_toggle' ) == 0)
+    return;
+
+  add_filter( 'show_admin_bar', '__return_false' );
+}
+add_action( 'show_admin_bar', 'shoestrap_remove_admin_bar' );

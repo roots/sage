@@ -301,7 +301,7 @@ a.toggle-nav {
     .active > a:hover,
     .active > a:focus {
       background: @navbar-bg;
-      border-bottom: 3px solid @brand-primary;
+      border-bottom: 5px solid @brand-primary;
     }
   }
   &.style2 {
@@ -364,11 +364,13 @@ a.toggle-nav {
 }
 
 .navbar a.navbar-brand {
+  max-width: inherit !important;
+
   &.logo {
     height: @navbar-height;
     img {
       max-height: (@navbar-height - 10);
-      width: auto;
+      max-width: inherit !important;
     }
   }
   &.text {

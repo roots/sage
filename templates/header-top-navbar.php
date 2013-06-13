@@ -1,3 +1,4 @@
+<?php do_action( 'shoestrap_pre_navbar' ); ?>
 <header id="banner" class="topnavbar <?php echo shoestrap_navbar_class(); ?>" role="banner">
   <div class="<?php echo shoestrap_container_class(); ?>">
   <a class="btn navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">

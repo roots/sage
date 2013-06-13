@@ -15,16 +15,19 @@ function shoestrap_background_css( ) {
     $color = '#' . str_replace( '#', '', shoestrap_getVariable( 'color_body_bg' ) );
   }
 
-  if ( shoestrap_getVariable( 'background_color_opacity' ) != 1 ) {
+  //$style = ($color) ? "background-color: $color;" : '';
+
+  if ( shoestrap_getVariable( 'color_body_bg_opacity' ) != 1 ) {
     $rgb      = shoestrap_get_rgb( $color, true );
-    $opacity  = ( intval( shoestrap_getVariable( 'background_color_opacity' ) ) )/100;
-    $color    = 'rgba(' . $rgb . ',' . $opacity . ')';
+    $opacity  = ( intval( shoestrap_getVariable( 'color_body_bg_opacity' ) ) )/100;
+    $color    = 'rgb(' . $rgb . ')';
+    $color   .= 'rgba(' . $rgb . ',' . $opacity . ')';
   }
 
   if ( ! $background && ! $color )
     return;
 
-  $style = $color ? "background-color: $color;" : '';
+
 
   if ( shoestrap_getVariable( 'background_fixed_toggle' ) == 1 ) {
     $style .= "background-attachment: fixed;";

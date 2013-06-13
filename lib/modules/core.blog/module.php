@@ -148,7 +148,13 @@ include_once( dirname(__FILE__).'/functions.featured-image.php' );
 
 function shoestrap_core_blog_comments_toggle() {
   if (!is_page() && !shoestrap_getVariable('blog_comments_toggle')) {
+    remove_post_type_support( 'post', 'comments' );
+    remove_post_type_support( 'post', 'trackbacks' );
+    
     add_filter('get_comments_number', '__return_false', 10, 3);
   }
 }
-add_action( 'init','shoestrap_core_blog_comments_toggle', 76 );
+
+//add_filter( 'comments_template', 'remove_comments_template_on_blog', 11 );
+
+add_action( 'init','shoestrap_core_blog_comments_toggle', 1 );

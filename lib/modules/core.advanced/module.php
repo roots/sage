@@ -20,6 +20,15 @@ if ( !function_exists('shoestrap_module_advanced_options' ) ) {
     );
 
     $of_options[] = array(
+      "name"      => __("Allow shortcodes in widgets", "shoestrap"),
+      "desc"      => __("This option allows shortcodes within widgets. Default: On.", "shoestrap"),
+      "id"        => "enable_widget_shortcodes",
+      "less"      => true,
+      "std"       => 0,
+      "type"      => "switch",
+    );    
+
+    $of_options[] = array(
       "name"      => __("No gradients - \"Flat\" look.", "shoestrap"),
       "desc"      => __("This option will disable all gradients in your site, giving it a cleaner look. Default: OFF.", "shoestrap"),
       "id"        => "general_flat",

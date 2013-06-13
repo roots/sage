@@ -107,7 +107,7 @@ function shoestrap_jumbotron_css() {
 
 
   echo '<style type="text/css" id="jumbotron">';
-  echo '.jumbotron, .before-main-wrapper {' . trim( $style ) . '}';
+  echo '.jumbotron {' . trim( $style ) . '}';
   echo $color ? ".jumbotron{background: $color;}" : '';
   echo '</style>';
 }

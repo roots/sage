@@ -109,6 +109,19 @@ if ( !function_exists( 'shoestrap_module_header_options' ) ) {
     );
 
     $of_options[] = array(
+      "name"      => __("NavBar Background Opacity", "shoestrap"),
+      "desc"      => __("Pick a background opacity for the NavBar. Default: 100%.", "shoestrap"),
+      "id"        => "navbar_bg_opacity",
+      "fold"      => "navbar_toggle",
+      "std"       => 100,
+      "min"       => 0,
+      "step"      => 1,
+      "max"       => 100,
+      "less"      => true,
+      "type"      => "sliderui"
+    );
+
+    $of_options[] = array(
       "name"      => __("NavBar Text Color", "shoestrap"),
       "desc"      => __("Pick a color for the NavBar text. This applies to menu items and the Sitename (if no logo is uploaded). Default: #777777.", "shoestrap"),
       "id"        => "navbar_color",
@@ -184,6 +197,99 @@ if ( !function_exists( 'shoestrap_module_header_options' ) ) {
       "type"      => "sliderui"
     );
 
+    $of_options[] = array(
+      "name"      => "",
+      "desc"      => "",
+      "id"        => "help9",
+      "std"       => "<h3 style=\"margin: 0 0 10px;\">Secondary Navbar</h3>
+                      <p>Sometimes you need an extra nav spot or social bar. That's where the secondary navbar comes into play.</p>",
+      "icon"      => true,
+      "type"      => "info"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Enable the secondary navbar", "shoestrap"),
+      "desc"      => __("Turn this ON to display branding (Sitename or Logo)on your Header. Default: ON", "shoestrap"),
+      "id"        => "secondary_navbar_toggle",
+      "customizer"=> array(),
+      "std"       => 0,
+      "type"      => "switch"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Secondary Navbar Background Color", "shoestrap"),
+      "desc"      => __("Select the background color for your header. Default: #EEEEEE.", "shoestrap"),
+      "id"        => "navbar_secondary_bg",
+      "std"       => "#EEEEEE",
+      "customizer"=> array(),
+      'fold'      => 'secondary_navbar_toggle',
+      "type"      => "color"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Secondary Navbar Background Opacity", "shoestrap"),
+      "desc"      => __("Pick a background opacity for the NavBar. Default: 100%.", "shoestrap"),
+      "id"        => "navbar_secondary_opacity",
+      "fold"      => "secondary_navbar_toggle",
+      "std"       => 100,
+      "min"       => 0,
+      "step"      => 1,
+      "max"       => 100,
+      "less"      => true,
+      "type"      => "sliderui"
+    );    
+
+    $of_options[] = array(
+      "name"      => __("Secondary Navbar Text Color", "shoestrap"),
+      "desc"      => __("Select the background color for your header. Default: #EEEEEE.", "shoestrap"),
+      "id"        => "navbar_secondary_color",
+      "std"       => "#333",
+      "customizer"=> array(),
+      'fold'      => 'secondary_navbar_toggle',
+      "type"      => "color"
+    );
+
+    $of_options[] = array(  
+      "name"    => __("Secondary Navbar Text", "shoestrap"),
+      "desc"    => __("Sometime you just need something a little more custom. Here you can enter a string of text to display in your secondary navbar.", "shoestrap"),
+      "id"      => "navbar_secondary_text",
+      "std"     => "",
+      "type"    => "text"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Secondary Navbar - Left Side", "shoestrap"),
+      "desc"      => __("You can use an alternative menu style for your NavBars. OFF by default. ", "shoestrap"),
+      "id"        => "navbar_secondary_left",
+      "fold"      => "navbar_toggle",
+      "std"       => 'menu',
+      "type"      => "select",
+      "customizer"=> array(),
+      "options"   => array(
+        'none' => __( "None", "shoestrap"),
+        'social'  => __( "Social Links", "shoestrap"),
+        'menu'  => __( "Secondary Menu", "shoestrap"),
+        'text'  => __( "Secondary Navbar Textbox", "shoestrap"),
+      )
+    );
+
+    $of_options[] = array(
+      "name"      => __("Secondary Navbar - Right Side", "shoestrap"),
+      "desc"      => __("You can use an alternative menu style for your NavBars. OFF by default. ", "shoestrap"),
+      "id"        => "navbar_secondary_right",
+      "fold"      => "navbar_toggle",
+      "std"       => 'social',
+      "type"      => "select",
+      "customizer"=> array(),
+      "options"   => array(
+        'none' => __( "None", "shoestrap"),
+        'social'  => __( "Social Links", "shoestrap"),
+        'menu'  => __( "Secondary Menu", "shoestrap"),
+        'text'  => __( "Secondary Navbar Textbox", "shoestrap"),
+      )
+    );    
+
+
     $url = admin_url( 'widgets.php' );
     $of_options[] = array(
       "name"      => "",
@@ -224,6 +330,18 @@ if ( !function_exists( 'shoestrap_module_header_options' ) ) {
     );
 
     $of_options[] = array(
+      "name"      => __("Header Background Opacity", "shoestrap"),
+      "desc"      => __("Select the background opacity for your header. Default: 100%.", "shoestrap"),
+      "id"        => "header_bg_opacity",
+      "std"       => 100,
+      "min"       => 0,
+      "step"      => 1,
+      "max"       => 100,
+      "less"      => true,
+      "type"      => "sliderui"
+    );
+
+    $of_options[] = array(
       "name"      => __("Header Text Color", "shoestrap"),
       "desc"      => __("Select the text color for your header. Default: #333333.", "shoestrap"),
       "id"        => "header_color",
@@ -231,6 +349,8 @@ if ( !function_exists( 'shoestrap_module_header_options' ) ) {
       "customizer"=> array(),
       "type"      => "color"
     );
+
+
 
     do_action( 'shoestrap_module_header_options_modifier' );
 
@@ -243,5 +363,6 @@ if ( !function_exists( 'shoestrap_module_header_options' ) ) {
 add_action( 'init', 'shoestrap_module_header_options', 65 );
 
 include_once( dirname(__FILE__).'/functions.navbar.php' );
+include_once( dirname(__FILE__).'/functions.secondary.navbar.php' );
 include_once( dirname(__FILE__).'/functions.header.php' );
 include_once( dirname(__FILE__).'/functions.slide-down.php' );

@@ -15,7 +15,7 @@ function shoestrap_nav_class_pull() {
 function shoestrap_navbar_searchbox() {
   $show_searchbox = shoestrap_getVariable( 'navbar_search' );
   if ( $show_searchbox == '1' ) { ?>
-    <ul class="pull-right nav nav-collapse"><li>
+    <ul class="pull-right nav nav-collapse clearfix"><li>
     <?php do_action('shoestrap_pre_searchform'); ?>
     <form role="search" method="get" id="searchform" class="form-search navbar-search" action="<?php echo home_url('/'); ?>">
       <label class="hide" for="s"><?php _e('Search for:', 'shoestrap'); ?></label>
@@ -45,23 +45,27 @@ function shoestrap_navbar_class() {
   return $class . ' ' . $style;
 }
 
-function shoestrap_secondary_navbar() {
-  if (has_nav_menu('secondary_navigation')) : ?>
-    <div class="navbar">
-      <div class="<?php echo shoestrap_container_class(); ?>">
-        <a class="btn navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </a>
-        <?php wp_nav_menu( array( 'theme_location' => 'secondary_navigation', 'menu_class' => 'nav navbar-nav' ) ); ?>
-      </div>
-    </div>
-  <?php endif;
-}
-add_action( 'shoestrap_pre_content', 'shoestrap_secondary_navbar' );
-
 function shoestrap_navbar_css() {
+  $opacity = (intval(shoestrap_getVariable( 'navbar_bg_opacity' )))/100;
+
+  if ( $opacity != 1 && $opacity != "" ) {
+    $bg = shoestrap_getVariable( 'navbar_bg');
+    $rgb = shoestrap_get_rgb($bg, true);
+    $style = '<style id="core.navbar">';
+      $style .= '.navbar{';
+        if ($opacity != 1 && $opacity != "") {
+          $style .= 'background: rgb('.$rgb.');';
+          $style .= 'background: rgba('.$rgb.', '.$opacity.');';
+        } else {
+          $style .= 'background: '.$bg.';';
+        }
+      $style .= '}';
+    $style .= '</style>';
+
+    echo $style;
+  }
+
+
   if ( shoestrap_getVariable( 'logo_top_margin' ) != 1 )
     $style = '<style>.navbar a.navbar-brand.logo {margin-top:' . shoestrap_getVariable( 'logo_top_margin' ) . 'px; }</style>';
 
