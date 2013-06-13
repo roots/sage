@@ -129,7 +129,10 @@ function of_save_options($data, $key = null) {
 		set_theme_mod($key, $data);
 	} else { // Update all values in $data
 		foreach ( $data as $k=>$v ) {
+
 			if (!isset($smof_data[$k]) || $smof_data[$k] != $v) { // Only write to the DB when we need to
+				//echo "here";
+				//echo $k.'-'.$v;
 				set_theme_mod($k, $v);
 			}
 	  	}
