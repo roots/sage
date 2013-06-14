@@ -21,6 +21,7 @@ function shoestrap_add_typography_class_case($array) {
           }
   
       $output .= '</select></div>';
+
     
     //}
     
@@ -107,13 +108,17 @@ function shoestrap_add_typography_class_case($array) {
       }     
       $output .= '<option value="" style="text-align: center;" />-------- GOOGLE WEB FONTS --------</option>';
 
-    
+      $google = "false";
       foreach ($gfonts as $i => $face) {
+        if ($i == $typography_stored['face']) {
+          $google = "true";
+        } 
         $output .= '<option data-details="'.urlencode(json_encode($face)).'" data-google="true" value="'.$i.'" ' . selected($typography_stored['face'], $i, false) . '>'. $i .'</option>';
       } 
 
       $output .= '</select></div>';
 
+      $output .= '<input type="hidden" class="typography-google" name="'.$value['id'].'[google]" value="'.$google.'" />';
     
     /* Font Color */
     //if(isset($typography_stored['color'])) {
@@ -161,6 +166,44 @@ function shoestrap_module_typography_js()
 add_action( 'of_load_only_after', 'shoestrap_module_typography_js' );
 
 
+function shoestrap_module_typography_googlefont_links() {
+  $font_base            = shoestrap_getVariable( 'font_base' );
+  $font_navbar          = shoestrap_getVariable( 'font_navbar' );
+  $font_brand           = shoestrap_getVariable( 'font_brand' );
+  $font_heading         = shoestrap_getVariable( 'font_heading' );
+  if (shoestrap_getVariable( 'font_heading_custom' )) {
+    $font_h1 = shoestrap_getVariable( 'font_h1' );
+    $font_h2 = shoestrap_getVariable( 'font_h1' );
+    $font_h3 = shoestrap_getVariable( 'font_h1' );
+    $font_h4 = shoestrap_getVariable( 'font_h1' );
+    $font_h5 = shoestrap_getVariable( 'font_h1' );
+    $font_h6 = shoestrap_getVariable( 'font_h1' );
+  }
+  if ($font_base['google'] == "true") {
+    echo getGoogleScript($font_base);
+  }
+  if ($font_navbar['google'] == "true") {
+    echo getGoogleScript($font_navbar);
+  }
+  if ($font_brand['google'] == "true") {
+    echo getGoogleScript($font_brand);
+  }
+  if (shoestrap_getVariable( 'font_heading_custom' )) {
+    echo getGoogleScript($font_h1);
+    echo getGoogleScript($font_h2);
+    echo getGoogleScript($font_h3);
+    echo getGoogleScript($font_h4);
+    echo getGoogleScript($font_h5);
+    echo getGoogleScript($font_h6);
+  } else {
+    echo getGoogleScript($font_heading);
+  }
+}
+add_action( 'wp_head', 'shoestrap_module_typography_googlefont_links' );
 
+
+function getGoogleScript($font) {
+  return '<link href="http://fonts.googleapis.com/css?family='.$font['face'].':'.str_replace('-','',$font['style']).'&subset='.$font['script'].'" rel="stylesheet" type="text/css" class="base_font">';
+}
 
 

@@ -91,7 +91,7 @@ if ( !function_exists( 'shoestrap_module_typography_options' ) ) {
       "desc"      => __("The main font for your site.", "shoestrap"),
       "id"        => "font_base",
       'less'      => true,
-      "std"       => array('face'=>'Arial, Helvetica, sans-serif, ','size' => '14px', 'style' => 'normal', 'color'=>'#333333'),
+      "std"       => array('face'=>'Arial, Helvetica, sans-serif, ','size' => '14px', 'style' => 'normal', 'color'=>'#333333', 'google'=>'false'),
       "preview"   => array(
                         "text" => "This is my preview text!", //this is the text from preview box
                         "size" => "30px" //this is the text size from preview box
@@ -104,7 +104,7 @@ if ( !function_exists( 'shoestrap_module_typography_options' ) ) {
       "desc"      => __("The main font for your site.", "shoestrap"),
       "id"        => "font_navbar",
       'less'      => true,
-      "std"       => array('face'=>'Arial, Helvetica, sans-serif, ','size' => '14px', 'style' => 'normal', 'color'=>'#333333'),
+      "std"       => array('face'=>'Arial, Helvetica, sans-serif, ','size' => '14px', 'style' => 'normal', 'color'=>'#333333', 'google'=>'false'),
       "preview"   => array(
                         "text" => "This is my preview text!", //this is the text from preview box
                         "size" => "30px" //this is the text size from preview box
@@ -117,7 +117,7 @@ if ( !function_exists( 'shoestrap_module_typography_options' ) ) {
       "desc"      => __("The main font for your site.", "shoestrap"),
       "id"        => "font_brand",
       'less'      => true,
-      "std"       => array('face'=>'Arial, Helvetica, sans-serif, ','size' => '14px', 'style' => 'normal', 'color'=>'#333333'),
+      "std"       => array('face'=>'Arial, Helvetica, sans-serif, ','size' => '14px', 'style' => 'normal', 'color'=>'#333333', 'google'=>'false'),
       "preview"   => array(
                         "text" => "This is my preview text!", //this is the text from preview box
                         "size" => "30px" //this is the text size from preview box
@@ -131,7 +131,7 @@ if ( !function_exists( 'shoestrap_module_typography_options' ) ) {
       "desc"      => __("The main font for your site.", "shoestrap"),
       "id"        => "font_heading",
       'less'      => true,
-      "std"       => array('face'=>'Arial, Helvetica, sans-serif, ','size' => '14px', 'style' => 'normal', 'color'=>'#333333'),
+      "std"       => array('face'=>'Arial, Helvetica, sans-serif, ','size' => '14px', 'style' => 'normal', 'color'=>'#333333', 'google'=>'false'),
       "preview"   => array(
                         "text" => "This is my preview text!", //this is the text from preview box
                         "size" => "30px" //this is the text size from preview box
@@ -153,7 +153,7 @@ if ( !function_exists( 'shoestrap_module_typography_options' ) ) {
       "desc"      => __("The main font for your site.", "shoestrap"),
       "id"        => "font_h1",
       'less'      => true,
-      "std"       => array('face'=>'Arial, Helvetica, sans-serif, ','size' => '14px', 'style' => 'normal', 'color'=>'#333333'),
+      "std"       => array('face'=>'Arial, Helvetica, sans-serif, ','size' => '14px', 'style' => 'normal', 'color'=>'#333333', 'google'=>'false'),
       "preview"   => array(
                         "text" => "This is my preview text!", //this is the text from preview box
                         "size" => "30px" //this is the text size from preview box
@@ -167,7 +167,7 @@ if ( !function_exists( 'shoestrap_module_typography_options' ) ) {
       "desc"      => __("The main font for your site.", "shoestrap"),
       "id"        => "font_h2",
       'less'      => true,
-      "std"       => array('face'=>'Arial, Helvetica, sans-serif, ','size' => '14px', 'style' => 'normal', 'color'=>'#333333'),
+      "std"       => array('face'=>'Arial, Helvetica, sans-serif, ','size' => '14px', 'style' => 'normal', 'color'=>'#333333', 'google'=>'false'),
       "preview"   => array(
                         "text" => "This is my preview text!", //this is the text from preview box
                         "size" => "30px" //this is the text size from preview box
@@ -180,7 +180,7 @@ if ( !function_exists( 'shoestrap_module_typography_options' ) ) {
       "desc"      => __("The main font for your site.", "shoestrap"),
       "id"        => "font_h3",
       'less'      => true,
-      "std"       => array('face'=>'Arial, Helvetica, sans-serif, ','size' => '14px', 'style' => 'normal', 'color'=>'#333333'),
+      "std"       => array('face'=>'Arial, Helvetica, sans-serif, ','size' => '14px', 'style' => 'normal', 'color'=>'#333333', 'google'=>'false'),
       "preview"   => array(
                         "text" => "This is my preview text!", //this is the text from preview box
                         "size" => "30px" //this is the text size from preview box
@@ -193,7 +193,7 @@ if ( !function_exists( 'shoestrap_module_typography_options' ) ) {
       "desc"      => __("The main font for your site.", "shoestrap"),
       "id"        => "font_h4",
       'less'      => true,
-      "std"       => array('face'=>'Arial, Helvetica, sans-serif, ','size' => '14px', 'style' => 'normal', 'color'=>'#333333'),
+      "std"       => array('face'=>'Arial, Helvetica, sans-serif, ','size' => '14px', 'style' => 'normal', 'color'=>'#333333', 'google'=>'false'),
       "preview"   => array(
                         "text" => "This is my preview text!", //this is the text from preview box
                         "size" => "30px" //this is the text size from preview box
@@ -206,7 +206,7 @@ if ( !function_exists( 'shoestrap_module_typography_options' ) ) {
       "desc"      => __("The main font for your site.", "shoestrap"),
       "id"        => "font_h5",
       'less'      => true,
-      "std"       => array('face'=>'Arial, Helvetica, sans-serif, ','size' => '14px', 'style' => 'normal', 'color'=>'#333333'),
+      "std"       => array('face'=>'Arial, Helvetica, sans-serif, ','size' => '14px', 'style' => 'normal', 'color'=>'#333333', 'google'=>'false'),
       "preview"   => array(
                         "text" => "This is my preview text!", //this is the text from preview box
                         "size" => "30px" //this is the text size from preview box
@@ -219,7 +219,7 @@ if ( !function_exists( 'shoestrap_module_typography_options' ) ) {
       "desc"      => __("The main font for your site.", "shoestrap"),
       "id"        => "font_h6",
       'less'      => true,
-      "std"       => array('face'=>'Arial, Helvetica, sans-serif, ','size' => '14px', 'style' => 'normal', 'color'=>'#333333'),
+      "std"       => array('face'=>'Arial, Helvetica, sans-serif, ','size' => '14px', 'style' => 'normal', 'color'=>'#333333', 'google'=>'false'),
       "preview"   => array(
                         "text" => "This is my preview text!", //this is the text from preview box
                         "size" => "30px" //this is the text size from preview box

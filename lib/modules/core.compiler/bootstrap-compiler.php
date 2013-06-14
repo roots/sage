@@ -146,6 +146,27 @@ function shoestrap_variables_less() {
   $jumbotron_bg     = '#' . str_replace( '#', '', shoestrap_getVariable( 'jumbotron_bg' ) );
   $jumbotron_color  = '#' . str_replace( '#', '', shoestrap_getVariable( 'jumbotron_color' ) );
 
+
+  $font_base            = shoestrap_getVariable( 'font_base' );
+  $font_navbar          = shoestrap_getVariable( 'font_navbar' );
+  $font_brand           = shoestrap_getVariable( 'font_brand' );
+  $font_heading         = shoestrap_getVariable( 'font_heading' );
+  if (shoestrap_getVariable( 'font_heading_custom' )) {
+    $font_h1 = shoestrap_getVariable( 'font_h1' );
+    $font_h2 = shoestrap_getVariable( 'font_h1' );
+    $font_h3 = shoestrap_getVariable( 'font_h1' );
+    $font_h4 = shoestrap_getVariable( 'font_h1' );
+    $font_h5 = shoestrap_getVariable( 'font_h1' );
+    $font_h6 = shoestrap_getVariable( 'font_h1' );
+  } else {
+    $font_h1 = $font_heading;
+    $font_h2 = $font_heading;
+    $font_h3 = $font_heading;
+    $font_h4 = $font_heading;
+    $font_h5 = $font_heading;
+    $font_h6 = $font_heading;
+  }
+
   $container_tablet         = filter_var( shoestrap_getVariable( 'container_tablet' ), FILTER_SANITIZE_NUMBER_INT );
   $container_desktop        = filter_var( shoestrap_getVariable( 'container_desktop' ), FILTER_SANITIZE_NUMBER_INT );
   $container_large_desktop  = filter_var( shoestrap_getVariable( 'container_large_desktop' ), FILTER_SANITIZE_NUMBER_INT );
@@ -204,6 +225,7 @@ function shoestrap_variables_less() {
     $navbar_brand_hover_color   = 'lighten(@navbar-link-color, 10%)';
   }
 
+
   $variables = '//
 // Variables
 // --------------------------------------------------
@@ -249,9 +271,9 @@ function shoestrap_variables_less() {
 @font-family-sans-serif:  ' . $sans_serif . ';
 @font-family-serif:       Georgia, "Times New Roman", Times, serif;
 @font-family-monospace:   Monaco, Menlo, Consolas, "Courier New", monospace;
-@font-family-base:        @font-family-sans-serif;
+@font-family-base:        '.$font_base['face'].';
 
-@font-size-base:          ' . $font_size_base . 'px;
+@font-size-base:          ' . $font_base['size'] . ';
 @font-size-large:         ceil(@font-size-base * 1.25); // ~18px
 @font-size-small:         ceil(@font-size-base * 0.85); // ~12px
 @font-size-mini:          ceil(@font-size-base * 0.75); // ~11px
