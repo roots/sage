@@ -131,12 +131,12 @@ function shoestrap_variables_less() {
 
   $body_bg          = '#' . str_replace( '#', '', shoestrap_getVariable( 'color_body_bg' ) );
   $brand_primary    = '#' . str_replace( '#', '', shoestrap_getVariable( 'color_brand_primary' ) );
+  $brand_secondary  = '#' . str_replace( '#', '', shoestrap_getVariable( 'color_brand_secondary' ) );
   $brand_success    = '#' . str_replace( '#', '', shoestrap_getVariable( 'color_brand_success' ) );
   $brand_warning    = '#' . str_replace( '#', '', shoestrap_getVariable( 'color_brand_warning' ) );
   $brand_danger     = '#' . str_replace( '#', '', shoestrap_getVariable( 'color_brand_danger' ) );
   $brand_info       = '#' . str_replace( '#', '', shoestrap_getVariable( 'color_brand_info' ) );
   $text_color       = '#' . str_replace( '#', '', shoestrap_getVariable( 'color_text' ) );
-  $link_color       = '#' . str_replace( '#', '', shoestrap_getVariable( 'color_links' ) );
   $sans_serif       = shoestrap_getVariable( 'typography_sans_serif' );
   $font_size_base   = filter_var( shoestrap_getVariable( 'typography_font_size_base' ), FILTER_SANITIZE_NUMBER_INT );
   $border_radius    = filter_var( shoestrap_getVariable( 'general_border_radius' ), FILTER_SANITIZE_NUMBER_INT );
@@ -194,12 +194,12 @@ function shoestrap_variables_less() {
     $gray_lighter = 'darken(#fff, 93.5%)';
   }
 
-  if ( shoestrap_get_brightness( $link_color ) > 50 )
+  if ( shoestrap_get_brightness( $brand_secondary ) > 50 )
     $link_hover_color = 'darken(@link-color, 15%)';
   else
     $link_hover_color = 'lighten(@link-color, 15%)';
 
-  if ( shoestrap_get_brightness( $link_color ) > 50 ) {
+  if ( shoestrap_get_brightness( $brand_secondary ) > 50 ) {
     $table_bg_accent      = 'darken(@body-bg, 2.5%)';
     $table_bg_hover       = 'darken(@body-bg, 4%)';
     $table_border_color   = 'darken(@body-bg, 13.35%)';
@@ -248,6 +248,7 @@ function shoestrap_variables_less() {
 // -------------------------
 
 @brand-primary:         ' . $brand_primary . ';
+@brand-secondary:       ' . $brand_secondary . ';
 @brand-success:         ' . $brand_success . ';
 @brand-warning:         ' . $brand_warning . ';
 @brand-danger:          ' . $brand_danger . ';
@@ -262,7 +263,7 @@ function shoestrap_variables_less() {
 // Links
 // -------------------------
 
-@link-color:            ' . $link_color . ';
+@link-color:            ' . $brand_secondary . ';
 @link-hover-color:      ' . $link_hover_color . ';
 
 // Typography

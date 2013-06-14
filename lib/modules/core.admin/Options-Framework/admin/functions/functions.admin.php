@@ -131,6 +131,13 @@ function of_save_options($data, $key = null) {
 		foreach ( $data as $k=>$v ) {
 			if (!isset($smof_data[$k]) || $smof_data[$k] != $v) { // Only write to the DB when we need to
 				set_theme_mod($k, $v);
+			} else if (is_array($v)) {
+				foreach ($v as $key=>$val) {
+					if ($key != $k && $v[$key] == $val) {
+						set_theme_mod($k, $v);
+						break;
+					}
+				}
 			}
 	  	}
 	}

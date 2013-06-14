@@ -91,14 +91,14 @@ if ( !function_exists( 'shoestrap_module_branding_options' ) ) {
     );
 
     $of_options[] = array(
-      "name"      => __("Link Color", "shoestrap"),
-      "desc"      => __("Pick a color for your site's links. Default: #428bca.", "shoestrap"),
-      "id"        => "color_links",
+      "name"      => __("Brand Colors: Secondary", "shoestrap"),
+      "desc"      => __("Select your secondary branding color. Also referred to as an accent color. This will affect various areas of your site, including the color of your primary buttons, the background of some elements and many more. Default: #428bca.", "shoestrap"),
+      "id"        => "color_brand_secondary",
       "std"       => "#428bca",
       "less"      => true,
       "customizer"=> array(),
       "type"      => "color"
-    );    
+    );      
 
     $of_options[] = array(
       "name"      => __("Brand Colors: Success", "shoestrap"),
