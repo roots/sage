@@ -66,6 +66,12 @@ if ( !function_exists( 'shoestrap_module_typography_options' ) ) {
         "type"    => "typography"
     );
 
+    $of_options[] = array(  "name"    => "Typography",
+        "desc"    => "Typography option with each property can be called individually.",
+        "id"    => "typography_sans_serif23",
+        "std"     => array('face'=>'Helvetica','size' => '12px','style' => 'bold italic', 'color'=>'black'),
+        "type"    => "typography"
+    );
 
     $of_options[] = array(
       "name"      => __("Base Font Family", "shoestrap"),

@@ -723,6 +723,7 @@ z-index: 2;
 padding-left: 6px;
 position:absolute;
 left:0;
+overflow: hidden;
 }
 
 #of_container .select_wrapper .select {
@@ -776,7 +777,7 @@ z-index: 4;
 	float: left;
 	padding: 10px;
 	font-size: 10pt;
-	width: 318px;
+	width: 570px;
 	height: auto;
 	margin: 0 0 10px 0;
 	line-height: 1.2;

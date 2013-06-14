@@ -80,7 +80,11 @@ class Options_Machine {
 				'options'	=> $options,
 				'smof_data'	=> $smof_data,
 			));
-		$output .= $smof_output;
+		if ($smof_output != "") {
+			$output .= $smof_output;
+			$smof_output = "";
+		}
+		
 		
 
 		foreach ($options as $value) {
@@ -693,7 +697,10 @@ class Options_Machine {
 					'output'	=> $output,
 					'value'		=> $value
 				));
-			$output .= $smof_output;
+			if ($smof_output != "") {
+				$output .= $smof_output;
+				$smof_output = "";
+			}
 			
 			//description of each option
 			if ( $value['type'] != 'heading') { 
@@ -723,7 +730,10 @@ class Options_Machine {
 					'output'		=> $output,
 					'value'			=> $value
 				));
-	    $output .= $smof_output;
+		if ($smof_output != "") {
+			$output .= $smof_output;
+			$smof_output = "";
+		}
 	    
 	    return array($output,$menu,$defaults);
 	    
