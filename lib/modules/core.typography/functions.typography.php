@@ -183,10 +183,10 @@ function shoestrap_add_typography_class_case($array) {
 
       foreach ($faces as $i=>$face) {
         $output .= '<option data-details="'.urlencode(json_encode(
-          array('variants'=>array('normal'=>'Normal',
+          array('normal'=>'Normal',
               'italic'=>'Italic',
               'bold'=>'Bold',
-              'bold italic'=>'Bold Italic'))
+              'bold italic'=>'Bold Italic')
           )).'" value="'. $i .'" ' . selected($typography_stored['face'], $i, false) . '>'. $face .'</option>';
       }     
       $output .= '<option value="" style="text-align: center;" />-------- GOOGLE WEB FONTS --------</option>';
