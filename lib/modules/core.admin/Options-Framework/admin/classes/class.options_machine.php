@@ -236,8 +236,7 @@ class Options_Machine {
 				case "color":
 					$default_color = '';
 					if ( isset($value['std']) ) {
-						if ( $smof_data[$value['id']] !=  $value['std'] )
-							$default_color = ' data-default-color="' .$value['std'] . '" ';
+						$default_color = ' data-default-color="' .$value['std'] . '" ';
 					}
 					$output .= '<input name="' . $value['id'] . '" id="' . $value['id'] . '" class="of-color"  type="text" value="' . $smof_data[$value['id']] . '"' . $default_color .' />';
 		 	

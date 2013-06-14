@@ -95,24 +95,12 @@ if ( !function_exists( 'shoestrap_module_typography_options' ) ) {
       "name"      => __("Base Font Family", "shoestrap"),
       "desc"      => __("The main font for your site.", "shoestrap"),
       "id"        => "base_font_family_test",
-      "std"       => "Open Sans",
+      "std"     => array('face'=>'Helvetica','size' => '12px','style' => 'bold italic', 'color'=>'#000000'),
       "preview"   => array(
               "text" => "This is my preview text!", //this is the text from preview box
               "size" => "30px" //this is the text size from preview box
       ),
-      "type"    => "select_google_font_hybrid",
-      "options"   => array(
-        "Open Sans" => "Open Sans",
-        "Loved by the King" => "Loved By the King",
-        "Tangerine" => "Tangerine",
-        "Terminal Dosis" => "Terminal Dosis"
-      ), 
-      "standard"   => array(
-        "Open Sans" => "Open Sans",
-        "Loved by the King" => "Loved By the King",
-        "Tangerine" => "Tangerine",
-        "Terminal Dosis" => "Terminal Dosis"
-      )     
+      "type"    => "select_google_font_hybrid",   
     ); 
 
 

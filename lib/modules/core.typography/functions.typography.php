@@ -203,7 +203,7 @@ function shoestrap_add_typography_class_case($array) {
     /* Font Color */
     //if(isset($typography_stored['color'])) {
       $output .= '<div id="' . $value['id'] . '_color_picker" class="colorSelector typography-color" style="float: right;"><div style="background-color: '.$typography_stored['color'].'"></div></div>';
-      $output .= '<input class="of-color of-typography of-typography-color google_font_hybrid_value" original-title="Font color" name="'.$value['id'].'[color]" id="'. $value['id'] .'_color" type="text" value="'. $typography_stored['color'] .'" />';
+      $output .= '<input data-default-color="'.$value['std']['color'].'" class="of-color of-typography of-typography-color google_font_hybrid_value" original-title="Font color" name="'.$value['id'].'[color]" id="'. $value['id'] .'_color" type="text" value="'. $typography_stored['color'] .'" />';
     //}
 
     
