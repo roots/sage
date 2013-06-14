@@ -91,6 +91,16 @@ if ( !function_exists( 'shoestrap_module_branding_options' ) ) {
     );
 
     $of_options[] = array(
+      "name"      => __("Link Color", "shoestrap"),
+      "desc"      => __("Pick a color for your site's links. Default: #428bca.", "shoestrap"),
+      "id"        => "color_links",
+      "std"       => "#428bca",
+      "less"      => true,
+      "customizer"=> array(),
+      "type"      => "color"
+    );    
+
+    $of_options[] = array(
       "name"      => __("Brand Colors: Success", "shoestrap"),
       "desc"      => __("Select your branding color for success messages etc. Default: #5cb85c.", "shoestrap"),
       "id"        => "color_brand_success",
