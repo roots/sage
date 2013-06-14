@@ -182,13 +182,12 @@ function shoestrap_add_typography_class_case($array) {
       );  
 
       foreach ($faces as $i=>$face) {
-        $output .= '<option data-details="'.urlencode(json_encode(
-          array('variants'=>array(
-            array('id'=>'normal', 'name'=>'Normal'),
-            array('id'=>'italic', 'name'=>'Italic'),
-            array('id'=>'bold', 'name'=>'Bold'),
-            array('id'=>'bold italic', 'name'=>'Bold Italic'),
-              ))
+        $output .= '<option data-google="false" data-details="'.urlencode(json_encode(
+          array('normal'=>'Normal',
+                'italic'=>'Italic',
+                'bold'=>'Bold',
+                'bold-italic'=>'Bold Italic',
+              )
           )).'" value="'. $i .'" ' . selected($typography_stored['face'], $i, false) . '>'. $face .'</option>';
       }     
       $output .= '<option value="" style="text-align: center;" />-------- GOOGLE WEB FONTS --------</option>';
@@ -204,7 +203,7 @@ function shoestrap_add_typography_class_case($array) {
     /* Font Color */
     //if(isset($typography_stored['color'])) {
       $output .= '<div id="' . $value['id'] . '_color_picker" class="colorSelector typography-color" style="float: right;"><div style="background-color: '.$typography_stored['color'].'"></div></div>';
-      $output .= '<input class="of-color of-typography of-typography-color" original-title="Font color" name="'.$value['id'].'[color]" id="'. $value['id'] .'_color" type="text" value="'. $typography_stored['color'] .'" />';
+      $output .= '<input class="of-color of-typography of-typography-color google_font_hybrid_value" original-title="Font color" name="'.$value['id'].'[color]" id="'. $value['id'] .'_color" type="text" value="'. $typography_stored['color'] .'" />';
     //}
 
     
