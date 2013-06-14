@@ -235,7 +235,6 @@ function shoestrap_typography_css() {
   echo '#of_container p.google_font_preview {width: 570px !important;}';
   echo '</style>';
 }
-}
 add_action( 'of_style_only_after', 'shoestrap_typography_css' );
 
 
