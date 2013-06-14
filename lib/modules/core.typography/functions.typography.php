@@ -232,7 +232,9 @@ function shoestrap_typography_css() {
   echo '<style type="text/css" id="core.typography">';
   echo '#of_container .section-select_google_font_hybrid .typography-script{width:130px !important;margin-right: 0;}';
   echo '#of_container .section-select_google_font_hybrid .typography-style {width:125px !important;}';
+  echo '#of_container p.google_font_preview {width: 570px !important;}';
   echo '</style>';
+}
 }
 add_action( 'of_style_only_after', 'shoestrap_typography_css' );
 
