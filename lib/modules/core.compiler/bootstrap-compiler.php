@@ -142,20 +142,65 @@ function shoestrap_variables_less() {
   $font_brand           = shoestrap_getVariable( 'font_brand' );
   $font_heading         = shoestrap_getVariable( 'font_heading' );
 
-  if (shoestrap_getVariable( 'font_heading_custom' )) {
-    $font_h1 = shoestrap_getVariable( 'font_h1' );
-    $font_h2 = shoestrap_getVariable( 'font_h1' );
-    $font_h3 = shoestrap_getVariable( 'font_h1' );
-    $font_h4 = shoestrap_getVariable( 'font_h1' );
-    $font_h5 = shoestrap_getVariable( 'font_h1' );
-    $font_h6 = shoestrap_getVariable( 'font_h1' );
+  $font_h1 = shoestrap_getVariable( 'font_h1' );
+  $font_h2 = shoestrap_getVariable( 'font_h1' );
+  $font_h3 = shoestrap_getVariable( 'font_h1' );
+  $font_h4 = shoestrap_getVariable( 'font_h1' );
+  $font_h5 = shoestrap_getVariable( 'font_h1' );
+  $font_h6 = shoestrap_getVariable( 'font_h1' );
+
+  if ( shoestrap_getVariable( 'font_heading_custom' ) ) {
+
+    $font_h1_face   = $font_h1['face'];
+    $font_h1_size   = $font_h1['size'];
+    $font_h1_weight = $font_h1['style'];
+
+    $font_h2_face   = $font_h2['face'];
+    $font_h2_size   = $font_h2['size'];
+    $font_h2_weight = $font_h2['style'];
+
+    $font_h3_face   = $font_h3['face'];
+    $font_h3_size   = $font_h3['size'];
+    $font_h3_weight = $font_h3['style'];
+
+    $font_h4_face   = $font_h4['face'];
+    $font_h4_size   = $font_h4['size'];
+    $font_h4_weight = $font_h4['style'];
+
+    $font_h5_face   = $font_h5['face'];
+    $font_h5_size   = $font_h5['size'];
+    $font_h5_weight = $font_h5['style'];
+
+    $font_h6_face   = $font_h6['face'];
+    $font_h6_size   = $font_h6['size'];
+    $font_h6_weight = $font_h6['style'];
+
   } else {
-    $font_h1 = $font_heading;
-    $font_h2 = $font_heading;
-    $font_h3 = $font_heading;
-    $font_h4 = $font_heading;
-    $font_h5 = $font_heading;
-    $font_h6 = $font_heading;
+
+    $font_h1_face   = '@font-family-base';
+    $font_h1_size   = 'ceil(@font-size-base * 2.70)';
+    $font_h1_weight = '@headings-font-weight';
+
+    $font_h2_face   = '@font-family-base';
+    $font_h2_size   = 'ceil(@font-size-base * 2.25)';
+    $font_h2_weight = '@headings-font-weight';
+
+    $font_h3_face   = '@font-family-base';
+    $font_h3_size   = 'ceil(@font-size-base * 1.70)';
+    $font_h3_weight = '@headings-font-weight';
+
+    $font_h4_face   = '@font-family-base';
+    $font_h4_size   = 'ceil(@font-size-base * 1.25)';
+    $font_h4_weight = '@headings-font-weight';
+
+    $font_h5_face   = '@font-family-base';
+    $font_h5_size   = '@font-size-base';
+    $font_h5_weight = '@headings-font-weight';
+
+    $font_h6_face   = '@font-family-base';
+    $font_h6_size   = 'ceil(@font-size-base * 0.85)';
+    $font_h6_weight = '@headings-font-weight';
+
   }
 
   $text_color       = '#' . str_replace( '#', '', $font_base['color'] );
@@ -656,6 +701,41 @@ function shoestrap_variables_less() {
 @grid-gutter-width:         ' . $gutter . 'px;
 // Point at which the navbar stops collapsing
 @grid-float-breakpoint:     @screen-tablet;
+
+
+// Shoestrap-specific variables
+// --------------------------------------------------
+
+// H1
+@heading-h1-face:         ' . $font_h1_face . ';
+@heading-h1-size:         ' . $font_h1_size . ';
+@heading-h1-weight:       ' . $font_h1_weight . ';
+
+// H2
+@heading-h2-face:         ' . $font_h2_face . ';
+@heading-h2-size:         ' . $font_h2_size . ';
+@heading-h2-weight:       ' . $font_h2_weight . ';
+
+// H3
+@heading-h3-face:         ' . $font_h3_face . ';
+@heading-h3-size:         ' . $font_h3_size . ';
+@heading-h3-weight:       ' . $font_h3_weight . ';
+
+// H4
+@heading-h4-face:         ' . $font_h4_face . ';
+@heading-h4-size:         ' . $font_h4_size . ';
+@heading-h4-weight:       ' . $font_h4_weight . ';
+
+// H5
+@heading-h5-face:         ' . $font_h5_face . ';
+@heading-h5-size:         ' . $font_h5_size . ';
+@heading-h5-weight:       ' . $font_h5_weight . ';
+
+// H6
+@heading-h6-face:         ' . $font_h6_face . ';
+@heading-h6-size:         ' . $font_h6_size . ';
+@heading-h6-weight:       ' . $font_h6_weight . ';
+
 ';
 
   return $variables;

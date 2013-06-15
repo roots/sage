@@ -5234,3 +5234,39 @@ fieldset[disabled] #social-sharing .shareme .box {
   color: rgba(255,255,255,0.9);
   width: auto;
 }
+h1,
+.h1 {
+  font-size: 38px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 500;
+}
+h2,
+.h2 {
+  font-size: 32px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 500;
+}
+h3,
+.h3 {
+  font-size: 24px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 500;
+}
+h4,
+.h4 {
+  font-size: 18px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 500;
+}
+h5,
+.h5 {
+  font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 500;
+}
+h6,
+.h6 {
+  font-size: 12px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 500;
+}
