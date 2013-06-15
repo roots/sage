@@ -80,8 +80,8 @@ if ( !function_exists( 'shoestrap_module_typography_options' ) ) {
         "Loved by the King" => "Loved By the King",
         "Tangerine" => "Tangerine",
         "Terminal Dosis" => "Terminal Dosis"
-      )    
-    );  
+      )
+    );
 */
 
 
@@ -91,39 +91,57 @@ if ( !function_exists( 'shoestrap_module_typography_options' ) ) {
       "desc"      => __("The main font for your site.", "shoestrap"),
       "id"        => "font_base",
       'less'      => true,
-      "std"       => array('face'=>'Arial, Helvetica, sans-serif, ','size' => '14px', 'style' => 'normal', 'color'=>'#333333', 'google'=>'false'),
+      "std"       => array(
+        'face'    => 'Arial, Helvetica, sans-serif',
+        'size'    => '14px',
+        'style'   => 'normal',
+        'color'   => '#333333',
+        'google'  => 'false'
+      ),
       "preview"   => array(
-                        "text" => "This is my preview text!", //this is the text from preview box
-                        "size" => "30px" //this is the text size from preview box
-                        ),
-      "type"      => "select_google_font_hybrid",   
-    );                  
+        "text"    => __( "This is my preview text!", "shoestrap" ), //this is the text from preview box
+        "size"    => "30px" //this is the text size from preview box
+      ),
+      "type"      => "select_google_font_hybrid",
+    );
 
     $of_options[] = array(
       "name"      => __("Navbar Font", "shoestrap"),
       "desc"      => __("The main font for your site.", "shoestrap"),
       "id"        => "font_navbar",
       'less'      => true,
-      "std"       => array('face'=>'Arial, Helvetica, sans-serif, ','size' => '14px', 'style' => 'normal', 'color'=>'#333333', 'google'=>'false'),
+      "std"       => array(
+        'face'    => 'Arial, Helvetica, sans-serif',
+        'size'    => '14px',
+        'style'   => 'normal',
+        'color'   => '#333333',
+        'google'  => 'false'
+      ),
       "preview"   => array(
-                        "text" => "This is my preview text!", //this is the text from preview box
-                        "size" => "30px" //this is the text size from preview box
-                        ),
-      "type"      => "select_google_font_hybrid",   
-    );   
+        "text"    => __( "This is my preview text!", "shoestrap" ), //this is the text from preview box
+        "size"    => "30px" //this is the text size from preview box
+      ),
+      "type"      => "select_google_font_hybrid",
+    );
 
     $of_options[] = array(
       "name"      => __("Branding Font", "shoestrap"),
       "desc"      => __("The main font for your site.", "shoestrap"),
       "id"        => "font_brand",
       'less'      => true,
-      "std"       => array('face'=>'Arial, Helvetica, sans-serif, ','size' => '14px', 'style' => 'normal', 'color'=>'#333333', 'google'=>'false'),
+      "std"       => array(
+        'face'    => 'Arial, Helvetica, sans-serif',
+        'size'    => '14px',
+        'style'   => 'normal',
+        'color'   => '#333333',
+        'google'  => 'false'
+      ),
       "preview"   => array(
-                        "text" => "This is my preview text!", //this is the text from preview box
-                        "size" => "30px" //this is the text size from preview box
-                        ),
-      "type"      => "select_google_font_hybrid",   
-    );  
+        "text"    => __( "This is my preview text!", "shoestrap" ), //this is the text from preview box
+        "size"    => "30px" //this is the text size from preview box
+      ),
+      "type"      => "select_google_font_hybrid",
+    );
 
 
     $of_options[] = array(
@@ -131,13 +149,19 @@ if ( !function_exists( 'shoestrap_module_typography_options' ) ) {
       "desc"      => __("The main font for your site.", "shoestrap"),
       "id"        => "font_heading",
       'less'      => true,
-      "std"       => array('face'=>'Arial, Helvetica, sans-serif, ','size' => '14px', 'style' => 'normal', 'color'=>'#333333', 'google'=>'false'),
+      "std"       => array(
+        'face'    => 'Arial, Helvetica, sans-serif',
+        'size'    => '14px',
+        'style'   => 'normal',
+        'color'   => '#333333',
+        'google'  => 'false'
+      ),
       "preview"   => array(
-                        "text" => "This is my preview text!", //this is the text from preview box
-                        "size" => "30px" //this is the text size from preview box
-                        ),
-      "type"      => "select_google_font_hybrid",   
-    );  
+        "text"    => __( "This is my preview text!", "shoestrap" ), //this is the text from preview box
+        "size"    => "30px" //this is the text size from preview box
+      ),
+      "type"      => "select_google_font_hybrid",
+    );
 
     $of_options[] = array(
       "name"      => __("Header Overrides TODO", "shoestrap"),
@@ -146,87 +170,127 @@ if ( !function_exists( 'shoestrap_module_typography_options' ) ) {
       "std"       => "on",
       "type"      => "switch",
       "customizer"=> array(),
-    );     
+    );
 
     $of_options[] = array(
       "name"      => __("H1 Font", "shoestrap"),
       "desc"      => __("The main font for your site.", "shoestrap"),
       "id"        => "font_h1",
       'less'      => true,
-      "std"       => array('face'=>'Arial, Helvetica, sans-serif, ','size' => '14px', 'style' => 'normal', 'color'=>'#333333', 'google'=>'false'),
+      "std"       => array(
+        'face'    => 'Arial, Helvetica, sans-serif',
+        'size'    => '14px',
+        'style'   => 'normal',
+        'color'   => '#333333',
+        'google'  => 'false'
+      ),
       "preview"   => array(
-                        "text" => "This is my preview text!", //this is the text from preview box
-                        "size" => "30px" //this is the text size from preview box
-                        ),
+        "text"    => __( "This is my preview text!", "shoestrap" ), //this is the text from preview box
+        "size"    => "30px" //this is the text size from preview box
+      ),
+      "type"      => "select_google_font_hybrid",
       "fold"      => "font_heading_custom",
-      "type"      => "select_google_font_hybrid",   
-    );     
+    );
 
     $of_options[] = array(
       "name"      => __("H2 Font", "shoestrap"),
       "desc"      => __("The main font for your site.", "shoestrap"),
       "id"        => "font_h2",
       'less'      => true,
-      "std"       => array('face'=>'Arial, Helvetica, sans-serif, ','size' => '14px', 'style' => 'normal', 'color'=>'#333333', 'google'=>'false'),
+      "std"       => array(
+        'face'    => 'Arial, Helvetica, sans-serif',
+        'size'    => '14px',
+        'style'   => 'normal',
+        'color'   => '#333333',
+        'google'  => 'false'
+      ),
       "preview"   => array(
-                        "text" => "This is my preview text!", //this is the text from preview box
-                        "size" => "30px" //this is the text size from preview box
-                        ),
+        "text"    => __( "This is my preview text!", "shoestrap" ), //this is the text from preview box
+        "size"    => "30px" //this is the text size from preview box
+      ),
+      "type"      => "select_google_font_hybrid",
       "fold"      => "font_heading_custom",
-      "type"      => "select_google_font_hybrid",   
-    ); 
+    );
+
     $of_options[] = array(
       "name"      => __("H3 Font", "shoestrap"),
       "desc"      => __("The main font for your site.", "shoestrap"),
       "id"        => "font_h3",
       'less'      => true,
-      "std"       => array('face'=>'Arial, Helvetica, sans-serif, ','size' => '14px', 'style' => 'normal', 'color'=>'#333333', 'google'=>'false'),
+      "std"       => array(
+        'face'    => 'Arial, Helvetica, sans-serif',
+        'size'    => '14px',
+        'style'   => 'normal',
+        'color'   => '#333333',
+        'google'  => 'false'
+      ),
       "preview"   => array(
-                        "text" => "This is my preview text!", //this is the text from preview box
-                        "size" => "30px" //this is the text size from preview box
-                        ),
+        "text"    => __( "This is my preview text!", "shoestrap" ), //this is the text from preview box
+        "size"    => "30px" //this is the text size from preview box
+      ),
+      "type"      => "select_google_font_hybrid",
       "fold"      => "font_heading_custom",
-      "type"      => "select_google_font_hybrid",   
-    ); 
-            $of_options[] = array(
+    );
+
+    $of_options[] = array(
       "name"      => __("H4 Font", "shoestrap"),
       "desc"      => __("The main font for your site.", "shoestrap"),
       "id"        => "font_h4",
       'less'      => true,
-      "std"       => array('face'=>'Arial, Helvetica, sans-serif, ','size' => '14px', 'style' => 'normal', 'color'=>'#333333', 'google'=>'false'),
+      "std"       => array(
+        'face'    => 'Arial, Helvetica, sans-serif',
+        'size'    => '14px',
+        'style'   => 'normal',
+        'color'   => '#333333',
+        'google'  => 'false'
+      ),
       "preview"   => array(
-                        "text" => "This is my preview text!", //this is the text from preview box
-                        "size" => "30px" //this is the text size from preview box
-                        ),
+        "text"    => __( "This is my preview text!", "shoestrap" ), //this is the text from preview box
+        "size"    => "30px" //this is the text size from preview box
+      ),
+      "type"      => "select_google_font_hybrid",
       "fold"      => "font_heading_custom",
-      "type"      => "select_google_font_hybrid",   
-    ); 
+    );
+
     $of_options[] = array(
       "name"      => __("H5 Font", "shoestrap"),
       "desc"      => __("The main font for your site.", "shoestrap"),
       "id"        => "font_h5",
       'less'      => true,
-      "std"       => array('face'=>'Arial, Helvetica, sans-serif, ','size' => '14px', 'style' => 'normal', 'color'=>'#333333', 'google'=>'false'),
+      "std"       => array(
+        'face'    => 'Arial, Helvetica, sans-serif',
+        'size'    => '14px',
+        'style'   => 'normal',
+        'color'   => '#333333',
+        'google'  => 'false'
+      ),
       "preview"   => array(
-                        "text" => "This is my preview text!", //this is the text from preview box
-                        "size" => "30px" //this is the text size from preview box
-                        ),
+        "text"    => __( "This is my preview text!", "shoestrap" ), //this is the text from preview box
+        "size"    => "30px" //this is the text size from preview box
+      ),
+      "type"      => "select_google_font_hybrid",
       "fold"      => "font_heading_custom",
-      "type"      => "select_google_font_hybrid",   
-    ); 
+    );
+
     $of_options[] = array(
       "name"      => __("H6 Font", "shoestrap"),
       "desc"      => __("The main font for your site.", "shoestrap"),
       "id"        => "font_h6",
       'less'      => true,
-      "std"       => array('face'=>'Arial, Helvetica, sans-serif, ','size' => '14px', 'style' => 'normal', 'color'=>'#333333', 'google'=>'false'),
+      "std"       => array(
+        'face'    => 'Arial, Helvetica, sans-serif',
+        'size'    => '14px',
+        'style'   => 'normal',
+        'color'   => '#333333',
+        'google'  => 'false'
+      ),
       "preview"   => array(
-                        "text" => "This is my preview text!", //this is the text from preview box
-                        "size" => "30px" //this is the text size from preview box
-                        ),
+        "text"    => __( "This is my preview text!", "shoestrap" ), //this is the text from preview box
+        "size"    => "30px" //this is the text size from preview box
+      ),
+      "type"      => "select_google_font_hybrid",
       "fold"      => "font_heading_custom",
-      "type"      => "select_google_font_hybrid",   
-    );           
+    );
 
     do_action( 'shoestrap_module_typography_options_modifier' );
 

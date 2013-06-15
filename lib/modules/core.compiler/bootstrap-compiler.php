@@ -136,21 +136,12 @@ function shoestrap_variables_less() {
   $brand_warning    = '#' . str_replace( '#', '', shoestrap_getVariable( 'color_brand_warning' ) );
   $brand_danger     = '#' . str_replace( '#', '', shoestrap_getVariable( 'color_brand_danger' ) );
   $brand_info       = '#' . str_replace( '#', '', shoestrap_getVariable( 'color_brand_info' ) );
-  $text_color       = '#' . str_replace( '#', '', shoestrap_getVariable( 'color_text' ) );
-  $sans_serif       = shoestrap_getVariable( 'typography_sans_serif' );
-  $font_size_base   = filter_var( shoestrap_getVariable( 'typography_font_size_base' ), FILTER_SANITIZE_NUMBER_INT );
-  $border_radius    = filter_var( shoestrap_getVariable( 'general_border_radius' ), FILTER_SANITIZE_NUMBER_INT );
-  $padding_base     = intval( shoestrap_getVariable( 'padding_base' ) );
-  $navbar_color     = '#' . str_replace( '#', '', shoestrap_getVariable( 'navbar_color' ) );
-  $navbar_bg        = '#' . str_replace( '#', '', shoestrap_getVariable( 'navbar_bg' ) );
-  $jumbotron_bg     = '#' . str_replace( '#', '', shoestrap_getVariable( 'jumbotron_bg' ) );
-  $jumbotron_color  = '#' . str_replace( '#', '', shoestrap_getVariable( 'jumbotron_color' ) );
-
 
   $font_base            = shoestrap_getVariable( 'font_base' );
   $font_navbar          = shoestrap_getVariable( 'font_navbar' );
   $font_brand           = shoestrap_getVariable( 'font_brand' );
   $font_heading         = shoestrap_getVariable( 'font_heading' );
+
   if (shoestrap_getVariable( 'font_heading_custom' )) {
     $font_h1 = shoestrap_getVariable( 'font_h1' );
     $font_h2 = shoestrap_getVariable( 'font_h1' );
@@ -166,6 +157,17 @@ function shoestrap_variables_less() {
     $font_h5 = $font_heading;
     $font_h6 = $font_heading;
   }
+
+  $text_color       = '#' . str_replace( '#', '', $font_base['color'] );
+  $font_size_base   = filter_var( $font_base['size'], FILTER_SANITIZE_NUMBER_INT );
+  $sans_serif       = $font_base['face'];
+
+  $border_radius    = filter_var( shoestrap_getVariable( 'general_border_radius' ), FILTER_SANITIZE_NUMBER_INT );
+  $padding_base     = intval( shoestrap_getVariable( 'padding_base' ) );
+  $navbar_color     = '#' . str_replace( '#', '', shoestrap_getVariable( 'navbar_color' ) );
+  $navbar_bg        = '#' . str_replace( '#', '', shoestrap_getVariable( 'navbar_bg' ) );
+  $jumbotron_bg     = '#' . str_replace( '#', '', shoestrap_getVariable( 'jumbotron_bg' ) );
+  $jumbotron_color  = '#' . str_replace( '#', '', shoestrap_getVariable( 'jumbotron_color' ) );
 
   $container_tablet         = filter_var( shoestrap_getVariable( 'container_tablet' ), FILTER_SANITIZE_NUMBER_INT );
   $container_desktop        = filter_var( shoestrap_getVariable( 'container_desktop' ), FILTER_SANITIZE_NUMBER_INT );
@@ -272,9 +274,9 @@ function shoestrap_variables_less() {
 @font-family-sans-serif:  ' . $sans_serif . ';
 @font-family-serif:       Georgia, "Times New Roman", Times, serif;
 @font-family-monospace:   Monaco, Menlo, Consolas, "Courier New", monospace;
-@font-family-base:        '.$font_base['face'].';
+@font-family-base:        ' . $sans_serif . ';
 
-@font-size-base:          ' . $font_base['size'] . ';
+@font-size-base:          ' . $font_size_base . ';
 @font-size-large:         ceil(@font-size-base * 1.25); // ~18px
 @font-size-small:         ceil(@font-size-base * 0.85); // ~12px
 @font-size-mini:          ceil(@font-size-base * 0.75); // ~11px
