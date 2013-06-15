@@ -20,6 +20,15 @@ if ( !function_exists('shoestrap_module_advanced_options' ) ) {
     );
 
     $of_options[] = array(
+      "name"      => __("Enable Retina mode", "shoestrap"),
+      "desc"      => __("By enabling your site will be retina ready. Requires a all images to be uploaded at 2x the typical size desired, including logos. Default: Off", "shoestrap"),
+      "id"        => "retina_toggle",
+      "std"       => 0,
+      "type"      => "switch",
+      "customizer"=> array(),
+    );
+
+    $of_options[] = array(
       "name"      => __("Allow shortcodes in widgets", "shoestrap"),
       "desc"      => __("This option allows shortcodes within widgets. Default: On.", "shoestrap"),
       "id"        => "enable_widget_shortcodes",

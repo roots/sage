@@ -41,10 +41,25 @@ function shoestrap_add_typography_class_case($array) {
     
       $output .= '<div class="select_wrapper typography-style" original-title="Font style">';
       $output .= '<select class="of-typography of-typography-style select google_font_hybrid_value" name="'.$value['id'].'[style]" id="'. $value['id'].'_style">';
-      $styles = array('normal'=>'Normal',
-              'italic'=>'Italic',
-              'bold'=>'Bold',
-              'bold italic'=>'Bold Italic');
+      $styles = array('100'=>'Ultra-Light 100',
+                '200'=>'Light 200',
+                '300'=>'Book 300',
+                '400'=>'Normal 400',
+                '500'=>'Medium 500',
+                '600'=>'Semi-Bold 600',
+                '700'=>'Bold 700',
+                '800'=>'Extra-Bold 800',
+                '900'=>'Ultra-Bold 900',
+                '100-italic'=>'Ultra-Light 100 Italic',
+                '200-italic'=>'Light 200 Italic',
+                '300-italic'=>'Book 300 Italic',
+                '400-italic'=>'Normal 400 Italic',
+                '500-italic'=>'Medium 500 Italic',
+                '600-italic'=>'Semi-Bold 600 Italic',
+                '700-italic'=>'Bold 700 Italic',
+                '800-italic'=>'Extra-Bold 800 Italic',
+                '900-italic'=>'Ultra-Bold 900 Italic',                
+              );
       if (isset($gfonts[$typography_stored['face']])) {
         $styles = array();
         foreach ($gfonts[$typography_stored['face']]['variants'] as $k=>$v) {
@@ -99,10 +114,24 @@ function shoestrap_add_typography_class_case($array) {
 
       foreach ($faces as $i=>$face) {
         $output .= '<option data-google="false" data-details="'.urlencode(json_encode(
-          array('normal'=>'Normal',
-                'italic'=>'Italic',
-                'bold'=>'Bold',
-                'bold-italic'=>'Bold Italic',
+          array('100'=>'Ultra-Light 100',
+                '200'=>'Light 200',
+                '300'=>'Book 300',
+                '400'=>'Normal 400',
+                '500'=>'Medium 500',
+                '600'=>'Semi-Bold 600',
+                '700'=>'Bold 700',
+                '800'=>'Extra-Bold 800',
+                '900'=>'Ultra-Bold 900',
+                '100-italic'=>'Ultra-Light 100 Italic',
+                '200-italic'=>'Light 200 Italic',
+                '300-italic'=>'Book 300 Italic',
+                '400-italic'=>'Normal 400 Italic',
+                '500-italic'=>'Medium 500 Italic',
+                '600-italic'=>'Semi-Bold 600 Italic',
+                '700-italic'=>'Bold 700 Italic',
+                '800-italic'=>'Extra-Bold 800 Italic',
+                '900-italic'=>'Ultra-Bold 900 Italic',                
               )
           )).'" value="'. $i .'" ' . selected($typography_stored['face'], $i, false) . '>'. $face .'</option>';
       }     
@@ -121,10 +150,10 @@ function shoestrap_add_typography_class_case($array) {
       $output .= '<input type="hidden" class="typography-google" name="'.$value['id'].'[google]" value="'.$google.'" />';
     
     /* Font Color */
-    //if(isset($typography_stored['color'])) {
+    if(isset($typography_stored['color'])) {
       $output .= '<div id="' . $value['id'] . '_color_picker" class="colorSelector typography-color" style="float: right;"><div style="background-color: '.$typography_stored['color'].'"></div></div>';
       $output .= '<input data-default-color="'.$value['std']['color'].'" class="of-color of-typography of-typography-color google_font_hybrid_value" original-title="Font color" name="'.$value['id'].'[color]" id="'. $value['id'] .'_color" type="text" value="'. $typography_stored['color'] .'" />';
-    //}
+    }
 
     
     if(isset($value['preview']['text'])){
@@ -179,23 +208,35 @@ function shoestrap_module_typography_googlefont_links() {
     $font_h5 = shoestrap_getVariable( 'font_h1' );
     $font_h6 = shoestrap_getVariable( 'font_h1' );
   }
-  if ($font_base['google'] == "true") {
+  if ($font_base['google'] == 1) {
     echo getGoogleScript($font_base);
   }
-  if ($font_navbar['google'] == "true") {
+  if ($font_navbar['google'] == 1) {
     echo getGoogleScript($font_navbar);
   }
-  if ($font_brand['google'] == "true") {
+  if ($font_brand['google'] == 1) {
     echo getGoogleScript($font_brand);
   }
   if (shoestrap_getVariable( 'font_heading_custom' )) {
-    echo getGoogleScript($font_h1);
-    echo getGoogleScript($font_h2);
-    echo getGoogleScript($font_h3);
-    echo getGoogleScript($font_h4);
-    echo getGoogleScript($font_h5);
-    echo getGoogleScript($font_h6);
-  } else {
+    if ($font_h1['google'] == 1) {
+      echo getGoogleScript($font_h1);
+    }
+    if ($font_h2['google'] == 1) {
+      echo getGoogleScript($font_h2);
+    }
+    if ($font_h3['google'] == 1) {
+      echo getGoogleScript($font_h3);
+    }
+    if ($font_h4['google'] == 1) {
+      echo getGoogleScript($font_h4);
+    }
+    if ($font_h5['google'] == 1) {
+      echo getGoogleScript($font_h5);
+    }
+    if ($font_h6['google'] == 1) {
+      echo getGoogleScript($font_h6);
+    }
+  } else if ($font_heading['google'] == 1) {
     echo getGoogleScript($font_heading);
   }
 }
@@ -203,7 +244,13 @@ add_action( 'wp_head', 'shoestrap_module_typography_googlefont_links' );
 
 
 function getGoogleScript($font) {
-  return '<link href="http://fonts.googleapis.com/css?family='.$font['face'].':'.str_replace('-','',$font['style']).'&subset='.$font['script'].'" rel="stylesheet" type="text/css" class="base_font">';
+  $link = 'http://fonts.googleapis.com/css?family='.str_replace(" ","+",$font['face']);
+  if (!empty($font['style']))
+    $link .= ':'.str_replace('-','',$font['style']);
+  if (!empty($font['script']))
+    $link .= '&subset='.$font['script'];
+
+  return '<link href="'.$link.'" rel="stylesheet" type="text/css" class="base_font">';
 }
 
 

@@ -29,15 +29,6 @@ if ( !function_exists( 'shoestrap_module_branding_options' ) ) {
     );
 
     $of_options[] = array(
-      "name"      => __("Upload Retina Logo TODO", "shoestrap"),
-      "desc"      => __("By enabling your site can be retina ready. Requires a logo re-uploaded at 2x the size desired. Default: Off", "shoestrap"),
-      "id"        => "retina_logo_toggle",
-      "std"       => "",
-      "type"      => "switch",
-      "customizer"=> array(),
-    );
-
-    $of_options[] = array(
       "name"      => "",
       "desc"      => "",
       "id"        => "retina_help",

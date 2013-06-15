@@ -56,6 +56,17 @@ if ( !function_exists( 'shoestrap_module_blog_options' ) ) {
     ); 
 
     $of_options[] = array(
+      "name"      => __("Post excerpt length", "shoestrap"),
+      "desc"      => __("Select the height of your featured images on post archives. Default: 300px", "shoestrap"),
+      "id"        => "post_excerpt_length",
+      "std"       => 40,
+      "min"       => 10,
+      "step"      => 1,
+      "max"       => 1000,
+      "type"      => "sliderui"
+    );    
+
+    $of_options[] = array(
       "name"      => "",
       "desc"      => "",
       "id"        => "help3",
@@ -110,14 +121,27 @@ if ( !function_exists( 'shoestrap_module_blog_options' ) ) {
     );
 
     $of_options[] = array(
+      "name"      => __("Featured Images on Posts Full Width", "shoestrap"),
+      "desc"      => __("Display featured Images on posts. Default: OFF.", "shoestrap"),
+      "id"        => "feat_img_post_custom_toggle",
+      "std"       => 1,
+      "off"       => __('Full Width', "shoestrap"),
+      "on"        => __('Custom Width', "shoestrap"),
+      "type"      => "switch",
+      "customizer"=> array(),
+    );    
+
+    $of_options[] = array(
       "name"      => __("Posts Featured Image Width", "shoestrap"),
       "desc"      => __("Select the width of your featured images on single posts. Default: 550px", "shoestrap"),
       "id"        => "feat_img_post_width",
       "fold"      => "feat_img_post",
       "std"       => 550,
       "min"       => 100,
+      "fold"      => 'feat_img_post_custom_toggle',
       "step"      => 1,
-      "max"       => 1600,
+      "max"       => 1000,
+      "edit"      => 1,
       "type"      => "sliderui"
     );
 
@@ -130,10 +154,11 @@ if ( !function_exists( 'shoestrap_module_blog_options' ) ) {
       "min"       => 50,
       "step"      => 1,
       "max"       => 1000,
+      "edit"      => 1,
       "type"      => "sliderui"
     );
 
-    do_action('smof_options_modifier');
+    do_action('smof_blog_options_modifier');
 
     $smof_details = array();
     foreach( $of_options as $option ) {
