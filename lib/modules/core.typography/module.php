@@ -131,7 +131,7 @@ if ( !function_exists( 'shoestrap_module_typography_options' ) ) {
       'less'      => true,
       "std"       => array(
         'face'    => 'Arial, Helvetica, sans-serif',
-        'size'    => '14px',
+        'size'    => '18px',
         'style'   => 'normal',
         'color'   => '#333333',
         'google'  => 'false'
@@ -143,28 +143,27 @@ if ( !function_exists( 'shoestrap_module_typography_options' ) ) {
       "type"      => "select_google_font_hybrid",
     );
 
+    // $of_options[] = array(
+    //   "name"      => __("Heading Fonts", "shoestrap"),
+    //   "desc"      => __("The main font for your site.", "shoestrap"),
+    //   "id"        => "font_heading",
+    //   'less'      => true,
+    //   "std"       => array(
+    //     'face'    => 'Arial, Helvetica, sans-serif',
+    //     'size'    => '14px',
+    //     'style'   => 'normal',
+    //     'color'   => '#333333',
+    //     'google'  => 'false'
+    //   ),
+    //   "preview"   => array(
+    //     "text"    => __( "This is my preview text!", "shoestrap" ), //this is the text from preview box
+    //     "size"    => "30px" //this is the text size from preview box
+    //   ),
+    //   "type"      => "select_google_font_hybrid",
+    // );
 
     $of_options[] = array(
-      "name"      => __("Heading Fonts", "shoestrap"),
-      "desc"      => __("The main font for your site.", "shoestrap"),
-      "id"        => "font_heading",
-      'less'      => true,
-      "std"       => array(
-        'face'    => 'Arial, Helvetica, sans-serif',
-        'size'    => '14px',
-        'style'   => 'normal',
-        'color'   => '#333333',
-        'google'  => 'false'
-      ),
-      "preview"   => array(
-        "text"    => __( "This is my preview text!", "shoestrap" ), //this is the text from preview box
-        "size"    => "30px" //this is the text size from preview box
-      ),
-      "type"      => "select_google_font_hybrid",
-    );
-
-    $of_options[] = array(
-      "name"      => __("Header Overrides TODO", "shoestrap"),
+      "name"      => __("Header Overrides", "shoestrap"),
       "desc"      => __("By enabling this you can specify custom values for each <h*> tag. Default: Off", "shoestrap"),
       "id"        => "font_heading_custom",
       "std"       => "on",
@@ -179,7 +178,7 @@ if ( !function_exists( 'shoestrap_module_typography_options' ) ) {
       'less'      => true,
       "std"       => array(
         'face'    => 'Arial, Helvetica, sans-serif',
-        'size'    => '14px',
+        'size'    => '38px',
         'style'   => 'normal',
         'color'   => '#333333',
         'google'  => 'false'
@@ -199,7 +198,7 @@ if ( !function_exists( 'shoestrap_module_typography_options' ) ) {
       'less'      => true,
       "std"       => array(
         'face'    => 'Arial, Helvetica, sans-serif',
-        'size'    => '14px',
+        'size'    => '32px',
         'style'   => 'normal',
         'color'   => '#333333',
         'google'  => 'false'
@@ -219,7 +218,7 @@ if ( !function_exists( 'shoestrap_module_typography_options' ) ) {
       'less'      => true,
       "std"       => array(
         'face'    => 'Arial, Helvetica, sans-serif',
-        'size'    => '14px',
+        'size'    => '24px',
         'style'   => 'normal',
         'color'   => '#333333',
         'google'  => 'false'
@@ -239,7 +238,7 @@ if ( !function_exists( 'shoestrap_module_typography_options' ) ) {
       'less'      => true,
       "std"       => array(
         'face'    => 'Arial, Helvetica, sans-serif',
-        'size'    => '14px',
+        'size'    => '18px',
         'style'   => 'normal',
         'color'   => '#333333',
         'google'  => 'false'
@@ -259,7 +258,7 @@ if ( !function_exists( 'shoestrap_module_typography_options' ) ) {
       'less'      => true,
       "std"       => array(
         'face'    => 'Arial, Helvetica, sans-serif',
-        'size'    => '14px',
+        'size'    => '16px',
         'style'   => 'normal',
         'color'   => '#333333',
         'google'  => 'false'
@@ -279,7 +278,7 @@ if ( !function_exists( 'shoestrap_module_typography_options' ) ) {
       'less'      => true,
       "std"       => array(
         'face'    => 'Arial, Helvetica, sans-serif',
-        'size'    => '14px',
+        'size'    => '12px',
         'style'   => 'normal',
         'color'   => '#333333',
         'google'  => 'false'
