@@ -276,7 +276,7 @@ function shoestrap_variables_less() {
 @font-family-monospace:   Monaco, Menlo, Consolas, "Courier New", monospace;
 @font-family-base:        ' . $sans_serif . ';
 
-@font-size-base:          ' . $font_size_base . ';
+@font-size-base:          ' . $font_size_base . 'px;
 @font-size-large:         ceil(@font-size-base * 1.25); // ~18px
 @font-size-small:         ceil(@font-size-base * 0.85); // ~12px
 @font-size-mini:          ceil(@font-size-base * 0.75); // ~11px
