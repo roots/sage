@@ -284,7 +284,8 @@ function roots_gallery($attr) {
     'columns'    => 3,
     'size'       => 'thumbnail',
     'include'    => '',
-    'exclude'    => ''
+    'exclude'    => '',
+    'link'       => 'file'
   ), $attr));
 
   $id = intval($id);
@@ -322,9 +323,9 @@ function roots_gallery($attr) {
 
   $i = 0;
   foreach ($attachments as $id => $attachment) {
-    $link = isset($attr['link']) && 'file' == $attr['link'] ? wp_get_attachment_link($id, $size, false, false) : wp_get_attachment_link($id, $size, true, false);
+    $image = ('file' == $link) ? wp_get_attachment_link($id, $size, false, false) : wp_get_attachment_link($id, $size, true, false);
 
-    $output .= '<li>' . $link;
+    $output .= '<li>' . $image;
     if (trim($attachment->post_excerpt)) {
       $output .= '<div class="caption hidden">' . wptexturize($attachment->post_excerpt) . '</div>';
     }
