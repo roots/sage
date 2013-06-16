@@ -21,7 +21,7 @@ if ( !function_exists( 'shoestrap_module_blog_options' ) ) {
 
     $of_options[] = array(
       "name"      => __("Custom Blog Layout", "shoestrap"),
-      "desc"      => __("Set a default layout for your blob/post pages. Default: OFF.", "shoestrap"),
+      "desc"      => __("Set a default layout for your blog/post pages. Default: OFF.", "shoestrap"),
       "id"        => "blog_layout_toggle",
       "less"      => true,
       "std"       => 0,
@@ -174,7 +174,7 @@ include_once( dirname(__FILE__).'/functions.featured-image.php' );
 
 
 function shoestrap_core_blog_comments_toggle() {
-  if (!is_page() && !shoestrap_getVariable('blog_comments_toggle')) {
+  if ( shoestrap_getVariable('blog_comments_toggle' ) != 1 ) {
     remove_post_type_support( 'post', 'comments' );
     remove_post_type_support( 'post', 'trackbacks' );
 

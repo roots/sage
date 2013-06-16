@@ -5,7 +5,7 @@
  */
 function shoestrap_branding() {
   if ( shoestrap_getVariable( 'header_toggle' ) == 1 ) { ?>
-    <div class="header-wrapper row">
+    <div class="header-wrapper">
       <div class="container <?php echo shoestrap_container_class(); ?>">
         <?php if ( shoestrap_getVariable( 'header_branding' ) == 1 ) { ?>
           <a class="brand-logo pull-left" href="<?php echo home_url(); ?>/">

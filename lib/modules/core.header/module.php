@@ -237,7 +237,7 @@ if ( !function_exists( 'shoestrap_module_header_options' ) ) {
       "max"       => 100,
       "less"      => true,
       "type"      => "sliderui"
-    );    
+    );
 
     $of_options[] = array(
       "name"      => __("Secondary Navbar Text Color", "shoestrap"),
@@ -249,7 +249,7 @@ if ( !function_exists( 'shoestrap_module_header_options' ) ) {
       "type"      => "color"
     );
 
-    $of_options[] = array(  
+    $of_options[] = array(
       "name"    => __("Secondary Navbar Text", "shoestrap"),
       "desc"    => __("Sometime you just need something a little more custom. Here you can enter a string of text to display in your secondary navbar.", "shoestrap"),
       "id"      => "navbar_secondary_text",
@@ -287,7 +287,7 @@ if ( !function_exists( 'shoestrap_module_header_options' ) ) {
         'menu'  => __( "Secondary Menu", "shoestrap"),
         'text'  => __( "Secondary Navbar Textbox", "shoestrap"),
       )
-    );    
+    );
 
 
     $url = admin_url( 'widgets.php' );

@@ -13,6 +13,8 @@
     <footer>
       <?php wp_link_pages(array('before' => '<nav class="page-nav"><p>' . __('Pages:', 'roots'), 'after' => '</p></nav>')); ?>
     </footer>
+    <?php if ( post_type_supports( 'post', 'comments' ) ): ?>
     <?php comments_template('/templates/comments.php'); ?>
+    <?php endif; ?>
   </article>
 <?php endwhile; ?>
