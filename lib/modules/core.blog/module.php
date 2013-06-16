@@ -23,17 +23,19 @@ if ( !function_exists( 'shoestrap_module_blog_options' ) ) {
       "name"      => __("Custom Blog Layout", "shoestrap"),
       "desc"      => __("Set a default layout for your blob/post pages. Default: OFF.", "shoestrap"),
       "id"        => "blog_layout_toggle",
+      "less"      => true,
       "std"       => 0,
       "type"      => "switch",
       "customizer"=> array(),
-    );   
+    );
 
     $of_options[] = array(
       "name"      => __("Blog Layout", "shoestrap"),
-      "desc"      => __("Override your default stylings. Choose between 1, 2 or 3 column layout.", "shoestrap"),
+      "desc"      => __("Override your default styling. Choose between 1, 2 or 3 column layout.", "shoestrap"),
       "id"        => "blog_layout",
       "std"       => get_theme_mod('layout', 1),
       "type"      => "images",
+      "less"      => true,
       "fold"      => "blog_layout_toggle",
       "customizer"=> array(),
       "options"   => array(
@@ -44,7 +46,7 @@ if ( !function_exists( 'shoestrap_module_blog_options' ) ) {
         4         => get_template_directory_uri() . SMOF_DIR . '/addons/assets/images/3cr.png',
         5         => get_template_directory_uri() . SMOF_DIR . '/addons/assets/images/3cm.png',
       )
-    );        
+    );
 
     $of_options[] = array(
       "name"      => __("Comments on Blog", "shoestrap"),
@@ -53,7 +55,7 @@ if ( !function_exists( 'shoestrap_module_blog_options' ) ) {
       "std"       => 1,
       "type"      => "switch",
       "customizer"=> array(),
-    ); 
+    );
 
     $of_options[] = array(
       "name"      => __("Post excerpt length", "shoestrap"),
@@ -64,7 +66,7 @@ if ( !function_exists( 'shoestrap_module_blog_options' ) ) {
       "step"      => 1,
       "max"       => 1000,
       "type"      => "sliderui"
-    );    
+    );
 
     $of_options[] = array(
       "name"      => "",
@@ -124,12 +126,12 @@ if ( !function_exists( 'shoestrap_module_blog_options' ) ) {
       "name"      => __("Featured Images on Posts Full Width", "shoestrap"),
       "desc"      => __("Display featured Images on posts. Default: OFF.", "shoestrap"),
       "id"        => "feat_img_post_custom_toggle",
-      "std"       => 1,
+      "std"       => 0,
       "off"       => __('Full Width', "shoestrap"),
       "on"        => __('Custom Width', "shoestrap"),
       "type"      => "switch",
       "customizer"=> array(),
-    );    
+    );
 
     $of_options[] = array(
       "name"      => __("Posts Featured Image Width", "shoestrap"),
@@ -175,7 +177,7 @@ function shoestrap_core_blog_comments_toggle() {
   if (!is_page() && !shoestrap_getVariable('blog_comments_toggle')) {
     remove_post_type_support( 'post', 'comments' );
     remove_post_type_support( 'post', 'trackbacks' );
-    
+
     add_filter('get_comments_number', '__return_false', 10, 3);
   }
 }

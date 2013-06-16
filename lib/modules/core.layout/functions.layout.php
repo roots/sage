@@ -5,6 +5,11 @@
  */
 function shoestrap_section_class( $target, $echo = false ) {
   $layout = intval( shoestrap_getVariable( 'layout' ) );
+  if (is_page() && shoestrap_getVariable( 'page_layout_toggle' ) == 1) {
+    $layout = intval( shoestrap_getVariable( 'page_layout' ) );
+  } else if (!is_page() && shoestrap_getVariable( 'blog_layout_toggle' ) == 1) {
+    $layout = intval( shoestrap_getVariable( 'blog_layout' ) );
+  }
   $first  = intval( shoestrap_getVariable( 'layout_primary_width' ) );
   $second = intval( shoestrap_getVariable( 'layout_secondary_width' ) );
 
@@ -85,6 +90,12 @@ function shoestrap_section_class( $target, $echo = false ) {
  */
 function shoestrap_layout_css() {
   $layout = shoestrap_getVariable( 'layout' );
+  if (is_page() && shoestrap_getVariable( 'page_layout_toggle' ) == 1) {
+    $layout = intval( shoestrap_getVariable( 'page_layout' ) );
+  } else if (!is_page() && shoestrap_getVariable( 'blog_layout_toggle' ) == 1) {
+    $layout = intval( shoestrap_getVariable( 'blog_layout' ) );
+  }
+
   $site_style  = shoestrap_getVariable( 'site_style' );
   $margin = shoestrap_getVariable( 'navbar_margin_top' );
 

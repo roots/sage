@@ -27,7 +27,7 @@ function shoestrap_featured_image_on_archives() {
   $width  = shoestrap_getVariable( 'feat_img_post_width' );
   $height = shoestrap_getVariable( 'feat_img_post_height' );
   $crop   = true;
-  $retina = shoestrap_getVariable( 'retina_toggle' );
+  $retina = true;
 
   if ( '' != get_the_post_thumbnail() ):
     $image = matthewruddy_image_resize( $url, $width, $height, $crop, $retina );
