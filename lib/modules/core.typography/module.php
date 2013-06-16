@@ -96,6 +96,7 @@ if ( !function_exists( 'shoestrap_module_typography_options' ) ) {
         'size'    => '14px',
         'google'  => 'false',
         'weight'  => 'inherit',
+        'color'   => '#333333',
       ),
       "preview"   => array(
         "text"    => __( "This is my preview text!", "shoestrap" ), //this is the text from preview box
@@ -113,7 +114,8 @@ if ( !function_exists( 'shoestrap_module_typography_options' ) ) {
         'face'    => 'Arial, Helvetica, sans-serif',
         'size'    => '14px',
         'color'   => '#333333',
-        'google'  => 'false'
+        'google'  => 'false',
+        'color'   => '#333333',
       ),
       "preview"   => array(
         "text"    => __( "This is my preview text!", "shoestrap" ), //this is the text from preview box
@@ -131,7 +133,8 @@ if ( !function_exists( 'shoestrap_module_typography_options' ) ) {
         'face'    => 'Arial, Helvetica, sans-serif',
         'size'    => '18px',
         'color'   => '#333333',
-        'google'  => 'false'
+        'google'  => 'false',
+        'color'   => '#333333',
       ),
       "preview"   => array(
         "text"    => __( "This is my preview text!", "shoestrap" ), //this is the text from preview box

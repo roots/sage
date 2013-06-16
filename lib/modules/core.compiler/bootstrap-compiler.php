@@ -118,11 +118,11 @@ function shoestrap_makecss() {
   shoestrap_compile_css();
 }
 
-function shoestrap_process_font($font) {
-  if (isset($font['style'])) {
-    $temp = explode("-", $font['style']);
+function shoestrap_process_font( $font ) {
+  if ( isset( $font['style'] ) ) {
+    $temp = explode( "-", $font['style'] );
     $font['weight'] = $temp[0];
-    if (isset($temp[1])) {
+    if ( isset( $temp[1] ) ) {
       $font['style'] = $temp[1];
     } else {
       $font['style'] = "inherit"; // Default style
@@ -132,8 +132,9 @@ function shoestrap_process_font($font) {
     $font['style'] = "inherit";
   }
   $font['size'] = filter_var( $font['size'], FILTER_SANITIZE_NUMBER_INT );
-  if ($font['weight'] == "")
+  if ( $font['weight'] == "" )
     $font['weight'] = "inherit";
+
   return $font;
 }
 
@@ -156,21 +157,21 @@ function shoestrap_variables_less() {
   $brand_danger     = '#' . str_replace( '#', '', shoestrap_getVariable( 'color_brand_danger' ) );
   $brand_info       = '#' . str_replace( '#', '', shoestrap_getVariable( 'color_brand_info' ) );
 
-  $font_base            = shoestrap_process_font(shoestrap_getVariable( 'font_base' ));
-  $font_navbar          = shoestrap_process_font(shoestrap_getVariable( 'font_navbar' ));
-  $font_brand           = shoestrap_process_font(shoestrap_getVariable( 'font_brand' ));
-  $font_heading         = shoestrap_process_font(shoestrap_getVariable( 'font_heading' ));
+  $font_base            = shoestrap_process_font( shoestrap_getVariable( 'font_base' ) );
+  $font_navbar          = shoestrap_process_font( shoestrap_getVariable( 'font_navbar' ) );
+  $font_brand           = shoestrap_process_font( shoestrap_getVariable( 'font_brand' ) );
+  $font_heading         = shoestrap_process_font( shoestrap_getVariable( 'font_heading' ) );
 
   if ( shoestrap_getVariable( 'font_heading_custom' ) ) {
 
-    $font_h1 = shoestrap_process_font(shoestrap_getVariable( 'font_h1' ));
-    $font_h2 = shoestrap_process_font(shoestrap_getVariable( 'font_h2' ));
-    $font_h3 = shoestrap_process_font(shoestrap_getVariable( 'font_h3' ));
-    $font_h4 = shoestrap_process_font(shoestrap_getVariable( 'font_h4' ));
-    $font_h5 = shoestrap_process_font(shoestrap_getVariable( 'font_h5' ));
-    $font_h6 = shoestrap_process_font(shoestrap_getVariable( 'font_h6' ));
+    $font_h1 = shoestrap_process_font( shoestrap_getVariable( 'font_h1' ) );
+    $font_h2 = shoestrap_process_font( shoestrap_getVariable( 'font_h2' ) );
+    $font_h3 = shoestrap_process_font( shoestrap_getVariable( 'font_h3' ) );
+    $font_h4 = shoestrap_process_font( shoestrap_getVariable( 'font_h4' ) );
+    $font_h5 = shoestrap_process_font( shoestrap_getVariable( 'font_h5' ) );
+    $font_h6 = shoestrap_process_font( shoestrap_getVariable( 'font_h6' ) );
 
-    $font_h1_face   = $font_h1['face']; 
+    $font_h1_face   = $font_h1['face'];
     $font_h1_size   = $font_h1['size'];
     $font_h1_weight = $font_h1['weight'];
     $font_h1_style  = $font_h1['style'];

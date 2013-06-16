@@ -4799,6 +4799,10 @@ figure.alignnone {
     padding: 30px;
   }
 }
+body {
+  font-style: inherit;
+  font-weight: inherit;
+}
 body.top-navbar.admin-bar {
   padding-top: 53px;
 }
@@ -5236,37 +5240,43 @@ fieldset[disabled] #social-sharing .shareme .box {
 }
 h1,
 .h1 {
-  font-size: 38px;
+  font-size: 38;
   font-family: Arial, Helvetica, sans-serif;
-  font-weight: 500;
+  font-weight: inherit;
+  font-style: inherit;
 }
 h2,
 .h2 {
-  font-size: 32px;
+  font-size: 32;
   font-family: Arial, Helvetica, sans-serif;
-  font-weight: 500;
+  font-weight: inherit;
+  font-style: inherit;
 }
 h3,
 .h3 {
-  font-size: 24px;
+  font-size: 24;
   font-family: Arial, Helvetica, sans-serif;
-  font-weight: 500;
+  font-weight: inherit;
+  font-style: inherit;
 }
 h4,
 .h4 {
-  font-size: 18px;
+  font-size: 18;
   font-family: Arial, Helvetica, sans-serif;
-  font-weight: 500;
+  font-weight: inherit;
+  font-style: inherit;
 }
 h5,
 .h5 {
-  font-size: 14px;
+  font-size: 16;
   font-family: Arial, Helvetica, sans-serif;
-  font-weight: 500;
+  font-weight: inherit;
+  font-style: inherit;
 }
 h6,
 .h6 {
-  font-size: 12px;
+  font-size: 12;
   font-family: Arial, Helvetica, sans-serif;
-  font-weight: 500;
+  font-weight: inherit;
+  font-style: inherit;
 }
