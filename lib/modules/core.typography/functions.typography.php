@@ -2,7 +2,7 @@
 
 function shoestrap_add_typography_class_case($array) {
   global $smof_output, $smof_details;
-    
+
   if ($array['value']['type'] =="select_google_font_hybrid") {
     $output = '';
     unset($array['output'],$array['smof_output']);
@@ -11,34 +11,34 @@ function shoestrap_add_typography_class_case($array) {
     $typography_stored = isset($smof_data[$value['id']]) ? $smof_data[$value['id']] : $value['std'];
     $gfonts = json_decode(file_get_contents(dirname(__FILE__).'/webfonts.json'), true);
     /* Font Size */
-    
+
     //if(isset($typography_stored['size'])) {
       $output .= '<div class="select_wrapper typography-size temphide" original-title="Font size">';
       $output .= '<select class="of-typography of-typography-size select google_font_hybrid_value" name="'.$value['id'].'[size]" id="'. $value['id'].'_size">';
-        for ($i = 9; $i < 80; $i++){ 
+        for ($i = 9; $i < 80; $i++){
           $test = $i.'px';
-          $output .= '<option value="'. $i .'px" ' . selected($typography_stored['size'], $test, false) . '>'. $i .'px</option>'; 
+          $output .= '<option value="'. $i .'px" ' . selected($typography_stored['size'], $test, false) . '>'. $i .'px</option>';
           }
-  
+
       $output .= '</select></div>';
 
-    
+
     //}
-    
+
     // /* Line Height */
     // //if(isset($typography_stored['height'])) {
     //   $output .= '<div class="select_wrapper typography-size" original-title="Line height">';
     //   $output .= '<select class="of-typography of-typography-height select google_font_hybrid_value" name="'.$value['id'].'[height]" id="'. $value['id'].'_height">';
     //     for ($i = 20; $i < 88; $i++) {
     //       $test = $i.'px';
-    //       $output .= '<option value="'. $i .'px" ' . selected($typography_stored['height'], $test, false) . '>'. $i .'px</option>'; 
+    //       $output .= '<option value="'. $i .'px" ' . selected($typography_stored['height'], $test, false) . '>'. $i .'px</option>';
     //     }
     //   $output .= '</select></div>';
     // //}
-    
+
     /* Font Weight */
     //if(isset($typography_stored['style'])) {
-    
+
       $output .= '<div class="select_wrapper typography-style" original-title="Font style">';
       $output .= '<select class="of-typography of-typography-style select google_font_hybrid_value" name="'.$value['id'].'[style]" id="'. $value['id'].'_style">';
       $styles = array('100'=>'Ultra-Light 100',
@@ -58,17 +58,17 @@ function shoestrap_add_typography_class_case($array) {
                 '600-italic'=>'Semi-Bold 600 Italic',
                 '700-italic'=>'Bold 700 Italic',
                 '800-italic'=>'Extra-Bold 800 Italic',
-                '900-italic'=>'Ultra-Bold 900 Italic',                
+                '900-italic'=>'Ultra-Bold 900 Italic',
               );
       if (isset($gfonts[$typography_stored['face']])) {
         $styles = array();
         foreach ($gfonts[$typography_stored['face']]['variants'] as $k=>$v) {
-          $output .= '<option value="'. $v['id'] .'" ' . selected($typography_stored['style'], $v['id'], false) . '>'. $v['name'] .'</option>';   
+          $output .= '<option value="'. $v['id'] .'" ' . selected($typography_stored['style'], $v['id'], false) . '>'. $v['name'] .'</option>';
         }
       } else {
         foreach ($styles as $i=>$style){
-          $output .= '<option value="'. $i .'" ' . selected($typography_stored['style'], $i, false) . '>'. $style .'</option>';   
-        }        
+          $output .= '<option value="'. $i .'" ' . selected($typography_stored['style'], $i, false) . '>'. $style .'</option>';
+        }
       }
 
       $output .= '</select></div>';
@@ -79,19 +79,19 @@ function shoestrap_add_typography_class_case($array) {
       if (isset($gfonts[$typography_stored['face']])) {
         $styles = array();
         foreach ($gfonts[$typography_stored['face']]['subsets'] as $k=>$v) {
-          $output .= '<option value="'. $v['id'] .'" ' . selected($typography_stored['style'], $v['id'], false) . '>'. $v['name'] .'</option>';   
+          $output .= '<option value="'. $v['id'] .'" ' . selected($typography_stored['style'], $v['id'], false) . '>'. $v['name'] .'</option>';
         }
       }
 
       $output .= '</select></div>';
 
-    
+
     //}
 
-    
+
       $output .= '<div class="select_wrapper typography-face" original-title="Font family" style="width: 220px; margin-right: 5px;">';
       $output .= '<select class="of-typography of-typography-new-face select google_font_hybrid_value" name="'.$value['id'].'[face]" id="'. $value['id'].'_face">';
-      
+
       $faces = array(
         "Arial, Helvetica, sans-serif" => "Arial, Helvetica, sans-serif",
         "'Arial Black', Gadget, sans-serif" => "'Arial Black', Gadget, sans-serif",
@@ -110,7 +110,7 @@ function shoestrap_add_typography_class_case($array) {
         "'Times New Roman', Times, serif" => "'Times New Roman', Times, serif",
         "'Trebuchet MS', Helvetica, sans-serif" => "'Trebuchet MS', Helvetica, sans-serif",
         "Verdana, Geneva, sans-serif" => "Verdana, Geneva, sans-serif",
-      );  
+      );
 
       foreach ($faces as $i=>$face) {
         $output .= '<option data-google="false" data-details="'.urlencode(json_encode(
@@ -131,31 +131,31 @@ function shoestrap_add_typography_class_case($array) {
                 '600-italic'=>'Semi-Bold 600 Italic',
                 '700-italic'=>'Bold 700 Italic',
                 '800-italic'=>'Extra-Bold 800 Italic',
-                '900-italic'=>'Ultra-Bold 900 Italic',                
+                '900-italic'=>'Ultra-Bold 900 Italic',
               )
           )).'" value="'. $i .'" ' . selected($typography_stored['face'], $i, false) . '>'. $face .'</option>';
-      }     
+      }
       $output .= '<option value="" style="text-align: center;" />-------- GOOGLE WEB FONTS --------</option>';
 
       $google = "false";
       foreach ($gfonts as $i => $face) {
         if ($i == $typography_stored['face']) {
           $google = "true";
-        } 
+        }
         $output .= '<option data-details="'.urlencode(json_encode($face)).'" data-google="true" value="'.$i.'" ' . selected($typography_stored['face'], $i, false) . '>'. $i .'</option>';
-      } 
+      }
 
       $output .= '</select></div>';
 
       $output .= '<input type="hidden" class="typography-google" name="'.$value['id'].'[google]" value="'.$google.'" />';
-    
+
     /* Font Color */
     if(isset($typography_stored['color'])) {
       $output .= '<div id="' . $value['id'] . '_color_picker" class="colorSelector typography-color" style="float: right;"><div style="background-color: '.$typography_stored['color'].'"></div></div>';
       $output .= '<input data-default-color="'.$value['std']['color'].'" class="of-color of-typography of-typography-color google_font_hybrid_value" original-title="Font color" name="'.$value['id'].'[color]" id="'. $value['id'] .'_color" type="text" value="'. $typography_stored['color'] .'" />';
     }
 
-    
+
     if(isset($value['preview']['text'])){
       $g_text = $value['preview']['text'];
     } else {
@@ -163,14 +163,14 @@ function shoestrap_add_typography_class_case($array) {
     }
     if(isset($value['preview']['size'])) {
       $g_size = 'style="font-size: '. $value['preview']['size'] .';"';
-    } else { 
+    } else {
       $g_size = '';
     }
-    
+
     $output .= '<p class="'.$value['id'].'_ggf_previewer google_font_preview" '. $g_size .'>'. $g_text .'</p>';
     $smof_output = $output;
   }
-  
+
 }
 add_action( 'optionsframework_machine_loop', 'shoestrap_add_typography_class_case' );
 
