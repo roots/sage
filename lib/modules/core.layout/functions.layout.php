@@ -117,3 +117,24 @@ function shoestrap_container_class() {
   if ( $site_style != 'fluid' )
     return 'container';
 }
+
+function shoestrap_content_width_px( $echo = false ) {
+  $layout     = intval( shoestrap_getVariable( 'layout' ) );
+  $container  = filter_var( shoestrap_getVariable( 'container_large_desktop' ), FILTER_SANITIZE_NUMBER_INT );
+  $gutter     = filter_var( shoestrap_getVariable( 'layout_gutter' ), FILTER_SANITIZE_NUMBER_INT );
+
+  $main_span  = filter_var( shoestrap_section_class( 'main', false ), FILTER_SANITIZE_NUMBER_INT );
+
+  // If the layout is #5, override the default function and calculate the span width of the main area again.
+  if ( is_active_sidebar( 'sidebar-secondary' ) && is_active_sidebar( 'sidebar-primary' ) && $layout == 5 )
+    $main_span = 12 - intval( shoestrap_getVariable( 'layout_primary_width' ) ) - intval( shoestrap_getVariable( 'layout_secondary_width' ) );
+
+  $width = $container * ( $main_span / 12 ) - $gutter;
+  // Width should be an integer since we're talking pixels.
+  $width = filter_var( $width, FILTER_SANITIZE_NUMBER_INT );
+
+  if ( $echo )
+    echo $width;
+  else
+    return $width;
+}
