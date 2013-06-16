@@ -9,7 +9,7 @@ function shoestrap_footer_css() {
   $border   = shoestrap_getVariable( 'footer_border_top' );
 
   $style = '<style id="core.footer-css">';
-  $style .= 'footer {';
+  $style .= 'footer.content-info {';
     $style .= 'color:' . $cl . ';';
     if ( $opacity != 1 && $opacity != "" ) :
       $style .= 'background: rgba(' . $rgb . ',' . $opacity . ');';
@@ -20,8 +20,8 @@ function shoestrap_footer_css() {
     $style .= 'border-top:' . $border['width'] . 'px ' . $border['style'] . ' ' . $border['color'] . ';';
     $style .= 'padding: 18px 10px 18px;';
   $style .= '}';
-  
-  
+
+
   $style .= '#copyright-bar { ';
     $style .= 'line-height: 30px;';
   $style .= '}';
@@ -41,7 +41,7 @@ function shoestrap_footer_css() {
   $style .= '#footer_social_bar a:hover, #footer_social_bar a:active { ';
     $style .= 'color:' . $cl_brand . ' !important;';
     $style .= 'text-decoration:none;';
-  $style .= '}';  
+  $style .= '}';
 
   $style .= '</style>';
 
@@ -100,13 +100,13 @@ function shoestrap_footer_html() {
   ?>
   <footer class="content-info" role="contentinfo">
     <div class="<?php echo shoestrap_container_class(); ?>">
-      <?php do_action( 'shoestrap_footer_before_copyright' ); ?>    
+      <?php do_action( 'shoestrap_footer_before_copyright' ); ?>
       <div id="footer-copyright" class="row">
         <article class="<?php echo shoestrap_container_class(); ?>">
           <div id="copyright-bar" class="col col-lg-<?php echo $width; ?>"><?php echo $ftext; ?></div>
           <?php if ($social && count($networks) > 0) : ?>
           <div id="footer_social_bar" class="col col-lg-<?php echo $social_width; ?>">
-          <?php 
+          <?php
             foreach ($networks as $network) {
               if ($network['url'] == "")
                 continue;
@@ -115,7 +115,7 @@ function shoestrap_footer_html() {
               <?php
             }
           ?>
-          </div>      
+          </div>
           <?php endif; ?>
         </article>
       </div>
