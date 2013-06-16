@@ -11,17 +11,16 @@ function shoestrap_background_css( ) {
     $background = shoestrap_getVariable( 'background_pattern' );
   }
 
-  if (shoestrap_getVariable( 'color_body_bg' ) != "") {
-    $color = '#' . str_replace( '#', '', shoestrap_getVariable( 'color_body_bg' ) );
+  if ( shoestrap_getVariable( 'color_body_bg' ) != "" ) {
+    $color = '#' . str_replace( '#', '', shoestrap_getVariable( 'color_body_bg' ) ) . ';';
   }
 
   //$style = ($color) ? "background-color: $color;" : '';
 
-  if ( shoestrap_getVariable( 'color_body_bg_opacity' ) != 1 ) {
+  if ( shoestrap_getVariable( 'color_body_bg_opacity' ) != 100 ) {
     $rgb      = shoestrap_get_rgb( $color, true );
-    $opacity  = ( intval( shoestrap_getVariable( 'color_body_bg_opacity' ) ) )/100;
-    $color    = 'rgb(' . $rgb . ')';
-    $color   .= 'rgba(' . $rgb . ',' . $opacity . ')';
+    $opacity  = ( shoestrap_getVariable( 'color_body_bg_opacity' ) ) / 100;
+    $color   .= 'background: rgba(' . $rgb . ',' . $opacity . ');';
   }
 
   if ( ! $background && ! $color )
