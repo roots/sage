@@ -160,7 +160,7 @@ if ( !function_exists( 'shoestrap_module_blog_options' ) ) {
       "type"      => "sliderui"
     );
 
-    do_action('smof_blog_options_modifier');
+    do_action('shoestrap_module_blog_options_modifier');
 
     $smof_details = array();
     foreach( $of_options as $option ) {
