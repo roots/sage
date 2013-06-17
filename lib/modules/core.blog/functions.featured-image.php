@@ -4,12 +4,17 @@
  * Display featured images on individual posts
  */
 function shoestrap_featured_image() {
-  $toggle = shoestrap_getVariable( 'feat_img_post' );
-  $url    = wp_get_attachment_url( get_post_thumbnail_id() );
-  $width  = shoestrap_getVariable( 'feat_img_post_width' );
-  $height = shoestrap_getVariable( 'feat_img_post_height' );
-  $crop   = true;
-  $retina = shoestrap_getVariable( 'retina_toggle' );
+  $toggle   = shoestrap_getVariable( 'feat_img_archive' );
+  $url      = wp_get_attachment_url( get_post_thumbnail_id() );
+  if (shoestrap_getVariable( 'feat_img_post_custom_toggle' ) == 1) {
+    $width  = shoestrap_getVariable( 'feat_img_post_width' );
+  } else {
+    $width  = shoestrap_content_width_px();
+  }
+  $height   = shoestrap_getVariable( 'feat_img_post_height' );
+  $crop     = true;
+  if ( shoestrap_getVariable( 'retina_toggle' ) == 1 )
+    $retina   = true;
 
   if ( has_post_thumbnail() && '' != get_the_post_thumbnail() ):
     $image = matthewruddy_image_resize( $url, $width, $height, $crop, $retina );
@@ -17,21 +22,3 @@ function shoestrap_featured_image() {
   endif;
 }
 add_action( 'shoestrap_before_the_content', 'shoestrap_featured_image' );
-
-/*
- * Display featured images on post archives
- */
-function shoestrap_featured_image_on_archives() {
-  $toggle = shoestrap_getVariable( 'feat_img_archive' );
-  $url    = wp_get_attachment_url( get_post_thumbnail_id() );
-  $width  = shoestrap_getVariable( 'feat_img_post_width' );
-  $height = shoestrap_getVariable( 'feat_img_post_height' );
-  $crop   = true;
-  $retina = true;
-
-  if ( '' != get_the_post_thumbnail() ):
-    $image = matthewruddy_image_resize( $url, $width, $height, $crop, $retina );
-    echo '<a href="' . get_permalink() . '"><img src="' . $image['url'] . '" /></a>';
-  endif;
-}
-add_action( 'shoestrap_pre_entry_summary', 'shoestrap_featured_image_on_archives' );

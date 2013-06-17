@@ -859,6 +859,9 @@ function shoestrap_complete_less( $url = false ) {
 
 // Custom Shoestrap less-css
 @import "'.$bootstrap.'app";
+
+// Custom LESS file for developers
+@import "custom.less";
 ';
 
 if ($url == true) {
