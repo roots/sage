@@ -439,9 +439,9 @@ function shoestrap_variables_less() {
 
 @input-color-placeholder:        @gray-light;
 
-@input-height-base:              (@line-height-computed + (@padding-base-vertical * 2));
-@input-height-large:             (@line-height-computed + (@padding-large-vertical * 2));
-@input-height-small:             (@line-height-computed + (@padding-small-vertical * 2));
+@input-height-base:              (@line-height-computed + (@padding-base-vertical * 2) + 2);
+@input-height-large:             (@line-height-computed + (@padding-large-vertical * 2) + 2);
+@input-height-small:             (@line-height-computed + (@padding-small-vertical * 2) + 2);
 
 
 // Dropdowns

@@ -227,7 +227,6 @@ table {
 }
 html {
   font-size: 62.5%;
-  -webkit-overflow-scrolling: touch;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 body {
@@ -651,6 +650,18 @@ pre code {
 .col-10,
 .col-11,
 .col-12,
+.col-sm-1,
+.col-sm-2,
+.col-sm-3,
+.col-sm-4,
+.col-sm-5,
+.col-sm-6,
+.col-sm-7,
+.col-sm-8,
+.col-sm-9,
+.col-sm-10,
+.col-sm-11,
+.col-sm-12,
 .col-lg-1,
 .col-lg-2,
 .col-lg-3,
@@ -707,40 +718,43 @@ pre code {
   width: 100%;
 }
 @media (min-width: 758px) {
-  .col-md-1 {
+  .container {
+    max-width: 728px;
+  }
+  .col-sm-1 {
     width: 8.3333333333333%;
   }
-  .col-md-2 {
+  .col-sm-2 {
     width: 16.666666666667%;
   }
-  .col-md-3 {
+  .col-sm-3 {
     width: 25%;
   }
-  .col-md-4 {
+  .col-sm-4 {
     width: 33.333333333333%;
   }
-  .col-md-5 {
+  .col-sm-5 {
     width: 41.666666666667%;
   }
-  .col-md-6 {
+  .col-sm-6 {
     width: 50%;
   }
-  .col-md-7 {
+  .col-sm-7 {
     width: 58.333333333333%;
   }
-  .col-md-8 {
+  .col-sm-8 {
     width: 66.666666666667%;
   }
-  .col-md-9 {
+  .col-sm-9 {
     width: 75%;
   }
-  .col-md-10 {
+  .col-sm-10 {
     width: 83.333333333333%;
   }
-  .col-md-11 {
+  .col-sm-11 {
     width: 91.666666666667%;
   }
-  .col-md-12 {
+  .col-sm-12 {
     width: 100%;
   }
   .col-offset-1 {
@@ -844,6 +858,9 @@ pre code {
   }
 }
 @media (min-width: 970px) {
+  .container {
+    max-width: 940px;
+  }
   .col-lg-1 {
     width: 8.3333333333333%;
   }
@@ -881,17 +898,7 @@ pre code {
     width: 100%;
   }
 }
-@media screen and (min-width: 758px) {
-  .container {
-    max-width: 728px;
-  }
-}
-@media screen and (min-width: 970px) {
-  .container {
-    max-width: 940px;
-  }
-}
-@media screen and (min-width: 1200px) {
+@media (min-width: 1200px) {
   .container {
     max-width: 1170px;
   }
@@ -1098,7 +1105,7 @@ input[type="search"],
 input[type="tel"],
 input[type="color"] {
   display: block;
-  min-height: 36px;
+  min-height: 38px;
   padding: 8px 12px;
   font-size: 14px;
   line-height: 1.428571429;
@@ -1165,8 +1172,8 @@ input[type="checkbox"] {
 }
 select,
 input[type="file"] {
-  height: 36px;
-  line-height: 36px;
+  height: 38px;
+  line-height: 38px;
 }
 select[multiple],
 select[size] {
@@ -1277,7 +1284,7 @@ input[type="url"].input-small,
 input[type="search"].input-small,
 input[type="tel"].input-small,
 input[type="color"].input-small {
-  min-height: 30px;
+  min-height: 32px;
   padding: 5px 10px;
   font-size: 12px;
   border-radius: 3px;
@@ -1316,6 +1323,11 @@ fieldset[disabled] input[type="checkbox"] {
   -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075), 0 0 6px #dbc59e;
   box-shadow: inset 0 1px 1px rgba(0,0,0,0.075), 0 0 6px #dbc59e;
 }
+.has-warning .input-group-addon {
+  color: #c09853;
+  border-color: #c09853;
+  background-color: #fcf8e3;
+}
 .has-error .control-label {
   color: #b94a48;
 }
@@ -1330,6 +1342,11 @@ fieldset[disabled] input[type="checkbox"] {
   -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075), 0 0 6px #d59392;
   box-shadow: inset 0 1px 1px rgba(0,0,0,0.075), 0 0 6px #d59392;
 }
+.has-error .input-group-addon {
+  color: #b94a48;
+  border-color: #b94a48;
+  background-color: #f2dede;
+}
 .has-success .control-label {
   color: #468847;
 }
@@ -1343,6 +1360,11 @@ fieldset[disabled] input[type="checkbox"] {
   border-color: #356635;
   -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075), 0 0 6px #7aba7b;
   box-shadow: inset 0 1px 1px rgba(0,0,0,0.075), 0 0 6px #7aba7b;
+}
+.has-success .input-group-addon {
+  color: #468847;
+  border-color: #468847;
+  background-color: #dff0d8;
 }
 input:focus:invalid,
 textarea:focus:invalid,
@@ -2906,9 +2928,6 @@ a.list-group-item.active .list-group-item-text {
   float: right;
   margin-right: -15px;
 }
-.list-group-item > .glyphicon-chevron-right {
-  margin-right: -15px;
-}
 .list-group-item > .glyphicon + .badge {
   margin-right: 5px;
 }
@@ -3340,8 +3359,8 @@ button.close {
   margin-top: 4px;
 }
 .navbar-form {
-  margin-top: 7px;
-  margin-bottom: 7px;
+  margin-top: 6px;
+  margin-bottom: 6px;
 }
 .navbar-form input,
 .navbar-form select,
@@ -3486,7 +3505,7 @@ button.close {
   }
 }
 .navbar-btn {
-  margin-top: 7px;
+  margin-top: 6px;
 }
 .navbar-text {
   margin-top: 15px;
@@ -5141,7 +5160,7 @@ fieldset[disabled] #social-sharing .shareme .box {
   }
 }
 .topnavbar input.search-query {
-  margin-top: 7px;
+  margin-top: 6px;
 }
 .jumbotron {
   border-radius: 0px;
