@@ -172,32 +172,32 @@ function shoestrap_variables_less() {
     $font_h6 = shoestrap_process_font( shoestrap_getVariable( 'font_h6' ) );
 
     $font_h1_face   = $font_h1['face'];
-    $font_h1_size   = $font_h1['size'];
+    $font_h1_size   = $font_h1['size'] . 'px';
     $font_h1_weight = $font_h1['weight'];
     $font_h1_style  = $font_h1['style'];
 
     $font_h2_face   = $font_h2['face'];
-    $font_h2_size   = $font_h2['size'];
+    $font_h2_size   = $font_h2['size'] . 'px';
     $font_h2_weight = $font_h2['weight'];
     $font_h2_style  = $font_h2['style'];
 
     $font_h3_face   = $font_h3['face'];
-    $font_h3_size   = $font_h3['size'];
+    $font_h3_size   = $font_h3['size'] . 'px';
     $font_h3_weight = $font_h3['weight'];
     $font_h3_style  = $font_h3['style'];
 
     $font_h4_face   = $font_h4['face'];
-    $font_h4_size   = $font_h4['size'];
+    $font_h4_size   = $font_h4['size'] . 'px';
     $font_h4_weight = $font_h4['weight'];
     $font_h4_style  = $font_h4['style'];
 
     $font_h5_face   = $font_h5['face'];
-    $font_h5_size   = $font_h5['size'];
+    $font_h5_size   = $font_h5['size'] . 'px';
     $font_h5_weight = $font_h5['weight'];
     $font_h5_style  = $font_h5['style'];
 
     $font_h6_face   = $font_h6['face'];
-    $font_h6_size   = $font_h6['size'];
+    $font_h6_size   = $font_h6['size'] . 'px';
     $font_h6_weight = $font_h6['weight'];
     $font_h6_style  = $font_h6['style'];
 
@@ -439,9 +439,9 @@ function shoestrap_variables_less() {
 
 @input-color-placeholder:        @gray-light;
 
-@input-height-base:              (@line-height-computed + (@padding-base-vertical * 2));
-@input-height-large:             (@line-height-computed + (@padding-large-vertical * 2));
-@input-height-small:             (@line-height-computed + (@padding-small-vertical * 2));
+@input-height-base:              (@line-height-computed + (@padding-base-vertical * 2) + 2);
+@input-height-large:             (@line-height-computed + (@padding-large-vertical * 2) + 2);
+@input-height-small:             (@line-height-computed + (@padding-small-vertical * 2) + 2);
 
 
 // Dropdowns

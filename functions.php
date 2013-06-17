@@ -18,3 +18,4 @@ require_once locate_template('/lib/custom.php');          // Custom functions
 // Load the modules
 require_once locate_template('/lib/modules/load.modules.php');
 
+do_action( 'shoestrap_include_files' );

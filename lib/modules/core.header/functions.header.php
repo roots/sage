@@ -4,25 +4,34 @@
  * The Header template
  */
 function shoestrap_branding() {
-  if ( shoestrap_getVariable( 'header_toggle' ) == 1 ) { ?>
-    <div class="header-wrapper">
-      <div class="container <?php echo shoestrap_container_class(); ?>">
-        <?php if ( shoestrap_getVariable( 'header_branding' ) == 1 ) { ?>
-          <a class="brand-logo pull-left" href="<?php echo home_url(); ?>/">
-            <h1><?php if ( function_exists( 'shoestrap_logo' ) ) { shoestrap_logo(); } ?></h1>
-          </a>
-        <?php } ?>
-        <?php if ( shoestrap_getVariable( 'header_branding' ) == 1 ) { ?>
-          <div class="pull-right">
-        <?php } else { ?>
-          <div>
-        <?php } ?>
-        <?php dynamic_sidebar('header-area'); ?>
-        </div>
-      </div>
-    </div>
-  <?php
-  }
+  if ( shoestrap_getVariable( 'header_toggle' ) == 1 ) :
+    if ( shoestrap_getVariable( 'site_style' ) == 'boxed' )
+      echo '<div class="container">';
+
+    echo '<div class="header-wrapper">';
+
+    if ( shoestrap_getVariable( 'site_style' ) == 'wide' )
+      echo '<div class="container">';
+
+    if ( shoestrap_getVariable( 'header_branding' ) == 1 ) {
+      echo '<a class="brand-logo" href="' . home_url() . '/">';
+      echo '<h1>';
+      if ( function_exists( 'shoestrap_logo' ) )
+        shoestrap_logo();
+      echo '</h1>';
+      echo '</a>';
+    }
+    if ( shoestrap_getVariable( 'header_branding' ) == 1 )
+      echo '<div class="pull-right">';
+    else
+      echo '<div>';
+
+    dynamic_sidebar('header-area');
+    echo '</div></div>';
+    if ( shoestrap_getVariable( 'site_style' ) != 'fluid' )
+      echo '</div>';
+
+  endif;
 }
 add_action( 'shoestrap_below_top_navbar', 'shoestrap_branding', 5 );
 
@@ -42,11 +51,6 @@ function shoestrap_header_css() {
         } else {
           $style .= 'background: '.$bg.';';
         }
-        $style .= 'padding: 35px 15px;';
-        $style .= 'max-width: 100%;';
-
-
-
       $style .= '}';
     $style .= '</style>';
 

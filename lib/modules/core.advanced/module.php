@@ -35,7 +35,7 @@ if ( !function_exists('shoestrap_module_advanced_options' ) ) {
       "less"      => true,
       "std"       => 0,
       "type"      => "switch",
-    );    
+    );
 
     $of_options[] = array(
       "name"      => __("No gradients - \"Flat\" look.", "shoestrap"),
@@ -144,6 +144,15 @@ if ( !function_exists('shoestrap_module_advanced_options' ) ) {
     );
 
     $of_options[] = array(
+      "name"      => __("Toggle adminbar On/Off", "shoestrap"),
+      "desc"      => __("Turn the admin bar On or Off on the frontend. Default: On.", "shoestrap"),
+      "id"        => "advanced_wordpress_disable_admin_bar_toggle",
+      "std"       => 1,
+      "customizer"=> array(),
+      "type"      => "switch"
+    );
+
+    $of_options[] = array(
       "name"      => __("Debug Hooks", "shoestrap"),
       "desc"      => __("Turn on very useful debug hooks. These will only be visible to admins. Default: Off.", "shoestrap"),
       "id"        => "debug_hooks",
@@ -178,7 +187,7 @@ function shoestrap_debug_hooks() {
         </ul>
         <div class="tab-content">
           <div class="tab-pane active" id="SMOFData">
-            <?php 
+            <?php
               $smof_data_r = print_r($smof_data, true);
               $smof_data_r_sans = htmlspecialchars($smof_data_r, ENT_QUOTES);
               echo "<pre>".$smof_data_r_sans."<pre>";
@@ -189,9 +198,9 @@ function shoestrap_debug_hooks() {
       </div>
       <script>
 
-    /** Fire up jQuery - let's dance! 
+    /** Fire up jQuery - let's dance!
      */
-        jQuery(document).ready(function($){      
+        jQuery(document).ready(function($){
           $('#debugTabs a').click(function (e) {
             e.preventDefault();
             $(this).tab('show');
