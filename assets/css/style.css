@@ -5280,3 +5280,6 @@ h6,
   font-weight: inherit;
   font-style: inherit;
 }
+.header-wrapper {
+  padding: 30px 15px;
+}
