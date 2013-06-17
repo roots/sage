@@ -16,24 +16,26 @@ function shoestrap_secondary_navbar() {
   }
   $social = '<div class="secondary_nav_social">' . $social . '</div>';
   
-  // Navbar
-  $menu = '<div class="secondary_nav_menu">';
-  $menu .= wp_nav_menu(
-      array (
-          'theme_location' => 'secondary_navigation',
-          'walker'         => new shoestrap_secondary_nav_walker,
-          'depth'          => 0,
-          'items_wrap'     => '<nav>%3$s</nav>',
-          'echo'           => false
-      )
-  );
-  $menu .= "</div>";
+  if (has_nav_menu('secondary_navigation')) {
+    // Navbar
+    $menu = '<div class="secondary_nav_menu">';
+    $menu .= wp_nav_menu(
+        array (
+            'theme_location' => 'secondary_navigation',
+            'walker'         => new shoestrap_secondary_nav_walker,
+            'depth'          => 0,
+            'items_wrap'     => '<nav>%3$s</nav>',
+            'echo'           => false
+        )
+    );
+    $menu .= "</div>";      
+  }
 
   // Text
   $text = shoestrap_getVariable( 'navbar_secondary_text');
   
 
-  if (has_nav_menu('secondary_navigation')) : ?>
+  ?>
 
 <style type="text/css">
 .secondary_nav {
@@ -58,17 +60,14 @@ function shoestrap_secondary_navbar() {
   font-size: 14px;
   text-decoration: none;
 }
-
-
-
 </style>
 
-    <div class="row secondary_nav <?php echo shoestrap_navbar_class(); ?>">
+    <div class="secondary_nav <?php echo shoestrap_navbar_class(); ?>">
       <div class="<?php echo shoestrap_container_class(); ?>">
         <?php if ($left != "none") : ?>
           <div class=".col col-lg-<?php if ($right == "") echo "12"; else echo '6'; ?>">
             <?php 
-              if ($left == "menu") {
+              if ($left == "menu" && has_nav_menu('secondary_navigation')) {
                 echo $menu; 
               } else if ($left == "social") {
                 echo $social;
@@ -81,7 +80,7 @@ function shoestrap_secondary_navbar() {
         <?php if ($right != "none") : ?>
           <div class=".col col-lg-<?php if ($left == "") echo "12"; else echo '6'; ?>" style="text-align: right;">
             <?php 
-              if ($right == "menu") {
+              if ($right == "menu" && has_nav_menu('secondary_navigation')) {
                 echo $menu; 
               } else if ($right == "social") {
                 echo $social;
@@ -93,7 +92,7 @@ function shoestrap_secondary_navbar() {
         <?php endif; ?>
       </div>
     </div>
-  <?php endif;
+  <?php 
 }
 add_action( 'shoestrap_pre_navbar', 'shoestrap_secondary_navbar' );
 
