@@ -26,7 +26,7 @@ if ( !function_exists( 'shoestrap_module_page_options' ) ) {
       "std"       => 0,
       "type"      => "switch",
       "customizer"=> array(),
-    );        
+    );
 
     $of_options[] = array(
       "name"      => __("Page Layout", "shoestrap"),
@@ -44,7 +44,7 @@ if ( !function_exists( 'shoestrap_module_page_options' ) ) {
         4         => get_template_directory_uri() . SMOF_DIR . '/addons/assets/images/3cr.png',
         5         => get_template_directory_uri() . SMOF_DIR . '/addons/assets/images/3cm.png',
       )
-    );    
+    );
 /*
 Disabled by roots by default. No real need, but the code here anyways
     $of_options[] = array(
@@ -54,9 +54,9 @@ Disabled by roots by default. No real need, but the code here anyways
       "std"       => 0,
       "type"      => "switch",
       "customizer"=> array(),
-    ); 
+    );
 */
-    do_action('smof_options_modifier');
+    do_action('shoestrap_module_page_options_modifier');
 
     $smof_details = array();
     foreach( $of_options as $option ) {
