@@ -96,7 +96,7 @@ if ( !function_exists( 'shoestrap_module_layout_options' ) ) {
     $of_options[] = array(
       "name"      => __("Breadcrumbs Location", "shoestrap"),
       "desc"      => __("Display Breadcrumbs. Default: OFF.", "shoestrap"),
-      "id"        => "breadcrumbs",
+      "id"        => "breadcrumbs_location",
       "std"       => 0,
       "on"        => "In Header",
       "off"        => "Below Header",
