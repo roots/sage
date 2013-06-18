@@ -7,25 +7,25 @@
  *  we would normally rely on (such as wp_load_image), a separate function has been created for 3.5+.
  *
  *  Providing two separate functions means we can be backwards compatible and future proof. Hooray!
- *  
+ *
  *  The first function (3.5+) supports GD Library and Imagemagick. Worpress will pick whichever is most appropriate.
  *  The second function (3.4.2 and lower) only support GD Library.
  *  If none of the supported libraries are available the function will bail and return the original image.
  *
  *  Both functions produce the exact same results when successful.
  *  Images are saved to the Wordpress uploads directory, just like images uploaded through the Media Library.
- * 
+ *
 	*  Copyright 2013 Matthew Ruddy (http://easinglider.com)
-	*  
+	*
 	*  This program is free software; you can redistribute it and/or modify
-	*  it under the terms of the GNU General Public License, version 2, as 
+	*  it under the terms of the GNU General Public License, version 2, as
 	*  published by the Free Software Foundation.
-	* 
+	*
 	*  This program is distributed in the hope that it will be useful,
 	*  but WITHOUT ANY WARRANTY; without even the implied warranty of
 	*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 	*  GNU General Public License for more details.
-	*  
+	*
 	*  You should have received a copy of the GNU General Public License
 	*  along with this program; if not, write to the Free Software
 	*  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
@@ -33,6 +33,7 @@
  *  @author Matthew Ruddy (http://easinglider.com)
  *  @return array   An array containing the resized image URL, width, height and file type.
  */
+global $wp_version;
 if ( isset( $wp_version ) && version_compare( $wp_version, '3.5' ) >= 0 ) {
 	function matthewruddy_image_resize( $url, $width = NULL, $height = NULL, $crop = true, $retina = false ) {
 
@@ -179,8 +180,8 @@ else {
 			return array( 'url' => $url, 'width' => $width, 'height' => $height );
 
 		// Get default size from database
-		$width = ( !$width ) ? get_option( 'thumbnail_size_w' ) : $width;
-		$height = ( !$height ) ? get_option( 'thumbnail_size_h' ) : $height;
+		$width = ( $width ) ? get_option( 'thumbnail_size_w' ) : $width;
+		$height = ( $height ) ? get_option( 'thumbnail_size_h' ) : $height;
 
 		// Allow for different retina sizes
 		$retina = $retina ? ( $retina === true ? 2 : $retina ) : 1;
@@ -192,7 +193,7 @@ else {
 		// Get image file path
 		$file_path = parse_url( $url );
 		$file_path = $_SERVER['DOCUMENT_ROOT'] . $file_path['path'];
-		
+
 		// Check for Multisite
 		if ( is_multisite() ) {
 			global $blog_id;
@@ -217,7 +218,7 @@ else {
 
 		// No need to resize & create a new image if it already exists!
 		if ( !file_exists( $dest_file_name ) ) {
-		
+
 			/*
 			 *  Bail if this image isn't in the Media Library either.
 			 *  We only want to resize Media Library images, so we can be sure they get deleted correctly when appropriate.
@@ -227,7 +228,7 @@ else {
 			if ( !$get_attachment )
 				return array( 'url' => $url, 'width' => $width, 'height' => $height );
 
-			$image = wp_get_image_editor( $file_path );
+			$image = wp_load_image( $file_path );
 			if ( !is_resource( $image ) )
 				return new WP_Error( 'error_loading_image_as_resource', $image, $file_path );
 
@@ -236,7 +237,7 @@ else {
 			if ( !$size )
 				return new WP_Error( 'file_path_getimagesize_failed', __( 'Failed to get $file_path information using "@getimagesize".', 'rivasliderpro'), $file_path );
 			list( $orig_width, $orig_height, $orig_type ) = $size;
-			
+
 			// Create new image
 			$new_image = wp_imagecreatetruecolor( $dest_width, $dest_height );
 
