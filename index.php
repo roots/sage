@@ -18,10 +18,10 @@ else
 <?php while (have_posts()) : the_post(); ?>
   <?php do_action( 'shoestrap_in_loop_start_action' ); ?>
   <?php
-  if ( !has_action( 'shoestrap_article_content' ) )
+  if ( !has_action( 'shoestrap_content_override' ) )
     get_template_part('templates/content', get_post_format());
   else
-    do_action( 'shoestrap_article_content' );
+    do_action( 'shoestrap_content_override' );
   ?>
 <?php endwhile; ?>
 
