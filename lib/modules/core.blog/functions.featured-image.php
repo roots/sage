@@ -28,6 +28,7 @@ function shoestrap_featured_image() {
 
 
   $crop     = true;
+  $retina   = false;
   if ( shoestrap_getVariable( 'retina_toggle' ) == 1 )
     $retina   = true;
 

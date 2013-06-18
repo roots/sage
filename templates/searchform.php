@@ -1,4 +1,5 @@
-<?php if ( !has_action( 'shoestrap_searchform_override' ) ) : ?>
+<?php
+if ( !has_action( 'shoestrap_searchform_override' ) ) { ?>
 
 <form role="search" method="get" id="searchform" class="form-search input-group" action="<?php echo home_url('/'); ?>">
   <label class="hide" for="s"><?php _e('Search for:', 'roots'); ?></label>
@@ -8,7 +9,4 @@
   </span>
 </form>
 
-<?php
-else :
-  do_action( 'shoestrap_searchform_override' );
-endif;
+<?php } else { do_action( 'shoestrap_searchform_override' ); } ?>

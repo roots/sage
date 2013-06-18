@@ -1,15 +1,11 @@
+
 <?php
-if ( !has_action( 'shoestrap_content_single_override' ) ) {
+if ( !has_action( 'shoestrap_content_single_override' ) ) { 
   while (have_posts()) : the_post(); ?>
     <article <?php post_class(); ?>>
       <header>
         <h1 class="entry-title"><?php the_title(); ?></h1>
-        <?php
-        if ( !has_action( 'shoestrap_entry_meta_override' ) )
-          get_template_part( 'templates/entry-meta' );
-        else
-          do_action( 'shoestrap_entry_meta_override' );
-        ?>
+        <?php get_template_part('templates/entry-meta'); ?>
       </header>
       <div class="entry-content">
         <?php do_action( 'shoestrap_before_the_content' ); ?>
@@ -20,14 +16,17 @@ if ( !has_action( 'shoestrap_content_single_override' ) ) {
       <footer>
         <?php wp_link_pages(array('before' => '<nav class="page-nav"><p>' . __('Pages:', 'roots'), 'after' => '</p></nav>')); ?>
       </footer>
-      <?php
-      if ( post_type_supports( 'post', 'comments' ) ) :
-        if ( !has_action( 'shoestrap_comment_override' ) )
-          comments_template('/templates/comments.php');
-        else
-          do_action( 'shoestrap_comment_override' );
-      endif;
-      ?>
+      <?php if ( post_type_supports( 'post', 'comments' ) ): ?>
+      <?php comments_template('/templates/comments.php'); ?>
+      <?php endif; ?>
     </article>
-  <?php endwhile;
-} else { do_action( 'shoestrap_content_single_override' ); }
+  <?php endwhile; 
+} else { do_action( 'shoestrap_content_single_override' ); } ?>
+
+
+
+
+
+
+
+
