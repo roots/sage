@@ -19,9 +19,14 @@ function shoestrap_logo() {
   }
 }
 
-function shoestrap_branding_class() {
-    if ( shoestrap_getVariable( 'logo' ) )
-      echo 'logo';
-    else
-      echo 'text';
+function shoestrap_branding_class( $echo = true ) {
+  if ( shoestrap_getVariable( 'logo' ) )
+    $class = 'logo';
+  else
+    $class = 'text';
+
+  if ( $echo == false )
+    return $class;
+  else
+    echo $class;
 }
