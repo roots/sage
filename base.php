@@ -7,11 +7,14 @@
   <?php
     do_action('get_header');
     // Use Bootstrap's navbar if enabled in config.php
-    if (current_theme_supports('bootstrap-top-navbar')) {
-      get_template_part('templates/header-top-navbar');
+    if ( current_theme_supports( 'bootstrap-top-navbar') ) {
+      if ( !has_action( 'shoestrap_header_top_navbar_override' ) )
+        get_template_part( 'templates/header-top-navbar' );
+      else
+        do_action( 'shoestrap_header_top_navbar_override' );
     } else {
       if ( !has_action( 'shoestrap_header_override' ) )
-        get_template_part('templates/header');
+        get_template_part( 'templates/header' );
       else
         do_action( 'shoestrap_header_override' );
     }
