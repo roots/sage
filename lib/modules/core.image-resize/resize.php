@@ -179,8 +179,8 @@ else {
 			return array( 'url' => $url, 'width' => $width, 'height' => $height );
 
 		// Get default size from database
-		$width = ( $width ) ? get_option( 'thumbnail_size_w' ) : $width;
-		$height = ( $height ) ? get_option( 'thumbnail_size_h' ) : $height;
+		$width = ( !$width ) ? get_option( 'thumbnail_size_w' ) : $width;
+		$height = ( !$height ) ? get_option( 'thumbnail_size_h' ) : $height;
 
 		// Allow for different retina sizes
 		$retina = $retina ? ( $retina === true ? 2 : $retina ) : 1;
@@ -227,7 +227,7 @@ else {
 			if ( !$get_attachment )
 				return array( 'url' => $url, 'width' => $width, 'height' => $height );
 
-			$image = wp_load_image( $file_path );
+			$image = wp_get_image_editor( $file_path );
 			if ( !is_resource( $image ) )
 				return new WP_Error( 'error_loading_image_as_resource', $image, $file_path );
 
