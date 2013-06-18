@@ -8,7 +8,7 @@ function shoestrap_of_save_options_after($data) {
 
 	if (is_array($data['data'])) {
 		foreach ( $smof_details as $key=>$option ) {
-		  if ( $option['less'] == true ) {
+		  if ( isset($option['less']) ) {
 		    if ( $smof_data[$key] != $data['data'][$key] ) {
 		      $lessChanged = true;
 		    }

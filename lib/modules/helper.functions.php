@@ -110,7 +110,7 @@ function shoestrap_mix_colors( $hex1, $hex2, $percentage ) {
 function shoestrap_getVariable($key) {
   global $smof_details;
   $value = get_theme_mod($key);
-  if ($value == "") {
+  if ($value == "" && isset($smof_details[$key])) {
     $value = $smof_details[$key]['std'];
   }
   return $value;

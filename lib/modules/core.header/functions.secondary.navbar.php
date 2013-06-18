@@ -9,10 +9,11 @@ function shoestrap_secondary_navbar() {
 
   // Social links
   $networks = shoestrap_get_social_links();
+  $social = "";
   foreach ($networks as $network) {
     if ($network['url'] == "")
       continue;
-      $social .= '<a href="'.$network['url'].'"'.$blank.' data-toggle="tooltip" data-placement="top" title="" data-original-title="Tooltip on top"><span class="glyphicon glyphicon-'.$network['icon'].'"></span></a>';
+      $social .= '<a href="'.$network['url'].'" data-toggle="tooltip" data-placement="top" title="" data-original-title="Tooltip on top"><span class="glyphicon glyphicon-'.$network['icon'].'"></span></a>';
   }
   $social = '<div class="secondary_nav_social">' . $social . '</div>';
   

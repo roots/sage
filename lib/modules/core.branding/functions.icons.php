@@ -22,6 +22,6 @@ function shoestrap_icons() {
     <!-- For iPad Retina display --><link rel="apple-touch-icon-precomposed" sizes="144x144" href="<?php echo $ipad_icon_retina['url'] ?>">
   <?php endif;
 
-  echo $content;
+//  echo $content;
 }
 add_action( 'wp_head', 'shoestrap_icons' );

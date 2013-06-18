@@ -166,7 +166,8 @@ if ( !function_exists('shoestrap_module_advanced_options' ) ) {
 
     $smof_details = array();
     foreach($of_options as $option) {
-      $smof_details[$option['id']] = $option;
+      if (isset($option['id']))
+        $smof_details[$option['id']] = $option;
     }
   }
 }
