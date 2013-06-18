@@ -75,7 +75,10 @@
       if ( ( get_theme_mod( 'layout' ) != 0 && ( roots_display_sidebar() ) ) || ( is_front_page() && get_theme_mod( 'layout_sidebar_on_front' ) == 1 ) ) :
         if ( !is_front_page() || ( is_front_page() && get_theme_mod( 'layout_sidebar_on_front' ) == 1 ) ) :
           echo '<aside class="sidebar ' . shoestrap_section_class( 'primary' ) . '" role="complementary">';
-            include roots_sidebar_path();
+            if ( !has_action( 'shoestrap_sidebar_override' ) )
+              include roots_sidebar_path();
+            else
+              do_action( 'shoestrap_sidebar_override' );
           echo '</aside><!-- /.sidebar -->';
         endif;
       endif;
