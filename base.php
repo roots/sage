@@ -59,9 +59,14 @@
 
   <?php if ( shoestrap_getVariable( 'site_style' ) == 'boxed' ) :?><div class="container boxed-container"><?php endif; ?>
   <?php do_action('shoestrap_pre_footer'); ?>
-  <?php get_template_part('templates/footer'); ?>
+  <?php if ( !has_action( 'shoestrap_footer_override' ) ) {
+    get_template_part('templates/footer');
+  } else {
+    do_action( 'shoestrap_footer_override' );
+    } ?>
   <?php do_action('shoestrap_after_footer'); ?>
   <?php if ( shoestrap_getVariable( 'site_style' ) == 'boxed' ) :?></div><?php endif; ?>
+  <?php wp_footer(); ?>
 
 </body>
 </html>
