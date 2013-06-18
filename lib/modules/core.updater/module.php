@@ -112,7 +112,7 @@ add_action( 'admin_init', 'shoestrap_activate_license' );
 function shoestrap_license_key_status_indicator() {
   $license  = shoestrap_getVariable( 'shoestrap_license_key' );
   $status   = shoestrap_getVariable( 'shoestrap_license_key_status' );
-
+  $message = "";
   if ( false !== $license ) :
     if ( $status !== false && $status == 'valid' )
       $message = '<span style="color:green;">' . __( 'active', 'shoestrap' ) . '</span>';
