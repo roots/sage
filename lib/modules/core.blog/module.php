@@ -65,6 +65,7 @@ if ( !function_exists( 'shoestrap_module_blog_options' ) ) {
       "min"       => 10,
       "step"      => 1,
       "max"       => 1000,
+      "edit"      => 1,
       "type"      => "sliderui"
     );
 
@@ -84,20 +85,35 @@ if ( !function_exists( 'shoestrap_module_blog_options' ) ) {
       "name"      => __("Featured Images on Archives", "shoestrap"),
       "desc"      => __("Display featured Images on post archives (such as categories, tags, month view etc). Default: OFF.", "shoestrap"),
       "id"        => "feat_img_archive",
+      "std"       => 1,
+      "type"      => "switch",
+      "customizer"=> array(),
+    );
+
+
+    $of_options[] = array(
+      "name"      => __("Featured Images on Archives Full Width", "shoestrap"),
+      "desc"      => __("Display featured Images on posts. Default: OFF.", "shoestrap"),
+      "id"        => "feat_img_archive_custom_toggle",
       "std"       => 0,
+      "fold"      => 'feat_img_archive',
+      "off"       => __('Full Width', "shoestrap"),
+      "on"        => __('Custom Width', "shoestrap"),
       "type"      => "switch",
       "customizer"=> array(),
     );
 
     $of_options[] = array(
       "name"      => __("Archives Featured Image Width", "shoestrap"),
-      "desc"      => __("Select the width of your featured images on post archives. Default: 550px", "shoestrap"),
+      "desc"      => __("Select the width of your featured images on single posts. Default: 550px", "shoestrap"),
       "id"        => "feat_img_archive_width",
       "fold"      => "feat_img_archive",
       "std"       => 550,
       "min"       => 100,
+      "fold"      => 'feat_img_post_custom_toggle',
       "step"      => 1,
-      "max"       => 1600,
+      "max"       => 1000,
+      "edit"      => 1,
       "type"      => "sliderui"
     );
 
@@ -109,6 +125,7 @@ if ( !function_exists( 'shoestrap_module_blog_options' ) ) {
       "std"       => 300,
       "min"       => 50,
       "step"      => 1,
+      "edit"      => 1,
       "max"       => 1000,
       "type"      => "sliderui"
     );
@@ -127,6 +144,7 @@ if ( !function_exists( 'shoestrap_module_blog_options' ) ) {
       "desc"      => __("Display featured Images on posts. Default: OFF.", "shoestrap"),
       "id"        => "feat_img_post_custom_toggle",
       "std"       => 0,
+      "fold"      => 'feat_img_post',
       "off"       => __('Full Width', "shoestrap"),
       "on"        => __('Custom Width', "shoestrap"),
       "type"      => "switch",

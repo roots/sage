@@ -31,6 +31,72 @@ function shoestrap_get_social_links() {
   return $networks;
 }
 
+$socialShares = array();
+// An array of the available/enabled networks for social sharing
+function shoestrap_get_social_shares() {
+  global $socialShares;
+  if (!empty($socialShares))
+    return $socialShares;
+  $networks   = array();
+  if ( shoestrap_getVariable( 'facebook_share' ) == 1 )
+    $networks['facebook'] = array( 
+      'icon' => 'facebook', 
+      'fullname' => 'Facebook',
+      'url'=> 'http://www.facebook.com/sharer.php?u=' . get_permalink() . '&amp;title=' . get_the_title()
+       );
+  if ( shoestrap_getVariable( 'twitter_share' ) == 1 ) {
+    $networks['twitter'] = array( 
+      'icon' => 'twitter', 
+      'fullname' => 'Twitter', 
+      
+      'url' => 'http://twitter.com/home/?status=' . get_the_title() . ' - ' . get_permalink()
+       );
+      $twittername = shoestrap_get_twitter_username();
+      if ($twittername != "") {
+        $network['twitter']['username'] = $twittername;
+        $networks['twitter']['url'] .= ' via @' . $twittername;
+      }
+  }
+  if ( shoestrap_getVariable( 'reddit_share' ) == 1 )
+    $networks['reddit'] = array( 
+      'icon' => 'reddit',
+      'fullname' => 'Reddit',
+      'url' => 'http://reddit.com/submit?url=' .get_permalink() . '&amp;title=' . get_the_title()
+      );
+  if ( shoestrap_getVariable( 'linkedin_share' ) == 1 )
+    $networks['linkedin'] = array( 
+      'icon' => 'linkedin',   
+      'fullname' => 'LinkedIn',
+      'url'   => 'http://linkedin.com/shareArticle?mini=true&amp;url=' .get_permalink() . '&amp;title=' . get_the_title()
+       );
+  if ( shoestrap_getVariable( 'google_plus_share' ) == 1 )
+    $networks['googleplus'] = array( 
+      'icon' => 'googleplus',
+      'fullname' => 'Google+',
+      'url' => 'https://plus.google.com/share?url=' . get_permalink()
+      );
+  if ( shoestrap_getVariable( 'tumblr_share' ) == 1 )
+    $networks['facebook'] = array( 
+      'icon' => 'tumblr',
+      'fullname' => 'Tumblr',
+      'url' =>  'http://www.tumblr.com/share/link?url=' .urlencode(get_permalink()) . '&amp;name=' . urlencode(get_the_title()) . "&amp;description=".urlencode(the_excerpt())
+       );
+  if ( shoestrap_getVariable( 'pinterest_share' ) == 1 )
+    $networks['pinterest'] = array( 
+      'icon' => 'pinterest',
+      'fullname' => 'Pinterest',
+      'url' => 'http://pinterest.com/pin/create/button/?url=' . get_permalink()
+      );
+  if ( shoestrap_getVariable( 'email_share' ) == 1 )
+    $networks['email'] = array( 
+      'icon' => 'envelope',
+      'fullname' => 'Email',
+      'url' => 'mailto:?subject=' .get_the_title() . '&amp;body=' . get_permalink()
+      );
+  if (!empty($networks))
+    return $networks;
+}
+
 function shoestrap_navbar_social_links() {
   
   // Get all the social networks the user is using
@@ -70,6 +136,19 @@ function shoestrap_navbar_social_links() {
 }
 add_action( 'shoestrap_post_main_nav', 'shoestrap_navbar_social_links' );
 
+// Properly parses the twitter URL if set
+function shoestrap_get_twitter_username() {
+  $twittername = '';
+  $twitter_link = shoestrap_getVariable ( 'twitter_link' );
+
+  if ( $twitter_link != "" ) {
+    $twitter_link = rtrim($twitter_link, '/');
+    $twitter_link = explode('/', $twitter_link);
+    $twittername = end($twitter_link);
+  }  
+  return $twittername;
+}
+
 function shoestrap_social_sharing() {
   // An array of the available networks
   $networks   = array();
@@ -82,10 +161,12 @@ function shoestrap_social_sharing() {
   $networks[] = array( 'on' => shoestrap_getVariable( 'pinterest_share' ),    'icon' => 'pinterest',  'fullname' => 'Pinterest' );
   $networks[] = array( 'on' => shoestrap_getVariable( 'email_share' ),        'icon' => 'envelope',   'fullname' => 'Email' );
 
-  $twittername = '';
+  $twittername = shoestrap_get_twitter_username();
 
   // The base class for icons that will be used
   $baseclass  = 'glyphicon glyphicon-';
+
+
 
   // Build the content
   $content = '';
@@ -94,12 +175,15 @@ function shoestrap_social_sharing() {
 
   foreach ( $networks as $network ) {
     if ( $network['on'] == 1 ) :
-      $show     = true;
+      $show = true;
 
       if ( $network['icon'] == 'facebook' )
         $url    = 'http://www.facebook.com/sharer.php?u=' . get_permalink() . '&amp;title=' . get_the_title();
-      elseif ( $network['icon'] == 'twitter' )
-        $url    = 'http://twitter.com/home/?status=' . get_the_title() . ' - ' . get_permalink() . ' via @' . $twittername;
+      elseif ( $network['icon'] == 'twitter' ) {
+        $url    = 'http://twitter.com/home/?status=' . get_the_title() . ' - ' . get_permalink();
+        if ( $twittername != "" )
+          $url .= ' via @' . $twittername;
+      }
       elseif ( $network['icon'] == 'linkedin' )
         $url    = 'http://linkedin.com/shareArticle?mini=true&amp;url=' .get_permalink() . '&amp;title=' . get_the_title();
       elseif ( $network['icon'] == 'reddit' )
@@ -113,7 +197,7 @@ function shoestrap_social_sharing() {
       elseif ( $network['icon'] == 'pinterest' )
         $url    = 'http://pinterest.com/pin/create/button/?url=' . get_permalink();
 
-      $content .= '<a class="btn btn-default btn-small" href="' . $url . '" target="_blank">';
+      $content .= '<a class="btn btn-default btn-small socialLink" href="' . $url . '" target="_blank">';
       $content .= '<i class="' . $baseclass . $network['icon'] . '"></i>';
       $content .= '</a>';
     endif;
@@ -122,6 +206,6 @@ function shoestrap_social_sharing() {
 
   // If the user has selected to show social links in the navbar, AND has entered a URL, echo the content.
   if ( $show == 1 )
-    echo $content;
+    return $content;
 }
 add_action( 'shoestrap_before_the_content', 'shoestrap_social_sharing', 5 );
