@@ -86,8 +86,7 @@ function shoestrap_phpless_compiler() {
 
   $less = new lessc;
 
-  if ( get_option( 'shoestrap_minimize_css' ) == 1 )
-    $less->setFormatter( "compressed" );
+  $less->setFormatter( "compressed" );
 
   $less->setImportDir( array(
     get_template_directory() . '/assets/less',
@@ -869,7 +868,7 @@ function shoestrap_complete_less( $url = false ) {
 if (is_writable(get_template_directory() . '/assets/less/custom.less')) {
     $bootstrap_less .= '
   // Custom LESS file for developers
-  @import "'.$bootstrap.'custom";';    
+  @import "'.$bootstrap.'custom";';
 }
 
 
