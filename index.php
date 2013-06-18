@@ -1,6 +1,13 @@
-<?php get_template_part('templates/page', 'header'); ?>
+<?php
 
-<?php do_action( 'shoestrap_index_begin' ); ?>
+if ( !has_action( 'shoestrap_page_header_override' )
+  get_template_part('templates/page', 'header');
+else
+  do_action( 'shoestrap_page_header_override' );
+
+do_action( 'shoestrap_index_begin' );
+?>
+
 <?php if (!have_posts()) : ?>
   <div class="alert">
     <?php _e('Sorry, no results were found.', 'roots'); ?>
@@ -27,4 +34,4 @@
       <li class="next"><?php previous_posts_link(__('Newer posts &rarr;', 'roots')); ?></li>
     </ul>
   </nav>
-<?php endif; ?>
+<?php endif;
