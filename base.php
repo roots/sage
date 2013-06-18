@@ -10,7 +10,10 @@
     if (current_theme_supports('bootstrap-top-navbar')) {
       get_template_part('templates/header-top-navbar');
     } else {
-      get_template_part('templates/header');
+      if ( !has_action( 'shoestrap_header_override' ) )
+        get_template_part('templates/header');
+      else
+        do_action( 'shoestrap_header_override' );
     }
   ?>
   <?php if ( shoestrap_getVariable( 'site_style' ) == 'boxed' ) :?></div><?php endif; ?>
