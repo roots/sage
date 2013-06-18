@@ -407,7 +407,7 @@ function shoestrap_variables_less() {
 // -------------------------
 
 @btn-default-color:              #fff;
-@btn-default-bg:                 #a7a9aa;
+@btn-default-bg:                 #474949;
 @btn-default-border:             @btn-default-bg;
 
 @btn-primary-color:              @btn-default-color;
