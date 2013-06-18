@@ -20,9 +20,14 @@ if ( !has_action( 'shoestrap_content_single_override' ) ) {
       <footer>
         <?php wp_link_pages(array('before' => '<nav class="page-nav"><p>' . __('Pages:', 'roots'), 'after' => '</p></nav>')); ?>
       </footer>
-      <?php if ( post_type_supports( 'post', 'comments' ) ): ?>
-      <?php comments_template('/templates/comments.php'); ?>
-      <?php endif; ?>
+      <?php
+      if ( post_type_supports( 'post', 'comments' ) ) :
+        if ( !has_action( 'shoestrap_comment_override' ) )
+          comments_template('/templates/comments.php');
+        else
+          do_action( 'shoestrap_comment_override' );
+      endif;
+      ?>
     </article>
   <?php endwhile;
 } else { do_action( 'shoestrap_content_single_override' ); }
