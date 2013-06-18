@@ -53,10 +53,10 @@ function shoestrap_css_not_writeable($array){
       if (!is_writable($filename)) {
         $css = shoestrap_compile_css();
       }
-      if (!is_writable($filename_less)) {
-        // Not needed
-        //$css = shoestrap_compile_css('less');
-      }
+      // if (!is_writable($filename_less)) {
+      //   Not needed
+      //   $css = shoestrap_compile_css('less');
+      // }
       //if (!is_writable($filename) || !is_writable($filename_less)) {
       if (!is_writable($filename)) {
         echo '<div class="error"><p>';
@@ -864,10 +864,14 @@ function shoestrap_complete_less( $url = false ) {
 
 // Custom Shoestrap less-css
 @import "'.$bootstrap.'app";
-
-// Custom LESS file for developers
-@import "custom.less";
 ';
+
+if (is_writable(get_template_directory() . '/assets/less/custom.less')) {
+    $bootstrap_less .= '
+  // Custom LESS file for developers
+  @import "'.$bootstrap.'custom";';    
+}
+
 
 if ($url == true) {
   $bootstrap_less .="@elusiveWebfontPath: '".$fonts."'; // Elusive webfonts path;
