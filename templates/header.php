@@ -1,6 +1,3 @@
-<?php
-if ( !has_action( 'shoestrap_header_override' ) ) { ?>
-
 <header class="banner" role="banner">
   <div class="container">
     <nav class="nav-main" role="navigation">
@@ -12,5 +9,3 @@ if ( !has_action( 'shoestrap_header_override' ) ) { ?>
     </nav>
   </div>
 </header>
-
-<?php } else { do_action( 'shoestrap_header_override' ); } ?>
