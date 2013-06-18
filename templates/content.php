@@ -4,7 +4,12 @@ if ( !has_action( 'shoestrap_content_override' ) ) { ?>
   <article <?php post_class(); ?>>
     <header>
       <h2 class="entry-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-      <?php get_template_part('templates/entry-meta'); ?>
+      <?php
+      if ( !has_action( 'shoestrap_entry_meta_override' ) )
+        get_template_part( 'templates/entry-meta' );
+      else
+        do_action( 'shoestrap_entry_meta_override' );
+      ?>
     </header>
     <div class="entry-summary">
       <?php
