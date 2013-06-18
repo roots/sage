@@ -8,6 +8,7 @@
   </span>
 </form>
 
-<?php else
+<?php
+else :
   do_action( 'shoestrap_searchform_override' );
 endif;
