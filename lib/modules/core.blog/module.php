@@ -158,7 +158,7 @@ if ( !function_exists( 'shoestrap_module_blog_options' ) ) {
       "max"       => 1000,
       "edit"      => 1,
       "type"      => "sliderui"
-    );
+    );   
 
     do_action('shoestrap_module_blog_options_modifier');
 

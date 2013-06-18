@@ -1,4 +1,6 @@
 <?php
+if ( !has_action( 'shoestrap_entry_meta_override' ) ) { 
+
   // calculate how many columns there are for the current post's metadata
   if ( has_tag() && get_comments_number() >= 1 )
     $columnclass = 3;
@@ -39,3 +41,5 @@
     <?php endif; ?>
 
   </div>
+
+<?php } else { do_action( 'shoestrap_entry_meta_override' ); } ?>

@@ -119,7 +119,11 @@ function shoestrap_secondary_navbar_css() {
   if (shoestrap_getVariable( 'secondary_navbar_toggle') == 0)
     return;
 
-  $bg = shoestrap_getVariable( 'navbar_secondary_bg');
+  if (shoestrap_getVariable( 'navbar_secondary_bg' ) == 1)
+    $bg = shoestrap_getVariable( 'color_brand_primary' );
+  else
+    $bg = shoestrap_getVariable( 'color_brand_secondary' );
+
   $cl = shoestrap_getVariable( 'navbar_secondary_color' );
   $opacity = (intval(shoestrap_getVariable( 'navbar_secondary_opacity' )))/100;
 

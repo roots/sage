@@ -1,3 +1,5 @@
+<?php
+if ( !has_action( 'shoestrap_footer_override' ) ) { ?>
 <?php do_action( 'shoestrap_before_footer' );?>
 <?php if ( !has_action( 'shoestrap_footer_override' ) ) { ?>
   <footer class="content-info" role="contentinfo">
@@ -8,4 +10,5 @@
   </footer>
 <?php } else { do_action( 'shoestrap_footer_override' ); } ?>
 <?php do_action( 'shoestrap_after_footer' );?>
+<?php } else { do_action( 'shoestrap_footer_override' ); } ?>
 <?php wp_footer();

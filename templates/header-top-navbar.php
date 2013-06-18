@@ -1,3 +1,5 @@
+<?php
+if ( !has_action( 'shoestrap_header_top_navbar_override' ) ) { ?>
 <?php do_action( 'shoestrap_pre_navbar' ); ?>
 <header id="banner" class="topnavbar <?php echo shoestrap_navbar_class(); ?>" role="banner">
   <div class="<?php echo shoestrap_container_class(); ?>">
@@ -29,3 +31,5 @@
   </div>
   <?php do_action( 'shoestrap_post_navbar' ); ?>
 </header>
+
+<?php } else { do_action( 'shoestrap_header_top_navbar_override' ); } ?>

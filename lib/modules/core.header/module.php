@@ -218,12 +218,14 @@ if ( !function_exists( 'shoestrap_module_header_options' ) ) {
 
     $of_options[] = array(
       "name"      => __("Secondary Navbar Background Color", "shoestrap"),
-      "desc"      => __("Select the background color for your header. Default: #EEEEEE.", "shoestrap"),
+      "desc"      => __("Select the brand color that will serve as the background color. You can select the brand primary or secondary color. Default: Primary.", "shoestrap"),
       "id"        => "navbar_secondary_bg",
-      "std"       => "#EEEEEE",
+      "std"       => 1,
+      "on"        => "Primary",
+      "off"       => "Secondary",      
       "customizer"=> array(),
       'fold'      => 'secondary_navbar_toggle',
-      "type"      => "color"
+      "type"      => "switch"
     );
 
     $of_options[] = array(

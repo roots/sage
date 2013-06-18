@@ -1,3 +1,4 @@
+
 <?php
 if ( !has_action( 'shoestrap_content_single_override' ) ) { 
   while (have_posts()) : the_post(); ?>
