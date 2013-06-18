@@ -1,4 +1,3 @@
-<?php do_action( 'shoestrap_pre_navbar' ); ?>
 <header id="banner" class="topnavbar <?php echo shoestrap_navbar_class(); ?>" role="banner">
   <div class="<?php echo shoestrap_container_class(); ?>">
   <a class="btn navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
@@ -27,5 +26,4 @@
     </nav>
     <?php do_action( 'shoestrap_post_main_nav' ); ?>
   </div>
-  <?php do_action( 'shoestrap_post_navbar' ); ?>
 </header>

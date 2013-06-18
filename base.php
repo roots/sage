@@ -8,6 +8,8 @@
     do_action('get_header');
     // Use Bootstrap's navbar if enabled in config.php
     if ( current_theme_supports( 'bootstrap-top-navbar') ) {
+      do_action( 'shoestrap_pre_navbar' );
+
       if ( !has_action( 'shoestrap_header_top_navbar_override' ) )
         get_template_part( 'templates/header-top-navbar' );
       else
@@ -18,6 +20,7 @@
       else
         do_action( 'shoestrap_header_override' );
     }
+    do_action( 'shoestrap_post_navbar' );
   ?>
   <?php if ( shoestrap_getVariable( 'site_style' ) == 'boxed' ) :?></div><?php endif; ?>
 
