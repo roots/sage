@@ -1,4 +1,3 @@
-
 <?php
 if ( !has_action( 'shoestrap_content_single_override' ) ) {
   while (have_posts()) : the_post(); ?>
@@ -26,12 +25,4 @@ if ( !has_action( 'shoestrap_content_single_override' ) ) {
       <?php endif; ?>
     </article>
   <?php endwhile;
-} else { do_action( 'shoestrap_content_single_override' ); } ?>
-
-
-
-
-
-
-
-
+} else { do_action( 'shoestrap_content_single_override' ); }
