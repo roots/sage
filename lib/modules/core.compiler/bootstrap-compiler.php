@@ -53,7 +53,8 @@ function shoestrap_css_not_writeable($array){
         $css = shoestrap_compile_css();
       }
       if (!is_writable($filename_less)) {
-        $css = shoestrap_compile_css('less');
+        // Not needed
+        //$css = shoestrap_compile_css('less');
       }
       if (!is_writable($filename) || !is_writable($filename_less)) {
         echo '<div class="error"><p>';
@@ -131,7 +132,8 @@ function shoestrap_process_font( $font ) {
     $font['weight'] = "inherit";
     $font['style'] = "inherit";
   }
-  $font['size'] = filter_var( $font['size'], FILTER_SANITIZE_NUMBER_INT );
+  if ( isset($font['size']) )
+    $font['size'] = filter_var( $font['size'], FILTER_SANITIZE_NUMBER_INT );
   if ( $font['weight'] == "" )
     $font['weight'] = "inherit";
 
