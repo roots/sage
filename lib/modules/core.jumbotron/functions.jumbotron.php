@@ -58,7 +58,7 @@ function shoestrap_jumbotron_css() {
     $color = '#' . str_replace( '#', '', shoestrap_getVariable( 'jumbotron_background_color' ) );
   }
 
-  if ( ! $background && ! $color )
+  if ( !isset($background) && !isset($color) )
     return;
 
   $style = $color ? "background-color: $color;" : '';
@@ -67,7 +67,7 @@ function shoestrap_jumbotron_css() {
     $style .= "background-attachment: fixed;";
   }
 
-  if ( $background ) {
+  if ( isset($background) && $background ) {
     $image .= "background-image: url( '$background' );";
   }
 

@@ -46,24 +46,28 @@ function shoestrap_css_not_writeable($array){
   if ( $current_screen->parent_base == 'themes' ) {
     $filename = shoestrap_css();
     $url = shoestrap_css('url');
-    $filename_less = str_replace(".css", ".less", $filename);
+    //$filename_less = str_replace(".css", ".less", $filename);
 
-    if (!is_writable($filename) || !is_writable($filename_less)) {
+    //if (!is_writable($filename) || !is_writable($filename_less)) {
+    if (!is_writable($filename)) {
       if (!is_writable($filename)) {
         $css = shoestrap_compile_css();
       }
       if (!is_writable($filename_less)) {
-        $css = shoestrap_compile_css('less');
+        // Not needed
+        //$css = shoestrap_compile_css('less');
       }
-      if (!is_writable($filename) || !is_writable($filename_less)) {
+      //if (!is_writable($filename) || !is_writable($filename_less)) {
+      if (!is_writable($filename)) {
         echo '<div class="error"><p>';
-        echo __( "The following file(s) are not writable and must be so in order to utilize this theme. Please update their permissions.", "shoestrap");
+        //echo __( "The following file(s) are not writable and must be so in order to utilize this theme. Please update their permissions.", "shoestrap");
+        echo __( "The following file is not writable and must be so in order to utilize this theme. Please update their permissions.", "shoestrap");
         if (!is_writable($filename)) {
           echo '<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="'.$url.'" target="_blank">'.$url.'</a>';
         }
-        if (!$filename_less) {
-          echo '<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="'.str_replace(".css", ".less", $url).'" target="_blank">'.str_replace(".css", ".less", $url).'</a>';
-        }
+        // if (!$filename_less) {
+        //   echo '<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="'.str_replace(".css", ".less", $url).'" target="_blank">'.str_replace(".css", ".less", $url).'</a>';
+        // }
         echo '</p></div>';
       }
     }
@@ -131,7 +135,8 @@ function shoestrap_process_font( $font ) {
     $font['weight'] = "inherit";
     $font['style'] = "inherit";
   }
-  $font['size'] = filter_var( $font['size'], FILTER_SANITIZE_NUMBER_INT );
+  if ( isset($font['size']) )
+    $font['size'] = filter_var( $font['size'], FILTER_SANITIZE_NUMBER_INT );
   if ( $font['weight'] == "" )
     $font['weight'] = "inherit";
 

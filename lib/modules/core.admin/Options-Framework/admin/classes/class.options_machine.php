@@ -35,7 +35,7 @@ class Options_Machine {
 	 	- The ultimate objective of this function is to prevent the "undefined index"
 	 	  errors some authors are having due to malformed options array
 	 */
-	function sanitize_option( $value ) {
+	static function sanitize_option( $value ) {
 		$defaults = array(
 			"name" 		=> "",
 			"desc" 		=> "",
