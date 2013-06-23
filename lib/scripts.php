@@ -21,11 +21,6 @@ function roots_scripts() {
     wp_enqueue_style('shoestrap_css', get_template_directory_uri() . '/assets/css/style.css', false, null);
   }
 
-  // Load style.css from child theme
-  if (is_child_theme()) {
-    wp_enqueue_style('roots_child', get_stylesheet_uri(), false, null);
-  }
-
   // jQuery is loaded using the same method from HTML5 Boilerplate:
   // Grab Google CDN's latest jQuery with a protocol relative URL; fallback to local if offline
   // It's kept in the header instead of footer to avoid conflicts with plugins.
