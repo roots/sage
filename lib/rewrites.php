@@ -2,14 +2,13 @@
 /**
  * URL rewriting
  *
- * Rewrites currently do not happen for child themes (or network installs)
- * @todo https://github.com/retlehs/roots/issues/461
+ * Rewrites do not happen for multisite installations or child themes
  *
  * Rewrite:
- *   /wp-content/themes/themename/css/ to /css/
- *   /wp-content/themes/themename/js/  to /js/
- *   /wp-content/themes/themename/img/ to /img/
- *   /wp-content/plugins/              to /plugins/
+ *   /wp-content/themes/themename/assets/css/ to /assets/css/
+ *   /wp-content/themes/themename/assets/js/  to /assets/js/
+ *   /wp-content/themes/themename/assets/img/ to /assets/img/
+ *   /wp-content/plugins/                     to /plugins/
  *
  * If you aren't using Apache, alternate configuration settings can be found in the docs.
  *

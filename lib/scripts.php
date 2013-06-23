@@ -3,8 +3,9 @@
  * Enqueue scripts and stylesheets
  *
  * Enqueue stylesheets in the following order:
- * 1. /theme/assets/css/style.css
- * 4. /child-theme/style.css (if a child theme is activated)
+ * 1. /theme/assets/css/bootstrap.css
+ * 2. /theme/assets/css/bootstrap-responsive.css
+ * 3. /theme/assets/css/app.css
  *
  * Enqueue scripts in the following order:
  * 1. jquery-1.10.1.min.js via Google CDN
@@ -18,11 +19,6 @@ function roots_scripts() {
   global $wp_customize;
   if ( !isset( $wp_customize ) ) {
     wp_enqueue_style('shoestrap_css', get_template_directory_uri() . '/assets/css/style.css', false, null);
-  }
-
-  // Load style.css from child theme
-  if (is_child_theme()) {
-    wp_enqueue_style('roots_child', get_stylesheet_uri(), false, null);
   }
 
   // jQuery is loaded using the same method from HTML5 Boilerplate:

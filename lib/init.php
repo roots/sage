@@ -27,11 +27,3 @@ add_action('after_setup_theme', 'roots_setup');
 
 // Backwards compatibility for older than PHP 5.3.0
 if (!defined('__DIR__')) { define('__DIR__', dirname(__FILE__)); }
-
-// Define helper constants
-$get_theme_name = explode('/themes/', get_template_directory());
-
-define('RELATIVE_PLUGIN_PATH',  str_replace(home_url() . '/', '', plugins_url()));
-define('RELATIVE_CONTENT_PATH', str_replace(home_url() . '/', '', content_url()));
-define('THEME_NAME',            next($get_theme_name));
-define('THEME_PATH',            RELATIVE_CONTENT_PATH . '/themes/' . THEME_NAME);
