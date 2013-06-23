@@ -1,0 +1,9 @@
+# Tell Travis CI we're using PHP
+language: php
+
+# Versions of PHP to test against
+php:
+  - 5.3
+  - 5.4
+
+script: phpunit
