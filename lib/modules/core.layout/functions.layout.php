@@ -151,10 +151,6 @@ function shoestrap_content_width_px( $echo = false ) {
   // If the layout is #5, override the default function and calculate the span width of the main area again.
   if ( is_active_sidebar( 'sidebar-secondary' ) && is_active_sidebar( 'sidebar-primary' ) && $layout == 5 )
     $main_span = 12 - intval( shoestrap_getVariable( 'layout_primary_width' ) ) - intval( shoestrap_getVariable( 'layout_secondary_width' ) );
-  else if ( !is_active_sidebar( 'sidebar-secondary' ) && is_active_sidebar( 'sidebar-primary' ) && $layout == 5 ) {
-    //$main_span = 12 - intval( shoestrap_getVariable( 'layout_primary_width' ) );
-  }
-
 
   $width = $container * ( $main_span / 12 ) - $gutter;
 
