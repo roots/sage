@@ -48,9 +48,10 @@ if( function_exists( 'wp_get_theme' ) ) {
 
 define( 'SMOF_VERSION', '1.5' );
 
+$paths = shoestrap_getFilePaths(dirname(__FILE__));
 
 if( !defined('SMOF_DIR') )
-  define( 'SMOF_DIR','/lib/modules/core.admin/');
+  define( 'SMOF_DIR', $paths['relativepath']);
 
 if( !defined('ADMIN_PATH') )
   define( 'ADMIN_PATH', get_template_directory() . SMOF_DIR . "Options-Framework/admin/" );

@@ -71,6 +71,8 @@
         include roots_template_path();
       echo '</div><!-- /.main -->';
 
+      do_action('shoestrap_after_main');
+
       // Add the PRIMARY sidebar when applicable.
       if ( ( get_theme_mod( 'layout' ) != 0 && ( roots_display_sidebar() ) ) || ( is_front_page() && get_theme_mod( 'layout_sidebar_on_front' ) == 1 ) ) :
         if ( !is_front_page() || ( is_front_page() && get_theme_mod( 'layout_sidebar_on_front' ) == 1 ) ) :

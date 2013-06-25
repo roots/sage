@@ -4,15 +4,18 @@
  * Calculates the classes of the main area, main sidebar and secondary sidebar
  */
 function shoestrap_section_class( $target, $echo = false ) {
+global $smof_data;
   $layout = intval( shoestrap_getVariable( 'layout' ) );
   if (is_page() && shoestrap_getVariable( 'page_layout_toggle' ) == 1) {
     $layout = intval( shoestrap_getVariable( 'page_layout' ) );
   } else if (!is_page() && shoestrap_getVariable( 'blog_layout_toggle' ) == 1) {
     $layout = intval( shoestrap_getVariable( 'blog_layout' ) );
   }
+  if ( !is_active_sidebar( 'sidebar-secondary' ) && is_active_sidebar( 'sidebar-primary' ) && $layout == 5 ) {
+    $layout = 3;
+  }  
   $first  = intval( shoestrap_getVariable( 'layout_primary_width' ) );
   $second = intval( shoestrap_getVariable( 'layout_secondary_width' ) );
-
   $base   = 'col col-lg-';
   // Set some defaults so that we can change them depending on the selected template
   $main       = $base . 12;
@@ -23,6 +26,7 @@ function shoestrap_section_class( $target, $echo = false ) {
   if ( is_active_sidebar( 'sidebar-secondary' ) && is_active_sidebar( 'sidebar-primary' ) ) {
     if ( $layout == 5 ) {
       $main       = $base . ( 12 - floor( ( 12 * $first ) / ( 12 - $second ) ) );
+
       $primary    = $base . floor( ( 12 * $first ) / ( 12 - $second ) );
       $secondary  = $base . $second;
       $wrapper    = $base . ( 12 - $second );
@@ -119,6 +123,7 @@ function shoestrap_container_class() {
 }
 
 function shoestrap_content_width_px( $echo = false ) {
+  global $smof_details;
 
   $layout     = intval( shoestrap_getVariable( 'layout' ) );
   if (is_page() && shoestrap_getVariable( 'page_layout_toggle' ) == 1) {
@@ -126,10 +131,16 @@ function shoestrap_content_width_px( $echo = false ) {
   } else if (!is_page() && shoestrap_getVariable( 'blog_layout_toggle' ) == 1) {
     $layout = intval( shoestrap_getVariable( 'blog_layout' ) );
   }  
-
-  $container  = filter_var( shoestrap_getVariable( 'container_large_desktop' ), FILTER_SANITIZE_NUMBER_INT );
-
-  $gutter     = filter_var( shoestrap_getVariable( 'layout_gutter' ), FILTER_SANITIZE_NUMBER_INT );
+  if ( !is_active_sidebar( 'sidebar-secondary' ) && is_active_sidebar( 'sidebar-primary' ) && $layout == 5 ) {
+    $layout = 3;
+  }
+  if ( shoestrap_getVariable( 'custom_grid' ) == 1) {
+    $container  = filter_var( shoestrap_getVariable( 'container_large_desktop' ), FILTER_SANITIZE_NUMBER_INT );
+    $gutter     = filter_var( shoestrap_getVariable( 'layout_gutter' ), FILTER_SANITIZE_NUMBER_INT );
+  } else {
+    $container = $smof_details['container_large_desktop']['std'];
+    $gutter = $smof_details['layout_gutter']['std'];
+  }
 
   $main_span  = filter_var( shoestrap_section_class( 'main', false ), FILTER_SANITIZE_NUMBER_INT );
   $main_span  = str_replace( "-" , "", $main_span );
@@ -137,7 +148,9 @@ function shoestrap_content_width_px( $echo = false ) {
   // If the layout is #5, override the default function and calculate the span width of the main area again.
   if ( is_active_sidebar( 'sidebar-secondary' ) && is_active_sidebar( 'sidebar-primary' ) && $layout == 5 )
     $main_span = 12 - intval( shoestrap_getVariable( 'layout_primary_width' ) ) - intval( shoestrap_getVariable( 'layout_secondary_width' ) );
-
+  else if ( !is_active_sidebar( 'sidebar-secondary' ) && is_active_sidebar( 'sidebar-primary' ) && $layout == 5 ) {
+    //$main_span = 12 - intval( shoestrap_getVariable( 'layout_primary_width' ) );
+  }
 
 
   $width = $container * ( $main_span / 12 ) - $gutter;

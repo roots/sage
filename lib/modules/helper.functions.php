@@ -121,3 +121,20 @@ if ( shoestrap_getVariable( 'advanced_wordpress_disable_admin_bar_toggle' ) == 0
   show_admin_bar( false );
 else
   show_admin_bar( true );
+
+
+define('themeURI', get_template_directory_uri());
+define('themeFOLDER', get_template());
+define('themePATH', get_theme_root());
+
+function shoestrap_getFilePaths($file, $trail="/") {
+    $return['themeuri'] = themeURI;
+    $folder = themeFOLDER;
+    $return['themepath'] = themePATH.$trail;
+    $parts = explode($folder, $file);
+    $return['path'] = $file.$trail;
+    $return['relativepath'] = $parts[1].$trail;
+    $return['uri'] = $return['themeuri'].$parts[1].$trail;
+    $return['relativeuri'] = $parts[1].$trail;
+    return $return;
+}
