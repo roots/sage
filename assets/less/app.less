@@ -293,12 +293,12 @@ a.toggle-nav {
 
 .navbar {
   &.style1 {
-    li > a {
-      padding-bottom: (((@navbar-height - @line-height-computed) / 2) - 3);
+    li:first-child > a {
+      //padding-bottom: (((@navbar-height - @line-height-computed) / 2) - 3);
     }
-    .active > a,
-    .active > a:hover,
-    .active > a:focus {
+    .active > a:first-child,
+    .active > a:first-child:hover,
+    .active > a:first-child:focus {
       background: @navbar-bg;
       border-bottom: 5px solid @brand-primary;
     }

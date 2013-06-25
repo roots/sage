@@ -67,6 +67,8 @@ function shoestrap_add_typography_class_case($array) {
         }
       } else {
         foreach ($styles as $i=>$style){
+          if (!isset($typography_stored['style']))
+            $typography_stored['style'] = false;
           $output .= '<option value="'. $i .'" ' . selected($typography_stored['style'], $i, false) . '>'. $style .'</option>';
         }
       }
