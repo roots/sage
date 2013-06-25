@@ -99,6 +99,9 @@ function shoestrap_layout_css() {
   } else if (!is_page() && shoestrap_getVariable( 'blog_layout_toggle' ) == 1) {
     $layout = intval( shoestrap_getVariable( 'blog_layout' ) );
   }
+  if ( !is_active_sidebar( 'sidebar-secondary' ) && is_active_sidebar( 'sidebar-primary' ) && $layout == 5 ) {
+    $layout = 3;
+  }  
 
   $site_style  = shoestrap_getVariable( 'site_style' );
   $margin = shoestrap_getVariable( 'navbar_margin_top' );
