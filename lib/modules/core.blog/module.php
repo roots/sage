@@ -201,6 +201,4 @@ function shoestrap_core_blog_comments_toggle() {
   }
 }
 
-//add_filter( 'comments_template', 'remove_comments_template_on_blog', 11 );
-
 add_action( 'init','shoestrap_core_blog_comments_toggle', 1 );
