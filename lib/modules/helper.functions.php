@@ -126,15 +126,28 @@ else
 define('themeURI', get_template_directory_uri());
 define('themeFOLDER', get_template());
 define('themePATH', get_theme_root());
+define('themeNAME', wp_get_theme());
 
 function shoestrap_getFilePaths($file, $trail="/") {
     $return['themeuri'] = themeURI;
-    $folder = themeFOLDER;
-    $return['themepath'] = themePATH.$trail;
-    $parts = explode($folder, $file);
-    $return['path'] = $file.$trail;
-    $return['relativepath'] = $parts[1].$trail;
-    $return['uri'] = $return['themeuri'].$parts[1].$trail;
-    $return['relativeuri'] = $parts[1].$trail;
+    $return['folder'] = themeFOLDER;
+    $return['name'] = themeNAME;
+    $return['themepath'] = themePATH.'/'.$return['folder'];
+    if ($return['themepath'][strlen($return['themepath'])-1] != $trail)
+      $return['themepath'] .= $trail;
+    $parts = explode($return['folder'], $file);
+    $return['path'] = $file;
+    if ($return['path'][strlen($return['path'])-1] != $trail)
+      $return['path'] .= $trail;
+    $return['relativepath'] = str_replace($return['themepath'], '/', $return['path']);
+    if ($return['relativepath'][strlen($return['relativepath'])-1] != $trail)
+      $return['relativepath'] .= $trail;    
+    $return['uri'] = $return['themeuri'].end($parts);
+    if ($return['uri'][strlen($return['uri'])-1] != $trail)
+      $return['uri'] .= $trail;    
+    $return['relativeuri'] = end($parts);
+    if ($return['relativeuri'][strlen($return['relativeuri'])-1] != $trail)
+      $return['relativeuri'] .= $trail;
+
     return $return;
 }
