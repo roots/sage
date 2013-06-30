@@ -1,170 +1,150 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: roots-russian\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: \n"
-"PO-Revision-Date: 2013-03-01 21:19+0400\n"
-"Last-Translator: Fedor Sumkin <qosys.net@gmai.com>\n"
-"Language-Team: Fedor Sumkin <qosys.net@gmail.com>\n"
+"Project-Id-Version: Roots Theme ru_RU\n"
+"PO-Revision-Date: 2013-06-01 03:16+0400\n"
+"Last-Translator: Di M Dub <zensimilia@gmai.com>\n"
+"Language-Team: Fedor Sumkin <qosys.net@gmail.com>, Di M Dub <zensimilia@gmai.com>\n"
 "Language: ru_RU\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11) ? 0 : ((n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20)) ? 1 : 2);\n"
-"X-Poedit-KeywordsList: _;gettext;gettext_noop;__;_e\n"
-"X-Poedit-Basepath: .\n"
-"X-Generator: Poedit 1.5.5\n"
-"X-Poedit-SearchPath-0: .\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11) ? 0 : ((n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20)) ? 1 : 2);\n"
 
-#: 404.php:5
-msgid ""
-"The page you are looking for might have been removed, had its name changed, "
-"or is temporarily unavailable."
-msgstr ""
-"Страница, которую вы ищете, возможно, была удалена, переименована, или она "
-"временно недоступна."
+#: 404.php:4
+msgid "Sorry, but the page you were trying to view does not exist."
+msgstr "Извините, но страница, которую вы пытаетесь просмотреть, не существует."
 
-#: 404.php:8
-msgid "Please try the following:"
-msgstr "Пожалуйста, попробуйте следующее:"
+#: 404.php:7
+msgid "It looks like this was the result of either:"
+msgstr "Похоже, результатом этого могло служить:"
+
+#: 404.php:9
+msgid "a mistyped address"
+msgstr "опечатка в адресе"
 
 #: 404.php:10
-msgid "Check your spelling"
-msgstr "Проверьте правописание"
+msgid "an out-of-date link"
+msgstr "ссылка устарела"
 
-#: 404.php:11
-msgid "Return to the <a href=\"%s\">home page</a>"
-msgstr "Вернуться на <a href=\"%s\">главную страницу</a>"
+#: lib/titles.php:33
+msgid "Not Found"
+msgstr "Страница не найдена"
 
-#: 404.php:12
-msgid "Click the <a href=\"javascript:history.back()\">Back</a> button"
-msgstr "Нажмите на кнопку <a href=\"javascript:history.back()\">назад</a>"
-
-#: lib/activation.php:31 lib/activation.php:32
+#: lib/activation.php:28 lib/activation.php:29
 msgid "Theme Activation"
 msgstr "Активация темы"
 
-#: lib/activation.php:68
+#: lib/activation.php:51
 msgid "%s Theme Activation"
 msgstr "%s Активация темы"
 
-#: lib/activation.php:83 lib/activation.php:85
+#: lib/activation.php:62 lib/activation.php:64
 msgid "Create static front page?"
-msgstr "Создать статичную первую страницу?"
+msgstr "Создать статичную главную страницу?"
 
-#: lib/activation.php:87 lib/activation.php:100 lib/activation.php:113
-#: lib/activation.php:126 lib/activation.php:139
+#: lib/activation.php:66 lib/activation.php:79 lib/activation.php:92
+#: lib/activation.php:105 lib/activation.php:118
 msgid "Yes"
 msgstr "Да"
 
-#: lib/activation.php:88 lib/activation.php:101 lib/activation.php:114
-#: lib/activation.php:127 lib/activation.php:140
+#: lib/activation.php:67 lib/activation.php:80 lib/activation.php:93
+#: lib/activation.php:106 lib/activation.php:119
 msgid "No"
 msgstr "Нет"
 
-#: lib/activation.php:91
+#: lib/activation.php:70
 msgid "Create a page called Home and set it to be the static front page"
-msgstr "Создать страницу Home и установить её как статичную первую страницу"
+msgstr "Создать страницу Home и установить её как статичную главную страницу"
 
-#: lib/activation.php:96
+#: lib/activation.php:75
 msgid "Change permalink structure?"
 msgstr "Изменить структуру постоянных ссылок?"
 
-#: lib/activation.php:98
+#: lib/activation.php:77
 msgid "Update permalink structure?"
 msgstr "Обновить структуру постоянных ссылок?"
 
-#: lib/activation.php:104
+#: lib/activation.php:83
 msgid "Change permalink structure to /&#37;postname&#37;/"
 msgstr "Изменение структуры постоянных ссылок на /&#37;postname&#37;/"
 
-#: lib/activation.php:109
+#: lib/activation.php:88
 msgid "Change uploads folder?"
-msgstr "Изменить папку загрузки?"
+msgstr "Изменить папку для загрузок?"
 
-#: lib/activation.php:111
+#: lib/activation.php:90
 msgid "Update uploads folder?"
-msgstr "Обновить папку загрузки?"
+msgstr "Обновить папку для загрузок?"
 
-#: lib/activation.php:117
-msgid "Change uploads folder to /assets/ instead of /wp-content/uploads/"
-msgstr "Поменять папку загрузки на /assets/ с /wp-content/uploads/"
+#: lib/activation.php:96
+msgid "Change uploads folder to /media/ instead of /wp-content/uploads/"
+msgstr "Поменять папку для загрузок на /media/ с /wp-content/uploads/"
 
-#: lib/activation.php:122 lib/activation.php:124
+#: lib/activation.php:101 lib/activation.php:103
 msgid "Create navigation menu?"
 msgstr "Создать меню навигации?"
 
-#: lib/activation.php:130
+#: lib/activation.php:109
 msgid "Create the Primary Navigation menu and set the location"
 msgstr "Создать меню навигации Primary Navigation"
 
-#: lib/activation.php:135 lib/activation.php:137
+#: lib/activation.php:114 lib/activation.php:116
 msgid "Add pages to menu?"
-msgstr "Добавить страницу в меню?"
+msgstr "Добавить страницы в меню?"
 
-#: lib/activation.php:143
+#: lib/activation.php:122
 msgid "Add all current published pages to the Primary Navigation"
-msgstr ""
-"Добавить все опубликованные страницы в меню навигации Primary Navigation"
+msgstr "Добавить все опубликованные страницы в меню навигации Primary Navigation"
 
-#: lib/cleanup.php:388
+#: lib/cleanup.php:210
 msgid "Continued"
-msgstr "Читать дальше"
+msgstr "Читать далее"
 
-#: lib/htaccess.php:25
-msgid "Please make sure your <a href=\"%s\">.htaccess</a> file is writable "
-msgstr "Убедитесь, что файл <a href=\"%s\">.htaccess</a> доступен для записи"
-
-#: lib/init.php:13
+#: lib/init.php:11
 msgid "Primary Navigation"
 msgstr "Основная Навигация"
 
-#: lib/utils.php:14
+#: lib/titles.php:10
 msgid "Latest Posts"
-msgstr "Последние новости"
+msgstr "Последние записи"
 
-#: lib/utils.php:23
+#: lib/titles.php:19
 msgid "Daily Archives: %s"
 msgstr "Архив за день: %s"
 
-#: lib/utils.php:25
+#: lib/titles.php:21
 msgid "Monthly Archives: %s"
 msgstr "Архив за месяц: %s"
 
-#: lib/utils.php:27
+#: lib/titles.php:23
 msgid "Yearly Archives: %s"
 msgstr "Архив за год: %s"
 
-#: lib/utils.php:31
+#: lib/titles.php:26
 msgid "Author Archives: %s"
 msgstr "Архив автора: %s"
 
-#: lib/utils.php:36
+#: lib/titles.php:31
 msgid "Search Results for %s"
 msgstr "Результаты поиска %s"
 
-#: lib/utils.php:38
-msgid "File Not Found"
-msgstr "Файл не найден"
-
-#: lib/widgets.php:6
-msgid "Primary Sidebar"
+#: lib/widgets.php:8
+msgid "Primary"
 msgstr "Первичная боковая панель"
 
 #: lib/widgets.php:15
 msgid "Footer"
 msgstr "Футер"
 
-#: lib/widgets.php:41
+#: lib/widgets.php:45
 msgid "Use this widget to add a vCard"
 msgstr "Используйте этот виджет для добавления vCard"
 
-#: lib/widgets.php:43
+#: lib/widgets.php:47
 msgid "Roots: vCard"
 msgstr ""
 
-#: lib/widgets.php:70
+#: lib/widgets.php:74
 msgid "vCard"
 msgstr ""
 
@@ -186,8 +166,7 @@ msgstr "Ваш комментарий ожидает модерации."
 
 #: templates/comments.php:32
 msgid "This post is password protected. Enter the password to view comments."
-msgstr ""
-"Это сообщение защищено паролем. Введите пароль для просмотра комментариев."
+msgstr "Это сообщение защищено паролем. Введите пароль для просмотра комментариев."
 
 #: templates/comments.php:39
 msgid "One Response to &ldquo;%2$s&rdquo;"
@@ -260,25 +239,21 @@ msgstr "Добавить комментарий"
 msgid "Pages:"
 msgstr "Страницы:"
 
-#: templates/content.php:4
+#: index.php:5
 msgid "Sorry, no results were found."
 msgstr "Извините, ничего не найдено."
 
-#: templates/content.php:28 templates/content.php:30
+#: index.php:17
 msgid "&larr; Older posts"
 msgstr "&larr; Предыдущие сообщения"
 
-#: templates/content.php:33 templates/content.php:35
+#: index.php:18
 msgid "Newer posts &rarr;"
 msgstr "Новые сообщения &rarr;"
 
-#: templates/entry-meta.php:1
-msgid "Posted on %s at %s."
-msgstr "Опубликовано %s в %s."
-
 #: templates/entry-meta.php:2
-msgid "Written by"
-msgstr "Написано"
+msgid "By"
+msgstr "Опубликовано"
 
 #: templates/searchform.php:2
 msgid "Search for:"
@@ -288,30 +263,23 @@ msgstr "Поиск:"
 msgid "Search"
 msgstr "Поиск"
 
-#~ msgid ""
-#~ "Please update your <a href=\"%s\">site tagline</a> <a href=\"%s\" style="
-#~ "\"float: right;\">Hide Notice</a>"
-#~ msgstr ""
-#~ "Пожалуйста, обновите ваш <a href=\"%s\">лозунг для сайта</ a> <a href=\"%s"
-#~ "\" style=\"float: right;\">Скрыть замечание</a>"
+#~ msgid "Title (optional)"
+#~ msgstr "Заголовок (необязательно)"
 
-#~ msgid "Title (optional):"
-#~ msgstr "Заголовок (необязательно):"
+#~ msgid "Street Address"
+#~ msgstr "Адрес"
 
-#~ msgid "Street Address:"
-#~ msgstr "Адрес:"
+#~ msgid "City/Locality"
+#~ msgstr "Город/Населенный пункт"
 
-#~ msgid "City/Locality:"
-#~ msgstr "Город/Населенный пункт:"
+#~ msgid "State/Region"
+#~ msgstr "Штат/Область"
 
-#~ msgid "State/Region:"
-#~ msgstr "Штат/Регион:"
+#~ msgid "Zipcode/Postal Code"
+#~ msgstr "Почтовый индекс"
 
-#~ msgid "Zipcode/Postal Code:"
-#~ msgstr "Почтовый индекс:"
+#~ msgid "Telephone"
+#~ msgstr "Телефон"
 
-#~ msgid "Telephone:"
-#~ msgstr "Телефон:"
-
-#~ msgid "Email:"
-#~ msgstr "Электронная почта:"
+#~ msgid "Email"
+#~ msgstr "Электронная почта"
