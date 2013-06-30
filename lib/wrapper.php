@@ -34,6 +34,9 @@ class Roots_Wrapping {
       array_unshift($templates, sprintf('base-%s.php', self::$base));
     }
 
+    if (is_front_page())
+      array_unshift($templates, 'base-home.php');
+
     $templates = apply_filters('roots_wrap_base', $templates);
     return locate_template($templates);
   }
