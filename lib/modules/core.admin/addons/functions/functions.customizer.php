@@ -74,7 +74,7 @@ function smof_preview_init( $wp_customize ) {
       functions: {},      // user functions, keyed by name
       dumpLineNumbers: "comments", // or "mediaQuery" or "all"
       relativeUrls: false,// whether to adjust urls to be relative if false, urls are already relative to the entry less file
-      rootpath: "<?php get_template_directory_uri(); ?>/assets/less/"
+      rootpath: "'.get_template_directory_uri().'/assets/less/"
     };
   </script>';
   wp_enqueue_script( 'less-js', get_template_directory_uri() . SMOF_DIR . 'addons/assets/js/less-1.3.3.min.js' );
