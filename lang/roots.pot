@@ -78,7 +78,7 @@ msgid "Update uploads folder?"
 msgstr ""
 
 #: lib/activation.php:119
-msgid "Change uploads folder to /assets/ instead of /wp-content/uploads/"
+msgid "Change uploads folder to /media/ instead of /wp-content/uploads/"
 msgstr ""
 
 #: lib/activation.php:124 lib/activation.php:126
@@ -95,6 +95,18 @@ msgstr ""
 
 #: lib/activation.php:145
 msgid "Add all current published pages to the Primary Navigation"
+msgstr ""
+
+#: lib/cleanup.php:102
+msgid "Nothing found"
+msgstr ""
+
+#: lib/cleanup.php:104
+msgid "Matches: %s"
+msgstr ""
+
+#: lib/cleanup.php:137
+msgid "Page %s"
 msgstr ""
 
 #: lib/cleanup.php:382
@@ -133,12 +145,8 @@ msgstr ""
 msgid "Not Found"
 msgstr ""
 
-#: lib/utils.php:94
-msgid "Please make sure your <a href=\"%s\">.htaccess</a> file is writable "
-msgstr ""
-
 #: lib/widgets.php:8
-msgid "Primary Sidebar"
+msgid "Primary"
 msgstr ""
 
 #: lib/widgets.php:17
