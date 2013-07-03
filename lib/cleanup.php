@@ -81,18 +81,75 @@ function roots_language_attributes() {
 add_filter('language_attributes', 'roots_language_attributes');
 
 /**
- * Manage output of wp_title()
+ * Manage output of wp_title() with SEO features
  */
-function roots_wp_title($title) {
+function roots_wp_title($title, $sep, $seplocation) {
+  global $page, $paged, $post, $wp_query;
+
   if (is_feed()) {
     return $title;
   }
 
-  $title .= get_bloginfo('name');
+  $sep = ' ' . $sep . ' ';
+  $title = trim($title, $sep);
+
+  // If it's a Search
+  if (is_search()) {
+    $total_search_label = '';
+    $total_search_results = $wp_query->found_posts;
+
+    if ($total_search_results == 0)
+      $total_search_label = __('Nothing found', 'roots');
+    else
+      $total_search_label = sprintf(__('Matches: %s', 'roots'), $total_search_results);
+
+    $title = __('Search', 'roots') . ' "' . get_query_var('s') . '"' . $sep . $total_search_label;
+  }
+
+  // If there's a Date based archive
+  if (is_day())
+    $title = sprintf(__('Daily Archives: %s', 'roots'), get_the_date());
+  if (is_month())
+    $title = sprintf(__('Monthly Archives: %s', 'roots'), get_the_date('F Y'));
+  if (is_year())
+    $title = sprintf(__('Yearly Archives: %s', 'roots'), get_the_date('Y'));
+
+  // If there's an Author
+  if ( is_author() ) {
+    $author = get_queried_object();
+    $title = sprintf(__('Author Archives: %s', 'roots'), $author->display_name);
+  }
+
+  // If it's Taxonomy
+  if (is_tax()) {
+    $tax = get_taxonomy( get_query_var('taxonomy') );
+    $term = get_term_by( 'slug', get_query_var('term'), get_query_var('taxonomy') );
+
+    // And if it's term
+    if (!empty($term))
+      $title = $term->name . $sep . $tax->label;
+    else
+      $title = $tax->label;
+  }
+
+  // If it's Paged
+  if ($paged >= 2 || $page >= 2)
+    $title .= $sep . sprintf(__('Page %s', 'roots'), max($paged, $page));
+
+  // If it's Front Page
+  if (is_front_page()) {
+    $title = get_bloginfo('name') . $sep . get_bloginfo('description');
+  } else {
+    // Determines position of the Separator and Sitename
+    if ('right' == $seplocation)
+      $title .=  $sep . get_bloginfo('name');
+    else
+      $title = get_bloginfo('name') . $sep . $title;
+  }
 
   return $title;
 }
-add_filter('wp_title', 'roots_wp_title', 10);
+add_filter('wp_title', 'roots_wp_title', 10, 3);
 
 /**
  * Clean up output of stylesheet <link> tags
