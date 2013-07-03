@@ -31,73 +31,73 @@ msgstr ""
 msgid "Newer posts &rarr;"
 msgstr ""
 
-#: lib/activation.php:33 lib/activation.php:34
+#: lib/activation.php:28 lib/activation.php:29
 msgid "Theme Activation"
 msgstr ""
 
-#: lib/activation.php:70
+#: lib/activation.php:51
 msgid "%s Theme Activation"
 msgstr ""
 
-#: lib/activation.php:85 lib/activation.php:87
+#: lib/activation.php:62 lib/activation.php:64
 msgid "Create static front page?"
 msgstr ""
 
-#: lib/activation.php:89 lib/activation.php:102 lib/activation.php:115
-#: lib/activation.php:128 lib/activation.php:141
+#: lib/activation.php:66 lib/activation.php:79 lib/activation.php:92
+#: lib/activation.php:105 lib/activation.php:118
 msgid "Yes"
 msgstr ""
 
-#: lib/activation.php:90 lib/activation.php:103 lib/activation.php:116
-#: lib/activation.php:129 lib/activation.php:142
+#: lib/activation.php:67 lib/activation.php:80 lib/activation.php:93
+#: lib/activation.php:106 lib/activation.php:119
 msgid "No"
 msgstr ""
 
-#: lib/activation.php:93
+#: lib/activation.php:70
 msgid "Create a page called Home and set it to be the static front page"
 msgstr ""
 
-#: lib/activation.php:98
+#: lib/activation.php:75
 msgid "Change permalink structure?"
 msgstr ""
 
-#: lib/activation.php:100
+#: lib/activation.php:77
 msgid "Update permalink structure?"
 msgstr ""
 
-#: lib/activation.php:106
+#: lib/activation.php:83
 msgid "Change permalink structure to /&#37;postname&#37;/"
 msgstr ""
 
-#: lib/activation.php:111
+#: lib/activation.php:88
 msgid "Change uploads folder?"
 msgstr ""
 
-#: lib/activation.php:113
+#: lib/activation.php:90
 msgid "Update uploads folder?"
 msgstr ""
 
-#: lib/activation.php:119
-msgid "Change uploads folder to /assets/ instead of /wp-content/uploads/"
+#: lib/activation.php:96
+msgid "Change uploads folder to /media/ instead of /wp-content/uploads/"
 msgstr ""
 
-#: lib/activation.php:124 lib/activation.php:126
+#: lib/activation.php:101 lib/activation.php:103
 msgid "Create navigation menu?"
 msgstr ""
 
-#: lib/activation.php:132
+#: lib/activation.php:109
 msgid "Create the Primary Navigation menu and set the location"
 msgstr ""
 
-#: lib/activation.php:137 lib/activation.php:139
+#: lib/activation.php:114 lib/activation.php:116
 msgid "Add pages to menu?"
 msgstr ""
 
-#: lib/activation.php:145
+#: lib/activation.php:122
 msgid "Add all current published pages to the Primary Navigation"
 msgstr ""
 
-#: lib/cleanup.php:382
+#: lib/cleanup.php:210
 msgid "Continued"
 msgstr ""
 
@@ -105,40 +105,36 @@ msgstr ""
 msgid "Primary Navigation"
 msgstr ""
 
-#: lib/utils.php:60
+#: lib/titles.php:10
 msgid "Latest Posts"
 msgstr ""
 
-#: lib/utils.php:69
+#: lib/titles.php:19
 msgid "Daily Archives: %s"
 msgstr ""
 
-#: lib/utils.php:71
+#: lib/titles.php:21
 msgid "Monthly Archives: %s"
 msgstr ""
 
-#: lib/utils.php:73
+#: lib/titles.php:23
 msgid "Yearly Archives: %s"
 msgstr ""
 
-#: lib/utils.php:75
+#: lib/titles.php:26
 msgid "Author Archives: %s"
 msgstr ""
 
-#: lib/utils.php:80
+#: lib/titles.php:31
 msgid "Search Results for %s"
 msgstr ""
 
-#: lib/utils.php:82
+#: lib/titles.php:33
 msgid "Not Found"
 msgstr ""
 
-#: lib/utils.php:94
-msgid "Please make sure your <a href=\"%s\">.htaccess</a> file is writable "
-msgstr ""
-
 #: lib/widgets.php:8
-msgid "Primary Sidebar"
+msgid "Primary"
 msgstr ""
 
 #: lib/widgets.php:17
