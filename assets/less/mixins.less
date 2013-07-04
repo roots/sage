@@ -71,7 +71,7 @@
 // CSS image replacement
 // Source: https://github.com/h5bp/html5-boilerplate/commit/aa0396eae757
 .hide-text() {
-  font: 0/0 a;
+  font: ~"0/0" a;
   color: transparent;
   text-shadow: none;
   background-color: transparent;
@@ -381,6 +381,7 @@
   &.disabled,
   &[disabled],
   fieldset[disabled] & {
+    &,
     &:hover,
     &:focus,
     &:active,
@@ -400,7 +401,22 @@
   margin-bottom: ((@navbar-height - @element-height) / 2);
 }
 
+// Responsive utilities
+// -------------------------
+// More easily include all the states for responsive-utilities.less.
+.responsive-visibility() {
+  display: block !important;
+  tr& { display: table-row !important; }
+  th&,
+  td& { display: table-cell !important; }
+}
 
+.responsive-invisibility() {
+  display: none !important;
+  tr& { display: none !important; }
+  th&,
+  td& { display: none !important; }
+}
 
 // Grid System
 // -----------
@@ -433,9 +449,6 @@
 // Generate the columns
 .make-column(@columns) {
   position: relative;
-  // Float and set width: 100%; for easy stacking on mobile devices
-  float: left;
-  width: 100%;
   // Prevent columns from collapsing when empty
   min-height: 1px;
   // Inner gutter via padding
@@ -444,6 +457,7 @@
 
   // Calculate width based on number of columns available
   @media (min-width: @grid-float-breakpoint) {
+    float: left;
     width: percentage((@columns / @grid-columns));
   }
 }
@@ -472,6 +486,7 @@
 // Generate form validation states
 .form-field-validation(@text-color: #555, @border-color: #ccc, @background-color: #f5f5f5) {
   // Color the label text
+  .help-block,
   .control-label {
     color: @text-color;
   }
@@ -491,5 +506,5 @@
     color: @text-color;
     border-color: @border-color;
     background-color: @background-color;
-  }  
+  }
 }

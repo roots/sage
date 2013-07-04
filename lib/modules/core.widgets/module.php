@@ -75,51 +75,6 @@ function shoestrap_widgets_init() {
     'before_title'  => '<div class="panel-heading">',
     'after_title'   => '</div>',
   ));
-  
-  register_sidebar(array(
-    'name'          => __('Navbar Slide-Down Top', 'shoestrap'),
-    'id'            => 'navbar-slide-down-top',
-    'before_widget' => '<section id="%1$s" class="panel widget %2$s"><div class="widget-inner">',
-    'after_widget'  => '</div></section>',
-    'before_title'  => '<div class="panel-heading">',
-    'after_title'   => '</div>',
-  ));
-
-  register_sidebar(array(
-    'name'          => __('Navbar Slide-Down 1', 'shoestrap'),
-    'id'            => 'navbar-slide-down-1',
-    'before_widget' => '<section id="%1$s" class="panel widget %2$s"><div class="widget-inner">',
-    'after_widget'  => '</div></section>',
-    'before_title'  => '<div class="panel-heading">',
-    'after_title'   => '</div>',
-  ));
-
-  register_sidebar(array(
-    'name'          => __('Navbar Slide-Down 2', 'shoestrap'),
-    'id'            => 'navbar-slide-down-2',
-    'before_widget' => '<section id="%1$s" class="panel widget %2$s"><div class="widget-inner">',
-    'after_widget'  => '</div></section>',
-    'before_title'  => '<div class="panel-heading">',
-    'after_title'   => '</div>',
-  ));
-
-  register_sidebar(array(
-    'name'          => __('Navbar Slide-Down 3', 'shoestrap'),
-    'id'            => 'navbar-slide-down-3',
-    'before_widget' => '<section id="%1$s" class="panel widget %2$s"><div class="widget-inner">',
-    'after_widget'  => '</div></section>',
-    'before_title'  => '<div class="panel-heading">',
-    'after_title'   => '</div>',
-  ));
-
-  register_sidebar(array(
-    'name'          => __('Navbar Slide-Down 4', 'shoestrap'),
-    'id'            => 'navbar-slide-down-4',
-    'before_widget' => '<section id="%1$s" class="panel widget %2$s"><div class="widget-inner">',
-    'after_widget'  => '</div></section>',
-    'before_title'  => '<div class="panel-heading">',
-    'after_title'   => '</div>',
-  ));
 
   // Widgets
   register_widget('Roots_Vcard_Widget');

@@ -39,16 +39,16 @@ function shoestrap_get_social_shares() {
     return $socialShares;
   $networks   = array();
   if ( shoestrap_getVariable( 'facebook_share' ) == 1 )
-    $networks['facebook'] = array( 
-      'icon' => 'facebook', 
+    $networks['facebook'] = array(
+      'icon' => 'facebook',
       'fullname' => 'Facebook',
       'url'=> 'http://www.facebook.com/sharer.php?u=' . get_permalink() . '&amp;title=' . get_the_title()
        );
   if ( shoestrap_getVariable( 'twitter_share' ) == 1 ) {
-    $networks['twitter'] = array( 
-      'icon' => 'twitter', 
-      'fullname' => 'Twitter', 
-      
+    $networks['twitter'] = array(
+      'icon' => 'twitter',
+      'fullname' => 'Twitter',
+
       'url' => 'http://twitter.com/home/?status=' . get_the_title() . ' - ' . get_permalink()
        );
       $twittername = shoestrap_get_twitter_username();
@@ -58,37 +58,37 @@ function shoestrap_get_social_shares() {
       }
   }
   if ( shoestrap_getVariable( 'reddit_share' ) == 1 )
-    $networks['reddit'] = array( 
+    $networks['reddit'] = array(
       'icon' => 'reddit',
       'fullname' => 'Reddit',
       'url' => 'http://reddit.com/submit?url=' .get_permalink() . '&amp;title=' . get_the_title()
       );
   if ( shoestrap_getVariable( 'linkedin_share' ) == 1 )
-    $networks['linkedin'] = array( 
-      'icon' => 'linkedin',   
+    $networks['linkedin'] = array(
+      'icon' => 'linkedin',
       'fullname' => 'LinkedIn',
       'url'   => 'http://linkedin.com/shareArticle?mini=true&amp;url=' .get_permalink() . '&amp;title=' . get_the_title()
        );
   if ( shoestrap_getVariable( 'google_plus_share' ) == 1 )
-    $networks['googleplus'] = array( 
+    $networks['googleplus'] = array(
       'icon' => 'googleplus',
       'fullname' => 'Google+',
       'url' => 'https://plus.google.com/share?url=' . get_permalink()
       );
   if ( shoestrap_getVariable( 'tumblr_share' ) == 1 )
-    $networks['facebook'] = array( 
+    $networks['facebook'] = array(
       'icon' => 'tumblr',
       'fullname' => 'Tumblr',
       'url' =>  'http://www.tumblr.com/share/link?url=' .urlencode(get_permalink()) . '&amp;name=' . urlencode(get_the_title()) . "&amp;description=".urlencode(the_excerpt())
        );
   if ( shoestrap_getVariable( 'pinterest_share' ) == 1 )
-    $networks['pinterest'] = array( 
+    $networks['pinterest'] = array(
       'icon' => 'pinterest',
       'fullname' => 'Pinterest',
       'url' => 'http://pinterest.com/pin/create/button/?url=' . get_permalink()
       );
   if ( shoestrap_getVariable( 'email_share' ) == 1 )
-    $networks['email'] = array( 
+    $networks['email'] = array(
       'icon' => 'envelope',
       'fullname' => 'Email',
       'url' => 'mailto:?subject=' .get_the_title() . '&amp;body=' . get_permalink()
@@ -98,7 +98,7 @@ function shoestrap_get_social_shares() {
 }
 
 function shoestrap_navbar_social_links() {
-  
+
   // Get all the social networks the user is using
   $networks = shoestrap_get_social_links();
 
@@ -145,7 +145,7 @@ function shoestrap_get_twitter_username() {
     $twitter_link = rtrim($twitter_link, '/');
     $twitter_link = explode('/', $twitter_link);
     $twittername = end($twitter_link);
-  }  
+  }
   return $twittername;
 }
 
@@ -166,7 +166,8 @@ function shoestrap_social_sharing() {
   // The base class for icons that will be used
   $baseclass  = 'glyphicon glyphicon-';
 
-
+  // Don't show by default
+  $show = false;
 
   // Build the content
   $content = '';

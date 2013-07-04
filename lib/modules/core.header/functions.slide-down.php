@@ -46,8 +46,9 @@ function shoestrap_slidedown_widgets_init() {
     'before_title'  => '<h3>',
     'after_title'   => '</h3>',
   ));
+
 }
-add_action('widgets_init', 'shoestrap_slidedown_widgets_init');
+add_action('widgets_init', 'shoestrap_slidedown_widgets_init', 20);
 
 /*
  * Calculates the class of the widget areas based on a 12-column bootstrap grid.

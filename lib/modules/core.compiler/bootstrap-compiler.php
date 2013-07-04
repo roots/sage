@@ -482,11 +482,6 @@ function shoestrap_variables_less() {
 @zindex-modal:             1050;
 
 
-// Glyphicons font path
-// -------------------------
-@glyphicons-font-path:          "../fonts";
-
-
 // Navbar
 // -------------------------
 
@@ -494,6 +489,7 @@ function shoestrap_variables_less() {
 @navbar-height:                    ' . $navbar_height . 'px;
 @navbar-color:                     ' . $navbar_color . ';
 @navbar-bg:                        ' . $navbar_bg . ';
+@navbar-padding:                   floor(@grid-gutter-width / 2);  // ~15px
 
 // Navbar links
 @navbar-link-color:                @navbar-color;
