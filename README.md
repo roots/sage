@@ -6,6 +6,7 @@ Roots is a starting WordPress theme made for developers that’s based on
 * Source: [https://github.com/retlehs/roots](https://github.com/retlehs/roots)
 * Home Page: [http://www.rootstheme.com/](http://www.rootstheme.com/)
 * Twitter: [@retlehs](https://twitter.com/retlehs)
+* Newsletter: [Subscribe](http://www.rootstheme.com/subscribe/)
 * Google Group: [http://groups.google.com/group/roots-theme](http://groups.google.com/group/roots-theme)
 
 ## Installation
