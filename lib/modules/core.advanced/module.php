@@ -21,9 +21,9 @@ if ( !function_exists('shoestrap_module_advanced_options' ) ) {
 
     $of_options[] = array(
       "name"      => __("Enable Retina mode", "shoestrap"),
-      "desc"      => __("By enabling your site will be retina ready. Requires a all images to be uploaded at 2x the typical size desired, including logos. Default: Off", "shoestrap"),
+      "desc"      => __("By enabling your site will be retina ready. Requires a all images to be uploaded at 2x the typical size desired, including logos. Default: On", "shoestrap"),
       "id"        => "retina_toggle",
-      "std"       => 0,
+      "std"       => 1,
       "type"      => "switch",
       "customizer"=> array(),
     );
@@ -33,10 +33,10 @@ if ( !function_exists('shoestrap_module_advanced_options' ) ) {
       "desc"      => __("This option allows shortcodes within widgets. Default: On.", "shoestrap"),
       "id"        => "enable_widget_shortcodes",
       "less"      => true,
-      "std"       => 0,
+      "std"       => 1,
       "type"      => "switch",
     );
-
+/*
     $of_options[] = array(
       "name"      => __("No gradients - \"Flat\" look.", "shoestrap"),
       "desc"      => __("This option will disable all gradients in your site, giving it a cleaner look. Default: OFF.", "shoestrap"),
@@ -45,7 +45,7 @@ if ( !function_exists('shoestrap_module_advanced_options' ) ) {
       "std"       => 0,
       "type"      => "switch",
     );
-
+*/
     $of_options[] = array(
       "name"      => __("Google Analytics ID", "shoestrap"),
       "desc"      => __("Paste your Google Analytics ID here to enable analytics tracking. Your user ID should be in the form of UA-XXXXX-Y.", "shoestrap"),
@@ -129,7 +129,7 @@ if ( !function_exists('shoestrap_module_advanced_options' ) ) {
 
     $of_options[] = array(
       "name"      => __("Custom CSS", "shoestrap"),
-      "desc"      => __("You can write your custom CSS here.", "shoestrap"),
+      "desc"      => __("You can write your custom CSS here. This code will appear in a script tag appended in the header section of the page.", "shoestrap"),
       "id"        => "user_css",
       "std"       => "",
       "type"      => "textarea"
@@ -137,7 +137,7 @@ if ( !function_exists('shoestrap_module_advanced_options' ) ) {
 
     $of_options[] = array(
       "name"      => __("Custom JS", "shoestrap"),
-      "desc"      => __("You can write your custom JavaScript/jQuery here.", "shoestrap"),
+      "desc"      => __("You can write your custom JavaScript/jQuery here. The code will be included in a script tag appended to the bottom of the page.", "shoestrap"),
       "id"        => "user_js",
       "std"       => "",
       "type"      => "textarea"

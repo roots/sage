@@ -41,7 +41,7 @@ if ( !function_exists( 'shoestrap_module_branding_options' ) ) {
 
     $of_options[] = array(
       "name"      => __("Custom Favicon", "shoestrap"),
-      "desc"      => __("You can put url of an ico image that will represent your website's favicon (32px x 32px)", "shoestrap"),
+      "desc"      => __("Upload a .ico image using the media uploader, or define the URL directly. 32px x 32px", "shoestrap"),
       "id"        => "favicon",
       "std"       => "",
       "type"      => "media",
@@ -73,7 +73,7 @@ if ( !function_exists( 'shoestrap_module_branding_options' ) ) {
 
     $of_options[] = array(
       "name"      => __("Brand Colors: Primary", "shoestrap"),
-      "desc"      => __("Select your primary branding color. This will affect various areas of your site, including the color of your primary buttons, the background of some elements and many more. Default: #428bca.", "shoestrap"),
+      "desc"      => __("Select your primary branding color. This will affect various areas of your site, including the color of your primary buttons, the background of some elements and many more.", "shoestrap"),
       "id"        => "color_brand_primary",
       "std"       => "#428bca",
       "less"      => true,
@@ -83,7 +83,7 @@ if ( !function_exists( 'shoestrap_module_branding_options' ) ) {
 
     $of_options[] = array(
       "name"      => __("Brand Colors: Secondary", "shoestrap"),
-      "desc"      => __("Select your secondary branding color. Also referred to as an accent color. This will affect various areas of your site, including the color of your primary buttons, the background of some elements and many more. Default: #428bca.", "shoestrap"),
+      "desc"      => __("Select your secondary branding color. Also referred to as an accent color. This will affect various areas of your site, including the color of your primary buttons, the background of some elements and many more.", "shoestrap"),
       "id"        => "color_brand_secondary",
       "std"       => "#428bca",
       "less"      => true,

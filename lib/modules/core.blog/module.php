@@ -49,8 +49,8 @@ if ( !function_exists( 'shoestrap_module_blog_options' ) ) {
     );
 
     $of_options[] = array(
-      "name"      => __("Comments on Blog", "shoestrap"),
-      "desc"      => __("Enable comments on the blog. Default: On.", "shoestrap"),
+      "name"      => __("Enable Comments on Blog", "shoestrap"),
+      "desc"      => __("Allow site visitors to write comments on blog posts. Default: On.", "shoestrap"),
       "id"        => "blog_comments_toggle",
       "std"       => 1,
       "type"      => "switch",
@@ -59,7 +59,7 @@ if ( !function_exists( 'shoestrap_module_blog_options' ) ) {
 
     $of_options[] = array(
       "name"      => __("Post excerpt length", "shoestrap"),
-      "desc"      => __("Select the height of your featured images on post archives. Default: 300px", "shoestrap"),
+      "desc"      => __("Select the height of your featured images on post archives. Default: 40px", "shoestrap"),
       "id"        => "post_excerpt_length",
       "std"       => 40,
       "min"       => 10,
@@ -167,7 +167,7 @@ if ( !function_exists( 'shoestrap_module_blog_options' ) ) {
 
     $of_options[] = array(
       "name"      => __("Posts Featured Image Height", "shoestrap"),
-      "desc"      => __("Select the height of your featured images on single posts. Default: 300px", "shoestrap"),
+      "desc"      => __("Select the height of your featured images on single posts. Default: 330px", "shoestrap"),
       "id"        => "feat_img_post_height",
       "fold"      => "feat_img_post",
       "std"       => 330,

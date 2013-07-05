@@ -46,7 +46,7 @@ if ( !function_exists( 'shoestrap_module_background_options' ) ) {
 
     $of_options[] = array(
       "name"      => __("Background Color Opacity", "shoestrap"),
-      "desc"      => __("If you're using a background image or pattern, you might want to change the opacity of the background color. This will make your main content area semi-transparent so that the background image is visible. Default: 100", "shoestrap"),
+      "desc"      => __("Select the opacity of your background color. This will make the main content area transparent, so that background images and patterns will show through. Default: 100 (fully opaque)", "shoestrap"),
       "id"        => "color_body_bg_opacity",
       "std"       => 100,
       "min"       => 0,

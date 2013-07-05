@@ -4,6 +4,7 @@
  * Display featured images on individual posts
  */
 function shoestrap_featured_image() {
+  add_theme_support('post-thumbnails');
   if ( is_single() ) {
     if ( shoestrap_getVariable( 'feat_img_post' ) == 0 )
       return;

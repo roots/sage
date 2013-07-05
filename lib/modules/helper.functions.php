@@ -107,13 +107,19 @@ function shoestrap_mix_colors( $hex1, $hex2, $percentage ) {
 }
 
 // Gets the current values from SMOF, and if not there, grabs the defaults
-function shoestrap_getVariable($key) {
-  global $smof_details;
-  $value = get_theme_mod($key);
-  if ($value == "" && isset($smof_details[$key])) {
+function shoestrap_getVariable($key, $fresh = false) {
+  global $smof_details, $smof_data;
+  if ( empty($smof_data) )
+  	$smof_data = get_theme_mods();
+  if (array_key_exists($key, $smof_data))
+  	$value = $smof_data[$key];
+  if ((!isset($value) || $value) == "" && array_key_exists($key, $smof_data) && isset($smof_details[$key]['std'])) {
     $value = $smof_details[$key]['std'];
   }
-  return $value;
+  if ($fresh)
+  	$value = get_theme_mod($key);
+  if (isset($value))
+  	return $value;
 }
 
 // Show or hide the adminbar

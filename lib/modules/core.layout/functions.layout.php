@@ -1,19 +1,45 @@
 <?php
 
+/**
+	Get the layout value, but only set it once!
+**/
+function shoestrap_getLayout() {
+	global $shoestrap_layout;
+
+	if ( !isset($shoestrap_layout) ) {
+
+		do_action('shoestrap_layout_modifier');
+
+		$shoestrap_layout = intval( shoestrap_getVariable( 'layout' ) );
+	  if (is_page() && shoestrap_getVariable( 'page_layout_toggle' ) == 1) {
+	    $shoestrap_layout = intval( shoestrap_getVariable( 'page_layout' ) );
+	  } else if (!is_page() && shoestrap_getVariable( 'blog_layout_toggle' ) == 1) {
+	    $shoestrap_layout = intval( shoestrap_getVariable( 'blog_layout' ) );
+	  }
+	  if ( !is_active_sidebar( 'sidebar-secondary' ) && is_active_sidebar( 'sidebar-primary' ) && $shoestrap_layout == 5 ) {
+	    $shoestrap_layout = 3;
+	  }  
+	}
+
+	return $shoestrap_layout;
+}
+
+
+/**
+	Override the layout value globally
+**/
+function shoestrap_setLayout($val) {
+	global $shoestrap_layout, $smof_data;
+	$shoestrap_layout = intval($val);
+}
+
+
 /*
  * Calculates the classes of the main area, main sidebar and secondary sidebar
  */
 function shoestrap_section_class( $target, $echo = false ) {
 global $smof_data;
-  $layout = intval( shoestrap_getVariable( 'layout' ) );
-  if (is_page() && shoestrap_getVariable( 'page_layout_toggle' ) == 1) {
-    $layout = intval( shoestrap_getVariable( 'page_layout' ) );
-  } else if (!is_page() && shoestrap_getVariable( 'blog_layout_toggle' ) == 1) {
-    $layout = intval( shoestrap_getVariable( 'blog_layout' ) );
-  }
-  if ( !is_active_sidebar( 'sidebar-secondary' ) && is_active_sidebar( 'sidebar-primary' ) && $layout == 5 ) {
-    $layout = 3;
-  }  
+  $layout = shoestrap_getLayout();
   $first  = intval( shoestrap_getVariable( 'layout_primary_width' ) );
   $second = intval( shoestrap_getVariable( 'layout_secondary_width' ) );
   $base   = 'col col-lg-';
@@ -89,19 +115,11 @@ global $smof_data;
   }
 }
 
-/*
- * If any css should be applied to fix the layout, enter it here.
- */
+/**
+	If any css should be applied to fix the layout, enter it here.
+**/
 function shoestrap_layout_css() {
-  $layout = shoestrap_getVariable( 'layout' );
-  if (is_page() && shoestrap_getVariable( 'page_layout_toggle' ) == 1) {
-    $layout = intval( shoestrap_getVariable( 'page_layout' ) );
-  } else if (!is_page() && shoestrap_getVariable( 'blog_layout_toggle' ) == 1) {
-    $layout = intval( shoestrap_getVariable( 'blog_layout' ) );
-  }
-  if ( !is_active_sidebar( 'sidebar-secondary' ) && is_active_sidebar( 'sidebar-primary' ) && $layout == 5 ) {
-    $layout = 3;
-  }  
+  $layout = shoestrap_getLayout();
 
   $site_style  = shoestrap_getVariable( 'site_style' );
   $margin = shoestrap_getVariable( 'navbar_margin_top' );
@@ -116,7 +134,7 @@ function shoestrap_layout_css() {
   echo '</style>';
 
 }
-add_action( 'wp_head', 'shoestrap_layout_css' );
+add_action( 'wp_head', 'shoestrap_layout_css', 99 );
 
 function shoestrap_container_class() {
   $site_style = shoestrap_getVariable( 'site_style' );
@@ -128,15 +146,8 @@ function shoestrap_container_class() {
 function shoestrap_content_width_px( $echo = false ) {
   global $smof_details;
 
-  $layout     = intval( shoestrap_getVariable( 'layout' ) );
-  if (is_page() && shoestrap_getVariable( 'page_layout_toggle' ) == 1) {
-    $layout = intval( shoestrap_getVariable( 'page_layout' ) );
-  } else if (!is_page() && shoestrap_getVariable( 'blog_layout_toggle' ) == 1) {
-    $layout = intval( shoestrap_getVariable( 'blog_layout' ) );
-  }  
-  if ( !is_active_sidebar( 'sidebar-secondary' ) && is_active_sidebar( 'sidebar-primary' ) && $layout == 5 ) {
-    $layout = 3;
-  }
+  $layout = shoestrap_getLayout();
+
   if ( shoestrap_getVariable( 'custom_grid' ) == 1) {
     $container  = filter_var( shoestrap_getVariable( 'container_large_desktop' ), FILTER_SANITIZE_NUMBER_INT );
     $gutter     = filter_var( shoestrap_getVariable( 'layout_gutter' ), FILTER_SANITIZE_NUMBER_INT );

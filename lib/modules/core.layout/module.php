@@ -46,7 +46,7 @@ if ( !function_exists( 'shoestrap_module_layout_options' ) ) {
 
     $of_options[] = array(
       "name"      => __("Layout", "shoestrap"),
-      "desc"      => __("Select main content and sidebar alignment. Choose between 1, 2 or 3 column layout.", "shoestrap"),
+      "desc"      => __("Select main content and sidebar arrangement. Choose between 1, 2 or 3 column layout.", "shoestrap"),
       "id"        => "layout",
       "std"       => get_theme_mod('layout', 1),
       "type"      => "images",
@@ -88,7 +88,7 @@ if ( !function_exists( 'shoestrap_module_layout_options' ) ) {
       "name"      => __("Show Breadcrumbs", "shoestrap"),
       "desc"      => __("Display Breadcrumbs. Default: OFF.", "shoestrap"),
       "id"        => "breadcrumbs",
-      "std"       => 0,
+      "std"       => 1,
       "type"      => "switch",
       "customizer"=> array(),
     );

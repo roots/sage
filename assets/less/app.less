@@ -94,7 +94,7 @@ body {
     -webkit-border-radius: 4px 0 0px 4px;
     border-radius: 4px 0px 0px 4px;
     &:hover {
-      background: @brand-success;
+      background: @brand-secondary;
     }
   }
 }
@@ -299,11 +299,39 @@ a.toggle-nav {
     li:first-child > a {
       //padding-bottom: (((@navbar-height - @line-height-computed) / 2) - 3);
     }
-    .active > a:first-child,
-    .active > a:first-child:hover,
-    .active > a:first-child:focus {
+
+    .open > a, 
+    .open > a:hover, 
+    .open > a:focus,
+    a:hover,
+    a:focus {
+      &:first-child {
+        background: @navbar-bg;
+        border-bottom: 5px solid @brand-secondary;
+      }
+    }
+
+    .active > a,
+    .active > a:hover,
+    .active > a:focus {
       background: @navbar-bg;
       border-bottom: 5px solid @brand-primary;
+    }
+    .dropdown-menu {
+      border-top: 5px;
+      margin-top: -5px;
+      padding-top: 0;
+      padding-bottom: 0;
+      right: auto !important;
+      border-top: 4px solid @brand-primary;
+      a,
+      a:hover,
+      a:focus {
+        background: block;
+        border-bottom: 0;
+        border-top: 1px solid @brand-primary;
+      }
+      
     }
   }
   &.style2 {

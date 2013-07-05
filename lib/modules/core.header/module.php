@@ -24,7 +24,7 @@ if ( !function_exists( 'shoestrap_module_header_options' ) ) {
       "name"      => "",
       "desc"      => "",
       "id"        => "help7",
-      "std"       => "<h3 style=\"margin: 0 0 10px;\">Navbar Options</h3>
+      "std"       => "<h3 style=\"margin: 0 0 10px;\">Advanced NavBar Options</h3>
                       <p>You can activate or deactivate your Primary NavBar here, and define its properties.
                       Please note that you might have to manually create a menu if it doesn't already exist
                       and add items to it from <a href=\"$url\">this page</a>.</p>",
@@ -47,7 +47,7 @@ if ( !function_exists( 'shoestrap_module_header_options' ) ) {
 
     $of_options[] = array(
       "name"      => __("NavBar Menu Style", "shoestrap"),
-      "desc"      => __("You can use an alternative menu style for your NavBars. OFF by default. ", "shoestrap"),
+      "desc"      => __("You can use an alternative menu style for your NavBars.", "shoestrap"),
       "id"        => "navbar_style",
       "fold"      => "navbar_toggle",
       "std"       => 'default',
@@ -86,7 +86,7 @@ if ( !function_exists( 'shoestrap_module_header_options' ) ) {
 
     $of_options[] = array(
       "name"      => __("Logo Margin from top", "shoestrap"),
-      "desc"      => __("Tweak the margin from top of the logo in your Navbar. Minimum: -30px, Maximum: 30px. Default: 0", "shoestrap"),
+      "desc"      => __("Tweak the margin from top of the logo in your NavBar. Minimum: -30px, Maximum: 30px. Default: 0", "shoestrap"),
       "id"        => "logo_top_margin",
       "fold"      => "navbar_logo",
       "std"       => 0,
@@ -96,6 +96,16 @@ if ( !function_exists( 'shoestrap_module_header_options' ) ) {
       "less"      => true,
       "type"      => "sliderui"
     );
+
+    $of_options[] = array(
+      "name"      => "",
+      "desc"      => "",
+      "id"        => "helpnavbarbg",
+      "std"       => "<h3 style=\"margin: 0 0 10px;\">NavBar Styling Options</h3>
+                      <p>Customize the look and feel of your navbar below.</p>",
+      "icon"      => true,
+      "type"      => "info"
+    );    
 
     $of_options[] = array(
       "name"      => __("NavBar Background Color", "shoestrap"),
@@ -134,7 +144,7 @@ if ( !function_exists( 'shoestrap_module_header_options' ) ) {
 
     $of_options[] = array(
       "name"      => __("Display social links in the NavBar.", "shoestrap"),
-      "desc"      => __("Display social links in the Navbar. These can be setup in the \"Social\" section on the left. Default: OFF", "shoestrap"),
+      "desc"      => __("Display social links in the NavBar. These can be setup in the \"Social\" section on the left. Default: OFF", "shoestrap"),
       "id"        => "navbar_social",
       "fold"      => "navbar_toggle",
       "customizer"=> array(),
@@ -144,20 +154,20 @@ if ( !function_exists( 'shoestrap_module_header_options' ) ) {
 
     $of_options[] = array(
       "name"      => __("Search form on the NavBar", "shoestrap"),
-      "desc"      => __("Display a search form in the Navbar. Default: OFF", "shoestrap"),
+      "desc"      => __("Display a search form in the NavBar. Default: On", "shoestrap"),
       "id"        => "navbar_search",
       "fold"      => "navbar_toggle",
       "customizer"=> array(),
-      "std"       => 0,
+      "std"       => 1,
       "type"      => "switch"
     );
 
     $of_options[] = array(
       "name"      => __("Float NavBar menu to the right", "shoestrap"),
-      "desc"      => __("Floats the primary navigation to the right. Default: OFF", "shoestrap"),
+      "desc"      => __("Floats the primary navigation to the right. Default: On", "shoestrap"),
       "id"        => "navbar_nav_right",
       "fold"      => "navbar_toggle",
-      "std"       => 0,
+      "std"       => 1,
       "customizer"=> array(),
       "type"      => "switch"
     );
@@ -185,8 +195,8 @@ if ( !function_exists( 'shoestrap_module_header_options' ) ) {
     );
 
     $of_options[] = array(
-      "name"      => __("Navbar Height", "shoestrap"),
-      "desc"      => __("Select the height of the Navbar. If you're using a logo then this should be equal or greater than its height.", "shoestrap"),
+      "name"      => __("NavBar Height", "shoestrap"),
+      "desc"      => __("Select the height of the NavBar. Should be equal or greater than the height of your logo if you've added one.", "shoestrap"),
       "id"        => "navbar_height",
       "fold"      => "navbar_toggle",
       "std"       => 50,
@@ -201,23 +211,23 @@ if ( !function_exists( 'shoestrap_module_header_options' ) ) {
       "name"      => "",
       "desc"      => "",
       "id"        => "help9",
-      "std"       => "<h3 style=\"margin: 0 0 10px;\">Secondary Navbar</h3>
+      "std"       => "<h3 style=\"margin: 0 0 10px;\">Secondary NavBar</h3>
                       <p>Sometimes you need an extra nav spot or social bar. That's where the secondary navbar comes into play.</p>",
       "icon"      => true,
       "type"      => "info"
     );
 
     $of_options[] = array(
-      "name"      => __("Enable the secondary navbar", "shoestrap"),
-      "desc"      => __("Turn this ON to display branding (Sitename or Logo)on your Header. Default: ON", "shoestrap"),
+      "name"      => __("Enable the Secondary NavBar", "shoestrap"),
+      "desc"      => __("Display a Secondary NavBar on top of the Main NavBar. Default: ON", "shoestrap"),
       "id"        => "secondary_navbar_toggle",
       "customizer"=> array(),
-      "std"       => 0,
+      "std"       => 1,
       "type"      => "switch"
     );
 
     $of_options[] = array(
-      "name"      => __("Secondary Navbar Background Color", "shoestrap"),
+      "name"      => __("Secondary NavBar Background Color", "shoestrap"),
       "desc"      => __("Select the brand color that will serve as the background color. You can select the brand primary or secondary color. Default: Primary.", "shoestrap"),
       "id"        => "navbar_secondary_bg",
       "std"       => 1,
@@ -229,7 +239,7 @@ if ( !function_exists( 'shoestrap_module_header_options' ) ) {
     );
 
     $of_options[] = array(
-      "name"      => __("Secondary Navbar Background Opacity", "shoestrap"),
+      "name"      => __("Secondary NavBar Background Opacity", "shoestrap"),
       "desc"      => __("Pick a background opacity for the NavBar. Default: 100%.", "shoestrap"),
       "id"        => "navbar_secondary_opacity",
       "fold"      => "secondary_navbar_toggle",
@@ -242,7 +252,7 @@ if ( !function_exists( 'shoestrap_module_header_options' ) ) {
     );
 
     $of_options[] = array(
-      "name"      => __("Secondary Navbar Text Color", "shoestrap"),
+      "name"      => __("Secondary NavBar Text Color", "shoestrap"),
       "desc"      => __("Select the background color for your header. Default: #EEEEEE.", "shoestrap"),
       "id"        => "navbar_secondary_color",
       "std"       => "#333",
@@ -252,7 +262,7 @@ if ( !function_exists( 'shoestrap_module_header_options' ) ) {
     );
 
     $of_options[] = array(
-      "name"    => __("Secondary Navbar Text", "shoestrap"),
+      "name"    => __("Secondary NavBar Text", "shoestrap"),
       "desc"    => __("Sometime you just need something a little more custom. Here you can enter a string of text to display in your secondary navbar.", "shoestrap"),
       "id"      => "navbar_secondary_text",
       "std"     => "",
@@ -260,7 +270,7 @@ if ( !function_exists( 'shoestrap_module_header_options' ) ) {
     );
 
     $of_options[] = array(
-      "name"      => __("Secondary Navbar - Left Side", "shoestrap"),
+      "name"      => __("Secondary NavBar - Left Side", "shoestrap"),
       "desc"      => __("You can use an alternative menu style for your NavBars. OFF by default. ", "shoestrap"),
       "id"        => "navbar_secondary_left",
       "fold"      => "navbar_toggle",
@@ -271,12 +281,12 @@ if ( !function_exists( 'shoestrap_module_header_options' ) ) {
         'none' => __( "None", "shoestrap"),
         'social'  => __( "Social Links", "shoestrap"),
         'menu'  => __( "Secondary Menu", "shoestrap"),
-        'text'  => __( "Secondary Navbar Textbox", "shoestrap"),
+        'text'  => __( "Secondary NavBar Textbox", "shoestrap"),
       )
     );
 
     $of_options[] = array(
-      "name"      => __("Secondary Navbar - Right Side", "shoestrap"),
+      "name"      => __("Secondary NavBar - Right Side", "shoestrap"),
       "desc"      => __("You can use an alternative menu style for your NavBars. OFF by default. ", "shoestrap"),
       "id"        => "navbar_secondary_right",
       "fold"      => "navbar_toggle",
@@ -287,7 +297,7 @@ if ( !function_exists( 'shoestrap_module_header_options' ) ) {
         'none' => __( "None", "shoestrap"),
         'social'  => __( "Social Links", "shoestrap"),
         'menu'  => __( "Secondary Menu", "shoestrap"),
-        'text'  => __( "Secondary Navbar Textbox", "shoestrap"),
+        'text'  => __( "Secondary NavBar Textbox", "shoestrap"),
       )
     );
 
