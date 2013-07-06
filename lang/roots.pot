@@ -19,6 +19,10 @@ msgstr ""
 msgid "an out-of-date link"
 msgstr ""
 
+#: base.php:4
+msgid "You are using an <strong>outdated</strong> browser. Please <a href=\"http://browsehappy.com/\">upgrade your browser</a> to improve your experience."
+msgstr ""
+
 #: index.php:5
 msgid "Sorry, no results were found."
 msgstr ""
