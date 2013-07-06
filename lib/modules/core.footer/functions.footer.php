@@ -8,7 +8,6 @@ function shoestrap_footer_css() {
   $rgb      = shoestrap_get_rgb($bg, true);
   $border   = shoestrap_getVariable( 'footer_border_top' );
 
-  $style = '<style id="core.footer-css">';
   $style .= 'footer.content-info {';
     $style .= 'color:' . $cl . ';';
     if ( $opacity != 1 && $opacity != "" ) :
@@ -43,11 +42,10 @@ function shoestrap_footer_css() {
     $style .= 'text-decoration:none;';
   $style .= '}';
 
-  $style .= '</style>';
+  wp_add_inline_style( 'shoestrap_css', $style );
 
-  echo $style;
 }
-add_action( 'wp_head', 'shoestrap_footer_css' );
+add_action( 'wp_enqueue_scripts', 'shoestrap_footer_css', 101 );
 
 
 /*

@@ -7,7 +7,6 @@ function shoestrap_getLayout() {
 	global $shoestrap_layout;
 
 	if ( !isset($shoestrap_layout) ) {
-
 		do_action('shoestrap_layout_modifier');
 
 		$shoestrap_layout = intval( shoestrap_getVariable( 'layout' ) );
@@ -124,17 +123,17 @@ function shoestrap_layout_css() {
   $site_style  = shoestrap_getVariable( 'site_style' );
   $margin = shoestrap_getVariable( 'navbar_margin_top' );
 
-  echo '<style type="text/css" id="core.layout">';
+  $style = "";
   if ( $layout == 2 || $layout == 3 || $layout == 5 )
-    echo 'div.main{float:right;}';
+     $style .= 'div.main{float:right;}';
 
   if ( $site_style == 'boxed' && $margin != 0 )
-    echo '#boxed-container{margin-top:' . $margin . 'px;}';
+    $style .= '#boxed-container{margin-top:' . $margin . 'px;}';
 
-  echo '</style>';
+  wp_add_inline_style( 'shoestrap_css', $style );
 
 }
-add_action( 'wp_head', 'shoestrap_layout_css', 99 );
+add_action( 'wp_enqueue_scripts', 'shoestrap_layout_css', 101 );
 
 function shoestrap_container_class() {
   $site_style = shoestrap_getVariable( 'site_style' );

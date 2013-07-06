@@ -105,11 +105,11 @@ function shoestrap_jumbotron_css() {
   if ( $border['width'] > 0 )
     $style .= 'border-bottom:' . $border['width'] . 'px ' . $border['style'] . ' ' . $border['color'] . ';';
 
+  $theCSS = '.jumbotron {' . trim( $style ) . '}';
+  $theCSS .= $color ? ".jumbotron{background: $color;}" : '';
+  
+  wp_add_inline_style( 'shoestrap_css', $theCSS );
 
-  echo '<style type="text/css" id="jumbotron">';
-  echo '.jumbotron {' . trim( $style ) . '}';
-  echo $color ? ".jumbotron{background: $color;}" : '';
-  echo '</style>';
 }
 add_action( 'wp_head', 'shoestrap_jumbotron_css' );
 

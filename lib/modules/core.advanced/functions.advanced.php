@@ -6,9 +6,9 @@
 function shoestrap_user_css() {
   $header_scripts = shoestrap_getVariable( 'user_css' );
   if (trim($header_scripts) != "")
-  	echo '<style id="core.advanced-user-css">' . $header_scripts . '</style>';
+  	wp_add_inline_style( 'shoestrap_css', $header_scripts );
 }
-add_action( 'wp_head', 'shoestrap_user_css', 200 );
+add_action( 'wp_enqueue_scripts', 'shoestrap_user_css', 101 );
 
 /*
  * echo any custom JS the user has written to the footer of the page
@@ -32,4 +32,3 @@ function shoestrap_enable_widget_shortcodes() {
 add_action( 'wp_head', 'shoestrap_enable_widget_shortcodes', 200 );
 
 //enable_widget_shortcodes
-

@@ -43,7 +43,7 @@ function shoestrap_header_css() {
   $rgb = shoestrap_get_rgb($bg, true);
 
   if ( shoestrap_getVariable( 'header_toggle' ) == 1 ) {
-    $style = '<style id="core.header">';
+
       $style .= '.header-wrapper{';
         if ($opacity != 1 && $opacity != "") {
           $style .= 'background: rgb('.$rgb.');';
@@ -52,9 +52,9 @@ function shoestrap_header_css() {
           $style .= 'background: '.$bg.';';
         }
       $style .= '}';
-    $style .= '</style>';
 
-    echo $style;
+  	wp_add_inline_style( 'shoestrap_css', $style );
+
   }
 }
-add_action( 'wp_head', 'shoestrap_header_css' );
+add_action( 'wp_enqueue_scripts', 'shoestrap_header_css', 101 );

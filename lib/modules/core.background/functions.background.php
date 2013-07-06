@@ -65,10 +65,11 @@ function shoestrap_background_css( ) {
 
   $style .= $image . $repeat . $position;
 
-  echo '<style type="text/css" id="core.background">';
-  echo 'body {' . trim( $style ) . '}';
-  echo $color ? ".wrap.main-section{background: $color;}" : '';
-  echo '</style>';
+  $theCSS = 'body {' . trim( $style ) . '}';
+  $theCSS .= $color ? ".wrap.main-section{background: $color;}" : '';
+
+  wp_add_inline_style( 'shoestrap_css', $theCSS );
+
 }
 if ( shoestrap_getVariable( 'background_image_toggle' ) == 1 || shoestrap_getVariable( 'background_pattern_toggle' ) == 1 )
-  add_action( 'wp_head', 'shoestrap_background_css' );
+  add_action( 'wp_enqueue_scripts', 'shoestrap_background_css', 101 );
