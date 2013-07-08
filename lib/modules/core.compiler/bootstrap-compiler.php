@@ -114,7 +114,7 @@ function shoestrap_compile_css( $method = 'php' ) {
 	}
   } else {
     $content .= shoestrap_complete_less( true );
-	$file = str_replace( ".css", ".less", shoestrap_css();
+	$file = str_replace( ".css", ".less", shoestrap_css());
 	if (is_writeable($file) 
 	|| (!file_exists($file) && is_writeable(dirname($file))) ) {
 		$makecss = file_put_contents( shoestrap_css(), $content );
