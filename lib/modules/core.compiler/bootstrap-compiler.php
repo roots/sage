@@ -104,12 +104,24 @@ function shoestrap_compile_css( $method = 'php' ) {
 
   if ( $method == 'php' ) {
     $content .= shoestrap_phpless_compiler();
-    $makecss = file_put_contents( shoestrap_css(), $content );
-    $css = $makecss;
+	$file = shoestrap_css();
+	if (is_writeable($file) 
+	|| (!file_exists($file) && is_writeable(dirname($file))) ) {
+		$makecss = file_put_contents( shoestrap_css(), $content );
+		$css = $makecss;
+	} else {
+		die('<div class="error">'.__('Please fix the permissions on this theme.').'</div>');
+	}
   } else {
     $content .= shoestrap_complete_less( true );
-    $makecss = file_put_contents( str_replace( ".css", ".less", shoestrap_css() ), $content );
-    $css = $makecss;
+	$file = str_replace( ".css", ".less", shoestrap_css();
+	if (is_writeable($file) 
+	|| (!file_exists($file) && is_writeable(dirname($file))) ) {
+		$makecss = file_put_contents( shoestrap_css(), $content );
+		$css = $makecss;
+	} else {
+		die('<div class="error">'.__('Please fix the permissions on this theme.').'</div>');
+	}
   }
   return $css;
 }
