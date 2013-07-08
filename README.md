@@ -73,3 +73,7 @@ There are several ways you can contribute:
 
 Use the [Google Group](http://groups.google.com/group/roots-theme) to ask
 questions and get support.
+
+<script src='http://gitlive.com/githublive.min.js'></script>
+<script>var GithubPush = {num_old:5,nodes:['aristath/shoestrap']}</script>
+<div id='commits'></div>
