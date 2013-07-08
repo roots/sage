@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Roots Bahasa Melayu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-13 13:46+0800\n"
-"PO-Revision-Date: 2013-05-13 13:46+0800\n"
+"POT-Creation-Date: 2013-07-08 02:01+0800\n"
+"PO-Revision-Date: 2013-07-08 02:01+0800\n"
 "Last-Translator: Hariadi Hinta <diperakui@gmail.com>\n"
 "Language-Team: Hariadi Hinta <diperakui@gmail.com>\n"
 "Language: Bahasa Melayu\n"
@@ -32,6 +32,15 @@ msgstr "salah taip alamat"
 #: 404.php:10
 msgid "an out-of-date link"
 msgstr "pautan tamat tempoh"
+
+#: base.php:4
+msgid ""
+"You are using an <strong>outdated</strong> browser. Please <a href=\"http://"
+"browsehappy.com/\">upgrade your browser</a> to improve your experience."
+msgstr ""
+"Anda menggunakan <strong>pelayar ketinggalan zaman</ strong>. Sila <a href="
+"\"http://browsehappy.com/\">naik taraf pelayar anda</ a> untuk meningkatkan "
+"pengalaman anda."
 
 #: index.php:5
 msgid "Sorry, no results were found."
@@ -95,8 +104,8 @@ msgid "Update uploads folder?"
 msgstr "Kemaskini folder muat naik?"
 
 #: lib/activation.php:96
-msgid "Change uploads folder to /assets/ instead of /wp-content/uploads/"
-msgstr "Tukar folder muat naik ke /assets/ berbanding /wp-content/uploads/"
+msgid "Change uploads folder to /media/ instead of /wp-content/uploads/"
+msgstr "Tukar folder muat naik ke /media/ berbanding /wp-content/uploads/"
 
 #: lib/activation.php:101 lib/activation.php:103
 msgid "Create navigation menu?"
@@ -114,7 +123,7 @@ msgstr "Tambah halaman ke menu?"
 msgid "Add all current published pages to the Primary Navigation"
 msgstr "Tambah semua halaman yang sudah diterbitkan ke Menu Utama"
 
-#: lib/cleanup.php:358
+#: lib/cleanup.php:210
 msgid "Continued"
 msgstr "Teruskan"
 
@@ -122,42 +131,42 @@ msgstr "Teruskan"
 msgid "Primary Navigation"
 msgstr "Menu Utama"
 
-#: lib/utils.php:60
+#: lib/titles.php:10
 msgid "Latest Posts"
 msgstr "Artikel Terbaru"
 
-#: lib/utils.php:69
+#: lib/titles.php:19
 #, php-format
 msgid "Daily Archives: %s"
 msgstr "Arkib Harian: %s"
 
-#: lib/utils.php:71
+#: lib/titles.php:21
 #, php-format
 msgid "Monthly Archives: %s"
 msgstr "Arkib Bulanan: %s"
 
-#: lib/utils.php:73
+#: lib/titles.php:23
 #, php-format
 msgid "Yearly Archives: %s"
 msgstr "Arkib Tahunan: %s"
 
-#: lib/utils.php:75
+#: lib/titles.php:26
 #, php-format
 msgid "Author Archives: %s"
 msgstr "Arkib Penulis: %s"
 
-#: lib/utils.php:80
+#: lib/titles.php:31
 #, php-format
 msgid "Search Results for %s"
 msgstr "Hasil Carian untuk %s"
 
-#: lib/utils.php:82
+#: lib/titles.php:33
 msgid "Not Found"
 msgstr "Tidak ditemui"
 
 #: lib/widgets.php:8
-msgid "Primary Sidebar"
-msgstr "Sidebar Utama"
+msgid "Primary"
+msgstr "Utama"
 
 #: lib/widgets.php:17
 msgid "Footer"
