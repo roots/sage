@@ -44,10 +44,10 @@ function smof_customize_register( $wp_customize ) {
       $section_set = true;
     }
 
-    if ( !array_key_exists("customizer", $smof_details[$option['id']]) ) {
+    //if ( !array_key_exists("customizer", $smof_details[$option['id']]) ) {
       //echo $option['id'];
       //continue;      
-    }
+    //}
 
     switch( $option['type'] ) {
       case 'heading':
