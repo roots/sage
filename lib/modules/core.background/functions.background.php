@@ -23,7 +23,7 @@ function shoestrap_background_css( ) {
     $color   .= 'background: rgba(' . $rgb . ',' . $opacity . ');';
   }
 
-  if ( ! $background && ! $color )
+  if ( !isset($background) && !isset($color) )
     return;
 
 
@@ -32,10 +32,16 @@ function shoestrap_background_css( ) {
     $style = "background-attachment: fixed;";
   }
 
-  if ( $background ) {
+  if ( isset($background) ) {
     $image = "background-image: url( '$background' );";
   }
+  else {
+    $image = '';
+  }
 
+  $repeat = '';
+  $position = '';
+  $style = '';
   if ( shoestrap_getVariable( 'background_image_toggle' ) == 1 && ( shoestrap_getVariable( 'background_custom_image' ) != "" || shoestrap_getVariable( 'background_image' ) != "" ) ) {
     if ( shoestrap_getVariable( 'background_image_position_toggle' ) == 0 ) {
       $style .= "background-size: cover;";
@@ -46,15 +52,13 @@ function shoestrap_background_css( ) {
       if ( shoestrap_getVariable( 'jumbotron_background_fixed_toggle' ) == 0 ) {
         $style .= "background-repeat: no-repeat;";
       }
-    $repeat = '';
-    $position = '';
     } else { // Not fixed position, custom
       $repeat = shoestrap_getVariable( 'background_repeat' );
       if ( ! in_array( $repeat, array( 'no-repeat', 'repeat-x', 'repeat-y', 'repeat' ) ) ) {
         $repeat = 'repeat';
       }
       if ($repeat == "no-repeat") {
-        $style .= "background-size: auto;";
+        $style = "background-size: auto;";
       }
       $repeat = " background-repeat: $repeat;";
       $position = shoestrap_getVariable( 'background_position_x', 'left' );

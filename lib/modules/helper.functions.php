@@ -118,8 +118,8 @@ function shoestrap_getVariable($key, $fresh = false) {
     $value = $smof_details[$key]['std'];
   elseif ($fresh)
   	$value = get_theme_mod($key);
-
- 	return $value;
+  if (isset($value))
+ 	  return $value;
 }
 
 // Show or hide the adminbar
