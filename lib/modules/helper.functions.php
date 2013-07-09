@@ -111,15 +111,15 @@ function shoestrap_getVariable($key, $fresh = false) {
   global $smof_details, $smof_data;
   if ( empty($smof_data) )
   	$smof_data = get_theme_mods();
+
   if (array_key_exists($key, $smof_data))
   	$value = $smof_data[$key];
-  if ((!isset($value) || $value) == "" && array_key_exists($key, $smof_data) && isset($smof_details[$key]['std'])) {
+  elseif ((!isset($value) || $value) == "" && array_key_exists($key, $smof_data) && isset($smof_details[$key]['std']))
     $value = $smof_details[$key]['std'];
-  }
-  if ($fresh)
+  elseif ($fresh)
   	$value = get_theme_mod($key);
-  if (isset($value))
-  	return $value;
+
+ 	return $value;
 }
 
 // Show or hide the adminbar
@@ -137,11 +137,11 @@ define('themeNAME', wp_get_theme());
 function shoestrap_getFilePaths($file, $trail="/") {
   $result['themeuri'] = themeURI;
   $result['folder'] = themeFOLDER;
-  $result['name'] = themeNAME;  
+  $result['name'] = themeNAME;
   $result['themepath'] = themePATH.DIRECTORY_SEPARATOR;
   $parts = explode(themeFOLDER, $file);
   $result['path'] = $file.DIRECTORY_SEPARATOR;
-  $result['relativepath'] = $parts[1].DIRECTORY_SEPARATOR; 
+  $result['relativepath'] = $parts[1].DIRECTORY_SEPARATOR;
   $result['relativeuri'] = str_replace(DIRECTORY_SEPARATOR, $trail, $parts[1]).$trail;
   $result['uri'] = $result['themeuri'].$result['relativeuri'];
   return $result;
