@@ -105,10 +105,11 @@ function shoestrap_compile_css( $method = 'php' ) {
   if ( $method == 'php' ) {
     $content .= shoestrap_phpless_compiler();
   	$file = shoestrap_css();
-  	if (is_writeable($file)	|| (!file_exists($file) && is_writeable(dirname($file))) ) {
+  	if (is_writeable($file)
+  	|| (!file_exists($file) && is_writeable(dirname($file))) ) {
   		$makecss = file_put_contents( shoestrap_css(), $content );
   		$css = $makecss;
-    }
+  	}
   } else {
     $content .= shoestrap_complete_less( true );
   	$file = str_replace( ".css", ".less", shoestrap_css());
@@ -160,27 +161,27 @@ function shoestrap_process_font( $font ) {
  */
 function shoestrap_variables_less() {
 
-  $body_bg          = '#' . str_replace( '#', '', shoestrap_getVariable( 'color_body_bg') );
-  $brand_primary    = '#' . str_replace( '#', '', shoestrap_getVariable( 'color_brand_primary') );
-  $brand_secondary  = '#' . str_replace( '#', '', shoestrap_getVariable( 'color_brand_secondary') );
-  $brand_success    = '#' . str_replace( '#', '', shoestrap_getVariable( 'color_brand_success') );
-  $brand_warning    = '#' . str_replace( '#', '', shoestrap_getVariable( 'color_brand_warning') );
-  $brand_danger     = '#' . str_replace( '#', '', shoestrap_getVariable( 'color_brand_danger') );
-  $brand_info       = '#' . str_replace( '#', '', shoestrap_getVariable( 'color_brand_info') );
+  $body_bg          = '#' . str_replace( '#', '', shoestrap_getVariable( 'color_body_bg', true ) );
+  $brand_primary    = '#' . str_replace( '#', '', shoestrap_getVariable( 'color_brand_primary', true ) );
+  $brand_secondary  = '#' . str_replace( '#', '', shoestrap_getVariable( 'color_brand_secondary', true ) );
+  $brand_success    = '#' . str_replace( '#', '', shoestrap_getVariable( 'color_brand_success', true ) );
+  $brand_warning    = '#' . str_replace( '#', '', shoestrap_getVariable( 'color_brand_warning', true ) );
+  $brand_danger     = '#' . str_replace( '#', '', shoestrap_getVariable( 'color_brand_danger', true ) );
+  $brand_info       = '#' . str_replace( '#', '', shoestrap_getVariable( 'color_brand_info', true ) );
 
-  $font_base            = shoestrap_process_font( shoestrap_getVariable( 'font_base') );
-  $font_navbar          = shoestrap_process_font( shoestrap_getVariable( 'font_navbar') );
-  $font_brand           = shoestrap_process_font( shoestrap_getVariable( 'font_brand') );
-  $font_heading         = shoestrap_process_font( shoestrap_getVariable( 'font_heading') );
+  $font_base            = shoestrap_process_font( shoestrap_getVariable( 'font_base', true ) );
+  $font_navbar          = shoestrap_process_font( shoestrap_getVariable( 'font_navbar', true ) );
+  $font_brand           = shoestrap_process_font( shoestrap_getVariable( 'font_brand', true ) );
+  $font_heading         = shoestrap_process_font( shoestrap_getVariable( 'font_heading', true ) );
 
-  if ( shoestrap_getVariable( 'font_heading_custom') ) {
+  if ( shoestrap_getVariable( 'font_heading_custom', true ) ) {
 
-    $font_h1 = shoestrap_process_font( shoestrap_getVariable( 'font_h1') );
-    $font_h2 = shoestrap_process_font( shoestrap_getVariable( 'font_h2') );
-    $font_h3 = shoestrap_process_font( shoestrap_getVariable( 'font_h3') );
-    $font_h4 = shoestrap_process_font( shoestrap_getVariable( 'font_h4') );
-    $font_h5 = shoestrap_process_font( shoestrap_getVariable( 'font_h5') );
-    $font_h6 = shoestrap_process_font( shoestrap_getVariable( 'font_h6') );
+    $font_h1 = shoestrap_process_font( shoestrap_getVariable( 'font_h1', true ) );
+    $font_h2 = shoestrap_process_font( shoestrap_getVariable( 'font_h2', true ) );
+    $font_h3 = shoestrap_process_font( shoestrap_getVariable( 'font_h3', true ) );
+    $font_h4 = shoestrap_process_font( shoestrap_getVariable( 'font_h4', true ) );
+    $font_h5 = shoestrap_process_font( shoestrap_getVariable( 'font_h5', true ) );
+    $font_h6 = shoestrap_process_font( shoestrap_getVariable( 'font_h6', true ) );
 
     $font_h1_face   = $font_h1['face'];
     $font_h1_size   = $font_h1['size'] . 'px';
@@ -252,23 +253,23 @@ function shoestrap_variables_less() {
   $font_weight_base = $font_base['weight'];
   $sans_serif       = $font_base['face'];
 
-  $border_radius    = filter_var( shoestrap_getVariable( 'general_border_radius'), FILTER_SANITIZE_NUMBER_INT );
-  $padding_base     = intval( shoestrap_getVariable( 'padding_base') );
-  $navbar_color     = '#' . str_replace( '#', '', shoestrap_getVariable( 'navbar_color') );
-  $navbar_bg        = '#' . str_replace( '#', '', shoestrap_getVariable( 'navbar_bg') );
-  $jumbotron_bg     = '#' . str_replace( '#', '', shoestrap_getVariable( 'jumbotron_bg') );
-  $jumbotron_color  = '#' . str_replace( '#', '', shoestrap_getVariable( 'jumbotron_color') );
+  $border_radius    = filter_var( shoestrap_getVariable( 'general_border_radius', true ), FILTER_SANITIZE_NUMBER_INT );
+  $padding_base     = intval( shoestrap_getVariable( 'padding_base', true ) );
+  $navbar_color     = '#' . str_replace( '#', '', shoestrap_getVariable( 'navbar_color', true ) );
+  $navbar_bg        = '#' . str_replace( '#', '', shoestrap_getVariable( 'navbar_bg', true ) );
+  $jumbotron_bg     = '#' . str_replace( '#', '', shoestrap_getVariable( 'jumbotron_bg', true ) );
+  $jumbotron_color  = '#' . str_replace( '#', '', shoestrap_getVariable( 'jumbotron_color', true ) );
 
-  $container_tablet         = filter_var( shoestrap_getVariable( 'container_tablet'), FILTER_SANITIZE_NUMBER_INT );
-  $container_desktop        = filter_var( shoestrap_getVariable( 'container_desktop'), FILTER_SANITIZE_NUMBER_INT );
-  $container_large_desktop  = filter_var( shoestrap_getVariable( 'container_large_desktop'), FILTER_SANITIZE_NUMBER_INT );
-  $gutter                   = filter_var( shoestrap_getVariable( 'layout_gutter'), FILTER_SANITIZE_NUMBER_INT );
+  $container_tablet         = filter_var( shoestrap_getVariable( 'container_tablet', true ), FILTER_SANITIZE_NUMBER_INT );
+  $container_desktop        = filter_var( shoestrap_getVariable( 'container_desktop', true ), FILTER_SANITIZE_NUMBER_INT );
+  $container_large_desktop  = filter_var( shoestrap_getVariable( 'container_large_desktop', true ), FILTER_SANITIZE_NUMBER_INT );
+  $gutter                   = filter_var( shoestrap_getVariable( 'layout_gutter', true ), FILTER_SANITIZE_NUMBER_INT );
 
   $screen_small     = ( $container_tablet + $gutter );
   $screen_medium    = ( $container_desktop + $gutter );
   $screen_large     = ( $container_large_desktop + $gutter );
 
-  $navbar_height    = filter_var( shoestrap_getVariable( 'navbar_height'), FILTER_SANITIZE_NUMBER_INT );
+  $navbar_height    = filter_var( shoestrap_getVariable( 'navbar_height', true ), FILTER_SANITIZE_NUMBER_INT );
 
   // Calculate the gray shadows based on the body background.
   // We basically create 2 "presets": light and dark.
