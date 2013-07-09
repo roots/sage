@@ -1,6 +1,10 @@
 <?php
 
 function shoestrap_background_css( ) {
+  $style = '';
+  $image = '';
+  $repeat = '';
+  $position = '';
   // $background is the saved custom image, or the default image.
   if ( shoestrap_getVariable( 'background_image_toggle' ) == 1 ) {
     if ( shoestrap_getVariable( 'background_custom_image' ) != "" )
@@ -26,22 +30,14 @@ function shoestrap_background_css( ) {
   if ( !isset($background) && !isset($color) )
     return;
 
-
-
   if ( shoestrap_getVariable( 'background_fixed_toggle' ) == 1 ) {
-    $style = "background-attachment: fixed;";
+    $style .= "background-attachment: fixed;";
   }
 
   if ( isset($background) ) {
-    $image = "background-image: url( '$background' );";
-  }
-  else {
-    $image = '';
+    $image .= "background-image: url( '$background' );";
   }
 
-  $repeat = '';
-  $position = '';
-  $style = '';
   if ( shoestrap_getVariable( 'background_image_toggle' ) == 1 && ( shoestrap_getVariable( 'background_custom_image' ) != "" || shoestrap_getVariable( 'background_image' ) != "" ) ) {
     if ( shoestrap_getVariable( 'background_image_position_toggle' ) == 0 ) {
       $style .= "background-size: cover;";
@@ -58,7 +54,7 @@ function shoestrap_background_css( ) {
         $repeat = 'repeat';
       }
       if ($repeat == "no-repeat") {
-        $style = "background-size: auto;";
+        $style .= "background-size: auto;";
       }
       $repeat = " background-repeat: $repeat;";
       $position = shoestrap_getVariable( 'background_position_x', 'left' );
