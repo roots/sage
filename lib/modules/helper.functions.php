@@ -117,7 +117,7 @@ function shoestrap_getVariable($key, $fresh = false) {
   } else {
     if ( ( !isset( $value ) || $value == "" ) && array_key_exists( $key, $smof_data ) && isset( $smof_details[$key]['std'] ) )
       $value = $smof_details[$key]['std'];
-    else
+    elseif ( array_key_exists( $key, $smof_data ) )
     	$value = $smof_data[$key];
   }
 
