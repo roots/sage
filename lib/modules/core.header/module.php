@@ -222,7 +222,7 @@ if ( !function_exists( 'shoestrap_module_header_options' ) ) {
       "desc"      => __("Display a Secondary NavBar on top of the Main NavBar. Default: ON", "shoestrap"),
       "id"        => "secondary_navbar_toggle",
       "customizer"=> array(),
-      "std"       => 1,
+      "std"       => 0,
       "type"      => "switch"
     );
 
