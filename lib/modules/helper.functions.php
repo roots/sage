@@ -112,13 +112,16 @@ function shoestrap_getVariable($key, $fresh = false) {
   if ( empty($smof_data) )
   	$smof_data = get_theme_mods();
 
-  if (array_key_exists($key, $smof_data))
-  	$value = $smof_data[$key];
-  elseif ((!isset($value) || $value) == "" && array_key_exists($key, $smof_data) && isset($smof_details[$key]['std']))
-    $value = $smof_details[$key]['std'];
-  elseif ($fresh)
-  	$value = get_theme_mod($key);
-  if (isset($value))
+  if ( $fresh ) {
+    $value = get_theme_mod( $key );
+  } else {
+    if ( ( !isset( $value ) || $value == "" ) && array_key_exists( $key, $smof_data ) && isset( $smof_details[$key]['std'] ) )
+      $value = $smof_details[$key]['std'];
+    else
+    	$value = $smof_data[$key];
+  }
+
+  if ( isset( $value ) )
  	  return $value;
 }
 
