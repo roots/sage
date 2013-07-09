@@ -91,26 +91,26 @@ function shoestrap_navbar_slidedown_content() {
   dynamic_sidebar('navbar-slide-down-top');
   
   echo '<div class="row">';
-  if ( is_active_sidebar( 'navbar-slide-down-1' ) )
-    echo '<div class="' . $widgetareaclass . '">';
-    dynamic_sidebar('navbar-slide-down-1');
-    echo '</div>';
-    
-  if ( is_active_sidebar( 'navbar-slide-down-2' ) )
-    echo '<div class="' . $widgetareaclass . '">';
-    dynamic_sidebar('navbar-slide-down-2');
-    echo '</div>';
-    
-  if ( is_active_sidebar( 'navbar-slide-down-3' ) )
+  if ( is_active_sidebar( 'navbar-slide-down-1' ) ) {
+      echo '<div class="' . $widgetareaclass . '">';
+      dynamic_sidebar('navbar-slide-down-1');
+      echo '</div>';
+  }
+  if ( is_active_sidebar( 'navbar-slide-down-2' ) ) {
+      echo '<div class="' . $widgetareaclass . '">';
+      dynamic_sidebar('navbar-slide-down-2');
+      echo '</div>';
+  }
+  if ( is_active_sidebar( 'navbar-slide-down-3' ) ) {
     echo '<div class="' . $widgetareaclass . '">';
     dynamic_sidebar('navbar-slide-down-3');
     echo '</div>';
-    
-  if ( is_active_sidebar( 'navbar-slide-down-4' ) )
+  }
+  if ( is_active_sidebar( 'navbar-slide-down-4' ) ) {
     echo '<div class="' . $widgetareaclass . '">';
     dynamic_sidebar('navbar-slide-down-4');
     echo '</div>';
-    
+  }
   echo '</div></div></div>';
 }
 add_action( 'shoestrap_below_top_navbar', 'shoestrap_navbar_slidedown_content', 1 );
