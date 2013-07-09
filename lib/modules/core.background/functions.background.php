@@ -1,16 +1,21 @@
 <?php
 
 function shoestrap_background_css( ) {
+
+	if ( shoestrap_getVariable( 'background_image_toggle' ) == 0 && shoestrap_getVariable( 'background_pattern_toggle' ) == 0 )
+		return;
+
   $style = '';
   $image = '';
   $repeat = '';
   $position = '';
   // $background is the saved custom image, or the default image.
   if ( shoestrap_getVariable( 'background_image_toggle' ) == 1 ) {
-    if ( shoestrap_getVariable( 'background_custom_image' ) != "" )
-      $background = set_url_scheme( shoestrap_getVariable( 'background_custom_image' ) );
-    else if ( shoestrap_getVariable( 'background_image' ) != "" )
-      $background = set_url_scheme( shoestrap_getVariable( 'background_image' ) );
+    if ( shoestrap_getVariable( 'background_custom_image' ) != "" ) {
+    	$background = set_url_scheme( shoestrap_getVariable( 'background_custom_image' ) );
+    }  else if ( shoestrap_getVariable( 'background_image' ) != "" ) {
+    	$background = set_url_scheme( shoestrap_getVariable( 'background_image' ) );
+    }
   } else if ( shoestrap_getVariable( 'background_pattern_toggle' ) == 1 && shoestrap_getVariable( 'background_pattern' ) != "" ) {
     $background = shoestrap_getVariable( 'background_pattern' );
   }
@@ -73,5 +78,4 @@ function shoestrap_background_css( ) {
   wp_add_inline_style( 'shoestrap_css', $theCSS );
 
 }
-if ( shoestrap_getVariable( 'background_image_toggle' ) == 1 || shoestrap_getVariable( 'background_pattern_toggle' ) == 1 )
-  add_action( 'wp_enqueue_scripts', 'shoestrap_background_css', 101 );
+add_action( 'wp_enqueue_scripts', 'shoestrap_background_css', 101 );
