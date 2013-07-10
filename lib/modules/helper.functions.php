@@ -143,7 +143,6 @@ function shoestrap_getFilePaths($file, $trail="/") {
   $result['name'] = themeNAME;
   $result['themepath'] = themePATH.DIRECTORY_SEPARATOR;
   $parts = explode(themePATH.DIRECTORY_SEPARATOR.themeFOLDER, $file);
-  echo themeFOLDER;
   $result['path'] = $file.DIRECTORY_SEPARATOR;
   $result['relativepath'] = $parts[1].DIRECTORY_SEPARATOR;
   $result['relativeuri'] = str_replace(DIRECTORY_SEPARATOR, $trail, $parts[1]).$trail;
