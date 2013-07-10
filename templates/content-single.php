@@ -20,7 +20,7 @@ while (have_posts()) : the_post(); ?>
       <?php do_action( 'shoestrap_single_pre_content' ); ?>
       <?php the_content(); ?>
       <div class="clearfix"></div>
-      <?php do_action( 'shoestrap_single_post_content' ); ?>
+      <?php do_action( 'shoestrap_single_after_content' ); ?>
     </div>
     <footer>
       <?php wp_link_pages(array('before' => '<nav class="page-nav"><p>' . __('Pages:', 'roots'), 'after' => '</p></nav>')); ?>
