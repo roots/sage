@@ -33,11 +33,12 @@ elseif ( !has_tag() && get_comments_number() < 1 )
     </div>
   <?php endif; ?>
 
-  <?php if ( has_tag() ) : ?>
+  <?php if ( has_tag() || the_category() != '' ) : ?>
     <div class="col col-lg-<?php echo $columnclass; ?>">
       <div class="tags-container">
-        <i class="glyphicon glyphicon-tags"></i>
-        <?php the_tags('<span class="label label-tag">', '</span> <span class="label label-tag">', '</span>'); ?>
+        <i class="glyphicon glyphicon-tags pull-left"></i>
+        <?php the_category( ' ' ); ?>
+        <?php the_tags('', ' ', ''); ?>
       </div>
     </div>
   <?php endif; ?>
