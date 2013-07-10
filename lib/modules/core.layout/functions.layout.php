@@ -153,13 +153,8 @@ function shoestrap_content_width_px( $echo = false ) {
 
   $layout = shoestrap_getLayout();
 
-  if ( shoestrap_getVariable( 'custom_grid' ) == 1) {
-    $container  = filter_var( shoestrap_getVariable( 'container_large_desktop' ), FILTER_SANITIZE_NUMBER_INT );
-    $gutter     = filter_var( shoestrap_getVariable( 'layout_gutter' ), FILTER_SANITIZE_NUMBER_INT );
-  } else {
-    $container = $smof_details['container_large_desktop']['std'];
-    $gutter = $smof_details['layout_gutter']['std'];
-  }
+  $container  = filter_var( shoestrap_getVariable( 'container_large_desktop' ), FILTER_SANITIZE_NUMBER_INT );
+  $gutter     = filter_var( shoestrap_getVariable( 'layout_gutter' ), FILTER_SANITIZE_NUMBER_INT );
 
   $main_span  = filter_var( shoestrap_section_class( 'main', false ), FILTER_SANITIZE_NUMBER_INT );
   $main_span  = str_replace( "-" , "", $main_span );
@@ -178,3 +173,9 @@ function shoestrap_content_width_px( $echo = false ) {
   else
     return $width;
 }
+
+function shoestrap_content_width() {
+  global $content_width;
+  $content_width = shoestrap_content_width_px();
+}
+add_action( 'template_redirect', 'shoestrap_content_width' );
