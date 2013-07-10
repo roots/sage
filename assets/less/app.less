@@ -300,8 +300,8 @@ a.toggle-nav {
       //padding-bottom: (((@navbar-height - @line-height-computed) / 2) - 3);
     }
 
-    .open > a, 
-    .open > a:hover, 
+    .open > a,
+    .open > a:hover,
     .open > a:focus,
     a:hover,
     a:focus {
@@ -331,7 +331,7 @@ a.toggle-nav {
         border-bottom: 0;
         border-top: 1px solid @brand-primary;
       }
-      
+
     }
   }
   &.style2 {
@@ -477,4 +477,14 @@ h6, .h6 {
 
 .header-wrapper {
   padding: @grid-gutter-width (@grid-gutter-width / 2);
+}
+
+@media screen and (min-width: @screen-small) {
+  .main-float-right div.main {
+    float: right;
+  }
+}
+
+.boxed-style #boxed-container {
+  margin-top: @navbar-margin-top;
 }

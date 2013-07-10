@@ -787,6 +787,8 @@ function shoestrap_variables_less() {
 @heading-h6-weight:       ' . $font_h6_weight . ';
 @heading-h6-style:        ' . $font_h6_style . ';
 
+@navbar-margin-top:       ' . shoestrap_getVariable( 'navbar_margin_top' ) . 'px;
+
 ';
 
   return $variables;

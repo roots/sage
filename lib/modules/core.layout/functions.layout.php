@@ -1,8 +1,8 @@
 <?php
 
-/**
-	Get the layout value, but only set it once!
-**/
+/*
+ * Get the layout value, but only set it once!
+ */
 function shoestrap_getLayout() {
 	global $shoestrap_layout;
 
@@ -17,16 +17,16 @@ function shoestrap_getLayout() {
 	  }
 	  if ( !is_active_sidebar( 'sidebar-secondary' ) && is_active_sidebar( 'sidebar-primary' ) && $shoestrap_layout == 5 ) {
 	    $shoestrap_layout = 3;
-	  }  
+	  }
 	}
 
 	return $shoestrap_layout;
 }
 
 
-/**
-	Override the layout value globally
-**/
+/*
+ *Override the layout value globally
+ */
 function shoestrap_setLayout($val) {
 	global $shoestrap_layout, $smof_data;
 	$shoestrap_layout = intval($val);
@@ -115,25 +115,27 @@ global $smof_data;
 }
 
 /**
-	If any css should be applied to fix the layout, enter it here.
-**/
-function shoestrap_layout_css() {
-  $layout = shoestrap_getLayout();
+ * Add and remove body_class() classes to accomodate layouts
+ */
+function shoestrap_layout_body_class($classes) {
+  $layout     = shoestrap_getLayout();
+  $site_style = shoestrap_getVariable( 'site_style' );
+  $margin     = shoestrap_getVariable( 'navbar_margin_top' );
+  $style      = "";
 
-  $site_style  = shoestrap_getVariable( 'site_style' );
-  $margin = shoestrap_getVariable( 'navbar_margin_top' );
-
-  $style = "";
   if ( $layout == 2 || $layout == 3 || $layout == 5 )
-     $style .= 'div.main{float:right;}';
+    $classes[] = 'main-float-right';
 
   if ( $site_style == 'boxed' && $margin != 0 )
-    $style .= '#boxed-container{margin-top:' . $margin . 'px;}';
+    $classes[] = 'boxed-style';
 
-  wp_add_inline_style( 'shoestrap_css', $style );
+  // Remove unnecessary classes
+  $remove_classes = array();
+  $classes = array_diff($classes, $remove_classes);
 
+  return $classes;
 }
-add_action( 'wp_enqueue_scripts', 'shoestrap_layout_css', 101 );
+add_filter('body_class', 'shoestrap_layout_body_class');
 
 function shoestrap_container_class() {
   $site_style = shoestrap_getVariable( 'site_style' );
