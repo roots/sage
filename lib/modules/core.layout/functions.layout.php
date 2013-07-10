@@ -79,17 +79,21 @@ global $smof_data;
   // Overrides main region class when selected template is page-full.php
   if ( is_page_template('page-full.php') ) {
     $main         = $base . 12;
+    $wrapper    = NULL;
   }
 
   // Overrides main and primary region classes when selected template is page-primary-sidebar.php
   if ( is_page_template('page-primary-sidebar.php') ) {
     $main      = $base . ( 12 - $first );
     $primary   = $base . $first;
+    $wrapper    = NULL;
   }
 
   // Overrides the main region class when on the frontpage and sidebars are set to not being displayed there.
-  if ( is_front_page() && shoestrap_getVariable( 'layout_sidebar_on_front' ) != 1 )
+  if ( is_front_page() && shoestrap_getVariable( 'layout_sidebar_on_front' ) != 1 ) {
     $main      = $base . 12;
+    $wrapper    = NULL;
+  }
 
   if ( $target == 'primary' )
     $class = $primary;
