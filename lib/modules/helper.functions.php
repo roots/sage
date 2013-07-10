@@ -149,3 +149,14 @@ function shoestrap_getFilePaths($file, $trail="/") {
   $result['uri'] = $result['themeuri'].$result['relativeuri'];
   return $result;
 }
+
+function shoestrap_password_form() {
+  global $post;
+
+  $label    = 'pwbox-'.( empty( $post->ID ) ? rand() : $post->ID );
+
+  $content  = '<form action="' . esc_url( site_url( 'wp-login.php?action=postpass', 'login_post' ) ) . '" method="post">' . __( 'This post is password protected. To view it please enter your password below:', 'shoestrap' ) . '<div class="input-group"><input name="post_password" id="' . $label . '" type="password" size="20" /><span class="input-group-btn"><input type="submit" name="Submit" value="' . esc_attr__( "Submit" ) . '" class="btn btn-default" /></span></div></form>';
+
+  return $content;
+}
+add_filter( 'the_password_form', 'shoestrap_password_form' );
