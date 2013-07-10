@@ -160,3 +160,9 @@ function shoestrap_password_form() {
   return $content;
 }
 add_filter( 'the_password_form', 'shoestrap_password_form' );
+
+function shoestrap_replace_reply_link_class( $class ){
+    $class = str_replace( "class='comment-reply-link", "class='comment-reply-link btn btn-primary btn-small", $class );
+    return $class;
+}
+add_filter('comment_reply_link', 'shoestrap_replace_reply_link_class');
