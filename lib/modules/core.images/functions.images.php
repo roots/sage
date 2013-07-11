@@ -84,17 +84,6 @@ function shoestrap_image_resize($data) {
 
 
 /**
-	Add the Retina.js script
-**/
-function shoestrap_retina_js() {
-	if ( shoestrap_getVariable( 'retina_toggle' ) == 1) {
-		wp_enqueue_script('retina-js', themeURI .'/assets/js/retina.js', array( 'jquery' ));	
-	}
-}
-add_action( 'wp_enqueue_scripts', 'shoestrap_retina_js', 101 );
-
-
-/**
 	Function to grab the image via URL to see if it's an attachmenet
 **/
 function shoestrap_get_attachment_id_from_src ($image_src) {
