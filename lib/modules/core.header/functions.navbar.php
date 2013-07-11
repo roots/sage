@@ -16,21 +16,10 @@ function shoestrap_navbar_pre_searchbox() {
   if ( shoestrap_getVariable( 'navbar_nav_right' ) == '1' ) {
     $show_searchbox = shoestrap_getVariable( 'navbar_search' );
     if ( $show_searchbox == '1' ) { ?>
-      <ul id="searchBox" class="pull-right nav navbar-nav">
-        <li class="dropdown menu-shortcodes">
-          <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="#">
-            <i class="img-circle glyphicon glyphicon-search"></i>
-          </a>
-          <ul class="dropdown-menu">
-            <li class="menu-columns">
-                <form role="search" method="get" id="searchform" class="form-search navbar-search" action="<?php echo home_url('/'); ?>">
-                  <label class="hide" for="s"><?php _e('Search for:', 'shoestrap'); ?></label>
-                  <input type="text" value="<?php if (is_search()) { echo get_search_query(); } ?>" name="s" id="s" class="search-query" placeholder="<?php _e('TYPE TO SEARCH', 'shoestrap'); ?>...">
-                </form>
-            </li>
-          </ul>
-        </li>
-      </ul>
+      <form role="search" method="get" id="searchform" class="form-search pull-right" action="<?php echo home_url('/'); ?>">
+        <label class="hide" for="s"><?php _e('Search for:', 'roots'); ?></label>
+        <input type="text" value="<?php if (is_search()) { echo get_search_query(); } ?>" name="s" id="s" class="search-query" placeholder="<?php _e('Search', 'roots'); ?> <?php bloginfo('name'); ?>">
+      </form>
       <?php
     }
   }
