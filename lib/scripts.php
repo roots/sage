@@ -46,6 +46,8 @@ function roots_scripts() {
     wp_register_script('retinajs', get_template_directory_uri() . '/assets/js/vendor/retina.js', false, null, true);
     wp_enqueue_script('retinajs');
   }
+  wp_register_script('fitvids', get_template_directory_uri() . '/assets/js/vendor/jquery.fitvids.js', false, null, true);
+  wp_enqueue_script('fitvids');
 }
 add_action('wp_enqueue_scripts', 'roots_scripts', 100);
 
