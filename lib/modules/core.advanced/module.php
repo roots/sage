@@ -212,4 +212,4 @@ function shoestrap_debug_hooks() {
 
   }
 }
-add_action( 'shoestrap_after_the_content', 'shoestrap_debug_hooks' );
+add_action( 'shoestrap_after_content', 'shoestrap_debug_hooks' );

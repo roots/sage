@@ -6,10 +6,12 @@
  */
 function shoestrap_logo() {
   if ( shoestrap_getVariable( 'logo' ) ) {
+  	$i = shoestrap_image(shoestrap_getVariable( 'logo' ));
+  	
     $image = '<img id="site-logo" src="%s" alt="%s">';
     printf(
       $image,
-      shoestrap_getVariable( 'logo' ),
+      $i['url'],
       get_bloginfo( 'name' )
     );
   } else {

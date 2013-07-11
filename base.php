@@ -68,8 +68,9 @@
       do_action('shoestrap_pre_main');
 
       // If the layout requires an extra wrapping element, add it here.
-      if ( shoestrap_section_class( 'wrap' ) )
-        echo '<div class="mp_wrap ' . shoestrap_section_class( 'wrapper' ) . '"><div class="row">';
+      if ( shoestrap_section_class( 'wrap' ) ) {
+      	echo '<div class="mp_wrap ' . shoestrap_section_class( 'wrapper' ) . '"><div class="row">';
+      }
 
       // This is where we load the extra template files for the main content.
       echo '<div class="main ' . shoestrap_section_class( 'main' ) . '" role="main">';

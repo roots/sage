@@ -166,3 +166,13 @@ function shoestrap_replace_reply_link_class( $class ){
     return $class;
 }
 add_filter('comment_reply_link', 'shoestrap_replace_reply_link_class');
+
+/**
+	Pass a straing and an array of possible values. Will return true if the straing contains it
+**/
+function shoestrap_contains_string($str, array $arr) {
+    foreach($arr as $a) {
+        if (stripos($str,$a) !== false) return true;
+    }
+    return false;
+}

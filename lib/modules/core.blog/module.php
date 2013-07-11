@@ -189,9 +189,6 @@ if ( !function_exists( 'shoestrap_module_blog_options' ) ) {
 }
 add_action( 'init','shoestrap_module_blog_options', 75 );
 
-include_once( dirname(__FILE__).'/functions.featured-image.php' );
-
-
 function shoestrap_core_blog_comments_toggle() {
   if ( shoestrap_getVariable('blog_comments_toggle' ) != 1 ) {
     remove_post_type_support( 'post', 'comments' );
