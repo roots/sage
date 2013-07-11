@@ -41,6 +41,11 @@ function roots_scripts() {
   wp_enqueue_script('modernizr');
   wp_enqueue_script('roots_plugins');
   wp_enqueue_script('roots_main');
+
+  if ( shoestrap_getVariable( 'retina_toggle' ) == 1 ) {
+    wp_register_script('retinajs', get_template_directory_uri() . '/assets/js/vendor/retina.js', false, null, true);
+    wp_enqueue_script('retinajs');
+  }
 }
 add_action('wp_enqueue_scripts', 'roots_scripts', 100);
 
