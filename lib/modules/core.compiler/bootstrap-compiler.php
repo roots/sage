@@ -86,7 +86,7 @@ function shoestrap_phpless_compiler() {
 
   $less = new lessc;
 
-  $less->setFormatter( "compressed" );
+  // $less->setFormatter( "compressed" );
 
   $less->setImportDir( array(
     get_template_directory() . '/assets/less',
@@ -109,7 +109,7 @@ function shoestrap_compile_css( $method = 'php' ) {
 ';
 	
   if ( $method == 'php' ) {
-    if ( get_option( 'shoestrap_activated' ) == true ) {
+    if ( get_option( 'shoestrap_activated' ) == 1 ) {
       $content .= shoestrap_phpless_compiler();
     	$file = shoestrap_css();
     	if (is_writeable($file)
