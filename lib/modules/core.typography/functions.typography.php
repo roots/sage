@@ -1,7 +1,11 @@
 <?php
 
 function shoestrap_add_typography_class_case($array) {
-  global $smof_output, $smof_details;
+  global $smof_output, $smof_details, $wp_filesystem;
+	// Initialize the Wordpress filesystem, no more using file_put_contents function
+	if (empty($wp_filesystem)) {
+		WP_Filesystem();
+	}  
 
   if ($array['value']['type'] =="select_google_font_hybrid") {
     $output = '';
@@ -9,7 +13,7 @@ function shoestrap_add_typography_class_case($array) {
     //print_r($array);
     extract($array);
     $typography_stored = isset($smof_data[$value['id']]) ? $smof_data[$value['id']] : $value['std'];
-    $gfonts = json_decode(file_get_contents(dirname(__FILE__).'/webfonts.json'), true);
+    $gfonts = json_decode($wp_filesystem->get_contents(dirname(__FILE__).'/webfonts.json'), true);
     /* Font Size */
 
     //if(isset($typography_stored['size'])) {
