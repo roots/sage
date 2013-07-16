@@ -9,7 +9,7 @@ if ( !function_exists( 'shoestrap_module_presets_options' ) ) {
     //Preset Styles Reader
     $preset_styles_path = get_template_directory() . '/lib/admin/presets';
 
-    $preset_styles_url  = get_bloginfo( 'template_url' ) . '/lib/admin/presets/';
+    $preset_styles_url  = get_template_directory_uri() . '/lib/admin/presets/';
     $preset_styles      = array();
 
     if ( is_dir( $preset_styles_path ) ) {
