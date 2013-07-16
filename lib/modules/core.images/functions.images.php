@@ -134,7 +134,7 @@ echo "here";
 			/* Restore original Post Data */
 
 
-			require ( ABSPATH . 'wp-admin/includes/image.php' );
+			include_once( ABSPATH . 'wp-admin/includes/image.php' );
 
 			if ( ! ( ( $uploads = wp_upload_dir( current_time('mysql') ) ) && false === $uploads['error'] ) )
 				return 102; // upload dir is not accessible
@@ -148,53 +148,18 @@ echo "here";
 			// try to upload
 
 			if ( ini_get( 'allow_url_fopen' ) ) { // check php setting for remote file access
-				$content = @file_get_contents( $image );
-			}
-			elseif ( function_exists( 'curl_init' ) ) { // curl library enabled
-				$ch = curl_init();
-				curl_setopt( $ch, CURLOPT_URL, $image );
-				curl_setopt( $ch, CURLOPT_HEADER, 0 );
-				curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1 );
-				curl_setopt( $ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_5_8; en-us) AppleWebKit/531.9 (KHTML, like Gecko) Version/4.0.3 Safari/531.9' );
-				$content = curl_exec( $ch );
-				curl_close( $ch );
-			}
-			else { // custom connect
-				$parsed_url = parse_url( $image );
-				$host = $parsed_url['host'];
-				$path = ( isset( $parsed_url['path'] ) ) ? $parsed_url['path'] : '/';
-				$port = ( isset( $parsed_url['port'] ) ) ? $parsed_url['port'] : '80';
-				$timeout = 10;
-				if ( isset( $parsed_url['query'] ) )
-					$path .= '?' . $parsed_url['query'];
-				$fp = @fsockopen( $host, '80', $errno, $errstr, $timeout );
-
-				if( !$fp )
-					return 103; // give up on connecting to remote host
-
-				fputs( $fp, "GET $path HTTP/1.0\r\n" .
-					   "Host: $host\r\n" .
-					   "User-Agent: Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_5_8; en-us) AppleWebKit/531.9 (KHTML, like Gecko) Version/4.0.3 Safari/531.9\r\n" .
-					   "Accept: */*\r\n" .
-					   "Accept-Language: en-us,en;q=0.5\r\n" .
-					   "Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7\r\n" .
-					   "Keep-Alive: 300\r\n" .
-					   "Connection: keep-alive\r\n" .
-					   "Referer: http://$host\r\n\r\n");
-				stream_set_timeout( $fp, $timeout );
-				// retrieve the response from the remote server
-				while ( $line = fread( $fp, 4096 ) ) {
-					$content .= $line;
-				}
-				fclose( $fp );
-				$pos     = strpos( $content, "\r\n\r\n" );
-				$content = substr( $content, $pos + 4 );
+				$content = @$wp_filesystem->get_contents( $image );
 			}
 
 			if ( empty( $content ) ) // nothing was found
 				return 104;
 
-			file_put_contents( $newfile, $content ); // save image
+			global $wp_filesystem;
+			$wp_filesystem->put_contents(
+			  $newfile,
+			  $content,
+			  FS_CHMOD_FILE // save image
+			);
 
 			if (! file_exists( $newfile ) ) // upload was not successful
 				return 105;
