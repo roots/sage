@@ -144,11 +144,13 @@ function shoestrap_add_typography_class_case($array) {
       $output .= '<option value="" style="text-align: center;" />-------- GOOGLE WEB FONTS --------</option>';
 
       $google = "false";
-      foreach ($gfonts as $i => $face) {
-        if ($i == $typography_stored['face']) {
-          $google = "true";
+      if ( isset( $gfonts ) ) {
+        foreach ($gfonts as $i => $face) {
+          if ( $i == $typography_stored['face'] )
+            $google = "true";
+          
+          $output .= '<option data-details="'.urlencode(json_encode($face)).'" data-google="true" value="'.$i.'" ' . selected($typography_stored['face'], $i, false) . '>'. $i .'</option>';
         }
-        $output .= '<option data-details="'.urlencode(json_encode($face)).'" data-google="true" value="'.$i.'" ' . selected($typography_stored['face'], $i, false) . '>'. $i .'</option>';
       }
 
       $output .= '</select></div>';
