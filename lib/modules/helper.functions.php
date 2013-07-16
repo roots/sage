@@ -108,18 +108,28 @@ function shoestrap_mix_colors( $hex1, $hex2, $percentage ) {
 
 // Gets the current values from SMOF, and if not there, grabs the defaults
 function shoestrap_getVariable($key, $fresh = false) {
-  global $smof_details, $smof_data;
+  global $smof_details, $smof_data, $of_options, $options_machine;
   
-  if ( empty( $smof_data ) )
-  	$smof_data = get_theme_mods();
+
+
+  if ( empty( $smof_data ) ) {
+    $smof_data = get_theme_mods();
+  }
+  	
 
   if ( $fresh == true ) {
     $value = get_theme_mod( $key );
-  
   } else {
-    if ( ( !isset( $value ) || $value == "" ) && !array_key_exists( $key, $smof_data ) && isset( $smof_details[$key]['std'] ) ) {
+    if ( empty( $smof_data ) && empty($smof_details) ) {
+      if (!class_exists('Options_Machine') ) {
+        //var_dump(debug_backtrace());
+        return;
+      }
+    }
+
+    if ( ( !isset( $value ) || $value == "" ) && is_array($smof_data) && !array_key_exists( $key, $smof_data ) && isset( $smof_details[$key]['std'] ) ) {
     	$value = $smof_details[$key]['std'];
-    } elseif ( array_key_exists( $key, $smof_data ) ) {
+    } elseif ( is_array($smof_data) &&  array_key_exists( $key, $smof_data ) ) {
     	$value = $smof_data[$key];
     }
   }
