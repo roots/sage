@@ -8,7 +8,7 @@ $license_key = trim( shoestrap_getVariable( 'shoestrap_license_key' ) );
 
 if( !class_exists( 'EDD_SL_Theme_Updater' ) ) {
   // load our custom theme updater
-  include( dirname( __FILE__ ) . '/EDD_SL_Theme_Updater.php' );
+  include_once( dirname( __FILE__ ) . '/EDD_SL_Theme_Updater.php' );
 }
 
 // setup the updater
