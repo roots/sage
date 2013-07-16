@@ -141,11 +141,11 @@ function shoestrap_getFilePaths($file, $trail="/") {
   $result['themeuri'] = themeURI;
   $result['folder'] = themeFOLDER;
   $result['name'] = themeNAME;
-  $result['themepath'] = themePATH.DIRECTORY_SEPARATOR;
-  $parts = explode(themePATH.DIRECTORY_SEPARATOR.themeFOLDER, $file);
-  $result['path'] = $file.DIRECTORY_SEPARATOR;
-  $result['relativepath'] = $parts[1].DIRECTORY_SEPARATOR;
-  $result['relativeuri'] = str_replace(DIRECTORY_SEPARATOR, $trail, $parts[1]).$trail;
+  $result['themepath'] = trailingslashit(themePATH);
+  $parts = explode(trailingslashit(themePATH).themeFOLDER, $file);
+  $result['path'] = trailingslashit($file);
+  $result['relativepath'] = trailingslashit($parts[1]);
+  $result['relativeuri'] = trailingslashit($parts[1]);
   $result['uri'] = $result['themeuri'].$result['relativeuri'];
   return $result;
 }
@@ -176,3 +176,15 @@ function shoestrap_contains_string($str, array $arr) {
     }
     return false;
 }
+
+/**
+	Initialize the Wordpress filesystem, no more using file_put_contents function
+**/
+function shoestrap_init_filesystem() {
+	
+	if (empty($wp_filesystem)) {
+		WP_Filesystem();
+	}
+}
+add_filter('init', 'shoestrap_replace_reply_link_class');
+
