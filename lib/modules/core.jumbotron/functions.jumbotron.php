@@ -69,7 +69,7 @@ function shoestrap_jumbotron_css() {
   if ( shoestrap_getVariable( 'jumbotron_background_fixed_toggle' ) == 1 ) {
     $style .= "background-attachment: fixed;";
   }
-
+  $image = "";
   if ( isset($background) && $background ) {
     $image = "background-image: url( '$background' );";
   } 
