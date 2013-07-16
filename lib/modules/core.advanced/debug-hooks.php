@@ -22,8 +22,9 @@ function list_hook_details( $input = NULL ) {
     global $wp_filter;
 	
     $tag = current_filter();
-    if( isset( $wp_filter[$tag] ) )
-		dump_hook( $tag, $wp_filter[$tag] );
+    if( isset( $wp_filter[$tag] ) ) {
+    	dump_hook( $tag, $wp_filter[$tag] );	
+    }
 
 	return $input;
 }
@@ -42,8 +43,9 @@ function dump_hook( $tag, $hook ) {
 		
 		echo "\t";
 
-		if( is_string( $function['function'] ) )
-		    echo $function['function'];
+		if( is_string( $function['function'] ) ) {
+			echo $function['function'];
+		}
 
 		elseif( is_string( $function['function'][0] ) )
 		     echo $function['function'][0] . ' -> ' . $function['function'][1];
