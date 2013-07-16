@@ -180,9 +180,9 @@ function shoestrap_replace_reply_link_class( $class ){
 }
 add_filter('comment_reply_link', 'shoestrap_replace_reply_link_class');
 
-/**
+/*
 	Pass a straing and an array of possible values. Will return true if the straing contains it
-**/
+*/
 function shoestrap_contains_string($str, array $arr) {
     foreach($arr as $a) {
         if (stripos($str,$a) !== false) return true;
@@ -190,14 +190,14 @@ function shoestrap_contains_string($str, array $arr) {
     return false;
 }
 
-/**
+/*
 	Initialize the Wordpress filesystem, no more using file_put_contents function
-**/
+*/
 function shoestrap_init_filesystem() {
 	
 	if (empty($wp_filesystem)) {
+		require_once(ABSPATH .'/wp-admin/includes/file.php');
 		WP_Filesystem();
 	}
 }
-add_filter('init', 'shoestrap_replace_reply_link_class');
-
+add_filter('init', 'shoestrap_init_filesystem');
