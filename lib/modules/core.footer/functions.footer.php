@@ -73,8 +73,10 @@ function shoestrap_footer_html() {
 
   $blog_name = get_bloginfo( 'name', 'display' );
   $ftext = shoestrap_getVariable( 'footer_text' );
-  if ($ftext == "")
-    $ftext = '&copy; [year] [sitename]';
+  if ($ftext == "") {
+  	$ftext = '&copy; [year] [sitename]';
+  }
+
   $ftext = str_replace("[year]", date('Y'), $ftext);
   $ftext = str_replace("[sitename]", $blog_name, $ftext);
 
