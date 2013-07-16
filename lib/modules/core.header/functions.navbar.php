@@ -69,11 +69,11 @@ function shoestrap_navbar_class() {
 
 function shoestrap_navbar_css() {
   $opacity = (intval(shoestrap_getVariable( 'navbar_bg_opacity' )))/100;
+  $style = "";
 
   if ( $opacity != 1 && $opacity != "" ) {
     $bg = shoestrap_getVariable( 'navbar_bg');
     $rgb = shoestrap_get_rgb($bg, true);
-    $style = '<style id="core.navbar">';
       $style .= '.navbar{';
         if ($opacity != 1 && $opacity != "") {
           $style .= 'background: rgb('.$rgb.');';
@@ -82,15 +82,14 @@ function shoestrap_navbar_css() {
           $style .= 'background: '.$bg.';';
         }
       $style .= '}';
-    $style .= '</style>';
-
-    echo $style;
   }
 
 
-  if ( shoestrap_getVariable( 'logo_top_margin' ) != 1 )
-    $style = '<style>.navbar a.navbar-brand.logo {margin-top:' . shoestrap_getVariable( 'logo_top_margin' ) . 'px; }</style>';
+  if ( shoestrap_getVariable( 'logo_top_margin' ) != 1 ) {
+  	$style .= '.navbar a.navbar-brand.logo {margin-top:' . shoestrap_getVariable( 'logo_top_margin' ) . 'px; }';
+  }
 
-  echo $style;
+  wp_add_inline_style( 'shoestrap_css', $style );
+
 }
-add_action( 'wp_head', 'shoestrap_navbar_css' );
+add_action( 'wp_enqueue_scripts', 'shoestrap_navbar_css', 101 );
