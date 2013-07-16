@@ -15,6 +15,7 @@ function jumbotron_content() {
       $hero = true;
     }
   }
+  echo "<div class='clearfix'></div>";
 
   if ( $hero == true ) :
 
@@ -111,7 +112,8 @@ function shoestrap_jumbotron_css() {
   wp_add_inline_style( 'shoestrap_css', $theCSS );
 
 }
-add_action( 'wp_head', 'shoestrap_jumbotron_css' );
+
+add_action('wp_enqueue_scripts', 'shoestrap_jumbotron_css', 101);
 
 /*
  * Enables the fittext.js for h1 headings
@@ -135,7 +137,7 @@ function jumbotron_fittext_enqueue_script() {
     wp_enqueue_script('fittext');
   }
 }
-add_action('wp_enqueue_scripts', 'jumbotron_fittext_enqueue_script', 120);
+add_action('wp_enqueue_scripts', 'jumbotron_fittext_enqueue_script', 101);
 
 function shoestrap_conditional_jumbo_section_removal( $wp_customize ) {
   if ( !is_active_sidebar( 'jumbotron' ) )
