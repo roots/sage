@@ -57,6 +57,8 @@ function shoestrap_jumbotron_css() {
 
   if (shoestrap_getVariable( 'jumbotron_background_color' ) != "") {
     $color = '#' . str_replace( '#', '', shoestrap_getVariable( 'jumbotron_background_color' ) );
+  } else {
+    $color = '';
   }
 
   if ( !isset($background) && !isset($color) )
@@ -69,9 +71,11 @@ function shoestrap_jumbotron_css() {
   }
 
   if ( isset($background) && $background ) {
-    $image .= "background-image: url( '$background' );";
-  }
+    $image = "background-image: url( '$background' );";
+  } 
 
+  $repeat = '';
+  $position = '';
   if ( shoestrap_getVariable( 'jumbotron_background_image_toggle' ) == 1 && ( shoestrap_getVariable( 'jumbotron_background_custom_image' ) != "" || shoestrap_getVariable( 'jumbotron_background_image' ) != "" ) ) {
     if ( shoestrap_getVariable( 'jumbotron_background_image_position_toggle' ) == 0 ) {
       $style .= "background-size: cover;";
