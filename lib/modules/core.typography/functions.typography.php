@@ -4,6 +4,7 @@ function shoestrap_add_typography_class_case($array) {
   global $smof_output, $smof_details, $wp_filesystem;
 	// Initialize the Wordpress filesystem, no more using file_put_contents function
 	if (empty($wp_filesystem)) {
+		require_once(ABSPATH .'/wp-admin/includes/file.php');
 		WP_Filesystem();
 	}  
 
