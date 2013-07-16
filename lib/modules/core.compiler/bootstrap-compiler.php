@@ -86,7 +86,7 @@ function shoestrap_phpless_compiler() {
 
   $less = new lessc;
 
-  $less->setFormatter( "compressed" );
+  // $less->setFormatter( "compressed" );
 
   $less->setImportDir( array(
     get_template_directory() . '/assets/less',
