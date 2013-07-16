@@ -35,7 +35,7 @@ function shoestrap_include_modules_fallback() {
  * and sets it to true, AFTER all the modules have been loaded above.
  * This helps skip the compiler on activation.
  */
-function shoestrap_theme_activated() {
+function shoestrap_theme_active() {
   if ( get_option( 'shoestrap_activated' ) != true )
     add_option( 'shoestrap_activated', true );
 }
