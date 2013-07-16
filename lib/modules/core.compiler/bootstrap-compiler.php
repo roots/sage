@@ -109,15 +109,17 @@ function shoestrap_compile_css( $method = 'php' ) {
 ';
 	
   if ( $method == 'php' ) {
-    $content .= shoestrap_phpless_compiler();
-  	$file = shoestrap_css();
-  	if (is_writeable($file)
-  	|| (!file_exists($file) && is_writeable(dirname($file))) ) {
-	  	if ( ! $wp_filesystem->put_contents( $file, $content, FS_CHMOD_FILE) ) {
-				add_settings_error( 'shoestrap', 'create_file', __('Unable to create the style.css file.', 'shoestrap'), 'error' );
-			}
-  		$css = $content;
-  	}
+    if ( get_option( 'shoestrap_activated' ) == true )
+      $content .= shoestrap_phpless_compiler();
+    	$file = shoestrap_css();
+    	if (is_writeable($file)
+    	|| (!file_exists($file) && is_writeable(dirname($file))) ) {
+  	  	if ( ! $wp_filesystem->put_contents( $file, $content, FS_CHMOD_FILE) ) {
+  				add_settings_error( 'shoestrap', 'create_file', __('Unable to create the style.css file.', 'shoestrap'), 'error' );
+  			}
+    		$css = $content;
+    	}
+    }
   } else {
   	/*
     $content .= shoestrap_complete_less( true );

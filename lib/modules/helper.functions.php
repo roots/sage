@@ -109,10 +109,13 @@ function shoestrap_mix_colors( $hex1, $hex2, $percentage ) {
 // Gets the current values from SMOF, and if not there, grabs the defaults
 function shoestrap_getVariable($key, $fresh = false) {
   global $smof_details, $smof_data;
-  if ( empty($smof_data) )
+  
+  if ( empty( $smof_data ) )
   	$smof_data = get_theme_mods();
-  if ( $fresh ) {
+
+  if ( $fresh == true ) {
     $value = get_theme_mod( $key );
+  
   } else {
     if ( ( !isset( $value ) || $value == "" ) && !array_key_exists( $key, $smof_data ) && isset( $smof_details[$key]['std'] ) ) {
     	$value = $smof_details[$key]['std'];
