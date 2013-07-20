@@ -47,33 +47,22 @@ function shoestrap_css_not_writeable($array){
   if ( $current_screen->parent_base == 'themes' ) {
     $filename = shoestrap_css();
     $url = shoestrap_css('url');
-    //$filename_less = str_replace(".css", ".less", $filename);
     
     if (!file_exists($filename)) {
-		$content = __( "The following file does not exist and must be so in order to utilise this theme. Please create this file and give it write permissions.", "shoestrap");
-		$content .= '<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="'.$filename.'" target="_blank">'.$filename.'</a>';
-		add_settings_error( 'shoestrap', 'create_file', $content, 'error' );  				    		
-	    settings_errors();	    		
+  	  	if ( ! $wp_filesystem->put_contents( $filename, " ", FS_CHMOD_FILE) ) {
+					$content = __( "The following file does not exist and must be so in order to utilise this theme. Please create this file.", "shoestrap");
+    			$content .= '<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="'.$filename.'" target="_blank">'.$filename.'</a>';
+					add_settings_error( 'shoestrap', 'create_file', $content, 'error' );  				    		
+		    	settings_errors();	    		
+	  	}
     }
 
-    //if (!is_writable($filename) || !is_writable($filename_less)) {
     if (file_exists($filename) && !is_writable($filename)) {
-	  @chmod( $filename, 0777 );
-      if (!is_writable($filename)) {
-        $css = shoestrap_compile_css();
-      }
-      // if (!is_writable($filename_less)) {
-      //   Not needed
-      //   $css = shoestrap_compile_css('less');
-      // }
-      //if (!is_writable($filename) || !is_writable($filename_less)) {
-      if (!is_writable($filename)) {
     	$content = __( "The following file is not writable and must be so in order to utilise this theme. Please update the permissions.", "shoestrap");
     	$content .= '<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="'.$filename.'" target="_blank">'.$filename.'</a>';
 	
 			add_settings_error( 'shoestrap', 'create_file', $content, 'error' );  				    		
 	    settings_errors();	
-      }
     }
   }
 }
