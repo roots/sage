@@ -5,6 +5,7 @@ if ( !defined( 'DB_NAME' ) ) {
   header('Location: http://'.$_SERVER['SERVER_NAME'].'/');
 }
 
+
 /*
  * Gets the css path or url to the stylesheet
  * If $target = 'path', return the path
@@ -47,9 +48,17 @@ function shoestrap_css_not_writeable($array){
     $filename = shoestrap_css();
     $url = shoestrap_css('url');
     //$filename_less = str_replace(".css", ".less", $filename);
+    
+    if (!file_exists($filename)) {
+		$content = __( "The following file does not exist and must be so in order to utilise this theme. Please create this file and give it write permissions.", "shoestrap");
+		$content .= '<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="'.$filename.'" target="_blank">'.$filename.'</a>';
+		add_settings_error( 'shoestrap', 'create_file', $content, 'error' );  				    		
+	    settings_errors();	    		
+    }
 
     //if (!is_writable($filename) || !is_writable($filename_less)) {
-    if (!is_writable($filename)) {
+    if (file_exists($filename) && !is_writable($filename)) {
+	  @chmod( $filename, 0777 );
       if (!is_writable($filename)) {
         $css = shoestrap_compile_css();
       }
@@ -59,16 +68,11 @@ function shoestrap_css_not_writeable($array){
       // }
       //if (!is_writable($filename) || !is_writable($filename_less)) {
       if (!is_writable($filename)) {
-        echo '<div class="error"><p>';
-        //echo __( "The following file(s) are not writable and must be so in order to utilize this theme. Please update their permissions.", "shoestrap");
-        echo __( "The following file is not writable and must be so in order to utilize this theme. Please update their permissions.", "shoestrap");
-        if (!is_writable($filename)) {
-          echo '<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="'.$url.'" target="_blank">'.$url.'</a>';
-        }
-        // if (!$filename_less) {
-        //   echo '<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="'.str_replace(".css", ".less", $url).'" target="_blank">'.str_replace(".css", ".less", $url).'</a>';
-        // }
-        echo '</p></div>';
+    	$content = __( "The following file is not writable and must be so in order to utilise this theme. Please update the permissions.", "shoestrap");
+    	$content .= '<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="'.$filename.'" target="_blank">'.$filename.'</a>';
+	
+			add_settings_error( 'shoestrap', 'create_file', $content, 'error' );  				    		
+	    settings_errors();	
       }
     }
   }
@@ -94,8 +98,11 @@ function shoestrap_phpless_compiler() {
   ) );
   $css = $less->compile( shoestrap_complete_less() );
 
+
+
   return $css;
 }
+
 
 function shoestrap_compile_css( $method = 'php' ) {
 	global $wp_filesystem;
@@ -111,34 +118,20 @@ function shoestrap_compile_css( $method = 'php' ) {
 	
   if ( $method == 'php' ) {
     if ( get_option( 'shoestrap_activated' ) == 1 ) {
-      $content .= shoestrap_phpless_compiler();
+      
     	$file = shoestrap_css();
     	if (is_writeable($file)
     	|| (!file_exists($file) && is_writeable(dirname($file))) ) {
-  	  	if ( ! $wp_filesystem->put_contents( $file, $content, FS_CHMOD_FILE) ) {
-  				add_settings_error( 'shoestrap', 'create_file', __('Unable to create the style.css file.', 'shoestrap'), 'error' );
-  			}
-    		$css = $content;
-    	}
+  	  		if ( ! $wp_filesystem->put_contents( $file, $content, FS_CHMOD_FILE) ) {
+				$content .= shoestrap_phpless_compiler();
+				return $css;
+	  		}
+    	} 
     }
-  } else {
-  	/*
-    $content .= shoestrap_complete_less( true );
-  	$file = str_replace( ".css", ".less", shoestrap_css());
-  	if (is_writeable($file)
-  	|| (!file_exists($file) && is_writeable(dirname($file))) ) {
-  		$wp_filesystem->put_contents(
-			  shoestrap_css(),
-			  $content,
-			  FS_CHMOD_FILE // save image
-			);
-  		$css = $makecss;
-  		
-  	}
-  	*/
-  }
-  return $css;
+  } 
+  
 }
+
 
 /*
  * Write the CSS to file
@@ -146,6 +139,7 @@ function shoestrap_compile_css( $method = 'php' ) {
 function shoestrap_makecss() {
   shoestrap_compile_css();
 }
+
 
 function shoestrap_process_font( $font ) {
   if ( isset( $font['style'] ) ) {
@@ -167,6 +161,7 @@ function shoestrap_process_font( $font ) {
 
   return $font;
 }
+
 
 /*
  * The content below is a copy of bootstrap's variables.less file.
@@ -812,6 +807,10 @@ function shoestrap_variables_less() {
   return $variables;
 }
 
+
+/**
+	Brings all the LESS files that need to be compiled together.
+**/
 function shoestrap_complete_less( $url = false ) {
   if ( $url == true ) {
     $bootstrap    = get_template_directory_uri().'/assets/less/';
