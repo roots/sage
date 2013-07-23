@@ -107,12 +107,11 @@ function shoestrap_compile_css( $method = 'php' ) {
 	
   if ( $method == 'php' ) {
     if ( get_option( 'shoestrap_activated' ) == 1 ) {
-      
+      $content .= shoestrap_phpless_compiler();
     	$file = shoestrap_css();
     	if (is_writeable($file)
     	|| (!file_exists($file) && is_writeable(dirname($file))) ) {
   	  		if ( ! $wp_filesystem->put_contents( $file, $content, FS_CHMOD_FILE) ) {
-				$content .= shoestrap_phpless_compiler();
 				return $css;
 	  		}
     	} 
