@@ -1,4 +1,4 @@
-  <?php
+<?php
 
 class Shoestrap_Breadcrumb {
   /**
