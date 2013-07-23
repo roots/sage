@@ -4,3 +4,4 @@
 // If you need to override this template you can use the 'shoestrap_entry_meta_override' hook.
 
 shoestrap_entry_meta();
+edit_post_link( '<span class="btn btn-default btn-small"><i class="glyphicon glyphicon-edit"></i> ' . __( 'Edit', 'twentythirteen' ) . '</span>', '<span class="edit-link pull-right">', '</span>' ); ?>
