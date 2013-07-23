@@ -110,7 +110,7 @@ if ( !function_exists( 'shoestrap_module_blog_options' ) ) {
       "fold"      => "feat_img_archive",
       "std"       => 550,
       "min"       => 100,
-      "fold"      => 'feat_img_post_custom_toggle',
+      "fold"      => 'feat_img_archive_custom_toggle',
       "step"      => 1,
       "max"       => 1000,
       "edit"      => 1,
