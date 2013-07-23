@@ -12,6 +12,7 @@
     else
       do_action( 'shoestrap_entry_meta_override' )
     ?>
+    <?php do_action( 'shoestrap_after_entry_meta' ); ?>
   </header>
   <div class="entry-summary">
     <?php
