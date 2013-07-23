@@ -52,6 +52,21 @@ function roots_gallery($attr) {
     $orderby = 'none';
   }
 
+  $cols = intval( 12 / $columns );
+  // Set a minimum of col-2
+  if ( $cols == 1 )
+    $cols = 2;
+
+  // Decide the size of the image to be loaded
+  // depending on the columns
+  if ( $cols >= 6 )
+    $size = 'full';
+  elseif ( $cols >= 3 )
+    $size = 'medium';
+  else
+    $size = 'thumbnail';
+
+
   if (!empty($include)) {
     $_attachments = get_posts(array('include' => $include, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby));
 
@@ -77,20 +92,20 @@ function roots_gallery($attr) {
     return $output;
   }
 
-  $output = '<ul class="thumbnails gallery">';
+  $output = '<div class="row">';
 
   $i = 0;
   foreach ($attachments as $id => $attachment) {
     $image = ('file' == $link) ? wp_get_attachment_link($id, $size, false, false) : wp_get_attachment_link($id, $size, true, false);
 
-    $output .= '<li>' . $image;
+    $output .= '<div class="col-' . $cols . '">' . $image;
     if (trim($attachment->post_excerpt)) {
       $output .= '<div class="caption hidden">' . wptexturize($attachment->post_excerpt) . '</div>';
     }
-    $output .= '</li>';
+    $output .= '</div>';
   }
 
-  $output .= '</ul>';
+  $output .= '</div>';
 
   return $output;
 }
