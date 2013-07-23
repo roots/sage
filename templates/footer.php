@@ -5,7 +5,41 @@
 ?>
 <footer class="content-info" role="contentinfo">
   <div class="<?php echo shoestrap_container_class(); ?>">
-    <?php dynamic_sidebar('sidebar-footer'); ?>
-    <p>&copy; <?php echo date('Y'); ?> <?php bloginfo('name'); ?></p>
+    <?php
+    // Finding the number of active widget sidebars
+    $num_of_sidebars = 0;
+    for ( $i=0; $i<5 ; $i++ ) { 
+    	$sidebar = 'sidebar-footer-'.$i.'';
+    	if ( is_active_sidebar($sidebar) ) {
+				$num_of_sidebars++;
+			}
+    }
+    
+    // Setting each column width accordingly
+    if ( $num_of_sidebars == 4 ) {
+    	$span = 3;
+    } elseif ( $num_of_sidebars == 3 ) {
+    	$span = 4;
+    } elseif ( $num_of_sidebars == 2 ) {
+    	$span = 6;
+    } elseif ( $num_of_sidebars == 1 ) {
+    	$span = 12;
+    }
+    
+    // Showing the active sidebars
+    for ( $i=0; $i<5 ; $i++ ) { 
+    	$sidebar = 'sidebar-footer-'.$i.'';
+    	if ( is_active_sidebar($sidebar) ) {
+				echo '<div class="col-'.$span.'">';
+				dynamic_sidebar( $sidebar );
+				echo '</div>';
+			}
+    }
+		?>
   </div>
+  
+	<?php 
+		// Showing extra features from /lib/modules/core.footer/functions.footer.php
+	  do_action( 'shoestrap_footer_pre_override' );
+	?>
 </footer>

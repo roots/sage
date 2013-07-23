@@ -123,7 +123,7 @@ function shoestrap_footer_html() {
   </footer>
   <?php
 }
-add_action( 'shoestrap_footer_override', 'shoestrap_footer_html' );
+add_action( 'shoestrap_footer_pre_override', 'shoestrap_footer_html' );
 
 
 
