@@ -1,4 +1,4 @@
-<?php
+  <?php
 
 class Shoestrap_Breadcrumb {
   /**
@@ -242,7 +242,8 @@ class Shoestrap_Breadcrumb {
         get_search_query()
       );
 
-      $this->breadcrumb['search'] = $this->template( $text, 'current' );
+      $this->breadcrumb['search'] = '<li class="active">Search Results</li>';
+      
 
       if ( $this->options['show_pagenum'] )
         $this->breadcrumb['search'] = $this->template( array(
