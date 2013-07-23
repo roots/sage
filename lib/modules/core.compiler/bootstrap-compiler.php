@@ -371,7 +371,6 @@ function shoestrap_variables_less() {
 @font-size-base:          ' . $font_size_base . 'px;
 @font-size-large:         ceil(@font-size-base * 1.25); // ~18px
 @font-size-small:         ceil(@font-size-base * 0.85); // ~12px
-@font-size-mini:          ceil(@font-size-base * 0.75); // ~11px
 @font-style-base:          ' . $font_style_base . ';
 @font-weight-base:         ' . $font_weight_base .';
 
@@ -406,10 +405,14 @@ function shoestrap_variables_less() {
 // Tables
 // -------------------------
 
+@table-cell-padding:                 8px;
+@table-condensed-cell-padding:       5px;
+
 @table-bg:                           transparent; // overall background-color
 @table-bg-accent:                    ' . $table_bg_accent . '; // for striping
 @table-bg-hover:                     ' . $table_bg_hover . '; // for hover
-
+@table-bg-hover:                     ' . $table_bg_hover . ';
+@table-bg-active:                    @table-bg-hover;
 @table-border-color:                 ' . $table_border_color . '; // table and cell border
 
 
@@ -498,7 +501,8 @@ function shoestrap_variables_less() {
 @navbar-height:                    ' . $navbar_height . 'px;
 @navbar-color:                     ' . $navbar_color . ';
 @navbar-bg:                        ' . $navbar_bg . ';
-@navbar-padding:                   floor(@grid-gutter-width / 2);  // ~15px
+@navbar-padding-horizontal:        floor(@grid-gutter-width / 2);  // ~15px
+@navbar-padding-vertical:          ((@navbar-height - @line-height-computed) / 2);
 
 // Navbar links
 @navbar-link-color:                @navbar-color;
@@ -689,6 +693,28 @@ function shoestrap_variables_less() {
 // Wells
 // -------------------------
 @well-bg:                     @panel-heading-bg;
+
+
+// Accordion
+// -------------------------
+@accordion-border-color:      #e5e5e5;
+
+
+// Badges
+// -------------------------
+@badge-color:                 #fff;
+@badge-link-hover-color:      #fff;
+
+@badge-bg:                    #f5f5f5;
+@badge-active-color:          @link-color;
+@badge-active-bg:             #fff;
+
+
+// Breadcrumbs
+// -------------------------
+@breadcrumb-bg:               #f5f5f5;
+@breadcrumb-color:            #ccc;
+@breadcrumb-active-color:     @gray-light;
 
 
 // Miscellaneous

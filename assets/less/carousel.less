@@ -99,7 +99,9 @@
   }
 
   // Toggles
-  .glyphicon {
+  .glyphicon,
+  .icon-prev,
+  .icon-next {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -110,17 +112,28 @@
     margin-top: -10px;
     margin-left: -10px;
   }
+  // Non-glyphicon toggles
+  .icon-prev {
+    &:before {
+      content: '\2039';// SINGLE LEFT-POINTING ANGLE QUOTATION MARK (U+2039)
+    }
+  }
+  .icon-next {
+    &:before {
+      content: '\203a';// SINGLE RIGHT-POINTING ANGLE QUOTATION MARK (U+203A)
+    }
+  }
 }
 
 // Optional indicator pips
 // -----------------------------
 .carousel-indicators {
   position: absolute;
-  bottom: 20px;
+  bottom: 10px;
   left: 50%;
   z-index: 15;
-  width: 100px;
-  margin-left: -50px;
+  width: 120px;
+  margin-left: -60px;
   padding-left: 0;
   list-style: none;
   text-align: center;
@@ -167,7 +180,9 @@
 @media screen and (min-width: @screen-tablet) {
 
   // Scale up the controls a smidge
-  .carousel-control .glyphicon {
+  .carousel-control .glyphicon,
+  .carousel-control .icon-prev,
+  .carousel-control .icon-next {
     width: 30px;
     height: 30px;
     margin-top: -15px;
@@ -180,5 +195,10 @@
     left: 20%;
     right: 20%;
     padding-bottom: 30px;
+  }
+
+  // Move up the indicators
+  .carousel-indicators {
+    bottom: 20px;
   }
 }

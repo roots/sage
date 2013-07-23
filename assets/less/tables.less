@@ -25,7 +25,7 @@ th {
     > tr {
       > th,
       > td {
-        padding: 8px;
+        padding: @table-cell-padding;
         line-height: @line-height-base;
         vertical-align: top;
         border-top: 1px solid @table-border-color;
@@ -69,7 +69,7 @@ th {
     > tr {
       > th,
       > td {
-        padding: 4px 5px;
+        padding: @table-condensed-cell-padding;
       }
     }
   }
@@ -219,6 +219,11 @@ table {
 // Exact selectors below required to override .table-striped
 
 .table > tbody > tr {
+  > td.active,
+  > th.active,
+  &.active > td {
+    background-color: @table-bg-hover;
+  }
   > td.success,
   > th.success,
   &.success > td {
