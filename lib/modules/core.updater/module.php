@@ -14,7 +14,7 @@ if( !class_exists( 'EDD_SL_Theme_Updater' ) ) {
 // setup the updater
 $edd_updater = new EDD_SL_Theme_Updater( array(
   'remote_api_url'  => SHOESTRAP_STORE_URL,       // our store URL that is running EDD
-  'version'         => '3.0.0-dev-20130711',      // current version number
+  'version'         => '3.0.0-dev-20130723',      // current version number
   'license'         => $license_key,              // license key (used get_option above to retrieve from DB)
   'item_name'       => SHOESTRAP_THEME_NAME,      // name of this theme
   'author'          => 'Aristeides Stathopoulos'  // author of this theme
