@@ -114,9 +114,9 @@ class EDD_SL_Theme_Updater {
 
 			// if the response failed, try again in 30 minutes
 			if ( $failed ) {
-				$data = new stdClass;
-				$data->new_version = $this->version;
-				set_transient( $this->response_key, $data, strtotime( '+30 minutes' ) );
+				$update_data = new stdClass;
+				$update_data->new_version = $this->version;
+				set_transient( $this->response_key, $update_data, strtotime( '+30 minutes' ) );
 				return false;
 			}
 
