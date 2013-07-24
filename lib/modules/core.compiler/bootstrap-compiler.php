@@ -42,7 +42,7 @@ function shoestrap_css( $target = 'path', $echo = false ) {
  * Admin notice if css or less files are writable
  */
 function shoestrap_css_not_writeable($array){
-  global $current_screen;
+  global $current_screen, $wp_filesystem;
 
   if ( $current_screen->parent_base == 'themes' ) {
     $filename = shoestrap_css();
