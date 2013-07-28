@@ -2,7 +2,7 @@
 	"folders":
 	[
 		{
-			"path": "/Applications/MAMP/htdocs/home-sites/danholloran-com",
+			"path": "",
 			"file_exclude_patterns": [
 				"*.css",
 				"*.min.*",
