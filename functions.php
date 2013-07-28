@@ -18,10 +18,10 @@ require_once locate_template( '/lib/relative-urls.php' );   // Root relative URL
 require_once locate_template( '/lib/widgets.php' );         // Sidebars and widgets
 require_once locate_template( '/lib/scripts.php' );         // Scripts and stylesheets
 require_once locate_template( '/lib/custom.php' );          // Custom functions
-require_once locate_template( '/classes/mdg-generic' );     // MDG Generic functions much like custom.php except in a class
-require_once locate_template( '/classes/mdg-meta-helper' ); // MDG Meta helper
-require_once locate_template( '/classes/mdg-images' );      // MDG Images
-require_once locate_template( '/classes/mdg-type-base' );   // MDG Post type base
+require_once locate_template( '/classes/mdg-generic.php' );     // MDG Generic functions much like custom.php except in a class
+require_once locate_template( '/classes/mdg-meta-helper.php' ); // MDG Meta helper
+require_once locate_template( '/classes/mdg-images.php' );      // MDG Images
+require_once locate_template( '/classes/mdg-type-base.php' );   // MDG Post type base
 
 
 /**
