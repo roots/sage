@@ -22,7 +22,6 @@ module.exports = function(grunt) {
         files: {
           'assets/css/main.min.css': [
             'assets/less/bootstrap/bootstrap.less',
-            'assets/less/bootstrap/responsive.less',
             'assets/less/app.less'
           ]
         }
@@ -32,18 +31,18 @@ module.exports = function(grunt) {
       dist: {
         files: {
           'assets/js/scripts.min.js': [
-            'assets/js/plugins/bootstrap/bootstrap-transition.js',
-            'assets/js/plugins/bootstrap/bootstrap-alert.js',
-            'assets/js/plugins/bootstrap/bootstrap-button.js',
-            'assets/js/plugins/bootstrap/bootstrap-carousel.js',
-            'assets/js/plugins/bootstrap/bootstrap-collapse.js',
-            'assets/js/plugins/bootstrap/bootstrap-dropdown.js',
-            'assets/js/plugins/bootstrap/bootstrap-modal.js',
-            'assets/js/plugins/bootstrap/bootstrap-tooltip.js',
-            'assets/js/plugins/bootstrap/bootstrap-popover.js',
-            'assets/js/plugins/bootstrap/bootstrap-scrollspy.js',
-            'assets/js/plugins/bootstrap/bootstrap-tab.js',
-            'assets/js/plugins/bootstrap/bootstrap-typehead.js',
+            'assets/js/plugins/bootstrap/transition.js',
+            'assets/js/plugins/bootstrap/alert.js',
+            'assets/js/plugins/bootstrap/button.js',
+            'assets/js/plugins/bootstrap/carousel.js',
+            'assets/js/plugins/bootstrap/collapse.js',
+            'assets/js/plugins/bootstrap/dropdown.js',
+            'assets/js/plugins/bootstrap/modal.js',
+            'assets/js/plugins/bootstrap/tooltip.js',
+            'assets/js/plugins/bootstrap/popover.js',
+            'assets/js/plugins/bootstrap/scrollspy.js',
+            'assets/js/plugins/bootstrap/tab.js',
+            'assets/js/plugins/bootstrap/affix.js',
             'assets/js/plugins/*.js',
             'assets/js/_*.js'
           ]

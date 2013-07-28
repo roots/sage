@@ -1,8 +1,8 @@
 ### HEAD
+* Update to Bootstrap 3 RC1
+* Update to jQuery 1.10.2
 * Change media directory from `/assets/` to `/media/`
-* Update to Bootstrap 2.3.2
 * Update to Google Universal Analytics
-* Update to jQuery 1.10.1
 * Show author display name for author archives
 * Add Serbian translation
 * Remove post tags from templates

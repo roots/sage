@@ -5,55 +5,115 @@
 
 // IE10 Metro responsive
 // Required for Windows 8 Metro split-screen snapping with IE10
+//
 // Source: http://timkadlec.com/2012/10/ie10-snap-mode-and-responsive-design/
 @-ms-viewport{
   width: device-width;
 }
 
+// IE10 on Windows Phone 8
+// IE10 on WP8 doesn't report CSS pixels, but actual device pixels. In
+// other words, say on a Lumia, you'll get 768px as the device width,
+// meaning users will see the tablet styles and not phone styles.
+//
+// Alternatively you can override this with JS (see source below), but
+// we won't be doing that here given our limited scope.
+//
+// Source: http://timkadlec.com/2013/01/windows-phone-8-and-device-width/
+@media screen and (max-width: 400px) {
+  @-ms-viewport{
+    width: 320px;
+  }
+}
+
 // Hide from screenreaders and browsers
 // Credit: HTML5 Boilerplate
 .hidden {
-  display: none;
-  visibility: hidden;
+  display: none !important;
+  visibility: hidden !important;
 }
 
 // Visibility utilities
 
-// For desktops
-.visible-phone     { display: none !important; }
-.visible-tablet    { display: none !important; }
-.hidden-phone      { }
-.hidden-tablet     { }
-.hidden-desktop    { display: none !important; }
-.visible-desktop   { display: inherit !important; }
-
-// Tablets & small desktops only
-@media (min-width: 768px) and (max-width: 979px) {
-  // Hide everything else
-  .hidden-desktop    { display: inherit !important; }
-  .visible-desktop   { display: none !important ; }
-  // Show
-  .visible-tablet    { display: inherit !important; }
-  // Hide
-  .hidden-tablet     { display: none !important; }
+// For Phones
+.visible-sm {
+  .responsive-visibility();
+}
+.visible-md {
+  .responsive-invisibility();
+}
+.visible-lg {
+  .responsive-invisibility();
 }
 
-// Phones only
-@media (max-width: 767px) {
-  // Hide everything else
-  .hidden-desktop    { display: inherit !important; }
-  .visible-desktop   { display: none !important; }
-  // Show
-  .visible-phone     { display: inherit !important; } // Use inherit to restore previous behavior
-  // Hide
-  .hidden-phone      { display: none !important; }
+.hidden-sm {
+  .responsive-invisibility();
+}
+.hidden-md {
+  .responsive-visibility();
+}
+.hidden-lg {
+  .responsive-visibility();
+}
+
+
+// Tablets & small desktops only
+@media (min-width: @screen-tablet) and (max-width: @screen-tablet-max) {
+  .visible-sm {
+    .responsive-invisibility();
+  }
+  .visible-md {
+    .responsive-visibility();
+  }
+  .visible-lg {
+    .responsive-invisibility();
+  }
+
+  .hidden-sm {
+    .responsive-visibility();
+  }
+  .hidden-md {
+    .responsive-invisibility();
+  }
+  .hidden-lg {
+    .responsive-visibility();
+  }
+}
+
+// For desktops
+@media (min-width: @screen-desktop) {
+  .visible-sm {
+    .responsive-invisibility();
+  }
+  .visible-md {
+    .responsive-invisibility();
+  }
+  .visible-lg {
+    .responsive-visibility();
+  }
+
+  .hidden-sm {
+    .responsive-visibility();
+  }
+  .hidden-md {
+    .responsive-visibility();
+  }
+  .hidden-lg {
+    .responsive-invisibility();
+  }
 }
 
 // Print utilities
-.visible-print    { display: none !important; }
-.hidden-print     { }
+.visible-print {
+  .responsive-invisibility();
+}
+.hidden-print  { }
 
 @media print {
-  .visible-print  { display: inherit !important; }
-  .hidden-print   { display: none !important; }
+  .visible-print {
+    .responsive-visibility();
+  }
+  .hidden-print {
+    .responsive-invisibility();
+  }
 }
