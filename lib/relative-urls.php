@@ -10,21 +10,21 @@
  *
  * @author Scott Walkinshaw <scott.walkinshaw@gmail.com>
  */
-function roots_root_relative_url($input) {
-	preg_match('|https?://([^/]+)(/.*)|i', $input, $matches);
+function roots_root_relative_url( $input ) {
+	preg_match( '|https?://([^/]+)(/.*)|i', $input, $matches );
 
-	if (isset($matches[1]) && isset($matches[2]) && $matches[1] === $_SERVER['SERVER_NAME']) {
-		return wp_make_link_relative($input);
+	if ( isset( $matches[1] ) && isset( $matches[2] ) && $matches[1] === $_SERVER['SERVER_NAME'] ) {
+		return wp_make_link_relative( $input );
 	} else {
 		return $input;
 	}
 }
 
 function roots_enable_root_relative_urls() {
-	return !(is_admin() || in_array($GLOBALS['pagenow'], array('wp-login.php', 'wp-register.php'))) && current_theme_supports('root-relative-urls');
+	return !( is_admin() || in_array( $GLOBALS['pagenow'], array( 'wp-login.php', 'wp-register.php' ) ) ) && current_theme_supports( 'root-relative-urls' );
 }
 
-if (roots_enable_root_relative_urls()) {
+if ( roots_enable_root_relative_urls() ) {
 	$root_rel_filters = array(
 		'bloginfo_url',
 		'the_permalink',
@@ -44,5 +44,5 @@ if (roots_enable_root_relative_urls()) {
 		'style_loader_src'
 	);
 
-	add_filters($root_rel_filters, 'roots_root_relative_url');
+	add_filters( $root_rel_filters, 'roots_root_relative_url' );
 }

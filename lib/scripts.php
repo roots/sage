@@ -4,9 +4,9 @@
  *
  * Enqueue scripts in the following order:
  * 1. jquery-1.10.2.min.js via Google CDN
- * 2. /theme/assets/js/vendor/modernizr-2.6.2.min.js
- * 3. /theme/assets/js/plugins.js (in footer)
- * 4. /theme/assets/js/main.js    (in footer)
+ * 2. /theme/assets/js/site/vendor/modernizr-2.6.2.min.js
+ * 3. /theme/assets/js/site/plugins.js (in footer)
+ * 4. /theme/assets/js/site/main.js    (in footer)
  */
 function roots_scripts() {
 	wp_enqueue_style( 'roots_app', get_template_directory_uri() . '/assets/css/app.css', false, null );
@@ -23,9 +23,9 @@ function roots_scripts() {
 	if ( is_single() && comments_open() && get_option( 'thread_comments' ) )
 		wp_enqueue_script( 'comment-reply' );
 
-	wp_register_script( 'modernizr', get_template_directory_uri() . '/assets/js/vendor/modernizr-2.6.2.min.js', false, null, false );
-	wp_register_script( 'roots_plugins', get_template_directory_uri() . '/assets/js/src/plugins.js', array( 'jquery' ), null, true );
-	wp_register_script( 'roots_main', get_template_directory_uri() . '/assets/js/src/main.js', array( 'jquery', 'roots_plugins' ), null, true );
+	wp_register_script( 'modernizr', get_template_directory_uri() . '/assets/js/site/vendor/modernizr-2.6.2.min.js', false, null, false );
+	wp_register_script( 'roots_plugins', get_template_directory_uri() . '/assets/js/site/src/plugins.js', array( 'jquery' ), null, true );
+	wp_register_script( 'roots_main', get_template_directory_uri() . '/assets/js/site/src/main.js', array( 'jquery', 'roots_plugins' ), null, true );
 	wp_enqueue_script( 'jquery' );
 	wp_enqueue_script( 'modernizr' );
 	wp_enqueue_script( 'roots_plugins' );
@@ -38,7 +38,7 @@ function roots_jquery_local_fallback( $src, $handle ) {
 	static $add_jquery_fallback = false;
 
 	if ( $add_jquery_fallback ) {
-		echo '<script>window.jQuery || document.write(\'<script src="' . get_template_directory_uri() . '/assets/js/vendor/jquery-1.10.2.min.js"><\/script>\')</script>' . "\n";
+		echo '<script>window.jQuery || document.write(\'<script src="' . get_template_directory_uri() . '/assets/js/site/vendor/jquery-1.10.2.min.js"><\/script>\')</script>' . "\n";
 		$add_jquery_fallback = false;
 	}
 
