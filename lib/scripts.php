@@ -4,8 +4,7 @@
  *
  * Enqueue stylesheets in the following order:
  * 1. /theme/assets/css/bootstrap.css
- * 2. /theme/assets/css/bootstrap-responsive.css
- * 3. /theme/assets/css/app.css
+ * 2. /theme/assets/css/app.css
  *
  * Enqueue scripts in the following order:
  * 1. jquery-1.10.2.min.js via Google CDN
