@@ -1,0 +1,3 @@
+[submodule "assets/css/scss/vendor/bootstrap"]
+	path = assets/css/scss/vendor/bootstrap
+	url = https://dholloran@github.com/jlong/sass-twitter-bootstrap.git
