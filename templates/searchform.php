@@ -3,7 +3,7 @@
     <input type="search" value="<?php if (is_search()) { echo get_search_query(); } ?>" name="s" id="s" class="form-control" placeholder="<?php _e('Search', 'roots'); ?> <?php bloginfo('name'); ?>">
     <label class="hide" for="s"><?php _e('Search for:', 'roots'); ?></label>
     <span class="input-group-btn">
-      <button type="submit" id="searchsubmit" class="btn"><?php _e('Search', 'roots'); ?></button>
+      <button type="submit" id="searchsubmit" class="btn btn-default"><?php _e('Search', 'roots'); ?></button>
     </span>
   </div>
 </form>
