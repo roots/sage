@@ -1,0 +1,40 @@
+{
+	"folders":
+	[
+		{
+			"path": "/Applications/MAMP/htdocs/home-sites/danholloran-com",
+			"file_exclude_patterns": [
+				"*.css",
+				"*.min.*",
+				"codekit-config.json",
+				"*.sublime*",
+				".htaccess",
+				"/index.php", // Need to re-check docs on how to do this
+				"license.txt",
+				"readme.html",
+				"wp-activate.php",
+				"wp-blog-header.php",
+				"wp-comments-post.php",
+				"wp-config-sample.php",
+				"wp-cron.php",
+				"wp-links-opml.php",
+				"wp-load.php",
+				"wp-login.php",
+				"wp-mail.php",
+				"wp-settings.php",
+				"wp-signup.php",
+				"wp-trackback.php",
+				"xmlrpc.php",
+				"config.rb"
+			],
+			"folder_exclude_patterns": [
+				"/assets", // Need to re-check docs on how to do this
+				"wp-admin",
+				"wp-includes",
+				"wp-content/upgrade",
+				"wp-content/uploads",
+				".sass-cache"
+			]
+		}
+	]
+}
