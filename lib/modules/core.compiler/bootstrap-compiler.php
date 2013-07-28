@@ -443,7 +443,7 @@ function shoestrap_variables_less() {
 @btn-info-bg:                    @brand-info;
 @btn-info-border:                @btn-info-bg;
 
-
+@btn-hover-color:                @btn-default-color;
 
 // Forms
 // -------------------------
@@ -460,14 +460,17 @@ function shoestrap_variables_less() {
 @input-height-large:             (ceil(@font-size-large * @line-height-base) + (@padding-large-vertical * 2) + 2);
 @input-height-small:             (ceil(@font-size-small * @line-height-base) + (@padding-small-vertical * 2) + 2);
 
+@legend-border-color:            #e5e5e5;
+
+@input-group-addon-border-color: @input-border;
 
 // Dropdowns
 // -------------------------
 
 @dropdown-bg:                    ' . $body_bg . ';
 @dropdown-border:                rgba(0,0,0,.15);
-@dropdown-divider-top:           ' . $dropdown_divider_top . ';
-@dropdown-divider-bottom:        ' . $body_bg . ';
+@dropdown-fallback-border:       @input-border;
+@dropdown-divider-bg:            @legend-border-color;
 
 @dropdown-link-active-color:     ' . $body_bg . ';
 @dropdown-link-active-bg:        @component-active-bg;
@@ -476,6 +479,7 @@ function shoestrap_variables_less() {
 @dropdown-link-hover-color:      ' . $body_bg . ';
 @dropdown-link-hover-bg:         @dropdown-link-active-bg;
 
+@dropdown-caret-color:           #000;
 
 // COMPONENT VARIABLES
 // --------------------------------------------------
@@ -518,8 +522,16 @@ function shoestrap_variables_less() {
 @navbar-brand-hover-color:         ' . $navbar_brand_hover_color . ';
 @navbar-brand-hover-bg:            transparent;
 
+// Navbar toggle
+@navbar-toggle-hover-bg:           #ddd;
+@navbar-toggle-icon-bar-bg:        #ccc;
+@navbar-toggle-border-color:       #ddd;
+
+
 // Inverted navbar
-@navbar-inverse-color:                       @gray-light;
+//
+// Reset inverted navbar basics
+@navbar-inverse-color:                      @gray-light;
 @navbar-inverse-bg:                         #222;
 
 // Inverted navbar links
@@ -543,6 +555,38 @@ function shoestrap_variables_less() {
 @navbar-inverse-search-border:              @navbar-inverse-bg;
 @navbar-inverse-search-placeholder-color:   #ccc;
 
+// Inverted navbar toggle
+@navbar-inverse-toggle-hover-bg:            #333;
+@navbar-inverse-toggle-icon-bar-bg:         #fff;
+@navbar-inverse-toggle-border-color:        #333;
+
+
+// Navs
+// -------------------------
+
+@nav-link-hover-bg:                         @gray-lighter;
+
+@nav-disabled-link-color:                   @gray-light;
+@nav-disabled-link-hover-color:             @gray-light;
+
+@nav-open-link-hover-color:                 #fff;
+@nav-open-caret-border-color:               #fff;
+
+// Tabs
+@nav-tabs-border-color:                     #ddd;
+
+@nav-tabs-link-hover-border-color:          @gray-lighter;
+
+@nav-tabs-active-link-hover-bg:             @body-bg;
+@nav-tabs-active-link-hover-color:          @gray;
+@nav-tabs-active-link-hover-border-color:   #ddd;
+
+@nav-tabs-justified-link-border-color:            #ddd;
+@nav-tabs-justified-active-link-border-color:     @body-bg;
+
+// Pills
+@nav-pills-active-link-hover-bg:            @component-active-bg;
+@nav-pills-active-link-hover-color:         #fff;
 
 // Pagination
 // -------------------------
@@ -550,7 +594,14 @@ function shoestrap_variables_less() {
 @pagination-bg:                        ' . $body_bg . ';
 @pagination-border:                    ' . $table_border_color . ';
 @pagination-active-bg:                 ' . $table_bg_hover . ';
+@pagination-active-color:              @gray-light;
+@pagination-disabled-color:            @gray-light;
 
+// Pager
+// -------------------------
+
+@pager-border-radius:                  15px;
+@pager-disabled-color:                 @gray-light;
 
 // Jumbotron
 // -------------------------
@@ -580,22 +631,30 @@ function shoestrap_variables_less() {
 @state-info-border:              darken(spin(@state-info-bg, -10), 7%);
 
 
-// Tooltips and popovers
+// Tooltips
 // -------------------------
+@tooltip-max-width:           200px;
 @tooltip-color:               ' . $body_bg . ';
 @tooltip-bg:                  rgba(0,0,0,.9);
 @tooltip-arrow-width:         5px;
 @tooltip-arrow-color:         @tooltip-bg;
 
-@popover-bg:                  ' . $body_bg . ';
-@popover-arrow-width:         10px;
-@popover-arrow-color:         ' . $body_bg . ';
-@popover-title-bg:            darken(@popover-bg, 3%);
 
-// Special enhancement for popovers
-@popover-arrow-outer-width:   (@popover-arrow-width + 1);
-@popover-arrow-outer-color:   rgba(0,0,0,.25);
+// Popovers
+// -------------------------
+@popover-bg:                          #fff;
+@popover-max-width:                   276px;
+@popover-border-color:                rgba(0,0,0,.2);
+@popover-fallback-border-color:       #ccc;
 
+@popover-title-bg:                    darken(@popover-bg, 3%);
+
+@popover-arrow-width:                 10px;
+@popover-arrow-color:                 #fff;
+
+@popover-arrow-outer-width:           (@popover-arrow-width + 1);
+@popover-arrow-outer-color:           rgba(0,0,0,.25);
+@popover-arrow-outer-fallback-color:  #999;
 
 // Labels
 // -------------------------
@@ -604,6 +663,8 @@ function shoestrap_variables_less() {
 @label-warning-bg:            @brand-warning;
 @label-danger-bg:             @brand-danger;
 
+@label-color:                 #fff;
+@label-link-hover-color:      #fff;
 
 // Modals
 // -------------------------
@@ -611,6 +672,15 @@ function shoestrap_variables_less() {
 
 @modal-title-padding:         15px;
 @modal-title-line-height:     @line-height-base;
+
+@modal-content-bg:                             #fff;
+@modal-content-border-color:                   rgba(0,0,0,.2);
+@modal-content-fallback-border-color:          #999;
+
+@modal-backdrop-bg:           #000;
+@modal-header-border-color:   #e5e5e5;
+@modal-footer-border-color:   @modal-header-border-color;
+
 
 // Alerts
 // -------------------------
@@ -635,6 +705,8 @@ function shoestrap_variables_less() {
 // Progress bars
 // -------------------------
 @progress-bg:                 ' . $table_bg_hover . ';
+@progress-bar-color:          #fff;
+
 @progress-bar-bg:             @brand-primary;
 @progress-bar-success-bg:     @brand-success;
 @progress-bar-warning-bg:     @brand-warning;
@@ -652,6 +724,10 @@ function shoestrap_variables_less() {
 @list-group-active-color:     ' . $body_bg . ';
 @list-group-active-bg:        @component-active-bg;
 @list-group-active-border:    @list-group-active-bg;
+
+@list-group-link-color:          #555;
+@list-group-link-heading-color:  #333;
+
 
 // Panels
 // -------------------------
@@ -705,7 +781,7 @@ function shoestrap_variables_less() {
 @badge-color:                 #fff;
 @badge-link-hover-color:      #fff;
 
-@badge-bg:                    #f5f5f5;
+@badge-bg:                    @gray-light;
 @badge-active-color:          @link-color;
 @badge-active-bg:             #fff;
 
@@ -715,6 +791,42 @@ function shoestrap_variables_less() {
 @breadcrumb-bg:               #f5f5f5;
 @breadcrumb-color:            #ccc;
 @breadcrumb-active-color:     @gray-light;
+
+
+// Carousel
+// ------------------------
+@carousel-text-shadow:                        0 1px 2px rgba(0,0,0,.6);
+
+@carousel-control-color:                      #fff;
+
+@carousel-indicator-border-color:             #fff;
+@carousel-indicator-active-bg:                #fff;
+
+@carousel-caption-color:                      #fff;
+
+
+// Close
+// ------------------------
+@close-color:                 #000;
+@close-text-shadow:           0 1px 0 #fff;
+
+
+// Code
+// ------------------------
+@code-color:                  #c7254e;
+@code-bg:                     #f9f2f4;
+
+@pre-bg:                      #f5f5f5;
+@pre-border-color:            #ccc;
+
+// Type
+// ------------------------
+@text-muted:                  @gray-light;
+@abbr-border-color:           @gray-light;
+@headings-small-color:        @gray-light;
+@blockquote-small-color:      @gray-light;
+@blockquote-border-color:     @gray-lighter;
+@page-header-border-color:    @gray-lighter;
 
 
 // Miscellaneous
