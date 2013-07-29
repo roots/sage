@@ -1,0 +1,39 @@
+npm install grunt-contrib-compass --save-dev
+grunt.loadNpmTasks('grunt-contrib-compass');
+command: compass
+https://npmjs.org/package/grunt-contrib-compass
+
+npm install grunt-contrib-concat --save-dev
+grunt.loadNpmTasks('grunt-contrib-concat');
+command: concat
+https://npmjs.org/package/grunt-contrib-concat
+
+
+npm install grunt-contrib-watch --save-dev
+grunt.loadNpmTasks('grunt-contrib-watch');
+command: watch
+https://npmjs.org/package/grunt-contrib-watch
+
+
+npm install grunt-contrib-sass --save-dev
+grunt.loadNpmTasks('grunt-contrib-sass');
+command: sass
+https://npmjs.org/package/grunt-contrib-sass
+
+
+npm install grunt-contrib-uglify --save-dev
+grunt.loadNpmTasks('grunt-contrib-uglify');
+command uglify
+https://npmjs.org/package/grunt-contrib-uglify
+
+
+npm install -g imageoptim-cli
+npm install grunt-imageoptim --save-dev
+grunt.loadNpmTasks('grunt-imageoptim');
+https://npmjs.org/package/grunt-imageoptim
+
+
+npm install grunt-phpunit --save-dev
+grunt.loadNpmTasks('grunt-phpunit');
+command: phpunit
+https://npmjs.org/package/grunt-phpunit
