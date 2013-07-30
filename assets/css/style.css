@@ -1239,13 +1239,13 @@ textarea.form-control {
   margin-top: 0;
   margin-left: 10px;
 }
-.form-control.input-large {
+.input-large {
   height: 56px;
   padding: 14px 16px;
   font-size: 18px;
   border-radius: 6px;
 }
-.form-control.input-small {
+.input-small {
   height: 30px;
   padding: 5px 10px;
   font-size: 12px;
@@ -1258,6 +1258,10 @@ select.input-large {
 select.input-small {
   height: 30px;
   line-height: 30px;
+}
+textarea.input-large,
+textarea.input-small {
+  height: auto;
 }
 .has-warning .help-block,
 .has-warning .control-label {
@@ -1338,6 +1342,11 @@ select.input-small {
   border: 1px solid transparent;
   border-radius: 4px;
   white-space: nowrap;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
 }
 .btn:focus {
   outline: thin dotted #333;
@@ -1583,11 +1592,15 @@ fieldset[disabled] .btn-link:focus {
   font-size: 18px;
   border-radius: 6px;
 }
-.btn-small {
+.btn-small,
+.btn-mini {
   padding: 5px 10px;
   font-size: 12px;
   line-height: 1.5;
   border-radius: 3px;
+}
+.btn-mini {
+  padding: 3px 5px;
 }
 .btn-block {
   display: block;
@@ -2672,13 +2685,13 @@ ul.icons li .glyphicon-large:before {
 .list-group {
   margin-bottom: 20px;
   padding-left: 0;
-  background-color: #ffffff;
 }
 .list-group-item {
   position: relative;
   display: block;
   padding: 10px 30px 10px 15px;
   margin-bottom: -1px;
+  background-color: #ffffff;
   border: 1px solid #dddddd;
 }
 .list-group-item:first-child {
@@ -2979,7 +2992,7 @@ button.close {
 .nav-stacked > li {
   float: none;
 }
-.nav-stacked > li + li > a {
+.nav-stacked > li + li {
   margin-top: 2px;
   margin-left: 0;
 }
@@ -3331,8 +3344,10 @@ button.close {
   float: left;
 }
 .btn-group > .btn:hover,
+.btn-group > .btn:focus,
 .btn-group > .btn:active,
 .btn-group-vertical > .btn:hover,
+.btn-group-vertical > .btn:focus,
 .btn-group-vertical > .btn:active {
   z-index: 2;
 }
@@ -4871,6 +4886,11 @@ a.toggle-nav.open {
   border: 1px solid transparent;
   border-radius: 4px;
   white-space: nowrap;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
   color: #fff;
   background-color: #474949;
   border-color: #474949;
@@ -4933,13 +4953,13 @@ fieldset[disabled] .button.active {
 .widget-inner ul {
   margin-bottom: 20px;
   padding-left: 0;
-  background-color: #ffffff;
 }
 .widget-inner ul li {
   position: relative;
   display: block;
   padding: 10px 30px 10px 15px;
   margin-bottom: -1px;
+  background-color: #ffffff;
   border: 1px solid #dddddd;
 }
 .widget-inner ul li:first-child {
@@ -5003,6 +5023,11 @@ fieldset[disabled] .button.active {
   border: 1px solid transparent;
   border-radius: 4px;
   white-space: nowrap;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
   padding: 5px 10px;
   font-size: 12px;
   line-height: 1.5;
@@ -5445,6 +5470,11 @@ iframe.twitter-tweet.twitter-tweet-rendered {
   border: 1px solid transparent;
   border-radius: 4px;
   white-space: nowrap;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
   color: #fff;
   background-color: #428bca;
   border-color: #428bca;
