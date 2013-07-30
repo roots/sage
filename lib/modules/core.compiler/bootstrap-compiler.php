@@ -175,7 +175,7 @@ function shoestrap_variables_less() {
   $font_brand           = shoestrap_process_font( shoestrap_getVariable( 'font_brand', true ) );
   $font_heading         = shoestrap_process_font( shoestrap_getVariable( 'font_heading', true ) );
 
-  if ( shoestrap_getVariable( 'font_heading_custom', true ) ) {
+  if ( shoestrap_getVariable( 'font_heading_custom', true ) == 1 ) {
 
     $font_h1 = shoestrap_process_font( shoestrap_getVariable( 'font_h1', true ) );
     $font_h2 = shoestrap_process_font( shoestrap_getVariable( 'font_h2', true ) );
@@ -889,6 +889,14 @@ function shoestrap_variables_less() {
 
 // Shoestrap-specific variables
 // --------------------------------------------------
+
+@navbar-font-size:        ' . $font_navbar['size'] . ';
+@navbar-font-weight:      ' . $font_navbar['weight'] . ';
+@navbar-font-family:      ' . $font_navbar['face'] . ';
+
+@brand-font-size:         ' . $font_brand['size'] . ';
+@brand-font-weight:       ' . $font_brand['weight'] . ';
+@brand-font-family:       ' . $font_brand['face'] . ';
 
 // H1
 @heading-h1-face:         ' . $font_h1_face . ';
