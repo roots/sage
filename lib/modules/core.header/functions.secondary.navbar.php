@@ -22,4 +22,4 @@ function shoestrap_secondary_navbar() {
   
   <?php endif;
 }
-add_action( 'shoestrap_header_media', 'shoestrap_secondary_navbar' );
+add_action( 'shoestrap_pre_wrap', 'shoestrap_secondary_navbar' );
