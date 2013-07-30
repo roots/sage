@@ -16,9 +16,9 @@ function shoestrap_navbar_pre_searchbox() {
   if ( shoestrap_getVariable( 'navbar_nav_right' ) == '1' ) {
     $show_searchbox = shoestrap_getVariable( 'navbar_search' );
     if ( $show_searchbox == '1' ) { ?>
-      <form role="search" method="get" id="searchform" class="form-search pull-right" action="<?php echo home_url('/'); ?>">
+      <form role="search" method="get" id="searchform" class="form-search pull-right navbar-form" action="<?php echo home_url('/'); ?>">
         <label class="hide" for="s"><?php _e('Search for:', 'roots'); ?></label>
-        <input type="text" value="<?php if (is_search()) { echo get_search_query(); } ?>" name="s" id="s" class="search-query" placeholder="<?php _e('Search', 'roots'); ?> <?php bloginfo('name'); ?>">
+        <input type="text" value="<?php if (is_search()) { echo get_search_query(); } ?>" name="s" id="s" class="form-control search-query" placeholder="<?php _e('Search', 'roots'); ?> <?php bloginfo('name'); ?>">
       </form>
       <?php
     }

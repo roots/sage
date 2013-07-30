@@ -5157,15 +5157,12 @@ fieldset[disabled] #social-sharing .shareme .box {
     color: #f0ad4e;
   }
 }
-.topnavbar input.search-query {
-  margin-top: 6px;
-}
 .jumbotron {
   border-radius: 0px;
 }
 .navbar #searchform,
 .navbar a.toggle-nav {
-  margin-top: 15px;
+  margin-top: 5px;
 }
 .navbar.style1 .open > a:first-child,
 .navbar.style1 .open > a:hover:first-child,

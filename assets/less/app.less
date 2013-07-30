@@ -285,12 +285,6 @@ a.toggle-nav {
   }
 }
 
-.topnavbar {
-  input.search-query {
-    margin-top: ( @navbar-height - @input-height-base ) / 2;
-  }
-}
-
 .jumbotron {
   border-radius: 0px;
 
@@ -303,10 +297,9 @@ a.toggle-nav {
 // }
 
 .navbar {
-  
   #searchform,
   a.toggle-nav {
-    margin-top: (((@navbar-height - @line-height-computed) / 2));
+    margin-top: (((@navbar-height - (2 * @line-height-computed)) / 2));
   }
 
   &.style1 {
