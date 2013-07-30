@@ -581,3 +581,17 @@ li.dropdown ul.dropdown-menu li.dropdown.pull-left {
   float: none;
 }
 
+.widget_search {
+  form#searchform {
+    position: relative;
+    input.form-control {
+      padding-right: ((@padding-base-horizontal * 2) + @font-size-base);
+    }
+    button#searchsubmit {
+      position: absolute;
+      top: 0;
+      right: 0;
+      .border-left-radius(0px);
+    }
+  }
+}

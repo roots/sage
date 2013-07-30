@@ -5160,8 +5160,10 @@ fieldset[disabled] #social-sharing .shareme .box {
 .jumbotron {
   border-radius: 0px;
 }
-.navbar #searchform,
 .navbar a.toggle-nav {
+  margin-top: 0px;
+}
+.navbar #searchform {
   margin-top: 5px;
 }
 .navbar.style1 .open > a:first-child,
@@ -5171,6 +5173,7 @@ fieldset[disabled] #social-sharing .shareme .box {
 .navbar.style1 a:focus:first-child {
   background: #eeeeee;
   border-bottom: 5px solid #428bca;
+  padding-bottom: 10px;
 }
 .navbar.style1 .active > a,
 .navbar.style1 .active > a:hover,
@@ -5192,6 +5195,7 @@ fieldset[disabled] #social-sharing .shareme .box {
   background: block;
   border-bottom: 0;
   border-top: 1px solid #428bca;
+  padding-bottom: 0px;
 }
 .navbar.style2 li > a {
   padding-top: 15px;
@@ -5237,9 +5241,14 @@ fieldset[disabled] #social-sharing .shareme .box {
 .navbar.style6 .active > a,
 .navbar.style6 .active > a:hover,
 .navbar.style6 .active > a:focus {
-  background: #eeeeee;
   border-bottom: 5px solid #f0ad4e;
   margin-bottom: -5px;
+}
+.navbar.style6 .dropdown-menu .active > a,
+.navbar.style6 .dropdown-menu .active > a:hover,
+.navbar.style6 .dropdown-menu .active > a:focus {
+  margin-bottom: 1px !important;
+  margin-top: 1px !important;
 }
 .navbar a.navbar-brand {
   max-width: inherit !important;
@@ -5537,4 +5546,17 @@ li.dropdown ul.dropdown-menu li.dropdown:hover > .dropdown-menu {
 }
 li.dropdown ul.dropdown-menu li.dropdown.pull-left {
   float: none;
+}
+.widget_search form#searchform {
+  position: relative;
+}
+.widget_search form#searchform input.form-control {
+  padding-right: 38px;
+}
+.widget_search form#searchform button#searchsubmit {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-bottom-left-radius: 0px;
+  border-top-left-radius: 0px;
 }
