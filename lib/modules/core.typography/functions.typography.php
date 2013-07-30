@@ -217,35 +217,35 @@ function shoestrap_module_typography_googlefont_links() {
     $font_h5 = shoestrap_getVariable( 'font_h1' );
     $font_h6 = shoestrap_getVariable( 'font_h1' );
   }
-  if ($font_base['google'] == 1) {
+  if ($font_base['google'] == true) {
     echo getGoogleScript($font_base);
   }
-  if ($font_navbar['google'] == 1) {
+  if ($font_navbar['google'] == true ) {
     echo getGoogleScript($font_navbar);
   }
-  if ($font_brand['google'] == 1) {
+  if ($font_brand['google'] == true ) {
     echo getGoogleScript($font_brand);
   }
   if (shoestrap_getVariable( 'font_heading_custom' )) {
-    if ($font_h1['google'] == 1) {
+    if ($font_h1['google'] == true ) {
       echo getGoogleScript($font_h1);
     }
-    if ($font_h2['google'] == 1) {
+    if ($font_h2['google'] == true ) {
       echo getGoogleScript($font_h2);
     }
-    if ($font_h3['google'] == 1) {
+    if ($font_h3['google'] == true ) {
       echo getGoogleScript($font_h3);
     }
-    if ($font_h4['google'] == 1) {
+    if ($font_h4['google'] == true ) {
       echo getGoogleScript($font_h4);
     }
-    if ($font_h5['google'] == 1) {
+    if ($font_h5['google'] == true ) {
       echo getGoogleScript($font_h5);
     }
-    if ($font_h6['google'] == 1) {
+    if ($font_h6['google'] == true ) {
       echo getGoogleScript($font_h6);
     }
-  } else if ($font_heading['google'] == 1) {
+  } else if ($font_heading['google'] == true ) {
     echo getGoogleScript($font_heading);
   }
 }
@@ -261,5 +261,3 @@ function getGoogleScript($font) {
 
   return '<link href="'.$link.'" rel="stylesheet" type="text/css" class="base_font">';
 }
-
-
