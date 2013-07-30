@@ -277,9 +277,11 @@ add_filter('request', 'roots_request_filter');
 /**
  * Tell WordPress to use searchform.php from the templates/ directory
  */
-function roots_get_search_form($argument) {
-  if ($argument === '') {
-    locate_template('/templates/searchform.php', true, false);
-  }
+function roots_get_search_form($form) {
+  ob_start();
+  locate_template('/templates/searchform.php', true, false);
+  $form = ob_get_clean();
+
+  return $form;
 }
 add_filter('get_search_form', 'roots_get_search_form');
