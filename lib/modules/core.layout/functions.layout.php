@@ -41,7 +41,7 @@ global $smof_data;
   $layout = shoestrap_getLayout();
   $first  = intval( shoestrap_getVariable( 'layout_primary_width' ) );
   $second = intval( shoestrap_getVariable( 'layout_secondary_width' ) );
-  $base   = 'col col-lg-';
+  $base   = 'col-lg-';
   // Set some defaults so that we can change them depending on the selected template
   $main       = $base . 12;
   $primary    = NULL;

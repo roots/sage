@@ -66,7 +66,7 @@ function shoestrap_secondary_navbar() {
     <div class="secondary_nav <?php echo shoestrap_navbar_class(); ?>">
       <div class="<?php echo shoestrap_container_class(); ?>">
         <?php if ($left != "none") : ?>
-          <div class=".col col-lg-<?php if ($right == "") echo "12"; else echo '6'; ?>">
+          <div class=".col-lg-<?php if ($right == "") echo "12"; else echo '6'; ?>">
             <?php 
               if ($left == "menu" && has_nav_menu('secondary_navigation')) {
                 echo $menu; 
@@ -79,7 +79,7 @@ function shoestrap_secondary_navbar() {
           </div>
         <?php endif; ?>
         <?php if ($right != "none") : ?>
-          <div class=".col col-lg-<?php if ($left == "") echo "12"; else echo '6'; ?>" style="text-align: right;">
+          <div class=".col-lg-<?php if ($left == "") echo "12"; else echo '6'; ?>" style="text-align: right;">
             <?php 
               if ($right == "menu" && has_nav_menu('secondary_navigation')) {
                 echo $menu; 
