@@ -13,7 +13,7 @@ function shoestrap_secondary_navbar() {
   foreach ($networks as $network) {
     if ($network['url'] == "")
       continue;
-      $social .= '<a href="'.$network['url'].'" data-toggle="tooltip" data-placement="top" title="" data-original-title="Tooltip on top"><span class="glyphicon glyphicon-'.$network['icon'].'"></span></a>';
+      $social .= '<a href="'.$network['url'].'" data-toggle="tooltip" data-placement="top" title="" data-original-title="Tooltip on top"><span class="icon icon-'.$network['icon'].'"></span></a>';
   }
   $social = '<div class="secondary_nav_social">' . $social . '</div>';
   

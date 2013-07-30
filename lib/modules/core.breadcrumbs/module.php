@@ -58,7 +58,7 @@ class Shoestrap_Breadcrumb {
       'show_htfpt'      => false // show hierarchical terms for post types
     ) );
     $this->strings = wp_parse_args( $strings, array(
-      'home'            => '<i class="glyphicon glyphicon-home"></i>',
+      'home'            => '<i class="icon icon-home"></i>',
       'search'          => __( 'Search Results for', 'shoestrap' ),
       'paged'           => __('Page', 'shoestrap' ) . ' %d',
       '404_error'       => __( 'Page Not Found', 'shoestrap' )

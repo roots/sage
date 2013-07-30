@@ -125,7 +125,7 @@ function shoestrap_navbar_slidedown_toggle() {
     else
       echo '<a style="width: 30px;" class="toggle-nav" href="#">';
 
-    echo '<i class="glyphicon glyphicon-plus-sign"></i></a>';
+    echo '<i class="icon icon-plus-sign"></i></a>';
 
   }
 }

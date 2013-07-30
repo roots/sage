@@ -62,7 +62,7 @@ function shoestrap_footer_icon() {
       <?php
       $current_url = ( is_ssl() ? 'https://' : 'http://' ) . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
       $href = add_query_arg( 'url', urlencode( $current_url ), wp_customize_url() ); ?>
-      <a href="<?php echo $href; ?>"><i class="glyphicon glyphicon-cogs"></i></a>
+      <a href="<?php echo $href; ?>"><i class="icon icon-cogs"></i></a>
     </div>
   <?php } ?>
   </div>
@@ -111,7 +111,7 @@ function shoestrap_footer_html() {
               if ($network['url'] == "")
                 continue;
               ?>
-                <a href="<?php echo $network['url']; ?>"<?php echo $blank;?> data-toggle="tooltip" data-placement="top" title="" data-original-title="Tooltip on top"><span class="glyphicon glyphicon-<?php echo $network['icon']; ?>"></span></a>
+                <a href="<?php echo $network['url']; ?>"<?php echo $blank;?> data-toggle="tooltip" data-placement="top" title="" data-original-title="Tooltip on top"><span class="icon icon-<?php echo $network['icon']; ?>"></span></a>
               <?php
             }
           ?>
