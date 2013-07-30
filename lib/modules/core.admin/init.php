@@ -104,8 +104,8 @@ add_action('wp_ajax_of_ajax_post_action', 'of_ajax_callback');
 include_once( dirname(__FILE__) . '/addons/functions/functions.admin.php'); 
 include_once( dirname(__FILE__) . '/addons/functions/functions.options.php'); 
 include_once( dirname(__FILE__) . '/addons/functions/functions.interface.php'); 
-include_once( dirname(__FILE__) . '/addons/functions/functions.customizer.php'); 
-include_once( dirname(__FILE__) . '/addons/functions/functions.customizer.standard.php'); 
+// include_once( dirname(__FILE__) . '/addons/functions/functions.customizer.php'); 
+// include_once( dirname(__FILE__) . '/addons/functions/functions.customizer.standard.php'); 
 
 
 /*

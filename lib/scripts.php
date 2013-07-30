@@ -16,10 +16,10 @@
 function roots_scripts() {
 
   // Ensure we're not on the customize page. Conflicts with LESS
-  global $wp_customize;
-  if ( !isset( $wp_customize ) ) {
+  // global $wp_customize;
+  // if ( !isset( $wp_customize ) ) {
     wp_enqueue_style('shoestrap_css', shoestrap_css( 'url' ), false, null);
-  }
+  // }
 
   // jQuery is loaded using the same method from HTML5 Boilerplate:
   // Grab Google CDN's latest jQuery with a protocol relative URL; fallback to local if offline
