@@ -24,6 +24,11 @@
     ?>
 
     <?php do_action( 'shoestrap_pre_main_nav' ); ?>
+    <button data-target=".nav-main" data-toggle="collapse" type="button" class="navbar-toggle">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
     <nav class="nav-main nav-collapse collapse" role="navigation">
       <?php
         if (has_nav_menu('primary_navigation')) :

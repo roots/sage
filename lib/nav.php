@@ -30,7 +30,7 @@ class Roots_Nav_Walker extends Walker_Nav_Menu {
     elseif (stristr($item_html, 'li class="divider')) {
       $item_html = preg_replace('/<a[^>]*>.*?<\/a>/iU', '', $item_html);
     }
-    elseif (stristr($item_html, 'li class="nav-header')) {
+    elseif (stristr($item_html, 'li class="dropdown-header')) {
       $item_html = preg_replace('/<a[^>]*>(.*)<\/a>/iU', '$1', $item_html);
     }
 
@@ -42,11 +42,7 @@ class Roots_Nav_Walker extends Walker_Nav_Menu {
     $element->is_dropdown = ((!empty($children_elements[$element->ID]) && (($depth + 1) < $max_depth || ($max_depth === 0))));
 
     if ($element->is_dropdown) {
-      if ($depth === 0) {
-        $element->classes[] = 'dropdown';
-      } elseif ($depth === 1) {
-        $element->classes[] = 'dropdown-submenu';
-      }
+      $element->classes[] = 'dropdown';
     }
 
     parent::display_element($element, $children_elements, $max_depth, $depth, $args, $output);
@@ -85,7 +81,7 @@ function roots_nav_menu_args($args = '') {
   }
 
   if (current_theme_supports('bootstrap-top-navbar')) {
-    $roots_nav_menu_args['depth'] = 3;
+    $roots_nav_menu_args['depth'] = 2;
   }
 
   if (!$args['walker']) {
