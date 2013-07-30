@@ -212,7 +212,7 @@ if ( !function_exists( 'shoestrap_module_header_options' ) ) {
       "desc"      => "",
       "id"        => "help9",
       "std"       => "<h3 style=\"margin: 0 0 10px;\">Secondary NavBar</h3>
-                      <p>Sometimes you need an extra nav spot or social bar. That's where the secondary navbar comes into play.</p>",
+                      <p>The secondary navbar is a 2nd navbar, located right above the main wrapper. You can show a menu there, by assigning it from Appearance -> Menus.</p>",
       "icon"      => true,
       "type"      => "info"
     );
@@ -227,80 +227,13 @@ if ( !function_exists( 'shoestrap_module_header_options' ) ) {
     );
 
     $of_options[] = array(
-      "name"      => __("Secondary NavBar Background Color", "shoestrap"),
-      "desc"      => __("Select the brand color that will serve as the background color. You can select the brand primary or secondary color. Default: Primary.", "shoestrap"),
-      "id"        => "navbar_secondary_bg",
-      "std"       => 1,
-      "on"        => "Primary",
-      "off"       => "Secondary",      
-      "customizer"=> array(),
-      'fold'      => 'secondary_navbar_toggle',
-      "type"      => "switch"
-    );
-
-    $of_options[] = array(
-      "name"      => __("Secondary NavBar Background Opacity", "shoestrap"),
-      "desc"      => __("Pick a background opacity for the NavBar. Default: 100%.", "shoestrap"),
-      "id"        => "navbar_secondary_opacity",
-      "fold"      => "secondary_navbar_toggle",
-      "std"       => 100,
-      "min"       => 0,
-      "step"      => 1,
-      "max"       => 100,
-      "less"      => true,
-      "type"      => "sliderui"
-    );
-
-    $of_options[] = array(
-      "name"      => __("Secondary NavBar Text Color", "shoestrap"),
-      "desc"      => __("Select the background color for your header. Default: #EEEEEE.", "shoestrap"),
-      "id"        => "navbar_secondary_color",
-      "std"       => "#333",
-      "customizer"=> array(),
-      'fold'      => 'secondary_navbar_toggle',
-      "type"      => "color"
-    );
-
-    $of_options[] = array(
-      "name"    => __("Secondary NavBar Text", "shoestrap"),
-      "desc"    => __("Sometime you just need something a little more custom. Here you can enter a string of text to display in your secondary navbar.", "shoestrap"),
-      "id"      => "navbar_secondary_text",
-      "std"     => "",
-      "type"    => "text"
-    );
-
-    $of_options[] = array(
-      "name"      => __("Secondary NavBar - Left Side", "shoestrap"),
-      "desc"      => __("You can use an alternative menu style for your NavBars. OFF by default. ", "shoestrap"),
-      "id"        => "navbar_secondary_left",
+      "name"      => __("Display social networks in the navbar", "shoestrap"),
+      "desc"      => __("Enable this option to display your social networks as a dropdown menu on the seondary navbar.", "shoestrap"),
+      "id"        => "navbar_secondary_social",
       "fold"      => "navbar_toggle",
-      "std"       => 'menu',
-      "type"      => "select",
-      "customizer"=> array(),
-      "options"   => array(
-        'none' => __( "None", "shoestrap"),
-        'social'  => __( "Social Links", "shoestrap"),
-        'menu'  => __( "Secondary Menu", "shoestrap"),
-        'text'  => __( "Secondary NavBar Textbox", "shoestrap"),
-      )
+      "std"       => 0,
+      "type"      => "switch",
     );
-
-    $of_options[] = array(
-      "name"      => __("Secondary NavBar - Right Side", "shoestrap"),
-      "desc"      => __("You can use an alternative menu style for your NavBars. OFF by default. ", "shoestrap"),
-      "id"        => "navbar_secondary_right",
-      "fold"      => "navbar_toggle",
-      "std"       => 'social',
-      "type"      => "select",
-      "customizer"=> array(),
-      "options"   => array(
-        'none' => __( "None", "shoestrap"),
-        'social'  => __( "Social Links", "shoestrap"),
-        'menu'  => __( "Secondary Menu", "shoestrap"),
-        'text'  => __( "Secondary NavBar Textbox", "shoestrap"),
-      )
-    );
-
 
     $url = admin_url( 'widgets.php' );
     $of_options[] = array(

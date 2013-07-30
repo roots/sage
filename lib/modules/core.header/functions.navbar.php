@@ -50,7 +50,7 @@ function shoestrap_navbar_post_searchbox() {
 }
 add_action( 'shoestrap_post_main_nav', 'shoestrap_navbar_post_searchbox', 11 );
 
-function shoestrap_navbar_class() {
+function shoestrap_navbar_class( $navbar = 'main') {
   $fixed    = shoestrap_getVariable( 'navbar_fixed' );
   $fixedpos = shoestrap_getVariable( 'navbar_fixed_position' );
   $style    = shoestrap_getVariable( 'navbar_style' );
@@ -64,7 +64,10 @@ function shoestrap_navbar_class() {
       $class = 'navbar navbar-fixed-top';
   }
 
-  return $class . ' ' . $style;
+  if ( $navbar != 'secondary' )
+    return $class . ' ' . $style;
+  else
+    return 'navbar ' . $style;
 }
 
 function shoestrap_navbar_css() {
