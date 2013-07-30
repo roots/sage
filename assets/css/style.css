@@ -4402,7 +4402,7 @@ a.list-group-item.active > .badge,
   opacity: .9;
   filter: alpha(opacity=90);
 }
-.carousel-control .icon,
+.carousel-control .glyphicon,
 .carousel-control .icon-prev,
 .carousel-control .icon-next {
   position: absolute;
@@ -4465,7 +4465,7 @@ a.list-group-item.active > .badge,
   text-shadow: none;
 }
 @media screen and (min-width: 758px) {
-  .carousel-control .icon,
+  .carousel-control .glyphicon,
   .carousel-control .icon-prev,
   .carousel-control .icon-next {
     width: 30px;
@@ -5524,4 +5524,17 @@ fieldset[disabled] .contact-form .pushbutton-wide:active,
 fieldset[disabled] .contact-form .pushbutton-wide.active {
   background-color: #428bca;
   border-color: #428bca;
+}
+.dropdown-submenu {
+  position: relative;
+}
+li.dropdown ul.dropdown-menu li.dropdown > .dropdown-menu {
+  top: 0;
+  left: 100%;
+}
+li.dropdown ul.dropdown-menu li.dropdown:hover > .dropdown-menu {
+  display: block;
+}
+li.dropdown ul.dropdown-menu li.dropdown.pull-left {
+  float: none;
 }
