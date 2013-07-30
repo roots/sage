@@ -398,9 +398,16 @@ a.toggle-nav {
     .active > a,
     .active > a:hover,
     .active > a:focus {
-      background: @navbar-bg;
       border-bottom: 5px solid @brand-warning;
       margin-bottom: -5px;
+    }
+    .dropdown-menu {
+      .active > a,
+      .active > a:hover,
+      .active > a:focus {
+        margin-bottom: 1px !important;
+        margin-top: 1px !important;
+      }
     }
   }
 }
