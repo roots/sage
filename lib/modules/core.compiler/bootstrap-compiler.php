@@ -271,7 +271,9 @@ function shoestrap_variables_less() {
   $screen_large     = ( $container_large_desktop + $gutter );
 
   $navbar_height    = filter_var( shoestrap_getVariable( 'navbar_height', true ), FILTER_SANITIZE_NUMBER_INT );
+  $navbar_text_color       = '#' . str_replace( '#', '', $font_navbar['color'] );
 
+  $brand_text_color       = '#' . str_replace( '#', '', $font_brand['color'] );
   // Calculate the gray shadows based on the body background.
   // We basically create 2 "presets": light and dark.
   if ( shoestrap_get_brightness( $body_bg ) > 80 ) {
@@ -892,11 +894,15 @@ function shoestrap_variables_less() {
 
 @navbar-font-size:        ' . $font_navbar['size'] . 'px;
 @navbar-font-weight:      ' . $font_navbar['weight'] . ';
+@navbar-font-style:       ' . $font_navbar['style'] . ';
 @navbar-font-family:      ' . $font_navbar['face'] . ';
+@navbar-font-color:       ' . $navbar_text_color . ';
 
 @brand-font-size:         ' . $font_brand['size'] . 'px;
 @brand-font-weight:       ' . $font_brand['weight'] . ';
+@brand-font-style:        ' . $font_brand['style'] . ';
 @brand-font-family:       ' . $font_brand['face'] . ';
+@brand-font-color:        ' . $brand_text_color . ';
 
 // H1
 @heading-h1-face:         ' . $font_h1_face . ';
