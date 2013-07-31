@@ -890,11 +890,11 @@ function shoestrap_variables_less() {
 // Shoestrap-specific variables
 // --------------------------------------------------
 
-@navbar-font-size:        ' . $font_navbar['size'] . ';
+@navbar-font-size:        ' . $font_navbar['size'] . 'px;
 @navbar-font-weight:      ' . $font_navbar['weight'] . ';
 @navbar-font-family:      ' . $font_navbar['face'] . ';
 
-@brand-font-size:         ' . $font_brand['size'] . ';
+@brand-font-size:         ' . $font_brand['size'] . 'px;
 @brand-font-weight:       ' . $font_brand['weight'] . ';
 @brand-font-family:       ' . $font_brand['face'] . ';
 
