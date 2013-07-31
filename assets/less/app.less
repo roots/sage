@@ -339,11 +339,14 @@ a.toggle-nav {
       a:hover,
       a:focus {
         background: block;
+        color: @brand-secondary;
         border-bottom: 0;
         border-top: 1px solid @brand-primary;
         padding-bottom: 0px;
       }
-
+    }
+    .navbar-nav > li > a {
+        padding-bottom: 10px;
     }
   }
   &.style2 {
@@ -361,7 +364,13 @@ a.toggle-nav {
       border-top: none !important;
       padding-top: 0 !important;
     }
-
+    .dropdown-menu {
+      .active > a,
+      .active > a:hover,
+      .active > a:focus {
+        color: @brand-primary;
+      }
+    }
   }
   &.style3 {
     border-top: 5px solid @brand-primary;
