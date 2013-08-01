@@ -20,6 +20,71 @@ if ( !function_exists( 'shoestrap_module_social_options' ) ) {
     );
 
     $of_options[] = array(
+      "name"      => "",
+      "desc"      => "",
+      "id"        => "social_sharing_help_1",
+      "std"       => "<h3 style=\"margin: 0 0 10px;\">General Options</h3>",
+      "icon"      => true,
+      "type"      => "info"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Button Text", "shoestrap"),
+      "desc"      => __("Select the text for the social sharing button.", "shoestrap"),
+      "id"        => "social_sharing_text",
+      "std"       => "Share",
+      "type"      => "text"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Button Location", "shoestrap"),
+      "desc"      => __("Select between NONE, TOP, BOTTOM & BOTH", "shoestrap"),
+      "id"        => "social_sharing_location",
+      "std"       => "top",
+      "type"      => "select",
+      "customizer"=> array(),
+      "options"   => array(
+        'none'    =>"None",
+        'top'     =>"Top",
+        'bottom'  =>"Bottom",
+        'both'    =>"Both",
+      )
+    );
+
+    $of_options[] = array(
+      "name"      => __("Show in Posts Archives", "shoestrap"),
+      "desc"      => __("Show the sharing button in posts archives.", "shoestrap"),
+      "id"        => "social_sharing_archives",
+      "std"       => "",
+      "type"      => "switch"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Show in Single Post", "shoestrap"),
+      "desc"      => __("Show the sharing button in single post.", "shoestrap"),
+      "id"        => "social_sharing_single_post",
+      "std"       => "1",
+      "type"      => "switch"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Show in Single Page", "shoestrap"),
+      "desc"      => __("Show the sharing button in single page.", "shoestrap"),
+      "id"        => "social_sharing_single_page",
+      "std"       => "1",
+      "type"      => "switch"
+    );
+
+    $of_options[] = array(
+      "name"      => "",
+      "desc"      => "",
+      "id"        => "social_sharing_help_2",
+      "std"       => "<h3 style=\"margin: 0 0 10px;\">Select Socials</h3>",
+      "icon"      => true,
+      "type"      => "info"
+    );
+
+    $of_options[] = array(
       "name"      => __("Facebook", "shoestrap"),
       "desc"      => __("Show the Facebook sharing icon in blog posts.", "shoestrap"),
       "id"        => "facebook_share",

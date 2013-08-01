@@ -168,10 +168,13 @@ function shoestrap_social_sharing() {
   // Don't show by default
   $show = false;
 
+  // Button Text
+  $text = shoestrap_getVariable( 'social_sharing_text' );
+
   // Build the content
   $content = '';
   $content .= '<div class="btn-group social-share">';
-  $content .= '<button class="btn btn-primary btn-small">' . __( 'Share', 'shoestrap' ) . '</button>';
+  $content .= '<button class="btn btn-primary btn-small">' . $text . '</button>';
 
   foreach ( $networks as $network ) {
     if ( $network['on'] == 1 ) :
@@ -208,4 +211,47 @@ function shoestrap_social_sharing() {
   if ( $show == 1 )
     echo $content;
 }
-add_action( 'shoestrap_before_the_content', 'shoestrap_social_sharing', 5 );
+
+// Social Share location
+$social_sharing_location = shoestrap_getVariable( 'social_sharing_location' );
+
+// Social Share select
+$social_sharing_archives    = shoestrap_getVariable( 'social_sharing_archives' );
+$social_sharing_single_post = shoestrap_getVariable( 'social_sharing_single_post' );
+$social_sharing_single_page = shoestrap_getVariable( 'social_sharing_single_page' );
+
+// Conditions for showing content in posts archives
+if ( $social_sharing_archives == 1 && $social_sharing_location == 'top' ) {
+  add_action( 'shoestrap_before_the_content', 'shoestrap_social_sharing', 5 );
+}
+elseif ( $social_sharing_archives == 1 && $social_sharing_location == 'bottom' ) {
+  add_action( 'shoestrap_after_the_content', 'shoestrap_social_sharing', 5 );
+}
+elseif ( $social_sharing_archives == 1 && $social_sharing_location == 'both' ) {
+  add_action( 'shoestrap_before_the_content', 'shoestrap_social_sharing', 5 );
+  add_action( 'shoestrap_after_the_content', 'shoestrap_social_sharing', 5 );
+}
+
+// Conditions for showing content in single posts
+if ( $social_sharing_single_post == 1 && $social_sharing_location == 'top' ) {
+  add_action( 'shoestrap_single_pre_content', 'shoestrap_social_sharing', 5 );
+}
+elseif ( $social_sharing_single_post == 1 && $social_sharing_location == 'bottom' ) {
+  add_action( 'shoestrap_single_after_content', 'shoestrap_social_sharing', 5 );
+}
+elseif ( $social_sharing_single_post == 1 && $social_sharing_location == 'both' ) {
+  add_action( 'shoestrap_single_pre_content', 'shoestrap_social_sharing', 5 );
+  add_action( 'shoestrap_single_after_content', 'shoestrap_social_sharing', 5 );
+}
+
+// Conditions for showing content in single pages
+if ( $social_sharing_single_page == 1 && $social_sharing_location == 'top' ) {
+  add_action( 'shoestrap_page_pre_content', 'shoestrap_social_sharing', 5 );
+}
+elseif ( $social_sharing_single_page == 1 && $social_sharing_location == 'bottom' ) {
+  add_action( 'shoestrap_page_after_content', 'shoestrap_social_sharing', 5 );
+}
+elseif ( $social_sharing_single_page == 1 && $social_sharing_location == 'both' ) {
+  add_action( 'shoestrap_page_pre_content', 'shoestrap_social_sharing', 5 );
+  add_action( 'shoestrap_page_after_content', 'shoestrap_social_sharing', 5 );
+}
