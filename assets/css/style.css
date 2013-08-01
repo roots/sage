@@ -5193,9 +5193,13 @@ fieldset[disabled] #social-sharing .shareme .box {
 .navbar.style1 .dropdown-menu a:hover,
 .navbar.style1 .dropdown-menu a:focus {
   background: block;
+  color: #428bca;
   border-bottom: 0;
   border-top: 1px solid #428bca;
   padding-bottom: 0px;
+}
+.navbar.style1 .navbar-nav > li > a {
+  padding-bottom: 10px;
 }
 .navbar.style2 li > a {
   padding-top: 15px;
@@ -5210,6 +5214,11 @@ fieldset[disabled] #social-sharing .shareme .box {
 .navbar.style2 li ul li > a {
   border-top: none !important;
   padding-top: 0 !important;
+}
+.navbar.style2 .dropdown-menu .active > a,
+.navbar.style2 .dropdown-menu .active > a:hover,
+.navbar.style2 .dropdown-menu .active > a:focus {
+  color: #428bca;
 }
 .navbar.style3 {
   border-top: 5px solid #428bca;
@@ -5562,11 +5571,26 @@ li.dropdown ul.dropdown-menu li.dropdown.pull-left {
 }
 .navbar {
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 14;
+  font-size: 14px;
+  font-style: inherit;
   font-weight: inherit;
+}
+.navbar li > a {
+  color: #333333 !important;
 }
 .navbar a.navbar-brand {
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 18;
+  font-size: 18px;
+  font-style: inherit;
   font-weight: inherit;
+  color: #333333;
+}
+#loading {
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: none;
 }
