@@ -76,7 +76,7 @@ function shoestrap_get_social_shares() {
       'url' => 'https://plus.google.com/share?url=' . get_permalink()
       );
   if ( shoestrap_getVariable( 'tumblr_share' ) == 1 )
-    $networks['facebook'] = array(
+    $networks['tumblr'] = array(
       'icon' => 'tumblr',
       'fullname' => 'Tumblr',
       'url' =>  'http://www.tumblr.com/share/link?url=' .urlencode(get_permalink()) . '&amp;name=' . urlencode(get_the_title()) . "&amp;description=".urlencode(the_excerpt())
@@ -131,7 +131,7 @@ function shoestrap_navbar_social_links() {
 
   echo $content;
 }
-// If the user has selected to show social links in the navbar, AND has entered a URL, echo the content.
+// If the user has selected to show social links in the navbar echo the content.
 if ( shoestrap_getVariable( 'navbar_social' ) == 1 )
   add_action( 'shoestrap_post_main_nav', 'shoestrap_navbar_social_links' );
 
@@ -189,7 +189,7 @@ function shoestrap_social_sharing() {
       elseif ( $network['icon'] == 'reddit' )
         $url    = 'http://reddit.com/submit?url=' .get_permalink() . '&amp;title=' . get_the_title();
       elseif ( $network['icon'] == 'tumblr' )
-        $url    = 'http://www.tumblr.com/share/link?url=' .urlencode(get_permalink()) . '&amp;name=' . urlencode(get_the_title()) . "&amp;description=".urlencode(the_excerpt()); // Add description
+        $url    = 'http://www.tumblr.com/share/link?url=' .urlencode(get_permalink()) . '&amp;name=' . urlencode(get_the_title());
       elseif ( $network['icon'] == 'envelope' )
         $url    = 'mailto:?subject=' .get_the_title() . '&amp;body=' . get_permalink();
       elseif ( $network['icon'] == 'googleplus' )
@@ -204,8 +204,8 @@ function shoestrap_social_sharing() {
   }
   $content .= '</div>';
 
-  // If the user has selected to show social links in the navbar, AND has entered a URL, echo the content.
+  // If at least ONE social share option is enabled then echo the content
   if ( $show == 1 )
-    return $content;
+    echo $content;
 }
 add_action( 'shoestrap_before_the_content', 'shoestrap_social_sharing', 5 );
