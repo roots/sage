@@ -16,10 +16,10 @@ add_action( 'shoestrap_after_wrap', 'shoestrap_pjax_close_container' );
 function shoestrap_pjax_trigger_script() { ?>
 	<script>
 	$(document).on('pjax:send', function() {
-		$('#loading').fadeToggle("slow", "linear")
+		//$('#loading').fadeToggle("slow", "linear")
 	})
 	$(document).on('pjax:complete', function() {
-		$('#loading').fadeToggle("fast")
+		$('#loading').fadeToggle("fast", "linear")
 	})
 	$(document).pjax('a', '#pjax-container')
 	</script>
