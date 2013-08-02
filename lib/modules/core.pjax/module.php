@@ -23,15 +23,6 @@ function shoestrap_pjax_trigger_script() { ?>
 	})
 	$(document).pjax('a', '#pjax-container')
 	</script>
-	<style>
-	div#loading {
-		-webkit-transition: all 250ms ease-in-out;
-		-moz-transition: all 250ms ease-in-out;
-		-ms-transition: all 250ms ease-in-out;
-		-o-transition: all 250ms ease-in-out;
-		transition: all 250ms ease-in-out;
-	}
-	</style>
 	<?php
 }
 add_action( 'wp_footer', 'shoestrap_pjax_trigger_script', 200 );
