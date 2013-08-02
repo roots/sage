@@ -3,17 +3,18 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"Project-Id-Version: \n"
+"Project-Id-Version: Translation to Serbian of Roots theme for WordPress\n"
 "POT-Creation-Date: \n"
 "PO-Revision-Date: \n"
 "Last-Translator: lautreamont <lautreamont33@gmail.com>\n"
-"Language-Team: \n"
+"Language-Team: lautreamont <lautreamont33@gmail.com>\n"
 "MIME-Version: 1.0\n"
-"X-Generator: Poedit 1.5.5\n"
+"Language: Serbian\n"
+"X-Generator: Poedit 1.5.4\n"
 
 #: 404.php:4
 msgid "Sorry, but the page you were trying to view does not exist."
-msgstr "Страна коју сте тражили непостоји."
+msgstr "Тражена страна не постоји."
 
 #: 404.php:7
 msgid "It looks like this was the result of either:"
@@ -21,15 +22,24 @@ msgstr "Што је резултат:"
 
 #: 404.php:9
 msgid "a mistyped address"
-msgstr "или погрешно укуцане адресе"
+msgstr "или погрешно унете адресе"
 
 #: 404.php:10
 msgid "an out-of-date link"
 msgstr "или измењене/застареле везе"
 
+#: base.php:4
+msgid ""
+"You are using an <strong>outdated</strong> browser. Please <a href=\"http://"
+"browsehappy.com/\">upgrade your browser</a> to improve your experience."
+msgstr ""
+"Користите <strong>застарели</strong> претраживач. Унапредите свој доживљај "
+"<a href=\"http://browsehappy.com/\">инсталирирањем новије верзије "
+"претраживача</a>."
+
 #: index.php:5
 msgid "Sorry, no results were found."
-msgstr "Нема резултата претраге."
+msgstr "Ништа није пронађено."
 
 #: index.php:17
 msgid "&larr; Older posts"
@@ -39,75 +49,73 @@ msgstr "&larr; Старији чланци"
 msgid "Newer posts &rarr;"
 msgstr "Новији чланци &rarr;"
 
-#: lib/activation.php:33 lib/activation.php:34
+#: lib/activation.php:28 lib/activation.php:29
 msgid "Theme Activation"
 msgstr "Активирање теме"
 
-#: lib/activation.php:70
+#: lib/activation.php:51
 msgid "%s Theme Activation"
-msgstr "%s Активирање теме"
+msgstr "Активирање %s теме"
 
-#: lib/activation.php:85 lib/activation.php:87
+#: lib/activation.php:62 lib/activation.php:64
 msgid "Create static front page?"
-msgstr "Да направимо статичну насловну страну?"
+msgstr "Статична насловна страна?"
 
-#: lib/activation.php:89 lib/activation.php:102 lib/activation.php:115
-#: lib/activation.php:128 lib/activation.php:141
+#: lib/activation.php:66 lib/activation.php:79 lib/activation.php:92
+#: lib/activation.php:105 lib/activation.php:118
 msgid "Yes"
 msgstr "Да"
 
-#: lib/activation.php:90 lib/activation.php:103 lib/activation.php:116
-#: lib/activation.php:129 lib/activation.php:142
+#: lib/activation.php:67 lib/activation.php:80 lib/activation.php:93
+#: lib/activation.php:106 lib/activation.php:119
 msgid "No"
 msgstr "Не"
 
-#: lib/activation.php:93
+#: lib/activation.php:70
 msgid "Create a page called Home and set it to be the static front page"
-msgstr ""
-"Да креирамо страну под називом Home и поставимо је као статичну насловну "
-"страну"
+msgstr "Креирање нове стране под називом Home као статичне насловне стране"
 
-#: lib/activation.php:98
+#: lib/activation.php:75
 msgid "Change permalink structure?"
-msgstr "Измени структуру сталних веза?"
+msgstr "Измена структуре сталних веза?"
 
-#: lib/activation.php:100
+#: lib/activation.php:77
 msgid "Update permalink structure?"
-msgstr "Запамти структуру сталних веза?"
+msgstr "Памћење структуре сталних веза?"
 
-#: lib/activation.php:106
+#: lib/activation.php:83
 msgid "Change permalink structure to /&#37;postname&#37;/"
-msgstr "Измени структуру сталних веза у /&#37;називпоста&#37;/"
+msgstr "Измена структуре сталних веза у /&#37;називпоста&#37;/"
 
-#: lib/activation.php:111
+#: lib/activation.php:88
 msgid "Change uploads folder?"
-msgstr "Измени пријемни директоријум?"
+msgstr "Измена пријемног директоријума?"
 
-#: lib/activation.php:113
+#: lib/activation.php:90
 msgid "Update uploads folder?"
-msgstr "Запамти пријемни директоријум?"
+msgstr "Памћење пријемног директоријума?"
 
-#: lib/activation.php:119
-msgid "Change uploads folder to /assets/ instead of /wp-content/uploads/"
-msgstr "Измени пријемни директоријум у /assets/ уместо /wp-content/uploads/"
+#: lib/activation.php:96
+msgid "Change uploads folder to /media/ instead of /wp-content/uploads/"
+msgstr "Измена пријемног директоријума /wp-content/uploads/ у /assets/"
 
-#: lib/activation.php:124 lib/activation.php:126
+#: lib/activation.php:101 lib/activation.php:103
 msgid "Create navigation menu?"
-msgstr "Направи навигациони изборник?"
+msgstr "Креирање навигационог изборника?"
 
-#: lib/activation.php:132
+#: lib/activation.php:109
 msgid "Create the Primary Navigation menu and set the location"
-msgstr "Направи Основни навигациони изборник и постави га?"
+msgstr "Креирање Основног навигационог изборника и његове позиције?"
 
-#: lib/activation.php:137 lib/activation.php:139
+#: lib/activation.php:114 lib/activation.php:116
 msgid "Add pages to menu?"
-msgstr "Додај стране у изборник?"
+msgstr "Додавање страна у изборник?"
 
-#: lib/activation.php:145
+#: lib/activation.php:122
 msgid "Add all current published pages to the Primary Navigation"
-msgstr "Додај све објављене стране у Основни навигациони изборник"
+msgstr "Додавање свих објављених страна у Основни навигациони изборник"
 
-#: lib/cleanup.php:382
+#: lib/cleanup.php:210
 msgid "Continued"
 msgstr "Наставак"
 
@@ -115,54 +123,49 @@ msgstr "Наставак"
 msgid "Primary Navigation"
 msgstr "Основна навигација"
 
-#: lib/utils.php:60
+#: lib/titles.php:10
 msgid "Latest Posts"
-msgstr "Најновији чланци"
+msgstr "Ново"
 
-#: lib/utils.php:69
+#: lib/titles.php:19
 msgid "Daily Archives: %s"
-msgstr "Дневне архиве: %s"
+msgstr "Дневна архива: %s"
 
-#: lib/utils.php:71
+#: lib/titles.php:21
 msgid "Monthly Archives: %s"
-msgstr "Месечне архиве: %s"
+msgstr "Месечна архива: %s"
 
-#: lib/utils.php:73
+#: lib/titles.php:23
 msgid "Yearly Archives: %s"
-msgstr "Годишње архиве: %s"
+msgstr "Годишња архива: %s"
 
-#: lib/utils.php:75
+#: lib/titles.php:26
 msgid "Author Archives: %s"
-msgstr "Архиве аутора: %s"
+msgstr "Архива аутора: %s"
 
-#: lib/utils.php:80
+#: lib/titles.php:31
 msgid "Search Results for %s"
-msgstr "Резултати претраге за %s"
+msgstr "Претрага за %s"
 
-#: lib/utils.php:82
+#: lib/titles.php:33
 msgid "Not Found"
-msgstr "Нема резултата"
-
-#: lib/utils.php:94
-msgid "Please make sure your <a href=\"%s\">.htaccess</a> file is writable "
-msgstr ""
-"Проверите да ли је дозвољено писање у <a href=\"%s\">.htaccess</a> датотеку"
+msgstr "Нема ничега"
 
 #: lib/widgets.php:8
-msgid "Primary Sidebar"
-msgstr "Основна бочна трака"
+msgid "Primary"
+msgstr "Основни"
 
 #: lib/widgets.php:17
 msgid "Footer"
-msgstr "Футер"
+msgstr "Доњи"
 
 #: lib/widgets.php:45
 msgid "Use this widget to add a vCard"
-msgstr "Употреби овај виџет за додавање vCard"
+msgstr "Виџет за додавање vCard-а"
 
 #: lib/widgets.php:47
 msgid "Roots: vCard"
-msgstr "Корени: vCard"
+msgstr "Roots: vCard"
 
 #: lib/widgets.php:74
 msgid "vCard"
@@ -174,11 +177,11 @@ msgstr "%1$s"
 
 #: templates/comment.php:5
 msgid "(Edit)"
-msgstr "(измени)"
+msgstr "(измена)"
 
 #: templates/comment.php:9
 msgid "Your comment is awaiting moderation."
-msgstr "Коментар чека одобрење."
+msgstr "Ваш коментар чека одобрење."
 
 #: templates/comments.php:8
 msgid "One Response to &ldquo;%2$s&rdquo;"
@@ -208,15 +211,15 @@ msgstr "Остави коментар на %s"
 
 #: templates/comments.php:48
 msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
-msgstr "Мораш бити <a href=\"%s\">пријављен</a> да би сте оставили коментар."
+msgstr "Морате бити <a href=\"%s\">пријављени</a> да би сте оставили коментар."
 
 #: templates/comments.php:53
 msgid "Logged in as <a href=\"%s/wp-admin/profile.php\">%s</a>."
-msgstr "Пријављен као <a href=\"%s/wp-admin/profile.php\">%s</a>."
+msgstr "Пријављени сте као <a href=\"%s/wp-admin/profile.php\">%s</a>."
 
 #: templates/comments.php:54
 msgid "Log out of this account"
-msgstr "Одјави се"
+msgstr "Одјава са налога"
 
 #: templates/comments.php:54
 msgid "Log out &raquo;"
@@ -232,7 +235,7 @@ msgstr " (обавезно)"
 
 #: templates/comments.php:59
 msgid "Email (will not be published)"
-msgstr "емеил адреса (неће бити објављена)"
+msgstr "емеил адреса (невидљива)"
 
 #: templates/comments.php:61
 msgid "Website"
@@ -256,8 +259,8 @@ msgstr "аутор"
 
 #: templates/searchform.php:2
 msgid "Search for:"
-msgstr "Потрага за:"
+msgstr "Претрага за:"
 
 #: templates/searchform.php:3 templates/searchform.php:4
 msgid "Search"
-msgstr "Потрага"
+msgstr "Претрага"
