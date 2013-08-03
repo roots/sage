@@ -54,15 +54,23 @@
             <a href="<?php echo wp_logout_url(get_permalink()); ?>" title="<?php __('Log out of this account', 'roots'); ?>"><?php _e('Log out &raquo;', 'roots'); ?></a>
           </p>
         <?php else : ?>
-          <label for="author"><?php _e('Name', 'roots'); if ($req) _e(' (required)', 'roots'); ?></label>
-          <input type="text" class="text" name="author" id="author" value="<?php echo esc_attr($comment_author); ?>" size="22" <?php if ($req) echo 'aria-required="true"'; ?>>
-          <label for="email"><?php _e('Email (will not be published)', 'roots'); if ($req) _e(' (required)', 'roots'); ?></label>
-          <input type="email" class="text" name="email" id="email" value="<?php echo esc_attr($comment_author_email); ?>" size="22" <?php if ($req) echo 'aria-required="true"'; ?>>
-          <label for="url"><?php _e('Website', 'roots'); ?></label>
-          <input type="url" class="text" name="url" id="url" value="<?php echo esc_attr($comment_author_url); ?>" size="22">
+          <div class="form-group">
+            <label for="author"><?php _e('Name', 'roots'); if ($req) _e(' (required)', 'roots'); ?></label>
+            <input type="text" class="form-control" name="author" id="author" value="<?php echo esc_attr($comment_author); ?>" size="22" <?php if ($req) echo 'aria-required="true"'; ?>>
+          </div>
+          <div class="form-group">
+            <label for="email"><?php _e('Email (will not be published)', 'roots'); if ($req) _e(' (required)', 'roots'); ?></label>
+            <input type="email" class="form-control" name="email" id="email" value="<?php echo esc_attr($comment_author_email); ?>" size="22" <?php if ($req) echo 'aria-required="true"'; ?>>
+          </div>
+          <div class="form-group">
+            <label for="url"><?php _e('Website', 'roots'); ?></label>
+            <input type="url" class="form-control" name="url" id="url" value="<?php echo esc_attr($comment_author_url); ?>" size="22">
+          </div>
         <?php endif; ?>
-        <label for="comment"><?php _e('Comment', 'roots'); ?></label>
-        <textarea name="comment" id="comment" class="input-xlarge" rows="5" aria-required="true"></textarea>
+        <div class="form-group">
+          <label for="comment"><?php _e('Comment', 'roots'); ?></label>
+          <textarea name="comment" id="comment" class="form-control" rows="5" aria-required="true"></textarea>
+        </div>
         <p><input name="submit" class="btn btn-primary" type="submit" id="submit" value="<?php _e('Submit Comment', 'roots'); ?>"></p>
         <?php comment_id_fields(); ?>
         <?php do_action('comment_form', $post->ID); ?>

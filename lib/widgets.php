@@ -5,7 +5,7 @@
 function roots_widgets_init() {
   // Sidebars
   register_sidebar(array(
-    'name'          => __('Primary Sidebar', 'roots'),
+    'name'          => __('Primary', 'roots'),
     'id'            => 'sidebar-primary',
     'before_widget' => '<section class="widget %1$s %2$s"><div class="widget-inner">',
     'after_widget'  => '</div></section>',

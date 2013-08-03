@@ -21,10 +21,10 @@ define('POST_EXCERPT_LENGTH', 40);
 function roots_main_class() {
   if (roots_display_sidebar()) {
     // Classes on pages with the sidebar
-    $class = 'span8';
+    $class = 'col-sm-8 col-lg-8';
   } else {
     // Classes on full width pages
-    $class = 'span12';
+    $class = 'col-lg-12';
   }
 
   return $class;
@@ -34,7 +34,7 @@ function roots_main_class() {
  * .sidebar classes
  */
 function roots_sidebar_class() {
-  return 'span4';
+  return 'col-sm-4 col-lg-4';
 }
 
 /**
@@ -78,3 +78,13 @@ function roots_display_sidebar() {
  * Default: 940px is the default Bootstrap container width.
  */
 if (!isset($content_width)) { $content_width = 940; }
+
+/**
+ * Define helper constants
+ */
+$get_theme_name = explode('/themes/', get_template_directory());
+
+define('RELATIVE_PLUGIN_PATH',  str_replace(home_url() . '/', '', plugins_url()));
+define('RELATIVE_CONTENT_PATH', str_replace(home_url() . '/', '', content_url()));
+define('THEME_NAME',            next($get_theme_name));
+define('THEME_PATH',            RELATIVE_CONTENT_PATH . '/themes/' . THEME_NAME);

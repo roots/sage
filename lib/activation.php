@@ -93,7 +93,7 @@ function roots_theme_activation_options_render_page() { ?>
                 <option value="false"><?php echo _e('No', 'roots'); ?></option>
               </select>
               <br>
-              <small class="description"><?php printf(__('Change uploads folder to /assets/ instead of /wp-content/uploads/', 'roots')); ?></small>
+              <small class="description"><?php printf(__('Change uploads folder to /media/ instead of /wp-content/uploads/', 'roots')); ?></small>
             </fieldset>
           </td>
         </tr>
@@ -191,7 +191,7 @@ function roots_theme_activation_action() {
 
     update_option('uploads_use_yearmonth_folders', 0);
     if (!is_multisite()) {
-      update_option('upload_path', 'assets');
+      update_option('upload_path', 'media');
     } else {
       update_option('upload_path', '');
     }

@@ -1,4 +1,10 @@
 ### HEAD
+* Update to Bootstrap 3 RC1
+* Update to jQuery 1.10.2
+* Change media directory from `/assets/` to `/media/`
+* Update to Google Universal Analytics
+* Show author display name for author archives
+* Add Serbian translation
 * Remove post tags from templates
 * Remove TinyMCE valid elements tweaks (no longer necessary)
 * Remove additional widget classes
