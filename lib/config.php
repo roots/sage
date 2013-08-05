@@ -44,7 +44,7 @@ function roots_main_class() {
  * .sidebar classes
  */
 function roots_sidebar_class() {
-  return 'col-sm-4, col-lg-4';
+  return 'col-sm-4 col-lg-4';
 }
 
 /**

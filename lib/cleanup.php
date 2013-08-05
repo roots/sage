@@ -20,8 +20,6 @@ function roots_head_cleanup() {
   global $wp_widget_factory;
   remove_action('wp_head', array($wp_widget_factory->widgets['WP_Widget_Recent_Comments'], 'recent_comments_style'));
 
-  add_filter('use_default_gallery_style', '__return_null');
-
   if (!class_exists('WPSEO_Frontend')) {
     remove_action('wp_head', 'rel_canonical');
     add_action('wp_head', 'roots_rel_canonical');
@@ -145,16 +143,6 @@ function roots_embed_wrap($cache, $url, $attr = '', $post_ID = '') {
 add_filter('embed_oembed_html', 'roots_embed_wrap', 10, 4);
 
 /**
- * Add class="thumbnail" to attachment items
- */
-function roots_attachment_link_class($html) {
-  $postid = get_the_ID();
-  $html = str_replace('<a', '<a class="thumbnail"', $html);
-  return $html;
-}
-add_filter('wp_get_attachment_link', 'roots_attachment_link_class', 10, 1);
-
-/**
  * Add Bootstrap thumbnail styling to images with captions
  * Use <figure> and <figcaption>
  *
@@ -275,13 +263,11 @@ function roots_request_filter($query_vars) {
 add_filter('request', 'roots_request_filter');
 
 /**
- * Tell WordPress to use searchform.php from the templates/ directory
+ * Tell WordPress to use searchform.php from the templates/ directory. Requires WordPress 3.6+
  */
 function roots_get_search_form($form) {
-  ob_start();
+  $form = '';
   locate_template('/templates/searchform.php', true, false);
-  $form = ob_get_clean();
-
   return $form;
 }
 add_filter('get_search_form', 'roots_get_search_form');

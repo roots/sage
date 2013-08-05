@@ -3,8 +3,9 @@
  * Clean up gallery_shortcode()
  *
  * Re-create the [gallery] shortcode and use thumbnails styling from Bootstrap
+ * The number of columns must be a factor of 12.
  *
- * @link http://twitter.github.com/bootstrap/components.html#thumbnails
+ * @link http://twbs.github.io/bootstrap/components/#thumbnails
  */
 function roots_gallery($attr) {
   $post = get_post();
@@ -39,7 +40,7 @@ function roots_gallery($attr) {
     'itemtag'    => '',
     'icontag'    => '',
     'captiontag' => '',
-    'columns'    => 3,
+    'columns'    => 4,
     'size'       => 'thumbnail',
     'include'    => '',
     'exclude'    => '',
@@ -47,25 +48,12 @@ function roots_gallery($attr) {
   ), $attr));
 
   $id = intval($id);
+  $columns = (12 % $columns == 0) ? $columns: 4;
+  $grid = sprintf('col-sm-%1$s col-lg-%1$s', 12/$columns);
 
   if ($order === 'RAND') {
     $orderby = 'none';
   }
-
-  $cols = intval( 12 / $columns );
-  // Set a minimum of col-2
-  if ( $cols == 1 )
-    $cols = 2;
-
-  // Decide the size of the image to be loaded
-  // depending on the columns
-  if ( $cols >= 6 )
-    $size = 'full';
-  elseif ( $cols >= 3 )
-    $size = 'medium';
-  else
-    $size = 'thumbnail';
-
 
   if (!empty($include)) {
     $_attachments = get_posts(array('include' => $include, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby));
@@ -92,19 +80,25 @@ function roots_gallery($attr) {
     return $output;
   }
 
-  $output = '<div class="row">';
+  $unique = (get_query_var('page')) ? $instance . '-p' . get_query_var('page'): $instance;
+  $output = '<div class="gallery gallery-' . $id . '-' . $unique . '">';
 
   $i = 0;
   foreach ($attachments as $id => $attachment) {
     $image = ('file' == $link) ? wp_get_attachment_link($id, $size, false, false) : wp_get_attachment_link($id, $size, true, false);
-
-    $output .= '<div class="col-' . $cols . '">' . $image;
+    $output .= ($i % $columns == 0) ? '<div class="row gallery-row">': '';
+    $output .= '<div class="' . $grid .'">' . $image;
+    
     if (trim($attachment->post_excerpt)) {
       $output .= '<div class="caption hidden">' . wptexturize($attachment->post_excerpt) . '</div>';
     }
+    
     $output .= '</div>';
+    $i++;
+    $output .= ($i % $columns == 0) ? '</div>' : '';
   }
-
+  
+  $output .= ($i % $columns != 0 ) ? '</div>' : '';
   $output .= '</div>';
 
   return $output;
@@ -112,4 +106,15 @@ function roots_gallery($attr) {
 if (current_theme_supports('bootstrap-gallery')) {
   remove_shortcode('gallery');
   add_shortcode('gallery', 'roots_gallery');
+  add_filter('use_default_gallery_style', '__return_null');
 }
+
+/**
+ * Add class="thumbnail img-thumbnail" to attachment items
+ */
+function roots_attachment_link_class($html) {
+  $postid = get_the_ID();
+  $html = str_replace('<a', '<a class="thumbnail img-thumbnail"', $html);
+  return $html;
+}
+add_filter('wp_get_attachment_link', 'roots_attachment_link_class', 10, 1);
