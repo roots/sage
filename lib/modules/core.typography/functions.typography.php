@@ -211,41 +211,41 @@ function shoestrap_module_typography_googlefont_links() {
   $font_heading         = shoestrap_getVariable( 'font_heading' );
   if (shoestrap_getVariable( 'font_heading_custom' )) {
     $font_h1 = shoestrap_getVariable( 'font_h1' );
-    $font_h2 = shoestrap_getVariable( 'font_h1' );
-    $font_h3 = shoestrap_getVariable( 'font_h1' );
-    $font_h4 = shoestrap_getVariable( 'font_h1' );
-    $font_h5 = shoestrap_getVariable( 'font_h1' );
-    $font_h6 = shoestrap_getVariable( 'font_h1' );
+    $font_h2 = shoestrap_getVariable( 'font_h2' );
+    $font_h3 = shoestrap_getVariable( 'font_h3' );
+    $font_h4 = shoestrap_getVariable( 'font_h4' );
+    $font_h5 = shoestrap_getVariable( 'font_h5' );
+    $font_h6 = shoestrap_getVariable( 'font_h6' );
   }
-  if ($font_base['google'] == true) {
+  if ($font_base['google'] === 'true' ) {
     echo getGoogleScript($font_base);
   }
-  if ($font_navbar['google'] == true ) {
+  if ($font_navbar['google'] === 'true' ) {
     echo getGoogleScript($font_navbar);
   }
-  if ($font_brand['google'] == true ) {
+  if ($font_brand['google'] === 'true' ) {
     echo getGoogleScript($font_brand);
   }
   if (shoestrap_getVariable( 'font_heading_custom' )) {
-    if ($font_h1['google'] == true ) {
+    if ($font_h1['google'] === 'true' ) {
       echo getGoogleScript($font_h1);
     }
-    if ($font_h2['google'] == true ) {
+    if ($font_h2['google'] === 'true' ) {
       echo getGoogleScript($font_h2);
     }
-    if ($font_h3['google'] == true ) {
+    if ($font_h3['google'] === 'true' ) {
       echo getGoogleScript($font_h3);
     }
-    if ($font_h4['google'] == true ) {
+    if ($font_h4['google'] === 'true' ) {
       echo getGoogleScript($font_h4);
     }
-    if ($font_h5['google'] == true ) {
+    if ($font_h5['google'] === 'true' ) {
       echo getGoogleScript($font_h5);
     }
-    if ($font_h6['google'] == true ) {
+    if ($font_h6['google'] === 'true' ) {
       echo getGoogleScript($font_h6);
     }
-  } else if ($font_heading['google'] == true ) {
+  } else if ($font_heading['google'] === 'true' ) {
     echo getGoogleScript($font_heading);
   }
 }
