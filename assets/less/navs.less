@@ -39,6 +39,11 @@
         cursor: not-allowed;
       }
     }
+
+    // Space the headers out when they follow another list item (link)
+    + .nav-header {
+      margin-top: 9px;
+    }
   }
 
   // Open dropdowns
@@ -148,8 +153,10 @@
   > li {
     float: none;
     + li {
-      margin-top: 2px;
-      margin-left: 0; // no need for this gap between nav items
+      > a {
+        margin-top: 2px;
+        margin-left: 0; // no need for this gap between nav items
+      }
     }
   }
 }

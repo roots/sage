@@ -80,13 +80,13 @@
 
   // Set gradients for backgrounds
   &.left {
-    #gradient > .horizontal(rgba(0,0,0,.5), 0%, rgba(0,0,0,.0001), 100%);
+    #gradient > .horizontal(@start-color: rgba(0,0,0,.5); @end-color: rgba(0,0,0,.0001));
     background-color: transparent;
   }
   &.right {
     left: auto;
     right: 0;
-    #gradient > .horizontal(rgba(0,0,0,.0001), 0%, rgba(0,0,0,.5), 100%);
+    #gradient > .horizontal(@start-color: rgba(0,0,0,.0001); @end-color: rgba(0,0,0,.5));
     background-color: transparent;
   }
 
