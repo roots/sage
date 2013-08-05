@@ -112,6 +112,14 @@ if ( !function_exists('shoestrap_module_advanced_options' ) ) {
     );
 
     $of_options[] = array(
+      "name"      => __("PJAX", "shoestrap"),
+      "desc"      => __("Use <a href='https://github.com/defunkt/jquery-pjax' target='_blank'>PJAX</a>. Default: OFF", "shoestrap"),
+      "id"        => "pjax",
+      "std"       => 0,
+      "type"      => "switch"
+    );
+
+    $of_options[] = array(
       "name"      => __("Root Relative URLs", "shoestrap"),
       "desc"      => __("Return URLs such as <em>/assets/css/style.css</em> instead of <em>http://example.com/assets/css/style.css</em>. Default: ON", "shoestrap"),
       "id"        => "root_relative_urls",
