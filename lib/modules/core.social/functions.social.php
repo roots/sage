@@ -228,7 +228,7 @@ elseif ( $social_sharing_archives == 1 && $social_sharing_location == 'bottom' )
   add_action( 'shoestrap_after_the_content', 'shoestrap_social_sharing', 5 );
 }
 elseif ( $social_sharing_archives == 1 && $social_sharing_location == 'both' ) {
-  add_action( 'shoestrap_before_the_content', 'shoestrap_social_sharing', 5 );
+  // fallback only in bottom
   add_action( 'shoestrap_after_the_content', 'shoestrap_social_sharing', 5 );
 }
 

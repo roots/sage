@@ -450,21 +450,28 @@ a.toggle-nav {
   padding: 15px;
 }
 
+.btn-group > .btn:first-child:not(:last-child):not(.dropdown-toggle) {  
+  border-radius: @border-radius-base;  
+}
+
 .btn-group.social-share {
-  a {
-    padding: @padding-small-vertical 1px;
-    .transition-duration(0.3s);
-    width: 0;
-    color: none; // fallback
-    color: transparent; // fallback
-    color: rgba(255,255,255,0);
-  }
+  .btn-default {
+    display: none;
+  } 
   &:hover {
     a {
-      padding: @padding-small-vertical @padding-small-horizontal;
-      color: #fff; // fallback
-      color: rgba(255,255,255,.9);
+      display: block;
       width: auto;
+      background-color: @body-bg;
+      color: @link-color;
+      padding: 3px !important;
+      .icon {
+      font-size: 190% !important;
+      }
+    }
+    a:hover {
+      background-color: saturate( lighten(@body-bg, 10%), 10% );
+      color: saturate( lighten(@link-color, 10%), 10% ); 
     }
   }
 }
