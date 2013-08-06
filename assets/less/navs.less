@@ -56,22 +56,12 @@
     }
   }
 
-  // Redeclare pull classes because of specificity
-  // Todo: consider making these utilities !important to avoid this bullshit
-  > .pull-right {
-    float: right;
-  }
-
   // Dividers (basically an hr) within the dropdown
   .nav-divider {
     .nav-divider();
   }
 }
 
-
-
-// Nav variations
-// --------------------------------------------------
 
 // Tabs
 // -------------------------
@@ -154,6 +144,10 @@
   }
 }
 
+
+// Nav variations
+// --------------------------------------------------
+
 // Justified nav links
 // -------------------------
 
@@ -181,9 +175,7 @@
   > .active > a {
     border-bottom-color: @nav-tabs-justified-active-link-border-color;
   }
-
 }
-
 
 
 // Tabbable tabs
