@@ -13,8 +13,7 @@
 	display:none!important
 } /* disable the admin notices */
 #of_container {
-	margin: 15px 15px 5px 15px;
-	width: 785px;
+	min-width: 785px;
 	position:relative;
 	z-index: 0
 }
@@ -109,7 +108,8 @@ border-radius: 2px;
 	float: left;
 	position: relative;
 	z-index: 9999;
-	width: 160px;
+	width: 15%;
+	min-width: 160px;
 }
 #of_container #of-nav ul {
 	margin:0;
@@ -167,7 +167,8 @@ border-radius: 2px;
 #of_container #content {
 	float: left;
 	min-height: 500px;
-	width: 595px;
+	width: 82%;
+	min-width: 595px;
 	margin-left: -1px;
 	padding: 0 14px;
 	font-family: "Lucida Grande", Sans-serif;
@@ -189,14 +190,16 @@ border-radius: 2px;
 #of_container #content .section .controls {
 	position: relative;
 	float: left;
-	width: 345px;
+	width: 30%;
+	min-width: 345px;
 	margin: 0 15px 0 0;
 }
 #of_container #content .section .explain {
 	float: left;
-	width: 225px;
+	width: 60%;
+	min-width: 225px;
 	padding: 0 10px 0 0;
-	font-size: 11px;
+	font-size: 12px;
 	color: #999999;
 }
 #of_container #content .section-checkbox .controls {
