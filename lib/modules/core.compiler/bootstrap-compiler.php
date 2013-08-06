@@ -368,13 +368,11 @@ function shoestrap_variables_less() {
 @font-family-sans-serif:  ' . $sans_serif . ';
 @font-family-serif:       Georgia, "Times New Roman", Times, serif;
 @font-family-monospace:   Monaco, Menlo, Consolas, "Courier New", monospace;
-@font-family-base:        ' . $sans_serif . ';
+@font-family-base:        @font-family-sans-serif;
 
 @font-size-base:          ' . $font_size_base . 'px;
 @font-size-large:         ceil(@font-size-base * 1.25); // ~18px
 @font-size-small:         ceil(@font-size-base * 0.85); // ~12px
-@font-style-base:          ' . $font_style_base . ';
-@font-weight-base:         ' . $font_weight_base .';
 
 @line-height-base:        1.428571429; // 20/14
 @line-height-computed:    floor(@font-size-base * @line-height-base); // ~20px
@@ -397,12 +395,17 @@ function shoestrap_variables_less() {
 @padding-small-vertical:         ' . round( $padding_base * 0.625 ) . 'px;
 @padding-small-horizontal:       ' . round( $padding_base * 1.25 ) . 'px;
 
+@line-height-large:              1.33;
+@line-height-small:              1.5;
+
 @border-radius-base:      ' . $border_radius . 'px;
 @border-radius-large:     ceil(@border-radius-base * 1.5);
 @border-radius-small:     floor(@border-radius-base * 0.75);
 
 @component-active-bg:            @brand-primary;
 
+@caret-width-base:               4px;
+@caret-width-large:              5px;
 
 // Tables
 // -------------------------
@@ -413,58 +416,63 @@ function shoestrap_variables_less() {
 @table-bg:                           transparent; // overall background-color
 @table-bg-accent:                    ' . $table_bg_accent . '; // for striping
 @table-bg-hover:                     ' . $table_bg_hover . '; // for hover
-@table-bg-hover:                     ' . $table_bg_hover . ';
 @table-bg-active:                    @table-bg-hover;
+
 @table-border-color:                 ' . $table_border_color . '; // table and cell border
 
 
 // Buttons
 // -------------------------
 
-@btn-default-color:              #fff;
-@btn-default-bg:                 #474949;
-@btn-default-border:             @btn-default-bg;
+@btn-font-weight:                bold;
 
-@btn-primary-color:              @btn-default-color;
+@btn-default-color:              #333;
+@btn-default-bg:                 #fff;
+@btn-default-border:             #ccc;
+
+@btn-primary-color:              #fff;
 @btn-primary-bg:                 @brand-primary;
-@btn-primary-border:             @btn-primary-bg;
+@btn-primary-border:             darken(@btn-primary-bg, 5%);
 
-@btn-success-color:              @btn-default-color;
+@btn-success-color:              #fff;
 @btn-success-bg:                 @brand-success;
-@btn-success-border:             @btn-success-bg;
+@btn-success-border:             darken(@btn-success-bg, 5%);
 
-@btn-warning-color:              @btn-default-color;
+@btn-warning-color:              #fff;
 @btn-warning-bg:                 @brand-warning;
-@btn-warning-border:             @btn-warning-bg;
+@btn-warning-border:             darken(@btn-warning-bg, 5%);
 
-@btn-danger-color:               @btn-default-color;
+@btn-danger-color:               #fff;
 @btn-danger-bg:                  @brand-danger;
-@btn-danger-border:              @btn-danger-bg;
+@btn-danger-border:              darken(@btn-danger-bg, 5%);
 
-@btn-info-color:                 @btn-default-color;
+@btn-info-color:                 #fff;
 @btn-info-bg:                    @brand-info;
-@btn-info-border:                @btn-info-bg;
+@btn-info-border:                darken(@btn-info-bg, 5%);
 
-@btn-hover-color:                @btn-default-color;
+@btn-link-disabled-color:        @gray-light;
+
 
 // Forms
 // -------------------------
 
-@input-bg:                       ' . $body_bg . ';
+@input-bg:                       #fff;
 @input-bg-disabled:              @gray-lighter;
 
-@input-border:                   ' . $input_border . ';
+@input-border:                   #ccc;
 @input-border-radius:            @border-radius-base;
+@input-border-focus:             #66afe9;
 
 @input-color-placeholder:        @gray-light;
 
 @input-height-base:              (@line-height-computed + (@padding-base-vertical * 2) + 2);
-@input-height-large:             (ceil(@font-size-large * @line-height-base) + (@padding-large-vertical * 2) + 2);
-@input-height-small:             (ceil(@font-size-small * @line-height-base) + (@padding-small-vertical * 2) + 2);
+@input-height-large:             (floor(@font-size-large * @line-height-large) + (@padding-large-vertical * 2) + 2);
+@input-height-small:             (floor(@font-size-small * @line-height-small) + (@padding-small-vertical * 2) + 2);
 
 @legend-border-color:            #e5e5e5;
 
 @input-group-addon-border-color: @input-border;
+
 
 // Dropdowns
 // -------------------------
@@ -499,6 +507,39 @@ function shoestrap_variables_less() {
 @zindex-modal-background:  1040;
 @zindex-modal:             1050;
 
+// Media queries breakpoints
+// --------------------------------------------------
+
+// Extra small screen / phone
+@screen-xsmall:              480px;
+@screen-phone:               @screen-xsmall;
+
+// Small screen / tablet
+@screen-small:               ' . $screen_small . 'px;
+@screen-tablet:              @screen-small;
+
+// Medium screen / desktop
+@screen-medium:              ' . $screen_medium . 'px;
+@screen-desktop:             @screen-medium;
+
+// So media queries dont overlap when required, provide a maximum
+@screen-small-max:           (@screen-medium - 1);
+@screen-tablet-max:          @screen-small-max;
+
+// Large screen / wide desktop
+@screen-large:               ' . $screen_large . 'px;
+@screen-large-desktop:       @screen-large;
+
+// Grid system
+// --------------------------------------------------
+
+// Number of columns in the grid system
+@grid-columns:              12;
+// Padding, to be divided by two and applied to the left and right of all columns
+@grid-gutter-width:         ' . $gutter . 'px;
+// Point at which the navbar stops collapsing
+@grid-float-breakpoint:     @screen-tablet;
+
 
 // Navbar
 // -------------------------
@@ -507,6 +548,7 @@ function shoestrap_variables_less() {
 @navbar-height:                    ' . $navbar_height . 'px;
 @navbar-color:                     ' . $navbar_color . ';
 @navbar-bg:                        ' . $navbar_bg . ';
+@navbar-border-radius:             @border-radius-base;
 @navbar-padding-horizontal:        floor(@grid-gutter-width / 2);  // ~15px
 @navbar-padding-vertical:          ((@navbar-height - @line-height-computed) / 2);
 
@@ -590,6 +632,7 @@ function shoestrap_variables_less() {
 @nav-pills-active-link-hover-bg:            @component-active-bg;
 @nav-pills-active-link-hover-color:         #fff;
 
+
 // Pagination
 // -------------------------
 
@@ -604,6 +647,7 @@ function shoestrap_variables_less() {
 
 @pager-border-radius:                  15px;
 @pager-disabled-color:                 @gray-light;
+
 
 // Jumbotron
 // -------------------------
@@ -638,6 +682,7 @@ function shoestrap_variables_less() {
 @tooltip-max-width:           200px;
 @tooltip-color:               ' . $body_bg . ';
 @tooltip-bg:                  rgba(0,0,0,.9);
+
 @tooltip-arrow-width:         5px;
 @tooltip-arrow-color:         @tooltip-bg;
 
@@ -658,8 +703,11 @@ function shoestrap_variables_less() {
 @popover-arrow-outer-color:           rgba(0,0,0,.25);
 @popover-arrow-outer-fallback-color:  #999;
 
+
 // Labels
 // -------------------------
+
+@label-default-bg:            @gray-light;
 @label-success-bg:            @brand-success;
 @label-info-bg:               @brand-info;
 @label-warning-bg:            @brand-warning;
@@ -667,6 +715,7 @@ function shoestrap_variables_less() {
 
 @label-color:                 #fff;
 @label-link-hover-color:      #fff;
+
 
 // Modals
 // -------------------------
@@ -686,10 +735,13 @@ function shoestrap_variables_less() {
 
 // Alerts
 // -------------------------
+@alert-padding:               15px;
+@alert-border-radius:         @border-radius-base;
+@alert-link-font-weight:      bold;
+
 @alert-bg:                    @state-warning-bg;
 @alert-text:                  @state-warning-text;
 @alert-border:                @state-warning-border;
-@alert-border-radius:         @border-radius-base;
 
 @alert-success-bg:            @state-success-bg;
 @alert-success-text:          @state-success-text;
@@ -707,7 +759,7 @@ function shoestrap_variables_less() {
 // Progress bars
 // -------------------------
 @progress-bg:                 ' . $table_bg_hover . ';
-@progress-bar-color:          #fff;
+@progress-bar-color:          ' . $body_bg . ';
 
 @progress-bar-bg:             @brand-primary;
 @progress-bar-success-bg:     @brand-success;
@@ -770,7 +822,7 @@ function shoestrap_variables_less() {
 
 // Wells
 // -------------------------
-@well-bg:                     @panel-heading-bg;
+@well-bg:                     #f5f5f5;
 
 
 // Accordion
@@ -782,10 +834,14 @@ function shoestrap_variables_less() {
 // -------------------------
 @badge-color:                 #fff;
 @badge-link-hover-color:      #fff;
-
 @badge-bg:                    @gray-light;
+
 @badge-active-color:          @link-color;
 @badge-active-bg:             #fff;
+
+@badge-font-weight:           bold;
+@badge-line-height:           1;
+@badge-border-radius:         10px;
 
 
 // Breadcrumbs
@@ -797,12 +853,16 @@ function shoestrap_variables_less() {
 
 // Carousel
 // ------------------------
+
 @carousel-text-shadow:                        0 1px 2px rgba(0,0,0,.6);
 
 @carousel-control-color:                      #fff;
+@carousel-control-width:                      15%;
+@carousel-control-opacity:                    .5;
+@carousel-control-font-size:                  20px;
 
-@carousel-indicator-border-color:             #fff;
 @carousel-indicator-active-bg:                #fff;
+@carousel-indicator-border-color:             #fff;
 
 @carousel-caption-color:                      #fff;
 
@@ -810,6 +870,7 @@ function shoestrap_variables_less() {
 // Close
 // ------------------------
 @close-color:                 #000;
+@close-font-weight:           bold;
 @close-text-shadow:           0 1px 0 #fff;
 
 
@@ -830,7 +891,6 @@ function shoestrap_variables_less() {
 @blockquote-border-color:     @gray-lighter;
 @page-header-border-color:    @gray-lighter;
 
-
 // Miscellaneous
 // -------------------------
 
@@ -839,30 +899,6 @@ function shoestrap_variables_less() {
 
 // Horizontal forms & lists
 @component-offset-horizontal: 180px;
-
-
-// Media queries breakpoints
-// --------------------------------------------------
-
-// Tiny screen / phone
-@screen-tiny:                480px;
-@screen-phone:               @screen-tiny;
-
-// Small screen / tablet
-@screen-small:               ' . $screen_small . 'px;
-@screen-tablet:              @screen-small;
-
-// Medium screen / desktop
-@screen-medium:              ' . $screen_medium . 'px;
-@screen-desktop:             @screen-medium;
-
-// So media queries dont overlap when required, provide a maximum
-@screen-small-max:           (@screen-medium - 1);
-@screen-tablet-max:          @screen-small-max;
-
-// Large screen / wide desktop
-@screen-large:               ' . $screen_large . 'px;
-@screen-large-desktop:       @screen-large;
 
 
 // Container sizes
@@ -878,15 +914,6 @@ function shoestrap_variables_less() {
 @container-large-desktop:   ' . $container_large_desktop . 'px;
 
 
-// Grid system
-// --------------------------------------------------
-
-// Number of columns in the grid system
-@grid-columns:              12;
-// Padding, to be divided by two and applied to the left and right of all columns
-@grid-gutter-width:         ' . $gutter . 'px;
-// Point at which the navbar stops collapsing
-@grid-float-breakpoint:     @screen-tablet;
 
 
 // Shoestrap-specific variables
