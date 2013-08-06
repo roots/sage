@@ -45,6 +45,7 @@ function shoestrap_header_css() {
   if ( shoestrap_getVariable( 'header_toggle' ) == 1 ) {
 
       $style = '.header-wrapper{';
+      $style .= 'color: '.$cl.';';
         if ($opacity != 1 && $opacity != "") {
           $style .= 'background: rgb('.$rgb.');';
           $style .= 'background: rgba('.$rgb.', '.$opacity.');';

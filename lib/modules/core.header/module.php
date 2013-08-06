@@ -46,6 +46,17 @@ if ( !function_exists( 'shoestrap_module_header_options' ) ) {
     );
 
     $of_options[] = array(
+      "name"      => "",
+      "desc"      => "",
+      "id"        => "helpnavbarbg",
+      "std"       => "<h3 style=\"margin: 0 0 10px;\">NavBar Styling Options</h3>
+                      <p>Customize the look and feel of your navbar below.</p>",
+      "icon"      => true,
+      "fold"      => "navbar_toggle",
+      "type"      => "info"
+    );    
+
+    $of_options[] = array(
       "name"      => __("NavBar Menu Style", "shoestrap"),
       "desc"      => __("You can use an alternative menu style for your NavBars.", "shoestrap"),
       "id"        => "navbar_style",
@@ -88,7 +99,7 @@ if ( !function_exists( 'shoestrap_module_header_options' ) ) {
       "name"      => __("Logo Margin from top", "shoestrap"),
       "desc"      => __("Tweak the margin from top of the logo in your NavBar. Minimum: -30px, Maximum: 30px. Default: 0", "shoestrap"),
       "id"        => "logo_top_margin",
-      "fold"      => "navbar_logo",
+      "fold"      => "navbar_toggle",
       "std"       => 0,
       "min"       => -30,
       "step"      => 1,
@@ -96,16 +107,6 @@ if ( !function_exists( 'shoestrap_module_header_options' ) ) {
       "less"      => true,
       "type"      => "sliderui"
     );
-
-    $of_options[] = array(
-      "name"      => "",
-      "desc"      => "",
-      "id"        => "helpnavbarbg",
-      "std"       => "<h3 style=\"margin: 0 0 10px;\">NavBar Styling Options</h3>
-                      <p>Customize the look and feel of your navbar below.</p>",
-      "icon"      => true,
-      "type"      => "info"
-    );    
 
     $of_options[] = array(
       "name"      => __("NavBar Background Color", "shoestrap"),
@@ -129,17 +130,6 @@ if ( !function_exists( 'shoestrap_module_header_options' ) ) {
       "max"       => 100,
       "less"      => true,
       "type"      => "sliderui"
-    );
-
-    $of_options[] = array(
-      "name"      => __("NavBar Text Color", "shoestrap"),
-      "desc"      => __("Pick a color for the NavBar text. This applies to menu items and the Sitename (if no logo is uploaded). Default: #777777.", "shoestrap"),
-      "id"        => "navbar_color",
-      "fold"      => "navbar_toggle",
-      "std"       => "#777777",
-      "less"      => true,
-      "customizer"=> array(),
-      "type"      => "color"
     );
 
     $of_options[] = array(
@@ -188,6 +178,7 @@ if ( !function_exists( 'shoestrap_module_header_options' ) ) {
       "desc"      => __("Using this option you can set the navbar to be fixed to top, fixed to bottom or normal. When you're using one of the \"fixed\" options, the navbar will stay fixed on the top or bottom of the page. Default: Normal", "shoestrap"),
       "id"        => "navbar_fixed_position",
       "fold"      => "navbar_toggle",
+      "fold"      => "navbar_fixed",
       "std"       => 0,
       "on"        => __("Bottom", "shoestrap"),
       "off"       => __("Top", "shoestrap"),
@@ -230,7 +221,7 @@ if ( !function_exists( 'shoestrap_module_header_options' ) ) {
       "name"      => __("Display social networks in the navbar", "shoestrap"),
       "desc"      => __("Enable this option to display your social networks as a dropdown menu on the seondary navbar.", "shoestrap"),
       "id"        => "navbar_secondary_social",
-      "fold"      => "navbar_toggle",
+      "fold"      => "secondary_navbar_toggle",
       "std"       => 0,
       "type"      => "switch",
     );
@@ -262,7 +253,8 @@ if ( !function_exists( 'shoestrap_module_header_options' ) ) {
       "id"        => "header_branding",
       "customizer"=> array(),
       "std"       => 1,
-      "type"      => "switch"
+      "type"      => "switch",
+      "fold"      => "header_toggle"
     );
 
     $of_options[] = array(
@@ -271,7 +263,8 @@ if ( !function_exists( 'shoestrap_module_header_options' ) ) {
       "id"        => "header_bg",
       "std"       => "#EEEEEE",
       "customizer"=> array(),
-      "type"      => "color"
+      "type"      => "color",
+      "fold"      => "header_toggle"
     );
 
     $of_options[] = array(
@@ -283,7 +276,8 @@ if ( !function_exists( 'shoestrap_module_header_options' ) ) {
       "step"      => 1,
       "max"       => 100,
       "less"      => true,
-      "type"      => "sliderui"
+      "type"      => "sliderui",
+      "fold"      => "header_toggle"
     );
 
     $of_options[] = array(
@@ -292,7 +286,8 @@ if ( !function_exists( 'shoestrap_module_header_options' ) ) {
       "id"        => "header_color",
       "std"       => "#333333",
       "customizer"=> array(),
-      "type"      => "color"
+      "type"      => "color",
+      "fold"      => "header_toggle"
     );
 
 
