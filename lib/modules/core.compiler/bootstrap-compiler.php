@@ -340,6 +340,8 @@ function shoestrap_variables_less() {
 @gray-light:             ' . $gray_light . ';
 @gray-lighter:           ' . $gray_lighter . ';
 
+@ccc: mix(@gray-light, @gray-lighter);
+
 // Brand colors
 // -------------------------
 
@@ -404,14 +406,14 @@ function shoestrap_variables_less() {
 
 @component-active-bg:            @brand-primary;
 
-@caret-width-base:               4px;
-@caret-width-large:              5px;
+@caret-width-base:               ceil(@font-size-small / 3 ); // ~4px
+@caret-width-large:              ceil(@caret-width-base * (5/4) ); // ~5px
 
 // Tables
 // -------------------------
 
-@table-cell-padding:                 8px;
-@table-condensed-cell-padding:       5px;
+@table-cell-padding:                 ceil((@font-size-small * 2) / 3 ); // ~8px;
+@table-condensed-cell-padding:       ceil(((@font-size-small / 3 ) * 5) / 4); // ~5px
 
 @table-bg:                           transparent; // overall background-color
 @table-bg-accent:                    ' . $table_bg_accent . '; // for striping
@@ -426,27 +428,27 @@ function shoestrap_variables_less() {
 
 @btn-font-weight:                bold;
 
-@btn-default-color:              #333;
-@btn-default-bg:                 #fff;
-@btn-default-border:             #ccc;
+@btn-default-color:              @gray-dark;
+@btn-default-bg:                 @body-bg;
+@btn-default-border:             @ccc;
 
-@btn-primary-color:              #fff;
+@btn-primary-color:              @body-bg;
 @btn-primary-bg:                 @brand-primary;
 @btn-primary-border:             darken(@btn-primary-bg, 5%);
 
-@btn-success-color:              #fff;
+@btn-success-color:              @body-bg;
 @btn-success-bg:                 @brand-success;
 @btn-success-border:             darken(@btn-success-bg, 5%);
 
-@btn-warning-color:              #fff;
+@btn-warning-color:              @body-bg;
 @btn-warning-bg:                 @brand-warning;
 @btn-warning-border:             darken(@btn-warning-bg, 5%);
 
-@btn-danger-color:               #fff;
+@btn-danger-color:               @body-bg;
 @btn-danger-bg:                  @brand-danger;
 @btn-danger-border:              darken(@btn-danger-bg, 5%);
 
-@btn-info-color:                 #fff;
+@btn-info-color:                 @body-bg;
 @btn-info-bg:                    @brand-info;
 @btn-info-border:                darken(@btn-info-bg, 5%);
 
@@ -456,12 +458,12 @@ function shoestrap_variables_less() {
 // Forms
 // -------------------------
 
-@input-bg:                       #fff;
+@input-bg:                       @body-bg;
 @input-bg-disabled:              @gray-lighter;
 
-@input-border:                   #ccc;
+@input-border:                   @ccc;
 @input-border-radius:            @border-radius-base;
-@input-border-focus:             #66afe9;
+@input-border-focus:             lighten(@brand-primary, 10%);
 
 @input-color-placeholder:        @gray-light;
 
@@ -469,7 +471,7 @@ function shoestrap_variables_less() {
 @input-height-large:             (floor(@font-size-large * @line-height-large) + (@padding-large-vertical * 2) + 2);
 @input-height-small:             (floor(@font-size-small * @line-height-small) + (@padding-small-vertical * 2) + 2);
 
-@legend-border-color:            #e5e5e5;
+@legend-border-color:            @gray-lighter;
 
 @input-group-addon-border-color: @input-border;
 
@@ -489,7 +491,7 @@ function shoestrap_variables_less() {
 @dropdown-link-hover-color:      ' . $body_bg . ';
 @dropdown-link-hover-bg:         @dropdown-link-active-bg;
 
-@dropdown-caret-color:           #000;
+@dropdown-caret-color:           @gray-darker;
 
 // COMPONENT VARIABLES
 // --------------------------------------------------
@@ -567,9 +569,9 @@ function shoestrap_variables_less() {
 @navbar-brand-hover-bg:            transparent;
 
 // Navbar toggle
-@navbar-toggle-hover-bg:           #ddd;
-@navbar-toggle-icon-bar-bg:        #ccc;
-@navbar-toggle-border-color:       #ddd;
+@navbar-toggle-hover-bg:           @table-border-color;
+@navbar-toggle-icon-bar-bg:        @ccc;
+@navbar-toggle-border-color:       @table-border-color;
 
 
 // Inverted navbar
@@ -580,7 +582,7 @@ function shoestrap_variables_less() {
 
 // Inverted navbar links
 @navbar-inverse-link-color:                 @gray-light;
-@navbar-inverse-link-hover-color:           #fff;
+@navbar-inverse-link-hover-color:           @body-bg;
 @navbar-inverse-link-hover-bg:              transparent;
 @navbar-inverse-link-active-color:          @navbar-inverse-link-hover-color;
 @navbar-inverse-link-active-bg:             darken(@navbar-inverse-bg, 10%);
@@ -589,19 +591,19 @@ function shoestrap_variables_less() {
 
 // Inverted navbar brand label
 @navbar-inverse-brand-color:                @navbar-inverse-link-color;
-@navbar-inverse-brand-hover-color:          #fff;
+@navbar-inverse-brand-hover-color:          @body-bg;
 @navbar-inverse-brand-hover-bg:             transparent;
 
 // Inverted navbar search
 // Normal navbar needs no special styles or vars
 @navbar-inverse-search-bg:                  lighten(@navbar-inverse-bg, 25%);
-@navbar-inverse-search-bg-focus:            #fff;
+@navbar-inverse-search-bg-focus:            @body-bg;
 @navbar-inverse-search-border:              @navbar-inverse-bg;
-@navbar-inverse-search-placeholder-color:   #ccc;
+@navbar-inverse-search-placeholder-color:   @ccc;
 
 // Inverted navbar toggle
 @navbar-inverse-toggle-hover-bg:            #333;
-@navbar-inverse-toggle-icon-bar-bg:         #fff;
+@navbar-inverse-toggle-icon-bar-bg:         @body-bg;
 @navbar-inverse-toggle-border-color:        #333;
 
 
@@ -613,24 +615,24 @@ function shoestrap_variables_less() {
 @nav-disabled-link-color:                   @gray-light;
 @nav-disabled-link-hover-color:             @gray-light;
 
-@nav-open-link-hover-color:                 #fff;
-@nav-open-caret-border-color:               #fff;
+@nav-open-link-hover-color:                 @body-bg;
+@nav-open-caret-border-color:               @body-bg;
 
 // Tabs
-@nav-tabs-border-color:                     #ddd;
+@nav-tabs-border-color:                     @table-border-color;
 
 @nav-tabs-link-hover-border-color:          @gray-lighter;
 
 @nav-tabs-active-link-hover-bg:             @body-bg;
 @nav-tabs-active-link-hover-color:          @gray;
-@nav-tabs-active-link-hover-border-color:   #ddd;
+@nav-tabs-active-link-hover-border-color:   @table-border-color;
 
-@nav-tabs-justified-link-border-color:            #ddd;
+@nav-tabs-justified-link-border-color:            @table-border-color;
 @nav-tabs-justified-active-link-border-color:     @body-bg;
 
 // Pills
 @nav-pills-active-link-hover-bg:            @component-active-bg;
-@nav-pills-active-link-hover-color:         #fff;
+@nav-pills-active-link-hover-color:         @body-bg;
 
 
 // Pagination
@@ -645,7 +647,7 @@ function shoestrap_variables_less() {
 // Pager
 // -------------------------
 
-@pager-border-radius:                  15px;
+@pager-border-radius:                  @navbar-padding-horizontal;
 @pager-disabled-color:                 @gray-light;
 
 
@@ -683,25 +685,25 @@ function shoestrap_variables_less() {
 @tooltip-color:               ' . $body_bg . ';
 @tooltip-bg:                  rgba(0,0,0,.9);
 
-@tooltip-arrow-width:         5px;
+@tooltip-arrow-width:         @padding-small-vertical;
 @tooltip-arrow-color:         @tooltip-bg;
 
 
 // Popovers
 // -------------------------
-@popover-bg:                          #fff;
+@popover-bg:                          @body-bg;
 @popover-max-width:                   276px;
 @popover-border-color:                rgba(0,0,0,.2);
-@popover-fallback-border-color:       #ccc;
+@popover-fallback-border-color:       @ccc;
 
 @popover-title-bg:                    darken(@popover-bg, 3%);
 
-@popover-arrow-width:                 10px;
-@popover-arrow-color:                 #fff;
+@popover-arrow-width:                 (@tooltip-arrow-width * 2);
+@popover-arrow-color:                 @body-bg;
 
 @popover-arrow-outer-width:           (@popover-arrow-width + 1);
 @popover-arrow-outer-color:           rgba(0,0,0,.25);
-@popover-arrow-outer-fallback-color:  #999;
+@popover-arrow-outer-fallback-color:  @gray-light;
 
 
 // Labels
@@ -713,29 +715,29 @@ function shoestrap_variables_less() {
 @label-warning-bg:            @brand-warning;
 @label-danger-bg:             @brand-danger;
 
-@label-color:                 #fff;
-@label-link-hover-color:      #fff;
+@label-color:                 @body-bg;
+@label-link-hover-color:      @body-bg;
 
 
 // Modals
 // -------------------------
-@modal-inner-padding:         20px;
+@modal-inner-padding:         @line-height-computed;
 
-@modal-title-padding:         15px;
+@modal-title-padding:         ceil(@modal-inner-padding * (4/3)); // ~15px
 @modal-title-line-height:     @line-height-base;
 
-@modal-content-bg:                             #fff;
+@modal-content-bg:                             @body-bg;
 @modal-content-border-color:                   rgba(0,0,0,.2);
-@modal-content-fallback-border-color:          #999;
+@modal-content-fallback-border-color:          @gray-light;
 
-@modal-backdrop-bg:           #000;
-@modal-header-border-color:   #e5e5e5;
+@modal-backdrop-bg:           darken(@gray-darker, 15%);
+@modal-header-border-color:   lighten(@gray-lighter, 12%);
 @modal-footer-border-color:   @modal-header-border-color;
 
 
 // Alerts
 // -------------------------
-@alert-padding:               15px;
+@alert-padding:               @modal-title-padding;
 @alert-border-radius:         @border-radius-base;
 @alert-link-font-weight:      bold;
 
@@ -779,8 +781,8 @@ function shoestrap_variables_less() {
 @list-group-active-bg:        @component-active-bg;
 @list-group-active-border:    @list-group-active-bg;
 
-@list-group-link-color:          #555;
-@list-group-link-heading-color:  #333;
+@list-group-link-color:          @gray;
+@list-group-link-heading-color:  @gray-dark;
 
 
 // Panels
@@ -822,22 +824,22 @@ function shoestrap_variables_less() {
 
 // Wells
 // -------------------------
-@well-bg:                     #f5f5f5;
+@well-bg:                     @table-bg-hover;
 
 
 // Accordion
 // -------------------------
-@accordion-border-color:      #e5e5e5;
+@accordion-border-color:      @legend-border-color;
 
 
 // Badges
 // -------------------------
-@badge-color:                 #fff;
-@badge-link-hover-color:      #fff;
+@badge-color:                 @body-bg;
+@badge-link-hover-color:      @body-bg;
 @badge-bg:                    @gray-light;
 
 @badge-active-color:          @link-color;
-@badge-active-bg:             #fff;
+@badge-active-bg:             @body-bg;
 
 @badge-font-weight:           bold;
 @badge-line-height:           1;
@@ -846,8 +848,8 @@ function shoestrap_variables_less() {
 
 // Breadcrumbs
 // -------------------------
-@breadcrumb-bg:               #f5f5f5;
-@breadcrumb-color:            #ccc;
+@breadcrumb-bg:               @table-bg-hover;
+@breadcrumb-color:            @ccc;
 @breadcrumb-active-color:     @gray-light;
 
 
@@ -856,22 +858,22 @@ function shoestrap_variables_less() {
 
 @carousel-text-shadow:                        0 1px 2px rgba(0,0,0,.6);
 
-@carousel-control-color:                      #fff;
+@carousel-control-color:                      @body-bg;
 @carousel-control-width:                      15%;
 @carousel-control-opacity:                    .5;
-@carousel-control-font-size:                  20px;
+@carousel-control-font-size:                  @line-height-computed;
 
-@carousel-indicator-active-bg:                #fff;
-@carousel-indicator-border-color:             #fff;
+@carousel-indicator-active-bg:                @body-bg;
+@carousel-indicator-border-color:             @body-bg;
 
-@carousel-caption-color:                      #fff;
+@carousel-caption-color:                      @body-bg;
 
 
 // Close
 // ------------------------
-@close-color:                 #000;
+@close-color:                 darken(@gray-darker, 15%);
 @close-font-weight:           bold;
-@close-text-shadow:           0 1px 0 #fff;
+@close-text-shadow:           0 1px 0 @body-bg;
 
 
 // Code
@@ -880,7 +882,7 @@ function shoestrap_variables_less() {
 @code-bg:                     #f9f2f4;
 
 @pre-bg:                      #f5f5f5;
-@pre-border-color:            #ccc;
+@pre-border-color:            @ccc;
 
 // Type
 // ------------------------
