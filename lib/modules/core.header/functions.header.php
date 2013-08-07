@@ -38,9 +38,12 @@ add_action( 'shoestrap_below_top_navbar', 'shoestrap_branding', 5 );
 function shoestrap_header_css() {
   $bg = shoestrap_getVariable( 'header_bg');
   $cl = shoestrap_getVariable( 'header_color' );
-  $opacity = (intval(shoestrap_getVariable( 'header_bg_opacity' )))/100;
-
-  $rgb = shoestrap_get_rgb($bg, true);
+  
+  $header_margin_top    = shoestrap_getVariable( 'header_margin_top' );
+  $header_margin_bottom = shoestrap_getVariable( 'header_margin_bottom' );
+  
+  $opacity  = (intval(shoestrap_getVariable( 'header_bg_opacity' )))/100;
+  $rgb      = shoestrap_get_rgb($bg, true);
 
   if ( shoestrap_getVariable( 'header_toggle' ) == 1 ) {
 
@@ -52,6 +55,8 @@ function shoestrap_header_css() {
         } else {
           $style .= 'background: '.$bg.';';
         }
+      $style .= 'margin-top:'.$header_margin_top.'px;';
+      $style .= 'margin-bottom:'.$header_margin_bottom.'px;';
       $style .= '}';
 
   	wp_add_inline_style( 'shoestrap_css', $style );

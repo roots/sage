@@ -290,6 +290,28 @@ if ( !function_exists( 'shoestrap_module_header_options' ) ) {
       "fold"      => "header_toggle"
     );
 
+    $of_options[] = array(
+      "name"      => __("Header Top Margin", "shoestrap"),
+      "desc"      => __("Select the top margin of header in pixels. Default: 0px.", "shoestrap"),
+      "id"        => "header_margin_top",
+      "std"       => 0,
+      "min"       => 0,
+      "max"       => 200,
+      "type"      => "sliderui",
+      "fold"      => "header_toggle"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Header Bottom Margin", "shoestrap"),
+      "desc"      => __("Select the bottom margin of header in pixels. Default: 0px.", "shoestrap"),
+      "id"        => "header_margin_bottom",
+      "std"       => 0,
+      "min"       => 0,
+      "max"       => 200,
+      "type"      => "sliderui",
+      "fold"      => "header_toggle"
+    );
+
 
 
     do_action( 'shoestrap_module_header_options_modifier' );
