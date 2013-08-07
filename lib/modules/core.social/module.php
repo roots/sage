@@ -38,7 +38,7 @@ if ( !function_exists( 'shoestrap_module_social_options' ) ) {
 
     $of_options[] = array(
       "name"      => __("Button Location", "shoestrap"),
-      "desc"      => __("Select between NONE, TOP, BOTTOM & BOTH", "shoestrap"),
+      "desc"      => __("Select between NONE, TOP, BOTTOM & BOTH. For archives, 'BOTH' fallbacks in 'BOTTOM' only.", "shoestrap"),
       "id"        => "social_sharing_location",
       "std"       => "top",
       "type"      => "select",
@@ -48,6 +48,22 @@ if ( !function_exists( 'shoestrap_module_social_options' ) ) {
         'top'     =>"Top",
         'bottom'  =>"Bottom",
         'both'    =>"Both",
+      )
+    );
+
+    $of_options[] = array(
+      "name"      => __("Button Styling", "shoestrap"),
+      "desc"      => __("Select between standard Bootstrap's v.3 button classes", "shoestrap"),
+      "id"        => "social_sharing_button_class",
+      "std"       => "btn-default",
+      "type"      => "select",
+      "customizer"=> array(),
+      "options"   => array(
+        'btn-default'    => "Default",
+        'btn-primary'    => "Primary",
+        'btn-success'    => "Success",
+        'btn-warning'    => "Warning",
+        'btn-danger'     => "Danger",
       )
     );
 

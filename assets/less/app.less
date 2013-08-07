@@ -455,24 +455,21 @@ a.toggle-nav {
 }
 
 .btn-group.social-share {
-  .btn-default {
+  .social-link {
     display: none;
   } 
   &:hover {
-    .btn-primary {
+    .social-share-main {
       border-bottom-right-radius: 0px !important;
       border-top-right-radius: 0px !important;
     } 
     a {
       display: block;
       width: auto;
-      background-color: @body-bg;
-      color: @link-color;
       padding: @padding-base-vertical @padding-base-horizontal;
     }
     a:hover {
-      background-color: saturate( lighten(@body-bg, 10%), 10% );
-      color: saturate( lighten(@link-color, 10%), 10% ); 
+      // ??
     }
   }
 }

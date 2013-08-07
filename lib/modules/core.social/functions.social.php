@@ -166,13 +166,16 @@ function shoestrap_social_sharing() {
   // Don't show by default
   $show = false;
 
+  // Button class
+  $button_class = shoestrap_getVariable( 'social_sharing_button_class' );
+
   // Button Text
   $text = shoestrap_getVariable( 'social_sharing_text' );
 
   // Build the content
   $content = '';
   $content .= '<div class="btn-group social-share">';
-  $content .= '<button class="btn btn-primary btn-small">' . $text . '</button>';
+  $content .= '<button class="social-share-main btn '.$button_class.' btn-small">' . $text . '</button>';
 
   foreach ( $networks as $network ) {
     if ( $network['on'] == 1 ) :
@@ -198,7 +201,7 @@ function shoestrap_social_sharing() {
       elseif ( $network['icon'] == 'pinterest' )
         $url    = 'http://pinterest.com/pin/create/button/?url=' . get_permalink();
 
-      $content .= '<a class="btn btn-default btn-small socialLink" href="' . $url . '" target="_blank">';
+      $content .= '<a class="social-link btn '.$button_class.' btn-small" href="' . $url . '" target="_blank">';
       $content .= '<i class="' . $baseclass . $network['icon'] . '"></i>';
       $content .= '</a>';
     endif;
