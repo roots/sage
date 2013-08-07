@@ -620,7 +620,8 @@ class lessc {
 			$this->set($last[1], $this->reduce(array("list", " ", $rest)));
 		}
 
-		$this->env->arguments = $assignedValues;
+		// wow is this the only true use of PHP's + operator for arrays?
+		$this->env->arguments = $assignedValues + $orderedValues;
 	}
 
 	// compile a prop and update $lines or $blocks appropriately
@@ -1269,6 +1270,10 @@ class lessc {
 			$reduced = $this->reduce($value[1]);
 			$var = $this->compileValue($reduced);
 			$res = $this->reduce(array("variable", $this->vPrefix . $var));
+
+			if ($res[0] == "raw_color") {
+				$res = $this->coerceColor($res);
+			}
 
 			if (empty($value[2])) $res = $this->lib_e($res);
 
@@ -2954,32 +2959,69 @@ class lessc_parser {
 	}
 
 	// a bracketed value (contained within in a tag definition)
-	protected function tagBracket(&$value) {
+	protected function tagBracket(&$parts, &$hasExpression) {
 		// speed shortcut
 		if (isset($this->buffer[$this->count]) && $this->buffer[$this->count] != "[") {
 			return false;
 		}
 
 		$s = $this->seek();
-		if ($this->literal('[') && $this->to(']', $c, true) && $this->literal(']', false)) {
-			$value = '['.$c.']';
-			// whitespace?
-			if ($this->whitespace()) $value .= " ";
 
-			// escape parent selector, (yuck)
-			$value = str_replace($this->lessc->parentSelector, "$&$", $value);
-			return true;
-		}
+		$hasInterpolation = false;
 
-		$this->seek($s);
-		return false;
-	}
+		if ($this->literal("[", false)) {
+			$attrParts = array("[");
+			// keyword, string, operator
+			while (true) {
+				if ($this->literal("]", false)) {
+					$this->count--;
+					break; // get out early
+				}
 
-	protected function tagExpression(&$value) {
-		$s = $this->seek();
-		if ($this->literal("(") && $this->expression($exp) && $this->literal(")")) {
-			$value = array('exp', $exp);
-			return true;
+				if ($this->match('\s+', $m)) {
+					$attrParts[] = " ";
+					continue;
+				}
+				if ($this->string($str)) {
+					// escape parent selector, (yuck)
+					foreach ($str[2] as &$chunk) {
+						$chunk = str_replace($this->lessc->parentSelector, "$&$", $chunk);
+					}
+
+					$attrParts[] = $str;
+					$hasInterpolation = true;
+					continue;
+				}
+
+				if ($this->keyword($word)) {
+					$attrParts[] = $word;
+					continue;
+				}
+
+				if ($this->interpolation($inter, false)) {
+					$attrParts[] = $inter;
+					$hasInterpolation = true;
+					continue;
+				}
+
+				// operator, handles attr namespace too
+				if ($this->match('[|-~\$\*\^=]+', $m)) {
+					$attrParts[] = $m[0];
+					continue;
+				}
+
+				break;
+			}
+
+			if ($this->literal("]", false)) {
+				$attrParts[] = "]";
+				foreach ($attrParts as $part) {
+					$parts[] = $part;
+				}
+				$hasExpression = $hasExpression || $hasInterpolation;
+				return true;
+			}
+			$this->seek($s);
 		}
 
 		$this->seek($s);
@@ -2995,13 +3037,9 @@ class lessc_parser {
 
 		$s = $this->seek();
 
-		if (!$simple && $this->tagExpression($tag)) {
-			return true;
-		}
-
 		$hasExpression = false;
 		$parts = array();
-		while ($this->tagBracket($first)) $parts[] = $first;
+		while ($this->tagBracket($parts, $hasExpression));
 
 		$oldWhite = $this->eatWhiteDefault;
 		$this->eatWhiteDefault = false;
@@ -3011,9 +3049,7 @@ class lessc_parser {
 				$parts[] = $m[1];
 				if ($simple) break;
 
-				while ($this->tagBracket($brack)) {
-					$parts[] = $brack;
-				}
+				while ($this->tagBracket($parts, $hasExpression));
 				continue;
 			}
 
@@ -3404,7 +3440,7 @@ class lessc_parser {
 				break;
 			case '"':
 			case "'":
-				if (preg_match('/'.$min[0].'.*?'.$min[0].'/', $text, $m, 0, $count))
+				if (preg_match('/'.$min[0].'.*?(?<!\\\\)'.$min[0].'/', $text, $m, 0, $count))
 					$count += strlen($m[0]) - 1;
 				break;
 			case '//':
