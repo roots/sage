@@ -61,6 +61,30 @@ if ( !function_exists( 'shoestrap_module_layout_options' ) ) {
       )
     );
 
+        $of_options[] = array(
+      "name"      => __("Primary Sidebar Width", "shoestrap"),
+      "desc"      => __("Select the width of the Primary Sidebar. Please note that the values represent grid columns. The total width of the page is 12 columns, so selecting 4 here will make the primary sidebar to have a width of 1/3 (4/12) of the total page width.", "shoestrap"),
+      "id"        => "layout_primary_width",
+      "std"       => 4,
+      "min"       => 1,
+      "step"      => 1,
+      "max"       => 11,
+      "advanced"  => true,
+      "type"      => "sliderui"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Secondary Sidebar Width", "shoestrap"),
+      "desc"      => __("Select the width of the Secondary Sidebar. Please note that the values represent grid columns. The total width of the page is 12 columns, so selecting 4 here will make the secondary sidebar to have a width of 1/3 (4/12) of the total page width.", "shoestrap"),
+      "id"        => "layout_secondary_width",
+      "std"       => 3,
+      "min"       => 1,
+      "step"      => 1,
+      "max"       => 11,
+      "advanced"  => true,
+      "type"      => "sliderui"
+    );
+
     $of_options[] = array(
       "name"      => __("Show sidebars on the frontpage", "shoestrap"),
       "desc"      => __("OFF by default. If you want to display the sidebars in your frontpage, turn this ON.", "shoestrap"),
@@ -88,7 +112,7 @@ if ( !function_exists( 'shoestrap_module_layout_options' ) ) {
       "name"      => __("Show Breadcrumbs", "shoestrap"),
       "desc"      => __("Display Breadcrumbs. Default: OFF.", "shoestrap"),
       "id"        => "breadcrumbs",
-      "std"       => 1,
+      "std"       => 0,
       "type"      => "switch",
       "customizer"=> array(),
     );
@@ -99,32 +123,29 @@ if ( !function_exists( 'shoestrap_module_layout_options' ) ) {
       "id"        => "breadcrumbs_location",
       "std"       => 0,
       "on"        => "In Header",
-      "off"        => "Below Header",
+      "off"       => "Below Header",
       "type"      => "switch",
+      "fold"      => "breadcrumbs",
       "customizer"=> array(),
     );
 
     $of_options[] = array(
-      "name"      => __("Primary Sidebar Width", "shoestrap"),
-      "desc"      => __("Select the width of the Primary Sidebar. Please note that the values represent grid columns. The total width of the page is 12 columns, so selecting 4 here will make the primary sidebar to have a width of 1/3 (4/12) of the total page width.", "shoestrap"),
-      "id"        => "layout_primary_width",
-      "std"       => 4,
-      "min"       => 1,
-      "step"      => 1,
-      "max"       => 11,
-      "advanced"  => true,
+      "name"      => __("Body Top Margin", "shoestrap"),
+      "desc"      => __("Select the top margin of body element in pixels. Default: 0px.", "shoestrap"),
+      "id"        => "body_margin_top",
+      "std"       => 0,
+      "min"       => 0,
+      "max"       => 200,
       "type"      => "sliderui"
     );
 
     $of_options[] = array(
-      "name"      => __("Secondary Sidebar Width", "shoestrap"),
-      "desc"      => __("Select the width of the Secondary Sidebar. Please note that the values represent grid columns. The total width of the page is 12 columns, so selecting 4 here will make the secondary sidebar to have a width of 1/3 (4/12) of the total page width.", "shoestrap"),
-      "id"        => "layout_secondary_width",
-      "std"       => 3,
-      "min"       => 1,
-      "step"      => 1,
-      "max"       => 11,
-      "advanced"  => true,
+      "name"      => __("Body Bottom Margin", "shoestrap"),
+      "desc"      => __("Select the bottom margin of body element in pixels. Default: 0px.", "shoestrap"),
+      "id"        => "body_margin_bottom",
+      "std"       => 0,
+      "min"       => 0,
+      "max"       => 200,
       "type"      => "sliderui"
     );
 

@@ -179,3 +179,21 @@ function shoestrap_content_width() {
   $content_width = shoestrap_content_width_px();
 }
 add_action( 'template_redirect', 'shoestrap_content_width' );
+
+// top & bottom margins controls for body element
+if (( shoestrap_getVariable( 'body_margin_top' ) != 0 ) 
+  ||  ( shoestrap_getVariable( 'body_margin_bottom' ) != 0 )){
+  function shoestrap_body_margin() {
+    $body_margin_top = shoestrap_getVariable( 'body_margin_top' );
+    $body_margin_bottom = shoestrap_getVariable( 'body_margin_bottom' );
+
+    $style = 'body {';
+      $style .= 'margin-top:'. $body_margin_top .'px;';
+      $style .= 'margin-bottom:'. $body_margin_bottom .'px;';
+    $style .= '}';
+
+    wp_add_inline_style( 'shoestrap_css', $style );
+  }
+  add_action( 'wp_enqueue_scripts', 'shoestrap_body_margin', 101 );
+}
+
