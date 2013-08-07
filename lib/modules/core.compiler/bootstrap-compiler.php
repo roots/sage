@@ -174,7 +174,7 @@ function shoestrap_variables_less() {
   $font_navbar            = shoestrap_process_font( shoestrap_getVariable( 'font_navbar', true ) );
   $font_brand             = shoestrap_process_font( shoestrap_getVariable( 'font_brand', true ) );
   $font_jumbotron         = shoestrap_process_font( shoestrap_getVariable( 'font_jumbotron', true ) );
-  $font_heading           = shoestrap_process_font( shoestrap_getVariable( 'font_heading', true ) );
+  $font_heading           = shoestrap_process_font( shoestrap_getVariable( 'font_heading', true ) );  
 
   if ( shoestrap_getVariable( 'font_heading_custom', true ) == 1 ) {
 
@@ -275,6 +275,23 @@ function shoestrap_variables_less() {
 
   $brand_text_color       = '#' . str_replace( '#', '', $font_brand['color'] );
   $jumbotron_text_color   = '#' . str_replace( '#', '', $font_jumbotron['color'] );
+
+  if ( shoestrap_getVariable( 'font_jumbotron_heading_custom', true ) == 1 ) {
+
+    $font_jumbotron_headers = shoestrap_process_font( shoestrap_getVariable( 'font_jumbotron_headers', true ) );
+
+    $font_jumbotron_headers_face   = $font_jumbotron_headers['face'];
+    $font_jumbotron_headers_weight = $font_jumbotron_headers['weight'];
+    $font_jumbotron_headers_style  = $font_jumbotron_headers['style'];
+    $jumbotron_headers_text_color   = '#' . str_replace( '#', '', $font_jumbotron_headers['color'] );
+
+  } else {
+
+    $font_jumbotron_headers_face   = $font_jumbotron['face'];
+    $font_jumbotron_headers_weight = $font_jumbotron['weight'];
+    $font_jumbotron_headers_style  = $font_jumbotron['style'];
+    $jumbotron_headers_text_color  = $jumbotron_text_color;
+  }
 
   // Calculate the gray shadows based on the body background.
   // We basically create 2 "presets": light and dark.
@@ -938,6 +955,11 @@ function shoestrap_variables_less() {
 @jumbotron-font-style:        ' . $font_jumbotron['style'] . ';
 @jumbotron-font-family:       ' . $font_jumbotron['face'] . ';
 @jumbotron-font-color:        ' . $jumbotron_text_color . ';
+
+@jumbotron-headers-font-weight:       ' . $font_jumbotron_headers_weight . ';
+@jumbotron-headers-font-style:        ' . $font_jumbotron_headers_style . ';
+@jumbotron-headers-font-family:       ' . $font_jumbotron_headers_face . ';
+@jumbotron-headers-font-color:        ' . $jumbotron_headers_text_color . ';
 
 // H1
 @heading-h1-face:         ' . $font_h1_face . ';

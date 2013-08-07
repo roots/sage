@@ -216,6 +216,9 @@ function shoestrap_module_typography_googlefont_links() {
     $font_h5 = shoestrap_getVariable( 'font_h5' );
     $font_h6 = shoestrap_getVariable( 'font_h6' );
   }
+  if (shoestrap_getVariable( 'font_jumbotron_heading_custom' ) == 1) {
+    $font_jumbotron_headers = shoestrap_getVariable( 'font_jumbotron_headers' );
+  }
   if ($font_base['google'] === 'true' ) {
     echo getGoogleScript($font_base);
   }
@@ -249,6 +252,11 @@ function shoestrap_module_typography_googlefont_links() {
     }
   } else if ($font_heading['google'] === 'true' ) {
     echo getGoogleScript($font_heading);
+  }
+  if (shoestrap_getVariable( 'font_jumbotron_heading_custom' ) == 1) {
+    if ($font_jumbotron_headers['google'] === 'true' ) {
+      echo getGoogleScript($font_jumbotron_headers);
+    }
   }
 }
 add_action( 'wp_head', 'shoestrap_module_typography_googlefont_links' );

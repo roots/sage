@@ -287,6 +287,34 @@ if ( !function_exists( 'shoestrap_module_typography_options' ) ) {
       "type"      => "select_google_font_hybrid",
     );
 
+    $of_options[] = array(
+      "name"      => __("Jumbotron Header Overrides", "shoestrap"),
+      "desc"      => __("By enabling this you can specify custom values for each <h*> tag. Default: Off", "shoestrap"),
+      "id"        => "font_jumbotron_heading_custom",
+      "std"       => 0,
+      "less"      => true,
+      "type"      => "switch",
+      "customizer"=> array(),
+    );
+
+    $of_options[] = array(
+      "name"      => __("Jumbotron Headers Font", "shoestrap"),
+      "desc"      => __("The main font for your site.", "shoestrap"),
+      "id"        => "font_jumbotron_headers",
+      'less'      => true,
+      "std"       => array(
+        'face'    => 'Arial, Helvetica, sans-serif',
+        'color'   => '#333333',
+        'google'  => 'false'
+      ),
+      "preview"   => array(
+        "text"    => __( "This is my preview text!", "shoestrap" ), //this is the text from preview box
+        "size"    => "30px" //this is the text size from preview box
+      ),
+      "type"      => "select_google_font_hybrid",
+      "fold"      => "font_jumbotron_heading_custom",
+    );
+
     // $of_options[] = array(
     //   "name"      => __("Heading Fonts", "shoestrap"),
     //   "desc"      => __("The main font for your site.", "shoestrap"),
