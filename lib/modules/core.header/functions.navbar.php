@@ -74,7 +74,7 @@ function shoestrap_navbar_css() {
   $opacity = (intval(shoestrap_getVariable( 'navbar_bg_opacity' )))/100;
   $style = "";
 
-  if ( $opacity != 1 && $opacity != "" ) {
+  if ( ($opacity != 1 && $opacity != "") || (shoestrap_getVariable( 'navbar_margin_bottom' ) != 0) ) {
     $bg = shoestrap_getVariable( 'navbar_bg');
     $rgb = shoestrap_get_rgb($bg, true);
       $style .= '.navbar{';
@@ -84,9 +84,11 @@ function shoestrap_navbar_css() {
         } else {
           $style .= 'background: '.$bg.';';
         }
+        if ( shoestrap_getVariable( 'navbar_margin_bottom' ) != 0 ) {
+          $style .= 'margin-bottom:'. shoestrap_getVariable( 'navbar_margin_bottom' ) .'px !important;';
+        }
       $style .= '}';
   }
-
 
   if ( shoestrap_getVariable( 'logo_top_margin' ) != 1 ) {
   	$style .= '.navbar a.navbar-brand.logo {margin-top:' . shoestrap_getVariable( 'logo_top_margin' ) . 'px; }';

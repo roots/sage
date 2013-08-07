@@ -133,6 +133,53 @@ if ( !function_exists( 'shoestrap_module_header_options' ) ) {
     );
 
     $of_options[] = array(
+      "name"      => __("NavBar Positioning", "shoestrap"),
+      "desc"      => __("Using this option you can set the navbar to be fixed to top, fixed to bottom or normal. When you're using one of the \"fixed\" options, the navbar will stay fixed on the top or bottom of the page. Default: Normal", "shoestrap"),
+      "id"        => "navbar_fixed",
+      "fold"      => "navbar_toggle",
+      "std"       => 0,
+      "on"        => __("Fixed", "shoestrap"),
+      "off"       => __("Scroll", "shoestrap"),
+      "type"      => "switch"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Fixed NavBar Position", "shoestrap"),
+      "desc"      => __("Using this option you can set the navbar to be fixed to top, fixed to bottom or normal. When you're using one of the \"fixed\" options, the navbar will stay fixed on the top or bottom of the page. Default: Normal", "shoestrap"),
+      "id"        => "navbar_fixed_position",
+      "fold"      => "navbar_toggle",
+      "fold"      => "navbar_fixed",
+      "std"       => 0,
+      "on"        => __("Bottom", "shoestrap"),
+      "off"       => __("Top", "shoestrap"),
+      "type"      => "switch"
+    );
+
+    $of_options[] = array(
+      "name"      => __("NavBar Height", "shoestrap"),
+      "desc"      => __("Select the height of the NavBar in pixels. Should be equal or greater than the height of your logo if you've added one.", "shoestrap"),
+      "id"        => "navbar_height",
+      "fold"      => "navbar_toggle",
+      "std"       => 50,
+      "min"       => 10,
+      "step"      => 1,
+      "max"       => 120,
+      "less"      => true,
+      "type"      => "sliderui"
+    );
+
+    $of_options[] = array(
+      "name"      => __("NavBar Bottom Margin", "shoestrap"),
+      "desc"      => __("Select the bottom margin of the NavBar in pixels. Default: 0px.", "shoestrap"),
+      "id"        => "navbar_margin_bottom",
+      "fold"      => "navbar_toggle",
+      "std"       => 0,
+      "min"       => 0,
+      "max"       => 200,
+      "type"      => "sliderui"
+    );
+
+    $of_options[] = array(
       "name"      => __("Display social links in the NavBar.", "shoestrap"),
       "desc"      => __("Display social links in the NavBar. These can be setup in the \"Social\" section on the left. Default: OFF", "shoestrap"),
       "id"        => "navbar_social",
@@ -160,42 +207,6 @@ if ( !function_exists( 'shoestrap_module_header_options' ) ) {
       "std"       => 1,
       "customizer"=> array(),
       "type"      => "switch"
-    );
-
-    $of_options[] = array(
-      "name"      => __("NavBar Positioning", "shoestrap"),
-      "desc"      => __("Using this option you can set the navbar to be fixed to top, fixed to bottom or normal. When you're using one of the \"fixed\" options, the navbar will stay fixed on the top or bottom of the page. Default: Normal", "shoestrap"),
-      "id"        => "navbar_fixed",
-      "fold"      => "navbar_toggle",
-      "std"       => 0,
-      "on"        => __("Fixed", "shoestrap"),
-      "off"       => __("Scroll", "shoestrap"),
-      "type"      => "switch"
-    );
-
-    $of_options[] = array(
-      "name"      => __("Fixed NavBar Position", "shoestrap"),
-      "desc"      => __("Using this option you can set the navbar to be fixed to top, fixed to bottom or normal. When you're using one of the \"fixed\" options, the navbar will stay fixed on the top or bottom of the page. Default: Normal", "shoestrap"),
-      "id"        => "navbar_fixed_position",
-      "fold"      => "navbar_toggle",
-      "fold"      => "navbar_fixed",
-      "std"       => 0,
-      "on"        => __("Bottom", "shoestrap"),
-      "off"       => __("Top", "shoestrap"),
-      "type"      => "switch"
-    );
-
-    $of_options[] = array(
-      "name"      => __("NavBar Height", "shoestrap"),
-      "desc"      => __("Select the height of the NavBar. Should be equal or greater than the height of your logo if you've added one.", "shoestrap"),
-      "id"        => "navbar_height",
-      "fold"      => "navbar_toggle",
-      "std"       => 50,
-      "min"       => 10,
-      "step"      => 1,
-      "max"       => 120,
-      "less"      => true,
-      "type"      => "sliderui"
     );
 
     $of_options[] = array(
