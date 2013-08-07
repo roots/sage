@@ -5487,20 +5487,22 @@ fieldset[disabled] #social-sharing .shareme .box {
   margin-top: 2em;
   padding: 15px;
 }
-.btn-group.social-share a {
-  padding: 5px 1px;
-  -webkit-transition-duration: 0.3s;
-  transition-duration: 0.3s;
-  width: 0;
-  color: none;
-  color: transparent;
-  color: rgba(255,255,255,0);
+.btn-group > .btn:first-child:not(:last-child):not(.dropdown-toggle) {
+  border-radius: 4px;
+}
+.btn-group.social-share .btn-default {
+  display: none;
 }
 .btn-group.social-share:hover a {
-  padding: 5px 10px;
-  color: #fff;
-  color: rgba(255,255,255,0.9);
+  display: block;
   width: auto;
+  background-color: #ffffff;
+  color: #428bca;
+  padding: 8px 12px;
+}
+.btn-group.social-share:hover a:hover {
+  background-color: #ffffff;
+  color: #60a4df;
 }
 h1,
 .h1 {
