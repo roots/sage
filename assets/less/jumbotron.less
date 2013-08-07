@@ -6,14 +6,20 @@
 .jumbotron {
   padding: 30px;
   margin-bottom: 30px;
-  font-size: (@font-size-base * 1.5);
-  font-weight: 200;
+  // font-size: (@font-size-base * 1.5);
   line-height: (@line-height-base * 1.5);
-  color: @jumbotron-lead-color;
+  font-size:    @jumbotron-font-size;
+  font-weight:  @jumbotron-font-weight;
+  font-style:   @jumbotron-font-style;
+  font-family:  @jumbotron-font-family;
+  color:        @jumbotron-font-color;
   background-color: @jumbotron-bg;
   h1 {
     line-height: 1;
-    color: @jumbotron-heading-color;
+    font-weight:  @jumbotron-font-weight;
+    font-style:   @jumbotron-font-style;
+    font-family:  @jumbotron-font-family;
+    color:        @jumbotron-font-color;
   }
   p {
     line-height: 1.4;

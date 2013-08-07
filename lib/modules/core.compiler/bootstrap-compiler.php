@@ -170,10 +170,11 @@ function shoestrap_variables_less() {
   $brand_danger     = '#' . str_replace( '#', '', shoestrap_getVariable( 'color_brand_danger', true ) );
   $brand_info       = '#' . str_replace( '#', '', shoestrap_getVariable( 'color_brand_info', true ) );
 
-  $font_base            = shoestrap_process_font( shoestrap_getVariable( 'font_base', true ) );
-  $font_navbar          = shoestrap_process_font( shoestrap_getVariable( 'font_navbar', true ) );
-  $font_brand           = shoestrap_process_font( shoestrap_getVariable( 'font_brand', true ) );
-  $font_heading         = shoestrap_process_font( shoestrap_getVariable( 'font_heading', true ) );
+  $font_base              = shoestrap_process_font( shoestrap_getVariable( 'font_base', true ) );
+  $font_navbar            = shoestrap_process_font( shoestrap_getVariable( 'font_navbar', true ) );
+  $font_brand             = shoestrap_process_font( shoestrap_getVariable( 'font_brand', true ) );
+  $font_jumbotron         = shoestrap_process_font( shoestrap_getVariable( 'font_jumbotron', true ) );
+  $font_heading           = shoestrap_process_font( shoestrap_getVariable( 'font_heading', true ) );
 
   if ( shoestrap_getVariable( 'font_heading_custom', true ) == 1 ) {
 
@@ -259,7 +260,6 @@ function shoestrap_variables_less() {
   $navbar_color     = '#' . str_replace( '#', '', shoestrap_getVariable( 'navbar_color', true ) );
   $navbar_bg        = '#' . str_replace( '#', '', shoestrap_getVariable( 'navbar_bg', true ) );
   $jumbotron_bg     = '#' . str_replace( '#', '', shoestrap_getVariable( 'jumbotron_bg', true ) );
-  $jumbotron_color  = '#' . str_replace( '#', '', shoestrap_getVariable( 'jumbotron_color', true ) );
 
   $container_tablet         = filter_var( shoestrap_getVariable( 'container_tablet', true ), FILTER_SANITIZE_NUMBER_INT );
   $container_desktop        = filter_var( shoestrap_getVariable( 'container_desktop', true ), FILTER_SANITIZE_NUMBER_INT );
@@ -274,6 +274,8 @@ function shoestrap_variables_less() {
   $navbar_text_color       = '#' . str_replace( '#', '', $font_navbar['color'] );
 
   $brand_text_color       = '#' . str_replace( '#', '', $font_brand['color'] );
+  $jumbotron_text_color   = '#' . str_replace( '#', '', $font_jumbotron['color'] );
+
   // Calculate the gray shadows based on the body background.
   // We basically create 2 "presets": light and dark.
   if ( shoestrap_get_brightness( $body_bg ) > 80 ) {
@@ -655,8 +657,6 @@ function shoestrap_variables_less() {
 // -------------------------
 
 @jumbotron-bg:                   ' . $jumbotron_bg . ';
-@jumbotron-heading-color:        ' . $jumbotron_color . ';
-@jumbotron-lead-color:           @jumbotron-heading-color;
 
 
 // Form states and alerts
@@ -932,6 +932,12 @@ function shoestrap_variables_less() {
 @brand-font-style:        ' . $font_brand['style'] . ';
 @brand-font-family:       ' . $font_brand['face'] . ';
 @brand-font-color:        ' . $brand_text_color . ';
+
+@jumbotron-font-size:         ' . $font_jumbotron['size'] . 'px;
+@jumbotron-font-weight:       ' . $font_jumbotron['weight'] . ';
+@jumbotron-font-style:        ' . $font_jumbotron['style'] . ';
+@jumbotron-font-family:       ' . $font_jumbotron['face'] . ';
+@jumbotron-font-color:        ' . $jumbotron_text_color . ';
 
 // H1
 @heading-h1-face:         ' . $font_h1_face . ';

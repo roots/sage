@@ -17,7 +17,7 @@ function shoestrap_add_typography_class_case($array) {
     $gfonts = json_decode($wp_filesystem->get_contents(dirname(__FILE__).'/webfonts.json'), true);
     /* Font Size */
 
-    //if(isset($typography_stored['size'])) {
+    if(isset($typography_stored['size'])) {
       $output .= '<div class="select_wrapper typography-size temphide" original-title="Font size">';
       $output .= '<select class="of-typography of-typography-size select google_font_hybrid_value" name="'.$value['id'].'[size]" id="'. $value['id'].'_size">';
         for ($i = 9; $i < 80; $i++){
@@ -26,9 +26,7 @@ function shoestrap_add_typography_class_case($array) {
           }
 
       $output .= '</select></div>';
-
-
-    //}
+    }
 
     // /* Line Height */
     // //if(isset($typography_stored['height'])) {
@@ -208,6 +206,7 @@ function shoestrap_module_typography_googlefont_links() {
   $font_base            = shoestrap_getVariable( 'font_base' );
   $font_navbar          = shoestrap_getVariable( 'font_navbar' );
   $font_brand           = shoestrap_getVariable( 'font_brand' );
+  $font_jumbotron       = shoestrap_getVariable( 'font_jumbotron' );
   $font_heading         = shoestrap_getVariable( 'font_heading' );
   if (shoestrap_getVariable( 'font_heading_custom' )) {
     $font_h1 = shoestrap_getVariable( 'font_h1' );
@@ -225,6 +224,9 @@ function shoestrap_module_typography_googlefont_links() {
   }
   if ($font_brand['google'] === 'true' ) {
     echo getGoogleScript($font_brand);
+  }
+  if ($font_jumbotron['google'] === 'true' ) {
+    echo getGoogleScript($font_jumbotron);
   }
   if (shoestrap_getVariable( 'font_heading_custom' )) {
     if ($font_h1['google'] === 'true' ) {

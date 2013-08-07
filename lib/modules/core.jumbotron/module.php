@@ -145,17 +145,6 @@ if ( !function_exists( 'shoestrap_module_jumbotron_options' ) ) {
       "options"   => $bg_pattern_images,
     );
 
-
-    $of_options[] = array(
-      "name"      => __("Jumbotron Text Color", "shoestrap"),
-      "desc"      => __("Select the text color for your Jumbotron area. Please note that this area will only be visible if you assign a widget to the \"Jumbotron\" Widget Area. Default: #333333.", "shoestrap"),
-      "id"        => "jumbotron_color",
-      "std"       => "#333333",
-      "less"      => true,
-      "customizer"=> array(),
-      "type"      => "color"
-    );
-
     $of_options[] = array(
       "name"      => __("Display Jumbotron only on the Frontpage.", "shoestrap"),
       "desc"      => __("When Turned OFF, the Jumbotron area is displayed in all your pages. If you wish to completely disable the Jumbotron, then please remove the widgets assigned to its area and it will no longer be displayed. Default: ON", "shoestrap"),
