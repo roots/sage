@@ -74,7 +74,7 @@ function shoestrap_navbar_css() {
   $opacity = (intval(shoestrap_getVariable( 'navbar_bg_opacity' )))/100;
   $style = "";
 
-  if ( ($opacity != 1 && $opacity != "") || (shoestrap_getVariable( 'navbar_margin_bottom' ) != 0) ) {
+  if ( $opacity != 1 && $opacity != "" ) {
     $bg = shoestrap_getVariable( 'navbar_bg');
     $rgb = shoestrap_get_rgb($bg, true);
       $style .= '.navbar{';
@@ -84,14 +84,30 @@ function shoestrap_navbar_css() {
         } else {
           $style .= 'background: '.$bg.';';
         }
-        if ( shoestrap_getVariable( 'navbar_margin_bottom' ) != 0 ) {
-          $style .= 'margin-bottom:'. shoestrap_getVariable( 'navbar_margin_bottom' ) .'px !important;';
-        }
       $style .= '}';
   }
 
   if ( shoestrap_getVariable( 'logo_top_margin' ) != 1 ) {
   	$style .= '.navbar a.navbar-brand.logo {margin-top:' . shoestrap_getVariable( 'logo_top_margin' ) . 'px; }';
+  }
+
+  if ( shoestrap_getVariable( 'navbar_margin_bottom' ) != 0 ) {
+    $navbar_margin_bottom = shoestrap_getVariable( 'navbar_margin_bottom' );
+    $fixed                = shoestrap_getVariable( 'navbar_fixed' );
+    $fixedpos             = shoestrap_getVariable( 'navbar_fixed_position' );
+
+    if ( $fixed != 1 ) {
+      $style .= '.navbar-static-top {';
+    } else {
+      if ( $fixedpos == 1 )
+        $style = '.navbar-fixed-bottom {';
+      else
+        $style = '.navbar-fixed-top {';
+    }
+    
+    $style .= 'margin-bottom:'. $navbar_margin_bottom .'px !important;';
+    $style .= '}';
+    
   }
 
   wp_add_inline_style( 'shoestrap_css', $style );
