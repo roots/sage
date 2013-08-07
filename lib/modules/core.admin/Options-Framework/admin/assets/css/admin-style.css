@@ -196,8 +196,6 @@ border-radius: 2px;
 }
 #of_container #content .section .explain {
 	float: left;
-	width: 60%;
-	min-width: 225px;
 	padding: 0 10px 0 0;
 	font-size: 12px;
 	color: #999999;
@@ -363,9 +361,6 @@ label.radio, label.multicheck {
 }
 #of_container #content .section-typography .controls {
 	width:440px
-}
-#of_container #content .section-typography .explain {
-	width:130px
 }
 #of_container .controls .of-typography-size {
 	width:70px;
@@ -644,9 +639,6 @@ position:relative;
 #of_container  .controls .typography-style, #of_container  .controls .border-style {width: 95px;}
 #of_container  .controls .typography-size,#of_container  .controls .typography-face,#of_container  .controls .typography-style, #of_container  .controls .border-width, #of_container  .controls .border-style {margin-right:5px;}
 
-#of_container #content .mini .explain {
-	width:500px;
-}
 #of_container .of-notice {
 	background: #ffd1d1;
 	border:1px solid #DFDFDF;
@@ -886,9 +878,6 @@ top: -3px;
 }
 #of_container #content .section-color .controls {
 width: 345px;
-}
-#of_container #content .section-color .explain {
-width: 225px;
 }
 #of_container #content .iris-picker .iris-strip .ui-slider-handle {
 	position: absolute;
