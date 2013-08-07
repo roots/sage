@@ -113,7 +113,7 @@ if ( !function_exists('shoestrap_module_advanced_options' ) ) {
 
     $of_options[] = array(
       "name"      => __("PJAX", "shoestrap"),
-      "desc"      => __("Use <a href='https://github.com/defunkt/jquery-pjax' target='_blank'>PJAX</a>. Default: OFF", "shoestrap"),
+      "desc"      => __("Use <a href='https://github.com/defunkt/jquery-pjax' target='_blank'>PJAX</a> in link tags inside NavBars, Sibebars & Breadcrumb. This cause a fast linear fadeToggle effect in main page. Default: OFF", "shoestrap"),
       "id"        => "pjax",
       "std"       => 0,
       "type"      => "switch"
