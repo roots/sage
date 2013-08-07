@@ -203,14 +203,6 @@ if ( !function_exists( 'shoestrap_module_social_options' ) ) {
     );
 
     $of_options[] = array(
-      "name"      => __("Forrst", "shoestrap"),
-      "desc"      => __("Provide the link you desire and the Forrst icon will appear. To remove it, just leave it blank.", "shoestrap"),
-      "id"        => "forrst_link",
-      "std"       => "",
-      "type"      => "text"
-    );
-
-    $of_options[] = array(
       "name"      => __("GitHub", "shoestrap"),
       "desc"      => __("Provide the link you desire and the GitHub icon will appear. To remove it, just leave it blank.", "shoestrap"),
       "id"        => "github_link",
@@ -311,14 +303,6 @@ if ( !function_exists( 'shoestrap_module_social_options' ) ) {
       "name"      => "Vkontakte",
       "desc"      => "Provide the link you desire and the Vkontakte icon will appear. To remove it, just leave it blank.",
       "id"        => "vkontakte_link",
-      "std"       => "",
-      "type"      => "text"
-    );
-
-    $of_options[] = array(
-      "name"      => "Yahoo TODO",
-      "desc"      => "Provide the link you desire and the Yahoo icon will appear. To remove it, just leave it blank.",
-      "id"        => "yahoo_link",
       "std"       => "",
       "type"      => "text"
     );

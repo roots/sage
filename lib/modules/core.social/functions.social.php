@@ -8,10 +8,9 @@ function shoestrap_get_social_links() {
   $networks[] = array( 'url' => shoestrap_getVariable( 'blogger_link' ),      'icon' => 'blogger',    'fullname' => 'Blogger' );
   $networks[] = array( 'url' => shoestrap_getVariable( 'deviantart_link' ),   'icon' => 'deviantart', 'fullname' => 'DeviantART' );
   $networks[] = array( 'url' => shoestrap_getVariable( 'digg_link' ),         'icon' => 'digg',       'fullname' => 'Digg' );
-  $networks[] = array( 'url' => shoestrap_getVariable( 'dribbble_link' ),     'icon' => 'dribbble',   'fullname' => 'Dribbble' );
+  $networks[] = array( 'url' => shoestrap_getVariable( 'dribbble_link' ),     'icon' => 'dribble',   'fullname' => 'Dribbble' );
   $networks[] = array( 'url' => shoestrap_getVariable( 'facebook_link' ),     'icon' => 'facebook',   'fullname' => 'Facebook' );
   $networks[] = array( 'url' => shoestrap_getVariable( 'flickr_link' ),       'icon' => 'flickr',     'fullname' => 'Flickr' );
-  $networks[] = array( 'url' => shoestrap_getVariable( 'forrst_link' ),       'icon' => 'forrst',     'fullname' => 'Forrst' );
   $networks[] = array( 'url' => shoestrap_getVariable( 'github_link' ),       'icon' => 'github',     'fullname' => 'GitHub' );
   $networks[] = array( 'url' => shoestrap_getVariable( 'google_plus_link' ),  'icon' => 'googleplus', 'fullname' => 'Google+' );
   $networks[] = array( 'url' => shoestrap_getVariable( 'linkedin_link' ),     'icon' => 'linkedin',   'fullname' => 'LinkedIn' );
@@ -25,7 +24,6 @@ function shoestrap_get_social_links() {
   $networks[] = array( 'url' => shoestrap_getVariable( 'twitter_link' ),      'icon' => 'twitter',    'fullname' => 'Twitter' );
   $networks[] = array( 'url' => shoestrap_getVariable( 'vimeo_link' ),        'icon' => 'vimeo',      'fullname' => 'Vimeo' );
   $networks[] = array( 'url' => shoestrap_getVariable( 'vkontakte' ),         'icon' => 'vkontakte',  'fullname' => 'Vkontakte' );
-  $networks[] = array( 'url' => shoestrap_getVariable( 'yahoo_link' ),        'icon' => 'yahoo',      'fullname' => 'Yahoo' );
   $networks[] = array( 'url' => shoestrap_getVariable( 'youtube_link' ),      'icon' => 'youtube',    'fullname' => 'YouTube' );
 
   return $networks;
