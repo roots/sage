@@ -1,12 +1,15 @@
 <?php
 
 function shoestrap_footer_css() {
-  $bg       = shoestrap_getVariable( 'footer_background' );
-  $cl       = shoestrap_getVariable( 'footer_color' );
-  $cl_brand = shoestrap_getVariable( 'color_brand_primary' );
-  $opacity  = (intval(shoestrap_getVariable( 'footer_opacity' )))/100;
-  $rgb      = shoestrap_get_rgb($bg, true);
-  $border   = shoestrap_getVariable( 'footer_border_top' );
+  $bg         = shoestrap_getVariable( 'footer_background' );
+  $cl         = shoestrap_getVariable( 'footer_color' );
+  $cl_brand   = shoestrap_getVariable( 'color_brand_primary' );
+  $opacity    = (intval(shoestrap_getVariable( 'footer_opacity' )))/100;
+  $rgb        = shoestrap_get_rgb($bg, true);
+  $border     = shoestrap_getVariable( 'footer_border_top' );
+  $top_margin = shoestrap_getVariable( 'footer_top_margin' );
+
+  $container_margin = $top_margin*0.381966011;
 
   $style = 'footer.content-info {';
     $style .= 'color:' . $cl . ';';
@@ -18,8 +21,12 @@ function shoestrap_footer_css() {
 
     $style .= 'border-top:' . $border['width'] . 'px ' . $border['style'] . ' ' . $border['color'] . ';';
     $style .= 'padding: 18px 10px 18px;';
+    $style .= 'margin-top:'. $top_margin .'px;';
   $style .= '}';
 
+  $style .= 'footer div.container { ';
+    $style .= 'margin-top:'. $container_margin .'px;';
+  $style .= '}';
 
   $style .= '#copyright-bar { ';
     $style .= 'line-height: 30px;';
@@ -93,8 +100,6 @@ function shoestrap_footer_html() {
   $networks = shoestrap_get_social_links();
 
   ?>
-  <footer class="content-info" role="contentinfo">
-    <div class="<?php echo shoestrap_container_class(); ?>">
       <?php do_action( 'shoestrap_footer_before_copyright' ); ?>
       <div id="footer-copyright" class="row">
         <article class="<?php echo shoestrap_container_class(); ?>">
@@ -114,8 +119,6 @@ function shoestrap_footer_html() {
           <?php endif; ?>
         </article>
       </div>
-    </div>
-  </footer>
   <?php
 }
 add_action( 'shoestrap_footer_pre_override', 'shoestrap_footer_html' );

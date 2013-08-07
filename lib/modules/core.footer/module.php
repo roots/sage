@@ -27,6 +27,7 @@ if ( !function_exists( 'shoestrap_module_footer_options' ) ) {
       "customizer"=> array(),
       "type"      => "color"
     );
+    
     $of_options[] = array(
       "name"      => __("Footer Background Opacity", "shoestrap"),
       "desc"      => __("Select the opacity level for the footer bar. Default: 100%.", "shoestrap"),
@@ -89,7 +90,6 @@ if ( !function_exists( 'shoestrap_module_footer_options' ) ) {
       "type"      => "sliderui"
     );    
 
-        
     $of_options[] = array(
       "name"      => __("Footer social icons open new window", "shoestrap"),
       "desc"      => __("Social icons in footer will open a new window. Default: On.", "shoestrap"),
@@ -98,6 +98,16 @@ if ( !function_exists( 'shoestrap_module_footer_options' ) ) {
       "std"       => 1,
       "customizer"=> array(),
       "type"      => "switch"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Footer Top Margin", "shoestrap"),
+      "desc"      => __("Select the top margin of footer in pixels. Default: 0px.", "shoestrap"),
+      "id"        => "footer_top_margin",
+      "std"       => 0,
+      "min"       => 0,
+      "max"       => 200,
+      "type"      => "sliderui"
     );
 
     do_action( 'shoestrap_module_footer_options_modifier' );
