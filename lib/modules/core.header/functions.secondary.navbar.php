@@ -10,7 +10,7 @@ function shoestrap_secondary_navbar() {
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <nav class="nav-secondary nav-collapse-secondary collapse pull-left" role="navigation">
+        <nav class="nav-secondary nav-collapse nav-collapse-secondary collapse pull-left" role="navigation">
           <?php wp_nav_menu( array( 'theme_location' => 'secondary_navigation', 'menu_class' => shoestrap_nav_class_pull() ) ); ?>
         </nav>
         <?php
