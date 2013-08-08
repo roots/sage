@@ -33,7 +33,7 @@ if ( !function_exists( 'shoestrap_module_footer_options' ) ) {
       "desc"      => __("Select the opacity level for the footer bar. Default: 100%.", "shoestrap"),
       "id"        => "footer_opacity",
       "std"       => 100,
-      "min"       => 30,
+      "min"       => 0,
       "max"       => 100,
       "type"      => "sliderui"
     );
