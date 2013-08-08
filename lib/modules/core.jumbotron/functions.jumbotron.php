@@ -110,6 +110,7 @@ function shoestrap_jumbotron_css() {
   if ( $border['width'] > 0 )
     $style .= 'border-bottom:' . $border['width'] . 'px ' . $border['style'] . ' ' . $border['color'] . ';';
 
+  $style .= 'margin-bottom: 0px;';
   $theCSS = '.jumbotron {' . trim( $style ) . '}';
   $theCSS .= $color ? ".jumbotron{background: $color;}" : '';
   
