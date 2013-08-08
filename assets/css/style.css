@@ -4692,14 +4692,23 @@ a.list-group-item.active > .badge,
 .jumbotron {
   padding: 30px;
   margin-bottom: 30px;
-  font-size: 21px;
-  font-weight: 200;
   line-height: 2.1428571435;
+  font-size: 16px;
+  font-weight: inherit;
+  font-style: inherit;
+  font-family: Arial, Helvetica, sans-serif;
   color: #333333;
   background-color: #EEEEEE;
 }
-.jumbotron h1 {
-  line-height: 1;
+.jumbotron h1,
+.jumbotron h2,
+.jumbotron h3,
+.jumbotron h4,
+.jumbotron h5,
+.jumbotron h6 {
+  font-weight: inherit;
+  font-style: inherit;
+  font-family: Arial, Helvetica, sans-serif;
   color: #333333;
 }
 .jumbotron p {
@@ -5364,10 +5373,10 @@ fieldset[disabled] #social-sharing .shareme .box {
   border-radius: 0px;
 }
 .navbar a.toggle-nav {
-  margin-top: 0px;
+  margin-top: -1px;
 }
 .navbar #searchform {
-  margin-top: 5px;
+  margin-top: 11px;
 }
 .navbar.style1 .open > a:first-child,
 .navbar.style1 .open > a:hover:first-child,
@@ -5484,25 +5493,23 @@ fieldset[disabled] #social-sharing .shareme .box {
   }
 }
 .wrap.main-section {
-  margin-top: 2em;
+  margin-top: 1em;
   padding: 15px;
 }
 .btn-group > .btn:first-child:not(:last-child):not(.dropdown-toggle) {
   border-radius: 4px;
 }
-.btn-group.social-share .btn-default {
+.btn-group.social-share .social-link {
   display: none;
+}
+.btn-group.social-share:hover .social-share-main {
+  border-bottom-right-radius: 0px !important;
+  border-top-right-radius: 0px !important;
 }
 .btn-group.social-share:hover a {
   display: block;
   width: auto;
-  background-color: #ffffff;
-  color: #428bca;
   padding: 8px 12px;
-}
-.btn-group.social-share:hover a:hover {
-  background-color: #ffffff;
-  color: #60a4df;
 }
 h1,
 .h1 {
@@ -5788,16 +5795,6 @@ li.dropdown ul.dropdown-menu li.dropdown.pull-left {
   font-style: inherit;
   font-weight: inherit;
   color: #333333;
-}
-#loading {
-  width: 100%;
-  height: 100%;
-  background: #ffffff;
-  position: fixed;
-  top: 0;
-  left: 0;
-  display: none;
-  z-index: 1;
 }
 .widget select {
   width: 100%;
