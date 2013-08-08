@@ -543,13 +543,15 @@ function shoestrap_variables_less() {
 @screen-medium:              ' . $screen_medium . 'px;
 @screen-desktop:             @screen-medium;
 
-// So media queries dont overlap when required, provide a maximum
-@screen-small-max:           (@screen-medium - 1);
-@screen-tablet-max:          @screen-small-max;
-
 // Large screen / wide desktop
 @screen-large:               ' . $screen_large . 'px;
 @screen-large-desktop:       @screen-large;
+
+// So media queries dont overlap when required, provide a maximum
+@screen-small-max:           (@screen-medium - 1);
+@screen-tablet-max:          (@screen-desktop - 1);
+@screen-desktop-max:         (@screen-large-desktop - 1);
+
 
 // Grid system
 // --------------------------------------------------
@@ -700,7 +702,7 @@ function shoestrap_variables_less() {
 // -------------------------
 @tooltip-max-width:           200px;
 @tooltip-color:               ' . $body_bg . ';
-@tooltip-bg:                  rgba(0,0,0,.9);
+@tooltip-bg:                  darken(@gray-darker, 15%);
 
 @tooltip-arrow-width:         @padding-small-vertical;
 @tooltip-arrow-color:         @tooltip-bg;
