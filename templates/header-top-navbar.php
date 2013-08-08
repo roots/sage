@@ -5,12 +5,6 @@
 ?>
 <header id="banner" class="topnavbar <?php echo shoestrap_navbar_class(); ?>" role="banner">
   <div class="<?php echo shoestrap_container_class(); ?>">
-  <a class="btn navbar-toggle" data-toggle="collapse" data-target=".nav-collapse-main">
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </a>
-
     <?php
     if ( get_theme_mod( 'navbar_brand' ) != 0 ) :
       echo '<a class="navbar-brand ' . shoestrap_branding_class( false ) . '" href="' . home_url() . '/">';
@@ -24,7 +18,12 @@
     ?>
 
     <?php do_action( 'shoestrap_pre_main_nav' ); ?>
-    <nav class="nav-main nav-collapse-main collapse" role="navigation">
+    <button data-target=".nav-main" data-toggle="collapse" type="button" class="navbar-toggle">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <nav class="nav-main nav-collapse collapse" role="navigation">
       <?php
         if (has_nav_menu('primary_navigation')) :
           wp_nav_menu( array( 'theme_location' => 'primary_navigation', 'menu_class' => shoestrap_nav_class_pull() ) );

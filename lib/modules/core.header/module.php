@@ -101,9 +101,9 @@ if ( !function_exists( 'shoestrap_module_header_options' ) ) {
       "id"        => "logo_top_margin",
       "fold"      => "navbar_toggle",
       "std"       => 0,
-      "min"       => -30,
+      "min"       => -100,
       "step"      => 1,
-      "max"       => 30,
+      "max"       => 100,
       "less"      => true,
       "type"      => "sliderui"
     );
