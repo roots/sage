@@ -93,21 +93,10 @@ function shoestrap_navbar_css() {
 
   if ( shoestrap_getVariable( 'navbar_margin_bottom' ) != 0 ) {
     $navbar_margin_bottom = shoestrap_getVariable( 'navbar_margin_bottom' );
-    $fixed                = shoestrap_getVariable( 'navbar_fixed' );
-    $fixedpos             = shoestrap_getVariable( 'navbar_fixed_position' );
 
-    if ( $fixed != 1 ) {
-      $style .= '.navbar-static-top {';
-    } else {
-      if ( $fixedpos == 1 )
-        $style = '.navbar-fixed-bottom {';
-      else
-        $style = '.navbar-fixed-top {';
-    }
-    
+    $style .= '.navbar-static-top {';
     $style .= 'margin-bottom:'. $navbar_margin_bottom .'px !important;';
     $style .= '}';
-    
   }
 
   wp_add_inline_style( 'shoestrap_css', $style );

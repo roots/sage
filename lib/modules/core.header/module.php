@@ -161,16 +161,16 @@ if ( !function_exists( 'shoestrap_module_header_options' ) ) {
       "id"        => "navbar_height",
       "fold"      => "navbar_toggle",
       "std"       => 50,
-      "min"       => 10,
+      "min"       => 38,
       "step"      => 1,
-      "max"       => 120,
+      "max"       => 200,
       "less"      => true,
       "type"      => "sliderui"
     );
 
     $of_options[] = array(
       "name"      => __("NavBar Bottom Margin", "shoestrap"),
-      "desc"      => __("Select the bottom margin of the NavBar in pixels. Default: 0px.", "shoestrap"),
+      "desc"      => __("Select the bottom margin of the NavBar in pixels. Applies only in static top navbar (scroll condition). Default: 0px.", "shoestrap"),
       "id"        => "navbar_margin_bottom",
       "fold"      => "navbar_toggle",
       "std"       => 0,
