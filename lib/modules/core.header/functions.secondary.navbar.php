@@ -4,7 +4,7 @@ function shoestrap_secondary_navbar() {
   if ( shoestrap_getVariable( 'secondary_navbar_toggle' ) != 0 ) : ?>
 
     <div class="<?php echo shoestrap_container_class(); ?>">
-      <header class="<?php echo shoestrap_navbar_class( 'secondary' ); ?>" role="banner">
+      <header class="secondary <?php echo shoestrap_navbar_class( 'secondary' ); ?>" role="banner">
         <button data-target=".nav-main" data-toggle="collapse" type="button" class="navbar-toggle">
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
@@ -23,3 +23,20 @@ function shoestrap_secondary_navbar() {
   <?php endif;
 }
 add_action( 'shoestrap_pre_wrap', 'shoestrap_secondary_navbar' );
+
+
+
+if ( shoestrap_getVariable( 'secondary_navbar_margin' ) != 0 ) {
+  function shoestrap_secondary_navbar_margin() {
+  $secondary_navbar_margin = shoestrap_getVariable( 'secondary_navbar_margin' );
+  
+  $style = '.secondary {';
+  $style .= 'margin-top:'. $secondary_navbar_margin .'px !important;';
+  $style .= 'margin-bottom:'. $secondary_navbar_margin .'px !important;';
+  $style .= '}';
+      
+  wp_add_inline_style( 'shoestrap_css', $style );
+
+  }
+  add_action( 'wp_enqueue_scripts', 'shoestrap_secondary_navbar_margin', 101 );
+}

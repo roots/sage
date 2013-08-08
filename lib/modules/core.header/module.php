@@ -238,6 +238,17 @@ if ( !function_exists( 'shoestrap_module_header_options' ) ) {
       "type"      => "switch",
     );
 
+    $of_options[] = array(
+      "name"      => __("Secondary NavBar Margin", "shoestrap"),
+      "desc"      => __("Select the top and bottom margin of header in pixels. Default: 0px.", "shoestrap"),
+      "id"        => "secondary_navbar_margin",
+      "std"       => 0,
+      "min"       => 0,
+      "max"       => 200,
+      "type"      => "sliderui",
+      "fold"      => "secondary_navbar_toggle"
+    );
+
     $url = admin_url( 'widgets.php' );
     $of_options[] = array(
       "name"      => "",
