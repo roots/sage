@@ -5,12 +5,12 @@ function shoestrap_secondary_navbar() {
 
     <div class="<?php echo shoestrap_container_class(); ?>">
       <header class="secondary <?php echo shoestrap_navbar_class( 'secondary' ); ?>" role="banner">
-        <button data-target=".nav-main" data-toggle="collapse" type="button" class="navbar-toggle">
+        <button data-target=".nav-collapse-secondary" data-toggle="collapse" type="button" class="navbar-toggle">
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <nav class="nav-secondary nav-collapse collapse pull-left" role="navigation">
+        <nav class="nav-secondary nav-collapse-secondary collapse pull-left" role="navigation">
           <?php wp_nav_menu( array( 'theme_location' => 'secondary_navigation', 'menu_class' => shoestrap_nav_class_pull() ) ); ?>
         </nav>
         <?php
