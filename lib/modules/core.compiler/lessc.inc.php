@@ -55,6 +55,8 @@ class lessc {
 
 	protected $numberPrecision = null;
 
+	protected $allParsedFiles = array();
+
 	// set to the parser that generated the current line when compiling
 	// so we know how to create error messages
 	protected $sourceParser = null;
@@ -103,10 +105,15 @@ class lessc {
 		if (substr_compare($url, '.css', -4, 4) === 0) return false;
 
 		$realPath = $this->findImport($url);
+
 		if ($realPath === null) return false;
 
 		if ($this->importDisabled) {
 			return array(false, "/* import disabled */");
+		}
+
+		if (isset($this->allParsedFiles[realpath($realPath)])) {
+			return array(false, null);
 		}
 
 		$this->addParsedFile($realPath);
@@ -276,6 +283,8 @@ class lessc {
 		foreach ($this->sortProps($block->props) as $prop) {
 			$this->compileProp($prop, $block, $out);
 		}
+
+		$out->lines = array_values(array_unique($out->lines));
 	}
 
 	protected function sortProps($props, $split = false) {
@@ -533,9 +542,14 @@ class lessc {
 		}
 	}
 
-	protected function patternMatchAll($blocks, $orderedArgs, $keywordArgs) {
+	protected function patternMatchAll($blocks, $orderedArgs, $keywordArgs, $skip=array()) {
 		$matches = null;
 		foreach ($blocks as $block) {
+			// skip seen blocks that don't have arguments
+			if (isset($skip[$block->id]) && !isset($block->args)) {
+				continue;
+			}
+
 			if ($this->patternMatch($block, $orderedArgs, $keywordArgs)) {
 				$matches[] = $block;
 			}
@@ -555,7 +569,7 @@ class lessc {
 		if (isset($searchIn->children[$name])) {
 			$blocks = $searchIn->children[$name];
 			if (count($path) == 1) {
-				$matches = $this->patternMatchAll($blocks, $orderedArgs, $keywordArgs);
+				$matches = $this->patternMatchAll($blocks, $orderedArgs, $keywordArgs, $seen);
 				if (!empty($matches)) {
 					// This will return all blocks that match in the closest
 					// scope that has any matching block, like lessjs
@@ -747,7 +761,9 @@ class lessc {
 			list(,$importId) = $prop;
 			$import = $this->env->imports[$importId];
 			if ($import[0] === false) {
-				$out->lines[] = $import[1];
+				if (isset($import[1])) {
+					$out->lines[] = $import[1];
+				}
 			} else {
 				list(, $bottom, $parser, $importDir) = $import;
 				$this->compileImportedProps($bottom, $block, $out, $parser, $importDir);
@@ -1736,7 +1752,6 @@ class lessc {
 		$this->importDir = (array)$this->importDir;
 		$this->importDir[] = $pi['dirname'].'/';
 
-		$this->allParsedFiles = array();
 		$this->addParsedFile($fname);
 
 		$out = $this->compile(file_get_contents($fname), $fname);

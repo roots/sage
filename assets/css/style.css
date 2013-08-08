@@ -3108,6 +3108,12 @@ button.close {
   border-top-color: #ffffff;
   border-bottom-color: #ffffff;
 }
+.nav .nav-divider {
+  height: 1px;
+  margin: 9px 0;
+  overflow: hidden;
+  background-color: #e5e5e5;
+}
 .nav-tabs {
   border-bottom: 1px solid #dddddd;
 }
@@ -5265,7 +5271,6 @@ fieldset[disabled] .button.active {
   -ms-user-select: none;
   -o-user-select: none;
   user-select: none;
-  display: inline-block;
   position: relative;
   float: left;
   clear: both;
