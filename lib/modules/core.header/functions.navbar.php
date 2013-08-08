@@ -91,11 +91,12 @@ function shoestrap_navbar_css() {
   	$style .= '.navbar a.navbar-brand.logo {margin-top:' . shoestrap_getVariable( 'logo_top_margin' ) . 'px; }';
   }
 
-  if ( shoestrap_getVariable( 'navbar_margin_bottom' ) != 0 ) {
-    $navbar_margin_bottom = shoestrap_getVariable( 'navbar_margin_bottom' );
+  if ( shoestrap_getVariable( 'navbar_margin' ) != 1 ) {
+    $navbar_margin    = shoestrap_getVariable( 'navbar_margin' );
 
     $style .= '.navbar-static-top {';
-    $style .= 'margin-bottom:'. $navbar_margin_bottom .'px !important;';
+    $style .= 'margin-top:'. $navbar_margin .'px !important;';
+    $style .= 'margin-bottom:'. $navbar_margin .'px !important;';
     $style .= '}';
   }
 
