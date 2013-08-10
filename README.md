@@ -41,7 +41,7 @@ Take a look at the [documentation table of contents](doc/TOC.md).
 * [Multilingual ready](http://www.rootstheme.com/wpml/) (Brazilian Portuguese,
 Bulgarian, Catalan, Danish, Dutch, English, Finnish, French, German, Hungarian,
 Indonesian, Italian, Korean, Macedonian, Norwegian, Polish, Russian, Simplified
-Chinese, Spanish, Swedish, Traditional Chinese, Turkish, Vietnamese)
+Chinese, Spanish, Swedish, Traditional Chinese, Turkish, Vietnamese, Serbian)
 
 ### Build Script
 
