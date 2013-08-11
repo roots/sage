@@ -49,6 +49,14 @@ module.exports = function(grunt) {
         }
       }
     },
+    imageoptim: {
+      files: [
+        'assets/img'
+      ],
+      options: {
+        quitAfter: true
+      }
+    },
     watch: {
       less: {
         files: [
@@ -79,12 +87,14 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-recess');
+  grunt.loadNpmTasks('grunt-imageoptim');
 
   // Register tasks
   grunt.registerTask('default', [
     'clean',
     'recess',
     'uglify',
+    'imageoptim',
     'version'
   ]);
   grunt.registerTask('dev', [
