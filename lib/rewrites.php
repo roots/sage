@@ -17,9 +17,7 @@
 function roots_add_rewrites($content) {
   global $wp_rewrite;
   $roots_new_non_wp_rules = array(
-    'assets/css/(.*)'      => THEME_PATH . '/assets/css/$1',
-    'assets/js/(.*)'       => THEME_PATH . '/assets/js/$1',
-    'assets/img/(.*)'      => THEME_PATH . '/assets/img/$1',
+    'assets/(.*)'          => THEME_PATH . '/assets/$1',
     'plugins/(.*)'         => RELATIVE_PLUGIN_PATH . '/$1'
   );
   $wp_rewrite->non_wp_rules = array_merge($wp_rewrite->non_wp_rules, $roots_new_non_wp_rules);
