@@ -131,7 +131,7 @@ function shoestrap_navbar_social_links() {
 }
 // If the user has selected to show social links in the navbar echo the content.
 if ( shoestrap_getVariable( 'navbar_social' ) == 1 )
-  add_action( 'shoestrap_post_main_nav', 'shoestrap_navbar_social_links' );
+  add_action( 'shoestrap_pre_main_nav', 'shoestrap_navbar_social_links' );
 
 // Properly parses the twitter URL if set
 function shoestrap_get_twitter_username() {

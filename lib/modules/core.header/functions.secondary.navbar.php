@@ -5,25 +5,24 @@ function shoestrap_secondary_navbar() {
 
     <div class="<?php echo shoestrap_container_class(); ?>">
       <header class="secondary <?php echo shoestrap_navbar_class( 'secondary' ); ?>" role="banner">
-        <button data-target=".nav-collapse-secondary" data-toggle="collapse" type="button" class="navbar-toggle">
+        <button data-target=".nav-secondary" data-toggle="collapse" type="button" class="navbar-toggle">
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <nav class="nav-secondary nav-collapse nav-collapse-secondary collapse pull-left" role="navigation">
-          <?php wp_nav_menu( array( 'theme_location' => 'secondary_navigation', 'menu_class' => shoestrap_nav_class_pull() ) ); ?>
-        </nav>
         <?php
         if ( shoestrap_getVariable( 'navbar_secondary_social' ) != 0 )
           shoestrap_navbar_social_links();
         ?>
+        <nav class="nav-secondary nav-collapse nav-collapse-secondary collapse" role="navigation">
+          <?php wp_nav_menu( array( 'theme_location' => 'secondary_navigation', 'menu_class' => 'nav navbar-nav' ) ); ?>
+        </nav>
       </header>
     </div>
   
   <?php endif;
 }
 add_action( 'shoestrap_pre_wrap', 'shoestrap_secondary_navbar' );
-
 
 
 if ( shoestrap_getVariable( 'secondary_navbar_margin' ) != 0 ) {
