@@ -104,14 +104,15 @@ body {
 // Styling the (+) button on the navbar
 a.toggle-nav {
   position: relative;
-  top: 12px;
+  top: 14px;
   width: 30px;
   height: 30px;
   display:block;
-  opacity:0.5;
+  opacity:0.6;
   z-index:1;
   float: left;
-  font-size: 24px;
+  font-size: 20px;
+  color: @navbar-font-color;
   text-decoration: none;
   text-align: center;
   -webkit-transition:all 500ms ease-in-out;
@@ -119,13 +120,8 @@ a.toggle-nav {
   -o-transition:all 500ms ease-in-out;
   -ms-transition:all 500ms ease-in-out;
   &.open {
-    -moz-transform:rotate(135deg);
-    -webkit-transform:rotate(135deg);
-    -o-transform:rotate(135deg);
-    -ms-transform:rotate(135deg);
-    transform:rotate(135deg);
-    opacity:0.9;
-    -moz-transform-origin:center center
+    opacity:1;
+    top: 18px;
   }
 }
 
