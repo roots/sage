@@ -21,7 +21,9 @@ function shoestrap_user_js() {
 add_action( 'wp_footer', 'shoestrap_user_js', 200 );
 
 
-
+/*
+ * enable widget shortcodes
+ */
 function shoestrap_enable_widget_shortcodes() {
   $enabled = shoestrap_getVariable( 'enable_widget_shortcodes' );
   if ($enabled == 1) {
@@ -31,4 +33,22 @@ function shoestrap_enable_widget_shortcodes() {
 }
 add_action( 'wp_head', 'shoestrap_enable_widget_shortcodes', 200 );
 
-//enable_widget_shortcodes
+/*
+ * change upload folder to /media
+ * NOTICE: by that any media in 'wp-content/uploads' won't be accessible
+ */
+function shoestrap_change_upload_folder() {
+  $rewrites = shoestrap_getVariable( 'upload_folder' );
+  $option_name = 'upload_path';
+  $default_value = 'wp-content/uploads';
+  if ($rewrites == 1) {
+    update_option('uploads_use_yearmonth_folders', 0);
+    $new_value = 'media';
+    if ( ( get_option( $option_name ) !== false ) && ( !is_multisite() ) ) {
+      update_option( $option_name, $new_value );
+    }
+  } else {
+    update_option( $option_name, $default_value );
+  } 
+}
+add_action( 'wp', 'shoestrap_change_upload_folder' );

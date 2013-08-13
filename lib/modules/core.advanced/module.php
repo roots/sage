@@ -112,6 +112,14 @@ if ( !function_exists('shoestrap_module_advanced_options' ) ) {
     );
 
     $of_options[] = array(
+      "name"      => __("Change uploads folder", "shoestrap"),
+      "desc"      => __("Move your uploads folder in <strong> /media </strong>. NOTICE: By toggling this option, any files stored in default folder won't be accessible, and vice versa. Default: OFF", "shoestrap"),
+      "id"        => "upload_folder",
+      "std"       => 0,
+      "type"      => "switch"
+    );
+
+    $of_options[] = array(
       "name"      => __("PJAX", "shoestrap"),
       "desc"      => __("Use <a href='https://github.com/defunkt/jquery-pjax' target='_blank'>PJAX</a> in link tags inside NavBars, Sibebars & Breadcrumb. This cause a fast linear fadeToggle effect in main page. Default: OFF", "shoestrap"),
       "id"        => "pjax",
