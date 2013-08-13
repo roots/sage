@@ -105,7 +105,7 @@ function shoestrap_navbar_social_links() {
 
   // Build the content
   $content = '';
-  $content .= '<ul class="nav navbar-nav pull-right">';
+  $content .= '<ul class="nav navbar-nav pull-left">';
   $content .= '<li class="dropdown">';
   $content .= '<a href="#" class="dropdown-toggle" data-toggle="dropdown">';
   $content .= '<i class="' . $baseclass . 'network"></i>';
