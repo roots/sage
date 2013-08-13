@@ -1049,6 +1049,7 @@ function shoestrap_complete_less( $url = false ) {
 
 // Components: common
 @import "'.$bootstrap.'component-animations";
+@import "'.$bootstrap.'input-groups"; 
 @import "'.$fonts.'elusive-webfont";
 @import "'.$bootstrap.'dropdowns";
 @import "'.$bootstrap.'list-group";
