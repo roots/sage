@@ -35,7 +35,8 @@ if ( !function_exists( 'shoestrap_module_footer_options' ) ) {
       "std"       => 100,
       "min"       => 0,
       "max"       => 100,
-      "type"      => "sliderui"
+      "type"      => "sliderui",
+      "fold"      => "retina_toggle"
     );
 
     $of_options[] = array(
@@ -65,7 +66,19 @@ if ( !function_exists( 'shoestrap_module_footer_options' ) ) {
         'width'   => '2',
         'style'   => 'solid',
         'color'   => '#4B4C4D',
-      )
+      ),
+      "fold"      => "advanced_toggle"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Footer Top Margin", "shoestrap"),
+      "desc"      => __("Select the top margin of footer in pixels. Default: 0px.", "shoestrap"),
+      "id"        => "footer_top_margin",
+      "std"       => 0,
+      "min"       => 0,
+      "max"       => 200,
+      "type"      => "sliderui",
+      "fold"      => "advanced_toggle"
     );
 
     $of_options[] = array(
@@ -74,7 +87,8 @@ if ( !function_exists( 'shoestrap_module_footer_options' ) ) {
       "id"        => "footer_social_toggle",
       "std"       => 0,
       "customizer"=> array(),
-      "type"      => "switch"
+      "type"      => "switch",
+      "fold"      => "advanced_toggle"
     );
 
     $of_options[] = array(
@@ -87,7 +101,7 @@ if ( !function_exists( 'shoestrap_module_footer_options' ) ) {
       "step"      => 1,
       "max"       => 10,
       "customizer"=> array(),
-      "type"      => "sliderui"
+      "type"      => "sliderui",
     );    
 
     $of_options[] = array(
@@ -97,17 +111,7 @@ if ( !function_exists( 'shoestrap_module_footer_options' ) ) {
       "fold"      => 'footer_social_toggle',
       "std"       => 1,
       "customizer"=> array(),
-      "type"      => "switch"
-    );
-
-    $of_options[] = array(
-      "name"      => __("Footer Top Margin", "shoestrap"),
-      "desc"      => __("Select the top margin of footer in pixels. Default: 0px.", "shoestrap"),
-      "id"        => "footer_top_margin",
-      "std"       => 0,
-      "min"       => 0,
-      "max"       => 200,
-      "type"      => "sliderui"
+      "type"      => "switch",
     );
 
     do_action( 'shoestrap_module_footer_options_modifier' );

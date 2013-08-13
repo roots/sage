@@ -20,12 +20,22 @@ if ( !function_exists('shoestrap_module_advanced_options' ) ) {
     );
 
     $of_options[] = array(
+      "name"      => __("Enable Advanced mode", "shoestrap"),
+      "desc"      => __("By enabling you have a more in-depth control of Shoestrap's modules. Default: Off", "shoestrap"),
+      "id"        => "advanced_toggle",
+      "std"       => 0,
+      "type"      => "switch",
+      "customizer"=> array(),
+    );
+
+    $of_options[] = array(
       "name"      => __("Enable Retina mode", "shoestrap"),
       "desc"      => __("By enabling your site will be retina ready. Requires a all images to be uploaded at 2x the typical size desired, including logos. Default: On", "shoestrap"),
       "id"        => "retina_toggle",
       "std"       => 1,
       "type"      => "switch",
       "customizer"=> array(),
+      "fold"      => "advanced_toggle"
     );
 
     $of_options[] = array(
@@ -61,7 +71,8 @@ if ( !function_exists('shoestrap_module_advanced_options' ) ) {
       "std"       => "<h3 style=\"margin: 0 0 10px;\">Border-Radius and Padding Base</h3>
                       <p>The following settings affect various areas of your site, most notably buttons.</p>",
       "icon"      => true,
-      "type"      => "info"
+      "type"      => "info",
+      "fold"      => "advanced_toggle"
     );
 
     $of_options[] = array(
@@ -74,7 +85,8 @@ if ( !function_exists('shoestrap_module_advanced_options' ) ) {
       "max"       => 50,
       "advanced"  => true,
       "less"      => true,
-      "type"      => "sliderui"
+      "type"      => "sliderui",
+      "fold"      => "advanced_toggle"
     );
 
     $of_options[] = array(
@@ -87,7 +99,8 @@ if ( !function_exists('shoestrap_module_advanced_options' ) ) {
       "max"       => 20,
       "advanced"  => true,
       "less"      => true,
-      "type"      => "sliderui"
+      "type"      => "sliderui",
+      "fold"      => "advanced_toggle"
     );
 
     $url = admin_url( 'widgets.php' );
@@ -108,7 +121,8 @@ if ( !function_exists('shoestrap_module_advanced_options' ) ) {
       "desc"      => __("Rewrites URLs, masking partially the fact that you're using WordPress. Please note that after you enable or disable this option, you should visit the <a href='$url'>permalinks menu</a> and press <strong>save</strong>. This option requires that your .htaccess file is writable by your webserver. Default: OFF", "shoestrap"),
       "id"        => "rewrites",
       "std"       => 0,
-      "type"      => "switch"
+      "type"      => "switch",
+      "fold"      => "advanced_toggle"
     );
 
     $of_options[] = array(
@@ -116,7 +130,8 @@ if ( !function_exists('shoestrap_module_advanced_options' ) ) {
       "desc"      => __("Move your uploads folder in <strong> /media </strong>. NOTICE: By toggling this option, any files stored in default folder won't be accessible, and vice versa. Default: OFF", "shoestrap"),
       "id"        => "upload_folder",
       "std"       => 0,
-      "type"      => "switch"
+      "type"      => "switch",
+      "fold"      => "advanced_toggle"
     );
 
     $of_options[] = array(
@@ -124,7 +139,8 @@ if ( !function_exists('shoestrap_module_advanced_options' ) ) {
       "desc"      => __("Use <a href='https://github.com/defunkt/jquery-pjax' target='_blank'>PJAX</a> in link tags inside NavBars, Sibebars & Breadcrumb. This cause a fast linear fadeToggle effect in main page. Default: OFF", "shoestrap"),
       "id"        => "pjax",
       "std"       => 0,
-      "type"      => "switch"
+      "type"      => "switch",
+      "fold"      => "advanced_toggle"
     );
 
     $of_options[] = array(
@@ -148,7 +164,8 @@ if ( !function_exists('shoestrap_module_advanced_options' ) ) {
       "desc"      => __("You can write your custom CSS here. This code will appear in a script tag appended in the header section of the page.", "shoestrap"),
       "id"        => "user_css",
       "std"       => "",
-      "type"      => "textarea"
+      "type"      => "textarea",
+      "fold"      => "advanced_toggle"
     );
 
     $of_options[] = array(
@@ -156,7 +173,8 @@ if ( !function_exists('shoestrap_module_advanced_options' ) ) {
       "desc"      => __("You can write your custom JavaScript/jQuery here. The code will be included in a script tag appended to the bottom of the page.", "shoestrap"),
       "id"        => "user_js",
       "std"       => "",
-      "type"      => "textarea"
+      "type"      => "textarea",
+      "fold"      => "advanced_toggle"
     );
 
     $of_options[] = array(
@@ -165,7 +183,8 @@ if ( !function_exists('shoestrap_module_advanced_options' ) ) {
       "id"        => "advanced_wordpress_disable_admin_bar_toggle",
       "std"       => 1,
       "customizer"=> array(),
-      "type"      => "switch"
+      "type"      => "switch",
+      "fold"      => "advanced_toggle"
     );
 
     $of_options[] = array(
@@ -174,7 +193,8 @@ if ( !function_exists('shoestrap_module_advanced_options' ) ) {
       "id"        => "debug_hooks",
       "std"       => 0,
       "customizer"=> array(),
-      "type"      => "switch"
+      "type"      => "switch",
+      "fold"      => "advanced_toggle"
     );
 
 

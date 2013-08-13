@@ -136,7 +136,8 @@ if ( !function_exists( 'shoestrap_module_layout_options' ) ) {
       "std"       => 0,
       "min"       => 0,
       "max"       => 200,
-      "type"      => "sliderui"
+      "type"      => "sliderui",
+      "fold"      => "advanced_toggle"
     );
 
     $of_options[] = array(
@@ -146,7 +147,8 @@ if ( !function_exists( 'shoestrap_module_layout_options' ) ) {
       "std"       => 0,
       "min"       => 0,
       "max"       => 200,
-      "type"      => "sliderui"
+      "type"      => "sliderui",
+      "fold"      => "advanced_toggle"
     );
 
     $of_options[] = array(
@@ -154,7 +156,8 @@ if ( !function_exists( 'shoestrap_module_layout_options' ) ) {
       "desc"      => "<strong>" . __("CAUTION:", "shoestrap") . "</strong> " . __("Only use this if you know what you are doing, as changing these values might break the way your site looks on some devices. The default settings should be fine for the vast majority of sites.", "shoestrap"),
       "id"        => "custom_grid",
       "std"       => 0,
-      "type"      => "switch"
+      "type"      => "switch",
+      "fold"      => "advanced_toggle"
     );
 
     $of_options[] = array(
@@ -211,7 +214,7 @@ if ( !function_exists( 'shoestrap_module_layout_options' ) ) {
       "max"       => 100,
       "advanced"  => true,
       "less"      => true,
-      "type"      => "sliderui"
+      "type"      => "sliderui",
     );
 
     do_action( 'shoestrap_module_layout_options_modifier' );

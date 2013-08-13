@@ -169,7 +169,8 @@ if ( !function_exists( 'shoestrap_module_jumbotron_options' ) ) {
       "id"        => "jumbotron_title_fit",
       "customizer"=> array(),
       "std"       => 0,
-      "type"      => "switch"
+      "type"      => "switch",
+      "fold"      => "advanced_toggle"
     );
 
     $of_options[] = array(
@@ -178,7 +179,8 @@ if ( !function_exists( 'shoestrap_module_jumbotron_options' ) ) {
       "id"        => "jumbotron_center",
       "customizer"=> array(),
       "std"       => 0,
-      "type"      => "switch"
+      "type"      => "switch",
+      "fold"      => "advanced_toggle"
     );
 
     $of_options[] = array(
@@ -190,7 +192,8 @@ if ( !function_exists( 'shoestrap_module_jumbotron_options' ) ) {
         'width'   => '0',
         'style'   => 'solid',
         'color'   => "#428bca",
-      )
+      ),
+      "fold"      => "advanced_toggle"
     );
 
     do_action( 'shoestrap_module_jumbotron_options_modifier' );

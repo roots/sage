@@ -27,6 +27,7 @@ if ( !function_exists( 'shoestrap_module_blog_options' ) ) {
       "std"       => 0,
       "type"      => "switch",
       "customizer"=> array(),
+      "fold"      => "advanced_toggle"
     );
 
     $of_options[] = array(
@@ -78,16 +79,18 @@ if ( !function_exists( 'shoestrap_module_blog_options' ) ) {
                       Please note that these apply to posts, pages, as well as custom post types.
                       You can select image sizes independently for archives and individual posts view.</p>",
       "icon"      => true,
-      "type"      => "info"
+      "type"      => "info",
+      "fold"      => "advanced_toggle"
     );
 
     $of_options[] = array(
       "name"      => __("Featured Images on Archives", "shoestrap"),
       "desc"      => __("Display featured Images on post archives (such as categories, tags, month view etc). Default: OFF.", "shoestrap"),
       "id"        => "feat_img_archive",
-      "std"       => 1,
+      "std"       => 0,
       "type"      => "switch",
       "customizer"=> array(),
+      "fold"      => "advanced_toggle"
     );
 
 
@@ -133,9 +136,10 @@ if ( !function_exists( 'shoestrap_module_blog_options' ) ) {
       "name"      => __("Featured Images on Posts", "shoestrap"),
       "desc"      => __("Display featured Images on posts. Default: OFF.", "shoestrap"),
       "id"        => "feat_img_post",
-      "std"       => 1,
+      "std"       => 0,
       "type"      => "switch",
       "customizer"=> array(),
+      "fold"      => "advanced_toggle"
     );
 
     $of_options[] = array(

@@ -45,6 +45,7 @@ if ( !function_exists( 'shoestrap_module_branding_options' ) ) {
       "id"        => "favicon",
       "std"       => "",
       "type"      => "media",
+      "fold"      => "advanced_toggle"
     );
 
     $of_options[] = array(
@@ -53,6 +54,7 @@ if ( !function_exists( 'shoestrap_module_branding_options' ) ) {
       "id"        => "apple_icon",
       "std"       => "",
       "type"      => "media",
+      "fold"      => "advanced_toggle"
     );
 
 
@@ -83,7 +85,7 @@ if ( !function_exists( 'shoestrap_module_branding_options' ) ) {
 
     $of_options[] = array(
       "name"      => __("Brand Colors: Secondary", "shoestrap"),
-      "desc"      => __("Select your secondary branding color. Also referred to as an accent color. This will affect various areas of your site, including the color of your primary buttons, the background of some elements and many more.", "shoestrap"),
+      "desc"      => __("Select your secondary branding color. Also referred to as an accent color. This will affect various areas of your site, including the color of your primary buttons, link color, the background of some elements and many more.", "shoestrap"),
       "id"        => "color_brand_secondary",
       "std"       => "#428bca",
       "less"      => true,
@@ -98,7 +100,8 @@ if ( !function_exists( 'shoestrap_module_branding_options' ) ) {
       "std"       => "#5cb85c",
       "less"      => true,
       "customizer"=> array(),
-      "type"      => "color"
+      "type"      => "color",
+      "fold"      => "advanced_toggle"
     );
 
     $of_options[] = array(
@@ -108,7 +111,8 @@ if ( !function_exists( 'shoestrap_module_branding_options' ) ) {
       "std"       => "#f0ad4e",
       "less"      => true,
       "customizer"=> array(),
-      "type"      => "color"
+      "type"      => "color",
+      "fold"      => "advanced_toggle"
     );
 
     $of_options[] = array(
@@ -118,7 +122,8 @@ if ( !function_exists( 'shoestrap_module_branding_options' ) ) {
       "std"       => "#d9534f",
       "less"      => true,
       "customizer"=> array(),
-      "type"      => "color"
+      "type"      => "color",
+      "fold"      => "advanced_toggle"
     );
 
     $of_options[] = array(
@@ -128,7 +133,8 @@ if ( !function_exists( 'shoestrap_module_branding_options' ) ) {
       "std"       => "#5bc0de",
       "less"      => true,
       "customizer"=> array(),
-      "type"      => "color"
+      "type"      => "color",
+      "fold"      => "advanced_toggle"
     );
 
     do_action( 'shoestrap_module_branding_options_modifier' );

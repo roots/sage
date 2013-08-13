@@ -57,6 +57,30 @@ if ( !function_exists( 'shoestrap_module_header_options' ) ) {
     );    
 
     $of_options[] = array(
+      "name"      => __("NavBar Background Color", "shoestrap"),
+      "desc"      => __("Pick a background color for the NavBar. Default: #eeeeee.", "shoestrap"),
+      "id"        => "navbar_bg",
+      "fold"      => "navbar_toggle",
+      "std"       => "#eeeeee",
+      "less"      => true,
+      "customizer"=> array(),
+      "type"      => "color"
+    );
+
+    $of_options[] = array(
+      "name"      => __("NavBar Background Opacity", "shoestrap"),
+      "desc"      => __("Pick a background opacity for the NavBar. Default: 100%.", "shoestrap"),
+      "id"        => "navbar_bg_opacity",
+      "fold"      => "navbar_toggle",
+      "std"       => 100,
+      "min"       => 0,
+      "step"      => 1,
+      "max"       => 100,
+      "less"      => true,
+      "type"      => "sliderui"
+    );
+
+    $of_options[] = array(
       "name"      => __("NavBar Menu Style", "shoestrap"),
       "desc"      => __("You can use an alternative menu style for your NavBars.", "shoestrap"),
       "id"        => "navbar_style",
@@ -102,30 +126,6 @@ if ( !function_exists( 'shoestrap_module_header_options' ) ) {
       "fold"      => "navbar_toggle",
       "std"       => 0,
       "min"       => -100,
-      "step"      => 1,
-      "max"       => 100,
-      "less"      => true,
-      "type"      => "sliderui"
-    );
-
-    $of_options[] = array(
-      "name"      => __("NavBar Background Color", "shoestrap"),
-      "desc"      => __("Pick a background color for the NavBar. Default: #eeeeee.", "shoestrap"),
-      "id"        => "navbar_bg",
-      "fold"      => "navbar_toggle",
-      "std"       => "#eeeeee",
-      "less"      => true,
-      "customizer"=> array(),
-      "type"      => "color"
-    );
-
-    $of_options[] = array(
-      "name"      => __("NavBar Background Opacity", "shoestrap"),
-      "desc"      => __("Pick a background opacity for the NavBar. Default: 100%.", "shoestrap"),
-      "id"        => "navbar_bg_opacity",
-      "fold"      => "navbar_toggle",
-      "std"       => 100,
-      "min"       => 0,
       "step"      => 1,
       "max"       => 100,
       "less"      => true,
@@ -217,7 +217,8 @@ if ( !function_exists( 'shoestrap_module_header_options' ) ) {
       "std"       => "<h3 style=\"margin: 0 0 10px;\">Secondary NavBar</h3>
                       <p>The secondary navbar is a 2nd navbar, located right above the main wrapper. You can show a menu there, by assigning it from Appearance -> Menus.</p>",
       "icon"      => true,
-      "type"      => "info"
+      "type"      => "info",
+      "fold"      => "advanced_toggle"
     );
 
     $of_options[] = array(
@@ -226,7 +227,8 @@ if ( !function_exists( 'shoestrap_module_header_options' ) ) {
       "id"        => "secondary_navbar_toggle",
       "customizer"=> array(),
       "std"       => 0,
-      "type"      => "switch"
+      "type"      => "switch",
+      "fold"      => "advanced_toggle"
     );
 
     $of_options[] = array(
@@ -258,7 +260,8 @@ if ( !function_exists( 'shoestrap_module_header_options' ) ) {
                       <p>You can enable an extra branding/header area. In this header you can add your logo, and any other widgets you wish.
                       To add widgets on your header, visit <a href=\"$url\">this page</a> and add your widgets to the <strong>Header</strong> Widget Area.</p>",
       "icon"      => true,
-      "type"      => "info"
+      "type"      => "info",
+      "fold"      => "advanced_toggle"
     );
 
     $of_options[] = array(
@@ -267,7 +270,8 @@ if ( !function_exists( 'shoestrap_module_header_options' ) ) {
       "id"        => "header_toggle",
       "customizer"=> array(),
       "std"       => 0,
-      "type"      => "switch"
+      "type"      => "switch",
+      "fold"      => "advanced_toggle"
     );
 
     $of_options[] = array(

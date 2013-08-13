@@ -95,7 +95,8 @@ if ( !function_exists( 'shoestrap_module_background_options' ) ) {
       "std"       => 1,
       "on"        => __("Fixed", "shoestrap"),
       "off"       => __("Scroll", "shoestrap"),
-      "type"      => "switch"
+      "type"      => "switch",
+      "fold"      => "background_image_toggle"
     );
 
     $of_options[] = array(

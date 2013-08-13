@@ -113,6 +113,7 @@ if ( !function_exists( 'shoestrap_module_typography_options' ) ) {
       "less"      => true,
       "type"      => "switch",
       "customizer"=> array(),
+      "fold"      => "advanced_toggle"
     );
 
     $of_options[] = array(
@@ -247,6 +248,7 @@ if ( !function_exists( 'shoestrap_module_typography_options' ) ) {
         "size"    => "30px" //this is the text size from preview box
       ),
       "type"      => "select_google_font_hybrid",
+      "fold"      => "advanced_toggle"
     );
 
     $of_options[] = array(
@@ -266,6 +268,7 @@ if ( !function_exists( 'shoestrap_module_typography_options' ) ) {
         "size"    => "30px" //this is the text size from preview box
       ),
       "type"      => "select_google_font_hybrid",
+      "fold"      => "advanced_toggle"
     );
 
     $of_options[] = array(
@@ -285,6 +288,7 @@ if ( !function_exists( 'shoestrap_module_typography_options' ) ) {
         "size"    => "30px" //this is the text size from preview box
       ),
       "type"      => "select_google_font_hybrid",
+      "fold"      => "advanced_toggle"
     );
 
     $of_options[] = array(
@@ -295,6 +299,7 @@ if ( !function_exists( 'shoestrap_module_typography_options' ) ) {
       "less"      => true,
       "type"      => "switch",
       "customizer"=> array(),
+      "fold"      => "advanced_toggle"
     );
 
     $of_options[] = array(
