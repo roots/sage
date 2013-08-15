@@ -165,7 +165,7 @@ function shoestrap_getFilePaths($file) {
   $result['themepath'] = shoestrap_prep_path( themePATH );
   $result['path'] = shoestrap_prep_path( $file );
   
-  $parts = explode( $result['themepath'] . $result['folder'], $file );  
+  $parts = explode( strtolower( $result['themepath'] ) . strtolower( $result['folder'] ), strtolower( $file ) );
   $result['relativepath'] = shoestrap_prep_path( $parts[1] );
   $result['relativeuri'] = shoestrap_prep_uri( $parts[1] );
   $result['uri'] = $result['themeuri'] . $result['relativeuri'];
