@@ -1809,6 +1809,96 @@ input[type="button"].btn-block {
   -webkit-transition: height .35s ease;
   transition: height .35s ease;
 }
+.input-group {
+  position: relative;
+  display: table;
+  border-collapse: separate;
+}
+.input-group.col {
+  float: none;
+  padding-left: 0;
+  padding-right: 0;
+}
+.input-group .form-control {
+  width: 100%;
+  margin-bottom: 0;
+}
+.input-group-addon,
+.input-group-btn,
+.input-group .form-control {
+  display: table-cell;
+}
+.input-group-addon:not(:first-child):not(:last-child),
+.input-group-btn:not(:first-child):not(:last-child),
+.input-group .form-control:not(:first-child):not(:last-child) {
+  border-radius: 0;
+}
+.input-group-addon,
+.input-group-btn {
+  width: 1%;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+.input-group-addon {
+  padding: 8px 12px;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1;
+  text-align: center;
+  background-color: #eeeeee;
+  border: 1px solid #c4c4c4;
+  border-radius: 4px;
+}
+.input-group-addon.input-sm {
+  padding: 5px 10px;
+  font-size: 12px;
+  border-radius: 3px;
+}
+.input-group-addon.input-lg {
+  padding: 14px 16px;
+  font-size: 18px;
+  border-radius: 6px;
+}
+.input-group-addon input[type="radio"],
+.input-group-addon input[type="checkbox"] {
+  margin-top: 0;
+}
+.input-group .form-control:first-child,
+.input-group-addon:first-child,
+.input-group-btn:first-child > .btn,
+.input-group-btn:first-child > .dropdown-toggle,
+.input-group-btn:last-child > .btn:not(:last-child):not(.dropdown-toggle) {
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
+}
+.input-group-addon:first-child {
+  border-right: 0;
+}
+.input-group .form-control:last-child,
+.input-group-addon:last-child,
+.input-group-btn:last-child > .btn,
+.input-group-btn:last-child > .dropdown-toggle,
+.input-group-btn:first-child > .btn:not(:first-child) {
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+}
+.input-group-addon:last-child {
+  border-left: 0;
+}
+.input-group-btn {
+  position: relative;
+  white-space: nowrap;
+}
+.input-group-btn > .btn {
+  position: relative;
+}
+.input-group-btn > .btn + .btn {
+  margin-left: -4px;
+}
+.input-group-btn > .btn:hover,
+.input-group-btn > .btn:active {
+  z-index: 2;
+}
 @font-face {
   font-family: 'Elusive-Icons';
   src: url('../fonts/Elusive-Icons.eot');
@@ -3269,19 +3359,19 @@ button.close {
 .navbar-nav > li > a {
   padding-top: 15px;
   padding-bottom: 15px;
-  color: #777777;
+  color: #333333;
   line-height: 20px;
   border-radius: 4px;
 }
 .navbar-nav > li > a:hover,
 .navbar-nav > li > a:focus {
-  color: #333333;
+  color: #000000;
   background-color: transparent;
 }
 .navbar-nav > .active > a,
 .navbar-nav > .active > a:hover,
 .navbar-nav > .active > a:focus {
-  color: #555555;
+  color: #1a1a1a;
   background-color: #d5d5d5;
 }
 .navbar-nav > .disabled > a,
@@ -3351,12 +3441,12 @@ button.close {
   font-size: 18px;
   font-weight: 500;
   line-height: 20px;
-  color: #777777;
+  color: #333333;
   text-align: center;
 }
 .navbar-brand:hover,
 .navbar-brand:focus {
-  color: #5e5e5e;
+  color: #1a1a1a;
   text-decoration: none;
   background-color: transparent;
 }
@@ -3417,24 +3507,24 @@ button.close {
 }
 .navbar-nav > .dropdown > a:hover .caret,
 .navbar-nav > .dropdown > a:focus .caret {
-  border-top-color: #333333;
-  border-bottom-color: #333333;
+  border-top-color: #000000;
+  border-bottom-color: #000000;
 }
 .navbar-nav > .open > a,
 .navbar-nav > .open > a:hover,
 .navbar-nav > .open > a:focus {
   background-color: #d5d5d5;
-  color: #555555;
+  color: #1a1a1a;
 }
 .navbar-nav > .open > a .caret,
 .navbar-nav > .open > a:hover .caret,
 .navbar-nav > .open > a:focus .caret {
-  border-top-color: #555555;
-  border-bottom-color: #555555;
+  border-top-color: #1a1a1a;
+  border-bottom-color: #1a1a1a;
 }
 .navbar-nav > .dropdown > a .caret {
-  border-top-color: #777777;
-  border-bottom-color: #777777;
+  border-top-color: #333333;
+  border-bottom-color: #333333;
 }
 .navbar-nav.pull-right > li > .dropdown-menu,
 .navbar-nav > li > .dropdown-menu.pull-right {
@@ -3549,10 +3639,10 @@ button.close {
   margin-bottom: 15px;
 }
 .navbar-link {
-  color: #777777;
+  color: #333333;
 }
 .navbar-link:hover {
-  color: #333333;
+  color: #000000;
 }
 .navbar-inverse .navbar-link {
   color: #999999;
@@ -5084,14 +5174,15 @@ body.bottom-navbar {
 }
 a.toggle-nav {
   position: relative;
-  top: 12px;
+  top: 14px;
   width: 30px;
   height: 30px;
   display: block;
-  opacity: 0.5;
+  opacity: 0.6;
   z-index: 1;
   float: left;
-  font-size: 24px;
+  font-size: 20px;
+  color: #333333;
   text-decoration: none;
   text-align: center;
   -webkit-transition: all 500ms ease-in-out;
@@ -5100,13 +5191,8 @@ a.toggle-nav {
   -ms-transition: all 500ms ease-in-out;
 }
 a.toggle-nav.open {
-  -moz-transform: rotate(135deg);
-  -webkit-transform: rotate(135deg);
-  -o-transform: rotate(135deg);
-  -ms-transform: rotate(135deg);
-  transform: rotate(135deg);
-  opacity: 0.9;
-  -moz-transform-origin: center center;
+  opacity: 1;
+  top: 18px;
 }
 #megaDrop {
   display: none;

@@ -257,7 +257,6 @@ function shoestrap_variables_less() {
 
   $border_radius    = filter_var( shoestrap_getVariable( 'general_border_radius', true ), FILTER_SANITIZE_NUMBER_INT );
   $padding_base     = intval( shoestrap_getVariable( 'padding_base', true ) );
-  $navbar_color     = '#' . str_replace( '#', '', shoestrap_getVariable( 'navbar_color', true ) );
   $navbar_bg        = '#' . str_replace( '#', '', shoestrap_getVariable( 'navbar_bg', true ) );
   $jumbotron_bg     = '#' . str_replace( '#', '', shoestrap_getVariable( 'jumbotron_bg', true ) );
 
@@ -569,7 +568,7 @@ function shoestrap_variables_less() {
 
 // Basics of a navbar
 @navbar-height:                    ' . $navbar_height . 'px;
-@navbar-color:                     ' . $navbar_color . ';
+@navbar-color:                     ' . $navbar_text_color . ';
 @navbar-bg:                        ' . $navbar_bg . ';
 @navbar-border-radius:             @border-radius-base;
 @navbar-padding-horizontal:        floor(@grid-gutter-width / 2);  // ~15px
