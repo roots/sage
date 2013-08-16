@@ -63,10 +63,46 @@
 
 // Large
 .pagination-lg {
-  .pagination-size(@padding-large-vertical; @padding-large-horizontal; @font-size-large; @border-radius-large);
+  > li {
+    > a,
+    > span {
+      padding: @padding-large-vertical @padding-large-horizontal;
+      font-size: @font-size-large;
+    }
+    &:first-child {
+      > a,
+      > span {
+        .border-left-radius(@border-radius-large);
+      }
+    }
+    &:last-child {
+      > a,
+      > span {
+        .border-right-radius(@border-radius-large);
+      }
+    }
+  }
 }
 
 // Small
 .pagination-sm {
-  .pagination-size(@padding-small-vertical; @padding-small-horizontal; @font-size-small; @border-radius-small);
+  > li {
+    > a,
+    > span {
+      padding: @padding-small-vertical @padding-small-horizontal;
+      font-size: @font-size-small;
+    }
+    &:first-child {
+      > a,
+      > span {
+        .border-left-radius(@border-radius-small);
+      }
+    }
+    &:last-child {
+      > a,
+      > span {
+        .border-right-radius(@border-radius-small);
+      }
+    }
+  }
 }
