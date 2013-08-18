@@ -1,0 +1,271 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Project-Id-Version: roots\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"X-Poedit-KeywordsList: __;_e\n"
+
+#: 404.php:4
+msgid "Sorry, but the page you were trying to view does not exist."
+msgstr "متاسفانه، صفحه ای که شما سعی دارید مشاهده کنید وجود ندارد."
+
+#: 404.php:7
+msgid "It looks like this was the result of either:"
+msgstr "به نظر می رسد هر دو نتیجه یکسان هستند."
+
+#: 404.php:9
+msgid "a mistyped address"
+msgstr " آدرس اشتباه تایپ شده"
+
+#: 404.php:10
+msgid "an out-of-date link"
+msgstr "یک لینک منسوخ"
+
+#: base.php:4
+msgid "You are using an <strong>outdated</strong> browser. Please <a href=\"http://browsehappy.com/\">upgrade your browser</a> to improve your experience."
+msgstr "شما در حال استفاده از یک مرورگر قدیمی هستید. لطفا نسخه مرورگر خود را برای بهبود تجربه، <a href=\"http://browsehappy.com/\">به روزرسانی</a> کنید."
+
+#: index.php:5
+msgid "Sorry, no results were found."
+msgstr "متاسفانه نتیجه ای یافت نشد."
+
+#: index.php:17
+msgid "&larr; Older posts"
+msgstr "مطالب قدیمیتر &larr;"
+
+#: index.php:18
+msgid "Newer posts &rarr;"
+msgstr "مطالب جدیدتر &rarr;"
+
+#: lib/activation.php:28
+#: lib/activation.php:29
+msgid "Theme Activation"
+msgstr "فعال سازی پوسته"
+
+#: lib/activation.php:51
+msgid "%s Theme Activation"
+msgstr "فعال سازی پوسته %s."
+
+#: lib/activation.php:62
+#: lib/activation.php:64
+msgid "Create static front page?"
+msgstr "آیا می خواهید صفحه اول استاتیک ایجاد کنید؟"
+
+#: lib/activation.php:66
+#: lib/activation.php:79
+#: lib/activation.php:92
+#: lib/activation.php:105
+#: lib/activation.php:118
+msgid "Yes"
+msgstr "بله"
+
+#: lib/activation.php:67
+#: lib/activation.php:80
+#: lib/activation.php:93
+#: lib/activation.php:106
+#: lib/activation.php:119
+msgid "No"
+msgstr "خیر"
+
+#: lib/activation.php:70
+msgid "Create a page called Home and set it to be the static front page"
+msgstr "ایجاد صفحه ای به نام \"خانه\" و تنظیم آن به عنوان صفحه نخست ایستا."
+
+#: lib/activation.php:75
+msgid "Change permalink structure?"
+msgstr "آیا می خواهید ساختار لینک ثابت را تغییر دهید؟"
+
+#: lib/activation.php:77
+msgid "Update permalink structure?"
+msgstr "آیا می خواهید ساختار لینک ثابت را به روزرسانی کنید؟"
+
+#: lib/activation.php:83
+msgid "Change permalink structure to /&#37;postname&#37;/"
+msgstr "تغییر ساختار لینک ثابت به نام پست."
+
+#: lib/activation.php:88
+msgid "Change uploads folder?"
+msgstr "آیا می خواهید نام پوشه ی آپلود را تغییر دهید؟"
+
+#: lib/activation.php:90
+msgid "Update uploads folder?"
+msgstr "آیا می خواهید نام پوشه ی آپلود را به روزرسانی کنید؟"
+
+#: lib/activation.php:96
+msgid "Change uploads folder to /media/ instead of /wp-content/uploads/"
+msgstr "تغییر پوشه ی آپلود  /media/ instead به /wp-content/uploads/"
+
+#: lib/activation.php:101
+#: lib/activation.php:103
+msgid "Create navigation menu?"
+msgstr "آیا می خواهید منو ایجاد کنید؟"
+
+#: lib/activation.php:109
+msgid "Create the Primary Navigation menu and set the location"
+msgstr "ایجاد منو اولیه و تعیین موقعیت آن."
+
+#: lib/activation.php:114
+#: lib/activation.php:116
+msgid "Add pages to menu?"
+msgstr "آیا می خواهید صفحه ای در منو اضافه کنید؟"
+
+#: lib/activation.php:122
+msgid "Add all current published pages to the Primary Navigation"
+msgstr "اضافه کردن تمام صفحات منتشر شده جاری در منو اولیه"
+
+#: lib/cleanup.php:210
+msgid "Continued"
+msgstr "ادامه"
+
+#: lib/init.php:11
+msgid "Primary Navigation"
+msgstr "منو اصلی"
+
+#: lib/titles.php:10
+msgid "Latest Posts"
+msgstr "آخرین مطالب."
+
+#: lib/titles.php:19
+msgid "Daily Archives: %s"
+msgstr "آرشیو روزانه: %s"
+
+#: lib/titles.php:21
+msgid "Monthly Archives: %s"
+msgstr "آرشیو ماهانه: %s"
+
+#: lib/titles.php:23
+msgid "Yearly Archives: %s"
+msgstr "آرشیو سالانه: %s"
+
+#: lib/titles.php:26
+msgid "Author Archives: %s"
+msgstr "بایگانی نویسنده: %s"
+
+#: lib/titles.php:31
+msgid "Search Results for %s"
+msgstr "نتایج جستجو برای %s"
+
+#: lib/titles.php:33
+msgid "Not Found"
+msgstr "یافت نشد."
+
+#: lib/widgets.php:8
+msgid "Primary"
+msgstr "اصلی"
+
+#: lib/widgets.php:17
+msgid "Footer"
+msgstr "پاورقی"
+
+#: lib/widgets.php:45
+msgid "Use this widget to add a vCard"
+msgstr "استفاده از این ابزار برای اضافه کردن یک کارت ویزیت."
+
+#: lib/widgets.php:47
+msgid "Roots: vCard"
+msgstr "ریشه کارت ویزیت"
+
+#: lib/widgets.php:74
+msgid "vCard"
+msgstr "کارت ویزیت"
+
+#: templates/comment.php:4
+msgid "%1$s"
+msgstr "%1$s"
+
+#: templates/comment.php:5
+msgid "(Edit)"
+msgstr "(ویرایش)"
+
+#: templates/comment.php:9
+msgid "Your comment is awaiting moderation."
+msgstr "نظر شما در انتظار تایید است."
+
+#: templates/comments.php:8
+msgid "One Response to &ldquo;%2$s&rdquo;"
+msgstr "یک پاسخ برای &ldquo;%2$s&rdquo;"
+
+#: templates/comments.php:18
+msgid "&larr; Older comments"
+msgstr "&larr; نظرات قدیمیتر"
+
+#: templates/comments.php:21
+msgid "Newer comments &rarr;"
+msgstr "نظرات جدیدتر &rarr;"
+
+#: templates/comments.php:29
+#: templates/comments.php:38
+msgid "Comments are closed."
+msgstr "نظرات مسدود است."
+
+#: templates/comments.php:45
+msgid "Leave a Reply"
+msgstr "گذاشتن پاسخ"
+
+#: templates/comments.php:45
+msgid "Leave a Reply to %s"
+msgstr "گذاشتن پاسخ برای"
+
+#: templates/comments.php:48
+msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
+msgstr "شما باید وارد حساب کاربری شده <a href=\"%s\">logged in</a> آنگاه می توانید برای مطلب نظر دهید."
+
+#: templates/comments.php:53
+msgid "Logged in as <a href=\"%s/wp-admin/profile.php\">%s</a>."
+msgstr "وارد شده به عنوان <a href=\"%s/wp-admin/profile.php\">%s</a>. "
+
+#: templates/comments.php:54
+msgid "Log out of this account"
+msgstr "خروج از این حساب"
+
+#: templates/comments.php:54
+msgid "Log out &raquo;"
+msgstr "خروج &raquo;"
+
+#: templates/comments.php:57
+msgid "Name"
+msgstr "نام"
+
+#: templates/comments.php:57
+#: templates/comments.php:59
+msgid " (required)"
+msgstr "(ضروری)"
+
+#: templates/comments.php:59
+msgid "Email (will not be published)"
+msgstr "پست الکترونیک، نمایش داده نخواهد شد."
+
+#: templates/comments.php:61
+msgid "Website"
+msgstr "وب سایت"
+
+#: templates/comments.php:64
+msgid "Comment"
+msgstr "توضیح"
+
+#: templates/comments.php:66
+msgid "Submit Comment"
+msgstr "ارسال توضیح"
+
+#: templates/content-single.php:11
+msgid "Pages:"
+msgstr "صفحات:"
+
+#: templates/entry-meta.php:2
+msgid "By"
+msgstr "توسط"
+
+#: templates/searchform.php:2
+msgid "Search for:"
+msgstr "جستجو برای:"
+
+#: templates/searchform.php:3
+#: templates/searchform.php:4
+msgid "Search"
+msgstr "جستجو"
+

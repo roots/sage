@@ -329,12 +329,12 @@ function shoestrap_variables_less() {
 
   if ( shoestrap_get_brightness( $navbar_bg ) > 80 ) {
     $navbar_link_hover_color    = 'darken(@navbar-color, 26.5%)';
-    $navbar_link_active_bg      = 'darken(@navbar-bg, 10%)';
+    $navbar_link_active_bg      = 'darken(@navbar-bg, 6.5%)';
     $navbar_link_disabled_color = 'darken(@navbar-bg, 6.5%)';
     $navbar_brand_hover_color   = 'darken(@navbar-link-color, 10%)';
   } else {
     $navbar_link_hover_color    = 'lighten(@navbar-color, 26.5%)';
-    $navbar_link_active_bg      = 'lighten(@navbar-bg, 10%)';
+    $navbar_link_active_bg      = 'lighten(@navbar-bg, 6.5%)';
     $navbar_link_disabled_color = 'lighten(@navbar-bg, 6.5%)';
     $navbar_brand_hover_color   = 'lighten(@navbar-link-color, 10%)';
   }
@@ -479,6 +479,7 @@ function shoestrap_variables_less() {
 @input-bg:                       @body-bg;
 @input-bg-disabled:              @gray-lighter;
 
+@input-color:                    @gray;
 @input-border:                   @ccc;
 @input-border-radius:            @border-radius-base;
 @input-border-focus:             lighten(@brand-primary, 10%);
@@ -489,8 +490,10 @@ function shoestrap_variables_less() {
 @input-height-large:             (floor(@font-size-large * @line-height-large) + (@padding-large-vertical * 2) + 2);
 @input-height-small:             (floor(@font-size-small * @line-height-small) + (@padding-small-vertical * 2) + 2);
 
+@legend-color:                   @gray-dark;
 @legend-border-color:            @gray-lighter;
 
+@input-group-addon-bg:           @gray-lighter;
 @input-group-addon-border-color: @input-border;
 
 
@@ -508,6 +511,10 @@ function shoestrap_variables_less() {
 @dropdown-link-color:            @gray-dark;
 @dropdown-link-hover-color:      ' . $body_bg . ';
 @dropdown-link-hover-bg:         @dropdown-link-active-bg;
+
+@dropdown-link-disabled-color:   @gray-light;
+
+@dropdown-header-color:          @gray-light;
 
 @dropdown-caret-color:           @gray-darker;
 
@@ -547,6 +554,7 @@ function shoestrap_variables_less() {
 @screen-large-desktop:       @screen-large;
 
 // So media queries dont overlap when required, provide a maximum
+@screen-phone-max:           (@screen-small - 1);
 @screen-small-max:           (@screen-medium - 1);
 @screen-tablet-max:          (@screen-desktop - 1);
 @screen-desktop-max:         (@screen-large-desktop - 1);
@@ -568,10 +576,12 @@ function shoestrap_variables_less() {
 
 // Basics of a navbar
 @navbar-height:                    ' . $navbar_height . 'px;
+@navbar-margin-bottom:             @line-height-computed;
 @navbar-color:                     ' . $navbar_text_color . ';
 @navbar-bg:                        ' . $navbar_bg . ';
+@navbar-border:                    darken(@navbar-bg, 6.5%);
 @navbar-border-radius:             @border-radius-base;
-@navbar-padding-horizontal:        floor(@grid-gutter-width / 2);  // ~15px
+@navbar-padding-horizontal:        floor(@grid-gutter-width / 2);
 @navbar-padding-vertical:          ((@navbar-height - @line-height-computed) / 2);
 
 // Navbar links
@@ -599,6 +609,7 @@ function shoestrap_variables_less() {
 // Reset inverted navbar basics
 @navbar-inverse-color:                      @gray-light;
 @navbar-inverse-bg:                         #222;
+@navbar-inverse-border:                     darken(@navbar-inverse-bg, 10%);
 
 // Inverted navbar links
 @navbar-inverse-link-color:                 @gray-light;
@@ -834,11 +845,13 @@ function shoestrap_variables_less() {
 
 // Thumbnails
 // -------------------------
-@thumbnail-caption-color:     @text-color;
+@thumbnail-padding:           4px;
 @thumbnail-bg:                @body-bg;
 @thumbnail-border:            @list-group-border;
 @thumbnail-border-radius:     @border-radius-base;
 
+@thumbnail-caption-color:     @text-color;
+@thumbnail-caption-padding:   9px;
 
 // Wells
 // -------------------------
@@ -900,7 +913,9 @@ function shoestrap_variables_less() {
 @code-bg:                     #f9f2f4;
 
 @pre-bg:                      #f5f5f5;
+@pre-color:                   @gray-dark;
 @pre-border-color:            @ccc;
+@pre-scrollable-max-height:   340px;
 
 // Type
 // ------------------------

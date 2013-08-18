@@ -61,7 +61,7 @@ if ( !function_exists( 'shoestrap_module_header_options' ) ) {
       "desc"      => __("Pick a background color for the NavBar. Default: #eeeeee.", "shoestrap"),
       "id"        => "navbar_bg",
       "fold"      => "navbar_toggle",
-      "std"       => "#eeeeee",
+      "std"       => "#f8f8f8",
       "less"      => true,
       "customizer"=> array(),
       "type"      => "color"
