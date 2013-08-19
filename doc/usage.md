@@ -25,7 +25,7 @@ A basic Roots theme initially looks like this:
 │   │   ├── main.js
 │   │   ├── plugins.js (includes bootstrap.js)
 │   │   └── vendor
-│   │       ├── jquery-1.9.1.min.js
+│   │       ├── jquery-1.10.2.min.js
 │   │       └── modernizr-2.6.2.min.js
 │   └── less
 │   │   │── bootstrap.less
