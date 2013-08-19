@@ -1,5 +1,5 @@
 ### HEAD
-* Update to Bootstrap 3 RC1
+* Update to Bootstrap 3.0.0
 * Update to jQuery 1.10.2
 * Change media directory from `/assets/` to `/media/`
 * Update to Google Universal Analytics
