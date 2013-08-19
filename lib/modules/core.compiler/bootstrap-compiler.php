@@ -339,8 +339,69 @@ function shoestrap_variables_less() {
     $navbar_brand_hover_color   = 'lighten(@navbar-link-color, 10%)';
   }
 
+  if ( shoestrap_get_brightness( $brand_primary ) > 80 ) {
+    $btn_primary_color  = '#fff';
+    $btn_primary_border = 'darken(@btn-primary-bg, 5%)';
+  } else {
+    $btn_primary_color  = '#333';
+    $btn_primary_border = 'lighten(@btn-primary-bg, 5%)';
+  }
 
-  $variables = '//
+  if ( shoestrap_get_brightness( $brand_success ) > 80 ) {
+    $btn_success_color  = '#fff';
+    $btn_success_border = 'darken(@btn-success-bg, 5%)';
+  } else {
+    $btn_success_color  = '#333';
+    $btn_success_border = 'lighten(@btn-success-bg, 5%)';
+  }
+
+  if ( shoestrap_get_brightness( $brand_warning ) > 80 ) {
+    $btn_warning_color  = '#fff';
+    $btn_warning_border = 'darken(@btn-warning-bg, 5%)';
+  } else {
+    $btn_warning_color  = '#333';
+    $btn_warning_border = 'lighten(@btn-warning-bg, 5%)';
+  }
+
+  if ( shoestrap_get_brightness( $brand_danger ) > 80 ) {
+    $btn_danger_color  = '#fff';
+    $btn_danger_border = 'darken(@btn-danger-bg, 5%)';
+  } else {
+    $btn_danger_color  = '#333';
+    $btn_danger_border = 'lighten(@btn-danger-bg, 5%)';
+  }
+
+  if ( shoestrap_get_brightness( $brand_info ) > 80 ) {
+    $btn_info_color  = '#fff';
+    $btn_info_border = 'darken(@btn-info-bg, 5%)';
+  } else {
+    $btn_info_color  = '#333';
+    $btn_info_border = 'lighten(@btn-info-bg, 5%)';
+  }
+
+  if ( shoestrap_get_brightness( $brand_primary ) < 100 )
+    $input_border_focus = 'lighten(@brand-primary, 10%);';
+  else
+    $input_border_focus = 'darken(@brand-primary, 10%);';
+
+  if ( shoestrap_get_brightness( $brand_primary ) < 50 )
+    $navbar_border  = 'lighten(@navbar-bg, 6.5%)';
+  else
+    $navbar_border  = 'darken(@navbar-bg, 6.5%)';
+
+  $variables = '
+@brand-secondary: ' . $brand_secondary . ';
+
+@428bca: ' . $brand_primary . ';
+@5cb85c: ' . $brand_success . ';
+@f0ad4e: ' . $brand_warning . ';
+@d9534f: ' . $brand_danger . ';
+@5bc0de: ' . $brand_info . ';
+
+@fff: ' . $body_bg . ';
+
+
+//
 // Variables
 // --------------------------------------------------
 
@@ -363,17 +424,16 @@ function shoestrap_variables_less() {
 // Brand colors
 // -------------------------
 
-@brand-primary:         ' . $brand_primary . ';
-@brand-secondary:       ' . $brand_secondary . ';
-@brand-success:         ' . $brand_success . ';
-@brand-warning:         ' . $brand_warning . ';
-@brand-danger:          ' . $brand_danger . ';
-@brand-info:            ' . $brand_info . ';
+@brand-primary:         @428bca;
+@brand-success:         @5cb85c;
+@brand-warning:         @f0ad4e;
+@brand-danger:          @d9534f;
+@brand-info:            @5bc0de;
 
 // Scaffolding
 // -------------------------
 
-@body-bg:               ' . $body_bg . ';
+@body-bg:               @fff;
 @text-color:            ' . $text_color . ';
 
 // Links
@@ -450,25 +510,25 @@ function shoestrap_variables_less() {
 @btn-default-bg:                 @body-bg;
 @btn-default-border:             @ccc;
 
-@btn-primary-color:              @body-bg;
+@btn-primary-color:              ' . $btn_primary_color . ';
 @btn-primary-bg:                 @brand-primary;
-@btn-primary-border:             darken(@btn-primary-bg, 5%);
+@btn-primary-border:             ' . $btn_primary_border . ';
 
-@btn-success-color:              @body-bg;
+@btn-success-color:              ' . $btn_success_color . ';
 @btn-success-bg:                 @brand-success;
-@btn-success-border:             darken(@btn-success-bg, 5%);
+@btn-success-border:             ' . $btn_success_border . ';
 
-@btn-warning-color:              @body-bg;
+@btn-warning-color:              ' . $btn_warning_color . ';
 @btn-warning-bg:                 @brand-warning;
-@btn-warning-border:             darken(@btn-warning-bg, 5%);
+@btn-warning-border:             ' . $btn_warning_border . ';
 
-@btn-danger-color:               @body-bg;
+@btn-danger-color:               ' . $btn_danger_color . ';
 @btn-danger-bg:                  @brand-danger;
-@btn-danger-border:              darken(@btn-danger-bg, 5%);
+@btn-danger-border:              ' . $btn_danger_border . ';
 
-@btn-info-color:                 @body-bg;
+@btn-info-color:                 ' . $btn_info_color . ';
 @btn-info-bg:                    @brand-info;
-@btn-info-border:                darken(@btn-info-bg, 5%);
+@btn-info-border:                ' . $btn_info_border . ';
 
 @btn-link-disabled-color:        @gray-light;
 
@@ -482,7 +542,7 @@ function shoestrap_variables_less() {
 @input-color:                    @gray;
 @input-border:                   @ccc;
 @input-border-radius:            @border-radius-base;
-@input-border-focus:             lighten(@brand-primary, 10%);
+@input-border-focus:             ' . $input_border_focus . ';
 
 @input-color-placeholder:        @gray-light;
 
@@ -579,7 +639,7 @@ function shoestrap_variables_less() {
 @navbar-margin-bottom:             @line-height-computed;
 @navbar-color:                     ' . $navbar_text_color . ';
 @navbar-bg:                        ' . $navbar_bg . ';
-@navbar-border:                    darken(@navbar-bg, 6.5%);
+@navbar-border:                    ' . $navbar_border . ';
 @navbar-border-radius:             @border-radius-base;
 @navbar-padding-horizontal:        floor(@grid-gutter-width / 2);
 @navbar-padding-vertical:          ((@navbar-height - @line-height-computed) / 2);
@@ -711,7 +771,7 @@ function shoestrap_variables_less() {
 // Tooltips
 // -------------------------
 @tooltip-max-width:           200px;
-@tooltip-color:               ' . $body_bg . ';
+@tooltip-color:               @body-bg;
 @tooltip-bg:                  darken(@gray-darker, 15%);
 
 @tooltip-arrow-width:         @padding-small-vertical;
@@ -845,13 +905,13 @@ function shoestrap_variables_less() {
 
 // Thumbnails
 // -------------------------
-@thumbnail-padding:           4px;
+@thumbnail-padding:           ceil(@table-cell-padding / 2 );
 @thumbnail-bg:                @body-bg;
 @thumbnail-border:            @list-group-border;
 @thumbnail-border-radius:     @border-radius-base;
 
 @thumbnail-caption-color:     @text-color;
-@thumbnail-caption-padding:   9px;
+@thumbnail-caption-padding:   @table-cell-padding;
 
 // Wells
 // -------------------------
