@@ -4,7 +4,7 @@ function shoestrap_secondary_navbar() {
   if ( shoestrap_getVariable( 'secondary_navbar_toggle' ) != 0 ) : ?>
 
     <div class="<?php echo shoestrap_container_class(); ?>">
-      <header class="secondary <?php echo shoestrap_navbar_class( 'secondary' ); ?>" role="banner">
+      <header class="secondary navbar navbar-default <?php echo shoestrap_navbar_class( 'secondary' ); ?>" role="banner">
         <button data-target=".nav-secondary" data-toggle="collapse" type="button" class="navbar-toggle">
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
