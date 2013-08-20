@@ -385,9 +385,9 @@ function shoestrap_variables_less() {
     $input_border_focus = 'darken(@brand-primary, 10%);';
 
   if ( shoestrap_get_brightness( $brand_primary ) < 50 )
-    $navbar_border  = 'lighten(@navbar-bg, 6.5%)';
+    $navbar_border  = 'lighten(@navbar-default-bg, 6.5%)';
   else
-    $navbar_border  = 'darken(@navbar-bg, 6.5%)';
+    $navbar_border  = 'darken(@navbar-default-bg, 6.5%)';
 
   $variables = '
 @brand-secondary: ' . $brand_secondary . ';
@@ -461,6 +461,12 @@ function shoestrap_variables_less() {
 @headings-font-weight:    500;
 @headings-line-height:    1.1;
 
+// Iconography
+// -------------------------
+
+@icon-font-path:          "../fonts/";
+@icon-font-name:          "Elusive-Icons";
+
 
 // Components
 // -------------------------
@@ -504,7 +510,7 @@ function shoestrap_variables_less() {
 // Buttons
 // -------------------------
 
-@btn-font-weight:                bold;
+@btn-font-weight:                normal;
 
 @btn-default-color:              @gray-dark;
 @btn-default-bg:                 @body-bg;
@@ -587,6 +593,7 @@ function shoestrap_variables_less() {
 // Used for a birds eye view of components dependent on the z-axis
 // Try to avoid customizing these :)
 
+@zindex-navbar:            1000;
 @zindex-dropdown:          1000;
 @zindex-popover:           1010;
 @zindex-tooltip:           1030;
@@ -598,26 +605,25 @@ function shoestrap_variables_less() {
 // --------------------------------------------------
 
 // Extra small screen / phone
-@screen-xsmall:              480px;
-@screen-phone:               @screen-xsmall;
+@screen-xs:                  480px;
+@screen-phone:               @screen-xs;
 
 // Small screen / tablet
-@screen-small:               ' . $screen_small . 'px;
-@screen-tablet:              @screen-small;
+@screen-sm:                  ' . $screen_small . 'px;
+@screen-tablet:              @screen-sm;
 
 // Medium screen / desktop
-@screen-medium:              ' . $screen_medium . 'px;
-@screen-desktop:             @screen-medium;
+@screen-md:                  ' . $screen_medium . 'px;
+@screen-desktop:             @screen-md;
 
 // Large screen / wide desktop
-@screen-large:               ' . $screen_large . 'px;
-@screen-large-desktop:       @screen-large;
+@screen-lg:                  ' . $screen_large . 'px;
+@screen-lg-desktop:          @screen-lg;
 
 // So media queries dont overlap when required, provide a maximum
-@screen-phone-max:           (@screen-small - 1);
-@screen-small-max:           (@screen-medium - 1);
-@screen-tablet-max:          (@screen-desktop - 1);
-@screen-desktop-max:         (@screen-large-desktop - 1);
+@screen-xs-max:              (@screen-sm - 1);
+@screen-sm-max:              (@screen-md - 1);
+@screen-md-max:              (@screen-lg - 1);
 
 
 // Grid system
@@ -637,31 +643,31 @@ function shoestrap_variables_less() {
 // Basics of a navbar
 @navbar-height:                    ' . $navbar_height . 'px;
 @navbar-margin-bottom:             @line-height-computed;
-@navbar-color:                     ' . $navbar_text_color . ';
-@navbar-bg:                        ' . $navbar_bg . ';
-@navbar-border:                    ' . $navbar_border . ';
+@navbar-default-color:             ' . $navbar_text_color . ';
+@navbar-default-bg:                ' . $navbar_bg . ';
+@navbar-default-border:            ' . $navbar_border . ';
 @navbar-border-radius:             @border-radius-base;
 @navbar-padding-horizontal:        floor(@grid-gutter-width / 2);
 @navbar-padding-vertical:          ((@navbar-height - @line-height-computed) / 2);
 
 // Navbar links
-@navbar-link-color:                @navbar-color;
-@navbar-link-hover-color:          ' . $navbar_link_hover_color . ';
-@navbar-link-hover-bg:             transparent;
-@navbar-link-active-color:         mix(@navbar-color, @navbar-link-hover-color, 50%);
-@navbar-link-active-bg:            ' . $navbar_link_active_bg . ';
-@navbar-link-disabled-color:       ' . $navbar_link_disabled_color . ';
-@navbar-link-disabled-bg:          transparent;
+@navbar-default-link-color:                @navbar-color;
+@navbar-default-link-hover-color:          ' . $navbar_link_hover_color . ';
+@navbar-default-link-hover-bg:             transparent;
+@navbar-default-link-active-color:         mix(@navbar-default-color, @navbar-default-link-hover-color, 50%);
+@navbar-default-link-active-bg:            ' . $navbar_link_active_bg . ';
+@navbar-default-link-disabled-color:       ' . $navbar_link_disabled_color . ';
+@navbar-default-link-disabled-bg:          transparent;
 
 // Navbar brand label
-@navbar-brand-color:               @navbar-link-color;
-@navbar-brand-hover-color:         ' . $navbar_brand_hover_color . ';
-@navbar-brand-hover-bg:            transparent;
+@navbar-default-brand-color:               @navbar-default-link-color;
+@navbar-default-brand-hover-color:         ' . $navbar_brand_hover_color . ';
+@navbar-default-brand-hover-bg:            transparent;
 
 // Navbar toggle
-@navbar-toggle-hover-bg:           @table-border-color;
-@navbar-toggle-icon-bar-bg:        @ccc;
-@navbar-toggle-border-color:       @table-border-color;
+@navbar-default-toggle-hover-bg:           @table-border-color;
+@navbar-default-toggle-icon-bar-bg:        @ccc;
+@navbar-default-toggle-border-color:       @table-border-color;
 
 
 // Inverted navbar
@@ -701,6 +707,7 @@ function shoestrap_variables_less() {
 // Navs
 // -------------------------
 
+@nav-link-padding:                          10px 15px;
 @nav-link-hover-bg:                         @gray-lighter;
 
 @nav-disabled-link-color:                   @gray-light;
@@ -731,9 +738,14 @@ function shoestrap_variables_less() {
 
 @pagination-bg:                        ' . $body_bg . ';
 @pagination-border:                    ' . $table_border_color . ';
-@pagination-active-bg:                 ' . $table_bg_hover . ';
-@pagination-active-color:              @gray-light;
+
+@pagination-hover-bg:                  @gray-lighter;
+
+@pagination-active-bg:                 @brand-primary;
+@pagination-active-color:              @fff;
+
 @pagination-disabled-color:            @gray-light;
+
 
 // Pager
 // -------------------------
@@ -745,6 +757,8 @@ function shoestrap_variables_less() {
 // Jumbotron
 // -------------------------
 
+@jumbotron-padding:              30px;
+@jumbotron-color:                inherit;
 @jumbotron-bg:                   ' . $jumbotron_bg . ';
 
 
@@ -799,6 +813,7 @@ function shoestrap_variables_less() {
 // -------------------------
 
 @label-default-bg:            @gray-light;
+@label-primary-bg:            @brand-primary;
 @label-success-bg:            @brand-success;
 @label-info-bg:               @brand-info;
 @label-warning-bg:            @brand-warning;
@@ -826,25 +841,25 @@ function shoestrap_variables_less() {
 
 // Alerts
 // -------------------------
-@alert-padding:               @modal-title-padding;
+@alert-padding:               15px;
 @alert-border-radius:         @border-radius-base;
 @alert-link-font-weight:      bold;
-
-@alert-bg:                    @state-warning-bg;
-@alert-text:                  @state-warning-text;
-@alert-border:                @state-warning-border;
 
 @alert-success-bg:            @state-success-bg;
 @alert-success-text:          @state-success-text;
 @alert-success-border:        @state-success-border;
 
-@alert-danger-bg:             @state-danger-bg;
-@alert-danger-text:           @state-danger-text;
-@alert-danger-border:         @state-danger-border;
-
 @alert-info-bg:               @state-info-bg;
 @alert-info-text:             @state-info-text;
 @alert-info-border:           @state-info-border;
+
+@alert-warning-bg:            @state-warning-bg;
+@alert-warning-text:          @state-warning-text;
+@alert-warning-border:        @state-warning-border;
+
+@alert-danger-bg:             @state-danger-bg;
+@alert-danger-text:           @state-danger-text;
+@alert-danger-border:         @state-danger-border;
 
 
 // Progress bars
@@ -877,10 +892,13 @@ function shoestrap_variables_less() {
 // Panels
 // -------------------------
 @panel-bg:                    ' . $body_bg . ';
-@panel-border:                @list-group-border;
+@panel-inner-border:                @list-group-border;
 @panel-border-radius:         @border-radius-base;
-@panel-heading-bg:            @list-group-hover-bg;
 @panel-footer-bg:             @list-group-hover-bg;
+
+@panel-default-text:          @gray-dark;
+@panel-default-border:        @@table-border-color;
+@panel-default-heading-bg:    @panel-footer-bg;
 
 @panel-primary-text:          ' . $body_bg . ';
 @panel-primary-border:        @brand-primary;
@@ -916,11 +934,6 @@ function shoestrap_variables_less() {
 // Wells
 // -------------------------
 @well-bg:                     @table-bg-hover;
-
-
-// Accordion
-// -------------------------
-@accordion-border-color:      @legend-border-color;
 
 
 // Badges
@@ -1000,13 +1013,13 @@ function shoestrap_variables_less() {
 // --------------------------------------------------
 
 // Small screen / tablet
-@container-tablet:          ' . $container_tablet . 'px;
+@container-tablet:          ((' . $container_tablet . 'px + @grid-gutter-width));
 
 // Medium screen / desktop
-@container-desktop:         ' . $container_desktop . 'px;
+@container-desktop:         ((' . $container_desktop . 'px + @grid-gutter-width));
 
 // Large screen / wide desktop
-@container-large-desktop:   ' . $container_large_desktop . 'px;
+@container-large-desktop:   ((' . $container_large_desktop . 'px + @grid-gutter-width));
 
 
 
@@ -1081,9 +1094,9 @@ function shoestrap_variables_less() {
 }
 
 
-/**
-	Brings all the LESS files that need to be compiled together.
-**/
+/*
+ * Brings all the LESS files that need to be compiled together.
+ */
 function shoestrap_complete_less( $url = false ) {
   if ( $url == true ) {
     $bootstrap    = get_template_directory_uri().'/assets/less/';
@@ -1104,64 +1117,57 @@ function shoestrap_complete_less( $url = false ) {
  */
 
 // Core variables and mixins
-// @import "'.$bootstrap.'variables";
-@import "'.$bootstrap.'mixins";
+@import "'.$bootstrap.'variables.less";
+@import "'.$bootstrap.'mixins.less";
 
 // Reset
-@import "'.$bootstrap.'normalize";
-@import "'.$bootstrap.'print";
+@import "'.$bootstrap.'normalize.less";
+@import "'.$bootstrap.'print.less";
 
 // Core CSS
-@import "'.$bootstrap.'scaffolding";
-@import "'.$bootstrap.'type";
-@import "'.$bootstrap.'code";
-@import "'.$bootstrap.'grid";
+@import "'.$bootstrap.'scaffolding.less";
+@import "'.$bootstrap.'type.less";
+@import "'.$bootstrap.'code.less";
+@import "'.$bootstrap.'grid.less";
+@import "'.$bootstrap.'tables.less";
+@import "'.$bootstrap.'forms.less";
+@import "'.$bootstrap.'buttons.less";
 
-@import "'.$bootstrap.'tables";
-@import "'.$bootstrap.'forms";
-@import "'.$bootstrap.'buttons";
-
-// Components: common
-@import "'.$bootstrap.'component-animations";
-@import "'.$bootstrap.'input-groups"; 
+// Components
+@import "'.$bootstrap.'component-animations.less";
+// @import "'.$bootstrap.'glyphicons.less";
 @import "'.$fonts.'elusive-webfont";
-@import "'.$bootstrap.'dropdowns";
-@import "'.$bootstrap.'list-group";
-@import "'.$bootstrap.'panels";
-@import "'.$bootstrap.'wells";
-@import "'.$bootstrap.'close";
+@import "'.$bootstrap.'dropdowns.less";
+@import "'.$bootstrap.'button-groups.less";
+@import "'.$bootstrap.'input-groups.less";
+@import "'.$bootstrap.'navs.less";
+@import "'.$bootstrap.'navbar.less";
+@import "'.$bootstrap.'breadcrumbs.less";
+@import "'.$bootstrap.'pagination.less";
+@import "'.$bootstrap.'pager.less";
+@import "'.$bootstrap.'labels.less";
+@import "'.$bootstrap.'badges.less";
+@import "'.$bootstrap.'jumbotron.less";
+@import "'.$bootstrap.'thumbnails.less";
+@import "'.$bootstrap.'alerts.less";
+@import "'.$bootstrap.'progress-bars.less";
+@import "'.$bootstrap.'media.less";
+@import "'.$bootstrap.'list-group.less";
+@import "'.$bootstrap.'panels.less";
+@import "'.$bootstrap.'wells.less";
+@import "'.$bootstrap.'close.less";
 
-// Components: Nav
-@import "'.$bootstrap.'navs";
-@import "'.$bootstrap.'navbar";
-@import "'.$bootstrap.'button-groups";
-@import "'.$bootstrap.'breadcrumbs";
-@import "'.$bootstrap.'pagination";
-@import "'.$bootstrap.'pager";
-
-// Components: Popovers
-@import "'.$bootstrap.'modals";
-@import "'.$bootstrap.'tooltip";
-@import "'.$bootstrap.'popovers";
-
-// Components: Misc
-@import "'.$bootstrap.'alerts";
-@import "'.$bootstrap.'thumbnails";
-@import "'.$bootstrap.'media";
-@import "'.$bootstrap.'labels";
-@import "'.$bootstrap.'badges";
-@import "'.$bootstrap.'progress-bars";
-@import "'.$bootstrap.'accordion";
-@import "'.$bootstrap.'carousel";
-@import "'.$bootstrap.'jumbotron";
+// Components w/ JavaScript
+@import "'.$bootstrap.'modals.less";
+@import "'.$bootstrap.'tooltip.less";
+@import "'.$bootstrap.'popovers.less";
+@import "'.$bootstrap.'carousel.less";
 
 // Utility classes
-@import "'.$bootstrap.'utilities"; // Has to be last to override when necessary
-@import "'.$bootstrap.'responsive-utilities";
+@import "'.$bootstrap.'utilities.less";
+@import "'.$bootstrap.'responsive-utilities.less";
 
 // Custom Shoestrap less-css
-//@import "'.$bootstrap.'retina";
-// NEED TO FIX THIS TO COMPILE!
 @import "'.$bootstrap.'app";
 ';
 
