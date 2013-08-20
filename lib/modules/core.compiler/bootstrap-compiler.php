@@ -328,15 +328,15 @@ function shoestrap_variables_less() {
   }
 
   if ( shoestrap_get_brightness( $navbar_bg ) > 80 ) {
-    $navbar_link_hover_color    = 'darken(@navbar-color, 26.5%)';
-    $navbar_link_active_bg      = 'darken(@navbar-bg, 6.5%)';
-    $navbar_link_disabled_color = 'darken(@navbar-bg, 6.5%)';
-    $navbar_brand_hover_color   = 'darken(@navbar-link-color, 10%)';
+    $navbar_link_hover_color    = 'darken(@navbar-default-color, 26.5%)';
+    $navbar_link_active_bg      = 'darken(@navbar-default-bg, 6.5%)';
+    $navbar_link_disabled_color = 'darken(@navbar-default-bg, 6.5%)';
+    $navbar_brand_hover_color   = 'darken(@navbar-default-link-color, 10%)';
   } else {
-    $navbar_link_hover_color    = 'lighten(@navbar-color, 26.5%)';
-    $navbar_link_active_bg      = 'lighten(@navbar-bg, 6.5%)';
-    $navbar_link_disabled_color = 'lighten(@navbar-bg, 6.5%)';
-    $navbar_brand_hover_color   = 'lighten(@navbar-link-color, 10%)';
+    $navbar_link_hover_color    = 'lighten(@navbar-default-color, 26.5%)';
+    $navbar_link_active_bg      = 'lighten(@navbar-default-bg, 6.5%)';
+    $navbar_link_disabled_color = 'lighten(@navbar-default-bg, 6.5%)';
+    $navbar_brand_hover_color   = 'lighten(@navbar-default-link-color, 10%)';
   }
 
   if ( shoestrap_get_brightness( $brand_primary ) > 80 ) {
@@ -409,7 +409,6 @@ function shoestrap_variables_less() {
 // Global values
 // --------------------------------------------------
 
-
 // Grays
 // -------------------------
 
@@ -466,7 +465,6 @@ function shoestrap_variables_less() {
 
 @icon-font-path:          "../fonts/";
 @icon-font-name:          "Elusive-Icons";
-
 
 // Components
 // -------------------------
@@ -584,6 +582,7 @@ function shoestrap_variables_less() {
 
 @dropdown-caret-color:           @gray-darker;
 
+
 // COMPONENT VARIABLES
 // --------------------------------------------------
 
@@ -651,7 +650,7 @@ function shoestrap_variables_less() {
 @navbar-padding-vertical:          ((@navbar-height - @line-height-computed) / 2);
 
 // Navbar links
-@navbar-default-link-color:                @navbar-color;
+@navbar-default-link-color:                @navbar-default-color;
 @navbar-default-link-hover-color:          ' . $navbar_link_hover_color . ';
 @navbar-default-link-hover-bg:             transparent;
 @navbar-default-link-active-color:         mix(@navbar-default-color, @navbar-default-link-hover-color, 50%);
@@ -679,7 +678,7 @@ function shoestrap_variables_less() {
 
 // Inverted navbar links
 @navbar-inverse-link-color:                 @gray-light;
-@navbar-inverse-link-hover-color:           @body-bg;
+@navbar-inverse-link-hover-color:           #fff;
 @navbar-inverse-link-hover-bg:              transparent;
 @navbar-inverse-link-active-color:          @navbar-inverse-link-hover-color;
 @navbar-inverse-link-active-bg:             darken(@navbar-inverse-bg, 10%);
@@ -688,19 +687,19 @@ function shoestrap_variables_less() {
 
 // Inverted navbar brand label
 @navbar-inverse-brand-color:                @navbar-inverse-link-color;
-@navbar-inverse-brand-hover-color:          @body-bg;
+@navbar-inverse-brand-hover-color:          #fff;
 @navbar-inverse-brand-hover-bg:             transparent;
 
 // Inverted navbar search
 // Normal navbar needs no special styles or vars
 @navbar-inverse-search-bg:                  lighten(@navbar-inverse-bg, 25%);
-@navbar-inverse-search-bg-focus:            @body-bg;
+@navbar-inverse-search-bg-focus:            #fff;
 @navbar-inverse-search-border:              @navbar-inverse-bg;
-@navbar-inverse-search-placeholder-color:   @ccc;
+@navbar-inverse-search-placeholder-color:   #ccc;
 
 // Inverted navbar toggle
 @navbar-inverse-toggle-hover-bg:            #333;
-@navbar-inverse-toggle-icon-bar-bg:         @body-bg;
+@navbar-inverse-toggle-icon-bar-bg:         #fff;
 @navbar-inverse-toggle-border-color:        #333;
 
 
@@ -1117,7 +1116,7 @@ function shoestrap_complete_less( $url = false ) {
  */
 
 // Core variables and mixins
-@import "'.$bootstrap.'variables.less";
+// @import "'.$bootstrap.'variables.less";
 @import "'.$bootstrap.'mixins.less";
 
 // Reset
