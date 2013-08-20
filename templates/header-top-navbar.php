@@ -6,7 +6,7 @@
 <header class="banner navbar navbar-default topnavbar <?php echo shoestrap_navbar_class(); ?>" role="banner">
   <div class="<?php echo shoestrap_container_class(); ?>">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-main">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -25,7 +25,7 @@
       ?>
     </div>
     <?php do_action( 'shoestrap_pre_main_nav' ); ?>
-    <nav class="nav-main nav-collapse collapse" role="navigation">
+    <nav class="nav-main navbar-collapse collapse" role="navigation">
       <?php
         if (has_nav_menu('primary_navigation')) :
           wp_nav_menu( array( 'theme_location' => 'primary_navigation', 'menu_class' => shoestrap_nav_class_pull() ) );
