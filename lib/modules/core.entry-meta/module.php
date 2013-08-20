@@ -38,7 +38,7 @@ function shoestrap_entry_meta() {
 	elseif ( strlen( $elementscountplus ) == 1 )
 		$col = 12;
 
-	$colclass = 'col-' . $col;
+	$colclass = 'col-sm-' . $col;
 
 
 	if ( is_sticky() && is_home() && ! is_paged() )

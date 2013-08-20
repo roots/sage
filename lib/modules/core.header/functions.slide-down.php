@@ -87,7 +87,7 @@ function shoestrap_navbar_slidedown_content() {
   else
     echo '<div id="megaDrop" class="top-megamenu">';
 
-  $widgetareaclass = 'col-lg-' . shoestrap_navbar_widget_area_class();
+  $widgetareaclass = 'col-sm-' . shoestrap_navbar_widget_area_class();
   dynamic_sidebar('navbar-slide-down-top');
   
   echo '<div class="row">';
