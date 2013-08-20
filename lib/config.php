@@ -31,10 +31,10 @@ define('POST_EXCERPT_LENGTH', get_theme_mod('post_excerpt_length'));
 function roots_main_class() {
   if (roots_display_sidebar()) {
     // Classes on pages with the sidebar
-    $class = 'col-sm-8 col-md-8 col-lg-8';
+    $class = 'col-sm-8';
   } else {
     // Classes on full width pages
-    $class = 'col-lg-12';
+    $class = 'col-sm-12';
   }
 
   return $class;
@@ -44,7 +44,7 @@ function roots_main_class() {
  * .sidebar classes
  */
 function roots_sidebar_class() {
-  return 'col-sm-4 col-md-4 col-lg-4';
+  return 'col-sm-4';
 }
 
 /**
