@@ -101,7 +101,7 @@ function shoestrap_footer_html() {
 
   ?>
       <?php do_action( 'shoestrap_footer_before_copyright' ); ?>
-      <div id="footer-copyright" class="row">
+      <div id="footer-copyright">
         <article class="<?php echo shoestrap_container_class(); ?>">
           <div id="copyright-bar" class="col-lg-<?php echo $width; ?>"><?php echo $ftext; ?></div>
           <?php if ($social && count($networks) > 0) : ?>
