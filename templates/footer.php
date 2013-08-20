@@ -30,7 +30,7 @@
     for ( $i=0; $i<5 ; $i++ ) { 
     	$sidebar = 'sidebar-footer-'.$i.'';
     	if ( is_active_sidebar($sidebar) ) {
-				echo '<div class="col-'.$span.'">';
+				echo '<div class="col-md-'.$span.'">';
 				dynamic_sidebar( $sidebar );
 				echo '</div>';
 			}
