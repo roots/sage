@@ -15,7 +15,7 @@
     "url": "http://opensource.org/licenses/MIT"
   }],
   "engines": {
-    "node": ">= 0.8.0"
+    "node": ">= 0.10.0"
   },
   "devDependencies": {
     "grunt": "~0.4.1",
