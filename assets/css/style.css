@@ -6509,6 +6509,14 @@ fieldset[disabled] #social-sharing .shareme .box {
   margin-top: 5px;
   border: 0;
 }
+.navbar .dropdown-menu {
+  background: #f8f8f8;
+}
+.navbar .dropdown-menu li.active a,
+.navbar .dropdown-menu li:hover a {
+  background: #e7e7e7;
+  color: #1a1a1a;
+}
 .navbar.style1 .open > a:first-child,
 .navbar.style1 .open > a:hover:first-child,
 .navbar.style1 .open > a:focus:first-child,
@@ -6938,6 +6946,9 @@ li.dropdown ul.dropdown-menu li.dropdown.pull-left {
   font-weight: inherit;
   color: #333333;
 }
+.navbar .nav.nav-pills li a {
+  padding: 15px 15px;
+}
 .widget select {
   width: 100%;
   color: #428bca;
@@ -6992,4 +7003,7 @@ li.dropdown ul.dropdown-menu li.dropdown.pull-left {
 .widget.widget_search {
   border: 1px solid #ffffff;
   border: 1px solid transparent;
+}
+.nav-pills > li > a {
+  border-radius: 4px;
 }
