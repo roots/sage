@@ -184,6 +184,55 @@ if ( !function_exists( 'shoestrap_module_jumbotron_options' ) ) {
     );
 
     $of_options[] = array(
+      "name"      => __("Jumbotron Font", "shoestrap"),
+      "desc"      => __("The font used in jumbotron.", "shoestrap"),
+      "id"        => "font_jumbotron",
+      'less'      => true,
+      "std"       => array(
+        'face'    => 'Arial, Helvetica, sans-serif',
+        'size'    => '16px',
+        'color'   => '#333333',
+        'google'  => 'false',
+        'color'   => '#333333',
+      ),
+      "preview"   => array(
+        "text"    => __( "This is my preview text!", "shoestrap" ), //this is the text from preview box
+        "size"    => "30px" //this is the text size from preview box
+      ),
+      "type"      => "select_google_font_hybrid",
+      "fold"      => "advanced_toggle"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Jumbotron Header Overrides", "shoestrap"),
+      "desc"      => __("By enabling this you can specify custom values for each <h*> tag. Default: Off", "shoestrap"),
+      "id"        => "font_jumbotron_heading_custom",
+      "std"       => 0,
+      "less"      => true,
+      "type"      => "switch",
+      "customizer"=> array(),
+      "fold"      => "advanced_toggle"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Jumbotron Headers Font", "shoestrap"),
+      "desc"      => __("The main font for your site.", "shoestrap"),
+      "id"        => "font_jumbotron_headers",
+      'less'      => true,
+      "std"       => array(
+        'face'    => 'Arial, Helvetica, sans-serif',
+        'color'   => '#333333',
+        'google'  => 'false'
+      ),
+      "preview"   => array(
+        "text"    => __( "This is my preview text!", "shoestrap" ), //this is the text from preview box
+        "size"    => "30px" //this is the text size from preview box
+      ),
+      "type"      => "select_google_font_hybrid",
+      "fold"      => "font_jumbotron_heading_custom",
+    );
+
+    $of_options[] = array(
       "name"      => "Jumbotron Bottom Border",
       "desc"      => __("Select the border options for your Jumbotron", "shoestrap"),
       "id"        => "jumbotron_border_bottom",

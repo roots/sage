@@ -34,13 +34,12 @@ if ( !function_exists( 'shoestrap_module_header_options' ) ) {
 
     $url = admin_url( 'nav-menus.php?action=locations' );
     $of_options[] = array(
-      "name"      => __("Show the Main NavBar", "shoestrap"),
-      "desc"      => __("ON by default. If you want to hide your main navbar you can do it here.
-                        When you do, the main menu will still be displayed but not styled as a navbar.
-                        If you want to completely disable it, then please click on <a target='_blank' href='$url'>this link</a>
-                        and make sure that no menu is selected for your Primary Navigation."),
+      "name"      => __("Type of NavBar", "shoestrap"),
+      "desc"      => __("Normal mode or Pills?"),
       "id"        => "navbar_toggle",
       "std"       => 1,
+      "on"        => __("Normal", "shoestrap"),
+      "off"       => __("Pills", "shoestrap"),
       "customizer"=> array(),
       "type"      => "switch"
     );
@@ -52,7 +51,6 @@ if ( !function_exists( 'shoestrap_module_header_options' ) ) {
       "std"       => "<h3 style=\"margin: 0 0 10px;\">NavBar Styling Options</h3>
                       <p>Customize the look and feel of your navbar below.</p>",
       "icon"      => true,
-      "fold"      => "navbar_toggle",
       "type"      => "info"
     );    
 
@@ -60,7 +58,6 @@ if ( !function_exists( 'shoestrap_module_header_options' ) ) {
       "name"      => __("NavBar Background Color", "shoestrap"),
       "desc"      => __("Pick a background color for the NavBar. Default: #eeeeee.", "shoestrap"),
       "id"        => "navbar_bg",
-      "fold"      => "navbar_toggle",
       "std"       => "#f8f8f8",
       "less"      => true,
       "customizer"=> array(),
@@ -71,7 +68,6 @@ if ( !function_exists( 'shoestrap_module_header_options' ) ) {
       "name"      => __("NavBar Background Opacity", "shoestrap"),
       "desc"      => __("Pick a background opacity for the NavBar. Default: 100%.", "shoestrap"),
       "id"        => "navbar_bg_opacity",
-      "fold"      => "navbar_toggle",
       "std"       => 100,
       "min"       => 0,
       "step"      => 1,
@@ -84,7 +80,6 @@ if ( !function_exists( 'shoestrap_module_header_options' ) ) {
       "name"      => __("NavBar Menu Style", "shoestrap"),
       "desc"      => __("You can use an alternative menu style for your NavBars.", "shoestrap"),
       "id"        => "navbar_style",
-      "fold"      => "navbar_toggle",
       "std"       => 'default',
       "type"      => "select",
       "customizer"=> array(),
@@ -103,7 +98,6 @@ if ( !function_exists( 'shoestrap_module_header_options' ) ) {
       "name"      => __("Display Branding (Sitename or Logo) on the NavBar", "shoestrap"),
       "desc"      => __("Default: ON", "shoestrap"),
       "id"        => "navbar_brand",
-      "fold"      => "navbar_toggle",
       "std"       => 1,
       "customizer"=> array(),
       "type"      => "switch"
@@ -113,7 +107,6 @@ if ( !function_exists( 'shoestrap_module_header_options' ) ) {
       "name"      => __("Use Logo (if available) for branding on the NavBar", "shoestrap"),
       "desc"      => __("If this option is OFF, or there is no logo available, then the sitename will be displayed instead. Default: ON", "shoestrap"),
       "id"        => "navbar_logo",
-      "fold"      => "navbar_toggle",
       "std"       => 1,
       "customizer"=> array(),
       "type"      => "switch"
@@ -123,7 +116,6 @@ if ( !function_exists( 'shoestrap_module_header_options' ) ) {
       "name"      => __("Logo Margin from top", "shoestrap"),
       "desc"      => __("Tweak the margin from top of the logo in your NavBar. Minimum: -30px, Maximum: 30px. Default: 0", "shoestrap"),
       "id"        => "logo_top_margin",
-      "fold"      => "navbar_toggle",
       "std"       => 0,
       "min"       => -100,
       "step"      => 1,
@@ -136,7 +128,6 @@ if ( !function_exists( 'shoestrap_module_header_options' ) ) {
       "name"      => __("NavBar Positioning", "shoestrap"),
       "desc"      => __("Using this option you can set the navbar to be fixed to top, fixed to bottom or normal. When you're using one of the \"fixed\" options, the navbar will stay fixed on the top or bottom of the page. Default: Normal", "shoestrap"),
       "id"        => "navbar_fixed",
-      "fold"      => "navbar_toggle",
       "std"       => 0,
       "on"        => __("Fixed", "shoestrap"),
       "off"       => __("Scroll", "shoestrap"),
@@ -147,7 +138,6 @@ if ( !function_exists( 'shoestrap_module_header_options' ) ) {
       "name"      => __("Fixed NavBar Position", "shoestrap"),
       "desc"      => __("Using this option you can set the navbar to be fixed to top, fixed to bottom or normal. When you're using one of the \"fixed\" options, the navbar will stay fixed on the top or bottom of the page. Default: Normal", "shoestrap"),
       "id"        => "navbar_fixed_position",
-      "fold"      => "navbar_toggle",
       "fold"      => "navbar_fixed",
       "std"       => 0,
       "on"        => __("Bottom", "shoestrap"),
@@ -159,7 +149,6 @@ if ( !function_exists( 'shoestrap_module_header_options' ) ) {
       "name"      => __("NavBar Height", "shoestrap"),
       "desc"      => __("Select the height of the NavBar in pixels. Should be equal or greater than the height of your logo if you've added one.", "shoestrap"),
       "id"        => "navbar_height",
-      "fold"      => "navbar_toggle",
       "std"       => 50,
       "min"       => 38,
       "step"      => 1,
@@ -169,10 +158,49 @@ if ( !function_exists( 'shoestrap_module_header_options' ) ) {
     );
 
     $of_options[] = array(
+      "name"      => __("Navbar Font", "shoestrap"),
+      "desc"      => __("The font used in navbars.", "shoestrap"),
+      "id"        => "font_navbar",
+      'less'      => true,
+      "std"       => array(
+        'face'    => 'Arial, Helvetica, sans-serif',
+        'size'    => '14px',
+        'color'   => '#333333',
+        'google'  => 'false',
+        'color'   => '#333333',
+      ),
+      "preview"   => array(
+        "text"    => __( "This is my preview text!", "shoestrap" ), //this is the text from preview box
+        "size"    => "30px" //this is the text size from preview box
+      ),
+      "type"      => "select_google_font_hybrid",
+      "fold"      => "advanced_toggle"
+    );
+
+    $of_options[] = array(
+      "name"      => __("Branding Font", "shoestrap"),
+      "desc"      => __("The branding font for your site.", "shoestrap"),
+      "id"        => "font_brand",
+      'less'      => true,
+      "std"       => array(
+        'face'    => 'Arial, Helvetica, sans-serif',
+        'size'    => '18px',
+        'color'   => '#333333',
+        'google'  => 'false',
+        'color'   => '#333333',
+      ),
+      "preview"   => array(
+        "text"    => __( "This is my preview text!", "shoestrap" ), //this is the text from preview box
+        "size"    => "30px" //this is the text size from preview box
+      ),
+      "type"      => "select_google_font_hybrid",
+      "fold"      => "advanced_toggle"
+    );
+
+    $of_options[] = array(
       "name"      => __("NavBar Margin", "shoestrap"),
       "desc"      => __("Select the top and bottom margin of the NavBar in pixels. Applies only in static top navbar (scroll condition). Default: 0px.", "shoestrap"),
       "id"        => "navbar_margin",
-      "fold"      => "navbar_toggle",
       "std"       => 0,
       "min"       => 0,
       "step"      => 1,
@@ -184,7 +212,6 @@ if ( !function_exists( 'shoestrap_module_header_options' ) ) {
       "name"      => __("Display social links in the NavBar.", "shoestrap"),
       "desc"      => __("Display social links in the NavBar. These can be setup in the \"Social\" section on the left. Default: OFF", "shoestrap"),
       "id"        => "navbar_social",
-      "fold"      => "navbar_toggle",
       "customizer"=> array(),
       "std"       => 0,
       "type"      => "switch"
@@ -194,7 +221,6 @@ if ( !function_exists( 'shoestrap_module_header_options' ) ) {
       "name"      => __("Search form on the NavBar", "shoestrap"),
       "desc"      => __("Display a search form in the NavBar. Default: On", "shoestrap"),
       "id"        => "navbar_search",
-      "fold"      => "navbar_toggle",
       "customizer"=> array(),
       "std"       => 1,
       "type"      => "switch"
@@ -204,7 +230,6 @@ if ( !function_exists( 'shoestrap_module_header_options' ) ) {
       "name"      => __("Float NavBar menu to the right", "shoestrap"),
       "desc"      => __("Floats the primary navigation to the right. Default: On", "shoestrap"),
       "id"        => "navbar_nav_right",
-      "fold"      => "navbar_toggle",
       "std"       => 1,
       "customizer"=> array(),
       "type"      => "switch"
