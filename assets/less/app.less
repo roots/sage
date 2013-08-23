@@ -301,6 +301,14 @@ a.toggle-nav {
     margin-top: (((@navbar-height - (2 * @line-height-computed)) / 2));
     border: 0;
   }
+  .dropdown-menu {
+    background: @navbar-default-bg;
+    li.active a,
+    li:hover a{
+      background: @navbar-default-link-active-bg;
+      color: @navbar-default-link-active-color;
+    }
+  }
 
   &.style1 {
     li:first-child > a {
@@ -623,6 +631,11 @@ li.dropdown ul.dropdown-menu li.dropdown.pull-left {
     font-weight:  @brand-font-weight;
     color:        @brand-font-color;
   }
+  .nav.nav-pills {
+    li a {
+      padding: @navbar-padding-vertical @navbar-padding-horizontal;
+    }
+  }
 }
 
 //Styling selects in widgets
@@ -685,4 +698,8 @@ li.dropdown ul.dropdown-menu li.dropdown.pull-left {
     border: 1px solid @body-bg;
     border: 1px solid transparent;
   }
+}
+
+.nav-pills > li > a {
+  border-radius: @border-radius-base;
 }
