@@ -81,7 +81,7 @@ function roots_nav_menu_args($args = '') {
   }
 
   if (current_theme_supports('bootstrap-top-navbar') && !$args['depth']) {
-    $roots_nav_menu_args['depth'] = 3;
+    $roots_nav_menu_args['depth'] = 2;
   }
 
   if (!$args['walker']) {
