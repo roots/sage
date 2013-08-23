@@ -188,6 +188,16 @@ if ( !function_exists('shoestrap_module_advanced_options' ) ) {
     );
 
     $of_options[] = array(
+      "name"      => __("Minimize CSS", "shoestrap"),
+      "desc"      => __("Minimize the genearated CSS. This should be ON for production sites. Default: OFF.", "shoestrap"),
+      "id"        => "minimize_css",
+      "std"       => 0,
+      "customizer"=> array(),
+      "type"      => "switch",
+      "fold"      => "advanced_toggle"
+    );
+
+    $of_options[] = array(
       "name"      => __("Debug Hooks", "shoestrap"),
       "desc"      => __("Turn on very useful debug hooks. These will only be visible to admins. Default: Off.", "shoestrap"),
       "id"        => "debug_hooks",
