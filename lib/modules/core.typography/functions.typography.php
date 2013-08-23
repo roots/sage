@@ -28,20 +28,6 @@ function shoestrap_add_typography_class_case($array) {
       $output .= '</select></div>';
     }
 
-    // /* Line Height */
-    // //if(isset($typography_stored['height'])) {
-    //   $output .= '<div class="select_wrapper typography-size" original-title="Line height">';
-    //   $output .= '<select class="of-typography of-typography-height select google_font_hybrid_value" name="'.$value['id'].'[height]" id="'. $value['id'].'_height">';
-    //     for ($i = 20; $i < 88; $i++) {
-    //       $test = $i.'px';
-    //       $output .= '<option value="'. $i .'px" ' . selected($typography_stored['height'], $test, false) . '>'. $i .'px</option>';
-    //     }
-    //   $output .= '</select></div>';
-    // //}
-
-    /* Font Weight */
-    //if(isset($typography_stored['style'])) {
-
       $output .= '<div class="select_wrapper typography-style" original-title="Font style">';
       $output .= '<select class="of-typography of-typography-style select google_font_hybrid_value" name="'.$value['id'].'[style]" id="'. $value['id'].'_style">';
       $styles = array('100'=>'Ultra-Light 100',
