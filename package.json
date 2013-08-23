@@ -1,14 +1,14 @@
 {
   "name": "roots",
-  "version": "6.4.0",
+  "version": "6.5.0",
   "author": "Ben Word <ben@benword.com>",
-  "homepage": "http://www.rootstheme.com",
+  "homepage": "http://roots.io",
   "repository": {
     "type": "git",
-    "url": "git://github.com/retlehs/roots.git"
+    "url": "git://github.com/roots/roots.git"
   },
   "bugs": {
-    "url" : "https://github.com/retlehs/roots/issues"
+    "url" : "https://github.com/roots/roots/issues"
   },
   "licenses": [{
     "type": "MIT",
@@ -23,7 +23,6 @@
     "grunt-contrib-jshint": "~0.6.3",
     "grunt-contrib-uglify": "~0.2.2",
     "grunt-contrib-watch": "~0.5.2",
-    "grunt-recess": "~0.3.5",
-    "grunt-imageoptim": "~1.2.11"
+    "grunt-recess": "~0.3.5"
   }
 }
