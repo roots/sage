@@ -265,10 +265,6 @@ function shoestrap_variables_less() {
   $container_large_desktop  = filter_var( shoestrap_getVariable( 'container_large_desktop', true ), FILTER_SANITIZE_NUMBER_INT );
   $gutter                   = filter_var( shoestrap_getVariable( 'layout_gutter', true ), FILTER_SANITIZE_NUMBER_INT );
 
-  $screen_small     = ( $container_tablet + $gutter );
-  $screen_medium    = ( $container_desktop + $gutter );
-  $screen_large     = ( $container_large_desktop + $gutter );
-
   $navbar_height    = filter_var( shoestrap_getVariable( 'navbar_height', true ), FILTER_SANITIZE_NUMBER_INT );
   $navbar_text_color       = '#' . str_replace( '#', '', $font_navbar['color'] );
 
@@ -608,15 +604,15 @@ function shoestrap_variables_less() {
 @screen-phone:               @screen-xs;
 
 // Small screen / tablet
-@screen-sm:                  ' . $screen_small . 'px;
+@screen-sm:                  ' . ( $container_tablet + ( 2 * $gutter ) ) . 'px;
 @screen-tablet:              @screen-sm;
 
 // Medium screen / desktop
-@screen-md:                  ' . $screen_medium . 'px;
+@screen-md:                  ' . ( $container_desktop + ( 2 * $gutter ) ) . 'px;
 @screen-desktop:             @screen-md;
 
 // Large screen / wide desktop
-@screen-lg:                  ' . $screen_large . 'px;
+@screen-lg:                  ' . ( $container_large_desktop + ( 2 * $gutter ) ) . 'px;
 @screen-lg-desktop:          @screen-lg;
 
 // So media queries dont overlap when required, provide a maximum
@@ -1018,7 +1014,7 @@ function shoestrap_variables_less() {
 @container-desktop:         ((' . $container_desktop . 'px + @grid-gutter-width));
 
 // Large screen / wide desktop
-@container-large-desktop:   ((' . $container_large_desktop . 'px + @grid-gutter-width));
+@container-lg-desktop:      ((' . $container_large_desktop . 'px + @grid-gutter-width));
 
 
 
