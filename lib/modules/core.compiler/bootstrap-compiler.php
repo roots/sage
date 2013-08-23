@@ -887,12 +887,12 @@ function shoestrap_variables_less() {
 // Panels
 // -------------------------
 @panel-bg:                    ' . $body_bg . ';
-@panel-inner-border:                @list-group-border;
+@panel-inner-border:          @list-group-border;
 @panel-border-radius:         @border-radius-base;
 @panel-footer-bg:             @list-group-hover-bg;
 
 @panel-default-text:          @gray-dark;
-@panel-default-border:        @@table-border-color;
+@panel-default-border:        @table-border-color;
 @panel-default-heading-bg:    @panel-footer-bg;
 
 @panel-primary-text:          ' . $body_bg . ';
