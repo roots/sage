@@ -30,22 +30,19 @@ class Roots_Nav_Walker extends Walker_Nav_Menu {
     elseif (stristr($item_html, 'li class="divider')) {
       $item_html = preg_replace('/<a[^>]*>.*?<\/a>/iU', '', $item_html);
     }
-    elseif (stristr($item_html, 'li class="nav-header')) {
+    elseif (stristr($item_html, 'li class="dropdown-header')) {
       $item_html = preg_replace('/<a[^>]*>(.*)<\/a>/iU', '$1', $item_html);
     }
 
+    $item_html = apply_filters('roots_wp_nav_menu_item', $item_html);
     $output .= $item_html;
   }
 
   function display_element($element, &$children_elements, $max_depth, $depth = 0, $args, &$output) {
-    $element->is_dropdown =  ((!empty($children_elements[$element->ID]) && (($depth + 1) < $max_depth)));
+    $element->is_dropdown = ((!empty($children_elements[$element->ID]) && (($depth + 1) < $max_depth || ($max_depth === 0))));
 
     if ($element->is_dropdown) {
-      if ($depth === 0) {
-        $element->classes[] = 'dropdown';
-      } elseif ($depth === 1) {
-        $element->classes[] = 'dropdown-submenu';
-      }
+      $element->classes[] = 'dropdown';
     }
 
     parent::display_element($element, $children_elements, $max_depth, $depth, $args, $output);
@@ -83,8 +80,8 @@ function roots_nav_menu_args($args = '') {
     $roots_nav_menu_args['items_wrap'] = '<ul class="%2$s">%3$s</ul>';
   }
 
-  if (current_theme_supports('bootstrap-top-navbar')) {
-    $roots_nav_menu_args['depth'] = 3;
+  if (current_theme_supports('bootstrap-top-navbar') && !$args['depth']) {
+    $roots_nav_menu_args['depth'] = 2;
   }
 
   if (!$args['walker']) {

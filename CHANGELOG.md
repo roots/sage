@@ -1,4 +1,39 @@
-### HEAD
+### 6.5.0: August 23rd, 2013
+* Reference new site, [http://roots.io/](http://roots.io/)
+* Remove bundled docs, reference [http://roots.io/docs/](http://roots.io/docs/)
+* Use Bootstrap variables for media queries
+* Update to Bootstrap 3.0.0
+* Update to jQuery 1.10.2
+* Change media directory from `/assets/` to `/media/`
+* Update to Google Universal Analytics
+* Show author display name for author archives
+* Add Serbian translation
+* Remove post tags from templates
+* Remove TinyMCE valid elements tweaks (no longer necessary)
+* Remove additional widget classes
+* Move `/assets/css/less/` to `/assets/less/`
+* Add wrapper templates filter
+* Fix relative external URLs issue
+
+### 6.4.0: May 1st, 2013
+* Fix Theme Activation page issues
+* Fix issues with root relative URLs and rewrites on non-standard setups
+* Make sure rewrites are added to `.htaccess` immediately after activation
+* Move HTML5 Boilerplate's `.htaccess` to a [plugin](https://github.com/roots/wp-h5bp-htaccess)
+* Rename `page-custom.php` to `template-custom.php`
+* Don't warn about unwritable htaccess if that option is disabled
+* Add missing collapse class for top navbar
+* Add comment template
+* Update is_dropdown evaluation in nav walker
+* Re-organize archives template
+* Add missing comment ID
+* hNews consistency with entry-title class
+* Add `wp_title()` filter
+* Fix missing closing div in comments
+* Fix for navbar dropdowns
+* Add option for using jQuery on Google CDN
+* Correct logic in `roots_enable_root_relative_urls`
+* Add Greek translation, update Brazilian Portuguese translation
 * Update to Bootstrap 2.3.1
 * Simplify alerts
 * Remove disabled post nav links

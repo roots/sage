@@ -1,0 +1,266 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"Project-Id-Version: Translation to Serbian of Roots theme for WordPress\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: lautreamont <lautreamont33@gmail.com>\n"
+"Language-Team: lautreamont <lautreamont33@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Language: Serbian\n"
+"X-Generator: Poedit 1.5.4\n"
+
+#: 404.php:4
+msgid "Sorry, but the page you were trying to view does not exist."
+msgstr "Тражена страна не постоји."
+
+#: 404.php:7
+msgid "It looks like this was the result of either:"
+msgstr "Што је резултат:"
+
+#: 404.php:9
+msgid "a mistyped address"
+msgstr "или погрешно унете адресе"
+
+#: 404.php:10
+msgid "an out-of-date link"
+msgstr "или измењене/застареле везе"
+
+#: base.php:4
+msgid ""
+"You are using an <strong>outdated</strong> browser. Please <a href=\"http://"
+"browsehappy.com/\">upgrade your browser</a> to improve your experience."
+msgstr ""
+"Користите <strong>застарели</strong> претраживач. Унапредите свој доживљај "
+"<a href=\"http://browsehappy.com/\">инсталирирањем новије верзије "
+"претраживача</a>."
+
+#: index.php:5
+msgid "Sorry, no results were found."
+msgstr "Ништа није пронађено."
+
+#: index.php:17
+msgid "&larr; Older posts"
+msgstr "&larr; Старији чланци"
+
+#: index.php:18
+msgid "Newer posts &rarr;"
+msgstr "Новији чланци &rarr;"
+
+#: lib/activation.php:28 lib/activation.php:29
+msgid "Theme Activation"
+msgstr "Активирање теме"
+
+#: lib/activation.php:51
+msgid "%s Theme Activation"
+msgstr "Активирање %s теме"
+
+#: lib/activation.php:62 lib/activation.php:64
+msgid "Create static front page?"
+msgstr "Статична насловна страна?"
+
+#: lib/activation.php:66 lib/activation.php:79 lib/activation.php:92
+#: lib/activation.php:105 lib/activation.php:118
+msgid "Yes"
+msgstr "Да"
+
+#: lib/activation.php:67 lib/activation.php:80 lib/activation.php:93
+#: lib/activation.php:106 lib/activation.php:119
+msgid "No"
+msgstr "Не"
+
+#: lib/activation.php:70
+msgid "Create a page called Home and set it to be the static front page"
+msgstr "Креирање нове стране под називом Home као статичне насловне стране"
+
+#: lib/activation.php:75
+msgid "Change permalink structure?"
+msgstr "Измена структуре сталних веза?"
+
+#: lib/activation.php:77
+msgid "Update permalink structure?"
+msgstr "Памћење структуре сталних веза?"
+
+#: lib/activation.php:83
+msgid "Change permalink structure to /&#37;postname&#37;/"
+msgstr "Измена структуре сталних веза у /&#37;називпоста&#37;/"
+
+#: lib/activation.php:88
+msgid "Change uploads folder?"
+msgstr "Измена пријемног директоријума?"
+
+#: lib/activation.php:90
+msgid "Update uploads folder?"
+msgstr "Памћење пријемног директоријума?"
+
+#: lib/activation.php:96
+msgid "Change uploads folder to /media/ instead of /wp-content/uploads/"
+msgstr "Измена пријемног директоријума /wp-content/uploads/ у /assets/"
+
+#: lib/activation.php:101 lib/activation.php:103
+msgid "Create navigation menu?"
+msgstr "Креирање навигационог изборника?"
+
+#: lib/activation.php:109
+msgid "Create the Primary Navigation menu and set the location"
+msgstr "Креирање Основног навигационог изборника и његове позиције?"
+
+#: lib/activation.php:114 lib/activation.php:116
+msgid "Add pages to menu?"
+msgstr "Додавање страна у изборник?"
+
+#: lib/activation.php:122
+msgid "Add all current published pages to the Primary Navigation"
+msgstr "Додавање свих објављених страна у Основни навигациони изборник"
+
+#: lib/cleanup.php:210
+msgid "Continued"
+msgstr "Наставак"
+
+#: lib/init.php:11
+msgid "Primary Navigation"
+msgstr "Основна навигација"
+
+#: lib/titles.php:10
+msgid "Latest Posts"
+msgstr "Ново"
+
+#: lib/titles.php:19
+msgid "Daily Archives: %s"
+msgstr "Дневна архива: %s"
+
+#: lib/titles.php:21
+msgid "Monthly Archives: %s"
+msgstr "Месечна архива: %s"
+
+#: lib/titles.php:23
+msgid "Yearly Archives: %s"
+msgstr "Годишња архива: %s"
+
+#: lib/titles.php:26
+msgid "Author Archives: %s"
+msgstr "Архива аутора: %s"
+
+#: lib/titles.php:31
+msgid "Search Results for %s"
+msgstr "Претрага за %s"
+
+#: lib/titles.php:33
+msgid "Not Found"
+msgstr "Нема ничега"
+
+#: lib/widgets.php:8
+msgid "Primary"
+msgstr "Основни"
+
+#: lib/widgets.php:17
+msgid "Footer"
+msgstr "Доњи"
+
+#: lib/widgets.php:45
+msgid "Use this widget to add a vCard"
+msgstr "Виџет за додавање vCard-а"
+
+#: lib/widgets.php:47
+msgid "Roots: vCard"
+msgstr "Roots: vCard"
+
+#: lib/widgets.php:74
+msgid "vCard"
+msgstr "vCard"
+
+#: templates/comment.php:4
+msgid "%1$s"
+msgstr "%1$s"
+
+#: templates/comment.php:5
+msgid "(Edit)"
+msgstr "(измена)"
+
+#: templates/comment.php:9
+msgid "Your comment is awaiting moderation."
+msgstr "Ваш коментар чека одобрење."
+
+#: templates/comments.php:8
+msgid "One Response to &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s Responses to &ldquo;%2$s&rdquo;"
+msgstr[0] "Један коментар на &ldquo;%2$s&rdquo;"
+msgstr[1] "%1$s коментара на &ldquo;%2$s&rdquo;"
+
+#: templates/comments.php:18
+msgid "&larr; Older comments"
+msgstr "&larr; Старији коментари"
+
+#: templates/comments.php:21
+msgid "Newer comments &rarr;"
+msgstr "Новији коментари &rarr;"
+
+#: templates/comments.php:29 templates/comments.php:38
+msgid "Comments are closed."
+msgstr "Коментарисање затворено."
+
+#: templates/comments.php:45
+msgid "Leave a Reply"
+msgstr "Остави коментар"
+
+#: templates/comments.php:45
+msgid "Leave a Reply to %s"
+msgstr "Остави коментар на %s"
+
+#: templates/comments.php:48
+msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
+msgstr "Морате бити <a href=\"%s\">пријављени</a> да би сте оставили коментар."
+
+#: templates/comments.php:53
+msgid "Logged in as <a href=\"%s/wp-admin/profile.php\">%s</a>."
+msgstr "Пријављени сте као <a href=\"%s/wp-admin/profile.php\">%s</a>."
+
+#: templates/comments.php:54
+msgid "Log out of this account"
+msgstr "Одјава са налога"
+
+#: templates/comments.php:54
+msgid "Log out &raquo;"
+msgstr "Одјава &raquo;"
+
+#: templates/comments.php:57
+msgid "Name"
+msgstr "Име"
+
+#: templates/comments.php:57 templates/comments.php:59
+msgid " (required)"
+msgstr " (обавезно)"
+
+#: templates/comments.php:59
+msgid "Email (will not be published)"
+msgstr "емеил адреса (невидљива)"
+
+#: templates/comments.php:61
+msgid "Website"
+msgstr "Вебсајт"
+
+#: templates/comments.php:64
+msgid "Comment"
+msgstr "Коментар"
+
+#: templates/comments.php:66
+msgid "Submit Comment"
+msgstr "Пошаљи коментар"
+
+#: templates/content-single.php:11
+msgid "Pages:"
+msgstr "Стране:"
+
+#: templates/entry-meta.php:2
+msgid "By"
+msgstr "аутор"
+
+#: templates/searchform.php:2
+msgid "Search for:"
+msgstr "Претрага за:"
+
+#: templates/searchform.php:3 templates/searchform.php:4
+msgid "Search"
+msgstr "Претрага"

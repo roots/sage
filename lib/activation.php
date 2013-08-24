@@ -8,14 +8,9 @@ if (is_admin() && isset($_GET['activated']) && 'themes.php' == $GLOBALS['pagenow
 }
 
 function roots_theme_activation_options_init() {
-  if (roots_get_theme_activation_options() === false) {
-    add_option('roots_theme_activation_options', roots_get_default_theme_activation_options());
-  }
-
   register_setting(
     'roots_activation_options',
-    'roots_theme_activation_options',
-    'roots_theme_activation_options_validate'
+    'roots_theme_activation_options'
   );
 }
 add_action('admin_init', 'roots_theme_activation_options_init');
@@ -28,7 +23,7 @@ add_filter('option_page_capability_roots_activation_options', 'roots_activation_
 function roots_theme_activation_options_add_page() {
   $roots_activation_options = roots_get_theme_activation_options();
 
-  if ($roots_activation_options['first_run']) {
+  if (!$roots_activation_options) {
     $theme_page = add_theme_page(
       __('Theme Activation', 'roots'),
       __('Theme Activation', 'roots'),
@@ -38,8 +33,7 @@ function roots_theme_activation_options_add_page() {
     );
   } else {
     if (is_admin() && isset($_GET['page']) && $_GET['page'] === 'theme_activation_options') {
-      global $wp_rewrite;
-      $wp_rewrite->flush_rules();
+      flush_rewrite_rules();
       wp_redirect(admin_url('themes.php'));
       exit;
     }
@@ -47,21 +41,8 @@ function roots_theme_activation_options_add_page() {
 }
 add_action('admin_menu', 'roots_theme_activation_options_add_page', 50);
 
-function roots_get_default_theme_activation_options() {
-  $default_theme_activation_options = array(
-    'first_run'                       => true,
-    'create_front_page'               => false,
-    'change_permalink_structure'      => false,
-    'change_uploads_folder'           => false,
-    'create_navigation_menus'         => false,
-    'add_pages_to_primary_navigation' => false,
-  );
-
-  return apply_filters('roots_default_theme_activation_options', $default_theme_activation_options);
-}
-
 function roots_get_theme_activation_options() {
-  return get_option('roots_theme_activation_options', roots_get_default_theme_activation_options());
+  return get_option('roots_theme_activation_options');
 }
 
 function roots_theme_activation_options_render_page() { ?>
@@ -74,11 +55,7 @@ function roots_theme_activation_options_render_page() { ?>
 
       <?php
         settings_fields('roots_activation_options');
-        $roots_activation_options = roots_get_theme_activation_options();
-        $roots_default_activation_options = roots_get_default_theme_activation_options();
       ?>
-
-      <input type="hidden" value="false" name="roots_theme_activation_options[first_run]">
 
       <table class="form-table">
 
@@ -116,7 +93,7 @@ function roots_theme_activation_options_render_page() { ?>
                 <option value="false"><?php echo _e('No', 'roots'); ?></option>
               </select>
               <br>
-              <small class="description"><?php printf(__('Change uploads folder to /assets/ instead of /wp-content/uploads/', 'roots')); ?></small>
+              <small class="description"><?php printf(__('Change uploads folder to /media/ instead of /wp-content/uploads/', 'roots')); ?></small>
             </fieldset>
           </td>
         </tr>
@@ -155,32 +132,16 @@ function roots_theme_activation_options_render_page() { ?>
 
 <?php }
 
-function roots_theme_activation_options_validate($input) {
-  $output = $defaults = roots_get_default_theme_activation_options();
-
-  $options = array(
-    'first_run',
-    'create_front_page',
-    'change_permalink_structure',
-    'change_uploads_folder',
-    'create_navigation_menus',
-    'add_pages_to_primary_navigation'
-  );
-
-  foreach($options as $option_name) {
-    if (isset($input[$option_name])) {
-      $input[$option_name] = ($input[$option_name] === 'true') ? true : false;
-      $output[$option_name] = $input[$option_name];
-    }
+function roots_theme_activation_action() {
+  if (!($roots_theme_activation_options = roots_get_theme_activation_options())) {
+    return;
   }
 
-  return apply_filters('roots_theme_activation_options_validate', $output, $input, $defaults);
-}
+  if (strpos(wp_get_referer(), 'page=theme_activation_options') === false) {
+    return;
+  }
 
-function roots_theme_activation_action() {
-  $roots_theme_activation_options = roots_get_theme_activation_options();
-
-  if ($roots_theme_activation_options['create_front_page']) {
+  if ($roots_theme_activation_options['create_front_page'] === 'true') {
     $roots_theme_activation_options['create_front_page'] = false;
 
     $default_pages = array('Home');
@@ -215,26 +176,28 @@ function roots_theme_activation_action() {
     wp_update_post($home_menu_order);
   }
 
-  if ($roots_theme_activation_options['change_permalink_structure']) {
+  if ($roots_theme_activation_options['change_permalink_structure'] === 'true') {
     $roots_theme_activation_options['change_permalink_structure'] = false;
-    global $wp_rewrite;
 
     if (get_option('permalink_structure') !== '/%postname%/') {
+      global $wp_rewrite;
       $wp_rewrite->set_permalink_structure('/%postname%/');
+      flush_rewrite_rules();
     }
-
-    $wp_rewrite->init();
-    $wp_rewrite->flush_rules();
   }
 
-  if ($roots_theme_activation_options['change_uploads_folder']) {
+  if ($roots_theme_activation_options['change_uploads_folder'] === 'true') {
     $roots_theme_activation_options['change_uploads_folder'] = false;
 
     update_option('uploads_use_yearmonth_folders', 0);
-    update_option('upload_path', 'assets');
+    if (!is_multisite()) {
+      update_option('upload_path', 'media');
+    } else {
+      update_option('upload_path', '');
+    }
   }
 
-  if ($roots_theme_activation_options['create_navigation_menus']) {
+  if ($roots_theme_activation_options['create_navigation_menus'] === 'true') {
     $roots_theme_activation_options['create_navigation_menus'] = false;
 
     $roots_nav_theme_mod = false;
@@ -253,7 +216,7 @@ function roots_theme_activation_action() {
     }
   }
 
-  if ($roots_theme_activation_options['add_pages_to_primary_navigation']) {
+  if ($roots_theme_activation_options['add_pages_to_primary_navigation'] === 'true') {
     $roots_theme_activation_options['add_pages_to_primary_navigation'] = false;
 
     $primary_nav = wp_get_nav_menu_object('Primary Navigation');
