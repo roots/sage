@@ -27,6 +27,7 @@ function shoestrap_entry_meta() {
 	if ( 'post' == get_post_type() )
 		$elementscountplus .= '+';
 
+    $col = 12;
 	if ( strlen( $elementscountplus ) == 5 )
 		$col = 2;
 	elseif ( strlen( $elementscountplus ) == 4 )
