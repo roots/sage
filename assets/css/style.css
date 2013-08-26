@@ -6648,10 +6648,6 @@ fieldset[disabled] #social-sharing .shareme .box {
     top: auto;
   }
 }
-.wrap.main-section {
-  margin-top: 1em;
-  padding: 15px;
-}
 .btn-group > .btn:first-child:not(:last-child):not(.dropdown-toggle) {
   border-radius: 4px;
 }
