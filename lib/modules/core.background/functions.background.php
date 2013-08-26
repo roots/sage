@@ -73,7 +73,7 @@ function shoestrap_background_css( ) {
   $style .= $image . $repeat . $position;
 
   $theCSS = 'body {' . trim( $style ) . '}';
-  $theCSS .= $color ? ".wrap.main-section{background: $color;}" : '';
+  $theCSS .= $color ? ".wrap.main-section .content{background: $color;}" : '';
 
   wp_add_inline_style( 'shoestrap_css', $theCSS );
 

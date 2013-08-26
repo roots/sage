@@ -6113,11 +6113,6 @@ figure.alignnone {
 .container.fluid {
   max-width: 98%;
 }
-@media screen and (min-width: 780px) {
-  #wrap {
-    padding: 30px;
-  }
-}
 body {
   word-wrap: break-word;
   -ms-word-wrap: break-word;
