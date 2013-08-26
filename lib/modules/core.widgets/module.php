@@ -3,23 +3,37 @@
  * Register sidebars and widgets
  */
 function shoestrap_widgets_init() {
+  $widgets_mode = shoestrap_getVariable( 'widgets_mode' );
+  
+  if ( $widgets_mode != 1 ) :
+    $class        = 'panel panel-default';
+    $before_title = '<div class="panel-heading">';
+    $after_title  = '</div><div class="panel-body">';
+  
+  else :
+    $class        = 'well';
+    $before_title = '<h3 class="widget-title">';
+    $after_title  = '</h3>';
+  
+  endif;
+
   // Sidebars
   register_sidebar(array(
     'name'          => __('Primary Sidebar', 'roots'),
     'id'            => 'sidebar-primary',
-    'before_widget' => '<section id="%1$s" class="panel panel-default widget %2$s">',
+    'before_widget' => '<section id="%1$s" class="' . $class . ' widget %2$s">',
     'after_widget'  => '</section>',
-    'before_title'  => '<div class="panel-heading">',
-    'after_title'   => '</div><div class="panel-body">',
+    'before_title'  => $before_title,
+    'after_title'   => $after_title,
   ));
 
   register_sidebar(array(
     'name'          => __('Secondary Sidebar', 'shoestrap'),
     'id'            => 'sidebar-secondary',
-    'before_widget' => '<section id="%1$s" class="panel panel-default widget %2$s">',
+    'before_widget' => '<section id="%1$s" class="' . $class . ' widget %2$s">',
     'after_widget'  => '</section>',
-    'before_title'  => '<div class="panel-heading">',
-    'after_title'   => '</div>',
+    'before_title'  => $before_title,
+    'after_title'   => $after_title,
   ));
 
   register_sidebar(array(
@@ -43,37 +57,37 @@ function shoestrap_widgets_init() {
   register_sidebar(array(
     'name'          => __('Footer Widget Area 1', 'shoestrap'),
     'id'            => 'sidebar-footer-1',
-    'before_widget' => '<section id="%1$s" class="panel panel-default widget %2$s">',
+    'before_widget' => '<section id="%1$s" class="' . $class . ' widget %2$s">',
     'after_widget'  => '</section>',
-    'before_title'  => '<div class="panel-heading">',
-    'after_title'   => '</div>',
+    'before_title'  => $before_title,
+    'after_title'   => $after_title,
   ));
 
   register_sidebar(array(
     'name'          => __('Footer Widget Area 2', 'shoestrap'),
     'id'            => 'sidebar-footer-2',
-    'before_widget' => '<section id="%1$s" class="panel panel-default widget %2$s">',
+    'before_widget' => '<section id="%1$s" class="' . $class . ' widget %2$s">',
     'after_widget'  => '</section>',
-    'before_title'  => '<div class="panel-heading">',
-    'after_title'   => '</div>',
+    'before_title'  => $before_title,
+    'after_title'   => $after_title,
   ));
 
   register_sidebar(array(
     'name'          => __('Footer Widget Area 3', 'shoestrap'),
     'id'            => 'sidebar-footer-3',
-    'before_widget' => '<section id="%1$s" class="panel panel-default widget %2$s">',
+    'before_widget' => '<section id="%1$s" class="' . $class . ' widget %2$s">',
     'after_widget'  => '</section>',
-    'before_title'  => '<div class="panel-heading">',
-    'after_title'   => '</div>',
+    'before_title'  => $before_title,
+    'after_title'   => $after_title,
   ));
 
   register_sidebar(array(
     'name'          => __('Footer Widget Area 4', 'shoestrap'),
     'id'            => 'sidebar-footer-4',
-    'before_widget' => '<section id="%1$s" class="panel panel-default widget %2$s">',
+    'before_widget' => '<section id="%1$s" class="' . $class . ' widget %2$s">',
     'after_widget'  => '</section>',
-    'before_title'  => '<div class="panel-heading">',
-    'after_title'   => '</div>',
+    'before_title'  => $before_title,
+    'after_title'   => $after_title,
   ));
 
   // Widgets

@@ -20,6 +20,18 @@ if ( !function_exists( 'shoestrap_module_blog_options' ) ) {
     );
 
     $of_options[] = array(
+      "name"      => __("Widgets mode", "shoestrap"),
+      "desc"      => __("How do you want your widgets to be displayed?", "shoestrap"),
+      "id"        => "widgets_mode",
+      "std"       => 1,
+      "fold"       => 'advanced_toggle',
+      "off"       => __('Panel', "shoestrap"),
+      "on"        => __('Well', "shoestrap"),
+      "type"      => "switch",
+      "customizer"=> array(),
+    );
+
+    $of_options[] = array(
       "name"      => __("Custom Blog Layout", "shoestrap"),
       "desc"      => __("Set a default layout for your blog/post pages. Default: OFF.", "shoestrap"),
       "id"        => "blog_layout_toggle",
