@@ -226,7 +226,7 @@ function shoestrap_debug_hooks() {
   global $smof_data;
   if (current_user_can( 'administrator' ) && shoestrap_getVariable( 'debug_hooks') == 1) {
     ?>
-      <div class="panel wiget-inner clearfix">
+      <div class="panel widget-inner clearfix">
         <div class="panel-heading">Debug Information</div>
         <ul class="nav nav-tabs" id="debugTabs">
           <li class="active"><a href="#SMOFData">SMOF Data</a></li>

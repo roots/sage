@@ -113,7 +113,7 @@ function shoestrap_compile_css( $method = 'php' ) {
     	if (is_writeable($file)
     	|| (!file_exists($file) && is_writeable(dirname($file))) ) {
   	  		if ( ! $wp_filesystem->put_contents( $file, $content, FS_CHMOD_FILE) ) {
-				return $css;
+				return $content;
 	  		}
     	} 
     }
