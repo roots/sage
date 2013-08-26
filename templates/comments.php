@@ -15,10 +15,10 @@
     <nav>
       <ul class="pager">
         <?php if (get_previous_comments_link()) : ?>
-          <li class="previous"><?php previous_comments_link(__('&larr; Older comments', 'roots')); ?></li>
+          <li class="previous"><?php previous_comments_link('&larr;'.__(' Older comments', 'roots')); ?></li>
         <?php endif; ?>
         <?php if (get_next_comments_link()) : ?>
-          <li class="next"><?php next_comments_link(__('Newer comments &rarr;', 'roots')); ?></li>
+          <li class="next"><?php next_comments_link(__('Newer comments ', 'roots').'&rarr;'); ?></li>
         <?php endif; ?>
       </ul>
     </nav>
