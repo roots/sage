@@ -1113,55 +1113,55 @@ function shoestrap_complete_less( $url = false ) {
  */
 
 // Core variables and mixins
-// @import "'.$bootstrap.'variables.less";
-@import "'.$bootstrap.'mixins.less";
+// @import "'.$bootstrap.'bootstrap/variables.less";
+@import "'.$bootstrap.'bootstrap/mixins.less";
 
 // Reset
-@import "'.$bootstrap.'normalize.less";
-@import "'.$bootstrap.'print.less";
+@import "'.$bootstrap.'bootstrap/normalize.less";
+@import "'.$bootstrap.'bootstrap/print.less";
 
 // Core CSS
-@import "'.$bootstrap.'scaffolding.less";
-@import "'.$bootstrap.'type.less";
-@import "'.$bootstrap.'code.less";
-@import "'.$bootstrap.'grid.less";
-@import "'.$bootstrap.'tables.less";
-@import "'.$bootstrap.'forms.less";
-@import "'.$bootstrap.'buttons.less";
+@import "'.$bootstrap.'bootstrap/scaffolding.less";
+@import "'.$bootstrap.'bootstrap/type.less";
+@import "'.$bootstrap.'bootstrap/code.less";
+@import "'.$bootstrap.'bootstrap/grid.less";
+@import "'.$bootstrap.'bootstrap/tables.less";
+@import "'.$bootstrap.'bootstrap/forms.less";
+@import "'.$bootstrap.'bootstrap/buttons.less";
 
 // Components
-@import "'.$bootstrap.'component-animations.less";
-// @import "'.$bootstrap.'glyphicons.less";
+@import "'.$bootstrap.'bootstrap/component-animations.less";
+// @import "'.$bootstrap.'bootstrap/glyphicons.less";
 @import "'.$fonts.'elusive-webfont";
-@import "'.$bootstrap.'dropdowns.less";
-@import "'.$bootstrap.'button-groups.less";
-@import "'.$bootstrap.'input-groups.less";
-@import "'.$bootstrap.'navs.less";
-@import "'.$bootstrap.'navbar.less";
-@import "'.$bootstrap.'breadcrumbs.less";
-@import "'.$bootstrap.'pagination.less";
-@import "'.$bootstrap.'pager.less";
-@import "'.$bootstrap.'labels.less";
-@import "'.$bootstrap.'badges.less";
-@import "'.$bootstrap.'jumbotron.less";
-@import "'.$bootstrap.'thumbnails.less";
-@import "'.$bootstrap.'alerts.less";
-@import "'.$bootstrap.'progress-bars.less";
-@import "'.$bootstrap.'media.less";
-@import "'.$bootstrap.'list-group.less";
-@import "'.$bootstrap.'panels.less";
-@import "'.$bootstrap.'wells.less";
-@import "'.$bootstrap.'close.less";
+@import "'.$bootstrap.'bootstrap/dropdowns.less";
+@import "'.$bootstrap.'bootstrap/button-groups.less";
+@import "'.$bootstrap.'bootstrap/input-groups.less";
+@import "'.$bootstrap.'bootstrap/navs.less";
+@import "'.$bootstrap.'bootstrap/navbar.less";
+@import "'.$bootstrap.'bootstrap/breadcrumbs.less";
+@import "'.$bootstrap.'bootstrap/pagination.less";
+@import "'.$bootstrap.'bootstrap/pager.less";
+@import "'.$bootstrap.'bootstrap/labels.less";
+@import "'.$bootstrap.'bootstrap/badges.less";
+@import "'.$bootstrap.'bootstrap/jumbotron.less";
+@import "'.$bootstrap.'bootstrap/thumbnails.less";
+@import "'.$bootstrap.'bootstrap/alerts.less";
+@import "'.$bootstrap.'bootstrap/progress-bars.less";
+@import "'.$bootstrap.'bootstrap/media.less";
+@import "'.$bootstrap.'bootstrap/list-group.less";
+@import "'.$bootstrap.'bootstrap/panels.less";
+@import "'.$bootstrap.'bootstrap/wells.less";
+@import "'.$bootstrap.'bootstrap/close.less";
 
 // Components w/ JavaScript
-@import "'.$bootstrap.'modals.less";
-@import "'.$bootstrap.'tooltip.less";
-@import "'.$bootstrap.'popovers.less";
-@import "'.$bootstrap.'carousel.less";
+@import "'.$bootstrap.'bootstrap/modals.less";
+@import "'.$bootstrap.'bootstrap/tooltip.less";
+@import "'.$bootstrap.'bootstrap/popovers.less";
+@import "'.$bootstrap.'bootstrap/carousel.less";
 
 // Utility classes
-@import "'.$bootstrap.'utilities.less";
-@import "'.$bootstrap.'responsive-utilities.less";
+@import "'.$bootstrap.'bootstrap/utilities.less";
+@import "'.$bootstrap.'bootstrap/responsive-utilities.less";
 
 // Custom Shoestrap less-css
 @import "'.$bootstrap.'app";
