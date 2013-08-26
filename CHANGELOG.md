@@ -1,4 +1,7 @@
-### HEAD
+### 6.5.0: August 23rd, 2013
+* Reference new site, [http://roots.io/](http://roots.io/)
+* Remove bundled docs, reference [http://roots.io/docs/](http://roots.io/docs/)
+* Use Bootstrap variables for media queries
 * Update to Bootstrap 3.0.0
 * Update to jQuery 1.10.2
 * Change media directory from `/assets/` to `/media/`
@@ -15,9 +18,9 @@
 ### 6.4.0: May 1st, 2013
 * Fix Theme Activation page issues
 * Fix issues with root relative URLs and rewrites on non-standard setups
-* Make sure rewrites are added to .htaccess immediately after activation
-* Move HTML5 Boilerplate's .htaccess to a [plugin](https://github.com/retlehs/wp-h5bp-htaccess)
-* Rename page-custom.php to template-custom.php
+* Make sure rewrites are added to `.htaccess` immediately after activation
+* Move HTML5 Boilerplate's `.htaccess` to a [plugin](https://github.com/roots/wp-h5bp-htaccess)
+* Rename `page-custom.php` to `template-custom.php`
 * Don't warn about unwritable htaccess if that option is disabled
 * Add missing collapse class for top navbar
 * Add comment template
