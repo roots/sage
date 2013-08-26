@@ -6079,6 +6079,23 @@ td.visible-print {
     display: none !important;
   }
 }
+.gallery-row {
+  padding: 15px 0;
+}
+.aligncenter {
+  display: block;
+  margin: 0 auto;
+}
+.alignleft {
+  float: left;
+}
+.alignright {
+  float: right;
+}
+figure.alignnone {
+  margin-left: 0;
+  margin-right: 0;
+}
 .aligncenter {
   display: block;
   margin: 0 auto;
@@ -7006,4 +7023,8 @@ li.dropdown ul.dropdown-menu li.dropdown.pull-left {
 }
 .nav-pills > li > a {
   border-radius: 4px;
+}
+.container .jumbotron {
+  border-top-right-radius: 0px;
+  border-top-left-radius: 0px;
 }
