@@ -249,7 +249,7 @@ add_action( 'wp_head', 'shoestrap_module_typography_googlefont_links' );
 
 
 function getGoogleScript($font) {
-  $link = 'http://fonts.googleapis.com/css?family='.str_replace(" ","+",$font['face']);
+  $link = 'http://fonts.googleapis.com/css?family='.str_replace(" ","+",$font['family']);
   if (!empty($font['style']))
     $link .= ':'.str_replace('-','',$font['style']);
   if (!empty($font['script']))
