@@ -80,6 +80,7 @@ function change_framework_args($args){
 
 
 function setup_framework_options(){
+
 	$args = array();
 
 	//Set it to dev mode to view the class settings/info in the form - default is false
@@ -225,6 +226,8 @@ $sections = array();
 						'content' => file_get_contents(get_stylesheet_directory().'/README.md')
 						);
 	}//if
+
+	$sections = apply_filters('shoestrap_add_sections', $sections);
 
 	global $Simple_Options;
 	$Simple_Options = new Simple_Options($sections, $args, $tabs);

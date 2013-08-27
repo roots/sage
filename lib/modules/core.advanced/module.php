@@ -209,7 +209,7 @@ if ( !function_exists('shoestrap_module_advanced_options' ) ) {
 
   }
 }
-add_action( 'simple-options-filter-sections-shoestrap', 'shoestrap_module_advanced_options', 95 );
+add_action( 'shoestrap_add_sections', 'shoestrap_module_advanced_options', 95 );
 
 include_once( dirname(__FILE__).'/functions.advanced.php' );
 include_once( dirname(__FILE__).'/debug-hooks.php' );

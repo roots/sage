@@ -194,7 +194,7 @@ if ( !function_exists( 'shoestrap_module_blog_options' ) ) {
 
   }
 }
-add_action( 'simple-options-filter-sections-shoestrap', 'shoestrap_module_blog_options', 75 );
+add_action( 'shoestrap_add_sections', 'shoestrap_module_blog_options', 75 );
 
 
 function shoestrap_core_blog_comments_toggle() {

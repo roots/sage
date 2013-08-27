@@ -59,7 +59,7 @@ Disabled by roots by default. No real need, but the code here anyways
 
   }
 }
-add_action( 'simple-options-filter-sections-shoestrap', 'shoestrap_module_page_options', 76 ); 
+add_action( 'shoestrap_add_sections', 'shoestrap_module_page_options', 76 ); 
 
 /*
 Disabled by roots by default. No real need, but the code here anyways

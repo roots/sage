@@ -159,6 +159,6 @@ if ( !function_exists( 'shoestrap_module_background_options' ) ) {
 
   }
 }
-add_action( 'simple-options-filter-sections-shoestrap', 'shoestrap_module_background_options', 60 );
+add_action( 'shoestrap_add_sections', 'shoestrap_module_background_options', 60 );
 
 include_once( dirname(__FILE__).'/functions.background.php' );

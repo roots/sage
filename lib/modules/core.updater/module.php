@@ -60,7 +60,7 @@ if ( !function_exists( 'shoestrap_core_licencing_options' ) ) {
 
   }
 }
-add_action( 'simple-options-filter-sections-shoestrap', 'shoestrap_core_licencing_options', 200 ); 
+add_action( 'shoestrap_add_sections', 'shoestrap_core_licencing_options', 200 ); 
 
 function shoestrap_sanitize_license( $new ) {
   $old = shoestrap_getVariable( 'shoestrap_license_key' );
