@@ -70,7 +70,7 @@ define( 'THEMEURI', $theme_uri );
 define( 'THEMEAUTHORURI', $author_uri );
 
 define( 'BACKUPS','backups' );
-
+return;
 /**
  * Required action filters
  *

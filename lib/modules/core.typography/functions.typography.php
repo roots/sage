@@ -236,7 +236,7 @@ function shoestrap_module_typography_googlefont_links() {
     if ($font_h6['google'] === 'true' ) {
       echo getGoogleScript($font_h6);
     }
-  } else if ($font_heading['google'] === 'true' ) {
+  } else if (isset($font_heading['google']) && $font_heading['google'] === 'true' ) {
     echo getGoogleScript($font_heading);
   }
   if (shoestrap_getVariable( 'font_jumbotron_heading_custom' ) == 1) {

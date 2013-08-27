@@ -4,22 +4,15 @@
  * The typography core options for the Shoestrap theme
  */
 if ( !function_exists( 'shoestrap_module_typography_options' ) ) {
-  function shoestrap_module_typography_options() {
+  function shoestrap_module_typography_options($sections) {
 
-    /*-----------------------------------------------------------------------------------*/
-    /* The Options Array */
-    /*-----------------------------------------------------------------------------------*/
+    // Typography Options
+    $section = array(
+    		'title' => __("Typography", "shoestrap"),
+    		'icon' => SOF_OPTIONS_URL.'img/glyphicons/glyphicons_119_adjust.png',
+    	);
 
-    // Set the Options Array
-    global $of_options, $smof_details;
-
-    // Typography
-    $of_options[] = array(
-      "name"      => __("Typography Options", "shoestrap"),
-      "type"      => "heading"
-    );
-
-    $of_options[] = array(
+    $fields[] = array(
       "name"      => __("Base Font", "shoestrap"),
       "desc"      => __("The main font for your site.", "shoestrap"),
       "id"        => "font_base",
@@ -35,10 +28,10 @@ if ( !function_exists( 'shoestrap_module_typography_options' ) ) {
         "text"    => __( "This is my preview text!", "shoestrap" ), //this is the text from preview box
         "size"    => "30px" //this is the text size from preview box
       ),
-      "type"      => "select_google_font_hybrid",
+      "type"      => "typography",
     );
 
-    $of_options[] = array(
+    $fields[] = array(
       "name"      => __("Header Overrides", "shoestrap"),
       "desc"      => __("By enabling this you can specify custom values for each <h*> tag. Default: Off", "shoestrap"),
       "id"        => "font_heading_custom",
@@ -49,7 +42,7 @@ if ( !function_exists( 'shoestrap_module_typography_options' ) ) {
       "fold"      => "advanced_toggle"
     );
 
-    $of_options[] = array(
+    $fields[] = array(
       "name"      => __("H1 Font", "shoestrap"),
       "desc"      => __("The main font for your site.", "shoestrap"),
       "id"        => "font_h1",
@@ -64,11 +57,11 @@ if ( !function_exists( 'shoestrap_module_typography_options' ) ) {
         "text"    => __( "This is my preview text!", "shoestrap" ), //this is the text from preview box
         "size"    => "30px" //this is the text size from preview box
       ),
-      "type"      => "select_google_font_hybrid",
+      "type"      => "typography",
       "fold"      => "font_heading_custom",
     );
 
-    $of_options[] = array(
+    $fields[] = array(
       "name"      => __("H2 Font", "shoestrap"),
       "desc"      => __("The main font for your site.", "shoestrap"),
       "id"        => "font_h2",
@@ -83,11 +76,11 @@ if ( !function_exists( 'shoestrap_module_typography_options' ) ) {
         "text"    => __( "This is my preview text!", "shoestrap" ), //this is the text from preview box
         "size"    => "30px" //this is the text size from preview box
       ),
-      "type"      => "select_google_font_hybrid",
+      "type"      => "typography",
       "fold"      => "font_heading_custom",
     );
 
-    $of_options[] = array(
+    $fields[] = array(
       "name"      => __("H3 Font", "shoestrap"),
       "desc"      => __("The main font for your site.", "shoestrap"),
       "id"        => "font_h3",
@@ -102,11 +95,11 @@ if ( !function_exists( 'shoestrap_module_typography_options' ) ) {
         "text"    => __( "This is my preview text!", "shoestrap" ), //this is the text from preview box
         "size"    => "30px" //this is the text size from preview box
       ),
-      "type"      => "select_google_font_hybrid",
+      "type"      => "typography",
       "fold"      => "font_heading_custom",
     );
 
-    $of_options[] = array(
+    $fields[] = array(
       "name"      => __("H4 Font", "shoestrap"),
       "desc"      => __("The main font for your site.", "shoestrap"),
       "id"        => "font_h4",
@@ -121,11 +114,11 @@ if ( !function_exists( 'shoestrap_module_typography_options' ) ) {
         "text"    => __( "This is my preview text!", "shoestrap" ), //this is the text from preview box
         "size"    => "30px" //this is the text size from preview box
       ),
-      "type"      => "select_google_font_hybrid",
+      "type"      => "typography",
       "fold"      => "font_heading_custom",
     );
 
-    $of_options[] = array(
+    $fields[] = array(
       "name"      => __("H5 Font", "shoestrap"),
       "desc"      => __("The main font for your site.", "shoestrap"),
       "id"        => "font_h5",
@@ -140,11 +133,11 @@ if ( !function_exists( 'shoestrap_module_typography_options' ) ) {
         "text"    => __( "This is my preview text!", "shoestrap" ), //this is the text from preview box
         "size"    => "30px" //this is the text size from preview box
       ),
-      "type"      => "select_google_font_hybrid",
+      "type"      => "typography",
       "fold"      => "font_heading_custom",
     );
 
-    $of_options[] = array(
+    $fields[] = array(
       "name"      => __("H6 Font", "shoestrap"),
       "desc"      => __("The main font for your site.", "shoestrap"),
       "id"        => "font_h6",
@@ -159,20 +152,19 @@ if ( !function_exists( 'shoestrap_module_typography_options' ) ) {
         "text"    => __( "This is my preview text!", "shoestrap" ), //this is the text from preview box
         "size"    => "30px" //this is the text size from preview box
       ),
-      "type"      => "select_google_font_hybrid",
+      "type"      => "typography",
       "fold"      => "font_heading_custom",
     );
 
+    $section['fields'] = $fields;
 
     do_action( 'shoestrap_module_typography_options_modifier' );
+    
+    array_push($sections, $section);
+    return $sections;
 
-    $smof_details = array();
-    foreach( $of_options as $option ) {
-      if (isset($option['id']))
-        $smof_details[$option['id']] = $option;
-    }
   }
 }
-add_action( 'init', 'shoestrap_module_typography_options', 80 );
+add_action( 'simple-options-filter-sections-shoestrap', 'shoestrap_module_typography_options', 80 ); 
 
 include_once( dirname(__FILE__).'/functions.typography.php' );

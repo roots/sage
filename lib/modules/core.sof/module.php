@@ -114,7 +114,7 @@ function setup_framework_options(){
 	//$args['show_import_export'] = false;
 
 	//Choose a custom option name for your theme options, the default is the theme name in lowercase with spaces replaced by underscores
-	//$args['opt_name'] = 'SimpleOptions';
+	$args['opt_name'] = 'shoestrap';
 
 	//Custom menu icon
 	//$args['menu_icon'] = '';
@@ -229,7 +229,8 @@ $sections = array();
 	global $Simple_Options;
 	$Simple_Options = new Simple_Options($sections, $args, $tabs);
 
-
+	do_action('shoestrap_add_sections_hook');
+/*
     // Convert options from SMOF to SOF
     global $of_options;
 
@@ -248,9 +249,9 @@ $sections = array();
 		      "title"   => $item['name'],
 	    	);
     	} else if ($item['type'] == "backup") {
-
+    		continue;
     	} else if ($item['type'] == 'transfer') {
-
+				continue;
     	} else if ($item['type'] == "select_google_font_hybrid"){
     		$item['type'] = "typography";
     	} else {
@@ -272,6 +273,10 @@ $sections = array();
 					$item['type'] == "radio_images";
 				} 
 
+				if (!empty($item['fold'])) {
+					$item['fold'] = array($item['fold']);
+				}
+
     		array_push($fields, $item);
     	}
     }
@@ -280,12 +285,12 @@ $sections = array();
 			$fields = array();
 			array_push($Simple_Options->sections, $section);
 		}    
-
+*/
 
 
 	//echo $Simple_Options->value('footer-text');
 }//function
-add_action('init', 'setup_framework_options', 300);
+add_action('after_setup_theme', 'setup_framework_options');
 
 /*
  * 
@@ -340,3 +345,32 @@ function validate_callback_function($field, $value, $existing_value){
 	return $return;
 	
 }//function
+
+
+
+/**
+	Saving functions on import, etc
+**/
+
+// Enable less compiling on save
+function shoestrap_sof_after_save($new, $old) {
+	global $Simple_Options;
+	$lessChanged = false;
+	echo "<pre>";
+	print_r($new);
+echo "</pre><pre>";
+print_r($old);
+echo "</pre>";
+exit();
+  if ( $lessChanged == true ){
+    shoestrap_makecss();
+  }
+}
+add_action('simple-options-after-validate-shoestrap', 'shoestrap_sof_after_save');
+
+// Enable less compiling after import and defaults
+function shoestrap_compile_css_after_import($data) {
+	shoestrap_makecss();
+}
+add_action('simple-options-after-import-shoestrap', 'shoestrap_compile_css_after_import');
+
