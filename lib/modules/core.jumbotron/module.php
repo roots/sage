@@ -23,7 +23,7 @@ if ( !function_exists( 'shoestrap_module_jumbotron_options' ) ) {
 		// Branding Options
     $section = array(
     		'title' => __("Jumbotron", "shoestrap"),
-    		'icon' => SOF_OPTIONS_URL.'img/glyphicons/glyphicons_119_adjust.png',
+    		'icon' => SOF_OPTIONS_URL.'img/glyphicons/glyphicons_051_eye_open.png',
     	);
 
     $url = admin_url( 'widgets.php' );

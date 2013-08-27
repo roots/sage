@@ -9,7 +9,7 @@ if ( !function_exists( 'shoestrap_module_blog_options' ) ) {
     // Blog Options
     $section = array(
     		'title' => __("Blog", "shoestrap"),
-    		'icon' => SOF_OPTIONS_URL.'img/glyphicons/glyphicons_119_adjust.png',
+    		'icon' => SOF_OPTIONS_URL.'img/glyphicons/glyphicons_235_pen.png',
     	);    
 
     $fields[] = array(

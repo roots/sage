@@ -9,7 +9,7 @@ if ( !function_exists( 'shoestrap_module_header_options' ) ) {
     // Branding Options
     $section = array(
     		'title' => __("Header", "shoestrap"),
-    		'icon' => SOF_OPTIONS_URL.'img/glyphicons/glyphicons_119_adjust.png',
+    		'icon' => SOF_OPTIONS_URL.'img/glyphicons/glyphicons_063_power.png',
     	);
 
     $url = admin_url( 'nav-menus.php' );
@@ -176,7 +176,7 @@ if ( !function_exists( 'shoestrap_module_header_options' ) ) {
       "id"        => "font_brand",
       'less'      => true,
       "std"       => array(
-        'face'    => 'Arial, Helvetica, sans-serif',
+        'face'    => 'Arial, Helveheadingca, sans-serif',
         'size'    => '18px',
         'color'   => '#333333',
         'google'  => 'false',
