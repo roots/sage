@@ -4,8 +4,7 @@
  * The branding core options for the Shoestrap theme
  */
 if ( !function_exists( 'shoestrap_module_branding_options' ) ) {
-  function shoestrap_module_branding_options() {
-  	global $Simple_Options;
+  function shoestrap_module_branding_options($sections) {
   	$fields = array();
     // Branding Options
     $section = array(
@@ -135,13 +134,12 @@ if ( !function_exists( 'shoestrap_module_branding_options' ) ) {
 
     do_action( 'shoestrap_module_branding_options_modifier' );
     
-    $Simple_Options->addSections($section);
-    //array_push($sections, $section);
-    //return $sections;
+    array_push($sections, $section);
+    return $sections;
 
   }
 }
-add_action( 'simple-options-add-sections-shoestrap', 'shoestrap_module_branding_options', 50 );
+add_action( 'simple-options-filter-sections-shoestrap', 'shoestrap_module_branding_options', 50 );
 
 
 
