@@ -290,7 +290,7 @@ $sections = array();
 
 	//echo $Simple_Options->value('footer-text');
 }//function
-add_action('after_setup_theme', 'setup_framework_options');
+add_action('init', 'setup_framework_options');
 
 /*
  * 
@@ -352,25 +352,6 @@ function validate_callback_function($field, $value, $existing_value){
 	Saving functions on import, etc
 **/
 
-// Enable less compiling on save
-function shoestrap_sof_after_save($new, $old) {
-	global $Simple_Options;
-	$lessChanged = false;
-	echo "<pre>";
-	print_r($new);
-echo "</pre><pre>";
-print_r($old);
-echo "</pre>";
-exit();
-  if ( $lessChanged == true ){
-    shoestrap_makecss();
-  }
-}
-add_action('simple-options-after-validate-shoestrap', 'shoestrap_sof_after_save');
-
-// Enable less compiling after import and defaults
-function shoestrap_compile_css_after_import($data) {
-	shoestrap_makecss();
-}
-add_action('simple-options-after-import-shoestrap', 'shoestrap_compile_css_after_import');
-
+add_action('simple-options-after-import-shoestrap', 'shoestrap_makecss'); // If an import occurred
+add_action('simple-options-run-compiler-shoestrap', 'shoestrap_makecss'); // If a compiler field was altered
+add_action('simple-options-after-defaults-shoestrap', 'shoestrap_makecss'); // If defaults are set (reset to defaults)

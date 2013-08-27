@@ -46,7 +46,7 @@ if ( !function_exists( 'shoestrap_module_jumbotron_options' ) ) {
       "desc"      => __("Select the background color for your Jumbotron area. Please note that this area will only be visible if you assign a widget to the \"Jumbotron\" Widget Area. Default: #EEEEEE.", "shoestrap"),
       "id"        => "jumbotron_bg",
       "std"       => "#EEEEEE",
-      "less"      => true,
+      "compiler"      => true,
       "customizer"=> array(),
       "type"      => "color"
     );
@@ -202,7 +202,7 @@ if ( !function_exists( 'shoestrap_module_jumbotron_options' ) ) {
       "desc"      => __("By enabling this you can specify custom values for each <h*> tag. Default: Off", "shoestrap"),
       "id"        => "font_jumbotron_heading_custom",
       "std"       => 0,
-      "less"      => true,
+      "compiler"      => true,
       "type"      => "switch",
       "customizer"=> array(),
       "fold"      => "advanced_toggle"
@@ -232,7 +232,7 @@ if ( !function_exists( 'shoestrap_module_jumbotron_options' ) ) {
       "id"        => "jumbotron_border_bottom",
       "type"      => "border",
       "std"       => array(
-        'width'   => '0',
+        'size'   => '0',
         'style'   => 'solid',
         'color'   => "#428bca",
       ),

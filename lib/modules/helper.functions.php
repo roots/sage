@@ -118,15 +118,11 @@ function shoestrap_getVariable($key, $fresh = false) {
 
   if ( !isset( $Simple_Options->options ) ) {
     $data = (array) get_option('shoestrap');
+    return $data[$key]; 
   } else {
-  	$data = (array) $Simple_Options->options;
+  	return $Simple_Options->value($key);
   }
 
-  if (empty($key)) {
-  	return $data;
-  } else if (!empty($data[$key])) {
-  	return $data[$key]; 
-  }
   return "";
 }
 

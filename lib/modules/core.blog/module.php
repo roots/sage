@@ -28,7 +28,7 @@ if ( !function_exists( 'shoestrap_module_blog_options' ) ) {
       "name"      => __("Custom Blog Layout", "shoestrap"),
       "desc"      => __("Set a default layout for your blog/post pages. Default: OFF.", "shoestrap"),
       "id"        => "blog_layout_toggle",
-      "less"      => true,
+      "compiler"      => true,
       "std"       => 0,
       "type"      => "switch",
       "customizer"=> array(),
@@ -41,7 +41,7 @@ if ( !function_exists( 'shoestrap_module_blog_options' ) ) {
       "id"        => "blog_layout",
       "std"       => get_theme_mod('layout', 1),
       "type"      => "images",
-      "less"      => true,
+      "compiler"      => true,
       "fold"      => "blog_layout_toggle",
       "customizer"=> array(),
       "options"   => array(

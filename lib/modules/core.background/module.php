@@ -31,7 +31,7 @@ if ( !function_exists( 'shoestrap_module_background_options' ) ) {
       "desc"      => __("Select a background color for your site. Default: #ffffff.", "shoestrap"),
       "id"        => "color_body_bg",
       "std"       => "#ffffff",
-      "less"      => true,
+      "compiler"  => true,
       "customizer"=> array(),
       "type"      => "color",
     );

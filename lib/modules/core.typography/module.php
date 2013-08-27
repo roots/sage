@@ -36,7 +36,7 @@ if ( !function_exists( 'shoestrap_module_typography_options' ) ) {
       "desc"      => __("By enabling this you can specify custom values for each <h*> tag. Default: Off", "shoestrap"),
       "id"        => "font_heading_custom",
       "std"       => 0,
-      "less"      => true,
+      "compiler"      => true,
       "type"      => "switch",
       "customizer"=> array(),
       "fold"      => "advanced_toggle"

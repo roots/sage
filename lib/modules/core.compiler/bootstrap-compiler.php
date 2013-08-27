@@ -186,32 +186,32 @@ function shoestrap_variables_less() {
     $font_h5 = shoestrap_process_font( shoestrap_getVariable( 'font_h5', true ) );
     $font_h6 = shoestrap_process_font( shoestrap_getVariable( 'font_h6', true ) );
 
-    $font_h1_face   = $font_h1['face'];
+    $font_h1_face   = $font_h1['family'];
     $font_h1_size   = $font_h1['size'] . 'px';
     $font_h1_weight = $font_h1['weight'];
     $font_h1_style  = $font_h1['style'];
 
-    $font_h2_face   = $font_h2['face'];
+    $font_h2_face   = $font_h2['family'];
     $font_h2_size   = $font_h2['size'] . 'px';
     $font_h2_weight = $font_h2['weight'];
     $font_h2_style  = $font_h2['style'];
 
-    $font_h3_face   = $font_h3['face'];
+    $font_h3_face   = $font_h3['family'];
     $font_h3_size   = $font_h3['size'] . 'px';
     $font_h3_weight = $font_h3['weight'];
     $font_h3_style  = $font_h3['style'];
 
-    $font_h4_face   = $font_h4['face'];
+    $font_h4_face   = $font_h4['family'];
     $font_h4_size   = $font_h4['size'] . 'px';
     $font_h4_weight = $font_h4['weight'];
     $font_h4_style  = $font_h4['style'];
 
-    $font_h5_face   = $font_h5['face'];
+    $font_h5_face   = $font_h5['family'];
     $font_h5_size   = $font_h5['size'] . 'px';
     $font_h5_weight = $font_h5['weight'];
     $font_h5_style  = $font_h5['style'];
 
-    $font_h6_face   = $font_h6['face'];
+    $font_h6_face   = $font_h6['family'];
     $font_h6_size   = $font_h6['size'] . 'px';
     $font_h6_weight = $font_h6['weight'];
     $font_h6_style  = $font_h6['style'];
@@ -254,7 +254,7 @@ function shoestrap_variables_less() {
   $font_size_base   = $font_base['size'];
   $font_style_base  = $font_base['style'];
   $font_weight_base = $font_base['weight'];
-  $sans_serif       = $font_base['face'];
+  $sans_serif       = $font_base['family'];
 
   $border_radius    = filter_var( shoestrap_getVariable( 'general_border_radius', true ), FILTER_SANITIZE_NUMBER_INT );
   $padding_base     = intval( shoestrap_getVariable( 'padding_base', true ) );
@@ -276,14 +276,14 @@ function shoestrap_variables_less() {
 
     $font_jumbotron_headers = shoestrap_process_font( shoestrap_getVariable( 'font_jumbotron_headers', true ) );
 
-    $font_jumbotron_headers_face   = $font_jumbotron_headers['face'];
+    $font_jumbotron_headers_face   = $font_jumbotron_headers['family'];
     $font_jumbotron_headers_weight = $font_jumbotron_headers['weight'];
     $font_jumbotron_headers_style  = $font_jumbotron_headers['style'];
     $jumbotron_headers_text_color   = '#' . str_replace( '#', '', $font_jumbotron_headers['color'] );
 
   } else {
 
-    $font_jumbotron_headers_face   = $font_jumbotron['face'];
+    $font_jumbotron_headers_face   = $font_jumbotron['family'];
     $font_jumbotron_headers_weight = $font_jumbotron['weight'];
     $font_jumbotron_headers_style  = $font_jumbotron['style'];
     $jumbotron_headers_text_color  = $jumbotron_text_color;
@@ -1026,19 +1026,19 @@ function shoestrap_variables_less() {
 @navbar-font-size:        ' . $font_navbar['size'] . 'px;
 @navbar-font-weight:      ' . $font_navbar['weight'] . ';
 @navbar-font-style:       ' . $font_navbar['style'] . ';
-@navbar-font-family:      ' . $font_navbar['face'] . ';
+@navbar-font-family:      ' . $font_navbar['family'] . ';
 @navbar-font-color:       ' . $navbar_text_color . ';
 
 @brand-font-size:         ' . $font_brand['size'] . 'px;
 @brand-font-weight:       ' . $font_brand['weight'] . ';
 @brand-font-style:        ' . $font_brand['style'] . ';
-@brand-font-family:       ' . $font_brand['face'] . ';
+@brand-font-family:       ' . $font_brand['family'] . ';
 @brand-font-color:        ' . $brand_text_color . ';
 
 @jumbotron-font-size:         ' . $font_jumbotron['size'] . 'px;
 @jumbotron-font-weight:       ' . $font_jumbotron['weight'] . ';
 @jumbotron-font-style:        ' . $font_jumbotron['style'] . ';
-@jumbotron-font-family:       ' . $font_jumbotron['face'] . ';
+@jumbotron-font-family:       ' . $font_jumbotron['family'] . ';
 @jumbotron-font-color:        ' . $jumbotron_text_color . ';
 
 @jumbotron-headers-font-weight:       ' . $font_jumbotron_headers_weight . ';

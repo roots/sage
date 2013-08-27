@@ -39,8 +39,9 @@ if ( isset( $wp_version ) && version_compare( $wp_version, '3.5' ) >= 0 ) {
 
 		global $wpdb;
 
-		if ( empty( $url ) )
+		if ( empty( $url ) ) {
 			return new WP_Error( 'no_image_url', __( 'No image URL has been entered.', 'shoestrap' ), $url );
+		}
 
 		// Get default size from database
 		$width = ( $width )  ? $width : get_option( 'thumbnail_size_w' );
@@ -73,7 +74,11 @@ if ( isset( $wp_version ) && version_compare( $wp_version, '3.5' ) >= 0 ) {
 		// Some additional info about the image
 		$info = pathinfo( $file_path );
 		$dir = $info['dirname'];
-		$ext = $info['extension'];
+		$ext = "";
+		if (!empty($info['extension'])) {
+			$ext = $info['extension'];	
+		}
+		
 		$name = wp_basename( $file_path, ".$ext" );
 
 		// Suffix applied to filename

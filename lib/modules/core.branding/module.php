@@ -71,7 +71,7 @@ if ( !function_exists( 'shoestrap_module_branding_options' ) ) {
       "desc"      => __("Select your primary branding color. This will affect various areas of your site, including the color of your primary buttons, the background of some elements and many more.", "shoestrap"),
       "id"        => "color_brand_primary",
       "std"       => "#428bca",
-      "less"      => true,
+      "compiler"      => true,
       "customizer"=> array(),
       "type"      => "color"
     );
@@ -81,7 +81,7 @@ if ( !function_exists( 'shoestrap_module_branding_options' ) ) {
       "desc"      => __("Select your secondary branding color. Also referred to as an accent color. This will affect various areas of your site, including the color of your primary buttons, link color, the background of some elements and many more.", "shoestrap"),
       "id"        => "color_brand_secondary",
       "std"       => "#428bca",
-      "less"      => true,
+      "compiler"      => true,
       "customizer"=> array(),
       "type"      => "color"
     );      
@@ -91,7 +91,7 @@ if ( !function_exists( 'shoestrap_module_branding_options' ) ) {
       "desc"      => __("Select your branding color for success messages etc. Default: #5cb85c.", "shoestrap"),
       "id"        => "color_brand_success",
       "std"       => "#5cb85c",
-      "less"      => true,
+      "compiler"      => true,
       "customizer"=> array(),
       "type"      => "color",
       "fold"      => "advanced_toggle"
@@ -102,7 +102,7 @@ if ( !function_exists( 'shoestrap_module_branding_options' ) ) {
       "desc"      => __("Select your branding color for warning messages etc. Default: #f0ad4e.", "shoestrap"),
       "id"        => "color_brand_warning",
       "std"       => "#f0ad4e",
-      "less"      => true,
+      "compiler"      => true,
       "customizer"=> array(),
       "type"      => "color",
       "fold"      => "advanced_toggle"
@@ -113,7 +113,7 @@ if ( !function_exists( 'shoestrap_module_branding_options' ) ) {
       "desc"      => __("Select your branding color for success messages etc. Default: #d9534f.", "shoestrap"),
       "id"        => "color_brand_danger",
       "std"       => "#d9534f",
-      "less"      => true,
+      "compiler"      => true,
       "customizer"=> array(),
       "type"      => "color",
       "fold"      => "advanced_toggle"
@@ -124,7 +124,7 @@ if ( !function_exists( 'shoestrap_module_branding_options' ) ) {
       "desc"      => __("Select your branding color for info messages etc. It will also be used for the Search button color as well as other areas where it semantically makes sense to use an \"info\" class. Default: #5bc0de.", "shoestrap"),
       "id"        => "color_brand_info",
       "std"       => "#5bc0de",
-      "less"      => true,
+      "compiler"      => true,
       "customizer"=> array(),
       "type"      => "color",
       "fold"      => "advanced_toggle"

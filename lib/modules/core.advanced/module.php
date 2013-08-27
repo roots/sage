@@ -35,7 +35,7 @@ if ( !function_exists('shoestrap_module_advanced_options' ) ) {
       "name"      => __("Allow shortcodes in widgets", "shoestrap"),
       "desc"      => __("This option allows shortcodes within widgets. Default: On.", "shoestrap"),
       "id"        => "enable_widget_shortcodes",
-      "less"      => true,
+      "compiler"      => true,
       "std"       => 1,
       "type"      => "switch",
     );
@@ -44,7 +44,7 @@ if ( !function_exists('shoestrap_module_advanced_options' ) ) {
       "name"      => __("No gradients - \"Flat\" look.", "shoestrap"),
       "desc"      => __("This option will disable all gradients in your site, giving it a cleaner look. Default: OFF.", "shoestrap"),
       "id"        => "general_flat",
-      "less"      => true,
+      "compiler"      => true,
       "std"       => 0,
       "type"      => "switch",
     );
@@ -77,7 +77,7 @@ if ( !function_exists('shoestrap_module_advanced_options' ) ) {
       "step"      => 1,
       "max"       => 50,
       "advanced"  => true,
-      "less"      => true,
+      "compiler"      => true,
       "type"      => "slider",
       "fold"      => "advanced_toggle"
     );
@@ -91,7 +91,7 @@ if ( !function_exists('shoestrap_module_advanced_options' ) ) {
       "step"      => 1,
       "max"       => 20,
       "advanced"  => true,
-      "less"      => true,
+      "compiler"      => true,
       "type"      => "slider",
       "fold"      => "advanced_toggle"
     );

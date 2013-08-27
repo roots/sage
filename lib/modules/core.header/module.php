@@ -52,7 +52,7 @@ if ( !function_exists( 'shoestrap_module_header_options' ) ) {
       "desc"      => __("Pick a background color for the NavBar. Default: #eeeeee.", "shoestrap"),
       "id"        => "navbar_bg",
       "std"       => "#f8f8f8",
-      "less"      => true,
+      "compiler"      => true,
       "customizer"=> array(),
       "type"      => "color"
     );
@@ -65,7 +65,7 @@ if ( !function_exists( 'shoestrap_module_header_options' ) ) {
       "min"       => 0,
       "step"      => 1,
       "max"       => 100,
-      "less"      => true,
+      "compiler"      => true,
       "type"      => "slider"
     );
 
@@ -113,7 +113,7 @@ if ( !function_exists( 'shoestrap_module_header_options' ) ) {
       "min"       => -100,
       "step"      => 1,
       "max"       => 100,
-      "less"      => true,
+      "compiler"      => true,
       "type"      => "slider"
     );
 
@@ -146,7 +146,7 @@ if ( !function_exists( 'shoestrap_module_header_options' ) ) {
       "min"       => 38,
       "step"      => 1,
       "max"       => 200,
-      "less"      => true,
+      "compiler"      => true,
       "type"      => "slider"
     );
 
@@ -320,7 +320,7 @@ if ( !function_exists( 'shoestrap_module_header_options' ) ) {
       "min"       => 0,
       "step"      => 1,
       "max"       => 100,
-      "less"      => true,
+      "compiler"      => true,
       "type"      => "slider",
       "fold"      => "header_toggle"
     );

@@ -154,7 +154,7 @@ if ( !function_exists( 'shoestrap_module_layout_options' ) ) {
       "step"      => 2,
       "max"       => 2100,
       "advanced"  => true,
-      "less"      => true,
+      "compiler"      => true,
       "type"      => "slider"
     );
 
@@ -168,7 +168,7 @@ if ( !function_exists( 'shoestrap_module_layout_options' ) ) {
       "step"      => 2,
       "max"       => 2100,
       "advanced"  => true,
-      "less"      => true,
+      "compiler"      => true,
       "type"      => "slider",
 
     );
@@ -183,7 +183,7 @@ if ( !function_exists( 'shoestrap_module_layout_options' ) ) {
       "step"      => 2,
       "max"       => 2100,
       "advanced"  => true,
-      "less"      => true,
+      "compiler"      => true,
       "type"      => "slider"
     );
 
@@ -197,7 +197,7 @@ if ( !function_exists( 'shoestrap_module_layout_options' ) ) {
       "step"      => 2,
       "max"       => 100,
       "advanced"  => true,
-      "less"      => true,
+      "compiler"      => true,
       "type"      => "slider",
     );
 

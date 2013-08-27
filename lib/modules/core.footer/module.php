@@ -56,7 +56,7 @@ if ( !function_exists( 'shoestrap_module_footer_options' ) ) {
       "id"        => "footer_border_top",
       "type"      => "border",
       "std"       => array(
-        'width'   => '2',
+        'size'   => '2',
         'style'   => 'solid',
         'color'   => '#4B4C4D',
       ),
