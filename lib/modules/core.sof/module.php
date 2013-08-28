@@ -79,7 +79,12 @@ function change_framework_args($args){
 **/
 
 
-function setup_framework_options(){
+function shoestrap_simpleoptions_init(){
+	global $Simple_Options;
+
+	if (!empty($Simple_Options)) {
+		return;
+	}
 
 	$args = array();
 
@@ -229,7 +234,7 @@ $sections = array();
 
 	$sections = apply_filters('shoestrap_add_sections', $sections);
 
-	global $Simple_Options;
+	
 	$Simple_Options = new Simple_Options($sections, $args, $tabs);
 
 	do_action('shoestrap_add_sections_hook');
@@ -293,7 +298,7 @@ $sections = array();
 
 	//echo $Simple_Options->value('footer-text');
 }//function
-add_action('init', 'setup_framework_options');
+add_action('init', 'shoestrap_simpleoptions_init');
 
 /*
  * 

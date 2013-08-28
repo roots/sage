@@ -1,6 +1,7 @@
 <?php
 
 // Helper functions required BEFORE the modules are loaded
+//require_once get_template_directory() . '/lib/modules/simple.options.php';
 require_once get_template_directory() . '/lib/modules/helper.functions.php';
 
 // PHP version control

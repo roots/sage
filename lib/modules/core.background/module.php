@@ -13,9 +13,10 @@ if ( !function_exists( 'shoestrap_module_background_options' ) ) {
 
     if ( is_dir( $bg_pattern_images_path ) ) {
       if ( $bg_pattern_images_dir = opendir( $bg_pattern_images_path ) ) {
+      	$bg_pattern_images = array();
         while ( ( $bg_pattern_images_file = readdir( $bg_pattern_images_dir ) ) !== false ) {
           if( stristr( $bg_pattern_images_file, ".png" ) !== false || stristr( $bg_pattern_images_file, ".jpg" ) !== false)
-            $bg_pattern_images[] = $bg_pattern_images_url . $bg_pattern_images_file;
+            array_push($bg_pattern_images, $bg_pattern_images_url . $bg_pattern_images_file);
         }
       }
     }

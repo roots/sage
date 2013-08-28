@@ -5,8 +5,12 @@
  * If no custom logo is uploaded, use the sitename
  */
 function shoestrap_logo() {
-  if ( shoestrap_getVariable( 'logo' ) ) {
-  	$i = shoestrap_image(shoestrap_getVariable( 'logo' ));
+  if ( $data = shoestrap_getVariable( 'logo' ) ) {
+  	$i = shoestrap_image($data);
+  	
+  	if (empty($i['url'])) {
+  		return;
+  	}
   	
     $image = '<img id="site-logo" src="%s" alt="%s">';
     printf(

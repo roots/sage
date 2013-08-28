@@ -120,10 +120,10 @@ function shoestrap_getVariable($key, $fresh = false) {
     $data = (array) get_option('shoestrap');
     return $data[$key]; 
   } else {
-  	return $Simple_Options->value($key);
+  	return $Simple_Options->get($key);
   }
 
-  return "";
+  return false;
 }
 
 // Show or hide the adminbar
