@@ -156,7 +156,7 @@ if ( !function_exists( 'shoestrap_module_header_options' ) ) {
       "id"        => "font_navbar",
       'less'      => true,
       "std"       => array(
-        'face'    => 'Arial, Helvetica, sans-serif',
+        'family'    => 'Arial, Helvetica, sans-serif',
         'size'    => '14px',
         'color'   => '#333333',
         'google'  => 'false',
@@ -176,7 +176,7 @@ if ( !function_exists( 'shoestrap_module_header_options' ) ) {
       "id"        => "font_brand",
       'less'      => true,
       "std"       => array(
-        'face'    => 'Arial, Helveheadingca, sans-serif',
+        'family'    => 'Arial, Helveheadingca, sans-serif',
         'size'    => '18px',
         'color'   => '#333333',
         'google'  => 'false',

@@ -5,7 +5,7 @@ function shoestrap_icons() {
   $apple_icon_item     = shoestrap_getVariable( 'apple_icon' );
 
   // Add the favicon
-  if( $favicon_item['url'] != '' ) :
+  if( !empty($favicon_item['url']) && $favicon_item['url'] != '' ) :
 		$favicon = matthewruddy_image_resize( $favicon_item['url'], 32, 32, true, false );
   	echo '<link rel="shortcut icon" href="'.$favicon['url'].'" type="image/x-icon" />';
   endif;

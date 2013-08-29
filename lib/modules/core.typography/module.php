@@ -18,7 +18,7 @@ if ( !function_exists( 'shoestrap_module_typography_options' ) ) {
       "id"        => "font_base",
       'less'      => true,
       "std"       => array(
-        'face'    => 'Arial, Helvetica, sans-serif',
+        'family'    => 'Arial, Helvetica, sans-serif',
         'size'    => '14px',
         'google'  => 'false',
         'weight'  => 'inherit',
@@ -48,7 +48,7 @@ if ( !function_exists( 'shoestrap_module_typography_options' ) ) {
       "id"        => "font_h1",
       'less'      => true,
       "std"       => array(
-        'face'    => 'Arial, Helvetica, sans-serif',
+        'family'    => 'Arial, Helvetica, sans-serif',
         'size'    => '38px',
         'color'   => '#333333',
         'google'  => 'false'
@@ -67,7 +67,7 @@ if ( !function_exists( 'shoestrap_module_typography_options' ) ) {
       "id"        => "font_h2",
       'less'      => true,
       "std"       => array(
-        'face'    => 'Arial, Helvetica, sans-serif',
+        'family'    => 'Arial, Helvetica, sans-serif',
         'size'    => '32px',
         'color'   => '#333333',
         'google'  => 'false'
@@ -86,7 +86,7 @@ if ( !function_exists( 'shoestrap_module_typography_options' ) ) {
       "id"        => "font_h3",
       'less'      => true,
       "std"       => array(
-        'face'    => 'Arial, Helvetica, sans-serif',
+        'family'    => 'Arial, Helvetica, sans-serif',
         'size'    => '24px',
         'color'   => '#333333',
         'google'  => 'false'
@@ -105,7 +105,7 @@ if ( !function_exists( 'shoestrap_module_typography_options' ) ) {
       "id"        => "font_h4",
       'less'      => true,
       "std"       => array(
-        'face'    => 'Arial, Helvetica, sans-serif',
+        'family'    => 'Arial, Helvetica, sans-serif',
         'size'    => '18px',
         'color'   => '#333333',
         'google'  => 'false'
@@ -124,7 +124,7 @@ if ( !function_exists( 'shoestrap_module_typography_options' ) ) {
       "id"        => "font_h5",
       'less'      => true,
       "std"       => array(
-        'face'    => 'Arial, Helvetica, sans-serif',
+        'family'    => 'Arial, Helvetica, sans-serif',
         'size'    => '16px',
         'color'   => '#333333',
         'google'  => 'false'
@@ -143,7 +143,7 @@ if ( !function_exists( 'shoestrap_module_typography_options' ) ) {
       "id"        => "font_h6",
       'less'      => true,
       "std"       => array(
-        'face'    => 'Arial, Helvetica, sans-serif',
+        'family'    => 'Arial, Helvetica, sans-serif',
         'size'    => '12px',
         'color'   => '#333333',
         'google'  => 'false'

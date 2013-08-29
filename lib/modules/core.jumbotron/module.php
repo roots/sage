@@ -183,7 +183,7 @@ if ( !function_exists( 'shoestrap_module_jumbotron_options' ) ) {
       "id"        => "font_jumbotron",
       'less'      => true,
       "std"       => array(
-        'face'    => 'Arial, Helvetica, sans-serif',
+        'family'    => 'Arial, Helvetica, sans-serif',
         'size'    => '16px',
         'color'   => '#333333',
         'google'  => 'false',
@@ -214,7 +214,7 @@ if ( !function_exists( 'shoestrap_module_jumbotron_options' ) ) {
       "id"        => "font_jumbotron_headers",
       'less'      => true,
       "std"       => array(
-        'face'    => 'Arial, Helvetica, sans-serif',
+        'family'    => 'Arial, Helvetica, sans-serif',
         'color'   => '#333333',
         'google'  => 'false'
       ),
