@@ -206,54 +206,82 @@ function shoestrap_module_typography_googlefont_links() {
     $font_jumbotron_headers = shoestrap_getVariable( 'font_jumbotron_headers' );
   }
   if ($font_base['google'] === 'true' ) {
-    echo getGoogleScript($font_base);
+    $font = getGoogleScript($font_base);
+    wp_register_style($font['key'], $font['link']);
+  	wp_enqueue_style($font['key']);
   }
   if ($font_navbar['google'] === 'true' ) {
-    echo getGoogleScript($font_navbar);
+    $font = getGoogleScript($font_navbar);
+    wp_register_style($font['key'], $font['link']);
+  	wp_enqueue_style($font['key']);
   }
   if ($font_brand['google'] === 'true' ) {
-    echo getGoogleScript($font_brand);
+    $font = getGoogleScript($font_brand);
+    wp_register_style($font['key'], $font['link']);
+  	wp_enqueue_style($font['key']);    
   }
   if ($font_jumbotron['google'] === 'true' ) {
-    echo getGoogleScript($font_jumbotron);
+    $font = getGoogleScript($font_jumbotron);    
+    wp_register_style($font['key'], $font['link']);
+  	wp_enqueue_style($font['key']);
   }
   if (shoestrap_getVariable( 'font_heading_custom' )) {
     if ($font_h1['google'] === 'true' ) {
-      echo getGoogleScript($font_h1);
+      $font = getGoogleScript($font_h1);
+  	  wp_register_style($font['key'], $font['link']);
+	  	wp_enqueue_style($font['key']);
     }
     if ($font_h2['google'] === 'true' ) {
-      echo getGoogleScript($font_h2);
+      $font = getGoogleScript($font_h2);
+  	  wp_register_style($font['key'], $font['link']);
+	  	wp_enqueue_style($font['key']);
     }
     if ($font_h3['google'] === 'true' ) {
-      echo getGoogleScript($font_h3);
+      $font = getGoogleScript($font_h3);
+  	  wp_register_style($font['key'], $font['link']);
+	  	wp_enqueue_style($font['key']);
     }
     if ($font_h4['google'] === 'true' ) {
-      echo getGoogleScript($font_h4);
+      $font = getGoogleScript($font_h4);
+  	  wp_register_style($font['key'], $font['link']);
+	  	wp_enqueue_style($font['key']);
     }
     if ($font_h5['google'] === 'true' ) {
-      echo getGoogleScript($font_h5);
+      $font = getGoogleScript($font_h5);
+  	  wp_register_style($font['key'], $font['link']);
+	  	wp_enqueue_style($font['key']);
     }
     if ($font_h6['google'] === 'true' ) {
-      echo getGoogleScript($font_h6);
+      $font = getGoogleScript($font_h6);
+  	  wp_register_style($font['key'], $font['link']);
+	  	wp_enqueue_style($font['key']);
     }
   } else if (isset($font_heading['google']) && $font_heading['google'] === 'true' ) {
-    echo getGoogleScript($font_heading);
+    $font = getGoogleScript($font_heading);
+  	wp_register_style($font['key'], $font['link']);
+	  wp_enqueue_style($font['key']);
   }
   if (shoestrap_getVariable( 'font_jumbotron_heading_custom' ) == 1) {
     if ($font_jumbotron_headers['google'] === 'true' ) {
-      echo getGoogleScript($font_jumbotron_headers);
+      $font = getGoogleScript($font_jumbotron_headers);
+  	  wp_register_style($font['key'], $font['link']);
+	  	wp_enqueue_style($font['key']);
     }
   }
 }
-add_action( 'wp_head', 'shoestrap_module_typography_googlefont_links' );
+add_action( 'wp_enqueue_scripts', 'shoestrap_module_typography_googlefont_links' );
 
 
 function getGoogleScript($font) {
-  $link = 'http://fonts.googleapis.com/css?family='.str_replace(" ","+",$font['family']);
-  if (!empty($font['style']))
-    $link .= ':'.str_replace('-','',$font['style']);
-  if (!empty($font['script']))
-    $link .= '&subset='.$font['script'];
-
-  return '<link href="'.$link.'" rel="stylesheet" type="text/css" class="base_font">';
+  $data['link'] = 'http://fonts.googleapis.com/css?family='.str_replace(" ","+",$font['family']);
+  $data['key'] = str_replace(" ","_",$font['family']);
+  if (!empty($font['style'])) {
+  	$data['link'] .= ':'.str_replace('-','',$font['style']);
+  	$data['key'] .= "-".str_replace('_','',$font['style']);
+  }
+  if (!empty($font['script'])) {
+  	$data['link'] .= '&subset='.$font['script'];
+		$data['key'] .= "-".str_replace('_','',$font['script']);
+  }
+  return $data;
 }
