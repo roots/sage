@@ -96,8 +96,6 @@ add_action('init', 'shoestrap_simpleoptions_init');
 /**
 	Saving functions on import, etc
 **/
-add_action('simple-options-import-shoestrap', 'shoestrap_makecss'); // If an import occurred
-add_action('simple-options-compiler-shoestrap', 'shoestrap_makecss'); // If a compiler field was altered
-add_action('simple-options-defaults-shoestrap', 'shoestrap_makecss'); // If defaults are set (reset to defaults)
+add_action('simple-options-compiler-shoestrap', 'shoestrap_makecss'); // If a compiler field was altered or import or reset defaults
 
 
