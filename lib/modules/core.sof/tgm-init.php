@@ -11,7 +11,7 @@ function shoestrap_register_required_plugins() {
 			'version' 		=> '0.0.2',
 			'force_activation' 	=> true,
 			'external_url' 		=> 'http://github.com/SimpleRain/SimpleOptions/',
-			'source' 		=> 'http://github.com/SimpleRain/SimpleOptions/archive/0.2.9.zip', // The plugin source
+			'source' 		=> dirname(__FILE__).'/SimpleOptions-0.3.1.zip', // The plugin source
 		),
 	);
 
@@ -23,7 +23,7 @@ function shoestrap_register_required_plugins() {
 		'parent_menu_slug'	=> 'themes.php', 				// Default parent menu slug
 		'parent_url_slug' 	=> 'themes.php', 				// Default parent URL slug
 		'menu'         			=> 'install-required-plugins', 	// Menu slug
-		'has_notices'     	=> true,                       	// Show admin notices or not
+		'has_notices'     	=> false,                       	// Show admin notices or not
 		'is_automatic'    	=> true,					   	// Automatically activate plugins after installation or not
 		'message' 					=> '',							// Message to output right before the plugins table
 		'strings'      			=> array(
@@ -44,7 +44,7 @@ function shoestrap_register_required_plugins() {
 		'return'                           	=> __( 'Return to Required Plugins Installer', $theme_text_domain ),
 		'plugin_activated'                 	=> __( 'Plugin activated successfully.', $theme_text_domain ),
 		'complete' 													=> __( 'All plugins installed and activated successfully. %s', $theme_text_domain ), // %1$s = dashboard link
-		'nag_type'													=> 'updated' // Determines admin notice type - can only be 'updated' or 'error'
+		'nag_type'													=> 'error' // Determines admin notice type - can only be 'updated' or 'error'
 		)
 	);
 
