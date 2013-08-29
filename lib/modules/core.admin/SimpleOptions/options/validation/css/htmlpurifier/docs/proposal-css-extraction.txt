@@ -1,0 +1,34 @@
+
+Extracting inline CSS from HTML Purifier
+    voodoofied: Assigning semantics to elements
+
+Sander Tekelenburg brought to my attention the poor programming style of
+inline CSS in HTML documents.  In an ideal world, we wouldn't be using inline
+CSS at all: everything would be assigned using semantic class attributes
+from an external stylesheet.
+
+With ExtractStyleBlocks and CSSTidy, this is now possible (when allowed, users
+can specify a style element which gets extracted from the user-submitted HTML, which
+the application can place in the head of the HTML document).  But there still
+is the issue of inline CSS that refuses to go away.
+
+The basic idea behind this feature is assign every element a unique identifier,
+and then move all of the CSS data to a style-sheet. This HTML:
+
+<div style="text-align:center">Big <span style="color:red;">things</span>!</div>
+
+into
+
+<div id="hp-12345">Big <span id="hp-12346">things</span>!</div>
+
+and a stylesheet that is:
+
+#hp-12345 {text-align:center;}
+#hp-12346 {color:red;}
+
+Beyond that, HTML Purifier can magically merge common CSS values together,
+and a whole manner of other heuristic things.  HTML Purifier should also
+make it easy for an admin to re-style the HTML semantically. Speed is not
+an issue. Also, better WYSIWYG editors are needed.
+
+    vim: et sw=4 sts=4

@@ -1,0 +1,5 @@
+Type.lookup
+TYPE: lookup
+DEFAULT: array('key1' => true, 'key2' => true)
+DESCRIPTION: The lookup type acts just like list, except its elements are unique and are checked with <code>isset($var[$key])</code>.
+--# vim: et sw=4 sts=4

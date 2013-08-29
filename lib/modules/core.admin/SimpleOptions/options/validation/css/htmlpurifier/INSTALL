@@ -1,0 +1,374 @@
+
+Install
+    How to install HTML Purifier
+
+HTML Purifier is designed to run out of the box, so actually using the
+library is extremely easy.  (Although... if you were looking for a
+step-by-step installation GUI, you've downloaded the wrong software!)
+
+While the impatient can get going immediately with some of the sample
+code at the bottom of this library, it's well worth reading this entire
+document--most of the other documentation assumes that you are familiar
+with these contents.
+
+
+---------------------------------------------------------------------------
+1.  Compatibility
+
+HTML Purifier is PHP 5 only, and is actively tested from PHP 5.0.5 and
+up. It has no core dependencies with other libraries. PHP
+4 support was deprecated on December 31, 2007 with HTML Purifier 3.0.0.
+HTML Purifier is not compatible with zend.ze1_compatibility_mode.
+
+These optional extensions can enhance the capabilities of HTML Purifier:
+
+    * iconv  : Converts text to and from non-UTF-8 encodings
+    * bcmath : Used for unit conversion and imagecrash protection
+    * tidy   : Used for pretty-printing HTML
+
+These optional libraries can enhance the capabilities of HTML Purifier:
+
+    * CSSTidy : Clean CSS stylesheets using %Core.ExtractStyleBlocks
+    * Net_IDNA2 (PEAR) : IRI support using %Core.EnableIDNA
+
+---------------------------------------------------------------------------
+2.  Reconnaissance
+
+A big plus of HTML Purifier is its inerrant support of standards, so
+your web-pages should be standards-compliant.  (They should also use
+semantic markup, but that's another issue altogether, one HTML Purifier
+cannot fix without reading your mind.)
+
+HTML Purifier can process these doctypes:
+
+* XHTML 1.0 Transitional (default)
+* XHTML 1.0 Strict
+* HTML 4.01 Transitional
+* HTML 4.01 Strict
+* XHTML 1.1
+
+...and these character encodings:
+
+* UTF-8 (default)
+* Any encoding iconv supports (with crippled internationalization support)
+
+These defaults reflect what my choices would be if I were authoring an
+HTML document, however, what you choose depends on the nature of your
+codebase.  If you don't know what doctype you are using, you can determine
+the doctype from this identifier at the top of your source code:
+
+    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+...and the character encoding from this code:
+
+    <meta http-equiv="Content-type" content="text/html;charset=ENCODING">
+
+If the character encoding declaration is missing, STOP NOW, and
+read 'docs/enduser-utf8.html' (web accessible at
+http://htmlpurifier.org/docs/enduser-utf8.html).  In fact, even if it is
+present, read this document anyway, as many websites specify their
+document's character encoding incorrectly.
+
+
+---------------------------------------------------------------------------
+3.  Including the library
+
+The procedure is quite simple:
+
+    require_once '/path/to/library/HTMLPurifier.auto.php';
+
+This will setup an autoloader, so the library's files are only included
+when you use them.
+
+Only the contents in the library/ folder are necessary, so you can remove
+everything else when using HTML Purifier in a production environment.
+
+If you installed HTML Purifier via PEAR, all you need to do is:
+
+    require_once 'HTMLPurifier.auto.php';
+
+Please note that the usual PEAR practice of including just the classes you
+want will not work with HTML Purifier's autoloading scheme.
+
+Advanced users, read on; other users can skip to section 4.
+
+Autoload compatibility
+----------------------
+
+    HTML Purifier attempts to be as smart as possible when registering an
+    autoloader, but there are some cases where you will need to change
+    your own code to accomodate HTML Purifier. These are those cases:
+
+    PHP VERSION IS LESS THAN 5.1.2, AND YOU'VE DEFINED __autoload
+        Because spl_autoload_register() doesn't exist in early versions
+        of PHP 5, HTML Purifier has no way of adding itself to the autoload
+        stack. Modify your __autoload function to test
+        HTMLPurifier_Bootstrap::autoload($class)
+
+        For example, suppose your autoload function looks like this:
+
+            function __autoload($class) {
+                require str_replace('_', '/', $class) . '.php';
+                return true;
+            }
+
+        A modified version with HTML Purifier would look like this:
+
+            function __autoload($class) {
+                if (HTMLPurifier_Bootstrap::autoload($class)) return true;
+                require str_replace('_', '/', $class) . '.php';
+                return true;
+            }
+
+        Note that there *is* some custom behavior in our autoloader; the
+        original autoloader in our example would work for 99% of the time,
+        but would fail when including language files.
+
+    AN __autoload FUNCTION IS DECLARED AFTER OUR AUTOLOADER IS REGISTERED
+        spl_autoload_register() has the curious behavior of disabling
+        the existing __autoload() handler. Users need to explicitly
+        spl_autoload_register('__autoload'). Because we use SPL when it
+        is available, __autoload() will ALWAYS be disabled. If __autoload()
+        is declared before HTML Purifier is loaded, this is not a problem:
+        HTML Purifier will register the function for you. But if it is
+        declared afterwards, it will mysteriously not work. This
+        snippet of code (after your autoloader is defined) will fix it:
+
+            spl_autoload_register('__autoload')
+
+    Users should also be on guard if they use a version of PHP previous
+    to 5.1.2 without an autoloader--HTML Purifier will define __autoload()
+    for you, which can collide with an autoloader that was added by *you*
+    later.
+
+
+For better performance
+----------------------
+
+    Opcode caches, which greatly speed up PHP initialization for scripts
+    with large amounts of code (HTML Purifier included), don't like
+    autoloaders. We offer an include file that includes all of HTML Purifier's
+    files in one go in an opcode cache friendly manner:
+
+        // If /path/to/library isn't already in your include path, uncomment
+        // the below line:
+        // require '/path/to/library/HTMLPurifier.path.php';
+
+        require 'HTMLPurifier.includes.php';
+
+    Optional components still need to be included--you'll know if you try to
+    use a feature and you get a class doesn't exists error! The autoloader
+    can be used in conjunction with this approach to catch classes that are
+    missing. Simply add this afterwards:
+
+        require 'HTMLPurifier.autoload.php';
+
+Standalone version
+------------------
+
+    HTML Purifier has a standalone distribution; you can also generate
+    a standalone file from the full version by running the script
+    maintenance/generate-standalone.php . The standalone version has the
+    benefit of having most of its code in one file, so parsing is much
+    faster and the library is easier to manage.
+
+    If HTMLPurifier.standalone.php exists in the library directory, you
+    can use it like this:
+
+        require '/path/to/HTMLPurifier.standalone.php';
+
+    This is equivalent to including HTMLPurifier.includes.php, except that
+    the contents of standalone/ will be added to your path. To override this
+    behavior, specify a new HTMLPURIFIER_PREFIX where standalone files can
+    be found (usually, this will be one directory up, the "true" library
+    directory in full distributions). Don't forget to set your path too!
+
+    The autoloader can be added to the end to ensure the classes are
+    loaded when necessary; otherwise you can manually include them.
+    To use the autoloader, use this:
+
+        require 'HTMLPurifier.autoload.php';
+
+For advanced users
+------------------
+
+    HTMLPurifier.auto.php performs a number of operations that can be done
+    individually. These are:
+
+        HTMLPurifier.path.php
+            Puts /path/to/library in the include path. For high performance,
+            this should be done in php.ini.
+
+        HTMLPurifier.autoload.php
+            Registers our autoload handler HTMLPurifier_Bootstrap::autoload($class).
+
+    You can do these operations by yourself--in fact, you must modify your own
+    autoload handler if you are using a version of PHP earlier than PHP 5.1.2
+    (See "Autoload compatibility" above).
+
+
+---------------------------------------------------------------------------
+4. Configuration
+
+HTML Purifier is designed to run out-of-the-box, but occasionally HTML
+Purifier needs to be told what to do.  If you answer no to any of these
+questions, read on; otherwise, you can skip to the next section (or, if you're
+into configuring things just for the heck of it, skip to 4.3).
+
+* Am I using UTF-8?
+* Am I using XHTML 1.0 Transitional?
+
+If you answered no to any of these questions, instantiate a configuration
+object and read on:
+
+    $config = HTMLPurifier_Config::createDefault();
+
+
+4.1. Setting a different character encoding
+
+You really shouldn't use any other encoding except UTF-8, especially if you
+plan to support multilingual websites (read section three for more details).
+However, switching to UTF-8 is not always immediately feasible, so we can
+adapt.
+
+HTML Purifier uses iconv to support other character encodings, as such,
+any encoding that iconv supports <http://www.gnu.org/software/libiconv/>
+HTML Purifier supports with this code:
+
+    $config->set('Core.Encoding', /* put your encoding here */);
+
+An example usage for Latin-1 websites (the most common encoding for English
+websites):
+
+    $config->set('Core.Encoding', 'ISO-8859-1');
+
+Note that HTML Purifier's support for non-Unicode encodings is crippled by the
+fact that any character not supported by that encoding will be silently
+dropped, EVEN if it is ampersand escaped.  If you want to work around
+this, you are welcome to read docs/enduser-utf8.html for a fix,
+but please be cognizant of the issues the "solution" creates (for this
+reason, I do not include the solution in this document).
+
+
+4.2. Setting a different doctype
+
+For those of you using HTML 4.01 Transitional, you can disable
+XHTML output like this:
+
+    $config->set('HTML.Doctype', 'HTML 4.01 Transitional');
+
+Other supported doctypes include:
+
+    * HTML 4.01 Strict
+    * HTML 4.01 Transitional
+    * XHTML 1.0 Strict
+    * XHTML 1.0 Transitional
+    * XHTML 1.1
+
+
+4.3. Other settings
+
+There are more configuration directives which can be read about
+here: <http://htmlpurifier.org/live/configdoc/plain.html>  They're a bit boring,
+but they can help out for those of you who like to exert maximum control over
+your code.  Some of the more interesting ones are configurable at the
+demo <http://htmlpurifier.org/demo.php> and are well worth looking into
+for your own system.
+
+For example, you can fine tune allowed elements and attributes, convert
+relative URLs to absolute ones, and even autoparagraph input text! These
+are, respectively, %HTML.Allowed, %URI.MakeAbsolute and %URI.Base, and
+%AutoFormat.AutoParagraph. The %Namespace.Directive naming convention
+translates to:
+
+    $config->set('Namespace.Directive', $value);
+
+E.g.
+
+    $config->set('HTML.Allowed', 'p,b,a[href],i');
+    $config->set('URI.Base', 'http://www.example.com');
+    $config->set('URI.MakeAbsolute', true);
+    $config->set('AutoFormat.AutoParagraph', true);
+
+
+---------------------------------------------------------------------------
+5. Caching
+
+HTML Purifier generates some cache files (generally one or two) to speed up
+its execution. For maximum performance, make sure that
+library/HTMLPurifier/DefinitionCache/Serializer is writeable by the webserver.
+
+If you are in the library/ folder of HTML Purifier, you can set the
+appropriate permissions using:
+
+    chmod -R 0755 HTMLPurifier/DefinitionCache/Serializer
+
+If the above command doesn't work, you may need to assign write permissions
+to all. This may be necessary if your webserver runs as nobody, but is
+not recommended since it means any other user can write files in the
+directory. Use:
+
+    chmod -R 0777 HTMLPurifier/DefinitionCache/Serializer
+
+You can also chmod files via your FTP client; this option
+is usually accessible by right clicking the corresponding directory and
+then selecting "chmod" or "file permissions".
+
+Starting with 2.0.1, HTML Purifier will generate friendly error messages
+that will tell you exactly what you have to chmod the directory to, if in doubt,
+follow its advice.
+
+If you are unable or unwilling to give write permissions to the cache
+directory, you can either disable the cache (and suffer a performance
+hit):
+
+    $config->set('Core.DefinitionCache', null);
+
+Or move the cache directory somewhere else (no trailing slash):
+
+    $config->set('Cache.SerializerPath', '/home/user/absolute/path');
+
+
+---------------------------------------------------------------------------
+6.   Using the code
+
+The interface is mind-numbingly simple:
+
+    $purifier = new HTMLPurifier($config);
+    $clean_html = $purifier->purify( $dirty_html );
+
+That's it!  For more examples, check out docs/examples/ (they aren't very
+different though).  Also, docs/enduser-slow.html gives advice on what to
+do if HTML Purifier is slowing down your application.
+
+
+---------------------------------------------------------------------------
+7.   Quick install
+
+First, make sure library/HTMLPurifier/DefinitionCache/Serializer is
+writable by the webserver (see Section 5: Caching above for details).
+If your website is in UTF-8 and XHTML Transitional, use this code:
+
+<?php
+    require_once '/path/to/htmlpurifier/library/HTMLPurifier.auto.php';
+
+    $config = HTMLPurifier_Config::createDefault();
+    $purifier = new HTMLPurifier($config);
+    $clean_html = $purifier->purify($dirty_html);
+?>
+
+If your website is in a different encoding or doctype, use this code:
+
+<?php
+    require_once '/path/to/htmlpurifier/library/HTMLPurifier.auto.php';
+
+    $config = HTMLPurifier_Config::createDefault();
+    $config->set('Core.Encoding', 'ISO-8859-1'); // replace with your encoding
+    $config->set('HTML.Doctype', 'HTML 4.01 Transitional'); // replace with your doctype
+    $purifier = new HTMLPurifier($config);
+
+    $clean_html = $purifier->purify($dirty_html);
+?>
+
+    vim: et sw=4 sts=4

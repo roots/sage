@@ -1,0 +1,1056 @@
+NEWS ( CHANGELOG and HISTORY )                                     HTMLPurifier
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+= KEY ====================
+    # Breaks back-compat
+    ! Feature
+    - Bugfix
+      + Sub-comment
+    . Internal change
+==========================
+
+4.5.0, released 2013-02-17
+# Fix bug where stacked attribute transforms clobber each other;
+  this also means it's no longer possible to override attribute
+  transforms in later modules.  No internal code was using this
+  but this may break some clients.
+# We now use SHA-1 to identify cached definitions, instead of MD5.
+! Support display:inline-block
+! Support for more white-space CSS values.
+! Permit underscores in font families
+! Support for page-break-* CSS3 properties when proprietary properties
+  are enabled.
+! New directive %Core.EnableExcludes; can be set to 'false' to turn off
+  SGML excludes checking.  If HTML Purifier is removing too much text
+  and you don't care about full standards compliance, try setting this to
+  'false'.
+- Use prepend for SPL autoloading on PHP 5.3 and later.
+- Fix bug with nofollow transform when pre-existing rel exists.
+- Fix bug where background:url() always gets lower-cased
+  (but not background-image:url())
+- Fix bug with non lower-case color names in HTML
+- Fix bug where data URI validation doesn't remove temporary files.
+  Thanks Javier Marín Ros <javiermarinros@gmail.com> for reporting.
+- Don't remove certain empty tags on RemoveEmpty.
+
+4.4.0, released 2012-01-18
+# Removed PEARSax3 handler.
+# URI.Munge now munges URIs inside the same host that go from https
+  to http.  Reported by Neike Taika-Tessaro.
+# Core.EscapeNonASCIICharacters now always transforms entities to
+  entities, even if target encoding is UTF-8.
+# Tighten up selector validation in ExtractStyleBlocks.
+  Non-syntactically valid selectors are now rejected, along with
+  some of the more obscure ones such as attribute selectors, the
+  :lang pseudoselector, and anything not in CSS2.1.  Furthermore,
+  ID and class selectors now work properly with the relevant
+  configuration attributes.  Also, mute errors when parsing CSS
+  with CSS Tidy.  Reported by Mario Heiderich and Norman Hippert.
+! Added support for 'scope' attribute on tables.
+! Added %HTML.TargetBlank, which adds target="blank" to all outgoing links.
+! Properly handle sub-lists directly nested inside of lists in
+  a standards compliant way, by moving them into the preceding <li>
+! Added %HTML.AllowedComments and %HTML.AllowedCommentsRegexp for
+  limited allowed comments in untrusted situations.
+! Implement iframes, and allow them to be used in untrusted mode with
+  %HTML.SafeIframe and %URI.SafeIframeRegexp.  Thanks Bradley M. Froehle
+  <brad.froehle@gmail.com> for submitting an initial version of the patch.
+! The Forms module now works properly for transitional doctypes.
+! Added support for internationalized domain names. You need the PEAR
+  Net_IDNA2 module to be in your path; if it is installed, ensure the
+  class can be loaded and then set %Core.EnableIDNA to true.
+- Color keywords are now case insensitive.  Thanks Yzmir Ramirez
+  <yramirez-htmlpurifier@adicio.com> for reporting.
+- Explicitly initialize anonModule variable to null.
+- Do not duplicate nofollow if already present.  Thanks 178
+  for reporting.
+- Do not add nofollow if hostname matches our current host.  Thanks 178
+  for reporting, and Neike Taika-Tessaro for helping diagnose.
+- Do not unset parser variable; this fixes intermittent serialization
+  problems.  Thanks Neike Taika-Tessaro for reporting, bill
+  <10010tiger@gmail.com> for diagnosing.
+- Fix iconv truncation bug, where non-UTF-8 target encodings see
+  output truncated after around 8000 characters.  Thanks Jörg Ludwig
+  <joerg.ludwig@iserv.eu> for reporting.
+- Fix broken table content model for XHTML1.1 (and also earlier
+  versions, although the W3C validator doesn't catch those violations).
+  Thanks GlitchMr <glitch.mr@gmail.com> for reporting.
+
+4.3.0, released 2011-03-27
+# Fixed broken caching of customized raw definitions, but requires an
+  API change.  The old API still works but will emit a warning,
+  see http://htmlpurifier.org/docs/enduser-customize.html#optimized
+  for how to upgrade your code.
+# Protect against Internet Explorer innerHTML behavior by specially
+  treating attributes with backticks but no angled brackets, quotes or
+  spaces.  This constitutes a slight semantic change, which can be
+  reverted using %Output.FixInnerHTML.  Reported by Neike Taika-Tessaro
+  and Mario Heiderich.
+# Protect against cssText/innerHTML by restricting allowed characters
+  used in fonts further than mandated by the specification and encoding
+  some extra special characters in URLs.  Reported by Neike
+  Taika-Tessaro and Mario Heiderich.
+! Added %HTML.Nofollow to add rel="nofollow" to external links.
+! More types of SPL autoloaders allowed on later versions of PHP.
+! Implementations for position, top, left, right, bottom, z-index
+  when %CSS.Trusted is on.
+! Add %Cache.SerializerPermissions option for custom serializer
+  directory/file permissions
+! Fix longstanding bug in Flash support for non-IE browsers, and
+  allow more wmode attributes.
+! Add %CSS.AllowedFonts to restrict permissible font names.
+- Switch to an iterative traversal of the DOM, which prevents us
+  from running out of stack space for deeply nested documents.
+  Thanks Maxim Krizhanovsky for contributing a patch.
+- Make removal of conditional IE comments ungreedy; thanks Bernd
+  for reporting.
+- Escape CDATA before removing Internet Explorer comments.
+- Fix removal of id attributes under certain conditions by ensuring
+  armor attributes are preserved when recreating tags.
+- Check if schema.ser was corrupted.
+- Check if zend.ze1_compatibility_mode is on, and error out if it is.
+  This safety check is only done for HTMLPurifier.auto.php; if you
+  are using standalone or the specialized includes files, you're
+  expected to know what you're doing.
+- Stop repeatedly writing the cache file after I'm done customizing a
+  raw definition.  Reported by ajh.
+- Switch to using require_once in the Bootstrap to work around bad
+  interaction with Zend Debugger and APC.  Reported by Antonio Parraga.
+- Fix URI handling when hostname is missing but scheme is present.
+  Reported by Neike Taika-Tessaro.
+- Fix missing numeric entities on DirectLex; thanks Neike Taika-Tessaro
+  for reporting.
+- Fix harmless notice from indexing into empty string.  Thanks Matthijs
+  Kooijman <matthijs@stdin.nl> for reporting.
+- Don't autoclose no parent elements are able to support the element
+  that triggered the autoclose.  In particular fixes strange behavior
+  of stray <li> tags.  Thanks pkuliga@gmail.com for reporting and
+  Neike Taika-Tessaro <pinkgothic@gmail.com> for debugging assistance.
+
+4.2.0, released 2010-09-15
+! Added %Core.RemoveProcessingInstructions, which lets you remove
+  <? ... ?> statements.
+! Added %URI.DisableResources functionality; the directive originally
+  did nothing.  Thanks David Rothstein for reporting.
+! Add documentation about configuration directive types.
+! Add %CSS.ForbiddenProperties configuration directive.
+! Add %HTML.FlashAllowFullScreen to permit embedded Flash objects
+  to utilize full-screen mode.
+! Add optional support for the <code>file</code> URI scheme, enable
+  by explicitly setting %URI.AllowedSchemes.
+! Add %Core.NormalizeNewlines options to allow turning off newline
+  normalization.
+- Fix improper handling of Internet Explorer conditional comments
+  by parser.  Thanks zmonteca for reporting.
+- Fix missing attributes bug when running on Mac Snow Leopard and APC.
+  Thanks sidepodcast for the fix.
+- Warn if an element is allowed, but an attribute it requires is
+  not allowed.
+
+4.1.1, released 2010-05-31
+- Fix undefined index warnings in maintenance scripts.
+- Fix bug in DirectLex for parsing elements with a single attribute
+  with entities.
+- Rewrite CSS output logic for font-family and url().  Thanks Mario
+  Heiderich <mario.heiderich@googlemail.com> for reporting and Takeshi
+  Terada <t-terada@violet.plala.or.jp> for suggesting the fix.
+- Emit an error for CollectErrors if a body is extracted
+- Fix bug where in background-position for center keyword handling.
+- Fix infinite loop when a wrapper element is inserted in a context
+  where it's not allowed.  Thanks Lars <lars@renoz.dk> for reporting.
+- Remove +x bit and shebang from index.php; only supported mode is to
+  explicitly call it with php.
+- Make test script less chatty when log_errors is on.
+
+4.1.0, released 2010-04-26
+! Support proprietary height attribute on table element
+! Support YouTube slideshows that contain /cp/ in their URL.
+! Support for data: URI scheme; not enabled by default, add it using
+  %URI.AllowedSchemes
+! Support flashvars when using %HTML.SafeObject and %HTML.SafeEmbed.
+! Support for Internet Explorer compatibility with %HTML.SafeObject
+  using %Output.FlashCompat.
+! Handle <ol><ol> properly, by inserting the necessary <li> tag.
+- Always quote the insides of url(...) in CSS.
+
+4.0.0, released 2009-07-07
+# APIs for ConfigSchema subsystem have substantially changed. See
+  docs/dev-config-bcbreaks.txt for details; in essence, anything that
+  had both namespace and directive now have a single unified key.
+# Some configuration directives were renamed, specifically:
+    %AutoFormatParam.PurifierLinkifyDocURL -> %AutoFormat.PurifierLinkify.DocURL
+    %FilterParam.ExtractStyleBlocksEscaping -> %Filter.ExtractStyleBlocks.Escaping
+    %FilterParam.ExtractStyleBlocksScope -> %Filter.ExtractStyleBlocks.Scope
+    %FilterParam.ExtractStyleBlocksTidyImpl -> %Filter.ExtractStyleBlocks.TidyImpl
+  As usual, the old directive names will still work, but will throw E_NOTICE
+  errors.
+# The allowed values for class have been relaxed to allow all of CDATA for
+  doctypes that are not XHTML 1.1 or XHTML 2.0.  For old behavior, set
+  %Attr.ClassUseCDATA to false.
+# Instead of appending the content model to an old content model, a blank
+  element will replace the old content model.  You can use #SUPER to get
+  the old content model.
+! More robust support for name="" and id=""
+! HTMLPurifier_Config::inherit($config) allows you to inherit one
+  configuration, and have changes to that configuration be propagated
+  to all of its children.
+! Implement %HTML.Attr.Name.UseCDATA, which relaxes validation rules on
+  the name attribute when set. Use with care. Thanks Ian Cook for
+  sponsoring.
+! Implement %AutoFormat.RemoveEmpty.RemoveNbsp, which removes empty
+  tags that contain non-breaking spaces as well other whitespace. You
+  can also modify which tags should have &nbsp; maintained with
+  %AutoFormat.RemoveEmpty.RemoveNbsp.Exceptions.
+! Implement %Attr.AllowedClasses, which allows administrators to restrict
+  classes users can use to a specified finite set of classes, and
+  %Attr.ForbiddenClasses, which is the logical inverse.
+! You can now maintain your own configuration schema directories by
+  creating a config-schema.php file or passing an extra argument. Check
+  docs/dev-config-schema.html for more details.
+! Added HTMLPurifier_Config->serialize() method, which lets you save away
+  your configuration in a compact serial file, which you can unserialize
+  and use directly without having to go through the overhead of setup.
+- Fix bug where URIDefinition would not get cleared if it's directives got
+  changed.
+- Fix fatal error in HTMLPurifier_Encoder on certain platforms (probably NetBSD 5.0)
+- Fix bug in Linkify autoformatter involving <a><span>http://foo</span></a>
+- Make %URI.Munge not apply to links that have the same host as your host.
+- Prevent stray </body> tag from truncating output, if a second </body>
+  is present.
+. Created script maintenance/rename-config.php for renaming a configuration
+  directive while maintaining its alias.  This script does not change source code.
+. Implement namespace locking for definition construction, to prevent
+  bugs where a directive is used for definition construction but is not
+  used to construct the cache hash.
+
+3.3.0, released 2009-02-16
+! Implement CSS property 'overflow' when %CSS.AllowTricky is true.
+! Implement generic property list classess
+- Fix bug with testEncodingSupportsASCII() algorithm when iconv() implementation
+  does not do the "right thing" with characters not supported in the output
+  set.
+- Spellcheck UTF-8: The Secret To Character Encoding
+- Fix improper removal of the contents of elements with only whitespace. Thanks
+  Eric Wald for reporting.
+- Fix broken test suite in versions of PHP without spl_autoload_register()
+- Fix degenerate case with YouTube filter involving double hyphens.
+  Thanks Pierre Attar for reporting.
+- Fix YouTube rendering problem on certain versions of Firefox.
+- Fix CSSDefinition Printer problems with decorators
+- Add text parameter to unit tests, forces text output
+. Add verbose mode to command line test runner, use (--verbose)
+. Turn on unit tests for UnitConverter
+. Fix missing version number in configuration %Attr.DefaultImageAlt (added 3.2.0)
+. Fix newline errors that caused spurious failures when CRLF HTML Purifier was
+  tested on Linux.
+. Removed trailing whitespace from all text files, see
+  remote-trailing-whitespace.php maintenance script.
+. Convert configuration to use property list backend.
+
+3.2.0, released 2008-10-31
+# Using %Core.CollectErrors forces line number/column tracking on, whereas
+  previously you could theoretically turn it off.
+# HTMLPurifier_Injector->notifyEnd() is formally deprecated. Please
+  use handleEnd() instead.
+! %Output.AttrSort for when you need your attributes in alphabetical order to
+  deal with a bug in FCKEditor. Requested by frank farmer.
+! Enable HTML comments when %HTML.Trusted is on. Requested by Waldo Jaquith.
+! Proper support for name attribute. It is now allowed and equivalent to the id
+  attribute in a and img tags, and is only converted to id when %HTML.TidyLevel
+  is heavy (for all doctypes).
+! %AutoFormat.RemoveEmpty to remove some empty tags from documents. Please don't
+  use on hand-written HTML.
+! Add error-cases for unsupported elements in MakeWellFormed. This enables
+  the strategy to be used, standalone, on untrusted input.
+! %Core.AggressivelyFixLt is on by default. This causes more sensible
+  processing of left angled brackets in smileys and other whatnot.
+! Test scripts now have a 'type' parameter, which lets you say 'htmlpurifier',
+  'phpt', 'vtest', etc. in order to only execute those tests. This supercedes
+  the --only-phpt parameter, although for backwards-compatibility the flag
+  will still work.
+! AutoParagraph auto-formatter will now preserve double-newlines upon output.
+  Users who are not performing inbound filtering, this may seem a little
+  useless, but as a bonus, the test suite and handling of edge cases is also
+  improved.
+! Experimental implementation of forms for %HTML.Trusted
+! Track column numbers when maintain line numbers is on
+! Proprietary 'background' attribute on table-related elements converted into
+  corresponding CSS.  Thanks Fusemail for sponsoring this feature!
+! Add forward(), forwardUntilEndToken(), backward() and current() to Injector
+  supertype.
+! HTMLPurifier_Injector->handleEnd() permits modification to end tokens. The
+  time of operation varies slightly from notifyEnd() as *all* end tokens are
+  processed by the injector before they are subject to the well-formedness rules.
+! %Attr.DefaultImageAlt allows overriding default behavior of setting alt to
+  basename of image when not present.
+! %AutoFormat.DisplayLinkURI neuters <a> tags into plain text URLs.
+- Fix two bugs in %URI.MakeAbsolute; one involving empty paths in base URLs,
+  the other involving an undefined $is_folder error.
+- Throw error when %Core.Encoding is set to a spurious value. Previously,
+  this errored silently and returned false.
+- Redirected stderr to stdout for flush error output.
+- %URI.DisableExternal will now use the host in %URI.Base if %URI.Host is not
+  available.
+- Do not re-munge URL if the output URL has the same host as the input URL.
+  Requested by Chris.
+- Fix error in documentation regarding %Filter.ExtractStyleBlocks
+- Prevent <![CDATA[<body></body>]]> from triggering %Core.ConvertDocumentToFragment
+- Fix bug with inline elements in blockquotes conflicting with strict doctype
+- Detect if HTML support is disabled for DOM by checking for loadHTML() method.
+- Fix bug where dots and double-dots in absolute URLs without hostname were
+  not collapsed by URIFilter_MakeAbsolute.
+- Fix bug with anonymous modules operating on SafeEmbed or SafeObject elements
+  by reordering their addition.
+- Will now throw exception on many error conditions during lexer creation; also
+  throw an exception when MaintainLineNumbers is true, but a non-tracksLineNumbers
+  is being used.
+- Detect if domxml extension is loaded, and use DirectLEx accordingly.
+- Improve handling of big numbers with floating point arithmetic in UnitConverter.
+  Reported by David Morton.
+. Strategy_MakeWellFormed now operates in-place, saving memory and allowing
+  for more interesting filter-backtracking
+. New HTMLPurifier_Injector->rewind() functionality, allows injectors to rewind
+  index to reprocess tokens.
+. StringHashParser now allows for multiline sections with "empty" content;
+  previously the section would remain undefined.
+. Added --quick option to multitest.php, which tests only the most recent
+  release for each series.
+. Added --distro option to multitest.php, which accepts either 'normal' or
+  'standalone'. This supercedes --exclude-normal and --exclude-standalone
+
+3.1.1, released 2008-06-19
+# %URI.Munge now, by default, does not munge resources (for example, <img src="">)
+  In order to enable this again, please set %URI.MungeResources to true.
+! More robust imagecrash protection with height/width CSS with %CSS.MaxImgLength,
+  and height/width HTML with %HTML.MaxImgLength.
+! %URI.MungeSecretKey for secure URI munging. Thanks Chris
+  for sponsoring this feature. Check out the corresponding documentation
+  for details. (Att Nightly testers: The API for this feature changed before
+  the general release. Namely, rename your directives %URI.SecureMungeSecretKey =>
+  %URI.MungeSecretKey and and %URI.SecureMunge => %URI.Munge)
+! Implemented post URI filtering. Set member variable $post to true to set
+  a URIFilter as such.
+! Allow modules to define injectors via $info_injector. Injectors are
+  automatically disabled if injector's needed elements are not found.
+! Support for "safe" objects added, use %HTML.SafeObject and %HTML.SafeEmbed.
+  Thanks Chris for sponsoring. If you've been using ad hoc code from the
+  forums, PLEASE use this instead.
+! Added substitutions for %e, %n, %a and %p in %URI.Munge (in order,
+  embedded, tag name, attribute name, CSS property name). See %URI.Munge
+  for more details. Requested by Jochem Blok.
+- Disable percent height/width attributes for img.
+- AttrValidator operations are now atomic; updates to attributes are not
+  manifest in token until end of operations. This prevents naughty internal
+  code from directly modifying CurrentToken when they're not supposed to.
+  This semantics change was requested by frank farmer.
+- Percent encoding checks enabled for URI query and fragment
+- Fix stray backslashes in font-family; CSS Unicode character escapes are
+  now properly resolved (although *only* in font-family). Thanks Takeshi Terada
+  for reporting.
+- Improve parseCDATA algorithm to take into account newline normalization
+- Account for browser confusion between Yen character and backslash in
+  Shift_JIS encoding. This fix generalizes to any other encoding which is not
+  a strict superset of printable ASCII. Thanks Takeshi Terada for reporting.
+- Fix missing configuration parameter in Generator calls. Thanks vs for the
+  partial patch.
+- Improved adherence to Unicode by checking for non-character codepoints.
+  Thanks Geoffrey Sneddon for reporting. This may result in degraded
+  performance for extremely large inputs.
+- Allow CSS property-value pair ''text-decoration: none''. Thanks Jochem Blok
+  for reporting.
+. Added HTMLPurifier_UnitConverter and HTMLPurifier_Length for convenient
+  handling of CSS-style lengths. HTMLPurifier_AttrDef_CSS_Length now uses
+  this class.
+. API of HTMLPurifier_AttrDef_CSS_Length changed from __construct($disable_negative)
+  to __construct($min, $max). __construct(true) is equivalent to
+  __construct('0').
+. Added HTMLPurifier_AttrDef_Switch class
+. Rename HTMLPurifier_HTMLModule_Tidy->construct() to setup() and bubble method
+  up inheritance hierarchy to HTMLPurifier_HTMLModule. All HTMLModules
+  get this called with the configuration object.  All modules now
+  use this rather than __construct(), although legacy code using constructors
+  will still work--the new format, however, lets modules access the
+  configuration object for HTML namespace dependant tweaks.
+. AttrDef_HTML_Pixels now takes a single construction parameter, pixels.
+. ConfigSchema data-structure heavily optimized; on average it uses a third
+  the memory it did previously. The interface has changed accordingly,
+  consult changes to HTMLPurifier_Config for details.
+. Variable parsing types now are magic integers instead of strings
+. Added benchmark for ConfigSchema
+. HTMLPurifier_Generator requires $config and $context parameters. If you
+  don't know what they should be, use HTMLPurifier_Config::createDefault()
+  and new HTMLPurifier_Context().
+. Printers now properly distinguish between output configuration, and
+  target configuration. This is not applicable to scripts using
+  the Printers for HTML Purifier related tasks.
+. HTML/CSS Printers must be primed with prepareGenerator($gen_config), otherwise
+  fatal errors will ensue.
+. URIFilter->prepare can return false in order to abort loading of the filter
+. Factory for AttrDef_URI implemented, URI#embedded to indicate URI that embeds
+  an external resource.
+. %URI.Munge functionality factored out into a post-filter class.
+. Added CurrentCSSProperty context variable during CSS validation
+
+3.1.0, released 2008-05-18
+# Unnecessary references to objects (vestiges of PHP4) removed from method
+  signatures.  The following methods do not need references when assigning from
+  them and will result in E_STRICT errors if you try:
+    + HTMLPurifier_Config->get*Definition() [* = HTML, CSS]
+    + HTMLPurifier_ConfigSchema::instance()
+    + HTMLPurifier_DefinitionCacheFactory::instance()
+    + HTMLPurifier_DefinitionCacheFactory->create()
+    + HTMLPurifier_DoctypeRegistry->register()
+    + HTMLPurifier_DoctypeRegistry->get()
+    + HTMLPurifier_HTMLModule->addElement()
+    + HTMLPurifier_HTMLModule->addBlankElement()
+    + HTMLPurifier_LanguageFactory::instance()
+# Printer_ConfigForm's get*() functions were static-ified
+# %HTML.ForbiddenAttributes requires attribute declarations to be in the
+  form of tag@attr, NOT tag.attr (which will throw an error and won't do
+  anything). This is for forwards compatibility with XML; you'd do best
+  to migrate an %HTML.AllowedAttributes directives to this syntax too.
+! Allow index to be false for config from form creation
+! Added HTMLPurifier::VERSION constant
+! Commas, not dashes, used for serializer IDs. This change is forwards-compatible
+  and allows for version numbers like "3.1.0-dev".
+! %HTML.Allowed deals gracefully with whitespace anywhere, anytime!
+! HTML Purifier's URI handling is a lot more robust, with much stricter
+  validation checks and better percent encoding handling. Thanks Gareth Heyes
+  for indicating security vulnerabilities from lax percent encoding.
+! Bootstrap autoloader deals more robustly with classes that don't exist,
+  preventing class_exists($class, true) from barfing.
+- InterchangeBuilder now alphabetizes its lists
+- Validation error in configdoc output fixed
+- Iconv and other encoding errors muted even with custom error handlers that
+  do not honor error_reporting
+- Add protection against imagecrash attack with CSS height/width
+- HTMLPurifier::instance() created for consistency, is equivalent to getInstance()
+- Fixed and revamped broken ConfigForm smoketest
+- Bug with bool/null fields in Printer_ConfigForm fixed
+- Bug with global forbidden attributes fixed
+- Improved error messages for allowed and forbidden HTML elements and attributes
+- Missing (or null) in configdoc documentation restored
+- If DOM throws and exception during parsing with PH5P (occurs in newer versions
+  of DOM), HTML Purifier punts to DirectLex
+- Fatal error with unserialization of ScriptRequired
+- Created directories are now chmod'ed properly
+- Fixed bug with fallback languages in LanguageFactory
+- Standalone testing setup properly with autoload
+. Out-of-date documentation revised
+. UTF-8 encoding check optimization as suggested by Diego
+. HTMLPurifier_Error removed in favor of exceptions
+. More copy() function removed; should use clone instead
+. More extensive unit tests for HTMLDefinition
+. assertPurification moved to central harness
+. HTMLPurifier_Generator accepts $config and $context parameters during
+  instantiation, not runtime
+. Double-quotes outside of attribute values are now unescaped
+
+3.1.0rc1, released 2008-04-22
+# Autoload support added. Internal require_once's removed in favor of an
+  explicit require list or autoloading. To use HTML Purifier,
+  you must now either use HTMLPurifier.auto.php
+  or HTMLPurifier.includes.php; setting the include path and including
+  HTMLPurifier.php is insufficient--in such cases include HTMLPurifier.autoload.php
+  as well to register our autoload handler (or modify your autoload function
+  to check HTMLPurifier_Bootstrap::getPath($class)). You can also use
+  HTMLPurifier.safe-includes.php for a less performance friendly but more
+  user-friendly library load.
+# HTMLPurifier_ConfigSchema static functions are officially deprecated. Schema
+  information is stored in the ConfigSchema directory, and the
+  maintenance/generate-schema-cache.php generates the schema.ser file, which
+  is now instantiated. Support for userland schema changes coming soon!
+# HTMLPurifier_Config will now throw E_USER_NOTICE when you use a directive
+  alias; to get rid of these errors just modify your configuration to use
+  the new directive name.
+# HTMLPurifier->addFilter is deprecated; built-in filters can now be
+  enabled using %Filter.$filter_name or by setting your own filters using
+  %Filter.Custom
+# Directive-level safety properties superceded in favor of module-level
+  safety. Internal method HTMLModule->addElement() has changed, although
+  the externally visible HTMLDefinition->addElement has *not* changed.
+! Extra utility classes for testing and non-library operations can
+  be found in extras/. Specifically, these are FSTools and ConfigDoc.
+  You may find a use for these in your own project, but right now they
+  are highly experimental and volatile.
+! Integration with PHPT allows for automated smoketests
+! Limited support for proprietary HTML elements, namely <marquee>, sponsored
+  by Chris. You can enable them with %HTML.Proprietary if your client
+  demands them.
+! Support for !important CSS cascade modifier. By default, this will be stripped
+  from CSS, but you can enable it using %CSS.AllowImportant
+! Support for display and visibility CSS properties added, set %CSS.AllowTricky
+  to true to use them.
+! HTML Purifier now has its own Exception hierarchy under HTMLPurifier_Exception.
+  Developer error (not enduser error) can cause these to be triggered.
+! Experimental kses() wrapper introduced with HTMLPurifier.kses.php
+! Finally %CSS.AllowedProperties for tweaking allowed CSS properties without
+  mucking around with HTMLPurifier_CSSDefinition
+! ConfigDoc output has been enhanced with version and deprecation info.
+! %HTML.ForbiddenAttributes and %HTML.ForbiddenElements implemented.
+- Autoclose now operates iteratively, i.e. <span><span><div> now has
+  both span tags closed.
+- Various HTMLPurifier_Config convenience functions now accept another parameter
+  $schema which defines what HTMLPurifier_ConfigSchema to use besides the
+  global default.
+- Fix bug with trusted script handling in libxml versions later than 2.6.28.
+- Fix bug in ExtractStyleBlocks with comments in style tags
+- Fix bug in comment parsing for DirectLex
+- Flush output now displayed when in command line mode for unit tester
+- Fix bug with rgb(0, 1, 2) color syntax with spaces inside shorthand syntax
+- HTMLPurifier_HTMLDefinition->addAttribute can now be called multiple times
+  on the same element without emitting errors.
+- Fixed fatal error in PH5P lexer with invalid tag names
+. Plugins now get their own changelogs according to project conventions.
+. Convert tokens to use instanceof, reducing memory footprint and
+  improving comparison speed.
+. Dry runs now supported in SimpleTest; testing facilities improved
+. Bootstrap class added for handling autoloading functionality
+. Implemented recursive glob at FSTools->globr
+. ConfigSchema now has instance methods for all corresponding define*
+  static methods.
+. A couple of new historical maintenance scripts were added.
+. HTMLPurifier/HTMLModule/Tidy/XHTMLAndHTML4.php split into two files
+. tests/index.php can now be run from any directory.
+. HTMLPurifier_Token subclasses split into seperate files
+. HTMLPURIFIER_PREFIX now is defined in Bootstrap.php, NOT HTMLPurifier.php
+. HTMLPURIFIER_PREFIX can now be defined outside of HTML Purifier
+. New --php=php flag added, allows PHP executable to be specified (command
+  line only!)
+. htmlpurifier_add_test() preferred method to translate test files in to
+  classes, because it handles PHPT files too.
+. Debugger class is deprecated and will be removed soon.
+. Command line argument parsing for testing scripts revamped, now --opt value
+  format is supported.
+. Smoketests now cleanup after magic quotes
+. Generator now can output comments (however, comments are still stripped
+  from HTML Purifier output)
+. HTMLPurifier_ConfigSchema->validate() deprecated in favor of
+  HTMLPurifier_VarParser->parse()
+. Integers auto-cast into float type by VarParser.
+. HTMLPURIFIER_STRICT removed; no validation is performed on runtime, only
+  during cache generation
+. Reordered script calls in maintenance/flush.php
+. Command line scripts now honor exit codes
+. When --flush fails in unit testers, abort tests and print message
+. Improved documentation in docs/dev-flush.html about the maintenance scripts
+. copy() methods removed in favor of clone keyword
+
+3.0.0, released 2008-01-06
+# HTML Purifier is PHP 5 only! The 2.1.x branch will be maintained
+  until PHP 4 is completely deprecated, but no new features will be added
+  to it.
+  + Visibility declarations added
+  + Constructor methods renamed to __construct()
+  + PHP4 reference cruft removed (in progress)
+! CSS properties are now case-insensitive
+! DefinitionCacheFactory now can register new implementations
+! New HTMLPurifier_Filter_ExtractStyleBlocks for extracting <style> from
+  documents and cleaning their contents up. Requires the CSSTidy library
+  <http://csstidy.sourceforge.net/>. You can access the blocks with the
+  'StyleBlocks' Context variable ($purifier->context->get('StyleBlocks')).
+  The output CSS can also be "scoped" for a specific element, use:
+  %Filter.ExtractStyleBlocksScope
+! Experimental support for some proprietary CSS attributes allowed:
+  opacity (and all of the browser-specific equivalents) and scrollbar colors.
+  Enable by setting %CSS.Proprietary to true.
+- Colors missing # but in hex form will be corrected
+- CSS Number algorithm improved
+- Unit testing and multi-testing now on steroids: command lines,
+  XML output, and other goodies now added.
+. Unit tests for Injector improved
+. New classes:
+  + HTMLPurifier_AttrDef_CSS_AlphaValue
+  + HTMLPurifier_AttrDef_CSS_Filter
+. Multitest now has a file docblock
+
+2.1.3, released 2007-11-05
+! tests/multitest.php allows you to test multiple versions by running
+  tests/index.php through multiple interpreters using `phpv` shell
+  script (you must provide this script!)
+- Fixed poor include ordering for Email URI AttrDefs, causes fatal errors
+  on some systems.
+- Injector algorithm further refined: off-by-one error regarding skip
+  counts for dormant injectors fixed
+- Corrective blockquote definition now enabled for HTML 4.01 Strict
+- Fatal error when <img> tag (or any other element with required attributes)
+  has 'id' attribute fixed, thanks NykO18 for reporting
+- Fix warning emitted when a non-supported URI scheme is passed to the
+  MakeAbsolute URIFilter, thanks NykO18 (again)
+- Further refine AutoParagraph injector. Behavior inside of elements
+  allowing paragraph tags clarified: only inline content delimeted by
+  double newlines (not block elements) are paragraphed.
+- Buggy treatment of end tags of elements that have required attributes
+  fixed (does not manifest on default tag-set)
+- Spurious internal content reorganization error suppressed
+- HTMLDefinition->addElement now returns a reference to the created
+  element object, as implied by the documentation
+- Phorum mod's HTML Purifier help message expanded (unreleased elsewhere)
+- Fix a theoretical class of infinite loops from DirectLex reported
+  by Nate Abele
+- Work around unnecessary DOMElement type-cast in PH5P that caused errors
+  in PHP 5.1
+- Work around PHP 4 SimpleTest lack-of-error complaining for one-time-only
+  HTMLDefinition errors, this may indicate problems with error-collecting
+  facilities in PHP 5
+- Make ErrorCollectorEMock work in both PHP 4 and PHP 5
+- Make PH5P work with PHP 5.0 by removing unnecessary array parameter typedef
+. %Core.AcceptFullDocuments renamed to %Core.ConvertDocumentToFragment
+  to better communicate its purpose
+. Error unit tests can now specify the expectation of no errors. Future
+  iterations of the harness will be extremely strict about what errors
+  are allowed
+. Extend Injector hooks to allow for more powerful injector routines
+. HTMLDefinition->addBlankElement created, as according to the HTMLModule
+  method
+. Doxygen configuration file updated, with minor improvements
+. Test runner now checks for similarly named files in conf/ directory too.
+. Minor cosmetic change to flush-definition-cache.php: trailing newline is
+  outputted
+. Maintenance script for generating PH5P patch added, original PH5P source
+  file also added under version control
+. Full unit test runner script title made more descriptive with PHP version
+. Updated INSTALL file to state that 4.3.7 is the earliest version we
+  are actively testing
+
+2.1.2, released 2007-09-03
+! Implemented Object module for trusted users
+! Implemented experimental HTML5 parsing mode using PH5P. To use, add
+  this to your code:
+        require_once 'HTMLPurifier/Lexer/PH5P.php';
+        $config->set('Core', 'LexerImpl', 'PH5P');
+  Note that this Lexer introduces some classes not in the HTMLPurifier
+  namespace.  Also, this is PHP5 only.
+! CSS property border-spacing implemented
+- Fix non-visible parsing error in DirectLex with empty tags that have
+  slashes inside attribute values.
+- Fix typo in CSS definition: border-collapse:seperate; was incorrectly
+  accepted as valid CSS. Usually non-visible, because this styling is the
+  default for tables in most browsers. Thanks Brett Zamir for pointing
+  this out.
+- Fix validation errors in configuration form
+- Hammer out a bunch of edge-case bugs in the standalone distribution
+- Inclusion reflection removed from URISchemeRegistry; you must manually
+  include any new schema files you wish to use
+- Numerous typo fixes in documentation thanks to Brett Zamir
+. Unit test refactoring for one logical test per test function
+. Config and context parameters in ComplexHarness deprecated: instead, edit
+  the $config and $context member variables
+. HTML wrapper in DOMLex now takes DTD identifiers into account; doesn't
+  really make a difference, but is good for completeness sake
+. merge-library.php script refactored for greater code reusability and
+  PHP4 compatibility
+
+2.1.1, released 2007-08-04
+- Fix show-stopper bug in %URI.MakeAbsolute functionality
+- Fix PHP4 syntax error in standalone version
+. Add prefix directory to include path for standalone, this prevents
+  other installations from clobbering the standalone's URI schemes
+. Single test methods can be invoked by prefixing with __only
+
+2.1.0, released 2007-08-02
+# flush-htmldefinition-cache.php superseded in favor of a generic
+  flush-definition-cache.php script, you can clear a specific cache
+  by passing its name as a parameter to the script
+! Phorum mod implemented for HTML Purifier
+! With %Core.AggressivelyFixLt, <3 and similar emoticons no longer
+  trigger HTML removal in PHP5 (DOMLex). This directive is not necessary
+  for PHP4 (DirectLex).
+! Standalone file now available, which greatly reduces the amount of
+  includes (although there are still a few files that reside in the
+  standalone folder)
+! Relative URIs can now be transformed into their absolute equivalents
+  using %URI.Base and %URI.MakeAbsolute
+! Ruby implemented for XHTML 1.1
+! You can now define custom URI filtering behavior, see enduser-uri-filter.html
+  for more details
+! UTF-8 font names now supported in CSS
+- AutoFormatters emit friendly error messages if tags or attributes they
+  need are not allowed
+- ConfigForm's compactification of directive names is now configurable
+- AutoParagraph autoformatter algorithm refined after field-testing
+- XHTML 1.1 now applies XHTML 1.0 Strict cleanup routines, namely
+  blockquote wrapping
+- Contents of <style> tags removed by default when tags are removed
+. HTMLPurifier_Config->getSerial() implemented, this is extremely useful
+  for output cache invalidation
+. ConfigForm printer now can retrieve CSS and JS files as strings, in
+  case HTML Purifier's directory is not publically accessible
+. Introduce new text/itext configuration directive values: these represent
+  longer strings that would be more appropriately edited with a textarea
+. Allow newlines to act as separators for lists, hashes, lookups and
+  %HTML.Allowed
+. ConfigForm generates textareas instead of text inputs for lists, hashes,
+  lookups, text and itext fields
+. Hidden element content removal genericized: %Core.HiddenElements can
+  be used to customize this behavior, by default <script> and <style> are
+  hidden
+. Added HTMLPURIFIER_PREFIX constant, should be used instead of dirname(__FILE__)
+. Custom ChildDef added to default include list
+. URIScheme reflection improved: will not attempt to include file if class
+  already exists. May clobber autoload, so I need to keep an eye on it
+. ConfigSchema heavily optimized, will only collect information and validate
+  definitions when HTMLPURIFIER_SCHEMA_STRICT is true.
+. AttrDef_URI unit tests and implementation refactored
+. benchmarks/ directory now protected from public view with .htaccess file;
+  run the tests via command line
+. URI scheme is munged off if there is no authority and the scheme is the
+  default one
+. All unit tests inherit from HTMLPurifier_Harness, not UnitTestCase
+. Interface for URIScheme changed
+. Generic URI object to hold components of URI added, most systems involved
+  in URI validation have been migrated to use it
+. Custom filtering for URIs factored out to URIDefinition interface for
+  maximum extensibility
+
+2.0.1, released 2007-06-27
+! Tag auto-closing now based on a ChildDef heuristic rather than a
+  manually set auto_close array; some behavior may change
+! Experimental AutoFormat functionality added: auto-paragraph and
+  linkify your HTML input by setting %AutoFormat.AutoParagraph and
+  %AutoFormat.Linkify to true
+! Newlines normalized internally, and then converted back to the
+  value of PHP_EOL. If this is not desired, set your newline format
+  using %Output.Newline.
+! Beta error collection, messages are implemented for the most generic
+  cases involving Lexing or Strategies
+- Clean up special case code for <script> tags
+- Reorder includes for DefinitionCache decorators, fixes a possible
+  missing class error
+- Fixed bug where manually modified definitions were not saved via cache
+  (mostly harmless, except for the fact that it would be a little slower)
+- Configuration objects with different serials do not clobber each
+  others when revision numbers are unequal
+- Improve Serializer DefinitionCache directory permissions checks
+- DefinitionCache no longer throws errors when it encounters old
+  serial files that do not conform to the current style
+- Stray xmlns attributes removed from configuration documentation
+- configForm.php smoketest no longer has XSS vulnerability due to
+  unescaped print_r output
+- Printer adheres to configuration's directives on output format
+- Fix improperly named form field in ConfigForm printer
+. Rewire some test-cases to swallow errors rather than expect them
+. HTMLDefinition printer updated with some of the new attributes
+. DefinitionCache keys reordered to reflect precedence: version number,
+  hash, then revision number
+. %Core.DefinitionCache renamed to %Cache.DefinitionImpl
+. Interlinking in configuration documentation added using
+  Injector_PurifierLinkify
+. Directives now keep track of aliases to themselves
+. Error collector now requires a severity to be passed, use PHP's internal
+  error constants for this
+. HTMLPurifier_Config::getAllowedDirectivesForForm implemented, allows
+  much easier selective embedding of configuration values
+. Doctype objects now accept public and system DTD identifiers
+. %HTML.Doctype is now constrained by specific values, to specify a custom
+  doctype use new %HTML.CustomDoctype
+. ConfigForm truncates long directives to keep the form small, and does
+  not re-output namespaces
+
+2.0.0, released 2007-06-20
+# Completely refactored HTMLModuleManager, decentralizing safety
+  information
+# Transform modules changed to Tidy modules, which offer more flexibility
+  and better modularization
+# Configuration object now finalizes itself when a read operation is
+  performed on it, ensuring that its internal state stays consistent.
+  To revert this behavior, you can set the $autoFinalize member variable
+  off, but it's not recommended.
+# New compact syntax for AttrDef objects that can be used to instantiate
+  new objects via make()
+# Definitions (esp. HTMLDefinition) are now cached for a significant
+  performance boost. You can disable caching by setting %Core.DefinitionCache
+  to null. You CANNOT edit raw definitions without setting the corresponding
+  DefinitionID directive (%HTML.DefinitionID for HTMLDefinition).
+# Contents between <script> tags are now completely removed if <script>
+  is not allowed
+# Prototype-declarations for Lexer removed in favor of configuration
+  determination of Lexer implementations.
+! HTML Purifier now works in PHP 4.3.2.
+! Configuration form-editing API makes tweaking HTMLPurifier_Config a
+  breeze!
+! Configuration directives that accept hashes now allow new string
+  format: key1:value1,key2:value2
+! ConfigDoc now factored into OOP design
+! All deprecated elements now natively supported
+! Implement TinyMCE styled whitelist specification format in
+  %HTML.Allowed
+! Config object gives more friendly error messages when things go wrong
+! Advanced API implemented: easy functions for creating elements (addElement)
+  and attributes (addAttribute) on HTMLDefinition
+! Add native support for required attributes
+- Deprecated and removed EnableRedundantUTF8Cleaning. It didn't even work!
+- DOMLex will not emit errors when a custom error handler that does not
+  honor error_reporting is used
+- StrictBlockquote child definition refrains from wrapping whitespace
+  in tags now.
+- Bug resulting from tag transforms to non-allowed elements fixed
+- ChildDef_Custom's regex generation has been improved, removing several
+  false positives
+. Unit test for ElementDef created, ElementDef behavior modified to
+  be more flexible
+. Added convenience functions for HTMLModule constructors
+. AttrTypes now has accessor functions that should be used instead
+  of directly manipulating info
+. TagTransform_Center deprecated in favor of generic TagTransform_Simple
+. Add extra protection in AttrDef_URI against phantom Schemes
+. Doctype object added to HTMLDefinition which describes certain aspects
+  of the operational document type
+. Lexer is now pre-emptively included, with a conditional include for the
+  PHP5 only version.
+. HTMLDefinition and CSSDefinition have a common parent class: Definition.
+. DirectLex can now track line-numbers
+. Preliminary error collector is in place, although no code actually reports
+  errors yet
+. Factor out most of ValidateAttributes to new AttrValidator class
+
+1.6.1, released 2007-05-05
+! Support for more deprecated attributes via transformations:
+  + hspace and vspace in img
+  + size and noshade in hr
+  + nowrap in td
+  + clear in br
+  + align in caption, table, img and hr
+  + type in ul, ol and li
+! DirectLex now preserves text in which a < bracket is followed by
+  a non-alphanumeric character. This means that certain emoticons
+  are now preserved.
+! %Core.RemoveInvalidImg is now operational, when set to false invalid
+  images will hang around with an empty src
+! target attribute in a tag supported, use %Attr.AllowedFrameTargets
+  to enable
+! CSS property white-space now allows nowrap (supported in all modern
+  browsers) but not others (which have spotty browser implementations)
+! XHTML 1.1 mode now sort-of works without any fatal errors, and
+  lang is now moved over to xml:lang.
+! Attribute transformation smoketest available at smoketests/attrTransform.php
+! Transformation of font's size attribute now handles super-large numbers
+- Possibly fatal bug with __autoload() fixed in module manager
+- Invert HTMLModuleManager->addModule() processing order to check
+  prefixes first and then the literal module
+- Empty strings get converted to empty arrays instead of arrays with
+  an empty string in them.
+- Merging in attribute lists now works.
+. Demo script removed: it has been added to the website's repository
+. Basic.php script modified to work out of the box
+. Refactor AttrTransform classes to reduce duplication
+. AttrTransform_TextAlign axed in favor of a more general
+  AttrTransform_EnumToCSS, refer to HTMLModule/TransformToStrict.php to
+  see how the new equivalent is implemented
+. Unit tests now use exclusively assertIdentical
+
+1.6.0, released 2007-04-01
+! Support for most common deprecated attributes via transformations:
+  + bgcolor in td, th, tr and table
+  + border in img
+  + name in a and img
+  + width in td, th and hr
+  + height in td, th
+! Support for CSS attribute 'height' added
+! Support for rel and rev attributes in a tags added, use %Attr.AllowedRel
+  and %Attr.AllowedRev to activate
+- You can define ID blacklists using regular expressions via
+  %Attr.IDBlacklistRegexp
+- Error messages are emitted when you attempt to "allow" elements or
+  attributes that HTML Purifier does not support
+- Fix segfault in unit test. The problem is not very reproduceable and
+  I don't know what causes it, but a six line patch fixed it.
+
+1.5.0, released 2007-03-23
+! Added a rudimentary I18N and L10N system modeled off MediaWiki. It
+  doesn't actually do anything yet, but keep your eyes peeled.
+! docs/enduser-utf8.html explains how to use UTF-8 and HTML Purifier
+! Newly structured HTMLDefinition modeled off of XHTML 1.1 modules.
+  I am loathe to release beta quality APIs, but this is exactly that;
+  don't use the internal interfaces if you're not willing to do migration
+  later on.
+- Allow 'x' subtag in language codes
+- Fixed buggy chameleon-support for ins and del
+. Added support for IDREF attributes (i.e. for)
+. Renamed HTMLPurifier_AttrDef_Class to HTMLPurifier_AttrDef_Nmtokens
+. Removed context variable ParentType, replaced with IsInline, which
+  is false when you're not inline and an integer of the parent that
+  caused you to become inline when you are (so possibly zero)
+. Removed ElementDef->type in favor of ElementDef->descendants_are_inline
+  and HTMLDefinition->content_sets
+. StrictBlockquote now reports what elements its supposed to allow,
+  rather than what it does allow
+. Removed HTMLDefinition->info_flow_elements in favor of
+  HTMLDefinition->content_sets['Flow']
+. Removed redundant "exclusionary" definitions from DTD roster
+. StrictBlockquote now requires a construction parameter as if it
+  were an Required ChildDef, this is the "real" set of allowed elements
+. AttrDef partitioned into HTML, CSS and URI segments
+. Modify Youtube filter regexp to be multiline
+. Require both PHP5 and DOM extension in order to use DOMLex, fixes
+  some edge cases where a DOMDocument class exists in a PHP4 environment
+  due to DOM XML extension.
+
+1.4.1, released 2007-01-21
+! docs/enduser-youtube.html updated according to new functionality
+- YouTube IDs can have underscores and dashes
+
+1.4.0, released 2007-01-21
+! Implemented list-style-image, URIs now allowed in list-style
+! Implemented background-image, background-repeat, background-attachment
+  and background-position CSS properties. Shorthand property background
+  supports all of these properties.
+! Configuration documentation looks nicer
+! Added %Core.EscapeNonASCIICharacters to workaround loss of Unicode
+  characters while %Core.Encoding is set to a non-UTF-8 encoding.
+! Support for configuration directive aliases added
+! Config object can now be instantiated from ini files
+! YouTube preservation code added to the core, with two lines of code
+  you can add it as a filter to your code. See smoketests/preserveYouTube.php
+  for sample code.
+! Moved SLOW to docs/enduser-slow.html and added code examples
+- Replaced version check with functionality check for DOM (thanks Stephen
+  Khoo)
+. Added smoketest 'all.php', which loads all other smoketests via frames
+. Implemented AttrDef_CSSURI for url(http://google.com) style declarations
+. Added convenient single test selector form on test runner
+
+1.3.2, released 2006-12-25
+! HTMLPurifier object now accepts configuration arrays, no need to manually
+  instantiate a configuration object
+! Context object now accessible to outside
+! Added enduser-youtube.html, explains how to embed YouTube videos. See
+  also corresponding smoketest preserveYouTube.php.
+! Added purifyArray(), which takes a list of HTML and purifies it all
+! Added static member variable $version to HTML Purifier with PHP-compatible
+  version number string.
+- Fixed fatal error thrown by upper-cased language attributes
+- printDefinition.php: added labels, added better clarification
+. HTMLPurifier_Config::create() added, takes mixed variable and converts into
+  a HTMLPurifier_Config object.
+
+1.3.1, released 2006-12-06
+! Added HTMLPurifier.func.php stub for a convenient function to call the library
+- Fixed bug in RemoveInvalidImg code that caused all images to be dropped
+  (thanks to .mario for reporting this)
+. Standardized all attribute handling variables to attr, made it plural
+
+1.3.0, released 2006-11-26
+# Invalid images are now removed, rather than replaced with a dud
+  <img src="" alt="Invalid image" />. Previous behavior can be restored
+  with new directive %Core.RemoveInvalidImg set to false.
+! (X)HTML Strict now supported
+  + Transparently handles inline elements in block context (blockquote)
+! Added GET method to demo for easier validation, added 50kb max input size
+! New directive %HTML.BlockWrapper, for block-ifying inline elements
+! New directive %HTML.Parent, allows you to only allow inline content
+! New directives %HTML.AllowedElements and %HTML.AllowedAttributes to let
+  users narrow the set of allowed tags
+! <li value="4"> and <ul start="2"> now allowed in loose mode
+! New directives %URI.DisableExternalResources and %URI.DisableResources
+! New directive %Attr.DisableURI, which eliminates all hyperlinking
+! New directive %URI.Munge, munges URI so you can use some sort of redirector
+  service to avoid PageRank leaks or warn users that they are exiting your site.
+! Added spiffy new smoketest printDefinition.php, which lets you twiddle with
+  the configuration settings and see how the internal rules are affected.
+! New directive %URI.HostBlacklist for blocking links to bad hosts.
+  xssAttacks.php smoketest updated accordingly.
+- Added missing type to ChildDef_Chameleon
+- Remove Tidy option from demo if there is not Tidy available
+. ChildDef_Required guards against empty tags
+. Lookup table HTMLDefinition->info_flow_elements added
+. Added peace-of-mind variable initialization to Strategy_FixNesting
+. Added HTMLPurifier->info_parent_def, parent child processing made special
+. Added internal documents briefly summarizing future progression of HTML
+. HTMLPurifier_Config->getBatch($namespace) added
+. More lenient casting to bool from string in HTMLPurifier_ConfigSchema
+. Refactored ChildDef classes into their own files
+
+1.2.0, released 2006-11-19
+# ID attributes now disabled by default. New directives:
+  + %HTML.EnableAttrID - restores old behavior by allowing IDs
+  + %Attr.IDPrefix - %Attr.IDBlacklist alternative that munges all user IDs
+    so that they don't collide with your IDs
+  + %Attr.IDPrefixLocal - Same as above, but for when there are multiple
+    instances of user content on the page
+  + Profuse documentation on how to use these available in docs/enduser-id.txt
+! Added MODx plugin <http://modxcms.com/forums/index.php/topic,6604.0.html>
+! Added percent encoding normalization
+! XSS attacks smoketest given facelift
+! Configuration documentation now has table of contents
+! Added %URI.DisableExternal, which prevents links to external websites.  You
+  can also use %URI.Host to permit absolute linking to subdomains
+! Non-accessible resources (ex. mailto) blocked from embedded URIs (img src)
+- Type variable in HTMLDefinition was not being set properly, fixed
+- Documentation updated
+  + TODO added request Phalanger
+  + TODO added request Native compression
+  + TODO added request Remove redundant tags
+  + TODO added possible plaintext formatter for HTML Purifier documentation
+  + Updated ConfigDoc TODO
+  + Improved inline comments in AttrDef/Class.php, AttrDef/CSS.php
+    and AttrDef/Host.php
+  + Revamped documentation into HTML, along with misc updates
+- HTMLPurifier_Context doesn't throw a variable reference error if you attempt
+  to retrieve a non-existent variable
+. Switched to purify()-wide Context object registry
+. Refactored unit tests to minimize duplication
+. XSS attack sheet updated
+. configdoc.xml now has xml:space attached to default value nodes
+. Allow configuration directives to permit null values
+. Cleaned up test-cases to remove unnecessary swallowErrors()
+
+1.1.2, released 2006-09-30
+! Add HTMLPurifier.auto.php stub file that configures include_path
+- Documentation updated
+  + INSTALL document rewritten
+  + TODO added semi-lossy conversion
+  + API Doxygen docs' file exclusions updated
+  + Added notes on HTML versus XML attribute whitespace handling
+  + Noted that HTMLPurifier_ChildDef_Custom isn't being used
+  + Noted that config object's definitions are cached versions
+- Fixed lack of attribute parsing in HTMLPurifier_Lexer_PEARSax3
+- ftp:// URIs now have their typecodes checked
+- Hooked up HTMLPurifier_ChildDef_Custom's unit tests (they weren't being run)
+. Line endings standardized throughout project (svn:eol-style standardized)
+. Refactored parseData() to general Lexer class
+. Tester named "HTML Purifier" not "HTMLPurifier"
+
+1.1.1, released 2006-09-24
+! Configuration option to optionally Tidy up output for indentation to make up
+  for dropped whitespace by DOMLex (pretty-printing for the entire application
+  should be done by a page-wide Tidy)
+- Various documentation updates
+- Fixed parse error in configuration documentation script
+- Fixed fatal error in benchmark scripts, slightly augmented
+- As far as possible, whitespace is preserved in-between table children
+- Sample test-settings.php file included
+
+1.1.0, released 2006-09-16
+! Directive documentation generation using XSLT
+! XHTML can now be turned off, output becomes <br>
+- Made URI validator more forgiving: will ignore leading and trailing
+  quotes, apostrophes and less than or greater than signs.
+- Enforce alphanumeric namespace and directive names for configuration.
+- Table child definition made more flexible, will fix up poorly ordered elements
+. Renamed ConfigDef to ConfigSchema
+
+1.0.1, released 2006-09-04
+- Fixed slight bug in DOMLex attribute parsing
+- Fixed rejection of case-insensitive configuration values when there is a
+  set of allowed values.  This manifested in %Core.Encoding.
+- Fixed rejection of inline style declarations that had lots of extra
+  space in them.  This manifested in TinyMCE.
+
+1.0.0, released 2006-09-01
+! Shorthand CSS properties implemented: font, border, background, list-style
+! Basic color keywords translated into hexadecimal values
+! Table CSS properties implemented
+! Support for charsets other than UTF-8 (defined by iconv)
+! Malformed UTF-8 and non-SGML character detection and cleaning implemented
+- Fixed broken numeric entity conversion
+- API documentation completed
+. (HTML|CSS)Definition de-singleton-ized
+
+1.0.0beta, released 2006-08-16
+! First public release, most functionality implemented. Notable omissions are:
+  + Shorthand CSS properties
+  + Table CSS properties
+  + Deprecated attribute transformations
+
+    vim: et sw=4 sts=4

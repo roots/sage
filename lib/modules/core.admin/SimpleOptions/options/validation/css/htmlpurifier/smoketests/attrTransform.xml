@@ -1,0 +1,192 @@
+<?xml version="1.0"?>
+<samples>
+    <group title="menu,dir">
+        <sample><![CDATA[<menu><li>menu</li></menu>]]></sample>
+        <sample><![CDATA[<dir><li>dir</li></dir>]]></sample>
+    </group>
+    <group title="font">
+        <sample><![CDATA[<font color="red">Red</font>]]></sample>
+        <sample><![CDATA[<font color="#0000FF">#0000FF</font>]]></sample>
+        <sample><![CDATA[<font face="Arial">Arial</font>]]></sample>
+    </group>
+    <group title="font.size">
+        <sample><![CDATA[<font size="-2">-2</font>]]></sample>
+        <sample><![CDATA[<font size="-1">-1</font>]]></sample>
+        <sample><![CDATA[<font size="0">0</font>]]></sample>
+        <sample><![CDATA[<font size="1">1</font>]]></sample>
+        <sample><![CDATA[<font size="2">2</font>]]></sample>
+        <sample><![CDATA[<font size="3">3</font>]]></sample>
+        <sample><![CDATA[<font size="4">4</font>]]></sample>
+        <sample><![CDATA[<font size="5">5</font>]]></sample>
+        <sample><![CDATA[<font size="6">6</font>]]></sample>
+        <sample><![CDATA[<font size="7">7</font>]]></sample>
+        <sample><![CDATA[<font size="8">8</font>]]></sample>
+        <sample><![CDATA[<font size="+1">+1</font>]]></sample>
+        <sample><![CDATA[<font size="+2">+2</font>]]></sample>
+        <sample><![CDATA[<font size="+3">+3</font>]]></sample>
+        <sample><![CDATA[<font size="+4">+4</font>]]></sample>
+        <sample><![CDATA[<font size="+5">+5</font>]]></sample>
+    </group>
+    <group title="center">
+        <sample><![CDATA[<center>Centered</center>]]></sample>
+    </group>
+    <group title="p.align">
+        <sample><![CDATA[<p align="left">Left</p>]]></sample>
+        <sample><![CDATA[<p align="center">Center</p>]]></sample>
+        <sample><![CDATA[<p align="right">Right</p>]]></sample>
+    </group>
+    <group title="table.bgcolor">
+        <sample><![CDATA[
+            <table bgcolor="black" cellspacing="2" cellpadding="2" border="1">
+                <tr bgcolor="red">
+                    <th bgcolor="green">To</th>
+                    <td bgcolor="blue">Be</td>
+                </tr>
+                <tr>
+                    <th bgcolor="green">Or</th>
+                    <td>Not</td>
+                </tr>
+                <tr bgcolor="red">
+                    <th>To</th>
+                    <td>Be</td>
+                </tr>
+            </table>
+       ]]></sample>
+        <sample><![CDATA[
+            <table class="bright" bgcolor="black" cellspacing="2" cellpadding="2" border="1">
+                <tr>
+                    <th bgcolor="green">Or</th>
+                    <td>Not</td>
+                </tr>
+                <tr bgcolor="blue">
+                    <th bgcolor="green">To</th>
+                    <td>Be</td>
+                </tr>
+            </table>
+       ]]></sample>
+    </group>
+    <group title="img.border">
+        <sample><![CDATA[<img src="img.png" alt="I" border="2" />]]></sample>
+        <sample><![CDATA[<a href="http://example.com/"><img src="img.png" alt="I" border="2" /></a>]]></sample>
+    </group>
+    <group title="td,th,hr.width">
+        <sample><![CDATA[
+            <table border="1">
+                <tr>
+                    <th width="20">x1</th>
+                    <td width="40">x2</td>
+                </tr>
+            </table>
+        ]]></sample>
+        <sample><![CDATA[
+            <table border="1">
+                <tr>
+                    <th width="33%">x1</th>
+                    <td width="67%">x2</td>
+                </tr>
+            </table>
+        ]]></sample>
+        <sample><![CDATA[<hr width="70%" /><hr width="30" />]]></sample>
+    </group>
+    <group title="td,th.nowrap">
+        <sample><![CDATA[
+            <table border="1">
+                <tr>
+                    <th>This wants to wrap</th>
+                    <td>really badly yes it does</td>
+                </tr>
+            </table>
+        ]]></sample>
+        <sample><![CDATA[
+            <table border="1">
+                <tr>
+                    <th nowrap>This wants to wrap</th>
+                    <td nowrap>really badly yes it does</td>
+                </tr>
+            </table>
+        ]]></sample>
+    </group>
+    <group title="td,th.height">
+        <sample><![CDATA[<table border="1"><tr><td height="60">tall</td></tr></table>]]></sample>
+    </group>
+    <group title="img.vspace,hspace">
+        <sample><![CDATA[a<img src="img.png" alt="I" class="marked" hspace="7" />a]]></sample>
+        <sample><![CDATA[<img src="img.png" alt="I" class="marked" vspace="7" /><br />o]]></sample>
+    </group>
+    <group title="hr">
+        <sample><![CDATA[<hr size="4" />]]></sample>
+        <sample><![CDATA[<hr size="50" noshade />]]></sample>
+    </group>
+    <group title="br.clear">
+        <sample><![CDATA[<img src="img.png" alt="I" align="right" />B<br />A]]></sample>
+        <sample><![CDATA[<img src="img.png" alt="I" align="right" />B<br clear="right" />A]]></sample>
+        <sample><![CDATA[<img src="img.png" alt="I" align="right" /><img src="img.png" alt="I" align="left" />B<br />A]]></sample>
+        <sample><![CDATA[<img src="img.png" alt="I" align="right" /><img src="img.png" alt="I" align="left" />B<br clear="all" />A]]></sample>
+    </group>
+    <group title="caption.align">
+        <sample><![CDATA[
+            <table border="1">
+                <caption align="left">Left</caption>
+                <tr><td>1.1</td><td>1.2</td></tr>
+            </table>
+        ]]></sample>
+        <sample><![CDATA[
+            <table border="1">
+                <caption align="right">Right</caption>
+                <tr><td>1.1</td><td>1.2</td></tr>
+            </table>
+        ]]></sample>
+        <sample><![CDATA[
+            <table border="1">
+                <caption align="top">Top</caption>
+                <tr><td>1.1</td><td>1.2</td></tr>
+            </table>
+        ]]></sample>
+        <sample><![CDATA[
+            <table border="1">
+                <caption align="bottom">Bottom</caption>
+                <tr><td>1.1</td><td>1.2</td></tr>
+            </table>
+        ]]></sample>
+    </group>
+    <group title="img.align">
+        <sample><![CDATA[left<img src="img.png" alt="I" class="marked" align="left" />]]></sample>
+        <sample><![CDATA[right<img src="img.png" alt="I" class="marked" align="right" />]]></sample>
+        <sample><![CDATA[o<img src="img.png" alt="I" class="marked" align="top" /> top]]></sample>
+        <sample><![CDATA[o<img src="img.png" alt="I" class="marked" align="bottom" /> bottom]]></sample>
+        <sample><![CDATA[o<img src="img.png" alt="I" class="marked" align="middle" /> middle]]></sample>
+    </group>
+    <group title="table.align">
+        <sample><![CDATA[a<table align="left" class="bright"><tr><td>left</td></tr></table>a]]></sample>
+        <sample><![CDATA[a<table align="center" class="bright"><tr><td>center</td></tr></table>a]]></sample>
+        <sample><![CDATA[a<table align="right" class="bright"><tr><td>right</td></tr></table>a]]></sample>
+    </group>
+    <group title="hr.align">
+        <sample><![CDATA[<hr align="left" class="short" />left]]></sample>
+        <sample><![CDATA[<hr align="center" class="short" />center]]></sample>
+        <sample><![CDATA[<hr align="right" class="short" />right]]></sample>
+    </group>
+    <group title="ul,ol,li.type">
+        <sample><![CDATA[<ul type="disc"><li>1</li><li>2</li></ul>]]></sample>
+        <sample><![CDATA[<ul type="square"><li>1</li><li>2</li></ul>]]></sample>
+        <sample><![CDATA[<ul type="circle"><li>1</li><li>2</li></ul>]]></sample>
+        <sample><![CDATA[<ol type="a"><li>1</li><li>2</li></ul>]]></sample>
+        <sample><![CDATA[<ol type="A"><li>1</li><li>2</li></ul>]]></sample>
+        <sample><![CDATA[<ol type="i"><li>1</li><li>2</li></ul>]]></sample>
+        <sample><![CDATA[<ol type="I"><li>1</li><li>2</li></ul>]]></sample>
+        <sample><![CDATA[<ol type="1"><li>1</li><li>2</li></ul>]]></sample>
+        <sample><![CDATA[<ol><li type="a">1</li><li type="I">2</li></ul>]]></sample>
+    </group>
+
+
+    <!-- sample
+    <group title="">
+        <sample><![CDATA[]]></sample>
+        <sample><![CDATA[]]></sample>
+        <sample><![CDATA[]]></sample>
+    </group>
+    -->
+</samples>
+
+<!-- vim: et sw=4 sts=4
+-->

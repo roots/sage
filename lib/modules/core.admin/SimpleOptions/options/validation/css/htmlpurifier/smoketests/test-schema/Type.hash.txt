@@ -1,0 +1,5 @@
+Type.hash
+TYPE: hash
+DEFAULT: array('key1' => 'val1', 'key2' => 'val2')
+DESCRIPTION: The hash type is an associative array of string keys and string values.
+--# vim: et sw=4 sts=4

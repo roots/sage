@@ -1,0 +1,73 @@
+
+center,
+dir[compact='compact'],
+isindex[prompt='Foo'],
+menu[compact='compact'],
+s,
+u,
+strike,
+
+caption[align='bottom'],
+div[align='center'],
+dl[compact='compact'],
+
+h1[align='right'],
+h2[align='right'],
+h3[align='right'],
+h4[align='right'],
+h5[align='right'],
+h6[align='right'],
+
+hr[align='right'],
+hr[noshade='noshade'],
+hr[width='50'],
+hr[size='50'],
+
+img[align='right'],
+img[border='3'],
+img[hspace='5'],
+img[vspace='5'],
+
+input[align='right'],
+legend[align='center'],
+
+li[type='A'],
+li[value='5'],
+
+ol[compact='compact'],
+ol[start='3'],
+ol[type='I'],
+
+p[align='right'],
+
+pre[width='50'],
+
+table[align='right'],
+table[bgcolor='#0000FF'],
+
+tr[bgcolor='#0000FF'],
+
+td[bgcolor='#0000FF'],
+td[height='50'],
+td[nowrap='nowrap'],
+td[width='200'],
+
+th[bgcolor='#0000FF'],
+th[height='50'],
+th[nowrap='nowrap'],
+th[width='200'],
+
+ul[compact='compact'],
+ul[type='square'],
+
+.insert-declarations-above
+ {background:#008000; color:#FFF; font-weight:bold;}
+
+font {background:#BFB;}
+u {border:1px solid #000;}
+hr {height:1em;}
+hr[size='50'] {height:50px;}
+img[border='3'] {border: 3px solid #000;}
+li[type='a'], li[value='5'] {color:#DDD;}
+
+/* vim: et sw=4 sts=4 */

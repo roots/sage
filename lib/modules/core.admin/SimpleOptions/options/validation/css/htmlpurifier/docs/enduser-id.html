@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="description" content="Explains various methods for allowing IDs in documents safely in HTML Purifier." />
+<link rel="stylesheet" type="text/css" href="./style.css" />
+
+<title>IDs - HTML Purifier</title>
+
+</head><body>
+
+<h1 class="subtitled">IDs</h1>
+<div class="subtitle">What they are, why you should(n't) wear them, and how to deal with it</div>
+
+<div id="filing">Filed under End-User</div>
+<div id="index">Return to the <a href="index.html">index</a>.</div>
+<div id="home"><a href="http://htmlpurifier.org/">HTML Purifier</a> End-User Documentation</div>
+
+<p>Prior to HTML Purifier 1.2.0, this library blithely accepted user input that
+looked like this:</p>
+
+<pre>&lt;a id=&quot;fragment&quot;&gt;Anchor&lt;/a&gt;</pre>
+
+<p>...presenting an attractive vector for those that would destroy standards
+compliance: simply set the ID to one that is already used elsewhere in the
+document and voila: validation breaks.  There was a half-hearted attempt to
+prevent this by allowing users to blacklist IDs, but I suspect that no one
+really bothered, and thus, with the release of 1.2.0, IDs are now <em>removed</em>
+by default.</p>
+
+<p>IDs, however, are quite useful functionality to have, so if users start
+complaining about broken anchors you'll probably want to turn them back on
+with %Attr.EnableID. But before you go mucking around with the config
+object, it's probably worth to take some precautions to keep your page
+validating. Why?</p>
+
+<ol>
+   <li>Standards-compliant pages are good</li>
+   <li>Duplicated IDs interfere with anchors.  If there are two id="foobar"s in a
+   document, which spot does a browser presented with the fragment #foobar go
+   to? Most browsers opt for the first appearing ID, making it impossible
+   to references the second section. Similarly, duplicated IDs can hijack
+   client-side scripting that relies on the IDs of elements.</li>
+</ol>
+
+<p>You have (currently) four ways of dealing with the problem.</p>
+
+
+
+<h2 class="subtitled">Blacklisting IDs</h2>
+<div class="subsubtitle">Good for pages with single content source and stable templates</div>
+
+<p>Keeping in terms with the
+<acronym title="Keep It Simple, Stupid">KISS</acronym> principle, let us
+deal with the most obvious solution: preventing users from using any IDs that
+appear elsewhere on the document.  The method is simple:</p>
+
+<pre>$config-&gt;set('Attr.EnableID', true);
+$config-&gt;set('Attr.IDBlacklist' array(
+    'list', 'of', 'attribute', 'values', 'that', 'are', 'forbidden'
+));</pre>
+
+<p>That being said, there are some notable drawbacks.  First of all, you have to
+know precisely which IDs are being used by the HTML surrounding the user code.
+This is easier said than done: quite often the page designer and the system
+coder work separately, so the designer has to constantly be talking with the
+coder whenever he decides to add a new anchor.  Miss one and you open yourself
+to possible standards-compliance issues.</p>
+
+<p>Furthermore, this position becomes untenable when a single web page must hold
+multiple portions of user-submitted content.  Since there's obviously no way
+to find out before-hand what IDs users will use, the blacklist is helpless.
+And since HTML Purifier validates each segment separately, perhaps doing
+so at different times, it would be extremely difficult to dynamically update
+the blacklist in between runs.</p>
+
+<p>Finally, simply destroying the ID is extremely un-userfriendly behavior: after
+all, they might have simply specified a duplicate ID by accident.</p>
+
+<p>Thus, we get to our second method.</p>
+
+
+
+<h2 class="subtitled">Namespacing IDs</h2>
+<div class="subsubtitle">Lazy developer's way, but needs user education</div>
+
+<p>This method, too, is quite simple: add a prefix to all user IDs. With this
+code:</p>
+
+<pre>$config-&gt;set('Attr.EnableID', true);
+$config-&gt;set('Attr.IDPrefix', 'user_');</pre>
+
+<p>...this:</p>
+
+<pre>&lt;a id=&quot;foobar&quot;&gt;Anchor!&lt;/a&gt;</pre>
+
+<p>...turns into:</p>
+
+<pre>&lt;a id=&quot;user_foobar&quot;&gt;Anchor!&lt;/a&gt;</pre>
+
+<p>As long as you don't have any IDs that start with user_, collisions are
+guaranteed not to happen.  The drawback is obvious: if a user submits
+id=&quot;foobar&quot;, they probably expect to be able to reference their page with
+#foobar. You'll have to tell them, &quot;No, that doesn't work, you have to add
+user_ to the beginning.&quot;</p>
+
+<p>And yes, things get hairier.  Even with a nice prefix, we still have done
+nothing about multiple HTML Purifier outputs on one page.  Thus, we have
+a second configuration value to piggy-back off of: %Attr.IDPrefixLocal:</p>
+
+<pre>$config-&gt;set('Attr.IDPrefixLocal', 'comment' . $id . '_');</pre>
+
+<p>This new attributes does nothing but append on to regular IDPrefix, but is
+special in that it is volatile: it's value is determined at run-time and
+cannot possibly be cordoned into, say, a .ini config file.  As for what to
+put into the directive, is up to you, but I would recommend the ID number
+the text has been assigned in the database.  Whatever you pick, however, it
+has to be unique and stable for the text you are validating.  Note, however,
+that we require that %Attr.IDPrefix be set before you use this directive.</p>
+
+<p>And also remember: the user has to know what this prefix is too!</p>
+
+
+
+<h2>Abstinence</h2>
+
+<p>You may not want to bother. That's okay too, just don't enable IDs.</p>
+
+<p>Personally, I would take this road whenever user-submitted content would be
+possibly be shown together on one page.  Why a blog comment would need to use
+anchors is beyond me.</p>
+
+
+
+<h2>Denial</h2>
+
+<p>To revert back to pre-1.2.0 behavior, simply:</p>
+
+<pre>$config-&gt;set('Attr.EnableID', true);</pre>
+
+<p>Don't come crying to me when your page mysteriously stops validating, though.</p>
+
+</body>
+</html>
+
+<!-- vim: et sw=4 sts=4
+-->

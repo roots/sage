@@ -1,0 +1,71 @@
+.typography-script {
+	width:130px!important;
+	margin-right:0;
+}
+
+.typography-style {
+	width:125px!important;
+}
+
+.sof-typography-container select,.typography-style,.typography-script {
+	float:left;
+	display:block;
+	width:340px;
+}
+
+.sof-typography-container .select_wrapper {
+	float:left;
+	margin-right:10px;
+	display:block;
+}
+
+.typography-preview {
+	display:block;
+	clear:both;
+	border:1px dotted lightgray;
+	max-width:850px;
+	padding:10px;
+	font-size:10pt;
+	height:auto;
+	margin:0 0 10px;
+	overflow:auto;
+}
+
+.typography-color {
+	margin-top:8px;
+}
+
+.sof-typography-container .input-append {
+	font-size:0;
+	white-space:nowrap;
+	float:left;
+	display:inline-block;
+	margin-bottom:3px;
+}
+
+.sof-typography-container .input-append .add-on {
+	border-top-right-radius:3px;
+	border-bottom-right-radius:3px;
+}
+
+#simple-options-main .sof-typography-container .input-append input {
+	border-top-right-radius:0;
+	border-bottom-right-radius:0;
+	margin-right:0;
+}
+
+#simple-options-main .sof-typography-container .typography-family select,#simple-options-main .sof-typography-container .typography-family {
+	width:340px!important;
+}
+
+.sof-typography,.typography-color {
+	margin-bottom:9px;
+}
+
+#simple-options-main .sof-typography-container .typography-style select,#simple-options-main .sof-typography-container .typography-style {
+	width:150px!important;
+}
+
+#simple-options-main .sof-typography-container .typography-script select,#simple-options-main .sof-typography-container .typography-script {
+	width:120px!important;
+}

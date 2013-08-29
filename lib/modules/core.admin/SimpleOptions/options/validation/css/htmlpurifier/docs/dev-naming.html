@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="description" content="Defines class naming conventions in HTML Purifier." />
+<link rel="stylesheet" type="text/css" href="./style.css" />
+
+<title>Naming Conventions - HTML Purifier</title>
+
+</head><body>
+
+<h1>Naming Conventions</h1>
+
+<div id="filing">Filed under Development</div>
+<div id="index">Return to the <a href="index.html">index</a>.</div>
+<div id="home"><a href="http://htmlpurifier.org/">HTML Purifier</a> End-User Documentation</div>
+
+<p>The classes in this library follow a few naming conventions, which may
+help you find the correct functionality more quickly.  Here they are:</p>
+
+<dl>
+
+<dt>All classes occupy the HTMLPurifier pseudo-namespace.</dt>
+    <dd>This means that all classes are prefixed with HTMLPurifier_.  As such, all
+    names under HTMLPurifier_ are reserved.  I recommend that you use the name
+    HTMLPurifierX_YourName_ClassName, especially if you want to take advantage
+    of HTMLPurifier_ConfigDef.</dd>
+
+<dt>All classes correspond to their path if library/ was in the include path</dt>
+    <dd>HTMLPurifier_AttrDef is located at HTMLPurifier/AttrDef.php; replace
+    underscores with slashes and append .php and you'll have the location of
+    the class.</dd>
+
+<dt>Harness and Test are reserved class names for unit tests</dt>
+    <dd>The suffix <code>Test</code> indicates that the class is a subclass of UnitTestCase
+    (of the Simpletest library) and is testable. "Harness" indicates a subclass
+    of UnitTestCase that is not meant to be run but to be extended into
+    concrete test cases and contains custom test methods (i.e. assert*())</dd>
+
+<dt>Class names do not necessarily represent inheritance hierarchies</dt>
+    <dd>While we try to reflect inheritance in naming to some extent, it is not
+    guaranteed (for instance, none of the classes inherit from HTMLPurifier,
+    the base class).  However, all class files have the require_once
+    declarations to whichever classes they are tightly coupled to.</dd>
+
+<dt>Strategy has a meaning different from the Gang of Four pattern</dt>
+    <dd>In Design Patterns, the Gang of Four describes a Strategy object as
+    encapsulating an algorithm so that they can be switched at run-time.  While
+    our strategies are indeed algorithms, they are not meant to be substituted:
+    all must be present in order for proper functioning.</dd>
+
+<dt>Abbreviations are avoided</dt>
+    <dd>We try to avoid abbreviations as much as possible, but in some cases,
+    abbreviated version is more readable than the full version. Here, we
+    list common abbreviations:
+    <ul>
+        <li>Attr to Attributes (note that it is plural, i.e. <code>$attr = array()</code>)</li>
+        <li>Def to Definition</li>
+        <li><code>$ret</code> is the value to be returned in a function</li>
+    </ul>
+    </dd>
+
+<dt>Ambiguity concerning the definition of Def/Definition</dt>
+    <dd>While a definition normally defines the structure/acceptable values of
+    an entity, most of the definitions in this application also attempt
+    to validate and fix the value.  I am unsure of a better name, as
+    "Validator" would exclude fixing the value, "Fixer" doesn't invoke
+    the proper image of "fixing" something, and "ValidatorFixer" is too long!
+    Some other suggestions were "Handler", "Reference", "Check", "Fix",
+    "Repair" and "Heal".</dd>
+
+<dt>Transform not Transformer</dt>
+    <dd>Transform is both a noun and a verb, and thus we define a "Transform" as
+    something that "transforms," leaving "Transformer" (which sounds like an
+    electrical device/robot toy).</dd>
+
+</dl>
+
+</body></html>
+
+<!-- vim: et sw=4 sts=4
+-->

@@ -1,0 +1,5 @@
+--HTML--
+<ul><li>Sublist 1</li><ul><li>Bullet</li></ul></ul>
+--EXPECT--
+<ul><li>Sublist 1<ul><li>Bullet</li></ul></li></ul>
+--# vim: et sw=4 sts=4

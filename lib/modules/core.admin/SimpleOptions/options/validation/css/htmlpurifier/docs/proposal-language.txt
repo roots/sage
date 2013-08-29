@@ -1,0 +1,64 @@
+We are going to model our I18N/L10N off of MediaWiki's system.  Their's is
+obviously quite complicated, so we're going to simplify it a bit for our needs.
+
+== Caching ==
+
+MediaWiki has lots of caching mechanisms built in, which make the code somewhat
+more difficult to understand.  Before doing any loading, MediaWiki will check
+the following places to see if we can be lazy:
+
+1. $mLocalisationCache[$code] -  just a variable where it may have been stashed
+2. serialized/$code.ser -  compiled serialized language file
+3. Memcached version of file (with expiration checking)
+
+Expiration checking consists of by ensuring all dependencies have filemtime
+that match the ones bundled with the cached copy. Similar checking could be
+implemented for serialized versions, as it seems that they are not updated
+until manually recompiled.
+
+== Behavior ==
+
+Things that are localizable:
+
+-  Weekdays (and abbrev)
+-  Months (and abbrev)
+-  Bookstores
+-  Skin names
+-  Date preferences / Custom date format
+-  Default date format
+-  Default user option overrides
+-+ Language names
+-  Timezones
+-+ Character encoding conversion via iconv
+-  UpperLowerCase first (needs casemaps for some)
+-  UpperLowerCase
+-  Uppercase words
+-  Uppercase word breaks
+-  Case folding
+-  Strip punctuation for MySQL search
+-  Get first character
+-+ Alternate encoding
+-+ Recoding for edit (and then recode input)
+-+ RTL
+-+ Direction mark character depending on RTL
+-? Arrow depending on RTL
+-  Languages where italics cannot be used
+-+ Number formatting (commafy, transform digits, transform separators)
+-  Truncate (multibyte)
+-  Grammar conversions for inflected languages
+-  Plural transformations
+-  Formatting expiry times
+-  Segmenting for diffs (Chinese)
+-  Convert to variants of language
+-  Language specific user preference options
+-  Link trails [[foo]]bar
+-+ Language code (RFC 3066)
+
+Neat functionality:
+
+-  I18N sprintfDate
+-  Roman numeral formatting
+
+Items marked with a + likely need to be addressed by HTML Purifier
+
+    vim: et sw=4 sts=4

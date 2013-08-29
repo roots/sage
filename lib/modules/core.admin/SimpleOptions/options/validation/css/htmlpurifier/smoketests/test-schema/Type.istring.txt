@@ -1,0 +1,5 @@
+Type.istring
+TYPE: istring
+DEFAULT: 'case insensitive'
+DESCRIPTION: The istring type is short (no newlines), must be ASCII and is case-insensitive.
+--# vim: et sw=4 sts=4

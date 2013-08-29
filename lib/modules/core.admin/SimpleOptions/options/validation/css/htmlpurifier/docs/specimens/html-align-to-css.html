@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+   "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>HTML align attribute to CSS - HTML Purifier Specimen</title>
+<style type="text/css">
+div.container {position:relative;height:110px;}
+div.container.legend .test {text-align:center;line-height:100px;}
+div.test {width:100px;height:100px;border:1px solid black;
+position:absolute;top:10px;}
+div.test.html {left:10px;}
+div.test.css  {left:140px;}
+table {background:#F00;}
+img {border:1px solid #000;}
+hr {width:50px;}
+div.segment {width:250px; float:left; margin-top:1em;}
+</style>
+</head>
+<body>
+
+<h1>HTML align attribute to CSS</h1>
+
+<p>Inspect source for methodology.</p>
+
+<div class="container legend">
+<div class="test html">
+    HTML
+</div>
+<div class="test css">
+    CSS
+</div>
+</div>
+
+<div class="segment">
+
+<h2>table.align</h2>
+
+<h3>left</h3>
+<div class="container">
+<div class="test html">
+    a<table align="left"><tr><td>O</td></tr></table>a
+</div>
+<div class="test css">
+    a<table style="float:left;"><tr><td>O</td></tr></table>a
+</div>
+</div>
+
+<h3>center</h3>
+<div class="container">
+<div class="test html">
+    a<table align="center"><tr><td>O</td></tr></table>a
+</div>
+<div class="test css">
+    a<table style="margin-left:auto; margin-right:auto;"><tr><td>O</td></tr></table>a
+</div>
+</div>
+
+<h3>right</h3>
+<div class="container">
+<div class="test html">
+    a<table align="right"><tr><td>O</td></tr></table>a
+</div>
+<div class="test css">
+    a<table style="float:right;"><tr><td>O</td></tr></table>a
+</div>
+</div>
+
+</div>
+
+<!-- ################################################################## -->
+
+<div class="segment">
+<h2>img.align</h2>
+<h3>left</h3>
+<div class="container">
+<div class="test html">
+    a<img src="img.png" align="left">a
+</div>
+<div class="test css">
+    a<img src="img.png" style="float:left;">a
+</div>
+</div>
+
+<h3>right</h3>
+<div class="container">
+<div class="test html">
+    a<img src="img.png" align="right">a
+</div>
+<div class="test css">
+    a<img src="img.png" style="float:right;">a
+</div>
+</div>
+
+<h3>bottom</h3>
+<div class="container">
+<div class="test html">
+    a<img src="img.png" align="bottom">a
+</div>
+<div class="test css">
+    a<img src="img.png" style="vertical-align:baseline;">a
+</div>
+</div>
+
+<h3>middle</h3>
+<div class="container">
+<div class="test html">
+    a<img src="img.png" align="middle">a
+</div>
+<div class="test css">
+    a<img src="img.png" style="vertical-align:middle;">a
+</div>
+</div>
+
+<h3>top</h3>
+<div class="container">
+<div class="test html">
+    a<img src="img.png" align="top">a
+</div>
+<div class="test css">
+    a<img src="img.png" style="vertical-align:top;">a
+</div>
+</div>
+
+</div>
+
+<!-- ################################################################## -->
+
+<div class="segment">
+
+<h2>hr.align</h2>
+
+<h3>left</h3>
+<div class="container">
+<div class="test html">
+    <hr align="left" />
+</div>
+<div class="test css">
+    <hr style="margin-right:auto; margin-left:0; text-align:left;" />
+</div>
+</div>
+
+<h3>center</h3>
+<div class="container">
+<div class="test html">
+    <hr align="center" />
+</div>
+<div class="test css">
+    <hr style="margin-right:auto; margin-left:auto; text-align:center;" />
+</div>
+</div>
+
+<h3>right</h3>
+<div class="container">
+<div class="test html">
+    <hr align="right" />
+</div>
+<div class="test css">
+    <hr style="margin-right:0; margin-left:auto; text-align:right;" />
+</div>
+</div>
+
+</div>
+
+</body>
+</html>

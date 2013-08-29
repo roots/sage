@@ -1,0 +1,218 @@
+THE UNIVERSAL DESIGN PATTERN: PROPERTIES
+Steve Yegge
+
+Implementation:
+    get(name)
+    put(name, value)
+    has(name)
+    remove(name)
+    iteration, with filtering [this will be our namespaces]
+    parent
+
+Representations:
+    - Keys are strings
+    - It's nice to not need to quote keys (if we formulate our own language,
+      consider this)
+    - Property not present representation (key missing)
+    - Frequent removal/re-add may have null help. If null is valid, use
+      another value. (PHP semantics are weird here)
+
+Data structures:
+    - LinkedHashMap is wonderful (O(1) access and maintains order)
+    - Using a special property that points to the parent is usual
+    - Multiple inheritance possible, need rules for which to lookup first
+    - Iterative inheritance is best
+    - Consider performance!
+
+Deletion
+    - Tricky problem with inheritance
+    - Distinguish between "not found" and "look in my parent for the property"
+    [Maybe HTML Purifier won't allow deletion]
+
+Read/write asymmetry (it's correct!)
+
+Read-only plists
+    - Allow ability to freeze [this is what we have already]
+    - Don't overuse it
+
+Performance:
+    - Intern strings (PHP does this already)
+    - Don't be case-insensitive
+    - If all properties in a plist are known a-priori, you can use a "perfect"
+      hash function. Often overkill.
+    - Copy-on-read caching "plundering" reduces lookup, but uses memory and can
+      grow stale. Use as last resort.
+    - Refactoring to fields. Watch for API compatibility, system complexity,
+      and lack of flexibility.
+    - Refrigerator: external data-structure to hold plists
+
+Transient properties:
+    [Don't need to worry about this]
+    - Use a separate plist for transient properties
+    - Non-numeric override; numeric should ADD
+    - Deletion: removeTransientProperty() and transientlyRemoveProperty()
+
+Persistence:
+    - XML/JSON are good
+    - Text-based is good for readability, maintainability and bootstrapping
+    - Compressed binary format for network transport [not necessary]
+    - RDBMS or XML database
+
+Querying: [not relevant]
+    - XML database is nice for XPath/XQuery
+    - jQuery for JSON
+    - Just load it all into a program
+
+Backfills/Data integrity:
+    - Use usual methods
+    - Lazy backfill is a nice hack
+
+Type systems:
+    - Flags: ReadOnly, Permanent, DontEnum
+    - Typed properties isn't that useful [It's also Not-PHP]
+    - Seperate meta-list of directive properties IS useful
+    - Duck typing is useful for systems designed fully around properties pattern
+
+Trade-off:
+    + Flexibility
+    + Extensibility
+    + Unit-testing/prototype-speed
+    - Performance
+    - Data integrity
+    - Navagability/Query-ability
+    - Reversability (hard to go back)
+
+HTML Purifier
+
+We are not happy with our current system of defining configuration directives,
+because it has become clear that things will get a lot nicer if we allow
+multiple namespaces, and there are some features that naturally lend themselves
+to inheritance, which we do not really support well.
+
+One of the considered implementation changes would be to go from a structure
+like:
+
+array(
+    'Namespace' => array(
+        'Directive' => 'val1',
+        'Directive2' => 'val2',
+    )
+)
+
+to:
+
+array(
+    'Namespace.Directive' => 'val1',
+    'Namespace.Directive2' => 'val2',
+)
+
+The below implementation takes more memory, however, and it makes it a bit
+complicated to grab all values from a namespace.
+
+The alternate implementation choice is to allow nested plists. This keeps
+iteration easy, but is problematic for inheritance (it would be difficult
+to distinguish a plist from an array) and retrieval (when specifying multiple
+namespaces we would need some multiple de-referencing).
+
+----
+
+We can bite the performance hit, and just do iteration with filter
+(the strncmp call should be relatively cheap). Then, users should be able
+to optimize doing something like:
+
+$config = HTMLPurifier_Config::createDefault();
+if (!file_exists('config.php')) {
+    // set up $config
+    $config->save('config.php');
+} else {
+    $config->load('config.php');
+}
+
+Or maybe memcache, or something. This means that "// set up $config" must
+not have any dynamic parts, or the user has to invalidate the cache when
+they do update it. We have to think about this a little more carefully; the
+file call might be more expensive.
+
+----
+
+This might get expensive, however, when we actually care about iterating
+over the configuration and want the actual values. So what about nesting the
+lists?
+
+"ns.sub.directive" => values['ns']['sub']['directive']
+
+We can distinguish between plists and arrays by using ArrayObjects for the
+plists, and regular arrays for the arrays? Alternatively, use ArrayObjects
+for the arrays, and regular arrays for the plists.
+
+----
+
+Implementation demands, and what has caused them:
+
+1. DefinitionCache, the HTML, CSS and URI namespaces have caches attached to them
+   Results:
+    - getBatchSerial()
+        - getBatch() : in general, the ability to traverse just a namespace
+
+2. AutoFormat/Filter, this is a plugin architecture, directives not hard-coded
+    - getBatch()
+
+3. Configuration form
+    - Namespaces used to organize directives
+
+Other than that, we have a pure plist. PERHAPS we should maintain separate things
+for these different demands.
+
+Issue 2: Directives for configuring the plugins are regular plists, but
+when enabling them, while it's "plist-ish", what you're really doing is adding
+them to an array of "autoformatters"/"filters" to enable. We can setup
+magic BC as well as in the new interface, but there should also be an
+add('AutoFormat', 'AutoParagraph'); which does the right thing.
+
+One thing to consider is whether or not inheritance rules will apply to these.
+I'd say yes. That means that they're still plisty, in fact, the underlying
+implementation will probably be a plist. However, they will get their OWN
+plists, and will NOT support nesting.
+
+Issue 1: Our current implementation is generally not efficient; md5(serialize($foo))
+is pretty expensive. So, I don't think there will be any problems if it
+gets "less" efficient, as long as we give users a properly fast alternative;
+DefinitionRev gives us a way to do this, by simply telling the user they must
+update it whenever they update Configuration directives as well. (There are
+obvious BC concerns here).
+
+In such a case, we simply iterate over our plist (performing full retrievals
+for each value), grab the entries we care about, and then serialize and hash.
+It's going to be slow either way, due to the ability of plists to inherit.
+If we ksort(), we don't have to traverse the entire array, however, the
+cost of a ksort() call may not be worth it.
+
+At this point, last time, I started worrying about the performance implications
+of allowing inheritance, and wondering whether or not I wanted to squash
+the plist. At first blush, our code might be under the assumption that
+accessing properties is cheap; but actually we prefer to copy out the value
+into a member variable if it's going to be used many times. With this is mind
+I don't think CPU consumption from a few nested function calls is going to
+be a problem. We *are* going to enforce a function only interface.
+
+The next issue at hand is how we're going to manage the "special" plists,
+which should still be able to be inherited. Basically, it means that multiple
+plists would be attached to the configuration object, which is not the
+best for memory performance. The alternative is to keep them all in one
+big plist, and then eat the one-time cost of traversing the entire plist
+to grab the appropriate values.
+
+I think at this point we can write the generic interface, and then set up separate
+plists if that ends up being necessary for performance (it probably won't.) Now
+lets code our generic plist implementation.
+
+----
+
+Iterating over the plist presents some problems. The way we've chosen to solve
+this is to squash all of the parents.
+
+----
+
+But I don't need iteration.
+
+    vim: et sw=4 sts=4

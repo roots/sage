@@ -1,0 +1,281 @@
+
+INCLUDES, AUTOLOAD, BYTECODE CACHES and OPTIMIZATION
+
+The Problem
+-----------
+
+HTML Purifier contains a number of extra components that are not used all
+of the time, only if the user explicitly specifies that we should use
+them.
+
+Some of these optional components are optionally included (Filter,
+Language, Lexer, Printer), while others are included all the time
+(Injector, URIFilter, HTMLModule, URIScheme). We will stipulate that these
+are all developer specified: it is conceivable that certain Tokens are not
+used, but this is user-dependent and should not be trusted.
+
+We should come up with a consistent way to handle these things and ensure
+that we get the maximum performance when there is bytecode caches and
+when there are not. Unfortunately, these two goals seem contrary to each
+other.
+
+A peripheral issue is the performance of ConfigSchema, which has been
+shown take a large, constant amount of initialization time, and is
+intricately linked to the issue of includes due to its pervasive use
+in our plugin architecture.
+
+Pros and Cons
+-------------
+
+We will assume that user-based extensions will be included by them.
+
+Conditional includes:
+  Pros:
+    - User management is simplified; only a single directive needs to be set
+    - Only necessary code is included
+  Cons:
+    - Doesn't play nicely with opcode caches
+    - Adds complexity to standalone version
+    - Optional configuration directives are not exposed without a little
+      extra coaxing (not implemented yet)
+
+Include it all:
+  Pros:
+    - User management is still simple
+    - Plays nicely with opcode caches and standalone version
+    - All configuration directives are present
+  Cons:
+    - Lots of (how much?) extra code is included
+    - Classes that inherit from external libraries will cause compile
+      errors
+
+Build an include stub (Let's do this!):
+  Pros:
+    - Only necessary code is included
+    - Plays nicely with opcode caches and standalone version
+    - require (without once) can be used, see above
+    - Could further extend as a compilation to one file
+  Cons:
+    - Not implemented yet
+    - Requires user intervention and use of a command line script
+    - Standalone script must be chained to this
+    - More complex and compiled-language-like
+    - Requires a whole new class of system-wide configuration directives,
+      as configuration objects can be reused
+    - Determining what needs to be included can be complex (see above)
+    - No way of autodetecting dynamically instantiated classes
+    - Might be slow
+
+Include stubs
+-------------
+
+This solution may be "just right" for users who are heavily oriented
+towards performance. However, there are a number of picky implementation
+details to work out beforehand.
+
+The number one concern is how to make the HTML Purifier files "work
+out of the box", while still being able to easily get them into a form
+that works with this setup. As the codebase stands right now, it would
+be necessary to strip out all of the require_once calls. The only way
+we could get rid of the require_once calls is to use __autoload or
+use the stub for all cases (which might not be a bad idea).
+
+    Aside
+    -----
+    An important thing to remember, however, is that these require_once's
+    are valuable data about what classes a file needs. Unfortunately, there's
+    no distinction between whether or not the file is needed all the time,
+    or whether or not it is one of our "optional" files. Thus, it is
+    effectively useless.
+
+    Deprecated
+    ----------
+    One of the things I'd like to do is have the code search for any classes
+    that are explicitly mentioned in the code. If a class isn't mentioned, I
+    get to assume that it is "optional," i.e. included via introspection.
+    The choice is either to use PHP's tokenizer or use regexps; regexps would
+    be faster but a tokenizer would be more correct. If this ends up being
+    unfeasible, adding dependency comments isn't a bad idea. (This could
+    even be done automatically by search/replacing require_once, although
+    we'd have to manually inspect the results for the optional requires.)
+
+    NOTE: This ends up not being necessary, as we're going to make the user
+    figure out all the extra classes they need, and only include the core
+    which is predetermined.
+
+Using the autoload framework with include stubs works nicely with
+introspective classes: instead of having to have require_once inside
+the function, we can let autoload do the work; we simply need to
+new $class or accept the object straight from the caller. Handling filters
+becomes a simple matter of ticking off configuration directives, and
+if ConfigSchema spits out errors, adding the necessary includes. We could
+also use the autoload framework as a fallback, in case the user forgets
+to make the include, but doesn't really care about performance.
+
+    Insight
+    -------
+    All of this talk is merely a natural extension of what our current
+    standalone functionality does. However, instead of having our code
+    perform the includes, or attempting to inline everything that possibly
+    could be used, we boot the issue to the user, making them include
+    everything or setup the fallback autoload handler.
+
+Configuration Schema
+--------------------
+
+A common deficiency for all of the conditional include setups (including
+the dynamically built include PHP stub) is that if one of this
+conditionally included files includes a configuration directive, it
+is not accessible to configdoc. A stopgap solution for this problem is
+to have it piggy-back off of the data in the merge-library.php script
+to figure out what extra files it needs to include, but if the file also
+inherits classes that don't exist, we're in big trouble.
+
+I think it's high time we centralized the configuration documentation.
+However, the type checking has been a great boon for the library, and
+I'd like to keep that. The compromise is to use some other source, and
+then parse it into the ConfigSchema internal format (sans all of those
+nasty documentation strings which we really don't need at runtime) and
+serialize that for future use.
+
+The next question is that of format. XML is very verbose, and the prospect
+of setting defaults in it gives me willies. However, this may be necessary.
+Splitting up the file into manageable chunks may alleviate this trouble,
+and we may be even want to create our own format optimized for specifying
+configuration. It might look like (based off the PHPT format, which is
+nicely compact yet unambiguous and human-readable):
+
+Core.HiddenElements
+TYPE:    lookup
+DEFAULT: array('script', 'style') // auto-converted during processing
+--ALIASES--
+Core.InvisibleElements, Core.StupidElements
+--DESCRIPTION--
+<p>
+  Blah blah
+</p>
+
+The first line is the directive name, the lines after that prior to the
+first --HEADER-- block are single-line values, and then after that
+the multiline values are there. No value is restricted to a particular
+format: DEFAULT could very well be multiline if that would be easier.
+This would make it insanely easy, also, to add arbitrary extra parameters,
+like:
+
+VERSION:  3.0.0
+ALLOWED:  'none', 'light', 'medium', 'heavy' // this is wrapped in array()
+EXTERNAL: CSSTidy // this would be documented somewhere else with a URL
+
+The final loss would be that you wouldn't know what file the directive
+was used in; with some clever regexps it should be possible to
+figure out where $config->get($ns, $d); occurs. Reflective calls to
+the configuration object is mitigated by the fact that getBatch is
+used, so we can simply talk about that in the namespace definition page.
+This might be slow, but it would only happen when we are creating
+the documentation for consumption, and is sugar.
+
+We can put this in a schema/ directory, outside of HTML Purifier. The serialized
+data gets treated like entities.ser.
+
+The final thing that needs to be handled is user defined configurations.
+They can be added at runtime using ConfigSchema::registerDirectory()
+which globs the directory and grabs all of the directives to be incorporated
+in. Then, the result is saved. We may want to take advantage of the
+DefinitionCache framework, although it is not altogether certain what
+configuration directives would be used to generate our key (meta-directives!)
+
+    Further thoughts
+    ----------------
+    Our master configuration schema will only need to be updated once
+    every new version, so it's easily versionable. User specified
+    schema files are far more volatile, but it's far too expensive
+    to check the filemtimes of all the files, so a DefinitionRev style
+    mechanism works better. However, we can uniquely identify the
+    schema based on the directories they loaded, so there's no need
+    for a DefinitionId until we give them full programmatic control.
+
+    These variables should be directly incorporated into ConfigSchema,
+    and ConfigSchema should handle serialization. Some refactoring will be
+    necessary for the DefinitionCache classes, as they are built with
+    Config in mind. If the user changes something, the cache file gets
+    rebuilt. If the version changes, the cache file gets rebuilt. Since
+    our unit tests flush the caches before we start, and the operation is
+    pretty fast, this will not negatively impact unit testing.
+
+One last thing: certain configuration directives require that files
+get added. They may even be specified dynamically. It is not a good idea
+for the HTMLPurifier_Config object to be used directly for such matters.
+Instead, the userland code should explicitly perform the includes. We may
+put in something like:
+
+REQUIRES: HTMLPurifier_Filter_ExtractStyleBlocks
+
+To indicate that if that class doesn't exist, and the user is attempting
+to use the directive, we should fatally error out. The stub includes the core files,
+and the user includes everything else. Any reflective things like new
+$class would be required to tie in with the configuration.
+
+It would work very well with rarely used configuration options, but it
+wouldn't be so good for "core" parts that can be disabled. In such cases
+the core include file would need to be modified, and the only way
+to properly do this is use the configuration object. Once again, our
+ability to create cache keys saves the day again: we can create arbitrary
+stub files for arbitrary configurations and include those. They could
+even be the single file affairs. The only thing we'd need to include,
+then, would be HTMLPurifier_Config! Then, the configuration object would
+load the library.
+
+    An aside...
+    -----------
+    One questions, however, the wisdom of letting PHP files write other PHP
+    files. It seems like a recipe for disaster, or at least lots of headaches
+    in highly secured setups, where PHP does not have the ability to write
+    to its root. In such cases, we could use sticky bits or tell the user
+    to manually generate the file.
+
+    The other troublesome bit is actually doing the calculations necessary.
+    For certain cases, it's simple (such as URIScheme), but for AttrDef
+    and HTMLModule the dependency trees are very complex in relation to
+    %HTML.Allowed and friends. I think that this idea should be shelved
+    and looked at a later, less insane date.
+
+An interesting dilemma presents itself when a configuration form is offered
+to the user. Normally, the configuration object is not accessible without
+editing PHP code; this facility changes thing. The sensible thing to do
+is stipulate that all classes required by the directives you allow must
+be included.
+
+Unit testing
+------------
+
+Setting up the parsing and translation into our existing format would not
+be difficult to do. It might represent a good time for us to rethink our
+tests for these facilities; as creative as they are, they are often hacky
+and require public visibility for things that ought to be protected.
+This is especially applicable for our DefinitionCache tests.
+
+Migration
+---------
+
+Because we are not *adding* anything essentially new, it should be trivial
+to write a script to take our existing data and dump it into the new format.
+Well, not trivial, but fairly easy to accomplish. Primary implementation
+difficulties would probably involve formatting the file nicely.
+
+Backwards-compatibility
+-----------------------
+
+I expect that the ConfigSchema methods should stick around for a little bit,
+but display E_USER_NOTICE warnings that they are deprecated. This will
+require documentation!
+
+New stuff
+---------
+
+VERSION: Version number directive was introduced
+DEPRECATED-VERSION: If the directive was deprecated, when was it deprecated?
+DEPRECATED-USE: If the directive was deprecated, what should the user use now?
+REQUIRES: What classes does this configuration directive require, but are
+    not part of the HTML Purifier core?
+
+    vim: et sw=4 sts=4

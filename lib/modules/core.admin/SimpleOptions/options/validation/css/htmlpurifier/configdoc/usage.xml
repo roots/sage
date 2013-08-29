@@ -1,0 +1,547 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<usage>
+ <directive id="Core.CollectErrors">
+  <file name="HTMLPurifier.php">
+   <line>131</line>
+  </file>
+  <file name="HTMLPurifier/Lexer.php">
+   <line>81</line>
+   <line>284</line>
+  </file>
+  <file name="HTMLPurifier/Lexer/DirectLex.php">
+   <line>53</line>
+   <line>73</line>
+   <line>348</line>
+  </file>
+  <file name="HTMLPurifier/Strategy/RemoveForeignElements.php">
+   <line>50</line>
+  </file>
+ </directive>
+ <directive id="CSS.MaxImgLength">
+  <file name="HTMLPurifier/CSSDefinition.php">
+   <line>157</line>
+  </file>
+ </directive>
+ <directive id="CSS.Proprietary">
+  <file name="HTMLPurifier/CSSDefinition.php">
+   <line>215</line>
+  </file>
+ </directive>
+ <directive id="CSS.AllowTricky">
+  <file name="HTMLPurifier/CSSDefinition.php">
+   <line>219</line>
+  </file>
+ </directive>
+ <directive id="CSS.Trusted">
+  <file name="HTMLPurifier/CSSDefinition.php">
+   <line>223</line>
+  </file>
+ </directive>
+ <directive id="CSS.AllowImportant">
+  <file name="HTMLPurifier/CSSDefinition.php">
+   <line>227</line>
+  </file>
+ </directive>
+ <directive id="CSS.AllowedProperties">
+  <file name="HTMLPurifier/CSSDefinition.php">
+   <line>302</line>
+  </file>
+ </directive>
+ <directive id="CSS.ForbiddenProperties">
+  <file name="HTMLPurifier/CSSDefinition.php">
+   <line>316</line>
+  </file>
+ </directive>
+ <directive id="Cache.DefinitionImpl">
+  <file name="HTMLPurifier/DefinitionCacheFactory.php">
+   <line>49</line>
+  </file>
+ </directive>
+ <directive id="HTML.Doctype">
+  <file name="HTMLPurifier/DoctypeRegistry.php">
+   <line>83</line>
+  </file>
+ </directive>
+ <directive id="HTML.CustomDoctype">
+  <file name="HTMLPurifier/DoctypeRegistry.php">
+   <line>85</line>
+  </file>
+ </directive>
+ <directive id="HTML.XHTML">
+  <file name="HTMLPurifier/DoctypeRegistry.php">
+   <line>88</line>
+  </file>
+ </directive>
+ <directive id="HTML.Strict">
+  <file name="HTMLPurifier/DoctypeRegistry.php">
+   <line>93</line>
+  </file>
+ </directive>
+ <directive id="Core.Encoding">
+  <file name="HTMLPurifier/Encoder.php">
+   <line>337</line>
+   <line>372</line>
+  </file>
+ </directive>
+ <directive id="Test.ForceNoIconv">
+  <file name="HTMLPurifier/Encoder.php">
+   <line>341</line>
+   <line>379</line>
+  </file>
+ </directive>
+ <directive id="Core.EscapeNonASCIICharacters">
+  <file name="HTMLPurifier/Encoder.php">
+   <line>373</line>
+  </file>
+ </directive>
+ <directive id="Output.CommentScriptContents">
+  <file name="HTMLPurifier/Generator.php">
+   <line>61</line>
+  </file>
+ </directive>
+ <directive id="Output.FixInnerHTML">
+  <file name="HTMLPurifier/Generator.php">
+   <line>62</line>
+  </file>
+ </directive>
+ <directive id="Output.SortAttr">
+  <file name="HTMLPurifier/Generator.php">
+   <line>63</line>
+  </file>
+ </directive>
+ <directive id="Output.FlashCompat">
+  <file name="HTMLPurifier/Generator.php">
+   <line>64</line>
+  </file>
+ </directive>
+ <directive id="Output.TidyFormat">
+  <file name="HTMLPurifier/Generator.php">
+   <line>93</line>
+  </file>
+ </directive>
+ <directive id="Core.NormalizeNewlines">
+  <file name="HTMLPurifier/Generator.php">
+   <line>107</line>
+  </file>
+  <file name="HTMLPurifier/Lexer.php">
+   <line>266</line>
+  </file>
+ </directive>
+ <directive id="Output.Newline">
+  <file name="HTMLPurifier/Generator.php">
+   <line>108</line>
+  </file>
+ </directive>
+ <directive id="HTML.BlockWrapper">
+  <file name="HTMLPurifier/HTMLDefinition.php">
+   <line>222</line>
+  </file>
+ </directive>
+ <directive id="HTML.Parent">
+  <file name="HTMLPurifier/HTMLDefinition.php">
+   <line>230</line>
+  </file>
+ </directive>
+ <directive id="HTML.AllowedElements">
+  <file name="HTMLPurifier/HTMLDefinition.php">
+   <line>247</line>
+  </file>
+ </directive>
+ <directive id="HTML.AllowedAttributes">
+  <file name="HTMLPurifier/HTMLDefinition.php">
+   <line>248</line>
+  </file>
+ </directive>
+ <directive id="HTML.Allowed">
+  <file name="HTMLPurifier/HTMLDefinition.php">
+   <line>251</line>
+  </file>
+ </directive>
+ <directive id="HTML.ForbiddenElements">
+  <file name="HTMLPurifier/HTMLDefinition.php">
+   <line>342</line>
+  </file>
+ </directive>
+ <directive id="HTML.ForbiddenAttributes">
+  <file name="HTMLPurifier/HTMLDefinition.php">
+   <line>343</line>
+  </file>
+ </directive>
+ <directive id="HTML.Trusted">
+  <file name="HTMLPurifier/HTMLModuleManager.php">
+   <line>204</line>
+  </file>
+  <file name="HTMLPurifier/Lexer.php">
+   <line>271</line>
+  </file>
+  <file name="HTMLPurifier/HTMLModule/Image.php">
+   <line>27</line>
+  </file>
+  <file name="HTMLPurifier/Lexer/DirectLex.php">
+   <line>36</line>
+  </file>
+  <file name="HTMLPurifier/Strategy/RemoveForeignElements.php">
+   <line>23</line>
+  </file>
+ </directive>
+ <directive id="HTML.AllowedModules">
+  <file name="HTMLPurifier/HTMLModuleManager.php">
+   <line>211</line>
+  </file>
+ </directive>
+ <directive id="HTML.CoreModules">
+  <file name="HTMLPurifier/HTMLModuleManager.php">
+   <line>212</line>
+  </file>
+ </directive>
+ <directive id="HTML.Proprietary">
+  <file name="HTMLPurifier/HTMLModuleManager.php">
+   <line>222</line>
+  </file>
+ </directive>
+ <directive id="HTML.SafeObject">
+  <file name="HTMLPurifier/HTMLModuleManager.php">
+   <line>225</line>
+  </file>
+ </directive>
+ <directive id="HTML.SafeEmbed">
+  <file name="HTMLPurifier/HTMLModuleManager.php">
+   <line>228</line>
+  </file>
+ </directive>
+ <directive id="HTML.SafeScripting">
+  <file name="HTMLPurifier/HTMLModuleManager.php">
+   <line>231</line>
+  </file>
+  <file name="HTMLPurifier/HTMLModule/SafeScripting.php">
+   <line>17</line>
+  </file>
+ </directive>
+ <directive id="HTML.Nofollow">
+  <file name="HTMLPurifier/HTMLModuleManager.php">
+   <line>234</line>
+  </file>
+ </directive>
+ <directive id="HTML.TargetBlank">
+  <file name="HTMLPurifier/HTMLModuleManager.php">
+   <line>237</line>
+  </file>
+ </directive>
+ <directive id="Attr.IDBlacklist">
+  <file name="HTMLPurifier/IDAccumulator.php">
+   <line>26</line>
+  </file>
+ </directive>
+ <directive id="Core.Language">
+  <file name="HTMLPurifier/LanguageFactory.php">
+   <line>88</line>
+  </file>
+ </directive>
+ <directive id="Core.LexerImpl">
+  <file name="HTMLPurifier/Lexer.php">
+   <line>76</line>
+  </file>
+ </directive>
+ <directive id="Core.MaintainLineNumbers">
+  <file name="HTMLPurifier/Lexer.php">
+   <line>80</line>
+  </file>
+  <file name="HTMLPurifier/Lexer/DirectLex.php">
+   <line>48</line>
+  </file>
+ </directive>
+ <directive id="Core.ConvertDocumentToFragment">
+  <file name="HTMLPurifier/Lexer.php">
+   <line>282</line>
+  </file>
+ </directive>
+ <directive id="Core.RemoveProcessingInstructions">
+  <file name="HTMLPurifier/Lexer.php">
+   <line>303</line>
+  </file>
+ </directive>
+ <directive id="URI.">
+  <file name="HTMLPurifier/URIDefinition.php">
+   <line>60</line>
+  </file>
+  <file name="HTMLPurifier/URIFilter/Munge.php">
+   <line>12</line>
+  </file>
+ </directive>
+ <directive id="URI.Host">
+  <file name="HTMLPurifier/URIDefinition.php">
+   <line>70</line>
+  </file>
+  <file name="HTMLPurifier/URIScheme.php">
+   <line>81</line>
+  </file>
+ </directive>
+ <directive id="URI.Base">
+  <file name="HTMLPurifier/URIDefinition.php">
+   <line>71</line>
+  </file>
+ </directive>
+ <directive id="URI.DefaultScheme">
+  <file name="HTMLPurifier/URIDefinition.php">
+   <line>78</line>
+  </file>
+ </directive>
+ <directive id="URI.AllowedSchemes">
+  <file name="HTMLPurifier/URISchemeRegistry.php">
+   <line>41</line>
+  </file>
+ </directive>
+ <directive id="URI.OverrideAllowedSchemes">
+  <file name="HTMLPurifier/URISchemeRegistry.php">
+   <line>42</line>
+  </file>
+ </directive>
+ <directive id="URI.Disable">
+  <file name="HTMLPurifier/AttrDef/URI.php">
+   <line>28</line>
+  </file>
+ </directive>
+ <directive id="Core.ColorKeywords">
+  <file name="HTMLPurifier/AttrDef/CSS/Color.php">
+   <line>12</line>
+  </file>
+  <file name="HTMLPurifier/AttrDef/HTML/Color.php">
+   <line>12</line>
+  </file>
+ </directive>
+ <directive id="CSS.AllowedFonts">
+  <file name="HTMLPurifier/AttrDef/CSS/FontFamily.php">
+   <line>50</line>
+  </file>
+ </directive>
+ <directive id="Attr.AllowedClasses">
+  <file name="HTMLPurifier/AttrDef/HTML/Class.php">
+   <line>18</line>
+  </file>
+ </directive>
+ <directive id="Attr.ForbiddenClasses">
+  <file name="HTMLPurifier/AttrDef/HTML/Class.php">
+   <line>19</line>
+  </file>
+ </directive>
+ <directive id="Attr.AllowedFrameTargets">
+  <file name="HTMLPurifier/AttrDef/HTML/FrameTarget.php">
+   <line>15</line>
+  </file>
+ </directive>
+ <directive id="Attr.EnableID">
+  <file name="HTMLPurifier/AttrDef/HTML/ID.php">
+   <line>30</line>
+  </file>
+ </directive>
+ <directive id="Attr.IDPrefix">
+  <file name="HTMLPurifier/AttrDef/HTML/ID.php">
+   <line>36</line>
+  </file>
+ </directive>
+ <directive id="Attr.IDPrefixLocal">
+  <file name="HTMLPurifier/AttrDef/HTML/ID.php">
+   <line>38</line>
+   <line>41</line>
+  </file>
+ </directive>
+ <directive id="Attr.IDBlacklistRegexp">
+  <file name="HTMLPurifier/AttrDef/HTML/ID.php">
+   <line>64</line>
+  </file>
+ </directive>
+ <directive id="Attr.">
+  <file name="HTMLPurifier/AttrDef/HTML/LinkTypes.php">
+   <line>30</line>
+  </file>
+ </directive>
+ <directive id="Core.EnableIDNA">
+  <file name="HTMLPurifier/AttrDef/URI/Host.php">
+   <line>67</line>
+  </file>
+ </directive>
+ <directive id="Attr.DefaultTextDir">
+  <file name="HTMLPurifier/AttrTransform/BdoDir.php">
+   <line>13</line>
+  </file>
+ </directive>
+ <directive id="Core.RemoveInvalidImg">
+  <file name="HTMLPurifier/AttrTransform/ImgRequired.php">
+   <line>18</line>
+  </file>
+  <file name="HTMLPurifier/Strategy/RemoveForeignElements.php">
+   <line>20</line>
+  </file>
+ </directive>
+ <directive id="Attr.DefaultInvalidImage">
+  <file name="HTMLPurifier/AttrTransform/ImgRequired.php">
+   <line>19</line>
+  </file>
+ </directive>
+ <directive id="Attr.DefaultImageAlt">
+  <file name="HTMLPurifier/AttrTransform/ImgRequired.php">
+   <line>25</line>
+  </file>
+ </directive>
+ <directive id="Attr.DefaultInvalidImageAlt">
+  <file name="HTMLPurifier/AttrTransform/ImgRequired.php">
+   <line>33</line>
+  </file>
+ </directive>
+ <directive id="HTML.Attr.Name.UseCDATA">
+  <file name="HTMLPurifier/AttrTransform/Name.php">
+   <line>11</line>
+  </file>
+  <file name="HTMLPurifier/HTMLModule/Name.php">
+   <line>13</line>
+  </file>
+ </directive>
+ <directive id="HTML.FlashAllowFullScreen">
+  <file name="HTMLPurifier/AttrTransform/SafeParam.php">
+   <line>38</line>
+  </file>
+ </directive>
+ <directive id="Core.EscapeInvalidChildren">
+  <file name="HTMLPurifier/ChildDef/Required.php">
+   <line>62</line>
+  </file>
+ </directive>
+ <directive id="Cache.SerializerPath">
+  <file name="HTMLPurifier/DefinitionCache/Serializer.php">
+   <line>91</line>
+  </file>
+ </directive>
+ <directive id="Cache.SerializerPermissions">
+  <file name="HTMLPurifier/DefinitionCache/Serializer.php">
+   <line>107</line>
+   <line>124</line>
+  </file>
+ </directive>
+ <directive id="Filter.ExtractStyleBlocks.TidyImpl">
+  <file name="HTMLPurifier/Filter/ExtractStyleBlocks.php">
+   <line>55</line>
+  </file>
+ </directive>
+ <directive id="Filter.ExtractStyleBlocks.Scope">
+  <file name="HTMLPurifier/Filter/ExtractStyleBlocks.php">
+   <line>79</line>
+  </file>
+ </directive>
+ <directive id="Filter.ExtractStyleBlocks.Escaping">
+  <file name="HTMLPurifier/Filter/ExtractStyleBlocks.php">
+   <line>277</line>
+  </file>
+ </directive>
+ <directive id="HTML.SafeIframe">
+  <file name="HTMLPurifier/HTMLModule/Iframe.php">
+   <line>17</line>
+  </file>
+  <file name="HTMLPurifier/URIFilter/SafeIframe.php">
+   <line>23</line>
+  </file>
+ </directive>
+ <directive id="HTML.MaxImgLength">
+  <file name="HTMLPurifier/HTMLModule/Image.php">
+   <line>14</line>
+  </file>
+  <file name="HTMLPurifier/HTMLModule/SafeEmbed.php">
+   <line>13</line>
+  </file>
+  <file name="HTMLPurifier/HTMLModule/SafeObject.php">
+   <line>19</line>
+  </file>
+ </directive>
+ <directive id="HTML.TidyLevel">
+  <file name="HTMLPurifier/HTMLModule/Tidy.php">
+   <line>45</line>
+  </file>
+ </directive>
+ <directive id="HTML.TidyAdd">
+  <file name="HTMLPurifier/HTMLModule/Tidy.php">
+   <line>49</line>
+  </file>
+ </directive>
+ <directive id="HTML.TidyRemove">
+  <file name="HTMLPurifier/HTMLModule/Tidy.php">
+   <line>50</line>
+  </file>
+ </directive>
+ <directive id="AutoFormat.PurifierLinkify.DocURL">
+  <file name="HTMLPurifier/Injector/PurifierLinkify.php">
+   <line>15</line>
+  </file>
+ </directive>
+ <directive id="AutoFormat.RemoveEmpty.RemoveNbsp">
+  <file name="HTMLPurifier/Injector/RemoveEmpty.php">
+   <line>15</line>
+  </file>
+ </directive>
+ <directive id="AutoFormat.RemoveEmpty.RemoveNbsp.Exceptions">
+  <file name="HTMLPurifier/Injector/RemoveEmpty.php">
+   <line>16</line>
+  </file>
+ </directive>
+ <directive id="Core.AggressivelyFixLt">
+  <file name="HTMLPurifier/Lexer/DOMLex.php">
+   <line>44</line>
+  </file>
+ </directive>
+ <directive id="Core.DirectLexLineNumberSyncInterval">
+  <file name="HTMLPurifier/Lexer/DirectLex.php">
+   <line>70</line>
+  </file>
+ </directive>
+ <directive id="Core.DisableExcludes">
+  <file name="HTMLPurifier/Strategy/FixNesting.php">
+   <line>57</line>
+  </file>
+ </directive>
+ <directive id="Core.EscapeInvalidTags">
+  <file name="HTMLPurifier/Strategy/MakeWellFormed.php">
+   <line>53</line>
+  </file>
+  <file name="HTMLPurifier/Strategy/RemoveForeignElements.php">
+   <line>19</line>
+  </file>
+ </directive>
+ <directive id="HTML.AllowedComments">
+  <file name="HTMLPurifier/Strategy/RemoveForeignElements.php">
+   <line>24</line>
+  </file>
+ </directive>
+ <directive id="HTML.AllowedCommentsRegexp">
+  <file name="HTMLPurifier/Strategy/RemoveForeignElements.php">
+   <line>25</line>
+  </file>
+ </directive>
+ <directive id="Core.RemoveScriptContents">
+  <file name="HTMLPurifier/Strategy/RemoveForeignElements.php">
+   <line>28</line>
+  </file>
+ </directive>
+ <directive id="Core.HiddenElements">
+  <file name="HTMLPurifier/Strategy/RemoveForeignElements.php">
+   <line>29</line>
+  </file>
+ </directive>
+ <directive id="URI.HostBlacklist">
+  <file name="HTMLPurifier/URIFilter/HostBlacklist.php">
+   <line>12</line>
+  </file>
+ </directive>
+ <directive id="URI.MungeResources">
+  <file name="HTMLPurifier/URIFilter/Munge.php">
+   <line>14</line>
+  </file>
+ </directive>
+ <directive id="URI.MungeSecretKey">
+  <file name="HTMLPurifier/URIFilter/Munge.php">
+   <line>15</line>
+  </file>
+ </directive>
+ <directive id="URI.SafeIframeRegexp">
+  <file name="HTMLPurifier/URIFilter/SafeIframe.php">
+   <line>18</line>
+  </file>
+ </directive>
+</usage>

@@ -1,0 +1,5 @@
+--INI--
+HTML.Trusted = true
+--HTML--
+<table><!-- foo --><tr><td>Foo</td></tr></table>
+--# vim: et sw=4 sts=4

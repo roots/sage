@@ -1,0 +1,9 @@
+--INI--
+HTML.Trusted = true
+--HTML--
+<script type="text/javascript">alert("<This is compatible with XHTML>");</script>
+--EXPECT--
+<script type="text/javascript"><!--//--><![CDATA[//><!--
+alert("<This is compatible with XHTML>");
+//--><!]]></script>
+--# vim: et sw=4 sts=4

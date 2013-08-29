@@ -1,0 +1,8 @@
+--INI--
+HTML.ForbiddenElements = b
+HTML.ForbiddenAttributes = a@href
+--HTML--
+<b>Foo<a href="bar">bar</a></b>
+--EXPECT--
+Foo<a>bar</a>
+--# vim: et sw=4 sts=4

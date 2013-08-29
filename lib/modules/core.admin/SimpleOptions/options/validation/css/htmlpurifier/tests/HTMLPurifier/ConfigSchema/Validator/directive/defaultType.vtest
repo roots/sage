@@ -1,0 +1,6 @@
+ERROR: Expected type string, got integer in DEFAULT in directive hash 'Ns.Dir'
+----
+Ns.Dir
+DESCRIPTION: Directive
+TYPE: string
+DEFAULT: 0

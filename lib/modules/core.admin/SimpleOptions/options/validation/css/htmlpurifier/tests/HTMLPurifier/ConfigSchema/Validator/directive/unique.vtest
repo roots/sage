@@ -1,0 +1,11 @@
+ERROR: Cannot redefine directive 'Ns.Dir'
+----
+ID: Ns.Dir
+DESCRIPTION: Version 1
+TYPE: int
+DEFAULT: 0
+----
+ID: Ns.Dir
+DESCRIPTION: Version 2
+TYPE: int
+DEFAULT: 0

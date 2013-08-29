@@ -1,0 +1,44 @@
+
+Configuration Ideas
+
+Here are some theoretical configuration ideas that we could implement some
+time.  Note the naming convention: %Namespace.Directive. If you want one
+implemented, give us a ring, and we'll move it up the priority chain.
+
+%Attr.RewriteFragments - if there's %Attr.IDPrefix we may want to transparently
+    rewrite the URLs we parse too.  However, we can only do it when it's a pure
+    anchor link, so it's not foolproof
+
+%Attr.ClassBlacklist,
+%Attr.ClassWhitelist,
+%Attr.ClassPolicy - determines what classes are allowed. When
+    %Attr.ClassPolicy is set to Blacklist, only allow those not in
+    %Attr.ClassBlacklist. When it's Whitelist, only allow those in
+    %Attr.ClassWhitelist.
+
+%Attr.MaxWidth,
+%Attr.MaxHeight - caps for width and height related checks.
+    (the hack in Pixels for an image crashing attack could be replaced by this)
+
+%URI.AddRelNofollow - will add rel="nofollow" to all links, preventing the
+    spread of ill-gotten pagerank
+
+%URI.HostBlacklistRegex - regexes that if matching the host are disallowed
+%URI.HostWhitelist - domain names that are excluded from the host blacklist
+%URI.HostPolicy - determines whether or not its reject all and then whitelist
+    or allow all in then do specific blacklists with whitelist intervening.
+    'DenyAll' or 'AllowAll' (default)
+
+%URI.DisableIPHosts - URIs that have IP addresses for hosts are disallowed.
+    Be sure to also grab unusual encodings (dword, hex and octal), which may
+    be currently be caught by regular DNS
+%URI.DisableIDN - Disallow raw internationalized domain names. Punycode
+    will still be permitted.
+
+%URI.ConvertUnusualIPHosts - transform dword/hex/octal IP addresses to the
+    regular form
+%URI.ConvertAbsoluteDNS - Remove extra dots after host names that trigger
+    absolute DNS.  While this is actually the preferred method according to
+    the RFC, most people opt to use a relative domain name relative to . (root).
+
+    vim: et sw=4 sts=4

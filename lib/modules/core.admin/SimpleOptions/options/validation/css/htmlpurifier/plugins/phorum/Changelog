@@ -1,0 +1,27 @@
+Changelog                                         HTMLPurifier : Phorum Mod
+|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+= KEY ====================
+    # Breaks back-compat
+    ! Feature
+    - Bugfix
+      + Sub-comment
+    . Internal change
+==========================
+
+Version 4.0.0 for Phorum 5.2, released July 9, 2009
+# Works only with HTML Purifier 4.0.0
+! Better installation documentation
+- Fixed double encoded quotes
+- Fixed fatal error when migrate.php is blank
+
+Version 3.0.0 for Phorum 5.2, released January 12, 2008
+# WYSIWYG and suppress_message options are now configurable via web
+  interface.
+- Module now compatible with Phorum 5.2, primary bugs were in migration
+  code as well as signature and edit message handling. This module is NOT
+  compatible with Phorum 5.1.
+- Buggy WYSIWYG mode refined
+. AutoFormatParam added to list of default configuration namespaces
+
+    vim: et sw=4 sts=4

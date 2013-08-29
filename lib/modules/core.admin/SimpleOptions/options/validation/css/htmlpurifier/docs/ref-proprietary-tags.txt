@@ -1,0 +1,26 @@
+
+Proprietary Tags
+    <nobr> and friends
+
+Here are some proprietary tags that W3C does not define but occasionally show
+up in the wild.  We have only included tags that would make sense in an
+HTML Purifier context.
+
+<align>, block element that aligns (extremely rare)
+<blackface>, inline that double-bolds text (extremely rare)
+<comment>, hidden comment for IE and WebTV
+<multicol cols=number gutter=pixels width=pixels>, multiple columns
+<nobr>, no linebreaks
+<spacer align=* type="vertical|horizontal|block">, whitespace in doc,
+    use width/height for block and size for vertical/horizontal (attributes)
+    (extremely rare)
+<wbr>, potential word break point: allows linebreaks. Only works in <nobr>
+
+<listing>, monospace pre-variant (extremely rare)
+<plaintext>, escapes all tags to the end of document
+<xmp>, monospace, replace with pre
+
+These should be put into their own Tidy module, not loaded by default(?). These
+all qualify as "lenient" transforms.
+
+    vim: et sw=4 sts=4

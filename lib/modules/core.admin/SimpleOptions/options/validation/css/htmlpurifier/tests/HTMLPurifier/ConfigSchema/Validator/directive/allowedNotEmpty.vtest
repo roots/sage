@@ -1,0 +1,7 @@
+ERROR: Allowed in directive 'Ns.Dir' must not be empty
+----
+ID: Ns.Dir
+TYPE: string
+DESCRIPTION: Description
+DEFAULT: 'asdf'
+ALLOWED:

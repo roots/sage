@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="description" content="Discusses when to flush HTML Purifier's various caches." />
+    <link rel="stylesheet" type="text/css" href="./style.css" />
+    <title>Flushing the Purifier - HTML Purifier</title>
+</head>
+<body>
+
+<h1>Flushing the Purifier</h1>
+
+<div id="filing">Filed under Development</div>
+<div id="index">Return to the <a href="index.html">index</a>.</div>
+<div id="home"><a href="http://htmlpurifier.org/">HTML Purifier</a> End-User Documentation</div>
+
+<p>
+    If you've been poking around the various folders in HTML Purifier,
+    you may have noticed the <code>maintenance</code> directory.  Almost
+    all of these scripts are devoted to flushing out the various caches
+    HTML Purifier uses.  Normal users don't have to worry about this:
+    regular library usage is transparent.  However, when doing development
+    work on HTML Purifier, you may find you have to flush one of the
+    caches.
+</p>
+
+<p>
+    As a general rule of thumb, run <code>flush.php</code> whenever you make
+    any <em>major</em> changes, or when tests start mysteriously failing.
+    In more detail, run this script if:
+</p>
+
+<ul>
+    <li>
+        You added new source files to HTML Purifier's main library.
+        (see <code>generate-includes.php</code>)
+    </li>
+    <li>
+        You modified the configuration schema (see
+        <code>generate-schema-cache.php</code>). This usually means
+        adding or modifying files in <code>HTMLPurifier/ConfigSchema/schema/</code>,
+        although in rare cases modifying <code>HTMLPurifier/ConfigSchema.php</code>
+        will also require this.
+    </li>
+    <li>
+        You modified a Definition, or its subsystems. The most usual candidate
+        is <code>HTMLPurifier/HTMLDefinition.php</code>, which also encompasses
+        the files in <code>HTMLPurifier/HTMLModule/</code> as well as if you've
+        <a href="enduser-customize.html">customizing definitions</a> without
+        the cache disabled. (see <code>flush-generation-cache.php</code>)
+    </li>
+    <li>
+        You modified source files, and have been using the standalone
+        version from the full installation. (see <code>generate-standalone.php</code>)
+    </li>
+</ul>
+
+<p>
+    You can check out the corresponding scripts for more information on what they
+    do.
+</p>
+
+</body></html>
+
+<!-- vim: et sw=4 sts=4
+-->

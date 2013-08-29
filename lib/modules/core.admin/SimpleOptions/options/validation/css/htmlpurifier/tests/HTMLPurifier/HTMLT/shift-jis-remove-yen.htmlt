@@ -1,0 +1,9 @@
+--SKIPIF--
+if (!HTMLPurifier_Encoder::iconvAvailable()) return true;
+--INI--
+Core.Encoding = Shift_JIS
+--HTML--
+<b style="font-family:'&#165;';">111</b>
+--EXPECT--
+<b style="font-family:'';">111</b>
+--# vim: et sw=4 sts=4

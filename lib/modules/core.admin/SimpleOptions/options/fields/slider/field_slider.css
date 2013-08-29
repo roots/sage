@@ -1,0 +1,44 @@
+/*
+ * jQuery UI Slider 1.8.14
+ *
+ * Copyright 2011, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Slider#theming
+ */
+.ui-slider { position: relative; text-align: left; background:#eee; border-radius:2px; width:200px; display:inline-block; margin-right:10px; border: 1px solid #999;}
+.ui-slider .ui-slider-handle { position: absolute; z-index: 2; width: 18px; height: 18px; cursor: pointer; background: url(slider-control.png) no-repeat center center !important; cursor: pointer;}
+.ui-slider .ui-slider-handle.ui-corner-all { border:0 !important;}
+.ui-slider .ui-slider-handle.ui-state-focus { border:0 !important; background: url(slider-control.png) no-repeat center center !important;outline: none;}
+.ui-slider .ui-slider-range { position: absolute; z-index: 1; font-size: .7em; display: block; border: 0; background-position: 0 0; }
+
+.ui-slider-horizontal { height: 7px; border-color: #aaa; 
+border-radius: 2px;-webkit-border-radius: 2px;-moz-border-radius: 2px;
+box-shadow: inset 0px 1px 2px rgba(0, 0, 0, 0.20), 0px 0px 1px rgba(0, 0, 0, 0.20);
+-moz-box-shadow: inset 0px 1px 2px rgba(0, 0, 0, 0.20), 0px 0px 1px rgba(0, 0, 0, 0.20);
+-webkit-box-shadow: inset 0px 1px 2px rgba(0, 0, 0, 0.20), 0px 0px 1px rgba(0, 0, 0, 0.20);}
+.ui-slider-horizontal .ui-slider-handle { top: -5px; margin-left: -9px; }
+.ui-slider-horizontal .ui-slider-range { top: 0; height: 100%; }
+.ui-slider-horizontal .ui-slider-range-min { left: 0; }
+.ui-slider-horizontal .ui-slider-range-max { right: 0; }
+.ui-slider-range{border-radius: 2px;-webkit-border-radius: 2px;-moz-border-radius: 2px;
+box-shadow: inset 0px 1px 2px rgba(0, 0, 0, 0.20), 0px 0px 1px rgba(0, 0, 0, 0.20);
+-moz-box-shadow: inset 0px 1px 2px rgba(0, 0, 0, 0.20), 0px 0px 1px rgba(0, 0, 0, 0.20);
+-webkit-box-shadow: inset 0px 1px 2px rgba(0, 0, 0, 0.20), 0px 0px 1px rgba(0, 0, 0, 0.20);}
+.ui-slider-range.ui-widget-header{border: 1px solid #094B97; margin-top: -1px; margin-left: -1px; background: #0F7FFF;border-radius: 2px;-webkit-border-radius: 2px;-moz-border-radius: 2px;}
+
+.ui-slider-vertical { width: .8em; height: 100px; }
+.ui-slider-vertical .ui-slider-handle { left: -.3em; margin-left: 0; margin-bottom: -.6em; }
+.ui-slider-vertical .ui-slider-range { left: 0; width: 100%; }
+.ui-slider-vertical .ui-slider-range-min { bottom: 0; }
+.ui-slider-vertical .ui-slider-range-max { top: 0; }
+
+.sof_slider {
+	margin-left: 15px;
+}
+
+.slider-input {
+	width: auto !important;
+	text-align: center;
+}

@@ -1,0 +1,30 @@
+
+CSS Length Reference
+  To bound, or not to bound, that is the question
+
+It's quite a reasonable request, really, and it's already been implemented
+for HTML.  That is, length bounding.  It makes little sense to let users
+define text blocks that have a font-size of 63,360 inches (that's a mile,
+by the way) or a width of forty-fold the parent container.
+
+But it's a little more complicated then that. There are multiple units
+one can use, and we have to a little unit conversion to get things working.
+Here's what we have:
+
+Absolute:
+    1 in ~= 2.54 cm
+    1 cm = 10 mm
+    1 pt = 1/72 in
+    1 pc = 12 pt
+
+Relative:
+    1 em ~= 10.0667 px
+    1 ex ~= 0.5 em, though Mozilla Firefox says 1 ex = 6px
+    1 px ~= 1 pt
+
+Watch out: font-sizes can also be nested to get successively larger
+(although I do not relish having to keep track of context font-sizes,
+this may be necessary, especially for some of the more advanced features
+for preventing things like white on white).
+
+    vim: et sw=4 sts=4

@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="description" content="Tutorial for tweaking HTML Purifier's Tidy-like behavior." />
+<link rel="stylesheet" type="text/css" href="style.css" />
+
+<title>Tidy - HTML Purifier</title>
+
+</head><body>
+
+<h1>Tidy</h1>
+
+<div id="filing">Filed under Development</div>
+<div id="index">Return to the <a href="index.html">index</a>.</div>
+<div id="home"><a href="http://htmlpurifier.org/">HTML Purifier</a> End-User Documentation</div>
+
+<p>You've probably heard of HTML Tidy, Dave Raggett's little piece
+of software that cleans up poorly written HTML.  Let me say it straight
+out:</p>
+
+<p class="emphasis">This ain't HTML Tidy!</p>
+
+<p>Rather, Tidy stands for a cool set of Tidy-inspired features in HTML Purifier
+that allows users to submit deprecated elements and attributes and get
+valid strict markup back. For example:</p>
+
+<pre>&lt;center&gt;Centered&lt;/center&gt;</pre>
+
+<p>...becomes:</p>
+
+<pre>&lt;div style=&quot;text-align:center;&quot;&gt;Centered&lt;/div&gt;</pre>
+
+<p>...when this particular fix is run on the HTML. This tutorial will give
+you the lowdown of what exactly HTML Purifier will do when Tidy
+is on, and how to fine-tune this behavior. Once again, <strong>you do
+not need Tidy installed on your PHP to use these features!</strong></p>
+
+<h2>What does it do?</h2>
+
+<p>Tidy will do several things to your HTML:</p>
+
+<ul>
+    <li>Convert deprecated elements and attributes to standards-compliant
+        alternatives</li>
+    <li>Enforce XHTML compatibility guidelines and other best practices</li>
+    <li>Preserve data that would normally be removed as per W3C</li>
+</ul>
+
+<h2>What are levels?</h2>
+
+<p>Levels describe how aggressive the Tidy module should be when
+cleaning up HTML. There are four levels to pick: none, light, medium
+and heavy. Each of these levels has a well-defined set of behavior
+associated with it, although it may change depending on your doctype.</p>
+
+<dl>
+    <dt>light</dt>
+    <dd>This is the <strong>lenient</strong> level. If a tag or attribute
+        is about to be removed because it isn't supported by the
+        doctype, Tidy will step in and change into an alternative that
+        is supported.</dd>
+    <dt>medium</dt>
+    <dd>This is the <strong>correctional</strong> level. At this level,
+        all the functions of light are performed, as well as some extra,
+        non-essential best practices enforcement. Changes made on this
+        level are very benign and are unlikely to cause problems.</dd>
+    <dt>heavy</dt>
+    <dd>This is the <strong>aggressive</strong> level. If a tag or
+        attribute is deprecated, it will be converted into a non-deprecated
+        version, no ifs ands or buts.</dd>
+</dl>
+
+<p>By default, Tidy operates on the <strong>medium</strong> level. You can
+change the level of cleaning by setting the %HTML.TidyLevel configuration
+directive:</p>
+
+<pre>$config-&gt;set('HTML.TidyLevel', 'heavy'); // burn baby burn!</pre>
+
+<h2>Is the light level really light?</h2>
+
+<p>It depends on what doctype you're using. If your documents are HTML
+4.01 <em>Transitional</em>, HTML Purifier will be lazy
+and won't clean up your <code>center</code>
+or <code>font</code> tags. But if you're using HTML 4.01 <em>Strict</em>,
+HTML Purifier has no choice: it has to convert them, or they will
+be nuked out of existence. So while light on Transitional will result
+in little to no changes, light on Strict will still result in quite
+a lot of fixes.</p>
+
+<p>This is different behavior from 1.6 or before, where deprecated
+tags in transitional documents would
+always be cleaned up regardless. This is also better behavior.</p>
+
+<h2>My pages look different!</h2>
+
+<p>HTML Purifier is tasked with converting deprecated tags and
+attributes to standards-compliant alternatives, which usually
+need copious amounts of CSS. It's also not foolproof: sometimes
+things do get lost in the translation. This is why when HTML Purifier
+can get away with not doing cleaning, it won't; this is why
+the default value is <strong>medium</strong> and not heavy.</p>
+
+<p>Fortunately, only a few attributes have problems with the switch
+over. They are described below:</p>
+
+<table class="table">
+    <thead><tr>
+        <th>Element@Attr</th>
+        <th>Changes</th>
+    </tr></thead>
+    <tbody>
+        <tr>
+            <td>caption@align</td>
+            <td>Firefox supports stuffing the caption on the
+                left and right side of the table, a feature that
+                Internet Explorer, understandably, does not have.
+                When align equals right or left, the text will simply
+                be aligned on the left or right side.</td>
+        </tr>
+        <tr>
+            <td>img@align</td>
+            <td>The implementation for align bottom is good, but not
+            perfect. There are a few pixel differences.</td>
+        </tr>
+        <tr>
+            <td>br@clear</td>
+            <td>Clear both gets a little wonky in Internet Explorer. Haven't
+                really been able to figure out why.</td>
+        </tr>
+        <tr>
+            <td>hr@noshade</td>
+            <td>All browsers implement this slightly differently: we've
+                chosen to make noshade horizontal rules gray.</td>
+        </tr>
+    </tbody>
+</table>
+
+<p>There are a few more minor, although irritating, bugs.
+Some older browsers support deprecated attributes,
+but not CSS. Transformed elements and attributes will look unstyled
+to said browsers. Also, CSS precedence is slightly different for
+inline styles versus presentational markup. In increasing precedence:</p>
+
+<ol>
+    <li>Presentational attributes</li>
+    <li>External style sheets</li>
+    <li>Inline styling</li>
+</ol>
+
+<p>This means that styling that may have been masked by external CSS
+declarations will start showing up (a good thing, perhaps). Finally,
+if you've turned off the style attribute, almost all of
+these transformations will not work. Sorry mates.</p>
+
+<p>You can review the rendering before and after of these transformations
+by consulting the <a
+href="http://htmlpurifier.org/live/smoketests/attrTransform.php">attrTransform.php
+smoketest</a>.</p>
+
+<h2>I like the general idea, but the specifics bug me!</h2>
+
+<p>So you want HTML Purifier to clean up your HTML, but you're not
+so happy about the br@clear implementation. That's perfectly fine!
+HTML Purifier will make accomodations:</p>
+
+<pre>$config-&gt;set('HTML.Doctype', 'XHTML 1.0 Transitional');
+$config-&gt;set('HTML.TidyLevel', 'heavy'); // all changes, minus...
+<strong>$config-&gt;set('HTML.TidyRemove', 'br@clear');</strong></pre>
+
+<p>That third line does the magic, removing the br@clear fix
+from the module, ensuring that <code>&lt;br clear="both" /&gt;</code>
+will pass through unharmed. The reverse is possible too:</p>
+
+<pre>$config-&gt;set('HTML.Doctype', 'XHTML 1.0 Transitional');
+$config-&gt;set('HTML.TidyLevel', 'none'); // no changes, plus...
+<strong>$config-&gt;set('HTML.TidyAdd', 'p@align');</strong></pre>
+
+<p>In this case, all transformations are shut off, except for the p@align
+one, which you found handy.</p>
+
+<p>To find out what the names of fixes you want to turn on or off are,
+you'll have to consult the source code, specifically the files in
+<code>HTMLPurifier/HTMLModule/Tidy/</code>. There is, however, a
+general syntax:</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Example</th>
+            <th>Interpretation</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>element</td>
+            <td>font</td>
+            <td>Tag transform for <em>element</em></td>
+        </tr>
+        <tr>
+            <td>element@attr</td>
+            <td>br@clear</td>
+            <td>Attribute transform for <em>attr</em> on <em>element</em></td>
+        </tr>
+        <tr>
+            <td>@attr</td>
+            <td>@lang</td>
+            <td>Global attribute transform for <em>attr</em></td>
+        </tr>
+        <tr>
+            <td>e#content_model_type</td>
+            <td>blockquote#content_model_type</td>
+            <td>Change of child processing implementation for <em>e</em></td>
+        </tr>
+    </tbody>
+</table>
+
+<h2>So... what's the lowdown?</h2>
+
+<p>The lowdown is, quite frankly, HTML Purifier's default settings are
+probably good enough. The next step is to bump the level up to heavy,
+and if that still doesn't satisfy your appetite, do some fine-tuning.
+Other than that, don't worry about it: this all works silently and
+effectively in the background.</p>
+
+</body></html>
+
+<!-- vim: et sw=4 sts=4
+-->
