@@ -1,6 +1,6 @@
 <?php
 
-//include_once(dirname(__FILE__).'/tgm-init.php');
+include_once(dirname(__FILE__).'/tgm-init.php');
 
 /**
  
@@ -8,12 +8,6 @@
   Also if running on windows you may have url problems, which can be fixed by defining the framework url first
  
 **/
-
-// Try to include the framework if it is embedded in the theme.
-if (strpos(dirname(__FILE__),TEMPLATEPATH) !== false && !class_exists('Simple_Options') && file_exists( dirname( __FILE__ ) . '/options/options.php') ) {
-	include_once( dirname( __FILE__ ) . '/SimpleOptions/options.php' );
-}
-
 
 function shoestrap_simpleoptions_init(){
 	if (class_exists("Simple_Options")) {
