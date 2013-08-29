@@ -13,8 +13,10 @@ function shoestrap_background_css( ) {
   if ( shoestrap_getVariable( 'background_image_toggle' ) == 1 ) {
     if ( shoestrap_getVariable( 'background_custom_image' ) != "" ) {
     	$background = set_url_scheme( shoestrap_getVariable( 'background_custom_image' ) );
+    	$background = $background['url'];
     }  else if ( shoestrap_getVariable( 'background_image' ) != "" ) {
     	$background = set_url_scheme( shoestrap_getVariable( 'background_image' ) );
+    	$background = $background['url'];
     }
   } else if ( shoestrap_getVariable( 'background_pattern_toggle' ) == 1 && shoestrap_getVariable( 'background_pattern' ) != "" ) {
     $background = shoestrap_getVariable( 'background_pattern' );

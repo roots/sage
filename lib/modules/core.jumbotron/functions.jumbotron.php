@@ -107,8 +107,9 @@ function shoestrap_jumbotron_css() {
   if ( $center == 1 )
     $style .= 'text-align: center;';
 
-  if ( $border['width'] > 0 )
-    $style .= 'border-bottom:' . $border['width'] . 'px ' . $border['style'] . ' ' . $border['color'] . ';';
+  if ( !empty($border) && $border['size'] > 0 ) {
+  	$style .= 'border-bottom:' . $border['size'] . 'px ' . $border['style'] . ' ' . $border['color'] . ';';
+  }
 
   $style .= 'margin-bottom: 0px;';
   $theCSS = '.jumbotron {' . trim( $style ) . '}';

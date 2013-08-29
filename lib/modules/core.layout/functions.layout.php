@@ -8,7 +8,6 @@ function shoestrap_getLayout() {
 
 	if ( !isset($shoestrap_layout) ) {
 		do_action('shoestrap_layout_modifier');
-
 		$shoestrap_layout = intval( shoestrap_getVariable( 'layout' ) );
 	  if (is_page() && shoestrap_getVariable( 'page_layout_toggle' ) == 1) {
 	    $shoestrap_layout = intval( shoestrap_getVariable( 'page_layout' ) );

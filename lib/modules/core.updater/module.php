@@ -24,22 +24,17 @@ $edd_updater = new EDD_SL_Theme_Updater( array(
  * The updater core options for the Shoestrap theme
  */
 if ( !function_exists( 'shoestrap_core_licencing_options' ) ) {
-  function shoestrap_core_licencing_options() {
+  function shoestrap_core_licencing_options($sections) {
 
-    /*-----------------------------------------------------------------------------------*/
-    /* The Options Array */
-    /*-----------------------------------------------------------------------------------*/
 
-    // Set the Options Array
-    global $of_options, $smof_details;
 
-    // Licencing
-    $of_options[] = array(
-      'name'      => __( 'Licencing', 'shoestrap'),
-      'type'      => 'heading'
-    );
+    // Licencing Options
+    $section = array(
+    		'title' => __("Licencing", "shoestrap"),
+    		'icon' => SOF_OPTIONS_URL.'img/glyphicons/glyphicons_203_lock.png',
+    	);
 
-    $of_options[] = array(
+    $fields[] = array(
       'name'      => __( 'Shoestrap Licence', 'shoestrap' ),
       'desc'      => __( 'Enter your shoestrap licence to enable automatic updates.', 'shoestrap' ),
       'id'        => 'shoestrap_license_key',
@@ -47,7 +42,7 @@ if ( !function_exists( 'shoestrap_core_licencing_options' ) ) {
       'type'      => 'text'
     );
 
-    $of_options[] = array(
+    $fields[] = array(
       "name"      => "",
       "desc"      => "",
       "id"        => "shoestrap_license_key_status_indicator",
@@ -56,16 +51,16 @@ if ( !function_exists( 'shoestrap_core_licencing_options' ) ) {
       "type"      => "info"
     );
 
-    do_action( 'shoestrap_module_licencing_options_modifier' );
+    $section['fields'] = $fields;
 
-    $smof_details = array();
-    foreach( $of_options as $option ) {
-      if ( isset( $option['id'] ) )
-        $smof_details[$option['id']] = $option;
-    }
+    do_action( 'shoestrap_module_licencing_options_modifier' );
+    
+    array_push($sections, $section);
+    return $sections;
+
   }
 }
-add_action( 'init', 'shoestrap_core_licencing_options', 200 );
+add_action( 'shoestrap_add_sections', 'shoestrap_core_licencing_options', 200 ); 
 
 function shoestrap_sanitize_license( $new ) {
   $old = shoestrap_getVariable( 'shoestrap_license_key' );

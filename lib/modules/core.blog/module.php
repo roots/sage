@@ -4,22 +4,15 @@
  * The blog core options for the Shoestrap theme
  */
 if ( !function_exists( 'shoestrap_module_blog_options' ) ) {
-  function shoestrap_module_blog_options() {
-
-    /*-----------------------------------------------------------------------------------*/
-    /* The Options Array */
-    /*-----------------------------------------------------------------------------------*/
-
-    // Set the Options Array
-    global $of_options, $smof_details;
+  function shoestrap_module_blog_options($sections) {
 
     // Blog Options
-    $of_options[] = array(
-      "name"      => __("Blog Options", "shoestrap"),
-      "type"      => "heading"
-    );
+    $section = array(
+    		'title' => __("Blog", "shoestrap"),
+    		'icon' => SOF_OPTIONS_URL.'img/glyphicons/glyphicons_235_pen.png',
+    	);    
 
-    $of_options[] = array(
+    $fields[] = array(
       "name"      => __("Widgets mode", "shoestrap"),
       "desc"      => __("How do you want your widgets to be displayed?", "shoestrap"),
       "id"        => "widgets_mode",
@@ -31,24 +24,24 @@ if ( !function_exists( 'shoestrap_module_blog_options' ) ) {
       "customizer"=> array(),
     );
 
-    $of_options[] = array(
+    $fields[] = array(
       "name"      => __("Custom Blog Layout", "shoestrap"),
       "desc"      => __("Set a default layout for your blog/post pages. Default: OFF.", "shoestrap"),
       "id"        => "blog_layout_toggle",
-      "less"      => true,
+      "compiler"      => true,
       "std"       => 0,
       "type"      => "switch",
       "customizer"=> array(),
       "fold"      => "advanced_toggle"
     );
 
-    $of_options[] = array(
+    $fields[] = array(
       "name"      => __("Blog Layout", "shoestrap"),
       "desc"      => __("Override your default styling. Choose between 1, 2 or 3 column layout.", "shoestrap"),
       "id"        => "blog_layout",
       "std"       => get_theme_mod('layout', 1),
       "type"      => "images",
-      "less"      => true,
+      "compiler"      => true,
       "fold"      => "blog_layout_toggle",
       "customizer"=> array(),
       "options"   => array(
@@ -61,7 +54,7 @@ if ( !function_exists( 'shoestrap_module_blog_options' ) ) {
       )
     );
 
-    $of_options[] = array(
+    $fields[] = array(
       "name"      => __("Enable Comments on Blog", "shoestrap"),
       "desc"      => __("Allow site visitors to write comments on blog posts. Default: On.", "shoestrap"),
       "id"        => "blog_comments_toggle",
@@ -70,7 +63,7 @@ if ( !function_exists( 'shoestrap_module_blog_options' ) ) {
       "customizer"=> array(),
     );
 
-    $of_options[] = array(
+    $fields[] = array(
       "name"      => __("Post excerpt length", "shoestrap"),
       "desc"      => __("Select the height of your featured images on post archives. Default: 40px", "shoestrap"),
       "id"        => "post_excerpt_length",
@@ -79,10 +72,10 @@ if ( !function_exists( 'shoestrap_module_blog_options' ) ) {
       "step"      => 1,
       "max"       => 1000,
       "edit"      => 1,
-      "type"      => "sliderui"
+      "type"      => "slider"
     );
 
-    $of_options[] = array(
+    $fields[] = array(
       "name"      => "",
       "desc"      => "",
       "id"        => "help3",
@@ -95,7 +88,7 @@ if ( !function_exists( 'shoestrap_module_blog_options' ) ) {
       "fold"      => "advanced_toggle"
     );
 
-    $of_options[] = array(
+    $fields[] = array(
       "name"      => __("Featured Images on Archives", "shoestrap"),
       "desc"      => __("Display featured Images on post archives (such as categories, tags, month view etc). Default: OFF.", "shoestrap"),
       "id"        => "feat_img_archive",
@@ -106,7 +99,7 @@ if ( !function_exists( 'shoestrap_module_blog_options' ) ) {
     );
 
 
-    $of_options[] = array(
+    $fields[] = array(
       "name"      => __("Featured Images on Archives Full Width", "shoestrap"),
       "desc"      => __("Display featured Images on posts. Default: OFF.", "shoestrap"),
       "id"        => "feat_img_archive_custom_toggle",
@@ -118,7 +111,7 @@ if ( !function_exists( 'shoestrap_module_blog_options' ) ) {
       "customizer"=> array(),
     );
 
-    $of_options[] = array(
+    $fields[] = array(
       "name"      => __("Archives Featured Image Width", "shoestrap"),
       "desc"      => __("Select the width of your featured images on single posts. Default: 550px", "shoestrap"),
       "id"        => "feat_img_archive_width",
@@ -128,10 +121,10 @@ if ( !function_exists( 'shoestrap_module_blog_options' ) ) {
       "step"      => 1,
       "max"       => 1000,
       "edit"      => 1,
-      "type"      => "sliderui"
+      "type"      => "slider"
     );
 
-    $of_options[] = array(
+    $fields[] = array(
       "name"      => __("Archives Featured Image Height", "shoestrap"),
       "desc"      => __("Select the height of your featured images on post archives. Default: 300px", "shoestrap"),
       "id"        => "feat_img_archive_height",
@@ -141,10 +134,10 @@ if ( !function_exists( 'shoestrap_module_blog_options' ) ) {
       "step"      => 1,
       "edit"      => 1,
       "max"       => 1000,
-      "type"      => "sliderui"
+      "type"      => "slider"
     );
 
-    $of_options[] = array(
+    $fields[] = array(
       "name"      => __("Featured Images on Posts", "shoestrap"),
       "desc"      => __("Display featured Images on posts. Default: OFF.", "shoestrap"),
       "id"        => "feat_img_post",
@@ -154,7 +147,7 @@ if ( !function_exists( 'shoestrap_module_blog_options' ) ) {
       "fold"      => "advanced_toggle"
     );
 
-    $of_options[] = array(
+    $fields[] = array(
       "name"      => __("Featured Images on Posts Full Width", "shoestrap"),
       "desc"      => __("Display featured Images on posts. Default: OFF.", "shoestrap"),
       "id"        => "feat_img_post_custom_toggle",
@@ -166,7 +159,7 @@ if ( !function_exists( 'shoestrap_module_blog_options' ) ) {
       "customizer"=> array(),
     );
 
-    $of_options[] = array(
+    $fields[] = array(
       "name"      => __("Posts Featured Image Width", "shoestrap"),
       "desc"      => __("Select the width of your featured images on single posts. Default: 550px", "shoestrap"),
       "id"        => "feat_img_post_width",
@@ -176,10 +169,10 @@ if ( !function_exists( 'shoestrap_module_blog_options' ) ) {
       "step"      => 1,
       "max"       => 1000,
       "edit"      => 1,
-      "type"      => "sliderui"
+      "type"      => "slider"
     );
 
-    $of_options[] = array(
+    $fields[] = array(
       "name"      => __("Posts Featured Image Height", "shoestrap"),
       "desc"      => __("Select the height of your featured images on single posts. Default: 330px", "shoestrap"),
       "id"        => "feat_img_post_height",
@@ -189,19 +182,20 @@ if ( !function_exists( 'shoestrap_module_blog_options' ) ) {
       "step"      => 1,
       "max"       => 1000,
       "edit"      => 1,
-      "type"      => "sliderui"
+      "type"      => "slider"
     );   
 
-    do_action('shoestrap_module_blog_options_modifier');
+    $section['fields'] = $fields;
 
-    $smof_details = array();
-    foreach( $of_options as $option ) {
-      if (isset($option['id']))
-        $smof_details[$option['id']] = $option;
-    }
+    do_action('shoestrap_module_blog_options_modifier');
+    
+    array_push($sections, $section);
+    return $sections;
+
   }
 }
-add_action( 'init','shoestrap_module_blog_options', 75 );
+add_action( 'shoestrap_add_sections', 'shoestrap_module_blog_options', 75 );
+
 
 function shoestrap_core_blog_comments_toggle() {
   if ( shoestrap_getVariable('blog_comments_toggle' ) != 1 ) {

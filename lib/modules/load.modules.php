@@ -1,6 +1,7 @@
 <?php
 
 // Helper functions required BEFORE the modules are loaded
+//require_once get_template_directory() . '/lib/modules/simple.options.php';
 require_once get_template_directory() . '/lib/modules/helper.functions.php';
 
 // PHP version control
@@ -36,7 +37,8 @@ function shoestrap_include_modules_fallback() {
  * This helps skip the compiler on activation.
  */
 function shoestrap_theme_active() {
-  if ( get_option( 'shoestrap_activated' ) != true )
-    add_option( 'shoestrap_activated', true );
+  if ( get_option( 'shoestrap_activated' ) != true ) {
+  	add_option( 'shoestrap_activated', true );
+  }
 }
 add_action( 'after_setup_theme', 'shoestrap_theme_active' );

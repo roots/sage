@@ -42,16 +42,25 @@ add_action( 'shoestrap_after_entry_meta', 'shoestrap_featured_image' );
 /**
 	Proxy function to be called whenever an image is used. If you wish to resize, use shoestrap_image_resize()
 **/
-function shoestrap_image($url) {
-	if (empty($url)) {
-		return;
+function shoestrap_image($img) {
+	if (
+			empty($img) 
+			|| (empty($img['id']) && empty($img['url']))
+		) {
+		return; // Nothing here to do!
 	}
-	$id = shoestrap_get_attachment_id_from_src($url);
-	$image = wp_get_attachment_image_src( $id, 'full' );
-	$data['width'] = $image[1];
-	$data['height'] = $image[2];
-	$data['url'] = $url;
-	return shoestrap_image_resize($data);
+	if (empty($img['id'])) { // We don't have an attachment id
+		$img['id'] = shoestrap_get_attachment_id_from_src($img['url']);	
+	}
+
+	$image = wp_get_attachment_image_src( $img['id'], 'full' ); // Get the full size attachment	
+
+	$img['url'] = $image[0];
+	
+	$img['width'] = $image[1];
+	$img['height'] = $image[2];
+
+	return shoestrap_image_resize($img);
 }
 
 

@@ -4,22 +4,15 @@
  * The page core options for the Shoestrap theme
  */
 if ( !function_exists( 'shoestrap_module_page_options' ) ) {
-  function shoestrap_module_page_options() {
+  function shoestrap_module_page_options($sections) {
 
-    /*-----------------------------------------------------------------------------------*/
-    /* The Options Array */
-    /*-----------------------------------------------------------------------------------*/
+    // Page Options
+    $section = array(
+    		'title' => __("Page", "shoestrap"),
+    		'icon' => SOF_OPTIONS_URL.'img/glyphicons/glyphicons_036_file.png',
+    	);
 
-    // Set the Options Array
-    global $of_options, $smof_details;
-
-    // Blog Options
-    $of_options[] = array(
-      "name"      => __("Page Options", "shoestrap"),
-      "type"      => "heading"
-    );
-
-    $of_options[] = array(
+    $fields[] = array(
       "name"      => __("Custom Page Layout", "shoestrap"),
       "desc"      => __("Set a default layout for your blob/post pages. Default: OFF.", "shoestrap"),
       "id"        => "page_layout_toggle",
@@ -28,7 +21,7 @@ if ( !function_exists( 'shoestrap_module_page_options' ) ) {
       "customizer"=> array(),
     );
 
-    $of_options[] = array(
+    $fields[] = array(
       "name"      => __("Page Layout", "shoestrap"),
       "desc"      => __("Override your default stylings. Choose between 1, 2 or 3 column layout.", "shoestrap"),
       "id"        => "page_layout",
@@ -47,7 +40,7 @@ if ( !function_exists( 'shoestrap_module_page_options' ) ) {
     );
 /*
 Disabled by roots by default. No real need, but the code here anyways
-    $of_options[] = array(
+    $fields[] = array(
       "name"      => __("Comments on Pages", "shoestrap"),
       "desc"      => __("Enable comments on individual pages. Default: Off.", "shoestrap"),
       "id"        => "page_comments_toggle",
@@ -56,16 +49,17 @@ Disabled by roots by default. No real need, but the code here anyways
       "customizer"=> array(),
     );
 */
-    do_action('shoestrap_module_page_options_modifier');
 
-    $smof_details = array();
-    foreach( $of_options as $option ) {
-      if (isset($option['id']))
-        $smof_details[$option['id']] = $option;
-    }
+    $section['fields'] = $fields;
+
+    do_action( 'shoestrap_module_page_options_modifier' );
+    
+    array_push($sections, $section);
+    return $sections;
+
   }
 }
-add_action( 'init','shoestrap_module_page_options', 76 );
+add_action( 'shoestrap_add_sections', 'shoestrap_module_page_options', 76 ); 
 
 /*
 Disabled by roots by default. No real need, but the code here anyways

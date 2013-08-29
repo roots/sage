@@ -236,7 +236,7 @@ function shoestrap_module_typography_googlefont_links() {
     if ($font_h6['google'] === 'true' ) {
       echo getGoogleScript($font_h6);
     }
-  } else if ($font_heading['google'] === 'true' ) {
+  } else if (isset($font_heading['google']) && $font_heading['google'] === 'true' ) {
     echo getGoogleScript($font_heading);
   }
   if (shoestrap_getVariable( 'font_jumbotron_heading_custom' ) == 1) {
@@ -249,7 +249,7 @@ add_action( 'wp_head', 'shoestrap_module_typography_googlefont_links' );
 
 
 function getGoogleScript($font) {
-  $link = 'http://fonts.googleapis.com/css?family='.str_replace(" ","+",$font['face']);
+  $link = 'http://fonts.googleapis.com/css?family='.str_replace(" ","+",$font['family']);
   if (!empty($font['style']))
     $link .= ':'.str_replace('-','',$font['style']);
   if (!empty($font['script']))
