@@ -1,0 +1,7 @@
+ERROR: Alias target 3 from alias 'b' in valueAliases in directive 'Ns.Dir' must be a string
+----
+Ns.Dir
+DESCRIPTION: Directive
+TYPE: string
+DEFAULT: 'a'
+VALUE-ALIASES: 'b' => 3

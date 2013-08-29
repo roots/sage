@@ -1,0 +1,20 @@
+
+WYSIWYG - What You See Is What You Get
+    HTML Purifier: A Pretty Good Fit for TinyMCE and FCKeditor
+
+Javascript-based WYSIWYG editors, simply stated, are quite amazing.  But I've
+always been wary about using them due to security issues: they handle the
+client-side magic, but once you've been served a piping hot load of unfiltered
+HTML, what should be done then?  In some situations, you can serve it uncleaned,
+since you only offer these facilities to trusted(?) authors.
+
+Unfortunantely, for blog comments and anonymous input, BBCode, Textile and
+other markup languages still reign supreme.  Put simply: filtering HTML is
+hard work, and these WYSIWYG authors don't offer anything to alleviate that
+trouble.  Therein lies the solution:
+
+HTML Purifier is perfect for filtering pure-HTML input from WYSIWYG editors.
+
+Enough said.
+
+    vim: et sw=4 sts=4

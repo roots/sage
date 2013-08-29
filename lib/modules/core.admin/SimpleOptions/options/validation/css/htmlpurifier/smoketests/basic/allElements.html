@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+ <title>HTML Purifier All Elements Smoketest</title>
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+ <link rel="stylesheet" href="allElements.css" type="text/css" />
+</head>
+<body>
+
+<h1>HTML Purifier All Elements Smoketest</h1>
+
+<p>This is the all elements smoke
+test. It is divided by XHTML 1.1 style modules. Make sure
+<code>div</code>, <code>span</code> and <code>id</code> are allowed,
+otherwise there will be problems.</p>
+
+<h2>Core attributes</h2>
+<div id="core-attributes">
+ <div id="core-attributes-id">id</div>
+ <div class="core-attributes-class">class</div>
+ <div title="tooltip">title</div>
+ <div lang="en">lang</div>
+ <div xml:lang="en">xml:lang (green when lang also present)</div>
+ <div style="background:#008000">style</div>
+ <div onclick="alert('foo');">onclick (and other event handlers)</div>
+</div>
+
+<h2>Text module</h2>
+<div id="module-text">
+ <abbr>abbr</abbr>
+ <acronym>acronym</acronym>
+ <div><blockquote>blockquote</blockquote></div>
+ <blockquote cite="http://www.example.com">blockquote@cite</blockquote>
+ <br />
+ <cite>cite</cite>
+ <code>code</code>
+ <dfn>dfn</dfn>
+ <em>em</em>
+ <h1>h1</h1>
+ <h2>h2</h2>
+ <h3>h3</h3>
+ <h4>h4</h4>
+ <h5>h5</h5>
+ <h6>h6</h6>
+ <kbd>kbd</kbd>
+ <p>p</p>
+ <pre>pre</pre>
+ <span><q>q</q></span>
+ <q cite="http://www.example.com">q@cite</q>
+ <samp>samp</samp>
+ <strong>strong</strong>
+ <var>var</var>
+</div>
+
+<h2>Hypertext module</h2>
+<div id="module-hypertext">
+ <span><a>a</a></span>:
+ <a accesskey="q">accesskey</a>
+ <a charset="UTF-8">charset</a>
+ <a href="http://www.example.com/">href</a>
+ <a hreflang="en">hreflang</a>
+ <a rel="nofollow">rel</a>
+ <a rev="index">rev</a>
+ <a tabindex="1">tabindex</a>
+ <a type="text/plain">type</a>
+</div>
+
+<h2>List module</h2>
+<div id="module-list">
+ <dl><dt>dl dt</dt><dd>dl dd</dd></dl>
+ <ol><li>ol li</li></ol>
+ <ul><li>ul li</li></ul>
+</div>
+
+</body>
+</html>
+
+<!-- vim: et sw=4 sts=4
+-->

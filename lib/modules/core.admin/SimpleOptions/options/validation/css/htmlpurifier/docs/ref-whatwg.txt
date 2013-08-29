@@ -1,0 +1,26 @@
+
+Web Hypertext Application Technology Working Group
+    WHATWG
+
+== HTML 5 ==
+
+URL: http://www.whatwg.org/specs/web-apps/current-work/
+
+HTML 5 defines a kaboodle of new elements and attributes, as well as
+some well-defined, "quirks mode" HTML parsing.  Although WHATWG professes
+to be targeted towards web applications, many of their semantic additions
+would be quite useful in regular documents. Eventually, HTML
+Purifier will need to audit their lists and figure out what changes need
+to be made.  This process is complicated by the fact that the WHATWG
+doesn't buy into W3C's modularization of XHTML 1.1: we may need
+to remodularize HTML 5 (probably done by section name). No sense in
+committing ourselves till the spec stabilizes, though.
+
+More immediately speaking though, however, is the well-defined parsing
+behavior that HTML 5 adds. While I have little interest in writing
+another DirectLex parser, other parsers like ph5p
+<http://jero.net/lab/ph5p/> can be adapted to DOMLex to support much more
+flexible HTML parsing (a cool feature I've seen is how they resolve
+<b>bold<i>both</b>italic</i>).
+
+    vim: et sw=4 sts=4

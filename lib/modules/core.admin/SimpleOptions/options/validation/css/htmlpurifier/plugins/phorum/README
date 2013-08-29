@@ -1,0 +1,45 @@
+
+HTML Purifier Phorum Mod - Filter your HTML the Standards-Compliant Way!
+
+This Phorum mod enables HTML posting on Phorum.  Under normal circumstances,
+this would cause a huge security risk, but because we are running
+HTML through HTML Purifier, output is guaranteed to be XSS free and
+standards-compliant.
+
+This mod requires HTML input, and previous markup languages need to be
+converted accordingly.  Thus, it is vital that you create a 'migrate.php'
+file that works with your installation. If you're using the built-in
+BBCode formatting, simply move migrate.bbcode.php to that place; for
+other markup languages, consult said file for instructions on how
+to adapt it to your needs.
+
+    -- NOTE -------------------------------------------------
+    You can also run this module in parallel with another
+    formatting module; this module attempts to place itself
+    at the end of the filtering chain. However, if any
+    previous modules produce insecure HTML (for instance,
+    a JavaScript email obfuscator) they will get cleaned.
+
+This module will not work if 'migrate.php' is not created, and an improperly
+made migration file may *CORRUPT* Phorum, so please take your time to
+do this correctly. It should go without saying to *BACKUP YOUR DATABASE*
+before attempting anything here. If no migration is necessary, you can
+simply create a blank migrate.php file. HTML Purifier is smart and will
+not re-migrate already processed messages. However, the original code
+is irretrievably lost (we may change this in the future.)
+
+This module will not automatically migrate user signatures, because this
+process may take a long time. After installing the HTML Purifier module and
+then configuring 'migrate.php', navigate to Settings and click 'Migrate
+Signatures' to migrate all user signatures to HTML.
+
+All of HTML Purifier's usual functions are configurable via the mod settings
+page. If you require custom configuration, create config.php file in
+the mod directory that edits a $config variable. Be sure, also, to
+set $PHORUM['mod_htmlpurifier']['wysiwyg'] to TRUE if you are using a
+WYSIWYG editor (you can do this through a common hook or the web
+configuration form).
+
+Visit HTML Purifier at <http://htmlpurifier.org/>.
+
+    vim: et sw=4 sts=4

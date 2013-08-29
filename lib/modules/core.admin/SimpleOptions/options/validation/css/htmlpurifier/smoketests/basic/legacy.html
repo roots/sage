@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+ <title>HTML Purifier Legacy Smoketest Test Data</title>
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+ <link rel="stylesheet" href="legacy.css" type="text/css" />
+</head>
+<body>
+
+<h1>HTML Purifier Legacy Smoketest Test Data</h1>
+
+<p>This is the legacy smoketest.</p>
+
+<h2>Elements</h2>
+
+<div>
+<div>
+    <basefont color="green" face="Arial" size="6" id="basefont" />
+    basefont: Green, Arial, size 6 text (IE-only)
+</div>
+
+<center>center</center>
+
+<dir compact="compact">
+    <li>dir</li>
+</dir>
+
+<font color="green" face="Arial" size="6">font: Green, Arial, size 6 text</font>
+
+isindex:
+<isindex prompt="Foo" />
+
+<menu compact="compact">
+    <li>menu</li>
+</menu>
+
+<s>s</s> <strike>strike</strike> <u>u</u>
+</div>
+
+<h2>Attributes</h2>
+
+<div>
+<!-- body -->
+
+<div style="font-size:42pt; float:left;">*</div>
+<br clear="left" />
+<p>br@clear (asterisk is up)</p>
+
+<table>
+    <caption align="bottom">caption@align</caption>
+    <tr><td>Cell</td></tr>
+</table>
+
+<div align="center">div@center</div>
+
+<dl compact="compact">
+    <dt>dl@compact</dt>
+</dl>
+
+<h1 align="right">h1</h1>
+<h2 align="right">h2</h2>
+<h3 align="right">h3</h3>
+<h4 align="right">h4</h4>
+<h5 align="right">h5</h5>
+<h6 align="right">h6</h6>
+
+hr@align
+<hr align="right" width="50" />
+hr@noshade
+<hr noshade="noshade" />
+hr@width
+<hr width="50" />
+hr@size
+<hr size="50" />
+
+<img src="" alt="img@align" align="right" /> |
+<img src="" alt="img@border" border="3" /> |
+<img src="" alt="img@hspace" hspace="5" /> |
+<img src="" alt="img@vspace" vspace="5" />
+
+<!-- needs context -->
+<input align="right" />
+<legend align="center">Legend</legend>
+
+<ol>
+    <li type="A">li@type (ensure that it's a capital A)</li>
+    <li value="5">li@value</li>
+</ol>
+
+<ol compact="compact"><li>ol@compact</li></ol>
+<ol start="3"><li>ol@start</li></ol>
+<ol type="I"><li>ol@type</li></ol>
+
+<p align="right">p@align</p>
+
+<pre width="50">pre@width</pre>
+
+<script language="JavaScript">document.writeln('script');</script>
+
+<table align="right"><tr><td>table@align</td></tr></table>
+<table bgcolor="#0000FF"><tr><td>table@bgcolor</td></tr></table>
+
+<table><tr bgcolor="#0000FF"><td>tr@bgcolor</td></tr></table>
+
+<table><tr><td bgcolor="#0000FF">td@bgcolor</td></tr></table>
+<table><tr><td height="50">td@height</td></tr></table>
+<table><tr><td nowrap="nowrap">td@nowrap</td></tr></table>
+<table><tr><td width="200">td@width</td></tr></table>
+
+<table><tr><th bgcolor="#0000FF">th@bgcolor</th></tr></table>
+<table><tr><th height="50">th@height</th></tr></table>
+<table><tr><th nowrap="nowrap">th@nowrap</th></tr></table>
+<table><tr><th width="200">th@width</th></tr></table>
+
+<ul compact="compact"><li>ul@compact</li></ul>
+<ul type="square"><li>ul@square</li></ul>
+
+</div>
+
+</body>
+</html>
+
+<!-- vim: et sw=4 sts=4
+-->

@@ -1,0 +1,11 @@
+--INI--
+URI.Munge = "/redirect?s=%s&t=%t&r=%r&n=%n&m=%m&p=%p"
+URI.MungeSecretKey = "foo"
+URI.MungeResources = true
+--HTML--
+<a href="http://example.com">Link</a>
+<img src="http://example.com" style="background-image:url(http://example.com);" alt="example.com" />
+--EXPECT--
+<a href="/redirect?s=http%3A%2F%2Fexample.com&amp;t=c15354f3953dfec262c55b1403067e0d045a3059&amp;r=&amp;n=a&amp;m=href&amp;p=">Link</a>
+<img src="/redirect?s=http%3A%2F%2Fexample.com&amp;t=c15354f3953dfec262c55b1403067e0d045a3059&amp;r=1&amp;n=img&amp;m=src&amp;p=" style="background-image:url(&quot;/redirect?s=http%3A%2F%2Fexample.com&amp;t=c15354f3953dfec262c55b1403067e0d045a3059&amp;r=1&amp;n=img&amp;m=style&amp;p=background-image&quot;);" alt="example.com" />
+--# vim: et sw=4 sts=4

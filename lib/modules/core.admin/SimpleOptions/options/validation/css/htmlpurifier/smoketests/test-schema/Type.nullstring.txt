@@ -1,0 +1,9 @@
+Type.nullstring
+TYPE: string/null
+DEFAULT: null
+--DESCRIPTION--
+The null type is not a type, but a flag that can be added to any type
+making null a valid value for that entry. It's useful for saying, "Let
+the software pick the value for me," or "Don't use this element" when
+false has a special meaning.
+--# vim: et sw=4 sts=4

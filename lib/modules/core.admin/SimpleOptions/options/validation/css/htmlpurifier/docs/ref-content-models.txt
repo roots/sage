@@ -1,0 +1,50 @@
+
+Handling Content Model Changes
+
+
+1. Context
+
+The distinction between Transitional and Strict document types is somewhat
+of an anomaly in the lineage of XHTML document types (following 1.0, no
+doctypes do not have flavors: instead, modularization is used to let
+document authors vary their elements).  This transition is usually quite
+straight-forward, as W3C usually deprecates attributes or elements, which
+are quite easily handled using tag and attribute transforms.
+
+However, for two elements, <blockquote>, <body> and <address>, W3C elected
+to also change the content model.  <blockquote> and <body> originally
+accepted both inline and block elements, but in the strict doctype they
+only allow block elements.  With <address>, the situation is inverted:
+<p> tags were now forbidden from appearing within this tag.
+
+
+2. Current situation
+
+Currently, HTML Purifier treats <blockquote> specially during Tidy mode
+using a custom ChildDef class StrictBlockquote.  StrictBlockquote
+operates similarly to Required, except that when it encounters an inline
+element, it will wrap it in a block tag (as specified by
+%HTML.BlockWrapper, the default is <p>).  The naming suggests it can
+only be used for <blockquote>s, although it may be possible to
+genericize it to work on other cases of this nature (this would be of
+little practical application, as no other element in XHTML 1.1 or earlier
+has a block-only content model).
+
+Tidy currently contains no custom, lenient implementation for <address>.
+If one were to be written, it would likely operate on the principle that,
+when a <p> tag were to be encountered, it would be replaced with a
+leading and trailing <br /> tag (the contents of <p>, being inline, are
+not an issue).  There is no prior work with this sort of operation.
+
+
+3. Outside applicability
+
+There are a number of other elements that contain restrictive content
+models, such as <ul> or <span> (the latter is restrictive in that it
+does not allow block elements).  In the former case, an errant node
+is eliminated completely, in the latter case, the text of the node
+would is preserved (as the parent node does allow PCDATA).  Custom
+content model implementations probably are not the best way of handling
+these cases, instead, node bubbling should be implemented instead.
+
+    vim: et sw=4 sts=4

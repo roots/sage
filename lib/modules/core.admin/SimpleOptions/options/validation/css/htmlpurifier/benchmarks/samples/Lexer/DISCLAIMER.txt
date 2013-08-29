@@ -1,0 +1,7 @@
+Disclaimer:
+
+The HTML used in these samples are taken from random websites.  I claim
+no copyright over these and assert that I may use them like this under
+fair use.
+
+    vim: et sw=4 sts=4

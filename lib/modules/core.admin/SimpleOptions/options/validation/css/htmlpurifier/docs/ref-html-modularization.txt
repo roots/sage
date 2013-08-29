@@ -1,0 +1,166 @@
+
+The Modularization of HTMLDefinition in HTML Purifier
+
+WARNING: This document was drafted before the implementation of this
+    system, and some implementation details may have evolved over time.
+
+HTML Purifier uses the modularization of XHTML
+<http://www.w3.org/TR/xhtml-modularization/> to organize the internals
+of HTMLDefinition into a more manageable and extensible fashion. Rather
+than have one super-object, HTMLDefinition is split into HTMLModules,
+each of which are responsible for defining elements, their attributes,
+and other properties (for a more indepth coverage, see
+/library/HTMLPurifier/HTMLModule.php's docblock comments). These modules
+are managed by HTMLModuleManager.
+
+Modules that we don't support but could support are:
+
+    * 5.6. Table Modules
+          o 5.6.1. Basic Tables Module [?]
+    * 5.8. Client-side Image Map Module [?]
+    * 5.9. Server-side Image Map Module [?]
+    * 5.12. Target Module [?]
+    * 5.21. Name Identification Module [deprecated]
+
+These modules would be implemented as "unsafe":
+
+    * 5.2. Core Modules
+          o 5.2.1. Structure Module
+    * 5.3. Applet Module
+    * 5.5. Forms Modules
+          o 5.5.1. Basic Forms Module
+          o 5.5.2. Forms Module
+    * 5.10. Object Module
+    * 5.11. Frames Module
+    * 5.13. Iframe Module
+    * 5.14. Intrinsic Events Module
+    * 5.15. Metainformation Module
+    * 5.16. Scripting Module
+    * 5.17. Style Sheet Module
+    * 5.19. Link Module
+    * 5.20. Base Module
+
+We will not be using W3C's XML Schemas or DTDs directly due to the lack
+of robust tools for handling them (the main problem is that all the
+current parsers are usually PHP 5 only and solely-validating, not
+correcting).
+
+This system may be generalized and ported over for CSS.
+
+== General Use-Case ==
+
+The outwards API of HTMLDefinition has been largely preserved, not
+only for backwards-compatibility but also by design. Instead,
+HTMLDefinition can be retrieved "raw", in which it loads a structure
+that closely resembles the modules of XHTML 1.1. This structure is very
+dynamic, making it easy to make cascading changes to global content
+sets or remove elements in bulk.
+
+However, once HTML Purifier needs the actual definition, it retrieves
+a finalized version of HTMLDefinition. The finalized definition involves
+processing the modules into a form that it is optimized for multiple
+calls. This final version is immutable and, even if editable, would
+be extremely hard to change.
+
+So, some code taking advantage of the XHTML modularization may look
+like this:
+
+<?php
+    $config = HTMLPurifier_Config::createDefault();
+    $def =& $config->getHTMLDefinition(true); // reference to raw
+    $def->addElement('marquee', 'Block', 'Flow', 'Common');
+    $purifier = new HTMLPurifier($config);
+    $purifier->purify($html); // now the definition is finalized
+?>
+
+== Inclusions ==
+
+One of the nice features of HTMLDefinition is that piggy-backing off
+of global attribute and content sets is extremely easy to do.
+
+=== Attributes ===
+
+HTMLModule->elements[$element]->attr stores attribute information for the
+specific attributes of $element. This is quite close to the final
+API that HTML Purifier interfaces with, but there's an important
+extra feature: attr may also contain a array with a member index zero.
+
+<?php
+    HTMLModule->elements[$element]->attr[0] = array('AttrSet');
+?>
+
+Rather than map the attribute key 0 to an array (which should be
+an AttrDef), it defines a number of attribute collections that should
+be merged into this elements attribute array.
+
+Furthermore, the value of an attribute key, attribute value pair need
+not be a fully fledged AttrDef object. They can also be a string, which
+signifies a AttrDef that is looked up from a centralized registry
+AttrTypes. This allows more concise attribute definitions that look
+more like W3C's declarations, as well as offering a centralized point
+for modifying the behavior of one attribute type. And, of course, the
+old method of manually instantiating an AttrDef still works.
+
+=== Attribute Collections ===
+
+Attribute collections are stored and processed in the AttrCollections
+object, which is responsible for performing the inclusions signified
+by the 0 index. These attribute collections, too, are mutable, by
+using HTMLModule->attr_collections. You may add new attributes
+to a collection or define an entirely new collection for your module's
+use. Inclusions can also be cumulative.
+
+Attribute collections allow us to get rid of so called "global attributes"
+(which actually aren't so global).
+
+=== Content Models and ChildDef ===
+
+An implementation of the above-mentioned attributes and attribute
+collections was applied to the ChildDef system. HTML Purifier uses
+a proprietary system called ChildDef for performance and flexibility
+reasons, but this does not line up very well with W3C's notion of
+regexps for defining the allowed children of an element.
+
+HTMLPurifier->elements[$element]->content_model and
+HTMLPurifier->elements[$element]->content_model_type store information
+about the final ChildDef that will be stored in
+HTMLPurifier->elements[$element]->child (we use a different variable
+because the two forms are sufficiently different).
+
+$content_model is an abstract, string representation of the internal
+state of ChildDef, while $content_model_type is a string identifier
+of which ChildDef subclass to instantiate. $content_model is processed
+by substituting all content set identifiers (capitalized element names)
+with their contents. It is then parsed and passed into the appropriate
+ChildDef class, as defined by the ContentSets->getChildDef() or the
+custom fallback HTMLModule->getChildDef() for custom child definitions
+not in the core.
+
+You'll need to use these facilities if you plan on referencing a content
+set like "Inline" or "Block", and using them is recommended even if you're
+not due to their conciseness.
+
+A few notes on $content_model: it's structure can be as complicated
+as you want, but the pipe symbol (|) is reserved for defining possible
+choices, due to the content sets implementation. For example, a content
+model that looks like:
+
+"Inline -> Block -> a"
+
+...when the Inline content set is defined as "span | b" and the Block
+content set is defined as "div | blockquote", will expand into:
+
+"span | b -> div | blockquote -> a"
+
+The custom HTMLModule->getChildDef() function will need to be able to
+then feed this information to ChildDef in a usable manner.
+
+=== Content Sets ===
+
+Content sets can be altered using HTMLModule->content_sets, an associative
+array of content set names to content set contents. If the content set
+already exists, your values are appended on to it (great for, say,
+registering the font tag as an inline element), otherwise it is
+created. They are substituted into content_model.
+
+    vim: et sw=4 sts=4

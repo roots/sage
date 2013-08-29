@@ -1,0 +1,29 @@
+code#copytext {
+	white-space: pre;
+	font-family: Verdana;
+}
+
+.at {
+color:darkblue;
+}
+
+.format {
+color:gray;
+}
+
+.property {
+color:green;
+}
+
+.selector {
+color:blue;
+}
+
+.value {
+color:red;
+left: 500px;
+}
+
+.comment {
+color:orange;
+}

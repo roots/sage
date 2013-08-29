@@ -1,0 +1,5 @@
+--HTML--
+<a href="foo.html"><h1>Foobar</h1></a>
+--EXPECT--
+<a href="foo.html"></a><h1><a href="foo.html">Foobar</a></h1><a href="foo.html"></a>
+--# vim: et sw=4 sts=4

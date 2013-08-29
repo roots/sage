@@ -1,0 +1,5 @@
+Type.bool
+TYPE: bool
+DEFAULT: false
+DESCRIPTION: The boolean type is true or false.
+--# vim: et sw=4 sts=4

@@ -1,0 +1,8 @@
+--INI--
+Attr.EnableID = true
+Core.LexerImpl = DirectLex
+--HTML--
+<img src="img_11775.jpg" alt="[Img #11775]" id="EMBEDDED_IMG_11775" >
+--EXPECT--
+<img src="img_11775.jpg" alt="[Img #11775]" id="EMBEDDED_IMG_11775" />
+--# vim: et sw=4 sts=4

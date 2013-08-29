@@ -1,0 +1,5 @@
+Type.int
+TYPE: int
+DEFAULT: 23
+DESCRIPTION: The int type is an signed integer.
+--# vim: et sw=4 sts=4

@@ -1,0 +1,18 @@
+title:   HTML Purifier Phorum Mod
+desc:    This module enables standards-compliant HTML filtering on Phorum. Please check migrate.bbcode.php before enabling this mod.
+author:  Edward Z. Yang
+url:     http://htmlpurifier.org/
+version: 4.0.0
+
+hook:  format|phorum_htmlpurifier_format
+hook:  quote|phorum_htmlpurifier_quote
+hook:  posting_custom_action|phorum_htmlpurifier_posting
+hook:  common|phorum_htmlpurifier_common
+hook:  before_editor|phorum_htmlpurifier_before_editor
+hook:  tpl_editor_after_subject|phorum_htmlpurifier_editor_after_subject
+
+# This module is meant to be a drop-in for bbcode, so make it run last.
+priority: run module after *
+priority: run hook format after *
+
+    vim: et sw=4 sts=4

@@ -1,0 +1,1060 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="description" content="Describes the rationale for using UTF-8, the ramifications otherwise, and how to make the switch." />
+<link rel="stylesheet" type="text/css" href="./style.css" />
+<style type="text/css">
+    .minor td {font-style:italic;}
+</style>
+
+<title>UTF-8: The Secret of Character Encoding - HTML Purifier</title>
+
+<!-- Note to users: this document, though professing to be UTF-8, attempts
+to use only ASCII characters, because most webservers are configured
+to send HTML as ISO-8859-1. So I will, many times, go against my
+own advice for sake of portability.  -->
+
+</head><body>
+
+<h1>UTF-8: The Secret of Character Encoding</h1>
+
+<div id="filing">Filed under End-User</div>
+<div id="index">Return to the <a href="index.html">index</a>.</div>
+<div id="home"><a href="http://htmlpurifier.org/">HTML Purifier</a> End-User Documentation</div>
+
+<p>Character encoding and character sets are not that
+difficult to understand, but so many people blithely stumble
+through the worlds of programming without knowing what to actually
+do about it, or say &quot;Ah, it's a job for those <em>internationalization</em>
+experts.&quot; No, it is not! This document will walk you through
+determining the encoding of your system and how you should handle
+this information. It will stay away from excessive discussion on
+the internals of character encoding.</p>
+
+<p>This document is not designed to be read in its entirety: it will
+slowly introduce concepts that build on each other: you need not get to
+the bottom to have learned something new. However, I strongly
+recommend you read all the way to <strong>Why UTF-8?</strong>, because at least
+at that point you'd have made a conscious decision not to migrate,
+which can be a rewarding (but difficult) task.</p>
+
+<blockquote class="aside">
+<div class="label">Asides</div>
+    <p>Text in this formatting is an <strong>aside</strong>,
+    interesting tidbits for the curious but not strictly necessary material to
+    do the tutorial. If you read this text, you'll come out
+    with a greater understanding of the underlying issues.</p>
+</blockquote>
+
+<h2>Table of Contents</h2>
+
+<ol id="toc">
+    <li><a href="#findcharset">Finding the real encoding</a></li>
+    <li><a href="#findmetacharset">Finding the embedded encoding</a></li>
+    <li><a href="#fixcharset">Fixing the encoding</a><ol>
+        <li><a href="#fixcharset-none">No embedded encoding</a></li>
+        <li><a href="#fixcharset-diff">Embedded encoding disagrees</a></li>
+        <li><a href="#fixcharset-server">Changing the server encoding</a><ol>
+            <li><a href="#fixcharset-server-php">PHP header() function</a></li>
+            <li><a href="#fixcharset-server-phpini">PHP ini directive</a></li>
+            <li><a href="#fixcharset-server-nophp">Non-PHP</a></li>
+            <li><a href="#fixcharset-server-htaccess">.htaccess</a></li>
+            <li><a href="#fixcharset-server-ext">File extensions</a></li>
+        </ol></li>
+        <li><a href="#fixcharset-xml">XML</a></li>
+        <li><a href="#fixcharset-internals">Inside the process</a></li>
+    </ol></li>
+    <li><a href="#whyutf8">Why UTF-8?</a><ol>
+        <li><a href="#whyutf8-i18n">Internationalization</a></li>
+        <li><a href="#whyutf8-user">User-friendly</a></li>
+        <li><a href="#whyutf8-forms">Forms</a><ol>
+            <li><a href="#whyutf8-forms-urlencoded">application/x-www-form-urlencoded</a></li>
+            <li><a href="#whyutf8-forms-multipart">multipart/form-data</a></li>
+        </ol></li>
+        <li><a href="#whyutf8-support">Well supported</a></li>
+        <li><a href="#whyutf8-htmlpurifier">HTML Purifiers</a></li>
+    </ol></li>
+    <li><a href="#migrate">Migrate to UTF-8</a><ol>
+        <li><a href="#migrate-db">Configuring your database</a><ol>
+            <li><a href="#migrate-db-legit">Legit method</a></li>
+            <li><a href="#migrate-db-binary">Binary</a></li>
+        </ol></li>
+        <li><a href="#migrate-editor">Text editor</a></li>
+        <li><a href="#migrate-bom">Byte Order Mark (headers already sent!)</a></li>
+        <li><a href="#migrate-fonts">Fonts</a><ol>
+            <li><a href="#migrate-fonts-obscure">Obscure scripts</a></li>
+            <li><a href="#migrate-fonts-occasional">Occasional use</a></li>
+        </ol></li>
+        <li><a href="#migrate-variablewidth">Dealing with variable width in functions</a></li>
+    </ol></li>
+    <li><a href="#externallinks">Further Reading</a></li>
+</ol>
+
+<h2 id="findcharset">Finding the real encoding</h2>
+
+<p>In the beginning, there was ASCII, and things were simple. But they
+weren't good, for no one could write in Cyrillic or Thai. So there
+exploded a proliferation of character encodings to remedy the problem
+by extending the characters ASCII could express. This ridiculously
+simplified version of the history of character encodings shows us that
+there are now many character encodings floating around.</p>
+
+<blockquote class="aside">
+    <p>A <strong>character encoding</strong> tells the computer how to
+    interpret raw zeroes and ones into real characters. It
+    usually does this by pairing numbers with characters.</p>
+    <p>There are many different types of character encodings floating
+    around, but the ones we deal most frequently with are ASCII,
+    8-bit encodings, and Unicode-based encodings.</p>
+    <ul>
+        <li><strong>ASCII</strong> is a 7-bit encoding based on the
+            English alphabet.</li>
+        <li><strong>8-bit encodings</strong> are extensions to ASCII
+            that add a potpourri of useful, non-standard characters
+            like &eacute; and &aelig;. They can only add 127 characters,
+            so usually only support one script at a time. When you
+            see a page on the web, chances are it's encoded in one
+            of these encodings.</li>
+        <li><strong>Unicode-based encodings</strong> implement the
+            Unicode standard and include UTF-8, UTF-16 and UTF-32/UCS-4.
+            They go beyond 8-bits and support almost
+            every language in the world. UTF-8 is gaining traction
+            as the dominant international encoding of the web.</li>
+    </ul>
+</blockquote>
+
+<p>The first step of our journey is to find out what the encoding of
+your website is. The most reliable way is to ask your
+browser:</p>
+
+<dl>
+    <dt>Mozilla Firefox</dt>
+    <dd>Tools &gt; Page Info: Encoding</dd>
+    <dt>Internet Explorer</dt>
+    <dd>View &gt; Encoding: bulleted item is unofficial name</dd>
+</dl>
+
+<p>Internet Explorer won't give you the MIME (i.e. useful/real) name of the
+character encoding, so you'll have to look it up using their description.
+Some common ones:</p>
+
+<table class="table">
+    <thead><tr>
+        <th>IE's Description</th>
+        <th>Mime Name</th>
+    </tr></thead>
+    <tbody>
+        <tr><th colspan="2">Windows</th></tr>
+        <tr><td>Arabic (Windows)</td><td>Windows-1256</td></tr>
+        <tr><td>Baltic (Windows)</td><td>Windows-1257</td></tr>
+        <tr><td>Central European (Windows)</td><td>Windows-1250</td></tr>
+        <tr><td>Cyrillic (Windows)</td><td>Windows-1251</td></tr>
+        <tr><td>Greek (Windows)</td><td>Windows-1253</td></tr>
+        <tr><td>Hebrew (Windows)</td><td>Windows-1255</td></tr>
+        <tr><td>Thai (Windows)</td><td>TIS-620</td></tr>
+        <tr><td>Turkish (Windows)</td><td>Windows-1254</td></tr>
+        <tr><td>Vietnamese (Windows)</td><td>Windows-1258</td></tr>
+        <tr><td>Western European (Windows)</td><td>Windows-1252</td></tr>
+    </tbody>
+    <tbody>
+        <tr><th colspan="2">ISO</th></tr>
+        <tr><td>Arabic (ISO)</td><td>ISO-8859-6</td></tr>
+        <tr><td>Baltic (ISO)</td><td>ISO-8859-4</td></tr>
+        <tr><td>Central European (ISO)</td><td>ISO-8859-2</td></tr>
+        <tr><td>Cyrillic (ISO)</td><td>ISO-8859-5</td></tr>
+        <tr class="minor"><td>Estonian (ISO)</td><td>ISO-8859-13</td></tr>
+        <tr class="minor"><td>Greek (ISO)</td><td>ISO-8859-7</td></tr>
+        <tr><td>Hebrew (ISO-Logical)</td><td>ISO-8859-8-l</td></tr>
+        <tr><td>Hebrew (ISO-Visual)</td><td>ISO-8859-8</td></tr>
+        <tr class="minor"><td>Latin 9 (ISO)</td><td>ISO-8859-15</td></tr>
+        <tr class="minor"><td>Turkish (ISO)</td><td>ISO-8859-9</td></tr>
+        <tr><td>Western European (ISO)</td><td>ISO-8859-1</td></tr>
+    </tbody>
+    <tbody>
+        <tr><th colspan="2">Other</th></tr>
+        <tr><td>Chinese Simplified (GB18030)</td><td>GB18030</td></tr>
+        <tr><td>Chinese Simplified (GB2312)</td><td>GB2312</td></tr>
+        <tr><td>Chinese Simplified (HZ)</td><td>HZ</td></tr>
+        <tr><td>Chinese Traditional (Big5)</td><td>Big5</td></tr>
+        <tr><td>Japanese (Shift-JIS)</td><td>Shift_JIS</td></tr>
+        <tr><td>Japanese (EUC)</td><td>EUC-JP</td></tr>
+        <tr><td>Korean</td><td>EUC-KR</td></tr>
+        <tr><td>Unicode (UTF-8)</td><td>UTF-8</td></tr>
+    </tbody>
+</table>
+
+<p>Internet Explorer does not recognize some of the more obscure
+character encodings, and having to lookup the real names with a table
+is a pain, so I recommend using Mozilla Firefox to find out your
+character encoding.</p>
+
+<h2 id="findmetacharset">Finding the embedded encoding</h2>
+
+<p>At this point, you may be asking, &quot;Didn't we already find out our
+encoding?&quot; Well, as it turns out, there are multiple places where
+a web developer can specify a character encoding, and one such place
+is in a <code>META</code> tag:</p>
+
+<pre>&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot; /&gt;</pre>
+
+<p>You'll find this in the <code>HEAD</code> section of an HTML document.
+The text to the right of <code>charset=</code> is the &quot;claimed&quot;
+encoding: the HTML claims to be this encoding, but whether or not this
+is actually the case depends on other factors. For now, take note
+if your <code>META</code> tag claims that either:</p>
+
+<ol>
+    <li>The character encoding is the same as the one reported by the
+        browser,</li>
+    <li>The character encoding is different from the browser's, or</li>
+    <li>There is no <code>META</code> tag at all! (horror, horror!)</li>
+</ol>
+
+<h2 id="fixcharset">Fixing the encoding</h2>
+
+<p class="aside">The advice given here is for pages being served as
+vanilla <code>text/html</code>.  Different practices must be used
+for <code>application/xml</code> or <code>application/xml+xhtml</code>, see
+<a href="http://www.w3.org/TR/2002/NOTE-xhtml-media-types-20020430/">W3C's
+document on XHTML media types</a> for more information.</p>
+
+<p>If your <code>META</code> encoding and your real encoding match,
+savvy! You can skip this section. If they don't...</p>
+
+<h3 id="fixcharset-none">No embedded encoding</h3>
+
+<p>If this is the case, you'll want to add in the appropriate
+<code>META</code> tag to your website. It's as simple as copy-pasting
+the code snippet above and replacing UTF-8 with whatever is the mime name
+of your real encoding.</p>
+
+<blockquote class="aside">
+    <p>For all those skeptics out there, there is a very good reason
+    why the character encoding should be explicitly stated. When the
+    browser isn't told what the character encoding of a text is, it
+    has to guess: and sometimes the guess is wrong. Hackers can manipulate
+    this guess in order to slip XSS past filters and then fool the
+    browser into executing it as active code. A great example of this
+    is the <a href="http://shiflett.org/archive/177">Google UTF-7
+    exploit</a>.</p>
+    <p>You might be able to get away with not specifying a character
+    encoding with the <code>META</code> tag as long as your webserver
+    sends the right Content-Type header, but why risk it? Besides, if
+    the user downloads the HTML file, there is no longer any webserver
+    to define the character encoding.</p>
+</blockquote>
+
+<h3 id="fixcharset-diff">Embedded encoding disagrees</h3>
+
+<p>This is an extremely common mistake: another source is telling
+the browser what the
+character encoding is and is overriding the embedded encoding. This
+source usually is the Content-Type HTTP header that the webserver (i.e.
+Apache) sends. A usual Content-Type header sent with a page might
+look like this:</p>
+
+<pre>Content-Type: text/html; charset=ISO-8859-1</pre>
+
+<p>Notice how there is a charset parameter: this is the webserver's
+way of telling a browser what the character encoding is, much like
+the <code>META</code> tags we touched upon previously.</p>
+
+<blockquote class="aside"><p>In fact, the <code>META</code> tag is
+designed as a substitute for the HTTP header for contexts where
+sending headers is impossible (such as locally stored files without
+a webserver). Thus the name <code>http-equiv</code> (HTTP equivalent).
+</p></blockquote>
+
+<p>There are two ways to go about fixing this: changing the <code>META</code>
+tag to match the HTTP header, or changing the HTTP header to match
+the <code>META</code> tag. How do we know which to do? It depends
+on the website's content: after all, headers and tags are only ways of
+describing the actual characters on the web page.</p>
+
+<p>If your website:</p>
+
+<dl>
+    <dt>...only uses ASCII characters,</dt>
+    <dd>Either way is fine, but I recommend switching both to
+        UTF-8 (more on this later).</dd>
+    <dt>...uses special characters, and they display
+        properly,</dt>
+    <dd>Change the embedded encoding to the server encoding.</dd>
+    <dt>...uses special characters, but users often complain that
+        they come out garbled,</dt>
+    <dd>Change the server encoding to the embedded encoding.</dd>
+</dl>
+
+<p>Changing a META tag is easy: just swap out the old encoding
+for the new. Changing the server (HTTP header) encoding, however,
+is slightly more difficult.</p>
+
+<h3 id="fixcharset-server">Changing the server encoding</h3>
+
+<h4 id="fixcharset-server-php">PHP header() function</h4>
+
+<p>The simplest way to handle this problem is to send the encoding
+yourself, via your programming language. Since you're using HTML
+Purifier, I'll assume PHP, although it's not too difficult to do
+similar things in
+<a href="http://www.w3.org/International/O-HTTP-charset#scripting">other
+languages</a>. The appropriate code is:</p>
+
+<pre><a href="http://php.net/function.header">header</a>('Content-Type:text/html; charset=UTF-8');</pre>
+
+<p>...replacing UTF-8 with whatever your embedded encoding is.
+This code must come before any output, so be careful about
+stray whitespace in your application (i.e., any whitespace before
+output excluding whitespace within &lt;?php ?&gt; tags).</p>
+
+<h4 id="fixcharset-server-phpini">PHP ini directive</h4>
+
+<p>PHP also has a neat little ini directive that can save you a
+header call: <code><a href="http://php.net/ini.core#ini.default-charset">default_charset</a></code>. Using this code:</p>
+
+<pre><a href="http://php.net/function.ini_set">ini_set</a>('default_charset', 'UTF-8');</pre>
+
+<p>...will also do the trick. If PHP is running as an Apache module (and
+not as FastCGI, consult
+<a href="http://php.net/phpinfo">phpinfo</a>() for details), you can even use htaccess to apply this property
+across many PHP files:</p>
+
+<pre><a href="http://php.net/configuration.changes#configuration.changes.apache">php_value</a> default_charset &quot;UTF-8&quot;</pre>
+
+<blockquote class="aside"><p>As with all INI directives, this can
+also go in your php.ini file. Some hosting providers allow you to customize
+your own php.ini file, ask your support for details. Use:</p>
+<pre>default_charset = &quot;utf-8&quot;</pre></blockquote>
+
+<h4 id="fixcharset-server-nophp">Non-PHP</h4>
+
+<p>You may, for whatever reason, need to set the character encoding
+on non-PHP files, usually plain ol' HTML files. Doing this
+is more of a hit-or-miss process: depending on the software being
+used as a webserver and the configuration of that software, certain
+techniques may work, or may not work.</p>
+
+<h4 id="fixcharset-server-htaccess">.htaccess</h4>
+
+<p>On Apache, you can use an .htaccess file to change the character
+encoding. I'll defer to
+<a href="http://www.w3.org/International/questions/qa-htaccess-charset">W3C</a>
+for the in-depth explanation, but it boils down to creating a file
+named .htaccess with the contents:</p>
+
+<pre><a href="http://httpd.apache.org/docs/1.3/mod/mod_mime.html#addcharset">AddCharset</a> UTF-8 .html</pre>
+
+<p>Where UTF-8 is replaced with the character encoding you want to
+use and .html is a file extension that this will be applied to. This
+character encoding will then be set for any file directly in
+or in the subdirectories of directory you place this file in.</p>
+
+<p>If you're feeling particularly courageous, you can use:</p>
+
+<pre><a href="http://httpd.apache.org/docs/1.3/mod/core.html#adddefaultcharset">AddDefaultCharset</a> UTF-8</pre>
+
+<p>...which changes the character set Apache adds to any document that
+doesn't have any Content-Type parameters. This directive, which the
+default configuration file sets to iso-8859-1 for security
+reasons, is probably why your headers mismatch
+with the <code>META</code> tag. If you would prefer Apache not to be
+butting in on your character encodings, you can tell it not
+to send anything at all:</p>
+
+<pre><a href="http://httpd.apache.org/docs/1.3/mod/core.html#adddefaultcharset">AddDefaultCharset</a> Off</pre>
+
+<p>...making your internal charset declaration (usually the <code>META</code> tags)
+the sole source of character encoding
+information. In these cases, it is <em>especially</em> important to make
+sure you have valid <code>META</code> tags on your pages and all the
+text before them is ASCII.</p>
+
+<blockquote class="aside"><p>These directives can also be
+placed in httpd.conf file for Apache, but
+in most shared hosting situations you won't be able to edit this file.
+</p></blockquote>
+
+<h4 id="fixcharset-server-ext">File extensions</h4>
+
+<p>If you're not allowed to use .htaccess files, you can often
+piggy-back off of Apache's default AddCharset declarations to get
+your files in the proper extension. Here are Apache's default
+character set declarations:</p>
+
+<table class="table">
+    <thead><tr>
+        <th>Charset</th>
+        <th>File extension(s)</th>
+    </tr></thead>
+    <tbody>
+        <tr><td>ISO-8859-1</td><td>.iso8859-1 .latin1</td></tr>
+        <tr><td>ISO-8859-2</td><td>.iso8859-2 .latin2 .cen</td></tr>
+        <tr><td>ISO-8859-3</td><td>.iso8859-3 .latin3</td></tr>
+        <tr><td>ISO-8859-4</td><td>.iso8859-4 .latin4</td></tr>
+        <tr><td>ISO-8859-5</td><td>.iso8859-5 .latin5 .cyr .iso-ru</td></tr>
+        <tr><td>ISO-8859-6</td><td>.iso8859-6 .latin6 .arb</td></tr>
+        <tr><td>ISO-8859-7</td><td>.iso8859-7 .latin7 .grk</td></tr>
+        <tr><td>ISO-8859-8</td><td>.iso8859-8 .latin8 .heb</td></tr>
+        <tr><td>ISO-8859-9</td><td>.iso8859-9 .latin9 .trk</td></tr>
+        <tr><td>ISO-2022-JP</td><td>.iso2022-jp .jis</td></tr>
+        <tr><td>ISO-2022-KR</td><td>.iso2022-kr .kis</td></tr>
+        <tr><td>ISO-2022-CN</td><td>.iso2022-cn .cis</td></tr>
+        <tr><td>Big5</td><td>.Big5 .big5 .b5</td></tr>
+        <tr><td>WINDOWS-1251</td><td>.cp-1251 .win-1251</td></tr>
+        <tr><td>CP866</td><td>.cp866</td></tr>
+        <tr><td>KOI8-r</td><td>.koi8-r .koi8-ru</td></tr>
+        <tr><td>KOI8-ru</td><td>.koi8-uk .ua</td></tr>
+        <tr><td>ISO-10646-UCS-2</td><td>.ucs2</td></tr>
+        <tr><td>ISO-10646-UCS-4</td><td>.ucs4</td></tr>
+        <tr><td>UTF-8</td><td>.utf8</td></tr>
+        <tr><td>GB2312</td><td>.gb2312 .gb </td></tr>
+        <tr><td>utf-7</td><td>.utf7</td></tr>
+        <tr><td>EUC-TW</td><td>.euc-tw</td></tr>
+        <tr><td>EUC-JP</td><td>.euc-jp</td></tr>
+        <tr><td>EUC-KR</td><td>.euc-kr</td></tr>
+        <tr><td>shift_jis</td><td>.sjis</td></tr>
+    </tbody>
+</table>
+
+<p>So, for example, a file named <code>page.utf8.html</code> or
+<code>page.html.utf8</code> will probably be sent with the UTF-8 charset
+attached, the difference being that if there is an
+<code>AddCharset charset .html</code> declaration, it will override
+the .utf8 extension in <code>page.utf8.html</code> (precedence moves
+from right to left). By default, Apache has no such declaration.</p>
+
+<h4 id="fixcharset-server-iis">Microsoft IIS</h4>
+
+<p>If anyone can contribute information on how to configure Microsoft
+IIS to change character encodings, I'd be grateful.</p>
+
+<h3 id="fixcharset-xml">XML</h3>
+
+<p><code>META</code> tags are the most common source of embedded
+encodings, but they can also come from somewhere else: XML
+Declarations. They look like:</p>
+
+<pre>&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</pre>
+
+<p>...and are most often found in XML documents (including XHTML).</p>
+
+<p>For XHTML, this XML Declaration theoretically
+overrides the <code>META</code> tag. In reality, this happens only when the
+XHTML is actually served as legit XML and not HTML, which is almost always
+never due to Internet Explorer's lack of support for
+<code>application/xhtml+xml</code> (even though doing so is often
+argued to be <a href="http://www.hixie.ch/advocacy/xhtml">good
+practice</a> and is required by the XHTML 1.1 specification).</p>
+
+<p>For XML, however, this XML Declaration is extremely important.
+Since most webservers are not configured to send charsets for .xml files,
+this is the only thing a parser has to go on. Furthermore, the default
+for XML files is UTF-8, which often butts heads with more common
+ISO-8859-1 encoding (you see this in garbled RSS feeds).</p>
+
+<p>In short, if you use XHTML and have gone through the
+trouble of adding the XML Declaration, make sure it jives
+with your <code>META</code> tags (which should only be present
+if served in text/html) and HTTP headers.</p>
+
+<h3 id="fixcharset-internals">Inside the process</h3>
+
+<p>This section is not required reading,
+but may answer some of your questions on what's going on in all
+this character encoding hocus pocus. If you're interested in
+moving on to the next phase, skip this section.</p>
+
+<p>A logical question that follows all of our wheeling and dealing
+with multiple sources of character encodings is &quot;Why are there
+so many options?&quot; To answer this question, we have to turn
+back our definition of character encodings: they allow a program
+to interpret bytes into human-readable characters.</p>
+
+<p>Thus, a chicken-egg problem: a character encoding
+is necessary to interpret the
+text of a document. A <code>META</code> tag is in the text of a document.
+The <code>META</code> tag gives the character encoding. How can we
+determine the contents of a <code>META</code> tag, inside the text,
+if we don't know it's character encoding? And how do we figure out
+the character encoding, if we don't know the contents of the
+<code>META</code> tag?</p>
+
+<p>Fortunately for us, the characters we need to write the
+<code>META</code> are in ASCII, which is pretty much universal
+over every character encoding that is in common use today. So,
+all the web-browser has to do is parse all the way down until
+it gets to the Content-Type tag, extract the character encoding
+tag, then re-parse the document according to this new information.</p>
+
+<p>Obviously this is complicated, so browsers prefer the simpler
+and more efficient solution: get the character encoding from a
+somewhere other than the document itself, i.e. the HTTP headers,
+much to the chagrin of HTML authors who can't set these headers.</p>
+
+<h2 id="whyutf8">Why UTF-8?</h2>
+
+<p>So, you've gone through all the trouble of ensuring that your
+server and embedded characters all line up properly and are
+present.  Good job: at
+this point, you could quit and rest easy knowing that your pages
+are not vulnerable to character encoding style XSS attacks.
+However, just as having a character encoding is better than
+having no character encoding at all, having UTF-8 as your
+character encoding is better than having some other random
+character encoding, and the next step is to convert to UTF-8.
+But why?</p>
+
+<h3 id="whyutf8-i18n">Internationalization</h3>
+
+<p>Many software projects, at one point or another, suddenly realize
+that they should be supporting more than one language. Even regular
+usage in one language sometimes requires the occasional special character
+that, without surprise, is not available in your character set. Sometimes
+developers get around this by adding support for multiple encodings: when
+using Chinese, use Big5, when using Japanese, use Shift-JIS, when
+using Greek, etc. Other times, they use character references with great
+zeal.</p>
+
+<p>UTF-8, however, obviates the need for any of these complicated
+measures. After getting the system to use UTF-8 and adjusting for
+sources that are outside the hand of the browser (more on this later),
+UTF-8 just works. You can use it for any language, even many languages
+at once, you don't have to worry about managing multiple encodings,
+you don't have to use those user-unfriendly entities.</p>
+
+<h3 id="whyutf8-user">User-friendly</h3>
+
+<p>Websites encoded in Latin-1 (ISO-8859-1) which occasionally need
+a special character outside of their scope often will use a character
+entity reference to achieve the desired effect. For instance, &theta; can be
+written <code>&amp;theta;</code>, regardless of the character encoding's
+support of Greek letters.</p>
+
+<p>This works nicely for limited use of special characters, but
+say you wanted this sentence of Chinese text: &#28608;&#20809;,
+&#36889;&#20841;&#20491;&#23383;&#26159;&#29978;&#40636;&#24847;&#24605;.
+The ampersand encoded version would look like this:</p>
+
+<pre>&amp;#28608;&amp;#20809;, &amp;#36889;&amp;#20841;&amp;#20491;&amp;#23383;&amp;#26159;&amp;#29978;&amp;#40636;&amp;#24847;&amp;#24605;</pre>
+
+<p>Extremely inconvenient for those of us who actually know what
+character entities are, totally unintelligible to poor users who don't!
+Even the slightly more user-friendly, &quot;intelligible&quot; character
+entities like <code>&amp;theta;</code> will leave users who are
+uninterested in learning HTML scratching their heads. On the other
+hand, if they see &theta; in an edit box, they'll know that it's a
+special character, and treat it accordingly, even if they don't know
+how to write that character themselves.</p>
+
+<blockquote class="aside"><p>Wikipedia is a great case study for
+an application that originally used ISO-8859-1 but switched to UTF-8
+when it became far to cumbersome to support foreign languages. Bots
+will now actually go through articles and convert character entities
+to their corresponding real characters for the sake of user-friendliness
+and searchability. See
+<a href="http://meta.wikimedia.org/wiki/Help:Special_characters">Meta's
+page on special characters</a> for more details.
+</p></blockquote>
+
+<h3 id="whyutf8-forms">Forms</h3>
+
+<p>While we're on the tack of users, how do non-UTF-8 web forms deal
+with characters that are outside of their character set? Rather than
+discuss what UTF-8 does right, we're going to show what could go wrong
+if you didn't use UTF-8 and people tried to use characters outside
+of your character encoding.</p>
+
+<p>The troubles are large, extensive, and extremely difficult to fix (or,
+at least, difficult enough that if you had the time and resources to invest
+in doing the fix, you would be probably better off migrating to UTF-8).
+There are two types of form submission: <code>application/x-www-form-urlencoded</code>
+which is used for GET and by default for POST, and <code>multipart/form-data</code>
+which may be used by POST, and is required when you want to upload
+files.</p>
+
+<p>The following is a summarization of notes from
+<a href="http://web.archive.org/web/20060427015200/ppewww.ph.gla.ac.uk/~flavell/charset/form-i18n.html">
+<code>FORM</code> submission and i18n</a>. That document contains lots
+of useful information, but is written in a rambly manner, so
+here I try to get right to the point. (Note: the original has
+disappeared off the web, so I am linking to the Web Archive copy.)</p>
+
+<h4 id="whyutf8-forms-urlencoded"><code>application/x-www-form-urlencoded</code></h4>
+
+<p>This is the Content-Type that GET requests must use, and POST requests
+use by default. It involves the ubiquitous percent encoding format that
+looks something like: <code>%C3%86</code>. There is no official way of
+determining the character encoding of such a request, since the percent
+encoding operates on a byte level, so it is usually assumed that it
+is the same as the encoding the page containing the form was submitted
+in. (<a href="http://tools.ietf.org/html/rfc3986#section-2.5">RFC 3986</a>
+recommends that textual identifiers be translated to UTF-8; however, browser
+compliance is spotty.) You'll run into very few problems
+if you only use characters in the character encoding you chose.</p>
+
+<p>However, once you start adding characters outside of your encoding
+(and this is a lot more common than you may think: take curly
+&quot;smart&quot; quotes from Microsoft as an example),
+a whole manner of strange things start to happen. Depending on the
+browser you're using, they might:</p>
+
+<ul>
+    <li>Replace the unsupported characters with useless question marks,</li>
+    <li>Attempt to fix the characters (example: smart quotes to regular quotes),</li>
+    <li>Replace the character with a character entity reference, or</li>
+    <li>Send it anyway as a different character encoding mixed in
+        with the original encoding (usually Windows-1252 rather than
+        iso-8859-1 or UTF-8 interspersed in 8-bit)</li>
+</ul>
+
+<p>To properly guard against these behaviors, you'd have to sniff out
+the browser agent, compile a database of different behaviors, and
+take appropriate conversion action against the string (disregarding
+a spate of extremely mysterious, random and devastating bugs Internet
+Explorer manifests every once in a while). Or you could
+use UTF-8 and rest easy knowing that none of this could possibly happen
+since UTF-8 supports every character.</p>
+
+<h4 id="whyutf8-forms-multipart"><code>multipart/form-data</code></h4>
+
+<p>Multipart form submission takes away a lot of the ambiguity
+that percent-encoding had: the server now can explicitly ask for
+certain encodings, and the client can explicitly tell the server
+during the form submission what encoding the fields are in.</p>
+
+<p>There are two ways you go with this functionality: leave it
+unset and have the browser send in the same encoding as the page,
+or set it to UTF-8 and then do another conversion server-side.
+Each method has deficiencies, especially the former.</p>
+
+<p>If you tell the browser to send the form in the same encoding as
+the page, you still have the trouble of what to do with characters
+that are outside of the character encoding's range. The behavior, once
+again, varies: Firefox 2.0 converts them to character entity references
+while Internet Explorer 7.0 mangles them beyond intelligibility. For
+serious internationalization purposes, this is not an option.</p>
+
+<p>The other possibility is to set Accept-Encoding to UTF-8, which
+begs the question: Why aren't you using UTF-8 for everything then?
+This route is more palatable, but there's a notable caveat: your data
+will come in as UTF-8, so you will have to explicitly convert it into
+your favored local character encoding.</p>
+
+<p>I object to this approach on idealogical grounds: you're
+digging yourself deeper into
+the hole when you could have been converting to UTF-8
+instead. And, of course, you can't use this method for GET requests.</p>
+
+<h3 id="whyutf8-support">Well supported</h3>
+
+<p>Almost every modern browser in the wild today has full UTF-8 and Unicode
+support: the number of troublesome cases can be counted with the
+fingers of one hand, and these browsers usually have trouble with
+other character encodings too. Problems users usually encounter stem
+from the lack of appropriate fonts to display the characters (once
+again, this applies to all character encodings and HTML entities) or
+Internet Explorer's lack of intelligent font picking (which can be
+worked around).</p>
+
+<p>We will go into more detail about how to deal with edge cases in
+the browser world in the Migration section, but rest assured that
+converting to UTF-8, if done correctly, will not result in users
+hounding you about broken pages.</p>
+
+<h3 id="whyutf8-htmlpurifier">HTML Purifier</h3>
+
+<p>And finally, we get to HTML Purifier.  HTML Purifier is built to
+deal with UTF-8: any indications otherwise are the result of an
+encoder that converts text from your preferred encoding to UTF-8, and
+back again.  HTML Purifier never touches anything else, and leaves
+it up to the module iconv to do the dirty work.</p>
+
+<p>This approach, however, is not perfect. iconv is blithely unaware
+of HTML character entities. HTML Purifier, in order to
+protect against sophisticated escaping schemes, normalizes all character
+and numeric entity references before processing the text. This leads to
+one important ramification:</p>
+
+<p><strong>Any character that is not supported by the target character
+set, regardless of whether or not it is in the form of a character
+entity reference or a raw character, will be silently ignored.</strong></p>
+
+<p>Example of this principle at work: say you have <code>&amp;theta;</code>
+in your HTML, but the output is in Latin-1 (which, understandably,
+does not understand Greek), the following process will occur (assuming you've
+set the encoding correctly using %Core.Encoding):</p>
+
+<ul>
+    <li>The <code>Encoder</code> will transform the text from ISO 8859-1 to UTF-8
+        (note that theta is preserved here since it doesn't actually use
+        any non-ASCII characters): <code>&amp;theta;</code></li>
+    <li>The <code>EntityParser</code> will transform all named and numeric
+        character entities to their corresponding raw UTF-8 equivalents:
+        <code>&theta;</code></li>
+    <li>HTML Purifier processes the code: <code>&theta;</code></li>
+    <li>The <code>Encoder</code> now transforms the text back from UTF-8
+        to ISO 8859-1. Since Greek is not supported by ISO 8859-1, it
+        will be either ignored or replaced with a question mark:
+        <code>?</code></li>
+</ul>
+
+<p>This behaviour is quite unsatisfactory. It is a deal-breaker for
+international applications, and it can be mildly annoying for the provincial
+soul who occasionally needs a special character. Since 1.4.0, HTML
+Purifier has provided a slightly more palatable workaround using
+%Core.EscapeNonASCIICharacters. The process now looks like:</p>
+
+<ul>
+    <li>The <code>Encoder</code> transforms encoding to UTF-8: <code>&amp;theta;</code></li>
+    <li>The <code>EntityParser</code> transforms entities: <code>&theta;</code></li>
+    <li>HTML Purifier processes the code: <code>&theta;</code></li>
+    <li>The <code>Encoder</code> replaces all non-ASCII characters
+        with numeric entity reference: <code>&amp;#952;</code></li>
+    <li>For good measure, <code>Encoder</code> transforms encoding back to
+        original (which is strictly unnecessary for 99% of encodings
+        out there): <code>&amp;#952;</code> (remember, it's all ASCII!)</li>
+</ul>
+
+<p>...which means that this is only good for an occasional foray into
+the land of Unicode characters, and is totally unacceptable for Chinese
+or Japanese texts. The even bigger kicker is that, supposing the
+input encoding was actually ISO-8859-7, which <em>does</em> support
+theta, the character would get converted into a character entity reference
+anyway! (The Encoder does not discriminate).</p>
+
+<p>The current functionality is about where HTML Purifier will be for
+the rest of eternity. HTML Purifier could attempt to preserve the original
+form of the character references so that they could be substituted back in, only the
+DOM extension kills them off irreversibly. HTML Purifier could also attempt
+to be smart and only convert non-ASCII characters that weren't supported
+by the target encoding, but that would require reimplementing iconv
+with HTML awareness, something I will not do.</p>
+
+<p>So there: either it's UTF-8 or crippled international support. Your pick! (and I'm
+not being sarcastic here: some people could care less about other languages).</p>
+
+<h2 id="migrate">Migrate to UTF-8</h2>
+
+<p>So, you've decided to bite the bullet, and want to migrate to UTF-8.
+Note that this is not for the faint-hearted, and you should expect
+the process to take longer than you think it will take.</p>
+
+<p>The general idea is that you convert all existing text to UTF-8,
+and then you set all the headers and META tags we discussed earlier
+to UTF-8. There are many ways going about doing this: you could
+write a conversion script that runs through the database and re-encodes
+everything as UTF-8 or you could do the conversion on the fly when someone
+reads the page. The details depend on your system, but I will cover
+some of the more subtle points of migration that may trip you up.</p>
+
+<h3 id="migrate-db">Configuring your database</h3>
+
+<p>Most modern databases, the most prominent open-source ones being MySQL
+4.1+ and PostgreSQL, support character encodings. If you're switching
+to UTF-8, logically speaking, you'd want to make sure your database
+knows about the change too. There are some caveats though:</p>
+
+<h4 id="migrate-db-legit">Legit method</h4>
+
+<p>Standardization in terms of SQL syntax for specifying character
+encodings is notoriously spotty. Refer to your respective database's
+documentation on how to do this properly.</p>
+
+<p>For <a href="http://dev.mysql.com/doc/refman/5.0/en/charset-conversion.html">MySQL</a>, <code>ALTER</code> will magically perform the
+character encoding conversion for you. However, you have
+to make sure that the text inside the column is what is says it is:
+if you had put Shift-JIS in an ISO 8859-1 column, MySQL will irreversibly mangle
+the text when you try to convert it to UTF-8. You'll have to convert
+it to a binary field, convert it to a Shift-JIS field (the real encoding),
+and then finally to UTF-8. Many a website had pages irreversibly mangled
+because they didn't realize that they'd been deluding themselves about
+the character encoding all along; don't become the next victim.</p>
+
+<p>For <a href="http://www.postgresql.org/docs/8.2/static/multibyte.html">PostgreSQL</a>, there appears to be no direct way to change the
+encoding of a database (as of 8.2). You will have to dump the data, and then reimport
+it into a new table. Make sure that your client encoding is set properly:
+this is how PostgreSQL knows to perform an encoding conversion.</p>
+
+<p>Many times, you will be also asked about the &quot;collation&quot; of
+the new column. Collation is how a DBMS sorts text, like ordering
+B, C and A into A, B and C (the problem gets surprisingly complicated
+when you get to languages like Thai and Japanese). If in doubt,
+going with the default setting is usually a safe bet.</p>
+
+<p>Once the conversion is all said and done, you still have to remember
+to set the client encoding (your encoding) properly on each database
+connection using <code>SET NAMES</code> (which is standard SQL and is
+usually supported).</p>
+
+<h4 id="migrate-db-binary">Binary</h4>
+
+<p>Due to the aforementioned compatibility issues, a more interoperable
+way of storing UTF-8 text is to stuff it in a binary datatype.
+<code>CHAR</code> becomes <code>BINARY</code>, <code>VARCHAR</code> becomes
+<code>VARBINARY</code> and <code>TEXT</code> becomes <code>BLOB</code>.
+Doing so can save you some huge headaches:</p>
+
+<ul>
+    <li>The syntax for binary data types is very portable,</li>
+    <li>MySQL 4.0 has <em>no</em> support for character encodings, so
+        if you want to support it you <em>have</em> to use binary,</li>
+    <li>MySQL, as of 5.1, has no support for four byte UTF-8 characters,
+        which represent characters beyond the basic multilingual
+        plane, and</li>
+    <li>You will never have to worry about your DBMS being too smart
+        and attempting to convert your text when you don't want it to.</li>
+</ul>
+
+<p>MediaWiki, a very prominent international application, uses binary fields
+for storing their data because of point three.</p>
+
+<p>There are drawbacks, of course:</p>
+
+<ul>
+    <li>Database tools like PHPMyAdmin won't be able to offer you inline
+        text editing, since it is declared as binary,</li>
+    <li>It's not semantically correct: it's really text not binary
+        (lying to the database),</li>
+    <li>Unless you use the not-very-portable wizardry mentioned above,
+        you have to change the encoding yourself (usually, you'd do
+        it on the fly), and</li>
+    <li>You will not have collation.</li>
+</ul>
+
+<p>Choose based on your circumstances.</p>
+
+<h3 id="migrate-editor">Text editor</h3>
+
+<p>For more flat-file oriented systems, you will often be tasked with
+converting reams of existing text and HTML files into UTF-8, as well as
+making sure that all new files uploaded are properly encoded. Once again,
+I can only point vaguely in the right direction for converting your
+existing files: make sure you backup, make sure you use
+<a href="http://php.net/ref.iconv">iconv</a>(), and
+make sure you know what the original character encoding of the files
+is (or are, depending on the tidiness of your system).</p>
+
+<p>However, I can proffer more specific advice on the subject of
+text editors. Many text editors have notoriously spotty Unicode support.
+To find out how your editor is doing, you can check out <a
+href="http://www.alanwood.net/unicode/utilities_editors.html">this list</a>
+or <a href="http://en.wikipedia.org/wiki/Comparison_of_text_editors#Encoding_support">Wikipedia's list.</a>
+I personally use Notepad++, which works like a charm when it comes to UTF-8.
+Usually, you will have to <strong>explicitly</strong> tell the editor through some dialogue
+(usually Save as or Format) what encoding you want it to use. An editor
+will often offer &quot;Unicode&quot; as a method of saving, which is
+ambiguous. Make sure you know whether or not they really mean UTF-8
+or UTF-16 (which is another flavor of Unicode).</p>
+
+<p>The two things to look out for are whether or not the editor
+supports <strong>font mixing</strong> (multiple
+fonts in one document) and whether or not it adds a <strong>BOM</strong>.
+Font mixing is important because fonts rarely have support for every
+language known to mankind: in order to be flexible, an editor must
+be able to take a little from here and a little from there, otherwise
+all your Chinese characters will come as nice boxes. We'll discuss
+BOM below.</p>
+
+<h3 id="migrate-bom">Byte Order Mark (headers already sent!)</h3>
+
+<p>The BOM, or <a href="http://en.wikipedia.org/wiki/Byte_Order_Mark">Byte
+Order Mark</a>, is a magical, invisible character placed at
+the beginning of UTF-8 files to tell people what the encoding is and
+what the endianness of the text is. It is also unnecessary.</p>
+
+<p>Because it's invisible, it often
+catches people by surprise when it starts doing things it shouldn't
+be doing. For example, this PHP file:</p>
+
+<pre><strong>BOM</strong>&lt;?php
+header('Location: index.php');
+?&gt;</pre>
+
+<p>...will fail with the all too familiar <strong>Headers already sent</strong>
+PHP error. And because the BOM is invisible, this culprit will go unnoticed.
+My suggestion is to only use ASCII in PHP pages, but if you must, make
+sure the page is saved WITHOUT the BOM.</p>
+
+<blockquote class="aside">
+    <p>The headers the error is referring to are <strong>HTTP headers</strong>,
+       which are sent to the browser before any HTML to tell it various
+       information. The moment any regular text (and yes, a BOM counts as
+       ordinary text) is output, the headers must be sent, and you are
+       not allowed to send anymore. Thus, the error.</p>
+</blockquote>
+
+<p>If you are reading in text files to insert into the middle of another
+page, it is strongly advised (but not strictly necessary) that you replace out the UTF-8 byte
+sequence for BOM <code>&quot;\xEF\xBB\xBF&quot;</code> before inserting it in,
+via:</p>
+
+<pre>$text = str_replace(&quot;\xEF\xBB\xBF&quot;, '', $text);</pre>
+
+<h3 id="migrate-fonts">Fonts</h3>
+
+<p>Generally speaking, people who are having trouble with fonts fall
+into two categories:</p>
+
+<ul>
+<li>Those who want to
+use an extremely obscure language for which there is very little
+support even among native speakers of the language, and</li>
+<li>Those where the primary language of the text is
+well-supported but there are occasional characters
+that aren't supported.</li>
+</ul>
+
+<p>Yes, there's always a chance where an English user happens across
+a Sinhalese website and doesn't have the right font. But an English user
+who happens not to have the right fonts probably has no business reading Sinhalese
+anyway. So we'll deal with the other two edge cases.</p>
+
+<h4 id="migrate-fonts-obscure">Obscure scripts</h4>
+
+<p>If you run a Bengali website, you may get comments from users who
+would like to read your website but get heaps of question marks or
+other meaningless characters. Fixing this problem requires the
+installation of a font or language pack which is often highly
+dependent on what the language is. <a href="http://bn.wikipedia.org/wiki/%E0%A6%89%E0%A6%87%E0%A6%95%E0%A6%BF%E0%A6%AA%E0%A7%87%E0%A6%A1%E0%A6%BF%E0%A6%AF%E0%A6%BC%E0%A6%BE:Bangla_script_display_and_input_help">Here is an example</a>
+of such a help file for the Bengali language; I am sure there are
+others out there too. You just have to point users to the appropriate
+help file.</p>
+
+<h4 id="migrate-fonts-occasional">Occasional use</h4>
+
+<p>A prime example of when you'll see some very obscure Unicode
+characters embedded in what otherwise would be very bland ASCII are
+letters of the
+<a href="http://en.wikipedia.org/wiki/International_Phonetic_Alphabet">International
+Phonetic Alphabet (IPA)</a>, use to designate pronunciations in a very standard
+manner (you probably see them all the time in your dictionary). Your
+average font probably won't have support for all of the IPA characters
+like &#664; (bilabial click) or &#658; (voiced postalveolar fricative).
+So what's a poor browser to do? Font mix! Smart browsers like Mozilla Firefox
+and Internet Explorer 7 will borrow glyphs from other fonts in order
+to make sure that all the characters display properly.</p>
+
+<p>But what happens when the browser isn't smart and happens to be the
+most widely used browser in the entire world? Microsoft IE 6
+is not smart enough to borrow from other fonts when a character isn't
+present, so more often than not you'll be slapped with a nice big &#65533;.
+To get things to work, MSIE 6 needs a little nudge. You could configure it
+to use a different font to render the text, but you can achieve the same
+effect by selectively changing the font for blocks of special characters
+to known good Unicode fonts.</p>
+
+<p>Fortunately, the folks over at Wikipedia have already done all the
+heavy lifting for you. Get the CSS from the horses mouth here:
+<a href="http://en.wikipedia.org/wiki/MediaWiki:Common.css">Common.css</a>,
+and search for &quot;.IPA&quot; There are also a smattering of
+other classes you can use for other purposes, check out
+<a href="http://meta.wikimedia.org/wiki/Help:Special_characters#Displaying_Special_Characters">this page</a>
+for more details. For you lazy ones, this should work:</p>
+
+<pre>.Unicode {
+        font-family: Code2000, &quot;TITUS Cyberbit Basic&quot;, &quot;Doulos SIL&quot;,
+            &quot;Chrysanthi Unicode&quot;, &quot;Bitstream Cyberbit&quot;,
+            &quot;Bitstream CyberBase&quot;, Thryomanes, Gentium, GentiumAlt,
+            &quot;Lucida Grande&quot;, &quot;Arial Unicode MS&quot;, &quot;Microsoft Sans Serif&quot;,
+            &quot;Lucida Sans Unicode&quot;;
+        font-family /**/:inherit; /* resets fonts for everyone but IE6 */
+}</pre>
+
+<p>The standard usage goes along the lines of <code>&lt;span class=&quot;Unicode&quot;&gt;Crazy
+Unicode stuff here&lt;/span&gt;</code>. Characters in the
+<a href="http://en.wikipedia.org/wiki/Windows_Glyph_List_4">Windows Glyph List</a>
+usually don't need to be fixed, but for anything else you probably
+want to play it safe. Unless, of course, you don't care about IE6
+users.</p>
+
+<h3 id="migrate-variablewidth">Dealing with variable width in functions</h3>
+
+<p>When people claim that PHP6 will solve all our Unicode problems, they're
+misinformed. It will not fix any of the aforementioned troubles. It will,
+however, fix the problem we are about to discuss: processing UTF-8 text
+in PHP.</p>
+
+<p>PHP (as of PHP5) is blithely unaware of the existence of UTF-8 (with a few
+notable exceptions). Sometimes, this will cause problems, other times,
+this won't. So far, we've avoided discussing the architecture of
+UTF-8, so, we must first ask, what is UTF-8? Yes, it supports Unicode,
+and yes, it is variable width. Other traits:</p>
+
+<ul>
+    <li>Every character's byte sequence is unique and will never be found
+        inside the byte sequence of another character,</li>
+    <li>UTF-8 may use up to four bytes to encode a character,</li>
+    <li>UTF-8 text must be checked for well-formedness,</li>
+    <li>Pure ASCII is also valid UTF-8, and</li>
+    <li>Binary sorting will sort UTF-8 in the same order as Unicode.</li>
+</ul>
+
+<p>Each of these traits affect different domains of text processing
+in different ways. It is beyond the scope of this document to explain
+what precisely these implications are. PHPWact provides
+a very good <a href="http://www.phpwact.org/php/i18n/utf-8">reference document</a>
+on what to expect from each function, although coverage is spotty in
+some areas. Their more general notes on
+<a href="http://www.phpwact.org/php/i18n/charsets">character sets</a>
+are also worth looking at for information on UTF-8. Some rules of thumb
+when dealing with Unicode text:</p>
+
+<ul>
+    <li>Do not EVER use functions that:<ul>
+        <li>...convert case (strtolower, strtoupper, ucfirst, ucwords)</li>
+        <li>...claim to be case-insensitive (str_ireplace, stristr, strcasecmp)</li>
+    </ul></li>
+    <li>Think twice before using functions that:<ul>
+        <li>...count characters (strlen will return bytes, not characters;
+            str_split and word_wrap may corrupt)</li>
+        <li>...convert characters to entity references (UTF-8 doesn't need entities)</li>
+        <li>...do very complex string processing (*printf)</li>
+    </ul></li>
+</ul>
+
+<p>Note: this list applies to UTF-8 encoded text only: if you have
+a string that you are 100% sure is ASCII, be my guest and use
+<code>strtolower</code> (HTML Purifier uses this function.)</p>
+
+<p>Regardless, always think in bytes, not characters. If you use strpos()
+to find the position of a character, it will be in bytes, but this
+usually won't matter since substr() also operates with byte indices!</p>
+
+<p>You'll also need to make sure your UTF-8 is well-formed and will
+probably need replacements for some of these functions. I recommend
+using Harry Fuecks' <a href="http://phputf8.sourceforge.net/">PHP
+UTF-8</a> library, rather than use mb_string directly. HTML Purifier
+also defines a few useful UTF-8 compatible functions: check out
+<code>Encoder.php</code> in the <code>/library/HTMLPurifier/</code>
+directory.</p>
+
+<h2 id="externallinks">Further Reading</h2>
+
+<p>Well, that's it. Hopefully this document has served as a very
+practical springboard into knowledge of how UTF-8 works.  You may have
+decided that you don't want to migrate yet: that's fine, just know
+what will happen to your output and what bug reports you may receive.</p>
+
+<p>Many other developers have already discussed the subject of Unicode,
+UTF-8 and internationalization, and I would like to defer to them for
+a more in-depth look into character sets and encodings.</p>
+
+<ul>
+    <li><a href="http://www.joelonsoftware.com/articles/Unicode.html">
+        The Absolute Minimum Every Software Developer Absolutely,
+        Positively Must Know About Unicode and Character Sets
+        (No Excuses!)</a> by Joel Spolsky, provides a <em>very</em>
+        good high-level look at Unicode and character sets in general.</li>
+    <li><a href="http://en.wikipedia.org/wiki/UTF-8">UTF-8 on Wikipedia</a>,
+        provides a lot of useful details into the innards of UTF-8, although
+        it may be a little off-putting to people who don't know much
+        about Unicode to begin with.</li>
+</ul>
+
+</body>
+</html>
+
+<!-- vim: et sw=4 sts=4
+-->

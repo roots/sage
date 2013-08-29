@@ -1,0 +1,5 @@
+--HTML--
+<b>basic</b>
+--EXPECT--
+<b>basic</b>
+--# vim: et sw=4 sts=4

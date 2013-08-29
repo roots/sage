@@ -1,0 +1,164 @@
+Configuration naming
+
+HTML Purifier 4.0.0 features a new configuration naming system that
+allows arbitrary nesting of namespaces.  While there are certain cases
+in which using two namespaces is obviously better (the canonical example
+is where we were using AutoFormatParam to contain directives for AutoFormat
+parameters), it is unclear whether or not a general migration to highly
+namespaced directives is a good idea or not.
+
+== Case studies ==
+
+=== Attr.* ===
+
+We have a dead duck HTML.Attr.Name.UseCDATA which migrated before we decided
+to think this out thoroughly.
+
+We currently have a large number of directives in the Attr.* namespace.
+These directives tweak the behavior of some HTML attributes.  They have
+the properties:
+
+* While they apply to only one attribute at a time, the attribute can
+  span over multiple elements (not necessarily all attributes, either).
+  The information of which elements it impacts is either omitted or
+  informally stated (EnableID applies to all elements, DefaultImageAlt
+  applies to <img> tags, AllowedRev doesn't say but only applies to a tags).
+
+* There is a certain degree of clustering that could be applied, especially
+  to the ID directives.  The clustering could be done with respect to
+  what element/attribute was used, i.e.
+
+    *.id -> EnableID, IDBlacklistRegexp, IDBlacklist, IDPrefixLocal, IDPrefix
+    img.src -> DefaultInvalidImage
+    img.alt -> DefaultImageAlt, DefaultInvalidImageAlt
+    bdo.dir -> DefaultTextDir
+    a.rel -> AllowedRel
+    a.rev -> AllowedRev
+    a.target -> AllowedFrameTargets
+    a.name -> Name.UseCDATA
+
+* The directives often reference generic attribute types that were specified
+  in the DTD/specification.  However, some of the behavior specifically relies
+  on the fact that other use cases of the attribute are not, at current,
+  supported by HTML Purifier.
+
+    AllowedRel, AllowedRev -> heavily <a> specific; if <link> ends up being
+        allowed, we will also have to give users specificity there (we also
+        want to preserve generality) DTD %Linktypes, HTML5 distinguishes
+        between <link> and <a>/<area>
+    AllowedFrameTargets -> heavily <a> specific, but also used by <area>
+        and <form>. Transitional DTD %FrameTarget, not present in strict,
+        HTML5 calls them "browsing contexts"
+    Default*Image* -> as a default parameter, is almost entirely exlcusive
+        to <img>
+    EnableID -> global attribute
+    Name.UseCDATA -> heavily <a> specific, but has heavy other usage by
+        many things
+
+== AutoFormat.* ==
+
+These have the fairly normal pluggable architecture that lends itself to
+large amounts of namespaces (pluggability may be the key to figuring
+out when gratuitous namespacing is good.)  Properties:
+
+* Boolean directives are fair game for being namespaced: for example,
+  RemoveEmpty.RemoveNbsp triggers RemoveEmpty.RemoveNbsp.Exceptions,
+  the latter of which only makes sense when RemoveEmpty.RemoveNbsp
+  is set to true. (The same applies to RemoveNbsp too)
+
+The AutoFormat string is a bit long, but is the only bit of repeated
+context.
+
+== Core.* ==
+
+Core is the potpourri of directives, mostly regarding some minor behavioral
+tweaks for HTML handling abilities.
+
+    AggressivelyFixLt
+    ConvertDocumentToFragment
+    DirectLexLineNumberSyncInterval
+    LexerImpl
+    MaintainLineNumbers
+        Lexer
+    CollectErrors
+    Language
+        Error handling (Language is ostensibly a little more general, but
+        it's only used for error handling right now)
+    ColorKeywords
+        CSS and HTML
+    Encoding
+    EscapeNonASCIICharacters
+        Character encoding
+    EscapeInvalidChildren
+    EscapeInvalidTags
+    HiddenElements
+    RemoveInvalidImg
+        Lexing/Output
+    RemoveScriptContents
+        Deprecated
+
+== HTML.* ==
+
+    AllowedAttributes
+    AllowedElements
+    AllowedModules
+    Allowed
+    ForbiddenAttributes
+    ForbiddenElements
+        Element set tuning
+    BlockWrapper
+        Child def advanced twiddle
+    CoreModules
+    CustomDoctype
+        Advanced HTMLModuleManager twiddles
+    DefinitionID
+    DefinitionRev
+        Caching
+    Doctype
+    Parent
+    Strict
+    XHTML
+        Global environment
+    MaxImgLength
+        Attribute twiddle? (applies to two attributes)
+    Proprietary
+    SafeEmbed
+    SafeObject
+    Trusted
+        Extra functionality/tagsets
+    TidyAdd
+    TidyLevel
+    TidyRemove
+        Tidy
+
+== Output.* ==
+
+These directly affect the output of Generator. These are all advanced
+twiddles.
+
+== URI.* ==
+
+    AllowedSchemes
+    OverrideAllowedSchemes
+        Scheme tuning
+    Base
+    DefaultScheme
+    Host
+        Global environment
+    DefinitionID
+    DefinitionRev
+        Caching
+    DisableExternalResources
+    DisableExternal
+    DisableResources
+    Disable
+        Contextual/authority tuning
+    HostBlacklist
+        Authority tuning
+    MakeAbsolute
+    MungeResources
+    MungeSecretKey
+    Munge
+        Transformation behavior (munge can be grouped)
+
+

@@ -1,0 +1,84 @@
+
+Install
+    How to install the Phorum HTML Purifier plugin
+
+0. PREREQUISITES
+----------------
+This Phorum module only works on PHP5 and with HTML Purifier 4.0.0
+or later.
+
+1. UNZIP
+--------
+Unzip phorum-htmlpurifier-x.y.z, producing an htmlpurifier folder.
+You've already done this step if you're reading this!
+
+2. MOVE
+-------
+Move the htmlpurifier folder to the mods/ folder of your Phorum
+installation, so the directory structure looks like:
+
+phorum/
+    mods/
+        htmlpurifier/
+            INSTALL - this install file
+            info.txt, ... - the module files
+            htmlpurifier/
+
+3. INSTALL HTML PURIFIER
+------------------------
+Download and unzip HTML Purifier <htmlpurifier.org>. Place the contents of
+the library/ folder in the htmlpurifier/htmlpurifier folder. Your directory
+structure will look like:
+
+phorum/
+    mods/
+        htmlpurifier/
+            htmlpurifier/
+                HTMLPurifier.auto.php
+                ... - other files
+                HTMLPurifier/
+
+Advanced users:
+    If you have HTML Purifier installed elsewhere on your server,
+    all you need is an HTMLPurifier.auto.php file in the library folder which
+    includes the HTMLPurifier.auto.php file in your install.
+
+4. MIGRATE
+----------
+If you're setting up a new Phorum installation, all you need to do is create
+a blank migrate.php file in the htmlpurifier module folder (NOT the library
+folder.
+
+If you have an old Phorum installation and was using BBCode,
+copy migrate.bbcode.php to migrate.php. If you were using a different input
+format, follow the instructions in migrate.bbcode.php to create your own custom
+migrate.php file.
+
+Your directory structure should now look like this:
+
+phorum/
+    mods/
+        htmlpurifier/
+            migrate.php
+
+5. ENABLE
+---------
+Navigate to your Phorum admin panel at http://example.com/phorum/admin.php,
+click on Global Settings > Modules, scroll to "HTML Purifier Phorum Mod" and
+turn it On.
+
+6. MIGRATE SIGNATURES
+---------------------
+If you're setting up a new Phorum installation, skip this step.
+
+If you allowed your users to make signatures, navigate to the module settings
+page of HTML Purifier (Global Settings > Modules > HTML Purifier Phorum Mod >
+Configure), type in "yes" in the "Confirm" box, and press "Migrate."
+
+ONLY DO THIS ONCE! BE SURE TO BACK UP YOUR DATABASE!
+
+7. CONFIGURE
+------------
+Configure using Edit settings. See that page for more information.
+
+    vim: et sw=4 sts=4

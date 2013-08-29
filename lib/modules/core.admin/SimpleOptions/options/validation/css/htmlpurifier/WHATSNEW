@@ -1,0 +1,6 @@
+HTML Purifier 4.5.0 is a minor bugfix and feature release, containing an
+accumulation of changes over a year.  CSS support has been extended to
+support display:inline-block, white-space, underscores in font families,
+page-break-* CSS3 properties (when proprietary is enabled.)  We now use
+SHA-1 to identify cached definitions, and the semantics of stacked
+attribute transforms has changed slightly.

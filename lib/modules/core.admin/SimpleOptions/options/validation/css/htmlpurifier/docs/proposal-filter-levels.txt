@@ -1,0 +1,137 @@
+
+Filter Levels
+    When one size *does not* fit all
+
+It makes little sense to constrain users to one set of HTML elements and
+attributes and tell them that they are not allowed to mold this in
+any fashion.  Many users demand to be able to custom-select which elements
+and attributes they want.  This is fine: because HTML Purifier keeps close
+track of what elements are safe to use, there is no way for them to
+accidently allow an XSS-able tag.
+
+However, combing through the HTML spec to make your own whitelist can
+be a daunting task.  HTML Purifier ought to offer pre-canned filter levels
+that amateur users can select based on what they think is their use-case.
+
+Here are some fuzzy levels you could set:
+
+1. Comments - Wordpress recommends a, abbr, acronym, b, blockquote, cite,
+    code, em, i, strike, strong; however, you could get away with only a, em and
+    p; also having blockquote and pre tags would be helpful.
+2. BBCode - Emulate the usual tagset for forums: b, i, img, a, blockquote,
+    pre, div, span and h[2-6] (the last three are for specially formatted
+    posts, div and span require associated classes or inline styling enabled
+    to be useful)
+3. Pages - As permissive as possible without allowing XSS.  No protection
+    against bad design sense, unfortunantely.  Suitable for wiki and page
+    environments. (probably what we have now)
+4. Lint - Accept everything in the spec, a Tidy wannabe. (This probably won't
+    get implemented as it would require routines for things like <object>
+    and friends to be implemented, which is a lot of work for not a lot of
+    benefit)
+
+One final note: when you start axing tags that are more commonly used, you
+run the risk of accidentally destroying user data, especially if the data
+is incoming from a WYSIWYG editor that hasn't been synced accordingly. This may
+make forbidden element to text transformations desirable (for example, images).
+
+
+
+== Element Risk Analysis ==
+
+Although none of the currently supported elements presents a security
+threat per-say, some can cause problems for page layouts or be
+extremely complicated.
+
+Legend:
+    [danger level] - regular tags / uncommon tags ~ deprecated tags
+    [danger level]* - rare tags
+
+1 - blockquote, code, em, i, p, tt / strong, sub, sup
+1* - abbr, acronym, bdo, cite, dfn, kbd, q, samp
+2 - b, br, del, div, pre, span / ins, s, strike ~ u
+3 - h2, h3, h4, h5, h6 ~ center
+4 - h1, big ~ font
+5 - a
+7 - area, map
+
+These are special use tags, they should be enabled on a blanket basis.
+
+Lists - dd, dl, dt, li, ol, ul ~ menu, dir
+Tables - caption, table, td, th, tr / col, colgroup, tbody, tfoot, thead
+
+Forms - fieldset, form, input, lable, legend, optgroup, option, select, textarea
+XSS - noscript, object, script ~ applet
+Meta - base, basefont, body, head, html, link, meta, style, title
+Frames - frame, frameset, iframe
+
+And tag specific notes:
+
+a   - general problems involving linkspam
+b   - too much bold is bad, typographically speaking bold is discouraged
+br  - often misused
+center - CSS, usually no legit use
+del - only useful in editing context
+div - little meaning in certain contexts i.e. blog comment
+h1  - usually no legit use, as header is already set by application
+h*  - not needed in blog comments
+hr  - usually not necessary in blog comments
+img - could be extremely undesirable if linking to external pics (CSRF, goatse)
+pre - could use formatting, only useful in code contexts
+q   - very little support
+s   - transform into span with styling or del?
+small - technically presentational
+span - depends on attribute allowances
+sub, sup - specialized
+u   - little legit use, prefer class with text-decoration
+
+Based on the riskiness of the items, we may want to offer %HTML.DisableImages
+attribute and put URI filtering higher up on the priority list.
+
+
+== Attribute Risk Analysis ==
+
+We actually have a suprisingly small assortment of allowed attributes (the
+rest are deprecated in strict, and thus we opted not to allow them, even
+though our output is XHTML Transitional by default.)
+
+Required URI - img.alt, img.src, a.href
+Medium risk - *.class, *.dir
+High risk - img.height, img.width, *.id, *.style
+
+Table - colgroup/col.span, td/th.rowspan, td/th.colspan
+Uncommon - *.title, *.lang, *.xml:lang
+Rare - td/th.abbr, table.summary, {table}.charoff
+Rare URI - del.cite, ins.cite, blockquote.cite, q.cite, img.longdesc
+Presentational - {table}.align, {table}.valign, table.frame, table.rules,
+    table.border
+Partially presentational - table.cellpadding, table.cellspacing,
+    table.width, col.width, colgroup.width
+
+
+== CSS Risk Analysis ==
+
+Currently, there is no support for fine-grained "allowed CSS" specification,
+mainly because I'm lazy, partially because no one has asked for it. However,
+this will be added eventually.
+
+There are certain CSS elements that are extremely useful inline, but then
+as you get to more presentation oriented styling it may not always be
+appropriate to inline them.
+
+Useful - clear, float, border-collapse, caption-side
+
+These CSS properties can break layouts if used improperly. We have excluded
+any CSS properties that are not currently implemented (such as position).
+
+Dangerous, can go outside container - float
+Easy to abuse - font-size, font-family (font), width
+Colored - background-color (background), border-color (border), color
+    (see proposal-colors.html)
+Dramatic - border, list-style-position (list-style), margin, padding,
+    text-align, text-indent, text-transform, vertical-align, line-height
+
+Dramatic elements substantially change the look of text in ways that should
+probably have been reserved to other areas.
+
+    vim: et sw=4 sts=4

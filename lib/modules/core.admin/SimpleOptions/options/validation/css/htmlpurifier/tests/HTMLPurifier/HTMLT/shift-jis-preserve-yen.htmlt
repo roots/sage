@@ -1,0 +1,8 @@
+--SKIPIF--
+if (!HTMLPurifier_Encoder::iconvAvailable()) return true;
+--INI--
+Core.Encoding = "Shift_JIS"
+Core.EscapeNonASCIICharacters = true
+--HTML--
+<b style="font-family:'&#165;';">111</b>
+--# vim: et sw=4 sts=4

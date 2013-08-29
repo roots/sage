@@ -1,0 +1,7 @@
+--INI--
+HTML.Strict = true
+--HTML--
+<blockquote>Illegal contents</blockquote>
+--EXPECT--
+<blockquote><p>Illegal contents</p></blockquote>
+--# vim: et sw=4 sts=4

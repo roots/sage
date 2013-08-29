@@ -1,0 +1,211 @@
+Considerations for ErrorCollection
+
+Presently, HTML Purifier takes a code-execution centric approach to handling
+errors. Errors are organized and grouped according to which segment of the
+code triggers them, not necessarily the portion of the input document that
+triggered the error. This means that errors are pseudo-sorted by category,
+rather than location in the document.
+
+One easy way to "fix" this problem would be to re-sort according to line number.
+However, the "category" style information we derive from naively following
+program execution is still useful. After all, each of the strategies which
+can report errors still process the document mostly linearly. Furthermore,
+not only do they process linearly, but the way they pass off operations to
+sub-systems mirrors that of the document. For example, AttrValidator will
+linearly proceed through elements, and on each element will use AttrDef to
+validate those contents. From there, the attribute might have more
+sub-components, which have execution passed off accordingly.
+
+In fact, each strategy handles a very specific class of "error."
+
+RemoveForeignElements   - element tokens
+MakeWellFormed          - element token ordering
+FixNesting              - element token ordering
+ValidateAttributes      - attributes of elements
+
+The crucial point is that while we care about the hierarchy governing these
+different errors, we *don't* care about any other information about what actually
+happens to the elements. This brings up another point: if HTML Purifier fixes
+something, this is not really a notice/warning/error; it's really a suggestion
+of a way to fix the aforementioned defects.
+
+In short, the refactoring to take this into account kinda sucks.
+
+Errors should not be recorded in order that they are reported. Instead, they
+should be bound to the line (and preferably element) in which they were found.
+This means we need some way to uniquely identify every element in the document,
+which doesn't presently exist. An easy way of adding this would be to track
+line columns. An important ramification of this is that we *must* use the
+DirectLex implementation.
+
+    1. Implement column numbers for DirectLex [DONE!]
+    2. Disable error collection when not using DirectLex [DONE!]
+
+Next, we need to re-orient all of the error declarations to place CurrentToken
+at utmost important. Since this is passed via Context, it's not always clear
+if that's available. ErrorCollector should complain HARD if it isn't available.
+There are some locations when we don't have a token available. These include:
+
+    * Lexing - this can actually have a row and column, but NOT correspond to
+      a token
+    * End of document errors - bump this to the end
+
+Actually, we *don't* have to complain if CurrentToken isn't available; we just
+set it as a document-wide error. And actually, nothing needs to be done here.
+
+Something interesting to consider is whether or not we care about the locations
+of attributes and CSS properties, i.e. the sub-objects that compose these things.
+In terms of consistency, at the very least attributes should have column/line
+numbers attached to them. However, this may be overkill, as attributes are
+uniquely identifiable. You could go even further, with CSS, but they are also
+uniquely identifiable.
+
+Bottom-line is, however, this information must be available, in form of the
+CurrentAttribute and CurrentCssProperty (theoretical) context variables, and
+it must be used to organize the errors that the sub-processes may throw.
+There is also a hierarchy of sorts that may make merging this into one context
+variable more sense, if it hadn't been for HTML's reasonably rigid structure.
+A CSS property will never contain an HTML attribute. So we won't ever get
+recursive relations, and having multiple depths won't ever make sense. Leave
+this be.
+
+We already have this information, and consequently, using start and end is
+*unnecessary*, so long as the context variables are set appropriately. We don't
+care if an error was thrown by an attribute transform or an attribute definition;
+to the end user these are the same (for a developer, they are different, but
+they're better off with a stack trace (which we should add support for) in such
+cases).
+
+    3. Remove start()/end() code. Don't get rid of recursion, though [DONE]
+    4. Setup ErrorCollector to use context information to setup hierarchies.
+       This may require a different internal format. Use objects if it gets
+       complex. [DONE]
+
+       ASIDE
+            More on this topic: since we are now binding errors to lines
+            and columns, a particular error can have three relationships to that
+            specific location:
+
+            1. The token at that location directly
+                RemoveForeignElements
+                AttrValidator (transforms)
+                MakeWellFormed
+            2. A "component" of that token (i.e. attribute)
+                AttrValidator (removals)
+            3. A modification to that node (i.e. contents from start to end
+               token) as a whole
+                FixNesting
+
+            This needs to be marked accordingly. In the presentation, it might
+            make sense keep (3) separate, have (2) a sublist of (1). (1) can
+            be a closing tag, in which case (3) makes no sense at all, OR it
+            should be related with its opening tag (this may not necessarily
+            be possible before MakeWellFormed is run).
+
+            So, the line and column counts as our identifier, so:
+
+            $errors[$line][$col] = ...
+
+            Then, we need to identify case 1, 2 or 3. They are identified as
+            such:
+
+            1. Need some sort of semaphore in RemoveForeignElements, etc.
+            2. If CurrentAttr/CurrentCssProperty is non-null
+            3. Default (FixNesting, MakeWellFormed)
+
+            One consideration about (1) is that it usually is actually a
+            (3) modification, but we have no way of knowing about that because
+            of various optimizations. However, they can probably be treated
+            the same. The other difficulty is that (3) is never a line and
+            column; rather, it is a range (i.e. a duple) and telling the user
+            the very start of the range may confuse them. For example,
+
+            <b>Foo<div>bar</div></b>
+            ^     ^
+
+            The node being operated on is <b>, so the error would be assigned
+            to the first caret, with a "node reorganized" error. Then, the
+            ChildDef would have submitted its own suggestions and errors with
+            regard to what's going in the internals.  So I suppose this is
+            ok. :-)
+
+            Now, the structure of the earlier mentioned ... would be something
+            like this:
+
+            object {
+                type = (token|attr|property),
+                value, // appropriate for type
+                errors => array(),
+                sub-errors = [recursive],
+            }
+
+            This helps us keep things agnostic. It is also sufficiently complex
+            enough to warrant an object.
+
+So, more wanking about the object format is in order. The way HTML Purifier is
+currently setup, the only possible hierarchy is:
+
+    token -> attr -> css property
+
+These relations do not exist all of the time; a comment or end token would not
+ever have any attributes, and non-style attributes would never have CSS properties
+associated with them.
+
+I believe that it is worth supporting multiple paths. At some point, we might
+have a hierarchy like:
+
+    * -> syntax
+      -> token -> attr -> css property
+                       -> url
+               -> css stylesheet <style>
+
+et cetera. Now, one of the practical implications of this is that every "node"
+on our tree is well-defined, so in theory it should be possible to either 1.
+create a separate class for each error struct, or 2. embed this information
+directly into HTML Purifier's token stream.  Embedding the information in the
+token stream is not a terribly good idea, since tokens can be removed, etc.
+So that leaves us with 1... and if we use a generic interface we can cut down
+on a lot of code we might need. So let's leave it like this.
+
+~~~~
+
+Then we setup suggestions.
+
+    5. Setup a separate error class which tells the user any modifications
+       HTML Purifier made.
+
+Some information about this:
+
+Our current paradigm is to tell the user what HTML Purifier did to the HTML.
+This is the most natural mode of operation, since that's what HTML Purifier
+is all about; it was not meant to be a validator.
+
+However, most other people have experience dealing with a validator. In cases
+where HTML Purifier unambiguously does the right thing, simply giving the user
+the correct version isn't a bad idea, but problems arise when:
+
+- The user has such bad HTML we do something odd, when we should have just
+  flagged the HTML as an error. Such examples are when we do things like
+  remove text from directly inside a <table> tag. It was probably meant to
+  be in a <td> tag or be outside the table, but we're not smart enough to
+  realize this so we just remove it. In such a case, we should tell the user
+  that there was foreign data in the table, but then we shouldn't "demand"
+  the user remove the data; it's more of a "here's a possible way of
+  rectifying the problem"
+
+- Giving line context for input is hard enough, but feasible; giving output
+  line context will be extremely difficult due to shifting lines; we'd probably
+  have to track what the tokens are and then find the appropriate out context
+  and it's not guaranteed to work etc etc etc.
+
+````````````
+
+Don't forget to spruce up output.
+
+    6. Output needs to automatically give line and column numbers, basically
+       "at line" on steroids. Look at W3C's output; it's ok. [PARTIALLY DONE]
+
+       - We need a standard CSS to apply (check demo.css for some starting
+         styling; some buttons would also be hip)
+
+    vim: et sw=4 sts=4

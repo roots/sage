@@ -1,0 +1,7 @@
+Directive.Deprecated
+TYPE: int
+DEFAULT: 0
+DESCRIPTION: This is a deprecated directive that shouldn't show up on the form.
+DEPRECATED-VERSION: 1.0.0
+DEPRECATED-USE: Directive.Allowed
+--# vim: et sw=4 sts=4

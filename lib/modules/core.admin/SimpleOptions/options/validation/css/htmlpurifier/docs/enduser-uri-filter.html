@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="description" content="Tutorial for creating custom URI filters." />
+<link rel="stylesheet" type="text/css" href="style.css" />
+
+<title>URI Filters - HTML Purifier</title>
+
+</head><body>
+
+<h1>URI Filters</h1>
+
+<div id="filing">Filed under End-User</div>
+<div id="index">Return to the <a href="index.html">index</a>.</div>
+<div id="home"><a href="http://htmlpurifier.org/">HTML Purifier</a> End-User Documentation</div>
+
+<p>
+  This is a quick and dirty document to get you on your way to writing
+  custom URI filters for your own URL filtering needs.  Why would you
+  want to write a URI filter?  If you need URIs your users put into
+  HTML to magically change into a different URI, this is
+  exactly what you need!
+</p>
+
+<h2>Creating the class</h2>
+
+<p>
+  Any URI filter you make will be a subclass of <code>HTMLPurifier_URIFilter</code>.
+  The scaffolding is thus:
+</p>
+
+<pre>class HTMLPurifier_URIFilter_<strong>NameOfFilter</strong> extends HTMLPurifier_URIFilter
+{
+    public $name = '<strong>NameOfFilter</strong>';
+    public function prepare($config) {}
+    public function filter(&$uri, $config, $context) {}
+}</pre>
+
+<p>
+  Fill in the variable <code>$name</code> with the name of your filter, and
+  take a look at the two methods. <code>prepare()</code> is an initialization
+  method that is called only once, before any filtering has been done of the
+  HTML. Use it to perform any costly setup work that only needs to be done
+  once. <code>filter()</code> is the guts and innards of our filter:
+  it takes the URI and does whatever needs to be done to it.
+</p>
+
+<p>
+  If you've worked with HTML Purifier, you'll recognize the <code>$config</code>
+  and <code>$context</code> parameters.  On the other hand, <code>$uri</code>
+  is something unique to this section of the application: it's a
+  <code>HTMLPurifier_URI</code> object. The interface is thus:
+</p>
+
+<pre>class HTMLPurifier_URI
+{
+    public $scheme, $userinfo, $host, $port, $path, $query, $fragment;
+    public function HTMLPurifier_URI($scheme, $userinfo, $host, $port, $path, $query, $fragment);
+    public function toString();
+    public function copy();
+    public function getSchemeObj($config, $context);
+    public function validate($config, $context);
+}</pre>
+
+<p>
+  The first three methods are fairly self-explanatory: you have a constructor,
+  a serializer, and a cloner.  Generally, you won't be using them when
+  you are manipulating the URI objects themselves.
+  <code>getSchemeObj()</code> is a special purpose method that returns
+  a <code>HTMLPurifier_URIScheme</code> object corresponding to the specific
+  URI at hand. <code>validate()</code> performs general-purpose validation
+  on the internal components of a URI. Once again, you don't need to
+  worry about these: they've already been handled for you.
+</p>
+
+<h2>URI format</h2>
+
+<p>
+  As a URIFilter, we're interested in the member variables of the URI object.
+</p>
+
+<table class="quick"><tbody>
+  <tr><th>Scheme</th>   <td>The protocol for identifying (and possibly locating) a resource (http, ftp, https)</td></tr>
+  <tr><th>Userinfo</th> <td>User information such as a username (bob)</td></tr>
+  <tr><th>Host</th>     <td>Domain name or IP address of the server (example.com, 127.0.0.1)</td></tr>
+  <tr><th>Port</th>     <td>Network port number for the server (80, 12345)</td></tr>
+  <tr><th>Path</th>     <td>Data that identifies the resource, possibly hierarchical (/path/to, ed@example.com)</td></tr>
+  <tr><th>Query</th>    <td>String of information to be interpreted by the resource (?q=search-term)</td></tr>
+  <tr><th>Fragment</th> <td>Additional information for the resource after retrieval (#bookmark)</td></tr>
+</tbody></table>
+
+<p>
+  Because the URI is presented to us in this form, and not
+  <code>http://bob@example.com:8080/foo.php?q=string#hash</code>, it saves us
+  a lot of trouble in having to parse the URI every time we want to filter
+  it. For the record, the above URI has the following components:
+</p>
+
+<table class="quick"><tbody>
+  <tr><th>Scheme</th>   <td>http</td></tr>
+  <tr><th>Userinfo</th> <td>bob</td></tr>
+  <tr><th>Host</th>     <td>example.com</td></tr>
+  <tr><th>Port</th>     <td>8080</td></tr>
+  <tr><th>Path</th>     <td>/foo.php</td></tr>
+  <tr><th>Query</th>    <td>q=string</td></tr>
+  <tr><th>Fragment</th> <td>hash</td></tr>
+</tbody></table>
+
+<p>
+  Note that there is no question mark or octothorpe in the query or
+  fragment: these get removed during parsing.
+</p>
+
+<p>
+  With this information, you can get straight to implementing your
+  <code>filter()</code> method. But one more thing...
+</p>
+
+<h2>Return value: Boolean, not URI</h2>
+
+<p>
+  You may have noticed that the URI is being passed in by reference.
+  This means that whatever changes you make to it, those changes will
+  be reflected in the URI object the callee had.  <strong>Do not
+  return the URI object: it is unnecessary and will cause bugs.</strong>
+  Instead, return a boolean value, true if the filtering was successful,
+  or false if the URI is beyond repair and needs to be axed.
+</p>
+
+<p>
+  Let's suppose I wanted to write a filter that converted links with a
+  custom <code>image</code> scheme to its corresponding real path on
+  our website:
+</p>
+
+<pre>class HTMLPurifier_URIFilter_TransformImageScheme extends HTMLPurifier_URIFilter
+{
+    public $name = 'TransformImageScheme';
+    public function filter(&$uri, $config, $context) {
+        if ($uri->scheme !== 'image') return true;
+        $img_name = $uri->path;
+        // Overwrite the previous URI object
+        $uri = new HTMLPurifier_URI('http', null, null, null, '/img/' . $img_name . '.png', null, null);
+        return true;
+    }
+}</pre>
+
+<p>
+  Notice I did not <code>return $uri;</code>. This filter would turn
+  <code>image:Foo</code> into <code>/img/Foo.png</code>.
+</p>
+
+<h2>Activating your filter</h2>
+
+<p>
+  Having a filter is all well and good, but you need to tell HTML Purifier
+  to use it. Fortunately, this part's simple:
+</p>
+
+<pre>$uri = $config->getDefinition('URI');
+$uri->addFilter(new HTMLPurifier_URIFilter_<strong>NameOfFilter</strong>(), $config);</pre>
+
+<p>
+    After adding a filter, you won't be able to set configuration directives.
+    Structure your code accordingly.
+</p>
+
+<!-- XXX: link to new documentation system -->
+
+<h2>Post-filter</h2>
+
+<p>
+    Remember our TransformImageScheme filter? That filter acted before we had
+    performed scheme validation; otherwise, the URI would have been filtered
+    out when it was discovered that there was no image scheme. Well, a post-filter
+    is run after scheme specific validation, so it's ideal for bulk
+    post-processing of URIs, including munging. To specify a URI as a post-filter,
+    set the <code>$post</code> member variable to TRUE.
+</p>
+
+<pre>class HTMLPurifier_URIFilter_MyPostFilter extends HTMLPurifier_URIFilter
+{
+    public $name = 'MyPostFilter';
+    public $post = true;
+    // ... extra code here
+}
+</pre>
+
+<h2>Examples</h2>
+
+<p>
+  Check the
+  <a href="http://repo.or.cz/w/htmlpurifier.git?a=tree;hb=HEAD;f=library/HTMLPurifier/URIFilter">URIFilter</a>
+  directory for more implementation examples, and see <a href="proposal-new-directives.txt">the
+  new directives proposal document</a> for ideas on what could be implemented
+  as a filter.
+</p>
+
+</body></html>
+
+<!-- vim: et sw=4 sts=4
+-->
