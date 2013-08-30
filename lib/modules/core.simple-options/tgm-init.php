@@ -5,8 +5,8 @@ require_once dirname( __FILE__ ) . '/class-tgm-plugin-activation.php';
 function shoestrap_register_required_plugins() {
 	$plugins = array(
 		array(
-			'name' 			=> 'SimpleOptions',
-			'slug' 			=> 'SimpleOptions',
+			'name' 			=> 'Simple_Options',
+			'slug' 			=> 'simple-options',
 			'required' 		=> true,
 			'version' 		=> '0.0.2',
 			'force_activation' 	=> true,
@@ -23,7 +23,7 @@ function shoestrap_register_required_plugins() {
 		'parent_menu_slug'	=> 'themes.php', 				// Default parent menu slug
 		'parent_url_slug' 	=> 'themes.php', 				// Default parent URL slug
 		'menu'         			=> 'install-required-plugins', 	// Menu slug
-		'has_notices'     	=> false,                       	// Show admin notices or not
+		'has_notices'     	=> true,                       	// Show admin notices or not
 		'is_automatic'    	=> true,					   	// Automatically activate plugins after installation or not
 		'message' 					=> '',							// Message to output right before the plugins table
 		'strings'      			=> array(
