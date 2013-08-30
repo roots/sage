@@ -19,7 +19,7 @@ npm install
 If you're using Nginx you'll need to add the Roots rewrites to your server config before the PHP block (`location ~ \.php$`) to use the clean URLs feature:
 
 ```nginx
-location ~ ^/assets/(img|js|css)/(.*)$ {
+location ~ ^/assets/(img|js|css|fonts)/(.*)$ {
   try_files $uri $uri/ /wp-content/themes/roots/assets/$1/$2;
 }
 location ~ ^/plugins/(.*)$ {
