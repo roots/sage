@@ -5,15 +5,16 @@ require_once dirname( __FILE__ ) . '/class-tgm-plugin-activation.php';
 function shoestrap_register_required_plugins() {
 	$plugins = array(
 		array(
-			'name' 			=> 'Simple_Options',
+			'name' 			=> 'Simple Options Framework',
 			'slug' 			=> 'simple-options',
 			'required' 		=> true,
 			'version' 		=> '0.0.2',
 			'force_activation' 	=> true,
 			'external_url' 		=> 'http://github.com/SimpleRain/SimpleOptions/',
-			'source' 		=> 'https://github.com/SimpleRain/SimpleOptions/archive/0.4.3.zip', // The plugin source
+			'source' 		=> dirname(__FILE__).'/simple-options.zip', // The plugin source
 		),
 	);
+
 
 	$theme_text_domain = 'shoestrap';
 
@@ -44,7 +45,7 @@ function shoestrap_register_required_plugins() {
 		'return'                           	=> __( 'Return to Required Plugins Installer', $theme_text_domain ),
 		'plugin_activated'                 	=> __( 'Plugin activated successfully.', $theme_text_domain ),
 		'complete' 													=> __( 'All plugins installed and activated successfully. %s', $theme_text_domain ), // %1$s = dashboard link
-		'nag_type'													=> 'error' // Determines admin notice type - can only be 'updated' or 'error'
+		'nag_type'													=> 'updated' // Determines admin notice type - can only be 'updated' or 'error'
 		)
 	);
 

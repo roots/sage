@@ -72,17 +72,11 @@ function shoestrap_simpleoptions_init(){
 		$sections = array();
 		$sections = apply_filters('shoestrap_add_sections', $sections);
 
-		global $Simple_Options;
-		if (empty($Simple_Options)) {
-			$Simple_Options = new Simple_Options($sections, $args);
-		} else {
-			$Simple_Options = Simple_Options::get_instance();
-			$Simple_Options->setSections($sections);
-			$Simple_Options->setArgs($args);
-		}
+		sof($sections, $args);
+
 	}
 }//function
-add_action('init', 'shoestrap_simpleoptions_init');
+add_action('sof_register', 'shoestrap_simpleoptions_init');
 
 /**
 	Saving functions on import, etc
