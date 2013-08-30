@@ -1,5 +1,0 @@
---HTML--
-<table background="logo.png"><tr><td>asdf</td></tr></table>
---EXPECT--
-<table style="background-image:url(&quot;logo.png&quot;);"><tr><td>asdf</td></tr></table>
---# vim: et sw=4 sts=4

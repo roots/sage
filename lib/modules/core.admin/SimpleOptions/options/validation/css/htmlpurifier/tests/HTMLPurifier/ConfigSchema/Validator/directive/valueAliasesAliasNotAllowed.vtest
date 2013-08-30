@@ -1,8 +1,0 @@
-ERROR: Alias 'b' in valueAliases in directive 'Ns.Dir' must not be an allowed value
-----
-Ns.Dir
-DESCRIPTION: Directive
-TYPE: string
-DEFAULT: 'a'
-ALLOWED: 'a', 'b', 'c'
-VALUE-ALIASES: 'b' => 'c'

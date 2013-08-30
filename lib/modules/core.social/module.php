@@ -63,7 +63,8 @@ if ( !function_exists( 'shoestrap_module_social_options' ) ) {
       "name"      => __("Show in Posts Archives", "shoestrap"),
       "desc"      => __("Show the sharing button in posts archives.", "shoestrap"),
       "id"        => "social_sharing_archives",
-      "std"       => "",
+      "validate"  => "url",
+			"std"       => "",
       "type"      => "switch"
     );
 
@@ -96,7 +97,8 @@ if ( !function_exists( 'shoestrap_module_social_options' ) ) {
       "name"      => __("Facebook", "shoestrap"),
       "desc"      => __("Show the Facebook sharing icon in blog posts.", "shoestrap"),
       "id"        => "facebook_share",
-      "std"       => "",
+      "validate"  => "url",
+			"std"       => "",
       "type"      => "switch"
     );
 
@@ -104,7 +106,8 @@ if ( !function_exists( 'shoestrap_module_social_options' ) ) {
       "name"      => __("Google+", "shoestrap"),
       "desc"      => __("Show the Google+ sharing icon in blog posts.", "shoestrap"),
       "id"        => "google_plus_share",
-      "std"       => "",
+      "validate"  => "url",
+			"std"       => "",
       "type"      => "switch"
     );
 
@@ -112,7 +115,8 @@ if ( !function_exists( 'shoestrap_module_social_options' ) ) {
       "name"      => __("LinkedIn", "shoestrap"),
       "desc"      => __("Show the LinkedIn sharing icon in blog posts.", "shoestrap"),
       "id"        => "linkedin_share",
-      "std"       => "",
+      "validate"  => "url",
+			"std"       => "",
       "type"      => "switch"
     );
 
@@ -120,7 +124,8 @@ if ( !function_exists( 'shoestrap_module_social_options' ) ) {
       "name"      => __("Pinterest", "shoestrap"),
       "desc"      => __("Show the Pinterest sharing icon in blog posts.", "shoestrap"),
       "id"        => "pinterest_share",
-      "std"       => "",
+      "validate"  => "url",
+			"std"       => "",
       "type"      => "switch"
     );
 
@@ -128,7 +133,8 @@ if ( !function_exists( 'shoestrap_module_social_options' ) ) {
       "name"      => __("Reddit", "shoestrap"),
       "desc"      => __("Show the Reddit sharing icon in blog posts.", "shoestrap"),
       "id"        => "reddit_share",
-      "std"       => "",
+      "validate"  => "url",
+			"std"       => "",
       "type"      => "switch"
     );
 
@@ -136,7 +142,8 @@ if ( !function_exists( 'shoestrap_module_social_options' ) ) {
       "name"      => __("Tumblr", "shoestrap"),
       "desc"      => __("Show the Tumblr sharing icon in blog posts.", "shoestrap"),
       "id"        => "tumblr_share",
-      "std"       => "",
+      "validate"  => "url",
+			"std"       => "",
       "type"      => "switch"
     );
 
@@ -144,7 +151,8 @@ if ( !function_exists( 'shoestrap_module_social_options' ) ) {
       "name"      => __("Twitter", "shoestrap"),
       "desc"      => __("Show the Twitter sharing icon in blog posts.", "shoestrap"),
       "id"        => "twitter_share",
-      "std"       => "",
+      "validate"  => "url",
+			"std"       => "",
       "type"      => "switch"
     );
 
@@ -152,7 +160,8 @@ if ( !function_exists( 'shoestrap_module_social_options' ) ) {
       "name"      => __("Email", "shoestrap"),
       "desc"      => __("Show the Email sharing icon in blog posts.", "shoestrap"),
       "id"        => "email_share",
-      "std"       => "",
+      "validate"  => "url",
+			"std"       => "",
       "type"      => "switch"
     );
 
@@ -169,7 +178,8 @@ if ( !function_exists( 'shoestrap_module_social_options' ) ) {
       "name"      => __("Blogger", "shoestrap"),
       "desc"      => __("Provide the link you desire and the Blogger icon will appear. To remove it, just leave it blank.", "shoestrap"),
       "id"        => "blogger_link",
-      "std"       => "",
+      "validate"  => "url",
+			"std"       => "",
       "type"      => "text"
     );
 
@@ -177,7 +187,8 @@ if ( !function_exists( 'shoestrap_module_social_options' ) ) {
       "name"      => __("DeviantART", "shoestrap"),
       "desc"      => __("Provide the link you desire and the DeviantART icon will appear. To remove it, just leave it blank.", "shoestrap"),
       "id"        => "deviantart_link",
-      "std"       => "",
+      "validate"  => "url",
+			"std"       => "",
       "type"      => "text"
     );
 
@@ -185,7 +196,8 @@ if ( !function_exists( 'shoestrap_module_social_options' ) ) {
       "name"      => __("Digg", "shoestrap"),
       "desc"      => __("Provide the link you desire and the Digg icon will appear. To remove it, just leave it blank.", "shoestrap"),
       "id"        => "digg_link",
-      "std"       => "",
+      "validate"  => "url",
+			"std"       => "",
       "type"      => "text"
     );
 
@@ -193,7 +205,8 @@ if ( !function_exists( 'shoestrap_module_social_options' ) ) {
       "name"      => __("Dribbble", "shoestrap"),
       "desc"      => __("Provide the link you desire and the Dribbble icon will appear. To remove it, just leave it blank.", "shoestrap"),
       "id"        => "dribbble_link",
-      "std"       => "",
+      "validate"  => "url",
+			"std"       => "",
       "type"      => "text"
     );
 
@@ -201,7 +214,8 @@ if ( !function_exists( 'shoestrap_module_social_options' ) ) {
       "name"      => __("Facebook", "shoestrap"),
       "desc"      => __("Provide the link you desire and the Facebook icon will appear. To remove it, just leave it blank.", "shoestrap"),
       "id"        => "facebook_link",
-      "std"       => "",
+      "validate"  => "url",
+			"std"       => "",
       "type"      => "text"
     );
 
@@ -209,7 +223,8 @@ if ( !function_exists( 'shoestrap_module_social_options' ) ) {
       "name"      => __("Flickr", "shoestrap"),
       "desc"      => __("Provide the link you desire and the Flickr icon will appear. To remove it, just leave it blank.", "shoestrap"),
       "id"        => "flickr_link",
-      "std"       => "",
+      "validate"  => "url",
+			"std"       => "",
       "type"      => "text"
     );
 
@@ -217,7 +232,8 @@ if ( !function_exists( 'shoestrap_module_social_options' ) ) {
       "name"      => __("GitHub", "shoestrap"),
       "desc"      => __("Provide the link you desire and the GitHub icon will appear. To remove it, just leave it blank.", "shoestrap"),
       "id"        => "github_link",
-      "std"       => "",
+      "validate"  => "url",
+			"std"       => "",
       "type"      => "text"
     );
 
@@ -225,7 +241,8 @@ if ( !function_exists( 'shoestrap_module_social_options' ) ) {
       "name"      => __("Google+", "shoestrap"),
       "desc"      => __("Provide the link you desire and the Google+ icon will appear. To remove it, just leave it blank.", "shoestrap"),
       "id"        => "google_plus_link",
-      "std"       => "",
+      "validate"  => "url",
+			"std"       => "",
       "type"      => "text"
     );
 
@@ -233,7 +250,8 @@ if ( !function_exists( 'shoestrap_module_social_options' ) ) {
       "name"      => __("LinkedIn", "shoestrap"),
       "desc"      => __("Provide the link you desire and the LinkedIn icon will appear. To remove it, just leave it blank.", "shoestrap"),
       "id"        => "linkedin_link",
-      "std"       => "",
+      "validate"  => "url",
+			"std"       => "",
       "type"      => "text"
     );
 
@@ -241,7 +259,8 @@ if ( !function_exists( 'shoestrap_module_social_options' ) ) {
       "name"      => __("MySpace", "shoestrap"),
       "desc"      => __("Provide the link you desire and the MySpace icon will appear. To remove it, just leave it blank.", "shoestrap"),
       "id"        => "myspace_link",
-      "std"       => "",
+      "validate"  => "url",
+			"std"       => "",
       "type"      => "text"
     );
 
@@ -249,7 +268,8 @@ if ( !function_exists( 'shoestrap_module_social_options' ) ) {
       "name"      => __("Pinterest", "shoestrap"),
       "desc"      => __("Provide the link you desire and the Pinterest icon will appear. To remove it, just leave it blank.", "shoestrap"),
       "id"        => "pinterest_link",
-      "std"       => "",
+      "validate"  => "url",
+			"std"       => "",
       "type"      => "text"
     );
 
@@ -257,7 +277,8 @@ if ( !function_exists( 'shoestrap_module_social_options' ) ) {
       "name"      => __("Reddit", "shoestrap"),
       "desc"      => __("Provide the link you desire and the Reddit icon will appear. To remove it, just leave it blank.", "shoestrap"),
       "id"        => "reddit_link",
-      "std"       => "",
+      "validate"  => "url",
+			"std"       => "",
       "type"      => "text"
     );
 
@@ -265,7 +286,8 @@ if ( !function_exists( 'shoestrap_module_social_options' ) ) {
       "name"      => __("RSS", "shoestrap"),
       "desc"      => __("Provide the link you desire and the RSS icon will appear. To remove it, just leave it blank.", "shoestrap"),
       "id"        => "rss_link",
-      "std"       => "",
+      "validate"  => "url",
+			"std"       => "",
       "type"      => "text"
     );
 
@@ -273,7 +295,8 @@ if ( !function_exists( 'shoestrap_module_social_options' ) ) {
       "name"      => __("Skype", "shoestrap"),
       "desc"      => __("Provide the link you desire and the Skype icon will appear. To remove it, just leave it blank.", "shoestrap"),
       "id"        => "skype_link",
-      "std"       => "",
+      "validate"  => "url",
+			"std"       => "",
       "type"      => "text"
     );
 
@@ -281,7 +304,8 @@ if ( !function_exists( 'shoestrap_module_social_options' ) ) {
       "name"      => __("SoundCloud", "shoestrap"),
       "desc"      => __("Provide the link you desire and the SoundCloud icon will appear. To remove it, just leave it blank.", "shoestrap"),
       "id"        => "soundcloud_link",
-      "std"       => "",
+      "validate"  => "url",
+			"std"       => "",
       "type"      => "text"
     );
 
@@ -289,7 +313,8 @@ if ( !function_exists( 'shoestrap_module_social_options' ) ) {
       "name"      => __("Tumblr", "shoestrap"),
       "desc"      => __("Provide the link you desire and the Tumblr icon will appear. To remove it, just leave it blank.", "shoestrap"),
       "id"        => "tumblr_link",
-      "std"       => "",
+      "validate"  => "url",
+			"std"       => "",
       "type"      => "text"
     );
 
@@ -297,7 +322,8 @@ if ( !function_exists( 'shoestrap_module_social_options' ) ) {
       "name"      => __("Twitter", "shoestrap"),
       "desc"      => __("Provide the link you desire and the Twitter icon will appear. To remove it, just leave it blank.", "shoestrap"),
       "id"        => "twitter_link",
-      "std"       => "",
+      "validate"  => "url",
+			"std"       => "",
       "type"      => "text"
     );
 
@@ -305,7 +331,8 @@ if ( !function_exists( 'shoestrap_module_social_options' ) ) {
       "name"      => __("Vimeo", "shoestrap"),
       "desc"      => __("Provide the link you desire and the Vimeo icon will appear. To remove it, just leave it blank.", "shoestrap"),
       "id"        => "vimeo_link",
-      "std"       => "",
+      "validate"  => "url",
+			"std"       => "",
       "type"      => "text"
     );
 
@@ -314,7 +341,8 @@ if ( !function_exists( 'shoestrap_module_social_options' ) ) {
       "name"      => "Vkontakte",
       "desc"      => "Provide the link you desire and the Vkontakte icon will appear. To remove it, just leave it blank.",
       "id"        => "vkontakte_link",
-      "std"       => "",
+      "validate"  => "url",
+			"std"       => "",
       "type"      => "text"
     );
 
@@ -322,7 +350,8 @@ if ( !function_exists( 'shoestrap_module_social_options' ) ) {
       "name"      => "YouTube Link",
       "desc"      => "Provide the link you desire and the YouTube icon will appear. To remove it, just leave it blank.",
       "id"        => "youtube_link",
-      "std"       => "",
+      "validate"  => "url",
+			"std"       => "",
       "type"      => "text"
     );
     

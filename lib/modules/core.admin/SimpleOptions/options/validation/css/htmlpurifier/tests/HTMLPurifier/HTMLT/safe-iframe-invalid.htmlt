@@ -1,7 +1,0 @@
---INI--
-HTML.SafeIframe = true
---HTML--
-<iframe src="http://www.example.com/"></iframe>
---EXPECT--
-<iframe></iframe>
---# vim: et sw=4 sts=4

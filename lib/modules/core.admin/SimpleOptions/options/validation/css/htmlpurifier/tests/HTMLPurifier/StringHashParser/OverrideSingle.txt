@@ -1,3 +1,0 @@
-KEY: Original
-KEY: New
---# vim: et sw=4 sts=4

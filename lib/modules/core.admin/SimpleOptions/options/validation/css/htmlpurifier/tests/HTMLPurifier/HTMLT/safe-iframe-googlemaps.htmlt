@@ -1,8 +1,0 @@
---INI--
-HTML.SafeIframe = true
-URI.SafeIframeRegexp = "%^http://maps.google.com/%"
---HTML--
-<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/?ie=UTF8&amp;ll=37.0625,-95.677068&amp;spn=24.455808,37.353516&amp;z=4&amp;output=embed"></iframe>
---EXPECT--
-<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/?ie=UTF8&amp;ll=37.0625,-95.677068&amp;spn=24.455808,37.353516&amp;z=4&amp;output=embed"></iframe>
---# vim: et sw=4 sts=4

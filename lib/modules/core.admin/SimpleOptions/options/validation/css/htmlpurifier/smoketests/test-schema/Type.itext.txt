@@ -1,5 +1,0 @@
-Type.itext
-TYPE: itext
-DEFAULT: "case\ninsensitive\nand\npossibly\nquite\nlong"
-DESCRIPTION: The text type has newlines, must be ASCII and is case-insensitive.
---# vim: et sw=4 sts=4

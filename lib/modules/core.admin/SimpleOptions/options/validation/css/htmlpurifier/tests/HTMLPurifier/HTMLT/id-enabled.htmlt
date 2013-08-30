@@ -1,6 +1,0 @@
---INI--
-Attr.EnableID = true
---HTML--
-<span id="moon">foobar</span>
-<img id="folly" src="folly.png" alt="Omigosh!" />
---# vim: et sw=4 sts=4

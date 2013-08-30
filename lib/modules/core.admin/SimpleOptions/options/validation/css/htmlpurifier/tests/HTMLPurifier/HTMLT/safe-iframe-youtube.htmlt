@@ -1,8 +1,0 @@
---INI--
-HTML.SafeIframe = true
-URI.SafeIframeRegexp = "%^http://www.youtube.com/embed/%"
---HTML--
-<iframe title="YouTube video player" width="480" height="390" src="http://www.youtube.com/embed/RVtEQxH7PWA" frameborder="0" allowfullscreen></iframe>
---EXPECT--
-<iframe title="YouTube video player" width="480" height="390" src="http://www.youtube.com/embed/RVtEQxH7PWA" frameborder="0"></iframe>
---# vim: et sw=4 sts=4

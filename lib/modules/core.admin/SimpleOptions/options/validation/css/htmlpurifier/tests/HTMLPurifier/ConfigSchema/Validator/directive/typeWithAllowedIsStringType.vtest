@@ -1,7 +1,0 @@
-ERROR: Type in directive 'Ns.Dir' must be a string type when used with allowed or value aliases
-----
-Ns.Dir
-DESCRIPTION: Directive
-TYPE: int
-DEFAULT: 3
-ALLOWED: 1, 2, 3

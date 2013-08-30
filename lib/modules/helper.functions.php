@@ -118,7 +118,9 @@ function shoestrap_getVariable($key, $fresh = false) {
 
   if ( !isset( $Simple_Options->options ) ) {
     $data = (array) get_option('shoestrap');
-    return $data[$key]; 
+    if (isset($data[$key])) {
+    	return $data[$key]; 
+    }
   } else {
   	return $Simple_Options->get($key);
   }

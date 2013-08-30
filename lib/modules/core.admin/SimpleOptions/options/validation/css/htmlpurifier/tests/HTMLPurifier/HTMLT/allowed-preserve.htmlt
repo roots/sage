@@ -1,8 +1,0 @@
---INI--
-HTML.AllowedElements = b,i,p,a
-HTML.AllowedAttributes = a.href,*.id
---HTML--
-<p>Par.</p>
-<p>Para<a href="http://google.com/">gr</a>aph</p>
-Text<b>Bol<i>d</i></b>
---# vim: et sw=4 sts=4

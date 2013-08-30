@@ -1,8 +1,0 @@
---INI--
-HTML.SafeObject = true
-HTML.SafeEmbed = true
---HTML--
-<object width="425" height="344"><param name="movie" value="http://www.youtube.com/v/Oq3FV_zdyy0&hl=en"></param><embed src="http://www.youtube.com/v/Oq3FV_zdyy0&hl=en" type="application/x-shockwave-flash" width="425" height="344"></embed></object>
---EXPECT--
-<object width="425" height="344" data="http://www.youtube.com/v/Oq3FV_zdyy0&amp;hl=en" type="application/x-shockwave-flash"><param name="allowScriptAccess" value="never" /><param name="allowNetworking" value="internal" /><param name="movie" value="http://www.youtube.com/v/Oq3FV_zdyy0&amp;hl=en" /><embed src="http://www.youtube.com/v/Oq3FV_zdyy0&amp;hl=en" type="application/x-shockwave-flash" width="425" height="344" allowscriptaccess="never" allownetworking="internal" /></object>
---# vim: et sw=4 sts=4

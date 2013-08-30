@@ -1,5 +1,0 @@
-Ns.Dir
-DESCRIPTION: Directive
-TYPE: string/null
-DEFAULT: null
-ALLOWED: 'a'

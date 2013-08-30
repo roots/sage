@@ -1,5 +1,0 @@
-Type.mixed
-TYPE: mixed
-DEFAULT: new stdclass()
-DESCRIPTION: The mixed type allows any type, and is not form-editable.
---# vim: et sw=4 sts=4

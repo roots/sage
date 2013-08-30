@@ -1,7 +1,0 @@
-ERROR: Value 3 in allowed in directive 'Ns.Dir' must be a string
-----
-ID: Ns.Dir
-TYPE: string
-DESCRIPTION: Description
-DEFAULT: 'asdf'
-ALLOWED: 'asdf', 3

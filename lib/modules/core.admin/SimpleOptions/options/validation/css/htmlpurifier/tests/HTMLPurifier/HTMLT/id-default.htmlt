@@ -1,5 +1,0 @@
---HTML--
-<span id="moon">foobar</span>
---EXPECT--
-<span>foobar</span>
---# vim: et sw=4 sts=4

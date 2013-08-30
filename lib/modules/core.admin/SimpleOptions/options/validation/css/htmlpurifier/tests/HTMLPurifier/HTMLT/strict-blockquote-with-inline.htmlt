@@ -1,7 +1,0 @@
---INI--
-HTML.Doctype = "XHTML 1.0 Strict"
---HTML--
-<blockquote>Illegal <b>contents</b></blockquote>
---EXPECT--
-<blockquote><p>Illegal <b>contents</b></p></blockquote>
---# vim: et sw=4 sts=4

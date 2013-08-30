@@ -1,8 +1,0 @@
---INI--
-HTML.AllowedElements = b,i,p,a
-HTML.AllowedAttributes = a.href,*.id
---HTML--
-<span>Not allowed</span><a class="mef" id="foobar">Remove id too!</a>
---EXPECT--
-Not allowed<a>Remove id too!</a>
---# vim: et sw=4 sts=4

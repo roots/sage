@@ -1,5 +1,0 @@
-Type.text
-TYPE: text
-DEFAULT: "Case sensitive\nand\npossibly\nquite long..."
-DESCRIPTION: The text type has newlines and is case-sensitive.
---# vim: et sw=4 sts=4

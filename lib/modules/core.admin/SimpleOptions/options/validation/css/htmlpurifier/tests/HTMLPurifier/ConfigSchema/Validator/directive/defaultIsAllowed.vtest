@@ -1,7 +1,0 @@
-ERROR: Default in directive 'Ns.Dir' must be an allowed value
-----
-Ns.Dir
-DESCRIPTION: Directive
-TYPE: string
-DEFAULT: 'a'
-ALLOWED: 'b'

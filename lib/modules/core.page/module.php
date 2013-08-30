@@ -30,31 +30,21 @@ if ( !function_exists( 'shoestrap_module_page_options' ) ) {
       "fold"      => "page_layout_toggle",
       "customizer"=> array(),
       "options"   => array(
-        0         => get_template_directory_uri() . SMOF_DIR . '/addons/assets/images/1c.png',
-        1         => get_template_directory_uri() . SMOF_DIR . '/addons/assets/images/2cr.png',
-        2         => get_template_directory_uri() . SMOF_DIR . '/addons/assets/images/2cl.png',
-        3         => get_template_directory_uri() . SMOF_DIR . '/addons/assets/images/3cl.png',
-        4         => get_template_directory_uri() . SMOF_DIR . '/addons/assets/images/3cr.png',
-        5         => get_template_directory_uri() . SMOF_DIR . '/addons/assets/images/3cm.png',
+        0         => SOF_OPTIONS_URL.'img/1c.png',
+        1         => SOF_OPTIONS_URL.'img/2cr.png',
+        2         => SOF_OPTIONS_URL.'img/2cl.png',
+        3         => SOF_OPTIONS_URL.'img/3cl.png',
+        4         => SOF_OPTIONS_URL.'img/3cr.png',
+        5         => SOF_OPTIONS_URL.'img/3cm.png',
       )
     );
-/*
-Disabled by roots by default. No real need, but the code here anyways
-    $fields[] = array(
-      "name"      => __("Comments on Pages", "shoestrap"),
-      "desc"      => __("Enable comments on individual pages. Default: Off.", "shoestrap"),
-      "id"        => "page_comments_toggle",
-      "std"       => 0,
-      "type"      => "switch",
-      "customizer"=> array(),
-    );
-*/
 
     $section['fields'] = $fields;
 
     do_action( 'shoestrap_module_page_options_modifier' );
     
     array_push($sections, $section);
+    
     return $sections;
 
   }

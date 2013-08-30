@@ -1,7 +1,0 @@
-ERROR: Alias 'bar' in valueAliases in directive 'Ns.Dir' must not be an alias to itself
-----
-Ns.Dir
-DESCRIPTION: Directive
-TYPE: string
-DEFAULT: 'foo'
-VALUE-ALIASES: 'bar' => 'bar'

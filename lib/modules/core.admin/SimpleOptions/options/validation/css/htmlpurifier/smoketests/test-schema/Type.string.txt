@@ -1,5 +1,0 @@
-Type.string
-TYPE: string
-DEFAULT: 'Case sensitive'
-DESCRIPTION: The string type is short (no newlines) and case-sensitive.
---# vim: et sw=4 sts=4

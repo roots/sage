@@ -1,6 +1,0 @@
---INI--
-HTML.SafeObject = true
-Output.FlashCompat = true
---HTML--
-<object width="425" height="350" data="http://www.youtube.com/v/BdU--T8rLns" type="application/x-shockwave-flash"><param name="allowScriptAccess" value="never" /><param name="allowNetworking" value="internal" /><param name="movie" value="http://www.youtube.com/v/BdU--T8rLns" /><param name="wmode" value="window" /></object>
---# vim: et sw=4 sts=4

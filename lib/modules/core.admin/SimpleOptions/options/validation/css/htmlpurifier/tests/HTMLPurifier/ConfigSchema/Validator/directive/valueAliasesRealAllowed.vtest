@@ -1,8 +1,0 @@
-ERROR: Alias 'c' in valueAliases in directive 'Ns.Dir' must be an alias to an allowed value
-----
-Ns.Dir
-DESCRIPTION: Directive
-TYPE: string
-DEFAULT: 'a'
-ALLOWED: 'a', 'b'
-VALUE-ALIASES: 'c' => 'd'

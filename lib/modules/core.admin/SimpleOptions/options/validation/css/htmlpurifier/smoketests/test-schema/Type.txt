@@ -1,3 +1,0 @@
-Type
-DESCRIPTION: Directives demonstration the variable types ConfigSchema supports.
---# vim: et sw=4 sts=4

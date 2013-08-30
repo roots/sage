@@ -1,5 +1,0 @@
-Type.float
-TYPE: float
-DEFAULT: 3.1415
-DESCRIPTION: The float type is a floating point number.
---# vim: et sw=4 sts=4
