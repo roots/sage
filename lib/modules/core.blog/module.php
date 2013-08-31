@@ -39,7 +39,7 @@ if ( !function_exists( 'shoestrap_module_blog_options' ) ) {
       "name"      => __("Blog Layout", "shoestrap"),
       "desc"      => __("Override your default styling. Choose between 1, 2 or 3 column layout.", "shoestrap"),
       "id"        => "blog_layout",
-      "std"       => get_theme_mod('layout', 1),
+      "std"       => shoestrap_getVariable('layout', 1),
       "type"      => "images",
       "compiler"      => true,
       "fold"      => "blog_layout_toggle",

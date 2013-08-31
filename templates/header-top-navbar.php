@@ -13,10 +13,10 @@
         <span class="icon-bar"></span>
       </button>
       <?php
-      if ( get_theme_mod( 'navbar_brand' ) != 0 ) :
+      if ( shoestrap_getVariable( 'navbar_brand' ) != 0 ) :
         echo '<a class="navbar-brand ' . shoestrap_branding_class( false ) . '" href="' . home_url() . '/">';
 
-        if ( get_theme_mod( 'navbar_logo' ) == 1 )
+        if ( shoestrap_getVariable( 'navbar_logo' ) == 1 )
           shoestrap_logo();
         else
           bloginfo( 'name' );

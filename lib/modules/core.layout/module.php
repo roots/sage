@@ -32,7 +32,7 @@ if ( !function_exists( 'shoestrap_module_layout_options' ) ) {
       "name"      => __("Layout", "shoestrap"),
       "desc"      => __("Select main content and sidebar arrangement. Choose between 1, 2 or 3 column layout.", "shoestrap"),
       "id"        => "layout",
-      "std"       => get_theme_mod('layout', 1),
+      "std"       => shoestrap_getVariable('layout', 1),
       "type"      => "images",
       "customizer"=> array(),
       "options"   => array(

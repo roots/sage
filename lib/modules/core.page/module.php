@@ -25,7 +25,7 @@ if ( !function_exists( 'shoestrap_module_page_options' ) ) {
       "name"      => __("Page Layout", "shoestrap"),
       "desc"      => __("Override your default stylings. Choose between 1, 2 or 3 column layout.", "shoestrap"),
       "id"        => "page_layout",
-      "std"       => get_theme_mod('layout', 1),
+      "std"       => shoestrap_getVariable('layout', 1),
       "type"      => "images",
       "fold"      => "page_layout_toggle",
       "customizer"=> array(),

@@ -109,9 +109,9 @@ add_filter('style_loader_tag', 'roots_clean_style_tag');
 function roots_body_class($classes) {
   // Add 'top-navbar' or 'bottom-navabr' class if using Bootstrap's Navbar
   // Used to add styling to account for the WordPress admin bar
-  if ( current_theme_supports( 'bootstrap-top-navbar' ) && get_theme_mod( 'navbar_fixed' ) == 1 && get_theme_mod( 'navbar_fixed_position' ) != 1 )
+  if ( current_theme_supports( 'bootstrap-top-navbar' ) && shoestrap_getVariable( 'navbar_fixed' ) == 1 && shoestrap_getVariable( 'navbar_fixed_position' ) != 1 )
     $classes[] = 'top-navbar';
-  elseif ( current_theme_supports( 'bootstrap-top-navbar' ) && get_theme_mod( 'navbar_fixed' ) == 1 && get_theme_mod( 'navbar_fixed_position' ) == 1 )
+  elseif ( current_theme_supports( 'bootstrap-top-navbar' ) && shoestrap_getVariable( 'navbar_fixed' ) == 1 && shoestrap_getVariable( 'navbar_fixed_position' ) == 1 )
     $classes[] = 'bottom-navbar';
 
   // Add post/page slug

@@ -345,5 +345,5 @@ function shoestrap_breadcrumbs() {
 
   $breadcrumb = new Shoestrap_Breadcrumb( $templates, $options );
 }
-if ( get_theme_mod( 'breadcrumbs' ) == 1 )
+if ( shoestrap_getVariable( 'breadcrumbs' ) == 1 )
   add_action( 'shoestrap_breadcrumbs', 'shoestrap_breadcrumbs' );

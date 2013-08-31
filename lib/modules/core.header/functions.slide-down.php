@@ -82,7 +82,7 @@ function shoestrap_navbar_widget_area_class() {
  * Prints the content of the slide-down widget areas.
  */
 function shoestrap_navbar_slidedown_content() {
-  if ( get_theme_mod( 'site_style' ) != 'fluid' )
+  if ( shoestrap_getVariable( 'site_style' ) != 'fluid' )
     echo '<div id="megaDrop" class="top-megamenu container">';
   else
     echo '<div id="megaDrop" class="top-megamenu">';
@@ -116,7 +116,7 @@ function shoestrap_navbar_slidedown_content() {
 add_action( 'shoestrap_below_top_navbar', 'shoestrap_navbar_slidedown_content', 1 );
 
 function shoestrap_navbar_slidedown_toggle() {
-  $navbar_color = get_theme_mod( 'navbar_bg' );
+  $navbar_color = shoestrap_getVariable( 'navbar_bg' );
   
   if ( is_active_sidebar( 'navbar-slide-down-top' ) || is_active_sidebar( 'navbar-slide-down-1' ) || is_active_sidebar( 'navbar-slide-down-2' ) || is_active_sidebar( 'navbar-slide-down-3' ) || is_active_sidebar( 'navbar-slide-down-4' ) ) {
 
