@@ -1,8 +1,10 @@
 <?php
 
 // Helper functions required BEFORE the modules are loaded
-//require_once get_template_directory() . '/lib/modules/simple.options.php';
 require_once get_template_directory() . '/lib/modules/helper.functions.php';
+
+// Prioritize loading of some necessary core modules
+require_once get_template_directory() . '/lib/modules/core.images/module.php';
 
 // PHP version control
 $phpversion = phpversion();
