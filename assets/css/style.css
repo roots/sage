@@ -6627,9 +6627,11 @@ fieldset[disabled] #social-sharing .shareme .box {
 }
 .navbar a.navbar-brand.logo {
   height: 50px;
+  padding: 8px;
 }
 .navbar a.navbar-brand.logo img {
-  max-height: 40px;
+  max-height: 100%;
+  width: auto;
   max-width: inherit !important;
 }
 .navbar a.navbar-brand.text {
