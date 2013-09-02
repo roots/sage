@@ -106,18 +106,6 @@ if ( !function_exists( 'shoestrap_module_header_options' ) ) {
     );
 
     $fields[] = array(
-      "name"      => __("Logo Margin from top", "shoestrap"),
-      "desc"      => __("Tweak the margin from top of the logo in your NavBar. Minimum: -30px, Maximum: 30px. Default: 0", "shoestrap"),
-      "id"        => "logo_top_margin",
-      "std"       => 0,
-      "min"       => -100,
-      "step"      => 1,
-      "max"       => 100,
-      "compiler"      => true,
-      "type"      => "slider"
-    );
-
-    $fields[] = array(
       "name"      => __("NavBar Positioning", "shoestrap"),
       "desc"      => __("Using this option you can set the navbar to be fixed to top, fixed to bottom or normal. When you're using one of the \"fixed\" options, the navbar will stay fixed on the top or bottom of the page. Default: Normal", "shoestrap"),
       "id"        => "navbar_fixed",

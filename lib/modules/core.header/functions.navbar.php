@@ -64,10 +64,6 @@ function shoestrap_navbar_css() {
       $style .= '}';
   }
 
-  if ( shoestrap_getVariable( 'logo_top_margin' ) != 1 ) {
-  	$style .= '.navbar a.navbar-brand.logo {margin-top:' . shoestrap_getVariable( 'logo_top_margin' ) . 'px; }';
-  }
-
   if ( shoestrap_getVariable( 'navbar_margin' ) != 1 ) {
     $navbar_margin    = shoestrap_getVariable( 'navbar_margin' );
 
