@@ -1,271 +1,261 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Roots Bahasa Indonesia\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-28 11:22-0300\n"
-"PO-Revision-Date: 2012-12-31 08:50+0800\n"
-"Last-Translator: \n"
-"Language-Team: Novrian Y.F. <me@novrian.info>\n"
-"MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Poedit-KeywordsList: _;gettext;gettext_noop;__;_e\n"
-"X-Poedit-Basepath: ../\n"
-"X-Generator: Poedit 1.5.4\n"
-"Language: Bahasa Indonesia\n"
-"X-Poedit-SearchPath-0: .\n"
-"X-Poedit-SearchPath-1: ./templates\n"
-"X-Poedit-SearchPath-2: ./lib\n"
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Novrian Y. F. <me@novrian.info>\n"
+"Language-Team: Novrian <me@novrian.info>\n"
+"MIME-Version: 1.0\n"
+"X-Poedit-Language: Indonesian\n"
+"X-Poedit-Country: INDONESIA\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-SearchPath-0: ..\n"
 
-#: 404.php:5
-msgid ""
-"The page you are looking for might have been removed, had its name changed, "
-"or is temporarily unavailable."
-msgstr ""
-"Halaman yang anda cari mungkin telah dipindahkan, diganti, ataupun tidak "
-"dapat diakses untuk sementara."
+#: 404.php:4
+msgid "Sorry, but the page you were trying to view does not exist."
+msgstr "Maaf, situs ini tidak mendapatkan alamat yang anda minta."
 
-#: 404.php:8
-msgid "Please try the following:"
-msgstr "Silahkan coba hal berikut ini:"
+#: 404.php:7
+msgid "It looks like this was the result of either:"
+msgstr "Sepertinya ini disebabkan oleh hal di bawah ini:"
+
+#: 404.php:9
+msgid "a mistyped address"
+msgstr "kesalahan alamat"
 
 #: 404.php:10
-msgid "Check your spelling"
-msgstr "Periksa peng-eja-an"
+msgid "an out-of-date link"
+msgstr "link yang sudah kadaluarsa"
 
-#: 404.php:11
-#, php-format
-msgid "Return to the <a href=\"%s\">home page</a>"
-msgstr "Kembali ke <a href=\"%s\">Halaman Utama</a>"
+#: base.php:4
+msgid "You are using an <strong>outdated</strong> browser. Please <a href=\"http://browsehappy.com/\">upgrade your browser</a> to improve your experience."
+msgstr "Anda sedang menggunakan browser <strong><abbr title=\"Jaman Dulu\">Jadul</abbr></strong>. Silahkan <a href=\"http://browsehappy.com/\">memperbaharui browser anda</a>"
 
-#: 404.php:12
-msgid "Click the <a href=\"javascript:history.back()\">Back</a> button"
-msgstr "Klik tombol <a href=\"javascript:history.back()\">Kembali</a>"
+#: index.php:5
+msgid "Sorry, no results were found."
+msgstr "Maaf, tidak ada hasil yang ditemukan."
 
-#: functions.php:28
-msgid "Primary Navigation"
-msgstr "Menu Utama"
+#: index.php:17
+msgid "&larr; Older posts"
+msgstr "&larr; Post sebelumnya"
 
-#: lib/activation.php:32 lib/activation.php:33
+#: index.php:18
+msgid "Newer posts &rarr;"
+msgstr "Post berikutnya&rarr;"
+
+#: lib/activation.php:28
+#: lib/activation.php:29
 msgid "Theme Activation"
 msgstr "Aktivasi Tema"
 
-#: lib/activation.php:72
-#, php-format
+#: lib/activation.php:51
 msgid "%s Theme Activation"
-msgstr "%s Aktivasi Tema"
+msgstr "Aktivasi Tema %s"
 
-#: lib/activation.php:87 lib/activation.php:89
+#: lib/activation.php:62
+#: lib/activation.php:64
 msgid "Create static front page?"
-msgstr "Buat Halaman Depan static?"
+msgstr "Buat halaman statis pada halaman depan?"
 
-#: lib/activation.php:91 lib/activation.php:104 lib/activation.php:117
-#: lib/activation.php:130 lib/activation.php:143
+#: lib/activation.php:66
+#: lib/activation.php:79
+#: lib/activation.php:92
+#: lib/activation.php:105
+#: lib/activation.php:118
 msgid "Yes"
 msgstr "Ya"
 
-#: lib/activation.php:92 lib/activation.php:105 lib/activation.php:118
-#: lib/activation.php:131 lib/activation.php:144
+#: lib/activation.php:67
+#: lib/activation.php:80
+#: lib/activation.php:93
+#: lib/activation.php:106
+#: lib/activation.php:119
 msgid "No"
 msgstr "Tidak"
 
-#: lib/activation.php:95
+#: lib/activation.php:70
 msgid "Create a page called Home and set it to be the static front page"
-msgstr ""
-"Buat Halaman dengan judul Home dan tentukan sebagai Halaman static di "
-"Halaman Depan"
+msgstr "Buat halaman dengan judul Home dan tentukan sebagai halaman statis di halaman depan"
 
-#: lib/activation.php:100
+#: lib/activation.php:75
 msgid "Change permalink structure?"
 msgstr "Ganti struktur permalink?"
 
-#: lib/activation.php:102
+#: lib/activation.php:77
 msgid "Update permalink structure?"
 msgstr "Perbaharui struktur permalink?"
 
-#: lib/activation.php:108
+#: lib/activation.php:83
 msgid "Change permalink structure to /&#37;postname&#37;/"
 msgstr "Ganti struktur permalink menjadi /&#37;postname&#37;/"
 
-#: lib/activation.php:113
+#: lib/activation.php:88
 msgid "Change uploads folder?"
-msgstr "Ganti folder upload?"
+msgstr "Ganti folder uploads"
 
-#: lib/activation.php:115
+#: lib/activation.php:90
 msgid "Update uploads folder?"
-msgstr "Perbaharui folder Upload?"
+msgstr "Perbaharui folder uploads"
 
-#: lib/activation.php:121
-msgid "Change uploads folder to /assets/ instead of /wp-content/uploads/"
-msgstr "Ganti forlder upload ke /assets/ instead of /wp-content/uploads/"
+#: lib/activation.php:96
+msgid "Change uploads folder to /media/ instead of /wp-content/uploads/"
+msgstr "Ganti folder uploads dari /wp-content/uploads/ ke /media/"
 
-#: lib/activation.php:126 lib/activation.php:128
+#: lib/activation.php:101
+#: lib/activation.php:103
 msgid "Create navigation menu?"
 msgstr "Buat menu navigasi?"
 
-#: lib/activation.php:134
+#: lib/activation.php:109
 msgid "Create the Primary Navigation menu and set the location"
-msgstr "Buat Menu Utama dan tentukan tempatnya"
+msgstr "Buat menu Navigasi Utama dan tentukan lokasinya"
 
-#: lib/activation.php:139 lib/activation.php:141
+#: lib/activation.php:114
+#: lib/activation.php:116
 msgid "Add pages to menu?"
-msgstr "Tambah Halaman ke menu?"
+msgstr "Tambah halaman ke menu?"
 
-#: lib/activation.php:147
+#: lib/activation.php:122
 msgid "Add all current published pages to the Primary Navigation"
-msgstr "Tambah Halaman yang terpublikasi ke Menu Utama"
+msgstr "Tambah semua halaman terbit ke Navigasi Utama"
 
-#: lib/cleanup.php:404
+#: lib/cleanup.php:210
 msgid "Continued"
-msgstr "Selengkapnya"
+msgstr "Lanjutan"
 
-#: lib/htaccess.php:26
-#, php-format
-msgid "Please make sure your <a href=\"%s\">.htaccess</a> file is writable "
-msgstr ""
-"Harap jadikan file <a href=\"%s\">.htaccess</a> anda dapat ditulis "
-"(writeable)"
+#: lib/init.php:11
+msgid "Primary Navigation"
+msgstr "Navigasi Utama"
 
-#: lib/template-tags.php:5
-#, php-format
-msgid "Posted on %s at %s."
-msgstr "Dibuat pada tanggal %s - %s"
+#: lib/titles.php:10
+msgid "Latest Posts"
+msgstr "Post Terbaru"
 
-#: lib/template-tags.php:6
-msgid "Written by"
-msgstr "Ditulis oleh"
+#: lib/titles.php:19
+msgid "Daily Archives: %s"
+msgstr "Arsip Harian: %s"
 
-#: lib/widgets.php:6
-msgid "Primary Sidebar"
-msgstr "Sidebar Utama"
+#: lib/titles.php:21
+msgid "Monthly Archives: %s"
+msgstr "Arsip Bulanan: %s"
 
-#: lib/widgets.php:14
+#: lib/titles.php:23
+msgid "Yearly Archives: %s"
+msgstr "Arsip Tahunan: %s"
+
+#: lib/titles.php:26
+msgid "Author Archives: %s"
+msgstr "Arsip Penulis: %s"
+
+#: lib/titles.php:31
+msgid "Search Results for %s"
+msgstr "Hasil Pencarian untuk %s"
+
+#: lib/titles.php:33
+msgid "Not Found"
+msgstr "Tidak Ditemukan"
+
+#: lib/widgets.php:8
+msgid "Primary"
+msgstr "Utama"
+
+#: lib/widgets.php:17
 msgid "Footer"
 msgstr "Footer"
 
-#: lib/widgets.php:30
+#: lib/widgets.php:45
 msgid "Use this widget to add a vCard"
-msgstr "Gunakan widget ini untuk menambah vCard"
+msgstr "Gunakan widget ini untuk menambahkan vCard"
 
-#: lib/widgets.php:31
+#: lib/widgets.php:47
 msgid "Roots: vCard"
 msgstr "Roots: vCard"
 
-#: lib/widgets.php:58
+#: lib/widgets.php:74
 msgid "vCard"
 msgstr "vCard"
 
-#: lib/widgets.php:124
-msgid "Title (optional):"
-msgstr "Judul (opsional):"
-
-#: lib/widgets.php:128
-msgid "Street Address:"
-msgstr "Alamat"
-
-#: lib/widgets.php:132
-msgid "City/Locality:"
-msgstr "Kota:"
-
-#: lib/widgets.php:136
-msgid "State/Region:"
-msgstr "Propinsi:"
-
-#: lib/widgets.php:140
-msgid "Zipcode/Postal Code:"
-msgstr "Kode Pos:"
-
-#: lib/widgets.php:144
-msgid "Telephone:"
-msgstr "Telepon:"
-
-#: lib/widgets.php:148
-msgid "Email:"
-msgstr "Email:"
-
-#: templates/comments.php:7
-#, php-format
-msgid "<cite class=\"fn\">%s</cite>"
-msgstr "<cite class=\"fn\">%s</cite>"
-
-#: templates/comments.php:8
-#, php-format
+#: templates/comment.php:4
 msgid "%1$s"
 msgstr "%1$s"
 
-#: templates/comments.php:9
+#: templates/comment.php:5
 msgid "(Edit)"
-msgstr "(Edit)"
+msgstr "(Sunting)"
 
-#: templates/comments.php:15
+#: templates/comment.php:9
 msgid "Your comment is awaiting moderation."
-msgstr "Komentar anda sedang dalam moderasi."
+msgstr "Komentar anda sedang menunggu untuk dimoderasi."
 
-#: templates/comments.php:32
-msgid "This post is password protected. Enter the password to view comments."
-msgstr ""
-"Post ini dilindungi oleh password. Masukkan password untuk melihat komentar."
+#: templates/comments.php:8
+msgid "One Response to &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s Responses to &ldquo;%2$s&rdquo;"
+msgstr[0] "Satu Balasan untuk &ldquo;%2$s&rdquo;"
+msgstr[1] "%1$s Balasan untuk &ldquo;%2$s&rdquo;"
 
-#: templates/comments.php:49
+#: templates/comments.php:18
 msgid "&larr; Older comments"
 msgstr "&larr; Komentar sebelumnya"
 
-#: templates/comments.php:50
+#: templates/comments.php:21
 msgid "Newer comments &rarr;"
 msgstr "Komentar selanjutnya &rarr;"
 
-#: templates/comments.php:58 templates/comments.php:68
+#: templates/comments.php:29
+#: templates/comments.php:38
 msgid "Comments are closed."
-msgstr "Komentar dinonaktifkan"
+msgstr "Komentar ditutup."
 
-#: templates/comments.php:75
+#: templates/comments.php:45
 msgid "Leave a Reply"
-msgstr "Tinggalkan Komentar"
+msgstr "Tinggalkan Balasan"
 
-#: templates/comments.php:75
-#, php-format
+#: templates/comments.php:45
 msgid "Leave a Reply to %s"
-msgstr "Balasan untuk %s"
+msgstr "Tinggalkan balasan untuk %s"
 
-#: templates/comments.php:78
-#, php-format
+#: templates/comments.php:48
 msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
-msgstr "Anda harus <a href=\"%s\">Login</a>  untuk mengirimkan komentar."
+msgstr "Anda diwajibkan <a href=\"%s\">login</a> untuk membuat Komentar."
 
-#: templates/comments.php:82
-#, php-format
+#: templates/comments.php:53
 msgid "Logged in as <a href=\"%s/wp-admin/profile.php\">%s</a>."
 msgstr "Login sebagai <a href=\"%s/wp-admin/profile.php\">%s</a>."
 
-#: templates/comments.php:82
+#: templates/comments.php:54
 msgid "Log out of this account"
-msgstr "Logout dari akun ini"
+msgstr "Logout dari akun ini."
 
-#: templates/comments.php:82
+#: templates/comments.php:54
 msgid "Log out &raquo;"
 msgstr "Logout &raquo;"
 
-#: templates/comments.php:84
+#: templates/comments.php:57
 msgid "Name"
 msgstr "Nama"
 
-#: templates/comments.php:84 templates/comments.php:86
+#: templates/comments.php:57
+#: templates/comments.php:59
 msgid " (required)"
-msgstr "(wajib diisi)"
+msgstr " (wajib)"
 
-#: templates/comments.php:86
+#: templates/comments.php:59
 msgid "Email (will not be published)"
-msgstr "Email (tidak akan dipublikasikan)"
+msgstr "Email (tidak dipublikasikan)"
 
-#: templates/comments.php:88
+#: templates/comments.php:61
 msgid "Website"
-msgstr "Situs"
+msgstr "Website"
 
-#: templates/comments.php:91
+#: templates/comments.php:64
 msgid "Comment"
 msgstr "Komentar"
 
-#: templates/comments.php:93
+#: templates/comments.php:66
 msgid "Submit Comment"
 msgstr "Kirim Komentar"
 
@@ -273,55 +263,16 @@ msgstr "Kirim Komentar"
 msgid "Pages:"
 msgstr "Halaman:"
 
-#: templates/content.php:4
-msgid "Sorry, no results were found."
-msgstr "Maaf, kami tidak menemukan apapun."
-
-#: templates/content.php:26
-msgid "&larr; Older posts"
-msgstr "&larr; Post sebelumnya"
-
-#: templates/content.php:27
-msgid "Newer posts &rarr;"
-msgstr "Post selanjutnya &rarr;"
-
-#: templates/page-header.php:8
-msgid "Latest Posts"
-msgstr "Post Terbaru"
-
-#: templates/page-header.php:17
-#, php-format
-msgid "Daily Archives: %s"
-msgstr "Arsip Harian: %s"
-
-#: templates/page-header.php:19
-#, php-format
-msgid "Monthly Archives: %s"
-msgstr "Arsip Bulanan: %s"
-
-#: templates/page-header.php:21
-#, php-format
-msgid "Yearly Archives: %s"
-msgstr "Arsip Tahunan: %s"
-
-#: templates/page-header.php:25
-#, php-format
-msgid "Author Archives: %s"
-msgstr "Arsip Penulis: %s"
-
-#: templates/page-header.php:30
-#, php-format
-msgid "Search Results for %s"
-msgstr "Hasil Pencarian untuk %s"
-
-#: templates/page-header.php:32
-msgid "File Not Found"
-msgstr "File tidak ditemukan"
+#: templates/entry-meta.php:2
+msgid "By"
+msgstr "Oleh"
 
 #: templates/searchform.php:2
 msgid "Search for:"
 msgstr "Pencarian untuk:"
 
-#: templates/searchform.php:3 templates/searchform.php:4
+#: templates/searchform.php:3
+#: templates/searchform.php:4
 msgid "Search"
 msgstr "Cari"
+
