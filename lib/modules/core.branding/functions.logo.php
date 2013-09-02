@@ -5,27 +5,17 @@
  * If no custom logo is uploaded, use the sitename
  */
 function shoestrap_logo() {
-  if ( $data = shoestrap_getVariable( 'logo' ) ) {
-  	$i = shoestrap_image($data);
-  	
-  	if (empty($i['url'])) {
-  		return;
-  	}
-  	
-    $image = '<img id="site-logo" src="%s" alt="%s">';
-    printf(
-      $image,
-      $i['url'],
-      get_bloginfo( 'name' )
-    );
-  } else {
-    echo '<span class="sitename">';
-    bloginfo( 'name' );
-    echo '</span>';
-  }
+  $logo  = shoestrap_getVariable( 'logo' );
+
+  if ( !empty( $logo ) )
+    echo '<img id="site-logo" src="' . $logo['url'] . ' alt="' . get_bloginfo( 'name' ) . '">';
+  else
+    echo '<span class="sitename">' . bloginfo( 'name' ) . '</span>';
+
 }
 
 function shoestrap_branding_class( $echo = true ) {
+
   if ( shoestrap_getVariable( 'logo' ) )
     $class = 'logo';
   else
