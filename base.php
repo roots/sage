@@ -80,8 +80,8 @@
       do_action('shoestrap_after_main');
 
       // Add the PRIMARY sidebar when applicable.
-      if ( ( shoestrap_getLayout() != 0 && ( roots_display_sidebar() ) ) || ( is_front_page() && get_theme_mod( 'layout_sidebar_on_front' ) == 1 ) ) :
-        if ( !is_front_page() || ( is_front_page() && get_theme_mod( 'layout_sidebar_on_front' ) == 1 ) ) :
+      if ( ( shoestrap_getLayout() != 0 && ( roots_display_sidebar() ) ) || ( is_front_page() && shoestrap_getVariable( 'layout_sidebar_on_front' ) == 1 ) ) :
+        if ( !is_front_page() || ( is_front_page() && shoestrap_getVariable( 'layout_sidebar_on_front' ) == 1 ) ) :
           echo '<aside class="sidebar ' . shoestrap_section_class( 'primary' ) . '" role="complementary">';
             if ( !has_action( 'shoestrap_sidebar_override' ) )
               include roots_sidebar_path();
@@ -97,7 +97,7 @@
 
       // Add the SECONDARY sidebar when applicable.
       if ( shoestrap_getLayout() >= 3 && is_active_sidebar( 'sidebar-secondary' ) ) :
-        if ( !is_front_page() || ( is_front_page() && get_theme_mod( 'layout_sidebar_on_front' ) == 1 ) ) :
+        if ( !is_front_page() || ( is_front_page() && shoestrap_getVariable( 'layout_sidebar_on_front' ) == 1 ) ) :
           echo '<aside class="sidebar secondary ' . shoestrap_section_class( 'secondary' ) . '" role="complementary">';
             dynamic_sidebar('sidebar-secondary');
           echo '</aside><!-- /.sidebar -->';
