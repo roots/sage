@@ -7,7 +7,7 @@
 function shoestrap_logo() {
   $logo  = shoestrap_getVariable( 'logo' );
 
-  if ( !empty( $logo ) )
+  if ( !empty( $logo['url'] ) )
     echo '<img id="site-logo" src="' . $logo['url'] . '" alt="' . get_bloginfo( 'name' ) . '">';
   else
     echo '<span class="sitename">' . bloginfo( 'name' ) . '</span>';
