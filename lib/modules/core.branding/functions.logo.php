@@ -15,8 +15,9 @@ function shoestrap_logo() {
 }
 
 function shoestrap_branding_class( $echo = true ) {
+  $logo  = shoestrap_getVariable( 'logo' );
 
-  if ( shoestrap_getVariable( 'logo' ) )
+  if ( !empty( $logo['url'] ) )
     $class = 'logo';
   else
     $class = 'text';
