@@ -164,7 +164,7 @@ if ( !function_exists( 'shoestrap_module_header_options' ) ) {
       "id"        => "font_brand",
       'less'      => true,
       "std"       => array(
-        'family'    => 'Arial, Helveheadingca, sans-serif',
+        'family'    => 'Arial, Helvetica, sans-serif',
         'size'    => '18px',
         'color'   => '#333333',
         'google'  => 'false',
