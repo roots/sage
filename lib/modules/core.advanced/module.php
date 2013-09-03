@@ -32,6 +32,16 @@ if ( !function_exists('shoestrap_module_advanced_options' ) ) {
     );
 
     $fields[] = array(
+      "name"      => __("Dev mode", "shoestrap"),
+      "desc"      => __("By enabling your admin panel will have a Dev Mode Info with an output of the options object for addition debugging. Default: Off", "shoestrap"),
+      "id"        => "dev_mode",
+      "std"       => 0,
+      "type"      => "switch",
+      "customizer"=> array(),
+      "fold"      => "advanced_toggle"
+    );    
+
+    $fields[] = array(
       "name"      => __("Allow shortcodes in widgets", "shoestrap"),
       "desc"      => __("This option allows shortcodes within widgets. Default: On.", "shoestrap"),
       "id"        => "enable_widget_shortcodes",

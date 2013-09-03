@@ -11,7 +11,7 @@ include_once(dirname(__FILE__).'/tgm-init.php');
 
 function shoestrap_simpleoptions_init(){
 	if (class_exists("Simple_Options")) {
-		global $Simple_Options;
+		global $Simple_Options, $sof;
 
 		if (!empty($Simple_Options)) {
 			return;
@@ -20,7 +20,7 @@ function shoestrap_simpleoptions_init(){
 		$args = array();
 
 		//Set it to dev mode to view the class settings/info in the form - default is false
-		$args['dev_mode'] = true;
+		//$args['dev_mode'] = true;
 
 		// Enable customizer support for all of the fields unless denoated as customizer=>false in the field declaration
 		$args['customizer'] = true;
@@ -73,6 +73,10 @@ function shoestrap_simpleoptions_init(){
 		$sections = apply_filters('shoestrap_add_sections', $sections);
 
 		Simple_Options($sections, $args);
+
+		if ($sof['dev_mode'] == 1) {
+			$Simple_Options->args['dev_mode'] = true;
+		}
 
 	}
 }//function
