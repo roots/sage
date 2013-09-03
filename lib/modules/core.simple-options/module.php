@@ -1,6 +1,6 @@
 <?php
 
-include_once(dirname(__FILE__).'/tgm-init.php');
+
 
 /**
  
@@ -75,6 +75,7 @@ function shoestrap_simpleoptions_init(){
 		Simple_Options($sections, $args);
 
 	}
+	include_once(dirname(__FILE__).'/tgm-init.php');
 }//function
 add_action('init', 'shoestrap_simpleoptions_init');
 

@@ -3,6 +3,7 @@
 require_once dirname( __FILE__ ) . '/class-tgm-plugin-activation.php';
 
 function shoestrap_register_required_plugins() {
+	global $Simple_Options;
 	$plugins = array(
 		array(
 			'name' 			=> 'Simple Options Framework',
@@ -16,6 +17,9 @@ function shoestrap_register_required_plugins() {
 		),
 	);
 
+	if (!empty($Simple_Options)) {
+		$plugins['slug'] = $Simple_Options->plugin_slug;
+	}
 
 	$theme_text_domain = 'shoestrap';
 
