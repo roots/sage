@@ -13,7 +13,7 @@
   do_action( 'get_header' );
 
   // Use Bootstrap's navbar if enabled
-  if ( current_theme_supports( 'bootstrap-top-navbar') ) :
+  if ( shoestrap_getVariable( 'navbar_toggle' ) == 1 ) :
     // the "shoestrap_pre_navbar" hook
     do_action( 'shoestrap_pre_navbar' );
 

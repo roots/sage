@@ -3,18 +3,16 @@
  * Enable theme features
  */
 add_theme_support('post-thumbnails');
-if ( get_theme_mod( 'root_relative_urls' ) == 1  )
+if ( shoestrap_getVariable( 'root_relative_urls' ) == 1  )
   add_theme_support('root-relative-urls');    // Enable relative URLs
 
-if ( get_theme_mod( 'rewrites' ) == 1 )
+if ( shoestrap_getVariable( 'rewrites' ) == 1 )
   add_theme_support('rewrites');              // Enable URL rewrites
 
-if ( get_theme_mod( 'navbar_toggle' ) == 1 )
-  add_theme_support('bootstrap-top-navbar');  // Enable Bootstrap's top navbar
-
+add_theme_support('bootstrap-top-navbar');  // Enable Bootstrap's top navbar
 add_theme_support('bootstrap-gallery');     // Enable Bootstrap's thumbnails component on [gallery]
 
-if ( get_theme_mod( 'nice_search' ) == 1 )
+if ( shoestrap_getVariable( 'nice_search' ) == 1 )
   add_theme_support('nice-search');           // Enable /?s= to /search/ redirect
 
 add_theme_support('jquery-cdn');            // Enable to load jQuery from the Google CDN
@@ -22,8 +20,8 @@ add_theme_support('jquery-cdn');            // Enable to load jQuery from the Go
 /**
  * Configuration values
  */
-define('GOOGLE_ANALYTICS_ID', get_theme_mod('analytics_id')); // UA-XXXXX-Y
-define('POST_EXCERPT_LENGTH', get_theme_mod('post_excerpt_length'));
+define('GOOGLE_ANALYTICS_ID', shoestrap_getVariable('analytics_id')); // UA-XXXXX-Y
+define('POST_EXCERPT_LENGTH', shoestrap_getVariable('post_excerpt_length'));
 
 /**
  * .main classes
