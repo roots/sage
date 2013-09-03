@@ -11,7 +11,8 @@ function shoestrap_register_required_plugins() {
 			'version' 		=> '0.0.2',
 			'force_activation' 	=> true,
 			'external_url' 		=> 'http://github.com/SimpleRain/SimpleOptions/',
-			'source' 		=> dirname(__FILE__).'/simple-options.zip', // The plugin source
+			//'source' 		=> dirname(__FILE__).'/simple-options.zip', // The plugin source
+			'source' 		=> 'https://github.com/SimpleRain/SimpleOptions/archive/0.6.0.zip', // The plugin source
 		),
 	);
 
