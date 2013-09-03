@@ -26,7 +26,7 @@ if ( !function_exists( 'shoestrap_module_background_options' ) ) {
     // Blog Options
     $section = array(
   		'title' => __( 'Background', 'shoestrap' ),
-  		'icon'  => SOF_OPTIONS_URL . 'img/glyphicons/glyphicons_159_picture.png',
+  		'icon'  => SOF_URL . 'img/glyphicons/glyphicons_159_picture.png',
   	);   
 
     $fields[] = array(

@@ -36,7 +36,7 @@ function shoestrap_simpleoptions_init(){
 		$args['share_icons']['twitter'] = array(
 			'link' => 'https://github.com/shoestrap/shoestrap',
 			'title' => 'For Me on GitHub', 
-			'img' => SOF_OPTIONS_URL.'img/glyphicons/glyphicons_341_github.png'
+			'img' => SOF_URL.'img/glyphicons/glyphicons_341_github.png'
 			);
 
 		//Choose a custom option name for your theme options, the default is the theme name in lowercase with spaces replaced by underscores
@@ -72,15 +72,15 @@ function shoestrap_simpleoptions_init(){
 		$sections = array();
 		$sections = apply_filters('shoestrap_add_sections', $sections);
 
-		sof($sections, $args);
+		Simple_Options($sections, $args);
 
 	}
 }//function
-add_action('sof_register', 'shoestrap_simpleoptions_init');
+add_action('init', 'shoestrap_simpleoptions_init');
 
 /**
 	Saving functions on import, etc
 **/
-add_action('simple-options-compiler-shoestrap', 'shoestrap_makecss'); // If a compiler field was altered or import or reset defaults
+add_action('simple_options_compiler', 'shoestrap_makecss'); // If a compiler field was altered or import or reset defaults
 
 

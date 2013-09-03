@@ -9,7 +9,7 @@ if ( !function_exists( 'shoestrap_module_layout_options' ) ) {
     // Layout Settings
     $section = array(
     		'title' => __("Layout", "shoestrap"),
-    		'icon' => SOF_OPTIONS_URL.'img/glyphicons/glyphicons_153_more_windows.png',
+    		'icon' => SOF_URL.'img/glyphicons/glyphicons_153_more_windows.png',
     		'description'=> "<p>In this area you can select your site's layout, the width of your sidebars,
                       as well as other, more advanced options.</p>",
     	);
@@ -36,12 +36,12 @@ if ( !function_exists( 'shoestrap_module_layout_options' ) ) {
       "type"      => "images",
       "customizer"=> array(),
       "options"   => array(
-        0         => SOF_OPTIONS_URL.'img/1c.png',
-        1         => SOF_OPTIONS_URL.'img/2cr.png',
-        2         => SOF_OPTIONS_URL.'img/2cl.png',
-        3         => SOF_OPTIONS_URL.'img/3cl.png',
-        4         => SOF_OPTIONS_URL.'img/3cr.png',
-        5         => SOF_OPTIONS_URL.'img/3cm.png',
+        0         => SOF_URL.'img/1c.png',
+        1         => SOF_URL.'img/2cr.png',
+        2         => SOF_URL.'img/2cl.png',
+        3         => SOF_URL.'img/3cl.png',
+        4         => SOF_URL.'img/3cr.png',
+        5         => SOF_URL.'img/3cm.png',
       )
     );
 

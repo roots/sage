@@ -9,7 +9,7 @@ if ( !function_exists( 'shoestrap_module_typography_options' ) ) {
     // Typography Options
     $section = array(
     		'title' => __("Typography", "shoestrap"),
-    		'icon' => SOF_OPTIONS_URL.'img/glyphicons/glyphicons_105_text_height.png',
+    		'icon' => SOF_URL.'img/glyphicons/glyphicons_105_text_height.png',
     	);
 
     $fields[] = array(

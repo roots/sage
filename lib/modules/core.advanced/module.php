@@ -9,7 +9,7 @@ if ( !function_exists('shoestrap_module_advanced_options' ) ) {
     // Advanced Settings
     $section = array(
     		'title' => __("Advanced", "shoestrap"),
-    		'icon' => SOF_OPTIONS_URL.'img/glyphicons/glyphicons_280_settings.png',
+    		'icon' => SOF_URL.'img/glyphicons/glyphicons_280_settings.png',
     	);  
 
     $fields[] = array(

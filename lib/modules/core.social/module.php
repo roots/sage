@@ -8,7 +8,7 @@ if ( !function_exists( 'shoestrap_module_social_options' ) ) {
 
     $section = array(
     		'title' => __("Social Sharing", "shoestrap"),
-    		'icon' => SOF_OPTIONS_URL.'img/glyphicons/glyphicons_309_comments.png',
+    		'icon' => SOF_URL.'img/glyphicons/glyphicons_309_comments.png',
     	);
 
     $fields[] = array(
@@ -170,7 +170,7 @@ if ( !function_exists( 'shoestrap_module_social_options' ) ) {
 
     $section = array(
     		'title' => __("Social Links", "shoestrap"),
-    		'icon' => SOF_OPTIONS_URL.'img/glyphicons/glyphicons_282_cardio.png',
+    		'icon' => SOF_URL.'img/glyphicons/glyphicons_282_cardio.png',
     	);
     $fields = array();
 

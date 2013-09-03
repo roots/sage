@@ -31,7 +31,7 @@ if ( !function_exists( 'shoestrap_core_licencing_options' ) ) {
     // Licencing Options
     $section = array(
     		'title' => __("Licencing", "shoestrap"),
-    		'icon' => SOF_OPTIONS_URL.'img/glyphicons/glyphicons_203_lock.png',
+    		'icon' => SOF_URL.'img/glyphicons/glyphicons_203_lock.png',
     	);
 
     $fields[] = array(

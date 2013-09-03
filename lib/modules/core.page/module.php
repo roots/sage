@@ -9,7 +9,7 @@ if ( !function_exists( 'shoestrap_module_page_options' ) ) {
     // Page Options
     $section = array(
     		'title' => __("Page", "shoestrap"),
-    		'icon' => SOF_OPTIONS_URL.'img/glyphicons/glyphicons_036_file.png',
+    		'icon' => SOF_URL.'img/glyphicons/glyphicons_036_file.png',
     	);
 
     $fields[] = array(
@@ -30,12 +30,12 @@ if ( !function_exists( 'shoestrap_module_page_options' ) ) {
       "fold"      => "page_layout_toggle",
       "customizer"=> array(),
       "options"   => array(
-        0         => SOF_OPTIONS_URL.'img/1c.png',
-        1         => SOF_OPTIONS_URL.'img/2cr.png',
-        2         => SOF_OPTIONS_URL.'img/2cl.png',
-        3         => SOF_OPTIONS_URL.'img/3cl.png',
-        4         => SOF_OPTIONS_URL.'img/3cr.png',
-        5         => SOF_OPTIONS_URL.'img/3cm.png',
+        0         => SOF_URL.'img/1c.png',
+        1         => SOF_URL.'img/2cr.png',
+        2         => SOF_URL.'img/2cl.png',
+        3         => SOF_URL.'img/3cl.png',
+        4         => SOF_URL.'img/3cr.png',
+        5         => SOF_URL.'img/3cm.png',
       )
     );
 
