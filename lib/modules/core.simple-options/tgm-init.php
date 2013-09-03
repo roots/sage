@@ -3,8 +3,7 @@
 require_once dirname( __FILE__ ) . '/class-tgm-plugin-activation.php';
 
 function shoestrap_register_required_plugins() {
-	global $Simple_Options;
-	$plugins = array(
+	$plugin = array(
 		array(
 			'name' 			=> 'Simple Options Framework',
 			'slug' 			=> 'simple-options',
@@ -12,13 +11,14 @@ function shoestrap_register_required_plugins() {
 			'version' 		=> '0.0.2',
 			'force_activation' 	=> true,
 			'external_url' 		=> 'http://github.com/SimpleRain/SimpleOptions/',
-			//'source' 		=> dirname(__FILE__).'/simple-options.zip', // The plugin source
-			'source' 		=> 'https://github.com/SimpleRain/SimpleOptions/archive/0.6.0.zip', // The plugin source
+			'source' 		=> dirname(__FILE__).'/simple-options.zip', // The plugin source
 		),
 	);
 
-	if (!empty($Simple_Options)) {
-		$plugins['slug'] = $Simple_Options->plugin_slug;
+	if (defined('SOF_DIR')) {
+		$parts = str_replace('/options/','', SOF_DIR);
+		$parts = explode("/", $parts);
+		$plugin['slug'] = end($parts);
 	}
 
 	$theme_text_domain = 'shoestrap';
@@ -54,7 +54,7 @@ function shoestrap_register_required_plugins() {
 		)
 	);
 
-	tgmpa( $plugins, $config );
+	tgmpa( array($plugin), $config );
 
 }// function
 add_action( 'tgmpa_register', 'shoestrap_register_required_plugins' );
