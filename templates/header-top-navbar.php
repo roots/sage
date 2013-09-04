@@ -6,7 +6,7 @@
 <header class="banner navbar navbar-default topnavbar <?php echo shoestrap_navbar_class(); ?>" role="banner">
   <div class="<?php echo shoestrap_container_class(); ?>">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-main">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-main, .nav-extras">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -24,13 +24,15 @@
       endif;
       ?>
     </div>
-    <?php
-      // If the user has selected to show social links in the navbar echo the content.
-      if ( shoestrap_getVariable( 'navbar_social' ) != 0 )
-        shoestrap_navbar_social_links();
-    
-    do_action( 'shoestrap_pre_main_nav' ); 
-    ?>
+    <div class="nav-extras collapse">
+      <?php
+        // If the user has selected to show social links in the navbar echo the content.
+        if ( shoestrap_getVariable( 'navbar_social' ) != 0 )
+          shoestrap_navbar_social_links();
+      
+      do_action( 'shoestrap_pre_main_nav' ); 
+      ?>
+    </div>
     <nav class="nav-main navbar-collapse collapse" role="navigation">
       <?php
         if (has_nav_menu('primary_navigation')) :
