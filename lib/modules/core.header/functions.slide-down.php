@@ -137,4 +137,4 @@ function shoestrap_megadrop_script() {
     wp_enqueue_script('shoestrap_megadrop');
   }
 }
-add_action('wp_enqueue_scripts', 'shoestrap_megadrop_script', 100);
+add_action('wp_enqueue_scripts', 'shoestrap_megadrop_script', 200);
