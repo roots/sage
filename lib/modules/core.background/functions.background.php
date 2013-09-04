@@ -18,16 +18,17 @@ function shoestrap_background_css( ) {
   $position = '';
 
   // $background is the saved custom image, or the default image.
-  if ( $image_toggle == 1 ) {
+  if ( $image_toggle == 1 ) :
 
-    if ( $bg_custom_img != '' )
+    if ( $bg_custom_img != '' ) :
       $background = set_url_scheme( $bg_custom_img['url'] );
-    elseif ( $bg_img != '' )
+    elseif ( $bg_img != '' ) :
       $background = set_url_scheme( $bg_img['url'] );
+    endif;
 
-  } elseif ( $pattern_toggle == 1 && $bg_pattern != '' ) {
+  elseif ( $pattern_toggle == 1 && $bg_pattern != '' ) :
     $background = set_url_scheme( $bg_pattern['url'] );
-  }
+  endif;
 
   $color = '#' . str_replace( '#', '', $bg_color ) . ';';
 
