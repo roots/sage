@@ -60,12 +60,12 @@ class Shoestrap_Breadcrumb {
     $this->strings = wp_parse_args( $strings, array(
       'home'            => '<i class="icon icon-home"></i>',
       'search'          => __( 'Search Results for', 'shoestrap' ),
-      'paged'           => __('Page', 'shoestrap' ) . ' %d',
+      'paged'           => __( 'Page', 'shoestrap' ) . ' %d',
       '404_error'       => __( 'Page Not Found', 'shoestrap' )
     ) );
 
     // Generate breadcrumb
-    if ( $autorun)
+    if ( $autorun )
       echo $this->output();
   }
 
@@ -78,7 +78,7 @@ class Shoestrap_Breadcrumb {
     if ( empty( $this->breadcrumb ) )
       $this->generate();
 
-    $breadcrumb = (string) implode( $this->options['separator'], $this->breadcrumb );
+    $breadcrumb = ( string ) implode( $this->options['separator'], $this->breadcrumb );
 
     return $this->templates['before'] . $breadcrumb . $this->templates['after'];
   }
@@ -180,7 +180,7 @@ class Shoestrap_Breadcrumb {
       }
     }
 
-    if ( is_singular() ) { // Posts, (Sub)Pages, Attachments and Custom Post Types
+    if ( is_singular() ) { // Posts, ( Sub )Pages, Attachments and Custom Post Types
       if ( ! is_front_page() ) {
         if ( $this->options['show_htfpt'] ) {
           $_id = $queried_object->ID;
@@ -243,7 +243,7 @@ class Shoestrap_Breadcrumb {
       );
 
       $this->breadcrumb['search'] = '<li class="active">Search Results</li>';
-      
+     
 
       if ( $this->options['show_pagenum'] )
         $this->breadcrumb['search'] = $this->template( array(
@@ -329,9 +329,10 @@ class Shoestrap_Breadcrumb {
 }
 
 function shoestrap_breadcrumbs() {
-  if (is_front_page()) { // No breadcrumbs on the front page
+  // No breadcrumbs on the front page
+  if ( is_front_page() )
     return;
-  }
+
   $templates = array(
     'before'    => '<div class="breadTrail '.shoestrap_container_class().'"><ul class="breadcrumb">',
     'after'     => '</ul></div>',
@@ -343,7 +344,8 @@ function shoestrap_breadcrumbs() {
     'show_htfpt' => true
   );
 
-  $breadcrumb = new Shoestrap_Breadcrumb( $templates, $options );
+  if ( shoestrap_getVariable( 'breadcrumbs' ) != 0 ) :
+    $breadcrumb = new Shoestrap_Breadcrumb( $templates, $options );
+  endif;
 }
-if ( shoestrap_getVariable( 'breadcrumbs' ) == 1 )
-  add_action( 'shoestrap_breadcrumbs', 'shoestrap_breadcrumbs' );
+add_action( 'shoestrap_breadcrumbs', 'shoestrap_breadcrumbs' );
