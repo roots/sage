@@ -94,4 +94,8 @@ function shoestrap_widgets_init() {
   register_widget('Roots_Vcard_Widget');
 }
 add_action('widgets_init', 'shoestrap_widgets_init');
-remove_action('widgets_init', 'roots_widgets_init');
+
+function shoestrap_remove_roots_widgets() {
+  remove_action('widgets_init', 'roots_widgets_init');
+}
+add_action('widgets_init', 'shoestrap_remove_roots_widgets', 1);
