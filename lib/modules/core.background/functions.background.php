@@ -42,7 +42,7 @@ function shoestrap_background_css( ) {
     $style .= 'background-attachment: fixed;';
 
   if ( isset( $background ) )
-    $image .= 'background-image: url( '$background' );';
+    $image .= 'background-image: url( "' . $background . '" );';
 
   if ( $image_toggle == 1 && ( $bg_custom_img != '' || $bg_img != '' ) ) :
 
@@ -63,20 +63,20 @@ function shoestrap_background_css( ) {
       if ($repeat == 'no-repeat')
         $style .= 'background-size: auto;';
 
-      $repeat = ' background-repeat: $repeat;';
+      $repeat = ' background-repeat: ' . $repeat . ';';
       $position = shoestrap_getVariable( 'background_position_x', 'left' );
 
       if ( ! in_array( $position, array( 'center', 'right', 'left' ) ) )
         $position = 'left';
 
-      $position = ' background-position: top $position;';
+      $position = ' background-position: top ' . $position . ';';
     endif;
   endif;
 
   $style .= $image . $repeat . $position;
 
-  $theCSS = 'body {' . trim( $style ) . '}';
-  $theCSS .= $color ? '.wrap.main-section .content{background: $color;}' : '';
+  $theCSS = 'body { background-color: ' . $color . '; ' . trim( $style ) . '}';
+  $theCSS .= $color ? '.wrap.main-section .content { background: ' . $color . '; }' : '';
 
   wp_add_inline_style( 'shoestrap_css', $theCSS );
 
