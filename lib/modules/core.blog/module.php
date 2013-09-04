@@ -55,10 +55,10 @@ if ( !function_exists( 'shoestrap_module_blog_options' ) ) :
     );
 
     $fields[] = array( 
-      'name'      => __( 'Enable Comments on Blog', 'shoestrap' ),
-      'desc'      => __( 'Allow site visitors to write comments on blog posts. Default: On.', 'shoestrap' ),
+      'name'      => __( 'Disable Comments on Blog', 'shoestrap' ),
+      'desc'      => __( 'Do not allow site visitors to write comments on blog posts. Default: Off.', 'shoestrap' ),
       'id'        => 'blog_comments_toggle',
-      'std'       => 1,
+      'std'       => 0,
       'type'      => 'switch',
       'customizer'=> array(),
     );
@@ -198,11 +198,10 @@ add_action( 'shoestrap_add_sections', 'shoestrap_module_blog_options', 75 );
 
 
 function shoestrap_core_blog_comments_toggle() {
-  if ( shoestrap_getVariable( 'blog_comments_toggle' ) != 1 ) :
+  if ( shoestrap_getVariable( 'blog_comments_toggle' ) == 1 ) {
     remove_post_type_support( 'post', 'comments' );
     remove_post_type_support( 'post', 'trackbacks' );
-
     add_filter( 'get_comments_number', '__return_false', 10, 3 );
-  endif;
+  }
 }
 add_action( 'init','shoestrap_core_blog_comments_toggle', 1 );
