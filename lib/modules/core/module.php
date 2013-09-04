@@ -134,13 +134,6 @@ function shoestrap_getVariable( $key, $fresh = false ) {
   return false;
 }
 
-// Show or hide the adminbar
-if ( shoestrap_getVariable( 'advanced_wordpress_disable_admin_bar_toggle' ) == 0 )
-  show_admin_bar( false );
-else
-  show_admin_bar( true );
-
-
 define( 'themeURI', get_template_directory_uri() );
 define( 'themeFOLDER', get_template() );
 define( 'themePATH', get_theme_root() );
