@@ -39,10 +39,10 @@ function shoestrap_background_css( ) {
   endif;
 
   if ( shoestrap_getVariable( 'background_fixed_toggle' ) == 1 )
-    $style .= "background-attachment: fixed;";
+    $style .= 'background-attachment: fixed;';
 
   if ( isset( $background ) )
-    $image .= "background-image: url( '$background' );";
+    $image .= 'background-image: url( '$background' );';
 
   if ( $image_toggle == 1 && ( $bg_custom_img != '' || $bg_img != '' ) ) :
 
@@ -60,23 +60,23 @@ function shoestrap_background_css( ) {
       if ( !in_array( $repeat, array( 'no-repeat', 'repeat-x', 'repeat-y', 'repeat' ) ) )
         $repeat = 'repeat';
 
-      if ($repeat == "no-repeat")
-        $style .= "background-size: auto;";
+      if ($repeat == 'no-repeat')
+        $style .= 'background-size: auto;';
 
-      $repeat = " background-repeat: $repeat;";
+      $repeat = ' background-repeat: $repeat;';
       $position = shoestrap_getVariable( 'background_position_x', 'left' );
 
       if ( ! in_array( $position, array( 'center', 'right', 'left' ) ) )
         $position = 'left';
 
-      $position = " background-position: top $position;";
+      $position = ' background-position: top $position;';
     endif;
   endif;
 
   $style .= $image . $repeat . $position;
 
   $theCSS = 'body {' . trim( $style ) . '}';
-  $theCSS .= $color ? ".wrap.main-section .content{background: $color;}" : '';
+  $theCSS .= $color ? '.wrap.main-section .content{background: $color;}' : '';
 
   wp_add_inline_style( 'shoestrap_css', $theCSS );
 
