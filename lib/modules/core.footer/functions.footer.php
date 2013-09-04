@@ -19,7 +19,7 @@ function shoestrap_footer_css() {
       $style .= 'background:' . $bg . ';';
     endif;
 	  if ( !empty($border) && $border['size'] > 0 ) {
-	  	$style .= 'border-bottom:' . $border['size'] . 'px ' . $border['style'] . ' ' . $border['color'] . ';';
+	  	$style .= 'border-top:' . $border['size'] . 'px ' . $border['style'] . ' ' . $border['color'] . ';';
 	  }
     $style .= 'padding: 18px 10px 18px;';
     $style .= 'margin-top:'. $top_margin .'px;';
