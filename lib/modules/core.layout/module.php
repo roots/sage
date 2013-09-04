@@ -79,7 +79,7 @@ if ( !function_exists( 'shoestrap_module_layout_options' ) ) {
     );
 
     $fields[] = array(
-      "name"      => __("Margin from top (Works best in \"Boxed\" mode)", "shoestrap"),
+      "name"      => __("Margin from top (Works only in \"Boxed\" mode)", "shoestrap"),
       "desc"      => __("This will add a margin above the navbar. Useful if you've enabled the 'Boxed' mode above. Default: 0px", "shoestrap"),
       "id"        => "navbar_margin_top",
       "fold"      => "navbar_boxed",
