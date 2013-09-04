@@ -8,11 +8,10 @@ if ( !function_exists( 'shoestrap_module_layout_options' ) ) {
 
     // Layout Settings
     $section = array(
-    		'title' => __('Layout', 'shoestrap'),
-    		'icon' => SOF_URL.'img/glyphicons/glyphicons_153_more_windows.png',
-    		'description'=> '<p>In this area you can select your site\'s layout, the width of your sidebars,
-                      as well as other, more advanced options.</p>',
-    	);
+  		'title' => __('Layout', 'shoestrap'),
+  		'icon' => SOF_URL.'img/glyphicons/glyphicons_153_more_windows.png',
+  		'description'=> '<p>In this area you can select your site\'s layout, the width of your sidebars, as well as other, more advanced options.</p>',
+  	);
 
     $fields[] = array(
       'name'      => __('Site Style', 'shoestrap'),
