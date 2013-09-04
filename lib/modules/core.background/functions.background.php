@@ -5,9 +5,9 @@ function shoestrap_background_css( ) {
 	if ( shoestrap_getVariable( 'background_image_toggle' ) == 0 && shoestrap_getVariable( 'background_pattern_toggle' ) == 0 )
 		return;
 
-  $style = '';
-  $image = '';
-  $repeat = '';
+  $style    = '';
+  $image    = '';
+  $repeat   = '';
   $position = '';
   // $background is the saved custom image, or the default image.
   if ( shoestrap_getVariable( 'background_image_toggle' ) == 1 ) {
@@ -19,7 +19,8 @@ function shoestrap_background_css( ) {
     	$background = $background['url'];
     }
   } else if ( shoestrap_getVariable( 'background_pattern_toggle' ) == 1 && shoestrap_getVariable( 'background_pattern' ) != "" ) {
-    $background = shoestrap_getVariable( 'background_pattern' );
+    $background = set_url_scheme( shoestrap_getVariable( 'background_pattern' ) );
+    $background = $background['url'];
   }
 
   if ( shoestrap_getVariable( 'color_body_bg' ) != "" )
