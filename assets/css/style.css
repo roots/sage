@@ -6710,7 +6710,7 @@ h6,
     float: right;
   }
 }
-.boxed-style #boxed-container {
+.boxed-style .boxed-container {
   margin-top: 0px;
 }
 img {
