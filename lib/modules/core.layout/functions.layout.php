@@ -6,19 +6,18 @@
 function shoestrap_getLayout() {
 	global $shoestrap_layout;
 
-	if ( !isset($shoestrap_layout) ) {
+	if ( !isset( $shoestrap_layout ) ) {
 		do_action('shoestrap_layout_modifier');
 		$shoestrap_layout = intval( shoestrap_getVariable( 'layout' ) );
-	  if (is_page() && shoestrap_getVariable( 'page_layout_toggle' ) == 1) {
-	    $shoestrap_layout = intval( shoestrap_getVariable( 'page_layout' ) );
-	  } else if (!is_page() && shoestrap_getVariable( 'blog_layout_toggle' ) == 1) {
-	    $shoestrap_layout = intval( shoestrap_getVariable( 'blog_layout' ) );
-	  }
-	  if ( !is_active_sidebar( 'sidebar-secondary' ) && is_active_sidebar( 'sidebar-primary' ) && $shoestrap_layout == 5 ) {
-	    $shoestrap_layout = 3;
-	  }
-	}
 
+	  if (is_page() && shoestrap_getVariable( 'page_layout_toggle' ) == 1 )
+	    $shoestrap_layout = intval( shoestrap_getVariable( 'page_layout' ) );
+	  elseif ( !is_page() && shoestrap_getVariable( 'blog_layout_toggle' ) == 1 )
+	    $shoestrap_layout = intval( shoestrap_getVariable( 'blog_layout' ) );
+
+	  if ( !is_active_sidebar( 'sidebar-secondary' ) && is_active_sidebar( 'sidebar-primary' ) && $shoestrap_layout == 5 )
+	    $shoestrap_layout = 3;
+	}
 	return $shoestrap_layout;
 }
 
@@ -26,9 +25,9 @@ function shoestrap_getLayout() {
 /*
  *Override the layout value globally
  */
-function shoestrap_setLayout($val) {
+function shoestrap_setLayout( $val ) {
 	global $shoestrap_layout, $smof_data;
-	$shoestrap_layout = intval($val);
+	$shoestrap_layout = intval( $val );
 }
 
 
@@ -36,11 +35,13 @@ function shoestrap_setLayout($val) {
  * Calculates the classes of the main area, main sidebar and secondary sidebar
  */
 function shoestrap_section_class( $target, $echo = false ) {
-global $smof_data;
+  global $smof_data;
+  
   $layout = shoestrap_getLayout();
   $first  = intval( shoestrap_getVariable( 'layout_primary_width' ) );
   $second = intval( shoestrap_getVariable( 'layout_secondary_width' ) );
   $base   = 'col-sm-';
+  
   // Set some defaults so that we can change them depending on the selected template
   $main       = $base . 12;
   $primary    = NULL;
@@ -76,23 +77,23 @@ global $smof_data;
   }
 
   // Overrides main region class when selected template is page-full.php
-  if ( is_page_template('page-full.php') ) {
+  if ( is_page_template( 'page-full.php' ) ) :
     $main         = $base . 12;
     $wrapper    = NULL;
-  }
+  endif;
 
   // Overrides main and primary region classes when selected template is page-primary-sidebar.php
-  if ( is_page_template('page-primary-sidebar.php') ) {
+  if ( is_page_template('page-primary-sidebar.php') ) :
     $main      = $base . ( 12 - $first );
     $primary   = $base . $first;
     $wrapper    = NULL;
-  }
+  endif;
 
   // Overrides the main region class when on the frontpage and sidebars are set to not being displayed there.
-  if ( is_front_page() && shoestrap_getVariable( 'layout_sidebar_on_front' ) != 1 ) {
+  if ( is_front_page() && shoestrap_getVariable( 'layout_sidebar_on_front' ) != 1 ) :
     $main      = $base . 12;
     $wrapper    = NULL;
-  }
+  endif;
 
   if ( $target == 'primary' )
     $class = $primary;
@@ -117,6 +118,7 @@ global $smof_data;
   }
 }
 
+
 /**
  * Add and remove body_class() classes to accomodate layouts
  */
@@ -124,7 +126,7 @@ function shoestrap_layout_body_class($classes) {
   $layout     = shoestrap_getLayout();
   $site_style = shoestrap_getVariable( 'site_style' );
   $margin     = shoestrap_getVariable( 'navbar_margin_top' );
-  $style      = "";
+  $style      = '';
 
   if ( $layout == 2 || $layout == 3 || $layout == 5 )
     $classes[] = 'main-float-right';
@@ -134,12 +136,16 @@ function shoestrap_layout_body_class($classes) {
 
   // Remove unnecessary classes
   $remove_classes = array();
-  $classes = array_diff($classes, $remove_classes);
+  $classes = array_diff( $classes, $remove_classes );
 
   return $classes;
 }
 add_filter('body_class', 'shoestrap_layout_body_class');
 
+
+/*
+ * Return the container class
+ */
 function shoestrap_container_class() {
   $site_style = shoestrap_getVariable( 'site_style' );
 
@@ -147,6 +153,10 @@ function shoestrap_container_class() {
     return 'container';
 }
 
+
+/*
+ * Calculate the width of the content area in pixels.
+ */
 function shoestrap_content_width_px( $echo = false ) {
   global $smof_details;
 
@@ -156,7 +166,7 @@ function shoestrap_content_width_px( $echo = false ) {
   $gutter     = filter_var( shoestrap_getVariable( 'layout_gutter' ), FILTER_SANITIZE_NUMBER_INT );
 
   $main_span  = filter_var( shoestrap_section_class( 'main', false ), FILTER_SANITIZE_NUMBER_INT );
-  $main_span  = str_replace( "-" , "", $main_span );
+  $main_span  = str_replace( '-' , '', $main_span );
 
   // If the layout is #5, override the default function and calculate the span width of the main area again.
   if ( is_active_sidebar( 'sidebar-secondary' ) && is_active_sidebar( 'sidebar-primary' ) && $layout == 5 )
@@ -165,7 +175,7 @@ function shoestrap_content_width_px( $echo = false ) {
   $width = $container * ( $main_span / 12 ) - $gutter;
 
   // Width should be an integer since we're talking pixels, round up!.
-  $width = round($width);
+  $width = round( $width );
 
   if ( $echo )
     echo $width;
@@ -173,25 +183,31 @@ function shoestrap_content_width_px( $echo = false ) {
     return $width;
 }
 
+
+/*
+ * Set the content width
+ */
 function shoestrap_content_width() {
   global $content_width;
   $content_width = shoestrap_content_width_px();
 }
 add_action( 'template_redirect', 'shoestrap_content_width' );
 
-// top & bottom margins controls for body element
-if (( shoestrap_getVariable( 'body_margin_top' ) != 0 ) 
-  ||  ( shoestrap_getVariable( 'body_margin_bottom' ) != 0 )){
-  function shoestrap_body_margin() {
-    $body_margin_top = shoestrap_getVariable( 'body_margin_top' );
-    $body_margin_bottom = shoestrap_getVariable( 'body_margin_bottom' );
 
-    $style = 'body {';
-      $style .= 'margin-top:'. $body_margin_top .'px;';
-      $style .= 'margin-bottom:'. $body_margin_bottom .'px;';
-    $style .= '}';
+/*
+ * Body Margins
+ */
+function shoestrap_body_margin() {
+  $body_margin_top = shoestrap_getVariable( 'body_margin_top' );
+  $body_margin_bottom = shoestrap_getVariable( 'body_margin_bottom' );
 
-    wp_add_inline_style( 'shoestrap_css', $style );
-  }
-  add_action( 'wp_enqueue_scripts', 'shoestrap_body_margin', 101 );
+  $style = 'body {';
+    $style .= 'margin-top:'. $body_margin_top .'px;';
+    $style .= 'margin-bottom:'. $body_margin_bottom .'px;';
+  $style .= '}';
+
+  wp_add_inline_style( 'shoestrap_css', $style );
 }
+if ( ( shoestrap_getVariable( 'body_margin_top' ) != 0 ) || ( shoestrap_getVariable( 'body_margin_bottom' ) != 0 ) ) :
+  add_action( 'wp_enqueue_scripts', 'shoestrap_body_margin', 101 );
+endif;
