@@ -1,0 +1,270 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Walid Ziouche <01walid@gmail.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"X-Generator: Poedit 1.5.7\n"
+"Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5);\n"
+"Language: Arabic\n"
+
+#: 404.php:4
+msgid "Sorry, but the page you were trying to view does not exist."
+msgstr "عفوا، ولكن الصفحة التي كنت تحاول عرضها غير موجودة."
+
+#: 404.php:7
+msgid "It looks like this was the result of either:"
+msgstr "قد يكون هذا نتيجة إما:"
+
+#: 404.php:9
+msgid "a mistyped address"
+msgstr "عنوان مكتوب بشكل خاطئ"
+
+#: 404.php:10
+msgid "an out-of-date link"
+msgstr "رابط انتهت صلاحيته"
+
+#: base.php:4
+msgid ""
+"You are using an <strong>outdated</strong> browser. Please <a href=\"http://"
+"browsehappy.com/\">upgrade your browser</a> to improve your experience."
+msgstr ""
+"أنت تستعمل نسخة <strong>قديمة</strong> من متصفحك. فضلا <a href=\"http://"
+"browsehappy.com/\">قم بتحديث متصفحك</a> لتحظى بتجربة استخدام أفضل."
+
+#: index.php:5
+msgid "Sorry, no results were found."
+msgstr "عفوا، لم يتم العثور على نتائج."
+
+#: index.php:17
+msgid "&larr; Older posts"
+msgstr "&rarr; المنشورات الأقدم"
+
+#: index.php:18
+msgid "Newer posts &rarr;"
+msgstr "المنشورات الأحدث &larr;"
+
+#: lib/activation.php:28 lib/activation.php:29
+msgid "Theme Activation"
+msgstr "تفعيل القالب"
+
+#: lib/activation.php:51
+msgid "%s Theme Activation"
+msgstr "تفعيل قالب %s"
+
+#: lib/activation.php:62 lib/activation.php:64
+msgid "Create static front page?"
+msgstr "إنشاء صفحة رئيسية ثابتة؟"
+
+#: lib/activation.php:66 lib/activation.php:79 lib/activation.php:92
+#: lib/activation.php:105 lib/activation.php:118
+msgid "Yes"
+msgstr "نعم"
+
+#: lib/activation.php:67 lib/activation.php:80 lib/activation.php:93
+#: lib/activation.php:106 lib/activation.php:119
+msgid "No"
+msgstr "لا"
+
+#: lib/activation.php:70
+msgid "Create a page called Home and set it to be the static front page"
+msgstr "إنشاء صفحة باسم Home وجعلها هي الصفحة الرئيسية الثابتة"
+
+#: lib/activation.php:75
+msgid "Change permalink structure?"
+msgstr "تغيير هيكلة الروابط الدائمة؟"
+
+#: lib/activation.php:77
+msgid "Update permalink structure?"
+msgstr "تحديث هيكلة الروابط الدائمة؟"
+
+#: lib/activation.php:83
+msgid "Change permalink structure to /&#37;postname&#37;/"
+msgstr "تغيير هيكلة الروابط الدائمة إلى /&#37;postname&#37;/"
+
+#: lib/activation.php:88
+msgid "Change uploads folder?"
+msgstr "تغيير مسار مجلد uploads ؟"
+
+#: lib/activation.php:90
+msgid "Update uploads folder?"
+msgstr "تحديث مسار مجلد uploads؟"
+
+#: lib/activation.php:96
+msgid "Change uploads folder to /media/ instead of /wp-content/uploads/"
+msgstr "تغيير مجلد uploads إلى /media/ عِوض /wp-content/uploads/"
+
+#: lib/activation.php:101 lib/activation.php:103
+msgid "Create navigation menu?"
+msgstr "إنشاء قائمة تصفح؟"
+
+#: lib/activation.php:109
+msgid "Create the Primary Navigation menu and set the location"
+msgstr "إنشاء قائمة التصفح الرئيسية وتعيين مكانها"
+
+#: lib/activation.php:114 lib/activation.php:116
+msgid "Add pages to menu?"
+msgstr "إضافة صفحات لقائمة التصفح؟"
+
+#: lib/activation.php:122
+msgid "Add all current published pages to the Primary Navigation"
+msgstr "إضافة جميع الصفحات المنشورة حاليا إلى قائمة التصفح الرئيسية"
+
+#: lib/cleanup.php:210
+msgid "Continued"
+msgstr "مستمر"
+
+#: lib/init.php:11
+msgid "Primary Navigation"
+msgstr "قائمة التصفح الرئيسية"
+
+#: lib/titles.php:10
+msgid "Latest Posts"
+msgstr "آخر المنشورات"
+
+#: lib/titles.php:19
+msgid "Daily Archives: %s"
+msgstr "الأرشيف اليومي: %s"
+
+#: lib/titles.php:21
+msgid "Monthly Archives: %s"
+msgstr "الأرشيف الشهري: %s"
+
+#: lib/titles.php:23
+msgid "Yearly Archives: %s"
+msgstr "الأرشيف السنوي: %s"
+
+#: lib/titles.php:26
+msgid "Author Archives: %s"
+msgstr "أرشيف الكاتب: %s"
+
+#: lib/titles.php:31
+msgid "Search Results for %s"
+msgstr "نتائج البحث عن %s"
+
+#: lib/titles.php:33
+msgid "Not Found"
+msgstr "غير موجود"
+
+#: lib/widgets.php:8
+msgid "Primary"
+msgstr "الرئيسيىة"
+
+#: lib/widgets.php:17
+msgid "Footer"
+msgstr "التذييل"
+
+#: lib/widgets.php:45
+msgid "Use this widget to add a vCard"
+msgstr "استعمل هذه الوَدَجة لإضافة vCard"
+
+#: lib/widgets.php:47
+msgid "Roots: vCard"
+msgstr "Roots: vCard"
+
+#: lib/widgets.php:74
+msgid "vCard"
+msgstr "vCard"
+
+#: templates/comment.php:4
+msgid "%1$s"
+msgstr "%1$s"
+
+#: templates/comment.php:5
+msgid "(Edit)"
+msgstr "(تحرير)"
+
+#: templates/comment.php:9
+msgid "Your comment is awaiting moderation."
+msgstr "تعليقك بانتظار الموافقة من طرف الإدارة."
+
+#: templates/comments.php:8
+msgid "One Response to &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s Responses to &ldquo;%2$s&rdquo;"
+msgstr[0] "لا توجد ردود على &rdquo;%2$s&ldquo;"
+msgstr[1] "رد واحد على &rdquo;%2$s&ldquo;"
+msgstr[2] "ردّان على &rdquo;%2$s&ldquo;"
+msgstr[3] "%1$s ردود على &rdquo;%2$s&ldquo;"
+msgstr[4] "%1$s ردًا على &rdquo;%2$s&ldquo;"
+msgstr[5] "%1$s رد على &rdquo;%2$s&ldquo;"
+
+#: templates/comments.php:18
+msgid "&larr; Older comments"
+msgstr "&rarr; التعليقات الأقدم"
+
+#: templates/comments.php:21
+msgid "Newer comments &rarr;"
+msgstr "التعليقات الأحدث &larr;"
+
+#: templates/comments.php:29 templates/comments.php:38
+msgid "Comments are closed."
+msgstr "التعليقات مغلقة."
+
+#: templates/comments.php:45
+msgid "Leave a Reply"
+msgstr "اترك تعليقًا"
+
+#: templates/comments.php:45
+msgid "Leave a Reply to %s"
+msgstr "اترك ردًا لـِ %s"
+
+#: templates/comments.php:48
+msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
+msgstr "يجب عليك <a href=\"%s\">تسجيل دخولك</a> لتتمكن من التعليق."
+
+#: templates/comments.php:53
+msgid "Logged in as <a href=\"%s/wp-admin/profile.php\">%s</a>."
+msgstr "متّصل باسم <a href=\"%s/wp-admin/profile.php\">%s</a>."
+
+#: templates/comments.php:54
+msgid "Log out of this account"
+msgstr "تسجيل الخروج من هذا الحساب"
+
+#: templates/comments.php:54
+msgid "Log out &raquo;"
+msgstr "&laquo; تسجيل الخروج"
+
+#: templates/comments.php:57
+msgid "Name"
+msgstr "الاسم"
+
+#: templates/comments.php:57 templates/comments.php:59
+msgid " (required)"
+msgstr "(مطلوب)"
+
+#: templates/comments.php:59
+msgid "Email (will not be published)"
+msgstr "البريد الالكتروني (لن يتم نشره)"
+
+#: templates/comments.php:61
+msgid "Website"
+msgstr "الموقع الالكتروني"
+
+#: templates/comments.php:64
+msgid "Comment"
+msgstr "التعليق"
+
+#: templates/comments.php:66
+msgid "Submit Comment"
+msgstr "أرسل التعليق"
+
+#: templates/content-single.php:11
+msgid "Pages:"
+msgstr "الصفحات:"
+
+#: templates/entry-meta.php:2
+msgid "By"
+msgstr "بواسطة"
+
+#: templates/searchform.php:2
+msgid "Search for:"
+msgstr "ابحث عن:"
+
+#: templates/searchform.php:3 templates/searchform.php:4
+msgid "Search"
+msgstr "ابحث"
