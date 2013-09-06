@@ -101,18 +101,6 @@ if ( !function_exists( 'shoestrap_module_layout_options' ) ) {
     );
 
     $fields[] = array(
-      'name'      => __('Breadcrumbs Location', 'shoestrap'),
-      'desc'      => __('Display Breadcrumbs. Default: OFF.', 'shoestrap'),
-      'id'        => 'breadcrumbs_location',
-      'std'       => 0,
-      'on'        => 'In Header',
-      'off'       => 'Below Header',
-      'type'      => 'switch',
-      'fold'      => 'breadcrumbs',
-      'customizer'=> array(),
-    );
-
-    $fields[] = array(
       'name'      => __('Body Top Margin', 'shoestrap'),
       'desc'      => __('Select the top margin of body element in pixels. Default: 0px.', 'shoestrap'),
       'id'        => 'body_margin_top',
