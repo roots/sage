@@ -1,10 +1,10 @@
 <?php
 
-function shoestrap_nav_class_pull() {
+function shoestrap_nav_class_pull( $class = 'navbar-nav' ) {
   if ( shoestrap_getVariable( 'navbar_nav_right' ) == '1' ) {
-    $ul = 'nav navbar-nav pull-right';
+    $ul = 'nav pull-right ' . $class;
   } else {
-    $ul = 'nav navbar-nav';
+    $ul = 'nav ' . $class;
   }
   return $ul;
 }
