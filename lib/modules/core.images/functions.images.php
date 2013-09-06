@@ -5,6 +5,7 @@
  */
 function shoestrap_featured_image() {
   add_theme_support( 'post-thumbnails' );
+
   if ( !has_post_thumbnail() || '' == get_the_post_thumbnail() )
     return;
 

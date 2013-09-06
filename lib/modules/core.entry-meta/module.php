@@ -1,4 +1,5 @@
 <?php
+
 if ( ! function_exists( 'shoestrap_entry_meta' ) ) :
 /**
  * Prints HTML with meta information for current post: categories, tags, permalink, author, and date.
@@ -12,9 +13,9 @@ if ( ! function_exists( 'shoestrap_entry_meta' ) ) :
 function shoestrap_entry_meta() {
   echo '<div class="row row-meta">';
 
-  $categories_list = get_the_category_list( __( ', ', 'shoestrap' ) );
-  $tag_list = get_the_tag_list( '', __( ', ', 'shoestrap' ) );
-  $elementscountplus = '';
+  $categories_list    = get_the_category_list( __( ', ', 'shoestrap' ) );
+  $tag_list           = get_the_tag_list( '', __( ', ', 'shoestrap' ) );
+  $elementscountplus  = '';
 
   if ( is_sticky() && is_home() && ! is_paged() )
     $elementscountplus .= '+';
@@ -57,12 +58,9 @@ function shoestrap_entry_meta() {
     echo $date;
   }
 
-  // Translators: used between list items, there is a space after the comma.
   if ( $categories_list )
     echo '<span class="categories-links ' . $colclass . '"><i class="icon icon-folder-open"></i> ' . $categories_list . '</span>';
 
-  // Translators: used between list items, there is a space after the comma.
-  
   if ( $tag_list )
     echo '<span class="tags-links ' . $colclass . '"><i class="icon icon-tags"></i> ' . $tag_list . '</span>';
 

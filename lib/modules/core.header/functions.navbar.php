@@ -32,14 +32,15 @@ function shoestrap_navbar_class( $navbar = 'main') {
   $fixedpos = shoestrap_getVariable( 'navbar_fixed_position' );
   $style    = shoestrap_getVariable( 'navbar_style' );
 
-  if ( $fixed != 1 ) {
+  if ( $fixed != 1 ) :
     $class = 'navbar navbar-static-top';
-  } else {
-    if ( $fixedpos == 1 )
+  else :
+    if ( $fixedpos == 1 ) :
       $class = 'navbar navbar-fixed-bottom';
-    else
+    else :
       $class = 'navbar navbar-fixed-top';
-  }
+    endif;
+  endif;
 
   if ( $navbar != 'secondary' )
     return $class . ' ' . $style;
@@ -51,29 +52,28 @@ function shoestrap_navbar_css() {
   $opacity = (intval(shoestrap_getVariable( 'navbar_bg_opacity' )))/100;
   $style = "";
 
-  if ( $opacity != 1 && $opacity != "" ) {
+  if ( $opacity != 1 && $opacity != '' ) :
     $bg = shoestrap_getVariable( 'navbar_bg');
-    $rgb = shoestrap_get_rgb($bg, true);
-      $style .= '.navbar{';
-        if ($opacity != 1 && $opacity != "") {
-          $style .= 'background: rgb('.$rgb.');';
-          $style .= 'background: rgba('.$rgb.', '.$opacity.');';
-        } else {
-          $style .= 'background: '.$bg.';';
-        }
-      $style .= '}';
-  }
+    $rgb = shoestrap_get_rgb( $bg, true );
 
-  if ( shoestrap_getVariable( 'navbar_margin' ) != 1 ) {
-    $navbar_margin    = shoestrap_getVariable( 'navbar_margin' );
+    $style .= '.navbar{';
 
-    $style .= '.navbar-static-top {';
-    $style .= 'margin-top:'. $navbar_margin .'px !important;';
-    $style .= 'margin-bottom:'. $navbar_margin .'px !important;';
+    if ( $opacity != 1 && $opacity != '') :
+      $style .= 'background: rgb('.$rgb.');';
+      $style .= 'background: rgba('.$rgb.', '.$opacity.');';
+    else :
+      $style .= 'background: '.$bg.';';
+    endif;
+
     $style .= '}';
-  }
+  
+  endif;
+
+  if ( shoestrap_getVariable( 'navbar_margin' ) != 1 ) :
+    $navbar_margin = shoestrap_getVariable( 'navbar_margin' );
+    $style .= '.navbar-static-top { margin-top:'. $navbar_margin .'px !important; margin-bottom:'. $navbar_margin .'px !important; }';
+  endif;
 
   wp_add_inline_style( 'shoestrap_css', $style );
-
 }
 add_action( 'wp_enqueue_scripts', 'shoestrap_navbar_css', 101 );

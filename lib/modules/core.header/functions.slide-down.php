@@ -91,26 +91,31 @@ function shoestrap_navbar_slidedown_content() {
   dynamic_sidebar('navbar-slide-down-top');
   
   echo '<div class="row">';
-  if ( is_active_sidebar( 'navbar-slide-down-1' ) ) {
+
+  if ( is_active_sidebar( 'navbar-slide-down-1' ) ) :
       echo '<div class="' . $widgetareaclass . '">';
       dynamic_sidebar('navbar-slide-down-1');
       echo '</div>';
-  }
-  if ( is_active_sidebar( 'navbar-slide-down-2' ) ) {
+  endif;
+  
+  if ( is_active_sidebar( 'navbar-slide-down-2' ) ) :
       echo '<div class="' . $widgetareaclass . '">';
       dynamic_sidebar('navbar-slide-down-2');
       echo '</div>';
-  }
-  if ( is_active_sidebar( 'navbar-slide-down-3' ) ) {
+  endif;
+
+  if ( is_active_sidebar( 'navbar-slide-down-3' ) ) :
     echo '<div class="' . $widgetareaclass . '">';
     dynamic_sidebar('navbar-slide-down-3');
     echo '</div>';
-  }
-  if ( is_active_sidebar( 'navbar-slide-down-4' ) ) {
+  endif;
+
+  if ( is_active_sidebar( 'navbar-slide-down-4' ) ) :
     echo '<div class="' . $widgetareaclass . '">';
     dynamic_sidebar('navbar-slide-down-4');
     echo '</div>';
-  }
+  endif;
+
   echo '</div></div></div>';
 }
 add_action( 'shoestrap_below_top_navbar', 'shoestrap_navbar_slidedown_content', 1 );
@@ -118,7 +123,7 @@ add_action( 'shoestrap_below_top_navbar', 'shoestrap_navbar_slidedown_content', 
 function shoestrap_navbar_slidedown_toggle() {
   $navbar_color = shoestrap_getVariable( 'navbar_bg' );
   
-  if ( is_active_sidebar( 'navbar-slide-down-top' ) || is_active_sidebar( 'navbar-slide-down-1' ) || is_active_sidebar( 'navbar-slide-down-2' ) || is_active_sidebar( 'navbar-slide-down-3' ) || is_active_sidebar( 'navbar-slide-down-4' ) ) {
+  if ( is_active_sidebar( 'navbar-slide-down-top' ) || is_active_sidebar( 'navbar-slide-down-1' ) || is_active_sidebar( 'navbar-slide-down-2' ) || is_active_sidebar( 'navbar-slide-down-3' ) || is_active_sidebar( 'navbar-slide-down-4' ) ) :
 
     if ( shoestrap_get_brightness( $navbar_color ) >= 160 )
       echo '<a style="width: 30px;" class="toggle-nav black" href="#">';
@@ -126,15 +131,14 @@ function shoestrap_navbar_slidedown_toggle() {
       echo '<a style="width: 30px;" class="toggle-nav" href="#">';
 
     echo '<i class="icon icon-arrow-down"></i></a>';
-
-  }
+  endif;
 }
 add_action( 'shoestrap_pre_main_nav', 'shoestrap_navbar_slidedown_toggle' );
 
 function shoestrap_megadrop_script() {
-  if ( is_active_sidebar( 'navbar-slide-down-top' ) || is_active_sidebar( 'navbar-slide-down-1' ) || is_active_sidebar( 'navbar-slide-down-2' ) || is_active_sidebar( 'navbar-slide-down-3' ) || is_active_sidebar( 'navbar-slide-down-4' ) ) {
+  if ( is_active_sidebar( 'navbar-slide-down-top' ) || is_active_sidebar( 'navbar-slide-down-1' ) || is_active_sidebar( 'navbar-slide-down-2' ) || is_active_sidebar( 'navbar-slide-down-3' ) || is_active_sidebar( 'navbar-slide-down-4' ) ) :
     wp_register_script('shoestrap_megadrop', get_template_directory_uri() . '/assets/js/megadrop.js', false, null, false);
     wp_enqueue_script('shoestrap_megadrop');
-  }
+  endif;
 }
 add_action('wp_enqueue_scripts', 'shoestrap_megadrop_script', 200);

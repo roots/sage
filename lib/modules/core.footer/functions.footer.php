@@ -4,12 +4,12 @@ function shoestrap_footer_css() {
   $bg         = shoestrap_getVariable( 'footer_background' );
   $cl         = shoestrap_getVariable( 'footer_color' );
   $cl_brand   = shoestrap_getVariable( 'color_brand_primary' );
-  $opacity    = (intval(shoestrap_getVariable( 'footer_opacity' )))/100;
-  $rgb        = shoestrap_get_rgb($bg, true);
+  $opacity    = ( intval( shoestrap_getVariable( 'footer_opacity' ) ) ) / 100;
+  $rgb        = shoestrap_get_rgb( $bg, true );
   $border     = shoestrap_getVariable( 'footer_border_top' );
   $top_margin = shoestrap_getVariable( 'footer_top_margin' );
 
-  $container_margin = $top_margin*0.381966011;
+  $container_margin = $top_margin * 0.381966011;
 
   $style = 'footer.content-info {';
     $style .= 'color:' . $cl . ';';
@@ -62,71 +62,65 @@ add_action( 'wp_enqueue_scripts', 'shoestrap_footer_css', 101 );
  */
 function shoestrap_footer_icon() {
   global $wp_customize;
-  ?>
-  <?php if (current_user_can( 'edit_theme_options' ) && !isset( $wp_customize ) ){ ?>
+
+  if ( current_user_can( 'edit_theme_options' ) && !isset( $wp_customize ) ) : ?>
     <div id="shoestrap_icon" class="visible-lg">
       <a href="<?php echo admin_url( 'themes.php?page=simple-options' ); ?>"><i class="icon icon-cogs"></i></a>
     </div>
-  <?php } ?>
+  <?php endif; ?>
   </div>
-<?php }
+  <?php
+}
 add_action( 'shoestrap_after_footer', 'shoestrap_footer_icon' );
 
 function shoestrap_footer_html() {
 
-  $blog_name = get_bloginfo( 'name', 'display' );
-  $ftext = shoestrap_getVariable( 'footer_text' );
-  if ($ftext == "") {
-  	$ftext = '&copy; [year] [sitename]';
-  }
+  $blog_name  = get_bloginfo( 'name', 'display' );
+  $ftext      = shoestrap_getVariable( 'footer_text' );
 
-  $ftext = str_replace("[year]", date('Y'), $ftext);
-  $ftext = str_replace("[sitename]", $blog_name, $ftext);
+  if ( $ftext == '' )
+    $ftext = '&copy; [year] [sitename]';
 
-  $blog_name = get_bloginfo( 'name', 'display' );
+  $ftext = str_replace( '[year]', date( 'Y' ), $ftext );
+  $ftext = str_replace( '[sitename]', $blog_name, $ftext );
 
   $social = shoestrap_getVariable( 'footer_social_toggle' );
   $social_width = shoestrap_getVariable( 'footer_social_width' );
 
   $width = 12;
-  if (intval($social_width) > 0 && $social) { // Social is enabled, we're modifying the width!
+
+  // Social is enabled, we're modifying the width!
+  if ( intval( $social_width ) > 0 && $social )
     $width = $width - intval($social_width);
-  }
+
   $social_blank = shoestrap_getVariable( 'footer_social_new_window_toggle' );
 
-  if ($social_blank == 1) {
+  if ( $social_blank == 1 )
     $blank = ' target="_blank"';
-  }
 
   $networks = shoestrap_get_social_links();
 
+  do_action( 'shoestrap_footer_before_copyright' );
   ?>
-      <?php do_action( 'shoestrap_footer_before_copyright' ); ?>
-      <div id="footer-copyright">
-        <article class="<?php echo shoestrap_container_class(); ?>">
-          <div id="copyright-bar" class="col-lg-<?php echo $width; ?>"><?php echo $ftext; ?></div>
-          <?php if ($social && count($networks) > 0) : ?>
-          <div id="footer_social_bar" class="col-lg-<?php echo $social_width; ?>">
-          <?php
-            foreach ($networks as $network) {
-              if ($network['url'] == "")
-                continue;
-              ?>
-                <a href="<?php echo $network['url']; ?>"<?php echo $blank;?> data-toggle="tooltip" data-placement="top" title="" data-original-title="Tooltip on top"><span class="icon icon-<?php echo $network['icon']; ?>"></span></a>
-              <?php
-            }
-          ?>
-          </div>
-          <?php endif; ?>
-        </article>
-      </div>
+
+  <div id="footer-copyright">
+    <article class="<?php echo shoestrap_container_class(); ?>">
+      <div id="copyright-bar" class="col-lg-<?php echo $width; ?>"><?php echo $ftext; ?></div>
+      <?php if ( $social && count( $networks ) > 0 ) : ?>
+        <div id="footer_social_bar" class="col-lg-<?php echo $social_width; ?>">
+        <?php
+          foreach ( $networks as $network ) {
+            if ( $network['url'] == '' )
+              continue;
+            ?>
+            <a href="<?php echo $network['url']; ?>"<?php echo $blank;?> data-toggle="tooltip" data-placement="top" title="" data-original-title="Tooltip on top">
+              <span class="icon icon-<?php echo $network['icon']; ?>"></span>
+            </a>
+          <?php } ?>
+        </div>
+      <?php endif; ?>
+    </article>
+  </div>
   <?php
 }
 add_action( 'shoestrap_footer_pre_override', 'shoestrap_footer_html' );
-
-
-
-function shoestrap_footer_copyright() {
-
-}
-add_action( 'shoestrap_after_footer', 'shoestrap_footer_copyright' );

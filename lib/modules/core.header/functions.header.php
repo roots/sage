@@ -35,6 +35,9 @@ function shoestrap_branding() {
 }
 add_action( 'shoestrap_below_top_navbar', 'shoestrap_branding', 5 );
 
+/*
+ * Any necessary extra CSS is generated here
+ */
 function shoestrap_header_css() {
   $bg = shoestrap_getVariable( 'header_bg');
   $cl = shoestrap_getVariable( 'header_color' );

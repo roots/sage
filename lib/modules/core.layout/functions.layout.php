@@ -48,33 +48,38 @@ function shoestrap_section_class( $target, $echo = false ) {
   $secondary  = NULL;
   $wrapper    = NULL;
 
-  if ( is_active_sidebar( 'sidebar-secondary' ) && is_active_sidebar( 'sidebar-primary' ) ) {
-    if ( $layout == 5 ) {
+  if ( is_active_sidebar( 'sidebar-secondary' ) && is_active_sidebar( 'sidebar-primary' ) ) :
+
+    if ( $layout == 5 ) :
       $main       = $base . ( 12 - floor( ( 12 * $first ) / ( 12 - $second ) ) );
 
       $primary    = $base . floor( ( 12 * $first ) / ( 12 - $second ) );
       $secondary  = $base . $second;
       $wrapper    = $base . ( 12 - $second );
-    } elseif ( $layout >= 3 ) {
+    elseif ( $layout >= 3 ) :
       $main       = $base . ( 12 - $first - $second );
       $primary    = $base . $first;
       $secondary  = $base . $second;
-    } elseif ( $layout >= 1 ) {
+    elseif ( $layout >= 1 ) :
       $main       = $base . ( 12 - $first );
       $primary    = $base . $first;
       $secondary  = $base . $second;
-    }
-  } elseif ( !is_active_sidebar( 'sidebar-secondary' ) && is_active_sidebar( 'sidebar-primary' ) ) {
-    if ( $layout >= 1 ) {
+    endif;
+
+  elseif ( !is_active_sidebar( 'sidebar-secondary' ) && is_active_sidebar( 'sidebar-primary' ) ) :
+
+    if ( $layout >= 1 ) :
       $main       = $base . ( 12 - $first );
       $primary    = $base . $first;
-    }
-  } elseif ( is_active_sidebar( 'sidebar-secondary' ) && !is_active_sidebar( 'sidebar-primary' ) ) {
-    if ( $layout >= 3 ) {
+    endif;
+
+  elseif ( is_active_sidebar( 'sidebar-secondary' ) && !is_active_sidebar( 'sidebar-primary' ) ) :
+
+    if ( $layout >= 3 ) :
       $main       = $base . ( 12 - $second );
       $secondary  = $base . $second;
-    }
-  }
+    endif;
+  endif;
 
   // Overrides main region class when selected template is page-full.php
   if ( is_page_template( 'page-full.php' ) ) :
@@ -104,25 +109,27 @@ function shoestrap_section_class( $target, $echo = false ) {
   else
     $class = $main;
 
-  if ( $target != 'wrap'  ) {
+  if ( $target != 'wrap'  ) :
     // echo or return the result.
-    if ( $echo )
+    if ( $echo ) :
       echo $class;
-    else
+    else :
       return $class;
-  } else {
-    if ( $layout == 5 )
+    endif;
+  else :
+    if ( $layout == 5 ) :
       return true;
-    else
+    else :
       return false;
-  }
+    endif;
+  endif;
 }
 
 
 /**
  * Add and remove body_class() classes to accomodate layouts
  */
-function shoestrap_layout_body_class($classes) {
+function shoestrap_layout_body_class( $classes ) {
   $layout     = shoestrap_getLayout();
   $site_style = shoestrap_getVariable( 'site_style' );
   $margin     = shoestrap_getVariable( 'navbar_margin_top' );
