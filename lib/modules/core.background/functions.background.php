@@ -27,7 +27,7 @@ function shoestrap_background_css( ) {
     endif;
 
   elseif ( $pattern_toggle == 1 && $bg_pattern != '' ) :
-    $background = set_url_scheme( $bg_pattern['url'] );
+    $background = set_url_scheme( $bg_pattern );
   endif;
 
   $color = '#' . str_replace( '#', '', $bg_color ) . ';';
