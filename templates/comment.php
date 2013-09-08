@@ -5,7 +5,7 @@
   <?php edit_comment_link(__('(Edit)', 'roots'), '', ''); ?>
 
   <?php if ($comment->comment_approved == '0') : ?>
-    <div class="alert">
+    <div class="alert alert-info">
       <?php _e('Your comment is awaiting moderation.', 'roots'); ?>
     </div>
   <?php endif; ?>
