@@ -65,7 +65,7 @@ function shoestrap_footer_icon() {
 
   if ( current_user_can( 'edit_theme_options' ) && !isset( $wp_customize ) ) : ?>
     <div id="shoestrap_icon" class="visible-lg">
-      <a href="<?php echo admin_url( 'themes.php?page=simple-options' ); ?>"><i class="icon icon-cogs"></i></a>
+      <a href="<?php echo admin_url( 'themes.php?page=redux_options' ); ?>"><i class="icon icon-cogs"></i></a>
     </div>
   <?php endif; ?>
   </div>

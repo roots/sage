@@ -76,7 +76,7 @@ function shoestrap_reduxframework_init() {
 
     ReduxFramework( $sections, $args );
 
-    if ($sof['dev_mode'] == 1) :
+    if ($options['dev_mode'] == 1) :
       $ReduxFramework->args['dev_mode'] = true;
     endif;
   endif;
