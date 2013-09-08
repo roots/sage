@@ -10,7 +10,7 @@ Roots is a WordPress starter theme based on [HTML5 Boilerplate](http://html5boil
 
 ## Installation
 
-Clone the git repo - `git clone git://github.com/roots/roots.git` - or [download it](https://github.com/roots/roots/zipball/master) and then rename the directory to the name of your theme or website. [Install Grunt](http://gruntjs.com/getting-started), and then install the dependencies for Roots contained in `package.json`:
+Clone the git repo - `git clone git://github.com/roots/roots.git` - or [download it](https://github.com/roots/roots/zipball/master) and then rename the directory to the name of your theme or website. [Install Grunt](http://gruntjs.com/getting-started), and then install the dependencies for Roots contained in `package.json` by running the following from the Roots theme directory:
 
 ```
 npm install
@@ -19,7 +19,7 @@ npm install
 If you're using Nginx you'll need to add the Roots rewrites to your server config before the PHP block (`location ~ \.php$`) to use the clean URLs feature:
 
 ```nginx
-location ~ ^/assets/(img|js|css)/(.*)$ {
+location ~ ^/assets/(img|js|css|fonts)/(.*)$ {
   try_files $uri $uri/ /wp-content/themes/roots/assets/$1/$2;
 }
 location ~ ^/plugins/(.*)$ {

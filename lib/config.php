@@ -13,7 +13,7 @@ add_theme_support('jquery-cdn');            // Enable to load jQuery from the Go
  * Configuration values
  */
 define('GOOGLE_ANALYTICS_ID', ''); // UA-XXXXX-Y
-define('POST_EXCERPT_LENGTH', 40);
+define('POST_EXCERPT_LENGTH', 40); // length in words for excerpt_length filter (ref: http://codex.wordpress.org/Plugin_API/Filter_Reference/excerpt_length)
 
 /**
  * .main classes
@@ -75,9 +75,9 @@ function roots_display_sidebar() {
  * and media embeds (in pixels).
  *
  * Example: If the content area is 640px wide, set $content_width = 620; so images and videos will not overflow.
- * Default: 940px is the default Bootstrap container width.
+ * Default: 1140px is the default Bootstrap container width.
  */
-if (!isset($content_width)) { $content_width = 940; }
+if (!isset($content_width)) { $content_width = 1140; }
 
 /**
  * Define helper constants
