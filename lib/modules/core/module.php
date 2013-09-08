@@ -111,14 +111,14 @@ function shoestrap_mix_colors( $hex1, $hex2, $percentage ) {
 
 // Gets the current values from SMOF, and if not there, grabs the defaults
 function shoestrap_getVariable( $key, $fresh = false ) {
-  global $sof;
+  global $options;
 
   if ($key == "shoestrap_license_key_status")
     return get_theme_mod($key);
 
   $data = array();
 
-  if ( !empty($sof) ) {
+  if ( !empty($options) ) {
     $data = (array) get_option( 'shoestrap' );
     
     if ( isset( $data[$key] ) ) {
@@ -128,7 +128,7 @@ function shoestrap_getVariable( $key, $fresh = false ) {
     }
 
   } else {
-    return $sof[$key];
+    return $options[$key];
   }
 
   return false;

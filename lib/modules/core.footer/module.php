@@ -9,7 +9,7 @@ if ( !function_exists( 'shoestrap_module_footer_options' ) ) {
     // Branding Options
     $section = array( 
   		'title' => __( 'Footer', 'shoestrap' ),
-  		'icon' => SOF_URL.'img/glyphicons/glyphicons_262_spade.png',
+  		'icon' => 'elusive icon-caret-down icon-large'
   	 );
 
     $fields[] = array( 
