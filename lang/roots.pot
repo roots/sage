@@ -1,7 +1,16 @@
 msgid ""
 msgstr ""
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Project-Id-Version: Roots 6.5\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: Roots\n"
+"MIME-Version: 1.0\n"
+"Language: English (US)\n"
+"X-Generator: Poedit 1.5.4\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #: 404.php:4
 msgid "Sorry, but the page you were trying to view does not exist."
@@ -20,7 +29,9 @@ msgid "an out-of-date link"
 msgstr ""
 
 #: base.php:4
-msgid "You are using an <strong>outdated</strong> browser. Please <a href=\"http://browsehappy.com/\">upgrade your browser</a> to improve your experience."
+msgid ""
+"You are using an <strong>outdated</strong> browser. Please <a href=\"http://"
+"browsehappy.com/\">upgrade your browser</a> to improve your experience."
 msgstr ""
 
 #: index.php:5
@@ -28,11 +39,11 @@ msgid "Sorry, no results were found."
 msgstr ""
 
 #: index.php:17
-msgid "&larr; Older posts"
+msgid " Older posts"
 msgstr ""
 
 #: index.php:18
-msgid "Newer posts &rarr;"
+msgid "Newer posts "
 msgstr ""
 
 #: lib/activation.php:28 lib/activation.php:29
@@ -176,11 +187,11 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: templates/comments.php:18
-msgid "&larr; Older comments"
+msgid " Older comments"
 msgstr ""
 
 #: templates/comments.php:21
-msgid "Newer comments &rarr;"
+msgid "Newer comments "
 msgstr ""
 
 #: templates/comments.php:29 templates/comments.php:38
