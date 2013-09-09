@@ -66,6 +66,17 @@ if ( !function_exists( 'shoestrap_module_branding_options' ) ) {
       'type'      => 'info'
     );
 
+    $fields[] = array(
+      "name"      => __( 'Enable Gradients', 'shoestrap' ),
+      "desc"      => __( 'Enable gradients for buttons and the navbar. Default: Off.', 'shoestrap' ),
+      "id"        => 'gradients_toggle',
+      "std"       => 0,
+      "customizer"=> array(),
+      'compiler'  => true,
+      "type"      => 'switch',
+      "fold"      => 'advanced_toggle',
+    );
+
     $fields[] = array( 
       'name'      => __( 'Brand Colors: Primary', 'shoestrap' ),
       'desc'      => __( 'Select your primary branding color. This will affect various areas of your site, including the color of your primary buttons, the background of some elements and many more.', 'shoestrap' ),
