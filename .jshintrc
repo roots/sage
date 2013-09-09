@@ -13,5 +13,6 @@
   "node": true,
   "strict": false,
   "trailing": true,
-  "undef": true
+  "undef": true,
+  "predef" : ["Modernizr"]
 }
