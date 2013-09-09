@@ -216,7 +216,7 @@ include_once( dirname( __FILE__ ).'/functions.advanced.php' );
 include_once( dirname( __FILE__ ).'/debug-hooks.php' );
 
 function shoestrap_debug_hooks() {
-  global $smof_data;
+  global $redux;
   if ( current_user_can( 'administrator' ) && shoestrap_getVariable( 'debug_hooks' ) == 1 ) : ?>
     <div class='panel widget-inner clearfix'>
       <div class='panel-heading'>Debug Information</div>
@@ -227,9 +227,9 @@ function shoestrap_debug_hooks() {
       <div class='tab-content'>
         <div class='tab-pane active' id='SMOFData'>
           <?php
-            $smof_data_r = print_r( $smof_data, true );
-            $smof_data_r_sans = htmlspecialchars( $smof_data_r, ENT_QUOTES );
-            echo '<pre>'. $smof_data_r_sans .'<pre>';
+            $redux_r = print_r( $redux, true );
+            $redux_r_sans = htmlspecialchars( $redux_r, ENT_QUOTES );
+            echo '<pre>'. $redux_r_sans .'<pre>';
           ?>
         </div>
         <div class='tab-pane' id='hooksdebug'><?php echo list_hooks(); ?></div>

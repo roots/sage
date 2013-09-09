@@ -13,7 +13,7 @@ function shoestrap_add_typography_class_case($array) {
     unset($array['output'],$array['smof_output']);
     //print_r($array);
     extract($array);
-    $typography_stored = isset($smof_data[$value['id']]) ? $smof_data[$value['id']] : $value['std'];
+    $typography_stored = isset($redux[$value['id']]) ? $redux[$value['id']] : $value['std'];
     $gfonts = json_decode($wp_filesystem->get_contents(dirname(__FILE__).'/webfonts.json'), true);
     /* Font Size */
 

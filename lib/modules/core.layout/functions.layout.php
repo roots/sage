@@ -26,7 +26,7 @@ function shoestrap_getLayout() {
  *Override the layout value globally
  */
 function shoestrap_setLayout( $val ) {
-	global $shoestrap_layout, $smof_data;
+	global $shoestrap_layout, $redux;
 	$shoestrap_layout = intval( $val );
 }
 
@@ -35,7 +35,7 @@ function shoestrap_setLayout( $val ) {
  * Calculates the classes of the main area, main sidebar and secondary sidebar
  */
 function shoestrap_section_class( $target, $echo = false ) {
-  global $smof_data;
+  global $redux;
   
   $layout = shoestrap_getLayout();
   $first  = intval( shoestrap_getVariable( 'layout_primary_width' ) );
@@ -165,7 +165,7 @@ function shoestrap_container_class() {
  * Calculate the width of the content area in pixels.
  */
 function shoestrap_content_width_px( $echo = false ) {
-  global $smof_details;
+  global $redux;
 
   $layout = shoestrap_getLayout();
 

@@ -40,7 +40,7 @@ if ( !function_exists( 'shoestrap_module_presets_options' ) ) {
     /*-----------------------------------------------------------------------------------*/
 
     // Set the Options Array
-    global $of_options, $smof_details;
+    global $of_options, $redux;
 
     // Presets Styles
     $of_options[] = array(
@@ -59,10 +59,10 @@ if ( !function_exists( 'shoestrap_module_presets_options' ) ) {
 
     do_action( 'shoestrap_module_presets_options_modifier' );
 
-    $smof_details = array();
+    $redux = array();
     foreach( $of_options as $option ) {
       if (isset($option['id']))
-        $smof_details[$option['id']] = $option;
+        $redux[$option['id']] = $option;
     }
   }
 }
