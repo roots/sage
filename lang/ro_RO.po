@@ -1,0 +1,271 @@
+# M. M - Alexandru <alexandru_mandric@yahoo.com>, 2013.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2013-08-26 09:33+0200\n"
+"Last-Translator: M. M - Alexandru <alexandru_mandric@yahoo.com>\n"
+"Language-Team: \n"
+"Language: ro\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;__;_e\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.5.5\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: 404.php:4
+msgid "Sorry, but the page you were trying to view does not exist."
+msgstr "Pagina pe care o cauti nu mai există pe acest site. "
+
+#: 404.php:7
+msgid "It looks like this was the result of either:"
+msgstr "Se pare ca acesta a fost rezultatul pentru:"
+
+#: 404.php:9
+msgid "a mistyped address"
+msgstr "o adresă gresită"
+
+#: 404.php:10
+msgid "an out-of-date link"
+msgstr "un link vechi"
+
+#: base.php:4
+msgid ""
+"You are using an <strong>outdated</strong> browser. Please <a href=\"http://"
+"browsehappy.com/\">upgrade your browser</a> to improve your experience."
+msgstr ""
+"Folosesti un browser <strong>vechi</strong>. Te rog <a href=\"http://"
+"browsehappy.com/\">actualizează-ti browserul</a> pentru o experienta mai "
+"bună."
+
+#: index.php:5
+msgid "Sorry, no results were found."
+msgstr "Ne pare rău, nu sa gasit nici un rezultat."
+
+#: index.php:17
+msgid "&larr; Older posts"
+msgstr "&larr; Postări mai vechi"
+
+#: index.php:18
+msgid "Newer posts &rarr;"
+msgstr "Cele mai noi postări &rarr;"
+
+#: lib/activation.php:28 lib/activation.php:29
+msgid "Theme Activation"
+msgstr "Activare temă"
+
+#: lib/activation.php:51
+msgid "%s Theme Activation"
+msgstr "%s Activare temă"
+
+#: lib/activation.php:62 lib/activation.php:64
+msgid "Create static front page?"
+msgstr "Creez o primă pagina statică?"
+
+#: lib/activation.php:66 lib/activation.php:79 lib/activation.php:92
+#: lib/activation.php:105 lib/activation.php:118
+msgid "Yes"
+msgstr "Da"
+
+#: lib/activation.php:67 lib/activation.php:80 lib/activation.php:93
+#: lib/activation.php:106 lib/activation.php:119
+msgid "No"
+msgstr "Nu"
+
+#: lib/activation.php:70
+msgid "Create a page called Home and set it to be the static front page"
+msgstr "Creez o pagina numită Home si o setez ca prima pagina statică"
+
+#: lib/activation.php:75
+msgid "Change permalink structure?"
+msgstr "Schimb structura permalink?"
+
+#: lib/activation.php:77
+msgid "Update permalink structure?"
+msgstr "Actualizez structura permalink?"
+
+#: lib/activation.php:83
+msgid "Change permalink structure to /&#37;postname&#37;/"
+msgstr "Schimb structura permalink in: /&#37;postname&#37;/"
+
+#: lib/activation.php:88
+msgid "Change uploads folder?"
+msgstr "Modific folderul de încărcări(upload)?"
+
+#: lib/activation.php:90
+msgid "Update uploads folder?"
+msgstr "Actualizez folderul de încărcări(upload)?"
+
+#: lib/activation.php:96
+msgid "Change uploads folder to /media/ instead of /wp-content/uploads/"
+msgstr ""
+"Schimbă folderul de încărcări in /media/ in loc de /wp-content/uploads/"
+
+#: lib/activation.php:101 lib/activation.php:103
+msgid "Create navigation menu?"
+msgstr "Creez meniu de navigare?"
+
+#: lib/activation.php:109
+msgid "Create the Primary Navigation menu and set the location"
+msgstr "Creeaza meniul principal de navigare si alege locatia"
+
+#: lib/activation.php:114 lib/activation.php:116
+msgid "Add pages to menu?"
+msgstr "Adaug paginile la meniu?"
+
+#: lib/activation.php:122
+msgid "Add all current published pages to the Primary Navigation"
+msgstr "Adaugă toate paginile publicate la meniul principal de navigare"
+
+#: lib/cleanup.php:210
+msgid "Continued"
+msgstr "Continua"
+
+#: lib/init.php:11
+msgid "Primary Navigation"
+msgstr "Meniu navigare principal"
+
+#: lib/titles.php:10
+msgid "Latest Posts"
+msgstr "Ultimele postări"
+
+#: lib/titles.php:19
+msgid "Daily Archives: %s"
+msgstr "Arhive zilnice: %s"
+
+#: lib/titles.php:21
+msgid "Monthly Archives: %s"
+msgstr "Arhive luni: %s"
+
+#: lib/titles.php:23
+msgid "Yearly Archives: %s"
+msgstr "Arhive ani: %s"
+
+#: lib/titles.php:26
+msgid "Author Archives: %s"
+msgstr "Arhivă autori: %s"
+
+#: lib/titles.php:31
+msgid "Search Results for %s"
+msgstr "Rezultate pentru %s"
+
+#: lib/titles.php:33
+msgid "Not Found"
+msgstr "Nu a fost găsit"
+
+#: lib/widgets.php:8
+msgid "Primary"
+msgstr "Principal"
+
+#: lib/widgets.php:17
+msgid "Footer"
+msgstr "Footer"
+
+#: lib/widgets.php:45
+msgid "Use this widget to add a vCard"
+msgstr "Foloseste acest widget pentru a adauga vCard"
+
+#: lib/widgets.php:47
+msgid "Roots: vCard"
+msgstr "Roots: vCard"
+
+#: lib/widgets.php:74
+msgid "vCard"
+msgstr "vCard"
+
+#: templates/comment.php:4
+msgid "%1$s"
+msgstr "%1$s"
+
+#: templates/comment.php:5
+msgid "(Edit)"
+msgstr "(Editează)"
+
+#: templates/comment.php:9
+msgid "Your comment is awaiting moderation."
+msgstr "Comentariul tău asteaptă aprobare."
+
+#: templates/comments.php:8
+msgid "One Response to &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s Responses to &ldquo;%2$s&rdquo;"
+msgstr[0] "Un răspuns la &ldquo;%2$s&rdquo;"
+msgstr[1] "%1$s Răspunsuri la &ldquo;%2$s&rdquo;"
+
+#: templates/comments.php:18
+msgid "&larr; Older comments"
+msgstr "&larr; Comentarii mai vechi."
+
+#: templates/comments.php:21
+msgid "Newer comments &rarr;"
+msgstr "Cele mai noi comentarii &rarr;"
+
+#: templates/comments.php:29 templates/comments.php:38
+msgid "Comments are closed."
+msgstr "Comentariile sunt inchise."
+
+#: templates/comments.php:45
+msgid "Leave a Reply"
+msgstr "Lasă un comentariu"
+
+#: templates/comments.php:45
+msgid "Leave a Reply to %s"
+msgstr "Lasă un raspuns la %s"
+
+#: templates/comments.php:48
+msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
+msgstr "Trebuie sa fii <a href=\"%s\">logat</a> pentru a posta un comentariu."
+
+#: templates/comments.php:53
+msgid "Logged in as <a href=\"%s/wp-admin/profile.php\">%s</a>."
+msgstr "Logat ca <a href=\"%s/wp-admin/profile.php\">%s</a>."
+
+#: templates/comments.php:54
+msgid "Log out of this account"
+msgstr "Delogheazăte din cont."
+
+#: templates/comments.php:54
+msgid "Log out &raquo;"
+msgstr "Delogare &raquo;"
+
+#: templates/comments.php:57
+msgid "Name"
+msgstr "Nume"
+
+#: templates/comments.php:57 templates/comments.php:59
+msgid " (required)"
+msgstr " (necesar)"
+
+#: templates/comments.php:59
+msgid "Email (will not be published)"
+msgstr "Еmail (nu va fi publicat)"
+
+#: templates/comments.php:61
+msgid "Website"
+msgstr "Website"
+
+#: templates/comments.php:64
+msgid "Comment"
+msgstr "Comentariu"
+
+#: templates/comments.php:66
+msgid "Submit Comment"
+msgstr "Adaugă comentariu"
+
+#: templates/content-single.php:11
+msgid "Pages:"
+msgstr "Pagini:"
+
+#: templates/entry-meta.php:2
+msgid "By"
+msgstr "De către"
+
+#: templates/searchform.php:2
+msgid "Search for:"
+msgstr "Caută pentru:"
+
+#: templates/searchform.php:3 templates/searchform.php:4
+msgid "Search"
+msgstr "Caută"
