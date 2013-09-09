@@ -98,10 +98,11 @@ if( !class_exists( 'ReduxFramework' ) ) {
             $defaults['footer_credit']      = __( '<span id="footer-thankyou">Options panel created using <a href="' . $this->framework_url . '" target="_blank">Redux Framework</a> v' . $this->framework_version . '</span>', 'redux-framework' );
             $defaults['help_tabs']          = array();
             $defaults['help_sidebar']       = __( '', 'redux-framework' );
-			$defaults['theme_mods'] 		= true;
+			$defaults['theme_mods'] 		= false;
 			$defaults['theme_mods_expand'] 	= false;
 			$defaults['transient'] 			= false;
-			$defaults['transient_time'] 	= 1 * MINUTE_IN_SECONDS;
+			$defaults['global_variable'] 	= 'redux';
+			$defaults['transient_time'] 	= 60 * MINUTE_IN_SECONDS;
 
             // The defaults are set so it will preserve the old behavior.
             $defaults['default_show']		= false; // If true, it shows the default value
@@ -200,6 +201,12 @@ if( !class_exists( 'ReduxFramework' ) ) {
 					update_option( $this->args['opt_name'], $value );
 				}
 				do_action( 'redux-saved-' . $this->args['opt_name'] , $value );
+				// Set a global variable by the global_variable agument.
+				if ( $defaults['theme_mods_expand'] ) {
+					$options = $this->args['global_variable'];
+					global $$options;
+					$$options = $value;					
+				}
 			}
 		}
 
@@ -221,6 +228,12 @@ if( !class_exists( 'ReduxFramework' ) ) {
 				$result = get_theme_mods();
 			} else {
 				$result = get_option( $this->args['opt_name'], $defaults );
+			}
+			// Set a global variable by the global_variable agument.
+			if ( $defaults['theme_mods_expand'] ) {			
+				$options = $this->args['global_variable'];
+				global $$options;
+				$$options = $result;			
 			}
 			//print_r($result);
 			return $result;
@@ -1189,7 +1202,10 @@ if( !class_exists( 'ReduxFramework' ) ) {
                 echo '<div id="dev_mode_default_section_group' . '" class="redux-group-tab">';
                 echo '<h3>' . __( 'Dev Mode Info', 'redux-framework' ) . '</h3>';
                 echo '<div class="redux-section-desc">';
-                echo '<textarea class="large-text" rows="24">' . print_r( $this, true ) . '</textarea>';
+
+                echo '<textarea class="large-text" rows="24">' . print_r( $this, true );
+
+                echo '</textarea>';
                 echo '</div>';
 
                 // Javascript object debug
@@ -1353,7 +1369,7 @@ if( !class_exists( 'ReduxFramework' ) ) {
          * @param       array $fields
          * @return      void
          */
-        public function _field_input( $field ) {
+        public function _field_input( $field, $v = "" ) {
 
             if( isset( $field['callback'] ) && function_exists( $field['callback'] ) ) {
                 $value = ( isset( $this->options[$field['id']] ) ) ? $this->options[$field['id']] : '';
@@ -1375,6 +1391,9 @@ if( !class_exists( 'ReduxFramework' ) ) {
 
                 if( class_exists( $field_class ) ) {
                     $value = $this->get( $field['id'], '' );
+                    if ($v != "") {
+                    	$value = $v;
+                    }
                     do_action( 'redux-before-field-' . $this->args['opt_name'], $field, $value );
                     $render = '';
                     $render = new $field_class( $field, $value, $this );
