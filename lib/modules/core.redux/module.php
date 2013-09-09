@@ -3,7 +3,7 @@
 include_once( dirname( __FILE__ ) . '/Redux-Framework/framework.php' );
 
 function ReduxFramework( $sections = array(), $args = array(), $tabs = array() ) {
-  global $ReduxFramework, $options;
+  global $ReduxFramework, $redux;
   $ReduxFramework = new ReduxFramework( $sections, $args, $tabs );
 } // function
 
@@ -13,7 +13,7 @@ function ReduxFramework( $sections = array(), $args = array(), $tabs = array() )
  */
 function shoestrap_reduxframework_init() {
   if ( class_exists( 'ReduxFramework' ) ) :
-    global $ReduxFramework, $options;
+    global $ReduxFramework, $redux;
 
     if ( !empty( $ReduxFramework ) ) :
       return;
@@ -76,7 +76,7 @@ function shoestrap_reduxframework_init() {
 
     ReduxFramework( $sections, $args );
 
-    if ($options['dev_mode'] == 1) :
+    if ($redux['dev_mode'] == 1) :
       $ReduxFramework->args['dev_mode'] = true;
     endif;
   endif;

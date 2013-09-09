@@ -8,28 +8,28 @@ if ( !function_exists( 'shoestrap_module_page_options' ) ) {
 
     // Page Options
     $section = array(
-    		'title' => __("Page", "shoestrap"),
-    		'icon' => 'elusive icon-file icon-large',
-    	);
+  		'title' => __( 'Page', 'shoestrap' ),
+  		'icon' => 'elusive icon-file icon-large',
+  	);
 
     $fields[] = array(
-      "name"      => __("Custom Page Layout", "shoestrap"),
-      "desc"      => __("Set a default layout for your blob/post pages. Default: OFF.", "shoestrap"),
-      "id"        => "page_layout_toggle",
-      "std"       => 0,
-      "type"      => "switch",
-      "customizer"=> array(),
+      'title'     => __( 'Custom Page Layout', 'shoestrap' ),
+      'subtitle'  => __( 'Set a default layout for your blob/post pages. Default: OFF.', 'shoestrap' ),
+      'id'        => 'page_layout_toggle',
+      'std'       => 0,
+      'type'      => 'switch',
+      'customizer'=> array(),
     );
 
     $fields[] = array(
-      "name"      => __("Page Layout", "shoestrap"),
-      "desc"      => __("Override your default stylings. Choose between 1, 2 or 3 column layout.", "shoestrap"),
-      "id"        => "page_layout",
-      "std"       => shoestrap_getVariable('layout', 1),
-      "type"      => "image_select",
-      "fold"      => "page_layout_toggle",
-      "customizer"=> array(),
-      "options"   => array(
+      'title'     => __( 'Page Layout', 'shoestrap' ),
+      'subtitle'  => __( 'Override your default stylings. Choose between 1, 2 or 3 column layout.', 'shoestrap' ),
+      'id'        => 'page_layout',
+      'std'       => shoestrap_getVariable( 'layout', 1 ),
+      'type'      => 'image_select',
+      'fold'      => 'page_layout_toggle',
+      'customizer'=> array(),
+      'options'   => array(
         0         => REDUX_URL . 'assets/img/1c.png',
         1         => REDUX_URL . 'assets/img/2cr.png',
         2         => REDUX_URL . 'assets/img/2cl.png',
@@ -43,7 +43,7 @@ if ( !function_exists( 'shoestrap_module_page_options' ) ) {
 
     do_action( 'shoestrap_module_page_options_modifier' );
     
-    array_push($sections, $section);
+    array_push( $sections, $section );
     
     return $sections;
 
