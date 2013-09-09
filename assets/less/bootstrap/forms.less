@@ -82,6 +82,15 @@ input[type="number"] {
   }
 }
 
+// Adjust output element
+output {
+  display: block;
+  padding-top: (@padding-base-vertical + 1);
+  font-size: @font-size-base;
+  line-height: @line-height-base;
+  color: @input-color;
+  vertical-align: middle;
+}
 
 // Placeholder
 //
@@ -124,6 +133,7 @@ input[type="number"] {
   color: @input-color;
   vertical-align: middle;
   background-color: @input-bg;
+  background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
   border: 1px solid @input-border;
   border-radius: @input-border-radius;
   .box-shadow(inset 0 1px 1px rgba(0,0,0,.075));
@@ -289,7 +299,7 @@ input[type="checkbox"],
 .form-inline {
 
   // Kick in the inline
-  @media (min-width: @screen-tablet) {
+  @media (min-width: @screen-sm) {
     // Inline-block all the things for "inline"
     .form-group  {
       display: inline-block;
@@ -345,7 +355,7 @@ input[type="checkbox"],
   }
 
   // Only right align form labels here when the columns stop stacking
-  @media (min-width: @screen-tablet) {
+  @media (min-width: @screen-sm) {
     .control-label {
       text-align: right;
     }
