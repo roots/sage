@@ -8,7 +8,7 @@ else
 do_action( 'shoestrap_index_begin' );
 
 if ( !have_posts() ) :
-  echo '<div class="alert">';
+  echo '<div class="alert alert-warning">';
   _e('Sorry, no results were found.', 'roots');
   echo '</div>';
   get_search_form();

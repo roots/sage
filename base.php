@@ -1,7 +1,7 @@
 <?php get_template_part('templates/head'); ?>
 <body <?php body_class(); ?>>
 
-  <!--[if lt IE 7]><div class="alert"><?php _e('You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.', 'roots'); ?></div><![endif]-->
+  <!--[if lt IE 7]><div class="alert alert-warning"><?php _e('You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.', 'roots'); ?></div><![endif]-->
 
   <?php
 
@@ -55,7 +55,7 @@
     do_action('shoestrap_breadcrumbs');
   endif;
 
-	do_action('shoestrap_header_media');
+  do_action('shoestrap_header_media');
 
   // Open the main-content wrapper
   echo '<div class="wrap main-section ' . shoestrap_container_class() . '" role="document">';
@@ -69,7 +69,7 @@
 
       // If the layout requires an extra wrapping element, add it here.
       if ( shoestrap_section_class( 'wrap' ) ) {
-      	echo '<div class="mp_wrap ' . shoestrap_section_class( 'wrapper' ) . '"><div class="row">';
+        echo '<div class="mp_wrap ' . shoestrap_section_class( 'wrapper' ) . '"><div class="row">';
       }
 
       // This is where we load the extra template files for the main content.

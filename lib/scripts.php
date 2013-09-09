@@ -55,7 +55,7 @@ function roots_scripts() {
 add_action('wp_enqueue_scripts', 'roots_scripts', 100);
 
 // http://wordpress.stackexchange.com/a/12450
-function roots_jquery_local_fallback($src, $handle) {
+function roots_jquery_local_fallback($src, $handle = null) {
   static $add_jquery_fallback = false;
 
   if ($add_jquery_fallback) {
@@ -69,6 +69,7 @@ function roots_jquery_local_fallback($src, $handle) {
 
   return $src;
 }
+add_action('wp_head', 'roots_jquery_local_fallback');
 
 function roots_google_analytics() { ?>
 <script>

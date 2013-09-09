@@ -29,7 +29,7 @@
     <?php endif; ?>
 
     <?php if (!comments_open() && !is_page() && post_type_supports(get_post_type(), 'comments')) : ?>
-    <div class="alert">
+    <div class="alert alert-warning">
       <?php _e('Comments are closed.', 'roots'); ?>
     </div>
     <?php endif; ?>
@@ -38,7 +38,7 @@
 
 <?php if (!have_comments() && !comments_open() && !is_page() && post_type_supports(get_post_type(), 'comments')) : ?>
   <section id="comments">
-    <div class="alert">
+    <div class="alert alert-warning">
       <?php _e('Comments are closed.', 'roots'); ?>
     </div>
   </section><!-- /#comments -->

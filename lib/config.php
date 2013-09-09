@@ -21,7 +21,7 @@ add_theme_support('jquery-cdn');            // Enable to load jQuery from the Go
  * Configuration values
  */
 define('GOOGLE_ANALYTICS_ID', shoestrap_getVariable('analytics_id')); // UA-XXXXX-Y
-define('POST_EXCERPT_LENGTH', shoestrap_getVariable('post_excerpt_length'));
+define('POST_EXCERPT_LENGTH', shoestrap_getVariable('post_excerpt_length')); // length in words for excerpt_length filter (ref: http://codex.wordpress.org/Plugin_API/Filter_Reference/excerpt_length)
 
 /**
  * .main classes
