@@ -334,12 +334,12 @@ function shoestrap_variables_less() {
     $navbar_link_hover_color    = 'darken(@navbar-default-color, 26.5%)';
     $navbar_link_active_bg      = 'darken(@navbar-default-bg, 6.5%)';
     $navbar_link_disabled_color = 'darken(@navbar-default-bg, 6.5%)';
-    $navbar_brand_hover_color   = 'darken(@navbar-default-link-color, 10%)';
+    $navbar_brand_hover_color   = 'darken(@navbar-default-brand-color, 10%)';
   else :
     $navbar_link_hover_color    = 'lighten(@navbar-default-color, 26.5%)';
     $navbar_link_active_bg      = 'lighten(@navbar-default-bg, 6.5%)';
     $navbar_link_disabled_color = 'lighten(@navbar-default-bg, 6.5%)';
-    $navbar_brand_hover_color   = 'lighten(@navbar-default-link-color, 10%)';
+    $navbar_brand_hover_color   = 'lighten(@navbar-default-brand-color, 10%)';
   endif;
 
   if ( shoestrap_get_brightness( $brand_primary ) > 80 ) :
@@ -458,12 +458,20 @@ function shoestrap_variables_less() {
 @font-size-large:         ceil(@font-size-base * 1.25); // ~18px
 @font-size-small:         ceil(@font-size-base * 0.85); // ~12px
 
+@font-size-h1:            floor(@font-size-base * 2.60); // ~36px
+@font-size-h2:            floor(@font-size-base * 2.15); // ~30px
+@font-size-h3:            ceil(@font-size-base * 1.70); // ~24px
+@font-size-h4:            ceil(@font-size-base * 1.25); // ~18px
+@font-size-h5:            @font-size-base;
+@font-size-h6:            ceil(@font-size-base * 0.85); // ~12px
+
 @line-height-base:        1.428571429; // 20/14
 @line-height-computed:    floor(@font-size-base * @line-height-base); // ~20px
 
 @headings-font-family:    @font-family-base;
 @headings-font-weight:    500;
 @headings-line-height:    1.1;
+@headings-color:          inherit;
 
 // Iconography
 // -------------------------
@@ -491,6 +499,7 @@ function shoestrap_variables_less() {
 @border-radius-large:     ceil(@border-radius-base * 1.5);
 @border-radius-small:     floor(@border-radius-base * 0.75);
 
+@component-active-color:         @fff;
 @component-active-bg:            @brand-primary;
 
 @caret-width-base:               ceil(@font-size-small / 3 ); // ~4px
@@ -574,12 +583,12 @@ function shoestrap_variables_less() {
 @dropdown-fallback-border:       @input-border;
 @dropdown-divider-bg:            @legend-border-color;
 
-@dropdown-link-active-color:     ' . $body_bg . ';
-@dropdown-link-active-bg:        @component-active-bg;
-
 @dropdown-link-color:            @gray-dark;
-@dropdown-link-hover-color:      ' . $body_bg . ';
-@dropdown-link-hover-bg:         @dropdown-link-active-bg;
+@dropdown-link-hover-color:      darken(@gray-dark, 5%);
+@dropdown-link-hover-bg:         @table-bg-hover;
+
+@dropdown-link-active-color:     @component-active-color;
+@dropdown-link-active-bg:        @component-active-bg;
 
 @dropdown-link-disabled-color:   @gray-light;
 
@@ -609,25 +618,32 @@ function shoestrap_variables_less() {
 // --------------------------------------------------
 
 // Extra small screen / phone
+// Note: Deprecated @screen-xs and @screen-phone as of v3.0.1
 @screen-xs:                  480px;
-@screen-phone:               @screen-xs;
+@screen-xs-min:              @screen-xs;
+@screen-phone:               @screen-xs-min;
 
 // Small screen / tablet
 @screen-sm:                  ' . ( $container_tablet + ( 2 * $gutter ) ) . 'px;
-@screen-tablet:              @screen-sm;
+@screen-sm-min:              @screen-sm;
+@screen-tablet:              @screen-sm-min;
 
 // Medium screen / desktop
+// Note: Deprecated @screen-md and @screen-desktop as of v3.0.1
 @screen-md:                  ' . ( $container_desktop + ( 2 * $gutter ) ) . 'px;
-@screen-desktop:             @screen-md;
+@screen-md-min:              @screen-md;
+@screen-desktop:             @screen-md-min;
 
 // Large screen / wide desktop
+// Note: Deprecated @screen-lg and @screen-lg-desktop as of v3.0.1
 @screen-lg:                  ' . ( $container_large_desktop + ( 2 * $gutter ) ) . 'px;
-@screen-lg-desktop:          @screen-lg;
+@screen-lg-min:              @screen-lg;
+@screen-lg-desktop:          @screen-lg-min;
 
 // So media queries dont overlap when required, provide a maximum
-@screen-xs-max:              (@screen-sm - 1);
-@screen-sm-max:              (@screen-md - 1);
-@screen-md-max:              (@screen-lg - 1);
+@screen-xs-max:              (@screen-sm-min - 1);
+@screen-sm-max:              (@screen-md-min - 1);
+@screen-md-max:              (@screen-lg-min - 1);
 
 
 // Grid system
@@ -638,7 +654,7 @@ function shoestrap_variables_less() {
 // Padding, to be divided by two and applied to the left and right of all columns
 @grid-gutter-width:         ' . $gutter . 'px;
 // Point at which the navbar stops collapsing
-@grid-float-breakpoint:     @screen-tablet;
+@grid-float-breakpoint:     @screen-sm;
 
 
 // Navbar
@@ -695,13 +711,6 @@ function shoestrap_variables_less() {
 @navbar-inverse-brand-hover-color:          #fff;
 @navbar-inverse-brand-hover-bg:             transparent;
 
-// Inverted navbar search
-// Normal navbar needs no special styles or vars
-@navbar-inverse-search-bg:                  lighten(@navbar-inverse-bg, 25%);
-@navbar-inverse-search-bg-focus:            #fff;
-@navbar-inverse-search-border:              @navbar-inverse-bg;
-@navbar-inverse-search-placeholder-color:   #ccc;
-
 // Inverted navbar toggle
 @navbar-inverse-toggle-hover-bg:            #333;
 @navbar-inverse-toggle-icon-bar-bg:         #fff;
@@ -734,7 +743,7 @@ function shoestrap_variables_less() {
 
 // Pills
 @nav-pills-active-link-hover-bg:            @component-active-bg;
-@nav-pills-active-link-hover-color:         @body-bg;
+@nav-pills-active-link-hover-color:         @component-active-color;
 
 
 // Pagination
@@ -885,7 +894,7 @@ function shoestrap_variables_less() {
 @list-group-border-radius:    @border-radius-base;
 
 @list-group-hover-bg:         ' . $table_bg_hover . ';
-@list-group-active-color:     ' . $body_bg . ';
+@list-group-active-color:     @component-active-color;
 @list-group-active-bg:        @component-active-bg;
 @list-group-active-border:    @list-group-active-bg;
 
@@ -959,7 +968,7 @@ function shoestrap_variables_less() {
 @breadcrumb-bg:               @table-bg-hover;
 @breadcrumb-color:            @ccc;
 @breadcrumb-active-color:     @gray-light;
-
+@breadcrumb-separator:        "/";
 
 // Carousel
 // ------------------------
@@ -1017,15 +1026,16 @@ function shoestrap_variables_less() {
 // --------------------------------------------------
 
 // Small screen / tablet
-@container-tablet:          ((' . $container_tablet . 'px + @grid-gutter-width));
+@container-tablet:           ((' . $container_tablet . 'px + @grid-gutter-width));
+@container-sm:               @container-tablet;
 
 // Medium screen / desktop
-@container-desktop:         ((' . $container_desktop . 'px + @grid-gutter-width));
+@container-desktop:          ((' . $container_desktop . 'px + @grid-gutter-width));
+@container-md:               @container-desktop;
 
 // Large screen / wide desktop
-@container-lg-desktop:      ((' . $container_large_desktop . 'px + @grid-gutter-width));
-
-
+@container-lg-desktop:       ((' . $container_large_desktop . 'px + @grid-gutter-width));
+@container-lg:                 @container-large-desktop;
 
 
 // Shoestrap-specific variables
