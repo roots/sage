@@ -9,7 +9,7 @@ if ( !function_exists( 'shoestrap_module_blog_options' ) ) :
     // Blog Options
     $section = array( 
   		'title' => __( 'Blog', 'shoestrap' ),
-  		'icon' => SOF_URL.'img/glyphicons/glyphicons_235_pen.png',
+  		'icon'  => 'elusive icon-pencil icon-large',
   	 );    
 
     $fields[] = array( 
@@ -40,17 +40,17 @@ if ( !function_exists( 'shoestrap_module_blog_options' ) ) :
       'desc'      => __( 'Override your default styling. Choose between 1, 2 or 3 column layout.', 'shoestrap' ),
       'id'        => 'blog_layout',
       'std'       => shoestrap_getVariable( 'layout', 1 ),
-      'type'      => 'images',
+      'type'      => 'image_select',
       'compiler'  => true,
       'fold'      => 'blog_layout_toggle',
       'customizer'=> array(),
       'options'   => array( 
-        0         => SOF_URL . 'img/1c.png',
-        1         => SOF_URL . 'img/2cr.png',
-        2         => SOF_URL . 'img/2cl.png',
-        3         => SOF_URL . 'img/3cl.png',
-        4         => SOF_URL . 'img/3cr.png',
-        5         => SOF_URL . 'img/3cm.png',
+        0         => REDUX_URL . 'assets/img/1c.png',
+        1         => REDUX_URL . 'assets/img/2cr.png',
+        2         => REDUX_URL . 'assets/img/2cl.png',
+        3         => REDUX_URL . 'assets/img/3cl.png',
+        4         => REDUX_URL . 'assets/img/3cr.png',
+        5         => REDUX_URL . 'assets/img/3cm.png',
       )
     );
 

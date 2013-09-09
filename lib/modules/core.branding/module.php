@@ -9,7 +9,7 @@ if ( !function_exists( 'shoestrap_module_branding_options' ) ) {
     // Branding Options
     $section = array(
   		'title' => __( 'Branding', 'shoestrap' ),
-  		'icon' => SOF_URL.'img/glyphicons/glyphicons_119_adjust.png',
+  		'icon' => 'elusive icon-certificate icon-large'
     );
 
     $fields[] = array( 
