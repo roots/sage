@@ -1,88 +1,74 @@
 <?php
 
-include_once( dirname( __FILE__ ) . '/Redux-Framework/framework.php' );
-
-function ReduxFramework( $sections = array(), $args = array(), $tabs = array() ) {
-  global $ReduxFramework, $redux;
-  $ReduxFramework = new ReduxFramework( $sections, $args, $tabs );
-} // function
+if ( !class_exists( 'ReduxFramework' ) && file_exists( dirname( __FILE__ ) . '/ReduxFramework/framework.php' ) ) {
+	include_once( dirname( __FILE__ ) . '/ReduxFramework/framework.php' );
+}
 
 /*
  * Require the framework class before doing anything else, so we can use the defined urls and dirs
  * Also if running on windows you may have url problems, which can be fixed by defining the framework url first
  */
-function shoestrap_reduxframework_init() {
-  if ( class_exists( 'ReduxFramework' ) ) :
-    global $ReduxFramework, $redux;
 
-    if ( !empty( $ReduxFramework ) ) :
-      return;
-    endif;
+if ( class_exists( 'ReduxFramework' ) ) :
+	
+	define('REDUX_OPT_NAME', 'shoestrap');
 
-    $args = array();
+	$args = $tabs = array();
 
-    // Set it to dev mode to view the class settings/info in the form - default is false
-    // $args['dev_mode'] = true;
+	// ** PLEASE PLEASE for production use your own key! **
 
-    // Enable customizer support for all of the fields unless denoted as customizer=>false in the field declaration
-    $args['customizer'] = true;
+	//Setup custom links in the footer for share icons
+	 $args['share_icons']['twitter'] = array(
+	  'link'  => 'https://github.com/shoestrap/shoestrap',
+	  'title' => 'Fork Me on GitHub',
+	  'img'   => REDUX_URL.'assets/img/social/GitHub.png'
+	 );
 
-    //google api key MUST BE DEFINED IF YOU WANT TO USE GOOGLE WEBFONTS
-    $args['google_api_key'] = 'AIzaSyAX_2L_UzCDPEnAHTG7zhESRVpMPS4ssII';
-    // ** PLEASE PLEASE for production use your own key! **
+	// Choose a custom option name for your theme options, the default is the theme name in lowercase with spaces replaced by underscores
+	$args['opt_name'] = REDUX_OPT_NAME;
+	$args['customizer'] = true;
+	$args['google_api_key'] = 'AIzaSyAX_2L_UzCDPEnAHTG7zhESRVpMPS4ssII';
+	$args['global_variable'] = 'redux';
+	$args['default_show'] = true;
+	$args['default_mark'] = '*';
+	$args['page_slug'] = REDUX_OPT_NAME;
+	$theme = wp_get_theme();
+	$args['display_name'] = $theme->get('Name');
+	$args['menu_title'] = $theme->get('Name');
+	$args['display_version'] = $theme->get('Version');    
+	$args['page_position'] = 27;
+	$args['import_icon_class'] = 'icon-large';
+	$args['system_info_icon_class'] = 'icon-large';
+	$args['dev_mode_icon_class'] = 'icon-large';
 
-    // Add HTML before the form
-    // $args['intro_text'] = __('<p>This is the HTML which can be displayed before the form, it isn\'t required, but more info is always better. Anything goes in terms of markup here, any HTML.</p>', 'shoestrap');
+	$args['help_tabs'][] = array(
+	  'id'      => 'redux-options-1',
+	  'title'   => __( 'Theme Information 1', 'shoestrap' ),
+	  'content' => __('<p>This is the tab content, HTML is allowed.</p>', 'shoestrap' )
+	);
+	$args['help_tabs'][] = array(
+	  'id'      => 'redux-options-2',
+	  'title'   => __( 'Theme Information 2', 'shoestrap' ),
+	  'content' => __( '<p>This is the tab content, HTML is allowed. Tab2</p>', 'shoestrap' )
+	);
 
-    //Setup custom links in the footer for share icons
-    // $args['share_icons']['twitter'] = array(
-    //  'link'  => 'https://github.com/shoestrap/shoestrap',
-    //  'title' => 'Fork Me on GitHub',
-    //  'img'   => REDUX_URL.'img/glyphicons/glyphicons_341_github.png'
-    // );
+	//Set the Help Sidebar for the options page - no sidebar by default                   
+	$args['help_sidebar'] = __( '<p>This is the sidebar content, HTML is allowed.</p>', 'shoestrap' );
 
-    // Choose a custom option name for your theme options, the default is the theme name in lowercase with spaces replaced by underscores
-    $args['opt_name'] = 'shoestrap';
+	$sections = array();
+	$sections = apply_filters( 'shoestrap_add_sections', $sections );
 
-    // Custom menu icon
-    // $args['menu_icon'] = '';
+	$ReduxFramework = new ReduxFramework( $sections, $args, $tabs );
 
-    // Custom menu title for options page - default is "Options"
-    $args['menu_title'] = wp_get_theme();
+	if (!empty($redux) && $redux['dev_mode'] == 1) {
+	  	$ReduxFramework->args['dev_mode'] = true;
+		$ReduxFramework->args['system_info'] = true;
+	}
 
-    // Custom page location - default 100 - must be unique or will override other items
-    $args['page_position'] = 27;
+endif;
 
-    // Custom page icon class (used to override the page icon next to heading)
-    // $args['page_icon'] = 'icon-themes';
 
-    // Set ANY custom page help tabs - displayed using the new help tab API, show in order of definition
-    $args['help_tabs'][] = array(
-      'id'      => 'redux-options-1',
-      'title'   => __( 'Theme Information 1', 'shoestrap' ),
-      'content' => __('<p>This is the tab content, HTML is allowed.</p>', 'shoestrap' )
-    );
-    $args['help_tabs'][] = array(
-      'id'      => 'redux-options-2',
-      'title'   => __( 'Theme Information 2', 'shoestrap' ),
-      'content' => __( '<p>This is the tab content, HTML is allowed. Tab2</p>', 'shoestrap' )
-    );
-
-    //Set the Help Sidebar for the options page - no sidebar by default                   
-    $args['help_sidebar'] = __( '<p>This is the sidebar content, HTML is allowed.</p>', 'shoestrap' );
-
-    $sections = array();
-    $sections = apply_filters( 'shoestrap_add_sections', $sections );
-
-    ReduxFramework( $sections, $args );
-
-    if ($redux['dev_mode'] == 1) :
-      $ReduxFramework->args['dev_mode'] = true;
-    endif;
-  endif;
-}//function
-add_action('init', 'shoestrap_reduxframework_init');
 
 // Saving functions on import, etc
 // If a compiler field was altered or import or reset defaults
-add_action( 'redux_compiler', 'shoestrap_makecss' );
+add_action( 'redux-compiler-'.REDUX_OPT_NAME , 'shoestrap_makecss' );

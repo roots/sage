@@ -38,7 +38,7 @@ if ( !function_exists( 'shoestrap_core_licencing_options' ) ) {
       'name'      => __( 'Shoestrap Licence', 'shoestrap' ),
       'desc'      => __( 'Enter your shoestrap licence to enable automatic updates.', 'shoestrap' ),
       'id'        => 'shoestrap_license_key',
-      'std'       => '',
+      'default'       => '',
       'type'      => 'text'
     );
 
@@ -46,7 +46,7 @@ if ( !function_exists( 'shoestrap_core_licencing_options' ) ) {
       "name"      => "",
       "desc"      => "",
       "id"        => "shoestrap_license_key_status_indicator",
-      "std"       => shoestrap_license_key_status_indicator(),
+      "default"       => shoestrap_license_key_status_indicator(),
       "icon"      => true,
       "type"      => "info"
     );
@@ -55,12 +55,12 @@ if ( !function_exists( 'shoestrap_core_licencing_options' ) ) {
 
     do_action( 'shoestrap_module_licencing_options_modifier' );
     
-    array_push($sections, $section);
+    $sections[] = $section;
     return $sections;
 
   }
 }
-add_action( 'shoestrap_add_sections', 'shoestrap_core_licencing_options', 200 ); 
+add_filter( 'redux-sections-'.REDUX_OPT_NAME, 'shoestrap_core_licencing_options', 200 ); 
 
 function shoestrap_sanitize_license( $new ) {
   $old = shoestrap_getVariable( 'shoestrap_license_key' );

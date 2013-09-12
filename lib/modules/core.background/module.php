@@ -34,7 +34,7 @@ if ( !function_exists( 'shoestrap_module_background_options' ) ) {
       'title'     => __( 'Background Color', 'shoestrap' ),
       'subtitle'  => __( 'Select a background color for your site. Default: #ffffff.', 'shoestrap' ),
       'id'        => 'color_body_bg',
-      'std'       => '#ffffff',
+      'default'       => '#ffffff',
       'compiler'  => true,
       'customizer'=> array(),
       'type'      => 'color',
@@ -44,7 +44,7 @@ if ( !function_exists( 'shoestrap_module_background_options' ) ) {
       'title'     => __( 'Background Color Opacity', 'shoestrap' ),
       'subtitle'  => __( 'Select the opacity of your background color. This will make the main content area transparent, so that background images and patterns will show through. Default: 100 (fully opaque)', 'shoestrap' ),
       'id'        => 'color_body_bg_opacity',
-      'std'       => 100,
+      'default'       => 100,
       'min'       => 0,
       'step'      => 1,
       'max'       => 100,
@@ -56,7 +56,7 @@ if ( !function_exists( 'shoestrap_module_background_options' ) ) {
       'title'     => '',
       'subtitle'  => '',
       'id'        => 'help4',
-      'std'       => '<h3 style=\'margin: 0 0 10px;\'>Background Images</h3>
+      'default'       => '<h3 style=\'margin: 0 0 10px;\'>Background Images</h3>
                       <p>If you want a background image, you can select one here.
                       You can either upload a custom image, or use one of our pre-defined image patterns.
                       If you both upload a custom image and select a pattern, your custom image will override the selected pattern.
@@ -70,7 +70,7 @@ if ( !function_exists( 'shoestrap_module_background_options' ) ) {
       'title'     => __( 'Use a Background Image', 'shoestrap' ),
       'subtitle'  => __( 'Enable this option to upload a custom background image for your site. This will override any patterns you may have selected. Default: OFF.', 'shoestrap' ),
       'id'        => 'background_image_toggle',
-      'std'       => 0,
+      'default'       => 0,
       'type'      => 'switch'
     );
 
@@ -79,7 +79,7 @@ if ( !function_exists( 'shoestrap_module_background_options' ) ) {
       'subtitle'  => __( 'Upload a Custom Background image using the media uploader, or define the URL directly.', 'shoestrap' ),
       'id'        => 'background_image',
       'fold'      => 'background_image_toggle',
-      'std'       => '',
+      'default'       => '',
       'type'      => 'media',
       'customizer'=> array(),
     );
@@ -88,7 +88,7 @@ if ( !function_exists( 'shoestrap_module_background_options' ) ) {
       'title'     => __( 'Background position', 'shoestrap' ),
       'subtitle'  => __( 'Changes how the background image or pattern is displayed from scroll to fixed position. Default: Fixed.', 'shoestrap' ),
       'id'        => 'background_fixed_toggle',
-      'std'       => 1,
+      'default'       => 1,
       'on'        => __( 'Fixed', 'shoestrap' ),
       'off'       => __( 'Scroll', 'shoestrap' ),
       'type'      => 'switch',
@@ -99,7 +99,7 @@ if ( !function_exists( 'shoestrap_module_background_options' ) ) {
       'title'     => __( 'Background Image Positioning', 'shoestrap' ),
       'subtitle'  => __( 'Allows the user to modify how the background displays. By default it is full width and stretched to fill the page. Default: Full Width.', 'shoestrap' ),
       'id'        => 'background_image_position_toggle',
-      'std'       => 0,
+      'default'       => 0,
       'fold'      => 'background_image_toggle',
       'on'        => __( 'Custom', 'shoestrap' ),
       'off'       => __( 'Full Width', 'shoestrap' ),
@@ -111,7 +111,7 @@ if ( !function_exists( 'shoestrap_module_background_options' ) ) {
       'subtitle'  => __( 'Select how (or if) the selected background should be tiled. Default: Tile', 'shoestrap' ),
       'id'        => 'background_repeat',
       'fold'      => 'background_image_position_toggle',
-      'std'       => 'repeat',
+      'default'       => 'repeat',
       'type'      => 'select',
       'options'   => array(
         'no-repeat'  => __( 'No Repeat', 'shoestrap' ),
@@ -126,7 +126,7 @@ if ( !function_exists( 'shoestrap_module_background_options' ) ) {
       'subtitle'  => __( 'Select how the selected background should be horizontally aligned. Default: Left', 'shoestrap' ),
       'id'        => 'background_position_x',
       'fold'      => 'background_image_position_toggle',
-      'std'       => 'repeat',
+      'default'       => 'repeat',
       'type'      => 'select',
       'options'   => array(
         'left'    => __( 'Left', 'shoestrap' ),
@@ -139,7 +139,7 @@ if ( !function_exists( 'shoestrap_module_background_options' ) ) {
       'title'     => __( 'Use a Background Pattern', 'shoestrap' ),
       'subtitle'  => __( 'Select one of the already existing Background Patterns. Default: OFF.', 'shoestrap' ),
       'id'        => 'background_pattern_toggle',
-      'std'       => 0,
+      'default'       => 0,
       'type'      => 'switch'
     );
 
@@ -148,7 +148,7 @@ if ( !function_exists( 'shoestrap_module_background_options' ) ) {
       'subtitle'  => __( 'Select a background pattern.', 'shoestrap' ),
       'id'        => 'background_pattern',
       'fold'      => 'background_pattern_toggle',
-      'std'       => '',
+      'default'       => '',
       'tiles'			=> true,
       'type'      => 'image_select',
       'options'   => $bg_pattern_images,
@@ -158,11 +158,11 @@ if ( !function_exists( 'shoestrap_module_background_options' ) ) {
 
     do_action( 'shoestrap_module_background_options_modifier' );
     
-    array_push( $sections, $section );
+    $sections[] = $section;
     return $sections;
 
   }
 }
-add_action( 'shoestrap_add_sections', 'shoestrap_module_background_options', 60 );
+add_filter( 'redux-sections-'.REDUX_OPT_NAME, 'shoestrap_module_background_options', 60 );
 
 include_once( dirname(__FILE__) . '/functions.background.php' );

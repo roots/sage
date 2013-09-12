@@ -16,7 +16,7 @@ if ( !function_exists( 'shoestrap_module_page_options' ) ) {
       'title'     => __( 'Custom Page Layout', 'shoestrap' ),
       'subtitle'  => __( 'Set a default layout for your blob/post pages. Default: OFF.', 'shoestrap' ),
       'id'        => 'page_layout_toggle',
-      'std'       => 0,
+      'default'       => 0,
       'type'      => 'switch',
       'customizer'=> array(),
     );
@@ -25,7 +25,7 @@ if ( !function_exists( 'shoestrap_module_page_options' ) ) {
       'title'     => __( 'Page Layout', 'shoestrap' ),
       'subtitle'  => __( 'Override your default stylings. Choose between 1, 2 or 3 column layout.', 'shoestrap' ),
       'id'        => 'page_layout',
-      'std'       => shoestrap_getVariable( 'layout', 1 ),
+      'default'       => shoestrap_getVariable( 'layout', 1 ),
       'type'      => 'image_select',
       'fold'      => 'page_layout_toggle',
       'customizer'=> array(),
@@ -43,13 +43,13 @@ if ( !function_exists( 'shoestrap_module_page_options' ) ) {
 
     do_action( 'shoestrap_module_page_options_modifier' );
     
-    array_push( $sections, $section );
+    $sections[] = $section;
     
     return $sections;
 
   }
 }
-add_action( 'shoestrap_add_sections', 'shoestrap_module_page_options', 76 ); 
+add_filter( 'redux-sections-'.REDUX_OPT_NAME, 'shoestrap_module_page_options', 76 ); 
 
 /*
 Disabled by roots by default. No real need, but the code here anyways

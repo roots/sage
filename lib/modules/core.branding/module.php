@@ -16,7 +16,7 @@ if ( !function_exists( 'shoestrap_module_branding_options' ) ) {
       'title'     => __( 'Logo', 'shoestrap' ),
       'subtitle'  => __( 'Upload a logo image using the media uploader, or define the URL directly.', 'shoestrap' ),
       'id'        => 'logo',
-      'std'       => '',
+      'default'       => '',
       'type'      => 'media',
       'customizer'=> array(),
     );
@@ -25,7 +25,7 @@ if ( !function_exists( 'shoestrap_module_branding_options' ) ) {
       'title'     => '',
       'subtitle'  => '',
       'id'        => 'retina_help',
-      'std'       => '<h3 style=\'margin: 0 0 10px;\'>Retina Logo</h3>
+      'default'       => '<h3 style=\'margin: 0 0 10px;\'>Retina Logo</h3>
                       <p>Upload a logo that is exactly 2x the size you want to typically display. A version will then be generated for general site use. If you have previously uploaded a logo, you will need to re-upload it to generate the proper versions.</p>',
       'icon'      => true,
       'fold'      => 'retina_logo_toggle',
@@ -36,7 +36,7 @@ if ( !function_exists( 'shoestrap_module_branding_options' ) ) {
       'title'     => __( 'Custom Favicon', 'shoestrap' ),
       'subtitle'  => __( 'Upload a .ico image using the media uploader, or define the URL directly. 32px x 32px', 'shoestrap' ),
       'id'        => 'favicon',
-      'std'       => '',
+      'default'       => '',
       'type'      => 'media',
       'fold'      => 'advanced_toggle'
     );
@@ -45,7 +45,7 @@ if ( !function_exists( 'shoestrap_module_branding_options' ) ) {
       'title'     => __( 'Apple Icon', 'shoestrap' ),
       'subtitle'  => __( 'This will create icons for Apple iPhone ( 57px x 57px ), Apple iPhone Retina Version ( 114px x 114px ), Apple iPad ( 72px x 72px ) and Apple iPad Retina ( 144px x 144px ). Please note that for better results the image you upload should be at least 144px x 144px.', 'shoestrap' ),
       'id'        => 'apple_icon',
-      'std'       => '',
+      'default'       => '',
       'type'      => 'media',
       'fold'      => 'advanced_toggle'
     );
@@ -55,7 +55,7 @@ if ( !function_exists( 'shoestrap_module_branding_options' ) ) {
       'title'     => '',
       'subtitle'  => '',
       'id'        => 'help6',
-      'std'       => '<h3 style=\'margin: 0 0 10px;\'>Colors</h3>
+      'default'       => '<h3 style=\'margin: 0 0 10px;\'>Colors</h3>
                       <p>The primary color you select will also affect other elements on your site,
                       such as table borders, widgets colors, input elements, dropdowns etc.
                       The branding colors you select will be used throughout the site in various elements.
@@ -70,7 +70,7 @@ if ( !function_exists( 'shoestrap_module_branding_options' ) ) {
       'title'     => __( 'Enable Gradients', 'shoestrap' ),
       'subtitle'  => __( 'Enable gradients for buttons and the navbar. Default: Off.', 'shoestrap' ),
       'id'        => 'gradients_toggle',
-      'std'       => 0,
+      'default'       => 0,
       'customizer'=> array(),
       'compiler'  => true,
       'type'      => 'switch',
@@ -81,7 +81,7 @@ if ( !function_exists( 'shoestrap_module_branding_options' ) ) {
       'title'     => __( 'Brand Colors: Primary', 'shoestrap' ),
       'subtitle'  => __( 'Select your primary branding color. This will affect various areas of your site, including the color of your primary buttons, the background of some elements and many more.', 'shoestrap' ),
       'id'        => 'color_brand_primary',
-      'std'       => '#428bca',
+      'default'       => '#428bca',
       'compiler'  => true,
       'customizer'=> array(),
       'type'      => 'color'
@@ -91,7 +91,7 @@ if ( !function_exists( 'shoestrap_module_branding_options' ) ) {
       'title'     => __( 'Brand Colors: Secondary', 'shoestrap' ),
       'subtitle'  => __( 'Select your secondary branding color. Also referred to as an accent color. This will affect various areas of your site, including the color of your primary buttons, link color, the background of some elements and many more.', 'shoestrap' ),
       'id'        => 'color_brand_secondary',
-      'std'       => '#428bca',
+      'default'       => '#428bca',
       'compiler'  => true,
       'customizer'=> array(),
       'type'      => 'color'
@@ -101,7 +101,7 @@ if ( !function_exists( 'shoestrap_module_branding_options' ) ) {
       'title'     => __( 'Brand Colors: Success', 'shoestrap' ),
       'subtitle'  => __( 'Select your branding color for success messages etc. Default: #5cb85c.', 'shoestrap' ),
       'id'        => 'color_brand_success',
-      'std'       => '#5cb85c',
+      'default'       => '#5cb85c',
       'compiler'  => true,
       'customizer'=> array(),
       'type'      => 'color',
@@ -112,7 +112,7 @@ if ( !function_exists( 'shoestrap_module_branding_options' ) ) {
       'title'     => __( 'Brand Colors: Warning', 'shoestrap' ),
       'subtitle'  => __( 'Select your branding color for warning messages etc. Default: #f0ad4e.', 'shoestrap' ),
       'id'        => 'color_brand_warning',
-      'std'       => '#f0ad4e',
+      'default'       => '#f0ad4e',
       'compiler'  => true,
       'customizer'=> array(),
       'type'      => 'color',
@@ -123,7 +123,7 @@ if ( !function_exists( 'shoestrap_module_branding_options' ) ) {
       'title'     => __( 'Brand Colors: Danger', 'shoestrap' ),
       'subtitle'  => __( 'Select your branding color for success messages etc. Default: #d9534f.', 'shoestrap' ),
       'id'        => 'color_brand_danger',
-      'std'       => '#d9534f',
+      'default'       => '#d9534f',
       'compiler'  => true,
       'customizer'=> array(),
       'type'      => 'color',
@@ -134,7 +134,7 @@ if ( !function_exists( 'shoestrap_module_branding_options' ) ) {
       'title'     => __( 'Brand Colors: Info', 'shoestrap' ),
       'subtitle'  => __( 'Select your branding color for info messages etc. It will also be used for the Search button color as well as other areas where it semantically makes sense to use an \'info\' class. Default: #5bc0de.', 'shoestrap' ),
       'id'        => 'color_brand_info',
-      'std'       => '#5bc0de',
+      'default'       => '#5bc0de',
       'compiler'  => true,
       'customizer'=> array(),
       'type'      => 'color',
@@ -145,11 +145,11 @@ if ( !function_exists( 'shoestrap_module_branding_options' ) ) {
 
     do_action( 'shoestrap_module_branding_options_modifier' );
     
-    array_push( $sections, $section );
+    $sections[] = $section;
     return $sections;
   }
 }
-add_action( 'shoestrap_add_sections', 'shoestrap_module_branding_options', 50 );
+add_filter( 'redux-sections-'.REDUX_OPT_NAME, 'shoestrap_module_branding_options', 50 );
 
 include_once( dirname( __FILE__ ) . '/functions.logo.php' );
 include_once( dirname( __FILE__ ) . '/functions.icons.php' );

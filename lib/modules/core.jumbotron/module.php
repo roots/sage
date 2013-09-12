@@ -31,7 +31,7 @@ if ( !function_exists( 'shoestrap_module_jumbotron_options' ) ) {
       'title'     => '',
       'subtitle'  => '',
       'id'        => 'help8',
-      'std'       => '<h3 style=\'margin: 0 0 10px;\'>Jumbotron</h3>
+      'default'       => '<h3 style=\'margin: 0 0 10px;\'>Jumbotron</h3>
                       <p>A \'Jumbotron\', also known as \'Hero\' area,
                       is an area in your site where you can display in a prominent position things that matter to you.
                       This can be a slideshow, some text or whatever else you wish.
@@ -45,7 +45,7 @@ if ( !function_exists( 'shoestrap_module_jumbotron_options' ) ) {
       'title'     => __('Jumbotron Background Color', 'shoestrap'),
       'subtitle'  => __('Select the background color for your Jumbotron area. Please note that this area will only be visible if you assign a widget to the \'Jumbotron\' Widget Area. Default: #EEEEEE.', 'shoestrap'),
       'id'        => 'jumbotron_bg',
-      'std'       => '#EEEEEE',
+      'default'       => '#EEEEEE',
       'compiler'      => true,
       'customizer'=> array(),
       'type'      => 'color'
@@ -56,7 +56,7 @@ if ( !function_exists( 'shoestrap_module_jumbotron_options' ) ) {
       'title'     => __('Background position', 'shoestrap'),
       'subtitle'  => __('Changes how the background image or pattern is displayed from scroll to fixed position. Default: Fixed.', 'shoestrap'),
       'id'        => 'jumbotron_background_fixed_toggle',
-      'std'       => 1,
+      'default'       => 1,
       'on'        => __('Fixed', 'shoestrap'),
       'off'       => __('Scroll', 'shoestrap'),
       'type'      => 'switch'
@@ -66,7 +66,7 @@ if ( !function_exists( 'shoestrap_module_jumbotron_options' ) ) {
       'title'     => __('Use a Background Image', 'shoestrap'),
       'subtitle'  => __('Enable this option to upload a custom background image for your site. This will override any patterns you may have selected. Default: OFF.', 'shoestrap'),
       'id'        => 'jumbotron_background_image_toggle',
-      'std'       => 0,
+      'default'       => 0,
       'type'      => 'switch'
     );
 
@@ -75,7 +75,7 @@ if ( !function_exists( 'shoestrap_module_jumbotron_options' ) ) {
       'subtitle'  => __('Upload a Custom Background image using the media uploader, or define the URL directly.', 'shoestrap'),
       'id'        => 'jumbotron_background_image',
       'fold'      => 'jumbotron_background_image_toggle',
-      'std'       => '',
+      'default'       => '',
       'type'      => 'media',
       'customizer'=> array(),
     );
@@ -84,7 +84,7 @@ if ( !function_exists( 'shoestrap_module_jumbotron_options' ) ) {
       'title'     => __('Background Image Positioning', 'shoestrap'),
       'subtitle'  => __('Allows the user to modify how the background displays. By default it is full width and stretched to fill the page. Default: Full Width.', 'shoestrap'),
       'id'        => 'jumbotron_background_image_position_toggle',
-      'std'       => 0,
+      'default'       => 0,
       'fold'      => 'jumbotron_background_image_toggle',
       'on'        => __('Custom', 'shoestrap'),
       'off'       => __('Full Width', 'shoestrap'),
@@ -96,7 +96,7 @@ if ( !function_exists( 'shoestrap_module_jumbotron_options' ) ) {
       'subtitle'  => __('Select how (or if) the selected background should be tiled. Default: Tile', 'shoestrap'),
       'id'        => 'jumbotron_background_repeat',
       'fold'      => 'jumbotron_background_image_position_toggle',
-      'std'       => 'repeat',
+      'default'       => 'repeat',
       'type'      => 'select',
       'options'   => array(
         'no-repeat'  => __( 'No Repeat', 'shoestrap' ),
@@ -111,7 +111,7 @@ if ( !function_exists( 'shoestrap_module_jumbotron_options' ) ) {
       'subtitle'  => __('Select how the selected background should be horizontally aligned. Default: Left', 'shoestrap'),
       'id'        => 'jumbotron_background_position_x',
       'fold'      => 'jumbotron_background_image_position_toggle',
-      'std'       => 'repeat',
+      'default'       => 'repeat',
       'type'      => 'select',
       'options'   => array(
         'left'    => __( 'Left', 'shoestrap' ),
@@ -124,7 +124,7 @@ if ( !function_exists( 'shoestrap_module_jumbotron_options' ) ) {
       'title'     => __('Use a Background Pattern', 'shoestrap'),
       'subtitle'  => __('Select one of the already existing Background Patterns. Default: OFF.', 'shoestrap'),
       'id'        => 'jumbotron_background_pattern_toggle',
-      'std'       => 0,
+      'default'       => 0,
       'type'      => 'switch'
     );
 
@@ -133,7 +133,7 @@ if ( !function_exists( 'shoestrap_module_jumbotron_options' ) ) {
       'subtitle'  => __('Select a background pattern.', 'shoestrap'),
       'id'        => 'jumbotron_background_pattern',
       'fold'      => 'jumbotron_background_pattern_toggle',
-      'std'       => '',
+      'default'       => '',
       'tiles'			=> true,
       'type'      => 'image_select',
       'options'   => $bg_pattern_images,
@@ -144,7 +144,7 @@ if ( !function_exists( 'shoestrap_module_jumbotron_options' ) ) {
       'subtitle'  => __('When Turned OFF, the Jumbotron area is displayed in all your pages. If you wish to completely disable the Jumbotron, then please remove the widgets assigned to its area and it will no longer be displayed. Default: ON', 'shoestrap'),
       'id'        => 'jumbotron_visibility',
       'customizer'=> array(),
-      'std'       => 1,
+      'default'       => 1,
       'type'      => 'switch'
     );
 
@@ -153,7 +153,7 @@ if ( !function_exists( 'shoestrap_module_jumbotron_options' ) ) {
       'subtitle'  => __('When Turned ON, the Jumbotron is no longer restricted by the width of your page, taking over the full width of your screen. This option is useful when you have assigned a slider widget on the Jumbotron area and you want its width to be the maximum width of the screen. Default: OFF.', 'shoestrap'),
       'id'        => 'jumbotron_nocontainer',
       'customizer'=> array(),
-      'std'       => 1,
+      'default'       => 1,
       'type'      => 'switch'
     );
 
@@ -162,7 +162,7 @@ if ( !function_exists( 'shoestrap_module_jumbotron_options' ) ) {
       'subtitle'  => __('Use the fittext script to enlarge or scale-down the font-size of the widget title to fit the Jumbotron area. Default: OFF', 'shoestrap'),
       'id'        => 'jumbotron_title_fit',
       'customizer'=> array(),
-      'std'       => 0,
+      'default'       => 0,
       'type'      => 'switch',
       'fold'      => 'advanced_toggle'
     );
@@ -172,7 +172,7 @@ if ( !function_exists( 'shoestrap_module_jumbotron_options' ) ) {
       'subtitle'  => __('Turn this on to center-align the contents of the Jumbotron area. Default: OFF', 'shoestrap'),
       'id'        => 'jumbotron_center',
       'customizer'=> array(),
-      'std'       => 0,
+      'default'       => 0,
       'type'      => 'switch',
       'fold'      => 'advanced_toggle'
     );
@@ -182,7 +182,7 @@ if ( !function_exists( 'shoestrap_module_jumbotron_options' ) ) {
       'subtitle'  => __('The font used in jumbotron.', 'shoestrap'),
       'id'        => 'font_jumbotron',
       'less'      => true,
-      'std'       => array(
+      'default'       => array(
         'family'    => 'Arial, Helvetica, sans-serif',
         'size'    => '16px',
         'color'   => '#333333',
@@ -201,7 +201,7 @@ if ( !function_exists( 'shoestrap_module_jumbotron_options' ) ) {
       'title'     => __('Jumbotron Header Overrides', 'shoestrap'),
       'subtitle'  => __('By enabling this you can specify custom values for each <h*> tag. Default: Off', 'shoestrap'),
       'id'        => 'font_jumbotron_heading_custom',
-      'std'       => 0,
+      'default'       => 0,
       'compiler'      => true,
       'type'      => 'switch',
       'customizer'=> array(),
@@ -213,7 +213,7 @@ if ( !function_exists( 'shoestrap_module_jumbotron_options' ) ) {
       'subtitle'  => __('The main font for your site.', 'shoestrap'),
       'id'        => 'font_jumbotron_headers',
       'less'      => true,
-      'std'       => array(
+      'default'       => array(
         'family'    => 'Arial, Helvetica, sans-serif',
         'color'   => '#333333',
         'google'  => 'false'
@@ -231,7 +231,7 @@ if ( !function_exists( 'shoestrap_module_jumbotron_options' ) ) {
       'subtitle'  => __('Select the border options for your Jumbotron', 'shoestrap'),
       'id'        => 'jumbotron_border_bottom',
       'type'      => 'border',
-      'std'       => array(
+      'default'       => array(
         'size'   => '0',
         'style'   => 'solid',
         'color'   => '#428bca',
@@ -243,11 +243,11 @@ if ( !function_exists( 'shoestrap_module_jumbotron_options' ) ) {
 
     do_action( 'shoestrap_module_jumbotron_options_modifier' );
     
-    array_push($sections, $section);
+    $sections[] = $section;
     return $sections;
 
   }
 }
-add_action( 'shoestrap_add_sections', 'shoestrap_module_jumbotron_options', 70 ); 
+add_filter( 'redux-sections-'.REDUX_OPT_NAME, 'shoestrap_module_jumbotron_options', 70 ); 
 
 include_once( dirname(__FILE__).'/functions.jumbotron.php' );

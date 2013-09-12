@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit	
+		 backupGlobals="false"
+		 backupStaticAttributes="false"
+		 colors="true"
+		 processIsolation="false"
+		 convertErrorsToExceptions="true"
+		 convertNoticesToExceptions="true"
+		 convertWarningsToExceptions="true"
+		 stopOnError="false"
+		 stopOnFailure="false"
+		 stopOnIncomplete="false"
+		 stopOnSkipped="false"
+		 syntaxCheck="false"
+		 verbose="true"
+		 strict="true"
+		 bootstrap="tests/bootstrap.php">
+	<testsuites>
+		<testsuite name="Redux Framework Test Suite">
+			<directory suffix=".php">./tests/unit-tests</directory>
+		</testsuite>
+	</testsuites>
+	<logging>
+		<log type="coverage-clover" target="./tests/clover.xml"/>
+	</logging>
+</phpunit>

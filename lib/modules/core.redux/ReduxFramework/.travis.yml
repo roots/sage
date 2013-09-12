@@ -1,0 +1,41 @@
+language: php
+
+php:
+    - 5.3
+    - 5.4
+    - 5.5
+
+env:
+    - WP_VERSION=master WP_MULTISITE=0
+    - WP_VERSION=3.5.2 WP_MULTISITE=0
+    - WP_VERSION=3.5.1 WP_MULTISITE=0
+    - WP_VERSION=3.5 WP_MULTISITE=0
+    - WP_VERSION=master WP_MULTISITE=1
+    - WP_VERSION=3.5.2 WP_MULTISITE=1
+    - WP_VERSION=3.5.1 WP_MULTISITE=1
+    - WP_VERSION=3.5 WP_MULTISITE=1
+
+before_script:
+    - php kill-travis.php
+    - mkdir -p tmp
+    - WP_CORE_DIR=tmp/wordpress/
+    - WP_TESTS_DIR=tmp/wordpress-tests/
+    - svn co --ignore-externals http://core.svn.wordpress.org/trunk/ tmp/wordpress/
+    - svn co --ignore-externals http://unit-tests.svn.wordpress.org/trunk/ tmp/wordpress-tests/
+    - cp tmp/wordpress-tests/wp-tests-config-sample.php tmp/wordpress-tests/wp-tests-config.php
+    - sed -i "s:dirname( __FILE__ ) . '/wordpress/':'$WP_CORE_DIR':" tmp/wordpress-tests/wp-tests-config.php
+    - sed -i "s/yourdbnamehere/wordpress_test/" tmp/wordpress-tests/wp-tests-config.php
+    - sed -i "s/yourusernamehere/root/" tmp/wordpress-tests/wp-tests-config.php
+    - sed -i "s/yourpasswordhere//" tmp/wordpress-tests/wp-tests-config.php
+    - mysql -e 'CREATE DATABASE wordpress_test;' -uroot
+
+script:
+    - phpunit
+    - php tests/includes/clover.php tests/clover.xml 90
+
+notifications:
+    email:
+        recipients:
+          - ghost1227@reduxframework.com
+        on_success: change
+        on_failure: always
