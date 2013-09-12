@@ -120,7 +120,7 @@ function shoestrap_getVariable( $key, $fresh = false ) {
   	return $redux[$key];
   }
 
-  return false;
+  return '';
 }
 
 define( 'themeURI', get_template_directory_uri() );

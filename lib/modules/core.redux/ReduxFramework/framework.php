@@ -234,12 +234,10 @@ if( !class_exists( 'ReduxFramework' ) ) {
 		 * @since ReduxFramework 3.0.0
 		 */
 		function get_options() {
-			// Make sure the defaults are set
-			
-			if ( empty( $this->options_defaults ) ) {
-				$defaults = $this->_default_values();
-			} 
-
+			$defaults = false;
+			if ( !empty( $this->defaults ) ) {
+				$defaults = $this->defaults;
+			}			
 			if ( $this->args['transient'] === true ) {
 				$result = get_transient( $this->args['opt_name'] . '-transient' );
 			} else if ($this->args['theme_mods'] === true ) {
@@ -247,7 +245,7 @@ if( !class_exists( 'ReduxFramework' ) ) {
 			} else if ( $this->args['theme_mods_expand'] === true ) {
 				$result = get_theme_mods();
 			} else {
-				$result = get_option( $this->args['opt_name'], $this->options_defaults );
+				$result = get_option( $this->args['opt_name'], $defaults );
 			}
 			// Set a global variable by the global_variable agument.
 			if ( $this->args['global_variable'] ) {
@@ -286,7 +284,6 @@ if( !class_exists( 'ReduxFramework' ) ) {
          */
         public function _default_values() {
             if( !is_null( $this->sections ) && is_null( $this->options_defaults ) ) {
-            	$this->options_defaults = array();
                 // fill the cache
                 foreach( $this->sections as $section ) {
                     if( isset( $section['fields'] ) ) {
@@ -298,7 +295,6 @@ if( !class_exists( 'ReduxFramework' ) ) {
                     }
                 }
             }
-
             return $this->options_defaults;
         }
 
