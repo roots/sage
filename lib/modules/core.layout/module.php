@@ -15,7 +15,7 @@ if ( !function_exists( 'shoestrap_module_layout_options' ) ) {
 
     $fields[] = array(
       'title'     => __('Site Style', 'shoestrap'),
-      'subtitle'  => __('Select the default site layout. Default: Wide', 'shoestrap'),
+      'desc'  => __('Select the default site layout. Default: Wide', 'shoestrap'),
       'id'        => 'site_style',
       'default'       => 'wide',
       'type'      => 'select',
@@ -29,7 +29,7 @@ if ( !function_exists( 'shoestrap_module_layout_options' ) ) {
 
     $fields[] = array(
       'title'     => __('Layout', 'shoestrap'),
-      'subtitle'  => __('Select main content and sidebar arrangement. Choose between 1, 2 or 3 column layout.', 'shoestrap'),
+      'desc'  => __('Select main content and sidebar arrangement. Choose between 1, 2 or 3 column layout.', 'shoestrap'),
       'id'        => 'layout',
       'default'       => shoestrap_getVariable('layout', 1),
       'type'      => 'image_select',
@@ -46,7 +46,7 @@ if ( !function_exists( 'shoestrap_module_layout_options' ) ) {
 
         $fields[] = array(
       'title'     => __('Primary Sidebar Width', 'shoestrap'),
-      'subtitle'  => __('Select the width of the Primary Sidebar. Please note that the values represent grid columns. The total width of the page is 12 columns, so selecting 4 here will make the primary sidebar to have a width of 1/3 (4/12) of the total page width.', 'shoestrap'),
+      'desc'  => __('Select the width of the Primary Sidebar. Please note that the values represent grid columns. The total width of the page is 12 columns, so selecting 4 here will make the primary sidebar to have a width of 1/3 (4/12) of the total page width.', 'shoestrap'),
       'id'        => 'layout_primary_width',
       'default'       => 4,
       'min'       => 1,
@@ -58,7 +58,7 @@ if ( !function_exists( 'shoestrap_module_layout_options' ) ) {
 
     $fields[] = array(
       'title'     => __('Secondary Sidebar Width', 'shoestrap'),
-      'subtitle'  => __('Select the width of the Secondary Sidebar. Please note that the values represent grid columns. The total width of the page is 12 columns, so selecting 4 here will make the secondary sidebar to have a width of 1/3 (4/12) of the total page width.', 'shoestrap'),
+      'desc'  => __('Select the width of the Secondary Sidebar. Please note that the values represent grid columns. The total width of the page is 12 columns, so selecting 4 here will make the secondary sidebar to have a width of 1/3 (4/12) of the total page width.', 'shoestrap'),
       'id'        => 'layout_secondary_width',
       'default'       => 3,
       'min'       => 1,
@@ -70,7 +70,7 @@ if ( !function_exists( 'shoestrap_module_layout_options' ) ) {
 
     $fields[] = array(
       'title'     => __('Show sidebars on the frontpage', 'shoestrap'),
-      'subtitle'  => __('OFF by default. If you want to display the sidebars in your frontpage, turn this ON.', 'shoestrap'),
+      'desc'  => __('OFF by default. If you want to display the sidebars in your frontpage, turn this ON.', 'shoestrap'),
       'id'        => 'layout_sidebar_on_front',
       'customizer'=> array(),
       'default'       => 0,
@@ -79,7 +79,7 @@ if ( !function_exists( 'shoestrap_module_layout_options' ) ) {
 
     $fields[] = array(
       'title'     => __('Margin from top (Works only in \'Boxed\' mode)', 'shoestrap'),
-      'subtitle'  => __('This will add a margin above the navbar. Useful if you\'ve enabled the \'Boxed\' mode above. Default: 0px', 'shoestrap'),
+      'desc'  => __('This will add a margin above the navbar. Useful if you\'ve enabled the \'Boxed\' mode above. Default: 0px', 'shoestrap'),
       'id'        => 'navbar_margin_top',
       'fold'      => 'navbar_boxed',
       'default'       => 0,
@@ -93,7 +93,7 @@ if ( !function_exists( 'shoestrap_module_layout_options' ) ) {
 
     $fields[] = array(
       'title'     => __('Show Breadcrumbs', 'shoestrap'),
-      'subtitle'  => __('Display Breadcrumbs. Default: OFF.', 'shoestrap'),
+      'desc'  => __('Display Breadcrumbs. Default: OFF.', 'shoestrap'),
       'id'        => 'breadcrumbs',
       'default'       => 0,
       'type'      => 'switch',
@@ -102,7 +102,7 @@ if ( !function_exists( 'shoestrap_module_layout_options' ) ) {
 
     $fields[] = array(
       'title'     => __('Body Top Margin', 'shoestrap'),
-      'subtitle'  => __('Select the top margin of body element in pixels. Default: 0px.', 'shoestrap'),
+      'desc'  => __('Select the top margin of body element in pixels. Default: 0px.', 'shoestrap'),
       'id'        => 'body_margin_top',
       'default'       => 0,
       'min'       => 0,
@@ -113,7 +113,7 @@ if ( !function_exists( 'shoestrap_module_layout_options' ) ) {
 
     $fields[] = array(
       'title'     => __('Body Bottom Margin', 'shoestrap'),
-      'subtitle'  => __('Select the bottom margin of body element in pixels. Default: 0px.', 'shoestrap'),
+      'desc'  => __('Select the bottom margin of body element in pixels. Default: 0px.', 'shoestrap'),
       'id'        => 'body_margin_bottom',
       'default'       => 0,
       'min'       => 0,
@@ -124,7 +124,7 @@ if ( !function_exists( 'shoestrap_module_layout_options' ) ) {
 
     $fields[] = array(
       'title'     => __('Custom Grid', 'shoestrap'),
-      'subtitle'  => '<strong>' . __('CAUTION:', 'shoestrap') . '</strong> ' . __('Only use this if you know what you are doing, as changing these values might break the way your site looks on some devices. The default settings should be fine for the vast majority of sites.', 'shoestrap'),
+      'desc'  => '<strong>' . __('CAUTION:', 'shoestrap') . '</strong> ' . __('Only use this if you know what you are doing, as changing these values might break the way your site looks on some devices. The default settings should be fine for the vast majority of sites.', 'shoestrap'),
       'id'        => 'custom_grid',
       'default'       => 0,
       'type'      => 'switch',
@@ -133,7 +133,7 @@ if ( !function_exists( 'shoestrap_module_layout_options' ) ) {
 
     $fields[] = array(
       'title'     => __('Tablet Container Width', 'shoestrap'),
-      'subtitle'  => __('The width of Tablet screens. This is used to calculate the responsive layout breakpoints. Suitable for phones. Default: 728px', 'shoestrap'),
+      'desc'  => __('The width of Tablet screens. This is used to calculate the responsive layout breakpoints. Suitable for phones. Default: 728px', 'shoestrap'),
       'id'        => 'container_tablet',
       'fold'      => 'custom_grid',
       'default'       => 720,
@@ -147,7 +147,7 @@ if ( !function_exists( 'shoestrap_module_layout_options' ) ) {
 
     $fields[] = array(
       'title'     => __('Desktop Container Width', 'shoestrap'),
-      'subtitle'  => __('The width of normal screens. This is used to calculate the responsive layout breakpoints. Suitable for medium & normal screens. Default: 940px', 'shoestrap'),
+      'desc'  => __('The width of normal screens. This is used to calculate the responsive layout breakpoints. Suitable for medium & normal screens. Default: 940px', 'shoestrap'),
       'id'        => 'container_desktop',
       'fold'      => 'custom_grid',
       'default'       => 940,
@@ -162,7 +162,7 @@ if ( !function_exists( 'shoestrap_module_layout_options' ) ) {
 
     $fields[] = array(
       'title'     => __('Large Desktop Container Width', 'shoestrap'),
-      'subtitle'  => __('The width of Large Desktop screens. This is used to calculate the responsive layout breakpoints. Suitable for large screens. Default: 1170px', 'shoestrap'),
+      'desc'  => __('The width of Large Desktop screens. This is used to calculate the responsive layout breakpoints. Suitable for large screens. Default: 1170px', 'shoestrap'),
       'id'        => 'container_large_desktop',
       'fold'      => 'custom_grid',
       'default'       => 1140,
@@ -176,7 +176,7 @@ if ( !function_exists( 'shoestrap_module_layout_options' ) ) {
 
     $fields[] = array(
       'title'     => __('Columns Gutter', 'shoestrap'),
-      'subtitle'  => __('The space between the columns in your grid. Default: 30px', 'shoestrap'),
+      'desc'  => __('The space between the columns in your grid. Default: 30px', 'shoestrap'),
       'id'        => 'layout_gutter',
       'fold'      => 'custom_grid',
       'default'       => 30,

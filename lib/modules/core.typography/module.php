@@ -14,7 +14,7 @@ if ( !function_exists( 'shoestrap_module_typography_options' ) ) {
 
     $fields[] = array(
       'title'     => __('Base Font', 'shoestrap'),
-      'subtitle'  => __('The main font for your site.', 'shoestrap'),
+      'desc'  => __('The main font for your site.', 'shoestrap'),
       'id'        => 'font_base',
       'compiler'      => true,
       'default'       => array(
@@ -33,7 +33,7 @@ if ( !function_exists( 'shoestrap_module_typography_options' ) ) {
 
     $fields[] = array(
       'title'     => __('Header Overrides', 'shoestrap'),
-      'subtitle'  => __('By enabling this you can specify custom values for each <h*> tag. Default: Off', 'shoestrap'),
+      'desc'  => __('By enabling this you can specify custom values for each <h*> tag. Default: Off', 'shoestrap'),
       'id'        => 'font_heading_custom',
       'default'       => 0,
       'compiler'      => true,
@@ -44,7 +44,7 @@ if ( !function_exists( 'shoestrap_module_typography_options' ) ) {
 
     $fields[] = array(
       'title'     => __('H1 Font', 'shoestrap'),
-      'subtitle'  => __('The main font for your site.', 'shoestrap'),
+      'desc'  => __('The main font for your site.', 'shoestrap'),
       'id'        => 'font_h1',
       'compiler'  => true,
       'default'       => array(
@@ -64,7 +64,7 @@ if ( !function_exists( 'shoestrap_module_typography_options' ) ) {
     $fields[] = array(
       'id'		  => 'font_h2',
       'title'     => __('H2 Font', 'shoestrap'),
-      'subtitle'  => __('The main font for your site.', 'shoestrap'),
+      'desc'  => __('The main font for your site.', 'shoestrap'),
       'compiler'  => true,
       'default'       => array(
         'family'  => 'Arial, Helvetica, sans-serif',
@@ -83,7 +83,7 @@ if ( !function_exists( 'shoestrap_module_typography_options' ) ) {
     $fields[] = array(
       'id'		  => 'font_h3',
       'title'     => __('H3 Font', 'shoestrap'),
-      'subtitle'  => __('The main font for your site.', 'shoestrap'),
+      'desc'  => __('The main font for your site.', 'shoestrap'),
       'compiler'  => true,
       'default'       => array(
         'family'  => 'Arial, Helvetica, sans-serif',
@@ -101,7 +101,7 @@ if ( !function_exists( 'shoestrap_module_typography_options' ) ) {
 
     $fields[] = array(
       'title'     => __('H4 Font', 'shoestrap'),
-      'subtitle'  => __('The main font for your site.', 'shoestrap'),
+      'desc'  => __('The main font for your site.', 'shoestrap'),
       'id'        => 'font_h4',
       'compiler'  => true,
       'default'       => array(
@@ -120,7 +120,7 @@ if ( !function_exists( 'shoestrap_module_typography_options' ) ) {
 
     $fields[] = array(
       'title'     => __('H5 Font', 'shoestrap'),
-      'subtitle'  => __('The main font for your site.', 'shoestrap'),
+      'desc'  => __('The main font for your site.', 'shoestrap'),
       'id'        => 'font_h5',
       'compiler'  => true,
       'default'       => array(
@@ -139,7 +139,7 @@ if ( !function_exists( 'shoestrap_module_typography_options' ) ) {
 
     $fields[] = array(
       'title'     => __('H6 Font', 'shoestrap'),
-      'subtitle'  => __('The main font for your site.', 'shoestrap'),
+      'desc'  => __('The main font for your site.', 'shoestrap'),
       'id'        => 'font_h6',
       'compiler'      => true,
       'default'       => array(

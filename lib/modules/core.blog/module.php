@@ -14,7 +14,7 @@ if ( !function_exists( 'shoestrap_module_blog_options' ) ) :
 
     $fields[] = array( 
       'title'     => __( 'Widgets mode', 'shoestrap' ),
-      'subtitle'  => __( 'How do you want your widgets to be displayed?', 'shoestrap' ),
+      'desc'  => __( 'How do you want your widgets to be displayed?', 'shoestrap' ),
       'id'        => 'widgets_mode',
       'default'       => 1,
       'fold'      => 'advanced_toggle',
@@ -26,7 +26,7 @@ if ( !function_exists( 'shoestrap_module_blog_options' ) ) :
 
     $fields[] = array( 
       'title'     => __( 'Custom Blog Layout', 'shoestrap' ),
-      'subtitle'  => __( 'Set a default layout for your blog/post pages. Default: OFF.', 'shoestrap' ),
+      'desc'  => __( 'Set a default layout for your blog/post pages. Default: OFF.', 'shoestrap' ),
       'id'        => 'blog_layout_toggle',
       'compiler'  => true,
       'default'       => 0,
@@ -37,7 +37,7 @@ if ( !function_exists( 'shoestrap_module_blog_options' ) ) :
 
     $fields[] = array( 
       'title'     => __( 'Blog Layout', 'shoestrap' ),
-      'subtitle'  => __( 'Override your default styling. Choose between 1, 2 or 3 column layout.', 'shoestrap' ),
+      'desc'  => __( 'Override your default styling. Choose between 1, 2 or 3 column layout.', 'shoestrap' ),
       'id'        => 'blog_layout',
       'default'       => shoestrap_getVariable( 'layout', 1 ),
       'type'      => 'image_select',
@@ -56,7 +56,7 @@ if ( !function_exists( 'shoestrap_module_blog_options' ) ) :
 
     $fields[] = array( 
       'title'     => __( 'Disable Comments on Blog', 'shoestrap' ),
-      'subtitle'  => __( 'Do not allow site visitors to write comments on blog posts. Default: Off.', 'shoestrap' ),
+      'desc'  => __( 'Do not allow site visitors to write comments on blog posts. Default: Off.', 'shoestrap' ),
       'id'        => 'blog_comments_toggle',
       'default'       => 0,
       'type'      => 'switch',
@@ -65,7 +65,7 @@ if ( !function_exists( 'shoestrap_module_blog_options' ) ) :
 
     $fields[] = array( 
       'title'     => __( 'Post excerpt length', 'shoestrap' ),
-      'subtitle'  => __( 'Select the height of your featured images on post archives. Default: 40px', 'shoestrap' ),
+      'desc'  => __( 'Select the height of your featured images on post archives. Default: 40px', 'shoestrap' ),
       'id'        => 'post_excerpt_length',
       'default'       => 40,
       'min'       => 10,
@@ -77,7 +77,7 @@ if ( !function_exists( 'shoestrap_module_blog_options' ) ) :
 
     $fields[] = array( 
       'title'     => '',
-      'subtitle'  => '',
+      'desc'  => '',
       'id'        => 'help3',
       'default'       => '<h3 style=\'margin: 0 0 10px;\'>Featured Images</h3>
                       <p>Here you can select if you want to display the featured images in post archives and individual posts.
@@ -90,7 +90,7 @@ if ( !function_exists( 'shoestrap_module_blog_options' ) ) :
 
     $fields[] = array( 
       'title'     => __( 'Featured Images on Archives', 'shoestrap' ),
-      'subtitle'  => __( 'Display featured Images on post archives ( such as categories, tags, month view etc ). Default: OFF.', 'shoestrap' ),
+      'desc'  => __( 'Display featured Images on post archives ( such as categories, tags, month view etc ). Default: OFF.', 'shoestrap' ),
       'id'        => 'feat_img_archive',
       'default'       => 0,
       'type'      => 'switch',
@@ -101,7 +101,7 @@ if ( !function_exists( 'shoestrap_module_blog_options' ) ) :
 
     $fields[] = array( 
       'title'     => __( 'Featured Images on Archives Full Width', 'shoestrap' ),
-      'subtitle'  => __( 'Display featured Images on posts. Default: OFF.', 'shoestrap' ),
+      'desc'  => __( 'Display featured Images on posts. Default: OFF.', 'shoestrap' ),
       'id'        => 'feat_img_archive_custom_toggle',
       'default'       => 0,
       'fold'      => 'feat_img_archive',
@@ -113,7 +113,7 @@ if ( !function_exists( 'shoestrap_module_blog_options' ) ) :
 
     $fields[] = array( 
       'title'     => __( 'Archives Featured Image Width', 'shoestrap' ),
-      'subtitle'  => __( 'Select the width of your featured images on single posts. Default: 550px', 'shoestrap' ),
+      'desc'  => __( 'Select the width of your featured images on single posts. Default: 550px', 'shoestrap' ),
       'id'        => 'feat_img_archive_width',
       'default'       => 550,
       'min'       => 100,
@@ -126,7 +126,7 @@ if ( !function_exists( 'shoestrap_module_blog_options' ) ) :
 
     $fields[] = array( 
       'title'     => __( 'Archives Featured Image Height', 'shoestrap' ),
-      'subtitle'  => __( 'Select the height of your featured images on post archives. Default: 300px', 'shoestrap' ),
+      'desc'  => __( 'Select the height of your featured images on post archives. Default: 300px', 'shoestrap' ),
       'id'        => 'feat_img_archive_height',
       'fold'      => 'feat_img_archive_custom_toggle',
       'default'       => 300,
@@ -139,7 +139,7 @@ if ( !function_exists( 'shoestrap_module_blog_options' ) ) :
 
     $fields[] = array( 
       'title'     => __( 'Featured Images on Posts', 'shoestrap' ),
-      'subtitle'  => __( 'Display featured Images on posts. Default: OFF.', 'shoestrap' ),
+      'desc'  => __( 'Display featured Images on posts. Default: OFF.', 'shoestrap' ),
       'id'        => 'feat_img_post',
       'default'       => 0,
       'type'      => 'switch',
@@ -149,7 +149,7 @@ if ( !function_exists( 'shoestrap_module_blog_options' ) ) :
 
     $fields[] = array( 
       'title'     => __( 'Featured Images on Posts Full Width', 'shoestrap' ),
-      'subtitle'  => __( 'Display featured Images on posts. Default: OFF.', 'shoestrap' ),
+      'desc'  => __( 'Display featured Images on posts. Default: OFF.', 'shoestrap' ),
       'id'        => 'feat_img_post_custom_toggle',
       'default'       => 0,
       'fold'      => 'feat_img_post',
@@ -161,7 +161,7 @@ if ( !function_exists( 'shoestrap_module_blog_options' ) ) :
 
     $fields[] = array( 
       'title'     => __( 'Posts Featured Image Width', 'shoestrap' ),
-      'subtitle'  => __( 'Select the width of your featured images on single posts. Default: 550px', 'shoestrap' ),
+      'desc'  => __( 'Select the width of your featured images on single posts. Default: 550px', 'shoestrap' ),
       'id'        => 'feat_img_post_width',
       'default'       => 550,
       'min'       => 100,
@@ -174,7 +174,7 @@ if ( !function_exists( 'shoestrap_module_blog_options' ) ) :
 
     $fields[] = array( 
       'title'     => __( 'Posts Featured Image Height', 'shoestrap' ),
-      'subtitle'  => __( 'Select the height of your featured images on single posts. Default: 330px', 'shoestrap' ),
+      'desc'  => __( 'Select the height of your featured images on single posts. Default: 330px', 'shoestrap' ),
       'id'        => 'feat_img_post_height',
       'fold'      => 'feat_img_post_custom_toggle',
       'default'       => 330,

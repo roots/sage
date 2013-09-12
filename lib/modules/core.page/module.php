@@ -14,7 +14,7 @@ if ( !function_exists( 'shoestrap_module_page_options' ) ) {
 
     $fields[] = array(
       'title'     => __( 'Custom Page Layout', 'shoestrap' ),
-      'subtitle'  => __( 'Set a default layout for your blob/post pages. Default: OFF.', 'shoestrap' ),
+      'desc'  => __( 'Set a default layout for your blob/post pages. Default: OFF.', 'shoestrap' ),
       'id'        => 'page_layout_toggle',
       'default'       => 0,
       'type'      => 'switch',
@@ -23,7 +23,7 @@ if ( !function_exists( 'shoestrap_module_page_options' ) ) {
 
     $fields[] = array(
       'title'     => __( 'Page Layout', 'shoestrap' ),
-      'subtitle'  => __( 'Override your default stylings. Choose between 1, 2 or 3 column layout.', 'shoestrap' ),
+      'desc'  => __( 'Override your default stylings. Choose between 1, 2 or 3 column layout.', 'shoestrap' ),
       'id'        => 'page_layout',
       'default'       => shoestrap_getVariable( 'layout', 1 ),
       'type'      => 'image_select',

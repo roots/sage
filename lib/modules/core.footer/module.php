@@ -14,7 +14,7 @@ if ( !function_exists( 'shoestrap_module_footer_options' ) ) {
 
     $fields[] = array( 
       'title'     => __( 'Footer Background Color', 'shoestrap' ),
-      'subtitle'  => __( 'Select the background color for your footer. Default: #282a2b.', 'shoestrap' ),
+      'desc'  => __( 'Select the background color for your footer. Default: #282a2b.', 'shoestrap' ),
       'id'        => 'footer_background',
       'default'       => '#282a2b',
       'customizer'=> array(),
@@ -23,7 +23,7 @@ if ( !function_exists( 'shoestrap_module_footer_options' ) ) {
     
     $fields[] = array( 
       'title'     => __( 'Footer Background Opacity', 'shoestrap' ),
-      'subtitle'  => __( 'Select the opacity level for the footer bar. Default: 100%.', 'shoestrap' ),
+      'desc'  => __( 'Select the opacity level for the footer bar. Default: 100%.', 'shoestrap' ),
       'id'        => 'footer_opacity',
       'default'       => 100,
       'min'       => 0,
@@ -34,7 +34,7 @@ if ( !function_exists( 'shoestrap_module_footer_options' ) ) {
 
     $fields[] = array( 
       'title'     => __( 'Footer Text Color', 'shoestrap' ),
-      'subtitle'  => __( 'Select the text color for your footer. Default: #8C8989.', 'shoestrap' ),
+      'desc'  => __( 'Select the text color for your footer. Default: #8C8989.', 'shoestrap' ),
       'id'        => 'footer_color',
       'default'       => '#8C8989',
       'customizer'=> array(),
@@ -43,7 +43,7 @@ if ( !function_exists( 'shoestrap_module_footer_options' ) ) {
 
     $fields[] = array( 
       'title'     => __( 'Footer Text', 'shoestrap' ),
-      'subtitle'  => __( 'The text that will be displayed in your footer. You can use [year] and [sitename] and they will be replaced appropriately. Default: &copy; [year] [sitename]', 'shoestrap' ),
+      'desc'  => __( 'The text that will be displayed in your footer. You can use [year] and [sitename] and they will be replaced appropriately. Default: &copy; [year] [sitename]', 'shoestrap' ),
       'id'        => 'footer_text',
       'default'       => '&copy; [year] [sitename]',
       'customizer'=> array(),
@@ -52,7 +52,7 @@ if ( !function_exists( 'shoestrap_module_footer_options' ) ) {
 
     $fields[] = array( 
       'title'     => 'Footer Top Border',
-      'subtitle'  => 'Select the border options for your Footer',
+      'desc'  => 'Select the border options for your Footer',
       'id'        => 'footer_border_top',
       'type'      => 'border',
       'default'       => array( 
@@ -65,7 +65,7 @@ if ( !function_exists( 'shoestrap_module_footer_options' ) ) {
 
     $fields[] = array( 
       'title'     => __( 'Footer Top Margin', 'shoestrap' ),
-      'subtitle'  => __( 'Select the top margin of footer in pixels. Default: 0px.', 'shoestrap' ),
+      'desc'  => __( 'Select the top margin of footer in pixels. Default: 0px.', 'shoestrap' ),
       'id'        => 'footer_top_margin',
       'default'       => 0,
       'min'       => 0,
@@ -76,7 +76,7 @@ if ( !function_exists( 'shoestrap_module_footer_options' ) ) {
 
     $fields[] = array( 
       'title'     => __( 'Show social icons in footer', 'shoestrap' ),
-      'subtitle'  => __( 'Show social icons in the footer. Default: On.', 'shoestrap' ),
+      'desc'  => __( 'Show social icons in the footer. Default: On.', 'shoestrap' ),
       'id'        => 'footer_social_toggle',
       'default'       => 0,
       'customizer'=> array(),
@@ -86,7 +86,7 @@ if ( !function_exists( 'shoestrap_module_footer_options' ) ) {
 
     $fields[] = array( 
       'title'     => __( 'Footer social links column width', 'shoestrap' ),
-      'subtitle'  => __( 'You can customize the width of the footer social links area. The footer text width will be adjusted accordingly. Default: 5.', 'shoestrap' ),
+      'desc'  => __( 'You can customize the width of the footer social links area. The footer text width will be adjusted accordingly. Default: 5.', 'shoestrap' ),
       'id'        => 'footer_social_width',
       'fold'      => 'footer_social_toggle',
       'default'       => 6,
@@ -99,7 +99,7 @@ if ( !function_exists( 'shoestrap_module_footer_options' ) ) {
 
     $fields[] = array( 
       'title'     => __( 'Footer social icons open new window', 'shoestrap' ),
-      'subtitle'  => __( 'Social icons in footer will open a new window. Default: On.', 'shoestrap' ),
+      'desc'  => __( 'Social icons in footer will open a new window. Default: On.', 'shoestrap' ),
       'id'        => 'footer_social_new_window_toggle',
       'fold'      => 'footer_social_toggle',
       'default'       => 1,

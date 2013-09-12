@@ -32,7 +32,7 @@ if ( !function_exists( 'shoestrap_module_background_options' ) ) {
 
     $fields[] = array(
       'title'     => __( 'Background Color', 'shoestrap' ),
-      'subtitle'  => __( 'Select a background color for your site. Default: #ffffff.', 'shoestrap' ),
+      'desc'  => __( 'Select a background color for your site. Default: #ffffff.', 'shoestrap' ),
       'id'        => 'color_body_bg',
       'default'       => '#ffffff',
       'compiler'  => true,
@@ -42,7 +42,7 @@ if ( !function_exists( 'shoestrap_module_background_options' ) ) {
 
     $fields[] = array(
       'title'     => __( 'Background Color Opacity', 'shoestrap' ),
-      'subtitle'  => __( 'Select the opacity of your background color. This will make the main content area transparent, so that background images and patterns will show through. Default: 100 (fully opaque)', 'shoestrap' ),
+      'desc'  => __( 'Select the opacity of your background color. This will make the main content area transparent, so that background images and patterns will show through. Default: 100 (fully opaque)', 'shoestrap' ),
       'id'        => 'color_body_bg_opacity',
       'default'       => 100,
       'min'       => 0,
@@ -54,7 +54,7 @@ if ( !function_exists( 'shoestrap_module_background_options' ) ) {
 
     $fields[] = array(
       'title'     => '',
-      'subtitle'  => '',
+      'desc'  => '',
       'id'        => 'help4',
       'default'       => '<h3 style=\'margin: 0 0 10px;\'>Background Images</h3>
                       <p>If you want a background image, you can select one here.
@@ -68,7 +68,7 @@ if ( !function_exists( 'shoestrap_module_background_options' ) ) {
 
     $fields[] = array(
       'title'     => __( 'Use a Background Image', 'shoestrap' ),
-      'subtitle'  => __( 'Enable this option to upload a custom background image for your site. This will override any patterns you may have selected. Default: OFF.', 'shoestrap' ),
+      'desc'  => __( 'Enable this option to upload a custom background image for your site. This will override any patterns you may have selected. Default: OFF.', 'shoestrap' ),
       'id'        => 'background_image_toggle',
       'default'       => 0,
       'type'      => 'switch'
@@ -76,7 +76,7 @@ if ( !function_exists( 'shoestrap_module_background_options' ) ) {
 
     $fields[] = array(
       'title'     => __( 'Upload a Custom Background Image', 'shoestrap' ),
-      'subtitle'  => __( 'Upload a Custom Background image using the media uploader, or define the URL directly.', 'shoestrap' ),
+      'desc'  => __( 'Upload a Custom Background image using the media uploader, or define the URL directly.', 'shoestrap' ),
       'id'        => 'background_image',
       'fold'      => 'background_image_toggle',
       'default'       => '',
@@ -86,7 +86,7 @@ if ( !function_exists( 'shoestrap_module_background_options' ) ) {
 
     $fields[] = array(
       'title'     => __( 'Background position', 'shoestrap' ),
-      'subtitle'  => __( 'Changes how the background image or pattern is displayed from scroll to fixed position. Default: Fixed.', 'shoestrap' ),
+      'desc'  => __( 'Changes how the background image or pattern is displayed from scroll to fixed position. Default: Fixed.', 'shoestrap' ),
       'id'        => 'background_fixed_toggle',
       'default'       => 1,
       'on'        => __( 'Fixed', 'shoestrap' ),
@@ -97,7 +97,7 @@ if ( !function_exists( 'shoestrap_module_background_options' ) ) {
 
     $fields[] = array(
       'title'     => __( 'Background Image Positioning', 'shoestrap' ),
-      'subtitle'  => __( 'Allows the user to modify how the background displays. By default it is full width and stretched to fill the page. Default: Full Width.', 'shoestrap' ),
+      'desc'  => __( 'Allows the user to modify how the background displays. By default it is full width and stretched to fill the page. Default: Full Width.', 'shoestrap' ),
       'id'        => 'background_image_position_toggle',
       'default'       => 0,
       'fold'      => 'background_image_toggle',
@@ -108,7 +108,7 @@ if ( !function_exists( 'shoestrap_module_background_options' ) ) {
 
     $fields[] = array(
       'title'     => __( 'Background Repeat', 'shoestrap' ),
-      'subtitle'  => __( 'Select how (or if) the selected background should be tiled. Default: Tile', 'shoestrap' ),
+      'desc'  => __( 'Select how (or if) the selected background should be tiled. Default: Tile', 'shoestrap' ),
       'id'        => 'background_repeat',
       'fold'      => 'background_image_position_toggle',
       'default'       => 'repeat',
@@ -123,7 +123,7 @@ if ( !function_exists( 'shoestrap_module_background_options' ) ) {
 
     $fields[] = array(
       'title'     => __( 'Background Alignment', 'shoestrap' ),
-      'subtitle'  => __( 'Select how the selected background should be horizontally aligned. Default: Left', 'shoestrap' ),
+      'desc'  => __( 'Select how the selected background should be horizontally aligned. Default: Left', 'shoestrap' ),
       'id'        => 'background_position_x',
       'fold'      => 'background_image_position_toggle',
       'default'       => 'repeat',
@@ -137,7 +137,7 @@ if ( !function_exists( 'shoestrap_module_background_options' ) ) {
 
     $fields[] = array(
       'title'     => __( 'Use a Background Pattern', 'shoestrap' ),
-      'subtitle'  => __( 'Select one of the already existing Background Patterns. Default: OFF.', 'shoestrap' ),
+      'desc'  => __( 'Select one of the already existing Background Patterns. Default: OFF.', 'shoestrap' ),
       'id'        => 'background_pattern_toggle',
       'default'       => 0,
       'type'      => 'switch'
@@ -145,7 +145,7 @@ if ( !function_exists( 'shoestrap_module_background_options' ) ) {
 
     $fields[] = array(
       'title'     => __( 'Choose a Background Pattern', 'shoestrap' ),
-      'subtitle'  => __( 'Select a background pattern.', 'shoestrap' ),
+      'desc'  => __( 'Select a background pattern.', 'shoestrap' ),
       'id'        => 'background_pattern',
       'fold'      => 'background_pattern_toggle',
       'default'       => '',
