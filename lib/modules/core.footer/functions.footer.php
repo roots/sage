@@ -65,7 +65,7 @@ function shoestrap_footer_icon() {
 
   if ( current_user_can( 'edit_theme_options' ) && !isset( $wp_customize ) ) : ?>
     <div id="shoestrap_icon" class="visible-lg">
-      <a href="<?php echo admin_url( 'themes.php?page=redux_options' ); ?>"><i class="icon icon-cogs"></i></a>
+      <a href="<?php echo admin_url( 'themes.php?page=redux_options' ); ?>"><i class="icon elusive icon-cogs"></i></a>
     </div>
   <?php endif; ?>
   </div>
@@ -114,7 +114,7 @@ function shoestrap_footer_html() {
               continue;
             ?>
             <a href="<?php echo $network['url']; ?>"<?php echo $blank;?> data-toggle="tooltip" data-placement="top" title="" data-original-title="Tooltip on top">
-              <span class="icon icon-<?php echo $network['icon']; ?>"></span>
+              <span class="icon elusive icon-<?php echo $network['icon']; ?>"></span>
             </a>
           <?php } ?>
         </div>
