@@ -200,11 +200,12 @@ function shoestrap_module_advanced_options( $sections ) {
     'fold'      => 'advanced_toggle'
   );
 
-		$section['fields'] = $fields;
+	$section['fields'] = $fields;
 
-  do_action( 'shoestrap_module_advanced_options_modifier' );
+  $section = apply_filters( 'shoestrap_module_advanced_options_modifier', $section );
   
   $sections[] = $section;
+  
   return $sections;
 
 }

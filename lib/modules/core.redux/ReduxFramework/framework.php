@@ -915,9 +915,13 @@ if( !class_exists( 'ReduxFramework' ) ) {
                 $imported_options = json_decode( htmlspecialchars_decode( $import ), true );
 
                 if( is_array( $imported_options ) && isset( $imported_options['redux-backup'] ) && $imported_options['redux-backup'] == '1' ) {
-                    $imported_options['imported'] = 1;
-                    $plugin_options = wp_parse_args( $imported_options, $plugin_options ); // Allows for partial import (presets)
-
+                    
+                    $plugin_options['imported'] = 1;
+                	foreach($imported_options as $key => $value) {
+                		$plugin_options[$key] = $value;
+                	}                    
+                    
+                    // Remove the import/export tab cookie.
                     if( $_COOKIE['redux_current_tab'] == 'import_export_default' ) {
                         setcookie( 'redux_current_tab', '', 1, '/' );
                     }

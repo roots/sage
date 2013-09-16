@@ -18,6 +18,7 @@ function shoestrap_module_footer_options( $sections ) {
     'id'        => 'footer_background',
     'default'   => '#282a2b',
     'customizer'=> array(),
+    'transparent'=> false,    
     'type'      => 'color'
   );
   
@@ -38,6 +39,7 @@ function shoestrap_module_footer_options( $sections ) {
     'id'        => 'footer_color',
     'default'   => '#8C8989',
     'customizer'=> array(),
+    'transparent'=> false,    
     'type'      => 'color'
   );
 
@@ -109,7 +111,7 @@ function shoestrap_module_footer_options( $sections ) {
 
   $section['fields'] = $fields;
 
-  do_action( 'shoestrap_module_footer_options_modifier' );
+  $section = apply_filters( 'shoestrap_module_footer_options_modifier', $section );
   
   $sections[] = $section;
   return $sections;

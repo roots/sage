@@ -62,6 +62,10 @@ if( !class_exists( 'ReduxFramework_info' ) ) {
          */
         public function render() {
 
+        	if ( !isset( $this->field['style'] ) ) {
+        		$this->field['style'] = "";
+        	}
+
             if( empty( $this->field['desc'] ) && !empty( $this->field['default'] ) )
                 $this->field['desc'] = $this->field['default'];
 
@@ -74,7 +78,7 @@ if( !class_exists( 'ReduxFramework_info' ) ) {
             if( empty( $this->field['raw_html'] ) ) {
                 $this->field['class'] .= ' redux-info-field';
 
-                if( !isset( $this->field['style'] ) ) {
+                if( empty( $this->field['style'] ) ) {
                     $this->field['style'] = 'notice';
                 }
 

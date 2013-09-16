@@ -118,13 +118,13 @@ if( !class_exists( 'ReduxFramework_image_select' ) ) {
 
                         $presets = ' data-presets="' . htmlspecialchars( json_encode( $v['presets'] ), ENT_QUOTES, 'UTF-8' ) . '"';
                         $selected = '';
-                        $this->field['class'] .= ' redux-presets';
+                        $this->field['class'] .= 'noUpdate redux-presets';
                     }               
 
                     echo '<li class="redux-image-select">';
                     echo '<label class="' . $selected . ' redux-image-select-' . $this->field['id'] . '" for="' . $this->field['id'] . '_' . array_search( $k, array_keys( $this->field['options'] ) ) . '">';
 
-                    echo '<input type="radio" class="noUpdate' . $this->field['class'] . '" id="' . $this->field['id'] . '_' . array_search( $k, array_keys( $this->field['options'] ) ) . '" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . ']" value="' . $theValue . '" ' . checked( $this->value, $theValue, false ) . $presets . '/>';
+                    echo '<input type="radio" class="' . $this->field['class'] . '" id="' . $this->field['id'] . '_' . array_search( $k, array_keys( $this->field['options'] ) ) . '" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . ']" value="' . $theValue . '" ' . checked( $this->value, $theValue, false ) . $presets . '/>';
 
                     if( !empty( $this->field['tiles'] ) && $this->field['tiles'] == true ) {
                         echo '<span class="tiles" style="background-image: url(' . $v['img'] . ');" rel="'.$v['img'].'"">&nbsp;</span>';
@@ -140,9 +140,6 @@ if( !class_exists( 'ReduxFramework_image_select' ) ) {
                 }
                 
                 echo '</ul>';       
-            
-                if( !empty( $this->field['presets'] ) && $this->field['presets'] )
-                    echo '<div class="redux-presets-bar"><input type="button" class="redux-save-preset button-primary" value="' . __( 'Load Preset', 'redux-framework' ) . '"></div>';
 
             }
 

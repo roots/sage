@@ -158,7 +158,7 @@ function shoestrap_module_typography_options( $sections ) {
 
   $section['fields'] = $fields;
 
-  do_action( 'shoestrap_module_typography_options_modifier' );
+  $section = apply_filters( 'shoestrap_module_typography_options_modifier', $section );
   
   $sections[] = $section;
   return $sections;

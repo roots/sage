@@ -46,7 +46,7 @@ function shoestrap_module_jumbotron_options($sections) {
     'id'        => 'jumbotron_bg',
     'default'   => '#EEEEEE',
     'compiler'  => true,
-    'customizer'=> array(),
+    'transparent'=> false,    
     'type'      => 'color'
   );
 
@@ -186,7 +186,6 @@ function shoestrap_module_jumbotron_options($sections) {
       'size'    => '16px',
       'color'   => '#333333',
       'google'  => 'false',
-      'color'   => '#333333',
     ),
     'preview'   => array(
       'text'    => __( 'This is my preview text!', 'shoestrap' ), //this is the text from preview box
@@ -240,7 +239,7 @@ function shoestrap_module_jumbotron_options($sections) {
 
   $section['fields'] = $fields;
 
-  do_action( 'shoestrap_module_jumbotron_options_modifier' );
+  $section = apply_filters( 'shoestrap_module_jumbotron_options_modifier', $section );
   
   $sections[] = $section;
   return $sections;

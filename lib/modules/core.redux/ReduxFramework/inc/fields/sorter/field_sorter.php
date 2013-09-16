@@ -40,64 +40,79 @@ class ReduxFramework_sorter extends ReduxFramework {
      * @since 1.0.0
      */
     function render() {
-        $output = '';
-        $value = $this->value;
-        $options = $this->field['options'];
 
-        $totalOriginalKeys = array();
-        foreach ($options as $group=>$option){
-            foreach ($option as $key=>$name){
-                $totalOriginalKeys[$key]=$name;
-            }
-        }
+		// Make sure to get list of all the default blocks first
+	    $all_blocks = !empty( $this->field['options'] ) ? $this->field['options'] : array();
+
+	    $temp = array(); // holds default blocks
+	    $temp2 = array(); // holds saved blocks
+
+		foreach($all_blocks as $blocks) {
+		    $temp = array_merge($temp, $blocks);
+		}
+
+	    $sortlists = $this->value;
+
+	    foreach( $sortlists as $sortlist ) {
+			$temp2 = array_merge($temp2, $sortlist);
+	    }
+
+	    // now let's compare if we have anything missing
+	    foreach($temp as $k => $v) {
+			if(!array_key_exists($k, $temp2)) {
+			    $sortlists['disabled'][$k] = $v;
+			}
+	    }
+
+	    // now check if saved blocks has blocks not registered under default blocks
+	    foreach( $sortlists as $key => $sortlist ) {
+			foreach($sortlist as $k => $v) {
+			    if(!array_key_exists($k, $temp)) {
+				unset($sortlist[$k]);
+			    }
+			}
+			$sortlists[$key] = $sortlist;
+	    }
+
+	    // assuming all sync'ed, now get the correct naming for each block
+	    foreach( $sortlists as $key => $sortlist ) {
+			foreach($sortlist as $k => $v) {
+			    $sortlist[$k] = $temp[$k];
+			}
+			$sortlists[$key] = $sortlist;
+	    }
+
+	    echo '<div id="'.$this->field['id'].'" class="sorter">';
 
 
-        if (isset($this->value) && is_array($this->value)) {
-            $options = $this->value;
-            $valueKeys = array();
-            foreach ($options as $group => $option) {
-                if (!isset($this->field['options'][$group])) {
-                    unset($options[$group]);
-                }
-                else {
-                    foreach ($option as $key => $name) {
-                        if (!isset($totalOriginalKeys[$key])){
-                            unset($options[$group][$key]);
-                        }
-                        else {
-                            $valueKeys[$key]=$name;
-                        }
-                    }
-                }
-            }
-            if (count($valueKeys) != count($totalOriginalKeys)){
-                $options = $this->field['options'];
-            }
-        }
-        ?>
-        <script>
-            var_opt_name = '<?php echo $this->args['opt_name']; ?>';
-        </script>
-        <?php
-        $output .= '<div id="' . $this->field['id'] . '" class="sorter ' . $this->field['class'] . '">';
-        if ($value) {
-            foreach ($options as $group => $sortlist) {
-                $output .= '<ul id="' . $this->field['id'] . '_' . $group . '" class="sortlist_' . $this->field['id'] . '">';
-                $output .= '<h3>' . ucfirst($group) . '</h3>';
-                foreach ($sortlist as $key => $list) {
-                    $output .= '<input class="sorter-placebo" type="hidden" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][' . $group . '][placebo]" value="placebo">';
-                    if ($key != "placebo") {
-                        $output .= '<li id="' . $key . '" class="sortee">';
-                        $output .= '<input class="position" type="hidden" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][' . $group . '][' . $key . ']" value="' . $list . '">';
-                        $output .= $list;
-                        $output .= '</li>';
-                    }
-                }
-                $output .= '</ul>';
-            }
-        }
-        $output .= '</div>';
-        echo $output;
+	    if ($sortlists) {
+
+			foreach ($sortlists as $group=>$sortlist) {
+
+			    echo '<ul id="'.$this->field['id'].'_'.$group.'" class="sortlist_'.$this->field['id'].'">';
+			    echo '<h3>'.$group.'</h3>';
+
+			    foreach ($sortlist as $key => $list) {
+
+				echo '<input class="sorter-placebo" type="hidden" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][' . $group . '][placebo]" value="placebo">';
+
+				if ($key != "placebo") {
+
+				    echo '<li id="'.$key.'" class="sortee">';
+				    echo '<input class="position '.$this->field['class'].'" type="hidden" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][' . $group . '][' . $key . ']" value="'.$list.'">';
+				    echo $list;
+				    echo '</li>';
+
+				}
+
+			    }
+
+			    echo '</ul>';
+			}
+	    }
+
+	    echo '</div>';
+
         echo ($this->field['desc'] != '') ? '<div class="clear"></div><span class="description">' . $this->field['desc'] . '</span>' : '';
     }
 

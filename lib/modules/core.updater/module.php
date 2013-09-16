@@ -53,7 +53,7 @@ if ( !function_exists( 'shoestrap_core_licencing_options' ) ) {
 
     $section['fields'] = $fields;
 
-    do_action( 'shoestrap_module_licencing_options_modifier' );
+    $section = apply_filters( 'shoestrap_module_licencing_options_modifier', $section );
     
     $sections[] = $section;
     return $sections;

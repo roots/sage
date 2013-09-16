@@ -26,13 +26,14 @@ class ReduxFramework_textarea {
 
 
     function render() {
+
         $name = $this->args['opt_name'] . '[' . $this->field['id'] . ']';
-        $id = $this->field['id'];
-        $placeholder = (isset($this->field['placeholder'])) ? ' placeholder="' . esc_attr($this->field['placeholder']) . '" ' : '';
-        $rows = (isset($this->field['placeholder'])) ? $this->field['rows'] : 6;
+        $this->field['placeholder'] = isset($this->field['placeholder']) ? $this->field['placeholder'] : "";
+        $this->field['rows'] = isset($this->field['rows']) ? $this->field['rows'] : 6;
+
         ?>
 
-        <textarea name="<?php echo $name; ?>" id="<?php echo $id; ?>" <?php echo $placeholder; ?> class="large-text <?php echo $this->field['class']; ?>" rows="<?php echo $rows; ?>"><?php echo esc_attr($this->value); ?></textarea>
+        <textarea name="<?php echo $name; ?>" id="<?php echo $this->field['id']; ?>" placeholder="<?php echo esc_attr($this->field['placeholder']); ?>" class="large-text <?php echo $this->field['class']; ?>" rows="<?php echo $this->field['rows']; ?>"><?php echo $this->value; ?></textarea>
 
         <?php
         echo (isset($this->field['desc']) && !empty($this->field['desc'])) ? '<br /><span class="description">' . $this->field['desc'] . '</span>' : '';

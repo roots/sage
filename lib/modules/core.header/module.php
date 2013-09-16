@@ -54,6 +54,7 @@ function shoestrap_module_header_options( $sections ) {
     'default'   => '#f8f8f8',
     'compiler'  => true,
     'customizer'=> array(),
+    'transparent'=> false,    
     'type'      => 'color'
   );
 
@@ -148,7 +149,6 @@ function shoestrap_module_header_options( $sections ) {
       'size'    => '14px',
       'color'   => '#333333',
       'google'  => 'false',
-      'color'   => '#333333',
     ),
     'preview'   => array( 
       'text'    => __( 'This is my preview text!', 'shoestrap' ), //this is the text from preview box
@@ -166,7 +166,6 @@ function shoestrap_module_header_options( $sections ) {
     'default'   => array( 
       'family'  => 'Arial, Helvetica, sans-serif',
       'size'    => '18px',
-      'color'   => '#333333',
       'google'  => 'false',
       'color'   => '#333333',
     ),
@@ -296,6 +295,7 @@ function shoestrap_module_header_options( $sections ) {
     'id'        => 'header_bg',
     'default'   => '#EEEEEE',
     'customizer'=> array(),
+    'transparent'=> false,    
     'type'      => 'color',
     'fold'      => 'header_toggle'
   );
@@ -319,6 +319,7 @@ function shoestrap_module_header_options( $sections ) {
     'id'        => 'header_color',
     'default'   => '#333333',
     'customizer'=> array(),
+    'transparent'=> false,    
     'type'      => 'color',
     'fold'      => 'header_toggle'
   );
@@ -347,7 +348,7 @@ function shoestrap_module_header_options( $sections ) {
 
   $section['fields'] = $fields;
 
-  do_action( 'shoestrap_module_header_options_modifier' );
+  $section = apply_filters( 'shoestrap_module_header_options_modifier', $section );
   
   $sections[] = $section;
   return $sections;

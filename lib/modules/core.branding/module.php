@@ -84,6 +84,7 @@ function shoestrap_module_branding_options( $sections ) {
     'default'       => '#428bca',
     'compiler'  => true,
     'customizer'=> array(),
+    'transparent'=> false,    
     'type'      => 'color'
   );
 
@@ -94,6 +95,7 @@ function shoestrap_module_branding_options( $sections ) {
     'default'       => '#428bca',
     'compiler'  => true,
     'customizer'=> array(),
+    'transparent'=> false,    
     'type'      => 'color'
   );      
 
@@ -104,6 +106,7 @@ function shoestrap_module_branding_options( $sections ) {
     'default'       => '#5cb85c',
     'compiler'  => true,
     'customizer'=> array(),
+    'transparent'=> false,    
     'type'      => 'color',
     'fold'      => 'advanced_toggle'
   );
@@ -116,6 +119,7 @@ function shoestrap_module_branding_options( $sections ) {
     'compiler'  => true,
     'customizer'=> array(),
     'type'      => 'color',
+    'transparent'=> false,    
     'fold'      => 'advanced_toggle'
   );
 
@@ -127,6 +131,7 @@ function shoestrap_module_branding_options( $sections ) {
     'compiler'  => true,
     'customizer'=> array(),
     'type'      => 'color',
+    'transparent'=> false,    
     'fold'      => 'advanced_toggle'
   );
 
@@ -138,12 +143,13 @@ function shoestrap_module_branding_options( $sections ) {
     'compiler'  => true,
     'customizer'=> array(),
     'type'      => 'color',
+    'transparent'=> false,    
     'fold'      => 'advanced_toggle'
   );
 
   $section['fields'] = $fields;
 
-  do_action( 'shoestrap_module_branding_options_modifier' );
+  $section = apply_filters( 'shoestrap_module_branding_options_modifier', $section );
   
   $sections[] = $section;
   return $sections;

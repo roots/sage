@@ -28,7 +28,6 @@ class ReduxFramework_select extends ReduxFramework{
 	*/
 	function render(){
 
-
 		/**
 			Use data from Wordpress to populate options array
 		**/
@@ -83,9 +82,16 @@ class ReduxFramework_select extends ReduxFramework{
 			} else if ($this->field['data'] == "menu_location" || $this->field['data'] == "menu_locations") {
 				global $_wp_registered_nav_menus;
 				foreach($_wp_registered_nav_menus as $k => $v) {
-           $this->field['options'][$k] = $v;
-        }
+           			$this->field['options'][$k] = $v;
+        		}
 			}//if
+			else if ($this->field['data'] == "elusive-icons" || $this->field['data'] == "elusive-icon" || $this->field['data'] == "elusive") {
+				require_once(REDUX_DIR.'inc/fields/select/elusive-icons.php');
+				foreach($elusiveIcons as $k) {
+           			$this->field['options'][$k] = $k;
+        		}
+        		$this->field['class'] .= " elusive-icons";
+			}//if			
 		}//if
 
 		if (!empty($this->field['options'])) {
@@ -120,7 +126,7 @@ class ReduxFramework_select extends ReduxFramework{
 				}//foreach
 			echo '</select>';			
 		} else {
-			echo '<strong>'._('No items of this type were found.', 'redux-framework').'</strong>';
+			echo '<strong>'.__('No items of this type were found.', 'redux-framework').'</strong>';
 		}
 
 		echo (isset($this->field['desc']) && !empty($this->field['desc']))?'<div class="description">'.$this->field['desc'].'</div>':'';

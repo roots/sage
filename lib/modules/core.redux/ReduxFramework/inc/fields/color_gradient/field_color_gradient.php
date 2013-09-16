@@ -74,21 +74,25 @@ if( !class_exists( 'ReduxFramework_color_gradient' ) ) {
 
             echo '<strong>' . __( 'From ', 'redux-framework' ) . '</strong>&nbsp;<input id="' . $this->field['id'] . '-from" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][from]" value="'.$this->value['from'].'" class="redux-color redux-color-init ' . $this->field['class'] . '"  type="text" value="' . $this->value . '"  data-default-color="' . $this->field['default']['from'] . '" />';
 
-			$tChecked = "";
-			if ( $this->value['from'] == "transparent" ) {
-				$tChecked = ' checked="checked"';
-			}
-
-            echo '<label for="' . $this->field['id'] . '-from-transparency" class="color-transparency-check"><input type="checkbox" class="checkbox color-transparency ' . $this->field['class'] . '" id="' . $this->field['id'] . '-from-transparency" data-id="' . $this->field['id'] . '-from" value="1"'.$tChecked.'> Transparent</label>';
+			if ( !isset( $this->field['transparent'] ) || $this->field['transparent'] !== false ) {
+				$tChecked = "";
+				if ( $this->value['from'] == "transparent" ) {
+					$tChecked = ' checked="checked"';
+				}
+	            echo '<label for="' . $this->field['id'] . '-from-transparency" class="color-transparency-check"><input type="checkbox" class="checkbox color-transparency ' . $this->field['class'] . '" id="' . $this->field['id'] . '-from-transparency" data-id="' . $this->field['id'] . '-from" value="1"'.$tChecked.'> Transparent</label>';
+	        }
 
             echo '&nbsp;&nbsp;&nbsp;&nbsp;<strong>' . __( 'To ', 'redux-framework' ) . '</strong>&nbsp;<input id="' . $this->field['id'] . '-to" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][to]" value="' . $this->value['to'] . '" class="redux-color redux-color-init ' . $this->field['class'] . '"  type="text" value="' . $this->value . '"  data-default-color="' . $this->field['default']['to'] . '" />';
-        
-			$tChecked = "";
-			if ( $this->value['from'] == "transparent" ) {
-				$tChecked = ' checked="checked"';
+        	
+        	if ( !isset( $this->field['transparent'] ) || $this->field['transparent'] !== false ) {
+				$tChecked = "";
+				if ( $this->value['from'] == "transparent" ) {
+					$tChecked = ' checked="checked"';
+				}
+				echo '<label for="' . $this->field['id'] . '-to-transparency" class="color-transparency-check"><input type="checkbox" class="checkbox color-transparency" id="' . $this->field['id'] . '-to-transparency" data-id="' . $this->field['id'] . '-to" value="1"'.$tChecked.'> Transparent</label>';	
 			}
 
-            echo '<label for="' . $this->field['id'] . '-to-transparency" class="color-transparency-check"><input type="checkbox" class="checkbox color-transparency" id="' . $this->field['id'] . '-to-transparency" data-id="' . $this->field['id'] . '-to" value="1"'.$tChecked.'> Transparent</label>';
+            
 
             echo ( isset( $this->field['desc'] ) && !empty( $this->field['desc'] ) ) ? '<div class="description">' . $this->field['desc'] . '</div>' : '';
         

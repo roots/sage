@@ -62,11 +62,6 @@ if( !class_exists( 'ReduxFramework_media' ) ) {
          */
         public function render() {
 
-            $hide = 'hide ';
-
-            if( !empty( $this->field['show_url'] ) && $this->field['show_url'] === true )
-                $hide = '';
-
             // No errors please
             $defaults = array(
                 'id'    => '',
@@ -95,6 +90,7 @@ if( !class_exists( 'ReduxFramework_media' ) ) {
                 }
             }
 
+
             if( empty( $this->value['url'] ) && !empty( $this->value['id'] ) ) {
                 $img = wp_get_attachment_image_src( $this->value['id'], 'full' );
                 $this->value['url'] = $img[0];
@@ -102,17 +98,29 @@ if( !class_exists( 'ReduxFramework_media' ) ) {
                 $this->value['height'] = $img[2];
             }
 
-            echo '<input class="' . $hide . 'upload' . $this->field['class'] . '" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][url]" id="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][url]" value="' . $this->value['url'] . '" readonly="readonly" />';
-            echo '<input type="hidden" class="upload-id" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][id]" "' . $this->args['opt_name'] . '[' . $this->field['id'] . '][id]" value="' . $this->value['id'] . '" />';
+            $hide = 'hide ';
+
+            if( (isset( $this->field['preview'] ) && $this->field['preview'] === false) ) {
+            	$this->field['class'] .= " noPreview";
+            }
+
+            if( ( !empty( $this->field['url'] ) && $this->field['url'] === true ) || isset( $this->field['preview'] ) && $this->field['preview'] === false ) {
+            	$hide = '';
+            }            
+
+            echo '<input class="' . $hide . 'upload ' . $this->field['class'] . '" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][url]" id="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][url]" value="' . $this->value['url'] . '" readonly="readonly" />';
+            echo '<input type="hidden" class="upload-id ' . $this->field['class'] . '" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][id]" "' . $this->args['opt_name'] . '[' . $this->field['id'] . '][id]" value="' . $this->value['id'] . '" />';
             echo '<input type="hidden" class="upload-height" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][height]" "' . $this->args['opt_name'] . '[' . $this->field['id'] . '][height]" value="' . $this->value['height'] . '" />';
             echo '<input type="hidden" class="upload-width" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][width]" "' . $this->args['opt_name'] . '[' . $this->field['id'] . '][width]" value="' . $this->value['width'] . '" />';
 
             //Preview
             $hide = '';
-            if( empty( $this->value['url'] ) )
-                $hide = ' hide';
 
-            echo '<div class="screenshot' . $hide . '">';
+            if( (isset( $this->field['preview'] ) && $this->field['preview'] === false) || empty( $this->value['url'] ) ) {
+            	$hide = 'hide ';
+            }
+
+            echo '<div class="' . $hide . 'screenshot">';
             echo '<a class="of-uploaded-image" href="' . $this->value['url'] . '">';
             echo '<img class="redux-option-image" id="image_' . $this->field['id'] . '" src="' . $this->value['url'] . '" alt="" />';
             echo '</a>';

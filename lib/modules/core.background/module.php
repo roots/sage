@@ -37,6 +37,7 @@ function shoestrap_module_background_options( $sections ) {
     'default'       => '#ffffff',
     'compiler'  => true,
     'customizer'=> array(),
+    'transparent'=> false,
     'type'      => 'color',
   );
 
@@ -156,7 +157,7 @@ function shoestrap_module_background_options( $sections ) {
   
   $section['fields'] = $fields;
 
-  do_action( 'shoestrap_module_background_options_modifier' );
+  $section = apply_filters( 'shoestrap_module_background_options_modifier', $section );
   
   $sections[] = $section;
   return $sections;

@@ -166,6 +166,7 @@ function shoestrap_module_social_options( $sections ) {
   );
 
   $section['fields'] = $fields;
+  $section = apply_filters( 'shoestrap_module_social_share_options_modifier', $section );
   $sections[] = $section;
 
   $section = array( 
@@ -357,7 +358,7 @@ function shoestrap_module_social_options( $sections ) {
   
   $section['fields'] = $fields;
 
-  do_action( 'shoestrap_module_social_options_modifier' );
+  $section = apply_filters( 'shoestrap_module_social_links_options_modifier', $section );
   
   $sections[] = $section;
   return $sections;

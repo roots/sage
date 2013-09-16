@@ -138,6 +138,8 @@ function setup_framework_options(){
 	// Default: null
     $args['dev_mode_icon_class'] = 'icon-large';
 
+    // Set a custom option name. Don't forget to replace spaces with underscores!
+    $args['opt_name'] = 'twenty_eleven';
 
     // Setting system info to true allows you to view info useful for debugging.
     // Default: true
@@ -173,15 +175,6 @@ function setup_framework_options(){
     // Default: 'standard'
     //$args['admin_stylesheet'] = 'standard';
 
-    // Add HTML before the form.
-    $args['intro_text'] = __('<p>This text is displayed above the options panel. It isn\'t required, but more info is always better! The intro_text field accepts all HTML.</p>', 'redux-framework');
-
-    // Add content after the form.
-    $args['footer_text'] = __('<p>This text is displayed below the options panel. It isn\'t required, but more info is always better! The footer_text field accepts all HTML.</p>', 'redux-framework');
-
-    // Set footer/credit line.
-    //$args['footer_credit'] = __('<p>This text is displayed in the options panel footer across from the WordPress version (where it normally says \'Thank you for creating with WordPress\'). This field accepts all HTML.</p>', 'redux-framework');
-
     // Setup custom links in the footer for share icons
     $args['share_icons']['twitter'] = array(
         'link' => 'http://twitter.com/ghost1227',
@@ -208,9 +201,6 @@ function setup_framework_options(){
 	// This is ignored unless $args['icon_type'] = 'iconfont'
 	// Default: null
 	$args['import_icon_class'] = 'icon-large';
-
-    // Set a custom option name. Don't forget to replace spaces with underscores!
-    $args['opt_name'] = 'twenty_eleven';
 
     // Set a custom menu icon.
     //$args['menu_icon'] = '';
@@ -275,6 +265,26 @@ function setup_framework_options(){
     // Set the help sidebar for the options page.                                        
     $args['help_sidebar'] = __('<p>This is the sidebar content, HTML is allowed.</p>', 'redux-framework');
 
+
+    // Add HTML before the form.
+    if (!isset($args['global_variable']) || $args['global_variable'] !== false ) {
+    	if (!empty($args['global_variable'])) {
+    		$v = $args['global_variable'];
+    	} else {
+    		$v = str_replace("-", "_", $args['opt_name']);
+    	}
+    	$args['intro_text'] = __('<p>Did you know that Redux sets a global variable for you? To access any of your saved options from within your code you can use your global variable: <strong>$'.$v.'</strong></p>', 'redux-framework');
+    } else {
+    	$args['intro_text'] = __('<p>This text is displayed above the options panel. It isn\'t required, but more info is always better! The intro_text field accepts all HTML.</p>', 'redux-framework');
+    }
+
+    // Add content after the form.
+    $args['footer_text'] = __('<p>This text is displayed below the options panel. It isn\'t required, but more info is always better! The footer_text field accepts all HTML.</p>', 'redux-framework');
+
+    // Set footer/credit line.
+    //$args['footer_credit'] = __('<p>This text is displayed in the options panel footer across from the WordPress version (where it normally says \'Thank you for creating with WordPress\'). This field accepts all HTML.</p>', 'redux-framework');
+
+
     $sections = array();              
 
     //Background Patterns Reader
@@ -311,17 +321,26 @@ function setup_framework_options(){
 				'id'=>'media',
 				'type' => 'media', 
 				'title' => __('Media', 'redux-framework'),
+				'compiler' => 'true',
 				'subtitle' => __('Upload any media using the Wordpress native uploader', 'redux-framework'),
 				),
 
 			array(
-				'id'=>'media-min',
+				'id'=>'media-nourl',
 				'type' => 'media', 
-				'mode'=> 'min',
-				'title' => __('Media Minimalistic (min)', 'redux-framework'),
+				'url'=> true,
+				'title' => __('Media No URL', 'redux-framework'),
 				'desc'=> __('This represents the minimalistic view. It does not have the preview box or the display URL in an input box. ', 'redux-framework'),
 				'subtitle' => __('Upload any media using the Wordpress native uploader', 'redux-framework'),
-				),				
+				),	
+			array(
+				'id'=>'media-nopreview',
+				'type' => 'media', 
+				'preview'=> false,
+				'title' => __('Media No Preview', 'redux-framework'),
+				'desc'=> __('This represents the minimalistic view. It does not have the preview box or the display URL in an input box. ', 'redux-framework'),
+				'subtitle' => __('Upload any media using the Wordpress native uploader', 'redux-framework'),
+				),								
 		/*
 			array(
 				'id'=>'gallery',
@@ -403,6 +422,7 @@ function setup_framework_options(){
                 "type" => "sorter",
                 "title" => "Homepage Layout Manager",
                 "desc" => "Organize how you want the layout to appear on the homepage",
+                "compiler"=>'true',
                 'options' => array(
                     "enabled" => array(
                         "placebo" => "placebo", //REQUIRED!
@@ -470,6 +490,7 @@ function setup_framework_options(){
 			array(
 				'id'=>'layout',
 				'type' => 'image_select',
+				'compiler'=>true,
 				'title' => __('Main Layout', 'redux-framework'), 
 				'subtitle' => __('Select main content and sidebar alignment. Choose between 1, 2 or 3 column layout.', 'redux-framework'),
 				'options' => array(
@@ -554,6 +575,7 @@ function setup_framework_options(){
 			array(
 				'id'=>'spacing',
 				'type' => 'spacing',
+				//'units' => 'em', // You can specify a unit value. Possible: px, em, %
 				'title' => __('Padding/Margin Option', 'redux-framework'),
 				'subtitle' => __('Allow your users to choose the spacing or margin they want.', 'redux-framework'),
 				'desc' => __('You can enable or diable any piece of this field. Top, Right, Bottom, Left, or Units.', 'redux-framework'),
@@ -681,8 +703,8 @@ function setup_framework_options(){
 				'validate' => 'no_html',
 				'default' => 'No HTML is allowed in here.'
 				),
-			"6"=>array(
-				'id'=>'',
+			array(
+				'id'=>'6',
 				'type' => 'textarea',
 				'title' => __('Textarea Option - HTML Validated', 'redux-framework'), 
 				'subtitle' => __('HTML Allowed (wp_kses)', 'redux-framework'),
@@ -697,7 +719,7 @@ function setup_framework_options(){
 				'subtitle' => __('Custom HTML Allowed (wp_kses)', 'redux-framework'),
 				'desc' => __('This is the description field, again good for additional info.', 'redux-framework'),
 				'validate' => 'html_custom',
-				'default' => 'Some HTML is allowed in here.',
+				'default' => '<p>Some HTML is allowed in here.</p>',
 				'allowed_html' => array('') //see http://codex.wordpress.org/Function_Reference/wp_kses
 				),
 			array(
@@ -855,8 +877,8 @@ function setup_framework_options(){
 				'subtitle' => __('No validation can be done on this field type', 'redux-framework'),
 				'desc' => __('This is the description field, again good for additional info.', 'redux-framework'),
 				),	
-			"select-tags"=>array(
-				'id'=>'',
+			array(
+				'id'=>'select-tags',
 				'type' => 'select',
 				'data' => 'tags',
 				'title' => __('Tags Select Option', 'redux-framework'), 
@@ -923,6 +945,14 @@ function setup_framework_options(){
 				'subtitle' => __('No validation can be done on this field type', 'redux-framework'),
 				'desc' => __('This is the description field, again good for additional info.', 'redux-framework'),
 				),
+			array(
+				'id'=>'select-elusive',
+				'type' => 'select',
+				'data' => 'elusive-icons',
+				'title' => __('Elusive Icons Select Option', 'redux-framework'), 
+				'subtitle' => __('No validation can be done on this field type', 'redux-framework'),
+				'desc' => __('Here\'s a list of all the elusive icons by name and icon.', 'redux-framework'),
+				),			
 			)
 		);
 
