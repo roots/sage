@@ -241,7 +241,7 @@ class ReduxFramework_typography extends ReduxFramework{
     /**
 		Font Preview
     **/
-		if ($this->field['preview'] === true):
+	if (!isset( $this->field['preview'] ) || $this->field['preview'] !== false):
 	    if(isset($value['preview']['text'])){
 	      $g_text = $value['preview']['text'];
 	    } else {
