@@ -190,7 +190,7 @@ function shoestrap_module_typography_js() {
 endif;
 add_action( 'of_load_only_after', 'shoestrap_module_typography_js' );
 
-if ( function_exists( 'shoestrap_module_typography_googlefont_links' ) ) :
+if ( !function_exists( 'shoestrap_module_typography_googlefont_links' ) ) :
 function shoestrap_module_typography_googlefont_links() {
   $font_base            = shoestrap_getVariable( 'font_base' );
   $font_navbar          = shoestrap_getVariable( 'font_navbar' );
