@@ -67,8 +67,8 @@ class ReduxFramework_typography extends ReduxFramework{
 		}
 
 		$units = array('px', 'em', '%');
-		if (!empty($this->field['units']['type']) && in_array($this->field['units']['type'], $units)) {
-			$unit = $this->field['units']['type'];
+		if (!empty($this->field['units']) && in_array($this->field['units'], $units)) {
+			$unit = $this->field['units'];
 		} else {
 			$unit = 'px';
 		}
