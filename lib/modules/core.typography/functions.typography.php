@@ -286,8 +286,9 @@ function shoestrap_module_typography_googlefont_links() {
     endif;
   endif;
 }
-endif;
 add_action( 'wp_enqueue_scripts', 'shoestrap_module_typography_googlefont_links' );
+endif;
+
 
 if ( !function_exists( 'getGoogleScript' ) ) :
 function getGoogleScript( $font ) {

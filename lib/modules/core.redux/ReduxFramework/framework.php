@@ -95,7 +95,7 @@ if( !class_exists( 'ReduxFramework' ) ) {
             $defaults['page_position']      = null;
             $defaults['allow_sub_menu']     = true;
             $defaults['show_import_export'] = true;
-            $defaults['dev_mode']           = true;
+            $defaults['dev_mode']           = false;
             $defaults['system_info']        = true;
             $defaults['admin_stylesheet']   = 'standard';
             $defaults['footer_credit']      = __( '<span id="footer-thankyou">Options panel created using <a href="' . $this->framework_url . '" target="_blank">Redux Framework</a> v' . $this->framework_version . '</span>', 'redux-framework' );
@@ -128,7 +128,7 @@ if( !class_exists( 'ReduxFramework' ) ) {
 
 
 
-	    	$this->sections = $sections;
+		    $this->sections = $sections;
 			$this->extra_tabs = $extra_tabs;
 
             // Set option with defaults
@@ -156,7 +156,7 @@ if( !class_exists( 'ReduxFramework' ) ) {
          */
         public function _get_default( $opt_name, $default = null ) {
             if( $this->args['default_show'] == true ) {
-                if( (isset( $_GET['settings-updated'] ) && $_GET['settings-updated'] == 'true') || get_transient( 'redux-saved-' . $this->args['opt_name'] ) == '1' ) {
+                if( (isset( $_GET['settings-updated'] ) && $_GET['settings-updated'] == 'true') || get_transient( 'redux-was-saved-' . $this->args['opt_name'] ) == '1' ) {
                 	return;
                 }   
 
@@ -903,7 +903,7 @@ if( !class_exists( 'ReduxFramework' ) ) {
          * @return      
          */
         public function _validate_options( $plugin_options ) {
-            set_transient( 'redux-saved-' . $this->args['opt_name'], '1', 1000 );
+            set_transient( 'redux-was-saved-' . $this->args['opt_name'], '1', 1000 );
 
             if( !empty( $plugin_options['import'] ) ) {
                 if( $plugin_options['import_code'] != '' ) {
@@ -961,7 +961,7 @@ if( !class_exists( 'ReduxFramework' ) ) {
             do_action( 'redux-validate-' . $this->args['opt_name'], $plugin_options, $this->options );
 
             if( !empty( $plugin_options['compiler'] ) ) {
-            	set_transient( 'redux-compiler-' . $this->args['opt_name'], '1', 1000 );
+            	set_transient( 'redux-compiler-' . $this->args['opt_name'], '1', 2000 );
             }
 
             unset( $plugin_options['defaults'] );
@@ -1065,9 +1065,11 @@ if( !class_exists( 'ReduxFramework' ) ) {
          */
         public function _options_page_html() {
 
-            $saved = get_transient( 'redux-saved-' . $this->args['opt_name'] );
-            delete_transient( 'redux-saved-' . $this->args['opt_name'] );
-
+            $saved = get_transient( 'redux-was-saved-' . $this->args['opt_name'] );
+            if ( !empty( $saved ) ) {
+            	delete_transient( 'redux-was-saved-' . $this->args['opt_name'] );	
+            }
+            
             echo '<div class="clear"></div>';
             echo '<div class="wrap">';
 
@@ -1373,8 +1375,20 @@ if( !class_exists( 'ReduxFramework' ) ) {
 
             echo '</div><!--wrap-->';
 
-            if ( $this->args['dev_mode'] === true )
-                echo '<br /><div class="redux-timer">' . get_num_queries() . ' queries in ' . timer_stop(0) . ' seconds</div>';
+            if ( $this->args['dev_mode'] === true ) {
+
+            	echo '<br /><div class="redux-timer">' . get_num_queries() . ' queries in ' . timer_stop(0) . ' seconds</div>';
+
+            	if (SAVEQUERIES) {
+								global $wpdb;
+								echo '<!--\n';
+								print_r($wpdb->queries);
+								echo '\n--!>';
+							}
+
+            }
+
+                
         }
 
         /**
