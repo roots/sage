@@ -156,9 +156,6 @@ if( !class_exists( 'ReduxFramework' ) ) {
          */
         public function _get_default( $opt_name, $default = null ) {
             if( $this->args['default_show'] == true ) {
-                if( (isset( $_GET['settings-updated'] ) && $_GET['settings-updated'] == 'true') || get_transient( 'redux-saved-' . $this->args['opt_name'] ) == '1' ) {
-                	return;
-                }   
 
                 if( is_null( $this->options_defaults ) ) {
                 	$this->_default_values(); // fill cache
@@ -903,6 +900,7 @@ if( !class_exists( 'ReduxFramework' ) ) {
          * @return      
          */
         public function _validate_options( $plugin_options ) {
+
             set_transient( 'redux-saved-' . $this->args['opt_name'], '1', 1000 );
 
             if( !empty( $plugin_options['import'] ) ) {
@@ -1066,7 +1064,7 @@ if( !class_exists( 'ReduxFramework' ) ) {
         public function _options_page_html() {
 
             $saved = get_transient( 'redux-saved-' . $this->args['opt_name'] );
-            if ( !empty( $saved ) ) {
+            if ( $saved ) {
             	delete_transient( 'redux-saved-' . $this->args['opt_name'] );	
             }
             
@@ -1438,7 +1436,7 @@ if( !class_exists( 'ReduxFramework' ) ) {
                 }
 
                 if( class_exists( $field_class ) ) {
-                    $value = $this->get( $field['id'], '' );
+                    $value = $this->options[$field['id']];
                     if ($v != "") {
                     	$value = $v;
                     }
