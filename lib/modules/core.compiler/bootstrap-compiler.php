@@ -655,7 +655,7 @@ function shoestrap_variables_less() {
 // Padding, to be divided by two and applied to the left and right of all columns
 @grid-gutter-width:         ' . $gutter . 'px;
 // Point at which the navbar stops collapsing
-@grid-float-breakpoint:     @screen-sm;
+@grid-float-breakpoint:     @screen-sm-min;
 
 
 // Navbar
@@ -664,12 +664,13 @@ function shoestrap_variables_less() {
 // Basics of a navbar
 @navbar-height:                    ' . $navbar_height . 'px;
 @navbar-margin-bottom:             @line-height-computed;
-@navbar-default-color:             ' . $navbar_text_color . ';
-@navbar-default-bg:                ' . $navbar_bg . ';
-@navbar-default-border:            ' . $navbar_border . ';
 @navbar-border-radius:             @border-radius-base;
 @navbar-padding-horizontal:        floor(@grid-gutter-width / 2);
 @navbar-padding-vertical:          ((@navbar-height - @line-height-computed) / 2);
+
+@navbar-default-color:             ' . $navbar_text_color . ';
+@navbar-default-bg:                ' . $navbar_bg . ';
+@navbar-default-border:            ' . $navbar_border . ';
 
 // Navbar links
 @navbar-default-link-color:                @navbar-default-color;
@@ -779,14 +780,6 @@ function shoestrap_variables_less() {
 // Form states and alerts
 // -------------------------
 
-@state-warning-text:             #c09853;
-@state-warning-bg:               #fcf8e3;
-@state-warning-border:           darken(spin(@state-warning-bg, -10), 3%);
-
-@state-danger-text:              #b94a48;
-@state-danger-bg:                #f2dede;
-@state-danger-border:            darken(spin(@state-danger-bg, -10), 3%);
-
 @state-success-text:             #468847;
 @state-success-bg:               #dff0d8;
 @state-success-border:           darken(spin(@state-success-bg, -10), 5%);
@@ -794,6 +787,14 @@ function shoestrap_variables_less() {
 @state-info-text:                #3a87ad;
 @state-info-bg:                  #d9edf7;
 @state-info-border:              darken(spin(@state-info-bg, -10), 7%);
+
+@state-warning-text:             #c09853;
+@state-warning-bg:               #fcf8e3;
+@state-warning-border:           darken(spin(@state-warning-bg, -10), 3%);
+
+@state-danger-text:              #b94a48;
+@state-danger-bg:                #f2dede;
+@state-danger-border:            darken(spin(@state-danger-bg, -10), 3%);
 
 
 // Tooltips
@@ -989,8 +990,8 @@ function shoestrap_variables_less() {
 
 // Close
 // ------------------------
-@close-color:                 darken(@gray-darker, 15%);
 @close-font-weight:           bold;
+@close-color:                 darken(@gray-darker, 15%);
 @close-text-shadow:           0 1px 0 @body-bg;
 
 
