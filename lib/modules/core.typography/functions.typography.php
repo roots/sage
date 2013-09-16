@@ -2,12 +2,12 @@
 if ( !function_exists( 'shoestrap_add_typography_class_case' ) ) :
 function shoestrap_add_typography_class_case( $array ) {
   global $smof_output, $smof_details, $wp_filesystem;
-	// Initialize the Wordpress filesystem, no more using file_put_contents function
+  // Initialize the Wordpress filesystem, no more using file_put_contents function
 
-	if ( empty( $wp_filesystem ) ) :
+  if ( empty( $wp_filesystem ) ) :
     require_once( ABSPATH . '/wp-admin/includes/file.php' );
-		WP_Filesystem();
-	endif;
+    WP_Filesystem();
+  endif;
 
   if ( $array['value']['type'] == 'select_google_font_hybrid' ) :
     $output = '';
@@ -214,75 +214,75 @@ function shoestrap_module_typography_googlefont_links() {
   if ( $font_base['google'] === 'true' ) :
     $font = getGoogleScript( $font_base );
     wp_register_style( $font['key'], $font['link'] );
-  	wp_enqueue_style( $font['key'] );
+    wp_enqueue_style( $font['key'] );
   endif;
 
   if ( $font_navbar['google'] === 'true' ) :
     $font = getGoogleScript( $font_navbar );
     wp_register_style( $font['key'], $font['link'] );
-  	wp_enqueue_style( $font['key'] );
+    wp_enqueue_style( $font['key'] );
   endif;
 
   if ( $font_brand['google'] === 'true' ) :
     $font = getGoogleScript( $font_brand );
     wp_register_style( $font['key'], $font['link'] );
-  	wp_enqueue_style( $font['key'] );
+    wp_enqueue_style( $font['key'] );
   endif;
 
   if ( $font_jumbotron['google'] === 'true' ) :
     $font = getGoogleScript( $font_jumbotron );
     wp_register_style( $font['key'], $font['link'] );
-  	wp_enqueue_style( $font['key'] );
+    wp_enqueue_style( $font['key'] );
   endif;
 
   if ( shoestrap_getVariable( 'font_heading_custom' ) ) :
 
     if ( $font_h1['google'] === 'true' ) :
       $font = getGoogleScript( $font_h1 );
-  	  wp_register_style( $font['key'], $font['link'] );
-	  	wp_enqueue_style( $font['key'] );
+      wp_register_style( $font['key'], $font['link'] );
+      wp_enqueue_style( $font['key'] );
     endif;
 
     if ( $font_h2['google'] === 'true' ) :
       $font = getGoogleScript( $font_h2 );
-  	  wp_register_style( $font['key'], $font['link'] );
-	  	wp_enqueue_style( $font['key'] );
+      wp_register_style( $font['key'], $font['link'] );
+      wp_enqueue_style( $font['key'] );
     endif;
 
     if ( $font_h3['google'] === 'true' ) :
       $font = getGoogleScript( $font_h3 );
-  	  wp_register_style( $font['key'], $font['link'] );
-	  	wp_enqueue_style( $font['key'] );
+      wp_register_style( $font['key'], $font['link'] );
+      wp_enqueue_style( $font['key'] );
     endif;
 
     if ( $font_h4['google'] === 'true' ) :
       $font = getGoogleScript( $font_h4 );
-  	  wp_register_style( $font['key'], $font['link'] );
-	  	wp_enqueue_style( $font['key'] );
+      wp_register_style( $font['key'], $font['link'] );
+      wp_enqueue_style( $font['key'] );
     endif;
 
     if ( $font_h5['google'] === 'true' ) :
       $font = getGoogleScript( $font_h5 );
-  	  wp_register_style( $font['key'], $font['link'] );
-	  	wp_enqueue_style( $font['key'] );
+      wp_register_style( $font['key'], $font['link'] );
+      wp_enqueue_style( $font['key'] );
     endif;
 
     if ( $font_h6['google'] === 'true' ) :
       $font = getGoogleScript( $font_h6 );
-  	  wp_register_style( $font['key'], $font['link'] );
-	  	wp_enqueue_style( $font['key'] );
+      wp_register_style( $font['key'], $font['link'] );
+      wp_enqueue_style( $font['key'] );
     endif;
   elseif ( isset( $font_heading['google'] ) && $font_heading['google'] === 'true' ) :
     $font = getGoogleScript( $font_heading );
-  	wp_register_style( $font['key'], $font['link'] );
-	  wp_enqueue_style( $font['key'] );
+    wp_register_style( $font['key'], $font['link'] );
+    wp_enqueue_style( $font['key'] );
   endif;
 
   if ( shoestrap_getVariable( 'font_jumbotron_heading_custom' ) == 1 ) :
     if ($font_jumbotron_headers['google'] === 'true' ) :
       $font = getGoogleScript( $font_jumbotron_headers );
-  	  wp_register_style( $font['key'], $font['link'] );
-	  	wp_enqueue_style( $font['key'] );
+      wp_register_style( $font['key'], $font['link'] );
+      wp_enqueue_style( $font['key'] );
     endif;
   endif;
 }
@@ -296,13 +296,13 @@ function getGoogleScript( $font ) {
   $data['key'] = str_replace( ' ', '_', $font['family'] );
 
   if ( !empty( $font['style'] ) ) :
-  	$data['link'] .= ':' . str_replace( '-', '', $font['style'] );
-  	$data['key'] .= '-' . str_replace( '_', '', $font['style'] );
+    $data['link'] .= ':' . str_replace( '-', '', $font['style'] );
+    $data['key'] .= '-' . str_replace( '_', '', $font['style'] );
   endif;
 
   if ( !empty( $font['script'] ) ) :
-  	$data['link'] .= '&subset=' . $font['script'];
-		$data['key'] .= '-' . str_replace( '_', '', $font['script'] );
+    $data['link'] .= '&subset=' . $font['script'];
+    $data['key'] .= '-' . str_replace( '_', '', $font['script'] );
   endif;
 
   return $data;
