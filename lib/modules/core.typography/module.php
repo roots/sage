@@ -17,16 +17,17 @@ function shoestrap_module_typography_options( $sections ) {
     'desc'      => __( 'The main font for your site.', 'shoestrap' ),
     'id'        => 'font_base',
     'compiler'  => true,
+    'units'     => 'px',
     'default'   => array( 
       'family'  => 'Arial, Helvetica, sans-serif',
-      'size'    => '14px',
+      'size'    => 14,
       'google'  => 'false',
       'weight'  => 'inherit',
       'color'   => '#333333',
     ),
     'preview'   => array( 
       'text'    => __( 'This is my preview text!', 'shoestrap' ), //this is the text from preview box
-      'size'    => '30px' //this is the text size from preview box
+      'size'    => 30 //this is the text size from preview box
     ),
     'type'      => 'typography',
   );
@@ -39,7 +40,7 @@ function shoestrap_module_typography_options( $sections ) {
     'compiler'  => true,
     'type'      => 'switch',
     'customizer'=> array(),
-    'fold'      => 'advanced_toggle'
+    // 'fold'      => 'advanced_toggle'
   );
 
   $fields[] = array( 
@@ -47,18 +48,19 @@ function shoestrap_module_typography_options( $sections ) {
     'desc'      => __( 'The main font for your site.', 'shoestrap' ),
     'id'        => 'font_h1',
     'compiler'  => true,
+    'units'     => '%',
     'default'   => array( 
       'family'  => 'Arial, Helvetica, sans-serif',
-      'size'    => '38px',
+      'size'    => 260,
       'color'   => '#333333',
       'google'  => 'false'
     ),
     'preview'   => array( 
       'text'    => __( 'This is my preview text!', 'shoestrap' ), //this is the text from preview box
-      'size'    => '30px' //this is the text size from preview box
+      'size'    => 30 //this is the text size from preview box
     ),
     'type'      => 'typography',
-    'fold'      => 'font_heading_custom',
+    // 'fold'      => 'font_heading_custom',
   );
 
   $fields[] = array( 
@@ -66,18 +68,19 @@ function shoestrap_module_typography_options( $sections ) {
     'title'     => __( 'H2 Font', 'shoestrap' ),
     'desc'      => __( 'The main font for your site.', 'shoestrap' ),
     'compiler'  => true,
+    'units'     => '%',
     'default'   => array( 
       'family'  => 'Arial, Helvetica, sans-serif',
-      'size'    => '32px',
+      'size'    => 215,
       'color'   => '#333333',
       'google'  => 'false'
     ),
     'preview'   => array( 
       'text'    => __( 'This is my preview text!', 'shoestrap' ), //this is the text from preview box
-      'size'    => '30px' //this is the text size from preview box
+      'size'    => 30 //this is the text size from preview box
     ),
     'type'      => 'typography',
-    'fold'      => 'font_heading_custom',
+    // 'fold'      => 'font_heading_custom',
   );
 
   $fields[] = array( 
@@ -85,18 +88,19 @@ function shoestrap_module_typography_options( $sections ) {
     'title'     => __( 'H3 Font', 'shoestrap' ),
     'desc'      => __( 'The main font for your site.', 'shoestrap' ),
     'compiler'  => true,
+    'units'     => '%',
     'default'   => array( 
       'family'  => 'Arial, Helvetica, sans-serif',
-      'size'    => '24px',
+      'size'    => 170,
       'color'   => '#333333',
       'google'  => 'false'
     ),
     'preview'   => array( 
       'text'    => __( 'This is my preview text!', 'shoestrap' ), //this is the text from preview box
-      'size'    => '30px' //this is the text size from preview box
+      'size'    => 30 //this is the text size from preview box
     ),
     'type'      => 'typography',
-    'fold'      => 'font_heading_custom',
+    // 'fold'      => 'font_heading_custom',
   );
 
   $fields[] = array( 
@@ -104,18 +108,19 @@ function shoestrap_module_typography_options( $sections ) {
     'desc'      => __( 'The main font for your site.', 'shoestrap' ),
     'id'        => 'font_h4',
     'compiler'  => true,
+    'units'     => '%',
     'default'   => array( 
       'family'  => 'Arial, Helvetica, sans-serif',
-      'size'    => '18px',
+      'size'    => 125,
       'color'   => '#333333',
       'google'  => 'false'
     ),
     'preview'   => array( 
       'text'    => __( 'This is my preview text!', 'shoestrap' ), //this is the text from preview box
-      'size'    => '30px' //this is the text size from preview box
+      'size'    => 30 //this is the text size from preview box
     ),
     'type'      => 'typography',
-    'fold'      => 'font_heading_custom',
+    // 'fold'      => 'font_heading_custom',
   );
 
   $fields[] = array( 
@@ -123,18 +128,19 @@ function shoestrap_module_typography_options( $sections ) {
     'desc'      => __( 'The main font for your site.', 'shoestrap' ),
     'id'        => 'font_h5',
     'compiler'  => true,
+    'units'     => '%',
     'default'   => array( 
       'family'  => 'Arial, Helvetica, sans-serif',
-      'size'    => '16px',
+      'size'    => 100,
       'color'   => '#333333',
       'google'  => 'false'
     ),
     'preview'   => array( 
       'text'    => __( 'This is my preview text!', 'shoestrap' ), //this is the text from preview box
-      'size'    => '30px' //this is the text size from preview box
+      'size'    => 30 //this is the text size from preview box
     ),
     'type'      => 'typography',
-    'fold'      => 'font_heading_custom',
+    // 'fold'      => 'font_heading_custom',
   );
 
   $fields[] = array( 
@@ -142,18 +148,19 @@ function shoestrap_module_typography_options( $sections ) {
     'desc'      => __( 'The main font for your site.', 'shoestrap' ),
     'id'        => 'font_h6',
     'compiler'  => true,
+    'units'     => '%',
     'default'   => array( 
       'family'  => 'Arial, Helvetica, sans-serif',
-      'size'    => '12px',
+      'size'    => 85,
       'color'   => '#333333',
       'google'  => 'false'
     ),
     'preview'   => array( 
       'text'    => __( 'This is my preview text!', 'shoestrap' ), //this is the text from preview box
-      'size'    => '30px' //this is the text size from preview box
+      'size'    => 30 //this is the text size from preview box
     ),
     'type'      => 'typography',
-    'fold'      => 'font_heading_custom',
+    // 'fold'      => 'font_heading_custom',
   );
 
   $section['fields'] = $fields;

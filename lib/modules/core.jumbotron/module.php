@@ -183,13 +183,13 @@ function shoestrap_module_jumbotron_options($sections) {
     'less'      => true,
     'default'   => array(
       'family'    => 'Arial, Helvetica, sans-serif',
-      'size'    => '16px',
+      'size'    => 16,
       'color'   => '#333333',
       'google'  => 'false',
     ),
     'preview'   => array(
       'text'    => __( 'This is my preview text!', 'shoestrap' ), //this is the text from preview box
-      'size'    => '30px' //this is the text size from preview box
+      'size'    => 30 //this is the text size from preview box
     ),
     'type'      => 'typography',
     'fold'      => 'advanced_toggle'
@@ -218,7 +218,7 @@ function shoestrap_module_jumbotron_options($sections) {
     ),
     'preview'   => array(
       'text'    => __( 'This is my preview text!', 'shoestrap' ), //this is the text from preview box
-      'size'    => '30px' //this is the text size from preview box
+      'size'    => 30 //this is the text size from preview box
     ),
     'type'      => 'typography',
     'fold'      => 'font_jumbotron_heading_custom',
