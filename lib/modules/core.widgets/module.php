@@ -1,4 +1,6 @@
 <?php
+
+if ( !function_exists( 'shoestrap_widgets_init' ) ) :
 /**
  * Register sidebars and widgets
  */
@@ -18,8 +20,8 @@ function shoestrap_widgets_init() {
   endif;
 
   // Sidebars
-  register_sidebar(array(
-    'name'          => __('Primary Sidebar', 'roots'),
+  register_sidebar( array(
+    'name'          => __( 'Primary Sidebar', 'shoestrap' ),
     'id'            => 'sidebar-primary',
     'before_widget' => '<section id="%1$s" class="' . $class . ' widget %2$s">',
     'after_widget'  => '</section>',
@@ -27,8 +29,8 @@ function shoestrap_widgets_init() {
     'after_title'   => $after_title,
   ));
 
-  register_sidebar(array(
-    'name'          => __('Secondary Sidebar', 'shoestrap'),
+  register_sidebar( array(
+    'name'          => __( 'Secondary Sidebar', 'shoestrap' ),
     'id'            => 'sidebar-secondary',
     'before_widget' => '<section id="%1$s" class="' . $class . ' widget %2$s">',
     'after_widget'  => '</section>',
@@ -36,8 +38,8 @@ function shoestrap_widgets_init() {
     'after_title'   => $after_title,
   ));
 
-  register_sidebar(array(
-    'name'          => __('Jumbotron', 'shoestrap'),
+  register_sidebar( array(
+    'name'          => __( 'Jumbotron', 'shoestrap' ),
     'id'            => 'jumbotron',
     'before_widget' => '<section id="%1$s"><div class="section-inner">',
     'after_widget'  => '</div></section>',
@@ -45,8 +47,8 @@ function shoestrap_widgets_init() {
     'after_title'   => '</h1>',
   ));
 
-  register_sidebar(array(
-    'name'          => __('Header Area', 'shoestrap'),
+  register_sidebar( array(
+    'name'          => __( 'Header Area', 'shoestrap' ),
     'id'            => 'header-area',
     'before_widget' => '<div class="container">',
     'after_widget'  => '</div>',
@@ -54,8 +56,8 @@ function shoestrap_widgets_init() {
     'after_title'   => '</h1>',
   ));
 
-  register_sidebar(array(
-    'name'          => __('Footer Widget Area 1', 'shoestrap'),
+  register_sidebar( array(
+    'name'          => __( 'Footer Widget Area 1', 'shoestrap' ),
     'id'            => 'sidebar-footer-1',
     'before_widget' => '<section id="%1$s" class="' . $class . ' widget %2$s">',
     'after_widget'  => '</section>',
@@ -63,8 +65,8 @@ function shoestrap_widgets_init() {
     'after_title'   => $after_title,
   ));
 
-  register_sidebar(array(
-    'name'          => __('Footer Widget Area 2', 'shoestrap'),
+  register_sidebar( array(
+    'name'          => __( 'Footer Widget Area 2', 'shoestrap' ),
     'id'            => 'sidebar-footer-2',
     'before_widget' => '<section id="%1$s" class="' . $class . ' widget %2$s">',
     'after_widget'  => '</section>',
@@ -72,8 +74,8 @@ function shoestrap_widgets_init() {
     'after_title'   => $after_title,
   ));
 
-  register_sidebar(array(
-    'name'          => __('Footer Widget Area 3', 'shoestrap'),
+  register_sidebar( array(
+    'name'          => __( 'Footer Widget Area 3', 'shoestrap' ),
     'id'            => 'sidebar-footer-3',
     'before_widget' => '<section id="%1$s" class="' . $class . ' widget %2$s">',
     'after_widget'  => '</section>',
@@ -81,8 +83,8 @@ function shoestrap_widgets_init() {
     'after_title'   => $after_title,
   ));
 
-  register_sidebar(array(
-    'name'          => __('Footer Widget Area 4', 'shoestrap'),
+  register_sidebar( array(
+    'name'          => __( 'Footer Widget Area 4', 'shoestrap' ),
     'id'            => 'sidebar-footer-4',
     'before_widget' => '<section id="%1$s" class="' . $class . ' widget %2$s">',
     'after_widget'  => '</section>',
@@ -91,11 +93,17 @@ function shoestrap_widgets_init() {
   ));
 
   // Widgets
-  register_widget('Roots_Vcard_Widget');
+  register_widget( 'Roots_Vcard_Widget' );
 }
-add_action('widgets_init', 'shoestrap_widgets_init');
+endif;
+add_action( 'widgets_init', 'shoestrap_widgets_init' );
 
+if ( !function_exists( 'shoestrap_remove_roots_widgets' ) ) :
+/*
+ * Remove default Roots widgets
+ */
 function shoestrap_remove_roots_widgets() {
-  remove_action('widgets_init', 'roots_widgets_init');
+  remove_action( 'widgets_init', 'roots_widgets_init' );
 }
-add_action('widgets_init', 'shoestrap_remove_roots_widgets', 1);
+endif;
+add_action( 'widgets_init', 'shoestrap_remove_roots_widgets', 1 );

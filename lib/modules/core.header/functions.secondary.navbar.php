@@ -1,4 +1,6 @@
 <?php
+
+if ( !function_exists( 'shoestrap_secondary_navbar' ) ) :
 function shoestrap_secondary_navbar() {
 
   if ( shoestrap_getVariable( 'secondary_navbar_toggle' ) != 0 ) : ?>
@@ -22,15 +24,18 @@ function shoestrap_secondary_navbar() {
   
   <?php endif;
 }
+endif;
 add_action( 'shoestrap_pre_wrap', 'shoestrap_secondary_navbar' );
 
 
 if ( shoestrap_getVariable( 'secondary_navbar_margin' ) != 0 ) :
-function shoestrap_secondary_navbar_margin() {
-  $secondary_navbar_margin = shoestrap_getVariable( 'secondary_navbar_margin' );
-  $style = '.secondary { margin-top:' . $secondary_navbar_margin . 'px !important; margin-bottom:'. $secondary_navbar_margin .'px !important; }';
+  if ( !function_exists( 'shoestrap_secondary_navbar_margin' ) ) :
+    function shoestrap_secondary_navbar_margin() {
+      $secondary_navbar_margin = shoestrap_getVariable( 'secondary_navbar_margin' );
+      $style = '.secondary { margin-top:' . $secondary_navbar_margin . 'px !important; margin-bottom:'. $secondary_navbar_margin .'px !important; }';
 
-  wp_add_inline_style( 'shoestrap_css', $style );
-}
-add_action( 'wp_enqueue_scripts', 'shoestrap_secondary_navbar_margin', 101 );
+      wp_add_inline_style( 'shoestrap_css', $style );
+    }
+  endif;
+  add_action( 'wp_enqueue_scripts', 'shoestrap_secondary_navbar_margin', 101 );
 endif;

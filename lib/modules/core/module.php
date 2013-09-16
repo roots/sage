@@ -1,5 +1,6 @@
 <?php
 
+if ( !function_exists( 'shoestrap_get_rgb' ) ) :
 /*
  * Gets the rgb value of the $hex color.
  * Returns an array.
@@ -26,7 +27,9 @@ function shoestrap_get_rgb( $hex, $implode = false ) {
     return $rgb;
   endif;
 }
+endif;
 
+if ( !function_exists( 'shoestrap_get_brightness' ) ) :
 /*
  * Gets the brightness of the $hex color.
  * Returns a value between 0 and 255
@@ -42,7 +45,10 @@ function shoestrap_get_brightness( $hex ) {
 
   return ( ( $c_r * 299 ) + ( $c_g * 587 ) + ( $c_b * 114 ) ) / 1000;
 }
+endif;
 
+
+if ( !function_exists( 'shoestrap_adjust_brightness' ) ) :
 /*
  * Adjexts brightness of the $hex color.
  * the $steps variable is a value between -255 (darken) and 255 (lighten)
@@ -73,7 +79,9 @@ function shoestrap_adjust_brightness( $hex, $steps ) {
 
   return '#' . $r_hex . $g_hex . $b_hex;
 }
+endif;
 
+if ( !function_exists( 'shoestrap_mix_colors' ) ) :
 /*
  * Mixes 2 hex colors.
  * the "percentage" variable is the percent of the first color
@@ -83,12 +91,14 @@ function shoestrap_mix_colors( $hex1, $hex2, $percentage ) {
 
   // Format the hex color string
   $hex1 = str_replace( '#', '', $hex1 );
-  if ( strlen( $hex1 ) == 3 )
+  if ( strlen( $hex1 ) == 3 ) :
     $hex1 = str_repeat( substr( $hex1, 0, 1 ), 2 ) . str_repeat( substr( $hex1, 1, 1 ), 2 ) . str_repeat( substr( $hex1, 2, 1 ), 2 );
+  endif;
 
   $hex2 = str_replace( '#', '', $hex2 );
-  if ( strlen( $hex2 ) == 3 )
+  if ( strlen( $hex2 ) == 3 ) :
     $hex2 = str_repeat( substr( $hex2, 0, 1 ), 2 ) . str_repeat( substr( $hex2, 1, 1 ), 2 ) . str_repeat( substr( $hex2, 2, 1 ), 2 );
+  endif;
 
   // Get decimal values
   $r1 = hexdec( substr( $hex1, 0, 2 ) );
@@ -108,26 +118,29 @@ function shoestrap_mix_colors( $hex1, $hex2, $percentage ) {
 
   return '#' . $r_hex . $g_hex . $b_hex;
 }
+endif;
 
+if ( !function_exists( 'shoestrap_getVariable' ) ) :
 // Gets the current values from SMOF, and if not there, grabs the defaults
 function shoestrap_getVariable( $key, $fresh = false ) {
   global $redux;
 
-  if ($key == "shoestrap_license_key_status")
-    return get_theme_mod($key);
+  if ( $key == 'shoestrap_license_key_status' )
+    return get_theme_mod( $key );
 
-  if ( !empty( $redux[$key] ) ) {
-  	return $redux[$key];
-  }
+  if ( !empty( $redux[$key] ) )
+    return $redux[$key];
 
   return '';
 }
+endif;
 
 define( 'themeURI', get_template_directory_uri() );
 define( 'themeFOLDER', get_template() );
 define( 'themePATH', get_theme_root() );
 define( 'themeNAME', wp_get_theme() );
 
+if ( !function_exists( 'shoestrap_getFilePaths' ) ) :
 /**
  * Parses sections of given $file into named parts.
  * For cross platform compatiblity, please use PHP constant DIRECTORY_SEPERATOR 
@@ -150,7 +163,9 @@ function shoestrap_getFilePaths( $file ) {
   
   return $result;
 }
+endif;
 
+if ( !function_exists( 'shoestrap_prep_path' ) ) :
 /**
  * Prepares a local path for string parsing when Directory separators need to be consistent for Windows and Linux.
  * Use for local server PATHS only. Use shoestrap_prep_uri() for a URI or URL.
@@ -167,7 +182,9 @@ function shoestrap_prep_path( $path ) {
     // Removes if exists to ensure only one is added.
     return rtrim( $path, DIRECTORY_SEPARATOR ) . DIRECTORY_SEPARATOR;
 }
+endif;
 
+if ( !function_exists( 'shoestrap_prep_uri' ) ) :
 /**
  * Prepares a URI for string parsing when all separators should be "/"
  * Use for URIs and URLs only. Use shoestrap_prep_path() for local server paths.
@@ -178,7 +195,9 @@ function shoestrap_prep_uri( $path ) {
   $path = str_replace( '\\', '/', $path );
   return rtrim( $path, '/' ) . '/';
 }
+endif;
 
+if ( !function_exists( 'shoestrap_password_form' ) ) :
 function shoestrap_password_form() {
   global $post;
   $label    = 'pwbox-' . ( empty( $post->ID ) ? rand() : $post->ID );
@@ -194,32 +213,41 @@ function shoestrap_password_form() {
 
   return $content;
 }
+endif;
 add_filter( 'the_password_form', 'shoestrap_password_form' );
 
+if ( !function_exists( 'shoestrap_replace_reply_link_class' ) ) :
 function shoestrap_replace_reply_link_class( $class ){
     $class = str_replace( "class='comment-reply-link", "class='comment-reply-link btn btn-primary btn-small", $class );
     return $class;
 }
+endif;
 add_filter('comment_reply_link', 'shoestrap_replace_reply_link_class');
 
+if ( !function_exists( 'shoestrap_contains_string' ) ) :
 /*
  * Pass a straing and an array of possible values. Will return true if the straing contains it
  */
 function shoestrap_contains_string( $str, array $arr ) {
-  foreach( $arr as $a ) {
-    if (stripos($str,$a) !== false)
+  foreach( $arr as $a ) :
+    if (stripos($str,$a) !== false) :
       return true;
-  }
+    endif;
+  endforeach;
+
   return false;
 }
+endif;
 
+if ( !function_exists( 'shoestrap_init_filesystem' ) ) :
 /*
  * Initialize the Wordpress filesystem, no more using file_put_contents function
  */
 function shoestrap_init_filesystem() {
-  if ( empty( $wp_filesystem ) ) {
+  if ( empty( $wp_filesystem ) ) :
     require_once(ABSPATH .'/wp-admin/includes/file.php');
     WP_Filesystem();
-  }
+  endif;
 }
+endif;
 add_filter('init', 'shoestrap_init_filesystem');

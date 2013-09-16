@@ -1,19 +1,22 @@
 <?php
 
+if ( !function_exists( 'shoestrap_featured_image' ) ) :
 /*
  * Display featured images on individual posts
  */
 function shoestrap_featured_image() {
   add_theme_support( 'post-thumbnails' );
 
-  if ( !has_post_thumbnail() || '' == get_the_post_thumbnail() )
+  if ( !has_post_thumbnail() || '' == get_the_post_thumbnail() ) :
     return;
+  endif;
 
   $data['width']  = shoestrap_content_width_px();
 
   if ( is_single() || is_page() ) :
-    if ( shoestrap_getVariable( 'feat_img_post' ) != 1 )
+    if ( shoestrap_getVariable( 'feat_img_post' ) != 1 ) :
       return; // Do not process if we don't want images on single posts
+    endif;
 
     $data['url'] = wp_get_attachment_url( get_post_thumbnail_id() );
     
@@ -22,8 +25,9 @@ function shoestrap_featured_image() {
       $data['height'] = shoestrap_getVariable( 'feat_img_post_height' );
     endif;
   else :
-    if ( shoestrap_getVariable( 'feat_img_archive' ) == 0 )
+    if ( shoestrap_getVariable( 'feat_img_archive' ) == 0 ) :
       return; // Do not process if we don't want images on post archives
+    endif;
 
     $data['url'] = wp_get_attachment_url( get_post_thumbnail_id() );
     
@@ -38,20 +42,24 @@ function shoestrap_featured_image() {
   echo '<a href="' . get_permalink() . '"><img src="' . $image['url'] . '" /></a>';
   
 }
+endif;
 add_action( 'shoestrap_page_pre_content', 'shoestrap_featured_image' );
 add_action( 'shoestrap_single_pre_content', 'shoestrap_featured_image' );
 add_action( 'shoestrap_after_entry_meta', 'shoestrap_featured_image' );
 
 
+if ( !function_exists( 'shoestrap_image' ) ) :
 /*
  * Proxy function to be called whenever an image is used. If you wish to resize, use shoestrap_image_resize()
  */
 function shoestrap_image( $img ) {
-  if ( empty( $img ) || ( empty( $img['id'] ) && empty( $img['url'] ) ) )
+  if ( empty( $img ) || ( empty( $img['id'] ) && empty( $img['url'] ) ) ) :
     return; // Nothing here to do!
+  endif;
 
-  if ( empty( $img['id'] ) ) // We don't have an attachment id
+  if ( empty( $img['id'] ) ) : // We don't have an attachment id
     $img['id'] = shoestrap_get_attachment_id_from_src( $img['url'] ); 
+  endif;
 
   $image = wp_get_attachment_image_src( $img['id'], 'full' ); // Get the full size attachment 
 
@@ -62,8 +70,10 @@ function shoestrap_image( $img ) {
 
   return shoestrap_image_resize( $img );
 }
+endif;
 
 
+if ( !function_exists( 'shoestrap_image_resize' ) ) :
 /*
  * Call this even if you're not using the file
  */
@@ -80,19 +90,20 @@ function shoestrap_image_resize( $data ) {
 
   $settings = wp_parse_args( $data, $defaults );
 
-  if ( empty($settings['url']) ) {
+  if ( empty($settings['url']) ) :
     return;
-  }
+  endif;
 
   // Generate the @2x file if retina is enabled
-  if ( shoestrap_getVariable( 'retina_toggle' ) == 1 && empty( $settings['retina'] ) )
+  if ( shoestrap_getVariable( 'retina_toggle' ) == 1 && empty( $settings['retina'] ) ) :
     $results['retina'] = matthewruddy_image_resize( $settings['url'], $settings['width'], $settings['height'], $settings['crop'], true );
+  endif;
 
   return matthewruddy_image_resize( $settings['url'], $settings['width'], $settings['height'], $settings['crop'], false );    
-
 }
+endif;
 
-
+if ( !function_exists( 'shoestrap_get_attachment_id_from_src' ) ) :
 /*
  * Function to grab the image via URL to see if it's an attachmenet
  */
@@ -102,7 +113,9 @@ function shoestrap_get_attachment_id_from_src( $image_src ) {
   $id = $wpdb->get_var( $query );
   return $id;
 }
+endif;
 
+if ( !function_exists( 'shoestrap_check_if_remote_image' ) ) :
 /*
  * Function to see if image is remote, and if so add it as an attachment and return the right URL
  * STILL IN DEVELOPMENT!
@@ -217,4 +230,5 @@ function shoestrap_check_if_remote_image( $data ) {
     endif;
 
   return 200;
-} // endfunction process_images
+}
+endif;

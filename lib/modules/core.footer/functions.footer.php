@@ -1,5 +1,6 @@
 <?php
 
+if ( !function_exists( 'shoestrap_footer_css' ) ) :
 function shoestrap_footer_css() {
   $bg         = shoestrap_getVariable( 'footer_background' );
   $cl         = shoestrap_getVariable( 'footer_color' );
@@ -13,14 +14,17 @@ function shoestrap_footer_css() {
 
   $style = 'footer.content-info {';
     $style .= 'color:' . $cl . ';';
+
     if ( $opacity != 1 && $opacity != "" ) :
       $style .= 'background: rgba(' . $rgb . ',' . $opacity . ');';
     else :
       $style .= 'background:' . $bg . ';';
     endif;
-	  if ( !empty($border) && $border['size'] > 0 ) {
+
+	  if ( !empty($border) && $border['size'] > 0 ) :
 	  	$style .= 'border-top:' . $border['size'] . 'px ' . $border['style'] . ' ' . $border['color'] . ';';
-	  }
+	  endif;
+
     $style .= 'padding: 18px 10px 18px;';
     $style .= 'margin-top:'. $top_margin .'px;';
   $style .= '}';
@@ -51,11 +55,12 @@ function shoestrap_footer_css() {
   $style .= '}';
 
   wp_add_inline_style( 'shoestrap_css', $style );
-
 }
+endif;
 add_action( 'wp_enqueue_scripts', 'shoestrap_footer_css', 101 );
 
 
+if ( !function_exists( 'shoestrap_footer_icon' ) ) :
 /*
  * Creates the customizer icon on the bottom-left corner of our site
  * (visible only by admins)
@@ -71,15 +76,17 @@ function shoestrap_footer_icon() {
   </div>
   <?php
 }
+endif;
 add_action( 'shoestrap_after_footer', 'shoestrap_footer_icon' );
 
+if ( !function_exists( 'shoestrap_footer_html' ) ) :
 function shoestrap_footer_html() {
-
   $blog_name  = get_bloginfo( 'name', 'display' );
   $ftext      = shoestrap_getVariable( 'footer_text' );
 
-  if ( $ftext == '' )
+  if ( $ftext == '' ) :
     $ftext = '&copy; [year] [sitename]';
+  endif;
 
   $ftext = str_replace( '[year]', date( 'Y' ), $ftext );
   $ftext = str_replace( '[sitename]', $blog_name, $ftext );
@@ -90,13 +97,15 @@ function shoestrap_footer_html() {
   $width = 12;
 
   // Social is enabled, we're modifying the width!
-  if ( intval( $social_width ) > 0 && $social )
+  if ( intval( $social_width ) > 0 && $social ) :
     $width = $width - intval($social_width);
+  endif;
 
   $social_blank = shoestrap_getVariable( 'footer_social_new_window_toggle' );
 
-  if ( $social_blank == 1 )
+  if ( $social_blank == 1 ) :
     $blank = ' target="_blank"';
+  endif;
 
   $networks = shoestrap_get_social_links();
 
@@ -123,4 +132,5 @@ function shoestrap_footer_html() {
   </div>
   <?php
 }
+endif;
 add_action( 'shoestrap_footer_pre_override', 'shoestrap_footer_html' );

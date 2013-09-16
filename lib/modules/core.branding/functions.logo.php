@@ -1,5 +1,6 @@
 <?php
 
+if ( !function_exists( 'shoestrap_logo' ) ) :
 /*
  * The site logo.
  * If no custom logo is uploaded, use the sitename
@@ -7,23 +8,30 @@
 function shoestrap_logo() {
   $logo  = shoestrap_getVariable( 'logo' );
 
-  if ( !empty( $logo['url'] ) )
+  if ( !empty( $logo['url'] ) ) :
     echo '<img id="site-logo" src="' . $logo['url'] . '" alt="' . get_bloginfo( 'name' ) . '">';
-  else
+  else :
     echo '<span class="sitename">' . bloginfo( 'name' ) . '</span>';
-
+  endif;
 }
+endif;
 
+if ( !function_exists( 'shoestrap_branding_class' ) ) :
 function shoestrap_branding_class( $echo = true ) {
   $logo  = shoestrap_getVariable( 'logo' );
 
-  if ( !empty( $logo['url'] ) )
+  // apply the proper class
+  if ( !empty( $logo['url'] ) ) :
     $class = 'logo';
-  else
+  else :
     $class = 'text';
+  endif;
 
-  if ( $echo == false )
+  // echo or return the value
+  if ( $echo == false ) :
     return $class;
-  else
+  else :
     echo $class;
+  endif;
 }
+endif;

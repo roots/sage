@@ -3,67 +3,69 @@
 /*
  * The presets core options for the Shoestrap theme
  */
-if ( !function_exists( 'shoestrap_module_presets_options' ) ) {
-  function shoestrap_module_presets_options() {
+if ( !function_exists( 'shoestrap_module_presets_options' ) ) :
+function shoestrap_module_presets_options() {
 
-    //Preset Styles Reader
-    $preset_styles_path = get_template_directory() . '/lib/admin/presets';
+  //Preset Styles Reader
+  $preset_styles_path = get_template_directory() . '/lib/admin/presets';
 
-    $preset_styles_url  = get_template_directory_uri() . '/lib/admin/presets/';
-    $preset_styles      = array();
+  $preset_styles_url  = get_template_directory_uri() . '/lib/admin/presets/';
+  $preset_styles      = array();
 
-    if ( is_dir( $preset_styles_path ) ) {
-      if ( $preset_styles_dir = opendir( $preset_styles_path ) ) {
-        while ( ( $preset_styles_file = readdir( $preset_styles_dir ) ) !== false ) {
-          if ( stristr( $preset_styles_file, ".txt" ) !== false ) {
-            $array    = array();
-            $pre      = $preset_styles_url . $preset_styles_file;
-            $explode  = explode( "/", $pre );
-            $style    = end( $explode );
-            $key      = explode( '.', $style );
-            $preset_styles[$key[0]]['style'] = $style;
-          }
-          if( stristr( $preset_styles_file, ".png" ) !== false || stristr( $preset_styles_file, ".jpg" ) !== false) {
-            $preview = $preset_styles_url . $preset_styles_file;
-            $preview = explode( "/", $preview );
-            $preview = end( $preview );
+  if ( is_dir( $preset_styles_path ) ) :
+    if ( $preset_styles_dir = opendir( $preset_styles_path ) ) :
+      while ( ( $preset_styles_file = readdir( $preset_styles_dir ) ) !== false ) :
+        if ( stristr( $preset_styles_file, ".txt" ) !== false ) :
+          $array    = array();
+          $pre      = $preset_styles_url . $preset_styles_file;
+          $explode  = explode( "/", $pre );
+          $style    = end( $explode );
+          $key      = explode( '.', $style );
+          $preset_styles[$key[0]]['style'] = $style;
+        endif;
 
-            $key = explode( '.', $preview );
-            $preset_styles[$key[0]]['preview'] = $preview;
-          }
-        }
-      }
-    }
+        if ( stristr( $preset_styles_file, ".png" ) !== false || stristr( $preset_styles_file, '.jpg' ) !== false) :
+          $preview = $preset_styles_url . $preset_styles_file;
+          $preview = explode( '/', $preview );
+          $preview = end( $preview );
 
-    /*-----------------------------------------------------------------------------------*/
-    /* The Options Array */
-    /*-----------------------------------------------------------------------------------*/
+          $key = explode( '.', $preview );
+          $preset_styles[$key[0]]['preview'] = $preview;
+        endif;
+      endwhile;
+    endif;
+  endif;
 
-    // Set the Options Array
-    global $of_options, $redux;
+  /*-----------------------------------------------------------------------------------*/
+  /* The Options Array */
+  /*-----------------------------------------------------------------------------------*/
 
-    // Presets Styles
-    $of_options[] = array(
-      "name"      => __("Preset Styles", "shoestrap"),
-      "type"      => "heading"
-    );
+  // Set the Options Array
+  global $of_options, $redux;
 
-    $of_options[] = array(
-      "name"      => __("Choose a Preset", "shoestrap"),
-      "desc"      => __("Select a site preset. You can load it in and replace your current styles.", "shoestrap"),
-      "id"        => "design_preset",
-      "std"       => "",
-      "type"      => "presets",
-      "options"   => $preset_styles,
-    );
+  // Presets Styles
+  $of_options[] = array(
+    'name'      => __( 'Preset Styles', 'shoestrap' ),
+    'type'      => 'heading'
+  );
 
-    do_action( 'shoestrap_module_presets_options_modifier' );
+  $of_options[] = array(
+    'name'      => __( 'Choose a Preset', 'shoestrap' ),
+    'desc'      => __( 'Select a site preset. You can load it in and replace your current styles.', 'shoestrap' ),
+    'id'        => 'design_preset',
+    'std'       => '',
+    'type'      => 'presets',
+    'options'   => $preset_styles,
+  );
 
-    $redux = array();
-    foreach( $of_options as $option ) {
-      if (isset($option['id']))
-        $redux[$option['id']] = $option;
-    }
-  }
+  do_action( 'shoestrap_module_presets_options_modifier' );
+
+  $redux = array();
+
+  foreach( $of_options as $option ) :
+    if ( isset( $option['id'] ) ) :
+      $redux[$option['id']] = $option;
+    endif;
+  endforeach;
 }
-// add_action( 'init','shoestrap_module_presets_options', 100 );
+endif;

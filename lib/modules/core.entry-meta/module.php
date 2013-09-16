@@ -17,36 +17,47 @@ function shoestrap_entry_meta() {
   $tag_list           = get_the_tag_list( '', __( ', ', 'shoestrap' ) );
   $elementscountplus  = '';
 
-  if ( is_sticky() && is_home() && ! is_paged() )
+  if ( is_sticky() && is_home() && ! is_paged() ) :
     $elementscountplus .= '+';
-  if ( ! has_post_format( 'link' ) && 'post' == get_post_type() )
+  endif;
+
+  if ( ! has_post_format( 'link' ) && 'post' == get_post_type() ) :
     $elementscountplus .= '+';
-  if ( $categories_list )
+  endif;
+
+  if ( $categories_list ) :
     $elementscountplus .= '+';
-  if ( $tag_list )
+  endif;
+
+  if ( $tag_list ) :
     $elementscountplus .= '+';
-  if ( 'post' == get_post_type() )
+  endif;
+
+  if ( 'post' == get_post_type() ) :
     $elementscountplus .= '+';
+  endif;
 
     $col = 12;
-  if ( strlen( $elementscountplus ) == 5 )
+  if ( strlen( $elementscountplus ) == 5 ) :
     $col = 2;
-  elseif ( strlen( $elementscountplus ) == 4 )
+  elseif ( strlen( $elementscountplus ) == 4 ) :
     $col = 3;
-  elseif ( strlen( $elementscountplus ) == 3 )
+  elseif ( strlen( $elementscountplus ) == 3 ) :
     $col = 4;
-  elseif ( strlen( $elementscountplus ) == 2 )
+  elseif ( strlen( $elementscountplus ) == 2 ) :
     $col = 6;
-  elseif ( strlen( $elementscountplus ) == 1 )
+  elseif ( strlen( $elementscountplus ) == 1 ) :
     $col = 12;
+  endif;
 
   $colclass = 'col-sm-' . $col;
 
 
-  if ( is_sticky() && is_home() && ! is_paged() )
+  if ( is_sticky() && is_home() && ! is_paged() ) :
     echo '<span class="featured-post ' . $colclass . '"><i class="elusive icon icon-flag"></i> ' . __( 'Sticky', 'shoestrap' ) . '</span>';
+  endif;
 
-  if ( ! has_post_format( 'link' ) && 'post' == get_post_type() ) {
+  if ( ! has_post_format( 'link' ) && 'post' == get_post_type() ) :
     $format_prefix = ( has_post_format( 'chat' ) || has_post_format( 'status' ) ) ? _x( '%1$s on %2$s', '1: post format name. 2: date', 'shoestrap' ): '%2$s';
 
     $date = sprintf( '<span class="date ' . $colclass . '"><i class="elusive icon icon-calendar"></i> <a href="%1$s" title="%2$s" rel="bookmark"><time class="entry-date" datetime="%3$s">%4$s</time></a></span>',
@@ -56,22 +67,24 @@ function shoestrap_entry_meta() {
       esc_html( sprintf( $format_prefix, get_post_format_string( get_post_format() ), get_the_date() ) )
     );
     echo $date;
-  }
+  endif;
 
-  if ( $categories_list )
+  if ( $categories_list ) :
     echo '<span class="categories-links ' . $colclass . '"><i class="elusive icon icon-folder-open"></i> ' . $categories_list . '</span>';
+  endif;
 
-  if ( $tag_list )
+  if ( $tag_list ) :
     echo '<span class="tags-links ' . $colclass . '"><i class="elusive icon icon-tags"></i> ' . $tag_list . '</span>';
+  endif;
 
   // Post author
-  if ( 'post' == get_post_type() ) {
+  if ( 'post' == get_post_type() ) :
     printf( '<span class="author vcard ' . $colclass . '"><i class="elusive icon icon-user"></i> <a class="url fn n" href="%1$s" title="%2$s" rel="author">%3$s</a></span>',
       esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
       esc_attr( sprintf( __( 'View all posts by %s', 'shoestrap' ), get_the_author() ) ),
       get_the_author()
     );
-  }
+  endif;
 
   echo '</div>';
 }

@@ -6,6 +6,7 @@ if ( !defined( 'DB_NAME' ) ) :
 endif;
 
 
+if ( !function_exists( 'shoestrap_css' ) ) :
 /*
  * Gets the css path or url to the stylesheet
  * If $target = 'path', return the path
@@ -38,8 +39,9 @@ function shoestrap_css( $target = 'path', $echo = false ) {
     return $css_path;
   endif;
 }
+endif;
 
-
+if ( !function_exists( 'shoestrap_css_not_writeable' ) ) :
 /*
  * Admin notice if css or less files are writable
  */
@@ -68,9 +70,11 @@ function shoestrap_css_not_writeable( $array ) {
     endif;
   endif;
 }
+endif;
 add_action( 'admin_notices', 'shoestrap_css_not_writeable');
 
 
+if ( !function_exists( 'shoestrap_phpless_compiler' ) ) :
 /*
  * This function can be used to compile a less file to css using the lessphp compiler
  */
@@ -94,8 +98,9 @@ function shoestrap_phpless_compiler() {
 
   return $css;
 }
+endif;
 
-
+if ( !function_exists( 'shoestrap_compile_css' ) ) :
 function shoestrap_compile_css( $method = 'php' ) {
 	global $wp_filesystem;
 	
@@ -120,16 +125,18 @@ function shoestrap_compile_css( $method = 'php' ) {
     endif;
   endif;
 }
+endif;
 
-
+if ( !function_exists( 'shoestrap_makecss' ) ) :
 /*
  * Write the CSS to file
  */
 function shoestrap_makecss() {
   shoestrap_compile_css();
 }
+endif;
 
-
+if ( !function_exists( 'shoestrap_process_font' ) ) :
 function shoestrap_process_font( $font ) {
   if ( isset( $font['style'] ) ) :
     $temp = explode( "-", $font['style'] );
@@ -156,8 +163,9 @@ function shoestrap_process_font( $font ) {
 
   return $font;
 }
+endif;
 
-
+if ( !function_exists( 'shoestrap_variables_less' ) ) :
 /*
  * The content below is a copy of bootstrap's variables.less file.
  *
@@ -1107,8 +1115,9 @@ function shoestrap_variables_less() {
 
   return $variables;
 }
+endif;
 
-
+if ( !function_exists( 'shoestrap_complete_less' ) ) :
 /*
  * Brings all the LESS files that need to be compiled together.
  */
@@ -1207,3 +1216,4 @@ function shoestrap_complete_less( $url = false ) {
 
   return $bootstrap_less;
 }
+endif;

@@ -1,5 +1,6 @@
 <?php
 
+if ( !function_exists( 'shoestrap_background_css' ) ) :
 function shoestrap_background_css( ) {
 
   $image_toggle   = shoestrap_getVariable( 'background_image_toggle' );
@@ -9,8 +10,9 @@ function shoestrap_background_css( ) {
   $bg_pattern     = shoestrap_getVariable( 'background_pattern' );
   $bg_color       = shoestrap_getVariable( 'color_body_bg' );
 
-	if ( $image_toggle == 0 && shoestrap_getVariable( 'background_pattern_toggle' ) == 0 )
+	if ( $image_toggle == 0 && shoestrap_getVariable( 'background_pattern_toggle' ) == 0 ) :
 		return;
+  endif;
 
   $style    = '';
   $image    = '';
@@ -38,11 +40,13 @@ function shoestrap_background_css( ) {
     $color   .= 'background: rgba(' . $rgb . ',' . $opacity . ');';
   endif;
 
-  if ( shoestrap_getVariable( 'background_fixed_toggle' ) == 1 )
+  if ( shoestrap_getVariable( 'background_fixed_toggle' ) == 1 ) :
     $style .= 'background-attachment: fixed;';
+  endif;
 
-  if ( isset( $background ) )
+  if ( isset( $background ) ) :
     $image .= 'background-image: url( "' . $background . '" );';
+  endif;
 
   if ( $image_toggle == 1 && ( $bg_custom_img != '' || $bg_img != '' ) ) :
 
@@ -57,17 +61,20 @@ function shoestrap_background_css( ) {
       // Not fixed position, custom
       $repeat = shoestrap_getVariable( 'background_repeat' );
 
-      if ( !in_array( $repeat, array( 'no-repeat', 'repeat-x', 'repeat-y', 'repeat' ) ) )
+      if ( !in_array( $repeat, array( 'no-repeat', 'repeat-x', 'repeat-y', 'repeat' ) ) ) :
         $repeat = 'repeat';
+      endif;
 
-      if ($repeat == 'no-repeat')
+      if ( $repeat == 'no-repeat' ) :
         $style .= 'background-size: auto;';
+      endif;
 
       $repeat = ' background-repeat: ' . $repeat . ';';
       $position = shoestrap_getVariable( 'background_position_x', 'left' );
 
-      if ( ! in_array( $position, array( 'center', 'right', 'left' ) ) )
+      if ( ! in_array( $position, array( 'center', 'right', 'left' ) ) ) :
         $position = 'left';
+      endif;
 
       $position = ' background-position: top ' . $position . ';';
     endif;
@@ -79,6 +86,6 @@ function shoestrap_background_css( ) {
   $theCSS .= $color ? '.wrap.main-section .content { background: ' . $color . '; }' : '';
 
   wp_add_inline_style( 'shoestrap_css', $theCSS );
-
 }
+endif;
 add_action( 'wp_enqueue_scripts', 'shoestrap_background_css', 101 );

@@ -1,5 +1,6 @@
 <?php
 
+if ( !function_exists( 'shoestrap_icons' ) ) :
 function shoestrap_icons() {
   $favicon_item        = shoestrap_getVariable( 'favicon' );
   $apple_icon_item     = shoestrap_getVariable( 'apple_icon' );
@@ -24,4 +25,5 @@ function shoestrap_icons() {
     <?php
   endif;
 }
+endif;
 add_action( 'wp_head', 'shoestrap_icons' );

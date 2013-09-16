@@ -3,6 +3,7 @@
 // Include the Breadcrumbs Class
 include_once( dirname( __FILE__ ) . '/class.Shoestrap_Breadcrumb.php' );
 
+if ( !function_exists( 'shoestrap_breadcrumbs' ) ) :
 function shoestrap_breadcrumbs() {
   // No breadcrumbs on the front page
   if ( is_front_page() )
@@ -23,4 +24,5 @@ function shoestrap_breadcrumbs() {
     $breadcrumb = new Shoestrap_Breadcrumb( $templates, $options );
   endif;
 }
+endif;
 add_action( 'shoestrap_breadcrumbs', 'shoestrap_breadcrumbs' );
