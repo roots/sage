@@ -27,7 +27,7 @@ function shoestrap_navbar_pre_searchbox() {
   endif;
 }
 endif;
-add_action( 'shoestrap_pre_main_nav', 'shoestrap_navbar_pre_searchbox', 11 );
+add_action( 'shoestrap_inside_nav_begin', 'shoestrap_navbar_pre_searchbox', 11 );
 
 if ( !function_exists( 'shoestrap_navbar_class' ) ) :
 function shoestrap_navbar_class( $navbar = 'main') {
