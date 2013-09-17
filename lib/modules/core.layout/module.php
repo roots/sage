@@ -50,11 +50,11 @@ function shoestrap_module_layout_options( $sections ) {
     'id'        => 'layout_primary_width',
     'type'      => 'button_set',
     'options'   => array(
-      '1' => 'Col 1',
-      '2' => 'Col 2',
-      '3' => 'Col 3',
-      '4' => 'Col 4',
-      '5' => 'Col 5'
+      '1' => '1 Column',
+      '2' => '2 Columns',
+      '3' => '3 Columns',
+      '4' => '4 Columns',
+      '5' => '5 Columns'
     ),
     'default' => '4'
   );
@@ -65,11 +65,11 @@ function shoestrap_module_layout_options( $sections ) {
     'id'        => 'layout_secondary_width',
     'type'      => 'button_set',
     'options'   => array(
-      '1' => 'Col 1',
-      '2' => 'Col 2',
-      '3' => 'Col 3',
-      '4' => 'Col 4',
-      '5' => 'Col 5'
+      '1' => '1 Column',
+      '2' => '2 Columns',
+      '3' => '3 Columns',
+      '4' => '4 Columns',
+      '5' => '5 Columns'
     ),
     'default' => '3'
   );
