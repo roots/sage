@@ -63,7 +63,6 @@ function shoestrap_module_social_options( $sections ) {
     'title'     => __( 'Show in Posts Archives', 'shoestrap' ),
     'desc'      => __( 'Show the sharing button in posts archives.', 'shoestrap' ),
     'id'        => 'social_sharing_archives',
-    'validate'  => 'url',
     'default'   => '',
     'type'      => 'switch'
   );
@@ -97,7 +96,6 @@ function shoestrap_module_social_options( $sections ) {
     'title'     => __( 'Facebook', 'shoestrap' ),
     'desc'      => __( 'Show the Facebook sharing icon in blog posts.', 'shoestrap' ),
     'id'        => 'facebook_share',
-    'validate'  => 'url',
     'default'   => '',
     'type'      => 'switch'
   );
@@ -106,7 +104,6 @@ function shoestrap_module_social_options( $sections ) {
     'title'     => __( 'Google+', 'shoestrap' ),
     'desc'      => __( 'Show the Google+ sharing icon in blog posts.', 'shoestrap' ),
     'id'        => 'google_plus_share',
-    'validate'  => 'url',
     'default'   => '',
     'type'      => 'switch'
   );
@@ -115,7 +112,6 @@ function shoestrap_module_social_options( $sections ) {
     'title'     => __( 'LinkedIn', 'shoestrap' ),
     'desc'      => __( 'Show the LinkedIn sharing icon in blog posts.', 'shoestrap' ),
     'id'        => 'linkedin_share',
-    'validate'  => 'url',
     'default'   => '',
     'type'      => 'switch'
   );
@@ -124,7 +120,6 @@ function shoestrap_module_social_options( $sections ) {
     'title'     => __( 'Pinterest', 'shoestrap' ),
     'desc'      => __( 'Show the Pinterest sharing icon in blog posts.', 'shoestrap' ),
     'id'        => 'pinterest_share',
-    'validate'  => 'url',
     'default'   => '',
     'type'      => 'switch'
   );
@@ -133,7 +128,6 @@ function shoestrap_module_social_options( $sections ) {
     'title'     => __( 'Reddit', 'shoestrap' ),
     'desc'      => __( 'Show the Reddit sharing icon in blog posts.', 'shoestrap' ),
     'id'        => 'reddit_share',
-    'validate'  => 'url',
     'default'   => '',
     'type'      => 'switch'
   );
@@ -142,7 +136,6 @@ function shoestrap_module_social_options( $sections ) {
     'title'     => __( 'Tumblr', 'shoestrap' ),
     'desc'      => __( 'Show the Tumblr sharing icon in blog posts.', 'shoestrap' ),
     'id'        => 'tumblr_share',
-    'validate'  => 'url',
     'default'   => '',
     'type'      => 'switch'
   );
@@ -151,7 +144,6 @@ function shoestrap_module_social_options( $sections ) {
     'title'     => __( 'Twitter', 'shoestrap' ),
     'desc'      => __( 'Show the Twitter sharing icon in blog posts.', 'shoestrap' ),
     'id'        => 'twitter_share',
-    'validate'  => 'url',
     'default'   => '',
     'type'      => 'switch'
   );
@@ -160,7 +152,6 @@ function shoestrap_module_social_options( $sections ) {
     'title'     => __( 'Email', 'shoestrap' ),
     'desc'      => __( 'Show the Email sharing icon in blog posts.', 'shoestrap' ),
     'id'        => 'email_share',
-    'validate'  => 'url',
     'default'   => '',
     'type'      => 'switch'
   );
