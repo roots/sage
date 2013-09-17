@@ -1,71 +1,54 @@
 <?php
 
 /*
- * The presets core options for the Shoestrap theme
+ * The page core options for the Shoestrap theme
  */
 if ( !function_exists( 'shoestrap_module_presets_options' ) ) :
-function shoestrap_module_presets_options() {
-
-  //Preset Styles Reader
-  $preset_styles_path = get_template_directory() . '/lib/admin/presets';
-
-  $preset_styles_url  = get_template_directory_uri() . '/lib/admin/presets/';
-  $preset_styles      = array();
-
-  if ( is_dir( $preset_styles_path ) ) :
-    if ( $preset_styles_dir = opendir( $preset_styles_path ) ) :
-      while ( ( $preset_styles_file = readdir( $preset_styles_dir ) ) !== false ) :
-        if ( stristr( $preset_styles_file, ".txt" ) !== false ) :
-          $array    = array();
-          $pre      = $preset_styles_url . $preset_styles_file;
-          $explode  = explode( "/", $pre );
-          $style    = end( $explode );
-          $key      = explode( '.', $style );
-          $preset_styles[$key[0]]['style'] = $style;
-        endif;
-
-        if ( stristr( $preset_styles_file, ".png" ) !== false || stristr( $preset_styles_file, '.jpg' ) !== false) :
-          $preview = $preset_styles_url . $preset_styles_file;
-          $preview = explode( '/', $preview );
-          $preview = end( $preview );
-
-          $key = explode( '.', $preview );
-          $preset_styles[$key[0]]['preview'] = $preview;
-        endif;
-      endwhile;
-    endif;
-  endif;
-
-  /*-----------------------------------------------------------------------------------*/
-  /* The Options Array */
-  /*-----------------------------------------------------------------------------------*/
-
-  // Set the Options Array
-  global $of_options, $redux;
-
-  // Presets Styles
-  $of_options[] = array(
-    'name'      => __( 'Preset Styles', 'shoestrap' ),
-    'type'      => 'heading'
+function shoestrap_module_presets_options( $sections ) {
+  // Page Options
+  $section = array(
+    'title' => __( 'Presets', 'shoestrap' ),
+    'icon' => 'elusive icon-file icon-large',
   );
 
-  $of_options[] = array(
-    'name'      => __( 'Choose a Preset', 'shoestrap' ),
-    'desc'      => __( 'Select a site preset. You can load it in and replace your current styles.', 'shoestrap' ),
-    'id'        => 'design_preset',
-    'std'       => '',
-    'type'      => 'presets',
-    'options'   => $preset_styles,
+  $fields[] = array(
+    'id'      =>'presets',
+    'type'    => 'image_select', 
+    'presets' => true,
+    'title'   => __('Preset', 'redux-framework'),
+    'subtitle'=> __('This allows you to set a json string or array to override multiple preferences in your theme.', 'redux-framework'),
+    'default' => 0,
+    'desc'    => __('This allows you to set a json string or array to override multiple preferences in your theme.', 'redux-framework'),
+    'options' => array(
+      '1'         => array(
+        'alt'     => 'Preset 1',
+        'img'     => REDUX_URL . 'sample/presets/preset1.png',
+        'presets' =>array(
+          'color_body_bg' =>'#f7f7f7',
+          'navbar_toggle' =>'on',
+          'navbar_bg'     =>'#333333',
+        )
+      ),
+      '2' => array(
+        'alt' => 'Preset 1',
+        'img' => REDUX_URL . 'sample/presets/preset2.png',
+        'presets'=>array(
+          'switch-on'=>1,
+          'switch-off'=>1,
+          'switch-custom'=>1
+        )
+      ),
+    ),
   );
 
-  do_action( 'shoestrap_module_presets_options_modifier' );
+  $section['fields'] = $fields;
 
-  $redux = array();
+  $section = apply_filters( 'shoestrap_module_presets_options_modifier', $section );
+  
+  $sections[] = $section;
+  
+  return $sections;
 
-  foreach( $of_options as $option ) :
-    if ( isset( $option['id'] ) ) :
-      $redux[$option['id']] = $option;
-    endif;
-  endforeach;
 }
 endif;
+add_filter( 'redux-sections-'.REDUX_OPT_NAME, 'shoestrap_module_presets_options', 76 ); 
