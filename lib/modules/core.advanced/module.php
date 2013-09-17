@@ -167,6 +167,7 @@ function shoestrap_module_advanced_options( $sections ) {
     'id'        => 'user_less',
     'default'   => '',
     'type'      => 'textarea',
+    'compiler'  => true,
     // 'fold'      => 'advanced_toggle'
   );  
 
