@@ -6602,7 +6602,7 @@ fieldset[disabled] #social-sharing .shareme .box {
   padding-top: 0;
   padding-bottom: 0;
   right: auto !important;
-  border-top: 4px solid #428bca;
+  border-top: 1px solid #428bca;
 }
 .navbar.style1 .dropdown-menu a,
 .navbar.style1 .dropdown-menu a:hover,
@@ -6644,6 +6644,11 @@ fieldset[disabled] #social-sharing .shareme .box {
   border-top: 5px solid #f0ad4e;
   margin-top: -5px;
 }
+.navbar.style3 .dropdown-menu .active > a,
+.navbar.style3 .dropdown-menu .active > a:hover,
+.navbar.style3 .dropdown-menu .active > a:focus {
+  border-top: 2px solid #f0ad4e !important;
+}
 .navbar.style4 {
   border-top: 5px solid #428bca;
 }
@@ -6671,8 +6676,7 @@ fieldset[disabled] #social-sharing .shareme .box {
 .navbar.style6 .dropdown-menu .active > a,
 .navbar.style6 .dropdown-menu .active > a:hover,
 .navbar.style6 .dropdown-menu .active > a:focus {
-  margin-bottom: 1px !important;
-  margin-top: 1px !important;
+  border-bottom: 2px solid #f0ad4e !important;
 }
 .navbar a.navbar-brand {
   max-width: inherit !important;
