@@ -96,6 +96,17 @@ function shoestrap_module_layout_options( $sections ) {
     'type'      => 'slider'
   );
 
+  $fields[] = array( 
+    'title'     => __( 'Widgets mode', 'shoestrap' ),
+    'desc'      => __( 'How do you want your widgets to be displayed?', 'shoestrap' ),
+    'id'        => 'widgets_mode',
+    'default'   => 1,
+    // 'fold'      => 'advanced_toggle',
+    'off'       => __( 'Panel', 'shoestrap' ),
+    'on'        => __( 'Well', 'shoestrap' ),
+    'type'      => 'switch',
+    'customizer'=> array(),
+  );
 
   $fields[] = array( 
     'title'     => __( 'Show Breadcrumbs', 'shoestrap' ),
