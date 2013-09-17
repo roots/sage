@@ -1185,7 +1185,7 @@ function shoestrap_complete_less( $url = false ) {
 ';
 
   if ( shoestrap_getVariable( 'gradients_toggle' ) == 1 ) :
-    $bootstrap_less .= '@import "' . $bootstrap . 'bootstrap/theme.less";';
+    $bootstrap_less .= '@import "' . $bootstrap . 'gradients.less";';
   endif;
 
   $bootstrap_less .= '
