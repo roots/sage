@@ -60,7 +60,7 @@ function shoestrap_entry_meta() {
   if ( ! has_post_format( 'link' ) && 'post' == get_post_type() ) :
     $format_prefix = ( has_post_format( 'chat' ) || has_post_format( 'status' ) ) ? _x( '%1$s on %2$s', '1: post format name. 2: date', 'shoestrap' ): '%2$s';
 
-    $date = sprintf( '<span class="date ' . $colclass . '"><i class="elusive icon icon-calendar"></i> <a href="%1$s" title="%2$s" rel="bookmark"><time class="entry-date" datetime="%3$s">%4$s</time></a></span>',
+    $date = sprintf( '<span class="date ' . $colclass . '"><i class="elusive icon icon-time"></i> <a href="%1$s" title="%2$s" rel="bookmark"><time class="entry-date" datetime="%3$s">%4$s</time></a></span>',
       esc_url( get_permalink() ),
       esc_attr( sprintf( __( 'Permalink to %s', 'shoestrap' ), the_title_attribute( 'echo=0' ) ) ),
       esc_attr( get_the_date( 'c' ) ),
