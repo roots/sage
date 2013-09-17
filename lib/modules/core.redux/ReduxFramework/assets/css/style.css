@@ -11,7 +11,7 @@ a{outline:0 !important}
 .shadow1:after{-webkit-transform:rotate(3deg);-moz-transform:rotate(3deg);-o-transform:rotate(3deg);-ms-transform:rotate(3deg);transform:rotate(3deg);right:10px;left:auto}
 #redux-header,#redux-footer{text-align:right;padding:9px 10px 6px 10px}
 #redux-header{border-bottom:1px solid #e7e7e7}
-#redux-footer{border-top:1px solid #e7e7e7}
+#redux-footer{border-top:1px solid #e7e7e7;z-index:2}
 #redux-footer #redux-share{float:left}
 #redux-footer #redux-share a{margin-right:10px}
 #redux-footer #redux-share a img{margin-bottom:-3px}
