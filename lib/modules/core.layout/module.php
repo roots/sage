@@ -62,7 +62,7 @@ function shoestrap_module_layout_options( $sections ) {
     'desc'      => __( 'Select the width of the Secondary Sidebar. Please note that the values represent grid columns. The total width of the page is 12 columns, so selecting 4 here will make the secondary sidebar to have a width of 1/3 ( 4/12 ) of the total page width.', 'shoestrap' ),
     'id'        => 'layout_secondary_width',
     'type' => 'button_set',
-    'Colions' => array( '1' => 'Col 1',
+    'options' => array( '1' => 'Col 1',
                         '2' => 'Col 2',
                         '3' => 'Col 3',
                         '4' => 'Col 4',
