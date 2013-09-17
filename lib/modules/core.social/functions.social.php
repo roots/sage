@@ -8,7 +8,7 @@ function shoestrap_get_social_links() {
   $networks[] = array( 'url' => shoestrap_getVariable( 'blogger_link' ),      'icon' => 'blogger',    'fullname' => 'Blogger' );
   $networks[] = array( 'url' => shoestrap_getVariable( 'deviantart_link' ),   'icon' => 'deviantart', 'fullname' => 'DeviantART' );
   $networks[] = array( 'url' => shoestrap_getVariable( 'digg_link' ),         'icon' => 'digg',       'fullname' => 'Digg' );
-  $networks[] = array( 'url' => shoestrap_getVariable( 'dribbble_link' ),     'icon' => 'dribble',   'fullname' => 'Dribbble' );
+  $networks[] = array( 'url' => shoestrap_getVariable( 'dribbble_link' ),     'icon' => 'dribbble',   'fullname' => 'Dribbble' );
   $networks[] = array( 'url' => shoestrap_getVariable( 'facebook_link' ),     'icon' => 'facebook',   'fullname' => 'Facebook' );
   $networks[] = array( 'url' => shoestrap_getVariable( 'flickr_link' ),       'icon' => 'flickr',     'fullname' => 'Flickr' );
   $networks[] = array( 'url' => shoestrap_getVariable( 'github_link' ),       'icon' => 'github',     'fullname' => 'GitHub' );
@@ -147,8 +147,9 @@ function shoestrap_navbar_social_links() {
   echo $content;
 }
 // If the user has selected to show social links in the navbar echo the content.
-// if ( shoestrap_getVariable( 'navbar_social' ) == 1 )
-//   add_action( 'shoestrap_pre_main_nav', 'shoestrap_navbar_social_links' );
+if ( shoestrap_getVariable( 'navbar_social' ) == 1 ) :
+  add_action( 'shoestrap_inside_nav_end', 'shoestrap_navbar_social_links' );
+endif;
 
 // Properly parses the twitter URL if set
 function shoestrap_get_twitter_username() {

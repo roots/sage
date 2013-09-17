@@ -24,14 +24,8 @@
       endif;
       ?>
     </div>
-    <div class="nav-extras collapse">
-      <?php
-        // If the user has selected to show social links in the navbar echo the content.
-        if ( shoestrap_getVariable( 'navbar_social' ) != 0 )
-          shoestrap_navbar_social_links();
-      
-      do_action( 'shoestrap_pre_main_nav' ); 
-      ?>
+    <div class="nav-extras">
+      <?php do_action( 'shoestrap_pre_main_nav' ); ?>
     </div>
     <nav class="nav-main navbar-collapse collapse" role="navigation">
       <?php
