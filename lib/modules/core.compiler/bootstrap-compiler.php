@@ -263,6 +263,10 @@ function shoestrap_variables_less() {
   $sans_serif       = $font_base['family'];
 
   $border_radius    = filter_var( shoestrap_getVariable( 'general_border_radius', true ), FILTER_SANITIZE_NUMBER_INT );
+  if ( strlen( $border_radius ) < 1 ) :
+    $border_radius = 0;
+  endif;
+
   $padding_base     = intval( shoestrap_getVariable( 'padding_base', true ) );
   $navbar_bg        = '#' . str_replace( '#', '', shoestrap_getVariable( 'navbar_bg', true ) );
   $jumbotron_bg     = '#' . str_replace( '#', '', shoestrap_getVariable( 'jumbotron_bg', true ) );
