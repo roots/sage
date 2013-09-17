@@ -1193,17 +1193,19 @@ function shoestrap_complete_less( $url = false ) {
   @import "' . $bootstrap . 'app";
   ';
 
-  if ( is_writable( get_template_directory() . '/assets/less/custom.less' ) ) :
-      $bootstrap_less .= '
-    // Custom LESS file for developers
-    @import "' . $bootstrap . 'custom";';
-  endif;
-
 
   if ( $url == true ) :
     $bootstrap_less .="@elusiveWebfontPath: '" . $fonts . "'; // Elusive webfonts path;
   ";
   endif;
+
+  $bootstrap_less = apply_filters( 'shoestrap_complete_less_user_modifier', $bootstrap_less );
+ 
+  $user_less = shoestrap_getVariable('user_less');
+  if ( !empty( $user_less ) ) {
+  	$bootstrap_less .= $user_less;
+  }
+
 
   return $bootstrap_less;
 }

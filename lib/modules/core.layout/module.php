@@ -92,7 +92,7 @@ function shoestrap_module_layout_options( $sections ) {
     'min'       => 0,
     'step'      => 1,
     'max'       => 120,
-    'advanced'  => true,
+    'compiler'  => true,
     'type'      => 'slider'
   );
 
