@@ -1199,11 +1199,16 @@ function shoestrap_complete_less( $url = false ) {
     @import "' . $bootstrap . 'custom";';
   endif;
 
-
   if ( $url == true ) :
     $bootstrap_less .="@elusiveWebfontPath: '" . $fonts . "'; // Elusive webfonts path;
   ";
   endif;
+
+  $bootstrap_less = apply_filters( 'shoestrap_complete_less_modifier', $bootstrap_less );
+
+  if ( !empty( shoestrap_getVariable('user_less') ) ) {
+  	$bootstrap_less .= shoestrap_getVariable('user_less');
+  }
 
   return $bootstrap_less;
 }
