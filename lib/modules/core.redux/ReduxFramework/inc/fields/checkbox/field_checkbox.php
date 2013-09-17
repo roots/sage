@@ -131,11 +131,19 @@ if( !class_exists( 'ReduxFramework_checkbox' ) ) {
 
             if( !empty( $this->field['options'] ) && ( is_array( $this->field['options'] ) || is_array( $this->field['default'] ) ) ) {
                 echo '<ul>';
-            
-                foreach( $this->field['options'] as $k => $v ) {
-                
-                    $this->value[$k] = ( isset( $this->value[$k] ) ) ? $this->value[$k] : '';
+            	if ( !isset( $this->value ) ) {
+            		$this->value = array();
+            	}
+            	if (!is_array($this->value)) {
+            		$this->value = array();
+            	}
 
+                foreach( $this->field['options'] as $k => $v ) {
+                	
+                    if (empty($this->value[$k])) {
+                    	$this->value[$k] = "";
+                    }
+                    	
                     echo '<li>';
                     echo '<label for="' . strtr($this->args['opt_name'] . '[' . $this->field['id'] . '][' . $k . ']', array('[' => '_', ']' => '')) . '_' . array_search( $k, array_keys( $this->field['options'] ) ) . '">';
                     echo '<input type="checkbox" class="checkbox ' . $this->field['class'] . '" id="' . strtr($this->args['opt_name'] . '[' . $this->field['id'] . '][' . $k . ']', array('[' => '_', ']' => '')) . '_' . array_search( $k, array_keys( $this->field['options'] ) ) . '" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][' . $k . ']" value="1" ' . checked( $this->value[$k], '1', false ) . '/>';

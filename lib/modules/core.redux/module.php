@@ -37,6 +37,7 @@ if ( class_exists( 'ReduxFramework' ) ) :
   $args['menu_title']             = $theme->get( 'Name' );
   $args['display_version']        = $theme->get( 'Version' );    
   $args['page_position']          = 27;
+  //$args['theme_mods_expand']  	  = true;
   $args['import_icon_class']      = 'icon-large';
   $args['system_info_icon_class'] = 'icon-large';
   $args['dev_mode_icon_class']    = 'icon-large';
@@ -60,7 +61,7 @@ if ( class_exists( 'ReduxFramework' ) ) :
 
   $ReduxFramework = new ReduxFramework( $sections, $args, $tabs );
 
-  if (!empty($redux) && $redux['dev_mode'] == 1) {
+  if (!empty($redux['dev_mode']) && $redux['dev_mode'] == 1) {
       $ReduxFramework->args['dev_mode'] = true;
     $ReduxFramework->args['system_info'] = true;
   }

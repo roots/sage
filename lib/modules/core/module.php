@@ -121,18 +121,30 @@ function shoestrap_mix_colors( $hex1, $hex2, $percentage ) {
 endif;
 
 if ( !function_exists( 'shoestrap_getVariable' ) ) :
-// Gets the current values from SMOF, and if not there, grabs the defaults
-function shoestrap_getVariable( $key, $fresh = false ) {
-  global $redux;
+	// Gets the current values from REDUX, and if not there, grabs the defaults
+	function shoestrap_getVariable( $name, $key = false ) {
+	  global $redux;
+		$options = $redux;
 
-  if ( $key == 'shoestrap_license_key_status' )
-    return get_theme_mod( $key );
+		$var = ""; // Set this to your preferred default value
 
-  if ( !empty( $redux[$key] ) )
-    return $redux[$key];
+	  if ( $name == 'shoestrap_license_key_status' ) {
+	  	return get_theme_mod( $name );
+	  }
 
-  return '';
-}
+		if ( empty( $name ) && !empty( $options ) ) {
+			$var = $options;
+		} else {
+			if ( !empty( $options[$name] ) ) {	
+				if ( !empty( $key ) && !empty( $options[$name][$key] ) && $key !== true ) {
+					$var = $options[$name][$key];
+				} else {
+					$var = $options[$name];
+				}
+			}
+		}
+		return $var;
+	}
 endif;
 
 define( 'themeURI', get_template_directory_uri() );
