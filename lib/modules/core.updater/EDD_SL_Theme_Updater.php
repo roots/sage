@@ -12,7 +12,7 @@ class EDD_SL_Theme_Updater {
 		$args = wp_parse_args( $args, array(
 			'remote_api_url' => 'http://easydigitaldownloads.com',
 			'request_data'   => array(),
-			'theme_slug'     => get_stylesheet(),
+			'theme_slug'     => get_template(),
 			'item_name'      => '',
 			'license'        => '',
 			'version'        => '',
@@ -91,6 +91,9 @@ class EDD_SL_Theme_Updater {
 		if ( false === $update_data ) {
 			$failed = false;
 
+			if( empty( $this->license ) )
+				return false;
+
 			$api_params = array(
 				'edd_action' 	=> 'get_version',
 				'license' 		=> $this->license,
@@ -114,9 +117,9 @@ class EDD_SL_Theme_Updater {
 
 			// if the response failed, try again in 30 minutes
 			if ( $failed ) {
-				$update_data = new stdClass;
-				$update_data->new_version = $this->version;
-				set_transient( $this->response_key, $update_data, strtotime( '+30 minutes' ) );
+				$data = new stdClass;
+				$data->new_version = $this->version;
+				set_transient( $this->response_key, $data, strtotime( '+30 minutes' ) );
 				return false;
 			}
 

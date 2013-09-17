@@ -1,6 +1,6 @@
 <?php
 
-define( 'SHOESTRAP_STORE_URL',  'http://shoestrap.org' );
+define( 'SHOESTRAP_STORE_URL', 'http://shoestrap.org' );
 define( 'SHOESTRAP_THEME_NAME', 'Shoestrap' );
 define( 'SHOESTRAP_URL', 'http://shoestrap.org/downloads/shoestrap/' );
 // retrieve our license key from the DB
@@ -12,54 +12,54 @@ if( !class_exists( 'EDD_SL_Theme_Updater' ) ) {
 }
 
 // setup the updater
-$edd_updater = new EDD_SL_Theme_Updater( array(
+$edd_updater = new EDD_SL_Theme_Updater( array( 
   'remote_api_url'  => SHOESTRAP_STORE_URL,       // our store URL that is running EDD
-  'version'         => '3.0.0-dev-20130806',      // current version number
-  'license'         => $license_key,              // license key (used get_option above to retrieve from DB)
+  'version'         => '3.0.0-dev-20130917',      // current version number
+  'license'         => $license_key,              // license key ( used get_option above to retrieve from DB )
   'item_name'       => SHOESTRAP_THEME_NAME,      // name of this theme
   'author'          => 'Aristeides Stathopoulos'  // author of this theme
-));
+ ) );
 
 /*
  * The updater core options for the Shoestrap theme
  */
-if ( !function_exists( 'shoestrap_core_licencing_options' ) ) {
-  function shoestrap_core_licencing_options($sections) {
+if ( !function_exists( 'shoestrap_core_licencing_options' ) ) :
+function shoestrap_core_licencing_options( $sections ) {
 
 
 
-    // Licencing Options
-    $section = array(
-    		'title' => __("Licencing", "shoestrap"),
-    		'icon' => 'elusive icon-repeat-alt icon-large',
-    	);
+  // Licencing Options
+  $section = array( 
+    'title' => __( 'Licencing', 'shoestrap' ),
+    'icon' => 'elusive icon-repeat-alt icon-large',
+  );
 
-    $fields[] = array(
-      'name'      => __( 'Shoestrap Licence', 'shoestrap' ),
-      'desc'      => __( 'Enter your shoestrap licence to enable automatic updates.', 'shoestrap' ),
-      'id'        => 'shoestrap_license_key',
-      'default'       => '',
-      'type'      => 'text'
-    );
+  $fields[] = array( 
+    'name'      => __( 'Shoestrap Licence', 'shoestrap' ),
+    'desc'      => __( 'Enter your shoestrap licence to enable automatic updates.', 'shoestrap' ),
+    'id'        => 'shoestrap_license_key',
+    'default'       => '',
+    'type'      => 'text'
+  );
 
-    $fields[] = array(
-      "name"      => "",
-      "desc"      => "",
-      "id"        => "shoestrap_license_key_status_indicator",
-      "default"       => shoestrap_license_key_status_indicator(),
-      "icon"      => true,
-      "type"      => "info"
-    );
+  $fields[] = array( 
+    'name'      => '',
+    'desc'      => '',
+    'id'        => 'shoestrap_license_key_status_indicator',
+    'default'       => shoestrap_license_key_status_indicator(),
+    'icon'      => true,
+    'type'      => 'info'
+  );
 
-    $section['fields'] = $fields;
+  $section['fields'] = $fields;
 
-    $section = apply_filters( 'shoestrap_module_licencing_options_modifier', $section );
-    
-    $sections[] = $section;
-    return $sections;
+  $section = apply_filters( 'shoestrap_module_licencing_options_modifier', $section );
+  
+  $sections[] = $section;
+  return $sections;
 
-  }
 }
+endif;
 add_filter( 'redux-sections-'.REDUX_OPT_NAME, 'shoestrap_core_licencing_options', 200 ); 
 
 function shoestrap_sanitize_license( $new ) {
@@ -83,7 +83,7 @@ function shoestrap_activate_license() {
   $license = trim( shoestrap_getVariable( 'shoestrap_license_key' ) );
 
   // data to send in our API request
-  $api_params = array(
+  $api_params = array( 
     'edd_action'=> 'activate_license',
     'license'   => $license,
     'item_name' => urlencode( SHOESTRAP_THEME_NAME )
@@ -107,7 +107,7 @@ add_action( 'admin_init', 'shoestrap_activate_license' );
 function shoestrap_license_key_status_indicator() {
   $license  = shoestrap_getVariable( 'shoestrap_license_key' );
   $status   = shoestrap_getVariable( 'shoestrap_license_key_status' );
-  $message = "";
+  $message = '';
   if ( false !== $license ) :
     if ( $status !== false && $status == 'valid' )
       $message = '<span style="color:green;">' . __( 'active', 'shoestrap' ) . '</span>';

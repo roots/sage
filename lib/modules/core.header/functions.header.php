@@ -75,7 +75,7 @@ function shoestrap_header_css() {
     $style .= 'margin-bottom:'.$header_margin_bottom.'px;';
     $style .= '}';
 
-  	wp_add_inline_style( 'shoestrap_css', $style );
+    wp_add_inline_style( 'shoestrap_css', $style );
 
   endif;
 }

@@ -5,24 +5,24 @@ if ( !function_exists( 'shoestrap_getLayout' ) ) :
  * Get the layout value, but only set it once!
  */
 function shoestrap_getLayout() {
-	global $shoestrap_layout;
+  global $shoestrap_layout;
 
-	if ( !isset( $shoestrap_layout ) ) :
-		do_action( 'shoestrap_layout_modifier' );
-		$shoestrap_layout = intval( shoestrap_getVariable( 'layout' ) );
+  if ( !isset( $shoestrap_layout ) ) :
+    do_action( 'shoestrap_layout_modifier' );
+    $shoestrap_layout = intval( shoestrap_getVariable( 'layout' ) );
 
-	  if (is_page() && shoestrap_getVariable( 'page_layout_toggle' ) == 1 ) :
-	    $shoestrap_layout = intval( shoestrap_getVariable( 'page_layout' ) );
-	  elseif ( !is_page() && shoestrap_getVariable( 'blog_layout_toggle' ) == 1 ) :
-	    $shoestrap_layout = intval( shoestrap_getVariable( 'blog_layout' ) );
+    if (is_page() && shoestrap_getVariable( 'page_layout_toggle' ) == 1 ) :
+      $shoestrap_layout = intval( shoestrap_getVariable( 'page_layout' ) );
+    elseif ( !is_page() && shoestrap_getVariable( 'blog_layout_toggle' ) == 1 ) :
+      $shoestrap_layout = intval( shoestrap_getVariable( 'blog_layout' ) );
     endif;
 
-	  if ( !is_active_sidebar( 'sidebar-secondary' ) && is_active_sidebar( 'sidebar-primary' ) && $shoestrap_layout == 5 ) :
+    if ( !is_active_sidebar( 'sidebar-secondary' ) && is_active_sidebar( 'sidebar-primary' ) && $shoestrap_layout == 5 ) :
       $shoestrap_layout = 3;
     endif;
-	endif;
+  endif;
 
-	return $shoestrap_layout;
+  return $shoestrap_layout;
 }
 endif;
 
@@ -32,8 +32,8 @@ if ( !function_exists( 'shoestrap_setLayout' ) ) :
  *Override the layout value globally
  */
 function shoestrap_setLayout( $val ) {
-	global $shoestrap_layout, $redux;
-	$shoestrap_layout = intval( $val );
+  global $shoestrap_layout, $redux;
+  $shoestrap_layout = intval( $val );
 }
 endif;
 

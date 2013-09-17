@@ -8,9 +8,9 @@ function shoestrap_module_header_options( $sections ) {
 
   // Branding Options
   $section = array( 
-		'title' => __( 'Header', 'shoestrap' ),
-		'icon'  => 'elusive icon-caret-up icon-large'
-	 );
+    'title' => __( 'Header', 'shoestrap' ),
+    'icon'  => 'elusive icon-caret-up icon-large'
+  );
 
   $url = admin_url( 'nav-menus.php' );
   $fields[] = array( 
@@ -120,7 +120,7 @@ function shoestrap_module_header_options( $sections ) {
     'title'     => __( 'Fixed NavBar Position', 'shoestrap' ),
     'desc'      => __( 'Using this option you can set the navbar to be fixed to top, fixed to bottom or normal. When you\'re using one of the \'fixed\' options, the navbar will stay fixed on the top or bottom of the page. Default: Normal', 'shoestrap' ),
     'id'        => 'navbar_fixed_position',
-    'fold'      => 'navbar_fixed',
+    // 'fold'      => 'navbar_fixed',
     'default'   => 0,
     'on'        => __( 'Bottom', 'shoestrap' ),
     'off'       => __( 'Top', 'shoestrap' ),
@@ -155,7 +155,7 @@ function shoestrap_module_header_options( $sections ) {
       'size'    => 30 //this is the text size from preview box
     ),
     'type'      => 'typography',
-    'fold'      => 'advanced_toggle'
+    // 'fold'      => 'advanced_toggle'
   );
 
   $fields[] = array( 
@@ -174,7 +174,7 @@ function shoestrap_module_header_options( $sections ) {
       'size'    => 30 //this is the text size from preview box
     ),
     'type'      => 'typography',
-    'fold'      => 'advanced_toggle'
+    // 'fold'      => 'advanced_toggle'
   );
 
   $fields[] = array( 
@@ -223,7 +223,7 @@ function shoestrap_module_header_options( $sections ) {
                     <p>The secondary navbar is a 2nd navbar, located right above the main wrapper. You can show a menu there, by assigning it from Appearance -> Menus.</p>',
     'icon'      => true,
     'type'      => 'info',
-    'fold'      => 'advanced_toggle'
+    // 'fold'      => 'advanced_toggle'
   );
 
   $fields[] = array( 
@@ -233,14 +233,14 @@ function shoestrap_module_header_options( $sections ) {
     'customizer'=> array(),
     'default'   => 0,
     'type'      => 'switch',
-    'fold'      => 'advanced_toggle'
+    // 'fold'      => 'advanced_toggle'
   );
 
   $fields[] = array( 
     'title'     => __( 'Display social networks in the navbar', 'shoestrap' ),
     'desc'      => __( 'Enable this option to display your social networks as a dropdown menu on the seondary navbar.', 'shoestrap' ),
     'id'        => 'navbar_secondary_social',
-    'fold'      => 'secondary_navbar_toggle',
+    // 'fold'      => 'secondary_navbar_toggle',
     'default'   => 0,
     'type'      => 'switch',
   );
@@ -253,7 +253,7 @@ function shoestrap_module_header_options( $sections ) {
     'min'       => 0,
     'max'       => 200,
     'type'      => 'slider',
-    'fold'      => 'secondary_navbar_toggle'
+    // 'fold'      => 'secondary_navbar_toggle'
   );
 
   $url = admin_url( 'widgets.php' );
@@ -266,7 +266,7 @@ function shoestrap_module_header_options( $sections ) {
                     To add widgets on your header, visit <a href=\'$url\'>this page</a> and add your widgets to the <strong>Header</strong> Widget Area.</p>',
     'icon'      => true,
     'type'      => 'info',
-    'fold'      => 'advanced_toggle'
+    // 'fold'      => 'advanced_toggle'
   );
 
   $fields[] = array( 
@@ -276,7 +276,7 @@ function shoestrap_module_header_options( $sections ) {
     'customizer'=> array(),
     'default'   => 0,
     'type'      => 'switch',
-    'fold'      => 'advanced_toggle'
+    // 'fold'      => 'advanced_toggle'
   );
 
   $fields[] = array( 
@@ -286,7 +286,7 @@ function shoestrap_module_header_options( $sections ) {
     'customizer'=> array(),
     'default'   => 1,
     'type'      => 'switch',
-    'fold'      => 'header_toggle'
+    // 'fold'      => 'header_toggle'
   );
 
   $fields[] = array( 
@@ -297,7 +297,7 @@ function shoestrap_module_header_options( $sections ) {
     'customizer'=> array(),
     'transparent'=> false,    
     'type'      => 'color',
-    'fold'      => 'header_toggle'
+    // 'fold'      => 'header_toggle'
   );
 
   $fields[] = array( 
@@ -310,7 +310,7 @@ function shoestrap_module_header_options( $sections ) {
     'max'       => 100,
     'compiler'  => true,
     'type'      => 'slider',
-    'fold'      => 'header_toggle'
+    // 'fold'      => 'header_toggle'
   );
 
   $fields[] = array( 
@@ -321,7 +321,7 @@ function shoestrap_module_header_options( $sections ) {
     'customizer'=> array(),
     'transparent'=> false,    
     'type'      => 'color',
-    'fold'      => 'header_toggle'
+    // 'fold'      => 'header_toggle'
   );
 
   $fields[] = array( 
@@ -332,7 +332,7 @@ function shoestrap_module_header_options( $sections ) {
     'min'       => 0,
     'max'       => 200,
     'type'      => 'slider',
-    'fold'      => 'header_toggle'
+    // 'fold'      => 'header_toggle'
   );
 
   $fields[] = array( 
@@ -343,7 +343,7 @@ function shoestrap_module_header_options( $sections ) {
     'min'       => 0,
     'max'       => 200,
     'type'      => 'slider',
-    'fold'      => 'header_toggle'
+    // 'fold'      => 'header_toggle'
   );
 
   $section['fields'] = $fields;
@@ -357,7 +357,7 @@ function shoestrap_module_header_options( $sections ) {
 endif;
 add_filter( 'redux-sections-'.REDUX_OPT_NAME, 'shoestrap_module_header_options', 65 );  
 
-include_once( dirname( __FILE__ ).'/functions.navbar.php' );
-include_once( dirname( __FILE__ ).'/functions.secondary.navbar.php' );
-include_once( dirname( __FILE__ ).'/functions.header.php' );
-include_once( dirname( __FILE__ ).'/functions.slide-down.php' );
+include_once( dirname( __FILE__ ) . '/functions.navbar.php' );
+include_once( dirname( __FILE__ ) . '/functions.secondary.navbar.php' );
+include_once( dirname( __FILE__ ) . '/functions.header.php' );
+include_once( dirname( __FILE__ ) . '/functions.slide-down.php' );

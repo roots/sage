@@ -8,10 +8,10 @@ function shoestrap_module_layout_options( $sections ) {
 
   // Layout Settings
   $section = array( 
-		'title'       => __( 'Layout', 'shoestrap' ),
-		'icon'        => 'elusive icon-screen icon-large',
-		'description' => '<p>In this area you can select your site\'s layout, the width of your sidebars, as well as other, more advanced options.</p>',
-	 );
+    'title'       => __( 'Layout', 'shoestrap' ),
+    'icon'        => 'elusive icon-screen icon-large',
+    'description' => '<p>In this area you can select your site\'s layout, the width of your sidebars, as well as other, more advanced options.</p>',
+  );
 
   $fields[] = array( 
     'title'     => __( 'Site Style', 'shoestrap' ),
@@ -81,7 +81,7 @@ function shoestrap_module_layout_options( $sections ) {
     'title'     => __( 'Margin from top ( Works only in \'Boxed\' mode )', 'shoestrap' ),
     'desc'      => __( 'This will add a margin above the navbar. Useful if you\'ve enabled the \'Boxed\' mode above. Default: 0px', 'shoestrap' ),
     'id'        => 'navbar_margin_top',
-    'fold'      => 'navbar_boxed',
+    // 'fold'      => 'navbar_boxed',
     'default'   => 0,
     'min'       => 0,
     'step'      => 1,
@@ -108,7 +108,7 @@ function shoestrap_module_layout_options( $sections ) {
     'min'       => 0,
     'max'       => 200,
     'type'      => 'slider',
-    'fold'      => 'advanced_toggle'
+    // 'fold'      => 'advanced_toggle'
   );
 
   $fields[] = array( 
@@ -119,7 +119,7 @@ function shoestrap_module_layout_options( $sections ) {
     'min'       => 0,
     'max'       => 200,
     'type'      => 'slider',
-    'fold'      => 'advanced_toggle'
+    // 'fold'      => 'advanced_toggle'
   );
 
   $fields[] = array( 
@@ -128,7 +128,7 @@ function shoestrap_module_layout_options( $sections ) {
     'id'        => 'custom_grid',
     'default'   => 0,
     'type'      => 'switch',
-    'fold'      => 'advanced_toggle'
+    // 'fold'      => 'advanced_toggle'
   );
 
   $fields[] = array( 
@@ -149,7 +149,7 @@ function shoestrap_module_layout_options( $sections ) {
     'title'     => __( 'Desktop Container Width', 'shoestrap' ),
     'desc'      => __( 'The width of normal screens. This is used to calculate the responsive layout breakpoints. Suitable for medium & normal screens. Default: 940px', 'shoestrap' ),
     'id'        => 'container_desktop',
-    'fold'      => 'custom_grid',
+    // 'fold'      => 'custom_grid',
     'default'   => 940,
     'min'       => 620,
     'step'      => 2,
@@ -164,7 +164,7 @@ function shoestrap_module_layout_options( $sections ) {
     'title'     => __( 'Large Desktop Container Width', 'shoestrap' ),
     'desc'      => __( 'The width of Large Desktop screens. This is used to calculate the responsive layout breakpoints. Suitable for large screens. Default: 1170px', 'shoestrap' ),
     'id'        => 'container_large_desktop',
-    'fold'      => 'custom_grid',
+    // 'fold'      => 'custom_grid',
     'default'   => 1140,
     'min'       => 620,
     'step'      => 2,
@@ -178,7 +178,7 @@ function shoestrap_module_layout_options( $sections ) {
     'title'     => __( 'Columns Gutter', 'shoestrap' ),
     'desc'      => __( 'The space between the columns in your grid. Default: 30px', 'shoestrap' ),
     'id'        => 'layout_gutter',
-    'fold'      => 'custom_grid',
+    // 'fold'      => 'custom_grid',
     'default'   => 30,
     'min'       => 0,
     'step'      => 2,

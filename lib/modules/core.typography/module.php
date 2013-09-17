@@ -7,10 +7,10 @@ if ( !function_exists( 'shoestrap_module_typography_options' ) ) :
 function shoestrap_module_typography_options( $sections ) {
 
   // Typography Options
-  $section = array( 
-  		'title'   => __( 'Typography', 'shoestrap' ),
-  		'icon'    => 'elusive icon-font icon-large',
-  	 );
+  $section = array(
+    'title'   => __( 'Typography', 'shoestrap' ),
+    'icon'    => 'elusive icon-font icon-large',
+  );
 
   $fields[] = array( 
     'title'     => __( 'Base Font', 'shoestrap' ),
@@ -64,7 +64,7 @@ function shoestrap_module_typography_options( $sections ) {
   );
 
   $fields[] = array( 
-    'id'		    => 'font_h2',
+    'id'        => 'font_h2',
     'title'     => __( 'H2 Font', 'shoestrap' ),
     'desc'      => __( 'The main font for your site.', 'shoestrap' ),
     'compiler'  => true,
@@ -84,7 +84,7 @@ function shoestrap_module_typography_options( $sections ) {
   );
 
   $fields[] = array( 
-    'id'		    => 'font_h3',
+    'id'        => 'font_h3',
     'title'     => __( 'H3 Font', 'shoestrap' ),
     'desc'      => __( 'The main font for your site.', 'shoestrap' ),
     'compiler'  => true,

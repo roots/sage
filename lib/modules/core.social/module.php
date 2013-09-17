@@ -6,10 +6,10 @@
 if ( !function_exists( 'shoestrap_module_social_options' ) ) :
 function shoestrap_module_social_options( $sections ) {
 
-  $section = array( 
-		'title'     => __( 'Social Sharing', 'shoestrap' ),
-		'icon'      => 'elusive icon-share icon-large',
-	 );
+  $section = array(
+    'title'     => __( 'Social Sharing', 'shoestrap' ),
+    'icon'      => 'elusive icon-share icon-large',
+  );
 
   $fields[] = array( 
     'title'     => '',
@@ -64,7 +64,7 @@ function shoestrap_module_social_options( $sections ) {
     'desc'      => __( 'Show the sharing button in posts archives.', 'shoestrap' ),
     'id'        => 'social_sharing_archives',
     'validate'  => 'url',
-		'default'   => '',
+    'default'   => '',
     'type'      => 'switch'
   );
 
@@ -98,7 +98,7 @@ function shoestrap_module_social_options( $sections ) {
     'desc'      => __( 'Show the Facebook sharing icon in blog posts.', 'shoestrap' ),
     'id'        => 'facebook_share',
     'validate'  => 'url',
-		'default'   => '',
+    'default'   => '',
     'type'      => 'switch'
   );
 
@@ -107,7 +107,7 @@ function shoestrap_module_social_options( $sections ) {
     'desc'      => __( 'Show the Google+ sharing icon in blog posts.', 'shoestrap' ),
     'id'        => 'google_plus_share',
     'validate'  => 'url',
-		'default'   => '',
+    'default'   => '',
     'type'      => 'switch'
   );
 
@@ -116,7 +116,7 @@ function shoestrap_module_social_options( $sections ) {
     'desc'      => __( 'Show the LinkedIn sharing icon in blog posts.', 'shoestrap' ),
     'id'        => 'linkedin_share',
     'validate'  => 'url',
-		'default'   => '',
+    'default'   => '',
     'type'      => 'switch'
   );
 
@@ -125,7 +125,7 @@ function shoestrap_module_social_options( $sections ) {
     'desc'      => __( 'Show the Pinterest sharing icon in blog posts.', 'shoestrap' ),
     'id'        => 'pinterest_share',
     'validate'  => 'url',
-		'default'   => '',
+    'default'   => '',
     'type'      => 'switch'
   );
 
@@ -134,7 +134,7 @@ function shoestrap_module_social_options( $sections ) {
     'desc'      => __( 'Show the Reddit sharing icon in blog posts.', 'shoestrap' ),
     'id'        => 'reddit_share',
     'validate'  => 'url',
-		'default'   => '',
+    'default'   => '',
     'type'      => 'switch'
   );
 
@@ -143,7 +143,7 @@ function shoestrap_module_social_options( $sections ) {
     'desc'      => __( 'Show the Tumblr sharing icon in blog posts.', 'shoestrap' ),
     'id'        => 'tumblr_share',
     'validate'  => 'url',
-		'default'   => '',
+    'default'   => '',
     'type'      => 'switch'
   );
 
@@ -152,7 +152,7 @@ function shoestrap_module_social_options( $sections ) {
     'desc'      => __( 'Show the Twitter sharing icon in blog posts.', 'shoestrap' ),
     'id'        => 'twitter_share',
     'validate'  => 'url',
-		'default'   => '',
+    'default'   => '',
     'type'      => 'switch'
   );
 
@@ -161,7 +161,7 @@ function shoestrap_module_social_options( $sections ) {
     'desc'      => __( 'Show the Email sharing icon in blog posts.', 'shoestrap' ),
     'id'        => 'email_share',
     'validate'  => 'url',
-		'default'   => '',
+    'default'   => '',
     'type'      => 'switch'
   );
 
@@ -170,9 +170,9 @@ function shoestrap_module_social_options( $sections ) {
   $sections[] = $section;
 
   $section = array( 
-		'title'     => __( 'Social Links', 'shoestrap' ),
-		'icon'      => 'elusive icon-group icon-large',
-	 );
+    'title'     => __( 'Social Links', 'shoestrap' ),
+    'icon'      => 'elusive icon-group icon-large',
+  );
   $fields = array();
 
   $fields[] = array( 
@@ -180,7 +180,7 @@ function shoestrap_module_social_options( $sections ) {
     'desc'      => __( 'Provide the link you desire and the Blogger icon will appear. To remove it, just leave it blank.', 'shoestrap' ),
     'id'        => 'blogger_link',
     'validate'  => 'url',
-		'default'   => '',
+    'default'   => '',
     'type'      => 'text'
   );
 
@@ -189,7 +189,7 @@ function shoestrap_module_social_options( $sections ) {
     'desc'      => __( 'Provide the link you desire and the DeviantART icon will appear. To remove it, just leave it blank.', 'shoestrap' ),
     'id'        => 'deviantart_link',
     'validate'  => 'url',
-		'default'   => '',
+    'default'   => '',
     'type'      => 'text'
   );
 
@@ -198,7 +198,7 @@ function shoestrap_module_social_options( $sections ) {
     'desc'      => __( 'Provide the link you desire and the Digg icon will appear. To remove it, just leave it blank.', 'shoestrap' ),
     'id'        => 'digg_link',
     'validate'  => 'url',
-		'default'   => '',
+    'default'   => '',
     'type'      => 'text'
   );
 
@@ -207,7 +207,7 @@ function shoestrap_module_social_options( $sections ) {
     'desc'      => __( 'Provide the link you desire and the Dribbble icon will appear. To remove it, just leave it blank.', 'shoestrap' ),
     'id'        => 'dribbble_link',
     'validate'  => 'url',
-		'default'   => '',
+    'default'   => '',
     'type'      => 'text'
   );
 
@@ -216,7 +216,7 @@ function shoestrap_module_social_options( $sections ) {
     'desc'      => __( 'Provide the link you desire and the Facebook icon will appear. To remove it, just leave it blank.', 'shoestrap' ),
     'id'        => 'facebook_link',
     'validate'  => 'url',
-		'default'   => '',
+    'default'   => '',
     'type'      => 'text'
   );
 
@@ -225,7 +225,7 @@ function shoestrap_module_social_options( $sections ) {
     'desc'      => __( 'Provide the link you desire and the Flickr icon will appear. To remove it, just leave it blank.', 'shoestrap' ),
     'id'        => 'flickr_link',
     'validate'  => 'url',
-		'default'   => '',
+    'default'   => '',
     'type'      => 'text'
   );
 
@@ -234,7 +234,7 @@ function shoestrap_module_social_options( $sections ) {
     'desc'      => __( 'Provide the link you desire and the GitHub icon will appear. To remove it, just leave it blank.', 'shoestrap' ),
     'id'        => 'github_link',
     'validate'  => 'url',
-		'default'   => '',
+    'default'   => '',
     'type'      => 'text'
   );
 
@@ -243,7 +243,7 @@ function shoestrap_module_social_options( $sections ) {
     'desc'      => __( 'Provide the link you desire and the Google+ icon will appear. To remove it, just leave it blank.', 'shoestrap' ),
     'id'        => 'google_plus_link',
     'validate'  => 'url',
-		'default'   => '',
+    'default'   => '',
     'type'      => 'text'
   );
 
@@ -252,7 +252,7 @@ function shoestrap_module_social_options( $sections ) {
     'desc'      => __( 'Provide the link you desire and the LinkedIn icon will appear. To remove it, just leave it blank.', 'shoestrap' ),
     'id'        => 'linkedin_link',
     'validate'  => 'url',
-		'default'   => '',
+    'default'   => '',
     'type'      => 'text'
   );
 
@@ -261,7 +261,7 @@ function shoestrap_module_social_options( $sections ) {
     'desc'      => __( 'Provide the link you desire and the MySpace icon will appear. To remove it, just leave it blank.', 'shoestrap' ),
     'id'        => 'myspace_link',
     'validate'  => 'url',
-		'default'   => '',
+    'default'   => '',
     'type'      => 'text'
   );
 
@@ -270,7 +270,7 @@ function shoestrap_module_social_options( $sections ) {
     'desc'      => __( 'Provide the link you desire and the Pinterest icon will appear. To remove it, just leave it blank.', 'shoestrap' ),
     'id'        => 'pinterest_link',
     'validate'  => 'url',
-		'default'   => '',
+    'default'   => '',
     'type'      => 'text'
   );
 
@@ -279,7 +279,7 @@ function shoestrap_module_social_options( $sections ) {
     'desc'      => __( 'Provide the link you desire and the Reddit icon will appear. To remove it, just leave it blank.', 'shoestrap' ),
     'id'        => 'reddit_link',
     'validate'  => 'url',
-		'default'   => '',
+    'default'   => '',
     'type'      => 'text'
   );
 
@@ -288,7 +288,7 @@ function shoestrap_module_social_options( $sections ) {
     'desc'      => __( 'Provide the link you desire and the RSS icon will appear. To remove it, just leave it blank.', 'shoestrap' ),
     'id'        => 'rss_link',
     'validate'  => 'url',
-		'default'   => '',
+    'default'   => '',
     'type'      => 'text'
   );
 
@@ -297,7 +297,7 @@ function shoestrap_module_social_options( $sections ) {
     'desc'      => __( 'Provide the link you desire and the Skype icon will appear. To remove it, just leave it blank.', 'shoestrap' ),
     'id'        => 'skype_link',
     'validate'  => 'url',
-		'default'   => '',
+    'default'   => '',
     'type'      => 'text'
   );
 
@@ -306,7 +306,7 @@ function shoestrap_module_social_options( $sections ) {
     'desc'      => __( 'Provide the link you desire and the SoundCloud icon will appear. To remove it, just leave it blank.', 'shoestrap' ),
     'id'        => 'soundcloud_link',
     'validate'  => 'url',
-		'default'   => '',
+    'default'   => '',
     'type'      => 'text'
   );
 
@@ -315,7 +315,7 @@ function shoestrap_module_social_options( $sections ) {
     'desc'      => __( 'Provide the link you desire and the Tumblr icon will appear. To remove it, just leave it blank.', 'shoestrap' ),
     'id'        => 'tumblr_link',
     'validate'  => 'url',
-		'default'   => '',
+    'default'   => '',
     'type'      => 'text'
   );
 
@@ -324,7 +324,7 @@ function shoestrap_module_social_options( $sections ) {
     'desc'      => __( 'Provide the link you desire and the Twitter icon will appear. To remove it, just leave it blank.', 'shoestrap' ),
     'id'        => 'twitter_link',
     'validate'  => 'url',
-		'default'   => '',
+    'default'   => '',
     'type'      => 'text'
   );
 
@@ -333,7 +333,7 @@ function shoestrap_module_social_options( $sections ) {
     'desc'      => __( 'Provide the link you desire and the Vimeo icon will appear. To remove it, just leave it blank.', 'shoestrap' ),
     'id'        => 'vimeo_link',
     'validate'  => 'url',
-		'default'   => '',
+    'default'   => '',
     'type'      => 'text'
   );
 
@@ -343,7 +343,7 @@ function shoestrap_module_social_options( $sections ) {
     'desc'      => 'Provide the link you desire and the Vkontakte icon will appear. To remove it, just leave it blank.',
     'id'        => 'vkontakte_link',
     'validate'  => 'url',
-		'default'   => '',
+    'default'   => '',
     'type'      => 'text'
   );
 
@@ -352,7 +352,7 @@ function shoestrap_module_social_options( $sections ) {
     'desc'      => 'Provide the link you desire and the YouTube icon will appear. To remove it, just leave it blank.',
     'id'        => 'youtube_link',
     'validate'  => 'url',
-		'default'   => '',
+    'default'   => '',
     'type'      => 'text'
   );
   
@@ -367,4 +367,4 @@ function shoestrap_module_social_options( $sections ) {
 endif;
 add_filter( 'redux-sections-' . REDUX_OPT_NAME, 'shoestrap_module_social_options', 85 ); 
 
-include_once( dirname( __FILE__ ).'/functions.social.php' );
+include_once( dirname( __FILE__ ) . '/functions.social.php' );

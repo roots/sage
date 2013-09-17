@@ -7,9 +7,9 @@ if ( !function_exists( 'shoestrap_module_page_options' ) ) :
 function shoestrap_module_page_options( $sections ) {
   // Page Options
   $section = array(
-		'title' => __( 'Page', 'shoestrap' ),
-		'icon' => 'elusive icon-file icon-large',
-	);
+    'title' => __( 'Page', 'shoestrap' ),
+    'icon' => 'elusive icon-file icon-large',
+  );
 
   $fields[] = array(
     'title'     => __( 'Custom Page Layout', 'shoestrap' ),
@@ -26,7 +26,7 @@ function shoestrap_module_page_options( $sections ) {
     'id'        => 'page_layout',
     'default'       => shoestrap_getVariable( 'layout', 1 ),
     'type'      => 'image_select',
-    'fold'      => 'page_layout_toggle',
+    // 'fold'      => 'page_layout_toggle',
     'customizer'=> array(),
     'options'   => array(
       0         => REDUX_URL . 'assets/img/1c.png',

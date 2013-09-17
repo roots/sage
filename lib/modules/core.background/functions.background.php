@@ -10,8 +10,8 @@ function shoestrap_background_css( ) {
   $bg_pattern     = shoestrap_getVariable( 'background_pattern' );
   $bg_color       = shoestrap_getVariable( 'color_body_bg' );
 
-	if ( $image_toggle == 0 && shoestrap_getVariable( 'background_pattern_toggle' ) == 0 ) :
-		return;
+  if ( $image_toggle == 0 && shoestrap_getVariable( 'background_pattern_toggle' ) == 0 ) :
+    return;
   endif;
 
   $style    = '';

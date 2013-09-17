@@ -8,9 +8,9 @@ function shoestrap_module_footer_options( $sections ) {
 
   // Branding Options
   $section = array(
-		'title' => __( 'Footer', 'shoestrap' ),
-		'icon' => 'elusive icon-caret-down icon-large'
-	 );
+    'title' => __( 'Footer', 'shoestrap' ),
+    'icon' => 'elusive icon-caret-down icon-large'
+  );
 
   $fields[] = array( 
     'title'     => __( 'Footer Background Color', 'shoestrap' ),
@@ -30,7 +30,7 @@ function shoestrap_module_footer_options( $sections ) {
     'min'       => 0,
     'max'       => 100,
     'type'      => 'slider',
-    'fold'      => 'retina_toggle'
+    // 'fold'      => 'retina_toggle'
   );
 
   $fields[] = array( 
@@ -62,7 +62,7 @@ function shoestrap_module_footer_options( $sections ) {
       'style'   => 'solid',
       'color'   => '#4B4C4D',
     ),
-    'fold'      => 'advanced_toggle'
+    // 'fold'      => 'advanced_toggle'
   );
 
   $fields[] = array( 
@@ -73,7 +73,7 @@ function shoestrap_module_footer_options( $sections ) {
     'min'       => 0,
     'max'       => 200,
     'type'      => 'slider',
-    'fold'      => 'advanced_toggle'
+    // 'fold'      => 'advanced_toggle'
   );
 
   $fields[] = array( 
@@ -83,14 +83,14 @@ function shoestrap_module_footer_options( $sections ) {
     'default'   => 0,
     'customizer'=> array(),
     'type'      => 'switch',
-    'fold'      => 'advanced_toggle'
+    // 'fold'      => 'advanced_toggle'
   );
 
   $fields[] = array( 
     'title'     => __( 'Footer social links column width', 'shoestrap' ),
     'desc'      => __( 'You can customize the width of the footer social links area. The footer text width will be adjusted accordingly. Default: 5.', 'shoestrap' ),
     'id'        => 'footer_social_width',
-    'fold'      => 'footer_social_toggle',
+    // 'fold'      => 'footer_social_toggle',
     'default'   => 6,
     'min'       => 3,
     'step'      => 1,
@@ -103,7 +103,7 @@ function shoestrap_module_footer_options( $sections ) {
     'title'     => __( 'Footer social icons open new window', 'shoestrap' ),
     'desc'      => __( 'Social icons in footer will open a new window. Default: On.', 'shoestrap' ),
     'id'        => 'footer_social_new_window_toggle',
-    'fold'      => 'footer_social_toggle',
+    // 'fold'      => 'footer_social_toggle',
     'default'   => 1,
     'customizer'=> array(),
     'type'      => 'switch',
@@ -119,4 +119,4 @@ function shoestrap_module_footer_options( $sections ) {
 endif;
 add_filter( 'redux-sections-'.REDUX_OPT_NAME, 'shoestrap_module_footer_options', 90 );   
 
-include_once( dirname( __FILE__ ).'/functions.footer.php' );
+include_once( dirname( __FILE__ ) . '/functions.footer.php' );

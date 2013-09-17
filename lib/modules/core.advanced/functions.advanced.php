@@ -23,7 +23,7 @@ function shoestrap_user_js() {
   $footer_scripts = shoestrap_getVariable( 'user_js' );
 
   if ( trim( $footer_scripts ) != '' ) :
-  	echo '<script id="core.advanced-user-js">' . $footer_scripts . '</script>';
+    echo '<script id="core.advanced-user-js">' . $footer_scripts . '</script>';
   endif;
 }
 endif;
