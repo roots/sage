@@ -77,7 +77,7 @@ function shoestrap_module_advanced_options( $sections ) {
     'step'      => 1,
     'max'       => 50,
     'advanced'  => true,
-    'compiler'      => true,
+    'compiler'  => true,
     'type'      => 'slider',
     // 'fold'      => 'advanced_toggle'
   );
@@ -185,6 +185,7 @@ function shoestrap_module_advanced_options( $sections ) {
     'desc'      => __( 'Minimize the genearated CSS. This should be ON for production sites. Default: OFF.', 'shoestrap' ),
     'id'        => 'minimize_css',
     'default'   => 0,
+    'compiler'  => true,
     'customizer'=> array(),
     'type'      => 'switch',
     // 'fold'      => 'advanced_toggle'

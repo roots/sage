@@ -28,7 +28,6 @@ function shoestrap_module_blog_options( $sections ) {
     'title'     => __( 'Custom Blog Layout', 'shoestrap' ),
     'desc'      => __( 'Set a default layout for your blog/post pages. Default: OFF.', 'shoestrap' ),
     'id'        => 'blog_layout_toggle',
-    'compiler'  => true,
     'default'   => 0,
     'type'      => 'switch',
     'customizer'=> array(),
@@ -41,7 +40,6 @@ function shoestrap_module_blog_options( $sections ) {
     'id'        => 'blog_layout',
     'default'   => shoestrap_getVariable( 'layout', 1 ),
     'type'      => 'image_select',
-    'compiler'  => true,
     // 'fold'      => 'blog_layout_toggle',
     'customizer'=> array(),
     'options'   => array( 

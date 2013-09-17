@@ -13,18 +13,18 @@ function shoestrap_module_page_options( $sections ) {
 
   $fields[] = array(
     'title'     => __( 'Custom Page Layout', 'shoestrap' ),
-    'desc'  => __( 'Set a default layout for your blob/post pages. Default: OFF.', 'shoestrap' ),
+    'desc'      => __( 'Set a default layout for your blob/post pages. Default: OFF.', 'shoestrap' ),
     'id'        => 'page_layout_toggle',
-    'default'       => 0,
+    'default'   => 0,
     'type'      => 'switch',
     'customizer'=> array(),
   );
 
   $fields[] = array(
     'title'     => __( 'Page Layout', 'shoestrap' ),
-    'desc'  => __( 'Override your default stylings. Choose between 1, 2 or 3 column layout.', 'shoestrap' ),
+    'desc'      => __( 'Override your default stylings. Choose between 1, 2 or 3 column layout.', 'shoestrap' ),
     'id'        => 'page_layout',
-    'default'       => shoestrap_getVariable( 'layout', 1 ),
+    'default'   => shoestrap_getVariable( 'layout', 1 ),
     'type'      => 'image_select',
     // 'fold'      => 'page_layout_toggle',
     'customizer'=> array(),

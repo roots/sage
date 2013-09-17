@@ -180,7 +180,7 @@ function shoestrap_module_jumbotron_options($sections) {
     'title'     => __('Jumbotron Font', 'shoestrap'),
     'desc'      => __('The font used in jumbotron.', 'shoestrap'),
     'id'        => 'font_jumbotron',
-    'less'      => true,
+    'compiler'  => true,
     'default'   => array(
       'family'    => 'Arial, Helvetica, sans-serif',
       'size'    => 16,
@@ -210,7 +210,7 @@ function shoestrap_module_jumbotron_options($sections) {
     'title'     => __('Jumbotron Headers Font', 'shoestrap'),
     'desc'      => __('The main font for your site.', 'shoestrap'),
     'id'        => 'font_jumbotron_headers',
-    'less'      => true,
+    'compiler'  => true,
     'default'   => array(
       'family'    => 'Arial, Helvetica, sans-serif',
       'color'   => '#333333',

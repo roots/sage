@@ -66,7 +66,6 @@ function shoestrap_module_header_options( $sections ) {
     'min'       => 0,
     'step'      => 1,
     'max'       => 100,
-    'compiler'  => true,
     'type'      => 'slider'
   );
 
@@ -143,7 +142,7 @@ function shoestrap_module_header_options( $sections ) {
     'title'     => __( 'Navbar Font', 'shoestrap' ),
     'desc'      => __( 'The font used in navbars.', 'shoestrap' ),
     'id'        => 'font_navbar',
-    'less'      => true,
+    'compiler'  => true,
     'default'   => array( 
       'family'  => 'Arial, Helvetica, sans-serif',
       'size'    => 14,
@@ -162,7 +161,7 @@ function shoestrap_module_header_options( $sections ) {
     'title'     => __( 'Branding Font', 'shoestrap' ),
     'desc'      => __( 'The branding font for your site.', 'shoestrap' ),
     'id'        => 'font_brand',
-    'less'      => true,
+    'compiler'  => true,
     'default'   => array( 
       'family'  => 'Arial, Helvetica, sans-serif',
       'size'    => 18,
