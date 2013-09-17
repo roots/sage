@@ -424,7 +424,7 @@ a.toggle-nav {
       padding-top: 0;
       padding-bottom: 0;
       right: auto !important;
-      border-top: 4px solid @brand-primary;
+      border-top: 1px solid @brand-primary;
       a,
       a:hover,
       a:focus {
@@ -470,6 +470,13 @@ a.toggle-nav {
       border-top: 5px solid @brand-warning;
       margin-top: -5px;
     }
+    .dropdown-menu {
+      .active > a, 
+      .active > a:hover,
+      .active > a:focus {
+      border-top: 2px solid @brand-warning !important;
+      }
+    }
   }
   &.style4 {
     border-top: 5px solid @brand-primary;
@@ -504,8 +511,7 @@ a.toggle-nav {
       .active > a,
       .active > a:hover,
       .active > a:focus {
-        margin-bottom: 1px !important;
-        margin-top: 1px !important;
+        border-bottom: 2px solid @brand-warning !important;
       }
     }
   }
