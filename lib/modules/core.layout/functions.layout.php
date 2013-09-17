@@ -194,6 +194,10 @@ function shoestrap_content_width_px( $echo = false ) {
     $main_span = 12 - intval( shoestrap_getVariable( 'layout_primary_width' ) ) - intval( shoestrap_getVariable( 'layout_secondary_width' ) );
   endif;
 
+  if ( is_front_page() && shoestrap_getVariable( 'layout_sidebar_on_front' ) != 1 ) :
+    $main_span = 12;
+  endif;
+
   $width = $container * ( $main_span / 12 ) - $gutter;
 
   // Width should be an integer since we're talking pixels, round up!.
