@@ -115,11 +115,11 @@ class ReduxFramework_slider extends ReduxFramework{
 	 * @since ReduxFramework 0.0.4
 	*/
 	function enqueue(){
-		
+
 		wp_enqueue_script(
 			'redux-field-slider-js', 
 			REDUX_URL.'inc/fields/slider/field_slider.min.js', 
-			array('jquery', 'jquery-numeric'),
+			array('jquery', 'jquery-numeric', 'jquery-ui-core', 'jquery-ui-dialog'),
 			time(),
 			true
 		);		
