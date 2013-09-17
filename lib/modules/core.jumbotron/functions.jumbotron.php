@@ -55,9 +55,11 @@ function shoestrap_jumbotron_css() {
   if ( shoestrap_getVariable( 'jumbotron_background_image_toggle' ) == 1 ) :
 
     if ( shoestrap_getVariable( 'jumbotron_background_custom_image' ) != "" ) :
-      $background = set_url_scheme( shoestrap_getVariable( 'jumbotron_background_custom_image' )['url'] );
+    	$jVar = shoestrap_getVariable( 'jumbotron_background_custom_image' );
+      $background = set_url_scheme( $jVar['url'] );
     elseif ( shoestrap_getVariable( 'jumbotron_background_image' ) != "" ) :
-      $background = set_url_scheme( shoestrap_getVariable( 'jumbotron_background_image' )['url'] );
+    	$jVar = shoestrap_getVariable( 'jumbotron_background_image' );
+      $background = set_url_scheme( $jVal['url'] );
     endif;
     
   elseif ( shoestrap_getVariable( 'jumbotron_background_pattern_toggle' ) == 1 && shoestrap_getVariable( 'jumbotron_background_pattern' ) != "" ) :
