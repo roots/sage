@@ -14,14 +14,11 @@ function shoestrap_module_menus_options( $sections ) {
 
   $url = admin_url( 'nav-menus.php' );
   $fields[] = array( 
-    'title'     => '',
-    'desc'      => '',
     'id'        => 'help7',
-    'default'   => '<h3 style=\'margin: 0 0 10px;\'>Advanced NavBar Options</h3>
-                    <p>You can activate or deactivate your Primary NavBar here, and define its properties.
+    'title'     => __( 'Advanced NavBar Options', 'shoestrap' ),
+    'desc'      => __( 'You can activate or deactivate your Primary NavBar here, and define its properties.
                     Please note that you might have to manually create a menu if it doesn\'t already exist
-                    and add items to it from <a href=\'$url\'>this page</a>.</p>',
-    'icon'      => true,
+                    and add items to it from <a href=\'$url\'>this page</a>.', 'shoestrap' ),
     'type'      => 'info'
   );
 
@@ -38,12 +35,9 @@ function shoestrap_module_menus_options( $sections ) {
   );
 
   $fields[] = array( 
-    'title'     => '',
-    'desc'      => '',
     'id'        => 'helpnavbarbg',
-    'default'   => '<h3 style=\'margin: 0 0 10px;\'>NavBar Styling Options</h3>
-                    <p>Customize the look and feel of your navbar below.</p>',
-    'icon'      => true,
+    'title'     => __( 'NavBar Styling Options', 'shoestrap' ),
+    'desc'   	=> __( 'Customize the look and feel of your navbar below.', 'shoestrap' ),
     'type'      => 'info'
   );    
 
@@ -215,12 +209,9 @@ function shoestrap_module_menus_options( $sections ) {
   );
 
   $fields[] = array( 
-    'title'     => '',
-    'desc'      => '',
     'id'        => 'help9',
-    'default'   => '<h3 style=\'margin: 0 0 10px;\'>Secondary NavBar</h3>
-                    <p>The secondary navbar is a 2nd navbar, located right above the main wrapper. You can show a menu there, by assigning it from Appearance -> Menus.</p>',
-    'icon'      => true,
+    'title'     => __( 'Secondary Navbar', 'shoestrap' ),
+    'desc'   => __( 'The secondary navbar is a 2nd navbar, located right above the main wrapper. You can show a menu there, by assigning it from Appearance -> Menus.', 'shoestrap' ),
     'type'      => 'info',
     // 'fold'      => 'advanced_toggle'
   );

@@ -12,11 +12,8 @@ function shoestrap_module_social_options( $sections ) {
   );
 
   $fields[] = array( 
-    'title'     => '',
-    'desc'      => '',
     'id'        => 'social_sharing_help_1',
-    'default'   => '<h3 style=\'margin: 0 0 10px;\'>General Options</h3>',
-    'icon'      => true,
+    'title'     => __( 'General Options', 'shoestrap' ),
     'type'      => 'info'
   );
 
@@ -84,11 +81,8 @@ function shoestrap_module_social_options( $sections ) {
   );
 
   $fields[] = array( 
-    'title'     => '',
-    'desc'      => '',
     'id'        => 'social_sharing_help_2',
-    'default'   => '<h3 style="margin: 0 0 10px;">Select Socials</h3>',
-    'icon'      => true,
+    'title'     => __( 'Select Socials', 'shoestrap' ),
     'type'      => 'info'
   );
 

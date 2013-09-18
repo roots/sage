@@ -54,16 +54,13 @@ function shoestrap_module_background_options( $sections ) {
   );
 
   $fields[] = array(
-    'title'     => '',
-    'desc'      => '',
+    'title'     => 'Background Images',
     'id'        => 'help4',
-    'default'   => '<h3 style=\'margin: 0 0 10px;\'>Background Images</h3>
-                    <p>If you want a background image, you can select one here.
+    'desc'      => __( 'If you want a background image, you can select one here.
                     You can either upload a custom image, or use one of our pre-defined image patterns.
                     If you both upload a custom image and select a pattern, your custom image will override the selected pattern.
                     Please note that the image only applies to the area on the right and left of the main content area,
-                    to ensure better content readability. You can also set the background position to be fixed or scroll!</p>',
-    'icon'      => true,
+                    to ensure better content readability. You can also set the background position to be fixed or scroll!', 'shoestrap' ),
     'type'      => 'info'
   );
 

@@ -66,14 +66,19 @@ if( !class_exists( 'ReduxFramework_info' ) ) {
         		$this->field['style'] = "";
         	}
 
-            if( empty( $this->field['desc'] ) && !empty( $this->field['default'] ) )
-                $this->field['desc'] = $this->field['default'];
+            if( empty( $this->field['desc'] ) && !empty( $this->field['default'] ) ) {
+            	$this->field['desc'] = $this->field['default'];
+            	unset($this->field['default']);
+            }       
 
-            if( !isset( $this->field['fold-ids'] ) )
-                $this->field['fold-ids'] = '';
+            if( empty( $this->field['desc'] ) && !empty( $this->field['subtitle'] ) ) {
+            	$this->field['desc'] = $this->field['subtitle'];
+            	unset($this->field['subtitle']);
+            }         
 
-            if( !isset( $this->field['fold-vals'] ) )
-                $this->field['fold-vals'] = '';
+            if ( empty( $this->field['desc'] ) ) {
+            	$this->field['desc'] = "";
+            }
 
             if( empty( $this->field['raw_html'] ) ) {
                 $this->field['class'] .= ' redux-info-field';
@@ -85,19 +90,25 @@ if( !class_exists( 'ReduxFramework_info' ) ) {
                 $this->field['style'] = 'redux-' . $this->field['style'];
             }
 
-            if( isset( $this->field['header'] ) && !empty( $this->field['header'] ) ) {
-                $this->field['header'] = '<b>' . $this->field['header'] . '</b><br/>';
-            } else {
-                $this->field['header'] = '';
-            }
-
             echo '</td></tr></table><div id="' . $this->field['id'] . '" class="' . $this->field['style'] . $this->field['class'] . '">';
 
-            if( isset( $this->field['icon'] ) && !empty( $this->field['icon'] ) ) {
-                echo '<p class="redux-info-icon"><i class="icon-' . $this->field['icon'] . ' icon-large"></i></p>';
-            }
+            	if ( !empty($this->field['raw_html']) && $this->field['raw_html'] ) {
+            		echo $this->field['desc'];
+            	} else {
+		            if( !empty( $this->field['title'] ) ) {
+		                $this->field['title'] = '<b>' . $this->field['title'] . '</b><br/>';
+		            } else {
+		                $this->field['title'] = '';
+		            }
 
-            echo '<p class="redux-info-desc">' . $this->field['header'] . $this->field['desc'] . '</p>';
+		            if( isset( $this->field['icon'] ) && !empty( $this->field['icon'] ) && $this->field['icon'] !== true ) {
+		                echo '<p class="redux-info-icon"><i class="icon-' . $this->field['icon'] . ' icon-large"></i></p>';
+		            }
+
+	            	echo '<p class="redux-info-desc">' . $this->field['title'] . $this->field['desc'] . '</p>';
+
+            	}
+
             echo '</div><table class="form-table no-border" style="margin-top: 0;"><tbody><tr><th></th><td>';
         
         }

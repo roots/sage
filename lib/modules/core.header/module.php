@@ -14,13 +14,10 @@ function shoestrap_module_header_options( $sections ) {
 
   $url = admin_url( 'widgets.php' );
   $fields[] = array( 
-    'title'     => '',
-    'desc'      => '',
     'id'        => 'help9',
-    'default'   => '<h3 style=\'margin: 0 0 10px;\'>Extra Branding Area</h3>
-                    <p>You can enable an extra branding/header area. In this header you can add your logo, and any other widgets you wish.
-                    To add widgets on your header, visit <a href=\'$url\'>this page</a> and add your widgets to the <strong>Header</strong> Widget Area.</p>',
-    'icon'      => true,
+    'title'     => __( 'Extra Branding Area', 'shoestrap' ),
+    'desc'      => __( 'You can enable an extra branding/header area. In this header you can add your logo, and any other widgets you wish.
+                    To add widgets on your header, visit <a href=\'$url\'>this page</a> and add your widgets to the <strong>Header</strong> Widget Area.', 'shoestrap' ),
     'type'      => 'info',
     // 'fold'      => 'advanced_toggle'
   );

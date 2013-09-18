@@ -58,12 +58,9 @@ function shoestrap_module_advanced_options( $sections ) {
   );
 
   $fields[] = array( 
-    'title'     => '',
-    'desc'      => '',
+    'title'     => 'Border-Radius and Padding Base',
     'id'        => 'help2',
-    'default'   => '<h3 style=\'margin: 0 0 10px;\'>Border-Radius and Padding Base</h3>
-                    <p>The following settings affect various areas of your site, most notably buttons.</p>',
-    'icon'      => true,
+    'desc'   => __( 'The following settings affect various areas of your site, most notably buttons.', 'shoestrap' ),
     'type'      => 'info',
     // 'fold'      => 'advanced_toggle'
   );
@@ -98,13 +95,12 @@ function shoestrap_module_advanced_options( $sections ) {
 
   $url = admin_url( 'widgets.php' );
   $fields[] = array( 
-    'title'     => '',
-    'desc'      => '',
+    'title'     => __( 'CAUTION', 'shoestrap' ),
     'id'        => 'help10',
-    'default'   => '<h3 style=\'margin: 0 0 10px;\'>CAUTION</h3>
-                    <p>The settings bellow can pottentially harm your site if you do not properly comprehend them and what they do.
-                    If unsure, simply let them be.</p>',
-    'icon'      => true,
+    'style'		=> 'warning',
+    'desc'   => __('The settings bellow can pottentially harm your site if you do not properly comprehend them and what they do.
+                    If unsure, simply let them be.', 'shoestrap' ),
+    'icon'      => 'warning-sign',
     'type'      => 'info'
   );
 

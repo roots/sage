@@ -831,7 +831,7 @@ if( !class_exists( 'ReduxFramework' ) ) {
                 if( isset( $section['fields'] ) ) {
                     foreach( $section['fields'] as $fieldk => $field ) {
                     	$th = "";
-                        if( isset( $field['title'] ) ) {
+                        if( isset( $field['title'] ) && $field['type'] !== "info" ) {
 			    			$default_mark = ( !empty($field['default']) && isset($this->options[$field['id']]) && $this->options[$field['id']] == $field['default'] && !empty( $this->args['default_mark'] ) && isset( $field['default'] ) ) ? $this->args['default_mark'] : '';
                             if (!empty($field['title'])) {
                             	$th = $field['title'] . $default_mark;	
@@ -854,7 +854,7 @@ if( !class_exists( 'ReduxFramework' ) ) {
 							$runUpdate = true;
 						}						
 
-						if ( $this->args['default_show'] === true && isset( $field['default'] ) && isset($this->options[$field['id']]) && $this->options[$field['id']] != $field['default'] ) {
+						if ( $this->args['default_show'] === true && isset( $field['default'] ) && isset($this->options[$field['id']]) && $this->options[$field['id']] != $field['default'] && $field['type'] !== "info" ) {
 							$default_output = "";
 						    if (!is_array($field['default'])) {
 								if ( !empty( $field['options'][$field['default']] ) ) {

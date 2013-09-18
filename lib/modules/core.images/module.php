@@ -13,14 +13,11 @@ function shoestrap_module_featured_images_options( $sections ) {
   );
 
   $fields[] = array( 
-    'title'     => '',
-    'desc'      => '',
     'id'        => 'help3',
-    'default'   => '<h3 style=\'margin: 0 0 10px;\'>Featured Images</h3>
-                    <p>Here you can select if you want to display the featured images in post archives and individual posts.
+    'title' 	=> __( 'Featured Images', 'shoestrap' ),
+    'desc' 		=> __( 'Here you can select if you want to display the featured images in post archives and individual posts.
                     Please note that these apply to posts, pages, as well as custom post types.
-                    You can select image sizes independently for archives and individual posts view.</p>',
-    'icon'      => true,
+                    You can select image sizes independently for archives and individual posts view.', 'shoestrap' ),
     'type'      => 'info',
     // 'fold'      => 'advanced_toggle'
   );

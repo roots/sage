@@ -22,12 +22,9 @@ function shoestrap_module_branding_options( $sections ) {
   );
 
   $fields[] = array( 
-    'title'     => '',
-    'desc'      => '',
+    'title'     => 'Retina Logo',
+    'desc'      => __( 'Upload a logo that is exactly 2x the size you want to typically display. A version will then be generated for general site use. If you have previously uploaded a logo, you will need to re-upload it to generate the proper versions.', 'shoestrap' ),
     'id'        => 'retina_help',
-    'default'   => '<h3 style=\'margin: 0 0 10px;\'>Retina Logo</h3>
-                    <p>Upload a logo that is exactly 2x the size you want to typically display. A version will then be generated for general site use. If you have previously uploaded a logo, you will need to re-upload it to generate the proper versions.</p>',
-    'icon'      => true,
     // 'fold'      => 'retina_logo_toggle',
     'type'      => 'info'
   );
@@ -52,17 +49,14 @@ function shoestrap_module_branding_options( $sections ) {
 
 
   $fields[] = array( 
-    'title'     => '',
+    'title'     => 'Colors',
     'desc'      => '',
     'id'        => 'help6',
-    'default'   => '<h3 style=\'margin: 0 0 10px;\'>Colors</h3>
-                    <p>The primary color you select will also affect other elements on your site,
+    'default'   => __( 'The primary color you select will also affect other elements on your site,
                     such as table borders, widgets colors, input elements, dropdowns etc.
                     The branding colors you select will be used throughout the site in various elements.
                     One of the most important settings in your branding is your primary color,
-                    since this will be used more often.</p>
-                    ',
-    'icon'      => true,
+                    since this will be used more often.', 'shoestrap' ),
     'type'      => 'info'
   );
 
