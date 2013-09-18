@@ -29,6 +29,45 @@ function shoestrap_get_rgb( $hex, $implode = false ) {
 }
 endif;
 
+
+if ( !function_exists( 'shoestrap_get_rgba' ) ) :
+/*
+ * Gets the rgba value of a color.
+ */
+function shoestrap_get_rgba( $hex = '#fff', $opacity = 100, $echo = false ) {
+  // Make sure that opacity is properly formatted
+  if ( $opacity >= 100 ) :
+    // Set the opacity to 100 if a larger value has been entered by mistake
+    $opacity = 100;
+  elseif ( $opacity < 0 ) :
+    // If a negative value is used, then set to 0
+    $opacity = 0;
+  elseif ( $opacity < 1 && $opacity != 0 ) :
+    // If an opacity value is entered in a decimal form
+    // for example 0.25, then multiply by 100
+    // (this is required for our calculations later on)
+    $opacity = ( $opacity * 100 );
+  else
+    // If a value is entered between 1 and 0, then use that value.
+    // Values smaller than 1 and larger than 0 are considered as 
+    // decimal input format and are multiplied by 100
+    $opacity = $opacity;
+  endif;
+
+  // Divide the opacity by 100 to end-up with a CSS value for the opacity
+  $opacity = ( $opacity / 100 );
+
+
+  $color = 'rgba(' . shoestrap_get_rgb( $hex, true ) . ', ' . $opacity . ')';
+
+  if ( $echo == true ) :
+    echo $color;
+  else :
+    return $color;
+  endif;
+}
+
+
 if ( !function_exists( 'shoestrap_get_brightness' ) ) :
 /*
  * Gets the brightness of the $hex color.
