@@ -47,7 +47,7 @@ function shoestrap_get_rgba( $hex = '#fff', $opacity = 100, $echo = false ) {
     // for example 0.25, then multiply by 100
     // (this is required for our calculations later on)
     $opacity = ( $opacity * 100 );
-  else
+  else :
     // If a value is entered between 1 and 0, then use that value.
     // Values smaller than 1 and larger than 0 are considered as 
     // decimal input format and are multiplied by 100
@@ -66,6 +66,7 @@ function shoestrap_get_rgba( $hex = '#fff', $opacity = 100, $echo = false ) {
     return $color;
   endif;
 }
+endif;
 
 
 if ( !function_exists( 'shoestrap_get_brightness' ) ) :
