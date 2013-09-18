@@ -184,11 +184,6 @@ function shoestrap_getVariable( $name, $key = false ) {
   // Set this to your preferred default value
   $var = '';
 
-  // Hack for the 'shoestrap_license_key_status' option
-  if ( $name == 'shoestrap_license_key_status' ) :
-    return get_theme_mod( $name );
-  endif;
-
   if ( empty( $name ) && !empty( $options ) ) :
     $var = $options;
   else :

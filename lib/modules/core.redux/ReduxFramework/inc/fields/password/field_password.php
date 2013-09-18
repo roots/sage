@@ -29,7 +29,6 @@ class ReduxFramework_password {
 			);
 		$this->value = wp_parse_args( $this->value, $defaults );
 	}
-	$this->field['username'] = true;
 	if (!empty($this->field['username']) && $this->field['username'] === true ) {
 		echo '<input type="input" autocomplete="off" placeholder="'.__( 'Username', 'redux-framework' ).'" id="' . $this->field['id'] . '[username]" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][username]" value="' . esc_attr($this->value['username']) . '" class="regular-text ' . $this->field['class'] . '" style="margin-right: 5px;" />';
 					echo '<input type="password" autocomplete="off" placeholder="'.__( 'Password', 'redux-framework' ).'" id="' . $this->field['id'] . '[password]" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][password]" value="' . esc_attr($this->value['password']) . '" class="regular-text ' . $this->field['class'] . '" />';

@@ -101,9 +101,7 @@ if( !class_exists( 'ReduxFramework' ) ) {
             $defaults['footer_credit']      = __( '<span id="footer-thankyou">Options panel created using <a href="' . $this->framework_url . '" target="_blank">Redux Framework</a> v' . $this->framework_version . '</span>', 'redux-framework' );
             $defaults['help_tabs']          = array();
             $defaults['help_sidebar']       = __( '', 'redux-framework' );
-			$defaults['theme_mods'] 		= false;
-			$defaults['theme_mods_expand'] 	= false;
-			$defaults['transient'] 			= false;
+            $defaults['database'] 			= ''; // possible: options, theme_mods, theme_mods_expanded, transient
 			$defaults['global_variable'] 	= '';
 			$defaults['transient_time'] 	= 60 * MINUTE_IN_SECONDS;
 
@@ -204,11 +202,11 @@ if( !class_exists( 'ReduxFramework' ) ) {
 		 */
 		function set_options( $value = '' ) {
 			if( !empty($value) ) {
-				if ( $this->args['transient'] === true ) {
+				if ( $this->args['database'] === 'transient' ) {
 					set_transient( $this->args['opt_name'] . '-transient', $value, $this->args['transient_time'] );
-				} else if ( $this->args['theme_mods'] === true ) {
+				} else if ( $this->args['database'] === 'theme_mods' ) {
 					set_theme_mod( $this->args['opt_name'] . '-mods', $value );	
-				} else if ( $this->args['theme_mods_expand'] === true ) {
+				} else if ( $this->args['database'] === 'theme_mods_expanded' ) {
 					foreach ( $value as $k=>$v ) {
 						set_theme_mod( $k, $v );
 					}
@@ -235,11 +233,11 @@ if( !class_exists( 'ReduxFramework' ) ) {
 			if ( !empty( $this->defaults ) ) {
 				$defaults = $this->defaults;
 			}			
-			if ( $this->args['transient'] === true ) {
+			if ( $this->args['database'] === "transient" ) {
 				$result = get_transient( $this->args['opt_name'] . '-transient' );
-			} else if ($this->args['theme_mods'] === true ) {
+			} else if ($this->args['database'] === "theme_mods" ) {
 				$result = get_theme_mod( $this->args['opt_name'] . '-mods' );
-			} else if ( $this->args['theme_mods_expand'] === true ) {
+			} else if ( $this->args['database'] === 'theme_mods_expanded' ) {
 				$result = get_theme_mods();
 			} else {
 				$result = get_option( $this->args['opt_name'], $defaults );
@@ -319,9 +317,11 @@ if( !class_exists( 'ReduxFramework' ) ) {
 										'fold' => 'id'
 										);
 								    */
-								    $folds[$field['fold']][$field['id']][] = 1;
-								} else {
+								    $folds[$field['fold']]['children'][1][] = $field['id'];
+								    $folds[$field['id']]['parent'] = $field['fold'];
+								} else {										    										
 								    foreach( $field['fold'] as $foldk=>$foldv ) {
+								    	
 										if ( is_array( $foldv ) ) {
 										    /*
 											Example variable:
@@ -331,10 +331,12 @@ if( !class_exists( 'ReduxFramework' ) ) {
 										    */
 											
 										    foreach ($foldv as $foldvValue) {
-										    	//echo $field['id']." key-".$foldk.' f-val-'.print_r($foldv)." foldvValue".$foldvValue;
-												$folds[$foldk][$field['id']][] = $foldvValue;
+										    	//echo 'id: '.$field['id']." key: ".$foldk.' f-val-'.print_r($foldv)." foldvValue".$foldvValue;
+												$folds[$foldk]['children'][$foldvValue][] = $field['id'];
+												$folds[$field['id']]['parent'] = $foldk;
 										    }
 										} else {
+											
 											//!DOVY If there's a problem, this is where it's at. These two cases.
 											//This may be able to solve this issue if these don't work
 											//if (count($field['fold']) == count($field['fold'], COUNT_RECURSIVE)) {
@@ -347,7 +349,8 @@ if( !class_exists( 'ReduxFramework' ) ) {
 													'fold' => array( 'id' )
 												    );
 											    */	
-	  											$folds[$foldv][$field['id']] = array(1);
+												$folds[$field['id']]['parent'] = $foldv;
+	  											$folds[$foldv]['children'][1] = $field['id'];
 											} else {
 											    /*
 												Example variable:
@@ -358,7 +361,8 @@ if( !class_exists( 'ReduxFramework' ) ) {
 											    if (empty($foldv)) {
 											    	$foldv = 0;
 											    }
-												$folds[$foldk][$field['id']] = array($foldv);	
+											    $folds[$field['id']]['parent'] = $foldk;
+												$folds[$foldk]['children'][$foldv][] = $field['id'];	
 											}
 										}
 								    }
@@ -367,6 +371,11 @@ if( !class_exists( 'ReduxFramework' ) ) {
 						}
 				    }
 				}
+				/*
+				echo "<pre>";
+				print_r($folds);
+				exit();
+				*/
 				return $folds;
 			}
 		    
@@ -584,8 +593,8 @@ if( !class_exists( 'ReduxFramework' ) ) {
 
             wp_enqueue_script(
                 'redux-js',
-                //REDUX_URL . 'assets/js/admin.js',// DEBUG ONLY
-                REDUX_URL . 'assets/js/admin.min.js',
+                REDUX_URL . 'assets/js/admin.js',// DEBUG ONLY
+                //REDUX_URL . 'assets/js/admin.min.js',
                 array( 'jquery','jquery-cookie' ),
                 time(),
                 true
@@ -629,6 +638,8 @@ if( !class_exists( 'ReduxFramework' ) ) {
                     'preset_confirm'    => __( 'Your current options will be replaced with the values of this preset. Would you like to proceed?', 'redux-framework' ), 
                     'opt_name'          => $this->args['opt_name'],
                     'folds'				=> $this->folds,
+                    'options'			=> $this->options,
+                    'defaults'			=> $this->options_defaults,
                 );       
 
             // Construct the errors array. 
@@ -819,9 +830,9 @@ if( !class_exists( 'ReduxFramework' ) ) {
 
                 if( isset( $section['fields'] ) ) {
                     foreach( $section['fields'] as $fieldk => $field ) {
+                    	$th = "";
                         if( isset( $field['title'] ) ) {
 			    			$default_mark = ( !empty($field['default']) && isset($this->options[$field['id']]) && $this->options[$field['id']] == $field['default'] && !empty( $this->args['default_mark'] ) && isset( $field['default'] ) ) ? $this->args['default_mark'] : '';
-                            $th = '';
                             if (!empty($field['title'])) {
                             	$th = $field['title'] . $default_mark;	
                             }
@@ -844,27 +855,40 @@ if( !class_exists( 'ReduxFramework' ) ) {
 						}						
 
 						if ( $this->args['default_show'] === true && isset( $field['default'] ) && isset($this->options[$field['id']]) && $this->options[$field['id']] != $field['default'] ) {
+							$default_output = "";
 						    if (!is_array($field['default'])) {
-								$default_output = __( 'Default', 'redux-framework' ) . ": " . $field['default'];
-						    } else {
-								$default_output = "";
-								foreach( $field['default'] as $defaultk => $defaultv ) {
-								    $default_output .= $defaultk . ": " . $defaultv.', ';
+								if ( !empty( $field['options'][$field['default']] ) ) {
+									$default_output .= $field['options'][$field['default']].", ";
+								} else if ( !empty( $field['options'][$field['default']] ) ) {
+									$default_output .= $field['options'][$field['default']].", ";
+								} else if ( !empty( $field['default'] ) ) {
+									$default_output .= $field['default'] . ', ';
 								}
-								if ( !empty( $default_output ) ) {
-								    $default_output = substr($default_output, 0, -2);
+						    } else {
+								
+								foreach( $field['default'] as $defaultk => $defaultv ) {
+									if ( !empty( $field['options'][$defaultv] ) ) {
+										$default_output .= $field['options'][$defaultv].", ";
+									} else if ( !empty( $field['options'][$defaultk] ) ) {
+										$default_output .= $field['options'][$defaultk].", ";
+									} else if ( !empty( $defaultv ) ) {
+										$default_output .= $defaultv.',';
+									}
 								}
 						   	}
+							if ( !empty( $default_output ) ) {
+							    $default_output = __( 'Default', 'redux-framework' ) . ": " . substr($default_output, 0, -2);
+							}				   	
 						    $th .= '<span class="showDefaults">'.$default_output.'</span>';
 			            }
 			            if (!isset($field['class'])) { // No errors please
 			            	$field['class'] = "";
 			            }
 			            $field = apply_filters( 'redux-field-' . $field['id'] . 'modifier-' . $this->args['opt_name'], $field );
-						if ( !empty( $field['fold'] ) ) { // This has some fold items, hide it by default
+						if ( !empty( $this->folds[$field['id']]['parent'] ) ) { // This has some fold items, hide it by default
 						    $field['class'] .= " fold";
 						}
-						if ( !empty( $this->folds[$field['id']] ) ) { // Sets the values you shoe fold children on
+						if ( !empty( $this->folds[$field['id']]['children'] ) ) { // Sets the values you shoe fold children on
 						    $field['class'] .= " foldParent";
 						}
 
@@ -926,7 +950,7 @@ if( !class_exists( 'ReduxFramework' ) ) {
 
                     set_transient( 'redux-compiler-' . $this->args['opt_name'], '1', 1000 );
                     unset( $plugin_options['defaults'], $plugin_options['compiler'], $plugin_options['import'], $plugin_options['import_code'] );
-				    if ( $this->args['transient'] == true || $this->args['theme_mods'] == true ) {
+				    if ( $this->args['database'] == 'transient' || $this->args['database'] == 'theme_mods' || $this->args['database'] == 'theme_mods_expanded' ) {
 						$this->set_options( $plugin_options );
 						return $this->options;
 				    }
@@ -938,7 +962,7 @@ if( !class_exists( 'ReduxFramework' ) ) {
                 $plugin_options = $this->_default_values();
                 set_transient( 'redux-compiler-' . $this->args['opt_name'], '1', 1000 );
                 unset( $plugin_options['defaults'], $plugin_options['compiler'], $plugin_options['import'], $plugin_options['import_code'] );
-				if ( $this->args['transient'] == true || $this->args['theme_mods'] == true ) {
+				if ( $this->args['database'] == 'transient' || $this->args['database'] == 'theme_mods' || $this->args['database'] == 'theme_mods_expanded' ) {
 				    $this->set_options( $plugin_options );
 					return $this->options;
 				}
@@ -967,7 +991,7 @@ if( !class_exists( 'ReduxFramework' ) ) {
             unset( $plugin_options['import_code'] );
             unset( $plugin_options['import_link'] );
             unset( $plugin_options['compiler'] );
-		    if ( $this->args['transient'] == true || $this->args['theme_mods'] == true ) {
+		    if ( $this->args['database'] == 'transient' || $this->args['database'] == 'theme_mods' || $this->args['database'] == 'theme_mods_expanded' ) {
 				$this->set_options( $plugin_options );
 				return $this->options;
 		    }
@@ -1170,6 +1194,15 @@ if( !class_exists( 'ReduxFramework' ) ) {
 					// DOVY! REPLACE $k with $section['ID'] when used properly.
 	                echo '<li id="' . $k . '_section_group_li" class="redux-group-tab-link-li">';
 	                echo '<a href="javascript:void(0);" id="' . $k . '_section_group_li_a" class="redux-group-tab-link-a" data-rel="' . $k . '">' . $icon . '<span class="group_title">' . $section['title'] . '</span></a>';
+	                if ( !empty( $section['sections'] ) ) {
+	                	echo '<ul id="' . $k . '_section_group_li_subsections" class="sub">';
+	                	foreach ($section['sections'] as $k2 => $subsection) {
+	                		echo '<li id="' . $k . '_section_group_li" class="redux-group-tab-link-li">';
+	                		echo '<a href="javascript:void(0);" id="' . $k . '_section_group_subsection_li_a" class="redux-group-tab-link-a" data-rel="' . $k .'sub-'.$k2.'"><span class="group_title">' . $subsection['title'] . '</span></a>';
+	                		echo '</li>';
+	                	}
+	                	echo '</ul>';
+	                }
 	                echo '</li>';							
 				}                
             }
@@ -1243,7 +1276,26 @@ if( !class_exists( 'ReduxFramework' ) ) {
 
             foreach( $this->sections as $k => $section ) {
                 echo '<div id="' . $k . '_section_group' . '" class="redux-group-tab">';
-                do_settings_sections( $this->args['opt_name'] . $k . '_section_group' );
+                if ( !empty( $section['sections'] ) ) {
+                	$tabs = "";
+		            echo '<div id="' . $k . '_section_tabs' . '" class="redux-section-tabs">';
+		            echo '<ul>';                	
+                	foreach ($section['sections'] as $subkey => $subsection) {
+                		echo '<li><a href="#'.$k.'_section-tab-'.$subkey.'">'.$subsection['title'].'</a></li>';
+                	}
+		            echo '</ul>';
+               		foreach ($section['sections'] as $subkey => $subsection) {
+               			echo '<div id="' . $k .'sub-'.$subkey. '_section_group' . '" class="redux-group-tab">';
+                		echo '<div id="'.$k.'_section-tab-'.$subkey.'">';
+                		echo "hello".$subkey;
+                		do_settings_sections( $this->args['opt_name'] . $k . '_tab_'.$subkey.'_section_group' );	
+                		echo "</div>";
+                	}
+                	echo "</div>";
+                } else {
+                	do_settings_sections( $this->args['opt_name'] . $k . '_section_group' );	
+                }
+
                 echo '</div>';
             }
 

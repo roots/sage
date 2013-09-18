@@ -3,31 +3,74 @@
 }
 .redux-info-field {
     min-height: 20px;
-    padding: 19px;
+    padding: 5px 19px;
     margin-top: 20px;
     margin-bottom: 15px;
-    background-color: #F5F5F5;
-    border: 1px solid #E3E3E3;
+    border: 1px solid;
     border-radius: 4px;
-    color: #999;
-    background-color: #EFF9FF;
-    border: 1px solid #D6F0FF;
-    color: #777;
+    border: 1px solid;
     position: relative;
 
     h3 {
         color: #777;
     }
+
+    .redux-info-icon {
+        display: inline-block;
+        margin-right: 15px;
+
+        i {
+            font-size: 2em;
+        }
+    }
+
+    .redux-info-desc {
+        display: inline-block;
+        vertical-align: top;
+    }
 }
-.redux-info-field.redux-notice {
-    background-color: #eff9ff;
-    border-color: #d6f0ff
+.redux-info-field.redux-normal {
+    background-color: #eeeeee;
+    border-color: #cccccc;
+    color: #666666;
+
+    i {
+        color: #c5c5c5;
+    }
 }
 .redux-info-field.redux-warning {
-    background-color: #ffeeee;
-    border-color: #ffd7d8
+    background-color: #fbeba4;
+    border-color: #d7c281;
+    color: #958234;
+
+    i {
+        color: #dcca81;
+    }
 }
 .redux-info-field.redux-success {
-    background-color: #f0ffee;
-    border-color: #dcffd7
+    background-color: #c4ee91;
+    border-color: #71af5d;
+    color: #4d7615;
+
+    i {
+        color: #a0ca6c;
+    }
+}
+.redux-info-field.redux-critical {
+    background-color: #fba1a3;
+    border-color: #b84f5b;
+    color: #981225;
+
+    i {
+        color: #dd767d;
+    }
+}
+.redux-info-field.redux-info {
+    background-color: #d3e4f4;
+    border-color: #a9b6c2;
+    color: #5c80a1;
+
+    i {
+        color: #afc6da;
+    }
 }

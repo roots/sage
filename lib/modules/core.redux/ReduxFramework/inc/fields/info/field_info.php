@@ -79,14 +79,25 @@ if( !class_exists( 'ReduxFramework_info' ) ) {
                 $this->field['class'] .= ' redux-info-field';
 
                 if( empty( $this->field['style'] ) ) {
-                    $this->field['style'] = 'notice';
+                    $this->field['style'] = 'normal';
                 }
 
-                $this->field['style'] = ' redux-' . $this->field['style'];
+                $this->field['style'] = 'redux-' . $this->field['style'];
             }
 
-            echo '</td></tr></table><div id="' . $this->field['id'] . '" class="redux-info' . $this->field['style'] . $this->field['class'] . '">';
-            echo $this->field['desc'];
+            if( isset( $this->field['header'] ) && !empty( $this->field['header'] ) ) {
+                $this->field['header'] = '<b>' . $this->field['header'] . '</b><br/>';
+            } else {
+                $this->field['header'] = '';
+            }
+
+            echo '</td></tr></table><div id="' . $this->field['id'] . '" class="' . $this->field['style'] . $this->field['class'] . '">';
+
+            if( isset( $this->field['icon'] ) && !empty( $this->field['icon'] ) ) {
+                echo '<p class="redux-info-icon"><i class="icon-' . $this->field['icon'] . ' icon-large"></i></p>';
+            }
+
+            echo '<p class="redux-info-desc">' . $this->field['header'] . $this->field['desc'] . '</p>';
             echo '</div><table class="form-table no-border" style="margin-top: 0;"><tbody><tr><th></th><td>';
         
         }

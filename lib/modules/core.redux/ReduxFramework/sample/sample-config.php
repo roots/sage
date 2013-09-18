@@ -1,15 +1,17 @@
 <?php
 
+/**
+	ReduxFramework Sample Config File
+	For full documentation, please visit http://reduxframework.com/docs/
+**/
+
+
 /*
  *
  * Require the framework class before doing anything else, so we can use the defined URLs and directories.
  * If you are running on Windows you may have URL problems which can be fixed by defining the framework url first.
  *
  */
-
-if(!class_exists( 'ReduxFramework' ) && file_exists( dirname(__FILE__) . '/../framework.php' ) ){
-    require_once( dirname(__FILE__) . '/../framework.php' );
-}
 
 /*
  *
@@ -160,6 +162,7 @@ function setup_framework_options(){
 	$theme = wp_get_theme();
 
 	$args['display_name'] = $theme->get('Name');
+	$args['database'] = "theme_mods_expanded";
 	$args['display_version'] = $theme->get('Version');
 
     // If you want to use Google Webfonts, you MUST define the api key.
@@ -1025,20 +1028,23 @@ function setup_framework_options(){
 			array(
 				'id'=>'23',
 				'type' => 'info',
-				'fold' => array('18'=>array('1', '2')),
-				'desc' => __('<p class="description">This is the info field, if you want to break sections up.</p>', 'redux-framework')
+                'fold' => array('18'=>array('1', '2')),
+				'desc' => __('This is the info field, if you want to break sections up.', 'redux-framework')
             ),
             array(
                 'id'=>'info_warning',
                 'type'=>'info',
                 'style'=>'warning',
-                'desc' => __( '<p class="description">This is an info field with the warning style applied.</p>', 'redux-framework')
+                'header'=> __( 'This is a header.', 'redux-framework' ),
+                'desc' => __( 'This is an info field with the warning style applied and a header.', 'redux-framework')
             ),
             array(
                 'id'=>'info_success',
                 'type'=>'info',
                 'style'=>'success',
-                'desc' => __( '<p class="description">This is an info field with the success style applied.</p>', 'redux-framework')
+                'icon'=>'info-sign',
+                'header'=> __( 'This is a header.', 'redux-framework' ),
+                'desc' => __( 'This is an info field with the success style applied, a header and an icon.', 'redux-framework')
             ),
 			array(
 				'id'=>'raw_info',
