@@ -1,5 +1,16 @@
 <?php
 
+if ( !function_exists( 'shoestrap_remove_roots_widgets' ) ) :
+/*
+ * Remove default Roots widgets
+ */
+function shoestrap_remove_roots_widgets() {
+  remove_action( 'widgets_init', 'roots_widgets_init' );
+}
+endif;
+add_action( 'widgets_init', 'shoestrap_remove_roots_widgets', 1 );
+
+
 if ( !function_exists( 'shoestrap_widgets_init' ) ) :
 /**
  * Register sidebars and widgets
@@ -97,13 +108,3 @@ function shoestrap_widgets_init() {
 }
 endif;
 add_action( 'widgets_init', 'shoestrap_widgets_init' );
-
-if ( !function_exists( 'shoestrap_remove_roots_widgets' ) ) :
-/*
- * Remove default Roots widgets
- */
-function shoestrap_remove_roots_widgets() {
-  remove_action( 'widgets_init', 'roots_widgets_init' );
-}
-endif;
-add_action( 'widgets_init', 'shoestrap_remove_roots_widgets', 1 );
