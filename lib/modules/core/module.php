@@ -1,24 +1,35 @@
 <?php
 
+define( 'themeURI', get_template_directory_uri() );
+define( 'themeFOLDER', get_template() );
+define( 'themePATH', get_theme_root() );
+define( 'themeNAME', wp_get_theme() );
+
 if ( !function_exists( 'shoestrap_get_rgb' ) ) :
 /*
  * Gets the rgb value of the $hex color.
  * Returns an array.
  */
 function shoestrap_get_rgb( $hex, $implode = false ) {
+  // Remove any trailing '#' symbols from the color value
   $hex = str_replace( '#', '', $hex );
 
   if ( strlen( $hex ) == 3 ) :
-    $r = hexdec( substr( $hex, 0, 1 ) . substr( $hex, 0, 1 ) );
-    $g = hexdec( substr( $hex, 1, 1 ) . substr( $hex, 1, 1 ) );
-    $b = hexdec( substr( $hex, 2, 1 ) . substr( $hex, 2, 1 ) );
+    // If the color is entered using a short, 3-character format,
+    // then find the rgb values from them
+    $red    = hexdec( substr( $hex, 0, 1 ) . substr( $hex, 0, 1 ) );
+    $green  = hexdec( substr( $hex, 1, 1 ) . substr( $hex, 1, 1 ) );
+    $blue   = hexdec( substr( $hex, 2, 1 ) . substr( $hex, 2, 1 ) );
   else :
-    $r = hexdec( substr( $hex, 0, 2 ) );
-    $g = hexdec( substr( $hex, 2, 2 ) );
-    $b = hexdec( substr( $hex, 4, 2 ) );
+    // If the color is entered using a 6-character format,
+    // then find the rgb values from them
+    $red    = hexdec( substr( $hex, 0, 2 ) );
+    $green  = hexdec( substr( $hex, 2, 2 ) );
+    $blue   = hexdec( substr( $hex, 4, 2 ) );
   endif;
 
-  $rgb = array( $r, $g, $b );
+  // rgb is an array
+  $rgb = array( $red, $green, $blue );
   if ( $implode ) :
     // returns the rgb values separated by commas
     return implode( ',', $rgb );
@@ -60,6 +71,7 @@ function shoestrap_get_rgba( $hex = '#fff', $opacity = 100, $echo = false ) {
 
   $color = 'rgba(' . shoestrap_get_rgb( $hex, true ) . ', ' . $opacity . ')';
 
+  // Echo or Return the value
   if ( $echo == true ) :
     echo $color;
   else :
@@ -79,11 +91,11 @@ function shoestrap_get_brightness( $hex ) {
   // strip off any leading #
   $hex = str_replace( '#', '', $hex );
 
-  $c_r = hexdec( substr( $hex, 0, 2 ) );
-  $c_g = hexdec( substr( $hex, 2, 2 ) );
-  $c_b = hexdec( substr( $hex, 4, 2 ) );
+  $red    = hexdec( substr( $hex, 0, 2 ) );
+  $green  = hexdec( substr( $hex, 2, 2 ) );
+  $blue   = hexdec( substr( $hex, 4, 2 ) );
 
-  return ( ( $c_r * 299 ) + ( $c_g * 587 ) + ( $c_b * 114 ) ) / 1000;
+  return ( ( $red * 299 ) + ( $green * 587 ) + ( $blue * 114 ) ) / 1000;
 }
 endif;
 
@@ -100,24 +112,25 @@ function shoestrap_adjust_brightness( $hex, $steps ) {
   // Format the hex color string
   $hex = str_replace( '#', '', $hex );
 
-  if ( strlen( $hex ) == 3 )
+  if ( strlen( $hex ) == 3 ) :
     $hex = str_repeat( substr( $hex, 0, 1 ), 2 ) . str_repeat( substr( $hex, 1, 1 ), 2 ) . str_repeat( substr( $hex, 2, 1 ), 2 );
+  endif;
 
   // Get decimal values
-  $r = hexdec( substr( $hex, 0, 2 ) );
-  $g = hexdec( substr( $hex, 2, 2 ) );
-  $b = hexdec( substr( $hex, 4, 2 ) );
+  $red    = hexdec( substr( $hex, 0, 2 ) );
+  $green  = hexdec( substr( $hex, 2, 2 ) );
+  $blue   = hexdec( substr( $hex, 4, 2 ) );
 
   // Adjust number of steps and keep it inside 0 to 255
-  $r = max( 0, min( 255, $r + $steps ) );
-  $g = max( 0, min( 255, $g + $steps ) );
-  $b = max( 0, min( 255, $b + $steps ) );
+  $red    = max( 0, min( 255, $red + $steps ) );
+  $green  = max( 0, min( 255, $green + $steps ) );
+  $blue   = max( 0, min( 255, $blue + $steps ) );
 
-  $r_hex = str_pad( dechex( $r ), 2, '0', STR_PAD_LEFT );
-  $g_hex = str_pad( dechex( $g ), 2, '0', STR_PAD_LEFT );
-  $b_hex = str_pad( dechex( $b ), 2, '0', STR_PAD_LEFT );
+  $red_hex    = str_pad( dechex( $red ), 2, '0', STR_PAD_LEFT );
+  $green_hex  = str_pad( dechex( $green ), 2, '0', STR_PAD_LEFT );
+  $blue_hex   = str_pad( dechex( $blue ), 2, '0', STR_PAD_LEFT );
 
-  return '#' . $r_hex . $g_hex . $b_hex;
+  return '#' . $red_hex . $green_hex . $blue_hex;
 }
 endif;
 
@@ -141,22 +154,22 @@ function shoestrap_mix_colors( $hex1, $hex2, $percentage ) {
   endif;
 
   // Get decimal values
-  $r1 = hexdec( substr( $hex1, 0, 2 ) );
-  $g1 = hexdec( substr( $hex1, 2, 2 ) );
-  $b1 = hexdec( substr( $hex1, 4, 2 ) );
-  $r2 = hexdec( substr( $hex2, 0, 2 ) );
-  $g2 = hexdec( substr( $hex2, 2, 2 ) );
-  $b2 = hexdec( substr( $hex2, 4, 2 ) );
+  $red_1    = hexdec( substr( $hex1, 0, 2 ) );
+  $green_1  = hexdec( substr( $hex1, 2, 2 ) );
+  $blue_1   = hexdec( substr( $hex1, 4, 2 ) );
+  $red_2    = hexdec( substr( $hex2, 0, 2 ) );
+  $green_2  = hexdec( substr( $hex2, 2, 2 ) );
+  $blue_2   = hexdec( substr( $hex2, 4, 2 ) );
 
-  $r  = ( $percentage * $r1 + ( 100 - $percentage ) * $r2 ) / 100;
-  $g  = ( $percentage * $g1 + ( 100 - $percentage ) * $g2 ) / 100;
-  $b  = ( $percentage * $b1 + ( 100 - $percentage ) * $b2 ) / 100;
+  $red      = ( $percentage * $red_1 + ( 100 - $percentage ) * $red_2 ) / 100;
+  $green    = ( $percentage * $green_1 + ( 100 - $percentage ) * $green_2 ) / 100;
+  $blue     = ( $percentage * $blue_1 + ( 100 - $percentage ) * $blue_2 ) / 100;
 
-  $r_hex = str_pad( dechex( $r ), 2, '0', STR_PAD_LEFT );
-  $g_hex = str_pad( dechex( $g ), 2, '0', STR_PAD_LEFT );
-  $b_hex = str_pad( dechex( $b ), 2, '0', STR_PAD_LEFT );
+  $red_hex    = str_pad( dechex( $red ), 2, '0', STR_PAD_LEFT );
+  $green_hex  = str_pad( dechex( $green ), 2, '0', STR_PAD_LEFT );
+  $blue_hex   = str_pad( dechex( $blue ), 2, '0', STR_PAD_LEFT );
 
-  return '#' . $r_hex . $g_hex . $b_hex;
+  return '#' . $red_hex . $green_hex . $blue_hex;
 }
 endif;
 
@@ -171,6 +184,7 @@ function shoestrap_getVariable( $name, $key = false ) {
   // Set this to your preferred default value
   $var = '';
 
+  // Hack for the 'shoestrap_license_key_status' option
   if ( $name == 'shoestrap_license_key_status' ) :
     return get_theme_mod( $name );
   endif;
@@ -191,10 +205,6 @@ function shoestrap_getVariable( $name, $key = false ) {
 }
 endif;
 
-define( 'themeURI', get_template_directory_uri() );
-define( 'themeFOLDER', get_template() );
-define( 'themePATH', get_theme_root() );
-define( 'themeNAME', wp_get_theme() );
 
 if ( !function_exists( 'shoestrap_getFilePaths' ) ) :
 /**
@@ -221,6 +231,7 @@ function shoestrap_getFilePaths( $file ) {
 }
 endif;
 
+
 if ( !function_exists( 'shoestrap_prep_path' ) ) :
 /**
  * Prepares a local path for string parsing when Directory separators need to be consistent for Windows and Linux.
@@ -240,6 +251,7 @@ function shoestrap_prep_path( $path ) {
 }
 endif;
 
+
 if ( !function_exists( 'shoestrap_prep_uri' ) ) :
 /**
  * Prepares a URI for string parsing when all separators should be "/"
@@ -253,7 +265,11 @@ function shoestrap_prep_uri( $path ) {
 }
 endif;
 
+
 if ( !function_exists( 'shoestrap_password_form' ) ) :
+/*
+ * Replace the password forms with a bootstrap-formatted version.
+ */
 function shoestrap_password_form() {
   global $post;
   $label    = 'pwbox-' . ( empty( $post->ID ) ? rand() : $post->ID );
@@ -272,17 +288,22 @@ function shoestrap_password_form() {
 endif;
 add_filter( 'the_password_form', 'shoestrap_password_form' );
 
+
 if ( !function_exists( 'shoestrap_replace_reply_link_class' ) ) :
-function shoestrap_replace_reply_link_class( $class ){
-    $class = str_replace( "class='comment-reply-link", "class='comment-reply-link btn btn-primary btn-small", $class );
-    return $class;
+/*
+ * Apply the proper classes to comment reply links
+ */
+function shoestrap_replace_reply_link_class( $class ) {
+  $class = str_replace( "class='comment-reply-link", "class='comment-reply-link btn btn-primary btn-small", $class );
+  return $class;
 }
 endif;
 add_filter('comment_reply_link', 'shoestrap_replace_reply_link_class');
 
+
 if ( !function_exists( 'shoestrap_contains_string' ) ) :
 /*
- * Pass a straing and an array of possible values. Will return true if the straing contains it
+ * Pass a string and an array of possible values. Will return true if the straing contains it
  */
 function shoestrap_contains_string( $str, array $arr ) {
   foreach( $arr as $a ) :
@@ -294,6 +315,7 @@ function shoestrap_contains_string( $str, array $arr ) {
   return false;
 }
 endif;
+
 
 if ( !function_exists( 'shoestrap_init_filesystem' ) ) :
 /*
