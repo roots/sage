@@ -31,8 +31,18 @@ function shoestrap_module_background_options( $sections ) {
   );   
 
   $fields[] = array(
-    'title'     => __( 'Background Color', 'shoestrap' ),
+    'title'     => __( 'General Background Color', 'shoestrap' ),
     'desc'      => __( 'Select a background color for your site. Default: #ffffff.', 'shoestrap' ),
+    'id'        => 'html_color_bg',
+    'default'   => '#ffffff',
+    'customizer'=> array(),
+    'transparent'=> false,
+    'type'      => 'color',
+  );
+
+  $fields[] = array(
+    'title'     => __( 'Content Background Color', 'shoestrap' ),
+    'desc'      => __( 'Select a background color for your site\'s content area. Default: #ffffff.', 'shoestrap' ),
     'id'        => 'color_body_bg',
     'default'   => '#ffffff',
     'compiler'  => true,
@@ -42,8 +52,8 @@ function shoestrap_module_background_options( $sections ) {
   );
 
   $fields[] = array(
-    'title'     => __( 'Background Color Opacity', 'shoestrap' ),
-    'desc'      => __( 'Select the opacity of your background color. This will make the main content area transparent, so that background images and patterns will show through. Default: 100 (fully opaque)', 'shoestrap' ),
+    'title'     => __( 'Content Background Color Opacity', 'shoestrap' ),
+    'desc'      => __( 'Select the opacity of your background color for the main content area so that background images and patterns will show through. Default: 100 (fully opaque)', 'shoestrap' ),
     'id'        => 'color_body_bg_opacity',
     'default'   => 100,
     'min'       => 0,
