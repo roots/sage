@@ -382,7 +382,7 @@ a.toggle-nav {
     margin-top: (((@navbar-height - (2 * @line-height-computed)) / 2) - 3);
   }
   #searchform {
-    margin-top: (((@navbar-height - (2 * @line-height-computed)) / 2));
+    // margin-top: (((@navbar-height - (2 * @line-height-computed)) / 2));
     border: 0;
   }
   .dropdown-menu {
@@ -513,6 +513,22 @@ a.toggle-nav {
       .active > a:focus {
         border-bottom: 2px solid @brand-warning !important;
       }
+    }
+  }
+  &.metro {
+    .active > a,
+    .active > a:hover,
+    .active > a:focus {
+      background: @brand-danger;
+    }
+    li.open {
+      a.dropdown-toggle {
+        background: @brand-primary;
+      }
+    }
+    .dropdown-menu > li > a:hover,
+    .dropdown-menu > li > a:focus {
+      background: @brand-primary;
     }
   }
 }

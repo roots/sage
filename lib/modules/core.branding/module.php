@@ -102,7 +102,6 @@ function shoestrap_module_branding_options( $sections ) {
     'customizer'=> array(),
     'transparent'=> false,    
     'type'      => 'color',
-    'fold'      => 'advanced_toggle'
   );
 
   $fields[] = array( 
@@ -114,7 +113,6 @@ function shoestrap_module_branding_options( $sections ) {
     'customizer'=> array(),
     'type'      => 'color',
     'transparent'=> false,    
-    'fold'      => 'advanced_toggle'
   );
 
   $fields[] = array( 
@@ -126,7 +124,6 @@ function shoestrap_module_branding_options( $sections ) {
     'customizer'=> array(),
     'type'      => 'color',
     'transparent'=> false,    
-    'fold'      => 'advanced_toggle'
   );
 
   $fields[] = array( 
@@ -138,7 +135,6 @@ function shoestrap_module_branding_options( $sections ) {
     'customizer'=> array(),
     'type'      => 'color',
     'transparent'=> false,    
-    'fold'      => 'advanced_toggle'
   );
 
   $section['fields'] = $fields;

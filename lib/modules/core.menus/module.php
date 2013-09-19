@@ -78,6 +78,7 @@ function shoestrap_module_menus_options( $sections ) {
       'style4'  => __( 'Style', 'shoestrap' ) . ' 4',
       'style5'  => __( 'Style', 'shoestrap' ) . ' 5',
       'style6'  => __( 'Style', 'shoestrap' ) . ' 6',
+      'metro'   => __( 'Metro', 'shoestrap' ),
     )
   );
 

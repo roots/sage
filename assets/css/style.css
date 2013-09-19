@@ -6570,7 +6570,6 @@ fieldset[disabled] #social-sharing .shareme .box {
   margin-top: 2px;
 }
 .navbar #searchform {
-  margin-top: 5px;
   border: 0;
 }
 .navbar .dropdown-menu {
@@ -6677,6 +6676,18 @@ fieldset[disabled] #social-sharing .shareme .box {
 .navbar.style6 .dropdown-menu .active > a:hover,
 .navbar.style6 .dropdown-menu .active > a:focus {
   border-bottom: 2px solid #f0ad4e !important;
+}
+.navbar.metro .active > a,
+.navbar.metro .active > a:hover,
+.navbar.metro .active > a:focus {
+  background: #d9534f;
+}
+.navbar.metro li.open a.dropdown-toggle {
+  background: #428bca;
+}
+.navbar.metro .dropdown-menu > li > a:hover,
+.navbar.metro .dropdown-menu > li > a:focus {
+  background: #428bca;
 }
 .navbar a.navbar-brand {
   max-width: inherit !important;
