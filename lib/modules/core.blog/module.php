@@ -19,7 +19,7 @@ function shoestrap_module_blog_options( $sections ) {
     'default'   => 0,
     'type'      => 'switch',
     'customizer'=> array(),
-    // 'fold'      => 'advanced_toggle'
+    'fold'      => 'advanced_toggle'
   );
 
   $fields[] = array( 
@@ -28,7 +28,7 @@ function shoestrap_module_blog_options( $sections ) {
     'id'        => 'blog_layout',
     'default'   => shoestrap_getVariable( 'layout', 1 ),
     'type'      => 'image_select',
-    // 'fold'      => 'blog_layout_toggle',
+    'fold'      => 'blog_layout_toggle',
     'customizer'=> array(),
     'options'   => array( 
       0         => REDUX_URL . 'assets/img/1c.png',

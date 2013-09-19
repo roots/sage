@@ -350,7 +350,7 @@ if( !class_exists( 'ReduxFramework' ) ) {
 												    );
 											    */	
 												$folds[$field['id']]['parent'] = $foldv;
-	  											$folds[$foldv]['children'][1] = $field['id'];
+	  											$folds[$foldv]['children'][1][] = $field['id'];
 											} else {
 											    /*
 												Example variable:
@@ -375,7 +375,7 @@ if( !class_exists( 'ReduxFramework' ) ) {
 				echo "<pre>";
 				print_r($folds);
 				exit();
-				*/
+				//*/
 				return $folds;
 			}
 		    
@@ -1429,7 +1429,7 @@ if( !class_exists( 'ReduxFramework' ) ) {
 
             	echo '<br /><div class="redux-timer">' . get_num_queries() . ' queries in ' . timer_stop(0) . ' seconds</div>';
 
-            	if (SAVEQUERIES) {
+            	if ( defined('SAVEQUERIES') && SAVEQUERIES ) {
 								global $wpdb;
 								echo '<!--\n';
 								print_r($wpdb->queries);

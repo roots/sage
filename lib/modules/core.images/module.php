@@ -19,7 +19,7 @@ function shoestrap_module_featured_images_options( $sections ) {
                     Please note that these apply to posts, pages, as well as custom post types.
                     You can select image sizes independently for archives and individual posts view.', 'shoestrap' ),
     'type'      => 'info',
-    // 'fold'      => 'advanced_toggle'
+    'fold'      => 'advanced_toggle'
   );
 
   $fields[] = array( 
@@ -29,7 +29,7 @@ function shoestrap_module_featured_images_options( $sections ) {
     'default'   => 0,
     'type'      => 'switch',
     'customizer'=> array(),
-    // 'fold'      => 'advanced_toggle'
+    'fold'      => 'advanced_toggle'
   );
 
 
@@ -38,7 +38,7 @@ function shoestrap_module_featured_images_options( $sections ) {
     'desc'      => __( 'Display featured Images on posts. Default: OFF.', 'shoestrap' ),
     'id'        => 'feat_img_archive_custom_toggle',
     'default'   => 0,
-    // 'fold'      => 'feat_img_archive',
+    'fold'      => 'feat_img_archive',
     'off'       => __( 'Full Width', 'shoestrap' ),
     'on'        => __( 'Custom Dimensions', 'shoestrap' ),
     'type'      => 'switch',
@@ -51,7 +51,7 @@ function shoestrap_module_featured_images_options( $sections ) {
     'id'        => 'feat_img_archive_width',
     'default'   => 550,
     'min'       => 100,
-    // 'fold'      => 'feat_img_archive_custom_toggle',
+    'fold'      => 'feat_img_archive_custom_toggle',
     'step'      => 1,
     'max'       => 1000,
     'edit'      => 1,
@@ -62,7 +62,7 @@ function shoestrap_module_featured_images_options( $sections ) {
     'title'     => __( 'Archives Featured Image Height', 'shoestrap' ),
     'desc'      => __( 'Select the height of your featured images on post archives. Default: 300px', 'shoestrap' ),
     'id'        => 'feat_img_archive_height',
-    // 'fold'      => 'feat_img_archive_custom_toggle',
+    'fold'      => 'feat_img_archive_custom_toggle',
     'default'   => 300,
     'min'       => 50,
     'step'      => 1,
@@ -78,7 +78,7 @@ function shoestrap_module_featured_images_options( $sections ) {
     'default'   => 0,
     'type'      => 'switch',
     'customizer'=> array(),
-    // 'fold'      => 'advanced_toggle'
+    'fold'      => 'advanced_toggle'
   );
 
   $fields[] = array( 
@@ -86,7 +86,7 @@ function shoestrap_module_featured_images_options( $sections ) {
     'desc'      => __( 'Display featured Images on posts. Default: OFF.', 'shoestrap' ),
     'id'        => 'feat_img_post_custom_toggle',
     'default'   => 0,
-    // 'fold'      => 'feat_img_post',
+    'fold'      => 'feat_img_post',
     'off'       => __( 'Full Width', 'shoestrap' ),
     'on'        => __( 'Custom Dimensions', 'shoestrap' ),
     'type'      => 'switch',
@@ -99,7 +99,7 @@ function shoestrap_module_featured_images_options( $sections ) {
     'id'        => 'feat_img_post_width',
     'default'   => 550,
     'min'       => 100,
-    // 'fold'      => 'feat_img_post_custom_toggle',
+    'fold'      => 'feat_img_post_custom_toggle',
     'step'      => 1,
     'max'       => 1000,
     'edit'      => 1,
@@ -110,7 +110,7 @@ function shoestrap_module_featured_images_options( $sections ) {
     'title'     => __( 'Posts Featured Image Height', 'shoestrap' ),
     'desc'      => __( 'Select the height of your featured images on single posts. Default: 330px', 'shoestrap' ),
     'id'        => 'feat_img_post_height',
-    // 'fold'      => 'feat_img_post_custom_toggle',
+    'fold'      => 'feat_img_post_custom_toggle',
     'default'   => 330,
     'min'       => 50,
     'step'      => 1,

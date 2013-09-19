@@ -19,7 +19,7 @@ function shoestrap_module_header_options( $sections ) {
     'desc'      => __( 'You can enable an extra branding/header area. In this header you can add your logo, and any other widgets you wish.
                     To add widgets on your header, visit <a href=\'$url\'>this page</a> and add your widgets to the <strong>Header</strong> Widget Area.', 'shoestrap' ),
     'type'      => 'info',
-    // 'fold'      => 'advanced_toggle'
+    'fold'      => 'advanced_toggle'
   );
 
   $fields[] = array( 
@@ -29,7 +29,7 @@ function shoestrap_module_header_options( $sections ) {
     'customizer'=> array(),
     'default'   => 0,
     'type'      => 'switch',
-    // 'fold'      => 'advanced_toggle'
+    'fold'      => 'advanced_toggle'
   );
 
   $fields[] = array( 
@@ -39,7 +39,7 @@ function shoestrap_module_header_options( $sections ) {
     'customizer'=> array(),
     'default'   => 1,
     'type'      => 'switch',
-    // 'fold'      => 'header_toggle'
+    'fold'      => 'header_toggle'
   );
 
   $fields[] = array( 
@@ -50,7 +50,7 @@ function shoestrap_module_header_options( $sections ) {
     'customizer'=> array(),
     'transparent'=> false,    
     'type'      => 'color',
-    // 'fold'      => 'header_toggle'
+    'fold'      => 'header_toggle'
   );
 
   $fields[] = array( 
@@ -63,7 +63,7 @@ function shoestrap_module_header_options( $sections ) {
     'max'       => 100,
     'compiler'  => true,
     'type'      => 'slider',
-    // 'fold'      => 'header_toggle'
+    'fold'      => 'header_toggle'
   );
 
   $fields[] = array( 
@@ -74,7 +74,7 @@ function shoestrap_module_header_options( $sections ) {
     'customizer'=> array(),
     'transparent'=> false,    
     'type'      => 'color',
-    // 'fold'      => 'header_toggle'
+    'fold'      => 'header_toggle'
   );
 
   $fields[] = array( 
@@ -85,7 +85,7 @@ function shoestrap_module_header_options( $sections ) {
     'min'       => 0,
     'max'       => 200,
     'type'      => 'slider',
-    // 'fold'      => 'header_toggle'
+    'fold'      => 'header_toggle'
   );
 
   $fields[] = array( 
@@ -96,7 +96,7 @@ function shoestrap_module_header_options( $sections ) {
     'min'       => 0,
     'max'       => 200,
     'type'      => 'slider',
-    // 'fold'      => 'header_toggle'
+    'fold'      => 'header_toggle'
   );
 
   $section['fields'] = $fields;

@@ -27,7 +27,7 @@ function shoestrap_module_advanced_options( $sections ) {
     'default'   => 1,
     'type'      => 'switch',
     'customizer'=> array(),
-    // 'fold'      => array('advanced_toggle')
+    'fold'      => array('advanced_toggle')
   );
 
   $fields[] = array( 
@@ -37,7 +37,7 @@ function shoestrap_module_advanced_options( $sections ) {
     'default'   => 0,
     'type'      => 'switch',
     'customizer'=> array(),
-    // 'fold'      => 'advanced_toggle'
+    'fold'      => 'advanced_toggle'
   );    
 
   $fields[] = array( 
@@ -62,7 +62,7 @@ function shoestrap_module_advanced_options( $sections ) {
     'id'        => 'help2',
     'desc'   => __( 'The following settings affect various areas of your site, most notably buttons.', 'shoestrap' ),
     'type'      => 'info',
-    // 'fold'      => 'advanced_toggle'
+    'fold'      => 'advanced_toggle'
   );
 
   $fields[] = array( 
@@ -76,7 +76,7 @@ function shoestrap_module_advanced_options( $sections ) {
     'advanced'  => true,
     'compiler'  => true,
     'type'      => 'slider',
-    // 'fold'      => 'advanced_toggle'
+    'fold'      => 'advanced_toggle'
   );
 
   $fields[] = array( 
@@ -90,7 +90,7 @@ function shoestrap_module_advanced_options( $sections ) {
     'advanced'  => true,
     'compiler'  => true,
     'type'      => 'slider',
-    // 'fold'      => 'advanced_toggle'
+    'fold'      => 'advanced_toggle'
   );
 
   $url = admin_url( 'widgets.php' );
@@ -111,7 +111,7 @@ function shoestrap_module_advanced_options( $sections ) {
     'id'        => 'rewrites',
     'default'   => 0,
     'type'      => 'switch',
-    // 'fold'      => 'advanced_toggle'
+    'fold'      => 'advanced_toggle'
   );
 
   $fields[] = array( 
@@ -120,7 +120,7 @@ function shoestrap_module_advanced_options( $sections ) {
     'id'        => 'upload_folder',
     'default'   => 0,
     'type'      => 'switch',
-    // 'fold'      => 'advanced_toggle'
+    'fold'      => 'advanced_toggle'
   );
 
   $fields[] = array( 
@@ -129,7 +129,7 @@ function shoestrap_module_advanced_options( $sections ) {
     'id'        => 'pjax',
     'default'   => 0,
     'type'      => 'switch',
-    // 'fold'      => 'advanced_toggle'
+    'fold'      => 'advanced_toggle'
   );
 
   $fields[] = array( 
@@ -154,7 +154,7 @@ function shoestrap_module_advanced_options( $sections ) {
     'id'        => 'user_css',
     'default'   => '',
     'type'      => 'textarea',
-    // 'fold'      => 'advanced_toggle'
+    'fold'      => 'advanced_toggle'
   );
 
   $fields[] = array( 
@@ -164,7 +164,7 @@ function shoestrap_module_advanced_options( $sections ) {
     'default'   => '',
     'type'      => 'textarea',
     'compiler'  => true,
-    // 'fold'      => 'advanced_toggle'
+    'fold'      => 'advanced_toggle'
   );  
 
   $fields[] = array( 
@@ -173,7 +173,7 @@ function shoestrap_module_advanced_options( $sections ) {
     'id'        => 'user_js',
     'default'   => '',
     'type'      => 'textarea',
-    // 'fold'      => 'advanced_toggle'
+    'fold'      => 'advanced_toggle'
   );
 
   $fields[] = array( 
@@ -183,7 +183,7 @@ function shoestrap_module_advanced_options( $sections ) {
     'default'   => 1,
     'customizer'=> array(),
     'type'      => 'switch',
-    // 'fold'      => 'advanced_toggle'
+    'fold'      => 'advanced_toggle'
   );
 
   $fields[] = array( 
@@ -194,7 +194,7 @@ function shoestrap_module_advanced_options( $sections ) {
     'compiler'  => true,
     'customizer'=> array(),
     'type'      => 'switch',
-    // 'fold'      => 'advanced_toggle'
+    'fold'      => 'advanced_toggle'
   );
 
   $fields[] = array( 
@@ -204,7 +204,7 @@ function shoestrap_module_advanced_options( $sections ) {
     'default'   => 0,
     'customizer'=> array(),
     'type'      => 'switch',
-    // 'fold'      => 'advanced_toggle'
+    'fold'      => 'advanced_toggle'
   );
 
   $section['fields'] = $fields;

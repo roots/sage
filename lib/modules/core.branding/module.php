@@ -25,7 +25,7 @@ function shoestrap_module_branding_options( $sections ) {
     'title'     => 'Retina Logo',
     'desc'      => __( 'Upload a logo that is exactly 2x the size you want to typically display. A version will then be generated for general site use. If you have previously uploaded a logo, you will need to re-upload it to generate the proper versions.', 'shoestrap' ),
     'id'        => 'retina_help',
-    // 'fold'      => 'retina_logo_toggle',
+    'fold'      => 'retina_logo_toggle',
     'type'      => 'info'
   );
 
@@ -35,7 +35,7 @@ function shoestrap_module_branding_options( $sections ) {
     'id'        => 'favicon',
     'default'   => '',
     'type'      => 'media',
-    // 'fold'      => 'advanced_toggle'
+    'fold'      => 'advanced_toggle'
   );
 
   $fields[] = array( 
@@ -44,7 +44,7 @@ function shoestrap_module_branding_options( $sections ) {
     'id'        => 'apple_icon',
     'default'   => '',
     'type'      => 'media',
-    // 'fold'      => 'advanced_toggle'
+    'fold'      => 'advanced_toggle'
   );
 
 
@@ -68,7 +68,7 @@ function shoestrap_module_branding_options( $sections ) {
     'customizer'=> array(),
     'compiler'  => true,
     'type'      => 'switch',
-    // 'fold'      => 'advanced_toggle',
+    'fold'      => 'advanced_toggle',
   );
 
   $fields[] = array( 
@@ -102,7 +102,7 @@ function shoestrap_module_branding_options( $sections ) {
     'customizer'=> array(),
     'transparent'=> false,    
     'type'      => 'color',
-    // 'fold'      => 'advanced_toggle'
+    'fold'      => 'advanced_toggle'
   );
 
   $fields[] = array( 
@@ -114,7 +114,7 @@ function shoestrap_module_branding_options( $sections ) {
     'customizer'=> array(),
     'type'      => 'color',
     'transparent'=> false,    
-    // 'fold'      => 'advanced_toggle'
+    'fold'      => 'advanced_toggle'
   );
 
   $fields[] = array( 
@@ -126,7 +126,7 @@ function shoestrap_module_branding_options( $sections ) {
     'customizer'=> array(),
     'type'      => 'color',
     'transparent'=> false,    
-    // 'fold'      => 'advanced_toggle'
+    'fold'      => 'advanced_toggle'
   );
 
   $fields[] = array( 
@@ -138,7 +138,7 @@ function shoestrap_module_branding_options( $sections ) {
     'customizer'=> array(),
     'type'      => 'color',
     'transparent'=> false,    
-    // 'fold'      => 'advanced_toggle'
+    'fold'      => 'advanced_toggle'
   );
 
   $section['fields'] = $fields;

@@ -127,7 +127,7 @@ function setup_framework_options(){
 
     // Setting dev mode to true allows you to view the class settings/info in the panel.
     // Default: true
-    //$args['dev_mode'] = true;
+    $args['dev_mode'] = true;
 
 	// Set the icon for the dev mode tab.
 	// If $args['icon_type'] = 'image', this should be the path to the icon.
@@ -426,6 +426,7 @@ function setup_framework_options(){
                 "title" => "Homepage Layout Manager",
                 "desc" => "Organize how you want the layout to appear on the homepage",
                 "compiler"=>'true',
+                'fold' => array('switch-fold'=>0),
                 'options' => array(
                     "enabled" => array(
                         "placebo" => "placebo", //REQUIRED!

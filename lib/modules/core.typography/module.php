@@ -40,7 +40,7 @@ function shoestrap_module_typography_options( $sections ) {
     'compiler'  => true,
     'type'      => 'switch',
     'customizer'=> array(),
-    // 'fold'      => 'advanced_toggle'
+    'fold'      => 'advanced_toggle'
   );
 
   $fields[] = array( 
@@ -60,7 +60,7 @@ function shoestrap_module_typography_options( $sections ) {
       'size'    => 30 //this is the text size from preview box
     ),
     'type'      => 'typography',
-    // 'fold'      => 'font_heading_custom',
+    'fold'      => 'font_heading_custom',
   );
 
   $fields[] = array( 
@@ -80,7 +80,7 @@ function shoestrap_module_typography_options( $sections ) {
       'size'    => 30 //this is the text size from preview box
     ),
     'type'      => 'typography',
-    // 'fold'      => 'font_heading_custom',
+    'fold'      => 'font_heading_custom',
   );
 
   $fields[] = array( 
@@ -100,7 +100,7 @@ function shoestrap_module_typography_options( $sections ) {
       'size'    => 30 //this is the text size from preview box
     ),
     'type'      => 'typography',
-    // 'fold'      => 'font_heading_custom',
+    'fold'      => 'font_heading_custom',
   );
 
   $fields[] = array( 
@@ -120,7 +120,7 @@ function shoestrap_module_typography_options( $sections ) {
       'size'    => 30 //this is the text size from preview box
     ),
     'type'      => 'typography',
-    // 'fold'      => 'font_heading_custom',
+    'fold'      => 'font_heading_custom',
   );
 
   $fields[] = array( 
@@ -140,7 +140,7 @@ function shoestrap_module_typography_options( $sections ) {
       'size'    => 30 //this is the text size from preview box
     ),
     'type'      => 'typography',
-    // 'fold'      => 'font_heading_custom',
+    'fold'      => 'font_heading_custom',
   );
 
   $fields[] = array( 
@@ -160,7 +160,7 @@ function shoestrap_module_typography_options( $sections ) {
       'size'    => 30 //this is the text size from preview box
     ),
     'type'      => 'typography',
-    // 'fold'      => 'font_heading_custom',
+    'fold'      => 'font_heading_custom',
   );
 
   $section['fields'] = $fields;

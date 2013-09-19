@@ -74,7 +74,7 @@ class ReduxFramework_typography extends ReduxFramework{
 		}
 	
 		
-	  echo '<div id="'.$this->field['id'].'-container" class="redux-typography-container" data-id="'.$this->field['id'].'" data-units="'.$unit.'">';
+	  echo '<div id="'.$this->field['id'].'" class="redux-typography-container" data-id="'.$this->field['id'].'" data-units="'.$unit.'">';
 
 	  /**
 			Font Family

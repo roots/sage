@@ -76,7 +76,7 @@ function shoestrap_module_background_options( $sections ) {
     'title'     => __( 'Upload a Custom Background Image', 'shoestrap' ),
     'desc'      => __( 'Upload a Custom Background image using the media uploader, or define the URL directly.', 'shoestrap' ),
     'id'        => 'background_image',
-    // 'fold'      => 'background_image_toggle',
+    'fold'      => 'background_image_toggle',
     'default'   => '',
     'type'      => 'media',
     'customizer'=> array(),
@@ -90,7 +90,7 @@ function shoestrap_module_background_options( $sections ) {
     'on'        => __( 'Fixed', 'shoestrap' ),
     'off'       => __( 'Scroll', 'shoestrap' ),
     'type'      => 'switch',
-    // 'fold'      => 'background_image_toggle'
+    'fold'      => 'background_image_toggle'
   );
 
   $fields[] = array(
@@ -98,7 +98,7 @@ function shoestrap_module_background_options( $sections ) {
     'desc'      => __( 'Allows the user to modify how the background displays. By default it is full width and stretched to fill the page. Default: Full Width.', 'shoestrap' ),
     'id'        => 'background_image_position_toggle',
     'default'   => 0,
-    // 'fold'      => 'background_image_toggle',
+    'fold'      => 'background_image_toggle',
     'on'        => __( 'Custom', 'shoestrap' ),
     'off'       => __( 'Full Width', 'shoestrap' ),
     'type'      => 'switch'
@@ -108,7 +108,7 @@ function shoestrap_module_background_options( $sections ) {
     'title'     => __( 'Background Repeat', 'shoestrap' ),
     'desc'      => __( 'Select how (or if) the selected background should be tiled. Default: Tile', 'shoestrap' ),
     'id'        => 'background_repeat',
-    // 'fold'      => 'background_image_position_toggle',
+    'fold'      => 'background_image_position_toggle',
     'default'   => 'repeat',
     'type'      => 'select',
     'options'   => array(
@@ -123,7 +123,7 @@ function shoestrap_module_background_options( $sections ) {
     'title'     => __( 'Background Alignment', 'shoestrap' ),
     'desc'      => __( 'Select how the selected background should be horizontally aligned. Default: Left', 'shoestrap' ),
     'id'        => 'background_position_x',
-    // 'fold'      => 'background_image_position_toggle',
+    'fold'      => 'background_image_position_toggle',
     'default'   => 'repeat',
     'type'      => 'select',
     'options'   => array(
@@ -145,7 +145,7 @@ function shoestrap_module_background_options( $sections ) {
     'title'     => __( 'Choose a Background Pattern', 'shoestrap' ),
     'desc'      => __( 'Select a background pattern.', 'shoestrap' ),
     'id'        => 'background_pattern',
-    // 'fold'      => 'background_pattern_toggle',
+    'fold'      => 'background_pattern_toggle',
     'default'   => '',
     'tiles'     => true,
     'type'      => 'image_select',
