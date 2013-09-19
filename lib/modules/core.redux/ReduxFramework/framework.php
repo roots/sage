@@ -189,7 +189,7 @@ if( !class_exists( 'ReduxFramework' ) ) {
         public function set( $opt_name = '', $value = '' ) {
             if( $opt_name != '' ) {
                 $this->options[$opt_name] = $value;
-				$this->update_option( $this->options );
+				$this->set_options( $this->options );
             }
         }
 
@@ -371,13 +371,8 @@ if( !class_exists( 'ReduxFramework' ) ) {
 						}
 				    }
 				}
-				/*
-				echo "<pre>";
-				print_r($folds);
-				exit();
-				//*/
-				return $folds;
 			}
+			return $folds;
 		    
 		}
 
@@ -742,9 +737,9 @@ if( !class_exists( 'ReduxFramework' ) ) {
                 header("Expires: Mon, 26 Jul 1997 05:00:00 GMT"); 
                 header("Last-Modified: " . gmdate( "D, d M Y H:i:s" ) . "GMT"); 
                 header( 'Expires: Sat, 26 Jul 1997 05:00:00 GMT' );
--               header( 'Cache-Control: no-store, no-cache, must-revalidate' );
--               header( 'Cache-Control: post-check=0, pre-check=0', false );
--               header( 'Pragma: no-cache' );
+                header( 'Cache-Control: no-store, no-cache, must-revalidate' );
+                header( 'Cache-Control: post-check=0, pre-check=0', false );
+                header( 'Pragma: no-cache' );
 
                 // Can't include the type. Thanks old Firefox and IE. BAH.
                 //header("Content-type: application/json");

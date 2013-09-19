@@ -56,7 +56,6 @@ class ReduxFramework_typography extends ReduxFramework{
 			'style'=>'',
 			'script'=>'',
 			'color'=>'',
-			'height'=>'',
 			'size'=>'',
 		);
 

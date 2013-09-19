@@ -53,65 +53,68 @@ class ReduxFramework_sorter extends ReduxFramework {
 
 	    $sortlists = $this->value;
 
-	    foreach( $sortlists as $sortlist ) {
-			$temp2 = array_merge($temp2, $sortlist);
-	    }
+	    if ( is_array( $sortlists ) ) {
+		    foreach( $sortlists as $sortlist ) {
+				$temp2 = array_merge($temp2, $sortlist);
+		    }
 
-	    // now let's compare if we have anything missing
-	    foreach($temp as $k => $v) {
-			if(!array_key_exists($k, $temp2)) {
-			    $sortlists['disabled'][$k] = $v;
-			}
-	    }
-
-	    // now check if saved blocks has blocks not registered under default blocks
-	    foreach( $sortlists as $key => $sortlist ) {
-			foreach($sortlist as $k => $v) {
-			    if(!array_key_exists($k, $temp)) {
-				unset($sortlist[$k]);
-			    }
-			}
-			$sortlists[$key] = $sortlist;
-	    }
-
-	    // assuming all sync'ed, now get the correct naming for each block
-	    foreach( $sortlists as $key => $sortlist ) {
-			foreach($sortlist as $k => $v) {
-			    $sortlist[$k] = $temp[$k];
-			}
-			$sortlists[$key] = $sortlist;
-	    }
-
-	    echo '<div id="'.$this->field['id'].'" class="sorter">';
-
-
-	    if ($sortlists) {
-
-			foreach ($sortlists as $group=>$sortlist) {
-
-			    echo '<ul id="'.$this->field['id'].'_'.$group.'" class="sortlist_'.$this->field['id'].'">';
-			    echo '<h3>'.$group.'</h3>';
-
-			    foreach ($sortlist as $key => $list) {
-
-				echo '<input class="sorter-placebo" type="hidden" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][' . $group . '][placebo]" value="placebo">';
-
-				if ($key != "placebo") {
-
-				    echo '<li id="'.$key.'" class="sortee">';
-				    echo '<input class="position '.$this->field['class'].'" type="hidden" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][' . $group . '][' . $key . ']" value="'.$list.'">';
-				    echo $list;
-				    echo '</li>';
-
+		    // now let's compare if we have anything missing
+		    foreach($temp as $k => $v) {
+				if(!array_key_exists($k, $temp2)) {
+				    $sortlists['disabled'][$k] = $v;
 				}
+		    }
 
-			    }
+		    // now check if saved blocks has blocks not registered under default blocks
+		    foreach( $sortlists as $key => $sortlist ) {
+				foreach($sortlist as $k => $v) {
+				    if(!array_key_exists($k, $temp)) {
+					unset($sortlist[$k]);
+				    }
+				}
+				$sortlists[$key] = $sortlist;
+		    }
 
-			    echo '</ul>';
-			}
+		    // assuming all sync'ed, now get the correct naming for each block
+		    foreach( $sortlists as $key => $sortlist ) {
+				foreach($sortlist as $k => $v) {
+				    $sortlist[$k] = $temp[$k];
+				}
+				$sortlists[$key] = $sortlist;
+		    }
+
+		    echo '<div id="'.$this->field['id'].'" class="sorter">';
+
+
+		    if ($sortlists) {
+
+				foreach ($sortlists as $group=>$sortlist) {
+
+				    echo '<ul id="'.$this->field['id'].'_'.$group.'" class="sortlist_'.$this->field['id'].'">';
+				    echo '<h3>'.$group.'</h3>';
+
+				    foreach ($sortlist as $key => $list) {
+
+					echo '<input class="sorter-placebo" type="hidden" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][' . $group . '][placebo]" value="placebo">';
+
+					if ($key != "placebo") {
+
+					    echo '<li id="'.$key.'" class="sortee">';
+					    echo '<input class="position '.$this->field['class'].'" type="hidden" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][' . $group . '][' . $key . ']" value="'.$list.'">';
+					    echo $list;
+					    echo '</li>';
+
+					}
+
+				    }
+
+				    echo '</ul>';
+				}
+		    }
+
+		    echo '</div>';
+
 	    }
-
-	    echo '</div>';
 
         echo ($this->field['desc'] != '') ? '<div class="clear"></div><span class="description">' . $this->field['desc'] . '</span>' : '';
     }
