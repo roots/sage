@@ -53,4 +53,3 @@ class Redux_Validation_date extends ReduxFramework {
 	}//function
 	
 }//class
-?>

@@ -178,4 +178,3 @@ if( !class_exists( 'ReduxFramework_image_select' ) ) {
         }
     }
 }
-?>

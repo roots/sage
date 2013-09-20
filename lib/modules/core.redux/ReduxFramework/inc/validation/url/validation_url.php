@@ -40,4 +40,3 @@ class Redux_Validation_url extends ReduxFramework {
 	}//function
 	
 }//class
-?>

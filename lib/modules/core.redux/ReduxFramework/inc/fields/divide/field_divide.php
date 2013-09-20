@@ -61,10 +61,15 @@ if( !class_exists( 'ReduxFramework_divide' ) ) {
 		 * @return		void
 		 */
 		public function render() {
+
+			echo '<fieldset id="'.$this->field['id'].'" class="redux-divide-container">';
 		
-			echo '</td></tr></table><div class="hr ' . $this->field['class'] . '"/><div class="inner"><span>&nbsp;</span></div></div><table class="form-table no-border"><tbody><tr><th></th><td>';
+				echo '</td></tr></table>';
+				echo '<div  class="hr ' . $this->field['class'] . '"/><div class="inner"><span>&nbsp;</span></div></div>';
+				echo '<table class="form-table no-border"><tbody><tr><th></th><td>';
+			
+			echo '</fieldset';
 
 		}
 	}	
 }
-?>

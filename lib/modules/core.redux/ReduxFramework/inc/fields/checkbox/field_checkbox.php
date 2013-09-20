@@ -48,6 +48,13 @@ if( !class_exists( 'ReduxFramework_checkbox' ) ) {
         
             $this->field = $field;
             $this->value = $value;
+
+	        if( !empty( $this->field['data'] ) && empty( $this->field['options'] ) ) {
+				if (empty($this->field['args'])) {
+					$this->field['args'] = array();
+				}        	
+	        	$this->field['options'] = $parent->get_wordpress_data($this->field['data'], $this->field['args']);
+	        }
         
         }
     
@@ -63,111 +70,46 @@ if( !class_exists( 'ReduxFramework_checkbox' ) ) {
          */
         public function render() {
 
-            // Use data from Wordpress to populate options array
-            if( !empty( $this->field['data'] ) && empty( $this->field['options'] ) ) {
-                if( empty( $this->field['args'] ) )
-                    $this->field['args'] = array();
+            echo '<fieldset id="'.$this->field['id'].'" class="redux-checkbox-container">';
 
-                $this->field['options'] = array();
-                $args = wp_parse_args( $this->field['args'], array() ); 
+	            if( !empty( $this->field['options'] ) && ( is_array( $this->field['options'] ) || is_array( $this->field['default'] ) ) ) {
+	                echo '<ul>';
+	            	if ( !isset( $this->value ) ) {
+	            		$this->value = array();
+	            	}
+	            	if (!is_array($this->value)) {
+	            		$this->value = array();
+	            	}
 
-                if( $this->field['data'] == 'categories' || $this->field['data'] == 'category' ) {
-                    $cats = get_categories($args); 
+	                foreach( $this->field['options'] as $k => $v ) {
+	                	
+	                    if (empty($this->value[$k])) {
+	                    	$this->value[$k] = "";
+	                    }
+	                    	
+	                    echo '<li>';
+	                    echo '<label for="' . strtr($this->args['opt_name'] . '[' . $this->field['id'] . '][' . $k . ']', array('[' => '_', ']' => '')) . '_' . array_search( $k, array_keys( $this->field['options'] ) ) . '">';
+	                    echo '<input type="checkbox" class="checkbox ' . $this->field['class'] . '" id="' . strtr($this->args['opt_name'] . '[' . $this->field['id'] . '][' . $k . ']', array('[' => '_', ']' => '')) . '_' . array_search( $k, array_keys( $this->field['options'] ) ) . '" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][' . $k . ']" value="1" ' . checked( $this->value[$k], '1', false ) . '/>';
+	                    echo ' ' . $v . '</label>';
+	                    echo '</li>';
+	                
+	                }
 
-                    if( !empty( $cats ) ) {     
-                        foreach( $cats as $cat ) {
-                            $this->field['options'][$cat->term_id] = $cat->name;
-                        }
-                    }
-                } else if( $this->field['data'] == 'menus' || $this->field['data'] == 'menu' ) {
-                    $menus = wp_get_nav_menus( $args );
-                    if( !empty( $menus ) ) {
-                        foreach( $menus as $k=>$item ) {
-                            $this->field['options'][$item->term_id] = $item->name;
-                        }
-                    }
-                } else if( $this->field['data'] == 'pages' || $this->field['data'] == 'page' ) {
-                    $pages = get_pages( $args ); 
+	                echo '</ul>';   
 
-                    if( !empty( $pages ) ) {
-                        foreach( $pages as $page ) {
-                            $this->field['options'][$page->ID] = $page->post_title;
-                        }
-                    }
-                } else if( $this->field['data'] == 'posts' || $this->field['data'] == 'post' ) {
-                    $posts = get_posts( $args );
+	                echo ( isset( $this->field['desc'] ) && !empty( $this->field['desc'] ) ) ? '<div class="description">' . $this->field['desc'] . '</div>' : '';
 
-                    if( !empty( $posts ) ) {
-                        foreach( $posts as $post ) {
-                            $this->field['options'][$post->ID] = $post->post_title;
-                        }
-                    }
-                } else if( $this->field['data'] == 'post_type' || $this->field['data'] == 'post_types' ) {
-                    $post_types = get_post_types( $args, 'object' ); 
+	            } else {
 
-                    if( !empty( $post_types ) ) {
-                        foreach ( $post_types as $k => $post_type ) {
-                            $this->field['options'][$k] = $post_type->labels->name;
-                        }
-                    }
-                } else if( $this->field['data'] == 'tags' || $this->field['data'] == 'tag' ) {
-                    $tags = get_tags( $args );
+	                echo ( $this->field['desc'] != '' ) ? ' <label for="' . strtr($this->args['opt_name'] . '[' . $this->field['id'] . ']', array('[' => '_', ']' => '')) . '">' : '';
+	        
+	                echo '<input type="checkbox" id="' . strtr($this->args['opt_name'] . '[' . $this->field['id'] . ']', array('[' => '_', ']' => '')) . '" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . ']" value="1" class="checkbox ' . $this->field['class'] . '" ' . checked( $this->value, '1', false ) . '/>';
+	        
+	                echo ( isset( $this->field['desc'] ) && !empty( $this->field['desc'] ) ) ? ' ' . $this->field['desc'] . '</label>' : '';
 
-                    if( !empty( $tags ) ) {
-                        foreach( $tags as $tag ) {
-                            $this->field['options'][$tag->term_id] = $tag->name;
-                        }
-                    }
-                } else if( $this->field['data'] == 'menu_location' || $this->field['data'] == 'menu_locations' ) {
-                    global $_wp_registered_nav_menus;
-
-                    foreach( $_wp_registered_nav_menus as $k => $v ) {
-                        $this->field['options'][$k] = $v;
-                    }
-                }
-            }
-
-            echo '<fieldset>';
-
-            if( !empty( $this->field['options'] ) && ( is_array( $this->field['options'] ) || is_array( $this->field['default'] ) ) ) {
-                echo '<ul>';
-            	if ( !isset( $this->value ) ) {
-            		$this->value = array();
-            	}
-            	if (!is_array($this->value)) {
-            		$this->value = array();
-            	}
-
-                foreach( $this->field['options'] as $k => $v ) {
-                	
-                    if (empty($this->value[$k])) {
-                    	$this->value[$k] = "";
-                    }
-                    	
-                    echo '<li>';
-                    echo '<label for="' . strtr($this->args['opt_name'] . '[' . $this->field['id'] . '][' . $k . ']', array('[' => '_', ']' => '')) . '_' . array_search( $k, array_keys( $this->field['options'] ) ) . '">';
-                    echo '<input type="checkbox" class="checkbox ' . $this->field['class'] . '" id="' . strtr($this->args['opt_name'] . '[' . $this->field['id'] . '][' . $k . ']', array('[' => '_', ']' => '')) . '_' . array_search( $k, array_keys( $this->field['options'] ) ) . '" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][' . $k . ']" value="1" ' . checked( $this->value[$k], '1', false ) . '/>';
-                    echo ' ' . $v . '</label>';
-                    echo '</li>';
-                
-                }
-
-                echo '</ul>';   
-
-                echo ( isset( $this->field['desc'] ) && !empty( $this->field['desc'] ) ) ? '<div class="description">' . $this->field['desc'] . '</div>' : '';
-
-            } else {
-
-                echo ( $this->field['desc'] != '' ) ? ' <label for="' . strtr($this->args['opt_name'] . '[' . $this->field['id'] . ']', array('[' => '_', ']' => '')) . '">' : '';
-        
-                echo '<input type="checkbox" id="' . strtr($this->args['opt_name'] . '[' . $this->field['id'] . ']', array('[' => '_', ']' => '')) . '" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . ']" value="1" class="checkbox ' . $this->field['class'] . '" ' . checked( $this->value, '1', false ) . '/>';
-        
-                echo ( isset( $this->field['desc'] ) && !empty( $this->field['desc'] ) ) ? ' ' . $this->field['desc'] . '</label>' : '';
-
-            }
+	            }
 
             echo '</fieldset>';         
         }
     }
 }
-?>

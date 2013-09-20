@@ -363,4 +363,4 @@ WRITTEN OFFER
 The source code for any program binaries or compressed scripts that are
 included with ReduxFramework can be freely obtained at the following URL:
 
-	https://github.com/ghost1227/Redux-Framework
+	https://github.com/ReduxFramework/Redux-Framework

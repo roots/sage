@@ -110,4 +110,3 @@ if( !class_exists( 'ReduxFramework_multi_text' ) ) {
         }
     }   
 }
-?>

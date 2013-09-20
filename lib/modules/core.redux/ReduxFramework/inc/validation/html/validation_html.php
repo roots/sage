@@ -34,4 +34,3 @@ class Redux_Validation_html extends ReduxFramework {
 	}//function
 	
 }//class
-?>

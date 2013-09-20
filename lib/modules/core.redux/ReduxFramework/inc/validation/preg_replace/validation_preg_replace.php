@@ -34,4 +34,3 @@ class Redux_Validation_preg_replace extends ReduxFramework {
 	}//function
 	
 }//class
-?>

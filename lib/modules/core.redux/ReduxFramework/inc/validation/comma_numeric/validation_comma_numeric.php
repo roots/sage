@@ -40,4 +40,3 @@ class Redux_Validation_comma_numeric extends ReduxFramework {
 	}//function
 	
 }//class
-?>

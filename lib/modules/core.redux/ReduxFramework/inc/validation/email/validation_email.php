@@ -38,4 +38,3 @@ class Redux_Validation_email extends ReduxFramework {
 	}//function
 	
 }//class
-?>

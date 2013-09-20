@@ -1,2 +1,2 @@
-#redux-main .select_wrapper{float:left;width:inherit}#redux-main .select_wrapper select{width:80px;float:left}
-#redux-main .field-spacing-input{margin-right:10px;margin-bottom:7px}
+#redux-main .redux-spacing-container .select_wrapper{float:left;width:inherit}#redux-main .redux-spacing-container .select_wrapper select{width:80px;float:left}
+#redux-main .redux-spacing-container .field-spacing-input{margin-right:10px;margin-bottom:7px}

@@ -36,8 +36,7 @@ Redux can be downloaded in several ways which are outlined below. Please use whi
 
 ### Download as a .zip archive ###
 
-* Stable release: [download](https://github.com/ghost1227/Redux-Framework/archive/stable.zip) 
-* Dev release: [download](https://github.com/ghost1227/Redux-Framework/archive/master.zip)
+* Stable release: [download](https://github.com/ghost1227/Redux-Framework/archive/master.zip)
 
 Once you have downloaded the framework, upload the .zip file to the root of your project and unzip it as follows:
 
@@ -51,24 +50,12 @@ $ unzip Redux-Framework-master.zip -d Redux-Framework
 *Stable release*
 ```bash
 $ cd my-project
-$ git clone git://github.com/ghost1227/Redux-Framework/ -b stable
-```
-
-*Dev release*
-```bash
-$ cd my-project
 $ git clone git://github.com/ghost1227/Redux-Framework/
 ```
 
 ### Cloning the repository as a git submodule ###
 
 *Stable release*
-```bash
-$ cd my-project
-$ git submodule add git://github.com/ghost1227/Redux-Framework/ -b stable
-```
-
-*Dev release*
 ```bash
 $ cd my-project
 $ git submodule add git://github.com/ghost1227/Redux-Framework/
@@ -100,7 +87,34 @@ Send me an email at ghost1227@reduxframework.com so I can add you to our user sp
 
 ## Changelog ##
 
-### Development Branch ###
+### Master ###
+
+* Removed get() and show()
+* Fixed huge performance bug
+* More bugfixes
+* Fixed spacing field
+
+### Version 3.0.0 Beta (September 12, 2013)
+
+* Massive code overhaul
+* Replaced redundant field types with data elements
+* Migrated to company repo
+* Added several new storage methods
+* Numerous bugfixes
+* Renamed std argument to default
+* Added MP6 support
+* Complete CSS rewrite
+* Globals are now conditional
+* Added nesting support
+* Added repeatable field
+* Restyled Dev Mode
+* Added System Info tab
+* Added compiler hooks
+* Added style and icon support to info field
+* Switched to Elusive Icons
+* Huge performance updates
+
+### Version 2.0.1 Final (September 1, 2013) ###
 
 * Added option to override ```icon_type``` per icon
 * Minor bug/versioning fixes

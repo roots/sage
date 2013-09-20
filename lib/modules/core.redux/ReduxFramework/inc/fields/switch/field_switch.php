@@ -29,15 +29,11 @@ class ReduxFramework_switch extends ReduxFramework{
 	function render(){
 		
 		$cb_enabled = $cb_disabled = '';//no errors, please
-					
-		$val = intval($this->value);
 
 		//Get selected
 		if ( (int) $this->value == 1 ){
 			$cb_enabled = ' selected';
-			$cb_disabled = '';
 		}else {
-			$cb_enabled = '';
 			$cb_disabled = ' selected';
 		}
 		
@@ -92,4 +88,3 @@ class ReduxFramework_switch extends ReduxFramework{
 	}//function
 
 }//class
-?>

@@ -38,4 +38,3 @@ class Redux_Validation_numeric extends ReduxFramework {
 	}//function
 	
 }//class
-?>

@@ -39,4 +39,3 @@ class Redux_Validation_no_special_chars extends ReduxFramework {
 	}//function
 	
 }//class
-?>

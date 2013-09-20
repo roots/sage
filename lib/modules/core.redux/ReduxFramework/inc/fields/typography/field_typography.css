@@ -1,5 +1,5 @@
 #redux-main .redux-typography-container select,#redux-main .redux-typography-container .typography-style,#redux-main .redux-typography-container .typography-script{float:left;display:block;width:340px}
-#redux-main .redux-typography-container .typography-family,#redux-main .redux-typography-container .typography-family select{width:340px !important}
+#redux-main .redux-typography-container .typography-family,#redux-main .redux-typography-container .typography-family select,#redux-main .redux-typography-container .typography-family-backup,#redux-main .redux-typography-container .typography-family-backup select{width:340px !important}
 #redux-main .redux-typography-container .typography-script,#redux-main .redux-typography-container .typography-script select{width:130px !important;margin-right:0}
 #redux-main .redux-typography-container .typography-style,#redux-main .redux-typography-container .typography-style select{width:125px !important}
 #redux-main .redux-typography-container .select_wrapper{float:left;margin-right:10px;display:block}

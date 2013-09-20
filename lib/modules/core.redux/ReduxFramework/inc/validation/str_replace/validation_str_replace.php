@@ -34,4 +34,3 @@ class Redux_Validation_str_replace extends ReduxFramework {
 	}//function
 	
 }//class
-?>

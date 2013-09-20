@@ -14,7 +14,15 @@ class ReduxFramework_select extends ReduxFramework{
 		$this->field = $field;
 		$this->value = $value;
 		//$this->render();
+
 		
+        if( !empty( $this->field['data'] ) && empty( $this->field['options'] ) ) {
+			if (empty($this->field['args'])) {
+				$this->field['args'] = array();
+			}        	
+        	$this->field['options'] = $parent->get_wordpress_data($this->field['data'], $this->field['args']);
+        }
+
 	}//function
 	
 
@@ -28,70 +36,8 @@ class ReduxFramework_select extends ReduxFramework{
 	*/
 	function render(){
 
-		/**
-			Use data from Wordpress to populate options array
-		**/
-		if (!empty($this->field['data']) && empty($this->field['options'])) {
-			if (empty($this->field['args'])) {
-				$this->field['args'] = array();
-			}
-			$this->field['options'] = array();
-			$args = wp_parse_args($this->field['args'], array());	
-			if ($this->field['data'] == "categories" || $this->field['data'] == "category") {
-				$cats = get_categories($args); 
-				if (!empty($cats)) {		
-					foreach ( $cats as $cat ) {
-						$this->field['options'][$cat->term_id] = $cat->name;
-					}//foreach
-				} // If
-			} else if ($this->field['data'] == "menus" || $this->field['data'] == "menu") {
-				$menus = wp_get_nav_menus($args);
-				if(!empty($menus)) {
-					foreach ($menus as $k=>$item) {
-						$this->field['options'][$item->term_id] = $item->name;
-					}//foreach
-				}//if
-			} else if ($this->field['data'] == "pages" || $this->field['data'] == "page") {
-				$pages = get_pages($args); 
-				if (!empty($pages)) {
-					foreach ( $pages as $page ) {
-						$this->field['options'][$page->ID] = $page->post_title;
-					}//foreach
-				}//if
-			} else if ($this->field['data'] == "posts" || $this->field['data'] == "post") {
-				$posts = get_posts($args); 
-				if (!empty($posts)) {
-					foreach ( $posts as $post ) {
-						$this->field['options'][$post->ID] = $post->post_title;
-					}//foreach
-				}//if
-			} else if ($this->field['data'] == "post_type" || $this->field['data'] == "post_types") {
-				$post_types = get_post_types($args, 'object'); 
-				if (!empty($post_types)) {
-					foreach ( $post_types as $k => $post_type ) {
-						$this->field['options'][$k] = $post_type->labels->name;
-					}//foreach
-				}//if
-			} else if ($this->field['data'] == "tags" || $this->field['data'] == "tag") {
-				$tags = get_tags($args); 
-				if (!empty($tags)) {
-					foreach ( $tags as $tag ) {
-						$this->field['options'][$tag->term_id] = $tag->name;
-					}//foreach
-				}//if
-			} else if ($this->field['data'] == "menu_location" || $this->field['data'] == "menu_locations") {
-				global $_wp_registered_nav_menus;
-				foreach($_wp_registered_nav_menus as $k => $v) {
-           			$this->field['options'][$k] = $v;
-        		}
-			}//if
-			else if ($this->field['data'] == "elusive-icons" || $this->field['data'] == "elusive-icon" || $this->field['data'] == "elusive") {
-				require_once(REDUX_DIR.'inc/fields/select/elusive-icons.php');
-				foreach($elusiveIcons as $k) {
-           			$this->field['options'][$k] = $k;
-        		}
-        		$this->field['class'] .= " elusive-icons";
-			}//if			
+		if ( !empty($this->field['data']) && ( $this->field['data'] == "elusive-icons" || $this->field['data'] == "elusive-icon" || $this->field['data'] == "elusive" ) ) {
+       		$this->field['class'] = " elusive-icons";
 		}//if
 
 		if (!empty($this->field['options'])) {
@@ -157,4 +103,3 @@ class ReduxFramework_select extends ReduxFramework{
 	}//function
 
 }//class
-?>

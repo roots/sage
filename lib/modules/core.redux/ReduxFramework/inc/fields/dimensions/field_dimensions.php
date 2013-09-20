@@ -1,5 +1,5 @@
 <?php
-class ReduxFramework_spacing extends ReduxFramework{	
+class ReduxFramework_dimensions extends ReduxFramework{	
 	
 	/**
 	 * Field Constructor.
@@ -31,53 +31,35 @@ class ReduxFramework_spacing extends ReduxFramework{
 		// No errors please
 		$defaults = array(
 			'units' => '',
-			'top'	=> true,
-			'bottom'=> true,
-			'left'	=> true,
-			'right'	=> true,
+			'width'	=> true,
+			'height'=> true,
 			);
 		$this->field = wp_parse_args( $this->field, $defaults );
 
 
 		$defaults = array(
-			'top'=>'',
-			'right'=>'',
-			'bottom'=>'',
-			'left'=>'',
+			'width'=>'',
+			'height'=>'',
 			'units'=>'px',
 		);
 
 		$this->value = wp_parse_args( $this->value, $defaults );
 		
-	  	echo '<fieldset id="'.$this->field['id'].'" class="redux-spacing-container">';
+	  	echo '<fieldset id="'.$this->field['id'].'" class="redux-dimensions-container" data-id="'.$this->field['id'].'">';
 
 			/**
-			Top
+			Width
 			**/
-			if ($this->field['top'] === true):
-				echo '<div class="field-spacing-input input-prepend"><span class="add-on"><i class="icon-arrow-up icon-large"></i></span><input type="text" class="redux-spacing-top mini'.$this->field['class'].'" placeholder="'.__('Top','redux-framework').'" id="'.$this->field['id'].'-top" name="'.$this->args['opt_name'].'['.$this->field['id'].'][top]" value="'.$this->value['top'].'"></div>';
+			if ($this->field['width'] === true):
+				echo '<div class="field-dimensions-input input-prepend"><span class="add-on"><i class="icon-resize-horizontal icon-large"></i></span><input type="text" class="redux-dimensions-width mini'.$this->field['class'].'" placeholder="'.__('Width','redux-framework').'" id="'.$this->field['id'].'-width" name="'.$this->args['opt_name'].'['.$this->field['id'].'][width]" value="'.$this->value['width'].'"></div>';
 		  	endif;
 
 			/**
-			Right
+			Height
 			**/
-			if ($this->field['right'] === true):
-				echo '<div class="field-spacing-input input-prepend"><span class="add-on"><i class="icon-arrow-right icon-large"></i></span><input type="text" class="redux-spacing-right mini'.$this->field['class'].'" placeholder="'.__('Right','redux-framework').'" id="'.$this->field['id'].'-right" name="'.$this->args['opt_name'].'['.$this->field['id'].'][right]" value="'.$this->value['right'].'"></div>';
+			if ($this->field['height'] === true):
+				echo '<div class="field-dimensions-input input-prepend"><span class="add-on"><i class="icon-resize-vertical icon-large"></i></span><input type="text" class="redux-dimensions-height mini'.$this->field['class'].'" placeholder="'.__('Height','redux-framework').'" id="'.$this->field['id'].'-height" name="'.$this->args['opt_name'].'['.$this->field['id'].'][height]" value="'.$this->value['height'].'"></div>';
 		  	endif;
-
-			/**
-			Bottom
-			**/
-			if ($this->field['bottom'] === true):
-				echo '<div class="field-spacing-input input-prepend"><span class="add-on"><i class="icon-arrow-down icon-large"></i></span><input type="text" class="redux-spacing-bottom mini'.$this->field['class'].'" placeholder="'.__('Bottom','redux-framework').'" id="'.$this->field['id'].'-bottom" name="'.$this->args['opt_name'].'['.$this->field['id'].'][bottom]" value="'.$this->value['bottom'].'"></div>';
-		  	endif;
-
-			/**
-			Left
-			**/
-			if ($this->field['left'] === true):
-				echo '<div class="field-spacing-input input-prepend"><span class="add-on"><i class="icon-arrow-left icon-large"></i></span><input type="text" class="redux-spacing-left mini'.$this->field['class'].'" placeholder="'.__('Left','redux-framework').'" id="'.$this->field['id'].'-left" name="'.$this->args['opt_name'].'['.$this->field['id'].'][left]" value="'.$this->value['left'].'"></div>';
-		  	endif;		
 
 
 
@@ -124,16 +106,16 @@ class ReduxFramework_spacing extends ReduxFramework{
 		wp_enqueue_style( 'select2-css' );	
 
 		wp_enqueue_script(
-			'redux-field-spacing-js', 
-			REDUX_URL.'inc/fields/spacing/field_spacing.min.js', 
+			'redux-field-dimensions-js', 
+			REDUX_URL.'inc/fields/dimensions/field_dimensions.min.js', 
 			array('jquery', 'select2-js', 'jquery-numeric'),
 			time(),
 			true
 		);
 
 		wp_enqueue_style(
-			'redux-field-spacing-css', 
-			REDUX_URL.'inc/fields/spacing/field_spacing.css', 
+			'redux-field-dimensions-css', 
+			REDUX_URL.'inc/fields/dimensions/field_dimensions.css', 
 			time(),
 			true
 		);	

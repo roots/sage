@@ -70,4 +70,3 @@ class Redux_Validation_color extends ReduxFramework {
 	}//function
 	
 }//class
-?>

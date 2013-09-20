@@ -62,17 +62,19 @@ if( !class_exists( 'ReduxFramework_button_set' ) ) {
          * @return      void
          */
         public function render() {
+
+        	$this->field['tID'] = strtr($this->args['opt_name'] . '[' . $this->field['id'] . ']', array('[' => '_', ']' => ''));
         
-            echo '<fieldset class="buttonset ui-buttonset">';
+            echo '<fieldset id="'.$this->field['id'].'" class="redux-button_set-container buttonset ui-buttonset">';
             
-            foreach( $this->field['options'] as $k => $v ) {
-                
-                echo '<input type="radio" id="' . strtr($this->args['opt_name'] . '[' . $this->field['id'] . '][' . array_search( $k, array_keys( $this->field['options'] ) ) . ']', array('[' => '_', ']' => '')) . '" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . ']" class="' . $this->field['class'] . '" value="' . $k . '" ' . checked( $this->value, $k, false ) . '/>';
-                echo '<label for="' . strtr($this->args['opt_name'] . '[' . $this->field['id'] . '][' . array_search( $k, array_keys( $this->field['options'] ) ) . ']', array('[' => '_', ']' => '')) . '">' . $v . '</label>';
-                
-            }
-            
-            echo ( isset( $this->field['desc'] ) && !empty( $this->field['desc'] ) ) ? '<div class="description">' . $this->field['desc'] . '</div>' : '';
+	            foreach( $this->field['options'] as $k => $v ) {
+	                
+	                echo '<input type="radio" id="'.$this->field['tID'].'" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . ']" class="' . $this->field['class'] . '" value="' . $k . '" ' . checked( $this->value, $k, false ) . '/>';
+	                echo '<label for="' . strtr($this->args['opt_name'] . '[' . $this->field['id'] . '][' . array_search( $k, array_keys( $this->field['options'] ) ) . ']', array('[' => '_', ']' => '')) . '">' . $v . '</label>';
+	                
+	            }
+	            
+	            echo ( isset( $this->field['desc'] ) && !empty( $this->field['desc'] ) ) ? '<div class="description">' . $this->field['desc'] . '</div>' : '';
         
             echo '</fieldset>';
         
@@ -104,4 +106,3 @@ if( !class_exists( 'ReduxFramework_button_set' ) ) {
     
     }
 }
-?>

@@ -142,4 +142,3 @@ class ReduxFramework_slider extends ReduxFramework{
 	}//function
 
 }//class
-?>

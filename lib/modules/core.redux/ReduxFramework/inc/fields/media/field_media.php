@@ -181,4 +181,3 @@ if( !class_exists( 'ReduxFramework_media' ) ) {
         }
     }
 }
-?>
