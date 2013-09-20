@@ -55,6 +55,8 @@ function shoestrap_module_presets_options( $sections ) {
           'footer_background'       => '#222222',
           'footer_opacity'          => 0,
           'footer_color'            => '#52b9e9',
+          'general_border_radius'   => 0,
+          'padding_base'            => 10,
         )
       ),
       'red'       => array(

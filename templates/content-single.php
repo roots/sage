@@ -5,6 +5,7 @@
 
 while (have_posts()) : the_post(); ?>
   <article <?php post_class(); ?>>
+    <?php do_action( 'shoestrap_in_article_top' ); ?>
     <header>
       <h1 class="entry-title"><?php the_title(); ?></h1>
       <?php
@@ -36,5 +37,6 @@ while (have_posts()) : the_post(); ?>
       do_action( 'shoestrap_after_comments' );
     endif;
     ?>
+    <?php do_action( 'shoestrap_in_article_bottom' ); ?>
   </article>
 <?php endwhile;
