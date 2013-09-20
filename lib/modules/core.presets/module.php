@@ -46,11 +46,11 @@ function shoestrap_module_presets_options( $sections ) {
           'navbar_fixed'            => 0,
           'navbar_height'           => '70',
           'font_navbar'             => array(
-            'family'  => 'Open Sans',
-            'size'    => 15,
-            'color'   => '#ffffff',
-            'google'  => 'true',
-            'weight'  => '300',
+            'font-family'  	=> 'Open Sans',
+            'font-size'    	=> 15,
+            'color'   		=> '#ffffff',
+            'google'  		=> 'true',
+            'font-weight'  	=> '300',
           ),
           'footer_background'       => '#222222',
           'footer_opacity'          => 0,
@@ -85,11 +85,11 @@ function shoestrap_module_presets_options( $sections ) {
           'navbar_fixed'            => 0,
           'navbar_height'           => '58',
           'font_navbar'             => array(
-            'family'  => 'Open Sans',
-            'size'    => 15,
-            'color'   => '#ffffff',
-            'google'  => 'true',
-            'weight'  => '300'
+            'font-family' 	=> 'Open Sans',
+            'font-size'   	=> 15,
+            'color'   		=> '#ffffff',
+            'google'  		=> 'true',
+            'font-weight'  	=> '300'
           ),
         )
       ),
@@ -119,11 +119,11 @@ function shoestrap_module_presets_options( $sections ) {
           'navbar_fixed'            => 0,
           'navbar_height'           => '58',
           'font_navbar'             => array(
-            'family'  => 'Open Sans',
-            'size'    => 16,
-            'color'   => '#ffffff',
-            'google'  => 'true',
-            'weight'  => '300'
+            'font-family'  	=> 'Open Sans',
+            'font-size'    	=> 16,
+            'color'   		=> '#ffffff',
+            'google'  		=> 'true',
+            'font-weight'  	=> '300'
           ),
         )
       ),
@@ -153,11 +153,11 @@ function shoestrap_module_presets_options( $sections ) {
           'navbar_fixed'            => 0,
           'navbar_height'           => '58',
           'font_navbar'             => array(
-            'family'  => 'Open Sans',
-            'size'    => 16,
+            'font-family'  => 'Open Sans',
+            'font-size'    => 16,
             'color'   => '#ffffff',
             'google'  => 'true',
-            'weight'  => '300'
+            'font-weight'  => '300'
           ),
         )
       ),
@@ -187,11 +187,11 @@ function shoestrap_module_presets_options( $sections ) {
           'navbar_fixed'            => 0,
           'navbar_height'           => '58',
           'font_navbar'             => array(
-            'family'  => 'Open Sans',
-            'size'    => 16,
+            'font-family'  => 'Open Sans',
+            'font-size'    => 16,
             'color'   => '#ffffff',
             'google'  => 'true',
-            'weight'  => '300'
+            'font-weight'  => '300'
           ),
         )
       ),

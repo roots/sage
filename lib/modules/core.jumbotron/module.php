@@ -179,8 +179,8 @@ function shoestrap_module_jumbotron_options($sections) {
     'id'        => 'font_jumbotron',
     'compiler'  => true,
     'default'   => array(
-      'family'    => 'Arial, Helvetica, sans-serif',
-      'size'    => 16,
+      'font-family'    => 'Arial, Helvetica, sans-serif',
+      'font-size'    => 16,
       'color'   => '#333333',
       'google'  => 'false',
     ),
@@ -209,7 +209,7 @@ function shoestrap_module_jumbotron_options($sections) {
     'id'        => 'font_jumbotron_headers',
     'compiler'  => true,
     'default'   => array(
-      'family'    => 'Arial, Helvetica, sans-serif',
+      'font-family'    => 'Arial, Helvetica, sans-serif',
       'color'   => '#333333',
       'google'  => 'false'
     ),

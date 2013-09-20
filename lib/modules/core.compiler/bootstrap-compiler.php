@@ -137,32 +137,21 @@ function shoestrap_makecss() {
 endif;
 
 if ( !function_exists( 'shoestrap_process_font' ) ) :
-function shoestrap_process_font( $font ) {
-  if ( isset( $font['style'] ) ) :
-    $temp = explode( "-", $font['style'] );
-    $font['weight'] = $temp[0];
+	function shoestrap_process_font( $font ) {
+	  
+	  if ( empty( $font['font-weight'] ) ) {
+	  	$font['font-weight'] = "inherit";
+	  }
+	  if ( empty( $font['font-style'] ) ) {
+	  	$font['font-style'] = "inherit";
+	  }
+	  
+	  if ( isset( $font['font-size'] ) ) :
+	    $font['font-size'] = filter_var( $font['font-size'], FILTER_SANITIZE_NUMBER_INT );
+	  endif;
 
-    if ( isset( $temp[1] ) ) :
-      $font['style'] = $temp[1];
-    else :
-      $font['style'] = "inherit"; // Default style
-    endif;
-
-  else :
-    $font['weight'] = "inherit";
-    $font['style'] = "inherit";
-  endif;
-
-  if ( isset( $font['size'] ) ) :
-    $font['size'] = filter_var( $font['size'], FILTER_SANITIZE_NUMBER_INT );
-  endif;
-
-  if ( $font['weight'] == '' ) :
-    $font['weight'] = "inherit";
-  endif;
-
-  return $font;
-}
+	  return $font;
+	}
 endif;
 
 if ( !function_exists( 'shoestrap_variables_less' ) ) :
@@ -198,35 +187,35 @@ function shoestrap_variables_less() {
   $font_h5 = shoestrap_process_font( shoestrap_getVariable( 'font_h5', true ) );
   $font_h6 = shoestrap_process_font( shoestrap_getVariable( 'font_h6', true ) );
 
-  $font_h1_face   = $font_h1['family'];
-  $font_h1_size   = ( ( filter_var( $font_h1['size'], FILTER_SANITIZE_NUMBER_INT ) ) / 100 );
-  $font_h1_weight = $font_h1['weight'];
-  $font_h1_style  = $font_h1['style'];
+  $font_h1_face   = $font_h1['font-family'];
+  $font_h1_size   = ( ( filter_var( $font_h1['font-size'], FILTER_SANITIZE_NUMBER_INT ) ) / 100 );
+  $font_h1_weight = $font_h1['font-weight'];
+  $font_h1_style  = $font_h1['font-style'];
 
-  $font_h2_face   = $font_h2['family'];
-  $font_h2_size   = ( ( filter_var( $font_h2['size'], FILTER_SANITIZE_NUMBER_INT ) ) / 100 );
-  $font_h2_weight = $font_h2['weight'];
-  $font_h2_style  = $font_h2['style'];
+  $font_h2_face   = $font_h2['font-family'];
+  $font_h2_size   = ( ( filter_var( $font_h2['font-size'], FILTER_SANITIZE_NUMBER_INT ) ) / 100 );
+  $font_h2_weight = $font_h2['font-weight'];
+  $font_h2_style  = $font_h2['font-style'];
 
-  $font_h3_face   = $font_h3['family'];
-  $font_h3_size   = ( ( filter_var( $font_h3['size'], FILTER_SANITIZE_NUMBER_INT ) ) / 100 );
-  $font_h3_weight = $font_h3['weight'];
-  $font_h3_style  = $font_h3['style'];
+  $font_h3_face   = $font_h3['font-family'];
+  $font_h3_size   = ( ( filter_var( $font_h3['font-size'], FILTER_SANITIZE_NUMBER_INT ) ) / 100 );
+  $font_h3_weight = $font_h3['font-weight'];
+  $font_h3_style  = $font_h3['font-style'];
 
-  $font_h4_face   = $font_h4['family'];
-  $font_h4_size   = ( ( filter_var( $font_h4['size'], FILTER_SANITIZE_NUMBER_INT ) ) / 100 );
-  $font_h4_weight = $font_h4['weight'];
-  $font_h4_style  = $font_h4['style'];
+  $font_h4_face   = $font_h4['font-family'];
+  $font_h4_size   = ( ( filter_var( $font_h4['font-size'], FILTER_SANITIZE_NUMBER_INT ) ) / 100 );
+  $font_h4_weight = $font_h4['font-weight'];
+  $font_h4_style  = $font_h4['font-style'];
 
-  $font_h5_face   = $font_h5['family'];
-  $font_h5_size   = ( ( filter_var( $font_h5['size'], FILTER_SANITIZE_NUMBER_INT ) ) / 100 );
-  $font_h5_weight = $font_h5['weight'];
-  $font_h5_style  = $font_h5['style'];
+  $font_h5_face   = $font_h5['font-family'];
+  $font_h5_size   = ( ( filter_var( $font_h5['font-size'], FILTER_SANITIZE_NUMBER_INT ) ) / 100 );
+  $font_h5_weight = $font_h5['font-weight'];
+  $font_h5_style  = $font_h5['font-style'];
 
-  $font_h6_face   = $font_h6['family'];
-  $font_h6_size   = ( ( filter_var( $font_h6['size'], FILTER_SANITIZE_NUMBER_INT ) ) / 100 );
-  $font_h6_weight = $font_h6['weight'];
-  $font_h6_style  = $font_h6['style'];
+  $font_h6_face   = $font_h6['font-family'];
+  $font_h6_size   = ( ( filter_var( $font_h6['font-size'], FILTER_SANITIZE_NUMBER_INT ) ) / 100 );
+  $font_h6_weight = $font_h6['font-weight'];
+  $font_h6_style  = $font_h6['font-style'];
 
   if ( shoestrap_getVariable( 'font_heading_custom', true ) != 1 ) :
 
@@ -257,10 +246,10 @@ function shoestrap_variables_less() {
   endif;
 
   $text_color       = '#' . str_replace( '#', '', $font_base['color'] );
-  $font_size_base   = $font_base['size'];
-  $font_style_base  = $font_base['style'];
-  $font_weight_base = $font_base['weight'];
-  $sans_serif       = $font_base['family'];
+  $font_size_base   = $font_base['font-size'];
+  $font_style_base  = $font_base['font-style'];
+  $font_weight_base = $font_base['font-weight'];
+  $sans_serif       = $font_base['font-family'];
 
   $border_radius    = filter_var( shoestrap_getVariable( 'general_border_radius', true ), FILTER_SANITIZE_NUMBER_INT );
   if ( strlen( $border_radius ) < 1 ) :
@@ -286,16 +275,16 @@ function shoestrap_variables_less() {
 
     $font_jumbotron_headers = shoestrap_process_font( shoestrap_getVariable( 'font_jumbotron_headers', true ) );
 
-    $font_jumbotron_headers_face   = $font_jumbotron_headers['family'];
-    $font_jumbotron_headers_weight = $font_jumbotron_headers['weight'];
-    $font_jumbotron_headers_style  = $font_jumbotron_headers['style'];
+    $font_jumbotron_headers_face   = $font_jumbotron_headers['font-family'];
+    $font_jumbotron_headers_weight = $font_jumbotron_headers['font-weight'];
+    $font_jumbotron_headers_style  = $font_jumbotron_headers['font-style'];
     $jumbotron_headers_text_color   = '#' . str_replace( '#', '', $font_jumbotron_headers['color'] );
 
   else :
 
-    $font_jumbotron_headers_face   = $font_jumbotron['family'];
-    $font_jumbotron_headers_weight = $font_jumbotron['weight'];
-    $font_jumbotron_headers_style  = $font_jumbotron['style'];
+    $font_jumbotron_headers_face   = $font_jumbotron['font-family'];
+    $font_jumbotron_headers_weight = $font_jumbotron['font-weight'];
+    $font_jumbotron_headers_style  = $font_jumbotron['font-style'];
     $jumbotron_headers_text_color  = $jumbotron_text_color;
   endif;
 
@@ -1047,22 +1036,22 @@ function shoestrap_variables_less() {
 // Shoestrap-specific variables
 // --------------------------------------------------
 
-@navbar-font-size:        ' . $font_navbar['size'] . 'px;
-@navbar-font-weight:      ' . $font_navbar['weight'] . ';
-@navbar-font-style:       ' . $font_navbar['style'] . ';
-@navbar-font-family:      ' . $font_navbar['family'] . ';
+@navbar-font-size:        ' . $font_navbar['font-size'] . 'px;
+@navbar-font-weight:      ' . $font_navbar['font-weight'] . ';
+@navbar-font-style:       ' . $font_navbar['font-style'] . ';
+@navbar-font-family:      ' . $font_navbar['font-family'] . ';
 @navbar-font-color:       ' . $navbar_text_color . ';
 
-@brand-font-size:         ' . $font_brand['size'] . 'px;
-@brand-font-weight:       ' . $font_brand['weight'] . ';
-@brand-font-style:        ' . $font_brand['style'] . ';
-@brand-font-family:       ' . $font_brand['family'] . ';
+@brand-font-size:         ' . $font_brand['font-size'] . 'px;
+@brand-font-weight:       ' . $font_brand['font-weight'] . ';
+@brand-font-style:        ' . $font_brand['font-style'] . ';
+@brand-font-family:       ' . $font_brand['font-family'] . ';
 @brand-font-color:        ' . $brand_text_color . ';
 
-@jumbotron-font-size:         ' . $font_jumbotron['size'] . 'px;
-@jumbotron-font-weight:       ' . $font_jumbotron['weight'] . ';
-@jumbotron-font-style:        ' . $font_jumbotron['style'] . ';
-@jumbotron-font-family:       ' . $font_jumbotron['family'] . ';
+@jumbotron-font-size:         ' . $font_jumbotron['font-size'] . 'px;
+@jumbotron-font-weight:       ' . $font_jumbotron['font-weight'] . ';
+@jumbotron-font-style:        ' . $font_jumbotron['font-style'] . ';
+@jumbotron-font-family:       ' . $font_jumbotron['font-family'] . ';
 @jumbotron-font-color:        ' . $jumbotron_text_color . ';
 
 @jumbotron-headers-font-weight:       ' . $font_jumbotron_headers_weight . ';

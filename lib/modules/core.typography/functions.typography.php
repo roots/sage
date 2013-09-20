@@ -5,17 +5,19 @@ if ( !function_exists( 'getGoogleScript' ) ) :
  * Helper function
  */
 function getGoogleScript( $font ) {
-  $data['link'] = 'http://fonts.googleapis.com/css?family=' . str_replace( ' ', '+', $font['family'] );
-  $data['key'] = str_replace( ' ', '_', $font['family'] );
+  $data['link'] = 'http://fonts.googleapis.com/css?family=' . str_replace( ' ', '+', $font['font-family'] );
+  $data['key'] = str_replace( ' ', '_', $font['font-family'] );
 
-  if ( !empty( $font['style'] ) ) :
-    $data['link'] .= ':' . str_replace( '-', '', $font['style'] );
-    $data['key'] .= '-' . str_replace( '_', '', $font['style'] );
+  if ( !empty( $font['font-weight'] ) ) :
+    $data['link'] .= ':' . str_replace( '-', '', $font['font-weight'] );
+	if ( !empty( $font['font-style'] ) ) :
+    	$data['key'] .= '-' . str_replace( '_', '', $font['font-style'] );
+	endif;
   endif;
 
-  if ( !empty( $font['script'] ) ) :
-    $data['link'] .= '&subset=' . $font['script'];
-    $data['key'] .= '-' . str_replace( '_', '', $font['script'] );
+  if ( !empty( $font['subsets'] ) ) :
+    $data['link'] .= '&subset=' . $font['subsets'];
+    $data['key'] .= '-' . str_replace( '_', '', $font['subsets'] );
   endif;
 
   return $data;

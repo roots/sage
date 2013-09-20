@@ -139,8 +139,8 @@ function shoestrap_module_menus_options( $sections ) {
     'id'        => 'font_navbar',
     'compiler'  => true,
     'default'   => array( 
-      'family'  => 'Arial, Helvetica, sans-serif',
-      'size'    => 14,
+      'font-family'  => 'Arial, Helvetica, sans-serif',
+      'font-size'    => 14,
       'color'   => '#333333',
       'google'  => 'false',
     ),
@@ -158,8 +158,8 @@ function shoestrap_module_menus_options( $sections ) {
     'id'        => 'font_brand',
     'compiler'  => true,
     'default'   => array( 
-      'family'  => 'Arial, Helvetica, sans-serif',
-      'size'    => 18,
+      'font-family'  => 'Arial, Helvetica, sans-serif',
+      'font-size'    => 18,
       'google'  => 'false',
       'color'   => '#333333',
     ),
