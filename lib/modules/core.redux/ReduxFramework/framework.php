@@ -1020,8 +1020,7 @@ if( !class_exists( 'ReduxFramework' ) ) {
                 }
 
                 if( !empty( $imported_options ) && is_array( $imported_options ) && isset( $imported_options['redux-backup'] ) && $imported_options['redux-backup'] == '1' ) {
-                    
-                    $plugin_options['imported'] = 1;
+                    $plugin_options['REDUX_imported'] = 1;
                 	foreach($imported_options as $key => $value) {
                 		$plugin_options[$key] = $value;
                 	}                    
@@ -1039,6 +1038,8 @@ if( !class_exists( 'ReduxFramework' ) ) {
 				    }
                     return $plugin_options;
                 }
+            } else {
+            	$plugin_options['REDUX_imported'] = false;
             }
 
             if( !empty( $plugin_options['defaults'] ) ) {
@@ -1248,7 +1249,7 @@ if( !class_exists( 'ReduxFramework' ) ) {
 
             // Warning bar
             if( isset( $_GET['settings-updated'] ) && $_GET['settings-updated'] == 'true' && $saved == '1' ) {
-                if( isset( $this->options['imported'] ) && $this->options['imported'] == 1 ) {
+                if( isset( $this->options['REDUX_imported'] ) && $this->options['REDUX_imported'] === 1 ) {
                     echo '<div id="redux-imported">' . apply_filters( 'redux-imported-text-' . $this->args['opt_name'], '' . __( '<strong>Settings Imported!</strong>', 'redux-framework' ) ) . '</div>';
                 } else {
                     echo '<div id="redux-save">' . apply_filters( 'redux-saved-text-' . $this->args['opt_name'], __( '<strong>Settings Saved!</strong>', 'redux-framework' ) ) . '</div>';
