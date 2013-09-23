@@ -27,7 +27,7 @@ if ( class_exists( 'ReduxFramework' ) ) :
   // Choose a custom option name for your theme options, the default is the theme name in lowercase with spaces replaced by underscores
   $args['opt_name']               = REDUX_OPT_NAME;
   $args['customizer']             = true;
-  $args['google_api_key']         = 'AIzaSyAX_2L_UzCDPEnAHTG7zhESRVpMPS4ssII';
+  $args['google_api_key']         = 'AIzaSyCDiOc36EIOmwdwspLG3LYwCg9avqC5YLs';
   $args['global_variable']        = 'redux';
   $args['default_show']           = true;
   $args['default_mark']           = '*';
