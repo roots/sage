@@ -27,6 +27,8 @@ class ReduxFramework_typography extends ReduxFramework{
      */
     function render(){
 
+        //print_r($this->field);
+
         global $wp_filesystem;
 
         // Initialize the Wordpress filesystem, no more using file_put_contents function
@@ -98,8 +100,9 @@ class ReduxFramework_typography extends ReduxFramework{
             echo '<div class="select_wrapper typography-family" style="width: 220px; margin-right: 5px;">';
             echo '<select data-placeholder="'.__('Font family','redux-framework').'" class="redux-typography redux-typography-family '.$this->field['class'].'" id="'.$this->field['id'].'-family" data-id="'.$this->field['id'].'" data-value="'.$fontFamily[0].'">';
             echo '<option data-google="false" data-details="" value=""></option>';
-            echo '<optgroup label="Standard Fonts">';
-
+            if ($this->field['google'] === true && !empty( $this->googleAPIKey ) ) {
+                echo '<optgroup label="Standard Fonts">';
+            }
             if (empty($this->field['fonts'])) {
                 $this->field['fonts'] = array(
                     "Arial, Helvetica, sans-serif" => "Arial, Helvetica, sans-serif",
@@ -127,9 +130,11 @@ class ReduxFramework_typography extends ReduxFramework{
             foreach ($this->field['fonts'] as $i=>$family) {
                 echo '<option data-google="false" data-details="'.$font_sizes.'" value="'. $i .'"' . selected($this->value['font-family'], $i, false) . '>'. $family .'</option>';
             }
-            if ($this->field['google'] === true) {
+            if ($this->field['google'] == true && !empty( $this->googleAPIKey ) ) {
+
                 echo '</optgroup>';
-                if( !file_exists( REDUX_DIR.'inc/fields/typography/googlefonts.html' ) && !empty($this->googleAPIKey) ) {
+
+                if( !file_exists( REDUX_DIR.'inc/fields/typography/googlefonts.html' ) ) {
                     $this->getGoogleFonts($wp_filesystem);
                 }
 
@@ -155,9 +160,9 @@ class ReduxFramework_typography extends ReduxFramework{
         if ($this->field['font-weight'] === true):
             echo '<div class="select_wrapper typography-style" original-title="'.__('Font style','redux-framework').'">';
         	$style = $this->value['font-weight'].$this->value['font-style'];
-            echo '<select data-placeholder="'.__('Style','redux-framework').'" class="redux-typography redux-typography-style select'.$this->field['class'].'" original-title="'.__('Font style','redux-framework').'" id="'. $this->field['id'].'_style" data-id="'.$this->field['id'].'" data-value="'.$style.'">';
             echo '<input type="hidden" class="typography-font-weight" name="'.$this->args['opt_name'].'['.$this->field['id'].'][font-weight]" val="'.$this->value['font-weight'].'" /> ';
             echo '<input type="hidden" class="typography-font-style" name="'.$this->args['opt_name'].'['.$this->field['id'].'][font-style]" val="'.$this->value['font-style'].'" /> ';
+            echo '<select data-placeholder="'.__('Style','redux-framework').'" class="redux-typography redux-typography-style select'.$this->field['class'].'" original-title="'.__('Font style','redux-framework').'" id="'. $this->field['id'].'_style" data-id="'.$this->field['id'].'" data-value="'.$style.'">';
             if (empty($this->value['subset'])) {
                 echo '<option value=""></option>';
             }
@@ -276,6 +281,14 @@ class ReduxFramework_typography extends ReduxFramework{
     function enqueue(){
         wp_enqueue_script( 'select2-js' );
         wp_enqueue_style( 'select2-css' );
+        wp_enqueue_style( 'wp-color-picker' );
+
+        wp_enqueue_style(
+            'redux-field-color-css', 
+            REDUX_URL . 'inc/fields/color/field_color.css', 
+            time(),
+            true
+        );
 
         wp_enqueue_script(
             'redux-field-typography-js',

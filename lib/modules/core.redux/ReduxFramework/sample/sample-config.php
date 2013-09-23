@@ -141,7 +141,7 @@ function setup_framework_options(){
     $args['dev_mode_icon_class'] = 'icon-large';
 
     // Set a custom option name. Don't forget to replace spaces with underscores!
-    $args['opt_name'] = 'twenty_eleven';
+    $args['opt_name'] = 'redux_demo';
 
     // Setting system info to true allows you to view info useful for debugging.
     // Default: true
@@ -440,15 +440,13 @@ function setup_framework_options(){
                     )
                 ),
             ),
-/*
 			array(
 				'id'=>'slides',
-				'type' => 'slides', 
+				'type' => 'slides',
 				'title' => __('Slides Options', 'redux-framework'),
-				'subtitle'=> __('Unlimited slider with drag and drop sortings.', 'redux-framework'),
-				),
-*/
-					
+				'subtitle'=> __('Unlimited slides with drag and drop sortings.', 'redux-framework'),
+				'desc' => __('This field will store all slides values into a multidimensional array to use into a foreach loop.', 'redux-framework')
+			),
 			array(
 				'id'=>'presets',
 				'type' => 'image_select', 
@@ -599,6 +597,7 @@ function setup_framework_options(){
 				'type' => 'typography',
 				'title' => __('Body Font', 'redux-framework'),
 				'subtitle' => __('Specify the body font properties.', 'redux-framework'),
+				'google'=>true,
 				'default' => array(
 					'color'=>'#dd9933',
 					'font-size'=>30,
