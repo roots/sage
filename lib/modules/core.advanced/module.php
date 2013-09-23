@@ -60,7 +60,7 @@ function shoestrap_module_advanced_options( $sections ) {
   $fields[] = array( 
     'title'     => 'Border-Radius and Padding Base',
     'id'        => 'help2',
-    'desc'   => __( 'The following settings affect various areas of your site, most notably buttons.', 'shoestrap' ),
+    'desc'      => __( 'The following settings affect various areas of your site, most notably buttons.', 'shoestrap' ),
     'type'      => 'info',
     'fold'      => 'advanced_toggle'
   );
@@ -97,8 +97,8 @@ function shoestrap_module_advanced_options( $sections ) {
   $fields[] = array( 
     'title'     => __( 'CAUTION', 'shoestrap' ),
     'id'        => 'help10',
-    'style'		=> 'warning',
-    'desc'   => __('The settings bellow can pottentially harm your site if you do not properly comprehend them and what they do.
+    'style'     => 'warning',
+    'desc'      => __('The settings bellow can pottentially harm your site if you do not properly comprehend them and what they do.
                     If unsure, simply let them be.', 'shoestrap' ),
     'icon'      => 'warning-sign',
     'type'      => 'info'
