@@ -103,7 +103,7 @@ if( !class_exists( 'ReduxFramework_border' ) ) {
     	            echo '<select original-title="' . __( 'Border size', 'redux-framework' ) . '" id="' . $this->field['id'] . '[border-width]" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][border-width]" class="tips redux-border-size mini' . $this->field['class'] . '" rows="6">';
 
     	            for( $k = $this->field['min']; $k <= $this->field['max']; $k++ ) {
-    	                echo '<option value="' . $k.$this->field['units'] . '"' . selected( $this->value['border-width'], $k, false) . '>' . $k . '</option>';
+    	                echo '<option value="' . $k.$this->field['units'] . '"' . selected( $this->value['border-width'], $k.$this->field['units'], false) . '>' . $k . '</option>';
     	            }
 
     	            echo '</select>';
