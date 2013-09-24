@@ -149,11 +149,11 @@ function shoestrap_module_layout_options( $sections ) {
   );
 
   $fields[] = array( 
-    'title'     => __( 'Tablet Container Width', 'shoestrap' ),
-    'desc'      => __( 'The width of Tablet screens. This is used to calculate the responsive layout breakpoints. Suitable for phones. Default: 728px', 'shoestrap' ),
-    'id'        => 'container_tablet',
+    'title'     => __( 'Small Screen / Tablet view', 'shoestrap' ),
+    'desc'      => __( 'The width of Tablet screens. Default: 768px', 'shoestrap' ),
+    'id'        => 'screen_tablet',
     'fold'      => 'custom_grid',
-    'default'   => 720,
+    'default'   => 768,
     'min'       => 620,
     'step'      => 2,
     'max'       => 2100,
@@ -164,10 +164,10 @@ function shoestrap_module_layout_options( $sections ) {
 
   $fields[] = array( 
     'title'     => __( 'Desktop Container Width', 'shoestrap' ),
-    'desc'      => __( 'The width of normal screens. This is used to calculate the responsive layout breakpoints. Suitable for medium & normal screens. Default: 940px', 'shoestrap' ),
-    'id'        => 'container_desktop',
+    'desc'      => __( 'The width of normal screens. Default: 992px', 'shoestrap' ),
+    'id'        => 'screen_desktop',
     'fold'      => 'custom_grid',
-    'default'   => 940,
+    'default'   => 992,
     'min'       => 620,
     'step'      => 2,
     'max'       => 2100,
@@ -179,10 +179,10 @@ function shoestrap_module_layout_options( $sections ) {
 
   $fields[] = array( 
     'title'     => __( 'Large Desktop Container Width', 'shoestrap' ),
-    'desc'      => __( 'The width of Large Desktop screens. This is used to calculate the responsive layout breakpoints. Suitable for large screens. Default: 1170px', 'shoestrap' ),
-    'id'        => 'container_large_desktop',
+    'desc'      => __( 'The width of Large Desktop screens. Default: 1200px', 'shoestrap' ),
+    'id'        => 'screen_large_desktop',
     'fold'      => 'custom_grid',
-    'default'   => 1140,
+    'default'   => 1200,
     'min'       => 620,
     'step'      => 2,
     'max'       => 2100,

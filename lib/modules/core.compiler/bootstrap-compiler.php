@@ -260,10 +260,10 @@ function shoestrap_variables_less() {
   $navbar_bg        = '#' . str_replace( '#', '', shoestrap_getVariable( 'navbar_bg', true ) );
   $jumbotron_bg     = '#' . str_replace( '#', '', shoestrap_getVariable( 'jumbotron_bg', true ) );
 
-  $container_tablet         = filter_var( shoestrap_getVariable( 'container_tablet', true ), FILTER_SANITIZE_NUMBER_INT );
-  $container_desktop        = filter_var( shoestrap_getVariable( 'container_desktop', true ), FILTER_SANITIZE_NUMBER_INT );
-  $container_large_desktop  = filter_var( shoestrap_getVariable( 'container_large_desktop', true ), FILTER_SANITIZE_NUMBER_INT );
-  $gutter                   = filter_var( shoestrap_getVariable( 'layout_gutter', true ), FILTER_SANITIZE_NUMBER_INT );
+  $screen_tablet         = filter_var( shoestrap_getVariable( 'screen_tablet', true ), FILTER_SANITIZE_NUMBER_INT );
+  $screen_desktop        = filter_var( shoestrap_getVariable( 'screen_desktop', true ), FILTER_SANITIZE_NUMBER_INT );
+  $screen_large_desktop  = filter_var( shoestrap_getVariable( 'screen_large_desktop', true ), FILTER_SANITIZE_NUMBER_INT );
+  $gutter                = filter_var( shoestrap_getVariable( 'layout_gutter', true ), FILTER_SANITIZE_NUMBER_INT );
 
   $navbar_height    = filter_var( shoestrap_getVariable( 'navbar_height', true ), FILTER_SANITIZE_NUMBER_INT );
   $navbar_text_color       = '#' . str_replace( '#', '', $font_navbar['color'] );
@@ -618,19 +618,20 @@ function shoestrap_variables_less() {
 @screen-phone:               @screen-xs-min;
 
 // Small screen / tablet
-@screen-sm:                  ' . ( $container_tablet + ( 2 * $gutter ) ) . 'px;
+// Note: Deprecated @screen-sm and @screen-tablet as of v3.0.1
+@screen-sm:                  ' . $screen_tablet . 'px;
 @screen-sm-min:              @screen-sm;
 @screen-tablet:              @screen-sm-min;
 
 // Medium screen / desktop
 // Note: Deprecated @screen-md and @screen-desktop as of v3.0.1
-@screen-md:                  ' . ( $container_desktop + ( 2 * $gutter ) ) . 'px;
+@screen-md:                  ' . $screen_desktop . 'px;
 @screen-md-min:              @screen-md;
 @screen-desktop:             @screen-md-min;
 
 // Large screen / wide desktop
 // Note: Deprecated @screen-lg and @screen-lg-desktop as of v3.0.1
-@screen-lg:                  ' . ( $container_large_desktop + ( 2 * $gutter ) ) . 'px;
+@screen-lg:                  ' . $screen_large_desktop . 'px;
 @screen-lg-min:              @screen-lg;
 @screen-lg-desktop:          @screen-lg-min;
 
@@ -1021,15 +1022,15 @@ function shoestrap_variables_less() {
 // --------------------------------------------------
 
 // Small screen / tablet
-@container-tablet:           ((' . $container_tablet . 'px + @grid-gutter-width));
+@container-tablet:           ' . ( $screen_tablet - ( $gutter / 2 ) ). 'px;
 @container-sm:               @container-tablet;
 
 // Medium screen / desktop
-@container-desktop:          ((' . $container_desktop . 'px + @grid-gutter-width));
+@container-desktop:          ' . ( $screen_desktop - ( $gutter / 2 ) ). 'px;
 @container-md:               @container-desktop;
 
 // Large screen / wide desktop
-@container-lg-desktop:       ((' . $container_large_desktop . 'px + @grid-gutter-width));
+@container-large-desktop:    ' . ( $screen_large_desktop - ( $gutter / 2 ) ). 'px;
 @container-lg:                 @container-large-desktop;
 
 
