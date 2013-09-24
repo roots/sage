@@ -60,7 +60,7 @@ function shoestrap_module_footer_options( $sections ) {
     'default'     => array( 
       'border-width'     => '2',
       'border-style'     => 'solid',
-      'color'            => '#4B4C4D',
+      'border-color'     => '#4B4C4D',
     ),
     'fold'        => 'advanced_toggle'
   );
