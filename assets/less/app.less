@@ -384,6 +384,8 @@ a.toggle-nav {
   #searchform {
     // margin-top: (((@navbar-height - (2 * @line-height-computed)) / 2));
     border: 0;
+    padding-left: 0;
+    padding-right: 0;
   }
   .dropdown-menu {
     padding: 0;
@@ -808,4 +810,12 @@ li.dropdown ul.dropdown-menu li.dropdown.pull-left {
 
 .page-header {
   padding-top: ((@line-height-computed / 2) - 1);
+}
+
+.navbar-inside {
+  padding-left: @grid-gutter-width;
+  padding-right: @grid-gutter-width;
+  .nav-main {
+    padding-right: 0;
+  }
 }

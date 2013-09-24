@@ -6584,8 +6584,11 @@ fieldset[disabled] #social-sharing .shareme .box {
 }
 .navbar #searchform {
   border: 0;
+  padding-left: 0;
+  padding-right: 0;
 }
 .navbar .dropdown-menu {
+  padding: 0;
   background: #f8f8f8;
 }
 .navbar .dropdown-menu li.active a,
@@ -7098,4 +7101,11 @@ li.dropdown ul.dropdown-menu li.dropdown.pull-left {
 }
 .page-header {
   padding-top: 9px;
+}
+.navbar-inside {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+.navbar-inside .nav-main {
+  padding-right: 0;
 }
