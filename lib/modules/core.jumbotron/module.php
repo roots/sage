@@ -229,7 +229,7 @@ function shoestrap_module_jumbotron_options($sections) {
     'default'   => array(
       'border-width'    => '0',
       'border-style'    => 'solid',
-      'color'           => '#428bca',
+      'border-color'    => '#428bca',
     ),
     'fold'      => 'advanced_toggle'
   );
