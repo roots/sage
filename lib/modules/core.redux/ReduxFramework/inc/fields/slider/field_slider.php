@@ -100,11 +100,11 @@ class ReduxFramework_slider extends ReduxFramework{
 		wp_localize_script('redux-field-slider-js', 'reduxSliders', $localized_data);		
 	
 		//html output
-		echo '<fieldset id="'.$this->field['id'].'" class="redux-slider-container">';
+		echo '<fieldset class="redux-slider-container">';
 			
-			echo '<input type="text" name="'.$this->args['opt_name'].'['.$this->field['id'].']" id="' . $this->field['id'] . '-slider" value="'. $this->value .'" class="mini slider-input'.$this->field['class'].'"'.$readonly.'/>';
+			echo '<input type="text" name="'.$this->args['opt_name'].'['.$this->field['id'].']" id="' . $this->field['id'] . '" value="'. $this->value .'" class="mini slider-input'.$this->field['class'].'"'.$readonly.'/>';
 			echo '<div id="'.$this->field['id'].'-slider" class="redux_slider" rel="'.$this->field['id'].'"></div>';
-			
+
 			echo (isset($this->field['desc']) && !empty($this->field['desc']))?'<div class="desc">'.$this->field['desc'].'</div>':'';
 			
 		echo '</fieldset>';
