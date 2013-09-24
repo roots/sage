@@ -58,9 +58,9 @@ function shoestrap_module_footer_options( $sections ) {
     'id'          => 'footer_border_top',
     'type'        => 'border',
     'default'     => array( 
-      'size'      => '2',
-      'style'     => 'solid',
-      'color'     => '#4B4C4D',
+      'border-size'      => '2',
+      'border-style'     => 'solid',
+      'color'            => '#4B4C4D',
     ),
     'fold'        => 'advanced_toggle'
   );
