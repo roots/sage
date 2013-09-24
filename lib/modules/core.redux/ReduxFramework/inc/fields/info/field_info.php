@@ -87,7 +87,7 @@ if( !class_exists( 'ReduxFramework_info' ) ) {
                     $this->field['style'] = 'normal';
                 }
 
-                $this->field['style'] = 'redux-' . $this->field['style'];
+                $this->field['style'] = 'redux-' . $this->field['style'].' ';
             }
 
             echo '</td></tr></table><div id="' . $this->field['id'] . '" class="' . $this->field['style'] . $this->field['class'] . '">';

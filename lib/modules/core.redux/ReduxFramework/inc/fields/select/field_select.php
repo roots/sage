@@ -40,43 +40,47 @@ class ReduxFramework_select extends ReduxFramework{
        		$this->field['class'] = " elusive-icons";
 		}//if
 
-		if (!empty($this->field['options'])) {
-			if (isset($this->field['multi']) && $this->field['multi']) {
-				$multi = ' multiple="multiple"';
-			} else {
-				$multi = "";
-			}
-			
-			if (!empty($this->field['width'])) {
-				$width = ' style="'.$this->field['width'].'"';
-			} else {
-				$width = ' style="width: 40%;"';
-			}	
+		echo '<fieldset id="'.$this->field['id'].'" class="redux-select-container">';
 
-			$nameBrackets = "";
-			if (!empty($multi)) {
-				$nameBrackets = "[]";
-			}
+			if (!empty($this->field['options'])) {
+				if (isset($this->field['multi']) && $this->field['multi']) {
+					$multi = ' multiple="multiple"';
+				} else {
+					$multi = "";
+				}
+				
+				if (!empty($this->field['width'])) {
+					$width = ' style="'.$this->field['width'].'"';
+				} else {
+					$width = ' style="width: 40%;"';
+				}	
 
-			$placeholder = (isset($this->field['placeholder'])) ? esc_attr($this->field['placeholder']) : __( 'Select an item', 'redux-framework' );
+				$nameBrackets = "";
+				if (!empty($multi)) {
+					$nameBrackets = "[]";
+				}
 
-			echo '<select'.$multi.' id="'.strtr($this->args['opt_name'].'['.$this->field['id'].']'.$nameBrackets, array('[' => '_', ']' => '')).'" data-placeholder="'.$placeholder.'" name="'.$this->args['opt_name'].'['.$this->field['id'].']'.$nameBrackets.'" class="redux-select-item'.$this->field['class'].'"'.$width.' rows="6">';
-				echo '<option></option>';
-				foreach($this->field['options'] as $k => $v){
-					if (is_array($this->value)) {
-						$selected = (is_array($this->value) && in_array($k, $this->value))?' selected="selected"':'';					
-					} else {
-						$selected = selected($this->value, $k, false);
-					}
-					echo '<option value="'.$k.'"'.$selected.'>'.$v.'</option>';
-				}//foreach
-			echo '</select>';			
-		} else {
-			echo '<strong>'.__('No items of this type were found.', 'redux-framework').'</strong>';
-		}
-
-		echo (isset($this->field['desc']) && !empty($this->field['desc']))?'<div class="description">'.$this->field['desc'].'</div>':'';
+				$placeholder = (isset($this->field['placeholder'])) ? esc_attr($this->field['placeholder']) : __( 'Select an item', 'redux-framework' );
 		
+				echo '<select'.$multi.' id="'.$this->field['id'].'-select" data-placeholder="'.$placeholder.'" name="'.$this->args['opt_name'].'['.$this->field['id'].']'.$nameBrackets.'" class="redux-select-item'.$this->field['class'].'"'.$width.' rows="6">';
+					echo '<option></option>';
+					foreach($this->field['options'] as $k => $v){
+						if (is_array($this->value)) {
+							$selected = (is_array($this->value) && in_array($k, $this->value))?' selected="selected"':'';					
+						} else {
+							$selected = selected($this->value, $k, false);
+						}
+						echo '<option value="'.$k.'"'.$selected.'>'.$v.'</option>';
+					}//foreach
+				echo '</select>';			
+			} else {
+				echo '<strong>'.__('No items of this type were found.', 'redux-framework').'</strong>';
+			}
+
+			echo (isset($this->field['desc']) && !empty($this->field['desc']))?'<div class="description">'.$this->field['desc'].'</div>':'';
+		
+		echo '</fieldset>';
+
 	}//function
 
 	

@@ -36,28 +36,28 @@ class ReduxFramework_sortable {
 
         echo '<fieldset id="'.$this->field['id'].'" class="redux-sortable-container">';
 
-        echo '<ul id="'.$this->field['id'].'-list" class="redux-sortable ' . $class . '">';
-            if (isset($this->value) && is_array($this->value)) {
-                foreach ($this->value as $k => $nicename) {
-                    $value_display = isset($this->value[$k]) ? $this->value[$k] : '';
-                    echo '<li>';
-                    echo '<label for="' . $this->field['id'] . '[' . $k . ']"><strong>' . $options[$k] . ':</strong></label>';
-                    echo '<input class="' . $class . '" type="'.$this->field['mode'].'" id="' . $this->field['id'] . '[' . $k . ']" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][' . $k . ']" value="' . esc_attr($value_display) . '" placeholder="' . $nicename . '" />';
-                    echo '<span class="compact drag"><i class="icon-move icon-large"></i></span>';
-                    echo '</li>';
+            echo '<ul id="'.$this->field['id'].'-list" class="redux-sortable ' . $class . '">';
+                if (isset($this->value) && is_array($this->value)) {
+                    foreach ($this->value as $k => $nicename) {
+                        $value_display = isset($this->value[$k]) ? $this->value[$k] : '';
+                        echo '<li>';
+                        echo '<label for="' . $this->field['id'] . '[' . $k . ']"><strong>' . $options[$k] . ':</strong></label>';
+                        echo '<input class="' . $class . '" type="'.$this->field['mode'].'" id="' . $this->field['id'] . '[' . $k . ']" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][' . $k . ']" value="' . esc_attr($value_display) . '" placeholder="' . $nicename . '" />';
+                        echo '<span class="compact drag"><i class="icon-move icon-large"></i></span>';
+                        echo '</li>';
+                    }
+                } else {
+                    foreach ($options as $k => $nicename) {
+                        $value_display = isset($this->value[$k]) ? $this->value[$k] : '';
+                        echo '<li>';
+                        echo '<label for="' . $this->field['id'] . '[' . $k . ']"><strong>' . $nicename . ': </strong></label>';
+                        echo '<input class="' . $class . '" type="'.$this->field['mode'].'" id="' . $this->field['id'] . '[' . $k . ']" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][' . $k . ']" value="' . esc_attr($value_display) . '" placeholder="' . $nicename . '" />';
+                        echo '<span class="drag"><i class="icon-move icon-large"></i></span>';
+                        echo '</li>';
+                    }
                 }
-            } else {
-                foreach ($options as $k => $nicename) {
-                    $value_display = isset($this->value[$k]) ? $this->value[$k] : '';
-                    echo '<li>';
-                    echo '<label for="' . $this->field['id'] . '[' . $k . ']"><strong>' . $nicename . ': </strong></label>';
-                    echo '<input class="' . $class . '" type="'.$this->field['mode'].'" id="' . $this->field['id'] . '[' . $k . ']" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][' . $k . ']" value="' . esc_attr($value_display) . '" placeholder="' . $nicename . '" />';
-                    echo '<span class="drag"><i class="icon-move icon-large"></i></span>';
-                    echo '</li>';
-                }
-            }
-        echo '</ul>';
-        echo (isset($this->field['desc']) && !empty($this->field['desc']))?'<div class="description">'.$this->field['desc'].'</div>':'';
+            echo '</ul>';
+            echo (isset($this->field['desc']) && !empty($this->field['desc']))?'<div class="description">'.$this->field['desc'].'</div>':'';
         echo "</fieldset>";
     }
 

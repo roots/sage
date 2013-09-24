@@ -62,11 +62,11 @@ if( !class_exists( 'ReduxFramework_image_select' ) ) {
          */
         public function render() {
                 
-            echo '<fieldset>';
+            echo '<fieldset id="'.$this->field['id'].'" class="redux-image-select-container">';
             
             if( !empty( $this->field['options'] ) ) {
 
-                echo '<ul class="redux-image-select" id="'.$this->field['id'].'">';
+                echo '<ul class="redux-image-select">';
             
                 foreach( $this->field['options'] as $k => $v ) {
 

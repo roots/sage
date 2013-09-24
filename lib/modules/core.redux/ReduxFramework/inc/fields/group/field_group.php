@@ -102,14 +102,12 @@ if( !class_exists( 'ReduxFramework_group' ) ) {
         	echo '<div class="redux-group">';
         
         	foreach ($fields as $field) {
-        		$id = $field['id'];
         		if (empty($this->value[$field['id']])) {
         			$this->value[$field['id']] = "";
         		}
-        		$field['id'] = $this->field['id'].']['.$field['id'];
-        		$field['class'] = "";
-        		echo $this->value[$id]."<br />";
-        		$this->parent->_field_input($field, $this->value[$id]);
+        		$field['class'] .= " group";
+        		echo $this->value[$field['id']]."<br />";
+        		$this->parent->_field_input($field, $this->value[$field['id']]);
         	}        	
         	echo '</div>';
         	echo ( isset( $this->field['desc'] ) && !empty( $this->field['desc'] ) ) ? '<div class="description">' . $this->field['desc'] . '</div>' : '';

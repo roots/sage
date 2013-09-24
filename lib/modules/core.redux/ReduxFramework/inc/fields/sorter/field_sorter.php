@@ -83,40 +83,37 @@ class ReduxFramework_sorter extends ReduxFramework {
 				$sortlists[$key] = $sortlist;
 		    }
 
-		    echo '<div id="'.$this->field['id'].'" class="sorter">';
+			echo '<fieldset id="'.$this->field['id'].'" class="redux-sorter-container sorter">';
 
+			    if ($sortlists) {
 
-		    if ($sortlists) {
+					foreach ($sortlists as $group=>$sortlist) {
 
-				foreach ($sortlists as $group=>$sortlist) {
+					    echo '<ul id="'.$this->field['id'].'_'.$group.'" class="sortlist_'.$this->field['id'].'">';
+					    echo '<h3>'.$group.'</h3>';
 
-				    echo '<ul id="'.$this->field['id'].'_'.$group.'" class="sortlist_'.$this->field['id'].'">';
-				    echo '<h3>'.$group.'</h3>';
+					    foreach ($sortlist as $key => $list) {
 
-				    foreach ($sortlist as $key => $list) {
+							echo '<input class="sorter-placebo" type="hidden" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][' . $group . '][placebo]" value="placebo">';
 
-					echo '<input class="sorter-placebo" type="hidden" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][' . $group . '][placebo]" value="placebo">';
+							if ($key != "placebo") {
 
-					if ($key != "placebo") {
+							    echo '<li id="'.$key.'" class="sortee">';
+							    echo '<input class="position '.$this->field['class'].'" type="hidden" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][' . $group . '][' . $key . ']" value="'.$list.'">';
+							    echo $list;
+							    echo '</li>';
 
-					    echo '<li id="'.$key.'" class="sortee">';
-					    echo '<input class="position '.$this->field['class'].'" type="hidden" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][' . $group . '][' . $key . ']" value="'.$list.'">';
-					    echo $list;
-					    echo '</li>';
+							}
 
+					    }
+
+					    echo '</ul>';
 					}
-
-				    }
-
-				    echo '</ul>';
-				}
+			    }
 		    }
 
-		    echo '</div>';
-
-	    }
-
-        echo ($this->field['desc'] != '') ? '<div class="clear"></div><span class="description">' . $this->field['desc'] . '</span>' : '';
+	        echo (isset($this->field['desc']) && !empty($this->field['desc']))?'<div class="description">'.$this->field['desc'].'</div>':'';
+        echo '</fieldset>';
     }
 
     function enqueue() {

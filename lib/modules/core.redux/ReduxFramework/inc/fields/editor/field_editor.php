@@ -46,14 +46,8 @@ if( !class_exists( 'ReduxFramework_editor' ) ) {
         
             parent::__construct( $parent->sections, $parent->args, $parent->extra_tabs );
 
-            
-
             $this->field = $field;
             $this->value = $value;
-
-            $this->field['js_id'] = "dovy";
-
-            
         
         }
 
@@ -67,9 +61,7 @@ if( !class_exists( 'ReduxFramework_editor' ) ) {
          * @return      void
          */
         public function render() {
-
-        	$this->field['tID'] = strtr($this->args['opt_name'] . '[' . $this->field['id'] . ']', array('[' => '_', ']' => ''));
-        
+        	
         	echo '<fieldset id="'.$this->field['id'].'" class="redux-editor-container">';
 
 	            $settings = array(
@@ -77,7 +69,7 @@ if( !class_exists( 'ReduxFramework_editor' ) ) {
 	                'editor_class'  => $this->field['class']
 	            );
 
-	            wp_editor( $this->value, $this->field['tID'], $settings );
+	            wp_editor( $this->value, $this->field['id'].'-editor', $settings );
 	        
 	            echo ( isset( $this->field['desc'] ) && !empty( $this->field['desc'] ) ) ? '<div class="description">' . $this->field['desc'] . '</div>' : '';
 	        	
