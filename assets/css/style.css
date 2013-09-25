@@ -7102,10 +7102,16 @@ li.dropdown ul.dropdown-menu li.dropdown.pull-left {
 .page-header {
   padding-top: 9px;
 }
-.navbar-inside {
-  padding-left: 30px;
-  padding-right: 30px;
+.wrap.main-section .content {
+  padding-left: 15px;
+  padding-right: 15px;
 }
-.navbar-inside .nav-main {
-  padding-right: 0;
+.container > .navbar-header,
+.container > .navbar-collapse {
+  margin-left: 15px;
+}
+.boxed-container .container > .navbar-header,
+.boxed-container .container > .navbar-collapse {
+  margin-right: 15px;
+  margin-left: 0;
 }

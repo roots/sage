@@ -812,10 +812,20 @@ li.dropdown ul.dropdown-menu li.dropdown.pull-left {
   padding-top: ((@line-height-computed / 2) - 1);
 }
 
-.navbar-inside {
-  padding-left: @grid-gutter-width;
-  padding-right: @grid-gutter-width;
-  .nav-main {
-    padding-right: 0;
+.wrap.main-section .content {
+  padding-left: (@grid-gutter-width / 2);
+  padding-right: (@grid-gutter-width / 2);
+}
+
+.container > .navbar-header,
+.container > .navbar-collapse {
+  margin-left: (@grid-gutter-width / 2);
+}
+
+.boxed-container {
+  .container > .navbar-header,
+  .container > .navbar-collapse {
+    margin-right: (@grid-gutter-width / 2);
+    margin-left: 0;
   }
 }
