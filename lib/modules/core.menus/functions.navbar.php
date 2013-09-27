@@ -54,24 +54,32 @@ endif;
 
 if ( !function_exists( 'shoestrap_navbar_css' ) ) :
 function shoestrap_navbar_css() {
-  $opacity = (intval(shoestrap_getVariable( 'navbar_bg_opacity' )))/100;
+  $navbar_bg_opacity = shoestrap_getVariable( 'navbar_bg_opacity' );
   $style = "";
 
-  if ( $opacity != 1 && $opacity != '' ) :
-    $bg = shoestrap_getVariable( 'navbar_bg');
-    $rgb = shoestrap_get_rgb( $bg, true );
+  if ($navbar_bg_opacity == '') :
+    $opacity = '0';
+  else:
+    $opacity = (intval($navbar_bg_opacity))/100;
+  endif;
 
-    $style .= '.navbar{';
+  if ( $opacity != 1 && $opacity != '' ) :
+    $bg = str_replace('#', '',shoestrap_getVariable( 'navbar_bg'));
+    $rgb = shoestrap_get_rgb( $bg, true );
+    $opacityie = str_replace('0.','',$opacity);
+
+    $style .= '.navbar, .navbar-default {';
 
     if ( $opacity != 1 && $opacity != '') :
-      $style .= 'background: rgb('.$rgb.');';
+      $style .= 'background: transparent;';
       $style .= 'background: rgba('.$rgb.', '.$opacity.');';
+      $style .= 'filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#'.$opacityie.$bg.',endColorstr=#'.$opacityie.$bg.'); ;';
     else :
-      $style .= 'background: '.$bg.';';
+      $style .= 'background: #'.$bg.';';
     endif;
 
     $style .= '}';
-  
+
   endif;
 
   if ( shoestrap_getVariable( 'navbar_margin' ) != 1 ) :
