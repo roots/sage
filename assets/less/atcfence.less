@@ -1,0 +1,95 @@
+@import "atkore.less";
+
+/* I've added the domain to the body class (in wordpress) so, you can use selectors like "[class*="atkore"]" or "[class*="atcfence"]" or "[class*="easternwire"]" */
+
+@primary-color:                       rgba(80,144,53,1);  // Green
+@secondary-color:                     @black; // Black
+@tertiary-color:                      rgba(239,86,79,1); // Red
+
+
+.brand {
+  height: 110px;
+  width: 200px;
+}
+
+body.home.page .brand {
+  background-image: url(/assets/alliedtube-logo-white.png);
+  position: relative;
+}
+
+body.single .brand,
+body.page .brand,
+body.page-template .brand,
+body.archive .brand {
+  background-image: url(/assets/alliedtube-logo-color.png);
+  position: relative;
+}
+
+.no-backgroundsize body.home.page .brand {
+  background-image: none;
+  filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/assets/alliedtube-logo-white.png', sizingMethod='scale');
+  position: relative;
+}
+
+.no-backgroundsize body.single .brand,
+.no-backgroundsize body.page .brand,
+.no-backgroundsize body.page-template .brand,
+.no-backgroundsize body.archive .brand {
+  background-image: none;
+  filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/assets/alliedtube-logo-color.png', sizingMethod='scale');
+}
+
+.no-cssgradients .page-header {
+  background: url("/assets/page-header-gradient.png") repeat-y top left @primary-color!important;
+}
+
+.thumbnails .thumbnail img,
+.no-cssgradients .thumbnails .thumbnail img {
+  height: 150px;
+  max-width: 100%;
+}
+
+.mini-nav li a:hover {
+  text-decoration: none;
+  background-color: @gray;
+  color: #fff;
+  text-shadow: none;
+}
+
+
+table#t1 .row1 td,
+table#t1 .row8 td {
+  color: #fff;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: percentage(0.8);
+  line-height: percentage(1.0)!important;
+  background-color: lighten(@primary-color, 10%);
+  white-space: pre-line;
+}
+
+table #n1 {
+  max-width: 120px;
+  white-space: pre;
+}
+
+table#t1 .row1 td,
+table#t1 .row8 td {
+  border-left: 1px solid lighten(@primary-color, 10%);
+}
+
+table#t8 #n2,
+table#t8 #n3,
+table#t8 #n4,
+table#t8 #n5,
+table#t8 #n6,
+table#t8 #n7 {
+  text-align: center;
+}
+
+table#t8 #n4,
+table#t8 #n5,
+table#t8 #n6,
+table#t8 #n7 {
+  font-weight: bold;
+}

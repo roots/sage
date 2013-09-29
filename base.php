@@ -12,21 +12,25 @@
       get_template_part('templates/header');
     }
   ?>
+  <?php if ( is_front_page() ) : ?>
+      <?php get_template_part('templates/sequence', 'home'); ?>
+  <?php endif; ?>
 
   <div class="wrap container" role="document">
+    <?php if ( ! is_front_page() ) : ?>
+      <?php get_template_part('templates/divider', 'top'); ?>
+    <?php endif; ?>
     <div class="content row">
-      <div class="main <?php echo roots_main_class(); ?>" role="main">
-        <?php include roots_template_path(); ?>
-      </div><!-- /.main -->
       <?php if (roots_display_sidebar()) : ?>
         <aside class="sidebar <?php echo roots_sidebar_class(); ?>" role="complementary">
           <?php include roots_sidebar_path(); ?>
         </aside><!-- /.sidebar -->
       <?php endif; ?>
+      <div class="main <?php echo roots_main_class(); ?>" role="main">
+        <?php include roots_template_path(); ?>
+      </div><!-- /.main -->
     </div><!-- /.content -->
   </div><!-- /.wrap -->
-
   <?php get_template_part('templates/footer'); ?>
-
 </body>
 </html>

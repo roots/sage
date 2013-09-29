@@ -1,0 +1,69 @@
+// !ASIDE & LEFT NAV
+
+.nav-sidebar a {
+  .transition-sidebar;
+}
+
+.nav-list > li > a {
+  color: @secondary-color;
+  font-weight: normal;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+
+.nav-list > li > a:hover {
+  padding-left: 20px;
+}
+
+.nav-list  {
+  	-webkit-box-shadow: inset -2px 0 4px rgba(0,0,0,0.1);
+	   -moz-box-shadow: inset -2px 0 4px  rgba(0,0,0,0.1);
+	        box-shadow: inset -2px 0 4px  rgba(0,0,0,0.1);
+}
+
+
+
+.nav-list > li.active > a,
+.nav-list > li.active > a:hover,
+.nav-list > li.active > a:focus {
+  color: @navcolor;
+  background: url(/assets/arrow-right-white.png) no-repeat 10px center @primary-color;
+  font-family: @atkore-secondary-font-family;
+  border: 0;
+  padding-left: 28px;
+  border-bottom: 1px solid @primary-color;
+  font-weight: bold; 
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+  	-webkit-box-shadow: inset -3px 0 0 -3px rgba(0,0,0,0.2);
+	   -moz-box-shadow: inset -3px 0 0 -3px rgba(0,0,0,0.2);
+	        box-shadow: inset -3px 0 0 -3px rgba(0,0,0,0.2);
+}
+
+.nav li + .nav-header,
+.nav .nav-header {
+	-webkit-box-shadow: inset 0 -4px 3px -3px rgba(0,0,0,0.2);
+	   -moz-box-shadow: inset 0 -4px 3px -3px rgba(0,0,0,0.2);
+	        box-shadow: inset 0 -4px 3px -3px rgba(0,0,0,0.2);
+  border-top: 1px solid @primary-color!important;
+  background-color: @grayLighter;
+  margin-top: 0;
+}
+
+.sidebar {
+  position: relative;
+  z-index: 3000;
+  .border-box;
+  margin-top: @vertical-spacing;
+  border-right: @dashed-line;
+}
+
+.nav-sidebar::after {
+  content: "";
+  position: absolute;
+  z-index: 3000;
+
+  width: auto;
+  height: auto;
+  display: block;
+}
