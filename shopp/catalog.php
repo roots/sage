@@ -1,0 +1,1 @@
+<?php shopp_product_categories(); ?>

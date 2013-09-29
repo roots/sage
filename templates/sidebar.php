@@ -1,37 +1,76 @@
-<section class="widget">
-  <div class="widget-inner">
-<?php 
-  $queried_post_type = get_query_var('post_type');
-    if ( is_single() && 'product' ==  $queried_post_type || is_post_type_archive('product') ) { ?>
-    <?php $menu = 'Products & Services'; ?>
-    <nav class="nav-sidebar" role="navigation">
-      <?php wp_nav_menu(array('menu' => $menu, 'menu_class' => 'nav nav-list')); ?>
-    </nav>
-<?php } elseif ( is_single() && 'resource' ==  $queried_post_type || is_post_type_archive('resource') ) { ?>
-    <?php $menu = 'Resources'; ?>
-    <nav class="nav-sidebar" role="navigation">
-      <?php wp_nav_menu(array('menu' => $menu, 'menu_class' => 'nav nav-list')); ?>
-    </nav>
-<?php } else { ?>
+<?php if (!is_front_page()){ ?>
+
+
+<?php get_template_part('templates/content', 'logo'); ?>
 
 <?php
-  /* Sidebar Menu based on Page Title */
-  $menu = '';
-  if( is_page() ) { 
-  	global $post;
-          /* Get an array of Ancestors and Parents if they exist */
-  	$parents = get_post_ancestors( $post->ID );
-          /* Get the top Level page->ID count base 1, array base 0 so -1 */ 
-  	$id = ($parents) ? $parents[count($parents)-1]: $post->ID;
-  	/* Get the parent and set the $menu with the page title (post_title) */
-          $parent = get_page( $id );
-  	$menu = $parent->post_title;
-  }
-  ?>
+  $queried_post_type = get_query_var('post_type');
+  $queried_taxonomy = get_query_var('taxonomy');
+  
+    if ( is_single() && 'product' ==  $queried_post_type || is_post_type_archive('product') || 'product-category' ==  $queried_taxonomy ) { ?>
+
     <nav class="nav-sidebar" role="navigation">
-      <?php wp_nav_menu(array('menu' => $menu, 'menu_class' => 'nav nav-list')); ?>
+    <?php
+        if (has_nav_menu('products')) :
+          wp_nav_menu(array('theme_location' => 'products', 'menu_class' => 'list-group', 'items_wrap' => '<ul class="%2$s">%3$s</ul>'));
+        endif;
+    ?> 
     </nav>
+<?php } elseif ( is_single() && 'service' ==  $queried_post_type || is_post_type_archive('service') ) { ?>
+    <nav class="nav-sidebar" role="navigation">
+    <?php
+        if (has_nav_menu('services')) :
+          wp_nav_menu(array('theme_location' => 'services', 'menu_class' => 'list-group', 'items_wrap' => '<ul class="%2$s">%3$s</ul>'));
+        endif;
+    ?>
+    </nav> 
+<?php } elseif ( is_single() && 'application' ==  $queried_post_type || is_post_type_archive('application') ) { ?>
+    <nav class="nav-sidebar" role="navigation">
+    <?php
+        if (has_nav_menu('services')) :
+          wp_nav_menu(array('theme_location' => 'services', 'menu_class' => 'list-group', 'items_wrap' => '<ul class="%2$s">%3$s</ul>'));
+        endif;
+    ?>
+    </nav>
+<?php } elseif ( is_single() && 'resource' ==  $queried_post_type || is_post_type_archive('resource') ) { ?>
+    <nav class="nav-sidebar" role="navigation">
+    <?php
+        if (has_nav_menu('resources')) :
+          wp_nav_menu(array('theme_location' => 'resources', 'menu_class' => 'list-group', 'items_wrap' => '<ul class="%2$s">%3$s</ul>'));
+        endif;
+    ?>
+    </nav>
+<?php } elseif ( is_single() && 'market' ==  $queried_post_type || is_post_type_archive('market') ) { ?>
+    <nav class="nav-sidebar" role="navigation">
+    <?php
+        if (has_nav_menu('markets')) :
+          wp_nav_menu(array('theme_location' => 'markets', 'menu_class' => 'list-group', 'items_wrap' => '<ul class="%2$s">%3$s</ul>'));
+        endif;
+    ?>
+    </nav>
+<?php } elseif ( is_page() ) {   ?>
+    <nav class="nav-sidebar" role="navigation">
+    <?php
+        if (has_nav_menu('pages')) :
+          wp_nav_menu(array('theme_location' => 'pages', 'menu_class' => 'list-group', 'items_wrap' => '<ul class="%2$s">%3$s</ul>'));
+        endif;
+    ?>
+    </nav>
+<?php } elseif ( is_page( 'Products & Services' ) || is_page( 'products-services' ) ) {   ?>
+
+    <nav class="nav-sidebar" role="navigation">
+    <?php
+        if (has_nav_menu('products')) :
+          wp_nav_menu(array('theme_location' => 'products', 'menu_class' => 'list-group', 'items_wrap' => '<ul class="%2$s">%3$s</ul>'));
+        endif;
+    ?>
+    </nav>
+<?php } else {   ?>
+
 <?php } ?>
-  </div>
-</section>
+
+
 <?php dynamic_sidebar('sidebar-primary'); ?>
+<?php get_template_part('templates/content', 'actions-sidebar'); ?>
+
+<?php } ?>

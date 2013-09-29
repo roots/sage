@@ -1,0 +1,267 @@
+
+@font-face{font-family:'Glyphicons Filetypes Regular';src:url('http://afcweb.local/wp-content/themes/atkore/assets/fonts/glyphicons-filetypes-regular.eot');src:url('http://afcweb.local/wp-content/themes/atkore/assets/fonts/glyphicons-filetypes-regular.eot?#iefix') format('embedded-opentype'),url('http://afcweb.local/wp-content/themes/atkore/assets/fonts/glyphicons-filetypes-regular.woff') format('woff'),url('http://afcweb.local/wp-content/themes/atkore/assets/fonts/glyphicons-filetypes-regular.ttf') format('truetype'),url('http://afcweb.local/wp-content/themes/atkore/assets/fonts/glyphicons-filetypes-regular.svg#glyphicons_filetypesregular') format('svg');font-weight:normal;font-style:normal}.filetype{display:inline-block;position:relative;padding-left:30px;color:#1d1d1b;text-decoration:none;*display:inline;*zoom:1;vertical-align:middle}.filetype:before{position:absolute;left:0;top:0;display:inline-block;margin:0 5px 0 0;font:24px/1em 'Glyphicons Filetypes Regular';font-style:normal;font-weight:normal;color:#1d1d1b;*display:inline;*zoom:1;vertical-align:middle;text-transform:none;-webkit-font-smoothing:antialiased}
+.filetype.white:before{color:#fff}
+.filetype.txt:before{content:"\E001"}
+.filetype.doc:before{content:"\E002"}
+.filetype.rtf:before{content:"\E003"}
+.filetype.log:before{content:"\E004"}
+.filetype.tex:before{content:"\E005"}
+.filetype.msg:before{content:"\E006"}
+.filetype.text:before{content:"\E007"}
+.filetype.wpd:before{content:"\E008"}
+.filetype.wps:before{content:"\E009"}
+.filetype.docx:before{content:"\E010"}
+.filetype.page:before{content:"\E011"}
+.filetype.csv:before{content:"\E012"}
+.filetype.dat:before{content:"\E013"}
+.filetype.tar:before{content:"\E014"}
+.filetype.xml:before{content:"\E015"}
+.filetype.vcf:before{content:"\E016"}
+.filetype.pps:before{content:"\E017"}
+.filetype.key:before{content:"\1F511"}
+.filetype.ppt:before{content:"\E019"}
+.filetype.pptx:before{content:"\E020"}
+.filetype.sdf:before{content:"\E021"}
+.filetype.gbr:before{content:"\E022"}
+.filetype.ged:before{content:"\E023"}
+.filetype.mp3:before{content:"\E024"}
+.filetype.m4a:before{content:"\E025"}
+.filetype.waw:before{content:"\E026"}
+.filetype.wma:before{content:"\E027"}
+.filetype.mpa:before{content:"\E028"}
+.filetype.iff:before{content:"\E029"}
+.filetype.aif:before{content:"\E030"}
+.filetype.ra:before{content:"\E031"}
+.filetype.mid:before{content:"\E032"}
+.filetype.m3v:before{content:"\E033"}
+.filetype.e_3gp:before{content:"\E034"}
+.filetype.shf:before{content:"\E035"}
+.filetype.avi:before{content:"\E036"}
+.filetype.asx:before{content:"\E037"}
+.filetype.mp4:before{content:"\E038"}
+.filetype.e_3g2:before{content:"\E039"}
+.filetype.mpg:before{content:"\E040"}
+.filetype.asf:before{content:"\E041"}
+.filetype.vob:before{content:"\E042"}
+.filetype.wmv:before{content:"\E043"}
+.filetype.mov:before{content:"\E044"}
+.filetype.srt:before{content:"\E045"}
+.filetype.m4v:before{content:"\E046"}
+.filetype.flv:before{content:"\E047"}
+.filetype.rm:before{content:"\E048"}
+.filetype.png:before{content:"\E049"}
+.filetype.psd:before{content:"\E050"}
+.filetype.psp:before{content:"\E051"}
+.filetype.jpg:before{content:"\E052"}
+.filetype.tif:before{content:"\E053"}
+.filetype.tiff:before{content:"\E054"}
+.filetype.gif:before{content:"\E055"}
+.filetype.bmp:before{content:"\E056"}
+.filetype.tga:before{content:"\E057"}
+.filetype.thm:before{content:"\E058"}
+.filetype.yuv:before{content:"\E059"}
+.filetype.dds:before{content:"\E060"}
+.filetype.ai:before{content:"\E061"}
+.filetype.eps:before{content:"\E062"}
+.filetype.ps:before{content:"\E063"}
+.filetype.svg:before{content:"\E064"}
+.filetype.pdf:before{content:"\E065"}
+.filetype.pct:before{content:"\E066"}
+.filetype.indd:before{content:"\E067"}
+.filetype.xlr:before{content:"\E068"}
+.filetype.xls:before{content:"\E069"}
+.filetype.xlsx:before{content:"\E070"}
+.filetype.db:before{content:"\E071"}
+.filetype.dbf:before{content:"\E072"}
+.filetype.mdb:before{content:"\E073"}
+.filetype.pdb:before{content:"\E074"}
+.filetype.sql:before{content:"\E075"}
+.filetype.aacd:before{content:"\E076"}
+.filetype.app:before{content:"\E077"}
+.filetype.exe:before{content:"\E078"}
+.filetype.com:before{content:"\E079"}
+.filetype.bat:before{content:"\E080"}
+.filetype.apk:before{content:"\E081"}
+.filetype.jar:before{content:"\E082"}
+.filetype.hsf:before{content:"\E083"}
+.filetype.pif:before{content:"\E084"}
+.filetype.vb:before{content:"\E085"}
+.filetype.cgi:before{content:"\E086"}
+.filetype.css:before{content:"\E087"}
+.filetype.js:before{content:"\E088"}
+.filetype.php:before{content:"\E089"}
+.filetype.xhtml:before{content:"\E090"}
+.filetype.htm:before{content:"\E091"}
+.filetype.html:before{content:"\E092"}
+.filetype.asp:before{content:"\E093"}
+.filetype.cer:before{content:"\E094"}
+.filetype.jsp:before{content:"\E095"}
+.filetype.cfm:before{content:"\E096"}
+.filetype.aspx:before{content:"\E097"}
+.filetype.rss:before{content:"\E098"}
+.filetype.csr:before{content:"\E099"}
+.filetype.less:before{content:"\003C"}
+.filetype.otf:before{content:"\E101"}
+.filetype.ttf:before{content:"\E102"}
+.filetype.font:before{content:"\E103"}
+.filetype.fnt:before{content:"\E104"}
+.filetype.eot:before{content:"\E105"}
+.filetype.woff:before{content:"\E106"}
+.filetype.zip:before{content:"\E107"}
+.filetype.zipx:before{content:"\E108"}
+.filetype.rar:before{content:"\E109"}
+.filetype.targ:before{content:"\E110"}
+.filetype.sitx:before{content:"\E111"}
+.filetype.deb:before{content:"\E112"}
+.filetype.e_7z:before{content:"\E113"}
+.filetype.pkg:before{content:"\E114"}
+.filetype.rpm:before{content:"\E115"}
+.filetype.cbr:before{content:"\E116"}
+.filetype.gz:before{content:"\E117"}
+.filetype.dmg:before{content:"\E118"}
+.filetype.cue:before{content:"\E119"}
+.filetype.bin:before{content:"\E120"}
+.filetype.iso:before{content:"\E121"}
+.filetype.hdf:before{content:"\E122"}
+.filetype.vcd:before{content:"\E123"}
+.filetype.bak:before{content:"\E124"}
+.filetype.tmp:before{content:"\E125"}
+.filetype.ics:before{content:"\E126"}
+.filetype.msi:before{content:"\E127"}
+.filetype.cfg:before{content:"\E128"}
+.filetype.ini:before{content:"\E129"}
+.filetype.prf:before{content:"\E130"}
+.filetype-icon{display:inline-block;width:19px;height:24px;margin:0 8px 0 0;line-height:14px;vertical-align:text-top;background-image:url(../images/glyphicons_filetypes.svg);background-position:0 0;background-repeat:no-repeat;vertical-align:top;*display:inline;*zoom:1;*margin-right:.3em}.filetype-icon _:-o-prefocus,.filetype-icon{background-image:url(../images/glyphicons_filetypes.png)}
+.no-inlinesvg .filetype-icon{background-image:url(../images/glyphicons_filetypes.png)}
+.filetype-icon.white{background-image:url(../images/glyphicons_filetypes-white.svg)}.filetype-icon.white _:-o-prefocus,.filetype-icon.white{background-image:url(../images/glyphicons_filetypes-white.png)}
+.no-inlinesvg .filetype-icon.white{background-image:url(../images/glyphicons_filetypes-white.png)}
+.filetype-icon.txt{background-position:0 0}
+.filetype-icon.doc{background-position:-48px 0}
+.filetype-icon.rtf{background-position:-96px 0}
+.filetype-icon.log{background-position:-144px 0}
+.filetype-icon.tex{background-position:-192px 0}
+.filetype-icon.msg{background-position:-240px 0}
+.filetype-icon.text{background-position:-288px 0}
+.filetype-icon.wpd{background-position:-336px 0}
+.filetype-icon.wps{background-position:-384px 0}
+.filetype-icon.docx{background-position:-432px 0}
+.filetype-icon.page{background-position:0 -48px}
+.filetype-icon.csv{background-position:-48px -48px}
+.filetype-icon.dat{background-position:-96px -48px}
+.filetype-icon.tar{background-position:-144px -48px}
+.filetype-icon.xml{background-position:-192px -48px}
+.filetype-icon.vcf{background-position:-240px -48px}
+.filetype-icon.pps{background-position:-288px -48px}
+.filetype-icon.key{background-position:-336px -48px}
+.filetype-icon.ppt{background-position:-384px -48px}
+.filetype-icon.pptx{background-position:-432px -48px}
+.filetype-icon.sdf{background-position:0 -96px}
+.filetype-icon.gbr{background-position:-48px -96px}
+.filetype-icon.ged{background-position:-96px -96px}
+.filetype-icon.mp3{background-position:-144px -96px}
+.filetype-icon.m4a{background-position:-192px -96px}
+.filetype-icon.waw{background-position:-240px -96px}
+.filetype-icon.wma{background-position:-288px -96px}
+.filetype-icon.mpa{background-position:-336px -96px}
+.filetype-icon.iff{background-position:-384px -96px}
+.filetype-icon.aif{background-position:-432px -96px}
+.filetype-icon.ra{background-position:0 -144px}
+.filetype-icon.mid{background-position:-48px -144px}
+.filetype-icon.m3v{background-position:-96px -144px}
+.filetype-icon.e_3gp{background-position:-144px -144px}
+.filetype-icon.shf{background-position:-192px -144px}
+.filetype-icon.avi{background-position:-240px -144px}
+.filetype-icon.asx{background-position:-288px -144px}
+.filetype-icon.mp4{background-position:-336px -144px}
+.filetype-icon.e_3g2{background-position:-384px -144px}
+.filetype-icon.mpg{background-position:-432px -144px}
+.filetype-icon.asf{background-position:0 -192px}
+.filetype-icon.vob{background-position:-48px -192px}
+.filetype-icon.wmv{background-position:-96px -192px}
+.filetype-icon.mov{background-position:-144px -192px}
+.filetype-icon.srt{background-position:-192px -192px}
+.filetype-icon.m4v{background-position:-240px -192px}
+.filetype-icon.flv{background-position:-288px -192px}
+.filetype-icon.rm{background-position:-336px -192px}
+.filetype-icon.png{background-position:-384px -192px}
+.filetype-icon.psd{background-position:-432px -192px}
+.filetype-icon.psp{background-position:0 -240px}
+.filetype-icon.jpg{background-position:-48px -240px}
+.filetype-icon.tif{background-position:-96px -240px}
+.filetype-icon.tiff{background-position:-144px -240px}
+.filetype-icon.gif{background-position:-192px -240px}
+.filetype-icon.bmp{background-position:-240px -240px}
+.filetype-icon.tga{background-position:-288px -240px}
+.filetype-icon.thm{background-position:-336px -240px}
+.filetype-icon.yuv{background-position:-384px -240px}
+.filetype-icon.dds{background-position:-432px -240px}
+.filetype-icon.ai{background-position:0 -288px}
+.filetype-icon.eps{background-position:-48px -288px}
+.filetype-icon.ps{background-position:-96px -288px}
+.filetype-icon.svg{background-position:-144px -288px}
+.filetype-icon.pdf{background-position:-192px -288px}
+.filetype-icon.pct{background-position:-240px -288px}
+.filetype-icon.indd{background-position:-288px -288px}
+.filetype-icon.xlr{background-position:-336px -288px}
+.filetype-icon.xls{background-position:-384px -288px}
+.filetype-icon.xlsx{background-position:-432px -288px}
+.filetype-icon.db{background-position:0 -336px}
+.filetype-icon.dbf{background-position:-48px -336px}
+.filetype-icon.mdb{background-position:-96px -336px}
+.filetype-icon.pdb{background-position:-144px -336px}
+.filetype-icon.sql{background-position:-192px -336px}
+.filetype-icon.aacd{background-position:-240px -336px}
+.filetype-icon.app{background-position:-288px -336px}
+.filetype-icon.exe{background-position:-336px -336px}
+.filetype-icon.com{background-position:-384px -336px}
+.filetype-icon.bat{background-position:-432px -336px}
+.filetype-icon.apk{background-position:0 -384px}
+.filetype-icon.jar{background-position:-48px -384px}
+.filetype-icon.hsf{background-position:-96px -384px}
+.filetype-icon.pif{background-position:-144px -384px}
+.filetype-icon.vb{background-position:-192px -384px}
+.filetype-icon.cgi{background-position:-240px -384px}
+.filetype-icon.css{background-position:-288px -384px}
+.filetype-icon.js{background-position:-336px -384px}
+.filetype-icon.php{background-position:-384px -384px}
+.filetype-icon.xhtml{background-position:-432px -384px}
+.filetype-icon.htm{background-position:0 -432px}
+.filetype-icon.html{background-position:-48px -432px}
+.filetype-icon.asp{background-position:-96px -432px}
+.filetype-icon.cer{background-position:-144px -432px}
+.filetype-icon.jsp{background-position:-192px -432px}
+.filetype-icon.cfm{background-position:-240px -432px}
+.filetype-icon.aspx{background-position:-288px -432px}
+.filetype-icon.rss{background-position:-336px -432px}
+.filetype-icon.csr{background-position:-384px -432px}
+.filetype-icon.less{background-position:-432px -432px}
+.filetype-icon.otf{background-position:0 -480px}
+.filetype-icon.ttf{background-position:-48px -480px}
+.filetype-icon.font{background-position:-96px -480px}
+.filetype-icon.fnt{background-position:-144px -480px}
+.filetype-icon.eot{background-position:-192px -480px}
+.filetype-icon.woff{background-position:-240px -480px}
+.filetype-icon.zip{background-position:-288px -480px}
+.filetype-icon.zipx{background-position:-336px -480px}
+.filetype-icon.rar{background-position:-384px -480px}
+.filetype-icon.targ{background-position:-432px -480px}
+.filetype-icon.sitx{background-position:0 -528px}
+.filetype-icon.deb{background-position:-48px -528px}
+.filetype-icon.e_7z{background-position:-96px -528px}
+.filetype-icon.pkg{background-position:-144px -528px}
+.filetype-icon.rpm{background-position:-192px -528px}
+.filetype-icon.cbr{background-position:-240px -528px}
+.filetype-icon.gz{background-position:-288px -528px}
+.filetype-icon.dmg{background-position:-336px -528px}
+.filetype-icon.cue{background-position:-384px -528px}
+.filetype-icon.bin{background-position:-432px -528px}
+.filetype-icon.iso{background-position:0 -576px}
+.filetype-icon.hdf{background-position:-48px -576px}
+.filetype-icon.vcd{background-position:-96px -576px}
+.filetype-icon.bak{background-position:-144px -576px}
+.filetype-icon.tmp{background-position:-192px -576px}
+.filetype-icon.ics{background-position:-240px -576px}
+.filetype-icon.msi{background-position:-288px -576px}
+.filetype-icon.cfg{background-position:-336px -576px}
+.filetype-icon.ini{background-position:-384px -576px}
+.filetype-icon.prf{background-position:-432px -576px}

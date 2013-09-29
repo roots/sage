@@ -1,42 +1,33 @@
-<?php $my_query = new WP_Query( 'post_type=sequence' );?>
-
-<div class="carousel-wrap">
-  <div id="homeCarousel" class="carousel slide">
+<?php
+$posttype = 'carousel';
+$number_of_posts = -1;
+$startframe = 0;
+$args = 'post_type=' . $posttype . '&showposts=' . $number_of_posts;
+$the_query = new WP_Query( $args );
+$classes = '';?>
+<div id="carousel-home" class="carousel slide carousel-fade" data-interval="8000">
   <?php $i = 0 ?>
   <div class="carousel-inner">
-  <?php if ( $my_query->have_posts() ) { 
-       while ( $my_query->have_posts() ) { 
-           $my_query->the_post(); ?>
-          <div class="item <?php if( $i == 0 ) { echo 'active'; } ?>">
-        		<div class="background-image" style="background-image: url(<?php the_field('background_image'); ?>); background-position: <?php the_field('background-position'); ?>; background-color: <?php the_field('background_color'); ?>;">
-        		  <h1 style="color: #fff;"><?php the_field('headline'); ?></h1>
-        		  <p class="lead" style="color: #fff;"><?php the_field('lead'); ?></p>
-        		  <a href="<?php the_field('call_to_action_link'); ?>"><?php the_field('call_to_action'); ?></a>
-            </div><!-- /.background-image -->
-          </div><!-- /.item -->
-          <?php $i++ ?>
-      	<?php } ?>
-    <?php } ?>
-  </div><!-- /.carousel-inner -->
-
-  <?php wp_reset_postdata(); ?>
-    <div class="carousel-control-wrapper">
-      <a class="carousel-control left" href="#homeCarousel" data-slide="prev">&lsaquo;</a>
-      <a class="carousel-control right" href="#homeCarousel" data-slide="next">&rsaquo;</a>
-    </div>
-    <div class="carousel-indicators-wrap">
-      <ol class="carousel-indicators">
-      <?php $my_query = new WP_Query( 'post_type=sequence' );?>
-      <?php $i = 0 ?>
-      <?php if ( $my_query->have_posts() ) { 
-         while ( $my_query->have_posts() ) { 
-             $my_query->the_post(); ?>
-            <li data-target="#homeCarousel" data-slide-to="<?php echo $i ;?>" class="<?php if( $i == 0 ) { echo 'active'; } ?>"></li>
-          <?php $i++ ?>
-          <?php } ?>
-        <?php } ?>
-      </ol>
-    </div>
-  </div><!-- /.carousel -->
-</div><!-- /.carousel-wrap -->
-<?php wp_reset_postdata(); ?>
+      <?php while ($the_query->have_posts()) : $the_query->the_post();?>
+					<div <?php if( $i == $startframe ) : $classes = array('item','active', 'first'); elseif ( $i == 1 ) : $classes = array('item','second'); elseif ( $i == 2 ) : $classes = array('item','third'); elseif ( $i == 3 ) : $classes = array('item','forth',); endif; post_class($classes)?>>
+						  <img src="<?php the_field('background_image_layer');?>" alt="<?php the_title(); ?>">
+						  <div class="carousel-caption<?php if(get_field('headline_type') == "plain") { ?> plain<?php } ?><?php if(get_field('headline_type') == "background") { ?> background<?php } ?><?php if(get_field('headline_type') == "block") { ?> block<?php } ?>">
+                  <h1><?php the_title(); ?></h1>
+                  <p class="lead"><?php the_content(); ?></p>		    
+                  <?php get_template_part('templates/content', 'call-to-action'); ?>
+              </div>
+          </div> 
+          <!-- Controls -->
+      <?php $i++ ?>
+      <?php endwhile; ?>
+  </div>
+  <a class="carousel-control left" href="#carousel-home" data-slide="prev"><span class="glyphicons-icon white chevron-left"></span></a>
+  <a class="carousel-control right" href="#carousel-home" data-slide="next"><span class="glyphicons-icon white chevron-right"></span></a>
+    <ol class="carousel-indicators">
+      <li data-target="#carousel-home" data-slide-to="0" class="active"></li>
+      <li data-target="#carousel-home" data-slide-to="1"></li>
+      <li data-target="#carousel-home" data-slide-to="2"></li>
+    </ol>
+</div>
+<div class="bottom-bar"></div>
+<?php wp_reset_query();?>

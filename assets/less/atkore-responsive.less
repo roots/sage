@@ -1,0 +1,107 @@
+/* Extra small devices (phones, up to 480px) */
+/* No media query since this is the default in Bootstrap */
+  .resource .thumbnail {
+    text-align: center;
+
+
+  }
+  .resource .thumbnail img {
+    margin: 0 auto;
+  }
+
+  .thumbnails > li:first-of-type,
+  .thumbnails > li:nth-of-type(2n+1) {
+  margin-left: 0;
+  clear: left;
+  }
+  
+  .thumbnails > li:nth-of-type(3n+1),
+  .thumbnails > li:nth-of-type(4n+1) {
+    clear: none;
+  }
+
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: @screen-sm) {
+
+  .brand-logo {
+    margin: 0 auto 30px auto;
+  }
+  
+  body.home .brand-logo {
+    margin: 20px auto 30px auto;
+  }
+
+  .resource .thumbnail  {
+  
+  }
+  .resource .thumbnail img {
+
+  }
+
+  .thumbnails > li:nth-of-type(2n+1),
+   .thumbnails > li:nth-of-type(4n+1) {
+    clear: none;
+  }
+
+  .thumbnails > li:first-of-type,
+  .thumbnails > li:nth-of-type(3n+1) {
+  margin-left: 0;
+  clear: left;
+  }
+  
+  aside.sidebar {
+  margin-top: -108px;
+  }
+
+
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: @screen-md) {
+
+  .brand-logo {
+    margin: 20px auto 30px auto;
+  }
+
+  .resource .thumbnail  {
+
+  }
+
+  .resource .thumbnail img {
+
+  }
+
+
+  .thumbnails > li:nth-of-type(2n+1),
+  .thumbnails > li:nth-of-type(4n+1) {
+    clear: none;
+  }
+
+  .thumbnails > li:first-of-type,
+  .thumbnails > li:nth-of-type(3n+1) {
+  margin-left: 0;
+  clear: left;
+  }
+  
+  
+  
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: @screen-lg) {
+
+  .thumbnails > li:nth-of-type(2n+1),
+  .thumbnails > li:nth-of-type(3n+1) {
+    clear: none;
+  }
+
+  .thumbnails > li:first-of-type,
+  .thumbnails > li:nth-of-type(4n+1) {
+  margin-left: 0;
+  clear: left;
+  }
+  
+
+  
+}

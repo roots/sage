@@ -1,24 +1,31 @@
 // ! HOMEPAGE WIDGETS
 
 body.home #sidebar-footer .widget .textwidget {
-  	-webkit-box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
-	   -moz-box-shadow: inset 0 2px 4px  rgba(0,0,0,0.1);
-	        box-shadow: inset 0 2px 4px  rgba(0,0,0,0.1);
+
 }
 
 body.home h3 {
   font-family: @atkore-secondary-font-family;
-  color: @secondary-color;
+  color: @brand-secondary;
   text-transform: uppercase;
   font-weight: bold;
 }
 
 body.home .widget h3 {
-  border-bottom: 1px dashed @grayLight;
+  border-bottom: @dashed-line;
+  	-webkit-box-shadow:  0 2px 4px rgba(0,0,0,0.1);
+	   -moz-box-shadow:  0 2px 4px  rgba(0,0,0,0.1);
+	        box-shadow:  0 2px 4px  rgba(0,0,0,0.1);
+	        position: relative;
+	        z-index: 1000;
+}
+
+body.home .widget {
+
 }
 
 body.home .widget h4 {
-  color: @primary-color;
+  color: @brand-primary;
   font-size: 18px;
   line-height: 20px;
   font-weight: bold;
@@ -28,7 +35,7 @@ body.home .widget h4 {
 }
 
 body.home .widget p {
-  padding-right: 35%;
+
 }
 
 body.home .widget-last.widget_text .textwidget {
@@ -36,15 +43,46 @@ body.home .widget-last.widget_text .textwidget {
 }
 
 
-body.home .widget .btn,
-body.home .sequence .btn {
-  .radius-more;
+.widget .textwidget {
+  margin: -10px auto 0 auto;
+  padding-top: 10px;
 }
 
 .widget-last .textwidget img {
   margin: -10px auto 0 auto;
   width: 300px;
   display: block;
-  
+
 }
 
+.widget_better_rss_widget ul {
+  list-style: none;
+  margin-left: 0;
+}
+
+.news-wrap {
+  position: relative;
+  z-index: 2000;
+  top: 350px;
+  padding-top: 25px;
+}
+
+body.home .main {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  width: 100%;
+  display: block;
+  height: 450px;
+}
+
+body.home .wrap {
+  top: 500px;
+  position: absolute;
+}
+
+#home-news {
+  -webkit-box-shadow: 0px 0px 12px rgba(50, 50, 50, 0.35);
+  -moz-box-shadow:    0px 0px 12px rgba(50, 50, 50, 0.35);
+  box-shadow:         0px 0px 12px rgba(50, 50, 50, 0.35);
+}

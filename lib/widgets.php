@@ -3,9 +3,27 @@
  * Register sidebars and widgets
  */
 function roots_widgets_init() {
-  // Sidebars
+
   register_sidebar(array(
-    'name'          => __('Primary Sidebar', 'roots'),
+    'name'          => __('Homepage Full Width Widget', 'roots'),
+    'id'            => 'homepage-full-width-widget',
+    'before_widget' => '<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"><section class="panel %1$s %2$s">',
+    'after_widget'  => '</section></div>',
+    'before_title'  => '',
+    'after_title'   => '',
+  ));
+
+  register_sidebar(array(
+    'name'          => __('Homepage Panels', 'roots'),
+    'id'            => 'homepage-widgets',
+    'before_widget' => '<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4"><section class="panel %1$s %2$s">',
+    'after_widget'  => '</section></div>',
+    'before_title'  => '<div class="panel-heading"><h3 class="panel-title">',
+    'after_title'   => '</h3></div>',
+  ));
+
+  register_sidebar(array(
+    'name'          => __('Sidebar', 'roots'),
     'id'            => 'sidebar-primary',
     'before_widget' => '<section class="widget %1$s %2$s"><div class="widget-inner">',
     'after_widget'  => '</div></section>',
@@ -16,8 +34,8 @@ function roots_widgets_init() {
   register_sidebar(array(
     'name'          => __('Footer', 'roots'),
     'id'            => 'sidebar-footer',
-    'before_widget' => '<section class="widget span4 %1$s %2$s"><div class="widget-inner">',
-    'after_widget'  => '</div></section>',
+    'before_widget' => '<div class="col-lg-4"><section class="widget %1$s %2$s"><div class="widget-inner">',
+    'after_widget'  => '</div></section></div>',
     'before_title'  => '<h3>',
     'after_title'   => '</h3>',
   ));

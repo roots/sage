@@ -1,36 +1,41 @@
-<div id="top-section" class="container">
-  <div class="logo hidden-phone visible-tablet visible-desktop">
-    <a class="brand" title="<?php bloginfo('name'); ?>" href="<?php echo home_url(); ?>/">
+<header class="banner navbar navbar-default navbar-static-top" role="banner">
+<div class="inner-grad">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    <style>
+      .navbar-brand {
+        background-image: url('<?php the_field('white_logo_horizontal', 'options'); ?>');
+      }
+    </style>
+    <a class="visible-xs hidden-sm hidden-md hidden-lg navbar-brand" href="<?php echo home_url(); ?>/">
       <?php bloginfo('name'); ?>
     </a>
-  </div>
-  <?php // do_action('icl_language_selector'); ?>
-  <nav class="nav-mini" role="navigation">
-     <?php
-            if (has_nav_menu('mini_navigation')) :
-              wp_nav_menu(array('theme_location' => 'mini_navigation', 'menu_class' => 'mini-nav'));
-            endif;
-    ?>
-  </nav>
-  <header class="banner navbar" role="banner">
-    <div class="navbar-inner">
-        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </a>
-        <nav class="nav-main nav-collapse" role="navigation">
-          <?php
-            if (has_nav_menu('primary_navigation')) :
-              wp_nav_menu(array('theme_location' => 'primary_navigation', 'menu_class' => 'nav'));
-            endif;
-          ?>
-        </nav>
-        <div class="pull-right hidden-phone hidden-tablet visible-desktop">
-        <form class="navbar-search pull-right" action="">
-          <input type="text" id="s" n="s" class="search-query span1" placeholder="Search">
-        </form>
-        </div>
     </div>
-  </header>
+    <nav class="collapse navbar-collapse" role="navigation">
+      <?php
+        if (has_nav_menu('primary_navigation')) :
+          wp_nav_menu(array('theme_location' => 'primary_navigation', 'menu_class' => 'nav navbar-nav'));
+        endif;
+      ?>
+      <div class="pull-right"><?php
+        if (has_nav_menu('mini_navigation')) :
+          wp_nav_menu(array('theme_location' => 'mini_navigation', 'menu_class' => 'nav navbar-nav pull-right'));
+        endif;
+      ?>
+      </div>
+      <div class="pull-right col-lg-3"><?php get_search_form( $echo ); ?></div>
+      <?php
+        if (has_nav_menu('user_menu')) :
+          wp_nav_menu(array('theme_location' => 'user_menu', 'menu_class' => 'nav navbar-nav pull-right'));
+        endif;
+      ?>
+    </nav>
+  </div>
 </div>
+</header>

@@ -1,31 +1,29 @@
-.thumbnails .type-resource .thumbnail {
-  border: 5px solid @black;
-  position: relative;
+.entry-summary {
+  overflow: hidden;
+  text-align: center;
 }
 
-.thumbnails .type-resource a.thumbnail:hover,
-.thumbnails .type-resource a.thumbnail:focus {
-  border-color: @primary-color;
+.thumbnails > li {
+  list-style: none;
 }
 
-.thumbnails .type-resource .thumbnail .entry-summary::before {
-  position: absolute;
-  bottom: -3px;
-  left: -3px;
-  padding: 3px 7px;
-  font-size: 12px;
-  font-weight: bold;
-  background-color: @secondary-color;
-  border: 1px solid @secondary-color;
-  color: #fff;
-  -webkit-border-radius: 0 4px 0 4px;
-  -moz-border-radius: 0 4px 0 4px;
-  border-radius: 0 4px 0 4px;
-  .transition(all .2s ease-in-out);
+.thumbnails > li ul {
+  margin-left: 0;
+  padding-left: 0;
 }
 
-.thumbnails .type-resource a.thumbnail:hover .entry-summary::before {
-  border: 1px solid @primary-color;
-  background-color: @primary-color;
-  .transition(all .2s ease-in-out);
+.thumbnails > li ul li {
+  list-style: square;
+  margin-left: 10px;
+}
+
+.resource .thumbnail {
+  
+}
+
+
+
+
+section.resource-type {
+  clear: left;
 }

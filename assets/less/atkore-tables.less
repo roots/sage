@@ -6,13 +6,24 @@ table.table {
 	        box-shadow: 0 0 10px rgba(0,0,0,0.3);
 }
 
+.table th, .table td {
+  text-align: center;
+}
+
+thead tr th[colspan="6"],
+thead tr th[colspan="7"],
+thead tr th[colspan="4"],
+thead tr th[colspan="3"]{
+
+}
+
 table th {
   color: #fff;
   font-weight: bold;
   text-transform: uppercase;
   font-size: percentage(0.8);
   line-height: percentage(1.0)!important;
-  background-color: lighten(@primary-color, 10%);
+  background-color: lighten(@brand-primary, 5%);
   white-space: pre-line;
 }
 
@@ -21,13 +32,84 @@ table th {
 	-webkit-box-shadow: inset 0 -4px 3px -3px rgba(0,0,0,0.3);
 	   -moz-box-shadow: inset 0 -4px 3px -3px rgba(0,0,0,0.3);
 	        box-shadow: inset 0 -4px 3px -3px rgba(0,0,0,0.3);
-  border-left: 1px solid @primary-color;
+  border-left: 1px solid @brand-primary;
 }
 
 table th {
-  background-color: @primary-color;
+  background-color: @brand-primary;
 }
 
 table td {
   white-space: pre-line;
+}
+
+.title-row:first-of-type td {
+  background-color: #A0CC75;
+}
+
+thead [colspan] {
+  text-align: center;
+}
+
+.title-row td,
+.title-row th {
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 90%;
+  line-height: 100% !important;
+  background-color: #eeeeee!important;
+  -webkit-box-shadow: inset 0 -4px 3px -3px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: inset 0 -4px 3px -3px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 -4px 3px -3px rgba(0, 0, 0, 0.2);
+  padding: 5px;
+}
+
+tbody .title-row td {
+  text-align: left;
+  padding: 7px 15px;
+}
+
+.title-row.black td {
+  color: #fff;
+  background-color: rgba(0,0,0,1)!important;
+}
+
+.title-row.grey td {
+  color: #fff;
+  background-color: rgba(90,108,121,1)!important;
+}
+
+.title-row.red td {
+  color: #fff;
+  background-color: rgba(245,13,41,1)!important;
+}
+
+.title-row.orange td {
+  color: #fff;
+  background-color: rgba(254,145,51,1)!important;
+}
+
+.title-row.yellow td {
+  color: #fff;
+  background-color: rgba(255,240,66,1)!important;
+}
+
+.title-row.green td {
+  color: #fff;
+  background-color: rgba(160,205,112,1)!important;
+}
+
+#specifications table td:first-of-type,
+#specifications table td:nth-of-type(2) {
+  white-space: normal;
+}
+
+#product-information table tr td:first-of-type,
+#product-information table tr td:nth-of-type(2),
+#product-information table tr td.product-code {
+  white-space: nowrap!important;
+}
+
+table tr td.product-code {
+  white-space: nowrap!important;
 }

@@ -1,0 +1,356 @@
+/*!
+ *
+ *  Project:  GLYPHICONS HALFLINGS
+ *  Author:   Jan Kovarik - www.glyphicons.com
+ *  Twitter:  @jankovarik
+ *
+ */
+
+// IMPORT FONTS
+@font-face {
+  font-family: 'Glyphicons Filetypes Regular';
+  src: url('//www.atkore.com/assets/fonts/glyphicons-filetypes-regular.eot');
+  src: url('//www.atkore.com/assets/fonts/glyphicons-filetypes-regular.eot?#iefix') format('embedded-opentype'),
+       url('//www.atkore.com/assets/fonts/glyphicons-filetypes-regular.woff') format('woff'),
+       url('//www.atkore.com/assets/fonts/glyphicons-filetypes-regular.ttf') format('truetype'),
+       url('//www.atkore.com/assets/fonts/glyphicons-filetypes-regular.svg#glyphicons_filetypesregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+// FONT ICONS
+.filetype{
+  display: inline-block;
+  position: relative;
+  padding-left:30px;
+  color: #1d1d1b;
+  text-decoration: none;
+  *display: inline;
+  *zoom: 1;
+  vertical-align:middle;
+
+  &:before{
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: inline-block;
+    margin:0 5px 0 0;
+    font: 24px/1em 'Glyphicons Filetypes Regular';
+    font-style: normal;
+    font-weight: normal;
+    color: #1d1d1b;
+    *display: inline;
+    *zoom: 1;
+    vertical-align:middle;
+    text-transform:none;
+    -webkit-font-smoothing: antialiased;
+  }
+  &.white{
+    &:before{
+      color: #fff;
+    }
+  }
+
+  &.txt{ &:before{ content:"\E001";} }
+  &.doc{ &:before{ content:"\E002";} }
+  &.rtf{ &:before{ content:"\E003";} }
+  &.log{ &:before{ content:"\E004";} }
+  &.tex{ &:before{ content:"\E005";} }
+  &.msg{ &:before{ content:"\E006";} }
+  &.text{ &:before{ content:"\E007";} }
+  &.wpd{ &:before{ content:"\E008";} }
+  &.wps{ &:before{ content:"\E009";} }
+  &.docx{ &:before{ content:"\E010";} }
+  &.page{ &:before{ content:"\E011";} }
+  &.csv{ &:before{ content:"\E012";} }
+  &.dat{ &:before{ content:"\E013";} }
+  &.tar{ &:before{ content:"\E014";} }
+  &.xml{ &:before{ content:"\E015";} }
+  &.vcf{ &:before{ content:"\E016";} }
+  &.pps{ &:before{ content:"\E017";} }
+  &.key{ &:before{ content:"\1F511";} }
+  &.ppt{ &:before{ content:"\E019";} }
+  &.pptx{ &:before{ content:"\E020";} }
+  &.sdf{ &:before{ content:"\E021";} }
+  &.gbr{ &:before{ content:"\E022";} }
+  &.ged{ &:before{ content:"\E023";} }
+  &.mp3{ &:before{ content:"\E024";} }
+  &.m4a{ &:before{ content:"\E025";} }
+  &.waw{ &:before{ content:"\E026";} }
+  &.wma{ &:before{ content:"\E027";} }
+  &.mpa{ &:before{ content:"\E028";} }
+  &.iff{ &:before{ content:"\E029";} }
+  &.aif{ &:before{ content:"\E030";} }
+  &.ra{ &:before{ content:"\E031";} }
+  &.mid{ &:before{ content:"\E032";} }
+  &.m3v{ &:before{ content:"\E033";} }
+  &.e_3gp{ &:before{ content:"\E034";} }
+  &.shf{ &:before{ content:"\E035";} }
+  &.avi{ &:before{ content:"\E036";} }
+  &.asx{ &:before{ content:"\E037";} }
+  &.mp4{ &:before{ content:"\E038";} }
+  &.e_3g2{ &:before{ content:"\E039";} }
+  &.mpg{ &:before{ content:"\E040";} }
+  &.asf{ &:before{ content:"\E041";} }
+  &.vob{ &:before{ content:"\E042";} }
+  &.wmv{ &:before{ content:"\E043";} }
+  &.mov{ &:before{ content:"\E044";} }
+  &.srt{ &:before{ content:"\E045";} }
+  &.m4v{ &:before{ content:"\E046";} }
+  &.flv{ &:before{ content:"\E047";} }
+  &.rm{ &:before{ content:"\E048";} }
+  &.png{ &:before{ content:"\E049";} }
+  &.psd{ &:before{ content:"\E050";} }
+  &.psp{ &:before{ content:"\E051";} }
+  &.jpg{ &:before{ content:"\E052";} }
+  &.tif{ &:before{ content:"\E053";} }
+  &.tiff{ &:before{ content:"\E054";} }
+  &.gif{ &:before{ content:"\E055";} }
+  &.bmp{ &:before{ content:"\E056";} }
+  &.tga{ &:before{ content:"\E057";} }
+  &.thm{ &:before{ content:"\E058";} }
+  &.yuv{ &:before{ content:"\E059";} }
+  &.dds{ &:before{ content:"\E060";} }
+  &.ai{ &:before{ content:"\E061";} }
+  &.eps{ &:before{ content:"\E062";} }
+  &.ps{ &:before{ content:"\E063";} }
+  &.svg{ &:before{ content:"\E064";} }
+  &.pdf{ &:before{ content:"\E065";} }
+  &.pct{ &:before{ content:"\E066";} }
+  &.indd{ &:before{ content:"\E067";} }
+  &.xlr{ &:before{ content:"\E068";} }
+  &.xls{ &:before{ content:"\E069";} }
+  &.xlsx{ &:before{ content:"\E070";} }
+  &.db{ &:before{ content:"\E071";} }
+  &.dbf{ &:before{ content:"\E072";} }
+  &.mdb{ &:before{ content:"\E073";} }
+  &.pdb{ &:before{ content:"\E074";} }
+  &.sql{ &:before{ content:"\E075";} }
+  &.aacd{ &:before{ content:"\E076";} }
+  &.app{ &:before{ content:"\E077";} }
+  &.exe{ &:before{ content:"\E078";} }
+  &.com{ &:before{ content:"\E079";} }
+  &.bat{ &:before{ content:"\E080";} }
+  &.apk{ &:before{ content:"\E081";} }
+  &.jar{ &:before{ content:"\E082";} }
+  &.hsf{ &:before{ content:"\E083";} }
+  &.pif{ &:before{ content:"\E084";} }
+  &.vb{ &:before{ content:"\E085";} }
+  &.cgi{ &:before{ content:"\E086";} }
+  &.css{ &:before{ content:"\E087";} }
+  &.js{ &:before{ content:"\E088";} }
+  &.php{ &:before{ content:"\E089";} }
+  &.xhtml{ &:before{ content:"\E090";} }
+  &.htm{ &:before{ content:"\E091";} }
+  &.html{ &:before{ content:"\E092";} }
+  &.asp{ &:before{ content:"\E093";} }
+  &.cer{ &:before{ content:"\E094";} }
+  &.jsp{ &:before{ content:"\E095";} }
+  &.cfm{ &:before{ content:"\E096";} }
+  &.aspx{ &:before{ content:"\E097";} }
+  &.rss{ &:before{ content:"\E098";} }
+  &.csr{ &:before{ content:"\E099";} }
+  &.less{ &:before{ content:"\003C";} }
+  &.otf{ &:before{ content:"\E101";} }
+  &.ttf{ &:before{ content:"\E102";} }
+  &.font{ &:before{ content:"\E103";} }
+  &.fnt{ &:before{ content:"\E104";} }
+  &.eot{ &:before{ content:"\E105";} }
+  &.woff{ &:before{ content:"\E106";} }
+  &.zip{ &:before{ content:"\E107";} }
+  &.zipx{ &:before{ content:"\E108";} }
+  &.rar{ &:before{ content:"\E109";} }
+  &.targ{ &:before{ content:"\E110";} }
+  &.sitx{ &:before{ content:"\E111";} }
+  &.deb{ &:before{ content:"\E112";} }
+  &.e_7z{ &:before{ content:"\E113";} }
+  &.pkg{ &:before{ content:"\E114";} }
+  &.rpm{ &:before{ content:"\E115";} }
+  &.cbr{ &:before{ content:"\E116";} }
+  &.gz{ &:before{ content:"\E117";} }
+  &.dmg{ &:before{ content:"\E118";} }
+  &.cue{ &:before{ content:"\E119";} }
+  &.bin{ &:before{ content:"\E120";} }
+  &.iso{ &:before{ content:"\E121";} }
+  &.hdf{ &:before{ content:"\E122";} }
+  &.vcd{ &:before{ content:"\E123";} }
+  &.bak{ &:before{ content:"\E124";} }
+  &.tmp{ &:before{ content:"\E125";} }
+  &.ics{ &:before{ content:"\E126";} }
+  &.msi{ &:before{ content:"\E127";} }
+  &.cfg{ &:before{ content:"\E128";} }
+  &.ini{ &:before{ content:"\E129";} }
+  &.prf{ &:before{ content:"\E130";} }
+
+
+}
+
+// IMAGE ICONS
+.filetype-icon{
+  display: inline-block;
+  width: 19px;
+  height: 24px;
+  margin:0 8px 0 0;
+  line-height: 14px;
+  vertical-align: text-top;
+  background-image: url(//www.atkore.com/assets/img/glyphicons_filetypes.svg);
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  vertical-align: top;
+  *display: inline;
+  *zoom: 1;
+  *margin-right: .3em;
+
+  // OPERA BUG SVG FIX v9.5 - v12
+  _:-o-prefocus, &{
+    background-image: url(//www.atkore.com/assets/img/glyphicons_filetypes.png);
+  }
+  .no-inlinesvg &{
+    background-image: url(//www.atkore.com/assets/img/glyphicons_filetypes.png);
+  }
+  &.white{
+    background-image: url(//www.atkore.com/assets/img/glyphicons_filetypes-white.svg);
+
+    // OPERA BUG SVG FIX v9.5 - v12
+    _:-o-prefocus, &{
+      background-image: url(//www.atkore.com/assets/img/glyphicons_filetypes-white.png);
+    }
+    .no-inlinesvg &{
+      background-image: url(//www.atkore.com/assets/img/glyphicons_filetypes-white.png);
+    }
+  }
+
+  &.txt{ background-position: -0px -0px; }
+  &.doc{ background-position: -48px -0px; }
+  &.rtf{ background-position: -96px -0px; }
+  &.log{ background-position: -144px -0px; }
+  &.tex{ background-position: -192px -0px; }
+  &.msg{ background-position: -240px -0px; }
+  &.text{ background-position: -288px -0px; }
+  &.wpd{ background-position: -336px -0px; }
+  &.wps{ background-position: -384px -0px; }
+  &.docx{ background-position: -432px -0px; }
+  &.page{ background-position: -0px -48px; }
+  &.csv{ background-position: -48px -48px; }
+  &.dat{ background-position: -96px -48px; }
+  &.tar{ background-position: -144px -48px; }
+  &.xml{ background-position: -192px -48px; }
+  &.vcf{ background-position: -240px -48px; }
+  &.pps{ background-position: -288px -48px; }
+  &.key{ background-position: -336px -48px; }
+  &.ppt{ background-position: -384px -48px; }
+  &.pptx{ background-position: -432px -48px; }
+  &.sdf{ background-position: -0px -96px; }
+  &.gbr{ background-position: -48px -96px; }
+  &.ged{ background-position: -96px -96px; }
+  &.mp3{ background-position: -144px -96px; }
+  &.m4a{ background-position: -192px -96px; }
+  &.waw{ background-position: -240px -96px; }
+  &.wma{ background-position: -288px -96px; }
+  &.mpa{ background-position: -336px -96px; }
+  &.iff{ background-position: -384px -96px; }
+  &.aif{ background-position: -432px -96px; }
+  &.ra{ background-position: -0px -144px; }
+  &.mid{ background-position: -48px -144px; }
+  &.m3v{ background-position: -96px -144px; }
+  &.e_3gp{ background-position: -144px -144px; }
+  &.shf{ background-position: -192px -144px; }
+  &.avi{ background-position: -240px -144px; }
+  &.asx{ background-position: -288px -144px; }
+  &.mp4{ background-position: -336px -144px; }
+  &.e_3g2{ background-position: -384px -144px; }
+  &.mpg{ background-position: -432px -144px; }
+  &.asf{ background-position: -0px -192px; }
+  &.vob{ background-position: -48px -192px; }
+  &.wmv{ background-position: -96px -192px; }
+  &.mov{ background-position: -144px -192px; }
+  &.srt{ background-position: -192px -192px; }
+  &.m4v{ background-position: -240px -192px; }
+  &.flv{ background-position: -288px -192px; }
+  &.rm{ background-position: -336px -192px; }
+  &.png{ background-position: -384px -192px; }
+  &.psd{ background-position: -432px -192px; }
+  &.psp{ background-position: -0px -240px; }
+  &.jpg{ background-position: -48px -240px; }
+  &.tif{ background-position: -96px -240px; }
+  &.tiff{ background-position: -144px -240px; }
+  &.gif{ background-position: -192px -240px; }
+  &.bmp{ background-position: -240px -240px; }
+  &.tga{ background-position: -288px -240px; }
+  &.thm{ background-position: -336px -240px; }
+  &.yuv{ background-position: -384px -240px; }
+  &.dds{ background-position: -432px -240px; }
+  &.ai{ background-position: -0px -288px; }
+  &.eps{ background-position: -48px -288px; }
+  &.ps{ background-position: -96px -288px; }
+  &.svg{ background-position: -144px -288px; }
+  &.pdf{ background-position: -192px -288px; }
+  &.pct{ background-position: -240px -288px; }
+  &.indd{ background-position: -288px -288px; }
+  &.xlr{ background-position: -336px -288px; }
+  &.xls{ background-position: -384px -288px; }
+  &.xlsx{ background-position: -432px -288px; }
+  &.db{ background-position: -0px -336px; }
+  &.dbf{ background-position: -48px -336px; }
+  &.mdb{ background-position: -96px -336px; }
+  &.pdb{ background-position: -144px -336px; }
+  &.sql{ background-position: -192px -336px; }
+  &.aacd{ background-position: -240px -336px; }
+  &.app{ background-position: -288px -336px; }
+  &.exe{ background-position: -336px -336px; }
+  &.com{ background-position: -384px -336px; }
+  &.bat{ background-position: -432px -336px; }
+  &.apk{ background-position: -0px -384px; }
+  &.jar{ background-position: -48px -384px; }
+  &.hsf{ background-position: -96px -384px; }
+  &.pif{ background-position: -144px -384px; }
+  &.vb{ background-position: -192px -384px; }
+  &.cgi{ background-position: -240px -384px; }
+  &.css{ background-position: -288px -384px; }
+  &.js{ background-position: -336px -384px; }
+  &.php{ background-position: -384px -384px; }
+  &.xhtml{ background-position: -432px -384px; }
+  &.htm{ background-position: -0px -432px; }
+  &.html{ background-position: -48px -432px; }
+  &.asp{ background-position: -96px -432px; }
+  &.cer{ background-position: -144px -432px; }
+  &.jsp{ background-position: -192px -432px; }
+  &.cfm{ background-position: -240px -432px; }
+  &.aspx{ background-position: -288px -432px; }
+  &.rss{ background-position: -336px -432px; }
+  &.csr{ background-position: -384px -432px; }
+  &.less{ background-position: -432px -432px; }
+  &.otf{ background-position: -0px -480px; }
+  &.ttf{ background-position: -48px -480px; }
+  &.font{ background-position: -96px -480px; }
+  &.fnt{ background-position: -144px -480px; }
+  &.eot{ background-position: -192px -480px; }
+  &.woff{ background-position: -240px -480px; }
+  &.zip{ background-position: -288px -480px; }
+  &.zipx{ background-position: -336px -480px; }
+  &.rar{ background-position: -384px -480px; }
+  &.targ{ background-position: -432px -480px; }
+  &.sitx{ background-position: -0px -528px; }
+  &.deb{ background-position: -48px -528px; }
+  &.e_7z{ background-position: -96px -528px; }
+  &.pkg{ background-position: -144px -528px; }
+  &.rpm{ background-position: -192px -528px; }
+  &.cbr{ background-position: -240px -528px; }
+  &.gz{ background-position: -288px -528px; }
+  &.dmg{ background-position: -336px -528px; }
+  &.cue{ background-position: -384px -528px; }
+  &.bin{ background-position: -432px -528px; }
+  &.iso{ background-position: -0px -576px; }
+  &.hdf{ background-position: -48px -576px; }
+  &.vcd{ background-position: -96px -576px; }
+  &.bak{ background-position: -144px -576px; }
+  &.tmp{ background-position: -192px -576px; }
+  &.ics{ background-position: -240px -576px; }
+  &.msi{ background-position: -288px -576px; }
+  &.cfg{ background-position: -336px -576px; }
+  &.ini{ background-position: -384px -576px; }
+  &.prf{ background-position: -432px -576px; }
+
+
+
+}

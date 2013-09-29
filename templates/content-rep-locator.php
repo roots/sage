@@ -19,7 +19,7 @@ $user_query = new WP_User_Query( $args );
 
 }
 ?>
-<div class="row-fluid">
+<div class="row">
   <div class="span12">
     <div class="well">
     <form name="search" action="" method="get">

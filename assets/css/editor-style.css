@@ -1,0 +1,383 @@
+/**
+ * Updating this file with Bootstrap changes:
+ *
+ * 1. Go to http://twitter.github.com/bootstrap/customize.html
+ * 2. Un-toggle everything
+ * 3. Check: 'Body type and links', 'Headings, body, etc', 'Code and pre'
+ * 4. Download
+ * 5. Remove margin property on body tag
+ */
+
+.clearfix {
+  *zoom: 1;
+}
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.clearfix:after {
+  clear: both;
+}
+.hide-text {
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+}
+.input-block-level {
+  display: block;
+  width: 100%;
+  min-height: 30px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  color: #333333;
+  background-color: #ffffff;
+}
+a {
+  color: #0088cc;
+  text-decoration: none;
+}
+a:hover,
+a:focus {
+  color: #005580;
+  text-decoration: underline;
+}
+.img-rounded {
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+}
+.img-polaroid {
+  padding: 4px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+.img-circle {
+  -webkit-border-radius: 500px;
+  -moz-border-radius: 500px;
+  border-radius: 500px;
+}
+p {
+  margin: 0 0 10px;
+}
+.lead {
+  margin-bottom: 20px;
+  font-size: 21px;
+  font-weight: 200;
+  line-height: 30px;
+}
+small {
+  font-size: 85%;
+}
+strong {
+  font-weight: bold;
+}
+em {
+  font-style: italic;
+}
+cite {
+  font-style: normal;
+}
+.muted {
+  color: #999999;
+}
+a.muted:hover,
+a.muted:focus {
+  color: #808080;
+}
+.text-warning {
+  color: #c09853;
+}
+a.text-warning:hover,
+a.text-warning:focus {
+  color: #a47e3c;
+}
+.text-error {
+  color: #b94a48;
+}
+a.text-error:hover,
+a.text-error:focus {
+  color: #953b39;
+}
+.text-info {
+  color: #3a87ad;
+}
+a.text-info:hover,
+a.text-info:focus {
+  color: #2d6987;
+}
+.text-success {
+  color: #468847;
+}
+a.text-success:hover,
+a.text-success:focus {
+  color: #356635;
+}
+.text-left {
+  text-align: left;
+}
+.text-right {
+  text-align: right;
+}
+.text-center {
+  text-align: center;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 10px 0;
+  font-family: inherit;
+  font-weight: bold;
+  line-height: 20px;
+  color: inherit;
+  text-rendering: optimizelegibility;
+}
+h1 small,
+h2 small,
+h3 small,
+h4 small,
+h5 small,
+h6 small {
+  font-weight: normal;
+  line-height: 1;
+  color: #999999;
+}
+h1,
+h2,
+h3 {
+  line-height: 40px;
+}
+h1 {
+  font-size: 38.5px;
+}
+h2 {
+  font-size: 31.5px;
+}
+h3 {
+  font-size: 24.5px;
+}
+h4 {
+  font-size: 17.5px;
+}
+h5 {
+  font-size: 14px;
+}
+h6 {
+  font-size: 11.9px;
+}
+h1 small {
+  font-size: 24.5px;
+}
+h2 small {
+  font-size: 17.5px;
+}
+h3 small {
+  font-size: 14px;
+}
+h4 small {
+  font-size: 14px;
+}
+.page-header {
+  padding-bottom: 9px;
+  margin: 20px 0 30px;
+  border-bottom: 1px solid #eeeeee;
+}
+ul,
+ol {
+  padding: 0;
+  margin: 0 0 10px 25px;
+}
+ul ul,
+ul ol,
+ol ol,
+ol ul {
+  margin-bottom: 0;
+}
+li {
+  line-height: 20px;
+}
+ul.unstyled,
+ol.unstyled {
+  margin-left: 0;
+  list-style: none;
+}
+ul.inline,
+ol.inline {
+  margin-left: 0;
+  list-style: none;
+}
+ul.inline > li,
+ol.inline > li {
+  display: inline-block;
+  *display: inline;
+  /* IE7 inline-block hack */
+
+  *zoom: 1;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+dl {
+  margin-bottom: 20px;
+}
+dt,
+dd {
+  line-height: 20px;
+}
+dt {
+  font-weight: bold;
+}
+dd {
+  margin-left: 10px;
+}
+.dl-horizontal {
+  *zoom: 1;
+}
+.dl-horizontal:before,
+.dl-horizontal:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.dl-horizontal:after {
+  clear: both;
+}
+.dl-horizontal dt {
+  float: left;
+  width: 160px;
+  clear: left;
+  text-align: right;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.dl-horizontal dd {
+  margin-left: 180px;
+}
+hr {
+  margin: 20px 0;
+  border: 0;
+  border-top: 1px solid #eeeeee;
+  border-bottom: 1px solid #ffffff;
+}
+abbr[title],
+abbr[data-original-title] {
+  cursor: help;
+  border-bottom: 1px dotted #999999;
+}
+abbr.initialism {
+  font-size: 90%;
+  text-transform: uppercase;
+}
+blockquote {
+  padding: 0 0 0 15px;
+  margin: 0 0 20px;
+  border-left: 5px solid #eeeeee;
+}
+blockquote p {
+  margin-bottom: 0;
+  font-size: 17.5px;
+  font-weight: 300;
+  line-height: 1.25;
+}
+blockquote small {
+  display: block;
+  line-height: 20px;
+  color: #999999;
+}
+blockquote small:before {
+  content: '\2014 \00A0';
+}
+blockquote.pull-right {
+  float: right;
+  padding-right: 15px;
+  padding-left: 0;
+  border-right: 5px solid #eeeeee;
+  border-left: 0;
+}
+blockquote.pull-right p,
+blockquote.pull-right small {
+  text-align: right;
+}
+blockquote.pull-right small:before {
+  content: '';
+}
+blockquote.pull-right small:after {
+  content: '\00A0 \2014';
+}
+q:before,
+q:after,
+blockquote:before,
+blockquote:after {
+  content: "";
+}
+address {
+  display: block;
+  margin-bottom: 20px;
+  font-style: normal;
+  line-height: 20px;
+}
+code,
+pre {
+  padding: 0 3px 2px;
+  font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
+  font-size: 12px;
+  color: #333333;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+code {
+  padding: 2px 4px;
+  color: #d14;
+  background-color: #f7f7f9;
+  border: 1px solid #e1e1e8;
+  white-space: nowrap;
+}
+pre {
+  display: block;
+  padding: 9.5px;
+  margin: 0 0 10px;
+  font-size: 13px;
+  line-height: 20px;
+  word-break: break-all;
+  word-wrap: break-word;
+  white-space: pre;
+  white-space: pre-wrap;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+pre.prettyprint {
+  margin-bottom: 20px;
+}
+pre code {
+  padding: 0;
+  color: inherit;
+  white-space: pre;
+  white-space: pre-wrap;
+  background-color: transparent;
+  border: 0;
+}
+.pre-scrollable {
+  max-height: 340px;
+  overflow-y: scroll;
+}

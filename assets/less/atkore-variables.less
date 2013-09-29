@@ -1,0 +1,50 @@
+@font-face {
+    font-family: 'atkore';
+    src: url('//www.atkore.com/assets/fonts/akzidenzgrotconbq-medium-webfont.otf');
+    src: url('//www.atkore.com/assets/fonts/akzidenzgrotconbq-medium-webfont.eot');
+    src: url('//www.atkore.com/assets/fonts/akzidenzgrotconbq-medium-webfont.eot?#iefix') format('embedded-opentype'),
+         url('//www.atkore.com/assets/fonts/akzidenzgrotconbq-medium-webfont.woff') format('woff'),
+         url('//www.atkore.com/assets/fonts/akzidenzgrotconbq-medium-webfont.ttf') format('truetype'),
+         url('//www.atkore.com/assets/fonts/akzidenzgrotconbq-medium-webfont.svg#akzidenz-grotesk_condensed_Rg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-family-sans-serif:  Arial, Geneva, "Helvetica Neue", Helvetica, sans-serif;
+@font-family-base:        @font-family-sans-serif;
+
+@atkore-primary-font-family: "atkore", Arial, Geneva, sans-serif;
+@atkore-secondary-font-family: @font-family-sans-serif;
+
+@link-color:            @brand-primary;
+@link-hover-color:      darken(@link-color, 15%);
+
+@baseBorderRadius:      7px;
+@font-size-base:        16px;
+
+@dashed-line:           1px dashed @gray-light;
+
+img([src$="recognizedcomponent-logo.png"]) {
+  border: 0!important;
+}
+
+.fullwidth {
+  width: 100%;
+}
+
+.absolute {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#top select {
+  max-width: 340px;
+  margin: 0 auto;
+}
+
+.main ul.thumbnails {
+  padding-left: 0!important;
+  margin-left: 0!important;
+  -webkit-padding-start: 0;
+}
