@@ -1,0 +1,39 @@
+//! NAV TABS
+
+.main .nav-tabs {
+	-webkit-box-shadow: inset 0 -4px 3px -3px rgba(0,0,0,0.3);
+	   -moz-box-shadow: inset 0 -4px 3px -3px rgba(0,0,0,0.3);
+	        box-shadow: inset 0 -4px 3px -3px rgba(0,0,0,0.3);
+}
+
+.main .nav-tabs > li > a:hover,
+.main .nav-tabs > li > a:focus {
+
+}
+
+
+.main .nav-tabs a {
+  color: lighten(@secondary-color, 50%);
+  font-weight: bold;
+}
+
+.main .nav-tabs > li.active > a {
+  color: @secondary-color;
+} 
+
+.main .nav-tabs > li > a:hover,
+.main .nav-tabs > li > a:focus {
+  text-decoration: none;
+}
+
+.main .nav-tabs > li.active > a:hover,
+.main .nav-tabs > li.active > a:focus {
+  background-color: #fff;
+  color: #000;
+}
+
+.main .tab-pane {
+  line-height: 24px;
+  padding: 0 10px;
+  overflow-x: hidden;
+}

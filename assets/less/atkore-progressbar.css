@@ -1,0 +1,33 @@
+.progress.vertical {
+width: 80px;
+height: 300px;
+}
+
+.progress.vertical .bar {
+    -webkit-transition: height 2s ease-in-out;
+    -moz-transition: height 2s ease-in-out;
+    -ms-transition: height 2s ease-in-out;
+    -o-transition: height 2s ease-in-out;
+    transition: height 2s ease-in-out;
+}
+
+
+.meter-wrapper {
+  width: 100%;
+  display: block;
+}
+
+.meter-wrapper .well {
+  height: 300px;
+}
+
+.meter-wrapper .well .progress.vertical {
+  border: 1px solid rgba(0,0,0,0.6);
+  -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.meter-wrapper .row {
+  margin-left: 0;
+}
