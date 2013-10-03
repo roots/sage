@@ -63,7 +63,7 @@
     do_action('shoestrap_pre_content');
     // Adding a div with the "row" class so that bootstrap can properly handle
     // the main content and sidebars width classes
-    echo '<div class="content">';
+    echo '<div class="content row">';
       // The "shoestrap_pre_main" hook
       do_action('shoestrap_pre_main');
 
