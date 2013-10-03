@@ -170,6 +170,8 @@ function shoestrap_container_class() {
 
   if ( $site_style != 'fluid' ) :
     return 'container';
+  else :
+    return 'fluid';
   endif;
 }
 endif;
