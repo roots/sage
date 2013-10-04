@@ -7123,3 +7123,6 @@ li.dropdown ul.dropdown-menu li.dropdown.pull-left {
 .wrap.main-section .content .bg {
   padding-top: 15px;
 }
+html {
+  overflow-x: hidden;
+}
