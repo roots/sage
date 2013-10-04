@@ -7115,3 +7115,8 @@ li.dropdown ul.dropdown-menu li.dropdown.pull-left {
   margin-right: 15px;
   margin-left: 0;
 }
+@media (max-width: 768px) {
+  .navbar .pull-right {
+    float: none !important;
+  }
+}
