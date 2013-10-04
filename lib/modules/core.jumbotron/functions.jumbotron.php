@@ -59,7 +59,7 @@ function shoestrap_jumbotron_css() {
       $background = set_url_scheme( $jVar['url'] );
     elseif ( shoestrap_getVariable( 'jumbotron_background_image' ) != "" ) :
     	$jVar = shoestrap_getVariable( 'jumbotron_background_image' );
-      $background = set_url_scheme( $jVal['url'] );
+      $background = set_url_scheme( $jVar['url'] );
     endif;
     
   elseif ( shoestrap_getVariable( 'jumbotron_background_pattern_toggle' ) == 1 && shoestrap_getVariable( 'jumbotron_background_pattern' ) != "" ) :
