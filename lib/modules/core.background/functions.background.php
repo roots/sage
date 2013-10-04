@@ -95,7 +95,7 @@ function shoestrap_background_css() {
   endif;
 
   if ( $bg_color != $html_bg ) :
-    $style .= '.wrap.main-section .content {';
+    $style .= '.wrap.main-section .content .bg {';
     $style .= 'background: ' . $content_bg . ';';
     $style .= '}';
   endif;
