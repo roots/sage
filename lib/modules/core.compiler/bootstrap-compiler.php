@@ -1191,6 +1191,20 @@ function shoestrap_complete_less( $url = false ) {
 
   $bootstrap_less = apply_filters( 'shoestrap_complete_less_user_modifier', $bootstrap_less );
  
+  // The custom LESS file path
+  $customlessfile = get_template_directory() . '/assets/less/custom.less';
+  // If file is writable, process this.
+  if ( is_writable( $customlessfile ) ) :
+    // If the 'shoestrap_custom_lessfile_datetime' option does not exist, create it
+    if ( get_option( 'shoestrap_custom_lessfile_datetime' ) == '' ) :
+      add_option( 'shoestrap_custom_lessfile_datetime', filemtime( $customlessfile ) );
+    endif;
+
+    $bootstrap_less .= '
+    // Custom LESS file for developers
+    @import "' . $bootstrap . 'custom";';
+  endif;
+
   $user_less = shoestrap_getVariable('user_less');
   if ( !empty( $user_less ) ) {
   	$bootstrap_less .= $user_less;
@@ -1199,4 +1213,11 @@ function shoestrap_complete_less( $url = false ) {
 
   return $bootstrap_less;
 }
+endif;
+
+if ( is_writable( get_template_directory() . '/assets/less/custom.less' ) ) :
+  // If the Custom LESS file has changed, trigger the compiler.
+  if ( filemtime( get_template_directory() . '/assets/less/custom.less' ) != get_option( 'shoestrap_custom_lessfile_datetime' ) ) :
+    shoestrap_makecss();
+  endif;
 endif;
