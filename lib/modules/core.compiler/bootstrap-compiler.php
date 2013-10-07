@@ -1220,4 +1220,7 @@ if ( is_writable( get_template_directory() . '/assets/less/custom.less' ) ) :
   if ( filemtime( get_template_directory() . '/assets/less/custom.less' ) != get_option( 'shoestrap_custom_lessfile_datetime' ) ) :
     shoestrap_makecss();
   endif;
+
+  // Update the 'shoestrap_custom_lessfile_datetime' option with the new filem data of the custom.less file
+  update_option( 'shoestrap_custom_lessfile_datetime', filemtime( get_template_directory() . '/assets/less/custom.less' ) );
 endif;
