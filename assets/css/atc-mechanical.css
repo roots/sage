@@ -121,15 +121,14 @@ tbody .title-row td{text-align:left;padding:7px 15px}
 #specifications table td:first-of-type,#specifications table td:nth-of-type(2){white-space:normal}
 #product-information table tr td:first-of-type,#product-information table tr td:nth-of-type(2),#product-information table tr td.product-code{white-space:nowrap !important}
 table tr td.product-code{white-space:nowrap !important}
-aside.sidebar{margin-left:0;margin-right:0;padding-left:0;padding-right:0}
-.list-group-item.active a,.list-group-item.active:hover a,.list-group-item.active:focus a{color:#fff}
-.sidebar ul.menu,.sidebar ul.menu li{margin-left:0;padding-left:0;list-style:none}
-.sidebar .menu li a{color:#555;position:relative;display:block;padding:10px 15px;margin-bottom:-1px;background-color:#fff;border:1px solid #ddd}
-.sidebar .menu li a:hover{background-color:#eee}
-.sidebar .menu li.active a,.sidebar .menu li.active a:hover{background-color:#e3010d}
+.sidebar .menu{margin-left:0;margin-right:0;padding-left:0;padding-right:0}.sidebar .menu li{list-style:none}.sidebar .menu li.active a .sidebar .menu li{color:#555}.sidebar .menu li.active a .sidebar .menu li .list-group-item-heading{color:#333}
+.sidebar .menu li.active a .sidebar .menu li:hover,.sidebar .menu li.active a .sidebar .menu li:focus{text-decoration:none;background-color:#f5f5f5}
+.sidebar .menu li.active>a,.sidebar .menu li.active>a:hover,.sidebar .menu li.active>a:focus{z-index:2;color:#fff;background-color:#e3010d;border-color:#e3010d}.sidebar .menu li.active>a .list-group-item-heading,.sidebar .menu li.active>a:hover .list-group-item-heading,.sidebar .menu li.active>a:focus .list-group-item-heading{color:inherit}
+.sidebar .menu li.active>a .list-group-item-text,.sidebar .menu li.active>a:hover .list-group-item-text,.sidebar .menu li.active>a:focus .list-group-item-text{color:#ffb1b5}
 .sidebar .menu li:first-child a{border-top-right-radius:4px;border-top-left-radius:4px}
 .sidebar .menu li:last-child a{margin-bottom:0;border-bottom-right-radius:4px;border-bottom-left-radius:4px}
-.nav-sidebar ul.list-group li{list-style:none}
+.sidebar .menu a{color:#555;position:relative;display:block;padding:10px 15px;margin-bottom:-1px;background-color:#eee;border:1px solid #d5d5d5;text-decoration:none}
+.sidebar .menu .dropdown-menu{padding:0;margin:0;border:0}
 body.home footer.content-info{position:absolute;top:450px;width:100%}
 footer.content-info{margin-top:20px}
 #bottom-block{bottom:0;left:0;padding:20px 0}
