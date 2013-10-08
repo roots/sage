@@ -147,15 +147,15 @@ function shoestrap_footer_content() {
       $num_of_sidebars++;
     endif;
   endfor;
-    
-  // Setting each column width accordingly
-  $col_class = 12 / $num_of_sidebars;
 
   // Showing the active sidebars
   for ( $i=0; $i<5 ; $i++ ) :
     $sidebar = 'sidebar-footer-' . $i;
 
     if ( is_active_sidebar( $sidebar ) ) :
+      // Setting each column width accordingly
+      $col_class = 12 / $num_of_sidebars;
+    
       echo '<div class="' . $base_class . $col_class . '">';
       dynamic_sidebar( $sidebar );
       echo '</div>';
