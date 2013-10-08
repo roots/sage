@@ -111,18 +111,23 @@ if( !class_exists( 'ReduxFramework_extension_customizer' ) ) {
               continue;
             }
 
-            //Change the item priority if not set
-            if ( $option['type'] != 'heading' && !isset( $option['priority'] ) ) {
-              $option['priority'] = $order['option'];
-              $order['option']++;
-            }   
+
 
             if ( empty( $section['desc'] ) && !empty( $section['subtitle'] ) ) {
               $section['desc'] = $section['subtitle'];
             }
 
+            if ( !isset( $section['desc'] ) ) {
+              $section['desc'] = "";
+            }            
+
             if ( empty( $section['id'] ) ) {
               $section['id'] = strtolower( str_replace( " ", "", $section['title'] ) ); 
+            }
+
+            if (empty($section['priority'])) {
+                $section['priority'] = $order['heading'];
+                $order['heading']++;              
             }
 
             $wp_customize->add_section($section['id'], array(
@@ -134,13 +139,27 @@ if( !class_exists( 'ReduxFramework_extension_customizer' ) ) {
 
             foreach( $section['fields'] as $skey => $option ) {
 
-              if ( $option['customizer'] === false ) {
+              if ( isset( $option['customizer'] ) && $option['customizer'] === false ) {
                 //continue;
               }
+
+              //Change the item priority if not set
+              if ( $option['type'] != 'heading' && !isset( $option['priority'] ) ) {
+                $option['priority'] = $order['option'];
+                $order['option']++;
+              }   
 
               if ( !empty( $this->options_defaults[$option['id']] ) ) {
                 $option['default'] = $this->options_defaults['option']['id'];
               }
+
+              if (!isset($option['default'])) {
+                $option['default'] = "";
+              }
+              if (!isset($option['title'])) {
+                $option['title'] = "";
+              }
+
 
               $customSetting = array(
                 'type'          => 'theme_mod',
