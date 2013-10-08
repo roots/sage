@@ -24,7 +24,7 @@ if ( empty( $woocommerce_loop['columns'] ) )
 // Increase loop count
 $woocommerce_loop['loop']++;
 ?>
-<li class="product-category product<?php
+<li class="col-xs-6 col-sm-4 col-md-3 col-lg-3 product-category product<?php
     if ( ( $woocommerce_loop['loop'] - 1 ) % $woocommerce_loop['columns'] == 0 || $woocommerce_loop['columns'] == 1)
         echo ' first';
 	if ( $woocommerce_loop['loop'] % $woocommerce_loop['columns'] == 0 )
@@ -33,7 +33,7 @@ $woocommerce_loop['loop']++;
 
 	<?php do_action( 'woocommerce_before_subcategory', $category ); ?>
 
-	<a href="<?php echo get_term_link( $category->slug, 'product_cat' ); ?>">
+	<a class="thumbnail thumbnail-<?php the_id(); ?>" href="<?php echo get_term_link( $category->slug, 'product_cat' ); ?>">
 
 		<?php
 			/**

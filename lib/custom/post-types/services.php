@@ -5,7 +5,7 @@ Plugin URI: http://atkore.com
 Description: Adds services as a custom post type
 Version: 1.0
 Author: Maintain Web
-Author URI: http://maintainqweb.co/
+Author URI: http://maintainweb.co/
 License: GPL
 Copyright: Maintain Web
 */
@@ -17,19 +17,19 @@ function atkore_post_type_services() {
     $admin_img_path = 'http://atkore.com/assets/img/atkore-admin-icon.png';
   	// Services Post Type
   	$labels = array(
-  		'name'                => _x( 'Services', 'Post Type General Name', 'roots' ),
-  		'singular_name'       => _x( 'Service', 'Post Type Singular Name', 'roots' ),
-  		'menu_name'           => __( 'Services', 'roots' ),
-  		'parent_item_colon'   => __( 'Parent Service:', 'roots' ),
-  		'all_items'           => __( 'All Services', 'roots' ),
-  		'view_item'           => __( 'View Service', 'roots' ),
-  		'add_new_item'        => __( 'Add New Service', 'roots' ),
-  		'add_new'             => __( 'New Service', 'roots' ),
-  		'edit_item'           => __( 'Edit Service', 'roots' ),
-  		'update_item'         => __( 'Update Service', 'roots' ),
-  		'search_items'        => __( 'Search Services', 'roots' ),
-  		'not_found'           => __( 'Nothing found', 'roots' ),
-  		'not_found_in_trash'  => __( 'Nothing found in Trash', 'roots' ),
+  		'name'                => _x( 'Services', 'Post Type General Name', 'atkore' ),
+  		'singular_name'       => _x( 'Service', 'Post Type Singular Name', 'atkore' ),
+  		'menu_name'           => __( 'Services', 'atkore' ),
+  		'parent_item_colon'   => __( 'Parent Service:', 'atkore' ),
+  		'all_items'           => __( 'All Services', 'atkore' ),
+  		'view_item'           => __( 'View Service', 'atkore' ),
+  		'add_new_item'        => __( 'Add New Service', 'atkore' ),
+  		'add_new'             => __( 'New Service', 'atkore' ),
+  		'edit_item'           => __( 'Edit Service', 'atkore' ),
+  		'update_item'         => __( 'Update Service', 'atkore' ),
+  		'search_items'        => __( 'Search Services', 'atkore' ),
+  		'not_found'           => __( 'Nothing found', 'atkore' ),
+  		'not_found_in_trash'  => __( 'Nothing found in Trash', 'atkore' ),
   	);
 
   	$rewrite = array(
@@ -37,8 +37,8 @@ function atkore_post_type_services() {
   	);
 
   	$args = array(
-  		'label'               => __( 'Services', 'roots' ),
-  		'description'         => __( 'Services information pages', 'roots' ),
+  		'label'               => __( 'Services', 'atkore' ),
+  		'description'         => __( 'Services information pages', 'atkore' ),
   		'labels'              => $labels,
   		'supports'            => array( 'title', 'editor', 'excerpt', 'thumbnail', 'revisions', 'custom-fields', 'page-attributes',),
   		'taxonomies'          => array( 'category','post_tag'),
@@ -49,7 +49,7 @@ function atkore_post_type_services() {
   		'show_in_menu'        => true,
   		'show_in_nav_menus'   => true,
   		'show_in_admin_bar'   => true,
-  		'menu_position'       => 40,
+  		'menu_position'       => 1.9,
   		'menu_icon'           => $admin_img_path,
   		'can_export'          => true,
   		'has_archive'         => true,

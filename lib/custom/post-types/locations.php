@@ -17,34 +17,39 @@ function atkore_post_type_locations() {
     $admin_img_path = 'http://atkore.com/assets/img/atkore-admin-icon.png';
 
   	$labels = array(
-  		'name'                => _x( 'Locations', 'Post Type General Name', 'roots' ),
-  		'singular_name'       => _x( 'Location', 'Post Type Singular Name', 'roots' ),
-  		'menu_name'           => __( 'Locations', 'roots' ),
-  		'parent_item_colon'   => __( 'Parent Location:', 'roots' ),
-  		'all_items'           => __( 'All Locations', 'roots' ),
-  		'view_item'           => __( 'View Locations', 'roots' ),
-  		'add_new_item'        => __( 'Add New Location', 'roots' ),
-  		'add_new'             => __( 'New Location', 'roots' ),
-  		'edit_item'           => __( 'Edit Location', 'roots' ),
-  		'update_item'         => __( 'Update Location', 'roots' ),
-  		'search_items'        => __( 'Search Locations', 'roots' ),
-  		'not_found'           => __( 'No Locations found', 'roots' ),
-  		'not_found_in_trash'  => __( 'No Locations found in Trash', 'roots' ),
+  		'name'                => _x( 'Office Locations', 'Post Type General Name', 'atkore' ),
+  		'singular_name'       => _x( 'Office Location', 'Post Type Singular Name', 'atkore' ),
+  		'menu_name'           => __( 'Office Locations', 'atkore' ),
+  		'parent_item_colon'   => __( 'Parent Location:', 'atkore' ),
+  		'all_items'           => __( 'All Locations', 'atkore' ),
+  		'view_item'           => __( 'View Locations', 'atkore' ),
+  		'add_new_item'        => __( 'Add New Location', 'atkore' ),
+  		'add_new'             => __( 'New Location', 'atkore' ),
+  		'edit_item'           => __( 'Edit Location', 'atkore' ),
+  		'update_item'         => __( 'Update Location', 'atkore' ),
+  		'search_items'        => __( 'Search Locations', 'atkore' ),
+  		'not_found'           => __( 'No Locations found', 'atkore' ),
+  		'not_found_in_trash'  => __( 'No Locations found in Trash', 'atkore' ),
+  	);
+
+  	$rewrite = array(
+  	'slug'                  => 'office-locations',
   	);
 
   	$args = array(
-  		'label'               => __( 'location', 'roots' ),
-  		'description'         => __( 'Location location information pages', 'roots' ),
+  		'label'               => __( 'Locations', 'atkore' ),
+  		'description'         => __( 'Location location information pages', 'atkore' ),
   		'labels'              => $labels,
   		'supports'            => array( 'title', 'editor', 'excerpt', 'thumbnail', 'revisions', 'custom-fields', 'page-attributes', ),
   		'taxonomies'          => array( 'location-type',),
+  		'rewrite'             => $rewrite,
   		'hierarchical'        => true,
   		'public'              => true,
   		'show_ui'             => true,
   		'show_in_menu'        => true,
   		'show_in_nav_menus'   => true,
   		'show_in_admin_bar'   => true,
-  		'menu_position'       => 56,
+  		'menu_position'       => 1.3,
   		'menu_icon'           => $admin_img_path,
   		'can_export'          => true,
   		'has_archive'         => true,
@@ -53,23 +58,23 @@ function atkore_post_type_locations() {
   		'capability_type'     => 'page',
   	);
 
-  	register_post_type( 'location', $args );
+  	register_post_type( 'atkore_location', $args );
 
   	$labels = array(
-  		'name'                       => _x( 'Location Type', 'Taxonomy General Name', 'roots' ),
-  		'singular_name'              => _x( 'Location Type', 'Taxonomy Singular Name', 'roots' ),
-  		'menu_name'                  => __( 'Location Types', 'roots' ),
-  		'all_items'                  => __( 'All Location Types', 'roots' ),
-  		'parent_item'                => __( 'Parent Location Type', 'roots' ),
-  		'parent_item_colon'          => __( 'Parent Location Type:', 'roots' ),
-  		'new_item_name'              => __( 'New Location Type Name', 'roots' ),
-  		'add_new_item'               => __( 'Add New Location Type', 'roots' ),
-  		'edit_item'                  => __( 'Edit Location Type', 'roots' ),
-  		'update_item'                => __( 'Update Location Type', 'roots' ),
-  		'separate_items_with_commas' => __( 'Separate Location Type with commas', 'roots' ),
-  		'search_items'               => __( 'Search Location Types', 'roots' ),
-  		'add_or_remove_items'        => __( 'Add or remove Location Types', 'roots' ),
-  		'choose_from_most_used'      => __( 'Choose from the most used Location Types', 'roots' ),
+  		'name'                       => _x( 'Location Type', 'Taxonomy General Name', 'atkore' ),
+  		'singular_name'              => _x( 'Location Type', 'Taxonomy Singular Name', 'atkore' ),
+  		'menu_name'                  => __( 'Location Types', 'atkore' ),
+  		'all_items'                  => __( 'All Location Types', 'atkore' ),
+  		'parent_item'                => __( 'Parent Location Type', 'atkore' ),
+  		'parent_item_colon'          => __( 'Parent Location Type:', 'atkore' ),
+  		'new_item_name'              => __( 'New Location Type Name', 'atkore' ),
+  		'add_new_item'               => __( 'Add New Location Type', 'atkore' ),
+  		'edit_item'                  => __( 'Edit Location Type', 'atkore' ),
+  		'update_item'                => __( 'Update Location Type', 'atkore' ),
+  		'separate_items_with_commas' => __( 'Separate Location Type with commas', 'atkore' ),
+  		'search_items'               => __( 'Search Location Types', 'atkore' ),
+  		'add_or_remove_items'        => __( 'Add or remove Location Types', 'atkore' ),
+  		'choose_from_most_used'      => __( 'Choose from the most used Location Types', 'atkore' ),
   	);
 
   	$capabilities = array(
@@ -98,7 +103,7 @@ function atkore_post_type_locations() {
   		'capabilities'               => $capabilities,
   	);
 
-  	register_taxonomy( 'location-type', 'location', $args );
+  	register_taxonomy( 'location_type', 'atkore_location', $args );
 
 }
 // Hook into the 'init' action

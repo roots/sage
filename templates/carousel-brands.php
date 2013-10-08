@@ -20,7 +20,7 @@ $classes = 'item';
         <div class="row">
         <ul>
           <?php while ($the_query->have_posts()) : $the_query->the_post();?>
-          <?php if( $i == 4 ) : ?>
+          <?php if( $i == 6 ) : ?>
         </ul>
         </div>
       </div><!-- /.item -->
@@ -31,7 +31,7 @@ $classes = 'item';
           <?php endif; ?>
           <?php
             $classes = array(
-              'col-xs-12 col-sm-3 col-md-3 col-lg-3'
+              'col-xs-12 col-sm-6 col-md-3 col-lg-2'
             );
           ?>
           <li <?php post_class($classes);?>><div class="brand-logo-wrap"><a title="<?php the_title();?>" href="<?php the_field('brand_website');?>"><?php if ( has_post_thumbnail() ) { the_post_thumbnail('full', array('class' => 'img-responsive')); } ?></a></div></li>

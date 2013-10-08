@@ -30,6 +30,15 @@ function roots_widgets_init() {
     'before_title'  => '<h3>',
     'after_title'   => '</h3>',
   ));
+  
+  register_sidebar(array(
+    'name'          => __('Page Footer', 'roots'),
+    'id'            => 'sidebar-page-footer',
+    'before_widget' => '<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"><section class="widget %1$s %2$s"><div class="widget-inner">',
+    'after_widget'  => '</div></section></div>',
+    'before_title'  => '<h3>',
+    'after_title'   => '</h3>',
+  ));
 
   register_sidebar(array(
     'name'          => __('Footer', 'roots'),

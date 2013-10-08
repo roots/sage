@@ -26,13 +26,13 @@ foreach ($terms as $term) { ?>
     
            </header>          
             
-        <a title="<?php the_title(); ?>" class="thumbnail thumbnail-<?php the_id(); ?>" id="resource-<?php the_id(); ?>" href="<?php echo the_field('document'); ?><?php echo the_field('link'); ?><?php echo the_field('page'); ?>">
+        <a title="<?php the_title(); ?>" class="thumbnail thumbnail-<?php the_id(); ?>" id="resource-<?php the_id(); ?>" href="<?php the_permalink(); ?>">
           <div class="entry-summary">
               <?php if ( has_post_thumbnail() ) { the_post_thumbnail( 'small-tall', array('class' => 'img-responsive')); } else { ?><img src="http://placehold.it/180x210"/><?php } ?>
           </div>
         </a>
         <footer>
-          <h4><a href="<?php echo the_field('document'); ?><?php echo the_field('link'); ?><?php echo the_field('page'); ?>"><?php the_title(); ?></a></h4>
+          <h4><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
         </footer>
           </article>
         </div>

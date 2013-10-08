@@ -5,7 +5,7 @@ Plugin URI: http://atkore.com
 Description: Adds applications as a custom post type
 Version: 1.0
 Author: Maintain Web
-Author URI: http://maintainqweb.co/
+Author URI: http://maintainweb.co/
 License: GPL
 Copyright: Maintain Web
 */
@@ -18,24 +18,24 @@ function atkore_post_type_brands() {
 
   	// Brands Post Type
   	$labels = array(
-  		'name'                => _x( 'Brands', 'Post Type General Name', 'roots' ),
-  		'singular_name'       => _x( 'Brand', 'Post Type Singular Name', 'roots' ),
-  		'menu_name'           => __( 'Brands', 'roots' ),
-  		'parent_item_colon'   => __( 'Parent Brand:', 'roots' ),
-  		'all_items'           => __( 'All Brands', 'roots' ),
-  		'view_item'           => __( 'View Brand', 'roots' ),
-  		'add_new_item'        => __( 'Add New Brand', 'roots' ),
-  		'add_new'             => __( 'New Brand', 'roots' ),
-  		'edit_item'           => __( 'Edit Brand', 'roots' ),
-  		'update_item'         => __( 'Update Brand', 'roots' ),
-  		'search_items'        => __( 'Search brands', 'roots' ),
-  		'not_found'           => __( 'No brands found', 'roots' ),
-  		'not_found_in_trash'  => __( 'No brands found in Trash', 'roots' ),
+  		'name'                => _x( 'Brands', 'Post Type General Name', 'atkore' ),
+  		'singular_name'       => _x( 'Brand', 'Post Type Singular Name', 'atkore' ),
+  		'menu_name'           => __( 'Brands', 'atkore' ),
+  		'parent_item_colon'   => __( 'Parent Brand:', 'atkore' ),
+  		'all_items'           => __( 'All Brands', 'atkore' ),
+  		'view_item'           => __( 'View Brand', 'atkore' ),
+  		'add_new_item'        => __( 'Add New Brand', 'atkore' ),
+  		'add_new'             => __( 'New Brand', 'atkore' ),
+  		'edit_item'           => __( 'Edit Brand', 'atkore' ),
+  		'update_item'         => __( 'Update Brand', 'atkore' ),
+  		'search_items'        => __( 'Search brands', 'atkore' ),
+  		'not_found'           => __( 'No brands found', 'atkore' ),
+  		'not_found_in_trash'  => __( 'No brands found in Trash', 'atkore' ),
   	);
 
   	$args = array(
-  		'label'               => __( 'brand', 'roots' ),
-  		'description'         => __( 'Brand information pages', 'roots' ),
+  		'label'               => __( 'brand', 'atkore' ),
+  		'description'         => __( 'Brand information pages', 'atkore' ),
   		'labels'              => $labels,
   		'supports'            => array( 'title', 'editor', 'excerpt', 'thumbnail', 'revisions', 'custom-fields', 'page-attributes', ),
   		'hierarchical'        => true,
@@ -44,7 +44,7 @@ function atkore_post_type_brands() {
   		'show_in_menu'        => true,
   		'show_in_nav_menus'   => true,
   		'show_in_admin_bar'   => true,
-  		'menu_position'       => 30,
+  		'menu_position'       => 1.0,
   		'menu_icon'           => $admin_img_path,
   		'can_export'          => true,
   		'has_archive'         => true,
@@ -57,20 +57,20 @@ function atkore_post_type_brands() {
 
   	// Resources Sections Taxonomy
   	$labels = array(
-  		'name'                       => _x( 'Brand Category', 'Taxonomy General Name', 'roots' ),
-  		'singular_name'              => _x( 'Brand Category', 'Taxonomy Singular Name', 'roots' ),
-  		'menu_name'                  => __( 'Categories', 'roots' ),
-  		'all_items'                  => __( 'All Categories', 'roots' ),
-  		'parent_item'                => __( 'Parent Category', 'roots' ),
-  		'parent_item_colon'          => __( 'Parent Category:', 'roots' ),
-  		'new_item_name'              => __( 'New Category Name', 'roots' ),
-  		'add_new_item'               => __( 'Add New Category', 'roots' ),
-  		'edit_item'                  => __( 'Edit Category', 'roots' ),
-  		'update_item'                => __( 'Update Category', 'roots' ),
-  		'separate_items_with_commas' => __( 'Separate Category with commas', 'roots' ),
-  		'search_items'               => __( 'Search categories', 'roots' ),
-  		'add_or_remove_items'        => __( 'Add or remove categories', 'roots' ),
-  		'choose_from_most_used'      => __( 'Choose from the most used categories', 'roots' ),
+  		'name'                       => _x( 'Brand Category', 'Taxonomy General Name', 'atkore' ),
+  		'singular_name'              => _x( 'Brand Category', 'Taxonomy Singular Name', 'atkore' ),
+  		'menu_name'                  => __( 'Categories', 'atkore' ),
+  		'all_items'                  => __( 'All Categories', 'atkore' ),
+  		'parent_item'                => __( 'Parent Category', 'atkore' ),
+  		'parent_item_colon'          => __( 'Parent Category:', 'atkore' ),
+  		'new_item_name'              => __( 'New Category Name', 'atkore' ),
+  		'add_new_item'               => __( 'Add New Category', 'atkore' ),
+  		'edit_item'                  => __( 'Edit Category', 'atkore' ),
+  		'update_item'                => __( 'Update Category', 'atkore' ),
+  		'separate_items_with_commas' => __( 'Separate Category with commas', 'atkore' ),
+  		'search_items'               => __( 'Search categories', 'atkore' ),
+  		'add_or_remove_items'        => __( 'Add or remove categories', 'atkore' ),
+  		'choose_from_most_used'      => __( 'Choose from the most used categories', 'atkore' ),
   	);
 
   	$capabilities = array(

@@ -3,7 +3,7 @@
             <div class="select-inner-wrap">
             <?php
             dropdown_menu( array(
-                'theme_location' => 'mini_navigation',
+                'theme_location' => 'mini',
                 
                 // You can alter the blanking text eg. "- Menu Name -" using the following
                 'dropdown_title' => '-- More --',

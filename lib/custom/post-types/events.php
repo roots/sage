@@ -5,7 +5,7 @@ Plugin URI: http://atkore.com
 Description: Adds events as a post type.
 Version: 1.0
 Author: Maintain Web
-Author URI: http://maintainqweb.co/
+Author URI: http://maintainweb.co/
 License: GPL
 Copyright: Maintain Web
 */
@@ -16,19 +16,19 @@ if ( ! function_exists('atkore_post_type_events') ) {
 function atkore_post_type_events() {
     $admin_img_path = 'http://atkore.com/assets/img/atkore-admin-icon.png';
   	$labels = array(
-  		'name'                => _x( 'Events', 'Post Type General Name', 'roots' ),
-  		'singular_name'       => _x( 'Event', 'Post Type Singular Name', 'roots' ),
-  		'menu_name'           => __( 'Events', 'roots' ),
-  		'parent_item_colon'   => __( 'Parent Event:', 'roots' ),
-  		'all_items'           => __( 'All Events', 'roots' ),
-  		'view_item'           => __( 'View Event', 'roots' ),
-  		'add_new_item'        => __( 'Add New Event', 'roots' ),
-  		'add_new'             => __( 'New Event', 'roots' ),
-  		'edit_item'           => __( 'Edit Event', 'roots' ),
-  		'update_item'         => __( 'Update Event', 'roots' ),
-  		'search_items'        => __( 'Search Events', 'roots' ),
-  		'not_found'           => __( 'Nothing found', 'roots' ),
-  		'not_found_in_trash'  => __( 'Nothing found in Trash', 'roots' ),
+  		'name'                => _x( 'Events', 'Post Type General Name', 'atkore' ),
+  		'singular_name'       => _x( 'Event', 'Post Type Singular Name', 'atkore' ),
+  		'menu_name'           => __( 'Events', 'atkore' ),
+  		'parent_item_colon'   => __( 'Parent Event:', 'atkore' ),
+  		'all_items'           => __( 'All Events', 'atkore' ),
+  		'view_item'           => __( 'View Event', 'atkore' ),
+  		'add_new_item'        => __( 'Add New Event', 'atkore' ),
+  		'add_new'             => __( 'New Event', 'atkore' ),
+  		'edit_item'           => __( 'Edit Event', 'atkore' ),
+  		'update_item'         => __( 'Update Event', 'atkore' ),
+  		'search_items'        => __( 'Search Events', 'atkore' ),
+  		'not_found'           => __( 'Nothing found', 'atkore' ),
+  		'not_found_in_trash'  => __( 'Nothing found in Trash', 'atkore' ),
   	);
 
   	$rewrite = array(
@@ -36,8 +36,8 @@ function atkore_post_type_events() {
   	);
 
   	$args = array(
-  		'label'               => __( 'Events', 'roots' ),
-  		'description'         => __( 'Events', 'roots' ),
+  		'label'               => __( 'Events', 'atkore' ),
+  		'description'         => __( 'Events', 'atkore' ),
   		'labels'              => $labels,
   		'supports'            => array( 'title', 'editor', 'thumbnail', 'custom-fields', ),
   		'rewrite'             => $rewrite,

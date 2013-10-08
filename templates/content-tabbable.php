@@ -22,7 +22,7 @@
           <div class="tab-pane <?php if($count == 1) echo 'active'; ?>" id="<?php echo $tab_slug; ?>">
           <?php if(get_row_layout() == "tab_normal"): ?>
               <?php if($count == 1 && has_post_thumbnail()) { ?>
-           <div class="pull-right wrap-featured-image"><?php the_post_thumbnail('thumbnail', array('class' => 'img-thumbnail')); ?></div>
+           <div class="pull-right wrap-featured-image"><?php the_post_thumbnail('medium', array('class' => 'img-thumbnail')); ?></div>
             <?php } ?>
             	<?php the_sub_field("tab_content"); ?>
           <?php endif; ?>

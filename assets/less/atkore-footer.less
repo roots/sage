@@ -2,7 +2,7 @@
 
 body.home footer.content-info {
   position: absolute;
-  top: @sequence-height;
+  top: 450px;
   width: 100%;
 }
 
@@ -33,7 +33,13 @@ footer .col-lg-12 section {
   position: relative;
 }
 
-.nav-footer {
+.socials {
+  margin-top: 5px;
+  margin-bottom: 0;
+}
+
+
+nav.footer {
   color: @brand-primary;
   background-color: transparent;
   margin: @padding-large-vertical * 2 auto @padding-large-vertical auto;
@@ -42,42 +48,99 @@ footer .col-lg-12 section {
   .radius-more;
   height: 30px;
   max-height: 30px;
+border: 1px solid #ddd;
+border-radius: 15px;
+-moz-border-radius: 15px;
+-webkit-border-radius: 15px;
+text-align: center;
+background: #ddd;
+width: 50%;
+font-size: 12px;
 }
 
-.nav-footer .social,
-.nav-footer .social:before,
-.nav-footer .social a {
+nav.footer .social,
+nav.footer .social:before,
+nav.footer .social a {
   color: @brand-primary;
 }
 
+nav.footer .twitter a {
+display: block;
+width: 16px;
+height: 16px;
+overflow: hidden;
+text-indent: -9999px;
+background: url(http://atkore.com/wp-content/themes/burakoff/images/icon-twitter.png);
+border: none;
+float: left;
+}
+
+nav.footer .facebook a {
+display: block;
+width: 16px;
+height: 16px;
+overflow: hidden;
+text-indent: -9999px;
+background: url(http://atkore.com/wp-content/themes/burakoff/images/icon-facebook.png);
+border: none;
+float: left;
+}
+
+
+nav.footer .linked_in a {
+display: block;
+width: 16px;
+height: 16px;
+overflow: hidden;
+text-indent: -9999px;
+background: url(http://atkore.com/wp-content/themes/burakoff/images/icon-linkedin.png);
+border: none;
+float: left;
+}
+
+
+nav.footer .youtube a {
+display: block;
+width: 16px;
+height: 16px;
+overflow: hidden;
+text-indent: -9999px;
+background: url(http://atkore.com/wp-content/themes/burakoff/images/icon-youtube.png);
+border: none;
+float: left;
+}
+
+
+
+
 .social-menu-wrap {
-  margin-right: 15%;
+  margin-right: 7%;
 }
 
 .footer-menu-wrap {
-  margin-left: 15%;
+  margin-left: 7%;
 }
 
 
-.nav-footer ul.footer-menu {
+nav.footer ul.footer {
   margin: 0;
   padding: 0;
   float: left;
 }
 
-.nav-footer ul.footer-menu li::before {
+nav.footer ul.footer li::before {
   content: "|";
   color: darken(@brand-primary, 40%);
   margin: 0 10px;
 }
 
-.nav-footer span {
+nav.footer span {
   padding-right: 10px;
   float: left;
 }
 
-.nav-footer span,
-.nav-footer li {
+nav.footer span,
+nav.footer li {
   display: inline-block;
   line-height: 28px;
 }

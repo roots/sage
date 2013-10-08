@@ -16,7 +16,7 @@ $(document).ready(function() {
   });
 
   $('#carousel-products').carousel({
-    interval: 5000
+    interval: 8000
   });
   
   $('#carousel-brands').carousel({
@@ -46,6 +46,12 @@ $(document).ready(function() {
    $(this).attr('class', 'img-thumbnail');
    $(this).attr('align', 'right');
   });
+
+
+  $('.tagged_as a').each(function () {
+   $(this).attr('class', 'label label-primary');
+  });
+  
   
   $("table").tablecloth({
   theme: "default",

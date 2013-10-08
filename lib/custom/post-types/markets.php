@@ -5,7 +5,7 @@ Plugin URI: http://atkore.com
 Description: Adds services as a custom post type
 Version: 1.0
 Author: Maintain Web
-Author URI: http://maintainqweb.co/
+Author URI: http://maintainweb.co/
 License: GPL
 Copyright: Maintain Web
 */
@@ -49,7 +49,7 @@ function atkore_post_type_markets() {
   		'show_in_menu'        => true,
   		'show_in_nav_menus'   => true,
   		'show_in_admin_bar'   => true,
-  		'menu_position'       => 40,
+  		'menu_position'       => 1.6,
   		'menu_icon'           => $admin_img_path,
   		'can_export'          => true,
   		'has_archive'         => true,

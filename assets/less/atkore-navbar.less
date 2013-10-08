@@ -23,13 +23,19 @@ body.home #upper-deck {
   z-index: (@zindex-navbar + 100);
 }
 
-#menu-mini {
+/* #menu-mini-us {
+  position: relative;
+  z-index: (@zindex-navbar + 1);
+  margin: 10px 0;
+} */
+
+[id*="menu-mini"] {
   position: relative;
   z-index: (@zindex-navbar + 1);
   margin: 10px 0;
 }
 
-#menu-mini.nav-pills>li>a {
+#upper-deck .nav-pills>li>a {
   background-color: @gray-lighter;
   border: 1px solid darken(@gray-lighter, 10%);
   border-radius: 25px;
@@ -39,7 +45,7 @@ body.home #upper-deck {
   font-size: 12px;
 }
 
-#menu-mini.nav-pills>li>a:hover {
+#upper-deck .nav-pills>li>a:hover {
   background-color: darken(@gray-lighter, 5%);
   border: 1px solid darken(@gray-lighter, 15%);
   color: @link-color;

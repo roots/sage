@@ -34,6 +34,49 @@
   overflow: hidden;
 }
 
+.carousel-inner {
+-webkit-box-shadow: inset 0px 0px 20px -10px rgba(0, 0, 0, 0.35);
+-moz-box-shadow:    inset 0px 0px 20px -10px rgba(0, 0, 0, 0.35);
+box-shadow:         inset 0px 0px 20px -10px rgba(0, 0, 0, 0.35);
+
+}
+
+.carousel-inner:before, {
+/*background-color: #ffffff;*/
+background-image: -webkit-gradient(linear, left center, right center, from(rgba(255, 255, 255, 1.00)), to(rgba(255, 255, 255, 0.00)));
+background-image: -webkit-linear-gradient(left, rgba(255, 255, 255, 1.00), rgba(255, 255, 255, 0.00));
+background-image: -moz-linear-gradient(left, rgba(255, 255, 255, 1.00), rgba(255, 255, 255, 0.00));
+background-image: -o-linear-gradient(left, rgba(255, 255, 255, 1.00), rgba(255, 255, 255, 0.00));
+background-image: -ms-linear-gradient(left, rgba(255, 255, 255, 1.00), rgba(255, 255, 255, 0.00));
+background-image: linear-gradient(left, rgba(255, 255, 255, 1.00), rgba(255, 255, 255, 0.00));
+filter: progid:DXImageTransform.Microsoft.gradient(GradientType=1,StartColorStr='#ffffff', EndColorStr='#ffffff');
+width: 75px;
+display: block;
+position: relative;
+top: 0;
+left: 0;
+height: 100%;
+z-index: 200;
+}
+
+.carousel-inner:after, {
+/*background-color: #ffffff;*/
+background-image: -webkit-gradient(linear, left center, right center, from(rgba(255, 255, 255, 1.00)), to(rgba(255, 255, 255, 0.00)));
+background-image: -webkit-linear-gradient(left, rgba(255, 255, 255, 1.00), rgba(255, 255, 255, 0.00));
+background-image: -moz-linear-gradient(left, rgba(255, 255, 255, 1.00), rgba(255, 255, 255, 0.00));
+background-image: -o-linear-gradient(left, rgba(255, 255, 255, 1.00), rgba(255, 255, 255, 0.00));
+background-image: -ms-linear-gradient(left, rgba(255, 255, 255, 1.00), rgba(255, 255, 255, 0.00));
+background-image: linear-gradient(left, rgba(255, 255, 255, 1.00), rgba(255, 255, 255, 0.00));
+filter: progid:DXImageTransform.Microsoft.gradient(GradientType=1,StartColorStr='#ffffff', EndColorStr='#ffffff');
+width: 75px;
+display: block;
+position: relative;
+top: 0;
+right: 0;
+height: 100%;
+z-index: 200;
+}
+
 .carousel-fade {
   .carousel-inner {
     .item {
@@ -72,8 +115,8 @@
   #carousel-home .item img {
           position: absolute;
           right: 0;
+          max-width: none;
           bottom: 0;
-          max-width: 50%;
   }
 
   #carousel-home .item:nth-child(1) .carousel-caption {

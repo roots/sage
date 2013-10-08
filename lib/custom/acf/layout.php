@@ -1,0 +1,487 @@
+<?php
+if(function_exists("register_field_group"))
+{
+	register_field_group(array (
+		'id' => 'acf-options-forms',
+		'title' => 'Options - Forms',
+		'fields' => array (
+			array (
+				'key' => 'field_51dbc1f300274',
+				'label' => 'Newsletter Form',
+				'name' => 'newsletter_form',
+				'type' => 'gravity_forms_field',
+				'instructions' => 'Please select which form to show when someone clicks "Newsletter Signup"',
+				'required' => 1,
+				'allow_null' => 0,
+				'multiple' => 0,
+			),
+			array (
+				'key' => 'field_51dbc23a00276',
+				'label' => 'Request Literature Form',
+				'name' => 'request_literature_form',
+				'type' => 'gravity_forms_field',
+				'required' => 1,
+				'allow_null' => 0,
+				'multiple' => 0,
+			),
+			array (
+				'key' => 'field_51dbe0fffb6cd',
+				'label' => 'Request Call Back Form',
+				'name' => 'request_call_back_form',
+				'type' => 'gravity_forms_field',
+				'allow_null' => 0,
+				'multiple' => 0,
+			),
+			array (
+				'key' => 'field_51dbc22900275',
+				'label' => 'Contact Page Form',
+				'name' => 'contact_page_form',
+				'type' => 'gravity_forms_field',
+				'required' => 1,
+				'allow_null' => 0,
+				'multiple' => 0,
+			),
+			array (
+				'key' => 'field_51dbc26200277',
+				'label' => 'Share Form',
+				'name' => 'share_form',
+				'type' => 'gravity_forms_field',
+				'allow_null' => 0,
+				'multiple' => 0,
+			),
+		),
+		'location' => array (
+			array (
+				array (
+					'param' => 'options_page',
+					'operator' => '==',
+					'value' => 'acf-options-forms',
+					'order_no' => 0,
+					'group_no' => 0,
+				),
+			),
+		),
+		'options' => array (
+			'position' => 'normal',
+			'layout' => 'no_box',
+			'hide_on_screen' => array (
+			),
+		),
+		'menu_order' => 0,
+	));
+	register_field_group(array (
+		'id' => 'acf-options-layout',
+		'title' => 'Options - Layout',
+		'fields' => array (
+			array (
+				'key' => 'field_52390b9fa0541',
+				'label' => 'Localization',
+				'name' => '',
+				'type' => 'tab',
+			),
+			array (
+				'key' => 'field_52390bbaa0542',
+				'label' => 'Language Switcher',
+				'name' => 'language_switcher',
+				'type' => 'radio',
+				'instructions' => 'Should the language (location) dropdown menu be visible on the site?',
+				'required' => 1,
+				'choices' => array (
+					'show' => 'Show',
+					'hide' => 'Hide',
+				),
+				'other_choice' => 0,
+				'save_other_choice' => 0,
+				'default_value' => 'hide',
+				'layout' => 'horizontal',
+			),
+			array (
+				'key' => 'field_51dbc1917ddd1',
+				'label' => 'Sidebar',
+				'name' => '',
+				'type' => 'tab',
+			),
+			array (
+				'key' => 'field_51df94d7a4cbd',
+				'label' => 'Download PDF Button',
+				'name' => 'download_pdf_button',
+				'type' => 'true_false',
+				'message' => '',
+				'default_value' => 0,
+			),
+			array (
+				'key' => 'field_51df950ca4cbe',
+				'label' => 'Call Back Button',
+				'name' => 'call_back_button',
+				'type' => 'true_false',
+				'message' => '',
+				'default_value' => 0,
+			),
+			array (
+				'key' => 'field_51df952ca4cbf',
+				'label' => 'Request Literature Button',
+				'name' => 'request_literature_button',
+				'type' => 'true_false',
+				'message' => '',
+				'default_value' => 0,
+			),
+			array (
+				'key' => 'field_51df953ea4cc0',
+				'label' => 'Share Button',
+				'name' => 'share_button',
+				'type' => 'true_false',
+				'message' => '',
+				'default_value' => 0,
+			),
+			array (
+				'key' => 'field_51dbc1919a51f',
+				'label' => 'Call To Action',
+				'name' => '',
+				'type' => 'tab',
+			),
+			array (
+				'key' => 'field_51dbc1917537e',
+				'label' => 'Site Wide Call to Action',
+				'name' => 'site_wide_call_to_action',
+				'type' => 'true_false',
+				'message' => '',
+				'default_value' => 0,
+			),
+			array (
+				'key' => 'field_51dbc19175e6f',
+				'label' => 'Site Wide Call To Action Text',
+				'name' => 'site_wide_call_to_action_text',
+				'type' => 'text',
+				'conditional_logic' => array (
+					'status' => 1,
+					'rules' => array (
+						array (
+							'field' => 'field_51dbc1917537e',
+							'operator' => '==',
+							'value' => '1',
+						),
+					),
+					'allorany' => 'all',
+				),
+				'default_value' => '',
+				'placeholder' => '',
+				'prepend' => '',
+				'append' => '',
+				'formatting' => 'none',
+				'maxlength' => '',
+			),
+			array (
+				'key' => 'field_51dbc191768d5',
+				'label' => 'Site Wide Call To Action Type',
+				'name' => 'site_wide_call_to_action_type',
+				'type' => 'select',
+				'conditional_logic' => array (
+					'status' => 1,
+					'rules' => array (
+						array (
+							'field' => 'field_51dbc1917537e',
+							'operator' => '==',
+							'value' => '1',
+						),
+					),
+					'allorany' => 'all',
+				),
+				'choices' => array (
+					'internal' => 'Internal Page Link',
+					'external' => 'Link to External Site',
+					'download' => 'Download',
+					'form' => 'Form',
+				),
+				'default_value' => '',
+				'allow_null' => 0,
+				'multiple' => 0,
+			),
+			array (
+				'key' => 'field_51dbc1918b613',
+				'label' => 'Site Wide Internal',
+				'name' => 'site_wide_internal',
+				'type' => 'page_link',
+				'conditional_logic' => array (
+					'status' => 1,
+					'rules' => array (
+						array (
+							'field' => 'field_51dbc1917537e',
+							'operator' => '==',
+							'value' => '1',
+						),
+						array (
+							'field' => 'field_51dbc191768d5',
+							'operator' => '==',
+							'value' => 'internal',
+						),
+					),
+					'allorany' => 'all',
+				),
+				'post_type' => array (
+					0 => 'all',
+				),
+				'allow_null' => 0,
+				'multiple' => 0,
+			),
+			array (
+				'key' => 'field_51dbc19193bbf',
+				'label' => 'Site Wide External',
+				'name' => 'site_wide_external',
+				'type' => 'text',
+				'conditional_logic' => array (
+					'status' => 1,
+					'rules' => array (
+						array (
+							'field' => 'field_51dbc1917537e',
+							'operator' => '==',
+							'value' => '1',
+						),
+						array (
+							'field' => 'field_51dbc191768d5',
+							'operator' => '==',
+							'value' => 'external',
+						),
+					),
+					'allorany' => 'all',
+				),
+				'default_value' => '',
+				'placeholder' => '',
+				'prepend' => '',
+				'append' => '',
+				'formatting' => 'none',
+				'maxlength' => '',
+			),
+			array (
+				'key' => 'field_51dbc191948ca',
+				'label' => 'Site Wide Download',
+				'name' => 'site_wide_download',
+				'type' => 'file',
+				'conditional_logic' => array (
+					'status' => 1,
+					'rules' => array (
+						array (
+							'field' => 'field_51dbc1917537e',
+							'operator' => '==',
+							'value' => '1',
+						),
+						array (
+							'field' => 'field_51dbc191768d5',
+							'operator' => '==',
+							'value' => 'download',
+						),
+					),
+					'allorany' => 'all',
+				),
+				'save_format' => 'url',
+				'library' => 'all',
+			),
+			array (
+				'key' => 'field_51dbc191953f0',
+				'label' => 'Site WIde Form',
+				'name' => 'site_wide_form',
+				'type' => 'gravity_forms_field',
+				'conditional_logic' => array (
+					'status' => 1,
+					'rules' => array (
+						array (
+							'field' => 'field_51dbc1917537e',
+							'operator' => '==',
+							'value' => '1',
+						),
+						array (
+							'field' => 'field_51dbc191768d5',
+							'operator' => '==',
+							'value' => 'form',
+						),
+					),
+					'allorany' => 'all',
+				),
+				'allow_null' => 0,
+				'multiple' => 0,
+			),
+			array (
+				'key' => 'field_51dbc1919b15c',
+				'label' => 'Homepage Call To Action',
+				'name' => 'homepage_call_to_action',
+				'type' => 'true_false',
+				'message' => '',
+				'default_value' => 0,
+			),
+			array (
+				'key' => 'field_51dbc1919bd43',
+				'label' => 'Homepage Call To Action Text',
+				'name' => 'homepage_call_to_action_text',
+				'type' => 'text',
+				'conditional_logic' => array (
+					'status' => 1,
+					'rules' => array (
+						array (
+							'field' => 'field_51dbc1919b15c',
+							'operator' => '==',
+							'value' => '1',
+						),
+					),
+					'allorany' => 'all',
+				),
+				'default_value' => '',
+				'placeholder' => '',
+				'prepend' => '',
+				'append' => '',
+				'formatting' => 'none',
+				'maxlength' => '',
+			),
+			array (
+				'key' => 'field_51dbc1919c978',
+				'label' => 'Homepage Call To Action Type',
+				'name' => 'homepage_call_to_action_type',
+				'type' => 'select',
+				'conditional_logic' => array (
+					'status' => 1,
+					'rules' => array (
+						array (
+							'field' => 'field_51dbc1917537e',
+							'operator' => '==',
+							'value' => '1',
+						),
+					),
+					'allorany' => 'all',
+				),
+				'choices' => array (
+					'internal' => 'Internal Page Link',
+					'external' => 'Link to External Site',
+					'download' => 'Download',
+					'form' => 'Form',
+				),
+				'default_value' => '',
+				'allow_null' => 0,
+				'multiple' => 0,
+			),
+			array (
+				'key' => 'field_51dbc191aaece',
+				'label' => 'Homepage Internal',
+				'name' => 'homepage_internal',
+				'type' => 'page_link',
+				'conditional_logic' => array (
+					'status' => 1,
+					'rules' => array (
+						array (
+							'field' => 'field_51dbc1919b15c',
+							'operator' => '==',
+							'value' => '1',
+						),
+						array (
+							'field' => 'field_51dbc1919c978',
+							'operator' => '==',
+							'value' => 'internal',
+						),
+					),
+					'allorany' => 'all',
+				),
+				'post_type' => array (
+					0 => 'post',
+					1 => 'page',
+					2 => 'brand',
+					3 => 'glossary',
+					4 => 'product',
+					5 => 'resource',
+				),
+				'allow_null' => 0,
+				'multiple' => 0,
+			),
+			array (
+				'key' => 'field_51dbc191ab9a2',
+				'label' => 'Homepage External',
+				'name' => 'homepage_external',
+				'type' => 'text',
+				'conditional_logic' => array (
+					'status' => 1,
+					'rules' => array (
+						array (
+							'field' => 'field_51dbc1919b15c',
+							'operator' => '==',
+							'value' => '1',
+						),
+						array (
+							'field' => 'field_51dbc1919c978',
+							'operator' => '==',
+							'value' => 'external',
+						),
+					),
+					'allorany' => 'all',
+				),
+				'default_value' => '',
+				'placeholder' => '',
+				'prepend' => '',
+				'append' => '',
+				'formatting' => 'none',
+				'maxlength' => '',
+			),
+			array (
+				'key' => 'field_51dbc191ac3d1',
+				'label' => 'Homepage Download',
+				'name' => 'homepage_download',
+				'type' => 'file',
+				'conditional_logic' => array (
+					'status' => 1,
+					'rules' => array (
+						array (
+							'field' => 'field_51dbc1919b15c',
+							'operator' => '==',
+							'value' => '1',
+						),
+						array (
+							'field' => 'field_51dbc1919c978',
+							'operator' => '==',
+							'value' => 'download',
+						),
+					),
+					'allorany' => 'all',
+				),
+				'save_format' => 'url',
+				'library' => 'all',
+			),
+			array (
+				'key' => 'field_51dbc191acee9',
+				'label' => 'Homepage Form',
+				'name' => 'homepage_form',
+				'type' => 'gravity_forms_field',
+				'conditional_logic' => array (
+					'status' => 1,
+					'rules' => array (
+						array (
+							'field' => 'field_51dbc1919b15c',
+							'operator' => '==',
+							'value' => '1',
+						),
+						array (
+							'field' => 'field_51dbc1919c978',
+							'operator' => '==',
+							'value' => 'form',
+						),
+					),
+					'allorany' => 'all',
+				),
+				'allow_null' => 0,
+				'multiple' => 0,
+			),
+		),
+		'location' => array (
+			array (
+				array (
+					'param' => 'options_page',
+					'operator' => '==',
+					'value' => 'acf-options-layout',
+					'order_no' => 0,
+					'group_no' => 0,
+				),
+			),
+		),
+		'options' => array (
+			'position' => 'normal',
+			'layout' => 'no_box',
+			'hide_on_screen' => array (
+			),
+		),
+		'menu_order' => 0,
+	));
+}

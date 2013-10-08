@@ -8,17 +8,18 @@ function roots_setup() {
 
   // Register wp_nav_menu() menus (http://codex.wordpress.org/Function_Reference/register_nav_menus)
   register_nav_menus(array(
-    'primary_navigation' => __('Primary Navigation', 'atkore'),
-    'mini_navigation' => __('Mini Navigation', 'atkore'),
-    'footer_navigation' => __('Footer Navigation', 'atkore'),
-    'social_nav' => __('Social Nav', 'atkore'),
-    'user_menu' => __('User Menu', 'atkore'),
+    'primary' => __('Primary', 'atkore'),
+    'mini' => __('Mini', 'atkore'),
+    'footer' => __('Footer', 'atkore'),
+    'social' => __('Social', 'atkore'),
     'products' => __('Products', 'atkore'),
+    'account' => __('Account', 'atkore'),
   ));
 
   // Add post thumbnails (http://codex.wordpress.org/Post_Thumbnails)
   add_theme_support('post-thumbnails');
   set_post_thumbnail_size(250, 250, false);
+  // Custom Sizes
   add_image_size('small-tall', 180, 210);
   add_image_size('x-small', 125, 125);
   add_image_size('small', 250, 250);

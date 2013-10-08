@@ -1,6 +1,6 @@
 <?php
 $posttype = 'carousel';
-$number_of_posts = -1;
+$number_of_posts = 3;
 $startframe = 0;
 $args = 'post_type=' . $posttype . '&showposts=' . $number_of_posts;
 $the_query = new WP_Query( $args );
@@ -10,7 +10,7 @@ $classes = '';?>
   <div class="carousel-inner">
       <?php while ($the_query->have_posts()) : $the_query->the_post();?>
 					<div <?php if( $i == $startframe ) : $classes = array('item','active', 'first'); elseif ( $i == 1 ) : $classes = array('item','second'); elseif ( $i == 2 ) : $classes = array('item','third'); elseif ( $i == 3 ) : $classes = array('item','forth',); endif; post_class($classes)?>>
-						  <img src="<?php the_field('background_image_layer');?>" alt="<?php the_title(); ?>">
+					   <?php if ( has_post_thumbnail() ) { the_post_thumbnail('full', array('class' => 'background-image-carousel')); } ?>
 						  <div class="carousel-caption<?php if(get_field('headline_type') == "plain") { ?> plain<?php } ?><?php if(get_field('headline_type') == "background") { ?> background<?php } ?><?php if(get_field('headline_type') == "block") { ?> block<?php } ?>">
                   <h1><?php the_title(); ?></h1>
                   <p class="lead"><?php the_content(); ?></p>		    
