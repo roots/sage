@@ -222,7 +222,7 @@ input[type="submit"].btn-block,input[type="reset"].btn-block,input[type="button"
 .fade{opacity:0;-webkit-transition:opacity .15s linear;transition:opacity .15s linear}.fade.in{opacity:1}
 .collapse{display:none}.collapse.in{display:block}
 .collapsing{position:relative;height:0;overflow:hidden;-webkit-transition:height .35s ease;transition:height .35s ease}
-@font-face{font-family:'Glyphicons Regular';src:url('../fonts/glyphicons-regular.eot');src:url('../fonts/glyphicons-regular.eot?#iefix') format('embedded-opentype'),url('../fonts/glyphicons-regular.woff') format('woff'),url('../fonts/glyphicons-regular.ttf') format('truetype'),url('../fonts/glyphicons-regular.svg#glyphiconsregular') format('svg');font-weight:normal;font-style:normal}.glyphicons{display:inline-block;position:relative;padding-left:16px;color:#1d1d1b;text-decoration:none;*display:inline;*zoom:1;vertical-align:middle}.glyphicons:before{position:absolute;left:0;top:0;display:inline-block;margin:-8px 5px 0 0;font:16px/1em 'Glyphicons Regular';font-style:normal;font-weight:normal;color:#1d1d1b;line-height:16px;*display:inline;*zoom:1;vertical-align:middle;text-transform:none;-webkit-font-smoothing:antialiased}
+@font-face{font-family:'Glyphicons Regular';src:url('//www.atkore.com/assets/fonts/glyphicons-regular.eot');src:url('//www.atkore.com/assets/fonts/glyphicons-regular.eot?#iefix') format('embedded-opentype'),url('//www.atkore.com/assets/fonts/glyphicons-regular.woff') format('woff'),url('//www.atkore.com/assets/fonts/glyphicons-regular.ttf') format('truetype'),url('//www.atkore.com/assets/fonts/glyphicons-regular.svg#glyphiconsregular') format('svg');font-weight:normal;font-style:normal}.glyphicons{display:inline-block;position:relative;padding-left:16px;color:#1d1d1b;text-decoration:none;*display:inline;*zoom:1;vertical-align:middle}.glyphicons:before{position:absolute;left:0;top:0;display:inline-block;margin:-8px 5px 0 0;font:16px/1em 'Glyphicons Regular';font-style:normal;font-weight:normal;color:#1d1d1b;line-height:16px;*display:inline;*zoom:1;vertical-align:middle;text-transform:none;-webkit-font-smoothing:antialiased}
 .glyphicons.white:before{color:#fff}
 .glyphicons.glass:before{content:"\E001"}
 .glyphicons.leaf:before{content:"\E002"}
@@ -694,10 +694,10 @@ input[type="submit"].btn-block,input[type="reset"].btn-block,input[type="button"
 .glyphicons.server_flag:before{content:"\E468"}
 .glyphicons.server_lock:before{content:"\E469"}
 .glyphicons.server_new:before{content:"\E470"}
-.glyphicons-icon{display:inline-block;width:48px;height:48px;margin:0 8px 0 0;line-height:14px;vertical-align:text-top;background-image:url(../img/glyphicons.svg);background-position:0 0;background-repeat:no-repeat;vertical-align:top;*display:inline;*zoom:1;*margin-right:.3em}.glyphicons-icon _:-o-prefocus,.glyphicons-icon{background-image:url(../img/glyphicons.png)}
-.no-inlinesvg .glyphicons-icon{background-image:url(../img/glyphicons.png)}
-.glyphicons-icon.white{background-image:url(../img/glyphicons-white.svg)}.glyphicons-icon.white _:-o-prefocus,.glyphicons-icon.white{background-image:url(../img/glyphicons-white.png)}
-.no-inlinesvg .glyphicons-icon.white{background-image:url(../img/glyphicons-white.png)}
+.glyphicons-icon{display:inline-block;width:48px;height:48px;margin:0 8px 0 0;line-height:14px;vertical-align:text-top;background-image:url(//www.atkore.com/assets/img/glyphicons.svg);background-position:0 0;background-repeat:no-repeat;vertical-align:top;*display:inline;*zoom:1;*margin-right:.3em}.glyphicons-icon _:-o-prefocus,.glyphicons-icon{background-image:url(//www.atkore.com/assets/img/glyphicons.png)}
+.no-inlinesvg .glyphicons-icon{background-image:url(//www.atkore.com/assets/img/glyphicons.png)}
+.glyphicons-icon.white{background-image:url(//www.atkore.com/assets/img/glyphicons-white.svg)}.glyphicons-icon.white _:-o-prefocus,.glyphicons-icon.white{background-image:url(//www.atkore.com/assets/img/glyphicons-white.png)}
+.no-inlinesvg .glyphicons-icon.white{background-image:url(//www.atkore.com/assets/img/glyphicons-white.png)}
 .glyphicons-icon.glass{background-position:4px 11px}
 .glyphicons-icon.leaf{background-position:-44px 11px}
 .glyphicons-icon.dog{background-position:-92px 11px}
@@ -1168,7 +1168,7 @@ input[type="submit"].btn-block,input[type="reset"].btn-block,input[type="button"
 .glyphicons-icon.server_flag{background-position:-332px -2197px}
 .glyphicons-icon.server_lock{background-position:-380px -2197px}
 .glyphicons-icon.server_new{background-position:-428px -2197px}
-@font-face{font-family:'Glyphicons Filetypes Regular';src:url('../fonts/glyphicons-filetypes-regular.eot');src:url('../fonts/glyphicons-filetypes-regular.eot?#iefix') format('embedded-opentype'),url('../fonts/glyphicons-filetypes-regular.woff') format('woff'),url('../fonts/glyphicons-filetypes-regular.ttf') format('truetype'),url('../fonts/glyphicons-filetypes-regular.svg#glyphicons_filetypesregular') format('svg');font-weight:normal;font-style:normal}.filetype{display:inline-block;position:relative;padding-left:30px;color:#1d1d1b;text-decoration:none;*display:inline;*zoom:1;vertical-align:middle}.filetype:before{position:absolute;left:0;top:0;display:inline-block;margin:0 5px 0 0;font:24px/1em 'Glyphicons Filetypes Regular';font-style:normal;font-weight:normal;color:#1d1d1b;*display:inline;*zoom:1;vertical-align:middle;text-transform:none;-webkit-font-smoothing:antialiased}
+@font-face{font-family:'Glyphicons Filetypes Regular';src:url('//www.atkore.com/assets/fonts/glyphicons-filetypes-regular.eot');src:url('//www.atkore.com/assets/fonts/glyphicons-filetypes-regular.eot?#iefix') format('embedded-opentype'),url('//www.atkore.com/assets/fonts/glyphicons-filetypes-regular.woff') format('woff'),url('//www.atkore.com/assets/fonts/glyphicons-filetypes-regular.ttf') format('truetype'),url('//www.atkore.com/assets/fonts/glyphicons-filetypes-regular.svg#glyphicons_filetypesregular') format('svg');font-weight:normal;font-style:normal}.filetype{display:inline-block;position:relative;padding-left:30px;color:#1d1d1b;text-decoration:none;*display:inline;*zoom:1;vertical-align:middle}.filetype:before{position:absolute;left:0;top:0;display:inline-block;margin:0 5px 0 0;font:24px/1em 'Glyphicons Filetypes Regular';font-style:normal;font-weight:normal;color:#1d1d1b;*display:inline;*zoom:1;vertical-align:middle;text-transform:none;-webkit-font-smoothing:antialiased}
 .filetype.white:before{color:#fff}
 .filetype.txt:before{content:"\E001"}
 .filetype.doc:before{content:"\E002"}
@@ -1300,10 +1300,10 @@ input[type="submit"].btn-block,input[type="reset"].btn-block,input[type="button"
 .filetype.cfg:before{content:"\E128"}
 .filetype.ini:before{content:"\E129"}
 .filetype.prf:before{content:"\E130"}
-.filetype-icon{display:inline-block;width:19px;height:24px;margin:0 8px 0 0;line-height:14px;vertical-align:text-top;background-image:url(../img/glyphicons_filetypes.svg);background-position:0 0;background-repeat:no-repeat;vertical-align:top;*display:inline;*zoom:1;*margin-right:.3em}.filetype-icon _:-o-prefocus,.filetype-icon{background-image:url(../img/glyphicons_filetypes.png)}
-.no-inlinesvg .filetype-icon{background-image:url(../img/glyphicons_filetypes.png)}
-.filetype-icon.white{background-image:url(../img/glyphicons_filetypes-white.svg)}.filetype-icon.white _:-o-prefocus,.filetype-icon.white{background-image:url(../img/glyphicons_filetypes-white.png)}
-.no-inlinesvg .filetype-icon.white{background-image:url(../img/glyphicons_filetypes-white.png)}
+.filetype-icon{display:inline-block;width:19px;height:24px;margin:0 8px 0 0;line-height:14px;vertical-align:text-top;background-image:url(//www.atkore.com/assets/img/glyphicons_filetypes.svg);background-position:0 0;background-repeat:no-repeat;vertical-align:top;*display:inline;*zoom:1;*margin-right:.3em}.filetype-icon _:-o-prefocus,.filetype-icon{background-image:url(//www.atkore.com/assets/img/glyphicons_filetypes.png)}
+.no-inlinesvg .filetype-icon{background-image:url(//www.atkore.com/assets/img/glyphicons_filetypes.png)}
+.filetype-icon.white{background-image:url(//www.atkore.com/assets/img/glyphicons_filetypes-white.svg)}.filetype-icon.white _:-o-prefocus,.filetype-icon.white{background-image:url(//www.atkore.com/assets/img/glyphicons_filetypes-white.png)}
+.no-inlinesvg .filetype-icon.white{background-image:url(//www.atkore.com/assets/img/glyphicons_filetypes-white.png)}
 .filetype-icon.txt{background-position:0 0}
 .filetype-icon.doc{background-position:-48px 0}
 .filetype-icon.rtf{background-position:-96px 0}
@@ -1434,7 +1434,7 @@ input[type="submit"].btn-block,input[type="reset"].btn-block,input[type="button"
 .filetype-icon.cfg{background-position:-336px -576px}
 .filetype-icon.ini{background-position:-384px -576px}
 .filetype-icon.prf{background-position:-432px -576px}
-@font-face{font-family:'Glyphicons Social Regular';src:url('../fonts/glyphicons-social-regular.eot');src:url('../fonts/glyphicons-social-regular.eot?#iefix') format('embedded-opentype'),url('../fonts/glyphicons-social-regular.woff') format('woff'),url('../fonts/glyphicons-social-regular.ttf') format('truetype'),url('../fonts/glyphicons-social-regular.svg#glyphicons_socialregular') format('svg');font-weight:normal;font-style:normal}.social{display:inline-block;position:relative;padding-left:30px;color:#1d1d1b;text-decoration:none;*display:inline;*zoom:1;vertical-align:middle}.social:before{position:absolute;left:0;top:0;display:inline-block;margin:0 5px 0 0;font:24px/1em 'Glyphicons Social Regular';font-style:normal;font-weight:normal;color:#1d1d1b;*display:inline;*zoom:1;vertical-align:middle;text-transform:none;-webkit-font-smoothing:antialiased}
+@font-face{font-family:'Glyphicons Social Regular';src:url('//www.atkore.com/assets/fonts/glyphicons-social-regular.eot');src:url('//www.atkore.com/assets/fonts/glyphicons-social-regular.eot?#iefix') format('embedded-opentype'),url('//www.atkore.com/assets/fonts/glyphicons-social-regular.woff') format('woff'),url('//www.atkore.com/assets/fonts/glyphicons-social-regular.ttf') format('truetype'),url('//www.atkore.com/assets/fonts/glyphicons-social-regular.svg#glyphicons_socialregular') format('svg');font-weight:normal;font-style:normal}.social{display:inline-block;position:relative;padding-left:30px;color:#1d1d1b;text-decoration:none;*display:inline;*zoom:1;vertical-align:middle}.social:before{position:absolute;left:0;top:0;display:inline-block;margin:0 5px 0 0;font:24px/1em 'Glyphicons Social Regular';font-style:normal;font-weight:normal;color:#1d1d1b;*display:inline;*zoom:1;vertical-align:middle;text-transform:none;-webkit-font-smoothing:antialiased}
 .social.white:before{color:#fff}
 .social.pinterest:before{content:"\E001"}
 .social.dropbox:before{content:"\E002"}
@@ -1486,10 +1486,10 @@ input[type="submit"].btn-block,input[type="reset"].btn-block,input[type="button"
 .social.xbox:before{content:"\E048"}
 .social.android:before{content:"\E049"}
 .social.ios:before{content:"\E050"}
-.social-icon{display:inline-block;width:24px;height:24px;margin:0 8px 0 0;line-height:14px;vertical-align:text-top;background-image:url(../img/glyphicons_social.svg);background-position:0 0;background-repeat:no-repeat;vertical-align:top;*display:inline;*zoom:1;*margin-right:.3em}.social-icon _:-o-prefocus,.social-icon{background-image:url(../img/glyphicons_social.png)}
-.no-inlinesvg .social-icon{background-image:url(../img/glyphicons_social.png)}
-.social-icon.white{background-image:url(../img/glyphicons_social-white.svg)}.social-icon.white _:-o-prefocus,.social-icon.white{background-image:url(../img/glyphicons_social-white.png)}
-.no-inlinesvg .social-icon.white{background-image:url(../img/glyphicons_social-white.png)}
+.social-icon{display:inline-block;width:24px;height:24px;margin:0 8px 0 0;line-height:14px;vertical-align:text-top;background-image:url(//www.atkore.com/assets/img/glyphicons_social.svg);background-position:0 0;background-repeat:no-repeat;vertical-align:top;*display:inline;*zoom:1;*margin-right:.3em}.social-icon _:-o-prefocus,.social-icon{background-image:url(//www.atkore.com/assets/img/glyphicons_social.png)}
+.no-inlinesvg .social-icon{background-image:url(//www.atkore.com/assets/img/glyphicons_social.png)}
+.social-icon.white{background-image:url(//www.atkore.com/assets/img/glyphicons_social-white.svg)}.social-icon.white _:-o-prefocus,.social-icon.white{background-image:url(//www.atkore.com/assets/img/glyphicons_social-white.png)}
+.no-inlinesvg .social-icon.white{background-image:url(//www.atkore.com/assets/img/glyphicons_social-white.png)}
 .social-icon.pinterest{background-position:0 0}
 .social-icon.dropbox{background-position:-48px 0}
 .social-icon.google_plus{background-position:-96px 0}
@@ -1540,7 +1540,7 @@ input[type="submit"].btn-block,input[type="reset"].btn-block,input[type="button"
 .social-icon.xbox{background-position:-336px -192px}
 .social-icon.android{background-position:-384px -192px}
 .social-icon.ios{background-position:-432px -192px}
-@font-face{font-family:'FontAwesome';src:url('../fonts/fontawesome-webfont.eot?v=3.0.1');src:url('../fonts/fontawesome-webfont.eot?#iefix&v=3.0.1') format('embedded-opentype'),url('../fonts/fontawesome-webfont.woff?v=3.0.1') format('woff'),url('../fonts/fontawesome-webfont.ttf?v=3.0.1') format('truetype');font-weight:normal;font-style:normal}[class^="icon-"],[class*=" icon-"]{font-family:FontAwesome;font-weight:normal;font-style:normal;text-decoration:inherit;-webkit-font-smoothing:antialiased;display:inline;width:auto;height:auto;line-height:normal;vertical-align:baseline;background-image:none;background-position:0 0;background-repeat:repeat;margin-top:0}
+@font-face{font-family:'FontAwesome';src:url('//www.atkore.com/assets/fonts/fontawesome-webfont.eot?v=3.0.1');src:url('//www.atkore.com/assets/fonts/fontawesome-webfont.eot?#iefix&v=3.0.1') format('embedded-opentype'),url('//www.atkore.com/assets/fonts/fontawesome-webfont.woff?v=3.0.1') format('woff'),url('//www.atkore.com/assets/fonts/fontawesome-webfont.ttf?v=3.0.1') format('truetype');font-weight:normal;font-style:normal}[class^="icon-"],[class*=" icon-"]{font-family:FontAwesome;font-weight:normal;font-style:normal;text-decoration:inherit;-webkit-font-smoothing:antialiased;display:inline;width:auto;height:auto;line-height:normal;vertical-align:baseline;background-image:none;background-position:0 0;background-repeat:repeat;margin-top:0}
 .icon-white,.nav-pills>.active>a>[class^="icon-"],.nav-pills>.active>a>[class*=" icon-"],.nav-list>.active>a>[class^="icon-"],.nav-list>.active>a>[class*=" icon-"],.navbar-inverse .nav>.active>a>[class^="icon-"],.navbar-inverse .nav>.active>a>[class*=" icon-"],.dropdown-menu>li>a:hover>[class^="icon-"],.dropdown-menu>li>a:hover>[class*=" icon-"],.dropdown-menu>.active>a>[class^="icon-"],.dropdown-menu>.active>a>[class*=" icon-"],.dropdown-submenu:hover>a>[class^="icon-"],.dropdown-submenu:hover>a>[class*=" icon-"]{background-image:none}
 [class^="icon-"]:before,[class*=" icon-"]:before{text-decoration:inherit;display:inline-block;speak:none}
 a [class^="icon-"],a [class*=" icon-"]{display:inline-block}
