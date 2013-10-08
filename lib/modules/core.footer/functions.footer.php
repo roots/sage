@@ -135,8 +135,6 @@ function shoestrap_footer_html() {
   <?php
 }
 endif;
-add_action( 'shoestrap_footer_pre_override', 'shoestrap_footer_html' );
-
 
 function shoestrap_footer_content() {
   // Finding the number of active widget sidebars
