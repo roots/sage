@@ -29,6 +29,11 @@ function shoestrap_css( $target = 'path', $echo = false ) {
 
   if ( $target == 'url' ) :
     $css_path = get_template_directory_uri() . '/assets/css/style' . $cssid . '.css';
+    // When a new site is created, use a default stylesheet since a site-specific file doesn't exist yet.
+    if ( is_writable( get_template_directory() . '/assets/css/style' . $cssid . '.css' ) ) :
+      $css_path = get_template_directory_uri() . '/assets/css/style-default.css';
+    endif;
+
   else :
     $css_path = get_template_directory() . '/assets/css/style' . $cssid . '.css';
   endif;
@@ -137,21 +142,21 @@ function shoestrap_makecss() {
 endif;
 
 if ( !function_exists( 'shoestrap_process_font' ) ) :
-	function shoestrap_process_font( $font ) {
-	  
-	  if ( empty( $font['font-weight'] ) ) {
-	  	$font['font-weight'] = "inherit";
-	  }
-	  if ( empty( $font['font-style'] ) ) {
-	  	$font['font-style'] = "inherit";
-	  }
-	  
-	  if ( isset( $font['font-size'] ) ) :
-	    $font['font-size'] = filter_var( $font['font-size'], FILTER_SANITIZE_NUMBER_INT );
-	  endif;
+  function shoestrap_process_font( $font ) {
+    
+    if ( empty( $font['font-weight'] ) ) {
+      $font['font-weight'] = "inherit";
+    }
+    if ( empty( $font['font-style'] ) ) {
+      $font['font-style'] = "inherit";
+    }
+    
+    if ( isset( $font['font-size'] ) ) :
+      $font['font-size'] = filter_var( $font['font-size'], FILTER_SANITIZE_NUMBER_INT );
+    endif;
 
-	  return $font;
-	}
+    return $font;
+  }
 endif;
 
 if ( !function_exists( 'shoestrap_variables_less' ) ) :
@@ -1207,7 +1212,7 @@ function shoestrap_complete_less( $url = false ) {
 
   $user_less = shoestrap_getVariable('user_less');
   if ( !empty( $user_less ) ) {
-  	$bootstrap_less .= $user_less;
+    $bootstrap_less .= $user_less;
   }
 
 
