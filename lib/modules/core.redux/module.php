@@ -1,7 +1,7 @@
 <?php
 
-if ( !class_exists( 'ReduxFramework' ) && file_exists( dirname( __FILE__ ) . '/ReduxFramework/framework.php' ) ) :
-  include_once( dirname( __FILE__ ) . '/ReduxFramework/framework.php' );
+if ( !class_exists( 'ReduxFramework' ) && file_exists( dirname( __FILE__ ) . '/ReduxFramework/ReduxCore/framework.php' ) ) :
+  include_once( dirname( __FILE__ ) . '/ReduxFramework/ReduxCore/framework.php' );
 endif;
 
 /*
@@ -37,7 +37,7 @@ if ( class_exists( 'ReduxFramework' ) ) :
   $args['menu_title']             = $theme->get( 'Name' );
   $args['display_version']        = $theme->get( 'Version' );    
   $args['page_position']          = 27;
-  $args['database'] 			  = 'theme_mods_expanded';
+//  $args['database'] 			  = 'theme_mods_expanded';
   $args['import_icon_class']      = 'icon-large';
   $args['system_info_icon_class'] = 'icon-large';
   $args['dev_mode_icon_class']    = 'icon-large';

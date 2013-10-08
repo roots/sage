@@ -1,8 +1,30 @@
-# Redux Options Framework v3.0.0 Beta [![Build Status](https://secure.travis-ci.org/ghost1227/Redux-Framework.png?branch=master)](http://travis-ci.org/ghost1227/Redux-Framework)
+# Redux Options Framework v3.0.0 Beta [![Build Status](https://secure.travis-ci.org/ReduxFramework/ReduxFramework.png?branch=master)](http://travis-ci.org/ReduxFramework/ReduxFramework)
+
+Wordpress options framework which uses the [WordPress Settings API](http://codex.wordpress.org/Settings_API "WordPress Settings API"), Custom Error/Validation Handling, Custom Field/Validation Types, and import/export functionality.
 
 ## Please help us beta test. As soon as the community verifies there are no bugs, we will release.
 
-Wordpress options framework which uses the [WordPress Settings API](http://codex.wordpress.org/Settings_API "WordPress Settings API"), Custom Error/Validation Handling, Custom Field/Validation Types, and import/export functionality.
+## Getting Started with Redux ##
+
+ReduxFramework has been built as a auto-updating plugin. For now, during beta, the plugin will prompt you for an update each time a new commit occurs.
+
+To install the plugin, just download the master branch zip file, and install as you would any other Wordpress plugin.
+
+
+## Setting up Redux ##
+
+Inside the zip file is a `sample` folder. Copy this into your theme or plugin directory. DO NOT modify anything within the plugin or you will all your work at each update.
+
+Include the `sample-config.php` file in your theme `functions.php` or plugin as follows:
+
+```php
+require_once('path/to/copied/sample/sample-config.php');
+```
+
+Edit ```sample-config.php``` as needed.
+
+
+
 
 ## Donate to the Framework ##
 
@@ -30,56 +52,13 @@ If you can, please donate to help support the ongoing development of Redux Frame
 
 [![Follow us on Twitter](http://iod.unh.edu/Images/Twitter_follow_us.png "Follow us on Twitter")](https://www.twitter.com/ReduxFramework)
 
-## Getting Redux ##
-
-Redux can be downloaded in several ways which are outlined below. Please use whichever way you are most comfortable with.
-
-### Download as a .zip archive ###
-
-* Stable release: [download](https://github.com/ghost1227/Redux-Framework/archive/master.zip)
-
-Once you have downloaded the framework, upload the .zip file to the root of your project and unzip it as follows:
-
-```bash
-$ cd my-project
-$ unzip Redux-Framework-master.zip -d Redux-Framework
-```
-
-### Cloning the repository using git ###
-
-*Stable release*
-```bash
-$ cd my-project
-$ git clone git://github.com/ghost1227/Redux-Framework/
-```
-
-### Cloning the repository as a git submodule ###
-
-*Stable release*
-```bash
-$ cd my-project
-$ git submodule add git://github.com/ghost1227/Redux-Framework/
-```
-
-## Setting up Redux ##
-
-Copy the included options.php file outside of the Redux folder (recommended).
-
-Include Redux in your theme ```functions.php``` or plugin as follows:
-
-```php
-require_once('path/to/copied/options.php');
-```
-
-Edit ```options.php``` as needed.
-
 ## FAQs ##
 
 1. Why should we use ```require_once``` instead of ```get_template_part```?
  * First, because ```get_template_part``` is for... you guessed it, themes! Redux is designed to work with both themes *and* plugins.
  * Second, read [this](http://kovshenin.com/2013/get_template_part/).
-2. Why shouldn't we edit ```defaults.php```?
- * Because ```defaults.php``` is for *defaults*. Anything that is defined in ```defaults.php``` can be overridden in ```options.php```.
+2. Why shouldn't we edit ```sample-config.php``` in the plugin directory?
+ * Because ```sample-config.php``` will be replaced at each update of the plugin. You will lose all your effort
 
 ## Are you using Redux? ##
 
@@ -93,6 +72,13 @@ Send me an email at ghost1227@reduxframework.com so I can add you to our user sp
 * Fixed huge performance bug
 * More bugfixes
 * Fixed spacing field
+* Converted Redux to run as an auto-updating plugin. Getting ready to post to wordpress.org
+* Fixed the auto updater to properly show changes since the last update
+* Various fields including link_color, spacing, dimensions
+* Compiler hooks to allow developers to generate CSS files only when needed
+* Stability and standardizing in HTML output throughout
+* PHP/CSS/JS fixes
+* Compress JS and use LESS (and compressed CSS) throughout
 
 ### Version 3.0.0 Beta (September 12, 2013)
 
