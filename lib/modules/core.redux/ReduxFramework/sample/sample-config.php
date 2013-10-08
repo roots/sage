@@ -6,12 +6,6 @@
 **/
 
 
-/*
- *
- * Require the framework class before doing anything else, so we can use the defined URLs and directories.
- * If you are running on Windows you may have URL problems which can be fixed by defining the framework url first.
- *
- */
 
 /*
  *
@@ -35,7 +29,7 @@ function add_another_section($sections){
 
     return $sections;
 }
-add_filter('redux-opts-sections-twenty_eleven', 'add_another_section');
+add_filter('redux-opts-sections-redux-sample', 'add_another_section');
 
 
 /*
@@ -48,7 +42,7 @@ function change_framework_args($args){
     
     return $args;
 }
-//add_filter('redux-opts-args-twenty_eleven', 'change_framework_args');
+//add_filter('redux-opts-args-redux-sample-file', 'change_framework_args');
 
 
 /*
@@ -115,13 +109,13 @@ function setup_framework_options(){
 		ob_end_clean();
 
 
-	if( file_exists( REDUX_DIR.'sample/info-html.html' )) {
+	if( file_exists( dirname(__FILE__).'/info-html.html' )) {
 		global $wp_filesystem;
 		if (empty($wp_filesystem)) {
 			require_once(ABSPATH .'/wp-admin/includes/file.php');
 			WP_Filesystem();
 		}  		
-		$sampleHTML = $wp_filesystem->get_contents(REDUX_DIR.'sample/info-html.html');
+		$sampleHTML = $wp_filesystem->get_contents(dirname(__FILE__).'/info-html.html');
 	}
 
 
@@ -162,7 +156,7 @@ function setup_framework_options(){
 	$theme = wp_get_theme();
 
 	$args['display_name'] = $theme->get('Name');
-	$args['database'] = "theme_mods_expanded";
+	//$args['database'] = "theme_mods_expanded";
 	$args['display_version'] = $theme->get('Version');
 
     // If you want to use Google Webfonts, you MUST define the api key.
@@ -291,8 +285,8 @@ function setup_framework_options(){
     $sections = array();              
 
     //Background Patterns Reader
-    $sample_patterns_path = REDUX_DIR . 'sample/patterns/';
-    $sample_patterns_url  = REDUX_URL . 'sample/patterns/';
+    $sample_patterns_path = REDUX_DIR . '../sample/patterns/';
+    $sample_patterns_url  = REDUX_URL . '../sample/patterns/';
     $sample_patterns      = array();
 
     if ( is_dir( $sample_patterns_path ) ) :
@@ -336,6 +330,13 @@ function setup_framework_options(){
 				'desc'=> __('This represents the minimalistic view. It does not have the preview box or the display URL in an input box. ', 'redux-framework'),
 				'subtitle' => __('Upload any media using the Wordpress native uploader', 'redux-framework'),
 				),	
+            array(
+                'id' => 'gallery',
+                'type' => 'gallery',
+                'title' => __('Add/Edit Gallery', 'so-panels'),
+                'subtitle' => __('Create a new Gallery by selecting existing or uploading new images using the Wordpress native uploader', 'so-panels'),
+                'desc' => __('This is the description field, again good for additional info.', 'redux-framework'),
+                ),			
 			array(
 				'id'=>'media-nopreview',
 				'type' => 'media', 
@@ -456,8 +457,8 @@ function setup_framework_options(){
 				'default' 		=> 0,
 				'desc'=> __('This allows you to set a json string or array to override multiple preferences in your theme.', 'redux-framework'),
 				'options' => array(
-								'1' => array('alt' => 'Preset 1', 'img' => REDUX_URL.'sample/presets/preset1.png', 'presets'=>array('switch-on'=>1,'switch-off'=>1, 'switch-custom'=>1)),
-								'2' => array('alt' => 'Preset 2', 'img' => REDUX_URL.'sample/presets/preset2.png', 'presets'=>'{"slider1":"1", "slider2":"0", "switch-on":"0"}'),
+								'1' => array('alt' => 'Preset 1', 'img' => REDUX_URL.'../sample/presets/preset1.png', 'presets'=>array('switch-on'=>1,'switch-off'=>1, 'switch-custom'=>1)),
+								'2' => array('alt' => 'Preset 2', 'img' => REDUX_URL.'../sample/presets/preset2.png', 'presets'=>'{"slider1":"1", "slider2":"0", "switch-on":"0"}'),
 									),
 				),					
 			array(
@@ -465,6 +466,16 @@ function setup_framework_options(){
 				'type' => 'typography', 
 				'title' => __('Typography', 'redux-framework'),
 				'compiler'=>true,
+				'google'=>false, // Disable google fonts. Won't work if you haven't defined your google api key
+				//'font-style'=>false, // Includes font-style and weight. Can use font-style or font-weight to declare
+				'subsets'=>false, // Only appears if google is true and subsets not set to false
+				//'font-size'=>false,
+				//'line-height'=>false,
+				//'word-spacing'=>true, // Defaults to false
+				//'letter-spacing'=>true, // Defaults to false
+				//'color'=>false,
+				//'preview'=>false, // Disable the previewer
+				'units'=>'em',				
 				'subtitle'=> __('Typography option with each property can be called individually.', 'redux-framework'),
 				'default'=> array(
 					'color'=>"#333", 
@@ -567,6 +578,18 @@ function setup_framework_options(){
 				'default' => array('from' => '#1e73be', 'to' => '#00897e')
 				),
 			array(
+				'id'=>'link-color',
+				'type' => 'link_color',
+				'title' => __('Links Color Option', 'redux-framework'),
+				'subtitle' => __('Only color validation can be done on this field type', 'redux-framework'),
+				'desc' => __('This is the description field, again good for additional info.', 'redux-framework'),
+				'default' => array(
+					'show_regular' => true,
+					'show_hover' => true,
+					'show_active' => true
+				)
+			),
+			array(
 				'id'=>'header-border',
 				'type' => 'border',
 				'title' => __('Header Border Option', 'redux-framework'),
@@ -578,6 +601,7 @@ function setup_framework_options(){
 				'id'=>'spacing',
 				'type' => 'spacing',
 				//'units' => 'em', // You can specify a unit value. Possible: px, em, %
+				//'units_extended' => 'true', // Allow users to select any type of unit
 				'title' => __('Padding/Margin Option', 'redux-framework'),
 				'subtitle' => __('Allow your users to choose the spacing or margin they want.', 'redux-framework'),
 				'desc' => __('You can enable or diable any piece of this field. Top, Right, Bottom, Left, or Units.', 'redux-framework'),
@@ -587,10 +611,11 @@ function setup_framework_options(){
 				'id'=>'dimensions',
 				'type' => 'dimensions',
 				//'units' => 'em', // You can specify a unit value. Possible: px, em, %
+				//'units_extended' => 'true', // Allow users to select any type of unit
 				'title' => __('Dimensions (Width/Height) Option', 'redux-framework'),
 				'subtitle' => __('Allow your users to choose width, height, and/or unit.', 'redux-framework'),
 				'desc' => __('You can enable or diable any piece of this field. Width, Height, or Units.', 'redux-framework'),
-				'default' => array('width' => 200, 'height'=>'100', 'units'=>'em')
+				'default' => array('width' => 200, 'height'=>'100', )
 				),												
 			array(
 				'id'=>'body-font2',
@@ -1102,6 +1127,25 @@ function setup_framework_options(){
 				'title' => __('Group', 'redux-framework'), 
 				'subtitle' => __('Group any items together.', 'redux-framework'),
 				'desc' => __('No limit as to what you can group. Just don\'t try to group a group.', 'redux-framework'),
+				'groupname' => __('Group', 'redux-framework'), // Group name
+				'subfields' => 
+					array(
+						array(
+                            'id'=>'tracking-code-group',
+                            'type' => 'textarea',
+                            'title' => __('Tracking Code', 'redux-framework'), 
+                            'subtitle' => __('Paste your Google Analytics (or other) tracking code here. This will be added into the footer template of your theme.', 'redux-framework'),
+                            'desc' => 'Validate that it\'s javascript!',
+							),
+						array(
+                            'id'=>'media-group',
+                            'type' => 'media', 
+                            'url'=> true,
+                            'title' => __('Media No URL', 'redux-framework'),
+                            'desc'=> __('This represents the minimalistic view. It does not have the preview box or the display URL in an input box. ', 'redux-framework'),
+                            'subtitle' => __('Upload any media using the Wordpress native uploader', 'redux-framework'),
+							),
+						),
 				),			
 				*/
 			)
@@ -1129,6 +1173,7 @@ function setup_framework_options(){
 
 }
 add_action('init', 'setup_framework_options', 0);
+
 
 /*
  * 
@@ -1174,6 +1219,14 @@ function validate_callback_function($field, $value, $existing_value) {
 function testCompiler() {
 	//echo "Compiler hook!";
 }
-add_action('redux-compiler-twenty_eleven', 'testCompiler');
+add_action('redux-compiler-redux-sample-file', 'testCompiler');
 
 
+
+/**
+	Use this function to hide the activation notice telling users about a sample panel.
+**/
+function removeReduxAdminNotice() {
+	delete_option('REDUX_FRAMEWORK_PLUGIN_ACTIVATED_NOTICES');
+}
+add_action('redux_framework_plugin_admin_notice', 'removeReduxAdminNotice');

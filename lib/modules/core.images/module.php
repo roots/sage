@@ -27,7 +27,7 @@ function shoestrap_module_featured_images_options( $sections ) {
     'id'        => 'feat_img_archive',
     'default'   => 0,
     'type'      => 'switch',
-    'customizer'=> array(),
+    'customizer'=> true,
   );
 
 
@@ -40,7 +40,7 @@ function shoestrap_module_featured_images_options( $sections ) {
     'off'       => __( 'Full Width', 'shoestrap' ),
     'on'        => __( 'Custom Dimensions', 'shoestrap' ),
     'type'      => 'switch',
-    'customizer'=> array(),
+    'customizer'=> true,
   );
 
   $fields[] = array( 
@@ -51,6 +51,7 @@ function shoestrap_module_featured_images_options( $sections ) {
     'min'       => 100,
     'step'      => 1,
     'max'       => 1000,
+    'fold'      => 'feat_img_archive_custom_toggle',
     'edit'      => 1,
     'type'      => 'slider'
   );
@@ -64,6 +65,7 @@ function shoestrap_module_featured_images_options( $sections ) {
     'step'      => 1,
     'edit'      => 1,
     'max'       => 1000,
+    'fold'      => 'feat_img_archive_custom_toggle',
     'type'      => 'slider'
   );
 
@@ -73,8 +75,7 @@ function shoestrap_module_featured_images_options( $sections ) {
     'id'        => 'feat_img_post',
     'default'   => 0,
     'type'      => 'switch',
-    'customizer'=> array(),
-    'fold'      => 'advanced_toggle'
+    'customizer'=> true,
   );
 
   $fields[] = array( 
@@ -85,7 +86,8 @@ function shoestrap_module_featured_images_options( $sections ) {
     'off'       => __( 'Full Width', 'shoestrap' ),
     'on'        => __( 'Custom Dimensions', 'shoestrap' ),
     'type'      => 'switch',
-    'customizer'=> array(),
+    'fold'      => 'feat_img_post',
+    'customizer'=> true,
   );
 
   $fields[] = array( 
@@ -97,6 +99,7 @@ function shoestrap_module_featured_images_options( $sections ) {
     'step'      => 1,
     'max'       => 1000,
     'edit'      => 1,
+    'fold'      => 'feat_img_post_custom_toggle',
     'type'      => 'slider'
   );
 
@@ -109,6 +112,7 @@ function shoestrap_module_featured_images_options( $sections ) {
     'step'      => 1,
     'max'       => 1000,
     'edit'      => 1,
+    'fold'      => 'feat_img_post_custom_toggle',
     'type'      => 'slider'
   );   
 

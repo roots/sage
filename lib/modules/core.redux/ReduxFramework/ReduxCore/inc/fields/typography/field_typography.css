@@ -1,0 +1,57 @@
+#redux-main .select_wrapper.typography-style span {
+  display: none;
+}
+#redux-main .redux-typography-container .wp-picker-container {
+  float: left;
+}
+#redux-main .redux-typography-container select,
+#redux-main .redux-typography-container .typography-style,
+#redux-main .redux-typography-container .typography-script {
+  float: left;
+  display: block;
+  width: 340px;
+}
+#redux-main .redux-typography-container .typography-family,
+#redux-main .redux-typography-container .typography-family select,
+#redux-main .redux-typography-container .typography-family-backup,
+#redux-main .redux-typography-container .typography-family-backup select {
+  width: 340px !important;
+}
+#redux-main .redux-typography-container .typography-script,
+#redux-main .redux-typography-container .typography-script select {
+  width: 130px !important;
+  margin-right: 0;
+}
+#redux-main .redux-typography-container .typography-style,
+#redux-main .redux-typography-container .typography-style select {
+  width: 125px!important;
+}
+#redux-main .redux-typography-container .select_wrapper {
+  float: left;
+  margin-right: 10px;
+  display: block;
+}
+#redux-main .redux-typography-container .typography-preview {
+  display: block;
+  width: 100%;
+  border: 1px dotted lightgray;
+  max-width: 850px;
+  padding: 10px;
+  font-size: 10pt;
+  height: auto;
+  margin: 5px 0 10px;
+  overflow: auto;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+#redux-main .redux-typography-container input.redux-typography-color {
+  float: left;
+  width: 70px;
+  margin-left: 5px;
+  margin-top: 0px;
+}
+#redux-main .redux-typography-container .redux-typography,
+#redux-main .redux-typography-container .typography-color {
+  margin-bottom: 5px;
+}
