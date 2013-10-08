@@ -30,7 +30,7 @@ function shoestrap_css( $target = 'path', $echo = false ) {
   if ( $target == 'url' ) :
     $css_path = get_template_directory_uri() . '/assets/css/style' . $cssid . '.css';
     // When a new site is created, use a default stylesheet since a site-specific file doesn't exist yet.
-    if ( is_writable( get_template_directory() . '/assets/css/style' . $cssid . '.css' ) ) :
+    if ( !is_writable( get_template_directory() . '/assets/css/style' . $cssid . '.css' ) ) :
       $css_path = get_template_directory_uri() . '/assets/css/style-default.css';
     endif;
 
