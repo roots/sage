@@ -1,1 +1,1 @@
-<p class="calendar"><?php the_date('j');?> <em><?php the_date('M');?></em></p>
+<p class="calendar"><?php the_time('j');?> <em><?php the_time('M');?></em></p>

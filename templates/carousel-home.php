@@ -13,8 +13,8 @@ $classes = '';?>
 					   <?php if ( has_post_thumbnail() ) { the_post_thumbnail('full', array('class' => 'background-image-carousel')); } ?>
 						  <div class="carousel-caption<?php if(get_field('headline_type') == "plain") { ?> plain<?php } ?><?php if(get_field('headline_type') == "background") { ?> background<?php } ?><?php if(get_field('headline_type') == "block") { ?> block<?php } ?>">
                   <h1><?php the_title(); ?></h1>
-                  <p class="lead"><?php the_content(); ?></p>		    
-                  <?php get_template_part('templates/content', 'call-to-action'); ?>
+                  <?php the_content(); ?>	    
+                  <?php // get_template_part('templates/content', 'call-to-action'); ?>
               </div>
           </div> 
           <!-- Controls -->
