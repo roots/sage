@@ -1,12 +1,8 @@
-# [Roots Theme](http://roots.io/)
+# [weroots Theme](https://github.com/webrain/weroots)
 
-Roots is a WordPress starter theme based on [HTML5 Boilerplate](http://html5boilerplate.com/) & [Bootstrap](http://getbootstrap.com/) that will help you make better themes.
+weroots is a Wordpress starter theme based on [Roots Theme](http://roots.io/).
 
-* Source: [https://github.com/roots/roots](https://github.com/roots/roots)
-* Home Page: [http://roots.io/](http://roots.io/)
-* Twitter: [@retlehs](https://twitter.com/retlehs)
-* Newsletter: [Subscribe](http://roots.io/subscribe/)
-* Forum: [http://discourse.roots.io/](http://discourse.roots.io/)
+The current documentation and README file are the same as the Roots Theme, at least until we make significant changes.
 
 ## Installation
 
