@@ -28,10 +28,9 @@ $(document).ready(function() {
    $(this).attr('data-target', '#newsletter');
    $(this).attr('data-toggle', 'modal');
   });
-  
-  $('.nav-sidebar ul.list-group li a').each(function () {
-   $(this).attr('class', 'list-group-item');
-  });
+
+
+
   
   $('a.pdfbutton').each(function () {
    $(this).attr('class', 'list-group-item');

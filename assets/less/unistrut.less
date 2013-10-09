@@ -2,6 +2,18 @@
 
 /* I've added the domain to the body class (in wordpress) so, you can use selectors like "[class*="atkore"]" or "[class*="atcfence"]" or "[class*="easternwire"]" */
 
-@brand-primary:         #0f569a;
-@brand-secondary:       #000000;
+@brand-primary:                       #0f569a;
+@brand-secondary:                     #000000;
 @brand-tertiary:                      rgba(239,86,79,1);  // Red
+
+
+body[class*="afcweb"] #carousel-home .carousel-caption h1 {
+  background-color: rgba(0,0,0,0.7);
+  padding: 20px;
+  color: #fff;
+}
+
+body[class*="afcweb"] .carousel-caption {
+  left: 35%;
+  color: #fff;
+}

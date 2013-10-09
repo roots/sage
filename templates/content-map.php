@@ -1,3 +1,5 @@
+<?php get_template_part('templates/page', 'header'); ?>
+
 <?php
 
 	$args = array(
@@ -21,7 +23,7 @@
 		<div id="item<?php echo $i; ?>">
 
 		<div class="entry-summary">
-      <?php if ( has_post_thumbnail( get_the_id($post->ID) ) ) { the_post_thumbnail( 'small-tall' ); } else { ?><img src="http://placehold.it/180x210"/><?php } ?>
+      <?php if ( has_post_thumbnail( get_the_id($post->ID) ) ) { the_post_thumbnail( 'small-tall' ); } else {   } ?>
     </div>
 
 <?php 
@@ -47,7 +49,7 @@
     <div class="col-lg-6" style="white-space:nowrap;"><?php echo '<abbr title="Phone Number" class=""><i class="icon-phone"></i></abbr> ' . $phone . ''; ?></div>
     <div class="col-lg-6" style="white-space:nowrap;"><?php echo '<abbr title="Fax Number" class=""><i class="icon-print"></i></abbr> ' . $fax . ''; ?></div>
     </div>
-    <p><button class="btn btn-default btn-block btn-xs" data-toggle="modal" data-target="#newsletter" type="button">Contact <?php the_field('first_name'); ?> <?php the_field('last_name'); ?></button></p>
+    <p><button class="btn btn-default btn-block btn-xs" data-toggle="modal" data-target="#request-call-back" type="button">Contact <?php the_field('first_name'); ?> <?php the_field('last_name'); ?></button></p>
 		</address>
     
 		</div>
@@ -87,7 +89,7 @@
 
 	</script>
 
-	<div id="map_canvas" style="width:100%; height:600px;"></div>
+	<div id="map-canvas" style="width:100%; height:600px;"></div>
 
 	<?php
 
