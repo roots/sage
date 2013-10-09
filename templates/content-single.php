@@ -3,6 +3,9 @@
     <header><?php get_template_part('templates/page', 'header'); ?></header>
     <div class="entry-content">
       <?php $queried_post_type = get_query_var('post_type'); ?>
+      <?php if ( 'post' ==  $queried_post_type ){ ?>
+        <?php get_template_part('templates/content', 'calendar-icon'); ?>
+      <?php } ?>
       <?php if ( has_post_thumbnail() && 'post' ==  $queried_post_type ){ ?>
            <div class="pull-left wrap-featured-image"><?php the_post_thumbnail('thumbnail', array('class' => 'img-thumbnail')); ?></div>
       <?php } ?>

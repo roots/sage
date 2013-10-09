@@ -1,6 +1,9 @@
 <?php // draft sample display for array returned from oAuth Twitter Feed for Developers WP plugin
 // http://wordpress.org/extend/plugins/oauth-twitter-feed-for-developers/
-
+?>
+<div class="panel panel-default">
+  <div class="panel-body">
+<?php
 $tweets = getTweets(1);//change number up to 20 for number of tweets
 if(is_array($tweets)){
 
@@ -56,32 +59,38 @@ foreach($tweets as $tweet){
         echo $the_tweet;
 
 
-        // 3. Tweet Actions
-        //    Reply, Retweet, and Favorite action icons must always be visible for the user to interact with the Tweet. These actions must be implemented using Web Intents or with the authenticated Twitter API.
-        //    No other social or 3rd party actions similar to Follow, Reply, Retweet and Favorite may be attached to a Tweet.
-        // get the sprite or images from twitter's developers resource and update your stylesheet
-        echo '
-        <div class="btn-group btn-group-xs btn-group-justified twitter_intents">
-            <a class="btn btn-default reply" href="https://twitter.com/intent/tweet?in_reply_to='.$tweet['id_str'].'"><span class="glyphicon glyphicon-reply"></span> Reply</a>
-            <a class="btn btn-default retweet" href="https://twitter.com/intent/retweet?tweet_id='.$tweet['id_str'].'"><span class="glyphicon glyphicon-retweet"></span>Retweet</a>
-            <a class="btn btn-default favorite" href="https://twitter.com/intent/favorite?tweet_id='.$tweet['id_str'].'"><span class="glyphicon glyphicon-star"></span>Favorite</a>
-        </div>';
-
-
         // 4. Tweet Timestamp
         //    The Tweet timestamp must always be visible and include the time and date. e.g., “3:00 PM - 31 May 12”.
         // 5. Tweet Permalink
         //    The Tweet timestamp must always be linked to the Tweet permalink.
         echo '
-        <p class="timestamp">
-            <a href="https://twitter.com/YOURUSERNAME/status/'.$tweet['id_str'].'" target="_blank">
-                '.date('h:i A M d',strtotime($tweet['created_at']. '- 8 hours')).'
-            </a>
-        </p>';// -8 GMT for Pacific Standard Time
+          <p class="timestamp">
+              <a href="https://twitter.com/YOURUSERNAME/status/'.$tweet['id_str'].'" target="_blank">
+                  '.date('h:i A M d',strtotime($tweet['created_at']. '- 8 hours')).'
+              </a>
+          </p>';// -8 GMT for Pacific Standard Time
+
+        // 3. Tweet Actions
+        //    Reply, Retweet, and Favorite action icons must always be visible for the user to interact with the Tweet. These actions must be implemented using Web Intents or with the authenticated Twitter API.
+        //    No other social or 3rd party actions similar to Follow, Reply, Retweet and Favorite may be attached to a Tweet.
+        // get the sprite or images from twitter's developers resource and update your stylesheet
+        echo '
+        </div>
+        <div class="panel-footer">
+        <div class="btn-group btn-group-xs btn-group-justified twitter_intents">
+            <a class="btn btn-default reply" href="https://twitter.com/intent/tweet?in_reply_to='.$tweet['id_str'].'"><span class="glyphicon glyphicon-reply"></span> Reply</a>
+            <a class="btn btn-default retweet" href="https://twitter.com/intent/retweet?tweet_id='.$tweet['id_str'].'"><span class="glyphicon glyphicon-retweet"></span>Retweet</a>
+            <a class="btn btn-default favorite" href="https://twitter.com/intent/favorite?tweet_id='.$tweet['id_str'].'"><span class="glyphicon glyphicon-star"></span>Favorite</a>
+        </div>
+        </div>';
+
+
+
     } else {
         echo '
         <br /><br />
         <a href="http://twitter.com/YOURUSERNAME" target="_blank">Click here to read YOURUSERNAME\'S Twitter feed</a>';
     }
 }
-}
+} ?>
+</div>

@@ -18,7 +18,7 @@
 
 <?php } elseif ( is_page() ) {   ?>
 
-<?php } elseif ( is_page( 'Products & Services' ) || is_page( 'products-services' ) ) {   ?>
+<?php } elseif ( is_page( 'Products & Services' ) || is_page( 'products-services' ) ) { ?>
 
 <?php } else {   ?>
 
@@ -27,6 +27,9 @@
 
 <?php dynamic_sidebar('sidebar-primary'); ?>
 <?php get_template_part('templates/content', 'actions-sidebar'); ?>
+
+<div class="">
 <?php get_template_part('templates/content', 'twitter'); ?>
+</div>
 
 <?php } ?>
