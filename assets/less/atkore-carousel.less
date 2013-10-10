@@ -34,49 +34,6 @@
   overflow: hidden;
 }
 
-.carousel-inner {
--webkit-box-shadow: inset 0px 0px 20px -10px rgba(0, 0, 0, 0.35);
--moz-box-shadow:    inset 0px 0px 20px -10px rgba(0, 0, 0, 0.35);
-box-shadow:         inset 0px 0px 20px -10px rgba(0, 0, 0, 0.35);
-
-}
-
-.carousel-inner:before, {
-/*background-color: #ffffff;*/
-background-image: -webkit-gradient(linear, left center, right center, from(rgba(255, 255, 255, 1.00)), to(rgba(255, 255, 255, 0.00)));
-background-image: -webkit-linear-gradient(left, rgba(255, 255, 255, 1.00), rgba(255, 255, 255, 0.00));
-background-image: -moz-linear-gradient(left, rgba(255, 255, 255, 1.00), rgba(255, 255, 255, 0.00));
-background-image: -o-linear-gradient(left, rgba(255, 255, 255, 1.00), rgba(255, 255, 255, 0.00));
-background-image: -ms-linear-gradient(left, rgba(255, 255, 255, 1.00), rgba(255, 255, 255, 0.00));
-background-image: linear-gradient(left, rgba(255, 255, 255, 1.00), rgba(255, 255, 255, 0.00));
-filter: progid:DXImageTransform.Microsoft.gradient(GradientType=1,StartColorStr='#ffffff', EndColorStr='#ffffff');
-width: 75px;
-display: block;
-position: relative;
-top: 0;
-left: 0;
-height: 100%;
-z-index: 200;
-}
-
-.carousel-inner:after, {
-/*background-color: #ffffff;*/
-background-image: -webkit-gradient(linear, left center, right center, from(rgba(255, 255, 255, 1.00)), to(rgba(255, 255, 255, 0.00)));
-background-image: -webkit-linear-gradient(left, rgba(255, 255, 255, 1.00), rgba(255, 255, 255, 0.00));
-background-image: -moz-linear-gradient(left, rgba(255, 255, 255, 1.00), rgba(255, 255, 255, 0.00));
-background-image: -o-linear-gradient(left, rgba(255, 255, 255, 1.00), rgba(255, 255, 255, 0.00));
-background-image: -ms-linear-gradient(left, rgba(255, 255, 255, 1.00), rgba(255, 255, 255, 0.00));
-background-image: linear-gradient(left, rgba(255, 255, 255, 1.00), rgba(255, 255, 255, 0.00));
-filter: progid:DXImageTransform.Microsoft.gradient(GradientType=1,StartColorStr='#ffffff', EndColorStr='#ffffff');
-width: 75px;
-display: block;
-position: relative;
-top: 0;
-right: 0;
-height: 100%;
-z-index: 200;
-}
-
 .carousel-fade {
   .carousel-inner {
     .item {
@@ -212,8 +169,8 @@ z-index: 200;
 
 // BRANDS FOOTER CAROUSEL 
 
-@brands-carousel-height-lg: 225px;
-@brands-carousel-height-md: 160px;
+@brands-carousel-height-lg: 120px;
+@brands-carousel-height-md: 120px;
 @brands-carousel-height-sm: 120px;
 @brands-carousel-height-xs: auto;
 
@@ -222,6 +179,53 @@ z-index: 200;
 @margin-top-brand-logo-md: 25%;
 @margin-top-brand-logo-lg: 15%;
 
+
+#carousel-brands .carousel-inner {
+-webkit-box-shadow: inset 0px 10px 20px -10px rgba(0, 0, 0, 0.35);
+-moz-box-shadow:    inset 0px 10px 20px -10px rgba(0, 0, 0, 0.35);
+box-shadow:         inset 0px 10px 20px -10px rgba(0, 0, 0, 0.35);
+border-top: 1px solid #999;
+overflow-x: hidden;
+overflow-y: hidden!important;
+}
+
+#carousel-brands .carousel-inner::before {
+/*background-color: #ffffff;*/
+background-image: -webkit-gradient(linear, left center, right center, from(rgba(255, 255, 255, 1.00)), to(rgba(255, 255, 255, 0.00)));
+background-image: -webkit-linear-gradient(left, rgba(255, 255, 255, 1.00), rgba(255, 255, 255, 0.00));
+background-image: -moz-linear-gradient(left, rgba(255, 255, 255, 1.00), rgba(255, 255, 255, 0.00));
+background-image: -o-linear-gradient(left, rgba(255, 255, 255, 1.00), rgba(255, 255, 255, 0.00));
+background-image: -ms-linear-gradient(left, rgba(255, 255, 255, 1.00), rgba(255, 255, 255, 0.00));
+background-image: linear-gradient(left, rgba(255, 255, 255, 1.00), rgba(255, 255, 255, 0.00));
+//filter: progid:DXImageTransform.Microsoft.gradient(GradientType=1,StartColorStr='#ffffff', EndColorStr='#ffffff');
+width: 75px;
+display: block;
+position: absolute;
+top: 0;
+left: 0;
+height: 100%;
+z-index: 200;
+border: 5px solid #000;
+z-index: 6000;
+}
+
+#carousel-brands .carousel-inner::after {
+/*background-color: #ffffff;*/
+background-image: -webkit-gradient(linear, left center, right center, from(rgba(255, 255, 255, 1.00)), to(rgba(255, 255, 255, 0.00)));
+background-image: -webkit-linear-gradient(left, rgba(255, 255, 255, 1.00), rgba(255, 255, 255, 0.00));
+background-image: -moz-linear-gradient(left, rgba(255, 255, 255, 1.00), rgba(255, 255, 255, 0.00));
+background-image: -o-linear-gradient(left, rgba(255, 255, 255, 1.00), rgba(255, 255, 255, 0.00));
+background-image: -ms-linear-gradient(left, rgba(255, 255, 255, 1.00), rgba(255, 255, 255, 0.00));
+background-image: linear-gradient(left, rgba(255, 255, 255, 1.00), rgba(255, 255, 255, 0.00));
+//filter: progid:DXImageTransform.Microsoft.gradient(GradientType=1,StartColorStr='#ffffff', EndColorStr='#ffffff');
+width: 75px;
+display: block;
+position: absolute;
+top: 0;
+right: 0;
+height: 100%;
+z-index: 6000;
+}
 
 
 #brands-footer .carousel-control {
@@ -411,7 +415,7 @@ z-index: 200;
   .brand-logo-wrap {
     max-height: @brands-carousel-height-lg;
     height: @brands-carousel-height-lg;
-    width: 45%;
+    width: 70%;
   }
   
   .brand-acsuni-fab .brand-logo-wrap,

@@ -30,7 +30,7 @@ function roots_scripts() {
 
 // SCRIPTS
 
-  //wp_register_script('googlemaps', 'http://maps.googleapis.com/maps/api/js?sensor=false', false, null, false);
+  //wp_register_script('googlemaps', '//maps.googleapis.com/maps/api/js?sensor=false', false, null, false);
   //wp_register_script('atkore_maps', get_stylesheet_directory_uri() . '/assets/js/map.min.js', false, null, false);
 
   if (is_single() && comments_open() && get_option('thread_comments')) {
