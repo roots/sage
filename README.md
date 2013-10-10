@@ -4,6 +4,8 @@ weroots is a Wordpress starter theme based on [Roots Theme](http://roots.io/).
 
 The current documentation and README file are the same as the Roots Theme, at least until we make significant changes.
 
+The theme is now based on SASS so it requires the sass ruby gem.
+
 ## Installation
 
 Clone the git repo - `git clone git://github.com/roots/roots.git` - or [download it](https://github.com/roots/roots/zipball/master) and then rename the directory to the name of your theme or website. [Install Grunt](http://gruntjs.com/getting-started), and then install the dependencies for Roots contained in `package.json` by running the following from the Roots theme directory:
