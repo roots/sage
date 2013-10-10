@@ -1,14 +1,14 @@
 {
-  "name": "roots",
-  "version": "6.5.0",
-  "author": "Ben Word <ben@benword.com>",
-  "homepage": "http://roots.io",
+  "name": "weroots",
+  "version": "0.0.1",
+  "author": "Webrain <darioghilardi@webrain.it>",
+  "homepage": "https://github.com/webrain/weroots",
   "repository": {
     "type": "git",
-    "url": "git://github.com/roots/roots.git"
+    "url": "git://github.com/webrain/weroots.git"
   },
   "bugs": {
-    "url" : "https://github.com/roots/roots/issues"
+    "url" : "https://github.com/webrain/weroots/issues"
   },
   "licenses": [{
     "type": "MIT",
