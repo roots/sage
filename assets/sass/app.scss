@@ -1,8 +1,8 @@
 /*!
- * Roots 6.5.0
+ * weroots 0.0.1
  */
 
-@import "bootstrap/bootstrap.less";
+@import 'assets/components/sass-bootstrap/lib/bootstrap.scss';
 
 /* ==========================================================================
    Base
@@ -76,15 +76,3 @@ body { }
 .alignleft { float: left; }
 .alignright { float: right; }
 figure.alignnone { margin-left: 0; margin-right: 0; }
-
-
-
-/* ==========================================================================
-   Media Queries
-   ========================================================================== */
-
-@media (min-width: @screen-sm) { }
-
-@media (min-width: @screen-md) { }
-
-@media (min-width: @screen-lg) { }

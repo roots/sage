@@ -1,19 +1,21 @@
 {
-  "name": "roots",
-  "version": "6.5.0",
-  "author": "Ben Word <ben@benword.com>",
-  "homepage": "http://roots.io",
+  "name": "weroots",
+  "version": "0.0.1",
+  "author": "Webrain <darioghilardi@webrain.it>",
+  "homepage": "https://github.com/webrain/weroots",
   "repository": {
     "type": "git",
-    "url": "git://github.com/roots/roots.git"
+    "url": "git://github.com/webrain/weroots.git"
   },
   "bugs": {
-    "url" : "https://github.com/roots/roots/issues"
+    "url": "https://github.com/webrain/weroots/issues"
   },
-  "licenses": [{
-    "type": "MIT",
-    "url": "http://opensource.org/licenses/MIT"
-  }],
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://opensource.org/licenses/MIT"
+    }
+  ],
   "engines": {
     "node": ">= 0.10.0"
   },
@@ -23,7 +25,7 @@
     "grunt-contrib-jshint": "~0.6.4",
     "grunt-contrib-uglify": "~0.2.4",
     "grunt-contrib-watch": "~0.5.3",
-    "grunt-recess": "~0.4.0",
-    "grunt-wp-version": "~0.1.0"
+    "grunt-wp-version": "~0.1.0",
+    "grunt-contrib-sass": "~0.5.0"
   }
 }

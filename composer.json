@@ -1,0 +1,10 @@
+{
+  "name": "webrain/weroots",
+  "description": "weroots theme for Wordpress.",
+  "keywords": ["wordpress", "theme", "weroots"],
+  "type": "wordpress-theme",
+  "require": {
+    "php": ">=5.3.2",
+    "composer/installers": "v1.0.6"
+  }
+}

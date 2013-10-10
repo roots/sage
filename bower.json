@@ -1,0 +1,7 @@
+{
+  "name": "weroots",
+  "version": "0.0.1",
+  "dependencies": {
+    "sass-bootstrap" : "3.0.0"
+  }
+}
