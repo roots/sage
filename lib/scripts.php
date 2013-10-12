@@ -14,8 +14,6 @@
  */
 function roots_scripts() {
   wp_enqueue_style('roots_bootstrap', get_stylesheet_directory_uri() . '/assets/css/bootstrap.css', false, null);
-  wp_enqueue_style('bootstrap_select', get_stylesheet_directory_uri() . '/assets/css/bootstrap-select.min.css', false, null);
-  wp_enqueue_style('tablecloth', get_stylesheet_directory_uri() . '/assets/css/tablecloth.css', false, null);
   wp_enqueue_style('roots_app', get_stylesheet_directory_uri() . '/assets/css/app.css', false, null);
   wp_enqueue_style('unistrut', get_stylesheet_directory_uri() . '/assets/css/unistrut.css', false, null);
 

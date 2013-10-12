@@ -129,6 +129,19 @@ tbody .title-row td{text-align:left;padding:7px 15px}
 #specifications table td:first-of-type,#specifications table td:nth-of-type(2){white-space:normal}
 #product-information table tr td:first-of-type,#product-information table tr td:nth-of-type(2),#product-information table tr td.product-code{white-space:nowrap !important}
 table tr td.product-code{white-space:nowrap !important}
+.table th.center,.table td.center{text-align:center}
+.table th.right,.table td.right{text-align:right}
+.table th.headerSortable:hover{cursor:pointer}
+.table th.headerSortDown{background-image:url('../img/asc.gif');cursor:pointer;background-repeat:no-repeat;background-position:center right;padding-right:16px !important}
+.table th.headerSortUp{background-image:url('../img/desc.gif');cursor:pointer;background-repeat:no-repeat;background-position:center right;padding-right:16px !important}
+.table tr.highlight td,.table tr.highlight:hover td,.table td.highlight,.table td.highlight:hover{background:#fff9d7 !important}
+.table tr.highlight-primary td,.table tr.highlight-primary:hover td,.table td.highlight-primary,.table td.highlight-primary:hover{background:#0074cc !important;color:#fff}
+.table tr.highlight-info td,.table tr.highlight-info:hover td,.table td.highlight-info,.table td.highlight-info:hover{background:#49afcd !important;color:#fff}
+.table tr.highlight-success td,.table tr.highlight-success:hover td,.table td.highlight-success,.table td.highlight-success:hover{background:#5bb75b !important;color:#fff}
+.table tr.highlight-warning td,.table tr.highlight-warning:hover td,.table td.highlight-warning,.table td.highlight-warning:hover{background:#faa732 !important;color:#fff}
+.table tr.highlight-danger td,.table tr.highlight-danger:hover td,.table td.highlight-danger,.table td.highlight-danger:hover{background:#da4f49 !important;color:#fff}
+.table tr.highlight-inverse td,.table tr.highlight-inverse:hover td,.table td.highlight-inverse,.table td.highlight-inverse:hover{background:#414141 !important;color:#fff}
+.table caption{text-align:left;padding:10px 0}
 .sidebar .menu{margin-left:0;margin-right:0;padding-left:0;padding-right:0}.sidebar .menu li{list-style:none}.sidebar .menu li.active a .sidebar .menu li{color:#555}.sidebar .menu li.active a .sidebar .menu li .list-group-item-heading{color:#333}
 .sidebar .menu li.active a .sidebar .menu li:hover,.sidebar .menu li.active a .sidebar .menu li:focus{text-decoration:none;background-color:#f5f5f5}
 .sidebar .menu li.active>a,.sidebar .menu li.active>a:hover,.sidebar .menu li.active>a:focus{z-index:2;color:#fff;background-color:#0f569a;border-color:#0f569a}.sidebar .menu li.active>a .list-group-item-heading,.sidebar .menu li.active>a:hover .list-group-item-heading,.sidebar .menu li.active>a:focus .list-group-item-heading{color:inherit}
@@ -223,7 +236,53 @@ body.contact .main .span6:first-of-type{-webkit-box-sizing:border-box;-moz-box-s
 .resource .thumbnail img{margin:0 auto}
 .thumbnails>li:first-of-type,.thumbnails>li:nth-of-type(2n+1){margin-left:0;clear:left}
 .thumbnails>li:nth-of-type(3n+1),.thumbnails>li:nth-of-type(4n+1){clear:none}
-@media (min-width:768px){.brand-logo{margin:0 auto 30px auto} body.home .brand-logo{margin:20px auto 30px auto} .thumbnails>li:nth-of-type(2n+1),.thumbnails>li:nth-of-type(4n+1){clear:none} .thumbnails>li:first-of-type,.thumbnails>li:nth-of-type(3n+1){margin-left:0;clear:left} aside.sidebar{margin-top:-108px}}@media (min-width:992px){.brand-logo{margin:20px auto 30px auto} .thumbnails>li:nth-of-type(2n+1),.thumbnails>li:nth-of-type(4n+1){clear:none} .thumbnails>li:first-of-type,.thumbnails>li:nth-of-type(3n+1){margin-left:0;clear:left}}@media (min-width:1200px){.thumbnails>li:nth-of-type(2n+1),.thumbnails>li:nth-of-type(3n+1){clear:none} .thumbnails>li:first-of-type,.thumbnails>li:nth-of-type(4n+1){margin-left:0;clear:left}}@media (min-width:768px){}@media (min-width:992px){}@media (min-width:1200px){}body[class*="afcweb"] #carousel-home .carousel-caption h1,body[class*="afcweb"] #carousel-home .carousel-caption p{background-color:rgba(0,0,0,0.7);padding:20px;color:#fff}
+@media (min-width:768px){.brand-logo{margin:0 auto 30px auto} body.home .brand-logo{margin:20px auto 30px auto} .thumbnails>li:nth-of-type(2n+1),.thumbnails>li:nth-of-type(4n+1){clear:none} .thumbnails>li:first-of-type,.thumbnails>li:nth-of-type(3n+1){margin-left:0;clear:left} aside.sidebar{margin-top:-108px}}@media (min-width:992px){.brand-logo{margin:20px auto 30px auto} .thumbnails>li:nth-of-type(2n+1),.thumbnails>li:nth-of-type(4n+1){clear:none} .thumbnails>li:first-of-type,.thumbnails>li:nth-of-type(3n+1){margin-left:0;clear:left}}@media (min-width:1200px){.thumbnails>li:nth-of-type(2n+1),.thumbnails>li:nth-of-type(3n+1){clear:none} .thumbnails>li:first-of-type,.thumbnails>li:nth-of-type(4n+1){margin-left:0;clear:left}}.bootstrap-select.btn-group,.bootstrap-select.btn-group[class*="span"]{float:none;display:inline-block;margin-bottom:10px;margin-left:0}
+.form-search .bootstrap-select.btn-group,.form-inline .bootstrap-select.btn-group,.form-horizontal .bootstrap-select.btn-group{margin-bottom:0}
+.bootstrap-select.form-control{padding:0;border:none}
+.bootstrap-select.btn-group.pull-right,.bootstrap-select.btn-group[class*="span"].pull-right,.row-fluid .bootstrap-select.btn-group[class*="span"].pull-right{float:right}
+.input-append .bootstrap-select.btn-group{margin-left:-1px}
+.input-prepend .bootstrap-select.btn-group{margin-right:-1px}
+.bootstrap-select:not([class*="span"]):not([class*="col-"]):not([class*="form-control"]){width:220px}
+.bootstrap-select{width:220px\0;}
+.bootstrap-select.form-control:not([class*="span"]){width:100%}
+.bootstrap-select>.btn{width:100%}
+.error .bootstrap-select .btn{border:1px solid #b94a48}
+.dropdown-menu{z-index:2000}
+.bootstrap-select.show-menu-arrow.open>.btn{z-index:2051}
+.bootstrap-select .btn:focus{outline:thin dotted #333 !important;outline:5px auto -webkit-focus-ring-color !important;outline-offset:-2px}
+.bootstrap-select.btn-group .btn .filter-option{overflow:hidden;position:absolute;left:12px;right:25px;text-align:left}
+.bootstrap-select.btn-group .btn .caret{position:absolute;top:50%;right:12px;margin-top:-2px;vertical-align:middle}
+.bootstrap-select.btn-group>.disabled,.bootstrap-select.btn-group .dropdown-menu li.disabled>a{cursor:not-allowed}
+.bootstrap-select.btn-group>.disabled:focus{outline:none !important}
+.bootstrap-select.btn-group[class*="span"] .btn{width:100%}
+.bootstrap-select.btn-group .dropdown-menu{min-width:100%;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box}
+.bootstrap-select.btn-group .dropdown-menu.inner{position:static;border:0;padding:0;margin:0;-webkit-border-radius:0;-moz-border-radius:0;border-radius:0;-webkit-box-shadow:none;-moz-box-shadow:none;box-shadow:none}
+.bootstrap-select.btn-group .dropdown-menu dt{display:block;padding:3px 20px;cursor:default}
+.bootstrap-select.btn-group .div-contain{overflow:hidden}
+.bootstrap-select.btn-group .dropdown-menu li{position:relative}
+.bootstrap-select.btn-group .dropdown-menu li>a.opt{position:relative;padding-left:35px}
+.bootstrap-select.btn-group .dropdown-menu li>a{cursor:pointer}
+.bootstrap-select.btn-group .dropdown-menu li>dt small{font-weight:normal}
+.bootstrap-select.btn-group.show-tick .dropdown-menu li.selected a i.check-mark{display:inline-block;position:absolute;right:15px;margin-top:2.5px}
+.bootstrap-select.btn-group .dropdown-menu li a i.check-mark{display:none}
+.bootstrap-select.btn-group.show-tick .dropdown-menu li a span.text{margin-right:34px}
+.bootstrap-select.btn-group .dropdown-menu li small{padding-left:.5em}
+.bootstrap-select.btn-group .dropdown-menu li:not(.disabled)>a:hover small,.bootstrap-select.btn-group .dropdown-menu li:not(.disabled)>a:focus small{color:#64b1d8;color:rgba(255,255,255,0.4)}
+.bootstrap-select.btn-group .dropdown-menu li>dt small{font-weight:normal}
+.bootstrap-select.show-menu-arrow .dropdown-toggle:before{content:'';display:inline-block;border-left:7px solid transparent;border-right:7px solid transparent;border-bottom:7px solid #ccc;border-bottom-color:rgba(0,0,0,0.2);position:absolute;bottom:-4px;left:9px;display:none}
+.bootstrap-select.show-menu-arrow .dropdown-toggle:after{content:'';display:inline-block;border-left:6px solid transparent;border-right:6px solid transparent;border-bottom:6px solid #fff;position:absolute;bottom:-4px;left:10px;display:none}
+.bootstrap-select.show-menu-arrow.dropup .dropdown-toggle:before{bottom:auto;top:-3px;border-top:7px solid #ccc;border-bottom:0;border-top-color:rgba(0,0,0,0.2)}
+.bootstrap-select.show-menu-arrow.dropup .dropdown-toggle:after{bottom:auto;top:-3px;border-top:6px solid #fff;border-bottom:0}
+.bootstrap-select.show-menu-arrow.pull-right .dropdown-toggle:before{right:12px;left:auto}
+.bootstrap-select.show-menu-arrow.pull-right .dropdown-toggle:after{right:13px;left:auto}
+.bootstrap-select.show-menu-arrow.open>.dropdown-toggle:before,.bootstrap-select.show-menu-arrow.open>.dropdown-toggle:after{display:block}
+.mobile-device{position:absolute;top:0;left:0;display:block !important;width:100%;height:100% !important;opacity:0}
+.bootstrap-select.fit-width{width:auto !important}
+.bootstrap-select.btn-group.fit-width .btn .filter-option{position:static}
+.bootstrap-select.btn-group.fit-width .btn .caret{position:static;top:auto;margin-top:-1px}
+.control-group.error .bootstrap-select .dropdown-toggle{border-color:#b94a48}
+.bootstrap-select-searchbox{padding:4px 8px}
+@media (min-width:768px){}@media (min-width:992px){}@media (min-width:1200px){}body[class*="afcweb"] #carousel-home .carousel-caption h1,body[class*="afcweb"] #carousel-home .carousel-caption p{background-color:rgba(0,0,0,0.7);padding:20px;color:#fff}
 body[class*="afcweb"] .carousel-caption{left:35%;color:#fff;padding:0}
 body[class*="unistrut"] #carousel-home .carousel-caption *{background-color:rgba(0,0,0,0.7);padding:20px;color:#fff}
 body[class*="unistrut"] .carousel-caption{bottom:30px}
