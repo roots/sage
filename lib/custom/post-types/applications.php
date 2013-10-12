@@ -14,7 +14,7 @@ if ( ! function_exists('atkore_post_type_applications') ) {
 
 // Register Custom Post Types
 function atkore_post_type_applications() {
-    $admin_img_path = 'http://atkore.com/assets/img/atkore-admin-icon.png';
+    $admin_img_path = '//atkore.com/assets/img/atkore-admin-icon.png';
   	// Applications Post Type
   	$labels = array(
   		'name'                => _x( 'Applications', 'Post Type General Name', 'atkore' ),
@@ -49,7 +49,7 @@ function atkore_post_type_applications() {
   		'show_in_menu'        => true,
   		'show_in_nav_menus'   => true,
   		'show_in_admin_bar'   => true,
-  		'menu_position'       => 1.1,
+  		'menu_position'       => 20,
   		'menu_icon'           => $admin_img_path,
   		'can_export'          => true,
   		'has_archive'         => true,

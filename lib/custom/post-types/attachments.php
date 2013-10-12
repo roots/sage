@@ -14,7 +14,7 @@ if ( ! function_exists('atkore_post_type_attachment') ) {
 
 // Register Custom Post Types
 function atkore_post_type_attachment() {
-    $admin_img_path = 'http://atkore.com/assets/img/atkore-admin-icon.png';
+    $admin_img_path = '//atkore.com/assets/img/atkore-admin-icon.png';
   	
   	$labels = array(
   		'name'                       => _x( 'Media Type', 'Taxonomy General Name', 'atkore' ),

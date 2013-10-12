@@ -13,7 +13,7 @@ Copyright: Maintain Web
 if ( ! function_exists('atkore_post_type_carousels') ) {
 
 function atkore_post_type_carousels() {
-    $admin_img_path = 'http://atkore.com/assets/img/atkore-admin-icon.png';
+    $admin_img_path = '//atkore.com/assets/img/atkore-admin-icon.png';
   	$labels = array(
   		'name'                => _x( 'Carousels', 'Post Type General Name', 'atkore' ),
   		'singular_name'       => _x( 'Carousel', 'Post Type Singular Name', 'atkore' ),
@@ -41,7 +41,7 @@ function atkore_post_type_carousels() {
   		'show_in_menu'        => true,
   		'show_in_nav_menus'   => true,
   		'show_in_admin_bar'   => true,
-  		'menu_position'       => 1.5,
+  		'menu_position'       => 20,
   		'menu_icon'           => $admin_img_path,
   		'can_export'          => true,
   		'has_archive'         => false,

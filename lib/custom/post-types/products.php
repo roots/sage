@@ -14,7 +14,7 @@ if ( ! function_exists('atkore_post_type_products') ) {
 
 // Register Custom Post Types
 function atkore_post_type_products() {
-    $admin_img_path = 'http://atkore.com/assets/img/atkore-admin-icon.png';
+    $admin_img_path = '//atkore.com/assets/img/atkore-admin-icon.png';
 
   	$labels = array(
   		'name'                => _x( 'Products', 'Post Type General Name', 'atkore' ),
@@ -50,7 +50,7 @@ function atkore_post_type_products() {
   		'show_in_menu'          => true,
   		'show_in_nav_menus'     => true,
   		'show_in_admin_bar'     => true,
-  		'menu_position'         => 1.7,
+  		'menu_position'         => 20,
   		'menu_icon'             => $admin_img_path,
   		'can_export'            => true,
   		'has_archive'           => true,
@@ -153,50 +153,6 @@ function atkore_post_type_products() {
 
   	register_taxonomy( 'product_cat', 'product', $args );
 
-  	$labels = array(
-  		'name'                       => _x( 'Finish', 'Taxonomy General Name', 'atkore' ),
-  		'singular_name'              => _x( 'Finish', 'Taxonomy Singular Name', 'atkore' ),
-  		'menu_name'                  => __( 'Finishes', 'atkore' ),
-  		'all_items'                  => __( 'All Finishes', 'atkore' ),
-  		'parent_item'                => __( 'Parent Finish', 'atkore' ),
-  		'parent_item_colon'          => __( 'Parent Finish:', 'atkore' ),
-  		'new_item_name'              => __( 'New Finish Name', 'atkore' ),
-  		'add_new_item'               => __( 'Add New Finish', 'atkore' ),
-  		'edit_item'                  => __( 'Edit Finish', 'atkore' ),
-  		'update_item'                => __( 'Update Finish', 'atkore' ),
-  		'separate_items_with_commas' => __( 'Separate Finish with commas', 'atkore' ),
-  		'search_items'               => __( 'Search Finishes', 'atkore' ),
-  		'add_or_remove_items'        => __( 'Add or remove Finish', 'atkore' ),
-  		'choose_from_most_used'      => __( 'Choose from the most used Finishes', 'atkore' ),
-  	);
-
-  	$capabilities = array(
-  		'manage_terms'               => 'manage_categories',
-  		'edit_terms'                 => 'manage_categories',
-  		'delete_terms'               => 'manage_categories',
-  		'assign_terms'               => 'edit_posts',
-  	);
-  	
-  	$rewrite = array(
-  	  'slug'                => 'finish',
-  	  'with_front'          => false,
-  	  'hierarchical'        => true,
-  	);
-
-  	$args = array(
-  		'labels'                     => $labels,
-  		'hierarchical'               => true,
-  		'public'                     => true,
-  		'show_ui'                    => true,
-  		'show_admin_column'          => true,
-  		'show_in_nav_menus'          => true,
-  		'show_tagcloud'              => true,
-  		'query_var'                  => 'finish',
-  		'rewrite'                    => $rewrite,
-  		//'capabilities'               => $capabilities,
-  	);
-
-  	register_taxonomy( 'product_finish', 'product', $args );
 }
 // Hook into the 'init' action
 add_action( 'init', 'atkore_post_type_products', 0 );
