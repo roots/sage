@@ -54,7 +54,7 @@ Edit `lib/init.php` to setup custom navigation menus and post thumbnail sizes.
 * HTML5 Boilerplate's markup along with ARIA roles and microformat
 * Bootstrap
 * [Grunt build script](http://roots.io/using-grunt-for-wordpress-theme-development/)
-* [Theme activation](http://roots.io/getting-started/#theme-activation)
+* [Theme activation](http://roots.io/roots-101/#theme-activation)
 * [Theme wrapper](http://roots.io/an-introduction-to-the-roots-theme-wrapper/)
 * Root relative URLs
 * Clean URLs (no more `/wp-content/`)
