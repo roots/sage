@@ -39,7 +39,7 @@ function atkore_featured_products_init() {
   			 <?php while ($pq->have_posts()) : $pq->the_post();?>
 					<div <?php if( $i == $startframe ) : $classes = array('item','active'); elseif ( $i == 1 ) : $classes = array('item',); elseif ( $i == 2 ) : $classes = array('item',); endif; post_class($classes)?>>
 						<div class="info">
-  						    <?php if ( has_post_thumbnail() ) { the_post_thumbnail('x-small', array('class' => 'featured-product')); } ?>
+  						    <?php if ( has_post_thumbnail() ) { the_post_thumbnail('x-small', array('class' => 'featured-product img-thumbnail')); } ?>
   						    <div class="sequence-content">
               		  <h4><?php echo get_the_title(); ?></h4>
               		  <p><?php echo get_the_excerpt(); ?></p>
