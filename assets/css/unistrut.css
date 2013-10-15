@@ -192,6 +192,10 @@ body.home .wrap{top:500px;position:absolute}
 .carousel-fade .carousel-inner .next.left,.carousel-fade .carousel-inner .prev.right{opacity:1}
 .carousel-fade .carousel-control{z-index:2}
 #carousel-home .item img{position:absolute;right:0;max-width:none;bottom:0}
+#carousel-home .item:nth-child(2) .carousel-caption{width:45%}
+#carousel-home .item:nth-child(3) .carousel-caption{width:35%}
+#carousel-home .item:nth-child(1) img{max-width:75%}
+#carousel-home .item:nth-child(3) img{max-width:65%}
 #carousel-home .carousel-caption{bottom:0;text-align:left;width:50%}
 #carousel-home .carousel-control{padding-top:230px}
 #carousel-home .carousel-caption.plain{padding:0;color:#fff;background-color:transparent;-moz-box-shadow:0 0 0;-webkit-box-shadow:0 0 0;box-shadow:0 0 0}
@@ -245,7 +249,7 @@ p.attribution,p.attribution a{color:#666}
 .resource .thumbnail img{margin:0 auto}
 .thumbnails>li:first-of-type,.thumbnails>li:nth-of-type(2n+1){margin-left:0;clear:left}
 .thumbnails>li:nth-of-type(3n+1),.thumbnails>li:nth-of-type(4n+1){clear:none}
-@media (min-width:768px){.brand-logo{margin:0 auto 30px auto} body.home .brand-logo{margin:20px auto 30px auto} .thumbnails>li:nth-of-type(2n+1),.thumbnails>li:nth-of-type(4n+1){clear:none} .thumbnails>li:first-of-type,.thumbnails>li:nth-of-type(3n+1){margin-left:0;clear:left} aside.sidebar{margin-top:-108px}}@media (min-width:992px){.brand-logo{margin:20px auto 30px auto} .thumbnails>li:nth-of-type(2n+1),.thumbnails>li:nth-of-type(4n+1){clear:none} .thumbnails>li:first-of-type,.thumbnails>li:nth-of-type(3n+1){margin-left:0;clear:left}}@media (min-width:1200px){.thumbnails>li:nth-of-type(2n+1),.thumbnails>li:nth-of-type(3n+1){clear:none} .thumbnails>li:first-of-type,.thumbnails>li:nth-of-type(4n+1){margin-left:0;clear:left}}.bootstrap-select.btn-group,.bootstrap-select.btn-group[class*="span"]{float:none;display:inline-block;margin-bottom:10px;margin-left:0}
+@media (min-width:768px){.brand-logo{margin:0 auto 30px auto} body.home .brand-logo{margin:20px auto 30px auto} .thumbnails>li:nth-of-type(2n+1),.thumbnails>li:nth-of-type(4n+1){clear:none} .thumbnails>li:first-of-type,.thumbnails>li:nth-of-type(3n+1){margin-left:0;clear:left} aside.sidebar{margin-top:-108px}}@media (min-width:992px){.brand-logo{margin:20px auto 30px auto} .thumbnails>li:nth-of-type(2n+1),.thumbnails>li:nth-of-type(4n+1){clear:none} .thumbnails>li:first-of-type,.thumbnails>li:nth-of-type(3n+1){margin-left:0;clear:left} #carousel-products .carousel-inner{overflow:visible} img.featured-product{width:90px;right:10px;height:90px} .panel .sequence-content p{font-size:12px}}@media (min-width:1200px){.thumbnails>li:nth-of-type(2n+1),.thumbnails>li:nth-of-type(3n+1){clear:none} .thumbnails>li:first-of-type,.thumbnails>li:nth-of-type(4n+1){margin-left:0;clear:left}}.bootstrap-select.btn-group,.bootstrap-select.btn-group[class*="span"]{float:none;display:inline-block;margin-bottom:10px;margin-left:0}
 .form-search .bootstrap-select.btn-group,.form-inline .bootstrap-select.btn-group,.form-horizontal .bootstrap-select.btn-group{margin-bottom:0}
 .bootstrap-select.form-control{padding:0;border:none}
 .bootstrap-select.btn-group.pull-right,.bootstrap-select.btn-group[class*="span"].pull-right,.row-fluid .bootstrap-select.btn-group[class*="span"].pull-right{float:right}
