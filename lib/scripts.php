@@ -22,7 +22,7 @@ function roots_scripts() {
   // It's kept in the header instead of footer to avoid conflicts with plugins.
   if (!is_admin() && current_theme_supports('jquery-cdn')) {
     wp_deregister_script('jquery');
-    wp_register_script('jquery', '//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js', false, null, false);
+    wp_register_script('jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js', false, null, false);
     add_filter('script_loader_src', 'roots_jquery_local_fallback', 10, 2);
   }
 
@@ -32,7 +32,7 @@ function roots_scripts() {
     wp_enqueue_script('comment-reply');
   }
 
-  wp_register_script('modernizr', get_template_directory_uri() . '/assets/js/vendor/modernizr-2.6.2.min.js', false, null, false);
+  wp_register_script('modernizr', get_stylesheet_directory_uri() . '/assets/js/vendor/modernizr-2.6.2.min.js', false, null, false);
 
   wp_register_script('roots_plugins', get_stylesheet_directory_uri() . '/assets/js/plugins.min.js', false, null, true);
   wp_register_script('roots_main', get_stylesheet_directory_uri() . '/assets/js/main.js', false, null, true);

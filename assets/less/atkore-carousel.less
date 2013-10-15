@@ -229,7 +229,7 @@ z-index: 6000;
 
 
 #brands-footer .carousel-control {
-  background: url('//www.atkore.com/media/arrow-right-green.png') center center no-repeat transparent;
+  background: url('/media/arrow-right-circle.png') center center no-repeat transparent;
 }
 
 #brands-footer .carousel-control.left {
@@ -280,7 +280,7 @@ z-index: 6000;
   }
 
   .brand-logo-wrap {
-    width: 40%;
+    width: 60%;
   }
 
   li[class^=brand-] .brand-logo-wrap {
@@ -314,19 +314,25 @@ z-index: 6000;
 
   #carousel-brands ul li a img {
     margin: auto;
-    -webkit-filter: grayscale(1);
-    -webkit-filter: grayscale(100%); -moz-filter: grayscale(100%);
-    -ms-filter: grayscale(100%); -o-filter: grayscale(100%);
-    filter: url(//www.atkore.com/assets/svg/desaturate.svg#greyscale);
-    filter: gray; filter: grayscale(100%);
+  filter: grayscale(100%);
+  -webkit-filter: grayscale(100%);
+  -moz-filter: grayscale(100%);
+  -ms-filter: grayscale(100%);
+  -o-filter: grayscale(100%);
+  filter: url('../assets/svg/desaturate.svg#greyscale');
+  filter: gray;
+  -webkit-filter: grayscale(1);
   }
   
   #carousel-brands ul li a:hover img {
-    -webkit-filter: none;
-    -webkit-filter: none; -moz-filter: none;
-    -ms-filter: none; -o-filter: none;
-    filter: none;
-    filter: none; filter: none;
+  filter: none;
+  -webkit-filter: none;
+  -moz-filter: none;
+  -ms-filter: none;
+  -o-filter: none;
+  filter: none;
+  filter: none;
+  -webkit-filter: none;
   }
   
 
