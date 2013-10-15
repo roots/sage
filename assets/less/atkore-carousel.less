@@ -80,19 +80,19 @@
           
   }
   
-  #carousel-home .item:nth-child(2) .carousel-caption {
+  body[class*="kaf-tech"] #carousel-home .item:nth-child(2) .carousel-caption {
 		width: 45%;
   }
   
-  #carousel-home .item:nth-child(3) .carousel-caption {
+  body[class*="kaf-tech"] #carousel-home .item:nth-child(3) .carousel-caption {
 		width: 35%;
   }
   
-  #carousel-home .item:nth-child(1) img {
+  body[class*="kaf-tech"] #carousel-home .item:nth-child(1) img {
 		 max-width: 75%;
 	}
 	
-	#carousel-home .item:nth-child(3) img {
+	body[class*="kaf-tech"] #carousel-home .item:nth-child(3) img {
 		 max-width: 65%;
 	}
 
@@ -249,7 +249,7 @@ z-index: 6000;
 }
 
 #brands-footer .carousel-control.right {
-
+  background: url('//assets.atkore.com/img/arrow-right-circle.png') center center no-repeat transparent!important;
 }
 
 .carousel-control-wrapper span {
@@ -315,7 +315,7 @@ z-index: 6000;
   .brand-acsuni-fab .brand-logo-wrap,
   .brand-acroba .brand-logo-wrap,
   .brand-atkore-international .brand-logo-wrap,
-  .brand-afc .brand-logo-wrap {
+  .brand-afc-cable-systems .brand-logo-wrap {
     margin: 10px auto;
   }
 
@@ -357,8 +357,10 @@ z-index: 6000;
   }
   
   .brand-logo-wrap {
-    width: 30%;
+    max-height: @brands-carousel-height-sm;
+    height: @brands-carousel-height-sm;
     margin: 0 auto;
+		width: 65%;
   }
   
   .brand-unistrut-construction .brand-logo-wrap,
@@ -382,7 +384,7 @@ z-index: 6000;
   .brand-acsuni-fab .brand-logo-wrap,
   .brand-acroba .brand-logo-wrap,
   .brand-atkore-international .brand-logo-wrap,
-  .brand-afc .brand-logo-wrap {
+  .brand-afc-cable-systems .brand-logo-wrap {
     margin-top: @margin-top-brand-logo-lg;
   }
   
@@ -393,6 +395,13 @@ z-index: 6000;
 }
 
 @media (min-width: @screen-md) {
+
+  .brand-logo-wrap {
+    max-height: @brands-carousel-height-md;
+    height: @brands-carousel-height-md;
+    width: 60%;
+  }
+
   #carousel-brands .item,
   #carousel-brands ul,
   #carousel-brands ul li,
@@ -434,7 +443,7 @@ z-index: 6000;
   .brand-acsuni-fab .brand-logo-wrap,
   .brand-acroba .brand-logo-wrap,
   .brand-atkore-international .brand-logo-wrap,
-  .brand-afc .brand-logo-wrap {
+  .brand-afc-cable-systems .brand-logo-wrap {
     margin-top: @margin-top-brand-logo-lg;
   }
 
