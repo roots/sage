@@ -19,7 +19,7 @@ function shoestrap_module_blog_options( $sections ) {
     'default'   => 0,
     'type'      => 'switch',
     'customizer'=> array(),
-    'fold'      => 'advanced_toggle'
+    'required'  => array('advanced_toggle','=',array('1'))
   );
 
   $fields[] = array( 
@@ -28,7 +28,7 @@ function shoestrap_module_blog_options( $sections ) {
     'id'        => 'blog_layout',
     'default'   => shoestrap_getVariable( 'layout', 1 ),
     'type'      => 'image_select',
-    'fold'      => 'blog_layout_toggle',
+    'required'  => array('blog_layout_toggle','=',array('1')),
     'customizer'=> array(),
     'options'   => array( 
       0         => REDUX_URL . 'assets/img/1c.png',

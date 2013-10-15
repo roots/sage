@@ -36,7 +36,7 @@ function shoestrap_module_featured_images_options( $sections ) {
     'desc'      => __( 'Display featured Images on posts. Default: OFF.', 'shoestrap' ),
     'id'        => 'feat_img_archive_custom_toggle',
     'default'   => 0,
-    'fold'      => 'feat_img_archive',
+    'required'  => array('feat_img_archive','=',array('1')),
     'off'       => __( 'Full Width', 'shoestrap' ),
     'on'        => __( 'Custom Dimensions', 'shoestrap' ),
     'type'      => 'switch',
@@ -51,7 +51,7 @@ function shoestrap_module_featured_images_options( $sections ) {
     'min'       => 100,
     'step'      => 1,
     'max'       => shoestrap_getVariable( 'screen_large_desktop' ),
-    'fold'      => 'feat_img_archive_custom_toggle',
+    'required'  => array('feat_img_archive_custom_toggle','=',array('1')),
     'edit'      => 1,
     'type'      => 'slider'
   );
@@ -65,7 +65,7 @@ function shoestrap_module_featured_images_options( $sections ) {
     'step'      => 1,
     'edit'      => 1,
     'max'       => shoestrap_getVariable( 'screen_large_desktop' ),
-    'fold'      => 'feat_img_archive_custom_toggle',
+    'required'  => array('feat_img_archive_custom_toggle','=',array('1')),
     'type'      => 'slider'
   );
 
@@ -86,7 +86,7 @@ function shoestrap_module_featured_images_options( $sections ) {
     'off'       => __( 'Full Width', 'shoestrap' ),
     'on'        => __( 'Custom Dimensions', 'shoestrap' ),
     'type'      => 'switch',
-    'fold'      => 'feat_img_post',
+    'required'  => array('feat_img_post','=',array('1')),
     'customizer'=> true,
   );
 
@@ -99,7 +99,7 @@ function shoestrap_module_featured_images_options( $sections ) {
     'step'      => 1,
     'max'       => shoestrap_getVariable( 'screen_large_desktop' ),
     'edit'      => 1,
-    'fold'      => 'feat_img_post_custom_toggle',
+    'required'  => array('feat_img_post_custom_toggle','=',array('1')),
     'type'      => 'slider'
   );
 
@@ -112,7 +112,7 @@ function shoestrap_module_featured_images_options( $sections ) {
     'step'      => 1,
     'max'       => shoestrap_getVariable( 'screen_large_desktop' ),
     'edit'      => 1,
-    'fold'      => 'feat_img_post_custom_toggle',
+    'required'  => array('feat_img_post_custom_toggle','=',array('1')),
     'type'      => 'slider'
   );   
 

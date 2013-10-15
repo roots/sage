@@ -26,7 +26,7 @@ function shoestrap_module_page_options( $sections ) {
     'id'        => 'page_layout',
     'default'   => shoestrap_getVariable( 'layout', 1 ),
     'type'      => 'image_select',
-    'fold'      => 'page_layout_toggle',
+    'required'  => array('page_layout_toggle','=',array('1')),
     'customizer'=> array(),
     'options'   => array(
       0         => REDUX_URL . 'assets/img/1c.png',

@@ -70,7 +70,7 @@ function shoestrap_module_jumbotron_options($sections) {
     'title'     => __('Upload a Custom Background Image', 'shoestrap'),
     'desc'      => __('Upload a Custom Background image using the media uploader, or define the URL directly.', 'shoestrap'),
     'id'        => 'jumbotron_background_image',
-    'fold'      => 'jumbotron_background_image_toggle',
+    'required'  => array('jumbotron_background_image_toggle','=',array('1')),
     'default'   => '',
     'type'      => 'media',
     'customizer'=> array(),
@@ -81,7 +81,7 @@ function shoestrap_module_jumbotron_options($sections) {
     'desc'      => __('Allows the user to modify how the background displays. By default it is full width and stretched to fill the page. Default: Full Width.', 'shoestrap'),
     'id'        => 'jumbotron_background_image_position_toggle',
     'default'   => 0,
-    'fold'      => 'jumbotron_background_image_toggle',
+    'required'  => array('jumbotron_background_image_toggle','=',array('1')),
     'on'        => __('Custom', 'shoestrap'),
     'off'       => __('Full Width', 'shoestrap'),
     'type'      => 'switch'
@@ -91,7 +91,7 @@ function shoestrap_module_jumbotron_options($sections) {
     'title'     => __('Background Repeat', 'shoestrap'),
     'desc'      => __('Select how (or if) the selected background should be tiled. Default: Tile', 'shoestrap'),
     'id'        => 'jumbotron_background_repeat',
-    'fold'      => 'jumbotron_background_image_position_toggle',
+    'required'  => array('jumbotron_background_image_position_toggle','=',array('1')),
     'default'   => 'repeat',
     'type'      => 'select',
     'options'   => array(
@@ -106,7 +106,7 @@ function shoestrap_module_jumbotron_options($sections) {
     'title'     => __('Background Alignment', 'shoestrap'),
     'desc'      => __('Select how the selected background should be horizontally aligned. Default: Left', 'shoestrap'),
     'id'        => 'jumbotron_background_position_x',
-    'fold'      => 'jumbotron_background_image_position_toggle',
+    'required'  => array('jumbotron_background_image_position_toggle','=',array('1')),
     'default'   => 'repeat',
     'type'      => 'select',
     'options'   => array(
@@ -128,7 +128,7 @@ function shoestrap_module_jumbotron_options($sections) {
     'title'     => __('Choose a Background Pattern', 'shoestrap'),
     'desc'      => __('Select a background pattern.', 'shoestrap'),
     'id'        => 'jumbotron_background_pattern',
-    'fold'      => 'jumbotron_background_pattern_toggle',
+    'required'  => array('jumbotron_background_pattern_toggle','=',array('1')),
     'default'   => '',
     'tiles'     => true,
     'type'      => 'image_select',
@@ -160,7 +160,7 @@ function shoestrap_module_jumbotron_options($sections) {
     'customizer'=> array(),
     'default'   => 0,
     'type'      => 'switch',
-    'fold'      => 'advanced_toggle'
+    'required'  => array('advanced_toggle','=',array('1'))
   );
 
   $fields[] = array(
@@ -170,7 +170,7 @@ function shoestrap_module_jumbotron_options($sections) {
     'customizer'=> array(),
     'default'   => 0,
     'type'      => 'switch',
-    'fold'      => 'advanced_toggle'
+    'required'  => array('advanced_toggle','=',array('1'))
   );
 
   $fields[] = array(
@@ -189,7 +189,7 @@ function shoestrap_module_jumbotron_options($sections) {
       'size'    => '30px' //this is the text size from preview box
     ),
     'type'      => 'typography',
-    'fold'      => 'advanced_toggle'
+    'required'  => array('advanced_toggle','=',array('1'))
   );
 
   $fields[] = array(
@@ -200,7 +200,7 @@ function shoestrap_module_jumbotron_options($sections) {
     'compiler'  => true,
     'type'      => 'switch',
     'customizer'=> array(),
-    'fold'      => 'advanced_toggle'
+    'required'  => array('advanced_toggle','=',array('1'))
   );
 
   $fields[] = array(
@@ -218,7 +218,7 @@ function shoestrap_module_jumbotron_options($sections) {
       'size'    => '30px' //this is the text size from preview box
     ),
     'type'      => 'typography',
-    'fold'      => 'font_jumbotron_heading_custom',
+    'required'  => array('font_jumbotron_heading_custom','=',array('1')),
   );
 
   $fields[] = array(
@@ -231,7 +231,7 @@ function shoestrap_module_jumbotron_options($sections) {
       'border-style'    => 'solid',
       'border-color'    => '#428bca',
     ),
-    'fold'      => 'advanced_toggle'
+    'required'  => array('advanced_toggle','=',array('1'))
   );
 
   $section['fields'] = $fields;

@@ -87,7 +87,7 @@ function shoestrap_module_layout_options( $sections ) {
     'title'     => __( 'Margin from top ( Works only in \'Boxed\' mode )', 'shoestrap' ),
     'desc'      => __( 'This will add a margin above the navbar. Useful if you\'ve enabled the \'Boxed\' mode above. Default: 0px', 'shoestrap' ),
     'id'        => 'navbar_margin_top',
-    'fold'      => 'navbar_boxed',
+    'required'  => array('navbar_boxed','=',array('1')),
     'default'   => 0,
     'min'       => 0,
     'step'      => 1,
@@ -101,7 +101,7 @@ function shoestrap_module_layout_options( $sections ) {
     'desc'      => __( 'How do you want your widgets to be displayed?', 'shoestrap' ),
     'id'        => 'widgets_mode',
     'default'   => 1,
-    'fold'      => 'advanced_toggle',
+    'required'  => array('advanced_toggle','=',array('1')),
     'off'       => __( 'Panel', 'shoestrap' ),
     'on'        => __( 'Well', 'shoestrap' ),
     'type'      => 'switch',
@@ -125,7 +125,7 @@ function shoestrap_module_layout_options( $sections ) {
     'min'       => 0,
     'max'       => 200,
     'type'      => 'slider',
-    'fold'      => 'advanced_toggle'
+    'required'  => array('advanced_toggle','=',array('1'))
   );
 
   $fields[] = array( 
@@ -136,7 +136,7 @@ function shoestrap_module_layout_options( $sections ) {
     'min'       => 0,
     'max'       => 200,
     'type'      => 'slider',
-    'fold'      => 'advanced_toggle'
+    'required'  => array('advanced_toggle','=',array('1'))
   );
 
   $fields[] = array( 
@@ -145,14 +145,14 @@ function shoestrap_module_layout_options( $sections ) {
     'id'        => 'custom_grid',
     'default'   => 0,
     'type'      => 'switch',
-    'fold'      => 'advanced_toggle'
+    'required'  => array('advanced_toggle','=',array('1'))
   );
 
   $fields[] = array( 
     'title'     => __( 'Small Screen / Tablet view', 'shoestrap' ),
     'desc'      => __( 'The width of Tablet screens. Default: 768px', 'shoestrap' ),
     'id'        => 'screen_tablet',
-    'fold'      => 'custom_grid',
+    'required'  => array('custom_grid','=',array('1')),
     'default'   => 768,
     'min'       => 620,
     'step'      => 2,
@@ -166,7 +166,7 @@ function shoestrap_module_layout_options( $sections ) {
     'title'     => __( 'Desktop Container Width', 'shoestrap' ),
     'desc'      => __( 'The width of normal screens. Default: 992px', 'shoestrap' ),
     'id'        => 'screen_desktop',
-    'fold'      => 'custom_grid',
+    'required'  => array('custom_grid','=',array('1')),
     'default'   => 992,
     'min'       => 620,
     'step'      => 2,
@@ -181,7 +181,7 @@ function shoestrap_module_layout_options( $sections ) {
     'title'     => __( 'Large Desktop Container Width', 'shoestrap' ),
     'desc'      => __( 'The width of Large Desktop screens. Default: 1200px', 'shoestrap' ),
     'id'        => 'screen_large_desktop',
-    'fold'      => 'custom_grid',
+    'required'  => array('custom_grid','=',array('1')),
     'default'   => 1200,
     'min'       => 620,
     'step'      => 2,
@@ -195,7 +195,7 @@ function shoestrap_module_layout_options( $sections ) {
     'title'     => __( 'Columns Gutter', 'shoestrap' ),
     'desc'      => __( 'The space between the columns in your grid. Default: 30px', 'shoestrap' ),
     'id'        => 'layout_gutter',
-    'fold'      => 'custom_grid',
+    'required'  => array('custom_grid','=',array('1')),
     'default'   => 30,
     'min'       => 0,
     'step'      => 2,

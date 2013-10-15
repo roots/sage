@@ -40,7 +40,7 @@ function shoestrap_module_typography_options( $sections ) {
     'compiler'  => true,
     'type'      => 'switch',
     'customizer'=> array(),
-    'fold'      => 'advanced_toggle'
+    'required'  => array('advanced_toggle','=',array('1')),
   );
 
   $fields[] = array( 
@@ -60,7 +60,7 @@ function shoestrap_module_typography_options( $sections ) {
       'font-size'   => '30px' //this is the text size from preview box
     ),
     'type'      => 'typography',
-    'fold'      => 'font_heading_custom',
+    'required'  => array('font_heading_custom','=',array('1')),
   );
 
   $fields[] = array( 
@@ -80,7 +80,7 @@ function shoestrap_module_typography_options( $sections ) {
       'font-size'   => '30px' //this is the text size from preview box
     ),
     'type'      => 'typography',
-    'fold'      => 'font_heading_custom',
+    'required'  => array('font_heading_custom','=',array('1')),    
   );
 
   $fields[] = array( 
@@ -100,7 +100,7 @@ function shoestrap_module_typography_options( $sections ) {
       'font-size'   => '30px' //this is the text size from preview box
     ),
     'type'      => 'typography',
-    'fold'      => 'font_heading_custom',
+    'required'  => array('font_heading_custom','=',array('1')),
   );
 
   $fields[] = array( 
@@ -120,7 +120,7 @@ function shoestrap_module_typography_options( $sections ) {
       'font-size'   => '30px' //this is the text size from preview box
     ),
     'type'      => 'typography',
-    'fold'      => 'font_heading_custom',
+    'required'  => array('font_heading_custom','=',array('1')),
   );
 
   $fields[] = array( 
@@ -140,7 +140,7 @@ function shoestrap_module_typography_options( $sections ) {
       'font-size'   => '30px' //this is the text size from preview box
     ),
     'type'      => 'typography',
-    'fold'      => 'font_heading_custom',
+    'required'  => array('font_heading_custom','=',array('1')),
   );
 
   $fields[] = array( 
@@ -160,7 +160,7 @@ function shoestrap_module_typography_options( $sections ) {
       'font-size'   => '30px' //this is the text size from preview box
     ),
     'type'      => 'typography',
-    'fold'      => 'font_heading_custom',
+    'required'  => array('font_heading_custom','=',array('1')),
   );
 
   $section['fields'] = $fields;
