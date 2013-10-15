@@ -34,18 +34,25 @@ class ReduxFramework_sortable {
         $class = (isset($this->field['class'])) ? $this->field['class'] : '';
         $options = $this->field['options'];
 
+        if (!empty($this->value)) {
+            foreach ($this->value as $k=>$v) {
+                if (!isset($options[$k])) {
+                    unset($this->value[$k]);
+                }
+            }
+        }
 
+        foreach ($options as $k=>$v) {
+            if (!isset($this->value[$k])) {
+                $this->value[$k] = $v;
+            }
+        }
 
         echo '<fieldset id="'.$this->field['id'].'" class="redux-sortable-container">';
 
             echo '<ul id="'.$this->field['id'].'-list" class="redux-sortable ' . $class . '">';
-            
-            $array = $options;
-            if (isset($this->value) && is_array($this->value)) {
-                $array = $this->value;
-            }
 
-            foreach ($array as $k => $nicename) {
+            foreach ($this->value as $k => $nicename) {
                 $value_display = isset($this->value[$k]) ? $this->value[$k] : '';
                 echo '<li>';
                 echo '<label for="' . $this->field['id'] . '[' . $k . ']"><strong>' . $options[$k] . ':</strong></label>';
@@ -66,7 +73,7 @@ class ReduxFramework_sortable {
                 echo '</li>';
             }
             echo '</ul>';
-            echo (isset($this->field['desc']) && !empty($this->field['desc']))?'<div class="description">'.$this->field['desc'].'</div>':'';
+            
         echo "</fieldset>";
     }
 

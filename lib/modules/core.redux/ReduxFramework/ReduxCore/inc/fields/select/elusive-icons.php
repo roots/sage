@@ -1,8 +1,8 @@
 <?php
-	// Array of Elusive Icons 
-	// Contributed by @WhatJustHappened 
-	// Last updated: 14 Sept. 2013
-
+// Array of Elusive Icons 
+// Contributed by @WhatJustHappened 
+// Last updated: 14 Sept. 2013
+function get_font_icons(){
 	$elusiveIcons = array(
 		'icon-glass',
 		'icon-music',
@@ -289,3 +289,6 @@
 		'icon-w3c',
 		'icon-css'
 	);
+	return $elusiveIcons;
+}
+add_filter('redux-font-icons' , 'get_font_icons');

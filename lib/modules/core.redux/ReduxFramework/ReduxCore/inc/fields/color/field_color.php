@@ -62,21 +62,15 @@ if( !class_exists( 'ReduxFramework_color' ) ) {
 		 */
 		public function render() {
 
-			echo '<fieldset id="'.$this->field['id'].'" class="redux-color-container">';
-				
-				echo '<input data-id="'.$this->field['id'].'" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . ']" id="' . $this->field['id'] . '-color" class="redux-color redux-color-init ' . $this->field['class'] . '"  type="text" value="' . $this->value . '"  data-default-color="' . $this->field['default'] . '" />';
+			echo '<input data-id="'.$this->field['id'].'" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . ']" id="' . $this->field['id'] . '-color" class="redux-color redux-color-init ' . $this->field['class'] . '"  type="text" value="' . $this->value . '"  data-default-color="' . $this->field['default'] . '" />';
 
-				if ( !isset( $this->field['transparent'] ) || $this->field['transparent'] !== false ) {
-					$tChecked = "";
-					if ( $this->value == "transparent" ) {
-						$tChecked = ' checked="checked"';
-					}
-					echo '<label for="' . $this->field['id'] . '-transparency" class="color-transparency-check"><input type="checkbox" class="checkbox color-transparency ' . $this->field['class'] . '" id="' . $this->field['id'] . '-transparency" data-id="'.$this->field['id'] . '-color" value="1"'.$tChecked.'> Transparent</label>';				
+			if ( !isset( $this->field['transparent'] ) || $this->field['transparent'] !== false ) {
+				$tChecked = "";
+				if ( $this->value == "transparent" ) {
+					$tChecked = ' checked="checked"';
 				}
-
-				echo ( isset( $this->field['desc'] ) && !empty( $this->field['desc'] ) ) ? '<div class="description">' . $this->field['desc'] . '</div>' : '';
-			
-			echo '</fieldset>';
+				echo '<label for="' . $this->field['id'] . '-transparency" class="color-transparency-check"><input type="checkbox" class="checkbox color-transparency ' . $this->field['class'] . '" id="' . $this->field['id'] . '-transparency" data-id="'.$this->field['id'] . '-color" value="1"'.$tChecked.'> Transparent</label>';				
+			}
 
 		}
 	

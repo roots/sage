@@ -61,19 +61,13 @@ if( !class_exists( 'ReduxFramework_editor' ) ) {
          * @return      void
          */
         public function render() {
-        	
-        	echo '<fieldset id="'.$this->field['id'].'" class="redux-editor-container">';
+    	
+            $settings = array(
+                'textarea_name' => $this->args['opt_name'] . '[' . $this->field['id'] . ']', 
+                'editor_class'  => $this->field['class']
+            );
 
-	            $settings = array(
-	                'textarea_name' => $this->args['opt_name'] . '[' . $this->field['id'] . ']', 
-	                'editor_class'  => $this->field['class']
-	            );
-
-	            wp_editor( $this->value, $this->field['id'].'-editor', $settings );
-	        
-	            echo ( isset( $this->field['desc'] ) && !empty( $this->field['desc'] ) ) ? '<div class="description">' . $this->field['desc'] . '</div>' : '';
-	        	
-        	echo '</fieldset>';
+            wp_editor( $this->value, 'redux-editor', $settings );
 
         }
 

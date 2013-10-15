@@ -35,31 +35,25 @@ class ReduxFramework_radio extends ReduxFramework{
 	*/
 	function render(){
 		
-		echo '<fieldset id="'.$this->field['id'].'" class="redux-radio-container">';
-		
-			if (!empty($this->field['options'])) {
+		if (!empty($this->field['options'])) {
 
-				echo '<ul>';
+			echo '<ul>';
+			
+			foreach($this->field['options'] as $k => $v){
 				
-				foreach($this->field['options'] as $k => $v){
-					
-					echo '<li>';
-					echo '<label for="'.$this->field['id'].'_'.array_search($k,array_keys($this->field['options'])).'">';
-					echo '<input type="radio" class="radio' . $this->field['class'] . '" id="'.$this->field['id'].'_'.array_search($k,array_keys($this->field['options'])).'" name="'.$this->args['opt_name'].'['.$this->field['id'].']" value="'.$k.'" '.checked($this->value, $k, false).'/>';
-					echo ' <span>'.$v.'</span>';
-					echo '</label>';
-					echo '</li>';
-					
-				}//foreach
-					
-				echo '</ul>';		
+				echo '<li>';
+				echo '<label for="'.$this->field['id'].'_'.array_search($k,array_keys($this->field['options'])).'">';
+				echo '<input type="radio" class="radio' . $this->field['class'] . '" id="'.$this->field['id'].'_'.array_search($k,array_keys($this->field['options'])).'" name="'.$this->args['opt_name'].'['.$this->field['id'].']" value="'.$k.'" '.checked($this->value, $k, false).'/>';
+				echo ' <span>'.$v.'</span>';
+				echo '</label>';
+				echo '</li>';
+				
+			}//foreach
+				
+			echo '</ul>';		
 
-			}
+		}
 
-		echo '</fieldset>';
-
-		echo (isset($this->field['desc']) && !empty($this->field['desc']))?'<div class="description">'.$this->field['desc'].'</div>':'';
-		
 	}//function
 	
 }//class

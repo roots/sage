@@ -89,39 +89,37 @@ if( !class_exists( 'ReduxFramework_border' ) ) {
                 $this->field['max'] = 10;
        
             
-            echo '<fieldset id="'.$this->field['id'].'" class="redux-border-container">';
 
-	            $options = array(
-	                ''          => 'None',
-	                'solid'     => 'Solid',
-	                'dashed'    => 'Dashed',
-	                'dotted'    => 'Dotted'
-	            );
+            $options = array(
+                ''          => 'None',
+                'solid'     => 'Solid',
+                'dashed'    => 'Dashed',
+                'dotted'    => 'Dotted'
+            );
 
-	            echo '<div class="redux-border">';
-	        
-    	            echo '<select original-title="' . __( 'Border size', 'redux-framework' ) . '" id="' . $this->field['id'] . '[border-width]" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][border-width]" class="tips redux-border-size mini' . $this->field['class'] . '" rows="6" data-id="'.$this->field['id'].'">';
+            echo '<div class="redux-border">';
+        
+	            echo '<select original-title="' . __( 'Border size', 'redux-framework' ) . '" id="' . $this->field['id'] . '[border-width]" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][border-width]" class="tips redux-border-size mini' . $this->field['class'] . '" rows="6" data-id="'.$this->field['id'].'">';
 
-    	            for( $k = $this->field['min']; $k <= $this->field['max']; $k++ ) {
-    	                echo '<option value="' . $k.$this->field['units'] . '"' . selected( $this->value['border-width'], $k.$this->field['units'], false) . '>' . $k . '</option>';
-    	            }
+	            for( $k = $this->field['min']; $k <= $this->field['max']; $k++ ) {
+	                echo '<option value="' . $k.$this->field['units'] . '"' . selected( $this->value['border-width'], $k.$this->field['units'], false) . '>' . $k . '</option>';
+	            }
 
-    	            echo '</select>';
+	            echo '</select>';
 
-    	            echo '<select original-title="' . __( 'Border style', 'redux-framework' ) . '" id="' . $this->field['id'] . '[border-style]" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][border-style]" class="tips redux-border-style' . $this->field['class'] . '" rows="6" data-id="'.$this->field['id'].'">';
+	            echo '<select original-title="' . __( 'Border style', 'redux-framework' ) . '" id="' . $this->field['id'] . '[border-style]" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][border-style]" class="tips redux-border-style' . $this->field['class'] . '" rows="6" data-id="'.$this->field['id'].'">';
 
-    	            foreach( $options as $k => $v ) {
-    	                echo '<option value="' . $k . '"' . selected( $this->value['border-style'], $k, false ) . '>' . $v . '</option>';
-    	            }
+	            foreach( $options as $k => $v ) {
+	                echo '<option value="' . $k . '"' . selected( $this->value['border-style'], $k, false ) . '>' . $v . '</option>';
+	            }
 
-    	            echo '</select>';   
+	            echo '</select>';   
 
-    	            echo '<input name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][border-color]" id="' . $this->field['id'] . '-border" class="redux-border-color redux-color redux-color-init ' . $this->field['class'] . '"  type="text" value="' . $this->value['border-color'] . '"  data-default-color="' . $this->field['border-color'] . '" data-id="'.$this->field['id'].'" />';
-    	            
-    	            echo ( isset( $this->field['desc'] ) && !empty( $this->field['desc'] ) ) ? '<div class="description">' . $this->field['desc'] . '</div>' : '';
+	            echo '<input name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][border-color]" id="' . $this->field['id'] . '-border" class="redux-border-color redux-color redux-color-init ' . $this->field['class'] . '"  type="text" value="' . $this->value['border-color'] . '"  data-default-color="' . $this->field['border-color'] . '" data-id="'.$this->field['id'].'" />';
 	            
-	            echo '</div>';
-            echo '</fieldset>';
+	        
+            
+            echo '</div>';
         }
     
         /**
@@ -158,5 +156,20 @@ if( !class_exists( 'ReduxFramework_border' ) ) {
             );
 
         }
+
+        public function output() {
+
+            $keys = implode(", ", $this->output);
+            $style = '<style type="text/css" class="redux-'.$this->field['type'].'">';
+                $style .= $keys." {";
+                foreach($this->value as $key=>$value) {
+                    $style .= $key.': '.$value.'; ';
+                }
+                $style .= '}';
+            $style .= '</style>';
+            echo $style;
+            
+        }
+
     }
 }

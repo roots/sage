@@ -108,42 +108,38 @@ if( !class_exists( 'ReduxFramework_media' ) ) {
                 $hide = '';
             }   
 
-            echo '<fieldset id="'.$this->field['id'].'" class="'.$this->field['class'].'">';
+            echo '<input class="' . $hide . 'upload ' . $this->field['class'] . '" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][url]" id="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][url]" value="' . $this->value['url'] . '" readonly="readonly" />';
+            echo '<input type="hidden" class="upload-id ' . $this->field['class'] . '" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][id]" id="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][id]" value="' . $this->value['id'] . '" />';
+            echo '<input type="hidden" class="upload-height" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][height]" id="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][height]" value="' . $this->value['height'] . '" />';
+            echo '<input type="hidden" class="upload-width" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][width]" id="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][width]" value="' . $this->value['width'] . '" />';
 
-                echo '<input class="' . $hide . 'upload ' . $this->field['class'] . '" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][url]" id="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][url]" value="' . $this->value['url'] . '" readonly="readonly" />';
-                echo '<input type="hidden" class="upload-id ' . $this->field['class'] . '" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][id]" id="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][id]" value="' . $this->value['id'] . '" />';
-                echo '<input type="hidden" class="upload-height" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][height]" id="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][height]" value="' . $this->value['height'] . '" />';
-                echo '<input type="hidden" class="upload-width" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][width]" id="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][width]" value="' . $this->value['width'] . '" />';
+            //Preview
+            $hide = '';
 
-                //Preview
-                $hide = '';
+            if( (isset( $this->field['preview'] ) && $this->field['preview'] === false) || empty( $this->value['url'] ) ) {
+                $hide = 'hide ';
+            }
 
-                if( (isset( $this->field['preview'] ) && $this->field['preview'] === false) || empty( $this->value['url'] ) ) {
-                    $hide = 'hide ';
-                }
+            echo '<div class="' . $hide . 'screenshot">';
+            echo '<a class="of-uploaded-image" href="' . $this->value['url'] . '">';
+            echo '<img class="redux-option-image" id="image_' . $this->field['id'] . '" src="' . $this->value['url'] . '" alt="" />';
+            echo '</a>';
+            echo '</div>';
+        
+            //Upload controls DIV
+            echo '<div class="upload_button_div">';
 
-                echo '<div class="' . $hide . 'screenshot">';
-                echo '<a class="of-uploaded-image" href="' . $this->value['url'] . '">';
-                echo '<img class="redux-option-image" id="image_' . $this->field['id'] . '" src="' . $this->value['url'] . '" alt="" />';
-                echo '</a>';
-                echo '</div>';
+            //If the user has WP3.5+ show upload/remove button
+            echo '<span class="button media_upload_button" id="' . $this->field['id'] . '-media">' . __( 'Upload', 'redux-framework' ) . '</span>';
             
-                //Upload controls DIV
-                echo '<div class="upload_button_div">';
+            $hide = '';
+            if( empty( $this->value['url'] ) || $this->value['url'] == '' )
+                $hide =' hide';
 
-                //If the user has WP3.5+ show upload/remove button
-                echo '<span class="button media_upload_button" id="' . $this->field['id'] . '">' . __( 'Upload', 'redux-framework' ) . '</span>';
-                
-                $hide = '';
-                if( empty( $this->value['url'] ) || $this->value['url'] == '' )
-                    $hide =' hide';
+            echo '<span class="button remove-image' . $hide . '" id="reset_' . $this->field['id'] . '" rel="' . $this->field['id'] . '">' . __( 'Remove', 'redux-framework' ) . '</span>';
 
-                echo '<span class="button remove-image' . $hide . '" id="reset_' . $this->field['id'] . '" rel="' . $this->field['id'] . '">' . __( 'Remove', 'redux-framework' ) . '</span>';
-
-                echo '</div>';
+            echo '</div>';    
             
-                echo ( isset( $this->field['desc'] ) && !empty( $this->field['desc'] ) ) ? '<div class="description">' . $this->field['desc'] . '</div>' : '';
-            echo '</fieldset';
         }
 
         /**
@@ -167,7 +163,7 @@ if( !class_exists( 'ReduxFramework_media' ) ) {
 
             wp_enqueue_script(
                 'redux-field-media-js',
-                REDUX_URL . 'inc/fields/media/field_media.min.js',
+                REDUX_URL . 'inc/fields/media/field_media.js',
                 array( 'jquery', 'wp-color-picker' ),
                 time(),
                 true

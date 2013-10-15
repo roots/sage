@@ -167,7 +167,7 @@ if (!class_exists('ReduxFramework_slides')) {
                 echo '</ul></div></div>';
             }
             echo '</div><a href="javascript:void(0);" class="button redux-slides-add button-primary" rel-id="' . $this->field['id'] . '-ul" rel-name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][slide_title][]">' . __('Add Slide', 'redux-framework') . '</a><br/>';
-            echo (isset($this->field['desc']) && !empty($this->field['desc'])) ? '<div class="description">' . $this->field['desc'] . '</div>' : '';
+            
         }
 
         /**
@@ -180,8 +180,23 @@ if (!class_exists('ReduxFramework_slides')) {
          * @return      void
          */
 
-        public function enqueue()
-        {
+        public function enqueue() {
+
+
+            wp_enqueue_script(
+                'redux-field-media-js',
+                REDUX_URL . 'inc/fields/media/field_media.js',
+                array( 'jquery', 'wp-color-picker' ),
+                time(),
+                true
+            );
+
+            wp_enqueue_style(
+                'redux-field-media-css',
+                REDUX_URL . 'inc/fields/media/field_media.css',
+                time(),
+                true
+            );            
 
             wp_enqueue_script(
                 'redux-field-slides-js',

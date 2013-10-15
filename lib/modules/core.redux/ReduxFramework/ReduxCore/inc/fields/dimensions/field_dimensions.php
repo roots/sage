@@ -111,8 +111,6 @@ class ReduxFramework_dimensions extends ReduxFramework{
 				
 				echo '</select></div>';
 
-				echo ( isset( $this->field['desc'] ) && !empty( $this->field['desc'] ) ) ? '<div class="description">' . $this->field['desc'] . '</div>' : '';
-
 			//endif;
 
 	  	echo "</fieldset>";

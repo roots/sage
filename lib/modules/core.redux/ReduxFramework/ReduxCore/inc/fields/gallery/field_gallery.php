@@ -61,8 +61,6 @@ if (!class_exists('ReduxFramework_gallery')) {
          */
         public function render() {
 
-            echo '<fieldset id="' . $this->field['id'] . '" class="redux-gallery-container">';
-
             echo '<a href="#" onclick="return false;" class="gallery-attachments button button-large">' . __('Add/Edit Gallery', 'so-panels') . '</a>';
             echo '<input type="hidden" class="gallery_values ' . $this->field['class'] . '" value="' . esc_attr($this->value) . '" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . ']" />';
 
@@ -78,8 +76,6 @@ if (!class_exists('ReduxFramework_gallery')) {
             endif;
             echo '</div>';
 
-            echo ( isset($this->field['desc']) && !empty($this->field['desc']) ) ? '<div class="description">' . $this->field['desc'] . '</div>' : '';
-            echo '</fieldset';
         }
 
         /**

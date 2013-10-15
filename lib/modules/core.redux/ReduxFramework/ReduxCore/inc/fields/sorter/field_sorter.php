@@ -83,9 +83,10 @@ class ReduxFramework_sorter extends ReduxFramework {
 				$sortlists[$key] = $sortlist;
 		    }
 
-			echo '<fieldset id="'.$this->field['id'].'" class="redux-sorter-container sorter">';
+			
 
 			    if ($sortlists) {
+			    	echo '<fieldset id="'.$this->field['id'].'" class="redux-sorter-container sorter">';
 
 					foreach ($sortlists as $group=>$sortlist) {
 
@@ -109,11 +110,12 @@ class ReduxFramework_sorter extends ReduxFramework {
 
 					    echo '</ul>';
 					}
+					echo '</fieldset>';
 			    }
 		    }
 
-	        echo (isset($this->field['desc']) && !empty($this->field['desc']))?'<div class="description">'.$this->field['desc'].'</div>':'';
-        echo '</fieldset>';
+	        
+        
     }
 
     function enqueue() {

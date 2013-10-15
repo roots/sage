@@ -47,6 +47,7 @@ class ReduxFramework_spacing extends ReduxFramework{
 			'mode' => '',
 			'bottom'=>'',
 			'left'=>'',
+			'mode'=>'padding',
 			'units'=>'px',
 		);
 
@@ -70,7 +71,6 @@ class ReduxFramework_spacing extends ReduxFramework{
 			$this->field['mode'] = $this->field['mode']."-";
 		}
 		
-	  	echo '<fieldset id="'.$this->field['id'].'" class="redux-spacing-container">';
 
 			/**
 			Top
@@ -146,7 +146,6 @@ class ReduxFramework_spacing extends ReduxFramework{
 
 
 
-	  	echo "</fieldset>";
 
 
 	}//function
@@ -180,5 +179,39 @@ class ReduxFramework_spacing extends ReduxFramework{
 			
 		
 	}//function
+
+    public function output() {
+
+    	if ( !empty( $this->field['mode'] ) && !in_array($this->field['mode'], array( 'padding', 'absolute', 'margin', '' ) ) ) {
+    		unset( $this->field['mode'] );
+    	}
+
+    	if ( !isset( $this->field['mode'] ) ) {
+    		$this->field['mode'] = "padding";
+    	}
+
+    	if ( $this->field['mode'] == "absolute" ) {
+    		unset( $this->field['mode'] );
+    	}
+
+
+//absolute, padding, margin
+        $keys = implode(", ", $this->output);
+        $style = '<style type="text/css" class="redux-'.$this->field['type'].'">';
+            $style .= $keys." {";
+            foreach($this->value as $key=>$value) {
+            	if ($key == "units") {
+            		continue;
+            	}
+            	if ( !empty( $this->field['mode'] ) ) {
+            		$style .= $this->field['mode'].'-';
+            	}
+                $style .= $key.': '.$value.'; ';
+            }
+            $style .= '}';
+        $style .= '</style>';
+        echo $style;
+        
+    }	
 	
 }//class

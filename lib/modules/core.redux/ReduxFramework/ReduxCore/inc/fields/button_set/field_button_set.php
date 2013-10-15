@@ -63,7 +63,7 @@ if( !class_exists( 'ReduxFramework_button_set' ) ) {
          */
         public function render() {
         
-            echo '<fieldset id="'.$this->field['id'].'" class="buttonset ui-buttonset">';
+            echo '<div class="buttonset ui-buttonset">';
             
             foreach( $this->field['options'] as $k => $v ) {
                 
@@ -72,9 +72,7 @@ if( !class_exists( 'ReduxFramework_button_set' ) ) {
                 
             }
             
-            echo ( isset( $this->field['desc'] ) && !empty( $this->field['desc'] ) ) ? '<div class="description">' . $this->field['desc'] . '</div>' : '';
-        
-            echo '</fieldset>';
+            echo '</div>';
         
         }
     

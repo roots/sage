@@ -51,6 +51,8 @@ if (!class_exists('ReduxFramework_group')) {
             $this->field = $field;
             $this->value = $value;
             $this->parent = $parent;
+
+            add_filter('redux-support-group' , array($this,'support_multi'),100,3);
         }
 
         /**
@@ -105,7 +107,7 @@ if (!class_exists('ReduxFramework_group')) {
 
                     ob_start();
                     $this->parent->_field_input($field, $value);
-                    $_field = $this->support_multi(ob_get_contents(), $field, $x);
+                    $_field = apply_filters('redux-support-group',ob_get_contents(), $field, $x);
                     ob_end_clean();
                     echo $_field;
                     
@@ -120,10 +122,11 @@ if (!class_exists('ReduxFramework_group')) {
             echo '</div><a href="javascript:void(0);" class="button redux-groups-add button-primary" rel-id="' . $this->field['id'] . '-ul" rel-name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][slide_title][]">' . __('Add', 'redux-framework') .' '.$this->field['groupname']. '</a><br/>';
 
             echo '</div>';
-            echo ( isset($this->field['desc']) && !empty($this->field['desc']) ) ? '<div class="description">' . $this->field['desc'] . '</div>' : '';
+            
         }
 
         function support_multi($content, $field, $sort) {
+            return $content;
             //convert name
             $name = $this->parent->args['opt_name'] . '[' . $field['id'] . ']';
             $content = str_replace($name, $name . '[' . $sort . ']', $content);

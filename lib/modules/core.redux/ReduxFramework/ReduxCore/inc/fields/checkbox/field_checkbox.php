@@ -70,8 +70,6 @@ if( !class_exists( 'ReduxFramework_checkbox' ) ) {
          */
         public function render() {
 
-            echo '<fieldset id="'.$this->field['id'].'" class="redux-checkbox-container">';
-
 	            if( !empty( $this->field['options'] ) && ( is_array( $this->field['options'] ) || is_array( $this->field['default'] ) ) ) {
 	                echo '<ul>';
 	            	if ( !isset( $this->value ) ) {
@@ -97,19 +95,14 @@ if( !class_exists( 'ReduxFramework_checkbox' ) ) {
 
 	                echo '</ul>';   
 
-	                echo ( isset( $this->field['desc'] ) && !empty( $this->field['desc'] ) ) ? '<div class="description">' . $this->field['desc'] . '</div>' : '';
-
 	            } else {
 
 	                echo ( $this->field['desc'] != '' ) ? ' <label for="' . strtr($this->args['opt_name'] . '[' . $this->field['id'] . ']', array('[' => '_', ']' => '')) . '">' : '';
 	        
 	                echo '<input type="checkbox" id="' . strtr($this->args['opt_name'] . '[' . $this->field['id'] . ']', array('[' => '_', ']' => '')) . '" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . ']" value="1" class="checkbox ' . $this->field['class'] . '" ' . checked( $this->value, '1', false ) . '/>';
 	        
-	                echo ( isset( $this->field['desc'] ) && !empty( $this->field['desc'] ) ) ? ' ' . $this->field['desc'] . '</label>' : '';
-
 	            }
 
-            echo '</fieldset>';         
         }
     }
 }
