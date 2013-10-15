@@ -14,8 +14,6 @@
  */
 function roots_scripts() {
   wp_enqueue_style('roots_bootstrap', get_stylesheet_directory_uri() . '/assets/css/bootstrap.css', false, null);
-  wp_enqueue_style('bootstrap_select', get_stylesheet_directory_uri() . '/assets/css/bootstrap-select.min.css', false, null);
-  wp_enqueue_style('tablecloth', get_stylesheet_directory_uri() . '/assets/css/tablecloth.css', false, null);
   wp_enqueue_style('roots_app', get_stylesheet_directory_uri() . '/assets/css/app.css', false, null);
   wp_enqueue_style('unistrut', get_stylesheet_directory_uri() . '/assets/css/unistrut.css', false, null);
 
@@ -30,27 +28,18 @@ function roots_scripts() {
 
 // SCRIPTS
 
-  //wp_register_script('googlemaps', '//maps.googleapis.com/maps/api/js?sensor=false', false, null, false);
-  //wp_register_script('atkore_maps', get_stylesheet_directory_uri() . '/assets/js/map.min.js', false, null, false);
-
   if (is_single() && comments_open() && get_option('thread_comments')) {
     wp_enqueue_script('comment-reply');
   }
 
   wp_register_script('modernizr', get_template_directory_uri() . '/assets/js/vendor/modernizr-2.6.2.min.js', false, null, false);
 
-  wp_register_script('roots_plugins', get_stylesheet_directory_uri() . '/assets/js/plugins.js', false, null, true);
-  wp_register_script('tablecloth', get_stylesheet_directory_uri() . '/assets/js/vendor/jquery.tablecloth.js', false, null, true);
-  wp_register_script('bootstrap_select', get_stylesheet_directory_uri() . '/assets/js/vendor/bootstrap-select.min.js', false, null, true);
+  wp_register_script('roots_plugins', get_stylesheet_directory_uri() . '/assets/js/plugins.min.js', false, null, true);
   wp_register_script('roots_main', get_stylesheet_directory_uri() . '/assets/js/main.js', false, null, true);
 
   wp_enqueue_script('jquery');
-  //wp_enqueue_script('googlemaps');
-  //wp_enqueue_script('atkore_maps');
   wp_enqueue_script('modernizr');
   wp_enqueue_script('roots_plugins');
-  wp_enqueue_script('tablecloth');
-  wp_enqueue_script('bootstrap_select');
   wp_enqueue_script('roots_main');
 
 }

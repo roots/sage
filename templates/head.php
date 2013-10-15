@@ -12,6 +12,8 @@
 
   <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
   <script type="text/javascript" src="<?php echo get_stylesheet_directory_uri() ?>/assets/js/map.js"></script>
+  <script type="text/javascript" src="<?php echo get_stylesheet_directory_uri() ?>/assets/js/store-locator.compiled.js"></script>
+  <script type="text/javascript" src="<?php echo get_stylesheet_directory_uri() ?>/assets/js/panel.js"></script>
   
   <?php } ?>
 
