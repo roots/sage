@@ -31,7 +31,7 @@ function shoestrap_module_layout_options( $sections ) {
     'title'     => __( 'Layout', 'shoestrap' ),
     'desc'      => __( 'Select main content and sidebar arrangement. Choose between 1, 2 or 3 column layout.', 'shoestrap' ),
     'id'        => 'layout',
-    'default'   => shoestrap_getVariable( 'layout', 1 ),
+    'default'   => 1,
     'type'      => 'image_select',
     'customizer'=> array(),
     'options'   => array( 

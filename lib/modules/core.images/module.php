@@ -50,7 +50,7 @@ function shoestrap_module_featured_images_options( $sections ) {
     'default'   => 550,
     'min'       => 100,
     'step'      => 1,
-    'max'       => 1000,
+    'max'       => shoestrap_getVariable( 'screen_large_desktop' ),
     'fold'      => 'feat_img_archive_custom_toggle',
     'edit'      => 1,
     'type'      => 'slider'
@@ -64,7 +64,7 @@ function shoestrap_module_featured_images_options( $sections ) {
     'min'       => 50,
     'step'      => 1,
     'edit'      => 1,
-    'max'       => 1000,
+    'max'       => shoestrap_getVariable( 'screen_large_desktop' ),
     'fold'      => 'feat_img_archive_custom_toggle',
     'type'      => 'slider'
   );
@@ -97,7 +97,7 @@ function shoestrap_module_featured_images_options( $sections ) {
     'default'   => 550,
     'min'       => 100,
     'step'      => 1,
-    'max'       => 1000,
+    'max'       => shoestrap_getVariable( 'screen_large_desktop' ),
     'edit'      => 1,
     'fold'      => 'feat_img_post_custom_toggle',
     'type'      => 'slider'
@@ -110,7 +110,7 @@ function shoestrap_module_featured_images_options( $sections ) {
     'default'   => 330,
     'min'       => 50,
     'step'      => 1,
-    'max'       => 1000,
+    'max'       => shoestrap_getVariable( 'screen_large_desktop' ),
     'edit'      => 1,
     'fold'      => 'feat_img_post_custom_toggle',
     'type'      => 'slider'
