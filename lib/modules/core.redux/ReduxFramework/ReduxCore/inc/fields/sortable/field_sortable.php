@@ -48,33 +48,41 @@ class ReduxFramework_sortable {
             }
         }
 
-        echo '<fieldset id="'.$this->field['id'].'" class="redux-sortable-container">';
 
-            echo '<ul id="'.$this->field['id'].'-list" class="redux-sortable ' . $class . '">';
+        echo '<ul id="'.$this->field['id'].'-list" class="redux-sortable ' . $class . '">';
 
-            foreach ($this->value as $k => $nicename) {
-                $value_display = isset($this->value[$k]) ? $this->value[$k] : '';
-                echo '<li>';
-                echo '<label for="' . $this->field['id'] . '[' . $k . ']"><strong>' . $options[$k] . ':</strong></label>';
-                $checked = "";
-                $name = $this->args['opt_name'] . '[' . $this->field['id'] . '][' . $k . ']';
-
-                if ( $this->field['mode'] == "checkbox") {
-                    if (!empty($this->value[$k])) {
-                        $checked = 'checked="checked" ';
-                    }
-                    $class .= " checkbox_sortable";
-
-                    echo '<input type="hidden" name="'.$name.'" id="'.$this->field['id'].'-'.$k.'-hidden" value="'.$value_display.'" />';
-                    $name = "";
-                }
-                echo '<input rel="'.$this->field['id'].'-'.$k.'-hidden" class="' . $class . '" '.$checked.'type="'.$this->field['mode'].'" id="' . $this->field['id'] . '[' . $k . ']" name="'.$name.'" value="' . esc_attr($value_display) . '" placeholder="' . $nicename . '" />';
-                echo '<span class="compact drag"><i class="icon-move icon-large"></i></span>';
-                echo '</li>';
-            }
-            echo '</ul>';
+        foreach ($this->value as $k => $nicename) {
+            $value_display = isset($this->value[$k]) ? $this->value[$k] : '';
+            echo '<li>';
             
-        echo "</fieldset>";
+            $checked = "";
+            $name = $this->args['opt_name'] . '[' . $this->field['id'] . '][' . $k . ']';
+
+            if ( $this->field['mode'] == "checkbox") {
+                if (!empty($this->value[$k])) {
+                    $checked = 'checked="checked" ';
+                }
+                $class .= " checkbox_sortable";
+
+                echo '<input type="hidden" name="'.$name.'" id="'.$this->field['id'].'-'.$k.'-hidden" value="'.$value_display.'" />';
+                $name = "";
+            }
+            if ( $this->field['mode'] == "checkbox") {
+                echo '<div class="checkbox-container">';
+            }
+            echo '<input rel="'.$this->field['id'].'-'.$k.'-hidden" class="' . $class . '" '.$checked.'type="'.$this->field['mode'].'" id="' . $this->field['id'] . '[' . $k . ']" name="'.$name.'" value="' . esc_attr($value_display) . '" placeholder="' . $nicename . '" />';
+            if ( $this->field['mode'] == "checkbox") {
+                echo '<label for="' . $this->field['id'] . '[' . $k . ']"><strong>' . $options[$k] . '</strong></label>';
+
+            }
+            echo '<span class="compact drag"><i class="icon-move icon-large"></i></span>';
+            if ( $this->field['mode'] == "checkbox") {
+                echo '</div>';
+            }
+            echo '</li>';
+        }
+        echo '</ul>';
+            
     }
 
     function enqueue() {
