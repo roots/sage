@@ -241,7 +241,7 @@ li[class^=brand-] .brand-logo-wrap{margin-top:0}
 #panel{width:25%;float:left;margin-right:10px}
 #panel .feature-filter label{width:130px}
 p.attribution,p.attribution a{color:#666}
-.resource .thumbnail{text-align:center}
+@media (max-width:480px){body.home #top{top:450px;position:absolute;margin:0 auto;width:100%} body.home footer.content-info{position:absolute;top:900px;width:100%} body.home #carousel-home .carousel-caption{bottom:20%;text-align:left;width:inherit;left:0;right:0;padding:0 10%}}.resource .thumbnail{text-align:center}
 .resource .thumbnail img{margin:0 auto}
 .thumbnails>li:first-of-type,.thumbnails>li:nth-of-type(2n+1){margin-left:0;clear:left}
 .thumbnails>li:nth-of-type(3n+1),.thumbnails>li:nth-of-type(4n+1){clear:none}
