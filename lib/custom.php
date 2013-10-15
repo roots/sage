@@ -2,13 +2,13 @@
 /**
  * Atkore functions
  */
-define( 'ACF_LITE' , true );
-include_once('/wp-content/plugins/advanced-custom-fields/acf.php' );
+//define( 'ACF_LITE' , true );
+//include_once('/wp-content/plugins/advanced-custom-fields/acf.php' );
 // Add-ons 
-include_once('/wp-content/plugins/acf-repeater/acf-repeater.php');
+//include_once('/wp-content/plugins/acf-repeater/acf-repeater.php');
 //include_once('/wp-content/plugins/acf-gallery/acf-gallery.php');
-include_once('/wp-content/plugins/acf-flexible-content/acf-flexible-content.php');
-include_once('/wp-content/plugins/acf-options-page/acf-options-page.php' );
+//include_once('/wp-content/plugins/acf-flexible-content/acf-flexible-content.php');
+//include_once('/wp-content/plugins/acf-options-page/acf-options-page.php' );
 
 require_once locate_template('/lib/custom/post-types.php');
 require_once locate_template('/lib/custom/acf/options-branding.php');
@@ -30,6 +30,8 @@ require_once locate_template('/lib/custom/filter-ptags-on-images.php');
 require_once locate_template('/lib/custom/widgets.php');
 require_once locate_template('/lib/custom/wp-advanced-search/wpas.php');
 require_once locate_template('/lib/custom/woocommerce/theme-wrapper.php');
+
+//require_once locate_template('/lib/custom/pdfjs/wp_pdfjs.php');
 
 add_filter( 'woocommerce_enqueue_styles', '__return_false' );
 remove_action( 'woocommerce_product_tabs', 'woocommerce_product_reviews_tab', 30);
