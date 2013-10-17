@@ -1,0 +1,32 @@
+/*---------------------------------------------------------------------------------------------
+*
+*	Flexible Content
+*	
+*---------------------------------------------------------------------------------------------*/
+table.acf_input table.acf_cf_meta {
+	width: 100%;
+	border: 0 none;
+}
+
+table.acf_input table.acf_cf_meta td {
+	border: 0 none;
+	width: 33%;
+}
+
+table.acf_input table.acf_cf_meta label {
+	width: 20%;
+	color: #333333;
+	font-weight: bold;
+}
+
+table.acf_input table.acf_cf_meta input {
+	width: 80%;
+}
+
+table.acf_input table.acf_cf_meta select {
+	width: 75%;
+}
+
+.acf_fc_reorder {
+	cursor: move;
+}

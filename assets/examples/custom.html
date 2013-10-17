@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Store locator with customisations</title>
+    <script type="text/javascript" charset="utf-8"
+      src="//maps.googleapis.com/maps/api/js?sensor=false&libraries=places"></script>
+    <script type="text/javascript" charset="utf-8"
+      src="//ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js">
+    </script>
+    <script type="text/javascript" charset="utf-8"
+      src="http://google-maps-utility-library-v3.googlecode.com/svn/trunk/infobubble/src/infobubble-compiled.js"></script>
+    <script type="text/javascript" charset="utf-8"
+      src="../js/store-locator.compiled.js"></script>
+    <script src="medicare-static-ds.js" type="text/javascript"></script>
+    <script src="custom.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="../css/storelocator.css">
+    <style type="text/css">
+      body { font-family: sans-serif; }
+      #map-canvas, #panel { height: 500px; }
+      #panel { width: 300px; float: left; margin-right: 10px; }
+      #panel .feature-filter label { width: 130px; }
+      p.attribution, p.attribution a { color: #666; }
+      .store .hours { color: grey; }
+    </style>
+  </head>
+  <body>
+    <h1>Medicare offices</h1>
+    <div id="panel"></div>
+    <div id="map-canvas"></div>
+    <p class="attribution">Medicare location data from <a href="http://data.gov.au/66">data.gov.au</a>, licensed under <a href="http://creativecommons.org/licenses/by/2.5/au/">CC-BY 2.5</a></p>
+  </body>
+</html>

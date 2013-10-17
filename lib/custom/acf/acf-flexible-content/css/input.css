@@ -1,0 +1,237 @@
+/*
+*  Flexible Content field Style
+*
+*  @description: 
+*  @since: 3.6
+*  @created: 30/01/13
+*/
+
+.acf_flexible_content {
+	position: relative;
+}
+
+.acf_flexible_content .layout {
+	margin: 20px 0 0;
+	position: relative;
+	
+	border-radius: 0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    background: #fff;
+}
+
+.acf_flexible_content .layout:first-child {
+	margin-top: 0;
+}
+
+.acf_flexible_content .layout .menu-item-handle {
+	display: block;
+	position: relative;
+	border-radius: 0;
+	width: auto;
+	margin: 0;
+	
+	color: #666;
+}
+
+.acf_flexible_content .layout .fc-delete-layout {
+	width: 35px;
+	height: 35px;
+
+	position: absolute;
+	top: 1px;
+	right: 1px;
+	z-index: 1;
+	
+	display: none;
+	
+	background: url(../images/sprite.png) no-repeat scroll -7px -8px;
+}
+
+.acf_flexible_content .layout:hover .fc-delete-layout {
+	display: block;
+}
+
+.acf_flexible_content .layout .fc-delete-layout:hover {
+	background-position: -7px -58px;
+}
+
+.acf_flexible_content .clones {
+	display: none;
+}
+
+.acf_flexible_content > .values > .ui-sortable-placeholder {
+	visibility: visible !important;
+	border: #DFDFDF dashed 2px;
+	border-radius: 3px;
+	box-shadow: none;
+}
+
+.acf_flexible_content .layout > .acf-input-table {
+	border-top: 0 none;
+	box-shadow: none;
+}
+
+.acf_flexible_content .layout > .acf-input-table > tbody > tr {
+	background: #fff;
+}
+
+.acf_flexible_content .layout > .acf-input-table > thead > tr > th {
+	background: none repeat scroll 0 0 #F9F9F9;
+    border-bottom: 1px solid #E1E1E1;
+    border-right: 1px solid #E1E1E1;
+    
+    font-size: 12px;
+	font-family: sans-serif;
+	font-weight: bold;
+}
+
+.acf_flexible_content .layout > .acf-input-table > thead > tr > th:last-child {
+	border-right: 0 none;
+}
+
+.acf-popup {
+	position: absolute;
+	bottom: 25px;
+	right: 0;
+	background: #464646;
+	border-radius: 5px;
+	box-shadow: rgba(0,0,0,0.4) 0 0 13px;
+	margin-right: -5px;
+	min-width: 135px;
+	z-index: 99;
+	
+	-webkit-transition: bottom 0.25s 0s, opacity 0.25s 0s ease-in-out, visibility 0s linear 0.25s;
+	-moz-transition: bottom 0.25s 0s, opacity 0.25s 0s ease-in-out, visibility 0s linear 0.25s;
+	-o-transition: bottom 0.25s 0s, opacity 0.25s 0s ease-in-out, visibility 0s linear 0.25s; 	
+	transition: bottom 0.25s 0s, opacity 0.25s 0s ease-in-out, visibility 0s linear 0.25s; 
+	
+	visibility: hidden;
+	opacity: 0;
+}
+
+.acf-popup.active {
+	visibility: visible;
+	opacity: 1;
+	bottom: 35px;
+	
+	-webkit-transition-delay:0s;
+	-moz-transition-delay:0s;
+	-o-transition-delay:0s;
+	transition-delay:0s;
+}
+
+.has-right-sidebar .acf-popup {
+	margin-right: -17px;
+}
+
+.has-right-sidebar .acf-popup .bit {
+	right: 37px;
+}
+
+.acf-popup .bit {
+	position: absolute;
+	width: 56px;
+	height: 25px;
+	right: 17px;
+	margin: -1px 0 0;
+	background: url(../images/sprite.png) -50px -25px no-repeat;
+}
+
+.acf-popup ul {
+	display: block;
+	margin: 0;
+	padding: 0;
+}
+
+.acf-popup ul li {
+	display: block;
+	position: relative;
+	margin: -1px 0 0;
+	padding: 0;
+	float: none;
+}
+
+.acf-popup ul li:first-child {
+	margin: 0;
+}
+
+.acf-popup ul li a {
+	color: #cccccc;
+	font-size: 12px;
+	line-height: 14px;
+	padding: 7px 11px;
+	display: block;
+	border: 1px solid #333333;
+	box-shadow: inset 0 1px 0 #555555;
+	text-decoration: none;
+	min-width: 100px;
+	text-shadow: 0 1px 0 #222222;
+}
+
+.acf-popup ul li:first-child a {
+	border-radius: 5px 5px 0 0;
+}
+
+.acf-popup ul li:last-child a {
+	border-radius: 0 0 5px 5px;
+}
+
+.acf-popup ul li:only-child a {
+	border-radius: 5px 5px 5px 5px;
+}
+
+.acf-popup ul li a:hover {
+	background: #2b8ab8;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#3da0d1', endColorstr='#1f81b2'); /* for IE */
+	background: -webkit-gradient(linear, left top, left bottom, from(#3da0d1), to(#1f81b2)); /* for webkit browsers */
+	background: -moz-linear-gradient(top,  #3da0d1, #1f81b2); /* for firefox 3.6+ */
+    border: 1px solid #195572 !important;
+    box-shadow: inset 0 1px 0 #54b5e5;
+    color: #FFFFFF;
+    text-shadow: 0 1px 0 #082e40;
+    cursor: pointer;
+}
+
+.acf_flexible_content .no_value_message {
+	padding: 19px;
+	border: #ccc dashed 1px;
+	text-align: center;
+}
+
+#acf_color_picker {
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: none;
+	background: #fff;
+	border: #AAAAAA solid 1px;
+	border-radius: 4px;
+}
+
+.acf_flexible_content .flexible-footer {
+	margin: 20px 0 0;
+}
+
+
+/*--------------------------------------------------------------------------
+*
+*	Retina
+*	
+*-------------------------------------------------------------------------*/
+
+@media
+only screen and (-webkit-min-device-pixel-ratio: 2),
+only screen and (   min--moz-device-pixel-ratio: 2),
+only screen and (     -o-min-device-pixel-ratio: 2/1),
+only screen and (        min-device-pixel-ratio: 2),
+only screen and (                min-resolution: 192dpi),
+only screen and (                min-resolution: 2dppx) { 
+	
+	.acf_flexible_content .layout .fc-delete-layout,
+	.acf-popup .bit {
+		background-image: url(../images/sprite@2x.png);
+		background-size: 250px 250px;
+	}
+
+	
+}

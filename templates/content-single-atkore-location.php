@@ -7,7 +7,7 @@
            <div class="pull-left wrap-featured-image"><?php the_post_thumbnail('thumbnail', array('class' => 'img-thumbnail')); ?></div>
       <?php } ?>
       <?php if ( 'atkore_location' ==  $queried_post_type ){ ?>
-      <?php get_template_part('templates/content', 'map'); ?>
+      <?php the_leaflet_field( 'leaflet_info' ); ?>
       <?php } ?>
       <?php the_content(); ?>
       <?php get_template_part('templates/content', 'tabbable'); ?>

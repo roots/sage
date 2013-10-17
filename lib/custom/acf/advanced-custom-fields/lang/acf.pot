@@ -1,0 +1,1672 @@
+# Copyright (C) 2013 
+# This file is distributed under the same license as the  package.
+msgid ""
+msgstr ""
+"Project-Id-Version:  \n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/advanced-custom-fields\n"
+"POT-Creation-Date: 2013-07-09 03:49:07+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2013-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: acf.php:325
+msgid "Field&nbsp;Groups"
+msgstr ""
+
+#: acf.php:326 core/controllers/field_groups.php:214
+msgid "Advanced Custom Fields"
+msgstr ""
+
+#: acf.php:327
+msgid "Add New"
+msgstr ""
+
+#: acf.php:328
+msgid "Add New Field Group"
+msgstr ""
+
+#: acf.php:329
+msgid "Edit Field Group"
+msgstr ""
+
+#: acf.php:330
+msgid "New Field Group"
+msgstr ""
+
+#: acf.php:331
+msgid "View Field Group"
+msgstr ""
+
+#: acf.php:332
+msgid "Search Field Groups"
+msgstr ""
+
+#: acf.php:333
+msgid "No Field Groups found"
+msgstr ""
+
+#: acf.php:334
+msgid "No Field Groups found in Trash"
+msgstr ""
+
+#: acf.php:447 core/views/meta_box_options.php:96
+msgid "Custom Fields"
+msgstr ""
+
+#: acf.php:465 acf.php:468
+msgid "Field group updated."
+msgstr ""
+
+#: acf.php:466
+msgid "Custom field updated."
+msgstr ""
+
+#: acf.php:467
+msgid "Custom field deleted."
+msgstr ""
+
+#. translators: %s: date and time of the revision
+#: acf.php:470
+msgid "Field group restored to revision from %s"
+msgstr ""
+
+#: acf.php:471
+msgid "Field group published."
+msgstr ""
+
+#: acf.php:472
+msgid "Field group saved."
+msgstr ""
+
+#: acf.php:473
+msgid "Field group submitted."
+msgstr ""
+
+#: acf.php:474
+msgid "Field group scheduled for."
+msgstr ""
+
+#: acf.php:475
+msgid "Field group draft updated."
+msgstr ""
+
+#: acf.php:610
+msgid "Thumbnail"
+msgstr ""
+
+#: acf.php:611
+msgid "Medium"
+msgstr ""
+
+#: acf.php:612
+msgid "Large"
+msgstr ""
+
+#: acf.php:613
+msgid "Full"
+msgstr ""
+
+#: core/actions/export.php:23 core/views/meta_box_fields.php:58
+msgid "Error"
+msgstr ""
+
+#: core/actions/export.php:30
+msgid "No ACF groups selected"
+msgstr ""
+
+#: core/api.php:1093
+msgid "Update"
+msgstr ""
+
+#: core/api.php:1094
+msgid "Post updated"
+msgstr ""
+
+#: core/controllers/addons.php:42 core/controllers/field_groups.php:311
+msgid "Add-ons"
+msgstr ""
+
+#: core/controllers/addons.php:130 core/controllers/field_groups.php:432
+msgid "Repeater Field"
+msgstr ""
+
+#: core/controllers/addons.php:131
+msgid "Create infinite rows of repeatable data with this versatile interface!"
+msgstr ""
+
+#: core/controllers/addons.php:137 core/controllers/field_groups.php:440
+msgid "Gallery Field"
+msgstr ""
+
+#: core/controllers/addons.php:138
+msgid "Create image galleries in a simple and intuitive interface!"
+msgstr ""
+
+#: core/controllers/addons.php:144 core/controllers/export.php:380
+#: core/controllers/field_groups.php:448
+msgid "Options Page"
+msgstr ""
+
+#: core/controllers/addons.php:145
+msgid "Create global data to use throughout your website!"
+msgstr ""
+
+#: core/controllers/addons.php:151
+msgid "Flexible Content Field"
+msgstr ""
+
+#: core/controllers/addons.php:152
+msgid "Create unique designs with a flexible content layout manager!"
+msgstr ""
+
+#: core/controllers/addons.php:161
+msgid "Gravity Forms Field"
+msgstr ""
+
+#: core/controllers/addons.php:162
+msgid "Creates a select field populated with Gravity Forms!"
+msgstr ""
+
+#: core/controllers/addons.php:168
+msgid "Date & Time Picker"
+msgstr ""
+
+#: core/controllers/addons.php:169
+msgid "jQuery date & time picker"
+msgstr ""
+
+#: core/controllers/addons.php:175
+msgid "Location Field"
+msgstr ""
+
+#: core/controllers/addons.php:176
+msgid "Find addresses and coordinates of a desired location"
+msgstr ""
+
+#: core/controllers/addons.php:182
+msgid "Contact Form 7 Field"
+msgstr ""
+
+#: core/controllers/addons.php:183
+msgid "Assign one or more contact form 7 forms to a post"
+msgstr ""
+
+#: core/controllers/addons.php:193
+msgid "Advanced Custom Fields Add-Ons"
+msgstr ""
+
+#: core/controllers/addons.php:196
+msgid ""
+"The following Add-ons are available to increase the functionality of the "
+"Advanced Custom Fields plugin."
+msgstr ""
+
+#: core/controllers/addons.php:197
+msgid ""
+"Each Add-on can be installed as a separate plugin (receives updates) or "
+"included in your theme (does not receive updates)."
+msgstr ""
+
+#: core/controllers/addons.php:219 core/controllers/addons.php:240
+msgid "Installed"
+msgstr ""
+
+#: core/controllers/addons.php:221
+msgid "Purchase & Install"
+msgstr ""
+
+#: core/controllers/addons.php:242 core/controllers/field_groups.php:425
+#: core/controllers/field_groups.php:434 core/controllers/field_groups.php:442
+#: core/controllers/field_groups.php:450 core/controllers/field_groups.php:458
+msgid "Download"
+msgstr ""
+
+#: core/controllers/export.php:50 core/controllers/export.php:159
+msgid "Export"
+msgstr ""
+
+#: core/controllers/export.php:216
+msgid "Export Field Groups"
+msgstr ""
+
+#: core/controllers/export.php:221
+msgid "Field Groups"
+msgstr ""
+
+#: core/controllers/export.php:222
+msgid "Select the field groups to be exported"
+msgstr ""
+
+#: core/controllers/export.php:239 core/controllers/export.php:252
+msgid "Export to XML"
+msgstr ""
+
+#: core/controllers/export.php:242 core/controllers/export.php:267
+msgid "Export to PHP"
+msgstr ""
+
+#: core/controllers/export.php:253
+msgid ""
+"ACF will create a .xml export file which is compatible with the native WP "
+"import plugin."
+msgstr ""
+
+#: core/controllers/export.php:254
+msgid ""
+"Imported field groups <b>will</b> appear in the list of editable field "
+"groups. This is useful for migrating fields groups between Wp websites."
+msgstr ""
+
+#: core/controllers/export.php:256
+msgid "Select field group(s) from the list and click \"Export XML\""
+msgstr ""
+
+#: core/controllers/export.php:257
+msgid "Save the .xml file when prompted"
+msgstr ""
+
+#: core/controllers/export.php:258
+msgid "Navigate to Tools &raquo; Import and select WordPress"
+msgstr ""
+
+#: core/controllers/export.php:259
+msgid "Install WP import plugin if prompted"
+msgstr ""
+
+#: core/controllers/export.php:260
+msgid "Upload and import your exported .xml file"
+msgstr ""
+
+#: core/controllers/export.php:261
+msgid "Select your user and ignore Import Attachments"
+msgstr ""
+
+#: core/controllers/export.php:262
+msgid "That's it! Happy WordPressing"
+msgstr ""
+
+#: core/controllers/export.php:268
+msgid "ACF will create the PHP code to include in your theme."
+msgstr ""
+
+#: core/controllers/export.php:269 core/controllers/export.php:310
+msgid ""
+"Registered field groups <b>will not</b> appear in the list of editable field "
+"groups. This is useful for including fields in themes."
+msgstr ""
+
+#: core/controllers/export.php:270 core/controllers/export.php:311
+msgid ""
+"Please note that if you export and register field groups within the same WP, "
+"you will see duplicate fields on your edit screens. To fix this, please move "
+"the original field group to the trash or remove the code from your functions."
+"php file."
+msgstr ""
+
+#: core/controllers/export.php:272
+msgid "Select field group(s) from the list and click \"Create PHP\""
+msgstr ""
+
+#: core/controllers/export.php:273 core/controllers/export.php:302
+msgid "Copy the PHP code generated"
+msgstr ""
+
+#: core/controllers/export.php:274 core/controllers/export.php:303
+msgid "Paste into your functions.php file"
+msgstr ""
+
+#: core/controllers/export.php:275 core/controllers/export.php:304
+msgid "To activate any Add-ons, edit and use the code in the first few lines."
+msgstr ""
+
+#: core/controllers/export.php:295
+msgid "Export Field Groups to PHP"
+msgstr ""
+
+#: core/controllers/export.php:300 core/fields/tab.php:65
+msgid "Instructions"
+msgstr ""
+
+#: core/controllers/export.php:309
+msgid "Notes"
+msgstr ""
+
+#: core/controllers/export.php:316
+msgid "Include in theme"
+msgstr ""
+
+#: core/controllers/export.php:317
+msgid ""
+"The Advanced Custom Fields plugin can be included within a theme. To do so, "
+"move the ACF plugin inside your theme and add the following code to your "
+"functions.php file:"
+msgstr ""
+
+#: core/controllers/export.php:323
+msgid ""
+"To remove all visual interfaces from the ACF plugin, you can use a constant "
+"to enable lite mode. Add the following code to your functions.php file "
+"<b>before</b> the include_once code:"
+msgstr ""
+
+#: core/controllers/export.php:331
+msgid "Back to export"
+msgstr ""
+
+#: core/controllers/export.php:352
+msgid ""
+"/**\n"
+" *  Install Add-ons\n"
+" *  \n"
+" *  The following code will include all 4 premium Add-Ons in your theme.\n"
+" *  Please do not attempt to include a file which does not exist. This will "
+"produce an error.\n"
+" *  \n"
+" *  All fields must be included during the 'acf/register_fields' action.\n"
+" *  Other types of Add-ons (like the options page) can be included outside "
+"of this action.\n"
+" *  \n"
+" *  The following code assumes you have a folder 'add-ons' inside your "
+"theme.\n"
+" *\n"
+" *  IMPORTANT\n"
+" *  Add-ons may be included in a premium theme as outlined in the terms and "
+"conditions.\n"
+" *  However, they are NOT to be included in a premium / free plugin.\n"
+" *  For more information, please read http://www.advancedcustomfields.com/"
+"terms-conditions/\n"
+" */"
+msgstr ""
+
+#: core/controllers/export.php:370 core/controllers/field_group.php:366
+#: core/controllers/field_group.php:428 core/controllers/field_groups.php:148
+msgid "Fields"
+msgstr ""
+
+#: core/controllers/export.php:384
+msgid ""
+"/**\n"
+" *  Register Field Groups\n"
+" *\n"
+" *  The register_field_group function accepts 1 array which holds the "
+"relevant data to register a field group\n"
+" *  You may edit the array as you see fit. However, this may result in "
+"errors if the array is not compatible with ACF\n"
+" */"
+msgstr ""
+
+#: core/controllers/export.php:435
+msgid "No field groups were selected"
+msgstr ""
+
+#: core/controllers/field_group.php:367
+msgid "Location"
+msgstr ""
+
+#: core/controllers/field_group.php:368
+msgid "Options"
+msgstr ""
+
+#: core/controllers/field_group.php:430
+msgid "Show Field Key:"
+msgstr ""
+
+#: core/controllers/field_group.php:431 core/fields/page_link.php:138
+#: core/fields/page_link.php:159 core/fields/post_object.php:328
+#: core/fields/post_object.php:349 core/fields/select.php:224
+#: core/fields/select.php:243 core/fields/taxonomy.php:341
+#: core/fields/user.php:285 core/fields/wysiwyg.php:228
+#: core/views/meta_box_fields.php:207 core/views/meta_box_fields.php:230
+msgid "No"
+msgstr ""
+
+#: core/controllers/field_group.php:432 core/fields/page_link.php:137
+#: core/fields/page_link.php:158 core/fields/post_object.php:327
+#: core/fields/post_object.php:348 core/fields/select.php:223
+#: core/fields/select.php:242 core/fields/taxonomy.php:340
+#: core/fields/user.php:284 core/fields/wysiwyg.php:227
+#: core/views/meta_box_fields.php:206 core/views/meta_box_fields.php:229
+msgid "Yes"
+msgstr ""
+
+#: core/controllers/field_group.php:609
+msgid "Front Page"
+msgstr ""
+
+#: core/controllers/field_group.php:610
+msgid "Posts Page"
+msgstr ""
+
+#: core/controllers/field_group.php:611
+msgid "Top Level Page (parent of 0)"
+msgstr ""
+
+#: core/controllers/field_group.php:612
+msgid "Parent Page (has children)"
+msgstr ""
+
+#: core/controllers/field_group.php:613
+msgid "Child Page (has parent)"
+msgstr ""
+
+#: core/controllers/field_group.php:621
+msgid "Default Template"
+msgstr ""
+
+#: core/controllers/field_group.php:713 core/controllers/field_group.php:734
+#: core/controllers/field_group.php:741 core/fields/file.php:181
+#: core/fields/image.php:166 core/fields/page_link.php:109
+#: core/fields/post_object.php:274 core/fields/post_object.php:298
+#: core/fields/relationship.php:553 core/fields/relationship.php:577
+#: core/fields/user.php:229
+msgid "All"
+msgstr ""
+
+#: core/controllers/field_groups.php:147
+msgid "Title"
+msgstr ""
+
+#: core/controllers/field_groups.php:216 core/controllers/field_groups.php:257
+msgid "Changelog"
+msgstr ""
+
+#: core/controllers/field_groups.php:217
+msgid "See what's new in"
+msgstr ""
+
+#: core/controllers/field_groups.php:217
+msgid "version"
+msgstr ""
+
+#: core/controllers/field_groups.php:219
+msgid "Resources"
+msgstr ""
+
+#: core/controllers/field_groups.php:221
+msgid "Getting Started"
+msgstr ""
+
+#: core/controllers/field_groups.php:222
+msgid "Field Types"
+msgstr ""
+
+#: core/controllers/field_groups.php:223
+msgid "Functions"
+msgstr ""
+
+#: core/controllers/field_groups.php:224
+msgid "Actions"
+msgstr ""
+
+#: core/controllers/field_groups.php:225 core/fields/relationship.php:596
+msgid "Filters"
+msgstr ""
+
+#: core/controllers/field_groups.php:226
+msgid "'How to' guides"
+msgstr ""
+
+#: core/controllers/field_groups.php:227
+msgid "Tutorials"
+msgstr ""
+
+#: core/controllers/field_groups.php:232
+msgid "Created by"
+msgstr ""
+
+#: core/controllers/field_groups.php:235
+msgid "Vote"
+msgstr ""
+
+#: core/controllers/field_groups.php:236
+msgid "Follow"
+msgstr ""
+
+#: core/controllers/field_groups.php:248
+msgid "Welcome to Advanced Custom Fields"
+msgstr ""
+
+#: core/controllers/field_groups.php:249
+msgid "Thank you for updating to the latest version!"
+msgstr ""
+
+#: core/controllers/field_groups.php:249
+msgid "is more polished and enjoyable than ever before. We hope you like it."
+msgstr ""
+
+#: core/controllers/field_groups.php:256
+msgid "What’s New"
+msgstr ""
+
+#: core/controllers/field_groups.php:259
+msgid "Download Add-ons"
+msgstr ""
+
+#: core/controllers/field_groups.php:313
+msgid "Activation codes have grown into plugins!"
+msgstr ""
+
+#: core/controllers/field_groups.php:314
+msgid ""
+"Add-ons are now activated by downloading and installing individual plugins. "
+"Although these plugins will not be hosted on the wordpress.org repository, "
+"each Add-on will continue to receive updates in the usual way."
+msgstr ""
+
+#: core/controllers/field_groups.php:320
+msgid "All previous Add-ons have been successfully installed"
+msgstr ""
+
+#: core/controllers/field_groups.php:324
+msgid "This website uses premium Add-ons which need to be downloaded"
+msgstr ""
+
+#: core/controllers/field_groups.php:324
+msgid "Download your activated Add-ons"
+msgstr ""
+
+#: core/controllers/field_groups.php:329
+msgid ""
+"This website does not use premium Add-ons and will not be affected by this "
+"change."
+msgstr ""
+
+#: core/controllers/field_groups.php:339
+msgid "Easier Development"
+msgstr ""
+
+#: core/controllers/field_groups.php:341
+msgid "New Field Types"
+msgstr ""
+
+#: core/controllers/field_groups.php:343
+msgid "Taxonomy Field"
+msgstr ""
+
+#: core/controllers/field_groups.php:344
+msgid "User Field"
+msgstr ""
+
+#: core/controllers/field_groups.php:345
+msgid "Email Field"
+msgstr ""
+
+#: core/controllers/field_groups.php:346
+msgid "Password Field"
+msgstr ""
+
+#: core/controllers/field_groups.php:348
+msgid "Custom Field Types"
+msgstr ""
+
+#: core/controllers/field_groups.php:349
+msgid ""
+"Creating your own field type has never been easier! Unfortunately, version 3 "
+"field types are not compatible with version 4."
+msgstr ""
+
+#: core/controllers/field_groups.php:350
+msgid "Migrating your field types is easy, please"
+msgstr ""
+
+#: core/controllers/field_groups.php:350
+msgid "follow this tutorial"
+msgstr ""
+
+#: core/controllers/field_groups.php:350
+msgid "to learn more."
+msgstr ""
+
+#: core/controllers/field_groups.php:352
+msgid "Actions &amp; Filters"
+msgstr ""
+
+#: core/controllers/field_groups.php:353
+msgid ""
+"All actions & filters have received a major facelift to make customizing ACF "
+"even easier! Please"
+msgstr ""
+
+#: core/controllers/field_groups.php:353
+msgid "read this guide"
+msgstr ""
+
+#: core/controllers/field_groups.php:353
+msgid "to find the updated naming convention."
+msgstr ""
+
+#: core/controllers/field_groups.php:355
+msgid "Preview draft is now working!"
+msgstr ""
+
+#: core/controllers/field_groups.php:356
+msgid "This bug has been squashed along with many other little critters!"
+msgstr ""
+
+#: core/controllers/field_groups.php:356
+msgid "See the full changelog"
+msgstr ""
+
+#: core/controllers/field_groups.php:360
+msgid "Important"
+msgstr ""
+
+#: core/controllers/field_groups.php:362
+msgid "Database Changes"
+msgstr ""
+
+#: core/controllers/field_groups.php:363
+msgid ""
+"Absolutely <strong>no</strong> changes have been made to the database "
+"between versions 3 and 4. This means you can roll back to version 3 without "
+"any issues."
+msgstr ""
+
+#: core/controllers/field_groups.php:365
+msgid "Potential Issues"
+msgstr ""
+
+#: core/controllers/field_groups.php:366
+msgid ""
+"Do to the sizable changes surounding Add-ons, field types and action/"
+"filters, your website may not operate correctly. It is important that you "
+"read the full"
+msgstr ""
+
+#: core/controllers/field_groups.php:366
+msgid "Migrating from v3 to v4"
+msgstr ""
+
+#: core/controllers/field_groups.php:366
+msgid "guide to view the full list of changes."
+msgstr ""
+
+#: core/controllers/field_groups.php:369
+msgid "Really Important!"
+msgstr ""
+
+#: core/controllers/field_groups.php:369
+msgid ""
+"If you updated the ACF plugin without prior knowledge of such changes, "
+"please roll back to the latest"
+msgstr ""
+
+#: core/controllers/field_groups.php:369
+msgid "version 3"
+msgstr ""
+
+#: core/controllers/field_groups.php:369
+msgid "of this plugin."
+msgstr ""
+
+#: core/controllers/field_groups.php:374
+msgid "Thank You"
+msgstr ""
+
+#: core/controllers/field_groups.php:375
+msgid ""
+"A <strong>BIG</strong> thank you to everyone who has helped test the version "
+"4 beta and for all the support I have received."
+msgstr ""
+
+#: core/controllers/field_groups.php:376
+msgid "Without you all, this release would not have been possible!"
+msgstr ""
+
+#: core/controllers/field_groups.php:380
+msgid "Changelog for"
+msgstr ""
+
+#: core/controllers/field_groups.php:396
+msgid "Learn more"
+msgstr ""
+
+#: core/controllers/field_groups.php:402
+msgid "Overview"
+msgstr ""
+
+#: core/controllers/field_groups.php:404
+msgid ""
+"Previously, all Add-ons were unlocked via an activation code (purchased from "
+"the ACF Add-ons store). New to v4, all Add-ons act as separate plugins which "
+"need to be individually downloaded, installed and updated."
+msgstr ""
+
+#: core/controllers/field_groups.php:406
+msgid ""
+"This page will assist you in downloading and installing each available Add-"
+"on."
+msgstr ""
+
+#: core/controllers/field_groups.php:408
+msgid "Available Add-ons"
+msgstr ""
+
+#: core/controllers/field_groups.php:410
+msgid "The following Add-ons have been detected as activated on this website."
+msgstr ""
+
+#: core/controllers/field_groups.php:423
+msgid "Name"
+msgstr ""
+
+#: core/controllers/field_groups.php:424
+msgid "Activation Code"
+msgstr ""
+
+#: core/controllers/field_groups.php:456
+msgid "Flexible Content"
+msgstr ""
+
+#: core/controllers/field_groups.php:466
+msgid "Installation"
+msgstr ""
+
+#: core/controllers/field_groups.php:468
+msgid "For each Add-on available, please perform the following:"
+msgstr ""
+
+#: core/controllers/field_groups.php:470
+msgid "Download the Add-on plugin (.zip file) to your desktop"
+msgstr ""
+
+#: core/controllers/field_groups.php:471
+msgid "Navigate to"
+msgstr ""
+
+#: core/controllers/field_groups.php:471
+msgid "Plugins > Add New > Upload"
+msgstr ""
+
+#: core/controllers/field_groups.php:472
+msgid "Use the uploader to browse, select and install your Add-on (.zip file)"
+msgstr ""
+
+#: core/controllers/field_groups.php:473
+msgid ""
+"Once the plugin has been uploaded and installed, click the 'Activate Plugin' "
+"link"
+msgstr ""
+
+#: core/controllers/field_groups.php:474
+msgid "The Add-on is now installed and activated!"
+msgstr ""
+
+#: core/controllers/field_groups.php:488
+msgid "Awesome. Let's get to work"
+msgstr ""
+
+#: core/controllers/input.php:510
+msgid "Validation Failed. One or more fields below are required."
+msgstr ""
+
+#: core/controllers/upgrade.php:86
+msgid "Upgrade"
+msgstr ""
+
+#: core/controllers/upgrade.php:139
+msgid "What's new"
+msgstr ""
+
+#: core/controllers/upgrade.php:150
+msgid "credits"
+msgstr ""
+
+#: core/controllers/upgrade.php:684
+msgid "Modifying field group options 'show on page'"
+msgstr ""
+
+#: core/controllers/upgrade.php:738
+msgid "Modifying field option 'taxonomy'"
+msgstr ""
+
+#: core/controllers/upgrade.php:835
+msgid "Moving user custom fields from wp_options to wp_usermeta'"
+msgstr ""
+
+#: core/fields/_base.php:124 core/views/meta_box_location.php:74
+msgid "Basic"
+msgstr ""
+
+#: core/fields/checkbox.php:19 core/fields/taxonomy.php:317
+msgid "Checkbox"
+msgstr ""
+
+#: core/fields/checkbox.php:20 core/fields/radio.php:19
+#: core/fields/select.php:19 core/fields/true_false.php:20
+msgid "Choice"
+msgstr ""
+
+#: core/fields/checkbox.php:137 core/fields/radio.php:144
+#: core/fields/select.php:177
+msgid "Choices"
+msgstr ""
+
+#: core/fields/checkbox.php:138 core/fields/select.php:178
+msgid "Enter each choice on a new line."
+msgstr ""
+
+#: core/fields/checkbox.php:139 core/fields/select.php:179
+msgid "For more control, you may specify both a value and label like this:"
+msgstr ""
+
+#: core/fields/checkbox.php:140 core/fields/radio.php:150
+#: core/fields/select.php:180
+msgid "red : Red"
+msgstr ""
+
+#: core/fields/checkbox.php:140 core/fields/radio.php:151
+#: core/fields/select.php:180
+msgid "blue : Blue"
+msgstr ""
+
+#: core/fields/checkbox.php:157 core/fields/color_picker.php:73
+#: core/fields/email.php:69 core/fields/number.php:94
+#: core/fields/radio.php:193 core/fields/select.php:197
+#: core/fields/text.php:71 core/fields/textarea.php:71
+#: core/fields/true_false.php:94 core/fields/wysiwyg.php:171
+msgid "Default Value"
+msgstr ""
+
+#: core/fields/checkbox.php:158 core/fields/select.php:198
+msgid "Enter each default value on a new line"
+msgstr ""
+
+#: core/fields/checkbox.php:174 core/fields/message.php:20
+#: core/fields/radio.php:209 core/fields/tab.php:20
+msgid "Layout"
+msgstr ""
+
+#: core/fields/checkbox.php:185 core/fields/radio.php:220
+msgid "Vertical"
+msgstr ""
+
+#: core/fields/checkbox.php:186 core/fields/radio.php:221
+msgid "Horizontal"
+msgstr ""
+
+#: core/fields/color_picker.php:19
+msgid "Color Picker"
+msgstr ""
+
+#: core/fields/color_picker.php:20 core/fields/date_picker/date_picker.php:23
+msgid "jQuery"
+msgstr ""
+
+#: core/fields/color_picker.php:74
+msgid "eg: #ffffff"
+msgstr ""
+
+#: core/fields/date_picker/date_picker.php:22
+msgid "Date Picker"
+msgstr ""
+
+#: core/fields/date_picker/date_picker.php:30
+msgid "Done"
+msgstr ""
+
+#: core/fields/date_picker/date_picker.php:31
+msgid "Today"
+msgstr ""
+
+#: core/fields/date_picker/date_picker.php:34
+msgid "Show a different month"
+msgstr ""
+
+#: core/fields/date_picker/date_picker.php:105
+msgid "Save format"
+msgstr ""
+
+#: core/fields/date_picker/date_picker.php:106
+msgid ""
+"This format will determin the value saved to the database and returned via "
+"the API"
+msgstr ""
+
+#: core/fields/date_picker/date_picker.php:107
+msgid "\"yymmdd\" is the most versatile save format. Read more about"
+msgstr ""
+
+#: core/fields/date_picker/date_picker.php:107
+#: core/fields/date_picker/date_picker.php:123
+msgid "jQuery date formats"
+msgstr ""
+
+#: core/fields/date_picker/date_picker.php:121
+msgid "Display format"
+msgstr ""
+
+#: core/fields/date_picker/date_picker.php:122
+msgid "This format will be seen by the user when entering a value"
+msgstr ""
+
+#: core/fields/date_picker/date_picker.php:123
+msgid ""
+"\"dd/mm/yy\" or \"mm/dd/yy\" are the most used display formats. Read more "
+"about"
+msgstr ""
+
+#: core/fields/date_picker/date_picker.php:137
+msgid "Week Starts On"
+msgstr ""
+
+#: core/fields/dummy.php:19
+msgid "Dummy"
+msgstr ""
+
+#: core/fields/email.php:19
+msgid "Email"
+msgstr ""
+
+#: core/fields/file.php:19
+msgid "File"
+msgstr ""
+
+#: core/fields/file.php:20 core/fields/image.php:20 core/fields/wysiwyg.php:20
+msgid "Content"
+msgstr ""
+
+#: core/fields/file.php:26 core/fields/file.php:711
+msgid "Select File"
+msgstr ""
+
+#: core/fields/file.php:27
+msgid "Edit File"
+msgstr ""
+
+#: core/fields/file.php:28 core/fields/image.php:29
+msgid "uploaded to this post"
+msgstr ""
+
+#: core/fields/file.php:118
+msgid "No File Selected"
+msgstr ""
+
+#: core/fields/file.php:118
+msgid "Add File"
+msgstr ""
+
+#: core/fields/file.php:148 core/fields/image.php:117
+#: core/fields/taxonomy.php:365
+msgid "Return Value"
+msgstr ""
+
+#: core/fields/file.php:159
+msgid "File Object"
+msgstr ""
+
+#: core/fields/file.php:160
+msgid "File URL"
+msgstr ""
+
+#: core/fields/file.php:161
+msgid "File ID"
+msgstr ""
+
+#: core/fields/file.php:170 core/fields/image.php:155
+msgid "Library"
+msgstr ""
+
+#: core/fields/file.php:182 core/fields/image.php:167
+msgid "Uploaded to post"
+msgstr ""
+
+#: core/fields/file.php:286
+msgid "File Updated."
+msgstr ""
+
+#: core/fields/file.php:379 core/fields/image.php:396
+msgid "Media attachment updated."
+msgstr ""
+
+#: core/fields/file.php:537
+msgid "No files selected"
+msgstr ""
+
+#: core/fields/file.php:678
+msgid "Add Selected Files"
+msgstr ""
+
+#: core/fields/file.php:714
+msgid "Update File"
+msgstr ""
+
+#: core/fields/image.php:19
+msgid "Image"
+msgstr ""
+
+#: core/fields/image.php:27 core/fields/image.php:718
+msgid "Select Image"
+msgstr ""
+
+#: core/fields/image.php:28
+msgid "Edit Image"
+msgstr ""
+
+#: core/fields/image.php:82
+msgid "Remove"
+msgstr ""
+
+#: core/fields/image.php:83 core/views/meta_box_fields.php:122
+msgid "Edit"
+msgstr ""
+
+#: core/fields/image.php:89
+msgid "No image selected"
+msgstr ""
+
+#: core/fields/image.php:89
+msgid "Add Image"
+msgstr ""
+
+#: core/fields/image.php:127
+msgid "Image Object"
+msgstr ""
+
+#: core/fields/image.php:128
+msgid "Image URL"
+msgstr ""
+
+#: core/fields/image.php:129
+msgid "Image ID"
+msgstr ""
+
+#: core/fields/image.php:137
+msgid "Preview Size"
+msgstr ""
+
+#: core/fields/image.php:305
+msgid "Image Updated."
+msgstr ""
+
+#: core/fields/image.php:547
+msgid "No images selected"
+msgstr ""
+
+#: core/fields/image.php:689
+msgid "Add Selected Images"
+msgstr ""
+
+#: core/fields/image.php:721
+msgid "Update Image"
+msgstr ""
+
+#: core/fields/message.php:19 core/fields/message.php:70
+#: core/fields/true_false.php:79
+msgid "Message"
+msgstr ""
+
+#: core/fields/message.php:71
+msgid "Text &amp; HTML entered here will appear inline with the fields"
+msgstr ""
+
+#: core/fields/message.php:72
+msgid "Please note that all text will first be passed through the wp function "
+msgstr ""
+
+#: core/fields/number.php:19
+msgid "Number"
+msgstr ""
+
+#: core/fields/number.php:110
+msgid "Min"
+msgstr ""
+
+#: core/fields/number.php:111
+msgid "Specifies the minimum value allowed"
+msgstr ""
+
+#: core/fields/number.php:127
+msgid "Max"
+msgstr ""
+
+#: core/fields/number.php:128
+msgid "Specifies the maximim value allowed"
+msgstr ""
+
+#: core/fields/number.php:144
+msgid "Step"
+msgstr ""
+
+#: core/fields/number.php:145
+msgid "Specifies the legal number intervals"
+msgstr ""
+
+#: core/fields/page_link.php:18
+msgid "Page Link"
+msgstr ""
+
+#: core/fields/page_link.php:19 core/fields/post_object.php:19
+#: core/fields/relationship.php:19 core/fields/taxonomy.php:19
+#: core/fields/user.php:19
+msgid "Relational"
+msgstr ""
+
+#: core/fields/page_link.php:103 core/fields/post_object.php:268
+#: core/fields/relationship.php:547 core/fields/relationship.php:626
+#: core/views/meta_box_location.php:75
+msgid "Post Type"
+msgstr ""
+
+#: core/fields/page_link.php:127 core/fields/post_object.php:317
+#: core/fields/select.php:214 core/fields/taxonomy.php:331
+#: core/fields/user.php:275
+msgid "Allow Null?"
+msgstr ""
+
+#: core/fields/page_link.php:148 core/fields/post_object.php:338
+#: core/fields/select.php:233
+msgid "Select multiple values?"
+msgstr ""
+
+#: core/fields/password.php:19
+msgid "Password"
+msgstr ""
+
+#: core/fields/post_object.php:18
+msgid "Post Object"
+msgstr ""
+
+#: core/fields/post_object.php:292 core/fields/relationship.php:571
+msgid "Filter from Taxonomy"
+msgstr ""
+
+#: core/fields/radio.php:18
+msgid "Radio Button"
+msgstr ""
+
+#: core/fields/radio.php:102 core/views/meta_box_location.php:90
+msgid "Other"
+msgstr ""
+
+#: core/fields/radio.php:145
+msgid "Enter your choices one per line"
+msgstr ""
+
+#: core/fields/radio.php:147
+msgid "Red"
+msgstr ""
+
+#: core/fields/radio.php:148
+msgid "Blue"
+msgstr ""
+
+#: core/fields/radio.php:172
+msgid "Add 'other' choice to allow for custom values"
+msgstr ""
+
+#: core/fields/radio.php:184
+msgid "Save 'other' values to the field's choices"
+msgstr ""
+
+#: core/fields/relationship.php:18
+msgid "Relationship"
+msgstr ""
+
+#: core/fields/relationship.php:28
+msgid "Maximum values reached ( {max} values )"
+msgstr ""
+
+#: core/fields/relationship.php:401
+msgid "Search..."
+msgstr ""
+
+#: core/fields/relationship.php:414
+msgid "Filter by post type"
+msgstr ""
+
+#: core/fields/relationship.php:605
+msgid "Search"
+msgstr ""
+
+#: core/fields/relationship.php:606
+msgid "Post Type Select"
+msgstr ""
+
+#: core/fields/relationship.php:614
+msgid "Elements"
+msgstr ""
+
+#: core/fields/relationship.php:615
+msgid "Selected elements will be displayed in each result"
+msgstr ""
+
+#: core/fields/relationship.php:624 core/views/meta_box_options.php:103
+msgid "Featured Image"
+msgstr ""
+
+#: core/fields/relationship.php:625
+msgid "Post Title"
+msgstr ""
+
+#: core/fields/relationship.php:637
+msgid "Maximum posts"
+msgstr ""
+
+#: core/fields/select.php:18 core/fields/taxonomy.php:322
+#: core/fields/user.php:266
+msgid "Select"
+msgstr ""
+
+#: core/fields/tab.php:19
+msgid "Tab"
+msgstr ""
+
+#: core/fields/tab.php:68
+msgid ""
+"All fields proceeding this \"tab field\" (or until another \"tab field\"  is "
+"defined) will appear grouped on the edit screen."
+msgstr ""
+
+#: core/fields/tab.php:69
+msgid "You can use multiple tabs to break up your fields into sections."
+msgstr ""
+
+#: core/fields/taxonomy.php:18 core/fields/taxonomy.php:276
+msgid "Taxonomy"
+msgstr ""
+
+#: core/fields/taxonomy.php:211 core/fields/taxonomy.php:220
+#: core/fields/text.php:95 core/fields/textarea.php:95
+msgid "None"
+msgstr ""
+
+#: core/fields/taxonomy.php:306 core/fields/user.php:251
+#: core/views/meta_box_fields.php:91 core/views/meta_box_fields.php:172
+msgid "Field Type"
+msgstr ""
+
+#: core/fields/taxonomy.php:316 core/fields/user.php:260
+msgid "Multiple Values"
+msgstr ""
+
+#: core/fields/taxonomy.php:318 core/fields/user.php:262
+msgid "Multi Select"
+msgstr ""
+
+#: core/fields/taxonomy.php:320 core/fields/user.php:264
+msgid "Single Value"
+msgstr ""
+
+#: core/fields/taxonomy.php:321
+msgid "Radio Buttons"
+msgstr ""
+
+#: core/fields/taxonomy.php:350
+msgid "Load & Save Terms to Post"
+msgstr ""
+
+#: core/fields/taxonomy.php:358
+msgid ""
+"Load value based on the post's terms and update the post's terms on save"
+msgstr ""
+
+#: core/fields/taxonomy.php:375
+msgid "Term Object"
+msgstr ""
+
+#: core/fields/taxonomy.php:376
+msgid "Term ID"
+msgstr ""
+
+#: core/fields/text.php:19
+msgid "Text"
+msgstr ""
+
+#: core/fields/text.php:85 core/fields/textarea.php:85
+msgid "Formatting"
+msgstr ""
+
+#: core/fields/text.php:86
+msgid "Define how to render html tags"
+msgstr ""
+
+#: core/fields/text.php:96 core/fields/textarea.php:97
+msgid "HTML"
+msgstr ""
+
+#: core/fields/textarea.php:19
+msgid "Text Area"
+msgstr ""
+
+#: core/fields/textarea.php:86
+msgid "Define how to render html tags / new lines"
+msgstr ""
+
+#: core/fields/textarea.php:96
+msgid "auto &lt;br /&gt;"
+msgstr ""
+
+#: core/fields/true_false.php:19
+msgid "True / False"
+msgstr ""
+
+#: core/fields/true_false.php:80
+msgid "eg. Show extra content"
+msgstr ""
+
+#: core/fields/user.php:18
+msgid "User"
+msgstr ""
+
+#: core/fields/user.php:224
+msgid "Filter by role"
+msgstr ""
+
+#: core/fields/wysiwyg.php:19
+msgid "Wysiwyg Editor"
+msgstr ""
+
+#: core/fields/wysiwyg.php:185
+msgid "Toolbar"
+msgstr ""
+
+#: core/fields/wysiwyg.php:217
+msgid "Show Media Upload Buttons?"
+msgstr ""
+
+#: core/views/meta_box_fields.php:24
+msgid "New Field"
+msgstr ""
+
+#: core/views/meta_box_fields.php:58
+msgid "Field type does not exist"
+msgstr ""
+
+#: core/views/meta_box_fields.php:63
+msgid "Move to trash. Are you sure?"
+msgstr ""
+
+#: core/views/meta_box_fields.php:64
+msgid "checked"
+msgstr ""
+
+#: core/views/meta_box_fields.php:65
+msgid "No toggle fields available"
+msgstr ""
+
+#: core/views/meta_box_fields.php:66
+msgid "Field group title is required"
+msgstr ""
+
+#: core/views/meta_box_fields.php:67
+msgid "copy"
+msgstr ""
+
+#: core/views/meta_box_fields.php:68 core/views/meta_box_location.php:62
+#: core/views/meta_box_location.php:158
+msgid "or"
+msgstr ""
+
+#: core/views/meta_box_fields.php:88
+msgid "Field Order"
+msgstr ""
+
+#: core/views/meta_box_fields.php:89 core/views/meta_box_fields.php:141
+msgid "Field Label"
+msgstr ""
+
+#: core/views/meta_box_fields.php:90 core/views/meta_box_fields.php:157
+msgid "Field Name"
+msgstr ""
+
+#: core/views/meta_box_fields.php:92
+msgid "Field Key"
+msgstr ""
+
+#: core/views/meta_box_fields.php:104
+msgid ""
+"No fields. Click the <strong>+ Add Field</strong> button to create your "
+"first field."
+msgstr ""
+
+#: core/views/meta_box_fields.php:119 core/views/meta_box_fields.php:122
+msgid "Edit this Field"
+msgstr ""
+
+#: core/views/meta_box_fields.php:123
+msgid "Read documentation for this field"
+msgstr ""
+
+#: core/views/meta_box_fields.php:123
+msgid "Docs"
+msgstr ""
+
+#: core/views/meta_box_fields.php:124
+msgid "Duplicate this Field"
+msgstr ""
+
+#: core/views/meta_box_fields.php:124
+msgid "Duplicate"
+msgstr ""
+
+#: core/views/meta_box_fields.php:125
+msgid "Delete this Field"
+msgstr ""
+
+#: core/views/meta_box_fields.php:125
+msgid "Delete"
+msgstr ""
+
+#: core/views/meta_box_fields.php:142
+msgid "This is the name which will appear on the EDIT page"
+msgstr ""
+
+#: core/views/meta_box_fields.php:158
+msgid "Single word, no spaces. Underscores and dashes allowed"
+msgstr ""
+
+#: core/views/meta_box_fields.php:185
+msgid "Field Instructions"
+msgstr ""
+
+#: core/views/meta_box_fields.php:186
+msgid "Instructions for authors. Shown when submitting data"
+msgstr ""
+
+#: core/views/meta_box_fields.php:198
+msgid "Required?"
+msgstr ""
+
+#: core/views/meta_box_fields.php:221
+msgid "Conditional Logic"
+msgstr ""
+
+#: core/views/meta_box_fields.php:272 core/views/meta_box_location.php:116
+msgid "is equal to"
+msgstr ""
+
+#: core/views/meta_box_fields.php:273 core/views/meta_box_location.php:117
+msgid "is not equal to"
+msgstr ""
+
+#: core/views/meta_box_fields.php:291
+msgid "Show this field when"
+msgstr ""
+
+#: core/views/meta_box_fields.php:297
+msgid "all"
+msgstr ""
+
+#: core/views/meta_box_fields.php:298
+msgid "any"
+msgstr ""
+
+#: core/views/meta_box_fields.php:301
+msgid "these rules are met"
+msgstr ""
+
+#: core/views/meta_box_fields.php:315
+msgid "Close Field"
+msgstr ""
+
+#: core/views/meta_box_fields.php:328
+msgid "Drag and drop to reorder"
+msgstr ""
+
+#: core/views/meta_box_fields.php:329
+msgid "+ Add Field"
+msgstr ""
+
+#: core/views/meta_box_location.php:48
+msgid "Rules"
+msgstr ""
+
+#: core/views/meta_box_location.php:49
+msgid ""
+"Create a set of rules to determine which edit screens will use these "
+"advanced custom fields"
+msgstr ""
+
+#: core/views/meta_box_location.php:60
+msgid "Show this field group if"
+msgstr ""
+
+#: core/views/meta_box_location.php:76
+msgid "Logged in User Type"
+msgstr ""
+
+#: core/views/meta_box_location.php:78 core/views/meta_box_location.php:79
+msgid "Page"
+msgstr ""
+
+#: core/views/meta_box_location.php:80
+msgid "Page Type"
+msgstr ""
+
+#: core/views/meta_box_location.php:81
+msgid "Page Parent"
+msgstr ""
+
+#: core/views/meta_box_location.php:82
+msgid "Page Template"
+msgstr ""
+
+#: core/views/meta_box_location.php:84 core/views/meta_box_location.php:85
+msgid "Post"
+msgstr ""
+
+#: core/views/meta_box_location.php:86
+msgid "Post Category"
+msgstr ""
+
+#: core/views/meta_box_location.php:87
+msgid "Post Format"
+msgstr ""
+
+#: core/views/meta_box_location.php:88
+msgid "Post Taxonomy"
+msgstr ""
+
+#: core/views/meta_box_location.php:91
+msgid "Taxonomy Term (Add / Edit)"
+msgstr ""
+
+#: core/views/meta_box_location.php:92
+msgid "User (Add / Edit)"
+msgstr ""
+
+#: core/views/meta_box_location.php:93
+msgid "Media Attachment (Edit)"
+msgstr ""
+
+#: core/views/meta_box_location.php:145
+msgid "and"
+msgstr ""
+
+#: core/views/meta_box_location.php:160
+msgid "Add rule group"
+msgstr ""
+
+#: core/views/meta_box_options.php:25
+msgid "Order No."
+msgstr ""
+
+#: core/views/meta_box_options.php:26
+msgid "Field groups are created in order <br />from lowest to highest"
+msgstr ""
+
+#: core/views/meta_box_options.php:42
+msgid "Position"
+msgstr ""
+
+#: core/views/meta_box_options.php:52
+msgid "Normal"
+msgstr ""
+
+#: core/views/meta_box_options.php:53
+msgid "Side"
+msgstr ""
+
+#: core/views/meta_box_options.php:62
+msgid "Style"
+msgstr ""
+
+#: core/views/meta_box_options.php:72
+msgid "No Metabox"
+msgstr ""
+
+#: core/views/meta_box_options.php:73
+msgid "Standard Metabox"
+msgstr ""
+
+#: core/views/meta_box_options.php:82
+msgid "Hide on screen"
+msgstr ""
+
+#: core/views/meta_box_options.php:83
+msgid "<b>Select</b> items to <b>hide</b> them from the edit screen"
+msgstr ""
+
+#: core/views/meta_box_options.php:84
+msgid ""
+"If multiple field groups appear on an edit screen, the first field group's "
+"options will be used. (the one with the lowest order number)"
+msgstr ""
+
+#: core/views/meta_box_options.php:94
+msgid "Content Editor"
+msgstr ""
+
+#: core/views/meta_box_options.php:95
+msgid "Excerpt"
+msgstr ""
+
+#: core/views/meta_box_options.php:97
+msgid "Discussion"
+msgstr ""
+
+#: core/views/meta_box_options.php:98
+msgid "Comments"
+msgstr ""
+
+#: core/views/meta_box_options.php:99
+msgid "Revisions"
+msgstr ""
+
+#: core/views/meta_box_options.php:100
+msgid "Slug"
+msgstr ""
+
+#: core/views/meta_box_options.php:101
+msgid "Author"
+msgstr ""
+
+#: core/views/meta_box_options.php:102
+msgid "Format"
+msgstr ""
+
+#: core/views/meta_box_options.php:104
+msgid "Categories"
+msgstr ""
+
+#: core/views/meta_box_options.php:105
+msgid "Tags"
+msgstr ""
+
+#: core/views/meta_box_options.php:106
+msgid "Send Trackbacks"
+msgstr ""

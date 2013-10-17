@@ -1,0 +1,299 @@
+/*
+*  Gallery Field
+*
+*  @description: 
+*  @since: 3.6
+*  @created: 1/02/13
+*/
+
+.acf-gallery {
+	position: relative;
+	overflow: hidden;
+	border: #DFDFDF solid 1px;
+	border-radius: 3px;
+}
+
+.acf-gallery .thumbnails {
+	background-color:#f9f9f9;
+	
+	box-shadow: inset 0px 1px 5px rgba(0,0,0,0.06);
+	
+	min-height: 400px;
+	margin: 0 0 0 0;
+	
+	position: relative;
+	z-index: 1;
+
+
+}
+
+.acf-gallery .thumbnails .inner {
+	padding: 10px;
+	position: relative;
+}
+
+.acf-gallery .thumbnail {
+	margin: 10px;
+	position: relative;
+	float: left;
+	
+	background: #fff;
+	box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+	
+	cursor: move;
+}
+
+.acf-gallery .thumbnail .inner {
+	padding: 5px;	
+}
+
+.acf-gallery .thumbnail  img {
+	display: block;
+}
+
+.acf-gallery .thumbnail.ui-sortable-placeholder {
+	visibility: visible !important;
+	background: transparent;
+	box-shadow: none;
+	border: #DFDFDF dashed 2px;
+	border-radius: 3px;
+}
+
+
+/*
+*  Toolbar
+*/
+
+.acf-gallery .toolbar {
+    border-top: #DFDFDF solid 1px;
+    
+    background-color: #F1F1F1;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#F9F9F9), to(#ECECEC)); /* Saf4+, Chrome */
+    background-image: -webkit-linear-gradient(top, #F9F9F9, #ECECEC); /* Chrome 10+, Saf5.1+, iOS 5+ */
+    background-image:    -moz-linear-gradient(top, #F9F9F9, #ECECEC); /* FF3.6+ */
+    background-image:      -o-linear-gradient(top, #F9F9F9, #ECECEC); /* Opera 11.10+ */
+    background-image:         linear-gradient(to bottom, #F9F9F9, #ECECEC);
+  
+}
+
+.acf-gallery .toolbar li {
+	font-size: 12px;
+	line-height: 1em;
+	position: relative;
+	min-height: 36px;
+}
+
+.acf-gallery .toolbar li.view-grid-li:hover,
+.acf-gallery .toolbar li.view-grid-li.active,
+.acf-gallery .toolbar li.view-list-li:hover,
+.acf-gallery .toolbar li.view-list-li.active {
+	background-color: #F9F9F9;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#ECECEC), to(#F9F9F9)); /* Saf4+, Chrome */
+    background-image: -webkit-linear-gradient(top, #ECECEC, #F9F9F9); /* Chrome 10+, Saf5.1+, iOS 5+ */
+    background-image:    -moz-linear-gradient(top, #ECECEC, #F9F9F9); /* FF3.6+ */
+    background-image:      -o-linear-gradient(top, #ECECEC, #F9F9F9); /* Opera 11.10+ */
+    background-image:         linear-gradient(to bottom, #ECECEC, #F9F9F9);
+}
+
+.acf-gallery .toolbar li.gallery-li a,
+.acf-gallery .toolbar li.gallery-li span {
+	display: block;
+	padding: 1em;	
+	
+	color: #333333;
+	text-shadow: #fff 0 1px 0;
+	
+	text-decoration: none;
+}
+
+.acf-gallery .toolbar li.gallery-li span {
+	color: #8d8d8d;
+}
+
+.acf-gallery .toolbar li .divider {
+	position: absolute;
+	height: 100%;
+	width: 1px;
+	background: #dfdfdf;
+	border-right: #fff solid 1px;
+	
+	top: 0;
+	right: 0;
+	margin-right: -1px;
+}
+
+.acf-gallery .toolbar li .divider-left {
+	right: auto;
+	margin-right: 0;
+	left: 0;
+	margin-left: -1px;
+}
+
+.acf-gallery .toolbar .view-grid,
+.acf-gallery .toolbar .view-list {
+	width: 36px;
+	height: 36px;
+	background: url(../images/sprite.png) -8px -7px no-repeat;
+}
+
+.acf-gallery .toolbar .view-list {
+	background-position: -58px -7px;
+}
+
+.acf-gallery .toolbar .view-grid-li,
+.acf-gallery .toolbar .view-list-li {
+	position: absolute;
+	left: 50%;
+}
+
+.acf-gallery .toolbar .view-grid-li {
+	margin-left: -36px;
+}
+
+.acf-gallery .toolbar .acf-button {
+	margin: 4px 0 0 4px;
+}
+
+
+/*
+*  Hover
+*/
+
+.acf-gallery .hover {
+	position: absolute;
+	top: -11px;
+	right: -11px;
+	
+	-webkit-transition: opacity 0.25s 0s ease-in-out, visibility 0s linear 0.25s;
+	-moz-transition: opacity 0.25s 0s ease-in-out, visibility 0s linear 0.25s;
+	-o-transition: opacity 0.25s 0s ease-in-out, visibility 0s linear 0.25s; 	
+	transition: opacity 0.25s 0s ease-in-out, visibility 0s linear 0.25s; 
+	
+	visibility: hidden;
+	opacity: 0;
+}
+
+.acf-gallery .thumbnail:hover .hover {
+	-webkit-transition-delay:0s;
+	-moz-transition-delay:0s;
+	-o-transition-delay:0s;
+	transition-delay:0s;
+	
+	visibility: visible;
+	opacity: 1;
+}
+
+.acf-gallery .hover ul {
+	display: block;
+	margin: 0;
+	padding: 0;
+}
+
+.acf-gallery .hover ul li {
+	margin: 0 0 5px 0;
+}
+
+
+
+/*
+*  List Data
+*/
+
+.acf-gallery .list-data {
+	display: none;
+}
+
+.acf-gallery.view-list .thumbnail {
+	float: none;
+}
+
+.acf-gallery.view-list .thumbnail .list-data {
+	display: block;
+	margin: 0 0 0 127px;
+}
+
+.acf-gallery.view-list .thumbnail img {
+	float: left;
+	max-width: 122px;
+	height: auto;
+}
+
+.acf-gallery .list-data table {
+	text-align: left;
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.acf-gallery .list-data table th,
+.acf-gallery .list-data table td {
+	border: 1px solid #F1F1F1;
+    padding: 6px;
+}
+
+.acf-gallery .list-data table th {
+	width: 110px;
+}
+
+
+/*
+*  Edit Image Message
+*/
+
+.acf-gallery .acf-message-wrapper {
+    margin: 0;
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    background: #fff;
+}
+
+.acf-gallery .acf-message-wrapper .message {
+    margin: 5px !important;
+}
+
+.acf-gallery.view-list .acf-message-wrapper {
+    padding: 5px 5px 0;
+    position: relative;
+    width: auto;
+}
+
+.acf-gallery.view-list .acf-message-wrapper .message {
+    margin: 0px !important;
+}
+
+
+/*
+*  3.5 Media Selected images
+*/
+
+.attachment.acf-selected {
+	opacity: 0.3;
+}
+
+.attachment.acf-selected .check {
+	display: block;
+}
+
+
+/*--------------------------------------------------------------------------
+*
+*	Retina
+*	
+*-------------------------------------------------------------------------*/
+
+@media
+only screen and (-webkit-min-device-pixel-ratio: 2),
+only screen and (   min--moz-device-pixel-ratio: 2),
+only screen and (     -o-min-device-pixel-ratio: 2/1),
+only screen and (        min-device-pixel-ratio: 2),
+only screen and (                min-resolution: 192dpi),
+only screen and (                min-resolution: 2dppx) { 
+	
+	.acf-gallery .toolbar .view-grid,
+	.acf-gallery .toolbar .view-list {
+		background-image: url(../images/sprite@2x.png);
+		background-size: 100px 100px;
+	}
+
+	
+}
