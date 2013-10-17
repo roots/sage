@@ -1,4 +1,4 @@
-var afchome = new google.maps.LatLng(35.2214777, -97.445885);
+var unistruthome = new google.maps.LatLng(35.2214777, -97.445885);
 
 var infowindow = new google.maps.InfoWindow();
 var atkoremarker = new google.maps.MarkerImage('/media/map-marker-atkore-green.png', new google.maps.Size(32, 37) );
@@ -18,7 +18,7 @@ function initialize() {
 
   var mapOptions = {
     zoom: 4,
-    center: afchome,
+    center: unistruthome,
     mapTypeId: google.maps.MapTypeId.ROADMAP,
     scrollwheel: false
   };
@@ -30,7 +30,7 @@ function initialize() {
 
   var marker = new google.maps.Marker({
     position: locations[i].latlng,
-    icon: afcmarkergrey,
+    icon: unistrutmarker,
     map: map
   });
 

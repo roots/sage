@@ -14,7 +14,7 @@ if ( ! function_exists('atkore_post_type_resources') ) {
 
 // Register Custom Post Types
 function atkore_post_type_resources() {
-    $admin_img_path = 'http://atkore.com/assets/img/atkore-admin-icon.png';
+    $admin_img_path = '//atkore.com/assets/img/atkore-admin-icon.png';
   	// Applications Post Type
   	// Resources Post Type
   	$labels = array(
@@ -42,7 +42,7 @@ function atkore_post_type_resources() {
   		'description'         => __( 'Resources information pages', 'atkore' ),
   		'labels'              => $labels,
   		'supports'            => array( 'title', 'editor', 'excerpt', 'thumbnail', 'revisions', 'custom-fields', 'page-attributes', 'post-formats',),
-  		'taxonomies'          => array( 'category','post_tag', 'resource-type'),
+  		'taxonomies'          => array( 'post_tag', 'resource-type'),
   		'rewrite'             => $rewrite,
   		'hierarchical'        => true,
   		'public'              => true,
@@ -50,7 +50,7 @@ function atkore_post_type_resources() {
   		'show_in_menu'        => true,
   		'show_in_nav_menus'   => true,
   		'show_in_admin_bar'   => true,
-  		'menu_position'       => 1.8,
+  		'menu_position'       => 20,
   		'menu_icon'           => $admin_img_path,
   		'can_export'          => true,
   		'has_archive'         => true,
@@ -79,7 +79,7 @@ function atkore_post_type_resources() {
   	);
   	
   	$rewrite = array(
-  	  'slug'                => 'product',
+  	  'slug'                => 'resource',
   	  'with_front'          => false,
   	  'hierarchical'        => true,
   	);
@@ -100,8 +100,8 @@ function atkore_post_type_resources() {
   		'show_in_nav_menus'          => true,
   		'show_tagcloud'              => true,
   		'query_var'                  => 'resource-type',
-  		'rewrite'                    => true,
-  		'capabilities'               => $capabilities,
+  		'rewrite'                    => $rewrite,
+  		//'capabilities'               => $capabilities,
   	);
 
   	register_taxonomy( 'resource-type', 'resource', $args );

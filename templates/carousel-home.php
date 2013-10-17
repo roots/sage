@@ -21,8 +21,8 @@ $classes = '';?>
       <?php $i++ ?>
       <?php endwhile; ?>
   </div>
-  <a class="carousel-control left" href="#carousel-home" data-slide="prev"><span class="glyphicons-icon white chevron-left"></span></a>
-  <a class="carousel-control right" href="#carousel-home" data-slide="next"><span class="glyphicons-icon white chevron-right"></span></a>
+  <a class="carousel-control left" href="#carousel-home" data-slide="prev"><span class=""></span></a>
+  <a class="carousel-control right" href="#carousel-home" data-slide="next"><span class=""></span></a>
     <ol class="carousel-indicators">
       <li data-target="#carousel-home" data-slide-to="0" class="active"></li>
       <li data-target="#carousel-home" data-slide-to="1"></li>

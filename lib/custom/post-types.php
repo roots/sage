@@ -6,10 +6,8 @@ require_once locate_template('/lib/custom/post-types/carousel.php');
 require_once locate_template('/lib/custom/post-types/events.php');
 require_once locate_template('/lib/custom/post-types/locations.php');
 require_once locate_template('/lib/custom/post-types/resources.php');
-//require_once locate_template('/lib/custom/post-types/markets.php');
-//require_once locate_template('/lib/custom/post-types/services.php');
 require_once locate_template('/lib/custom/post-types/products.php');
-
+//require_once locate_template('/lib/custom/post-types/services.php');
 
 add_filter( 'pre_get_posts', 'my_get_posts' );
 

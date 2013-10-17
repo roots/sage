@@ -1,0 +1,68 @@
+# Copyright (C) 2013 Advanced Custom Fields: Options Page
+# This file is distributed under the same license as the Advanced Custom Fields: Options Page package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Advanced Custom Fields: Options Page 1.1.0\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/acf-options-page\n"
+"POT-Creation-Date: 2013-07-13 06:54:05+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2013-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: acf-options-page-update.php:137
+msgid "What's new"
+msgstr ""
+
+#: acf-options-page-update.php:148
+msgid "credits"
+msgstr ""
+
+#: acf-options-page.php:30
+msgid "Options"
+msgstr ""
+
+#: acf-options-page.php:155
+msgid "Options Page"
+msgstr ""
+
+#: acf-options-page.php:278
+msgid "Options Updated"
+msgstr ""
+
+#: acf-options-page.php:423
+msgid "No Custom Field Group found for the options page"
+msgstr ""
+
+#: acf-options-page.php:423
+msgid "Create a Custom Field Group"
+msgstr ""
+
+#: acf-options-page.php:434
+msgid "Publish"
+msgstr ""
+
+#: acf-options-page.php:438
+msgid "Save Options"
+msgstr ""
+#. Plugin Name of the plugin/theme
+msgid "Advanced Custom Fields: Options Page"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "http://www.advancedcustomfields.com/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Adds the options page"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Elliot Condon"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://www.elliotcondon.com/"
+msgstr ""

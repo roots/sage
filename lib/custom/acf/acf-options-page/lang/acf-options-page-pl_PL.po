@@ -1,0 +1,79 @@
+# Copyright (C) 2013 Advanced Custom Fields: Options Page
+# This file is distributed under the same license as the Advanced Custom Fields: Options Page package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Advanced Custom Fields: Options Page 1.1.0\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/acf-options-page\n"
+"POT-Creation-Date: 2013-07-13 06:54:05+00:00\n"
+"MIME-Version: 1.0\n"
+"Language: pl_PL\n"
+"Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2;\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2013-07-24 00:25+0100\n"
+"Last-Translator: Mateusz Czardybon <mateusz@czar-net.com>\n"
+"Language-Team: \n"
+"X-Generator: Poedit 1.5.7\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
+"_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;"
+"esc_attr_x:1,2c\n"
+"X-Poedit-Basepath: ../\n"
+"X-Textdomain-Support: yes\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: acf-options-page-update.php:137
+msgid "What's new"
+msgstr "Co nowego"
+
+#: acf-options-page-update.php:148
+msgid "credits"
+msgstr "uznanie dla"
+
+#: acf-options-page.php:30
+msgid "Options"
+msgstr "Ustawienia"
+
+#: acf-options-page.php:155
+msgid "Options Page"
+msgstr "Strona ustawień"
+
+#: acf-options-page.php:278
+msgid "Options Updated"
+msgstr "Ustawienia zapisane"
+
+#: acf-options-page.php:423
+msgid "No Custom Field Group found for the options page"
+msgstr "Brak pól dla tej strony z ustawieniami"
+
+#: acf-options-page.php:423
+msgid "Create a Custom Field Group"
+msgstr "Utwórz grupę pół"
+
+#: acf-options-page.php:434
+msgid "Publish"
+msgstr "Akcje"
+
+#: acf-options-page.php:438
+msgid "Save Options"
+msgstr "Zapisz ustawienia"
+
+#. Plugin Name of the plugin/theme
+msgid "Advanced Custom Fields: Options Page"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "http://www.advancedcustomfields.com/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Adds the options page"
+msgstr "Dodaj stronę z ustawieniami"
+
+#. Author of the plugin/theme
+msgid "Elliot Condon"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://www.elliotcondon.com/"
+msgstr ""

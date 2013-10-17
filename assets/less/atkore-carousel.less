@@ -34,49 +34,6 @@
   overflow: hidden;
 }
 
-.carousel-inner {
--webkit-box-shadow: inset 0px 0px 20px -10px rgba(0, 0, 0, 0.35);
--moz-box-shadow:    inset 0px 0px 20px -10px rgba(0, 0, 0, 0.35);
-box-shadow:         inset 0px 0px 20px -10px rgba(0, 0, 0, 0.35);
-
-}
-
-.carousel-inner:before, {
-/*background-color: #ffffff;*/
-background-image: -webkit-gradient(linear, left center, right center, from(rgba(255, 255, 255, 1.00)), to(rgba(255, 255, 255, 0.00)));
-background-image: -webkit-linear-gradient(left, rgba(255, 255, 255, 1.00), rgba(255, 255, 255, 0.00));
-background-image: -moz-linear-gradient(left, rgba(255, 255, 255, 1.00), rgba(255, 255, 255, 0.00));
-background-image: -o-linear-gradient(left, rgba(255, 255, 255, 1.00), rgba(255, 255, 255, 0.00));
-background-image: -ms-linear-gradient(left, rgba(255, 255, 255, 1.00), rgba(255, 255, 255, 0.00));
-background-image: linear-gradient(left, rgba(255, 255, 255, 1.00), rgba(255, 255, 255, 0.00));
-filter: progid:DXImageTransform.Microsoft.gradient(GradientType=1,StartColorStr='#ffffff', EndColorStr='#ffffff');
-width: 75px;
-display: block;
-position: relative;
-top: 0;
-left: 0;
-height: 100%;
-z-index: 200;
-}
-
-.carousel-inner:after, {
-/*background-color: #ffffff;*/
-background-image: -webkit-gradient(linear, left center, right center, from(rgba(255, 255, 255, 1.00)), to(rgba(255, 255, 255, 0.00)));
-background-image: -webkit-linear-gradient(left, rgba(255, 255, 255, 1.00), rgba(255, 255, 255, 0.00));
-background-image: -moz-linear-gradient(left, rgba(255, 255, 255, 1.00), rgba(255, 255, 255, 0.00));
-background-image: -o-linear-gradient(left, rgba(255, 255, 255, 1.00), rgba(255, 255, 255, 0.00));
-background-image: -ms-linear-gradient(left, rgba(255, 255, 255, 1.00), rgba(255, 255, 255, 0.00));
-background-image: linear-gradient(left, rgba(255, 255, 255, 1.00), rgba(255, 255, 255, 0.00));
-filter: progid:DXImageTransform.Microsoft.gradient(GradientType=1,StartColorStr='#ffffff', EndColorStr='#ffffff');
-width: 75px;
-display: block;
-position: relative;
-top: 0;
-right: 0;
-height: 100%;
-z-index: 200;
-}
-
 .carousel-fade {
   .carousel-inner {
     .item {
@@ -123,14 +80,21 @@ z-index: 200;
           
   }
   
-  #carousel-home .item:nth-child(2) .carousel-caption {
-
+  body[class*="kaf-tech"] #carousel-home .item:nth-child(2) .carousel-caption {
+		width: 45%;
   }
   
-  #carousel-home .item:nth-child(3) .carousel-caption {
-
+  body[class*="kaf-tech"] #carousel-home .item:nth-child(3) .carousel-caption {
+		width: 35%;
   }
-
+  
+  body[class*="kaf-tech"] #carousel-home .item:nth-child(1) img {
+		 max-width: 75%;
+	}
+	
+	body[class*="kaf-tech"] #carousel-home .item:nth-child(3) img {
+		 max-width: 65%;
+	}
 
 
 #carousel-home .carousel-caption {
@@ -212,8 +176,8 @@ z-index: 200;
 
 // BRANDS FOOTER CAROUSEL 
 
-@brands-carousel-height-lg: 225px;
-@brands-carousel-height-md: 160px;
+@brands-carousel-height-lg: 120px;
+@brands-carousel-height-md: 120px;
 @brands-carousel-height-sm: 120px;
 @brands-carousel-height-xs: auto;
 
@@ -223,9 +187,56 @@ z-index: 200;
 @margin-top-brand-logo-lg: 15%;
 
 
+#carousel-brands .carousel-inner {
+-webkit-box-shadow: inset 0px 10px 20px -10px rgba(0, 0, 0, 0.35);
+-moz-box-shadow:    inset 0px 10px 20px -10px rgba(0, 0, 0, 0.35);
+box-shadow:         inset 0px 10px 20px -10px rgba(0, 0, 0, 0.35);
+border-top: 1px solid #999;
+overflow-x: hidden;
+overflow-y: hidden!important;
+}
+
+#carousel-brands .carousel-inner::before {
+background-color: #ffffff;
+background-image: -webkit-gradient(linear, left center, right center, from(rgba(255, 255, 255, 1.00)), to(rgba(255, 255, 255, 0.00)));
+background-image: -webkit-linear-gradient(left, rgba(255, 255, 255, 1.00), rgba(255, 255, 255, 0.00));
+background-image: -moz-linear-gradient(left, rgba(255, 255, 255, 1.00), rgba(255, 255, 255, 0.00));
+background-image: -o-linear-gradient(left, rgba(255, 255, 255, 1.00), rgba(255, 255, 255, 0.00));
+background-image: -ms-linear-gradient(left, rgba(255, 255, 255, 1.00), rgba(255, 255, 255, 0.00));
+background-image: linear-gradient(left, rgba(255, 255, 255, 1.00), rgba(255, 255, 255, 0.00));
+filter: progid:DXImageTransform.Microsoft.gradient(GradientType=1,StartColorStr='#ffffff', EndColorStr='#ffffff');
+width: 75px;
+display: block;
+position: absolute;
+top: 0;
+left: 0;
+height: 100%;
+z-index: 200;
+border: 5px solid #000;
+z-index: 6000;
+}
+
+#carousel-brands .carousel-inner::after {
+background-color: #ffffff;
+background-image: -webkit-gradient(linear, left center, right center, from(rgba(255, 255, 255, 1.00)), to(rgba(255, 255, 255, 0.00)));
+background-image: -webkit-linear-gradient(left, rgba(255, 255, 255, 1.00), rgba(255, 255, 255, 0.00));
+background-image: -moz-linear-gradient(left, rgba(255, 255, 255, 1.00), rgba(255, 255, 255, 0.00));
+background-image: -o-linear-gradient(left, rgba(255, 255, 255, 1.00), rgba(255, 255, 255, 0.00));
+background-image: -ms-linear-gradient(left, rgba(255, 255, 255, 1.00), rgba(255, 255, 255, 0.00));
+background-image: linear-gradient(left, rgba(255, 255, 255, 1.00), rgba(255, 255, 255, 0.00));
+filter: progid:DXImageTransform.Microsoft.gradient(GradientType=1,StartColorStr='#ffffff', EndColorStr='#ffffff');
+width: 75px;
+display: block;
+position: absolute;
+top: 0;
+right: 0;
+height: 100%;
+z-index: 6000;
+}
+
 
 #brands-footer .carousel-control {
-  background: url('//www.atkore.com/media/arrow-right-green.png') center center no-repeat transparent;
+  background: url('//assets.atkore.com/img/arrow-right-circle.png') center center no-repeat transparent;
 }
 
 #brands-footer .carousel-control.left {
@@ -238,7 +249,7 @@ z-index: 200;
 }
 
 #brands-footer .carousel-control.right {
-
+  background: url('//assets.atkore.com/img/arrow-right-circle.png') center center no-repeat transparent!important;
 }
 
 .carousel-control-wrapper span {
@@ -276,7 +287,7 @@ z-index: 200;
   }
 
   .brand-logo-wrap {
-    width: 40%;
+    width: 60%;
   }
 
   li[class^=brand-] .brand-logo-wrap {
@@ -304,25 +315,31 @@ z-index: 200;
   .brand-acsuni-fab .brand-logo-wrap,
   .brand-acroba .brand-logo-wrap,
   .brand-atkore-international .brand-logo-wrap,
-  .brand-afc .brand-logo-wrap {
+  .brand-afc-cable-systems .brand-logo-wrap {
     margin: 10px auto;
   }
 
   #carousel-brands ul li a img {
     margin: auto;
-    -webkit-filter: grayscale(1);
-    -webkit-filter: grayscale(100%); -moz-filter: grayscale(100%);
-    -ms-filter: grayscale(100%); -o-filter: grayscale(100%);
-    filter: url(//www.atkore.com/assets/svg/desaturate.svg#greyscale);
-    filter: gray; filter: grayscale(100%);
+  filter: grayscale(100%);
+  -webkit-filter: grayscale(100%);
+  -moz-filter: grayscale(100%);
+  -ms-filter: grayscale(100%);
+  -o-filter: grayscale(100%);
+  filter: url('../assets/svg/desaturate.svg#greyscale');
+  filter: gray;
+  -webkit-filter: grayscale(1);
   }
   
   #carousel-brands ul li a:hover img {
-    -webkit-filter: none;
-    -webkit-filter: none; -moz-filter: none;
-    -ms-filter: none; -o-filter: none;
-    filter: none;
-    filter: none; filter: none;
+  filter: none;
+  -webkit-filter: none;
+  -moz-filter: none;
+  -ms-filter: none;
+  -o-filter: none;
+  filter: none;
+  filter: none;
+  -webkit-filter: none;
   }
   
 
@@ -340,8 +357,10 @@ z-index: 200;
   }
   
   .brand-logo-wrap {
-    width: 30%;
+    max-height: @brands-carousel-height-sm;
+    height: @brands-carousel-height-sm;
     margin: 0 auto;
+		width: 65%;
   }
   
   .brand-unistrut-construction .brand-logo-wrap,
@@ -365,7 +384,7 @@ z-index: 200;
   .brand-acsuni-fab .brand-logo-wrap,
   .brand-acroba .brand-logo-wrap,
   .brand-atkore-international .brand-logo-wrap,
-  .brand-afc .brand-logo-wrap {
+  .brand-afc-cable-systems .brand-logo-wrap {
     margin-top: @margin-top-brand-logo-lg;
   }
   
@@ -376,6 +395,13 @@ z-index: 200;
 }
 
 @media (min-width: @screen-md) {
+
+  .brand-logo-wrap {
+    max-height: @brands-carousel-height-md;
+    height: @brands-carousel-height-md;
+    width: 60%;
+  }
+
   #carousel-brands .item,
   #carousel-brands ul,
   #carousel-brands ul li,
@@ -411,13 +437,13 @@ z-index: 200;
   .brand-logo-wrap {
     max-height: @brands-carousel-height-lg;
     height: @brands-carousel-height-lg;
-    width: 45%;
+    width: 70%;
   }
   
   .brand-acsuni-fab .brand-logo-wrap,
   .brand-acroba .brand-logo-wrap,
   .brand-atkore-international .brand-logo-wrap,
-  .brand-afc .brand-logo-wrap {
+  .brand-afc-cable-systems .brand-logo-wrap {
     margin-top: @margin-top-brand-logo-lg;
   }
 

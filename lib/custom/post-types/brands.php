@@ -14,7 +14,7 @@ if ( ! function_exists('atkore_post_type_brands') ) {
 
 // Register Custom Post Types
 function atkore_post_type_brands() {
-  $admin_img_path = 'http://atkore.com/assets/img/atkore-admin-icon.png';
+  $admin_img_path = '//atkore.com/assets/img/atkore-admin-icon.png';
 
   	// Brands Post Type
   	$labels = array(
@@ -38,13 +38,14 @@ function atkore_post_type_brands() {
   		'description'         => __( 'Brand information pages', 'atkore' ),
   		'labels'              => $labels,
   		'supports'            => array( 'title', 'editor', 'excerpt', 'thumbnail', 'revisions', 'custom-fields', 'page-attributes', ),
+  		//'taxonomies'          => array( '',),
   		'hierarchical'        => true,
   		'public'              => true,
   		'show_ui'             => true,
   		'show_in_menu'        => true,
   		'show_in_nav_menus'   => true,
   		'show_in_admin_bar'   => true,
-  		'menu_position'       => 1.0,
+  		'menu_position'       => 20,
   		'menu_icon'           => $admin_img_path,
   		'can_export'          => true,
   		'has_archive'         => true,
