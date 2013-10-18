@@ -16,9 +16,18 @@ function shoestrap_bbp_topic_class( $classes ) {
 }
 add_filter('bbp_get_topic_class', 'shoestrap_bbp_topic_class');
 
+function shoestrap_bbp_reply_class( $classes ) {
+	$classes[] = 'row';
+	$classes[] = 'list-unstyled';
+
+	return $classes;
+}
+add_filter('bbp_get_reply_class', 'shoestrap_bbp_reply_class');
+
 function shoestrap_bbp_styles() { ?>
 	<style type="text/css">
 		a.bbp-author-avatar { display: inline-block; }
+		.bbp-reply-author img { border-radius: 50%; }
 	</style>
 	<?php
 }
@@ -283,7 +292,7 @@ function shoestrap_bbp_user_subscribe_link( $args = '', $user_id = 0, $wrap = tr
 
 		$url  = esc_url( wp_nonce_url( add_query_arg( $query_args, $permalink ), 'toggle-subscription_' . $topic_id ) );
 		$sub  = $is_subscribed ? ' class="is-subscribed"' : '';
-		$html = sprintf( '%s<span id="subscribe-%d"  %s><a href="%s" class="btn btn-warning subscription-toggle" data-topic="%d">%s</a></span>%s', $r['before'], $topic_id, $sub, $url, $topic_id, $text, $r['after'] );
+		$html = sprintf( '%s<span id="subscribe-%d"  %s><a href="%s" class="btn btn-warning btn-xs subscription-toggle" data-topic="%d">%s</a></span>%s', $r['before'], $topic_id, $sub, $url, $topic_id, $text, $r['after'] );
 
 		// Initial output is wrapped in a span, ajax output is hooked to this
 		if ( !empty( $wrap ) ) {
@@ -384,7 +393,7 @@ function shoestrap_bbp_user_favorites_link( $args = array(), $user_id = 0, $wrap
 
 		$url  = esc_url( wp_nonce_url( add_query_arg( $query_args, $permalink ), 'toggle-favorite_' . $topic_id ) );
 		$sub  = $is_fav ? ' class="is-favorite"' : '';
-		$html = sprintf( '%s<span id="favorite-%d"  %s><a href="%s" class="btn btn-success favorite-toggle" data-topic="%d">%s</a></span>%s', $r['before'], $topic_id, $sub, $url, $topic_id, $text, $r['after'] );
+		$html = sprintf( '%s<span id="favorite-%d"  %s><a href="%s" class="btn btn-success btn-xs favorite-toggle" data-topic="%d">%s</a></span>%s', $r['before'], $topic_id, $sub, $url, $topic_id, $text, $r['after'] );
 
 		// Initial output is wrapped in a span, ajax output is hooked to this
 		if ( !empty( $wrap ) ) {

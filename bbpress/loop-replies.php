@@ -13,21 +13,20 @@
 
 <ul id="topic-<?php bbp_topic_id(); ?>-replies" class="forums bbp-replies list-unstyled">
 
-	<li class="bbp-header row">
-		<div class="bbp-reply-author col-md-6"><?php  _e( 'Author',  'bbpress' ); ?></div><!-- .bbp-reply-author -->
-		<div class="bbp-reply-content col-md-6">
-			<?php if ( !bbp_show_lead_topic() ) : ?>
-				<div class="pull-right">
-					<button class="btn btn-default">
-						<?php _e( 'Posts', 'bbpress' ); ?>
-					</button>
-					<?php shoestrap_bbp_user_subscribe_link(); ?>
-					<?php shoestrap_bbp_user_favorites_link(); ?>
-				</div>
-			<?php else : ?>
-				<?php _e( 'Replies', 'bbpress' ); ?>
-			<?php endif; ?>
-		</div><!-- .bbp-reply-content -->
+	<li class="bbp-header well well-sm">
+		<div class="row">
+			<div class="bbp-reply-author col-md-6"><?php  _e( 'Author',  'bbpress' ); ?></div><!-- .bbp-reply-author -->
+			<div class="bbp-reply-content col-md-6">
+				<?php if ( !bbp_show_lead_topic() ) : ?>
+					<div class="pull-right">
+						<?php shoestrap_bbp_user_subscribe_link( array( 'before' => '' ) ); ?>
+						<?php shoestrap_bbp_user_favorites_link(); ?>
+					</div>
+				<?php else : ?>
+					<?php _e( 'Replies', 'bbpress' ); ?>
+				<?php endif; ?>
+			</div><!-- .bbp-reply-content -->
+		</div>
 	</li><!-- .bbp-header -->
 
 	<li class="bbp-body">
@@ -39,17 +38,6 @@
 			<?php endwhile; ?>
 		<?php endif; ?>
 	</li><!-- .bbp-body -->
-
-	<li class="bbp-footer">
-		<div class="bbp-reply-author"><?php  _e( 'Author',  'bbpress' ); ?></div>
-		<div class="bbp-reply-content">
-			<?php if ( !bbp_show_lead_topic() ) : ?>
-				<?php _e( 'Posts', 'bbpress' ); ?>
-			<?php else : ?>
-				<?php _e( 'Replies', 'bbpress' ); ?>
-			<?php endif; ?>
-		</div><!-- .bbp-reply-content -->
-	</li><!-- .bbp-footer -->
 
 </ul><!-- #topic-<?php bbp_topic_id(); ?>-replies -->
 

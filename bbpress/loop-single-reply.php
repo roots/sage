@@ -9,9 +9,9 @@
 
 ?>
 
-<div id="post-<?php bbp_reply_id(); ?>" class="bbp-reply-header">
-	<div class="bbp-meta">
-		<span class="bbp-reply-post-date"><?php bbp_reply_post_date(); ?></span>
+<div id="post-<?php bbp_reply_id(); ?>" class="bbp-reply-header well well-sm">
+	<div class="bbp-meta text-right">
+		<span class="bbp-reply-post-date pull-left"><?php bbp_reply_post_date(); ?></span>
 		<?php if ( bbp_is_single_user_replies() ) : ?>
 			<span class="bbp-header">
 				<?php _e( 'in reply to: ', 'bbpress' ); ?>
@@ -26,7 +26,7 @@
 </div><!-- #post-<?php bbp_reply_id(); ?> -->
 
 <div <?php bbp_reply_class(); ?>>
-	<div class="bbp-reply-author">
+	<div class="bbp-reply-author col-md-2 text-center">
 		<?php do_action( 'bbp_theme_before_reply_author_details' ); ?>
 		<?php bbp_reply_author_link( array( 'sep' => '<br />', 'show_role' => true ) ); ?>
 		<?php if ( bbp_is_user_keymaster() ) : ?>
@@ -36,7 +36,7 @@
 		<?php endif; ?>
 		<?php do_action( 'bbp_theme_after_reply_author_details' ); ?>
 	</div><!-- .bbp-reply-author -->
-	<div class="bbp-reply-content">
+	<div class="bbp-reply-content col-md-10">
 		<?php do_action( 'bbp_theme_before_reply_content' ); ?>
 		<?php bbp_reply_content(); ?>
 		<?php do_action( 'bbp_theme_after_reply_content' ); ?>
