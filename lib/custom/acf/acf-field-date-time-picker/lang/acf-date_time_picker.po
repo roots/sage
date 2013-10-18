@@ -1,0 +1,159 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-04-05 14:13+0100\n"
+"PO-Revision-Date: 2013-04-05 14:13+0100\n"
+"Last-Translator: Per Søderlind <per@soderlind.no>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../date_time_picker-v3.php:28
+#: ../date_time_picker-v3.php:80
+#: ../date_time_picker-v4.php:23
+#: ../date_time_picker-v4.php:82
+msgid "Date and Time Picker"
+msgstr ""
+
+#: ../date_time_picker-v3.php:32
+#: ../date_time_picker-v4.php:28
+msgid "Choose Time"
+msgstr ""
+
+#: ../date_time_picker-v3.php:70
+#: ../date_time_picker-v4.php:72
+msgid "Date and Time Picker?"
+msgstr ""
+
+#: ../date_time_picker-v3.php:81
+#: ../date_time_picker-v4.php:83
+msgid "Time Picker"
+msgstr ""
+
+#: ../date_time_picker-v3.php:89
+#: ../date_time_picker-v4.php:91
+msgid "Date format"
+msgstr ""
+
+#: ../date_time_picker-v3.php:90
+msgid "eg. mm/dd/yy. read more about"
+msgstr ""
+
+#: ../date_time_picker-v3.php:104
+#: ../date_time_picker-v4.php:106
+msgid "Time Format"
+msgstr ""
+
+#: ../date_time_picker-v3.php:105
+#: ../date_time_picker-v4.php:107
+#, php-format
+msgid "eg. hh:mm. read more about <a href=\"%s\" target=\"_blank\">formatting  time</a>"
+msgstr ""
+
+#: ../date_time_picker-v3.php:119
+#: ../date_time_picker-v4.php:121
+msgid "Display Week Number?"
+msgstr ""
+
+#: ../date_time_picker-v3.php:129
+#: ../date_time_picker-v4.php:131
+msgid "Yes"
+msgstr ""
+
+#: ../date_time_picker-v3.php:130
+#: ../date_time_picker-v4.php:132
+msgid "No"
+msgstr ""
+
+#: ../date_time_picker-v3.php:138
+msgid "Time Picker Style?"
+msgstr ""
+
+#: ../date_time_picker-v3.php:148
+#: ../date_time_picker-v4.php:150
+msgid "Slider"
+msgstr ""
+
+#: ../date_time_picker-v3.php:149
+#: ../date_time_picker-v4.php:151
+msgid "Select"
+msgstr ""
+
+#: ../date_time_picker-v3.php:221
+#: ../date_time_picker-v4.php:224
+msgid "Done"
+msgstr ""
+
+#: ../date_time_picker-v3.php:222
+#: ../date_time_picker-v4.php:225
+msgid "Today"
+msgstr ""
+
+#: ../date_time_picker-v3.php:223
+#: ../date_time_picker-v4.php:226
+msgid "Prev"
+msgstr ""
+
+#: ../date_time_picker-v3.php:224
+#: ../date_time_picker-v4.php:227
+msgid "Next"
+msgstr ""
+
+#: ../date_time_picker-v3.php:225
+#: ../date_time_picker-v4.php:228
+msgid "Show a different month"
+msgstr ""
+
+#: ../date_time_picker-v3.php:226
+#: ../date_time_picker-v4.php:229
+msgid "Wk"
+msgstr ""
+
+#: ../date_time_picker-v3.php:227
+#: ../date_time_picker-v4.php:230
+msgid "Time"
+msgstr ""
+
+#: ../date_time_picker-v3.php:228
+#: ../date_time_picker-v4.php:231
+msgid "Hour"
+msgstr ""
+
+#: ../date_time_picker-v3.php:229
+#: ../date_time_picker-v4.php:232
+msgid "Minute"
+msgstr ""
+
+#: ../date_time_picker-v3.php:230
+#: ../date_time_picker-v4.php:233
+msgid "Second"
+msgstr ""
+
+#: ../date_time_picker-v3.php:231
+#: ../date_time_picker-v4.php:234
+msgid "Millisecond"
+msgstr ""
+
+#: ../date_time_picker-v3.php:232
+#: ../date_time_picker-v4.php:235
+msgid "Time Zone"
+msgstr ""
+
+#: ../date_time_picker-v4.php:24
+msgid "jQuery"
+msgstr ""
+
+#: ../date_time_picker-v4.php:92
+#, php-format
+msgid "eg. mm/dd/yy. read more about <a href=\"%s\" target=\"_blank\">formatting  date</a>"
+msgstr ""
+
+#: ../date_time_picker-v4.php:140
+msgid "Time Picker style?"
+msgstr ""
+

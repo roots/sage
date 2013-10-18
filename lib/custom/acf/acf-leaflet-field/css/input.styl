@@ -1,0 +1,26 @@
+.leaflet-map
+    .tools
+        .tool
+            display inline-block
+            width 26px
+            height 26px
+            border-radius 100%
+            background white
+            box-shadow 0 0 7px rgba(0, 0, 0, 0.2)
+            margin-right 10px
+            color lightgray
+            font-size 15px
+            line-height 26px
+            text-align center
+            cursor pointer
+            &.active
+            &:hover
+                color #21759b
+            &.red
+                &.active
+                &:hover
+                    color #f00
+            &.right
+                float right
+    #map
+        cursor pointer

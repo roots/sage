@@ -1,0 +1,5 @@
+.leaflet-map .tools .tool{display:inline-block;width:26px;height:26px;border-radius:100%;background:#fff;box-shadow:0 0 7px rgba(0,0,0,0.20);margin-right:10px;color:#d3d3d3;font-size:15px;line-height:26px;text-align:center;cursor:pointer;}
+.leaflet-map .tools .tool.active,.leaflet-map .tools .tool:hover{color:#21759b}
+.leaflet-map .tools .tool.red.active,.leaflet-map .tools .tool.red:hover{color:#f00}
+.leaflet-map .tools .tool.right{float:right}
+.leaflet-map #map{cursor:pointer}

@@ -3,12 +3,19 @@
  * Atkore functions
  */
 require_once locate_template('/lib/custom/post-types.php');
+//require_once locate_template('/lib/custom/post-status/post-status.php');
+require_once locate_template('/lib/custom/users/custom-contact-methods.php');
 
 require_once locate_template('/lib/custom/acf/advanced-custom-fields/acf.php' );
 require_once locate_template('/lib/custom/acf/acf-gallery/acf-gallery.php');
 require_once locate_template('/lib/custom/acf/acf-repeater/acf-repeater.php');
 require_once locate_template('/lib/custom/acf/acf-flexible-content/acf-flexible-content.php');
 require_once locate_template('/lib/custom/acf/acf-options-page/acf-options-page.php' );
+require_once locate_template('/lib/custom/acf/acf-field-date-time-picker/acf-date_time_picker.php' );
+require_once locate_template('/lib/custom/acf/acf-gravity-forms/acf-gravity_forms.php' );
+require_once locate_template('/lib/custom/acf/acf-shortcode-field/shortcode_field.php' );
+require_once locate_template('/lib/custom/acf/acf-leaflet-field/acf-leaflet_field.php' );
+require_once locate_template('/lib/custom/acf/acf-wordpress-wysiwyg-field/acf-wp_wysiwyg.php' );
 
 require_once locate_template('/lib/custom/acf/product-file-downloads.php' );
 

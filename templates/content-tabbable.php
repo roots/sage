@@ -20,12 +20,21 @@
         <?php $tab_slug = convert_to_slug($tab_id); ?>
         
           <div class="tab-pane <?php if($count == 1) echo 'active'; ?>" id="<?php echo $tab_slug; ?>">
-          <?php if(get_row_layout() == "tab_normal"): ?>
-              <?php if($count == 1 && has_post_thumbnail()) { ?>
-           <div class="pull-right wrap-featured-image"><?php the_post_thumbnail('medium', array('class' => 'img-thumbnail')); ?></div>
-            <?php } ?>
-            	<?php the_sub_field("tab_content"); ?>
+          <?php if(get_row_layout() == "overview_tab"): ?>
+	          <?php if($count == 1 && has_post_thumbnail()) { ?>
+	           <div class="pull-right wrap-product-photo"><?php the_post_thumbnail('medium', array('class' => 'img-thumbnail')); ?></div>
+	          <?php } ?>
+            <?php the_sub_field("tab_content"); ?>
+          <?php elseif(get_row_layout() == "specifications_tab"): ?>
+            <?php the_sub_field("tab_content"); ?>
+          <?php elseif(get_row_layout() == "product_information_tab"): ?>
+            <?php the_sub_field("tab_content"); ?>
+          <?php elseif(get_row_layout() == "normal_tab"): ?>
+            <?php the_sub_field("tab_content"); ?>
+
+
           <?php endif; ?>
+
           </div>
           
         <?php $count++; ?>

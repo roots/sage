@@ -6,7 +6,7 @@ if(function_exists("register_field_group"))
 		'title' => 'Template - Tabs',
 		'fields' => array (
 			array (
-				'key' => 'field_5214310b88219',
+				'key' => 'field_tabs',
 				'label' => 'Tabs',
 				'name' => 'tabs',
 				'type' => 'flexible_content',
@@ -17,7 +17,7 @@ if(function_exists("register_field_group"))
 						'display' => 'row',
 						'sub_fields' => array (
 							array (
-								'key' => 'field_52143a9905a81',
+								'key' => 'field_normal_tab_label',
 								'label' => 'Tab Label',
 								'name' => 'tab_label',
 								'type' => 'text',
@@ -30,7 +30,7 @@ if(function_exists("register_field_group"))
 								'maxlength' => '',
 							),
 							array (
-								'key' => 'field_52143ab005a82',
+								'key' => 'field_normal_tab_content',
 								'label' => 'Tab Content',
 								'name' => 'tab_content',
 								'type' => 'wysiwyg',
@@ -43,11 +43,11 @@ if(function_exists("register_field_group"))
 					),
 					array (
 						'label' => 'Overview Tab',
-						'name' => 'Overview Tab',
+						'name' => 'overview_tab',
 						'display' => 'row',
 						'sub_fields' => array (
 							array (
-								'key' => 'field_52602f9975b5f',
+								'key' => 'field_overview_tab_label',
 								'label' => 'Tab Label',
 								'name' => 'tab_label',
 								'type' => 'text',
@@ -60,7 +60,7 @@ if(function_exists("register_field_group"))
 								'maxlength' => '',
 							),
 							array (
-								'key' => 'field_52602f9975b60',
+								'key' => 'field_overview_tab_content',
 								'label' => 'Tab Content',
 								'name' => 'tab_content',
 								'type' => 'wysiwyg',
@@ -70,7 +70,7 @@ if(function_exists("register_field_group"))
 								'media_upload' => 'yes',
 							),
 							array (
-								'key' => 'field_5260308075b66',
+								'key' => 'field_overview_tab_image',
 								'label' => 'Tab Image',
 								'name' => 'tab_image',
 								'type' => 'image',
@@ -87,7 +87,7 @@ if(function_exists("register_field_group"))
 						'display' => 'row',
 						'sub_fields' => array (
 							array (
-								'key' => 'field_5260306c75b64',
+								'key' => 'field_specifications_tab_label',
 								'label' => 'Tab Label',
 								'name' => 'tab_label',
 								'type' => 'text',
@@ -100,7 +100,7 @@ if(function_exists("register_field_group"))
 								'maxlength' => '',
 							),
 							array (
-								'key' => 'field_5260306c75b65',
+								'key' => 'field_specifications_tab_content',
 								'label' => 'Tab Content',
 								'name' => 'tab_content',
 								'type' => 'wysiwyg',
@@ -110,7 +110,7 @@ if(function_exists("register_field_group"))
 								'media_upload' => 'yes',
 							),
 							array (
-								'key' => 'field_5260309775b67',
+								'key' => 'field_specifications_tab_image',
 								'label' => 'Tab Image',
 								'name' => 'tab_image',
 								'type' => 'image',
@@ -127,7 +127,7 @@ if(function_exists("register_field_group"))
 						'display' => 'row',
 						'sub_fields' => array (
 							array (
-								'key' => 'field_526030d075b6a',
+								'key' => 'field_product_information_tab_label',
 								'label' => 'Tab Label',
 								'name' => 'tab_label',
 								'type' => 'text',
@@ -140,7 +140,7 @@ if(function_exists("register_field_group"))
 								'maxlength' => '',
 							),
 							array (
-								'key' => 'field_526030ea75b6d',
+								'key' => 'field_product_information_tab_content',
 								'label' => 'Tab Content',
 								'name' => 'tab_content',
 								'type' => 'relationship',
@@ -160,6 +160,89 @@ if(function_exists("register_field_group"))
 									1 => 'post_title',
 								),
 								'max' => '',
+							),
+						),
+					),
+					array (
+						'label' => 'PDF Tab',
+						'name' => 'pdf_tab',
+						'display' => 'row',
+						'sub_fields' => array (
+							array (
+								'key' => 'field_pdf_tab_label',
+								'label' => 'Tab Label',
+								'name' => 'tab_label',
+								'type' => 'text',
+								'column_width' => 10,
+								'default_value' => 'Veiw PDF',
+								'placeholder' => 'Veiw PDF',
+								'prepend' => '',
+								'append' => '',
+								'formatting' => 'none',
+								'maxlength' => '',
+							),
+							array (
+								'key' => 'field_pdf_tab_content',
+								'label' => 'Tab Content',
+								'name' => 'tab_content',
+								'type' => 'ShortCode',
+								'column_width' => '',
+							),
+						),
+					),
+					array (
+						'label' => 'Tab with Sub Sections',
+						'name' => 'tab_with_sub_sections',
+						'display' => 'row',
+						'sub_fields' => array (
+							array (
+								'key' => 'field_tab_with_sub_sections_label',
+								'label' => 'Tab Label',
+								'name' => 'tab_label',
+								'type' => 'text',
+								'column_width' => 10,
+								'default_value' => '',
+								'placeholder' => '',
+								'prepend' => '',
+								'append' => '',
+								'formatting' => 'none',
+								'maxlength' => '',
+							),
+							array (
+								'key' => 'field_sub_sections',
+								'label' => 'Sub Sections',
+								'name' => 'sub_sections',
+								'type' => 'repeater',
+								'column_width' => '',
+								'sub_fields' => array (
+									array (
+										'key' => 'field_sub_section_tab_label',
+										'label' => 'Tab Label',
+										'name' => 'tab_label',
+										'type' => 'text',
+										'column_width' => '',
+										'default_value' => '',
+										'placeholder' => '',
+										'prepend' => '',
+										'append' => '',
+										'formatting' => 'none',
+										'maxlength' => '',
+									),
+									array (
+										'key' => 'field_sub_section_tab_content',
+										'label' => 'Tab Content',
+										'name' => 'tab_content',
+										'type' => 'wysiwyg',
+										'column_width' => '',
+										'default_value' => '',
+										'toolbar' => 'full',
+										'media_upload' => 'yes',
+									),
+								),
+								'row_min' => 2,
+								'row_limit' => '',
+								'layout' => 'row',
+								'button_label' => 'Add Sub Section',
 							),
 						),
 					),

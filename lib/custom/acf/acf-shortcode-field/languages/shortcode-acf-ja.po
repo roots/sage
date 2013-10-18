@@ -1,0 +1,26 @@
+# Copyright (C) 2012 
+# This file is distributed under the same license as the  package.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/shortcode\n"
+"POT-Creation-Date: 2012-09-02 00:07:32+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2012-09-02 09:11+0900\n"
+"Last-Translator: Fumito MIZUNO <ounziw@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: shortcode_field.php:13
+msgid "ShortCode"
+msgstr "ショートコード"
+
+#: shortcode_field.php:22
+msgid "View the list of shortcodes"
+msgstr "ショートコード一覧を表示"
+
+#: shortcode_field.php:23
+msgid "Hide the list of shortcodes"
+msgstr "ショートコード一覧を隠す"
+
