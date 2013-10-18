@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Pagination for pages of topics (when viewing a forum)
+ * Pagination for pages of search results 
  *
  * @package bbPress
  * @subpackage Theme
@@ -14,13 +14,12 @@
 <div class="bbp-pagination">
 	<div class="row">
 		<div class="bbp-pagination-count col-md-8">
-			<?php bbp_forum_pagination_count(); ?>
+			<?php bbp_search_pagination_count(); ?>
 		</div>
-
 		<div class="bbp-pagination-links col-md-4 text-right">
-			<?php bbp_forum_pagination_links(); ?>
+			<?php bbp_search_pagination_links(); ?>
 		</div>
 	</div>
 </div>
-<hr />
+
 <?php do_action( 'bbp_template_after_pagination_loop' );
