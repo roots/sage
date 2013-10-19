@@ -35,3 +35,4 @@
 	do_action( 'bbp_template_after_single_topic' );
 	?>
 </div>
+<hr />

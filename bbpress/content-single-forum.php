@@ -36,3 +36,4 @@
 		do_action( 'bbp_template_after_single_forum' );
 	?>
 </div>
+<hr />
