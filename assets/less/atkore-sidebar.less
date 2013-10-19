@@ -7,8 +7,6 @@
     li {
      list-style: none;
     
-
-
     &.active a & {
       color: @list-group-link-color;
   
@@ -44,11 +42,11 @@
   
   }
   
-        // Round the first and last items
+	// Round the first and last items
   li:first-child a {
     .border-top-radius(@list-group-border-radius);
   }
-  li:last-child a {
+  li:last-child > a {
     margin-bottom: 0;
     .border-bottom-radius(@list-group-border-radius);
   }
@@ -71,5 +69,10 @@
       padding: 0;
       margin: 0;
       border: 0;
+    }
+    .open>.dropdown-menu {
+      left: 100%;
+      top: 100%;
+      margin-top: -41px;
     } 
 }
