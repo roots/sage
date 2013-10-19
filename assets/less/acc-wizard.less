@@ -1,0 +1,145 @@
+/*!
+ * Sample styles for jQuery accordion wizard based on bootstrap
+ * Original author: @stephen_thomas
+ * Licensed under the MIT license
+ */
+ 
+// Variables we'd normally get from Bootstrap via the
+// variables.less file. They're replicated here for
+// convenient builds, but you'll probably want to delete
+// these definitions and importe variables.less
+
+@linkColor:             #08c;
+@textColor:             #333;
+@grayLight:             #999;
+
+
+// Most of this style sheet creates the (slightly) fancy
+// numbers on the tasks in the sidebar. We definitely want
+// something a little nicer than the standard browser
+// ordered list styling. To do that, but retain the
+// incrementing numbers, we use the CSS counter function.
+
+ol.acc-wizard-sidebar {
+
+    // Reset our counter at the start of each ordered list
+    counter-reset: acc-wizard-counter;
+    
+    // Also get rid of the default left margin and padding
+    margin-left: 0;
+    padding-left: 0;
+
+    // Now let's address the individual list items
+    li {
+        // relative position so we can fix the numbers
+        // we're going to add
+        position: relative;
+        // better margin and padding
+        margin: 0 0 0.5em 2em;
+        padding: 0.25em 0.75em;
+        // get rid of the standard <ol> numbers
+        list-style: none;
+    }
+
+    // Now add our own numbers
+    li:before {
+        // content is the counter value
+        content: counter(acc-wizard-counter);
+        // and be sure to increment it for next item
+        counter-increment: acc-wizard-counter;
+        // position the element
+        position: absolute;
+        left: -2em;
+        top: 50%;
+        margin-top: -1.3em;
+        // make it big and noticeable
+        height: 2em;
+        width: 2em;
+        line-height: 2em;
+        // and style it
+        border: none;
+        background: @linkColor;
+        text-align: center;
+        font-weight: bold;
+        color: white;
+        border-radius: 2em;
+    }
+
+    // Style the components in the sidebar
+    li {
+        a {
+          color: @textColor;
+        }
+    }
+    li:before {
+        background: @textColor;
+    }
+
+    // Styles for tasks that are complete
+    li.acc-wizard-completed {
+        color: @grayLight;
+        a {
+          color: @grayLight;
+        }
+    }
+    li.acc-wizard-completed:before {
+        background: @grayLight;
+    }
+    // add a checkmark on completed tasks
+    li.acc-wizard-completed:after {
+        display: inline-block;
+        vertical-align: middle;
+        font-size: 4/3em;
+        width: 1.5*1.25em;
+        content: "\00a0\2713";
+        position: relative;
+        bottom: 0.1em;
+    }
+
+    // Styles for task that is active
+    li.acc-wizard-active {
+        color: @linkColor;
+        a {
+          color: @linkColor;
+        }
+    }
+    li.acc-wizard-active:before {
+        background: @linkColor;
+    }
+
+    // Add some breathing room at the top
+    li:first-child {
+        margin-top: 0.75em;
+    }
+}
+
+// Optional "improvements" to the bootstrap default styles
+// add a little spacing before the next/prev buttons
+.acc-wizard-step {
+    margin-top:2em;
+}
+
+// The next two styles handle the problem of jumping
+// to hash tags in the page. If the content isn't
+// visible, the browser normally scrolls so that the
+// hash tag is at the very top of the screen. In our
+// case, however, the hash tag is on the accordion
+// body, so the browser will scroll the associated
+// accordion heading right off the top of the screen.
+// That's not very good. To counter it, we'll fix
+// the height of the accordion heading so we can add
+// exactly that much padding to the accordion body.
+// Then we'll add a negative margin to the accordion
+// body to force it to cozy up inside the padding
+// we just created. And finally, we change the z-index
+// of the accordion heading to make sure it's not
+// obscured by the padding from the accordion body.
+.accordion-heading {
+    height:2.6em;
+    position: relative;
+    z-index: 1;
+}
+.accordion-body {
+    padding-top: 2.6em;
+    margin-top: -2.6em;
+}
