@@ -39,7 +39,26 @@ function my_custom_single_content() {
 add_action( 'shoestrap_content_single_override', 'my_custom_single_content' );
 ```
 
+<<<<<<< HEAD
 There are dozens of actions available, so before hacking the theme to do what you want, don't forget to check if you can do it with the existing actions.
+=======
+* Organized file and template structure
+* HTML5 Boilerplate's markup along with ARIA roles and microformat
+* Bootstrap
+* [Grunt build script](http://roots.io/using-grunt-for-wordpress-theme-development/)
+* [Theme activation](http://roots.io/roots-101/#theme-activation)
+* [Theme wrapper](http://roots.io/an-introduction-to-the-roots-theme-wrapper/)
+* Root relative URLs
+* Clean URLs (no more `/wp-content/`)
+* All static theme assets are rewritten to the website root (`/assets/*`)
+* Cleaner HTML output of navigation menus
+* Cleaner output of `wp_head` and enqueued scripts/styles
+* Nice search (`/search/query/`)
+* Image captions use `<figure>` and `<figcaption>`
+* Example vCard widget
+* Posts use the [hNews](http://microformats.org/wiki/hnews) microformat
+* [Multilingual ready](http://roots.io/wpml/) (Brazilian Portuguese, Bulgarian, Catalan, Danish, Dutch, English, Finnish, French, German, Hungarian, Indonesian, Italian, Korean, Macedonian, Norwegian, Polish, Russian, Simplified Chinese, Spanish, Swedish, Traditional Chinese, Turkish, Vietnamese, Serbian)
+>>>>>>> 29d5709606503452b5b2902259fe0ebf3d041e54
 
 ## Contributing
 
