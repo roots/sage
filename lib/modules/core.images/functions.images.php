@@ -43,10 +43,24 @@ function shoestrap_featured_image() {
   
 }
 endif;
-add_action( 'shoestrap_page_pre_content', 'shoestrap_featured_image' );
-add_action( 'shoestrap_single_pre_content', 'shoestrap_featured_image' );
-add_action( 'shoestrap_after_entry_meta', 'shoestrap_featured_image' );
 
+
+if ( !function_exists( 'shoestrap_image' ) ) :
+function shoestrap_remove_featured_image_per_post_type() {
+  $post_types = get_post_types( array( 'public' => true ), 'names' );
+  $post_type_options = shoestrap_getVariable( 'feat_img_per_post_type' );
+  echo $post_type_options;
+
+  foreach ( $post_types as $post_type ) :
+    if ( is_singular( $post_type ) && $post_type_options[$post_type] != 1 ) :
+      add_action( 'shoestrap_page_pre_content', 'shoestrap_featured_image' );
+      add_action( 'shoestrap_single_pre_content', 'shoestrap_featured_image' );
+      add_action( 'shoestrap_after_entry_meta', 'shoestrap_featured_image' );
+    endif;
+  endforeach;
+}
+endif;
+add_action( 'pre_get_posts', 'shoestrap_remove_featured_image_per_post_type' );
 
 if ( !function_exists( 'shoestrap_image' ) ) :
 /*
