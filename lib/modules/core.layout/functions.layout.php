@@ -11,15 +11,17 @@ function shoestrap_getLayout() {
     do_action( 'shoestrap_layout_modifier' );
     $shoestrap_layout = intval( shoestrap_getVariable( 'layout' ) );
 
-    if (is_page() && shoestrap_getVariable( 'page_layout_toggle' ) == 1 ) :
-      $shoestrap_layout = intval( shoestrap_getVariable( 'page_layout' ) );
-    elseif ( !is_page() && shoestrap_getVariable( 'blog_layout_toggle' ) == 1 ) :
-      $shoestrap_layout = intval( shoestrap_getVariable( 'blog_layout' ) );
-    endif;
+    $post_types = get_post_types( array( 'public' => true ), 'names' );
+    foreach ( $post_types as $post_type ) :
+      if ( is_singular( $post_type ) && shoestrap_getVariable( 'cpt_layout_toggle' ) == 1 ) :
+        $shoestrap_layout = intval( shoestrap_getVariable( $post_type . '_layout' ) );
+      endif;
+    endforeach;
 
     if ( !is_active_sidebar( 'sidebar-secondary' ) && is_active_sidebar( 'sidebar-primary' ) && $shoestrap_layout == 5 ) :
       $shoestrap_layout = 3;
     endif;
+
   endif;
 
   return $shoestrap_layout;

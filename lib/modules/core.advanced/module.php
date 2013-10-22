@@ -21,6 +21,27 @@ function shoestrap_module_advanced_options( $sections ) {
   );
 
   $fields[] = array( 
+    'title'     => __( 'Disable Comments on Blog', 'shoestrap' ),
+    'desc'      => __( 'Do not allow site visitors to write comments on blog posts. Default: Off.', 'shoestrap' ),
+    'id'        => 'blog_comments_toggle',
+    'default'   => 0,
+    'type'      => 'switch',
+    'customizer'=> array(),
+  );
+
+  $fields[] = array( 
+    'title'     => __( 'Post excerpt length', 'shoestrap' ),
+    'desc'      => __( 'Select the height of your featured images on post archives. Default: 40px', 'shoestrap' ),
+    'id'        => 'post_excerpt_length',
+    'default'   => 40,
+    'min'       => 10,
+    'step'      => 1,
+    'max'       => 1000,
+    'edit'      => 1,
+    'type'      => 'slider'
+  );
+
+  $fields[] = array( 
     'title'     => __( 'Enable Retina mode', 'shoestrap' ),
     'desc'      => __( 'By enabling your site will be retina ready. Requires a all images to be uploaded at 2x the typical size desired, including logos. Default: On', 'shoestrap' ),
     'id'        => 'retina_toggle',

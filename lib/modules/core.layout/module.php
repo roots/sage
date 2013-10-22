@@ -59,6 +59,35 @@ function shoestrap_module_layout_options( $sections ) {
     'default' => '4'
   );
 
+  $fields[] = array(
+    'title'     => __( 'Custom Layouts per Post Type', 'shoestrap' ),
+    'desc'      => __( 'Set a default layout for each post type on your site.', 'shoestrap' ),
+    'id'        => 'cpt_layout_toggle',
+    'default'   => 0,
+    'type'      => 'switch',
+    'customizer'=> array(),
+  );
+
+  $post_types = get_post_types( array( 'public' => true ), 'names' );
+  foreach ( $post_types as $post_type ) :
+    $fields[] = array(
+      'title'     => __( $post_type . ' Layout', 'shoestrap' ),
+      'desc'      => __( 'Override your default stylings. Choose between 1, 2 or 3 column layout.', 'shoestrap' ),
+      'id'        => $post_type . '_layout',
+      'default'   => shoestrap_getVariable( 'layout' ),
+      'type'      => 'image_select',
+      'required'  => array( 'cpt_layout_toggle','=',array( '1' ) ),
+      'options'   => array(
+        0         => REDUX_URL . 'assets/img/1c.png',
+        1         => REDUX_URL . 'assets/img/2cr.png',
+        2         => REDUX_URL . 'assets/img/2cl.png',
+        3         => REDUX_URL . 'assets/img/3cl.png',
+        4         => REDUX_URL . 'assets/img/3cr.png',
+        5         => REDUX_URL . 'assets/img/3cm.png',
+      )
+    );
+  endforeach;
+
   $fields[] = array( 
     'title'     => __( 'Secondary Sidebar Width', 'shoestrap' ),
     'desc'      => __( 'Select the width of the Secondary Sidebar. Please note that the values represent grid columns. The total width of the page is 12 columns, so selecting 4 here will make the secondary sidebar to have a width of 1/3 ( 4/12 ) of the total page width.', 'shoestrap' ),

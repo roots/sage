@@ -12,7 +12,7 @@
  *
  * If you aren't using Apache, alternate configuration settings can be found in the docs.
  *
- * @link https://github.com/retlehs/roots/blob/master/doc/rewrites.md
+ * 
  */
 function roots_add_rewrites($content) {
   global $wp_rewrite;
