@@ -124,7 +124,7 @@ function shoestrap_footer_html() {
             if ( $network['url'] == '' )
               continue;
             ?>
-            <a href="<?php echo $network['url']; ?>"<?php echo $blank;?> data-toggle="tooltip" data-placement="top" title="" data-original-title="Tooltip on top">
+            <a href="<?php echo $network['url']; ?>"<?php echo $blank;?> title="<?php echo $network['icon']; ?>">
               <span class="icon elusive icon-<?php echo $network['icon']; ?>"></span>
             </a>
           <?php } ?>
