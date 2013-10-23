@@ -1,5 +1,13 @@
 @carousel-height: 450px;
 @carousel-width: 100%;
+@brands-carousel-height-xs: auto;
+@brands-carousel-height-sm: 120px;
+@brands-carousel-height-md: 120px;
+@brands-carousel-height-lg: 120px;
+@margin-top-brand-logo-xs: 45%;
+@margin-top-brand-logo-sm: 30%;
+@margin-top-brand-logo-md: 20%;
+@margin-top-brand-logo-lg: 5%;
 
 .carousel ul li {
   list-style: none;
@@ -21,17 +29,6 @@
   padding: 0;
   width: @carousel-width;
   height: @carousel-height;
-}
-
-
-#carousel-wrap {
-  .positioning-absolute;
-  z-index: 0;
-}
-
-#carousel-home {
-  .positioning-absolute;
-  overflow: hidden;
 }
 
 .carousel-fade {
@@ -67,88 +64,90 @@
   }
 }
 
-
-  
-  #carousel-home .item img {
-          position: absolute;
-          right: 0;
-          max-width: none;
-          bottom: 0;
-  }
-
-  #carousel-home .item:nth-child(1) .carousel-caption {
-          
-  }
-  
-  body[class*="kaf-tech"] #carousel-home .item:nth-child(2) .carousel-caption {
-		width: 45%;
-  }
-  
-  body[class*="kaf-tech"] #carousel-home .item:nth-child(3) .carousel-caption {
-		width: 35%;
-  }
-  
-  body[class*="kaf-tech"] #carousel-home .item:nth-child(1) img {
-		 max-width: 75%;
+body[class*="kaf-tech"] {
+	#carousel-home {
+		.item:nth-child(1) {
+			img {
+				max-width: 75%;
+			}
+		}
+		.item:nth-child(2) {
+			.carousel-caption {
+				width: 45%;
+			}
+		}
+		.item:nth-child(3) {
+			img {
+				max-width: 65%;
+			}
+			.carousel-caption {
+				width: 35%;
+			}
+		}
 	}
-	
-	body[class*="kaf-tech"] #carousel-home .item:nth-child(3) img {
-		 max-width: 65%;
-	}
+}
+
+#carousel-wrap {
+  .positioning-absolute;
+  z-index: 0;
+}
+
+#carousel-home {
+  .positioning-absolute;
+  overflow: hidden;
+  .item img {
+    position: absolute;
+    right: 0;
+    max-width: none;
+    bottom: 0;
+  }
+}
 
 
 #carousel-home .carousel-caption {
   bottom: 0;
   text-align: left;
   width: 50%;
-}
-
-#carousel-home .carousel-control {
-    padding-top: 230px;
-  }
-
-
-#carousel-home .item:nth-child(1) img {
-
-  }
-  
-  
-  
-#carousel-home .item:nth-child(2) img {
-
-}
-
-
-
-#carousel-home .carousel-caption.plain {
-  padding: 0;
-  color: #fff;
-  background-color: transparent;
-  -moz-box-shadow:0 0 0;
-  -webkit-box-shadow:0 0 0;
-  box-shadow: 0 0 0;
-}
-
-
-#carousel-home .carousel-caption h1 {
-  font-size: 18px;
-  margin: 0 auto 20px auto;
-}
-
-#carousel-home .carousel-caption.plain h1,
-#carousel-home .carousel-caption.plain p {
-  background-color: rgba(0,0,0,0.4);
-  padding: 10px;
-}
-
-
-#carousel-home .carousel-caption p {
-  margin: 0 auto 20px auto;
-}
-
-
-#carousel-home .carousel-caption .btn {
-
+  padding-top: 230px;
+	@media (min-width: @screen-md) {
+	  	bottom: 50px;
+	 }
+	h1 {
+	  font-size: 18px;
+	  margin: 0 auto 20px auto;
+	  background-color: rgba(0,0,0,0.4);
+	  padding: 10px;
+		  @media (min-width: @screen-sm) {
+    		font-size: 30px;
+			}
+			@media (min-width: @screen-md) {
+    		font-size: 30px;
+			}
+			@media (min-width: @screen-lg) {
+    		font-size: 30px;
+			}
+	}
+	p {
+		margin: 0 auto 20px auto;
+		background-color: rgba(0,0,0,0.4);
+		padding: 10px;
+	}
+	&.plain {
+	  padding: 0;
+	  color: #fff;
+	  background-color: transparent;
+	  -moz-box-shadow:0 0 0;
+	  -webkit-box-shadow:0 0 0;
+	  box-shadow: 0 0 0;
+	  h1 {
+		  background-color: rgba(0,0,0,0.4);
+		  padding: 10px;
+	  }
+	  p {
+		  background-color: rgba(0,0,0,0.4);
+		  padding: 10px;
+	  }
+	}
 }
 
 .bottom-bar {
@@ -172,197 +171,150 @@
 }
 
 
-
-
 // BRANDS FOOTER CAROUSEL 
 
-@brands-carousel-height-lg: 120px;
-@brands-carousel-height-md: 120px;
-@brands-carousel-height-sm: 120px;
-@brands-carousel-height-xs: auto;
+#brands-footer {
+	.carousel-inner {
+		-webkit-box-shadow: inset 0px 10px 20px -10px rgba(0, 0, 0, 0.35);
+		-moz-box-shadow:    inset 0px 10px 20px -10px rgba(0, 0, 0, 0.35);
+		box-shadow:         inset 0px 10px 20px -10px rgba(0, 0, 0, 0.35);
+		border-top: 1px solid #999;
+		overflow-x: hidden;
+		overflow-y: hidden;
+	}
+	
+	.fade-block {
+		display: block;
+		position: absolute;
+		top: 0;
+		width: 75px;
+		height: 100%;
+		
+			&.left {
+			background-image: #ffffff;
+			background-image: -webkit-linear-gradient(right, rgba(255,255,255,0.0) 0%, rgb(255,255,255) 72%, rgb(255,255,255) 100%);
+			background-image: -moz-linear-gradient(right, rgba(255,255,255,0.0) 0%, rgb(255,255,255) 72%, rgb(255,255,255) 100%);
+			background-image: -o-linear-gradient(right, rgba(255,255,255,0.0) 0%, rgb(255,255,255) 72%, rgb(255,255,255) 100%);
+			background-image: -ms-linear-gradient(right, rgba(255,255,255,0.0) 0%, rgb(255,255,255) 72%, rgb(255,255,255) 100%);
+			background-image: linear-gradient(right, rgba(255,255,255,0.0) 0%, rgb(255,255,255) 72%, rgb(255,255,255) 100%);
+			background-image: -webkit-gradient(linear, right top, left top, color-stop(0, rgba(255,255,255,0.0)), color-stop(0.72, rgb(255,255,255)), color-stop(1, rgb(255,255,255)));
+			filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff", endColorstr="#ffffff",GradientType=1);
+			background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB2aWV3Qm94PSIwIDAgMSAxIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIj48bGluZWFyR3JhZGllbnQgaWQ9ImcxMzgyMjAwOTEyNzQyIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjEwMCUiIHkxPSI1MCUiIHgyPSIwJSIgeTI9IjUwJSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIwIi8+PHN0b3Agb2Zmc2V0PSI3MiUiIHN0b3AtY29sb3I9IiNmZmZmZmYiIHN0b3Atb3BhY2l0eT0iMSIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+ICA8L2xpbmVhckdyYWRpZW50PjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9InVybCgjZzEzODIyMDA5MTI3NDIpIiAvPjwvc3ZnPg==);
+			left: 0;
+		}
 
-@margin-top-brand-logo-xs: 45%;
-@margin-top-brand-logo-sm: 35%;
-@margin-top-brand-logo-md: 25%;
-@margin-top-brand-logo-lg: 15%;
-
-
-#carousel-brands .carousel-inner {
--webkit-box-shadow: inset 0px 10px 20px -10px rgba(0, 0, 0, 0.35);
--moz-box-shadow:    inset 0px 10px 20px -10px rgba(0, 0, 0, 0.35);
-box-shadow:         inset 0px 10px 20px -10px rgba(0, 0, 0, 0.35);
-border-top: 1px solid #999;
-overflow-x: hidden;
-overflow-y: hidden!important;
-}
-
-#carousel-brands .carousel-inner::before {
-background-color: #ffffff;
-background-image: -webkit-gradient(linear, left center, right center, from(rgba(255, 255, 255, 1.00)), to(rgba(255, 255, 255, 0.00)));
-background-image: -webkit-linear-gradient(left, rgba(255, 255, 255, 1.00), rgba(255, 255, 255, 0.00));
-background-image: -moz-linear-gradient(left, rgba(255, 255, 255, 1.00), rgba(255, 255, 255, 0.00));
-background-image: -o-linear-gradient(left, rgba(255, 255, 255, 1.00), rgba(255, 255, 255, 0.00));
-background-image: -ms-linear-gradient(left, rgba(255, 255, 255, 1.00), rgba(255, 255, 255, 0.00));
-background-image: linear-gradient(left, rgba(255, 255, 255, 1.00), rgba(255, 255, 255, 0.00));
-filter: progid:DXImageTransform.Microsoft.gradient(GradientType=1,StartColorStr='#ffffff', EndColorStr='#ffffff');
-width: 75px;
-display: block;
-position: absolute;
-top: 0;
-left: 0;
-height: 100%;
-z-index: 200;
-border: 5px solid #000;
-z-index: 6000;
-}
-
-#carousel-brands .carousel-inner::after {
-background-color: #ffffff;
-background-image: -webkit-gradient(linear, left center, right center, from(rgba(255, 255, 255, 1.00)), to(rgba(255, 255, 255, 0.00)));
-background-image: -webkit-linear-gradient(left, rgba(255, 255, 255, 1.00), rgba(255, 255, 255, 0.00));
-background-image: -moz-linear-gradient(left, rgba(255, 255, 255, 1.00), rgba(255, 255, 255, 0.00));
-background-image: -o-linear-gradient(left, rgba(255, 255, 255, 1.00), rgba(255, 255, 255, 0.00));
-background-image: -ms-linear-gradient(left, rgba(255, 255, 255, 1.00), rgba(255, 255, 255, 0.00));
-background-image: linear-gradient(left, rgba(255, 255, 255, 1.00), rgba(255, 255, 255, 0.00));
-filter: progid:DXImageTransform.Microsoft.gradient(GradientType=1,StartColorStr='#ffffff', EndColorStr='#ffffff');
-width: 75px;
-display: block;
-position: absolute;
-top: 0;
-right: 0;
-height: 100%;
-z-index: 6000;
-}
-
-
-#brands-footer .carousel-control {
+		&.right {
+			background-image: #ffffff;
+			background-image: -webkit-linear-gradient(left, rgba(255,255,255,0.0) 0%, rgb(255,255,255) 72%, rgb(255,255,255) 100%);
+			background-image: -moz-linear-gradient(left, rgba(255,255,255,0.0) 0%, rgb(255,255,255) 72%, rgb(255,255,255) 100%);
+			background-image: -o-linear-gradient(left, rgba(255,255,255,0.0) 0%, rgb(255,255,255) 72%, rgb(255,255,255) 100%);
+			background-image: -ms-linear-gradient(left, rgba(255,255,255,0.0) 0%, rgb(255,255,255) 72%, rgb(255,255,255) 100%);
+			background-image: linear-gradient(left, rgba(255,255,255,0.0) 0%, rgb(255,255,255) 72%, rgb(255,255,255) 100%);
+			background-image: -webkit-gradient(linear, left top, right top, color-stop(0, rgba(255,255,255,0.0)), color-stop(0.72, rgb(255,255,255)), color-stop(1, rgb(255,255,255)));
+			filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff", endColorstr="#ffffff",GradientType=1);
+			background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB2aWV3Qm94PSIwIDAgMSAxIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIj48bGluZWFyR3JhZGllbnQgaWQ9ImcxMzgyMjAwODk0NzAzIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iNTAlIiB4Mj0iMTAwJSIgeTI9IjUwJSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIwIi8+PHN0b3Agb2Zmc2V0PSI3MiUiIHN0b3AtY29sb3I9IiNmZmZmZmYiIHN0b3Atb3BhY2l0eT0iMSIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+ICA8L2xpbmVhckdyYWRpZW50PjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9InVybCgjZzEzODIyMDA4OTQ3MDMpIiAvPjwvc3ZnPg==);
+			right: 0;
+		}
+	}
+	
+	.carousel-control {
   background: url('//assets.atkore.com/img/arrow-right-circle.png') center center no-repeat transparent;
+	  &.right {
+	    right: 0;
+	  }
+	  &.left {
+	    .flipImageH;
+	    left: 0;
+	  }
+	}
+	#carousel-brands ul {
+	  vertical-align: middle;
+	  text-align: center;
+	  margin: auto;
+	  padding: 0;
+		li {
+			margin: auto;
+			
+			a {
+				img {
+					
+				}
+			}
+		}
+	}
 }
 
-#brands-footer .carousel-control.left {
-          -moz-transform: scaleX(-1);
-          -o-transform: scaleX(-1);
-          -webkit-transform: scaleX(-1);
-          transform: scaleX(-1);
-          filter: FlipH;
-          -ms-filter: "FlipH";
-}
-
-#brands-footer .carousel-control.right {
-  background: url('//assets.atkore.com/img/arrow-right-circle.png') center center no-repeat transparent!important;
-}
-
-.carousel-control-wrapper span {
-
-}
-
-.carousel-control-wrapper .left span {
-
-}
-
-.carousel-control-wrapper .right span {
-
-}
-
-#carousel-brands ul li,
-#carousel-brands ul li img {
-  margin: auto; 
-}
-
-#carousel-brands ul,
-#carousel-brands ul li,
-#carousel-brands ul li a {
-    vertical-align: middle;
-    text-align: center;
-    margin: auto;
-  }
-
-  #carousel-brands ul {
-    margin: 0!important;
-    padding: 0!important;
-  }
-
-  #carousel-brands ul li {
-
-  }
-
-  .brand-logo-wrap {
-    width: 60%;
-  }
-
-  li[class^=brand-] .brand-logo-wrap {
-    margin-top: 0;
-  }
-
-  .brand-unistrut-construction .brand-logo-wrap,
-  .brand-unistrut .brand-logo-wrap,
-  .brand-columbia-mbf .brand-logo-wrap,
-  .brand-power-strut .brand-logo-wrap,
-  .brand-razor-ribbon .brand-logo-wrap,
-  .brand-kaf-tech .brand-logo-wrap,
-  .brand-tectron-tube .brand-logo-wrap,
-  .brand-sprinkflex .brand-logo-wrap {
-    margin: 20px auto;
-  }
-
-  .brand-flexhead-industries .brand-logo-wrap,
-  .brand-cope .brand-logo-wrap,
-  .brand-eastern-wire-conduit .brand-logo-wrap,
-  .brand-allied-tube-conduit .brand-logo-wrap {
-    margin: 15px auto;
-  }
-
-  .brand-acsuni-fab .brand-logo-wrap,
-  .brand-acroba .brand-logo-wrap,
-  .brand-atkore-international .brand-logo-wrap,
-  .brand-afc-cable-systems .brand-logo-wrap {
-    margin: 10px auto;
-  }
-
-  #carousel-brands ul li a img {
-    margin: auto;
-  filter: grayscale(100%);
-  -webkit-filter: grayscale(100%);
-  -moz-filter: grayscale(100%);
-  -ms-filter: grayscale(100%);
-  -o-filter: grayscale(100%);
-  filter: url('../assets/svg/desaturate.svg#greyscale');
-  filter: gray;
-  -webkit-filter: grayscale(1);
-  }
-  
-  #carousel-brands ul li a:hover img {
-  filter: none;
-  -webkit-filter: none;
-  -moz-filter: none;
-  -ms-filter: none;
-  -o-filter: none;
-  filter: none;
-  filter: none;
-  -webkit-filter: none;
-  }
-  
-
-  
-
-
-@media (min-width: @screen-sm) {
-  #carousel-brands .item,
+	#carousel-brands .item,
   #carousel-brands ul,
   #carousel-brands ul li,
   #carousel-brands ul li a {
-    max-height: @brands-carousel-height-sm;
-    height: @brands-carousel-height-sm;
+    min-height: @brands-carousel-height-sm;
+    text-align: center;
     vertical-align: middle;
+    @media (min-width: @screen-sm) {
+    
+    }
   }
   
-  .brand-logo-wrap {
-    max-height: @brands-carousel-height-sm;
-    height: @brands-carousel-height-sm;
-    margin: 0 auto;
-		width: 65%;
+
+  
+
+
+	.brand-logo-wrap {
+    	width: 60%;
+    @media (min-width: @screen-xs) {
+	    height: @brands-carousel-height-sm;
+	    margin: 0 auto;
+			width: 40%;
+		img {
+    	margin: 0 auto;
+		}
+		
+    }
+    @media (min-width: @screen-sm) {
+	    height: @brands-carousel-height-sm;
+	    margin: 0 auto;
+			width: 50%;
+    }
+    @media (min-width: @screen-md) {
+	    height: @brands-carousel-height-md;
+	    width: 60%;
+    }
+    @media (min-width: @screen-lg){
+	  width: 75%;
+    }
+    img {
+	    margin: 0 auto;
+		}
   }
   
+  
+  
+  
+
+  li[class^=brand-] .brand-logo-wrap {
+    margin-top: 0;
+    margin-left: auto;
+    margin-right: auto;
+    @media (min-width: @screen-xs) {
+	  	width: 30%;
+	    margin-left: auto;
+	    margin-right: auto;
+    }
+    @media (min-width: @screen-sm) {
+	    margin-left: auto;
+	    margin-right: auto;
+    }
+    @media (min-width: @screen-md) {
+	    margin-left: auto;
+	    margin-right: auto;
+    }
+    @media (min-width: @screen-lg) {
+	    margin-left: auto;
+	    margin-right: auto;
+    }
+  }
+
   .brand-unistrut-construction .brand-logo-wrap,
   .brand-unistrut .brand-logo-wrap,
   .brand-columbia-mbf .brand-logo-wrap,
@@ -370,92 +322,91 @@ z-index: 6000;
   .brand-razor-ribbon .brand-logo-wrap,
   .brand-kaf-tech .brand-logo-wrap,
   .brand-tectron-tube .brand-logo-wrap,
-  .brand-sprinkflex .brand-logo-wrap {
+  .brand-sprinkflex .brand-logo-wrap,
+  .brand-ridgeline-pipe .brand-logo-wrap,
+  .brand-heritage-plastics .brand-logo-wrap {
+    width: 80%;
     margin-top: @margin-top-brand-logo-sm;
+    @media (min-width: @screen-sm) {
+    	
+    }
   }
   
+  .brand-power-strut .brand-logo-wrap {
+    width: 90%;
+    margin-top: @margin-top-brand-logo-md;
+    @media (min-width: @screen-sm) {
+    	
+    }
+  }
+  
+  .brand-tectron-tube .brand-logo-wrap {
+    width: 95%;
+    margin-top: @margin-top-brand-logo-sm;
+    @media (min-width: @screen-sm) {
+    	
+    }
+  }
+  
+  .brand-columbia-mbf .brand-logo-wrap {
+    width: 90%;
+    margin-top: @margin-top-brand-logo-sm;
+    @media (min-width: @screen-sm) {
+    	
+    }
+  }
+  
+  .brand-heritage-plastics .brand-logo-wrap {
+    margin-top: 20px;
+    width: 85%;
+    @media (min-width: @screen-sm) {
+    	
+    }
+  }
+
   .brand-flexhead-industries .brand-logo-wrap,
   .brand-cope .brand-logo-wrap,
   .brand-eastern-wire-conduit .brand-logo-wrap,
   .brand-allied-tube-conduit .brand-logo-wrap {
     margin-top: @margin-top-brand-logo-md;
+    @media (min-width: @screen-md) {
+    	
+    }
   }
   
-  .brand-acsuni-fab .brand-logo-wrap,
-  .brand-acroba .brand-logo-wrap,
-  .brand-atkore-international .brand-logo-wrap,
+  .brand-eastern-wire-conduit .brand-logo-wrap {
+    margin-top: 20px;
+  }
+
   .brand-afc-cable-systems .brand-logo-wrap {
-    margin-top: @margin-top-brand-logo-lg;
+    width: 75%;
+    margin-top: 10px;
+    @media (min-width: @screen-lg) {
+    	
+    }
   }
   
-  #carousel-home .carousel-caption h1 {
-    font-size: 30px;
-  }
-  
-}
-
-@media (min-width: @screen-md) {
-
-  .brand-logo-wrap {
-    max-height: @brands-carousel-height-md;
-    height: @brands-carousel-height-md;
-    width: 60%;
-  }
-
-  #carousel-brands .item,
-  #carousel-brands ul,
-  #carousel-brands ul li,
-  #carousel-brands ul li a {
-    max-height: @brands-carousel-height-md;
-    height: @brands-carousel-height-md;
-  }
-  
-  .brand-atkore-international .brand-logo-wrap {
-    width: 30%;
-  }
-  
-  #carousel-home .carousel-caption {
-  bottom: 50px;
-  }
-  
-  #carousel-home .carousel-caption h1 {
-  font-size: 30px;
-  }
-  
-  
-}
-
-@media (min-width: @screen-lg) {
-  #carousel-brands .item,
-  #carousel-brands ul,
-  #carousel-brands ul li,
-  #carousel-brands ul li a {
-    max-height: @brands-carousel-height-lg;
-    height: @brands-carousel-height-lg;
-  }
-  
-  .brand-logo-wrap {
-    max-height: @brands-carousel-height-lg;
-    height: @brands-carousel-height-lg;
+  .brand-acsuni-fab .brand-logo-wrap {
     width: 70%;
+    margin-top: 5px;
   }
   
-  .brand-acsuni-fab .brand-logo-wrap,
-  .brand-acroba .brand-logo-wrap,
-  .brand-atkore-international .brand-logo-wrap,
-  .brand-afc-cable-systems .brand-logo-wrap {
-    margin-top: @margin-top-brand-logo-lg;
-  }
-
   .brand-atkore-international .brand-logo-wrap {
-    width: 35%;
+    width: 50%;
+    margin-top: 10px;
+  @media (min-width: @screen-md){
+
+    }
+  @media (min-width: @screen-lg){
+
+    }
   }
-
-}
-
-@media (max-width: @screen-xs-max) {
   
-}
-@media (min-width: @screen-sm) and (max-width: @screen-sm-max) {
+  .brand-acroba .brand-logo-wrap {
+    margin-top: 10px;
+    width: 65%;
+    @media (min-width: @screen-lg) {
+    	
+    }
+  }
   
-}

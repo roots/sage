@@ -1,8 +1,11 @@
+@sidebar-font-size: 12px;
+
 .sidebar .menu {
   margin-left: 0;
   margin-right: 0;
   padding-left: 0;
   padding-right: 0;
+  font-size: @sidebar-font-size;
 
     li {
      list-style: none;
@@ -53,7 +56,6 @@
   
 
     a {
-  
     color: #555;
     position: relative;
     display: block;
@@ -69,10 +71,17 @@
       padding: 0;
       margin: 0;
       border: 0;
+      font-size: @sidebar-font-size;
     }
     .open>.dropdown-menu {
       left: 100%;
       top: 100%;
       margin-top: -41px;
-    } 
+    }
+    
+    .caret {
+			transform:rotate(-90deg);
+			-ms-transform:rotate(-90deg); /* IE 9 */
+			-webkit-transform:rotate(-90deg); /* Safari and Chrome */
+    }
 }

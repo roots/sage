@@ -1,4 +1,23 @@
-$(document).ready(function() {
+!function ($) {
+
+  $(function(){
+
+    var $window = $(window)
+    var $body   = $(document.body)
+
+    var navHeight = $('.navbar').outerHeight(true) + 10
+
+    $body.scrollspy({
+      target: '.bs-sidebar',
+      offset: navHeight
+    })
+
+    $window.on('load', function () {
+      $body.scrollspy('refresh')
+    })
+
+   var activeTab = $('[href=' + location.hash + ']');
+   activeTab && activeTab.tab('show');
 
   $('.nav-tabs a:first').tab('show');
   
@@ -29,9 +48,6 @@ $(document).ready(function() {
    $(this).attr('data-toggle', 'modal');
   });
 
-
-
-  
   $('a.pdfbutton').each(function () {
    $(this).attr('class', 'list-group-item');
   });
@@ -52,20 +68,19 @@ $(document).ready(function() {
   });
   
   
-  $("table").tablecloth({
-  theme: "default",
-  bordered: true,
-  condensed: true,
-  striped: true,
-  sortable: false,
-  clean: true,
-  cleanElements: "th td",
-  customClass: "atkore-table table-hover"
-});
-
-   var activeTab = $('[href=' + location.hash + ']');
-   activeTab && activeTab.tab('show');
-
-});
+	$("table").tablecloth({
+	  theme: "default",
+	  bordered: true,
+	  condensed: true,
+	  striped: true,
+	  sortable: false,
+	  clean: true,
+	  cleanElements: "th td",
+	  customClass: "atkore-table table-hover"
+	});
 
 
+
+})
+
+}(window.jQuery)

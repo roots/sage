@@ -2,11 +2,11 @@
 if(function_exists("register_field_group"))
 {
 	register_field_group(array (
-		'id' => 'acf_template-tabs',
+		'url' => 'acf_template-tabs',
 		'title' => 'Template - Tabs',
 		'fields' => array (
 			array (
-				'key' => 'field_tabs',
+				'key' => 'field_5214310b88219',
 				'label' => 'Tabs',
 				'name' => 'tabs',
 				'type' => 'flexible_content',
@@ -17,7 +17,7 @@ if(function_exists("register_field_group"))
 						'display' => 'row',
 						'sub_fields' => array (
 							array (
-								'key' => 'field_normal_tab_label',
+								'key' => 'field_52143a9905a81',
 								'label' => 'Tab Label',
 								'name' => 'tab_label',
 								'type' => 'text',
@@ -30,7 +30,7 @@ if(function_exists("register_field_group"))
 								'maxlength' => '',
 							),
 							array (
-								'key' => 'field_normal_tab_content',
+								'key' => 'field_52143ab005a82',
 								'label' => 'Tab Content',
 								'name' => 'tab_content',
 								'type' => 'wysiwyg',
@@ -47,7 +47,7 @@ if(function_exists("register_field_group"))
 						'display' => 'row',
 						'sub_fields' => array (
 							array (
-								'key' => 'field_overview_tab_label',
+								'key' => 'field_52602f9975b5f',
 								'label' => 'Tab Label',
 								'name' => 'tab_label',
 								'type' => 'text',
@@ -60,7 +60,7 @@ if(function_exists("register_field_group"))
 								'maxlength' => '',
 							),
 							array (
-								'key' => 'field_overview_tab_content',
+								'key' => 'field_52602f9975b60',
 								'label' => 'Tab Content',
 								'name' => 'tab_content',
 								'type' => 'wysiwyg',
@@ -70,12 +70,12 @@ if(function_exists("register_field_group"))
 								'media_upload' => 'yes',
 							),
 							array (
-								'key' => 'field_overview_tab_image',
+								'key' => 'field_5260308075b66',
 								'label' => 'Tab Image',
 								'name' => 'tab_image',
 								'type' => 'image',
 								'column_width' => '',
-								'save_format' => 'object',
+								'save_format' => 'url',
 								'preview_size' => 'thumbnail',
 								'library' => 'uploadedTo',
 							),
@@ -87,7 +87,7 @@ if(function_exists("register_field_group"))
 						'display' => 'row',
 						'sub_fields' => array (
 							array (
-								'key' => 'field_specifications_tab_label',
+								'key' => 'field_5260306c75b64',
 								'label' => 'Tab Label',
 								'name' => 'tab_label',
 								'type' => 'text',
@@ -100,7 +100,7 @@ if(function_exists("register_field_group"))
 								'maxlength' => '',
 							),
 							array (
-								'key' => 'field_specifications_tab_content',
+								'key' => 'field_5260306c75b65',
 								'label' => 'Tab Content',
 								'name' => 'tab_content',
 								'type' => 'wysiwyg',
@@ -110,12 +110,12 @@ if(function_exists("register_field_group"))
 								'media_upload' => 'yes',
 							),
 							array (
-								'key' => 'field_specifications_tab_image',
+								'key' => 'field_5260309775b67',
 								'label' => 'Tab Image',
 								'name' => 'tab_image',
 								'type' => 'image',
 								'column_width' => '',
-								'save_format' => 'object',
+								'save_format' => 'url',
 								'preview_size' => 'thumbnail',
 								'library' => 'all',
 							),
@@ -127,7 +127,7 @@ if(function_exists("register_field_group"))
 						'display' => 'row',
 						'sub_fields' => array (
 							array (
-								'key' => 'field_product_information_tab_label',
+								'key' => 'field_526030d075b6a',
 								'label' => 'Tab Label',
 								'name' => 'tab_label',
 								'type' => 'text',
@@ -140,26 +140,14 @@ if(function_exists("register_field_group"))
 								'maxlength' => '',
 							),
 							array (
-								'key' => 'field_product_information_tab_content',
+								'key' => 'field_526030ea75b6d',
 								'label' => 'Tab Content',
 								'name' => 'tab_content',
-								'type' => 'relationship',
-								'column_width' => '',
-								'return_format' => 'object',
-								'post_type' => array (
-									0 => 'tablepress_table',
-								),
-								'taxonomy' => array (
-									0 => 'all',
-								),
-								'filters' => array (
-									0 => 'search',
-								),
-								'result_elements' => array (
-									0 => 'post_type',
-									1 => 'post_title',
-								),
-								'max' => '',
+								'type' => 'wysiwyg',
+								'column_width' => 90,
+								'default_value' => '',
+								'toolbar' => 'full',
+								'media_upload' => 'yes',
 							),
 						),
 					),
@@ -169,24 +157,60 @@ if(function_exists("register_field_group"))
 						'display' => 'row',
 						'sub_fields' => array (
 							array (
-								'key' => 'field_pdf_tab_label',
+								'key' => 'field_526082ed9bca9',
 								'label' => 'Tab Label',
 								'name' => 'tab_label',
 								'type' => 'text',
 								'column_width' => 10,
-								'default_value' => 'Veiw PDF',
-								'placeholder' => 'Veiw PDF',
+								'default_value' => 'Product Information',
+								'placeholder' => 'Product Information',
 								'prepend' => '',
 								'append' => '',
 								'formatting' => 'none',
 								'maxlength' => '',
 							),
 							array (
-								'key' => 'field_pdf_tab_content',
+								'key' => 'field_526082ed9bcaa',
 								'label' => 'Tab Content',
 								'name' => 'tab_content',
-								'type' => 'ShortCode',
+								'type' => 'wysiwyg',
+								'column_width' => 90,
+								'default_value' => '',
+								'toolbar' => 'full',
+								'media_upload' => 'yes',
+							),
+						),
+					),
+					array (
+						'label' => 'Chart Tab',
+						'name' => 'chart_tab',
+						'display' => 'row',
+						'sub_fields' => array (
+							array (
+								'key' => 'field_5265cef6e0c61',
+								'label' => 'Tab Label',
+								'name' => 'tab_label',
+								'type' => 'text',
+								'column_width' => 10,
+								'default_value' => 'Product Information',
+								'placeholder' => 'Product Information',
+								'prepend' => '',
+								'append' => '',
+								'formatting' => 'none',
+								'maxlength' => '',
+							),
+							array (
+								'key' => 'field_5265cef6e0c62',
+								'label' => 'Tab Content',
+								'name' => 'tab_content',
+								'type' => 'text',
 								'column_width' => '',
+								'default_value' => '',
+								'placeholder' => '',
+								'prepend' => '',
+								'append' => '',
+								'formatting' => 'none',
+								'maxlength' => '',
 							),
 						),
 					),
@@ -196,7 +220,7 @@ if(function_exists("register_field_group"))
 						'display' => 'row',
 						'sub_fields' => array (
 							array (
-								'key' => 'field_tab_with_sub_sections_label',
+								'key' => 'field_52607dd337f17',
 								'label' => 'Tab Label',
 								'name' => 'tab_label',
 								'type' => 'text',
@@ -209,16 +233,16 @@ if(function_exists("register_field_group"))
 								'maxlength' => '',
 							),
 							array (
-								'key' => 'field_sub_sections',
+								'key' => 'field_52607dee37f19',
 								'label' => 'Sub Sections',
 								'name' => 'sub_sections',
 								'type' => 'repeater',
 								'column_width' => '',
 								'sub_fields' => array (
 									array (
-										'key' => 'field_sub_section_tab_label',
-										'label' => 'Tab Label',
-										'name' => 'tab_label',
+										'key' => 'field_52607e0b37f1a',
+										'label' => 'Sub Section Label',
+										'name' => 'sub_section_label',
 										'type' => 'text',
 										'column_width' => '',
 										'default_value' => '',
@@ -229,14 +253,24 @@ if(function_exists("register_field_group"))
 										'maxlength' => '',
 									),
 									array (
-										'key' => 'field_sub_section_tab_content',
-										'label' => 'Tab Content',
-										'name' => 'tab_content',
+										'key' => 'field_52607e1d37f1b',
+										'label' => 'Sub Section Content',
+										'name' => 'sub_section_content',
 										'type' => 'wysiwyg',
 										'column_width' => '',
 										'default_value' => '',
 										'toolbar' => 'full',
 										'media_upload' => 'yes',
+									),
+									array (
+										'key' => 'field_5265ce90e0c5f',
+										'label' => 'Sub Section Image',
+										'name' => 'sub_section_image',
+										'type' => 'image',
+										'column_width' => '',
+										'save_format' => 'object',
+										'preview_size' => 'thumbnail',
+										'library' => 'all',
 									),
 								),
 								'row_min' => 2,

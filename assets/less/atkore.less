@@ -22,23 +22,38 @@
 @import "atkore-responsive.less";
 @import "atkore-select.less";
 @import "atkore-calendar.less";
+@import "wordpress.less";
 
 /* I've added the domain to the body class (in wordpress) so, you can use selectors like "[class*="atkore"]" or "[class*="atcfence"]" or "[class*="easternwire"]" */
 @brand-primary:         rgba(14,92,167,1);  // Blue
 @brand-secondary:       rgba(0,0,0, 1);          
 @brand-tertiary:        rgba(239,86,79,1);
 
+// Extra small screen / phone
+@media (max-width: @screen-xs) {
 
+}
+@media (min-width: @screen-xs) and (max-width: @screen-xs-max) {
+
+}
+
+// Small screen / tablet
 @media (min-width: @screen-sm) {
 
 }
-
-/* Medium devices (desktops, 992px and up) */
-@media (min-width: @screen-md) {
+@media (min-width: @screen-sm) and (max-width: @screen-sm-max) {
 
 }
 
-/* Large devices (large desktops, 1200px and up) */
+// Medium screen / desktop
+@media (min-width: @screen-md) {
+
+}
+@media (min-width: @screen-md) and (max-width: @screen-md-max) {
+
+}
+
+// Large screen / wide desktop
 @media (min-width: @screen-lg) {
 
 }

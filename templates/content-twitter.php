@@ -90,7 +90,7 @@ foreach($tweets as $tweet){
     } else {
         echo '
         <br /><br />
-        <a href="http://twitter.com/YOURUSERNAME" target="_blank">Click here to read YOURUSERNAME\'S Twitter feed</a>';
+        <a href="http://twitter.com/AtkoreIntl" target="_blank">Click here to read AtkoreIntl\'S Twitter feed</a>';
     }
 }
 } ?>

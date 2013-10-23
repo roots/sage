@@ -16,7 +16,7 @@ if(function_exists("register_field_group"))
 				'label' => 'DXF',
 				'name' => 'dxf',
 				'type' => 'file',
-				'save_format' => 'object',
+				'save_format' => 'ID',
 				'library' => 'all',
 			),
 			array (
@@ -24,7 +24,7 @@ if(function_exists("register_field_group"))
 				'label' => 'DWG',
 				'name' => 'dwg',
 				'type' => 'file',
-				'save_format' => 'object',
+				'save_format' => 'ID',
 				'library' => 'all',
 			),
 			array (
@@ -38,7 +38,7 @@ if(function_exists("register_field_group"))
 				'label' => 'SAT',
 				'name' => 'sat',
 				'type' => 'file',
-				'save_format' => 'object',
+				'save_format' => 'ID',
 				'library' => 'all',
 			),
 			array (
@@ -46,7 +46,7 @@ if(function_exists("register_field_group"))
 				'label' => 'STP',
 				'name' => 'stp',
 				'type' => 'file',
-				'save_format' => 'object',
+				'save_format' => 'ID',
 				'library' => 'all',
 			),
 			array (
@@ -59,9 +59,51 @@ if(function_exists("register_field_group"))
 				'key' => 'field_52368dd89e16f',
 				'label' => 'Submittal Sheet',
 				'name' => 'submittal_sheet',
-				'type' => 'file',
-				'save_format' => 'object',
-				'library' => 'all',
+				'type' => 'relationship',
+				'return_format' => 'object',
+				'post_type' => array (
+					0 => 'resource',
+				),
+				'taxonomy' => array (
+					0 => 'all',
+				),
+				'filters' => array (
+					0 => 'search',
+				),
+				'result_elements' => array (
+					0 => 'featured_image',
+					1 => 'post_type',
+					2 => 'post_title',
+				),
+				'max' => '',
+			),
+			array (
+				'key' => 'field_5265f68b0f766',
+				'label' => 'Specifications',
+				'name' => '',
+				'type' => 'tab',
+			),
+			array (
+				'key' => 'field_5265f6d90f767',
+				'label' => 'Specifications',
+				'name' => 'specifications',
+				'type' => 'relationship',
+				'return_format' => 'object',
+				'post_type' => array (
+					0 => 'resource',
+				),
+				'taxonomy' => array (
+					0 => 'all',
+				),
+				'filters' => array (
+					0 => 'search',
+				),
+				'result_elements' => array (
+					0 => 'featured_image',
+					1 => 'post_type',
+					2 => 'post_title',
+				),
+				'max' => '',
 			),
 			array (
 				'key' => 'field_52368f6e7673e',

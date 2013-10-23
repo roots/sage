@@ -32,3 +32,14 @@ function wph_right_now_content_table_end() {
  }
 }
 add_action( 'right_now_content_table_end' , 'wph_right_now_content_table_end' );
+
+// http://codex.wordpress.org/Dashboard_Widgets_API
+function example_remove_dashboard_widgets() {
+ 	remove_meta_box( 'dashboard_quick_press', 'dashboard', 'side' );
+ 	remove_meta_box( 'dashboard_incoming_links', 'dashboard', 'normal' );
+ 	remove_meta_box( 'dashboard_recent_drafts', 'dashboard', 'side' );
+ 	remove_meta_box( 'dashboard_recent_comments', 'dashboard', 'side' );
+ 	
+} 
+
+add_action('wp_dashboard_setup', 'example_remove_dashboard_widgets' );

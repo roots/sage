@@ -24,15 +24,19 @@
 	          <?php if($count == 1 && has_post_thumbnail()) { ?>
 	           <div class="pull-right wrap-product-photo"><?php the_post_thumbnail('medium', array('class' => 'img-thumbnail')); ?></div>
 	          <?php } ?>
+						<?php if($count > 1) { ?><?php if( get_field('tab_image') ) { ?><div class="pull-right wrap-product-photo"><img class="img-thumbnail" src="<?php the_sub_field('tab_image');?>" /></div><?php } ?><?php } ?>
             <?php the_sub_field("tab_content"); ?>
           <?php elseif(get_row_layout() == "specifications_tab"): ?>
+						<?php if( get_field('tab_image') ) { ?><div class="pull-right wrap-product-photo"><img class="img-thumbnail" src="<?php the_sub_field('tab_image');?>" /></div><?php } ?>
             <?php the_sub_field("tab_content"); ?>
           <?php elseif(get_row_layout() == "product_information_tab"): ?>
-            <?php the_sub_field("tab_content"); ?>
+						<?php if( get_field('tab_image') ) { ?><div class="pull-right wrap-product-photo"><img class="img-thumbnail" src="<?php the_sub_field('tab_image');?>" /></div><?php } ?>
+            <div class="table-responsive">
+            	<?php the_sub_field("tab_content"); ?>
+            </div>
           <?php elseif(get_row_layout() == "normal_tab"): ?>
+						<?php if( get_field('tab_image') ) { ?><div class="pull-right wrap-product-photo"><img class="img-thumbnail" src="<?php the_sub_field('tab_image');?>" /></div><?php } ?>
             <?php the_sub_field("tab_content"); ?>
-
-
           <?php endif; ?>
 
           </div>

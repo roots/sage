@@ -9,14 +9,20 @@ Author URI: http://maintainweb.co/
 License: GPL
 Copyright: Maintain Web
 */
+// http://wp.tutsplus.com/tutorials/creative-coding/the-rewrite-api-post-types-taxonomies/
+//add_rewrite_tag('%product%','([^/]+)','post_type=');
+//add_rewrite_tag('%product_cat%','([^/]+)','product_cat=');
+
+//add_permastruct('product', '%product_cat%/%product%');
+//add_permastruct('product_cat', '/%product_cat%');
 
 if ( ! function_exists('atkore_post_type_products') ) {
 
 // Register Custom Post Types
 function atkore_post_type_products() {
-    $admin_img_path = '//atkore.com/assets/img/atkore-admin-icon.png';
+    $admin_img_path = 'http://atkore.com/assets/img/atkore-admin-icon.png';
 
-  	$labels = array(
+ 	$labels = array(
   		'name'                => _x( 'Products', 'Post Type General Name', 'atkore' ),
   		'singular_name'       => _x( 'Product', 'Post Type Singular Name', 'atkore' ),
   		'menu_name'           => __( 'Products', 'atkore' ),
@@ -31,14 +37,14 @@ function atkore_post_type_products() {
   		'not_found'           => __( 'No products found', 'atkore' ),
   		'not_found_in_trash'  => __( 'No products found in Trash', 'atkore' ),
   	);
-
+/*
 	$rewrite = array(
 		'slug'                => '',
 		'with_front'          => false,
 		'pages'               => true,
 		'feeds'               => true,
 	);
-
+*/
   	$args = array(
   		'label'                 => __( 'Product', 'atkore' ),
   		'description'           => __( 'Product information pages', 'atkore' ),
@@ -58,7 +64,7 @@ function atkore_post_type_products() {
   		'exclude_from_search'   => false,
   		'publicly_queryable'    => true,
   		'capability_type'       => 'page',
-   		'rewrite'                    => $rewrite,
+   		//'rewrite'               => $rewrite,
   	);
 
   	register_post_type( 'product', $args );
@@ -79,8 +85,13 @@ function atkore_post_type_products() {
   		'add_or_remove_items'        => __( 'Add or remove Product Brand', 'atkore' ),
   		'choose_from_most_used'      => __( 'Choose from the most used Product Brands', 'atkore' ),
   	);
-
-
+/*
+  	$rewrite = array(
+  	  'slug'                => '',
+  	  'with_front'          => false,
+  	  'hierarchical'        => true,
+  	);
+*/
   	$args = array(
   		'labels'                     => $labels,
   		'hierarchical'               => true,
@@ -90,7 +101,7 @@ function atkore_post_type_products() {
   		'show_in_nav_menus'          => true,
   		'show_tagcloud'              => true,
   		'query_var'                  => 'product_brand',
-
+  		//'rewrite'                    => $rewrite,
   	);
 
   	register_taxonomy( 'product_brand', 'product', $args );
@@ -112,13 +123,13 @@ function atkore_post_type_products() {
   		'choose_from_most_used'      => __( 'Choose from the most used Product Categories', 'atkore' ),
   	);
 
-  	
+/*
   	$rewrite = array(
   	  'slug'                => '',
   	  'with_front'          => false,
   	  'hierarchical'        => true,
   	);
-
+*/
   	$args = array(
   		'labels'                     => $labels,
   		'hierarchical'               => true,
@@ -128,7 +139,7 @@ function atkore_post_type_products() {
   		'show_in_nav_menus'          => true,
   		'show_tagcloud'              => true,
   		'query_var'                  => 'product_cat',
-  		'rewrite'                    => $rewrite,
+  		//'rewrite'                    => $rewrite,
   	);
 
   	register_taxonomy( 'product_cat', 'product', $args );
@@ -149,13 +160,13 @@ function atkore_post_type_products() {
   		'add_or_remove_items'        => __( 'Add or remove product tags', 'atkore' ),
   		'choose_from_most_used'      => __( 'Choose from the most used product tags', 'atkore' ),
   	);
-  	
+/*
   	$rewrite = array(
   	  'slug'                => '',
   	  'with_front'          => false,
   	  'hierarchical'        => true,
   	);
-
+*/
   	$args = array(
   		'labels'                     => $labels,
   		'hierarchical'               => false,
@@ -165,7 +176,7 @@ function atkore_post_type_products() {
   		'show_in_nav_menus'          => true,
   		'show_tagcloud'              => true,
   		'query_var'                  => 'product_tag',
-  		'rewrite'                    => $rewrite,
+  		//'rewrite'                    => $rewrite,
   	);
 
   	register_taxonomy( 'product_tag', 'product', $args );

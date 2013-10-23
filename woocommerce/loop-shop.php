@@ -9,38 +9,50 @@
  * @version     1.6.4
  * @deprecated 	1.6
  */
+global $post;
+$posttype = get_post_type( get_the_ID() );
 
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+$term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
+$label = get_query_var( 'taxonomy' );
+$termm = get_query_var( 'term' );
 
-_deprecated_file( basename(__FILE__), '1.6', '', 'Use your own loop code, as well as the content-product.php template. loop-shop.php will be removed in WC 2.1.' );
+$tax_query = array( 'relation' => 'IN', array( 'taxonomy' => $label, 'field' => 'slug', 'terms' => array( $termm ) ));
+
+$args = array('posts_per_page' => -1, 'orderby'=> 'title', 'order' => 'ASC', 'post_type' => $posttype, 'tax_query' => $tax_query );
+$posts = get_posts( $args );
+
 ?>
+<div class="row">
+  <div class="col-lg-12">
+		<?php if ( !empty( $term->description ) ): ?>
+		<div class="archive-description">
+		<p><?php echo esc_html($term->description); ?></p>
+		</div>
+		<?php endif; ?>
+  </div>
+</div>
 
-<?php if ( have_posts() ) : ?>
-
-	<?php do_action('woocommerce_before_shop_loop'); ?>
-
-	<?php woocommerce_product_loop_start(); ?>
-
-		<?php woocommerce_product_subcategories(); ?>
-
-		<?php while ( have_posts() ) : the_post(); ?>
-
-			<?php woocommerce_get_template_part( 'content', 'product' ); ?>
-
-		<?php endwhile; // end of the loop. ?>
-
-	<?php woocommerce_product_loop_end(); ?>
-
-	<?php do_action('woocommerce_after_shop_loop'); ?>
-
-<?php else : ?>
-
-	<?php if ( ! woocommerce_product_subcategories( array( 'before' => woocommerce_product_loop_start( false ), 'after' => woocommerce_product_loop_end( false ) ) ) ) : ?>
-
-		<p><?php _e( 'No products found which match your selection.', 'woocommerce' ); ?></p>
-
-	<?php endif; ?>
-
-<?php endif; ?>
-
-<div class="clear"></div>
+<div class="row">
+<ul class="thumbnails">
+<?php foreach( $posts as $post ) :	setup_postdata($post); ?>
+ <li class="col-xs-6 col-sm-4 col-md-3 col-lg-3">
+   <div class="">
+     <article <?php post_class($post->ID); ?>>
+       <header>
+         
+       </header>
+        <a title="<?php echo get_the_title($post->ID); ?>" class="thumbnail thumbnail-<?php echo get_the_id(); ?>" id="archive-<?php echo get_the_id(); ?>" href="<?php echo get_permalink($post->ID);?>">
+          <div class="entry-summary">
+              <?php if ( has_post_thumbnail( get_the_id($post->ID) ) ) { the_post_thumbnail( 'small-tall' ); } else { ?><img src="http://placehold.it/180x210"/><?php } ?>
+          </div>
+        </a>
+        <footer>
+          <h4><a href="<?php echo get_permalink($post->ID);?>"><?php echo get_the_title($post->ID); ?></a></h4>
+          <p><?php echo the_excerpt($post->ID); ?></p>
+        </footer>
+      </article>
+    </div>
+  </li>
+<?php endforeach; ?>
+</ul>
+</div>

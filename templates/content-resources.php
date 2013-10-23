@@ -9,7 +9,7 @@ foreach ($terms as $term) { ?>
 <div class="well">
   <section title="<?php echo $term->name;?>" id="resource-type-<?php echo $term->slug;?>" class="resource-type resource-type-<?php echo $term->slug;?>">
   <?php
-  $wpq = array ('post_type' => $posttype, 'taxonomy'=>'resource-type','term'=>$term->slug, 'orderby' => 'title', 'order' => 'ASC');
+  $wpq = array ('post_type' => $posttype, 'taxonomy'=>'resource-type','term'=>$term->slug, 'orderby' => 'menu_order title', 'order' => 'ASC');
   $myquery = new WP_Query ($wpq);
   $article_count = $myquery->post_count;
   echo "<div class=\"row\">";

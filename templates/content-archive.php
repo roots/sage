@@ -26,7 +26,7 @@ $posts = get_posts( $args );
 <div class="row">
 <ul class="thumbnails">
 <?php foreach( $posts as $post ) :	setup_postdata($post); ?>
- <li class="col-xs-6 col-sm-4 col-md-3 col-lg-3">
+ <li class="col-xs-6 col-sm-4 col-md-4 col-lg-3">
    <div class="">
      <article <?php post_class($post->ID); ?>>
        <header>

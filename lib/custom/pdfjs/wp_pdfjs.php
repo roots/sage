@@ -53,7 +53,7 @@ function wp_pdfjs_func( $atts ) {
     extract(shortcode_atts(array(
                 'id' => '-1',
                 'url' => '',
-                'scale' => '1.5',
+                'scale' => '1.0',
                 'download' => true
                     ), $atts));
 

@@ -1,5 +1,8 @@
 <?php function custom_login_logo() {
   $logo = get_field('color_logo', 'options');
+	// $attachment_id = get_post_thumbnail_id();
+	// $size = "full";
+	// $image_attributes = wp_get_attachment_image_src( $attachment_id, $size );
 	echo '<style type="text/css">h1 a { background: url('. $logo .') 50% 50% no-repeat !important; width: 326px!important; height: 125px!important; }</style>';
 }
 
