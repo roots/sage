@@ -146,9 +146,41 @@ function shoestrap_navbar_social_links() {
 
   echo $content;
 }
-// If the user has selected to show social links in the navbar echo the content.
-if ( shoestrap_getVariable( 'navbar_social' ) == 1 ) :
+// If the user has selected to show social links as DROPDOWN in the navbar echo the content.
+if ( shoestrap_getVariable( 'navbar_social' ) == 1 && shoestrap_getVariable( 'navbar_social_style' ) == 0 ) :
   add_action( 'shoestrap_inside_nav_end', 'shoestrap_navbar_social_links' );
+endif;
+
+// That's for inline icon links
+function shoestrap_navbar_social_bar() {
+
+  // Get all the social networks the user is using
+  $networks = shoestrap_get_social_links();
+
+  // The base class for icons that will be used
+  $baseclass  = 'icon elusive icon-';
+
+  // Build the content
+  $content = '';
+  $content .= '<div id="navbar_social_bar">';
+
+  // populate the networks
+  foreach ( $networks as $network ) {
+    if ( strlen( $network['url'] ) > 7 ) :
+      // add the $show variable to check if the user has actually entered a url in any of the available networks
+      $show     = true;
+      $content .= '<a class="btn btn-link navbar-btn" href="' . $network['url'] . '" target="_blank" title="'. $network['icon'] .'">';
+      $content .= '<i class="' . $baseclass . $network['icon'] . '"></i> ';
+      $content .= '</a>';
+    endif;
+  }
+  $content .= '</div>';
+
+  echo $content;
+}
+// If the user has selected to show social INLINE links in the navbar echo the content.
+if ( shoestrap_getVariable( 'navbar_social' ) == 1 && shoestrap_getVariable( 'navbar_social_style' ) == 1 ) :
+  add_action( 'shoestrap_inside_nav_end', 'shoestrap_navbar_social_bar' );
 endif;
 
 // Properly parses the twitter URL if set

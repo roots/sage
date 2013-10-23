@@ -192,6 +192,18 @@ function shoestrap_module_menus_options( $sections ) {
   );
 
   $fields[] = array( 
+    'title'       => __( 'Display social links as a Dropdown list or an Inline list.', 'shoestrap' ),
+    'desc'        => __( 'How to display social links. Default: Dropdown list', 'shoestrap' ),
+    'id'          => 'navbar_social_style',
+    'customizer'  => array(),
+    'default'     => 0,
+    'on'          => __( 'Inline', 'shoestrap' ),
+    'off'         => __( 'Dropdown', 'shoestrap' ),
+    'type'        => 'switch',
+    'required'    => array('navbar_social','=',array('1')),
+  );
+
+  $fields[] = array( 
     'title'       => __( 'Search form on the NavBar', 'shoestrap' ),
     'desc'        => __( 'Display a search form in the NavBar. Default: On', 'shoestrap' ),
     'id'          => 'navbar_search',
