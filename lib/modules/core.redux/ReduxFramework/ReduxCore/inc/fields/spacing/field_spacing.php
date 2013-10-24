@@ -181,6 +181,9 @@ class ReduxFramework_spacing extends ReduxFramework{
 	}//function
 
     public function output() {
+        if ( !isset($this->field['output']) || empty( $this->field['output'] ) ) {
+            return;
+        }            
 
     	if ( !empty( $this->field['mode'] ) && !in_array($this->field['mode'], array( 'padding', 'absolute', 'margin', '' ) ) ) {
     		unset( $this->field['mode'] );
@@ -195,18 +198,18 @@ class ReduxFramework_spacing extends ReduxFramework{
     	}
 
 
-//absolute, padding, margin
-        $keys = implode(", ", $this->output);
+		//absolute, padding, margin
+        $keys = implode(",", $this->field['output']);
         $style = '<style type="text/css" class="redux-'.$this->field['type'].'">';
-            $style .= $keys." {";
+            $style .= $keys."{";
             foreach($this->value as $key=>$value) {
             	if ($key == "units") {
             		continue;
             	}
-            	if ( !empty( $this->field['mode'] ) ) {
-            		$style .= $this->field['mode'].'-';
+            	if (empty($value)) {
+            		$value = 0;
             	}
-                $style .= $key.': '.$value.'; ';
+                $style .= $key.':'.$value.';';
             }
             $style .= '}';
         $style .= '</style>';

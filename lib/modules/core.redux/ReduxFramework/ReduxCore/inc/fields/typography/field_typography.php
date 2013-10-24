@@ -286,7 +286,7 @@ class ReduxFramework_typography extends ReduxFramework{
                     $g_size = '';
                 }
 
-                echo '<p class="'.$this->field['id'].'_previewer typography-preview" '. $g_size .'>'. $g_text .'</p>';
+                echo '<p class="clear '.$this->field['id'].'_previewer typography-preview" '. $g_size .'>'. $g_text .'</p>';
                 
             echo "</div>";
         endif;

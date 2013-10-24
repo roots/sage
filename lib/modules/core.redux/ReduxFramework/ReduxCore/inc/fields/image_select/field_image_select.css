@@ -1,5 +1,5 @@
 .redux-image-select input[type='radio']{display:none}
-.redux-image-select{margin:3px 10px;display:inline-block;padding:10px;padding-left:0;text-align:center}
+.redux-image-select{margin:3px 10px;display:inline-block;padding:10px;padding-left:0}
 .redux-image-select-selected{background-color:#f9f9f9}
 .redux-image-select img,.redux-image-select-selected img,.redux-image-select .tiles,.redux-image-select-selected .tiles{border-width:4px;border-style:solid}
 .redux-image-select img,.redux-image-select .tiles{border-color:#d9d9d9}

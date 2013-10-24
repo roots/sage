@@ -114,7 +114,7 @@ if( !class_exists( 'ReduxFramework' ) ) {
             $defaults['allow_sub_menu']     = true;
             $defaults['show_import_export'] = true;
             $defaults['dev_mode']           = false;
-            $defaults['system_info']        = true;
+            $defaults['system_info']        = false;
             $defaults['admin_stylesheet']   = 'standard';
             $defaults['footer_credit']      = __( '<span id="footer-thankyou">Options panel created using <a href="' . $this->framework_url . '" target="_blank">Redux Framework</a> v' . $this->framework_version . '</span>', 'redux-framework' );
             $defaults['help_tabs']          = array();
@@ -149,7 +149,8 @@ if( !class_exists( 'ReduxFramework' ) ) {
             	}
             }
 
-		    $this->sections = $sections;
+		    $this->sections = apply_filters('redux-sections',$sections);
+
 			$this->extra_tabs = $extra_tabs;
 
             // Set option with defaults
@@ -429,68 +430,15 @@ if( !class_exists( 'ReduxFramework' ) ) {
 				foreach( $this->sections as $section ) {
 				    if( isset( $section['fields'] ) ) {
 						foreach( $section['fields'] as $field ) {
+                            //if we have required option in group field
+                            if(isset($field['subfields']) && is_array($field['subfields'])){
+                                foreach ($field['subfields'] as $subfield) {
+                                    if(isset($subfield['required']))
+                                        $this->get_fold($subfield);
+                                }
+                            }
 						    if( isset( $field['required'] ) ) {
-								if ( !is_array( $field['required'] ) ) {
-								    /*
-									Example variable:
-									    $var = array(
-										'fold' => 'id'
-										);
-								    */
-								    $folds[$field['required']]['children'][1][] = $field['id'];
-								    $folds[$field['id']]['parent'] = $field['required'];
-								} else {
-                                    $parent = $foldk = $field['required'][0];
-                                    $comparison = $field['required'][1];
-                                    $value = $foldv = $field['required'][2];										    										
-								    //foreach( $field['required'] as $foldk=>$foldv ) {
-								    	
-
-										if ( is_array( $value ) ) {
-										    /*
-											Example variable:
-											    $var = array(
-												'fold' => array( 'id' , '=', array(1, 5) )
-											    );
-										    */
-											
-										    foreach ($value as $foldvValue) {
-										    	//echo 'id: '.$field['id']." key: ".$foldk.' f-val-'.print_r($foldv)." foldvValue".$foldvValue;
-												$folds[$foldk]['children'][$foldvValue][] = $field['id'];
-												$folds[$field['id']]['parent'] = $foldk;
-										    }
-										} else {
-											
-											//!DOVY If there's a problem, this is where it's at. These two cases.
-											//This may be able to solve this issue if these don't work
-											//if (count($field['fold']) == count($field['fold'], COUNT_RECURSIVE)) {
-											//}
-
-											if (count($field['required']) === 1 && is_numeric($foldk)) {
-												/*
-												Example variable:
-												    $var = array(
-													'fold' => array( 'id' )
-												    );
-											    */	
-												$folds[$field['id']]['parent'] = $foldk;
-	  											$folds[$foldk]['children'][1][] = $field['id'];
-											} else {
-											    /*
-												Example variable:
-												    $var = array(
-													'fold' => array( 'id' => 1 )
-												    );
-											    */						
-											    if (empty($foldv)) {
-											    	$foldv = 0;
-											    }
-											    $folds[$field['id']]['parent'] = $foldk;
-												$folds[$foldk]['children'][$foldv][] = $field['id'];	
-											}
-										}
-								    //}
-								}
+                                $this->get_fold($field);
 						    }
 						}
 				    }
@@ -526,10 +474,74 @@ if( !class_exists( 'ReduxFramework' ) ) {
 			print_r($parents);
 			print_r($toHide);
 */
-
-			return $folds;
+			return $this->folds;
 		    
 		}
+
+        function get_fold($field){
+            if ( !is_array( $field['required'] ) ) {
+                /*
+                Example variable:
+                    $var = array(
+                    'fold' => 'id'
+                    );
+                */
+                $this->folds[$field['required']]['children'][1][] = $field['id'];
+                $this->folds[$field['id']]['parent'] = $field['required'];
+            } else {
+                $parent = $foldk = $field['required'][0];
+                $comparison = $field['required'][1];
+                $value = $foldv = $field['required'][2];                                                                                    
+                //foreach( $field['required'] as $foldk=>$foldv ) {
+                    
+
+                    if ( is_array( $value ) ) {
+                        /*
+                        Example variable:
+                            $var = array(
+                            'fold' => array( 'id' , '=', array(1, 5) )
+                            );
+                        */
+                        
+                        foreach ($value as $foldvValue) {
+                            //echo 'id: '.$field['id']." key: ".$foldk.' f-val-'.print_r($foldv)." foldvValue".$foldvValue;
+                            $this->folds[$foldk]['children'][$foldvValue][] = $field['id'];
+                            $this->folds[$field['id']]['parent'] = $foldk;
+                        }
+                    } else {
+                        
+                        //!DOVY If there's a problem, this is where it's at. These two cases.
+                        //This may be able to solve this issue if these don't work
+                        //if (count($field['fold']) == count($field['fold'], COUNT_RECURSIVE)) {
+                        //}
+
+                        if (count($field['required']) === 1 && is_numeric($foldk)) {
+                            /*
+                            Example variable:
+                                $var = array(
+                                'fold' => array( 'id' )
+                                );
+                            */  
+                            $this->folds[$field['id']]['parent'] = $foldk;
+                            $this->folds[$foldk]['children'][1][] = $field['id'];
+                        } else {
+                            /*
+                            Example variable:
+                                $var = array(
+                                'fold' => array( 'id' => 1 )
+                                );
+                            */                      
+                            if (empty($foldv)) {
+                                $foldv = 0;
+                            }
+                            $this->folds[$field['id']]['parent'] = $foldk;
+                            $this->folds[$foldk]['children'][$foldv][] = $field['id'];    
+                        }
+                    }
+                //}
+            }
+            return $this->folds;
+        }
 
         /**
          * Set default options on admin_init if option doesn't exist
@@ -604,6 +616,9 @@ if( !class_exists( 'ReduxFramework' ) ) {
 
                         foreach( $this->sections as $k => $section ) {
                             if ( !isset( $section['title'] ) )
+                                continue;
+
+                            if ( isset( $section['submenu'] ) && $section['submenu'] == false )
                                 continue;
 
                             add_submenu_page(
@@ -723,6 +738,7 @@ if( !class_exists( 'ReduxFramework' ) ) {
 
 	    wp_enqueue_script('jquery');
 	    wp_enqueue_script('jquery-ui-core');
+        wp_enqueue_style( 'jquery-ui-css' );
 
             wp_register_style(
                 'redux-css',
@@ -789,8 +805,8 @@ if( !class_exists( 'ReduxFramework' ) ) {
 
             wp_enqueue_script(
                 'redux-js',
-                REDUX_URL . 'assets/js/admin.js',// DEBUG ONLY
-                //REDUX_URL . 'assets/js/admin.min.js',
+                //REDUX_URL . 'assets/js/admin.js',// DEBUG ONLY
+                REDUX_URL . 'assets/js/admin.min.js',
                 array( 'jquery','jquery-cookie' ),
                 time(),
                 true
@@ -871,7 +887,7 @@ if( !class_exists( 'ReduxFramework' ) ) {
             	delete_transient( 'redux-warnings-' . $this->args['opt_name'] );
             	$localize['warnings'] = array('total'=>$theTotal, 'warnings'=>$theWarnings);
             }
-
+            
             // Values used by the javascript
             wp_localize_script(
                 'redux-js', 
@@ -1042,7 +1058,11 @@ if( !class_exists( 'ReduxFramework' ) ) {
                         if( isset( $field['title'] ) && isset( $field['type'] ) && $field['type'] !== "info" ) {
 			    			$default_mark = ( !empty($field['default']) && isset($this->options[$field['id']]) && $this->options[$field['id']] == $field['default'] && !empty( $this->args['default_mark'] ) && isset( $field['default'] ) ) ? $this->args['default_mark'] : '';
                             if (!empty($field['title'])) {
-                            	$th = $field['title'] . $default_mark;	
+				if ( $field['type'] == 'text' ) {
+                            		$th = '<label for="'. $field['id'] .'-'. $field['type'] .'">'. $field['title'] . $default_mark .'</label>';	
+				} else {
+					$th = $field['title'] . $default_mark;	
+				}
                             }
 						    if( isset( $field['subtitle'] ) ) {
 								$th .= '<span class="description">' . $field['subtitle'] . '</span>';
@@ -1624,7 +1644,7 @@ if( !class_exists( 'ReduxFramework' ) ) {
 
                 echo '</div>';
 
-                echo '<div id="redux-object-json" class="hide">'.json_encode($this, true).'</div>';
+                echo '<div id="redux-object-json" class="hide">'.json_encode($this->options).'</div>';
 
                 echo '<a href="#" id="consolePrintObject" class="button">' . __( 'Show Object in Javascript Console Object', 'redux-framework' ) . '</a>';
                 // END Javascript object debug

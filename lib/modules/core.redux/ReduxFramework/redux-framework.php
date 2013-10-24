@@ -17,8 +17,8 @@
  * Github URI:  https://github.com/ReduxFramework/ReduxFramework
  * Description: Redux is a simple, truly extensible options framework for WordPress themes and plugins.
  * Version:     3.0.0
- * Author:      Dovy Paukstys
- * Author URI:  http://simplerain.com
+ * Author:      ReduxFramework
+ * Author URI:  http://reduxframework.com
  * Text Domain: redux-framework
  * License:     GPL-2.0+
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
@@ -37,15 +37,3 @@ register_activation_hook( __FILE__, array( 'ReduxFrameworkPlugin', 'activate' ) 
 register_deactivation_hook( __FILE__, array( 'ReduxFrameworkPlugin', 'deactivate' ) );
 
 add_action( 'plugins_loaded', array( 'ReduxFrameworkPlugin', 'get_instance' ) );
-
-
-
-
-//add_action( 'plugins_loaded', 'wpse_92517_init' );
-function wpse_92517_init() {
- 	echo "is_multisite() ".is_multisite();	
- 	echo "is_super_admin() ".is_super_admin();	
- 	echo "is_main_site() ".is_main_site();	
- 	echo "get_current_blog_id() ".get_current_blog_id();
- 	echo 'is_network_admin() '.is_network_admin();
-}

@@ -158,12 +158,19 @@ if( !class_exists( 'ReduxFramework_border' ) ) {
         }
 
         public function output() {
+            if ( !isset($this->field['output']) || empty( $this->field['output'] ) ) {
+                return;
+            }
 
-            $keys = implode(", ", $this->output);
+            $keys = implode(",", $this->field['output']);
+
             $style = '<style type="text/css" class="redux-'.$this->field['type'].'">';
-                $style .= $keys." {";
+                $style .= $keys."{";
                 foreach($this->value as $key=>$value) {
-                    $style .= $key.': '.$value.'; ';
+                    if (empty($value)) {
+                        $value = 0;
+                    }
+                    $style .= $key.':'.$value.';';
                 }
                 $style .= '}';
             $style .= '</style>';

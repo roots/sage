@@ -33,7 +33,7 @@ class ReduxFrameworkPlugin {
 	/**
 	 * Array of config options saved in the DB
 	 *
-	 * Used to determine if demo mode or nightly builds are activated.
+	 * Used to determine if demo mode is activated.
 	 *
 	 * @since    1.0.0
 	 *
@@ -90,8 +90,6 @@ class ReduxFrameworkPlugin {
 
 		$defaults = array(
 						'demo'			=> false, 
-						'nightly'		=> true,
-						'api_refresh' 	=> false
 					);
 		// Grabbing the options if plugin is network activated
 		if ( is_multisite() ) {
@@ -99,12 +97,12 @@ class ReduxFrameworkPlugin {
 			foreach($plugins as $file => $k) {
 				if ( strpos($file,'redux-framework.php') !== false ) {
 					$this->plugin_network_activated = true;
-					$this->options = get_site_option( 'REDUX_FRAMEWORK_PLUGIN', $defaults );
+					$this->options = get_site_option( 'ReduxFrameworkPlugin', $defaults );
 				}
 			}
 		}
 		if ( empty($this->options) ) {
-			$this->options = get_option( 'REDUX_FRAMEWORK_PLUGIN', $defaults );
+			$this->options = get_option( 'ReduxFrameworkPlugin', $defaults );
 		}
 
 		// Load plugin text domain
@@ -127,27 +125,6 @@ class ReduxFrameworkPlugin {
 		if ($this->options['demo'] && file_exists( dirname( __FILE__ ) . '/sample/sample-config.php' ) ) {
 			require_once( dirname( __FILE__ ) . '/sample/sample-config.php' );
 		}
-
-		// Include the Github Updater
-		if ( !class_exists('Simple_Updater') && file_exists( dirname( __FILE__ ) . '/class-simple-updater.php') ) {
-			include_once( dirname( __FILE__ ) . '/class-simple-updater.php' );
-		}	
-
-		if (class_exists('Simple_Updater')) {
-			$config = array( 'slug' => dirname(__FILE__)."/redux-framework.php");
-			if ( $this->options['nightly'] ) {
-				$config['mode'] = "commits";
-			}
-			if ( !empty( $this->options['api_refresh'] ) && $this->options['api_refresh'] == true ) {
-				unset($this->options['api_refresh']);
-				delete_site_transient('update_plugins');
-				update_option( 'REDUX_FRAMEWORK_PLUGIN', $this->options );
-				$config['force_update'] = true;
-			}
-
-		  	$updater = new Simple_Updater( $config );
-
-		}		
 
 	}
 
@@ -219,7 +196,7 @@ class ReduxFrameworkPlugin {
 		} else {
 			self::single_deactivate();
 		}
-		delete_option( 'REDUX_FRAMEWORK_PLUGIN');
+		delete_option( 'ReduxFrameworkPlugin');
 	}
 
 	/**
@@ -265,19 +242,19 @@ class ReduxFrameworkPlugin {
 	 * @since    1.0.0
 	 */
 	private static function single_activate() {
-			$notices = get_option('REDUX_FRAMEWORK_PLUGIN_ACTIVATED_NOTICES', array());
-			$notices[]= __("Redux Framework has an embedded demo.", 'redux-framework').' <a href="./plugins.php?redux_framework_plugin=demo">'.__("Click here to activate the sample config file.", 'redux-framework')."</a>";
-			update_option('REDUX_FRAMEWORK_PLUGIN_ACTIVATED_NOTICES', $notices);			
+			$notices = get_option('ReduxFrameworkPlugin_ACTIVATED_NOTICES', array());
+			$notices[]= __("Redux Framework has an embedded demo.", 'redux-framework').' <a href="./plugins.php?ReduxFrameworkPlugin=demo">'.__("Click here to activate the sample config file.", 'redux-framework')."</a>";
+			update_option('ReduxFrameworkPlugin_ACTIVATED_NOTICES', $notices);			
 	}
 
 
 	public function admin_notices() {
-		do_action('redux_framework_plugin_admin_notice');
-		if ($notices= get_option('REDUX_FRAMEWORK_PLUGIN_ACTIVATED_NOTICES')) {
+		do_action('ReduxFrameworkPlugin_admin_notice');
+		if ($notices= get_option('ReduxFrameworkPlugin_ACTIVATED_NOTICES')) {
 			foreach ($notices as $notice) {
 				echo "<div class='updated'><p>$notice</p></div>";
 			}
-			delete_option('REDUX_FRAMEWORK_PLUGIN_ACTIVATED_NOTICES');
+			delete_option('ReduxFrameworkPlugin_ACTIVATED_NOTICES');
 		}
 	}
 
@@ -287,7 +264,7 @@ class ReduxFrameworkPlugin {
 	 * @since    1.0.0
 	 */
 	private static function single_deactivate() {
-		delete_option('REDUX_FRAMEWORK_PLUGIN_ACTIVATED_NOTICES');
+		delete_option('ReduxFrameworkPlugin_ACTIVATED_NOTICES');
 	}
 
 	/**
@@ -313,38 +290,21 @@ class ReduxFrameworkPlugin {
 	public function redux_options_toggle_check() {
 		global $pagenow;
 
-		if ( $pagenow == "plugins.php" && is_admin() && !empty( $_GET['redux_framework_plugin'] ) ) {
+		if ( $pagenow == "plugins.php" && is_admin() && !empty( $_GET['ReduxFrameworkPlugin'] ) ) {
 			$url = "./plugins.php";
 
-			if ( $_GET['redux_framework_plugin'] == 'demo') {
+			if ( $_GET['ReduxFrameworkPlugin'] == 'demo') {
 				if ( $this->options['demo'] == false ) {
 					$this->options['demo'] = true;
 					//$url = admin_url( 'admin.php?page=redux_sample_options');
 				} else {
 					$this->options['demo'] = false;
 				}
-			} else if ( $_GET['redux_framework_plugin'] == 'nightly') {
-				if ( $this->options['nightly'] == false ) {
-					$this->options['nightly'] = true;
-				} else {
-					$this->options['nightly'] = false;
-				}
-				$this->options['api_refresh'] = true;
-			}	
-			/*
-			echo '<br />is_multisite() '.is_multisite();
-			echo '<br />is_network_admin() '.is_network_admin();
-			echo '<br />get_current_blog_id() '.get_current_blog_id();
-			echo '<br />is_main_site() '.is_main_site();
-			echo '<br />is_super_admin() '.is_super_admin();
-			echo '<br />is_plugin_active() '.is_plugin_active(dirname(__FILE__)."/redux-framework.php");
-
-			echo '<br />get_current_blog_id() '.get_current_blog_id();
-			*/
+			}
 			if ( is_multisite() && is_network_admin() && $this->plugin_network_activated ) {
-				update_site_option( 'REDUX_FRAMEWORK_PLUGIN', $this->options );
+				update_site_option( 'ReduxFrameworkPlugin', $this->options );
 			} else {
-				update_option( 'REDUX_FRAMEWORK_PLUGIN', $this->options );	
+				update_option( 'ReduxFrameworkPlugin', $this->options );	
 			}
 			wp_redirect( $url );
 
@@ -376,28 +336,14 @@ class ReduxFrameworkPlugin {
 	 	$extra = '<br /><span style="display: block; padding-top: 6px;">';
 		
 		if ($this->options['demo']) {
-			$demoText = '<a href="./plugins.php?redux_framework_plugin=demo" style="color: #bc0b0b;">' . __( 'Deactivate Demo Mode', $this->plugin_slug ) . '</a>';
+			$demoText = '<a href="./plugins.php?ReduxFrameworkPlugin=demo" style="color: #bc0b0b;">' . __( 'Deactivate Demo Mode', $this->plugin_slug ) . '</a>';
 		} else {
-			$demoText = '<a href="./plugins.php?redux_framework_plugin=demo">' . __( 'Activate Demo Mode', $this->plugin_slug ) . '</a>';
+			$demoText = '<a href="./plugins.php?ReduxFrameworkPlugin=demo">' . __( 'Activate Demo Mode', $this->plugin_slug ) . '</a>';
 		}
 		
-
-		
-		if ($this->options['nightly']) {
-			$nightlyText = '<a href="./plugins.php?redux_framework_plugin=nightly" style="color: #bc0b0b;">' . __( 'Disable Nightly Updates', $this->plugin_slug ) . '</a>';
-		} else {
-			$nightlyText = '<a href="./plugins.php?redux_framework_plugin=nightly">' . __( 'Enable Nightly Updates', $this->plugin_slug ) . '</a>';
-		}
 
 		if ( is_multisite() && $this->plugin_network_activated || !is_network_admin() || !is_multisite()) {
 			$extra .= $demoText;
-		}
-		
-		if ( (is_multisite() && is_network_admin()) || !is_multisite() ) {
-			if ( is_multisite() && $this->plugin_network_activated || !is_network_admin() || !is_multisite()) {
-			$extra .= ' | ';
-			}
-			$extra .= $nightlyText;
 		}
 
 		$extra .='</span>';

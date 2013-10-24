@@ -461,7 +461,6 @@ border: 1px solid #e5e5e5;
 		z-index: 0;
 		&.group_title {
 			padding-left: 30px;
-			display: inline-table;
 		}
 	}
 }
@@ -628,6 +627,7 @@ border: 1px solid #e5e5e5;
 #redux-main input, #redux-main select, #redux-main .sortlist_homepage_blocks, #redux-main textarea, .wp-picker-container, .switch-options {
 	margin-bottom: 7px;
 }
+#redux-main textarea.wp-editor-area {margin-bottom: 0;}
 #redux-main label input {
 	margin-bottom: 0;
 }
@@ -735,7 +735,7 @@ label.radio, label.multicheck {
 	width:95px;
 	float:left
 }
-#redux-main .group {
+/*#redux-main .group {
 	display:none;
 	padding-bottom:20px;
 }
@@ -745,7 +745,7 @@ label.radio, label.multicheck {
 }
 #redux-main input:focus, #redux-main select:focus, #redux-main textarea:focus {
 	background:#fff;
-}
+}*/
 
 
 #redux-main .hide {
@@ -879,7 +879,13 @@ label.radio, label.multicheck {
 	margin-top: 0;
 }
 
+img {
+	max-width:100%; 
+	max-height:100%;
+}
+
 .showDefaults {
+	display: block;
 	font-weight: normal;
 	font-size: .8em;
 	color: #888;
@@ -888,7 +894,7 @@ label.radio, label.multicheck {
 	width: auto !important;
 }
 
-@media screen and (max-width : 900px) {
+@media screen and (max-width : 1124px) {
 	#redux-sidebar{
 		width:42px;
 	}
@@ -937,8 +943,11 @@ label.radio, label.multicheck {
 	.form-table > tbody > tr > th, .form-table > tbody > tr > td{
 		padding: 10px !important;
 	}
-	.form-table > tbody > tr > td span.description{
-		display: block;
+	.form-table > tbody > tr > th, .form-table > tbody > tr > td{
+		padding: 10px !important;
+	}
+	.form-table > tbody > tr > th {
+		min-width: 35%
 	}
 }
 

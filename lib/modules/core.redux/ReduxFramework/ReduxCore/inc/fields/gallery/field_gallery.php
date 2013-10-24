@@ -61,9 +61,7 @@ if (!class_exists('ReduxFramework_gallery')) {
          */
         public function render() {
 
-            echo '<a href="#" onclick="return false;" class="gallery-attachments button button-large">' . __('Add/Edit Gallery', 'so-panels') . '</a>';
-            echo '<input type="hidden" class="gallery_values ' . $this->field['class'] . '" value="' . esc_attr($this->value) . '" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . ']" />';
-
+            
             echo '<div class="screenshot">';
             if (!empty($this->value)) :
                 $ids = explode(',', $this->value);
@@ -75,6 +73,9 @@ if (!class_exists('ReduxFramework_gallery')) {
                 }
             endif;
             echo '</div>';
+            echo '<a href="#" onclick="return false;" id="edit-gallery" class="gallery-attachments button button-primary">' . __('Add/Edit Gallery', 'so-panels') . '</a> ';
+            echo '<a href="#" onclick="return false;" id="clear-gallery" class="gallery-attachments button">' . __('Clear Gallery', 'so-panels') . '</a>';            echo '<input type="hidden" class="gallery_values ' . $this->field['class'] . '" value="' . esc_attr($this->value) . '" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . ']" />';
+
 
         }
 
