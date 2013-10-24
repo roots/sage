@@ -30,10 +30,20 @@
 						<?php if( get_field('tab_image') ) { ?><div class="pull-right wrap-product-photo"><img class="img-thumbnail" src="<?php the_sub_field('tab_image');?>" /></div><?php } ?>
             <?php the_sub_field("tab_content"); ?>
           <?php elseif(get_row_layout() == "product_information_tab"): ?>
-						<?php if( get_field('tab_image') ) { ?><div class="pull-right wrap-product-photo"><img class="img-thumbnail" src="<?php the_sub_field('tab_image');?>" /></div><?php } ?>
+						<div class="panel panel-default">
+					  <!-- Default panel contents -->
+					  <div class="panel-heading">Product Information</div>
+					  <div class="panel-body">
+					  <?php if( get_field('tab_image') ) { ?><div class="pull-right wrap-product-photo"><img class="img-thumbnail" src="<?php the_sub_field('tab_image');?>" /></div><?php } ?>
+					    <p><?php the_sub_field("tab_panel_body"); ?></p>
+					  </div>
+					  <!-- Table -->
             <div class="table-responsive">
             	<?php the_sub_field("tab_content"); ?>
             </div>
+					</div>
+						
+
           <?php elseif(get_row_layout() == "normal_tab"): ?>
 						<?php if( get_field('tab_image') ) { ?><div class="pull-right wrap-product-photo"><img class="img-thumbnail" src="<?php the_sub_field('tab_image');?>" /></div><?php } ?>
             <?php the_sub_field("tab_content"); ?>
