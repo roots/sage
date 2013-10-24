@@ -84,4 +84,47 @@
 			-ms-transform:rotate(-90deg); /* IE 9 */
 			-webkit-transform:rotate(-90deg); /* Safari and Chrome */
     }
+    
 }
+
+   #sidebar-footer{
+    .panel {
+	    @media (max-width: @screen-sm) {
+		    width: 85%;
+		    margin: 15px auto;
+	    }
+			}
+    }
+    
+  ul.footer li::before {
+    @media (max-width: @screen-sm) {
+	    content: ""!important;
+			margin: 0;
+			}
+    }
+    
+    #menu-footer {
+    @media (max-width: @screen-sm) {
+	    width: 100%;
+	    margin-left: -15%;
+	    }
+    }
+    
+    .social-menu-wrap {
+    @media (max-width: @screen-sm) {
+    	display: block;
+	    width: 100%;
+	    margin-right: -15%;
+	    position: relative;
+	    text-align: center;
+	    margin: 0 auto;
+	    top: 0;
+	    left: 0;
+	    float: none!important;
+	    ul {
+		    margin-left: 0;
+		    padding-left: 0;
+	    }
+			}
+	    
+    }

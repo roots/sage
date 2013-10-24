@@ -1,33 +1,8 @@
-<?php
-$args = array();
-$args['wp_query'] = array('post_type' => 'shopp_products',
-                          'posts_per_page' => 50);
-$args['fields'][] = array('type' => 'search',
-                          'title' => 'Search',
-                          'value' => '');
-$args['fields'][] = array('type' => 'taxonomy',
-                          'format'    =>  'checkbox',
-                          ''    =>    '');
-$args['fields'][] = array('type' => 'taxonomy',
-                          'format'    =>  'checkbox',
-                          'taxonomy'  =>  'shopp_location');
-$my_search = new WP_Advanced_Search($args);
-?>
- 
-<div class="search-form">
-   <?php $my_search->the_form();  ?>
+<?php get_template_part('templates/page', 'header'); ?>
+<div class="row">
+  <div class="col-lg-12">
+		<div class="archive-description">
+		<?php woocommerce_product_finder( array( 'use_category' => false , 'search_attributes' => array( 'genre' , 'size' , 'colour' ) ) );?>
+		</div>
+  </div>
 </div>
-
-<?php
-$my_search = new WP_Advanced_Search($args);
-$temp_query = $wp_query;
-$wp_query = $my_search->query();
-if ( have_posts() ): 
-   while ( have_posts() ): the_post();
- 
-      the_title();
- 
-   endwhile;
-endif;
-wp_reset_query();
-$wp_query = $temp_query;

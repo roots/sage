@@ -1,11 +1,10 @@
 !function ($) {
 
+
   $(function(){
 
     var $window = $(window)
     var $body   = $(document.body)
-
-    var navHeight = $('.navbar').outerHeight(true) + 10
 
     $body.scrollspy({
       target: '.bs-sidebar',
@@ -39,8 +38,17 @@
   });
   
   $('#carousel-brands').carousel({
-    interval: false
+    interval: false,
+    wrap: true
   });
+  
+  $('.carousel-control.left').click(function() {
+  	$('#carousel-brands').carousel('prev');
+	});
+	
+	$('.carousel-control.right').click(function() {
+	  $('#carousel-brands').carousel('next');
+	});
 
   $('li.menu-newsletter').find('a').each(function () {
    $(this).attr('href', '#');

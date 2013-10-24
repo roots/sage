@@ -40,7 +40,6 @@ function roots_scripts() {
   wp_enqueue_script('modernizr');
   wp_enqueue_script('roots_plugins');
   wp_enqueue_script('roots_main');
-
 }
 add_action('wp_enqueue_scripts', 'roots_scripts', 1);
 

@@ -31,19 +31,28 @@ $classes = '';
 	      <div class="row">
 	        <ul>
           <?php endif; ?>
-          <?php
-            $classes = array(
-              'col-xs-12 col-sm-4 col-md-2 col-lg-2'
-            );
-          ?>
+          <?php $classes = array('col-xs-12 col-sm-4 col-md-2 col-lg-2');?>
           <li <?php post_class($classes);?>>
-          	<?php $graylogo      = get_post( get_sub_field('brand_logo_gray') );?>
-          	<?php $colorlogo     = get_post( get_sub_field('brand_logo_color') );?>
-						<?php $attachment_id      = get_post_thumbnail_id();?>
-						<?php $size               = "full"; ?>
-						<?php $image_attributes   = wp_get_attachment_image_src( $attachment_id, $size );?>
+          	<?php $graylogo          			= get_field('brand_logo_gray');?>
+          	<?php $colorlogo         			= get_field('brand_logo_color');?>
+						<?php $attachment_id          = get_post_thumbnail_id();?>
+						<?php $size                   = "full"; ?>
+						<?php $image_attributes       = wp_get_attachment_image_src( $graylogo, $size );?>
+						<?php $gray_image_attributes  = wp_get_attachment_image_src( $graylogo, $size );?>
+						<?php $color_image_attributes = wp_get_attachment_image_src( $colorlogo, $size );?>
+						<script>
+						$('.swap-<?php the_ID();?>').each(function () {
+							  var curSrc = $(this).attr('src');
+							  if ( curSrc === '<?php echo $gray_image_attributes[0]; ?>' ) {
+							      $(this).attr('src', '<?php echo $color_image_attributes[0]; ?>');
+							  }
+							  if ( curSrc === '<?php echo $color_image_attributes[0]; ?>' ) {
+							      $(this).attr('src', '<?php echo $gray_image_attributes[0]; ?>');
+							  }
+							});
+						</script>
 						<div class="brand-logo-wrap">
-							<a title="<?php the_title();?>" href="<?php the_field('brand_website');?>"><img class="img-responsive" src="<?php echo $image_attributes[0]; ?>" width="<?php echo $image_attributes[1]; ?>" height="<?php echo $image_attributes[2]; ?>"/></a>
+							<a title="<?php the_title();?>" href="<?php the_field('brand_website');?>"><img class="swap-<?php the_ID();?> img-responsive" alt="<?php the_title();?>" src="<?php echo $gray_image_attributes[0]; ?>" width="<?php echo $image_attributes[1]; ?>" height="<?php echo $image_attributes[2]; ?>"/></a>
 						</div>
 					</li>
           <?php $i++ ?>

@@ -1,7 +1,7 @@
 @carousel-height: 450px;
 @carousel-width: 100%;
 @brands-carousel-height-xs: auto;
-@brands-carousel-height-sm: 120px;
+@brands-carousel-height-sm: 50px;
 @brands-carousel-height-md: 120px;
 @brands-carousel-height-lg: 120px;
 @margin-top-brand-logo-xs: 45%;
@@ -90,6 +90,9 @@ body[class*="kaf-tech"] {
 #carousel-wrap {
   .positioning-absolute;
   z-index: 0;
+	@media (max-width: @screen-sm) {
+	  	top: 350px;
+	 }
 }
 
 #carousel-home {
@@ -248,48 +251,103 @@ body[class*="kaf-tech"] {
   #carousel-brands ul,
   #carousel-brands ul li,
   #carousel-brands ul li a {
-    min-height: @brands-carousel-height-sm;
     text-align: center;
     vertical-align: middle;
+		background-repeat: no-repeat;
+		background-position: center center;
     @media (min-width: @screen-sm) {
-    
+    min-height: inherit;
     }
   }
   
+
+  
+  #carousel-brands ul li:nth-of-type(4) {
+	   @media (min-width: @screen-xs) {
+	   clear: left;
+	   }
+	   @media (min-width: @screen-sm) {
+	   
+	   }
+	   @media (min-width: @screen-md) {
+	   clear: none;
+	   }
+  }
+  
+  #carousel-brands ul li:nth-of-type(4),
+  #carousel-brands ul li:nth-of-type(5),
+  #carousel-brands ul li:nth-of-type(6) {
+	   @media (max-width: @screen-sm) {
+	   display: none;
+	   }
+	   @media (min-width: @screen-md) {
+	   display: block;
+	   }
+  }
+  
+  #carousel-brands ul li:nth-of-type(1) .brand-logo-wrap {
+	  	@media (max-width: @screen-sm) {
+	  	margin-top: 5px;
+	  }
+  }
+  #carousel-brands ul li:nth-of-type(2) .brand-logo-wrap,
+  #carousel-brands ul li:nth-of-type(3) .brand-logo-wrap {
+	  	@media (max-width: @screen-sm) {
+	  	margin-top: 10px;
+			}
+  }
 
   
 
 
 	.brand-logo-wrap {
     	width: 60%;
-    @media (min-width: @screen-xs) {
-	    height: @brands-carousel-height-sm;
-	    margin: 0 auto;
-			width: 40%;
-		img {
     	margin: 0 auto;
-		}
-		
+    @media (max-width: @screen-sm) {
+			
+	    height: @brands-carousel-height-sm;
+			width: 40%;
+			img {
+	    	margin: 0 auto;
+			}
     }
     @media (min-width: @screen-sm) {
-	    height: @brands-carousel-height-sm;
+	    height: @brands-carousel-height-md;
 	    margin: 0 auto;
 			width: 50%;
     }
     @media (min-width: @screen-md) {
-	    height: @brands-carousel-height-md;
+	    height: @brands-carousel-height-lg;
 	    width: 60%;
     }
     @media (min-width: @screen-lg){
 	  width: 75%;
     }
+    
+		a {
+
+		}
+		
     img {
 	    margin: 0 auto;
 		}
+
+  }
+  
+  .brand-logo {
+  @media (min-width: @screen-sm) {
+	  	margin: 20px auto 30px!important;
+	  	}
   }
   
   
-  
+   #carousel-brands {
+	   @media (max-width: @screen-sm) {
+	   ul {
+		    padding-top: 20px!important;
+	    }
+    }
+    }
   
 
   li[class^=brand-] .brand-logo-wrap {
@@ -409,4 +467,15 @@ body[class*="kaf-tech"] {
     	
     }
   }
+  #carousel-brands ul {
+	  @media (max-width: @screen-sm) {
+	   margin: 6% 0 20% 0;
+	   }
+  }
   
+  #carousel-brands ul li {
+	  @media (max-width: @screen-sm) {
+	   width: 40%;
+	   margin: 6% 0;
+	   }
+  }

@@ -9,10 +9,10 @@ add_theme_support('bootstrap-gallery');     // Enable Bootstrap's thumbnails com
 add_theme_support('nice-search');           // Enable /?s= to /search/ redirect
 add_theme_support('jquery-cdn');            // Enable to load jQuery from the Google CDN
 add_theme_support('woocommerce'); // Enables WooCommerce
-add_theme_support('print'); // Enables Print Styles
-add_theme_support('pdfjs'); // Enables pdf.js
-add_theme_support('wpml'); // Enables WordPress Multi Lingual
-add_theme_support('gravityforms'); // Enables GravityForms
+//add_theme_support('print'); // Enables Print Styles
+//add_theme_support('pdfjs'); // Enables pdf.js
+//add_theme_support('wpml'); // Enables WordPress Multi Lingual
+//add_theme_support('gravityforms'); // Enables GravityForms
 
 /**
  * Configuration values
@@ -89,7 +89,7 @@ function roots_display_sidebar() {
      * The second element must be an array even if there's only 1 argument.
      */
     array(
-      'is_404',
+     'is_404',
     ),
     /**
      * Page template checks (via is_page_template())

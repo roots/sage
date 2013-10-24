@@ -1,56 +1,25 @@
-.header-background-grad {
-  height: 140px;
-  display: block;
-  width: 100%;
-  float: left;
-  z-index: 10;
-}
+@header-height: 		auto;
+@min-header-height: 85px;
+@max-header-height: 300px;
 
-
-.header-background {
+.page-header-wrapper {
   .rounded-corners-rightside;
   position: relative;
   background-position: top right;
   margin-top: 0;
-  height: 140px;
-  min-height: 140px;
-  max-height: 140px;
+  height: @header-height;
+  min-height: @min-header-height;
+  max-height: @max-header-height;
   padding-left: 0;
   padding-top: 0;
   z-index: 1000;
   width: 100%;
-  padding-right: 30px;
-
 	-webkit-box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
 	   -moz-box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
 	    -ms-box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
 	     -o-box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
 	        box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
 }
-
-
-.page-header-wrapper {
-  .rounded-corners-rightside;
-  border-left: 15px solid @brand-primary;
-  overflow: hidden!important;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  height: 140px;
-  min-height: 140px;
-  max-height: 140px;
-  padding-left: 0;
-  width: 100%;
-  z-index: 1010;
-  #gradient > .horizontal(@brand-secondary, @brand-primary);
-	-webkit-box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
-	   -moz-box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
-	    -ms-box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
-	     -o-box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
-	        box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
-
-}
-
-
 
 .no-cssgradients .page-header-wrapper {
   /*background: url("@{ieHeaderGradientFallback}") repeat-y top left @primary-color;*/
@@ -59,49 +28,67 @@
 
 .page-header {
   .rounded-corners-rightside;
-  position: absolute;
-  width: 100%;
-  display: block;
-  margin: 0;
-  padding-right: 45px;
-  padding-bottom: 0;
-  border-bottom: 0;
+	  position: relative;
+	  width: 100%;
+	  display: block;
+	  margin: 20px 0 10px;
+	  padding: 0;
+	  border-bottom: 0;
+	  h1 {
+	  .rounded-corners-rightside;
+	  border-left: 15px solid @brand-primary;
+	  overflow: hidden!important;
+	  margin-top: 20px;
+	  margin-bottom: 0;
+	  height: @header-height;
+	  min-height: @min-header-height;
+	  max-height: @max-header-height;
+	  width: 100%;
+	  z-index: 1010;
+	  #gradient > .horizontal(@brand-secondary, @brand-primary);
+		-webkit-box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+		   -moz-box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+		    -ms-box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+		     -o-box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+		        box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+		  font-family: @atkore-primary-font-family;
+		  color: #fff;
+		  font-weight: normal;
+		  font-size: 42px;
+		  padding: 5% 0;
+		  letter-spacing: -1px;
+		  text-transform: uppercase;
+		  text-shadow: 1px 1px 0 rgba(0,0,0,.2), 2px 2px 0 rgba(0,0,0,.2), 3px 3px 0 rgba(0,0,0,.2);
+		  //white-space: nowrap;
+		  margin-top: 0;
+		  display: block;
+		  z-index: 1010;
+		  .text-wrap {
+		  	display: block;
+				padding-left: 20px;
+			}
+		  sup {
+		  font-size: percentage(0.5);
+		  top: -0.8em;
+			}
+
+		
+		h2 {
+		  font-family: @atkore-secondary-font-family;
+		  color: darken(#fff, 20%);
+		  font-weight: normal;
+		  font-size: 18px;
+		  text-transform: none;
+		  line-height: 18px;
+		  padding-right: 38%;
+		  white-space: normal;
+		  text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+		  position: absolute;
+		  z-index: 1010;
+		}
+	}
 }
 
-.page-header h1 {
-  font-family: @atkore-primary-font-family;
-  color: #fff;
-  font-weight: normal;
-  font-size: 42px;
-  padding: 25px 0 0 0;
-  letter-spacing: -1px;
-  text-transform: uppercase;
-  text-shadow: 1px 1px 0 rgba(0,0,0,.2), 2px 2px 0 rgba(0,0,0,.2), 3px 3px 0 rgba(0,0,0,.2);
-  //white-space: nowrap;
-  margin-top: 0;
-  position: absolute;
-  float: left;
-  z-index: 1010;
-}
-
-h1 sup {
-  font-size: percentage(0.5);
-  top: -0.8em;
-}
-
-.page-header h2 {
-  font-family: @atkore-secondary-font-family;
-  color: darken(#fff, 20%);
-  font-weight: normal;
-  font-size: 18px;
-  text-transform: none;
-  line-height: 18px;
-  padding-right: 38%;
-  white-space: normal;
-  text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
-  position: absolute;
-  z-index: 1010;
-}
 
 .product-image-wrapper {
   .rounded-corners-rightside;
@@ -133,15 +120,4 @@ h1 sup {
 
 .no-backgroundsize .product-image {
   width: 50%;
-}
-
-
-.header-text {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  padding-right: 15%;
-  padding-left: 20px;
-  z-index: 1010;
 }
