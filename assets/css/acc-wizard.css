@@ -1,0 +1,13 @@
+ol.acc-wizard-sidebar{counter-reset:acc-wizard-counter;margin-left:0;padding-left:0}ol.acc-wizard-sidebar li{position:relative;margin:0 0 .5em 2em;padding:.25em .75em;list-style:none}
+ol.acc-wizard-sidebar li:before{content:counter(acc-wizard-counter);counter-increment:acc-wizard-counter;position:absolute;left:-2em;top:50%;margin-top:-1.3em;height:2em;width:2em;line-height:2em;border:none;background:#08c;text-align:center;font-weight:bold;color:#fff;border-radius:2em}
+ol.acc-wizard-sidebar li a{color:#333}
+ol.acc-wizard-sidebar li:before{background:#333}
+ol.acc-wizard-sidebar li.acc-wizard-completed{color:#999}ol.acc-wizard-sidebar li.acc-wizard-completed a{color:#999}
+ol.acc-wizard-sidebar li.acc-wizard-completed:before{background:#999}
+ol.acc-wizard-sidebar li.acc-wizard-completed:after{display:inline-block;vertical-align:middle;font-size:1.3333333333333333em;width:1.875em;content:"\00a0\2713";position:relative;bottom:.1em}
+ol.acc-wizard-sidebar li.acc-wizard-active{color:#08c}ol.acc-wizard-sidebar li.acc-wizard-active a{color:#08c}
+ol.acc-wizard-sidebar li.acc-wizard-active:before{background:#08c}
+ol.acc-wizard-sidebar li:first-child{margin-top:.75em}
+.acc-wizard-step{margin-top:2em}
+.accordion-heading{height:2.6em;position:relative;z-index:1}
+.accordion-body{padding-top:2.6em;margin-top:-2.6em}
