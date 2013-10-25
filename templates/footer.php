@@ -13,6 +13,9 @@
     <div class="container">
       <div id="copyright" class="row">
         <div class="nav-footer-wrap">
+        	<?php if (current_user_can("manage_options")) : ?>
+						<a href="<?php echo bloginfo("siteurl") ?>/wp-admin/">Admin</a>
+					<?php endif; ?>
           <?php get_template_part('templates/menu-navbar', 'footer'); ?>
         </div><!-- /.nav-footer-wrap -->
       </div><!-- /.nav-footer-wrap -->

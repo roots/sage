@@ -42,3 +42,9 @@ require_once locate_template('/lib/custom/woocommerce/theme-wrapper.php');
 require_once locate_template('/lib/custom/woocommerce/remove-actions.php');
 //require_once locate_template('/lib/custom/woocommerce/new-measurement.php');
 //require_once locate_template('/lib/custom/pdfjs/wp_pdfjs.php');
+
+function cc_mime_types( $mimes ){
+	$mimes['svg'] = 'image/svg+xml';
+	return $mimes;
+}
+add_filter( 'upload_mimes', 'cc_mime_types' );

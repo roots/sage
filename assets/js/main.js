@@ -1,22 +1,4 @@
-!function ($) {
-
-
-  $(function(){
-
-    var $window = $(window)
-    var $body   = $(document.body)
-
-    $body.scrollspy({
-      target: '.bs-sidebar',
-      offset: navHeight
-    })
-
-    $window.on('load', function () {
-      $body.scrollspy('refresh')
-    })
-
-   var activeTab = $('[href=' + location.hash + ']');
-   activeTab && activeTab.tab('show');
+$(document).ready(function() {
 
   $('.nav-tabs a:first').tab('show');
   
@@ -38,20 +20,11 @@
   });
   
   $('#carousel-brands').carousel({
-    interval: false,
-    wrap: true
+    interval: false
   });
-  
-  $('.carousel-control.left').click(function() {
-  	$('#carousel-brands').carousel('prev');
-	});
-	
-	$('.carousel-control.right').click(function() {
-	  $('#carousel-brands').carousel('next');
-	});
 
   $('li.menu-newsletter').find('a').each(function () {
-   $(this).attr('href', '#');
+   $(this).attr('href', '#newsletter');
    $(this).attr('data-target', '#newsletter');
    $(this).attr('data-toggle', 'modal');
   });
@@ -76,19 +49,20 @@
   });
   
   
-	$("table").tablecloth({
-	  theme: "default",
-	  bordered: true,
-	  condensed: true,
-	  striped: true,
-	  sortable: false,
-	  clean: true,
-	  cleanElements: "th td",
-	  customClass: "atkore-table table-hover"
-	});
+  $("table").tablecloth({
+  theme: "default",
+  bordered: true,
+  condensed: true,
+  striped: true,
+  sortable: false,
+  clean: true,
+  cleanElements: "th td",
+  customClass: "atkore-table table-hover"
+});
+
+   var activeTab = $('[href=' + location.hash + ']');
+   activeTab && activeTab.tab('show');
+
+});
 
 
-
-})
-
-}(window.jQuery)
