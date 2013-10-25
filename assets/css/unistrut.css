@@ -104,11 +104,8 @@ img.featured-product{position:relative;top:50px;right:20px;float:right;z-index:0
 .main .nav-tabs>li>a:hover,.main .nav-tabs>li>a:focus{text-decoration:none}
 .main .nav-tabs>li.active>a:hover,.main .nav-tabs>li.active>a:focus{background-color:#fff;color:#000}
 .main .tab-pane{padding:20px 10px;overflow-x:hidden}
-table.table{-webkit-box-shadow:0 0 10px rgba(0,0,0,0.3);-moz-box-shadow:0 0 10px rgba(0,0,0,0.3);box-shadow:0 0 10px rgba(0,0,0,0.3)}
-.table th,.table td{text-align:center}
-table th{color:#fff;font-weight:bold;text-transform:uppercase;font-size:80%;line-height:100% !important;background-color:#1163b1;white-space:pre-line}
-.table-bordered th{-webkit-box-shadow:inset 0 -4px 3px -3px rgba(0,0,0,0.3);-moz-box-shadow:inset 0 -4px 3px -3px rgba(0,0,0,0.3);box-shadow:inset 0 -4px 3px -3px rgba(0,0,0,0.3);border-left:1px solid #0f569a}
-table th{background-color:#0f569a}
+table{text-align:center}table .shadowed{-webkit-box-shadow:0 0 10px rgba(0,0,0,0.3);-moz-box-shadow:0 0 10px rgba(0,0,0,0.3);box-shadow:0 0 10px rgba(0,0,0,0.3)}
+table thead th,table thead td{background-color:#0f569a;color:#fff;font-weight:bold;text-transform:uppercase;font-size:80%;line-height:100% !important;background-color:#1163b1;white-space:pre-line;-webkit-box-shadow:inset 0 -4px 3px -3px rgba(0,0,0,0.3);-moz-box-shadow:inset 0 -4px 3px -3px rgba(0,0,0,0.3);box-shadow:inset 0 -4px 3px -3px rgba(0,0,0,0.3);border-left:1px solid #0f569a}
 table td{white-space:pre-line}
 .title-row:first-of-type td{background-color:#a0cc75}
 thead [colspan]{text-align:center}
