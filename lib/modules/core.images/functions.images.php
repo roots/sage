@@ -51,7 +51,7 @@ function shoestrap_remove_featured_image_per_post_type() {
   $post_type_options = shoestrap_getVariable( 'feat_img_per_post_type' );
 
   foreach ( $post_types as $post_type ) :
-    if ( isset( $post_type ) && is_singular( $post_type ) && $post_type_options[$post_type] != 1 ) :
+    if ( isset( $post_type ) && is_singular( $post_type ) && isset( $post_type_options[$post_type] ) && $post_type_options[$post_type] != 1 ) :
       add_action( 'shoestrap_page_pre_content', 'shoestrap_featured_image' );
       add_action( 'shoestrap_single_pre_content', 'shoestrap_featured_image' );
       add_action( 'shoestrap_after_entry_meta', 'shoestrap_featured_image' );

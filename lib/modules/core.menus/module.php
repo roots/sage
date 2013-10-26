@@ -16,9 +16,9 @@ function shoestrap_module_menus_options( $sections ) {
   $fields[] = array( 
     'id'          => 'help7',
     'title'       => __( 'Advanced NavBar Options', 'shoestrap' ),
-    'desc'        => __( 'You can activate or deactivate your Primary NavBar here, and define its properties.
-                      Please note that you might have to manually create a menu if it doesn\'t already exist
-                      and add items to it from <a href=\'$url\'>this page</a>.', 'shoestrap' ),
+    'desc'        => __( "You can activate or deactivate your Primary NavBar here, and define its properties.
+                      Please note that you might have to manually create a menu if it doesn't already exist
+                      and add items to it from <a href='$url'>this page</a>.", 'shoestrap' ),
     'type'        => 'info'
   );
 
