@@ -48,7 +48,7 @@ function atkore_post_type_events() {
   		'show_in_menu'        => true,
   		'show_in_nav_menus'   => true,
   		'show_in_admin_bar'   => false,
-  		'menu_position'       => 20.7,
+  		'menu_position'       => 5,
   		'menu_icon'           => $admin_img_path,
   		'can_export'          => true,
   		'has_archive'         => false,

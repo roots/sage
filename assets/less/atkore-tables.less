@@ -42,26 +42,33 @@ thead tr th[colspan="3"]{
   background-color: #A0CC75;
 }
 
-thead [colspan] {
-  text-align: center;
+thead [colspan],
+tbody td[colspan] {
+  text-align: left;
 }
 
 .title-row td,
-.title-row th {
+.title-row th,
+tbody td[colspan] {
   font-weight: bold;
   text-transform: uppercase;
   font-size: 90%;
   line-height: 100% !important;
-  background-color: #eeeeee!important;
+  background-color: #ccc!important;
   -webkit-box-shadow: inset 0 -4px 3px -3px rgba(0, 0, 0, 0.2);
   -moz-box-shadow: inset 0 -4px 3px -3px rgba(0, 0, 0, 0.2);
   box-shadow: inset 0 -4px 3px -3px rgba(0, 0, 0, 0.2);
-  padding: 5px;
+  padding: 10px;
 }
 
-tbody .title-row td {
+tbody .title-row td,
+tbody td[colspan] {
   text-align: left;
   padding: 7px 15px;
+}
+
+table.atkore-table span {
+	clear: left;
 }
 
 .title-row.black td {

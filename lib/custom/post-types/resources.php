@@ -14,7 +14,7 @@ if ( ! function_exists('atkore_post_type_resources') ) {
 
 // Register Custom Post Types
 function atkore_post_type_resources() {
-    $admin_img_path = 'http://atkore.com/assets/img/atkore-admin-icon.png';
+    $admin_img_path = '//atkore.com/assets/img/atkore-admin-icon.png';
   	$labels = array(
   		'name'                => _x( 'Resources', 'Post Type General Name', 'atkore' ),
   		'singular_name'       => _x( 'Resource', 'Post Type Singular Name', 'atkore' ),
@@ -48,7 +48,7 @@ function atkore_post_type_resources() {
   		'show_in_menu'        => true,
   		'show_in_nav_menus'   => true,
   		'show_in_admin_bar'   => true,
-  		'menu_position'       => 6,
+  		'menu_position'       => 5,
   		'menu_icon'           => $admin_img_path,
   		'can_export'          => true,
   		'has_archive'         => true,
