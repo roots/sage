@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Roots WordPress theme translations 1.0\n"
 "POT-Creation-Date: \n"
 "PO-Revision-Date: \n"
-"Last-Translator: Kyrre Matias Goksøyr <kyrremg@gmail.com>\n"
+"Last-Translator: Bjørn Erik Pedersen <bjorn.erik.pedersen@gmail.com>\n"
 "Language-Team: utenH <kyrremg@gmail.com>\n"
 "MIME-Version: 1.0\n"
 "X-Poedit-Language: Norwegian Nynorsk\n"
@@ -98,7 +98,7 @@ msgstr "Adapt.js"
 #. Text in function
 #: inc/roots-activation.php:145
 msgid "Add all current published pages to the Primary Navigation"
-msgstr "Legg alle publiserte sider til i hovudnavigasjonen."
+msgstr "Legg alle publiserte sider til i hovudmenyen"
 
 #. Text in echo
 #: inc/roots-activation.php:137
@@ -124,18 +124,18 @@ msgstr "Bootstrap"
 #. Text in echo
 #: inc/roots-options.php:282
 msgid "Bootstrap Javascript Packages"
-msgstr "Bootstrap Javascript Packages"
+msgstr "Bootstrap Javascript-pakkar"
 
 #. Text in function
 #: inc/roots-options.php:1
 msgid "Bootstrap w/ Less"
-msgstr "Bootstrap w/ Less"
+msgstr "Bootstrap med Less"
 
 #. Text in echo
 #: inc/roots-options.php:226
 #: inc/roots-options.php:228
 msgid "CSS Grid Framework"
-msgstr "CSS Grid Framework"
+msgstr "CSS grid-rammeverk"
 
 #. Text in function
 #: inc/roots-activation.php:106
@@ -160,12 +160,12 @@ msgstr "Endre mappe for opplasting?"
 #. Text in echo
 #: 404.php:11
 msgid "Check your spelling"
-msgstr "Kontroller stavinga"
+msgstr "Kontrollér stavinga"
 
 #. Text in echo
 #: inc/roots-widgets.php:107
 msgid "City/Locality:"
-msgstr "By/Område:"
+msgstr "By/område:"
 
 #. Text in echo
 #: inc/roots-options.php:315
@@ -192,29 +192,29 @@ msgstr "Kommentarane er stengt."
 #. Text in function
 #: inc/roots-cleanup.php:1
 msgid "Continued"
-msgstr "Held fram"
+msgstr "Hald fram"
 
 #. Text in function
 #: inc/roots-activation.php:93
 msgid "Create a page called Home and set it to be the static front page"
-msgstr "Opprett ei side kalla Heim, og sett den som statisk forside"
+msgstr "Opprett sida Heim og gjer denne til statisk forside"
 
 #. Text in echo
 #: inc/roots-activation.php:124
 #: inc/roots-activation.php:126
 msgid "Create navigation menus?"
-msgstr "Opprett navigasjon/menyar?"
+msgstr "Opprette menyar?"
 
 #. Text in echo
 #: inc/roots-activation.php:85
 #: inc/roots-activation.php:87
 msgid "Create static front page?"
-msgstr "Opprett statisk forside?"
+msgstr "Opprette statisk forside?"
 
 #. Text in function
 #: inc/roots-activation.php:132
 msgid "Create the Primary and Utility Navigation menus and set their locations"
-msgstr "Opprett primære og sekundære navigasjonsmenyar og sett opp plassering"
+msgstr "Opprett primære og sekundære menyar med plassering"
 
 #. Text in function
 #: archive.php:8
@@ -252,7 +252,7 @@ msgstr "Aktiver rotrelative URLar"
 #. Text in function
 #: inc/roots-options.php:299
 msgid "Enter your UA-XXXXX-X ID"
-msgstr "Fyll inn din UA-XXXXX-X ID"
+msgstr "Fyll inn UA-XXXXX-X ID"
 
 #. Text in echo
 #: 404.php:7
@@ -267,7 +267,7 @@ msgstr "Foundation"
 #. Text in echo
 #: inc/roots-options.php:258
 msgid "Full Width CSS Classes"
-msgstr "Full Width CSS Classes"
+msgstr "CSS-klassar med full breidd"
 
 #. Text in echo
 #: inc/roots-options.php:294
@@ -278,7 +278,7 @@ msgstr "Google Analytics ID"
 #. Text in echo
 #: index.php:7
 msgid "Latest Posts"
-msgstr "Nyaste innlegg"
+msgstr "Siste innlegg"
 
 #. Text in function
 #: comments.php:62
@@ -358,12 +358,12 @@ msgstr "Sjekk at <a href=\"%s\">.htaccess</a> er skrivbar"
 #. Text in echo
 #: 404.php:9
 msgid "Please try the following:"
-msgstr "Ver ven å prøve eit av dei følgjande forslaga:"
+msgstr "Gjer vel og prøv eitt av dei følgjande forslaga:"
 
 #. Text in function
 #: inc/roots-cleanup.php:1
 msgid "Please update your <a href=\"%s\">site tagline</a> <a href=\"%s\" style=\"float: right;\">Hide Notice</a>"
-msgstr "Ver ven å oppdatere <a href=\"%s\">slagordet for nettstaden</a> <a href=\"%s\" style=\"float: right;\">Skjul meldinga</a>"
+msgstr "Gjer vel og  oppdater <a href=\"%s\">slagordet for nettstaden</a> <a href=\"%s\" style=\"float: right;\">Skjul meldinga</a>"
 
 #. Text in function
 #: functions.php:1
@@ -373,7 +373,7 @@ msgstr "Skrive %s kl. %s."
 #. Text in function
 #: functions.php:1
 msgid "Primary Navigation"
-msgstr "Primær navigasjon"
+msgstr "Hovudmeny"
 
 #. Text in function
 #: 404.php:12
@@ -399,17 +399,17 @@ msgstr "Søkeresultat for"
 #. Text in echo
 #: searchform.php:2
 msgid "Search for:"
-msgstr "Søk etter:"
+msgstr "Søk etter"
 
 #. Text in echo
 #: loop.php:3
 msgid "Sorry, no results were found."
-msgstr "Vi er lei for det, men søket gav ingen resultat."
+msgstr "Søket gav ikkje noko resultat."
 
 #. Text in echo
 #: inc/roots-widgets.php:111
 msgid "State/Region:"
-msgstr "Stat/Region:"
+msgstr "By:"
 
 #. Text in echo
 #: inc/roots-widgets.php:103
@@ -429,7 +429,7 @@ msgstr "Telefon:"
 #. Text in echo
 #: 404.php:8
 msgid "The page you are looking for might have been removed, had its name changed, or is temporarily unavailable."
-msgstr "Sida du ser etter er ikkje her. Den kan vere fjerna, fått nytt namn eller er mellombels utilgjengeleg. Vi er mykje lei oss for det inntrufne."
+msgstr "Sida du ser etter er ikkje her. Ho kan vere fjerna, fått nytt namn eller ho er mellombels utilgjengeleg."
 
 #. Text in function
 #: inc/roots-activation.php:1
@@ -503,7 +503,7 @@ msgstr "Du må vere <a href=\"%s\">innlogga</a> for å skrive kommentarar."
 #. Text in echo
 #: comments.php:13
 msgid "Your comment is awaiting moderation."
-msgstr "Kommentaren din ventar på å verte godkjent."
+msgstr "Kommentaren din ventar på å verte godkjend."
 
 #. Text in echo
 #: inc/roots-widgets.php:115
