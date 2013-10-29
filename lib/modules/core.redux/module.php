@@ -26,7 +26,7 @@ if ( class_exists( 'ReduxFramework' ) ) :
 
   // Choose a custom option name for your theme options, the default is the theme name in lowercase with spaces replaced by underscores
   $args['opt_name']               = REDUX_OPT_NAME;
-  $args['customizer']             = true;
+  $args['customizer']             = false;
   $args['google_api_key']         = 'AIzaSyCDiOc36EIOmwdwspLG3LYwCg9avqC5YLs';
   $args['global_variable']        = 'redux';
   $args['default_show']           = true;
@@ -36,7 +36,7 @@ if ( class_exists( 'ReduxFramework' ) ) :
   $args['display_name']           = $theme->get( 'Name' );
   $args['menu_title']             = $theme->get( 'Name' );
   $args['display_version']        = $theme->get( 'Version' );    
-  $args['page_position']          = 27;
+  $args['page_position']          = 99;
 //  $args['database'] 			  = 'theme_mods_expanded';
   $args['import_icon_class']      = 'icon-large';
   $args['system_info_icon_class'] = 'icon-large';

@@ -1,7 +1,7 @@
 <?php
 
 define( 'SHOESTRAP_STORE_URL', 'http://shoestrap.org' );
-define( 'SHOESTRAP_THEME_NAME', 'Shoestrap' );
+define( 'SHOESTRAP_THEME_NAME', 'Shoestrap 3' );
 define( 'SHOESTRAP_URL', 'http://shoestrap.org/downloads/shoestrap/' );
 // retrieve our license key from the DB
 $license_key = trim( shoestrap_getVariable( 'shoestrap_license_key' ) );
@@ -14,14 +14,16 @@ if( !class_exists( 'EDD_SL_Theme_Updater' ) ) {
 // setup the updater
 $shoestrap_theme          = wp_get_theme();
 $shoestrap_theme_version  = $shoestrap_theme->get( 'Version' );
+$shoestrap_theme_author   = $shoestrap_theme->get( 'Author' );
 
 $edd_updater = new EDD_SL_Theme_Updater( array( 
   'remote_api_url'  => SHOESTRAP_STORE_URL,       // our store URL that is running EDD
-  'version'         => $shoestrap_theme_version,      // current version number
+  'version'         => $shoestrap_theme_version,  // current version number
   'license'         => $license_key,              // license key ( used get_option above to retrieve from DB )
   'item_name'       => SHOESTRAP_THEME_NAME,      // name of this theme
-  'author'          => 'Aristeides Stathopoulos'  // author of this theme
+  'author'          => $shoestrap_theme_author    // author of this theme
  ) );
+
 
 /*
  * The updater core options for the Shoestrap theme
@@ -68,7 +70,7 @@ function shoestrap_sanitize_license( $new ) {
 
   if( $old && $old != $new ) :
     // new license has been entered, so must reactivate
-    set_theme_mod( 'shoestrap_license_key_status', '' );
+    update_option( 'shoestrap_license_key_status', '' );
   endif;
 
   return $new;
@@ -81,7 +83,7 @@ function shoestrap_activate_license() {
     return;
   endif;
 
-  if( shoestrap_getVariable( 'shoestrap_license_key_status' ) == 'valid' ) :
+  if( get_option( 'shoestrap_license_key_status' ) == 'valid' ) :
     return;
   endif;
 
@@ -105,14 +107,14 @@ function shoestrap_activate_license() {
   // decode the license data
   $license_data = json_decode( wp_remote_retrieve_body( $response ) );
 
-  set_theme_mod( 'shoestrap_license_key_status', $license_data->license );
+  update_option( 'shoestrap_license_key_status', $license_data->license );
 
 }
 add_action( 'admin_init', 'shoestrap_activate_license' );
 
 function shoestrap_license_key_status_indicator() {
   $license  = shoestrap_getVariable( 'shoestrap_license_key' );
-  $status   = shoestrap_getVariable( 'shoestrap_license_key_status' );
+  $status   = get_option( 'shoestrap_license_key_status' );
   $message = '';
   if ( false !== $license ) :
     if ( $status !== false && $status == 'valid' )
