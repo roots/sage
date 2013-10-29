@@ -130,7 +130,7 @@ function shoestrap_module_layout_options( $sections ) {
     'desc'      => __( 'How do you want your widgets to be displayed?', 'shoestrap' ),
     'id'        => 'widgets_mode',
     'default'   => 1,
-    'required'  => array('advanced_toggle','=',array('1')),
+    // 'required'  => array('advanced_toggle','=',array('1')),
     'off'       => __( 'Panel', 'shoestrap' ),
     'on'        => __( 'Well', 'shoestrap' ),
     'type'      => 'switch',
@@ -154,7 +154,7 @@ function shoestrap_module_layout_options( $sections ) {
     'min'       => 0,
     'max'       => 200,
     'type'      => 'slider',
-    'required'  => array('advanced_toggle','=',array('1'))
+    // 'required'  => array('advanced_toggle','=',array('1'))
   );
 
   $fields[] = array( 
@@ -165,7 +165,7 @@ function shoestrap_module_layout_options( $sections ) {
     'min'       => 0,
     'max'       => 200,
     'type'      => 'slider',
-    'required'  => array('advanced_toggle','=',array('1'))
+    // 'required'  => array('advanced_toggle','=',array('1'))
   );
 
   $fields[] = array( 
@@ -174,7 +174,7 @@ function shoestrap_module_layout_options( $sections ) {
     'id'        => 'custom_grid',
     'default'   => 0,
     'type'      => 'switch',
-    'required'  => array('advanced_toggle','=',array('1'))
+    // 'required'  => array('advanced_toggle','=',array('1'))
   );
 
   $fields[] = array( 

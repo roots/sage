@@ -35,7 +35,7 @@ function shoestrap_module_branding_options( $sections ) {
     'id'          => 'favicon',
     'default'     => '',
     'type'        => 'media',
-    'required'    => array('advanced_toggle','=',array('1'))
+    // 'required'    => array('advanced_toggle','=',array('1'))
   );
 
   $fields[] = array( 
@@ -44,7 +44,7 @@ function shoestrap_module_branding_options( $sections ) {
     'id'          => 'apple_icon',
     'default'     => '',
     'type'        => 'media',
-    'required'    => array('advanced_toggle','=',array('1'))
+    // 'required'    => array('advanced_toggle','=',array('1'))
   );
 
 
@@ -68,7 +68,7 @@ function shoestrap_module_branding_options( $sections ) {
     'customizer'  => array(),
     'compiler'    => true,
     'type'        => 'switch',
-    'required'    => array('advanced_toggle','=',array('1')),
+    // 'required'    => array('advanced_toggle','=',array('1')),
   );
 
   $fields[] = array( 

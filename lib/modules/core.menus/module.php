@@ -149,7 +149,7 @@ function shoestrap_module_menus_options( $sections ) {
       'size'      => 30 //this is the text size from preview box
     ),
     'type'        => 'typography',
-    'required'    => array('advanced_toggle','=',array('1'))
+    // 'required'    => array('advanced_toggle','=',array('1'))
   );
 
   $fields[] = array( 
@@ -168,7 +168,7 @@ function shoestrap_module_menus_options( $sections ) {
       'size'      => 30 //this is the text size from preview box
     ),
     'type'        => 'typography',
-    'required'    => array('advanced_toggle','=',array('1'))
+    // 'required'    => array('advanced_toggle','=',array('1'))
   );
 
   $fields[] = array( 
@@ -226,7 +226,7 @@ function shoestrap_module_menus_options( $sections ) {
     'title'       => __( 'Secondary Navbar', 'shoestrap' ),
     'desc'        => __( 'The secondary navbar is a 2nd navbar, located right above the main wrapper. You can show a menu there, by assigning it from Appearance -> Menus.', 'shoestrap' ),
     'type'        => 'info',
-    'required'    => array('advanced_toggle','=',array('1'))
+    // 'required'    => array('advanced_toggle','=',array('1'))
   );
 
   $fields[] = array( 
@@ -236,7 +236,7 @@ function shoestrap_module_menus_options( $sections ) {
     'customizer'  => array(),
     'default'     => 0,
     'type'        => 'switch',
-    'required'    => array('advanced_toggle','=',array('1'))
+    // 'required'    => array('advanced_toggle','=',array('1'))
   );
 
   $fields[] = array( 
