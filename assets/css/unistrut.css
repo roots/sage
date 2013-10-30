@@ -47,21 +47,21 @@ body.single-product .span9 .well{margin:0 10px}
 .thumbnails>li ul{margin-left:0;padding-left:0}
 .thumbnails>li ul li{list-style:square;margin-left:10px}
 section.resource-type{clear:left}
-#lang_sel{height:32px;position:relative;z-index:999;float:right;margin-right:10px;margin-top:10px;font-family:arial,sans-serif}
+#lang_sel{height:32px;position:relative;z-index:5999;float:right;margin-right:10px;margin-top:10px;font-family:arial,sans-serif}
 #lang_sel ul,#lang_sel li{padding:0 !important;margin:0 !important;list-style-type:none !important}
 #lang_sel li:before{content:'' !important}
 #lang_sel ul ul{width:149px}
 #lang_sel li{float:left;width:149px;position:relative}
-#lang_sel a,#lang_sel a:link,#lang_sel a:visited{display:block;font-size:12px;text-decoration:none !important;color:#fff;border:1px solid #000;line-height:18px;border-top:1px solid #e1e1e1;border-right:1px solid #c8c8c8;border-bottom:1px solid #bfbfbf;border-left:1px solid #e1e1e1;padding:5px 10px;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px;-khtml-border-radius:5px;font:normal bold 12px Verdana,sans-serif}
+#lang_sel a,#lang_sel a:link,#lang_sel a:visited{display:block;font-size:12px;text-decoration:none !important;color:#fff;border:1px solid #000;line-height:18px;border-top:1px solid #e1e1e1;border-right:1px solid #c8c8c8;border-bottom:1px solid #bfbfbf;border-left:1px solid #e1e1e1;padding:4px 9px;-moz-border-radius:25px;-webkit-border-radius:25px;border-radius:25px;-khtml-border-radius:25px;font:normal 12px Verdana,sans-serif}
 #lang_sel ul ul{visibility:hidden;position:absolute;height:0;top:25px;left:0;width:149px;border-top:0}
 #lang_sel table{position:absolute;top:0;left:0;border-collapse:collapse}
 #lang_sel ul ul a,#lang_sel ul ul a:link,#lang_sel ul ul a:visited{font-weight:normal;background:#eee;color:#000 !important;border-width:0 1px 1px 1px;-moz-border-radius:0;-webkit-border-radius:0;border-radius:0;-khtml-border-radius:0;}
 #lang_sel a:hover,#lang_sel ul ul a:hover{color:#000;background:#ccc}
 #lang_sel :hover>a,#lang_sel ul ul :hover>a{color:#000;background:#ccc}
-#lang_sel a.lang_sel_sel{background:url(//www.atkore.com/assets/images/nav-arrow-down.png) #fcfcfc right no-repeat;color:#bfbfbf}
+#lang_sel a.lang_sel_sel{background:url(//www.atkore.com/assets/images/nav-arrow-down.png) #fcfcfc right no-repeat;color:#082f54}
 #lang_sel a.lang_sel_sel:hover{text-decoration:none;}
 #lang_sel ul li:hover ul,#lang_sel ul a:hover ul{visibility:visible}
-#lang_sel ul li img{position:relative;margin:0;padding:0;margin-right:-6px;border:1px solid #bfbfbf;top:2px}
+#lang_sel ul li img{position:relative;margin:0;padding:0;margin-right:-6px;border:1px solid #bfbfbf;top:-1px !important}
 #lang_sel ul li ul li img{margin-right:-2px}
 .navbar-nav>li>a{line-height:18px}
 .navbar-default .navbar-nav>.active>a,.navbar-default .navbar-nav>.active>a:hover,.navbar-default .navbar-nav>.active>a:focus{height:58px}

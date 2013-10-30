@@ -13,7 +13,7 @@
     <div id="upper-deck" class="<?php echo roots_main_class(); ?>"> 
       <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-          <?php get_template_part('templates/menu-navbar', 'mini'); ?>
+          <?php get_template_part('templates/menu-navbar', 'mini'); ?><div><?php do_action('icl_language_selector'); ?></div>
           <?php get_template_part('templates/menu-dropdown', 'primary'); ?>
         </div>
       </div>
