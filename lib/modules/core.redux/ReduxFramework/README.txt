@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: admin, admin interface, options, theme options, plugin options, options framework, settings
 Requires at least: 3.5.1
 Tested up to: 3.7
-Stable tag: 3.0.1
+Stable tag: 3.0.3
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -28,14 +28,14 @@ Don't take our word for it, check out our online demo and try Redux without inst
 
 
 = Docs & Support =
-You can find [docs](http://reduxframework.com/docs/), [FAQs](http://reduxframework.com/docs/) and more detailed information about ReduxFramework on [reduxframework.com](http://reduxframework.com). If you were unable to find the answer to your question on the [FAQs](http://reduxframework.com/docs/) or in any of the [documentation](http://reduxframework.com/docs/), you should search [the issue tracker on Github](https://github.com/ReduxFramework/ReduxFramework/issues). If you can't locate any topics that pertain to your particular issue, [post a new issue](https://github.com/ReduxFramework/ReduxFramework/issues/new) for it.
+You can find [docs](http://reduxframework.com/docs/), [FAQs](http://reduxframework.com/docs/) and more detailed information about ReduxFramework on [reduxframework.com](http://reduxframework.com). If you were unable to find the answer to your question on the [FAQs](http://reduxframework.com/docs/), or in any of the [documentation](http://reduxframework.com/docs/), you should search [the issue tracker on Github](https://github.com/ReduxFramework/ReduxFramework/issues). If you can't locate any topics that pertain to your particular issue, [post a new issue](https://github.com/ReduxFramework/ReduxFramework/issues/new) for it.
 
 
 = Redux Framework Needs Your Support =
 It is hard to continue development and support for this free plugin without contributions from users like you. If you enjoy using Redux Framework, and find it useful, please consider [making a donation](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=N5AD7TSH8YA5U). Your donation will help encourage and support the plugin's continued development and better user support.
 
-= Fields =
-Hold on to your hats. Here are the fields Redux supports.
+= Fields Types =
+
 * Border
 * Button Set
 * Checkbox / Multi-Check
@@ -66,14 +66,12 @@ Hold on to your hats. Here are the fields Redux supports.
  * The most advanced typography module complete with preview, Google fonts, and auto-css output!
 
 = Additional Features =
-As if that's not enough, there's more.
+
 * Field Validation
 * Language Packs
 * Full value escaping
-* Required - Link visibility from parent fields
-	* Set this to affect the visibility of the field on the parent's value.
-* Output CSS Automatically
-	* Redux generates CSS and the appropriate Google Fonts stylesheets for you on select fields. You need only specify the CSS selector to apply the CSS to (limited to certain fields).
+* Required - Link visibility from parent fields. Set this to affect the visibility of the field on the parent's value.
+* Output CSS Automatically - Redux generates CSS and the appropriate Google Fonts stylesheets for you on select fields. You need only specify the CSS selector to apply the CSS to (limited to certain fields).
 * Oh, and did we mention a fully integrated Google Webfonts setup that will make you so happy you'll want to cry?
 
 
@@ -82,7 +80,14 @@ At least we think so, we hope you feel the same.
 
   
 = Translators & Non-English Speakers =
-We need your help to translate Redux into your language. If you have created your own language pack, or have an update of an existing one, you can post [gettext PO and MO files](http://codex.wordpress.org/Translating_WordPress) to the [Github Repo](https://github.com/ReduxFramework/ReduxFramework) via a pull request or you can post an issue with the attached files. You can download the latest [POT file](http://plugins.svn.wordpress.org/redux-framework/trunk/ReduxCore/languages/redux.pot), and see the latest [PO files in each language](http://plugins.svn.wordpress.org/redux-framework/trunk/ReduxCore/languages/).
+We need your help to translate Redux into your language. If you have created your own language pack, or have an update of an existing one, you can post [gettext PO and MO files](http://codex.wordpress.org/Translating_WordPress) to the [Github Repo](https://github.com/ReduxFramework/ReduxFramework) via a pull request or you can post an issue with the attached files. You can download the latest [POT file](http://plugins.svn.wordpress.org/redux-framework/trunk/ReduxCore/languages/redux-framework.pot), and see the latest [PO files in each language](http://plugins.svn.wordpress.org/redux-framework/trunk/ReduxCore/languages/).
+
+= Current Translations =
+
+Special thanks to the following people for language translations:
+
+* German [de_DE] @Abu-Taymiyyah
+* Bahasa Indonesia [id_ID] @riesurya
 
 = Get Involved =
 Redux is an ever-changing, living system. Want to stay up to date or
@@ -91,7 +96,6 @@ contribute? Subscribe to one of our mailing lists or join us on [Twitter](https:
 NOTE: Redux is not intended to be used on its own. It requires a config file
 provided by a third-party theme or plugin developer to actual do anything
 cool!
-
 
 == Installation ==
 
@@ -125,15 +129,25 @@ Redux is an options framework... in other words, it's not designed to do anythin
 Visit our website at [http://reduxframework.com/](http://reduxframework.com/)
 
 = You don't have much content in this FAQ section =
-That's because the real FAQ section is one our site! Please visit [http://reduxframework.com/docs/faqs/](http://reduxframework.com/docs/faqs/
+That's because the real FAQ section is on our site! Please visit [http://reduxframework.com/docs/faqs/](http://reduxframework.com/docs/faqs/
 
 == Screenshots ==
 
-1. This is the demo mode of Redux Framework. Activate it and you will find a fully-function admin panel that you can play with. On the Plugins page, beneith the description and an activated Redux Framework, you will find a Demo Mode link. Click that link to activate or deactivate the sample-config file Redux ships with.  Don't take our word for it, check out our online demo and try Redux without installing a thing! [**http://demo.reduxframework.com/wp-admin/**](http://demo.reduxframework.com/wp-admin/)
+1. This is the demo mode of Redux Framework. Activate it and you will find a fully-functional admin panel that you can play with. On the Plugins page, beneath the description and an activated Redux Framework, you will find a Demo Mode link. Click that link to activate or deactivate the sample-config file Redux ships with.  Don't take our word for it, check out our online demo and try Redux without installing a thing! [**http://demo.reduxframework.com/wp-admin/**](http://demo.reduxframework.com/wp-admin/)
 
 == Changelog ==
 
-= 3.0.0 =
+= 3.0.3 =
+* Fixed Issue #129: Spacing field giving an undefined.
+* Fixed Issue #131: Google Fonts stylesheet appending to body and also to the top of the header. Now properly placed both at the end of the head tag as to overload any theme stylesheets.
+* Fixed issue #132 (See #134, thanks @andreilupu): Could not have multiple Wordpress Editors (wp_editor) as the same ID was shared. Also fixed various styles to match Wordpress for this field.
+* Fixed Issue #133: Issue when custom admin stylesheet was used, a JS error resulted.
+
+
+= 3.0.2 =
+* Improvements to slides, various field fixes and improvements. Also fixed a few user submitted issues.
+
+= 3.0.1 =
 * Backing out a bit of submitted code that caused the input field to not properly break.
 
 = 3.0.0 =

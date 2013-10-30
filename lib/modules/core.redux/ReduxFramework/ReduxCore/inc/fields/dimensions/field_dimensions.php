@@ -41,7 +41,7 @@ class ReduxFramework_dimensions extends ReduxFramework{
 			$this->value['units'] = $this->field['units'];
 		}
 
-		if (  !in_array($this->value['units'], array( '%', 'in', 'cm', 'mm', 'em', 'ex', 'pt', 'pc', 'px' ) ) ) {
+		if ( isset( $this->value['units'] ) && !in_array($this->value['units'], array( '%', 'in', 'cm', 'mm', 'em', 'ex', 'pt', 'pc', 'px' ) ) ) {
 			if ( !empty( $this->field['units'] ) && in_array($this->value['units'], array( '%', 'in', 'cm', 'mm', 'em', 'ex', 'pt', 'pc', 'px' ) ) ) {
 				$this->value['units'] = $this->field['units'];	
 			}
@@ -89,7 +89,7 @@ class ReduxFramework_dimensions extends ReduxFramework{
 			Units
 			**/
 
-			//if ( $this->field['units'] !== false ):
+			if ( $this->field['units'] !== false && $this->field['units'] !== "" ):
 
 				echo '<div class="select_wrapper dimensions-units" original-title="'.__('Units','redux-framework').'">';
 				echo '<select data-id="'.$this->field['id'].'" data-placeholder="'.__('Units','redux-framework').'" class="redux-dimensions redux-dimensions-units select'.$this->field['class'].'" original-title="'.__('Units','redux-framework').'" name="'.$this->args['opt_name'].'['.$this->field['id'].'][units]" id="'. $this->field['id'].'_units">';
@@ -111,7 +111,7 @@ class ReduxFramework_dimensions extends ReduxFramework{
 				
 				echo '</select></div>';
 
-			//endif;
+			endif;
 
 	  	echo "</fieldset>";
 

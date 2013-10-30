@@ -31,7 +31,7 @@ class ReduxFramework_spacing extends ReduxFramework{
 		// No errors please
 		$defaults = array(
 			'units' 			=> '',
-			'mode' 				=> '',
+			'mode' 				=> 'padding',
 			'top'				=> true,
 			'bottom'			=> true,
 			'left'				=> true,
@@ -44,7 +44,6 @@ class ReduxFramework_spacing extends ReduxFramework{
 		$defaults = array(
 			'top'=>'',
 			'right'=>'',
-			'mode' => '',
 			'bottom'=>'',
 			'left'=>'',
 			'mode'=>'padding',
@@ -70,13 +69,36 @@ class ReduxFramework_spacing extends ReduxFramework{
 		if ( !empty( $this->field['mode'] ) ) {
 			$this->field['mode'] = $this->field['mode']."-";
 		}
-		
+
+		$oldval = $this->value;
+		$this->value = array();
+		foreach ($oldval as $k=>$v) {
+			if ($k == "units") {
+				continue;
+			}
+			if (strpos($k, $this->field['mode']) === false) {
+				$this->value[$k] = str_replace($oldval['units'], "", $v);
+			} else {
+				$this->value[str_replace($this->field['mode'].'-', "", $k)] = str_replace($oldval['units'], "", $v);
+			}
+		}
+
+		$defaults = array(
+			'top'=>'',
+			'right'=>'',
+			'bottom'=>'',
+			'left'=>'',
+			'units'=>'',
+		);
+
+		$this->value = wp_parse_args( $this->value, $defaults );
+
 
 			/**
 			Top
 			**/
 			if ($this->field['top'] === true):
-				if ( !empty($this->value['top'] ) &&  strpos( $this->value['top'], $this->value['units'] ) === false ) {
+				if ( !empty( $this->value['top'] ) ) {
 					$this->value['top'] = filter_var($this->value['top'], FILTER_SANITIZE_NUMBER_INT);
 					$this->value['top'] = $this->value['top'].$this->value['units'];
 				}
@@ -87,7 +109,7 @@ class ReduxFramework_spacing extends ReduxFramework{
 			Right
 			**/
 			if ($this->field['right'] === true):
-				if ( !empty($this->value['right'] ) &&  strpos( $this->value['right'], $this->value['units'] ) === false ) {
+				if ( !empty( $this->value['right'] ) ) {
 					$this->value['right'] = filter_var($this->value['right'], FILTER_SANITIZE_NUMBER_INT);
 					$this->value['right'] = $this->value['right'].$this->value['units'];
 				}				
@@ -98,8 +120,11 @@ class ReduxFramework_spacing extends ReduxFramework{
 			Bottom
 			**/
 			if ($this->field['bottom'] === true):
-				if ( !empty($this->value['bottom'] ) &&  strpos( $this->value['bottom'], $this->value['units'] ) === false ) {
+				if ( !empty( $this->value['bottom'] ) ) {
 					$this->value['bottom'] = filter_var($this->value['bottom'], FILTER_SANITIZE_NUMBER_INT);
+					if ($this->field['units'] !== false ) {
+						$this->value['bottom'] .= $this->value['units'];	
+					}					
 					$this->value['bottom'] = $this->value['bottom'].$this->value['units'];
 				}					
 				echo '<div class="field-spacing-input input-prepend"><span class="add-on"><i class="icon-arrow-down icon-large"></i></span><input type="text" class="redux-spacing-bottom redux-spacing-input mini'.$this->field['class'].'" placeholder="'.__('Bottom','redux-framework').'" rel="'.$this->field['id'].'-bottom" value="'.filter_var($this->value['bottom'], FILTER_SANITIZE_NUMBER_INT).'"><input type="hidden" class="redux-spacing-bottom mini'.$this->field['class'].'" placeholder="'.__('Bottom','redux-framework').'" id="'.$this->field['id'].'-bottom" name="'.$this->args['opt_name'].'['.$this->field['id'].']['.$this->field['mode'].'bottom]" value="'.$this->value['bottom'].'"></div>';
@@ -109,7 +134,7 @@ class ReduxFramework_spacing extends ReduxFramework{
 			Left
 			**/
 			if ($this->field['left'] === true):
-				if ( !empty($this->value['left'] ) &&  strpos( $this->value['left'], $this->value['units'] ) === false ) {
+				if ( !empty( $this->value['left'] ) ) {
 					$this->value['left'] = filter_var($this->value['left'], FILTER_SANITIZE_NUMBER_INT);
 					$this->value['left'] = $this->value['left'].$this->value['units'];
 				}									
@@ -121,7 +146,7 @@ class ReduxFramework_spacing extends ReduxFramework{
 			Units
 			**/
 
-			//if ( $this->field['units'] !== false ):
+			if ( $this->field['units'] !== false ):
 
 				echo '<div class="select_wrapper spacing-units" original-title="'.__('Units','redux-framework').'">';
 				echo '<select data-placeholder="'.__('Units','redux-framework').'" class="redux-spacing redux-spacing-units select'.$this->field['class'].'" original-title="'.__('Units','redux-framework').'" name="'.$this->args['opt_name'].'['.$this->field['id'].'][units]" id="'. $this->field['id'].'_units">';
@@ -142,7 +167,7 @@ class ReduxFramework_spacing extends ReduxFramework{
 				}
 				echo '</select></div>';
 
-			//endif;
+			endif;
 
 
 

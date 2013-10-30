@@ -78,7 +78,7 @@ if( !class_exists( 'ReduxFramework_color_gradient' ) ) {
 				if ( $this->value['from'] == "transparent" ) {
 					$tChecked = ' checked="checked"';
 				}
-	            echo '<label for="' . $this->field['id'] . '-from-transparency" class="color-transparency-check"><input type="checkbox" class="checkbox color-transparency ' . $this->field['class'] . '" id="' . $this->field['id'] . '-from-transparency" data-id="' . $this->field['id'] . '-from" value="1"'.$tChecked.'> Transparent</label>';
+	            echo '<label for="' . $this->field['id'] . '-from-transparency" class="color-transparency-check"><input type="checkbox" class="checkbox color-transparency ' . $this->field['class'] . '" id="' . $this->field['id'] . '-from-transparency" data-id="' . $this->field['id'] . '-from" value="1"'.$tChecked.'> '.__('Transparent', 'redux-framework').'</label>';
 	        }
 
             echo '&nbsp;&nbsp;&nbsp;&nbsp;<strong>' . __( 'To ', 'redux-framework' ) . '</strong>&nbsp;<input data-id="'.$this->field['id'].'" id="' . $this->field['id'] . '-to" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][to]" value="' . $this->value['to'] . '" class="redux-color redux-color-init ' . $this->field['class'] . '"  type="text" data-default-color="' . $this->field['default']['to'] . '" />';
@@ -88,7 +88,7 @@ if( !class_exists( 'ReduxFramework_color_gradient' ) ) {
 				if ( $this->value['from'] == "transparent" ) {
 					$tChecked = ' checked="checked"';
 				}
-				echo '<label for="' . $this->field['id'] . '-to-transparency" class="color-transparency-check"><input type="checkbox" class="checkbox color-transparency" id="' . $this->field['id'] . '-to-transparency" data-id="' . $this->field['id'] . '-to" value="1"'.$tChecked.'> Transparent</label>';	
+				echo '<label for="' . $this->field['id'] . '-to-transparency" class="color-transparency-check"><input type="checkbox" class="checkbox color-transparency" id="' . $this->field['id'] . '-to-transparency" data-id="' . $this->field['id'] . '-to" value="1"'.$tChecked.'> '.__('Transparent', 'redux-framework').'</label>';	
 			}
 
         }

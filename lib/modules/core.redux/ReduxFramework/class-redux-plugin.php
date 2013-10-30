@@ -278,7 +278,8 @@ class ReduxFrameworkPlugin {
 		$locale = apply_filters( 'plugin_locale', get_locale(), $domain );
 
 		load_textdomain( $domain, trailingslashit( WP_LANG_DIR ) . $domain . '/' . $domain . '-' . $locale . '.mo' );
-		load_plugin_textdomain( $domain, FALSE, basename( dirname( __FILE__ ) ) . '/lang' );
+		load_plugin_textdomain( $domain, FALSE, basename( dirname( __FILE__ ) ) . '/ReduxCore/languages' );
+
 	}
 
 
@@ -349,7 +350,7 @@ class ReduxFrameworkPlugin {
 		$extra .='</span>';
 
 		$plugin = str_replace('class-redux-plugin', 'redux-framework', plugin_basename(__FILE__));
-		$array = array( '<a href="https://github.com/ReduxCore/ReduxFramework" target="_blank">Github Repo</a>', '<a href="https://github.com/ReduxCore/ReduxCore/issues/" target="_blank">Support Forum</a>'.$extra  );
+		$array = array( '<a href="https://github.com/ReduxCore/ReduxFramework" target="_blank">Github Repo</a>', '<a href="https://github.com/ReduxFramework/ReduxFramework/issues/" target="_blank">Issue Tracker</a>'.$extra  );
 		// create link
 		if ( $file == $plugin ) {
 			return array_merge(

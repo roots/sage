@@ -2,6 +2,7 @@
 #redux-main .description{margin-top:7px}
 a{outline:0 !important}
 .ui-datepicker table{background:#fff}
+.ui-state-highlight{height:2.5em;line-height:2.2em}
 #redux-container{font-family:"Lucida Grande",Sans-serif;background-color:#eee;background-repeat:repeat-x;background-image:-moz-linear-gradient(top, #f5f5f5 0, #eee 100%);background-image:-webkit-gradient(linear, left top, left bottom, color-stop(0, #f5f5f5), color-stop(100%, #eee));background-image:-webkit-linear-gradient(top, #f5f5f5 0, #eee 100%);background-image:-ms-linear-gradient(top, #f5f5f5 0, #eee 100%);background-image:-o-linear-gradient(top, #f5f5f5 0, #eee 100%);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f5f5f5', endColorstr='#eeeeee', GradientType=0);background-image:linear-gradient(top, #f5f5f5 0, #eee 100%);border:1px solid #e5e5e5;-moz-border-radius:10px;-webkit-border-radius:10px;border-radius:10px;-moz-box-shadow:0 1px 0 #fff inset,0 1px 5px rgba(0,0,0,0.1);-webkit-box-shadow:0 1px 0 #fff inset,0 1px 5px rgba(0,0,0,0.1);box-shadow:0 1px 0 #fff inset,0 1px 5px rgba(0,0,0,0.1);margin-top:20px;overflow:hidden}
 #redux-container .hr{height:20px;line-height:20px;float:none;border-color:#e7e7e7;display:block;width:100%;height:35px !important;line-height:35px !important;position:relative;margin:15px 0 10px 0;float:left}
 #redux-container .inner{width:42% !important;left:40% !important;margin-left:-6%;background-color:#fcfcfc;border-color:#e7e7e7;position:absolute;height:1px;top:50%;width:100%;margin-top:-1px;border-top-width:1px;border-top-style:solid}
@@ -97,6 +98,7 @@ a{outline:0 !important}
 #redux-main select,#redux-main .select_wrapper{width:340px}
 #redux-main textarea{width:100%}
 #redux-main input[type=text]{width:340px}
+#redux-main input.full-text{width:100%}
 #redux-main input.checkbox,#redux-main input.radio{margin-right:10px}
 label.radio,label.multicheck{position:relative}
 #redux-main .input-text-small{width:60px;margin-right:10px}

@@ -103,7 +103,7 @@ class ReduxFramework_typography extends ReduxFramework{
               echo '<select data-placeholder="'.__('Font family','redux-framework').'" class="redux-typography redux-typography-family '.$this->field['class'].'" id="'.$this->field['id'].'-family" data-id="'.$this->field['id'].'" data-value="'.$fontFamily[0].'">';
               echo '<option data-google="false" data-details="" value=""></option>';
               if ($this->field['google'] === true && !empty( $this->parent->args['google_api_key'] ) ) {
-                  echo '<optgroup label="Standard Fonts">';
+                  echo '<optgroup label="'.__('Standard Fonts', 'redux-framework').'">';
               }
               if (empty($this->field['fonts'])) {
                   $this->field['fonts'] = array(
@@ -452,8 +452,9 @@ class ReduxFramework_typography extends ReduxFramework{
       }
 
       if ( !empty( $fonts ) && filter_var($this->parent->args['output'], FILTER_VALIDATE_BOOLEAN) ) {
-        wp_register_style( 'redux-google-fonts', $this->makeGoogleWebfontLink( $fonts ), '', $version );
-        wp_enqueue_style( 'redux-google-fonts' ); 
+        echo '<link rel="stylesheet" id="redux-google-fonts-css"  href="'.$this->makeGoogleWebfontLink( $fonts ).'&v='.$version.'" type="text/css" media="all" />';
+        //wp_register_style( 'redux-google-fonts', $this->makeGoogleWebfontLink( $fonts ), '', $version );
+        //wp_enqueue_style( 'redux-google-fonts' ); 
       }
       if ( !empty( $outCSS ) ) {
         echo '<style type="text/css" class="redux-'.$this->field['type'].'">'.$outCSS.'</style>';  
@@ -504,7 +505,7 @@ class ReduxFramework_typography extends ReduxFramework{
         if (empty($googleArray)) {
             $googleArray = json_decode($wp_filesystem->get_contents(REDUX_DIR.'inc/fields/typography/googlefonts.json' ), true );
         }
-        $gfonts = '<optgroup label="Google Web Fonts">';
+        $gfonts = '<optgroup label="'.__('Google Webfonts', 'redux-framework').'">';
         foreach ($googleArray as $i => $face) {
             $gfonts .= '<option data-details="'.urlencode(json_encode($face)).'" data-google="true" value="'.$i.'">'. $i .'</option>';
         }

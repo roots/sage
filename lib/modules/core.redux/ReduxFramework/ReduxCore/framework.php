@@ -17,7 +17,7 @@
  * @package     ReduxFramework
  * @author      Daniel J Griffiths (Ghost1227)
  * @author      Dovy Paukstys (dovy)
- * @version     3.0.1
+ * @version     3.0.3
  */
 
 // Exit if accessed directly
@@ -26,7 +26,7 @@ if( !defined( 'ABSPATH' ) ) exit;
 // Don't duplicate me!
 if( !class_exists( 'ReduxFramework' ) ) {
 
-	define('REDUX_VERSION', '3.0.1');
+	define('REDUX_VERSION', '3.0.4');
 
     // Windows-proof constants: replace backward by forward slashes
     // Thanks to: https://github.com/peterbouwmeester
@@ -115,8 +115,7 @@ if( !class_exists( 'ReduxFramework' ) ) {
             $defaults['show_import_export'] = true;
             $defaults['dev_mode']           = false;
             $defaults['system_info']        = false;
-            $defaults['admin_stylesheet']   = 'standard';
-            $defaults['footer_credit']      = '<span id="footer-thankyou">' . __( 'Options panel created using', 'redux-framework') . '<a href="' . $this->framework_url . '" target="_blank">' . __('Redux Framework', 'redux-framework') . '</a> v' . $this->framework_version . '</span>';
+            $defaults['footer_credit']      = '<span id="footer-thankyou">' . __( 'Options panel created using', 'redux-framework') . ' <a href="' . $this->framework_url . '" target="_blank">' . __('Redux Framework', 'redux-framework') . '</a> v' . $this->framework_version . '</span>';
             $defaults['help_tabs']          = array();
             $defaults['help_sidebar']       = ''; // __( '', 'redux-framework' );
             $defaults['database'] 			= ''; // possible: options, theme_mods, theme_mods_expanded, transient
@@ -153,6 +152,9 @@ if( !class_exists( 'ReduxFramework' ) ) {
 
 			$this->extra_tabs = $extra_tabs;
 
+            // Options page
+            add_action( 'admin_menu', array( &$this, '_internationalization' ) );
+
             // Set option with defaults
             add_action( 'init', array( &$this, '_set_default_options' ) );
 
@@ -166,11 +168,15 @@ if( !class_exists( 'ReduxFramework' ) ) {
             add_action( 'init', array( &$this, '_register_extensions' ), 2 );
 
             // Any dynamic CSS output, let's run
-            add_action( 'wp_enqueue_scripts', array( &$this, '_enqueue_output' ), 100 );
+            add_action( 'wp_head', array( &$this, '_enqueue_output' ), 100 );
 
             // Hook into the WP feeds for downloading exported settings
             add_action( 'do_feed_reduxopts-' . $this->args['opt_name'], array( &$this, '_download_options' ), 1, 1 );
 
+        }
+
+        public function _internationalization() {
+            load_plugin_textdomain('redux-framework', false, basename( dirname( __FILE__ ) ) . '/languages' );
         }
 
         public function get_instance() {
@@ -736,9 +742,9 @@ if( !class_exists( 'ReduxFramework' ) ) {
         public function _enqueue() {
             global $wp_styles;
 
-	    wp_enqueue_script('jquery');
-	    wp_enqueue_script('jquery-ui-core');
-        wp_enqueue_style( 'jquery-ui-css' );
+    	    wp_enqueue_script('jquery');
+	        wp_enqueue_script('jquery-ui-core');
+            add_thickbox();
 
             wp_register_style(
                 'redux-css',
@@ -781,14 +787,11 @@ if( !class_exists( 'ReduxFramework' ) ) {
                 time(),
                 'all'
             );
+            wp_enqueue_style( 'jquery-ui-css' );
 
             wp_enqueue_style( 'redux-lte-ie8' );
 
-            if( $this->args['admin_stylesheet'] == 'standard' ) {
-                wp_enqueue_style( 'redux-css' );
-            } elseif( $this->args['admin_stylesheet'] == 'custom' ) {
-                wp_enqueue_style( 'redux-custom-css' );
-            }
+            wp_enqueue_style( 'redux-css' );
 
             wp_enqueue_style( 'redux-elusive-icon' );
             wp_enqueue_style( 'redux-elusive-icon-ie7' );
@@ -1055,14 +1058,18 @@ if( !class_exists( 'ReduxFramework' ) ) {
                     foreach( $section['fields'] as $fieldk => $field ) {
                     	
                     	$th = "";
-                        if( isset( $field['title'] ) && isset( $field['type'] ) && $field['type'] !== "info" ) {
+                        if( isset( $field['title'] ) && isset( $field['type'] ) && $field['type'] !== "info" && $field['type'] !== "group" ) {
 			    			$default_mark = ( !empty($field['default']) && isset($this->options[$field['id']]) && $this->options[$field['id']] == $field['default'] && !empty( $this->args['default_mark'] ) && isset( $field['default'] ) ) ? $this->args['default_mark'] : '';
                             if (!empty($field['title'])) {
-                                $th = $field['title'] . $default_mark;
+                                $th = $field['title'] . $default_mark."";
                             }
+          
 						    if( isset( $field['subtitle'] ) ) {
 								$th .= '<span class="description">' . $field['subtitle'] . '</span>';
 						    }
+
+                         
+                           
                         } 
 						if (!isset($field['id'])) {
 							print_r($field);
@@ -1078,7 +1085,7 @@ if( !class_exists( 'ReduxFramework' ) ) {
 							$runUpdate = true;
 						}						
 
-						if ( $this->args['default_show'] === true && isset( $field['default'] ) && isset($this->options[$field['id']]) && $this->options[$field['id']] != $field['default'] && $field['type'] !== "info" ) {
+						if ( $this->args['default_show'] === true && isset( $field['default'] ) && isset($this->options[$field['id']]) && $this->options[$field['id']] != $field['default'] && $field['type'] !== "info" && $field['type'] !== "group" ) {
 							$default_output = "";
 						    if (!is_array($field['default'])) {
 								if ( !empty( $field['options'][$field['default']] ) ) {
@@ -1126,6 +1133,11 @@ if( !class_exists( 'ReduxFramework' ) ) {
 							$field['class'] .= " compiler";
 						}
 						$this->sections[$k]['fields'][$fieldk] = $field;
+
+                        if( isset( $this->args['display_source'] ) ) {
+                            $th .= '<div id="'.$field['id'].'-settings" style="display:none;"><pre>'.var_export($this->sections[$k]['fields'][$fieldk], true).'</pre></div>';
+                            $th .= '<br /><a href="#TB_inline?width=600&height=800&inlineId='.$field['id'].'-settings" class="thickbox"><small>View Source</small></a>';
+                        }                           
 
                         add_settings_field( $fieldk . '_field', $th, array( &$this, '_field_input' ), $this->args['opt_name'] . $k . '_section_group', $this->args['opt_name'] . $k . '_section', $field ); // checkbox
                     }
@@ -1365,7 +1377,8 @@ if( !class_exists( 'ReduxFramework' ) ) {
             if ( $saved ) {
             	delete_transient( 'redux-saved-' . $this->args['opt_name'] );	
             }
-            
+            echo '<div class="wrap"><h2></h2></div>'; // Stupid hack for Wordpress alerts and warnings
+
             echo '<div class="clear"></div>';
             echo '<div class="wrap">';
 
@@ -1425,7 +1438,7 @@ if( !class_exists( 'ReduxFramework' ) ) {
             echo '<div id="info_bar">';
             echo '<a href="javascript:void(0);" id="expand_options">' . __( 'Expand', 'redux-framework' ) . '</a>';
             echo '<div class="redux-action_bar">';
-            submit_button( '', 'primary', 'redux_save', false );
+            submit_button( __( 'Save Changes', 'redux-framework'), 'primary', 'redux_save', false );
             echo '&nbsp;';
             submit_button( __( 'Reset to Defaults', 'redux-framework' ), 'secondary', $this->args['opt_name'] . '[defaults]', false );
             echo '</div>';
@@ -1682,7 +1695,7 @@ if( !class_exists( 'ReduxFramework' ) ) {
             }
 
             echo '<div class="redux-action_bar">';
-            submit_button( '', 'primary', 'redux_save', false );
+            submit_button( __( 'Save Changes', 'redux-framework'), 'primary', 'redux_save', false );
             echo '&nbsp;';
             submit_button( __( 'Reset to Defaults', 'redux-framework'), 'secondary', $this->args['opt_name'] . '[defaults]', false );
             echo '</div>';
@@ -1792,7 +1805,7 @@ if( !class_exists( 'ReduxFramework' ) ) {
 	                    	$field['description'] = $field['desc'];
 	                    }
                     
-                    echo ( isset( $field['description'] ) && $field['type'] != "info" && !empty( $field['description'] ) ) ? '<div class="description field-desc">' . $field['description'] . '</div>' : '';
+                    echo ( isset( $field['description'] ) && $field['type'] != "info" && $field['type'] != "group" && !empty( $field['description'] ) ) ? '<div class="description field-desc">' . $field['description'] . '</div>' : '';
 
                     echo '</fieldset>';
 

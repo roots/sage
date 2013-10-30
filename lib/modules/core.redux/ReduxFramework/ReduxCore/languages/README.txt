@@ -9,3 +9,11 @@ To add a translation, do a pull request from the repo: https://github.com/ReduxF
 If you can't figure out a pull request, just post an issue with the file and we'll take care of it.
 
 Thank you!
+
+
+——————————————————————————
+
+Special thanks to the following people for language translations
+
+German [de_DE] @Abu-Taymiyyah
+Bahasa Indonesia [id_ID] @riesurya
