@@ -1,3 +1,6 @@
+### HEAD
+* Update to Bootstrap 3.0.1
+
 ### 6.5.0: August 23rd, 2013
 * Reference new site, [http://roots.io/](http://roots.io/)
 * Remove bundled docs, reference [http://roots.io/docs/](http://roots.io/docs/)
