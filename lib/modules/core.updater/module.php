@@ -4,7 +4,7 @@ define( 'SHOESTRAP_STORE_URL', 'http://shoestrap.org' );
 define( 'SHOESTRAP_THEME_NAME', 'Shoestrap 3' );
 define( 'SHOESTRAP_URL', 'http://shoestrap.org/downloads/shoestrap/' );
 // retrieve our license key from the DB
-$license_key = trim( shoestrap_getVariable( 'shoestrap_license_key' ) );
+$license_key = trim( get_option( 'shoestrap_license_key' ) );
 
 if( !class_exists( 'EDD_SL_Theme_Updater' ) ) {
   // load our custom theme updater
@@ -21,7 +21,7 @@ $edd_updater = new EDD_SL_Theme_Updater( array(
   'version'         => $shoestrap_theme_version,  // current version number
   'license'         => $license_key,              // license key ( used get_option above to retrieve from DB )
   'item_name'       => SHOESTRAP_THEME_NAME,      // name of this theme
-  'author'          => $shoestrap_theme_author    // author of this theme
+  'author'          => $shoestrap_theme_author  // author of this theme
  ) );
 
 
@@ -38,20 +38,11 @@ function shoestrap_core_licencing_options( $sections ) {
   );
 
   $fields[] = array( 
-    'name'      => __( 'Shoestrap Licence', 'shoestrap' ),
-    'desc'      => __( 'Enter your shoestrap licence to enable automatic updates.', 'shoestrap' ),
+    'name'      => __( 'Shoestrap Theme Licence', 'shoestrap' ),
+    'desc'      => __( 'Enter your shoestrap licence to enable automatic updates.', 'shoestrap' ) . ' ' . shoestrap_license_key_status_indicator(),
     'id'        => 'shoestrap_license_key',
     'default'   => '',
     'type'      => 'text'
-  );
-
-  $fields[] = array( 
-    'name'      => '',
-    'desc'      => '',
-    'id'        => 'shoestrap_license_key_status_indicator',
-    'default'   => shoestrap_license_key_status_indicator(),
-    'icon'      => true,
-    'type'      => 'info'
   );
 
   $section['fields'] = $fields;
@@ -65,8 +56,20 @@ function shoestrap_core_licencing_options( $sections ) {
 endif;
 add_filter( 'redux-sections-' . REDUX_OPT_NAME, 'shoestrap_core_licencing_options', 200 ); 
 
+
+function shoestrap_copy_licence_to_option() {
+  $new = shoestrap_getVariable( 'shoestrap_license_key' );
+  $old = get_option( 'shoestrap_license_key' );
+
+  if ( $new != $old ) :
+    update_option( 'shoestrap_license_key', $new );
+  endif;
+}
+add_action( 'init', 'shoestrap_copy_licence_to_option' );
+
+
 function shoestrap_sanitize_license( $new ) {
-  $old = shoestrap_getVariable( 'shoestrap_license_key' );
+  $old = get_option( 'shoestrap_license_key' );
 
   if( $old && $old != $new ) :
     // new license has been entered, so must reactivate
@@ -76,8 +79,9 @@ function shoestrap_sanitize_license( $new ) {
   return $new;
 }
 
+
 function shoestrap_activate_license() {
-  $license_key = trim( shoestrap_getVariable( 'shoestrap_license_key' ) );
+  $license_key = trim( get_option( 'shoestrap_license_key' ) );
 
   if ( strlen( $license_key ) < 7 ) :
     return;
@@ -87,7 +91,7 @@ function shoestrap_activate_license() {
     return;
   endif;
 
-  $license = trim( shoestrap_getVariable( 'shoestrap_license_key' ) );
+  $license = trim( get_option( 'shoestrap_license_key' ) );
 
   // data to send in our API request
   $api_params = array( 
@@ -112,15 +116,17 @@ function shoestrap_activate_license() {
 }
 add_action( 'admin_init', 'shoestrap_activate_license' );
 
+
 function shoestrap_license_key_status_indicator() {
-  $license  = shoestrap_getVariable( 'shoestrap_license_key' );
+  $license  = get_option( 'shoestrap_license_key' );
   $status   = get_option( 'shoestrap_license_key_status' );
   $message = '';
   if ( false !== $license ) :
-    if ( $status !== false && $status == 'valid' )
-      $message = '<span style="color:green;">' . __( 'active', 'shoestrap' ) . '</span>';
-    else
-      $message = '<span style="color:red;">' . __( 'inactive', 'shoestrap' ) . '</span>';
+    if ( $status == 'valid' ) :
+      $message = '<span style="color:#fff; background: green;">' . __( 'active', 'shoestrap' ) . '</span>';
+    else :
+      $message = '<span style="color:#fff; background: red;">' . __( 'inactive', 'shoestrap' ) . '</span>';
+    endif;
   endif;
 
   return $message;
