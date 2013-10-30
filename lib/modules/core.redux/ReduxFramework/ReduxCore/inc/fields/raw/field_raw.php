@@ -1,5 +1,5 @@
 <?php
-class ReduxFramework_php {
+class ReduxFramework_raw {
 
     /**
      * Field Constructor.
@@ -26,11 +26,11 @@ class ReduxFramework_php {
         echo '</td></tr></table><table class="form-table no-border redux-group-table" style="margin-top: 0;"><tbody><tr><td>';
         echo '<fieldset id="'.$this->parent->args['opt_name'].'-'.$this->field['id'].'" class="redux-field redux-container-'.$this->field['type'].' '.$this->field['class'].'" data-id="'.$this->field['id'].'">';
 
-        if (!empty($this->field['include']) && file_exists($this->field['include'])) {
-            include($this->field['include']);
+        if ( !empty( $this->field['include'] ) && file_exists( $this->field['include'] ) ) {
+            include( $this->field['include'] );
         }
 
-        do_action('redux-php-field-'.$this->parent->args['opt_name'].'-'.$this->field['id']);
+        do_action('redux-field-raw-'.$this->parent->args['opt_name'].'-'.$this->field['id']);
 
         echo '</fieldset>';
         echo '</td></tr></table><table class="form-table no-border" style="margin-top: 0;"><tbody><tr><th></th><td>';        
