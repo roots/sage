@@ -1,8 +1,8 @@
 /* ========================================================================
  * Bootstrap: tab.js v3.0.0
- * http://getbootstrap.com/javascript/#tabs
+ * http://twbs.github.com/bootstrap/javascript.html#tabs
  * ========================================================================
- * Copyright 2013 Twitter, Inc.
+ * Copyright 2012 Twitter, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,7 +30,7 @@
   Tab.prototype.show = function () {
     var $this    = this.element
     var $ul      = $this.closest('ul:not(.dropdown-menu)')
-    var selector = $this.data('target')
+    var selector = $this.attr('data-target')
 
     if (!selector) {
       selector = $this.attr('href')
