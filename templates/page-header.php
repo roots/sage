@@ -11,3 +11,4 @@
     <h1><span class="text-wrap"><?php echo roots_title(); ?></span></h1>
   </div>
 </div>
+<?php get_template_part('templates/content', 'breadcrumbs'); ?>

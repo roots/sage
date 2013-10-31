@@ -27,19 +27,14 @@ body.home #upper-deck {
   z-index: (@zindex-navbar + 100);
 }
 
-/* #menu-mini-us {
-  position: relative;
-  z-index: (@zindex-navbar + 1);
-  margin: 10px 0;
-} */
-
 [id*="menu-mini"] {
   position: relative;
   z-index: (@zindex-navbar + 1);
   margin: 10px 0;
 }
 
-#upper-deck .nav-pills>li>a {
+#upper-deck .nav-pills>li>a,
+#lang_sel a, #lang_sel a:link, #lang_sel a:visited {
   background-color: @gray-lighter;
   border: 1px solid darken(@gray-lighter, 10%);
   border-radius: 25px;
@@ -47,13 +42,86 @@ body.home #upper-deck {
   color: darken(@link-color, 15%);
   margin-left: 5px;
   font-size: 12px;
+	line-height:20px;
 }
 
-#upper-deck .nav-pills>li>a:hover {
+#upper-deck .nav-pills>li>a:hover,
+#lang_sel a:hover {
   background-color: darken(@gray-lighter, 5%);
   border: 1px solid darken(@gray-lighter, 15%);
   color: @link-color;
 }
+
+
+// LANG DROPDOWN
+
+
+#lang_sel {height:32px; position:relative;  z-index: (@zindex-navbar + 1); float: right; margin-right: 10px; margin-top:10px;  font-family:arial, sans-serif;}
+
+/* remove all the bullets, borders and padding from the default list styling */
+#lang_sel ul, #lang_sel li {padding:0 !important; margin:0 !important; list-style-type:none !important;}
+#lang_sel li:before{content:'' !important;}
+#lang_sel ul ul {width:149px;}
+
+/* float the list to make it horizontal and a relative positon so that you can control the dropdown menu positon */
+#lang_sel li {float:left;width:149px;position:relative;}
+
+/* hide the sub levels and give them a positon absolute so that they take up no room */
+#lang_sel ul ul {visibility:hidden;position:absolute;height:0;top:25px;left:0; width:149px;border-top:0;}
+
+
+/* style the table so that it takes no ppart in the layout - required for IE to work */
+#lang_sel table {position:absolute; top:0; left:0; border-collapse:collapse;}
+
+/* style the second level links */
+#lang_sel ul ul a, #lang_sel ul ul a:link, #lang_sel ul ul a:visited {
+	font-weight: normal;
+	/*font-size: 11px;*/
+	background:#eee;
+	color:#000 !important;
+	/*height:auto; line-height:1em; */
+	/*padding:3px 10px;*/
+	border-width:0 1px 1px 1px;
+	-moz-border-radius: 0;
+	-webkit-border-radius: 0;
+	border-radius: 0; /* future proofing */
+	-khtml-border-radius: 0; /* for old Konqueror browsers */
+	}
+
+/* style the top level hover */
+#lang_sel a:hover, #lang_sel ul ul a:hover{color:#000; background:#ccc;}
+#lang_sel :hover > a, #lang_sel ul ul :hover > a {color:#000; background:#ccc;}
+
+#lang_sel a.lang_sel_sel{
+    background:url(//www.atkore.com/assets/images/nav-arrow-down.png) #fcfcfc right no-repeat;
+    color: #082f54;
+}
+#lang_sel a.lang_sel_sel:hover{
+    text-decoration: none;
+    /*color:#000;*/
+}
+
+/* make the second level visible when hover on first level list OR link */
+#lang_sel ul li:hover ul,
+#lang_sel ul a:hover ul{visibility:visible; }
+
+#lang_sel ul li img {
+	position: relative;
+	margin: 0;
+	padding: 0;
+	margin-right: -6px;
+	border: 1px solid #bfbfbf;
+	top: -1px!important;
+}
+
+#lang_sel ul li ul li img {
+	margin-right: -2px;
+}
+
+
+
+
+
 
 .inner-grad {
 position: absolute;
