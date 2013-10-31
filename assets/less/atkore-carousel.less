@@ -106,20 +106,6 @@ body[class*="kaf-tech"] {
   }
 }
 
-
-
-body[class*="kaf-tech"] #carousel-home .carousel-caption  .carousel-caption-wrap {
-	background-color: rgba(0,0,0,0.2);
-}
-
-body[class*="afc"] #carousel-home .carousel-caption  .carousel-caption-wrap {
-	background-color: rgba(0,0,0,0.5);
-}
-
-body[class*="unistrut"] #carousel-home .carousel-caption  .carousel-caption-wrap {
-	background-color: rgba(0,0,0,0.5);
-}
-
 #carousel-home .carousel-caption {
   bottom: 0;
   text-align: left;
@@ -156,6 +142,19 @@ body[class*="unistrut"] #carousel-home .carousel-caption  .carousel-caption-wrap
 	  	bottom: 50px;
 	}
 }
+
+body[class*="kaf-tech"] #carousel-home .carousel-caption  .carousel-caption-wrap {
+	background-color: rgba(0,0,0,0.2);
+}
+
+body[class*="afc"] #carousel-home .carousel-caption  .carousel-caption-wrap {
+	background-color: rgba(0,0,0,0.5);
+}
+
+body[class*="unistrut"] #carousel-home .carousel-caption  .carousel-caption-wrap {
+	background-color: rgba(0,0,0,0.5);
+}
+
 
 .bottom-bar {
   border-top: 1px solid rgba(255,255,255,0.5);
@@ -267,6 +266,29 @@ body[class*="unistrut"] #carousel-home .carousel-caption  .carousel-caption-wrap
 		}
 	}
 }
+
+.no-svg {
+	#brands-footer {
+		.fade-block {
+			&.right {
+				background: url('//assets.atkore.com/img/fade-block-right.png') top right repeat-y transparent!important;
+				filter: none;
+			}
+			&.left {
+				background: url('//assets.atkore.com/img/fade-block-left.png') top left repeat-y transparent!important;
+				filter: none;
+			}
+		}
+	}
+	.carousel-control {
+		background-image: none;
+		background-color: transparent;
+		background-repeat: no-repeat;
+		background-position: center center;
+		filter: none;
+	}
+}
+
 
 	#carousel-brands .item,
   #carousel-brands ul,
