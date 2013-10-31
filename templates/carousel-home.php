@@ -11,10 +11,12 @@ $classes = '';?>
       <?php while ($the_query->have_posts()) : $the_query->the_post();?>
 					<div <?php if( $i == $startframe ) : $classes = array('item','active', 'first'); elseif ( $i == 1 ) : $classes = array('item','second'); elseif ( $i == 2 ) : $classes = array('item','third'); elseif ( $i == 3 ) : $classes = array('item','forth',); endif; post_class($classes)?>>
 					   <?php if ( has_post_thumbnail() ) { the_post_thumbnail('full', array('class' => 'background-image-carousel')); } ?>
-						  <div class="carousel-caption<?php if(get_field('headline_type') == "plain") { ?> plain<?php } ?><?php if(get_field('headline_type') == "background") { ?> background<?php } ?><?php if(get_field('headline_type') == "block") { ?> block<?php } ?>">
-                  <h1><?php the_title(); ?></h1>
-                  <?php the_content(); ?>	    
-                  <?php // get_template_part('templates/content', 'call-to-action'); ?>
+						  <div class="carousel-caption">
+						  		<div class="carousel-caption-wrap">
+	                  <h1><?php the_title(); ?></h1>
+	                  <?php the_content(); ?>	    
+	                  <?php // get_template_part('templates/content', 'call-to-action'); ?>
+						  		</div>
               </div>
           </div> 
           <!-- Controls -->
