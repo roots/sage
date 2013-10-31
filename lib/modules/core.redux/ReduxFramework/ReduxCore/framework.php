@@ -23,6 +23,8 @@
 // Exit if accessed directly
 if( !defined( 'ABSPATH' ) ) exit;
 
+
+
 // Don't duplicate me!
 if( !class_exists( 'ReduxFramework' ) ) {
 
@@ -855,6 +857,7 @@ if( !class_exists( 'ReduxFramework' ) ) {
                     'folds'				=> $this->folds,
                     'options'			=> $this->options,
                     'defaults'			=> $this->options_defaults,
+                    'slug'              => $this->args['page_slug']
                 );       
 
             // Construct the errors array. 

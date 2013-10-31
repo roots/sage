@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: admin, admin interface, options, theme options, plugin options, options framework, settings
 Requires at least: 3.5.1
 Tested up to: 3.7
-Stable tag: 3.0.3
+Stable tag: 3.0.4
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -137,12 +137,23 @@ That's because the real FAQ section is on our site! Please visit [http://reduxfr
 
 == Changelog ==
 
+= 3.0.4 =
+* Fixed an odd saving issue.
+* Fixed link issues in the framework
+* Issue #135: jQuery UI wasn't being properly queued
+* Issue #140: Admin notice glitch. See http://reduxframework.com/2013/10/wordpress-notifications-custom-options-panels/
+* Use hooks instead of custom variable for custom admin CSS
+* Added "raw" field that allows PHP or a hook to embed anything in the panel.
+* Submenus in Admin now change the tabs without reloading the page.
+* Small fix for multi-text.
+* Added IT_it and RO_ro languages.
+* Updated readme file for languages.
+
 = 3.0.3 =
 * Fixed Issue #129: Spacing field giving an undefined.
 * Fixed Issue #131: Google Fonts stylesheet appending to body and also to the top of the header. Now properly placed both at the end of the head tag as to overload any theme stylesheets.
 * Fixed issue #132 (See #134, thanks @andreilupu): Could not have multiple Wordpress Editors (wp_editor) as the same ID was shared. Also fixed various styles to match Wordpress for this field.
 * Fixed Issue #133: Issue when custom admin stylesheet was used, a JS error resulted.
-
 
 = 3.0.2 =
 * Improvements to slides, various field fixes and improvements. Also fixed a few user submitted issues.

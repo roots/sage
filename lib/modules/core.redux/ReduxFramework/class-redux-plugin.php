@@ -87,7 +87,6 @@ class ReduxFrameworkPlugin {
 	 */
 	private function __construct() {
 
-
 		$defaults = array(
 						'demo'			=> false, 
 					);
