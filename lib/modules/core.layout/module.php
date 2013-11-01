@@ -44,21 +44,6 @@ function shoestrap_module_layout_options( $sections ) {
     )
   );
 
-  $fields[] = array( 
-    'title'     => __( 'Primary Sidebar Width', 'shoestrap' ),
-    'desc'      => __( 'Select the width of the Primary Sidebar. Please note that the values represent grid columns. The total width of the page is 12 columns, so selecting 4 here will make the primary sidebar to have a width of 1/3 ( 4/12 ) of the total page width.', 'shoestrap' ),
-    'id'        => 'layout_primary_width',
-    'type'      => 'button_set',
-    'options'   => array(
-      '1' => '1 Column',
-      '2' => '2 Columns',
-      '3' => '3 Columns',
-      '4' => '4 Columns',
-      '5' => '5 Columns'
-    ),
-    'default' => '4'
-  );
-
   $fields[] = array(
     'title'     => __( 'Custom Layouts per Post Type', 'shoestrap' ),
     'desc'      => __( 'Set a default layout for each post type on your site.', 'shoestrap' ),
@@ -87,6 +72,21 @@ function shoestrap_module_layout_options( $sections ) {
       )
     );
   endforeach;
+
+  $fields[] = array( 
+    'title'     => __( 'Primary Sidebar Width', 'shoestrap' ),
+    'desc'      => __( 'Select the width of the Primary Sidebar. Please note that the values represent grid columns. The total width of the page is 12 columns, so selecting 4 here will make the primary sidebar to have a width of 1/3 ( 4/12 ) of the total page width.', 'shoestrap' ),
+    'id'        => 'layout_primary_width',
+    'type'      => 'button_set',
+    'options'   => array(
+      '1' => '1 Column',
+      '2' => '2 Columns',
+      '3' => '3 Columns',
+      '4' => '4 Columns',
+      '5' => '5 Columns'
+    ),
+    'default' => '4'
+  );
 
   $fields[] = array( 
     'title'     => __( 'Secondary Sidebar Width', 'shoestrap' ),

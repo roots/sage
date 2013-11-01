@@ -21,17 +21,17 @@ function shoestrap_module_branding_options( $sections ) {
     'customizer'  => array(),
   );
 
-  $fields[] = array( 
-    'title'       => 'Retina Logo',
-    'desc'        => __( 'Upload a logo that is exactly 2x the size you want to typically display. A version will then be generated for general site use. If you have previously uploaded a logo, you will need to re-upload it to generate the proper versions.', 'shoestrap' ),
-    'id'          => 'retina_help',
-    'required'    => array('retina_logo_toggle','=',array('1')),
-    'type'        => 'info'
-  );
+  // $fields[] = array( 
+  //   'title'       => 'Retina Logo',
+  //   'desc'        => __( 'Upload a logo that is exactly 2x the size you want to typically display. A version will then be generated for general site use. If you have previously uploaded a logo, you will need to re-upload it to generate the proper versions.', 'shoestrap' ),
+  //   'id'          => 'retina_help',
+  //   'required'    => array('retina_logo_toggle','=',array('1')),
+  //   'type'        => 'info'
+  // );
 
   $fields[] = array( 
     'title'       => __( 'Custom Favicon', 'shoestrap' ),
-    'desc'        => __( 'Upload a .ico image using the media uploader, or define the URL directly. 32px x 32px', 'shoestrap' ),
+    'desc'        => __( 'Upload a favicon image using the media uploader, or define the URL directly.', 'shoestrap' ),
     'id'          => 'favicon',
     'default'     => '',
     'type'        => 'media',
