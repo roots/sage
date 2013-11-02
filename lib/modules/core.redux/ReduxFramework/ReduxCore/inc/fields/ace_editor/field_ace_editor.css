@@ -1,0 +1,15 @@
+.ace-wrapper{
+    position:static;
+}
+.ace-editor{
+    display: none;
+}
+.ace_editor{
+    height: 200px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+.ace_gutter{
+    z-index: 1 !important;
+}

@@ -114,7 +114,23 @@ function shoestrap_module_featured_images_options( $sections ) {
     'edit'      => 1,
     'required'  => array('feat_img_post_custom_toggle','=',array('1')),
     'type'      => 'slider'
-  );   
+  );
+
+  $post_types = get_post_types( array( 'public' => true ), 'names' );
+  $post_type_options  = array();
+  $post_type_defaults = array();
+  foreach ( $post_types as $post_type ) :
+    $post_type_options[$post_type]  = $post_type;
+    $post_type_defaults[$post_type] = 0;
+  endforeach;
+
+  $fields[] = array(
+    'title'     => __( 'Disable featured images on post types', 'shoestrap' ),
+    'id'        => 'feat_img_per_post_type',
+    'type'      => 'checkbox',
+    'options'   => $post_type_options,
+    'default'   => $post_type_defaults,
+  );
 
   $section['fields'] = $fields;
 

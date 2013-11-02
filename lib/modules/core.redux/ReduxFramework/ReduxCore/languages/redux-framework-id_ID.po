@@ -1,0 +1,417 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Redux Framework v3.0.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-10-26 13:42+0700\n"
+"PO-Revision-Date: 2013-10-29 17:36-0700\n"
+"Last-Translator: Dovy Paukstys <dovy@reduxframework.com>\n"
+"Language-Team: ReduxFramework v3.0.1 <language@reduxframework.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: id_ID\n"
+"X-Generator: Poedit 1.5.7\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext;_n;__ngettext_noop;_n_noop;_x;_nx;"
+"_nx_noop;_ex;esc_attr__;esc_attr_e;esc_attr_x;esc_html__;esc_html_e;"
+"esc_html_x;_c;_nc\n"
+"X-Poedit-Basepath: ../../\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SearchPath-0: ReduxCore\n"
+"X-Poedit-SearchPath-1: ReduxCore/languages\n"
+"X-Poedit-SearchPath-2: .\n"
+
+#: ReduxCore/framework.php:107 ReduxCore/framework.php:109
+msgid "Options"
+msgstr "Options"
+
+#: ReduxCore/framework.php:121
+msgid "Options panel created using"
+msgstr "Panel Theme Options ini dibuat dengan"
+
+#: ReduxCore/framework.php:121
+msgid "Redux Framework"
+msgstr "Redux Framework"
+
+#: ReduxCore/framework.php:643 ReduxCore/framework.php:644
+#: ReduxCore/framework.php:1501
+msgid "Import / Export"
+msgstr "Impor / Ekspor"
+
+#: ReduxCore/framework.php:665 ReduxCore/framework.php:666
+#: ReduxCore/framework.php:1531 ReduxCore/framework.php:1638
+msgid "Options Object"
+msgstr "Data Object Options"
+
+#: ReduxCore/framework.php:676 ReduxCore/framework.php:677
+#: ReduxCore/framework.php:1545 ReduxCore/framework.php:1658
+msgid "System Info"
+msgstr "Informasi System"
+
+#: ReduxCore/framework.php:850
+#: ReduxCore/extensions/customizer/extension_customizer.php:309
+#: ReduxCore/extensions/customizer/extension_customizer.php:340
+msgid "You have changes that are not saved. Would you like to save them now?"
+msgstr "Perubahan yang dilakukan tidak disimpan. Mau disimpan sekarang?"
+
+#: ReduxCore/framework.php:851
+#: ReduxCore/extensions/customizer/extension_customizer.php:310
+#: ReduxCore/extensions/customizer/extension_customizer.php:341
+msgid "Are you sure? Resetting will loose all custom values."
+msgstr "Yakin? Proses reset akan mengembalikan ke konsisi standar/awal"
+
+#: ReduxCore/framework.php:852
+#: ReduxCore/extensions/customizer/extension_customizer.php:311
+#: ReduxCore/extensions/customizer/extension_customizer.php:342
+msgid ""
+"Your current options will be replaced with the values of this preset. Would "
+"you like to proceed?"
+msgstr ""
+"Semua settingan ini akan diubah dengan nilai yang ditetapkan dalam preset "
+"berikut. Lanjut?"
+
+#: ReduxCore/framework.php:1112
+msgid "Default"
+msgstr "Standar"
+
+#: ReduxCore/framework.php:1375
+msgid "Warning- This options panel will not work properly without javascript!"
+msgstr ""
+"Perhatian- Panel options ini tidak dapat bekerja baik tanpa javascript!"
+
+#: ReduxCore/framework.php:1428
+msgid "Expand"
+msgstr "Kembangkan"
+
+#: ReduxCore/framework.php:1432 ReduxCore/framework.php:1689
+msgid "Reset to Defaults"
+msgstr "Kembalikan ke kondisi awal"
+
+#: ReduxCore/framework.php:1435 ReduxCore/framework.php:1692
+msgid "Working..."
+msgstr "Tunggu sebentar..."
+
+#: ReduxCore/framework.php:1442
+msgid "Settings Imported!"
+msgstr "Settingan Berhasil Diimpor!"
+
+#: ReduxCore/framework.php:1444
+msgid "Settings Saved!"
+msgstr "Setting Berhasil Disimpan!"
+
+#: ReduxCore/framework.php:1448
+msgid "Settings have changed, you should save them!"
+msgstr "Settingan telah berubah, silakan disimpan ( klik tombol Simpan )"
+
+#: ReduxCore/framework.php:1449
+msgid "error(s) were found!"
+msgstr "terdapat error"
+
+#: ReduxCore/framework.php:1450
+msgid "warning(s) were found!"
+msgstr "ditemukan peringatan (warning)"
+
+#: ReduxCore/framework.php:1582
+msgid "Import / Export Options"
+msgstr "Pilihan Impor/Ekspor"
+
+#: ReduxCore/framework.php:1583
+msgid "Import Options"
+msgstr "Pilihan Impor"
+
+#: ReduxCore/framework.php:1584
+msgid "Import from file"
+msgstr "Impor dari berkas"
+
+#: ReduxCore/framework.php:1584
+msgid "Import from URL"
+msgstr "Impor dari URL"
+
+#: ReduxCore/framework.php:1589
+msgid ""
+"Input your backup file below and hit Import to restore your sites options "
+"from a backup."
+msgstr ""
+"Masukkan berkas cadangan dibawah ini lalu klik tombol Impor untuk "
+"menggunakan settingan dari berkas cadangan."
+
+#: ReduxCore/framework.php:1599
+msgid ""
+"Input the URL to another sites options set and hit Import to load the "
+"options from that site."
+msgstr "Masukkan URL berkas cadangan, dan klik tombol Impor."
+
+#: ReduxCore/framework.php:1606
+msgid "Import"
+msgstr "Impor"
+
+#: ReduxCore/framework.php:1606
+msgid ""
+"WARNING! This will overwrite all existing option values, please proceed with "
+"caution!"
+msgstr ""
+"PERHATIAN! Prosedur berikut akan melakukan penimpaan semua settingan yang "
+"ada, pastikan semua sesuai."
+
+#: ReduxCore/framework.php:1609
+msgid "Export Options"
+msgstr "Pilihan Ekspor"
+
+#: ReduxCore/framework.php:1611
+msgid ""
+"Here you can copy/download your current option settings. Keep this safe as "
+"you can use it as a backup should anything go wrong, or you can use it to "
+"restore your settings on this site (or any other site)."
+msgstr ""
+"Anda dapat menyalin/mendonwload settingan saat ini. Simpan baik-baik sebagai "
+"cadangan bila terjadi hal-hal yang tidak diinginkan, atau dapat digunakan "
+"untuk mengembalikan settingan pada situs ini ( atau situs mana saja dengan "
+"pilihan settingan yang sama )"
+
+#: ReduxCore/framework.php:1615
+msgid "Copy"
+msgstr "Salin"
+
+#: ReduxCore/framework.php:1615
+msgid "Download"
+msgstr "Download"
+
+#: ReduxCore/framework.php:1615
+msgid "Copy Link"
+msgstr "Salin Link"
+
+#: ReduxCore/framework.php:1647
+msgid "Show Object in Javascript Console Object"
+msgstr "Tampilkan Object pada Konsol Javascript"
+
+#: ReduxCore/inc/fields/border/field_border.php:102
+msgid "Border size"
+msgstr "Tebal Border"
+
+#: ReduxCore/inc/fields/border/field_border.php:110
+msgid "Border style"
+msgstr "Model Border"
+
+#: ReduxCore/inc/fields/color_gradient/field_color_gradient.php:73
+msgid "From "
+msgstr "Dari"
+
+#: ReduxCore/inc/fields/color_gradient/field_color_gradient.php:84
+msgid "To "
+msgstr "Hingga"
+
+#: ReduxCore/inc/fields/dimensions/field_dimensions.php:70
+msgid "Width"
+msgstr "Lebar"
+
+#: ReduxCore/inc/fields/dimensions/field_dimensions.php:84
+msgid "height"
+msgstr "tinggi"
+
+#: ReduxCore/inc/fields/dimensions/field_dimensions.php:94
+#: ReduxCore/inc/fields/dimensions/field_dimensions.php:95
+msgid "Units"
+msgstr "Satuan"
+
+#: ReduxCore/inc/fields/gallery/field_gallery.php:76
+msgid "Add/Edit Gallery"
+msgstr "Tambah/Hapus Galeri"
+
+#: ReduxCore/inc/fields/gallery/field_gallery.php:77
+msgid "Clear Gallery"
+msgstr "Bersihkan Galeri"
+
+#: ReduxCore/inc/fields/group/field_group.php:71
+msgid "New"
+msgstr "Baru"
+
+#: ReduxCore/inc/fields/group/field_group.php:127
+msgid "Delete"
+msgstr "Hapus"
+
+#: ReduxCore/inc/fields/group/field_group.php:132
+msgid "Add"
+msgstr "Tambah"
+
+#: ReduxCore/inc/fields/link_color/field_link_color.php:84
+msgid "Regular"
+msgstr "Reguler"
+
+#: ReduxCore/inc/fields/link_color/field_link_color.php:90
+msgid "Hover"
+msgstr "Hover"
+
+#: ReduxCore/inc/fields/link_color/field_link_color.php:96
+msgid "Active"
+msgstr "Active"
+
+#: ReduxCore/inc/fields/media/field_media.php:133
+#: ReduxCore/inc/fields/slides/field_slides - Copy.php:110 Copy.php:151
+#: ReduxCore/inc/fields/slides/field_slides.php:112
+#: ReduxCore/inc/fields/slides/field_slides.php:156
+msgid "Upload"
+msgstr "Unggah"
+
+#: ReduxCore/inc/fields/media/field_media.php:139
+#: ReduxCore/inc/fields/multi_text/field_multi_text.php:70
+#: ReduxCore/inc/fields/multi_text/field_multi_text.php:73
+#: ReduxCore/inc/fields/multi_text/field_multi_text.php:76
+#: ReduxCore/inc/fields/slides/field_slides - Copy.php:116 Copy.php:153
+#: ReduxCore/inc/fields/slides/field_slides.php:118
+#: ReduxCore/inc/fields/slides/field_slides.php:158
+msgid "Remove"
+msgstr "Hapus"
+
+#: ReduxCore/inc/fields/multi_text/field_multi_text.php:80
+msgid "Add More"
+msgstr "Tambah"
+
+#: ReduxCore/inc/fields/password/field_password.php:29
+msgid "Password"
+msgstr "Kata Sandi"
+
+#: ReduxCore/inc/fields/password/field_password.php:29
+msgid "Username"
+msgstr "Nama Pengguna"
+
+#: ReduxCore/inc/fields/select/field_select.php:67
+msgid "Select an item"
+msgstr "Pilih"
+
+#: ReduxCore/inc/fields/select/field_select.php:81
+msgid "No items of this type were found."
+msgstr "Tidak ada pilihan untuk field jenis berikut"
+
+#: ReduxCore/inc/fields/slides/field_slides - Copy.php:129 Copy.php:166
+#: ReduxCore/inc/fields/slides/field_slides.php:131
+#: ReduxCore/inc/fields/slides/field_slides.php:171
+msgid "Delete Slide"
+msgstr "Hapus Slide"
+
+#: ReduxCore/inc/fields/slides/field_slides - Copy.php:169
+#: ReduxCore/inc/fields/slides/field_slides.php:175
+msgid "Add Slide"
+msgstr "Tambah Slide"
+
+#: ReduxCore/inc/fields/spacing/field_spacing.php:83
+msgid "Top"
+msgstr "Top"
+
+#: ReduxCore/inc/fields/spacing/field_spacing.php:94
+msgid "Right"
+msgstr "Right"
+
+#: ReduxCore/inc/fields/spacing/field_spacing.php:105
+msgid "Bottom"
+msgstr "Bottom"
+
+#: ReduxCore/inc/fields/spacing/field_spacing.php:116
+msgid "Left"
+msgstr "Left"
+
+#: ReduxCore/inc/fields/typography/field_typography.php:103
+msgid "Font family"
+msgstr "Jenis Huruf"
+
+#: ReduxCore/inc/fields/typography/field_typography.php:163
+#: ReduxCore/inc/fields/typography/field_typography.php:167
+msgid "Font style"
+msgstr "Model Huruf"
+
+#: ReduxCore/inc/fields/typography/field_typography.php:167
+msgid "Style"
+msgstr "Model"
+
+#: ReduxCore/inc/fields/typography/field_typography.php:193
+msgid "Font subsets"
+msgstr "Subset Huruf"
+
+#: ReduxCore/inc/fields/typography/field_typography.php:194
+msgid "Subsets"
+msgstr "Subset"
+
+#: ReduxCore/inc/fields/typography/field_typography.php:194
+msgid "Font script"
+msgstr "Bentuk Huruf"
+
+#: ReduxCore/inc/fields/typography/field_typography.php:212
+msgid "Size"
+msgstr "Ukuran"
+
+#: ReduxCore/inc/fields/typography/field_typography.php:221
+msgid "Height"
+msgstr "Tinggi"
+
+#: ReduxCore/inc/fields/typography/field_typography.php:229
+msgid "Word Spacing"
+msgstr "Jarak antar kata"
+
+#: ReduxCore/inc/fields/typography/field_typography.php:237
+msgid "Letter Spacing"
+msgstr "Jarak antar huruf"
+
+#: ReduxCore/inc/fields/typography/field_typography.php:251
+msgid "Backup Font Family"
+msgstr "Cadangan Jenis Huruf"
+
+#: ReduxCore/inc/fields/typography/field_typography.php:271
+msgid "Font color"
+msgstr "Warna Huruf"
+
+#: ReduxCore/inc/validation/color/validation_color.php:15
+msgid "This field must be a valid color value."
+msgstr "Masukkan hanya nilai warna yang valid"
+
+#: ReduxCore/inc/validation/comma_numeric/validation_comma_numeric.php:15
+msgid ""
+"You must provide a comma separated list of numerical values for this option."
+msgstr ""
+"Masukkan daftar berupa barisan angka dibatasi tanda koma ( comma separated "
+"list )"
+
+#: ReduxCore/inc/validation/date/validation_date.php:15
+msgid "This field must be a valid date."
+msgstr "Masukkan format data yang valid"
+
+#: ReduxCore/inc/validation/email/validation_email.php:15
+msgid "You must provide a valid email for this option."
+msgstr "Masukkan format email yang valid"
+
+#: ReduxCore/inc/validation/no_html/validation_no_html.php:15
+msgid ""
+"You must not enter any HTML in this field, all HTML tags have been removed."
+msgstr ""
+"Anda tidak dapat memasukkan segala format HTML pada field ini, semua tag "
+"HTML akan dihapus"
+
+#: ReduxCore/inc/validation/no_special_chars/validation_no_special_chars.php:15
+msgid ""
+"You must not enter any special characters in this field, all special "
+"characters have been removed."
+msgstr ""
+"Anda tidak dapat memasukkan spesial karakter pada field ini, semua spesial "
+"karakter akan dihapus"
+
+#: ReduxCore/inc/validation/numeric/validation_numeric.php:15
+msgid "You must provide a numerical value for this option."
+msgstr "Masukkan nilai numerik"
+
+#: ReduxCore/inc/validation/url/validation_url.php:15
+msgid "You must provide a valid URL for this option."
+msgstr "Masukkan URL yang valid"
+
+#: class-redux-plugin.php:246
+msgid "Redux Framework has an embedded demo."
+msgstr "Redux Framework pada mode Demo"
+
+#: class-redux-plugin.php:246
+msgid "Click here to activate the sample config file."
+msgstr "Klik untuk mengaktifkan berkas sample config ( contoh configurasi )"
+
+#: class-redux-plugin.php:339
+msgid "Deactivate Demo Mode"
+msgstr "Deaktifasi Mode Demo"
+
+#: class-redux-plugin.php:341
+msgid "Activate Demo Mode"
+msgstr "Aktifkan Mode Demo"

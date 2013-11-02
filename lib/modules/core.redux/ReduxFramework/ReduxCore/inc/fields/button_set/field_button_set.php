@@ -87,8 +87,6 @@ if( !class_exists( 'ReduxFramework_button_set' ) ) {
          * @return      void
          */
         public function enqueue() {
-        
-            wp_enqueue_style( 'jquery-ui-css' );
 
             wp_enqueue_script(
                 'redux-field-button-set-js', 

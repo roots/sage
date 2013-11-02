@@ -29,11 +29,11 @@ function shoestrap_module_jumbotron_options($sections) {
   $fields[] = array(
     'id'        => 'help8',
     'title'     => __( 'Jumbotron', 'shoestrap'),
-    'desc'      => __( 'A \'Jumbotron\', also known as \'Hero\' area,
+    'desc'      => __( "A 'Jumbotron', also known as 'Hero' area,
                     is an area in your site where you can display in a prominent position things that matter to you.
                     This can be a slideshow, some text or whatever else you wish.
                     This area is implemented as a widget area, so in order for something to be displayed
-                    you will have to add a widget from <a href=\'$url\'>here</a>.', 'shoestrap' ),
+                    you will have to add a widget from <a href='$url'>here</a>.", 'shoestrap' ),
     'type'      => 'info'
   );
 
@@ -160,7 +160,7 @@ function shoestrap_module_jumbotron_options($sections) {
     'customizer'=> array(),
     'default'   => 0,
     'type'      => 'switch',
-    'required'  => array('advanced_toggle','=',array('1'))
+    // 'required'  => array('advanced_toggle','=',array('1'))
   );
 
   $fields[] = array(
@@ -170,7 +170,7 @@ function shoestrap_module_jumbotron_options($sections) {
     'customizer'=> array(),
     'default'   => 0,
     'type'      => 'switch',
-    'required'  => array('advanced_toggle','=',array('1'))
+    // 'required'  => array('advanced_toggle','=',array('1'))
   );
 
   $fields[] = array(
@@ -189,7 +189,7 @@ function shoestrap_module_jumbotron_options($sections) {
       'size'    => '30px' //this is the text size from preview box
     ),
     'type'      => 'typography',
-    'required'  => array('advanced_toggle','=',array('1'))
+    // 'required'  => array('advanced_toggle','=',array('1'))
   );
 
   $fields[] = array(
@@ -200,7 +200,7 @@ function shoestrap_module_jumbotron_options($sections) {
     'compiler'  => true,
     'type'      => 'switch',
     'customizer'=> array(),
-    'required'  => array('advanced_toggle','=',array('1'))
+    // 'required'  => array('advanced_toggle','=',array('1'))
   );
 
   $fields[] = array(
@@ -231,7 +231,7 @@ function shoestrap_module_jumbotron_options($sections) {
       'border-style'    => 'solid',
       'border-color'    => '#428bca',
     ),
-    'required'  => array('advanced_toggle','=',array('1'))
+    // 'required'  => array('advanced_toggle','=',array('1'))
   );
 
   $section['fields'] = $fields;

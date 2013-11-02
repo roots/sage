@@ -50,7 +50,7 @@ if( !class_exists( 'ReduxFramework_extension_customizer' ) ) {
        */
       public function __construct( $parent ) {
         global $pagenow;
-        if ($pagenow !== "customize.php") {
+        if ($pagenow !== "customize.php" && $pagenow !== "admin-ajax.php") {
           return;
         }
         
@@ -68,7 +68,7 @@ if( !class_exists( 'ReduxFramework_extension_customizer' ) ) {
 
         */
 
-        add_action( 'admin_init', array( &$this, '_enqueue' ), 30 );
+        add_action( 'admin_init', array( &$this, '_enqueue' ), 30 ); // Customizer control scripts
 
         add_action( 'customize_register', array( &$this, '_register_customizer_controls' ) ); // Create controls
 

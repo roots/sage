@@ -1,19 +1,17 @@
-# Redux Options Framework v3.0.0 Beta [![Build Status](https://secure.travis-ci.org/ReduxFramework/ReduxFramework.png?branch=master)](http://travis-ci.org/ReduxFramework/ReduxFramework)
+# Redux Options Framework
 
 Wordpress options framework which uses the [WordPress Settings API](http://codex.wordpress.org/Settings_API "WordPress Settings API"), Custom Error/Validation Handling, Custom Field/Validation Types, and import/export functionality.
 
-## Please help us beta test. As soon as the community verifies there are no bugs, we will release.
-
 ## Getting Started with Redux ##
 
-ReduxFramework has been built as a auto-updating plugin. For now, during beta, the plugin will prompt you for an update each time a new commit occurs.
+ReduxFramework has been built from the group up as a auto-updating plugin. Updates are served from the Wordpress.org plugin directory. In this way Redux can be used by Themes and Plugins multiple time through the same insance.
 
 To install the plugin, just download the master branch zip file, and install as you would any other Wordpress plugin.
 
 
-## Setting up Redux ##
+## Creating a config file ##
 
-Inside the zip file is a `sample` folder. Copy this into your theme or plugin directory. DO NOT modify anything within the plugin or you will all your work at each update.
+Inside the plugin directory is a `sample` folder. Copy this into your theme or plugin. DO NOT modify anything within the plugin or you will all your work at each update of the Redux Plugin.
 
 Include the `sample-config.php` file in your theme `functions.php` or plugin as follows:
 
@@ -37,7 +35,7 @@ If you can, please donate to help support the ongoing development of Redux Frame
 * Uses the [WordPress Settings API](http://codex.wordpress.org/Settings_API "WordPress Settings API")
 * Multiple built in field types
 * Multple layout field types
-* Fields can be over-ridden with a callback function, for custom field types
+* Fields can be overloaded with a callback function, for custom field types
 * Easily extendable by creating Field Classes
 * Built in Validation Classes
 * Easily extendable by creating Validation Classes
@@ -46,6 +44,7 @@ If you can, please donate to help support the ongoing development of Redux Frame
 * Multiple Hook Points for customisation
 * Import / Export Functionality - including cross site importing of settings
 * Easily add page help through the class
+* Fully responsive options panel
 * Much more
 
 ## Stay In The Loop! ##

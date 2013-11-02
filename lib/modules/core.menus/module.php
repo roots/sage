@@ -16,9 +16,9 @@ function shoestrap_module_menus_options( $sections ) {
   $fields[] = array( 
     'id'          => 'help7',
     'title'       => __( 'Advanced NavBar Options', 'shoestrap' ),
-    'desc'        => __( 'You can activate or deactivate your Primary NavBar here, and define its properties.
-                      Please note that you might have to manually create a menu if it doesn\'t already exist
-                      and add items to it from <a href=\'$url\'>this page</a>.', 'shoestrap' ),
+    'desc'        => __( "You can activate or deactivate your Primary NavBar here, and define its properties.
+                      Please note that you might have to manually create a menu if it doesn't already exist
+                      and add items to it from <a href='$url'>this page</a>.", 'shoestrap' ),
     'type'        => 'info'
   );
 
@@ -149,7 +149,7 @@ function shoestrap_module_menus_options( $sections ) {
       'size'      => 30 //this is the text size from preview box
     ),
     'type'        => 'typography',
-    'required'    => array('advanced_toggle','=',array('1'))
+    // 'required'    => array('advanced_toggle','=',array('1'))
   );
 
   $fields[] = array( 
@@ -168,7 +168,7 @@ function shoestrap_module_menus_options( $sections ) {
       'size'      => 30 //this is the text size from preview box
     ),
     'type'        => 'typography',
-    'required'    => array('advanced_toggle','=',array('1'))
+    // 'required'    => array('advanced_toggle','=',array('1'))
   );
 
   $fields[] = array( 
@@ -189,6 +189,18 @@ function shoestrap_module_menus_options( $sections ) {
     'customizer'  => array(),
     'default'     => 0,
     'type'        => 'switch'
+  );
+
+  $fields[] = array( 
+    'title'       => __( 'Display social links as a Dropdown list or an Inline list.', 'shoestrap' ),
+    'desc'        => __( 'How to display social links. Default: Dropdown list', 'shoestrap' ),
+    'id'          => 'navbar_social_style',
+    'customizer'  => array(),
+    'default'     => 0,
+    'on'          => __( 'Inline', 'shoestrap' ),
+    'off'         => __( 'Dropdown', 'shoestrap' ),
+    'type'        => 'switch',
+    'required'    => array('navbar_social','=',array('1')),
   );
 
   $fields[] = array( 
@@ -214,7 +226,7 @@ function shoestrap_module_menus_options( $sections ) {
     'title'       => __( 'Secondary Navbar', 'shoestrap' ),
     'desc'        => __( 'The secondary navbar is a 2nd navbar, located right above the main wrapper. You can show a menu there, by assigning it from Appearance -> Menus.', 'shoestrap' ),
     'type'        => 'info',
-    'required'    => array('advanced_toggle','=',array('1'))
+    // 'required'    => array('advanced_toggle','=',array('1'))
   );
 
   $fields[] = array( 
@@ -224,7 +236,7 @@ function shoestrap_module_menus_options( $sections ) {
     'customizer'  => array(),
     'default'     => 0,
     'type'        => 'switch',
-    'required'    => array('advanced_toggle','=',array('1'))
+    // 'required'    => array('advanced_toggle','=',array('1'))
   );
 
   $fields[] = array( 

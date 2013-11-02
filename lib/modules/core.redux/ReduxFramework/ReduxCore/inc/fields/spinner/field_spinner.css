@@ -1,0 +1,83 @@
+.redux-container-spinner .spinner-wrpr {
+    display: block;
+    height: 30px;
+    overflow: hidden;
+    position: relative;
+}
+
+.redux-container-spinner .ui-spinner {
+    display: inline;
+    position: static;
+}
+
+.redux-container-spinner .spinner-wrpr .mini.spinner-input {
+    border: 1px solid #bfbfbf!important;
+    border-left: 0!important;
+    border-right: 0!important;
+    background: #e7e7e7!important;
+    width: 45px!important;
+    position: relative!important;
+    -webkit-border-radius: 0!important;
+       -moz-border-radius: 0!important;
+            border-radius: 0!important;
+    height: 30px!important;
+    z-index: 1;
+}
+
+.redux-container-spinner .ui-spinner-buttons {
+    padding: 0;
+    position: absolute;
+}
+
+.redux-container-spinner .ui-widget .ui-spinner-button {
+    background-color: #ffffff;
+    background: -moz-linear-gradient(#ffffff, #f3f3f3);
+    background:   -o-linear-gradient(#ffffff, #f3f3f3);
+    background:     -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#f3f3f3));
+    background:      linear-gradient(#ffffff, #f3f3f3);
+    border: none;
+    -webkit-box-shadow: none;  
+       -moz-box-shadow: none;
+            box-shadow: none;
+    padding: 0 0 30px;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    cursor: pointer;
+}
+
+.redux-container-spinner .ui-spinner-button:hover, 
+.redux-container-spinner .ui-spinner-button.ui-state-hover {
+    background-color: #f3f3f3;
+    background: -moz-linear-gradient(#f3f3f3, #ffffff);
+    background:   -o-linear-gradient(#f3f3f3, #ffffff);
+    background:     -webkit-gradient(linear, left top, left bottom, from(#f3f3f3), to(#ffffff));
+    background:      linear-gradient(#f3f3f3, #ffffff);
+}
+
+.redux-container-spinner .ui-spinner-button.ui-corner-tr,
+.redux-container-spinner .ui-spinner-button .ui-icon-triangle-1-n{
+    -webkit-border-radius: 0 5px 5px 0;	
+       -moz-border-radius: 0 5px 5px 0;
+            border-radius: 0 5px 5px 0;
+}
+
+.redux-container-spinner .ui-spinner-button.ui-corner-br,
+.redux-container-spinner .ui-spinner-button .ui-icon-triangle-1-s {
+    -webkit-border-radius: 5px 0 0 5px;
+       -moz-border-radius: 5px 0 0 5px;
+            border-radius: 5px 0 0 5px;
+}
+
+.redux-container-spinner .ui-spinner-button .ui-icon {
+    border: 1px solid #b7b7b7;
+    display: block;
+    width: 28px;
+    height: 28px;
+    margin: 0;
+    top: 0;
+}
+
+.redux-container-spinner .ui-spinner-button .ui-icon-triangle-1-n { background: url('arrow_right.png') 10px 10px no-repeat; }
+
+.redux-container-spinner .ui-spinner-button .ui-icon-triangle-1-s { background:url('arrow_left.png') 10px 10px no-repeat; }

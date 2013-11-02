@@ -40,7 +40,7 @@ function shoestrap_module_typography_options( $sections ) {
     'compiler'  => true,
     'type'      => 'switch',
     'customizer'=> array(),
-    'required'  => array('advanced_toggle','=',array('1')),
+    // 'required'  => array('advanced_toggle','=',array('1')),
   );
 
   $fields[] = array( 

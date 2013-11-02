@@ -64,10 +64,11 @@ if( !class_exists( 'ReduxFramework_media' ) ) {
 
             // No errors please
             $defaults = array(
-                'id'    => '',
-                'url'   => '',
-                'width' => '',
-                'height'=> '',
+                'id'        => '',
+                'url'       => '',
+                'width'     => '',
+                'height'    => '',
+                'thumbnail' => ''
             );
 
             $this->value = wp_parse_args( $this->value, $defaults );
@@ -108,10 +109,11 @@ if( !class_exists( 'ReduxFramework_media' ) ) {
                 $hide = '';
             }   
 
-            echo '<input class="' . $hide . 'upload ' . $this->field['class'] . '" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][url]" id="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][url]" value="' . $this->value['url'] . '" readonly="readonly" />';
+            echo '<input placeholder="'.__('None media selected', 'redux-framework').'" type="text" class="' . $hide . 'upload ' . $this->field['class'] . '" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][url]" id="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][url]" value="' . $this->value['url'] . '" readonly="readonly" />';
             echo '<input type="hidden" class="upload-id ' . $this->field['class'] . '" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][id]" id="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][id]" value="' . $this->value['id'] . '" />';
             echo '<input type="hidden" class="upload-height" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][height]" id="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][height]" value="' . $this->value['height'] . '" />';
             echo '<input type="hidden" class="upload-width" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][width]" id="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][width]" value="' . $this->value['width'] . '" />';
+            echo '<input type="hidden" class="upload-thumbnail" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][thumbnail]" id="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][thumbnail]" value="' . $this->value['thumbnail'] . '" />';
 
             //Preview
             $hide = '';
@@ -120,9 +122,13 @@ if( !class_exists( 'ReduxFramework_media' ) ) {
                 $hide = 'hide ';
             }
 
+            if ( empty( $this->value['thumbnail'] ) && !empty( $this->value['url'] ) ) { // Just in case
+                $this->value['thumbnail'] = $this->value['url'];
+            }
+
             echo '<div class="' . $hide . 'screenshot">';
             echo '<a class="of-uploaded-image" href="' . $this->value['url'] . '">';
-            echo '<img class="redux-option-image" id="image_' . $this->field['id'] . '" src="' . $this->value['url'] . '" alt="" />';
+            echo '<img class="redux-option-image" id="image_' . $this->field['id'] . '" src="' . $this->value['thumbnail'] . '" alt="" />';
             echo '</a>';
             echo '</div>';
         

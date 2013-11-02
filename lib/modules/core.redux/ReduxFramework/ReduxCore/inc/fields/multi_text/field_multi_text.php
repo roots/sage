@@ -73,7 +73,7 @@ if( !class_exists( 'ReduxFramework_multi_text' ) ) {
                     echo '<li><input type="text" id="' . $this->field['id'] . '" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][]" value="" class="regular-text ' . $this->field['class'] . '" /> <a href="javascript:void(0);" class="button redux-multi-text-remove">' . __( 'Remove', 'redux-framework' ) . '</a></li>';
                 }
             
-                echo '<li style="display:none;"><input type="text" id="' . $this->field['id'] . '" name="" value="" class="" /> <a href="javascript:void(0);" class="button redux-multi-text-remove">' . __( 'Remove', 'redux-framework') . '</a></li>';
+                echo '<li style="display:none;"><input type="text" id="' . $this->field['id'] . '" name="" value="" class="regular-text" /> <a href="javascript:void(0);" class="button redux-multi-text-remove">' . __( 'Remove', 'redux-framework') . '</a></li>';
 
             echo '</ul>';
         

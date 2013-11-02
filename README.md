@@ -39,8 +39,6 @@ function my_custom_single_content() {
 add_action( 'shoestrap_content_single_override', 'my_custom_single_content' );
 ```
 
-There are dozens of actions available, so before hacking the theme to do what you want, don't forget to check if you can do it with the existing actions.
-
 ## Contributing
 
 Everyone is welcome to help [contribute](CONTRIBUTING.md) and improve this project. There are several ways you can contribute:
