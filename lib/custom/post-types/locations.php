@@ -17,10 +17,10 @@ function atkore_post_type_locations() {
     $admin_img_path = '//atkore.com/assets/img/atkore-admin-icon.png';
 
   	$labels = array(
-  		'name'                => _x( 'Office Locations', 'Post Type General Name', 'atkore' ),
-  		'singular_name'       => _x( 'Office Location', 'Post Type Singular Name', 'atkore' ),
-  		'menu_name'           => __( 'Office Locations', 'atkore' ),
-  		'parent_item_colon'   => __( 'Parent Location:', 'atkore' ),
+  		'name'                => _x( 'Locations', 'Post Type General Name', 'atkore' ),
+  		'singular_name'       => _x( 'Location', 'Post Type Singular Name', 'atkore' ),
+  		'menu_name'           => __( 'Locations', 'atkore' ),
+  		'parent_item_colon'   => __( 'Location:', 'atkore' ),
   		'all_items'           => __( 'All Locations', 'atkore' ),
   		'view_item'           => __( 'View Locations', 'atkore' ),
   		'add_new_item'        => __( 'Add New Location', 'atkore' ),
@@ -33,12 +33,12 @@ function atkore_post_type_locations() {
   	);
 
   	$rewrite = array(
-  	'slug'                  => 'office-locations',
+  	'slug'                  => 'locations',
   	);
 
   	$args = array(
   		'label'               => __( 'Locations', 'atkore' ),
-  		'description'         => __( 'Location location information pages', 'atkore' ),
+  		'description'         => __( 'Location information pages', 'atkore' ),
   		'labels'              => $labels,
   		'supports'            => array( 'title', 'editor', 'excerpt', 'thumbnail', 'revisions', 'custom-fields', 'page-attributes', ),
   		'taxonomies'          => array( 'location-type',),
@@ -58,7 +58,7 @@ function atkore_post_type_locations() {
   		'capability_type'     => 'page',
   	);
 
-  	register_post_type( 'atkore_location', $args );
+  	register_post_type( 'wpmm_location', $args );
 
   	$labels = array(
   		'name'                       => _x( 'Location Type', 'Taxonomy General Name', 'atkore' ),
@@ -103,7 +103,7 @@ function atkore_post_type_locations() {
   		'capabilities'               => $capabilities,
   	);
 
-  	register_taxonomy( 'location_type', 'atkore_location', $args );
+  	register_taxonomy( 'location_type', 'wpmm_location', $args );
 
 }
 // Hook into the 'init' action

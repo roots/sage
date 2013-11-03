@@ -461,6 +461,15 @@ if(function_exists("register_field_group"))
 					'group_no' => 1,
 				),
 			),
+			array (
+				array (
+					'param' => 'page_template',
+					'operator' => '==',
+					'value' => 'template-map.php',
+					'order_no' => 0,
+					'group_no' => 2,
+				),
+			),
 		),
 		'options' => array (
 			'position' => 'normal',

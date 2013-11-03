@@ -1,12 +1,13 @@
-.google-map-canvas,
-.google-map-canvas * { .box-sizing(content-box); }
+/* Default maps styles */
 
-.vcard dl dt,
-.vcard dl dd {
-  display: inline-block;
-  width: 40%;
-}
 
+      #panel .feature-filter label { width: 130px; }
+
+/* fixes weird display issues */      
+#map-canvas label { width: auto; display:inline; }
+#map-canvas img { max-width: none; }
+ 
+/* storelocator styles */
 .storelocator-panel {
   border: 1px solid #ccc;
   overflow: auto;
@@ -79,6 +80,7 @@
 .store .address,
 .store .phone,
 .store .web,
+.store .email,
 .store .misc {
   font-size: 100%;
   margin-top: 0.2em;
@@ -110,23 +112,3 @@
   color: green;
   margin-right: 0.5em;
 }
-#map-canvas { width: 70%;float: right;}
-#map-canvas, #panel { height: 500px; }
-#panel { width: 25%; float: left; margin-right: 10px; }
-#panel .feature-filter label { width: 130px; }
-p.attribution, p.attribution a { color: #666; }
-
-
-
-.page-rep-locator .entry-content {
-	clear: both!important;
-}
-
-.page-rep-locator header {
-	margin-top: -200px;
-}
-
-.page-rep-locator header > div {
-	float: right;
-}
-

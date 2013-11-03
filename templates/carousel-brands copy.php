@@ -1,20 +1,13 @@
 <?php
-$metaquery = array(
-        array(
-            'key' => 'include_in_footer', // name of custom field
-            'value' => '1', // matches exaclty "red", not just red. This prevents a match for "acquired"
-            'compare' => 'LIKE'
-        ));
 $posttype = 'brand';
 $number_of_posts = -1;
 $startframe = 0;
-//$exclude = array('-4988','-4952','-4950','-4948','-4946','-4944','-4931','-4929');
+$exclude = array('-4988','-4952','-4950','-4948','-4946','-4944','-4931','-4929');
 $args = array(
   'post_type'     => $posttype,
-  //'post__not_in'  => $exclude,
+  'post__not_in'  => $exclude,
   'posts_per_page' => $number_of_posts,
   'orderby' => 'rand',
-  'meta_query' => $metaquery,
 );
 $the_query = new WP_Query( $args );
 $classes = '';
@@ -74,4 +67,4 @@ $classes = '';
       <a class="carousel-control right" href="#carousel-brands" data-slide="next"><span class=""></span></a>
     </div>
 </div>
-<?php wp_reset_query();
+<?php wp_reset_query();?>

@@ -37,14 +37,14 @@ function atkore_post_type_products() {
   		'not_found'           => __( 'No products found', 'atkore' ),
   		'not_found_in_trash'  => __( 'No products found in Trash', 'atkore' ),
   	);
-/*
+
 	$rewrite = array(
-		'slug'                => '',
+		'slug'                => 'products',
 		'with_front'          => false,
 		'pages'               => true,
 		'feeds'               => true,
 	);
-*/
+
   	$args = array(
   		'label'                 => __( 'Product', 'atkore' ),
   		'description'           => __( 'Product information pages', 'atkore' ),
@@ -64,7 +64,7 @@ function atkore_post_type_products() {
   		'exclude_from_search'   => false,
   		'publicly_queryable'    => true,
   		'capability_type'       => 'page',
-   		//'rewrite'               => $rewrite,
+   		'rewrite'               => $rewrite,
   	);
 
   	register_post_type( 'product', $args );

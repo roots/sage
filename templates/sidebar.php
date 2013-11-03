@@ -6,7 +6,7 @@
   $queried_post_type = get_query_var('post_type');
   $queried_taxonomy = get_query_var('taxonomy');
   
-            if ( is_single() && 'product' ==  $queried_post_type || is_post_type_archive('product') || 'product-category' ==  $queried_taxonomy ) { ?>
+            if ( is_single() && 'product' ==  $queried_post_type || is_post_type_archive('product') || 'product_cat' ==  $queried_taxonomy ) { ?>
 
 <?php } elseif ( is_single() && 'service' ==  $queried_post_type || is_post_type_archive('service') ) { ?>
 
@@ -23,7 +23,6 @@
 <?php } else {   ?>
 
 <?php } ?>
-
 
 <?php dynamic_sidebar('sidebar-primary'); ?>
 <?php get_template_part('templates/content', 'actions-sidebar'); ?>
