@@ -13,7 +13,7 @@
 
 		<li class="bbp-forum-info col-md-6">
 			<?php do_action( 'bbp_theme_before_forum_title' ); ?>
-			<a class="bbp-forum-title" href="<?php bbp_forum_permalink(); ?>"><?php bbp_forum_title(); ?></a>
+			<a class="bbp-forum-title lead" href="<?php bbp_forum_permalink(); ?>"><?php bbp_forum_title(); ?></a>
 			<?php do_action( 'bbp_theme_after_forum_title' ); ?>
 			<?php do_action( 'bbp_theme_before_forum_description' ); ?>
 			<div class="bbp-forum-content"><?php bbp_forum_content(); ?></div>

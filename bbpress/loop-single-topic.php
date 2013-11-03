@@ -12,7 +12,7 @@
 <li class="list-group-item">
 	<ul id="bbp-topic-<?php bbp_topic_id(); ?>" <?php bbp_topic_class(); ?>>
 
-		<li class="bbp-topic-title col-md-6">
+		<li class="bbp-topic-title col-md-5">
 			<?php if ( bbp_is_user_home() ) : ?>
 				<?php if ( bbp_is_favorites() ) : ?>
 					<span class="bbp-topic-action">
@@ -52,7 +52,7 @@
 
 		<li class="bbp-topic-reply-count col-md-2 text-center"><?php bbp_show_lead_topic() ? bbp_topic_reply_count() : bbp_topic_post_count(); ?></li>
 
-		<li class="bbp-topic-freshness col-md-2">
+		<li class="bbp-topic-freshness col-md-3 text-right">
 			<?php do_action( 'bbp_theme_before_topic_freshness_link' ); ?>
 			<?php bbp_topic_freshness_link(); ?>
 			<?php do_action( 'bbp_theme_after_topic_freshness_link' ); ?>
