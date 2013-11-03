@@ -29,8 +29,8 @@
 				<?php endif; ?>
 			<?php endif; ?>
 			<?php do_action( 'bbp_theme_before_topic_title' ); ?>
-			<a class="bbp-topic-permalink" href="<?php bbp_topic_permalink(); ?>"><?php bbp_topic_title(); ?></a>
-			<hr />
+			<a class="bbp-topic-permalink lead" href="<?php bbp_topic_permalink(); ?>"><?php bbp_topic_title(); ?></a>
+			<!-- <hr /> -->
 			<?php do_action( 'bbp_theme_after_topic_title' ); ?>
 			<?php bbp_topic_pagination(); ?>
 			<?php do_action( 'bbp_theme_before_topic_meta' ); ?>
@@ -56,7 +56,7 @@
 			<?php do_action( 'bbp_theme_before_topic_freshness_link' ); ?>
 			<?php bbp_topic_freshness_link(); ?>
 			<?php do_action( 'bbp_theme_after_topic_freshness_link' ); ?>
-			<hr />
+			<!-- <hr /> -->
 			<p class="bbp-topic-meta">
 				<?php do_action( 'bbp_theme_before_topic_freshness_author' ); ?>
 				<span class="bbp-topic-freshness-author"><?php bbp_author_link( array( 'post_id' => bbp_get_topic_last_active_id(), 'size' => 14 ) ); ?></span>
