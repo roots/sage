@@ -87,7 +87,7 @@ if( !class_exists( 'ReduxFramework_editor' ) ) {
 
             wp_enqueue_style(
                 'redux-field-editor-css', 
-                REDUX_URL . 'inc/fields/editor/field_editor.css',
+                ReduxFramework::$_url . 'inc/fields/editor/field_editor.css',
                 time(),
                 true
             );

@@ -154,11 +154,11 @@ if (!class_exists('ReduxFramework_group')) {
          */
         public function enqueue() {
             wp_enqueue_script(
-                    'redux-field-group-js', REDUX_URL . 'inc/fields/group/field_group.min.js', array('jquery', 'jquery-ui-core', 'jquery-ui-accordion', 'wp-color-picker'), time(), true
+                    'redux-field-group-js', ReduxFramework::$_url . 'inc/fields/group/field_group.min.js', array('jquery', 'jquery-ui-core', 'jquery-ui-accordion', 'wp-color-picker'), time(), true
             );
 
             wp_enqueue_style(
-                    'redux-field-group-css', REDUX_URL . 'inc/fields/group/field_group.css', time(), true
+                    'redux-field-group-css', ReduxFramework::$_url . 'inc/fields/group/field_group.css', time(), true
             );
         }
 
@@ -166,7 +166,7 @@ if (!class_exists('ReduxFramework_group')) {
             $field_class = 'ReduxFramework_' . $field_type;
 
             if (!class_exists($field_class)) {
-                $class_file = apply_filters('redux-typeclass-load', REDUX_DIR . 'inc/fields/' . $field_type . '/field_' . $field_type . '.php', $field_class);
+                $class_file = apply_filters('redux-typeclass-load', ReduxFramework::$_dir . 'inc/fields/' . $field_type . '/field_' . $field_type . '.php', $field_class);
 
                 if ($class_file) {
                     /** @noinspection PhpIncludeInspection */

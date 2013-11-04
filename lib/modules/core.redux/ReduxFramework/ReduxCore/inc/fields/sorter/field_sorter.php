@@ -120,9 +120,9 @@ class ReduxFramework_sorter extends ReduxFramework {
 
     function enqueue() {
         wp_enqueue_script('jquery-ui-sortable');
-        wp_register_script('options-sorter', REDUX_URL . 'inc/fields/sorter/field_sorter.min.js', array(
+        wp_register_script('options-sorter', ReduxFramework::$_url . 'inc/fields/sorter/field_sorter.min.js', array(
             'jquery'));
-        wp_register_style('options-sorter', REDUX_URL . 'inc/fields/sorter/field_sorter.css');
+        wp_register_style('options-sorter', ReduxFramework::$_url . 'inc/fields/sorter/field_sorter.css');
         wp_enqueue_script('options-sorter');
         wp_enqueue_style('options-sorter');
     }

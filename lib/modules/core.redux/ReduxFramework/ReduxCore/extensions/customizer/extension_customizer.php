@@ -53,6 +53,10 @@ if( !class_exists( 'ReduxFramework_extension_customizer' ) ) {
         if ($pagenow !== "customize.php" && $pagenow !== "admin-ajax.php") {
           return;
         }
+
+        if ($parent->args['customizer'] === false) {
+          return;
+        }
         
         parent::__construct( $parent->sections, $parent->args, $parent->extra_tabs );
       
@@ -64,8 +68,6 @@ if( !class_exists( 'ReduxFramework_extension_customizer' ) ) {
           customize_controls_print_styles
           customize_controls_print_scripts
           customize_controls_print_footer_scripts
-
-
         */
 
         add_action( 'admin_init', array( &$this, '_enqueue' ), 30 ); // Customizer control scripts

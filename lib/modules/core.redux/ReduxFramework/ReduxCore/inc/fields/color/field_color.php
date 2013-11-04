@@ -61,7 +61,6 @@ if( !class_exists( 'ReduxFramework_color' ) ) {
 	 	 * @return		void
 		 */
 		public function render() {
-			print_r($this->value);
 
 			echo '<input data-id="'.$this->field['id'].'" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . ']" id="' . $this->field['id'] . '-color" class="redux-color redux-color-init ' . $this->field['class'] . '"  type="text" value="' . $this->value . '"  data-default-color="' . $this->field['default'] . '" />';
 
@@ -90,7 +89,7 @@ if( !class_exists( 'ReduxFramework_color' ) ) {
 
 			wp_enqueue_script(
 				'redux-field-color-js', 
-				REDUX_URL . 'inc/fields/color/field_color.min.js', 
+				ReduxFramework::$_url . 'inc/fields/color/field_color.min.js', 
 				array( 'jquery', 'wp-color-picker' ),
 				time(),
 				true
@@ -98,7 +97,7 @@ if( !class_exists( 'ReduxFramework_color' ) ) {
 
 			wp_enqueue_style(
 				'redux-field-color-css', 
-				REDUX_URL . 'inc/fields/color/field_color.css', 
+				ReduxFramework::$_url . 'inc/fields/color/field_color.css', 
 				time(),
 				true
 			);

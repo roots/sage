@@ -123,7 +123,12 @@ if( !class_exists( 'ReduxFramework_media' ) ) {
             }
 
             if ( empty( $this->value['thumbnail'] ) && !empty( $this->value['url'] ) ) { // Just in case
-                $this->value['thumbnail'] = $this->value['url'];
+                if ( !empty( $this->value['id'] ) ) {
+                    $image = wp_get_attachment_image_src( $this->value['id'], array(150, 150) );
+                    $this->value['thumbnail'] = $image[0];
+                } else {
+                    $this->value['thumbnail'] = $this->value['url'];    
+                }
             }
 
             echo '<div class="' . $hide . 'screenshot">';
@@ -169,7 +174,7 @@ if( !class_exists( 'ReduxFramework_media' ) ) {
 
             wp_enqueue_script(
                 'redux-field-media-js',
-                REDUX_URL . 'inc/fields/media/field_media.js',
+                ReduxFramework::$_url . 'inc/fields/media/field_media.js',
                 array( 'jquery', 'wp-color-picker' ),
                 time(),
                 true
@@ -177,7 +182,7 @@ if( !class_exists( 'ReduxFramework_media' ) ) {
 
             wp_enqueue_style(
                 'redux-field-media-css',
-                REDUX_URL . 'inc/fields/media/field_media.css',
+                ReduxFramework::$_url . 'inc/fields/media/field_media.css',
                 time(),
                 true
             );

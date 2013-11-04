@@ -115,19 +115,19 @@ class ReduxFramework_spinner extends ReduxFramework {
     function enqueue() {
 
         wp_enqueue_script(
-                'redux-typewatch-js', REDUX_URL . 'assets/js/vendor/jquery.typewatch.min.js', array('jquery'), time(), true
+                'redux-typewatch-js', ReduxFramework::$_url . 'assets/js/vendor/jquery.typewatch.min.js', array('jquery'), time(), true
         );
 
         wp_enqueue_script(
-                'redux-spinner-js', REDUX_URL . 'inc/fields/spinner/spinner_custom.js', array('jquery'), time(), true
+                'redux-spinner-js', ReduxFramework::$_url . 'inc/fields/spinner/spinner_custom.js', array('jquery'), time(), true
         );
 
         wp_enqueue_script(
-                'redux-field-spinner-js', REDUX_URL . 'inc/fields/spinner/field_spinner.min.js', array('jquery', 'redux-spinner-js', 'jquery-numeric', 'jquery-ui-core', 'jquery-ui-dialog', 'redux-typewatch-js'), time(), true
+                'redux-field-spinner-js', ReduxFramework::$_url . 'inc/fields/spinner/field_spinner.min.js', array('jquery', 'redux-spinner-js', 'jquery-numeric', 'jquery-ui-core', 'jquery-ui-dialog', 'redux-typewatch-js'), time(), true
         );
 
         wp_enqueue_style(
-                'redux-field-spinner-css', REDUX_URL . 'inc/fields/spinner/field_spinner.css', time(), true
+                'redux-field-spinner-css', ReduxFramework::$_url . 'inc/fields/spinner/field_spinner.css', time(), true
         );
     }
 

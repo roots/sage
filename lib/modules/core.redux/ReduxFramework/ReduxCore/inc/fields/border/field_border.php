@@ -135,7 +135,7 @@ if( !class_exists( 'ReduxFramework_border' ) ) {
         
             wp_enqueue_script(
                 'redux-field-color-js', 
-                REDUX_URL . 'inc/fields/color/field_color.min.js', 
+                ReduxFramework::$_url . 'inc/fields/color/field_color.min.js', 
                 array( 'jquery', 'wp-color-picker' ),
                 time(),
                 true
@@ -143,14 +143,14 @@ if( !class_exists( 'ReduxFramework_border' ) ) {
 
             wp_enqueue_style(
                 'redux-field-color-css', 
-                REDUX_URL . 'inc/fields/color/field_color.css', 
+                ReduxFramework::$_url . 'inc/fields/color/field_color.css', 
                 time(),
                 true
             );      
         
             wp_enqueue_style(
                 'redux-field-border-css', 
-                REDUX_URL . 'inc/fields/border/field_border.css', 
+                ReduxFramework::$_url . 'inc/fields/border/field_border.css', 
                 time(),
                 true
             );

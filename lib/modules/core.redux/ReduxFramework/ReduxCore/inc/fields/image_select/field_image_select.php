@@ -157,7 +157,7 @@ if( !class_exists( 'ReduxFramework_image_select' ) ) {
         
             wp_enqueue_script(
                 'redux-field-image-select-js', 
-                REDUX_URL . 'inc/fields/image_select/field_image_select.min.js', 
+                ReduxFramework::$_url . 'inc/fields/image_select/field_image_select.min.js', 
                 array( 'jquery' ),
                 time(),
                 true
@@ -167,7 +167,7 @@ if( !class_exists( 'ReduxFramework_image_select' ) ) {
 
             wp_enqueue_style(
                 'redux-field-image-select-css', 
-                REDUX_URL . 'inc/fields/image_select/field_image_select.css',
+                ReduxFramework::$_url . 'inc/fields/image_select/field_image_select.css',
                 time(),
                 true
             );

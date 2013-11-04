@@ -29,7 +29,7 @@ $tags = $ct->Tags;
 $screenshot = $ct->get_screenshot();
 $class = $screenshot ? 'has-screenshot' : '';
 
-$customize_title = sprintf( __( 'Customize &#8220;%s&#8221;' ), $ct->display('Name') );
+$customize_title = sprintf( __( 'Customize &#8220;%s&#8221;','redux-framework-demo' ), $ct->display('Name') );
 
 ?>
 <div id="current-theme" class="<?php echo esc_attr( $class ); ?>">
@@ -48,14 +48,14 @@ $customize_title = sprintf( __( 'Customize &#8220;%s&#8221;' ), $ct->display('Na
 
 	<div>
 		<ul class="theme-info">
-			<li><?php printf( __('By %s'), $ct->display('Author') ); ?></li>
-			<li><?php printf( __('Version %s'), $ct->display('Version') ); ?></li>
+			<li><?php printf( __('By %s','redux-framework-demo'), $ct->display('Author') ); ?></li>
+			<li><?php printf( __('Version %s','redux-framework-demo'), $ct->display('Version') ); ?></li>
 			<li><?php echo '<strong>'.__('Tags', 'redux-framework-demo').':</strong> '; ?><?php printf( $ct->display('Tags') ); ?></li>
 		</ul>
 		<p class="theme-description"><?php echo $ct->display('Description'); ?></p>
 		<?php if ( $ct->parent() ) {
 			printf( ' <p class="howto">' . __( 'This <a href="%1$s">child theme</a> requires its parent theme, %2$s.' ) . '</p>',
-				__( 'http://codex.wordpress.org/Child_Themes' ),
+				__( 'http://codex.wordpress.org/Child_Themes','redux-framework-demo' ),
 				$ct->parent()->display( 'Name' ) );
 		} ?>
 		
@@ -137,12 +137,12 @@ $args['google_api_key'] = 'AIzaSyAX_2L_UzCDPEnAHTG7zhESRVpMPS4ssII';
 $args['share_icons']['twitter'] = array(
     'link' => 'http://twitter.com/ghost1227',
     'title' => 'Follow me on Twitter', 
-    'img' => REDUX_URL . 'assets/img/social/Twitter.png'
+    'img' => ReduxFramework::$_url . 'assets/img/social/Twitter.png'
 );
 $args['share_icons']['linked_in'] = array(
     'link' => 'http://www.linkedin.com/profile/view?id=52559281',
     'title' => 'Find me on LinkedIn', 
-    'img' => REDUX_URL . 'assets/img/social/LinkedIn.png'
+    'img' => ReduxFramework::$_url . 'assets/img/social/LinkedIn.png'
 );
 
 // Enable the import/export feature.
@@ -246,8 +246,8 @@ $args['footer_text'] = __('<p>This text is displayed below the options panel. It
 $sections = array();              
 
 //Background Patterns Reader
-$sample_patterns_path = REDUX_DIR . '../sample/patterns/';
-$sample_patterns_url  = REDUX_URL . '../sample/patterns/';
+$sample_patterns_path = ReduxFramework::$_dir . '../sample/patterns/';
+$sample_patterns_url  = ReduxFramework::$_url . '../sample/patterns/';
 $sample_patterns      = array();
 
 if ( is_dir( $sample_patterns_path ) ) :
@@ -421,8 +421,8 @@ $sections[] = array(
 			'default' 		=> 0,
 			'desc'=> __('This allows you to set a json string or array to override multiple preferences in your theme.', 'redux-framework-demo'),
 			'options' => array(
-							'1' => array('alt' => 'Preset 1', 'img' => REDUX_URL.'../sample/presets/preset1.png', 'presets'=>array('switch-on'=>1,'switch-off'=>1, 'switch-custom'=>1)),
-							'2' => array('alt' => 'Preset 2', 'img' => REDUX_URL.'../sample/presets/preset2.png', 'presets'=>'{"slider1":"1", "slider2":"0", "switch-on":"0"}'),
+							'1' => array('alt' => 'Preset 1', 'img' => ReduxFramework::$_url.'../sample/presets/preset1.png', 'presets'=>array('switch-on'=>1,'switch-off'=>1, 'switch-custom'=>1)),
+							'2' => array('alt' => 'Preset 2', 'img' => ReduxFramework::$_url.'../sample/presets/preset2.png', 'presets'=>'{"slider1":"1", "slider2":"0", "switch-on":"0"}'),
 								),
 			),					
 		array(
@@ -473,12 +473,12 @@ $sections[] = array(
 			'title' => __('Main Layout', 'redux-framework-demo'), 
 			'subtitle' => __('Select main content and sidebar alignment. Choose between 1, 2 or 3 column layout.', 'redux-framework-demo'),
 			'options' => array(
-					'1' => array('alt' => '1 Column', 'img' => REDUX_URL.'assets/img/1col.png'),
-					'2' => array('alt' => '2 Column Left', 'img' => REDUX_URL.'assets/img/2cl.png'),
-					'3' => array('alt' => '2 Column Right', 'img' => REDUX_URL.'assets/img/2cr.png'),
-					'4' => array('alt' => '3 Column Middle', 'img' => REDUX_URL.'assets/img/3cm.png'),
-					'5' => array('alt' => '3 Column Left', 'img' => REDUX_URL.'assets/img/3cl.png'),
-					'6' => array('alt' => '3 Column Right', 'img' => REDUX_URL.'assets/img/3cr.png')
+					'1' => array('alt' => '1 Column', 'img' => ReduxFramework::$_url.'assets/img/1col.png'),
+					'2' => array('alt' => '2 Column Left', 'img' => ReduxFramework::$_url.'assets/img/2cl.png'),
+					'3' => array('alt' => '2 Column Right', 'img' => ReduxFramework::$_url.'assets/img/2cr.png'),
+					'4' => array('alt' => '3 Column Middle', 'img' => ReduxFramework::$_url.'assets/img/3cm.png'),
+					'5' => array('alt' => '3 Column Left', 'img' => ReduxFramework::$_url.'assets/img/3cl.png'),
+					'6' => array('alt' => '3 Column Right', 'img' => ReduxFramework::$_url.'assets/img/3cr.png')
 				),
 			'default' => '2'
 			),
@@ -832,12 +832,12 @@ $sections[] = array(
 			'subtitle' => __('No validation can be done on this field type', 'redux-framework-demo'),
 			'desc' => __('This uses some of the built in images, you can use them for layout options.', 'redux-framework-demo'),
 			'options' => array(
-							'1' => array('alt' => '1 Column', 'img' => REDUX_URL.'assets/img/1col.png'),
-							'2' => array('alt' => '2 Column Left', 'img' => REDUX_URL.'assets/img/2cl.png'),
-							'3' => array('alt' => '2 Column Right', 'img' => REDUX_URL.'assets/img/2cr.png'),
-							'4' => array('alt' => '3 Column Middle', 'img' => REDUX_URL.'assets/img/3cm.png'),
-							'5' => array('alt' => '3 Column Left', 'img' => REDUX_URL.'assets/img/3cl.png'),
-							'6' => array('alt' => '3 Column Right', 'img' => REDUX_URL.'assets/img/3cr.png')
+							'1' => array('alt' => '1 Column', 'img' => ReduxFramework::$_url.'assets/img/1col.png'),
+							'2' => array('alt' => '2 Column Left', 'img' => ReduxFramework::$_url.'assets/img/2cl.png'),
+							'3' => array('alt' => '2 Column Right', 'img' => ReduxFramework::$_url.'assets/img/2cr.png'),
+							'4' => array('alt' => '3 Column Middle', 'img' => ReduxFramework::$_url.'assets/img/3cm.png'),
+							'5' => array('alt' => '3 Column Left', 'img' => ReduxFramework::$_url.'assets/img/3cl.png'),
+							'6' => array('alt' => '3 Column Right', 'img' => ReduxFramework::$_url.'assets/img/3cr.png')
 								),//Must provide key => value(array:title|img) pairs for radio options
 			'default' => '2'
 			),
@@ -1001,6 +1001,23 @@ $sections[] = array(
 			'subtitle' => __('No validation can be done on this field type', 'redux-framework-demo'),
 			'desc' => __('This is the description field, again good for additional info.', 'redux-framework-demo'),
 			),
+        array(
+			'id'=>'select-roles',
+			'type' => 'select',
+			'data' => 'roles',
+			'title' => __('User Role Select Option', 'redux-framework-demo'), 
+			'subtitle' => __('No validation can be done on this field type', 'redux-framework-demo'),
+			'desc' => __('This is the description field, again good for additional info.', 'redux-framework-demo'),
+			),
+        array(
+			'id'=>'select-capabilities',
+			'type' => 'select',
+			'data' => 'capabilities',
+			'multi' => true,
+			'title' => __('Capabilities Select Option', 'redux-framework-demo'), 
+			'subtitle' => __('No validation can be done on this field type', 'redux-framework-demo'),
+			'desc' => __('This is the description field, again good for additional info.', 'redux-framework-demo'),
+			),
 		array(
 			'id'=>'select-elusive',
 			'type' => 'select',
@@ -1011,8 +1028,8 @@ $sections[] = array(
 			),			
 		)
 	);
-
-	
+		
+		
 $tabs = array();
 
 if (function_exists('wp_get_theme')){
@@ -1023,7 +1040,7 @@ $author = $theme_data->get('Author');
 $version = $theme_data->get('Version');
 $tags = $theme_data->get('Tags');
 }else{
-$theme_data = get_theme_data(trailingslashit(get_stylesheet_directory()).'style.css');
+$theme_data = wp_get_theme(trailingslashit(get_stylesheet_directory()).'style.css');
 $theme_uri = $theme_data['URI'];
 $description = $theme_data['Description'];
 $author = $theme_data['Author'];
@@ -1041,7 +1058,7 @@ $theme_info .= '</div>';
 
 if(file_exists(dirname(__FILE__).'/README.md')){
 $tabs['theme_docs'] = array(
-			'icon' => REDUX_URL.'assets/img/glyphicons/glyphicons_071_book.png',
+			'icon' => ReduxFramework::$_url.'assets/img/glyphicons/glyphicons_071_book.png',
 			'title' => __('Documentation', 'redux-framework-demo'),
 			'content' => file_get_contents(dirname(__FILE__).'/README.md')
 			);
@@ -1268,10 +1285,25 @@ add_action('redux-compiler-redux-sample-file', 'testCompiler');
 
 /**
 
-	Use this function to hide the activation notice telling users about a sample panel.
+	Use this code to hide the activation notice telling users about a sample panel.
 
 **/
-function removeReduxAdminNotice() {
-	delete_option('REDUX_FRAMEWORK_PLUGIN_ACTIVATED_NOTICES');
+if ( class_exists('ReduxFrameworkPlugin') ) {
+	//remove_action('admin_notices', array( ReduxFrameworkPlugin::get_instance(), 'admin_notices' ) );	
 }
-add_action('redux_framework_plugin_admin_notice', 'removeReduxAdminNotice');
+
+/**
+
+	Use this code to hide the demo mode link from the plugin page. Only used when Redux is a plugin.
+
+**/
+function removeDemoModeLink() {
+	if ( class_exists('ReduxFrameworkPlugin') ) {
+		remove_filter( 'plugin_row_meta', array( ReduxFrameworkPlugin::get_instance(), 'plugin_meta_demo_mode_link'), null, 2 );
+	}
+}
+//add_action('init', 'removeDemoModeLink');
+
+
+
+

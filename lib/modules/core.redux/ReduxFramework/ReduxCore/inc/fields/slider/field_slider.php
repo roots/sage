@@ -115,7 +115,7 @@ class ReduxFramework_slider extends ReduxFramework{
 
 		wp_enqueue_script(
 			'redux-typewatch-js', 
-			REDUX_URL.'assets/js/vendor/jquery.typewatch.min.js', 
+			ReduxFramework::$_url.'assets/js/vendor/jquery.typewatch.min.js', 
 			array('jquery'),
 			time(),
 			true
@@ -123,7 +123,7 @@ class ReduxFramework_slider extends ReduxFramework{
 
 		wp_enqueue_script(
 			'redux-field-slider-js', 
-			REDUX_URL.'inc/fields/slider/field_slider.min.js', 
+			ReduxFramework::$_url.'inc/fields/slider/field_slider.min.js', 
 			array('jquery', 'jquery-numeric', 'jquery-ui-core', 'jquery-ui-slider', 'jquery-ui-dialog', 'redux-typewatch-js'),
 			time(),
 			true
@@ -131,7 +131,7 @@ class ReduxFramework_slider extends ReduxFramework{
 
 		wp_enqueue_style(
 			'redux-field-slider-css', 
-			REDUX_URL.'inc/fields/slider/field_slider.css', 
+			ReduxFramework::$_url.'inc/fields/slider/field_slider.css', 
 			time(),
 			true
 		);		

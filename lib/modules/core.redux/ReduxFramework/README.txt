@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: admin, admin interface, options, theme options, plugin options, options framework, settings
 Requires at least: 3.5.1
 Tested up to: 3.7
-Stable tag: 3.0.4
+Stable tag: 3.0.6
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -88,6 +88,8 @@ Special thanks to the following people for language translations:
 
 * German [de_DE] @Abu-Taymiyyah
 * Bahasa Indonesia [id_ID] @riesurya
+* Tirnovanuaurel [IT_it] [RO_ro] @tirnovanuaurel
+
 
 = Get Involved =
 Redux is an ever-changing, living system. Want to stay up to date or
@@ -136,6 +138,28 @@ That's because the real FAQ section is on our site! Please visit [http://reduxfr
 1. This is the demo mode of Redux Framework. Activate it and you will find a fully-functional admin panel that you can play with. On the Plugins page, beneath the description and an activated Redux Framework, you will find a Demo Mode link. Click that link to activate or deactivate the sample-config file Redux ships with.  Don't take our word for it, check out our online demo and try Redux without installing a thing! [**http://demo.reduxframework.com/wp-admin/**](http://demo.reduxframework.com/wp-admin/)
 
 == Changelog ==
+
+= 3.0.6 =
+* Hide customizer fields by default while still under development.
+* Fix Issue 123 - Language translations to actually function properly embedded as well as in the plugin.
+* Fix Issue 151 - Media field uses thumbnail not full image for preview. Also now storing the thumbnail URL. Uses the smallest available size as the thumb regardless of the name.
+* Fix Issue 147 - Option to pass params to select2. Contributed by @andreilupu. Thanks!
+* Added trim function to ace editor value to prevent whitespace before and after value keep being added
+* htmlspecialchars() value in pre editor for ace. to prevent html tags being hidden in editor and rendered in dom
+* Feature: Added optional 'add_text' argument for multi_text field so users can define button text.
+* Added consistent remove button on multi text, and used sanitize function for section id
+* Feature: Added roles as data for field data
+* Feature: Adding data layout options for multi checkbox and radio, we now have quarter, third, half, and full column layouts for these fields.
+* Feature: Eliminate REDUX_DIR and REDUX_URL constants and instead created static ReduxFramework::$_url and ReduxFramework::$_dir for cleaner code.
+Feature: Code at bottom of sample-config.php to hide plugin activation text about a demo plugin as well as code to demo how to hide the plugin demo_mode link.
+* Started work on class definitions of each field and class. Preparing for the panel builder we are planning to make.
+
+= 3.0.5 =
+* Fixed how Redux is initialised so it works in any and all files without hooking into the init function.
+* Issue #151: Added thumbnails to media and displayed those instead of full image.
+* Issue #144: Slides had error if last slide was deleted.
+* Color field was outputting hex in the wrong location.
+* Added ACE Editor field, allowing for better inline editing.
 
 = 3.0.4 =
 * Fixed an odd saving issue.

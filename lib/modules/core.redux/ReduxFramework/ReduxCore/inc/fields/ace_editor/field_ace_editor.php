@@ -10,7 +10,7 @@ class ReduxFramework_ace_editor {
     */
     function __construct($field = array(), $value ='', $parent) {
         $this->field = $field;
-		$this->value = $value;
+		$this->value = trim($value);
 		$this->args = $parent->args;
         if( !isset($this->field['mode']) ){
             $this->field['mode'] = 'javascript';
@@ -36,7 +36,7 @@ class ReduxFramework_ace_editor {
             <textarea name="<?php echo $name; ?>" id="<?php echo $this->field['id']; ?>-textarea" class="ace-editor" data-editor="<?php echo $this->field['id']; ?>-editor" data-mode="<?php echo $this->field['mode']; ?>" data-theme="<?php echo $this->field['theme']; ?>">
                 <?php echo $this->value; ?>
             </textarea>
-            <pre id="<?php echo $this->field['id']; ?>-editor" class="ace-editor-area"><?php echo $this->value; ?></pre>
+            <pre id="<?php echo $this->field['id']; ?>-editor" class="ace-editor-area"><?php echo htmlspecialchars ($this->value); ?></pre>
         </div>
     <?php
         
@@ -55,20 +55,20 @@ class ReduxFramework_ace_editor {
 
             wp_enqueue_style(
                 'redux-field-ace-editor-css', 
-                REDUX_URL . 'inc/fields/ace_editor/field_ace_editor.css',
+                ReduxFramework::$_url . 'inc/fields/ace_editor/field_ace_editor.css',
                 time(),
                 true
             );
             wp_register_script(
                 'ace-editor',
-                REDUX_URL . 'inc/fields/ace_editor/ace-min-noconflict/ace.js',
+                ReduxFramework::$_url . 'inc/fields/ace_editor/ace-min-noconflict/ace.js',
                 array( 'jquery' ),
                 time(),
                 true
             );
             wp_enqueue_script(
                 'redux-field-ace-editor-js', 
-                REDUX_URL . 'inc/fields/ace_editor/field_ace_editor.js', 
+                ReduxFramework::$_url . 'inc/fields/ace_editor/field_ace_editor.js', 
                 array( 'ace-editor' ),
                 time(),
                 true

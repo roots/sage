@@ -52,6 +52,11 @@ class ReduxFramework_spacing extends ReduxFramework{
 
 		$this->value = wp_parse_args( $this->value, $defaults );
 
+                $this->value['top'] = isset($this->value[$this->field['mode'].'-top'])?$this->value[$this->field['mode'].'-top']:$this->value['top'];
+                $this->value['right'] = isset($this->value[$this->field['mode'].'-right'])?$this->value[$this->field['mode'].'-right']:$this->value['right'];
+                $this->value['bottom'] = isset($this->value[$this->field['mode'].'-bottom'])?$this->value[$this->field['mode'].'-bottom']:$this->value['bottom'];
+                $this->value['left'] = isset($this->value[$this->field['mode'].'-left'])?$this->value[$this->field['mode'].'-left']:$this->value['left'];
+
 		if ( !empty( $this->field['units'] ) ) {
 			$this->value['units'] = $this->field['units'];
 		}
@@ -189,7 +194,7 @@ class ReduxFramework_spacing extends ReduxFramework{
 
 		wp_enqueue_script(
 			'redux-field-spacing-js', 
-			REDUX_URL.'inc/fields/spacing/field_spacing.min.js', 
+			ReduxFramework::$_url.'inc/fields/spacing/field_spacing.min.js', 
 			array('jquery', 'select2-js', 'jquery-numeric'),
 			time(),
 			true
@@ -197,7 +202,7 @@ class ReduxFramework_spacing extends ReduxFramework{
 
 		wp_enqueue_style(
 			'redux-field-spacing-css', 
-			REDUX_URL.'inc/fields/spacing/field_spacing.css', 
+			ReduxFramework::$_url.'inc/fields/spacing/field_spacing.css', 
 			time(),
 			true
 		);	

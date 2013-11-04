@@ -48,6 +48,10 @@ if( !class_exists( 'ReduxFramework_multi_text' ) ) {
 
             $this->field = $field;
             $this->value = $value;
+            
+            $this->add_text = ( isset($this->field['add_text']) ) ? $this->field['add_text'] : __( 'Add More', 'redux-framework');
+            
+            $this->show_empty = ( isset($this->field['show_empty']) ) ? $this->field['show_empty'] : true;
         
         }
 
@@ -69,15 +73,15 @@ if( !class_exists( 'ReduxFramework_multi_text' ) ) {
                         if( $value != '' )
                             echo '<li><input type="text" id="' . $this->field['id'] . '-' . $k . '" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][]" value="' . esc_attr( $value ) . '" class="regular-text ' . $this->field['class'] . '" /> <a href="javascript:void(0);" class="deletion redux-multi-text-remove">' . __( 'Remove', 'redux-framework' ) . '</a></li>';
                     }
-                } else {
-                    echo '<li><input type="text" id="' . $this->field['id'] . '" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][]" value="" class="regular-text ' . $this->field['class'] . '" /> <a href="javascript:void(0);" class="button redux-multi-text-remove">' . __( 'Remove', 'redux-framework' ) . '</a></li>';
+                } elseif($this->show_empty == true ) {
+                    echo '<li><input type="text" id="' . $this->field['id'] . '" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][]" value="" class="regular-text ' . $this->field['class'] . '" /> <a href="javascript:void(0);" class="deletion redux-multi-text-remove">' . __( 'Remove', 'redux-framework' ) . '</a></li>';
                 }
             
-                echo '<li style="display:none;"><input type="text" id="' . $this->field['id'] . '" name="" value="" class="regular-text" /> <a href="javascript:void(0);" class="button redux-multi-text-remove">' . __( 'Remove', 'redux-framework') . '</a></li>';
+                echo '<li style="display:none;"><input type="text" id="' . $this->field['id'] . '" name="" value="" class="regular-text" /> <a href="javascript:void(0);" class="deletion redux-multi-text-remove">' . __( 'Remove', 'redux-framework') . '</a></li>';
 
             echo '</ul>';
         
-            echo '<a href="javascript:void(0);" class="button button-primary redux-multi-text-add" rel-id="' . $this->field['id'] . '-ul" rel-name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][]">' . __( 'Add More', 'redux-framework') . '</a><br/>';
+            echo '<a href="javascript:void(0);" class="button button-primary redux-multi-text-add" rel-id="' . $this->field['id'] . '-ul" rel-name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][]">' . $this->add_text . '</a><br/>';
 
         }   
 
@@ -94,7 +98,7 @@ if( !class_exists( 'ReduxFramework_multi_text' ) ) {
         
             wp_enqueue_script(
                 'redux-field-multi-text-js', 
-                REDUX_URL . 'inc/fields/multi_text/field_multi_text.min.js', 
+                ReduxFramework::$_url . 'inc/fields/multi_text/field_multi_text.min.js', 
                 array( 'jquery' ),
                 time(),
                 true
@@ -102,7 +106,7 @@ if( !class_exists( 'ReduxFramework_multi_text' ) ) {
 
 			wp_enqueue_style(
 				'redux-field-multi-text-css', 
-				REDUX_URL.'inc/fields/multi_text/field_multi_text.css', 
+				ReduxFramework::$_url.'inc/fields/multi_text/field_multi_text.css', 
 				time(),
 				true
 			);            

@@ -89,7 +89,7 @@ class ReduxFramework_sortable {
 
         wp_enqueue_script(
             'redux-field-sortable-js',
-            REDUX_URL . 'inc/fields/sortable/field_sortable.min.js',
+            ReduxFramework::$_url . 'inc/fields/sortable/field_sortable.min.js',
             array('jquery'),
             time(),
             true
@@ -98,7 +98,7 @@ class ReduxFramework_sortable {
 
 		wp_enqueue_style(
 			'redux-field-sortable-css', 
-			REDUX_URL.'inc/fields/sortable/field_sortable.css', 
+			ReduxFramework::$_url.'inc/fields/sortable/field_sortable.css', 
 			time(),
 			true
 		);	

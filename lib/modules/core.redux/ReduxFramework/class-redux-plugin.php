@@ -104,9 +104,6 @@ class ReduxFrameworkPlugin {
 			$this->options = get_option( 'ReduxFrameworkPlugin', $defaults );
 		}
 
-		// Load plugin text domain
-		add_action( 'wp_loaded', array( $this, 'load_plugin_textdomain' ) );
-
 		add_action( 'wp_loaded', array( $this, 'redux_options_toggle_check' )  );
 
 		// Activate plugin when new blog is added
@@ -114,7 +111,8 @@ class ReduxFrameworkPlugin {
 
 		add_action('admin_notices', array( $this, 'admin_notices' ) );
 
-		add_filter( 'plugin_row_meta', array($this, 'ts_plugin_meta_links'), 10, 2 );
+		add_filter( 'plugin_row_meta', array($this, 'plugin_meta_links'), null, 2 );
+		add_filter( 'plugin_row_meta', array($this, 'plugin_meta_demo_mode_link'), null, 2 );
 
 		if ( !class_exists( 'Redux_Framework' ) && file_exists( dirname( __FILE__ ) . '/ReduxCore/framework.php' ) ) {
 			require_once( dirname( __FILE__ ) . '/ReduxCore/framework.php' );
@@ -267,22 +265,6 @@ class ReduxFrameworkPlugin {
 	}
 
 	/**
-	 * Load the plugin text domain for translation.
-	 *
-	 * @since    1.0.0
-	 */
-	public function load_plugin_textdomain() {
-
-		$domain = $this->plugin_slug;
-		$locale = apply_filters( 'plugin_locale', get_locale(), $domain );
-
-		load_textdomain( $domain, trailingslashit( WP_LANG_DIR ) . $domain . '/' . $domain . '-' . $locale . '.mo' );
-		load_plugin_textdomain( $domain, FALSE, basename( dirname( __FILE__ ) ) . '/ReduxCore/languages' );
-
-	}
-
-
-	/**
 	 * Turn on or off
 	 *
 	 * @since    1.0.0
@@ -296,7 +278,6 @@ class ReduxFrameworkPlugin {
 			if ( $_GET['ReduxFrameworkPlugin'] == 'demo') {
 				if ( $this->options['demo'] == false ) {
 					$this->options['demo'] = true;
-					//$url = admin_url( 'admin.php?page=redux_sample_options');
 				} else {
 					$this->options['demo'] = false;
 				}
@@ -328,7 +309,25 @@ class ReduxFrameworkPlugin {
 		*/
 	}
 
-	function ts_plugin_meta_links( $links, $file ) {
+	function plugin_meta_links( $links, $file ) {
+		if ( strpos($file,'redux-framework.php') === false ) {
+    		return $links;
+		}
+
+		$plugin = str_replace('class-redux-plugin', 'redux-framework', plugin_basename(__FILE__));
+		$array = array( '<a href="https://github.com/ReduxCore/ReduxFramework" target="_blank">Github Repo</a>', '<a href="https://github.com/ReduxFramework/ReduxFramework/issues/" target="_blank">Issue Tracker</a>' );
+		// create link
+		if ( $file == $plugin ) {
+			return array_merge(
+				$links,
+				$array
+			);
+		}
+		return $links;
+	 
+	}
+
+	function plugin_meta_demo_mode_link( $links, $file ) {
 		if ( strpos($file,'redux-framework.php') === false ) {
     		return $links;
 		}
@@ -349,17 +348,13 @@ class ReduxFrameworkPlugin {
 		$extra .='</span>';
 
 		$plugin = str_replace('class-redux-plugin', 'redux-framework', plugin_basename(__FILE__));
-		$array = array( '<a href="https://github.com/ReduxCore/ReduxFramework" target="_blank">Github Repo</a>', '<a href="https://github.com/ReduxFramework/ReduxFramework/issues/" target="_blank">Issue Tracker</a>'.$extra  );
 		// create link
 		if ( $file == $plugin ) {
-			return array_merge(
-				$links,
-				$array
-			);
+			$links[count($links)-1] .= $extra;
 		}
 		return $links;
 	 
-	}	
+	}		
 
 
 }
