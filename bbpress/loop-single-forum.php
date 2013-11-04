@@ -11,7 +11,7 @@
 <li class="list-group-item">
 	<ul id="bbp-forum-<?php bbp_forum_id(); ?>" <?php bbp_forum_class(); ?>>
 
-		<li class="bbp-forum-info col-md-6">
+		<li class="bbp-forum-info col-md-5">
 			<?php do_action( 'bbp_theme_before_forum_title' ); ?>
 			<a class="bbp-forum-title lead" href="<?php bbp_forum_permalink(); ?>"><?php bbp_forum_title(); ?></a>
 			<?php do_action( 'bbp_theme_after_forum_title' ); ?>
@@ -28,7 +28,7 @@
 
 		<li class="bbp-forum-reply-count col-md-2 text-center"><?php bbp_show_lead_topic() ? bbp_forum_reply_count() : bbp_forum_post_count(); ?></li>
 
-		<li class="bbp-forum-freshness col-md-2">
+		<li class="bbp-forum-freshness col-md-3 text-right">
 			<?php do_action( 'bbp_theme_before_forum_freshness_link' ); ?>
 			<?php bbp_forum_freshness_link(); ?>
 			<?php do_action( 'bbp_theme_after_forum_freshness_link' ); ?>

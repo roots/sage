@@ -16,10 +16,10 @@
 	<li class="bbp-header list-group-item">
 
 		<ul class="forum-titles row list-unstyled">
-			<li class="bbp-forum-info col-md-6"><?php _e( 'Forum', 'bbpress' ); ?></li>
+			<li class="bbp-forum-info col-md-5"><?php _e( 'Forum', 'bbpress' ); ?></li>
 			<li class="bbp-forum-topic-count col-md-2 text-center"><?php _e( 'Topics', 'bbpress' ); ?></li>
 			<li class="bbp-forum-reply-count col-md-2 text-center"><?php bbp_show_lead_topic() ? _e( 'Replies', 'bbpress' ) : _e( 'Posts', 'bbpress' ); ?></li>
-			<li class="bbp-forum-freshness col-md-2"><?php _e( 'Freshness', 'bbpress' ); ?></li>
+			<li class="bbp-forum-freshness col-md-3 text-right"><?php _e( 'Freshness', 'bbpress' ); ?></li>
 		</ul>
 
 	</li><!-- .bbp-header -->
