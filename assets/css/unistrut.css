@@ -134,6 +134,7 @@ table tr td.product-code{white-space:nowrap !important}
 .table tr.highlight-danger td,.table tr.highlight-danger:hover td,.table td.highlight-danger,.table td.highlight-danger:hover{background:#da4f49 !important;color:#fff}
 .table tr.highlight-inverse td,.table tr.highlight-inverse:hover td,.table td.highlight-inverse,.table td.highlight-inverse:hover{background:#414141 !important;color:#fff}
 .table caption{text-align:left;padding:10px 0}
+#sortable-list table{font-size:80%}#sortable-list table td{text-align:left !important}
 .sidebar .menu{margin-left:0;margin-right:0;padding-left:0;padding-right:0;font-size:12px}.sidebar .menu li{list-style:none}.sidebar .menu li.active a .sidebar .menu li{color:#555}.sidebar .menu li.active a .sidebar .menu li .list-group-item-heading{color:#333}
 .sidebar .menu li.active a .sidebar .menu li:hover,.sidebar .menu li.active a .sidebar .menu li:focus{text-decoration:none;background-color:#f5f5f5}
 .sidebar .menu li.active>a,.sidebar .menu li.active>a:hover,.sidebar .menu li.active>a:focus{z-index:2;color:#fff;background-color:#0f569a;border-color:#0f569a}.sidebar .menu li.active>a .list-group-item-heading,.sidebar .menu li.active>a:hover .list-group-item-heading,.sidebar .menu li.active>a:focus .list-group-item-heading{color:inherit}
