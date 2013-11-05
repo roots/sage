@@ -35,12 +35,12 @@ function shoestrap_module_layout_options( $sections ) {
     'type'      => 'image_select',
     'customizer'=> array(),
     'options'   => array( 
-      0         => REDUX_URL . 'assets/img/1c.png',
-      1         => REDUX_URL . 'assets/img/2cr.png',
-      2         => REDUX_URL . 'assets/img/2cl.png',
-      3         => REDUX_URL . 'assets/img/3cl.png',
-      4         => REDUX_URL . 'assets/img/3cr.png',
-      5         => REDUX_URL . 'assets/img/3cm.png',
+      0         => 'REDUX_URL' . 'assets/img/1c.png',
+      1         => 'REDUX_URL' . 'assets/img/2cr.png',
+      2         => 'REDUX_URL' . 'assets/img/2cl.png',
+      3         => 'REDUX_URL' . 'assets/img/3cl.png',
+      4         => 'REDUX_URL' . 'assets/img/3cr.png',
+      5         => 'REDUX_URL' . 'assets/img/3cm.png',
     )
   );
 
@@ -63,12 +63,12 @@ function shoestrap_module_layout_options( $sections ) {
       'type'      => 'image_select',
       'required'  => array( 'cpt_layout_toggle','=',array( '1' ) ),
       'options'   => array(
-        0         => REDUX_URL . 'assets/img/1c.png',
-        1         => REDUX_URL . 'assets/img/2cr.png',
-        2         => REDUX_URL . 'assets/img/2cl.png',
-        3         => REDUX_URL . 'assets/img/3cl.png',
-        4         => REDUX_URL . 'assets/img/3cr.png',
-        5         => REDUX_URL . 'assets/img/3cm.png',
+        0         => 'REDUX_URL' . 'assets/img/1c.png',
+        1         => 'REDUX_URL' . 'assets/img/2cr.png',
+        2         => 'REDUX_URL' . 'assets/img/2cl.png',
+        3         => 'REDUX_URL' . 'assets/img/3cl.png',
+        4         => 'REDUX_URL' . 'assets/img/3cr.png',
+        5         => 'REDUX_URL' . 'assets/img/3cm.png',
       )
     );
   endforeach;

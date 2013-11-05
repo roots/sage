@@ -21,7 +21,7 @@ if ( class_exists( 'ReduxFramework' ) ) :
    $args['share_icons']['twitter'] = array(
     'link'  => 'https://github.com/shoestrap/shoestrap',
     'title' => 'Fork Me on GitHub',
-    'img'   => REDUX_URL.'assets/img/social/GitHub.png'
+    'img'   => 'REDUX_URL' . 'assets/img/social/GitHub.png'
    );
 
   // Choose a custom option name for your theme options, the default is the theme name in lowercase with spaces replaced by underscores

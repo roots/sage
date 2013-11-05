@@ -42,11 +42,21 @@ class EUAPI {
 	 */
 	function http_request_args( array $args, $url ) {
 
-		if ( false !== strpos( $url, '://api.wordpress.org/plugins/update-check/' ) )
-			return $this->plugin_request( $args );
+		if ( preg_match( '#://api\.wordpress\.org/(?P<type>plugins|themes)/update-check/(?P<version>[0-9.]+)/#', $url, $matches ) ) {
 
-		if ( false !== strpos( $url, '://api.wordpress.org/themes/update-check/' ) )
-			return $this->theme_request( $args );
+			switch ( $matches['type'] ) {
+
+				case 'plugins':
+					return $this->plugin_request( $args, floatval( $matches['version'] ) );
+					break;
+
+				case 'themes':
+					return $this->theme_request( $args, floatval( $matches['version'] ) );
+					break;
+
+			}
+
+		}
 
 		$query = parse_url( $url, PHP_URL_QUERY );
 
@@ -75,12 +85,30 @@ class EUAPI {
 	 * handling or excluding updates.
 	 *
 	 * @author John Blackbourn
-	 * @param  array $args HTTP request arguments.
-	 * @return array       Updated array of arguments.
+	 * @param  array $args    HTTP request arguments.
+	 * @param  float $version The API request version number.
+	 * @return array          Updated array of arguments.
 	 */
-	function plugin_request( array $args ) {
+	function plugin_request( array $args, $version ) {
 
-		$plugins = unserialize( $args['body']['plugins'] );
+		switch ( $version ) {
+
+			case 1.0:
+				$plugins = unserialize( $args['body']['plugins'] );
+				break;
+
+			case 1.1:
+				$plugins = json_decode( $args['body']['plugins'] );
+				break;
+
+			default:
+				return $args;
+				break;
+
+		}
+
+		if ( empty( $plugins ) )
+			return $args;
 
 		foreach ( $plugins->plugins as $plugin => $data ) {
 
@@ -100,7 +128,17 @@ class EUAPI {
 
 		}
 
-		$args['body']['plugins'] = serialize( $plugins );
+		switch ( $version ) {
+
+			case 1.0:
+				$args['body']['plugins'] = serialize( $plugins );
+				break;
+
+			case 1.1:
+				$args['body']['plugins'] = json_encode( $plugins );
+				break;
+
+		}
 
 		return $args;
 
@@ -113,12 +151,30 @@ class EUAPI {
 	 * handling or excluding updates.
 	 *
 	 * @author John Blackbourn
-	 * @param  array $args HTTP request arguments.
-	 * @return array       Updated array of arguments.
+	 * @param  array $args    HTTP request arguments.
+	 * @param  float $version The API request version number.
+	 * @return array          Updated array of arguments.
 	 */
-	function theme_request( array $args ) {
+	function theme_request( array $args, $version ) {
 
-		$themes = unserialize( $args['body']['themes'] );
+		switch ( $version ) {
+
+			case 1.0:
+				$themes = unserialize( $args['body']['themes'] );
+				break;
+
+			case 1.1:
+				$themes = json_decode( $args['body']['themes'] );
+				break;
+
+			default:
+				return $args;
+				break;
+
+		}
+
+		if ( empty( $themes ) )
+			return $args;
 
 		foreach ( $themes as $theme => $data ) {
 
@@ -141,7 +197,17 @@ class EUAPI {
 
 		}
 
-		$args['body']['themes'] = serialize( $themes );
+		switch ( $version ) {
+
+			case 1.0:
+				$args['body']['themes'] = serialize( $themes );
+				break;
+
+			case 1.1:
+				$args['body']['themes'] = json_encode( $themes );
+				break;
+
+		}
 
 		return $args;
 
