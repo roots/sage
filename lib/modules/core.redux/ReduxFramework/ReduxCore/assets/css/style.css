@@ -42,10 +42,10 @@ a{outline:0 !important}
 .redux-group-tab .redux-section-desc{font-size:1.1em;margin-bottom:10px;color:#666}
 .redux-group-tab .form-table{clear:none;margin-top:20px}
 .redux-group-tab .form-table.no-border{border-top:none}
-.redux-group-tab .form-table tr{border-bottom:1px solid #e7e7e7}
+.redux-group-tab .form-table tr{border-bottom:1px solid #e7e7e7;display:block;width:100%}
 .redux-group-tab .form-table tr:last-child{border-bottom:none}
 .redux-group-tab .form-table tr th,.redux-group-tab .form-table tr td{color:#333}
-.redux-group-tab .form-table tr th{font-weight:bold;font-size:1.1em;width:30%;padding:20px 5px 20px 0}
+.redux-group-tab .form-table tr th{font-weight:bold;font-size:1.1em;width:30%;padding:20px 5px 20px 0;display:inline-block}
 .redux-group-tab .form-table tr th span:first-child{font-weight:normal;display:block;color:#666}
 .redux-group-tab .form-table tr td .redux-th-warning{font-size:1em;color:#c09853;font-weight:normal;display:block}
 .redux-group-tab .form-table tr td .redux-field-warning{border-color:#c09853}
@@ -147,7 +147,7 @@ label.radio,label.multicheck{position:relative}
 #redux-main .input-append .add-on{border-top-right-radius:3px;border-bottom-right-radius:3px}
 #redux-main .input-prepend input{border-top-left-radius:0;border-bottom-left-radius:0;margin-left:0}
 #redux-main .input-prepend .add-on{border-top-left-radius:3px;border-bottom-left-radius:3px}
-#redux-main td{padding:20px 0}
+#redux-main td{padding:20px 0;display:inline-block}
 #redux-main .mini,#redux-main input[type=text].mini{width:50px;text-align:center}
 #redux-main .upload{width:80%}
 .wrap{margin-top:0}

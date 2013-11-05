@@ -34,6 +34,7 @@ class ReduxFramework_spacing extends ReduxFramework{
 			'mode' 				=> 'padding',
 			'top'				=> true,
 			'bottom'			=> true,
+			'all'				=> false,
 			'left'				=> true,
 			'right'				=> true,
 			'units_extended'	=> false,
@@ -41,52 +42,69 @@ class ReduxFramework_spacing extends ReduxFramework{
 		$this->field = wp_parse_args( $this->field, $defaults );
 
 
+		if ( $this->field['mode'] == "absolute" ) {
+			$this->field['units'] = "";
+			$this->value['units'] = "";
+		}
+
+		if ( $this->field['units'] == false ) {
+			$this->value == "";
+		}
+
 		$defaults = array(
 			'top'=>'',
 			'right'=>'',
 			'bottom'=>'',
 			'left'=>'',
-			'mode'=>'padding',
 			'units'=>'px',
 		);
 
 		$this->value = wp_parse_args( $this->value, $defaults );
 
-                $this->value['top'] = isset($this->value[$this->field['mode'].'-top'])?$this->value[$this->field['mode'].'-top']:$this->value['top'];
-                $this->value['right'] = isset($this->value[$this->field['mode'].'-right'])?$this->value[$this->field['mode'].'-right']:$this->value['right'];
-                $this->value['bottom'] = isset($this->value[$this->field['mode'].'-bottom'])?$this->value[$this->field['mode'].'-bottom']:$this->value['bottom'];
-                $this->value['left'] = isset($this->value[$this->field['mode'].'-left'])?$this->value[$this->field['mode'].'-left']:$this->value['left'];
+		if ( isset( $this->field['mode'] ) && !in_array( $this->field['mode'], array( 'margin', 'padding' ) ) ) {
+			if ( $this->field['mode'] == "absolute" ) {
+				$absolute = true;
+			} 
+			$this->field['mode'] = "";	
+		}
 
-		if ( !empty( $this->field['units'] ) ) {
+		$value = array(
+			'top' => isset( $this->value[$this->field['mode'].'-top'] ) ? filter_var($this->value[$this->field['mode'].'-top'], FILTER_SANITIZE_NUMBER_INT) : filter_var($this->value['top'], FILTER_SANITIZE_NUMBER_INT),
+			'right' => isset( $this->value[$this->field['mode'].'-right'] ) ? filter_var($this->value[$this->field['mode'].'-right'], FILTER_SANITIZE_NUMBER_INT) : filter_var($this->value['right'], FILTER_SANITIZE_NUMBER_INT),
+			'bottom' => isset( $this->value[$this->field['mode'].'-bottom'] ) ? filter_var($this->value[$this->field['mode'].'-bottom'], FILTER_SANITIZE_NUMBER_INT) : filter_var($this->value['bottom'], FILTER_SANITIZE_NUMBER_INT),
+			'left' => isset( $this->value[$this->field['mode'].'-left'] ) ? filter_var($this->value[$this->field['mode'].'-left'], FILTER_SANITIZE_NUMBER_INT) : filter_var($this->value['left'], FILTER_SANITIZE_NUMBER_INT)
+		);
+		
+		if ( isset( $this->field['units'] ) && !in_array( $this->field['units'], array( '', false, '%', 'in', 'cm', 'mm', 'em', 'ex', 'pt', 'pc', 'px' ) ) ) {
+			unset( $this->field['units'] );
+		}	
+
+		if ( isset( $this->value['units'] ) && !in_array( $this->value['units'], array( '', '%', 'in', 'cm', 'mm', 'em', 'ex', 'pt', 'pc', 'px' ) ) ) {
+			unset( $this->value['units'] );
+		}
+
+		if ( isset( $this->field['units'] ) && $this->field['units'] != "" ) {
 			$this->value['units'] = $this->field['units'];
 		}
 
-		if (  !in_array($this->value['units'], array( '%', 'in', 'cm', 'mm', 'em', 'ex', 'pt', 'pc', 'px' ) ) ) {
-			if ( !empty( $this->field['units'] ) && in_array($this->value['units'], array( '%', 'in', 'cm', 'mm', 'em', 'ex', 'pt', 'pc', 'px' ) ) ) {
-				$this->value['units'] = $this->field['units'];	
-			}
+		if ( isset( $this->field['units'] ) && !isset( $this->value['units'] ) ) { // Value should equal field units
+			$this->value['units'] = $this->field['units'];
+		} else if ( !isset( $this->field['units'] ) && !isset( $this->value['units'] ) && $this->field['units'] !== false && $this->field['units'] !== "" ) { // If both undefined
+			$this->field['units'] = '';
+			$this->value['units'] = '';
+		} else if ( !isset( $this->field['units'] ) && isset( $this->value['units'] ) ) { // If Value is defined
+			$this->field['units'] = $this->value['units'];	// Make the field have it
+		}
+		if ( isset( $this->field['units'] ) ) {
+			$value['units'] = $this->value['units'];	
 		}
 
-		if ( $this->field['mode'] !== "margin" && $this->field['mode'] !== "padding" ) {
-			$mode = "";
-		}
+		$this->value = $value;
 		
 		if ( !empty( $this->field['mode'] ) ) {
 			$this->field['mode'] = $this->field['mode']."-";
 		}
 
-		$oldval = $this->value;
-		$this->value = array();
-		foreach ($oldval as $k=>$v) {
-			if ($k == "units") {
-				continue;
-			}
-			if (strpos($k, $this->field['mode']) === false) {
-				$this->value[$k] = str_replace($oldval['units'], "", $v);
-			} else {
-				$this->value[str_replace($this->field['mode'].'-', "", $k)] = str_replace($oldval['units'], "", $v);
-			}
-		}
 
 		$defaults = array(
 			'top'=>'',
@@ -98,60 +116,53 @@ class ReduxFramework_spacing extends ReduxFramework{
 
 		$this->value = wp_parse_args( $this->value, $defaults );
 
+		echo '<input type="hidden" class="field-units" value="'.$this->field['units'].'">';
 
+		if ( isset( $this->field['all'] ) && $this->field['all'] == true ) {
+			echo '<div class="field-spacing-input input-prepend"><span class="add-on"><i class="icon-fullscreen icon-large"></i></span><input type="text" class="redux-spacing-all redux-spacing-input mini'.$this->field['class'].'" placeholder="'.__('All','redux-framework').'" rel="'.$this->field['id'].'-all" value="'.$this->value['top'].'"></div>';
+		}
+
+		echo '<input type="hidden" class="redux-spacing-value" id="'.$this->field['id'].'-top" name="'.$this->args['opt_name'].'['.$this->field['id'].']['.$this->field['mode'].'top]" value="'.$this->value['top'].(!empty($this->value['top']) ? $this->value['units'] : '').'">';
+		echo '<input type="hidden" class="redux-spacing-value" id="'.$this->field['id'].'-right" name="'.$this->args['opt_name'].'['.$this->field['id'].']['.$this->field['mode'].'right]" value="'.$this->value['right'].(!empty($this->value['right']) ? $this->value['units'] : '').'">';
+		echo '<input type="hidden" class="redux-spacing-value" id="'.$this->field['id'].'-bottom" name="'.$this->args['opt_name'].'['.$this->field['id'].']['.$this->field['mode'].'bottom]" value="'.$this->value['bottom'].(!empty($this->value['top']) ? $this->value['units'] : '').'">';
+		echo '<input type="hidden" class="redux-spacing-value" id="'.$this->field['id'].'-left" name="'.$this->args['opt_name'].'['.$this->field['id'].']['.$this->field['mode'].'left]" value="'.$this->value['left'].(!empty($this->value['top']) ? $this->value['units'] : '').'">';
+
+		if ( !isset( $this->field['all'] ) || $this->field['all'] !== true ) :
 			/**
 			Top
 			**/
 			if ($this->field['top'] === true):
-				if ( !empty( $this->value['top'] ) ) {
-					$this->value['top'] = filter_var($this->value['top'], FILTER_SANITIZE_NUMBER_INT);
-					$this->value['top'] = $this->value['top'].$this->value['units'];
-				}
-				echo '<div class="field-spacing-input input-prepend"><span class="add-on"><i class="icon-arrow-up icon-large"></i></span><input type="text" class="redux-spacing-top redux-spacing-input mini'.$this->field['class'].'" placeholder="'.__('Top','redux-framework').'" rel="'.$this->field['id'].'-top" value="'.filter_var($this->value['top'], FILTER_SANITIZE_NUMBER_INT).'"><input type="hidden" placeholder="'.__('Top','redux-framework').'" id="'.$this->field['id'].'-top" name="'.$this->args['opt_name'].'['.$this->field['id'].']['.$this->field['mode'].'top]" value="'.$this->value['top'].'"></div>';
+				echo '<div class="field-spacing-input input-prepend"><span class="add-on"><i class="icon-arrow-up icon-large"></i></span><input type="text" class="redux-spacing-top redux-spacing-input mini'.$this->field['class'].'" placeholder="'.__('Top','redux-framework').'" rel="'.$this->field['id'].'-top" value="'.$this->value['top'].'"></div>';
 		  	endif;
 
 			/**
 			Right
 			**/
 			if ($this->field['right'] === true):
-				if ( !empty( $this->value['right'] ) ) {
-					$this->value['right'] = filter_var($this->value['right'], FILTER_SANITIZE_NUMBER_INT);
-					$this->value['right'] = $this->value['right'].$this->value['units'];
-				}				
-				echo '<div class="field-spacing-input input-prepend"><span class="add-on"><i class="icon-arrow-right icon-large"></i></span><input type="text" class="redux-spacing-right redux-spacing-input mini'.$this->field['class'].'" placeholder="'.__('Right','redux-framework').'" rel="'.$this->field['id'].'-right" value="'.filter_var($this->value['right'], FILTER_SANITIZE_NUMBER_INT).'"><input type="hidden" class="redux-spacing-right mini'.$this->field['class'].'" placeholder="'.__('Right','redux-framework').'" id="'.$this->field['id'].'-right" name="'.$this->args['opt_name'].'['.$this->field['id'].']['.$this->field['mode'].'right]" value="'.$this->value['right'].'"></div>';
+				echo '<div class="field-spacing-input input-prepend"><span class="add-on"><i class="icon-arrow-right icon-large"></i></span><input type="text" class="redux-spacing-right redux-spacing-input mini'.$this->field['class'].'" placeholder="'.__('Right','redux-framework').'" rel="'.$this->field['id'].'-right" value="'.$this->value['right'].'"></div>';
 		  	endif;
 
 			/**
 			Bottom
 			**/
 			if ($this->field['bottom'] === true):
-				if ( !empty( $this->value['bottom'] ) ) {
-					$this->value['bottom'] = filter_var($this->value['bottom'], FILTER_SANITIZE_NUMBER_INT);
-					if ($this->field['units'] !== false ) {
-						$this->value['bottom'] .= $this->value['units'];	
-					}					
-					$this->value['bottom'] = $this->value['bottom'].$this->value['units'];
-				}					
-				echo '<div class="field-spacing-input input-prepend"><span class="add-on"><i class="icon-arrow-down icon-large"></i></span><input type="text" class="redux-spacing-bottom redux-spacing-input mini'.$this->field['class'].'" placeholder="'.__('Bottom','redux-framework').'" rel="'.$this->field['id'].'-bottom" value="'.filter_var($this->value['bottom'], FILTER_SANITIZE_NUMBER_INT).'"><input type="hidden" class="redux-spacing-bottom mini'.$this->field['class'].'" placeholder="'.__('Bottom','redux-framework').'" id="'.$this->field['id'].'-bottom" name="'.$this->args['opt_name'].'['.$this->field['id'].']['.$this->field['mode'].'bottom]" value="'.$this->value['bottom'].'"></div>';
+				echo '<div class="field-spacing-input input-prepend"><span class="add-on"><i class="icon-arrow-down icon-large"></i></span><input type="text" class="redux-spacing-bottom redux-spacing-input mini'.$this->field['class'].'" placeholder="'.__('Bottom','redux-framework').'" rel="'.$this->field['id'].'-bottom" value="'.$this->value['bottom'].'"></div>';
 		  	endif;
 
 			/**
 			Left
 			**/
 			if ($this->field['left'] === true):
-				if ( !empty( $this->value['left'] ) ) {
-					$this->value['left'] = filter_var($this->value['left'], FILTER_SANITIZE_NUMBER_INT);
-					$this->value['left'] = $this->value['left'].$this->value['units'];
-				}									
-				echo '<div class="field-spacing-input input-prepend"><span class="add-on"><i class="icon-arrow-left icon-large"></i></span><input type="text" class="redux-spacing-left redux-spacing-input mini'.$this->field['class'].'" placeholder="'.__('Left','redux-framework').'" rel="'.$this->field['id'].'-left" value="'.filter_var($this->value['left'], FILTER_SANITIZE_NUMBER_INT).'"><input type="hidden" class="redux-spacing-left mini'.$this->field['class'].'" placeholder="'.__('Left','redux-framework').'" id="'.$this->field['id'].'-left" name="'.$this->args['opt_name'].'['.$this->field['id'].']['.$this->field['mode'].'left]" value="'.$this->value['left'].'"></div>';
+				echo '<div class="field-spacing-input input-prepend"><span class="add-on"><i class="icon-arrow-left icon-large"></i></span><input type="text" class="redux-spacing-left redux-spacing-input mini'.$this->field['class'].'" placeholder="'.__('Left','redux-framework').'" rel="'.$this->field['id'].'-left" value="'.$this->value['left'].'"></div>';
 		  	endif;		
 
+		endif;
 
 			/** 
 			Units
 			**/
 
-			if ( $this->field['units'] !== false ):
+			if ( $this->field['units'] !== false && $this->field['units'] === "" && !isset( $absolute ) ):
 
 				echo '<div class="select_wrapper spacing-units" original-title="'.__('Units','redux-framework').'">';
 				echo '<select data-placeholder="'.__('Units','redux-framework').'" class="redux-spacing redux-spacing-units select'.$this->field['class'].'" original-title="'.__('Units','redux-framework').'" name="'.$this->args['opt_name'].'['.$this->field['id'].'][units]" id="'. $this->field['id'].'_units">';
@@ -161,6 +172,7 @@ class ReduxFramework_spacing extends ReduxFramework{
 				} else {
 					$testUnits = array('px', 'em', '%');
 				}
+				echo '<option></option>';
 				
 				if ( in_array($this->field['units'], $testUnits) ) {
 					echo '<option value="'.$this->field['units'].'" selected="selected">'.$this->field['units'].'</option>';
@@ -168,7 +180,6 @@ class ReduxFramework_spacing extends ReduxFramework{
 					foreach($testUnits as $aUnit) {
 						echo '<option value="'.$aUnit.'" '.selected($this->value['units'], $aUnit, false).'>'.$aUnit.'</option>';
 					}
-
 				}
 				echo '</select></div>';
 
@@ -211,36 +222,46 @@ class ReduxFramework_spacing extends ReduxFramework{
 	}//function
 
     public function output() {
+
         if ( !isset($this->field['output']) || empty( $this->field['output'] ) ) {
             return;
-        }            
+        }    
 
-    	if ( !empty( $this->field['mode'] ) && !in_array($this->field['mode'], array( 'padding', 'absolute', 'margin', '' ) ) ) {
-    		unset( $this->field['mode'] );
+        if ( !isset( $this->field['mode'] ) ) {
+        	$this->field['mode'] = "padding";
+        }
+
+    	if ( isset( $this->field['mode'] ) && !in_array( $this->field['mode'], array( 'padding', 'absolute', 'margin') ) ) {
+    		$this->field['mode'] = "";
     	}
 
-    	if ( !isset( $this->field['mode'] ) ) {
-    		$this->field['mode'] = "padding";
-    	}
-
-    	if ( $this->field['mode'] == "absolute" ) {
-    		unset( $this->field['mode'] );
-    	}
-
-
+    	$mode = ( $this->field['mode'] != "absolute" ) ? $this->field['mode'] : "";
+    	$units = isset( $this->value['units'] ) ? $this->value['units'] : "";
+    	
 		//absolute, padding, margin
         $keys = implode(",", $this->field['output']);
         $style = '<style type="text/css" class="redux-'.$this->field['type'].'">';
             $style .= $keys."{";
-            foreach($this->value as $key=>$value) {
-            	if ($key == "units") {
-            		continue;
-            	}
-            	if (empty($value)) {
-            		$value = 0;
-            	}
-                $style .= $key.':'.$value.';';
-            }
+	            if ( !empty( $mode ) ) {
+					foreach($this->value as $key=>$value) {
+		            	if ($key == "units") {
+		            		continue;
+		            	}
+		            	if (empty($value)) {
+		            		$value = 0;
+		            	}
+		                $style .= $key.':'.$value.';';
+		            }            	
+	            } else {
+					$cleanValue = array(
+						'top' => isset( $this->value[$mode.'-top'] ) ? filter_var($this->value[$mode.'-top'], FILTER_SANITIZE_NUMBER_INT) : filter_var($this->value['top'], FILTER_SANITIZE_NUMBER_INT),
+						'right' => isset( $this->value[$mode.'-right'] ) ? filter_var($this->value[$mode.'-right'], FILTER_SANITIZE_NUMBER_INT) : filter_var($this->value['right'], FILTER_SANITIZE_NUMBER_INT),
+						'bottom' => isset( $this->value[$mode.'-bottom'] ) ? filter_var($this->value[$mode.'-bottom'], FILTER_SANITIZE_NUMBER_INT) : filter_var($this->value['bottom'], FILTER_SANITIZE_NUMBER_INT),
+						'left' => isset( $this->value[$mode.'-left'] ) ? filter_var($this->value[$mode.'-left'], FILTER_SANITIZE_NUMBER_INT) : filter_var($this->value['left'], FILTER_SANITIZE_NUMBER_INT)
+					);	            	
+	            	$style .= $mode.':'.$cleanValue['top'].$units.';';
+	            }
+            
             $style .= '}';
         $style .= '</style>';
         echo $style;

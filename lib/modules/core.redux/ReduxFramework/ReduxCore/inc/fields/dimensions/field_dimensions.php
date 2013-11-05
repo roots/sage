@@ -36,7 +36,7 @@ class ReduxFramework_dimensions extends ReduxFramework{
 			);
 
 		$this->field['units'] = "em";
-
+ 
 		$this->field = wp_parse_args( $this->field, $defaults );
 
 		if ( isset( $this->field['units'] ) && !in_array($this->field['units'], array( '', '%', 'in', 'cm', 'mm', 'em', 'ex', 'pt', 'pc', 'px' ) ) ) {
@@ -69,7 +69,7 @@ class ReduxFramework_dimensions extends ReduxFramework{
 		$this->value = wp_parse_args( $this->value, $defaults );
 
 	  	echo '<fieldset id="'.$this->field['id'].'" class="redux-dimensions-container" data-id="'.$this->field['id'].'">';
-	  		echo '<input type="hidden" id="field-units" value="'.$this->field['units'].'"></div>';
+	  		echo '<input type="hidden" class="field-units" value="'.$this->field['units'].'">';
 			/**
 			Width
 			**/
@@ -109,7 +109,7 @@ class ReduxFramework_dimensions extends ReduxFramework{
 			if ( $this->field['units'] !== false && !isset( $this->field['units'] ) ):
 
 				echo '<div class="select_wrapper dimensions-units" original-title="'.__('Units','redux-framework').'">';
-				echo '<select data-id="'.$this->field['id'].'" data-placeholder="'.__('Units','redux-framework').'" class="redux-dimensions redux-dimensions-units select'.$this->field['class'].'" original-title="'.__('Units','redux-framework').'" name="'.$this->args['opt_name'].'['.$this->field['id'].'][units]" id="'. $this->field['id'].'_units">';
+				echo '<select data-id="'.$this->field['id'].'" data-placeholder="'.__('Units','redux-framework').'" class="redux-dimensions redux-dimensions-units select'.$this->field['class'].'" original-title="'.__('Units','redux-framework').'" name="'.$this->args['opt_name'].'['.$this->field['id'].'][units]">';
 				
 				if ( $this->field['units_extended'] ) {
 					$testUnits = array('px', 'em', '%', 'in', 'cm', 'mm', 'ex', 'pt', 'pc');	
