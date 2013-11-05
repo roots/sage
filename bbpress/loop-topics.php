@@ -10,7 +10,7 @@
 ?>
 
 <?php do_action( 'bbp_template_before_topics_loop' ); ?>
-
+<?php if ( is_user_logged_in() ) { echo '<a href="#new-post" class="btn btn-block btn-primary">New Topic</a>'; } ?> 
 <ul id="bbp-forum-<?php bbp_forum_id(); ?>" class="bbp-topics list-group">
 
 	<li class="bbp-header list-group-item">
