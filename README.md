@@ -16,17 +16,6 @@ Clone the git repo - `git clone git://github.com/roots/roots.git` - or [download
 npm install
 ```
 
-If you're using Nginx you'll need to add the Roots rewrites to your server config before the PHP block (`location ~ \.php$`) to use the clean URLs feature:
-
-```nginx
-location ~ ^/assets/(img|js|css|fonts)/(.*)$ {
-  try_files $uri $uri/ /wp-content/themes/roots/assets/$1/$2;
-}
-location ~ ^/plugins/(.*)$ {
-  try_files $uri $uri/ /wp-content/plugins/$1;
-}
-```
-
 Reference the [theme activation](http://roots.io/roots-101/#theme-activation) documentation to understand everything that happens once you activate Roots.
 
 ## Theme Development
@@ -57,7 +46,7 @@ Edit `lib/init.php` to setup custom navigation menus and post thumbnail sizes.
 * [Theme activation](http://roots.io/roots-101/#theme-activation)
 * [Theme wrapper](http://roots.io/an-introduction-to-the-roots-theme-wrapper/)
 * Root relative URLs
-* Clean URLs (no more `/wp-content/`)
+* [Clean URLs with a plugin](https://github.com/roots/roots-rewrites) (no more `/wp-content/`)
 * All static theme assets are rewritten to the website root (`/assets/*`)
 * Cleaner HTML output of navigation menus
 * Cleaner output of `wp_head` and enqueued scripts/styles
