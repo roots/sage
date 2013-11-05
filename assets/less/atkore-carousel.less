@@ -143,8 +143,19 @@ body[class*="kaf-tech"] {
 	}
 }
 
-body[class*="kaf-tech"] #carousel-home .carousel-caption  .carousel-caption-wrap {
-	background-color: rgba(0,0,0,0.2);
+body[class*="kaf-tech"] {
+	#carousel-home {
+	 .carousel-caption {
+	 	@media (min-width: @screen-md) {
+	  	bottom: 10px;
+		}
+	 .carousel-caption-wrap {
+		 h1, p {color: #000!important;}
+		 background-color: rgba(0,0,0,0.2);
+		 }
+		}
+
+	}
 }
 
 body[class*="afc"] #carousel-home .carousel-caption  .carousel-caption-wrap {
