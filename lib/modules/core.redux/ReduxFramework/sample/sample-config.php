@@ -283,7 +283,7 @@ $sections[] = array(
 			'title' => __('Media w/ URL', 'redux-framework-demo'),
 			'compiler' => 'true',
 			'desc'=> __('Basic media uploader with disabled URL input field.', 'redux-framework-demo'),
-			'subtitle' => __('Upload any media using the Wordpress native uploader', 'redux-framework-demo'),
+			'subtitle' => __('Upload any media using the WordPress native uploader', 'redux-framework-demo'),
 			),
 
 		array(
@@ -291,7 +291,7 @@ $sections[] = array(
 			'type' => 'media', 
 			'title' => __('Media w/o URL', 'redux-framework-demo'),
 			'desc'=> __('This represents the minimalistic view. It does not have the preview box or the display URL in an input box. ', 'redux-framework-demo'),
-			'subtitle' => __('Upload any media using the Wordpress native uploader', 'redux-framework-demo'),
+			'subtitle' => __('Upload any media using the WordPress native uploader', 'redux-framework-demo'),
 			),	
 		array(
 			'id'=>'media-nopreview',
@@ -299,13 +299,13 @@ $sections[] = array(
 			'preview'=> false,
 			'title' => __('Media No Preview', 'redux-framework-demo'),
 			'desc'=> __('This represents the minimalistic view. It does not have the preview box or the display URL in an input box. ', 'redux-framework-demo'),
-			'subtitle' => __('Upload any media using the Wordpress native uploader', 'redux-framework-demo'),
+			'subtitle' => __('Upload any media using the WordPress native uploader', 'redux-framework-demo'),
 			),			
         array(
             'id' => 'gallery',
             'type' => 'gallery',
             'title' => __('Add/Edit Gallery', 'so-panels'),
-            'subtitle' => __('Create a new Gallery by selecting existing or uploading new images using the Wordpress native uploader', 'so-panels'),
+            'subtitle' => __('Create a new Gallery by selecting existing or uploading new images using the WordPress native uploader', 'so-panels'),
             'desc' => __('This is the description field, again good for additional info.', 'redux-framework-demo'),
             ),
 		array(
@@ -897,7 +897,7 @@ $sections[] = array(
 		array(
 			'id'=>'multi-info',
 			'type' => 'info',
-			'desc' => __('You can easily add a variety of data from wordpress.', 'redux-framework-demo'),
+			'desc' => __('You can easily add a variety of data from WordPress.', 'redux-framework-demo'),
 			),
 		array(
 			'id'=>'select-categories',
@@ -1030,7 +1030,6 @@ $sections[] = array(
 	);
 		
 		
-$tabs = array();
 
 if (function_exists('wp_get_theme')){
 $theme_data = wp_get_theme();
@@ -1053,7 +1052,9 @@ $theme_info .= '<p class="redux-framework-theme-data description theme-uri">'.__
 $theme_info .= '<p class="redux-framework-theme-data description theme-author">'.__('<strong>Author:</strong> ', 'redux-framework-demo').$author.'</p>';
 $theme_info .= '<p class="redux-framework-theme-data description theme-version">'.__('<strong>Version:</strong> ', 'redux-framework-demo').$version.'</p>';
 $theme_info .= '<p class="redux-framework-theme-data description theme-description">'.$description.'</p>';
-$theme_info .= '<p class="redux-framework-theme-data description theme-tags">'.__('<strong>Tags:</strong> ', 'redux-framework-demo').implode(', ', $tags).'</p>';
+if ( !empty( $tags ) ) {
+	$theme_info .= '<p class="redux-framework-theme-data description theme-tags">'.__('<strong>Tags:</strong> ', 'redux-framework-demo').implode(', ', $tags).'</p>';	
+}
 $theme_info .= '</div>';
 
 if(file_exists(dirname(__FILE__).'/README.md')){

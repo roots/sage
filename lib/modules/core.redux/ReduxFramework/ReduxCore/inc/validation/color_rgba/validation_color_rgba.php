@@ -39,8 +39,8 @@ class Redux_Validation_color_rgba extends ReduxFramework {
 		if (preg_match('/^[a-f0-9]{6}$/i', $color)) {
 			$color = '#' . $color;
 		}
-	  
-	  	return $this->hex2rgba($color);
+	  	
+	  	return array('hex'=>$color, 'rgba'=>$this->hex2rgba($color));
 
 	}//function
 

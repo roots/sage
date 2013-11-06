@@ -42,10 +42,10 @@ a{outline:0 !important}
 .redux-group-tab .redux-section-desc{font-size:1.1em;margin-bottom:10px;color:#666}
 .redux-group-tab .form-table{clear:none;margin-top:20px}
 .redux-group-tab .form-table.no-border{border-top:none}
-.redux-group-tab .form-table tr{border-bottom:1px solid #e7e7e7;display:block;width:100%}
+.redux-group-tab .form-table tr{border-bottom:1px solid #e7e7e7}
 .redux-group-tab .form-table tr:last-child{border-bottom:none}
 .redux-group-tab .form-table tr th,.redux-group-tab .form-table tr td{color:#333}
-.redux-group-tab .form-table tr th{font-weight:bold;font-size:1.1em;width:30%;padding:20px 5px 20px 0;display:inline-block}
+.redux-group-tab .form-table tr th{font-weight:bold;font-size:1.1em;width:30%;padding:20px 5px 20px 0}
 .redux-group-tab .form-table tr th span:first-child{font-weight:normal;display:block;color:#666}
 .redux-group-tab .form-table tr td .redux-th-warning{font-size:1em;color:#c09853;font-weight:normal;display:block}
 .redux-group-tab .form-table tr td .redux-field-warning{border-color:#c09853}
@@ -147,14 +147,14 @@ label.radio,label.multicheck{position:relative}
 #redux-main .input-append .add-on{border-top-right-radius:3px;border-bottom-right-radius:3px}
 #redux-main .input-prepend input{border-top-left-radius:0;border-bottom-left-radius:0;margin-left:0}
 #redux-main .input-prepend .add-on{border-top-left-radius:3px;border-bottom-left-radius:3px}
-#redux-main td{padding:20px 0;display:inline-block}
+#redux-main td{padding:20px 0}
 #redux-main .mini,#redux-main input[type=text].mini{width:50px;text-align:center}
 #redux-main .upload{width:80%}
 .wrap{margin-top:0}
 img{max-width:100%;max-height:100%}
 .showDefaults{display:block;font-weight:normal;font-size:.8em;color:#888}
 .select2-default{width:auto !important}
-@media screen and (max-width:1124px){#redux-sidebar{width:42px} #redux-main{margin-left:43px;width:auto;max-width:100%} .redux-group-tab-link-a{position:relative} .redux-group-tab-link-a i{position:inherit} .redux-group-tab-link-a span{display:none;position:absolute;top:0;left:44px;padding:12px;width:200px;background:#eee;border:1px solid #ccc;-webkit-box-shadow:2px 2px 8px rgba(0,0,0,0.2);-moz-box-shadow:2px 2px 8px rgba(0,0,0,0.2);box-shadow:2px 2px 8px rgba(0,0,0,0.2);border-width:1px 1px 1px 0;z-index:1} .redux-group-tab-link-a:hover>span{display:block} #redux-sidebar #redux-group-menu li a,#redux-sidebar #redux-group-menu li a:hover,#redux-sidebar #redux-group-menu li.active a,#redux-sidebar #redux-group-menu li.active a:hover{width:auto} table.form-table,.form-table>thead,.form-table>tbody,.form-table>tbody>tr>th,.form-table>tbody>tr>td,.form-table>tbody>tr{display:block !important;width:100% !important;padding:0 !important} .form-table>tbody>tr>th,.form-table>tbody>tr>td{padding:10px !important} .form-table>tbody>tr>th,.form-table>tbody>tr>td{padding:10px !important} .form-table>tbody>tr>th{min-width:35%}}@media screen and (max-width:783px){.mp6 #redux-container #info_bar{height:auto;padding-bottom:1px} .mp6 #redux-container #info_bar a{margin-top:5px}}.mp6 .icon-themes{display:none}
+@media screen and (max-width:1124px){#redux-sidebar{width:42px} #redux-main{margin-left:43px;width:auto;max-width:100%} .redux-group-tab-link-a{position:relative} .redux-group-tab-link-a i{position:inherit} .redux-group-tab-link-a span{display:none;position:absolute;top:0;left:44px;padding:12px;width:200px;background:#eee;border:1px solid #ccc;-webkit-box-shadow:2px 2px 8px rgba(0,0,0,0.2);-moz-box-shadow:2px 2px 8px rgba(0,0,0,0.2);box-shadow:2px 2px 8px rgba(0,0,0,0.2);border-width:1px 1px 1px 0;z-index:1} .redux-group-tab-link-a:hover>span{display:block} #redux-sidebar #redux-group-menu li a,#redux-sidebar #redux-group-menu li a:hover,#redux-sidebar #redux-group-menu li.active a,#redux-sidebar #redux-group-menu li.active a:hover{width:auto} table.form-table,.form-table>thead,.form-table>tbody,.form-table>tbody>tr>th,.form-table>tbody>tr>td,.form-table>tbody>tr{display:block !important;width:100% !important;padding:0 !important} .form-table>tbody>tr>th,.form-table>tbody>tr>td{padding:10px !important} .form-table>tbody>tr>th,.form-table>tbody>tr>td{padding:10px !important} .form-table>tbody>tr>th{width:35%}}@media screen and (max-width:783px){.mp6 #redux-container #info_bar{height:auto;padding-bottom:1px} .mp6 #redux-container #info_bar a{margin-top:5px}}.mp6 .icon-themes{display:none}
 #redux-object-browser{overflow:auto;word-wrap:break-word;max-height:600px;max-width:100%}
 #redux-main span.description{font-style:normal}
 #redux-main #redux-system-info textarea{min-height:730px}

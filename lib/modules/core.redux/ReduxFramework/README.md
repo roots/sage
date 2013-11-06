@@ -1,16 +1,16 @@
 # Redux Options Framework
 
-Wordpress options framework which uses the [WordPress Settings API](http://codex.wordpress.org/Settings_API "WordPress Settings API"), Custom Error/Validation Handling, Custom Field/Validation Types, and import/export functionality.
+WordPress options framework which uses the [WordPress Settings API](http://codex.wordpress.org/Settings_API "WordPress Settings API"), Custom Error/Validation Handling, Custom Field/Validation Types, and import/export functionality.
 
 ## Getting Started with Redux ##
 
-ReduxFramework has been built from the groud up to be the most flexible framework around. You can run it as an auto-updating plugin, or embed it inside your plugin or theme. It allows for multiple copies of itself within the same Wordpress instance. For a guide on getting started please refer to [http://reduxframework.com/docs/getting-started/](http://reduxframework.com/docs/getting-started/).
+ReduxFramework has been built from the groud up to be the most flexible framework around. You can run it as an auto-updating plugin, or embed it inside your plugin or theme. It allows for multiple copies of itself within the same WordPress instance. For a guide on getting started please refer to [http://reduxframework.com/docs/getting-started/](http://reduxframework.com/docs/getting-started/).
 
 You can also [download our sample theme available here](https://github.com/ReduxFramework/ReduxSampleTheme) to start developing right away.
 
 ## Please Post Reviews and Spread the Word ##
 
-ReduxFramework has just released to the Wordpress Plugins directory. Please spread the word, tweet, and (most importantly) post reviews on http://wordpress.org/plugins/redux-framework/. 
+ReduxFramework has just released to the WordPress Plugins directory. Please spread the word, tweet, and (most importantly) post reviews on http://wordpress.org/plugins/redux-framework/. 
 
 
 ## Donate to the Framework ##
@@ -56,6 +56,19 @@ Send me an email at ghost1227@reduxframework.com so I can add you to our user sp
 
 ### Master ###
 
+= 3.0.8 =
+* Version push to ensure all bugs fixes were deployed to users. Various.
+
+= 3.0.7 =
+* Feature - Completely redone spacing field. Choose to apply to sides or all at once with CSS output!
+* Feature - Completely redone border field. Choose to apply to sides or all at once with CSS output!
+* Feature - Added opt-in anonymous tracking, allowing us to further analyze usage.
+* Feature - Enable weekly updates of the Google Webfonts cache is desired. Also remove the Google Webfont files from shipping with Redux. Will re-download at first panel run to ensure users always have the most recent copy.
+* Language translation of german updated alone with ReduxFramework pot file.
+* Fix Issue 146 - Spacing field not storing data.
+* Fix - Firefox field description rendering bug.
+* Fix - Small issue where themes without tags were getting errors from the sample data.
+
 = 3.0.6 =
 * Hide customizer fields by default while still under development.
 * Fix Issue 123 - Language translations to actually function properly embedded as well as in the plugin.
@@ -93,7 +106,7 @@ Feature: Code at bottom of sample-config.php to hide plugin activation text abou
 = 3.0.3 =
 * Fixed Issue #129: Spacing field giving an undefined.
 * Fixed Issue #131: Google Fonts stylesheet appending to body and also to the top of the header. Now properly placed both at the end of the head tag as to overload any theme stylesheets.
-* Fixed issue #132 (See #134, thanks @andreilupu): Could not have multiple Wordpress Editors (wp_editor) as the same ID was shared. Also fixed various styles to match Wordpress for this field.
+* Fixed issue #132 (See #134, thanks @andreilupu): Could not have multiple WordPress Editors (wp_editor) as the same ID was shared. Also fixed various styles to match WordPress for this field.
 * Fixed Issue #133: Issue when custom admin stylesheet was used, a JS error resulted.
 
 = 3.0.2 =
@@ -103,18 +116,18 @@ Feature: Code at bottom of sample-config.php to hide plugin activation text abou
 * Backing out a bit of submitted code that caused the input field to not properly break.
 
 = 3.0.0 =
-* Initial Wordpress.org plugin release.
+* Initial WordPress.org plugin release.
 
 == Upgrade Notice ==
 
 = 3.0 =
-Redux is now hosted on Wordpress.org! Update in order to get proper, stable updates.
+Redux is now hosted on WordPress.org! Update in order to get proper, stable updates.
 
 * Removed get() and show()
 * Fixed huge performance bug
 * More bugfixes
 * Fixed spacing field
-* Converted Redux to run as an auto-updating plugin. Getting ready to post to wordpress.org
+* Converted Redux to run as an auto-updating plugin. Getting ready to post to WordPress.org
 * Fixed the auto updater to properly show changes since the last update
 * Various fields including link_color, spacing, dimensions
 * Compiler hooks to allow developers to generate CSS files only when needed

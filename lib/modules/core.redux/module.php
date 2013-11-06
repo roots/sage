@@ -70,3 +70,20 @@ endif;
 // Saving functions on import, etc
 // If a compiler field was altered or import or reset defaults
 add_action( 'redux-compiler-'.REDUX_OPT_NAME , 'shoestrap_makecss' );
+
+
+/**
+ * Adds tracking parameters for Redux settings. Outside of the main class as the class could also be in use in other plugins.
+ *
+ * @param array $options
+ * @return array
+ */
+function shoestrap_tracking_additions( $options ) {
+  $opt = array();
+
+  $options['shoestrap'] = array(
+      'shoestrap' => 1,
+    );
+  return $options;
+}
+add_filter( 'Redux/Tracking/Filters', 'redux_tracking_additions' );
