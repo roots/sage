@@ -69,8 +69,10 @@ function shoestrap_theme_license_status() {
 
   $license  = shoestrap_getVariable( 'shoestrap_license_key' );
 
-  // Copy the licence to a separate option
-  update_option( 'shoestrap_license_key', $licence );
+  if ( isset( $licence ) ) :
+    // Copy the licence to a separate option
+    update_option( 'shoestrap_license_key', $licence );
+  endif;
 
   $api_params = array(
     'edd_action' => 'check_license',
