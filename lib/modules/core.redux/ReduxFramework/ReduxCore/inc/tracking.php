@@ -8,7 +8,7 @@ if ( !class_exists( 'ReduxFramework' ) ) {
 }
 
 /**
- * Class that creates the tracking functionality for WP SEO, as the core class might be used in more plugins,
+ * Class that creates the tracking functionality for Redux, as the core class might be used in more plugins,
  * it's checked for existence first.
  *
  * NOTE: this functionality is opt-in. Disabling the tracking in the settings or saying no when asked will cause
@@ -248,7 +248,7 @@ if ( !class_exists( 'Redux_Tracking' ) ) {
 
 
 	/**
-	 * Adds tracking parameters for WP SEO settings. Outside of the main class as the class could also be in use in other plugins.
+	 * Adds tracking parameters for Redux settings. Outside of the main class as the class could also be in use in other plugins.
 	 *
 	 * @param array $options
 	 * @return array
