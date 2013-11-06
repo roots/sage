@@ -9,7 +9,7 @@ function shoestrap_module_menus_options( $sections ) {
   // Branding Options
   $section = array( 
     'title' => __( 'Menus', 'shoestrap' ),
-    'icon'  => 'elusive icon-chevron-right icon-large'
+    'icon'  => 'el-icon-chevron-right icon-large'
   );
 
   $url = admin_url( 'nav-menus.php' );

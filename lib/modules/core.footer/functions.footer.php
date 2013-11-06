@@ -72,7 +72,7 @@ function shoestrap_footer_icon() {
 
   if ( current_user_can( 'edit_theme_options' ) && !isset( $wp_customize ) ) : ?>
     <div id="shoestrap_icon" class="visible-lg">
-      <a href="<?php echo admin_url( 'admin.php?page=shoestrap' ); ?>"><i class="icon elusive icon-cogs"></i></a>
+      <a href="<?php echo admin_url( 'admin.php?page=shoestrap' ); ?>"><i class="icon el-icon-cogs"></i></a>
     </div>
   <?php endif; ?>
   </div>
@@ -125,7 +125,7 @@ function shoestrap_footer_html() {
               continue;
             ?>
             <a href="<?php echo $network['url']; ?>"<?php echo $blank;?> title="<?php echo $network['icon']; ?>">
-              <span class="icon elusive icon-<?php echo $network['icon']; ?>"></span>
+              <span class="icon el-icon-<?php echo $network['icon']; ?>"></span>
             </a>
           <?php } ?>
         </div>

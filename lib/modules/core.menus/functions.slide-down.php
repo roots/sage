@@ -142,7 +142,7 @@ function shoestrap_navbar_slidedown_toggle() {
       echo '<a style="width: 30px;" class="toggle-nav" href="#">';
     endif;
 
-    echo '<i class="elusive icon-arrow-down"></i></a>';
+    echo '<i class="el-icon-arrow-down"></i></a>';
   endif;
 }
 endif;

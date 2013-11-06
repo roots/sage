@@ -9,7 +9,7 @@ function shoestrap_module_layout_options( $sections ) {
   // Layout Settings
   $section = array( 
     'title'       => __( 'Layout', 'shoestrap' ),
-    'icon'        => 'elusive icon-screen icon-large',
+    'icon'        => 'el-icon-screen icon-large',
     'description' => '<p>In this area you can select your site\'s layout, the width of your sidebars, as well as other, more advanced options.</p>',
   );
 

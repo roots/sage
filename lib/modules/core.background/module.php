@@ -27,7 +27,7 @@ function shoestrap_module_background_options( $sections ) {
   // Blog Options
   $section = array(
     'title' => __( 'Background', 'shoestrap' ),
-    'icon'  => 'elusive icon-photo icon-large',
+    'icon'  => 'el-icon-photo icon-large',
   );   
 
   $fields[] = array(

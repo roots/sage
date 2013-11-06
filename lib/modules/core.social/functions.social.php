@@ -118,7 +118,7 @@ function shoestrap_navbar_social_links() {
   $networks = shoestrap_get_social_links();
 
   // The base class for icons that will be used
-  $baseclass  = 'icon elusive icon-';
+  $baseclass  = 'icon el-icon-';
 
   // Build the content
   $content = '';
@@ -158,7 +158,7 @@ function shoestrap_navbar_social_bar() {
   $networks = shoestrap_get_social_links();
 
   // The base class for icons that will be used
-  $baseclass  = 'icon elusive icon-';
+  $baseclass  = 'icon el-icon-';
 
   // Build the content
   $content = '';
@@ -212,7 +212,7 @@ function shoestrap_social_sharing() {
   $twittername = shoestrap_get_twitter_username();
 
   // The base class for icons that will be used
-  $baseclass  = 'icon elusive icon-';
+  $baseclass  = 'icon el-icon-';
 
   // Don't show by default
   $show = false;

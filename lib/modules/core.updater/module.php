@@ -9,7 +9,7 @@ function shoestrap_core_licencing_options( $sections ) {
   // Licencing Options
   $section = array( 
     'title'     => __( 'Licencing', 'shoestrap' ),
-    'icon'      => 'elusive icon-repeat-alt icon-large',
+    'icon'      => 'el-icon-repeat-alt icon-large',
   );
 
   $fields[] = array( 

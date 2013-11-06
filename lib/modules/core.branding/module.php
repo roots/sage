@@ -9,7 +9,7 @@ function shoestrap_module_branding_options( $sections ) {
   // Branding Options
   $section = array(
     'title' => __( 'Branding', 'shoestrap' ),
-    'icon' => 'elusive icon-certificate icon-large'
+    'icon' => 'el-icon-certificate icon-large'
   );
 
   $fields[] = array( 

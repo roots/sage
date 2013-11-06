@@ -9,7 +9,7 @@ function shoestrap_module_header_options( $sections ) {
   // Branding Options
   $section = array( 
     'title' => __( 'Extra Header', 'shoestrap' ),
-    'icon'  => 'elusive icon-chevron-right icon-large'
+    'icon'  => 'el-icon-chevron-right icon-large'
   );
 
   $url = admin_url( 'widgets.php' );

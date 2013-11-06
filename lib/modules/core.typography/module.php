@@ -9,7 +9,7 @@ function shoestrap_module_typography_options( $sections ) {
   // Typography Options
   $section = array(
     'title'   => __( 'Typography', 'shoestrap' ),
-    'icon'    => 'elusive icon-font icon-large',
+    'icon'    => 'el-icon-font icon-large',
   );
 
   $fields[] = array( 

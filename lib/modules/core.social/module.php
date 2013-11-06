@@ -8,7 +8,7 @@ function shoestrap_module_social_options( $sections ) {
 
   $section = array(
     'title'     => __( 'Social Sharing', 'shoestrap' ),
-    'icon'      => 'elusive icon-share icon-large',
+    'icon'      => 'el-icon-share icon-large',
   );
 
   $fields[] = array( 
@@ -156,7 +156,7 @@ function shoestrap_module_social_options( $sections ) {
 
   $section = array( 
     'title'     => __( 'Social Links', 'shoestrap' ),
-    'icon'      => 'elusive icon-group icon-large',
+    'icon'      => 'el-icon-group icon-large',
   );
   $fields = array();
 

@@ -22,7 +22,7 @@ function shoestrap_module_jumbotron_options($sections) {
   // Branding Options
   $section = array(
     'title' => __('Jumbotron', 'shoestrap'),
-    'icon'  => 'elusive icon-bullhorn icon-large'
+    'icon'  => 'el-icon-bullhorn icon-large'
   );
 
   $url = admin_url( 'widgets.php' );

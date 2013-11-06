@@ -8,7 +8,7 @@ function shoestrap_module_advanced_options( $sections ) {
   // Advanced Settings
   $section = array( 
     'title'   => __( 'Advanced', 'shoestrap' ),
-    'icon'    => 'elusive icon-cogs icon-large'
+    'icon'    => 'el-icon-cogs icon-large'
   );  
 
   // $fields[] = array( 

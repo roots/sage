@@ -54,13 +54,13 @@ function shoestrap_entry_meta() {
 
 
   if ( is_sticky() && is_home() && ! is_paged() ) :
-    echo '<span class="featured-post ' . $colclass . '"><i class="elusive icon icon-flag"></i> ' . __( 'Sticky', 'shoestrap' ) . '</span>';
+    echo '<span class="featured-post ' . $colclass . '"><i class="el-icon-flag icon"></i> ' . __( 'Sticky', 'shoestrap' ) . '</span>';
   endif;
 
   if ( ! has_post_format( 'link' ) && 'post' == get_post_type() ) :
     $format_prefix = ( has_post_format( 'chat' ) || has_post_format( 'status' ) ) ? _x( '%1$s on %2$s', '1: post format name. 2: date', 'shoestrap' ): '%2$s';
 
-    $date = sprintf( '<span class="date ' . $colclass . '"><i class="elusive icon icon-time"></i> <a href="%1$s" title="%2$s" rel="bookmark"><time class="entry-date" datetime="%3$s">%4$s</time></a></span>',
+    $date = sprintf( '<span class="date ' . $colclass . '"><i class="el-icon-time icon"></i> <a href="%1$s" title="%2$s" rel="bookmark"><time class="entry-date" datetime="%3$s">%4$s</time></a></span>',
       esc_url( get_permalink() ),
       esc_attr( sprintf( __( 'Permalink to %s', 'shoestrap' ), the_title_attribute( 'echo=0' ) ) ),
       esc_attr( get_the_date( 'c' ) ),
@@ -70,16 +70,16 @@ function shoestrap_entry_meta() {
   endif;
 
   if ( $categories_list ) :
-    echo '<span class="categories-links ' . $colclass . '"><i class="elusive icon icon-folder-open"></i> ' . $categories_list . '</span>';
+    echo '<span class="categories-links ' . $colclass . '"><i class="el-icon-folder-open icon"></i> ' . $categories_list . '</span>';
   endif;
 
   if ( $tag_list ) :
-    echo '<span class="tags-links ' . $colclass . '"><i class="elusive icon icon-tags"></i> ' . $tag_list . '</span>';
+    echo '<span class="tags-links ' . $colclass . '"><i class="el-icon-tags icon"></i> ' . $tag_list . '</span>';
   endif;
 
   // Post author
   if ( 'post' == get_post_type() ) :
-    printf( '<span class="author vcard ' . $colclass . '"><i class="elusive icon icon-user"></i> <a class="url fn n" href="%1$s" title="%2$s" rel="author">%3$s</a></span>',
+    printf( '<span class="author vcard ' . $colclass . '"><i class="el-icon-user icon"></i> <a class="url fn n" href="%1$s" title="%2$s" rel="author">%3$s</a></span>',
       esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
       esc_attr( sprintf( __( 'View all posts by %s', 'shoestrap' ), get_the_author() ) ),
       get_the_author()

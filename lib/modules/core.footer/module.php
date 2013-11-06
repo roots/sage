@@ -9,7 +9,7 @@ function shoestrap_module_footer_options( $sections ) {
   // Branding Options
   $section = array(
     'title' => __( 'Footer', 'shoestrap' ),
-    'icon' => 'elusive icon-caret-down icon-large'
+    'icon' => 'el-icon-caret-down icon-large'
   );
 
   $fields[] = array( 

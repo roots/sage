@@ -9,7 +9,7 @@ function shoestrap_module_featured_images_options( $sections ) {
   // Blog Options
   $section = array( 
     'title'     => __( 'Featured Images', 'shoestrap' ),
-    'icon'      => 'elusive icon-picture icon-large',
+    'icon'      => 'el-icon-picture icon-large',
   );
 
   $fields[] = array( 

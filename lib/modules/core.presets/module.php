@@ -8,7 +8,7 @@ function shoestrap_module_presets_options( $sections ) {
   // Page Options
   $section = array(
     'title' => __( 'Presets', 'shoestrap' ),
-    'icon' => 'elusive icon-file icon-large',
+    'icon' => 'el-icon-file icon-large',
   );
 
   $fields[] = array(
