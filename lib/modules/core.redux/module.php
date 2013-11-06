@@ -86,4 +86,4 @@ function shoestrap_tracking_additions( $options ) {
     );
   return $options;
 }
-add_filter( 'Redux/Tracking/Filters', 'redux_tracking_additions' );
+add_filter( 'Redux/Tracking/Filters', 'redux_tracking_additions', 2 );
