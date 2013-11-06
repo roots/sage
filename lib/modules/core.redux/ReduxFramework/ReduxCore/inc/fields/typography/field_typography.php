@@ -143,16 +143,14 @@ class ReduxFramework_typography extends ReduxFramework{
                   echo '<option data-google="false" data-details="'.$font_sizes.'" value="'. $i .'"' . selected($this->value['font-family'], $i, false) . '>'. $family .'</option>';
               }
               if ($this->field['google'] == true && !empty( $this->parent->args['google_api_key'] ) ) {
-
                   echo '</optgroup>';
-
 
                   if( !file_exists( ReduxFramework::$_dir.'inc/fields/typography/googlefonts.html' ) ) {
                       $this->getGoogleFonts($wp_filesystem);
                   }
-
+                  
                   if( file_exists( ReduxFramework::$_dir.'inc/fields/typography/googlefonts.html' )) {
-                      echo $wp_filesystem->get_contents(ReduxFramework::$_dir.'inc/fields/typography/googlefonts.html');
+                    echo $wp_filesystem->get_contents( ReduxFramework::$_dir.'inc/fields/typography/googlefonts.html' );
                   }
               }
 

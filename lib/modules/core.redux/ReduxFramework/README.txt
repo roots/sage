@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: admin, admin interface, options, theme options, plugin options, options framework, settings
 Requires at least: 3.5.1
 Tested up to: 3.7
-Stable tag: 3.0.6
+Stable tag: 3.0.8
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -39,21 +39,21 @@ It is hard to continue development and support for this free plugin without cont
 * Border
 * Button Set
 * Checkbox / Multi-Check
-* Color (Wordpress Native)
+* Color (WordPress Native)
 * Gradient
 * Date
 * Dimensions (Height/Width)
-* Editor (Wordpress Native)
-* Gallery (Wordpress Native)
+* Editor (WordPress Native)
+* Gallery (WordPress Native)
 * Group (Repeatable/Non-Repeatable)
 * Image Select (Patterns/Presets)
 * Info (Header)
 * Link Color
-* Media (Wordpress Native)
+* Media (WordPress Native)
 * Multi-Text
 * Password
-* Radio (w/ Wordpress Data)
-* Select (Select/Multi-Select w/ Select2 & Wordpress Data)
+* Radio (w/ WordPress Data)
+* Select (Select/Multi-Select w/ Select2 & WordPress Data)
 * Slider
 * Sortable (Drag/Drop Checkbox/Input Fields)
 * Sorter (Drag/Drop Manager - Works great for content blocks)
@@ -139,6 +139,19 @@ That's because the real FAQ section is on our site! Please visit [http://reduxfr
 
 == Changelog ==
 
+= 3.0.8 =
+* Version push to ensure all bugs fixes were deployed to users. Various.
+
+= 3.0.7 =
+* Feature - Completely redone spacing field. Choose to apply to sides or all at once with CSS output!
+* Feature - Completely redone border field. Choose to apply to sides or all at once with CSS output!
+* Feature - Added opt-in anonymous tracking, allowing us to further analyze usage.
+* Feature - Enable weekly updates of the Google Webfonts cache is desired. Also remove the Google Webfont files from shipping with Redux. Will re-download at first panel run to ensure users always have the most recent copy.
+* Language translation of german updated alone with ReduxFramework pot file.
+* Fix Issue 146 - Spacing field not storing data.
+* Fix - Firefox field description rendering bug.
+* Fix - Small issue where themes without tags were getting errors from the sample data.
+
 = 3.0.6 =
 * Hide customizer fields by default while still under development.
 * Fix Issue 123 - Language translations to actually function properly embedded as well as in the plugin.
@@ -176,7 +189,7 @@ Feature: Code at bottom of sample-config.php to hide plugin activation text abou
 = 3.0.3 =
 * Fixed Issue #129: Spacing field giving an undefined.
 * Fixed Issue #131: Google Fonts stylesheet appending to body and also to the top of the header. Now properly placed both at the end of the head tag as to overload any theme stylesheets.
-* Fixed issue #132 (See #134, thanks @andreilupu): Could not have multiple Wordpress Editors (wp_editor) as the same ID was shared. Also fixed various styles to match Wordpress for this field.
+* Fixed issue #132 (See #134, thanks @andreilupu): Could not have multiple WordPress Editors (wp_editor) as the same ID was shared. Also fixed various styles to match WordPress for this field.
 * Fixed Issue #133: Issue when custom admin stylesheet was used, a JS error resulted.
 
 = 3.0.2 =
@@ -186,12 +199,12 @@ Feature: Code at bottom of sample-config.php to hide plugin activation text abou
 * Backing out a bit of submitted code that caused the input field to not properly break.
 
 = 3.0.0 =
-* Initial Wordpress.org plugin release.
+* Initial WordPress.org plugin release.
 
 == Upgrade Notice ==
 
 = 3.0 =
-Redux is now hosted on Wordpress.org! Update in order to get proper, stable updates.
+Redux is now hosted on WordPress.org! Update in order to get proper, stable updates.
 
 == Attribution ==
 

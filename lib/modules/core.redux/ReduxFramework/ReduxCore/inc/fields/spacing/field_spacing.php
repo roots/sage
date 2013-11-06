@@ -124,8 +124,8 @@ class ReduxFramework_spacing extends ReduxFramework{
 
 		echo '<input type="hidden" class="redux-spacing-value" id="'.$this->field['id'].'-top" name="'.$this->args['opt_name'].'['.$this->field['id'].']['.$this->field['mode'].'top]" value="'.$this->value['top'].(!empty($this->value['top']) ? $this->value['units'] : '').'">';
 		echo '<input type="hidden" class="redux-spacing-value" id="'.$this->field['id'].'-right" name="'.$this->args['opt_name'].'['.$this->field['id'].']['.$this->field['mode'].'right]" value="'.$this->value['right'].(!empty($this->value['right']) ? $this->value['units'] : '').'">';
-		echo '<input type="hidden" class="redux-spacing-value" id="'.$this->field['id'].'-bottom" name="'.$this->args['opt_name'].'['.$this->field['id'].']['.$this->field['mode'].'bottom]" value="'.$this->value['bottom'].(!empty($this->value['top']) ? $this->value['units'] : '').'">';
-		echo '<input type="hidden" class="redux-spacing-value" id="'.$this->field['id'].'-left" name="'.$this->args['opt_name'].'['.$this->field['id'].']['.$this->field['mode'].'left]" value="'.$this->value['left'].(!empty($this->value['top']) ? $this->value['units'] : '').'">';
+		echo '<input type="hidden" class="redux-spacing-value" id="'.$this->field['id'].'-bottom" name="'.$this->args['opt_name'].'['.$this->field['id'].']['.$this->field['mode'].'bottom]" value="'.$this->value['bottom'].(!empty($this->value['bottom']) ? $this->value['units'] : '').'">';
+		echo '<input type="hidden" class="redux-spacing-value" id="'.$this->field['id'].'-left" name="'.$this->args['opt_name'].'['.$this->field['id'].']['.$this->field['mode'].'left]" value="'.$this->value['left'].(!empty($this->value['left']) ? $this->value['units'] : '').'">';
 
 		if ( !isset( $this->field['all'] ) || $this->field['all'] !== true ) :
 			/**
