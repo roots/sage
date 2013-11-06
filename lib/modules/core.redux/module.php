@@ -78,10 +78,12 @@ add_action( 'redux-compiler-'.REDUX_OPT_NAME , 'shoestrap_makecss' );
  * @param array $options
  * @return array
  */
-function redux_tracking_additions( $options ) {
+function shoestrap_tracking_additions( $options ) {
   $opt = array();
 
-  $options['shoestrap'] = 1;
+  $options['shoestrap'] = array(
+      'shoestrap' => 1,
+    );
   return $options;
 }
 add_filter( 'Redux/Tracking/Filters', 'redux_tracking_additions' );
