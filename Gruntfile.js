@@ -13,16 +13,20 @@ module.exports = function(grunt) {
         '!assets/js/scripts.min.js'
       ]
     },
-    recess: {
+    less: {
       dist: {
-        options: {
-          compile: true,
-          compress: true
-        },
         files: {
           'assets/css/main.min.css': [
             'assets/less/app.less'
           ]
+        },
+        options: {
+          compress: true,
+          // LESS source maps
+          // To enable, set sourceMap to true and update sourceMapRootpath based on your install
+          sourceMap: false,
+          sourceMapFilename: 'assets/css/main.min.css.map',
+          sourceMapRootpath: '/app/themes/roots/'
         }
       }
     },
@@ -98,13 +102,13 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-recess');
+  grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-wp-version');
 
   // Register tasks
   grunt.registerTask('default', [
     'clean',
-    'recess',
+    'less',
     'uglify',
     'version'
   ]);
