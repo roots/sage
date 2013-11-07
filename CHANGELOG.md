@@ -1,4 +1,5 @@
 ### HEAD
+* Update to Bootstrap 3.0.2
 * Replace `grunt-recess` with `grunt-contrib-less`, add LESS source maps support
 
 ### 6.5.1: November 5th, 2013
