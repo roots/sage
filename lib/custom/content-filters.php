@@ -129,6 +129,7 @@ function add_reg($content)
       "AC-90",                     // 27
       "Fire Alarm",                     // 28
       "Super Neutral Cable",                     // 29
+      "United Interlock",                     // 30
   	);
   $textReplace = array(
   		"Eastern Wire + Conduit<sup>&trade;</sup>",   // 1
@@ -160,6 +161,7 @@ function add_reg($content)
       "AC-90<sup>&reg;</sup>",                        // 27
       "Fire Alarm<sup>&reg;</sup>",                        // 28
       "Super Neutral Cable<sup>&reg;</sup>",                        // 29
+      "United Interlock<sup>&reg;</sup>",                     // 30
   	);
   $content = str_replace($textSearch, $textReplace, $content);
   return $content;
@@ -168,3 +170,20 @@ add_filter('the_content','add_reg', 1);
 add_filter('the_title','add_reg', 1);
 add_filter('the_field','add_reg', 1);
 add_filter('get_field','add_reg', 1);
+
+
+function add_reg_body($content)
+{
+  $textSearch = array(
+  "Unistrut",                     // 1
+  "Unistrut<sup>&trade;</sup> Fall Protection",                     // 2
+  );
+  $textReplace = array(
+  "Unistrut<sup>&trade;</sup>",		// 1
+  "Unistrut Fall Protection",                     // 2
+  );
+  $content = str_replace($textSearch, $textReplace, $content);
+  return $content;
+}
+
+add_filter('the_content','add_reg_body', 1);
