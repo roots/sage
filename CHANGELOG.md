@@ -1,4 +1,5 @@
 ### HEAD
+* Disable warnings about undefined variables (JSHint)
 * Merge in updates from HTML5 Boilerplate
 * Add JS source map (disabled by default)
 * Update to Bootstrap 3.0.2
