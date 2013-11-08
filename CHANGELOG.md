@@ -1,6 +1,7 @@
 ### HEAD
+* Add JS source map (disabled by default)
 * Update to Bootstrap 3.0.2
-* Replace `grunt-recess` with `grunt-contrib-less`, add LESS source maps support
+* Replace `grunt-recess` with `grunt-contrib-less`, add LESS source map support
 
 ### 6.5.1: November 5th, 2013
 * Move clean URLs to a [plugin](https://github.com/roots/roots-rewrites)
