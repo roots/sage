@@ -27,12 +27,12 @@ class ReduxFramework_border extends ReduxFramework{
 	 * @since ReduxFramework 1.0.0
 	*/
 	function render(){
-
+		
 		// No errors please
 		$defaults = array(
 			'top'				=> true,
 			'bottom'			=> true,
-			'all'				=> false,
+			'all'				=> true,
             'style'             => true,
             'color'             => true,
 			'left'				=> true,
@@ -45,6 +45,8 @@ class ReduxFramework_border extends ReduxFramework{
 			'right'=>'',
 			'bottom'=>'',
 			'left'=>'',
+			'color'=>'',
+			'style'=>'',
 		);
 
 		$this->value = wp_parse_args( $this->value, $defaults );
@@ -57,6 +59,16 @@ class ReduxFramework_border extends ReduxFramework{
             'color' => isset( $this->value['border-color'] ) ? $this->value['border-color'] : $this->value['color'],
             'style' => isset( $this->value['border-style'] ) ? $this->value['border-style'] : $this->value['style']
 		);
+
+		if ( ( isset( $this->value['width'] ) || isset( $this->value['border-width'] ) ) ) {
+			if ( isset( $this->value['border-width'] ) && !empty( $this->value['border-width'] ) ) {
+				$this->value['width'] = $this->value['border-width'];
+			}
+			$value['top'] = $this->value['width'];
+			$value['right'] = $this->value['width'];
+			$value['bottom'] = $this->value['width'];
+			$value['left'] = $this->value['width'];
+		}
 
 		$this->value = $value;
 

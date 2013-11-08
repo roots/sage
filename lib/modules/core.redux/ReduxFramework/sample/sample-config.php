@@ -68,8 +68,9 @@ $item_info = ob_get_contents();
     
 ob_end_clean();
 
-
+$sampleHTML = '';
 if( file_exists( dirname(__FILE__).'/info-html.html' )) {
+	/** @global WP_Filesystem_Direct $wp_filesystem  */
 	global $wp_filesystem;
 	if (empty($wp_filesystem)) {
 		require_once(ABSPATH .'/wp-admin/includes/file.php');
@@ -231,7 +232,7 @@ if (!isset($args['global_variable']) || $args['global_variable'] !== false ) {
 	} else {
 		$v = str_replace("-", "_", $args['opt_name']);
 	}
-	$args['intro_text'] = __('<p>Did you know that Redux sets a global variable for you? To access any of your saved options from within your code you can use your global variable: <strong>$'.$v.'</strong></p>', 'redux-framework-demo');
+	$args['intro_text'] = sprintf( __('<p>Did you know that Redux sets a global variable for you? To access any of your saved options from within your code you can use your global variable: <strong>$%1$s</strong></p>', 'redux-framework-demo' ), $v );
 } else {
 	$args['intro_text'] = __('<p>This text is displayed above the options panel. It isn\'t required, but more info is always better! The intro_text field accepts all HTML.</p>', 'redux-framework-demo');
 }
@@ -586,7 +587,7 @@ $sections[] = array(
 			'subtitle' => __('Only color validation can be done on this field type', 'redux-framework-demo'),
 			'output' => array('.site-header'), // An array of CSS selectors to apply this font style to
 			'desc' => __('This is the description field, again good for additional info.', 'redux-framework-demo'),
-			'default' => array('color' => '#1e73be', 'style' => 'solid', 'width'=>'3')
+			'default' => array('border-color' => '#1e73be', 'border-style' => 'solid', 'border-top'=>'3px', 'border-right'=>'3px', 'border-bottom'=>'3px', 'border-left'=>'3px')
 			),	
 		array(
 			'id'=>'spacing',
@@ -597,7 +598,7 @@ $sections[] = array(
 			//'units_extended' => 'true', // Allow users to select any type of unit
 			'title' => __('Padding/Margin Option', 'redux-framework-demo'),
 			'subtitle' => __('Allow your users to choose the spacing or margin they want.', 'redux-framework-demo'),
-			'desc' => __('You can enable or diable any piece of this field. Top, Right, Bottom, Left, or Units.', 'redux-framework-demo'),
+			'desc' => __('You can enable or disable any piece of this field. Top, Right, Bottom, Left, or Units.', 'redux-framework-demo'),
 			'default' => array('top' => 5, 'bottom' => 6, 'left'=>2, 'right'=>4)
 			),	
 		array(
@@ -607,7 +608,7 @@ $sections[] = array(
 			//'units_extended' => 'true', // Allow users to select any type of unit
 			'title' => __('Dimensions (Width/Height) Option', 'redux-framework-demo'),
 			'subtitle' => __('Allow your users to choose width, height, and/or unit.', 'redux-framework-demo'),
-			'desc' => __('You can enable or diable any piece of this field. Width, Height, or Units.', 'redux-framework-demo'),
+			'desc' => __('You can enable or disable any piece of this field. Width, Height, or Units.', 'redux-framework-demo'),
 			'default' => array('width' => 200, 'height'=>'100', )
 			),												
 		array(
@@ -644,7 +645,7 @@ $sections[] = array(
 			'id'=>'2',
 			'type' => 'text',
 			'title' => __('Text Option - Email Validated', 'redux-framework-demo'),
-			'subtitle' => __('This is a little space under the Field Title in the Options table, additonal info is good in here.', 'redux-framework-demo'),
+			'subtitle' => __('This is a little space under the Field Title in the Options table, additional info is good in here.', 'redux-framework-demo'),
 			'desc' => __('This is the description field, again good for additional info.', 'redux-framework-demo'),
 			'validate' => 'email',
 			'msg' => 'custom error message',
@@ -654,7 +655,7 @@ $sections[] = array(
 			'id'=>'multi_text',
 			'type' => 'multi_text',
 			'title' => __('Multi Text Option', 'redux-framework-demo'),
-			'subtitle' => __('This is a little space under the Field Title in the Options table, additonal info is good in here.', 'redux-framework-demo'),
+			'subtitle' => __('This is a little space under the Field Title in the Options table, additional info is good in here.', 'redux-framework-demo'),
 			'desc' => __('This is the description field, again good for additional info.', 'redux-framework-demo')
 			),
 		array(
@@ -680,7 +681,7 @@ $sections[] = array(
 			'id'=>'comma_numeric',
 			'type' => 'text',
 			'title' => __('Text Option - Comma Numeric Validated', 'redux-framework-demo'),
-			'subtitle' => __('This must be a comma seperated string of numerical values.', 'redux-framework-demo'),
+			'subtitle' => __('This must be a comma separated string of numerical values.', 'redux-framework-demo'),
 			'desc' => __('This is the description field, again good for additional info.', 'redux-framework-demo'),
 			'validate' => 'comma_numeric',
 			'default' => '0',
@@ -784,7 +785,7 @@ $sections[] = array(
 			'subtitle' => __('No validation can be done on this field type', 'redux-framework-demo'),
 			'desc' => __('This is the description field, again good for additional info.', 'redux-framework-demo'),
 			'options' => array('1' => 'Opt 1','2' => 'Opt 2','3' => 'Opt 3'),//Must provide key => value pairs for multi checkbox options
-			'default' => array('1' => '1', '2' => '0', '3' => '0')//See how std has changed? you also dont need to specify opts that are 0.
+			'default' => array('1' => '1', '2' => '0', '3' => '0')//See how std has changed? you also don't need to specify opts that are 0.
 			),
 		array(
 			'id'=>'checkbox-data',
@@ -1126,7 +1127,7 @@ $sections[] = array(
 			),							
 		array(
 			'id'=>"custom_callback",
-			//'type' => 'nothing',//doesnt need to be called for callback fields
+			//'type' => 'nothing',//doesn't need to be called for callback fields
 			'title' => __('Custom Field Callback', 'redux-framework-demo'), 
 			'subtitle' => __('This is a completely unique field type', 'redux-framework-demo'),
 			'desc' => __('This is created with a callback function, so anything goes in this field. Make sure to define the function though.', 'redux-framework-demo'),
@@ -1135,7 +1136,7 @@ $sections[] = array(
 		
 		array(
 			'id'=>"group",
-			'type' => 'group',//doesnt need to be called for callback fields
+			'type' => 'group',//doesn't need to be called for callback fields
 			'title' => __('Group', 'redux-framework-demo'), 
 			'subtitle' => __('Group any items together.', 'redux-framework-demo'),
 			'desc' => __('No limit as to what you can group. Just don\'t try to group a group.', 'redux-framework-demo'),
@@ -1198,7 +1199,7 @@ $ReduxFramework = new ReduxFramework($sections, $args, $tabs);
  	Custom function for filtering the sections array. Good for child themes to override or add to the sections.
  	Simply include this function in the child themes functions.php file.
  
- 	NOTE: the defined constansts for URLs, and directories will NOT be available at this point in a child theme,
+ 	NOTE: the defined constants for URLs, and directories will NOT be available at this point in a child theme,
  	so you must use get_template_directory_uri() if you want to use any of the built in icons
  
  **/
@@ -1257,7 +1258,7 @@ function validate_callback_function($field, $value, $existing_value) {
     
     if(something) {
         $value = $value;
-    } elseif(somthing else) {
+    } elseif(something else) {
         $error = true;
         $value = $existing_value;
         $field['msg'] = 'your custom error message';

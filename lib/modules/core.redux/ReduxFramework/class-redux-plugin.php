@@ -17,8 +17,7 @@
  * @package ReduxFrameworkPlugin
  * @author  Dovy Paukstys <info@simplerain.com>
  */
-/** @noinspection PhpUndefinedClassInspection */
-/** @noinspection PhpUndefinedClassInspection */
+
 class ReduxFrameworkPlugin {
 
 	/**
@@ -223,13 +222,14 @@ class ReduxFrameworkPlugin {
 	 * @return	array|false	The blog ids, false if no matches.
 	 */
 	private static function get_blog_ids() {
+		/** @global wpdb $wpdb */
 		global $wpdb;
 
 		// get an array of blog ids
 		$sql = "SELECT blog_id FROM $wpdb->blogs
 			WHERE archived = '0' AND spam = '0'
 			AND deleted = '0'";
-        /** @noinspection PhpUndefinedMethodInspection */
+
         return $wpdb->get_col( $sql );
 	}
 
@@ -309,6 +309,12 @@ class ReduxFrameworkPlugin {
 		*/
 	}
 
+	/**
+	 * @param array $links
+	 * @param string $file
+	 * @return array
+	 * @wp-hook plugin_row_meta
+	 */
 	function plugin_meta_links( $links, $file ) {
 		if ( strpos($file,'redux-framework.php') === false ) {
     		return $links;
@@ -327,6 +333,12 @@ class ReduxFrameworkPlugin {
 	 
 	}
 
+	/**
+	 * @param array $links
+	 * @param string $file
+	 * @return array
+	 * @wp-hook plugin_row_meta
+	 */
 	function plugin_meta_demo_mode_link( $links, $file ) {
 		if ( strpos($file,'redux-framework.php') === false ) {
     		return $links;
