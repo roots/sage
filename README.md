@@ -4,7 +4,7 @@ We Forked the Roots theme and added lots of options, hooks and actions in there,
 
 ## Options Panel
 
-We originally intended to include [SMOF](https://github.com/syamilmj/Options-Framework) as an options panel, but due to various issues and bugs that SMOF has, we instead chose to develop our own Options Framework. So [@dovy](https://twitter.com/simplerain), a shoestrap contributor built and integrated [ReduxFramework](http://reduxframework.com) into Shoestrap. 
+We originally intended to include [SMOF](https://github.com/syamilmj/Options-Framework) as an options panel, but due to various issues and bugs that SMOF has, we instead chose to develop our own Options Framework. So [@dovy](https://twitter.com/simplerain), a shoestrap contributor, built and integrated [ReduxFramework](http://reduxframework.com) into Shoestrap. 
 
 ## Automated Compiling
 
