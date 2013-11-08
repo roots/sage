@@ -1,4 +1,5 @@
 ### HEAD
+* Merge in updates from HTML5 Boilerplate
 * Add JS source map (disabled by default)
 * Update to Bootstrap 3.0.2
 * Replace `grunt-recess` with `grunt-contrib-less`, add LESS source map support
