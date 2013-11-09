@@ -80,8 +80,8 @@ add_action( 'redux-compiler-'.REDUX_OPT_NAME , 'shoestrap_makecss' );
  */
 function shoestrap_tracking_additions( $options ) {
   $opt = array();
-  $options['id'] = "shoestrap";
+  $options['shoestrap'] = array('title'=>'Shoestrap');
 
   return $options;
 }
-add_filter( 'Redux/Tracking/Developer', 'shoestrap_tracking_additions' );
+add_filter( 'redux/tracking/developer', 'shoestrap_tracking_additions' );

@@ -54,7 +54,7 @@ if( !class_exists( 'ReduxFramework' ) ) {
             }
 
             self::$_dir = $fslashed_dir;
-            self::$_url = site_url( str_replace( $fslashed_abs, '', $fslashed_dir ) );
+            self::$_url = home_url( str_replace( $fslashed_abs, '', $fslashed_dir ) );
 
 /**
         Still need to port these.
@@ -159,35 +159,35 @@ if( !class_exists( 'ReduxFramework' ) ) {
                         ),  
                     'enqueue' => array(
                             'required', 
-                            'data_type'=>'boolen', 
+                            'data_type'=>'bool',
                             'form' => array('type' => 'radio', 'options' => array(true => 'Enabled', false => 'Disabled')),
                             'label'=>'Enqueue Files', 
                             'desc'=>'Global shut-off for custom CSS enqueing by the framework', 
                             'default'=>true
                         ),
                     'allow_sub_menu' => array(
-                            'data_type'=>'boolen', 
+                            'data_type'=>'bool',
                             'form' => array('type' => 'radio', 'options' => array(true => 'Enabled', false => 'Disabled')),
                             'label'=>'Allow Submenu', 
                             'desc'=>'Turn on or off the submenu that will typically be shown under Appearance.', 
                             'default'=>true
                         ),                        
                     'show_import_export' => array(
-                            'data_type'=>'boolen', 
+                            'data_type'=>'bool',
                             'form' => array('type' => 'radio', 'options' => array(true => 'Show', false => 'Hide')),
                             'label'=>'Show Import/Export', 
                             'desc'=>'Show/Hide the import/export tab.', 
                             'default'=>true
                         ),  
                     'dev_mode' => array(
-                            'data_type'=>'boolen', 
+                            'data_type'=>'bool',
                             'form' => array('type' => 'radio', 'options' => array(true => 'Enabled', false => 'Disabled')),
                             'label'=>'Developer Mode', 
                             'desc'=>'Turn on or off the dev mode tab.', 
                             'default'=>false
                         ), 
                     'system_info' => array(
-                            'data_type'=>'boolen', 
+                            'data_type'=>'bool',
                             'form' => array('type' => 'radio', 'options' => array(true => 'Enabled', false => 'Disabled')),
                             'label'=>'System Info', 
                             'desc'=>'Turn on or off the system info tab.', 

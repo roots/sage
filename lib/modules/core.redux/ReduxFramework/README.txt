@@ -1,5 +1,5 @@
 === Redux Framework ===
-Contributors: ghost1227, dovyp
+Contributors: nohalfpixels, ghost1227, dovyp
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=N5AD7TSH8YA5U
 Tags: admin, admin interface, options, theme options, plugin options, options framework, settings
 Requires at least: 3.5.1
@@ -138,6 +138,9 @@ That's because the real FAQ section is on our site! Please visit [http://reduxfr
 1. This is the demo mode of Redux Framework. Activate it and you will find a fully-functional admin panel that you can play with. On the Plugins page, beneath the description and an activated Redux Framework, you will find a Demo Mode link. Click that link to activate or deactivate the sample-config file Redux ships with.  Don't take our word for it, check out our online demo and try Redux without installing a thing! [**http://demo.reduxframework.com/wp-admin/**](http://demo.reduxframework.com/wp-admin/)
 
 == Changelog ==
+
+= 3.0.9-beta =
+* Feature - Set default icon class for all sections and tabs, for example: $args['default_icon_class'] = 'icon-large';
 
 = 3.0.8 =
 * Version push to ensure all bugs fixes were deployed to users. Various.

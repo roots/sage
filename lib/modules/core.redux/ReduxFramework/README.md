@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/ReduxFramework/ReduxFramework.png?label=ready)](https://waffle.io/ReduxFramework/ReduxFramework)  
 # Redux Options Framework
 
 WordPress options framework which uses the [WordPress Settings API](http://codex.wordpress.org/Settings_API "WordPress Settings API"), Custom Error/Validation Handling, Custom Field/Validation Types, and import/export functionality.
@@ -195,3 +196,6 @@ Redux is now hosted on WordPress.org! Update in order to get proper, stable upda
 * Made text domain a constant
 * Removed PHP closing tags to prevent issues with newlines
 * Added option to define custom start tab
+
+
+[![githalytics.com alpha](https://cruel-carlota.pagodabox.com/dbb3b94f2607cb4a119a7863c230a98e "githalytics.com")](http://githalytics.com/ReduxFramework/ReduxFramework)

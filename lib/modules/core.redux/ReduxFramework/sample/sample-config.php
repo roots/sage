@@ -161,6 +161,13 @@ $args['share_icons']['linked_in'] = array(
 // Default: null
 $args['import_icon_class'] = 'icon-large';
 
+/**
+ * Set default icon class for all sections and tabs
+ * @since 3.0.9
+ */
+$args['default_icon_class'] = 'icon-large';
+
+
 // Set a custom menu icon.
 //$args['menu_icon'] = '';
 

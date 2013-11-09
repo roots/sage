@@ -34,8 +34,6 @@ class ReduxFramework_dimensions extends ReduxFramework{
 			'height'			=> true,
 			'units_extended'	=> false,
 			);
-
-		$this->field['units'] = "em";
  
 		$this->field = wp_parse_args( $this->field, $defaults );
 
