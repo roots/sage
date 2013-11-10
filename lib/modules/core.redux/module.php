@@ -53,6 +53,18 @@ if ( class_exists( 'ReduxFramework' ) ) :
     'content' => __( '<p>This is the tab content, HTML is allowed. Tab2</p>', 'shoestrap' )
   );
 
+  
+
+  $args['edd'] = array(
+    'mode'            => 'template', // template|plugin
+    'path'            => '', // Path to the plugin/template main file
+    'remote_api_url'  => 'http://shoestrap.org',    // our store URL that is running EDD
+    'version'         => $theme->get( 'Version' ), // current version number
+    'item_name'       => $theme->get( 'Name' ), // name of this theme
+    'author'          => $theme->get( 'Author' ), // author of this theme
+    'field_id'        => "shoestrap_license_key", // ID of the field used by EDD
+    );  
+
   //Set the Help Sidebar for the options page - no sidebar by default                   
   $args['help_sidebar'] = __( '<p>This is the sidebar content, HTML is allowed.</p>', 'shoestrap' );
 

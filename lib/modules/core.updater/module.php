@@ -17,7 +17,7 @@ function shoestrap_core_licencing_options( $sections ) {
     'desc'      => __( 'Enter your shoestrap licence to enable automatic updates.', 'shoestrap' ) . ' ' . shoestrap_licence_status_label(),
     'id'        => 'shoestrap_license_key',
     'default'   => '',
-    'type'      => 'text',
+    'type'      => 'edd',
     // 'validate_callback' => 'shoestrap_licence_callback_function',
   );
 
@@ -29,36 +29,11 @@ function shoestrap_core_licencing_options( $sections ) {
   return $sections;
 
 }
-endif;
 add_filter( 'redux-sections-' . REDUX_OPT_NAME, 'shoestrap_core_licencing_options', 200 ); 
 
-
-// Load our theme updater
-if( !class_exists( 'EDD_SL_Theme_Updater' ) ) :
-  include_once( dirname( __FILE__ ) . '/EDD_SL_Theme_Updater.php' );
 endif;
 
-// setup the updater
-$shoestrap_theme          = wp_get_theme();
-$shoestrap_theme_version  = $shoestrap_theme->get( 'Version' );
-$shoestrap_theme_author   = $shoestrap_theme->get( 'Author' );
-$shoestrap_theme_name     = $shoestrap_theme->get( 'Name' );
 
-define( 'SHOESTRAP_STORE_URL', 'http://shoestrap.org' );
-define( 'SHOESTRAP_THEME_NAME', $shoestrap_theme_name );
-
-// retrieve our license key from the DB
-$license_key = trim( shoestrap_getVariable( 'shoestrap_license_key' ) );
-
-$edd_updater = new EDD_SL_Theme_Updater(
-  array(
-    'remote_api_url'  => SHOESTRAP_STORE_URL,       // our store URL that is running EDD
-    'version'         => $shoestrap_theme_version,  // current version number
-    'license'         => $license_key,              // license key
-    'item_name'       => SHOESTRAP_THEME_NAME,      // name of this theme
-    'author'          => $shoestrap_theme_author    // author of this theme
-  )
-);
 
 /*
  * Get the status of the licence
@@ -130,7 +105,7 @@ function shoestrap_licence_status_cached() {
 
   add_action( 'admin_init', 'shoestrap_activate_license' );
 }
-add_action( 'admin_init', 'shoestrap_licence_status_cached' );
+//add_action( 'admin_init', 'shoestrap_licence_status_cached' );
 
 /*
  *

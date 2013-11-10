@@ -78,7 +78,7 @@ if( !class_exists( 'ReduxFramework_extension_edd' ) ) {
 
             $edd_updater = new EDD_SL_Theme_Updater(
               array(
-                'remote_api_url'  => $edd['remote'],       // our store URL that is running EDD
+                'remote_api_url'  => $edd['remote_api_url'],       // our store URL that is running EDD
                 'version'         => $edd['version'],  // current version number
                 'license'         => $parent->options[$edd['field_id']], // license key
                 'item_name'       => $edd['item_name'],      // name of this theme

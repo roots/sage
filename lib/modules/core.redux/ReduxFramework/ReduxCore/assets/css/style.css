@@ -50,7 +50,7 @@ a{outline:0 !important}
 .redux-group-tab .form-table tr td .redux-th-warning{font-size:1em;color:#c09853;font-weight:normal;display:block}
 .redux-group-tab .form-table tr td .redux-field-warning{border-color:#c09853}
 .redux-group-tab .form-table tr td .redux-th-error{font-size:1em;color:#b94a48;font-weight:normal;display:block}
-#redux-main .redux-group-tab .form-table tr td input.redux-field-error{border-color:#b94a48}
+#redux-main .redux-field-error input,#redux-main .redux-field-error textarea,#redux-main .redux-field-error select{border-color:#b94a48}
 .redux-group-tab .form-table tr td table.mceLayout,.redux-group-tab .form-table tr td table.mceLayout tr,.redux-group-tab .form-table tr td table.mceLayout tr td{padding:0;border-width:0}
 .redux-group-tab .redux-theme-data{padding:20px 0;border-top:1px solid #e7e7e7}
 .redux-group-tab .redux-theme-data.theme-uri,.redux-group-tab .redux-theme-data.theme-author,.redux-group-tab .redux-theme-data.theme-version{padding:0;border-width:0}
