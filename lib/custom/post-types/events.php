@@ -39,7 +39,7 @@ function atkore_post_type_events() {
   		'label'               => __( 'Events', 'atkore' ),
   		'description'         => __( 'Events', 'atkore' ),
   		'labels'              => $labels,
-  		'supports'            => array( 'title', 'editor', 'thumbnail', 'custom-fields', ),
+  		'supports'            => array( 'title', 'editor', 'excerpt', 'thumbnail', 'revisions', 'custom-fields', 'page-attributes', ),
   		//'taxonomies'          => array( '',),
   		'rewrite'             => $rewrite,
   		'hierarchical'        => false,

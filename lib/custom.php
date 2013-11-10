@@ -48,3 +48,10 @@ function cc_mime_types( $mimes ){
 	return $mimes;
 }
 add_filter( 'upload_mimes', 'cc_mime_types' );
+
+//Add class to edit button
+function custom_edit_post_link($output) {
+ $output = str_replace('class="post-edit-link"', 'class="post-edit-link btn btn-block btn-default"', $output);
+ return $output;
+}
+add_filter('edit_post_link', 'custom_edit_post_link');

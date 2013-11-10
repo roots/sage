@@ -26,7 +26,7 @@
 <div class="modal-content">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h4 class="modal-title">Request Literature</h4>
+    <h4 class="modal-title"><i class="fa fa-book"></i> Request Literature</h4>
   </div>
   <div class="modal-body">
     <p>
@@ -48,7 +48,7 @@
 <div class="modal-content">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h4 class="modal-title">Request Call Back</h4>
+    <h4 class="modal-title"><i class="fa fa-phone"></i> Request Call Back</h4>
   </div>
   <div class="modal-body">
     <p>
@@ -71,7 +71,7 @@
 <div class="modal-content">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h4 class="modal-title">Share This Page</h4>
+    <h4 class="modal-title"><i class="fa fa-share"></i> Share This Page</h4>
   </div>
   <div class="modal-body">
     <p>
@@ -127,7 +127,7 @@
 <div class="modal-content">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h4 class="modal-title">Search <?php bloginfo('url'); ?></h4>
+    <h4 class="modal-title"><i class="fa fa-search"></i> Search <?php bloginfo('url'); ?></h4>
   </div>
   <div class="modal-body">
     <?php get_search_form(); ?>
@@ -144,7 +144,7 @@
 <div class="modal-content">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h4 class="modal-title">Search <?php bloginfo('url'); ?></h4>
+    <h4 class="modal-title"><i class="fa fa-search"></i> Search <?php bloginfo('url'); ?></h4>
   </div>
   <div class="modal-body">
     <?php get_search_form(); ?>

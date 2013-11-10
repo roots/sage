@@ -4,4 +4,7 @@
       <?php get_template_part('templates/product', 'specifications'); ?>
       <?php get_template_part('templates/product', 'submittal-sheets'); ?>
       <?php get_template_part('templates/content', 'legal'); ?>
-      <?php edit_post_link('edit', '<p class="btn-block btn-default">', '</p>'); ?>
+      <?php edit_post_link('Edit', '<p>', '</p>'); ?>
+      <?php if (current_user_can("manage_options")) : ?>
+				<a class="btn btn-block btn-default" href="<?php echo bloginfo("siteurl") ?>/wp-admin/">Admin</a>
+			<?php endif; ?>

@@ -40,7 +40,7 @@ function atkore_post_type_applications() {
   		'label'               => __( 'Applications', 'atkore' ),
   		'description'         => __( 'Applications information pages', 'atkore' ),
   		'labels'              => $labels,
-  		'supports'            => array( 'title', 'editor', 'excerpt', 'thumbnail', 'revisions', 'custom-fields', 'page-attributes',),
+  		'supports'            => array( 'title', 'editor', 'excerpt', 'thumbnail', 'revisions', 'custom-fields', 'page-attributes','post-formats',),
   		'taxonomies'          => array( 'post_tag'),
   		'rewrite'             => $rewrite,
   		'hierarchical'        => true,

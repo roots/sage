@@ -38,8 +38,8 @@ textarea:focus,input[type="text"]:focus,input[type="password"]:focus,input[type=
 h1,h2,h3,h4,h5,h6{font-family:Arial,Geneva,"Helvetica Neue",Helvetica,sans-serif;font-weight:bold}
 h2.term-heading{font-family:"atkore",Arial,Geneva,sans-serif}
 #home-news h3{margin-top:0;margin-bottom:0;padding-top:0;padding-bottom:0}
-.legal-text{font-size:85%;color:#999;text-align:left}
-.legal-text p{display:inline}
+.legal-text{font-size:85%;color:#999;text-align:left}.legal-text p{display:inline}
+.archive article .entry-content{margin:15px 0}.archive article .entry-content .media{padding:0 0 20px 0}
 body.single-product .main>article{padding-top:0}
 body.single-product .span9 .well{margin:0 10px}
 .entry-summary{overflow:hidden;text-align:center}
@@ -100,12 +100,11 @@ body.home #upper-deck{position:relative;padding-right:0}
 .panel .sequence-content{padding:10px 15px;position:absolute;top:0;left:0;float:left}.panel .sequence-content h4{width:100%;float:left}
 .panel .sequence-content p{width:65%}
 img.featured-product{position:relative;top:50px;right:20px;float:right;z-index:0;width:100px;height:100px}
-.main .nav-tabs{-webkit-box-shadow:inset 0 -4px 3px -3px rgba(0,0,0,0.3);-moz-box-shadow:inset 0 -4px 3px -3px rgba(0,0,0,0.3);box-shadow:inset 0 -4px 3px -3px rgba(0,0,0,0.3)}
-.main .nav-tabs a{color:#808080;font-weight:bold}
-.main .nav-tabs>li.active>a{color:#000}
+.main .tab-pane{padding:20px 10px;overflow-x:hidden}
+.main .nav-tabs{-webkit-box-shadow:inset 0 -4px 3px -3px rgba(0,0,0,0.3);-moz-box-shadow:inset 0 -4px 3px -3px rgba(0,0,0,0.3);box-shadow:inset 0 -4px 3px -3px rgba(0,0,0,0.3)}.main .nav-tabs>li.active>a{color:#000}
 .main .nav-tabs>li>a:hover,.main .nav-tabs>li>a:focus{text-decoration:none}
 .main .nav-tabs>li.active>a:hover,.main .nav-tabs>li.active>a:focus{background-color:#fff;color:#000}
-.main .tab-pane{padding:20px 10px;overflow-x:hidden}
+.main .nav-tabs a{color:#808080;font-weight:bold}
 table{text-align:center}table .shadowed{-webkit-box-shadow:0 0 10px rgba(0,0,0,0.3);-moz-box-shadow:0 0 10px rgba(0,0,0,0.3);box-shadow:0 0 10px rgba(0,0,0,0.3)}
 table thead th,table thead td{background-color:#0f569a;color:#fff;font-weight:bold;text-transform:uppercase;font-size:80%;line-height:100% !important;background-color:#1163b1;white-space:pre-line;-webkit-box-shadow:inset 0 -4px 3px -3px rgba(0,0,0,0.3);-moz-box-shadow:inset 0 -4px 3px -3px rgba(0,0,0,0.3);box-shadow:inset 0 -4px 3px -3px rgba(0,0,0,0.3);border-left:1px solid #0f569a}
 table td{white-space:pre-line}

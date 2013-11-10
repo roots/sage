@@ -44,13 +44,3 @@ foreach ($terms as $term) { ?>
 </section>
 </div>
 <?php } ?>
-
-
-
-
-
-
-
-
-
-

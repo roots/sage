@@ -1,5 +1,8 @@
+<?php if( get_field('legal_text', 'options') ) { ?>
 <div class="well legal-text">
-  <p>UL is a trademark and/or registered trademark of Underwriters Laboratory.</p>
-  <p>NEC is a trademark and/or registered trademark of the National Fire Protection Association.</p>
-  <p>CSA is a trademark and/or registered trademark of the Canadian Standards Association.</p>
+	<?php while( has_sub_field('legal', 'options') ) { ?>
+		<p class="legal-para"><?php echo the_sub_field('legal', 'options'); ?></p>
+		<p class="legal-para"><?php echo the_field('legal', 'options'); ?></p>
+	<?php } ?>
 </div>
+<?php } ?>

@@ -20,7 +20,7 @@ if ( ! function_exists('atkore_post_type_products') ) {
 
 // Register Custom Post Types
 function atkore_post_type_products() {
-    $admin_img_path = 'http://atkore.com/assets/img/atkore-admin-icon.png';
+    $admin_img_path = '//atkore.com/assets/img/atkore-admin-icon.png';
 
  	$labels = array(
   		'name'                => _x( 'Products', 'Post Type General Name', 'atkore' ),

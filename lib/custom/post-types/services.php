@@ -41,7 +41,7 @@ function atkore_post_type_services() {
   		'description'         => __( 'Services information pages', 'atkore' ),
   		'labels'              => $labels,
   		'supports'            => array( 'title', 'editor', 'excerpt', 'thumbnail', 'revisions', 'custom-fields', 'page-attributes',),
-  		'taxonomies'          => array( 'category','post_tag'),
+  		'taxonomies'          => array( 'post_tag'),
   		'rewrite'             => $rewrite,
   		'hierarchical'        => true,
   		'public'              => true,

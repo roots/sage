@@ -21,9 +21,6 @@
   <div id="brands-footer" class="fullwidth-wrapper">
     <?php get_template_part('templates/carousel', 'brands'); ?>
   </div>
-  <?php if (current_user_can("manage_options")) : ?>
-			<a class="btn btn-default" href="<?php echo bloginfo("siteurl") ?>/wp-admin/">Admin</a>
-	<?php endif; ?>
 </footer><!-- /.content-info -->
 <?php get_template_part('templates/content', 'modals'); ?>
 <?php wp_footer(); ?>

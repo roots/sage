@@ -167,23 +167,26 @@ function add_reg($content)
   return $content;
 }
 add_filter('the_content','add_reg', 1);
+add_filter('the_excerpt','add_reg', 1);
 add_filter('the_title','add_reg', 1);
 add_filter('the_field','add_reg', 1);
 add_filter('get_field','add_reg', 1);
-
 
 function add_reg_body($content)
 {
   $textSearch = array(
   "Unistrut",                     // 1
-  "Unistrut<sup>&trade;</sup> Fall Protection",                     // 2
+  "UNISTRUT",                     // 2
+  //"Unistrut<sup>&trade;</sup> Fall Protection",                     // 2
   );
   $textReplace = array(
   "Unistrut<sup>&trade;</sup>",		// 1
-  "Unistrut Fall Protection",                     // 2
+  "Unistrut<sup>&trade;</sup>",		// 2
+  //"Unistrut Fall Protection",                     // 2
   );
   $content = str_replace($textSearch, $textReplace, $content);
   return $content;
 }
 
 add_filter('the_content','add_reg_body', 1);
+add_filter('the_excerpt','add_reg_body', 1);
