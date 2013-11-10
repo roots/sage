@@ -80,7 +80,7 @@ if( !class_exists( 'ReduxFramework_extension_edd' ) ) {
               array(
                 'remote_api_url'  => $edd['remote'],       // our store URL that is running EDD
                 'version'         => $edd['version'],  // current version number
-                'license'         => $parent->options[$edd['field_id']],              // license key
+                'license'         => $parent->options[$edd['field_id']], // license key
                 'item_name'       => $edd['item_name'],      // name of this theme
                 'author'          => $edd['author']    // author of this theme
               )
@@ -96,21 +96,62 @@ if( !class_exists( 'ReduxFramework_extension_edd' ) ) {
 
         add_filter( 'redux/field/class/edd', array( &$this, 'overload_edd_field_path' ) ); // Adds the local field
 
-        add_action( 'wp_ajax_redux_edd_'.$parent->args['opt_name'].'_verify_license', array( &$this, 'ajax_verify_license' ) );
+        add_action( 'wp_ajax_redux_edd_'.$parent->args['opt_name'].'_license', array( &$this, 'license_call' ) );
 
       }
 
-      function ajax_verify_license() {
+      function license_call() {
         
-        // Fill whatever you need here! All args and license/status from the field are set from the $args array.
-        // You'll need to initate a save if it worked properly to keep the value or update the DB. Get the rest
-        // of the code in and I can do that.
+        global $wp_version;
 
-        // Everything is in $_POST['data']
+        if ($_POST['data']['license'] == "") {
+          die(-1);
+        }
 
-        die();
+        $api_params = array(
+          'edd_action'  => $_POST['data']['edd_action'],
+          'license'     => $_POST['data']['license'],
+          'item_name'   => urlencode( $_POST['data']['item_name'] )
+        );
+
+
+
+        if ( !isset( $_POST['data']['remote_api_url'] ) || empty( $_POST['data']['remote_api_url'] ) ) {
+          $_POST['data']['remote_api_url'] = 'http://easydigitaldownloads.com';
+        }
+
+        $response = wp_remote_get( add_query_arg( $api_params, $_POST['data']['remote_api_url'] ), array( 'timeout' => 15, 'sslverify' => false ) );
+
+        if ( is_wp_error( $response ) )
+          return false;
+
+        $license_data = json_decode( wp_remote_retrieve_body( $response ) );
+
+        $options[$_POST['data']['field_id']]['license'] = $_POST['data']['license'];
+        $options[$_POST['data']['field_id']]['status'] = $license_data->license;
+
+        update_option($_POST['data']['opt_name'], $options);
+
+        if( $license_data->license == 'deactivated' ) {
+          echo json_encode(array('status'=>'deactivated'));  
+          update_option($_POST['data']['opt_name'], $options);
+          // Delete from the DB
+          die();
+        } else if( $license_data->license == 'valid' ) {
+          echo json_encode(array('status'=>'valid'));
+          // Save to DB and update status
+          die();
+          // this license is still valid
+        } else {
+          // Change status
+          update_option($_POST['data']['opt_name'], $options);
+          echo json_encode(array('status'=>'invalid'));
+          die();
+          // this license is no longer valid
+        } 
+
+        die(-1);
       }
-
 
       // Forces the use of the embeded field path vs what the core typically would use    
       public function overload_edd_field_path($field) {

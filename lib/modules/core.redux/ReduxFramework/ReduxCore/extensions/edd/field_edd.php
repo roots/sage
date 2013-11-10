@@ -65,15 +65,17 @@ if( !class_exists( 'ReduxFramework_edd' ) ) {
 		public function render() {
 
 			$defaults = array(
-				'license' 		=> '',
+				'license' 	=> '',
 				'status' 	=> '',
 			);
 
 			$this->value = wp_parse_args( $this->value, $defaults );     
 
-			echo '<input data-id="'.$this->field['id'].'" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . ']" id="' . $this->field['id'] . '-license" class="redux-edd ' . $this->field['class'] . '"  type="text" value="' . $this->value['license'] . '" " />'; 
-			echo '<input type="hidden" data-id="'.$this->field['id'].'" id="' . $this->field['id'] . '-status" class="redux-edd ' . $this->field['class'] . '"  type="text" value="' . $this->value['status'] . '" " />'; 
-			echo '&nbsp; <a href="#" class="button button-primary redux-verifyEDD">Verify License</a>';
+			echo '<input data-id="'.$this->field['id'].'" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][license]"  id="' . $this->field['id'] . '-license" class="redux-edd ' . $this->field['class'] . '"  type="text" value="' . $this->value['license'] . '" " />'; 
+			echo '<input type="hidden" data-id="'.$this->field['id'].'" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][status]" id="' . $this->field['id'] . '-status" class="redux-edd ' . $this->field['class'] . '" type="text" value="' . $this->value['status'] . '" " />'; 
+			echo '&nbsp; <a href="#" class="button button-primary redux-EDDAction" data-edd_action="check_license">Verify License</a>';
+			echo '&nbsp; <a href="#" class="button button-primary redux-EDDAction" data-edd_action="activate_license">Activate License</a>';
+			echo '&nbsp; <a href="#" class="button redux-EDDAction" data-edd_action="deactivate_license">Deactivate License</a>';
 			if (isset($this->parent->args['edd'])) {
 				foreach( $this->parent->args['edd'] as $k => $v ) {
 					echo '<input type="hidden" data-id="'.$this->field['id'].'" id="' . $this->field['id'] . '-'.$k.'" class="redux-edd edd-'.$k.'"  type="text" value="' . $v . '" " />';
