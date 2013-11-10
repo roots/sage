@@ -54,7 +54,7 @@ if( !class_exists( 'ReduxFramework' ) ) {
             }
 
             self::$_dir = $fslashed_dir;
-            self::$_url = home_url( str_replace( $fslashed_abs, '', $fslashed_dir ) );
+            self::$_url = site_url( str_replace( $fslashed_abs, '', $fslashed_dir ) );
 
 /**
         Still need to port these.
