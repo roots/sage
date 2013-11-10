@@ -299,11 +299,14 @@ if( !class_exists( 'ReduxFramework' ) ) {
             // Options page
             add_action( 'admin_menu', array( &$this, '_options_page' ) );
 
+            // Register extensions
+            add_action( 'init', array( &$this, '_register_extensions' ) );
+
             // Register setting
             add_action( 'admin_init', array( &$this, '_register_setting' ) );
 
 			// Register extensions
-            add_action( 'init', array( &$this, '_register_extensions' ), 2 );
+            add_action( 'init', array( &$this, '_register_extensions' ) );
 
             // Any dynamic CSS output, let's run
             add_action( 'wp_head', array( &$this, '_enqueue_output' ), 100 );
@@ -904,7 +907,7 @@ if( !class_exists( 'ReduxFramework' ) ) {
 						if( isset( $field['type'] ) ) {
                             $field_class = 'ReduxFramework_' . $field['type'];
                             if( !class_exists( $field_class ) ) {
-                                $class_file = apply_filters( 'redux-typeclass-load', self::$_dir . 'inc/fields/' . $field['type'] . '/field_' . $field['type'] . '.php', $field_class );
+                                $class_file = apply_filters( 'redux/field/class/'.$field['type'], self::$_dir . 'inc/fields/' . $field['type'] . '/field_' . $field['type'] . '.php', $field );
                                 if( $class_file ) {
                                     /** @noinspection PhpIncludeInspection */
                                     require_once( $class_file );
@@ -1104,8 +1107,7 @@ if( !class_exists( 'ReduxFramework' ) ) {
                             $field_class = 'ReduxFramework_' . $field['type'];
 
                             if( !class_exists( $field_class ) ) {
-                                $class_file = apply_filters( 'redux-typeclass-load', self::$_dir . 'inc/fields/' . $field['type'] . '/field_' . $field['type'] . '.php', $field_class );
-
+                                $class_file = apply_filters( 'redux/field/class/'.$field['type'], self::$_dir . 'inc/fields/' . $field['type'] . '/field_' . $field['type'] . '.php', $field );
                                 if( $class_file ) {
                                     /** @noinspection PhpIncludeInspection */
                                     require_once( $class_file );
@@ -1987,8 +1989,7 @@ if( !class_exists( 'ReduxFramework' ) ) {
                 $field_class = 'ReduxFramework_' . $field['type'];
 
                 if( !class_exists( $field_class ) ) {
-                    $class_file = apply_filters( 'redux-typeclass-load', self::$_dir . 'inc/fields/' . $field['type'] . '/field_' . $field['type'] . '.php', $field_class );
-
+                    $class_file = apply_filters( 'redux/field/class/'.$field['type'], self::$_dir . 'inc/fields/' . $field['type'] . '/field_' . $field['type'] . '.php', $field );
                     if( $class_file ) {
                         /** @noinspection PhpIncludeInspection */
                         require_once($class_file);

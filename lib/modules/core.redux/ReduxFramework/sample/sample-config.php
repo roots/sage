@@ -454,7 +454,8 @@ $sections[] = array(
 			'default'=> array(
 				'color'=>"#333", 
 				'font-style'=>'700', 
-				'font-family'=>'Courier, monospace', 
+				'font-family'=>'Abel', 
+				'google' => true,
 				'font-size'=>'33px', 
 				'line-height'=>'40'),
 			),	
@@ -606,7 +607,7 @@ $sections[] = array(
 			'title' => __('Padding/Margin Option', 'redux-framework-demo'),
 			'subtitle' => __('Allow your users to choose the spacing or margin they want.', 'redux-framework-demo'),
 			'desc' => __('You can enable or disable any piece of this field. Top, Right, Bottom, Left, or Units.', 'redux-framework-demo'),
-			'default' => array('top' => 5, 'bottom' => 6, 'left'=>2, 'right'=>4)
+			'default' => array('margin-top' => '1px', 'margin-right'=>"2px", 'margin-bottom' => '3px', 'margin-left'=>'4px' )
 			),	
 		array(
 			'id'=>'dimensions',
