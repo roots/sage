@@ -4,4 +4,4 @@
       <?php get_template_part('templates/product', 'specifications'); ?>
       <?php get_template_part('templates/product', 'submittal-sheets'); ?>
       <?php get_template_part('templates/content', 'legal'); ?>
-      <?php edit_post_link('edit', '<p>', '</p>'); ?>
+      <?php edit_post_link('edit', '<p class="btn-block btn-default">', '</p>'); ?>
