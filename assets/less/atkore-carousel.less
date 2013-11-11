@@ -245,29 +245,36 @@ body[class*="unistrutfallprotection"] #carousel-home .carousel-caption {
 		}
 	
 	.carousel-control {
-  background: url('//assets.atkore.com/img/arrow-right-circle.png') 90% 40% no-repeat transparent;
+			background-image: none!important;
+			background-repeat: no-repeat;
+			background-color: transparent;
+			margin: 45px 0 0;
 	  &.right {
-	background: url('//assets.atkore.com/img/arrow-right-circle.png') 90% 40% no-repeat transparent;
+			background-image: none!important;
+			background-repeat: no-repeat;
+			background-color: transparent;
 	    right: 0;
 	  }
 	  &.left {
-	background: url('//assets.atkore.com/img/arrow-right-circle.png') 90% 40% no-repeat transparent;
-	    .flipImageH;
+			background-image: none!important;
+			background-repeat: no-repeat;
+			background-color: transparent;
+	    //.flipImageH;
 	    left: 0;
 	  }
 
 	@media (min-width: @screen-md) and (max-width: @screen-md-max) {
-  background: url('//assets.atkore.com/img/arrow-right-circle.png') 90% 40% no-repeat transparent!important;
+  //background: url('//assets.atkore.com/img/arrow-right-circle.png') 90% 40% no-repeat transparent!important;
 	}
 	
 	// Large screen / wide desktop
 	@media (min-width: @screen-lg) {
-  background: url('//assets.atkore.com/img/arrow-right-circle.png') 70% 40% no-repeat transparent!important;
+  //background: url('//assets.atkore.com/img/arrow-right-circle.png') 70% 40% no-repeat transparent!important;
 	}
 
 	// Large screen / wide desktop
 	@media (min-width: 1800px) {
-  background: url('//assets.atkore.com/img/arrow-right-circle.png') 30% 40% no-repeat transparent!important;
+  //background: url('//assets.atkore.com/img/arrow-right-circle.png') 30% 40% no-repeat transparent!important;
 	}
 	  
 	}
@@ -287,29 +294,6 @@ body[class*="unistrutfallprotection"] #carousel-home .carousel-caption {
 		}
 	}
 }
-
-.no-svg {
-	#brands-footer {
-		.fade-block {
-			&.right {
-				background: url('//assets.atkore.com/img/fade-block-right.png') top right repeat-y transparent!important;
-				filter: none;
-			}
-			&.left {
-				background: url('//assets.atkore.com/img/fade-block-left.png') top left repeat-y transparent!important;
-				filter: none;
-			}
-		}
-	}
-	.carousel-control {
-		background-image: none;
-		background-color: transparent;
-		background-repeat: no-repeat;
-		background-position: center center;
-		filter: none;
-	}
-}
-
 
 	#carousel-brands .item,
   #carousel-brands ul,

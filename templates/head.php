@@ -11,4 +11,5 @@
   <?php wp_head(); ?>
 	<?php get_template_part('templates/head', 'icons'); ?>
   <link rel="alternate" type="application/rss+xml" title="<?php echo get_bloginfo('name'); ?> Feed" href="<?php echo home_url(); ?>/feed/">
+  <?php get_template_part('templates/head', 'ie9'); ?>
 </head>

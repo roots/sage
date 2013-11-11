@@ -6,7 +6,7 @@ $metaquery = array(
             'compare' => 'LIKE'
         ));
 $posttype = 'brand';
-$number_of_posts = -1;
+$number_of_posts = 18;
 $startframe = 0;
 $args = array(
   'post_type'     => $posttype,
@@ -20,8 +20,8 @@ $classes = '';
 <div class="container">
   <div id="carousel-brands" class="carousel slide">
     <div class="carousel-inner">
-      <div class="fade-block white left"></div>
-      <div class="fade-block white right"></div>
+      <div class="fade-block white left reset-filter"></div>
+      <div class="fade-block white right reset-filter"></div>
     <?php $i = 0 ?>
       <div class="item active">
         <div class="row">
@@ -45,19 +45,9 @@ $classes = '';
 						<?php $image_attributes       = wp_get_attachment_image_src( $graylogo, $size );?>
 						<?php $gray_image_attributes  = wp_get_attachment_image_src( $graylogo, $size );?>
 						<?php $color_image_attributes = wp_get_attachment_image_src( $colorlogo, $size );?>
-						<script>
-						$('.swap-<?php the_ID();?>').each(function () {
-							  var curSrc = $(this).attr('src');
-							  if ( curSrc === '<?php echo $gray_image_attributes[0]; ?>' ) {
-							      $(this).attr('src', '<?php echo $color_image_attributes[0]; ?>');
-							  }
-							  if ( curSrc === '<?php echo $color_image_attributes[0]; ?>' ) {
-							      $(this).attr('src', '<?php echo $gray_image_attributes[0]; ?>');
-							  }
-							});
-						</script>
+
 						<div class="brand-logo-wrap">
-							<a title="<?php the_title();?>" href="<?php the_field('brand_website');?>"><img class="swap-<?php the_ID();?> img-responsive" alt="<?php the_title();?>" src="<?php echo $gray_image_attributes[0]; ?>" width="<?php echo $image_attributes[1]; ?>" height="<?php echo $image_attributes[2]; ?>"/></a>
+							<a title="<?php the_title();?>" href="<?php the_field('brand_website');?>"><img class="swap-<?php the_ID();?> swap img-responsive" alt="<?php the_title();?>" src="<?php echo $gray_image_attributes[0]; ?>" data-rollover="<?php echo $color_image_attributes[0]; ?>" width="<?php echo $image_attributes[1]; ?>" height="<?php echo $image_attributes[2]; ?>" /></a>
 						</div>
 					</li>
           <?php $i++ ?>
@@ -68,8 +58,8 @@ $classes = '';
     </div>
   </div>
     <div class="carousel-control-wrapper">
-      <a class="carousel-control left" href="#carousel-brands" data-slide="prev"><span class=""></span></a>
-      <a class="carousel-control right" href="#carousel-brands" data-slide="next"><span class=""></span></a>
+      <a class="carousel-control left reset-filter" href="#carousel-brands" data-slide="prev"><img src="/assets/img/arrow-left-circle.png"></a>
+      <a class="carousel-control right reset-filter" href="#carousel-brands" data-slide="next"><img src="/assets/img/arrow-right-circle.png"></a>
     </div>
 </div>
 <?php wp_reset_query();
