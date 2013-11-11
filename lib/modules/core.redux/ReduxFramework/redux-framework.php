@@ -16,7 +16,7 @@
  * Plugin URI:  http://wordpress.org/plugins/redux-framework/
  * Github URI:  https://github.com/ReduxFramework/ReduxFramework
  * Description: Redux is a simple, truly extensible options framework for WordPress themes and plugins.
- * Version:     3.0.9-beta
+ * Version:     3.0.9
  * Author:      Redux Team
  * Author URI:  http://reduxframework.com
  * Text Domain: redux-framework

@@ -17,4 +17,5 @@ Special thanks to the following people for language translations
 
 German [de_DE] @Abu-Taymiyyah
 Bahasa Indonesia [id_ID] @riesurya
+Spanish [es_ES] @vertigo7x
 Tirnovanuaurel [IT_it] [RO_ro] @tirnovanuaurel
