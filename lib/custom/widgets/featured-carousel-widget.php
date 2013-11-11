@@ -43,7 +43,7 @@ function atkore_featured_products_init() {
   						    <div class="sequence-content">
               		  <h4><?php echo get_the_title(); ?></h4>
               		  <p><?php echo get_the_excerpt(); ?></p>
-              		  <a class="btn btn-primary btn-featured" href="<?php the_permalink();?>" title="<?php echo get_the_title(); ?>">Read More</a>
+              		  <div class="button-wrap"><a class="btn btn-primary btn-featured" href="<?php the_permalink();?>" title="<?php echo get_the_title(); ?>">Read More</a></div>
   						</div>
     				</div>
     				</div>

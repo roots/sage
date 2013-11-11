@@ -120,7 +120,11 @@ float: left;
 .social-menu-wrap {
   
 			  @media (min-width: @screen-sm) {
-
+					display: block;
+					margin: 0 auto;
+					clear: both;
+					width: 100%;
+					float: none!important;
 				}
 				@media (min-width: @screen-md) {
 
@@ -128,6 +132,9 @@ float: left;
 				@media (min-width: @screen-lg) {
 	    		margin-right: 7%;
 				}
+		#menu-socials {
+				clear: both;float: none!important;
+		}
 }
 
 .footer-menu-wrap {
