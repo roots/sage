@@ -24,6 +24,26 @@ body.home .widget {
 
 }
 
+.widget_latest_cpt {
+	.sequence-content {
+		p {
+				@media (max-width: @screen-xs) {
+					display: none;
+				}
+				@media (max-width: @screen-sm) {
+					display: none;
+				}
+				@media (max-width: @screen-md) {
+					display: none;
+				}
+				@media (max-width: @screen-lg) {
+					font-size: 14px;
+				}
+			}
+		}
+}
+
+
 body.home .widget h4 {
   color: @brand-primary;
   font-size: 18px;
