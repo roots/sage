@@ -125,7 +125,7 @@ function shoestrap_module_featured_images_options( $sections ) {
   endforeach;
 
   $fields[] = array(
-    'title'     => __( 'Disable featured images on post types', 'shoestrap' ),
+    'title'     => __( 'Disable featured images on single post types', 'shoestrap' ),
     'id'        => 'feat_img_per_post_type',
     'type'      => 'checkbox',
     'options'   => $post_type_options,
