@@ -12,9 +12,9 @@ function roots_title() {
   } elseif (is_archive()) {
     $term = get_term_by('slug', get_query_var('term'), get_query_var('taxonomy'));
     if ($term) {
-      return $term->name;
+      return apply_filters('single_term_title', $term->name);
     } elseif (is_post_type_archive()) {
-      return get_queried_object()->labels->name;
+      return apply_filters('the_title', get_queried_object()->labels->name);
     } elseif (is_day()) {
       return sprintf(__('Daily Archives: %s', 'roots'), get_the_date());
     } elseif (is_month()) {
