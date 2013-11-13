@@ -57,15 +57,16 @@ class ReduxFramework_password {
 
 
 		if ( ! empty( $this->field['placeholder'] ) ) {
-			if ( is_array( $this->field['placeholder'] ) && ! empty( $this->field['placeholder']['password'] ) ) {
-				$this->value['placeholder']['password'] = $this->field['placeholder']['password'];
+			if ( is_array( $this->field['placeholder'] ) ) {
+				if( ! empty( $this->field['placeholder']['password'] ) ) {
+					$this->value['placeholder']['password'] = $this->field['placeholder']['password'];
+				}
+				if ( ! empty( $this->field['placeholder']['username'] ) ) {
+					$this->value['placeholder']['username'] = $this->field['placeholder']['username'];
+				}
+			} else {
+				$this->value['placeholder']['password'] = $this->field['placeholder'];
 			}
-			if ( is_array( $this->field['placeholder'] ) && ! empty( $this->field['placeholder']['username'] ) ) {
-				$this->value['placeholder']['username'] = $this->field['placeholder']['username'];
-			}
-		}
-		else {
-			$this->value['placeholder']['password'] = $this->field['placeholder'];
 		}
 
 		// Username field

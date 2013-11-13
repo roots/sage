@@ -10,7 +10,7 @@ class ReduxFramework_spacing extends ReduxFramework{
 	*/
 	function __construct($field = array(), $value ='', $parent){
 		
-		parent::__construct($parent->sections, $parent->args, $parent->extra_tabs);
+		parent::__construct($parent->sections, $parent->args);
 		$this->field = $field;
 		$this->value = $value;
 		//$this->render();
@@ -38,6 +38,7 @@ class ReduxFramework_spacing extends ReduxFramework{
 			'left'				=> true,
 			'right'				=> true,
 			'units_extended'	=> false,
+			'display_units' 	=> true				
 			);
 		$this->field = wp_parse_args( $this->field, $defaults );
 
@@ -56,7 +57,7 @@ class ReduxFramework_spacing extends ReduxFramework{
 			'right'=>'',
 			'bottom'=>'',
 			'left'=>'',
-			'units'=>'px',
+			'units'=>'px'		
 		);
 
 		$this->value = wp_parse_args( $this->value, $defaults );
@@ -111,7 +112,7 @@ class ReduxFramework_spacing extends ReduxFramework{
 			'right'=>'',
 			'bottom'=>'',
 			'left'=>'',
-			'units'=>'',
+			'units'=>''
 		);
 
 		$this->value = wp_parse_args( $this->value, $defaults );
@@ -162,16 +163,20 @@ class ReduxFramework_spacing extends ReduxFramework{
 			Units
 			**/
 
-			if ( $this->field['units'] !== false && $this->field['units'] === "" && !isset( $absolute ) ):
+			if ( $this->field['units'] !== false && !isset( $absolute ) && $this->field['display_units'] == true ):
 
 				echo '<div class="select_wrapper spacing-units" original-title="'.__('Units','redux-framework').'">';
 				echo '<select data-placeholder="'.__('Units','redux-framework').'" class="redux-spacing redux-spacing-units select'.$this->field['class'].'" original-title="'.__('Units','redux-framework').'" name="'.$this->args['opt_name'].'['.$this->field['id'].'][units]" id="'. $this->field['id'].'_units">';
-				
+
 				if ( $this->field['units_extended'] ) {
 					$testUnits = array('px', 'em', '%', 'in', 'cm', 'mm', 'ex', 'pt', 'pc');	
 				} else {
 					$testUnits = array('px', 'em', '%');
 				}
+				if ( $this->field['units'] != "" ) {
+					$testUnits = array( $this->field['units'] );
+				}
+
 				echo '<option></option>';
 				
 				if ( in_array($this->field['units'], $testUnits) ) {

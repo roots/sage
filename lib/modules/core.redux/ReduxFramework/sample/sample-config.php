@@ -113,7 +113,7 @@ $args['opt_name'] = 'redux_demo';
 // Set the class for the system info tab icon.
 // This is ignored unless $args['icon_type'] = 'iconfont'
 // Default: null
-$args['system_info_icon_class'] = 'icon-large';
+//$args['system_info_icon_class'] = 'icon-large';
 
 $theme = wp_get_theme();
 
@@ -280,7 +280,7 @@ $sections[] = array(
 	'header' => __('Welcome to the Simple Options Framework Demo', 'redux-framework-demo'),
 	'desc' => __('Redux Framework was created with the developer in mind. It allows for any theme developer to have an advanced theme panel with most of the features a developer would need. For more information check out the Github repo at: <a href="https://github.com/ReduxFramework/Redux-Framework">https://github.com/ReduxFramework/Redux-Framework</a>', 'redux-framework-demo'),
 	'icon_class' => 'icon-large',
-    'icon' => 'home',
+    'icon' => 'el-icon-home',
     // 'submenu' => false, // Setting submenu to false on a given section will hide it from the WordPress sidebar menu!
 	'fields' => array(
 		
@@ -292,6 +292,7 @@ $sections[] = array(
 			'compiler' => 'true',
 			'desc'=> __('Basic media uploader with disabled URL input field.', 'redux-framework-demo'),
 			'subtitle' => __('Upload any media using the WordPress native uploader', 'redux-framework-demo'),
+			'default'=>array('url'=>'http://s.wordpress.org/style/images/codeispoetry.png'),
 			),
 
 		array(
@@ -471,7 +472,7 @@ $sections[] = array(
 
 
 $sections[] = array(
-	'icon' => 'cogs',
+	'icon' => 'el-icon-cogs',
 	'icon_class' => 'icon-large',
     'title' => __('General Settings', 'redux-framework-demo'),
 	'fields' => array(
@@ -546,7 +547,7 @@ $sections[] = array(
 
 
 $sections[] = array(
-	'icon' => 'website',
+	'icon' => 'el-icon-website',
 	'icon_class' => 'icon-large',
 	'title' => __('Styling Options', 'redux-framework-demo'),
 	'fields' => array(
@@ -610,6 +611,7 @@ $sections[] = array(
 			'mode'=>'margin', // absolute, padding, margin, defaults to padding
 			//'units' => 'em', // You can specify a unit value. Possible: px, em, %
 			//'units_extended' => 'true', // Allow users to select any type of unit
+			//'display_units' => 'false', // Set to false to hide the units if the units are specified
 			'title' => __('Padding/Margin Option', 'redux-framework-demo'),
 			'subtitle' => __('Allow your users to choose the spacing or margin they want.', 'redux-framework-demo'),
 			'desc' => __('You can enable or disable any piece of this field. Top, Right, Bottom, Left, or Units.', 'redux-framework-demo'),
@@ -650,7 +652,7 @@ $sections[] = array(
 );
 	
 $sections[] = array(
-	'icon' => 'bullhorn',
+	'icon' => 'el-icon-bullhorn',
 	'icon_class' => 'icon-large',
 	'title' => __('Field Validation', 'redux-framework-demo'),
 	'desc' => __('<p class="description">This is the Description. Again HTML is allowed2</p>', 'redux-framework-demo'),
@@ -779,7 +781,7 @@ $sections[] = array(
 		)
 	);
 $sections[] = array(
-	'icon' => 'check',
+	'icon' => 'el-icon-check',
 	'icon_class' => 'icon-large',
 	'title' => __('Radio/Checkbox Fields', 'redux-framework-demo'),
 	'desc' => __('<p class="description">This is the Description. Again HTML is allowed</p>', 'redux-framework-demo'),
@@ -884,7 +886,7 @@ $sections[] = array(
 		)
 	);
 $sections[] = array(
-	'icon' => 'list-alt',
+	'icon' => 'el-icon-list-alt',
 	'icon_class' => 'icon-large',
 	'title' => __('Select Fields', 'redux-framework-demo'),
 	'desc' => __('<p class="description">This is the Description. Again HTML is allowed</p>', 'redux-framework-demo'),
@@ -1073,10 +1075,17 @@ if ( !empty( $tags ) ) {
 $theme_info .= '</div>';
 
 if(file_exists(dirname(__FILE__).'/README.md')){
-$tabs['theme_docs'] = array(
+$sections['theme_docs'] = array(
 			'icon' => ReduxFramework::$_url.'assets/img/glyphicons/glyphicons_071_book.png',
 			'title' => __('Documentation', 'redux-framework-demo'),
-			'content' => file_get_contents(dirname(__FILE__).'/README.md')
+			'fields' => array(
+				array(
+					'id'=>'17',
+					'type' => 'raw',
+					'content' => file_get_contents(dirname(__FILE__).'/README.md')
+					),				
+			),
+			
 			);
 }//if
 
@@ -1085,7 +1094,7 @@ $tabs['theme_docs'] = array(
 
 // You can append a new section at any time.
 $sections[] = array(
-	'icon' => 'eye-open',
+	'icon' => 'el-icon-eye-open',
 	'icon_class' => 'icon-large',
 	'title' => __('Additional Fields', 'redux-framework-demo'),
 	'desc' => __('<p class="description">This is the Description. Again HTML is allowed</p>', 'redux-framework-demo'),
@@ -1187,7 +1196,7 @@ $sections[] = array(
 	);    
 
 $tabs['item_info'] = array(
-	'icon' => 'info-sign',
+	'icon' => 'el-icon-info-sign',
 	'icon_class' => 'icon-large',
     'title' => __('Theme Information', 'redux-framework-demo'),
     'content' => $item_info
@@ -1195,7 +1204,7 @@ $tabs['item_info'] = array(
 
 if(file_exists(trailingslashit(dirname(__FILE__)) . 'README.html')) {
     $tabs['docs'] = array(
-		'icon' => 'book',
+		'icon' => 'el-icon-book',
 		'icon_class' => 'icon-large',
         'title' => __('Documentation', 'redux-framework-demo'),
         'content' => nl2br(file_get_contents(trailingslashit(dirname(__FILE__)) . 'README.html'))
@@ -1222,7 +1231,7 @@ function add_another_section($sections){
     $sections[] = array(
         'title' => __('A Section added by hook', 'redux-framework-demo'),
         'desc' => __('<p class="description">This is a section created by adding a filter to the sections array. Can be used by child themes to add/remove sections from the options.</p>', 'redux-framework-demo'),
-		'icon' => 'paper-clip',
+		'icon' => 'el-icon-paper-clip',
 		'icon_class' => 'icon-large',
         // Leave this as a blank section, no options just some intro text set above.
         'fields' => array()

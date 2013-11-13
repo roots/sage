@@ -45,7 +45,7 @@ if( !class_exists( 'ReduxFramework_link_color' ) ) {
          */
         public function __construct( $field = array(), $value ='', $parent ) {
         
-            parent::__construct( $parent->sections, $parent->args, $parent->extra_tabs );
+            parent::__construct( $parent->sections, $parent->args );
 
             $this->field = $field;
             $this->value = $value;
@@ -124,14 +124,7 @@ if( !class_exists( 'ReduxFramework_link_color' ) ) {
                 time(),
                 true
             ); 
-
-			wp_enqueue_style(
-				'redux-field-color-css', 
-				ReduxFramework::$_url . 'inc/fields/color/field_color.css', 
-				time(),
-				true
-			);                 
-        
+               
         }
     }
 }

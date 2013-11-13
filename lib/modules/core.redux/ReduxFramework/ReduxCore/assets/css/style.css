@@ -31,7 +31,7 @@ a{outline:0 !important}
 #redux-sidebar #redux-group-menu{margin-top:0}
 #redux-sidebar #redux-group-menu li{margin:0}
 #redux-sidebar #redux-group-menu li.divide{padding:0;border-width:1px 0 1px 0;border-style:solid;border-bottom-color:#e7e7e7;border-top-color:#f9f9f9}
-#redux-sidebar #redux-group-menu li a{display:block;padding:12px 8px;background:#eee;border-width:1px 0 1px 0;border-style:solid;border-bottom-color:#e7e7e7;border-top-color:#f9f9f9;opacity:.7;color:#555;font-weight:bold;text-decoration:none;-webkit-transition:none;transition:none}
+#redux-sidebar #redux-group-menu li a{display:block;padding:12px 4px 12px 14px;background:#eee;border-width:1px 0 1px 0;border-style:solid;border-bottom-color:#e7e7e7;border-top-color:#f9f9f9;opacity:.7;color:#555;font-weight:bold;text-decoration:none;-webkit-transition:none;transition:none}
 #redux-sidebar #redux-group-menu li a.custom-tab{background:#f6f6f6}
 #redux-sidebar #redux-group-menu li a img{width:16px;height:16px;position:absolute;left:15px}
 #redux-sidebar #redux-group-menu li.active a:hover{color:#269ad6}

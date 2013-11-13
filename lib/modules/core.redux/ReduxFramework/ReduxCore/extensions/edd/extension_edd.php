@@ -35,8 +35,8 @@ if( !class_exists( 'ReduxFramework_extension_edd' ) ) {
 
       // Protected vars
       protected $redux;
-      public $url;
-      public $dir;
+      public $extension_url;
+      public $extension_dir;
 
       /**
        * Class Constructor. Defines the args for the extions class
@@ -50,9 +50,9 @@ if( !class_exists( 'ReduxFramework_extension_edd' ) ) {
        */
       public function __construct( $parent ) {
 
-        if ( empty( $this->dir ) ) {
-          $this->dir = trailingslashit( str_replace( '\\', '/', dirname( __FILE__ ) ) );
-          $this->url = site_url( str_replace( trailingslashit( str_replace( '\\', '/', ABSPATH ) ), '', $this->dir ) );
+        if ( empty( $this->extension_dir ) ) {
+          $this->extension_dir = trailingslashit( str_replace( '\\', '/', dirname( __FILE__ ) ) );
+          $this->extension_url = site_url( str_replace( trailingslashit( str_replace( '\\', '/', ABSPATH ) ), '', $this->extension_dir ) );
         }
         
 
@@ -97,6 +97,10 @@ if( !class_exists( 'ReduxFramework_extension_edd' ) ) {
         add_filter( 'redux/field/class/edd', array( &$this, 'overload_edd_field_path' ) ); // Adds the local field
 
         add_action( 'wp_ajax_redux_edd_'.$parent->args['opt_name'].'_license', array( &$this, 'license_call' ) );
+
+        if ( !wp_next_scheduled( 'redux_'.$parent->args['opt_name'].'_edd' ) ) {
+          wp_schedule_event( time(), 'daily', 'check_status ' );
+        }
 
       }
 
