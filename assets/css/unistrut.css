@@ -164,7 +164,7 @@ nav.footer .twitter a{display:block;width:16px;height:16px;overflow:hidden;text-
 nav.footer .facebook a{display:block;width:16px;height:16px;overflow:hidden;text-indent:-9999px;background:url(http://atkore.com/wp-content/themes/burakoff/images/icon-facebook.png);border:none;float:left}
 nav.footer .linked_in a{display:block;width:16px;height:16px;overflow:hidden;text-indent:-9999px;background:url(http://atkore.com/wp-content/themes/burakoff/images/icon-linkedin.png);border:none;float:left}
 nav.footer .youtube a{display:block;width:16px;height:16px;overflow:hidden;text-indent:-9999px;background:url(http://atkore.com/wp-content/themes/burakoff/images/icon-youtube.png);border:none;float:left}
-@media (min-width:768px){.social-menu-wrap{display:block;margin:0 auto;clear:both;width:100%;float:none !important}}@media (min-width:992px){}@media (min-width:1200px){.social-menu-wrap{margin-right:7%}}.social-menu-wrap #menu-socials{clear:both;float:none !important}
+@media (max-width:768px){.social-menu-wrap{display:block;margin:0 auto;clear:both;width:100%;float:none !important}}@media (min-width:992px){}@media (min-width:1200px){.social-menu-wrap{margin-right:7%}}.social-menu-wrap #menu-socials{clear:both;float:none !important}
 .footer-menu-wrap{margin-left:7%}
 nav.footer ul.footer{margin:0;padding:0;float:left}
 nav.footer ul.footer li::before{content:"|";color:#000;margin:0 10px}
