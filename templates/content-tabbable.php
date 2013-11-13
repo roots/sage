@@ -42,28 +42,29 @@
             <?php the_sub_field("tab_content"); ?>
           <?php elseif(get_row_layout() == "product_information_tab"): ?>
 						<div class="panel panel-default">
-					  <!-- Default panel contents -->
-					  <?php if( get_sub_field('panel_heading') ) { ?><div class="panel-heading"><?php the_sub_field('panel_heading'); ?></div><?php } ?>
-					  <div class="panel-body">
-					  <?php if( get_sub_field('panel_body') ) { the_sub_field('panel_body'); } ?>
-					  <?php /* if( get_sub_field('tab_image') ) { ?>
-							<?php
-								$attachment_id = get_sub_field('tab_image');
-								$size = "full"; // (thumbnail, medium, large, full or custom size)
-								 
-								$image = wp_get_attachment_image_src( $attachment_id, $size );
-								// url = $image[0];
-								// width = $image[1];
-								// height = $image[2];
-								?>
-								<div class="pull-right wrap-product-photo"><img class="img-thumbnail"  src="<?php echo $image[0]; ?>" /></div>
-						<?php } */ ?>
-					  </div>
-					  <!-- Table -->
-            <div class="table-responsive">
-            	<?php the_sub_field("tab_content"); ?>
-            </div>
-						<?php if( get_sub_field('panel_footer') ) { ?><div class="panel-footer"><?php the_sub_field('panel_footer'); ?></div><?php } ?>
+						  <!-- Default panel contents -->
+						  <?php if( get_sub_field('panel_heading') ) { ?><div class="panel-heading"><?php the_sub_field('panel_heading'); ?></div><?php } ?>
+						  
+						  <?php if( get_sub_field('panel_body') ) { ?><div class="panel-body"><?php the_sub_field('panel_body');?></div><?php } ?>
+						  <?php /* if( get_sub_field('tab_image') ) { ?>
+								<?php
+									$attachment_id = get_sub_field('tab_image');
+									$size = "full"; // (thumbnail, medium, large, full or custom size)
+									 
+									$image = wp_get_attachment_image_src( $attachment_id, $size );
+									// url = $image[0];
+									// width = $image[1];
+									// height = $image[2];
+									?>
+									<div class="pull-right wrap-product-photo"><img class="img-thumbnail"  src="<?php echo $image[0]; ?>" /></div>
+							<?php } */ ?>
+						  
+						  <!-- Table -->
+	            <div class="table-responsive">
+	            	<?php the_sub_field("tab_content"); ?>
+	            </div>
+							<?php if( get_sub_field('panel_footer') ) { ?><div class="panel-footer"><?php the_sub_field('panel_footer'); ?></div><?php } ?>
+						</div>
           <?php elseif(get_row_layout() == "normal_tab"): ?>
 						<?php if( get_sub_field('tab_image') ) { ?>
 							<?php
