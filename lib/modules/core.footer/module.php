@@ -57,6 +57,10 @@ function shoestrap_module_footer_options( $sections ) {
     'desc'        => 'Select the border options for your Footer',
     'id'          => 'footer_border_top',
     'type'        => 'border',
+    'all'         => false, 
+    'left'        => false, 
+    'bottom'      => false, 
+    'right'       => false,
     'default'     => array( 
       'border-width'     => '2',
       'border-style'     => 'solid',

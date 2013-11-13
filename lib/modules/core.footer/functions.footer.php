@@ -21,8 +21,8 @@ function shoestrap_footer_css() {
       $style .= 'background:' . $bg . ';';
     endif;
 
-    if ( !empty($border) && $border['border-width'] > 0 && !empty($border['border-color']) ) :
-      $style .= 'border-top:' . $border['border-width'] . ' ' . $border['border-style'] . ' ' . $border['border-color'] . ';';
+    if ( !empty($border) && $border['border-top'] > 0 && !empty($border['border-color']) ) :
+      $style .= 'border-top:' . $border['border-top'] . ' ' . $border['border-style'] . ' ' . $border['border-color'] . ';';
     endif;
 
     $style .= 'padding: 18px 10px 18px;';
