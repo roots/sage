@@ -226,6 +226,10 @@ function shoestrap_module_jumbotron_options($sections) {
     'desc'      => __('Select the border options for your Jumbotron', 'shoestrap'),
     'id'        => 'jumbotron_border_bottom',
     'type'      => 'border',
+    'all'       => false, 
+    'left'      => false, 
+    'top'       => false, 
+    'right'     => false,
     'default'   => array(
       'border-width'    => '0',
       'border-style'    => 'solid',
