@@ -25,7 +25,7 @@ function roots_title() {
       $author = get_queried_object();
       return sprintf(__('Author Archives: %s', 'roots'), $author->display_name);
     } else {
-      return single_cat_title('',false);
+      return single_cat_title('', false);
     }
   } elseif (is_search()) {
     return sprintf(__('Search Results for %s', 'roots'), get_search_query());
