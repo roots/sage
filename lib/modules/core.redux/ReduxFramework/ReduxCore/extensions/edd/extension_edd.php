@@ -98,10 +98,6 @@ if( !class_exists( 'ReduxFramework_extension_edd' ) ) {
 
         add_action( 'wp_ajax_redux_edd_'.$parent->args['opt_name'].'_license', array( &$this, 'license_call' ) );
 
-        if ( !wp_next_scheduled( 'redux_'.$parent->args['opt_name'].'_edd' ) ) {
-          wp_schedule_event( time(), 'daily', 'check_status ' );
-        }
-
       }
 
       function license_call() {
@@ -159,6 +155,9 @@ if( !class_exists( 'ReduxFramework_extension_edd' ) ) {
 
       // Forces the use of the embeded field path vs what the core typically would use    
       public function overload_edd_field_path($field) {
+        print_r($field);
+
+
         return dirname(__FILE__).'/field_edd.php';
       }
 

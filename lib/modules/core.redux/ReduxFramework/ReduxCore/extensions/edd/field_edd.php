@@ -69,7 +69,7 @@ if( !class_exists( 'ReduxFramework_edd' ) ) {
 				'status' 	=> '',
 			);
 
-			$this->value = wp_parse_args( $this->value, $defaults );     
+			$this->value = wp_parse_args( $this->value, $defaults );
 
 			echo '<input data-id="'.$this->field['id'].'" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][license]"  id="' . $this->field['id'] . '-license" class="redux-edd ' . $this->field['class'] . '"  type="text" value="' . $this->value['license'] . '" " />'; 
 			echo '<input type="hidden" data-id="'.$this->field['id'].'" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][status]" id="' . $this->field['id'] . '-status" class="redux-edd ' . $this->field['class'] . '" type="text" value="' . $this->value['status'] . '" " />'; 

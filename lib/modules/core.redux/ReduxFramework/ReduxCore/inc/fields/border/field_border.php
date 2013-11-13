@@ -84,7 +84,7 @@ class ReduxFramework_border extends ReduxFramework{
 		echo '<input type="hidden" class="field-units" value="px">';
 
 		if ( isset( $this->field['all'] ) && $this->field['all'] == true ) {
-			echo '<div class="field-border-input input-prepend"><span class="add-on"><i class="icon-fullscreen icon-large"></i></span><input type="text" class="redux-border-all redux-border-input mini'.$this->field['class'].'" placeholder="'.__('All','redux-framework').'" rel="'.$this->field['id'].'-all" value="'.$this->value['top'].'"></div>';
+			echo '<div class="field-border-input input-prepend"><span class="add-on"><i class="el-icon-fullscreen icon-large"></i></span><input type="text" class="redux-border-all redux-border-input mini'.$this->field['class'].'" placeholder="'.__('All','redux-framework').'" rel="'.$this->field['id'].'-all" value="'.$this->value['top'].'"></div>';
 		}
 
 		echo '<input type="hidden" class="redux-border-value" id="'.$this->field['id'].'-top" name="'.$this->args['opt_name'].'['.$this->field['id'].'][border-top]" value="' . ( $this->value['top'] ? $this->value['top'] . 'px' : '' ) . '">';
@@ -97,28 +97,28 @@ class ReduxFramework_border extends ReduxFramework{
 			Top
 			**/
 			if ($this->field['top'] === true):
-				echo '<div class="field-border-input input-prepend"><span class="add-on"><i class="icon-arrow-up icon-large"></i></span><input type="text" class="redux-border-top redux-border-input mini'.$this->field['class'].'" placeholder="'.__('Top','redux-framework').'" rel="'.$this->field['id'].'-top" value="'.$this->value['top'].'"></div>';
+				echo '<div class="field-border-input input-prepend"><span class="add-on"><i class="el-icon-arrow-up icon-large"></i></span><input type="text" class="redux-border-top redux-border-input mini'.$this->field['class'].'" placeholder="'.__('Top','redux-framework').'" rel="'.$this->field['id'].'-top" value="'.$this->value['top'].'"></div>';
 		  	endif;
 
 			/**
 			Right
 			**/
 			if ($this->field['right'] === true):
-				echo '<div class="field-border-input input-prepend"><span class="add-on"><i class="icon-arrow-right icon-large"></i></span><input type="text" class="redux-border-right redux-border-input mini'.$this->field['class'].'" placeholder="'.__('Right','redux-framework').'" rel="'.$this->field['id'].'-right" value="'.$this->value['right'].'"></div>';
+				echo '<div class="field-border-input input-prepend"><span class="add-on"><i class="el-icon-arrow-right icon-large"></i></span><input type="text" class="redux-border-right redux-border-input mini'.$this->field['class'].'" placeholder="'.__('Right','redux-framework').'" rel="'.$this->field['id'].'-right" value="'.$this->value['right'].'"></div>';
 		  	endif;
 
 			/**
 			Bottom
 			**/
 			if ($this->field['bottom'] === true):
-				echo '<div class="field-border-input input-prepend"><span class="add-on"><i class="icon-arrow-down icon-large"></i></span><input type="text" class="redux-border-bottom redux-border-input mini'.$this->field['class'].'" placeholder="'.__('Bottom','redux-framework').'" rel="'.$this->field['id'].'-bottom" value="'.$this->value['bottom'].'"></div>';
+				echo '<div class="field-border-input input-prepend"><span class="add-on"><i class="el-icon-arrow-down icon-large"></i></span><input type="text" class="redux-border-bottom redux-border-input mini'.$this->field['class'].'" placeholder="'.__('Bottom','redux-framework').'" rel="'.$this->field['id'].'-bottom" value="'.$this->value['bottom'].'"></div>';
 		  	endif;
 
 			/**
 			Left
 			**/
 			if ($this->field['left'] === true):
-				echo '<div class="field-border-input input-prepend"><span class="add-on"><i class="icon-arrow-left icon-large"></i></span><input type="text" class="redux-border-left redux-border-input mini'.$this->field['class'].'" placeholder="'.__('Left','redux-framework').'" rel="'.$this->field['id'].'-left" value="'.$this->value['left'].'"></div>';
+				echo '<div class="field-border-input input-prepend"><span class="add-on"><i class="el-icon-arrow-left icon-large"></i></span><input type="text" class="redux-border-left redux-border-input mini'.$this->field['class'].'" placeholder="'.__('Left','redux-framework').'" rel="'.$this->field['id'].'-left" value="'.$this->value['left'].'"></div>';
 		  	endif;		
 
 		endif;
