@@ -5,33 +5,33 @@
 function roots_title() {
   if (is_home()) {
     if (get_option('page_for_posts', true)) {
-      echo get_the_title(get_option('page_for_posts', true));
+      return get_the_title(get_option('page_for_posts', true));
     } else {
-      _e('Latest Posts', 'roots');
+      return __('Latest Posts', 'roots');
     }
   } elseif (is_archive()) {
     $term = get_term_by('slug', get_query_var('term'), get_query_var('taxonomy'));
     if ($term) {
-      echo apply_filters('single_term_title', $term->name);
+      return apply_filters('single_term_title', $term->name);
     } elseif (is_post_type_archive()) {
-      echo apply_filters('the_title', get_queried_object()->labels->name);
+      return apply_filters('the_title', get_queried_object()->labels->name);
     } elseif (is_day()) {
-      printf(__('Daily Archives: %s', 'roots'), get_the_date());
+      return sprintf(__('Daily Archives: %s', 'roots'), get_the_date());
     } elseif (is_month()) {
-      printf(__('Monthly Archives: %s', 'roots'), get_the_date('F Y'));
+      return sprintf(__('Monthly Archives: %s', 'roots'), get_the_date('F Y'));
     } elseif (is_year()) {
-      printf(__('Yearly Archives: %s', 'roots'), get_the_date('Y'));
+      return sprintf(__('Yearly Archives: %s', 'roots'), get_the_date('Y'));
     } elseif (is_author()) {
       $author = get_queried_object();
-      printf(__('Author Archives: %s', 'roots'), $author->display_name);
+      return sprintf(__('Author Archives: %s', 'roots'), $author->display_name);
     } else {
-      single_cat_title();
+      return single_cat_title('', false);
     }
   } elseif (is_search()) {
-    printf(__('Search Results for %s', 'roots'), get_search_query());
+    return sprintf(__('Search Results for %s', 'roots'), get_search_query());
   } elseif (is_404()) {
-    _e('Not Found', 'roots');
+    return __('Not Found', 'roots');
   } else {
-    the_title();
+    return get_the_title();
   }
 }
