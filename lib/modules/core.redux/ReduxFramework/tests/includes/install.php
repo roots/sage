@@ -2,7 +2,6 @@
 /**
  * Installs Redux Framework for the purpose of the unit-tests
  */
-error_reporting( E_ALL & ~E_DEPRECATED & ~E_STRICT );
 
 echo "Welcome to the Redux Framework Test Suite" . PHP_EOL;
 echo "Version: 1.0" . PHP_EOL;

@@ -155,8 +155,6 @@ if( !class_exists( 'ReduxFramework_extension_edd' ) ) {
 
       // Forces the use of the embeded field path vs what the core typically would use    
       public function overload_edd_field_path($field) {
-        print_r($field);
-
 
         return dirname(__FILE__).'/field_edd.php';
       }
