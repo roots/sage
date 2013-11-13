@@ -164,7 +164,7 @@ if(function_exists("register_field_group"))
 								'placeholder' => '',
 								'prepend' => '',
 								'append' => '',
-								'formatting' => 'none',
+								'formatting' => 'html',
 								'maxlength' => '',
 							),
 						),

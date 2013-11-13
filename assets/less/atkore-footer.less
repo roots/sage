@@ -36,6 +36,12 @@ footer .col-lg-12 section {
 .socials {
   margin-top: 5px;
   margin-bottom: 0;
+  	@media (max-width: @screen-sm) {
+			padding-left: 0;
+  	}
+  	@media (max-width: @screen-md) {
+			padding-left: 0;
+  	}
 }
 
 
@@ -48,14 +54,31 @@ nav.footer {
   .radius-more;
   height: 30px;
   max-height: 30px;
-border: 1px solid #ddd;
-border-radius: 15px;
--moz-border-radius: 15px;
--webkit-border-radius: 15px;
-text-align: center;
-background: #ddd;
-width: 50%;
-font-size: 12px;
+	border: 1px solid #ddd;
+	border-radius: 15px;
+	-moz-border-radius: 15px;
+	-webkit-border-radius: 15px;
+	text-align: center;
+	background: #ddd;
+	width: 50%;
+	font-size: 12px;
+	@media (max-width: @screen-sm) {
+		span {
+			float: none!important;
+		}
+	}
+}
+
+#menu-footer {
+	@media (max-width: @screen-sm) {
+		margin-left: -7%!important;
+	}
+}
+
+#brands-footer {
+	@media (max-width: @screen-md) {
+		padding-top: 30px;
+	}
 }
 
 body[class*="unistrutfallprotection"] nav.footer {
@@ -126,14 +149,23 @@ float: left;
 					width: 100%;
 					float: none!important;
 				}
-				@media (min-width: @screen-md) {
-
+				@media (max-width: @screen-md) {
+					margin: 0 auto;
+					float: none!important;
+					width: 100%;
+	    		margin-right: 7%;
+	    		margin-top: 50px;
+	    		margin-bottom: 25px;
+				}
+				@media (min-width: @screen-md) and (max-width: @screen-md-max) {
+					margin-right: 20px;
 				}
 				@media (min-width: @screen-lg) {
-	    		margin-right: 7%;
+					margin-right: 20px;
 				}
 		#menu-socials {
-				clear: both;float: none!important;
+				clear: both;
+				float: none!important;
 		}
 }
 

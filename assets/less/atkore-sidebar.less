@@ -46,7 +46,7 @@
   }
   
 	// Round the first and last items
-  li:first-child a {
+  li:first-child > a {
     .border-top-radius(@list-group-border-radius);
   }
   li:last-child > a {
@@ -83,6 +83,10 @@
 			transform:rotate(-90deg);
 			-ms-transform:rotate(-90deg); /* IE 9 */
 			-webkit-transform:rotate(-90deg); /* Safari and Chrome */
+    }
+    
+    li.active .caret {
+	    border-color: @list-group-active-border!important;
     }
     
 }

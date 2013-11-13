@@ -1,27 +1,25 @@
 <?php
-$metaquery = array(
+$metaquery              = array(
         array(
-            'key' => 'include_in_footer', // name of custom field
-            'value' => '1', // matches exaclty "red", not just red. This prevents a match for "acquired"
-            'compare' => 'LIKE'
+            'key'       => 'include_in_footer',
+            'value'     => '1',
+            'compare'   => 'LIKE'
         ));
-$posttype = 'brand';
-$number_of_posts = 18;
-$startframe = 0;
-$args = array(
-  'post_type'     => $posttype,
-  'posts_per_page' => $number_of_posts,
-  'orderby' => 'rand',
-  'meta_query' => $metaquery,
+$posttype               = 'brand';
+$number_of_posts        = -1;
+$startframe             = 0;
+$args                   = array(
+  'post_type'           => $posttype,
+  'posts_per_page'      => $number_of_posts,
+  'orderby'             => 'rand',
+  'meta_query'        => $metaquery,
 );
-$the_query = new WP_Query( $args );
-$classes = '';
+$the_query              = new WP_Query( $args );
+$classes                = 'item';
 ?>
 <div class="container">
   <div id="carousel-brands" class="carousel slide">
     <div class="carousel-inner">
-      <div class="fade-block white left reset-filter"></div>
-      <div class="fade-block white right reset-filter"></div>
     <?php $i = 0 ?>
       <div class="item active">
         <div class="row">
@@ -56,10 +54,12 @@ $classes = '';
 	      </div>
       </div>
     </div>
-  </div>
+    <div class="fade-block white left reset-filter"></div>
+    <div class="fade-block white right reset-filter"></div>
     <div class="carousel-control-wrapper">
       <a class="carousel-control left reset-filter" href="#carousel-brands" data-slide="prev"><img src="/assets/img/arrow-left-circle.png"></a>
       <a class="carousel-control right reset-filter" href="#carousel-brands" data-slide="next"><img src="/assets/img/arrow-right-circle.png"></a>
     </div>
+  </div>
 </div>
 <?php wp_reset_query();

@@ -273,7 +273,7 @@ body[class*="unistrutfallprotection"] #carousel-home .carousel-caption {
 			top: 0;
 			width: 75px;
 			height: 100%;
-			
+			z-index: 100;
 				&.left {
 				background-image: #ffffff;
 				background-image: -webkit-linear-gradient(right, rgba(255,255,255,0.0) 0%, rgb(255,255,255) 72%, rgb(255,255,255) 100%);
@@ -306,18 +306,20 @@ body[class*="unistrutfallprotection"] #carousel-home .carousel-caption {
 			background-repeat: no-repeat;
 			background-color: transparent;
 			margin: 45px 0 0;
+			position: absolute;
+			z-index: 1002;
 	  &.right {
 			background-image: none!important;
 			background-repeat: no-repeat;
 			background-color: transparent;
-	    right: 0;
+	    right: -60px;
 	  }
 	  &.left {
 			background-image: none!important;
 			background-repeat: no-repeat;
 			background-color: transparent;
 	    //.flipImageH;
-	    left: 0;
+	    left: -60px;
 	  }
 
 	@media (min-width: @screen-md) and (max-width: @screen-md-max) {
@@ -382,7 +384,7 @@ body[class*="unistrutfallprotection"] #carousel-home .carousel-caption {
   #carousel-brands ul li:nth-of-type(4),
   #carousel-brands ul li:nth-of-type(5),
   #carousel-brands ul li:nth-of-type(6) {
-	   @media (max-width: @screen-sm) {
+	   @media (max-width: @screen-md) {
 	   display: none;
 	   }
 	   @media (min-width: @screen-md) {
@@ -408,6 +410,8 @@ body[class*="unistrutfallprotection"] #carousel-home .carousel-caption {
 	.brand-logo-wrap {
     	width: 60%;
     	margin: 0 auto;
+    	position: relative;
+    	z-index: 101;
     @media (max-width: @screen-sm) {
 			
 	    height: @brands-carousel-height-sm;
@@ -459,6 +463,8 @@ body[class*="unistrutfallprotection"] #carousel-home .carousel-caption {
     margin-top: 0;
     margin-left: auto;
     margin-right: auto;
+    z-index: 4000;
+    position: relative;
     @media (min-width: @screen-xs) {
 	  	width: 30%;
 	    margin-left: auto;
@@ -586,8 +592,8 @@ body[class*="unistrutfallprotection"] #carousel-home .carousel-caption {
   }
   
 
-  .thumbnail-wrap,
-  img.featured-product {
+.thumbnail-wrap,
+img.featured-product {
   @media (max-width: @screen-md){
 	  margin: 0 auto;
 	  float: none;
@@ -602,6 +608,8 @@ body[class*="unistrutfallprotection"] #carousel-home .carousel-caption {
 	  @media (max-width: @screen-md){
 	  	height: 230px;
 	  	display: block;
+	  	width: 100%;
+	  	text-align: center;
 	  }
   }
   
@@ -617,6 +625,7 @@ body[class*="unistrutfallprotection"] #carousel-home .carousel-caption {
   .btn-featured {
 	  @media (max-width: @screen-md){
 		  margin: 0 auto;
+		  width: 60%;
 		  float: none;
 		  clear: both;
 		  right: 0;
