@@ -99,10 +99,10 @@
 		  margin: 0 auto;
 		  padding: 10px!important;
 			  @media (min-width: @screen-sm) {
-	    		font-size: 30px;
+	    		font-size: 21px;
 				}
 				@media (min-width: @screen-md) {
-	    		font-size: 30px;
+	    		font-size: 24px;
 				}
 				@media (min-width: @screen-lg) {
 	    		font-size: 30px;
@@ -125,82 +125,79 @@ body[class*="kaf-tech"] {
 	#carousel-wrap {
 		background-color: #fff;
 			@media (max-width: @screen-sm) {
-	  		top: 175px!important;
+	  		top: 185px!important;
 			}
 			#carousel-home {
-	 .carousel-caption {
-	 	background-color: transparent!important;
-	 	@media (min-width: @screen-md) {
-	  	bottom: 10px;
-		}
-	 .carousel-caption-wrap {
-		 h1, p {color: #000!important;}
-		 background-color: rgba(0,0,0,0.2);
-		 }
-		}
-		.item:nth-child(1) {
-			img {
-				max-width: 65%;
-				@media (max-width: @screen-xs) {
-					max-width: 35%!important;
+				.carousel-caption {
+						background-color: transparent!important;
+						@media (min-width: @screen-md) {
+							bottom: 10px;
+					}
 				}
-				@media (max-width: @screen-sm) {
-					max-width: 45%!important;
+				.carousel-caption-wrap {
+					background-color: rgba(0,0,0,0.2);
+					h1, p { color: #000!important; }
 				}
-				@media (max-width: @screen-md) {
-					max-width: 55%!important;
+				.item:nth-child(1) {
+				img {
+					max-width: 75%;
+					@media (max-width: @screen-xs) {
+						max-width: 45%!important;
+					}
+					@media (max-width: @screen-sm) {
+						max-width: 55%!important;
+					}
+					@media (max-width: @screen-md) {
+						max-width: 65%!important;
+					}
+					@media (max-width: @screen-lg) {
+						max-width: 75%!important;
+					}
 				}
-				@media (max-width: @screen-lg) {
-					max-width: 65%!important;
+				.carousel-caption {
+					@media (max-width: @screen-md) {
+						width: 100%;
+						top: 0!important;
+						bottom: auto!important;
+					}
 				}
 			}
-			.carousel-caption {
-				@media (max-width: @screen-sm) {
-					width: 100%;
-					top: 0;
-				}
-				@media (max-width: @screen-md) {
-					top: 0;
-				}
-		}
-		
-		.item:nth-child(2) {
-
+				.item:nth-child(2) {
 			.carousel-caption {
 				width: 45%;
-				@media (max-width: @screen-sm) {
+				@media (max-width: @screen-md) {
 					width: 100%;
-					top: 0;
+					top: 0!important;
+					bottom: auto!important;
 				}
 			}
 		}
-		
-		.item:nth-child(3) {
+				.item:nth-child(3) {
 			img {
-				max-width: 65%;
+				max-width: 45%;
 				@media (max-width: @screen-xs) {
-					max-width: 35%!important;
-				}
-				@media (max-width: @screen-sm) {
 					max-width: 45%!important;
 				}
-				@media (max-width: @screen-md) {
+				@media (max-width: @screen-sm) {
 					max-width: 55%!important;
+				}
+				@media (max-width: @screen-md) {
+					max-width: 60%!important;
 				}
 				@media (max-width: @screen-lg) {
 					max-width: 65%!important;
 				}
 			}
 			.carousel-caption {
-				width: 35%;
-				@media (max-width: @screen-sm) {
-					width: 100%;
-					top: 0;
+					width: 35%;
+						@media (max-width: @screen-md) {
+							width: 100%;
+							top: 0!important;
+							bottom: auto!important;
+						}
+					}
 				}
 			}
-		}
-	}
-}
 	}
 }
 
