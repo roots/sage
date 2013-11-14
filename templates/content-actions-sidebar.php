@@ -1,7 +1,8 @@
 <div class="list-group">
-  <?php if( get_field('download_pdf_button', 'options') ) { ?>
-  	<?php if(function_exists('mpdf_pdfbutton')) ?><?php { mpdf_pdfbutton(' Download as PDF', ' Download as PDF'); } ?>
-  <?php } ?>
+  <!-- <?php if( get_field('download_pdf_button', 'options') ) { ?>
+  	<!-- <?php if(function_exists('mpdf_pdfbutton')) ?><?php { mpdf_pdfbutton(' Download as PDF', ' Download as PDF'); } ?> -->
+  	<!-- <a class="btn btn-default" href="?article2pdf=1"><i class="fa fa-download"></i> Download PDF</a> -->
+   <!-- <?php } ?>-->
   <?php if( get_field('call_back_button', 'options') ) { ?>
   	<a class="list-group-item" href="#request-call-back" data-toggle="modal"><i class="fa fa-phone"></i> Request Call Back</a>
   <?php } ?>

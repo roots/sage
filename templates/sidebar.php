@@ -25,10 +25,8 @@
 <?php } ?>
 
 <?php dynamic_sidebar('sidebar-primary'); ?>
+<?php get_template_part('templates/call-to-action', 'sidebar'); ?>
 <?php get_template_part('templates/content', 'actions-sidebar'); ?>
-
-<div class="">
 <?php get_template_part('templates/content', 'twitter'); ?>
-</div>
 
 <?php } ?>

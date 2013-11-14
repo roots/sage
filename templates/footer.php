@@ -1,4 +1,9 @@
 <footer class="content-info" role="contentinfo">
+  <?php if ( is_front_page() ) {
+    if( get_field('homepage_call_to_action', 'options') ) { ?>
+        <?php get_template_part('templates/call-to-action', 'home'); ?>
+    <?php } ?>
+  <?php } ?>
   <div id="sidebar-footer" class="container">
     <?php if ( is_front_page() ) : ?>
     <div class="row">
