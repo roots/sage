@@ -7096,3 +7096,6 @@ li.dropdown ul.dropdown-menu li.dropdown.pull-left {
 html {
   overflow-x: hidden;
 }
+ul.comment {
+  padding-left: 0;
+}
