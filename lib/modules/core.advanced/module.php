@@ -31,7 +31,7 @@ function shoestrap_module_advanced_options( $sections ) {
 
   $fields[] = array( 
     'title'     => __( 'Post excerpt length', 'shoestrap' ),
-    'desc'      => __( 'Select the height of your featured images on post archives. Default: 40px', 'shoestrap' ),
+    'desc'      => __( 'Choose how many words should be used for post excerpt. Default: 40', 'shoestrap' ),
     'id'        => 'post_excerpt_length',
     'default'   => 40,
     'min'       => 10,
