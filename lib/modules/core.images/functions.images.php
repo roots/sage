@@ -39,7 +39,7 @@ function shoestrap_featured_image() {
   
   $image = shoestrap_image_resize( $data );
 
-  echo '<a href="' . get_permalink() . '"><img src="' . $image['url'] . '" /></a>';
+  echo '<a href="' . get_permalink() . '"><img class="featured-image" src="' . $image['url'] . '" /></a>';
   
 }
 endif;
