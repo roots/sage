@@ -51,12 +51,14 @@ function shoestrap_remove_featured_image_per_post_type() {
   $post_type_options = shoestrap_getVariable( 'feat_img_per_post_type' );
 
   foreach ( $post_types as $post_type ) :
-    if ( $post_type_options[$post_type] != 1 ) :
-      // Add actions for single posts
-      if ( is_singular( $post_type ) ) :
-        add_action( 'shoestrap_page_pre_content', 'shoestrap_featured_image' );
-        add_action( 'shoestrap_single_pre_content', 'shoestrap_featured_image' );
-      endif;
+    // Simply prevents "illegal string offset" messages
+    if ( !isset( $post_type_options[$post_type] ) ) :
+      $post_type_options[$post_type] = 0;
+    endif;
+
+    if ( isset( $post_type ) && is_singular( $post_type ) ) :
+      add_action( 'shoestrap_page_pre_content', 'shoestrap_featured_image' );
+      add_action( 'shoestrap_single_pre_content', 'shoestrap_featured_image' );
     endif;
   endforeach;
 }
