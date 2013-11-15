@@ -72,7 +72,7 @@ function shoestrap_module_advanced_options( $sections ) {
 
   $fields[] = array( 
     'title'     => __( 'Google Analytics ID', 'shoestrap' ),
-    'desc'      => __( 'Paste your Google Analytics ID here to enable analytics tracking. Your user ID should be in the form of UA-XXXXX-Y.', 'shoestrap' ),
+    'desc'      => __( 'Paste your Google Analytics ID here to enable analytics tracking. Only Universal Analytics properties. Your user ID should be in the form of UA-XXXXX-Y.', 'shoestrap' ),
     'id'        => 'analytics_id',
     'default'   => '',
     'type'      => 'text',
