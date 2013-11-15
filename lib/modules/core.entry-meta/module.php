@@ -13,36 +13,29 @@ function shoestrap_module_meta_config( $sections ) {
   // Branding Options
   $section = array(
     'title' => __( 'Post Meta', 'shoestrap' ),
-    'icon' => 'el-icon-time icon-large'
+    'icon'  => 'el-icon-time icon-large'
   );
 
-  $fields[] = array( 
-    
+  $fields[] = array(
     'id'          => 'shoestrap_entry_meta_config',
-    
     'title'       => __( 'Activate and order elements', 'shoestrap' ),
-     
-    'options'     => array(    
+    'options'     => array(
       "disabled"  => array (
         "tags"    => "Tags",
         "sticky"  => "Sticky"
-      ), 
-    
-      "enabled" => array (
-        "date"  => "Date",
-        "category"  => "Category",
+      ),
+      "enabled"   => array (
+        "date"    => "Date",
+        "category"=> "Category",
         "author"  => "Author",
       )
     ),
-  
     'type'        => 'sorter'
-    );
-
+  );
   $section['fields'] = $fields;
-
   $section = apply_filters( 'shoestrap_module_meta_config_modifier', $section );
-  
   $sections[] = $section;
+
   return $sections;
 }
 endif;
