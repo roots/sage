@@ -1,4 +1,5 @@
 ### HEAD
+* Switch `div.main` to `main` element now that Modernizr uses the latest HTML5 Shiv
 * Update to Modernizr 2.7.0
 * Don't run JSHint on plugins (`assets/js/plugins/`)
 * Disable warnings about undefined variables (JSHint)
