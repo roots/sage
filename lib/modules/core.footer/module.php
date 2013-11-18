@@ -53,18 +53,19 @@ function shoestrap_module_footer_options( $sections ) {
   );
 
   $fields[] = array( 
-    'title'       => 'Footer Top Border',
+    'title'       => 'Footer Border',
     'desc'        => 'Select the border options for your Footer',
-    'id'          => 'footer_border_top',
+    'id'          => 'footer_border',
     'type'        => 'border',
     'all'         => false, 
     'left'        => false, 
     'bottom'      => false, 
     'right'       => false,
-    'default'     => array( 
-      'border-width'     => '2',
-      'border-style'     => 'solid',
-      'border-color'     => '#4B4C4D',
+    'default'     => array(
+      'border-top'      => '0',
+      'border-bottom'   => '0',
+      'border-style'    => 'solid',
+      'border-color'    => '#4B4C4D',
     ),
     // 'required'    => array('advanced_toggle','=',array('1'))
   );

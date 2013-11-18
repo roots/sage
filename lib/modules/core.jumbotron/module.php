@@ -222,16 +222,17 @@ function shoestrap_module_jumbotron_options($sections) {
   );
 
   $fields[] = array(
-    'title'     => 'Jumbotron Bottom Border',
+    'title'     => 'Jumbotron Border',
     'desc'      => __('Select the border options for your Jumbotron', 'shoestrap'),
-    'id'        => 'jumbotron_border_bottom',
+    'id'        => 'jumbotron_border',
     'type'      => 'border',
     'all'       => false, 
     'left'      => false, 
     'top'       => false, 
     'right'     => false,
     'default'   => array(
-      'border-width'    => '0',
+      'border-top'      => '0',
+      'border-bottom'   => '0',
       'border-style'    => 'solid',
       'border-color'    => '#428bca',
     ),
