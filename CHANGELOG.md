@@ -1,4 +1,5 @@
 ### HEAD
+* Update to Modernizr 2.7.0
 * Don't run JSHint on plugins (`assets/js/plugins/`)
 * Disable warnings about undefined variables (JSHint)
 * Merge in updates from HTML5 Boilerplate
