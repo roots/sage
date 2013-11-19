@@ -11,14 +11,19 @@ function shoestrap_core_licencing_options( $sections ) {
     'title'     => __( 'Licencing', 'shoestrap' ),
     'icon'      => 'el-icon-repeat-alt icon-large',
   );
-
+  $theme = wp_get_theme();
   $fields[] = array( 
-    'name'      => __( 'Shoestrap Theme Licence', 'shoestrap' ),
-    'desc'      => __( 'Enter your shoestrap licence to enable automatic updates.', 'shoestrap' ) . ' ' . shoestrap_licence_status_label(),
-    'id'        => 'shoestrap_license_key',
-    'default'   => '',
-    'type'      => 'edd',
-    // 'validate_callback' => 'shoestrap_licence_callback_function',
+    'name'            => __( 'Shoestrap Theme Licence', 'shoestrap' ),
+    'id'              => 'shoestrap_license_key',
+    'default'         => '',
+    'type'            => 'edd_license',
+    'mode'            => 'theme', // theme|plugin
+    'path'            => '', // Path to the plugin/template main file
+    'remote_api_url'  => 'http://shoestrap.org',    // our store URL that is running EDD
+    'version'         => $theme->get( 'Version' ), // current version number
+    'item_name'       => $theme->get( 'Name' ), // name of this theme
+    'author'          => $theme->get( 'Author' ), // author of this theme
+    'field_id'        => "shoestrap_license_key", // ID of the field used by EDD
   );
 
   $section['fields'] = $fields;
@@ -29,7 +34,10 @@ function shoestrap_core_licencing_options( $sections ) {
   return $sections;
 
 }
+
 add_filter( 'redux-sections-' . REDUX_OPT_NAME, 'shoestrap_core_licencing_options', 200 ); 
+
+//add_action( 'wp_ajax_redux_edd_'.$parent->args['opt_name'].'_license', array( &$this, 'license_call' ) );
 
 endif;
 

@@ -22,7 +22,10 @@
 // Exit if accessed directly
 if( !defined( 'ABSPATH' ) ) exit;
 
-
+if ( !function_exists( 'wp_get_current_user' ) ) {
+    // Fix from @kprovance. Bug #265.
+    require( ABSPATH . WPINC . '/pluggable.php' );
+}
 
 // Don't duplicate me!
 if( !class_exists( 'ReduxFramework' ) ) {
@@ -42,10 +45,11 @@ if( !class_exists( 'ReduxFramework' ) ) {
         static function init() {
 
 			// Windows-proof constants: replace backward by forward slashes. Thanks to: @peterbouwmeester
-			self::$_dir      = trailingslashit( str_replace( '\\', '/', dirname( __FILE__ ) ) );
+			self::$_dir     = trailingslashit( str_replace( '\\', '/', dirname( __FILE__ ) ) );
 			$wp_content_dir = trailingslashit( str_replace( '\\', '/', WP_CONTENT_DIR ) );
 			$relative_url   = str_replace( $wp_content_dir, '', self::$_dir );
-			self::$_url      = trailingslashit( WP_CONTENT_URL ) . $relative_url;
+			$wp_content_url = ( is_ssl() ? str_replace( 'http://', 'https://', WP_CONTENT_URL ) : WP_CONTENT_URL );
+			self::$_url     = trailingslashit( $wp_content_url ) . $relative_url;
 
 /**
         Still need to port these.
@@ -242,6 +246,7 @@ if( !class_exists( 'ReduxFramework' ) ) {
             $defaults['page_position']      = null;
             $defaults['enqueue']      		= true;
             $defaults['allow_sub_menu']     = true;
+            $defaults['save_defaults']      = true; // Save defaults to the DB on it if empty
             $defaults['show_import_export'] = true; // REMOVE
             $defaults['dev_mode']           = false; // REMOVE
             $defaults['system_info']        = false; // REMOVE
@@ -316,6 +321,12 @@ if( !class_exists( 'ReduxFramework' ) ) {
             // Load plugin text domain
             add_action( 'wp_loaded', array( &$this, '_internationalization' ) );
             
+            // Fix for the GT3 page builder: http://www.gt3themes.com/wordpress-gt3-page-builder-plugin/
+            global $pagenow;
+            if ($pagenow === "admin.php") {
+                remove_action('admin_init', 'pb_admin_init');
+            }
+
         }
 
         /**
@@ -509,7 +520,10 @@ if( !class_exists( 'ReduxFramework' ) ) {
                         if (empty($args)) {
                             $args = array();
                         }
-                        $terms = get_terms($taxonomies, $args); // this will get nothing
+                        if (empty($args['args'])) {
+                            $args['args'] = array();
+                        }                        
+                        $terms = get_terms($taxonomies, $args['args']); // this will get nothing
                         if (!empty($terms)) {       
                             foreach ( $terms as $term ) {
                                 $data[$term->term_id] = $term->name;
@@ -553,7 +567,14 @@ if( !class_exists( 'ReduxFramework' ) ) {
 						/** @global WP_Roles $wp_roles */
 						global $wp_roles;
                         $data = $wp_roles->get_names();
-					}else if ($type == "capabilities") {
+					}else if ($type == "sidebars" || $type == "sidebar") {
+                        /** @global array $wp_registered_sidebars */
+                        global $wp_registered_sidebars;
+                        foreach ($wp_registered_sidebars as $key=>$value) {
+                            $data[$key] = $value['name'];
+                        }
+                    }else if ($type == "capabilities") {
+						/** @global WP_Roles $wp_roles */
 						global $wp_roles;
                         foreach( $wp_roles->roles as $role ){
                             foreach( $role['capabilities'] as $key => $cap ){
@@ -779,7 +800,9 @@ if( !class_exists( 'ReduxFramework' ) ) {
 		    // Set defaults if empty
 		    if( empty( $this->options ) && !empty( $this->sections ) ) {
 				$defaults = $this->_default_values();
-				$this->set_options( $defaults );
+                if ( $this->args['save_defaults'] == true ) {
+                    $this->set_options( $defaults ); // Only save these defaults to the DB if this argument is set
+                }
 				$this->options = $defaults;
 		    }
 	    
@@ -896,7 +919,9 @@ if( !class_exists( 'ReduxFramework' ) ) {
 						if( isset( $field['type'] ) ) {
                             $field_class = 'ReduxFramework_' . $field['type'];
                             if( !class_exists( $field_class ) ) {
-                                $class_file = apply_filters( 'redux/field/class/'.$field['type'], self::$_dir . 'inc/fields/' . $field['type'] . '/field_' . $field['type'] . '.php', $field );
+                                $class_file = apply_filters( 'redux/field/class/'.$field['type'], self::$_dir . 'inc/fields/' . $field['type'] . '/field_' . $field['type'] . '.php', $field ); // REMOVE
+                                $class_file = apply_filters( 'redux/'.$this->args['opt_name'].'/field/class/'.$field['type'], self::$_dir . 'inc/fields/' . $field['type'] . '/field_' . $field['type'] . '.php', $field );
+                                
                                 if( $class_file ) {
                                     /** @noinspection PhpIncludeInspection */
                                     require_once( $class_file );
@@ -1097,7 +1122,8 @@ if( !class_exists( 'ReduxFramework' ) ) {
                             $field_class = 'ReduxFramework_' . $field['type'];
 
                             if( !class_exists( $field_class ) ) {
-                                $class_file = apply_filters( 'redux/field/class/'.$field['type'], self::$_dir . 'inc/fields/' . $field['type'] . '/field_' . $field['type'] . '.php', $field );
+                                $class_file = apply_filters( 'redux/field/class/'.$field['type'], self::$_dir . 'inc/fields/' . $field['type'] . '/field_' . $field['type'] . '.php', $field ); // REMOVE
+                                $class_file = apply_filters( 'redux/'.$this->args['opt_name'].'/field/class/'.$field['type'], self::$_dir . 'inc/fields/' . $field['type'] . '/field_' . $field['type'] . '.php', $field );
                                 if( $class_file ) {
                                     /** @noinspection PhpIncludeInspection */
                                     require_once( $class_file );
@@ -1330,7 +1356,8 @@ if( !class_exists( 'ReduxFramework' ) ) {
                         if( isset( $this->args['display_source'] ) ) {
                             $th .= '<div id="'.$field['id'].'-settings" style="display:none;"><pre>'.var_export($this->sections[$k]['fields'][$fieldk], true).'</pre></div>';
                             $th .= '<br /><a href="#TB_inline?width=600&height=800&inlineId='.$field['id'].'-settings" class="thickbox"><small>View Source</small></a>';
-                        }                           
+                        }
+                        do_action( 'redux/options/'.$this->args['opt_name'].'/field/'.$field['type'].'/register', $field);
                         add_settings_field( $fieldk . '_field', $th, array( &$this, '_field_input' ), $this->args['opt_name'] . $k . '_section_group', $this->args['opt_name'] . $k . '_section', $field ); // checkbox
                     }
                 }
@@ -1499,8 +1526,6 @@ if( !class_exists( 'ReduxFramework' ) ) {
                                 $plugin_options[$field['id']] = 0;
                         }
 
-                        if( isset( $field['type'] ) && $field['type'] == 'multi_text' ) continue; // We can't validate this yet
-
                         if( !isset( $plugin_options[$field['id']] ) || $plugin_options[$field['id']] == '' ) continue;
 
                         // Force validate of custom field types
@@ -1532,15 +1557,27 @@ if( !class_exists( 'ReduxFramework' ) ) {
                             		$options[$field['id']] = '';
                             	}
 
-                                $validation = new $validate( $field, $plugin_options[$field['id']], $options[$field['id']] );
-                                $plugin_options[$field['id']] = $validation->value;
-
-                                if( isset( $validation->error ) )
-                                    $this->errors[] = $validation->error;
-
-                                if( isset( $validation->warning) )
-                                    $this->warnings[] = $validation->warning;
-
+                                if ( isset( $plugin_options[$field['id']] ) && is_array( $plugin_options[$field['id']] ) ) {
+                                    foreach ( $plugin_options[$field['id']] as $key => $value ) {
+                                        $validation = new $validate( $field, $plugin_options[$field['id']][$key], $options[$field['id']][$key] );
+                                        $plugin_options[$field['id']][$key] = $validation->value;
+                                        if( isset( $validation->error ) ) {
+                                            $this->errors[] = $validation->error;
+                                        }
+                                        if( isset( $validation->warning) ) {
+                                            $this->warnings[] = $validation->warning;                                        
+                                        }
+                                    }
+                                } else {
+                                    $validation = new $validate( $field, $plugin_options[$field['id']], $options[$field['id']] );    
+                                    $plugin_options[$field['id']] = $validation->value;
+                                    if( isset( $validation->error ) ) {
+                                        $this->errors[] = $validation->error;
+                                    }
+                                    if( isset( $validation->warning) ) {
+                                        $this->warnings[] = $validation->warning;                                        
+                                    }                                    
+                                }
                                 continue;
                             }
                         }
@@ -1960,7 +1997,8 @@ if( !class_exists( 'ReduxFramework' ) ) {
                 $field_class = 'ReduxFramework_' . $field['type'];
 
                 if( !class_exists( $field_class ) ) {
-                    $class_file = apply_filters( 'redux/field/class/'.$field['type'], self::$_dir . 'inc/fields/' . $field['type'] . '/field_' . $field['type'] . '.php', $field );
+                    $class_file = apply_filters( 'redux/field/class/'.$field['type'], self::$_dir . 'inc/fields/' . $field['type'] . '/field_' . $field['type'] . '.php', $field ); // REMOVE
+                    $class_file = apply_filters( 'redux/'.$this->args['opt_name'].'/field/class/'.$field['type'], self::$_dir . 'inc/fields/' . $field['type'] . '/field_' . $field['type'] . '.php', $field );
                     if( $class_file ) {
                         /** @noinspection PhpIncludeInspection */
                         require_once($class_file);

@@ -37,7 +37,7 @@ if ( class_exists( 'ReduxFramework' ) ) :
   $args['menu_title']             = $theme->get( 'Name' );
   $args['display_version']        = $theme->get( 'Version' );    
   $args['page_position']          = 99;
-//  $args['database'] 			  = 'theme_mods_expanded';
+//  $args['database']         = 'theme_mods_expanded';
   $args['import_icon_class']      = 'icon-large';
   $args['system_info_icon_class'] = 'icon-large';
   $args['dev_mode_icon_class']    = 'icon-large';
@@ -52,18 +52,6 @@ if ( class_exists( 'ReduxFramework' ) ) :
     'title'   => __( 'Theme Information 2', 'shoestrap' ),
     'content' => __( '<p>This is the tab content, HTML is allowed. Tab2</p>', 'shoestrap' )
   );
-
-  
-
-  $args['edd'] = array(
-    'mode'            => 'template', // template|plugin
-    'path'            => '', // Path to the plugin/template main file
-    'remote_api_url'  => 'http://shoestrap.org',    // our store URL that is running EDD
-    'version'         => $theme->get( 'Version' ), // current version number
-    'item_name'       => $theme->get( 'Name' ), // name of this theme
-    'author'          => $theme->get( 'Author' ), // author of this theme
-    'field_id'        => "shoestrap_license_key", // ID of the field used by EDD
-    );  
 
   //Set the Help Sidebar for the options page - no sidebar by default                   
   $args['help_sidebar'] = __( '<p>This is the sidebar content, HTML is allowed.</p>', 'shoestrap' );
@@ -92,7 +80,11 @@ add_action( 'redux-compiler-'.REDUX_OPT_NAME , 'shoestrap_makecss' );
  */
 function shoestrap_tracking_additions( $options ) {
   $opt = array();
-  $options['shoestrap'] = array('title'=>'Shoestrap');
+  // This is a Shoestrap specific key. Please do not remove or use in any product
+  // that is not based on Shoestrap.
+  $options['3a91ce2622596f6b4c67e27a4a2dc313'] = array(
+    'title'=>'Shoestrap'
+  );
 
   return $options;
 }

@@ -70,10 +70,10 @@ class ReduxFramework_spacing extends ReduxFramework{
 		}
 
 		$value = array(
-			'top' => isset( $this->value[$this->field['mode'].'-top'] ) ? filter_var($this->value[$this->field['mode'].'-top'], FILTER_SANITIZE_NUMBER_INT) : filter_var($this->value['top'], FILTER_SANITIZE_NUMBER_INT),
-			'right' => isset( $this->value[$this->field['mode'].'-right'] ) ? filter_var($this->value[$this->field['mode'].'-right'], FILTER_SANITIZE_NUMBER_INT) : filter_var($this->value['right'], FILTER_SANITIZE_NUMBER_INT),
-			'bottom' => isset( $this->value[$this->field['mode'].'-bottom'] ) ? filter_var($this->value[$this->field['mode'].'-bottom'], FILTER_SANITIZE_NUMBER_INT) : filter_var($this->value['bottom'], FILTER_SANITIZE_NUMBER_INT),
-			'left' => isset( $this->value[$this->field['mode'].'-left'] ) ? filter_var($this->value[$this->field['mode'].'-left'], FILTER_SANITIZE_NUMBER_INT) : filter_var($this->value['left'], FILTER_SANITIZE_NUMBER_INT)
+			'top' => isset( $this->value[$this->field['mode'].'-top'] ) ? filter_var($this->value[$this->field['mode'].'-top'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION) : filter_var($this->value['top'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION),
+			'right' => isset( $this->value[$this->field['mode'].'-right'] ) ? filter_var($this->value[$this->field['mode'].'-right'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION) : filter_var($this->value['right'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION),
+			'bottom' => isset( $this->value[$this->field['mode'].'-bottom'] ) ? filter_var($this->value[$this->field['mode'].'-bottom'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION) : filter_var($this->value['bottom'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION),
+			'left' => isset( $this->value[$this->field['mode'].'-left'] ) ? filter_var($this->value[$this->field['mode'].'-left'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION) : filter_var($this->value['left'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION)
 		);
 		
 		if ( isset( $this->field['units'] ) && !in_array( $this->field['units'], array( '', false, '%', 'in', 'cm', 'mm', 'em', 'ex', 'pt', 'pc', 'px' ) ) ) {

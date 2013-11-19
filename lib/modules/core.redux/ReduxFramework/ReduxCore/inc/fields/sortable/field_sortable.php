@@ -72,7 +72,7 @@ class ReduxFramework_sortable {
             }
             echo '<input rel="'.$this->field['id'].'-'.$k.'-hidden" class="' . $class . '" '.$checked.'type="'.$this->field['mode'].'" id="' . $this->field['id'] . '[' . $k . ']" name="'.$name.'" value="' . esc_attr($value_display) . '" placeholder="' . $nicename . '" />';
 
-            echo '<span class="compact drag"><i class="icon-move icon-large"></i></span>';
+            echo '<span class="compact drag"><i class="el-icon-move icon-large"></i></span>';
             if ( $this->field['mode'] == "checkbox" || (isset( $this->field['label'] ) && $this->field['label'] == true ) ) {
                 if ( $this->field['mode'] != "checkbox" ) {
                     echo "<br />";

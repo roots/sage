@@ -64,9 +64,9 @@ if( !class_exists( 'ReduxFramework_link_color' ) ) {
         public function render() {
 
             $defaults = array(
-                'show_regular' => true,
-                'show_hover' => true,
-                'show_active' => true
+                'regular' => true,
+                'hover' => true,
+                'active' => true
             );
             $this->field = wp_parse_args( $this->field, $defaults );
 
@@ -79,19 +79,19 @@ if( !class_exists( 'ReduxFramework_link_color' ) ) {
             $this->value = wp_parse_args( $this->value, $defaults );
             $this->field['default'] = wp_parse_args( $this->field['default'], $defaults );
 
-            if ($this->field['show_regular'] === true):
+            if ($this->field['regular'] == true):
 
             echo '<strong>' . __( 'Regular', 'redux-framework' ) . '</strong>&nbsp;<input id="' . $this->field['id'] . '-regular" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][regular]" value="'.$this->value['regular'].'" class="redux-color redux-color-init ' . $this->field['class'] . '"  type="text" data-default-color="' . $this->field['default']['regular'] . '" />&nbsp;&nbsp;&nbsp;&nbsp;';
 
             endif;
 
-            if ($this->field['show_hover'] === true):
+            if ($this->field['hover'] == true):
 
             echo '<strong>' . __( 'Hover', 'redux-framework' ) . '</strong>&nbsp;<input id="' . $this->field['id'] . '-hover" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][hover]" value="' . $this->value['hover'] . '" class="redux-color redux-color-init ' . $this->field['class'] . '"  type="text" data-default-color="' . $this->field['default']['hover'] . '" />&nbsp;&nbsp;&nbsp;&nbsp;';
 
             endif;
 
-            if ($this->field['show_active'] === true):
+            if ($this->field['active'] == true):
 
             echo '<strong>' . __( 'Active', 'redux-framework' ) . '</strong>&nbsp;<input id="' . $this->field['id'] . '-active" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][active]" value="' . $this->value['active'] . '" class="redux-color redux-color-init ' . $this->field['class'] . '"  type="text" data-default-color="' . $this->field['default']['active'] . '" />';
 

@@ -13,8 +13,8 @@
  * You should have received a copy of the GNU General Public License
  * along with Redux Framework. If not, see <http://www.gnu.org/licenses/>.
  *
- * @package     ReduxFramework
- * @subpackage  Field_Button_Set
+ * @package     Redux_Field
+ * @subpackage  Button_Set
  * @author      Daniel J Griffiths (Ghost1227)
  * @author      Dovy Paukstys
  * @version     3.0.0
@@ -33,6 +33,34 @@ if( !class_exists( 'ReduxFramework_button_set' ) ) {
      */
     class ReduxFramework_button_set extends ReduxFramework {
     
+        /**
+         * Holds configuration settings for each field in a model.
+         * Defining the field options
+         *
+         * array['fields']              array Defines the fields to be shown by scaffolding.
+         *          [fieldName]         array Defines the options for a field, or just enables the field if array is not applied.
+         *              ['name']        string Overrides the field name (default is the array key)
+         *              ['model']       string (optional) Overrides the model if the field is a belongsTo associated value.
+         *              ['width']       string Defines the width of the field for paginate views. Examples are "100px" or "auto"
+         *              ['align']       string Alignment types for paginate views (left, right, center)
+         *              ['format']      string Formatting options for paginate fields. Options include ('currency','nice','niceShort','timeAgoInWords' or a valid Date() format)
+         *              ['title']       string Changes the field name shown in views.
+         *              ['desc']        string The description shown in edit/create views.
+         *              ['readonly']    boolean True prevents users from changing the value in edit/create forms.
+         *              ['type']        string Defines the input type used by the Form helper (example 'password')
+         *              ['options']     array Defines a list of string options for drop down lists.
+         *              ['editor']      boolean If set to True will show a WYSIWYG editor for this field.
+         *              ['default']     string The default value for create forms.
+         *
+         * @param array $arr (See above)
+         * @return Object A new editor object.
+         **/
+
+        static $_properties = array(
+                'id'=> 'Identifier',
+
+            );
+
         /**
          * Field Constructor.
          *

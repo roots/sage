@@ -1,6 +1,6 @@
 <?php
 /**
- * @package Admin
+ * @package Redux_Tracking
  */
 
 if ( !class_exists( 'ReduxFramework' ) ) {
@@ -46,9 +46,6 @@ if ( !class_exists( 'Redux_Tracking' ) ) {
 				}
 				add_action( 'redux_tracking', array( $this, 'tracking' ) );
 			}
-
-			// Ajax function to record the user's reaction
-
 		}
 
 
@@ -241,7 +238,6 @@ if ( !class_exists( 'Redux_Tracking' ) ) {
 				if (empty($data['developer'])) {
 					unset($data['developer']);
 				}
-
 				$args = array(
 					'body' => $data
 				);
@@ -254,9 +250,8 @@ if ( !class_exists( 'Redux_Tracking' ) ) {
 	}
 
 
-
 	/**
-	 * Adds tracking parameters for Redux settings. Outside of the main class as the class could also be in use in other plugins.
+	 * Adds tracking parameters for Redux settings. Outside of the main class as the class could also be in use in other ways.
 	 *
 	 * @param array $options
 	 * @return array
@@ -269,15 +264,13 @@ if ( !class_exists( 'Redux_Tracking' ) ) {
 		);
 		return $options;
 	}
-
-	add_filter( 'Redux/Tracking/Options', 'redux_tracking_additions' );
+	add_filter( 'redux/tracking/options', 'redux_tracking_additions' );
 
 
 	function redux_allow_tracking_callback() {
 
 		// Verify that the incoming request is coming with the security nonce
 		if( wp_verify_nonce( $_REQUEST['nonce'], 'redux_activate_tracking' ) ) {
-			print_r($_POST);
 			$option = get_option('Redux_Framework');
 			$option['allow_tracking'] = $_REQUEST['allow_tracking'];
 			if ( update_option( 'Redux_Framework', $option ) ) {
@@ -291,6 +284,6 @@ if ( !class_exists( 'Redux_Tracking' ) ) {
 		} // end if
 
 	}
-
 	add_action('wp_ajax_redux_allow_tracking', 'redux_allow_tracking_callback');
+
 }

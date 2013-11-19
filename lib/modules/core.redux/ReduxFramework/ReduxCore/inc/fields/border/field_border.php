@@ -1,4 +1,28 @@
 <?php
+/**
+ * Redux Framework is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 2 of the License, or
+ * any later version.
+ *
+ * Redux Framework is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with Redux Framework. If not, see <http://www.gnu.org/licenses/>.
+ *
+ * @package     Redux_Field
+ * @subpackage  Border
+ * @version     3.0.0
+ */
+
+// Exit if accessed directly
+if( !defined( 'ABSPATH' ) ) exit;
+
+// Don't duplicate me!
+if( class_exists( 'ReduxFramework_ace_editor' ) ) return;
 class ReduxFramework_border extends ReduxFramework{	
 	
 	/**
@@ -52,10 +76,10 @@ class ReduxFramework_border extends ReduxFramework{
 		$this->value = wp_parse_args( $this->value, $defaults );
 
 		$value = array(
-			'top' => isset( $this->value['border-top'] ) ? filter_var($this->value['border-top'], FILTER_SANITIZE_NUMBER_INT) : filter_var($this->value['top'], FILTER_SANITIZE_NUMBER_INT),
-			'right' => isset( $this->value['border-right'] ) ? filter_var($this->value['border-right'], FILTER_SANITIZE_NUMBER_INT) : filter_var($this->value['right'], FILTER_SANITIZE_NUMBER_INT),
-			'bottom' => isset( $this->value['border-bottom'] ) ? filter_var($this->value['border-bottom'], FILTER_SANITIZE_NUMBER_INT) : filter_var($this->value['bottom'], FILTER_SANITIZE_NUMBER_INT),
-			'left' => isset( $this->value['border-left'] ) ? filter_var($this->value['border-left'], FILTER_SANITIZE_NUMBER_INT) : filter_var($this->value['left'], FILTER_SANITIZE_NUMBER_INT),
+			'top' => isset( $this->value['border-top'] ) ? filter_var($this->value['border-top'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION) : filter_var($this->value['top'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION),
+			'right' => isset( $this->value['border-right'] ) ? filter_var($this->value['border-right'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION) : filter_var($this->value['right'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION),
+			'bottom' => isset( $this->value['border-bottom'] ) ? filter_var($this->value['border-bottom'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION) : filter_var($this->value['bottom'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION),
+			'left' => isset( $this->value['border-left'] ) ? filter_var($this->value['border-left'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION) : filter_var($this->value['left'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION),
             'color' => isset( $this->value['border-color'] ) ? $this->value['border-color'] : $this->value['color'],
             'style' => isset( $this->value['border-style'] ) ? $this->value['border-style'] : $this->value['style']
 		);

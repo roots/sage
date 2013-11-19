@@ -102,7 +102,7 @@ if( !class_exists( 'ReduxFramework_info' ) ) {
 		            }
 
 		            if( isset( $this->field['icon'] ) && !empty( $this->field['icon'] ) && $this->field['icon'] !== true ) {
-		                echo '<p class="redux-info-icon"><i class="icon-' . $this->field['icon'] . ' icon-large"></i></p>';
+		                echo '<p class="redux-info-icon"><i class="' . $this->field['icon'] . ' icon-large"></i></p>';
 		            }
 
 	            	echo '<p class="redux-info-desc">' . $this->field['title'] . $this->field['desc'] . '</p>';

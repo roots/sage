@@ -76,14 +76,14 @@ class ReduxFramework_dimensions extends ReduxFramework{
 			**/
 			if ($this->field['width'] === true):
 				if ( !empty($this->value['width'] ) &&  strpos( $this->value['width'], $this->value['units'] ) === false ) {
-					$this->value['width'] = filter_var($this->value['width'], FILTER_SANITIZE_NUMBER_INT);
+					$this->value['width'] = filter_var($this->value['width'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
 					if ($this->field['units'] !== false ) {
 						$this->value['width'] .= $this->value['units'];	
 					}
 				}				
 				echo '<div class="field-dimensions-input input-prepend">';
 				echo '<span class="add-on"><i class="el-icon-resize-horizontal icon-large"></i></span>';
-				echo '<input type="text" class="redux-dimensions-input redux-dimensions-width mini'.$this->field['class'].'" placeholder="'.__('Width','redux-framework').'" rel="'.$this->field['id'].'-width" value="'.filter_var($this->value['width'], FILTER_SANITIZE_NUMBER_INT).'">';
+				echo '<input type="text" class="redux-dimensions-input redux-dimensions-width mini'.$this->field['class'].'" placeholder="'.__('Width','redux-framework').'" rel="'.$this->field['id'].'-width" value="'.filter_var($this->value['width'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION).'">';
 				echo '<input data-id="'.$this->field['id'].'" type="hidden" id="'.$this->field['id'].'-width" name="'.$this->args['opt_name'].'['.$this->field['id'].'][width]" value="'.$this->value['width'].'"></div>';
 		  	endif;
 
@@ -92,14 +92,14 @@ class ReduxFramework_dimensions extends ReduxFramework{
 			**/
 			if ($this->field['height'] === true):
 				if ( !empty($this->value['height'] ) &&  strpos( $this->value['height'], $this->value['units'] ) === false ) {
-					$this->value['height'] = filter_var($this->value['height'], FILTER_SANITIZE_NUMBER_INT);
+					$this->value['height'] = filter_var($this->value['height'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION);
 					if ($this->field['units'] !== false ) {
 						$this->value['height'] .= $this->value['units'];	
 					}
 				}					
 				echo '<div class="field-dimensions-input input-prepend">';
 				echo '<span class="add-on"><i class="el-icon-resize-vertical icon-large"></i></span>';
-				echo '<input type="text" class="redux-dimensions-input redux-dimensions-height mini'.$this->field['class'].'" placeholder="'.__('height','redux-framework').'" rel="'.$this->field['id'].'-height" value="'.filter_var($this->value['height'], FILTER_SANITIZE_NUMBER_INT).'">';
+				echo '<input type="text" class="redux-dimensions-input redux-dimensions-height mini'.$this->field['class'].'" placeholder="'.__('height','redux-framework').'" rel="'.$this->field['id'].'-height" value="'.filter_var($this->value['height'], FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION).'">';
 				echo '<input data-id="'.$this->field['id'].'" type="hidden" id="'.$this->field['id'].'-height" name="'.$this->args['opt_name'].'['.$this->field['id'].'][height]" value="'.$this->value['height'].'"></div>';
 		  	endif;
 
