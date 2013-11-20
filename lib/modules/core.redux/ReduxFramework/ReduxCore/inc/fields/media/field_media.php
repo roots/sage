@@ -73,6 +73,10 @@ if( !class_exists( 'ReduxFramework_media' ) ) {
 
             $this->value = wp_parse_args( $this->value, $defaults );
 
+            if ( !isset( $this->field['mode'] ) ) {
+                $this->field['mode'] = "image";
+            }
+
             if( empty( $this->value ) && !empty( $this->field['default'] ) ) { // If there are standard values and value is empty
                 if( is_array( $this->field['default'] ) ) {
                     if( !empty( $this->field['default']['id'] ) ) {
@@ -149,7 +153,26 @@ if( !class_exists( 'ReduxFramework_media' ) ) {
 
             echo '<span class="button remove-image' . $hide . '" id="reset_' . $this->field['id'] . '" rel="' . $this->field['id'] . '">' . __( 'Remove', 'redux-framework' ) . '</span>';
 
-            echo '</div>';    
+            echo '</div>';  
+
+            if ( ( isset( $this->field['mode'] ) && !empty( $this->field['mode'] ) ) || $this->field['mode'] != false ) {
+                // Use javascript globalization, better than any other method.
+                global $wp_scripts;
+                $data = $wp_scripts->get_data('redux-field-media-js', 'data');
+
+                if(!empty($data)) { // Adding to the previous localize script object
+                  if(!is_array($data)) {
+                    $data = json_decode(str_replace('var reduxMedia = ', '', substr($data, 0, -1)), true);
+                  }
+                  foreach($data as $key => $value) {
+                    $localized_data[$key] = $value;
+                  }
+                  $wp_scripts->add_data('redux-field-media-js', 'data', '');
+                }
+                $localized_data[$this->field['id']] = $this->field['mode'];
+                wp_localize_script('redux-field-media-js', 'reduxMedia', $localized_data);                  
+            }
+                           
             
         }
 

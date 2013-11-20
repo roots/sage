@@ -537,12 +537,29 @@ if( !class_exists( 'ReduxFramework' ) ) {
 							}//foreach
 						}//if
 					} else if ($type == "post_type" || $type == "post_types") {
-						$post_types = get_post_types($args, 'object'); 
-						if (!empty($post_types)) {
-							foreach ( $post_types as $k => $post_type ) {
-								$data[$k] = $post_type->labels->name;
-							}//foreach
-						}//if
+                        global $wp_post_types;
+                        $defaults = array(
+                            'public' => true,
+                            'publicly_queryable' => true,
+                            'exclude_from_search' => false,
+                            'publicly_queryable' => true,
+                            '_builtin' => false,
+                        );
+                        $args = wp_parse_args( $args, $defaults );
+                        $output = 'names';
+                        $operator = 'and';
+                        $post_types = get_post_types($args, $output, $operator);
+                        $post_types['page'] = 'page';
+                        $post_types['post'] = 'post';
+                        ksort($post_types);
+
+                        foreach ( $post_types as $name => $title ) {
+                            if ( isset($wp_post_types[$name]->labels->menu_name) ) {
+                                $data[$name] = $wp_post_types[$name]->labels->menu_name;
+                            } else {
+                                $data[$name] = ucfirst($name);
+                            }
+                        }
 					} else if ($type == "tags" || $type == "tag") {
 						$tags = get_tags($args); 
 						if (!empty($tags)) {

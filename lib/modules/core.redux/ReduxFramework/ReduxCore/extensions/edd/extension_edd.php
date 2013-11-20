@@ -38,6 +38,7 @@ if( !class_exists( 'ReduxFramework_extension_edd' ) ) {
       protected $parent;
       public $extension_url;
       public $extension_dir;
+      public static $theInstance;
 
       /**
        * Class Constructor. Defines the args for the extions class
@@ -56,10 +57,16 @@ if( !class_exists( 'ReduxFramework_extension_edd' ) ) {
           $this->extension_url = site_url( str_replace( trailingslashit( str_replace( '\\', '/', ABSPATH ) ), '', $this->extension_dir ) );
         }
 
+        self::$theInstance = $this;
+
         add_filter( 'redux/'.$this->parent->args['opt_name'].'/field/class/edd_license', array( &$this, 'overload_edd_license_field_path' ) ); // Adds the local field
         add_action( 'redux/options/'.$this->parent->args['opt_name'].'/field/edd_license/register', array( &$this, 'register' ) );
         add_action( 'wp_ajax_redux_edd_'.$parent->args['opt_name'].'_license', array( &$this, 'license_call' ) );
 
+      }
+
+      public function getInstance() {
+        return self::$theInstance;
       }
 
       function register($field) {
@@ -89,9 +96,13 @@ if( !class_exists( 'ReduxFramework_extension_edd' ) ) {
 
       }
 
-      function license_call() {
-        
+      function license_call($array = array()) {
+
         global $wp_version;
+
+        if ( !empty( $array ) ) {
+          $_POST['data'] = $array;
+        }
 
         if ($_POST['data']['license'] == "") {
           die(-1);
@@ -122,26 +133,29 @@ if( !class_exists( 'ReduxFramework_extension_edd' ) ) {
 
         update_option($_POST['data']['opt_name'], $options);
 
-        if( $license_data->license == 'deactivated' ) {
-          echo json_encode(array('status'=>'Deactivated'));
-          delete_transient( 'redux_edd_license_'.$_POST['data']['field_id'] . '_valid' );
-          // Delete from the DB
-          die();
+        if( $license_data->license == 'site_inactive' ) {
+          $result = json_encode(array('status'=>'Not Activated', 'response'=>$license_data->license));
+          set_transient( 'redux_edd_license_'.$_POST['data']['field_id'] . '_valid', 'Not Activated', 3600 * 24 );
+        } else if( $license_data->license == 'deactivated' ) {
+          $result = json_encode(array('status'=>'Deactivated', 'response'=>$license_data->license));
+          set_transient( 'redux_edd_license_'.$_POST['data']['field_id'] . '_valid', 'Deactivated', 3600 * 24 );
         } else if( $license_data->license == 'valid' ) {
-          echo json_encode(array('status'=>'Valid'));
-          set_transient( 'redux_edd_license_'.$_POST['data']['field_id'] . '_valid', true, 3600 * 24 );
-          // Save to DB and update status
-          die();
-          // this license is still valid
+          $result = json_encode(array('status'=>'Valid', 'response'=>$license_data->license));
+          set_transient( 'redux_edd_license_'.$_POST['data']['field_id'] . '_valid', 'Valid', 3600 * 24 );
         } else {
           // Change status
-          echo json_encode(array('status'=>'Not Valid'));
+          $result = json_encode(array('status'=>'Not Valid', 'response'=>$license_data->license));
           delete_transient( 'redux_edd_license_'.$_POST['data']['field_id'] . '_valid' );
-          die();
-          // this license is no longer valid
         } 
 
-        die(-1);
+        if ( empty( $array ) ) {
+          if ( isset( $result ) && !empty( $result ) ) {
+            echo $result;
+          }          
+          die();
+        } else if ( isset( $result ) && !empty( $result ) ) { // Non-ajax call
+          return $result;
+        }
       }
 
       // Forces the use of the embeded field path vs what the core typically would use    
