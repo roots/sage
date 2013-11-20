@@ -98,7 +98,7 @@ if (!class_exists('ReduxFramework_slides')) {
                         $slide['height'] = $img[2];
                     }
 
-                    echo '<div class="redux-slides-accordion-group"><fieldset><h3><span class="redux-slides-header">' . $slide['title'] . '</span></h3><div>';
+                    echo '<div class="redux-slides-accordion-group"><fieldset class="redux-field"><h3><span class="redux-slides-header">' . $slide['title'] . '</span></h3><div>';
 
                     $hide = '';
                     if ( empty( $slide['url'] ) ) {
@@ -141,7 +141,7 @@ if (!class_exists('ReduxFramework_slides')) {
             }
 
             if ($x == 0) {
-                echo '<div class="redux-slides-accordion-group"><fieldset><h3><span class="redux-slides-header">New Slide</span></h3><div>';
+                echo '<div class="redux-slides-accordion-group"><fieldset class="redux-field"><h3><span class="redux-slides-header">New Slide</span></h3><div>';
 
                 $hide = ' hide';
 
