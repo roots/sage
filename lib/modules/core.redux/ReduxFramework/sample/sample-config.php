@@ -1158,7 +1158,7 @@ $sections[] = array(
 			),							
 		array(
 			'id'=>"custom_callback",
-			//'type' => 'nothing',//doesn't need to be called for callback fields
+			'type' => 'callback',
 			'title' => __('Custom Field Callback', 'redux-framework-demo'), 
 			'subtitle' => __('This is a completely unique field type', 'redux-framework-demo'),
 			'desc' => __('This is created with a callback function, so anything goes in this field. Make sure to define the function though.', 'redux-framework-demo'),

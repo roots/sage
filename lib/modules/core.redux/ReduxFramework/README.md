@@ -56,6 +56,35 @@ Send me an email at ghost1227@reduxframework.com so I can add you to our user sp
 
 ### Master ###
 
+= 3.1.0 =
+* Fix Issue 224 - Image Select width was breaking the panel.
+* Fix Issue 181 - Broken panel in firefox
+* Fix Issue 225 - 0px typography bug. Thanks @partnuz.
+* Fix Issue 228 - Resolved a duplicated enqueue on color_link field. Thanks @vertigo7x.
+* Fix Issue 231 - Field spacing bug fixes.
+* Fix Issue 232 & 233 - Dimensions: bug fix with units and multiple units. Thanks @kpodemski
+* Fix Issue 234 - Pass options as a ref so validating actions can modify/sanitize them. Thanks @ZeroBeeOne
+* Fix Issue 222 - Tab cookie function wasn't working.
+* Feature - Pass params to Select2. Thanks @andreilupu
+* Fix Issue 238 - Fix for conditional output. Thanks @partnuz.
+* Fix Issue 211 - Google Web font wasn't loading at first init of theme.
+* Fix Issue 210 - Elusive Icons update. Changed classes to force use of full elusive name.
+* Fix Issue 247 - Media thumbnails were not showing. Also fixed media to keep the largest file, but display the small version in the panel as a thumb. Thanks @kwayyinfotech.
+* Fix Issue 144 - JS error when no item found in slider.
+* Fix Issue 246 - Typography output errors.
+* Feature & Issue 259 - Multi-Text now support validation!
+* Fix Issue 248/261 - Links color issue. Also fixed color validation.
+* Feature & Issue 262 - Now registered sidebars can be used as a data type.
+* Fix Issue 194/276 - Custom taxonomy terms now passing properly. Thanks @kprovance.
+* Feature & Issue 273 - Argument save_defaults: Disable the auto-save of the default options to the database if not set.
+* Feature - Docs now being moved to the wiki for community participation.
+* Issue 283 - Date placeholder. Thanks @kprovance.
+* Issue 285 - HTTPS errors on admin. Known WordPress bug. Resolved.
+* Fix Issue 288 - Float values now possible for border, dimensions, and spacing.
+* Feature - Media field can now accept non-image files with a argument being set.
+* Fix Issue 252 - Post Type data wasn't working properly. Thanks @Abu-Taymiyyah.
+* Fix Issue 213 - Radio and Button Set wasn't folding.
+
 = 3.0.9 =
 * Feature - Added possibility to set default icon class for all sections and tabs.
 * Feature - Make is to the WP dir can be moved elsewhere and Redux still function.

@@ -37,7 +37,7 @@ if( !class_exists( 'ReduxFramework' ) ) {
      */
     class ReduxFramework {
 
-        public static $_version = '3.0.9';
+        public static $_version = '3.1.0';
         public static $_dir;
         public static $_url;
         public static $_properties;
@@ -927,7 +927,7 @@ if( !class_exists( 'ReduxFramework' ) ) {
         public function _enqueue_output() {
 			/** @noinspection PhpUnusedLocalVariableInspection */
 			foreach( $this->sections as $k => $section ) {
-                if( isset($section['type'] ) && $section['type'] == 'divide' ) {
+                if( isset($section['type'] ) && ( $section['type'] == 'divide' ) ) {
                     continue;
                 }
                 if( isset( $section['fields'] ) ) {
@@ -1129,13 +1129,13 @@ if( !class_exists( 'ReduxFramework' ) ) {
                 $localize
             );
 
-            do_action( 'redux-enqueue-' . $this->args['opt_name'] ); // REMOVE
+            do_action( 'redux-enqueue-' . $this->args['opt_name'], $this ); // REMOVE
             do_action( 'redux/page/' . $this->args['opt_name'] . '/enqueue' );
 
             foreach( $this->sections as $section ) {
                 if( isset( $section['fields'] ) ) {
                     foreach( $section['fields'] as $field ) {
-                        if( isset( $field['type'] ) ) {
+                        if( isset( $field['type'] ) && $field['type'] != 'callback' ) {
                             $field_class = 'ReduxFramework_' . $field['type'];
 
                             if( !class_exists( $field_class ) ) {
@@ -1293,6 +1293,9 @@ if( !class_exists( 'ReduxFramework' ) ) {
 
                 if( isset( $section['fields'] ) ) {
                     foreach( $section['fields'] as $fieldk => $field ) {
+                        if ( !isset( $field['type'] ) ) {
+                            continue; // You need a type!
+                        }
                     	
                     	$th = "";
                         if( isset( $field['title'] ) && isset( $field['type'] ) && $field['type'] !== "info" && $field['type'] !== "group" ) {
@@ -2004,9 +2007,11 @@ if( !class_exists( 'ReduxFramework' ) ) {
                 $value = ( isset( $this->options[$field['id']] ) ) ? $this->options[$field['id']] : '';
                 do_action( 'redux-before-field-' . $this->args['opt_name'], $field, $value ); // REMOVE
                 do_action( 'redux/field/'.$this->args['opt_name'].'/'.$field['type'].'/callback/before', $field, $value );
+                do_action( 'redux/field/'.$this->args['opt_name'].'/callback/before', $field, $value );
                 call_user_func( $field['callback'], $field, $value );
                 do_action( 'redux-after-field-' . $this->args['opt_name'], $field, $value ); // REMOVE
                 do_action( 'redux/field/'.$this->args['opt_name'].'/'.$field['type'].'/callback/after', $field, $value );
+                do_action( 'redux/field/'.$this->args['opt_name'].'/callback/after', $field, $value );
                 return;
             }
 
@@ -2030,6 +2035,7 @@ if( !class_exists( 'ReduxFramework' ) ) {
                     }
                     do_action( 'redux-before-field-' . $this->args['opt_name'], $field, $value ); // REMOVE
                     do_action( 'redux/field/'.$this->args['opt_name'].'/'.$field['type'].'/render/before', $field, $value );
+                    do_action( 'redux/field/'.$this->args['opt_name'].'/render/before', $field, $value );
 
                     $render = new $field_class( $field, $value, $this );
                     ob_start();
@@ -2037,6 +2043,7 @@ if( !class_exists( 'ReduxFramework' ) ) {
 					$render->render();
                     $_render = apply_filters( 'redux-field-'.$this->args['opt_name'], ob_get_contents(), $field ); // REMOVE
                     $_render = apply_filters( 'redux/field/'.$this->args['opt_name'].'/'.$field['type'].'/render/after', ob_get_contents(), $field );
+                    $_render = apply_filters( 'redux/field/'.$this->args['opt_name'].'/render/after', ob_get_contents(), $field );
                     ob_end_clean();
 
                     //save the values into a unique array in case we need it for dependencies
@@ -2047,6 +2054,7 @@ if( !class_exists( 'ReduxFramework' ) ) {
                     extract($this->check_dependencies($field));
 
                     do_action( 'redux/field/'.$this->args['opt_name'].'/'.$field['type'].'/fieldset/before/' . $this->args['opt_name'], $field, $value );
+                    do_action( 'redux/field/'.$this->args['opt_name'].'/fieldset/before/' . $this->args['opt_name'], $field, $value );
 					echo '<fieldset id="'.$this->args['opt_name'].'-'.$field['id'].'" class="redux-field redux-container-'.$field['type'].' '.$class_string.'" data-id="'.$field['id'].'" '.$data_string.'>';
 	                    echo $_render;
 
@@ -2060,6 +2068,7 @@ if( !class_exists( 'ReduxFramework' ) ) {
 
                     do_action( 'redux-after-field-' . $this->args['opt_name'], $field, $value ); // REMOVE
                     do_action( 'redux/field/'.$this->args['opt_name'].'/'.$field['type'].'/fieldset/after/' . $this->args['opt_name'], $field, $value );
+                    do_action( 'redux/field/'.$this->args['opt_name'].'/fieldset/after/' . $this->args['opt_name'], $field, $value );
                 }
             }
         } // function

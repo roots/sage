@@ -75,8 +75,8 @@ if( !class_exists( 'ReduxFramework_extension_edd' ) ) {
           if ( !class_exists( 'EDD_SL_Theme_Updater' ) ) {
             include_once( dirname( __FILE__ ) . '/edd_license/EDD_SL_Theme_Updater.php' );
           }
-          if ( !empty( $this->parent->options[$field['id']]['license'] ) && $this->parent->options[$field['id']]['status'] == 'valid' ) {
-
+          if ( !empty( $this->parent->options[$field['id']]['license'] ) && $this->parent->options[$field['id']]['status'] == __('Valid', 'redux-framework') ) {
+        
             $edd_updater = new EDD_SL_Theme_Updater(
               array(
                 'remote_api_url'  => $field['remote_api_url'],       // our store URL that is running EDD
@@ -135,16 +135,16 @@ if( !class_exists( 'ReduxFramework_extension_edd' ) ) {
 
         if( $license_data->license == 'site_inactive' ) {
           $result = json_encode(array('status'=>'Not Activated', 'response'=>$license_data->license));
-          set_transient( 'redux_edd_license_'.$_POST['data']['field_id'] . '_valid', 'Not Activated', 3600 * 24 );
+          set_transient( 'redux_edd_license_'.$_POST['data']['field_id'] . '_valid', __('Not Activated', 'redux-framework'), 3600 * 24 );
         } else if( $license_data->license == 'deactivated' ) {
           $result = json_encode(array('status'=>'Deactivated', 'response'=>$license_data->license));
-          set_transient( 'redux_edd_license_'.$_POST['data']['field_id'] . '_valid', 'Deactivated', 3600 * 24 );
+          set_transient( 'redux_edd_license_'.$_POST['data']['field_id'] . '_valid', __('Deactivated', 'redux-framework'), 3600 * 24 );
         } else if( $license_data->license == 'valid' ) {
           $result = json_encode(array('status'=>'Valid', 'response'=>$license_data->license));
-          set_transient( 'redux_edd_license_'.$_POST['data']['field_id'] . '_valid', 'Valid', 3600 * 24 );
+          set_transient( 'redux_edd_license_'.$_POST['data']['field_id'] . '_valid', __('Valid', 'redux-framework'), 3600 * 24 );
         } else {
           // Change status
-          $result = json_encode(array('status'=>'Not Valid', 'response'=>$license_data->license));
+          $result = json_encode(array('status'=>__('Not Valid', 'redux-framework'), 'response'=>$license_data->license));
           delete_transient( 'redux_edd_license_'.$_POST['data']['field_id'] . '_valid' );
         } 
 
