@@ -1,3 +1,26 @@
+### v 3.0.10
+
+* Fix: Updating Redux Framework
+* Fix: Broken assets URLs
+* Fix: Layouts bug
+* Fix: Updating Elusive Icons in the Redux Framework
+* Fix: Jumbotron bottom border
+* Fix: Footer Top Border
+* New: Added post-meta configuration module
+* Fix: Various Warnings and PHP notices
+* Fix: Various typos
+* Fix: added "featured-image" class to featured images
+* Fix: Better spacing in nested comments
+* Fix: Licencing now works.
+
+
+### v. 3.0.01
+* Fix: Updating Redux Framework
+* New: Added some bbPress templates
+* Fix: Updating Elusive Icons
+* New: Addes tracking
+
+
 ### v. 3.0.0
 
 * New: Complete rewrite
