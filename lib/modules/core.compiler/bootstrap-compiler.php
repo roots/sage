@@ -48,7 +48,7 @@ endif;
 
 if ( !function_exists( 'shoestrap_css_not_writeable' ) ) :
 /*
- * Admin notice if css or less files are writable
+ * Admin notice if css is not writable
  */
 function shoestrap_css_not_writeable( $array ) {
   global $current_screen, $wp_filesystem;
@@ -85,21 +85,22 @@ if ( !function_exists( 'shoestrap_phpless_compiler' ) ) :
  */
 function shoestrap_phpless_compiler() {
 
-  if ( !class_exists( 'lessc' ) ) :
-    require_once locate_template( '/lib/less_compiler/lessc.inc.php' );
+  if ( !class_exists( 'Less_Parser' ) ) :
+    require_once 'less.php/Less.php';
   endif;
-
-  $less = new lessc;
 
   if ( shoestrap_getVariable( 'minimize_css', true ) == 1 ) :
-    $less->setFormatter( "compressed" );
+    $options = array( 'compress'=>true );
+  else :
+    $options = array( 'compress'=>false );
   endif;
 
-  $less->setImportDir( array(
-    get_template_directory() . '/assets/less',
-    get_template_directory() . '/assets/fonts',
-  ) );
-  $css = $less->compile( shoestrap_complete_less() );
+  $parser = new Less_Parser( $options );
+
+  $parser->parse( shoestrap_complete_less() );
+  $css = $parser->getCss();
+  // This is a REALLY ugly hack...
+  $css = str_replace( get_template_directory() . '/assets/fonts/elusive-webfont.less/../fonts/', '../fonts/', $css );
 
   return $css;
 }
@@ -475,7 +476,7 @@ function shoestrap_variables_less() {
 // Iconography
 // -------------------------
 
-@icon-font-path:          "../fonts/";
+@icon-font-path:          "' . get_template_directory_uri() . '/assets/fonts/";
 @icon-font-name:          "Elusive-Icons";
 
 // Components
@@ -743,6 +744,7 @@ function shoestrap_variables_less() {
 @nav-tabs-justified-active-link-border-color:     @body-bg;
 
 // Pills
+@nav-pills-border-radius:                   @border-radius-base;
 @nav-pills-active-link-hover-bg:            @component-active-bg;
 @nav-pills-active-link-hover-color:         @component-active-color;
 
@@ -771,9 +773,11 @@ function shoestrap_variables_less() {
 // Jumbotron
 // -------------------------
 
-@jumbotron-padding:              30px;
+@jumbotron-padding:              (@border-radius-large * 5);
 @jumbotron-color:                inherit;
 @jumbotron-bg:                   ' . $jumbotron_bg . ';
+@jumbotron-heading-color:        inherit;
+@jumbotron-font-size:            ceil(@font-size-base * 1.5);
 
 
 // Form states and alerts
@@ -789,11 +793,11 @@ function shoestrap_variables_less() {
 
 @state-warning-text:             #c09853;
 @state-warning-bg:               #fcf8e3;
-@state-warning-border:           darken(spin(@state-warning-bg, -10), 3%);
+@state-warning-border:           darken(spin(@state-warning-bg, -10), 5%);
 
 @state-danger-text:              #b94a48;
 @state-danger-bg:                #f2dede;
-@state-danger-border:            darken(spin(@state-danger-bg, -10), 3%);
+@state-danger-border:            darken(spin(@state-danger-bg, -10), 5%);
 
 
 // Tooltips
@@ -1001,7 +1005,7 @@ function shoestrap_variables_less() {
 
 @pre-bg:                      #f5f5f5;
 @pre-color:                   @gray-dark;
-@pre-border-color:            @ccc;
+@pre-border-color:            #ccc;
 @pre-scrollable-max-height:   340px;
 
 // Type
@@ -1112,8 +1116,8 @@ function shoestrap_complete_less( $url = false ) {
     $bootstrap    = get_template_directory_uri() . '/assets/less/';
     $fonts        = get_template_directory_uri() . '/assets/fonts/';
   else :
-    $bootstrap    = NULL;
-    $fonts        = NULL;
+    $bootstrap    = get_template_directory() . '/assets/less/';
+    $fonts        = get_template_directory() . '/assets/fonts/';
   endif;
 
   $bootstrap_less = shoestrap_variables_less() . '
@@ -1185,7 +1189,7 @@ function shoestrap_complete_less( $url = false ) {
 
   $bootstrap_less .= '
   // Custom Shoestrap less-css
-  @import "' . $bootstrap . 'app";
+  @import "' . $bootstrap . 'app.less";
   ';
 
 
@@ -1207,7 +1211,7 @@ function shoestrap_complete_less( $url = false ) {
 
     $bootstrap_less .= '
     // Custom LESS file for developers
-    @import "' . $bootstrap . 'custom";';
+    @import "' . $bootstrap . 'custom.less";';
   endif;
 
   $user_less = shoestrap_getVariable('user_less');
