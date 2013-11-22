@@ -8,14 +8,7 @@ while (have_posts()) : the_post(); ?>
     <?php do_action( 'shoestrap_in_article_top' ); ?>
     <header>
       <h1 class="entry-title"><?php the_title(); ?></h1>
-      <?php
-      // Override the entry-meta using the "shoestrap_entry_meta_override" hook
-      // else load the default template for meta.
-      if ( !has_action( 'shoestrap_entry_meta_override' ) )
-        get_template_part('templates/entry-meta');
-      else
-        do_action( 'shoestrap_entry_meta_override' )
-      ?>
+      <?php do_action( 'shoestrap_entry_meta_override' ); ?>
     </header>
     <div class="entry-content">
       <?php do_action( 'shoestrap_single_pre_content' ); ?>
