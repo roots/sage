@@ -32,8 +32,8 @@ function shoestrap_module_featured_images_options( $sections ) {
 
 
   $fields[] = array( 
-    'title'     => __( 'Featured Images on Archives Full Width', 'shoestrap' ),
-    'desc'      => __( 'Display featured Images on posts. Default: OFF.', 'shoestrap' ),
+    'title'     => __( 'Width of Featured Images on Archives', 'shoestrap' ),
+    'desc'      => __( 'Set dimensions of featured Images on Archives. Default: Full Width', 'shoestrap' ),
     'id'        => 'feat_img_archive_custom_toggle',
     'default'   => 0,
     'required'  => array('feat_img_archive','=',array('1')),
@@ -79,8 +79,8 @@ function shoestrap_module_featured_images_options( $sections ) {
   );
 
   $fields[] = array( 
-    'title'     => __( 'Featured Images on Posts Full Width', 'shoestrap' ),
-    'desc'      => __( 'Display featured Images on posts. Default: OFF.', 'shoestrap' ),
+    'title'     => __( 'Width of Featured Images on Posts', 'shoestrap' ),
+    'desc'      => __( 'Set dimensions of featured Images on Posts. Default: Full Width', 'shoestrap' ),
     'id'        => 'feat_img_post_custom_toggle',
     'default'   => 0,
     'off'       => __( 'Full Width', 'shoestrap' ),
