@@ -15,7 +15,7 @@ msgstr ""
 #: 404.php:4
 msgid "Sorry, but the page you were trying to view does not exist."
 msgstr ""
-"Es tut uns leid aber die Seite die du angucken wollten existiert nicht."
+"Es tut uns leid aber die Seite die du angucken wolltest existiert nicht."
 
 #: 404.php:7
 msgid "It looks like this was the result of either:"
@@ -121,7 +121,7 @@ msgstr ""
 
 #: lib/cleanup.php:210
 msgid "Continued"
-msgstr "Forgesetzt"
+msgstr "Fortgesetzt"
 
 #: lib/init.php:11
 msgid "Primary Navigation"
