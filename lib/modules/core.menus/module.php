@@ -259,6 +259,15 @@ function shoestrap_module_menus_options( $sections ) {
     'required'    => array('secondary_navbar_toggle','=',array('1')),
   );
 
+
+  $fields[] = array( 
+    'title'       => __( 'Use alternative Walker.', 'shoestrap' ),
+    'desc'        => __( 'Default: OFF. See https://github.com/twittem/wp-bootstrap-navwalker for more details', 'shoestrap' ),
+    'id'          => 'alt_navwalker',
+    'default'     => 1,
+    'type'        => 'switch'
+  );
+
   $section['fields'] = $fields;
 
   $section = apply_filters( 'shoestrap_module_menus_options_modifier', $section );
@@ -273,3 +282,7 @@ add_filter( 'redux-sections-'.REDUX_OPT_NAME, 'shoestrap_module_menus_options', 
 include_once( dirname( __FILE__ ) . '/functions.navbar.php' );
 include_once( dirname( __FILE__ ) . '/functions.secondary.navbar.php' );
 include_once( dirname( __FILE__ ) . '/functions.slide-down.php' );
+
+if ( shoestrap_getVariable( 'alt_navwalker' ) == 1 ) :
+  include_once( dirname( __FILE__ ) . '/functions.navwalker.php' );
+endif;
