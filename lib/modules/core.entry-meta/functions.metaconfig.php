@@ -4,7 +4,7 @@
 */
 
 
-add_action( 'init', function() { add_action( 'shoestrap_entry_meta_override','shoestrap_meta_custom_render' ); }, 20 );
+add_action( 'shoestrap_entry_meta_override','shoestrap_meta_custom_render' );
 
 
 if ( !function_exists( 'shoestrap_meta_custom_render' ) ) :
@@ -36,54 +36,33 @@ function shoestrap_meta_custom_render() {
   $tag_list           = get_the_tag_list( '', __( ', ', 'shoestrap' ) );
   $elementscountplus  = '';
 
-  if ( isset( $metaelements['sticky'] ) && is_sticky() && is_home() && ! is_paged() ) :
-    $elementscountplus .= '+';
-  endif;
-
-  if ( ! has_post_format( 'link' ) && 'post' == get_post_type() ) :
-    $elementscountplus .= '+';
-  endif;
-
-  if ( isset( $metaelements['category'] ) && $categories_list ) :
-    $elementscountplus .= '+';
-  endif;
-
-  if ( isset( $metaelements['tags'] ) && $tag_list ) :
-    $elementscountplus .= '+';
-  endif;
-
-  if ( isset( $metaelements['author'] ) && ( 'post' == get_post_type() ) ) :
-    $elementscountplus .= '+';
-  endif;
+  $elementscountplus .= isset( $metaelements['sticky'] ) && is_sticky() ? '+' : '';
+  $elementscountplus .= !has_post_format( 'link' ) ? '+' : '';
+  $elementscountplus .= isset( $metaelements['category'] ) && $categories_list ? '+' : '';
+  $elementscountplus .= isset( $metaelements['tags'] ) && $tag_list ? '+' : '';
+  $elementscountplus .= isset( $metaelements['author'] ) ? '+' : '';
 
   // Distribute meta elements over 12 columns
-  $col = 12;
-  if ( strlen( $elementscountplus ) == 5 ) :
-    $col = 2;
-  elseif ( strlen( $elementscountplus ) == 4 ) :
-    $col = 3;
-  elseif ( strlen( $elementscountplus ) == 3 ) :
-    $col = 4;
-  elseif ( strlen( $elementscountplus ) == 2 ) :
-    $col = 6;
-  elseif ( strlen( $elementscountplus ) == 1 ) :
+  $elementscountplus = strlen( $elementscountplus );
+  if ( $elementscountplus >= 2 ) :
+    $col = round( ( 12 / ( $elementscountplus ) ), 0, PHP_ROUND_HALF_DOWN );
+  else :
     $col = 12;
   endif;
 
   $colclass = 'col-md-' . $col;
 
   // output sticky element
-  if ( isset( $metaelements['sticky'] ) && is_sticky() && is_home() && ! is_paged() ) :
-    $meta_html['sticky'] = '<span class="featured-post ' . $colclass . '"><i class="el-icon-flag icon"></i> ' . __( 'Sticky', 'shoestrap' ) . '</span>';
-  endif;
-
-  // unset sticky element if set but not being used
-  if ( isset( $metaelements['sticky'] ) && !( is_sticky() && is_home() && ! is_paged()) ) :
-    unset( $meta_html['sticky'] );
+  if ( isset( $metaelements['sticky'] ) ) :
+    if ( is_sticky() ) :
+      $meta_html['sticky'] = '<span class="featured-post ' . $colclass . '"><i class="el-icon-flag icon"></i> ' . __( 'Sticky', 'shoestrap' ) . '</span>';
+    else :
+      unset( $meta_html['sticky'] );
+    endif;
   endif;
 
   // output date element
-  if ( !has_post_format( 'link' ) && 'post' == get_post_type() ) :
+  if ( !has_post_format( 'link' ) ) :
     $format_prefix = ( has_post_format( 'chat' ) || has_post_format( 'status' ) ) ? _x( '%1$s on %2$s', '1: post format name. 2: date', 'shoestrap' ): '%2$s';
 
     if ( isset( $metaelements['date'] ) ) :
@@ -97,37 +76,32 @@ function shoestrap_meta_custom_render() {
   endif;
 
   // output category element
-  if ( isset( $metaelements['category'] ) && $categories_list ) :
-    $meta_html['category'] = '<span class="categories-links ' . $colclass . '"><i class="el-icon-folder-open icon"></i> ' . $categories_list . '</span>';
-  endif;
-  
-  // unset category element if set but not being used
-  if ( isset( $metaelements['category'] ) && !$categories_list ) :
-    unset( $meta_html['category'] );
+  if ( isset( $metaelements['category'] ) ) :
+    if ( $categories_list ) :
+      $meta_html['category'] = '<span class="categories-links ' . $colclass . '"><i class="el-icon-folder-open icon"></i> ' . $categories_list . '</span>';
+    else :
+      // unset category element if set but not being used
+      unset( $meta_html['category'] );
+    endif;
   endif;
 
   // output tag element
-  if ( isset( $metaelements['tags'] ) && $tag_list ) :
-    $meta_html['tags'] = '<span class="tags-links ' . $colclass . '"><i class="el-icon-tags icon"></i> ' . $tag_list . '</span>';
-  endif;
-
-  // unset tag element if set but not being used
-  if ( isset( $metaelements['tags'] ) && !$tag_list ) :
-    unset( $meta_html['tags'] );
+  if ( isset( $metaelements['tags'] ) ) :
+    if ( $tag_list ) :
+      $meta_html['tags'] = '<span class="tags-links ' . $colclass . '"><i class="el-icon-tags icon"></i> ' . $tag_list . '</span>';
+    else :
+      // unset tag element if set but not being used
+      unset( $meta_html['tags'] );
+    endif;
   endif;
 
   // output author element
-  if ( isset( $metaelements['author'] ) && ('post' == get_post_type()) ) :
+  if ( isset( $metaelements['author'] ) ) :
     $meta_html['author'] = sprintf( '<span class="author vcard ' . $colclass . '"><i class="el-icon-user icon"></i> <a class="url fn n" href="%1$s" title="%2$s" rel="author">%3$s</a></span>',
       esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
       esc_attr( sprintf( __( 'View all posts by %s', 'shoestrap' ), get_the_author() ) ),
       get_the_author()
     );
-  endif;
-
-  // unset author element if set but not being used
-  if ( isset( $metaelements['author'] ) && ( 'post' != get_post_type() ) ) :
-    unset( $meta_html['author'] );
   endif;
 
   if ( !empty( $metaelements ) ) :
