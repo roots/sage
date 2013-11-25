@@ -1,6 +1,6 @@
 {
   "name": "roots",
-  "version": "6.5.0",
+  "version": "6.5.1",
   "author": "Ben Word <ben@benword.com>",
   "homepage": "http://roots.io",
   "repository": {
@@ -23,7 +23,7 @@
     "grunt-contrib-jshint": "~0.6.4",
     "grunt-contrib-uglify": "~0.2.4",
     "grunt-contrib-watch": "~0.5.3",
-    "grunt-recess": "~0.4.0",
+    "grunt-contrib-less": "~0.8.1",
     "grunt-wp-version": "~0.1.0"
   }
 }

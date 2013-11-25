@@ -12,7 +12,5 @@
   "noarg": true,
   "node": true,
   "strict": false,
-  "trailing": true,
-  "undef": true,
-  "predef" : ["Modernizr"]
+  "trailing": true
 }

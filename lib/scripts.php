@@ -3,21 +3,15 @@
  * Enqueue scripts and stylesheets
  *
  * Enqueue stylesheets in the following order:
- * 1. /theme/assets/css/style.css
+ * 1. /theme/assets/css/main.min.css
  *
  * Enqueue scripts in the following order:
  * 1. jquery-1.10.2.min.js via Google CDN
- * 2. /theme/assets/js/vendor/modernizr-2.6.2.min.js
- * 3. /theme/assets/js/plugins.js (in footer)
- * 4. /theme/assets/js/main.js    (in footer)
+ * 2. /theme/assets/js/vendor/modernizr-2.7.0.min.js
+ * 3. /theme/assets/js/main.min.js (in footer)
  */
 function roots_scripts() {
-
-  // Ensure we're not on the customize page. Conflicts with LESS
-  // global $wp_customize;
-  // if ( !isset( $wp_customize ) ) {
-    wp_enqueue_style('shoestrap_css', shoestrap_css( 'url' ), false, null);
-  // }
+  wp_enqueue_style('roots_main', get_template_directory_uri() . '/assets/css/main.min.css', false, '9dbd7d094ab56a14e3b2a984b20ea357');
 
   // jQuery is loaded using the same method from HTML5 Boilerplate:
   // Grab Google CDN's latest jQuery with a protocol relative URL; fallback to local if offline
@@ -32,25 +26,11 @@ function roots_scripts() {
     wp_enqueue_script('comment-reply');
   }
 
-  wp_register_script('modernizr', get_template_directory_uri() . '/assets/js/vendor/modernizr-2.6.2.min.js', false, null, false);
-  wp_register_script('roots_plugins', get_template_directory_uri() . '/assets/js/bootstrap.min.js', false, null, true);
-  wp_register_script('roots_main', get_template_directory_uri() . '/assets/js/main.js', false, null, true);
-  wp_enqueue_script('jquery');
+  wp_register_script('modernizr', get_template_directory_uri() . '/assets/js/vendor/modernizr-2.7.0.min.js', false, null, false);
+  wp_register_script('roots_scripts', get_template_directory_uri() . '/assets/js/scripts.min.js', false, 'be373268f9b8ecda7c3a45154676e637', true);
   wp_enqueue_script('modernizr');
-  wp_enqueue_script('roots_plugins');
-  wp_enqueue_script('roots_main');
-
-  if ( shoestrap_getVariable( 'pjax' ) == 1 ) {
-    wp_register_script('jquery_pjax', get_template_directory_uri() . '/assets/js/jquery.pjax.js', false, null, true);
-    wp_enqueue_script('jquery_pjax');
-  }
-
-  if ( shoestrap_getVariable( 'retina_toggle' ) == 1 ) {
-    wp_register_script('retinajs', get_template_directory_uri() . '/assets/js/vendor/retina.js', false, null, true);
-    wp_enqueue_script('retinajs');
-  }
-  wp_register_script('fitvids', get_template_directory_uri() . '/assets/js/vendor/jquery.fitvids.js', false, null, true);
-  wp_enqueue_script('fitvids');
+  wp_enqueue_script('jquery');
+  wp_enqueue_script('roots_scripts');
 }
 add_action('wp_enqueue_scripts', 'roots_scripts', 100);
 
