@@ -6,9 +6,6 @@ add_theme_support('post-thumbnails');
 if ( shoestrap_getVariable( 'root_relative_urls' ) == 1  )
   add_theme_support('root-relative-urls');    // Enable relative URLs
 
-if ( shoestrap_getVariable( 'rewrites' ) == 1 )
-  add_theme_support('rewrites');              // Enable URL rewrites
-
 add_theme_support('bootstrap-top-navbar');  // Enable Bootstrap's top navbar
 add_theme_support('bootstrap-gallery');     // Enable Bootstrap's thumbnails component on [gallery]
 
@@ -20,8 +17,8 @@ add_theme_support('jquery-cdn');            // Enable to load jQuery from the Go
 /**
  * Configuration values
  */
-define('GOOGLE_ANALYTICS_ID', shoestrap_getVariable('analytics_id')); // UA-XXXXX-Y
-define('POST_EXCERPT_LENGTH', shoestrap_getVariable('post_excerpt_length')); // length in words for excerpt_length filter (ref: http://codex.wordpress.org/Plugin_API/Filter_Reference/excerpt_length)
+define('GOOGLE_ANALYTICS_ID', shoestrap_getVariable('analytics_id')); // UA-XXXXX-Y (Note: Universal Analytics only, not Classic Analytics)
+define('POST_EXCERPT_LENGTH', shoestrap_getVariable('post_excerpt_length')); // Length in words for excerpt_length filter (http://codex.wordpress.org/Plugin_API/Filter_Reference/excerpt_length)
 
 /**
  * .main classes
@@ -86,13 +83,3 @@ function roots_display_sidebar() {
  * Default: 1140px is the default Bootstrap container width.
  */
 if (!isset($content_width)) { $content_width = 1140; }
-
-/**
- * Define helper constants
- */
-$get_theme_name = explode('/themes/', get_template_directory());
-
-define('RELATIVE_PLUGIN_PATH',  str_replace(home_url() . '/', '', plugins_url()));
-define('RELATIVE_CONTENT_PATH', str_replace(home_url() . '/', '', content_url()));
-define('THEME_NAME',            next($get_theme_name));
-define('THEME_PATH',            RELATIVE_CONTENT_PATH . '/themes/' . THEME_NAME);

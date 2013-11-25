@@ -1,7 +1,11 @@
 <?php get_template_part('templates/head'); ?>
 <body <?php body_class(); ?>>
 
-  <!--[if lt IE 8]><div class="alert alert-warning"><?php _e('You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.', 'roots'); ?></div><![endif]-->
+  <!--[if lt IE 8]>
+    <div class="alert alert-warning">
+      <?php _e('You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.', 'roots'); ?>
+    </div>
+  <![endif]-->
 
   <?php
 
@@ -73,9 +77,9 @@
       }
 
       // This is where we load the extra template files for the main content.
-      echo '<div class="main ' . shoestrap_section_class( 'main' ) . '" role="main">';
+      echo '<main class="main ' . shoestrap_section_class( 'main' ) . '" role="main">';
         include roots_template_path();
-      echo '</div><!-- /.main -->';
+      echo '</main><!-- /.main -->';
 
       do_action('shoestrap_after_main');
 

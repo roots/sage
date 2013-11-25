@@ -263,7 +263,7 @@ function roots_request_filter($query_vars) {
 add_filter('request', 'roots_request_filter');
 
 /**
- * Tell WordPress to use searchform.php from the templates/ directory. Requires WordPress 3.6+
+ * Tell WordPress to use searchform.php from the templates/ directory
  */
 function roots_get_search_form($form) {
   $form = '';
