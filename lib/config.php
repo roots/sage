@@ -2,17 +2,23 @@
 /**
  * Enable theme features
  */
-add_theme_support('root-relative-urls');    // Enable relative URLs
+add_theme_support('post-thumbnails');
+if ( shoestrap_getVariable( 'root_relative_urls' ) == 1  )
+  add_theme_support('root-relative-urls');    // Enable relative URLs
+
 add_theme_support('bootstrap-top-navbar');  // Enable Bootstrap's top navbar
 add_theme_support('bootstrap-gallery');     // Enable Bootstrap's thumbnails component on [gallery]
-add_theme_support('nice-search');           // Enable /?s= to /search/ redirect
+
+if ( shoestrap_getVariable( 'nice_search' ) == 1 )
+  add_theme_support('nice-search');           // Enable /?s= to /search/ redirect
+
 add_theme_support('jquery-cdn');            // Enable to load jQuery from the Google CDN
 
 /**
  * Configuration values
  */
-define('GOOGLE_ANALYTICS_ID', ''); // UA-XXXXX-Y (Note: Universal Analytics only, not Classic Analytics)
-define('POST_EXCERPT_LENGTH', 40); // Length in words for excerpt_length filter (http://codex.wordpress.org/Plugin_API/Filter_Reference/excerpt_length)
+define('GOOGLE_ANALYTICS_ID', shoestrap_getVariable('analytics_id')); // UA-XXXXX-Y (Note: Universal Analytics only, not Classic Analytics)
+define('POST_EXCERPT_LENGTH', shoestrap_getVariable('post_excerpt_length')); // Length in words for excerpt_length filter (http://codex.wordpress.org/Plugin_API/Filter_Reference/excerpt_length)
 
 /**
  * .main classes
