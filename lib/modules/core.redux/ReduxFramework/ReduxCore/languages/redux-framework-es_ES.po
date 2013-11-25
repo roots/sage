@@ -1,0 +1,864 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Redux Framework\n"
+"POT-Creation-Date: 2013-11-05 23:52-0000\n"
+"PO-Revision-Date: 2013-11-05 23:54-0000\n"
+"Last-Translator: Dovy Paukstys <dovy@reduxframework.com>\n"
+"Language-Team: ReduxFramework <language@reduxframework.com>\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.7\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext;_n;__ngettext_noop;_n_noop;_x;_nx;"
+"_nx_noop;_ex;esc_attr__;esc_attr_e;esc_attr_x;esc_html__;esc_html_e;"
+"esc_html_x;_c;_nc\n"
+"X-Poedit-Basepath: ../../\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SearchPath-0: ReduxCore\n"
+"X-Poedit-SearchPath-1: ReduxCore/languages\n"
+"X-Poedit-SearchPath-2: .\n"
+
+#: ReduxCore/framework.php:109 ReduxCore/framework.php:115
+#: ReduxCore/framework.php:255 ReduxCore/framework.php:257
+msgid "Options"
+msgstr "Opciones"
+
+#: ReduxCore/framework.php:268
+msgid "Options panel created using"
+msgstr "Panel de opciones creado con"
+
+#: ReduxCore/framework.php:268
+msgid "Redux Framework"
+msgstr "Redux Framework"
+
+#: ReduxCore/framework.php:825 ReduxCore/framework.php:826
+#: ReduxCore/framework.php:1693
+msgid "Import / Export"
+msgstr "Importar / Exportar"
+
+#: ReduxCore/framework.php:847 ReduxCore/framework.php:848
+#: ReduxCore/framework.php:1723 ReduxCore/framework.php:1830
+msgid "Options Object"
+msgstr "Objeto"
+
+#: ReduxCore/framework.php:858 ReduxCore/framework.php:859
+#: ReduxCore/framework.php:1737 ReduxCore/framework.php:1850
+msgid "System Info"
+msgstr "Información del sistema"
+
+#: ReduxCore/framework.php:1030
+#: ReduxCore/extensions/customizer/extension_customizer.php:311
+#: ReduxCore/extensions/customizer/extension_customizer.php:342
+msgid "You have changes that are not saved. Would you like to save them now?"
+msgstr "Ha realizado cambios que no se han guardado. ¿Desea guardar ahora?"
+
+#: ReduxCore/framework.php:1031
+#: ReduxCore/extensions/customizer/extension_customizer.php:312
+#: ReduxCore/extensions/customizer/extension_customizer.php:343
+msgid "Are you sure? Resetting will loose all custom values."
+msgstr ""
+"¿Estas seguro? Al restablecer los valores por defecto se pierden los ajustes "
+"realizados."
+
+#: ReduxCore/framework.php:1032
+#: ReduxCore/extensions/customizer/extension_customizer.php:313
+#: ReduxCore/extensions/customizer/extension_customizer.php:344
+msgid ""
+"Your current options will be replaced with the values of this preset. Would "
+"you like to proceed?"
+msgstr ""
+"Las opciones actuales serán reemplazadas por los ajustes de esta opción. "
+"¿Seguro que desea proceder?"
+
+#: ReduxCore/framework.php:1298
+msgid "Default"
+msgstr "Por defecto"
+
+#: ReduxCore/framework.php:1567
+msgid "Warning- This options panel will not work properly without javascript!"
+msgstr ""
+"Atención- ¡Este panel de control no funciona bien sin javascript activo!"
+
+#: ReduxCore/framework.php:1620
+msgid "Expand"
+msgstr "Expandir"
+
+#: ReduxCore/framework.php:1622 ReduxCore/framework.php:1879
+msgid "Save Changes"
+msgstr "Guardar cambios"
+
+#: ReduxCore/framework.php:1624 ReduxCore/framework.php:1881
+msgid "Reset to Defaults"
+msgstr "Restablecer ajustes por defecto"
+
+#: ReduxCore/framework.php:1627 ReduxCore/framework.php:1884
+msgid "Working..."
+msgstr "Trabajando..."
+
+#: ReduxCore/framework.php:1634
+msgid "Settings Imported!"
+msgstr "¡Opciones importadas!"
+
+#: ReduxCore/framework.php:1636
+msgid "Settings Saved!"
+msgstr "¡Opciones guardadas!"
+
+#: ReduxCore/framework.php:1640
+msgid "Settings have changed, you should save them!"
+msgstr "Las opciones han cambiado, ¡debería guardarlas!"
+
+#: ReduxCore/framework.php:1641
+msgid "error(s) were found!"
+msgstr "¡Se han encontrado errores!"
+
+#: ReduxCore/framework.php:1642
+msgid "warning(s) were found!"
+msgstr "¡Advertencias encontradas!"
+
+#: ReduxCore/framework.php:1774
+msgid "Import / Export Options"
+msgstr "Opciones de Importación / Exportación"
+
+#: ReduxCore/framework.php:1775
+msgid "Import Options"
+msgstr "Opciones de Importación"
+
+#: ReduxCore/framework.php:1776
+msgid "Import from file"
+msgstr "Importar desde archivo"
+
+#: ReduxCore/framework.php:1776
+msgid "Import from URL"
+msgstr "Importar desde URL"
+
+#: ReduxCore/framework.php:1781
+msgid ""
+"Input your backup file below and hit Import to restore your sites options "
+"from a backup."
+msgstr ""
+"Seleccione su archivo de copia de seguridad y haga clic en Importar para "
+"restaurar sus opciones desde el."
+
+#: ReduxCore/framework.php:1791
+msgid ""
+"Input the URL to another sites options set and hit Import to load the "
+"options from that site."
+msgstr "Introduzca una URL desde la que importar sus opciones para este sitio."
+
+#: ReduxCore/framework.php:1798
+msgid "Import"
+msgstr "Importar"
+
+#: ReduxCore/framework.php:1798
+msgid ""
+"WARNING! This will overwrite all existing option values, please proceed with "
+"caution!"
+msgstr ""
+"¡Atención! Esto sobreescribirá las opciones existentes. Proceda con cautela."
+
+#: ReduxCore/framework.php:1801
+msgid "Export Options"
+msgstr "Opciones de Exportación"
+
+#: ReduxCore/framework.php:1803
+msgid ""
+"Here you can copy/download your current option settings. Keep this safe as "
+"you can use it as a backup should anything go wrong, or you can use it to "
+"restore your settings on this site (or any other site)."
+msgstr ""
+"Desde aquí puede descargar sus opciones actuales. Tenga en cuenta que este "
+"archivo puede ser utilizado como copia de seguridad por si algo sale mal. O "
+"puede utilizar este archivo para utilizarlo en otro sitio."
+
+#: ReduxCore/framework.php:1807
+msgid "Copy"
+msgstr "Copiar"
+
+#: ReduxCore/framework.php:1807
+msgid "Download"
+msgstr "Descargar"
+
+#: ReduxCore/framework.php:1807
+msgid "Copy Link"
+msgstr "Copiar enlace"
+
+#: ReduxCore/framework.php:1839
+msgid "Show Object in Javascript Console Object"
+msgstr "Mostrar objeto en la Consola de Javascript"
+
+#: ReduxCore/inc/tracking.php:58
+msgid "Help improve Our Panel"
+msgstr "Ayudanos a mejorar nuestro plugin"
+
+#: ReduxCore/inc/tracking.php:59
+msgid ""
+"Please helps us improve our panel by allowing us to gather anonymous usage "
+"stats so we know which configurations, plugins and themes to test with."
+msgstr ""
+"Por favor, ayúdanos a mejorar permitiéndonos obtener información anónima de "
+"uso del plugin, de esa manera sabremos que configuraciones, plugins y temas "
+"han sido probados con nuestro plugin "
+
+#: ReduxCore/inc/tracking.php:64
+msgid "Allow tracking"
+msgstr "Permitir rastreo"
+
+#: ReduxCore/inc/tracking.php:69
+msgid "Do not allow tracking"
+msgstr "No permitir rastreo"
+
+#: ReduxCore/inc/fields/border/field_border.php:75
+#: ReduxCore/inc/fields/spacing/field_spacing.php:122
+msgid "All"
+msgstr "Todo"
+
+#: ReduxCore/inc/fields/border/field_border.php:88
+#: ReduxCore/inc/fields/spacing/field_spacing.php:135
+msgid "Top"
+msgstr "Arriba"
+
+#: ReduxCore/inc/fields/border/field_border.php:95
+#: ReduxCore/inc/fields/spacing/field_spacing.php:142
+msgid "Right"
+msgstr "Derecha"
+
+#: ReduxCore/inc/fields/border/field_border.php:102
+#: ReduxCore/inc/fields/spacing/field_spacing.php:149
+msgid "Bottom"
+msgstr "Abajo"
+
+#: ReduxCore/inc/fields/border/field_border.php:109
+#: ReduxCore/inc/fields/spacing/field_spacing.php:156
+msgid "Left"
+msgstr "Izquierda"
+
+#: ReduxCore/inc/fields/border/field_border.php:125
+msgid "Border style"
+msgstr "Estilo del borde"
+
+#: ReduxCore/inc/fields/color/field_color.php:72
+#: ReduxCore/inc/fields/color_gradient/field_color_gradient.php:81
+#: ReduxCore/inc/fields/color_gradient/field_color_gradient.php:91
+msgid "Transparent"
+msgstr "Transparente"
+
+#: ReduxCore/inc/fields/color_gradient/field_color_gradient.php:73
+msgid "From "
+msgstr "Desde"
+
+#: ReduxCore/inc/fields/color_gradient/field_color_gradient.php:84
+msgid "To "
+msgstr "Hasta"
+
+#: ReduxCore/inc/fields/dimensions/field_dimensions.php:85
+msgid "Width"
+msgstr "Ancho"
+
+#: ReduxCore/inc/fields/dimensions/field_dimensions.php:101
+msgid "height"
+msgstr "alto"
+
+#: ReduxCore/inc/fields/dimensions/field_dimensions.php:111
+#: ReduxCore/inc/fields/dimensions/field_dimensions.php:112
+#: ReduxCore/inc/fields/spacing/field_spacing.php:167
+#: ReduxCore/inc/fields/spacing/field_spacing.php:168
+msgid "Units"
+msgstr "Unidades"
+
+#: ReduxCore/inc/fields/gallery/field_gallery.php:76
+msgid "Add/Edit Gallery"
+msgstr "Añadir/Editar Galería"
+
+#: ReduxCore/inc/fields/gallery/field_gallery.php:77
+msgid "Clear Gallery"
+msgstr "Limpiar Galería"
+
+#: ReduxCore/inc/fields/group/field_group.php:71
+msgid "New"
+msgstr "Nuevo"
+
+#: ReduxCore/inc/fields/group/field_group.php:126
+msgid "Delete"
+msgstr "Borrar"
+
+#: ReduxCore/inc/fields/group/field_group.php:131
+msgid "Add"
+msgstr "Añadir"
+
+#: ReduxCore/inc/fields/link_color/field_link_color.php:84
+msgid "Regular"
+msgstr "Normal"
+
+#: ReduxCore/inc/fields/link_color/field_link_color.php:90
+msgid "Hover"
+msgstr "Hover"
+
+#: ReduxCore/inc/fields/link_color/field_link_color.php:96
+msgid "Active"
+msgstr "Activo"
+
+#: ReduxCore/inc/fields/media/field_media.php:112
+msgid "None media selected"
+msgstr "Ningún archivo seleccionado"
+
+#: ReduxCore/inc/fields/media/field_media.php:144
+#: ReduxCore/inc/fields/slides/field_slides.php:116
+#: ReduxCore/inc/fields/slides/field_slides.php:158
+msgid "Upload"
+msgstr "Enviar"
+
+#: ReduxCore/inc/fields/media/field_media.php:150
+#: ReduxCore/inc/fields/multi_text/field_multi_text.php:74
+#: ReduxCore/inc/fields/multi_text/field_multi_text.php:77
+#: ReduxCore/inc/fields/multi_text/field_multi_text.php:80
+#: ReduxCore/inc/fields/slides/field_slides.php:122
+#: ReduxCore/inc/fields/slides/field_slides.php:160
+msgid "Remove"
+msgstr "Borrar"
+
+#: ReduxCore/inc/fields/multi_text/field_multi_text.php:52
+msgid "Add More"
+msgstr "Añadir más"
+
+#: ReduxCore/inc/fields/password/field_password.php:29
+msgid "Password"
+msgstr "Contraseña"
+
+#: ReduxCore/inc/fields/password/field_password.php:29
+msgid "Username"
+msgstr "Nombre de usuario"
+
+#: ReduxCore/inc/fields/select/field_select.php:67
+msgid "Select an item"
+msgstr "Seleccionar un item"
+
+#: ReduxCore/inc/fields/select/field_select.php:87
+msgid "No items of this type were found."
+msgstr "No se encontraron items de ese tipo."
+
+#: ReduxCore/inc/fields/slides/field_slides.php:127
+#: ReduxCore/inc/fields/slides/field_slides.php:165
+msgid "Title"
+msgstr "Título"
+
+#: ReduxCore/inc/fields/slides/field_slides.php:128
+#: ReduxCore/inc/fields/slides/field_slides.php:166
+msgid "Description"
+msgstr "Descripción"
+
+#: ReduxCore/inc/fields/slides/field_slides.php:129
+#: ReduxCore/inc/fields/slides/field_slides.php:167
+msgid "URL"
+msgstr ""
+
+#: ReduxCore/inc/fields/slides/field_slides.php:136
+#: ReduxCore/inc/fields/slides/field_slides.php:173
+msgid "Delete Slide"
+msgstr "Borrar slide"
+
+#: ReduxCore/inc/fields/slides/field_slides.php:176
+msgid "Add Slide"
+msgstr "Añadir slide"
+
+#: ReduxCore/inc/fields/typography/field_typography.php:104
+msgid "Font family"
+msgstr "Familia de la tipografía"
+
+#: ReduxCore/inc/fields/typography/field_typography.php:107
+msgid "Standard Fonts"
+msgstr "Tipografías estándar"
+
+#: ReduxCore/inc/fields/typography/field_typography.php:172
+#: ReduxCore/inc/fields/typography/field_typography.php:176
+msgid "Font style"
+msgstr "Estilo de la tipografía"
+
+#: ReduxCore/inc/fields/typography/field_typography.php:176
+msgid "Style"
+msgstr "Estilo"
+
+#: ReduxCore/inc/fields/typography/field_typography.php:202
+msgid "Font subsets"
+msgstr "Subgrupos de tipografías"
+
+#: ReduxCore/inc/fields/typography/field_typography.php:203
+msgid "Subsets"
+msgstr "Subgrupos"
+
+#: ReduxCore/inc/fields/typography/field_typography.php:203
+msgid "Font script"
+msgstr "Script de tipografía"
+
+#: ReduxCore/inc/fields/typography/field_typography.php:221
+msgid "Size"
+msgstr "Tamaño"
+
+#: ReduxCore/inc/fields/typography/field_typography.php:230
+msgid "Height"
+msgstr "Alto"
+
+#: ReduxCore/inc/fields/typography/field_typography.php:238
+msgid "Word Spacing"
+msgstr "Separación de palabras"
+
+#: ReduxCore/inc/fields/typography/field_typography.php:246
+msgid "Letter Spacing"
+msgstr "Separación de letras"
+
+#: ReduxCore/inc/fields/typography/field_typography.php:260
+msgid "Backup Font Family"
+msgstr "Copia de seguridad de familia de tipografías"
+
+#: ReduxCore/inc/fields/typography/field_typography.php:280
+msgid "Font color"
+msgstr "Color de tipografía"
+
+#: ReduxCore/inc/fields/typography/field_typography.php:520
+msgid "Google Webfonts"
+msgstr "Tipografías de Google"
+
+#: ReduxCore/inc/validation/color/validation_color.php:15
+#: ReduxCore/inc/validation/color_rgba/validation_color_rgba.php:15
+msgid "This field must be a valid color value."
+msgstr "Este campo debe ser un código de color válido."
+
+#: ReduxCore/inc/validation/comma_numeric/validation_comma_numeric.php:15
+msgid ""
+"You must provide a comma separated list of numerical values for this option."
+msgstr ""
+"Debe proporcionar una lista de valores separados por comas para esta opción."
+
+#: ReduxCore/inc/validation/date/validation_date.php:15
+msgid "This field must be a valid date."
+msgstr "Este campo debe ser una fecha válida."
+
+#: ReduxCore/inc/validation/email/validation_email.php:15
+msgid "You must provide a valid email for this option."
+msgstr "Debe proporcionar un email válido para esta opción."
+
+#: ReduxCore/inc/validation/no_html/validation_no_html.php:15
+msgid ""
+"You must not enter any HTML in this field, all HTML tags have been removed."
+msgstr ""
+"No escriba etiquetas HTML en este campo. Todo el HTML introducido será "
+"eliminado."
+
+#: ReduxCore/inc/validation/no_special_chars/validation_no_special_chars.php:15
+msgid ""
+"You must not enter any special characters in this field, all special "
+"characters have been removed."
+msgstr ""
+"No introduzca ningún carácter especial en este campo. Todos los caracteres "
+"especiales introducidos serán eliminados."
+
+#: ReduxCore/inc/validation/numeric/validation_numeric.php:15
+msgid "You must provide a numerical value for this option."
+msgstr "Debe proporcionar un valor numérico para esta opción."
+
+#: ReduxCore/inc/validation/url/validation_url.php:15
+msgid "You must provide a valid URL for this option."
+msgstr "Debe proporcionar una URL válida para esta opción."
+
+#: class-redux-plugin.php:243
+msgid "Redux Framework has an embedded demo."
+msgstr "El Redux Framework incluye una demo."
+
+#: class-redux-plugin.php:243
+msgid "Click here to activate the sample config file."
+msgstr "Haga clic aquí para activa la configuración de prueba."
+
+#: class-redux-plugin.php:338
+msgid "Deactivate Demo Mode"
+msgstr "Desactivar modo demo."
+
+#: class-redux-plugin.php:340
+msgid "Activate Demo Mode"
+msgstr "Activar modo demo"
+
+#~ msgid "Border size"
+#~ msgstr "Tamaño del borde"
+
+#~ msgid "Customize &#8220;%s&#8221;"
+#~ msgstr "Customizar &#8220;%s&#8221;"
+
+#~ msgid "Current theme preview"
+#~ msgstr "Previsualizar el tema actual"
+
+#~ msgid "By %s"
+#~ msgstr "Por %s"
+
+#~ msgid "Version %s"
+#~ msgstr "Versión %s"
+
+#~ msgid "Tags"
+#~ msgstr "Etiquetas"
+
+#~ msgid ""
+#~ "This <a href=\"%1$s\">child theme</a> requires its parent theme, %2$s."
+#~ msgstr "Este <a href=\"%1$s\">tema hijo</a> requiere un tema padre, %2$s."
+
+#~ msgid "Theme Information 1"
+#~ msgstr "Información del tema 1"
+
+#~ msgid "<p>This is the tab content, HTML is allowed.</p>"
+#~ msgstr "Este es el contenido de la pestaña, se permite la inclusión de HTML"
+
+#~ msgid "Theme Information 2"
+#~ msgstr "Información del tema 2"
+
+#~ msgid "<p>This is the sidebar content, HTML is allowed.</p>"
+#~ msgstr ""
+#~ "Este es el contenido de la barra lateral, se permite la inclusión de HTML"
+
+#~ msgid ""
+#~ "<p>Did you know that Redux sets a global variable for you? To access any "
+#~ "of your saved options from within your code you can use your global "
+#~ "variable: <strong>$"
+#~ msgstr ""
+#~ "<p>¿Sabía que Redux Framework crea una variable global por usted? Para "
+#~ "acceder a cualquier opción, solo tiene que acceder a la variable: <strong>"
+#~ "$"
+
+#~ msgid ""
+#~ "<p>This text is displayed above the options panel. It isn't required, but "
+#~ "more info is always better! The intro_text field accepts all HTML.</p>"
+#~ msgstr ""
+#~ "<p>Este texto es mostrado por encima del panel de opciones. No es "
+#~ "obligatorio, pero más información siempre es mejor. El campo "
+#~ "<strong>intro_text</strong> acepta HTML.</p>"
+
+#~ msgid ""
+#~ "<p>This text is displayed below the options panel. It isn't required, but "
+#~ "more info is always better! The footer_text field accepts all HTML.</p>"
+#~ msgstr ""
+#~ "<p>Este texto es mostrado por debajo del panel de opciones. No es "
+#~ "obligatorio, pero más información siempre es mejor. El campo "
+#~ "<strong>footer_text</strong> acepta HTML.</p>"
+
+#~ msgid "Home Settings"
+#~ msgstr "Inicio"
+
+#~ msgid "Welcome to the Simple Options Framework Demo"
+#~ msgstr "Bienvenidos a la demo de opciones simples del Framework"
+
+#~ msgid ""
+#~ "Redux Framework was created with the developer in mind. It allows for any "
+#~ "theme developer to have an advanced theme panel with most of the features "
+#~ "a developer would need. For more information check out the Github repo "
+#~ "at: <a href=\"https://github.com/ReduxFramework/Redux-Framework\">https://"
+#~ "github.com/ReduxFramework/Redux-Framework</a>"
+#~ msgstr ""
+#~ "Redux Framework ha sido creado pensando en los desarrolladores. Esto "
+#~ "permite a cualquier desarrollador de temas tener un panel de opciones "
+#~ "avanzadas con muchas características. Para más información visita el "
+#~ "repositorio de Github en: <a href=\"https://github.com/ReduxFramework/"
+#~ "Redux-Framework\">https://github.com/ReduxFramework/Redux-Framework</a>"
+
+#~ msgid "Media w/ URL"
+#~ msgstr "Medios con URL"
+
+#~ msgid "Basic media uploader with disabled URL input field."
+#~ msgstr "Cargador de medios básico con el campo de URL desactivado."
+
+#~ msgid "Upload any media using the Wordpress native uploader"
+#~ msgstr ""
+#~ "Carga cualquier medio usando el cargador de medios nativo de Wordpress"
+
+#~ msgid "Media w/o URL"
+#~ msgstr "Medios sin URL"
+
+#~ msgid ""
+#~ "This represents the minimalistic view. It does not have the preview box "
+#~ "or the display URL in an input box. "
+#~ msgstr ""
+#~ "Esto representa la vista mínima. No dispone de una caja de "
+#~ "previsualización o muestra de URL en un campo."
+
+#~ msgid "Media No Preview"
+#~ msgstr "Medio sin previsualización"
+
+#~ msgid ""
+#~ "Create a new Gallery by selecting existing or uploading new images using "
+#~ "the Wordpress native uploader"
+#~ msgstr ""
+#~ "Crea una Galería seleccionando imágenes existentes o cargándolas usando "
+#~ "el cargador de medios nativo de Wordpress"
+
+#~ msgid "This is the description field, again good for additional info."
+#~ msgstr "Este es el campo de descripción, bueno para información adicional."
+
+#~ msgid "JQuery UI Slider Example 1"
+#~ msgstr "JQuery UI Slider Ejemplo 1"
+
+#~ msgid ""
+#~ "JQuery UI slider description. Min: 1, max: 500, step: 3, default value: 45"
+#~ msgstr ""
+#~ "Descripción JQuery UI slider. mín:1, más: 500, salto: 3, valor por "
+#~ "defecto: 45"
+
+#~ msgid "JQuery UI Slider Example 2 w/ Steps (5)"
+#~ msgstr "Ejemplo de JQuery UI Slider 2 con saltos (5)"
+
+#~ msgid ""
+#~ "JQuery UI slider description. Min: 0, max: 300, step: 5, default value: 75"
+#~ msgstr ""
+#~ "Descripción JQuery UI slider. mín:1, máx: 300, salto: 5, valor por "
+#~ "defecto: 75"
+
+#~ msgid "JQuery UI Spinner Example 1"
+#~ msgstr "Ejemplo 1 de Selector JQuery UI"
+
+#~ msgid ""
+#~ "JQuery UI spinner description. Min:20, max: 100, step:20, default value: "
+#~ "40"
+#~ msgstr ""
+#~ "Descripción Selector de JQuery UI. mín: 20, máx:100, salto: 20, valor por "
+#~ "defecto: 40"
+
+#~ msgid "Switch On"
+#~ msgstr "Activar"
+
+#~ msgid "Look, it's on!"
+#~ msgstr "¡Esta activo!"
+
+#~ msgid "Switch Off"
+#~ msgstr "Desactivar"
+
+#~ msgid "Switch - Custom Titles"
+#~ msgstr "Interruptor- Títulos personalizados"
+
+#~ msgid "Look, it's on! Also hidden child elements!"
+#~ msgstr "¡Activado! Se ocultan los elementos hijo"
+
+#~ msgid "Switch - With Hidden Items (NESTED!)"
+#~ msgstr "Interruptor - Con elementos ocultos (ANIDADOS)"
+
+#~ msgid "Also called a \"fold\" parent."
+#~ msgstr "También se conocido como padre \"fold\""
+
+#~ msgid ""
+#~ "Items set with a fold to this ID will hide unless this is set to the "
+#~ "appropriate value."
+#~ msgstr ""
+#~ "Los elementos con un fold para este ID estarán ocultos a menos que se "
+#~ "seleccione un valor apropiado"
+
+#~ msgid "Images Option (with pattern=>true)"
+#~ msgstr "Opción de Imágenes (con pattern=>true)"
+
+#~ msgid "Select a background pattern."
+#~ msgstr "Selecciona un patrón para el fondo"
+
+#, fuzzy
+#~ msgid "Slides Options"
+#~ msgstr "Opciones"
+
+#~ msgid "Unlimited slides with drag and drop sortings."
+#~ msgstr "Slides ilimitados con ordenación por arrastrar y soltar."
+
+#~ msgid ""
+#~ "This field will store all slides values into a multidimensional array to "
+#~ "use into a foreach loop."
+#~ msgstr ""
+#~ "Este campo guardará todas las slides en array multidimensional para "
+#~ "usarlo en un bucle foreach"
+
+#~ msgid "Preset"
+#~ msgstr "Preselección"
+
+#~ msgid ""
+#~ "This allows you to set a json string or array to override multiple "
+#~ "preferences in your theme."
+#~ msgstr ""
+#~ "Esto le permite crear una cadena json o un array para saltase multiples "
+#~ "preferencias en su tema de Wordpress."
+
+#~ msgid "Typography"
+#~ msgstr "Tipografía"
+
+#~ msgid "Typography option with each property can be called individually."
+#~ msgstr "Las opciones de tipografía pueden usarse individualmente."
+
+#~ msgid "General Settings"
+#~ msgstr "Ajustes generales"
+
+#~ msgid "Main Layout"
+#~ msgstr "Estructura principal"
+
+#~ msgid ""
+#~ "Select main content and sidebar alignment. Choose between 1, 2 or 3 "
+#~ "column layout."
+#~ msgstr ""
+#~ "Seleccione la alineación para la barra lateral. A escoger entre 1, 2 o 3 "
+#~ "columnas."
+
+#~ msgid "Tracking Code"
+#~ msgstr "Código de seguimiento"
+
+#~ msgid ""
+#~ "Paste your Google Analytics (or other) tracking code here. This will be "
+#~ "added into the footer template of your theme."
+#~ msgstr ""
+#~ "Pegue aquí su código de seguimiento de Google Analytics (u otro). Este "
+#~ "código se añadirá al píe de página de su tema de Wordpress."
+
+#~ msgid "CSS Code"
+#~ msgstr "Código CSS"
+
+#~ msgid "Paste your CSS code here."
+#~ msgstr "Pegue su código CSS aquí."
+
+#~ msgid "JS Code"
+#~ msgstr "Código Javascript"
+
+#~ msgid "Paste your JS code here."
+#~ msgstr "Pegue su código Javascript aquí."
+
+#~ msgid "Footer Text"
+#~ msgstr "Texto en el píe de página"
+
+#~ msgid ""
+#~ "You can use the following shortcodes in your footer text: [wp-url] [site-"
+#~ "url] [theme-url] [login-url] [logout-url] [site-title] [site-tagline] "
+#~ "[current-year]"
+#~ msgstr ""
+#~ "Puede usar los siguientes shortcodes en el texto de píe de página: [wp-"
+#~ "url] [site-url] [theme-url] [login-url] [logout-url] [site-title] [site-"
+#~ "tagline] [current-year]"
+
+#, fuzzy
+#~ msgid "Styling Options"
+#~ msgstr "Opciones"
+
+#~ msgid "Theme Stylesheet"
+#~ msgstr "Hoja de estilos del tema"
+
+#~ msgid "Select your themes alternative color scheme."
+#~ msgstr "Seleccione el esquema de colores alternativo de su tema"
+
+#~ msgid "Body Background Color"
+#~ msgstr "Color de fondo del body"
+
+#~ msgid "Pick a background color for the theme (default: #fff)."
+#~ msgstr "Seleccione un color de fondo para el tema (por defecto: #fff)"
+
+#~ msgid "Footer Background Color"
+#~ msgstr "Color de fondo del píe de página"
+
+#~ msgid "Pick a background color for the footer (default: #dd9933)."
+#~ msgstr ""
+#~ "Selección de color de fondo para el píe de página (por defecto: #dd9933)."
+
+#~ msgid "Header Gradient Color Option"
+#~ msgstr "Opciones de color del degradado de la cabecera"
+
+#~ msgid "Only color validation can be done on this field type"
+#~ msgstr "Sólo puede validarse un código de color en este campo"
+
+#~ msgid "Links Color Option"
+#~ msgstr "Opciones de color de enlaces"
+
+#~ msgid "Header Border Option"
+#~ msgstr "Opciones de borde de la cabecera"
+
+#~ msgid "Padding/Margin Option"
+#~ msgstr "Opciones de Padding / Margin"
+
+#~ msgid "Allow your users to choose the spacing or margin they want."
+#~ msgstr "Permite a los usuarios elegir el espaciado o márgenes que quieran"
+
+#~ msgid ""
+#~ "You can enable or diable any piece of this field. Top, Right, Bottom, "
+#~ "Left, or Units."
+#~ msgstr ""
+#~ "Puedes activar o desactivar cualquier parte de este campo. Arriba, "
+#~ "derecha, abajo, izquierda o unidades."
+
+#~ msgid "Dimensions (Width/Height) Option"
+#~ msgstr "Opciones de dimensión (Ancho/Alto) "
+
+#~ msgid "Allow your users to choose width, height, and/or unit."
+#~ msgstr "Permite a los usuarios seleccionar ancho, alto y/o unidades."
+
+#~ msgid ""
+#~ "You can enable or diable any piece of this field. Width, Height, or Units."
+#~ msgstr ""
+#~ "Puede desactivar cualquier parte de este campo. Ancho, alto o unidades."
+
+#~ msgid "Body Font"
+#~ msgstr "Tipografía de Body"
+
+#~ msgid "Specify the body font properties."
+#~ msgstr "Especifica la propiedad font para el body."
+
+#~ msgid "Custom CSS"
+#~ msgstr "CSS Personalizados"
+
+#~ msgid "Quickly add some CSS to your theme by adding it to this block."
+#~ msgstr "Añada rápidamente código CSS a su tema desde este campo."
+
+#, fuzzy
+#~ msgid "This field is even CSS validated!"
+#~ msgstr "Este campo debe ser una fecha válida."
+
+#~ msgid "Field Validation"
+#~ msgstr "Validación del campo"
+
+#~ msgid ""
+#~ "<p class=\"description\">This is the Description. Again HTML is allowed2</"
+#~ "p>"
+#~ msgstr ""
+#~ "<p class=\"description\">Esta es la descripción. Se permite HTML</p>"
+
+#~ msgid "Text Option - Email Validated"
+#~ msgstr "Opción de texto - Email válido"
+
+#~ msgid ""
+#~ "This is a little space under the Field Title in the Options table, "
+#~ "additonal info is good in here."
+#~ msgstr ""
+#~ "Este es un pequeño espacio bajo el campo de título. Se puede añadir "
+#~ "información adicional aquí."
+
+#~ msgid "Multi Text Option"
+#~ msgstr "Opción de texto múltiple"
+
+#, fuzzy
+#~ msgid "This must be a URL."
+#~ msgstr "Este campo debe ser una fecha válida."
+
+#, fuzzy
+#~ msgid "This must be a comma seperated string of numerical values."
+#~ msgstr ""
+#~ "Debe proporcionar una lista de valores separados por comas para esta "
+#~ "opción."
+
+#, fuzzy
+#~ msgid "This must be a alpha numeric only."
+#~ msgstr "Este campo debe ser una fecha válida."
+
+#, fuzzy
+#~ msgid "Radio Option"
+#~ msgstr "Opciones"
+
+#, fuzzy
+#~ msgid "Images Option"
+#~ msgstr "Opciones de Importación"
+
+#, fuzzy
+#~ msgid "Sortable Text Option"
+#~ msgstr "Opciones de Importación / Exportación"
+
+#, fuzzy
+#~ msgid "Select Fields"
+#~ msgstr "Seleccionar un item"
+
+#, fuzzy
+#~ msgid "Select Option"
+#~ msgstr "Opciones"
+
+#, fuzzy
+#~ msgid "Date Option"
+#~ msgstr "Opciones"
