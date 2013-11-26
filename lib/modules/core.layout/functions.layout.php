@@ -24,7 +24,7 @@ function shoestrap_getLayout() {
 
   endif;
 
-  return $shoestrap_layout;
+  return apply_filters( 'shoestrap_layout_filter', $shoestrap_layout );
 }
 endif;
 
@@ -88,19 +88,6 @@ function shoestrap_section_class( $target, $echo = false ) {
       $main       = $base . ( 12 - $second );
       $secondary  = $base . $second;
     endif;
-  endif;
-
-  // Overrides main region class when selected template is page-full.php
-  if ( is_page_template( 'page-full.php' ) ) :
-    $main         = $base . 12;
-    $wrapper    = NULL;
-  endif;
-
-  // Overrides main and primary region classes when selected template is page-primary-sidebar.php
-  if ( is_page_template( 'page-primary-sidebar.php' ) ) :
-    $main      = $base . ( 12 - $first );
-    $primary   = $base . $first;
-    $wrapper    = NULL;
   endif;
 
   // Overrides the main region class when on the frontpage and sidebars are set to not being displayed there.
