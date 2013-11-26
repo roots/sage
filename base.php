@@ -1,3 +1,8 @@
+<?php
+$site_style               = shoestrap_getVariable( 'site_style' );
+$navbar_toggle            = shoestrap_getVariable( 'navbar_toggle' );
+$layout_sidebar_on_front  = shoestrap_getVariable( 'layout_sidebar_on_front' );
+?>
 <?php get_template_part('templates/head'); ?>
 <body <?php body_class(); ?>>
 
@@ -7,13 +12,13 @@
     </div>
   <![endif]-->
 
-  <?php if ( shoestrap_getVariable( 'site_style' ) == 'boxed' ) : ?>
+  <?php if ( $site_style == 'boxed' ) : ?>
     <div class="container boxed-container">
   <?php endif; ?>
 
   <?php do_action( 'get_header' ); ?>
 
-  <?php if ( shoestrap_getVariable( 'navbar_toggle' ) == 1 ) : ?>
+  <?php if ( $navbar_toggle == 1 ) : ?>
     <?php do_action( 'shoestrap_pre_navbar' ); ?>
     <?php if ( !has_action( 'shoestrap_header_top_navbar_override' ) ) : ?>
       <?php get_template_part( 'templates/header-top-navbar' ); ?>
@@ -30,7 +35,7 @@
 
   <?php do_action( 'shoestrap_post_navbar' ); ?>
 
-  <?php if ( shoestrap_getVariable( 'site_style' ) == 'boxed' ) : ?>
+  <?php if ( $site_style == 'boxed' ) : ?>
     </div>
   <?php endif; ?>
 
@@ -68,8 +73,8 @@
 
         <?php do_action('shoestrap_after_main'); ?>
 
-        <?php if ( ( shoestrap_getLayout() != 0 && ( roots_display_sidebar() ) ) || ( is_front_page() && shoestrap_getVariable( 'layout_sidebar_on_front' ) == 1 ) ) : ?>
-          <?php if ( !is_front_page() || ( is_front_page() && shoestrap_getVariable( 'layout_sidebar_on_front' ) == 1 ) ) : ?>
+        <?php if ( ( shoestrap_getLayout() != 0 && ( roots_display_sidebar() ) ) || ( is_front_page() && $layout_sidebar_on_front == 1 ) ) : ?>
+          <?php if ( !is_front_page() || ( is_front_page() && $layout_sidebar_on_front == 1 ) ) : ?>
             <aside class="sidebar <?php echo shoestrap_section_class( 'primary' ); ?>" role="complementary">
               <?php if ( !has_action( 'shoestrap_sidebar_override' ) ) : ?>
                 <?php include roots_sidebar_path(); ?>
@@ -86,7 +91,7 @@
         <?php endif; ?>
 
         <?php if ( shoestrap_getLayout() >= 3 && is_active_sidebar( 'sidebar-secondary' ) ) : ?>
-          <?php if ( !is_front_page() || ( is_front_page() && shoestrap_getVariable( 'layout_sidebar_on_front' ) == 1 ) ) : ?>
+          <?php if ( !is_front_page() || ( is_front_page() && $layout_sidebar_on_front == 1 ) ) : ?>
             <aside class="sidebar secondary <?php echo shoestrap_section_class( 'secondary' ); ?>" role="complementary">
               <?php dynamic_sidebar( 'sidebar-secondary' ); ?>
             </aside><!-- /.sidebar -->
@@ -98,7 +103,7 @@
   </div><!-- /.wrap -->
   <?php do_action('shoestrap_after_wrap'); ?>
 
-  <?php if ( shoestrap_getVariable( 'site_style' ) == 'boxed' ) : ?>
+  <?php if ( $site_style == 'boxed' ) : ?>
     <div class="container boxed-container">
   <?php endif; ?>
 
@@ -111,7 +116,7 @@
 
   <?php do_action('shoestrap_after_footer'); ?>
 
-  <?php if ( shoestrap_getVariable( 'site_style' ) == 'boxed' ) : ?>
+  <?php if ( $site_style == 'boxed' ) : ?>
     </div>
   <?php endif; ?>
 
