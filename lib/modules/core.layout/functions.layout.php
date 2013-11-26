@@ -9,7 +9,21 @@ function shoestrap_getLayout() {
 
   if ( !isset( $shoestrap_layout ) ) :
     do_action( 'shoestrap_layout_modifier' );
-    $shoestrap_layout = intval( shoestrap_getVariable( 'layout' ) );
+    if ( is_page_template( 'template-0.php' ) ) :
+      $shoestrap_layout = 0;
+    elseif ( is_page_template( 'template-1.php' ) ) :
+      $shoestrap_layout = 1;
+    elseif ( is_page_template( 'template-2.php' ) ) :
+      $shoestrap_layout = 2;
+    elseif ( is_page_template( 'template-3.php' ) ) :
+      $shoestrap_layout = 3;
+    elseif ( is_page_template( 'template-4.php' ) ) :
+      $shoestrap_layout = 4;
+    elseif ( is_page_template( 'template-5.php' ) ) :
+      $shoestrap_layout = 5;
+    else :
+      $shoestrap_layout = intval( shoestrap_getVariable( 'layout' ) );
+    endif;
 
     $post_types = get_post_types( array( 'public' => true ), 'names' );
     foreach ( $post_types as $post_type ) :
