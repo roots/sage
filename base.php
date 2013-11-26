@@ -93,7 +93,7 @@
           <?php endif; ?>
         <?php endif; ?>
       </div>
-    </div><!-- /.content -->';
+    </div><!-- /.content -->
     <?php do_action('shoestrap_after_content'); ?>
   </div><!-- /.wrap -->
   <?php do_action('shoestrap_after_wrap'); ?>
