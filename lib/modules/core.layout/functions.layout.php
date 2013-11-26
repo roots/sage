@@ -24,7 +24,7 @@ function shoestrap_getLayout() {
 
   endif;
 
-  return apply_filters( 'shoestrap_layout_filter', $shoestrap_layout );
+  return $shoestrap_layout;
 }
 endif;
 
