@@ -6962,7 +6962,7 @@ h6,
   padding: 30px 15px;
 }
 @media screen and (min-width: 1007px) {
-  .main-float-right div.main {
+  .main-float-right main.main {
     float: right;
   }
 }
