@@ -15,10 +15,11 @@ function shoestrap_core_licencing_options( $sections ) {
   $fields[] = array( 
     'title'            => __( 'Shoestrap Theme Licence', 'shoestrap' ),
     'id'              => 'shoestrap_license_key',
-    'default'         => '',
     'type'            => 'edd_license',
     'mode'            => 'theme', // theme|plugin
-    'path'            => '', // Path to the plugin/template main file
+    'version'         => '3.0.2.RC1', // current version number
+    'item_name'       => 'Shoestrap 3', // name of this theme
+    'author'          => 'Aristeides Stathopoulos, Dimitris Kalliris, Dovy Paukstys', // author of this theme    
     'remote_api_url'  => 'http://shoestrap.org',    // our store URL that is running EDD
     'field_id'        => "shoestrap_license_key", // ID of the field used by EDD
   );
