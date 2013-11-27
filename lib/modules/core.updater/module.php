@@ -13,7 +13,7 @@ function shoestrap_core_licencing_options( $sections ) {
   );
   $theme = wp_get_theme();
   $fields[] = array( 
-    'name'            => __( 'Shoestrap Theme Licence', 'shoestrap' ),
+    'title'            => __( 'Shoestrap Theme Licence', 'shoestrap' ),
     'id'              => 'shoestrap_license_key',
     'default'         => '',
     'type'            => 'edd_license',
