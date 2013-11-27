@@ -57,7 +57,7 @@ msgstr ""
 #: ReduxCore/framework.php:849
 #: ReduxCore/extensions/customizer/extension_customizer.php:310
 #: ReduxCore/extensions/customizer/extension_customizer.php:341
-msgid "Are you sure? Resetting will loose all custom values."
+msgid "Are you sure? Resetting will lose all custom values."
 msgstr "Sunteti sigur ? Restarea va anula valorile schimbate."
 
 #: ReduxCore/framework.php:850

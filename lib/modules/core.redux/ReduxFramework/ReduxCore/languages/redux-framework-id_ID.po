@@ -57,7 +57,7 @@ msgstr "Perubahan yang dilakukan tidak disimpan. Mau disimpan sekarang?"
 #: ReduxCore/framework.php:851
 #: ReduxCore/extensions/customizer/extension_customizer.php:310
 #: ReduxCore/extensions/customizer/extension_customizer.php:341
-msgid "Are you sure? Resetting will loose all custom values."
+msgid "Are you sure? Resetting will lose all custom values."
 msgstr "Yakin? Proses reset akan mengembalikan ke konsisi standar/awal"
 
 #: ReduxCore/framework.php:852

@@ -75,25 +75,58 @@ if( !class_exists( 'ReduxFramework_extension_edd' ) ) {
           if ( !class_exists( 'EDD_SL_Theme_Updater' ) ) {
             include_once( dirname( __FILE__ ) . '/edd_license/EDD_SL_Theme_Updater.php' );
           }
-          if ( !empty( $this->parent->options[$field['id']]['license'] ) && $this->parent->options[$field['id']]['status'] == __('Valid', 'redux-framework') ) {
+          if ( !empty( $this->parent->options[$field['id']]['license'] ) && ucfirst( $this->parent->options[$field['id']]['status'] ) == __('Valid', 'redux-framework') ) {
         
+            $check = array( 'item_name', 'author', 'version' );
+            foreach ( $check as $d ) {
+              if ( !isset( $field[$d] ) || empty ( $field[$d] ) ) {
+                $theme = wp_get_theme();
+                $field['item_name'] = $theme->get( 'Name' );
+                $field['version'] = $theme->get( 'Version' );
+                $field['author'] = $theme->get( 'Author' );
+                break;
+              }
+            }        
             $edd_updater = new EDD_SL_Theme_Updater(
               array(
                 'remote_api_url'  => $field['remote_api_url'],       // our store URL that is running EDD
                 'version'         => $field['version'],  // current version number
                 'license'         => $this->parent->options[$field['id']]['license'], // license key
-                'item_name'       => $field['item_name'],      // name of this theme
-                'author'          => $field['author']    // author of this theme
+                'item_name'       => $field['item_name'], // name of this theme
+                'author'          => strip_tags( $field['author'] )    // author of this theme
               )
             ); 
           }
         }
         if ( $field['mode'] == "plugin" ) {
+
           if ( !class_exists( 'EDD_SL_Plugin_Updater' ) ) {
             include_once( dirname( __FILE__ ) . '/edd_license/EDD_SL_Plugin_Updater.php' );
           }
-        }       
 
+          if ( isset( $field['path'] ) && !empty( $field['path'] ) ) {
+            $check = array( 'item_name', 'author', 'version' );
+            foreach ( $check as $d ) {
+              if ( !isset( $field[$d] ) || empty ( $field[$d] ) ) {
+                $plugin = get_plugin_data( $field['path'] );
+                $field['item_name'] = $plugin['Name'];
+                $field['version'] = $plugin['Version'];
+                $field['author'] = strip_tags( $plugin['Author'] );
+                break;
+              }
+            }             
+          }
+
+          if ( !empty( $this->parent->options[$field['id']]['license'] ) && ucfirst( $this->parent->options[$field['id']]['status'] ) == __('Valid', 'redux-framework') ) {
+            $edd_updater = new EDD_SL_Plugin_Updater( $field['remote_api_url'], $field['path'], array( 
+                'version' => $field['version'], // current version number
+                'license'   =>  $this->parent->options[$field['id']]['license'],    // license key (used get_option above to retrieve from DB)
+                'item_name' => $field['item_name'],  // name of this plugin
+                'author' => strip_tags( $field['author'] )  // author of this plugin
+              )
+            );
+          }
+        }
       }
 
       function license_call($array = array()) {

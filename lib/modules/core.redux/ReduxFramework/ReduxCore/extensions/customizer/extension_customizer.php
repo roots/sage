@@ -309,7 +309,7 @@ static_front_page - Static Front Page
         wp_enqueue_script( 'redux-extension-previewer-js', $this->extension_url . 'assets/js/preview.js' );
         $localize = array(
           'save_pending'      => __( 'You have changes that are not saved. Would you like to save them now?', 'redux-framework' ), 
-          'reset_confirm'     => __( 'Are you sure? Resetting will loose all custom values.', 'redux-framework' ), 
+          'reset_confirm'     => __( 'Are you sure? Resetting will lose all custom values.', 'redux-framework' ), 
           'preset_confirm'    => __( 'Your current options will be replaced with the values of this preset. Would you like to proceed?', 'redux-framework' ), 
           'opt_name'          => $this->args['opt_name'],
           'folds'       => $this->folds,
@@ -339,9 +339,9 @@ static_front_page - Static Front Page
 
 
         $localize = array(
-          'save_pending'      => __( 'You have changes that are not saved. Would you like to save them now?', 'redux-framework' ), 
-          'reset_confirm'     => __( 'Are you sure? Resetting will loose all custom values.', 'redux-framework' ), 
-          'preset_confirm'    => __( 'Your current options will be replaced with the values of this preset. Would you like to proceed?', 'redux-framework' ), 
+          'save_pending'      => __( 'You have changes that are not saved.  Would you like to save them now?', 'redux-framework' ), 
+          'reset_confirm'     => __( 'Are you sure?  Resetting will lose all custom values.', 'redux-framework' ), 
+          'preset_confirm'    => __( 'Your current options will be replaced with the values of this preset.  Would you like to proceed?', 'redux-framework' ), 
           'opt_name'          => $this->args['opt_name'],
           'folds'       => $this->folds,
           'options'     => $this->options,

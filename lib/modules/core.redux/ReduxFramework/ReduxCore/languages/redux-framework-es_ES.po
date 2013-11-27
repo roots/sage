@@ -57,7 +57,7 @@ msgstr "Ha realizado cambios que no se han guardado. ¿Desea guardar ahora?"
 #: ReduxCore/framework.php:1031
 #: ReduxCore/extensions/customizer/extension_customizer.php:312
 #: ReduxCore/extensions/customizer/extension_customizer.php:343
-msgid "Are you sure? Resetting will loose all custom values."
+msgid "Are you sure? Resetting will lose all custom values."
 msgstr ""
 "¿Estas seguro? Al restablecer los valores por defecto se pierden los ajustes "
 "realizados."

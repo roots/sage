@@ -113,7 +113,7 @@ class ReduxFrameworkPlugin {
 		add_filter( 'plugin_row_meta', array($this, 'plugin_meta_links'), null, 2 );
 		add_filter( 'plugin_row_meta', array($this, 'plugin_meta_demo_mode_link'), null, 2 );
 
-		if ( !class_exists( 'Redux_Framework' ) && file_exists( dirname( __FILE__ ) . '/ReduxCore/framework.php' ) ) {
+		if ( file_exists( dirname( __FILE__ ) . '/ReduxCore/framework.php' ) ) {
 			require_once( dirname( __FILE__ ) . '/ReduxCore/framework.php' );
 		}
 

@@ -25,6 +25,3 @@ require_once locate_template('/lib/custom.php');          // Custom functions
 
 
 do_action( 'shoestrap_include_files' );
-
-
-//print_r($redux);

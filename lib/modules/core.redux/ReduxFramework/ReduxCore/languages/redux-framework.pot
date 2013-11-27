@@ -51,20 +51,20 @@ msgstr ""
 #: ReduxCore/framework.php:1021
 #: ReduxCore/extensions/customizer/extension_customizer.php:311
 #: ReduxCore/extensions/customizer/extension_customizer.php:342
-msgid "You have changes that are not saved. Would you like to save them now?"
+msgid "You have changes that are not saved.  Would you like to save them now?"
 msgstr ""
 
 #: ReduxCore/framework.php:1022
 #: ReduxCore/extensions/customizer/extension_customizer.php:312
 #: ReduxCore/extensions/customizer/extension_customizer.php:343
-msgid "Are you sure? Resetting will loose all custom values."
+msgid "Are you sure?  Resetting will lose all custom values."
 msgstr ""
 
 #: ReduxCore/framework.php:1023
 #: ReduxCore/extensions/customizer/extension_customizer.php:313
 #: ReduxCore/extensions/customizer/extension_customizer.php:344
 msgid ""
-"Your current options will be replaced with the values of this preset. Would "
+"Your current options will be replaced with the values of this preset.  Would "
 "you like to proceed?"
 msgstr ""
 

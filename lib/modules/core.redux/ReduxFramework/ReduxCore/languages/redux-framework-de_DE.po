@@ -31,7 +31,7 @@ msgstr "Änderungen wurden vorgenommen die nicht gespeichert sind. Willst du sie
 #: ReduxCore/extensions/customizer/extension_customizer.php:343
 #: ReduxCore/framework.php:1022
 #@ redux-framework
-msgid "Are you sure? Resetting will loose all custom values."
+msgid "Are you sure? Resetting will lose all custom values."
 msgstr "Bist du dir sicher? Das Zurücksetzen wird alle selbsterstellten Werte zurücksetzen."
 
 #: ReduxCore/extensions/customizer/extension_customizer.php:313

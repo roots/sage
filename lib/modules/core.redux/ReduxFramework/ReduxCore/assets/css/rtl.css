@@ -1,0 +1,21 @@
+#redux-container .redux-action_bar {
+	float: left;
+}
+#redux-container #expand_options , #redux-sidebar , .cb-enable, .cb-disable, .cb-enable span, .cb-disable span
+,#redux-footer #redux-share{
+	float:right;
+}
+#redux-main {
+	border-left: 0px;
+	margin-left: 0px;
+	border-right: 1px solid #d8d8d8;
+	margin-right: 201px;
+}
+.redux-group-tab-link-a span.group_title {
+	padding-left: 0px;
+	padding-right: 30px;
+}
+.redux_slider {
+	margin-left: 0px;
+	margin-right: 15px;
+}

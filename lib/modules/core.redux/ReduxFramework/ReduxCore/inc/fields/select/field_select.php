@@ -47,11 +47,7 @@ class ReduxFramework_select extends ReduxFramework{
 		}//if
 
 		if (!empty($this->field['options'])) {
-			if (isset($this->field['multi']) && $this->field['multi']) {
-				$multi = ' multiple="multiple"';
-			} else {
-				$multi = "";
-			}
+			$multi = (isset($this->field['multi']) && $this->field['multi']) ? ' multiple="multiple"' : "";
 			
 			if (!empty($this->field['width'])) {
 				$width = ' style="'.$this->field['width'].'"';
