@@ -17,7 +17,7 @@ function shoestrap_core_licencing_options( $sections ) {
     'id'              => 'shoestrap_license_key',
     'type'            => 'edd_license',
     'mode'            => 'theme', // theme|plugin
-    'version'         => '3.0.2.RC1', // current version number
+    'version'         => '3.0.2', // current version number
     'item_name'       => 'Shoestrap 3', // name of this theme
     'author'          => 'Aristeides Stathopoulos, Dimitris Kalliris, Dovy Paukstys', // author of this theme    
     'remote_api_url'  => 'http://shoestrap.org',    // our store URL that is running EDD

@@ -1,3 +1,16 @@
+### v 3.0.2
+* Fix: Bugfixing the meta module for older PHP versions
+* New: Updated Bootstrap to version 3.0.2
+* New: Changed the compiler and moved from [lessphp](http://leafo.net/lessphp/) to [less.php](http://lessphp.gpeasy.com/)
+* New: Updated HTML5 Shiv to v3.7.0
+* New: Updated modernizr to 2.7.0
+* Fix: Removed duplicate wp_footer() call
+* New: Added optional alternative navwalker: https://github.com/twittem/wp-bootstrap-navwalker
+* Fix: Rewrote base.php
+* New: Added layouts via templates for pages
+* Fix: Updated [Redux Framework](http://reduxframework.com/)
+* Fix: Minor bugfixes
+
 ### v 3.0.10
 
 * Fix: Updating Redux Framework
