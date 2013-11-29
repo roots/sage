@@ -45,7 +45,7 @@ function shoestrap_featured_image() {
 endif;
 
 
-if ( !function_exists( 'shoestrap_image' ) ) :
+if ( !function_exists( 'shoestrap_remove_featured_image_per_post_type' ) ) :
 function shoestrap_remove_featured_image_per_post_type() {
   $post_types = get_post_types( array( 'public' => true ), 'names' );
   $post_type_options = shoestrap_getVariable( 'feat_img_per_post_type' );
@@ -65,6 +65,7 @@ function shoestrap_remove_featured_image_per_post_type() {
 endif;
 add_action( 'wp', 'shoestrap_remove_featured_image_per_post_type' );
 add_action( 'shoestrap_after_entry_meta', 'shoestrap_featured_image' );      
+
 
 if ( !function_exists( 'shoestrap_image' ) ) :
 /*
