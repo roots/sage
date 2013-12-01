@@ -5,27 +5,24 @@ msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
 "PO-Revision-Date: \n"
-"Last-Translator: \n"
+"Last-Translator: Jakob Renpening <jakobhans@gmail.com>\n"
 "Language-Team: Ignacio Aguirre <ignacio@independiente.cl>\n"
 "MIME-Version: 1.0\n"
-"X-Poedit-Language: Spanish\n"
-"X-Poedit-Country: CHILE\n"
+"Language: es_CL\n"
+"X-Generator: Poedit 1.5.7\n"
 
 #. Text in echo
-#: comments.php:80
-#: comments.php:84
+#: comments.php:80 comments.php:84
 msgid " (required)"
 msgstr "(campo obligatorio)"
 
 #. Text in echo
-#: inc/roots-options.php:127
-#: inc/roots-options.php:129
+#: inc/roots-options.php:127 inc/roots-options.php:129
 msgid "#main CSS Classes"
 msgstr "Clases CSS de #main"
 
 #. Text in echo
-#: inc/roots-options.php:137
-#: inc/roots-options.php:139
+#: inc/roots-options.php:137 inc/roots-options.php:139
 msgid "#sidebar CSS Classes"
 msgstr "Clases CSS de #sidebar"
 
@@ -50,8 +47,7 @@ msgid "&larr; Older comments"
 msgstr "&larr; Comentarios Anteriores"
 
 #. Text in function
-#: loop-search.php:33
-#: loop.php:37
+#: loop-search.php:33 loop.php:37
 msgid "&larr; Older posts"
 msgstr "&larr; Publicaciones anteriores"
 
@@ -101,8 +97,7 @@ msgid "Blueprint CSS"
 msgstr "Blueprint CSS"
 
 #. Text in echo
-#: inc/roots-options.php:106
-#: inc/roots-options.php:108
+#: inc/roots-options.php:106 inc/roots-options.php:108
 msgid "CSS Grid Framework"
 msgstr "CSS Grid Framework"
 
@@ -119,7 +114,8 @@ msgstr "Ciudad/Localidad:"
 #. Text in echo
 #: 404.php:15
 msgid "Click the <a href=\"javascript:history.back()\">Back</a> button"
-msgstr "Pincha el bot&oacute;n <a href=\"javascript:history.back()\">Regresar</a>"
+msgstr ""
+"Pincha el bot&oacute;n <a href=\"javascript:history.back()\">Regresar</a>"
 
 #. Text in echo
 #: comments.php:93
@@ -137,8 +133,7 @@ msgid "Continued"
 msgstr "Continuado"
 
 #. Text in function
-#: inc/roots-options.php:132
-#: inc/roots-options.php:142
+#: inc/roots-options.php:132 inc/roots-options.php:142
 msgid "Default: %s"
 msgstr "Defecto: %s"
 
@@ -163,8 +158,7 @@ msgid "File Not Found"
 msgstr "Archivo no encontrado"
 
 #. Text in echo
-#: inc/roots-options.php:147
-#: inc/roots-options.php:149
+#: inc/roots-options.php:147 inc/roots-options.php:149
 msgid "Google Analytics ID"
 msgstr "ID de Google Analytics"
 
@@ -209,8 +203,7 @@ msgid "Newer comments &rarr;"
 msgstr "Nuevos comentarios &rarr;"
 
 #. Text in function
-#: loop-search.php:34
-#: loop.php:38
+#: loop-search.php:34 loop.php:38
 msgid "Newer posts &rarr;"
 msgstr "Nuevas publicaciones &rarr;"
 
@@ -230,8 +223,7 @@ msgid "Pages"
 msgstr "P&aacute;ginas"
 
 #. Text in function
-#: loop-page.php:7
-#: loop-single.php:17
+#: loop-page.php:7 loop-single.php:17
 msgid "Pages:"
 msgstr "P&aacute;ginas:"
 
@@ -243,7 +235,8 @@ msgstr "Por favor no cargues esta p&aacute;gina directamente. Gracias!"
 #. Text in function
 #: inc/roots-htaccess.php:1
 msgid "Please make sure your <a href=\"%s\">.htaccess</a> file is writeable "
-msgstr "Asegurare de que tu <a href=\"%s\">.htaccess</a> sea modificabile"
+msgstr ""
+"Aseg&uacute;rate de que tu <a href=\"%s\">.htaccess</a> sea modificabile"
 
 #. Text in echo
 #: 404.php:11
@@ -256,9 +249,7 @@ msgid "Please update your <a href=\"%s\">site tagline</a>"
 msgstr "Por favor actualiza tu <a href=\"%s\">descripci&oacte;n del sitio</a>"
 
 #. Text in function
-#: loop-single.php:8
-#: loop-search.php:16
-#: loop.php:16
+#: loop-single.php:8 loop-search.php:16 loop.php:16
 msgid "Posted on %s at %s."
 msgstr "Publicado en %s a las %s."
 
@@ -278,8 +269,7 @@ msgid "Roots: vCard"
 msgstr "Roots: vCard"
 
 #. Text in echo
-#: searchform.php:3
-#: searchform.php:4
+#: searchform.php:3 searchform.php:4
 msgid "Search"
 msgstr "Buscar"
 
@@ -294,8 +284,7 @@ msgid "Search for:"
 msgstr "Buscar por:"
 
 #. Text in echo
-#: loop-search.php:4
-#: loop.php:4
+#: loop-search.php:4 loop.php:4
 msgid "Sorry, no results were found."
 msgstr "Lo sentimos, no se encontraron resultados."
 
@@ -321,8 +310,12 @@ msgstr "Tel&eacute;fono:"
 
 #. Text in echo
 #: 404.php:9
-msgid "The page you are looking for might have been removed, had its name changed, or is temporarily unavailable."
-msgstr "La p&aacute;gina que buscas puede haber sido eliminada, cambiada de nombre, o esta temporalmente no disponible."
+msgid ""
+"The page you are looking for might have been removed, had its name changed, "
+"or is temporarily unavailable."
+msgstr ""
+"La p&aacute;gina que buscas puede haber sido eliminada, cambiada de nombre, "
+"o esta temporalmente no disponible."
 
 #. Text in function
 #: inc/roots-options.php:1
@@ -332,7 +325,9 @@ msgstr "Opciones del Tema"
 #. Text in echo
 #: comments.php:36
 msgid "This post is password protected. Enter the password to view comments."
-msgstr "Esta publicaci&oacute;n esta protegida con clave. Ingresa la clave para ver los comentarios."
+msgstr ""
+"Esta publicaci&oacute;n esta protegida con clave. Ingresa la clave para ver "
+"los comentarios."
 
 #. Text in echo
 #: inc/roots-widgets.php:53
@@ -345,8 +340,7 @@ msgid "Website"
 msgstr "Sitio web"
 
 #. Text in echo
-#: loop-single.php:10
-#: loop-search.php:17
+#: loop-single.php:10 loop-search.php:17
 msgid "Written by"
 msgstr "Escrito por"
 
@@ -364,4 +358,3 @@ msgstr "Tu comentario est&aacute; esperando moderaci&oacute;n."
 #: inc/roots-widgets.php:69
 msgid "Zipcode/Postal Code:"
 msgstr "C&oacute;digo Postal:"
-
