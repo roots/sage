@@ -18,7 +18,7 @@ msgstr "Beklager, men siden du prøver at vise findes ikke."
 
 #: 404.php:7
 msgid "It looks like this was the result of either:"
-msgstr "Tilsyneladende skyldes det enten"
+msgstr "Tilsyneladende skyldes det enten:"
 
 #: 404.php:9
 msgid "a mistyped address"
@@ -26,7 +26,7 @@ msgstr "en tastefejl i adressen"
 
 #: 404.php:10
 msgid "an out-of-date link"
-msgstr "Et forældet link"
+msgstr "et forældet link"
 
 #: base.php:4
 msgid ""
@@ -249,7 +249,7 @@ msgstr "Kommentar"
 
 #: templates/comments.php:66
 msgid "Submit Comment"
-msgstr "Skriv kommentar"
+msgstr "Indsend kommentar"
 
 #: templates/content-single.php:11
 msgid "Pages:"
