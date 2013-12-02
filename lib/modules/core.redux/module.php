@@ -69,7 +69,7 @@ endif;
 
 // Saving functions on import, etc
 // If a compiler field was altered or import or reset defaults
-add_action( 'redux-compiler-'.REDUX_OPT_NAME , 'shoestrap_makecss' );
+add_action( 'redux-compiler-' . REDUX_OPT_NAME , 'shoestrap_makecss' );
 
 
 /**

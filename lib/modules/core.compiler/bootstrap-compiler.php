@@ -1214,10 +1214,7 @@ function shoestrap_complete_less( $url = false ) {
     @import "' . $bootstrap . 'custom.less";';
   endif;
 
-  $user_less = shoestrap_getVariable('user_less');
-  if ( !empty( $user_less ) ) {
-    $bootstrap_less .= $user_less;
-  }
+  $bootstrap_less .= shoestrap_getVariable( 'user_less' );
 
 
   return $bootstrap_less;
