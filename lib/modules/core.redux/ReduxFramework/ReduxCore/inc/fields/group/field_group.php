@@ -75,7 +75,7 @@ if (!class_exists('ReduxFramework_group')) {
             }
 
             echo '<div class="redux-group">';
-            echo '<div id="redux-groups-accordion">';
+            echo '<div id="redux-groups-accordion" class="redux-groups-accordion">';
             $x = 0;
 
             $groups = $this->value;

@@ -80,8 +80,8 @@ if( !class_exists( 'ReduxFramework_multi_text' ) ) {
                 echo '<li style="display:none;"><input type="text" id="' . $this->field['id'] . '" name="" value="" class="regular-text" /> <a href="javascript:void(0);" class="deletion redux-multi-text-remove">' . __( 'Remove', 'redux-framework') . '</a></li>';
 
             echo '</ul>';
-        
-            echo '<a href="javascript:void(0);" class="button button-primary redux-multi-text-add" rel-id="' . $this->field['id'] . '-ul" rel-name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][]">' . $this->add_text . '</a><br/>';
+            $this->field['add_number'] = ( isset( $this->field['add_number'] ) && is_numeric( $this->field['add_number'] ) ) ? $this->field['add_number'] : 1;
+            echo '<a href="javascript:void(0);" class="button button-primary redux-multi-text-add" data-add_number="'.$this->field['add_number'].'" data-id="' . $this->field['id'] . '-ul" data-name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][]">' . $this->add_text . '</a><br/>';
 
         }   
 
