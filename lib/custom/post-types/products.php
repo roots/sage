@@ -85,13 +85,13 @@ function atkore_post_type_products() {
   		'add_or_remove_items'        => __( 'Add or remove Product Brand', 'atkore' ),
   		'choose_from_most_used'      => __( 'Choose from the most used Product Brands', 'atkore' ),
   	);
-/*
+
   	$rewrite = array(
-  	  'slug'                => '',
+  	  'slug'                => 'product-category',
   	  'with_front'          => false,
   	  'hierarchical'        => true,
   	);
-*/
+
   	$args = array(
   		'labels'                     => $labels,
   		'hierarchical'               => true,
@@ -101,7 +101,7 @@ function atkore_post_type_products() {
   		'show_in_nav_menus'          => true,
   		'show_tagcloud'              => true,
   		'query_var'                  => 'product_brand',
-  		//'rewrite'                    => $rewrite,
+  		'rewrite'                    => $rewrite,
   	);
 
   	register_taxonomy( 'product_brand', 'product', $args );
