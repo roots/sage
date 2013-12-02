@@ -174,7 +174,9 @@ function shoestrap_module_advanced_options( $sections ) {
     'desc'      => __( 'You can write your custom CSS here. This code will appear in a script tag appended in the header section of the page.', 'shoestrap' ),
     'id'        => 'user_css',
     'default'   => '',
-    'type'      => 'textarea',
+    'type'      => 'ace_editor',
+    'mode'      => 'css',
+    'theme'     => 'monokai',
     // 'required'  => array('advanced_toggle','=',array('1')),
   );
 
@@ -183,7 +185,9 @@ function shoestrap_module_advanced_options( $sections ) {
     'desc'      => __( 'You can write your custom LESS here. This code will be compiled with the other LESS files of the theme and be appended to the header.', 'shoestrap' ),
     'id'        => 'user_less',
     'default'   => '',
-    'type'      => 'textarea',
+    'type'      => 'ace_editor',
+    'mode'      => 'less',
+    'theme'     => 'monokai',
     'compiler'  => true,
     // 'required'  => array('advanced_toggle','=',array('1')),
   );  
@@ -193,7 +197,9 @@ function shoestrap_module_advanced_options( $sections ) {
     'desc'      => __( 'You can write your custom JavaScript/jQuery here. The code will be included in a script tag appended to the bottom of the page.', 'shoestrap' ),
     'id'        => 'user_js',
     'default'   => '',
-    'type'      => 'textarea',
+    'type'      => 'ace_editor',
+    'mode'      => 'javascript',
+    'theme'     => 'monokai',
     // 'required'  => array('advanced_toggle','=',array('1')),
   );
 
