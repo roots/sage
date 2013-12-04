@@ -6400,6 +6400,9 @@ body.bottom-navbar {
     padding-bottom: 50px;
   }
 }
+#wpadminbar .pull-left {
+  float: none !important;
+}
 #shoestrap_icon {
   position: fixed;
   top: 20%;
