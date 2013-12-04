@@ -1216,8 +1216,7 @@ function shoestrap_complete_less( $url = false ) {
 
   $bootstrap_less .= shoestrap_getVariable( 'user_less' );
 
-
-  return $bootstrap_less;
+  return apply_filters( 'shoestrap_compiler', $bootstrap_less );
 }
 endif;
 
