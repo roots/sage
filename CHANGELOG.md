@@ -1,11 +1,11 @@
 ### HEAD
+* Update to Bootstrap 3.0.3
 * Switch `div.main` to `main` element now that Modernizr uses the latest HTML5 Shiv
 * Update to Modernizr 2.7.0
 * Don't run JSHint on plugins (`assets/js/plugins/`)
 * Disable warnings about undefined variables (JSHint)
 * Merge in updates from HTML5 Boilerplate
 * Add JS source map (disabled by default)
-* Update to Bootstrap 3.0.2
 * Replace `grunt-recess` with `grunt-contrib-less`, add LESS source map support
 
 ### 6.5.1: November 5th, 2013
