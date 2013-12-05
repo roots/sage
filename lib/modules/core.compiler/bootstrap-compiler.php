@@ -100,7 +100,7 @@ function shoestrap_phpless_compiler() {
   $parser->parse( shoestrap_complete_less() );
   $css = $parser->getCss();
   // This is a REALLY ugly hack...
-  $css = str_replace( get_template_directory() . '/assets/fonts/elusive-webfont.less/../fonts/', '../fonts/', $css );
+  $css = str_replace( get_template_directory() . '/assets/less/fonts/', '', $css );
 
   return $css;
 }
@@ -397,12 +397,6 @@ function shoestrap_variables_less() {
   $variables = '
 @brand-secondary: ' . $brand_secondary . ';
 
-@428bca: ' . $brand_primary . ';
-@5cb85c: ' . $brand_success . ';
-@f0ad4e: ' . $brand_warning . ';
-@d9534f: ' . $brand_danger . ';
-@5bc0de: ' . $brand_info . ';
-
 @fff: ' . $body_bg . ';
 
 
@@ -428,11 +422,11 @@ function shoestrap_variables_less() {
 // Brand colors
 // -------------------------
 
-@brand-primary:         @428bca;
-@brand-success:         @5cb85c;
-@brand-warning:         @f0ad4e;
-@brand-danger:          @d9534f;
-@brand-info:            @5bc0de;
+@brand-primary:         ' . $brand_primary . ';
+@brand-success:         ' . $brand_success . ';
+@brand-warning:         ' . $brand_warning . ';
+@brand-danger:          ' . $brand_danger . ';
+@brand-info:            ' . $brand_info . ';
 
 // Scaffolding
 // -------------------------
@@ -600,51 +594,12 @@ function shoestrap_variables_less() {
 // COMPONENT VARIABLES
 // --------------------------------------------------
 
-
-// Z-index master list
-// -------------------------
-// Used for a birds eye view of components dependent on the z-axis
-// Try to avoid customizing these :)
-
-@zindex-navbar:            1000;
-@zindex-dropdown:          1000;
-@zindex-popover:           1010;
-@zindex-tooltip:           1030;
-@zindex-navbar-fixed:      1030;
-@zindex-modal-background:  1040;
-@zindex-modal:             1050;
-
 // Media queries breakpoints
 // --------------------------------------------------
 
-// Extra small screen / phone
-// Note: Deprecated @screen-xs and @screen-phone as of v3.0.1
-@screen-xs:                  480px;
-@screen-xs-min:              @screen-xs;
-@screen-phone:               @screen-xs-min;
-
-// Small screen / tablet
-// Note: Deprecated @screen-sm and @screen-tablet as of v3.0.1
 @screen-sm:                  ' . $screen_tablet . 'px;
-@screen-sm-min:              @screen-sm;
-@screen-tablet:              @screen-sm-min;
-
-// Medium screen / desktop
-// Note: Deprecated @screen-md and @screen-desktop as of v3.0.1
 @screen-md:                  ' . $screen_desktop . 'px;
-@screen-md-min:              @screen-md;
-@screen-desktop:             @screen-md-min;
-
-// Large screen / wide desktop
-// Note: Deprecated @screen-lg and @screen-lg-desktop as of v3.0.1
 @screen-lg:                  ' . $screen_large_desktop . 'px;
-@screen-lg-min:              @screen-lg;
-@screen-lg-desktop:          @screen-lg-min;
-
-// So media queries dont overlap when required, provide a maximum
-@screen-xs-max:              (@screen-sm-min - 1);
-@screen-sm-max:              (@screen-md-min - 1);
-@screen-md-max:              (@screen-lg-min - 1);
 
 
 // Grid system
@@ -690,33 +645,6 @@ function shoestrap_variables_less() {
 @navbar-default-toggle-hover-bg:           @table-border-color;
 @navbar-default-toggle-icon-bar-bg:        @ccc;
 @navbar-default-toggle-border-color:       @table-border-color;
-
-
-// Inverted navbar
-//
-// Reset inverted navbar basics
-@navbar-inverse-color:                      @gray-light;
-@navbar-inverse-bg:                         #222;
-@navbar-inverse-border:                     darken(@navbar-inverse-bg, 10%);
-
-// Inverted navbar links
-@navbar-inverse-link-color:                 @gray-light;
-@navbar-inverse-link-hover-color:           #fff;
-@navbar-inverse-link-hover-bg:              transparent;
-@navbar-inverse-link-active-color:          @navbar-inverse-link-hover-color;
-@navbar-inverse-link-active-bg:             darken(@navbar-inverse-bg, 10%);
-@navbar-inverse-link-disabled-color:        #444;
-@navbar-inverse-link-disabled-bg:           transparent;
-
-// Inverted navbar brand label
-@navbar-inverse-brand-color:                @navbar-inverse-link-color;
-@navbar-inverse-brand-hover-color:          #fff;
-@navbar-inverse-brand-hover-bg:             transparent;
-
-// Inverted navbar toggle
-@navbar-inverse-toggle-hover-bg:            #333;
-@navbar-inverse-toggle-icon-bar-bg:         #fff;
-@navbar-inverse-toggle-border-color:        #333;
 
 
 // Navs
@@ -780,26 +708,6 @@ function shoestrap_variables_less() {
 @jumbotron-font-size:            ceil(@font-size-base * 1.5);
 
 
-// Form states and alerts
-// -------------------------
-
-@state-success-text:             #468847;
-@state-success-bg:               #dff0d8;
-@state-success-border:           darken(spin(@state-success-bg, -10), 5%);
-
-@state-info-text:                #3a87ad;
-@state-info-bg:                  #d9edf7;
-@state-info-border:              darken(spin(@state-info-bg, -10), 7%);
-
-@state-warning-text:             #c09853;
-@state-warning-bg:               #fcf8e3;
-@state-warning-border:           darken(spin(@state-warning-bg, -10), 5%);
-
-@state-danger-text:              #b94a48;
-@state-danger-bg:                #f2dede;
-@state-danger-border:            darken(spin(@state-danger-bg, -10), 5%);
-
-
 // Tooltips
 // -------------------------
 @tooltip-max-width:           200px;
@@ -830,13 +738,6 @@ function shoestrap_variables_less() {
 // Labels
 // -------------------------
 
-@label-default-bg:            @gray-light;
-@label-primary-bg:            @brand-primary;
-@label-success-bg:            @brand-success;
-@label-info-bg:               @brand-info;
-@label-warning-bg:            @brand-warning;
-@label-danger-bg:             @brand-danger;
-
 @label-color:                 @body-bg;
 @label-link-hover-color:      @body-bg;
 
@@ -857,39 +758,10 @@ function shoestrap_variables_less() {
 @modal-footer-border-color:   @modal-header-border-color;
 
 
-// Alerts
-// -------------------------
-@alert-padding:               15px;
-@alert-border-radius:         @border-radius-base;
-@alert-link-font-weight:      bold;
-
-@alert-success-bg:            @state-success-bg;
-@alert-success-text:          @state-success-text;
-@alert-success-border:        @state-success-border;
-
-@alert-info-bg:               @state-info-bg;
-@alert-info-text:             @state-info-text;
-@alert-info-border:           @state-info-border;
-
-@alert-warning-bg:            @state-warning-bg;
-@alert-warning-text:          @state-warning-text;
-@alert-warning-border:        @state-warning-border;
-
-@alert-danger-bg:             @state-danger-bg;
-@alert-danger-text:           @state-danger-text;
-@alert-danger-border:         @state-danger-border;
-
-
 // Progress bars
 // -------------------------
 @progress-bg:                 ' . $table_bg_hover . ';
 @progress-bar-color:          ' . $body_bg . ';
-
-@progress-bar-bg:             @brand-primary;
-@progress-bar-success-bg:     @brand-success;
-@progress-bar-warning-bg:     @brand-warning;
-@progress-bar-danger-bg:      @brand-danger;
-@progress-bar-info-bg:        @brand-info;
 
 
 // List group
@@ -998,25 +870,6 @@ function shoestrap_variables_less() {
 @close-text-shadow:           0 1px 0 @body-bg;
 
 
-// Code
-// ------------------------
-@code-color:                  #c7254e;
-@code-bg:                     #f9f2f4;
-
-@pre-bg:                      #f5f5f5;
-@pre-color:                   @gray-dark;
-@pre-border-color:            #ccc;
-@pre-scrollable-max-height:   340px;
-
-// Type
-// ------------------------
-@text-muted:                  @gray-light;
-@abbr-border-color:           @gray-light;
-@headings-small-color:        @gray-light;
-@blockquote-small-color:      @gray-light;
-@blockquote-border-color:     @gray-lighter;
-@page-header-border-color:    @gray-lighter;
-
 // Miscellaneous
 // -------------------------
 
@@ -1030,17 +883,9 @@ function shoestrap_variables_less() {
 // Container sizes
 // --------------------------------------------------
 
-// Small screen / tablet
 @container-tablet:           ' . ( $screen_tablet - ( $gutter / 2 ) ). 'px;
-@container-sm:               @container-tablet;
-
-// Medium screen / desktop
 @container-desktop:          ' . ( $screen_desktop - ( $gutter / 2 ) ). 'px;
-@container-md:               @container-desktop;
-
-// Large screen / wide desktop
 @container-large-desktop:    ' . ( $screen_large_desktop - ( $gutter / 2 ) ). 'px;
-@container-lg:                 @container-large-desktop;
 
 
 // Shoestrap-specific variables
@@ -1111,97 +956,19 @@ if ( !function_exists( 'shoestrap_complete_less' ) ) :
 /*
  * Brings all the LESS files that need to be compiled together.
  */
-function shoestrap_complete_less( $url = false ) {
-  if ( $url == true ) :
-    $bootstrap    = get_template_directory_uri() . '/assets/less/';
-    $fonts        = get_template_directory_uri() . '/assets/fonts/';
-  else :
-    $bootstrap    = get_template_directory() . '/assets/less/';
-    $fonts        = get_template_directory() . '/assets/fonts/';
-  endif;
+function shoestrap_complete_less() {
+  $bootstrap    = get_template_directory() . '/assets/less/';
 
-  $bootstrap_less = shoestrap_variables_less() . '
-/*!
- * Bootstrap v3.0.0
- *
- * Copyright 2013 Twitter, Inc
- * Licensed under the Apache License v2.0
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Designed and built with all the love in the world by @mdo and @fat.
- */
-
-// Core variables and mixins
-// @import "' . $bootstrap . 'bootstrap/variables.less";
-@import "' . $bootstrap . 'bootstrap/mixins.less";
-
-// Reset
-@import "' . $bootstrap . 'bootstrap/normalize.less";
-@import "' . $bootstrap . 'bootstrap/print.less";
-
-// Core CSS
-@import "' . $bootstrap . 'bootstrap/scaffolding.less";
-@import "' . $bootstrap . 'bootstrap/type.less";
-@import "' . $bootstrap . 'bootstrap/code.less";
-@import "' . $bootstrap . 'bootstrap/grid.less";
-@import "' . $bootstrap . 'bootstrap/tables.less";
-@import "' . $bootstrap . 'bootstrap/forms.less";
-@import "' . $bootstrap . 'bootstrap/buttons.less";
-
-// Components
-@import "' . $bootstrap . 'bootstrap/component-animations.less";
-// @import "' . $bootstrap . 'bootstrap/glyphicons.less";
-@import "' . $fonts .'elusive-webfont";
-@import "' . $bootstrap . 'bootstrap/dropdowns.less";
-@import "' . $bootstrap . 'bootstrap/button-groups.less";
-@import "' . $bootstrap . 'bootstrap/input-groups.less";
-@import "' . $bootstrap . 'bootstrap/navs.less";
-@import "' . $bootstrap . 'bootstrap/navbar.less";
-@import "' . $bootstrap . 'bootstrap/breadcrumbs.less";
-@import "' . $bootstrap . 'bootstrap/pagination.less";
-@import "' . $bootstrap . 'bootstrap/pager.less";
-@import "' . $bootstrap . 'bootstrap/labels.less";
-@import "' . $bootstrap . 'bootstrap/badges.less";
-@import "' . $bootstrap . 'bootstrap/jumbotron.less";
-@import "' . $bootstrap . 'bootstrap/thumbnails.less";
-@import "' . $bootstrap . 'bootstrap/alerts.less";
-@import "' . $bootstrap . 'bootstrap/progress-bars.less";
-@import "' . $bootstrap . 'bootstrap/media.less";
-@import "' . $bootstrap . 'bootstrap/list-group.less";
-@import "' . $bootstrap . 'bootstrap/panels.less";
-@import "' . $bootstrap . 'bootstrap/wells.less";
-@import "' . $bootstrap . 'bootstrap/close.less";
-
-// Components w/ JavaScript
-@import "' . $bootstrap . 'bootstrap/modals.less";
-@import "' . $bootstrap . 'bootstrap/tooltip.less";
-@import "' . $bootstrap . 'bootstrap/popovers.less";
-@import "' . $bootstrap . 'bootstrap/carousel.less";
-
-// Utility classes
-@import "' . $bootstrap . 'bootstrap/utilities.less";
-@import "' . $bootstrap . 'bootstrap/responsive-utilities.less";
-';
+  $bootstrap_less = '@import "' . $bootstrap . 'app.less";';
+  $bootstrap_less .= shoestrap_variables_less();
 
   if ( shoestrap_getVariable( 'gradients_toggle' ) == 1 ) :
     $bootstrap_less .= '@import "' . $bootstrap . 'gradients.less";';
   endif;
 
-  $bootstrap_less .= '
-  // Custom Shoestrap less-css
-  @import "' . $bootstrap . 'app.less";
-  ';
-
-
-  if ( $url == true ) :
-    $bootstrap_less .="@elusiveWebfontPath: '" . $fonts . "'; // Elusive webfonts path;
-  ";
-  endif;
-
-  $bootstrap_less = apply_filters( 'shoestrap_complete_less_user_modifier', $bootstrap_less );
- 
   // The custom LESS file path
   $customlessfile = get_template_directory() . '/assets/less/custom.less';
+
   // If file is writable, process this.
   if ( is_writable( $customlessfile ) ) :
     // If the 'shoestrap_custom_lessfile_datetime' option does not exist, create it
@@ -1209,9 +976,7 @@ function shoestrap_complete_less( $url = false ) {
       add_option( 'shoestrap_custom_lessfile_datetime', filemtime( $customlessfile ) );
     endif;
 
-    $bootstrap_less .= '
-    // Custom LESS file for developers
-    @import "' . $bootstrap . 'custom.less";';
+    $bootstrap_less .= '@import "' . $bootstrap . 'custom.less";';
   endif;
 
   $bootstrap_less .= shoestrap_getVariable( 'user_less' );
