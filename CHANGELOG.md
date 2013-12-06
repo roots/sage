@@ -1,3 +1,13 @@
+### v 3.0.3
+* Fix: Updating Redux Framework
+* Fix: fixed deprecated class name for unstyled lists
+* Fix: bugfix for avatar image in WP admin bar
+* New: Added the 'shoestrap_compiler' filter to the compiler
+* Fix: Simplifications to the compiler
+* New: Update to Bootstrap 3.0.3
+* New: Adding [NavList Navwalker](https://github.com/twittem/wp-bootstrap-navlist-walker) to widget menus
+* Fix: Removed lists styles from all list menus in sidebars
+
 ### v 3.0.2
 * Fix: Bugfixing the meta module for older PHP versions
 * New: Updated Bootstrap to version 3.0.2
