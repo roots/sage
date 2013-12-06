@@ -1,0 +1,189 @@
+.nav-list 		  { .generate-nav-list( @gray-light, @gray-lighter ); }
+.nav-list-primary { .generate-nav-list( @brand-primary ); }
+.nav-list-success { .generate-nav-list( @brand-success ); }
+.nav-list-warning { .generate-nav-list( @brand-warning ); }
+.nav-list-info 	  { .generate-nav-list( @brand-info ); }
+.nav-list-danger  { .generate-nav-list( @brand-danger ); }
+
+.nav-list-inverse {
+	@nav-list-inverse-secondary: #34495e;
+	.generate-nav-list( lighten( @nav-list-inverse-secondary, 25% ), @nav-list-inverse-secondary, 0px );
+
+	&.nav-list-primary { .generate-nav-list( #2980B9, @nav-list-inverse-secondary, 0px ); }
+	&.nav-list-success { .generate-nav-list( #1ABC9C, @nav-list-inverse-secondary, 0px  ); }
+	&.nav-list-warning { .generate-nav-list( #F39C12, @nav-list-inverse-secondary, 0px  ); }
+	&.nav-list-info    { .generate-nav-list( #3498DB, @nav-list-inverse-secondary, 0px  ); }
+	&.nav-list-danger  { .generate-nav-list( #E74C3C, @nav-list-inverse-secondary, 0px  ); }
+}
+
+//Utility Mixins
+.generate-nav-list (@primary: @gray; @secondary: #fff; @border-width: 1px; @border-radius: @border-radius-base;) {
+	background-color: @secondary;
+	border-radius: @border-radius;
+	border: @border-width solid;
+	.generate-nav-list-border-color(@primary; @secondary);
+	overflow: hidden;
+
+	.generate-nav-list-li(@primary, @secondary);
+
+	> li:last-child {
+		border-bottom: none;
+	}
+
+	.nav-sublist{
+		.generate-nav-sublist(@primary; @secondary;);
+	}
+}
+
+.generate-nav-list-li (@primary; @secondary;) when (lightness(@primary) >= 65%) {
+
+	> li {
+		float: none;
+		border-bottom: 2px solid;
+		.generate-nav-list-border-color(@primary; @secondary);
+
+		> a {
+			.generate-nav-list-text(@secondary);
+
+			&:hover {
+				background-color: lighten(@primary, 30%);
+				.generate-nav-list-text(lighten(@primary, 30%));
+			}
+		}
+
+		&.active > a {
+			&,
+			&:hover,
+			&:focus {
+				.generate-nav-list-text(@primary);
+				font-weight: bold;
+				background-color: @primary;
+			}
+		}
+	}
+}
+
+.generate-nav-list-li (@primary; @secondary) when (lightness(@primary) < 65%) {
+
+	> li {
+		float: none;
+		border-bottom: 2px solid;
+		.generate-nav-list-border-color(@primary; @secondary);
+
+		> a {
+			.generate-nav-list-text(@secondary);
+			&:hover {
+				background-color: lighten(@primary, 40%);
+				.generate-nav-list-text(lighten(@primary, 40%));
+			}
+		}
+
+		&.active > a {
+			&,
+			&:hover,
+			&:focus {
+				.generate-nav-list-text(@primary);
+				font-weight: bold;
+				background-color: @primary;
+			}
+		}
+	}
+}
+
+.generate-nav-sublist(@primary; @secondary) when (lightness(@secondary) >= 65%) {
+	border-radius: 0px;
+
+	> li {
+		border-bottom: 0px;
+		
+		> a {
+			border-left: 10px solid lighten(@primary, 20%);
+
+			background-color: lighten(@primary, 39%);
+			.generate-nav-list-text(lighten(@primary, 39%));
+
+	  		&:hover,
+	  		&:focus {
+				background-color: lighten(@primary, 35%);
+				.generate-nav-list-text(lighten(@primary, 35%));
+			}
+		}
+
+		&.active > a {
+	  		&,
+	  		&:hover,
+	  		&:focus {
+				font-weight: bold;
+				background-color: lighten(@primary, 30%);
+				.generate-nav-list-text(lighten(@primary, 30%));
+			}
+
+			&:before {
+				content: ' ';
+				height: 0;
+				position: absolute;
+				width: 0;
+				left: 0px;
+				top: 10px;
+				border: 10px solid transparent;
+				border-left-color: lighten(@primary, 20%);
+			}
+		}
+	}
+}
+
+.generate-nav-sublist(@primary; @secondary) when (lightness(@secondary) < 65%) {
+	border-radius: 0px;
+
+	> li {
+		border-bottom: 0px;
+		
+		> a {
+			.generate-nav-list-text(@secondary);
+			border-left: 10px solid lighten(@primary, 20%);
+			&,
+	  		&:hover,
+	  		&:focus {
+				.generate-nav-list-text(darken(@secondary, 15%));
+				background-color: darken(@secondary, 15%);
+			}
+		}
+
+		&.active > a {
+	  		&,
+	  		&:hover,
+	  		&:focus {
+				font-weight: bold;
+				background-color: darken(@secondary, 25%);
+				color: @primary;
+			}
+
+			&:before {
+				content: ' ';
+				height: 0;
+				position: absolute;
+				width: 0;
+				left: 0px;
+				top: 10px;
+				border: 10px solid transparent;
+				border-left-color: lighten(@primary, 20%);
+			}
+		}
+	}
+}
+
+.generate-nav-list-border-color(@primary; @secondary) when (lightness(@primary) > lightness(@secondary)) {
+	border-color: darken(@secondary, 10%);
+}
+
+.generate-nav-list-border-color(@primary; @secondary) when (lightness(@primary) < lightness(@secondary)) {
+	border-color: lighten(@primary, 30%);
+}
+
+.generate-nav-list-text (@background) when (lightness(@background) >= 65%) {
+	color: darken(@background, 55%);
+}
+
+.generate-nav-list-text  (@background) when (lightness(@background) < 65%) {
+	color: lighten(@background, 55%);
+}

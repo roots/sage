@@ -268,6 +268,30 @@ function shoestrap_module_menus_options( $sections ) {
     'type'        => 'switch'
   );
 
+  $fields[] = array( 
+    'title'       => __( 'Color for sidebar menus', 'shoestrap' ),
+    'desc'        => __( 'Select a style for menus added to your sidebars using the custom menu widget', 'shoestrap' ),
+    'id'          => 'menus_class',
+    'default'     => 1,
+    'type'        => 'select',
+    'options'     => array( 
+      'default'   => __( 'Default', 'shoestrap' ),
+      'primary'   => __( 'Branding-Primary', 'shoestrap' ),
+      'success'   => __( 'Branding-Success', 'shoestrap' ),
+      'warning'   => __( 'Branding-Warning', 'shoestrap' ),
+      'info'      => __( 'Branding-Info', 'shoestrap' ),
+      'danger'    => __( 'Branding-Danger', 'shoestrap' ),
+    )
+  );
+
+  $fields[] = array( 
+    'title'       => __( 'Inverse Sidebar_menus.', 'shoestrap' ),
+    'desc'        => __( 'Default: OFF. See https://github.com/twittem/wp-bootstrap-navlist-walker for more details', 'shoestrap' ),
+    'id'          => 'inverse_navlist',
+    'default'     => 0,
+    'type'        => 'switch'
+  );
+
   $section['fields'] = $fields;
 
   $section = apply_filters( 'shoestrap_module_menus_options_modifier', $section );
@@ -282,6 +306,8 @@ add_filter( 'redux-sections-'.REDUX_OPT_NAME, 'shoestrap_module_menus_options', 
 include_once( dirname( __FILE__ ) . '/functions.navbar.php' );
 include_once( dirname( __FILE__ ) . '/functions.secondary.navbar.php' );
 include_once( dirname( __FILE__ ) . '/functions.slide-down.php' );
+include_once( dirname( __FILE__ ) . '/wp_bootstrap_navlist_walker.php' );
+include_once( dirname( __FILE__ ) . '/functions.navlist.php' );
 
 if ( shoestrap_getVariable( 'alt_navwalker' ) == 1 ) :
   include_once( dirname( __FILE__ ) . '/functions.navwalker.php' );

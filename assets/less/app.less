@@ -1,4 +1,5 @@
 @import "bootstrap/bootstrap.less";
+@import "navlist.less";
 
 .gallery-row {
   padding: (@gutter / 2) 0;
@@ -123,33 +124,6 @@ a.toggle-nav {
 .button {
   .btn;
   .btn-default;
-}
-
-// Styling lists in widgets
-.widget {
-  ul {
-    .list-group;
-    li {
-      .list-group-item;
-      &.current-cat {
-        z-index: 2; // Place active items above their siblings for proper border styling
-        color: @list-group-active-color;
-        background-color: @list-group-active-bg;
-        border-color: @list-group-active-border;
-        a {
-          color: @list-group-active-color;
-        }
-      }
-      ul {
-        display: none;
-      }
-      &:hover {
-        ul {
-          display: block;
-        }
-      }
-    }
-  }
 }
 
 // make sure that images do don exceed the maximum width of their parent element
