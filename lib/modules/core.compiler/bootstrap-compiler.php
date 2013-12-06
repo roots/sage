@@ -101,6 +101,7 @@ function shoestrap_phpless_compiler() {
   $css = $parser->getCss();
   // This is a REALLY ugly hack...
   $css = str_replace( get_template_directory() . '/assets/less/fonts/', '', $css );
+  $css = str_replace( get_template_directory_uri() . '/assets/', '../', $css );
 
   return $css;
 }
@@ -444,13 +445,9 @@ function shoestrap_variables_less() {
 // -------------------------
 
 @font-family-sans-serif:  ' . $sans_serif . ';
-@font-family-serif:       Georgia, "Times New Roman", Times, serif;
-@font-family-monospace:   Monaco, Menlo, Consolas, "Courier New", monospace;
 @font-family-base:        @font-family-sans-serif;
 
 @font-size-base:          ' . $font_size_base . 'px;
-@font-size-large:         ceil(@font-size-base * 1.25); // ~18px
-@font-size-small:         ceil(@font-size-base * 0.85); // ~12px
 
 @font-size-h1:            floor(@font-size-base * ' . $font_h1_size . '); // ~36px
 @font-size-h2:            floor(@font-size-base * ' . $font_h2_size . '); // ~30px
@@ -459,13 +456,7 @@ function shoestrap_variables_less() {
 @font-size-h5:            ' . $font_h5_size . ';
 @font-size-h6:            ceil(@font-size-base * ' . $font_h6_size . '); // ~12px
 
-@line-height-base:        1.428571429; // 20/14
-@line-height-computed:    floor(@font-size-base * @line-height-base); // ~20px
-
 @headings-font-family:    @font-family-base;
-@headings-font-weight:    500;
-@headings-line-height:    1.1;
-@headings-color:          inherit;
 
 // Iconography
 // -------------------------
@@ -490,8 +481,6 @@ function shoestrap_variables_less() {
 @line-height-small:              1.5;
 
 @border-radius-base:      ' . $border_radius . 'px;
-@border-radius-large:     ceil(@border-radius-base * 1.5);
-@border-radius-small:     floor(@border-radius-base * 0.75);
 
 @component-active-color:         @fff;
 @component-active-bg:            @brand-primary;
@@ -588,8 +577,6 @@ function shoestrap_variables_less() {
 
 @dropdown-header-color:          @gray-light;
 
-@dropdown-caret-color:           @gray-darker;
-
 
 // COMPONENT VARIABLES
 // --------------------------------------------------
@@ -657,7 +644,6 @@ function shoestrap_variables_less() {
 @nav-disabled-link-hover-color:             @gray-light;
 
 @nav-open-link-hover-color:                 @body-bg;
-@nav-open-caret-border-color:               @body-bg;
 
 // Tabs
 @nav-tabs-border-color:                     @table-border-color;
@@ -793,23 +779,6 @@ function shoestrap_variables_less() {
 @panel-primary-text:          ' . $body_bg . ';
 @panel-primary-border:        @brand-primary;
 @panel-primary-heading-bg:    @brand-primary;
-
-@panel-success-text:          @state-success-text;
-@panel-success-border:        @state-success-border;
-@panel-success-heading-bg:    @state-success-bg;
-
-@panel-warning-text:          @state-warning-text;
-@panel-warning-border:        @state-warning-border;
-@panel-warning-heading-bg:    @state-warning-bg;
-
-@panel-danger-text:           @state-danger-text;
-@panel-danger-border:         @state-danger-border;
-@panel-danger-heading-bg:     @state-danger-bg;
-
-@panel-info-text:             @state-info-text;
-@panel-info-border:           @state-info-border;
-@panel-info-heading-bg:       @state-info-bg;
-
 
 // Thumbnails
 // -------------------------
