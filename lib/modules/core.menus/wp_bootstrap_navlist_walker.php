@@ -81,6 +81,8 @@ class wp_bootstrap_navlist_walker extends Walker_Nav_Menu {
 		 * We check to see there is a value in the attr_title property. If the attr_title
 		 * property is NOT null or divider we apply it as the class name for the el-icon.
 		 */
+		$item_output = '';
+		
 		if ( ! empty( $item->attr_title ) )
 			$item_output .= '<a'. $attributes .'><span class="el-icon ' . esc_attr( $item->attr_title ) . '"></span>&nbsp;';
 		else
