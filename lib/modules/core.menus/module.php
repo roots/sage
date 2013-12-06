@@ -25,13 +25,17 @@ function shoestrap_module_menus_options( $sections ) {
   $url = admin_url( 'nav-menus.php?action=locations' );
   $fields[] = array( 
     'title'       => __( 'Type of NavBar', 'shoestrap' ),
-    'desc'        => __( 'Normal mode or Pills?' ),
+    'desc'        => __( 'Choose the type of Navbar you want. Off completely hides the navbar, Alternative uses an alternative walker for the navigation menus. See https://github.com/twittem/wp-bootstrap-navwalker for more details', 'shoestrap' ),
     'id'          => 'navbar_toggle',
-    'default'     => 1,
-    'on'          => __( 'Normal', 'shoestrap' ),
-    'off'         => __( 'Pills', 'shoestrap' ),
+    'default'     => '1',
+    'options'     => array(
+      'off'       => __( 'Off', 'shoestrap' ),
+      '1'         => __( 'Normal', 'shoestrap' ),
+      '0'         => __( 'Pills', 'shoestrap' ),
+      'alt'       => __( 'Alternative' 'shoestrap' ),
+    )
     'customizer'  => array(),
-    'type'        => 'switch'
+    'type'        => 'button_set'
   );
 
   $fields[] = array( 
@@ -259,15 +263,6 @@ function shoestrap_module_menus_options( $sections ) {
     'required'    => array('secondary_navbar_toggle','=',array('1')),
   );
 
-
-  $fields[] = array( 
-    'title'       => __( 'Use alternative Walker.', 'shoestrap' ),
-    'desc'        => __( 'Default: OFF. See https://github.com/twittem/wp-bootstrap-navwalker for more details', 'shoestrap' ),
-    'id'          => 'alt_navwalker',
-    'default'     => 1,
-    'type'        => 'switch'
-  );
-
   $fields[] = array( 
     'title'       => __( 'Color for sidebar menus', 'shoestrap' ),
     'desc'        => __( 'Select a style for menus added to your sidebars using the custom menu widget', 'shoestrap' ),
@@ -309,6 +304,6 @@ include_once( dirname( __FILE__ ) . '/functions.slide-down.php' );
 include_once( dirname( __FILE__ ) . '/wp_bootstrap_navlist_walker.php' );
 include_once( dirname( __FILE__ ) . '/functions.navlist.php' );
 
-if ( shoestrap_getVariable( 'alt_navwalker' ) == 1 ) :
+if ( shoestrap_getVariable( 'navbar_toggle' ) == 'alt' ) :
   include_once( dirname( __FILE__ ) . '/functions.navwalker.php' );
 endif;
