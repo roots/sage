@@ -22,7 +22,11 @@ class Shoestrap_Nav_Menu_Widget extends WP_Widget {
 
     $instance['title'] = apply_filters( 'widget_title', empty( $instance['title'] ) ? '' : $instance['title'], $instance, $this->id_base );
 
-    echo $args['before_widget'];
+    if ( shoestrap_getVariable( 'widgets_mode' ) == 1 ) :
+      echo '<section id="widget-menu-' . $instance["nav_menu"] . '" class="widget">';
+    else :
+      echo $args['before_widget'];
+    endif;
 
     if ( !empty($instance['title']) )
       echo $args['before_title'] . $instance['title'] . $args['after_title'];
