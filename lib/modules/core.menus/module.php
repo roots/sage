@@ -266,6 +266,13 @@ function shoestrap_module_menus_options( $sections ) {
   );
 
   $fields[] = array( 
+    'id'          => 'helpsidebarmenus',
+    'title'       => __( 'Sidebar Menus', 'shoestrap' ),
+    'desc'        => __( 'If you\'re using the "Custom Menu" widgets in your sidebars, you can control their styling here', 'shoestrap' ),
+    'type'        => 'info',
+  );
+
+  $fields[] = array( 
     'title'       => __( 'Color for sidebar menus', 'shoestrap' ),
     'desc'        => __( 'Select a style for menus added to your sidebars using the custom menu widget', 'shoestrap' ),
     'id'          => 'menus_class',
