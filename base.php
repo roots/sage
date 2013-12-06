@@ -18,18 +18,20 @@ $layout_sidebar_on_front  = shoestrap_getVariable( 'layout_sidebar_on_front' );
 
   <?php do_action( 'get_header' ); ?>
 
-  <?php if ( $navbar_toggle == 1 ) : ?>
-    <?php do_action( 'shoestrap_pre_navbar' ); ?>
-    <?php if ( !has_action( 'shoestrap_header_top_navbar_override' ) ) : ?>
-      <?php get_template_part( 'templates/header-top-navbar' ); ?>
+  <?php do_action( 'shoestrap_pre_navbar' ); ?>
+  <?php if ( $navbar_toggle != 'none' ) : ?>
+    <?php if ( $navbar_toggle != 'pills' ) : ?>
+      <?php if ( !has_action( 'shoestrap_header_top_navbar_override' ) ) : ?>
+        <?php get_template_part( 'templates/header-top-navbar' ); ?>
+      <?php else : ?>
+        <?php do_action( 'shoestrap_header_top_navbar_override' ); ?>
+      <?php endif; ?>
     <?php else : ?>
-      <?php do_action( 'shoestrap_header_top_navbar_override' ); ?>
-    <?php endif; ?>
-  <?php else : ?>
-    <?php if ( !has_action( 'shoestrap_header_override' ) ) : ?>
-      <?php get_template_part( 'templates/header' ); ?>
-    <?php else : ?>
-      <?php do_action( 'shoestrap_header_override' ); ?>
+      <?php if ( !has_action( 'shoestrap_header_override' ) ) : ?>
+        <?php get_template_part( 'templates/header' ); ?>
+      <?php else : ?>
+        <?php do_action( 'shoestrap_header_override' ); ?>
+      <?php endif; ?>
     <?php endif; ?>
   <?php endif; ?>
 

@@ -25,15 +25,17 @@ function shoestrap_module_menus_options( $sections ) {
   $url = admin_url( 'nav-menus.php?action=locations' );
   $fields[] = array( 
     'title'       => __( 'Type of NavBar', 'shoestrap' ),
-    'desc'        => __( 'Choose the type of Navbar you want. Off completely hides the navbar, Alternative uses an alternative walker for the navigation menus. See https://github.com/twittem/wp-bootstrap-navwalker for more details', 'shoestrap' ),
+    'desc'        => __( 'Choose the type of Navbar you want.
+                        Off completely hides the navbar, Alternative uses an alternative walker for the navigation menus.
+                        See <a target="_blank"href="https://github.com/twittem/wp-bootstrap-navwalker">here</a> for more details', 'shoestrap' ),
     'id'          => 'navbar_toggle',
-    'default'     => '1',
+    'default'     => 'normal',
     'options'     => array(
-      'off'       => __( 'Off', 'shoestrap' ),
-      '1'         => __( 'Normal', 'shoestrap' ),
-      '0'         => __( 'Pills', 'shoestrap' ),
-      'alt'       => __( 'Alternative' 'shoestrap' ),
-    )
+      'none'      => __( 'Off', 'shoestrap' ),
+      'normal'    => __( 'Normal', 'shoestrap' ),
+      'pills'     => __( 'Pills', 'shoestrap' ),
+      'alt'       => __( 'Alternative', 'shoestrap' ),
+    ),
     'customizer'  => array(),
     'type'        => 'button_set'
   );
