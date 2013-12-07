@@ -201,66 +201,6 @@ function shoestrap_getVariable( $name, $key = false ) {
 endif;
 
 
-if ( !function_exists( 'shoestrap_getFilePaths' ) ) :
-/**
- * Parses sections of given $file into named parts.
- * For cross platform compatiblity, please use PHP constant DIRECTORY_SEPERATOR 
- * instead of "/" for local paths. "/" can be used for all URI's as the 
- * forward slash is consistent across all platforms for URI's. 
- * @param $file File to disect 
- * @return array of path parts. [themeuri, (theme)folder, (theme)name, themepath, relativepath, relativeuri, uri]
- */
-function shoestrap_getFilePaths( $file ) {
-  $result['themeuri']   = themeURI;
-  $result['folder']     = themeFOLDER;
-  $result['name']       = themeNAME;  
-  $result['themepath']  = shoestrap_prep_path( themePATH );
-  $result['path']       = shoestrap_prep_path( $file );
-  
-  $parts = explode( strtolower( $result['themepath'] ) . strtolower( $result['folder'] ), strtolower( $file ) );
-  $result['relativepath'] = shoestrap_prep_path( $parts[1] );
-  $result['relativeuri']  = shoestrap_prep_uri( $parts[1] );
-  $result['uri']          = $result['themeuri'] . $result['relativeuri'];
-  
-  return $result;
-}
-endif;
-
-
-if ( !function_exists( 'shoestrap_prep_path' ) ) :
-/**
- * Prepares a local path for string parsing when Directory separators need to be consistent for Windows and Linux.
- * Use for local server PATHS only. Use shoestrap_prep_uri() for a URI or URL.
- * Windows directories will be separated with a "\\"
- * Linux directories will be separated with a "/"
- * Also adds a trailing "/" or "\\" based on OS's PHP Constant DIRECTORY_SEPARATOR (http://php.net/manual/en/dir.constants.php) 
- * @param $path
- * @return string with trailing path separator
- */
-function shoestrap_prep_path( $path ) {
-    // Ensures proper separator for each OS.
-    $path = str_replace( '/', DIRECTORY_SEPARATOR, $path );
-    $path = str_replace( '\\', DIRECTORY_SEPARATOR, $path );
-    // Removes if exists to ensure only one is added.
-    return rtrim( $path, DIRECTORY_SEPARATOR ) . DIRECTORY_SEPARATOR;
-}
-endif;
-
-
-if ( !function_exists( 'shoestrap_prep_uri' ) ) :
-/**
- * Prepares a URI for string parsing when all separators should be "/"
- * Use for URIs and URLs only. Use shoestrap_prep_path() for local server paths.
- * @param $path 
- * @return $string 
- */
-function shoestrap_prep_uri( $path ) {
-  $path = str_replace( '\\', '/', $path );
-  return rtrim( $path, '/' ) . '/';
-}
-endif;
-
-
 if ( !function_exists( 'shoestrap_password_form' ) ) :
 /*
  * Replace the password forms with a bootstrap-formatted version.
@@ -294,22 +234,6 @@ function shoestrap_replace_reply_link_class( $class ) {
 }
 endif;
 add_filter('comment_reply_link', 'shoestrap_replace_reply_link_class');
-
-
-if ( !function_exists( 'shoestrap_contains_string' ) ) :
-/*
- * Pass a string and an array of possible values. Will return true if the straing contains it
- */
-function shoestrap_contains_string( $str, array $arr ) {
-  foreach( $arr as $a ) :
-    if (stripos($str,$a) !== false) :
-      return true;
-    endif;
-  endforeach;
-
-  return false;
-}
-endif;
 
 
 if ( !function_exists( 'shoestrap_init_filesystem' ) ) :
