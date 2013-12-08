@@ -395,8 +395,14 @@ function shoestrap_variables_less() {
     $navbar_border  = 'darken(@navbar-default-bg, 6.5%)';
   endif;
 
-  $variables = '
+$variables = '
 @brand-secondary: ' . $brand_secondary . ';
+
+@428bca: ' . $brand_primary . ';
+@5cb85c: ' . $brand_success . ';
+@f0ad4e: ' . $brand_warning . ';
+@d9534f: ' . $brand_danger . ';
+@5bc0de: ' . $brand_info . ';
 
 @fff: ' . $body_bg . ';
 
@@ -423,11 +429,11 @@ function shoestrap_variables_less() {
 // Brand colors
 // -------------------------
 
-@brand-primary:         ' . $brand_primary . ';
-@brand-success:         ' . $brand_success . ';
-@brand-warning:         ' . $brand_warning . ';
-@brand-danger:          ' . $brand_danger . ';
-@brand-info:            ' . $brand_info . ';
+@brand-primary:         @428bca;
+@brand-success:         @5cb85c;
+@brand-warning:         @f0ad4e;
+@brand-danger:          @d9534f;
+@brand-info:            @5bc0de;
 
 // Scaffolding
 // -------------------------
@@ -445,9 +451,13 @@ function shoestrap_variables_less() {
 // -------------------------
 
 @font-family-sans-serif:  ' . $sans_serif . ';
+@font-family-serif:       Georgia, "Times New Roman", Times, serif;
+@font-family-monospace:   Monaco, Menlo, Consolas, "Courier New", monospace;
 @font-family-base:        @font-family-sans-serif;
 
 @font-size-base:          ' . $font_size_base . 'px;
+@font-size-large:         ceil(@font-size-base * 1.25); // ~18px
+@font-size-small:         ceil(@font-size-base * 0.85); // ~12px
 
 @font-size-h1:            floor(@font-size-base * ' . $font_h1_size . '); // ~36px
 @font-size-h2:            floor(@font-size-base * ' . $font_h2_size . '); // ~30px
@@ -456,7 +466,13 @@ function shoestrap_variables_less() {
 @font-size-h5:            ' . $font_h5_size . ';
 @font-size-h6:            ceil(@font-size-base * ' . $font_h6_size . '); // ~12px
 
+@line-height-base:        1.428571429; // 20/14
+@line-height-computed:    floor(@font-size-base * @line-height-base); // ~20px
+
 @headings-font-family:    @font-family-base;
+@headings-font-weight:    500;
+@headings-line-height:    1.1;
+@headings-color:          inherit;
 
 // Iconography
 // -------------------------
@@ -481,6 +497,8 @@ function shoestrap_variables_less() {
 @line-height-small:              1.5;
 
 @border-radius-base:      ' . $border_radius . 'px;
+@border-radius-large:     ceil(@border-radius-base * 1.5);
+@border-radius-small:     floor(@border-radius-base * 0.75);
 
 @component-active-color:         @fff;
 @component-active-bg:            @brand-primary;
@@ -577,16 +595,57 @@ function shoestrap_variables_less() {
 
 @dropdown-header-color:          @gray-light;
 
+@dropdown-caret-color:           @gray-darker;
+
 
 // COMPONENT VARIABLES
 // --------------------------------------------------
 
+
+// Z-index master list
+// -------------------------
+// Used for a birds eye view of components dependent on the z-axis
+// Try to avoid customizing these :)
+
+@zindex-navbar:            1000;
+@zindex-dropdown:          1000;
+@zindex-popover:           1010;
+@zindex-tooltip:           1030;
+@zindex-navbar-fixed:      1030;
+@zindex-modal-background:  1040;
+@zindex-modal:             1050;
+
 // Media queries breakpoints
 // --------------------------------------------------
 
+// Extra small screen / phone
+// Note: Deprecated @screen-xs and @screen-phone as of v3.0.1
+@screen-xs:                  480px;
+@screen-xs-min:              @screen-xs;
+@screen-phone:               @screen-xs-min;
+
+// Small screen / tablet
+// Note: Deprecated @screen-sm and @screen-tablet as of v3.0.1
 @screen-sm:                  ' . $screen_tablet . 'px;
+@screen-sm-min:              @screen-sm;
+@screen-tablet:              @screen-sm-min;
+
+// Medium screen / desktop
+// Note: Deprecated @screen-md and @screen-desktop as of v3.0.1
 @screen-md:                  ' . $screen_desktop . 'px;
+@screen-md-min:              @screen-md;
+@screen-desktop:             @screen-md-min;
+
+// Large screen / wide desktop
+// Note: Deprecated @screen-lg and @screen-lg-desktop as of v3.0.1
 @screen-lg:                  ' . $screen_large_desktop . 'px;
+@screen-lg-min:              @screen-lg;
+@screen-lg-desktop:          @screen-lg-min;
+
+// So media queries dont overlap when required, provide a maximum
+@screen-xs-max:              (@screen-sm-min - 1);
+@screen-sm-max:              (@screen-md-min - 1);
+@screen-md-max:              (@screen-lg-min - 1);
 
 
 // Grid system
@@ -634,6 +693,33 @@ function shoestrap_variables_less() {
 @navbar-default-toggle-border-color:       @table-border-color;
 
 
+// Inverted navbar
+//
+// Reset inverted navbar basics
+@navbar-inverse-color:                      @gray-light;
+@navbar-inverse-bg:                         #222;
+@navbar-inverse-border:                     darken(@navbar-inverse-bg, 10%);
+
+// Inverted navbar links
+@navbar-inverse-link-color:                 @gray-light;
+@navbar-inverse-link-hover-color:           #fff;
+@navbar-inverse-link-hover-bg:              transparent;
+@navbar-inverse-link-active-color:          @navbar-inverse-link-hover-color;
+@navbar-inverse-link-active-bg:             darken(@navbar-inverse-bg, 10%);
+@navbar-inverse-link-disabled-color:        #444;
+@navbar-inverse-link-disabled-bg:           transparent;
+
+// Inverted navbar brand label
+@navbar-inverse-brand-color:                @navbar-inverse-link-color;
+@navbar-inverse-brand-hover-color:          #fff;
+@navbar-inverse-brand-hover-bg:             transparent;
+
+// Inverted navbar toggle
+@navbar-inverse-toggle-hover-bg:            #333;
+@navbar-inverse-toggle-icon-bar-bg:         #fff;
+@navbar-inverse-toggle-border-color:        #333;
+
+
 // Navs
 // -------------------------
 
@@ -644,6 +730,7 @@ function shoestrap_variables_less() {
 @nav-disabled-link-hover-color:             @gray-light;
 
 @nav-open-link-hover-color:                 @body-bg;
+@nav-open-caret-border-color:               @body-bg;
 
 // Tabs
 @nav-tabs-border-color:                     @table-border-color;
@@ -694,6 +781,26 @@ function shoestrap_variables_less() {
 @jumbotron-font-size:            ceil(@font-size-base * 1.5);
 
 
+// Form states and alerts
+// -------------------------
+
+@state-success-text:             #468847;
+@state-success-bg:               #dff0d8;
+@state-success-border:           darken(spin(@state-success-bg, -10), 5%);
+
+@state-info-text:                #3a87ad;
+@state-info-bg:                  #d9edf7;
+@state-info-border:              darken(spin(@state-info-bg, -10), 7%);
+
+@state-warning-text:             #c09853;
+@state-warning-bg:               #fcf8e3;
+@state-warning-border:           darken(spin(@state-warning-bg, -10), 5%);
+
+@state-danger-text:              #b94a48;
+@state-danger-bg:                #f2dede;
+@state-danger-border:            darken(spin(@state-danger-bg, -10), 5%);
+
+
 // Tooltips
 // -------------------------
 @tooltip-max-width:           200px;
@@ -724,6 +831,13 @@ function shoestrap_variables_less() {
 // Labels
 // -------------------------
 
+@label-default-bg:            @gray-light;
+@label-primary-bg:            @brand-primary;
+@label-success-bg:            @brand-success;
+@label-info-bg:               @brand-info;
+@label-warning-bg:            @brand-warning;
+@label-danger-bg:             @brand-danger;
+
 @label-color:                 @body-bg;
 @label-link-hover-color:      @body-bg;
 
@@ -744,10 +858,39 @@ function shoestrap_variables_less() {
 @modal-footer-border-color:   @modal-header-border-color;
 
 
+// Alerts
+// -------------------------
+@alert-padding:               15px;
+@alert-border-radius:         @border-radius-base;
+@alert-link-font-weight:      bold;
+
+@alert-success-bg:            @state-success-bg;
+@alert-success-text:          @state-success-text;
+@alert-success-border:        @state-success-border;
+
+@alert-info-bg:               @state-info-bg;
+@alert-info-text:             @state-info-text;
+@alert-info-border:           @state-info-border;
+
+@alert-warning-bg:            @state-warning-bg;
+@alert-warning-text:          @state-warning-text;
+@alert-warning-border:        @state-warning-border;
+
+@alert-danger-bg:             @state-danger-bg;
+@alert-danger-text:           @state-danger-text;
+@alert-danger-border:         @state-danger-border;
+
+
 // Progress bars
 // -------------------------
 @progress-bg:                 ' . $table_bg_hover . ';
 @progress-bar-color:          ' . $body_bg . ';
+
+@progress-bar-bg:             @brand-primary;
+@progress-bar-success-bg:     @brand-success;
+@progress-bar-warning-bg:     @brand-warning;
+@progress-bar-danger-bg:      @brand-danger;
+@progress-bar-info-bg:        @brand-info;
 
 
 // List group
@@ -779,6 +922,23 @@ function shoestrap_variables_less() {
 @panel-primary-text:          ' . $body_bg . ';
 @panel-primary-border:        @brand-primary;
 @panel-primary-heading-bg:    @brand-primary;
+
+@panel-success-text:          @state-success-text;
+@panel-success-border:        @state-success-border;
+@panel-success-heading-bg:    @state-success-bg;
+
+@panel-warning-text:          @state-warning-text;
+@panel-warning-border:        @state-warning-border;
+@panel-warning-heading-bg:    @state-warning-bg;
+
+@panel-danger-text:           @state-danger-text;
+@panel-danger-border:         @state-danger-border;
+@panel-danger-heading-bg:     @state-danger-bg;
+
+@panel-info-text:             @state-info-text;
+@panel-info-border:           @state-info-border;
+@panel-info-heading-bg:       @state-info-bg;
+
 
 // Thumbnails
 // -------------------------
@@ -839,6 +999,25 @@ function shoestrap_variables_less() {
 @close-text-shadow:           0 1px 0 @body-bg;
 
 
+// Code
+// ------------------------
+@code-color:                  #c7254e;
+@code-bg:                     #f9f2f4;
+
+@pre-bg:                      #f5f5f5;
+@pre-color:                   @gray-dark;
+@pre-border-color:            #ccc;
+@pre-scrollable-max-height:   340px;
+
+// Type
+// ------------------------
+@text-muted:                  @gray-light;
+@abbr-border-color:           @gray-light;
+@headings-small-color:        @gray-light;
+@blockquote-small-color:      @gray-light;
+@blockquote-border-color:     @gray-lighter;
+@page-header-border-color:    @gray-lighter;
+
 // Miscellaneous
 // -------------------------
 
@@ -852,9 +1031,17 @@ function shoestrap_variables_less() {
 // Container sizes
 // --------------------------------------------------
 
+// Small screen / tablet
 @container-tablet:           ' . ( $screen_tablet - ( $gutter / 2 ) ). 'px;
+@container-sm:               @container-tablet;
+
+// Medium screen / desktop
 @container-desktop:          ' . ( $screen_desktop - ( $gutter / 2 ) ). 'px;
+@container-md:               @container-desktop;
+
+// Large screen / wide desktop
 @container-large-desktop:    ' . ( $screen_large_desktop - ( $gutter / 2 ) ). 'px;
+@container-lg:                 @container-large-desktop;
 
 
 // Shoestrap-specific variables
