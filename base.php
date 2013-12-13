@@ -69,7 +69,7 @@ $layout_sidebar_on_front  = shoestrap_getVariable( 'layout_sidebar_on_front' );
             <div class="row">
         <?php endif; ?>
 
-        <main class="main <?php echo shoestrap_section_class( 'main' ); ?>" role="main">
+        <main class="main <?php echo shoestrap_section_class( 'main' ); ?>" <?php if (is_home()){ echo 'id="home-blog"';} ?> role="main">
           <?php include roots_template_path(); ?>
         </main><!-- /.main -->
 
