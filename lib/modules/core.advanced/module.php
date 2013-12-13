@@ -42,6 +42,19 @@ function shoestrap_module_advanced_options( $sections ) {
   );
 
   $fields[] = array( 
+    'title'     => __( 'Select pagination style', 'shoestrap' ),
+    'desc'      => __( 'Switch between default pager or default pagination. Default: Pager.', 'shoestrap' ),
+    'id'        => 'pagination',
+    'type'      => 'button_set',
+    'options'   => array(
+      'pager'       => 'Default Pager',
+      'pagination'  => 'Default Pagination'
+    ),
+    'default'   => 'pager',
+    'customizer'=> array()
+  );
+
+  $fields[] = array( 
     'title'     => __( 'Enable Retina mode', 'shoestrap' ),
     'desc'      => __( 'By enabling your site will be retina ready. Requires a all images to be uploaded at 2x the typical size desired, including logos. Default: On', 'shoestrap' ),
     'id'        => 'retina_toggle',
