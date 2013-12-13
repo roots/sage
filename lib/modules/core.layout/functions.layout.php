@@ -9,29 +9,34 @@ function shoestrap_getLayout() {
 
   if ( !isset( $shoestrap_layout ) ) :
     do_action( 'shoestrap_layout_modifier' );
-    if ( is_page_template( 'template-0.php' ) ) :
-      $shoestrap_layout = 0;
-    elseif ( is_page_template( 'template-1.php' ) ) :
-      $shoestrap_layout = 1;
-    elseif ( is_page_template( 'template-2.php' ) ) :
-      $shoestrap_layout = 2;
-    elseif ( is_page_template( 'template-3.php' ) ) :
-      $shoestrap_layout = 3;
-    elseif ( is_page_template( 'template-4.php' ) ) :
-      $shoestrap_layout = 4;
-    elseif ( is_page_template( 'template-5.php' ) ) :
-      $shoestrap_layout = 5;
-    else :
-      $shoestrap_layout = intval( shoestrap_getVariable( 'layout' ) );
-    endif;
-
-    $post_types = get_post_types( array( 'public' => true ), 'names' );
-    foreach ( $post_types as $post_type ) :
-      if ( is_singular( $post_type ) && shoestrap_getVariable( 'cpt_layout_toggle' ) == 1 ) :
-        $shoestrap_layout = intval( shoestrap_getVariable( $post_type . '_layout' ) );
+    // Looking for a per-page template ?
+    if ( is_page_template() ) :
+      if ( is_page_template( 'template-0.php' ) ) :
+        $shoestrap_layout = 0;
+      elseif ( is_page_template( 'template-1.php' ) ) :
+        $shoestrap_layout = 1;
+      elseif ( is_page_template( 'template-2.php' ) ) :
+        $shoestrap_layout = 2;
+      elseif ( is_page_template( 'template-3.php' ) ) :
+        $shoestrap_layout = 3;
+      elseif ( is_page_template( 'template-4.php' ) ) :
+        $shoestrap_layout = 4;
+      elseif ( is_page_template( 'template-5.php' ) ) :
+        $shoestrap_layout = 5;
+      else :
+        $shoestrap_layout = intval( shoestrap_getVariable( 'layout' ) );
       endif;
-    endforeach;
-
+    endif;
+    // Use default setting if $shoestrap_layout not set yet
+    if ( !isset( $shoestrap_layout ) ) :
+      $post_types = get_post_types( array( 'public' => true ), 'names' );
+      foreach ( $post_types as $post_type ) :
+        if ( is_singular( $post_type ) && shoestrap_getVariable( 'cpt_layout_toggle' ) == 1 ) :
+          $shoestrap_layout = intval( shoestrap_getVariable( $post_type . '_layout' ) );
+        endif;
+      endforeach; 
+    endif;
+    
     if ( !is_active_sidebar( 'sidebar-secondary' ) && is_active_sidebar( 'sidebar-primary' ) && $shoestrap_layout == 5 ) :
       $shoestrap_layout = 3;
     endif;
