@@ -56,6 +56,39 @@ Send me an email at ghost1227@reduxframework.com so I can add you to our user sp
 
 ### Master ###
 
+= 3.1.2 =
+* Feature - Sortable select boxes!
+* Feature - Reset a section only or the whole panel!
+* New Field - RGBA Color Field!
+* Improvement - Use of REM throughout.
+* Fixed Typography - Fix output option and various small bugs.
+* Fixed Border - Fix output option and various small bugs.
+* Fixed Dimensions - Fix output option and various small bugs.
+* Fixed Image_select - Various small bugs.
+* Fixed Slides - Various small bugs.
+* Fixed Sortable - Using native jQuery UI library same as within WordPress.
+* Fixed Slider and Spinner Input Field - Values now move to the closest valid value in regards to the step, automatically.
+* Fixed Ace Editor
+* FEATURE - All CSS/JS files are compiled into a single file now! Speed improvements for the backend. 
+* Fix in how WordPress data is received, improved some output.
+* Fix for various fields not triggering fold/compiler/save.
+* Fixed elusive icons to use the new version and classes.
+* Fixed media thumb to only be the thumbnail version.
+* Fixed admin https error with WordPress core not renaming URL.
+* Placeholders throughout the framework are now properly there.
+* Feature - Setting to not save defaults to database on load.
+* Fixed - Computability issue with GT3 builder.
+* Fixed localization issue with default values.
+* Language - Added Russian
+* Feature - Media now can have any content type passed in to limit content types.
+* Allow negative values in typography and other fields.
+* WordPress 3.8 computability.
+* CSS validation issue.
+* Feature - User contributed text direction feature.
+* EDD Extension now fully function for plugins or themes.
+* Removed get_theme_data() fallbacks, we're well pass WordPress 3.4 now.  ;)
+* A ton of other small updates and improvements.
+
 = 3.1.0 =
 * Fix Issue 224 - Image Select width was breaking the panel.
 * Fix Issue 181 - Broken panel in firefox
