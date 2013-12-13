@@ -1,3 +1,19 @@
-#redux-main .redux-container-sortable label{margin-right:10px;width:300px}
-#redux-main .redux-container-sortable input[type='checkbox']{margin-right:10px}
-#redux-main .redux-container-sortable .checkbox-container{width:356px}#redux-main .redux-container-sortable .checkbox-container .drag{float:right}
+.redux-container-sortable label {
+  margin-right: 10px;
+  width: 300px;
+}
+.redux-container-sortable input {
+  margin-right: 10px;
+}
+.redux-container-sortable .checkbox-container {
+  width: 364px;
+}
+.redux-container-sortable .checkbox-container .drag {
+  float: right;
+  margin-left: 10px;
+}
+.redux-container-sortable li.ui-state-highlight {
+  height: 30px;
+  width: 364px;
+  margin-bottom: 13px;
+}

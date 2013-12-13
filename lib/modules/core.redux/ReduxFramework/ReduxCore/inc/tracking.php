@@ -164,37 +164,13 @@ if ( !class_exists( 'Redux_Tracking' ) ) {
 				}
 
 				$comments_count = wp_count_comments();
-
-				// wp_get_theme was introduced in 3.4, for compatibility with older versions, let's do a workaround for now.
-				if ( function_exists( 'wp_get_theme' ) ) {
-					$theme_data = wp_get_theme();
-					$theme      = array(
-						'name'       => $theme_data->display( 'Name', false, false ),
-						'theme_uri'  => $theme_data->display( 'ThemeURI', false, false ),
-						'version'    => $theme_data->display( 'Version', false, false ),
-						'author'     => $theme_data->display( 'Author', false, false ),
-						'author_uri' => $theme_data->display( 'AuthorURI', false, false ),
-					);
-					if ( isset( $theme_data->template ) && !empty( $theme_data->template ) && $theme_data->parent() ) {
-						$theme['template'] = array(
-							'version'    => $theme_data->parent()->display( 'Version', false, false ),
-							'name'       => $theme_data->parent()->display( 'Name', false, false ),
-							'theme_uri'  => $theme_data->parent()->display( 'ThemeURI', false, false ),
-							'author'     => $theme_data->parent()->display( 'Author', false, false ),
-							'author_uri' => $theme_data->parent()->display( 'AuthorURI', false, false ),
-						);
-					} else {
-						$theme['template'] = '';
-					}
-				} else {
-					$theme_data = (object) get_theme_data( get_stylesheet_directory() . '/style.css' );
-					$theme      = array(
-						'version'  => $theme_data->Version,
-						'name'     => $theme_data->Name,
-						'author'   => $theme_data->Author,
-						'template' => $theme_data->Template,
-					);
-				}
+            	$theme_data = wp_get_theme();
+				$theme      = array(
+					'version'  => $theme_data->Version,
+					'name'     => $theme_data->Name,
+					'author'   => $theme_data->Author,
+					'template' => $theme_data->Template,
+				);			
 
 				$plugins = array();
 				foreach ( get_option( 'active_plugins' ) as $plugin_path ) {

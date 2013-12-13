@@ -1,21 +1,20 @@
-/*-------------------------------------------------------------------------------------------*/
-/* Color picker overwrite
-/*-------------------------------------------------------------------------------------------*/
-#redux-main input.redux-color {
+.redux-main {
+  /*-------------------------------------------------------------------------------------------*/
+  /* Color picker overwrite
+	/*-------------------------------------------------------------------------------------------*/
+}
+.redux-main input.redux-color {
   float: left;
   width: 70px;
   margin-left: 5px;
 }
-#redux-main .wp-color-result.wp-picker-open {
-  t2op: -3px;
-}
-#redux-main #content .section-color .controls {
+.redux-main .section-color .controls {
   width: 345px;
 }
-#redux-main #content .section-color .explain {
+.redux-main .section-color .explain {
   width: 225px;
 }
-#redux-main .iris-picker .iris-strip .ui-slider-handle {
+.redux-main .iris-picker .iris-strip .ui-slider-handle {
   position: absolute;
   background: none!important;
   right: -3px;
@@ -29,7 +28,7 @@
   z-index: 5;
   cursor: ns-resize;
 }
-#redux-main .iris-picker .iris-slider-offset {
+.redux-main .iris-picker .iris-slider-offset {
   position: absolute;
   top: 0px;
   left: 0;
@@ -40,25 +39,25 @@
   border: 0!important;
   height: auto;
 }
-#redux-main .wp-picker-container .wp-color-result {
+.redux-main .wp-picker-container .wp-color-result {
   outline: 0;
   margin: 0;
 }
-#redux-main .redux-color-gradient {
+.redux-main .redux-color-gradient {
   line-height: 24px;
 }
-#redux-main .wp-picker-container input {
+.redux-main .wp-picker-container input {
   margin-bottom: inherit;
   margin-top: inherit;
   padding: 2px;
 }
-#redux-main .wp-picker-container .wp-picker-default {
+.redux-main .wp-picker-container .wp-picker-default {
   padding: 0 10px 1px;
 }
-#redux-main input.color-transparency {
+.redux-main input.color-transparency {
   margin-left: 10px;
   margin-right: 3px;
 }
-#redux-main input.wp-color-picker {
+.redux-main input.wp-color-picker {
   width: 80px;
 }

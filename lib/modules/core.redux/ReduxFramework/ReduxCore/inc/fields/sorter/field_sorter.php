@@ -25,13 +25,13 @@ class ReduxFramework_sorter extends ReduxFramework {
      * Required - must call the parent constructor, then assign field and value to vars, and obviously call the render field function
      * @since Redux_Options 1.0.0
      */
-    function __construct($field = array(), $value = '', $parent) {
-        parent::__construct($parent->sections, $parent->args);
-        $this->field = $field;
-        $this->value = $value;
-        if (!is_array($this->value) && isset($this->field['options'])) {
-            $this->value = $this->field['options'];
-        }
+	function __construct( $field = array(), $value ='', $parent ) {
+    
+		parent::__construct( $parent->sections, $parent->args );
+		$this->parent = $parent;
+		$this->field = $field;
+		$this->value = $value;
+    
     }
 
     /**
@@ -40,6 +40,10 @@ class ReduxFramework_sorter extends ReduxFramework {
      * @since 1.0.0
      */
     function render() {
+
+        if (!is_array($this->value) && isset($this->field['options'])) {
+            $this->value = $this->field['options'];
+        }    	
 
 		// Make sure to get list of all the default blocks first
 	    $all_blocks = !empty( $this->field['options'] ) ? $this->field['options'] : array();
@@ -86,7 +90,7 @@ class ReduxFramework_sorter extends ReduxFramework {
 			
 
 			    if ($sortlists) {
-			    	echo '<fieldset id="'.$this->field['id'].'" class="redux-sorter-container sorter">';
+			    	echo '<fieldset id="'.$this->field['id'].'" class="redux-sorter-container redux-sorter">';
 
 					foreach ($sortlists as $group=>$sortlist) {
 
@@ -119,11 +123,22 @@ class ReduxFramework_sorter extends ReduxFramework {
     }
 
     function enqueue() {
-        wp_register_script('options-sorter', ReduxFramework::$_url . 'inc/fields/sorter/field_sorter.min.js', array(
-            'jquery'));
-        wp_register_style('options-sorter', ReduxFramework::$_url . 'inc/fields/sorter/field_sorter.css');
-        wp_enqueue_script('options-sorter');
-        wp_enqueue_style('options-sorter');
+    	
+        wp_enqueue_style(
+            'redux-field-sorder-css', 
+            ReduxFramework::$_url.'inc/fields/sorter/field_sorter.css', 
+            time(),
+            true
+        );  
+
+        wp_enqueue_script(
+        	'redux-field-sorter-js', 
+        	ReduxFramework::$_url . 'inc/fields/sorter/field_sorter.js', 
+        	array('jquery'),
+        	time(),
+        	true
+        );
+
     }
 
 }

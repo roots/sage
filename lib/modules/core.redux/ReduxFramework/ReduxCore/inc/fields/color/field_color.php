@@ -42,14 +42,14 @@ if( !class_exists( 'ReduxFramework_color' ) ) {
 	 	 * @access		public
 	 	 * @return		void
 		 */
-		public function __construct( $field = array(), $value ='', $parent ) {
-		
+        function __construct( $field = array(), $value ='', $parent ) {
+        
 			parent::__construct( $parent->sections, $parent->args );
-
+			$this->parent = $parent;
 			$this->field = $field;
 			$this->value = $value;
-		
-		}
+        
+        }
 	
 		/**
 		 * Field Render Function.
@@ -89,7 +89,7 @@ if( !class_exists( 'ReduxFramework_color' ) ) {
 
 			wp_enqueue_script(
 				'redux-field-color-js', 
-				ReduxFramework::$_url . 'inc/fields/color/field_color.min.js', 
+				ReduxFramework::$_url . 'inc/fields/color/field_color.js', 
 				array( 'jquery', 'wp-color-picker' ),
 				time(),
 				true
@@ -102,6 +102,22 @@ if( !class_exists( 'ReduxFramework_color' ) ) {
 				true
 			);
 		
+		}
+
+		public function output() {
+
+			if (isset($this->field['output']) && !empty($this->field['output'])) {
+
+				$keys = implode(",", $this->field['output']);
+		        $style = '';
+		        if ( !empty( $this->value ) ) {
+
+		        	$style .= $keys."{";
+		        	$style .= 'color:'.$this->value.';';
+		        	$style .= '}';
+		        	$this->parent->outputCSS .= $style;  
+		        }
+			}
 		}
 	
 	}

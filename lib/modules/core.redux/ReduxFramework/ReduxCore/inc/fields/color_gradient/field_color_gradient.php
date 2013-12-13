@@ -42,10 +42,10 @@ if( !class_exists( 'ReduxFramework_color_gradient' ) ) {
          * @access      public
          * @return      void
          */
-        public function __construct( $field = array(), $value ='', $parent ) {
+        function __construct( $field = array(), $value ='', $parent ) {
         
             parent::__construct( $parent->sections, $parent->args );
-
+            $this->parent = $parent;
             $this->field = $field;
             $this->value = $value;
         
@@ -106,7 +106,7 @@ if( !class_exists( 'ReduxFramework_color_gradient' ) ) {
         
             wp_enqueue_script(
                 'redux-field-color-js', 
-                ReduxFramework::$_url . 'inc/fields/color/field_color.min.js', 
+                ReduxFramework::$_url . 'inc/fields/color/field_color.js', 
                 array( 'jquery', 'wp-color-picker' ),
                 time(),
                 true

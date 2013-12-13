@@ -1,0 +1,6 @@
+.redux-container-text label {
+  float: left;
+  display: block;
+  line-height: 28px;
+  min-width: 100px;
+}

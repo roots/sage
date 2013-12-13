@@ -1,31 +1,30 @@
-#redux-main .redux-group {
-  /*background: #eee;*/
+.redux-container-group {
   padding: 15px 20px;
   margin-bottom: 7px;
   padding-top: 0;
 }
-#redux-main .redux-group h4 {
+.redux-container-group h4 {
   margin: 5px 0px 0px 0px;
 }
-#redux-main .redux-group h4:first-child {
+.redux-container-group h4:first-child {
   margin-top: 0px;
 }
-#redux-main .redux-group .description {
+.redux-container-group .description {
   margin: 5px 0 5px 0px;
 }
-#redux-main .redux-group #redux-groups-accordion {
+.redux-container-group #redux-groups-accordion {
   width: 100%;
 }
-#redux-main .redux-group .redux-groups-accordion-group {
+.redux-container-group .redux-groups-accordion-group {
   margin-bottom: 10px;
 }
-#redux-main .redux-group .redux-groups-accordion-group > div {
+.redux-container-group .redux-groups-accordion-group > div {
   border: 1px solid #dfdfdf !important;
   border-radius: 3px !important;
   margin-top: 0px !important;
   padding: 10px;
 }
-#redux-main .redux-group .redux-groups-accordion-group h3 {
+.redux-container-group .redux-groups-accordion-group h3 {
   border: 1px solid #dfdfdf;
   cursor: move;
   font-weight: bold;
@@ -49,23 +48,23 @@
   box-shadow: inset 0 1px 0 #fff;
   text-align: center;
 }
-#redux-main .redux-group .redux-groups-add {
+.redux-container-group .redux-groups-add {
   float: right;
 }
-#redux-main .redux-group .redux-groups-add:after {
+.redux-container-group .redux-groups-add:after {
   clear: both;
 }
-#redux-main .redux-group .redux-groups-remove {
+.redux-container-group .redux-groups-remove {
   color: #ef521d !important;
   float: right;
   margin-top: 10px;
 }
-#redux-main .redux-group .redux-groups-remove:after {
+.redux-container-group .redux-groups-remove:after {
   clear: both;
 }
-#redux-main .redux-group .redux-groups-header {
+.redux-container-group .redux-groups-header {
   font-weight: bold;
 }
-#redux-main .redux-group .redux_groups_add_remove {
+.redux-container-group .redux_groups_add_remove {
   margin-bottom: 10px;
 }

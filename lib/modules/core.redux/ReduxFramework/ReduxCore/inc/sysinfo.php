@@ -54,14 +54,9 @@ if( !class_exists( 'Simple_System_Info' ) ) {
             $browser = new Browser();
 
             // Get theme info for this WordPress version
-            if( get_bloginfo( 'version' ) < '3.4' ) {
-                $theme_data = get_theme_data( get_stylesheet_directory() . '/style.css' );
-                $theme      = $theme_data['Name'] . ' ' . $theme_data['Version'];
-            } else {
-                $theme_data = wp_get_theme();
-                $theme      = $theme_data->Name . ' ' . $theme_data->Version;
-            }
-
+            $theme_data = wp_get_theme();
+            $theme      = $theme_data->Name . ' ' . $theme_data->Version;
+            
             $return = '<textarea readonly="readonly" onclick="this.focus(); this.select()" id="' . $id . '"' . ( $class != null ? ' class="' . $class . '"' : '' ) . ' title="To copy the system info, click below and press Ctrl+C (PC) or Cmd+C (Mac).">';
 
             $return .= '### Begin System Info ###' . "\n\n";

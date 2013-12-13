@@ -2,18 +2,21 @@
 /**
  * Class ReduxFramework_password
  */
-class ReduxFramework_password {
+class ReduxFramework_password extends ReduxFramework {
 
 	/**
 	 * Field Constructor.
 	 * Required - must call the parent constructor, then assign field and value to vars, and obviously call the render field function
 	 * @since ReduxFramework 1.0.1
 	 */
-	function __construct( $field = array(), $value = '', $parent ) {
+    function __construct( $field = array(), $value ='', $parent ) {
+    
+		parent::__construct( $parent->sections, $parent->args );
+		$this->parent = $parent;
 		$this->field = $field;
 		$this->value = $value;
-		$this->args  = $parent->args;
-	}
+    
+    }
 
 	/**
 	 * Field Render Function.

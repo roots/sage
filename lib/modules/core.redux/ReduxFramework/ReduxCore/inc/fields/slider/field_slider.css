@@ -1,4 +1,14 @@
-.ui-slider{width:200px;display:inline-block}
-.redux_slider{margin-left:15px}
-.slider-input{width:auto !important;text-align:center}
-.ui-slider-range.ui-widget-header{margin-top:0}
+.redux-container-slider .ui-slider {
+  width: 200px;
+  display: inline-block;
+}
+.redux-container-slider .redux_slider {
+  margin-left: 15px;
+}
+.redux-container-slider .slider-input {
+  width: auto !important;
+  text-align: center;
+}
+.redux-container-slider .ui-slider-range.ui-widget-header {
+  margin-top: 0;
+}

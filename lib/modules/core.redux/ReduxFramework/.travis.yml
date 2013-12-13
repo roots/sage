@@ -1,42 +1,36 @@
 language: php
-
 php:
-    - 5.3
-    - 5.4
-    - 5.5
-
+- 5.3
+- 5.4
+- 5.5
 env:
-    - WP_VERSION=master WP_MULTISITE=0
-    - WP_VERSION=3.6.1 WP_MULTISITE=0
-    - WP_VERSION=3.6 WP_MULTISITE=0
-    - WP_VERSION=3.5.2 WP_MULTISITE=0
-    - WP_VERSION=3.5.1 WP_MULTISITE=0
-    - WP_VERSION=3.5 WP_MULTISITE=0
-    - WP_VERSION=master WP_MULTISITE=1
-    - WP_VERSION=3.6.1 WP_MULTISITE=1
-    - WP_VERSION=3.6 WP_MULTISITE=1
-    - WP_VERSION=3.5.2 WP_MULTISITE=1
-    - WP_VERSION=3.5.1 WP_MULTISITE=1
-    - WP_VERSION=3.5 WP_MULTISITE=1
-
-before_script:
-    - wget https://raw.github.com/tierra/wordpress-plugin-tests/setup/setup.sh
-    - source setup.sh
-
+  global:
+    secure: HxNuZO2wWngETP4ZAJN/IA4SCG9C3yw8hV4laJOrb9xXRv8w1YI4xLKUTDEK8H1tg3f0Yh4943f22aDPoXUu8oG913yljbrjMPXM+30FkbxPLOu4rViepjV1ZPJ0+aw+fGvNfDWBfeNx32Ooi9BeK5cpGTKeLgzAJCeG2mROPpo=
+  cache:
+    directories:
+      - node_modules
+  matrix:
+    - WP_VERSION=latest WP_MULTISITE=0
+    - WP_VERSION=latest WP_MULTISITE=1
+install:
+  - npm install -g grunt-cli
+  - npm install
+  - find ReduxCore -type f | sort -u | xargs cat | md5sum > md5
+before_script: bash bin/install-wp-tests.sh wordpress_test root '' localhost $WP_VERSION
 script:
-    - phpunit
-    #- php tests/includes/clover.php tests/clover.xml 90
-
+  - phpunit
+  - grunt jshint
+  - grunt lintPHP
+after_success: 
+  - ./bin/commit-uncompressed-files.sh
+  - ./bin/update-gh-pages.sh
 notifications:
-    email:
-        recipients:
-          - ghost1227@reduxframework.com
-          - dovy@reduxframework.com
-        on_success: change
-        on_failure: always
-
-# wordpress-plugin-tests specific config
-# Tells Travis CI not to run unit tests against the setup branch
+  email:
+    recipients:
+      #- ghost1227@reduxframework.com
+      - dovy@reduxframework.com
+    on_failure: always
 branches:
-    except:
-        - setup
+  except:
+    - gh-pages
+    - setup

@@ -43,12 +43,31 @@ if( !class_exists( 'ReduxFramework_link_color' ) ) {
          * @access      public
          * @return      void
          */
-        public function __construct( $field = array(), $value ='', $parent ) {
+        function __construct( $field = array(), $value ='', $parent ) {
         
             parent::__construct( $parent->sections, $parent->args );
-
+            $this->parent = $parent;
             $this->field = $field;
             $this->value = $value;
+
+            $defaults = array(
+                'regular' => true,
+                'hover' => true,
+                'visited' => false,
+                'active' => true
+            );
+            $this->field = wp_parse_args( $this->field, $defaults );
+
+            $defaults = array(
+                'regular' => '',
+                'hover' => '',
+                'visited' => '',
+                'active' => ''
+            );
+
+            $this->value = wp_parse_args( $this->value, $defaults );  
+
+            $this->field['default'] = wp_parse_args( $this->field['default'], $defaults );          
         
         }
 
@@ -63,21 +82,7 @@ if( !class_exists( 'ReduxFramework_link_color' ) ) {
          */
         public function render() {
 
-            $defaults = array(
-                'regular' => true,
-                'hover' => true,
-                'active' => true
-            );
-            $this->field = wp_parse_args( $this->field, $defaults );
-
-            $defaults = array(
-                'regular' => '',
-                'hover' => '',
-                'active' => ''
-            );
-
-            $this->value = wp_parse_args( $this->value, $defaults );
-            $this->field['default'] = wp_parse_args( $this->field['default'], $defaults );
+            
 
             if ($this->field['regular'] == true):
 
@@ -90,6 +95,12 @@ if( !class_exists( 'ReduxFramework_link_color' ) ) {
             echo '<strong>' . __( 'Hover', 'redux-framework' ) . '</strong>&nbsp;<input id="' . $this->field['id'] . '-hover" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][hover]" value="' . $this->value['hover'] . '" class="redux-color redux-color-init ' . $this->field['class'] . '"  type="text" data-default-color="' . $this->field['default']['hover'] . '" />&nbsp;&nbsp;&nbsp;&nbsp;';
 
             endif;
+
+            if ($this->field['visited'] == true):
+
+            echo '<strong>' . __( 'Visited', 'redux-framework' ) . '</strong>&nbsp;<input id="' . $this->field['id'] . '-hover" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][visited]" value="' . $this->value['visited'] . '" class="redux-color redux-color-init ' . $this->field['class'] . '"  type="text" data-default-color="' . $this->field['default']['visited'] . '" />&nbsp;&nbsp;&nbsp;&nbsp;';
+
+            endif;            
 
             if ($this->field['active'] == true):
 
@@ -126,6 +137,40 @@ if( !class_exists( 'ReduxFramework_link_color' ) ) {
             ); 
                
         }
+
+        public function output() {
+
+            if ( isset( $this->field['output'] ) && !empty( $this->field['output'] ) ) {
+
+                $keys = implode( ",", $this->field['output'] );
+                $style = '';
+                if ( !empty( $this->value['regular'] ) ) {
+                    $style .= $keys."{";
+                    $style .= 'color:' . $this->value['regular'] . ';';
+                    $style .= '}';
+                    
+                }
+                if ( !empty( $this->value['hover'] ) ) {
+                    $style .= $keys.":hover{";
+                    $style .= 'color:' . $this->value['hover'] . ';';
+                    $style .= '}';
+                }
+                if ( !empty( $this->value['active'] ) ) {
+                    $style .= $keys.":active{";
+                    $style .= 'color:' . $this->value['active'] . ';';
+                    $style .= '}';
+                }  
+                if ( !empty( $this->value['visited'] ) ) {
+                    $style .= $keys.":visited{";
+                    $style .= 'color:' . $this->value['visited'] . ';';
+                    $style .= '}';
+                }                                               
+                if ( !empty( $style ) ) {
+                    $this->parent->outputCSS .= $style;      
+                }
+            }
+        }
+
     }
 }
 ?>

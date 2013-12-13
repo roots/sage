@@ -34,7 +34,6 @@ if( !class_exists( 'ReduxFramework_extension_edd' ) ) {
     class ReduxFramework_extension_edd extends ReduxFramework {
 
       // Protected vars
-      protected $redux;
       protected $parent;
       public $extension_url;
       public $extension_dir;

@@ -70,10 +70,10 @@ if( !class_exists( 'ReduxFramework_button_set' ) ) {
          * @access      public
          * @return      void
          */
-        public function __construct( $field = array(), $value ='', $parent ) {
+        function __construct( $field = array(), $value ='', $parent ) {
         
             parent::__construct( $parent->sections, $parent->args );
-
+            $this->parent = $parent;
             $this->field = $field;
             $this->value = $value;
         
@@ -118,7 +118,7 @@ if( !class_exists( 'ReduxFramework_button_set' ) ) {
 
             wp_enqueue_script(
                 'redux-field-button-set-js', 
-                ReduxFramework::$_url . 'inc/fields/button_set/field_button_set.min.js', 
+                ReduxFramework::$_url . 'inc/fields/button_set/field_button_set.js', 
                 array( 'jquery', 'jquery-ui-core', 'jquery-ui-dialog' ),
                 time(),
                 true

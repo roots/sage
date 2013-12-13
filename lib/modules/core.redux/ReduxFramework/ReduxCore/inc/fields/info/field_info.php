@@ -42,10 +42,10 @@ if( !class_exists( 'ReduxFramework_info' ) ) {
          * @access      public
          * @return      void
          */
-        public function __construct( $field = array(), $value ='', $parent ) {
+        function __construct( $field = array(), $value ='', $parent ) {
         
             parent::__construct( $parent->sections, $parent->args );
-
+            $this->parent = $parent;
             $this->field = $field;
             $this->value = $value;
         

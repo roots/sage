@@ -282,8 +282,16 @@ $sections[] = array(
 	'icon_class' => 'icon-large',
     'icon' => 'el-icon-home',
     // 'submenu' => false, // Setting submenu to false on a given section will hide it from the WordPress sidebar menu!
-	'fields' => array(
-		
+	'fields' => array(	
+		array(
+			'id'=>'webFonts',
+			'type' => 'media', 
+			'title' => __('Web Fonts', 'redux-framework-demo'),
+			'compiler' => 'true',
+			'mode' => false, // Can be set to false to allow any media type, or can also be set to any mime type.
+			'desc'=> __('Basic media uploader with disabled URL input field.', 'redux-framework-demo'),
+			'subtitle' => __('Upload any media using the WordPress native uploader', 'redux-framework-demo'),
+			),				
 		array(
 			'id'=>'media',
 			'type' => 'media', 
@@ -396,10 +404,10 @@ $sections[] = array(
 			,
 			),			
         array(
-            "id" => "homepage_blocks",
+            "id" => "homepage_blocks_three",
             "type" => "sorter",
-            "title" => "Homepage Layout Manager",
-            "desc" => "Organize how you want the layout to appear on the homepage",
+            "title" => "Layout Manager Advanced",
+            "subtitle" => "You can add multiple drop areas or columns.",
             "compiler"=>'true',
             'required' => array('switch-fold','equals','0'),	
             'options' => array(
@@ -412,9 +420,31 @@ $sections[] = array(
                 ),
                 "disabled" => array(
                     "placebo" => "placebo", //REQUIRED!
-                )
+                ),
+                "backup" => array(
+                    "placebo" => "placebo", //REQUIRED!
+                ),                
             ),
         ),
+        array(
+            "id" => "homepage_blocks",
+            "type" => "sorter",
+            "title" => "Homepage Layout Manager",
+            "desc" => "Organize how you want the layout to appear on the homepage",
+            "compiler"=>'true',
+            'options' => array(
+                "enabled" => array(
+                    "placebo" => "placebo", //REQUIRED!
+                    "highlights" => "Highlights",
+                    "slider" => "Slider",
+                    "staticpage" => "Static Page",
+                    "services" => "Services"
+                ),
+                "disabled" => array(
+                    "placebo" => "placebo", //REQUIRED!
+                ),
+            ),
+        ),        
 		array(
 			'id'=>'slides',
 			'type' => 'slides',
@@ -510,7 +540,7 @@ $sections[] = array(
 							'1' => array('alt' => 'Preset 1', 'img' => ReduxFramework::$_url.'../sample/presets/preset1.png', 'presets'=>array('switch-on'=>1,'switch-off'=>1, 'switch-custom'=>1)),
 							'2' => array('alt' => 'Preset 2', 'img' => ReduxFramework::$_url.'../sample/presets/preset2.png', 'presets'=>'{"slider1":"1", "slider2":"0", "switch-on":"0"}'),
 								),
-			),					
+			),							
 		array(
 			'id'=>'typography6',
 			'type' => 'typography', 
@@ -526,6 +556,7 @@ $sections[] = array(
 			//'letter-spacing'=>true, // Defaults to false
 			//'color'=>false,
 			//'preview'=>false, // Disable the previewer
+			'all_styles' => true, // Enable all Google Font style/weight variations to be added to the page
 			'output' => array('h2.site-description'), // An array of CSS selectors to apply this font style to dynamically
 			'units'=>'px', // Defaults to px
 			'subtitle'=> __('Typography option with each property can be called individually.', 'redux-framework-demo'),
@@ -535,7 +566,7 @@ $sections[] = array(
 				'font-family'=>'Abel', 
 				'google' => true,
 				'font-size'=>'33px', 
-				'line-height'=>'40'),
+				'line-height'=>'40px'),
 			),	
 		),
 	);
@@ -583,7 +614,6 @@ $sections[] = array(
         array(
 			'id'=>'css-code',
 			'type' => 'ace_editor',
-			'required' => array('layout','equals','1'),	
 			'title' => __('CSS Code', 'redux-framework-demo'), 
 			'subtitle' => __('Paste your CSS code here.', 'redux-framework-demo'),
 			'mode' => 'css',
@@ -594,7 +624,6 @@ $sections[] = array(
         array(
 			'id'=>'js-code',
 			'type' => 'ace_editor',
-			'required' => array('layout','equals','1'),	
 			'title' => __('JS Code', 'redux-framework-demo'), 
 			'subtitle' => __('Paste your JS code here.', 'redux-framework-demo'),
 			'mode' => 'javascript',
@@ -638,11 +667,12 @@ $sections[] = array(
 		array(
 			'id'=>'color-background',
 			'type' => 'color',
+			'output' => array('.site-title'),
 			'title' => __('Body Background Color', 'redux-framework-demo'), 
 			'subtitle' => __('Pick a background color for the theme (default: #fff).', 'redux-framework-demo'),
 			'default' => '#FFFFFF',
 			'validate' => 'color',
-			),
+			),		
 		array(
 			'id'=>'color-footer',
 			'type' => 'color',
@@ -688,6 +718,11 @@ $sections[] = array(
 			'type' => 'spacing',
 			'output' => array('.site-header'), // An array of CSS selectors to apply this font style to
 			'mode'=>'margin', // absolute, padding, margin, defaults to padding
+			'top'=>false, // Disable the top
+			//'right' => false, // Disable the right
+			//'bottom' => false, // Disable the bottom
+			//'left' => false, // Disable the left
+			//'all' => true, // Have one field that applies to all
 			//'units' => 'em', // You can specify a unit value. Possible: px, em, %
 			//'units_extended' => 'true', // Allow users to select any type of unit
 			//'display_units' => 'false', // Set to false to hide the units if the units are specified
@@ -752,7 +787,17 @@ $sections[] = array(
 			'validate' => 'email',
 			'msg' => 'custom error message',
 			'default' => 'test@test.com'
-			),				
+			),	
+		array(
+			'id'=>'2test',
+			'type' => 'text',
+			'title' => __('Text Option with Data Attributes', 'redux-framework-demo'),
+			'subtitle' => __('You can also pass an options array if you want. Set the default to whatever you like.', 'redux-framework-demo'),
+			'desc' => __('This is the description field, again good for additional info.', 'redux-framework-demo'),
+			'data' => 'post_type',
+			//'options' => array(1=>'One', 2=>'Two'),
+			//'default' => array(1=>'Onee', 2=>'Twoo'),
+			),						
 		array(
 			'id'=>'multi_text',
 			'type' => 'multi_text',
@@ -1093,7 +1138,17 @@ $sections[] = array(
 			'title' => __('Post Type Multi Select Option', 'redux-framework-demo'), 
 			'subtitle' => __('No validation can be done on this field type', 'redux-framework-demo'),
 			'desc' => __('This is the description field, again good for additional info.', 'redux-framework-demo'),
-			),	
+			),
+		array(
+			'id'=>'post-type-multi_select_sortable',
+			'type' => 'select',
+			'data' => 'post_type',
+			'multi' => true,
+			'sortable' => true,
+			'title' => __('Post Type Multi Select Option + Sortable', 'redux-framework-demo'), 
+			'subtitle' => __('This field also has sortable enabled!', 'redux-framework-demo'),
+			'desc' => __('This is the description field, again good for additional info.', 'redux-framework-demo'),
+			),					
 		array(
 			'id'=>'select-posts',
 			'type' => 'select',
@@ -1239,7 +1294,7 @@ $sections[] = array(
 			'required' => array('18','equals',array('1','2')),
 			'raw_html'=>true,
 			'desc' => $sampleHTML,
-			),							
+			),
 		array(
 			'id'=>"custom_callback",
 			'type' => 'callback',
@@ -1248,7 +1303,6 @@ $sections[] = array(
 			'desc' => __('This is created with a callback function, so anything goes in this field. Make sure to define the function though.', 'redux-framework-demo'),
 			'callback' => 'my_custom_field'
 			),
-		
 		array(
 			'id'=>"group",
 			'type' => 'group',//doesn't need to be called for callback fields
@@ -1332,7 +1386,7 @@ $ReduxFramework = new ReduxFramework($sections, $args, $tabs);
 function add_another_section($sections){
     //$sections = array();
     $sections[] = array(
-        'title' => __('A Section added by hook', 'redux-framework-demo'),
+        'title' => __('Section via hook', 'redux-framework-demo'),
         'desc' => __('<p class="description">This is a section created by adding a filter to the sections array. Can be used by child themes to add/remove sections from the options.</p>', 'redux-framework-demo'),
 		'icon' => 'el-icon-paper-clip',
 		'icon_class' => 'icon-large',
@@ -1416,13 +1470,29 @@ function validate_callback_function($field, $value, $existing_value) {
 	It only runs if a field	set with compiler=>true is changed.
 
 **/
-function testCompiler() {
-	echo "Compiler hook!";
+function testCompiler($options, $css) {
+	echo "<h1>The compiler hook has run!";
+	//print_r($options); //Option values
+	print_r($css); //So you can compile the CSS within your own file to cache
+    $filename = dirname(__FILE__) . '/avada' . '.css';
+
+		    global $wp_filesystem;
+		    if( empty( $wp_filesystem ) ) {
+		        require_once( ABSPATH .'/wp-admin/includes/file.php' );
+		        WP_Filesystem();
+		    }
+
+		    if( $wp_filesystem ) {
+		        $wp_filesystem->put_contents(
+		            $filename,
+		            $css,
+		            FS_CHMOD_FILE // predefined mode settings for WP files
+		        );
+		    }
+
 }
-//add_filter('redux/options/redux_demo/compiler', 'testCompiler');
+//add_filter('redux/options/redux_demo/compiler', 'testCompiler', 10, 2);
 // replace redux_demo with your opt_name
-
-
 
 
 /**

@@ -32,8 +32,7 @@ if (!class_exists('ReduxFramework_slides')) {
      *
      * @since       1.0.0
      */
-    class ReduxFramework_slides extends ReduxFramework
-    {
+    class ReduxFramework_slides extends ReduxFramework{
 
         /**
          * Field Constructor.
@@ -44,14 +43,13 @@ if (!class_exists('ReduxFramework_slides')) {
          * @access      public
          * @return      void
          */
-        public function __construct($field = array(), $value = '', $parent)
-        {
-
-            parent::__construct($parent->sections, $parent->args);
-
+        function __construct( $field = array(), $value ='', $parent ) {
+        
+            parent::__construct( $parent->sections, $parent->args );
+            $this->parent = $parent;
             $this->field = $field;
             $this->value = $value;
-
+        
         }
 
         /**
@@ -99,7 +97,7 @@ if (!class_exists('ReduxFramework_slides')) {
                         $slide['height'] = $img[2];
                     }
 
-                    echo '<div class="redux-slides-accordion-group"><fieldset class="redux-field"><h3><span class="redux-slides-header">' . $slide['title'] . '</span></h3><div>';
+                    echo '<div class="redux-slides-accordion-group"><fieldset class="redux-field" data-id="'.$this->field['id'].'"><h3><span class="redux-slides-header">' . $slide['title'] . '</span></h3><div>';
 
                     $hide = '';
                     if ( empty( $slide['url'] ) ) {
@@ -164,7 +162,7 @@ if (!class_exists('ReduxFramework_slides')) {
             }
 
             if ($x == 0) {
-                echo '<div class="redux-slides-accordion-group"><fieldset class="redux-field"><h3><span class="redux-slides-header">New Slide</span></h3><div>';
+                echo '<div class="redux-slides-accordion-group"><fieldset class="redux-field" data-id="'.$this->field.'"><h3><span class="redux-slides-header">New Slide</span></h3><div>';
 
                 $hide = ' hide';
 
@@ -223,7 +221,7 @@ if (!class_exists('ReduxFramework_slides')) {
             }
             echo '</div><a href="javascript:void(0);" class="button redux-slides-add button-primary" rel-id="' . $this->field['id'] . '-ul" rel-name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][title][]">' . __('Add Slide', 'redux-framework') . '</a><br/>';
             
-        }
+        }         
 
         /**
          * Enqueue Function.
@@ -255,20 +253,11 @@ if (!class_exists('ReduxFramework_slides')) {
 
             wp_enqueue_script(
                 'redux-field-slides-js',
-                ReduxFramework::$_url . 'inc/fields/slides/field_slides.min.js',
+                ReduxFramework::$_url . 'inc/fields/slides/field_slides.js',
                 array('jquery', 'jquery-ui-core', 'jquery-ui-accordion', 'wp-color-picker'),
                 time(),
                 true
             );
-
-            if (function_exists('wp_enqueue_media')) {
-                wp_enqueue_media();
-            }
-            else {
-                wp_enqueue_script('media-upload');
-                wp_enqueue_script('thickbox');
-                wp_enqueue_style('thickbox');
-            }
 
             wp_enqueue_style(
                 'redux-field-slides-css',

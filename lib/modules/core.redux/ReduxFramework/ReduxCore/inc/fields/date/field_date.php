@@ -42,14 +42,14 @@ if( !class_exists( 'ReduxFramework_date' ) ) {
 		 * @access		public
 		 * @return		void
 		 */
-		public function __construct( $field = array(), $value ='', $parent ) {
-		
+        function __construct( $field = array(), $value ='', $parent ) {
+        
 			parent::__construct( $parent->sections, $parent->args );
-
+			$this->parent = $parent;
 			$this->field = $field;
 			$this->value = $value;
-		
-		}
+        
+        }
 	
 		/**
 		 * Field Render Function.
@@ -78,7 +78,7 @@ if( !class_exists( 'ReduxFramework_date' ) ) {
 		public function enqueue() {
 			wp_enqueue_script(
 				'redux-field-date-js', 
-				ReduxFramework::$_url . 'inc/fields/date/field_date.min.js',
+				ReduxFramework::$_url . 'inc/fields/date/field_date.js',
 				array( 'jquery', 'jquery-ui-core', 'jquery-ui-datepicker' ),
 				time(),
 				true

@@ -1,0 +1,42 @@
+{
+  "name": "redux-framework",
+  "version": "3.1.2",
+  "description": "Redux is a simple, truly extensible options framework for WordPress themes and plugins.",
+  "main": "Gruntfile.js",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "dependencies": {
+    "grunt": "~0.4.2"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.2",
+    "grunt-contrib-uglify": "~0.2.7",
+    "grunt-phpdocumentor": "~0.1.0",
+    "grunt-contrib-jshint": "~0.7.2",
+    "grunt-contrib-qunit": "~0.3.0",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-copy": "~0.4.1",
+    "grunt-gh-pages": "~0.9.0",
+    "grunt-phplint": "0.0.5",
+    "grunt-contrib-less": "~0.8.2",
+    "recess": "~1.1.9"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ReduxFramework/ReduxFramework.git"
+  },
+  "keywords": [
+    "wordpress"
+  ],
+  "author": "Redux Framework Team",
+  "license": "GPLv3+",
+  "bugs": {
+    "url": "https://github.com/ReduxFramework/ReduxFramework/issues"
+  }
+}
