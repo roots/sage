@@ -2,5 +2,3 @@
 # Read about how to use .gitignore: https://help.github.com/articles/ignoring-files
 node_modules
 lib/modules/core.redux/ReduxFramework/codekit-config.json
-lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/typography/googlefonts.json
-lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/typography/googlefonts.html
