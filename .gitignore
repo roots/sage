@@ -2,3 +2,5 @@
 # Read about how to use .gitignore: https://help.github.com/articles/ignoring-files
 node_modules
 lib/modules/core.redux/ReduxFramework/codekit-config.json
+assets/css/style.css
+assets/css/style.less

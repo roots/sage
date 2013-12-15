@@ -36,6 +36,9 @@ function shoestrap_css( $target = 'path', $echo = false ) {
 
   else :
     $css_path = get_template_directory() . '/assets/css/style' . $cssid . '.css';
+    if ( !is_writable( get_template_directory() . '/assets/css/style' . $cssid . '.css' ) ) :
+      $css_path = get_template_directory() . '/assets/css/style-default.css';
+    endif;
   endif;
 
   if ( $echo ) :
