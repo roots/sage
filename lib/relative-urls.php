@@ -15,7 +15,7 @@ function roots_root_relative_url($input) {
 
   if (!isset($matches[1]) || !isset($matches[2])) {
     return $input; 
-  } elseif (($matches[1] === $server_name) || $matches[1] === $server_name . ':' . $_SERVER['SERVER_PORT']) {
+  } elseif (($matches[1] === $_SERVER['SERVER_NAME']) || $matches[1] === $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT']) {
     return wp_make_link_relative($input);
   } else {
     return $input;

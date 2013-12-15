@@ -50,25 +50,20 @@ add_filter('the_generator', '__return_false');
 /**
  * Clean up language_attributes() used in <html> tag
  *
- * Change lang="en-US" to lang="en"
  * Remove dir="ltr"
  */
 function roots_language_attributes() {
   $attributes = array();
   $output = '';
 
-  if (function_exists('is_rtl')) {
-    if (is_rtl() == 'rtl') {
-      $attributes[] = 'dir="rtl"';
-    }
+  if (is_rtl()) {
+    $attributes[] = 'dir="rtl"';
   }
 
   $lang = get_bloginfo('language');
 
-  if ($lang && $lang !== 'en-US') {
+  if ($lang) {
     $attributes[] = "lang=\"$lang\"";
-  } else {
-    $attributes[] = 'lang="en"';
   }
 
   $output = implode(' ', $attributes);
