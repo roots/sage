@@ -56,7 +56,7 @@ function shoestrap_module_advanced_options( $sections ) {
 
   $fields[] = array( 
     'title'     => __( 'Enable Retina mode', 'shoestrap' ),
-    'desc'      => __( 'By enabling your site will be retina ready. Requires a all images to be uploaded at 2x the typical size desired, including logos. Default: On', 'shoestrap' ),
+    'desc'      => __( 'By enabling your site\'s featured images will be retina ready. Requires images to be uploaded at 2x the typical size desired. Default: On', 'shoestrap' ),
     'id'        => 'retina_toggle',
     'default'   => 1,
     'type'      => 'switch',
