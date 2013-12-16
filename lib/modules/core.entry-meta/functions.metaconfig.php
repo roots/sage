@@ -45,7 +45,7 @@ function shoestrap_meta_custom_render() {
   // Distribute meta elements over 12 columns
   $elementscountplus = strlen( $elementscountplus );
   if ( $elementscountplus >= 2 ) :
-    $col = round( ( 12 / ( $elementscountplus ) ), 0, PHP_ROUND_HALF_DOWN );
+    $col = round( ( 12 / ( $elementscountplus ) ), 0);
   else :
     $col = 12;
   endif;
