@@ -85,7 +85,7 @@ function roots_gallery($attr) {
 
   $i = 0;
   foreach ($attachments as $id => $attachment) {
-    $image = ('file' == $link) ? wp_get_attachment_link($id, $size, false, false) : wp_get_attachment_link($id, $size, true, false);
+    $image = ('file' == $link) ? wp_get_attachment_link($id, $size, false, false) : wp_get_attachment_image($id, $size, false);
     $output .= ($i % $columns == 0) ? '<div class="row gallery-row">': '';
     $output .= '<div class="' . $grid .'">' . $image;
 
