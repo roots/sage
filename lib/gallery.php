@@ -75,7 +75,11 @@ function roots_gallery($attr) {
   if (is_feed()) {
     $output = "\n";
     foreach ($attachments as $att_id => $attachment) {
-      $output .= wp_get_attachment_link($att_id, $size, true) . "\n";
+      if('none' == $link){
+        $output .= wp_get_attachment_image($att_id, $size);
+      }else{
+        $output .= wp_get_attachment_link($att_id, $size, ('file' != $link) . "\n";
+      }
     }
     return $output;
   }
@@ -85,7 +89,11 @@ function roots_gallery($attr) {
 
   $i = 0;
   foreach ($attachments as $id => $attachment) {
-    $image = ('file' == $link) ? wp_get_attachment_link($id, $size, false, false) : wp_get_attachment_link($id, $size, true, false);
+    if('none' == $link){
+      $image = wp_get_attachment_image($id, $size);
+    }else{
+      $image = wp_get_attachment_link($id, $size, ('file' != $link), false);
+    }
     $output .= ($i % $columns == 0) ? '<div class="row gallery-row">': '';
     $output .= '<div class="' . $grid .'">' . $image;
 
