@@ -1,11 +1,11 @@
 {
-  "name": "roots",
-  "version": "6.5.1",
-  "author": "Ben Word <ben@benword.com>",
-  "homepage": "http://roots.io",
+  "name": "pages-theme-roots",
+  "version": "1.0.0",
+  "author": "Tobias Møller Kjærsgaard <tobias.kjr@gmail.com>",
+  "homepage": "http://pages-tdm.au.dk/",
   "repository": {
     "type": "git",
-    "url": "git://github.com/roots/roots.git"
+    "url": "https://github.com/cudim/pages-theme-roots.git"
   },
   "bugs": {
     "url" : "https://github.com/roots/roots/issues"
@@ -24,6 +24,7 @@
     "grunt-contrib-uglify": "~0.2.4",
     "grunt-contrib-watch": "~0.5.3",
     "grunt-contrib-less": "~0.8.1",
-    "grunt-wp-version": "~0.1.0"
+    "grunt-wp-version": "~0.1.0",
+    "grunt-rsync": "~0.1.1"
   }
 }
