@@ -23,9 +23,9 @@ module.exports = function(grunt) {
                     compress: true,
                     // LESS source map
                     // To enable, set sourceMap to true and update sourceMapRootpath based on your install
-                    sourceMap: false,
+                    sourceMap: true,
                     sourceMapFilename: 'assets/css/main.min.css.map',
-                    sourceMapRootpath: '/app/themes/roots/'
+                    sourceMapRootpath: '/wordpress/wp-content/themes/pages-theme-roots/'
                 }
             }
         },
@@ -51,8 +51,11 @@ module.exports = function(grunt) {
                 },
                 options: {
                     // JS source map: to enable, uncomment the lines below and update sourceMappingURL based on your install
-                    // sourceMap: 'assets/js/scripts.min.js.map',
-                    // sourceMappingURL: '/app/themes/roots/assets/js/scripts.min.js.map'
+                    sourceMap: 'assets/js/scripts.min.js.map',
+                    sourceMapRoot: '/wordpress/wp-content/themes/pages-theme-roots/',
+                    sourceMappingURL: '/wordpress/wp-content/themes/pages-theme-roots/assets/js/scripts.min.js.map',
+                    // Reporting options
+                    report: 'min'
                 }
             }
         },
@@ -77,7 +80,15 @@ module.exports = function(grunt) {
                 files: [
                     '<%= jshint.all %>'
                 ],
-                tasks: ['jshint', 'uglify', 'version']
+                tasks: ['jshint', 'uglify', 'version', 'rsync:test']
+            },
+            php: {
+                files: [
+                    '*.php',
+                    'lib/*.php',
+                    'templates/*.php'
+                ],
+                tasks: ['rsync:test']
             },
             livereload: {
                 // Browser live reloading
@@ -100,26 +111,23 @@ module.exports = function(grunt) {
             ]
         },
         rsync: {
-            options: {
-                args: ["--verbose"],
-                exclude: ['.git*', 'node_modules', 'Gruntfile.js', 'package.json', '.DS_Store', '.editorconfig', 'assets/less', 'assets/js/plugins', 'assets/js/_*.js', 'README.md', 'config.rb', '.jshintrc'],
-                recursive: true
-            },
             test: {
                 src: "./",
                 dest: "/var/www/wordpress/wp-content/themes/pages-theme-roots",
-                host: "tobias@test.kluun.dk",
+                host: "tobias@test",
+                ssh: true,
+                privatekey: "~/.ssh/id_rsa",
                 recursive: true,
                 syncDest: true,
-                exclude: '<%= rsync.options.exclude %>'
+                exclude: ['.git*', 'node_modules', 'Gruntfile.js', 'package.json', '.DS_Store', '.editorconfig', 'README.md', 'config.rb', '.jshintrc']
             },
             production: {
                 src: "./",
-                dest: "~/path/to/theme",
-                host: "user@host.com",
+                dest: "/wp-content/themes/pages-theme-roots",
+                host: "root@pages-tdm.au.dk",
                 recursive: true,
                 syncDest: true,
-                exclude: '<%= rsync.options.exclude %>'
+                exclude: ['.git*', 'node_modules', 'Gruntfile.js', 'package.json', '.DS_Store', '.editorconfig', 'README.md', 'config.rb', '.jshintrc', 'assets/less', 'assets/js/plugins', 'assets/js/_*.js']
             }
         }
     });
