@@ -16,35 +16,44 @@ if ( !function_exists( 'shoestrap_css' ) ) :
  */
 function shoestrap_css( $target = 'path', $echo = false ) {
   $cssid = null;
+  $defaultfile = '/assets/css/style';
+
   // If this is a multisite installation, append the blogid to the filename
   if ( is_multisite() ) :
     global $blog_id;
+    $cssid = ( $blog_id > 1 ) ? '_id-' . $blog_id : null;
+  endif;
 
-    if ( $blog_id > 1 ) :
-      $cssid = '_id-' . $blog_id;
-    else :
-      $cssid = null;
+  $css_path = get_template_directory() . $defaultfile . $cssid . '.css';
+  $css_uri  = get_template_directory_uri() . $defaultfile . $cssid . '.css';
+
+  // Add support for child themes
+  if ( is_child_theme() ) :
+    $child_style_writable = false;
+    if ( is_writable( get_stylesheet_directory() . $defaultfile . $cssid . '.css' ) ) :
+      $css_path = get_stylesheet_directory() . $defaultfile . $cssid . '.css';
+      $child_style_writable = true;
     endif;
   endif;
 
-  if ( $target == 'url' ) :
-    $css_path = get_template_directory_uri() . '/assets/css/style' . $cssid . '.css';
+  // When a new site is created, use a default stylesheet since a site-specific file doesn't exist yet.
+  $css_uri = ( !is_writable( $css_path ) ) ? get_template_directory_uri() . $defaultfile . '-default.css' : $css_uri;
+
+  // Add support for child themes
+  if ( is_child_theme() ) :
+    $css_uri = ( $child_style_writable ) ? get_stylesheet_directory_uri() . $defaultfile . $cssid . '.css' : $css_uri;
     // When a new site is created, use a default stylesheet since a site-specific file doesn't exist yet.
-    if ( !is_writable( get_template_directory() . '/assets/css/style' . $cssid . '.css' ) ) :
-      $css_path = get_template_directory_uri() . '/assets/css/style-default.css';
-    endif;
-
-  else :
-    $css_path = get_template_directory() . '/assets/css/style' . $cssid . '.css';
-    if ( !is_writable( get_template_directory() . '/assets/css/style' . $cssid . '.css' ) ) :
-      $css_path = get_template_directory() . '/assets/css/style-default.css';
+    if ( !$child_style_writable ) :
+      $css_uri = ( is_writable( get_stylesheet_directory() . $defaultfile . '-default.css' ) ) ? get_stylesheet_directory_uri() . '/assets/css/style-default.css' : $css_uri;
     endif;
   endif;
+
+  $return = ( $target == 'url' ) ? $css_uri : $css_path;
 
   if ( $echo ) :
-    echo $css_path;
+    echo $return;
   else :
-    return $css_path;
+    return $return;
   endif;
 }
 endif;
@@ -105,8 +114,13 @@ function shoestrap_phpless_compiler() {
   // This is a REALLY ugly hack...
   $css = str_replace( get_template_directory() . '/assets/less/fonts/', '', $css );
   $css = str_replace( get_template_directory_uri() . '/assets/', '../', $css );
+  // Add FUGLY hack for child themes
+  if ( is_child_theme() ) :
+    $css = str_replace( get_stylesheet_directory(), '', $css );
+    $css = str_replace( get_stylesheet_directory_uri(), '', $css );
+  endif;
 
-  return $css;
+  return apply_filters( 'shoestrap_compiler_output', $css );
 }
 endif;
 
