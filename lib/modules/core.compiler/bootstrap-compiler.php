@@ -116,8 +116,7 @@ function shoestrap_phpless_compiler() {
   $css = str_replace( get_template_directory_uri() . '/assets/', '../', $css );
   // Add FUGLY hack for child themes
   if ( is_child_theme() ) :
-    $css = str_replace( get_stylesheet_directory(), '', $css );
-    $css = str_replace( get_stylesheet_directory_uri(), '', $css );
+    $css = str_replace( get_stylesheet_directory(), get_stylesheet_directory_uri(), $css );
   endif;
 
   return apply_filters( 'shoestrap_compiler_output', $css );
