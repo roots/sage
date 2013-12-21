@@ -9,11 +9,13 @@ module.exports = function(grunt) {
             all: [
                 'Gruntfile.js',
                 'assets/js/*.js',
-                '!assets/js/scripts.min.js'
+                'buddypress/js/*.js',
+                '!assets/js/scripts.min.js',
+                '!buddypress/js/buddypress.js'
             ]
         },
         less: {
-            dist: {
+            theme: {
                 files: {
                     'assets/css/main.min.css': [
                         'assets/less/app.less'
@@ -21,16 +23,40 @@ module.exports = function(grunt) {
                 },
                 options: {
                     compress: true,
-                    // LESS source map
-                    // To enable, set sourceMap to true and update sourceMapRootpath based on your install
                     sourceMap: true,
                     sourceMapFilename: 'assets/css/main.min.css.map',
+                    sourceMapRootpath: '/wordpress/wp-content/themes/pages-theme-roots/'
+                }
+            },
+            buddypress: {
+                files: {
+                    'buddypress/css/buddypress.css': [
+                        'buddypress/css/_buddypress.less'
+                    ]
+                },
+                options: {
+                    compress: true,
+                    sourceMap: true,
+                    sourceMapFilename: 'buddypress/css/buddypress.css.map',
+                    sourceMapRootpath: '/wordpress/wp-content/themes/pages-theme-roots/'
+                }
+            },
+            buddypress_rtl: {
+                files: {
+                    'buddypress/css/buddypress-rtl.css': [
+                        'buddypress/css/_buddypress-rtl.less'
+                    ]
+                },
+                options: {
+                    compress: true,
+                    sourceMap: true,
+                    sourceMapFilename: 'buddypress/css/buddypress-rtl.css.map',
                     sourceMapRootpath: '/wordpress/wp-content/themes/pages-theme-roots/'
                 }
             }
         },
         uglify: {
-            dist: {
+            theme: {
                 files: {
                     'assets/js/scripts.min.js': [
                         'assets/js/plugins/bootstrap/transition.js',
@@ -50,11 +76,22 @@ module.exports = function(grunt) {
                     ]
                 },
                 options: {
-                    // JS source map: to enable, uncomment the lines below and update sourceMappingURL based on your install
                     sourceMap: 'assets/js/scripts.min.js.map',
                     sourceMapRoot: '/wordpress/wp-content/themes/pages-theme-roots/',
                     sourceMappingURL: '/wordpress/wp-content/themes/pages-theme-roots/assets/js/scripts.min.js.map',
-                    // Reporting options
+                    report: 'min'
+                }
+            },
+            buddypress: {
+                files: {
+                    'buddypress/js/buddypress.js': [
+                        'buddypress/js/_buddypress.js'
+                    ]
+                },
+                options: {
+                    sourceMap: 'buddypress/js/buddypress.js.map',
+                    sourceMapRoot: '/wordpress/wp-content/themes/pages-theme-roots/',
+                    sourceMappingURL: '/wordpress/wp-content/themes/pages-theme-roots/buddypress/js/buddypress.js.map',
                     report: 'min'
                 }
             }
@@ -72,9 +109,10 @@ module.exports = function(grunt) {
             less: {
                 files: [
                     'assets/less/*.less',
-                    'assets/less/bootstrap/*.less'
+                    'assets/less/bootstrap/*.less',
+                    'buddypress/css/*.less'
                 ],
-                tasks: ['less', 'version']
+                tasks: ['less', 'version', 'rsync:test']
             },
             js: {
                 files: [
@@ -86,7 +124,9 @@ module.exports = function(grunt) {
                 files: [
                     '*.php',
                     'lib/*.php',
-                    'templates/*.php'
+                    'templates/*.php',
+                    'buddypress/*.php',
+                    'buddypress/**/*.php'
                 ],
                 tasks: ['rsync:test']
             },
@@ -107,7 +147,8 @@ module.exports = function(grunt) {
         clean: {
             dist: [
                 'assets/css/main.min.css',
-                'assets/js/scripts.min.js'
+                'assets/js/scripts.min.js',
+                'dist'
             ]
         },
         rsync: {
@@ -119,15 +160,50 @@ module.exports = function(grunt) {
                 privatekey: "~/.ssh/id_rsa",
                 recursive: true,
                 syncDest: true,
-                exclude: ['.git*', 'node_modules', 'Gruntfile.js', 'package.json', '.DS_Store', '.editorconfig', 'README.md', 'config.rb', '.jshintrc']
+                exclude: [
+                    '.git*',
+                    'node_modules',
+                    'Gruntfile.js',
+                    'package.json',
+                    '.DS_Store',
+                    '.editorconfig',
+                    'README.md',
+                    'config.rb',
+                    '.jshintrc',
+                    '*.tmproj',
+                    '*.sublime-project',
+                    'ftpsync.settings',
+                    'sftp-config.json'
+                ]
             },
-            production: {
+            dist: {
                 src: "./",
-                dest: "/wp-content/themes/pages-theme-roots",
-                host: "root@pages-tdm.au.dk",
+                dest: "dist",
                 recursive: true,
                 syncDest: true,
-                exclude: ['.git*', 'node_modules', 'Gruntfile.js', 'package.json', '.DS_Store', '.editorconfig', 'README.md', 'config.rb', '.jshintrc', 'assets/less', 'assets/js/plugins', 'assets/js/_*.js']
+                exclude: [
+                    '.git*',
+                    'node_modules',
+                    'Gruntfile.js',
+                    'package.json',
+                    '.DS_Store',
+                    '.editorconfig',
+                    'README.md',
+                    'config.rb',
+                    '.jshintrc',
+                    '*.tmproj',
+                    '*.sublime-project',
+                    'ftpsync.settings',
+                    'sftp-config.json',
+                    '*.css.map',
+                    '*.js.map',
+                    'assets/less',
+                    'assets/js/plugins',
+                    'assets/js/_*.js',
+                    'buddypress/js/_*.js',
+                    'buddypress/css/_*.css',
+                    'buddypress/css/*.less'
+                ]
             }
         }
     });
@@ -152,5 +228,9 @@ module.exports = function(grunt) {
         'default',
         'rsync:test'
     ]);
+    grunt.registerTask('dist', [
+        'default',
+        'rsync:dist'
+    ])
 
 };
