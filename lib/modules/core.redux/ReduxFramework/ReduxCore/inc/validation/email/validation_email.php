@@ -12,7 +12,7 @@ class Redux_Validation_email extends ReduxFramework {
 		
 		parent::__construct();
 		$this->field = $field;
-		$this->field['msg'] = (isset($this->field['msg']))?$this->field['msg']:__('You must provide a valid email for this option.', 'redux');
+		$this->field['msg'] = (isset($this->field['msg']))?$this->field['msg']:__('You must provide a valid email for this option.', 'redux-framework');
 		$this->value = $value;
 		$this->current = $current;
 		$this->validate();

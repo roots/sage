@@ -62,7 +62,7 @@ class ReduxFramework_sortable extends ReduxFramework {
             $name = $this->args['opt_name'] . '[' . $this->field['id'] . '][' . $k . ']';
 
             if ( $this->field['mode'] == "checkbox") {
-            	$value_display = $this->field['options'][$k];
+            	$value_display = $this->value[$k];
                 if (!empty($this->value[$k])) {
                     $checked = 'checked="checked" ';
                 }

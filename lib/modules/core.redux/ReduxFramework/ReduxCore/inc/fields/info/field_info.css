@@ -1,11 +1,18 @@
 .redux-info-field {
   min-height: 20px;
-  padding: 5px 19px;
-  margin-top: 20px;
-  margin-bottom: 15px;
+  padding: 8px 19px;
+  margin: -10px 0;
   border-radius: 4px;
   border: 1px solid;
   position: relative;
+}
+.redux-info-field h1,
+.redux-info-field h2,
+.redux-info-field h3,
+.redux-info-field h4,
+.redux-info-field h5,
+.redux-info-field h6 {
+  border-bottom: 0 !important;
 }
 .redux-info-field h3 {
   color: #777;

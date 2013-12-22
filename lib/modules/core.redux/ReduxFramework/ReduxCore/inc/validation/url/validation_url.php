@@ -12,7 +12,7 @@ class Redux_Validation_url extends ReduxFramework {
 		
 		parent::__construct();
 		$this->field = $field;
-		$this->field['msg'] = (isset($this->field['msg']))?$this->field['msg']:__('You must provide a valid URL for this option.', 'redux');
+		$this->field['msg'] = (isset($this->field['msg']))?$this->field['msg']:__('You must provide a valid URL for this option.', 'redux-framework');
 		$this->value = $value;
 		$this->current = $current;
 		$this->validate();

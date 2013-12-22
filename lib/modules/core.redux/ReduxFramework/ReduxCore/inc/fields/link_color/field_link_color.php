@@ -82,30 +82,20 @@ if( !class_exists( 'ReduxFramework_link_color' ) ) {
          */
         public function render() {
 
-            
-
-            if ($this->field['regular'] == true):
-
-            echo '<strong>' . __( 'Regular', 'redux-framework' ) . '</strong>&nbsp;<input id="' . $this->field['id'] . '-regular" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][regular]" value="'.$this->value['regular'].'" class="redux-color redux-color-init ' . $this->field['class'] . '"  type="text" data-default-color="' . $this->field['default']['regular'] . '" />&nbsp;&nbsp;&nbsp;&nbsp;';
-
+            if ( $this->field['regular'] === true && $this->field['default']['regular'] !== false ):
+                echo '<strong>' . __( 'Regular', 'redux-framework' ) . '</strong>&nbsp;<input id="' . $this->field['id'] . '-regular" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][regular]" value="'.$this->value['regular'].'" class="redux-color redux-color-init ' . $this->field['class'] . '"  type="text" data-default-color="' . $this->field['default']['regular'] . '" />&nbsp;&nbsp;&nbsp;&nbsp;';
             endif;
 
-            if ($this->field['hover'] == true):
-
-            echo '<strong>' . __( 'Hover', 'redux-framework' ) . '</strong>&nbsp;<input id="' . $this->field['id'] . '-hover" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][hover]" value="' . $this->value['hover'] . '" class="redux-color redux-color-init ' . $this->field['class'] . '"  type="text" data-default-color="' . $this->field['default']['hover'] . '" />&nbsp;&nbsp;&nbsp;&nbsp;';
-
+            if ( $this->field['hover'] === true && $this->field['default']['hover'] !== false ):
+                echo '<strong>' . __( 'Hover', 'redux-framework' ) . '</strong>&nbsp;<input id="' . $this->field['id'] . '-hover" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][hover]" value="' . $this->value['hover'] . '" class="redux-color redux-color-init ' . $this->field['class'] . '"  type="text" data-default-color="' . $this->field['default']['hover'] . '" />&nbsp;&nbsp;&nbsp;&nbsp;';
             endif;
 
-            if ($this->field['visited'] == true):
-
-            echo '<strong>' . __( 'Visited', 'redux-framework' ) . '</strong>&nbsp;<input id="' . $this->field['id'] . '-hover" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][visited]" value="' . $this->value['visited'] . '" class="redux-color redux-color-init ' . $this->field['class'] . '"  type="text" data-default-color="' . $this->field['default']['visited'] . '" />&nbsp;&nbsp;&nbsp;&nbsp;';
-
+            if ( $this->field['visited'] === true && $this->field['default']['visited'] !== false ):
+                echo '<strong>' . __( 'Visited', 'redux-framework' ) . '</strong>&nbsp;<input id="' . $this->field['id'] . '-hover" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][visited]" value="' . $this->value['visited'] . '" class="redux-color redux-color-init ' . $this->field['class'] . '"  type="text" data-default-color="' . $this->field['default']['visited'] . '" />&nbsp;&nbsp;&nbsp;&nbsp;';
             endif;            
 
-            if ($this->field['active'] == true):
-
-            echo '<strong>' . __( 'Active', 'redux-framework' ) . '</strong>&nbsp;<input id="' . $this->field['id'] . '-active" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][active]" value="' . $this->value['active'] . '" class="redux-color redux-color-init ' . $this->field['class'] . '"  type="text" data-default-color="' . $this->field['default']['active'] . '" />';
-
+            if ( $this->field['active'] === true && $this->field['default']['active'] !== false ):
+                echo '<strong>' . __( 'Active', 'redux-framework' ) . '</strong>&nbsp;<input id="' . $this->field['id'] . '-active" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][active]" value="' . $this->value['active'] . '" class="redux-color redux-color-init ' . $this->field['class'] . '"  type="text" data-default-color="' . $this->field['default']['active'] . '" />';
             endif;
         
         }
@@ -144,23 +134,24 @@ if( !class_exists( 'ReduxFramework_link_color' ) ) {
 
                 $keys = implode( ",", $this->field['output'] );
                 $style = '';
-                if ( !empty( $this->value['regular'] ) ) {
+
+                if ( !empty( $this->value['regular'] ) && $this->field['regular'] === true && $this->field['default']['regular'] !== false ) {
                     $style .= $keys."{";
                     $style .= 'color:' . $this->value['regular'] . ';';
                     $style .= '}';
                     
                 }
-                if ( !empty( $this->value['hover'] ) ) {
+                if ( !empty( $this->value['hover'] ) && $this->field['hover'] === true && $this->field['default']['hover'] !== false ) {
                     $style .= $keys.":hover{";
                     $style .= 'color:' . $this->value['hover'] . ';';
                     $style .= '}';
                 }
-                if ( !empty( $this->value['active'] ) ) {
+                if ( !empty( $this->value['active'] ) && $this->field['active'] === true && $this->field['default']['active'] !== false ) {
                     $style .= $keys.":active{";
                     $style .= 'color:' . $this->value['active'] . ';';
                     $style .= '}';
                 }  
-                if ( !empty( $this->value['visited'] ) ) {
+                if ( !empty( $this->value['visited'] ) && $this->field['visited'] === true && $this->field['default']['visited'] !== false ) {
                     $style .= $keys.":visited{";
                     $style .= 'color:' . $this->value['visited'] . ';';
                     $style .= '}';

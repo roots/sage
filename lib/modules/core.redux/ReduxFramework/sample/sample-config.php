@@ -95,7 +95,7 @@ if (!function_exists('redux_init')) :
 	// Set the class for the dev mode tab icon.
 	// This is ignored unless $args['icon_type'] = 'iconfont'
 	// Default: null
-	$args['dev_mode_icon_class'] = 'icon-large';
+	//$args['dev_mode_icon_class'] = '';
 
 	// Set a custom option name. Don't forget to replace spaces with underscores!
 	$args['opt_name'] = 'redux_demo';
@@ -160,13 +160,13 @@ if (!function_exists('redux_init')) :
 	// Set the class for the import/export tab icon.
 	// This is ignored unless $args['icon_type'] = 'iconfont'
 	// Default: null
-	$args['import_icon_class'] = 'icon-large';
+	//$args['import_icon_class'] = '';
 
 	/**
 	 * Set default icon class for all sections and tabs
 	 * @since 3.0.9
 	 */
-	$args['default_icon_class'] = 'icon-large';
+	//$args['default_icon_class'] = '';
 
 
 	// Set a custom menu icon.
@@ -279,8 +279,7 @@ if (!function_exists('redux_init')) :
 	$sections[] = array(
 		'title' => __('Home Settings', 'redux-framework-demo'),
 		'desc' => __('Redux Framework was created with the developer in mind. It allows for any theme developer to have an advanced theme panel with most of the features a developer would need. For more information check out the Github repo at: <a href="https://github.com/ReduxFramework/Redux-Framework">https://github.com/ReduxFramework/Redux-Framework</a>', 'redux-framework-demo'),
-		'icon_class' => 'icon-large',
-	    'icon' => 'el-icon-home',
+		'icon' => 'el-icon-home',
 	    // 'submenu' => false, // Setting submenu to false on a given section will hide it from the WordPress sidebar menu!
 		'fields' => array(	
 			array(
@@ -581,8 +580,7 @@ if (!function_exists('redux_init')) :
 
 	$sections[] = array(
 		'icon' => 'el-icon-cogs',
-		'icon_class' => 'icon-large',
-	    'title' => __('General Settings', 'redux-framework-demo'),
+		'title' => __('General Settings', 'redux-framework-demo'),
 		'fields' => array(
 			array(
 				'id'=>'layout',
@@ -706,10 +704,11 @@ if (!function_exists('redux_init')) :
 				//'regular' => false, // Disable Regular Color
 				//'hover' => false, // Disable Hover Color
 				//'active' => false, // Disable Active Color
+				//'visited' => true, // Enable Visited Color
 				'default' => array(
-					//'regular' => '#aaa',
-					//'hover' => '#bbb',
-					//'active' => '#ccc',
+					'regular' => '#aaa',
+					'hover' => '#bbb',
+					'active' => '#ccc',
 				)
 			),
 			array(
@@ -781,11 +780,18 @@ if (!function_exists('redux_init')) :
 		)
 	);
 		
+	/**
+	 *  Note here I used a 'heading' in the sections array construct
+	 *  This allows you to use a different title on your options page
+	 * instead of reusing the 'title' value.  This can be done on any 
+	 * section - kp
+	 */
 	$sections[] = array(
-		'icon' => 'el-icon-bullhorn',
-		'title' => __('Field Validation', 'redux-framework-demo'),
-		'desc' => __('<p class="description">This is the Description. Again HTML is allowed2</p>', 'redux-framework-demo'),
-		'fields' => array(
+		'icon'    => 'el-icon-bullhorn',
+		'title'   => __('Field Validation', 'redux-framework-demo'),
+		'heading' => __('Validate ALL fields within Redux.'),
+		'desc'    => __('<p class="description">This is the Description. Again HTML is allowed2</p>', 'redux-framework-demo'),
+		'fields'  => array(
 			array(
 				'id'=>'2',
 				'type' => 'text',
@@ -1057,6 +1063,20 @@ if (!function_exists('redux_init')) :
 				'required' => array('select','equals',array('1','3')),	
 				'default' => array('2','3')
 				),
+
+		        array(
+		            'id'        => 'opt_sel_img',
+		            'type'      => 'select_image',
+		            'title'     => __('Select Image', 'redux-framework-demo'), 
+		            'subtitle'  => __('A preview of the selected image will appear underneath the select box.', 'redux-framework-demo'),
+		            'options'   => $sample_patterns,
+		            // Alternatively
+		            //'options' => Array(
+		            //                 'img_name' => 'img_path'
+		            //             )
+		            'default'   => 'tree_bark.png',
+		        ),
+				
 			array(
 				'id'=>'multi-info',
 				'type' => 'info',
@@ -1369,8 +1389,7 @@ if (!function_exists('redux_init')) :
 	if(file_exists(trailingslashit(dirname(__FILE__)) . 'README.html')) {
 	    $tabs['docs'] = array(
 			'icon' => 'el-icon-book',
-			'icon_class' => 'icon-large',
-	        'title' => __('Documentation', 'redux-framework-demo'),
+			    'title' => __('Documentation', 'redux-framework-demo'),
 	        'content' => nl2br(file_get_contents(trailingslashit(dirname(__FILE__)) . 'README.html'))
 	    );
 	}
@@ -1399,8 +1418,7 @@ if ( !function_exists( 'redux_add_another_section' ) ):
 	        'title' => __('Section via hook', 'redux-framework-demo'),
 	        'desc' => __('<p class="description">This is a section created by adding a filter to the sections array. Can be used by child themes to add/remove sections from the options.</p>', 'redux-framework-demo'),
 			'icon' => 'el-icon-paper-clip',
-			'icon_class' => 'icon-large',
-	        // Leave this as a blank section, no options just some intro text set above.
+			    // Leave this as a blank section, no options just some intro text set above.
 	        'fields' => array()
 	    );
 
@@ -1506,7 +1524,7 @@ if ( !function_exists( 'redux_test_compiler' ) ):
 			    }
 
 	}
-	add_filter('redux/options/redux_demo/compiler', 'redux_test_compiler', 10, 2);
+	//add_filter('redux/options/redux_demo/compiler', 'redux_test_compiler', 10, 2);
 	// replace redux_demo with your opt_name
 endif;
 
@@ -1519,16 +1537,14 @@ endif;
 if ( !function_exists( 'redux_remove_demo_options' ) ):
 	function redux_remove_demo_options() {
 		
-		// Used to hide the activation notice informing users of the demo panel. Only used when Redux is a plugin.
-		remove_action('admin_notices', array( ReduxFrameworkPlugin::get_instance(), 'admin_notices' ) );	
-
 		// Used to hide the demo mode link from the plugin page. Only used when Redux is a plugin.
 		if ( class_exists('ReduxFrameworkPlugin') ) {
 			remove_filter( 'plugin_row_meta', array( ReduxFrameworkPlugin::get_instance(), 'plugin_meta_demo_mode_link'), null, 2 );
 		}
+
+		// Used to hide the activation notice informing users of the demo panel. Only used when Redux is a plugin.
+		remove_action('admin_notices', array( ReduxFrameworkPlugin::get_instance(), 'admin_notices' ) );	
+
 	}
-	//add_action('init', 'redux_remove_demo_options');
+	//add_action( 'redux/plugin/hooks', 'redux_remove_demo_options' );	
 endif;
-
-
-

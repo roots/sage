@@ -2,6 +2,11 @@
 
 WordPress options framework which uses the [WordPress Settings API](http://codex.wordpress.org/Settings_API "WordPress Settings API"), Custom Error/Validation Handling, Custom Field/Validation Types, and import/export functionality.
 
+## SMOF (Simple Modified Option Users) Users, this one's for you! ##
+
+Hot off the press, our Redux Converter plugin. It takes your SMOF instance, and allows you to try out Redux without any fear. It also spits out valid PHP source for you if you want to migrate complete with data migration! Give it a try today. It will be in the WordPress.org repo shortly.  ;)
+https://github.com/ReduxFramework/redux-converter
+
 ## Getting Started with Redux ##
 
 ReduxFramework has been built from the groud up to be the most flexible framework around. You can run it as an auto-updating plugin, or embed it inside your plugin or theme. It allows for multiple copies of itself within the same WordPress instance. For a guide on getting started please refer to [http://reduxframework.com/docs/getting-started/](http://reduxframework.com/docs/getting-started/).
@@ -55,6 +60,19 @@ Send me an email at ghost1227@reduxframework.com so I can add you to our user sp
 ## Changelog ##
 
 ### Master ###
+
+= 3.1.3 =
+* Fixed a few undefined variables
+* Removed old code from the repo.
+* Fix for validation.
+* Remove the compiler hook by default.
+* Fix to sortable field.
+* Added an extra check for link color. Removes user error.
+* Localization updates.
+* Error in slides.
+* Fixed the info box bug with spacing and padding.
+* Fixed the first item in each section having WAY too much padding.  ;)
+* Fixed section reset issue where values weren't being saved to the db properly.
 
 = 3.1.2 =
 * Feature - Sortable select boxes!

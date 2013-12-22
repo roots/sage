@@ -38,7 +38,7 @@ if( !class_exists( 'ReduxFramework' ) ) {
      */
     class ReduxFramework {
 
-        public static $_version = '3.1.2';
+        public static $_version = '3.1.3';
         public static $_dir;
         public static $_url;
         public static $_properties;
@@ -191,7 +191,8 @@ if( !class_exists( 'ReduxFramework' ) ) {
                         ),                                                         
                 ),
             );  
-
+            
+            do_action( 'redux/loaded' );
 
         }      
 
@@ -244,8 +245,7 @@ if( !class_exists( 'ReduxFramework' ) ) {
             $defaults['opt_name']           = ''; // Must be defined by theme/plugin
             $defaults['google_api_key']     = ''; // Must be defined to add google fonts to the typography module
             $defaults['last_tab']           = '0';
-            $defaults['menu_icon']          = self::$_url . 'assets/img/menu_icon.png';
-            $defaults['menu_icon'] 		= '';
+            $defaults['menu_icon'] 		    = '';
             $defaults['menu_title']         = __( 'Options', 'redux-framework' );
             $defaults['page_icon']          = 'icon-themes';
             $defaults['page_title']         = __( 'Options', 'redux-framework' );
@@ -325,6 +325,8 @@ if( !class_exists( 'ReduxFramework' ) ) {
             // Hook into the WP feeds for downloading exported settings
             add_action( 'do_feed_reduxopts-' . $this->args['opt_name'], array( &$this, '_download_options' ), 1, 1 );
 
+            do_action( 'redux/construct', $this );
+
 			// Fix for the GT3 page builder: http://www.gt3themes.com/wordpress-gt3-page-builder-plugin/
 			/** @global string $pagenow */
 			global $pagenow;
@@ -332,6 +334,8 @@ if( !class_exists( 'ReduxFramework' ) ) {
 				/** @noinspection PhpUndefinedCallbackInspection */
 				remove_action( 'admin_init', 'pb_admin_init' );
 			}
+
+
 
 		}
 
@@ -1164,8 +1168,8 @@ if( !class_exists( 'ReduxFramework' ) ) {
             $this->localize_data['defaults'] = $this->options_defaults;
             $this->localize_data['args'] = array(
                 'save_pending'      	=> __( 'You have changes that are not saved. Would you like to save them now?', 'redux-framework' ), 
-                'reset_confirm'     	=> __( 'Are you sure? Resetting will loose all custom values.', 'redux-framework' ), 
-                'reset_section_confirm' => __( 'Are you sure? Resetting will loose all custom values in this section.', 'redux-framework' ), 
+                'reset_confirm'     	=> __( 'Are you sure? Resetting will lose all custom values.', 'redux-framework' ), 
+                'reset_section_confirm' => __( 'Are you sure? Resetting will lose all custom values in this section.', 'redux-framework' ), 
                 'preset_confirm'    	=> __( 'Your current options will be replaced with the values of this preset. Would you like to proceed?', 'redux-framework' ), 
                 'opt_name'          	=> $this->args['opt_name'],
                 'slug'              	=> $this->args['page_slug']
@@ -1227,6 +1231,7 @@ if( !class_exists( 'ReduxFramework' ) ) {
          * @return      void
          */
         public function _download_options(){
+            echo "here";
             /** @noinspection PhpUndefinedConstantInspection */
             if( !isset( $_GET['secret'] ) || $_GET['secret'] != md5( AUTH_KEY . SECURE_AUTH_KEY ) ) {
                 wp_die( 'Invalid Secret for options use' );
@@ -1348,8 +1353,10 @@ if( !class_exists( 'ReduxFramework' ) ) {
                 // DOVY! Replace $k with $section['id'] when ready
                 $section = apply_filters( 'redux-section-' . $k . '-modifier-' . $this->args['opt_name'], $section );
                 $section = apply_filters( 'redux/options/'.$this->args['opt_name'].'/section/' . $section['id'] , $section );
+		
+		$heading = isset($section['heading']) ? $section['heading'] : $section['title'];
 
-                add_settings_section( $this->args['opt_name'] . $k . '_section', $section['title'], array( &$this, '_section_desc' ), $this->args['opt_name'] . $k . '_section_group' );
+                add_settings_section( $this->args['opt_name'] . $k . '_section', $heading, array( &$this, '_section_desc' ), $this->args['opt_name'] . $k . '_section_group' );
 
                 if( isset( $section['fields'] ) ) {
                     foreach( $section['fields'] as $fieldk => $field ) {
@@ -1559,7 +1566,7 @@ if( !class_exists( 'ReduxFramework' ) ) {
             if( isset( $plugin_options['defaults-section'] ) ) {
             	$compiler = false;
             	foreach ($this->sections[$plugin_options['redux-section']]['fields'] as $field) {
-            		unset($plugin_options[$field['id']]);
+            		$plugin_options[$field['id']] = $this->options_defaults[$field['id']];
             		if (isset($field['compiler'])) {
             			$compiler = true;
             		}
@@ -1570,11 +1577,8 @@ if( !class_exists( 'ReduxFramework' ) ) {
             	}
             	$plugin_options['defaults'] = true;
                 unset( $plugin_options['compiler'], $plugin_options['import'], $plugin_options['import_code'], $plugin_options['redux-section'] );
-				if ( $this->args['database'] == 'transient' || $this->args['database'] == 'theme_mods' || $this->args['database'] == 'theme_mods_expanded' ) {
-				    $this->set_options( $plugin_options );
-					return $this->options;
-				}
-                return $plugin_options;
+				$this->set_options( $plugin_options );
+				return $this->options;
             }            
 
             // Validate fields (if needed)
@@ -2272,6 +2276,7 @@ if( !class_exists( 'ReduxFramework' ) ) {
             return $data_string;
         } 
     } // class
-    ReduxFramework::init();
+
+    do_action( 'redux/init', ReduxFramework::init() );
 
 } // if

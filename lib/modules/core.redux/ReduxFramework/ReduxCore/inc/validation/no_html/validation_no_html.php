@@ -12,7 +12,7 @@ class Redux_Validation_no_html extends ReduxFramework {
 		
 		parent::__construct();
 		$this->field = $field;
-		$this->field['msg'] = (isset($this->field['msg']))?$this->field['msg']:__('You must not enter any HTML in this field, all HTML tags have been removed.', 'redux');
+		$this->field['msg'] = (isset($this->field['msg']))?$this->field['msg']:__('You must not enter any HTML in this field, all HTML tags have been removed.', 'redux-framework');
 		$this->value = $value;
 		$this->current = $current;
 		$this->validate();
