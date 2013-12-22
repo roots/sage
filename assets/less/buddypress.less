@@ -1,0 +1,83 @@
+/* ==========================================================================
+   BuddyPress related styles and haxx0r
+   ========================================================================== */
+
+div.item-list-tabs:not(#subnav) > ul {
+  .nav;
+  .nav-tabs;
+  
+  > li {
+    span {
+      .badge;
+    }
+
+    &.selected > a {
+      &,
+      &:hover,
+      &:focus {
+        color: @nav-tabs-active-link-hover-color;
+        background-color: @nav-tabs-active-link-hover-bg;
+        border: 1px solid @nav-tabs-active-link-hover-border-color;
+        border-bottom-color: transparent;
+        cursor: default;
+      }
+    }
+  }
+}
+
+div.item-list-tabs#subnav > ul {
+  .pull-right;
+}
+
+div#buddypress {
+  .container-fixed();
+
+  form#whats-new-form {
+    .make-row();
+    
+    div#whats-new-avatar {
+      .make-lg-column(2);
+    }
+
+    div#whats-new-content {
+      .make-lg-column(10);
+
+      div.whats-new-row {
+        .make-row();
+      }
+      
+      div#whats-new-textarea {
+        .make-lg-column(12);
+
+        textarea {
+          .form-control;
+        }
+      }
+
+      div#whats-new-options {
+        div#whats-new-post-in-box {
+          .make-sm-column(8);
+
+          select#whats-new-post-in {
+            .form-control;
+            .input-sm;
+          }
+        }
+
+        div#whats-new-submit {
+          .make-sm-column(4);
+          min-height: 70px;
+          
+          input#aw-whats-new-submit {
+            .btn-sm;
+            .pull-right;
+            .btn-block;
+
+            margin-top: 25px;
+            margin-bottom: 15px;
+          }
+        }
+      }
+    }
+  }
+}
