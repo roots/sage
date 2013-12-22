@@ -37,10 +37,6 @@ if ( class_exists( 'ReduxFramework' ) ) :
   $args['menu_title']             = $theme->get( 'Name' );
   $args['display_version']        = $theme->get( 'Version' );    
   $args['page_position']          = 99;
-//  $args['database']         = 'theme_mods_expanded';
-  $args['import_icon_class']      = 'icon-large';
-  $args['system_info_icon_class'] = 'icon-large';
-  $args['dev_mode_icon_class']    = 'icon-large';
 
   $args['help_tabs'][] = array(
     'id'      => 'redux-options-1',
