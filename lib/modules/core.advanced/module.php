@@ -40,6 +40,14 @@ function shoestrap_module_advanced_options( $sections ) {
     'edit'      => 1,
     'type'      => 'slider'
   );
+  
+  $fields[] = array( 
+    'title'     => __( 'Post excerpt link text', 'shoestrap' ),
+    'desc'      => __( 'Text to display in case of excerpt too long. Default: Continue', 'shoestrap' ),
+    'id'        => 'post_excerpt_link_text',
+    'default'   => __('Continue', 'shoestrap'),
+    'type'      => 'text'
+  );
 
   $fields[] = array( 
     'title'     => __( 'Select pagination style', 'shoestrap' ),
