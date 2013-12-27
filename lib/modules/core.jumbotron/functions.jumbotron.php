@@ -11,127 +11,101 @@ function jumbotron_content() {
   $visibility   = shoestrap_getVariable( 'jumbotron_visibility' );
   $nocontainer  = shoestrap_getVariable( 'jumbotron_nocontainer' );
 
-  if ( ( ( $visibility == 1 && is_front_page() ) || $visibility != 1 ) && is_active_sidebar( 'Jumbotron' ) ) :
+  if ( ( ( $visibility == 1 && is_front_page() ) || $visibility != 1 ) && is_active_sidebar( 'Jumbotron' ) )
     $hero = true;
-  endif;
+  ?>
 
-  echo '<div class="clearfix"></div>';
+  <div class="clearfix"></div>
 
-  if ( $hero == true ) :
+  <?php if ( $hero == true ) : ?>
+    <?php if ( $site_style == 'boxed' && $nocontainer != 1 ) : ?>
+      <div class="' . shoestrap_container_class() . '">
+    <?php endif; ?>
 
-    if ( $site_style == 'boxed' && $nocontainer != 1 ) :
-      echo '<div class="' . shoestrap_container_class() . '">';
-    endif;
+    <div class="jumbotron">
 
-    echo '<div class="jumbotron">';
+      <?php if ( $nocontainer != 1 && $site_style == 'wide' || $site_style == 'boxed' ) : ?>
+        <div class="' . shoestrap_container_class() . '">
+      <?php endif; ?>
 
-    if ( $nocontainer != 1 && $site_style == 'wide' || $site_style == 'boxed' ) :
-      echo '<div class="' . shoestrap_container_class() . '">';
-    endif;
+        <?php dynamic_sidebar('Jumbotron'); ?>
 
-    dynamic_sidebar('Jumbotron');
+      <?php if ( $nocontainer != 1 && $site_style == 'wide' || $site_style == 'boxed' ) : ?>
+        </div>
+      <?php endif; ?>
 
-    if ( $nocontainer != 1 && $site_style == 'wide' || $site_style == 'boxed' ) :
-      echo '</div>';
-    endif;
+    <?php if ( $site_style == 'boxed' && $nocontainer != 1 ) : ?>
+      </div>
+    <?php endif; ?>
 
-    if ( $site_style == 'boxed' && $nocontainer != 1 ) :
-      echo '</div>';
-    endif;
-
-    echo '</div>';
-
-  endif;
+    </div>
+  <?php endif;
 }
 endif;
 add_action( 'shoestrap_below_top_navbar', 'jumbotron_content', 10 );
+
 
 if ( !function_exists( 'shoestrap_jumbotron_css' ) ) :
 function shoestrap_jumbotron_css() {
   $center = shoestrap_getVariable( 'jumbotron_center' );
   $border = shoestrap_getVariable( 'jumbotron_border_bottom' );
 
-  // $background is the saved custom image, or the default image.
-  if ( shoestrap_getVariable( 'jumbotron_background_image_toggle' ) == 1 ) :
-
-    if ( shoestrap_getVariable( 'jumbotron_background_custom_image' ) != "" ) :
-    	$jVar = shoestrap_getVariable( 'jumbotron_background_custom_image' );
-      $background = set_url_scheme( $jVar['url'] );
-    elseif ( shoestrap_getVariable( 'jumbotron_background_image' ) != "" ) :
-    	$jVar = shoestrap_getVariable( 'jumbotron_background_image' );
-      $background = set_url_scheme( $jVar['url'] );
-    endif;
-    
-  elseif ( shoestrap_getVariable( 'jumbotron_background_pattern_toggle' ) == 1 && shoestrap_getVariable( 'jumbotron_background_pattern' ) != "" ) :
-    $background = shoestrap_getVariable( 'jumbotron_background_pattern' );
-  endif;
-
-  $color = '';
-  if ( shoestrap_getVariable( 'jumbotron_background_color' ) != '' ) :
-    $color = '#' . str_replace( '#', '', shoestrap_getVariable( 'jumbotron_background_color' ) );
-  endif;
-
-  if ( !isset( $background ) && !isset( $color ) ) :
-    return;
-  endif;
-
-  $style = $color ? "background-color: $color;" : '';
-
-  if ( shoestrap_getVariable( 'jumbotron_background_fixed_toggle' ) == 1 ) :
-    $style .= 'background-attachment: fixed;';
-  endif;
-
-  $image = '';
-  if ( isset($background) && $background ) :
-    $image = "background-image: url( '$background' );";
-  endif;
-
   $repeat   = '';
   $position = '';
 
-  if ( shoestrap_getVariable( 'jumbotron_background_image_toggle' ) == 1 && ( shoestrap_getVariable( 'jumbotron_background_custom_image' ) != '' || shoestrap_getVariable( 'jumbotron_background_image' ) != '' ) ) :
-    if ( shoestrap_getVariable( 'jumbotron_background_image_position_toggle' ) == 0 ) :
-      $style .= "background-size: cover;";
-      $style .= "-webkit-background-size: cover;";
-      $style .= "-moz-background-size: cover;";
-      $style .= "-o-background-size: cover;";
-      $style .= "background-position: 50% 50%;";
+  // $background is the saved custom image, or the default image.
+  if ( shoestrap_getVariable( 'jumbotron_background_image_toggle' ) == 1 ) {
+    if ( shoestrap_getVariable( 'jumbotron_background_custom_image' ) != "" ) {
+    	$jVar = shoestrap_getVariable( 'jumbotron_background_custom_image' );
+      $background = set_url_scheme( $jVar['url'] );
+    } elseif ( shoestrap_getVariable( 'jumbotron_background_image' ) != "" ) {
+    	$jVar = shoestrap_getVariable( 'jumbotron_background_image' );
+      $background = set_url_scheme( $jVar['url'] );
+    }
+    
+  } elseif ( shoestrap_getVariable( 'jumbotron_background_pattern_toggle' ) == 1 && shoestrap_getVariable( 'jumbotron_background_pattern' ) != "" ) {
+    $background = shoestrap_getVariable( 'jumbotron_background_pattern' );
+  }
 
-      if ( shoestrap_getVariable( 'jumbotron_background_fixed_toggle' ) == 0 ) :
-        $style .= "background-repeat: no-repeat;";
-      endif;
+  $color = ( shoestrap_getVariable( 'jumbotron_background_color' ) != '' ) ? '#' . str_replace( '#', '', shoestrap_getVariable( 'jumbotron_background_color' ) ) : '';
 
-    else : // Not fixed position, custom
+  if ( !isset( $background ) && !isset( $color ) )
+    return;
+
+  $style = $color ? "background-color: $color;" : '';
+
+  $style .= ( shoestrap_getVariable( 'jumbotron_background_fixed_toggle' ) == 1 ) ? 'background-attachment: fixed;' : '';
+
+  $image = ( isset($background) && $background ) ? "background-image: url( '$background' );" : '';
+
+
+  if ( shoestrap_getVariable( 'jumbotron_background_image_toggle' ) == 1 && ( shoestrap_getVariable( 'jumbotron_background_custom_image' ) != '' || shoestrap_getVariable( 'jumbotron_background_image' ) != '' ) ) {
+    if ( shoestrap_getVariable( 'jumbotron_background_image_position_toggle' ) == 0 ) {
+      $style .= "background-size: cover; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-position: 50% 50%;";
+
+      $style .= ( shoestrap_getVariable( 'jumbotron_background_fixed_toggle' ) == 0 ) ? "background-repeat: no-repeat;" : '';
+    
+    } else {
+      // Not fixed position, custom
       $repeat = shoestrap_getVariable( 'jumbotron_background_repeat' );
 
-      if ( !in_array( $repeat, array( 'no-repeat', 'repeat-x', 'repeat-y', 'repeat' ) ) ) :
-        $repeat = 'repeat';
-      endif;
+      $repeat = ( !in_array( $repeat, array( 'no-repeat', 'repeat-x', 'repeat-y', 'repeat' ) ) ) ? 'repeat' : $repeat;
 
-      if ( $repeat == 'no-repeat' ) :
-        $style .= "background-size: auto;";
-      endif;
+      $style .= ( $repeat == 'no-repeat' ) ? "background-size: auto;" : $repeat;
 
       $repeat = " background-repeat: $repeat;";
-      $position = shoestrap_getVariable( 'jumbotron_background_position_x', 'left' );
-      
-      if ( !in_array( $position, array( 'center', 'right', 'left' ) ) ) :
-        $position = 'left';
-      endif;
 
+      $position = shoestrap_getVariable( 'jumbotron_background_position_x', 'left' );
+      $position = ( !in_array( $position, array( 'center', 'right', 'left' ) ) ) ? 'left' : $position;
       $position = " background-position: top $position;";
-    endif;
-  endif;
+    }
+  }
 
   $style .= $image . $repeat . $position;
 
-  if ( $center == 1 ) :
-    $style .= 'text-align: center;';
-  endif;
+  $style .= ( $center == 1 ) ? 'text-align: center;' : '';
 
-  if ( !empty($border) && $border['border-bottom'] > 0 && !empty($border['border-color']) ) :
-    $style .= 'border-bottom:' . $border['border-bottom'] . ' ' . $border['border-style'] . ' ' . $border['border-color'] . ';';
-  endif;
+  $style .= ( !empty($border) && $border['border-bottom'] > 0 && !empty($border['border-color']) ) ? 'border-bottom:' . $border['border-bottom'] . ' ' . $border['border-style'] . ' ' . $border['border-color'] . ';' : '';
 
   $style .= 'margin-bottom: 0px;';
 
@@ -153,9 +127,8 @@ function jumbotron_fittext() {
   $jumbo_visibility = shoestrap_getVariable( 'jumbotron_visibility' );
 
   // Should only show on the front page if it's enabled, or site-wide when appropriate
-  if ( $fittext_toggle == 1 && ( $jumbo_visibility == 0 && ( $jumbo_visibility == 1 && is_front_page() ) ) ) :
+  if ( $fittext_toggle == 1 && ( $jumbo_visibility == 0 && ( $jumbo_visibility == 1 && is_front_page() ) ) )
     echo '<script>jQuery(".jumbotron h1").fitText(1.3);</script>';
-  endif;
 }
 endif;
 add_action( 'wp_footer', 'jumbotron_fittext', 10 );
@@ -169,10 +142,10 @@ function jumbotron_fittext_enqueue_script() {
   $fittext_toggle   = shoestrap_getVariable( 'jumbotron_title_fit' );
   $jumbo_visibility = shoestrap_getVariable( 'jumbotron_visibility' );
 
-  if ( $fittext_toggle == 1 && ( $jumbo_visibility == 0 && ( $jumbo_visibility == 1 && is_front_page() ) ) ) :
+  if ( $fittext_toggle == 1 && ( $jumbo_visibility == 0 && ( $jumbo_visibility == 1 && is_front_page() ) ) ) {
     wp_register_script('fittext', get_template_directory_uri() . '/assets/js/vendor/jquery.fittext.js', false, null, false);
     wp_enqueue_script('fittext');
-  endif;
+  }
 }
 endif;
 add_action('wp_enqueue_scripts', 'jumbotron_fittext_enqueue_script', 101);
@@ -183,9 +156,8 @@ if ( !function_exists( 'shoestrap_conditional_jumbo_section_removal' ) ) :
  * if there are no widgets in the Jumbotron widget area.
  */
 function shoestrap_conditional_jumbo_section_removal( $wp_customize ) {
-  if ( !is_active_sidebar( 'jumbotron' ) ) :
+  if ( !is_active_sidebar( 'jumbotron' ) )
     $wp_customize->remove_section( 'jumbotron');
-  endif;
 }
 endif;
 add_action( 'customize_register', 'shoestrap_conditional_jumbo_section_removal' );
