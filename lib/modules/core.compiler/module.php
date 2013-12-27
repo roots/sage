@@ -1,7 +1,9 @@
 <?php
 
-if ( !class_exists( 'Less_Parser' ) ) :
-	require_once 'less.php/Less.php';
-endif;
+// Load the less.php parser if it's not already loaded.
+if ( !class_exists( 'Less_Parser' ) )
+  require_once 'includes/less.php/Less.php';
 
-include_once( dirname(__FILE__).'/bootstrap-compiler.php' );
+require_once 'includes/functions.core.php';
+require_once 'includes/functions.bootstrap.variables.php';
+require_once 'includes/functions.compiler.php';
