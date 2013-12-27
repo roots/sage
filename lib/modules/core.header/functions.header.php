@@ -4,44 +4,42 @@ if ( !function_exists( 'shoestrap_branding' ) ) :
 /*
  * The Header template
  */
-function shoestrap_branding() {
-  if ( shoestrap_getVariable( 'header_toggle' ) == 1 ) :
-    if ( shoestrap_getVariable( 'site_style' ) == 'boxed' ) :
-      echo '<div class="container">';
-    endif;
+function shoestrap_branding() { ?>
+  <?php if ( shoestrap_getVariable( 'header_toggle' ) == 1 ) : ?>
+    <?php if ( shoestrap_getVariable( 'site_style' ) == 'boxed' ) : ?>
+      <div class="container">
+    <?php endif; ?>
 
-    echo '<div class="header-wrapper">';
+    <div class="header-wrapper">
+      <?php if ( shoestrap_getVariable( 'site_style' ) == 'wide' ) : ?>
+        <div class="container">
+      <?php endif; ?>
 
-    if ( shoestrap_getVariable( 'site_style' ) == 'wide' ) :
-      echo '<div class="container">';
-    endif;
+      <?php if ( shoestrap_getVariable( 'header_branding' ) == 1 ) : ?>
+        <a class="brand-logo" href="<?php echo home_url(); ?>/">
+          <h1>
+            <?php if ( function_exists( 'shoestrap_logo' ) ) : ?>
+              <?php shoestrap_logo(); ?>
+            <?php endif; ?>
+          </h1>
+        </a>
+      <?php endif; ?>
 
-    if ( shoestrap_getVariable( 'header_branding' ) == 1 ) :
-      echo '<a class="brand-logo" href="' . home_url() . '/">';
-      echo '<h1>';
+      <?php if ( shoestrap_getVariable( 'header_branding' ) == 1 ) : ?>
+        <div class="pull-right">
+      <?php else : ?>
+        <div>
+      <?php endif; ?>
 
-      if ( function_exists( 'shoestrap_logo' ) ) :
-        shoestrap_logo();
-      endif;
+      <?php dynamic_sidebar( 'header-area' ); ?>
+    </div>
+    </div>
 
-      echo '</h1>';
-      echo '</a>';
-    endif;
+    <?php if ( shoestrap_getVariable( 'site_style' ) != 'fluid' ) : ?>
+      </div>
+    <?php endif; ?>
 
-    if ( shoestrap_getVariable( 'header_branding' ) == 1 ) :
-      echo '<div class="pull-right">';
-    else :
-      echo '<div>';
-    endif;
-
-    dynamic_sidebar( 'header-area' );
-    echo '</div></div>';
-
-    if ( shoestrap_getVariable( 'site_style' ) != 'fluid' ) :
-      echo '</div>';
-    endif;
-
-  endif;
+  <?php endif;
 }
 endif;
 add_action( 'shoestrap_below_top_navbar', 'shoestrap_branding', 5 );
@@ -60,24 +58,14 @@ function shoestrap_header_css() {
   $opacity  = (intval(shoestrap_getVariable( 'header_bg_opacity' )))/100;
   $rgb      = shoestrap_get_rgb($bg, true);
 
-  if ( shoestrap_getVariable( 'header_toggle' ) == 1 ) :
-    $style = '.header-wrapper{';
-    $style .= 'color: '.$cl.';';
+  if ( shoestrap_getVariable( 'header_toggle' ) == 1 ) {
+    $style = '.header-wrapper{ color: '.$cl.';';
 
-    if ( $opacity != 1 && $opacity != '' ) :
-      $style .= 'background: rgb('.$rgb.');';
-      $style .= 'background: rgba('.$rgb.', '.$opacity.');';
-    else :
-      $style .= 'background: '.$bg.';';
-    endif;
-
-    $style .= 'margin-top:'.$header_margin_top.'px;';
-    $style .= 'margin-bottom:'.$header_margin_bottom.'px;';
-    $style .= '}';
+    $style .= ( $opacity != 1 && $opacity != '' ) ? 'background: rgb('.$rgb.'); background: rgba('.$rgb.', '.$opacity.');' : $style .= 'background: '.$bg.';';
+    $style .= 'margin-top:'.$header_margin_top.'px; margin-bottom:'.$header_margin_bottom.'px; }';
 
     wp_add_inline_style( 'shoestrap_css', $style );
-
-  endif;
+  }
 }
 endif;
 add_action( 'wp_enqueue_scripts', 'shoestrap_header_css', 101 );
