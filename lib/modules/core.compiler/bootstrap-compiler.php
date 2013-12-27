@@ -191,7 +191,6 @@ function shoestrap_variables_less() {
 
   $body_bg          = '#' . str_replace( '#', '', shoestrap_getVariable( 'color_body_bg', true ) );
   $brand_primary    = '#' . str_replace( '#', '', shoestrap_getVariable( 'color_brand_primary', true ) );
-  $brand_secondary  = '#' . str_replace( '#', '', shoestrap_getVariable( 'color_brand_secondary', true ) );
   $brand_success    = '#' . str_replace( '#', '', shoestrap_getVariable( 'color_brand_success', true ) );
   $brand_warning    = '#' . str_replace( '#', '', shoestrap_getVariable( 'color_brand_warning', true ) );
   $brand_danger     = '#' . str_replace( '#', '', shoestrap_getVariable( 'color_brand_danger', true ) );
@@ -327,13 +326,13 @@ function shoestrap_variables_less() {
     $gray_lighter = 'darken(#fff, 93.5%)';
   endif;
 
-  if ( shoestrap_get_brightness( $brand_secondary ) > 50 ) :
+  if ( shoestrap_get_brightness( $brand_primary ) > 50 ) :
     $link_hover_color = 'darken(@link-color, 15%)';
   else :
     $link_hover_color = 'lighten(@link-color, 15%)';
   endif;
 
-  if ( shoestrap_get_brightness( $brand_secondary ) > 50 ) :
+  if ( shoestrap_get_brightness( $brand_primary ) > 50 ) :
     $table_bg_accent      = 'darken(@body-bg, 2.5%)';
     $table_bg_hover       = 'darken(@body-bg, 4%)';
     $table_border_color   = 'darken(@body-bg, 13.35%)';
@@ -412,8 +411,6 @@ function shoestrap_variables_less() {
   endif;
 
 $variables = '
-@brand-secondary: ' . $brand_secondary . ';
-
 @428bca: ' . $brand_primary . ';
 @5cb85c: ' . $brand_success . ';
 @f0ad4e: ' . $brand_warning . ';
@@ -460,7 +457,7 @@ $variables = '
 // Links
 // -------------------------
 
-@link-color:            ' . $brand_secondary . ';
+@link-color:            @brand-primary;
 @link-hover-color:      ' . $link_hover_color . ';
 
 // Typography

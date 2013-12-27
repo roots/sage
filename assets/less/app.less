@@ -2,7 +2,7 @@
 @import "navlist.less";
 
 .gallery-row {
-  padding: (@gutter / 2) 0;
+  padding: (@grid-gutter-width / 2) 0;
 }
 
 .aligncenter {
@@ -26,8 +26,6 @@ figure.alignnone {
 body {
   word-wrap: break-word;
   -ms-word-wrap: break-word;
-  font-style: @font-style-base;
-  font-weight: @font-weight-base;
   &.top-navbar {
     &.admin-bar {
       padding-top: 53px;
@@ -85,7 +83,7 @@ body {
     -webkit-border-radius: 4px 0 0px 4px;
     border-radius: 4px 0px 0px 4px;
     &:hover {
-      background: @brand-secondary;
+      background: @brand-primary;
     }
   }
 }
@@ -291,7 +289,7 @@ a.toggle-nav {
     a:focus {
       &:first-child {
         background: @navbar-bg;
-        border-bottom: 5px solid @brand-secondary;
+        border-bottom: 5px solid @brand-primary;
         padding-bottom: 10px;
       }
       
@@ -314,7 +312,7 @@ a.toggle-nav {
       a:hover,
       a:focus {
         background: block;
-        color: @brand-secondary;
+        color: @brand-primary;
         border-bottom: 0;
         border-top: 1px solid @brand-primary;
         padding-bottom: 0px;

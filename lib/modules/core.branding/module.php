@@ -73,7 +73,7 @@ function shoestrap_module_branding_options( $sections ) {
 
   $fields[] = array( 
     'title'       => __( 'Brand Colors: Primary', 'shoestrap' ),
-    'desc'        => __( 'Select your primary branding color. This will affect various areas of your site, including the color of your primary buttons, the background of some elements and many more.', 'shoestrap' ),
+    'desc'        => __( 'Select your primary branding color. Also referred to as an accent color. This will affect various areas of your site, including the color of your primary buttons, link color, the background of some elements and many more.', 'shoestrap' ),
     'id'          => 'color_brand_primary',
     'default'     => '#428bca',
     'compiler'    => true,
@@ -81,17 +81,6 @@ function shoestrap_module_branding_options( $sections ) {
     'transparent' => false,    
     'type'        => 'color'
   );
-
-  $fields[] = array( 
-    'title'       => __( 'Brand Colors: Secondary', 'shoestrap' ),
-    'desc'        => __( 'Select your secondary branding color. Also referred to as an accent color. This will affect various areas of your site, including the color of your primary buttons, link color, the background of some elements and many more.', 'shoestrap' ),
-    'id'          => 'color_brand_secondary',
-    'default'     => '#428bca',
-    'compiler'    => true,
-    'customizer'  => array(),
-    'transparent' => false,    
-    'type'        => 'color'
-  );      
 
   $fields[] = array( 
     'title'       => __( 'Brand Colors: Success', 'shoestrap' ),
