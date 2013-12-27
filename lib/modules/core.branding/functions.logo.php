@@ -8,11 +8,10 @@ if ( !function_exists( 'shoestrap_logo' ) ) :
 function shoestrap_logo() {
   $logo  = shoestrap_getVariable( 'logo' );
 
-  if ( !empty( $logo['url'] ) ) :
+  if ( !empty( $logo['url'] ) )
     echo '<img id="site-logo" src="' . $logo['url'] . '" alt="' . get_bloginfo( 'name' ) . '">';
-  else :
+  else
     echo '<span class="sitename">' . bloginfo( 'name' ) . '</span>';
-  endif;
 }
 endif;
 
@@ -21,17 +20,12 @@ function shoestrap_branding_class( $echo = true ) {
   $logo  = shoestrap_getVariable( 'logo' );
 
   // apply the proper class
-  if ( !empty( $logo['url'] ) ) :
-    $class = 'logo';
-  else :
-    $class = 'text';
-  endif;
+  $class = ( !empty( $logo['url'] ) ) ? 'logo' : 'text';
 
   // echo or return the value
-  if ( $echo == false ) :
-    return $class;
-  else :
+  if ( $echo )
     echo $class;
-  endif;
+  else
+    return $class;
 }
 endif;
