@@ -2,15 +2,12 @@
 
 if ( !function_exists( 'shoestrap_nav_class_pull' ) ) :
 function shoestrap_nav_class_pull( $class = 'navbar-nav' ) {
-  if ( shoestrap_getVariable( 'navbar_nav_right' ) == '1' ) :
-    $ul = 'nav pull-right ' . $class;
-  else :
-    $ul = 'nav ' . $class;
-  endif;
+  $ul = ( shoestrap_getVariable( 'navbar_nav_right' ) == '1' ) ? 'nav pull-right ' . $class : 'nav ' . $class;
 
   return $ul;
 }
 endif;
+
 
 if ( !function_exists( 'shoestrap_navbar_pre_searchbox' ) ) :
 /*
@@ -29,21 +26,17 @@ function shoestrap_navbar_pre_searchbox() {
 endif;
 add_action( 'shoestrap_inside_nav_begin', 'shoestrap_navbar_pre_searchbox', 11 );
 
+
 if ( !function_exists( 'shoestrap_navbar_class' ) ) :
 function shoestrap_navbar_class( $navbar = 'main') {
   $fixed    = shoestrap_getVariable( 'navbar_fixed' );
   $fixedpos = shoestrap_getVariable( 'navbar_fixed_position' );
   $style    = shoestrap_getVariable( 'navbar_style' );
 
-  if ( $fixed != 1 ) :
+  if ( $fixed != 1 )
     $class = 'navbar navbar-static-top';
-  else :
-    if ( $fixedpos == 1 ) :
-      $class = 'navbar navbar-fixed-bottom';
-    else :
-      $class = 'navbar navbar-fixed-top';
-    endif;
-  endif;
+  else
+    $class = ( $fixedpos == 1 ) ? 'navbar navbar-fixed-bottom' : 'navbar navbar-fixed-top';
 
   if ( $navbar != 'secondary' )
     return $class . ' ' . $style;
@@ -52,40 +45,32 @@ function shoestrap_navbar_class( $navbar = 'main') {
 }
 endif;
 
+
 if ( !function_exists( 'shoestrap_navbar_css' ) ) :
 function shoestrap_navbar_css() {
   $navbar_bg_opacity = shoestrap_getVariable( 'navbar_bg_opacity' );
   $style = "";
 
-  if ($navbar_bg_opacity == '') :
-    $opacity = '0';
-  else:
-    $opacity = (intval($navbar_bg_opacity))/100;
-  endif;
+  $opacity = ( $navbar_bg_opacity == '' ) ? '0' : ( intval( $navbar_bg_opacity ) ) / 100;
 
-  if ( $opacity != 1 && $opacity != '' ) :
-    $bg = str_replace('#', '',shoestrap_getVariable( 'navbar_bg'));
+  if ( $opacity != 1 && $opacity != '' ) {
+    $bg  = str_replace( '#', '', shoestrap_getVariable( 'navbar_bg' ) );
     $rgb = shoestrap_get_rgb( $bg, true );
-    $opacityie = str_replace('0.','',$opacity);
+    $opacityie = str_replace( '0.', '', $opacity );
 
     $style .= '.navbar, .navbar-default {';
 
-    if ( $opacity != 1 && $opacity != '') :
-      $style .= 'background: transparent;';
-      $style .= 'background: rgba('.$rgb.', '.$opacity.');';
-      $style .= 'filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#'.$opacityie.$bg.',endColorstr=#'.$opacityie.$bg.'); ;';
-    else :
+    if ( $opacity != 1 && $opacity != '')
+      $style .= 'background: transparent; background: rgba('.$rgb.', '.$opacity.'); filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#'.$opacityie.$bg.',endColorstr=#'.$opacityie.$bg.'); ;';
+    else
       $style .= 'background: #'.$bg.';';
-    endif;
 
     $style .= '}';
 
-  endif;
+  }
 
-  if ( shoestrap_getVariable( 'navbar_margin' ) != 1 ) :
-    $navbar_margin = shoestrap_getVariable( 'navbar_margin' );
-    $style .= '.navbar-static-top { margin-top:'. $navbar_margin .'px !important; margin-bottom:'. $navbar_margin .'px !important; }';
-  endif;
+  if ( shoestrap_getVariable( 'navbar_margin' ) != 1 )
+    $style .= '.navbar-static-top { margin-top:'. shoestrap_getVariable( 'navbar_margin' ) .'px !important; margin-bottom:'. shoestrap_getVariable( 'navbar_margin' ) .'px !important; }';
 
   wp_add_inline_style( 'shoestrap_css', $style );
 }
