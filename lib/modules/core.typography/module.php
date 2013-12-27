@@ -19,11 +19,13 @@ function shoestrap_module_typography_options( $sections ) {
     'compiler'  => true,
     'units'     => 'px',
     'default'   => array( 
-      'font-family' => 'Arial, Helvetica, sans-serif',
-      'font-size'   => '14px',
-      'google'      => 'false',
-      'weight'      => 'inherit',
-      'color'       => '#333333',
+      'font-family'   => 'Arial, Helvetica, sans-serif',
+      'font-size'     => '14px',
+      'google'        => 'false',
+      'weight'        => 'inherit',
+      'color'         => '#333333',
+      'font-style'    => 400,
+      'update_weekly' => true // Enable to force updates of Google Fonts to be weekly
     ),
     'preview'   => array( 
       'text'        => __( 'This is my preview text!', 'shoestrap' ), //this is the text from preview box
@@ -53,7 +55,9 @@ function shoestrap_module_typography_options( $sections ) {
       'font-family' => 'Arial, Helvetica, sans-serif',
       'font-size'   => '260%',
       'color'       => '#333333',
-      'google'      => 'false'
+      'google'      => 'false',
+      'font-style'  => 400,
+
     ),
     'preview'   => array( 
       'text'        => __( 'This is my preview text!', 'shoestrap' ), //this is the text from preview box
@@ -73,7 +77,8 @@ function shoestrap_module_typography_options( $sections ) {
       'font-family' => 'Arial, Helvetica, sans-serif',
       'font-size'   => '215%',
       'color'       => '#333333',
-      'google'      => 'false'
+      'google'      => 'false',
+      'font-style'  => 400,
     ),
     'preview'   => array( 
       'text'        => __( 'This is my preview text!', 'shoestrap' ), //this is the text from preview box
@@ -93,7 +98,8 @@ function shoestrap_module_typography_options( $sections ) {
       'font-family' => 'Arial, Helvetica, sans-serif',
       'font-size'   => '170%',
       'color'       => '#333333',
-      'google'      => 'false'
+      'google'      => 'false',
+      'font-style'  => 400,
     ),
     'preview'   => array( 
       'text'        => __( 'This is my preview text!', 'shoestrap' ), //this is the text from preview box
@@ -113,7 +119,8 @@ function shoestrap_module_typography_options( $sections ) {
       'font-family' => 'Arial, Helvetica, sans-serif',
       'font-size'   => '125%',
       'color'       => '#333333',
-      'google'      => 'false'
+      'google'      => 'false',
+      'font-style'  => 400,
     ),
     'preview'   => array( 
       'text'    => __( 'This is my preview text!', 'shoestrap' ), //this is the text from preview box
@@ -133,7 +140,8 @@ function shoestrap_module_typography_options( $sections ) {
       'font-family' => 'Arial, Helvetica, sans-serif',
       'font-size'   => '100%',
       'color'       => '#333333',
-      'google'      => 'false'
+      'google'      => 'false',
+      'font-style'  => 400,
     ),
     'preview'       => array( 
       'text'        => __( 'This is my preview text!', 'shoestrap' ), //this is the text from preview box
@@ -153,7 +161,9 @@ function shoestrap_module_typography_options( $sections ) {
       'font-family' => 'Arial, Helvetica, sans-serif',
       'font-size'   => '85%',
       'color'       => '#333333',
-      'google'      => 'false'
+      'google'      => 'false',
+      'font-weight' => 400,
+      'font-style'  => 'normal',
     ),
     'preview'   => array( 
       'text'        => __( 'This is my preview text!', 'shoestrap' ), //this is the text from preview box
