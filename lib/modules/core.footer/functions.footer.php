@@ -15,46 +15,17 @@ function shoestrap_footer_css() {
   $style = 'footer.content-info {';
     $style .= 'color:' . $cl . ';';
 
-    if ( $opacity != 1 && $opacity != "" ) :
-      $style .= 'background: rgba(' . $rgb . ',' . $opacity . ');';
-    else :
-      $style .= 'background:' . $bg . ';';
-    endif;
-
-    if ( !empty($border) && $border['border-top'] > 0 && !empty($border['border-color']) ) :
-      $style .= 'border-top:' . $border['border-top'] . ' ' . $border['border-style'] . ' ' . $border['border-color'] . ';';
-    endif;
-
+    $style .= ( $opacity != 1 && $opacity != "" ) ? 'background: rgba(' . $rgb . ',' . $opacity . ');' : 'background:' . $bg . ';';
+    $style .= ( !empty($border) && $border['border-top'] > 0 && !empty($border['border-color']) ) ? 'border-top:' . $border['border-top'] . ' ' . $border['border-style'] . ' ' . $border['border-color'] . ';' : '';
     $style .= 'padding: 18px 10px 18px;';
-    if ( !empty($top_margin) ) :
-      $style .= 'margin-top:'. $top_margin .'px;';
-    endif;
+    $style .= ( !empty($top_margin) ) ? 'margin-top:'. $top_margin .'px;' : '';
   $style .= '}';
 
-  $style .= 'footer div.container { ';
-    $style .= 'margin-top:'. $container_margin .'px;';
-  $style .= '}';
-
-  $style .= '#copyright-bar { ';
-    $style .= 'line-height: 30px;';
-  $style .= '}';
-
-  $style .= '#footer_social_bar { ';
-    $style .= 'line-height: 30px;';
-    $style .= 'font-size: 16px;';
-    $style .= 'text-align: right;';
-  $style .= '}';
-
-  $style .= '#footer_social_bar a { ';
-    $style .= 'margin-left: 9px;';
-    $style .= 'padding: 3px;';
-    $style .= 'color:' . $cl . ';';
-  $style .= '}';
-
-  $style .= '#footer_social_bar a:hover, #footer_social_bar a:active { ';
-    $style .= 'color:' . $cl_brand . ' !important;';
-    $style .= 'text-decoration:none;';
-  $style .= '}';
+  $style .= 'footer div.container { margin-top:'. $container_margin .'px; }';
+  $style .= '#copyright-bar { line-height: 30px; }';
+  $style .= '#footer_social_bar { line-height: 30px; font-size: 16px; text-align: right; }';
+  $style .= '#footer_social_bar a { margin-left: 9px; padding: 3px; color:' . $cl . '; }';
+  $style .= '#footer_social_bar a:hover, #footer_social_bar a:active { color:' . $cl_brand . ' !important; text-decoration:none; }';
 
   wp_add_inline_style( 'shoestrap_css', $style );
 }
@@ -86,9 +57,7 @@ function shoestrap_footer_html() {
   $blog_name  = get_bloginfo( 'name', 'display' );
   $ftext      = shoestrap_getVariable( 'footer_text' );
 
-  if ( $ftext == '' ) :
-    $ftext = '&copy; [year] [sitename]';
-  endif;
+  $ftext = ( $ftext == '' ) ? '&copy; [year] [sitename]' : $ftext;
 
   $ftext = str_replace( '[year]', date( 'Y' ), $ftext );
   $ftext = str_replace( '[sitename]', $blog_name, $ftext );
@@ -99,15 +68,11 @@ function shoestrap_footer_html() {
   $width = 12;
 
   // Social is enabled, we're modifying the width!
-  if ( intval( $social_width ) > 0 && $social ) :
-    $width = $width - intval($social_width);
-  endif;
+  $width = ( intval( $social_width ) > 0 && $social ) ? $width - intval( $social_width ) : $width;
 
   $social_blank = shoestrap_getVariable( 'footer_social_new_window_toggle' );
 
-  if ( $social_blank == 1 ) :
-    $blank = ' target="_blank"';
-  endif;
+  $blank = ( $social_blank == 1 ) ? ' target="_blank"' : '';
 
   $networks = shoestrap_get_social_links();
 
@@ -119,15 +84,12 @@ function shoestrap_footer_html() {
       <div id="copyright-bar" class="col-lg-<?php echo $width; ?>"><?php echo $ftext; ?></div>
       <?php if ( $social && count( $networks ) > 0 ) : ?>
         <div id="footer_social_bar" class="col-lg-<?php echo $social_width; ?>">
-        <?php
-          foreach ( $networks as $network ) {
-            if ( $network['url'] == '' )
-              continue;
-            ?>
+          <?php foreach ( $networks as $network ) : ?>
+            <?php if ( $network['url'] == '' ) continue; ?>
             <a href="<?php echo $network['url']; ?>"<?php echo $blank;?> title="<?php echo $network['icon']; ?>">
               <span class="icon el-icon-<?php echo $network['icon']; ?>"></span>
             </a>
-          <?php } ?>
+          <?php endforeach; ?>
         </div>
       <?php endif; ?>
     </article>
@@ -141,26 +103,25 @@ function shoestrap_footer_content() {
   $num_of_sidebars = 0;
   $base_class = 'col-md-';
 
-  for ( $i=0; $i<5 ; $i++ ) :
+  for ( $i=0; $i<5 ; $i++ ) {
     $sidebar = 'sidebar-footer-'.$i.'';
-    if ( is_active_sidebar($sidebar) ) :
+    if ( is_active_sidebar( $sidebar ) )
       $num_of_sidebars++;
-    endif;
-  endfor;
+  }
 
   // Showing the active sidebars
-  for ( $i=0; $i<5 ; $i++ ) :
+  for ( $i=0; $i<5 ; $i++ ) {
     $sidebar = 'sidebar-footer-' . $i;
 
-    if ( is_active_sidebar( $sidebar ) ) :
+    if ( is_active_sidebar( $sidebar ) ) {
       // Setting each column width accordingly
       $col_class = 12 / $num_of_sidebars;
     
       echo '<div class="' . $base_class . $col_class . '">';
       dynamic_sidebar( $sidebar );
       echo '</div>';
-    endif;
-  endfor;
+    }
+  }
 
   // Showing extra features from /lib/modules/core.footer/functions.footer.php
   do_action( 'shoestrap_footer_pre_override' );
