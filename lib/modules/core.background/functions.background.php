@@ -15,45 +15,27 @@ function shoestrap_background_css() {
   $fixed            = shoestrap_getVariable( 'background_image_position_toggle' );
 
   // Do not process if there is no need to.
-  if ( $image_toggle == 0 && $pattern_toggle == 0 && $bg_color == $html_bg ) :
+  if ( $image_toggle == 0 && $pattern_toggle == 0 && $bg_color == $html_bg )
     return;
-  endif;
 
-  // Get the background images or patterns
-  if ( $image_toggle == 1 && $bg_img != '' ) :
-    // Image background
-    $background = set_url_scheme( $bg_img['url'] );
-  elseif ( $pattern_toggle == 1 && $bg_pattern != '' ) :
-    // Pattern background
-    $background = set_url_scheme( $bg_pattern );
-  endif;
+  $background = ( $image_toggle == 1 && $bg_img != '' ) ? set_url_scheme( $bg_img['url'] ) : '';
+  $background = ( $pattern_toggle == 1 && $bg_pattern != '' ) ? set_url_scheme( $bg_pattern ) : '';
 
   // The Body background color
   $html_bg    = '#' . str_replace( '#', '', $html_bg ) . ';';
 
   // The Content background color
   $content_bg = '#' . str_replace( '#', '', $bg_color ) . ';';
-  if ( $content_opacity != 100 ) :
-    $content_bg   .= 'background:' . shoestrap_get_rgba( $content_bg, $content_opacity ) . ';';
-  endif;
+  $content_bg .= ( $content_opacity != 100 ) ? 'background:' . shoestrap_get_rgba( $content_bg, $content_opacity ) . ';' : '';
 
-  // Repeat
-  if ( $repeat == 'no-repeat' ) :
-    // no-repeat
-    $repeat .= 'background-size: auto;';
-  elseif ( !in_array( $repeat, array( 'no-repeat', 'repeat-x', 'repeat-y', 'repeat' ) ) ) :
-    // repeat
-    $repeat = 'repeat';
-  endif;
+  $repeat .= ( $repeat == 'no-repeat' ) ? 'background-size: auto;' : $repeat;
+  $repeat = ( !in_array( $repeat, array( 'no-repeat', 'repeat-x', 'repeat-y', 'repeat' ) ) ) ? 'repeat' : $repeat;
 
-  // Position
-  if ( ! in_array( $position, array( 'center', 'right', 'left' ) ) ) :
-    $position = 'left';
-  endif;
+  $position = ( !in_array( $position, array( 'center', 'right', 'left' ) ) ) ? 'left' : $position;
 
   $style = '';
 
-  if ( ( $image_toggle == 1 || $pattern_toggle == 1 ) && isset( $background ) ) :
+  if ( ( $image_toggle == 1 || $pattern_toggle == 1 ) && isset( $background ) ) {
 
     $style .= 'body {';
 
@@ -61,44 +43,32 @@ function shoestrap_background_css() {
     $style .= 'background-image: url( "' . $background . '" );';
 
     // Add the body background color
-    if ( $bg_color != $html_bg ) :
-      $style .= 'background-color: ' . $html_bg . ';';
-    endif;
+    $style .= ( $bg_color != $html_bg ) ? 'background-color: ' . $html_bg . ';' : '';
 
     // Apply fixed positioning for background when needed
-    if ( shoestrap_getVariable( 'background_fixed_toggle' ) == 1 ) :
-      $style .= 'background-attachment: fixed;';
-    endif;
+    $style .= ( shoestrap_getVariable( 'background_fixed_toggle' ) == 1 ) ? 'background-attachment: fixed;' : '';
 
-    if ( $image_toggle == 1 ) :
+    if ( $image_toggle == 1 ) {
       // Background image positioning
-      if ( $fixed == 0 ) :
+      if ( $fixed == 0 ) {
         // cover
         $style .= 'background-size: cover;';
         $style .= '-webkit-background-size: cover;';
         $style .= '-moz-background-size: cover;';
         $style .= '-o-background-size: cover;';
         $style .= 'background-position: 50% 50%;';
-      else :
+      } else {
         $style .= ' background-repeat: ' . $repeat . ';';
         $style .= ' background-position: top ' . $position . ';';
-      endif;
-    endif;
+      }
+    }
     $style .= '}';
-  else :
+  } else {
     // Add the body background color
-    if ( $bg_color != $html_bg ) :
-      $style .= 'body {';
-      $style .= 'background-color: ' . $html_bg . ';';
-      $style .= '}';
-    endif;
-  endif;
+    $style .= ( $bg_color != $html_bg ) ? 'body { background-color: ' . $html_bg . '; }' : '';
+  }
 
-  if ( $bg_color != $html_bg ) :
-    $style .= '.wrap.main-section .content .bg {';
-    $style .= 'background: ' . $content_bg . ';';
-    $style .= '}';
-  endif;
+  $style .= ( $bg_color != $html_bg ) ? '.wrap.main-section .content .bg { background: ' . $content_bg . '; }' : '';
 
   wp_add_inline_style( 'shoestrap_css', $style );
 }
