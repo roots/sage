@@ -14,29 +14,26 @@ function shoestrap_get_rgb( $hex, $implode = false ) {
   // Remove any trailing '#' symbols from the color value
   $hex = str_replace( '#', '', $hex );
 
-  if ( strlen( $hex ) == 3 ) :
+  if ( strlen( $hex ) == 3 ) {
     // If the color is entered using a short, 3-character format,
     // then find the rgb values from them
     $red    = hexdec( substr( $hex, 0, 1 ) . substr( $hex, 0, 1 ) );
     $green  = hexdec( substr( $hex, 1, 1 ) . substr( $hex, 1, 1 ) );
     $blue   = hexdec( substr( $hex, 2, 1 ) . substr( $hex, 2, 1 ) );
-  else :
+  } else {
     // If the color is entered using a 6-character format,
     // then find the rgb values from them
     $red    = hexdec( substr( $hex, 0, 2 ) );
     $green  = hexdec( substr( $hex, 2, 2 ) );
     $blue   = hexdec( substr( $hex, 4, 2 ) );
-  endif;
+  }
 
   // rgb is an array
   $rgb = array( $red, $green, $blue );
-  if ( $implode ) :
-    // returns the rgb values separated by commas
+  if ( $implode )
     return implode( ',', $rgb );
-  else :
-    // returns an array with the rgb values
+  else
     return $rgb;
-  endif;
 }
 endif;
 
@@ -46,37 +43,30 @@ if ( !function_exists( 'shoestrap_get_rgba' ) ) :
  * Gets the rgba value of a color.
  */
 function shoestrap_get_rgba( $hex = '#fff', $opacity = 100, $echo = false ) {
-  // Make sure that opacity is properly formatted
-  if ( $opacity >= 100 ) :
-    // Set the opacity to 100 if a larger value has been entered by mistake
+  // Make sure that opacity is properly formatted :
+  // Set the opacity to 100 if a larger value has been entered by mistake.
+  // If a negative value is used, then set to 0.
+  // If an opacity value is entered in a decimal form (for example 0.25), then multiply by 100.
+  if ( $opacity >= 100 )
     $opacity = 100;
-  elseif ( $opacity < 0 ) :
-    // If a negative value is used, then set to 0
+  elseif ( $opacity < 0 )
     $opacity = 0;
-  elseif ( $opacity < 1 && $opacity != 0 ) :
-    // If an opacity value is entered in a decimal form
-    // for example 0.25, then multiply by 100
-    // (this is required for our calculations later on)
+  elseif ( $opacity < 1 && $opacity != 0 )
     $opacity = ( $opacity * 100 );
-  else :
-    // If a value is entered between 1 and 0, then use that value.
-    // Values smaller than 1 and larger than 0 are considered as 
-    // decimal input format and are multiplied by 100
+  else
     $opacity = $opacity;
-  endif;
 
   // Divide the opacity by 100 to end-up with a CSS value for the opacity
   $opacity = ( $opacity / 100 );
 
-
   $color = 'rgba(' . shoestrap_get_rgb( $hex, true ) . ', ' . $opacity . ')';
 
   // Echo or Return the value
-  if ( $echo == true ) :
+  if ( $echo == true )
     echo $color;
-  else :
+  else
     return $color;
-  endif;
+
 }
 endif;
 
@@ -111,10 +101,7 @@ function shoestrap_adjust_brightness( $hex, $steps ) {
 
   // Format the hex color string
   $hex = str_replace( '#', '', $hex );
-
-  if ( strlen( $hex ) == 3 ) :
-    $hex = str_repeat( substr( $hex, 0, 1 ), 2 ) . str_repeat( substr( $hex, 1, 1 ), 2 ) . str_repeat( substr( $hex, 2, 1 ), 2 );
-  endif;
+  $hex = ( strlen( $hex ) == 3 ) ? str_repeat( substr( $hex, 0, 1 ), 2 ) . str_repeat( substr( $hex, 1, 1 ), 2 ) . str_repeat( substr( $hex, 2, 1 ), 2 ) : $hex;
 
   // Get decimal values
   $red    = hexdec( substr( $hex, 0, 2 ) );
@@ -134,6 +121,7 @@ function shoestrap_adjust_brightness( $hex, $steps ) {
 }
 endif;
 
+
 if ( !function_exists( 'shoestrap_mix_colors' ) ) :
 /*
  * Mixes 2 hex colors.
@@ -144,14 +132,10 @@ function shoestrap_mix_colors( $hex1, $hex2, $percentage ) {
 
   // Format the hex color string
   $hex1 = str_replace( '#', '', $hex1 );
-  if ( strlen( $hex1 ) == 3 ) :
-    $hex1 = str_repeat( substr( $hex1, 0, 1 ), 2 ) . str_repeat( substr( $hex1, 1, 1 ), 2 ) . str_repeat( substr( $hex1, 2, 1 ), 2 );
-  endif;
+  $hex1 = ( strlen( $hex1 ) == 3 ) ? str_repeat( substr( $hex1, 0, 1 ), 2 ) . str_repeat( substr( $hex1, 1, 1 ), 2 ) . str_repeat( substr( $hex1, 2, 1 ), 2 ) : $hex1;
 
   $hex2 = str_replace( '#', '', $hex2 );
-  if ( strlen( $hex2 ) == 3 ) :
-    $hex2 = str_repeat( substr( $hex2, 0, 1 ), 2 ) . str_repeat( substr( $hex2, 1, 1 ), 2 ) . str_repeat( substr( $hex2, 2, 1 ), 2 );
-  endif;
+  $hex2 = ( strlen( $hex2 ) == 3 ) ? str_repeat( substr( $hex2, 0, 1 ), 2 ) . str_repeat( substr( $hex2, 1, 1 ), 2 ) . str_repeat( substr( $hex2, 2, 1 ), 2 ) : $hex2;
 
   // Get decimal values
   $red_1    = hexdec( substr( $hex1, 0, 2 ) );
@@ -173,6 +157,7 @@ function shoestrap_mix_colors( $hex1, $hex2, $percentage ) {
 }
 endif;
 
+
 if ( !function_exists( 'shoestrap_getVariable' ) ) :
 /*
  * Gets the current values from REDUX, and if not there, grabs the defaults
@@ -184,18 +169,13 @@ function shoestrap_getVariable( $name, $key = false ) {
   // Set this to your preferred default value
   $var = '';
 
-  if ( empty( $name ) && !empty( $options ) ) :
+  if ( empty( $name ) && !empty( $options ) ) {
     $var = $options;
-  else :
-    if ( !empty( $options[$name] ) ) :
-      if ( !empty( $key ) && !empty( $options[$name][$key] ) && $key !== true ) :
-        $var = $options[$name][$key];
-      else :
-        $var = $options[$name];
-      endif;
-    endif;
-  endif;
-
+  } else {
+    if ( !empty( $options[$name] ) ) {
+      $var = ( !empty( $key ) && !empty( $options[$name][$key] ) && $key !== true ) ? $options[$name][$key] : $var = $options[$name];;
+    }
+  }
   return $var;
 }
 endif;
@@ -241,10 +221,10 @@ if ( !function_exists( 'shoestrap_init_filesystem' ) ) :
  * Initialize the Wordpress filesystem, no more using file_put_contents function
  */
 function shoestrap_init_filesystem() {
-  if ( empty( $wp_filesystem ) ) :
+  if ( empty( $wp_filesystem ) ) {
     require_once(ABSPATH .'/wp-admin/includes/file.php');
     WP_Filesystem();
-  endif;
+  }
 }
 endif;
 add_filter('init', 'shoestrap_init_filesystem');
