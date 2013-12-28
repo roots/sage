@@ -10,23 +10,21 @@ function shoestrap_getLayout() {
   if ( !isset( $shoestrap_layout ) ) {
     do_action( 'shoestrap_layout_modifier' );
     // Looking for a per-page template ?
-    if ( is_page_template() ) {
-      if ( is_page_template( 'template-0.php' ) )
+      if ( is_page_template() && is_page_template( 'template-0.php' ) )
         $shoestrap_layout = 0;
-      elseif ( is_page_template( 'template-1.php' ) )
+      elseif ( is_page_template() && is_page_template( 'template-1.php' ) )
         $shoestrap_layout = 1;
-      elseif ( is_page_template( 'template-2.php' ) )
+      elseif ( is_page_template() && is_page_template( 'template-2.php' ) )
         $shoestrap_layout = 2;
-      elseif ( is_page_template( 'template-3.php' ) )
+      elseif ( is_page_template() && is_page_template( 'template-3.php' ) )
         $shoestrap_layout = 3;
-      elseif ( is_page_template( 'template-4.php' ) )
+      elseif ( is_page_template() && is_page_template( 'template-4.php' ) )
         $shoestrap_layout = 4;
-      elseif ( is_page_template( 'template-5.php' ) )
+      elseif ( is_page_template() && is_page_template( 'template-5.php' ) )
         $shoestrap_layout = 5;
       else
         $shoestrap_layout = intval( shoestrap_getVariable( 'layout' ) );
 
-    }
     // Use default setting if $shoestrap_layout not set yet
     if ( !isset( $shoestrap_layout ) ) {
       $post_types = get_post_types( array( 'public' => true ), 'names' );
@@ -78,7 +76,6 @@ function shoestrap_section_class( $target, $echo = false ) {
 
     if ( $layout == 5 ) {
       $main       = $base . ( 12 - floor( ( 12 * $first ) / ( 12 - $second ) ) );
-
       $primary    = $base . floor( ( 12 * $first ) / ( 12 - $second ) );
       $secondary  = $base . $second;
       $wrapper    = $base . ( 12 - $second );
@@ -110,7 +107,7 @@ function shoestrap_section_class( $target, $echo = false ) {
   // Overrides the main region class when on the frontpage and sidebars are set to not being displayed there.
   if ( is_front_page() && shoestrap_getVariable( 'layout_sidebar_on_front' ) != 1 ) {
     $main      = $base . 12;
-    $wrapper    = NULL;
+    $wrapper   = NULL;
   }
 
   if ( $target == 'primary' )

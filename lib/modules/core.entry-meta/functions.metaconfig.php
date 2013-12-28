@@ -20,7 +20,6 @@ function shoestrap_meta_custom_render() {
   if ( !is_array( $metaconfig ) || !isset( $metaconfig['enabled'] ) || empty( $metaconfig ) )
     return;
 
-
   $metaelements = $metaconfig['enabled'];
   // remove the weird placebo element if it exists
   unset( $metaelements['placebo'] );
