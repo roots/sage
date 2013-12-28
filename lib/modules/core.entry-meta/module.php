@@ -22,12 +22,12 @@ function shoestrap_module_meta_config( $sections ) {
     'options'     => array(
       "disabled"  => array (
         "tags"    => "Tags",
-        "sticky"  => "Sticky"
-      ),
-      "enabled"   => array (
+        "sticky"  => "Sticky",
         "date"    => "Date",
         "category"=> "Category",
-        "author"  => "Author",
+        "author"  => "Author"
+      ),
+      "enabled"   => array (
       )
     ),
     'type'        => 'sorter'
