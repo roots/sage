@@ -46,7 +46,7 @@ function shoestrap_breadcrumb( $prepend = '', $delimiter = '', $wrap_before = ''
 
       // Add category parents
       if ( $this_category->parent != 0 )
-        echo get_category_parents( get_category( $this_category->parent ), TRUE, $delimiter );
+        echo $before . get_category_parents( get_category( $this_category->parent ), TRUE, $delimiter ) . $after;
 
       echo $before . single_cat_title( '', false ) . $after;
 
