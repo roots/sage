@@ -5,7 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 if ( !function_exists( 'shoestrap_breadcrumbs' ) ) :
 function shoestrap_breadcrumbs() {
   // No breadcrumbs on the front page
-  if ( is_front_page() )
+  if ( is_front_page() || shoestrap_getVariable('breadcrumbs') == 0 )
     return;
 
   $prepend = '';
