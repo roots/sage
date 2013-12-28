@@ -108,7 +108,7 @@ msgstr "Přidá všechny aktuálně publikované stránky do hlavního menu"
 
 #: lib/cleanup.php:210
 msgid "Continued"
-msgstr "Pokračoval"
+msgstr "Číst dále"
 
 #: lib/init.php:11
 msgid "Primary Navigation"
