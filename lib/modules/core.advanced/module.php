@@ -42,10 +42,10 @@ function shoestrap_module_advanced_options( $sections ) {
   );
   
   $fields[] = array( 
-    'title'     => __( 'Post excerpt link text', 'shoestrap' ),
-    'desc'      => __( 'Text to display in case of excerpt too long. Default: Continue', 'shoestrap' ),
+    'title'     => __( '"more" text', 'shoestrap' ),
+    'desc'      => __( 'Text to display in case of excerpt too long. Default: Continued', 'shoestrap' ),
     'id'        => 'post_excerpt_link_text',
-    'default'   => __('Continue', 'shoestrap'),
+    'default'   => __( 'Continued', 'roots' ),
     'type'      => 'text'
   );
 

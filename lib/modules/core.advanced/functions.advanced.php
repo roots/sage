@@ -84,3 +84,12 @@ function shoestrap_core_blog_comments_toggle() {
 }
 endif;
 add_action( 'init','shoestrap_core_blog_comments_toggle', 1 );
+
+
+if ( !function_exists( 'shoestrap_excerpt_more' ) ) :
+function shoestrap_excerpt_more( $more ) {
+  $continue_text = shoestrap_getVariable( 'post_excerpt_link_text' );
+  return ' &hellip; <a href="' . get_permalink() . '">' . $continue_text . '</a>';
+}
+endif;
+add_filter('excerpt_more', 'shoestrap_excerpt_more');
