@@ -11,19 +11,27 @@ if ( !function_exists( 'shoestrap_css' ) ) :
  */
 function shoestrap_css( $target = 'path', $echo = false ) {
   global $blog_id;
-  $defaultfile = '/assets/css/style';
 
+  $defaultfile = '/assets/css/style';
   // If this is a multisite installation, append the blogid to the filename
   $cssid    = ( is_multisite() && $blog_id > 1 ) ? '_id-' . $blog_id : null;
 
   $css_uri  = get_template_directory_uri() . $defaultfile . $cssid . '.css';
-  $css_path = ( is_child_theme() && is_writable( get_stylesheet_directory() . $defaultfile . $cssid . '.css' ) ) ? get_stylesheet_directory() . $defaultfile . $cssid . '.css' : get_template_directory() . $defaultfile . $cssid . '.css';
+  $css_path = get_template_directory() . $defaultfile . $cssid . '.css';
 
-  $child_style_writable = ( is_child_theme() && is_writable( get_stylesheet_directory() . $defaultfile . $cssid . '.css' ) ) ? true : false;
+  if ( !is_writable( $css_path ) )
+    $css_uri = get_template_directory_uri() . $defaultfile . '-default.css';
 
-  $css_uri = ( !is_writable( $css_path ) ) ? get_template_directory_uri() . $defaultfile . '-default.css' : $css_uri;
-  $css_uri = ( $child_style_writable ) ? get_stylesheet_directory_uri() . $defaultfile . $cssid . '.css' : $css_uri;
-  $css_uri = ( !$child_style_writable && is_writable( get_stylesheet_directory() . $defaultfile . '-default.css' ) ) ? get_stylesheet_directory_uri() . '/assets/css/style-default.css' : $css_uri;
+  if ( is_child_theme() ) {
+    $child_style = get_stylesheet_directory() . $defaultfile . $cssid . '.css';
+    $child_style_writable = ( is_writable( $child_style ) ) ? true : false;
+
+    if ( $child_style_writable ) {
+      $css_path = $child_style;
+      $css_url  = get_stylesheet_directory_uri() . $defaultfile . $cssid . '.css';
+      $css_uri  = get_template_directory_uri() . $defaultfile . '-default.css';
+    }
+  }
 
   $return = ( $target == 'url' ) ? $css_uri : $css_path;
 
