@@ -18,22 +18,22 @@ if ( !function_exists( 'shoestrap_widgets_init' ) ) :
 function shoestrap_widgets_init() {
   $widgets_mode = shoestrap_getVariable( 'widgets_mode' );
   
-  if ( $widgets_mode == 0 ) :
+  if ( $widgets_mode == 0 ) {
     $class        = 'panel panel-default';
     $before_title = '<div class="panel-heading">';
     $after_title  = '</div><div class="panel-body">';
   
-  elseif ( $widgets_mode == 1 ) :
+  } elseif ( $widgets_mode == 1 ) {
     $class        = 'well';
     $before_title = '<h3 class="widget-title">';
     $after_title  = '</h3>';
 
-  else :
+  } else {
     $class        = '';
     $before_title = '<h3 class="widget-title">';
     $after_title  = '</h3>';
 
-  endif;
+  }
 
   // Sidebars
   register_sidebar( array(
