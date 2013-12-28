@@ -154,7 +154,7 @@ function shoestrap_breadcrumb( $prepend = '', $delimiter = '', $wrap_before = ''
 
       while ( $parent_id ) {
         $page = get_page( $parent_id );
-        $breadcrumbs[] = '<a href="' . get_permalink( $page->ID ) . '" itemprop="url title">' . get_the_title( $page->ID ) . '</a>';
+        $breadcrumbs[] = $before . '<a href="' . get_permalink( $page->ID ) . '" itemprop="url title">' . get_the_title( $page->ID ) . '</a>' . $after;
         $parent_id  = $page->post_parent;
       }
 
