@@ -146,11 +146,8 @@ function shoestrap_layout_body_class( $classes ) {
   $margin     = shoestrap_getVariable( 'navbar_margin_top' );
   $style      = '';
 
-  if ( $layout == 2 || $layout == 3 || $layout == 5 )
-    $classes[] = 'main-float-right';
-
-  if ( $site_style == 'boxed' && $margin != 0 )
-    $classes[] = 'boxed-style';
+  $classes[] = ( $layout == 2 || $layout == 3 || $layout == 5 ) ? 'main-float-right' : '';
+  $classes[] = ( $site_style == 'boxed' && $margin != 0 ) ? 'boxed-style' : '';
 
   // Remove unnecessary classes
   $remove_classes = array();
