@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: 404.php:4
@@ -19,7 +19,7 @@ msgstr ""
 msgid "an out-of-date link"
 msgstr ""
 
-#: base.php:4
+#: base.php:6
 msgid "You are using an <strong>outdated</strong> browser. Please <a href=\"http://browsehappy.com/\">upgrade your browser</a> to improve your experience."
 msgstr ""
 
@@ -39,69 +39,61 @@ msgstr ""
 msgid "Theme Activation"
 msgstr ""
 
-#: lib/activation.php:51
+#: lib/activation.php:50
 msgid "%s Theme Activation"
 msgstr ""
 
-#: lib/activation.php:62 lib/activation.php:64
+#: lib/activation.php:52
+msgid "These settings are optional and should usually be used only on a fresh installation"
+msgstr ""
+
+#: lib/activation.php:59 lib/activation.php:62
 msgid "Create static front page?"
 msgstr ""
 
-#: lib/activation.php:66 lib/activation.php:79 lib/activation.php:92
-#: lib/activation.php:105 lib/activation.php:118
+#: lib/activation.php:64 lib/activation.php:76 lib/activation.php:88
+#: lib/activation.php:100
 msgid "Yes"
 msgstr ""
 
-#: lib/activation.php:67 lib/activation.php:80 lib/activation.php:93
-#: lib/activation.php:106 lib/activation.php:119
+#: lib/activation.php:65 lib/activation.php:77 lib/activation.php:89
+#: lib/activation.php:101
 msgid "No"
 msgstr ""
 
-#: lib/activation.php:70
+#: lib/activation.php:67
 msgid "Create a page called Home and set it to be the static front page"
 msgstr ""
 
-#: lib/activation.php:75
+#: lib/activation.php:71
 msgid "Change permalink structure?"
 msgstr ""
 
-#: lib/activation.php:77
+#: lib/activation.php:74
 msgid "Update permalink structure?"
 msgstr ""
 
-#: lib/activation.php:83
+#: lib/activation.php:79
 msgid "Change permalink structure to /&#37;postname&#37;/"
 msgstr ""
 
-#: lib/activation.php:88
-msgid "Change uploads folder?"
-msgstr ""
-
-#: lib/activation.php:90
-msgid "Update uploads folder?"
-msgstr ""
-
-#: lib/activation.php:96
-msgid "Change uploads folder to /media/ instead of /wp-content/uploads/"
-msgstr ""
-
-#: lib/activation.php:101 lib/activation.php:103
+#: lib/activation.php:83 lib/activation.php:86
 msgid "Create navigation menu?"
 msgstr ""
 
-#: lib/activation.php:109
+#: lib/activation.php:91
 msgid "Create the Primary Navigation menu and set the location"
 msgstr ""
 
-#: lib/activation.php:114 lib/activation.php:116
+#: lib/activation.php:95 lib/activation.php:98
 msgid "Add pages to menu?"
 msgstr ""
 
-#: lib/activation.php:122
+#: lib/activation.php:103
 msgid "Add all current published pages to the Primary Navigation"
 msgstr ""
 
-#: lib/cleanup.php:210
+#: lib/cleanup.php:193
 msgid "Continued"
 msgstr ""
 
@@ -211,27 +203,27 @@ msgstr ""
 msgid "Log out &raquo;"
 msgstr ""
 
-#: templates/comments.php:57
+#: templates/comments.php:58
 msgid "Name"
 msgstr ""
 
-#: templates/comments.php:57 templates/comments.php:59
+#: templates/comments.php:58 templates/comments.php:62
 msgid " (required)"
 msgstr ""
 
-#: templates/comments.php:59
+#: templates/comments.php:62
 msgid "Email (will not be published)"
 msgstr ""
 
-#: templates/comments.php:61
+#: templates/comments.php:66
 msgid "Website"
 msgstr ""
 
-#: templates/comments.php:64
+#: templates/comments.php:71
 msgid "Comment"
 msgstr ""
 
-#: templates/comments.php:66
+#: templates/comments.php:74
 msgid "Submit Comment"
 msgstr ""
 
@@ -243,10 +235,10 @@ msgstr ""
 msgid "By"
 msgstr ""
 
-#: templates/searchform.php:2
-msgid "Search for:"
+#: templates/searchform.php:3 templates/searchform.php:6
+msgid "Search"
 msgstr ""
 
-#: templates/searchform.php:3 templates/searchform.php:4
-msgid "Search"
+#: templates/searchform.php:4
+msgid "Search for:"
 msgstr ""
