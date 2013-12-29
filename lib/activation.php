@@ -85,19 +85,6 @@ function roots_theme_activation_options_render_page() { ?>
           </td>
         </tr>
 
-        <tr valign="top"><th scope="row"><?php _e('Change uploads folder?', 'roots'); ?></th>
-          <td>
-            <fieldset><legend class="screen-reader-text"><span><?php _e('Update uploads folder?', 'roots'); ?></span></legend>
-              <select name="roots_theme_activation_options[change_uploads_folder]" id="change_uploads_folder">
-                <option selected="selected" value="true"><?php echo _e('Yes', 'roots'); ?></option>
-                <option value="false"><?php echo _e('No', 'roots'); ?></option>
-              </select>
-              <br>
-              <small class="description"><?php printf(__('Change uploads folder to /media/ instead of /wp-content/uploads/', 'roots')); ?></small>
-            </fieldset>
-          </td>
-        </tr>
-
         <tr valign="top"><th scope="row"><?php _e('Create navigation menu?', 'roots'); ?></th>
           <td>
             <fieldset><legend class="screen-reader-text"><span><?php _e('Create navigation menu?', 'roots'); ?></span></legend>
@@ -183,17 +170,6 @@ function roots_theme_activation_action() {
       global $wp_rewrite;
       $wp_rewrite->set_permalink_structure('/%postname%/');
       flush_rewrite_rules();
-    }
-  }
-
-  if ($roots_theme_activation_options['change_uploads_folder'] === 'true') {
-    $roots_theme_activation_options['change_uploads_folder'] = false;
-
-    update_option('uploads_use_yearmonth_folders', 0);
-    if (!is_multisite()) {
-      update_option('upload_path', 'media');
-    } else {
-      update_option('upload_path', '');
     }
   }
 
