@@ -12,20 +12,16 @@ module.exports = function(grunt) {
         '!assets/js/scripts.min.js'
       ]
     },
-    less: {
+    sass: {
       dist: {
+        options: {
+          style: 'compressed',
+					compass: true
+        },
         files: {
           'assets/css/main.min.css': [
-            'assets/less/app.less'
+            'assets/sass/app.scss'
           ]
-        },
-        options: {
-          compress: true,
-          // LESS source map
-          // To enable, set sourceMap to true and update sourceMapRootpath based on your install
-          sourceMap: false,
-          sourceMapFilename: 'assets/css/main.min.css.map',
-          sourceMapRootpath: '/app/themes/roots/'
         }
       }
     },
@@ -66,12 +62,12 @@ module.exports = function(grunt) {
       }
     },
     watch: {
-      less: {
+      sass: {
         files: [
-          'assets/less/*.less',
-          'assets/less/bootstrap/*.less'
+          'assets/sass/*.scss',
+          'assets/sass/bootstrap/*.scss'
         ],
-        tasks: ['less', 'version']
+        tasks: ['sass', 'version']
       },
       js: {
         files: [
@@ -106,13 +102,13 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-contrib-less');
+  grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-wp-version');
 
   // Register tasks
   grunt.registerTask('default', [
     'clean',
-    'less',
+    'sass',
     'uglify',
     'version'
   ]);
