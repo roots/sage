@@ -48,70 +48,63 @@ function roots_get_theme_activation_options() {
 function roots_theme_activation_options_render_page() { ?>
   <div class="wrap">
     <h2><?php printf(__('%s Theme Activation', 'roots'), wp_get_theme()); ?></h2>
+    <div class="update-nag">
+      <?php _e('These settings are optional and should usually be used only on a fresh installation', 'roots'); ?>
+    </div>
     <?php settings_errors(); ?>
 
     <form method="post" action="options.php">
-
-      <?php
-        settings_fields('roots_activation_options');
-      ?>
-
+      <?php settings_fields('roots_activation_options'); ?>
       <table class="form-table">
-
         <tr valign="top"><th scope="row"><?php _e('Create static front page?', 'roots'); ?></th>
           <td>
-            <fieldset><legend class="screen-reader-text"><span><?php _e('Create static front page?', 'roots'); ?></span></legend>
+            <fieldset>
+              <legend class="screen-reader-text"><span><?php _e('Create static front page?', 'roots'); ?></span></legend>
               <select name="roots_theme_activation_options[create_front_page]" id="create_front_page">
                 <option selected="selected" value="true"><?php echo _e('Yes', 'roots'); ?></option>
                 <option value="false"><?php echo _e('No', 'roots'); ?></option>
               </select>
-              <br>
-              <small class="description"><?php printf(__('Create a page called Home and set it to be the static front page', 'roots')); ?></small>
+              <p class="description"><?php printf(__('Create a page called Home and set it to be the static front page', 'roots')); ?></p>
             </fieldset>
           </td>
         </tr>
-
         <tr valign="top"><th scope="row"><?php _e('Change permalink structure?', 'roots'); ?></th>
           <td>
-            <fieldset><legend class="screen-reader-text"><span><?php _e('Update permalink structure?', 'roots'); ?></span></legend>
+            <fieldset>
+              <legend class="screen-reader-text"><span><?php _e('Update permalink structure?', 'roots'); ?></span></legend>
               <select name="roots_theme_activation_options[change_permalink_structure]" id="change_permalink_structure">
                 <option selected="selected" value="true"><?php echo _e('Yes', 'roots'); ?></option>
                 <option value="false"><?php echo _e('No', 'roots'); ?></option>
               </select>
-              <br>
-              <small class="description"><?php printf(__('Change permalink structure to /&#37;postname&#37;/', 'roots')); ?></small>
+              <p class="description"><?php printf(__('Change permalink structure to /&#37;postname&#37;/', 'roots')); ?></p>
             </fieldset>
           </td>
         </tr>
-
         <tr valign="top"><th scope="row"><?php _e('Create navigation menu?', 'roots'); ?></th>
           <td>
-            <fieldset><legend class="screen-reader-text"><span><?php _e('Create navigation menu?', 'roots'); ?></span></legend>
+            <fieldset>
+              <legend class="screen-reader-text"><span><?php _e('Create navigation menu?', 'roots'); ?></span></legend>
               <select name="roots_theme_activation_options[create_navigation_menus]" id="create_navigation_menus">
                 <option selected="selected" value="true"><?php echo _e('Yes', 'roots'); ?></option>
                 <option value="false"><?php echo _e('No', 'roots'); ?></option>
               </select>
-              <br>
-              <small class="description"><?php printf(__('Create the Primary Navigation menu and set the location', 'roots')); ?></small>
+              <p class="description"><?php printf(__('Create the Primary Navigation menu and set the location', 'roots')); ?></p>
             </fieldset>
           </td>
         </tr>
-
         <tr valign="top"><th scope="row"><?php _e('Add pages to menu?', 'roots'); ?></th>
           <td>
-            <fieldset><legend class="screen-reader-text"><span><?php _e('Add pages to menu?', 'roots'); ?></span></legend>
+            <fieldset>
+              <legend class="screen-reader-text"><span><?php _e('Add pages to menu?', 'roots'); ?></span></legend>
               <select name="roots_theme_activation_options[add_pages_to_primary_navigation]" id="add_pages_to_primary_navigation">
                 <option selected="selected" value="true"><?php echo _e('Yes', 'roots'); ?></option>
                 <option value="false"><?php echo _e('No', 'roots'); ?></option>
               </select>
-              <br>
-              <small class="description"><?php printf(__('Add all current published pages to the Primary Navigation', 'roots')); ?></small>
+              <p class="description"><?php printf(__('Add all current published pages to the Primary Navigation', 'roots')); ?></p>
             </fieldset>
           </td>
         </tr>
-
       </table>
-
       <?php submit_button(); ?>
     </form>
   </div>
