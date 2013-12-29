@@ -180,9 +180,10 @@ function shoestrap_module_jumbotron_options($sections) {
     'compiler'  => true,
     'default'   => array(
       'font-family' => 'Arial, Helvetica, sans-serif',
-      'font-size'   => '16px',
+      'font-size'   => 20,
       'color'       => '#333333',
       'google'      => 'false',
+      'units'       => 'px'
     ),
     'preview'   => array(
       'text'    => __( 'This is my preview text!', 'shoestrap' ), //this is the text from preview box
