@@ -12,15 +12,11 @@ module.exports = function(grunt) {
         '!assets/js/scripts.min.js'
       ]
     },
-    compass: {
+    sass: {
       dist: {
         options: {
-          sassDir: 'assets/sass',
-          cssDir: 'assets/css',
-          imagesDir: 'assets/img',
-          outputStyle: 'compressed',
-          relativeAssets: true,
-          environment: 'production'
+          style: 'compressed',
+					compass: true
         },
         files: {
           'assets/css/main.min.css': [
@@ -66,7 +62,7 @@ module.exports = function(grunt) {
       }
     },
     watch: {
-      compass: {
+      sass: {
         files: [
           'assets/sass/*.scss',
           'assets/sass/bootstrap/*.scss'
@@ -106,13 +102,13 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-contrib-compass');
+  grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-wp-version');
 
   // Register tasks
   grunt.registerTask('default', [
     'clean',
-    'compass',
+    'sass',
     'uglify',
     'version'
   ]);
