@@ -16,17 +16,17 @@ module.exports = function(grunt) {
       dist: {
         options: {
           sassDir: 'assets/sass',
-					cssDir: 'assets/css',
-					imagesDir: 'assets/img',
-					outputStyle: 'compressed',
-					relativeAssets: true,
-					environment: 'production'
+          cssDir: 'assets/css',
+          imagesDir: 'assets/img',
+          outputStyle: 'compressed',
+          relativeAssets: true,
+          environment: 'production'
         },
-				files: {
-					'assets/css/main.min.css': [
-						'assets/sass/app.scss'
-					]
-				}
+        files: {
+          'assets/css/main.min.css': [
+            'assets/sass/app.scss'
+          ]
+        }
       }
     },
     uglify: {
