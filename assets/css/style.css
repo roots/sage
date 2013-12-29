@@ -696,7 +696,7 @@ pre code {
 }
 @media (min-width: 1200px) {
   .container {
-    width: 1185px;
+    width: 1170px;
   }
 }
 .row {
@@ -4645,16 +4645,16 @@ a.list-group-item.active > .badge,
 .jumbotron {
   padding: 30px;
   margin-bottom: 30px;
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 200;
   line-height: 2.1428571435;
-  color: inherit;
+  color: #333333;
   background-color: #eeeeee;
 }
 .jumbotron h1,
 .jumbotron .h1 {
   line-height: 1;
-  color: inherit;
+  color: #333333;
 }
 .jumbotron p {
   line-height: 1.4;
@@ -7901,11 +7901,9 @@ li.dropdown ul.dropdown-menu li.dropdown.pull-left {
   padding: 30px;
   margin-bottom: 30px;
   line-height: 2.1428571435;
-  font-size: 16px;
   font-weight: inherit;
   font-style: inherit;
   font-family: Arial, Helvetica, sans-serif;
-  color: #333333;
   background-color: #eeeeee;
 }
 .jumbotron h1,
@@ -7917,7 +7915,6 @@ li.dropdown ul.dropdown-menu li.dropdown.pull-left {
   font-weight: inherit;
   font-style: inherit;
   font-family: Arial, Helvetica, sans-serif;
-  color: #333333;
 }
 .jumbotron p {
   line-height: 1.4;

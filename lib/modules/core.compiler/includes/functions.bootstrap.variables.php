@@ -613,10 +613,10 @@ $variables = '
 // -------------------------
 
 @jumbotron-padding:              (@border-radius-large * 5);
-@jumbotron-color:                inherit;
+@jumbotron-color:                ' . $jumbotron_text_color . ';
 @jumbotron-bg:                   ' . $jumbotron_bg . ';
-@jumbotron-heading-color:        inherit;
-@jumbotron-font-size:            ceil(@font-size-base * 1.5);
+@jumbotron-heading-color:        ' . $jumbotron_headers_text_color . ';
+@jumbotron-font-size:            ' . $font_jumbotron['font-size'] . 'px;
 
 
 // Form states and alerts
@@ -879,7 +879,7 @@ $variables = '
 @container-md:               @container-desktop;
 
 // Large screen / wide desktop
-@container-large-desktop:    ' . ( $screen_large_desktop - ( $gutter / 2 ) ). 'px;
+@container-large-desktop:    ' . ( $screen_large_desktop - $gutter ). 'px;
 @container-lg:                 @container-large-desktop;
 
 
@@ -898,16 +898,13 @@ $variables = '
 @brand-font-family:       ' . $font_brand['font-family'] . ';
 @brand-font-color:        ' . $brand_text_color . ';
 
-@jumbotron-font-size:         ' . $font_jumbotron['font-size'] . 'px;
 @jumbotron-font-weight:       ' . $font_jumbotron['font-weight'] . ';
 @jumbotron-font-style:        ' . $font_jumbotron['font-style'] . ';
 @jumbotron-font-family:       ' . $font_jumbotron['font-family'] . ';
-@jumbotron-font-color:        ' . $jumbotron_text_color . ';
 
 @jumbotron-headers-font-weight:       ' . $font_jumbotron_headers_weight . ';
 @jumbotron-headers-font-style:        ' . $font_jumbotron_headers_style . ';
 @jumbotron-headers-font-family:       ' . $font_jumbotron_headers_face . ';
-@jumbotron-headers-font-color:        ' . $jumbotron_headers_text_color . ';
 
 // H1
 @heading-h1-face:         ' . $font_h1_face . ';
