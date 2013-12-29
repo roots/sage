@@ -12,21 +12,21 @@ module.exports = function(grunt) {
         '!assets/js/scripts.min.js'
       ]
     },
-    less: {
+    compass: {
       dist: {
-        files: {
-          'assets/css/main.min.css': [
-            'assets/less/app.less'
-          ]
-        },
         options: {
-          compress: true,
-          // LESS source map
-          // To enable, set sourceMap to true and update sourceMapRootpath based on your install
-          sourceMap: false,
-          sourceMapFilename: 'assets/css/main.min.css.map',
-          sourceMapRootpath: '/app/themes/roots/'
-        }
+          sassDir: 'assets/sass',
+					cssDir: 'assets/css',
+					imagesDir: 'assets/img',
+					outputStyle: 'compressed',
+					relativeAssets: true,
+					environment: 'production'
+        },
+				files: {
+					'assets/css/main.min.css': [
+						'assets/sass/app.scss'
+					]
+				}
       }
     },
     uglify: {
@@ -66,12 +66,12 @@ module.exports = function(grunt) {
       }
     },
     watch: {
-      less: {
+      compass: {
         files: [
-          'assets/less/*.less',
-          'assets/less/bootstrap/*.less'
+          'assets/sass/*.scss',
+          'assets/sass/bootstrap/*.scss'
         ],
-        tasks: ['less', 'version']
+        tasks: ['compass', 'version']
       },
       js: {
         files: [
@@ -106,13 +106,13 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-contrib-less');
+  grunt.loadNpmTasks('grunt-contrib-compass');
   grunt.loadNpmTasks('grunt-wp-version');
 
   // Register tasks
   grunt.registerTask('default', [
     'clean',
-    'less',
+    'compass',
     'uglify',
     'version'
   ]);
