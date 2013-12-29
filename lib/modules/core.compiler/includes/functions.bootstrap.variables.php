@@ -317,21 +317,24 @@ $variables = '
 // -------------------------
 // Based on 14px font-size and 1.428 line-height (~20px to start)
 
-@padding-base-vertical:          ' . $padding_base . 'px;
+@padding-base-vertical:          ' . round( $padding_base * 1.33 ) . 'px;
 @padding-base-horizontal:        ' . round( $padding_base * 1.5 ) . 'px;
 
-@padding-large-vertical:         ' . round( $padding_base * 1.75 ) . 'px;
+@padding-large-vertical:         ' . round( $padding_base * 1.25 ) . 'px;
 @padding-large-horizontal:       ' . ( $padding_base * 2 ) . 'px;
 
 @padding-small-vertical:         ' . round( $padding_base * 0.625 ) . 'px;
-@padding-small-horizontal:       ' . round( $padding_base * 1.25 ) . 'px;
+@padding-small-horizontal:       @padding-large-vertical;
+
+@padding-xs-vertical:            ' . round( $padding_base * 0.125 ) . 'px;
+@padding-xs-horizontal:          @padding-small-vertical;
 
 @line-height-large:              1.33;
 @line-height-small:              1.5;
 
-@border-radius-base:      ' . $border_radius . 'px;
-@border-radius-large:     ceil(@border-radius-base * 1.5);
-@border-radius-small:     floor(@border-radius-base * 0.75);
+@border-radius-base:             ' . round( $padding_base * 0.5 ) . 'px;
+@border-radius-large:            ceil(@border-radius-base * 1.5);
+@border-radius-small:            floor(@border-radius-base * 0.75);
 
 @component-active-color:         @fff;
 @component-active-bg:            @brand-primary;
@@ -428,8 +431,6 @@ $variables = '
 
 @dropdown-header-color:          @gray-light;
 
-@dropdown-caret-color:           @gray-darker;
-
 
 // COMPONENT VARIABLES
 // --------------------------------------------------
@@ -488,8 +489,13 @@ $variables = '
 @grid-columns:              12;
 // Padding, to be divided by two and applied to the left and right of all columns
 @grid-gutter-width:         ' . $gutter . 'px;
-// Point at which the navbar stops collapsing
+
+// Navbar collapse
+
+// Point at which the navbar becomes uncollapsed
 @grid-float-breakpoint:     @screen-sm-min;
+// Point at which the navbar begins collapsing
+@grid-float-breakpoint-max: (@grid-float-breakpoint - 1);
 
 
 // Navbar
@@ -563,7 +569,6 @@ $variables = '
 @nav-disabled-link-hover-color:             @gray-light;
 
 @nav-open-link-hover-color:                 @body-bg;
-@nav-open-caret-border-color:               @body-bg;
 
 // Tabs
 @nav-tabs-border-color:                     @table-border-color;
@@ -617,19 +622,19 @@ $variables = '
 // Form states and alerts
 // -------------------------
 
-@state-success-text:             #468847;
+@state-success-text:             #3c763d;
 @state-success-bg:               #dff0d8;
 @state-success-border:           darken(spin(@state-success-bg, -10), 5%);
 
-@state-info-text:                #3a87ad;
+@state-info-text:                #31708f;
 @state-info-bg:                  #d9edf7;
 @state-info-border:              darken(spin(@state-info-bg, -10), 7%);
 
-@state-warning-text:             #c09853;
+@state-warning-text:             #8a6d3b;
 @state-warning-bg:               #fcf8e3;
 @state-warning-border:           darken(spin(@state-warning-bg, -10), 5%);
 
-@state-danger-text:              #b94a48;
+@state-danger-text:              #a94442;
 @state-danger-bg:                #f2dede;
 @state-danger-border:            darken(spin(@state-danger-bg, -10), 5%);
 
@@ -782,6 +787,7 @@ $variables = '
 
 @thumbnail-caption-color:     @text-color;
 @thumbnail-caption-padding:   @table-cell-padding;
+
 
 // Wells
 // -------------------------
