@@ -117,27 +117,6 @@ function shoestrap_module_advanced_options( $sections ) {
     // 'required'  => array('advanced_toggle','=',array('1')),
   );
 
-  $url = admin_url( 'widgets.php' );
-  $fields[] = array( 
-    'title'     => __( 'CAUTION', 'shoestrap' ),
-    'id'        => 'help10',
-    'style'     => 'warning',
-    'desc'      => __('The settings bellow can pottentially harm your site if you do not properly comprehend them and what they do.
-                    If unsure, simply let them be.', 'shoestrap' ),
-    'icon'      => 'warning-sign',
-    'type'      => 'info'
-  );
-
-  $url = admin_url( 'options-permalink.php' );
-  $fields[] = array( 
-    'title'     => __( 'URL Rewrites', 'shoestrap' ),
-    'desc'      => __( 'Rewrites URLs, masking partially the fact that you\'re using WordPress. Please note that after you enable or disable this option, you should visit the <a href=' . $url . '>permalinks menu</a> and press <strong>save</strong>. This option requires that your .htaccess file is writable by your webserver. Default: OFF', 'shoestrap' ),
-    'id'        => 'rewrites',
-    'default'   => 0,
-    'type'      => 'switch',
-    // 'required'  => array('advanced_toggle','=',array('1')),
-  );
-
   $fields[] = array( 
     'title'     => __( 'Change uploads folder', 'shoestrap' ),
     'desc'      => __( 'Move your uploads folder in <strong> /media </strong>. NOTICE: By toggling this option, any files stored in default folder won\'t be accessible, and vice versa. Default: OFF', 'shoestrap' ),
