@@ -28,18 +28,6 @@ endif;
 add_action( 'wp_footer', 'shoestrap_user_js', 200 );
 
 
-if ( !function_exists( 'shoestrap_enable_widget_shortcodes' ) ) :
-/*
- * enable widget shortcodes
- */
-function shoestrap_enable_widget_shortcodes() {
-  if ( shoestrap_getVariable( 'enable_widget_shortcodes' ) == 1 )
-    add_filter( 'widget_text', 'do_shortcode' );
-}
-endif;
-add_action( 'wp_head', 'shoestrap_enable_widget_shortcodes', 200 );
-
-
 if ( !function_exists( 'shoestrap_change_upload_folder' ) ) :
 /*
  * change upload folder to /media
@@ -69,21 +57,6 @@ if ( shoestrap_getVariable( 'advanced_wordpress_disable_admin_bar_toggle' ) == 0
   show_admin_bar( false );
 else
   show_admin_bar( true );
-
-
-if ( !function_exists( 'shoestrap_core_blog_comments_toggle' ) ) :
-/*
- * Disable comments support on blog posts
- */
-function shoestrap_core_blog_comments_toggle() {
-  if ( shoestrap_getVariable( 'blog_comments_toggle' ) == 1 ) {
-    remove_post_type_support( 'post', 'comments' );
-    remove_post_type_support( 'post', 'trackbacks' );
-    add_filter( 'get_comments_number', '__return_false', 10, 3 );
-  }
-}
-endif;
-add_action( 'init','shoestrap_core_blog_comments_toggle', 1 );
 
 
 if ( !function_exists( 'shoestrap_excerpt_more' ) ) :

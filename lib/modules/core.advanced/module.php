@@ -21,15 +21,6 @@ function shoestrap_module_advanced_options( $sections ) {
   // );
 
   $fields[] = array( 
-    'title'     => __( 'Disable Comments on Blog', 'shoestrap' ),
-    'desc'      => __( 'Do not allow site visitors to write comments on blog posts. Default: Off.', 'shoestrap' ),
-    'id'        => 'blog_comments_toggle',
-    'default'   => 0,
-    'type'      => 'switch',
-    'customizer'=> array(),
-  );
-
-  $fields[] = array( 
     'title'     => __( 'Post excerpt length', 'shoestrap' ),
     'desc'      => __( 'Choose how many words should be used for post excerpt. Default: 40', 'shoestrap' ),
     'id'        => 'post_excerpt_length',
@@ -83,15 +74,6 @@ function shoestrap_module_advanced_options( $sections ) {
   );    
 
   $fields[] = array( 
-    'title'     => __( 'Allow shortcodes in widgets', 'shoestrap' ),
-    'desc'      => __( 'This option allows shortcodes within widgets. Default: On.', 'shoestrap' ),
-    'id'        => 'enable_widget_shortcodes',
-    'compiler'      => true,
-    'default'   => 1,
-    'type'      => 'switch',
-  );
-
-  $fields[] = array( 
     'title'     => __( 'Google Analytics ID', 'shoestrap' ),
     'desc'      => __( 'Paste your Google Analytics ID here to enable analytics tracking. Only Universal Analytics properties. Your user ID should be in the form of UA-XXXXX-Y.', 'shoestrap' ),
     'id'        => 'analytics_id',
@@ -132,27 +114,6 @@ function shoestrap_module_advanced_options( $sections ) {
     'advanced'  => true,
     'compiler'  => true,
     'type'      => 'slider',
-    // 'required'  => array('advanced_toggle','=',array('1')),
-  );
-
-  $url = admin_url( 'widgets.php' );
-  $fields[] = array( 
-    'title'     => __( 'CAUTION', 'shoestrap' ),
-    'id'        => 'help10',
-    'style'     => 'warning',
-    'desc'      => __('The settings bellow can pottentially harm your site if you do not properly comprehend them and what they do.
-                    If unsure, simply let them be.', 'shoestrap' ),
-    'icon'      => 'warning-sign',
-    'type'      => 'info'
-  );
-
-  $url = admin_url( 'options-permalink.php' );
-  $fields[] = array( 
-    'title'     => __( 'URL Rewrites', 'shoestrap' ),
-    'desc'      => __( 'Rewrites URLs, masking partially the fact that you\'re using WordPress. Please note that after you enable or disable this option, you should visit the <a href=' . $url . '>permalinks menu</a> and press <strong>save</strong>. This option requires that your .htaccess file is writable by your webserver. Default: OFF', 'shoestrap' ),
-    'id'        => 'rewrites',
-    'default'   => 0,
-    'type'      => 'switch',
     // 'required'  => array('advanced_toggle','=',array('1')),
   );
 
