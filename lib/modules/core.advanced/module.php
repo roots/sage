@@ -21,15 +21,6 @@ function shoestrap_module_advanced_options( $sections ) {
   // );
 
   $fields[] = array( 
-    'title'     => __( 'Disable Comments on Blog', 'shoestrap' ),
-    'desc'      => __( 'Do not allow site visitors to write comments on blog posts. Default: Off.', 'shoestrap' ),
-    'id'        => 'blog_comments_toggle',
-    'default'   => 0,
-    'type'      => 'switch',
-    'customizer'=> array(),
-  );
-
-  $fields[] = array( 
     'title'     => __( 'Post excerpt length', 'shoestrap' ),
     'desc'      => __( 'Choose how many words should be used for post excerpt. Default: 40', 'shoestrap' ),
     'id'        => 'post_excerpt_length',

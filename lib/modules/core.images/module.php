@@ -143,17 +143,6 @@ function shoestrap_module_featured_images_options( $sections ) {
 endif;
 add_filter( 'redux-sections-'.REDUX_OPT_NAME, 'shoestrap_module_featured_images_options', 90 );
 
-if ( !function_exists( 'shoestrap_core_blog_comments_toggle' ) ) :
-function shoestrap_core_blog_comments_toggle() {
-  if ( shoestrap_getVariable( 'blog_comments_toggle' ) == 1 ) {
-    remove_post_type_support( 'post', 'comments' );
-    remove_post_type_support( 'post', 'trackbacks' );
-    add_filter( 'get_comments_number', '__return_false', 10, 3 );
-  }
-}
-endif;
-add_action( 'init','shoestrap_core_blog_comments_toggle', 1 );
-
 // Simply include our alternative functions for image resizing
 include_once( dirname(__FILE__).'/resize.php' );
 include_once( dirname(__FILE__).'/functions.images.php' );

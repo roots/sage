@@ -71,21 +71,6 @@ else
   show_admin_bar( true );
 
 
-if ( !function_exists( 'shoestrap_core_blog_comments_toggle' ) ) :
-/*
- * Disable comments support on blog posts
- */
-function shoestrap_core_blog_comments_toggle() {
-  if ( shoestrap_getVariable( 'blog_comments_toggle' ) == 1 ) {
-    remove_post_type_support( 'post', 'comments' );
-    remove_post_type_support( 'post', 'trackbacks' );
-    add_filter( 'get_comments_number', '__return_false', 10, 3 );
-  }
-}
-endif;
-add_action( 'init','shoestrap_core_blog_comments_toggle', 1 );
-
-
 if ( !function_exists( 'shoestrap_excerpt_more' ) ) :
 function shoestrap_excerpt_more( $more ) {
   $continue_text = shoestrap_getVariable( 'post_excerpt_link_text' );
