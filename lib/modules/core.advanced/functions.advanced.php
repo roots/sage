@@ -28,18 +28,6 @@ endif;
 add_action( 'wp_footer', 'shoestrap_user_js', 200 );
 
 
-if ( !function_exists( 'shoestrap_enable_widget_shortcodes' ) ) :
-/*
- * enable widget shortcodes
- */
-function shoestrap_enable_widget_shortcodes() {
-  if ( shoestrap_getVariable( 'enable_widget_shortcodes' ) == 1 )
-    add_filter( 'widget_text', 'do_shortcode' );
-}
-endif;
-add_action( 'wp_head', 'shoestrap_enable_widget_shortcodes', 200 );
-
-
 if ( !function_exists( 'shoestrap_change_upload_folder' ) ) :
 /*
  * change upload folder to /media

@@ -74,15 +74,6 @@ function shoestrap_module_advanced_options( $sections ) {
   );    
 
   $fields[] = array( 
-    'title'     => __( 'Allow shortcodes in widgets', 'shoestrap' ),
-    'desc'      => __( 'This option allows shortcodes within widgets. Default: On.', 'shoestrap' ),
-    'id'        => 'enable_widget_shortcodes',
-    'compiler'      => true,
-    'default'   => 1,
-    'type'      => 'switch',
-  );
-
-  $fields[] = array( 
     'title'     => __( 'Google Analytics ID', 'shoestrap' ),
     'desc'      => __( 'Paste your Google Analytics ID here to enable analytics tracking. Only Universal Analytics properties. Your user ID should be in the form of UA-XXXXX-Y.', 'shoestrap' ),
     'id'        => 'analytics_id',
