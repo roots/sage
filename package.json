@@ -1,14 +1,14 @@
 {
-  "name": "roots",
-  "version": "6.5.1",
-  "author": "Ben Word <ben@benword.com>",
-  "homepage": "http://roots.io",
+  "name": "shoestrap",
+  "version": "3.0.3",
+  "author": "Aristeides Stathopoulos <info@aristeides.com>",
+  "homepage": "http://wpmu.io",
   "repository": {
     "type": "git",
-    "url": "git://github.com/roots/roots.git"
+    "url": "git://github.com/shoestrap/shoestrap.git"
   },
   "bugs": {
-    "url" : "https://github.com/roots/roots/issues"
+    "url" : "https://github.com/shoestrap/shoestrap/issues"
   },
   "licenses": [{
     "type": "MIT",

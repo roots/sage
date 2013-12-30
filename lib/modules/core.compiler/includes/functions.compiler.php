@@ -5,30 +5,45 @@ if ( !function_exists( 'shoestrap_compiler' ) ) :
  * This function can be used to compile a less file to css using the lessphp compiler
  */
 function shoestrap_compiler() {
+  $minimize_css = shoestrap_getVariable( 'minimize_css', true );
+  $options = ( $minimize_css == 1 ) ? array( 'compress'=>true ) : array( 'compress'=>false );
 
-  if ( shoestrap_getVariable( 'minimize_css', true ) == 1 )
-    $options = array( 'compress'=>true );
-  else
-    $options = array( 'compress'=>false );
+  $bootstrap_location = get_template_directory() . '/assets/less/';
+  $webfont_location   = get_template_directory() . '/assets/fonts/';
+  $bootstrap_uri      = '';
+  $custom_less_file   = get_template_directory() . '/assets/less/custom.less';
 
   $parser = new Less_Parser( $options );
 
-  $parser->parse( shoestrap_complete_less() );
+  // The main app.less file
+  $parser->parseFile( $bootstrap_location . 'app.less', $bootstrap_uri );
+  // Our custom variables
+  $parser->parse( shoestrap_variables() );
+
+  // Enable gradients
+  if ( shoestrap_getVariable( 'gradients_toggle' ) == 1 )
+    $parser->parseFile( $bootstrap_location . 'gradients.less', $bootstrap_uri );
+
+  // The custom.less file
+  if ( is_writable( $custom_less_file ) )
+    $parser->parseFile( $bootstrap_location . 'custom.less', $bootstrap_uri );
+
+  // Parse any custom less added by the user
+  $parser->parse( shoestrap_getVariable( 'user_less' ) );
+  // Add a filter to the compiler
+  $parser->parse( apply_filters( 'shoestrap_compiler', '' ) );
 
   $css = $parser->getCss();
 
-  // Below are some really ugly hacks.
-  $css = str_replace( get_template_directory() . '/assets/less/fonts/', '', $css );
-  $css = str_replace( get_template_directory_uri() . '/assets/', '../', $css );
-  $css = ( is_child_theme() ) ? str_replace( get_stylesheet_directory(), get_stylesheet_directory_uri(), $css ) : $css;
-
+  // Below is just an ugly hack
+  $css = str_replace( 'bootstrap/fonts/', '', $css );
   return apply_filters( 'shoestrap_compiler_output', $css );
 }
 endif;
 
 
-if ( !function_exists( 'shoestrap_compile_css' ) ) :
-function shoestrap_compile_css( $method = 'php' ) {
+if ( !function_exists( 'shoestrap_makecss' ) ) :
+function shoestrap_makecss( $method = 'php' ) {
   global $wp_filesystem;
   $file = shoestrap_css();
   
@@ -48,43 +63,5 @@ function shoestrap_compile_css( $method = 'php' ) {
     if ( !$wp_filesystem->put_contents( $file, $content, FS_CHMOD_FILE ) )
       return apply_filters( 'shoestrap_css_output', $content );
   }
-}
-endif;
-
-
-if ( !function_exists( 'shoestrap_makecss' ) ) :
-/*
- * Write the CSS to file
- */
-function shoestrap_makecss() {
-  shoestrap_compile_css();
-}
-endif;
-
-
-if ( !function_exists( 'shoestrap_complete_less' ) ) :
-/*
- * Brings all the LESS files that need to be compiled together.
- */
-function shoestrap_complete_less() {
-  $bootstrap    = get_template_directory() . '/assets/less/';
-
-  $bootstrap_less = '@import "' . $bootstrap . 'app.less";';
-  $bootstrap_less .= shoestrap_variables();
-
-  if ( shoestrap_getVariable( 'gradients_toggle' ) == 1 )
-    $bootstrap_less .= '@import "' . $bootstrap . 'gradients.less";';
-
-  // The custom LESS file path
-  $customlessfile = get_template_directory() . '/assets/less/custom.less';
-
-  // If file is writable, process this.
-  if ( is_writable( $customlessfile ) )
-    $bootstrap_less .= '@import "' . $bootstrap . 'custom.less";';
-
-  // Include the custom LESS code that users enter in the admin options.
-  $bootstrap_less .= shoestrap_getVariable( 'user_less' );
-
-  return apply_filters( 'shoestrap_compiler', $bootstrap_less );
 }
 endif;
