@@ -238,7 +238,7 @@ function shoestrap_module_advanced_options( $sections ) {
     'title'     => __( 'Minimize CSS', 'shoestrap' ),
     'desc'      => __( 'Minimize the genearated CSS. This should be ON for production sites. Default: OFF.', 'shoestrap' ),
     'id'        => 'minimize_css',
-    'default'   => 0,
+    'default'   => 1,
     'compiler'  => true,
     'customizer'=> array(),
     'type'      => 'switch',
