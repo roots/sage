@@ -228,7 +228,7 @@ function shoestrap_module_layout_options( $sections ) {
     'id'        => 'layout_gutter',
     'required'  => array('custom_grid','=',array('1')),
     'default'   => 30,
-    'min'       => 0,
+    'min'       => 2,
     'step'      => 2,
     'max'       => 100,
     'advanced'  => true,
