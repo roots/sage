@@ -108,6 +108,7 @@ function shoestrap_variables() {
   $screen_desktop        = filter_var( shoestrap_getVariable( 'screen_desktop', true ), FILTER_SANITIZE_NUMBER_INT );
   $screen_large_desktop  = filter_var( shoestrap_getVariable( 'screen_large_desktop', true ), FILTER_SANITIZE_NUMBER_INT );
   $gutter                = filter_var( shoestrap_getVariable( 'layout_gutter', true ), FILTER_SANITIZE_NUMBER_INT );
+  if ( $gutter < 2 ) { $gutter = 2; }
 
   $navbar_height    = filter_var( shoestrap_getVariable( 'navbar_height', true ), FILTER_SANITIZE_NUMBER_INT );
   $navbar_text_color       = '#' . str_replace( '#', '', $font_navbar['color'] );
