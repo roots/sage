@@ -59,7 +59,7 @@ class ReduxFramework_select_image extends ReduxFramework {
             $placeholder = (isset($this->field['placeholder'])) ? esc_attr($this->field['placeholder']) : __('Select an item', 'redux-framework');
 
             // Begin the <select> tag
-            echo '<select id="' . $this->field['id'] . '-select_image" data-placeholder="' . $placeholder . '" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . ']" class="redux-select-item ' . $this->field['class'] . '"' . $width . ' rows="6"' . 'onchange="updateSelectImage(this, \'image_' . $this->field['id'] . '\');">';
+            echo '<select id="' . $this->field['id'] . '-select_image" data-placeholder="' . $placeholder . '" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . ']" class="redux-select-item redux-select-image-item ' . $this->field['class'] . '"' . $width . ' rows="6"' . '>';
             echo '<option></option>';
             
 

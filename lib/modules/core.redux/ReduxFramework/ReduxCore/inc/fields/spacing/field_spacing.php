@@ -222,7 +222,7 @@ class ReduxFramework_spacing extends ReduxFramework{
 		wp_enqueue_script(
 			'redux-field-spacing-js', 
 			ReduxFramework::$_url.'inc/fields/spacing/field_spacing.js', 
-			array('jquery', 'select2-js', 'jquery-numeric'),
+			array('jquery'),
 			time(),
 			true
 		);
@@ -239,9 +239,9 @@ class ReduxFramework_spacing extends ReduxFramework{
 
     public function output() {
 
-        if ( !isset($this->field['output']) || empty( $this->field['output'] ) ) {
+        if ( ( !isset( $this->field['output'] ) || !is_array( $this->field['output'] ) ) && !isset( $this->field['compiler'] ) || !is_array( $this->field['compiler'] ) ) {
             return;
-        }    
+        }  
 
         if ( !isset( $this->field['mode'] ) ) {
         	$this->field['mode'] = "padding";
@@ -257,30 +257,40 @@ class ReduxFramework_spacing extends ReduxFramework{
 		//absolute, padding, margin
         $keys = implode(",", $this->field['output']);
         $style = '';
-            $style .= $keys."{";
-	            if ( !empty( $mode ) ) {
-					foreach($this->value as $key=>$value) {
-		            	if ($key == "units") {
-		            		continue;
-		            	}
-		            	if (empty($value)) {
-		            		$value = 0;
-		            	}
-		                $style .= $key.':'.$value.';';
-		            }            	
-	            } else {
-					$cleanValue = array(
-						'top' => isset( $this->value[$mode.'-top'] ) ? filter_var($this->value[$mode.'-top'], FILTER_SANITIZE_NUMBER_INT) : filter_var($this->value['top'], FILTER_SANITIZE_NUMBER_INT),
-						'right' => isset( $this->value[$mode.'-right'] ) ? filter_var($this->value[$mode.'-right'], FILTER_SANITIZE_NUMBER_INT) : filter_var($this->value['right'], FILTER_SANITIZE_NUMBER_INT),
-						'bottom' => isset( $this->value[$mode.'-bottom'] ) ? filter_var($this->value[$mode.'-bottom'], FILTER_SANITIZE_NUMBER_INT) : filter_var($this->value['bottom'], FILTER_SANITIZE_NUMBER_INT),
-						'left' => isset( $this->value[$mode.'-left'] ) ? filter_var($this->value[$mode.'-left'], FILTER_SANITIZE_NUMBER_INT) : filter_var($this->value['left'], FILTER_SANITIZE_NUMBER_INT)
-					);	            	
-	            	$style .= $mode.':'.$cleanValue['top'].$units.';';
-	            }
+
+        if ( !empty( $mode ) ) {
+			foreach($this->value as $key=>$value) {
+            	if ($key == "units") {
+            		continue;
+            	}
+            	if (empty($value)) {
+            		$value = 0;
+            	}
+                $style .= $key.':'.$value.';';
+            }            	
+        } else {
+			$cleanValue = array(
+				'top' => isset( $this->value[$mode.'-top'] ) ? filter_var($this->value[$mode.'-top'], FILTER_SANITIZE_NUMBER_INT) : filter_var($this->value['top'], FILTER_SANITIZE_NUMBER_INT),
+				'right' => isset( $this->value[$mode.'-right'] ) ? filter_var($this->value[$mode.'-right'], FILTER_SANITIZE_NUMBER_INT) : filter_var($this->value['right'], FILTER_SANITIZE_NUMBER_INT),
+				'bottom' => isset( $this->value[$mode.'-bottom'] ) ? filter_var($this->value[$mode.'-bottom'], FILTER_SANITIZE_NUMBER_INT) : filter_var($this->value['bottom'], FILTER_SANITIZE_NUMBER_INT),
+				'left' => isset( $this->value[$mode.'-left'] ) ? filter_var($this->value[$mode.'-left'], FILTER_SANITIZE_NUMBER_INT) : filter_var($this->value['left'], FILTER_SANITIZE_NUMBER_INT)
+			);	            	
+        	$style .= $mode.':'.$cleanValue['top'].$units.';';
+        }
             
-            $style .= '}';
         if ( !empty($style ) ) {
-            $this->parent->outputCSS .= $style;  
+            
+            if ( !empty( $this->field['output'] ) && is_array( $this->field['output'] ) ) {
+                $keys = implode(",", $this->field['output']);
+                $this->parent->outputCSS .= $keys . "{" . $style . '}';
+            }
+
+            if ( !empty( $this->field['compiler'] ) && is_array( $this->field['compiler'] ) ) {
+                $keys = implode(",", $this->field['compiler']);
+                $style = $keys . "{" . $style . '}';
+                $this->parent->compilerCSS .= $keys . "{" . $style . '}';
+            }   
+
         }
         
     }	

@@ -62,7 +62,7 @@ if( !class_exists( 'ReduxFramework_color' ) ) {
 		 */
 		public function render() {
 
-			echo '<input data-id="'.$this->field['id'].'" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . ']" id="' . $this->field['id'] . '-color" class="redux-color redux-color-init ' . $this->field['class'] . '"  type="text" value="' . $this->value . '"  data-default-color="' . $this->field['default'] . '" />';
+			echo '<input data-id="'.$this->field['id'].'" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . ']" id="' . $this->field['id'] . '-color" class="redux-color redux-color-init ' . $this->field['class'] . '"  type="text" value="' . $this->value . '"  data-default-color="' . ( isset($this->field['default']) ? $this->field['default'] : "" ) . '" />';
 
 			if ( !isset( $this->field['transparent'] ) || $this->field['transparent'] !== false ) {
 				$tChecked = "";
@@ -106,18 +106,28 @@ if( !class_exists( 'ReduxFramework_color' ) ) {
 
 		public function output() {
 
-			if (isset($this->field['output']) && !empty($this->field['output'])) {
-
-				$keys = implode(",", $this->field['output']);
-		        $style = '';
-		        if ( !empty( $this->value ) ) {
-
-		        	$style .= $keys."{";
-		        	$style .= 'color:'.$this->value.';';
-		        	$style .= '}';
-		        	$this->parent->outputCSS .= $style;  
-		        }
+			if ( ( !isset( $this->field['output'] ) || !is_array( $this->field['output'] ) ) && !isset( $this->field['compiler'] ) || !is_array( $this->field['compiler'] ) ) {
+				return;
 			}
+
+	        $style = '';
+	        if ( !empty( $this->value ) ) {
+
+	        	$style .= 'color:'.$this->value.';';
+
+				if ( !empty( $this->field['output'] ) && is_array( $this->field['output'] ) ) {
+					$keys = implode(",", $this->field['output']);
+					$this->parent->outputCSS .= $keys . "{" . $style . '}';  
+				}
+
+				if ( !empty( $this->field['compiler'] ) && is_array( $this->field['compiler'] ) ) {
+					$keys = implode(",", $this->field['compiler']);
+					$style = $keys . "{" . $style . '}';
+					$this->parent->compilerCSS .= $keys . "{" . $style . '}';  
+				}	
+
+	        }
+		
 		}
 	
 	}

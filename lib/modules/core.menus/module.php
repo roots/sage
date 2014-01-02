@@ -305,7 +305,7 @@ function shoestrap_module_menus_options( $sections ) {
 
 }
 endif;
-add_filter( 'redux-sections-'.REDUX_OPT_NAME, 'shoestrap_module_menus_options', 65 );  
+add_filter( 'redux/options/'.REDUX_OPT_NAME.'/sections', 'shoestrap_module_menus_options', 65 );  
 
 include_once( dirname( __FILE__ ) . '/functions.navbar.php' );
 include_once( dirname( __FILE__ ) . '/functions.secondary.navbar.php' );

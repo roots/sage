@@ -110,7 +110,7 @@ if( !class_exists( 'ReduxFrameworkPlugin' ) ) {
                 foreach( $plugins as $file => $plugin ) {
                     if( strpos( $file, 'redux-framework.php' ) !== false ) {
                         $this->plugin_network_activated = true;
-                        $this->options = get_site_options( 'ReduxFrameworkPlugin', $defaults );
+                        $this->options = get_site_option( 'ReduxFrameworkPlugin', $defaults );
                     }
                 }
             }

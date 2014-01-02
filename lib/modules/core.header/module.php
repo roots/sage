@@ -108,6 +108,6 @@ function shoestrap_module_header_options( $sections ) {
 
 }
 endif;
-add_filter( 'redux-sections-'.REDUX_OPT_NAME, 'shoestrap_module_header_options', 67 );  
+add_filter( 'redux/options/'.REDUX_OPT_NAME.'/sections', 'shoestrap_module_header_options', 67 );  
 
 include_once( dirname( __FILE__ ) . '/functions.header.php' );

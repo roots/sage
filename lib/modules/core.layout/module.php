@@ -245,6 +245,8 @@ function shoestrap_module_layout_options( $sections ) {
 
 }
 endif;
-add_filter( 'redux-sections-'.REDUX_OPT_NAME, 'shoestrap_module_layout_options', 55 ); 
+add_filter( 'redux/options/'.REDUX_OPT_NAME.'/sections', 'shoestrap_module_layout_options', 55 ); 
+
+
 
 include_once( dirname( __FILE__ ).'/functions.layout.php' );

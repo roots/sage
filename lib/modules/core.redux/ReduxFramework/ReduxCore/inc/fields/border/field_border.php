@@ -212,9 +212,10 @@ class ReduxFramework_border extends ReduxFramework {
 
     public function output() {
 
-        if ( !isset($this->field['output']) || empty( $this->field['output'] ) ) {
-            return;
-        }    
+		if ( ( !isset( $this->field['output'] ) || !is_array( $this->field['output'] ) ) && !isset( $this->field['compiler'] ) || !is_array( $this->field['compiler'] ) ) {
+			return;
+		}
+
         $cleanValue = array(
             'top' => !empty( $this->value['border-top'] ) ? $this->value['border-top'] : 'inherit',
             'right' => !empty( $this->value['border-right'] ) ? $this->value['border-right'] : 'inherit',
@@ -224,27 +225,30 @@ class ReduxFramework_border extends ReduxFramework {
             'style' => !empty( $this->value['border-style'] ) ? $this->value['border-style'] : 'inherit'
         );
 
-        $outCSS = "";
+        $style = "";
     	
 		//absolute, padding, margin
-        $keys = implode(",", $this->field['output']);
-            $outCSS .= $keys."{";
-	            if ( !isset( $this->field['all'] ) || $this->field['all'] != true ) {
-					foreach($cleanValue as $key=>$value) {
-		            	if ($key == "color" || $key == "style" ) {
-		            		continue;
-		            	}
-                        $outCSS .= 'border-' . $key . ':' . $value . ' '.$cleanValue['style'] . ' '. $cleanValue['color'] . ';';
-		            }            	
-	            } else {
-	            	$outCSS .= 'border:' . $value['top'] . ' ' . $cleanValue['style'] . ' '. $cleanValue['color'] .';';
-	            }
-            
-            $outCSS .= '}';
+        if ( !isset( $this->field['all'] ) || $this->field['all'] != true ) {
+			foreach($cleanValue as $key=>$value) {
+            	if ($key == "color" || $key == "style" ) {
+            		continue;
+            	}
+                $style .= 'border-' . $key . ':' . $value . ' '.$cleanValue['style'] . ' '. $cleanValue['color'] . ';';
+            }            	
+        } else {
+        	$style .= 'border:' . $value['top'] . ' ' . $cleanValue['style'] . ' '. $cleanValue['color'] .';';
+        }
 
-		if ( !empty($outCSS ) ) {
-			$this->parent->outputCSS .= $outCSS;  
+		if ( !empty( $this->field['output'] ) && is_array( $this->field['output'] ) ) {
+			$keys = implode(",", $this->field['output']);
+			$this->parent->outputCSS .= $keys . "{" . $style . '}';
 		}
+
+		if ( !empty( $this->field['compiler'] ) && is_array( $this->field['compiler'] ) ) {
+			$keys = implode(",", $this->field['compiler']);
+			$style = $keys . "{" . $style . '}';
+			$this->parent->compilerCSS .= $keys . "{" . $style . '}';
+		}		
         
     }	
 	

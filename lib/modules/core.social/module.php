@@ -350,6 +350,6 @@ function shoestrap_module_social_options( $sections ) {
 
 }
 endif;
-add_filter( 'redux-sections-' . REDUX_OPT_NAME, 'shoestrap_module_social_options', 85 ); 
+add_filter( 'redux/options/'.REDUX_OPT_NAME.'/sections', 'shoestrap_module_social_options', 85 ); 
 
 include_once( dirname( __FILE__ ) . '/functions.social.php' );

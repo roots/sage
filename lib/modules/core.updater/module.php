@@ -31,5 +31,5 @@ function shoestrap_core_licencing_options( $sections ) {
   return $sections;
 
 }
-add_filter( 'redux-sections-' . REDUX_OPT_NAME, 'shoestrap_core_licencing_options', 200 ); 
+add_filter( 'redux/options/'.REDUX_OPT_NAME.'/sections', 'shoestrap_core_licencing_options', 200 ); 
 endif;

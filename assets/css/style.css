@@ -1091,12 +1091,12 @@ a.toggle-nav{position:relative;top:14px;width:30px;height:30px;display:block;opa
 .navbar a.toggle-nav{margin-top:2px}
 .navbar #searchform{border:0;padding-left:0;padding-right:0}
 .navbar .dropdown-menu{padding:0;background:#f8f8f8}.navbar .dropdown-menu li.active a,.navbar .dropdown-menu li:hover a{background:#e7e7e7;color:#1a1a1a}
-.navbar.style1 .open>a:first-child,.navbar.style1 .open>a:hover:first-child,.navbar.style1 .open>a:focus:first-child,.navbar.style1 a:hover:first-child,.navbar.style1 a:focus:first-child{border-bottom:5px solid #428bca;padding-bottom:10px}
-.navbar.style1 .active>a,.navbar.style1 .active>a:hover,.navbar.style1 .active>a:focus{border-bottom:5px solid #428bca}
+.navbar.style1 .open>a:first-child,.navbar.style1 .open>a:hover:first-child,.navbar.style1 .open>a:focus:first-child,.navbar.style1 a:hover:first-child,.navbar.style1 a:focus:first-child{background:#f8f8f8;border-bottom:5px solid #428bca;padding-bottom:10px}
+.navbar.style1 .active>a,.navbar.style1 .active>a:hover,.navbar.style1 .active>a:focus{background:#f8f8f8;border-bottom:5px solid #428bca}
 .navbar.style1 .dropdown-menu{border-top:5px;margin-top:-5px;padding-top:0;padding-bottom:0;right:auto !important;border-top:1px solid #428bca}.navbar.style1 .dropdown-menu a,.navbar.style1 .dropdown-menu a:hover,.navbar.style1 .dropdown-menu a:focus{background:block;color:#428bca;border-bottom:0;border-top:1px solid #428bca;padding-bottom:0px}
 .navbar.style1 .navbar-nav>li>a{padding-bottom:10px}
 .navbar.style2 li>a{padding-top:15px}
-.navbar.style2 .active>a,.navbar.style2 .active>a:hover,.navbar.style2 .active>a:focus{border-top:3px solid #428bca;padding-top:12px}
+.navbar.style2 .active>a,.navbar.style2 .active>a:hover,.navbar.style2 .active>a:focus{background:#f8f8f8;border-top:3px solid #428bca;padding-top:12px}
 .navbar.style2 li ul li>a{border-top:none !important;padding-top:0 !important}
 .navbar.style2 .dropdown-menu .active>a,.navbar.style2 .dropdown-menu .active>a:hover,.navbar.style2 .dropdown-menu .active>a:focus{color:#428bca}
 .navbar.style3{border-top:5px solid #428bca}.navbar.style3 .active>a,.navbar.style3 .active>a:hover,.navbar.style3 .active>a:focus{border-top:5px solid #f0ad4e;margin-top:-5px}
@@ -1172,7 +1172,6 @@ li.dropdown ul.dropdown-menu li.dropdown.pull-left{float:none}
 .topnavbar{z-index:1000}.topnavbar.navbar-fixed-top{z-index:1030}
 .secondary{z-index:1}
 .widget.panel{-webkit-box-shadow:none;box-shadow:none}
-.widget.widget_search{border:1px solid #fff;border:1px solid transparent}
 .nav-pills>li>a{border-radius:4px}
 .container .jumbotron{border-top-right-radius:0px;border-top-left-radius:0px}
 .page-header{padding-top:9px}

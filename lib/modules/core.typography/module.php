@@ -181,7 +181,7 @@ function shoestrap_module_typography_options( $sections ) {
   return $sections;
 
 }
-add_filter( 'redux-sections-'.REDUX_OPT_NAME, 'shoestrap_module_typography_options', 80 ); 
+add_filter( 'redux/options/'.REDUX_OPT_NAME.'/sections', 'shoestrap_module_typography_options', 80 ); 
 endif;
 
 include_once( dirname( __FILE__ ).'/functions.typography.php' );

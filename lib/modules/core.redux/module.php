@@ -10,10 +10,12 @@ endif;
  */
 
 if ( class_exists( 'ReduxFramework' ) ) :
+define('REDUX_OPT_NAME', 'shoestrap');
+  function shoestrap_redux_init() {
   
-  define('REDUX_OPT_NAME', 'shoestrap');
+  
 
-  $args = $tabs = array();
+  $args = array();
 
   // ** PLEASE PLEASE for production use your own key! **
 
@@ -37,6 +39,7 @@ if ( class_exists( 'ReduxFramework' ) ) :
   $args['menu_title']             = $theme->get( 'Name' );
   $args['display_version']        = $theme->get( 'Version' );    
   $args['page_position']          = 99;
+  $args['dev_mode']               = true;
 
   $args['help_tabs'][] = array(
     'id'      => 'redux-options-1',
@@ -55,17 +58,19 @@ if ( class_exists( 'ReduxFramework' ) ) :
   $sections = array();
   $sections = apply_filters( 'shoestrap_add_sections', $sections );
 
-  $ReduxFramework = new ReduxFramework( $sections, $args, $tabs );
+  $ReduxFramework = new ReduxFramework( $sections, $args );
 
   if ( !empty( $redux['dev_mode'] ) && $redux['dev_mode'] == 1 ) :
     $ReduxFramework->args['dev_mode']     = true;
     $ReduxFramework->args['system_info']  = true;
   endif;
+}
+add_action('after_setup_theme', 'shoestrap_redux_init');
 endif;
 
 // Saving functions on import, etc
 // If a compiler field was altered or import or reset defaults
-add_action( 'redux-compiler-' . REDUX_OPT_NAME , 'shoestrap_makecss' );
+add_action( 'redux/options/' . REDUX_OPT_NAME . '/compiler' , 'shoestrap_makecss' );
 
 
 /**

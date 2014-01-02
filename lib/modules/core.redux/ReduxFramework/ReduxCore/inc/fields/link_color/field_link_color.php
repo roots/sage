@@ -130,38 +130,49 @@ if( !class_exists( 'ReduxFramework_link_color' ) ) {
 
         public function output() {
 
-            if ( isset( $this->field['output'] ) && !empty( $this->field['output'] ) ) {
+            if ( ( !isset( $this->field['output'] ) || !is_array( $this->field['output'] ) ) && !isset( $this->field['compiler'] ) || !is_array( $this->field['compiler'] ) ) {
+                return;
+            }
 
-                $keys = implode( ",", $this->field['output'] );
-                $style = '';
+            $style = array();
 
-                if ( !empty( $this->value['regular'] ) && $this->field['regular'] === true && $this->field['default']['regular'] !== false ) {
-                    $style .= $keys."{";
-                    $style .= 'color:' . $this->value['regular'] . ';';
-                    $style .= '}';
-                    
+            if ( !empty( $this->value['regular'] ) && $this->field['regular'] === true && $this->field['default']['regular'] !== false ) {
+                $style[] = 'color:' . $this->value['regular'] . ';';
+            }
+            if ( !empty( $this->value['hover'] ) && $this->field['hover'] === true && $this->field['default']['hover'] !== false ) {
+                $style['hover'] = 'color:' . $this->value['hover'] . ';';
+            }
+            if ( !empty( $this->value['active'] ) && $this->field['active'] === true && $this->field['default']['active'] !== false ) {
+                $style['active'] = 'color:' . $this->value['active'] . ';';
+            }  
+            if ( !empty( $this->value['visited'] ) && $this->field['visited'] === true && $this->field['default']['visited'] !== false ) {
+                $style['visited'] = 'color:' . $this->value['visited'] . ';';
+            }                                               
+            if ( !empty( $style ) ) {
+                if ( !empty( $this->field['output'] ) && is_array( $this->field['output'] ) ) {
+                    $styleString = "";                  
+                    foreach($style as $key=>$value) {
+                        if (is_numeric($key)) {
+                            $styleString .= implode(",", $this->field['output']) . "{" . $value . '}';
+                        } else {
+                            $styleString .= implode(":".$key.",", $this->field['output']) . "{" . $value . '}';
+                        }
+                    }
+                    $this->parent->outputCSS .= $styleString;  
                 }
-                if ( !empty( $this->value['hover'] ) && $this->field['hover'] === true && $this->field['default']['hover'] !== false ) {
-                    $style .= $keys.":hover{";
-                    $style .= 'color:' . $this->value['hover'] . ';';
-                    $style .= '}';
-                }
-                if ( !empty( $this->value['active'] ) && $this->field['active'] === true && $this->field['default']['active'] !== false ) {
-                    $style .= $keys.":active{";
-                    $style .= 'color:' . $this->value['active'] . ';';
-                    $style .= '}';
+                if ( !empty( $this->field['compiler'] ) && is_array( $this->field['compiler'] ) ) {
+                    $styleString = "";                  
+                    foreach($style as $key=>$value) {
+                        if (is_numeric($key)) {
+                            $styleString .= implode(",", $this->field['compiler']) . "{" . $value . '}';
+                        } else {
+                            $styleString .= implode(":".$key.",", $this->field['compiler']) . "{" . $value . '}';
+                        }
+                    }
+                    $this->parent->compilerCSS .= $styleString;  
                 }  
-                if ( !empty( $this->value['visited'] ) && $this->field['visited'] === true && $this->field['default']['visited'] !== false ) {
-                    $style .= $keys.":visited{";
-                    $style .= 'color:' . $this->value['visited'] . ';';
-                    $style .= '}';
-                }                                               
-                if ( !empty( $style ) ) {
-                    $this->parent->outputCSS .= $style;      
-                }
             }
         }
-
     }
 }
 ?>

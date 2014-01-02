@@ -62,6 +62,12 @@ if( !class_exists( 'ReduxFramework_info' ) ) {
          */
         public function render() {
 
+            $defaults = array(
+                'title' => '',
+                'desc' => '',
+            );
+            $this->field = wp_parse_args( $this->field, $defaults );
+
         	if ( !isset( $this->field['style'] ) ) {
         		$this->field['style'] = "";
         	}
@@ -105,7 +111,7 @@ if( !class_exists( 'ReduxFramework_info' ) ) {
                     if (isset($this->field['raw']) && !empty($this->field['raw'])) {
                         echo $this->field['raw'];    
                     }
-                    if ( ( isset( $this->field['title'] ) && !empty( $this->field['title'] ) ) || ( isset( $this->field['desc'] ) && !empty( $this->field['desc'] ) ) ) {
+                    if ( !empty( $this->field['title'] ) || !empty( $this->field['desc'] ) ) {
                         echo '<p class="redux-info-desc">' . $this->field['title'] . $this->field['desc'] . '</p>';    
                     }	            	
 
