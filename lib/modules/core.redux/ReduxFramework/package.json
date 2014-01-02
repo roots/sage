@@ -22,7 +22,9 @@
     "grunt-gh-pages": "~0.9.0",
     "grunt-phplint": "0.0.5",
     "grunt-contrib-less": "~0.8.2",
-    "recess": "~1.1.9"
+    "recess": "~1.1.9",
+    "grunt-po2mo": "~0.1.0",
+    "shelljs": "~0.2.6"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

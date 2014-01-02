@@ -89,18 +89,27 @@ if( !class_exists( 'ReduxFramework_color_rgba' ) ) {
 
 		public function output() {
 
-			if (isset($this->field['output']) && !empty($this->field['output'])) {
-
-				$keys = implode(",", $this->field['output']);
-		        $style = '';
-		        if ( !empty( $this->value ) ) {
-
-		        	$style .= $keys."{";
-		        	$style .= 'color:'.$this->value.';';
-		        	$style .= '}';
-		        	$this->parent->outputCSS .= $style;  
-		        }
+			if ( ( !isset( $this->field['output'] ) || !is_array( $this->field['output'] ) ) && !isset( $this->field['compiler'] ) || !is_array( $this->field['compiler'] ) ) {
+				return;
 			}
+
+	        $style = '';
+	        if ( !empty( $this->value ) ) {
+
+	        	$style .= 'color:'.$this->value.';';
+
+				if ( !empty( $this->field['output'] ) && is_array( $this->field['output'] ) ) {
+					$keys = implode(",", $this->field['output']);
+					$this->parent->outputCSS .= $keys . "{" . $style . '}';  
+				}
+
+				if ( !empty( $this->field['compiler'] ) && is_array( $this->field['compiler'] ) ) {
+					$keys = implode(",", $this->field['compiler']);
+					$this->parent->compilerCSS .= $keys . "{" . $style . '}';  
+				}	
+
+	        }
+			
 		}
 	
 		/**

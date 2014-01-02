@@ -115,19 +115,21 @@ if( !class_exists( 'ReduxFramework_edd_license' ) ) {
 				$noticeClasses = 'redux-warning redux-info-field';
 			} else if ( $this->value['status'] == __('Valid', 'redux-framework') ) {
 				$noticeClasses = 'redux-success redux-info-field';
+			} else if ( $this->value['status'] == __('Not Activated', 'redux-framework') ) {
+				$noticeClasses = 'redux-warning redux-info-field';
 			} else {
 				$noticeClasses = 'redux-critical redux-info-field';
 			}
 
-			echo '<div id="' . $this->field['id'] . '-notice" class="'.$noticeClasses.'">';
-			echo '<b>' . __('License Status', 'redux-framework') . ': <span id="' . $this->field['id'] . '-status_notice">'.ucfirst($this->value['status']).'</span></b></div>';
+			echo '<div id="' . $this->field['id'] . '-notice" data-verify="'.__('Verifying license...', 'redux-framework').'" class="'.$noticeClasses.'">';
+			echo '<b>' . __('Status', 'redux-framework') . ': <span id="' . $this->field['id'] . '-status_notice">'.ucfirst($this->value['status']).'</span></b></div>';
 
 			echo '<input type="hidden" class="redux-edd " type="text" id="' . $this->field['id'] . '-field_id" value="' . $this->field['id'] . '" " />'; 
 			echo '<input type="hidden" class="redux-edd " type="text" id="' . $this->field['id'] . '-remote_api_url" value="' . $this->field['remote_api_url'] . '" " />'; 
 			echo '<input type="hidden" class="redux-edd " type="text" id="' . $this->field['id'] . '-version" value="' . $this->field['version'] . '" " />'; 
 			echo '<input type="hidden" class="redux-edd " type="text" id="' . $this->field['id'] . '-item_name" value="' . $this->field['item_name'] . '" " />'; 
 			echo '<input type="hidden" class="redux-edd " type="text" id="' . $this->field['id'] . '-author" value="' . $this->field['author'] . '" " />'; 
-			echo '<input name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][license]"  id="' . $this->field['id'] . '-license" class="redux-edd-input redux-edd ' . $this->field['class'] . '"  type="text" value="' . $this->value['license'] . '" " />'; 
+			echo '<input name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][license]"  id="' . $this->field['id'] . '-license" class="noUpdate redux-edd-input redux-edd ' . $this->field['class'] . '"  type="text" value="' . $this->value['license'] . '" " />'; 
 			echo '<input type="hidden" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][status]" id="' . $this->field['id'] . '-status" class="redux-edd redux-edd-status ' . $this->field['class'] . '" type="text" value="' . $this->value['status'] . '" " />'; 
 			echo '<a href="#" data-id="'.$this->field['id'].'" class="button button-primary redux-EDDAction hide" data-edd_action="check_license">'.__('Verify License', 'redux-framework').'</a>';
 			$hide = "";

@@ -134,7 +134,8 @@ function shoestrap_module_branding_options( $sections ) {
   return $sections;
 }
 endif;
-add_filter( 'redux-sections-'.REDUX_OPT_NAME, 'shoestrap_module_branding_options', 50 );
+
+add_filter( 'redux/options/'.REDUX_OPT_NAME.'/sections', 'shoestrap_module_branding_options', 50 );
 
 include_once( dirname( __FILE__ ) . '/functions.logo.php' );
 include_once( dirname( __FILE__ ) . '/functions.icons.php' );

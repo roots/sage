@@ -249,6 +249,6 @@ function shoestrap_module_jumbotron_options($sections) {
 
 }
 endif;
-add_filter( 'redux-sections-'.REDUX_OPT_NAME, 'shoestrap_module_jumbotron_options', 70 ); 
+add_filter( 'redux/options/'.REDUX_OPT_NAME.'/sections', 'shoestrap_module_jumbotron_options', 70 ); 
 
 include_once( dirname(__FILE__).'/functions.jumbotron.php' );

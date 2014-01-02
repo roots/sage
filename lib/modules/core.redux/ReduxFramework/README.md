@@ -2,10 +2,15 @@
 
 WordPress options framework which uses the [WordPress Settings API](http://codex.wordpress.org/Settings_API "WordPress Settings API"), Custom Error/Validation Handling, Custom Field/Validation Types, and import/export functionality.
 
-## SMOF (Simple Modified Option Users) Users, this one's for you! ##
+## SMOF (Simple Modified Option Users) Converter! ##
 
 Hot off the press, our Redux Converter plugin. It takes your SMOF instance, and allows you to try out Redux without any fear. It also spits out valid PHP source for you if you want to migrate complete with data migration! Give it a try today. It will be in the WordPress.org repo shortly.  ;)
 https://github.com/ReduxFramework/redux-converter
+
+## Help Us Translate Redux ##
+
+Please head over to the wiki to learn how you can help us translate Redux quickly. Any and all are welcome. We appreciate your help!
+https://github.com/ReduxFramework/ReduxFramework/wiki/translate
 
 ## Getting Started with Redux ##
 
@@ -60,6 +65,9 @@ Send me an email at ghost1227@reduxframework.com so I can add you to our user sp
 ## Changelog ##
 
 ### Master ###
+= 3.1.4 =
+* Fixed error in redux-framework.php.
+* Added select_image field.
 
 = 3.1.3 =
 * Fixed a few undefined variables

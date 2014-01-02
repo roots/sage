@@ -4,11 +4,14 @@
 .redux-container-image_select .redux-image-select-presets img {
   width: 100%;
 }
-.redux-container-image_select .redux-image-select {
-  margin: 3px 10px;
+.redux-container-image_select ul.redux-image-select li {
+  margin: 0 10px 3px 10px;
   display: inline-block;
   padding: 10px;
   padding-left: 0;
+}
+.redux-container-image_select .redux-image-select li:last-child {
+  margin-bottom: 0;
 }
 .redux-container-image_select .redux-image-select-selected {
   background-color: #f9f9f9;

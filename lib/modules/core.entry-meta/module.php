@@ -39,6 +39,6 @@ function shoestrap_module_meta_config( $sections ) {
   return $sections;
 }
 endif;
-add_filter( 'redux-sections-'.REDUX_OPT_NAME, 'shoestrap_module_meta_config', 58 );   
+add_filter( 'redux/options/'.REDUX_OPT_NAME.'/sections', 'shoestrap_module_meta_config', 58 );   
 
 include_once( dirname( __FILE__ ) . '/functions.metaconfig.php' );

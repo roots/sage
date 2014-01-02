@@ -226,7 +226,7 @@ function shoestrap_module_advanced_options( $sections ) {
 
 }
 endif;
-add_filter( 'redux-sections-'.REDUX_OPT_NAME, 'shoestrap_module_advanced_options', 95 );
+add_filter( 'redux/options/'.REDUX_OPT_NAME.'/sections', 'shoestrap_module_advanced_options', 95 );
 
 include_once( dirname( __FILE__ ).'/functions.advanced.php' );
 include_once( dirname( __FILE__ ).'/debug-hooks.php' );

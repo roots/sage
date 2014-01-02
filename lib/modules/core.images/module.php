@@ -141,7 +141,7 @@ function shoestrap_module_featured_images_options( $sections ) {
 
 }
 endif;
-add_filter( 'redux-sections-'.REDUX_OPT_NAME, 'shoestrap_module_featured_images_options', 90 );
+add_filter( 'redux/options/'.REDUX_OPT_NAME.'/sections', 'shoestrap_module_featured_images_options', 90 );
 
 // Simply include our alternative functions for image resizing
 include_once( dirname(__FILE__).'/resize.php' );

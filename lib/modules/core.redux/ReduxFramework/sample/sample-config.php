@@ -557,6 +557,7 @@ if (!function_exists('redux_init')) :
 				//'preview'=>false, // Disable the previewer
 				'all_styles' => true, // Enable all Google Font style/weight variations to be added to the page
 				'output' => array('h2.site-description'), // An array of CSS selectors to apply this font style to dynamically
+				'compiler' => array('h2.site-description-compiler'), // An array of CSS selectors to apply this font style to dynamically
 				'units'=>'px', // Defaults to px
 				'subtitle'=> __('Typography option with each property can be called individually.', 'redux-framework-demo'),
 				'default'=> array(
@@ -1399,7 +1400,7 @@ if (!function_exists('redux_init')) :
 
 	// END Sample Config
 	}
-	add_action('init', 'redux_init');
+	add_action('setup_theme', 'redux_init');
 endif;
 
 /**
@@ -1506,8 +1507,9 @@ if ( !function_exists( 'redux_test_compiler' ) ):
 	function redux_test_compiler($options, $css) {
 		echo "<h1>The compiler hook has run!";
 		//print_r($options); //Option values
-		print_r($css); //So you can compile the CSS within your own file to cache
-	    $filename = dirname(__FILE__) . '/avada' . '.css';
+		//print_r($css); // Compiler selector CSS values  compiler => array( CSS SELECTORS )
+		// So you can compile the CSS within your own file to cache
+	    $filename = dirname(__FILE__) . '/style' . '.css';
 
 			    global $wp_filesystem;
 			    if( empty( $wp_filesystem ) ) {
@@ -1524,10 +1526,9 @@ if ( !function_exists( 'redux_test_compiler' ) ):
 			    }
 
 	}
-	//add_filter('redux/options/redux_demo/compiler', 'redux_test_compiler', 10, 2);
+	//add_filter('redux/options/redux_demo/compiler', 'redux_test_compiler', 10, 2); // ,2 is used to send the $css variable. 10 is a priority. You can change this, but keep the 2.
 	// replace redux_demo with your opt_name
 endif;
-
 
 /**
 

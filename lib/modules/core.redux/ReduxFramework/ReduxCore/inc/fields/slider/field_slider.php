@@ -73,6 +73,7 @@ class ReduxFramework_slider extends ReduxFramework{
 	 * @since ReduxFramework 0.0.4
 	*/
 	function enqueue(){
+
 		wp_enqueue_script(
 			'redux-field-slider-js', 
 			ReduxFramework::$_url.'inc/fields/slider/field_slider.js', 
@@ -107,7 +108,7 @@ class ReduxFramework_slider extends ReduxFramework{
 			'min' => '',
 			'max' => '',
 			'step' => '',
-			'val' => '',
+			'val' => null,
 			'default' => '',
 		);
 

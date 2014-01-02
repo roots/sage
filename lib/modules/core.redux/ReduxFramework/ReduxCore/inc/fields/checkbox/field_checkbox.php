@@ -63,17 +63,6 @@ if( !class_exists( 'ReduxFramework_checkbox' ) ) {
          */
         public function render() {
 
-
-	        if( !empty( $this->field['data'] ) && empty( $this->field['options'] ) ) {
-				if (empty($this->field['args'])) {
-					$this->field['args'] = array();
-				}        	
-	        	$this->field['options'] = $this->get_wordpress_data($this->field['data'], $this->field['args']);
-                if (empty($this->field['options'])) {
-                    return;
-                }
-	        }
-
             $this->field['data_class'] = ( isset($this->field['multi_layout']) ) ? 'data-'.$this->field['multi_layout'] : 'data-full';
                 	
             if( !empty( $this->field['options'] ) && ( is_array( $this->field['options'] ) || is_array( $this->field['default'] ) ) ) {
