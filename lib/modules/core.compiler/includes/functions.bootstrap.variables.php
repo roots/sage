@@ -941,6 +941,16 @@ $variables = '
 
 ';
 
+if ( shoestrap_getVariable( 'responsive_toggle' ) == 0 ):
+// disable responsiveness
+$variables .= '
+  @grid-float-breakpoint: 0 !important;
+  @screen-xs-max: 0 !important; 
+  .container { max-width: none !important; width: 970px; }
+  html { overflow-x: auto !important; }
+';
+endif;
+  
   return $variables;
 }
 endif;
