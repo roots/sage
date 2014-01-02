@@ -3,10 +3,10 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ReduxFramework\n"
-"POT-Creation-Date: 2014-01-01 23:17-0700\n"
-"PO-Revision-Date: 2014-01-02 06:40+0000\n"
-"Last-Translator: dovy <dovy@simplerain.com>\n"
-"Language-Team: Italian (Italy) (http://www.transifex.com/projects/p/reduxframework/language/it_IT/)\n"
+"POT-Creation-Date: 2014-01-02 00:56-0700\n"
+"PO-Revision-Date: 2014-01-02 08:55+0000\n"
+"Last-Translator: Josef Jezek\n"
+"Language-Team: Italian (Italy) (http://www.transifex.com/projects/p/redux-framework/language/it_IT/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -21,161 +21,162 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 
 #: ReduxCore/framework.php:115 ReduxCore/framework.php:121
-#: ReduxCore/framework.php:285 ReduxCore/framework.php:288
+#: ReduxCore/framework.php:287 ReduxCore/framework.php:290
 msgid "Options"
 msgstr "Opzioni"
 
-#: ReduxCore/framework.php:282
-msgid "Options panel created using"
-msgstr "Opzioni sono stato creati con"
+#: ReduxCore/framework.php:284
+#, php-format
+msgid "Options panel created using %1$s"
+msgstr ""
 
-#: ReduxCore/framework.php:282
+#: ReduxCore/framework.php:284
 msgid "Redux Framework"
 msgstr "Redux Framework"
 
-#: ReduxCore/framework.php:911 ReduxCore/framework.php:912
-#: ReduxCore/framework.php:1918
+#: ReduxCore/framework.php:904 ReduxCore/framework.php:905
+#: ReduxCore/framework.php:1911
 msgid "Import / Export"
 msgstr "Importa / Esporta"
 
-#: ReduxCore/framework.php:922 ReduxCore/framework.php:923
-#: ReduxCore/framework.php:1934 ReduxCore/framework.php:2032
+#: ReduxCore/framework.php:915 ReduxCore/framework.php:916
+#: ReduxCore/framework.php:1927 ReduxCore/framework.php:2025
 msgid "Options Object"
 msgstr "Opzioni Oggeto"
 
-#: ReduxCore/framework.php:933 ReduxCore/framework.php:934
-#: ReduxCore/framework.php:1948 ReduxCore/framework.php:2052
+#: ReduxCore/framework.php:926 ReduxCore/framework.php:927
+#: ReduxCore/framework.php:1941 ReduxCore/framework.php:2045
 msgid "System Info"
 msgstr "Informazioni di sistema"
 
-#: ReduxCore/framework.php:1213
+#: ReduxCore/framework.php:1206
 msgid "You have changes that are not saved. Would you like to save them now?"
 msgstr ""
 
-#: ReduxCore/framework.php:1214
+#: ReduxCore/framework.php:1207
 msgid "Are you sure? Resetting will lose all custom values."
 msgstr ""
 
-#: ReduxCore/framework.php:1215
+#: ReduxCore/framework.php:1208
 msgid "Are you sure? Resetting will lose all custom values in this section."
 msgstr ""
 
-#: ReduxCore/framework.php:1216
+#: ReduxCore/framework.php:1209
 msgid ""
 "Your current options will be replaced with the values of this preset. Would "
 "you like to proceed?"
 msgstr ""
 
-#: ReduxCore/framework.php:1466
+#: ReduxCore/framework.php:1459
 msgid "Default"
 msgstr "Predefinito"
 
-#: ReduxCore/framework.php:1778
+#: ReduxCore/framework.php:1771
 msgid "Warning- This options panel will not work properly without javascript!"
 msgstr "Attenzione - Questo pannello opzioni non funzionerà correttamente senza javascript!"
 
-#: ReduxCore/framework.php:1832
+#: ReduxCore/framework.php:1825
 msgid "Expand"
 msgstr "Espandere"
 
-#: ReduxCore/framework.php:1834 ReduxCore/framework.php:2082
+#: ReduxCore/framework.php:1827 ReduxCore/framework.php:2075
 msgid "Save Changes"
 msgstr ""
 
-#: ReduxCore/framework.php:1836 ReduxCore/framework.php:2084
+#: ReduxCore/framework.php:1829 ReduxCore/framework.php:2077
 msgid "Reset Section"
 msgstr ""
 
-#: ReduxCore/framework.php:1838 ReduxCore/framework.php:2086
+#: ReduxCore/framework.php:1831 ReduxCore/framework.php:2079
 msgid "Reset All"
 msgstr ""
 
-#: ReduxCore/framework.php:1841 ReduxCore/framework.php:2089
+#: ReduxCore/framework.php:1834 ReduxCore/framework.php:2082
 msgid "Working..."
 msgstr "Lavorare..."
 
-#: ReduxCore/framework.php:1848
+#: ReduxCore/framework.php:1841
 msgid "Settings Imported!"
 msgstr "Impostazioni importate!"
 
-#: ReduxCore/framework.php:1850
+#: ReduxCore/framework.php:1843
 msgid "Settings Saved!"
 msgstr "Impostazioni salvate!"
 
-#: ReduxCore/framework.php:1854
+#: ReduxCore/framework.php:1847
 msgid "Settings have changed, you should save them!"
 msgstr "Impostazioni sono cambiate, li si dovrebbe salvare!"
 
-#: ReduxCore/framework.php:1855
+#: ReduxCore/framework.php:1848
 msgid "error(s) were found!"
 msgstr "errore(i) trovati!"
 
-#: ReduxCore/framework.php:1856
+#: ReduxCore/framework.php:1849
 msgid "warning(s) were found!"
 msgstr "avviso(i) trovati!"
 
-#: ReduxCore/framework.php:1985
+#: ReduxCore/framework.php:1978
 msgid "Import / Export Options"
 msgstr "Importa / Esporta Opzioni"
 
-#: ReduxCore/framework.php:1986
+#: ReduxCore/framework.php:1979
 msgid "Import Options"
 msgstr "Importa Opzioni"
 
-#: ReduxCore/framework.php:1987
+#: ReduxCore/framework.php:1980
 msgid "Import from file"
 msgstr "Importa da file"
 
-#: ReduxCore/framework.php:1987
+#: ReduxCore/framework.php:1980
 msgid "Import from URL"
 msgstr "Importa dal URL"
 
-#: ReduxCore/framework.php:1992
+#: ReduxCore/framework.php:1985
 msgid ""
 "Input your backup file below and hit Import to restore your sites options "
 "from a backup."
 msgstr "Inserisci il file di backup qui sotto e premere Importa per ripristinare le opzioni di siti da un backup."
 
-#: ReduxCore/framework.php:2002
+#: ReduxCore/framework.php:1995
 msgid ""
 "Input the URL to another sites options set and hit Import to load the "
 "options from that site."
 msgstr "Inserire l'URL di un altro opzioni siti impostato e ha colpito Importa per caricare le opzioni da quel sito."
 
-#: ReduxCore/framework.php:2009
+#: ReduxCore/framework.php:2002
 msgid "Import"
 msgstr "Importa"
 
-#: ReduxCore/framework.php:2009
+#: ReduxCore/framework.php:2002
 msgid ""
 "WARNING! This will overwrite all existing option values, please proceed with"
 " caution!"
 msgstr "ATTENZIONE! Questo sovrascrive tutti i valori delle opzioni esistenti, si prega di procedere con cautela!"
 
-#: ReduxCore/framework.php:2012
+#: ReduxCore/framework.php:2005
 msgid "Export Options"
 msgstr "Esporta Opzioni"
 
-#: ReduxCore/framework.php:2014
+#: ReduxCore/framework.php:2007
 msgid ""
 "Here you can copy/download your current option settings. Keep this safe as "
 "you can use it as a backup should anything go wrong, or you can use it to "
 "restore your settings on this site (or any other site)."
 msgstr "Qui è possibile copiare / scaricare le impostazioni delle opzioni correnti. Tenete presente sicuro come lo si può utilizzare come backup se qualcosa dovesse andare storto, oppure lo si può utilizzare per ripristinare le impostazioni su questo sito (o di qualsiasi altro sito)."
 
-#: ReduxCore/framework.php:2018
+#: ReduxCore/framework.php:2011
 msgid "Copy"
 msgstr "Copia"
 
-#: ReduxCore/framework.php:2018
+#: ReduxCore/framework.php:2011
 msgid "Download"
 msgstr "Scarica"
 
-#: ReduxCore/framework.php:2018
+#: ReduxCore/framework.php:2011
 msgid "Copy Link"
 msgstr "Copia Link"
 
-#: ReduxCore/framework.php:2041
+#: ReduxCore/framework.php:2034
 msgid "Show Object in Javascript Console Object"
 msgstr "Mostra oggetti in Javascript Console"
 

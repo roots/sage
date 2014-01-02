@@ -133,14 +133,14 @@ if( !class_exists( 'ReduxFramework' ) ) {
                             'desc'=>'Slug used to access options panel.', 
                             'default'=> '_options'
                         ),    
-                   'page_cap' => array( 
+                   'page_permissions' => array( 
                             'required', 
                             'data_type'=>'string', 
                             'label'=>'Page Capabilities', 
                             'desc'=>'Permissions needed to access the options panel.', 
                             'default'=> 'manage_options'
                         ),  
-                    'page_type' => array(
+                    'menu_type' => array(
                         'required', 
                         'data_type' => 'varchar',
                         'label' => 'Page Type',
@@ -158,18 +158,18 @@ if( !class_exists( 'ReduxFramework' ) ) {
                         'form' => array('type' => 'select', 'options' => array('index.php' => 'Dashboard', 'edit.php' => 'Posts', 'upload.php' => 'Media', 'link-manager.php' => 'Links', 'edit.php?post_type=page' => 'pages', 'edit-comments.php' => 'Comments', 'themes.php' => 'Appearance', 'plugins.php' => 'Plugins', 'users.php' => 'Users', 'tools.php' => 'Tools', 'options-general.php' => 'Settings', )),
                         'validation' => array('required'),
                     ),                       
-                   'page_position' => array( 
+                   'page_priority' => array( 
                             'type'=>'int', 
                             'label'=>'Page Position', 
                             'desc'=>'Location where this menu item will appear in the admin menu. Warning, beware of overrides.', 
                             'default'=> null
                         ),  
-                    'enqueue' => array(
+                    'output' => array(
                             'required', 
                             'data_type'=>'bool',
                             'form' => array('type' => 'radio', 'options' => array(true => 'Enabled', false => 'Disabled')),
-                            'label'=>'Enqueue Files', 
-                            'desc'=>'Global shut-off for custom CSS enqueuing by the framework',
+                            'label'=>'Output/Generate CSS', 
+                            'desc'=>'Global shut-off for dynamic CSS output by the framework',
                             'default'=>true
                         ),
                     'allow_sub_menu' => array(
@@ -218,11 +218,10 @@ if( !class_exists( 'ReduxFramework' ) ) {
             'page_icon'          => 'icon-themes',
             'page_title'         => '',
             'page_slug'          => '_options',
-            'page_cap'           => 'manage_options',
-            'page_type'          => 'menu',
+            'page_permissions'   => 'manage_options',
+            'menu_type'          => 'menu',
             'page_parent'        => 'themes.php',
-            'page_position'      => null,
-            'enqueue'            => true,
+            'page_priority'      => null,
             'allow_sub_menu'     => true,
             'save_defaults'      => true, // Save defaults to the DB on it if empty
             'show_import_export' => true, // REMOVE
@@ -271,25 +270,44 @@ if( !class_exists( 'ReduxFramework' ) ) {
             
             // Set values
             $this->args = wp_parse_args( $args, $this->args );
+            if ( empty( $this->args['transient_time'] ) ) {
+                $this->args['transient_time'] = 60 * MINUTE_IN_SECONDS;
+            }
+            if ( empty( $this->args['footer_credit'] ) ) {
+                $this->args['footer_credit'] = '<span id="footer-thankyou">' . sprintf( __( 'Options panel created using %1$s', $this->args['domain'] ), '<a href="'.esc_url( $this->framework_url ).'" target="_blank">'.__( 'Redux Framework', $this->args['domain'] ).'</a> v'.self::$_version ) . '</span>';
+            }
+            if ( empty( $this->args['menu_title'] ) ) {
+                $this->args['menu_title'] = __( 'Options', $this->args['domain'] );
+            }
+            if ( empty( $this->args['page_title'] ) ) {
+                $this->args['page_title'] = __( 'Options', $this->args['domain'] );
+            }
             $this->args = apply_filters( 'redux/args/' . $this->args['opt_name'], $this->args ); // Filter the args
-                
+               
+
+
             if ( !empty( $this->args['opt_name'] ) ) {
+                /**
+                 
+                    SHIM SECTION
+                    Old variables and ways of doing things that need correcting.  ;) 
 
-                if ( empty( $this->args['transient_time'] ) ) {
-                    $this->args['transient_time'] = 60 * MINUTE_IN_SECONDS;
+                 **/
+                // Variable name change
+                if ( !empty( $this->args['page_cap'] ) ) {
+                    $this->args['page_permissions'] = $this->args['page_cap'];
+                    unset( $this->args['page_cap'] );
+                }
+                if ( !empty( $this->args['page_position'] ) ) {
+                    $this->args['page_priority'] = $this->args['page_position'];
+                    unset( $this->args['page_position'] );
+                }
+                if ( !empty( $this->args['page_type'] ) ) {
+                    $this->args['menu_type'] = $this->args['page_type'];
+                    unset( $this->args['page_type'] );
                 }
 
-                if ( empty( $this->args['footer_credit'] ) ) {
-                    $this->args['footer_credit'] = '<span id="footer-thankyou">' . sprintf( __( 'Options panel created using %1$s', $this->args['domain'] ), '<a href="'.esc_url( $this->framework_url ).'" target="_blank">'.__( 'Redux Framework', $this->args['domain'] ).'</a> v'.self::$_version ) . '</span>';
-                }
-                if ( empty( $this->args['menu_title'] ) ) {
-                    $this->args['menu_title'] = __( 'Options', $this->args['domain'] );
-                }
-                if ( empty( $this->args['page_title'] ) ) {
-                    $this->args['page_title'] = __( 'Options', $this->args['domain'] );
-                }
-
-                // Shim - Get rid of extra_tabs! Not needed.
+                // Get rid of extra_tabs! Not needed.
                 if( is_array( $extra_tabs ) && !empty( $extra_tabs ) ) {
                     foreach( $extra_tabs as $tab ) {
                         array_push($this->sections, $tab);
@@ -853,12 +871,12 @@ if( !class_exists( 'ReduxFramework' ) ) {
 		 */
         function _options_page() {
 
-            if( $this->args['page_type'] == 'submenu' ) {
+            if( $this->args['menu_type'] == 'submenu' ) {
                 $this->page = add_submenu_page(
                     $this->args['page_parent'],
                     $this->args['page_title'],
                     $this->args['menu_title'],
-                    $this->args['page_cap'],
+                    $this->args['page_permissions'],
                     $this->args['page_slug'],
                     array( &$this, '_options_page_html' )
                 );
@@ -866,11 +884,11 @@ if( !class_exists( 'ReduxFramework' ) ) {
                 $this->page = add_menu_page(
                     $this->args['page_title'],
                     $this->args['menu_title'],
-                    $this->args['page_cap'],
+                    $this->args['page_permissions'],
                     $this->args['page_slug'],
                     array( &$this, '_options_page_html' ),
                     $this->args['menu_icon'],
-                    $this->args['page_position']
+                    $this->args['page_priority']
                 );
 
                 if( true === $this->args['allow_sub_menu'] ) {
@@ -887,7 +905,7 @@ if( !class_exists( 'ReduxFramework' ) ) {
                                 $this->args['page_slug'],
                                 $section['title'],
                                 $section['title'],
-                                $this->args['page_cap'],
+                                $this->args['page_permissions'],
                                 $this->args['page_slug'] . '&tab=' . $k,
                                 create_function( '$a', "return null;" )
                             );
@@ -902,7 +920,7 @@ if( !class_exists( 'ReduxFramework' ) ) {
                             $this->args['page_slug'],
                             __( 'Import / Export', $this->args['domain'] ),
                             __( 'Import / Export', $this->args['domain'] ),
-                            $this->args['page_cap'],
+                            $this->args['page_permissions'],
                             $this->args['page_slug'] . '&tab=import_export_default', 
                             create_function( '$a', "return null;" )
                         );
@@ -913,7 +931,7 @@ if( !class_exists( 'ReduxFramework' ) ) {
                             $this->args['page_slug'],
                             __( 'Options Object', $this->args['domain'] ),
                             __( 'Options Object', $this->args['domain'] ),
-                            $this->args['page_cap'],
+                            $this->args['page_permissions'],
                             $this->args['page_slug'] . '&tab=dev_mode_default',
                             create_function('$a', "return null;")
                         );
@@ -924,7 +942,7 @@ if( !class_exists( 'ReduxFramework' ) ) {
                             $this->args['page_slug'],
                             __( 'System Info', $this->args['domain'] ),
                             __( 'System Info', $this->args['domain'] ),
-                            $this->args['page_cap'],
+                            $this->args['page_permissions'],
                             $this->args['page_slug'] . '&tab=system_info_default',
                             create_function( '$a', "return null;" )
                         );
@@ -2064,7 +2082,18 @@ if( !class_exists( 'ReduxFramework' ) ) {
                 echo '<div id="redux-share">';
 
                 foreach( $this->args['share_icons'] as $link ) {
-                    echo '<a href="' . $link['link'] . '" title="' . $link['title'] . '" target="_blank"><img src="' . $link['img'] . '"/></a>';
+                    // SHIM, use URL now
+                    if (isset($link['link']) && !empty($link['link'])) {
+                        $link['url'] = $link['link'];
+                        unset($link['link']);
+                    }
+                    echo '<a href="' . $link['url'] . '" title="' . $link['title'] . '" target="_blank">';
+                    if ( isset( $link['icon'] ) && !empty( $link['icon'] ) ) {
+                        echo '<i class="'.$link['icon'].'"></i>';
+                    } else {
+                        echo '<img src="' . $link['img'] . '"/>';    
+                    }
+                    echo '</a>';
                 }
 
                 echo '</div>';
