@@ -22,7 +22,7 @@ Reference the [theme activation](http://roots.io/roots-101/#theme-activation) do
 
 ## Theme Development
 
-After you've installed Grunt and ran `npm install` from the theme root, use `grunt watch` to watch for updates to your LESS and JS files and Grunt will automatically re-build as you write your code.
+After you've installed Grunt and ran `npm install` from the theme root, use `grunt watch` to watch for updates to your Sass and JS files and Grunt will automatically re-build as you write your code.
 
 ## Configuration
 
