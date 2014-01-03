@@ -760,7 +760,7 @@ if ( !class_exists( "Redux_Framework_sample_config" ) ) {
 			$this->sections[] = array(
 				'icon'    => 'el-icon-bullhorn',
 				'title'   => __('Field Validation', 'redux-framework-demo'),
-				'heading' => __('Validate ALL fields within Redux.'),
+				'heading' => __('Validate ALL fields within Redux.', 'redux-framework-demo'),
 				'desc'    => __('<p class="description">This is the Description. Again HTML is allowed2</p>', 'redux-framework-demo'),
 				'fields'  => array(
 					array(
@@ -1396,6 +1396,7 @@ if ( !class_exists( "Redux_Framework_sample_config" ) ) {
 	            'google_api_key'   	 	=> '', // Must be defined to add google fonts to the typography module
 	            'global_variable'    	=> '', // Set a different name for your global variable other than the opt_name
 	            'dev_mode'           	=> true, // Show the time the page took to load, etc
+	            'customizer'         	=> true, // Enable basic customizer support
 
 	            // OPTIONAL -> Give you extra features
 	            'page_priority'      	=> null, // Order where the menu appears in the admin area. If there is any conflict, something will not show. Warning.
@@ -1419,7 +1420,6 @@ if ( !class_exists( "Redux_Framework_sample_config" ) ) {
 	            
 
 	            // FUTURE -> Not in use yet, but reserved or partially implemented. Use at your own risk.
-	            'customizer'         	=> false, // Enable customizer support
 	            'database'           	=> '', // possible: options, theme_mods, theme_mods_expanded, transient. Not fully functional, warning!
 	            
 	        

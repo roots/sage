@@ -950,7 +950,7 @@ if( !class_exists( 'ReduxFramework' ) ) {
                 }
             }
 
-            add_action( 'admin_print_styles-' . $this->page, array( &$this, '_enqueue' ) );
+            add_action( 'admin_enqueue_scripts', array( &$this, '_enqueue' ) );
             
             add_action( 'load-' . $this->page, array( &$this, '_load_page' ) );
         }
@@ -1033,6 +1033,15 @@ if( !class_exists( 'ReduxFramework' ) ) {
          * @return      void
          */
         public function _enqueue() {
+            global $pagenow;
+
+            //echo $pagenow;
+            //echo $this->args['page_parent'];
+
+            if ( !isset( $_GET['page'] ) || $_GET['page'] != $this->args['page_slug'] ) {
+                return;
+            }
+
             global $wp_styles;
 
             wp_register_style(
