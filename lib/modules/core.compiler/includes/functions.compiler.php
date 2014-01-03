@@ -20,6 +20,9 @@ function shoestrap_compiler() {
   // Our custom variables
   $parser->parse( shoestrap_variables() );
 
+  // Include the Elusive Icons
+  $parser->parseFile( $webfont_location . 'elusive-webfont.less', $bootstrap_uri );
+
   // Enable gradients
   if ( shoestrap_getVariable( 'gradients_toggle' ) == 1 )
     $parser->parseFile( $bootstrap_location . 'gradients.less', $bootstrap_uri );

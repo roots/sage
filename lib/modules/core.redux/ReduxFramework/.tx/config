@@ -1,7 +1,7 @@
 [main]
 host = https://www.transifex.com
 
-[reduxframework.redux-framework]
+[redux-framework.redux-framework]
 file_filter = ReduxCore/languages/redux-framework-<lang>.po
 source_file = ReduxCore/languages/redux-framework.pot
 source_lang = en_US

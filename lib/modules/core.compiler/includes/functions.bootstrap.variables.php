@@ -333,7 +333,7 @@ $variables = '
 @line-height-large:              1.33;
 @line-height-small:              1.5;
 
-@border-radius-base:             ' . round( $padding_base * 0.5 ) . 'px;
+@border-radius-base:             ' . $border_radius . 'px;
 @border-radius-large:            ceil(@border-radius-base * 1.5);
 @border-radius-small:            floor(@border-radius-base * 0.75);
 

@@ -162,7 +162,7 @@ if (!class_exists('ReduxFramework_group')) {
                         echo '<h4>' . $field['title'] . '</h4>';
                     if (!empty($field['subtitle']))
                         echo '<span class="description">' . $field['subtitle'] . '</span>';
-                    if (isset($group[$field['id']]) && !empty($group[$field['id']]) && is_array($group[$field['id']])) {
+                    if (isset($group[$field['id']]) && !empty($group[$field['id']])) {
                     	$value = $group[$field['id']];   	
                     }
                     

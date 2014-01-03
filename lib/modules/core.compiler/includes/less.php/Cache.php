@@ -7,7 +7,7 @@ class Less_Cache{
 	public static $import_dirs = array();
 	public static $error;
 
-    const cache_version = '1424';
+    const cache_version = '1513';
 	protected static $clean_cache = true;
 
 

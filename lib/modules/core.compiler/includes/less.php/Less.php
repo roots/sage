@@ -1,7 +1,7 @@
 <?php
 
 
-require 'LessCache.php';
+require_once 'Cache.php';
 
 class Less_Parser extends Less_Cache{
 
@@ -26,8 +26,8 @@ class Less_Parser extends Less_Cache{
 	/**
 	 *
 	 */
-	const version = '1.4.2.1';
-	const less_version = '1.4.2';
+	const version = '1.5.1rc2';
+	const less_version = '1.5.1';
 
 	/**
 	 * @var Less_Environment
@@ -37,12 +37,18 @@ class Less_Parser extends Less_Cache{
 
 	private static $imports = array();
 
+	public static $has_extends = false;
+
+	public $cache_method = 'php'; //false, 'serialize', 'php', 'var_export';
+
+	public static $next_id = 0;
 
 
 	/**
 	 * @param Environment|null $env
 	 */
 	public function __construct( $env = null ){
+
 
 		// Top parser on an import tree must be sure there is one "env"
 		// which will then be passed around by reference.
@@ -52,9 +58,39 @@ class Less_Parser extends Less_Cache{
 			$this->env = new Less_Environment( $env );
 			self::$imports = array();
 			self::$import_dirs = array();
+			if( is_array($env) ){
+				$this->SetOptions($env);
+			}
 		}
 
 		$this->pos = 0;
+	}
+
+	// options: import_dirs, compress, cache_dir, cache_method, strictUnits
+	public function SetOptions( $options ){
+		foreach($options as $option => $value){
+			$this->SetOption($option,$value);
+		}
+	}
+
+	public function SetOption($option,$value){
+
+		switch($option){
+
+			case 'import_dirs':
+				$this->SetImportDirs($value);
+			break;
+
+			case 'cache_dir':
+				$this->SetCacheDir($value);
+			break;
+
+			case 'cache_method':
+				if( in_array($value, array('php','serialize','var_export')) ){
+					$this->cache_method = $value;
+				}
+			break;
+		}
 	}
 
 
@@ -69,29 +105,46 @@ class Less_Parser extends Less_Cache{
 
 		$precision = ini_get('precision');
 		@ini_set('precision',16);
+		$locale = setlocale(LC_NUMERIC, 0);
+		setlocale(LC_NUMERIC, "C");
 
-		$root = new Less_Tree_Ruleset(null, $this->rules );
+
+ 		$root = new Less_Tree_Ruleset(array(), $this->rules );
 		$root->root = true;
+		$root->firstRoot = true;
+
 
 		//$importVisitor = new Less_importVisitor();
 		//$importVisitor->run($root);
 
+		//obj($root);
+
+		self::$has_extends = false;
+
 		$evaldRoot = $root->compile($this->env);
 
-		$joinSelector = new Less_joinSelectorVisitor();
+
+		$joinSelector = new Less_Visitor_joinSelector();
 		$joinSelector->run($evaldRoot);
 
-		$extendsVisitor = new Less_processExtendsVisitor();
-		$extendsVisitor->run($evaldRoot);
+
+		if( self::$has_extends ){
+			$extendsVisitor = new Less_Visitor_processExtends();
+			$extendsVisitor->run($evaldRoot);
+		}
+
+		$toCSSVisitor = new Less_Visitor_toCSS( $this->env );
+		$toCSSVisitor->run($evaldRoot);
 
 		$css = $evaldRoot->toCSS($this->env);
 
-		if( $this->env->compress ){
-			$css = preg_replace('/(\s)+/',"$1", $css);
+		if( Less_Environment::$compress ){
+			$css = preg_replace('/(^(\s)+)|((\s)+$)/', '', $css);
 		}
 
+		//reset php settings
 		@ini_set('precision',$precision);
-
+		setlocale(LC_NUMERIC, $locale);
 
 		return $css;
 	}
@@ -113,7 +166,7 @@ class Less_Parser extends Less_Cache{
 	/**
 	 * Parse a Less string from a given file
 	 *
-	 * @throws Less_ParserException
+	 * @throws Less_Exception_Parser
 	 * @param $filename The file to parse
 	 * @param $uri_root The url of the file
 	 * @param bool $returnRoot Indicates whether the return value should be a css string a root node
@@ -122,7 +175,7 @@ class Less_Parser extends Less_Cache{
 	public function parseFile( $filename, $uri_root = '', $returnRoot = false){
 
 		if( !file_exists($filename) ){
-			throw new Less_ParserException(sprintf('File `%s` not found.', $filename));
+			throw new Less_Exception_Parser(sprintf('File `%s` not found.', $filename));
 		}
 
 		$previousFileInfo = $this->env->currentFileInfo;
@@ -134,7 +187,7 @@ class Less_Parser extends Less_Cache{
 		$return = null;
 		if( $returnRoot ){
 			$rules = $this->GetRules( $filename );
-			$return = new Less_Tree_Ruleset(null, $rules );
+			$return = new Less_Tree_Ruleset(array(), $rules );
 		}else{
 			$this->_parse( $filename );
 		}
@@ -151,7 +204,7 @@ class Less_Parser extends Less_Cache{
 	public function SetFileInfo( $filename, $uri_root = ''){
 
 		$this->path = pathinfo($filename, PATHINFO_DIRNAME);
-		$this->filename = Less_Environment::NormPath($filename);
+		$this->filename = Less_Environment::normalizePath($filename);
 
 		$dirname = preg_replace('/[^\/\\\\]*$/','',$this->filename);
 
@@ -167,6 +220,12 @@ class Less_Parser extends Less_Cache{
 			$currentFileInfo['uri_root'] = rtrim($uri_root,'/').'/';
 		}
 
+
+		//inherit reference
+		if( isset($this->env->currentFileInfo['reference']) && $this->env->currentFileInfo['reference'] ){
+			$currentFileInfo['reference'] = true;
+		}
+
 		$this->env->currentFileInfo = $currentFileInfo;
 
 		self::$import_dirs = array_merge( array( $dirname => $currentFileInfo['uri_root'] ), self::$import_dirs );
@@ -174,12 +233,15 @@ class Less_Parser extends Less_Cache{
 
 	public function SetCacheDir( $dir ){
 
-		if( is_dir($dir) && is_writable($dir) ){
+		if( !is_dir($dir) ){
+			throw new Less_Exception_Parser('Less.php cache directory doesn\'t exist: '.$dir);
+		}elseif( !is_writable($dir) ){
+			throw new Less_Exception_Parser('Less.php cache directory isn\'t writable: '.$dir);
+		}else{
 			$dir = str_replace('\\','/',$dir);
 			self::$cache_dir = rtrim($dir,'/').'/';
 			return true;
 		}
-
 	}
 
 	public function SetImportDirs( $dirs ){
@@ -212,25 +274,35 @@ class Less_Parser extends Less_Cache{
 
 		$cache_file = false;
 		if( $file_path ){
+			if( $this->cache_method ){
+				$cache_file = $this->CacheFile( $file_path );
 
-			$cache_file = substr($file_path,0,-5).'.lesscache';
-			if( file_exists($cache_file) && ($cache = file_get_contents( $cache_file )) && ($cache = unserialize($cache)) ){
-				return $cache;
-			}
+				if( $cache_file && file_exists($cache_file) ){
+					switch($this->cache_method){
 
-			$cache_file = $this->CacheFile( $file_path );
-			if( $cache_file && file_exists($cache_file) && ($cache = file_get_contents( $cache_file )) && ($cache = unserialize($cache)) ){
-				touch($cache_file);
-				return $cache;
+						// Using serialize
+						// Faster but uses more memory
+						case 'serialize':
+							$cache = unserialize(file_get_contents($cache_file));
+							if( $cache ){
+								touch($cache_file);
+								return $cache;
+							}
+						break;
+
+
+						// Using generated php code
+						case 'var_export':
+						case 'php':
+						return include($cache_file);
+					}
+				}
 			}
 
 			$this->input = file_get_contents( $file_path );
 		}
 
 		$this->pos = 0;
-		$this->input = preg_replace('/\r\n/', "\n", $this->input);
-
-		//$this->Chunkify();
 
 		// Remove potential UTF Byte Order Mark
 		$this->input = preg_replace('/\\G\xEF\xBB\xBF/', '', $this->input);
@@ -244,8 +316,22 @@ class Less_Parser extends Less_Cache{
 
 
 		//save the cache
-		if( $cache_file ){
-			file_put_contents( $cache_file, serialize($rules) );
+		if( $cache_file && $this->cache_method ){
+
+			switch($this->cache_method){
+				case 'serialize':
+					file_put_contents( $cache_file, serialize($rules) );
+				break;
+				case 'php':
+					file_put_contents( $cache_file, '<?php return '.self::ArgString($rules).'; ?>' );
+				break;
+				case 'var_export':
+					/**
+					 * Requires __set_state()
+					 */
+					file_put_contents( $cache_file, '<?php return '.var_export($rules,true).'; ?>' );
+				break;
+			}
 
 			if( self::$clean_cache ){
 				self::CleanCache();
@@ -257,117 +343,21 @@ class Less_Parser extends Less_Cache{
 	}
 
 
-	private function Chunkify(){
-
-		$j = 0;
-		$skip = '/(?:@\{[\w-]+\}|[^"\'`\{\}\/\(\)\\\\])+/';
-		$comment = '/\/\*(?:[^*]|\*+[^\/*])*\*+\/|\/\/.*/';
-		$string = '/"((?:[^"\\\r\n]|\\.)*)"|\'((?:[^\'\\\r\n]|\\.)*)\'|`((?:[^`]|\\.)*)`/';
-		$level = 0;
-		//$chunk = $chunks[0];
-		$inParam = false;
-
-		$chunks = array('');
-
-
-
-
-
-		for( $i = 0; $i < $this->input_len; ){
-
-			$lastIndex = $i;
-			if( preg_match($skip, $this->input, $match, PREG_OFFSET_CAPTURE, $i ) ){
-
-				if( $match[0][1] === $i ){
-					$i += strlen($match[0][0]);
-					$chunks[$j] .= $match[0][0];
-				}
-			}
-
-			$c = @$this->input[$i];
-
-			//comment.lastIndex = string.lastIndex = i;
-
-			if( preg_match($string, $this->input, $match, PREG_OFFSET_CAPTURE, $i ) ){
-				if( $match[0][1] === $i ){
-					$i += strlen($match[0][0]);
-					$chunks[$j] .= $match[0][0];
-					continue;
-				}
-			}
-
-
-
-			if( !$inParam && $c === '/' ){
-				$cc = $this->input[$i + 1];
-				if( $cc === '/' || $cc === '*' ){
-
-					if( preg_match($comment, $this->input, $match, PREG_OFFSET_CAPTURE, $i ) ){
-						if( $match[0][1] === $i ){
-							$i += strlen($match[0][0]);
-							$chunks[$j] .= $match[0][0];
-							continue;
-						}
-					}
-				}
-			}
-
-
-			switch( $c ){
-				case '{':
-					if (! $inParam) {
-						$level ++;
-						$chunks[$j] .= $c;
-						break;
-					}
-
-				case '}':
-					if(! $inParam ){
-						$level --;
-						$chunks[$j] .= $c;
-						$chunks[++$j] = '';
-						break;
-					}
-
-				case '(':
-					if(! $inParam ){
-						$inParam = true;
-						$chunks[$j] .= $c;
-						break;
-					}
-
-				case ')':
-					if(  $inParam ){
-						$inParam = false;
-						$chunks[$j] .= $c;
-						break;
-					}
-
-				default:
-					$chunks[$j] .= $c;
-			}
-
-			$i++;
-
-		}
-
-
-		if( $level != 0 ){
-
-			throw new Less_ParserException(
-				($level > 0) ? 'missing closing `}`' : 'missing opening `{` at index '.($i-1)
-			);
-		}
-
-	}
-
-
 	public function CacheFile( $file_path ){
 
 		if( $file_path && self::$cache_dir ){
-			$file_size = filesize( $file_path );
-			$file_mtime = filemtime( $file_path );
-			return self::$cache_dir.'lessphp_'.base_convert( md5($file_path), 16, 36).'.'.base_convert($file_size,10,36).'.'.base_convert($file_mtime,10,36).'.'.self::cache_version.'.lesscache';
+
+			$env = get_object_vars($this->env);
+			unset($env['frames']);
+
+			$parts = array();
+			$parts[] = $file_path;
+			$parts[] = filesize( $file_path );
+			$parts[] = filemtime( $file_path );
+			$parts[] = $env;
+			$parts[] = self::cache_version;
+			$parts[] = $this->cache_method;
+			return self::$cache_dir.'lessphp_'.base_convert( sha1(json_encode($parts) ), 16, 36).'.lesscache';
 		}
 	}
 
@@ -395,7 +385,7 @@ class Less_Parser extends Less_Cache{
 
 
 	private function isWhitespace($offset = 0) {
-		return ctype_space($this->input[ $this->pos + $offset]);
+		return preg_match('/\s/',$this->input[ $this->pos + $offset]);
 	}
 
 	/**
@@ -404,7 +394,7 @@ class Less_Parser extends Less_Cache{
 	 * @param string $tok
 	 * @return null|bool|object
 	 */
-	private function match(){
+	private function match($toks){
 
 		// The match is confirmed, add the match length to `this::pos`,
 		// and consume any extra white-space characters (' ' || '\n')
@@ -412,18 +402,24 @@ class Less_Parser extends Less_Cache{
 		// grammar is mostly white-space insensitive.
 		//
 
-		for($i = 0, $len = func_num_args(); $i< $len; $i++){
-			$tok = func_get_arg($i);
+		foreach($toks as $tok){
 
-			if( strlen($tok) == 1 ){
-				$match = $this->MatchChar($tok);
+			$char = $tok[0];
 
-			}elseif( $tok[0] != '/' ){
+			if( $char === '/' ){
+				$match = $this->MatchReg($tok);
+
+				if( $match ){
+					return count($match) === 1 ? $match[0] : $match;
+				}
+
+			}elseif( $char === '#' ){
+				$match = $this->MatchChar($tok[1]);
+
+			}else{
 				// Non-terminal, match using a function call
 				$match = $this->$tok();
 
-			}else{
-				$match = $this->MatchReg($tok);
 			}
 
 			if( $match ){
@@ -432,16 +428,15 @@ class Less_Parser extends Less_Cache{
 		}
 	}
 
-	private function MatchFuncs(){
+	private function MatchFuncs($toks){
 
-		for($i = 0, $len = func_num_args(); $i< $len; $i++){
-			$tok = func_get_arg($i);
+		foreach($toks as $tok){
 			$match = $this->$tok();
-
 			if( $match ){
 				return $match;
 			}
 		}
+
 	}
 
 	// Match a single character in the input,
@@ -457,19 +452,8 @@ class Less_Parser extends Less_Cache{
 
 		if( preg_match($tok, $this->input, $match, 0, $this->pos) ){
 			$this->skipWhitespace(strlen($match[0]));
-			return count($match) === 1 ? $match[0] : $match;
+			return $match;
 		}
-	}
-
-	//match a string
-	private function MatchString($string){
-		$len = strlen($string);
-
-		if( ($this->input_len >= ($this->pos+$len)) && substr_compare( $this->input, $string, $this->pos, $len, true ) === 0 ){
-			$this->skipWhitespace( $len );
-			return $string;
-		}
-
 	}
 
 
@@ -485,27 +469,40 @@ class Less_Parser extends Less_Cache{
 		return preg_match($tok, $this->input, $match, 0, $this->pos);
 	}
 
-	public function PeekChar($tok, $offset = 0){
-		$offset += $this->pos;
-		return ($offset < $this->input_len) && ($this->input[$offset] === $tok );
+	public function PeekChar($tok){
+		return ($this->input[$this->pos] === $tok );
+		//return ($this->pos < $this->input_len) && ($this->input[$this->pos] === $tok );
 	}
 
 
-	public function skipWhitespace($length) {
+	public function skipWhitespace($length){
+
 		$this->pos += $length;
-		$this->pos += strspn($this->input, "\n\r\t ", $this->pos);
+
+		for(; $this->pos < $this->input_len; $this->pos++ ){
+			$c = $this->input[$this->pos];
+
+			if( ($c !== "\n") && ($c !== "\r") && ($c !== "\t") && ($c !== ' ') ){
+				break;
+			}
+		}
 	}
 
 
 	public function expect($tok, $msg = NULL) {
-		$result = $this->match($tok);
+		$result = $this->match( array($tok) );
 		if (!$result) {
-			throw new Less_ParserException(
-				$msg === NULL
-					? "Expected '" . $tok . "' got '" . $this->input[$this->pos] . "'"
-					: $msg
-			);
+			throw new Less_Exception_Parser( $msg	? "Expected '" . $tok . "' got '" . $this->input[$this->pos] . "'" : $msg );
 		} else {
+			return $result;
+		}
+	}
+
+	public function expectChar($tok, $msg = null ){
+		$result = $this->MatchChar($tok);
+		if( !$result ){
+			throw new Less_Exception_Parser( $msg ? "Expected '" . $tok . "' got '" . $this->input[$this->pos] . "'" : $msg );
+		}else{
 			return $result;
 		}
 	}
@@ -519,21 +516,21 @@ class Less_Parser extends Less_Cache{
 	//
 	// Here's some LESS code:
 	//
-	//    .class {
-	//      color: #fff;
-	//      border: 1px solid #000;
-	//      width: @w + 4px;
-	//      > .child {...}
-	//    }
+	//	.class {
+	//	  color: #fff;
+	//	  border: 1px solid #000;
+	//	  width: @w + 4px;
+	//	  > .child {...}
+	//	}
 	//
 	// And here's what the parse tree might look like:
 	//
-	//     Ruleset (Selector '.class', [
-	//         Rule ("color",  Value ([Expression [Color #fff]]))
-	//         Rule ("border", Value ([Expression [Dimension 1px][Keyword "solid"][Color #000]]))
-	//         Rule ("width",  Value ([Expression [Operation "+" [Variable "@w"][Dimension 4px]]]))
-	//         Ruleset (Selector [Element '>', '.child'], [...])
-	//     ])
+	//	 Ruleset (Selector '.class', [
+	//		 Rule ("color",  Value ([Expression [Color #fff]]))
+	//		 Rule ("border", Value ([Expression [Dimension 1px][Keyword "solid"][Color #000]]))
+	//		 Rule ("width",  Value ([Expression [Operation "+" [Variable "@w"][Dimension 4px]]]))
+	//		 Ruleset (Selector [Element '>', '.child'], [...])
+	//	 ])
 	//
 	//  In general, most rules will try to parse a token with the `$()` function, and if the return
 	//  value is truly, will return a new node, of the relevant type. Sometimes, we need to check
@@ -548,9 +545,9 @@ class Less_Parser extends Less_Cache{
 	// rule, which represents `{ ... }`, the `ruleset` rule, and this `primary` rule,
 	// as represented by this simplified grammar:
 	//
-	//     primary  →  (ruleset | rule)+
-	//     ruleset  →  selector+ block
-	//     block    →  '{' primary '}'
+	//	 primary  →  (ruleset | rule)+
+	//	 ruleset  →  selector+ block
+	//	 block	→  '{' primary '}'
 	//
 	// Only at one point is the primary rule not called from the
 	// block rule: at the root level.
@@ -558,29 +555,31 @@ class Less_Parser extends Less_Cache{
 	private function parsePrimary(){
 		$root = array();
 
-		$this->skipWhitespace(0);
+		while( true ){
 
-		while( ($node = $this->MatchFuncs('parseExtendRule', 'parseMixinDefinition', 'parseRule', 'parseRuleset', 'parseMixinCall', 'parseComment', 'parseDirective' ))
-							|| $this->skipSemicolons()
-		){
-			//not the same as less.js
-			if( is_array($node) ){
-				$root[] = $node[0];
-			}elseif( $node ){
-				$root[] = $node;
+			if( $this->pos >= $this->input_len ){
+				break;
 			}
+
+			$node = $this->parseExtend(true);
+			if( $node ){
+				$root = array_merge($root,$node);
+				continue;
+			}
+
+			$node = $this->MatchFuncs( array( 'parseMixinDefinition', 'parseRule', 'parseRuleset', 'parseMixinCall', 'parseComment', 'parseDirective'));
+
+			if( $node ){
+				$root[] = $node;
+			}elseif( !$this->MatchReg('/\\G[\s\n;]+/') ){
+				break;
+			}
+
 		}
 
 		return $root;
 	}
 
-	public function skipSemicolons(){
-		$len = strspn($this->input, ";", $this->pos);
-		if( $len ){
-			$this->skipWhitespace($len);
-			return true;
-		}
-	}
 
 
 	// We create a Comment node for CSS comments `/* */`,
@@ -588,24 +587,43 @@ class Less_Parser extends Less_Cache{
 	// over them.
 	private function parseComment(){
 
-		if ( ! $this->PeekChar('/')) {
+		if( $this->input[$this->pos] !== '/' ){
 			return;
 		}
 
+		if( $this->input[$this->pos+1] === '/' ){
+			$match = $this->MatchReg('/\\G\/\/.*/');
+			return $this->Less_Tree_Comment($match[0], true, $this->pos, $this->env->currentFileInfo);
+		}
 
-		if ($this->PeekChar('/', 1)) {
-
-			return new Less_Tree_Comment($this->MatchReg('/\\G\/\/.*/'), true);
-		//}elseif( $comment = $this->MatchReg('/\\G\/\*(?:[^*]|\*+[^\/*])*\*+\/\n?/')) {
-		}elseif( $comment = $this->MatchReg('/\\G\/\*(?s).*?\*+\/\n?/') ) { //not the same as less.js to prevent fatal errors
-			return new Less_Tree_Comment($comment, false);
+		//$comment = $this->MatchReg('/\\G\/\*(?:[^*]|\*+[^\/*])*\*+\/\n?/');
+		$comment = $this->MatchReg('/\\G\/\*(?s).*?\*+\/\n?/');//not the same as less.js to prevent fatal errors
+		if( $comment ){
+			return $this->Less_Tree_Comment($comment[0], false, $this->pos, $this->env->currentFileInfo);
 		}
 	}
+
+	private function parseComments(){
+		$comments = array();
+
+		while( true ){
+			$comment = $this->parseComment();
+			if( !$comment ){
+				break;
+			}
+
+			$comments[] = $comment;
+		}
+
+		return $comments;
+	}
+
+
 
 	//
 	// A string, which supports escaping " and '
 	//
-	//     "milky way" 'he\'s the one!'
+	//	 "milky way" 'he\'s the one!'
 	//
 	private function parseEntitiesQuoted() {
 		$j = 0;
@@ -617,17 +635,18 @@ class Less_Parser extends Less_Cache{
 			$e = true; // Escaped strings
 		}
 
-		if ( ! $this->PeekChar('"', $j) && ! $this->PeekChar("'", $j)) {
+		$char = $this->input[$this->pos+$j];
+		if( $char != '"' && $char !== "'" ){
 			return;
 		}
 
 		if ($e) {
 			$this->MatchChar('~');
 		}
-
-		if ($str = $this->MatchReg('/\\G"((?:[^"\\\\\r\n]|\\\\.)*)"|\'((?:[^\'\\\\\r\n]|\\\\.)*)\'/')) {
+		$str = $this->MatchReg('/\\G"((?:[^"\\\\\r\n]|\\\\.)*)"|\'((?:[^\'\\\\\r\n]|\\\\.)*)\'/');
+		if( $str ){
 			$result = $str[0][0] == '"' ? $str[1] : $str[2];
-			return new Less_Tree_Quoted($str[0], $result, $e, $index, $this->env->currentFileInfo );
+			return $this->Less_Tree_Quoted($str[0], $result, $e, $index, $this->env->currentFileInfo );
 		}
 		return;
 	}
@@ -635,24 +654,39 @@ class Less_Parser extends Less_Cache{
 	//
 	// A catch-all word, such as:
 	//
-	//     black border-collapse
+	//	 black border-collapse
 	//
-	private function parseEntitiesKeyword()
-	{
-		if ($k = $this->MatchReg('/\\G[_A-Za-z-][_A-Za-z0-9-]*/')) {
-			if (Less_Colors::hasOwnProperty($k))
-				// detected named color
-				return new Less_Tree_Color(substr(Less_Colors::color($k), 1));
-			else
-				return new Less_Tree_Keyword($k);
+	private function parseEntitiesKeyword(){
+
+		$k = $this->MatchReg('/\\G[_A-Za-z-][_A-Za-z0-9-]*/');
+		if( $k ){
+			$k = $k[0];
+			$color = $this->fromKeyword($k);
+			if( $color ){
+				return $color;
+			}
+			return $this->Less_Tree_Keyword($k);
 		}
-		return;
+	}
+
+	// duplicate of Less_Tree_Color::FromKeyword
+	private function FromKeyword( $keyword ){
+		if( Less_Colors::hasOwnProperty($keyword) ){
+			// detect named color
+			return $this->Less_Tree_Color(substr(Less_Colors::color($keyword), 1));
+		}
+
+		if( $keyword === 'transparent' ){
+			$transparent = $this->Less_Tree_Color( array(0, 0, 0), 0);
+			$transparent->isTransparentKeyword = true;
+			return $transparent;
+		}
 	}
 
 	//
 	// A function call
 	//
-	//     rgb(255, 0, 255)
+	//	 rgb(255, 0, 255)
 	//
 	// We also try to catch IE's `alpha()`, but let the `alpha` parser
 	// deal with the details.
@@ -670,9 +704,9 @@ class Less_Parser extends Less_Cache{
 
 		if ($nameLC === 'url') {
 			return null;
-		} else {
-			$this->pos += strlen($name);
 		}
+
+		$this->pos += strlen($name);
 
 		if( $nameLC === 'alpha' ){
 			$alpha_ret = $this->parseAlpha();
@@ -690,7 +724,7 @@ class Less_Parser extends Less_Cache{
 		}
 
 		if ($name) {
-			return new Less_Tree_Call($name, $args, $index, $this->env->currentFileInfo );
+			return $this->Less_Tree_Call($name, $args, $index, $this->env->currentFileInfo );
 		}
 	}
 
@@ -700,10 +734,16 @@ class Less_Parser extends Less_Cache{
 	 * @return array
 	 */
 	private function parseEntitiesArguments(){
+
 		$args = array();
-		while( $arg = $this->MatchFuncs('parseEntitiesAssignment','parseExpression') ){
+		while( true ){
+			$arg = $this->MatchFuncs( array('parseEntitiesAssignment','parseExpression') );
+			if( !$arg ){
+				break;
+			}
+
 			$args[] = $arg;
-			if (! $this->MatchChar(',')) {
+			if( !$this->MatchChar(',') ){
 				break;
 			}
 		}
@@ -711,17 +751,28 @@ class Less_Parser extends Less_Cache{
 	}
 
 	private function parseEntitiesLiteral(){
-		return $this->MatchFuncs('parseEntitiesDimension','parseEntitiesColor','parseEntitiesQuoted','parseUnicodeDescriptor');
+		return $this->MatchFuncs( array('parseEntitiesDimension','parseEntitiesColor','parseEntitiesQuoted','parseUnicodeDescriptor') );
 	}
 
 	// Assignments are argument entities for calls.
 	// They are present in ie filter properties as shown below.
 	//
-	//     filter: progid:DXImageTransform.Microsoft.Alpha( *opacity=50* )
+	//	 filter: progid:DXImageTransform.Microsoft.Alpha( *opacity=50* )
 	//
 	private function parseEntitiesAssignment() {
-		if (($key = $this->MatchReg('/\\G\w+(?=\s?=)/')) && $this->MatchChar('=') && ($value = $this->parseEntity())) {
-			return new Less_Tree_Assignment($key, $value);
+
+		$key = $this->MatchReg('/\\G\w+(?=\s?=)/');
+		if( !$key ){
+			return;
+		}
+
+		if( !$this->MatchChar('=') ){
+			return;
+		}
+
+		$value = $this->parseEntity();
+		if( $value ){
+			return $this->Less_Tree_Assignment($key[0], $value);
 		}
 	}
 
@@ -735,28 +786,28 @@ class Less_Parser extends Less_Cache{
 	private function parseEntitiesUrl(){
 
 
-		if( !$this->MatchString('url(') ){
+		if( $this->input[$this->pos] !== 'u' || !$this->matchReg('/\\Gurl\(/') ){
 			return;
 		}
 
-		$value = $this->match('parseEntitiesQuoted','parseEntitiesVariable','/\\G(?:(?:\\\\[\(\)\'"])|[^\(\)\'"])+/');
+		$value = $this->match( array('parseEntitiesQuoted','parseEntitiesVariable','/\\G(?:(?:\\\\[\(\)\'"])|[^\(\)\'"])+/') );
 		if( !$value ){
 			$value = '';
 		}
 
 
-		$this->expect(')');
+		$this->expectChar(')');
 
 
-		return new Less_Tree_Url((isset($value->value) || $value instanceof Less_Tree_Variable)
-							? $value : new Less_Tree_Anonymous($value), $this->env->currentFileInfo );
+		return $this->Less_Tree_Url((isset($value->value) || $value instanceof Less_Tree_Variable)
+							? $value : $this->Less_Tree_Anonymous($value), $this->env->currentFileInfo );
 	}
 
 
 	//
 	// A Variable entity, such as `@fink`, in
 	//
-	//     width: @fink + 2px
+	//	 width: @fink + 2px
 	//
 	// We use a different parser for variable definitions,
 	// see `parsers.variable`.
@@ -764,7 +815,7 @@ class Less_Parser extends Less_Cache{
 	private function parseEntitiesVariable(){
 		$index = $this->pos;
 		if ($this->PeekChar('@') && ($name = $this->MatchReg('/\\G@@?[\w-]+/'))) {
-			return new Less_Tree_Variable($name, $index, $this->env->currentFileInfo);
+			return $this->Less_Tree_Variable( $name[0], $index, $this->env->currentFileInfo);
 		}
 	}
 
@@ -774,28 +825,27 @@ class Less_Parser extends Less_Cache{
 		$index = $this->pos;
 
 		if( $this->input_len > ($this->pos+1) && $this->input[$this->pos] === '@' && ($curly = $this->MatchReg('/\\G@\{([\w-]+)\}/')) ){
-			return new Less_Tree_Variable('@'.$curly[1], $index, $this->env->currentFileInfo);
+			return $this->Less_Tree_Variable('@'.$curly[1], $index, $this->env->currentFileInfo);
 		}
 	}
 
 	//
 	// A Hexadecimal color
 	//
-	//     #4F3C2F
+	//	 #4F3C2F
 	//
 	// `rgb` and `hsl` colors are parsed through the `entities.call` parser.
 	//
-	private function parseEntitiesColor()
-	{
+	private function parseEntitiesColor(){
 		if ($this->PeekChar('#') && ($rgb = $this->MatchReg('/\\G#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})/'))) {
-			return new Less_Tree_Color($rgb[1]);
+			return $this->Less_Tree_Color($rgb[1]);
 		}
 	}
 
 	//
 	// A Dimension, that is, a number and a unit
 	//
-	//     0.5em 95%
+	//	 0.5em 95%
 	//
 	private function parseEntitiesDimension(){
 
@@ -806,8 +856,9 @@ class Less_Parser extends Less_Cache{
 			return;
 		}
 
-		if ($value = $this->MatchReg('/\\G([+-]?\d*\.?\d+)(%|[a-z]+)?/')) {
-			return new Less_Tree_Dimension($value[1], isset($value[2]) ? $value[2] : null);
+		$value = $this->MatchReg('/\\G([+-]?\d*\.?\d+)(%|[a-z]+)?/');
+		if( $value ){
+			return $this->Less_Tree_Dimension( $value[1], isset($value[2]) ? $value[2] : null);
 		}
 	}
 
@@ -818,9 +869,9 @@ class Less_Parser extends Less_Cache{
 	// U+0?? or U+00A1-00A9
 	//
 	function parseUnicodeDescriptor() {
-
-		if ($ud = $this->MatchReg('/\\G(U\+[0-9a-fA-F?]+)(\-[0-9a-fA-F?]+)?/')) {
-			return new Less_Tree_UnicodeDescriptor($ud[0]);
+		$ud = $this->MatchReg('/\\G(U\+[0-9a-fA-F?]+)(\-[0-9a-fA-F?]+)?/');
+		if( $ud ){
+			return $this->Less_Tree_UnicodeDescriptor( $ud[0]);
 		}
 	}
 
@@ -828,22 +879,24 @@ class Less_Parser extends Less_Cache{
 	//
 	// JavaScript code to be evaluated
 	//
-	//     `window.location.href`
+	//	 `window.location.href`
 	//
-	private function parseEntitiesJavascript()
-	{
+	private function parseEntitiesJavascript(){
 		$e = false;
-		if ($this->PeekChar('~')) {
+		$j = $this->pos;
+		if( $this->input[$j] === '~' ){
+			$j++;
 			$e = true;
 		}
-		if (! $this->PeekChar('`', $e)) {
+		if( $this->input[$j] !== '`' ){
 			return;
 		}
-		if ($e) {
+		if( $e ){
 			$this->MatchChar('~');
 		}
-		if ($str = $this->MatchReg('/\\G`([^`]*)`/')) {
-			return new Less_Tree_Javascript($str[1], $this->pos, $e);
+		$str = $this->MatchReg('/\\G`([^`]*)`/');
+		if( $str ){
+			return $this->Less_Tree_Javascript( $str[1], $this->pos, $e);
 		}
 	}
 
@@ -851,7 +904,7 @@ class Less_Parser extends Less_Cache{
 	//
 	// The variable part of a variable definition. Used in the `rule` parser
 	//
-	//     @fink:
+	//	 @fink:
 	//
 	private function parseVariable(){
 		if ($this->PeekChar('@') && ($name = $this->MatchReg('/\\G(@[\w-]+)\s*:/'))) {
@@ -868,8 +921,7 @@ class Less_Parser extends Less_Cache{
 		$extendList = array();
 
 
-		//if( !$this->MatchReg( $isRule ? '/\\G&:extend\(/' : '/\\G:extend\(/' ) ){ return; }
-		if( !$this->MatchString( $isRule ? '&:extend(' : ':extend(' ) ){ return; }
+		if( !$this->MatchReg( $isRule ? '/\\G&:extend\(/' : '/\\G:extend\(/' ) ){ return; }
 
 		do{
 			$option = null;
@@ -886,7 +938,7 @@ class Less_Parser extends Less_Cache{
 				$option = $option[1];
 			}
 
-			$extendList[] = new Less_Tree_Extend( new Less_Tree_Selector($elements), $option, $index );
+			$extendList[] = $this->Less_Tree_Extend( $this->Less_Tree_Selector($elements), $option, $index );
 
 		}while( $this->MatchChar(",") );
 
@@ -899,17 +951,13 @@ class Less_Parser extends Less_Cache{
 		return $extendList;
 	}
 
-	function parseExtendRule(){
-		return $this->parseExtend(true);
-	}
-
 
 	//
 	// A Mixin call, with an optional argument list
 	//
-	//     #mixins > .square(#fff);
-	//     .rounded(4px, black);
-	//     .button;
+	//	 #mixins > .square(#fff);
+	//	 .rounded(4px, black);
+	//	 .button;
 	//
 	// The `while` loop is there because mixins can be
 	// namespaced, but we only support the child and descendant
@@ -922,21 +970,26 @@ class Less_Parser extends Less_Cache{
 		$args = null;
 		$c = null;
 
-		if( !$this->PeekChar('.') && !$this->PeekChar('#') ){
+		$char = $this->input[$this->pos];
+		if( $char !== '.' && $char !== '#' ){
 			return;
 		}
 
 		$this->save(); // stop us absorbing part of an invalid selector
 
-		while( $e = $this->MatchReg('/\\G[#.](?:[\w-]|\\\\(?:[A-Fa-f0-9]{1,6} ?|[^A-Fa-f0-9]))+/') ){
-			$elements[] = new Less_Tree_Element($c, $e, $this->pos);
+		while( true ){
+			$e = $this->MatchReg('/\\G[#.](?:[\w-]|\\\\(?:[A-Fa-f0-9]{1,6} ?|[^A-Fa-f0-9]))+/');
+			if( !$e ){
+				break;
+			}
+			$elements[] = $this->Less_Tree_Element($c, $e[0], $this->pos, $this->env->currentFileInfo);
 			$c = $this->MatchChar('>');
 		}
 
 		if( $this->MatchChar('(') ){
 			$returned = $this->parseMixinArgs(true);
 			$args = $returned['args'];
-			$this->expect(')');
+			$this->expectChar(')');
 		}
 
 		if( !$args ){
@@ -947,8 +1000,8 @@ class Less_Parser extends Less_Cache{
 			$important = true;
 		}
 
-		if( count($elements) > 0 && ($this->MatchChar(';') || $this->PeekChar('}')) ){
-			return new Less_Tree_MixinCall($elements, $args, $index, $this->env->currentFileInfo, $important);
+		if( $elements && ($this->MatchChar(';') || $this->PeekChar('}')) ){
+			return Less_Parser::Less_Tree_Mixin_Call( $elements, $args, $index, $this->env->currentFileInfo, $important);
 		}
 
 		$this->restore();
@@ -969,7 +1022,7 @@ class Less_Parser extends Less_Cache{
 			if( $isCall ){
 				$arg = $this->parseExpression();
 			} else {
-				$this->parseComment();
+				$this->parseComments();
 				if( $this->input[ $this->pos ] === '.' && $this->MatchReg('/\\G\.{3}/') ){
 					$returner['variadic'] = true;
 					if( $this->MatchChar(";") && !$isSemiColonSeperated ){
@@ -983,7 +1036,7 @@ class Less_Parser extends Less_Cache{
 					}
 					break;
 				}
-				$arg = $this->MatchFuncs('parseEntitiesVariable','parseEntitiesLiteral','parseEntitiesKeyword');
+				$arg = $this->MatchFuncs( array('parseEntitiesVariable','parseEntitiesLiteral','parseEntitiesKeyword') );
 			}
 
 
@@ -1001,7 +1054,7 @@ class Less_Parser extends Less_Cache{
 
 			if( $isCall ){
 				// Variable
-				if( count($arg->value) == 1) {
+				if( count($arg->value) == 1 ){
 					$val = $arg->value[0];
 				}
 			} else {
@@ -1012,9 +1065,9 @@ class Less_Parser extends Less_Cache{
 			if( $val && $val instanceof Less_Tree_Variable ){
 
 				if( $this->MatchChar(':') ){
-					if( count($expressions) > 0 ){
+					if( $expressions ){
 						if( $isSemiColonSeperated ){
-							throw new Less_ParserException('Cannot mix ; and , as delimiter types');
+							throw new Less_Exception_Parser('Cannot mix ; and , as delimiter types');
 						}
 						$expressionContainsNamed = true;
 					}
@@ -1050,13 +1103,13 @@ class Less_Parser extends Less_Cache{
 			if( $this->MatchChar(';') || $isSemiColonSeperated ){
 
 				if( $expressionContainsNamed ){
-					throw new Less_ParserException('Cannot mix ; and , as delimiter types');
+					throw new Less_Exception_Parser('Cannot mix ; and , as delimiter types');
 				}
 
 				$isSemiColonSeperated = true;
 
 				if( count($expressions) > 1 ){
-					$value = new Less_Tree_Value($expressions);
+					$value = $this->Less_Tree_Value( $expressions);
 				}
 				$argsSemiColon[] = array('name'=>$name, 'value'=>$value );
 
@@ -1074,9 +1127,9 @@ class Less_Parser extends Less_Cache{
 	//
 	// A Mixin definition, with a list of parameters
 	//
-	//     .rounded (@radius: 2px, @color) {
-	//        ...
-	//     }
+	//	 .rounded (@radius: 2px, @color) {
+	//		...
+	//	 }
 	//
 	// Until we have a finer grained state-machine, we have to
 	// do a look-ahead, to make sure we don't have a mixin call.
@@ -1095,13 +1148,15 @@ class Less_Parser extends Less_Cache{
 		$variadic = false;
 		$cond = null;
 
-		if ((! $this->PeekChar('.') && ! $this->PeekChar('#')) || $this->PeekChar('/\\G[^{]*\}/')) {
+		$char = $this->input[$this->pos];
+		if( ($char !== '.' && $char !== '#') || ($char === '{' && $this->Peek('/\\G[^{]*\}/')) ){
 			return;
 		}
 
 		$this->save();
 
-		if ($match = $this->MatchReg('/\\G([#.](?:[\w-]|\\\(?:[A-Fa-f0-9]{1,6} ?|[^A-Fa-f0-9]))+)\s*\(/')) {
+		$match = $this->MatchReg('/\\G([#.](?:[\w-]|\\\(?:[A-Fa-f0-9]{1,6} ?|[^A-Fa-f0-9]))+)\s*\(/');
+		if( $match ){
 			$name = $match[1];
 
 			$argInfo = $this->parseMixinArgs( false );
@@ -1116,17 +1171,16 @@ class Less_Parser extends Less_Cache{
 				$this->restore();
 			}
 
-			$this->parseComment();
+			$this->parseComments();
 
-			if( $this->MatchString('when') ){ // Guard
-			//if ($this->MatchReg('/\\Gwhen/')) { // Guard
+			if ($this->MatchReg('/\\Gwhen/')) { // Guard
 				$cond = $this->expect('parseConditions', 'Expected conditions');
 			}
 
 			$ruleset = $this->parseBlock();
 
 			if( is_array($ruleset) ){
-				return new Less_Tree_MixinDefinition($name, $params, $ruleset, $cond, $variadic);
+				return Less_Parser::Less_Tree_Mixin_Definition( $name, $params, $ruleset, $cond, $variadic);
 			} else {
 				$this->restore();
 			}
@@ -1139,7 +1193,7 @@ class Less_Parser extends Less_Cache{
 	//
 	private function parseEntity(){
 
-		return $this->MatchFuncs('parseEntitiesLiteral','parseEntitiesVariable','parseEntitiesUrl','parseEntitiesCall','parseEntitiesKeyword','parseEntitiesJavascript','parseComment');
+		return $this->MatchFuncs( array('parseEntitiesLiteral','parseEntitiesVariable','parseEntitiesUrl','parseEntitiesCall','parseEntitiesKeyword','parseEntitiesJavascript','parseComment') );
 	}
 
 	//
@@ -1147,42 +1201,43 @@ class Less_Parser extends Less_Cache{
 	// because the `block` rule will be expecting it, but we still need to make sure
 	// it's there, if ';' was ommitted.
 	//
-	private function parseEnd()
-	{
-		return ($end = $this->MatchChar(';') ) ? $end : $this->PeekChar('}');
+	private function parseEnd(){
+		return $this->MatchChar(';') || $this->PeekChar('}');
 	}
 
 	//
 	// IE's alpha function
 	//
-	//     alpha(opacity=88)
+	//	 alpha(opacity=88)
 	//
 	private function parseAlpha(){
 
-		if( !$this->MatchString('(opacity=') ){
-		//if ( ! $this->MatchReg('/\\G\(opacity=/i')) {
+		if ( ! $this->MatchReg('/\\G\(opacity=/i')) {
 			return;
 		}
 
 		$value = $this->MatchReg('/\\G[0-9]+/');
-		if ($value === null) {
+		if( $value ){
+			$value = $value[0];
+		}else{
 			$value = $this->parseEntitiesVariable();
+			if( !$value ){
+				return;
+			}
 		}
 
-		if ($value !== null) {
-			$this->expect(')');
-			return new Less_Tree_Alpha($value);
-		}
+		$this->expectChar(')');
+		return $this->Less_Tree_Alpha( $value);
 	}
 
 
 	//
 	// A Selector Element
 	//
-	//     div
-	//     + h1
-	//     #socks
-	//     input[type="text"]
+	//	 div
+	//	 + h1
+	//	 #socks
+	//	 input[type="text"]
 	//
 	// Elements are the building blocks for Selectors,
 	// they are made out of a `Combinator` (see combinator rule),
@@ -1191,19 +1246,19 @@ class Less_Parser extends Less_Cache{
 	private function parseElement(){
 		$c = $this->parseCombinator();
 
-		$e = $this->match( '/\\G(?:\d+\.\d+|\d+)%/', '/\\G(?:[.#]?|:*)(?:[\w-]|[^\x00-\x9f]|\\\\(?:[A-Fa-f0-9]{1,6} ?|[^A-Fa-f0-9]))+/',
-			'*', '&', 'parseAttribute', '/\\G\([^()@]+\)/', '/\\G[\.#](?=@)/', 'parseEntitiesVariableCurly');
+		$e = $this->match( array('/\\G(?:\d+\.\d+|\d+)%/', '/\\G(?:[.#]?|:*)(?:[\w-]|[^\x00-\x9f]|\\\\(?:[A-Fa-f0-9]{1,6} ?|[^A-Fa-f0-9]))+/',
+			'#*', '#&', 'parseAttribute', '/\\G\([^()@]+\)/', '/\\G[\.#](?=@)/', 'parseEntitiesVariableCurly') );
 
-		if( !$e ){
+		if( is_null($e) ){
 			if( $this->MatchChar('(') ){
 				if( ($v = $this->parseSelector()) && $this->MatchChar(')') ){
-					$e = new Less_Tree_Paren($v);
+					$e = $this->Less_Tree_Paren( $v);
 				}
 			}
 		}
 
-		if ($e) {
-			return new Less_Tree_Element($c, $e, $this->pos);
+		if( !is_null($e) ){
+			return $this->Less_Tree_Element( $c, $e, $this->pos, $this->env->currentFileInfo);
 		}
 	}
 
@@ -1215,42 +1270,54 @@ class Less_Parser extends Less_Cache{
 	// as it's an empty space. We have to check the previous character
 	// in the input, to see if it's a ` ` character.
 	//
-	private function parseCombinator()
-	{
-		$c = isset($this->input[$this->pos]) ? $this->input[$this->pos] : '';
+	private function parseCombinator(){
+		$c = $this->input[$this->pos];
 		if ($c === '>' || $c === '+' || $c === '~' || $c === '|') {
 
-			$this->pos++;
-			while( $this->isWhitespace() ){
-				$this->pos++;
-			}
-			return new Less_Tree_Combinator($c);
-		} elseif ($this->pos > 0 && (preg_match('/\s/', $this->input[$this->pos - 1]))) {
-			return new Less_Tree_Combinator(' ');
+			$this->skipWhitespace(1);
+
+			return $this->Less_Tree_Combinator( $c);
+		}elseif( $this->pos > 0 && $this->isWhitespace(-1) ){
+			return $this->Less_Tree_Combinator(' ');
 		} else {
-			return new Less_Tree_Combinator();
+			return $this->Less_Tree_Combinator();
 		}
+	}
+
+	//
+	// A CSS selector (see selector below)
+	// with less extensions e.g. the ability to extend and guard
+	//
+	private function parseLessSelector(){
+		return $this->parseSelector(true);
 	}
 
 	//
 	// A CSS Selector
 	//
-	//     .class > div + h1
-	//     li a:hover
+	//	 .class > div + h1
+	//	 li a:hover
 	//
 	// Selectors are made out of one or more Elements, see above.
 	//
-	private function parseSelector(){
+	private function parseSelector( $isLess = false ){
 		$elements = array();
 		$extendList = array();
+		$condition = null;
+		$when = false;
+		$extend = false;
 
-		while( ($extend = $this->parseExtend()) ? $extend : ($e = $this->parseElement()) ){
-			if( $extend ){
+		while( ($isLess && ($extend = $this->parseExtend())) || ($isLess && ($when = $this->MatchReg('/\\Gwhen/') )) || ($e = $this->parseElement()) ){
+			if( $when ){
+				$condition = $this->expect('parseConditions', 'expected condition');
+			}elseif( $condition ){
+				//error("CSS guard can only be used at the end of selector");
+			}elseif( $extend ){
 				$extendList = array_merge($extendList,$extend);
 			}else{
-				if( count($extendList) ){
+				//if( count($extendList) ){
 					//error("Extend can only be used at the end of selector");
-				}
+				//}
 				$c = $this->input[ $this->pos ];
 				$elements[] = $e;
 				$e = null;
@@ -1259,8 +1326,10 @@ class Less_Parser extends Less_Cache{
 			if( $c === '{' || $c === '}' || $c === ';' || $c === ',' || $c === ')') { break; }
 		}
 
-		if( count($elements) ) { return new Less_Tree_Selector( $elements, $extendList); }
-		if( count($extendList) ) { throw new Less_ParserException('Extend must be used to extend a selector, it cannot be used on its own'); }
+		if( $elements ){
+			return $this->Less_Tree_Selector( $elements, $extendList, $condition, $this->pos, $this->env->currentFileInfo);
+		}
+		if( $extendList ) { throw new Less_Exception_Parser('Extend must be used to extend a selector, it cannot be used on its own'); }
 	}
 
 	private function parseTag(){
@@ -1276,44 +1345,19 @@ class Less_Parser extends Less_Cache{
 			return;
 		}
 
-		if( !($key = $this->parseEntitiesVariableCurly()) ){
+		$key = $this->parseEntitiesVariableCurly();
+		if( !$key ){
 			$key = $this->expect('/\\G(?:[_A-Za-z0-9-\*]*\|)?(?:[_A-Za-z0-9-]|\\\\.)+/');
 		}
 
-		if( ($op = $this->MatchReg('/\\G[|~*$^]?=/')) ){
-			$val = $this->match('parseEntitiesQuoted','/\\G[\w-]+/','parseEntitiesVariableCurly');
+		$op = $this->MatchReg('/\\G[|~*$^]?=/');
+		if( $op ){
+			$val = $this->match( array('parseEntitiesQuoted','/\\G[0-9]+%/','/\\G[\w-]+/','parseEntitiesVariableCurly') );
 		}
 
-		$this->expect(']');
+		$this->expectChar(']');
 
-		return new Less_Tree_Attribute($key, $op, $val);
-
-
-		if (! $this->MatchChar('[')) {
-			return;
-		}
-
-		$attr = '';
-
-		if( $key = $this->match('/\\G(?:[_A-Za-z0-9-]|\\\\.)+/','parseEntitiesQuoted') ){
-			if( ($op = $this->MatchReg('/\\G[|~*$^]?=/')) &&
-				($val = $this->match('parseEntitiesQuoted','/\\G[\w-]+/')) ){
-				if( !is_string($val) ){
-					$val = $val->toCss();
-				}
-				$attr = $key.$op.$val;
-			}else{
-				$attr = $key;
-			}
-		}
-
-		if (! $this->MatchChar(']')) {
-			return;
-		}
-
-		if ($attr) {
-			return "[" . $attr . "]";
-		}
+		return $this->Less_Tree_Attribute( $key, $op[0], $val);
 	}
 
 	//
@@ -1333,16 +1377,25 @@ class Less_Parser extends Less_Cache{
 		$selectors = array();
 		$start = $this->pos;
 
-		while( $selectors[] = $this->parseSelector() ){
-			$this->parseComment();
+		while( true ){
+			$s = $this->parseLessSelector();
+			if( !$s ){
+				break;
+			}
+			$selectors[] = $s;
+			$this->parseComments();
 			if( !$this->MatchChar(',') ){
 				break;
 			}
-			$this->parseComment();
+			if( $s->condition ){
+				//error("Guards are only currently allowed on a single selector.");
+			}
+			$this->parseComments();
 		}
 
-		if( count($selectors) > 0 && (is_array($rules = $this->parseBlock())) ){
-			return new Less_Tree_Ruleset($selectors, $rules, $this->env->strictImports);
+
+		if( $selectors && (is_array($rules = $this->parseBlock())) ){
+			return $this->Less_Tree_Ruleset( $selectors, $rules, $this->env->strictImports);
 		} else {
 			// Backtrack
 			$this->pos = $start;
@@ -1351,42 +1404,40 @@ class Less_Parser extends Less_Cache{
 
 
 	private function parseRule( $tryAnonymous = null ){
+		$merge = false;
 		$start = $this->pos;
 		$this->save();
 
-		if( isset($this->input[$this->pos]) ){
-			$c = $this->input[$this->pos];
-
-			if( $c === '.' || $c === '#' || $c === '&' ){
-				return;
-			}
+		$c = $this->input[$this->pos];
+		if( $c === '.' || $c === '#' || $c === '&' ){
+			return;
 		}
 
-		if( $name = $this->MatchFuncs('parseVariable','parseProperty') ){
+		if( $name = $this->MatchFuncs( array('parseVariable','parseRuleProperty')) ){
 
 
 			// prefer to try to parse first if its a variable or we are compressing
 			// but always fallback on the other one
-			if( !$tryAnonymous && ($name[0] === '@') ){
-				$value = $this->MatchFuncs('parseValue','parseAnonymousValue');
+			if( !$tryAnonymous && $name[0] === '@' ){
+				$value = $this->MatchFuncs( array('parseValue','parseAnonymousValue'));
 			}else{
-				$value = $this->MatchFuncs('parseAnonymousValue','parseValue');
+				$value = $this->MatchFuncs( array('parseAnonymousValue','parseValue'));
 			}
 
 			$important = $this->parseImportant();
 
+			if( substr($name,-1) === '+' ){
+				$merge = true;
+				$name = substr($name, 0, -1 );
+			}
+
 			if( $value && $this->parseEnd() ){
-				return new Less_Tree_Rule($name, $value, $important, $start, $this->env->currentFileInfo);
+				return $this->Less_Tree_Rule( $name, $value, $important[0], $merge, $start, $this->env->currentFileInfo);
 			}else{
-				//not the same as less.js
 				$this->restore();
-				/*
 				if( $value && !$tryAnonymous ){
-					//return new Less_Tree_Rule(true);
-				}else{
-					$this->restore();
+					return $this->parseRule(true);
 				}
-				*/
 			}
 		}
 	}
@@ -1394,15 +1445,15 @@ class Less_Parser extends Less_Cache{
 	function parseAnonymousValue(){
 
 		if( preg_match('/\\G([^@+\/\'"*`(;{}-]*);/',$this->input, $match, 0, $this->pos) ){
-			$this->pos += strlen($match[0]) - 1;
-			return new Less_Tree_Anonymous($match[1]);
+			$this->pos += strlen($match[1]);
+			return $this->Less_Tree_Anonymous( $match[1]);
 		}
 	}
 
 	//
 	// An @import directive
 	//
-	//     @import "lib";
+	//	 @import "lib";
 	//
 	// Depending on our environment, importing is done differently:
 	// In the browser, it's an XHR request, in Node, it would be a
@@ -1414,22 +1465,24 @@ class Less_Parser extends Less_Cache{
 
 		$this->save();
 
-		$dir = $this->MatchString('@import');
-		//$dir = $this->MatchReg('/\\G@import?\s+/');
+		$dir = $this->MatchReg('/\\G@import?\s+/');
 
 		$options = array();
 		if( $dir ){
 			$options = $this->parseImportOptions();
+			if( !$options ){
+				$options = array();
+			}
 		}
 
-		if( $dir && ($path = $this->MatchFuncs('parseEntitiesQuoted','parseEntitiesUrl')) ){
+		if( $dir && ($path = $this->MatchFuncs( array('parseEntitiesQuoted','parseEntitiesUrl'))) ){
 			$features = $this->parseMediaFeatures();
 			if( $this->MatchChar(';') ){
 				if( $features ){
-					$features = new Less_Tree_Value($features);
+					$features = $this->Less_Tree_Value( $features);
 				}
 
-				return new Less_Tree_Import($path, $features, $options, $this->pos, $this->env->currentFileInfo );
+				return $this->Less_Tree_Import( $path, $features, $options, $this->pos, $this->env->currentFileInfo );
 			}
 		}
 
@@ -1443,8 +1496,8 @@ class Less_Parser extends Less_Cache{
 		// list of options, surrounded by parens
 		if( !$this->MatchChar('(') ){ return null; }
 		do{
-			if( $o = $this->parseImportOption() ){
-				$optionName = $o;
+			$optionName = $this->parseImportOption();
+			if( $optionName ){
 				$value = true;
 				switch( $optionName ){
 					case "css":
@@ -1459,13 +1512,13 @@ class Less_Parser extends Less_Cache{
 				$options[$optionName] = $value;
 				if( !$this->MatchChar(',') ){ break; }
 			}
-		}while($o);
-		$this->expect(')');
+		}while( $optionName );
+		$this->expectChar(')');
 		return $options;
 	}
 
 	private function parseImportOption(){
-		$opt = $this->MatchReg('/\\G(less|css|multiple|once)/');
+		$opt = $this->MatchReg('/\\G(less|css|multiple|once|inline|reference)/');
 		if( $opt ){
 			return $opt[1];
 		}
@@ -1474,17 +1527,18 @@ class Less_Parser extends Less_Cache{
 	private function parseMediaFeature() {
 		$nodes = array();
 
-		do {
-			if ($e = $this->parseEntitiesKeyword()) {
+		do{
+			$e = $this->MatchFuncs(array('parseEntitiesKeyword','parseEntitiesVariable'));
+			if( $e ){
 				$nodes[] = $e;
 			} elseif ($this->MatchChar('(')) {
 				$p = $this->parseProperty();
 				$e = $this->parseValue();
 				if ($this->MatchChar(')')) {
 					if ($p && $e) {
-						$nodes[] = new Less_Tree_Paren(new Less_Tree_Rule($p, $e, null, $this->pos, $this->env->currentFileInfo, true));
+						$nodes[] = $this->Less_Tree_Paren($this->Less_Tree_Rule( $p, $e, null, null, $this->pos, $this->env->currentFileInfo, true));
 					} elseif ($e) {
-						$nodes[] = new Less_Tree_Paren($e);
+						$nodes[] = $this->Less_Tree_Paren( $e);
 					} else {
 						return null;
 					}
@@ -1494,20 +1548,24 @@ class Less_Parser extends Less_Cache{
 		} while ($e);
 
 		if ($nodes) {
-			return new Less_Tree_Expression($nodes);
+			return $this->Less_Tree_Expression( $nodes);
 		}
 	}
 
 	private function parseMediaFeatures() {
 		$features = array();
 
-		do {
-			if ($e = $this->parseMediaFeature()) {
+		do{
+			$e = $this->parseMediaFeature();
+			if( $e ){
 				$features[] = $e;
 				if (!$this->MatchChar(',')) break;
-			} elseif ($e = $this->parseEntitiesVariable()) {
-				$features[] = $e;
-				if (!$this->MatchChar(',')) break;
+			}else{
+				$e = $this->parseEntitiesVariable();
+				if( $e ){
+					$features[] = $e;
+					if (!$this->MatchChar(',')) break;
+				}
 			}
 		} while ($e);
 
@@ -1515,12 +1573,11 @@ class Less_Parser extends Less_Cache{
 	}
 
 	private function parseMedia() {
-		if( $this->MatchString('@media') ){
-		//if ($this->MatchReg('/\\G@media/')) {
+		if ($this->MatchReg('/\\G@media/')) {
 			$features = $this->parseMediaFeatures();
 
 			if ($rules = $this->parseBlock()) {
-				return new Less_Tree_Media($rules, $features);
+				return $this->Less_Tree_Media( $rules, $features, $this->pos, $this->env->currentFileInfo);
 			}
 		}
 	}
@@ -1528,10 +1585,9 @@ class Less_Parser extends Less_Cache{
 	//
 	// A CSS Directive
 	//
-	//     @charset "utf-8";
+	//	 @charset "utf-8";
 	//
-	private function parseDirective()
-	{
+	private function parseDirective(){
 		$hasBlock = false;
 		$hasIdentifier = false;
 		$hasExpression = false;
@@ -1540,7 +1596,7 @@ class Less_Parser extends Less_Cache{
 			return;
 		}
 
-		$value = $this->MatchFuncs('parseImport','parseMedia');
+		$value = $this->MatchFuncs(array('parseImport','parseMedia'));
 		if( $value ){
 			return $value;
 		}
@@ -1550,6 +1606,7 @@ class Less_Parser extends Less_Cache{
 		$name = $this->MatchReg('/\\G@[a-z-]+/');
 
 		if( !$name ) return;
+		$name = $name[0];
 
 		$nonVendorSpecificName = $name;
 		$pos = strpos($name,'-', 2);
@@ -1580,6 +1637,7 @@ class Less_Parser extends Less_Cache{
 			case "@right-bottom":
 				$hasBlock = true;
 				break;
+			case "@host":
 			case "@page":
 			case "@document":
 			case "@supports":
@@ -1593,22 +1651,22 @@ class Less_Parser extends Less_Cache{
 		}
 
 		if( $hasIdentifier ){
-			$temp = $this->MatchReg('/\\G[^{]+/');
-			if( !$temp ){
-				$temp = '';
+			$identifier = $this->MatchReg('/\\G[^{]+/');
+			if( $identifier ){
+				$name .= " " .trim($identifier[0]);
 			}
-			$name .= " " . trim($temp);
 		}
 
 
 		if( $hasBlock ){
 
 			if ($rules = $this->parseBlock()) {
-				return new Less_Tree_Directive($name, $rules);
+				return $this->Less_Tree_Directive($name, $rules, $this->pos, $this->env->currentFileInfo);
 			}
-		} else {
-			if (($value = $hasExpression ? $this->parseExpression() : $this->parseEntity()) && $this->MatchChar(';')) {
-				return new Less_Tree_Directive($name, $value);
+		}else{
+			$value = $hasExpression ? $this->parseExpression() : $this->parseEntity();
+			if( $value && $this->MatchChar(';') ){
+				return $this->Less_Tree_Directive($name, $value, $this->pos, $this->env->currentFileInfo);
 			}
 		}
 
@@ -1619,24 +1677,26 @@ class Less_Parser extends Less_Cache{
 	//
 	// A Value is a comma-delimited list of Expressions
 	//
-	//     font-family: Baskerville, Georgia, serif;
+	//	 font-family: Baskerville, Georgia, serif;
 	//
 	// In a Rule, a Value represents everything after the `:`,
 	// and before the `;`.
 	//
-	private function parseValue ()
-	{
+	private function parseValue(){
 		$expressions = array();
 
-		while ($e = $this->parseExpression()) {
-			$expressions[] = $e;
-			if (! $this->MatchChar(',')) {
-				break;
+		do{
+			$e = $this->parseExpression();
+			if( $e ){
+				$expressions[] = $e;
+				if (! $this->MatchChar(',')) {
+					break;
+				}
 			}
-		}
+		}while($e);
 
-		if (count($expressions) > 0) {
-			return new Less_Tree_Value($expressions);
+		if( $expressions ){
+			return $this->Less_Tree_Value($expressions);
 		}
 	}
 
@@ -1650,29 +1710,41 @@ class Less_Parser extends Less_Cache{
 
 		if( $this->MatchChar('(') ){
 			if( $a = $this->parseAddition() ){
-				$e = new Less_Tree_Expression( array($a) );
-				$this->expect(')');
+				$e = $this->Less_Tree_Expression( array($a) );
+				$this->expectChar(')');
 				$e->parens = true;
 				return $e;
 			}
 		}
 	}
 
-	private function parseMultiplication() {
+	function parseMultiplication(){
 		$operation = false;
-
-		if ($m = $this->parseOperand()) {
+		$m = $this->parseOperand();
+		if( $m ){
 			$isSpaced = $this->isWhitespace( -1 );
-			while( !$this->PeekReg('/\\G\/[*\/]/') && ($op = $this->match('/','*')) ){
+			while( true ){
 
-				if( $a = $this->parseOperand() ){
-					$m->parensInOp = true;
-					$a->parensInOp = true;
-					$operation = new Less_Tree_Operation( $op, array( $operation ? $operation : $m, $a ), $isSpaced );
-					$isSpaced = $this->isWhitespace( -1 );
-				}else{
+				if( $this->PeekReg('/\\G\/[*\/]/') ){
 					break;
 				}
+
+				$op = $this->MatchChar('/');
+				if( !$op ){
+					$op = $this->MatchChar('*');
+					if( !$op ){
+						break;
+					}
+				}
+
+				$a = $this->parseOperand();
+
+				if(!$a) { break; }
+
+				$m->parensInOp = true;
+				$a->parensInOp = true;
+				$operation = $this->Less_Tree_Operation( $op, array( $operation ? $operation : $m, $a ), $isSpaced );
+				$isSpaced = $this->isWhitespace( -1 );
 			}
 			return ($operation ? $operation : $m);
 		}
@@ -1680,13 +1752,29 @@ class Less_Parser extends Less_Cache{
 
 	private function parseAddition (){
 		$operation = false;
-		if ($m = $this->parseMultiplication()) {
+		$m = $this->parseMultiplication();
+		if( $m ){
 			$isSpaced = $this->isWhitespace( -1 );
 
-			while( ($op = ($op = $this->MatchReg('/\\G[-+]\s+/')) ? $op : ( !$isSpaced ? ($this->match('+','-')) : false )) && ($a = $this->parseMultiplication()) ){
+			while( true ){
+				$op = $this->MatchReg('/\\G[-+]\s+/');
+				if( $op ){
+					$op = $op[0];
+				}elseif( !$isSpaced ){
+					$op = $this->match(array('#+','#-'));
+				}
+				if( !$op ){
+					break;
+				}
+
+				$a = $this->parseMultiplication();
+				if( !$a ){
+					break;
+				}
+
 				$m->parensInOp = true;
 				$a->parensInOp = true;
-				$operation = new Less_Tree_Operation($op, array($operation ? $operation : $m, $a), $isSpaced);
+				$operation = $this->Less_Tree_Operation($op, array($operation ? $operation : $m, $a), $isSpaced);
 				$isSpaced = $this->isWhitespace( -1 );
 			}
 			return $operation ? $operation : $m;
@@ -1696,9 +1784,15 @@ class Less_Parser extends Less_Cache{
 	private function parseConditions() {
 		$index = $this->pos;
 		$condition = null;
-		if ($a = $this->parseCondition()) {
-			while ($this->MatchChar(',') && ($b = $this->parseCondition())) {
-				$condition = new Less_Tree_Condition('or', $condition ? $condition : $a, $b, $index);
+		$a = $this->parseCondition();
+		if( $a ){
+			while( $this->PeekReg('/\\G,\s*(not\s*)?\(/') && $this->MatchChar(',') ){
+				$b = $this->parseCondition();
+				if( !$b ){
+					break;
+				}
+
+				$condition = $this->Less_Tree_Condition('or', $condition ? $condition : $a, $b, $index);
 			}
 			return $condition ? $condition : $a;
 		}
@@ -1709,22 +1803,24 @@ class Less_Parser extends Less_Cache{
 		$negate = false;
 
 
-		if ($this->MatchString('not')) $negate = true;
-		//if ($this->MatchReg('/\\Gnot/')) $negate = true;
-		$this->expect('(');
-		if ($a = ($this->MatchFuncs('parseAddition','parseEntitiesKeyword','parseEntitiesQuoted')) ) {
-			if ($op = $this->MatchReg('/\\G(?:>=|=<|[<=>])/')) {
-				if ($b = ($this->MatchFuncs('parseAddition','parseEntitiesKeyword','parseEntitiesQuoted'))) {
-					$c = new Less_Tree_Condition($op, $a, $b, $index, $negate);
+		if ($this->MatchReg('/\\Gnot/')) $negate = true;
+		$this->expectChar('(');
+		$a = $this->MatchFuncs(array('parseAddition','parseEntitiesKeyword','parseEntitiesQuoted'));
+
+		if( $a ){
+			$op = $this->MatchReg('/\\G(?:>=|<=|=<|[<=>])/');
+			if( $op ){
+				$b = $this->MatchFuncs(array('parseAddition','parseEntitiesKeyword','parseEntitiesQuoted'));
+				if( $b ){
+					$c = $this->Less_Tree_Condition($op[0], $a, $b, $index, $negate);
 				} else {
-					throw new Less_ParserException('Unexpected expression');
+					throw new Less_Exception_Parser('Unexpected expression');
 				}
 			} else {
-				$c = new Less_Tree_Condition('=', $a, new Less_Tree_Keyword('true'), $index, $negate);
+				$c = $this->Less_Tree_Condition('=', $a, $this->Less_Tree_Keyword('true'), $index, $negate);
 			}
-			$this->expect(')');
-			return $this->MatchString('and') ? new Less_Tree_Condition('and', $c, $this->parseCondition()) : $c;
-			//return $this->MatchReg('/\\Gand/') ? new Less_Tree_Condition('and', $c, $this->parseCondition()) : $c;
+			$this->expectChar(')');
+			return $this->MatchReg('/\\Gand/') ? $this->Less_Tree_Condition('and', $c, $this->parseCondition()) : $c;
 		}
 	}
 
@@ -1735,15 +1831,20 @@ class Less_Parser extends Less_Cache{
 	private function parseOperand (){
 
 		$negate = false;
-		if( $this->PeekChar('@',1) || $this->PeekChar('(',1) ){
+		$offset = $this->pos+1;
+		if( $offset >= $this->input_len ){
+			return;
+		}
+		$char = $this->input[$offset];
+		if( $char === '@' || $char === '(' ){
 			$negate = $this->MatchChar('-');
 		}
 
-		$o = $this->MatchFuncs('parseSub','parseEntitiesDimension','parseEntitiesColor','parseEntitiesVariable','parseEntitiesCall');
+		$o = $this->MatchFuncs(array('parseSub','parseEntitiesDimension','parseEntitiesColor','parseEntitiesVariable','parseEntitiesCall'));
 
 		if( $negate ){
 			$o->parensInOp = true;
-			$o = new Less_Tree_Negative($o);
+			$o = $this->Less_Tree_Negative($o);
 		}
 
 		return $o;
@@ -1753,28 +1854,42 @@ class Less_Parser extends Less_Cache{
 	// Expressions either represent mathematical operations,
 	// or white-space delimited Entities.
 	//
-	//     1px solid black
-	//     @var * 2
+	//	 1px solid black
+	//	 @var * 2
 	//
 	private function parseExpression (){
 		$entities = array();
 
-		while( $e = $this->MatchFuncs('parseAddition','parseEntity') ){
-			$entities[] = $e;
-			// operations do not allow keyword "/" dimension (e.g. small/20px) so we support that here
-			if( !$this->PeekReg('/\\G\/[\/*]/') && ($delim = $this->MatchChar('/')) ){
-				$entities[] = new Less_Tree_Anonymous($delim);
+		do{
+			$e = $this->MatchFuncs(array('parseAddition','parseEntity'));
+			if( $e ){
+				$entities[] = $e;
+				// operations do not allow keyword "/" dimension (e.g. small/20px) so we support that here
+				if( !$this->PeekReg('/\\G\/[\/*]/') ){
+					$delim = $this->MatchChar('/');
+					if( $delim ){
+						$entities[] = $this->Less_Tree_Anonymous($delim);
+					}
+				}
 			}
+		}while($e);
 
-		}
-		if (count($entities) > 0) {
-			return new Less_Tree_Expression($entities);
+		if( $entities ){
+			return $this->Less_Tree_Expression($entities);
 		}
 	}
 
 	private function parseProperty (){
-		if ($name = $this->MatchReg('/\\G(\*?-?[_a-zA-Z0-9-]+)\s*:/')) {
+		$name = $this->MatchReg('/\\G(\*?-?[_a-zA-Z0-9-]+)\s*:/');
+		if( $name ){
 			return $name[1];
+		}
+	}
+
+	private function parseRuleProperty(){
+		$name = $this->MatchReg('/\\G(\*?-?[_a-zA-Z0-9-]+)\s*(\+?)\s*:/');
+		if( $name ){
+			return $name[1] . (isset($name[2]) ? $name[2] : '');
 		}
 	}
 
@@ -1786,36 +1901,105 @@ class Less_Parser extends Less_Cache{
 		return is_object($a) && method_exists($a,$b);
 	}
 
+	/**
+	 *
+	 * Round 1.499999 to 1 instead of 2
+	 *
+	 */
+	public static function round($i, $precision = 0){
 
+		$precision = pow(10,$precision);
+		$i = $i*$precision;
+
+		$ceil = ceil($i);
+		$floor = floor($i);
+		if( ($ceil - $i) <= ($i - $floor) ){
+			return $ceil/$precision;
+		}else{
+			return $floor/$precision;
+		}
+	}
+
+	public function __call($class,$args){
+
+		//$pre_args = $args;
+		//$args += array(null,null,null,null,null,null,null);
+		//$obj = new $class( $args[0], $args[1], $args[2], $args[3], $args[4], $args[5], $args[6] );
+
+		$count = count($args);
+		switch($count){
+			case 0:
+			$obj = new $class();
+			break;
+
+			case 1:
+			$obj = new $class( $args[0]);
+			break;
+
+			case 2:
+			$obj = new $class( $args[0], $args[1]);
+			break;
+
+			case 3:
+			$obj = new $class( $args[0], $args[1], $args[2]);
+			break;
+
+			case 4:
+			$obj = new $class( $args[0], $args[1], $args[2], $args[3]);
+			break;
+
+			case 5:
+			$obj = new $class( $args[0], $args[1], $args[2], $args[3], $args[4] );
+			break;
+
+			case 6:
+			$obj = new $class( $args[0], $args[1], $args[2], $args[3], $args[4], $args[5] );
+			break;
+
+			case 7:
+			$obj = new $class( $args[0], $args[1], $args[2], $args[3], $args[4], $args[5], $args[6] );
+			break;
+		}
+
+
+		//caching
+		if( self::$cache_dir ){
+			$obj->cache_string = ' new '.$class.'(';
+			$comma = '';
+			foreach($args as $arg){
+				$obj->cache_string .= $comma.self::ArgString($arg);
+				$comma = ', ';
+			}
+			$obj->cache_string .= ')';
+		}
+
+		return $obj;
+	}
+
+	public static function ArgString($arg){
+
+		$type = gettype($arg);
+		switch( $type ){
+
+			case 'object':
+				$string = $arg->cache_string;
+				unset($arg->cache_string);
+			return $string;
+
+			case 'array':
+				$string = ' Array(';
+				foreach($arg as $k => $a){
+					$string .= var_export($k,true).' => '.self::ArgString($a).',';
+				}
+			return $string . ')';
+
+			default:
+			return var_export($arg,true);
+		}
+
+	}
 }
 
-
-	if( !function_exists('pre') ){
-		function pre($arg){
-			global $debug;
-
-			if( !isset($debug) || !$debug ){
-				//return;
-			}
-			ob_start();
-			echo "\n\n<pre>";
-			if( $arg === 0 ){
-				echo '0';
-			}elseif( !$arg ){
-				var_dump($arg);
-			}else{
-				print_r($arg);
-			}
-			echo "</pre>\n";
-			return ob_get_clean();
-		}
-	}
-
-	if( !function_exists('msg') ){
-		function msg($arg){
-			echo Pre($arg);
-		}
-	}
 
  
 
@@ -1970,7 +2154,6 @@ class Less_Colors {
 			'teal'=>'#008080',
 			'thistle'=>'#d8bfd8',
 			'tomato'=>'#ff6347',
-			//'transparent'=>'rgba(0,0,0,0)',
 			'turquoise'=>'#40e0d0',
 			'violet'=>'#ee82ee',
 			'wheat'=>'#f5deb3',
@@ -2004,9 +2187,13 @@ class Less_Environment{
 	public $paths = array();			// option - unmodified - paths to search for imports on
 	static $files = array();			// list of files that have been imported, used for import-once
 	public $relativeUrls;				// option - whether to adjust URL's to be relative
-	public $strictImports = false;		// option -
-	public $compress = false;			// option - whether to compress
+	public $rootpath;					// option - rootpath to append to URL's
+	public $strictImports = null;		// option -
+	public $insecure;					// option - whether to allow imports from insecure ssl hosts
+	public static $compress = false;	// option - whether to compress
 	public $processImports;				// option - whether to process imports. if false then imports will not be imported
+	public $javascriptEnabled;			// option - whether JavaScript is enabled. if undefined, defaults to true
+	public $useFileCache;				// browser only - whether to use the per file session cache
 	public $currentFileInfo;			// information about the current file - for error reporting and importing and making urls relative etc.
 
 	/**
@@ -2041,23 +2228,62 @@ class Less_Environment{
 
 	public $strictUnits = false;
 
+	public $tabLevel = 0;
+
+	public $lastRule = false;
+
+	public $importMultiple = false;
+
+	//public $type = 'Environment';
+
+
+	public static $comma_space;
+	public static $colon_space;
+	public static $firstSelector;
+
 	public function __construct( $options = null ){
 		$this->frames = array();
 
 
 		if( isset($options['compress']) ){
-			$this->compress = (bool)$options['compress'];
+			self::$compress = (bool)$options['compress'];
 		}
 		if( isset($options['strictUnits']) ){
 			$this->strictUnits = (bool)$options['strictUnits'];
 		}
+
+
+		if( self::$compress ){
+			self::$comma_space = ',';
+			self::$colon_space = ':';
+		}else{
+			self::$comma_space = ', ';
+			self::$colon_space = ': ';
+		}
+
 
 	}
 
 
 	//may want to just use the __clone()?
 	public function copyEvalEnv($frames = array() ){
-		$new_env = clone $this;
+
+		$evalCopyProperties = array(
+			//'silent',      // whether to swallow errors and warnings
+			//'verbose',     // whether to log more activity
+			//'yuicompress', // whether to compress with the outside tool yui compressor
+			//'ieCompat',    // whether to enforce IE compatibility (IE8 data-uri)
+			'strictMath',  // whether math has to be within parenthesis
+			'strictUnits', // whether units need to evaluate correctly
+			//'cleancss',    // whether to compress with clean-css
+			//'sourceMap',   // whether to output a source map
+			//'importMultiple'// whether we are currently importing multiple copies
+			);
+
+		$new_env = new Less_Environment();
+		foreach($evalCopyProperties as $property){
+			$new_env->$property = $this->$property;
+		}
 		$new_env->frames = $frames;
 		return $new_env;
 	}
@@ -2071,27 +2297,56 @@ class Less_Environment{
 	}
 
 	public function isMathOn() {
-		return $this->strictMath ? ($this->parensStack && count($this->parensStack)) : true;
+		return $this->strictMath ? !!$this->parensStack : true;
 	}
 
-	public function isPathRelative($path){
+	public static function isPathRelative($path){
 		return !preg_match('/^(?:[a-z-]+:|\/)/',$path);
 	}
 
-	/**
-	 * @return bool
-	 */
-	public function getCompress(){
-		return $this->compress;
-	}
 
 	/**
-	 * @param bool $compress
-	 * @return void
+	 * Canonicalize a path by resolving references to '/./', '/../'
+	 * Does not remove leading "../"
+	 * @param string path or url
+	 * @return string Canonicalized path
+	 *
 	 */
-	public function setCompress($compress){
-		$this->compress = $compress;
+	static function normalizePath($path){
+
+    	$segments = explode('/',$path);
+    	$segments = array_reverse($segments);
+
+    	$path = array();
+    	$path_len = 0;
+
+		while( $segments ){
+			$segment = array_pop($segments);
+			switch( $segment ) {
+
+				case '.':
+				break;
+
+				case '..':
+					if( !$path_len || ( $path[$path_len-1] === '..') ){
+						$path[] = $segment;
+						$path_len++;
+					}else{
+						array_pop($path);
+						$path_len--;
+					}
+				break;
+
+				default:
+					$path[] = $segment;
+					$path_len++;
+				break;
+			}
+		}
+
+		return implode('/',$path);
 	}
+
 
 	/**
 	 * @return bool
@@ -2123,6 +2378,17 @@ class Less_Environment{
 	public function addFrames(array $frames){
 		$this->frames = array_merge($this->frames, $frames);
 	}
+}
+ 
+
+
+class Less_Functions{
+
+	function __construct($env, $currentFileInfo = null ){
+		$this->env = $env;
+		$this->currentFileInfo = $currentFileInfo;
+	}
+
 
 	//tree.operate()
 	static public function operate ($env, $op, $a, $b){
@@ -2145,7 +2411,7 @@ class Less_Environment{
 		} else if (is_numeric($n)) {
 			return $n;
 		} else {
-			throw new Less_CompilerException("color functions take numbers as parameters");
+			throw new Less_Exception_Compiler("color functions take numbers as parameters");
 		}
 	}
 
@@ -2153,30 +2419,27 @@ class Less_Environment{
 		if( $n instanceof Less_Tree_Dimension && $n->unit->is('%') ){
 			return (float)$n->value * $size / 100;
 		} else {
-			return Less_Environment::number($n);
+			return Less_Functions::number($n);
 		}
 	}
 
-
-
-	/** Function **/
-	public static function rgb ($r, $g, $b){
-		return Less_Environment::rgba($r, $g, $b, 1.0);
+	public function rgb ($r, $g, $b){
+		return $this->rgba($r, $g, $b, 1.0);
 	}
 
-	public static function rgba($r, $g, $b, $a){
+	public function rgba($r, $g, $b, $a){
 		$rgb = array($r, $g, $b);
-		$rgb = array_map(array('Less_Environment','scaled'),$rgb);
+		$rgb = array_map(array('Less_Functions','scaled'),$rgb);
 
 		$a = self::number($a);
 		return new Less_Tree_Color($rgb, $a);
 	}
 
-	public static function hsl($h, $s, $l){
-		return Less_Environment::hsla($h, $s, $l, 1.0);
+	public function hsl($h, $s, $l){
+		return $this->hsla($h, $s, $l, 1.0);
 	}
 
-	public static function hsla($h, $s, $l, $a){
+	public function hsla($h, $s, $l, $a){
 
 		$h = fmod(self::number($h), 360) / 360; // Classic % operator will change float to int
 		$s = self::clamp(self::number($s));
@@ -2187,13 +2450,13 @@ class Less_Environment{
 
 		$m1 = $l * 2 - $m2;
 
-		return Less_Environment::rgba( self::hsla_hue($h + 1/3, $m1, $m2) * 255,
+		return $this->rgba( self::hsla_hue($h + 1/3, $m1, $m2) * 255,
 							self::hsla_hue($h, $m1, $m2) * 255,
 							self::hsla_hue($h - 1/3, $m1, $m2) * 255,
 							$a);
 	}
 
-	static function hsla_hue($h, $m1, $m2){
+	function hsla_hue($h, $m1, $m2){
 		$h = $h < 0 ? $h + 1 : ($h > 1 ? $h - 1 : $h);
 		if	  ($h * 6 < 1) return $m1 + ($m2 - $m1) * $h * 6;
 		else if ($h * 2 < 1) return $m2;
@@ -2201,15 +2464,15 @@ class Less_Environment{
 		else				 return $m1;
 	}
 
-	public static function hsv($h, $s, $v) {
-		return Less_Environment::hsva($h, $s, $v, 1.0);
+	public function hsv($h, $s, $v) {
+		return $this->hsva($h, $s, $v, 1.0);
 	}
 
-	public static function hsva($h, $s, $v, $a) {
-		$h = ((Less_Environment::number($h) % 360) / 360 ) * 360;
-		$s = Less_Environment::number($s);
-		$v = Less_Environment::number($v);
-		$a = Less_Environment::number($a);
+	public function hsva($h, $s, $v, $a) {
+		$h = ((Less_Functions::number($h) % 360) / 360 ) * 360;
+		$s = Less_Functions::number($s);
+		$v = Less_Functions::number($v);
+		$a = Less_Functions::number($a);
 
 		$i = floor(($h / 60) % 6);
 		$f = ($h / 60) - $i;
@@ -2226,150 +2489,149 @@ class Less_Environment{
 					array(3, 1, 0),
 					array(0, 1, 2));
 
-		return Less_Environment::rgba($vs[$perm[$i][0]] * 255,
+		return $this->rgba($vs[$perm[$i][0]] * 255,
 						 $vs[$perm[$i][1]] * 255,
 						 $vs[$perm[$i][2]] * 255,
 						 $a);
 	}
 
-	public static function hue($color){
+	public function hue($color){
 		$c = $color->toHSL();
-		return new Less_Tree_Dimension(round($c['h']));
+		return new Less_Tree_Dimension(Less_Parser::round($c['h']));
 	}
 
-	public static function saturation($color){
+	public function saturation($color){
 		$c = $color->toHSL();
-		return new Less_Tree_Dimension(round($c['s'] * 100), '%');
+		return new Less_Tree_Dimension(Less_Parser::round($c['s'] * 100), '%');
 	}
 
-	public static function lightness($color){
+	public function lightness($color){
 		$c = $color->toHSL();
-		return new Less_Tree_Dimension(round($c['l'] * 100), '%');
+		return new Less_Tree_Dimension(Less_Parser::round($c['l'] * 100), '%');
 	}
 
-	public static function hsvhue( $color ){
+	public function hsvhue( $color ){
 		$hsv = $color->toHSV();
-		return new Less_Tree_Dimension( round($hsv['h']) );
+		return new Less_Tree_Dimension( Less_Parser::round($hsv['h']) );
 	}
 
 
-	public static function hsvsaturation( $color ){
+	public function hsvsaturation( $color ){
 		$hsv = $color->toHSV();
-		return new Less_Tree_Dimension( round($hsv['s'] * 100), '%' );
+		return new Less_Tree_Dimension( Less_Parser::round($hsv['s'] * 100), '%' );
 	}
 
-	public static function hsvvalue( $color ){
+	public function hsvvalue( $color ){
 		$hsv = $color->toHSV();
-		return new Less_Tree_Dimension( round($hsv['v'] * 100), '%' );
+		return new Less_Tree_Dimension( Less_Parser::round($hsv['v'] * 100), '%' );
 	}
 
-	public static function red($color) {
+	public function red($color) {
 		return new Less_Tree_Dimension( $color->rgb[0] );
 	}
 
-	public static function green($color) {
+	public function green($color) {
 		return new Less_Tree_Dimension( $color->rgb[1] );
 	}
 
-	public static function blue($color) {
+	public function blue($color) {
 		return new Less_Tree_Dimension( $color->rgb[2] );
 	}
 
-	public static function alpha($color){
+	public function alpha($color){
 		$c = $color->toHSL();
 		return new Less_Tree_Dimension($c['a']);
 	}
 
-	public static function luma ($color) {
-		return new Less_Tree_Dimension(round( $color->luma() * $color->alpha * 100), '%');
+	public function luma ($color) {
+		return new Less_Tree_Dimension(Less_Parser::round( $color->luma() * $color->alpha * 100), '%');
 	}
 
-	public static function saturate($color, $amount){
+	public function saturate($color, $amount = null){
+		// filter: saturate(3.2);
+		// should be kept as is, so check for color
+		if( !property_exists($color,'rgb') ){
+			return null;
+		}
 		$hsl = $color->toHSL();
 
 		$hsl['s'] += $amount->value / 100;
 		$hsl['s'] = self::clamp($hsl['s']);
 
-		return Less_Environment::hsla($hsl['h'], $hsl['s'], $hsl['l'], $hsl['a']);
+		return $this->hsla($hsl['h'], $hsl['s'], $hsl['l'], $hsl['a']);
 	}
 
-	public static function desaturate($color, $amount){
+	public function desaturate($color, $amount){
 		$hsl = $color->toHSL();
 
 		$hsl['s'] -= $amount->value / 100;
 		$hsl['s'] = self::clamp($hsl['s']);
 
-		return Less_Environment::hsla($hsl['h'], $hsl['s'], $hsl['l'], $hsl['a']);
+		return $this->hsla($hsl['h'], $hsl['s'], $hsl['l'], $hsl['a']);
 	}
 
 
 
-	public static function lighten($color, $amount){
+	public function lighten($color, $amount){
 		$hsl = $color->toHSL();
 
 		$hsl['l'] += $amount->value / 100;
 		$hsl['l'] = self::clamp($hsl['l']);
 
-		return Less_Environment::hsla($hsl['h'], $hsl['s'], $hsl['l'], $hsl['a']);
+		return $this->hsla($hsl['h'], $hsl['s'], $hsl['l'], $hsl['a']);
 	}
 
-	public static function darken($color, $amount){
+	public function darken($color, $amount){
 
 		if( $color instanceof Less_Tree_Color ){
 			$hsl = $color->toHSL();
-
 			$hsl['l'] -= $amount->value / 100;
 			$hsl['l'] = self::clamp($hsl['l']);
 
-			return Less_Environment::hsla($hsl['h'], $hsl['s'], $hsl['l'], $hsl['a']);
+			return $this->hsla($hsl['h'], $hsl['s'], $hsl['l'], $hsl['a']);
 		}
 
-		Less_Environment::Expected('color',$color);
+		Less_Functions::Expected('color',$color);
 	}
 
-	public static function fadein($color, $amount){
+	public function fadein($color, $amount){
 		$hsl = $color->toHSL();
 		$hsl['a'] += $amount->value / 100;
 		$hsl['a'] = self::clamp($hsl['a']);
-		return Less_Environment::hsla($hsl['h'], $hsl['s'], $hsl['l'], $hsl['a']);
+		return $this->hsla($hsl['h'], $hsl['s'], $hsl['l'], $hsl['a']);
 	}
 
-	public static function fadeout($color, $amount){
+	public function fadeout($color, $amount){
 		$hsl = $color->toHSL();
 		$hsl['a'] -= $amount->value / 100;
 		$hsl['a'] = self::clamp($hsl['a']);
-		return Less_Environment::hsla($hsl['h'], $hsl['s'], $hsl['l'], $hsl['a']);
+		return $this->hsla($hsl['h'], $hsl['s'], $hsl['l'], $hsl['a']);
 	}
 
-	public static function fade($color, $amount){
+	public function fade($color, $amount){
 		$hsl = $color->toHSL();
 
-		if ($amount->unit == '%') {
-			$hsl['a'] = $amount->value / 100;
-		} else {
-			$hsl['a'] = $amount->value;
-		}
+		$hsl['a'] = $amount->value / 100;
 		$hsl['a'] = self::clamp($hsl['a']);
-
-		return Less_Environment::hsla($hsl['h'], $hsl['s'], $hsl['l'], $hsl['a']);
+		return $this->hsla($hsl['h'], $hsl['s'], $hsl['l'], $hsl['a']);
 	}
 
 
 
-	public static function spin($color, $amount){
+	public function spin($color, $amount){
 		$hsl = $color->toHSL();
 		$hue = fmod($hsl['h'] + $amount->value, 360);
 
 		$hsl['h'] = $hue < 0 ? 360 + $hue : $hue;
 
-		return Less_Environment::hsla($hsl['h'], $hsl['s'], $hsl['l'], $hsl['a']);
+		return $this->hsla($hsl['h'], $hsl['s'], $hsl['l'], $hsl['a']);
 	}
 
 	//
 	// Copyright (c) 2006-2009 Hampton Catlin, Nathan Weizenbaum, and Chris Eppstein
 	// http://sass-lang.com
 	//
-	public static function mix($color1, $color2, $weight = null){
+	public function mix($color1, $color2, $weight = null){
 		if (!$weight) {
 			$weight = new Less_Tree_Dimension('50', '%');
 		}
@@ -2392,22 +2654,22 @@ class Less_Environment{
 		return new Less_Tree_Color($rgb, $alpha);
 	}
 
-	public static function greyscale($color){
-		return Less_Environment::desaturate($color, new Less_Tree_Dimension(100));
+	public function greyscale($color){
+		return $this->desaturate($color, new Less_Tree_Dimension(100));
 	}
 
 
-	public static function contrast( $color, $dark = false, $light = false, $threshold = false) {
+	public function contrast( $color, $dark = false, $light = false, $threshold = false) {
 		// filter: contrast(3.2);
 		// should be kept as is, so check for color
 		if( !property_exists($color,'rgb') ){
 			return null;
 		}
 		if( $light === false ){
-			$light = Less_Environment::rgba(255, 255, 255, 1.0);
+			$light = $this->rgba(255, 255, 255, 1.0);
 		}
 		if( $dark === false ){
-			$dark = Less_Environment::rgba(0, 0, 0, 1.0);
+			$dark = $this->rgba(0, 0, 0, 1.0);
 		}
 		//Figure out which is actually light and dark!
 		if( $dark->luma() > $light->luma() ){
@@ -2418,7 +2680,7 @@ class Less_Environment{
 		if( $threshold === false ){
 			$threshold = 0.43;
 		} else {
-			$threshold = Less_Environment::number($threshold);
+			$threshold = Less_Functions::number($threshold);
 		}
 
 		if( ($color->luma() * $color->alpha) < $threshold ){
@@ -2428,16 +2690,19 @@ class Less_Environment{
 		}
 	}
 
-	public static function e ($str){
+	public function e ($str){
 		return new Less_Tree_Anonymous($str instanceof Less_Tree_JavaScript ? $str->evaluated : $str);
 	}
 
-	public static function escape ($str){
-		return new Less_Tree_Anonymous(urlencode($str->value));
+	public function escape ($str){
+
+		$revert = array('%21'=>'!', '%2A'=>'*', '%27'=>"'",'%3F'=>'?','%26'=>'&','%2C'=>',','%2F'=>'/','%40'=>'@','%2B'=>'+','%24'=>'$');
+
+		return new Less_Tree_Anonymous(strtr(rawurlencode($str->value), $revert));
 	}
 
 
-	public static function _percent(){
+	public function _percent(){
 		$quoted = func_get_arg(0);
 
 		$args = func_get_args();
@@ -2457,60 +2722,63 @@ class Less_Environment{
 		return new Less_Tree_Quoted('"' . $str . '"', $str);
 	}
 
-	public static function unit($val, $unit = null ){
+	public function unit($val, $unit = null ){
+		if( !($val instanceof Less_Tree_Dimension) ){
+			throw new Less_Exception_Compiler('The first argument to unit must be a number' . ($val instanceof Less_Tree_Operation ? '. Have you forgotten parenthesis?' : '.') );
+		}
 		return new Less_Tree_Dimension($val->value, $unit ? $unit->toCSS() : "");
 	}
 
-	public static function convert($val, $unit){
+	public function convert($val, $unit){
 		return $val->convertTo($unit->value);
 	}
 
-	public static function round($n, $f = false) {
+	public function round($n, $f = false) {
 
 		$fraction = 0;
 		if( $f !== false ){
 			$fraction = $f->value;
 		}
 
-		return Less_Environment::_math('round',null, $n, $fraction);
+		return $this->_math('Less_Parser::round',null, $n, $fraction);
 	}
 
-	public static function pi(){
+	public function pi(){
 		return new Less_Tree_Dimension(M_PI);
 	}
 
-	public static function mod($a, $b) {
+	public function mod($a, $b) {
 		return new Less_Tree_Dimension( $a->value % $b->value, $a->unit);
 	}
 
 
 
-	public static function pow($x, $y) {
+	public function pow($x, $y) {
 		if( is_numeric($x) && is_numeric($y) ){
 			$x = new Less_Tree_Dimension($x);
 			$y = new Less_Tree_Dimension($y);
 		}elseif( !($x instanceof Less_Tree_Dimension) || !($y instanceof Less_Tree_Dimension) ){
-			throw new Less_CompilerException('Arguments must be numbers');
+			throw new Less_Exception_Compiler('Arguments must be numbers');
 		}
 
 		return new Less_Tree_Dimension( pow($x->value, $y->value), $x->unit );
 	}
 
 	// var mathFunctions = [{name:"ce ...
-	public static function ceil( $n ){		return Less_Environment::_math('ceil', null, $n); }
-	public static function floor( $n ){	return Less_Environment::_math('floor', null, $n); }
-	public static function sqrt( $n ){		return Less_Environment::_math('sqrt', null, $n); }
-	public static function abs( $n ){		return Less_Environment::_math('abs', null, $n); }
+	public function ceil( $n ){		return $this->_math('ceil', null, $n); }
+	public function floor( $n ){	return $this->_math('floor', null, $n); }
+	public function sqrt( $n ){		return $this->_math('sqrt', null, $n); }
+	public function abs( $n ){		return $this->_math('abs', null, $n); }
 
-	public static function tan( $n ){		return Less_Environment::_math('tan', '', $n);	}
-	public static function sin( $n ){		return Less_Environment::_math('sin', '', $n);	}
-	public static function cos( $n ){		return Less_Environment::_math('cos', '', $n);	}
+	public function tan( $n ){		return $this->_math('tan', '', $n);	}
+	public function sin( $n ){		return $this->_math('sin', '', $n);	}
+	public function cos( $n ){		return $this->_math('cos', '', $n);	}
 
-	public static function atan( $n ){		return Less_Environment::_math('atan', 'rad', $n);	}
-	public static function asin( $n ){		return Less_Environment::_math('asin', 'rad', $n);	}
-	public static function acos( $n ){		return Less_Environment::_math('acos', 'rad', $n);	}
+	public function atan( $n ){		return $this->_math('atan', 'rad', $n);	}
+	public function asin( $n ){		return $this->_math('asin', 'rad', $n);	}
+	public function acos( $n ){		return $this->_math('acos', 'rad', $n);	}
 
-	private static function _math() {
+	private function _math() {
 		$args = func_get_args();
 		$fn = array_shift($args);
 		$unit = array_shift($args);
@@ -2527,146 +2795,225 @@ class Less_Environment{
 		} else if (is_numeric($args[0])) {
 			return call_user_func_array($fn,$args);
 		} else {
-			throw new Less_CompilerException("math functions take numbers as parameters");
+			throw new Less_Exception_Compiler("math functions take numbers as parameters");
 		}
 	}
 
-	public static function argb($color) {
+	function _minmax( $isMin, $args ){
+
+		switch( count($args) ){
+			case 0: throw new Less_Exception_Compiler( 'one or more arguments required');
+			case 1: return $args[0];
+		}
+
+		$order = array();	// elems only contains original argument values.
+		$values = array();	// key is the unit.toString() for unified tree.Dimension values,
+							// value is the index into the order array.
+
+		for( $i = 0; $i < count($args); $i++ ){
+			$current = $args[$i];
+			if( !($current instanceof Less_Tree_Dimension) ){
+				$order[] = $current;
+				continue;
+			}
+			$currentUnified = $current->unify();
+			$unit = $currentUnified->unit->toString();
+
+			if( !isset($values[$unit]) ){
+				$values[$unit] = count($order);
+				$order[] = $current;
+				continue;
+			}
+
+			$j = $values[$unit];
+			$referenceUnified = $order[$j]->unify();
+			if( ($isMin && $currentUnified->value < $referenceUnified->value) || (!$isMin && $currentUnified->value > $referenceUnified->value) ){
+				$order[$j] = $current;
+			}
+		}
+		if( count($order) == 1 ){
+			return $order[0];
+		}
+
+		foreach($order as $k => $a){
+			$order[$k] = $a->toCSS( $this->env );
+		}
+
+		$args = implode( Less_Environment::$comma_space, $order);
+
+		return new Less_Tree_Anonymous( ($isMin ? 'min' : 'max') . '(' . $args . ')');
+	}
+
+	public function min(){
+		return $this->_minmax(true, func_get_args() );
+	}
+
+	public function max(){
+		return $this->_minmax(false, func_get_args() );
+	}
+
+	public function argb($color) {
 		return new Less_Tree_Anonymous($color->toARGB());
 	}
 
-	public static function percentage($n) {
+	public function percentage($n) {
 		return new Less_Tree_Dimension($n->value * 100, '%');
 	}
 
-	public static function color($n) {
-		if ($n instanceof Less_Tree_Quoted) {
-			return new Less_Tree_Color(substr($n->value, 1));
+	public function color($n) {
+
+		if( $n instanceof Less_Tree_Quoted ){
+			$colorCandidate = $n->value;
+			$returnColor = Less_Tree_Color::fromKeyword($colorCandidate);
+			if( $returnColor ){
+				return $returnColor;
+			}
+			if( preg_match('/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})/',$colorCandidate) ){
+				return new Less_Tree_Color(substr($colorCandidate, 1));
+			}
+			throw new Less_Exception_Compiler("argument must be a color keyword or 3/6 digit hex e.g. #FFF");
 		} else {
-			throw new Less_CompilerException("Argument must be a string");
+			throw new Less_Exception_Compiler("argument must be a string");
 		}
 	}
 
 
-	public static function iscolor($n) {
-		return Less_Environment::_isa($n, 'Less_Tree_Color');
+	public function iscolor($n) {
+		return $this->_isa($n, 'Less_Tree_Color');
 	}
 
-	public static function isnumber($n) {
-		return Less_Environment::_isa($n, 'Less_Tree_Dimension');
+	public function isnumber($n) {
+		return $this->_isa($n, 'Less_Tree_Dimension');
 	}
 
-	public static function isstring($n) {
-		return Less_Environment::_isa($n, 'Less_Tree_Quoted');
+	public function isstring($n) {
+		return $this->_isa($n, 'Less_Tree_Quoted');
 	}
 
-	public static function iskeyword($n) {
-		return Less_Environment::_isa($n, 'Less_Tree_Keyword');
+	public function iskeyword($n) {
+		return $this->_isa($n, 'Less_Tree_Keyword');
 	}
 
-	public static function isurl($n) {
-		return Less_Environment::_isa($n, 'Less_Tree_Url');
+	public function isurl($n) {
+		return $this->_isa($n, 'Less_Tree_Url');
 	}
 
-	public static function ispixel($n) {
-		return Less_Environment::isunit($n, 'px');
+	public function ispixel($n) {
+		return $this->isunit($n, 'px');
 	}
 
-	public static function ispercentage($n) {
-		return Less_Environment::isunit($n, '%');
+	public function ispercentage($n) {
+		return $this->isunit($n, '%');
 	}
 
-	public static function isem($n) {
-		return Less_Environment::isunit($n, 'em');
+	public function isem($n) {
+		return $this->isunit($n, 'em');
 	}
 
-	public static function isunit( $n, $unit ){
+	public function isunit( $n, $unit ){
 		return ($n instanceof Less_Tree_Dimension) && $n->unit->is( ( property_exists($unit,'value') ? $unit->value : $unit) ) ? new Less_Tree_Keyword('true') : new Less_Tree_Keyword('false');
 	}
 
-	private static function _isa($n, $type) {
+	private function _isa($n, $type) {
 		return is_a($n, $type) ? new Less_Tree_Keyword('true') : new Less_Tree_Keyword('false');
 	}
 
 	/* Blending modes */
 
-	public static function multiply($color1, $color2) {
+	public function multiply($color1, $color2) {
 		$r = $color1->rgb[0] * $color2->rgb[0] / 255;
 		$g = $color1->rgb[1] * $color2->rgb[1] / 255;
 		$b = $color1->rgb[2] * $color2->rgb[2] / 255;
-		return Less_Environment::rgb($r, $g, $b);
+		return $this->rgb($r, $g, $b);
 	}
 
-	public static function screen($color1, $color2) {
+	public function screen($color1, $color2) {
 		$r = 255 - (255 - $color1->rgb[0]) * (255 - $color2->rgb[0]) / 255;
 		$g = 255 - (255 - $color1->rgb[1]) * (255 - $color2->rgb[1]) / 255;
 		$b = 255 - (255 - $color1->rgb[2]) * (255 - $color2->rgb[2]) / 255;
-		return Less_Environment::rgb($r, $g, $b);
+		return $this->rgb($r, $g, $b);
 	}
 
-	public static function overlay($color1, $color2) {
+	public function overlay($color1, $color2) {
 		$r = $color1->rgb[0] < 128 ? 2 * $color1->rgb[0] * $color2->rgb[0] / 255 : 255 - 2 * (255 - $color1->rgb[0]) * (255 - $color2->rgb[0]) / 255;
 		$g = $color1->rgb[1] < 128 ? 2 * $color1->rgb[1] * $color2->rgb[1] / 255 : 255 - 2 * (255 - $color1->rgb[1]) * (255 - $color2->rgb[1]) / 255;
 		$b = $color1->rgb[2] < 128 ? 2 * $color1->rgb[2] * $color2->rgb[2] / 255 : 255 - 2 * (255 - $color1->rgb[2]) * (255 - $color2->rgb[2]) / 255;
-		return Less_Environment::rgb($r, $g, $b);
+		return $this->rgb($r, $g, $b);
 	}
 
-	public static function softlight($color1, $color2) {
+	public function softlight($color1, $color2) {
 		$t = $color2->rgb[0] * $color1->rgb[0] / 255;
 		$r = $t + $color1->rgb[0] * (255 - (255 - $color1->rgb[0]) * (255 - $color2->rgb[0]) / 255 - $t) / 255;
 		$t = $color2->rgb[1] * $color1->rgb[1] / 255;
 		$g = $t + $color1->rgb[1] * (255 - (255 - $color1->rgb[1]) * (255 - $color2->rgb[1]) / 255 - $t) / 255;
 		$t = $color2->rgb[2] * $color1->rgb[2] / 255;
 		$b = $t + $color1->rgb[2] * (255 - (255 - $color1->rgb[2]) * (255 - $color2->rgb[2]) / 255 - $t) / 255;
-		return Less_Environment::rgb($r, $g, $b);
+		return $this->rgb($r, $g, $b);
 	}
 
-	public static function hardlight($color1, $color2) {
+	public function hardlight($color1, $color2) {
 		$r = $color2->rgb[0] < 128 ? 2 * $color2->rgb[0] * $color1->rgb[0] / 255 : 255 - 2 * (255 - $color2->rgb[0]) * (255 - $color1->rgb[0]) / 255;
 		$g = $color2->rgb[1] < 128 ? 2 * $color2->rgb[1] * $color1->rgb[1] / 255 : 255 - 2 * (255 - $color2->rgb[1]) * (255 - $color1->rgb[1]) / 255;
 		$b = $color2->rgb[2] < 128 ? 2 * $color2->rgb[2] * $color1->rgb[2] / 255 : 255 - 2 * (255 - $color2->rgb[2]) * (255 - $color1->rgb[2]) / 255;
-		return Less_Environment::rgb($r, $g, $b);
+		return $this->rgb($r, $g, $b);
 	}
 
-	public static function difference($color1, $color2) {
+	public function difference($color1, $color2) {
 		$r = abs($color1->rgb[0] - $color2->rgb[0]);
 		$g = abs($color1->rgb[1] - $color2->rgb[1]);
 		$b = abs($color1->rgb[2] - $color2->rgb[2]);
-		return Less_Environment::rgb($r, $g, $b);
+		return $this->rgb($r, $g, $b);
 	}
 
-	public static function exclusion($color1, $color2) {
+	public function exclusion($color1, $color2) {
 		$r = $color1->rgb[0] + $color2->rgb[0] * (255 - $color1->rgb[0] - $color1->rgb[0]) / 255;
 		$g = $color1->rgb[1] + $color2->rgb[1] * (255 - $color1->rgb[1] - $color1->rgb[1]) / 255;
 		$b = $color1->rgb[2] + $color2->rgb[2] * (255 - $color1->rgb[2] - $color1->rgb[2]) / 255;
-		return Less_Environment::rgb($r, $g, $b);
+		return $this->rgb($r, $g, $b);
 	}
 
-	public static function average($color1, $color2) {
+	public function average($color1, $color2) {
 		$r = ($color1->rgb[0] + $color2->rgb[0]) / 2;
 		$g = ($color1->rgb[1] + $color2->rgb[1]) / 2;
 		$b = ($color1->rgb[2] + $color2->rgb[2]) / 2;
-		return Less_Environment::rgb($r, $g, $b);
+		return $this->rgb($r, $g, $b);
 	}
 
-	public static function negation($color1, $color2) {
+	public function negation($color1, $color2) {
 		$r = 255 - abs(255 - $color2->rgb[0] - $color1->rgb[0]);
 		$g = 255 - abs(255 - $color2->rgb[1] - $color1->rgb[1]);
 		$b = 255 - abs(255 - $color2->rgb[2] - $color1->rgb[2]);
-		return Less_Environment::rgb($r, $g, $b);
+		return $this->rgb($r, $g, $b);
 	}
 
-	public static function tint($color, $amount) {
-		return Less_Environment::mix( Less_Environment::rgb(255,255,255), $color, $amount);
+	public function tint($color, $amount) {
+		return $this->mix( $this->rgb(255,255,255), $color, $amount);
 	}
 
-	public static function shade($color, $amount) {
-		return Less_Environment::mix(Less_Environment::rgb(0, 0, 0), $color, $amount);
+	public function shade($color, $amount) {
+		return $this->mix($this->rgb(0, 0, 0), $color, $amount);
 	}
 
-	public static function extract($values, $index ) {
-		$index = $index->value - 1; // (1-based index)
-		return $values->value[$index];
+	public function extract($values, $index ){
+		$index = (int)$index->value - 1; // (1-based index)
+		// handle non-array values as an array of length 1
+		// return 'undefined' if index is invalid
+		if( property_exists($values,'value') && is_array($values->value) ){
+			if( isset($values->value[$index]) ){
+				return $values->value[$index];
+			}
+			return null;
+
+		}elseif( (int)$index === 0 ){
+			return $values;
+		}
+
+		return null;
+	}
+
+	function length($values){
+		$n = (property_exists($values,'value') && is_array($values->value)) ? count($values->value) : 1;
+		return new Less_Tree_Dimension($n);
 	}
 
 	function datauri($mimetypeNode, $filePathNode = null ) {
@@ -2684,14 +3031,14 @@ class Less_Environment{
 		$filePath = str_replace('\\','/',$filePath);
 		if( Less_Environment::isPathRelative($filePath) ){
 
-			if( $this->relativeUrls ){
-				$temp = $this->currentFileInfo['currentDirectory'];
+			if( $this->env->relativeUrls ){
+				$temp = $this->env->currentFileInfo['currentDirectory'];
 			} else {
-				$temp = $this->currentFileInfo['entryPath'];
+				$temp = $this->env->currentFileInfo['entryPath'];
 			}
 
 			if( !empty($temp) ){
-				$filePath = Less_Environment::NormPath(rtrim($temp,'/').'/'.$filePath);
+				$filePath = Less_Environment::normalizePath(rtrim($temp,'/').'/'.$filePath);
 			}
 
 		}
@@ -2714,7 +3061,7 @@ class Less_Environment{
 
 			$charset = Less_Mime::charsets_lookup($mimetype);
 			$useBase64 = !in_array($charset,array('US-ASCII', 'UTF-8'));
-			if ($useBase64) $mimetype .= ';base64';
+			if( $useBase64 ){ $mimetype .= ';base64'; }
 
 		}else{
 			$useBase64 = preg_match('/;base64$/',$mimetype);
@@ -2745,6 +3092,90 @@ class Less_Environment{
 		return new Less_Tree_Url( new Less_Tree_Anonymous($filePath) );
 	}
 
+	//svg-gradient
+	function svggradient( $direction ){
+
+		$throw_message = 'svg-gradient expects direction, start_color [start_position], [color position,]..., end_color [end_position]';
+		$arguments = func_get_args();
+
+		if( count($arguments) < 3 ){
+			throw new Less_Exception_Compiler( $throw_message );
+		}
+
+		$stops = array_slice($arguments,1);
+		$gradientType = 'linear';
+		$rectangleDimension = 'x="0" y="0" width="1" height="1"';
+		$useBase64 = true;
+		$renderEnv = new Less_Environment();
+		$directionValue = $direction->toCSS($renderEnv);
+
+
+		switch( $directionValue ){
+			case "to bottom":
+				$gradientDirectionSvg = 'x1="0%" y1="0%" x2="0%" y2="100%"';
+				break;
+			case "to right":
+				$gradientDirectionSvg = 'x1="0%" y1="0%" x2="100%" y2="0%"';
+				break;
+			case "to bottom right":
+				$gradientDirectionSvg = 'x1="0%" y1="0%" x2="100%" y2="100%"';
+				break;
+			case "to top right":
+				$gradientDirectionSvg = 'x1="0%" y1="100%" x2="100%" y2="0%"';
+				break;
+			case "ellipse":
+			case "ellipse at center":
+				$gradientType = "radial";
+				$gradientDirectionSvg = 'cx="50%" cy="50%" r="75%"';
+				$rectangleDimension = 'x="-50" y="-50" width="101" height="101"';
+				break;
+			default:
+				throw new Less_Exception_Compiler( "svg-gradient direction must be 'to bottom', 'to right', 'to bottom right', 'to top right' or 'ellipse at center'" );
+		}
+
+		$returner = '<?xml version="1.0" ?>' .
+			'<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" viewBox="0 0 1 1" preserveAspectRatio="none">' .
+			'<' . $gradientType . 'Gradient id="gradient" gradientUnits="userSpaceOnUse" ' . $gradientDirectionSvg . '>';
+
+		for( $i = 0; $i < count($stops); $i++ ){
+			if( is_object($stops[$i]) && property_exists($stops[$i],'value') ){
+				$color = $stops[$i]->value[0];
+				$position = $stops[$i]->value[1];
+			}else{
+				$color = $stops[$i];
+				$position = null;
+			}
+
+			if( !($color instanceof Less_Tree_Color) || (!(($i === 0 || $i+1 === count($stops)) && $position === null) && !($position instanceof Less_Tree_Dimension)) ){
+				throw new Less_Exception_Compiler( $throw_message );
+			}
+			if( $position ){
+				$positionValue = $position->toCSS($renderEnv);
+			}elseif( $i === 0 ){
+				$positionValue = '0%';
+			}else{
+				$positionValue = '100%';
+			}
+			$alpha = $color->alpha;
+			$returner .= '<stop offset="' . $positionValue . '" stop-color="' . $color->toRGB() . '"' . ($alpha < 1 ? ' stop-opacity="' . $alpha . '"' : '') . '/>';
+		}
+
+		$returner .= '</' . $gradientType . 'Gradient><rect ' . $rectangleDimension . ' fill="url(#gradient)" /></svg>';
+
+
+		if( $useBase64 ){
+			// only works in node, needs interface to what is supported in environment
+			try{
+				$returner = base64_encode($returner);
+			}catch(Exception $e){
+				$useBase64 = false;
+			}
+		}
+
+		$returner = "'data:image/svg+xml" . ($useBase64 ? ";base64" : "") . "," . $returner . "'";
+		return new Less_Tree_URL( new Less_Tree_Anonymous( $returner ) );
+	}
+
 
 	private static function Expected( $type, $arg ){
 
@@ -2754,38 +3185,8 @@ class Less_Environment{
 		$last = array_intersect_key($last,array('function'=>'','class'=>'','line'=>''));
 
 		$message = 'Object of type '.get_class($arg).' passed to darken function. Expecting `Color`. '.$arg->toCSS().'. '.print_r($last,true);
-		throw new Less_CompilerException($message);
+		throw new Less_Exception_Compiler($message);
 
-	}
-
-
-	/**
-	 * Canonicalize a path by resolving references to '/./', '/../'
-	 * Does not remove leading "../"
-	 * @param string path or url
-	 * @return string Canonicalized path
-	 *
-	 */
-	static function NormPath($path){
-
-		$temp = explode('/',$path);
-		$result = array();
-		foreach($temp as $i => $p){
-			if( $p == '.' ){
-				continue;
-			}
-			if( $p == '..' ){
-				for($j=$i-1;$j>0;$j--){
-					if( isset($result[$j]) ){
-						unset($result[$j]);
-						continue 2;
-					}
-				}
-			}
-			$result[$i] = $p;
-		}
-
-		return implode('/',$result);
 	}
 
 }
@@ -2798,13 +3199,13 @@ class Less_Mime{
 	// this map is intentionally incomplete
 	// if you want more, install 'mime' dep
 	static $_types = array(
-			'.htm' => 'text/html',
-			'.html'=> 'text/html',
-			'.gif' => 'image/gif',
-			'.jpg' => 'image/jpeg',
-			'.jpeg'=> 'image/jpeg',
-			'.png' => 'image/png'
-			);
+	        '.htm' => 'text/html',
+	        '.html'=> 'text/html',
+	        '.gif' => 'image/gif',
+	        '.jpg' => 'image/jpeg',
+	        '.jpeg'=> 'image/jpeg',
+	        '.png' => 'image/png'
+	        );
 
 	static function lookup( $filepath ){
 		$parts = explode('.',$filepath);
@@ -2822,45 +3223,232 @@ class Less_Mime{
 	}
 } 
 
+class Less_Tree{
 
-class Less_Tree_Alpha{
-	private $value;
-	//public $type = 'Alpha';
+	public function toCSS($env = null){
+		$strs = array();
+		$this->genCSS($env, $strs );
+		return implode('',$strs);
+	}
+
+	public static function OutputAdd( &$strs, $chunk, $fileInfo = null, $index = null ){
+		$strs[] = $chunk;
+	}
+
+
+	public static function outputRuleset($env, &$strs, $rules ){
+
+		$ruleCnt = count($rules);
+		$env->tabLevel++;
+
+
+		// Compressed
+		if( Less_Environment::$compress ){
+			self::OutputAdd( $strs, '{' );
+			for( $i = 0; $i < $ruleCnt; $i++ ){
+				$rules[$i]->genCSS( $env, $strs );
+			}
+			self::OutputAdd( $strs, '}' );
+			$env->tabLevel--;
+			return;
+		}
+
+
+		// Non-compressed
+		$tabSetStr = "\n".str_repeat( '  ' , $env->tabLevel-1 );
+		$tabRuleStr = $tabSetStr.'  ';
+
+		self::OutputAdd( $strs, " {" );
+		for($i = 0; $i < $ruleCnt; $i++ ){
+			self::OutputAdd( $strs, $tabRuleStr );
+			$rules[$i]->genCSS( $env, $strs );
+		}
+		$env->tabLevel--;
+		self::OutputAdd( $strs, $tabSetStr.'}' );
+
+	}
+
+	public function accept($visitor){}
+
+	/**
+	 * Requires php 5.3+
+	 */
+	public static function __set_state($args){
+
+		$class = get_called_class();
+		$obj = new $class(null,null,null,null);
+		foreach($args as $key => $val){
+			$obj->$key = $val;
+		}
+		return $obj;
+	}
+
+} 
+
+class Less_Visitor{
+
+	var $methods = array();
+	var $_visitFnCache = array();
+
+	function __construct(){
+		$this->_visitFnCache = get_class_methods(get_class($this));
+		$this->_visitFnCache = array_flip($this->_visitFnCache);
+	}
+
+	function visitObj( $node ){
+
+		$funcName = 'visit'.$node->type;
+		if( isset($this->_visitFnCache[$funcName]) ){
+
+			$visitDeeper = true;
+			$this->$funcName( $node, $visitDeeper );
+
+			if( $visitDeeper ){
+				$node->accept($this);
+			}
+
+			$funcName = $funcName . "Out";
+			if( isset($this->_visitFnCache[$funcName]) ){
+				$this->$funcName( $node );
+			}
+
+		}else{
+			$node->accept($this);
+		}
+
+		return $node;
+	}
+
+	function visitArray( $nodes ){
+
+		array_map( array($this,'visitObj'), $nodes);
+		return $nodes;
+	}
+}
+
+ 
+
+
+class Less_VisitorReplacing extends Less_Visitor{
+
+	function visitObj( $node ){
+
+		$funcName = 'visit'.$node->type;
+		if( isset($this->_visitFnCache[$funcName]) ){
+
+			$visitDeeper = true;
+			$node = $this->$funcName( $node, $visitDeeper );
+
+			if( $node ){
+				if( $visitDeeper && is_object($node) ){
+					$node->accept($this);
+				}
+
+				$funcName = $funcName . "Out";
+				if( isset($this->_visitFnCache[$funcName]) ){
+					$this->$funcName( $node );
+				}
+			}
+
+		}else{
+			$node->accept($this);
+		}
+
+		return $node;
+	}
+
+	function visitArray( $nodes ){
+
+		$newNodes = array();
+		foreach($nodes as $node){
+			$evald = $this->visitObj($node);
+			if( $evald ){
+				if( is_array($evald) ){
+					self::flatten($evald,$newNodes);
+				}else{
+					$newNodes[] = $evald;
+				}
+			}
+		}
+		return $newNodes;
+	}
+
+	function flatten( $arr, &$out ){
+
+		foreach($arr as $item){
+			if( !is_array($item) ){
+				$out[] = $item;
+				continue;
+			}
+
+			foreach($item as $nestedItem){
+				if( is_array($nestedItem) ){
+					self::flatten( $nestedItem, $out);
+				}else{
+					$out[] = $nestedItem;
+				}
+			}
+		}
+
+		return $out;
+	}
+
+}
+
+
+ 
+
+
+class Less_Tree_Alpha extends Less_Tree{
+	public $value;
+	public $type = 'Alpha';
 
 	public function __construct($val){
 		$this->value = $val;
 	}
 
-	/*
-	function accept( $visitor ){
-		$visitor->visit( $this->value );
-	}
-	*/
+	//function accept( $visitor ){
+	//	$this->value = $visitor->visit( $this->value );
+	//}
 
-	public function toCss($env){
+	public function compile($env){
+
+		if( !is_string($this->value) ){ return new Less_Tree_Alpha( $this->value->compile($env) ); }
+
+		return $this;
+	}
+
+	public function genCSS( $env, &$strs ){
+
+		self::OutputAdd( $strs, "alpha(opacity=" );
+
+		if( is_string($this->value) ){
+			self::OutputAdd( $strs, $this->value );
+		}else{
+			$this->value->genCSS($env, $strs);
+		}
+
+		self::OutputAdd( $strs, ')' );
+	}
+
+	public function toCSS($env = null){
 		return "alpha(opacity=" . (is_string($this->value) ? $this->value : $this->value->toCSS()) . ")";
 	}
 
-	public function compile($env){
-		if ( ! is_string($this->value)) {
-			$this->value = $this->value->compile($env);
-		}
-		return $this;
-	}
+
 } 
 
 
-class Less_Tree_Anonymous{
+class Less_Tree_Anonymous extends Less_Tree{
 	public $value;
 	public $quote;
-	//public $type = 'Anonymous';
+	public $type = 'Anonymous';
 
-	public function __construct($value){
-		$this->value = is_string($value) ? $value : $value->value;
-	}
-
-	public function toCss(){
-		return $this->value;
+	public function __construct($value, $index = null, $currentFileInfo = null, $mapLines = null ){
+		$this->value = is_object($value) ? $value->value : $value;
+		$this->index = $index;
+		$this->mapLines = $mapLines;
+		$this->currentFileInfo = $currentFileInfo;
 	}
 
 	public function compile($env){
@@ -2868,7 +3456,7 @@ class Less_Tree_Anonymous{
 	}
 
 	function compare($x){
-		if( !Less_Parser::is_method( $x, 'toCSS' ) ){
+		if( !is_object($x) ){
 			return -1;
 		}
 
@@ -2881,30 +3469,34 @@ class Less_Tree_Anonymous{
 
 		return $left < $right ? -1 : 1;
 	}
+
+	public function genCSS( $env, &$strs ){
+		self::OutputAdd( $strs, $this->value, $this->currentFileInfo, $this->index, $this->mapLines );
+	}
+
+	public function toCSS($env = null){
+		return $this->value;
+	}
+
 }
  
 
 
-class Less_Tree_Assignment {
+class Less_Tree_Assignment extends Less_Tree{
 
-	//public $type = 'Assignment';
-	private $key;
-	private $value;
+	public $key;
+	public $value;
+	public $type = 'Assignment';
 
 	function __construct($key, $val) {
 		$this->key = $key;
 		$this->value = $val;
 	}
 
-	/*
 	function accept( $visitor ){
-		$visitor->visit( $this->value );
+		$this->value = $visitor->visitObj( $this->value );
 	}
-	*/
 
-	public function toCss($env) {
-		return $this->key . '=' . (is_string($this->value) ? $this->value : $this->value->toCSS());
-	}
 
 	public function compile($env) {
 		if( Less_Parser::is_method($this->value,'compile') ){
@@ -2913,16 +3505,28 @@ class Less_Tree_Assignment {
 		return $this;
 	}
 
+	public function genCSS( $env, &$strs ){
+		self::OutputAdd( $strs, $this->key . '=' );
+		if( is_string($this->value) ){
+			self::OutputAdd( $strs, $this->value );
+		}else{
+			$this->value->genCSS( $env, $strs );
+		}
+	}
+
+	public function toCss($env = null){
+		return $this->key . '=' . (is_string($this->value) ? $this->value : $this->value->toCSS());
+	}
 }
  
 
 
-class Less_Tree_Attribute{
+class Less_Tree_Attribute extends Less_Tree{
 
-	//public $type = "Attribute";
 	public $key;
 	public $op;
 	public $value;
+	public $type = 'Attribute';
 
 	function __construct($key, $op, $value){
 		$this->key = $key;
@@ -2930,23 +3534,24 @@ class Less_Tree_Attribute{
 		$this->value = $value;
 	}
 
-	/*
-	function accept($visitor){
-		$visitor->visit($this->value);
-	}
-	*/
-
 	function compile($env){
-		return new Less_Tree_Attribute( ( (Less_Parser::is_method($this->key,'compile')) ? $this->key->compile($env) : $this->key),
-			$this->op, ( Less_Parser::is_method($this->value,'compile')) ? $this->value->compile($env) : $this->value);
+
+		return new Less_Tree_Attribute(
+			is_object($this->key) ? $this->key->compile($env) : $this->key ,
+			$this->op,
+			is_object($this->value) ? $this->value->compile($env) : $this->value);
 	}
 
-	function toCSS($env){
+	function genCSS( $env, &$strs ){
+		self::OutputAdd( $strs, $this->toCSS($env) );
+	}
+
+	function toCSS($env = null){
 		$value = $this->key;
 
 		if( $this->op ){
 			$value .= $this->op;
-			$value .= ( Less_Parser::is_method($this->value,'toCSS') ? $this->value->toCSS($env) : $this->value);
+			$value .= (is_object($this->value) ? $this->value->toCSS($env) : $this->value);
 		}
 
 		return '[' . $value . ']';
@@ -2958,14 +3563,14 @@ class Less_Tree_Attribute{
 // A function call node.
 //
 
-class Less_Tree_Call{
-	public $type = 'Call';
-	private $value;
+class Less_Tree_Call extends Less_Tree{
+    public $value;
 
-	var $name;
-	var $args;
-	var $index;
-	var $currentFileInfo;
+    var $name;
+    var $args;
+    var $index;
+    var $currentFileInfo;
+    public $type = 'Call';
 
 	public function __construct($name, $args, $index, $currentFileInfo = null ){
 		$this->name = $name;
@@ -2974,71 +3579,87 @@ class Less_Tree_Call{
 		$this->currentFileInfo = $currentFileInfo;
 	}
 
-	/*
 	function accept( $visitor ){
-		$visitor->visit( $this->args );
+		$this->args = $visitor->visitArray( $this->args );
 	}
-	*/
 
-	//
-	// When evaluating a function call,
-	// we either find the function in `tree.functions` [1],
-	// in which case we call it, passing the  evaluated arguments,
-	// or we simply print it out as it appeared originally [2].
-	//
-	// The *functions.js* file contains the built-in functions.
-	//
-	// The reason why we evaluate the arguments, is in the case where
-	// we try to pass a variable to a function, like: `saturate(@color)`.
-	// The function should receive the value, not the variable.
-	//
-	public function compile($env){
+    //
+    // When evaluating a function call,
+    // we either find the function in `tree.functions` [1],
+    // in which case we call it, passing the  evaluated arguments,
+    // or we simply print it out as it appeared originally [2].
+    //
+    // The *functions.js* file contains the built-in functions.
+    //
+    // The reason why we evaluate the arguments, is in the case where
+    // we try to pass a variable to a function, like: `saturate(@color)`.
+    // The function should receive the value, not the variable.
+    //
+    public function compile($env){
 		$args = array();
 		foreach($this->args as $a){
 			$args[] = $a->compile($env);
 		}
 
 		$name = $this->name;
-		if( $name == '%' ){
+		switch($name){
+			case '%':
 			$name = '_percent';
-		}elseif( $name == 'data-uri' ){
+			break;
+
+			case 'data-uri':
 			$name = 'datauri';
+			break;
+
+			case 'svg-gradient':
+			$name = 'svggradient';
+			break;
 		}
 
-		if( Less_Parser::is_method($env, $name) ){ // 1.
-			try {
 
-				$result = call_user_func_array( array($env, $name), $args);
+		if( is_callable( array('Less_Functions',$name) ) ){ // 1.
+			try {
+				$func = new Less_Functions($env, $this->currentFileInfo);
+				$result = call_user_func_array( array($func,$name),$args);
 				if( $result != null ){
 					return $result;
 				}
 
 			} catch (Exception $e) {
-				throw Less_CompilerException('error evaluating function `' . $this->name . '` '.$e->getMessage().' index: '. $this->index);
+				throw Less_Exception_Compiler('error evaluating function `' . $this->name . '` '.$e->getMessage().' index: '. $this->index);
+			}
+
+		}
+
+		return new Less_Tree_Call( $this->name, $args, $this->index, $this->currentFileInfo );
+    }
+
+	public function genCSS( $env, &$strs ){
+
+		self::OutputAdd( $strs, $this->name . '(', $this->currentFileInfo, $this->index );
+		$args_len = count($this->args);
+		for($i = 0; $i < $args_len; $i++ ){
+			$this->args[$i]->genCSS($env, $strs );
+			if( $i + 1 < $args_len ){
+				self::OutputAdd( $strs, ', ' );
 			}
 		}
 
-		// 2.
-		$temp = array();
-		foreach($args as $a){
-			$temp[] = $a->toCSS($env);
-		}
-		return new Less_Tree_Anonymous($this->name .
-				   "(" . implode(', ', $temp) . ")");
+		self::OutputAdd( $strs, ')' );
 	}
 
-	public function toCSS ($env) {
-		return $this->compile($env)->toCSS();
-	}
+    public function toCSS($env = null){
+        return $this->compile($env)->toCSS();
+    }
 
 }
  
 
 
-class Less_Tree_Color{
-	//public $type = 'Color';
+class Less_Tree_Color extends Less_Tree{
 	var $rgb;
 	var $alpha;
+	public $type = 'Color';
 
 	public function __construct($rgb, $a = 1){
 		$this->rgb = array();
@@ -3056,68 +3677,84 @@ class Less_Tree_Color{
 		$this->alpha = is_numeric($a) ? $a : 1;
 	}
 
-	public function compile($env = null){
-		return $this;
-	}
+    public function compile($env = null){
+        return $this;
+    }
 
 	public function luma(){
 		return (0.2126 * $this->rgb[0] / 255) + (0.7152 * $this->rgb[1] / 255) + (0.0722 * $this->rgb[2] / 255);
 	}
 
-	//
-	// If we have some transparency, the only way to represent it
-	// is via `rgba`. Otherwise, we use the hex representation,
-	// which has better compatibility with older browsers.
-	// Values are capped between `0` and `255`, rounded and zero-padded.
-	//
-	public function toCSS($env = null, $doNotCompress = false ){
-		$compress = $env && $env->compress && !$doNotCompress;
-		if ($this->alpha < 1.0) {
+	public function genCSS( $env, &$strs ){
+		self::OutputAdd( $strs, $this->toCSS($env) );
+	}
+
+    public function toCSS($env = null, $doNotCompress = false ){
+		$compress = Less_Environment::$compress && !$doNotCompress;
+
+
+	    //
+	    // If we have some transparency, the only way to represent it
+	    // is via `rgba`. Otherwise, we use the hex representation,
+	    // which has better compatibility with older browsers.
+	    // Values are capped between `0` and `255`, rounded and zero-padded.
+	    //
+    	if( $this->alpha < 1.0 ){
+            if( $this->alpha === 0 && isset($this->isTransparentKeyword) && $this->isTransparentKeyword ){
+                return 'transparent';
+            }
+
+
 			$values = array_map('round', $this->rgb);
 			$values[] = $this->alpha;
 
 			$glue = ($compress ? ',' : ', ');
 			return "rgba(" . implode($glue, $values) . ")";
-		} else {
+		}else{
 
-			$color = '';
-			foreach($this->rgb as $i){
-				$i = round($i);
-				$i = ($i > 255 ? 255 : ($i < 0 ? 0 : $i));
-				$i = dechex($i);
-				$color .= str_pad($i, 2, '0', STR_PAD_LEFT);
-			}
+			$color = $this->toRGB();
 
 			if( $compress ){
 
 				// Convert color to short format
-				if( $color[0] == $color[1] && $color[2] == $color[3] && $color[4] == $color[5]) {
-					$color = $color[0] . $color[2] . $color[4];
+				if( $color[1] === $color[2] && $color[3] === $color[4] && $color[5] === $color[6]) {
+					$color = '#'.$color[1] . $color[3] . $color[5];
 				}
 			}
 
-			return '#'.$color;
+			return $color;
 		}
-	}
+    }
 
-	//
-	// Operations have to be done per-channel, if not,
-	// channels will spill onto each other. Once we have
-	// our result, in the form of an integer triplet,
-	// we create a new Color node to hold the result.
-	//
-	public function operate($env, $op, $other) {
-		$result = array();
+    //
+    // Operations have to be done per-channel, if not,
+    // channels will spill onto each other. Once we have
+    // our result, in the form of an integer triplet,
+    // we create a new Color node to hold the result.
+    //
+    public function operate($env, $op, $other) {
+        $result = array();
 
-		if (! ($other instanceof Less_Tree_Color)) {
-			$other = $other->toColor();
+        if (! ($other instanceof Less_Tree_Color)) {
+            $other = $other->toColor();
+        }
+
+        for ($c = 0; $c < 3; $c++) {
+            $result[$c] = Less_Functions::operate($env, $op, $this->rgb[$c], $other->rgb[$c]);
+        }
+        return new Less_Tree_Color($result, $this->alpha + $other->alpha);
+    }
+
+    public function toRGB(){
+		$color = '';
+		foreach($this->rgb as $i){
+			$i = Less_Parser::round($i);
+			$i = ($i > 255 ? 255 : ($i < 0 ? 0 : $i));
+			$i = dechex($i);
+			$color .= str_pad($i, 2, '0', STR_PAD_LEFT);
 		}
-
-		for ($c = 0; $c < 3; $c++) {
-			$result[$c] = Less_Environment::operate($env, $op, $this->rgb[$c], $other->rgb[$c]);
-		}
-		return new Less_Tree_Color($result, $this->alpha + $other->alpha);
-	}
+		return '#'.$color;
+    }
 
 	public function toHSL(){
 		$r = $this->rgb[0] / 255;
@@ -3178,96 +3815,139 @@ class Less_Tree_Color{
 	}
 
 	public function toARGB(){
-		$argb = array_merge( (array) round($this->alpha * 255), $this->rgb);
+		$argb = array_merge( (array) Less_Parser::round($this->alpha * 255), $this->rgb);
 
 		$temp = '';
 		foreach($argb as $i){
-			$i = round($i);
+			$i = Less_Parser::round($i);
 			$i = dechex($i > 255 ? 255 : ($i < 0 ? 0 : $i));
 			$temp .= str_pad($i, 2, '0', STR_PAD_LEFT);
 		}
 		return '#' . $temp;
 	}
 
-	public function compare($x){
+    public function compare($x){
 
 		if( !property_exists( $x, 'rgb' ) ){
 			return -1;
 		}
 
 
-		return ($x->rgb[0] === $this->rgb[0] &&
-			$x->rgb[1] === $this->rgb[1] &&
-			$x->rgb[2] === $this->rgb[2] &&
-			$x->alpha === $this->alpha) ? 0 : -1;
+        return ($x->rgb[0] === $this->rgb[0] &&
+            $x->rgb[1] === $this->rgb[1] &&
+            $x->rgb[2] === $this->rgb[2] &&
+            $x->alpha === $this->alpha) ? 0 : -1;
+    }
+
+
+	public static function fromKeyword( $keyword ){
+
+		if( Less_Colors::hasOwnProperty($keyword) ){
+			// detect named color
+			return new Less_Tree_Color(substr(Less_Colors::color($keyword), 1));
+		}
+
+		if( $keyword === 'transparent' ){
+			$transparent = new Less_Tree_Color( array(0, 0, 0), 0);
+			$transparent->isTransparentKeyword = true;
+			return $transparent;
+		}
 	}
+
 }
  
 
-// less.js : lib/less/tree/element.js
 
+class Less_Tree_Combinator extends Less_Tree{
 
-class Less_Tree_Combinator {
-
-	//public $type = 'Combinator';
 	public $value;
+	public $type = 'Combinator';
 
 	public function __construct($value = null) {
-		if ($value == ' ') {
+		if( $value == ' ' ){
 			$this->value = ' ';
-		} else {
+		}else {
 			$this->value = trim($value);
 		}
 	}
 
-	public function toCSS ($env) {
-		$v = array(
-			''   => '',
-			' '  => ' ',
-			':'  => ' :',
-			'+'  => $env->compress ? '+' : ' + ',
-			'~'  => $env->compress ? '~' : ' ~ ',
-			'>'  => $env->compress ? '>' : ' > ',
-			'|'  => $env->compress ? '|' : ' | '
+	static $_outputMap = array(
+		''  => '',
+		' ' => ' ',
+		':' => ' :',
+		'+' => ' + ',
+		'~' => ' ~ ',
+		'>' => ' > ',
+		'|' => '|'
+	);
 
-		);
+	static $_outputMapCompressed = array(
+		''  => '',
+		' ' => ' ',
+		':' => ' :',
+		'+' => '+',
+		'~' => '~',
+		'>' => '>',
+		'|' => '|'
+	);
 
-		return $v[$this->value];
+	function genCSS($env, &$strs ){
+		if( Less_Environment::$compress ){
+			self::OutputAdd( $strs, self::$_outputMapCompressed[$this->value] );
+		}else{
+			self::OutputAdd( $strs, self::$_outputMap[$this->value] );
+		}
 	}
+
 }
  
 
-class Less_Tree_Comment{
+class Less_Tree_Comment extends Less_Tree{
 
-	//public $type = 'Comment';
+	public $type = 'Comment';
 
-	public function __construct($value, $silent)
-	{
+	public function __construct($value, $silent, $index = null, $currentFileInfo = null ){
 		$this->value = $value;
 		$this->silent = !! $silent;
+		$this->currentFileInfo = $currentFileInfo;
 	}
 
-	public function compile($env = null)
-	{
+	public function genCSS( $env, &$strs ){
+		//if( $this->debugInfo ){
+			//self::OutputAdd( $strs, tree.debugInfo($env, $this), $this->currentFileInfo, $this->index);
+		//}
+		self::OutputAdd( $strs, trim($this->value) );//TODO shouldn't need to trim, we shouldn't grab the \n
+	}
+
+	public function toCSS($env = null){
+		return Less_Environment::$compress ? '' : $this->value;
+	}
+
+	public function isSilent( $env ){
+		$isReference = ($this->currentFileInfo && isset($this->currentFileInfo['reference']) && (!isset($this->isReferenced) || !$this->isReferenced) );
+		$isCompressed = Less_Environment::$compress && !preg_match('/^\/\*!/', $this->value);
+		return $this->silent || $isReference || $isCompressed;
+	}
+
+	public function compile(){
 		return $this;
 	}
 
-	public function toCSS($env)
-	{
-		return $env->compress ? '' : $this->value;
+	public function markReferenced(){
+		$this->isReferenced = true;
 	}
 
 }
  
 
-class Less_Tree_Condition {
+class Less_Tree_Condition extends Less_Tree{
 
-	//public $type = 'Condition';
-	private $op;
-	private $lvalue;
-	private $rvalue;
-	private $index;
-	private $negate;
+	public $op;
+	public $lvalue;
+	public $rvalue;
+	public $index;
+	public $negate;
+	public $type = 'Condition';
 
 	public function __construct($op, $l, $r, $i = 0, $negate = false) {
 		$this->op = trim($op);
@@ -3277,14 +3957,12 @@ class Less_Tree_Condition {
 		$this->negate = $negate;
 	}
 
-	/*
 	public function accept($visitor){
-		$visitor->visit( $this->lvalue );
-		$visitor->visit( $this->rvalue );
+		$this->lvalue = $visitor->visitObj( $this->lvalue );
+		$this->rvalue = $visitor->visitObj( $this->rvalue );
 	}
-	*/
 
-	public function compile($env) {
+    public function compile($env) {
 		$a = $this->lvalue->compile($env);
 		$b = $this->rvalue->compile($env);
 
@@ -3305,16 +3983,16 @@ class Less_Tree_Condition {
 				}elseif( Less_Parser::is_method($b, 'compare') ){
 					$result = $b->compare($a);
 				}else{
-					throw new Less_CompilerException('Unable to perform comparison', $this->index);
+					throw new Less_Exception_Compiler('Unable to perform comparison', $this->index);
 				}
 
 				switch ($result) {
 					case -1:
-					$result = $this->op === '<' || $this->op === '=<';
+					$result = $this->op === '<' || $this->op === '=<' || $this->op === '<=';
 					break;
 
 					case  0:
-					$result = $this->op === '=' || $this->op === '>=' || $this->op === '=<';
+					$result = $this->op === '=' || $this->op === '>=' || $this->op === '=<' || $this->op === '<=';
 					break;
 
 					case  1:
@@ -3325,18 +4003,18 @@ class Less_Tree_Condition {
 		}
 
 		return $this->negate ? !$result : $result;
-	}
+    }
 
 }
  
 
 
-class Less_Tree_Dimension{
+class Less_Tree_Dimension extends Less_Tree{
 
-	//public $type = 'Dimension';
+	public $type = 'Dimension';
 
-	public function __construct($value, $unit = false){
-		$this->value = floatval($value);
+    public function __construct($value, $unit = false){
+        $this->value = floatval($value);
 
 		if( $unit && ($unit instanceof Less_Tree_Unit) ){
 			$this->unit = $unit;
@@ -3345,26 +4023,24 @@ class Less_Tree_Dimension{
 		}else{
 			$this->unit = new Less_Tree_Unit( );
 		}
-	}
+    }
 
-	/*
 	function accept( $visitor ){
-		$visitor->visit( $this->unit );
-	}
-	*/
-
-	public function compile($env = null) {
-		return $this;
+		$this->unit = $visitor->visitObj( $this->unit );
 	}
 
-	public function toColor() {
-		return new Less_Tree_Color(array($this->value, $this->value, $this->value));
-	}
+    public function compile($env = null) {
+        return $this;
+    }
 
-	public function toCSS( $env = null ){
+    public function toColor() {
+        return new Less_Tree_Color(array($this->value, $this->value, $this->value));
+    }
+
+	public function genCSS( $env, &$strs ){
 
 		if( ($env && $env->strictUnits) && !$this->unit->isSingular() ){
-			throw new Less_CompilerException("Multiple units in dimension. Correct the units or use the unit function. Bad unit: ".$this->unit->toString());
+			throw new Less_Exception_Compiler("Multiple units in dimension. Correct the units or use the unit function. Bad unit: ".$this->unit->toString());
 		}
 
 		$value = $this->value;
@@ -3376,9 +4052,10 @@ class Less_Tree_Dimension{
 			$strValue = preg_replace('/\.?0+$/','', $strValue);
 		}
 
-		if( $env && $env->compress ){
+		if( Less_Environment::$compress ){
 			// Zero values doesn't need a unit
-			if( $value === 0 && !$this->unit->isAngle() ){
+			if( $value === 0 && $this->unit->isLength() ){
+				self::OutputAdd( $strs, $strValue );
 				return $strValue;
 			}
 
@@ -3388,36 +4065,37 @@ class Less_Tree_Dimension{
 			}
 		}
 
-		return $strValue . $this->unit->toCSS($env);
+		self::OutputAdd( $strs, $strValue );
+		$this->unit->genCSS($env, $strs);
 	}
 
-	public function __toString(){
-		return $this->toCSS();
-	}
+    public function __toString(){
+        return $this->toCSS();
+    }
 
-	// In an operation between two Dimensions,
-	// we default to the first Dimension's unit,
-	// so `1px + 2em` will yield `3px`.
-	public function operate($env, $op, $other){
+    // In an operation between two Dimensions,
+    // we default to the first Dimension's unit,
+    // so `1px + 2em` will yield `3px`.
+    public function operate($env, $op, $other){
 
-		$value = Less_Environment::operate($env, $op, $this->value, $other->value);
+		$value = Less_Functions::operate($env, $op, $this->value, $other->value);
 		$unit = clone $this->unit;
 
 		if( $op === '+' || $op === '-' ){
 
-			if( !count($unit->numerator) && !count($unit->denominator) ){
+			if( !$unit->numerator && !$unit->denominator ){
 				$unit->numerator = $other->unit->numerator;
 				$unit->denominator = $other->unit->denominator;
-			}elseif( !count($other->unit->numerator) && !count($other->unit->denominator) ){
+			}elseif( !$other->unit->numerator && !$other->unit->denominator ){
 				// do nothing
 			}else{
 				$other = $other->convertTo( $this->unit->usedUnits());
 
 				if( $env->strictUnits && $other->unit->toString() !== $unit->toCSS() ){
-					throw new Less_CompilerException("Incompatible units. Change the units or use the unit function. Bad units: '".$unit->toString() . "' and ".$other->unit->toString()+"'.");
+					throw new Less_Exception_Compiler("Incompatible units. Change the units or use the unit function. Bad units: '".$unit->toString() . "' and ".$other->unit->toString()+"'.");
 				}
 
-				$value = Less_Environment::operate($env, $op, $this->value, $other->value);
+				$value = Less_Functions::operate($env, $op, $this->value, $other->value);
 			}
 		}elseif( $op === '*' ){
 			$unit->numerator = array_merge($unit->numerator, $other->unit->numerator);
@@ -3433,7 +4111,7 @@ class Less_Tree_Dimension{
 			$unit->cancel();
 		}
 		return new Less_Tree_Dimension( $value, $unit);
-	}
+    }
 
 	public function compare($other) {
 		if ($other instanceof Less_Tree_Dimension) {
@@ -3462,7 +4140,7 @@ class Less_Tree_Dimension{
 		return $this->convertTo(array('length'=> 'm', 'duration'=> 's', 'angle' => 'rad' ));
 	}
 
-	function convertTo($conversions) {
+    function convertTo($conversions) {
 		$value = $this->value;
 		$unit = clone $this->unit;
 
@@ -3481,7 +4159,8 @@ class Less_Tree_Dimension{
 			$group = Less_Tree_UnitConversions::${$groupName};
 
 			//numerator
-			for($i=0; $i < count($unit->numerator); $i++ ){
+			$len = count($unit->numerator);
+			for($i=0; $i < $len; $i++ ){
 				$atomicUnit = $unit->numerator[$i];
 				if( !isset($group[$atomicUnit]) ){
 					continue;
@@ -3493,7 +4172,8 @@ class Less_Tree_Dimension{
 			}
 
 			//denominator
-			for($i=0; $i < count($unit->denominator); $i++ ){
+			$len = count($unit->denominator);
+			for($i=0; $i < $len; $i++ ){
 				$atomicUnit = $unit->denominator[$i];
 				if( !isset($group[$atomicUnit]) ){
 					continue;
@@ -3508,64 +4188,86 @@ class Less_Tree_Dimension{
 		$unit->cancel();
 
 		return new Less_Tree_Dimension( $value, $unit);
-	}
+    }
 }
  
 
-class Less_Tree_Directive{
+class Less_Tree_Directive extends Less_Tree{
 
-	//public $type = 'Directive';
 	public $name;
 	public $value;
-	public $ruleset;
+	public $rules;
+	public $index;
+	public $type = 'Directive';
 
-	public function __construct($name, $value = null){
+	public function __construct($name, $value = null, $index = null, $currentFileInfo = null ){
 		$this->name = $name;
 		if (is_array($value)) {
-			$this->ruleset = new Less_Tree_Ruleset(false, $value);
-			$this->ruleset->allowImports = true;
+			$rule = new Less_Tree_Ruleset(array(), $value);
+			$rule->allowImports = true;
+			$this->rules = array($rule);
 		} else {
 			$this->value = $value;
 		}
+		$this->currentFileInfo = $currentFileInfo;
 	}
 
 
 	function accept( $visitor ){
-		$visitor->visit( $this->ruleset );
-		//$visitor->visit( $this->value );
-	}
-
-	public function toCSS( $env){
-		if ($this->ruleset) {
-			$this->ruleset->root = true;
-			return $this->name . ($env->compress ? '{' : " {\n  ") .
-				   preg_replace('/\n/', "\n  ", trim($this->ruleset->toCSS($env))) .
-				   ($env->compress ? '}': "\n}\n");
-		} else {
-			return $this->name . ' ' . $this->value->toCSS($env) . ";\n";
+		if( $this->rules ){
+			$this->rules = $visitor->visitArray( $this->rules );
+		}
+		if( $this->value ){
+			$this->value = $visitor->visitObj( $this->value );
 		}
 	}
 
-	public function compile($env)
-	{
+	function genCSS( $env, &$strs ){
+
+		self::OutputAdd( $strs, $this->name, $this->currentFileInfo, $this->index );
+
+		if( $this->rules ){
+			Less_Tree::outputRuleset( $env, $strs, $this->rules);
+		}else{
+			self::OutputAdd( $strs, ' ' );
+			$this->value->genCSS( $env, $strs );
+			self::OutputAdd( $strs, ';' );
+		}
+	}
+
+	public function compile($env){
 		$evaldDirective = $this;
-		if( $this->ruleset ){
+		if( $this->rules ){
 			$env->unshiftFrame($this);
-			$evaldDirective = new Less_Tree_Directive( $this->name );
-			$evaldDirective->ruleset = $this->ruleset->compile($env);
+			$evaldDirective = new Less_Tree_Directive( $this->name, null, $this->index, $this->currentFileInfo );
+			$evaldDirective->rules = array( $this->rules[0]->compile($env) );
+			$evaldDirective->rules[0]->root = true;
 			$env->shiftFrame();
 		}
 		return $evaldDirective;
 	}
+
 	// TODO: Not sure if this is right...
-	public function variable($name)
-	{
-		return $this->ruleset->variable($name);
+	public function variable($name){
+		return $this->rules[0]->variable($name);
 	}
 
-	public function find($selector)
-	{
-		return $this->ruleset->find($selector, $this);
+	public function find($selector){
+		return $this->rules[0]->find($selector, $this);
+	}
+
+	//rulesets: function () { return tree.Ruleset.prototype.rulesets.apply(this.rules[0]); },
+
+	public function markReferenced(){
+		$this->isReferenced = true;
+		if( $this->rules ){
+			$rules = $this->rules[0]->rules;
+			for( $i = 0; $i < count($rules); $i++ ){
+				if( Less_Parser::is_method( $rules[$i], 'markReferenced') ){
+					$rules[$i]->markReferenced();
+				}
+			}
+		}
 	}
 
 }
@@ -3573,74 +4275,76 @@ class Less_Tree_Directive{
 
 //less.js : lib/less/tree/element.js
 
-class Less_Tree_Element{
-	//public $type = 'Element';
-	public $combinator;
-	public $value;
-	public $index;
+class Less_Tree_Element extends Less_Tree{
 
-	public function __construct($combinator, $value, $index = null) {
-		if ( ! ($combinator instanceof Less_Tree_Combinator)) {
+	public $combinator;
+	public $value = '';
+	public $index;
+	public $type = 'Element';
+
+	public function __construct($combinator, $value, $index = null, $currentFileInfo = null ){
+		if( ! ($combinator instanceof Less_Tree_Combinator)) {
 			$combinator = new Less_Tree_Combinator($combinator);
 		}
 
-		if (is_string($value)) {
-			$this->value = trim($value);
-		} elseif ($value) {
+		if( !is_null($value) ){
 			$this->value = $value;
-		} else {
-			$this->value = "";
 		}
 
 		$this->combinator = $combinator;
 		$this->index = $index;
+		$this->currentFileInfo = $currentFileInfo;
 	}
 
-	/*
 	function accept( $visitor ){
-		$visitor->visit( $this->combinator );
-		$visitor->visit( $this->value );
+		$this->combinator = $visitor->visitObj( $this->combinator );
+		if( is_object($this->value) ){ //object or string
+			$this->value = $visitor->visitObj( $this->value );
+		}
 	}
-	*/
 
-	//less.js : tree.Element.prototype.toCSS
-	public function toCSS ($env) {
+	public function compile($env) {
+		return new Less_Tree_Element($this->combinator,
+			is_string($this->value) ? $this->value : $this->value->compile($env),
+			$this->index,
+			$this->currentFileInfo
+		);
+	}
+
+	public function genCSS( $env, &$strs ){
+		self::OutputAdd( $strs, $this->toCSS($env), $this->currentFileInfo, $this->index );
+	}
+
+	public function toCSS( $env = null ){
 
 		$value = $this->value;
 		if( !is_string($value) ){
 			$value = $value->toCSS($env);
 		}
 
-		if( $value == '' && strlen($this->combinator->value) && $this->combinator->value[0] == '&' ){
+		if( $value === '' && $this->combinator->value[0] === '&' ){
 			return '';
 		}
 		return $this->combinator->toCSS($env) . $value;
 	}
 
-	public function compile($env) {
-		return new Less_Tree_Element($this->combinator,
-			is_string($this->value) ? $this->value : $this->value->compile($env),
-			$this->index
-		);
-	}
 }
  
 
-class Less_Tree_Expression {
+class Less_Tree_Expression extends Less_Tree{
 
-	//public $type = 'Expression';
 	public $value = array();
 	public $parens = false;
 	public $parensInOp = false;
+	public $type = 'Expression';
 
-	public function __construct($value) {
+	public function __construct($value=null) {
 		$this->value = $value;
 	}
 
-	/*function accept( $visitor ){
-		$visitor->visit( $this->value );
+	function accept( $visitor ){
+		$this->value = $visitor->visitArray( $this->value );
 	}
-	*/
 
 	public function compile($env) {
 
@@ -3650,25 +4354,31 @@ class Less_Tree_Expression {
 			$env->inParenthesis();
 		}
 
-		if (is_array($this->value) && count($this->value) > 1) {
+		if( $this->value ){
 
-			$ret = array();
-			foreach($this->value as $e){
-				$ret[] = $e->compile($env);
+			$count = count($this->value);
+
+			if( $count > 1 ){
+
+				$ret = array();
+				foreach($this->value as $e){
+					$ret[] = $e->compile($env);
+				}
+				$returnValue = new Less_Tree_Expression($ret);
+
+			}elseif( $count === 1 ){
+
+				if( !isset($this->value[0]) ){
+					$this->value = array_slice($this->value,0);
+				}
+
+				if( ($this->value[0] instanceof Less_Tree_Expression) && $this->value[0]->parens && !$this->value[0]->parensInOp ){
+					$doubleParen = true;
+				}
+
+				$returnValue = $this->value[0]->compile($env);
 			}
-			$returnValue = new Less_Tree_Expression($ret);
 
-		} else if (is_array($this->value) && count($this->value) == 1) {
-
-			if( !isset($this->value[0]) ){
-				$this->value = array_slice($this->value,0);
-			}
-
-			if( property_exists($this->value[0], 'parens') && $this->value[0]->parens && !$this->value[0]->parensInOp ){
-				$doubleParen = true;
-			}
-
-			$returnValue = $this->value[0]->compile($env);
 		} else {
 			$returnValue = $this;
 		}
@@ -3681,14 +4391,14 @@ class Less_Tree_Expression {
 		return $returnValue;
 	}
 
-	public function toCSS ($env) {
-
-		$ret = array();
-		foreach($this->value as $e){
-			$ret[] = Less_Parser::is_method($e, 'toCSS') ? $e->toCSS($env) : '';
+	function genCSS( $env, &$strs ){
+		$val_len = count($this->value);
+		for( $i = 0; $i < $val_len; $i++ ){
+			$this->value[$i]->genCSS( $env, $strs );
+			if( $i + 1 < $val_len ){
+				self::OutputAdd( $strs, ' ' );
+			}
 		}
-
-		return implode(' ',$ret);
 	}
 
 	function throwAwayComments() {
@@ -3708,20 +4418,23 @@ class Less_Tree_Expression {
  
 
 
-class Less_Tree_Extend{
+class Less_Tree_Extend extends Less_Tree{
 
-	//public $type = 'Extend';
 	public $selector;
 	public $option;
 	public $index;
 	public $selfSelectors = array();
 	public $allowBefore;
 	public $allowAfter;
-	public $parents = array();
 	public $firstExtendOnThisSelectorPath;
+	public $type = 'Extend';
 
+
+	public $object_id;
+	public $parent_ids = array();
 
 	function __construct($selector, $option, $index){
+		static $i = 0;
 		$this->selector = $selector;
 		$this->option = $option;
 		$this->index = $index;
@@ -3737,28 +4450,36 @@ class Less_Tree_Extend{
 			break;
 		}
 
+		$this->object_id = $i++;
+		$this->parent_ids = array($this->object_id);
 	}
 
-	/*
 	function accept( $visitor ){
-		$visitor->visit( $this->selector );
+		$this->selector = $visitor->visitObj( $this->selector );
 	}
-	*/
 
 	function compile( $env ){
+		Less_Parser::$has_extends = true;
 		return new Less_Tree_Extend( $this->selector->compile($env), $this->option, $this->index);
 	}
 
-
-	function findSelfSelectors( $selectors){
+	function findSelfSelectors( $selectors ){
 		$selfElements = array();
 
-		for($i = 0; $i < count($selectors); $i++ ){
-			$selfElements = array_merge($selfElements, $selectors[$i]->elements);
+
+		for( $i = 0, $selectors_len = count($selectors); $i < $selectors_len; $i++ ){
+			$selectorElements = $selectors[$i]->elements;
+			// duplicate the logic in genCSS function inside the selector node.
+			// future TODO - move both logics into the selector joiner visitor
+			if( $i && $selectorElements && $selectorElements[0]->combinator->value === "") {
+				$selectorElements[0]->combinator->value = ' ';
+			}
+			$selfElements = array_merge( $selfElements, $selectors[$i]->elements );
 		}
 
 		$this->selfSelectors = array(new Less_Tree_Selector($selfElements));
 	}
+
 } 
 
 
@@ -3775,9 +4496,8 @@ class Less_Tree_Extend{
 // `import,push`, we also pass it a callback, which it'll call once
 // the file has been fetched, and parsed.
 //
-class Less_Tree_Import{
+class Less_Tree_Import extends Less_Tree{
 
-	//public $type = 'Import';
 	public $options;
 	public $index;
 	public $path;
@@ -3786,6 +4506,7 @@ class Less_Tree_Import{
 	public $css;
 	public $skip;
 	public $root;
+	public $type = 'Import';
 
 	function __construct($path, $features, $options, $index, $currentFileInfo = null ){
 		$this->options = $options;
@@ -3794,13 +4515,16 @@ class Less_Tree_Import{
 		$this->features = $features;
 		$this->currentFileInfo = $currentFileInfo;
 
+		if( is_array($options) ){
+			$this->options += array('inline'=>false);
 
-		if( isset($this->options['less']) ){
-			$this->css = !$this->options['less'];
-		} else {
-			$pathValue = $this->getPath();
-			if( $pathValue && preg_match('/css([\?;].*)?$/',$pathValue) ){
-				$this->css = true;
+			if( isset($this->options['less']) || $this->options['inline'] ){
+				$this->css = !isset($this->options['less']) || !$this->options['less'] || $this->options['inline'];
+			} else {
+				$pathValue = $this->getPath();
+				if( $pathValue && preg_match('/css([\?;].*)?$/',$pathValue) ){
+					$this->css = true;
+				}
 			}
 		}
 	}
@@ -3814,15 +4538,34 @@ class Less_Tree_Import{
 // we end up with a flat structure, which can easily be imported in the parent
 // ruleset.
 //
-	/*
-	function accept($visitor) {
-		$visitor->visit($this->features);
-		$visitor->visit($this->path);
-		$visitor->visit($this->root);
-	}
-	*/
 
-	function toCSS($env) {
+	function accept($visitor){
+
+		if( $this->features ){
+			$this->features = $visitor->visitObj($this->features);
+		}
+		$this->path = $visitor->visitObj($this->path);
+
+		if( !$this->options['inline'] && $this->root ){
+			$this->root = $visitor->visit($this->root);
+		}
+	}
+
+	function genCSS( $env, &$strs ){
+		if( $this->css ){
+
+			self::OutputAdd( $strs, '@import ', $this->currentFileInfo, $this->index );
+
+			$this->path->genCSS( $env, $strs );
+			if( $this->features ){
+				self::OutputAdd( $strs, ' ' );
+				$this->features->genCSS( $env, $strs );
+			}
+			self::OutputAdd( $strs, ';' );
+		}
+	}
+
+	function toCSS($env = null){
 		$features = $this->features ? ' ' . $this->features->toCSS($env) : '';
 
 		if ($this->css) {
@@ -3848,13 +4591,23 @@ class Less_Tree_Import{
 
 	function compilePath($env) {
 		$path = $this->path->compile($env);
-		if( $this->currentFileInfo && $this->currentFileInfo['rootpath'] && !($path instanceof Less_Tree_URL)) {
-			$pathValue = $path->value;
-			// Add the base path if the import is relative
-			if( $pathValue && $env->isPathRelative($pathValue) ){
-				$path->value = Less_Environment::NormPath($this->currentFileInfo['uri_root']. $pathValue);
-			}
+		$rootpath = '';
+		if( $this->currentFileInfo && $this->currentFileInfo['rootpath'] ){
+			$rootpath = $this->currentFileInfo['rootpath'];
 		}
+
+
+		if( !($path instanceof Less_Tree_URL) ){
+			if( $rootpath ){
+				$pathValue = $path->value;
+				// Add the base path if the import is relative
+				if( $pathValue && Less_Environment::isPathRelative($pathValue) ){
+					$path->value = $this->currentFileInfo['uri_root'].$pathValue;
+				}
+			}
+			$path->value = Less_Environment::normalizePath($path->value);
+		}
+
 		return $path;
 	}
 
@@ -3865,12 +4618,12 @@ class Less_Tree_Import{
 
 		//get path & uri
 		$evald_path = $evald->getPath();
-		if( $evald_path && $env->isPathRelative($evald_path) ){
+		if( $evald_path && Less_Environment::isPathRelative($evald_path) ){
 			foreach(Less_Parser::$import_dirs as $rootpath => $rooturi){
 				$temp = $rootpath.$evald_path;
 				if( file_exists($temp) ){
-					$full_path = Less_Environment::NormPath($temp);
-					$uri = Less_Environment::NormPath(dirname($rooturi.$evald_path));
+					$full_path = Less_Environment::normalizePath($temp);
+					$uri = Less_Environment::normalizePath(dirname($rooturi.$evald_path));
 					break;
 				}
 			}
@@ -3883,23 +4636,58 @@ class Less_Tree_Import{
 
 		//import once
 		$realpath = realpath($full_path);
-		if( !isset($evald->options['multiple']) && $realpath && Less_Parser::FileParsed($realpath) ){
-			$evald->skip = true;
+
+
+		if( $realpath && Less_Parser::FileParsed($realpath) ){
+			if( isset($this->currentFileInfo['reference']) ){
+				$evald->skip = true;
+			}elseif( !isset($evald->options['multiple']) && !$env->importMultiple ){
+				$evald->skip = true;
+			}
 		}
 
 		$features = ( $evald->features ? $evald->features->compile($env) : null );
 
-		if ($evald->skip) { return array(); }
+		if( $evald->skip ){
+			return array();
+		}
 
-		if( $evald->css ){
+
+		if( $this->options['inline'] ){
+			//todo needs to reference css file not import
+			//$contents = new Less_Tree_Anonymous($this->root, 0, array('filename'=>$this->importedFilename), true );
+
+			Less_Parser::AddParsedFile($full_path);
+			$contents = new Less_Tree_Anonymous( file_get_contents($full_path), 0, array(), true );
+
+			if( $this->features ){
+				return new Less_Tree_Media( array($contents), $this->features->value );
+			}
+
+			return array( $contents );
+
+		}elseif( $evald->css ){
 			$temp = $this->compilePath( $env);
 			return new Less_Tree_Import( $this->compilePath( $env), $features, $this->options, $this->index);
 		}
 
-		$parser = new Less_Parser($env);
+
+		// options
+		$import_env = clone $env;
+		if( (isset($this->options['reference']) && $this->options['reference']) || isset($this->currentFileInfo['reference']) ){
+			$import_env->currentFileInfo['reference'] = true;
+		}
+
+		if( (isset($this->options['multiple']) && $this->options['multiple']) ){
+			$import_env->importMultiple = true;
+		}
+
+		$parser = new Less_Parser($import_env);
 		$evald->root = $parser->parseFile($full_path, $uri, true);
+
+
 		$ruleset = new Less_Tree_Ruleset(array(), $evald->root->rules );
-		$ruleset->evalImports($env);
+		$ruleset->evalImports($import_env);
 
 		return $this->features ? new Less_Tree_Media($ruleset->rules, $this->features->value) : $ruleset->rules;
 	}
@@ -3907,9 +4695,9 @@ class Less_Tree_Import{
 
  
 
-class Less_Tree_Javascript{
+class Less_Tree_Javascript extends Less_Tree{
 
-	//public $type = 'Javascript';
+	public $type = 'Javascript';
 
 	public function __construct($string, $index, $escaped){
 		$this->escaped = $escaped;
@@ -3921,26 +4709,31 @@ class Less_Tree_Javascript{
 		return $this;
 	}
 
-	public function toCss($env){
-		return $env->compress ? '' : '/* Sorry, can not do JavaScript evaluation in PHP... :( */';
+	function genCSS( $env, &$strs ){
+		self::OutputAdd( $strs, '/* Sorry, can not do JavaScript evaluation in PHP... :( */' );
+	}
+
+	public function toCSS($env = null){
+		return Less_Environment::$compress ? '' : '/* Sorry, can not do JavaScript evaluation in PHP... :( */';
 	}
 }
  
 
 
-class Less_Tree_Keyword{
+class Less_Tree_Keyword extends Less_Tree{
 
-	//public $type = 'Keyword';
-	public function __construct($value){
+	public $type = 'Keyword';
+
+	public function __construct($value=null){
 		$this->value = $value;
-	}
-
-	public function toCss(){
-		return $this->value;
 	}
 
 	public function compile($env){
 		return $this;
+	}
+
+	public function genCSS( $env, &$strs ){
+		self::OutputAdd( $strs, $this->value );
 	}
 
 	public function compare($other) {
@@ -3953,36 +4746,41 @@ class Less_Tree_Keyword{
 }
  
 
-//less.js : lib/less/tree/media.js
+class Less_Tree_Media extends Less_Tree{
 
-class Less_Tree_Media {
-
-	//public $type = 'Media';
 	public $features;
 	public $ruleset;
+	public $type = 'Media';
 
-	public function __construct($value = array(), $features = array()) {
+	public function __construct($value = array(), $features = array(), $index = null, $currentFileInfo = null ){
+
+		$this->index = $index;
+		$this->currentFileInfo = $currentFileInfo;
+
 		$selectors = $this->emptySelectors();
+
 		$this->features = new Less_Tree_Value($features);
-		$this->ruleset = new Less_Tree_Ruleset($selectors, $value);
-		$this->ruleset->allowImports = true;
+
+		$this->rules = array(new Less_Tree_Ruleset($selectors, $value));
+		$this->rules[0]->allowImports = true;
 	}
 
 	function accept( $visitor ){
-		//$visitor->visit($this->features);
-		$visitor->visit($this->ruleset);
+		$this->features = $visitor->visitObj($this->features);
+		$this->rules = $visitor->visitArray($this->rules);
 	}
 
-	public function toCSS($env) {
-		$features = $this->features->toCSS($env);
-		return '@media ' . $features . ($env->compress ? '{' : " {\n  ")
-			. str_replace("\n", "\n  ", trim($this->ruleset->toCSS($env)))
-			. ($env->compress ? '}' : "\n}\n");
+	function genCSS( $env, &$strs ){
+
+		self::OutputAdd( $strs, '@media ', $this->currentFileInfo, $this->index );
+		$this->features->genCSS( $env, $strs );
+		Less_Tree::outputRuleset( $env, $strs, $this->rules);
+
 	}
 
 	public function compile($env) {
 
-		$media = new Less_Tree_Media(array(), array());
+		$media = new Less_Tree_Media(array(), array(), $this->index, $this->currentFileInfo );
 
 		$strictMathBypass = false;
 		if( $env->strictMath === false) {
@@ -4000,29 +4798,36 @@ class Less_Tree_Media {
 		$env->mediaPath[] = $media;
 		$env->mediaBlocks[] = $media;
 
-		array_unshift($env->frames, $this->ruleset);
-		$media->ruleset = $this->ruleset->compile($env);
+		array_unshift($env->frames, $this->rules[0]);
+		$media->rules = array($this->rules[0]->compile($env));
 		array_shift($env->frames);
 
 		array_pop($env->mediaPath);
 
-		return count($env->mediaPath) == 0 ? $media->compileTop($env) : $media->compileNested($env);
+		return !$env->mediaPath ? $media->compileTop($env) : $media->compileNested($env);
 	}
 
-	// TODO: Not sure if this is right...
 	public function variable($name) {
-		return $this->ruleset->variable($name);
+		return $this->rules[0]->variable($name);
 	}
 
 	public function find($selector) {
-		return $this->ruleset->find($selector, $this);
+		return $this->rules[0]->find($selector, $this);
 	}
 
 	public function emptySelectors(){
-		$el = new Less_Tree_Element('','&', 0);
-		return array(new Less_Tree_Selector(array($el)));
+		$el = new Less_Tree_Element('','&', $this->index, $this->currentFileInfo );
+		return array( new Less_Tree_Selector(array($el), array(), null, $this->index, $this->currentFileInfo) );
 	}
 
+	public function markReferenced(){
+		$this->isReferenced = true;
+		foreach($this->rules[0]->rules as $rule){
+			if( Less_Parser::is_method($rule,'markReferenced') ){
+				$rule->markReferenced();
+			}
+		}
+	}
 
 	// evaltop
 	public function compileTop($env) {
@@ -4101,22 +4906,22 @@ class Less_Tree_Media {
 	}
 
 	function bubbleSelectors($selectors) {
-		$this->ruleset = new Less_Tree_Ruleset( $selectors, array($this->ruleset) );
+		$this->rules = array(new Less_Tree_Ruleset( $selectors, array($this->rules[0])));
 	}
 
 }
  
 
 
-class Less_Tree_MixinCall{
+class Less_Tree_Mixin_Call extends Less_Tree{
 
-	//public $type = 'MixinCall';
-	private $selector;
-	private $arguments;
-	private $index;
-	private $currentFileInfo;
+	public $selector;
+	public $arguments;
+	public $index;
+	public $currentFileInfo;
 
 	public $important;
+	public $type = 'MixinCall';
 
 	/**
 	 * less.js: tree.mixin.Call
@@ -4130,12 +4935,10 @@ class Less_Tree_MixinCall{
 		$this->important = $important;
 	}
 
-	/*
-	function accept($visitor){
-		$visitor->visit($this->selector);
-		$visitor->visit($this->arguments);
-	}
-	*/
+	//function accept($visitor){
+	//	$this->selector = $visitor->visit($this->selector);
+	//	$this->arguments = $visitor->visit($this->arguments);
+	//}
 
 
 	/**
@@ -4153,21 +4956,23 @@ class Less_Tree_MixinCall{
 			$args[] = array('name'=> $a['name'], 'value' => $a['value']->compile($env) );
 		}
 
-		for($i = 0; $i< count($env->frames); $i++){
-
-			$mixins = $env->frames[$i]->find($this->selector, null, $env);
+		foreach($env->frames as $frame){
+			$mixins = $frame->find($this->selector, null, $env);
 
 			if( !$mixins ){
 				continue;
 			}
 
 			$isOneFound = true;
-			foreach( $mixins as $mixin ){
+			$mixins_len = count($mixins);
+			for( $m = 0; $m < $mixins_len; $m++ ){
+				$mixin = $mixins[$m];
 
 				$isRecursive = false;
 				foreach($env->frames as $recur_frame){
-					if( !($mixin instanceof Less_Tree_MixinDefinition) ){
-						if( (isset($recur_frame->originalRuleset) && $mixin === $recur_frame->originalRuleset) || ($mixin === $recur_frame) ){
+					if( !($mixin instanceof Less_Tree_Mixin_Definition) ){
+						if( (isset($recur_frame->originalRuleset) && $mixin->ruleset_id === $recur_frame->originalRuleset)
+							|| ($mixin === $recur_frame) ){
 							$isRecursive = true;
 							break;
 						}
@@ -4178,12 +4983,27 @@ class Less_Tree_MixinCall{
 				}
 
 				if ($mixin->matchArgs($args, $env)) {
+
+					//if( !($mixin instanceof Less_Tree_Ruleset || $mixin instanceof Less_Tree_Mixin_Definition) || $mixin->matchCondition($args, $env) ){
 					if( !Less_Parser::is_method($mixin,'matchCondition') || $mixin->matchCondition($args, $env) ){
-						try {
+						try{
+
+							if( !($mixin instanceof Less_Tree_Mixin_Definition) ){
+								$mixin = new Less_Tree_Mixin_Definition('', array(), $mixin->rules, null, false);
+								$mixin->originalRuleset = $mixins[$m]->originalRuleset;
+							}
+							//if (this.important) {
+							//	isImportant = env.isImportant;
+							//	env.isImportant = true;
+							//}
+
 							$rules = array_merge($rules, $mixin->compile($env, $args, $this->important)->rules);
+							//if (this.important) {
+							//	env.isImportant = isImportant;
+							//}
 						} catch (Exception $e) {
-							//throw new Less_CompilerException($e->getMessage(), $e->index, null, $this->currentFileInfo['filename']);
-							throw new Less_CompilerException($e->getMessage(), null, null, $this->currentFileInfo['filename']);
+							//throw new Less_Exception_Compiler($e->getMessage(), $e->index, null, $this->currentFileInfo['filename']);
+							throw new Less_Exception_Compiler($e->getMessage(), null, null, $this->currentFileInfo['filename']);
 						}
 					}
 					$match = true;
@@ -4192,9 +5012,15 @@ class Less_Tree_MixinCall{
 			}
 
 			if( $match ){
+				if( !$this->currentFileInfo || !isset($this->currentFileInfo['reference']) || !$this->currentFileInfo['reference'] ){
+					foreach($rules as $rule){
+						if( Less_Parser::is_method($rule,'markReferenced') ){
+							$rule->markReferenced();
+						}
+					}
+				}
 				return $rules;
 			}
-
 		}
 
 
@@ -4207,7 +5033,7 @@ class Less_Tree_MixinCall{
 					if( $a['name'] ){
 						$argValue += $a['name']+':';
 					}
-					if( Less_Parser::is_method($a['value'],'toCSS') ){
+					if( is_object($a['value']) ){
 						$argValue += $a['value']->toCSS();
 					}else{
 						$argValue += '???';
@@ -4218,12 +5044,12 @@ class Less_Tree_MixinCall{
 			$message = implode(', ',$message);
 
 
-			throw new Less_CompilerException('No matching definition was found for `'.
+			throw new Less_Exception_Compiler('No matching definition was found for `'.
 				trim($this->selector->toCSS($env)) . '(' .$message.')',
 				$this->index, null, $this->currentFileInfo['filename']);
 
 		}else{
-			throw new Less_CompilerException(trim($this->selector->toCSS($env)) . " is undefined", $this->index);
+			throw new Less_Exception_Compiler(trim($this->selector->toCSS($env)) . " is undefined", $this->index);
 		}
 	}
 }
@@ -4231,8 +5057,7 @@ class Less_Tree_MixinCall{
 
  
 
-class Less_Tree_MixinDefinition extends Less_Tree_Ruleset{
-	//public $type = 'MixinDefinition';
+class Less_Tree_Mixin_Definition extends Less_Tree_Ruleset{
 	public $name;
 	public $selectors;
 	public $params;
@@ -4243,11 +5068,14 @@ class Less_Tree_MixinDefinition extends Less_Tree_Ruleset{
 	public $frames;
 	public $condition;
 	public $variadic;
+	public $type = 'MixinDefinition';
+
 
 	// less.js : /lib/less/tree/mixin.js : tree.mixin.Definition
 	public function __construct($name, $params, $rules, $condition, $variadic = false){
 		$this->name = $name;
 		$this->selectors = array(new Less_Tree_Selector(array( new Less_Tree_Element(null, $name))));
+
 		$this->params = $params;
 		$this->condition = $condition;
 		$this->variadic = $variadic;
@@ -4256,24 +5084,28 @@ class Less_Tree_MixinDefinition extends Less_Tree_Ruleset{
 		$this->lookups = array();
 
 		$this->required = 0;
-		foreach( $params as $p ){
-			if (! isset($p['name']) || ($p['name'] && !isset($p['value']))) {
-				$this->required++;
+		if( is_array($params) ){
+			foreach( $params as $p ){
+				if (! isset($p['name']) || ($p['name'] && !isset($p['value']))) {
+					$this->required++;
+				}
 			}
 		}
 
 		$this->frames = array();
+		$this->SetRulesetIndex();
 	}
 
-	/*
-	function accept( $visitor ){
-		$visitor->visit($this->params);
-		$visitor->visit($this->rules);
-		$visitor->visit($this->condition);
-	}
-	*/
 
-	public function toCss($env){
+
+	//function accept( $visitor ){
+	//	$this->params = $visitor->visit($this->params);
+	//	$this->rules = $visitor->visit($this->rules);
+	//	$this->condition = $visitor->visit($this->condition);
+	//}
+
+
+	public function toCSS($env = null){
 		return '';
 	}
 
@@ -4291,7 +5123,8 @@ class Less_Tree_MixinDefinition extends Less_Tree_Ruleset{
 		$mixinEnv->frames = array_merge( array($frame), $mixinEnv->frames);
 		//$mixinEnv = $mixinEnv->copyEvalEnv( array_merge( array($frame), $mixinEnv->frames) );
 
-		for($i = 0; $i < count($args); $i++ ){
+		$args_len = count($args);
+		for($i = 0; $i < $args_len; $i++ ){
 			$arg = $args[$i];
 
 			if( $arg && $arg['name'] ){
@@ -4309,9 +5142,10 @@ class Less_Tree_MixinDefinition extends Less_Tree_Ruleset{
 				if ($isNamedFound) {
 					array_splice($args, $i, 1);
 					$i--;
+					$args_len--;
 					continue;
 				} else {
-					throw new Less_CompilerException("Named argument for " . $this->name .' '.$args[$i]['name'] . ' not found');
+					throw new Less_Exception_Compiler("Named argument for " . $this->name .' '.$args[$i]['name'] . ' not found');
 				}
 			}
 		}
@@ -4319,7 +5153,7 @@ class Less_Tree_MixinDefinition extends Less_Tree_Ruleset{
 		$argIndex = 0;
 		foreach($params as $i => $param){
 
-			if ( isset($evaldArguments[$i]) ) continue;
+			if ( isset($evaldArguments[$i]) ){ continue; }
 
 			$arg = null;
 			if( array_key_exists($argIndex,$args) && $args[$argIndex] ){
@@ -4331,7 +5165,7 @@ class Less_Tree_MixinDefinition extends Less_Tree_Ruleset{
 
 				if( isset($param['variadic']) && $args ){
 					$varargs = array();
-					for ($j = $argIndex; $j < count($args); $j++) {
+					for ($j = $argIndex; $j < $args_len; $j++) {
 						$varargs[] = $args[$j]['value']->compile($env);
 					}
 					$expression = new Less_Tree_Expression($varargs);
@@ -4345,7 +5179,7 @@ class Less_Tree_MixinDefinition extends Less_Tree_Ruleset{
 						$val = $param['value']->compile($mixinEnv);
 						$frame->resetCache();
 					} else {
-						throw new Less_CompilerException("Wrong number of arguments for " . $this->name . " (" . count($args) . ' for ' . $this->arity . ")");
+						throw new Less_Exception_Compiler("Wrong number of arguments for " . $this->name . " (" . count($args) . ' for ' . $this->arity . ")");
 					}
 
 					array_unshift($frame->rules, new Less_Tree_Rule($param['name'], $val));
@@ -4354,7 +5188,7 @@ class Less_Tree_MixinDefinition extends Less_Tree_Ruleset{
 			}
 
 			if ( isset($param['variadic']) && $args) {
-				for ($j = $argIndex; $j < count($args); $j++) {
+				for ($j = $argIndex; $j < $args_len; $j++) {
 					$evaldArguments[$j] = $args[$j]['value']->compile($env);
 				}
 			}
@@ -4382,22 +5216,19 @@ class Less_Tree_MixinDefinition extends Less_Tree_Ruleset{
 		$ex = new Less_Tree_Expression($_arguments);
 		array_unshift($frame->rules, new Less_Tree_Rule('@arguments', $ex->compile($env)));
 
-		$rules = $important
-			? Less_Tree_Ruleset::makeImportant($this->selectors, $this->rules)->rules
-			: array_slice($this->rules, 0);
+
+		$rules = array_slice($this->rules,0);
 
 		$ruleset = new Less_Tree_Ruleset(null, $rules);
+		$ruleset->originalRuleset = $this->ruleset_id;
 
 
-		// duplicate the environment, adding new frames.
-		$ruleSetEnv = new Less_Environment();
-		$ruleSetEnv->addFrame($this);
-		$ruleSetEnv->addFrame($frame);
-		$ruleSetEnv->addFrames($mixinFrames);
-		$ruleSetEnv->compress = $env->compress;
-		$ruleset = $ruleset->compile($ruleSetEnv);
+		$ruleSetEnv = $env->copyEvalEnv( array_merge( array($this, $frame), $mixinFrames ) );
+		$ruleset = $ruleset->compile( $ruleSetEnv );
 
-		$ruleset->originalRuleset = $this;
+		if( $important ){
+			$ruleset = $ruleset->makeImportant();
+		}
 		return $ruleset;
 	}
 
@@ -4408,13 +5239,17 @@ class Less_Tree_MixinDefinition extends Less_Tree_Ruleset{
 			return true;
 		}
 
-		$mixinEnv = $env->copyEvalEnv( array_merge($this->frames, $env->frames) );
+		$frame = $this->compileParams($env, $env->copyEvalEnv(array_merge($this->frames,$env->frames)), $args );
 
-		$frame = $this->compileParams( $env, $mixinEnv, $args );
+		$compile_env = $env->copyEvalEnv(
+			array_merge(
+				array($frame)		// the parameter variables
+				, $this->frames		// the parent namespace/mixin frames
+				, $env->frames		// the current environment frames
+			)
+		);
 
-		$env->frames = array_merge( array($frame) , $env->frames);
-
-		if( !$this->condition->compile($env) ){
+		if( !$this->condition->compile($compile_env) ){
 			return false;
 		}
 
@@ -4422,20 +5257,22 @@ class Less_Tree_MixinDefinition extends Less_Tree_Ruleset{
 	}
 
 	public function matchArgs($args, $env = NULL){
+		$argsLength = count($args);
 
-		if (!$this->variadic) {
-			if (count($args) < $this->required){
+		if( !$this->variadic ){
+			if( $argsLength < $this->required ){
 				return false;
 			}
-			if (count($args) > count($this->params)){
+			if( $argsLength > count($this->params) ){
 				return false;
 			}
-			if (($this->required > 0) && (count($args) > count($this->params))){
+		}else{
+			if( $argsLength < ($this->required - 1)){
 				return false;
 			}
 		}
 
-		$len = min(count($args), $this->arity);
+		$len = min($argsLength, $this->arity);
 
 		for( $i = 0; $i < $len; $i++ ){
 			if( !isset($this->params[$i]['name']) && !isset($this->params[$i]['variadic']) ){
@@ -4452,23 +5289,22 @@ class Less_Tree_MixinDefinition extends Less_Tree_Ruleset{
  
 
 
-class Less_Tree_Negative{
+class Less_Tree_Negative extends Less_Tree{
 
-	//public $type = 'Negative';
 	public $value;
+	public $type = 'Negative';
 
 	function __construct($node){
 		$this->value = $node;
 	}
 
-	/*
-	function accept($visitor) {
-		$visitor->visit($this->value);
-	}
-	*/
+	//function accept($visitor) {
+	//	$this->value = $visitor->visit($this->value);
+	//}
 
-	function toCSS($env){
-		return '-'.$this->value->toCSS($env);
+	function genCSS( $env, &$strs ){
+		self::OutputAdd( $strs, '-' );
+		$this->value->genCSS( $env, $strs );
 	}
 
 	function compile($env) {
@@ -4480,9 +5316,10 @@ class Less_Tree_Negative{
 	}
 } 
 
-class Less_Tree_Operation{
 
-	//public $type = 'Operation';
+class Less_Tree_Operation extends Less_Tree{
+
+	public $type = 'Operation';
 
 	public function __construct($op, $operands, $isSpaced = false){
 		$this->op = trim($op);
@@ -4490,9 +5327,9 @@ class Less_Tree_Operation{
 		$this->isSpaced = $isSpaced;
 	}
 
-	/*function accept($visitor) {
-		$visitor->visit($this->operands);
-	}*/
+	function accept($visitor) {
+		$this->operands = $visitor->visitArray($this->operands);
+	}
 
 	public function compile($env){
 		$a = $this->operands[0]->compile($env);
@@ -4500,17 +5337,20 @@ class Less_Tree_Operation{
 
 
 		if( $env->isMathOn() ){
-			if( $a instanceof Less_Tree_Dimension && $b instanceof Less_Tree_Color ){
-				if ($this->op === '*' || $this->op === '+') {
-					$temp = $b;
-					$b = $a;
-					$a = $temp;
-				} else {
-					throw new Less_CompilerError("Operation on an invalid type");
+
+			if( $a instanceof Less_Tree_Dimension ){
+
+				if( $b instanceof Less_Tree_Color ){
+					if ($this->op === '*' || $this->op === '+') {
+						$temp = $b;
+						$b = $a;
+						$a = $temp;
+					} else {
+						throw new Less_Exception_Compiler("Operation on an invalid type");
+					}
 				}
-			}
-			if ( !Less_Parser::is_method($a,'operate') ) {
-				throw new Less_CompilerError("Operation on an invalid type");
+			}elseif( !($a instanceof Less_Tree_Color) ){
+				throw new Less_Exception_Compiler("Operation on an invalid type");
 			}
 
 			return $a->operate($env,$this->op, $b);
@@ -4519,30 +5359,38 @@ class Less_Tree_Operation{
 		}
 	}
 
-	function toCSS($env){
-		$separator = $this->isSpaced ? " " : "";
-		return $this->operands[0]->toCSS($env) . $separator . $this->op . $separator . $this->operands[1]->toCSS($env);
+	function genCSS( $env, &$strs ){
+		$this->operands[0]->genCSS( $env, $strs );
+		if( $this->isSpaced ){
+			self::OutputAdd( $strs, " " );
+		}
+		self::OutputAdd( $strs, $this->op );
+		if( $this->isSpaced ){
+			self::OutputAdd( $strs, ' ' );
+		}
+		$this->operands[1]->genCSS( $env, $strs );
 	}
+
 }
  
 
-class Less_Tree_Paren {
+class Less_Tree_Paren extends Less_Tree{
 
-	//public $type = 'Paren';
 	public $value;
+	public $type = 'Paren';
 
 	public function __construct($value) {
 		$this->value = $value;
 	}
 
-	/*
 	function accept($visitor){
-		$visitor->visit($this->value);
+		$this->value = $visitor->visitObj($this->value);
 	}
-	*/
 
-	public function toCSS($env) {
-		return '(' . trim($this->value->toCSS($env)) . ')';
+	function genCSS( $env, &$strs ){
+		self::OutputAdd( $strs, '(' );
+		$this->value->genCSS( $env, $strs );
+		self::OutputAdd( $strs, ')' );
 	}
 
 	public function compile($env) {
@@ -4553,12 +5401,12 @@ class Less_Tree_Paren {
  
 
 
-class Less_Tree_Quoted{
-	//public $type = 'Quoted';
+class Less_Tree_Quoted extends Less_Tree{
 	public $value;
 	public $content;
 	public $index;
 	public $currentFileInfo;
+	public $type = 'Quoted';
 
 	public function __construct($str, $content = '', $escaped = false, $index = false, $currentFileInfo = null ){
 		$this->escaped = $escaped;
@@ -4568,13 +5416,15 @@ class Less_Tree_Quoted{
 		$this->currentFileInfo = $currentFileInfo;
 	}
 
-	public function toCSS (){
-		if ($this->escaped) {
-			return $this->value;
-		} else {
-			return $this->quote . $this->value . $this->quote;
-		}
-	}
+    public function genCSS( $env, &$strs ){
+		if( !$this->escaped ){
+			self::OutputAdd( $strs, $this->quote, $this->currentFileInfo, $this->index );
+        }
+        self::OutputAdd( $strs, $this->value );
+        if( !$this->escaped ){
+			self::OutputAdd( $strs, $this->quote );
+        }
+    }
 
 	public function compile($env){
 
@@ -4618,51 +5468,45 @@ class Less_Tree_Quoted{
  
 
 
-class Less_Tree_Rule{
-	//public $type = 'Rule';
+class Less_Tree_Rule extends Less_Tree{
+
 	public $name;
 	public $value;
 	public $important;
+	public $merge;
 	public $index;
 	public $inline;
 	public $variable;
 	public $currentFileInfo;
+	public $type = 'Rule';
 
-	public function __construct($name, $value = null, $important = null, $index = null, $currentFileInfo = null,  $inline = false){
+	public function __construct($name, $value = null, $important = null, $merge = null, $index = null, $currentFileInfo = null,  $inline = false){
 		$this->name = $name;
 		$this->value = ($value instanceof Less_Tree_Value) ? $value : new Less_Tree_Value(array($value));
 		$this->important = $important ? ' ' . trim($important) : '';
+		$this->merge = $merge;
 		$this->index = $index;
 		$this->currentFileInfo = $currentFileInfo;
 		$this->inline = $inline;
-
-		if ($name[0] === '@') {
-			$this->variable = true;
-		} else {
-			$this->variable = false;
-		}
+		$this->variable = ($name[0] === '@');
 	}
 
-	/*
 	function accept($visitor) {
-		$visitor->visit( $this->value );
+		$this->value = $visitor->visitObj( $this->value );
 	}
-	*/
 
-	public function toCSS ($env){
-		if ($this->variable) {
-			return "";
-		} else {
-			try {
-				return $this->name . ($env->compress ? ':' : ': ')
-					. $this->value->toCSS($env)
-					. $this->important . ($this->inline ? "" : ";");
-			}catch( Exception $e ){
-				$e->index = $this->index;
-				$e->filename = $this->currentFileInfo['filename'];
-				throw $e;
-			}
+	function genCSS( $env, &$strs ){
+
+		self::OutputAdd( $strs, $this->name . Less_Environment::$colon_space, $this->currentFileInfo, $this->index);
+		try{
+			$this->value->genCSS($env, $strs);
+
+		}catch( Exception $e ){
+			$e->index = $this->index;
+			$e->filename = $this->currentFileInfo['filename'];
+			throw e;
 		}
+		self::OutputAdd( $strs, $this->important . (($this->inline || ($env->lastRule && Less_Environment::$compress)) ? "" : ";"), $this->currentFileInfo, $this->index);
 	}
 
 	public function compile ($env){
@@ -4677,8 +5521,10 @@ class Less_Tree_Rule{
 			$return = new Less_Tree_Rule($this->name,
 										$this->value->compile($env),
 										$this->important,
+										$this->merge,
+										$this->index,
 										$this->currentFileInfo,
-										$this->index, $this->inline);
+										$this->inline);
 		}
 		catch(Exception $e){}
 
@@ -4690,40 +5536,60 @@ class Less_Tree_Rule{
 	}
 
 	function makeImportant(){
-		return new Less_Tree_Rule($this->name, $this->value, '!important', $this->index, $this->currentFileInfo, $this->inline);
+		return new Less_Tree_Rule($this->name, $this->value, '!important', $this->merge, $this->index, $this->currentFileInfo, $this->inline);
 	}
 
 }
  
 
-//less.js : /lib/less/tree/ruleset.js
 
+class Less_Tree_Ruleset extends Less_Tree{
 
-class Less_Tree_Ruleset{
-	//public $type = 'Ruleset';
 	protected $lookups;
-	private $_variables;
-	private $_rulesets;
+	public $_variables;
+	public $_rulesets;
 
 	public $strictImports;
 
 	public $selectors;
 	public $rules;
 	public $root;
-	public $firstRoot;
 	public $allowImports;
-	public $paths = array();
+	public $paths;
+	public $firstRoot;
+	public $type = 'Ruleset';
 
-	public function __construct($selectors, $rules, $strictImports = false){
+
+	var $ruleset_id;
+	var $originalRuleset;
+
+
+	public function SetRulesetIndex(){
+		$this->ruleset_id = Less_Parser::$next_id++;
+		$this->originalRuleset = $this->ruleset_id;
+	}
+
+	public function __construct($selectors, $rules, $strictImports = null){
 		$this->selectors = $selectors;
 		$this->rules = $rules;
 		$this->lookups = array();
 		$this->strictImports = $strictImports;
+		$this->SetRulesetIndex();
 	}
 
 	function accept( $visitor ){
-		//$visitor->visit($this->selectors);
-		$visitor->visit($this->rules);
+		if( $this->paths ){
+			$paths_len = count($this->paths);
+			for($i = 0,$paths_len; $i < $paths_len; $i++ ){
+				$this->paths[$i] = $visitor->visitArray($this->paths[$i]);
+			}
+		}elseif( $this->selectors ){
+			$this->selectors = $visitor->visitArray($this->selectors);
+		}
+
+		if( $this->rules ){
+			$this->rules = $visitor->visitArray($this->rules);
+		}
 	}
 
 	public function compile($env){
@@ -4731,15 +5597,14 @@ class Less_Tree_Ruleset{
 		$selectors = array();
 		if( $this->selectors ){
 			foreach($this->selectors as $s){
-				if( Less_Parser::is_method($s,'compile') ){
-					$selectors[] = $s->compile($env);
-				}
+				$selectors[] = $s->compile($env);
 			}
 		}
 		$ruleset = new Less_Tree_Ruleset($selectors, $this->rules, $this->strictImports);
 		$rules = array();
 
-		$ruleset->originalRuleset = $this;
+		$ruleset->originalRuleset = $this->ruleset_id;
+
 		$ruleset->root = $this->root;
 		$ruleset->firstRoot = $this->firstRoot;
 		$ruleset->allowImports = $this->allowImports;
@@ -4759,9 +5624,10 @@ class Less_Tree_Ruleset{
 
 		// Store the frames around mixin definitions,
 		// so they can be evaluated like closures when the time comes.
-		foreach($ruleset->rules as $i => $rule) {
-			if ($rule instanceof Less_Tree_MixinDefinition) {
-				$ruleset->rules[$i]->frames = $env->frames;
+		$ruleset_len = count($ruleset->rules);
+		for( $i = 0; $i < $ruleset_len; $i++ ){
+			if( $ruleset->rules[$i] instanceof Less_Tree_Mixin_Definition ){
+				$ruleset->rules[$i]->frames = array_slice($env->frames,0);
 			}
 		}
 
@@ -4771,9 +5637,9 @@ class Less_Tree_Ruleset{
 		}
 
 		// Evaluate mixin calls.
-		for($i=0; $i < count($ruleset->rules); $i++){
+		for($i=0; $i < $ruleset_len; $i++){
 			$rule = $ruleset->rules[$i];
-			if( $rule instanceof Less_Tree_MixinCall ){
+			if( $rule instanceof Less_Tree_Mixin_Call ){
 				$rules = $rule->compile($env);
 
 				$temp = array();
@@ -4789,17 +5655,18 @@ class Less_Tree_Ruleset{
 						$temp[] = $r;
 					}
 				}
-				$rules = $temp;
-				array_splice($ruleset->rules, $i, 1, $rules);
-				$i += count($rules)-1;
+				$temp_count = count($temp)-1;
+				array_splice($ruleset->rules, $i, 1, $temp);
+				$ruleset_len += $temp_count;
+				$i += $temp_count;
 				$ruleset->resetCache();
 			}
 		}
 
 
-		foreach($ruleset->rules as $i => $rule) {
-			if(! ($rule instanceof Less_Tree_MixinDefinition) ){
-				$ruleset->rules[$i] = Less_Parser::is_method($rule,'compile') ? $rule->compile($env) : $rule;
+		for( $i=0; $i<$ruleset_len; $i++ ){
+			if(! ($ruleset->rules[$i] instanceof Less_Tree_Mixin_Definition) ){
+				$ruleset->rules[$i] = $ruleset->rules[$i]->compile($env);
 			}
 		}
 
@@ -4809,7 +5676,8 @@ class Less_Tree_Ruleset{
 		array_shift($env->selectors);
 
 		if ($mediaBlockCount) {
-			for($i = $mediaBlockCount; $i < count($env->mediaBlocks); $i++ ){
+			$len = count($env->mediaBlocks);
+			for($i = $mediaBlockCount; $i < $len; $i++ ){
 				$env->mediaBlocks[$i]->bubbleSelectors($selectors);
 			}
 		}
@@ -4819,42 +5687,50 @@ class Less_Tree_Ruleset{
 
 	function evalImports($env) {
 
-		for($i=0; $i < count($this->rules); $i++){
+		$rules_len = count($this->rules);
+		for($i=0; $i < $rules_len; $i++){
 			$rule = $this->rules[$i];
 
-			if( $rule instanceof Less_Tree_Import  ){
+			if( $rule instanceof Less_Tree_Import ){
 				$rules = $rule->compile($env);
 				if( is_array($rules) ){
 					array_splice($this->rules, $i, 1, $rules);
+					$temp_count = count($rules)-1;
+					$i += $temp_count;
+					$rules_len += $temp_count;
 				}else{
 					array_splice($this->rules, $i, 1, array($rules));
 				}
-				if( count($rules) ){
-					$i += count($rules)-1;
-				}
+
 				$this->resetCache();
 			}
 		}
 	}
 
-	static function makeImportant($selectors = null, $rules = null, $strictImports = false) {
+	function makeImportant(){
 
 		$important_rules = array();
-		foreach($rules as $rule){
-			if( Less_Parser::is_method($rule,'makeImportant') && property_exists($rule,'selectors') ){
-				$important_rules[] = $rule->makeImportant($rule->selectors, $rule->rules, $strictImports);
-			}elseif( Less_Parser::is_method($rule,'makeImportant') ){
+		foreach($this->rules as $rule){
+			if( $rule instanceof Less_Tree_Rule || $rule instanceof Less_Tree_Ruleset ){
 				$important_rules[] = $rule->makeImportant();
 			}else{
 				$important_rules[] = $rule;
 			}
 		}
 
-		return new Less_Tree_Ruleset($selectors, $important_rules, $strictImports );
+		return new Less_Tree_Ruleset($this->selectors, $important_rules, $this->strictImports );
 	}
 
 	public function matchArgs($args){
-		return !is_array($args) || count($args) === 0;
+		return !is_array($args) || !$args;
+	}
+
+	public function matchCondition( $args, $env ){
+		$lastSelector = end($this->selectors);
+		if( $lastSelector->condition && !$lastSelector->condition->compile( $env->copyEvalEnv( $env->frames ) ) ){
+			return false;
+		}
+		return true;
 	}
 
 	function resetCache() {
@@ -4882,33 +5758,31 @@ class Less_Tree_Ruleset{
 		return isset($vars[$name]) ? $vars[$name] : null;
 	}
 
-
-
 	public function find( $selector, $self = null, $env = null){
 
 		if( !$self ){
-			$self = $this;
+			$self = $this->ruleset_id;
 		}
 
 		$key = $selector->toCSS($env);
 
 		if( !array_key_exists($key, $this->lookups) ){
-			$this->lookups[$key] = array();;
+			$this->lookups[$key] = array();
 
 
 			foreach($this->rules as $rule){
 
-				if( $rule == $self ){
-					continue;
-				}
+				if( ($rule instanceof Less_Tree_Ruleset) || ($rule instanceof Less_Tree_Mixin_Definition) ){
 
-				if( ($rule instanceof Less_Tree_Ruleset) || ($rule instanceof Less_Tree_MixinDefinition) ){
+					if( $rule->ruleset_id == $self ){
+						continue;
+					}
 
 					foreach( $rule->selectors as $ruleSelector ){
-						if( $selector->match($ruleSelector) ){
-
-							if (count($selector->elements) > count($ruleSelector->elements)) {
-								$this->lookups[$key] = array_merge($this->lookups[$key], $rule->find( new Less_Tree_Selector(array_slice($selector->elements, 1)), $self, $env));
+						$match = $selector->match($ruleSelector);
+						if( $match ){
+							if( $selector->elements_len > $match ){
+								$this->lookups[$key] = array_merge($this->lookups[$key], $rule->find( new Less_Tree_Selector(array_slice($selector->elements, $match)), $self, $env));
 							} else {
 								$this->lookups[$key][] = $rule;
 							}
@@ -4922,117 +5796,128 @@ class Less_Tree_Ruleset{
 		return $this->lookups[$key];
 	}
 
-	//
-	// Entry point for code generation
-	//
-	//	 `context` holds an array of arrays.
-	//
-	public function toCSS($env){
-		$css = '';	  // The CSS output
-		$rules = array();	// node.Rule instances
-		$_rules = array();
-		$rulesets = array(); // node.Ruleset instances
+	public function genCSS( $env, &$strs ){
+		$ruleNodes = array();
+		$rulesetNodes = array();
+		$firstRuleset = true;
 
-
-		// Compile rules and rulesets
-		foreach($this->rules as $rule) {
-			if (isset($rule->rules) || ($rule instanceof Less_Tree_Media)) {
-				$rulesets[] = $rule->toCSS($env);
-
-			} else if ( $rule instanceof Less_Tree_Directive ){
-				$cssValue = $rule->toCSS($env);
-				// Output only the first @charset definition as such - convert the others
-				// to comments in case debug is enabled
-				if ($rule->name === "@charset") {
-					// Only output the debug info together with subsequent @charset definitions
-					// a comment (or @media statement) before the actual @charset directive would
-					// be considered illegal css as it has to be on the first line
-					if ($env->charset) {
-						continue;
-					}
-					$env->charset = true;
-				}
-				$rulesets[] = $cssValue;
-
-			} else if ($rule instanceof Less_Tree_Comment) {
-				if (!$rule->silent) {
-					if ($this->root) {
-						$rulesets[] = $rule->toCSS($env);
-					} else {
-						$rules[] = $rule->toCSS($env);
-					}
-				}
-			} else {
-				if( Less_Parser::is_method($rule, 'toCSS') && (!isset($rule->variable) || !$rule->variable) ){
-					if( $this->firstRoot && $rule instanceof Less_Tree_Rule ){
-						throw new Less_CompilerError("properties must be inside selector blocks, they cannot be in the root.");
-					}
-					$rules[] = $rule->toCSS($env);
-				} else if (isset($rule->value) && $rule->value && ! $rule->variable) {
-					$rules[] = (string) $rule->value;
-				}
-			}
+		if( !$this->root ){
+			$env->tabLevel++;
 		}
 
-		$rulesets = implode('', $rulesets);
+		$tabRuleStr = $tabSetStr = '';
+		if( !Less_Environment::$compress && $env->tabLevel ){
+			$tabRuleStr = str_repeat( '  ' , $env->tabLevel );
+			$tabSetStr = str_repeat( '  ' , $env->tabLevel-1 );
+		}
+
+		foreach($this->rules as $rule){
+
+			$class = get_class($rule);
+			if( ($class === 'Less_Tree_Media') || ($class === 'Less_Tree_Directive') || ($this->root && $class === 'Less_Tree_Comment') || ($class === 'Less_Tree_Ruleset' && $rule->rules) ){
+				$rulesetNodes[] = $rule;
+			}else{
+				$ruleNodes[] = $rule;
+			}
+		}
 
 		// If this is the root node, we don't render
 		// a selector, or {}.
-		// Otherwise, only output if this ruleset has rules.
-		if ($this->root) {
-			if( $env->compress ){
-				$css .= rtrim(implode('', $rules),';');
-			}else{
-				$css .= implode("\n", $rules);
+		if( !$this->root ){
+
+			/*
+			debugInfo = tree.debugInfo(env, this, tabSetStr);
+
+			if (debugInfo) {
+				output.add(debugInfo);
+				output.add(tabSetStr);
 			}
-		} else {
-			if (count($rules)) {
+			*/
 
-				$selector = array();
-				foreach($this->paths as $p){
-					$_p = '';
-					foreach($p as $s){
-						$_p .= $s->toCSS($env);
-					}
-					$selector[] = trim($_p);
+			for( $i = 0,$paths_len = count($this->paths); $i < $paths_len; $i++ ){
+				$path = $this->paths[$i];
+				Less_Environment::$firstSelector = true;
+				foreach($path as $p){
+					$p->genCSS($env, $strs );
+					Less_Environment::$firstSelector = false;
 				}
-				$css .= implode($env->compress ? ',' : ",\n", $selector);
+				if( $i + 1 < $paths_len ){
+					self::OutputAdd( $strs, Less_Environment::$compress ? ',' : (",\n" . $tabSetStr) );
+				}
+			}
 
-				// Remove duplicates
-				for ($i = count($rules) - 1; $i >= 0; $i--) {
-					if( substr($rules[$i],0,2) === "/*" || !in_array($rules[$i], $_rules) ){
-						array_unshift($_rules, $rules[$i]);
-					}
-				}
-				$rules = $_rules;
+			self::OutputAdd( $strs, (Less_Environment::$compress ? '{' : " {\n") . $tabRuleStr );
+		}
 
-				if( $env->compress ){
-					$css .= '{'.rtrim(implode('',$rules),';').'}';
-				}else{
-					$css .= " {\n  ".implode("\n  ",$rules)."\n}\n";
+		// Compile rules and rulesets
+		$ruleNodes_len = count($ruleNodes);
+		$rulesetNodes_len = count($rulesetNodes);
+		for( $i = 0; $i < $ruleNodes_len; $i++ ){
+			$rule = $ruleNodes[$i];
+
+			// @page{ directive ends up with root elements inside it, a mix of rules and rulesets
+			// In this instance we do not know whether it is the last property
+			if( $i + 1 === $ruleNodes_len && (!$this->root || $rulesetNodes_len === 0 || $this->firstRoot ) ){
+				$env->lastRule = true;
+			}
+
+			if( is_object($rule) ){
+				if( method_exists($rule,'genCSS') ){
+					$rule->genCSS( $env, $strs );
+				}elseif( property_exists($rule,'value') && $rule->value ){
+					self::OutputAdd( $strs, (string)$rule->value );
 				}
+			}
+
+			if( !$env->lastRule ){
+				self::OutputAdd( $strs, Less_Environment::$compress ? '' : ("\n" . $tabRuleStr) );
+			}else{
+				$env->lastRule = false;
 			}
 		}
-		$css .= $rulesets;
 
-		return $css . ($env->compress ? "\n" : '' );
+		if( !$this->root ){
+			self::OutputAdd( $strs, (Less_Environment::$compress ? '}' : "\n" . $tabSetStr . '}'));
+			$env->tabLevel--;
+		}
+
+		for( $i = 0; $i < $rulesetNodes_len; $i++ ){
+			if( $ruleNodes_len && $firstRuleset ){
+				self::OutputAdd( $strs, (Less_Environment::$compress ? "" : "\n") . ($this->root ? $tabRuleStr : $tabSetStr) );
+			}
+			if( !$firstRuleset ){
+				self::OutputAdd( $strs, (Less_Environment::$compress ? "" : "\n") . ($this->root ? $tabRuleStr : $tabSetStr));
+			}
+			$firstRuleset = false;
+			$rulesetNodes[$i]->genCSS($env, $strs);
+		}
+
+		if( !$strs && !Less_Environment::$compress && $this->firstRoot ){
+			self::OutputAdd( $strs, "\n" );
+		}
+
 	}
 
+	function markReferenced(){
 
-	public function joinSelectors( &$paths, $context, $selectors ){
+		foreach($this->selectors as $selector){
+			$selector->markReferenced();
+		}
+	}
+
+	public function joinSelectors( $context, $selectors ){
+		$paths = array();
 		if( is_array($selectors) ){
 			foreach($selectors as $selector) {
-				$this->joinSelector($paths, $context, $selector);
+				$this->joinSelector( $paths, $context, $selector);
 			}
 		}
+		return $paths;
 	}
 
-	public function joinSelector (&$paths, $context, $selector){
+	public function joinSelector( &$paths, $context, $selector){
 
-		$hasParentSelector = false; $newSelectors; $el; $sel; $parentSel;
-		$newSelectorPath; $afterParentJoin; $newJoinedSelector;
-		$newJoinedSelectorEmpty; $lastSelector; $currentElements;
-		$selectorsMultiplied;
+		$hasParentSelector = false;
 
 		foreach($selector->elements as $el) {
 			if( $el->value === '&') {
@@ -5041,7 +5926,7 @@ class Less_Tree_Ruleset{
 		}
 
 		if( !$hasParentSelector ){
-			if( count($context) > 0 ) {
+			if( $context ){
 				foreach($context as $context_el){
 					$paths[] = array_merge($context_el, array($selector) );
 				}
@@ -5082,7 +5967,7 @@ class Less_Tree_Ruleset{
 
 				// merge the current list of non parent selector elements
 				// on to the current list of selectors to add
-				if( count($currentElements) > 0) {
+				if( $currentElements ){
 					$this->mergeElementsOnToSelectors( $currentElements, $newSelectors);
 				}
 
@@ -5091,12 +5976,12 @@ class Less_Tree_Ruleset{
 
 					// if we don't have any parent paths, the & might be in a mixin so that it can be used
 					// whether there are parents or not
-					if( !count($context) ){
+					if( !$context ){
 						// the combinator used on el should now be applied to the next element instead so that
 						// it is not lost
-						if( count($sel) > 0 ){
+						if( $sel ){
 							$sel[0]->elements = array_slice($sel[0]->elements,0);
-							$sel[0]->elements[] = new Less_Tree_Element($el->combinator, '', 0); //new Element(el.Combinator,  ""));
+							$sel[0]->elements[] = new Less_Tree_Element($el->combinator, '', 0, $el->index, $el->currentFileInfo );
 						}
 						$selectorsMultiplied[] = $sel;
 					}else {
@@ -5114,14 +5999,14 @@ class Less_Tree_Ruleset{
 
 							//construct the joined selector - if & is the first thing this will be empty,
 							// if not newJoinedSelector will be the last set of elements in the selector
-							if ( count($sel) > 0) {
+							if( $sel ){
 								$newSelectorPath = $sel;
 								$lastSelector = array_pop($newSelectorPath);
-								$newJoinedSelector = new Less_Tree_Selector( $lastSelector->elements, $selector->extendList);
+								$newJoinedSelector = $selector->createDerived( array_slice($lastSelector->elements,0) );
 								$newJoinedSelectorEmpty = false;
 							}
 							else {
-								$newJoinedSelector = new Less_Tree_Selector( array(), $selector->extendList);
+								$newJoinedSelector = $selector->createDerived(array());
 							}
 
 							//put together the parent selectors after the join
@@ -5129,11 +6014,11 @@ class Less_Tree_Ruleset{
 								$afterParentJoin = array_merge($afterParentJoin, array_slice($parentSel,1) );
 							}
 
-							if ( count($parentSel) > 0) {
+							if ( $parentSel ){
 								$newJoinedSelectorEmpty = false;
 
 								// join the elements so far with the first part of the parent
-								$newJoinedSelector->elements[] = new Less_Tree_Element( $el->combinator, $parentSel[0]->elements[0]->value, 0 );
+								$newJoinedSelector->elements[] = new Less_Tree_Element( $el->combinator, $parentSel[0]->elements[0]->value, 0, $el->index, $el->currentFileInfo);
 
 								$newJoinedSelector->elements = array_merge( $newJoinedSelector->elements, array_slice($parentSel[0]->elements, 1) );
 							}
@@ -5160,11 +6045,11 @@ class Less_Tree_Ruleset{
 
 		// if we have any elements left over (e.g. .a& .b == .b)
 		// add them on to all the current selectors
-		if( count($currentElements) > 0) {
+		if( $currentElements ){
 			$this->mergeElementsOnToSelectors($currentElements, $newSelectors);
 		}
 		foreach( $newSelectors as $new_sel){
-			if( count($new_sel) ){
+			if( $new_sel ){
 				$paths[] = $new_sel;
 			}
 		}
@@ -5172,7 +6057,7 @@ class Less_Tree_Ruleset{
 
 	function mergeElementsOnToSelectors( $elements, &$selectors){
 
-		if( count($selectors) == 0) {
+		if( !$selectors ){
 			$selectors[] = array( new Less_Tree_Selector($elements) );
 			return;
 		}
@@ -5181,9 +6066,9 @@ class Less_Tree_Ruleset{
 		foreach( $selectors as &$sel){
 
 			// if the previous thing in sel is a parent this needs to join on to it
-			if ( count($sel) > 0) {
+			if( $sel ){
 				$last = count($sel)-1;
-				$sel[$last] = new Less_Tree_Selector( array_merge( $sel[$last]->elements, $elements), $sel[$last]->extendList );
+				$sel[$last] = $sel[$last]->createDerived( array_merge($sel[$last]->elements, $elements) );
 			}else{
 				$sel[] = new Less_Tree_Selector( $elements );
 			}
@@ -5192,111 +6077,145 @@ class Less_Tree_Ruleset{
 }
  
 
-//less.js : lib/less/tree/selector.js
 
+class Less_Tree_Selector extends Less_Tree{
 
-class Less_Tree_Selector {
-
-	//public $type = 'Selector';
 	public $elements;
 	public $extendList = array();
-	private $_css;
+	public $_css;
+	public $index;
+	public $evaldCondition = false;
+	public $type = 'Selector';
+	public $currentFileInfo = array();
 
-	public function __construct($elements, $extendList = array() ){
+	public $elements_len = 0;
+
+	public function __construct($elements = null, $extendList=null , $condition = null, $index=null, $currentFileInfo=null, $isReferenced=null ){
+
+
+
 		$this->elements = $elements;
-		$this->extendList = $extendList;
+		$this->elements_len = count($elements);
+		if( $extendList ){
+			$this->extendList = $extendList;
+		}
+		$this->condition = $condition;
+		if( $currentFileInfo ){
+			$this->currentFileInfo = $currentFileInfo;
+		}
+		$this->isReferenced = $isReferenced;
+		if( !$condition ){
+			$this->evaldCondition = true;
+		}
 	}
 
-	/*
 	function accept($visitor) {
-		$visitor->visit($this->elements);
-		$visitor->visit($this->extendList);
+		$this->elements = $visitor->visitArray($this->elements);
+		$this->extendList = $visitor->visitArray($this->extendList);
+		if( $this->condition ){
+			$this->condition = $visitor->visitObj($this->condition);
+		}
 	}
-	*/
+
+	function createDerived( $elements, $extendList = null, $evaldCondition = null ){
+		$evaldCondition = $evaldCondition != null ? $evaldCondition : $this->evaldCondition;
+		$newSelector = new Less_Tree_Selector( $elements, ($extendList ? $extendList : $this->extendList), $this->condition, $this->index, $this->currentFileInfo, $this->isReferenced);
+		$newSelector->evaldCondition = $evaldCondition;
+		return $newSelector;
+	}
 
 	public function match($other) {
-		$len   = count($this->elements);
+		global $debug;
 
-		$olen = $offset = 0;
-		if( $other && count($other->elements) ){
+		if( !$other ){
+			return 0;
+		}
 
+		$offset = 0;
+		$olen = $other->elements_len;
+		if( $olen ){
 			if( $other->elements[0]->value === "&" ){
 				$offset = 1;
 			}
-			$olen = count($other->elements) - $offset;
+			$olen -= $offset;
 		}
 
-		$max = min($len, $olen);
-
-		if( !$max ){
-			return false;
+		if( $olen === 0 ){
+			return 0;
 		}
 
-		for ($i = 0; $i < $max; $i ++) {
+		if( $this->elements_len < $olen ){
+			return 0;
+		}
+
+		for ($i = 0; $i < $olen; $i ++) {
 			if ($this->elements[$i]->value !== $other->elements[$i + $offset]->value) {
-				return false;
+				return 0;
 			}
 		}
 
-		return true;
+		return $olen; // return number of matched selectors
 	}
-
-
-
-
 
 	public function compile($env) {
-		$extendList = array();
-
-		for($i = 0, $len = count($this->extendList); $i < $len; $i++){
-			$extendList[] = $this->extendList[$i]->compile($this->extendList[$i]);
-		}
 
 		$elements = array();
-		for( $i = 0, $len = count($this->elements); $i < $len; $i++){
-			$elements[] = $this->elements[$i]->compile($env);
+		foreach($this->elements as $el){
+			$elements[] = $el->compile($env);
 		}
 
-		return new Less_Tree_Selector($elements, $extendList);
+		$extendList = array();
+		foreach($this->extendList as $el){
+			$extendList[] = $el->compile($el);
+		}
+
+		$evaldCondition = false;
+		if( $this->condition ){
+			$evaldCondition = $this->condition->compile($env);
+		}
+
+		return $this->createDerived( $elements, $extendList, $evaldCondition );
 	}
 
-	public function toCSS ($env){
+	function genCSS( $env, &$strs ){
 
-		if ($this->_css) {
-			return $this->_css;
+		if( !Less_Environment::$firstSelector && $this->elements[0]->combinator->value === "" ){
+			self::OutputAdd( $strs, ' ', $this->currentFileInfo, $this->index );
 		}
-
-		if (is_array($this->elements) && isset($this->elements[0]) &&
-			$this->elements[0]->combinator instanceof Less_Tree_Combinator &&
-			$this->elements[0]->combinator->value === '') {
-				$this->_css = ' ';
-		}else{
-			$this->_css = '';
-		}
-
-		foreach($this->elements as $e){
-			if( is_string($e) ){
-				$this->_css .= ' ' . trim($e);
-			}else{
-				$this->_css .= $e->toCSS($env);
+		if( !$this->_css ){
+			//TODO caching? speed comparison?
+			foreach($this->elements as $element){
+				$element->genCSS( $env, $strs );
 			}
 		}
+	}
 
-		return $this->_css;
+	function markReferenced(){
+		$this->isReferenced = true;
+	}
+
+	function getIsReferenced(){
+		return !isset($this->currentFileInfo['reference']) || !$this->currentFileInfo['reference'] || $this->isReferenced;
+	}
+
+	function getIsOutput(){
+		return $this->evaldCondition;
 	}
 
 }
  
 
 
-class Less_Tree_UnicodeDescriptor{
-	//public $type = 'UnicodeDescriptor';
+class Less_Tree_UnicodeDescriptor extends Less_Tree{
+
+	public $type = 'UnicodeDescriptor';
+
 	public function __construct($value){
 		$this->value = $value;
 	}
 
-	public function toCss($env){
-		return $this->value;
+	public function genCSS( $env, &$strs ){
+		self::OutputAdd( $strs, $this->value );
 	}
 
 	public function compile($env){
@@ -5307,11 +6226,11 @@ class Less_Tree_UnicodeDescriptor{
  
 
 
-class Less_Tree_Unit{
+class Less_Tree_Unit extends Less_Tree{
 
-	//public $type = 'Unit';
 	var $numerator = array();
 	var $denominator = array();
+	public $type = 'Unit';
 
 	function __construct($numerator = array(), $denominator = array(), $backupUnit = null ){
 		$this->numerator = $numerator;
@@ -5322,18 +6241,16 @@ class Less_Tree_Unit{
 	function __clone(){
 	}
 
-	function toCSS($env){
+	function genCSS( $env, &$strs ){
 
-		if( count($this->numerator) ){
-			return $this->numerator[0];
+		if( $this->numerator ){
+			self::OutputAdd( $strs, $this->numerator[0] );
+		}elseif( $this->denominator ){
+			self::OutputAdd( $strs, $this->denominator[0] );
+		}elseif( (!$env || !$env->strictUnits) && $this->backupUnit ){
+			self::OutputAdd( $strs, $this->backupUnit );
+			return ;
 		}
-		if( count($this->denominator) ){
-			return $this->denominator[0];
-		}
-		if( (!$env || !$env->strictUnits) && $this->backupUnit ){
-			return $this->backupUnit;
-		}
-		return "";
 	}
 
 	function toString(){
@@ -5352,16 +6269,21 @@ class Less_Tree_Unit{
 		return $this->toString() === $unitString;
 	}
 
+	function isLength(){
+		$css = $this->toCSS();
+		return !!preg_match('/px|em|%|in|cm|mm|pc|pt|ex/',$css);
+	}
+
 	function isAngle() {
 		return isset( Less_Tree_UnitConversions::$angle[$this->toCSS()] );
 	}
 
 	function isEmpty(){
-		return count($this->numerator) === 0 && count($this->denominator) === 0;
+		return !$this->numerator && !$this->denominator;
 	}
 
 	function isSingular() {
-		return count($this->numerator) <= 1 && count($this->denominator) == 0;
+		return count($this->numerator) <= 1 && !$this->denominator;
 	}
 
 
@@ -5371,15 +6293,13 @@ class Less_Tree_Unit{
 		foreach(Less_Tree_UnitConversions::$groups as $groupName){
 			$group = Less_Tree_UnitConversions::${$groupName};
 
-			for($i=0; $i < count($this->numerator); $i++ ){
-				$atomicUnit = $this->numerator[$i];
+			foreach($this->numerator as $atomicUnit){
 				if( isset($group[$atomicUnit]) && !isset($result[$groupName]) ){
 					$result[$groupName] = $atomicUnit;
 				}
 			}
 
-			for($i=0; $i < count($this->denominator); $i++ ){
-				$atomicUnit = $this->denominator[$i];
+			foreach($this->denominator as $atomicUnit){
 				if( isset($group[$atomicUnit]) && !isset($result[$groupName]) ){
 					$result[$groupName] = $atomicUnit;
 				}
@@ -5393,16 +6313,14 @@ class Less_Tree_Unit{
 		$counter = array();
 		$backup = null;
 
-		for( $i = 0; $i < count($this->numerator); $i++ ){
-			$atomicUnit = $this->numerator[$i];
+		foreach($this->numerator as $atomicUnit){
 			if( !$backup ){
 				$backup = $atomicUnit;
 			}
 			$counter[$atomicUnit] = ( isset($counter[$atomicUnit]) ? $counter[$atomicUnit] : 0) + 1;
 		}
 
-		for( $i = 0; $i < count($this->denominator); $i++ ){
-			$atomicUnit = $this->denominator[$i];
+		foreach($this->denominator as $atomicUnit){
 			if( !$backup ){
 				$backup = $atomicUnit;
 			}
@@ -5424,7 +6342,7 @@ class Less_Tree_Unit{
 			}
 		}
 
-		if( count($this->numerator) === 0 && count($this->denominator) === 0 && $backup ){
+		if( !$this->numerator && !$this->denominator && $backup ){
 			$this->backupUnit = $backup;
 		}
 
@@ -5466,32 +6384,33 @@ class Less_Tree_UnitConversions{
 } 
 
 
-class Less_Tree_Url{
-	//public $type = "Url";
+class Less_Tree_Url extends Less_Tree{
+
 	public $attrs;
 	public $value;
 	public $currentFileInfo;
+	public $type = 'Url';
 
 	public function __construct($value, $currentFileInfo = null){
 		$this->value = $value;
 		$this->currentFileInfo = $currentFileInfo;
 	}
 
-	/*
 	function accept( $visitor ){
-		$visitor->visit($this->value);
+		$this->value = $visitor->visitObj($this->value);
 	}
-	*/
 
-	public function toCSS(){
-		return "url(" . $this->value->toCSS() . ")";
+	function genCSS( $env, &$strs ){
+		self::OutputAdd( $strs, 'url(' );
+		$this->value->genCSS( $env, $strs );
+		self::OutputAdd( $strs, ')' );
 	}
 
 	public function compile($ctx){
 		$val = $this->value->compile($ctx);
 
 		// Add the base path if the URL is relative
-		if( $this->currentFileInfo && is_string($val->value) && $ctx->isPathRelative($val->value) ){
+		if( $this->currentFileInfo && is_string($val->value) && Less_Environment::isPathRelative($val->value) ){
 			$rootpath = $this->currentFileInfo['uri_root'];
 			if ( !$val->quote ){
 				$rootpath = preg_replace('/[\(\)\'"\s]/', '\\$1', $rootpath );
@@ -5499,6 +6418,7 @@ class Less_Tree_Url{
 			$val->value = $rootpath . $val->value;
 		}
 
+		$val->value = Less_Environment::normalizePath( $val->value);
 
 		return new Less_Tree_URL($val, null);
 	}
@@ -5507,60 +6427,57 @@ class Less_Tree_Url{
  
 
 
-class Less_Tree_Value{
+class Less_Tree_Value extends Less_Tree{
 
-	//public $type = 'Value';
+	public $type = 'Value';
 
-	public function __construct($value){
+	public function __construct($value=null){
 		$this->value = $value;
-		$this->is = 'value';
 	}
 
-	/*
 	function accept($visitor) {
-		$visitor->visit($this->value);
+		$this->value = $visitor->visitArray($this->value);
 	}
-	*/
 
 	public function compile($env){
 
-		if( count($this->value) == 1 ){
-			return $this->value[0]->compile($env);
-		}
-
 		$ret = array();
-		foreach($this->value as $v){
+		foreach($this->value as $i => $v){
 			$ret[] = $v->compile($env);
 		}
-
-		return new Less_Tree_Value($ret);
-	}
-
-	public function toCSS ($env){
-
-		$ret = array();
-		foreach($this->value as $e){
-			$ret[] = $e->toCSS($env);
+		if( $i > 0 ){
+			return new Less_Tree_Value($ret);
 		}
-		return implode($env->compress ? ',' : ', ', $ret);
+		return $ret[0];
 	}
+
+	function genCSS( $env, &$strs ){
+		$len = count($this->value);
+		for($i = 0; $i < $len; $i++ ){
+			$this->value[$i]->genCSS( $env, $strs);
+			if( $i+1 < $len ){
+				self::OutputAdd( $strs, Less_Environment::$comma_space );
+			}
+		}
+	}
+
 }
  
 
 
-class Less_Tree_Variable {
+class Less_Tree_Variable extends Less_Tree{
 
-	//public $type = 'Variable';
 	public $name;
 	public $index;
 	public $currentFileInfo;
-	private $evaluating = false;
+	public $evaluating = false;
+	public $type = 'Variable';
 
-	public function __construct($name, $index, $currentFileInfo = null) {
-		$this->name = $name;
-		$this->index = $index;
+    public function __construct($name, $index, $currentFileInfo = null) {
+        $this->name = $name;
+        $this->index = $index;
 		$this->currentFileInfo = $currentFileInfo;
-	}
+    }
 
 	public function compile($env) {
 		$name = $this->name;
@@ -5570,7 +6487,7 @@ class Less_Tree_Variable {
 		}
 
 		if ($this->evaluating) {
-			throw new Less_CompilerException("Recursive variable definition for " . $name, $this->index, null, $this->currentFileInfo['file']);
+			throw new Less_Exception_Compiler("Recursive variable definition for " . $name, $this->index, null, $this->currentFileInfo['filename']);
 		}
 
 		$this->evaluating = true;
@@ -5583,33 +6500,40 @@ class Less_Tree_Variable {
 			}
 		}
 
-		throw new Less_CompilerException("variable " . $name . " is undefined", $this->index, null);
+		throw new Less_Exception_Compiler("variable " . $name . " is undefined", $this->index, null);
 	}
 
 }
  
 
 
-class Less_extendFinderVisitor extends Less_visitor{
+class Less_Visitor_extendFinder extends Less_Visitor{
 
 	public $contexts = array();
 	public $allExtendsStack;
 	public $foundExtends;
 
-	public $visitRuleDeeper = false;
-	public $visitMixinDefinitionDeeper = false;
-
 	function __construct(){
 		$this->contexts = array();
 		$this->allExtendsStack = array(array());
+		parent::__construct();
 	}
 
-	function run($root) {
-		$this->visit($root);
+	function run($root){
+		$root = $this->visitObj($root);
 		$root->allExtends =& $this->allExtendsStack[0];
+		return $root;
 	}
 
-	function visitRuleset($rulesetNode) {
+	function visitRule($ruleNode, &$visitDeeper ){
+		$visitDeeper = false;
+	}
+
+	function visitMixinDefinition( $mixinDefinitionNode, &$visitDeeper ){
+		$visitDeeper = false;
+	}
+
+	function visitRuleset($rulesetNode){
 
 		if( $rulesetNode->root ){
 			return;
@@ -5618,17 +6542,24 @@ class Less_extendFinderVisitor extends Less_visitor{
 		$allSelectorsExtendList = array();
 
 		// get &:extend(.a); rules which apply to all selectors in this ruleset
-		for( $i = 0; $i < count($rulesetNode->rules); $i++ ){
-			if( $rulesetNode->rules[$i] instanceof Less_Tree_Extend ){
-				$allSelectorsExtendList[] = $rulesetNode->rules[$i];
+		$rules = $rulesetNode->rules;
+		$ruleCnt = count($rules);
+		for($i = 0; $i < $ruleCnt; $i++ ){
+			if( $rules[$i] instanceof Less_Tree_Extend ){
+				$allSelectorsExtendList[] = $rules[$i];
+				$rulesetNode->extendOnEveryPath = true;
 			}
 		}
 
+
+
 		// now find every selector and apply the extends that apply to all extends
 		// and the ones which apply to an individual extend
-		for($i = 0; $i < count($rulesetNode->paths); $i++ ){
+		$paths = $rulesetNode->paths;
+		$paths_len = count($paths);
+		for($i = 0; $i < $paths_len; $i++ ){
 
-			$selectorPath = $rulesetNode->paths[$i];
+			$selectorPath = $paths[$i];
 			$selector = end($selectorPath); //$selectorPath[ count($selectorPath)-1];
 
 
@@ -5639,7 +6570,8 @@ class Less_extendFinderVisitor extends Less_visitor{
 				$extendList[] = clone $allSelectorsExtend;
 			}
 
-			for($j = 0; $j < count($extendList); $j++ ){
+			$extendList_len = count($extendList);
+			for($j = 0; $j < $extendList_len; $j++ ){
 				$this->foundExtends = true;
 				$extend = $extendList[$j];
 				$extend->findSelfSelectors( $selectorPath );
@@ -5655,7 +6587,7 @@ class Less_extendFinderVisitor extends Less_visitor{
 	}
 
 	function visitRulesetOut( $rulesetNode ){
-		if( !$rulesetNode->root) {
+		if( !is_object($rulesetNode) || !$rulesetNode->root ){
 			array_pop($this->contexts);
 		}
 	}
@@ -5683,15 +6615,14 @@ class Less_extendFinderVisitor extends Less_visitor{
  
 
 /*
-class Less_importVisitor{
+class Less_Visitor_import extends Less_VisitorReplacing{
 
 	public $_visitor;
 	public $_importer;
-	public $isReplacing = true;
 	public $importCount;
 
 	function __construct( $importer = null, $evalEnv = null ){
-		$this->_visitor = new Less_visitor($this);
+		$this->_visitor = new Less_Visitor($this);
 		$this->_importer = $importer;
 		if( $evalEnv ){
 			$this->env = $evalEnv;
@@ -5704,7 +6635,7 @@ class Less_importVisitor{
 
 	function run( $root ){
 		// process the contents
-		$this->_visitor->visit($root);
+		$this->_visitor->visitObj($root);
 
 		$this->isFinished = true;
 
@@ -5777,30 +6708,49 @@ class Less_importVisitor{
 }
 */ 
 
-class Less_joinSelectorVisitor extends Less_visitor{
+class Less_Visitor_joinSelector extends Less_Visitor{
 
 	public $contexts = array( array() );
 
-	public $visitRuleDeeper = false;
-	public $visitMixinDefinition = false;
-
-
 	function run( $root ){
-		$this->visit($root);
+		return $this->visitObj($root);
 	}
 
-	function visitRuleset($rulesetNode) {
-		$context = end($this->contexts); //$context = $this->contexts[ count($this->contexts) - 1];
+	function visitRule( $ruleNode, &$visitDeeper ){
+		$visitDeeper = false;
+	}
+
+	function visitMixinDefinition( $mixinDefinitionNode, &$visitDeeper ){
+		$visitDeeper = false;
+	}
+
+	function visitRuleset( $rulesetNode ){
+
 		$paths = array();
-		//$this->contexts[] = $paths;
+
 		if( !$rulesetNode->root ){
-			$rulesetNode->joinSelectors($paths, $context, $rulesetNode->selectors);
+			$selectors = array();
+
+			if( $rulesetNode->selectors && count($rulesetNode->selectors) ){
+				foreach($rulesetNode->selectors as $selector){
+					if( $selector->getIsOutput() ){
+						$selectors[] = $selector;
+					}
+				}
+			}
+
+			if( !count($selectors) ){
+				$rulesetNode->selectors = $selectors = null;
+				$rulesetNode->rules = null;
+			}else{
+				$context = end($this->contexts); //$context = $this->contexts[ count($this->contexts) - 1];
+				$paths = $rulesetNode->joinSelectors( $context, $selectors);
+			}
+
 			$rulesetNode->paths = $paths;
 		}
 
-		//array_pop($this->contexts);
-		$this->contexts[] = $paths;
-
+		$this->contexts[] = $paths; //different from less.js. Placed after joinSelectors() so that $this->contexts will get correct $paths
 	}
 
 	function visitRulesetOut( $rulesetNode ){
@@ -5809,7 +6759,10 @@ class Less_joinSelectorVisitor extends Less_visitor{
 
 	function visitMedia($mediaNode) {
 		$context = end($this->contexts); //$context = $this->contexts[ count($this->contexts) - 1];
-		$mediaNode->ruleset->root = ( count($context) === 0 || @$context[0]->multiMedia);
+
+		if( !count($context) || (is_object($context[0]) && @$context[0]->multiMedia) ){
+			$mediaNode->rules[0]->root = true;
+		}
 	}
 
 }
@@ -5817,18 +6770,12 @@ class Less_joinSelectorVisitor extends Less_visitor{
  
 
 
-class Less_processExtendsVisitor extends Less_visitor{
+class Less_Visitor_processExtends extends Less_Visitor{
 
 	public $allExtendsStack;
 
-	public $visitRuleDeeper = false;
-	public $visitMixinDefinitionDeeper = false;
-	public $visitSelectorDeeper = false;
-
-
-
 	function run( $root ){
-		$extendFinder = new Less_extendFinderVisitor();
+		$extendFinder = new Less_Visitor_extendFinder();
 		$extendFinder->run( $root );
 		if( !$extendFinder->foundExtends) { return $root; }
 
@@ -5837,7 +6784,7 @@ class Less_processExtendsVisitor extends Less_visitor{
 		$this->allExtendsStack = array();
 		$this->allExtendsStack[] = &$root->allExtends;
 
-		$this->visit( $root );
+		return $this->visitObj( $root );
 	}
 
 	function doExtendChaining( $extendsList, $extendsListTarget, $iterationCount = 0){
@@ -5866,7 +6813,7 @@ class Less_processExtendsVisitor extends Less_visitor{
 				$targetExtend = $extendsListTarget[$targetExtendIndex];
 
 				// look for circular references
-				if( $this->inInheritanceChain( $targetExtend, $extend)) {
+				if( in_array($targetExtend->object_id, $extend->parent_ids,true) ){
 					continue;
 				}
 
@@ -5897,7 +6844,7 @@ class Less_processExtendsVisitor extends Less_visitor{
 						$newExtend->ruleset = $targetExtend->ruleset;
 
 						//remember its parents for circular references
-						$newExtend->parents = array($targetExtend, $extend);
+						$newExtend->parent_ids = array_merge($newExtend->parent_ids,$targetExtend->parent_ids,$extend->parent_ids);
 
 						// only process the selector once.. if we have :extend(.a,.b) then multiple
 						// extends will look at the same selector path, so when extending
@@ -5921,7 +6868,7 @@ class Less_processExtendsVisitor extends Less_visitor{
 					$selectorOne = $extendsToAdd[0]->selfSelectors[0]->toCSS();
 					$selectorTwo = $extendsToAdd[0]->selector->toCSS();
 				}catch(Exception $e){}
-				throw new Less_ParserException("extend circular reference detected. One of the circular extends is currently:"+$selectorOne+":extend(" + $selectorTwo+")");
+				throw new Less_Exception_Parser("extend circular reference detected. One of the circular extends is currently:"+$selectorOne+":extend(" + $selectorTwo+")");
 			}
 
 			// now process the new extends on the existing rules so that we can handle a extending b extending c ectending d extending e...
@@ -5931,23 +6878,18 @@ class Less_processExtendsVisitor extends Less_visitor{
 		return array_merge($extendsList, $extendsToAdd);
 	}
 
-	function inInheritanceChain( $possibleParent, $possibleChild ){
 
-		if( $possibleParent === $possibleChild) {
-			return true;
-		}
-
-		if( $possibleChild->parents ){
-			if( $this->inInheritanceChain( $possibleParent, $possibleChild->parents[0]) ){
-				return true;
-			}
-			if( $this->inInheritanceChain( $possibleParent, $possibleChild->parents[1]) ){
-				return true;
-			}
-		}
-		return false;
+	function visitRule( $ruleNode, &$visitDeeper ){
+		$visitDeeper = false;
 	}
 
+	function visitMixinDefinition( $mixinDefinitionNode, &$visitDeeper ){
+		$visitDeeper = false;
+	}
+
+	function visitSelector( $selectorNode, &$visitDeeper ){
+		$visitDeeper = false;
+	}
 
 	function visitRuleset($rulesetNode){
 
@@ -5966,6 +6908,7 @@ class Less_processExtendsVisitor extends Less_visitor{
 				$selectorPath = $rulesetNode->paths[$pathIndex];
 
 				// extending extends happens initially, before the main pass
+				if( isset($rulesetNode->extendOnEveryPath) && $rulesetNode->extendOnEveryPath ){ continue; }
 				if( end($selectorPath)->extendList ){ continue; }
 
 				$matches = $this->findMatch($allExtends[$extendIndex], $selectorPath);
@@ -5986,7 +6929,6 @@ class Less_processExtendsVisitor extends Less_visitor{
 		// returns an array of selector matches that can then be replaced
 		//
 		$needleElements = $extend->selector->elements;
-		$needleElements_len = count($needleElements);
 		$potentialMatches = array();
 		$potentialMatches_len = 0;
 		$potentialMatch = null;
@@ -6001,7 +6943,7 @@ class Less_processExtendsVisitor extends Less_visitor{
 				$haystackElement = $hackstackSelector->elements[$hackstackElementIndex];
 
 				// if we allow elements before our match we can add a potential match every time. otherwise only at the first element.
-				if( $extend->allowBefore || ($haystackSelectorIndex == 0 && $hackstackElementIndex == 0) ){
+				if( $extend->allowBefore || ($haystackSelectorIndex === 0 && $hackstackElementIndex === 0) ){
 					$potentialMatches[] = array('pathIndex'=> $haystackSelectorIndex, 'index'=> $hackstackElementIndex, 'matched'=> 0, 'initialCombinator'=> $haystackElement->combinator);
 					$potentialMatches_len++;
 				}
@@ -6013,7 +6955,7 @@ class Less_processExtendsVisitor extends Less_visitor{
 					// then each selector in haystackSelectorPath has a space before it added in the toCSS phase. so we need to work out
 					// what the resulting combinator will be
 					$targetCombinator = $haystackElement->combinator->value;
-					if( $targetCombinator == '' && $hackstackElementIndex === 0 ){
+					if( $targetCombinator === '' && $hackstackElementIndex === 0 ){
 						$targetCombinator = ' ';
 					}
 
@@ -6027,7 +6969,8 @@ class Less_processExtendsVisitor extends Less_visitor{
 
 					// if we are still valid and have finished, test whether we have elements after and whether these are allowed
 					if( $potentialMatch ){
-						$potentialMatch['finished'] = ($potentialMatch['matched'] === $needleElements_len );
+
+						$potentialMatch['finished'] = ($potentialMatch['matched'] === $extend->selector->elements_len );
 
 						if( $potentialMatch['finished'] &&
 							(!$extend->allowAfter && ($hackstackElementIndex+1 < $haystack_elements_len || $haystackSelectorIndex+1 < $haystack_path_len)) ){
@@ -6037,7 +6980,7 @@ class Less_processExtendsVisitor extends Less_visitor{
 					// if null we remove, if not, we are still valid, so either push as a valid match or continue
 					if( $potentialMatch ){
 						if( $potentialMatch['finished'] ){
-							$potentialMatch['length'] = $needleElements_len;
+							$potentialMatch['length'] = $extend->selector->elements_len;
 							$potentialMatch['endPathIndex'] = $haystackSelectorIndex;
 							$potentialMatch['endPathElementIndex'] = $hackstackElementIndex + 1; // index after end of match
 							$potentialMatches = array(); // we don't allow matches to overlap, so start matching again
@@ -6057,8 +7000,11 @@ class Less_processExtendsVisitor extends Less_visitor{
 
 	function isElementValuesEqual( $elementValue1, $elementValue2 ){
 
+		if( $elementValue1 === $elementValue2 ){
+			return true;
+		}
 		if( is_string($elementValue1) || is_string($elementValue2) ) {
-			return $elementValue1 === $elementValue2;
+			return false;
 		}
 
 		if( $elementValue1 instanceof Less_Tree_Attribute ){
@@ -6077,6 +7023,26 @@ class Less_processExtendsVisitor extends Less_visitor{
 			$elementValue2 = ($elementValue2->value->value ? $elementValue2->value->value : $elementValue2->value );
 			return $elementValue1 === $elementValue2;
 		}
+
+		$elementValue1 = $elementValue1->value;
+		if( $elementValue1 instanceof Less_Tree_Selector ){
+			$elementValue2 = $elementValue2->value;
+			if( !($elementValue2 instanceof Less_Tree_Selector) || $elementValue1->elements_len !== $elementValue2->elements_len ){
+				return false;
+			}
+			for( $i = 0; $i < $elementValue1->elements_len; $i++ ){
+				if( $elementValue1->elements[$i]->combinator->value !== $elementValue2->elements[$i]->combinator->value ){
+					if( $i !== 0 || ($elementValue1->elements[$i]->combinator->value || ' ') !== ($elementValue2->elements[$i]->combinator->value || ' ') ){
+						return false;
+					}
+				}
+				if( !$this->isElementValuesEqual($elementValue1->elements[$i]->value, $elementValue2->elements[$i]->value) ){
+					return false;
+				}
+			}
+			return true;
+		}
+
 		return false;
 	}
 
@@ -6097,7 +7063,8 @@ class Less_processExtendsVisitor extends Less_visitor{
 			$firstElement = new Less_Tree_Element(
 				$match['initialCombinator'],
 				$replacementSelector->elements[0]->value,
-				$replacementSelector->elements[0]->index
+				$replacementSelector->elements[0]->index,
+				$replacementSelector->elements[0]->currentFileInfo
 			);
 
 			if( $match['pathIndex'] > $currentSelectorPathIndex && $currentSelectorPathElementIndex > 0 ){
@@ -6107,19 +7074,23 @@ class Less_processExtendsVisitor extends Less_visitor{
 				$currentSelectorPathIndex++;
 			}
 
-			$slice_len = $match['pathIndex'] - $currentSelectorPathIndex;
-			$temp = array_slice($selectorPath, $currentSelectorPathIndex, $slice_len);
-			$path = array_merge( $path, $temp);
+			$newElements = array_merge(
+				array_slice($selector->elements, $currentSelectorPathElementIndex, ($match['index'] - $currentSelectorPathElementIndex) ) // last parameter of array_slice is different than the last parameter of javascript's slice
+				, array($firstElement)
+				, array_slice($replacementSelector->elements,1)
+				);
 
-			$slice_len = $match['index'] - $currentSelectorPathElementIndex;
-			$new_elements = array_slice($selector->elements,$currentSelectorPathElementIndex, $slice_len);
-			$new_elements = array_merge($new_elements, array($firstElement) );
-			$new_elements = array_merge($new_elements, array_slice($replacementSelector->elements,1) );
-			$path[] = new Less_Tree_Selector( $new_elements );
+			if( $currentSelectorPathIndex === $match['pathIndex'] && $matchIndex > 0 ){
+				$last_key = count($path)-1;
+				$path[$last_key]->elements = array_merge($path[$last_key]->elements,$newElements);
+			}else{
+				$path = array_merge( $path, array_slice( $selectorPath, $currentSelectorPathIndex, $match['pathIndex'] ));
+				$path[] = new Less_Tree_Selector( $newElements );
+			}
 
 			$currentSelectorPathIndex = $match['endPathIndex'];
 			$currentSelectorPathElementIndex = $match['endPathElementIndex'];
-			if( $currentSelectorPathElementIndex >= count($selector->elements) ){
+			if( $currentSelectorPathElementIndex >= count($selectorPath[$currentSelectorPathIndex]->elements) ){
 				$currentSelectorPathElementIndex = 0;
 				$currentSelectorPathIndex++;
 			}
@@ -6128,7 +7099,6 @@ class Less_processExtendsVisitor extends Less_visitor{
 		if( $currentSelectorPathIndex < $selectorPath_len && $currentSelectorPathElementIndex > 0 ){
 			$last_path = end($path);
 			$last_path->elements = array_merge( $last_path->elements, array_slice($selectorPath[$currentSelectorPathIndex]->elements, $currentSelectorPathElementIndex));
-			$currentSelectorPathElementIndex = 0;
 			$currentSelectorPathIndex++;
 		}
 
@@ -6159,50 +7129,234 @@ class Less_processExtendsVisitor extends Less_visitor{
 
 } 
 
-class Less_visitor{
+class Less_Visitor_toCSS extends Less_VisitorReplacing{
 
-	function visit($nodes){
+	function __construct($env){
+		$this->_env = $env;
+		parent::__construct();
+	}
 
-		if( !is_array($nodes) ){
-			$nodes = array($nodes);
+	function run( $root ){
+		return $this->visitObj($root);
+	}
+
+	function visitRule( $ruleNode ){
+		if( $ruleNode->variable ){
+			return array();
 		}
+		return $ruleNode;
+	}
 
-		foreach($nodes as $node){
+	function visitMixinDefinition( $mixinNode ){
+		return array();
+	}
 
-			if( !is_object($node) ){
-				continue;
+	function visitExtend( $extendNode ){
+		return array();
+	}
+
+	function visitComment( $commentNode ){
+		if( $commentNode->isSilent( $this->_env) ){
+			return array();
+		}
+		return $commentNode;
+	}
+
+	function visitMedia( $mediaNode, &$visitDeeper ){
+		$mediaNode->accept($this);
+		$visitDeeper = false;
+
+		if( !$mediaNode->rules ){
+			return array();
+		}
+		return $mediaNode;
+	}
+
+	function visitDirective( $directiveNode ){
+		if( isset($directiveNode->currentFileInfo['reference']) && (!property_exists($directiveNode,'isReferenced') || !$directiveNode->isReferenced) ){
+			return array();
+		}
+		if( $directiveNode->name === '@charset' ){
+			// Only output the debug info together with subsequent @charset definitions
+			// a comment (or @media statement) before the actual @charset directive would
+			// be considered illegal css as it has to be on the first line
+			if( isset($this->charset) && $this->charset ){
+
+				//if( $directiveNode->debugInfo ){
+				//	$comment = new Less_Tree_Comment('/* ' . str_replace("\n",'',$directiveNode->toCSS($this->_env))." */\n");
+				//	$comment->debugInfo = $directiveNode->debugInfo;
+				//	return $this->visit($comment);
+				//}
+
+
+				return array();
 			}
+			$this->charset = true;
+		}
+		return $directiveNode;
+	}
 
-			$class = get_class($node);
-			$funcName = 'visit'.substr($class,10); //remove 'Less_Tree_' from the class name
-
-			if( method_exists($this,$funcName) ){
-				$this->$funcName( $node );
-			}
-
-			$deeper_property = $funcName.'Deeper';
-			if( !isset($this->$deeper_property) && Less_Parser::is_method($node,'accept') ){
-				$node->accept($this);
-			}
-
-			$funcName = $funcName . "Out";
-			if( method_exists($this,$funcName) ){
-				$this->$funcName( $node );
+	function checkPropertiesInRoot( $rules ){
+		foreach($rules as $ruleNode){
+			if( $ruleNode instanceof Less_Tree_Rule && !$ruleNode->variable ){
+				$msg = "properties must be inside selector blocks, they cannot be in the root. Index ".$ruleNode->index.($ruleNode->currentFileInfo ? (' Filename: '.$ruleNode->currentFileInfo['filename']) : null);
+				throw new Less_Exception_Compiler($msg);
 			}
 		}
 	}
 
+	function visitRuleset( $rulesetNode, &$visitDeeper ){
+
+		$visitDeeper = false;
+		$rulesets = array();
+		if( $rulesetNode->firstRoot ){
+			$this->checkPropertiesInRoot( $rulesetNode->rules );
+		}
+		if( !$rulesetNode->root ){
+
+			$paths = array();
+			foreach($rulesetNode->paths as $p){
+				if( $p[0]->elements[0]->combinator->value === ' ' ){
+					$p[0]->elements[0]->combinator = new Less_Tree_Combinator('');
+				}
+
+				foreach($p as $pi){
+					if( $pi->getIsReferenced() && $pi->getIsOutput() ){
+						$paths[] = $p;
+						break;
+					}
+				}
+			}
+
+			$rulesetNode->paths = $paths;
+
+			// Compile rules and rulesets
+			$nodeRuleCnt = count($rulesetNode->rules);
+			for( $i = 0; $i < $nodeRuleCnt; ){
+				$rule = $rulesetNode->rules[$i];
+
+				if( property_exists($rule,'rules') ){
+					// visit because we are moving them out from being a child
+					$rulesets[] = $this->visitObj($rule);
+					array_splice($rulesetNode->rules,$i,1);
+					$nodeRuleCnt--;
+					continue;
+				}
+				$i++;
+			}
+
+
+			// accept the visitor to remove rules and refactor itself
+			// then we can decide now whether we want it or not
+			if( $nodeRuleCnt > 0 ){
+				$rulesetNode->accept($this);
+
+				if( $rulesetNode->rules ){
+
+					if( count($rulesetNode->rules) >  1 ){
+						$this->_mergeRules( $rulesetNode->rules );
+						$this->_removeDuplicateRules( $rulesetNode->rules );
+					}
+
+					// now decide whether we keep the ruleset
+					if( $rulesetNode->paths ){
+						//array_unshift($rulesets, $rulesetNode);
+						array_splice($rulesets,0,0,array($rulesetNode));
+					}
+				}
+
+			}
+
+		}else{
+			$rulesetNode->accept( $this );
+			if( $rulesetNode->firstRoot || $rulesetNode->rules ){
+				return $rulesetNode;
+				//array_unshift($rulesets, $rulesetNode);
+			}
+			return $rulesets;
+		}
+
+		if( count($rulesets) === 1 ){
+			return $rulesets[0];
+		}
+		return $rulesets;
+	}
+
+	function _removeDuplicateRules( &$rules ){
+		// remove duplicates
+		$ruleCache = array();
+		for( $i = count($rules)-1; $i >= 0 ; $i-- ){
+			$rule = $rules[$i];
+			if( $rule instanceof Less_Tree_Rule ){
+				if( !isset($ruleCache[$rule->name]) ){
+					$ruleCache[$rule->name] = $rule;
+				}else{
+					$ruleList =& $ruleCache[$rule->name];
+					if( $ruleList instanceof Less_Tree_Rule ){
+						$ruleList = $ruleCache[$rule->name] = array( $ruleCache[$rule->name]->toCSS($this->_env) );
+					}
+					$ruleCSS = $rule->toCSS($this->_env);
+					if( array_search($ruleCSS,$ruleList) !== false ){
+						array_splice($rules,$i,1);
+					}else{
+						$ruleList[] = $ruleCSS;
+					}
+				}
+			}
+		}
+	}
+
+	function _mergeRules( &$rules ){
+		$groups = array();
+
+		$rules_len = count($rules);
+		for( $i = 0; $i < $rules_len; $i++ ){
+			$rule = $rules[$i];
+
+			if( ($rule instanceof Less_Tree_Rule) && $rule->merge ){
+
+				$key = $rule->name;
+				if( $rule->important ){
+					$key .= ',!';
+				}
+
+				if( !isset($groups[$key]) ){
+					$groups[$key] = array();
+					$parts =& $groups[$key];
+				}else{
+					array_splice($rules, $i--, 1);
+					$rules_len--;
+				}
+
+				$parts[] = $rule;
+			}
+		}
+
+		foreach($groups as $parts){
+
+			if( count($parts) > 1 ){
+				$rule = $parts[0];
+
+				$values = array();
+				foreach($parts as $p){
+					$values[] = $p->value;
+				}
+
+				$rule->value = new Less_Tree_Value( $values );
+			}
+		}
+	}
 }
 
  
 
 
-class Less_CompilerException extends Exception {
+class Less_Exception_Compiler extends Exception {
 
 	private $filename;
 
-	public function __construct($message = null, $code = 0, Exception $previous = null, $filename = null) {
-		parent::__construct($message, $code, $previous);
+	public function __construct($message = null, $code = 0, Exception $previous = null, $filename = null ){
+		parent::__construct($message, $code);
 		$this->filename = $filename;
 	}
 
@@ -6217,6 +7371,6 @@ class Less_CompilerException extends Exception {
  
 
 
-class Less_ParserException extends Exception{
+class Less_Exception_Parser extends Exception{
 
 } 
