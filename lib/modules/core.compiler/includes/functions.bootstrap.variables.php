@@ -13,6 +13,8 @@ if ( !function_exists( 'shoestrap_variables' ) ) :
  */
 function shoestrap_variables() {
 
+  $site_style = shoestrap_getVariable( 'site_style' );
+
   $body_bg          = '#' . str_replace( '#', '', shoestrap_getVariable( 'color_body_bg', true ) );
   $brand_primary    = '#' . str_replace( '#', '', shoestrap_getVariable( 'color_brand_primary', true ) );
   $brand_success    = '#' . str_replace( '#', '', shoestrap_getVariable( 'color_brand_success', true ) );
@@ -104,11 +106,15 @@ function shoestrap_variables() {
   $navbar_bg        = '#' . str_replace( '#', '', shoestrap_getVariable( 'navbar_bg', true ) );
   $jumbotron_bg     = '#' . str_replace( '#', '', shoestrap_getVariable( 'jumbotron_bg', true ) );
 
-  $screen_tablet         = filter_var( shoestrap_getVariable( 'screen_tablet', true ), FILTER_SANITIZE_NUMBER_INT );
-  $screen_desktop        = filter_var( shoestrap_getVariable( 'screen_desktop', true ), FILTER_SANITIZE_NUMBER_INT );
-  $screen_large_desktop  = filter_var( shoestrap_getVariable( 'screen_large_desktop', true ), FILTER_SANITIZE_NUMBER_INT );
-  $gutter                = filter_var( shoestrap_getVariable( 'layout_gutter', true ), FILTER_SANITIZE_NUMBER_INT );
-  if ( $gutter < 2 ) { $gutter = 2; }
+  $screen_sm = filter_var( shoestrap_getVariable( 'screen_tablet', true ), FILTER_SANITIZE_NUMBER_INT );
+  $screen_md = filter_var( shoestrap_getVariable( 'screen_desktop', true ), FILTER_SANITIZE_NUMBER_INT );
+  $screen_lg = filter_var( shoestrap_getVariable( 'screen_large_desktop', true ), FILTER_SANITIZE_NUMBER_INT );
+  $gutter    = filter_var( shoestrap_getVariable( 'layout_gutter', true ), FILTER_SANITIZE_NUMBER_INT );
+  $gutter    = ( $gutter < 2 ) ? 2 : $gutter;
+
+  $screen_xs = ( $site_style == 'static' ) ? '50px' : '480px';
+  $screen_sm = ( $site_style == 'static' ) ? '50px' : $screen_sm;
+  $screen_md = ( $site_style == 'static' ) ? '50px' : $screen_md;
 
   $navbar_height    = filter_var( shoestrap_getVariable( 'navbar_height', true ), FILTER_SANITIZE_NUMBER_INT );
   $navbar_text_color       = '#' . str_replace( '#', '', $font_navbar['color'] );
@@ -149,11 +155,7 @@ function shoestrap_variables() {
     $gray_lighter = 'darken(#fff, 93.5%)';
   }
 
-  if ( shoestrap_get_brightness( $brand_primary ) > 50 ) {
-    $link_hover_color = 'darken(@link-color, 15%)';
-  } else {
-    $link_hover_color = 'lighten(@link-color, 15%)';
-  }
+  $link_hover_color = ( shoestrap_get_brightness( $brand_primary ) > 50 ) ? 'darken(@link-color, 15%)' : 'lighten(@link-color, 15%)';
 
   if ( shoestrap_get_brightness( $brand_primary ) > 50 ) {
     $table_bg_accent      = 'darken(@body-bg, 2.5%)';
@@ -221,15 +223,8 @@ function shoestrap_variables() {
     $btn_info_border = 'lighten(@btn-info-bg, 5%)';
   }
 
-  if ( shoestrap_get_brightness( $brand_primary ) < 100 )
-    $input_border_focus = 'lighten(@brand-primary, 10%);';
-  else
-    $input_border_focus = 'darken(@brand-primary, 10%);';
-
-  if ( shoestrap_get_brightness( $brand_primary ) < 50 )
-    $navbar_border  = 'lighten(@navbar-default-bg, 6.5%)';
-  else
-    $navbar_border  = 'darken(@navbar-default-bg, 6.5%)';
+  $input_border_focus = ( shoestrap_get_brightness( $brand_primary ) < 100 ) ? 'lighten(@brand-primary, 10%);' : 'darken(@brand-primary, 10%);';
+  $navbar_border      = ( shoestrap_get_brightness( $brand_primary ) < 50 ) ? 'lighten(@navbar-default-bg, 6.5%)' : 'darken(@navbar-default-bg, 6.5%)';
 
 $variables = '
 @428bca: ' . $brand_primary . ';
@@ -461,19 +456,19 @@ $variables = '
 
 // Small screen / tablet
 // Note: Deprecated @screen-sm and @screen-tablet as of v3.0.1
-@screen-sm:                  ' . $screen_tablet . 'px;
+@screen-sm:                  ' . $screen_sm . 'px;
 @screen-sm-min:              @screen-sm;
 @screen-tablet:              @screen-sm-min;
 
 // Medium screen / desktop
 // Note: Deprecated @screen-md and @screen-desktop as of v3.0.1
-@screen-md:                  ' . $screen_desktop . 'px;
+@screen-md:                  ' . $screen_md . 'px;
 @screen-md-min:              @screen-md;
 @screen-desktop:             @screen-md-min;
 
 // Large screen / wide desktop
 // Note: Deprecated @screen-lg and @screen-lg-desktop as of v3.0.1
-@screen-lg:                  ' . $screen_large_desktop . 'px;
+@screen-lg:                  ' . $screen_lg . 'px;
 @screen-lg-min:              @screen-lg;
 @screen-lg-desktop:          @screen-lg-min;
 
@@ -872,15 +867,15 @@ $variables = '
 // --------------------------------------------------
 
 // Small screen / tablet
-@container-tablet:           ' . ( $screen_tablet - ( $gutter / 2 ) ). 'px;
+@container-tablet:           ' . ( $screen_sm - ( $gutter / 2 ) ). 'px;
 @container-sm:               @container-tablet;
 
 // Medium screen / desktop
-@container-desktop:          ' . ( $screen_desktop - ( $gutter / 2 ) ). 'px;
+@container-desktop:          ' . ( $screen_md - ( $gutter / 2 ) ). 'px;
 @container-md:               @container-desktop;
 
 // Large screen / wide desktop
-@container-large-desktop:    ' . ( $screen_large_desktop - $gutter ). 'px;
+@container-large-desktop:    ' . ( $screen_lg - $gutter ). 'px;
 @container-lg:                 @container-large-desktop;
 
 
@@ -941,16 +936,6 @@ $variables = '
 
 ';
 
-if ( shoestrap_getVariable( 'responsive_toggle' ) == 0 ):
-// disable responsiveness
-$variables .= '
-  @grid-float-breakpoint: 0 !important;
-  @screen-xs-max: 0 !important; 
-  .container { max-width: none !important; width: 970px; }
-  html { overflow-x: auto !important; }
-';
-endif;
-  
   return $variables;
 }
 endif;

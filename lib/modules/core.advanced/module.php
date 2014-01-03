@@ -216,16 +216,6 @@ function shoestrap_module_advanced_options( $sections ) {
     // 'required'  => array('advanced_toggle','=',array('1')),
   );
 
-  $fields[] = array( 
-    'title'     => __( 'Toggle Responsiveness', 'shoestrap' ),
-    'desc'      => __( 'Disable this feature so your pages works in a non-responsive way. Default: On.', 'shoestrap' ),
-    'id'        => 'responsive_toggle',
-    'default'   => 1,
-    'customizer'=> array(),
-    'compiler'  => true,
-    'type'      => 'switch'
-  );
-
   $section['fields'] = $fields;
 
   $section = apply_filters( 'shoestrap_module_advanced_options_modifier', $section );

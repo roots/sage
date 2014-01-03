@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title><?php wp_title('|', true, 'right'); ?></title>
-<?php if ( shoestrap_getVariable( 'responsive_toggle' ) == 1 ): ?>
+<?php if ( shoestrap_getVariable( 'site_style' ) != 'static' ): ?>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 <?php endif; ?>
 

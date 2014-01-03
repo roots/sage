@@ -21,10 +21,12 @@ function shoestrap_module_layout_options( $sections ) {
     'type'      => 'select',
     'customizer'=> array(),
     'options'   => array( 
-      'wide'    =>'Wide',
-      'boxed'   =>'Boxed',
-      'fluid'   =>'Fluid',
-    )
+      'static'  => __( 'Static (Non-Responsive)', 'shoestrap' ),
+      'wide'    => __( 'Wide', 'shoestrap' ),
+      'boxed'   => __( 'Boxed', 'shoestrap' ),
+      'fluid'   => __( 'Fluid', 'shoestrap' ),
+    ),
+    'compiler'  => true,
   );
 
   $fields[] = array( 
