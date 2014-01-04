@@ -13,6 +13,18 @@ function shoestrap_module_branding_options( $sections ) {
   );
 
   $fields[] = array( 
+    'title'     => __( 'Branding Options Mode', 'shoestrap' ),
+    'desc'      => __( 'Select the width of the Primary Sidebar. Please note that the values represent grid columns. The total width of the page is 12 columns, so selecting 4 here will make the primary sidebar to have a width of 1/3 ( 4/12 ) of the total page width.', 'shoestrap' ),
+    'id'        => 'branding_options_mode',
+    'type'      => 'button_set',
+    'options'   => array(
+      'simple'    => __( 'Simple', 'shoestrap' ),
+      'advanced'  => __( 'Advanced', 'shoestrap' ),
+    ),
+    'default' => 'simple'
+  );
+
+  $fields[] = array( 
     'title'       => __( 'Logo', 'shoestrap' ),
     'desc'        => __( 'Upload a logo image using the media uploader, or define the URL directly.', 'shoestrap' ),
     'id'          => 'logo',
@@ -35,7 +47,7 @@ function shoestrap_module_branding_options( $sections ) {
     'id'          => 'favicon',
     'default'     => '',
     'type'        => 'media',
-    // 'required'    => array('advanced_toggle','=',array('1'))
+    'required'    => array( 'branding_options_mode', '=', array( 'advanced' ) ),
   );
 
   $fields[] = array( 
@@ -44,7 +56,7 @@ function shoestrap_module_branding_options( $sections ) {
     'id'          => 'apple_icon',
     'default'     => '',
     'type'        => 'media',
-    // 'required'    => array('advanced_toggle','=',array('1'))
+    'required'    => array( 'branding_options_mode', '=', array( 'advanced' ) ),
   );
 
 

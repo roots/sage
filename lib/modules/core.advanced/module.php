@@ -11,14 +11,17 @@ function shoestrap_module_advanced_options( $sections ) {
     'icon'    => 'el-icon-cogs icon-large'
   );  
 
-  // $fields[] = array( 
-  //   'title'     => __( 'Enable Advanced mode', 'shoestrap' ),
-  //   'desc'      => __( 'By enabling you have a more in-depth control of Shoestrap\'s modules. Default: Off', 'shoestrap' ),
-  //   'id'        => 'advanced_toggle',
-  //   'default'   => 0,
-  //   'type'      => 'switch',
-  //   'customizer'=> array(),
-  // );
+  $fields[] = array( 
+    'title'     => __( 'Advanced Options Mode', 'shoestrap' ),
+    'desc'      => __( 'Show or hide advanced options', 'shoestrap' ),
+    'id'        => 'advanced_options_mode',
+    'type'      => 'button_set',
+    'options'   => array(
+      'simple'    => __( 'Simple', 'shoestrap' ),
+      'advanced'  => __( 'Advanced', 'shoestrap' ),
+    ),
+    'default' => 'simple'
+  );
 
   $fields[] = array( 
     'title'     => __( 'Post excerpt length', 'shoestrap' ),
@@ -60,7 +63,7 @@ function shoestrap_module_advanced_options( $sections ) {
     'default'   => 1,
     'type'      => 'switch',
     'customizer'=> array(),
-    // 'required' => array('advanced_toggle','=',array('1')),  
+    'required'    => array( 'advanced_options_mode', '=', array( 'advanced' ) ),
   );
 
   $fields[] = array( 
@@ -70,7 +73,7 @@ function shoestrap_module_advanced_options( $sections ) {
     'default'   => 0,
     'type'      => 'switch',
     'customizer'=> array(),
-    // 'required'  => array('advanced_toggle','=',array('1')),
+    'required'    => array( 'advanced_options_mode', '=', array( 'advanced' ) ),
   );    
 
   $fields[] = array( 
@@ -86,7 +89,7 @@ function shoestrap_module_advanced_options( $sections ) {
     'id'        => 'help2',
     'desc'      => __( 'The following settings affect various areas of your site, most notably buttons.', 'shoestrap' ),
     'type'      => 'info',
-    // 'required'  => array('advanced_toggle','=',array('1')),
+    'required'  => array( 'advanced_options_mode', '=', array( 'advanced' ) ),
   );
 
   $fields[] = array( 
@@ -100,7 +103,7 @@ function shoestrap_module_advanced_options( $sections ) {
     'advanced'  => true,
     'compiler'  => true,
     'type'      => 'slider',
-    // 'required'  => array('advanced_toggle','=',array('1')),
+    'required'  => array( 'advanced_options_mode', '=', array( 'advanced' ) ),
   );
 
   $fields[] = array( 
@@ -114,7 +117,7 @@ function shoestrap_module_advanced_options( $sections ) {
     'advanced'  => true,
     'compiler'  => true,
     'type'      => 'slider',
-    // 'required'  => array('advanced_toggle','=',array('1')),
+    'required'  => array( 'advanced_options_mode', '=', array( 'advanced' ) ),
   );
 
   $fields[] = array( 
@@ -123,7 +126,7 @@ function shoestrap_module_advanced_options( $sections ) {
     'id'        => 'upload_folder',
     'default'   => 0,
     'type'      => 'switch',
-    // 'required'  => array('advanced_toggle','=',array('1')),
+    'required'  => array( 'advanced_options_mode', '=', array( 'advanced' ) ),
   );
 
   $fields[] = array( 
@@ -132,7 +135,7 @@ function shoestrap_module_advanced_options( $sections ) {
     'id'        => 'pjax',
     'default'   => 0,
     'type'      => 'switch',
-    // 'required'  => array('advanced_toggle','=',array('1')),
+    'required'  => array( 'advanced_options_mode', '=', array( 'advanced' ) ),
   );
 
   $fields[] = array( 
@@ -159,7 +162,7 @@ function shoestrap_module_advanced_options( $sections ) {
     'type'      => 'ace_editor',
     'mode'      => 'css',
     'theme'     => 'monokai',
-    // 'required'  => array('advanced_toggle','=',array('1')),
+    'required'  => array( 'advanced_options_mode', '=', array( 'advanced' ) ),
   );
 
   $fields[] = array( 
@@ -171,7 +174,7 @@ function shoestrap_module_advanced_options( $sections ) {
     'mode'      => 'less',
     'theme'     => 'monokai',
     'compiler'  => true,
-    // 'required'  => array('advanced_toggle','=',array('1')),
+    'required'  => array( 'advanced_options_mode', '=', array( 'advanced' ) ),
   );  
 
   $fields[] = array( 
@@ -182,7 +185,7 @@ function shoestrap_module_advanced_options( $sections ) {
     'type'      => 'ace_editor',
     'mode'      => 'javascript',
     'theme'     => 'monokai',
-    // 'required'  => array('advanced_toggle','=',array('1')),
+    'required'  => array( 'advanced_options_mode', '=', array( 'advanced' ) ),
   );
 
   $fields[] = array( 
@@ -192,7 +195,7 @@ function shoestrap_module_advanced_options( $sections ) {
     'default'   => 1,
     'customizer'=> array(),
     'type'      => 'switch',
-    // 'required'  => array('advanced_toggle','=',array('1')),
+    'required'  => array( 'advanced_options_mode', '=', array( 'advanced' ) ),
   );
 
   $fields[] = array( 
@@ -203,7 +206,7 @@ function shoestrap_module_advanced_options( $sections ) {
     'compiler'  => true,
     'customizer'=> array(),
     'type'      => 'switch',
-    // 'required'  => array('advanced_toggle','=',array('1')),
+    'required'  => array( 'advanced_options_mode', '=', array( 'advanced' ) ),
   );
 
   $fields[] = array( 
@@ -213,7 +216,7 @@ function shoestrap_module_advanced_options( $sections ) {
     'default'   => 0,
     'customizer'=> array(),
     'type'      => 'switch',
-    // 'required'  => array('advanced_toggle','=',array('1')),
+    'required'  => array( 'advanced_options_mode', '=', array( 'advanced' ) ),
   );
 
   $section['fields'] = $fields;
