@@ -27,7 +27,7 @@ function shoestrap_core_licencing_options( $sections ) {
     'type'  => 'info',
     'title' => __('Shoestrap Theme Licence', 'redux-framework-demo'),
     'style' => 'info',
-    'desc'  => __( 'The Shoestrap theme no longer requires a licence for theme updates because a default licence is included.', 'shoestrap' ) . __( 'If you want to use your own licence key, you can add this line in your <code>wp-config.php</code> file:', 'shoestrap' ) . '<br><code>define( "SHOESTRAP_LICENCE_KEY", "YOUR_LICENCE_KEY_HERE" );</code>',
+    'desc'  => '<p>' . __( 'The Shoestrap theme no longer requires a licence for theme updates because a default licence is included.', 'shoestrap' ) . '</p><p>' . __( 'If you want to use your own licence key, you can add this line in your <code>wp-config.php</code> file:', 'shoestrap' ) . '</p><p><code>define( "SHOESTRAP_LICENCE_KEY", "YOUR_LICENCE_KEY_HERE" );</code></p>',
     );
 
   $section['fields'] = $fields;
@@ -48,11 +48,11 @@ if( !class_exists( 'EDD_SL_Theme_Updater' ) )
 
 // setup the updater
 $edd_updater = new EDD_SL_Theme_Updater( array(
-  'remote_api_url'  => SHOESTRAP_STORE_URL,          // our store URL that is running EDD
-  'version'         => SHOESTRAP_THEME_VERSION,      // current version number
-  'license'         => SHOESTRAP_LICENCE_KEY, // license key (used get_option above to retrieve from DB)
-  'item_name'       => SHOESTRAP_THEME_NAME,         // name of this theme
-  'author'          => SHOESTRAP_THEME_AUTHOR        // author of this theme
+  'remote_api_url'  => SHOESTRAP_STORE_URL,     // our store URL that is running EDD
+  'version'         => SHOESTRAP_THEME_VERSION, // current version number
+  'license'         => SHOESTRAP_LICENCE_KEY,   // license key (used get_option above to retrieve from DB)
+  'item_name'       => SHOESTRAP_THEME_NAME,    // name of this theme
+  'author'          => SHOESTRAP_THEME_AUTHOR   // author of this theme
 ));
 
 
