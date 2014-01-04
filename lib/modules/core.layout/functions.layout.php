@@ -66,7 +66,9 @@ function shoestrap_section_class( $target, $echo = false ) {
   $layout = shoestrap_getLayout();
   $first  = intval( shoestrap_getVariable( 'layout_primary_width' ) );
   $second = intval( shoestrap_getVariable( 'layout_secondary_width' ) );
-  $base   = 'col-sm-';
+  
+  // disable responsiveness if layout is set to non-responsive
+  $base = ( shoestrap_getVariable( 'site_style' ) == 'static' ) ? 'col-xs-' : 'col-sm-';
   
   // Set some defaults so that we can change them depending on the selected template
   $main       = $base . 12;
