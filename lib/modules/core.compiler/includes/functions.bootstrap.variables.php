@@ -311,8 +311,8 @@ $variables = '
 // Iconography
 // -------------------------
 
-@icon-font-path:          "' . get_template_directory_uri() . '/assets/fonts/";
-@icon-font-name:          "Elusive-Icons";
+@icon-font-path:          "../fonts/";
+@icon-font-name:          "glyphicons-halflings-regular";
 
 // Components
 // -------------------------
