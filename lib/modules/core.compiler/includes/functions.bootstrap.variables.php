@@ -936,6 +936,16 @@ $variables = '
 
 ';
 
+if ( $site_style == 'static' ):
+// disable responsiveness
+  $variables .= '
+    @grid-float-breakpoint: 0 !important;
+    @screen-xs-max: 0 !important; 
+    .container { max-width: none !important; width: @container-large-desktop; }
+    html { overflow-x: auto !important; }
+  ';
+endif;
+
   return $variables;
 }
 endif;
