@@ -28,30 +28,6 @@ endif;
 add_action( 'wp_footer', 'shoestrap_user_js', 200 );
 
 
-if ( !function_exists( 'shoestrap_change_upload_folder' ) ) :
-/*
- * change upload folder to /media
- * NOTICE: by that any media in 'wp-content/uploads' won't be accessible
- */
-function shoestrap_change_upload_folder() {
-  $option_name    = 'upload_path';
-  $default_value  = 'wp-content/uploads';
-
-  if ( shoestrap_getVariable( 'upload_folder' ) == 1 ) {
-    update_option( 'uploads_use_yearmonth_folders', 0 );
-    $new_value = 'media';
-    
-    if ( ( get_option( $option_name ) !== false ) && ( !is_multisite() ) )
-      update_option( $option_name, $new_value );
-
-  } else {
-    update_option( $option_name, $default_value );
-  }
-}
-endif;
-add_action( 'wp', 'shoestrap_change_upload_folder' );
-
-
 // Show or hide the adminbar
 if ( shoestrap_getVariable( 'advanced_wordpress_disable_admin_bar_toggle' ) == 0 )
   show_admin_bar( false );
