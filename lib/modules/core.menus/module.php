@@ -12,6 +12,18 @@ function shoestrap_module_menus_options( $sections ) {
     'icon'  => 'el-icon-chevron-right icon-large'
   );
 
+  $fields[] = array(
+    'title'     => __( 'Menus Options Mode', 'shoestrap' ),
+    'desc'      => __( 'Show or hide advanced options', 'shoestrap' ),
+    'id'        => 'menus_options_mode',
+    'type'      => 'button_set',
+    'options'   => array(
+      'simple'    => __( 'Simple', 'shoestrap' ),
+      'advanced'  => __( 'Advanced', 'shoestrap' ),
+    ),
+    'default' => 'simple'
+  );
+
   $url = admin_url( 'nav-menus.php' );
   $fields[] = array( 
     'id'          => 'help7',
@@ -66,7 +78,8 @@ function shoestrap_module_menus_options( $sections ) {
     'min'         => 0,
     'step'        => 1,
     'max'         => 100,
-    'type'        => 'slider'
+    'type'        => 'slider',
+    'required'    => array( 'menus_options_mode', '=', array( 'advanced' ) ),
   );
 
   $fields[] = array( 
@@ -155,7 +168,6 @@ function shoestrap_module_menus_options( $sections ) {
       'size'      => 30 //this is the text size from preview box
     ),
     'type'        => 'typography',
-    // 'required'    => array('advanced_toggle','=',array('1'))
   );
 
   $fields[] = array( 
@@ -174,7 +186,6 @@ function shoestrap_module_menus_options( $sections ) {
       'size'      => 30 //this is the text size from preview box
     ),
     'type'        => 'typography',
-    // 'required'    => array('advanced_toggle','=',array('1'))
   );
 
   $fields[] = array( 
@@ -185,7 +196,8 @@ function shoestrap_module_menus_options( $sections ) {
     'min'         => 0,
     'step'        => 1,
     'max'         => 200,
-    'type'        => 'slider'
+    'type'        => 'slider',
+    'required'    => array( 'menus_options_mode', '=', array( 'advanced' ) ),
   );
 
   $fields[] = array( 
@@ -232,7 +244,7 @@ function shoestrap_module_menus_options( $sections ) {
     'title'       => __( 'Secondary Navbar', 'shoestrap' ),
     'desc'        => __( 'The secondary navbar is a 2nd navbar, located right above the main wrapper. You can show a menu there, by assigning it from Appearance -> Menus.', 'shoestrap' ),
     'type'        => 'info',
-    // 'required'    => array('advanced_toggle','=',array('1'))
+    'required'    => array( 'menus_options_mode', '=', array( 'advanced' ) ),
   );
 
   $fields[] = array( 
@@ -242,7 +254,7 @@ function shoestrap_module_menus_options( $sections ) {
     'customizer'  => array(),
     'default'     => 0,
     'type'        => 'switch',
-    // 'required'    => array('advanced_toggle','=',array('1'))
+    'required'    => array( 'menus_options_mode', '=', array( 'advanced' ) ),
   );
 
   $fields[] = array( 
@@ -285,7 +297,8 @@ function shoestrap_module_menus_options( $sections ) {
       'warning'   => __( 'Branding-Warning', 'shoestrap' ),
       'info'      => __( 'Branding-Info', 'shoestrap' ),
       'danger'    => __( 'Branding-Danger', 'shoestrap' ),
-    )
+    ),
+    'required'    => array( 'menus_options_mode', '=', array( 'advanced' ) ),
   );
 
   $fields[] = array( 
@@ -293,7 +306,8 @@ function shoestrap_module_menus_options( $sections ) {
     'desc'        => __( 'Default: OFF. See https://github.com/twittem/wp-bootstrap-navlist-walker for more details', 'shoestrap' ),
     'id'          => 'inverse_navlist',
     'default'     => 0,
-    'type'        => 'switch'
+    'type'        => 'switch',
+    'required'    => array( 'menus_options_mode', '=', array( 'advanced' ) ),
   );
 
   $section['fields'] = $fields;

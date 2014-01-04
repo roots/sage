@@ -14,6 +14,18 @@ function shoestrap_module_layout_options( $sections ) {
   );
 
   $fields[] = array( 
+    'title'     => __( 'Layout Options Mode', 'shoestrap' ),
+    'desc'      => __( 'Show or hide advanced options', 'shoestrap' ),
+    'id'        => 'layout_options_mode',
+    'type'      => 'button_set',
+    'options'   => array(
+      'simple'    => __( 'Simple', 'shoestrap' ),
+      'advanced'  => __( 'Advanced', 'shoestrap' ),
+    ),
+    'default' => 'simple'
+  );
+
+  $fields[] = array( 
     'title'     => __( 'Site Style', 'shoestrap' ),
     'desc'      => __( 'Select the default site layout. Default: Wide', 'shoestrap' ),
     'id'        => 'site_style',
@@ -53,6 +65,7 @@ function shoestrap_module_layout_options( $sections ) {
     'default'   => 0,
     'type'      => 'switch',
     'customizer'=> array(),
+    'required'    => array( 'layout_options_mode', '=', array( 'advanced' ) ),
   );
 
   $post_types = get_post_types( array( 'public' => true ), 'names' );
@@ -158,7 +171,7 @@ function shoestrap_module_layout_options( $sections ) {
     'min'       => 0,
     'max'       => 200,
     'type'      => 'slider',
-    // 'required'  => array('advanced_toggle','=',array('1'))
+    'required'  => array( 'layout_options_mode', '=', array( 'advanced' ) ),
   );
 
   $fields[] = array( 
@@ -169,7 +182,7 @@ function shoestrap_module_layout_options( $sections ) {
     'min'       => 0,
     'max'       => 200,
     'type'      => 'slider',
-    // 'required'  => array('advanced_toggle','=',array('1'))
+    'required'  => array( 'layout_options_mode', '=', array( 'advanced' ) ),
   );
 
   $fields[] = array( 
@@ -178,7 +191,7 @@ function shoestrap_module_layout_options( $sections ) {
     'id'        => 'custom_grid',
     'default'   => 0,
     'type'      => 'switch',
-    // 'required'  => array('advanced_toggle','=',array('1'))
+    'required'  => array( 'layout_options_mode', '=', array( 'advanced' ) ),
   );
 
   $fields[] = array( 
@@ -248,7 +261,6 @@ function shoestrap_module_layout_options( $sections ) {
 }
 endif;
 add_filter( 'redux/options/'.REDUX_OPT_NAME.'/sections', 'shoestrap_module_layout_options', 55 ); 
-
 
 
 include_once( dirname( __FILE__ ).'/functions.layout.php' );
