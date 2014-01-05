@@ -18,8 +18,8 @@ function shoestrap_background_css() {
   if ( $image_toggle == 0 && $pattern_toggle == 0 && $bg_color == $html_bg )
     return;
 
-  $background = ( $image_toggle == 1 && $bg_img != '' ) ? set_url_scheme( $bg_img['url'] ) : '';
   $background = ( $pattern_toggle == 1 && $bg_pattern != '' ) ? set_url_scheme( $bg_pattern ) : '';
+  $background = ( $image_toggle == 1 && $bg_img != '' ) ? set_url_scheme( $bg_img['url'] ) : '';
 
   // The Body background color
   $html_bg    = '#' . str_replace( '#', '', $html_bg ) . ';';
@@ -28,8 +28,8 @@ function shoestrap_background_css() {
   $content_bg = '#' . str_replace( '#', '', $bg_color ) . ';';
   $content_bg .= ( $content_opacity != 100 ) ? 'background:' . shoestrap_get_rgba( $content_bg, $content_opacity ) . ';' : '';
 
+  $repeat  = ( !in_array( $repeat, array( 'no-repeat', 'repeat-x', 'repeat-y', 'repeat' ) ) ) ? 'repeat' : $repeat;
   $repeat .= ( $repeat == 'no-repeat' ) ? 'background-size: auto;' : $repeat;
-  $repeat = ( !in_array( $repeat, array( 'no-repeat', 'repeat-x', 'repeat-y', 'repeat' ) ) ) ? 'repeat' : $repeat;
 
   $position = ( !in_array( $position, array( 'center', 'right', 'left' ) ) ) ? 'left' : $position;
 
