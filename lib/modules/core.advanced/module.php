@@ -180,16 +180,6 @@ function shoestrap_module_advanced_options( $sections ) {
   );
 
   $fields[] = array( 
-    'title'     => __( 'Toggle adminbar On/Off', 'shoestrap' ),
-    'desc'      => __( 'Turn the admin bar On or Off on the frontend. Default: On.', 'shoestrap' ),
-    'id'        => 'advanced_wordpress_disable_admin_bar_toggle',
-    'default'   => 1,
-    'customizer'=> array(),
-    'type'      => 'switch',
-    'required'  => array( 'advanced_options_mode', '=', array( 'advanced' ) ),
-  );
-
-  $fields[] = array( 
     'title'     => __( 'Minimize CSS', 'shoestrap' ),
     'desc'      => __( 'Minimize the genearated CSS. This should be ON for production sites. Default: OFF.', 'shoestrap' ),
     'id'        => 'minimize_css',
