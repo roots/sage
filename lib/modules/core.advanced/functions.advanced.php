@@ -35,3 +35,9 @@ function shoestrap_excerpt_more( $more ) {
 }
 endif;
 add_filter('excerpt_more', 'shoestrap_excerpt_more');
+
+function shoestrap_excerpt_length($length) {
+  $excerpt_length = shoestrap_getVariable( 'post_excerpt_length' );
+  return $excerpt_length;
+}
+add_filter('excerpt_length', 'shoestrap_excerpt_length');
