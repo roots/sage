@@ -8,8 +8,8 @@ add_theme_support('bootstrap-gallery');     // Enable Bootstrap's thumbnails com
 add_theme_support('nice-search');           // Enable /?s= to /search/ redirect
 //add_theme_support('jquery-cdn');            // Enable to load jQuery from the Google CDN
 //add_theme_support( 'buddypress' );          // Tell BuddyPress not to load the theme compat layer
-add_theme_support( 'override_bp_styles' );  // Dequeue loading of Buddypress related CSS-files
-//add_theme_support( 'override_bp_scripts' );  // Dequeue loading of Buddypress related JS-files
+add_theme_support( 'override-bp-styles' );  // Dequeue loading of Buddypress related CSS-files
+//add_theme_support( 'override-bp-scripts' );  // Dequeue loading of Buddypress related JS-files
 
 /**
  * Configuration values

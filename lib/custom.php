@@ -19,7 +19,7 @@ function dump_wp_filter() {
 add_shortcode( 'filter_dump', 'dump_wp_filter' );
 
 function override_buddypress_styles() {
-	if (current_theme_supports( 'override_bp_styles' )) {
+	if (current_theme_supports( 'override-bp-styles' )) {
 		wp_dequeue_style( 'bp-parent-css' );
 		wp_deregister_style( 'bp-parent-css' );
 		wp_dequeue_style( 'bp-legacy-css' );

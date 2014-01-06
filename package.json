@@ -25,6 +25,7 @@
         "grunt-contrib-watch": "~0.5.3",
         "grunt-contrib-less": "~0.8.1",
         "grunt-wp-version": "~0.1.0",
-        "grunt-rsync": "~0.1.1"
+        "grunt-rsync": "~0.1.1",
+        "grunt-ftp-deploy": "~0.1.1"
     }
 }

@@ -168,11 +168,16 @@ module.exports = function(grunt) {
                     '.DS_Store',
                     '.editorconfig',
                     'README.md',
+                    'CHANGELOG.md',
+                    'CONTRIBUTING.md',
+                    'LICENSE.md',
+                    'LICENSE.txt',
                     'config.rb',
                     '.jshintrc',
                     '*.tmproj',
                     '*.sublime-project',
                     'ftpsync.settings',
+                    '.ftppass',
                     'sftp-config.json'
                 ]
             },
@@ -189,11 +194,16 @@ module.exports = function(grunt) {
                     '.DS_Store',
                     '.editorconfig',
                     'README.md',
+                    'CHANGELOG.md',
+                    'CONTRIBUTING.md',
+                    'LICENSE.md',
+                    'LICENSE.txt',
                     'config.rb',
                     '.jshintrc',
                     '*.tmproj',
                     '*.sublime-project',
                     'ftpsync.settings',
+                    '.ftppass',
                     'sftp-config.json',
                     '*.css.map',
                     '*.js.map',
@@ -203,6 +213,32 @@ module.exports = function(grunt) {
                     'buddypress/js/_*.js',
                     'buddypress/css/_*.css',
                     'buddypress/css/*.less'
+                ]
+            }
+        },
+        'ftp-deploy': {
+            staging: {
+                auth: {
+                  host: 'pages-tdm-test.au.dk',
+                  port: 21,
+                  authKey: 'key1'
+                },
+                src: './',
+                dest: '/wp-content/themes/pages-theme-roots',
+                exclusions: [
+                    '<%= rsync.test.exclude %>'
+                ]
+            },
+            production: {
+                auth: {
+                  host: 'pages-tdm.au.dk',
+                  port: 21,
+                  authKey: 'key1'
+                },
+                src: './',
+                dest: '/wp-content/themes/pages-theme-roots',
+                exclusions: [
+                    '<%= rsync.test.exclude %>'
                 ]
             }
         }
@@ -215,6 +251,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-wp-version');
+    grunt.loadNpmTasks('grunt-ftp-deploy');
     grunt.loadNpmTasks("grunt-rsync");
 
     // Register tasks
@@ -227,6 +264,10 @@ module.exports = function(grunt) {
     grunt.registerTask('test', [
         'default',
         'rsync:test'
+    ]);
+    grunt.registerTask('staging', [
+        'default',
+        'ftp-deploy:staging'
     ]);
     grunt.registerTask('dist', [
         'default',
