@@ -1,7 +1,7 @@
 <?php
 
 
-require_once 'Cache.php';
+require_once __DIR__ . '/Cache.php';
 
 class Less_Parser extends Less_Cache{
 
