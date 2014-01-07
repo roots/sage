@@ -265,7 +265,7 @@ if( !class_exists( 'ReduxFramework' ) ) {
 		 * @return \ReduxFramework
 		 */
         public function __construct( $sections = array(), $args = array(), $extra_tabs = array() ) {
-            
+
             global $wp_version;
             
             // Set values
@@ -325,7 +325,6 @@ if( !class_exists( 'ReduxFramework' ) ) {
                 // Set the default values
                 $this->_set_default_options(); 
                 $this->_internationalization();
-
 
                 // Register extra extensions
                 $this->_register_extensions(); 
@@ -591,16 +590,17 @@ if( !class_exists( 'ReduxFramework' ) ) {
                         global $wp_post_types;
                         $defaults = array(
                             'public' => true,
-                            'publicly_queryable' => true,
+                            //'publicly_queryable' => true,
                             'exclude_from_search' => false,
-                            '_builtin' => false,
+                            //'_builtin' => true,
                         );
                         $args = wp_parse_args( $args, $defaults );
                         $output = 'names';
                         $operator = 'and';
                         $post_types = get_post_types($args, $output, $operator);
-                        $post_types['page'] = 'page';
-                        $post_types['post'] = 'post';
+
+                        //$post_types['page'] = 'page';
+                        //$post_types['post'] = 'post';
                         ksort($post_types);
 
                         foreach ( $post_types as $name => $title ) {
@@ -1454,12 +1454,12 @@ if( !class_exists( 'ReduxFramework' ) ) {
                             echo "</pre><br />";
 						}
 						// Set the default if it's a new field
-						if (!isset($this->options[$field['id']])) {
-			                if ( !empty( $this->options_defaults ) ) {
-			                	$this->options[$field['id']] = array_key_exists( $field['id'], $this->options_defaults ) ? $this->options_defaults[$field['id']] : '';	
-			                }
-							$runUpdate = true;
-						}						
+						if ( !isset( $this->options[$field['id']] ) ) {
+                            if ( isset( $field['default'] ) ) {
+                                $this->options_defaults[$field['id']] = $this->options[$field['id']] = $field['default'];
+                                $runUpdate = true;
+                            }
+						}	
 
 						if ( $this->args['default_show'] === true && isset( $field['default'] ) && isset($this->options[$field['id']]) && $this->options[$field['id']] != $field['default'] && $field['type'] !== "info" && $field['type'] !== "group" && $field['type'] !== "editor" && $field['type'] !== "ace_editor" ) {
 							$default_output = "";
