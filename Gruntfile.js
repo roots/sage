@@ -9,9 +9,7 @@ module.exports = function(grunt) {
             all: [
                 'Gruntfile.js',
                 'assets/js/*.js',
-                'buddypress/js/*.js',
                 '!assets/js/scripts.min.js',
-                '!buddypress/js/buddypress.js'
             ]
         },
         less: {
@@ -28,32 +26,32 @@ module.exports = function(grunt) {
                     sourceMapRootpath: '/wordpress/wp-content/themes/pages-theme-roots/'
                 }
             },
-            buddypress: {
-                files: {
-                    'buddypress/css/buddypress.css': [
-                        'buddypress/css/_buddypress.less'
-                    ]
-                },
-                options: {
-                    compress: true,
-                    sourceMap: true,
-                    sourceMapFilename: 'buddypress/css/buddypress.css.map',
-                    sourceMapRootpath: '/wordpress/wp-content/themes/pages-theme-roots/'
-                }
-            },
-            buddypress_rtl: {
-                files: {
-                    'buddypress/css/buddypress-rtl.css': [
-                        'buddypress/css/_buddypress-rtl.less'
-                    ]
-                },
-                options: {
-                    compress: true,
-                    sourceMap: true,
-                    sourceMapFilename: 'buddypress/css/buddypress-rtl.css.map',
-                    sourceMapRootpath: '/wordpress/wp-content/themes/pages-theme-roots/'
-                }
-            }
+            // buddypress: {
+            //     files: {
+            //         'buddypress/css/buddypress.css': [
+            //             'buddypress/css/_buddypress.less'
+            //         ]
+            //     },
+            //     options: {
+            //         compress: true,
+            //         sourceMap: true,
+            //         sourceMapFilename: 'buddypress/css/buddypress.css.map',
+            //         sourceMapRootpath: '/wordpress/wp-content/themes/pages-theme-roots/'
+            //     }
+            // },
+            // buddypress_rtl: {
+            //     files: {
+            //         'buddypress/css/buddypress-rtl.css': [
+            //             'buddypress/css/_buddypress-rtl.less'
+            //         ]
+            //     },
+            //     options: {
+            //         compress: true,
+            //         sourceMap: true,
+            //         sourceMapFilename: 'buddypress/css/buddypress-rtl.css.map',
+            //         sourceMapRootpath: '/wordpress/wp-content/themes/pages-theme-roots/'
+            //     }
+            // }
         },
         uglify: {
             theme: {
@@ -272,6 +270,6 @@ module.exports = function(grunt) {
     grunt.registerTask('dist', [
         'default',
         'rsync:dist'
-    ])
+    ]);
 
 };

@@ -17,4 +17,5 @@ require_once locate_template('/lib/relative-urls.php');   									// Root relat
 require_once locate_template('/lib/widgets.php');         									// Sidebars and widgets
 require_once locate_template('/lib/scripts.php');         									// Scripts and stylesheets
 require_once locate_template('/lib/custom.php');          									// Custom functions
+require_once locate_template('/lib/bp-custom.php');											// BuddyPress customization
 //require_once locate_template('/lib/wp-bootstrap-navwalker/wp_bootstrap_navwalker.php');		// Edward McIntyres wp-bootstrap-navwalker

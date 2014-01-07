@@ -25,9 +25,9 @@ div.item-list-tabs:not(#subnav) > ul {
   }
 }
 
-div.item-list-tabs#subnav > ul {
-  .pull-right;
-}
+/* ==========================================================================
+   Post form
+   ========================================================================== */
 
 div#buddypress {
   .container-fixed();
@@ -76,6 +76,109 @@ div#buddypress {
             margin-top: 25px;
             margin-bottom: 15px;
           }
+        }
+      }
+    }
+  }
+}
+
+
+/* ==========================================================================
+   Directories
+   ========================================================================== */
+
+div#buddypress form.dir-form {
+  #subnav > ul {
+    list-style: none;
+    .pull-right;
+  }
+
+  .dir-list {
+    ul.item-list {
+      list-style: none;
+      padding: 0;
+
+      > li:first-of-type {
+      	border-top: 1px solid @gray-lighter;
+      }
+
+      > li {
+      	border-bottom: 1px solid @gray-lighter;
+      	padding: 15px 0;
+
+        .item-avatar {
+          .pull-left;
+          img {
+            .pull-left;
+            width: 50px;
+            height: 50px;
+            margin: 0 15px 0 0;
+          }
+        }
+
+        div.item {
+          @media (min-width: @screen-sm-min) {
+            .pull-left;
+            max-width: 475px;
+          }
+
+        	.item-title {
+        		> a {
+              font-size: @font-size-h4;
+            }
+            span.update .activity-read-more a {
+              font-size: @font-size-small;
+            }
+        	}
+        	.item-meta span {
+        		color: @gray-light;
+        		.small;
+        	}
+        }
+
+        div.action {
+          @media (min-width: @screen-sm-min) {
+            .pull-right;
+            min-width: 150px;
+          }
+
+          .meta {
+            color: @gray-light;
+            .small;
+          }
+
+        	.generic-button {
+        		a.join-group,
+            a.request-membership,
+            a.follow {
+              .btn;
+              .btn-block;
+              .btn-success;
+            }
+        		a.leave-group,
+            a.unfollow {
+              .btn;
+              .btn-block;
+              .btn-danger;
+            }
+            a.membership-requested,
+            &.not-following a.disabled {
+              .btn;
+              .btn-block;
+              .btn-success;
+              .disabled;
+            }
+            &.following a.disabled {
+              .btn;
+              .btn-block;
+              .btn-danger;
+              .disabled;
+            }
+        	}
+        }
+
+        div.clear {
+          .clearfix();
         }
       }
     }
