@@ -44,7 +44,7 @@ if( !class_exists( 'ReduxFramework_image_select' ) ) {
          */
         function __construct( $field = array(), $value ='', $parent ) {
         
-            parent::__construct( $parent->sections, $parent->args );
+            //parent::__construct( $parent->sections, $parent->args );
             $this->parent = $parent;
             $this->field = $field;
             $this->value = $value;
@@ -148,7 +148,7 @@ if( !class_exists( 'ReduxFramework_image_select' ) ) {
                     echo '<li class="redux-image-select">';
                     echo '<label class="' . $selected . ' redux-image-select' . $is_preset_class . $this->field['id'] . '_' . $x . '" for="' . $this->field['id'] . '_' . (array_search( $k, array_keys( $this->field['options'] ) ) + 1) . '">';
 
-                    echo '<input type="radio" class="' . $this->field['class'] . '" id="' . $this->field['id'] . '_' . (array_search( $k, array_keys( $this->field['options'] ) ) + 1) . '" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . ']" value="' . $theValue . '" ' . checked( $this->value, $theValue, false ) . $presets . '/>';
+                    echo '<input type="radio" class="' . $this->field['class'] . '" id="' . $this->field['id'] . '_' . (array_search( $k, array_keys( $this->field['options'] ) ) + 1) . '" name="' . $this->parent->args['opt_name'] . '[' . $this->field['id'] . ']" value="' . $theValue . '" ' . checked( $this->value, $theValue, false ) . $presets . '/>';
                     
                     if( !empty( $this->field['tiles'] ) && $this->field['tiles'] == true ) {
                         echo '<span class="tiles" style="background-image: url(' . $v['img'] . ');" rel="'.$v['img'].'"">&nbsp;</span>';
@@ -186,8 +186,7 @@ if( !class_exists( 'ReduxFramework_image_select' ) ) {
                 'redux-field-image-select-js', 
                 ReduxFramework::$_url . 'inc/fields/image_select/field_image_select.js', 
                 array( 'jquery' ),
-                //time(),
-                false,
+                time(),
                 true
             );
 

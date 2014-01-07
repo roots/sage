@@ -10,7 +10,7 @@ class ReduxFramework_sortable extends ReduxFramework {
     */
     function __construct( $field = array(), $value ='', $parent ) {
     
-        parent::__construct( $parent->sections, $parent->args );
+        //parent::__construct( $parent->sections, $parent->args );
         $this->parent = $parent;
         $this->field = $field;
         $this->value = $value;
@@ -59,7 +59,7 @@ class ReduxFramework_sortable extends ReduxFramework {
             echo '<li>';
             
             $checked = "";
-            $name = $this->args['opt_name'] . '[' . $this->field['id'] . '][' . $k . ']';
+            $name = $this->parent->args['opt_name'] . '[' . $this->field['id'] . '][' . $k . ']';
 
             if ( $this->field['mode'] == "checkbox") {
             	$value_display = $this->value[$k];

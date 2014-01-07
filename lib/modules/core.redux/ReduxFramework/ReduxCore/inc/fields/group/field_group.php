@@ -47,7 +47,7 @@ if (!class_exists('ReduxFramework_group')) {
          */
         function __construct( $field = array(), $value ='', $parent ) {
         
-            parent::__construct( $parent->sections, $parent->args );
+            //parent::__construct( $parent->sections, $parent->args );
             $this->parent = $parent;
             $this->field = $field;
             $this->value = $value;
@@ -85,8 +85,8 @@ if (!class_exists('ReduxFramework_group')) {
             echo '<div>';//according content open
                 
             echo '<table style="margin-top: 0;" class="redux-groups-accordion redux-group form-table no-border">';    
-            echo '<fieldset><input type="hidden" id="' . $this->field['id'] . '_slide-title" data-name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][@][slide_title]" value="" class="regular-text slide-title" /></fieldset>';
-            echo '<input type="hidden" class="slide-sort" data-name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][@][slide_sort]" id="' . $this->field['id'] . '-slide_sort" value="" />';
+            echo '<fieldset><input type="hidden" id="' . $this->field['id'] . '_slide-title" data-name="' . $this->parent->args['opt_name'] . '[' . $this->field['id'] . '][@][slide_title]" value="" class="regular-text slide-title" /></fieldset>';
+            echo '<input type="hidden" class="slide-sort" data-name="' . $this->parent->args['opt_name'] . '[' . $this->field['id'] . '][@][slide_sort]" id="' . $this->field['id'] . '-slide_sort" value="" />';
             $field_is_title = true;
                 foreach ($this->field['subfields'] as $field) {
                     //we will enqueue all CSS/JS for sub fields if it wasn't enqueued
@@ -110,8 +110,8 @@ if (!class_exists('ReduxFramework_group')) {
                     $content = ob_get_contents();
 
                     //adding sorting number to the name of each fields in group
-                    $name = $this->args['opt_name'] . '[' . $field['id'] . ']';
-                    $content = str_replace($name,$this->args['opt_name'] . '[' . $this->field['id'] . '][@]['.$field['id'].']', $content);
+                    $name = $this->parent->args['opt_name'] . '[' . $field['id'] . ']';
+                    $content = str_replace($name,$this->parent->args['opt_name'] . '[' . $this->field['id'] . '][@]['.$field['id'].']', $content);
                     // remove the name property. asigned by the controller, create new data-name property for js
                     $content = str_replace('name', 'data-name', $content);
 
@@ -143,8 +143,8 @@ if (!class_exists('ReduxFramework_group')) {
                 echo '<table style="margin-top: 0;" class="redux-groups-accordion redux-group form-table no-border">';
                 
                 //echo '<h4>' . __('Group Title', 'redux-framework') . '</h4>';
-                echo '<fieldset><input type="hidden" id="' . $this->field['id'] . '-slide_title_' . $x . '" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][' . $x . '][slide_title]" value="' . esc_attr($group['slide_title']) . '" class="regular-text slide-title" /></fieldset>';
-                echo '<input type="hidden" class="slide-sort" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][' . $x . '][slide_sort]" id="' . $this->field['id'] . '-slide_sort_' . $x . '" value="' . $group['slide_sort'] . '" />';
+                echo '<fieldset><input type="hidden" id="' . $this->field['id'] . '-slide_title_' . $x . '" name="' . $this->parent->args['opt_name'] . '[' . $this->field['id'] . '][' . $x . '][slide_title]" value="' . esc_attr($group['slide_title']) . '" class="regular-text slide-title" /></fieldset>';
+                echo '<input type="hidden" class="slide-sort" name="' . $this->parent->args['opt_name'] . '[' . $this->field['id'] . '][' . $x . '][slide_sort]" id="' . $this->field['id'] . '-slide_sort_' . $x . '" value="' . $group['slide_sort'] . '" />';
                 
                 $field_is_title = true;
 
@@ -177,8 +177,8 @@ if (!class_exists('ReduxFramework_group')) {
                     $content = ob_get_contents();
 
                     //adding sorting number to the name of each fields in group
-                    $name = $this->args['opt_name'] . '[' . $field['id'] . ']';
-                    $content = str_replace($name, $this->args['opt_name'] . '[' . $this->field['id'] . ']['.$x.']['.$field['id'].']', $content);
+                    $name = $this->parent->args['opt_name'] . '[' . $field['id'] . ']';
+                    $content = str_replace($name, $this->parent->args['opt_name'] . '[' . $this->field['id'] . ']['.$x.']['.$field['id'].']', $content);
 
                     //we should add $sort to id to fix problem with select field
                     $content = str_replace(' id="'.$field['id'].'-select"', ' id="'.$field['id'].'-select-'.$sort.'"', $content);
@@ -200,7 +200,7 @@ if (!class_exists('ReduxFramework_group')) {
                 $x++;
             }
 
-            echo '</div><a href="javascript:void(0);" class="button redux-groups-add button-primary" rel-id="' . $this->field['id'] . '-ul" rel-name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][slide_title][]">' . __('Add', 'redux-framework') .' '.$this->field['groupname']. '</a><br/>';
+            echo '</div><a href="javascript:void(0);" class="button redux-groups-add button-primary" rel-id="' . $this->field['id'] . '-ul" rel-name="' . $this->parent->args['opt_name'] . '[' . $this->field['id'] . '][slide_title][]">' . __('Add', 'redux-framework') .' '.$this->field['groupname']. '</a><br/>';
 
             echo '</div>';
             
@@ -208,7 +208,7 @@ if (!class_exists('ReduxFramework_group')) {
 
         function support_multi($content, $field, $sort) {
             //convert name
-            $name = $this->args['opt_name'] . '[' . $field['id'] . ']';
+            $name = $this->parent->args['opt_name'] . '[' . $field['id'] . ']';
             $content = str_replace($name, $name . '[' . $sort . ']', $content);
             //we should add $sort to id to fix problem with select field
             $content = str_replace(' id="'.$field['id'].'-select"', ' id="'.$field['id'].'-select-'.$sort.'"', $content);
@@ -226,11 +226,18 @@ if (!class_exists('ReduxFramework_group')) {
          */
         public function enqueue() {
             wp_enqueue_script(
-                    'redux-field-group-js', ReduxFramework::$_url . 'inc/fields/group/field_group.js', array('jquery', 'jquery-ui-core', 'jquery-ui-accordion', 'wp-color-picker'), time(), true
+                'redux-field-group-js', 
+                ReduxFramework::$_url . 'inc/fields/group/field_group.js', 
+                array('jquery', 'jquery-ui-core', 'jquery-ui-accordion', 'wp-color-picker'), 
+                time(), 
+                true
             );
 
             wp_enqueue_style(
-                    'redux-field-group-css', ReduxFramework::$_url . 'inc/fields/group/field_group.css', time(), true
+                'redux-field-group-css', 
+                ReduxFramework::$_url . 'inc/fields/group/field_group.css', 
+                time(), 
+                true
             );
         }
 

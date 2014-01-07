@@ -1,209 +1,61 @@
 # 
 # Translators:
 # mapazarbasi <mail@abdullahpazarbasi.com>, 2014
+# mapazarbasi <mail@abdullahpazarbasi.com>, 2014
 msgid ""
 msgstr ""
-"Project-Id-Version: ReduxFramework\n"
-"POT-Creation-Date: 2014-01-01 23:17-0700\n"
-"PO-Revision-Date: 2014-01-02 07:20+0000\n"
-"Last-Translator: mapazarbasi <mail@abdullahpazarbasi.com>\n"
-"Language-Team: Turkish (Turkey) (http://www.transifex.com/projects/p/reduxframework/language/tr_TR/)\n"
+"Project-Id-Version: Redux Framework\n"
+"Report-Msgid-Bugs-To: https://github.com/ReduxFramework/ReduxFramework/issues\n"
+"POT-Creation-Date: 2014-01-06 15:43:01+00:00\n"
+"PO-Revision-Date: 2014-01-06 17:31+0000\n"
+"Last-Translator: Francois-Xavier Bénard <fxb@wp-translations.org>\n"
+"Language-Team: Turkish (Turkey) (http://www.transifex.com/projects/p/wp-translations/language/tr_TR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: tr_TR\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 1.6.3\n"
 "X-Poedit-Basepath: ../../\n"
-"X-Poedit-KeywordsList: __;_e;__ngettext;_n;__ngettext_noop;_n_noop;_x;_nx;_nx_noop;_ex;esc_attr__;esc_attr_e;esc_attr_x;esc_html__;esc_html_e;esc_html_x;_c;_nc\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext;_n;__ngettext_noop;_n_noop;_x;_nx;\n"
 "X-Poedit-SearchPath-0: ReduxCore\n"
 "X-Poedit-SearchPath-1: ReduxCore/languages\n"
 "X-Poedit-SearchPath-2: .\n"
 "X-Poedit-SourceCharset: UTF-8\n"
+"_nx_noop;_ex;esc_attr__;esc_attr_e;esc_attr_x;esc_html__;esc_html_e;: \n"
+"esc_html_x;_c;_nc: \n"
 
-#: ReduxCore/framework.php:115 ReduxCore/framework.php:121
-#: ReduxCore/framework.php:285 ReduxCore/framework.php:288
-msgid "Options"
-msgstr "Seçenekler"
-
-#: ReduxCore/framework.php:282
-msgid "Options panel created using"
-msgstr "Seçenekler paneli şu kullanılarak oluşturuldu:"
-
-#: ReduxCore/framework.php:282
-msgid "Redux Framework"
-msgstr "Redux Framework"
-
-#: ReduxCore/framework.php:911 ReduxCore/framework.php:912
-#: ReduxCore/framework.php:1918
-msgid "Import / Export"
-msgstr "İthal Et / İhraç Et"
-
-#: ReduxCore/framework.php:922 ReduxCore/framework.php:923
-#: ReduxCore/framework.php:1934 ReduxCore/framework.php:2032
-msgid "Options Object"
-msgstr "Seçenekler Nesnesi"
-
-#: ReduxCore/framework.php:933 ReduxCore/framework.php:934
-#: ReduxCore/framework.php:1948 ReduxCore/framework.php:2052
-msgid "System Info"
-msgstr "Sistem Bilgisi"
-
-#: ReduxCore/framework.php:1213
+#: ReduxCore/extensions/customizer/extension_customizer.php:341
+#: ReduxCore/framework.php:1232
 msgid "You have changes that are not saved. Would you like to save them now?"
 msgstr "Saklanmamış değişiklikleriniz mevcut. Şimdi saklamak ister misiniz?"
 
-#: ReduxCore/framework.php:1214
+#: ReduxCore/extensions/customizer/extension_customizer.php:342
+#: ReduxCore/framework.php:1233
 msgid "Are you sure? Resetting will lose all custom values."
 msgstr "Emin misiniz? Resetleme tüm özelleştirilmiş değerleri kaybettirecek."
 
-#: ReduxCore/framework.php:1215
-msgid "Are you sure? Resetting will lose all custom values in this section."
-msgstr "Emin misiniz? Resetleme bu kısımdaki tüm özelleştirilmiş değerleri kaybettirecek."
-
-#: ReduxCore/framework.php:1216
+#: ReduxCore/extensions/customizer/extension_customizer.php:343
+#: ReduxCore/framework.php:1235
 msgid ""
 "Your current options will be replaced with the values of this preset. Would "
 "you like to proceed?"
 msgstr "Geçerli seçimleriniz bu önsetteki değerlerle değiştirilecek. Onaylıyor musunuz?"
 
-#: ReduxCore/framework.php:1466
-msgid "Default"
-msgstr "Varsayılan"
+#: ReduxCore/extensions/customizer/extension_customizer.php:372
+msgid "You have changes that are not saved.  Would you like to save them now?"
+msgstr ""
 
-#: ReduxCore/framework.php:1778
-msgid "Warning- This options panel will not work properly without javascript!"
-msgstr "Uyarı: Bu seçenek paneli javascript olmaksızın doğru çalışmaz!"
+#: ReduxCore/extensions/customizer/extension_customizer.php:373
+msgid "Are you sure?  Resetting will lose all custom values."
+msgstr ""
 
-#: ReduxCore/framework.php:1832
-msgid "Expand"
-msgstr "Genişlet"
-
-#: ReduxCore/framework.php:1834 ReduxCore/framework.php:2082
-msgid "Save Changes"
-msgstr "Değişiklikleri Sakla"
-
-#: ReduxCore/framework.php:1836 ReduxCore/framework.php:2084
-msgid "Reset Section"
-msgstr "Kısımı Resetle"
-
-#: ReduxCore/framework.php:1838 ReduxCore/framework.php:2086
-msgid "Reset All"
-msgstr "Tümünü Resetle"
-
-#: ReduxCore/framework.php:1841 ReduxCore/framework.php:2089
-msgid "Working..."
-msgstr "İşliyor..."
-
-#: ReduxCore/framework.php:1848
-msgid "Settings Imported!"
-msgstr "Ayarlar İthal Edildi!"
-
-#: ReduxCore/framework.php:1850
-msgid "Settings Saved!"
-msgstr "Ayarlar Saklandı!"
-
-#: ReduxCore/framework.php:1854
-msgid "Settings have changed, you should save them!"
-msgstr "Ayarlar değişti, saklamalısınız!"
-
-#: ReduxCore/framework.php:1855
-msgid "error(s) were found!"
-msgstr "hata(lar) bulundu!"
-
-#: ReduxCore/framework.php:1856
-msgid "warning(s) were found!"
-msgstr "uyarı(lar) bulundu!"
-
-#: ReduxCore/framework.php:1985
-msgid "Import / Export Options"
-msgstr "İthal / İhraç Seçenekleri"
-
-#: ReduxCore/framework.php:1986
-msgid "Import Options"
-msgstr "İthal Seçenekleri"
-
-#: ReduxCore/framework.php:1987
-msgid "Import from file"
-msgstr "Dosyadan ithal et"
-
-#: ReduxCore/framework.php:1987
-msgid "Import from URL"
-msgstr "URL'den ithal et"
-
-#: ReduxCore/framework.php:1992
+#: ReduxCore/extensions/customizer/extension_customizer.php:374
 msgid ""
-"Input your backup file below and hit Import to restore your sites options "
-"from a backup."
-msgstr "Aşağıya yedek dosyanızın yolunu giriniz ve sitenizin seçeneklerini yedekten restore etmek için İthal Et'e basınız."
-
-#: ReduxCore/framework.php:2002
-msgid ""
-"Input the URL to another sites options set and hit Import to load the "
-"options from that site."
-msgstr "Birbaşka sitenin seçenek setine giden URL'yi giriniz ve o sitenin seçeneklerini yüklemek için İthal Et'e basınız."
-
-#: ReduxCore/framework.php:2009
-msgid "Import"
-msgstr "İthal Et"
-
-#: ReduxCore/framework.php:2009
-msgid ""
-"WARNING! This will overwrite all existing option values, please proceed with"
-" caution!"
-msgstr "UYARI! Bu tüm varolan seçenek değerlerinin üzerine yazacak, lütfen dikkatli olunuz!"
-
-#: ReduxCore/framework.php:2012
-msgid "Export Options"
-msgstr "Seçenekleri İhraç Et"
-
-#: ReduxCore/framework.php:2014
-msgid ""
-"Here you can copy/download your current option settings. Keep this safe as "
-"you can use it as a backup should anything go wrong, or you can use it to "
-"restore your settings on this site (or any other site)."
-msgstr "Geçerli seçenek ayarlarınızı buradan kopyalayabilirsiniz/indirebilirsiniz. Herhangi yanlışlıkta yedek olarak kullanabileceğiniz gibi bu sitedeki (ya da başka sitedeki) ayarlarınızı restore amaçlı kullanabilmeniz için güvende tutunuz."
-
-#: ReduxCore/framework.php:2018
-msgid "Copy"
-msgstr "Kopyala"
-
-#: ReduxCore/framework.php:2018
-msgid "Download"
-msgstr "İndir"
-
-#: ReduxCore/framework.php:2018
-msgid "Copy Link"
-msgstr "Link Kopyala"
-
-#: ReduxCore/framework.php:2041
-msgid "Show Object in Javascript Console Object"
-msgstr "Nesneyi Javascript Konsol Nesnesi olarak göster"
-
-#: ReduxCore/extensions/edd/extension_edd.php:77
-#: ReduxCore/extensions/edd/extension_edd.php:119
-#: ReduxCore/extensions/edd/extension_edd.php:176
-#: ReduxCore/extensions/edd/edd_license/field_edd_license.php:116
-msgid "Valid"
-msgstr "Geçerli"
-
-#: ReduxCore/extensions/edd/extension_edd.php:170
-#: ReduxCore/extensions/edd/edd_license/field_edd_license.php:110
-#: ReduxCore/extensions/edd/edd_license/field_edd_license.php:118
-msgid "Not Activated"
-msgstr "Aktif değil"
-
-#: ReduxCore/extensions/edd/extension_edd.php:173
-#: ReduxCore/extensions/edd/edd_license/field_edd_license.php:114
-msgid "Deactivated"
-msgstr "Deaktif durumda"
-
-#: ReduxCore/extensions/edd/extension_edd.php:179
-msgid "Not Valid"
-msgstr "Geçersiz"
+"Your current options will be replaced with the values of this preset.  Would"
+" you like to proceed?"
+msgstr ""
 
 #: ReduxCore/extensions/edd/edd_license/EDD_License_Handler.php:112
-#, php-format
 msgid "%1$s License Key"
 msgstr "%1$s Lisans Anahtarı"
 
@@ -217,6 +69,24 @@ msgid ""
 "Updating this theme will lose any customizations you have made. 'Cancel' to "
 "stop, 'OK' to update."
 msgstr "Bu temayı güncellemek, gerçekleştirdiğiniz bütün özelleştirmeleri kaybettirecektir. Vazgeçmek için 'İptal', güncellemek için 'Tamam'."
+
+#: ReduxCore/extensions/edd/edd_license/field_edd_license.php:110
+#: ReduxCore/extensions/edd/edd_license/field_edd_license.php:118
+#: ReduxCore/extensions/edd/extension_edd.php:170
+msgid "Not Activated"
+msgstr "Aktif değil"
+
+#: ReduxCore/extensions/edd/edd_license/field_edd_license.php:114
+#: ReduxCore/extensions/edd/extension_edd.php:173
+msgid "Deactivated"
+msgstr "Deaktif durumda"
+
+#: ReduxCore/extensions/edd/edd_license/field_edd_license.php:116
+#: ReduxCore/extensions/edd/extension_edd.php:77
+#: ReduxCore/extensions/edd/extension_edd.php:119
+#: ReduxCore/extensions/edd/extension_edd.php:176
+msgid "Valid"
+msgstr "Geçerli"
 
 #: ReduxCore/extensions/edd/edd_license/field_edd_license.php:124
 msgid "Verifying license..."
@@ -234,23 +104,154 @@ msgstr "Lisans Doğrula"
 msgid "Activate License"
 msgstr "Lisansı Aktif Et"
 
-#: ReduxCore/inc/tracking.php:59
-msgid "Help improve Our Panel"
-msgstr "Panelimizi geliştirmek için yardım edin"
+#: ReduxCore/extensions/edd/extension_edd.php:179
+msgid "Not Valid"
+msgstr "Geçersiz"
 
-#: ReduxCore/inc/tracking.php:60
+#: ReduxCore/framework.php:115 ReduxCore/framework.php:121
+#: ReduxCore/framework.php:280 ReduxCore/framework.php:283
+msgid "Options"
+msgstr "Seçenekler"
+
+#: ReduxCore/framework.php:277
+msgid "Options panel created using %1$s"
+msgstr "Seçenek paneli %1$s kullanılarak oluşturuldu"
+
+#: ReduxCore/framework.php:277
+msgid "Redux Framework"
+msgstr "Redux Framework"
+
+#: ReduxCore/framework.php:921 ReduxCore/framework.php:922
+#: ReduxCore/framework.php:1937
+msgid "Import / Export"
+msgstr "İthal Et / İhraç Et"
+
+#: ReduxCore/framework.php:932 ReduxCore/framework.php:933
+#: ReduxCore/framework.php:1953 ReduxCore/framework.php:2051
+msgid "Options Object"
+msgstr "Seçenekler Nesnesi"
+
+#: ReduxCore/framework.php:943 ReduxCore/framework.php:944
+#: ReduxCore/framework.php:1967 ReduxCore/framework.php:2071
+msgid "System Info"
+msgstr "Sistem Bilgisi"
+
+#: ReduxCore/framework.php:1234
+msgid "Are you sure? Resetting will lose all custom values in this section."
+msgstr "Emin misiniz? Resetleme bu kısımdaki tüm özelleştirilmiş değerleri kaybettirecek."
+
+#: ReduxCore/framework.php:1485
+msgid "Default"
+msgstr "Varsayılan"
+
+#: ReduxCore/framework.php:1797
+msgid "Warning- This options panel will not work properly without javascript!"
+msgstr "Uyarı: Bu seçenek paneli javascript olmaksızın doğru çalışmaz!"
+
+#: ReduxCore/framework.php:1851
+msgid "Expand"
+msgstr "Genişlet"
+
+#: ReduxCore/framework.php:1853 ReduxCore/framework.php:2112
+msgid "Save Changes"
+msgstr "Değişiklikleri Sakla"
+
+#: ReduxCore/framework.php:1855 ReduxCore/framework.php:2114
+msgid "Reset Section"
+msgstr "Kısımı Resetle"
+
+#: ReduxCore/framework.php:1857 ReduxCore/framework.php:2116
+msgid "Reset All"
+msgstr "Tümünü Resetle"
+
+#: ReduxCore/framework.php:1860 ReduxCore/framework.php:2119
+msgid "Working..."
+msgstr "İşliyor..."
+
+#: ReduxCore/framework.php:1867
+msgid "Settings Imported!"
+msgstr "Ayarlar İthal Edildi!"
+
+#: ReduxCore/framework.php:1869
+msgid "Settings Saved!"
+msgstr "Ayarlar Saklandı!"
+
+#: ReduxCore/framework.php:1873
+msgid "Settings have changed, you should save them!"
+msgstr "Ayarlar değişti, saklamalısınız!"
+
+#: ReduxCore/framework.php:1874
+msgid "error(s) were found!"
+msgstr "hata(lar) bulundu!"
+
+#: ReduxCore/framework.php:1875
+msgid "warning(s) were found!"
+msgstr "uyarı(lar) bulundu!"
+
+#: ReduxCore/framework.php:2004
+msgid "Import / Export Options"
+msgstr "İthal / İhraç Seçenekleri"
+
+#: ReduxCore/framework.php:2005
+msgid "Import Options"
+msgstr "İthal Seçenekleri"
+
+#: ReduxCore/framework.php:2006
+msgid "Import from file"
+msgstr "Dosyadan ithal et"
+
+#: ReduxCore/framework.php:2006
+msgid "Import from URL"
+msgstr "URL'den ithal et"
+
+#: ReduxCore/framework.php:2011
 msgid ""
-"Please helps us improve our panel by allowing us to gather anonymous usage "
-"stats so we know which configurations, plugins and themes to test with."
-msgstr "Lütfen hangi konfigürasyonlar, eklentiler ve temalar ile test ettiğinizi gösteren anonim kullanım istatistiklerini almamıza izin vererek panelimizi geliştirmemize yardımcı olunuz."
+"Input your backup file below and hit Import to restore your sites options "
+"from a backup."
+msgstr "Aşağıya yedek dosyanızın yolunu giriniz ve sitenizin seçeneklerini yedekten restore etmek için İthal Et'e basınız."
 
-#: ReduxCore/inc/tracking.php:65
-msgid "Allow tracking"
-msgstr "İzlemeye izin ver"
+#: ReduxCore/framework.php:2021
+msgid ""
+"Input the URL to another sites options set and hit Import to load the "
+"options from that site."
+msgstr "Birbaşka sitenin seçenek setine giden URL'yi giriniz ve o sitenin seçeneklerini yüklemek için İthal Et'e basınız."
 
-#: ReduxCore/inc/tracking.php:70
-msgid "Do not allow tracking"
-msgstr "İzlemeye izin verme"
+#: ReduxCore/framework.php:2028
+msgid "Import"
+msgstr "İthal Et"
+
+#: ReduxCore/framework.php:2028
+msgid ""
+"WARNING! This will overwrite all existing option values, please proceed with"
+" caution!"
+msgstr "UYARI! Bu tüm varolan seçenek değerlerinin üzerine yazacak, lütfen dikkatli olunuz!"
+
+#: ReduxCore/framework.php:2031
+msgid "Export Options"
+msgstr "Seçenekleri İhraç Et"
+
+#: ReduxCore/framework.php:2033
+msgid ""
+"Here you can copy/download your current option settings. Keep this safe as "
+"you can use it as a backup should anything go wrong, or you can use it to "
+"restore your settings on this site (or any other site)."
+msgstr "Geçerli seçenek ayarlarınızı buradan kopyalayabilirsiniz/indirebilirsiniz. Herhangi yanlışlıkta yedek olarak kullanabileceğiniz gibi bu sitedeki (ya da başka sitedeki) ayarlarınızı restore amaçlı kullanabilmeniz için güvende tutunuz."
+
+#: ReduxCore/framework.php:2037
+msgid "Copy"
+msgstr "Kopyala"
+
+#: ReduxCore/framework.php:2037
+msgid "Download"
+msgstr "İndir"
+
+#: ReduxCore/framework.php:2037
+msgid "Copy Link"
+msgstr "Link Kopyala"
+
+#: ReduxCore/framework.php:2060
+msgid "Show Object in Javascript Console Object"
+msgstr "Nesneyi Javascript Konsol Nesnesi olarak göster"
 
 #: ReduxCore/inc/fields/border/field_border.php:112
 #: ReduxCore/inc/fields/spacing/field_spacing.php:125
@@ -311,27 +312,6 @@ msgstr "yükseklik"
 msgid "Units"
 msgstr "Birimler"
 
-#: ReduxCore/inc/fields/fonts/field_fonts.php:118
-msgid "No fonts selected"
-msgstr "Hiçbir yazıtipi seçili değil"
-
-#: ReduxCore/inc/fields/fonts/field_fonts.php:152
-#: ReduxCore/inc/fields/media/field_media.php:150
-#: ReduxCore/inc/fields/slides/field_slides.php:117
-#: ReduxCore/inc/fields/slides/field_slides.php:180
-msgid "Upload"
-msgstr "Yükle"
-
-#: ReduxCore/inc/fields/fonts/field_fonts.php:158
-#: ReduxCore/inc/fields/media/field_media.php:156
-#: ReduxCore/inc/fields/multi_text/field_multi_text.php:75
-#: ReduxCore/inc/fields/multi_text/field_multi_text.php:78
-#: ReduxCore/inc/fields/multi_text/field_multi_text.php:81
-#: ReduxCore/inc/fields/slides/field_slides.php:123
-#: ReduxCore/inc/fields/slides/field_slides.php:182
-msgid "Remove"
-msgstr "Kaldır"
-
 #: ReduxCore/inc/fields/gallery/field_gallery.php:77
 msgid "Add/Edit Gallery"
 msgstr "Galeri Ekle/Düzenle"
@@ -376,6 +356,21 @@ msgstr "Aktif"
 #: ReduxCore/inc/fields/media/field_media.php:116
 msgid "No media selected"
 msgstr "Hiçbir ortam seçili değil"
+
+#: ReduxCore/inc/fields/media/field_media.php:150
+#: ReduxCore/inc/fields/slides/field_slides.php:117
+#: ReduxCore/inc/fields/slides/field_slides.php:180
+msgid "Upload"
+msgstr "Yükle"
+
+#: ReduxCore/inc/fields/media/field_media.php:156
+#: ReduxCore/inc/fields/multi_text/field_multi_text.php:75
+#: ReduxCore/inc/fields/multi_text/field_multi_text.php:78
+#: ReduxCore/inc/fields/multi_text/field_multi_text.php:81
+#: ReduxCore/inc/fields/slides/field_slides.php:123
+#: ReduxCore/inc/fields/slides/field_slides.php:182
+msgid "Remove"
+msgstr "Kaldır"
 
 #: ReduxCore/inc/fields/multi_text/field_multi_text.php:65
 msgid "Add More"
@@ -484,6 +479,24 @@ msgstr "Yazıtipi rengi"
 #: ReduxCore/inc/fields/typography/field_typography.php:564
 msgid "Google Webfonts"
 msgstr "Google Webfonts"
+
+#: ReduxCore/inc/tracking.php:59
+msgid "Help improve Our Panel"
+msgstr "Panelimizi geliştirmek için yardım edin"
+
+#: ReduxCore/inc/tracking.php:60
+msgid ""
+"Please helps us improve our panel by allowing us to gather anonymous usage "
+"stats so we know which configurations, plugins and themes to test with."
+msgstr "Lütfen hangi konfigürasyonlar, eklentiler ve temalar ile test ettiğinizi gösteren anonim kullanım istatistiklerini almamıza izin vererek panelimizi geliştirmemize yardımcı olunuz."
+
+#: ReduxCore/inc/tracking.php:65
+msgid "Allow tracking"
+msgstr "İzlemeye izin ver"
+
+#: ReduxCore/inc/tracking.php:70
+msgid "Do not allow tracking"
+msgstr "İzlemeye izin verme"
 
 #: ReduxCore/inc/validation/color/validation_color.php:15
 #: ReduxCore/inc/validation/color_rgba/validation_color_rgba.php:15

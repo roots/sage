@@ -1,0 +1,22 @@
+.redux-main .redux-container-background .background-position,
+.redux-main .redux-container-background .background-position select,
+.redux-main .redux-container-background .background-attachment,
+.redux-main .redux-container-background .background-attachment select,
+.redux-main .redux-container-background .background-clip,
+.redux-main .redux-container-background .background-clip select,
+.redux-main .redux-container-background .background-origin,
+.redux-main .redux-container-background .background-origin select,
+.redux-main .redux-container-background .background-size,
+.redux-main .redux-container-background .background-size select,
+.redux-main .redux-container-background .background-repeat,
+.redux-main .redux-container-background .background-repeat select {
+  width: 200px !important;
+  margin-right: 10px;
+  margin-bottom: 7px;
+}
+.redux-main .redux-container-background .body-background_previewer {
+  display: block;
+  width: 100%;
+  margin: 5px 0 10px;
+  border: 1px dotted lightgray;
+}

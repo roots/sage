@@ -41,3 +41,6 @@
   -webkit-border-radius: 3px;
   border-radius: 3px;
 }
+.redux-main .redux-main .upload {
+  width: 80% !important;
+}

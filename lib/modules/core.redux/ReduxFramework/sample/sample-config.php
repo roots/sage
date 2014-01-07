@@ -641,7 +641,16 @@ if ( !class_exists( "Redux_Framework_sample_config" ) ) {
 						'subtitle' => __('Pick a background color for the theme (default: #fff).', 'redux-framework-demo'),
 						'default' => '#FFFFFF',
 						'validate' => 'color',
-						),		
+						),	
+					array(
+						'id'=>'body-background',
+						'type' => 'background',
+						'output' => array('body'),
+						'title' => __('Body Background', 'redux-framework-demo'), 
+						'subtitle' => __('Body background with image, color, etc.', 'redux-framework-demo'),
+						//'default' => '#FFFFFF',
+						//'validate' => 'color',
+						),	
 					array(
 						'id'=>'color-footer',
 						'type' => 'color',

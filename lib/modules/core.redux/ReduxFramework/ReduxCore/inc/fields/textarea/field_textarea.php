@@ -289,7 +289,7 @@ class ReduxFramework_textarea extends ReduxFramework {
     */
     function __construct( $field = array(), $value ='', $parent ) {
     
-        parent::__construct( $parent->sections, $parent->args );
+        //parent::__construct( $parent->sections, $parent->args );
         $this->parent = $parent;
         $this->field = $field;
         $this->value = $value;
@@ -330,7 +330,7 @@ class ReduxFramework_textarea extends ReduxFramework {
      **/
     function render() {
 
-        $name = $this->args['opt_name'] . '[' . $this->field['id'] . ']';
+        $name = $this->parent->args['opt_name'] . '[' . $this->field['id'] . ']';
         $this->field['placeholder'] = isset($this->field['placeholder']) ? $this->field['placeholder'] : "";
         $this->field['rows'] = isset($this->field['rows']) ? $this->field['rows'] : 6;
 

@@ -10,7 +10,7 @@ class ReduxFramework_text extends ReduxFramework {
     */
     function __construct( $field = array(), $value ='', $parent ) {
     
-        parent::__construct( $parent->sections, $parent->args );
+        //parent::__construct( $parent->sections, $parent->args );
         $this->parent = $parent;
         $this->field = $field;
         $this->value = $value;
@@ -47,13 +47,13 @@ class ReduxFramework_text extends ReduxFramework {
 					$placeholder = (is_array($this->field['placeholder']) && isset($this->field['placeholder'][$k])) ?	' placeholder="' . esc_attr($this->field['placeholder'][$k]) . '" ' : '';
 				}
 				echo '<label for="' . $this->field['id'] . '-text-'.$k.'"><strong>'.$v.'</strong></label> ';
-				echo '<input type="text" id="' . $this->field['id'] . '-text-'.$k.'" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . ']['.$k.']" ' . $placeholder . 'value="' . esc_attr($this->value[$k]) . '" class="regular-text ' . $this->field['class'] . '" /><br />';
+				echo '<input type="text" id="' . $this->field['id'] . '-text-'.$k.'" name="' . $this->parent->args['opt_name'] . '[' . $this->field['id'] . ']['.$k.']" ' . $placeholder . 'value="' . esc_attr($this->value[$k]) . '" class="regular-text ' . $this->field['class'] . '" /><br />';
 				
 			}//foreach
     		
     	} else {
     		
-    		echo '<input type="text" id="' . $this->field['id'] . '-text" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . ']" ' . $placeholder . 'value="' . esc_attr($this->value) . '" class="regular-text ' . $this->field['class'] . '" />';
+    		echo '<input type="text" id="' . $this->field['id'] . '-text" name="' . $this->parent->args['opt_name'] . '[' . $this->field['id'] . ']" ' . $placeholder . 'value="' . esc_attr($this->value) . '" class="regular-text ' . $this->field['class'] . '" />';
     	}
 
     

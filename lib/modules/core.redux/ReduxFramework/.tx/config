@@ -1,5 +1,6 @@
 [main]
 host = https://www.transifex.com
+//lang_map = en_US: en, el: el-GR, de: de-DE, fr: fr_FR
 
 [redux-framework.redux-framework]
 file_filter = ReduxCore/languages/redux-framework-<lang>.po

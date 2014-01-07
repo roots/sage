@@ -35,7 +35,7 @@ class ReduxFramework_ace_editor extends ReduxFramework{
     */
     function __construct( $field = array(), $value ='', $parent ) {
     
-        parent::__construct( $parent->sections, $parent->args );
+        //parent::__construct( $parent->sections, $parent->args );
         $this->parent = $parent;
         $this->field = $field;
         $this->value = trim($value);
@@ -58,7 +58,7 @@ class ReduxFramework_ace_editor extends ReduxFramework{
             $this->field['theme'] = 'monokai';
         }
 
-        $name = $this->args['opt_name'] . '[' . $this->field['id'] . ']';
+        $name = $this->parent->args['opt_name'] . '[' . $this->field['id'] . ']';
 
         ?>
         <div class="ace-wrapper">
@@ -91,7 +91,7 @@ class ReduxFramework_ace_editor extends ReduxFramework{
             wp_enqueue_script(
                 'redux-field-ace-editor-js', 
                 ReduxFramework::$_url . 'inc/fields/ace_editor/field_ace_editor.js', 
-                array( 'ace-editor-js' ),
+                array( 'jquery' ),
                 time(),
                 true
             );

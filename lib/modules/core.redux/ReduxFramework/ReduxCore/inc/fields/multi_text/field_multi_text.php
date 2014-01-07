@@ -44,7 +44,7 @@ if( !class_exists( 'ReduxFramework_multi_text' ) ) {
          */
         function __construct( $field = array(), $value ='', $parent ) {
         
-            parent::__construct( $parent->sections, $parent->args );
+            //parent::__construct( $parent->sections, $parent->args );
             $this->parent = $parent;
             $this->field = $field;
             $this->value = $value;
@@ -72,17 +72,17 @@ if( !class_exists( 'ReduxFramework_multi_text' ) ) {
                 if( isset( $this->value ) && is_array( $this->value ) ) {
                     foreach( $this->value as $k => $value ) {
                         if( $value != '' )
-                            echo '<li><input type="text" id="' . $this->field['id'] . '-' . $k . '" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][]" value="' . esc_attr( $value ) . '" class="regular-text ' . $this->field['class'] . '" /> <a href="javascript:void(0);" class="deletion redux-multi-text-remove">' . __( 'Remove', 'redux-framework' ) . '</a></li>';
+                            echo '<li><input type="text" id="' . $this->field['id'] . '-' . $k . '" name="' . $this->parent->args['opt_name'] . '[' . $this->field['id'] . '][]" value="' . esc_attr( $value ) . '" class="regular-text ' . $this->field['class'] . '" /> <a href="javascript:void(0);" class="deletion redux-multi-text-remove">' . __( 'Remove', 'redux-framework' ) . '</a></li>';
                     }
                 } elseif($this->show_empty == true ) {
-                    echo '<li><input type="text" id="' . $this->field['id'] . '" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][]" value="" class="regular-text ' . $this->field['class'] . '" /> <a href="javascript:void(0);" class="deletion redux-multi-text-remove">' . __( 'Remove', 'redux-framework' ) . '</a></li>';
+                    echo '<li><input type="text" id="' . $this->field['id'] . '" name="' . $this->parent->args['opt_name'] . '[' . $this->field['id'] . '][]" value="" class="regular-text ' . $this->field['class'] . '" /> <a href="javascript:void(0);" class="deletion redux-multi-text-remove">' . __( 'Remove', 'redux-framework' ) . '</a></li>';
                 }
             
                 echo '<li style="display:none;"><input type="text" id="' . $this->field['id'] . '" name="" value="" class="regular-text" /> <a href="javascript:void(0);" class="deletion redux-multi-text-remove">' . __( 'Remove', 'redux-framework') . '</a></li>';
 
             echo '</ul>';
             $this->field['add_number'] = ( isset( $this->field['add_number'] ) && is_numeric( $this->field['add_number'] ) ) ? $this->field['add_number'] : 1;
-            echo '<a href="javascript:void(0);" class="button button-primary redux-multi-text-add" data-add_number="'.$this->field['add_number'].'" data-id="' . $this->field['id'] . '-ul" data-name="' . $this->args['opt_name'] . '[' . $this->field['id'] . '][]">' . $this->add_text . '</a><br/>';
+            echo '<a href="javascript:void(0);" class="button button-primary redux-multi-text-add" data-add_number="'.$this->field['add_number'].'" data-id="' . $this->field['id'] . '-ul" data-name="' . $this->parent->args['opt_name'] . '[' . $this->field['id'] . '][]">' . $this->add_text . '</a><br/>';
 
         }   
 
