@@ -38,7 +38,6 @@ if( !class_exists( 'ReduxFramework_extension_edd' ) ) {
       public $extension_url;
       public $extension_dir;
       public static $theInstance;
-      protected $fields = array();
 
       /**
        * Class Constructor. Defines the args for the extions class
@@ -63,29 +62,6 @@ if( !class_exists( 'ReduxFramework_extension_edd' ) ) {
         add_action( 'redux/options/'.$this->parent->args['opt_name'].'/field/edd_license/register', array( &$this, 'register' ) );
         add_action( 'wp_ajax_redux_edd_'.$parent->args['opt_name'].'_license', array( &$this, 'license_call' ) );
 
-        if ( $parent->args['forced_edd_license'] ) {
-          add_filter( 'redux/options/'.$parent->args['opt_name'].'/sections', array( &$this, 'filter_sections' ) );          
-        }
-
-        add_action( 'admin_menu', array( $this, 'filter_sections' ), 100 );
-        
-      }
-
-      public function filter_sections() {
-        $new = $this->parent->sections;
-        foreach( $this->parent->sections as $key=>$section ) {
-            if (isset($section['fields'])) {
-                foreach ($section['fields'] as $fkey => $field) {
-                    if ( $field['type'] == "edd_license" && isset( $field['forced'] ) && !empty( $field['forced'] ) ) {
-                        if ( !is_array( $field['forced'] ) && $field['forced'] ) {
-
-                        } else {
-
-                        }
-                    }
-                }
-            } 
-        }
       }
 
       public function getInstance() {

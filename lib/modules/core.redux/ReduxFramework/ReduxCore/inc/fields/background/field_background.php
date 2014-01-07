@@ -323,7 +323,11 @@ if( !class_exists( 'ReduxFramework_background' ) ) {
              **/
             if (!isset( $this->field['preview'] ) || $this->field['preview'] !== false):
                 
-                $css = "height: ".$this->field['preview_height'].";".$this->getCSS();
+                $css = $this->getCSS();
+                if (empty($css)) {
+                    $css = "display:none;";
+                }
+                $css .= "height: ".$this->field['preview_height'].";";
                 echo '<p class="clear '.$this->field['id'].'_previewer background-preview" style="'.$css.'">&nbsp;</p>';
 
             endif;                        
