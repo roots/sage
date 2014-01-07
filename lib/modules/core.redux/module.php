@@ -68,7 +68,7 @@ define('REDUX_OPT_NAME', 'shoestrap');
     $ReduxFramework->args['system_info']  = true;
   endif;
 }
-add_action('after_setup_theme', 'shoestrap_redux_init');
+add_action('init', 'shoestrap_redux_init');
 endif;
 
 // Saving functions on import, etc
