@@ -9,8 +9,8 @@
 class Shoestrap_Nav_Menu_Widget extends WP_Widget {
 
   function __construct() {
-    $widget_ops = array( 'description' => __('Use this widget to add one of your custom menus as a widget.') );
-    parent::__construct( 'nav_menu', __('Custom Menu'), $widget_ops );
+    $widget_ops = array( 'description' => __('Use this widget to add one of your custom menus as a widget.', 'shoestrap') );
+    parent::__construct( 'nav_menu', __('Custom Menu', 'shoestrap'), $widget_ops );
   }
 
   function widget($args, $instance) {
@@ -64,16 +64,16 @@ class Shoestrap_Nav_Menu_Widget extends WP_Widget {
 
     // If no menus exists, direct the user to go and create some.
     if ( !$menus ) {
-      echo '<p>'. sprintf( __('No menus have been created yet. <a href="%s">Create some</a>.'), admin_url('nav-menus.php') ) .'</p>';
+      echo '<p>'. sprintf( __('No menus have been created yet. <a href="%s">Create some</a>.', 'shoestrap'), admin_url('nav-menus.php') ) .'</p>';
       return;
     }
     ?>
     <p>
-      <label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:') ?></label>
+      <label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:', 'shoestrap') ?></label>
       <input type="text" class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" value="<?php echo $title; ?>" />
     </p>
     <p>
-      <label for="<?php echo $this->get_field_id('nav_menu'); ?>"><?php _e('Select Menu:'); ?></label>
+      <label for="<?php echo $this->get_field_id('nav_menu'); ?>"><?php _e('Select Menu:', 'shoestrap'); ?></label>
       <select id="<?php echo $this->get_field_id('nav_menu'); ?>" name="<?php echo $this->get_field_name('nav_menu'); ?>">
     <?php
       foreach ( $menus as $menu ) {
