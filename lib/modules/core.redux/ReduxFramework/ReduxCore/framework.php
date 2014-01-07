@@ -323,7 +323,7 @@ if( !class_exists( 'ReduxFramework' ) ) {
                 do_action( 'redux/contruct', $this );
 
                 // Set the default values
-                $this->_set_default_options(); 
+                $this->_default_cleanup(); 
                 $this->_internationalization();
 
                 // Register extra extensions
@@ -846,7 +846,7 @@ if( !class_exists( 'ReduxFramework' ) ) {
          * @access      public
          * @return      void
          */
-        public function _set_default_options() {
+        public function _default_cleanup() {
 
         	$this->instance = $this;
 
@@ -857,17 +857,6 @@ if( !class_exists( 'ReduxFramework' ) ) {
 
 		    // Grab database values
 		    $this->options = $this->get_options();
-
-		    // Set defaults if empty
-		    if( empty( $this->options ) && !empty( $this->sections ) ) {
-                if ( empty( $this->options_defaults ) ) {
-                    $this->options_defaults = $this->_default_values();    
-                }
-                if ( $this->args['save_defaults'] == true ) {
-                    $this->set_options( $this->options_defaults ); // Only save these defaults to the DB if this argument is set
-                }
-				$this->options = $this->options_defaults;
-		    }
 	    
         }
 
@@ -1420,7 +1409,7 @@ if( !class_exists( 'ReduxFramework' ) ) {
 
 				if ( empty( $section['id'] ) ) {
                     $section['id'] = sanitize_html_class( $section['title'] );	
-                }                   
+                }
 
                 // DOVY! Replace $k with $section['id'] when ready
                 $section = apply_filters( 'redux-section-' . $k . '-modifier-' . $this->args['opt_name'], $section );
@@ -1453,11 +1442,15 @@ if( !class_exists( 'ReduxFramework' ) ) {
 							print_r($field);
                             echo "</pre><br />";
 						}
-						// Set the default if it's a new field
-						if ( !isset( $this->options[$field['id']] ) ) {
-                            if ( isset( $field['default'] ) ) {
-                                $this->options_defaults[$field['id']] = $this->options[$field['id']] = $field['default'];
-                                $runUpdate = true;
+
+                        // Set the default value if present
+                        $this->options_defaults[$field['id']] = isset( $this->options_defaults[$field['id']] ) ? $this->options_defaults[$field['id']] : '';
+                        
+						// Set the defaults to the value if not present
+						if ( !isset( $this->options[$field['id']] ) && isset( $field['default'] ) ) {
+                            $this->options_defaults[$field['id']] = $this->options[$field['id']] = $field['default'];
+                            if ( $this->args['save_defaults'] ) { // Only save that to the DB if allowed to
+                                $runUpdate = true;    
                             }
 						}	
 
