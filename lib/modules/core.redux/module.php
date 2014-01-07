@@ -36,10 +36,12 @@ define('REDUX_OPT_NAME', 'shoestrap');
   $args['page_slug']              = REDUX_OPT_NAME;
   $theme                          = wp_get_theme();
   $args['display_name']           = $theme->get( 'Name' );
-  $args['menu_title']             = $theme->get( 'Name' );
+  $args['menu_title']             = __( 'Theme Options', 'shoestrap' );
   $args['display_version']        = $theme->get( 'Version' );    
   $args['page_position']          = 99;
-  $args['dev_mode']               = true;
+  $args['dev_mode']               = false;
+  $args['page_type']              = 'submenu';
+  $args['page_parent']            = 'themes.php';
 
   $args['help_tabs'][] = array(
     'id'      => 'redux-options-1',
