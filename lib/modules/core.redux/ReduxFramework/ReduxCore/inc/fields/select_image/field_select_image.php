@@ -19,7 +19,7 @@ class ReduxFramework_select_image extends ReduxFramework {
      * @since ReduxFramework 1.0.0
      */
     function __construct($field = array(), $value = '', $parent) {
-        parent::__construct($parent->sections, $parent->args);
+        //parent::__construct($parent->sections, $parent->args);
         $this->parent = $parent;
         $this->field = $field;
         $this->value = $value;
@@ -59,7 +59,7 @@ class ReduxFramework_select_image extends ReduxFramework {
             $placeholder = (isset($this->field['placeholder'])) ? esc_attr($this->field['placeholder']) : __('Select an item', 'redux-framework');
 
             // Begin the <select> tag
-            echo '<select id="' . $this->field['id'] . '-select_image" data-placeholder="' . $placeholder . '" name="' . $this->args['opt_name'] . '[' . $this->field['id'] . ']" class="redux-select-item redux-select-image-item ' . $this->field['class'] . '"' . $width . ' rows="6"' . '>';
+            echo '<select id="' . $this->field['id'] . '-select_image" data-placeholder="' . $placeholder . '" name="' . $this->parent->args['opt_name'] . '[' . $this->field['id'] . ']" class="redux-select-item redux-select-image-item ' . $this->field['class'] . '"' . $width . ' rows="6"' . '>';
             echo '<option></option>';
             
 
@@ -145,11 +145,18 @@ class ReduxFramework_select_image extends ReduxFramework {
      */
     function enqueue() {
         wp_enqueue_script(
-                'field-select-image-js', ReduxFramework::$_url . 'inc/fields/select_image/field_select_image.js', array(), time(), true
+            'field-select-image-js', 
+            ReduxFramework::$_url . 'inc/fields/select_image/field_select_image.js', 
+            array(), 
+            time(), 
+            true
         );
         
         wp_enqueue_style(
-                'redux-field-select-image-css', ReduxFramework::$_url . 'inc/fields/select_image/field_select_image.css', time(), true
+            'redux-field-select-image-css', 
+            ReduxFramework::$_url . 'inc/fields/select_image/field_select_image.css', 
+            time(), 
+            true
         );
     }
 

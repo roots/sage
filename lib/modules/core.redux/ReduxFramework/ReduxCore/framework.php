@@ -341,6 +341,9 @@ if( !class_exists( 'ReduxFramework' ) ) {
                 // Register setting
                 add_action( 'admin_init', array( &$this, '_register_settings' ) );
 
+                // Enqueue the admin page CSS and JS
+                add_action( 'admin_enqueue_scripts', array( &$this, '_enqueue' ) );
+
                 // Any dynamic CSS output, let's run
                 add_action( 'wp_head', array( &$this, '_enqueue_output' ), 150 );
                 
@@ -368,6 +371,11 @@ if( !class_exists( 'ReduxFramework' ) ) {
 		 */
 		public function _internationalization() {
             $locale = apply_filters( 'redux/textdomain/'. $this->args['opt_name'], get_locale(), $this->args['domain'] );
+            if (strpos($locale, '_') === false ) {
+                if ( file_exists( trailingslashit( WP_LANG_DIR ) . $this->args['domain'] . '/' . $this->args['domain'] . '-' . strtolower($locale).'_'.strtoupper($locale) . '.mo' ) ) {
+                    $locale = strtolower($locale).'_'.strtoupper($locale);    
+                }
+            }
             load_textdomain( $this->args['domain'], trailingslashit( WP_LANG_DIR ) . $this->args['domain'] . '/' . $this->args['domain'] . '-' . $locale . '.mo' );
             load_textdomain( $this->args['domain'], dirname( __FILE__ ) . '/languages/' . $this->args['domain'] . '-' . $locale . '.mo' );
         }
@@ -949,8 +957,6 @@ if( !class_exists( 'ReduxFramework' ) ) {
                     }
                 }
             }
-
-            add_action( 'admin_enqueue_scripts', array( &$this, '_enqueue' ) );
             
             add_action( 'load-' . $this->page, array( &$this, '_load_page' ) );
         }
@@ -1191,20 +1197,22 @@ if( !class_exists( 'ReduxFramework' ) ) {
                             $field_class = 'ReduxFramework_' . $field['type'];
                             $class_file = apply_filters( 'redux/'.$this->args['opt_name'].'/field/class/'.$field['type'], self::$_dir . 'inc/fields/' . $field['type'] . '/field_' . $field['type'] . '.php', $field );
                             if( $class_file ) {
-                                $en = false; // Check if this has been enqueued before
                                 if( !class_exists($field_class) ) {
                                     /** @noinspection PhpIncludeInspection */
                                     require_once( $class_file );
-                                    $en = true;
-                                }                                
+                                }
+
                                 
-                                if ( ( $en && method_exists( $field_class, 'enqueue' ) ) || method_exists( $field_class, 'localize' ) ) {
+
+                                if ( ( method_exists( $field_class, 'enqueue' ) ) || method_exists( $field_class, 'localize' ) ) {
                                     if ( !isset( $this->options[$field['id']] ) ) {
                                         $this->options[$field['id']] = "";
                                     }
                                     $theField = new $field_class( $field, $this->options[$field['id']], $this );
-                                    if ( $en && class_exists($field_class) && $this->args['dev_mode'] === true && method_exists( $field_class, 'enqueue' ) ) {
+                                    
+                                    if ( !wp_script_is( 'redux-field-'.$field['type'].'-js', 'enqueued' ) && class_exists($field_class) && $this->args['dev_mode'] === true && method_exists( $field_class, 'enqueue' ) ) {
                                         /** @noinspection PhpUndefinedMethodInspection */
+                                        //echo "DOVY";
                                         $theField->enqueue();    
                                     }
                                     if ( method_exists( $field_class, 'localize' ) ) {

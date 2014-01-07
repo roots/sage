@@ -10,7 +10,7 @@ class ReduxFramework_select extends ReduxFramework{
 	*/
 	function __construct( $field = array(), $value ='', $parent ) {
     
-		parent::__construct( $parent->sections, $parent->args );
+		//parent::__construct( $parent->sections, $parent->args );
 		$this->parent = $parent;
 		$this->field = $field;
 		$this->value = $value;
@@ -91,7 +91,7 @@ class ReduxFramework_select extends ReduxFramework{
 			}
 		
 			$sortable = (isset($this->field['sortable']) && $this->field['sortable']) ? ' select2-sortable"' : "";
-			echo '<select '.$multi.' id="'.$this->field['id'].'-select" data-placeholder="'.$placeholder.'" name="'.$this->args['opt_name'].'['.$this->field['id'].']'.$nameBrackets.'" class="redux-select-item '.$this->field['class'].$sortable.'"'.$width.' rows="6">';
+			echo '<select '.$multi.' id="'.$this->field['id'].'-select" data-placeholder="'.$placeholder.'" name="'.$this->parent->args['opt_name'].'['.$this->field['id'].']'.$nameBrackets.'" class="redux-select-item '.$this->field['class'].$sortable.'"'.$width.' rows="6">';
 				echo '<option></option>';
 
 

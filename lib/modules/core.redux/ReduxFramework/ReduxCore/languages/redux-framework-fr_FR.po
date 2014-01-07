@@ -1,256 +1,258 @@
 # 
 # Translators:
+# Francois-Xavier Bénard <fxb@wp-translations.org>, 2014
+# Francois-Xavier Bénard <fxb@wp-translations.org>, 2014
 # kprovance <kevin.provance@gmail.com>, 2014
 msgid ""
 msgstr ""
-"Project-Id-Version: ReduxFramework\n"
-"POT-Creation-Date: 2014-01-01 23:17-0700\n"
-"PO-Revision-Date: 2014-01-02 06:40+0000\n"
+"Project-Id-Version: Redux Framework\n"
+"Report-Msgid-Bugs-To: https://github.com/ReduxFramework/ReduxFramework/issues\n"
+"POT-Creation-Date: 2014-01-06 15:43:01+00:00\n"
+"PO-Revision-Date: 2014-01-06 17:25+0000\n"
 "Last-Translator: dovy <dovy@simplerain.com>\n"
-"Language-Team: French (France) (http://www.transifex.com/projects/p/reduxframework/language/fr_FR/)\n"
+"Language-Team: French (France) (http://www.transifex.com/projects/p/wp-translations/language/fr_FR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: fr_FR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 1.6.3\n"
 "X-Poedit-Basepath: ../../\n"
-"X-Poedit-KeywordsList: __;_e;__ngettext;_n;__ngettext_noop;_n_noop;_x;_nx;_nx_noop;_ex;esc_attr__;esc_attr_e;esc_attr_x;esc_html__;esc_html_e;esc_html_x;_c;_nc\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext;_n;__ngettext_noop;_n_noop;_x;_nx;\n"
 "X-Poedit-SearchPath-0: ReduxCore\n"
 "X-Poedit-SearchPath-1: ReduxCore/languages\n"
 "X-Poedit-SearchPath-2: .\n"
 "X-Poedit-SourceCharset: UTF-8\n"
+"_nx_noop;_ex;esc_attr__;esc_attr_e;esc_attr_x;esc_html__;esc_html_e;: \n"
+"esc_html_x;_c;_nc: \n"
 
-#: ReduxCore/framework.php:115 ReduxCore/framework.php:121
-#: ReduxCore/framework.php:285 ReduxCore/framework.php:288
-msgid "Options"
-msgstr "Choix"
-
-#: ReduxCore/framework.php:282
-msgid "Options panel created using"
-msgstr "Options de panneau créé à l'aide"
-
-#: ReduxCore/framework.php:282
-msgid "Redux Framework"
-msgstr "Redux Framework"
-
-#: ReduxCore/framework.php:911 ReduxCore/framework.php:912
-#: ReduxCore/framework.php:1918
-msgid "Import / Export"
-msgstr "Import / Export"
-
-#: ReduxCore/framework.php:922 ReduxCore/framework.php:923
-#: ReduxCore/framework.php:1934 ReduxCore/framework.php:2032
-msgid "Options Object"
-msgstr "Choix Objet"
-
-#: ReduxCore/framework.php:933 ReduxCore/framework.php:934
-#: ReduxCore/framework.php:1948 ReduxCore/framework.php:2052
-msgid "System Info"
-msgstr "Informations sur le système"
-
-#: ReduxCore/framework.php:1213
+#: ReduxCore/extensions/customizer/extension_customizer.php:341
+#: ReduxCore/framework.php:1232
 msgid "You have changes that are not saved. Would you like to save them now?"
 msgstr ""
 
-#: ReduxCore/framework.php:1214
+#: ReduxCore/extensions/customizer/extension_customizer.php:342
+#: ReduxCore/framework.php:1233
 msgid "Are you sure? Resetting will lose all custom values."
 msgstr ""
 
-#: ReduxCore/framework.php:1215
-msgid "Are you sure? Resetting will lose all custom values in this section."
-msgstr ""
-
-#: ReduxCore/framework.php:1216
+#: ReduxCore/extensions/customizer/extension_customizer.php:343
+#: ReduxCore/framework.php:1235
 msgid ""
 "Your current options will be replaced with the values of this preset. Would "
 "you like to proceed?"
 msgstr ""
 
-#: ReduxCore/framework.php:1466
-msgid "Default"
-msgstr "Par défaut"
-
-#: ReduxCore/framework.php:1778
-msgid "Warning- This options panel will not work properly without javascript!"
-msgstr "Attention!  Panneau pas de travail sans Javascript."
-
-#: ReduxCore/framework.php:1832
-msgid "Expand"
-msgstr "Etendre"
-
-#: ReduxCore/framework.php:1834 ReduxCore/framework.php:2082
-msgid "Save Changes"
-msgstr "Enregistrer les modifications"
-
-#: ReduxCore/framework.php:1836 ReduxCore/framework.php:2084
-msgid "Reset Section"
+#: ReduxCore/extensions/customizer/extension_customizer.php:372
+msgid "You have changes that are not saved.  Would you like to save them now?"
 msgstr ""
 
-#: ReduxCore/framework.php:1838 ReduxCore/framework.php:2086
-msgid "Reset All"
+#: ReduxCore/extensions/customizer/extension_customizer.php:373
+msgid "Are you sure?  Resetting will lose all custom values."
 msgstr ""
 
-#: ReduxCore/framework.php:1841 ReduxCore/framework.php:2089
-msgid "Working..."
-msgstr "Travailler ..."
-
-#: ReduxCore/framework.php:1848
-msgid "Settings Imported!"
-msgstr "Paramètres ont été importés!"
-
-#: ReduxCore/framework.php:1850
-msgid "Settings Saved!"
-msgstr "Paramètres sauvegardés!"
-
-#: ReduxCore/framework.php:1854
-msgid "Settings have changed, you should save them!"
-msgstr "Les paramètres ont changé. Enregistrer?"
-
-#: ReduxCore/framework.php:1855
-msgid "error(s) were found!"
-msgstr "Erreur (s) ont été découverts"
-
-#: ReduxCore/framework.php:1856
-msgid "warning(s) were found!"
-msgstr "Avertissement (s) ont été découverts!"
-
-#: ReduxCore/framework.php:1985
-msgid "Import / Export Options"
-msgstr "Import/ Export Choix"
-
-#: ReduxCore/framework.php:1986
-msgid "Import Options"
-msgstr "Import Choix"
-
-#: ReduxCore/framework.php:1987
-msgid "Import from file"
-msgstr "Importer un fichier"
-
-#: ReduxCore/framework.php:1987
-msgid "Import from URL"
-msgstr "Importer depuis l'URL"
-
-#: ReduxCore/framework.php:1992
+#: ReduxCore/extensions/customizer/extension_customizer.php:374
 msgid ""
-"Input your backup file below and hit Import to restore your sites options "
-"from a backup."
-msgstr "Importez le fichier de sauvegarde par le bas. Appuyez sur Importer pour les options de restauration du site à partir d'un fichier de sauvegarde."
-
-#: ReduxCore/framework.php:2002
-msgid ""
-"Input the URL to another sites options set and hit Import to load the "
-"options from that site."
-msgstr "Importer URL à l'option poste d'un autre site. Appuyez sur Importer pour charger."
-
-#: ReduxCore/framework.php:2009
-msgid "Import"
-msgstr "Import"
-
-#: ReduxCore/framework.php:2009
-msgid ""
-"WARNING! This will overwrite all existing option values, please proceed with"
-" caution!"
-msgstr "ATTENTION! Toutes les valeurs seront écrasées. S'il vous plaît procéder avec prudence!"
-
-#: ReduxCore/framework.php:2012
-msgid "Export Options"
-msgstr "Export Choix"
-
-#: ReduxCore/framework.php:2014
-msgid ""
-"Here you can copy/download your current option settings. Keep this safe as "
-"you can use it as a backup should anything go wrong, or you can use it to "
-"restore your settings on this site (or any other site)."
-msgstr "Copier / télécharger les options actuelles ici. Conservez-le précieusement et l'utiliser comme une sauvegarde en cas de problème, ou l'utiliser pour restaurer les paramètres de cet ou un autre site."
-
-#: ReduxCore/framework.php:2018
-msgid "Copy"
-msgstr "Copie"
-
-#: ReduxCore/framework.php:2018
-msgid "Download"
-msgstr "Télécharger"
-
-#: ReduxCore/framework.php:2018
-msgid "Copy Link"
-msgstr "Copie Lien"
-
-#: ReduxCore/framework.php:2041
-msgid "Show Object in Javascript Console Object"
-msgstr "Afficher objet en objet Javascript Console"
-
-#: ReduxCore/extensions/edd/extension_edd.php:77
-#: ReduxCore/extensions/edd/extension_edd.php:119
-#: ReduxCore/extensions/edd/extension_edd.php:176
-#: ReduxCore/extensions/edd/edd_license/field_edd_license.php:116
-msgid "Valid"
-msgstr ""
-
-#: ReduxCore/extensions/edd/extension_edd.php:170
-#: ReduxCore/extensions/edd/edd_license/field_edd_license.php:110
-#: ReduxCore/extensions/edd/edd_license/field_edd_license.php:118
-msgid "Not Activated"
-msgstr ""
-
-#: ReduxCore/extensions/edd/extension_edd.php:173
-#: ReduxCore/extensions/edd/edd_license/field_edd_license.php:114
-msgid "Deactivated"
-msgstr ""
-
-#: ReduxCore/extensions/edd/extension_edd.php:179
-msgid "Not Valid"
+"Your current options will be replaced with the values of this preset.  Would"
+" you like to proceed?"
 msgstr ""
 
 #: ReduxCore/extensions/edd/edd_license/EDD_License_Handler.php:112
-#, php-format
 msgid "%1$s License Key"
 msgstr ""
 
 #: ReduxCore/extensions/edd/edd_license/EDD_License_Handler.php:218
 #: ReduxCore/extensions/edd/edd_license/field_edd_license.php:144
 msgid "Deactivate License"
-msgstr ""
+msgstr "Désactiver la license"
 
 #: ReduxCore/extensions/edd/edd_license/EDD_SL_Theme_Updater.php:54
 msgid ""
 "Updating this theme will lose any customizations you have made. 'Cancel' to "
 "stop, 'OK' to update."
-msgstr ""
+msgstr "Mettre à jour ce thème vous fera perdre toutes les modifications personnelles que vous y avez apportées. « Annuler » pour arrêter, « OK » pour mettre à jour."
+
+#: ReduxCore/extensions/edd/edd_license/field_edd_license.php:110
+#: ReduxCore/extensions/edd/edd_license/field_edd_license.php:118
+#: ReduxCore/extensions/edd/extension_edd.php:170
+msgid "Not Activated"
+msgstr "Non activé"
+
+#: ReduxCore/extensions/edd/edd_license/field_edd_license.php:114
+#: ReduxCore/extensions/edd/extension_edd.php:173
+msgid "Deactivated"
+msgstr "Désactivé"
+
+#: ReduxCore/extensions/edd/edd_license/field_edd_license.php:116
+#: ReduxCore/extensions/edd/extension_edd.php:77
+#: ReduxCore/extensions/edd/extension_edd.php:119
+#: ReduxCore/extensions/edd/extension_edd.php:176
+msgid "Valid"
+msgstr "Valide"
 
 #: ReduxCore/extensions/edd/edd_license/field_edd_license.php:124
 msgid "Verifying license..."
-msgstr ""
+msgstr "Vérification de la licence..."
 
 #: ReduxCore/extensions/edd/edd_license/field_edd_license.php:125
 msgid "Status"
-msgstr ""
+msgstr "Etat"
 
 #: ReduxCore/extensions/edd/edd_license/field_edd_license.php:134
 msgid "Verify License"
-msgstr ""
+msgstr "Vérifier la licence"
 
 #: ReduxCore/extensions/edd/edd_license/field_edd_license.php:139
 msgid "Activate License"
 msgstr ""
 
-#: ReduxCore/inc/tracking.php:59
-msgid "Help improve Our Panel"
-msgstr "Aider à améliorer notre panel"
+#: ReduxCore/extensions/edd/extension_edd.php:179
+msgid "Not Valid"
+msgstr "Non valide"
 
-#: ReduxCore/inc/tracking.php:60
+#: ReduxCore/framework.php:115 ReduxCore/framework.php:121
+#: ReduxCore/framework.php:280 ReduxCore/framework.php:283
+msgid "Options"
+msgstr "Choix"
+
+#: ReduxCore/framework.php:277
+msgid "Options panel created using %1$s"
+msgstr ""
+
+#: ReduxCore/framework.php:277
+msgid "Redux Framework"
+msgstr "Redux Framework"
+
+#: ReduxCore/framework.php:921 ReduxCore/framework.php:922
+#: ReduxCore/framework.php:1937
+msgid "Import / Export"
+msgstr "Import / Export"
+
+#: ReduxCore/framework.php:932 ReduxCore/framework.php:933
+#: ReduxCore/framework.php:1953 ReduxCore/framework.php:2051
+msgid "Options Object"
+msgstr "Choix Objet"
+
+#: ReduxCore/framework.php:943 ReduxCore/framework.php:944
+#: ReduxCore/framework.php:1967 ReduxCore/framework.php:2071
+msgid "System Info"
+msgstr "Informations sur le système"
+
+#: ReduxCore/framework.php:1234
+msgid "Are you sure? Resetting will lose all custom values in this section."
+msgstr ""
+
+#: ReduxCore/framework.php:1485
+msgid "Default"
+msgstr "Par défaut"
+
+#: ReduxCore/framework.php:1797
+msgid "Warning- This options panel will not work properly without javascript!"
+msgstr "Attention!  Panneau pas de travail sans Javascript."
+
+#: ReduxCore/framework.php:1851
+msgid "Expand"
+msgstr "Etendre"
+
+#: ReduxCore/framework.php:1853 ReduxCore/framework.php:2112
+msgid "Save Changes"
+msgstr "Enregistrer les modifications"
+
+#: ReduxCore/framework.php:1855 ReduxCore/framework.php:2114
+msgid "Reset Section"
+msgstr ""
+
+#: ReduxCore/framework.php:1857 ReduxCore/framework.php:2116
+msgid "Reset All"
+msgstr "Tout réinitialiser"
+
+#: ReduxCore/framework.php:1860 ReduxCore/framework.php:2119
+msgid "Working..."
+msgstr "En cours..."
+
+#: ReduxCore/framework.php:1867
+msgid "Settings Imported!"
+msgstr "Paramètres importés !"
+
+#: ReduxCore/framework.php:1869
+msgid "Settings Saved!"
+msgstr "Paramètres sauvegardés !"
+
+#: ReduxCore/framework.php:1873
+msgid "Settings have changed, you should save them!"
+msgstr "Les paramètres ont changé. Enregistrer?"
+
+#: ReduxCore/framework.php:1874
+msgid "error(s) were found!"
+msgstr "Erreur(s) ont été découvertes !"
+
+#: ReduxCore/framework.php:1875
+msgid "warning(s) were found!"
+msgstr "Avertissement(s) ont été découverts !"
+
+#: ReduxCore/framework.php:2004
+msgid "Import / Export Options"
+msgstr "Import/ Export Choix"
+
+#: ReduxCore/framework.php:2005
+msgid "Import Options"
+msgstr "Import Choix"
+
+#: ReduxCore/framework.php:2006
+msgid "Import from file"
+msgstr "Importer un fichier"
+
+#: ReduxCore/framework.php:2006
+msgid "Import from URL"
+msgstr "Importer depuis l'URL"
+
+#: ReduxCore/framework.php:2011
 msgid ""
-"Please helps us improve our panel by allowing us to gather anonymous usage "
-"stats so we know which configurations, plugins and themes to test with."
-msgstr "S'il vous plaît nous aider à améliorer notre panel en nous permettant de recueillir des informations sur l'utilisation anonyme afin que nous sachions quelles configurations, des plugins et des thèmes permettant de tester."
+"Input your backup file below and hit Import to restore your sites options "
+"from a backup."
+msgstr "Importez le fichier de sauvegarde par le bas. Appuyez sur Importer pour les options de restauration du site à partir d'un fichier de sauvegarde."
 
-#: ReduxCore/inc/tracking.php:65
-msgid "Allow tracking"
-msgstr "Permettre le suivi"
+#: ReduxCore/framework.php:2021
+msgid ""
+"Input the URL to another sites options set and hit Import to load the "
+"options from that site."
+msgstr "Importer URL à l'option poste d'un autre site. Appuyez sur Importer pour charger."
 
-#: ReduxCore/inc/tracking.php:70
-msgid "Do not allow tracking"
-msgstr "Ne pas permettre le suivi"
+#: ReduxCore/framework.php:2028
+msgid "Import"
+msgstr "Import"
+
+#: ReduxCore/framework.php:2028
+msgid ""
+"WARNING! This will overwrite all existing option values, please proceed with"
+" caution!"
+msgstr "ATTENTION! Toutes les valeurs seront écrasées. S'il vous plaît procéder avec prudence!"
+
+#: ReduxCore/framework.php:2031
+msgid "Export Options"
+msgstr "Options d'Exportation"
+
+#: ReduxCore/framework.php:2033
+msgid ""
+"Here you can copy/download your current option settings. Keep this safe as "
+"you can use it as a backup should anything go wrong, or you can use it to "
+"restore your settings on this site (or any other site)."
+msgstr "Copier / télécharger les options actuelles ici. Conservez-le précieusement et l'utiliser comme une sauvegarde en cas de problème, ou l'utiliser pour restaurer les paramètres de cet ou un autre site."
+
+#: ReduxCore/framework.php:2037
+msgid "Copy"
+msgstr "Copier"
+
+#: ReduxCore/framework.php:2037
+msgid "Download"
+msgstr "Télécharger"
+
+#: ReduxCore/framework.php:2037
+msgid "Copy Link"
+msgstr "Copier Lien"
+
+#: ReduxCore/framework.php:2060
+msgid "Show Object in Javascript Console Object"
+msgstr "Afficher objet en objet Javascript Console"
 
 #: ReduxCore/inc/fields/border/field_border.php:112
 #: ReduxCore/inc/fields/spacing/field_spacing.php:125
@@ -311,27 +313,6 @@ msgstr "Hauteur"
 msgid "Units"
 msgstr "Unités"
 
-#: ReduxCore/inc/fields/fonts/field_fonts.php:118
-msgid "No fonts selected"
-msgstr ""
-
-#: ReduxCore/inc/fields/fonts/field_fonts.php:152
-#: ReduxCore/inc/fields/media/field_media.php:150
-#: ReduxCore/inc/fields/slides/field_slides.php:117
-#: ReduxCore/inc/fields/slides/field_slides.php:180
-msgid "Upload"
-msgstr "Télécharger"
-
-#: ReduxCore/inc/fields/fonts/field_fonts.php:158
-#: ReduxCore/inc/fields/media/field_media.php:156
-#: ReduxCore/inc/fields/multi_text/field_multi_text.php:75
-#: ReduxCore/inc/fields/multi_text/field_multi_text.php:78
-#: ReduxCore/inc/fields/multi_text/field_multi_text.php:81
-#: ReduxCore/inc/fields/slides/field_slides.php:123
-#: ReduxCore/inc/fields/slides/field_slides.php:182
-msgid "Remove"
-msgstr "Supprimer"
-
 #: ReduxCore/inc/fields/gallery/field_gallery.php:77
 msgid "Add/Edit Gallery"
 msgstr "Ajouter ou modifier galerie"
@@ -346,7 +327,7 @@ msgstr "Nouveau"
 
 #: ReduxCore/inc/fields/group/field_group.php:84
 msgid "New "
-msgstr ""
+msgstr "Nouveau"
 
 #: ReduxCore/inc/fields/group/field_group.php:133
 #: ReduxCore/inc/fields/group/field_group.php:198
@@ -367,7 +348,7 @@ msgstr "Flotter"
 
 #: ReduxCore/inc/fields/link_color/field_link_color.php:94
 msgid "Visited"
-msgstr ""
+msgstr "Visité"
 
 #: ReduxCore/inc/fields/link_color/field_link_color.php:98
 msgid "Active"
@@ -375,7 +356,22 @@ msgstr "Actif"
 
 #: ReduxCore/inc/fields/media/field_media.php:116
 msgid "No media selected"
-msgstr ""
+msgstr "Aucun média selectionné"
+
+#: ReduxCore/inc/fields/media/field_media.php:150
+#: ReduxCore/inc/fields/slides/field_slides.php:117
+#: ReduxCore/inc/fields/slides/field_slides.php:180
+msgid "Upload"
+msgstr "Télécharger"
+
+#: ReduxCore/inc/fields/media/field_media.php:156
+#: ReduxCore/inc/fields/multi_text/field_multi_text.php:75
+#: ReduxCore/inc/fields/multi_text/field_multi_text.php:78
+#: ReduxCore/inc/fields/multi_text/field_multi_text.php:81
+#: ReduxCore/inc/fields/slides/field_slides.php:123
+#: ReduxCore/inc/fields/slides/field_slides.php:182
+msgid "Remove"
+msgstr "Supprimer"
 
 #: ReduxCore/inc/fields/multi_text/field_multi_text.php:65
 msgid "Add More"
@@ -417,12 +413,12 @@ msgstr "URL"
 #: ReduxCore/inc/fields/slides/field_slides.php:138
 #: ReduxCore/inc/fields/slides/field_slides.php:200
 msgid "Select an Option"
-msgstr ""
+msgstr "Selectionner une option"
 
 #: ReduxCore/inc/fields/slides/field_slides.php:158
 #: ReduxCore/inc/fields/slides/field_slides.php:220
 msgid "Delete Slide"
-msgstr "Sortir les lames"
+msgstr "Supprimer la diapositive"
 
 #: ReduxCore/inc/fields/slides/field_slides.php:223
 msgid "Add Slide"
@@ -484,6 +480,24 @@ msgstr "Font couleur"
 #: ReduxCore/inc/fields/typography/field_typography.php:564
 msgid "Google Webfonts"
 msgstr "Google Webfonts"
+
+#: ReduxCore/inc/tracking.php:59
+msgid "Help improve Our Panel"
+msgstr "Aider à améliorer notre panel"
+
+#: ReduxCore/inc/tracking.php:60
+msgid ""
+"Please helps us improve our panel by allowing us to gather anonymous usage "
+"stats so we know which configurations, plugins and themes to test with."
+msgstr "S'il vous plaît nous aider à améliorer notre panel en nous permettant de recueillir des informations sur l'utilisation anonyme afin que nous sachions quelles configurations, des plugins et des thèmes permettant de tester."
+
+#: ReduxCore/inc/tracking.php:65
+msgid "Allow tracking"
+msgstr "Permettre le suivi"
+
+#: ReduxCore/inc/tracking.php:70
+msgid "Do not allow tracking"
+msgstr "Ne pas permettre le suivi"
 
 #: ReduxCore/inc/validation/color/validation_color.php:15
 #: ReduxCore/inc/validation/color_rgba/validation_color_rgba.php:15
