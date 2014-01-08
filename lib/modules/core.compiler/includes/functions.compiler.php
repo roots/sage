@@ -13,30 +13,36 @@ function shoestrap_compiler() {
   $bootstrap_uri      = '';
   $custom_less_file   = get_template_directory() . '/assets/less/custom.less';
 
-  $parser = new Less_Parser( $options );
+  try {
 
-  // The main app.less file
-  $parser->parseFile( $bootstrap_location . 'app.less', $bootstrap_uri );
-  // Our custom variables
-  $parser->parse( shoestrap_variables() );
+    $parser = new Less_Parser( $options );
 
-  // Include the Elusive Icons
-  $parser->parseFile( $webfont_location . 'elusive-webfont.less', $bootstrap_uri );
+    // The main app.less file
+    $parser->parseFile( $bootstrap_location . 'app.less', $bootstrap_uri );
+    // Our custom variables
+    $parser->parse( shoestrap_variables() );
 
-  // Enable gradients
-  if ( shoestrap_getVariable( 'gradients_toggle' ) == 1 )
-    $parser->parseFile( $bootstrap_location . 'gradients.less', $bootstrap_uri );
+    // Include the Elusive Icons
+    $parser->parseFile( $webfont_location . 'elusive-webfont.less', $bootstrap_uri );
 
-  // The custom.less file
-  if ( is_writable( $custom_less_file ) )
-    $parser->parseFile( $bootstrap_location . 'custom.less', $bootstrap_uri );
+    // Enable gradients
+    if ( shoestrap_getVariable( 'gradients_toggle' ) == 1 )
+      $parser->parseFile( $bootstrap_location . 'gradients.less', $bootstrap_uri );
 
-  // Parse any custom less added by the user
-  $parser->parse( shoestrap_getVariable( 'user_less' ) );
-  // Add a filter to the compiler
-  $parser->parse( apply_filters( 'shoestrap_compiler', '' ) );
+    // The custom.less file
+    if ( is_writable( $custom_less_file ) )
+      $parser->parseFile( $bootstrap_location . 'custom.less', $bootstrap_uri );
 
-  $css = $parser->getCss();
+    // Parse any custom less added by the user
+    $parser->parse( shoestrap_getVariable( 'user_less' ) );
+    // Add a filter to the compiler
+    $parser->parse( apply_filters( 'shoestrap_compiler', '' ) );
+
+    $css = $parser->getCss();
+
+  } catch( Exception $e ) {
+    $error_message = $e->getMessage();
+  }
 
   // Below is just an ugly hack
   $css = str_replace( 'bootstrap/fonts/', '', $css );
