@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Redux Framework 3.1.4 Front-end\n"
 "Report-Msgid-Bugs-To: https://github.com/ReduxFramework/ReduxFramework/issues\n"
-"POT-Creation-Date: 2014-01-06 15:43:01+00:00\n"
+"POT-Creation-Date: 2014-01-07 22:09:48+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -21,17 +21,17 @@ msgstr ""
 "X-Poedit-SearchPath-2: .\n"
 
 #: ReduxCore/extensions/customizer/extension_customizer.php:341
-#: ReduxCore/framework.php:1232
+#: ReduxCore/framework.php:1229
 msgid "You have changes that are not saved. Would you like to save them now?"
 msgstr ""
 
 #: ReduxCore/extensions/customizer/extension_customizer.php:342
-#: ReduxCore/framework.php:1233
+#: ReduxCore/framework.php:1230
 msgid "Are you sure? Resetting will lose all custom values."
 msgstr ""
 
 #: ReduxCore/extensions/customizer/extension_customizer.php:343
-#: ReduxCore/framework.php:1235
+#: ReduxCore/framework.php:1232
 msgid "Your current options will be replaced with the values of this preset. Would you like to proceed?"
 msgstr ""
 
@@ -111,127 +111,181 @@ msgstr ""
 msgid "Redux Framework"
 msgstr ""
 
-#: ReduxCore/framework.php:921 ReduxCore/framework.php:922
-#: ReduxCore/framework.php:1937
+#: ReduxCore/framework.php:918 ReduxCore/framework.php:919
+#: ReduxCore/framework.php:1938
 msgid "Import / Export"
 msgstr ""
 
-#: ReduxCore/framework.php:932 ReduxCore/framework.php:933
-#: ReduxCore/framework.php:1953 ReduxCore/framework.php:2051
+#: ReduxCore/framework.php:929 ReduxCore/framework.php:930
+#: ReduxCore/framework.php:1954 ReduxCore/framework.php:2052
 msgid "Options Object"
 msgstr ""
 
-#: ReduxCore/framework.php:943 ReduxCore/framework.php:944
-#: ReduxCore/framework.php:1967 ReduxCore/framework.php:2071
+#: ReduxCore/framework.php:940 ReduxCore/framework.php:941
+#: ReduxCore/framework.php:1968 ReduxCore/framework.php:2072
 msgid "System Info"
 msgstr ""
 
-#: ReduxCore/framework.php:1234
+#: ReduxCore/framework.php:1231
 msgid "Are you sure? Resetting will lose all custom values in this section."
 msgstr ""
 
-#: ReduxCore/framework.php:1485
+#: ReduxCore/framework.php:1486
 msgid "Default"
 msgstr ""
 
-#: ReduxCore/framework.php:1797
+#: ReduxCore/framework.php:1798
 msgid "Warning- This options panel will not work properly without javascript!"
 msgstr ""
 
-#: ReduxCore/framework.php:1851
+#: ReduxCore/framework.php:1852
 msgid "Expand"
 msgstr ""
 
-#: ReduxCore/framework.php:1853 ReduxCore/framework.php:2112
+#: ReduxCore/framework.php:1854 ReduxCore/framework.php:2113
 msgid "Save Changes"
 msgstr ""
 
-#: ReduxCore/framework.php:1855 ReduxCore/framework.php:2114
+#: ReduxCore/framework.php:1856 ReduxCore/framework.php:2115
 msgid "Reset Section"
 msgstr ""
 
-#: ReduxCore/framework.php:1857 ReduxCore/framework.php:2116
+#: ReduxCore/framework.php:1858 ReduxCore/framework.php:2117
 msgid "Reset All"
 msgstr ""
 
-#: ReduxCore/framework.php:1860 ReduxCore/framework.php:2119
+#: ReduxCore/framework.php:1861 ReduxCore/framework.php:2120
 msgid "Working..."
 msgstr ""
 
-#: ReduxCore/framework.php:1867
+#: ReduxCore/framework.php:1868
 msgid "Settings Imported!"
 msgstr ""
 
-#: ReduxCore/framework.php:1869
+#: ReduxCore/framework.php:1870
 msgid "Settings Saved!"
 msgstr ""
 
-#: ReduxCore/framework.php:1873
+#: ReduxCore/framework.php:1874
 msgid "Settings have changed, you should save them!"
 msgstr ""
 
-#: ReduxCore/framework.php:1874
+#: ReduxCore/framework.php:1875
 msgid "error(s) were found!"
 msgstr ""
 
-#: ReduxCore/framework.php:1875
+#: ReduxCore/framework.php:1876
 msgid "warning(s) were found!"
 msgstr ""
 
-#: ReduxCore/framework.php:2004
+#: ReduxCore/framework.php:2005
 msgid "Import / Export Options"
 msgstr ""
 
-#: ReduxCore/framework.php:2005
+#: ReduxCore/framework.php:2006
 msgid "Import Options"
 msgstr ""
 
-#: ReduxCore/framework.php:2006
+#: ReduxCore/framework.php:2007
 msgid "Import from file"
 msgstr ""
 
-#: ReduxCore/framework.php:2006
+#: ReduxCore/framework.php:2007
 msgid "Import from URL"
 msgstr ""
 
-#: ReduxCore/framework.php:2011
+#: ReduxCore/framework.php:2012
 msgid "Input your backup file below and hit Import to restore your sites options from a backup."
 msgstr ""
 
-#: ReduxCore/framework.php:2021
+#: ReduxCore/framework.php:2022
 msgid "Input the URL to another sites options set and hit Import to load the options from that site."
 msgstr ""
 
-#: ReduxCore/framework.php:2028
+#: ReduxCore/framework.php:2029
 msgid "Import"
 msgstr ""
 
-#: ReduxCore/framework.php:2028
+#: ReduxCore/framework.php:2029
 msgid "WARNING! This will overwrite all existing option values, please proceed with caution!"
 msgstr ""
 
-#: ReduxCore/framework.php:2031
+#: ReduxCore/framework.php:2032
 msgid "Export Options"
 msgstr ""
 
-#: ReduxCore/framework.php:2033
+#: ReduxCore/framework.php:2034
 msgid "Here you can copy/download your current option settings. Keep this safe as you can use it as a backup should anything go wrong, or you can use it to restore your settings on this site (or any other site)."
 msgstr ""
 
-#: ReduxCore/framework.php:2037
+#: ReduxCore/framework.php:2038
 msgid "Copy"
 msgstr ""
 
-#: ReduxCore/framework.php:2037
+#: ReduxCore/framework.php:2038
 msgid "Download"
 msgstr ""
 
-#: ReduxCore/framework.php:2037
+#: ReduxCore/framework.php:2038
 msgid "Copy Link"
 msgstr ""
 
-#: ReduxCore/framework.php:2060
+#: ReduxCore/framework.php:2061
 msgid "Show Object in Javascript Console Object"
+msgstr ""
+
+#: ReduxCore/inc/fields/background/field_background.php:119
+#: ReduxCore/inc/fields/color/field_color.php:72
+#: ReduxCore/inc/fields/color_gradient/field_color_gradient.php:81
+#: ReduxCore/inc/fields/color_gradient/field_color_gradient.php:91
+#: ReduxCore/inc/fields/color_rgba/field_color_rgba.php:84
+msgid "Transparent"
+msgstr ""
+
+#: ReduxCore/inc/fields/background/field_background.php:136
+msgid "Background Repeat"
+msgstr ""
+
+#: ReduxCore/inc/fields/background/field_background.php:152
+msgid "Background Clip"
+msgstr ""
+
+#: ReduxCore/inc/fields/background/field_background.php:168
+msgid "Background Origin"
+msgstr ""
+
+#: ReduxCore/inc/fields/background/field_background.php:183
+msgid "Background Size"
+msgstr ""
+
+#: ReduxCore/inc/fields/background/field_background.php:198
+msgid "Background Attachment"
+msgstr ""
+
+#: ReduxCore/inc/fields/background/field_background.php:218
+msgid "Background Position"
+msgstr ""
+
+#: ReduxCore/inc/fields/background/field_background.php:273
+#: ReduxCore/inc/fields/media/field_media.php:116
+msgid "No media selected"
+msgstr ""
+
+#: ReduxCore/inc/fields/background/field_background.php:307
+#: ReduxCore/inc/fields/media/field_media.php:150
+#: ReduxCore/inc/fields/slides/field_slides.php:117
+#: ReduxCore/inc/fields/slides/field_slides.php:180
+msgid "Upload"
+msgstr ""
+
+#: ReduxCore/inc/fields/background/field_background.php:313
+#: ReduxCore/inc/fields/media/field_media.php:156
+#: ReduxCore/inc/fields/multi_text/field_multi_text.php:75
+#: ReduxCore/inc/fields/multi_text/field_multi_text.php:78
+#: ReduxCore/inc/fields/multi_text/field_multi_text.php:81
+#: ReduxCore/inc/fields/slides/field_slides.php:123
+#: ReduxCore/inc/fields/slides/field_slides.php:182
+msgid "Remove"
 msgstr ""
 
 #: ReduxCore/inc/fields/border/field_border.php:112
@@ -261,13 +315,6 @@ msgstr ""
 
 #: ReduxCore/inc/fields/border/field_border.php:162
 msgid "Border style"
-msgstr ""
-
-#: ReduxCore/inc/fields/color/field_color.php:72
-#: ReduxCore/inc/fields/color_gradient/field_color_gradient.php:81
-#: ReduxCore/inc/fields/color_gradient/field_color_gradient.php:91
-#: ReduxCore/inc/fields/color_rgba/field_color_rgba.php:84
-msgid "Transparent"
 msgstr ""
 
 #: ReduxCore/inc/fields/color_gradient/field_color_gradient.php:73
@@ -332,25 +379,6 @@ msgstr ""
 
 #: ReduxCore/inc/fields/link_color/field_link_color.php:98
 msgid "Active"
-msgstr ""
-
-#: ReduxCore/inc/fields/media/field_media.php:116
-msgid "No media selected"
-msgstr ""
-
-#: ReduxCore/inc/fields/media/field_media.php:150
-#: ReduxCore/inc/fields/slides/field_slides.php:117
-#: ReduxCore/inc/fields/slides/field_slides.php:180
-msgid "Upload"
-msgstr ""
-
-#: ReduxCore/inc/fields/media/field_media.php:156
-#: ReduxCore/inc/fields/multi_text/field_multi_text.php:75
-#: ReduxCore/inc/fields/multi_text/field_multi_text.php:78
-#: ReduxCore/inc/fields/multi_text/field_multi_text.php:81
-#: ReduxCore/inc/fields/slides/field_slides.php:123
-#: ReduxCore/inc/fields/slides/field_slides.php:182
-msgid "Remove"
 msgstr ""
 
 #: ReduxCore/inc/fields/multi_text/field_multi_text.php:65
@@ -457,7 +485,7 @@ msgstr ""
 msgid "Font color"
 msgstr ""
 
-#: ReduxCore/inc/fields/typography/field_typography.php:564
+#: ReduxCore/inc/fields/typography/field_typography.php:569
 msgid "Google Webfonts"
 msgstr ""
 

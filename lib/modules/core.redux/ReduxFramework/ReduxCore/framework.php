@@ -265,7 +265,7 @@ if( !class_exists( 'ReduxFramework' ) ) {
 		 * @return \ReduxFramework
 		 */
         public function __construct( $sections = array(), $args = array(), $extra_tabs = array() ) {
-            
+
             global $wp_version;
             
             // Set values
@@ -323,9 +323,8 @@ if( !class_exists( 'ReduxFramework' ) ) {
                 do_action( 'redux/contruct', $this );
 
                 // Set the default values
-                $this->_set_default_options(); 
+                $this->_default_cleanup(); 
                 $this->_internationalization();
-
 
                 // Register extra extensions
                 $this->_register_extensions(); 
@@ -452,6 +451,7 @@ if( !class_exists( 'ReduxFramework' ) ) {
 		function set_options( $value = '' ) {
 			$value['REDUX_last_saved'] = time();
 			if( !empty($value) ) {
+                $this->options = $value;
 				if ( $this->args['database'] === 'transient' ) {
 					set_transient( $this->args['opt_name'] . '-transient', $value, $this->args['transient_time'] );
 				} else if ( $this->args['database'] === 'theme_mods' ) {
@@ -463,6 +463,7 @@ if( !class_exists( 'ReduxFramework' ) ) {
 				} else {
 					update_option( $this->args['opt_name'], $value );
 				}
+
 				// Set a global variable by the global_variable argument.
 				if ( $this->args['global_variable'] ) {
 					$options = $this->args['global_variable'];
@@ -591,16 +592,17 @@ if( !class_exists( 'ReduxFramework' ) ) {
                         global $wp_post_types;
                         $defaults = array(
                             'public' => true,
-                            'publicly_queryable' => true,
+                            //'publicly_queryable' => true,
                             'exclude_from_search' => false,
-                            '_builtin' => false,
+                            //'_builtin' => true,
                         );
                         $args = wp_parse_args( $args, $defaults );
                         $output = 'names';
                         $operator = 'and';
                         $post_types = get_post_types($args, $output, $operator);
-                        $post_types['page'] = 'page';
-                        $post_types['post'] = 'post';
+
+                        //$post_types['page'] = 'page';
+                        //$post_types['post'] = 'post';
                         ksort($post_types);
 
                         foreach ( $post_types as $name => $title ) {
@@ -846,7 +848,7 @@ if( !class_exists( 'ReduxFramework' ) ) {
          * @access      public
          * @return      void
          */
-        public function _set_default_options() {
+        public function _default_cleanup() {
 
         	$this->instance = $this;
 
@@ -857,17 +859,6 @@ if( !class_exists( 'ReduxFramework' ) ) {
 
 		    // Grab database values
 		    $this->options = $this->get_options();
-
-		    // Set defaults if empty
-		    if( empty( $this->options ) && !empty( $this->sections ) ) {
-                if ( empty( $this->options_defaults ) ) {
-                    $this->options_defaults = $this->_default_values();    
-                }
-                if ( $this->args['save_defaults'] == true ) {
-                    $this->set_options( $this->options_defaults ); // Only save these defaults to the DB if this argument is set
-                }
-				$this->options = $this->options_defaults;
-		    }
 	    
         }
 
@@ -1410,6 +1401,8 @@ if( !class_exists( 'ReduxFramework' ) ) {
 
             if( is_null( $this->sections ) ) return;
 
+            $this->options_defaults = $this->_default_values();
+
             $runUpdate = false;
 
             foreach( $this->sections as $k => $section ) {
@@ -1420,7 +1413,7 @@ if( !class_exists( 'ReduxFramework' ) ) {
 
 				if ( empty( $section['id'] ) ) {
                     $section['id'] = sanitize_html_class( $section['title'] );	
-                }                   
+                }
 
                 // DOVY! Replace $k with $section['id'] when ready
                 $section = apply_filters( 'redux-section-' . $k . '-modifier-' . $this->args['opt_name'], $section );
@@ -1453,13 +1446,17 @@ if( !class_exists( 'ReduxFramework' ) ) {
 							print_r($field);
                             echo "</pre><br />";
 						}
-						// Set the default if it's a new field
-						if (!isset($this->options[$field['id']])) {
-			                if ( !empty( $this->options_defaults ) ) {
-			                	$this->options[$field['id']] = array_key_exists( $field['id'], $this->options_defaults ) ? $this->options_defaults[$field['id']] : '';	
-			                }
-							$runUpdate = true;
-						}						
+
+                        // Set the default value if present
+                        $this->options_defaults[$field['id']] = isset( $this->options_defaults[$field['id']] ) ? $this->options_defaults[$field['id']] : '';
+                        
+						// Set the defaults to the value if not present
+						if ( !isset( $this->options[$field['id']] ) && isset( $field['default'] ) ) {
+                            $this->options_defaults[$field['id']] = $this->options[$field['id']] = $field['default'];
+                            if ( $this->args['save_defaults'] ) { // Only save that to the DB if allowed to
+                                $runUpdate = true;    
+                            }
+						}	
 
 						if ( $this->args['default_show'] === true && isset( $field['default'] ) && isset($this->options[$field['id']]) && $this->options[$field['id']] != $field['default'] && $field['type'] !== "info" && $field['type'] !== "group" && $field['type'] !== "editor" && $field['type'] !== "ace_editor" ) {
 							$default_output = "";
@@ -1589,6 +1586,9 @@ if( !class_exists( 'ReduxFramework' ) ) {
 		 * @return array|mixed|string|void
 		 */
         public function _validate_options( $plugin_options ) {
+            //print_r($this->options_defaults);
+            //echo '_validate_options';
+            //exit();
 
             set_transient( 'redux-saved-' . $this->args['opt_name'], '1', 1000 );
 
@@ -1629,16 +1629,16 @@ if( !class_exists( 'ReduxFramework' ) ) {
 
             if( !empty( $plugin_options['defaults'] ) ) {
                 set_transient( 'redux-compiler-' . $this->args['opt_name'], '1', 1000 );
-                $plugin_options = $this->_default_values();
+                $plugin_options = $this->options_defaults;
                 $plugin_options['REDUX_COMPILER'] = time();
-                if ( $this->args['database'] == 'transient' || $this->args['database'] == 'theme_mods' || $this->args['database'] == 'theme_mods_expanded' ) {
-				    $this->set_options( $plugin_options );
-					return $this->options;
-				}
-                return $plugin_options;
+                $this->set_options( $plugin_options );
+                return $this->options;
             }
             if( isset( $plugin_options['defaults-section'] ) ) {
             	$compiler = false;
+                if (empty($this->options_defaults)) {
+                    $this->options_defaults = $this->_default_values();
+                }
             	foreach ($this->sections[$plugin_options['redux-section']]['fields'] as $field) {
                     if ( isset( $this->options_defaults[$field['id']] ) ) {
                         $plugin_options[$field['id']] = $this->options_defaults[$field['id']];
@@ -1656,7 +1656,7 @@ if( !class_exists( 'ReduxFramework' ) ) {
             	$plugin_options['defaults'] = true;
                 unset( $plugin_options['compiler'], $plugin_options['import'], $plugin_options['import_code'], $plugin_options['redux-section'] );
 				$this->set_options( $plugin_options );
-				return $plugin_options;
+				return $this->options;
             }            
 
             // Validate fields (if needed)
