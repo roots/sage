@@ -4,7 +4,7 @@
 // If you need to override this template you can use the 'shoestrap_header_top_navbar_override' hook.
 ?>
 <header class="banner navbar navbar-default topnavbar <?php echo shoestrap_navbar_class(); ?>" role="banner">
-  <div class="navbar-inside <?php echo shoestrap_container_class(); ?>">
+  <div class="<?php echo shoestrap_container_class(); ?>">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-main, .nav-extras">
         <span class="sr-only">Toggle navigation</span>
