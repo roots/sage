@@ -94,7 +94,7 @@ class ReduxFramework_sorter extends ReduxFramework {
 
 					foreach ($sortlists as $group=>$sortlist) {
 
-					    echo '<ul id="'.$this->field['id'].'_'.$group.'" class="sortlist_'.$this->field['id'].'">';
+					    echo '<ul id="'.$this->field['id'].'_'.$group.'" class="sortlist_'.$this->field['id'].'" data-id="'.$this->field['id'].'">';
 					    echo '<h3>'.$group.'</h3>';
 
 					    foreach ($sortlist as $key => $list) {
@@ -140,5 +140,27 @@ class ReduxFramework_sorter extends ReduxFramework {
         );
 
     }
+
+
+    /**
+     * 
+     * Functions to pass data from the PHP to the JS at render time.
+     * 
+     * @return array Params to be saved as a javascript object accessable to the UI.
+     * 
+     * @since  Redux_Framework 3.1.5
+     * 
+     */
+    function localize() {
+
+    	$params = array();
+    	
+    	if ( isset( $this->field['limits'] ) && !empty( $this->field['limits'] ) ) {
+    		$params = $this->field['limits'];
+    	}
+
+        return $params;
+
+    }    
 
 }

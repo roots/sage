@@ -10,6 +10,12 @@
   float: left;
   margin: 0 15px 0 0;
 }
+.redux-container-sorter ul.filled {
+  opacity: .7;
+  filter: alpha(opacity=70);
+  /* For IE8 and earlier */
+  background: #efecec;
+}
 .redux-container-sorter ul li {
   border: 1px solid #DFDFDF;
   cursor: move;

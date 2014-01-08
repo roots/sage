@@ -91,7 +91,7 @@ class ReduxFramework_ace_editor extends ReduxFramework{
             wp_enqueue_script(
                 'redux-field-ace-editor-js', 
                 ReduxFramework::$_url . 'inc/fields/ace_editor/field_ace_editor.js', 
-                array( 'jquery' ),
+                array( 'jquery', 'ace-editor-js' ),
                 time(),
                 true
             );

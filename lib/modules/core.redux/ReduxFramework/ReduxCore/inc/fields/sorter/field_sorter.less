@@ -8,7 +8,11 @@
 		width: 145px;
 		float: left;
 		margin: 0 15px 0 0;
-
+		&.filled {
+			opacity: .7;
+			filter:alpha(opacity=70); /* For IE8 and earlier */
+			background: #efecec;
+		}
 		li {
 			border: 1px solid #DFDFDF;
 			cursor: move;

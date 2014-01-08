@@ -74,6 +74,21 @@ class ReduxFramework_slider extends ReduxFramework{
 	*/
 	function enqueue(){
 
+        wp_enqueue_script(
+            'redux-field-media-js',
+            ReduxFramework::$_url . 'inc/fields/media/field_media.js',
+            array( 'jquery', 'wp-color-picker' ),
+            time(),
+            true
+        );
+
+        wp_enqueue_style(
+            'redux-field-media-css',
+            ReduxFramework::$_url . 'inc/fields/media/field_media.css',
+            time(),
+            true
+        );
+
 		wp_enqueue_script(
 			'redux-field-slider-js', 
 			ReduxFramework::$_url.'inc/fields/slider/field_slider.js', 

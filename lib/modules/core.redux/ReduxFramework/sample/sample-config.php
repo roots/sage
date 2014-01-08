@@ -260,7 +260,14 @@ if ( !class_exists( "Redux_Framework_sample_config" ) ) {
 						'mode' => false, // Can be set to false to allow any media type, or can also be set to any mime type.
 						'desc'=> __('Basic media uploader with disabled URL input field.', 'redux-framework-demo'),
 						'subtitle' => __('Upload any media using the WordPress native uploader', 'redux-framework-demo'),
-						),				
+						),	
+					array(
+                         'id'=>'section-media-start',
+                         'type' => 'section', 
+                         'title' => __('Media Options', 'redux-framework-demo'),
+                         'subtitle'=> __('With the "section" field you can create indent option sections.'),                            
+                         'indent' => true // Indent all options below until the next 'section' option is set.
+                         ),    									
 					array(
 						'id'=>'media',
 						'type' => 'media', 
@@ -272,7 +279,11 @@ if ( !class_exists( "Redux_Framework_sample_config" ) ) {
 						'subtitle' => __('Upload any media using the WordPress native uploader', 'redux-framework-demo'),
 						'default'=>array('url'=>'http://s.wordpress.org/style/images/codeispoetry.png'),
 						),
-
+					array(
+                         'id'=>'section-media-end',
+                         'type' => 'section', 
+                         'indent' => false // Indent all options below until the next 'section' option is set.
+                         ),  
 					array(
 						'id'=>'media-nourl',
 						'type' => 'media', 
@@ -378,7 +389,7 @@ if ( !class_exists( "Redux_Framework_sample_config" ) ) {
 			            "title" => "Layout Manager Advanced",
 			            "subtitle" => "You can add multiple drop areas or columns.",
 			            "compiler"=>'true',
-			            'required' => array('switch-fold','equals','0'),	
+			            //'required' => array('switch-fold','equals','0'),	
 			            'options' => array(
 			                "enabled" => array(
 			                    "placebo" => "placebo", //REQUIRED!
@@ -393,6 +404,10 @@ if ( !class_exists( "Redux_Framework_sample_config" ) ) {
 			                "backup" => array(
 			                    "placebo" => "placebo", //REQUIRED!
 			                ),                
+			            ),
+			            'limits' => array(
+			            	"disabled" => 1,
+			            	"backup" => 2,
 			            ),
 			        ),
 			        array(
@@ -727,7 +742,7 @@ if ( !class_exists( "Redux_Framework_sample_config" ) ) {
 						'subtitle' => __('Allow your users to choose width, height, and/or unit.', 'redux-framework-demo'),
 						'desc' => __('You can enable or disable any piece of this field. Width, Height, or Units.', 'redux-framework-demo'),
 						'default' => array('width' => 200, 'height'=>'100', )
-						),												
+						),																
 					array(
 						'id'=>'body-font2',
 						'type' => 'typography',

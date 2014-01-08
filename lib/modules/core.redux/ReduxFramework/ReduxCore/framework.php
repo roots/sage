@@ -283,6 +283,7 @@ if( !class_exists( 'ReduxFramework' ) ) {
                 $this->args['page_title'] = __( 'Options', $this->args['domain'] );
             }
             $this->args = apply_filters( 'redux/args/' . $this->args['opt_name'], $this->args ); // Filter the args
+            $this->args = apply_filters( 'redux/options/' . $this->args['opt_name'] . '/args', $this->args ); // Filter the args
                
 
 
@@ -496,10 +497,11 @@ if( !class_exists( 'ReduxFramework' ) ) {
 			} else {
 				$result = get_option( $this->args['opt_name']);
 			}
+
 			if ( empty( $result ) && !empty( $defaults ) ) {
 				$results = $defaults;
 				$this->set_options($results);
-			}			
+			}	
 			// Set a global variable by the global_variable argument.
 			if ( $this->args['global_variable'] ) {
 				$options = $this->args['global_variable'];
@@ -1430,7 +1432,7 @@ if( !class_exists( 'ReduxFramework' ) ) {
                         }
                     	
                     	$th = "";
-                        if( isset( $field['title'] ) && isset( $field['type'] ) && $field['type'] !== "info" && $field['type'] !== "group" ) {
+                        if( isset( $field['title'] ) && isset( $field['type'] ) && $field['type'] !== "info" && $field['type'] !== "group" && $field['type'] !== "section" ) {
 			    			$default_mark = ( !empty($field['default']) && isset($this->options[$field['id']]) && $this->options[$field['id']] == $field['default'] && !empty( $this->args['default_mark'] ) && isset( $field['default'] ) ) ? $this->args['default_mark'] : '';
                             if (!empty($field['title'])) {
                                 $th = $field['title'] . $default_mark."";
@@ -1458,7 +1460,7 @@ if( !class_exists( 'ReduxFramework' ) ) {
                             }
 						}	
 
-						if ( $this->args['default_show'] === true && isset( $field['default'] ) && isset($this->options[$field['id']]) && $this->options[$field['id']] != $field['default'] && $field['type'] !== "info" && $field['type'] !== "group" && $field['type'] !== "editor" && $field['type'] !== "ace_editor" ) {
+						if ( $this->args['default_show'] === true && isset( $field['default'] ) && isset($this->options[$field['id']]) && $this->options[$field['id']] != $field['default'] && $field['type'] !== "info" && $field['type'] !== "group" && $field['type'] !== "section" && $field['type'] !== "editor" && $field['type'] !== "ace_editor" ) {
 							$default_output = "";
 						    if (!is_array($field['default'])) {
 								if ( !empty( $field['options'][$field['default']] ) ) {
@@ -1586,9 +1588,6 @@ if( !class_exists( 'ReduxFramework' ) ) {
 		 * @return array|mixed|string|void
 		 */
         public function _validate_options( $plugin_options ) {
-            //print_r($this->options_defaults);
-            //echo '_validate_options';
-            //exit();
 
             set_transient( 'redux-saved-' . $this->args['opt_name'], '1', 1000 );
 
@@ -1619,7 +1618,7 @@ if( !class_exists( 'ReduxFramework' ) ) {
                     unset( $plugin_options['defaults'], $plugin_options['compiler'], $plugin_options['import'], $plugin_options['import_code'] );
 				    if ( $this->args['database'] == 'transient' || $this->args['database'] == 'theme_mods' || $this->args['database'] == 'theme_mods_expanded' ) {
 						$this->set_options( $plugin_options );
-						return $this->options;
+						return;
 				    }
                     return $plugin_options;
                 }
@@ -1631,12 +1630,12 @@ if( !class_exists( 'ReduxFramework' ) ) {
                 set_transient( 'redux-compiler-' . $this->args['opt_name'], '1', 1000 );
                 $plugin_options = $this->options_defaults;
                 $plugin_options['REDUX_COMPILER'] = time();
-                $this->set_options( $plugin_options );
-                return $this->options;
+                //$this->set_options( $plugin_options );
+                return $plugin_options;
             }
             if( isset( $plugin_options['defaults-section'] ) ) {
             	$compiler = false;
-                if (empty($this->options_defaults)) {
+                if ( empty( $this->options_defaults ) ) {
                     $this->options_defaults = $this->_default_values();
                 }
             	foreach ($this->sections[$plugin_options['redux-section']]['fields'] as $field) {
@@ -1655,8 +1654,8 @@ if( !class_exists( 'ReduxFramework' ) ) {
             	}
             	$plugin_options['defaults'] = true;
                 unset( $plugin_options['compiler'], $plugin_options['import'], $plugin_options['import_code'], $plugin_options['redux-section'] );
-				$this->set_options( $plugin_options );
-				return $this->options;
+				//$this->set_options( $plugin_options );
+				return $plugin_options;
             }            
 
             // Validate fields (if needed)
@@ -1677,7 +1676,7 @@ if( !class_exists( 'ReduxFramework' ) ) {
             unset( $plugin_options['defaults'], $plugin_options['import'], $plugin_options['import_code'], $plugin_options['import_link'], $plugin_options['compiler'], $plugin_options['redux-section'] );
 		    if ( $this->args['database'] == 'transient' || $this->args['database'] == 'theme_mods' || $this->args['database'] == 'theme_mods_expanded' ) {
 				$this->set_options( $plugin_options );
-				return $this->options;
+				return;
 		    }
             return $plugin_options;
         }
@@ -2243,7 +2242,7 @@ if( !class_exists( 'ReduxFramework' ) ) {
 	                    	$field['description'] = $field['desc'];
 	                    }
                     
-                    echo ( isset( $field['description'] ) && $field['type'] != "info" && $field['type'] != "group" && !empty( $field['description'] ) ) ? '<div class="description field-desc">' . $field['description'] . '</div>' : '';
+                    echo ( isset( $field['description'] ) && $field['type'] != "info"  && $field['type'] !== "section" && $field['type'] != "group" && !empty( $field['description'] ) ) ? '<div class="description field-desc">' . $field['description'] . '</div>' : '';
 
                     echo '</fieldset>';
 

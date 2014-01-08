@@ -287,7 +287,6 @@ class ReduxFramework_spacing extends ReduxFramework{
 
             if ( !empty( $this->field['compiler'] ) && is_array( $this->field['compiler'] ) ) {
                 $keys = implode(",", $this->field['compiler']);
-                $style = $keys . "{" . $style . '}';
                 $this->parent->compilerCSS .= $keys . "{" . $style . '}';
             }   
 
