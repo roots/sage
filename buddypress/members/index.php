@@ -12,7 +12,7 @@
 
 	<?php do_action( 'bp_before_directory_members_tabs' ); ?>
 
-	<form action="" method="post" id="members-directory-form" class="dir-form">
+	<form action="#" method="post" id="members-directory-form" class="dir-form">
 
 		<div class="item-list-tabs" role="navigation">
 			<ul>

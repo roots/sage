@@ -74,7 +74,7 @@ module.exports = function(grunt) {
                     ]
                 },
                 options: {
-                    sourceMap: 'assets/js/scripts.min.js.map',
+                    sourceMap: 'scripts.min.js.map',
                     sourceMapRoot: '/wordpress/wp-content/themes/pages-theme-roots/',
                     sourceMappingURL: '/wordpress/wp-content/themes/pages-theme-roots/assets/js/scripts.min.js.map',
                     report: 'min'
@@ -114,7 +114,8 @@ module.exports = function(grunt) {
             },
             js: {
                 files: [
-                    '<%= jshint.all %>'
+                    '<%= jshint.all %>',
+                    'buddypress/js/_buddypress.js'
                 ],
                 tasks: ['jshint', 'uglify', 'version', 'rsync:test']
             },
@@ -145,7 +146,9 @@ module.exports = function(grunt) {
         clean: {
             dist: [
                 'assets/css/main.min.css',
+                'assets/css/main.min.css.map',
                 'assets/js/scripts.min.js',
+                'assets/js/scripts.min.js.map',
                 'dist'
             ]
         },

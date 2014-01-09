@@ -26,7 +26,8 @@
 
 			</ul>
 		</div><!-- .item-list-tabs -->
-
+		
+		
 		<div class="item-list-tabs" id="subnav" role="navigation">
 			<ul>
 				<?php do_action( 'bp_groups_directory_group_types' ); ?>

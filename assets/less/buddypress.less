@@ -88,12 +88,27 @@ div#buddypress {
    ========================================================================== */
 
 div#buddypress form.dir-form {
-  #subnav > ul {
-    list-style: none;
-    .pull-right;
-  }
+  //#subnav > ul {
+  //  list-style: none;
+  //  .pull-right;
+  //}
 
   .dir-list {
+
+    div.pagination-container {
+      text-align: center;
+
+      div.pag-count {
+       
+      }
+
+      div.pagination-links {
+        ul {
+          .pagination;
+        }
+      }
+    }
+
     ul.item-list {
       list-style: none;
       padding: 0;
@@ -142,12 +157,15 @@ div#buddypress form.dir-form {
             min-width: 150px;
           }
 
-          .meta {
+          .meta > p {
             color: @gray-light;
+            .text-right;
             .small;
           }
 
         	.generic-button {
+            margin-bottom: 10px;
+
         		a.join-group,
             a.request-membership,
             a.follow {
@@ -184,3 +202,43 @@ div#buddypress form.dir-form {
     }
   }
 }
+
+
+/* ==========================================================================
+   Profiles
+   ========================================================================== */
+
+div#buddypress {
+
+  div#item-header {
+    .clearfix();
+
+    div#item-header-avatar {
+      .pull-left;
+      margin: 0 15px 0 0;
+    }
+
+    div#item-header-content {
+      .pull-left;
+      max-width: 550px;
+      
+      .activity {
+        font-size: @font-size-small;
+        color: @gray-light;
+      }
+      #item-meta {
+        padding: 10px 0;
+      }
+    }
+  }
+
+  div#item-nav {
+    padding: @padding-large-horizontal 0;
+  }
+
+  div#item-body {
+
+  }
+}
+
+

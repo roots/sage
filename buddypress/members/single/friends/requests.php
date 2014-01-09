@@ -2,7 +2,7 @@
 
 <?php if ( bp_has_members( 'type=alphabetical&include=' . bp_get_friendship_requests() ) ) : ?>
 
-	<div id="pag-top" class="pagination no-ajax">
+	<div id="pag-top" class="pagination-container no-ajax">
 
 		<div class="pag-count" id="member-dir-count-top">
 
@@ -46,7 +46,7 @@
 
 	<?php do_action( 'bp_friend_requests_content' ); ?>
 
-	<div id="pag-bottom" class="pagination no-ajax">
+	<div id="pag-bottom" class="pagination-container no-ajax">
 
 		<div class="pag-count" id="member-dir-count-bottom">
 

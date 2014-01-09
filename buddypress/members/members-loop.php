@@ -15,7 +15,7 @@
 
 <?php if ( bp_has_members( bp_ajax_querystring( 'members' ) ) ) : ?>
 
-	<div id="pag-top" class="pagination">
+	<div id="pag-top" class="pagination-container">
 
 		<div class="pag-count" id="member-dir-count-top">
 
@@ -86,7 +86,7 @@
 
 	<?php bp_member_hidden_fields(); ?>
 
-	<div id="pag-bottom" class="pagination">
+	<div id="pag-bottom" class="pagination-container">
 
 		<div class="pag-count" id="member-dir-count-bottom">
 

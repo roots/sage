@@ -10,7 +10,7 @@
 		</ul>
 	</div>
 
-	<div id="pag-top" class="pagination no-ajax">
+	<div id="pag-top" class="pagination-container no-ajax">
 
 		<div class="pag-count" id="member-count-top">
 
@@ -63,7 +63,7 @@
 
 	<?php do_action( 'bp_after_group_members_list' ); ?>
 
-	<div id="pag-bottom" class="pagination no-ajax">
+	<div id="pag-bottom" class="pagination-container no-ajax">
 
 		<div class="pag-count" id="member-count-bottom">
 

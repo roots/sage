@@ -20,6 +20,14 @@ var ExampleSite = {
         init: function() {
             // JS here
         }
+    },
+    // Directories
+    directory: {
+        init: function() {
+
+            
+            
+        }
     }
 };
 

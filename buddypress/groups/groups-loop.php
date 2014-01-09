@@ -15,7 +15,7 @@
 
 <?php if ( bp_has_groups( bp_ajax_querystring( 'groups' ) ) ) : ?>
 
-	<div id="pag-top" class="pagination">
+	<div id="pag-top" class="pagination-container">
 
 		<div class="pag-count" id="group-dir-count-top">
 
@@ -58,7 +58,7 @@
 
 				<div class="meta">
 
-					<?php bp_group_type(); ?> / <?php bp_group_member_count(); ?>
+					<p><?php bp_group_type(); ?> / <?php bp_group_member_count(); ?></p>
 
 				</div>
 
@@ -73,7 +73,7 @@
 
 	<?php do_action( 'bp_after_directory_groups_list' ); ?>
 
-	<div id="pag-bottom" class="pagination">
+	<div id="pag-bottom" class="pagination-container">
 
 		<div class="pag-count" id="group-dir-count-bottom">
 

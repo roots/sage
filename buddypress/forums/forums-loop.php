@@ -15,7 +15,7 @@
 
 <?php if ( bp_has_forum_topics( bp_ajax_querystring( 'forums' ) ) ) : ?>
 
-	<div id="pag-top" class="pagination">
+	<div id="pag-top" class="pagination-container">
 
 		<div class="pag-count" id="topic-count-top">
 
@@ -104,7 +104,7 @@
 
 	<?php do_action( 'bp_after_directory_forums_list' ); ?>
 
-	<div id="pag-bottom" class="pagination">
+	<div id="pag-bottom" class="pagination-container">
 
 		<div class="pag-count" id="topic-count-bottom">
 			<?php bp_forum_pagination_count(); ?>

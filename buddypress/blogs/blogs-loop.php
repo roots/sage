@@ -15,7 +15,7 @@
 
 <?php if ( bp_has_blogs( bp_ajax_querystring( 'blogs' ) ) ) : ?>
 
-	<div id="pag-top" class="pagination">
+	<div id="pag-top" class="pagination-container">
 
 		<div class="pag-count" id="blog-dir-count-top">
 			<?php bp_blogs_pagination_count(); ?>
@@ -68,7 +68,7 @@
 
 	<?php bp_blog_hidden_fields(); ?>
 
-	<div id="pag-bottom" class="pagination">
+	<div id="pag-bottom" class="pagination-container">
 
 		<div class="pag-count" id="blog-dir-count-bottom">
 

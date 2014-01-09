@@ -735,8 +735,9 @@ jq(document).ready(function() {
         if (target.hasClass('button'))
             return true;
 
-        if (target.parent().parent().hasClass('pagination') && !target.parent().parent().hasClass('no-ajax')) {
-            if (target.hasClass('dots') || target.hasClass('current'))
+        if (target.parent().parent().parent().parent().hasClass('pagination-container') && !target.parent().parent().parent().parent().hasClass('no-ajax') ||
+            target.parent().parent().hasClass('pagination-container') && !target.parent().parent().hasClass('no-ajax')) {
+            if (target.hasClass('dots') || target.hasClass('current') || target.parent().hasClass('disabled'))
                 return false;
 
             if (jq('.item-list-tabs li.selected').length)
@@ -754,9 +755,9 @@ jq(document).ready(function() {
                 search_terms = jq('.dir-search input').val();
 
             if (jq(target).hasClass('next'))
-                var page_number = Number(jq('.pagination span.current').html()) + 1;
+                var page_number = Number(jq('.pagination-container span.current').html()) + 1;
             else if (jq(target).hasClass('prev'))
-                var page_number = Number(jq('.pagination span.current').html()) - 1;
+                var page_number = Number(jq('.pagination-container span.current').html()) - 1;
             else
                 var page_number = Number(jq(target).html());
 
