@@ -669,10 +669,15 @@ jq(document).ready(function() {
         var target = jq(event.target);
 
         if (target.attr('type') == 'submit') {
-            var css_id = jq('.item-list-tabs li.selected').attr('id').split('-');
-            var object = css_id[0];
+            //OLD: var css_id = jq('.item-list-tabs li.selected').attr('id').split('-');
+            //OLD: var object = css_id[0];
+            var css_id = target.parent().attr('id').split('-');
+            var object = css_id[1];
 
-            bp_filter_request(object, jq.cookie('bp-' + object + '-filter'), jq.cookie('bp-' + object + '-scope'), 'div.' + object, target.parent().children('label').children('input').val(), 1, jq.cookie('bp-' + object + '-extras'));
+            //OLD: var search_string = target.parent().children('label').children('input').val();
+            var search_string = target.parent().find('input[type="text"]').val();
+
+            bp_filter_request(object, jq.cookie('bp-' + object + '-filter'), jq.cookie('bp-' + object + '-scope'), 'div.' + object, search_string, 1, jq.cookie('bp-' + object + '-extras'));
 
             return false;
         }
@@ -740,10 +745,7 @@ jq(document).ready(function() {
             if (target.hasClass('dots') || target.hasClass('current') || target.parent().hasClass('disabled'))
                 return false;
 
-            if (jq('.item-list-tabs li.selected').length)
-                var el = jq('.item-list-tabs li.selected');
-            else
-                var el = jq('li.filter select');
+            var el = jq('#buddypress div.dir-list');
 
             var page_number = 1;
             var css_id = el.attr('id').split('-');

@@ -74,7 +74,7 @@ module.exports = function(grunt) {
                     ]
                 },
                 options: {
-                    sourceMap: 'scripts.min.js.map',
+                    sourceMap: 'assets/js/scripts.min.js.map',
                     sourceMapRoot: '/wordpress/wp-content/themes/pages-theme-roots/',
                     sourceMappingURL: '/wordpress/wp-content/themes/pages-theme-roots/assets/js/scripts.min.js.map',
                     report: 'min'

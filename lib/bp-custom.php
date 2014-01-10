@@ -19,6 +19,68 @@ function customize_member_activity_update_header($update) {
 add_filter( 'bp_get_activity_latest_update', 'customize_member_activity_update_header' );
 
 
+
+
+
+
+/**
+ * Highjack the original BuddyPress members directory search form and return a shiny new one.
+ * 
+ * @author Tobias Møller Kjærsgaard
+ * @since 1.0.0
+ */
+function customize_members_dir_search_form($search_form_html) {
+
+	preg_match('/placeholder="(.*)"/', $search_form_html, $search_value);
+
+	$new_search_form_html = '
+	<form action="#" method="get" id="search-members-form" class="form-inline">
+		<div class="form-group">
+			<label class="sr-only" for="members_search">Search in members directory</label>
+			<input type="text" name="s" id="members_search" placeholder="'. $search_value[1] .'">
+		</div>
+		<button type="submit" id="members_search_submit" name="members_search_submit"><span class="glyphicon glyphicon-search"></span></button>
+	</form>';
+
+	return $new_search_form_html;
+}
+add_filter( 'bp_directory_members_search_form', 'customize_members_dir_search_form' );
+
+
+
+/**
+ * Highjack the original BuddyPress groups directory search form and return a shiny new one.
+ * 
+ * @author Tobias Møller Kjærsgaard
+ * @since 1.0.0
+ */
+function customize_groups_dir_search_form($search_form_html) {
+
+	preg_match('/placeholder="(.*)"/', $search_form_html, $search_value);
+
+	$new_search_form_html = '
+	<form action="#" method="get" id="search-groups-form" class="form-inline">
+		<div class="form-group">
+			<label class="sr-only" for="groups_search">Search in groups directory</label>
+			<input type="text" name="s" id="groups_search" placeholder="'. $search_value[1] .'">
+		</div>
+		<button type="submit" id="groups_search_submit" name="groups_search_submit"><span class="glyphicon glyphicon-search"></span></button>
+	</form>';
+
+	return $new_search_form_html;
+}
+add_filter( 'bp_directory_groups_search_form', 'customize_groups_dir_search_form' );
+
+
+
+
+
+
+/*
+ * Pagination!
+ */
+
+
 function customize_members_pagination_links($pag_links) {
 	global $members_template;
 
@@ -57,9 +119,12 @@ function customize_groups_pagination_links($pag_links) {
 add_filter( 'bp_get_groups_pagination_links', 'customize_groups_pagination_links' );
 
 
-
 function make_pagination_list($pagination_links) {
 	$pagination_list = '<ul class="pagination">';
+
+	if (empty($pagination_links)) {
+		return;
+	}
 
 	if (substr($pagination_links[0], 1, 4) == 'span') {
 		$pagination_list .= '<li class="disabled"><span>&laquo;</span></li>';
