@@ -19,13 +19,13 @@ function jumbotron_content() {
 
   <?php if ( $hero == true ) : ?>
     <?php if ( $site_style == 'boxed' && $nocontainer != 1 ) : ?>
-      <div class="' . shoestrap_container_class() . '">
+      <div class="<?php echo shoestrap_container_class(); ?>">
     <?php endif; ?>
 
     <div class="jumbotron">
 
       <?php if ( $nocontainer != 1 && $site_style == 'wide' || $site_style == 'boxed' ) : ?>
-        <div class="' . shoestrap_container_class() . '">
+      	<div class="<?php echo shoestrap_container_class(); ?>">
       <?php endif; ?>
 
         <?php dynamic_sidebar('Jumbotron'); ?>
