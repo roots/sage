@@ -1,0 +1,14 @@
+// Remove top and bottom margins
+// http://css-tricks.com/spacing-the-bottom-of-modules/
+.module() {
+  > *:first-child,
+  > *:first-child > *:first-child,
+  > *:first-child > *:first-child > *:first-child {
+    margin-top: 0;
+  }
+  > *:last-child,
+  > *:last-child > *:last-child,
+  > *:last-child > *:last-child > *:last-child {
+    margin-bottom: 0;
+  }
+}

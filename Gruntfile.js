@@ -16,7 +16,7 @@ module.exports = function(grunt) {
       dist: {
         files: {
           'assets/css/main.min.css': [
-            'assets/less/app.less'
+            'assets/less/main.less'
           ]
         },
         options: {
@@ -69,7 +69,7 @@ module.exports = function(grunt) {
       less: {
         files: [
           'assets/less/*.less',
-          'assets/less/bootstrap/*.less'
+          'assets/less/**/*.less'
         ],
         tasks: ['less', 'version']
       },
