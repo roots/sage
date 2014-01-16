@@ -18,8 +18,8 @@ function shoestrap_background_css() {
   if ( $image_toggle == 0 && $pattern_toggle == 0 && $bg_color == $html_bg )
     return;
 
-  $background = ( $pattern_toggle == 1 && $bg_pattern != '' ) ? set_url_scheme( $bg_pattern ) : '';
-  $background = ( $image_toggle == 1 && $bg_img != '' ) ? set_url_scheme( $bg_img['url'] ) : '';
+  $background = ( $pattern_toggle && !empty( $bg_pattern ) ) ? set_url_scheme( $bg_pattern ) : '';
+  $background = ( $image_toggle && $bg_img != '' ) ? set_url_scheme( $bg_img['url'] ) : $background;
 
   // The Body background color
   $html_bg    = '#' . str_replace( '#', '', $html_bg ) . ';';
@@ -35,7 +35,7 @@ function shoestrap_background_css() {
 
   $style = '';
 
-  if ( ( $image_toggle == 1 || $pattern_toggle == 1 ) && isset( $background ) ) {
+  if ( ( $image_toggle == 1 || $pattern_toggle == 1 ) && !empty( $background ) ) {
 
     $style .= 'body {';
 
