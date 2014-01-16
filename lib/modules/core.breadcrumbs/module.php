@@ -89,28 +89,15 @@ function shoestrap_breadcrumb( $prepend = '', $delimiter = '', $wrap_before = ''
 
     // Single
     } elseif ( is_single() && !is_attachment() ) {
+      // get the taxonomy names of this object
+      $taxonomy_names = get_object_taxonomies( get_post_type() );
 
-      $single_obj = $wp_query->get_queried_object();
-      if ( $single_obj != 0 ) {
-        $parents = array_reverse( get_post_ancestors( $single_obj->ID ) );
-
-        foreach ( $parents as $parent ) {
-          echo $before . '<a href="' . get_permalink( $parent ) . '" itemprop="url title">' . get_the_title( $parent ) . '</a>' . $after . $delimiter;
-          $parents_exist = true;
-        }
-      }
-
-      if ( $parents_exist ) {
-        // get the taxonomy names of this object
-        $taxonomy_names = get_object_taxonomies( get_post_type() );
-
-        // Detect any hierarchical taxonomies that might exist on this post type
-        $hierarchical = false;
-        foreach ( $taxonomy_names as $taxonomy_name ) {
-          if ( !$hierarchical ) {
-            $hierarchical = ( is_taxonomy_hierarchical( $taxonomy_name ) ) ? true : $hierarchical;
-            $tn = $taxonomy_name;
-          }
+      // Detect any hierarchical taxonomies that might exist on this post type
+      $hierarchical = false;
+      foreach ( $taxonomy_names as $taxonomy_name ) {
+        if ( !$hierarchical ) {
+          $hierarchical = ( is_taxonomy_hierarchical( $taxonomy_name ) ) ? true : $hierarchical;
+          $tn = $taxonomy_name;
         }
       }
 
