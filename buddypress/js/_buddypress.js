@@ -668,14 +668,15 @@ jq(document).ready(function() {
 
         var target = jq(event.target);
 
-        if (target.attr('type') == 'submit') {
+        if (target.prop('tagName') == 'BUTTON') {
             //OLD: var css_id = jq('.item-list-tabs li.selected').attr('id').split('-');
             //OLD: var object = css_id[0];
-            var css_id = target.parent().attr('id').split('-');
+            var form = jq('.dir-search form');
+            var css_id = form.attr('id').split('-');
             var object = css_id[1];
-
+            
             //OLD: var search_string = target.parent().children('label').children('input').val();
-            var search_string = target.parent().find('input[type="text"]').val();
+            var search_string = form.find('input[type="text"]').val();
 
             bp_filter_request(object, jq.cookie('bp-' + object + '-filter'), jq.cookie('bp-' + object + '-scope'), 'div.' + object, search_string, 1, jq.cookie('bp-' + object + '-extras'));
 

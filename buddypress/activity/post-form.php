@@ -23,7 +23,7 @@ global $bp;
 
 	<div id="whats-new-avatar">
 		<a href="<?php echo bp_loggedin_user_domain(); ?>">
-			<?php bp_loggedin_user_avatar( 'width=' . bp_core_avatar_thumb_width() . '&height=' . bp_core_avatar_thumb_height() ); ?>
+			<?php bp_loggedin_user_avatar( 'width=150px&height=150px'); ?>
 		</a>
 	</div>
 

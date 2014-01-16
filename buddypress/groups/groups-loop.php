@@ -15,22 +15,6 @@
 
 <?php if ( bp_has_groups( bp_ajax_querystring( 'groups' ) ) ) : ?>
 
-	<div id="pag-top" class="pagination-container">
-
-		<div class="pag-count" id="group-dir-count-top">
-
-			<?php bp_groups_pagination_count(); ?>
-
-		</div>
-
-		<div class="pagination-links" id="group-dir-pag-top">
-
-			<?php bp_groups_pagination_links(); ?>
-
-		</div>
-
-	</div>
-
 	<?php do_action( 'bp_before_directory_groups_list' ); ?>
 
 	<ul id="groups-list" class="item-list" role="main">
@@ -39,7 +23,7 @@
 
 		<li <?php bp_group_class(); ?>>
 			<div class="item-avatar">
-				<a href="<?php bp_group_permalink(); ?>"><?php bp_group_avatar( 'type=thumb&width=50&height=50' ); ?></a>
+				<a href="<?php bp_group_permalink(); ?>"><?php bp_group_avatar( 'type=full&width=100&height=100' ); ?></a>
 			</div>
 
 			<div class="item">

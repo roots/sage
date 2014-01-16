@@ -15,18 +15,6 @@
 
 <?php if ( bp_has_blogs( bp_ajax_querystring( 'blogs' ) ) ) : ?>
 
-	<div id="pag-top" class="pagination-container">
-
-		<div class="pag-count" id="blog-dir-count-top">
-			<?php bp_blogs_pagination_count(); ?>
-		</div>
-
-		<div class="pagination-links" id="blog-dir-pag-top">
-			<?php bp_blogs_pagination_links(); ?>
-		</div>
-
-	</div>
-
 	<?php do_action( 'bp_before_directory_blogs_list' ); ?>
 
 	<ul id="blogs-list" class="item-list" role="main">
@@ -35,7 +23,7 @@
 
 		<li>
 			<div class="item-avatar">
-				<a href="<?php bp_blog_permalink(); ?>"><?php bp_blog_avatar( 'type=thumb' ); ?></a>
+				<a href="<?php bp_blog_permalink(); ?>"><?php bp_blog_avatar( 'type=full&width=100&height=100' ); ?></a>
 			</div>
 
 			<div class="item">

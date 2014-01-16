@@ -1,244 +1,345 @@
-/* ==========================================================================
-   BuddyPress related styles and haxx0r
-   ========================================================================== */
+/** ==========================================================================
+ * BuddyPress related styles and haxx0r
+ * ========================================================================== */
 
-div.item-list-tabs:not(#subnav) > ul {
-  .nav;
-  .nav-tabs;
-  
-  > li {
-    span {
-      .badge;
-    }
+ div.item-list-tabs:not(#subnav) > ul {
+ 	.nav;
+ 	.nav-tabs;
 
-    &.selected > a {
-      &,
-      &:hover,
-      &:focus {
-        color: @nav-tabs-active-link-hover-color;
-        background-color: @nav-tabs-active-link-hover-bg;
-        border: 1px solid @nav-tabs-active-link-hover-border-color;
-        border-bottom-color: transparent;
-        cursor: default;
-      }
-    }
-  }
-}
+ 	> li {
+ 		span {
+ 			.badge;
+ 		}
 
-/* ==========================================================================
-   Post form
-   ========================================================================== */
-
-div#buddypress {
-  .container-fixed();
-
-  form#whats-new-form {
-    .make-row();
-    
-    div#whats-new-avatar {
-      .make-lg-column(2);
-    }
-
-    div#whats-new-content {
-      .make-lg-column(10);
-
-      div.whats-new-row {
-        .make-row();
-      }
-      
-      div#whats-new-textarea {
-        .make-lg-column(12);
-
-        textarea {
-          .form-control;
-        }
-      }
-
-      div#whats-new-options {
-        div#whats-new-post-in-box {
-          .make-sm-column(8);
-
-          select#whats-new-post-in {
-            .form-control;
-            .input-sm;
-          }
-        }
-
-        div#whats-new-submit {
-          .make-sm-column(4);
-          min-height: 70px;
-          
-          input#aw-whats-new-submit {
-            .btn-sm;
-            .pull-right;
-            .btn-block;
-
-            margin-top: 25px;
-            margin-bottom: 15px;
-          }
-        }
-      }
-    }
-  }
-}
-
+ 		&.selected > a {
+ 			&,
+ 			&:hover,
+ 			&:focus {
+ 				color: @nav-tabs-active-link-hover-color;
+ 				background-color: @nav-tabs-active-link-hover-bg;
+ 				border: 1px solid @nav-tabs-active-link-hover-border-color;
+ 				border-bottom-color: transparent;
+ 				cursor: default;
+ 			}
+ 		}
+ 	}
+ }
 
 /* ==========================================================================
-   Directories
-   ========================================================================== */
+ * Post form
+ * ========================================================================== */
 
-div#buddypress form.dir-form {
-  //#subnav > ul {
-  //  list-style: none;
-  //  .pull-right;
-  //}
+ div#buddypress {
+ 	.container-fixed();
 
-  .dir-list {
+ 	form#whats-new-form {
+ 		.make-row();
 
-    div.pagination-container {
-      text-align: center;
+ 		div#whats-new-avatar {
+ 			.make-lg-column(3);
+ 		}
 
-      div.pag-count {
-       
-      }
+ 		div#whats-new-content {
+ 			.make-lg-column(9);
 
-      div.pagination-links {
-        ul {
-          .pagination;
-        }
-      }
-    }
+ 			div.whats-new-row {
+ 				.make-row();
+ 			}
 
-    ul.item-list {
-      list-style: none;
-      padding: 0;
+ 			div#whats-new-textarea {
+ 				.make-lg-column(12);
 
-      > li:first-of-type {
-      	border-top: 1px solid @gray-lighter;
-      }
+ 				textarea {
+ 					.form-control;
+ 				}
+ 			}
 
-      > li {
-      	border-bottom: 1px solid @gray-lighter;
-      	padding: 15px 0;
+ 			div#whats-new-options {
+ 				div#whats-new-post-in-box {
+ 					.make-sm-column(8);
 
-        .item-avatar {
-          .pull-left;
-          img {
-            .pull-left;
-            width: 50px;
-            height: 50px;
-            margin: 0 15px 0 0;
-          }
-        }
+ 					select#whats-new-post-in {
+ 						.form-control;
+ 						.input-sm;
+ 					}
+ 				}
 
-        div.item {
-          @media (min-width: @screen-sm-min) {
-            .pull-left;
-            max-width: 475px;
-          }
+ 				div#whats-new-submit {
+ 					.make-sm-column(4);
+ 					min-height: 70px;
 
-        	.item-title {
-        		> a {
-              font-size: @font-size-h4;
-            }
-            span.update .activity-read-more a {
-              font-size: @font-size-small;
-            }
-        	}
-        	.item-meta span {
-        		color: @gray-light;
-        		.small;
-        	}
-        }
+ 					input#aw-whats-new-submit {
+ 						.btn-sm;
+ 						.pull-right;
+ 						.btn-block;
 
-        div.action {
-          @media (min-width: @screen-sm-min) {
-            .pull-right;
-            min-width: 150px;
-          }
-
-          .meta > p {
-            color: @gray-light;
-            .text-right;
-            .small;
-          }
-
-        	.generic-button {
-            margin-bottom: 10px;
-
-        		a.join-group,
-            a.request-membership,
-            a.follow {
-              .btn;
-              .btn-block;
-              .btn-success;
-            }
-        		a.leave-group,
-            a.unfollow {
-              .btn;
-              .btn-block;
-              .btn-danger;
-            }
-            a.membership-requested,
-            &.not-following a.disabled {
-              .btn;
-              .btn-block;
-              .btn-success;
-              .disabled;
-            }
-            &.following a.disabled {
-              .btn;
-              .btn-block;
-              .btn-danger;
-              .disabled;
-            }
-        	}
-        }
-
-        div.clear {
-          .clearfix();
-        }
-      }
-    }
-  }
-}
+ 						margin-top: 25px;
+ 						margin-bottom: 15px;
+ 					}
+ 				}
+ 			}
+ 		}
+ 	}
+ }
 
 
 /* ==========================================================================
-   Profiles
-   ========================================================================== */
+ * Activity Stream
+ * ========================================================================== */
 
-div#buddypress {
+ div#buddypress .activity {
+ 	ul.item-list {
+ 		list-style: none;
+ 		padding: 0;
 
-  div#item-header {
-    .clearfix();
+ 		> li:first-of-type {
+ 			border-top: 1px solid @gray-lighter;
+ 		}
 
-    div#item-header-avatar {
-      .pull-left;
-      margin: 0 15px 0 0;
-    }
+ 		> li {
+ 			border-bottom: 1px solid @gray-lighter;
+ 			padding: 2em 0;
 
-    div#item-header-content {
-      .pull-left;
-      max-width: 550px;
-      
-      .activity {
-        font-size: @font-size-small;
-        color: @gray-light;
-      }
-      #item-meta {
-        padding: 10px 0;
-      }
-    }
-  }
+ 			.activity-avatar {
+ 				.pull-left;
+ 				margin: 0 15px 0 0;
+ 			}
 
-  div#item-nav {
-    padding: @padding-large-horizontal 0;
-  }
+ 			.activity-content {
+ 				margin-left: 65px;
+ 				.clearfix();
 
-  div#item-body {
+ 				.activity-header {
+ 					a:first-of-type {
+ 						font-weight: bold;
+ 					}
+ 					a.activity-time-since {
+ 						.small;
+ 						color: @gray-light;
+ 					}
+ 				}
 
-  }
-}
+ 				.activity-meta {
+ 					> a {
+ 						.small;
+ 						color: @gray;
+ 					}
+ 				}
+ 			}
+
+ 			.activity-comments {
+ 				margin-left: 65px;
+ 				max-width: 500px;
+ 				.clearfix();
+
+ 				ul {
+ 					list-style: none;
+ 					padding: 5px 0 0 0;
+
+ 					li {
+ 						background-color: @gray-lighter;
+ 						margin-bottom: 2px;
+
+ 						.acomment-avatar {
+ 							.pull-left;
+ 						}
+
+ 						.acomment-meta {
+ 							margin-left: 40px;
+
+ 							> a:first-of-type {
+ 								font-weight: bold;
+ 							}
+
+ 							a.activity-time-since {
+ 								.small;
+ 								color: @gray;
+ 							}
+ 						}
+
+ 						.acomment-content {
+ 							margin-left: 40px;
+ 						}
+
+ 						.acomment-options {
+ 							margin-left: 40px;
+ 							
+ 							> a {
+ 								.small;
+ 								color: @gray;
+ 							}
+ 						}
+ 					}
+ 				}
+
+ 				form.ac-form {
+ 					display: none;
+ 				}
+ 			}
+ 		}
+
+ 		li.load-more a {
+ 			.btn;
+ 			.btn-default;
+ 			.btn-block;
+ 		}
+ 	}
+ }
+
+
+
+/* ==========================================================================
+ * Directories
+ * ========================================================================== */
+
+ div#buddypress .dir-search {
+ 	margin-bottom: @line-height-computed;
+ }
+
+ div#buddypress form.dir-form {
+
+ 	.dir-list {
+
+ 		div.pagination-container {
+ 			text-align: center;
+ 			div.pagination-links {
+ 				ul {
+ 					.pagination;
+ 				}
+ 			}
+ 		}
+
+ 		ul.item-list {
+ 			list-style: none;
+ 			padding: 0;
+
+ 			> li:first-of-type {
+ 				border-top: 1px solid @gray-lighter;
+ 			}
+
+ 			> li {
+ 				border-bottom: 1px solid @gray-lighter;
+ 				padding: 15px 0;
+
+ 				.item-avatar {
+ 					.pull-left;
+ 					img {
+ 						.pull-left;
+ 						width: 100px;
+ 						height: 100px;
+ 						margin: 0 15px 0 0;
+ 						border-radius: 50px;
+ 					}
+ 				}
+
+ 				div.item {
+ 					@media (min-width: @screen-sm-min) {
+ 						.pull-left;
+ 						max-width: 450px;
+ 					}
+
+ 					.item-title {
+ 						> a {
+ 							font-size: @font-size-h4;
+ 						}
+ 						span.update .activity-read-more a {
+ 							font-size: @font-size-small;
+ 						}
+ 					}
+ 					.item-meta span {
+ 						color: @gray-light;
+ 						.small;
+ 					}
+ 				}
+
+ 				div.action {
+ 					@media (min-width: @screen-sm-min) {
+ 						.pull-right;
+ 						min-width: 150px;
+ 					}
+
+ 					.meta > p {
+ 						color: @gray-light;
+ 						.text-right;
+ 						.small;
+ 					}
+
+ 					.generic-button {
+ 						margin-bottom: 10px;
+
+ 						a.join-group,
+ 						a.request-membership,
+ 						a.follow {
+ 							.btn;
+ 							.btn-block;
+ 							.btn-success;
+ 						}
+ 						a.leave-group,
+ 						a.unfollow {
+ 							.btn;
+ 							.btn-block;
+ 							.btn-danger;
+ 						}
+ 						a.membership-requested,
+ 						&.not-following a.disabled {
+ 							.btn;
+ 							.btn-block;
+ 							.btn-success;
+ 							.disabled;
+ 						}
+ 						&.following a.disabled {
+ 							.btn;
+ 							.btn-block;
+ 							.btn-danger;
+ 							.disabled;
+ 						}
+ 					}
+ 				}
+
+ 				div.clear {
+ 					.clearfix();
+ 				}
+ 			}
+ 		}
+ 	}
+ }
+
+
+/* ==========================================================================
+ * Profiles
+ * ========================================================================== */
+
+ div#buddypress {
+
+ 	div#item-header {
+ 		.clearfix();
+
+ 		div#item-header-avatar {
+ 			.pull-left;
+ 			margin: 0 15px 0 0;
+ 		}
+
+ 		div#item-header-content {
+ 			.pull-left;
+ 			max-width: 550px;
+
+ 			.activity {
+ 				font-size: @font-size-small;
+ 				color: @gray-light;
+ 			}
+ 			#item-meta {
+ 				padding: 10px 0;
+ 			}
+ 		}
+ 	}
+
+ 	div#item-nav {
+ 		padding: @padding-large-horizontal 0;
+ 	}
+
+ 	div#item-body {
+
+ 	}
+ }
 
 

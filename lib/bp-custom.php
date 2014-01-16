@@ -1,26 +1,27 @@
 <?php
 
+
 /**
- * Add glyphicon to the Join Group-button
+ * Remove the button class from activity delete link
  * 
  */
-function customize_group_join_button($button) {
-	if ($button['id'] == 'join_group') {
-		$button['link_text'] = "<span class=\"glyphicon glyphicon-plus-sign\"></span> " . __( 'Join Group', 'buddypress');
-	}
-	return $button;
+function customize_activity_delete_link($link) {
+	$link = str_replace('button ', '', $link);
+
+	return $link;
 }
-//add_filter( 'bp_get_group_join_button', 'customize_group_join_button');
+add_filter( 'bp_get_activity_delete_link', 'customize_activity_delete_link' );
 
 
-function customize_member_activity_update_header($update) {
-	return "<p>" . $update . "</p>";
+/**
+ * Return false to the function that checks if nested comments are available.
+ * 
+ * @return boolean false
+ */
+function disable_nested_comments($arg) {
+	return false;
 }
-add_filter( 'bp_get_activity_latest_update', 'customize_member_activity_update_header' );
-
-
-
-
+add_filter( 'bp_activity_can_comment_reply', 'disable_nested_comments' );
 
 
 /**
@@ -33,7 +34,7 @@ function customize_members_dir_search_form($search_form_html) {
 
 	preg_match('/placeholder="(.*)"/', $search_form_html, $search_value);
 
-	$new_search_form_html = '
+	$new_search_form_html_orig = '
 	<form action="#" method="get" id="search-members-form" class="form-inline">
 		<div class="form-group">
 			<label class="sr-only" for="members_search">Search in members directory</label>
@@ -41,6 +42,16 @@ function customize_members_dir_search_form($search_form_html) {
 		</div>
 		<button type="submit" id="members_search_submit" name="members_search_submit"><span class="glyphicon glyphicon-search"></span></button>
 	</form>';
+
+	$new_search_form_html = '
+	<form action="#" method="get" id="search-members-form" class="form-inline">
+		<div class="input-group">
+		  <input type="text" class="form-control" name="s" id="members_search" placeholder="'. $search_value[1] .'">
+		  <span class="input-group-btn">
+		    <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+		  </span>
+		</div><!-- /input-group -->
+	</form>';	
 
 	return $new_search_form_html;
 }
@@ -58,7 +69,7 @@ function customize_groups_dir_search_form($search_form_html) {
 
 	preg_match('/placeholder="(.*)"/', $search_form_html, $search_value);
 
-	$new_search_form_html = '
+	$new_search_form_html_orig = '
 	<form action="#" method="get" id="search-groups-form" class="form-inline">
 		<div class="form-group">
 			<label class="sr-only" for="groups_search">Search in groups directory</label>
@@ -67,18 +78,76 @@ function customize_groups_dir_search_form($search_form_html) {
 		<button type="submit" id="groups_search_submit" name="groups_search_submit"><span class="glyphicon glyphicon-search"></span></button>
 	</form>';
 
+	$new_search_form_html = '
+	<form action="#" method="get" id="search-groups-form" class="form-inline">
+		<div class="input-group">
+		  <input type="text" class="form-control" name="s" id="groups_search" placeholder="'. $search_value[1] .'">
+		  <span class="input-group-btn">
+		    <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+		  </span>
+		</div><!-- /input-group -->
+	</form>';
+
 	return $new_search_form_html;
 }
 add_filter( 'bp_directory_groups_search_form', 'customize_groups_dir_search_form' );
 
 
 
-
-
-
-/*
- * Pagination!
+/**
+ * Highjack the original BuddyPress blogs directory search form and return a shiny new one.
+ * 
+ * @author Tobias Møller Kjærsgaard
+ * @since 1.0.0
  */
+function customize_blogs_dir_search_form($search_form_html) {
+
+	preg_match('/placeholder="(.*)"/', $search_form_html, $search_value);
+
+	$new_search_form_html_orig = '
+	<form action="#" method="get" id="blogs-groups-form" class="form-inline">
+		<div class="form-group">
+			<label class="sr-only" for="blogs_search">Search in groups directory</label>
+			<input type="text" name="s" id="blogs_search" placeholder="'. $search_value[1] .'">
+		</div>
+		<button type="submit" id="groups_search_submit" name="groups_search_submit"><span class="glyphicon glyphicon-search"></span></button>
+	</form>';
+
+	$new_search_form_html = '
+	<form action="#" method="get" id="search-blogs-form" class="form-inline">
+		<div class="input-group">
+		  <input type="text" class="form-control" name="s" id="blogs_search" placeholder="'. $search_value[1] .'">
+		  <span class="input-group-btn">
+		    <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+		  </span>
+		</div><!-- /input-group -->
+	</form>';
+
+	return $new_search_form_html;
+}
+add_filter( 'bp_directory_blogs_search_form', 'customize_blogs_dir_search_form' );
+
+
+
+
+
+
+/**
+ * Modify the ajax querystring to limit groups directory pages to 10 items each.
+ * 
+ * @since 1.0.0
+ * @param string $query_string The passed ajax querystring from caller
+ * @param string $object The passed object string from caller
+ * @return string modified ajax querystring
+ * 
+ */
+function ajax_querystring_modification($query_string, $object) {
+	if($object == 'groups')
+		$query_string .= '&per_page=10';
+
+	return $query_string;
+}
+add_filter( 'bp_legacy_theme_ajax_querystring', 'ajax_querystring_modification', 10, 2 );
 
 
 function customize_members_pagination_links($pag_links) {
@@ -104,21 +173,50 @@ function customize_groups_pagination_links($pag_links) {
 	global $groups_template;
 
 	$new_pag_links = paginate_links( array(
-			'base' 		=> add_query_arg( 'mlpage', '%#%' ),
-			'format' 	=> '',
-			'total' 	=> !empty( $groups_template->pag_num ) ? ceil( $groups_template->total_group_count / $groups_template->pag_num ) : $groups_template->total_group_count,
-			'current' 	=> $groups_template->pag_page,
-			'prev_text' => '&laquo;',
-			'next_text' => '&raquo;',
-			'mid_size'	=> 1,
-			'type'		=> 'array'
-		));
+		'base' 		=> add_query_arg( 'mlpage', '%#%' ),
+		'format' 	=> '',
+		'total' 	=> !empty( $groups_template->pag_num ) ? ceil( $groups_template->total_group_count / $groups_template->pag_num ) : $groups_template->total_group_count,
+		'current' 	=> $groups_template->pag_page,
+		'prev_text' => '&laquo;',
+		'next_text' => '&raquo;',
+		'mid_size'	=> 1,
+		'type'		=> 'array'
+	));
 	return make_pagination_list($new_pag_links);
 	
 }
 add_filter( 'bp_get_groups_pagination_links', 'customize_groups_pagination_links' );
 
 
+/**
+ * 
+ */
+function customize_sites_pagination_links($pag_links) {
+	global $blogs_template;
+
+	$new_pag_links = paginate_links( array(
+		'base'      => add_query_arg( 'bpage', '%#%' ),
+		'format'    => '',
+		'total'     => ceil( (int) $blogs_template->total_blog_count / (int) $blogs_template->pag_num ),
+		'current'   => (int) $blogs_template->pag_page,
+		'prev_text' => _x( '&laquo;', 'Blog pagination previous text', 'buddypress' ),
+		'next_text' => _x( '&raquo;', 'Blog pagination next text', 'buddypress' ),
+		'mid_size'  => 1,
+		'type'		=> 'array'
+	) );
+	return make_pagination_list($new_pag_links);
+}
+add_filter( 'bp_get_blogs_pagination_links', 'customize_sites_pagination_links' );
+
+
+/**
+ * Return an HTML-string with pagination array items printed in an unordered list
+ * 
+ * @since 1.0.0
+ * @author Tobias Møller Kjærsgaard
+ * @param array $pagination_list array with strings for each pagination link
+ * @return string Pagination links HTML
+ */
 function make_pagination_list($pagination_links) {
 	$pagination_list = '<ul class="pagination">';
 

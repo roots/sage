@@ -15,22 +15,6 @@
 
 <?php if ( bp_has_members( bp_ajax_querystring( 'members' ) ) ) : ?>
 
-	<div id="pag-top" class="pagination-container">
-
-		<div class="pag-count" id="member-dir-count-top">
-
-			<?php bp_members_pagination_count(); ?>
-
-		</div>
-
-		<div class="pagination-links" id="member-dir-pag-top">
-
-			<?php bp_members_pagination_links(); ?>
-
-		</div>
-
-	</div>
-
 	<?php do_action( 'bp_before_directory_members_list' ); ?>
 
 	<ul id="members-list" class="item-list" role="main">
@@ -39,7 +23,7 @@
 
 		<li>
 			<div class="item-avatar">
-				<a href="<?php bp_member_permalink(); ?>"><?php bp_member_avatar(); ?></a>
+				<a href="<?php bp_member_permalink(); ?>"><?php bp_member_avatar('type=full&width=100&height=100'); ?></a>
 			</div>
 
 			<div class="item">
