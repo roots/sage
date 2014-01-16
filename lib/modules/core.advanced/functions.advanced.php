@@ -28,6 +28,10 @@ endif;
 add_action( 'wp_footer', 'shoestrap_user_js', 200 );
 
 
+// Force hiding the adminbar
+if ( shoestrap_getVariable( 'advanced_wordpress_disable_admin_bar_toggle' ) == 0 )
+  show_admin_bar( false );
+
 if ( !function_exists( 'shoestrap_excerpt_more' ) ) :
 function shoestrap_excerpt_more( $more ) {
   $continue_text = shoestrap_getVariable( 'post_excerpt_link_text' );

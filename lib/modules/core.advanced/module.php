@@ -168,6 +168,15 @@ function shoestrap_module_advanced_options( $sections ) {
     'type'      => 'switch',
   );
 
+  $fields[] = array(
+    'title'     => __( 'Hide adminbar', 'shoestrap' ),
+    'desc'      => __( 'Force hiding the adminbar. Default: Off.', 'shoestrap' ),
+    'id'        => 'advanced_wordpress_disable_admin_bar_toggle',
+    'default'   => 0,
+    'customizer'=> array(),
+    'type'      => 'switch',
+  );
+
   $fields[] = array( 
     'title'     => __( 'Debug Hooks', 'shoestrap' ),
     'desc'      => __( 'Turn on very useful debug hooks. These will only be visible to admins. Default: Off.', 'shoestrap' ),
