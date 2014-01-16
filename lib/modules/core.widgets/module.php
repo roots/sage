@@ -112,4 +112,4 @@ function shoestrap_widgets_init() {
   register_widget( 'Roots_Vcard_Widget' );
 }
 endif;
-add_action( 'widgets_init', 'shoestrap_widgets_init' );
+add_action( 'init', 'shoestrap_widgets_init' );
