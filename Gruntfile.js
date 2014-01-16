@@ -25,33 +25,7 @@ module.exports = function(grunt) {
                     sourceMapFilename: 'assets/css/main.min.css.map',
                     sourceMapRootpath: '/wordpress/wp-content/themes/pages-theme-roots/'
                 }
-            },
-            // buddypress: {
-            //     files: {
-            //         'buddypress/css/buddypress.css': [
-            //             'buddypress/css/_buddypress.less'
-            //         ]
-            //     },
-            //     options: {
-            //         compress: true,
-            //         sourceMap: true,
-            //         sourceMapFilename: 'buddypress/css/buddypress.css.map',
-            //         sourceMapRootpath: '/wordpress/wp-content/themes/pages-theme-roots/'
-            //     }
-            // },
-            // buddypress_rtl: {
-            //     files: {
-            //         'buddypress/css/buddypress-rtl.css': [
-            //             'buddypress/css/_buddypress-rtl.less'
-            //         ]
-            //     },
-            //     options: {
-            //         compress: true,
-            //         sourceMap: true,
-            //         sourceMapFilename: 'buddypress/css/buddypress-rtl.css.map',
-            //         sourceMapRootpath: '/wordpress/wp-content/themes/pages-theme-roots/'
-            //     }
-            // }
+            }
         },
         uglify: {
             theme: {
