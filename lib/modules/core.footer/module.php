@@ -67,7 +67,6 @@ function shoestrap_module_footer_options( $sections ) {
       'border-style'    => 'solid',
       'border-color'    => '#4B4C4D',
     ),
-    // 'required'    => array('advanced_toggle','=',array('1'))
   );
 
   $fields[] = array( 
@@ -78,7 +77,6 @@ function shoestrap_module_footer_options( $sections ) {
     'min'         => 0,
     'max'         => 200,
     'type'        => 'slider',
-    // 'required'    => array('advanced_toggle','=',array('1'))
   );
 
   $fields[] = array( 
@@ -88,7 +86,6 @@ function shoestrap_module_footer_options( $sections ) {
     'default'     => 0,
     'customizer'  => array(),
     'type'        => 'switch',
-    // 'required'    => array('advanced_toggle','=',array('1'))
   );
 
   $fields[] = array( 

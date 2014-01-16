@@ -19,7 +19,6 @@ function shoestrap_module_header_options( $sections ) {
     'desc'        => __( "You can enable an extra branding/header area. In this header you can add your logo, and any other widgets you wish.
                       To add widgets on your header, visit <a href='$url'>this page</a> and add your widgets to the <strong>Header</strong> Widget Area.", 'shoestrap' ),
     'type'        => 'info',
-    // 'required'    => array('advanced_toggle','=',array('1'))
   );
 
   $fields[] = array( 
@@ -29,7 +28,6 @@ function shoestrap_module_header_options( $sections ) {
     'customizer'  => array(),
     'default'     => 0,
     'type'        => 'switch',
-    // 'required'    => array('advanced_toggle','=',array('1'))
   );
 
   $fields[] = array( 

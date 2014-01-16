@@ -58,7 +58,6 @@ function shoestrap_module_background_options( $sections ) {
     'min'       => 0,
     'step'      => 1,
     'max'       => 100,
-    'advanced'  => true,
     'type'      => 'slider',
   );
 

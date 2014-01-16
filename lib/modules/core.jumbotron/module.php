@@ -25,18 +25,6 @@ function shoestrap_module_jumbotron_options($sections) {
     'icon'  => 'el-icon-bullhorn icon-large'
   );
 
-  $fields[] = array( 
-    'title'     => __( 'Jumbotron Options Mode', 'shoestrap' ),
-    'desc'      => __( 'Show or hide advanced options', 'shoestrap' ),
-    'id'        => 'jumbotron_options_mode',
-    'type'      => 'button_set',
-    'options'   => array(
-      'simple'    => __( 'Simple', 'shoestrap' ),
-      'advanced'  => __( 'Advanced', 'shoestrap' ),
-    ),
-    'default' => 'simple'
-  );
-
   $url = admin_url( 'widgets.php' );
   $fields[] = array(
     'id'        => 'help8',
@@ -172,7 +160,6 @@ function shoestrap_module_jumbotron_options($sections) {
     'customizer'=> array(),
     'default'   => 0,
     'type'      => 'switch',
-    'required'    => array( 'jumbotron_options_mode', '=', array( 'advanced' ) ),
   );
 
   $fields[] = array(
@@ -182,7 +169,6 @@ function shoestrap_module_jumbotron_options($sections) {
     'customizer'=> array(),
     'default'   => 0,
     'type'      => 'switch',
-    'required'    => array( 'jumbotron_options_mode', '=', array( 'advanced' ) ),
   );
 
   $fields[] = array(
@@ -202,7 +188,6 @@ function shoestrap_module_jumbotron_options($sections) {
       'size'    => '30px' //this is the text size from preview box
     ),
     'type'      => 'typography',
-    'required'    => array( 'jumbotron_options_mode', '=', array( 'advanced' ) ),
   );
 
   $fields[] = array(
@@ -213,7 +198,6 @@ function shoestrap_module_jumbotron_options($sections) {
     'compiler'  => true,
     'type'      => 'switch',
     'customizer'=> array(),
-    'required'    => array( 'jumbotron_options_mode', '=', array( 'advanced' ) ),
   );
 
   $fields[] = array(
@@ -249,7 +233,6 @@ function shoestrap_module_jumbotron_options($sections) {
       'border-style'    => 'solid',
       'border-color'    => '#428bca',
     ),
-    'required'    => array( 'jumbotron_options_mode', '=', array( 'advanced' ) ),
   );
 
   $section['fields'] = $fields;

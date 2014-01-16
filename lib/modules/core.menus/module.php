@@ -12,18 +12,6 @@ function shoestrap_module_menus_options( $sections ) {
     'icon'  => 'el-icon-chevron-right icon-large'
   );
 
-  $fields[] = array(
-    'title'     => __( 'Menus Options Mode', 'shoestrap' ),
-    'desc'      => __( 'Show or hide advanced options', 'shoestrap' ),
-    'id'        => 'menus_options_mode',
-    'type'      => 'button_set',
-    'options'   => array(
-      'simple'    => __( 'Simple', 'shoestrap' ),
-      'advanced'  => __( 'Advanced', 'shoestrap' ),
-    ),
-    'default' => 'simple'
-  );
-
   $url = admin_url( 'nav-menus.php' );
   $fields[] = array( 
     'id'          => 'help7',
@@ -79,7 +67,6 @@ function shoestrap_module_menus_options( $sections ) {
     'step'        => 1,
     'max'         => 100,
     'type'        => 'slider',
-    'required'    => array( 'menus_options_mode', '=', array( 'advanced' ) ),
   );
 
   $fields[] = array( 
@@ -197,7 +184,6 @@ function shoestrap_module_menus_options( $sections ) {
     'step'        => 1,
     'max'         => 200,
     'type'        => 'slider',
-    'required'    => array( 'menus_options_mode', '=', array( 'advanced' ) ),
   );
 
   $fields[] = array( 
@@ -244,7 +230,6 @@ function shoestrap_module_menus_options( $sections ) {
     'title'       => __( 'Secondary Navbar', 'shoestrap' ),
     'desc'        => __( 'The secondary navbar is a 2nd navbar, located right above the main wrapper. You can show a menu there, by assigning it from Appearance -> Menus.', 'shoestrap' ),
     'type'        => 'info',
-    'required'    => array( 'menus_options_mode', '=', array( 'advanced' ) ),
   );
 
   $fields[] = array( 
@@ -254,7 +239,6 @@ function shoestrap_module_menus_options( $sections ) {
     'customizer'  => array(),
     'default'     => 0,
     'type'        => 'switch',
-    'required'    => array( 'menus_options_mode', '=', array( 'advanced' ) ),
   );
 
   $fields[] = array( 
@@ -298,7 +282,6 @@ function shoestrap_module_menus_options( $sections ) {
       'info'      => __( 'Branding-Info', 'shoestrap' ),
       'danger'    => __( 'Branding-Danger', 'shoestrap' ),
     ),
-    'required'    => array( 'menus_options_mode', '=', array( 'advanced' ) ),
   );
 
   $fields[] = array( 
@@ -307,7 +290,6 @@ function shoestrap_module_menus_options( $sections ) {
     'id'          => 'inverse_navlist',
     'default'     => 0,
     'type'        => 'switch',
-    'required'    => array( 'menus_options_mode', '=', array( 'advanced' ) ),
   );
 
   $section['fields'] = $fields;
