@@ -1,0 +1,4408 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Shoestrap 3 v3.0.3.05\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2014-01-16 14:26:33+0000\n"
+"Last-Translator: admin <aristath@gmail.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: CSL v1.x\n"
+"X-Poedit-Language: English\n"
+"X-Poedit-Country: UNITED STATES\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-Bookmarks: \n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Textdomain-Support: yes"
+
+#: 404.php:4
+#@ roots
+msgid "Sorry, but the page you were trying to view does not exist."
+msgstr ""
+
+#: 404.php:7
+#@ roots
+msgid "It looks like this was the result of either:"
+msgstr ""
+
+#: 404.php:9
+#@ roots
+msgid "a mistyped address"
+msgstr ""
+
+#: 404.php:10
+#@ roots
+msgid "an out-of-date link"
+msgstr ""
+
+#: base.php:11
+#@ roots
+msgid "You are using an <strong>outdated</strong> browser. Please <a href=\"http://browsehappy.com/\">upgrade your browser</a> to improve your experience."
+msgstr ""
+
+#: bbpress/form-reply.php:17
+#, php-format
+#@ bbpress
+msgid "Reply To: %s"
+msgstr ""
+
+#: bbpress/form-reply.php:20
+#@ bbpress
+msgid "This topic is marked as closed to new replies, however your posting capabilities still allow you to do so."
+msgstr ""
+
+#: bbpress/form-reply.php:24
+#: bbpress/form-topic.php:43
+#@ bbpress
+msgid "Your account has the ability to post unrestricted HTML content."
+msgstr ""
+
+#: bbpress/form-reply.php:36
+#: bbpress/form-topic.php:63
+#@ bbpress
+msgid "You may use these <abbr title=\"HyperText Markup Language\">HTML</abbr> tags and attributes:"
+msgstr ""
+
+#: bbpress/form-reply.php:44
+#@ bbpress
+msgid "Tags:"
+msgstr ""
+
+#: bbpress/form-reply.php:56
+#: bbpress/form-topic.php:111
+#@ bbpress
+msgid "Notify the author of follow-up replies via email"
+msgstr ""
+
+#: bbpress/form-reply.php:58
+#: bbpress/form-topic.php:113
+#@ bbpress
+msgid "Notify me of follow-up replies via email"
+msgstr ""
+
+#: bbpress/form-reply.php:69
+#: bbpress/form-topic.php:124
+#@ bbpress
+msgid "Keep a log of this edit:"
+msgstr ""
+
+#: bbpress/form-reply.php:72
+#: bbpress/form-topic.php:128
+#@ bbpress
+msgid "Optional reason for editing:"
+msgstr ""
+
+#: bbpress/form-reply.php:84
+#: bbpress/form-topic.php:139
+#: lib/modules/core/module.php:198
+#@ bbpress
+#@ default
+msgid "Submit"
+msgstr ""
+
+#: bbpress/form-reply.php:97
+#, php-format
+#@ bbpress
+msgid "The topic &#8216;%s&#8217; is closed to new replies."
+msgstr ""
+
+#: bbpress/form-reply.php:101
+#: bbpress/form-topic.php:159
+#, php-format
+#@ bbpress
+msgid "The forum &#8216;%s&#8217; is closed to new topics and replies."
+msgstr ""
+
+#: bbpress/form-reply.php:105
+#@ bbpress
+msgid "You cannot reply to this topic."
+msgstr ""
+
+#: bbpress/form-reply.php:105
+#@ bbpress
+msgid "You must be logged in to reply to this topic."
+msgstr ""
+
+#: bbpress/form-search.php:15
+#: lib/modules/core.menus/functions.navbar.php:20
+#: templates/searchform.php:6
+#@ bbpress
+#@ roots
+msgid "Search for:"
+msgstr ""
+
+#: bbpress/form-search.php:18
+#: lib/modules/core.menus/functions.navbar.php:21
+#: templates/searchform.php:5
+#@ bbpress
+#@ roots
+msgid "Search"
+msgstr ""
+
+#: bbpress/form-topic.php:29
+#, php-format
+#@ bbpress
+msgid "Now Editing &ldquo;%s&rdquo;"
+msgstr ""
+
+#: bbpress/form-topic.php:31
+#, php-format
+#@ bbpress
+msgid "Create New Topic in &ldquo;%s&rdquo;"
+msgstr ""
+
+#: bbpress/form-topic.php:31
+#@ bbpress
+msgid "Create New Topic"
+msgstr ""
+
+#: bbpress/form-topic.php:37
+#@ bbpress
+msgid "This forum is marked as closed to new topics, however your posting capabilities still allow you to do so."
+msgstr ""
+
+#: bbpress/form-topic.php:53
+#, php-format
+#@ bbpress
+msgid "Topic Title (Maximum Length: %d):"
+msgstr ""
+
+#: bbpress/form-topic.php:71
+#@ bbpress
+msgid "Topic Tags:"
+msgstr ""
+
+#: bbpress/form-topic.php:80
+#@ bbpress
+msgid "Forum:"
+msgstr ""
+
+#: bbpress/form-topic.php:83
+#@ bbpress
+msgid "(No Forum)"
+msgstr ""
+
+#: bbpress/form-topic.php:94
+#@ bbpress
+msgid "Topic Type:"
+msgstr ""
+
+#: bbpress/form-topic.php:100
+#@ bbpress
+msgid "Topic Status:"
+msgstr ""
+
+#: bbpress/form-topic.php:165
+#@ bbpress
+msgid "You cannot create new topics."
+msgstr ""
+
+#: bbpress/form-topic.php:165
+#@ bbpress
+msgid "You must be logged in to create new topics."
+msgstr ""
+
+#: bbpress/loop-forums.php:19
+#@ bbpress
+msgid "Forum"
+msgstr ""
+
+#: bbpress/loop-forums.php:20
+#@ bbpress
+msgid "Topics"
+msgstr ""
+
+#: bbpress/loop-forums.php:21
+#: bbpress/loop-replies.php:26
+#: bbpress/loop-topics.php:22
+#@ bbpress
+msgid "Replies"
+msgstr ""
+
+#: bbpress/loop-forums.php:21
+#: bbpress/loop-topics.php:22
+#@ bbpress
+msgid "Posts"
+msgstr ""
+
+#: bbpress/loop-forums.php:22
+#: bbpress/loop-topics.php:23
+#@ bbpress
+msgid "Freshness"
+msgstr ""
+
+#: bbpress/loop-replies.php:18
+#: bbpress/loop-search.php:23
+#@ bbpress
+msgid "Author"
+msgstr ""
+
+#: bbpress/loop-search-forum.php:13
+#, php-format
+#@ bbpress
+msgid "Last updated %s"
+msgstr ""
+
+#: bbpress/loop-search-forum.php:18
+#@ bbpress
+msgid "Forum: "
+msgstr ""
+
+#: bbpress/loop-search-reply.php:18
+#@ bbpress
+msgid "In reply to: "
+msgstr ""
+
+#: bbpress/loop-search.php:25
+#@ bbpress
+msgid "Search Results"
+msgstr ""
+
+#: bbpress/loop-single-reply.php:17
+#@ bbpress
+msgid "in reply to: "
+msgstr ""
+
+#: bbpress/loop-single-topic.php:47
+#, php-format
+#@ bbpress
+msgid "in: <a href=\"%1$s\">%2$s</a>"
+msgstr ""
+
+#: bbpress/loop-topics.php:20
+#@ bbpress
+msgid "Topic"
+msgstr ""
+
+#: bbpress/loop-topics.php:21
+#@ bbpress
+msgid "Voices"
+msgstr ""
+
+#: bbpress/user-details.php:29
+#, php-format
+#@ bbpress
+msgid "%s's Profile"
+msgstr ""
+
+#: bbpress/user-details.php:29
+#@ bbpress
+msgid "Profile"
+msgstr ""
+
+#: bbpress/user-details.php:35
+#, php-format
+#@ bbpress
+msgid "%s's Topics Started"
+msgstr ""
+
+#: bbpress/user-details.php:35
+#@ bbpress
+msgid "Topics Started"
+msgstr ""
+
+#: bbpress/user-details.php:41
+#, php-format
+#@ bbpress
+msgid "%s's Replies Created"
+msgstr ""
+
+#: bbpress/user-details.php:41
+#@ bbpress
+msgid "Replies Created"
+msgstr ""
+
+#: bbpress/user-details.php:48
+#, php-format
+#@ bbpress
+msgid "%s's Favorites"
+msgstr ""
+
+#: bbpress/user-details.php:48
+#@ bbpress
+msgid "Favorites"
+msgstr ""
+
+#: bbpress/user-details.php:58
+#, php-format
+#@ bbpress
+msgid "%s's Subscriptions"
+msgstr ""
+
+#: bbpress/user-details.php:58
+#@ bbpress
+msgid "Subscriptions"
+msgstr ""
+
+#: bbpress/user-details.php:65
+#, php-format
+#@ bbpress
+msgid "Edit %s's Profile"
+msgstr ""
+
+#: bbpress/user-details.php:65
+#@ bbpress
+msgid "Edit"
+msgstr ""
+
+#: index.php:12
+#@ roots
+msgid "Sorry, no results were found."
+msgstr ""
+
+#: index.php:40
+#@ roots
+msgid "&larr; Older posts"
+msgstr ""
+
+#: index.php:41
+#@ roots
+msgid "Newer posts &rarr;"
+msgstr ""
+
+#: lib/activation.php:28
+#: lib/activation.php:29
+#@ roots
+msgid "Theme Activation"
+msgstr ""
+
+#: lib/activation.php:50
+#, php-format
+#@ roots
+msgid "%s Theme Activation"
+msgstr ""
+
+#: lib/activation.php:52
+#@ roots
+msgid "These settings are optional and should usually be used only on a fresh installation"
+msgstr ""
+
+#: lib/activation.php:59
+#: lib/activation.php:62
+#@ roots
+msgid "Create static front page?"
+msgstr ""
+
+#: lib/activation.php:64
+#: lib/activation.php:76
+#: lib/activation.php:88
+#: lib/activation.php:100
+#@ roots
+msgid "Yes"
+msgstr ""
+
+#: lib/activation.php:65
+#: lib/activation.php:77
+#: lib/activation.php:89
+#: lib/activation.php:101
+#@ roots
+msgid "No"
+msgstr ""
+
+#: lib/activation.php:67
+#@ roots
+msgid "Create a page called Home and set it to be the static front page"
+msgstr ""
+
+#: lib/activation.php:71
+#@ roots
+msgid "Change permalink structure?"
+msgstr ""
+
+#: lib/activation.php:74
+#@ roots
+msgid "Update permalink structure?"
+msgstr ""
+
+#: lib/activation.php:79
+#@ roots
+msgid "Change permalink structure to /&#37;postname&#37;/"
+msgstr ""
+
+#: lib/activation.php:83
+#: lib/activation.php:86
+#@ roots
+msgid "Create navigation menu?"
+msgstr ""
+
+#: lib/activation.php:91
+#@ roots
+msgid "Create the Primary Navigation menu and set the location"
+msgstr ""
+
+#: lib/activation.php:95
+#: lib/activation.php:98
+#@ roots
+msgid "Add pages to menu?"
+msgstr ""
+
+#: lib/activation.php:103
+#@ roots
+msgid "Add all current published pages to the Primary Navigation"
+msgstr ""
+
+#: lib/cleanup.php:200
+#: lib/modules/core.advanced/module.php:42
+#@ roots
+msgid "Continued"
+msgstr ""
+
+#: lib/init.php:11
+#@ roots
+msgid "Primary Navigation"
+msgstr ""
+
+#: lib/init.php:12
+#@ roots
+msgid "Secondary Navigation"
+msgstr ""
+
+#: lib/modules/bbpress/module.php:259
+#@ bbpress
+msgid "Subscribe"
+msgstr ""
+
+#: lib/modules/bbpress/module.php:260
+#@ bbpress
+msgid "Unsubscribe"
+msgstr ""
+
+#: lib/modules/bbpress/module.php:360
+#@ bbpress
+msgid "Favorite"
+msgstr ""
+
+#: lib/modules/bbpress/module.php:361
+#@ bbpress
+msgid "Favorited"
+msgstr ""
+
+#: lib/modules/bbpress/module.php:604
+#@ bbpress
+msgid "No topics available"
+msgstr ""
+
+#: lib/modules/bbpress/module.php:609
+#@ bbpress
+msgid "No forums available"
+msgstr ""
+
+#: lib/modules/bbpress/module.php:614
+#@ bbpress
+msgid "None available"
+msgstr ""
+
+#: lib/modules/core/module.php:194
+#@ shoestrap
+msgid "This post is password protected. To view it please enter your password below:"
+msgstr ""
+
+#: lib/modules/core.advanced/module.php:10
+#: lib/modules/core.advanced/module.php:21
+#: lib/modules/core.branding/module.php:22
+#: lib/modules/core.jumbotron/module.php:35
+#: lib/modules/core.layout/module.php:23
+#: lib/modules/core.menus/module.php:22
+#@ shoestrap
+msgid "Advanced"
+msgstr ""
+
+#: lib/modules/core.advanced/module.php:15
+#@ shoestrap
+msgid "Advanced Options Mode"
+msgstr ""
+
+#: lib/modules/core.advanced/module.php:16
+#: lib/modules/core.jumbotron/module.php:30
+#: lib/modules/core.layout/module.php:18
+#: lib/modules/core.menus/module.php:17
+#@ shoestrap
+msgid "Show or hide advanced options"
+msgstr ""
+
+#: lib/modules/core.advanced/module.php:20
+#: lib/modules/core.branding/module.php:21
+#: lib/modules/core.jumbotron/module.php:34
+#: lib/modules/core.layout/module.php:22
+#: lib/modules/core.menus/module.php:21
+#@ shoestrap
+msgid "Simple"
+msgstr ""
+
+#: lib/modules/core.advanced/module.php:27
+#@ shoestrap
+msgid "Post excerpt length"
+msgstr ""
+
+#: lib/modules/core.advanced/module.php:28
+#@ shoestrap
+msgid "Choose how many words should be used for post excerpt. Default: 40"
+msgstr ""
+
+#: lib/modules/core.advanced/module.php:39
+#@ shoestrap
+msgid "\"more\" text"
+msgstr ""
+
+#: lib/modules/core.advanced/module.php:40
+#@ shoestrap
+msgid "Text to display in case of excerpt too long. Default: Continued"
+msgstr ""
+
+#: lib/modules/core.advanced/module.php:47
+#@ shoestrap
+msgid "Select pagination style"
+msgstr ""
+
+#: lib/modules/core.advanced/module.php:48
+#@ shoestrap
+msgid "Switch between default pager or default pagination. Default: Pager."
+msgstr ""
+
+#: lib/modules/core.advanced/module.php:60
+#@ shoestrap
+msgid "Enable Retina mode"
+msgstr ""
+
+#: lib/modules/core.advanced/module.php:61
+#@ shoestrap
+msgid "By enabling your site's featured images will be retina ready. Requires images to be uploaded at 2x the typical size desired. Default: On"
+msgstr ""
+
+#: lib/modules/core.advanced/module.php:70
+#@ shoestrap
+msgid "Dev mode"
+msgstr ""
+
+#: lib/modules/core.advanced/module.php:71
+#@ shoestrap
+msgid "By enabling your admin panel will have a Dev Mode Info with an output of the options object for addition debugging. Default: Off"
+msgstr ""
+
+#: lib/modules/core.advanced/module.php:80
+#@ shoestrap
+msgid "Google Analytics ID"
+msgstr ""
+
+#: lib/modules/core.advanced/module.php:81
+#@ shoestrap
+msgid "Paste your Google Analytics ID here to enable analytics tracking. Only Universal Analytics properties. Your user ID should be in the form of UA-XXXXX-Y."
+msgstr ""
+
+#: lib/modules/core.advanced/module.php:90
+#@ shoestrap
+msgid "The following settings affect various areas of your site, most notably buttons."
+msgstr ""
+
+#: lib/modules/core.advanced/module.php:96
+#@ shoestrap
+msgid "Border-Radius"
+msgstr ""
+
+#: lib/modules/core.advanced/module.php:97
+#@ shoestrap
+msgid "You can adjust the corner-radius of all elements in your site here. This will affect buttons, navbars, widgets and many more. Default: 4"
+msgstr ""
+
+#: lib/modules/core.advanced/module.php:110
+#@ shoestrap
+msgid "Padding Base"
+msgstr ""
+
+#: lib/modules/core.advanced/module.php:111
+#@ shoestrap
+msgid "You can adjust the padding base. This affects buttons size and lots of other cool stuff too! Default: 8"
+msgstr ""
+
+#: lib/modules/core.advanced/module.php:124
+#@ shoestrap
+msgid "PJAX"
+msgstr ""
+
+#: lib/modules/core.advanced/module.php:125
+#@ shoestrap
+msgid "Use <a href=\"https://github.com/defunkt/jquery-pjax\" target=\"_blank\">PJAX</a> in link tags inside NavBars, Sibebars & Breadcrumb. This cause a fast linear fadeToggle effect in main page. Default: OFF"
+msgstr ""
+
+#: lib/modules/core.advanced/module.php:133
+#@ shoestrap
+msgid "Root Relative URLs"
+msgstr ""
+
+#: lib/modules/core.advanced/module.php:134
+#@ shoestrap
+msgid "Return URLs such as <em>/assets/css/style.css</em> instead of <em>http://example.com/assets/css/style.css</em>. Default: ON"
+msgstr ""
+
+#: lib/modules/core.advanced/module.php:141
+#@ shoestrap
+msgid "Enable Nice Search"
+msgstr ""
+
+#: lib/modules/core.advanced/module.php:142
+#, php-format
+#@ shoestrap
+msgid "Redirects /?s=query to /search/query/, convert %20 to +. Default: ON"
+msgstr ""
+
+#: lib/modules/core.advanced/module.php:149
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:762
+#@ shoestrap
+#@ redux-framework-demo
+msgid "Custom CSS"
+msgstr ""
+
+#: lib/modules/core.advanced/module.php:150
+#@ shoestrap
+msgid "You can write your custom CSS here. This code will appear in a script tag appended in the header section of the page."
+msgstr ""
+
+#: lib/modules/core.advanced/module.php:160
+#@ shoestrap
+msgid "Custom LESS"
+msgstr ""
+
+#: lib/modules/core.advanced/module.php:161
+#@ shoestrap
+msgid "You can write your custom LESS here. This code will be compiled with the other LESS files of the theme and be appended to the header."
+msgstr ""
+
+#: lib/modules/core.advanced/module.php:172
+#@ shoestrap
+msgid "Custom JS"
+msgstr ""
+
+#: lib/modules/core.advanced/module.php:173
+#@ shoestrap
+msgid "You can write your custom JavaScript/jQuery here. The code will be included in a script tag appended to the bottom of the page."
+msgstr ""
+
+#: lib/modules/core.advanced/module.php:183
+#@ shoestrap
+msgid "Minimize CSS"
+msgstr ""
+
+#: lib/modules/core.advanced/module.php:184
+#@ shoestrap
+msgid "Minimize the genearated CSS. This should be ON for production sites. Default: OFF."
+msgstr ""
+
+#: lib/modules/core.advanced/module.php:194
+#@ shoestrap
+msgid "Debug Hooks"
+msgstr ""
+
+#: lib/modules/core.advanced/module.php:195
+#@ shoestrap
+msgid "Turn on very useful debug hooks. These will only be visible to admins. Default: Off."
+msgstr ""
+
+#: lib/modules/core.background/module.php:28
+#@ shoestrap
+msgid "Background"
+msgstr ""
+
+#: lib/modules/core.background/module.php:33
+#@ shoestrap
+msgid "General Background Color"
+msgstr ""
+
+#: lib/modules/core.background/module.php:34
+#@ shoestrap
+msgid "Select a background color for your site. Default: #ffffff."
+msgstr ""
+
+#: lib/modules/core.background/module.php:43
+#@ shoestrap
+msgid "Content Background Color"
+msgstr ""
+
+#: lib/modules/core.background/module.php:44
+#@ shoestrap
+msgid "Select a background color for your site's content area. Default: #ffffff."
+msgstr ""
+
+#: lib/modules/core.background/module.php:54
+#@ shoestrap
+msgid "Content Background Color Opacity"
+msgstr ""
+
+#: lib/modules/core.background/module.php:55
+#@ shoestrap
+msgid "Select the opacity of your background color for the main content area so that background images and patterns will show through. Default: 100 (fully opaque)"
+msgstr ""
+
+#: lib/modules/core.background/module.php:68
+#@ shoestrap
+msgid ""
+"If you want a background image, you can select one here.\n"
+"                    You can either upload a custom image, or use one of our pre-defined image patterns.\n"
+"                    If you both upload a custom image and select a pattern, your custom image will override the selected pattern.\n"
+"                    Please note that the image only applies to the area on the right and left of the main content area,\n"
+"                    to ensure better content readability. You can also set the background position to be fixed or scroll!"
+msgstr ""
+
+#: lib/modules/core.background/module.php:77
+#: lib/modules/core.jumbotron/module.php:74
+#@ shoestrap
+msgid "Use a Background Image"
+msgstr ""
+
+#: lib/modules/core.background/module.php:78
+#: lib/modules/core.jumbotron/module.php:75
+#@ shoestrap
+msgid "Enable this option to upload a custom background image for your site. This will override any patterns you may have selected. Default: OFF."
+msgstr ""
+
+#: lib/modules/core.background/module.php:85
+#: lib/modules/core.jumbotron/module.php:82
+#@ shoestrap
+msgid "Upload a Custom Background Image"
+msgstr ""
+
+#: lib/modules/core.background/module.php:86
+#: lib/modules/core.jumbotron/module.php:83
+#@ shoestrap
+msgid "Upload a Custom Background image using the media uploader, or define the URL directly."
+msgstr ""
+
+#: lib/modules/core.background/module.php:95
+#: lib/modules/core.jumbotron/module.php:64
+#@ shoestrap
+msgid "Background position"
+msgstr ""
+
+#: lib/modules/core.background/module.php:96
+#: lib/modules/core.jumbotron/module.php:65
+#@ shoestrap
+msgid "Changes how the background image or pattern is displayed from scroll to fixed position. Default: Fixed."
+msgstr ""
+
+#: lib/modules/core.background/module.php:99
+#: lib/modules/core.jumbotron/module.php:68
+#: lib/modules/core.menus/module.php:127
+#@ shoestrap
+msgid "Fixed"
+msgstr ""
+
+#: lib/modules/core.background/module.php:100
+#: lib/modules/core.jumbotron/module.php:69
+#: lib/modules/core.menus/module.php:128
+#@ shoestrap
+msgid "Scroll"
+msgstr ""
+
+#: lib/modules/core.background/module.php:106
+#: lib/modules/core.jumbotron/module.php:92
+#@ shoestrap
+msgid "Background Image Positioning"
+msgstr ""
+
+#: lib/modules/core.background/module.php:107
+#: lib/modules/core.jumbotron/module.php:93
+#@ shoestrap
+msgid "Allows the user to modify how the background displays. By default it is full width and stretched to fill the page. Default: Full Width."
+msgstr ""
+
+#: lib/modules/core.background/module.php:111
+#: lib/modules/core.jumbotron/module.php:97
+#@ shoestrap
+msgid "Custom"
+msgstr ""
+
+#: lib/modules/core.background/module.php:112
+#: lib/modules/core.images/module.php:40
+#: lib/modules/core.images/module.php:86
+#: lib/modules/core.jumbotron/module.php:98
+#@ shoestrap
+msgid "Full Width"
+msgstr ""
+
+#: lib/modules/core.background/module.php:117
+#: lib/modules/core.jumbotron/module.php:103
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/background/field_background.php:136
+#@ shoestrap
+#@ redux-framework
+msgid "Background Repeat"
+msgstr ""
+
+#: lib/modules/core.background/module.php:118
+#: lib/modules/core.jumbotron/module.php:104
+#@ shoestrap
+msgid "Select how (or if) the selected background should be tiled. Default: Tile"
+msgstr ""
+
+#: lib/modules/core.background/module.php:124
+#: lib/modules/core.jumbotron/module.php:110
+#@ shoestrap
+msgid "No Repeat"
+msgstr ""
+
+#: lib/modules/core.background/module.php:125
+#: lib/modules/core.jumbotron/module.php:111
+#@ shoestrap
+msgid "Tile"
+msgstr ""
+
+#: lib/modules/core.background/module.php:126
+#: lib/modules/core.jumbotron/module.php:112
+#@ shoestrap
+msgid "Tile Horizontally"
+msgstr ""
+
+#: lib/modules/core.background/module.php:127
+#: lib/modules/core.jumbotron/module.php:113
+#@ shoestrap
+msgid "Tile Vertically"
+msgstr ""
+
+#: lib/modules/core.background/module.php:132
+#: lib/modules/core.jumbotron/module.php:118
+#@ shoestrap
+msgid "Background Alignment"
+msgstr ""
+
+#: lib/modules/core.background/module.php:133
+#: lib/modules/core.jumbotron/module.php:119
+#@ shoestrap
+msgid "Select how the selected background should be horizontally aligned. Default: Left"
+msgstr ""
+
+#: lib/modules/core.background/module.php:139
+#: lib/modules/core.jumbotron/module.php:125
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/border/field_border.php:146
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/spacing/field_spacing.php:170
+#@ shoestrap
+#@ redux-framework
+msgid "Left"
+msgstr ""
+
+#: lib/modules/core.background/module.php:140
+#: lib/modules/core.jumbotron/module.php:126
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/border/field_border.php:132
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/spacing/field_spacing.php:156
+#@ shoestrap
+#@ redux-framework
+msgid "Right"
+msgstr ""
+
+#: lib/modules/core.background/module.php:141
+#: lib/modules/core.jumbotron/module.php:127
+#@ shoestrap
+msgid "Center"
+msgstr ""
+
+#: lib/modules/core.background/module.php:146
+#: lib/modules/core.jumbotron/module.php:132
+#@ shoestrap
+msgid "Use a Background Pattern"
+msgstr ""
+
+#: lib/modules/core.background/module.php:147
+#: lib/modules/core.jumbotron/module.php:133
+#@ shoestrap
+msgid "Select one of the already existing Background Patterns. Default: OFF."
+msgstr ""
+
+#: lib/modules/core.background/module.php:154
+#: lib/modules/core.jumbotron/module.php:140
+#@ shoestrap
+msgid "Choose a Background Pattern"
+msgstr ""
+
+#: lib/modules/core.background/module.php:155
+#: lib/modules/core.jumbotron/module.php:141
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:381
+#@ shoestrap
+#@ redux-framework-demo
+msgid "Select a background pattern."
+msgstr ""
+
+#: lib/modules/core.branding/module.php:11
+#@ shoestrap
+msgid "Branding"
+msgstr ""
+
+#: lib/modules/core.branding/module.php:16
+#@ shoestrap
+msgid "Branding Options Mode"
+msgstr ""
+
+#: lib/modules/core.branding/module.php:17
+#: lib/modules/core.layout/module.php:93
+#@ shoestrap
+msgid "Select the width of the Primary Sidebar. Please note that the values represent grid columns. The total width of the page is 12 columns, so selecting 4 here will make the primary sidebar to have a width of 1/3 ( 4/12 ) of the total page width."
+msgstr ""
+
+#: lib/modules/core.branding/module.php:28
+#@ shoestrap
+msgid "Logo"
+msgstr ""
+
+#: lib/modules/core.branding/module.php:29
+#@ shoestrap
+msgid "Upload a logo image using the media uploader, or define the URL directly."
+msgstr ""
+
+#: lib/modules/core.branding/module.php:45
+#@ shoestrap
+msgid "Custom Favicon"
+msgstr ""
+
+#: lib/modules/core.branding/module.php:46
+#@ shoestrap
+msgid "Upload a favicon image using the media uploader, or define the URL directly."
+msgstr ""
+
+#: lib/modules/core.branding/module.php:54
+#@ shoestrap
+msgid "Apple Icon"
+msgstr ""
+
+#: lib/modules/core.branding/module.php:55
+#@ shoestrap
+msgid "This will create icons for Apple iPhone ( 57px x 57px ), Apple iPhone Retina Version ( 114px x 114px ), Apple iPad ( 72px x 72px ) and Apple iPad Retina ( 144px x 144px ). Please note that for better results the image you upload should be at least 144px x 144px."
+msgstr ""
+
+#: lib/modules/core.branding/module.php:67
+#@ shoestrap
+msgid ""
+"The primary color you select will also affect other elements on your site,\n"
+"                      such as table borders, widgets colors, input elements, dropdowns etc.\n"
+"                      The branding colors you select will be used throughout the site in various elements.\n"
+"                      One of the most important settings in your branding is your primary color,\n"
+"                      since this will be used more often."
+msgstr ""
+
+#: lib/modules/core.branding/module.php:76
+#@ shoestrap
+msgid "Enable Gradients"
+msgstr ""
+
+#: lib/modules/core.branding/module.php:77
+#@ shoestrap
+msgid "Enable gradients for buttons and the navbar. Default: Off."
+msgstr ""
+
+#: lib/modules/core.branding/module.php:87
+#@ shoestrap
+msgid "Brand Colors: Primary"
+msgstr ""
+
+#: lib/modules/core.branding/module.php:88
+#@ shoestrap
+msgid "Select your primary branding color. Also referred to as an accent color. This will affect various areas of your site, including the color of your primary buttons, link color, the background of some elements and many more."
+msgstr ""
+
+#: lib/modules/core.branding/module.php:98
+#@ shoestrap
+msgid "Brand Colors: Success"
+msgstr ""
+
+#: lib/modules/core.branding/module.php:99
+#@ shoestrap
+msgid "Select your branding color for success messages etc. Default: #5cb85c."
+msgstr ""
+
+#: lib/modules/core.branding/module.php:109
+#@ shoestrap
+msgid "Brand Colors: Warning"
+msgstr ""
+
+#: lib/modules/core.branding/module.php:110
+#@ shoestrap
+msgid "Select your branding color for warning messages etc. Default: #f0ad4e."
+msgstr ""
+
+#: lib/modules/core.branding/module.php:120
+#@ shoestrap
+msgid "Brand Colors: Danger"
+msgstr ""
+
+#: lib/modules/core.branding/module.php:121
+#@ shoestrap
+msgid "Select your branding color for success messages etc. Default: #d9534f."
+msgstr ""
+
+#: lib/modules/core.branding/module.php:131
+#@ shoestrap
+msgid "Brand Colors: Info"
+msgstr ""
+
+#: lib/modules/core.branding/module.php:132
+#@ shoestrap
+msgid "Select your branding color for info messages etc. It will also be used for the Search button color as well as other areas where it semantically makes sense to use an 'info' class. Default: #5bc0de."
+msgstr ""
+
+#: lib/modules/core.breadcrumbs/module.php:73
+#@ shoestrap
+msgid "Search results for &ldquo;"
+msgstr ""
+
+#: lib/modules/core.breadcrumbs/module.php:140
+#@ shoestrap
+msgid "Error 404"
+msgstr ""
+
+#: lib/modules/core.breadcrumbs/module.php:185
+#@ shoestrap
+msgid "Author:"
+msgstr ""
+
+#: lib/modules/core.breadcrumbs/module.php:189
+#@ shoestrap
+msgid "Page"
+msgstr ""
+
+#: lib/modules/core.compiler/includes/functions.core.php:59
+#@ shoestrap
+msgid "The following file does not exist and must be so in order to utilise this theme. Please create this file."
+msgstr ""
+
+#: lib/modules/core.compiler/includes/functions.core.php:60
+#@ shoestrap
+msgid "Try visiting the theme options and clicking the \"Reset All\" button to attempt automatically creating it."
+msgstr ""
+
+#: lib/modules/core.compiler/includes/functions.core.php:67
+#@ shoestrap
+msgid "The following file is not writable and must be so in order to utilise this theme. Please update the permissions."
+msgstr ""
+
+#: lib/modules/core.entry-meta/functions.metaconfig.php:33
+#: lib/modules/core.entry-meta/functions.metaconfig.php:34
+#@ shoestrap
+msgid ", "
+msgstr ""
+
+#: lib/modules/core.entry-meta/functions.metaconfig.php:53
+#@ shoestrap
+msgid "Sticky"
+msgstr ""
+
+#: lib/modules/core.entry-meta/functions.metaconfig.php:60
+#, php-format
+#@ shoestrap
+msgctxt "1: post format name. 2: date"
+msgid "%1$s on %2$s"
+msgstr ""
+
+#: lib/modules/core.entry-meta/functions.metaconfig.php:65
+#, php-format
+#@ shoestrap
+msgid "Permalink to %s"
+msgstr ""
+
+#: lib/modules/core.entry-meta/functions.metaconfig.php:92
+#, php-format
+#@ shoestrap
+msgid "View all posts by %s"
+msgstr ""
+
+#: lib/modules/core.entry-meta/module.php:15
+#@ shoestrap
+msgid "Post Meta"
+msgstr ""
+
+#: lib/modules/core.entry-meta/module.php:21
+#@ shoestrap
+msgid "Activate and order elements"
+msgstr ""
+
+#: lib/modules/core.footer/module.php:11
+#: lib/widgets.php:17
+#@ shoestrap
+#@ roots
+msgid "Footer"
+msgstr ""
+
+#: lib/modules/core.footer/module.php:16
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:672
+#@ shoestrap
+#@ redux-framework-demo
+msgid "Footer Background Color"
+msgstr ""
+
+#: lib/modules/core.footer/module.php:17
+#@ shoestrap
+msgid "Select the background color for your footer. Default: #282a2b."
+msgstr ""
+
+#: lib/modules/core.footer/module.php:26
+#@ shoestrap
+msgid "Footer Background Opacity"
+msgstr ""
+
+#: lib/modules/core.footer/module.php:27
+#@ shoestrap
+msgid "Select the opacity level for the footer bar. Default: 100%."
+msgstr ""
+
+#: lib/modules/core.footer/module.php:37
+#@ shoestrap
+msgid "Footer Text Color"
+msgstr ""
+
+#: lib/modules/core.footer/module.php:38
+#@ shoestrap
+msgid "Select the text color for your footer. Default: #8C8989."
+msgstr ""
+
+#: lib/modules/core.footer/module.php:47
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:622
+#@ shoestrap
+#@ redux-framework-demo
+msgid "Footer Text"
+msgstr ""
+
+#: lib/modules/core.footer/module.php:48
+#@ shoestrap
+msgid "The text that will be displayed in your footer. You can use [year] and [sitename] and they will be replaced appropriately. Default: &copy; [year] [sitename]"
+msgstr ""
+
+#: lib/modules/core.footer/module.php:74
+#@ shoestrap
+msgid "Footer Top Margin"
+msgstr ""
+
+#: lib/modules/core.footer/module.php:75
+#@ shoestrap
+msgid "Select the top margin of footer in pixels. Default: 0px."
+msgstr ""
+
+#: lib/modules/core.footer/module.php:85
+#@ shoestrap
+msgid "Show social icons in footer"
+msgstr ""
+
+#: lib/modules/core.footer/module.php:86
+#@ shoestrap
+msgid "Show social icons in the footer. Default: On."
+msgstr ""
+
+#: lib/modules/core.footer/module.php:95
+#@ shoestrap
+msgid "Footer social links column width"
+msgstr ""
+
+#: lib/modules/core.footer/module.php:96
+#@ shoestrap
+msgid "You can customize the width of the footer social links area. The footer text width will be adjusted accordingly. Default: 5."
+msgstr ""
+
+#: lib/modules/core.footer/module.php:108
+#@ shoestrap
+msgid "Footer social icons open new window"
+msgstr ""
+
+#: lib/modules/core.footer/module.php:109
+#@ shoestrap
+msgid "Social icons in footer will open a new window. Default: On."
+msgstr ""
+
+#: lib/modules/core.header/module.php:11
+#@ shoestrap
+msgid "Extra Header"
+msgstr ""
+
+#: lib/modules/core.header/module.php:18
+#@ shoestrap
+msgid "Extra Branding Area"
+msgstr ""
+
+#: lib/modules/core.header/module.php:26
+#@ shoestrap
+msgid "Display the Header."
+msgstr ""
+
+#: lib/modules/core.header/module.php:27
+#@ shoestrap
+msgid "Turn this ON to display the header. Default: OFF"
+msgstr ""
+
+#: lib/modules/core.header/module.php:36
+#@ shoestrap
+msgid "Display branding on your Header."
+msgstr ""
+
+#: lib/modules/core.header/module.php:37
+#@ shoestrap
+msgid "Turn this ON to display branding ( Sitename or Logo )on your Header. Default: ON"
+msgstr ""
+
+#: lib/modules/core.header/module.php:46
+#@ shoestrap
+msgid "Header Background Color"
+msgstr ""
+
+#: lib/modules/core.header/module.php:47
+#@ shoestrap
+msgid "Select the background color for your header. Default: #EEEEEE."
+msgstr ""
+
+#: lib/modules/core.header/module.php:57
+#@ shoestrap
+msgid "Header Background Opacity"
+msgstr ""
+
+#: lib/modules/core.header/module.php:58
+#@ shoestrap
+msgid "Select the background opacity for your header. Default: 100%."
+msgstr ""
+
+#: lib/modules/core.header/module.php:70
+#@ shoestrap
+msgid "Header Text Color"
+msgstr ""
+
+#: lib/modules/core.header/module.php:71
+#@ shoestrap
+msgid "Select the text color for your header. Default: #333333."
+msgstr ""
+
+#: lib/modules/core.header/module.php:81
+#@ shoestrap
+msgid "Header Top Margin"
+msgstr ""
+
+#: lib/modules/core.header/module.php:82
+#@ shoestrap
+msgid "Select the top margin of header in pixels. Default: 0px."
+msgstr ""
+
+#: lib/modules/core.header/module.php:92
+#@ shoestrap
+msgid "Header Bottom Margin"
+msgstr ""
+
+#: lib/modules/core.header/module.php:93
+#@ shoestrap
+msgid "Select the bottom margin of header in pixels. Default: 0px."
+msgstr ""
+
+#: lib/modules/core.images/module.php:11
+#: lib/modules/core.images/module.php:17
+#@ shoestrap
+msgid "Featured Images"
+msgstr ""
+
+#: lib/modules/core.images/module.php:18
+#@ shoestrap
+msgid ""
+"Here you can select if you want to display the featured images in post archives and individual posts.\n"
+"                    Please note that these apply to posts, pages, as well as custom post types.\n"
+"                    You can select image sizes independently for archives and individual posts view."
+msgstr ""
+
+#: lib/modules/core.images/module.php:25
+#@ shoestrap
+msgid "Featured Images on Archives"
+msgstr ""
+
+#: lib/modules/core.images/module.php:26
+#@ shoestrap
+msgid "Display featured Images on post archives ( such as categories, tags, month view etc ). Default: OFF."
+msgstr ""
+
+#: lib/modules/core.images/module.php:35
+#@ shoestrap
+msgid "Width of Featured Images on Archives"
+msgstr ""
+
+#: lib/modules/core.images/module.php:36
+#@ shoestrap
+msgid "Set dimensions of featured Images on Archives. Default: Full Width"
+msgstr ""
+
+#: lib/modules/core.images/module.php:41
+#: lib/modules/core.images/module.php:87
+#@ shoestrap
+msgid "Custom Dimensions"
+msgstr ""
+
+#: lib/modules/core.images/module.php:47
+#@ shoestrap
+msgid "Archives Featured Image Width"
+msgstr ""
+
+#: lib/modules/core.images/module.php:48
+#: lib/modules/core.images/module.php:95
+#@ shoestrap
+msgid "Select the width of your featured images on single posts. Default: 550px"
+msgstr ""
+
+#: lib/modules/core.images/module.php:60
+#@ shoestrap
+msgid "Archives Featured Image Height"
+msgstr ""
+
+#: lib/modules/core.images/module.php:61
+#@ shoestrap
+msgid "Select the height of your featured images on post archives. Default: 300px"
+msgstr ""
+
+#: lib/modules/core.images/module.php:73
+#@ shoestrap
+msgid "Featured Images on Posts"
+msgstr ""
+
+#: lib/modules/core.images/module.php:74
+#@ shoestrap
+msgid "Display featured Images on posts. Default: OFF."
+msgstr ""
+
+#: lib/modules/core.images/module.php:82
+#@ shoestrap
+msgid "Width of Featured Images on Posts"
+msgstr ""
+
+#: lib/modules/core.images/module.php:83
+#@ shoestrap
+msgid "Set dimensions of featured Images on Posts. Default: Full Width"
+msgstr ""
+
+#: lib/modules/core.images/module.php:94
+#@ shoestrap
+msgid "Posts Featured Image Width"
+msgstr ""
+
+#: lib/modules/core.images/module.php:107
+#@ shoestrap
+msgid "Posts Featured Image Height"
+msgstr ""
+
+#: lib/modules/core.images/module.php:108
+#@ shoestrap
+msgid "Select the height of your featured images on single posts. Default: 330px"
+msgstr ""
+
+#: lib/modules/core.images/module.php:128
+#@ shoestrap
+msgid "Disable featured images on single post types"
+msgstr ""
+
+#: lib/modules/core.images/resize.php:43
+#: lib/modules/core.images/resize.php:181
+#@ shoestrap
+msgid "No image URL has been entered."
+msgstr ""
+
+#: lib/modules/core.images/resize.php:243
+#@ shoestrap
+msgid "Failed to get $file_path information using \"@getimagesize\"."
+msgstr ""
+
+#: lib/modules/core.images/resize.php:286
+#@ shoestrap
+msgid "Resize path invalid (GIF)"
+msgstr ""
+
+#: lib/modules/core.images/resize.php:290
+#@ shoestrap
+msgid "Resize path invalid (PNG)."
+msgstr ""
+
+#: lib/modules/core.images/resize.php:298
+#@ shoestrap
+msgid "Resize path invalid (JPG)."
+msgstr ""
+
+#: lib/modules/core.images/resize.php:313
+#@ shoestrap
+msgid "Failed to get $dest_file_name (resized image) info via @getimagesize"
+msgstr ""
+
+#: lib/modules/core.jumbotron/module.php:24
+#: lib/modules/core.jumbotron/module.php:43
+#: lib/modules/core.widgets/module.php:58
+#@ shoestrap
+msgid "Jumbotron"
+msgstr ""
+
+#: lib/modules/core.jumbotron/module.php:29
+#@ shoestrap
+msgid "Jumbotron Options Mode"
+msgstr ""
+
+#: lib/modules/core.jumbotron/module.php:53
+#@ shoestrap
+msgid "Jumbotron Background Color"
+msgstr ""
+
+#: lib/modules/core.jumbotron/module.php:54
+#@ shoestrap
+msgid "Select the background color for your Jumbotron area. Please note that this area will only be visible if you assign a widget to the 'Jumbotron' Widget Area. Default: #EEEEEE."
+msgstr ""
+
+#: lib/modules/core.jumbotron/module.php:151
+#@ shoestrap
+msgid "Display Jumbotron only on the Frontpage."
+msgstr ""
+
+#: lib/modules/core.jumbotron/module.php:152
+#@ shoestrap
+msgid "When Turned OFF, the Jumbotron area is displayed in all your pages. If you wish to completely disable the Jumbotron, then please remove the widgets assigned to its area and it will no longer be displayed. Default: ON"
+msgstr ""
+
+#: lib/modules/core.jumbotron/module.php:160
+#@ shoestrap
+msgid "Full-Width"
+msgstr ""
+
+#: lib/modules/core.jumbotron/module.php:161
+#@ shoestrap
+msgid "When Turned ON, the Jumbotron is no longer restricted by the width of your page, taking over the full width of your screen. This option is useful when you have assigned a slider widget on the Jumbotron area and you want its width to be the maximum width of the screen. Default: OFF."
+msgstr ""
+
+#: lib/modules/core.jumbotron/module.php:169
+#@ shoestrap
+msgid "Use fittext script for the title."
+msgstr ""
+
+#: lib/modules/core.jumbotron/module.php:170
+#@ shoestrap
+msgid "Use the fittext script to enlarge or scale-down the font-size of the widget title to fit the Jumbotron area. Default: OFF"
+msgstr ""
+
+#: lib/modules/core.jumbotron/module.php:179
+#@ shoestrap
+msgid "Center-align the content."
+msgstr ""
+
+#: lib/modules/core.jumbotron/module.php:180
+#@ shoestrap
+msgid "Turn this on to center-align the contents of the Jumbotron area. Default: OFF"
+msgstr ""
+
+#: lib/modules/core.jumbotron/module.php:189
+#@ shoestrap
+msgid "Jumbotron Font"
+msgstr ""
+
+#: lib/modules/core.jumbotron/module.php:190
+#@ shoestrap
+msgid "The font used in jumbotron."
+msgstr ""
+
+#: lib/modules/core.jumbotron/module.php:201
+#: lib/modules/core.jumbotron/module.php:230
+#: lib/modules/core.menus/module.php:167
+#: lib/modules/core.menus/module.php:185
+#: lib/modules/core.typography/module.php:31
+#: lib/modules/core.typography/module.php:63
+#: lib/modules/core.typography/module.php:84
+#: lib/modules/core.typography/module.php:105
+#: lib/modules/core.typography/module.php:126
+#: lib/modules/core.typography/module.php:147
+#: lib/modules/core.typography/module.php:169
+#@ shoestrap
+msgid "This is my preview text!"
+msgstr ""
+
+#: lib/modules/core.jumbotron/module.php:209
+#@ shoestrap
+msgid "Jumbotron Header Overrides"
+msgstr ""
+
+#: lib/modules/core.jumbotron/module.php:210
+#: lib/modules/core.typography/module.php:39
+#@ shoestrap
+msgid "By enabling this you can specify custom values for each <h*> tag. Default: Off"
+msgstr ""
+
+#: lib/modules/core.jumbotron/module.php:220
+#@ shoestrap
+msgid "Jumbotron Headers Font"
+msgstr ""
+
+#: lib/modules/core.jumbotron/module.php:221
+#: lib/modules/core.typography/module.php:17
+#: lib/modules/core.typography/module.php:50
+#: lib/modules/core.typography/module.php:73
+#: lib/modules/core.typography/module.php:94
+#: lib/modules/core.typography/module.php:114
+#: lib/modules/core.typography/module.php:135
+#: lib/modules/core.typography/module.php:156
+#@ shoestrap
+msgid "The main font for your site."
+msgstr ""
+
+#: lib/modules/core.jumbotron/module.php:239
+#@ shoestrap
+msgid "Select the border options for your Jumbotron"
+msgstr ""
+
+#: lib/modules/core.layout/module.php:11
+#: lib/modules/core.layout/module.php:45
+#@ shoestrap
+msgid "Layout"
+msgstr ""
+
+#: lib/modules/core.layout/module.php:17
+#@ shoestrap
+msgid "Layout Options Mode"
+msgstr ""
+
+#: lib/modules/core.layout/module.php:29
+#@ shoestrap
+msgid "Site Style"
+msgstr ""
+
+#: lib/modules/core.layout/module.php:30
+#@ shoestrap
+msgid "Select the default site layout. Default: Wide"
+msgstr ""
+
+#: lib/modules/core.layout/module.php:36
+#@ shoestrap
+msgid "Static (Non-Responsive)"
+msgstr ""
+
+#: lib/modules/core.layout/module.php:37
+#@ shoestrap
+msgid "Wide"
+msgstr ""
+
+#: lib/modules/core.layout/module.php:38
+#@ shoestrap
+msgid "Boxed"
+msgstr ""
+
+#: lib/modules/core.layout/module.php:39
+#@ shoestrap
+msgid "Fluid"
+msgstr ""
+
+#: lib/modules/core.layout/module.php:46
+#@ shoestrap
+msgid "Select main content and sidebar arrangement. Choose between 1, 2 or 3 column layout."
+msgstr ""
+
+#: lib/modules/core.layout/module.php:62
+#@ shoestrap
+msgid "Custom Layouts per Post Type"
+msgstr ""
+
+#: lib/modules/core.layout/module.php:63
+#@ shoestrap
+msgid "Set a default layout for each post type on your site."
+msgstr ""
+
+#: lib/modules/core.layout/module.php:74
+#@ shoestrap
+msgid " Layout"
+msgstr ""
+
+#: lib/modules/core.layout/module.php:75
+#@ shoestrap
+msgid "Override your default stylings. Choose between 1, 2 or 3 column layout."
+msgstr ""
+
+#: lib/modules/core.layout/module.php:92
+#@ shoestrap
+msgid "Primary Sidebar Width"
+msgstr ""
+
+#: lib/modules/core.layout/module.php:107
+#@ shoestrap
+msgid "Secondary Sidebar Width"
+msgstr ""
+
+#: lib/modules/core.layout/module.php:108
+#@ shoestrap
+msgid "Select the width of the Secondary Sidebar. Please note that the values represent grid columns. The total width of the page is 12 columns, so selecting 4 here will make the secondary sidebar to have a width of 1/3 ( 4/12 ) of the total page width."
+msgstr ""
+
+#: lib/modules/core.layout/module.php:122
+#@ shoestrap
+msgid "Show sidebars on the frontpage"
+msgstr ""
+
+#: lib/modules/core.layout/module.php:123
+#@ shoestrap
+msgid "OFF by default. If you want to display the sidebars in your frontpage, turn this ON."
+msgstr ""
+
+#: lib/modules/core.layout/module.php:131
+#@ shoestrap
+msgid "Margin from top ( Works only in 'Boxed' mode )"
+msgstr ""
+
+#: lib/modules/core.layout/module.php:132
+#@ shoestrap
+msgid "This will add a margin above the navbar. Useful if you've enabled the 'Boxed' mode above. Default: 0px"
+msgstr ""
+
+#: lib/modules/core.layout/module.php:144
+#@ shoestrap
+msgid "Widgets mode"
+msgstr ""
+
+#: lib/modules/core.layout/module.php:145
+#@ shoestrap
+msgid "How do you want your widgets to be displayed?"
+msgstr ""
+
+#: lib/modules/core.layout/module.php:149
+#@ shoestrap
+msgid "Panel"
+msgstr ""
+
+#: lib/modules/core.layout/module.php:150
+#@ shoestrap
+msgid "Well"
+msgstr ""
+
+#: lib/modules/core.layout/module.php:151
+#@ shoestrap
+msgid "None"
+msgstr ""
+
+#: lib/modules/core.layout/module.php:158
+#@ shoestrap
+msgid "Show Breadcrumbs"
+msgstr ""
+
+#: lib/modules/core.layout/module.php:159
+#@ shoestrap
+msgid "Display Breadcrumbs. Default: OFF."
+msgstr ""
+
+#: lib/modules/core.layout/module.php:167
+#@ shoestrap
+msgid "Body Top Margin"
+msgstr ""
+
+#: lib/modules/core.layout/module.php:168
+#@ shoestrap
+msgid "Select the top margin of body element in pixels. Default: 0px."
+msgstr ""
+
+#: lib/modules/core.layout/module.php:178
+#@ shoestrap
+msgid "Body Bottom Margin"
+msgstr ""
+
+#: lib/modules/core.layout/module.php:179
+#@ shoestrap
+msgid "Select the bottom margin of body element in pixels. Default: 0px."
+msgstr ""
+
+#: lib/modules/core.layout/module.php:189
+#@ shoestrap
+msgid "Custom Grid"
+msgstr ""
+
+#: lib/modules/core.layout/module.php:190
+#@ shoestrap
+msgid "CAUTION:"
+msgstr ""
+
+#: lib/modules/core.layout/module.php:190
+#@ shoestrap
+msgid "Only use this if you know what you are doing, as changing these values might break the way your site looks on some devices. The default settings should be fine for the vast majority of sites."
+msgstr ""
+
+#: lib/modules/core.layout/module.php:198
+#@ shoestrap
+msgid "Small Screen / Tablet view"
+msgstr ""
+
+#: lib/modules/core.layout/module.php:199
+#@ shoestrap
+msgid "The width of Tablet screens. Default: 768px"
+msgstr ""
+
+#: lib/modules/core.layout/module.php:212
+#@ shoestrap
+msgid "Desktop Container Width"
+msgstr ""
+
+#: lib/modules/core.layout/module.php:213
+#@ shoestrap
+msgid "The width of normal screens. Default: 992px"
+msgstr ""
+
+#: lib/modules/core.layout/module.php:227
+#@ shoestrap
+msgid "Large Desktop Container Width"
+msgstr ""
+
+#: lib/modules/core.layout/module.php:228
+#@ shoestrap
+msgid "The width of Large Desktop screens. Default: 1200px"
+msgstr ""
+
+#: lib/modules/core.layout/module.php:241
+#@ shoestrap
+msgid "Columns Gutter"
+msgstr ""
+
+#: lib/modules/core.layout/module.php:242
+#@ shoestrap
+msgid "The space between the columns in your grid. Default: 30px"
+msgstr ""
+
+#: lib/modules/core.menus/functions.navlist.php:12
+#@ shoestrap
+msgid "Use this widget to add one of your custom menus as a widget."
+msgstr ""
+
+#: lib/modules/core.menus/functions.navlist.php:13
+#@ shoestrap
+msgid "Custom Menu"
+msgstr ""
+
+#: lib/modules/core.menus/functions.navlist.php:67
+#, php-format
+#@ shoestrap
+msgid "No menus have been created yet. <a href=\"%s\">Create some</a>."
+msgstr ""
+
+#: lib/modules/core.menus/functions.navlist.php:72
+#@ shoestrap
+msgid "Title:"
+msgstr ""
+
+#: lib/modules/core.menus/functions.navlist.php:76
+#@ shoestrap
+msgid "Select Menu:"
+msgstr ""
+
+#: lib/modules/core.menus/functions.slide-down.php:7
+#@ shoestrap
+msgid "Navbar Slide-Down Top"
+msgstr ""
+
+#: lib/modules/core.menus/functions.slide-down.php:16
+#@ shoestrap
+msgid "Navbar Slide-Down 1"
+msgstr ""
+
+#: lib/modules/core.menus/functions.slide-down.php:25
+#@ shoestrap
+msgid "Navbar Slide-Down 2"
+msgstr ""
+
+#: lib/modules/core.menus/functions.slide-down.php:34
+#@ shoestrap
+msgid "Navbar Slide-Down 3"
+msgstr ""
+
+#: lib/modules/core.menus/functions.slide-down.php:43
+#@ shoestrap
+msgid "Navbar Slide-Down 4"
+msgstr ""
+
+#: lib/modules/core.menus/module.php:11
+#@ shoestrap
+msgid "Menus"
+msgstr ""
+
+#: lib/modules/core.menus/module.php:16
+#@ shoestrap
+msgid "Menus Options Mode"
+msgstr ""
+
+#: lib/modules/core.menus/module.php:30
+#@ shoestrap
+msgid "Advanced NavBar Options"
+msgstr ""
+
+#: lib/modules/core.menus/module.php:39
+#@ shoestrap
+msgid "Type of NavBar"
+msgstr ""
+
+#: lib/modules/core.menus/module.php:40
+#@ shoestrap
+msgid ""
+"Choose the type of Navbar you want.\n"
+"                        Off completely hides the navbar, Alternative uses an alternative walker for the navigation menus.\n"
+"                        See <a target=\"_blank\"href=\"https://github.com/twittem/wp-bootstrap-navwalker\">here</a> for more details"
+msgstr ""
+
+#: lib/modules/core.menus/module.php:46
+#@ shoestrap
+msgid "Off"
+msgstr ""
+
+#: lib/modules/core.menus/module.php:47
+#@ shoestrap
+msgid "Normal"
+msgstr ""
+
+#: lib/modules/core.menus/module.php:48
+#@ shoestrap
+msgid "Pills"
+msgstr ""
+
+#: lib/modules/core.menus/module.php:49
+#@ shoestrap
+msgid "Alternative"
+msgstr ""
+
+#: lib/modules/core.menus/module.php:57
+#@ shoestrap
+msgid "NavBar Styling Options"
+msgstr ""
+
+#: lib/modules/core.menus/module.php:58
+#@ shoestrap
+msgid "Customize the look and feel of your navbar below."
+msgstr ""
+
+#: lib/modules/core.menus/module.php:63
+#@ shoestrap
+msgid "NavBar Background Color"
+msgstr ""
+
+#: lib/modules/core.menus/module.php:64
+#@ shoestrap
+msgid "Pick a background color for the NavBar. Default: #eeeeee."
+msgstr ""
+
+#: lib/modules/core.menus/module.php:74
+#@ shoestrap
+msgid "NavBar Background Opacity"
+msgstr ""
+
+#: lib/modules/core.menus/module.php:75
+#@ shoestrap
+msgid "Pick a background opacity for the NavBar. Default: 100%."
+msgstr ""
+
+#: lib/modules/core.menus/module.php:86
+#@ shoestrap
+msgid "NavBar Menu Style"
+msgstr ""
+
+#: lib/modules/core.menus/module.php:87
+#@ shoestrap
+msgid "You can use an alternative menu style for your NavBars."
+msgstr ""
+
+#: lib/modules/core.menus/module.php:93
+#: lib/modules/core.menus/module.php:294
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:1492
+#@ shoestrap
+#@ domain
+msgid "Default"
+msgstr ""
+
+#: lib/modules/core.menus/module.php:94
+#: lib/modules/core.menus/module.php:95
+#: lib/modules/core.menus/module.php:96
+#: lib/modules/core.menus/module.php:97
+#: lib/modules/core.menus/module.php:98
+#: lib/modules/core.menus/module.php:99
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/typography/field_typography.php:190
+#@ shoestrap
+#@ redux-framework
+msgid "Style"
+msgstr ""
+
+#: lib/modules/core.menus/module.php:100
+#@ shoestrap
+msgid "Metro"
+msgstr ""
+
+#: lib/modules/core.menus/module.php:105
+#@ shoestrap
+msgid "Display Branding ( Sitename or Logo ) on the NavBar"
+msgstr ""
+
+#: lib/modules/core.menus/module.php:106
+#@ shoestrap
+msgid "Default: ON"
+msgstr ""
+
+#: lib/modules/core.menus/module.php:114
+#@ shoestrap
+msgid "Use Logo ( if available ) for branding on the NavBar"
+msgstr ""
+
+#: lib/modules/core.menus/module.php:115
+#@ shoestrap
+msgid "If this option is OFF, or there is no logo available, then the sitename will be displayed instead. Default: ON"
+msgstr ""
+
+#: lib/modules/core.menus/module.php:123
+#@ shoestrap
+msgid "NavBar Positioning"
+msgstr ""
+
+#: lib/modules/core.menus/module.php:124
+#: lib/modules/core.menus/module.php:134
+#@ shoestrap
+msgid "Using this option you can set the navbar to be fixed to top, fixed to bottom or normal. When you're using one of the 'fixed' options, the navbar will stay fixed on the top or bottom of the page. Default: Normal"
+msgstr ""
+
+#: lib/modules/core.menus/module.php:133
+#@ shoestrap
+msgid "Fixed NavBar Position"
+msgstr ""
+
+#: lib/modules/core.menus/module.php:138
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/border/field_border.php:139
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/spacing/field_spacing.php:163
+#@ shoestrap
+#@ redux-framework
+msgid "Bottom"
+msgstr ""
+
+#: lib/modules/core.menus/module.php:139
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/border/field_border.php:125
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/spacing/field_spacing.php:149
+#@ shoestrap
+#@ redux-framework
+msgid "Top"
+msgstr ""
+
+#: lib/modules/core.menus/module.php:144
+#@ shoestrap
+msgid "NavBar Height"
+msgstr ""
+
+#: lib/modules/core.menus/module.php:145
+#@ shoestrap
+msgid "Select the height of the NavBar in pixels. Should be equal or greater than the height of your logo if you've added one."
+msgstr ""
+
+#: lib/modules/core.menus/module.php:156
+#@ shoestrap
+msgid "Navbar Font"
+msgstr ""
+
+#: lib/modules/core.menus/module.php:157
+#@ shoestrap
+msgid "The font used in navbars."
+msgstr ""
+
+#: lib/modules/core.menus/module.php:174
+#@ shoestrap
+msgid "Branding Font"
+msgstr ""
+
+#: lib/modules/core.menus/module.php:175
+#@ shoestrap
+msgid "The branding font for your site."
+msgstr ""
+
+#: lib/modules/core.menus/module.php:192
+#@ shoestrap
+msgid "NavBar Margin"
+msgstr ""
+
+#: lib/modules/core.menus/module.php:193
+#@ shoestrap
+msgid "Select the top and bottom margin of the NavBar in pixels. Applies only in static top navbar ( scroll condition ). Default: 0px."
+msgstr ""
+
+#: lib/modules/core.menus/module.php:204
+#@ shoestrap
+msgid "Display social links in the NavBar."
+msgstr ""
+
+#: lib/modules/core.menus/module.php:205
+#@ shoestrap
+msgid "Display social links in the NavBar. These can be setup in the 'Social' section on the left. Default: OFF"
+msgstr ""
+
+#: lib/modules/core.menus/module.php:213
+#@ shoestrap
+msgid "Display social links as a Dropdown list or an Inline list."
+msgstr ""
+
+#: lib/modules/core.menus/module.php:214
+#@ shoestrap
+msgid "How to display social links. Default: Dropdown list"
+msgstr ""
+
+#: lib/modules/core.menus/module.php:218
+#@ shoestrap
+msgid "Inline"
+msgstr ""
+
+#: lib/modules/core.menus/module.php:219
+#@ shoestrap
+msgid "Dropdown"
+msgstr ""
+
+#: lib/modules/core.menus/module.php:225
+#@ shoestrap
+msgid "Search form on the NavBar"
+msgstr ""
+
+#: lib/modules/core.menus/module.php:226
+#@ shoestrap
+msgid "Display a search form in the NavBar. Default: On"
+msgstr ""
+
+#: lib/modules/core.menus/module.php:234
+#@ shoestrap
+msgid "Float NavBar menu to the right"
+msgstr ""
+
+#: lib/modules/core.menus/module.php:235
+#@ shoestrap
+msgid "Floats the primary navigation to the right. Default: On"
+msgstr ""
+
+#: lib/modules/core.menus/module.php:244
+#@ shoestrap
+msgid "Secondary Navbar"
+msgstr ""
+
+#: lib/modules/core.menus/module.php:245
+#@ shoestrap
+msgid "The secondary navbar is a 2nd navbar, located right above the main wrapper. You can show a menu there, by assigning it from Appearance -> Menus."
+msgstr ""
+
+#: lib/modules/core.menus/module.php:251
+#@ shoestrap
+msgid "Enable the Secondary NavBar"
+msgstr ""
+
+#: lib/modules/core.menus/module.php:252
+#@ shoestrap
+msgid "Display a Secondary NavBar on top of the Main NavBar. Default: ON"
+msgstr ""
+
+#: lib/modules/core.menus/module.php:261
+#@ shoestrap
+msgid "Display social networks in the navbar"
+msgstr ""
+
+#: lib/modules/core.menus/module.php:262
+#@ shoestrap
+msgid "Enable this option to display your social networks as a dropdown menu on the seondary navbar."
+msgstr ""
+
+#: lib/modules/core.menus/module.php:270
+#@ shoestrap
+msgid "Secondary NavBar Margin"
+msgstr ""
+
+#: lib/modules/core.menus/module.php:271
+#@ shoestrap
+msgid "Select the top and bottom margin of header in pixels. Default: 0px."
+msgstr ""
+
+#: lib/modules/core.menus/module.php:282
+#@ shoestrap
+msgid "Sidebar Menus"
+msgstr ""
+
+#: lib/modules/core.menus/module.php:283
+#@ shoestrap
+msgid "If you're using the \"Custom Menu\" widgets in your sidebars, you can control their styling here"
+msgstr ""
+
+#: lib/modules/core.menus/module.php:288
+#@ shoestrap
+msgid "Color for sidebar menus"
+msgstr ""
+
+#: lib/modules/core.menus/module.php:289
+#@ shoestrap
+msgid "Select a style for menus added to your sidebars using the custom menu widget"
+msgstr ""
+
+#: lib/modules/core.menus/module.php:295
+#@ shoestrap
+msgid "Branding-Primary"
+msgstr ""
+
+#: lib/modules/core.menus/module.php:296
+#@ shoestrap
+msgid "Branding-Success"
+msgstr ""
+
+#: lib/modules/core.menus/module.php:297
+#@ shoestrap
+msgid "Branding-Warning"
+msgstr ""
+
+#: lib/modules/core.menus/module.php:298
+#@ shoestrap
+msgid "Branding-Info"
+msgstr ""
+
+#: lib/modules/core.menus/module.php:299
+#@ shoestrap
+msgid "Branding-Danger"
+msgstr ""
+
+#: lib/modules/core.menus/module.php:305
+#@ shoestrap
+msgid "Inverse Sidebar_menus."
+msgstr ""
+
+#: lib/modules/core.menus/module.php:306
+#@ shoestrap
+msgid "Default: OFF. See https://github.com/twittem/wp-bootstrap-navlist-walker for more details"
+msgstr ""
+
+#: lib/modules/core.presets/module.php:10
+#@ shoestrap
+msgid "Presets"
+msgstr ""
+
+#: lib/modules/core.presets/module.php:18
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:519
+#@ redux-framework
+#@ redux-framework-demo
+msgid "Preset"
+msgstr ""
+
+#: lib/modules/core.presets/module.php:19
+#: lib/modules/core.presets/module.php:21
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:520
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:522
+#@ redux-framework
+#@ redux-framework-demo
+msgid "This allows you to set a json string or array to override multiple preferences in your theme."
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/extensions/customizer/extension_customizer.php:338
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:1233
+#@ redux-framework
+#@ domain
+msgid "You have changes that are not saved. Would you like to save them now?"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/extensions/customizer/extension_customizer.php:339
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:1234
+#@ redux-framework
+#@ domain
+msgid "Are you sure? Resetting will lose all custom values."
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/extensions/customizer/extension_customizer.php:340
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:1236
+#@ redux-framework
+#@ domain
+msgid "Your current options will be replaced with the values of this preset. Would you like to proceed?"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/extensions/customizer/extension_customizer.php:369
+#@ redux-framework
+msgid "You have changes that are not saved.  Would you like to save them now?"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/extensions/customizer/extension_customizer.php:370
+#@ redux-framework
+msgid "Are you sure?  Resetting will lose all custom values."
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/extensions/customizer/extension_customizer.php:371
+#@ redux-framework
+msgid "Your current options will be replaced with the values of this preset.  Would you like to proceed?"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/extensions/edd/edd_license/EDD_License_Handler.php:112
+#, php-format
+#@ edd
+msgid "%1$s License Key"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/extensions/edd/edd_license/EDD_License_Handler.php:218
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/extensions/edd/edd_license/field_edd_license.php:144
+#@ edd-recurring
+#@ redux-framework
+msgid "Deactivate License"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/extensions/edd/edd_license/EDD_SL_Theme_Updater.php:54
+#: lib/modules/core.updater/EDD_SL_Theme_Updater.php:54
+#@ default
+msgid "Updating this theme will lose any customizations you have made. 'Cancel' to stop, 'OK' to update."
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/extensions/edd/edd_license/field_edd_license.php:110
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/extensions/edd/edd_license/field_edd_license.php:118
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/extensions/edd/extension_edd.php:170
+#@ redux-framework
+msgid "Not Activated"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/extensions/edd/edd_license/field_edd_license.php:114
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/extensions/edd/extension_edd.php:173
+#@ redux-framework
+msgid "Deactivated"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/extensions/edd/edd_license/field_edd_license.php:116
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/extensions/edd/extension_edd.php:77
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/extensions/edd/extension_edd.php:119
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/extensions/edd/extension_edd.php:176
+#@ redux-framework
+msgid "Valid"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/extensions/edd/edd_license/field_edd_license.php:124
+#@ redux-framework
+msgid "Verifying license..."
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/extensions/edd/edd_license/field_edd_license.php:125
+#@ redux-framework
+msgid "Status"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/extensions/edd/edd_license/field_edd_license.php:134
+#@ redux-framework
+msgid "Verify License"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/extensions/edd/edd_license/field_edd_license.php:139
+#@ redux-framework
+msgid "Activate License"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/extensions/edd/extension_edd.php:179
+#@ redux-framework
+msgid "Not Valid"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:115
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:121
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:280
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:283
+#@ redux-framework
+#@ domain
+msgid "Options"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:277
+#, php-format
+#@ domain
+msgid "Options panel created using %1$s"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:277
+#@ domain
+msgid "Redux Framework"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:922
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:923
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:1944
+#@ domain
+msgid "Import / Export"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:933
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:934
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:1960
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:2058
+#@ domain
+msgid "Options Object"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:944
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:945
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:1974
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:2078
+#@ domain
+msgid "System Info"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:1235
+#@ domain
+msgid "Are you sure? Resetting will lose all custom values in this section."
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:1804
+#@ domain
+msgid "Warning- This options panel will not work properly without javascript!"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:1858
+#@ domain
+msgid "Expand"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:1860
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:2119
+#@ domain
+msgid "Save Changes"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:1862
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:2121
+#@ domain
+msgid "Reset Section"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:1864
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:2123
+#@ domain
+msgid "Reset All"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:1867
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:2126
+#@ domain
+msgid "Working..."
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:1874
+#@ domain
+msgid "Settings Imported!"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:1876
+#@ domain
+msgid "Settings Saved!"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:1880
+#@ domain
+msgid "Settings have changed, you should save them!"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:1881
+#@ domain
+msgid "error(s) were found!"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:1882
+#@ domain
+msgid "warning(s) were found!"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:2011
+#@ domain
+msgid "Import / Export Options"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:2012
+#@ domain
+msgid "Import Options"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:2013
+#@ domain
+msgid "Import from file"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:2013
+#@ domain
+msgid "Import from URL"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:2018
+#@ domain
+msgid "Input your backup file below and hit Import to restore your sites options from a backup."
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:2028
+#@ domain
+msgid "Input the URL to another sites options set and hit Import to load the options from that site."
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:2035
+#@ domain
+msgid "Import"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:2035
+#@ domain
+msgid "WARNING! This will overwrite all existing option values, please proceed with caution!"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:2038
+#@ domain
+msgid "Export Options"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:2040
+#@ domain
+msgid "Here you can copy/download your current option settings. Keep this safe as you can use it as a backup should anything go wrong, or you can use it to restore your settings on this site (or any other site)."
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:2044
+#@ domain
+msgid "Copy"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:2044
+#@ domain
+msgid "Download"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:2044
+#@ domain
+msgid "Copy Link"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:2067
+#@ domain
+msgid "Show Object in Javascript Console Object"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/background/field_background.php:119
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/color/field_color.php:72
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/color_gradient/field_color_gradient.php:81
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/color_gradient/field_color_gradient.php:91
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/color_rgba/field_color_rgba.php:84
+#@ redux-framework
+msgid "Transparent"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/background/field_background.php:152
+#@ redux-framework
+msgid "Background Clip"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/background/field_background.php:168
+#@ redux-framework
+msgid "Background Origin"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/background/field_background.php:183
+#@ redux-framework
+msgid "Background Size"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/background/field_background.php:198
+#@ redux-framework
+msgid "Background Attachment"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/background/field_background.php:218
+#@ redux-framework
+msgid "Background Position"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/background/field_background.php:273
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/media/field_media.php:116
+#@ redux-framework
+msgid "No media selected"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/background/field_background.php:307
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/media/field_media.php:150
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/slides/field_slides.php:117
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/slides/field_slides.php:180
+#@ redux-framework
+msgid "Upload"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/background/field_background.php:313
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/media/field_media.php:156
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/multi_text/field_multi_text.php:75
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/multi_text/field_multi_text.php:78
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/multi_text/field_multi_text.php:81
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/slides/field_slides.php:123
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/slides/field_slides.php:182
+#@ redux-framework
+msgid "Remove"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/border/field_border.php:112
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/spacing/field_spacing.php:125
+#@ redux-framework
+msgid "All"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/border/field_border.php:162
+#@ redux-framework
+msgid "Border style"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/color_gradient/field_color_gradient.php:73
+#@ redux-framework
+msgid "From "
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/color_gradient/field_color_gradient.php:84
+#@ redux-framework
+msgid "To "
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/dimensions/field_dimensions.php:139
+#@ redux-framework
+msgid "Width"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/dimensions/field_dimensions.php:155
+#@ redux-framework
+msgid "height"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/dimensions/field_dimensions.php:168
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/dimensions/field_dimensions.php:169
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/spacing/field_spacing.php:181
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/spacing/field_spacing.php:182
+#@ redux-framework
+msgid "Units"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/gallery/field_gallery.php:77
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:305
+#@ redux-framework
+#@ so-panels
+msgid "Add/Edit Gallery"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/gallery/field_gallery.php:78
+#@ redux-framework
+msgid "Clear Gallery"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/group/field_group.php:71
+#@ redux-framework
+msgid "New"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/group/field_group.php:84
+#@ redux-framework
+msgid "New "
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/group/field_group.php:133
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/group/field_group.php:198
+#@ redux-framework
+msgid "Delete"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/group/field_group.php:203
+#@ redux-framework
+msgid "Add"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/link_color/field_link_color.php:86
+#@ redux-framework
+msgid "Regular"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/link_color/field_link_color.php:90
+#@ redux-framework
+msgid "Hover"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/link_color/field_link_color.php:94
+#@ redux-framework
+msgid "Visited"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/link_color/field_link_color.php:98
+#@ redux-framework
+msgid "Active"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/multi_text/field_multi_text.php:65
+#@ redux-framework
+msgid "Add More"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/password/field_password.php:55
+#@ redux-framework
+msgid "Password"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/password/field_password.php:56
+#@ redux-framework
+msgid "Username"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/select/field_select.php:69
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/select_image/field_select_image.php:59
+#@ redux-framework
+msgid "Select an item"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/select/field_select.php:110
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/select_image/field_select_image.php:134
+#@ redux-framework
+msgid "No items of this type were found."
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/slides/field_slides.php:128
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/slides/field_slides.php:187
+#@ redux-framework
+msgid "Title"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/slides/field_slides.php:129
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/slides/field_slides.php:189
+#@ redux-framework
+msgid "Description"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/slides/field_slides.php:130
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/slides/field_slides.php:191
+#@ redux-framework
+msgid "URL"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/slides/field_slides.php:138
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/slides/field_slides.php:200
+#@ redux-framework
+msgid "Select an Option"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/slides/field_slides.php:158
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/slides/field_slides.php:220
+#@ redux-framework
+msgid "Delete Slide"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/slides/field_slides.php:223
+#@ redux-framework
+msgid "Add Slide"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/typography/field_typography.php:109
+#@ redux-framework
+msgid "Font family"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/typography/field_typography.php:150
+#@ redux-framework
+msgid "Standard Fonts"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/typography/field_typography.php:186
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/typography/field_typography.php:190
+#@ redux-framework
+msgid "Font style"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/typography/field_typography.php:216
+#@ redux-framework
+msgid "Font subsets"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/typography/field_typography.php:217
+#@ redux-framework
+msgid "Subsets"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/typography/field_typography.php:217
+#@ redux-framework
+msgid "Font script"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/typography/field_typography.php:235
+#@ redux-framework
+msgid "Size"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/typography/field_typography.php:244
+#@ redux-framework
+msgid "Height"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/typography/field_typography.php:252
+#@ redux-framework
+msgid "Word Spacing"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/typography/field_typography.php:260
+#@ redux-framework
+msgid "Letter Spacing"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/typography/field_typography.php:274
+#@ redux-framework
+msgid "Backup Font Family"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/typography/field_typography.php:294
+#@ redux-framework
+msgid "Font color"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/typography/field_typography.php:569
+#@ redux-framework
+msgid "Google Webfonts"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/tracking.php:59
+#@ redux-framework
+msgid "Help improve Our Panel"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/tracking.php:60
+#@ redux-framework
+msgid "Please helps us improve our panel by allowing us to gather anonymous usage stats so we know which configurations, plugins and themes to test with."
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/tracking.php:65
+#@ redux-framework
+msgid "Allow tracking"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/tracking.php:70
+#@ redux-framework
+msgid "Do not allow tracking"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/validation/color/validation_color.php:15
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/validation/color_rgba/validation_color_rgba.php:15
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/validation/colorrgba/validation_colorrgba.php:15
+#@ redux-framework
+msgid "This field must be a valid color value."
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/validation/comma_numeric/validation_comma_numeric.php:15
+#@ redux-framework
+msgid "You must provide a comma separated list of numerical values for this option."
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/validation/date/validation_date.php:15
+#@ redux-framework
+msgid "This field must be a valid date."
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/validation/email/validation_email.php:15
+#@ redux-framework
+msgid "You must provide a valid email for this option."
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/validation/no_html/validation_no_html.php:15
+#@ redux-framework
+msgid "You must not enter any HTML in this field, all HTML tags have been removed."
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/validation/no_special_chars/validation_no_special_chars.php:15
+#@ redux-framework
+msgid "You must not enter any special characters in this field, all special characters have been removed."
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/validation/numeric/validation_numeric.php:15
+#@ redux-framework
+msgid "You must provide a numerical value for this option."
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/validation/url/validation_url.php:15
+#@ redux-framework
+msgid "You must provide a valid URL for this option."
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/class.redux-plugin.php:277
+#@ redux-framework
+msgid "Redux Framework has an embedded demo."
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/class.redux-plugin.php:277
+#@ redux-framework
+msgid "Click here to activate the sample config file."
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/class.redux-plugin.php:381
+#@ redux-framework
+msgid "Github Repo"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/class.redux-plugin.php:382
+#@ redux-framework
+msgid "Issue Tracker"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/class.redux-plugin.php:387
+#@ redux-framework
+msgid "Deactivate Demo Mode"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/class.redux-plugin.php:389
+#@ redux-framework
+msgid "Activate Demo Mode"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:106
+#@ redux-framework-demo
+msgid "Section via hook"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:107
+#@ redux-framework-demo
+msgid "<p class=\"description\">This is a section created by adding a filter to the sections array. Can be used by child themes to add/remove sections from the options.</p>"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:194
+#, php-format
+#@ redux-framework-demo
+msgid "Customize &#8220;%s&#8221;"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:201
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:204
+#@ default
+msgid "Current theme preview"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:213
+#, php-format
+#@ redux-framework-demo
+msgid "By %s"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:214
+#, php-format
+#@ redux-framework-demo
+msgid "Version %s"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:215
+#@ redux-framework-demo
+msgid "Tags"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:219
+#, php-format
+#@ default
+msgid "This <a href=\"%1$s\">child theme</a> requires its parent theme, %2$s."
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:220
+#@ redux-framework-demo
+msgid "http://codex.wordpress.org/Child_Themes"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:250
+#@ redux-framework-demo
+msgid "Home Settings"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:251
+#@ redux-framework-demo
+msgid "Redux Framework was created with the developer in mind. It allows for any theme developer to have an advanced theme panel with most of the features a developer would need. For more information check out the Github repo at: <a href=\"https://github.com/ReduxFramework/Redux-Framework\">https://github.com/ReduxFramework/Redux-Framework</a>"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:258
+#@ redux-framework-demo
+msgid "Web Fonts"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:261
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:278
+#@ redux-framework-demo
+msgid "Basic media uploader with disabled URL input field."
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:262
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:279
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:292
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:300
+#@ redux-framework-demo
+msgid "Upload any media using the WordPress native uploader"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:267
+#@ redux-framework-demo
+msgid "Media Options"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:268
+#@ default
+msgid "With the \"section\" field you can create indent option sections."
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:275
+#@ redux-framework-demo
+msgid "Media w/ URL"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:290
+#@ redux-framework-demo
+msgid "Media w/o URL"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:291
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:299
+#@ redux-framework-demo
+msgid "This represents the minimalistic view. It does not have the preview box or the display URL in an input box. "
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:298
+#@ redux-framework-demo
+msgid "Media No Preview"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:306
+#@ so-panels
+msgid "Create a new Gallery by selecting existing or uploading new images using the WordPress native uploader"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:307
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:690
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:698
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:715
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:795
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:805
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:816
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:823
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:832
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:842
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:852
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:871
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:881
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:890
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:899
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:908
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:918
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:934
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:942
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:951
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:959
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:967
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:976
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:984
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1014
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1027
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1046
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1056
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1086
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1095
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1103
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1112
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1120
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1129
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1137
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1146
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1154
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1163
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1173
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1181
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1190
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1198
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1207
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1263
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1274
+#@ redux-framework-demo
+msgid "This is the description field, again good for additional info."
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:312
+#@ redux-framework-demo
+msgid "JQuery UI Slider Example 1"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:313
+#@ redux-framework-demo
+msgid "JQuery UI slider description. Min: 1, max: 500, step: 3, default value: 45"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:323
+#@ redux-framework-demo
+msgid "JQuery UI Slider Example 2 w/ Steps (5)"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:324
+#@ redux-framework-demo
+msgid "JQuery UI slider description. Min: 0, max: 300, step: 5, default value: 75"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:333
+#@ redux-framework-demo
+msgid "JQuery UI Spinner Example 1"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:334
+#@ redux-framework-demo
+msgid "JQuery UI spinner description. Min:20, max: 100, step:20, default value: 40"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:343
+#@ redux-framework-demo
+msgid "Switch On"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:344
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:352
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1326
+#@ redux-framework-demo
+msgid "Look, it's on!"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:351
+#@ redux-framework-demo
+msgid "Switch Off"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:359
+#@ redux-framework-demo
+msgid "Switch - Custom Titles"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:360
+#@ redux-framework-demo
+msgid "Look, it's on! Also hidden child elements!"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:370
+#@ redux-framework-demo
+msgid "Switch - With Hidden Items (NESTED!)"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:371
+#@ redux-framework-demo
+msgid "Also called a \"fold\" parent."
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:372
+#@ redux-framework-demo
+msgid "Items set with a fold to this ID will hide unless this is set to the appropriate value."
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:380
+#@ redux-framework-demo
+msgid "Images Option (with pattern=>true)"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:435
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:442
+#@ redux-framework-demo
+msgid "Slides Options"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:436
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:443
+#@ redux-framework-demo
+msgid "Unlimited slides with drag and drop sortings."
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:437
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:513
+#@ redux-framework-demo
+msgid "This field will store all slides values into a multidimensional array to use into a foreach loop."
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:531
+#: lib/modules/core.typography/module.php:11
+#@ redux-framework-demo
+#@ shoestrap
+msgid "Typography"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:547
+#@ redux-framework-demo
+msgid "Typography option with each property can be called individually."
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:569
+#@ redux-framework-demo
+msgid "General Settings"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:575
+#@ redux-framework-demo
+msgid "Main Layout"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:576
+#@ redux-framework-demo
+msgid "Select main content and sidebar alignment. Choose between 1, 2 or 3 column layout."
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:592
+#@ redux-framework-demo
+msgid "Tracking Code"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:593
+#@ redux-framework-demo
+msgid "Paste your Google Analytics (or other) tracking code here. This will be added into the footer template of your theme."
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:601
+#@ redux-framework-demo
+msgid "CSS Code"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:602
+#@ redux-framework-demo
+msgid "Paste your CSS code here."
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:611
+#@ redux-framework-demo
+msgid "JS Code"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:612
+#@ redux-framework-demo
+msgid "Paste your JS code here."
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:623
+#@ redux-framework-demo
+msgid "You can use the following shortcodes in your footer text: [wp-url] [site-url] [theme-url] [login-url] [logout-url] [site-title] [site-tagline] [current-year]"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:641
+#@ redux-framework-demo
+msgid "Styling Options"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:646
+#@ redux-framework-demo
+msgid "Theme Stylesheet"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:647
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1340
+#@ redux-framework-demo
+msgid "Select your themes alternative color scheme."
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:655
+#@ redux-framework-demo
+msgid "Body Background Color"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:656
+#@ redux-framework-demo
+msgid "Pick a background color for the theme (default: #fff)."
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:664
+#@ redux-framework-demo
+msgid "Body Background"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:665
+#@ redux-framework-demo
+msgid "Body background with image, color, etc."
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:673
+#@ redux-framework-demo
+msgid "Pick a background color for the footer (default: #dd9933)."
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:680
+#@ redux-framework-demo
+msgid "Color RGBA - BETA"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:681
+#@ redux-framework-demo
+msgid "Gives you the RGBA color. Still quite experimental. Use at your own risk."
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:688
+#@ redux-framework-demo
+msgid "Header Gradient Color Option"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:689
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:697
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:713
+#@ redux-framework-demo
+msgid "Only color validation can be done on this field type"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:696
+#@ redux-framework-demo
+msgid "Links Color Option"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:712
+#@ redux-framework-demo
+msgid "Header Border Option"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:731
+#@ redux-framework-demo
+msgid "Padding/Margin Option"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:732
+#@ redux-framework-demo
+msgid "Allow your users to choose the spacing or margin they want."
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:733
+#@ redux-framework-demo
+msgid "You can enable or disable any piece of this field. Top, Right, Bottom, Left, or Units."
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:741
+#@ redux-framework-demo
+msgid "Dimensions (Width/Height) Option"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:742
+#@ redux-framework-demo
+msgid "Allow your users to choose width, height, and/or unit."
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:743
+#@ redux-framework-demo
+msgid "You can enable or disable any piece of this field. Width, Height, or Units."
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:749
+#@ redux-framework-demo
+msgid "Body Font"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:750
+#@ redux-framework-demo
+msgid "Specify the body font properties."
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:763
+#@ redux-framework-demo
+msgid "Quickly add some CSS to your theme by adding it to this block."
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:764
+#@ redux-framework-demo
+msgid "This field is even CSS validated!"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:770
+#@ redux-framework-demo
+msgid "Custom HTML"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:771
+#@ redux-framework-demo
+msgid "Just like a text box widget."
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:772
+#@ redux-framework-demo
+msgid "This field is even HTML validated!"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:786
+#@ redux-framework-demo
+msgid "Field Validation"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:787
+#@ redux-framework-demo
+msgid "Validate ALL fields within Redux."
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:788
+#@ redux-framework-demo
+msgid "<p class=\"description\">This is the Description. Again HTML is allowed2</p>"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:793
+#@ redux-framework-demo
+msgid "Text Option - Email Validated"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:794
+#@ redux-framework-demo
+msgid "This is a little space under the Field Title in the Options table, additional info is good in here."
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:803
+#@ redux-framework-demo
+msgid "Text Option with Data Attributes"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:804
+#@ redux-framework-demo
+msgid "You can also pass an options array if you want. Set the default to whatever you like."
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:813
+#@ redux-framework-demo
+msgid "Multi Text Option - Color Validated"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:815
+#@ redux-framework-demo
+msgid "If you enter an invalid color it will be removed. Try using the text \"blue\" as a color.  ;)"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:821
+#@ redux-framework-demo
+msgid "Text Option - URL Validated"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:822
+#@ redux-framework-demo
+msgid "This must be a URL."
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:830
+#@ redux-framework-demo
+msgid "Text Option - Numeric Validated"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:831
+#@ redux-framework-demo
+msgid "This must be numeric."
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:840
+#@ redux-framework-demo
+msgid "Text Option - Comma Numeric Validated"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:841
+#@ redux-framework-demo
+msgid "This must be a comma separated string of numerical values."
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:850
+#@ redux-framework-demo
+msgid "Text Option - No Special Chars Validated"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:851
+#@ redux-framework-demo
+msgid "This must be a alpha numeric only."
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:859
+#@ redux-framework-demo
+msgid "Text Option - Str Replace Validated"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:860
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:870
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:880
+#@ redux-framework-demo
+msgid "You decide."
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:861
+#@ redux-framework-demo
+msgid "This field's default value was changed by a filter hook!"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:869
+#@ redux-framework-demo
+msgid "Text Option - Preg Replace Validated"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:879
+#@ redux-framework-demo
+msgid "Text Option - Custom Callback Validated"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:888
+#@ redux-framework-demo
+msgid "Textarea Option - No HTML Validated"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:889
+#@ redux-framework-demo
+msgid "All HTML will be stripped"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:897
+#@ redux-framework-demo
+msgid "Textarea Option - HTML Validated"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:898
+#@ redux-framework-demo
+msgid "HTML Allowed (wp_kses)"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:906
+#@ redux-framework-demo
+msgid "Textarea Option - HTML Validated Custom"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:907
+#@ redux-framework-demo
+msgid "Custom HTML Allowed (wp_kses)"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:916
+#@ redux-framework-demo
+msgid "Textarea Option - JS Validated"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:917
+#@ redux-framework-demo
+msgid "JS will be escaped"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:926
+#@ redux-framework-demo
+msgid "Radio/Checkbox Fields"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:927
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1039
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1255
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1358
+#@ redux-framework-demo
+msgid "<p class=\"description\">This is the Description. Again HTML is allowed</p>"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:932
+#@ redux-framework-demo
+msgid "Checkbox Option"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:933
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:941
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:950
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:958
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:966
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:975
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:983
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:997
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1045
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1055
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1085
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1094
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1102
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1111
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1119
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1128
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1136
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1145
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1153
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1162
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1180
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1189
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1197
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1206
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1214
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1262
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1273
+#@ redux-framework-demo
+msgid "No validation can be done on this field type"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:940
+#@ redux-framework-demo
+msgid "Multi Checkbox Option"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:949
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:974
+#@ redux-framework-demo
+msgid "Multi Checkbox Option (with menu data)"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:957
+#@ redux-framework-demo
+msgid "Multi Checkbox Option (with sidebar data)"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:965
+#@ redux-framework-demo
+msgid "Radio Option"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:982
+#@ redux-framework-demo
+msgid "Images Option"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:996
+#@ redux-framework-demo
+msgid "Images Option for Layout"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:998
+#@ redux-framework-demo
+msgid "This uses some of the built in images, you can use them for layout options."
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1012
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1025
+#@ redux-framework-demo
+msgid "Sortable Text Option"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1013
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1026
+#@ redux-framework-demo
+msgid "Define and reorder these however you want."
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1038
+#@ redux-framework-demo
+msgid "Select Fields"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1044
+#@ redux-framework-demo
+msgid "Select Option"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1054
+#@ redux-framework-demo
+msgid "Multi Select Option"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1065
+#@ redux-framework-demo
+msgid "Select Image"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1066
+#@ redux-framework-demo
+msgid "A preview of the selected image will appear underneath the select box."
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1078
+#@ redux-framework-demo
+msgid "You can easily add a variety of data from WordPress."
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1084
+#@ redux-framework-demo
+msgid "Categories Select Option"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1093
+#@ redux-framework-demo
+msgid "Categories Multi Select Option"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1101
+#@ redux-framework-demo
+msgid "Pages Select Option"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1110
+#@ redux-framework-demo
+msgid "Pages Multi Select Option"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1118
+#@ redux-framework-demo
+msgid "Tags Select Option"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1127
+#@ redux-framework-demo
+msgid "Tags Multi Select Option"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1135
+#@ redux-framework-demo
+msgid "Menus Select Option"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1144
+#@ redux-framework-demo
+msgid "Menus Multi Select Option"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1152
+#@ redux-framework-demo
+msgid "Post Type Select Option"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1161
+#@ redux-framework-demo
+msgid "Post Type Multi Select Option"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1171
+#@ redux-framework-demo
+msgid "Post Type Multi Select Option + Sortable"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1172
+#@ redux-framework-demo
+msgid "This field also has sortable enabled!"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1179
+#@ redux-framework-demo
+msgid "Posts Select Option2"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1188
+#@ redux-framework-demo
+msgid "Posts Multi Select Option"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1196
+#@ redux-framework-demo
+msgid "User Role Select Option"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1205
+#@ redux-framework-demo
+msgid "Capabilities Select Option"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1213
+#@ redux-framework-demo
+msgid "Elusive Icons Select Option"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1215
+#@ redux-framework-demo
+msgid "Here's a list of all the elusive icons by name and icon."
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1223
+#@ redux-framework-demo
+msgid "<strong>Theme URL:</strong> "
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1224
+#@ redux-framework-demo
+msgid "<strong>Author:</strong> "
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1225
+#@ redux-framework-demo
+msgid "<strong>Version:</strong> "
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1229
+#@ redux-framework-demo
+msgid "<strong>Tags:</strong> "
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1236
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1372
+#@ redux-framework-demo
+msgid "Documentation"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1254
+#@ redux-framework-demo
+msgid "Additional Fields"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1261
+#@ redux-framework-demo
+msgid "Date Option"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1272
+#@ redux-framework-demo
+msgid "Button Set Option"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1282
+#@ redux-framework-demo
+msgid "This is the info field, if you want to break sections up."
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1288
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1296
+#@ redux-framework-demo
+msgid "This is a title."
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1289
+#@ redux-framework-demo
+msgid "This is an info field with the warning style applied and a header."
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1297
+#@ redux-framework-demo
+msgid "This is an info field with the success style applied, a header and an icon."
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1309
+#@ redux-framework-demo
+msgid "Custom Field Callback"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1310
+#@ redux-framework-demo
+msgid "This is a completely unique field type"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1311
+#@ redux-framework-demo
+msgid "This is created with a callback function, so anything goes in this field. Make sure to define the function though."
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1317
+#@ redux-framework-demo
+msgid "Group - BETA"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1318
+#@ redux-framework-demo
+msgid "Group any items together. Experimental. Use at your own risk."
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1319
+#@ redux-framework-demo
+msgid "Group"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1325
+#@ redux-framework-demo
+msgid "testing fold with Group"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1332
+#@ redux-framework-demo
+msgid "Text"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1333
+#@ redux-framework-demo
+msgid "Here you put your subtitle"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1339
+#@ redux-framework-demo
+msgid "Testing select"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1357
+#@ redux-framework-demo
+msgid "Theme Information"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1384
+#: lib/modules/core.redux/module.php:49
+#@ redux-framework-demo
+#@ shoestrap
+msgid "Theme Information 1"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1385
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1391
+#: lib/modules/core.redux/module.php:50
+#@ redux-framework-demo
+#@ shoestrap
+msgid "<p>This is the tab content, HTML is allowed.</p>"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1390
+#: lib/modules/core.redux/module.php:54
+#@ redux-framework-demo
+#@ shoestrap
+msgid "Theme Information 2"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1395
+#: lib/modules/core.redux/module.php:59
+#@ redux-framework-demo
+#@ shoestrap
+msgid "<p>This is the sidebar content, HTML is allowed.</p>"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1418
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1419
+#@ redux-framework-demo
+msgid "Sample Options"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1490
+#, php-format
+#@ redux-framework-demo
+msgid "<p>Did you know that Redux sets a global variable for you? To access any of your saved options from within your code you can use your global variable: <strong>$%1$s</strong></p>"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1492
+#@ redux-framework-demo
+msgid "<p>This text is displayed above the options panel. It isn't required, but more info is always better! The intro_text field accepts all HTML.</p>"
+msgstr ""
+
+#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1496
+#@ redux-framework-demo
+msgid "<p>This text is displayed below the options panel. It isn't required, but more info is always better! The footer_text field accepts all HTML.</p>"
+msgstr ""
+
+#: lib/modules/core.redux/module.php:40
+#@ shoestrap
+msgid "Theme Options"
+msgstr ""
+
+#: lib/modules/core.redux/module.php:55
+#@ shoestrap
+msgid "<p>This is the tab content, HTML is allowed. Tab2</p>"
+msgstr ""
+
+#: lib/modules/core.social/module.php:10
+#@ shoestrap
+msgid "Social Sharing"
+msgstr ""
+
+#: lib/modules/core.social/module.php:16
+#@ shoestrap
+msgid "General Options"
+msgstr ""
+
+#: lib/modules/core.social/module.php:21
+#@ shoestrap
+msgid "Button Text"
+msgstr ""
+
+#: lib/modules/core.social/module.php:22
+#@ shoestrap
+msgid "Select the text for the social sharing button."
+msgstr ""
+
+#: lib/modules/core.social/module.php:29
+#@ shoestrap
+msgid "Button Location"
+msgstr ""
+
+#: lib/modules/core.social/module.php:30
+#@ shoestrap
+msgid "Select between NONE, TOP, BOTTOM & BOTH. For archives, 'BOTH' fallbacks in 'BOTTOM' only."
+msgstr ""
+
+#: lib/modules/core.social/module.php:44
+#@ shoestrap
+msgid "Button Styling"
+msgstr ""
+
+#: lib/modules/core.social/module.php:45
+#@ shoestrap
+msgid "Select between standard Bootstrap's button classes"
+msgstr ""
+
+#: lib/modules/core.social/module.php:60
+#@ shoestrap
+msgid "Show in Posts Archives"
+msgstr ""
+
+#: lib/modules/core.social/module.php:61
+#@ shoestrap
+msgid "Show the sharing button in posts archives."
+msgstr ""
+
+#: lib/modules/core.social/module.php:68
+#@ shoestrap
+msgid "Show in Single Post"
+msgstr ""
+
+#: lib/modules/core.social/module.php:69
+#@ shoestrap
+msgid "Show the sharing button in single post."
+msgstr ""
+
+#: lib/modules/core.social/module.php:76
+#@ shoestrap
+msgid "Show in Single Page"
+msgstr ""
+
+#: lib/modules/core.social/module.php:77
+#@ shoestrap
+msgid "Show the sharing button in single page."
+msgstr ""
+
+#: lib/modules/core.social/module.php:85
+#@ shoestrap
+msgid "Select Socials"
+msgstr ""
+
+#: lib/modules/core.social/module.php:90
+#: lib/modules/core.social/module.php:200
+#@ shoestrap
+msgid "Facebook"
+msgstr ""
+
+#: lib/modules/core.social/module.php:91
+#@ shoestrap
+msgid "Show the Facebook sharing icon in blog posts."
+msgstr ""
+
+#: lib/modules/core.social/module.php:98
+#: lib/modules/core.social/module.php:227
+#@ shoestrap
+msgid "Google+"
+msgstr ""
+
+#: lib/modules/core.social/module.php:99
+#@ shoestrap
+msgid "Show the Google+ sharing icon in blog posts."
+msgstr ""
+
+#: lib/modules/core.social/module.php:106
+#: lib/modules/core.social/module.php:236
+#@ shoestrap
+msgid "LinkedIn"
+msgstr ""
+
+#: lib/modules/core.social/module.php:107
+#@ shoestrap
+msgid "Show the LinkedIn sharing icon in blog posts."
+msgstr ""
+
+#: lib/modules/core.social/module.php:114
+#: lib/modules/core.social/module.php:254
+#@ shoestrap
+msgid "Pinterest"
+msgstr ""
+
+#: lib/modules/core.social/module.php:115
+#@ shoestrap
+msgid "Show the Pinterest sharing icon in blog posts."
+msgstr ""
+
+#: lib/modules/core.social/module.php:122
+#: lib/modules/core.social/module.php:263
+#@ shoestrap
+msgid "Reddit"
+msgstr ""
+
+#: lib/modules/core.social/module.php:123
+#@ shoestrap
+msgid "Show the Reddit sharing icon in blog posts."
+msgstr ""
+
+#: lib/modules/core.social/module.php:130
+#: lib/modules/core.social/module.php:299
+#@ shoestrap
+msgid "Tumblr"
+msgstr ""
+
+#: lib/modules/core.social/module.php:131
+#@ shoestrap
+msgid "Show the Tumblr sharing icon in blog posts."
+msgstr ""
+
+#: lib/modules/core.social/module.php:138
+#: lib/modules/core.social/module.php:308
+#@ shoestrap
+msgid "Twitter"
+msgstr ""
+
+#: lib/modules/core.social/module.php:139
+#@ shoestrap
+msgid "Show the Twitter sharing icon in blog posts."
+msgstr ""
+
+#: lib/modules/core.social/module.php:146
+#@ shoestrap
+msgid "Email"
+msgstr ""
+
+#: lib/modules/core.social/module.php:147
+#@ shoestrap
+msgid "Show the Email sharing icon in blog posts."
+msgstr ""
+
+#: lib/modules/core.social/module.php:158
+#@ shoestrap
+msgid "Social Links"
+msgstr ""
+
+#: lib/modules/core.social/module.php:164
+#@ shoestrap
+msgid "Blogger"
+msgstr ""
+
+#: lib/modules/core.social/module.php:165
+#@ shoestrap
+msgid "Provide the link you desire and the Blogger icon will appear. To remove it, just leave it blank."
+msgstr ""
+
+#: lib/modules/core.social/module.php:173
+#@ shoestrap
+msgid "DeviantART"
+msgstr ""
+
+#: lib/modules/core.social/module.php:174
+#@ shoestrap
+msgid "Provide the link you desire and the DeviantART icon will appear. To remove it, just leave it blank."
+msgstr ""
+
+#: lib/modules/core.social/module.php:182
+#@ shoestrap
+msgid "Digg"
+msgstr ""
+
+#: lib/modules/core.social/module.php:183
+#@ shoestrap
+msgid "Provide the link you desire and the Digg icon will appear. To remove it, just leave it blank."
+msgstr ""
+
+#: lib/modules/core.social/module.php:191
+#@ shoestrap
+msgid "Dribbble"
+msgstr ""
+
+#: lib/modules/core.social/module.php:192
+#@ shoestrap
+msgid "Provide the link you desire and the Dribbble icon will appear. To remove it, just leave it blank."
+msgstr ""
+
+#: lib/modules/core.social/module.php:201
+#@ shoestrap
+msgid "Provide the link you desire and the Facebook icon will appear. To remove it, just leave it blank."
+msgstr ""
+
+#: lib/modules/core.social/module.php:209
+#@ shoestrap
+msgid "Flickr"
+msgstr ""
+
+#: lib/modules/core.social/module.php:210
+#@ shoestrap
+msgid "Provide the link you desire and the Flickr icon will appear. To remove it, just leave it blank."
+msgstr ""
+
+#: lib/modules/core.social/module.php:218
+#@ shoestrap
+msgid "GitHub"
+msgstr ""
+
+#: lib/modules/core.social/module.php:219
+#@ shoestrap
+msgid "Provide the link you desire and the GitHub icon will appear. To remove it, just leave it blank."
+msgstr ""
+
+#: lib/modules/core.social/module.php:228
+#@ shoestrap
+msgid "Provide the link you desire and the Google+ icon will appear. To remove it, just leave it blank."
+msgstr ""
+
+#: lib/modules/core.social/module.php:237
+#@ shoestrap
+msgid "Provide the link you desire and the LinkedIn icon will appear. To remove it, just leave it blank."
+msgstr ""
+
+#: lib/modules/core.social/module.php:245
+#@ shoestrap
+msgid "MySpace"
+msgstr ""
+
+#: lib/modules/core.social/module.php:246
+#@ shoestrap
+msgid "Provide the link you desire and the MySpace icon will appear. To remove it, just leave it blank."
+msgstr ""
+
+#: lib/modules/core.social/module.php:255
+#@ shoestrap
+msgid "Provide the link you desire and the Pinterest icon will appear. To remove it, just leave it blank."
+msgstr ""
+
+#: lib/modules/core.social/module.php:264
+#@ shoestrap
+msgid "Provide the link you desire and the Reddit icon will appear. To remove it, just leave it blank."
+msgstr ""
+
+#: lib/modules/core.social/module.php:272
+#@ shoestrap
+msgid "RSS"
+msgstr ""
+
+#: lib/modules/core.social/module.php:273
+#@ shoestrap
+msgid "Provide the link you desire and the RSS icon will appear. To remove it, just leave it blank."
+msgstr ""
+
+#: lib/modules/core.social/module.php:281
+#@ shoestrap
+msgid "Skype"
+msgstr ""
+
+#: lib/modules/core.social/module.php:282
+#@ shoestrap
+msgid "Provide the link you desire and the Skype icon will appear. To remove it, just leave it blank."
+msgstr ""
+
+#: lib/modules/core.social/module.php:290
+#@ shoestrap
+msgid "SoundCloud"
+msgstr ""
+
+#: lib/modules/core.social/module.php:291
+#@ shoestrap
+msgid "Provide the link you desire and the SoundCloud icon will appear. To remove it, just leave it blank."
+msgstr ""
+
+#: lib/modules/core.social/module.php:300
+#@ shoestrap
+msgid "Provide the link you desire and the Tumblr icon will appear. To remove it, just leave it blank."
+msgstr ""
+
+#: lib/modules/core.social/module.php:309
+#@ shoestrap
+msgid "Provide the link you desire and the Twitter icon will appear. To remove it, just leave it blank."
+msgstr ""
+
+#: lib/modules/core.social/module.php:317
+#@ shoestrap
+msgid "Vimeo"
+msgstr ""
+
+#: lib/modules/core.social/module.php:318
+#@ shoestrap
+msgid "Provide the link you desire and the Vimeo icon will appear. To remove it, just leave it blank."
+msgstr ""
+
+#: lib/modules/core.typography/module.php:16
+#@ shoestrap
+msgid "Base Font"
+msgstr ""
+
+#: lib/modules/core.typography/module.php:38
+#@ shoestrap
+msgid "Header Overrides"
+msgstr ""
+
+#: lib/modules/core.typography/module.php:49
+#@ shoestrap
+msgid "H1 Font"
+msgstr ""
+
+#: lib/modules/core.typography/module.php:72
+#@ shoestrap
+msgid "H2 Font"
+msgstr ""
+
+#: lib/modules/core.typography/module.php:93
+#@ shoestrap
+msgid "H3 Font"
+msgstr ""
+
+#: lib/modules/core.typography/module.php:113
+#@ shoestrap
+msgid "H4 Font"
+msgstr ""
+
+#: lib/modules/core.typography/module.php:134
+#@ shoestrap
+msgid "H5 Font"
+msgstr ""
+
+#: lib/modules/core.typography/module.php:155
+#@ shoestrap
+msgid "H6 Font"
+msgstr ""
+
+#: lib/modules/core.updater/module.php:21
+#@ shoestrap
+msgid "Licencing"
+msgstr ""
+
+#: lib/modules/core.updater/module.php:28
+#@ redux-framework-demo
+msgid "Shoestrap Theme Licence"
+msgstr ""
+
+#: lib/modules/core.updater/module.php:30
+#@ shoestrap
+msgid "The Shoestrap theme no longer requires a licence for theme updates because a default licence is included."
+msgstr ""
+
+#: lib/modules/core.updater/module.php:30
+#@ shoestrap
+msgid "If you want to use your own licence key, you can add this line in your <code>wp-config.php</code> file:"
+msgstr ""
+
+#: lib/modules/core.widgets/module.php:40
+#@ shoestrap
+msgid "Primary Sidebar"
+msgstr ""
+
+#: lib/modules/core.widgets/module.php:49
+#@ shoestrap
+msgid "Secondary Sidebar"
+msgstr ""
+
+#: lib/modules/core.widgets/module.php:67
+#@ shoestrap
+msgid "Header Area"
+msgstr ""
+
+#: lib/modules/core.widgets/module.php:76
+#@ shoestrap
+msgid "Footer Widget Area 1"
+msgstr ""
+
+#: lib/modules/core.widgets/module.php:85
+#@ shoestrap
+msgid "Footer Widget Area 2"
+msgstr ""
+
+#: lib/modules/core.widgets/module.php:94
+#@ shoestrap
+msgid "Footer Widget Area 3"
+msgstr ""
+
+#: lib/modules/core.widgets/module.php:103
+#@ shoestrap
+msgid "Footer Widget Area 4"
+msgstr ""
+
+#: lib/titles.php:10
+#@ roots
+msgid "Latest Posts"
+msgstr ""
+
+#: lib/titles.php:19
+#, php-format
+#@ roots
+msgid "Daily Archives: %s"
+msgstr ""
+
+#: lib/titles.php:21
+#, php-format
+#@ roots
+msgid "Monthly Archives: %s"
+msgstr ""
+
+#: lib/titles.php:23
+#, php-format
+#@ roots
+msgid "Yearly Archives: %s"
+msgstr ""
+
+#: lib/titles.php:26
+#, php-format
+#@ roots
+msgid "Author Archives: %s"
+msgstr ""
+
+#: lib/titles.php:31
+#, php-format
+#@ roots
+msgid "Search Results for %s"
+msgstr ""
+
+#: lib/titles.php:33
+#@ roots
+msgid "Not Found"
+msgstr ""
+
+#: lib/widgets.php:8
+#@ roots
+msgid "Primary"
+msgstr ""
+
+#: lib/widgets.php:45
+#@ roots
+msgid "Use this widget to add a vCard"
+msgstr ""
+
+#: lib/widgets.php:47
+#@ roots
+msgid "Roots: vCard"
+msgstr ""
+
+#: lib/widgets.php:74
+#@ roots
+msgid "vCard"
+msgstr ""
+
+#: templates/comment.php:4
+#, php-format
+#@ roots
+msgid "%1$s"
+msgstr ""
+
+#: templates/comment.php:5
+#@ roots
+msgid "(Edit)"
+msgstr ""
+
+#: templates/comment.php:9
+#@ roots
+msgid "Your comment is awaiting moderation."
+msgstr ""
+
+#: templates/comments.php:12
+#, php-format
+#@ roots
+msgid "One Response to &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s Responses to &ldquo;%2$s&rdquo;"
+msgstr[0] ""
+msgstr[1] ""
+
+#: templates/comments.php:22
+#@ roots
+msgid "&larr; Older comments"
+msgstr ""
+
+#: templates/comments.php:25
+#@ roots
+msgid "Newer comments &rarr;"
+msgstr ""
+
+#: templates/comments.php:33
+#: templates/comments.php:42
+#@ roots
+msgid "Comments are closed."
+msgstr ""
+
+#: templates/comments.php:49
+#@ roots
+msgid "Leave a Reply"
+msgstr ""
+
+#: templates/comments.php:49
+#, php-format
+#@ roots
+msgid "Leave a Reply to %s"
+msgstr ""
+
+#: templates/comments.php:52
+#, php-format
+#@ roots
+msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
+msgstr ""
+
+#: templates/comments.php:57
+#, php-format
+#@ roots
+msgid "Logged in as <a href=\"%s/wp-admin/profile.php\">%s</a>."
+msgstr ""
+
+#: templates/comments.php:58
+#@ roots
+msgid "Log out of this account"
+msgstr ""
+
+#: templates/comments.php:58
+#@ roots
+msgid "Log out &raquo;"
+msgstr ""
+
+#: templates/comments.php:62
+#@ roots
+msgid "Name"
+msgstr ""
+
+#: templates/comments.php:62
+#: templates/comments.php:66
+#@ roots
+msgid " (required)"
+msgstr ""
+
+#: templates/comments.php:66
+#@ roots
+msgid "Email (will not be published)"
+msgstr ""
+
+#: templates/comments.php:70
+#@ roots
+msgid "Website"
+msgstr ""
+
+#: templates/comments.php:75
+#@ roots
+msgid "Comment"
+msgstr ""
+
+#: templates/comments.php:78
+#@ roots
+msgid "Submit Comment"
+msgstr ""
+
+#: templates/content-single.php:20
+#@ roots
+msgid "Pages:"
+msgstr ""
+
+#: templates/entry-meta.php:2
+#@ roots
+msgid "By"
+msgstr ""
+
