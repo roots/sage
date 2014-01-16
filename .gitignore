@@ -2,3 +2,4 @@
 # Read about how to use .gitignore: https://help.github.com/articles/ignoring-files
 node_modules
 .ftppass
+assets/css/main.min.css.map

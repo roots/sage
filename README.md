@@ -48,8 +48,6 @@ Edit `lib/init.php` to setup custom navigation menus and post thumbnail sizes.
 * [Theme activation](http://roots.io/roots-101/#theme-activation)
 * [Theme wrapper](http://roots.io/an-introduction-to-the-roots-theme-wrapper/)
 * Root relative URLs
-* [Clean URLs with a plugin](https://github.com/roots/roots-rewrites) (no more `/wp-content/`)
-* All static theme assets are rewritten to the website root (`/assets/*`)
 * Cleaner HTML output of navigation menus
 * Cleaner output of `wp_head` and enqueued scripts/styles
 * Nice search (`/search/query/`)

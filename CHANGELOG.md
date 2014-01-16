@@ -1,4 +1,6 @@
 ### HEAD
+* Add notice to theme activation, tidy activation table markup
+* Remove changing media folder from theme activation (use [Bedrock](https://github.com/roots/bedrock) for clean URLs out of the box)
 * Update to Bootstrap 3.0.3
 * Switch `div.main` to `main` element now that Modernizr uses the latest HTML5 Shiv
 * Update to Modernizr 2.7.0
