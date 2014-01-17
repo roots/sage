@@ -1,7 +1,7 @@
 <?php
 
 if ( !class_exists( 'Less_Cache' ) )
-	require_once __DIR__ . '/Cache.php';
+	require_once( dirname(__FILE__).'/Cache.php');
 
 class Less_Parser extends Less_Cache{
 
@@ -26,7 +26,7 @@ class Less_Parser extends Less_Cache{
 	/**
 	 *
 	 */
-	const version = '1.5.1rc2';
+	const version = '1.5.1';
 	const less_version = '1.5.1';
 
 	/**
@@ -233,10 +233,18 @@ class Less_Parser extends Less_Cache{
 
 	public function SetCacheDir( $dir ){
 
-		if( !is_dir($dir) ){
+		if( !file_exists($dir) ){
+			if( mkdir($dir) ){
+				return true;
+			}
+			throw new Less_Exception_Parser('Less.php cache directory couldn\'t be created: '.$dir);
+
+		}elseif( !is_dir($dir) ){
 			throw new Less_Exception_Parser('Less.php cache directory doesn\'t exist: '.$dir);
+
 		}elseif( !is_writable($dir) ){
 			throw new Less_Exception_Parser('Less.php cache directory isn\'t writable: '.$dir);
+
 		}else{
 			$dir = str_replace('\\','/',$dir);
 			self::$cache_dir = rtrim($dir,'/').'/';
@@ -245,17 +253,21 @@ class Less_Parser extends Less_Cache{
 	}
 
 	public function SetImportDirs( $dirs ){
+
 		foreach($dirs as $path => $uri_root){
 
 			$path = str_replace('\\','/',$path);
-			$uri_root = str_replace('\\','/',$uri_root);
-
 			if( !empty($path) ){
 				$path = rtrim($path,'/').'/';
 			}
-			if( !empty($uri_root) ){
-				$uri_root = rtrim($uri_root,'/').'/';
+
+			if ( !is_callable($uri_root) ){
+				$uri_root = str_replace('\\','/',$uri_root);
+				if( !empty($uri_root) ){
+					$uri_root = rtrim($uri_root,'/').'/';
+				}
 			}
+
 			self::$import_dirs[$path] = $uri_root;
 		}
 	}
@@ -2314,11 +2326,11 @@ class Less_Environment{
 	 */
 	static function normalizePath($path){
 
-    	$segments = explode('/',$path);
-    	$segments = array_reverse($segments);
+		$segments = explode('/',$path);
+		$segments = array_reverse($segments);
 
-    	$path = array();
-    	$path_len = 0;
+		$path = array();
+		$path_len = 0;
 
 		while( $segments ){
 			$segment = array_pop($segments);
@@ -4618,13 +4630,21 @@ class Less_Tree_Import extends Less_Tree{
 
 		//get path & uri
 		$evald_path = $evald->getPath();
-		if( $evald_path && Less_Environment::isPathRelative($evald_path) ){
+		if( $evald_path ){
 			foreach(Less_Parser::$import_dirs as $rootpath => $rooturi){
-				$temp = $rootpath.$evald_path;
-				if( file_exists($temp) ){
-					$full_path = Less_Environment::normalizePath($temp);
-					$uri = Less_Environment::normalizePath(dirname($rooturi.$evald_path));
-					break;
+				if( is_callable($rooturi) ){
+					list($path, $uri) = call_user_func($rooturi, $evald_path);
+					if( null !== $path ){
+						$full_path = $path;
+						break;
+					}
+				}else{
+					$path = $rootpath.$evald_path;
+					if( file_exists($path) ){
+						$full_path = Less_Environment::normalizePath($path);
+						$uri = Less_Environment::normalizePath(dirname($rooturi.$evald_path));
+						break;
+					}
 				}
 			}
 		}
@@ -5517,16 +5537,14 @@ class Less_Tree_Rule extends Less_Tree{
 			$strictMathBypass = true;
 			$env->strictMath = true;
 		}
-		try{
-			$return = new Less_Tree_Rule($this->name,
-										$this->value->compile($env),
-										$this->important,
-										$this->merge,
-										$this->index,
-										$this->currentFileInfo,
-										$this->inline);
-		}
-		catch(Exception $e){}
+
+		$return = new Less_Tree_Rule($this->name,
+									$this->value->compile($env),
+									$this->important,
+									$this->merge,
+									$this->index,
+									$this->currentFileInfo,
+									$this->inline);
 
 		if( $strictMathBypass ){
 			$env->strictMath = false;
