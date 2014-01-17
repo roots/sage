@@ -139,9 +139,6 @@ function shoestrap_navbar_social_links() {
 
   echo $content;
 }
-// If the user has selected to show social links as DROPDOWN in the navbar echo the content.
-if ( shoestrap_getVariable( 'navbar_social' ) == 1 && shoestrap_getVariable( 'navbar_social_style' ) == 0 )
-  add_action( 'shoestrap_inside_nav_end', 'shoestrap_navbar_social_links' );
 
 // That's for inline icon links
 function shoestrap_navbar_social_bar() {
@@ -170,9 +167,6 @@ function shoestrap_navbar_social_bar() {
 
   echo $content;
 }
-// If the user has selected to show social INLINE links in the navbar echo the content.
-if ( shoestrap_getVariable( 'navbar_social' ) == 1 && shoestrap_getVariable( 'navbar_social_style' ) == 1 )
-  add_action( 'shoestrap_inside_nav_end', 'shoestrap_navbar_social_bar' );
 
 // Properly parses the twitter URL if set
 function shoestrap_get_twitter_username() {
@@ -290,6 +284,13 @@ function shoestrap_add_social_actions() {
   } elseif ( $social_sharing_single_page == 1 && $social_sharing_location == 'both' ) {
     add_action( 'shoestrap_page_pre_content', 'shoestrap_social_sharing', 5 );
     add_action( 'shoestrap_page_after_content', 'shoestrap_social_sharing', 5 );
+  }
+
+  if ( shoestrap_getVariable( 'navbar_social' ) == 1 ) {
+    if ( shoestrap_getVariable( 'navbar_social_style' ) == 1 )
+      add_action( 'shoestrap_inside_nav_end', 'shoestrap_navbar_social_bar' );
+    else
+      add_action( 'shoestrap_inside_nav_end', 'shoestrap_navbar_social_links' );
   }
 }
 add_action( 'init', 'shoestrap_add_social_actions' );
