@@ -1,17 +1,17 @@
 ### 3.0.3.06
 
-Fix: Social links in navbars
-Fix: Social sharing actions
-Fix: Re-added option to force-hide the adminbar
-Fix: Better including of compiler classes
-Fix: Removed advanced mode from admin modules
-Fix: Breadcrumbs improvements
-Fix: Footer Border
-Fix: Background Patterns
-Fix: adding default pot and po files
-Fix: bugfix sidebars action-hook
-Fix: non php enclosed functions
-Fix: Redux update
+* Fix: Social links in navbars
+* Fix: Social sharing actions
+* Fix: Re-added option to force-hide the adminbar
+* Fix: Better including of compiler classes
+* Fix: Removed advanced mode from admin modules
+* Fix: Breadcrumbs improvements
+* Fix: Footer Border
+* Fix: Background Patterns
+* Fix: adding default pot and po files
+* Fix: bugfix sidebars action-hook
+* Fix: non php enclosed functions
+* Fix: Redux update
 
 ### 3.0.3.05
 
