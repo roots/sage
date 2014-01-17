@@ -1,3 +1,38 @@
+### 3.0.3.06
+
+Fix: Social links in navbars
+Fix: Social sharing actions
+Fix: Re-added option to force-hide the adminbar
+Fix: Better including of compiler classes
+Fix: Removed advanced mode from admin modules
+Fix: Breadcrumbs improvements
+Fix: Footer Border
+Fix: Background Patterns
+Fix: adding default pot and po files
+Fix: bugfix sidebars action-hook
+Fix: non php enclosed functions
+Fix: Redux update
+
+### 3.0.3.05
+
+* Fix: Custom templates now properly detect custom post types
+* Fix: Default settings now properly set on Redux
+* Fix: ReduxFramework Updates
+* Fix: Compiler improvements
+* Fix: Margins & Paddings on mibile views
+
+### 3.0.3.04
+
+* Fix: Updates + Bugfixes on the ReduxFramework
+* Fix: Safer including of Cache.php
+* Fix: Theme menu now called "Theme Options" under the "Appearance" parent menu
+
+### 3.0.3.03
+
+* Fix: excerpt length now works as expected
+* Fix: background images now work as expected
+* Fix: Removed adminbar option. This is plugin functionality and does not belong in a theme.
+
 ### 3.0.3.02
 
 * New: Added advanced mode toggles on many admin sections
