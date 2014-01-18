@@ -116,6 +116,17 @@ function shoestrap_variables() {
   $screen_sm = ( $site_style == 'static' ) ? '50px' : $screen_sm;
   $screen_md = ( $site_style == 'static' ) ? '50px' : $screen_md;
 
+  $gfb = shoestrap_getVariable( 'grid_float_breakpoint' );
+  $grid_float_breakpoint = ( isset( $gfb ) )           ? $gfb             : '@screen-sm-min';
+  $grid_float_breakpoint = ( $gfb == 'min' )           ? '10px'           : $grid_float_breakpoint;
+  $grid_float_breakpoint = ( $gfb == 'screen_xs_min' ) ? '@screen-xs-min' : $grid_float_breakpoint;
+  $grid_float_breakpoint = ( $gfb == 'screen_sm_min' ) ? '@screen-sm-min' : $grid_float_breakpoint;
+  $grid_float_breakpoint = ( $gfb == 'screen_md_min' ) ? '@screen-md-min' : $grid_float_breakpoint;
+  $grid_float_breakpoint = ( $gfb == 'screen_lg_min' ) ? '@screen-lg-min' : $grid_float_breakpoint;
+  $grid_float_breakpoint = ( $gfb == 'max' )           ? '9999px'         : $grid_float_breakpoint;
+
+  $grid_float_breakpoint = ( $gfb == 'screen-lg-min' ) ? '0 !important' : $grid_float_breakpoint;
+
   $navbar_height    = filter_var( shoestrap_getVariable( 'navbar_height', true ), FILTER_SANITIZE_NUMBER_INT );
   $navbar_text_color       = '#' . str_replace( '#', '', $font_navbar['color'] );
 
@@ -489,7 +500,7 @@ $variables = '
 // Navbar collapse
 
 // Point at which the navbar becomes uncollapsed
-@grid-float-breakpoint:     @screen-sm-min;
+@grid-float-breakpoint:     ' . $grid_float_breakpoint . ';
 // Point at which the navbar begins collapsing
 @grid-float-breakpoint-max: (@grid-float-breakpoint - 1);
 
@@ -939,7 +950,6 @@ $variables = '
 if ( $site_style == 'static' ):
 // disable responsiveness
   $variables .= '
-    @grid-float-breakpoint: 0 !important;
     @screen-xs-max: 0 !important; 
     .container { max-width: none !important; width: @container-large-desktop; }
     html { overflow-x: auto !important; }

@@ -171,6 +171,23 @@ function shoestrap_module_layout_options( $sections ) {
   );
 
   $fields[] = array( 
+    'title'     => __( 'Secondary Sidebar Width', 'shoestrap' ),
+    'desc'      => __( 'Point at which the navbar becomes uncollapsed', 'shoestrap' ),
+    'id'        => 'grid_float_breakpoint',
+    'type'      => 'button_set',
+    'options'   => array(
+      'min'           => __( 'Never', 'shoestrap' ),
+      'screen_xs_min' => __( 'Extra Small', 'shoestrap' ),
+      'screen_sm_min' => __( 'Small', 'shoestrap' ),
+      'screen_md_min' => __( 'Desktop', 'shoestrap' ),
+      'screen_lg_min' => __( 'Large Desktop', 'shoestrap' ),
+      'max'           => __( 'Always', 'shoestrap' ),
+    ),
+    'default'   => 'screen_sm_min',
+    'compiler'  => true,
+  );
+
+  $fields[] = array( 
     'title'     => __( 'Custom Grid', 'shoestrap' ),
     'desc'      => '<strong>' . __( 'CAUTION:', 'shoestrap' ) . '</strong> ' . __( 'Only use this if you know what you are doing, as changing these values might break the way your site looks on some devices. The default settings should be fine for the vast majority of sites.', 'shoestrap' ),
     'id'        => 'custom_grid',
