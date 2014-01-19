@@ -78,3 +78,14 @@ function shoestrap_init_filesystem() {
 }
 endif;
 add_filter('init', 'shoestrap_init_filesystem');
+
+
+if ( !function_exists( 'shoestrap_array_delete' ) ) :
+/*
+ * Unset a row from an array.
+ */
+function shoestrap_array_delete( $idx, $array ) {  
+  unset( $array[$idx] );
+  return ( is_array( $array ) ) ? array_values( $array ) : null;
+}
+endif;
