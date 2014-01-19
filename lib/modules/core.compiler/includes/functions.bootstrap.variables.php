@@ -15,12 +15,12 @@ function shoestrap_variables() {
 
   $site_style = shoestrap_getVariable( 'site_style' );
 
-  $body_bg          = '#' . str_replace( '#', '', shoestrap_getVariable( 'color_body_bg', true ) );
-  $brand_primary    = '#' . str_replace( '#', '', shoestrap_getVariable( 'color_brand_primary', true ) );
-  $brand_success    = '#' . str_replace( '#', '', shoestrap_getVariable( 'color_brand_success', true ) );
-  $brand_warning    = '#' . str_replace( '#', '', shoestrap_getVariable( 'color_brand_warning', true ) );
-  $brand_danger     = '#' . str_replace( '#', '', shoestrap_getVariable( 'color_brand_danger', true ) );
-  $brand_info       = '#' . str_replace( '#', '', shoestrap_getVariable( 'color_brand_info', true ) );
+  $body_bg          = '#' . str_replace( '#', '', shoestrap_sanitize_hex( shoestrap_getVariable( 'color_body_bg', true ) ) );
+  $brand_primary    = '#' . str_replace( '#', '', shoestrap_sanitize_hex( shoestrap_getVariable( 'color_brand_primary', true ) ) );
+  $brand_success    = '#' . str_replace( '#', '', shoestrap_sanitize_hex( shoestrap_getVariable( 'color_brand_success', true ) ) );
+  $brand_warning    = '#' . str_replace( '#', '', shoestrap_sanitize_hex( shoestrap_getVariable( 'color_brand_warning', true ) ) );
+  $brand_danger     = '#' . str_replace( '#', '', shoestrap_sanitize_hex( shoestrap_getVariable( 'color_brand_danger', true ) ) );
+  $brand_info       = '#' . str_replace( '#', '', shoestrap_sanitize_hex( shoestrap_getVariable( 'color_brand_info', true ) ) );
 
   $font_base              = shoestrap_process_font( shoestrap_getVariable( 'font_base', true ) );
   $font_navbar            = shoestrap_process_font( shoestrap_getVariable( 'font_navbar', true ) );
@@ -93,7 +93,7 @@ function shoestrap_variables() {
 
   }
 
-  $text_color       = '#' . str_replace( '#', '', $font_base['color'] );
+  $text_color       = '#' . str_replace( '#', '', shoestrap_sanitize_hex( $font_base['color'] ) );
   $font_size_base   = $font_base['font-size'];
   $font_style_base  = $font_base['font-style'];
   $font_weight_base = $font_base['font-weight'];
@@ -103,8 +103,8 @@ function shoestrap_variables() {
   $border_radius    = ( strlen( $border_radius ) < 1 ) ? 0 : $border_radius;
 
   $padding_base     = intval( shoestrap_getVariable( 'padding_base', true ) );
-  $navbar_bg        = '#' . str_replace( '#', '', shoestrap_getVariable( 'navbar_bg', true ) );
-  $jumbotron_bg     = '#' . str_replace( '#', '', shoestrap_getVariable( 'jumbotron_bg', true ) );
+  $navbar_bg        = '#' . str_replace( '#', '', shoestrap_sanitize_hex( shoestrap_getVariable( 'navbar_bg', true ) ) );
+  $jumbotron_bg     = '#' . str_replace( '#', '', shoestrap_sanitize_hex( shoestrap_getVariable( 'jumbotron_bg', true ) ) );
 
   $screen_sm = filter_var( shoestrap_getVariable( 'screen_tablet', true ), FILTER_SANITIZE_NUMBER_INT );
   $screen_md = filter_var( shoestrap_getVariable( 'screen_desktop', true ), FILTER_SANITIZE_NUMBER_INT );
@@ -140,7 +140,7 @@ function shoestrap_variables() {
     $font_jumbotron_headers_face   = $font_jumbotron_headers['font-family'];
     $font_jumbotron_headers_weight = $font_jumbotron_headers['font-weight'];
     $font_jumbotron_headers_style  = $font_jumbotron_headers['font-style'];
-    $jumbotron_headers_text_color  = '#' . str_replace( '#', '', $font_jumbotron_headers['color'] );
+    $jumbotron_headers_text_color  = '#' . str_replace( '#', '', shoestrap_sanitize_hex( $font_jumbotron_headers['color'] ) );
 
   } else {
 

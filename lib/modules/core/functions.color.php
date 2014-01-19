@@ -8,51 +8,38 @@ function shoestrap_sanitize_hex( $color ) {
   // Remove any trailing '#' symbols from the color value
   $color = str_replace( '#', '', $color );
 
-  // Make sure that all the characters used are those of a HEX value.
-  if ( ctype_xdigit( $color ) )
-    $is_hex = true;
+  // If there are more than 6 characters, only keep the first 6.
+  if ( strlen( $color ) > 6 )
+    $color = substr( $color, 0, 6 );
 
-  // Continue processing this if we are indeed dealing with a hex value
-  if ( $is_hex ) {
-
-    // If there are more than 6 characters, only keep the first 6.
-    if ( strlen( $color ) > 6 )
-      $color = substr( $color, 0, 6 );
-
-    if ( strlen( $color ) == 6 ) {
-      $hex = $color; // If string consists of 6 characters, then this is our color
-    } else {
-      // String is shorter than 6 characters.
-      // We will have to do some calculations below to get the actual 6-digit hex value.
-
-      // If the string is longer than 3 characters, only keep the first 3.
-      if ( strlen( $color ) > 3 )
-        $color = substr( $color, 0, 3 );
-
-      // If this is a 3-character string, format it to 6 characters.
-      if ( strlen( $color ) == 3 ) {
-        $red    = substr( $color, 0, 1 ) . substr( $color, 0, 1 );
-        $green  = substr( $color, 1, 1 ) . substr( $color, 1, 1 );
-        $blue   = substr( $color, 2, 1 ) . substr( $color, 2, 1 );
-
-        $hex = $red . $green . $blue;
-      }
-
-      // If this is shorter than 3 characters, do some voodoo.
-      if ( strlen( $color ) == 2 )
-        $hex = $color . $color . $color;
-
-      if ( strlen( $color ) == 1 )
-        $hex = $color . $color . $color . $color . $color . $color;
-    }
+  if ( strlen( $color ) == 6 ) {
+    $hex = $color; // If string consists of 6 characters, then this is our color
   } else {
-    // Provide a default hex value just in case our tests fail.
-    // This way, if everything else fails and we can't get a value
-    // This will be returned instead.
-    $hex = '000000';
+    // String is shorter than 6 characters.
+    // We will have to do some calculations below to get the actual 6-digit hex value.
+
+    // If the string is longer than 3 characters, only keep the first 3.
+    if ( strlen( $color ) > 3 )
+      $color = substr( $color, 0, 3 );
+
+    // If this is a 3-character string, format it to 6 characters.
+    if ( strlen( $color ) == 3 ) {
+      $red    = substr( $color, 0, 1 ) . substr( $color, 0, 1 );
+      $green  = substr( $color, 1, 1 ) . substr( $color, 1, 1 );
+      $blue   = substr( $color, 2, 1 ) . substr( $color, 2, 1 );
+
+      $hex = $red . $green . $blue;
+    }
+
+    // If this is shorter than 3 characters, do some voodoo.
+    if ( strlen( $color ) == 2 )
+      $hex = $color . $color . $color;
+
+    if ( strlen( $color ) == 1 )
+      $hex = $color . $color . $color . $color . $color . $color;
   }
 
-  return $hex;
+  return '#' . $hex;
 }
 endif;
 
@@ -64,7 +51,7 @@ if ( !function_exists( 'shoestrap_get_rgb' ) ) :
  */
 function shoestrap_get_rgb( $hex, $implode = false ) {
   // Remove any trailing '#' symbols from the color value
-  $hex = str_replace( '#', '', $hex );
+  $hex = str_replace( '#', '', shoestrap_sanitize_hex( $hex ) );
 
   if ( strlen( $hex ) == 3 ) {
     // If the color is entered using a short, 3-character format,
@@ -95,6 +82,7 @@ if ( !function_exists( 'shoestrap_get_rgba' ) ) :
  * Gets the rgba value of a color.
  */
 function shoestrap_get_rgba( $hex = '#fff', $opacity = 100, $echo = false ) {
+  $hex = shoestrap_sanitize_hex( $hex );
   // Make sure that opacity is properly formatted :
   // Set the opacity to 100 if a larger value has been entered by mistake.
   // If a negative value is used, then set to 0.
@@ -129,6 +117,7 @@ if ( !function_exists( 'shoestrap_get_brightness' ) ) :
  * Returns a value between 0 and 255
  */
 function shoestrap_get_brightness( $hex ) {
+  $hex = shoestrap_sanitize_hex( $hex );
   // returns brightness value from 0 to 255
   // strip off any leading #
   $hex = str_replace( '#', '', $hex );
@@ -148,6 +137,7 @@ if ( !function_exists( 'shoestrap_adjust_brightness' ) ) :
  * the $steps variable is a value between -255 (darken) and 255 (lighten)
  */
 function shoestrap_adjust_brightness( $hex, $steps ) {
+  $hex = shoestrap_sanitize_hex( $hex );
   // Steps should be between -255 and 255. Negative = darker, positive = lighter
   $steps = max( -255, min( 255, $steps ) );
 
@@ -181,6 +171,8 @@ if ( !function_exists( 'shoestrap_mix_colors' ) ) :
  * to be used it the mix. default is 50 (equal mix)
  */
 function shoestrap_mix_colors( $hex1, $hex2, $percentage ) {
+  $hex1 = shoestrap_sanitize_hex( $hex1 );
+  $hex2 = shoestrap_sanitize_hex( $hex2 );
 
   // Format the hex color string
   $hex1 = str_replace( '#', '', $hex1 );
@@ -215,6 +207,7 @@ if ( !function_exists( 'shoestrap_hex_to_hsv' ) ) :
  * Convert a hex color to HSV
  */
 function shoestrap_hex_to_hsv( $hex ) {
+  $hex = shoestrap_sanitize_hex( $hex );
   $hex = str_replace( '#', '', $hex );
   $rgb = shoestrap_get_rgb( $hex );
   $hsv = shoestrap_rgb_to_hsv( $rgb );
@@ -288,7 +281,8 @@ function shoestrap_brightest_color( $colors = array(), $context = 'key' ) {
   $brightest = false;
 
   foreach ( $colors as $color ) {
-    $hex = str_replace( '#', '', $color );
+    $color      = shoestrap_sanitize_hex( $color );
+    $hex        = str_replace( '#', '', $color );
     $brightness = shoestrap_get_brightness( $hex );
 
     if ( !$brightest || shoestrap_get_brightness( $hex ) > shoestrap_get_brightness( $brightest ) )
@@ -313,8 +307,9 @@ function shoestrap_most_saturated_color( $colors = array(), $context = 'key' ) {
   $most_saturated = false;
 
   foreach ( $colors as $color ) {
-    $hex = str_replace( '#', '', $color );
-    $hsv = shoestrap_hex_to_hsv( $hex );
+    $color      = shoestrap_sanitize_hex( $color );
+    $hex        = str_replace( '#', '', $color );
+    $hsv        = shoestrap_hex_to_hsv( $hex );
     $saturation = $hsv['s'];
 
     if ( $most_saturated )
@@ -342,8 +337,9 @@ function shoestrap_most_intense_color( $colors = array(), $context = 'key' ) {
   $most_intense = false;
 
   foreach ( $colors as $color ) {
-    $hex = str_replace( '#', '', $color );
-    $hsv = shoestrap_hex_to_hsv( $hex );
+    $color      = shoestrap_sanitize_hex( $color );
+    $hex        = str_replace( '#', '', $color );
+    $hsv        = shoestrap_hex_to_hsv( $hex );
     $saturation = $hsv['s'];
 
     if ( $most_intense )
@@ -371,6 +367,7 @@ function shoestrap_brightest_dull_color( $colors = array(), $context = 'key' ) {
   $brightest_dull = false;
 
   foreach ( $colors as $color ) {
+    $color        = shoestrap_sanitize_hex( $color );
     $hex          = str_replace( '#', '', $color );
     $hsv          = shoestrap_hex_to_hsv( $hex );
 
