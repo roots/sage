@@ -154,3 +154,189 @@ function shoestrap_mix_colors( $hex1, $hex2, $percentage ) {
 endif;
 
 
+if ( !function_exists( 'shoestrap_hex_to_hsv' ) ) :
+/*
+ * Convert a hex color to HSV
+ */
+function shoestrap_hex_to_hsv( $hex ) {
+  $hex = str_replace( '#', '', $hex );
+  $rgb = shoestrap_get_rgb( $hex );
+  $hsv = shoestrap_rgb_to_hsv( $rgb );
+
+  return $hsv;
+}
+endif;
+
+
+if ( !function_exists( 'shoestrap_rgb_to_hsv' ) ) :
+/*
+ * Convert an RGB array to HSV
+ */
+function shoestrap_rgb_to_hsv( $color = array() ) {
+  $r = $color[0];
+  $g = $color[1];
+  $b = $color[2];
+
+  $hsl = array();
+
+  $var_r = ( $r / 255 );
+  $var_g = ( $g / 255 );
+  $var_b = ( $b / 255 );
+
+  $var_min = min( $var_r, $var_g, $var_b);
+  $var_max = max( $var_r, $var_g, $var_b);
+  $del_max = $var_max - $var_min;
+
+  $v = $var_max;
+
+   if ( $del_max == 0 ) {
+    $h = 0;
+    $s = 0;
+  } else {
+    $s = $del_max / $var_max;
+
+    $del_r = ( ( ( $var_max - $var_r ) / 6 ) + ( $del_max / 2 ) ) / $del_max;
+    $del_g = ( ( ( $var_max - $var_g ) / 6 ) + ( $del_max / 2 ) ) / $del_max;
+    $del_b = ( ( ( $var_max - $var_b ) / 6 ) + ( $del_max / 2 ) ) / $del_max;
+
+    if ( $var_r == $var_max )
+      $h = $del_b - $del_g;
+    elseif ( $var_g == $var_max)
+      $h = ( 1 / 3 ) + $del_r - $del_b;
+    elseif ( $var_b == $var_max )
+      $h = ( 2 / 3 ) + $del_g - $del_r;
+
+    if ( $h<0 )
+      $h++;
+
+    if ( $h>1 )
+      $h--;
+  }
+
+  $hsl['h'] = $h;
+  $hsl['s'] = $s;
+  $hsl['v'] = $v;
+
+  return $hsl;
+}
+endif;
+
+
+if ( !function_exists( 'shoestrap_brightest_color' ) ) :
+/*
+ * Get the brightest color from an array of colors.
+ * Return the key of the array if $context = 'key'
+ * Return the hex value of the color if $context = 'value'
+ */
+function shoestrap_brightest_color( $colors = array(), $context = 'key' ) {
+  $brightest = false;
+
+  foreach ( $colors as $color ) {
+    $hex = str_replace( '#', '', $color );
+    $brightness = shoestrap_get_brightness( $hex );
+
+    if ( !$brightest || shoestrap_get_brightness( $hex ) > shoestrap_get_brightness( $brightest ) )
+      $brightest = $hex;
+  }
+
+  if ( $context == 'key' )
+    return array_search( $brightest, $colors );
+  elseif ( $context == 'value' )
+    return $brightest;
+}
+endif;
+
+
+if ( !function_exists( 'shoestrap_most_saturated_color' ) ) :
+/*
+ * Get the most saturated color from an array of colors.
+ * Return the key of the array if $context = 'key'
+ * Return the hex value of the color if $context = 'value'
+ */
+function shoestrap_most_saturated_color( $colors = array(), $context = 'key' ) {
+  $most_saturated = false;
+
+  foreach ( $colors as $color ) {
+    $hex = str_replace( '#', '', $color );
+    $hsv = shoestrap_hex_to_hsv( $hex );
+    $saturation = $hsv['s'];
+
+    if ( $most_saturated )
+      $hsv_old = shoestrap_hex_to_hsv( $most_saturated );
+
+    if ( !$most_saturated || $saturation > $hsv_old['s'] );
+      $most_saturated = $hex;
+  }
+
+  if ( $context == 'key' )
+    return array_search( $most_saturated, $colors );
+  elseif ( $context == 'value' )
+    return $most_saturated;
+}
+endif;
+
+
+if ( !function_exists( 'shoestrap_most_intense_color' ) ) :
+/*
+ * Get the most intense color from an array of colors.
+ * Return the key of the array if $context = 'key'
+ * Return the hex value of the color if $context = 'value'
+ */
+function shoestrap_most_intense_color( $colors = array(), $context = 'key' ) {
+  $most_intense = false;
+
+  foreach ( $colors as $color ) {
+    $hex = str_replace( '#', '', $color );
+    $hsv = shoestrap_hex_to_hsv( $hex );
+    $saturation = $hsv['s'];
+
+    if ( $most_intense )
+      $hsv_old = shoestrap_hex_to_hsv( $most_intense );
+
+    if ( !$most_intense || $saturation > $hsv_old['s'] );
+      $most_intense = $hex;
+  }
+
+  if ( $context == 'key' )
+    return array_search( $most_intense, $colors );
+  elseif ( $context == 'value' )
+    return $most_intense;
+}
+endif;
+
+
+if ( !function_exists( 'shoestrap_brightest_dull_color' ) ) :
+/*
+ * Get the brightest color from an array of colors.
+ * Return the key of the array if $context = 'key'
+ * Return the hex value of the color if $context = 'value'
+ */
+function shoestrap_brightest_dull_color( $colors = array(), $context = 'key' ) {
+  $brightest_dull = false;
+
+  foreach ( $colors as $color ) {
+    $hex          = str_replace( '#', '', $color );
+    $hsv          = shoestrap_hex_to_hsv( $hex );
+
+    $brightness   = shoestrap_get_brightness( $hex );
+    // Prevent "division by zero" messages.
+    $hsv['s']     = ( $hsv['s'] == 0 ) ? 0.0001 : $hsv['s'];
+    $dullness     = 1 / $hsv['s'];
+
+    if ( $brightest_dull ) {
+      $hsv_old      = shoestrap_hex_to_hsv( $brightest_dull );
+      // Prevent "division by zero" messages.
+      $hsv_old['s'] = ( $hsv_old['s'] == 0 ) ? 0.0001 : $hsv_old['s'];
+      $dullness_old = 1 / $hsv_old['s'];
+    }
+
+    if ( !$brightest_dull || shoestrap_get_brightness( $hex ) * $dullness > shoestrap_get_brightness( $brightest_dull ) * $dullness_old )
+      $brightest_dull = $hex;
+  }
+
+  if ( $context == 'key' )
+    return array_search( $brightest_dull, $colors );
+  elseif ( $context == 'value' )
+    return $brightest_dull;
+}
+endif;
