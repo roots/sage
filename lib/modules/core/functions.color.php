@@ -1,5 +1,61 @@
 <?php
 
+if ( !function_exists( 'shoestrap_sanitize_hex' ) ) :
+function shoestrap_sanitize_hex( $color ) {
+  // Remove any spaces and special characters before and after the string
+  $color = trim( $color. ' \t\n\r\0\x0B' );
+
+  // Remove any trailing '#' symbols from the color value
+  $color = str_replace( '#', '', $color );
+
+  // Make sure that all the characters used are those of a HEX value.
+  if ( ctype_xdigit( $color ) )
+    $is_hex = true;
+
+  // Continue processing this if we are indeed dealing with a hex value
+  if ( $is_hex ) {
+
+    // If there are more than 6 characters, only keep the first 6.
+    if ( strlen( $color ) > 6 )
+      $color = substr( $color, 0, 6 );
+
+    if ( strlen( $color ) == 6 ) {
+      $hex = $color; // If string consists of 6 characters, then this is our color
+    } else {
+      // String is shorter than 6 characters.
+      // We will have to do some calculations below to get the actual 6-digit hex value.
+
+      // If the string is longer than 3 characters, only keep the first 3.
+      if ( strlen( $color ) > 3 )
+        $color = substr( $color, 0, 3 );
+
+      // If this is a 3-character string, format it to 6 characters.
+      if ( strlen( $color ) == 3 ) {
+        $red    = substr( $color, 0, 1 ) . substr( $color, 0, 1 );
+        $green  = substr( $color, 1, 1 ) . substr( $color, 1, 1 );
+        $blue   = substr( $color, 2, 1 ) . substr( $color, 2, 1 );
+
+        $hex = $red . $green . $blue;
+      }
+
+      // If this is shorter than 3 characters, do some voodoo.
+      if ( strlen( $color ) == 2 )
+        $hex = $color . $color . $color;
+
+      if ( strlen( $color ) == 1 )
+        $hex = $color . $color . $color . $color . $color . $color;
+    }
+  } else {
+    // Provide a default hex value just in case our tests fail.
+    // This way, if everything else fails and we can't get a value
+    // This will be returned instead.
+    $hex = '000000';
+  }
+
+  return $hex;
+}
+endif;
+
 
 if ( !function_exists( 'shoestrap_get_rgb' ) ) :
 /*
