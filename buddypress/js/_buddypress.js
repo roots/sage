@@ -1526,7 +1526,7 @@ function bp_legacy_theme_hide_comments() {
         comment_lis.each(function(i) {
             /* Show the latest 5 root comments */
             if (i < comment_lis.length - 5) {
-                jq(this).addClass('hidden');
+                jq(this).addClass('hidden-comment');
                 jq(this).toggle();
 
                 if (!i)

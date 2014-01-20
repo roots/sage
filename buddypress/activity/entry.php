@@ -99,7 +99,7 @@
 						<div class="ac-textarea">
 							<textarea id="ac-input-<?php bp_activity_id(); ?>" class="ac-input" name="ac_input_<?php bp_activity_id(); ?>"></textarea>
 						</div>
-						<input type="submit" name="ac_form_submit" value="<?php _e( 'Post', 'buddypress' ); ?>" />
+						<input type="submit" name="ac_form_submit" value="<?php _e( 'Post', 'buddypress' ); ?>" /> &nbsp; <a href="#" class="ac-reply-cancel"><?php _e( 'Cancel', 'buddypress' ); ?></a>
 						<input type="hidden" name="comment_form_id" value="<?php bp_activity_id(); ?>" />
 					</div>
 
