@@ -1,3 +1,13 @@
+### 3.0.307
+
+* Fix: recoding the meta module
+* Fix: sanitizing colors in the compiler
+* New: Introducing some new color functions
+* New: moving color functions to a separate file
+* New: Added @grid-float-breakpoint control
+* Fix: Updating the Less Compiler
+* Fix: other minor improvements
+
 ### 3.0.3.06
 
 * Fix: Social links in navbars
