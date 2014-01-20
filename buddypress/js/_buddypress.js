@@ -226,6 +226,8 @@ jq(document).ready(function() {
                     target.fadeOut(200, function() {
                         jq(this).html(response);
                         jq(this).attr('title', 'fav' == type ? BP_DTheme.remove_fav : BP_DTheme.mark_as_fav);
+                        var glyph =  type == 'fav' ? 'glyphicon-star' : 'glyphicon-star-empty';
+                        target.prepend('<span class="glyphicon ' + glyph + '"></span>');
                         jq(this).fadeIn(200);
                     });
 

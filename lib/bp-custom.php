@@ -7,6 +7,7 @@
  */
 function customize_activity_delete_link($link) {
 	$link = str_replace('button ', '', $link);
+	$link = str_replace('rel="nofollow">', 'rel="nofollow"><span class="glyphicon glyphicon-trash"></span>', $link);
 
 	return $link;
 }

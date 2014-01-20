@@ -233,10 +233,10 @@ class BP_Legacy extends BP_Theme_Compat {
 			'close'               => __( 'Close', 'buddypress' ),
 			'comments'            => __( 'comments', 'buddypress' ),
 			'leave_group_confirm' => __( 'Are you sure you want to leave this group?', 'buddypress' ),
-			'mark_as_fav'	      => __( 'Favorite', 'buddypress' ),
+			'mark_as_fav'	      => __( 'Bookmark', 'buddypress' ),
 			'my_favs'             => __( 'My Favorites', 'buddypress' ),
 			'rejected'            => __( 'Rejected', 'buddypress' ),
-			'remove_fav'	      => __( 'Remove Favorite', 'buddypress' ),
+			'remove_fav'	      => __( 'Bookmarked', 'buddypress' ),
 			'show_all'            => __( 'Show all', 'buddypress' ),
 			'show_all_comments'   => __( 'Show all comments for this thread', 'buddypress' ),
 			'show_x_comments'     => __( 'Show all %d comments', 'buddypress' ),
@@ -829,9 +829,9 @@ function bp_legacy_theme_mark_activity_favorite() {
 		return;
 
 	if ( bp_activity_add_user_favorite( $_POST['id'] ) )
-		_e( 'Remove Favorite', 'buddypress' );
+		_e( 'Bookmarked', 'buddypress' );
 	else
-		_e( 'Favorite', 'buddypress' );
+		_e( 'Bookmark', 'buddypress' );
 
 	exit;
 }
@@ -848,9 +848,9 @@ function bp_legacy_theme_unmark_activity_favorite() {
 		return;
 
 	if ( bp_activity_remove_user_favorite( $_POST['id'] ) )
-		_e( 'Favorite', 'buddypress' );
+		_e( 'Bookmark', 'buddypress' );
 	else
-		_e( 'Remove Favorite', 'buddypress' );
+		_e( 'Bookmarked', 'buddypress' );
 
 	exit;
 }
