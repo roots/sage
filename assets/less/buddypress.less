@@ -34,6 +34,7 @@
 
  	form#whats-new-form {
  		.make-row();
+ 		margin-bottom: 2em;
 
  		div#whats-new-avatar {
  			.make-lg-column(3);
@@ -107,6 +108,7 @@
 
  			.activity-content {
  				margin-left: 65px;
+ 				margin-right: 20px;
  				.clearfix();
 
  				.activity-header {
@@ -139,6 +141,7 @@
  					li {
  						background-color: @gray-lighter;
  						margin-bottom: 2px;
+ 						padding: 5px;
 
  						.acomment-avatar {
  							.pull-left;
@@ -173,7 +176,27 @@
  				}
 
  				form.ac-form {
- 					display: none;
+ 					display: none; //hide comment form until link is clicked
+ 					background-color: @gray-lighter;
+ 					padding: 5px;
+
+ 					.ac-reply-avatar {
+ 						.pull-left;
+ 					}
+
+ 					.ac-reply-content {
+ 						margin-left: 40px;
+
+ 						textarea {
+ 							.form-control;
+ 							.input-sm;
+ 							margin-bottom: 5px;
+ 						}
+
+ 						input[type="submit"] {
+ 							.btn-sm;
+ 						}
+ 					}
  				}
  			}
  		}
