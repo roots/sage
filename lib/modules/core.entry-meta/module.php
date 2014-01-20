@@ -20,17 +20,14 @@ function shoestrap_module_meta_config( $sections ) {
     'id'          => 'shoestrap_entry_meta_config',
     'title'       => __( 'Activate and order elements', 'shoestrap' ),
     'options'     => array(
-      "disabled"  => array (
-        "tags"    => "Tags",
-        "date"    => "Date",
-        "category"=> "Category",
-        "author"  => "Author"
-      ),
-      "enabled"   => array (
-        "sticky"  => "Sticky"
-      )
+      "tags"    => "Tags",
+      "date"    => "Date",
+      "category"=> "Category",
+      "author"  => "Author",
+      "sticky"  => "Sticky"
     ),
-    'type'        => 'sorter'
+    'type'        => 'sortable',
+    'mode'        => 'checkbox'
   );
   $section['fields'] = $fields;
   $section = apply_filters( 'shoestrap_module_meta_config_modifier', $section );
