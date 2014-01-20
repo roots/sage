@@ -13,6 +13,7 @@ function shoestrap_compiler() {
   $bootstrap_uri      = '';
   $custom_less_file   = get_template_directory() . '/assets/less/custom.less';
 
+  $css = '';
   try {
 
     $parser = new Less_Parser( $options );
