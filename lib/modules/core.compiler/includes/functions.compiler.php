@@ -53,11 +53,11 @@ endif;
 
 
 if ( !function_exists( 'shoestrap_makecss' ) ) :
-function shoestrap_makecss( $method = 'php' ) {
+function shoestrap_makecss() {
   global $wp_filesystem;
   $file = shoestrap_css();
   
-  // Initialize the Wordpress filesystem, no more using file_put_contents function
+  // Initialize the Wordpress filesystem.
   if ( empty( $wp_filesystem ) ) {
     require_once( ABSPATH . '/wp-admin/includes/file.php' );
     WP_Filesystem();
