@@ -1,5 +1,7 @@
 # Include your project-specific ignores in this file
 # Read about how to use .gitignore: https://help.github.com/articles/ignoring-files
 node_modules
+bower_components
 .ftppass
-assets/css/main.min.css.map
+*.js.map
+*.css.map
