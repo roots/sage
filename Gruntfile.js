@@ -123,6 +123,9 @@ module.exports = function(grunt) {
                 'assets/css/main.min.css.map',
                 'assets/js/scripts.min.js',
                 'assets/js/scripts.min.js.map',
+                'buddypress/js/buddypress.js.map',
+                'buddypress/css/buddypress.css.map',
+                'buddypress/css/buddypress-rtl.css.map',
                 'dist'
             ]
         },
