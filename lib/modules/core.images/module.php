@@ -93,7 +93,7 @@ function shoestrap_module_featured_images_options( $sections ) {
   );
 
   $fields[] = array( 
-    'title'     => __( 'Posts Featured Image Width', 'shoestrap' ),
+    'title'     => __( 'Posts Featured Image Custom Width', 'shoestrap' ),
     'desc'      => __( 'Select the width of your featured images on single posts. Default: 550px', 'shoestrap' ),
     'id'        => 'feat_img_post_width',
     'default'   => 550,
@@ -106,7 +106,7 @@ function shoestrap_module_featured_images_options( $sections ) {
   );
 
   $fields[] = array( 
-    'title'     => __( 'Posts Featured Image Height', 'shoestrap' ),
+    'title'     => __( 'Posts Featured Image Custom Height', 'shoestrap' ),
     'desc'      => __( 'Select the height of your featured images on single posts. Default: 330px', 'shoestrap' ),
     'id'        => 'feat_img_post_height',
     'default'   => 330,
