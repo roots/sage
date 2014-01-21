@@ -28,9 +28,14 @@ endif;
 add_action( 'wp_footer', 'shoestrap_user_js', 200 );
 
 
-// Force hiding the adminbar
+
+function shoestrap_admin_bar(){
 if ( shoestrap_getVariable( 'advanced_wordpress_disable_admin_bar_toggle' ) == 0 )
-  show_admin_bar( false );
+  return false;
+else
+  return true;
+}
+add_filter( 'show_admin_bar' , 'shoestrap_admin_bar' );
 
 if ( !function_exists( 'shoestrap_excerpt_more' ) ) :
 function shoestrap_excerpt_more( $more ) {
