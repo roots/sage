@@ -257,33 +257,39 @@ function shoestrap_add_social_actions() {
   $social_sharing_single_page = shoestrap_getVariable( 'social_sharing_single_page' );
 
   // Conditions for showing content in posts archives
-  if ( $social_sharing_archives == 1 && $social_sharing_location == 'top' ) {
-    add_action( 'shoestrap_before_the_content', 'shoestrap_social_sharing', 5 );
-  } elseif ( $social_sharing_archives == 1 && $social_sharing_location == 'bottom' ) {
-    add_action( 'shoestrap_after_the_content', 'shoestrap_social_sharing', 5 );
-  } elseif ( $social_sharing_archives == 1 && $social_sharing_location == 'both' ) {
-    // fallback only in bottom
-    add_action( 'shoestrap_after_the_content', 'shoestrap_social_sharing', 5 );
+  if ( $social_sharing_archives == 1 ) {
+    if ( $social_sharing_location == 'top' ) {
+      add_action( 'shoestrap_after_entry_meta', 'shoestrap_social_sharing', 5 );
+    } elseif ( $social_sharing_location == 'bottom' ) {
+      add_action( 'shoestrap_entry_footer', 'shoestrap_social_sharing', 5 );
+    } elseif ( $social_sharing_location == 'both' ) {
+      // fallback only in bottom
+      add_action( 'shoestrap_entry_footer', 'shoestrap_social_sharing', 5 );
+    }
   }
 
   // Conditions for showing content in single posts
-  if ( $social_sharing_single_post == 1 && $social_sharing_location == 'top' ) {
-    add_action( 'shoestrap_single_pre_content', 'shoestrap_social_sharing', 5 );
-  } elseif ( $social_sharing_single_post == 1 && $social_sharing_location == 'bottom' ) {
-    add_action( 'shoestrap_single_after_content', 'shoestrap_social_sharing', 5 );
-  } elseif ( $social_sharing_single_post == 1 && $social_sharing_location == 'both' ) {
-    add_action( 'shoestrap_single_pre_content', 'shoestrap_social_sharing', 5 );
-    add_action( 'shoestrap_single_after_content', 'shoestrap_social_sharing', 5 );
+  if ( $social_sharing_single_post == 1 ) {
+    if ( $social_sharing_location == 'top' ) {
+        add_action( 'shoestrap_single_pre_content', 'shoestrap_social_sharing', 5 );
+    } elseif ( $social_sharing_location == 'bottom' ) {
+        add_action( 'shoestrap_single_after_content', 'shoestrap_social_sharing', 5 );
+    } elseif ( $social_sharing_location == 'both' ) {
+        add_action( 'shoestrap_single_pre_content', 'shoestrap_social_sharing', 5 );
+        add_action( 'shoestrap_single_after_content', 'shoestrap_social_sharing', 5 );
+    }
   }
 
   // Conditions for showing content in single pages
-  if ( $social_sharing_single_page == 1 && $social_sharing_location == 'top' ) {
-    add_action( 'shoestrap_page_pre_content', 'shoestrap_social_sharing', 5 );
-  } elseif ( $social_sharing_single_page == 1 && $social_sharing_location == 'bottom' ) {
-    add_action( 'shoestrap_page_after_content', 'shoestrap_social_sharing', 5 );
-  } elseif ( $social_sharing_single_page == 1 && $social_sharing_location == 'both' ) {
-    add_action( 'shoestrap_page_pre_content', 'shoestrap_social_sharing', 5 );
-    add_action( 'shoestrap_page_after_content', 'shoestrap_social_sharing', 5 );
+  if ( $social_sharing_single_page == 1 ) {
+    if ( $social_sharing_location == 'top' ) {
+      add_action( 'shoestrap_page_pre_content', 'shoestrap_social_sharing', 5 );
+    } elseif ( $social_sharing_single_page == 1 && $social_sharing_location == 'bottom' ) {
+      add_action( 'shoestrap_page_after_content', 'shoestrap_social_sharing', 5 );
+    } elseif ( $social_sharing_single_page == 1 && $social_sharing_location == 'both' ) {
+      add_action( 'shoestrap_page_pre_content', 'shoestrap_social_sharing', 5 );
+      add_action( 'shoestrap_page_after_content', 'shoestrap_social_sharing', 5 );
+    }
   }
 
   if ( shoestrap_getVariable( 'navbar_social' ) == 1 ) {
