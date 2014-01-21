@@ -175,7 +175,7 @@ function shoestrap_module_layout_options( $sections ) {
   );
 
   $fields[] = array( 
-    'title'     => __( 'Secondary Sidebar Width', 'shoestrap' ),
+    'title'     => __( 'Responsive NavBar Threshold', 'shoestrap' ),
     'desc'      => __( 'Point at which the navbar becomes uncollapsed', 'shoestrap' ),
     'id'        => 'grid_float_breakpoint',
     'type'      => 'button_set',
