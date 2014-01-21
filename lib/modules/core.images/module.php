@@ -6,7 +6,9 @@
 if ( !function_exists( 'shoestrap_module_featured_images_options' ) ) :
 function shoestrap_module_featured_images_options( $sections ) {
 
-  // Blog Options
+  $settings  = get_option( 'shoestrap' );
+  $screen_large_desktop = $settings[ 'screen_large_desktop' ];
+
   $section = array( 
     'title'     => __( 'Featured Images', 'shoestrap' ),
     'icon'      => 'el-icon-picture icon-large',
@@ -44,28 +46,28 @@ function shoestrap_module_featured_images_options( $sections ) {
   );
 
   $fields[] = array( 
-    'title'     => __( 'Archives Featured Image Width', 'shoestrap' ),
+    'title'     => __( 'Archives Featured Image Custom Width', 'shoestrap' ),
     'desc'      => __( 'Select the width of your featured images on single posts. Default: 550px', 'shoestrap' ),
     'id'        => 'feat_img_archive_width',
     'default'   => 550,
     'min'       => 100,
     'step'      => 1,
-    'max'       => shoestrap_getVariable( 'screen_large_desktop' ),
-    'required'  => array('feat_img_archive_custom_toggle','=',array('1')),
+    'max'       => $screen_large_desktop,
+    'required'  => array('feat_img_archive','=',array('1')),
     'edit'      => 1,
     'type'      => 'slider'
   );
 
   $fields[] = array( 
-    'title'     => __( 'Archives Featured Image Height', 'shoestrap' ),
+    'title'     => __( 'Archives Featured Image Custom Height', 'shoestrap' ),
     'desc'      => __( 'Select the height of your featured images on post archives. Default: 300px', 'shoestrap' ),
     'id'        => 'feat_img_archive_height',
     'default'   => 300,
     'min'       => 50,
     'step'      => 1,
     'edit'      => 1,
-    'max'       => shoestrap_getVariable( 'screen_large_desktop' ),
-    'required'  => array('feat_img_archive_custom_toggle','=',array('1')),
+    'max'       => $screen_large_desktop,
+    'required'  => array('feat_img_archive','=',array('1')),
     'type'      => 'slider'
   );
 
@@ -97,7 +99,7 @@ function shoestrap_module_featured_images_options( $sections ) {
     'default'   => 550,
     'min'       => 100,
     'step'      => 1,
-    'max'       => shoestrap_getVariable( 'screen_large_desktop' ),
+    'max'       => $screen_large_desktop,
     'edit'      => 1,
     'required'  => array('feat_img_post_custom_toggle','=',array('1')),
     'type'      => 'slider'
@@ -110,7 +112,7 @@ function shoestrap_module_featured_images_options( $sections ) {
     'default'   => 330,
     'min'       => 50,
     'step'      => 1,
-    'max'       => shoestrap_getVariable( 'screen_large_desktop' ),
+    'max'       => $screen_large_desktop,
     'edit'      => 1,
     'required'  => array('feat_img_post_custom_toggle','=',array('1')),
     'type'      => 'slider'
