@@ -101,7 +101,7 @@ function shoestrap_module_featured_images_options( $sections ) {
     'step'      => 1,
     'max'       => $screen_large_desktop,
     'edit'      => 1,
-    'required'  => array('feat_img_post_custom_toggle','=',array('1')),
+    'required'  => array('feat_img_post','=',array('1')),
     'type'      => 'slider'
   );
 
@@ -114,7 +114,7 @@ function shoestrap_module_featured_images_options( $sections ) {
     'step'      => 1,
     'max'       => $screen_large_desktop,
     'edit'      => 1,
-    'required'  => array('feat_img_post_custom_toggle','=',array('1')),
+    'required'  => array('feat_img_post','=',array('1')),
     'type'      => 'slider'
   );
 
