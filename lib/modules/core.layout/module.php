@@ -156,8 +156,10 @@ function shoestrap_module_layout_options( $sections ) {
     'id'        => 'body_margin_top',
     'default'   => 0,
     'min'       => 0,
+    'step'      => 1,
     'max'       => 200,
-    'type'      => 'slider',
+    'edit'      => 1,
+    'type'      => 'slider'
   );
 
   $fields[] = array( 
@@ -166,7 +168,9 @@ function shoestrap_module_layout_options( $sections ) {
     'id'        => 'body_margin_bottom',
     'default'   => 0,
     'min'       => 0,
+    'step'      => 1,
     'max'       => 200,
+    'edit'      => 1,
     'type'      => 'slider',
   );
 
