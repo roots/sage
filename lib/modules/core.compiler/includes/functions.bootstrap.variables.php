@@ -182,7 +182,7 @@ function shoestrap_variables() {
     $dropdown_divider_top = 'lighten(@body-bg, 10.2%)';
   }
 
-  if ( shoestrap_get_brightness( $navbar_bg ) > 80 ) {
+  if ( shoestrap_get_brightness( $navbar_bg ) < 100 ) {
     $navbar_link_hover_color    = 'darken(@navbar-default-color, 26.5%)';
     $navbar_link_active_bg      = 'darken(@navbar-default-bg, 6.5%)';
     $navbar_link_disabled_color = 'darken(@navbar-default-bg, 6.5%)';
@@ -194,7 +194,7 @@ function shoestrap_variables() {
     $navbar_brand_hover_color   = 'lighten(@navbar-default-brand-color, 10%)';
   }
 
-  if ( shoestrap_get_brightness( $brand_primary ) > 80 ) {
+  if ( shoestrap_get_brightness( $brand_primary ) < 100 ) {
     $btn_primary_color  = '#fff';
     $btn_primary_border = 'darken(@btn-primary-bg, 5%)';
   } else {
@@ -202,7 +202,7 @@ function shoestrap_variables() {
     $btn_primary_border = 'lighten(@btn-primary-bg, 5%)';
   }
 
-  if ( shoestrap_get_brightness( $brand_success ) > 80 ) {
+  if ( shoestrap_get_brightness( $brand_success ) < 100 ) {
     $btn_success_color  = '#fff';
     $btn_success_border = 'darken(@btn-success-bg, 5%)';
   } else {
@@ -210,7 +210,7 @@ function shoestrap_variables() {
     $btn_success_border = 'lighten(@btn-success-bg, 5%)';
   }
 
-  if ( shoestrap_get_brightness( $brand_warning ) > 80 ) {
+  if ( shoestrap_get_brightness( $brand_warning ) < 100 ) {
     $btn_warning_color  = '#fff';
     $btn_warning_border = 'darken(@btn-warning-bg, 5%)';
   } else {
@@ -218,7 +218,7 @@ function shoestrap_variables() {
     $btn_warning_border = 'lighten(@btn-warning-bg, 5%)';
   }
 
-  if ( shoestrap_get_brightness( $brand_danger ) > 80 ) {
+  if ( shoestrap_get_brightness( $brand_danger ) < 100 ) {
     $btn_danger_color  = '#fff';
     $btn_danger_border = 'darken(@btn-danger-bg, 5%)';
   } else {
@@ -226,7 +226,7 @@ function shoestrap_variables() {
     $btn_danger_border = 'lighten(@btn-danger-bg, 5%)';
   }
 
-  if ( shoestrap_get_brightness( $brand_info ) > 80 ) {
+  if ( shoestrap_get_brightness( $brand_info ) < 100 ) {
     $btn_info_color  = '#fff';
     $btn_info_border = 'darken(@btn-info-bg, 5%)';
   } else {
