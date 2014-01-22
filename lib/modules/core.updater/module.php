@@ -4,7 +4,7 @@
 define( 'SHOESTRAP_STORE_URL',     'http://shoestrap.org' );
 define( 'SHOESTRAP_THEME_NAME',    'Shoestrap 3' );
 define( 'SHOESTRAP_URL',           'http://shoestrap.org/downloads/shoestrap/' );
-define( 'SHOESTRAP_THEME_VERSION', '3.0.307' );
+define( 'SHOESTRAP_THEME_VERSION', '3.0.308' );
 define( 'SHOESTRAP_THEME_AUTHOR',  'Aristeides Stathopoulos, Dimitris Kalliris, Dovy Paukstys' );
 
 if ( !defined( 'SHOESTRAP_LICENCE_KEY' ) )

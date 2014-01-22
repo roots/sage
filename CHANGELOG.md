@@ -1,3 +1,17 @@
+### 3.0.308
+
+* Fix: Better calculation of color differences in the compiler
+* New: Added experimentan "palettes" module
+* Fix: PostMeta bugfix
+* Fix: Typos
+* Fix: Bugfix Body Margins
+* Fix: Better Pagination implementation
+* Fix: Better implementation of Admin Toolbar toggle
+* Fix: Bugfix Custom Dimensions in Featured Images
+* Fix: Header override colors now work
+* Fix: Better implementation of share button
+* Fix: Other Minor buxfixes
+
 ### 3.0.307
 
 * Fix: recoding the meta module
