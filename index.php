@@ -44,34 +44,24 @@ if ( $pagination == 'pager' ) :
   <?php
   endif;
 else :
-  //Use this function to create pagingation links that are styleable with Bootstrap 3 default pagination
-  //Thanks to @sloped (https://gist.github.com/sloped/2117898)
   global $wp_query;
-   
-  $total_pages = $wp_query->max_num_pages;
-   
-  if ($total_pages > 1){
-    $current_page = max(1, get_query_var('paged'));
-    $count = 0;
-    $previous_page = $current_page - 1;
-    $next_page = $current_page + 1;
-    echo '<ul class="pagination">';
-    if($total_pages > 3) { 
-      if($current_page > 1) echo '<li class="last"><a href="' . get_bloginfo('url') . '/page/1/"><<</a></li>' ;
-      if($current_page > 1) echo '<li class="previous"><a href="' . get_bloginfo('url') . '/page/' . $previous_page . '/"><</i></a></li>' ;
-    }
-    while($count < $total_pages) {
-      $count = $count + 1;  
-      
-      if($count == $current_page) echo '<li class="active"><a href="' . get_bloginfo('url') . '/page/' . $count . '/">' . $count . '</a></li>' ;
-      else echo '<li class="inactive"><a href="' . get_bloginfo('url') . '/page/' . $count . '/">' . $count . '</a></li>' ;
-    }
-    if($total_pages > 3) {
-      if($current_page < $total_pages) echo '<li class="next"><a href="' . get_bloginfo('url') . '/page/' . $next_page . '">></i></a></li>' ;
-      if($current_page < $total_pages) echo '<li class="last"><a href="' . get_bloginfo('url') . '/page/' . $total_pages . '">>></a></li>' ;
-    }
-    ?>
-    </ul>
-    <?php
-    }
+  if ( $wp_query->max_num_pages <= 1 )
+    return;
+?>
+  <nav class="pagination">
+  <?php
+    echo shoestrap_paginate_links( apply_filters( 'pagination_args', array(
+      'base'      => str_replace( 999999999, '%#%', get_pagenum_link( 999999999 ) ),
+      'format'    => '',
+      'current'     => max( 1, get_query_var('paged') ),
+      'total'     => $wp_query->max_num_pages,
+      'prev_text'   => '<i class="el-icon-chevron-left"></i>',
+      'next_text'   => '<i class="el-icon-chevron-right"></i>',
+      'type'      => 'list',
+      'end_size'    => 3,
+      'mid_size'    => 3
+    ) ) );
+  ?>
+  </nav>
+<?php
 endif;

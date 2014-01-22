@@ -169,8 +169,8 @@ function shoestrap_module_advanced_options( $sections ) {
   );
 
   $fields[] = array(
-    'title'     => __( 'Hide adminbar', 'shoestrap' ),
-    'desc'      => __( 'Force hiding the adminbar. Default: Off.', 'shoestrap' ),
+    'title'     => __( 'Toggle adminbar On/Off', 'shoestrap' ),
+    'desc'      => __( 'Turn the admin bar On or Off on the frontend. Default: Off.', 'shoestrap' ),
     'id'        => 'advanced_wordpress_disable_admin_bar_toggle',
     'default'   => 0,
     'customizer'=> array(),

@@ -1,16 +1,9 @@
 <?php
-/**
- * Post Meta Configurator Module for Shoestrap
- * @category   Module
- * @package    ShoeStrap
- * @author     Mikkel Breum <mail@mikkelbreum.com>
- * @link       https://github.com/shoestrap/shoestrap
- */
 
 if ( !function_exists( 'shoestrap_module_meta_config' ) ) :
 function shoestrap_module_meta_config( $sections ) {
 
-  // Branding Options
+  // Post Meta Options
   $section = array(
     'title' => __( 'Post Meta', 'shoestrap' ),
     'icon'  => 'el-icon-time icon-large'
@@ -20,11 +13,11 @@ function shoestrap_module_meta_config( $sections ) {
     'id'          => 'shoestrap_entry_meta_config',
     'title'       => __( 'Activate and order elements', 'shoestrap' ),
     'options'     => array(
-      "tags"    => "Tags",
-      "date"    => "Date",
-      "category"=> "Category",
-      "author"  => "Author",
-      "sticky"  => "Sticky"
+      'tags'    => 'Tags',
+      'date'    => 'Date',
+      'category'=> 'Category',
+      'author'  => 'Author',
+      'sticky'  => 'Sticky'
     ),
     'type'        => 'sortable',
     'mode'        => 'checkbox'

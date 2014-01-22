@@ -239,5 +239,5 @@ function shoestrap_body_margin() {
 }
 endif;
 
-if ( ( shoestrap_getVariable( 'body_margin_top' ) != 0 ) || ( shoestrap_getVariable( 'body_margin_bottom' ) != 0 ) )
+if ( ( shoestrap_getVariable( 'body_margin_top' ) != '0' ) || ( shoestrap_getVariable( 'body_margin_bottom' ) != '0' ) )
   add_action( 'wp_enqueue_scripts', 'shoestrap_body_margin', 101 );

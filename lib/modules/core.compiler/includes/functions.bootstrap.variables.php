@@ -39,57 +39,69 @@ function shoestrap_variables() {
   $font_h1_size   = ( ( filter_var( $font_h1['font-size'], FILTER_SANITIZE_NUMBER_INT ) ) / 100 );
   $font_h1_weight = $font_h1['font-weight'];
   $font_h1_style  = $font_h1['font-style'];
+  $font_h1_color  = '#' . str_replace( '#', '', shoestrap_sanitize_hex( $font_h1['color'] ) );
 
   $font_h2_face   = $font_h2['font-family'];
   $font_h2_size   = ( ( filter_var( $font_h2['font-size'], FILTER_SANITIZE_NUMBER_INT ) ) / 100 );
   $font_h2_weight = $font_h2['font-weight'];
   $font_h2_style  = $font_h2['font-style'];
+  $font_h2_color  = '#' . str_replace( '#', '', shoestrap_sanitize_hex( $font_h2['color'] ) );
 
   $font_h3_face   = $font_h3['font-family'];
   $font_h3_size   = ( ( filter_var( $font_h3['font-size'], FILTER_SANITIZE_NUMBER_INT ) ) / 100 );
   $font_h3_weight = $font_h3['font-weight'];
   $font_h3_style  = $font_h3['font-style'];
+  $font_h3_color  = '#' . str_replace( '#', '', shoestrap_sanitize_hex( $font_h3['color'] ) );
 
   $font_h4_face   = $font_h4['font-family'];
   $font_h4_size   = ( ( filter_var( $font_h4['font-size'], FILTER_SANITIZE_NUMBER_INT ) ) / 100 );
   $font_h4_weight = $font_h4['font-weight'];
   $font_h4_style  = $font_h4['font-style'];
+  $font_h4_color  = '#' . str_replace( '#', '', shoestrap_sanitize_hex( $font_h4['color'] ) );
 
   $font_h5_face   = $font_h5['font-family'];
   $font_h5_size   = ( ( filter_var( $font_h5['font-size'], FILTER_SANITIZE_NUMBER_INT ) ) / 100 );
   $font_h5_weight = $font_h5['font-weight'];
   $font_h5_style  = $font_h5['font-style'];
+  $font_h5_color  = '#' . str_replace( '#', '', shoestrap_sanitize_hex( $font_h5['color'] ) );
 
   $font_h6_face   = $font_h6['font-family'];
   $font_h6_size   = ( ( filter_var( $font_h6['font-size'], FILTER_SANITIZE_NUMBER_INT ) ) / 100 );
   $font_h6_weight = $font_h6['font-weight'];
   $font_h6_style  = $font_h6['font-style'];
+  $font_h6_color  = '#' . str_replace( '#', '', shoestrap_sanitize_hex( $font_h6['color'] ) );
 
   if ( shoestrap_getVariable( 'font_heading_custom', true ) != 1 ) {
 
     $font_h1_face   = '@font-family-base';
     $font_h1_weight = '@headings-font-weight';
     $font_h1_style  = 'inherit';
+    $font_h1_color  = 'inherit';
 
     $font_h2_face   = '@font-family-base';
     $font_h2_weight = '@headings-font-weight';
     $font_h2_style  = 'inherit';
+    $font_h2_color  = 'inherit';
 
     $font_h3_face   = '@font-family-base';
     $font_h3_weight = '@headings-font-weight';
     $font_h3_style  = 'inherit';
+    $font_h3_color  = 'inherit';
 
     $font_h4_face   = '@font-family-base';
     $font_h4_weight = '@headings-font-weight';
     $font_h4_style  = 'inherit';
+    $font_h4_color  = 'inherit';
 
     $font_h5_face   = '@font-family-base';
     $font_h5_weight = '@headings-font-weight';
     $font_h5_style  = 'inherit';
+    $font_h5_color  = 'inherit';
 
     $font_h6_face   = '@font-family-base';
     $font_h6_weight = '@headings-font-weight';
     $font_h6_style  = 'inherit';
+    $font_h6_color  = 'inherit';
 
   }
 
@@ -917,31 +929,37 @@ $variables = '
 @heading-h1-face:         ' . $font_h1_face . ';
 @heading-h1-weight:       ' . $font_h1_weight . ';
 @heading-h1-style:        ' . $font_h1_style . ';
+@heading-h1-color:        ' . $font_h1_color . ';
 
 // H2
 @heading-h2-face:         ' . $font_h2_face . ';
 @heading-h2-weight:       ' . $font_h2_weight . ';
 @heading-h2-style:        ' . $font_h2_style . ';
+@heading-h2-color:        ' . $font_h2_color . ';
 
 // H3
 @heading-h3-face:         ' . $font_h3_face . ';
 @heading-h3-weight:       ' . $font_h3_weight . ';
 @heading-h3-style:        ' . $font_h3_style . ';
+@heading-h3-color:        ' . $font_h3_color . ';
 
 // H4
 @heading-h4-face:         ' . $font_h4_face . ';
 @heading-h4-weight:       ' . $font_h4_weight . ';
 @heading-h4-style:        ' . $font_h4_style . ';
+@heading-h4-color:        ' . $font_h4_color . ';
 
 // H5
 @heading-h5-face:         ' . $font_h5_face . ';
 @heading-h5-weight:       ' . $font_h5_weight . ';
 @heading-h5-style:        ' . $font_h5_style . ';
+@heading-h5-color:        ' . $font_h5_color . ';
 
 // H6
 @heading-h6-face:         ' . $font_h6_face . ';
 @heading-h6-weight:       ' . $font_h6_weight . ';
 @heading-h6-style:        ' . $font_h6_style . ';
+@heading-h6-color:        ' . $font_h6_color . ';
 
 @navbar-margin-top:       ' . shoestrap_getVariable( 'navbar_margin_top' ) . 'px;
 
