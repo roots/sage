@@ -44,4 +44,4 @@ var UTIL = {
   }
 };
 
-jQuery(document).ready(UTIL.loadEvents);
+$(document).ready(UTIL.loadEvents);
