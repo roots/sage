@@ -44,7 +44,7 @@ function roots_gallery($attr) {
     'size'       => 'thumbnail',
     'include'    => '',
     'exclude'    => '',
-    'link'       => 'file'
+    'link'       => ''
   ), $attr));
 
   $id = intval($id);
@@ -85,7 +85,17 @@ function roots_gallery($attr) {
 
   $i = 0;
   foreach ($attachments as $id => $attachment) {
-    $image = ('file' == $link) ? wp_get_attachment_link($id, $size, false, false) : wp_get_attachment_link($id, $size, true, false);
+    switch($link) {
+      case 'file':
+        $image = wp_get_attachment_link($id, $size, false, false);
+        break;
+      case 'none':
+        $image = wp_get_attachment_image($id, $size, false, array('class' => 'thumbnail img-thumbnail'));
+        break;
+      default:
+        $image = wp_get_attachment_link($id, $size, true, false);
+        break;
+    }
     $output .= ($i % $columns == 0) ? '<div class="row gallery-row">': '';
     $output .= '<div class="' . $grid .'">' . $image;
 
