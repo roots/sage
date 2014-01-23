@@ -40,7 +40,7 @@ switch ( bp_current_action() ) :
 	case 'my-friends' :
 		do_action( 'bp_before_member_friends_content' ); ?>
 
-		<div class="members friends">
+		<div id="members-dir-list" class="members friends dir-list">
 
 			<?php bp_get_template_part( 'members/members-loop' ) ?>
 

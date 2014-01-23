@@ -36,7 +36,7 @@ switch ( bp_current_action() ) :
 	case 'my-sites' :
 		do_action( 'bp_before_member_blogs_content' ); ?>
 
-		<div class="blogs myblogs" role="main">
+		<div id="blogs-dir-list" class="blogs myblogs dir-list" role="main">
 
 			<?php bp_get_template_part( 'blogs/blogs-loop' ) ?>
 

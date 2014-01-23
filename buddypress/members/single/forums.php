@@ -36,7 +36,7 @@ if ( bp_is_current_action( 'favorites' ) ) :
 else :
 	do_action( 'bp_before_member_forums_content' ); ?>
 
-	<div class="forums myforums">
+	<div id="forums-dir-list" class="forums myforums dir-list">
 
 		<?php bp_get_template_part( 'forums/forums-loop' ) ?>
 

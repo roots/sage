@@ -42,7 +42,7 @@ switch ( bp_current_action() ) :
 	case 'my-groups' :
 		do_action( 'bp_before_member_groups_content' ); ?>
 
-		<div class="groups mygroups">
+		<div id="groups-dir-list" class="groups mygroups dir-list">
 
 			<?php bp_get_template_part( 'groups/groups-loop' ); ?>
 
