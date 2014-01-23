@@ -46,8 +46,8 @@ function shoestrap_compiler() {
   }
 
   // Below is just an ugly hack
-  $css = str_replace( 'bootstrap/fonts/', '', $css );
-  $css = str_replace( get_template_directory_uri() . '/assets/', '../', $css );
+  $css = str_replace( '../', get_template_directory_uri() . '/assets/', $css );
+
   return apply_filters( 'shoestrap_compiler_output', $css );
 }
 endif;

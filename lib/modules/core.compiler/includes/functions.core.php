@@ -12,33 +12,45 @@ if ( !function_exists( 'shoestrap_css' ) ) :
 function shoestrap_css( $target = 'path', $echo = false ) {
   global $blog_id;
 
-  $defaultfile = '/assets/css/style';
+  // Get the upload directory for this site.
+  $upload_dir      = wp_upload_dir();
+  // Define a default folder for the stylesheets.
+  $def_folder_path = get_template_directory() . '/assets/css';
+  // The folder path for the stylesheet.
+  // We try to first write to the uploads folder.
+  // If we can write there, then use that folder for the stylesheet.
+  // This helps so that the stylesheets don't get overwritten when the theme gets updated.
+  $folder_path     = ( is_writable( $upload_dir['basedir'] ) ) ? $upload_dir['basedir'] : $def_folder_path;
+
   // If this is a multisite installation, append the blogid to the filename
-  $cssid    = ( is_multisite() && $blog_id > 1 ) ? '_id-' . $blog_id : null;
+  $cssid           = ( is_multisite() && $blog_id > 1 ) ? '_id-' . $blog_id : null;
+  $file_name       = '/ss-style' . $cssid . '.css';
 
-  $css_uri  = get_template_directory_uri() . $defaultfile . $cssid . '.css';
-  $css_path = get_template_directory() . $defaultfile . $cssid . '.css';
+  // The complete path to the file.
+  $file_path       = $folder_path . $file_name;
 
-  if ( !is_writable( $css_path ) )
-    $css_uri = get_template_directory_uri() . $defaultfile . '-default.css';
+  // Get the URL directory of the stylesheet
+  $css_uri_folder  = ( $folder_path == $upload_dir['basedir'] ) ? $upload_dir['baseurl'] : get_template_directory_uri() . '/assets/css';
 
-  if ( is_child_theme() ) {
-    $child_style = get_stylesheet_directory() . $defaultfile . $cssid . '.css';
-    $child_style_writable = ( is_writable( $child_style ) ) ? true : false;
+  // If the CSS file does not exist, use the default file.
+  $css_uri  = ( file_exists( $file_path ) ) ? $css_uri_folder . $file_name : get_template_directory_uri() . '/assets/css/style-default.css';
 
-    if ( $child_style_writable ) {
-      $css_path = $child_style;
-      $css_url  = get_stylesheet_directory_uri() . $defaultfile . $cssid . '.css';
-      $css_uri  = get_template_directory_uri() . $defaultfile . '-default.css';
-    }
+  // If a style.css file exists in the assets/css folder, use that file instead.
+  // This is mostly for backwards-compatibility with previous versions.
+  // Also if the stylesheet is compiled using grunt, this will make sure the correct file is used.
+  if ( file_exists( $def_folder_path . $file_name) ) {
+    $css_uri   = get_template_directory_uri() . '/assets/css/style' . $cssid . '.css';
+    $file_path = $def_folder_path . '/style' . $cssid . '.css';
   }
 
-  $return = ( $target == 'url' ) ? $css_uri : $css_path;
+  $css_path = $file_path;
+
+  $value    = ( $target == 'url' ) ? $css_uri : $css_path;
 
   if ( $echo )
-    echo $return;
+    echo $value;
   else
-    return $return;
+    return $value;
 }
 endif;
 
@@ -53,13 +65,13 @@ function shoestrap_css_not_writeable( $array ) {
   if ( $current_screen->parent_base == 'themes' ) {
     $filename = shoestrap_css();
     $url = shoestrap_css('url');
-    
+
     if ( !file_exists( $filename ) ) {
       if ( !$wp_filesystem->put_contents( $filename, ' ', FS_CHMOD_FILE ) ) {
         $content = __( 'The following file does not exist and must be so in order to utilise this theme. Please create this file.', 'shoestrap' );
         $content .= '<br>' . __( 'Try visiting the theme options and clicking the "Reset All" button to attempt automatically creating it.', 'shoestrap' );
         $content .= '<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="' . $filename . '" target="_blank">' . $filename . '</a>';
-        add_settings_error( 'shoestrap', 'create_file', $content, 'error' );                  
+        add_settings_error( 'shoestrap', 'create_file', $content, 'error' );
         settings_errors();
       }
     } else {
@@ -67,7 +79,7 @@ function shoestrap_css_not_writeable( $array ) {
         $content = __( 'The following file is not writable and must be so in order to utilise this theme. Please update the permissions.', 'shoestrap' );
         $content .= '<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="' . $filename . '" target="_blank">' . $filename . '</a>';
 
-        add_settings_error( 'shoestrap', 'create_file', $content, 'error' );                  
+        add_settings_error( 'shoestrap', 'create_file', $content, 'error' );
         settings_errors();
       }
     }
@@ -79,7 +91,7 @@ add_action( 'admin_notices', 'shoestrap_css_not_writeable');
 
 if ( !function_exists( 'shoestrap_process_font' ) ) :
 function shoestrap_process_font( $font ) {
-  
+
   if ( empty( $font['font-weight'] ) )
     $font['font-weight'] = "inherit";
 
