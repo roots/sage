@@ -24,17 +24,6 @@ var Roots = {
     init: function() {
       // JavaScript to be fired on the about page
     }
-  },
-  // buddypress pages
-  buddypress: {
-    init: function() {
-      // Append and remove the .active class to nav tabs for Bootsrap compatability
-      $('div.item-list-tabs > ul li.selected').addClass('active');
-      $('div.item-list-tabs').click(function() {
-        $('div.item-list-tabs > ul li').removeClass('active');
-        $('div.item-list-tabs > ul li.selected').addClass('active');
-      });
-    }
   }
 };
 
