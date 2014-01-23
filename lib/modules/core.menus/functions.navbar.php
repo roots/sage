@@ -32,11 +32,21 @@ function shoestrap_navbar_class( $navbar = 'main') {
   $fixed    = shoestrap_getVariable( 'navbar_fixed' );
   $fixedpos = shoestrap_getVariable( 'navbar_fixed_position' );
   $style    = shoestrap_getVariable( 'navbar_style' );
+  $left     = ( shoestrap_getVariable( 'navbar_toggle' ) == 'left' ) ? true : false;
+
+  $defaults = 'navbar navbar-default topnavbar';
 
   if ( $fixed != 1 )
-    $class = 'navbar navbar-static-top';
+    $class = ' navbar-static-top';
   else
-    $class = ( $fixedpos == 1 ) ? 'navbar navbar-fixed-bottom' : 'navbar navbar-fixed-top';
+    $class = ( $fixedpos == 1 ) ? ' navbar-fixed-bottom' : ' navbar-fixed-top';
+
+  $class = $defaults . $class;
+
+  if ( $left ) {
+    $extra_classes = 'navbar navbar-default static-left col-sm-' . shoestrap_getVariable( 'layout_secondary_width' );
+    $class = $extra_classes;
+  }
 
   if ( $navbar != 'secondary' )
     return $class . ' ' . $style;

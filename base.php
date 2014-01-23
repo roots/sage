@@ -2,6 +2,7 @@
 $site_style               = shoestrap_getVariable( 'site_style' );
 $navbar_toggle            = shoestrap_getVariable( 'navbar_toggle' );
 $layout_sidebar_on_front  = shoestrap_getVariable( 'layout_sidebar_on_front' );
+$left                     = ( shoestrap_getVariable( 'navbar_toggle' ) == 'left' ) ? true : false;
 ?>
 <?php get_template_part('templates/head'); ?>
 <body <?php body_class(); ?>>
@@ -39,6 +40,10 @@ $layout_sidebar_on_front  = shoestrap_getVariable( 'layout_sidebar_on_front' );
 
   <?php if ( $site_style == 'boxed' ) : ?>
     </div>
+  <?php endif; ?>
+
+  <?php if ( $left ) : ?>
+    <section class="static-menu-main col-static-<?php echo ( 12 - shoestrap_getVariable( 'layout_secondary_width' ) ); ?>">
   <?php endif; ?>
 
   <?php if ( has_action( 'shoestrap_below_top_navbar' ) ) : ?>
@@ -121,6 +126,8 @@ $layout_sidebar_on_front  = shoestrap_getVariable( 'layout_sidebar_on_front' );
   <?php if ( $site_style == 'boxed' ) : ?>
     </div>
   <?php endif; ?>
+
+  <?php if ( $left ) : ?></section><?php endif; ?>
 
   <?php wp_footer(); ?>
 
