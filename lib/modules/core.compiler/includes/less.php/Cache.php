@@ -84,6 +84,14 @@ class Less_Cache{
 
 	public static function Cache( &$less_files, $parser_options = array() ){
 
+
+		// get less.php if it exists
+		$file = dirname(__FILE__) . '/Less.php';
+		if( file_exists($file) && !class_exists('Less_Parser') ){
+			require_once($file);
+		}
+
+
 		$parser = new Less_Parser($parser_options);
 		$parser->SetCacheDir( self::$cache_dir );
 		$parser->SetImportDirs( self::$import_dirs );
