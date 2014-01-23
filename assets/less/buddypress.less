@@ -4,23 +4,11 @@
 
  div.item-list-tabs:not(#subnav) > ul {
  	.nav;
- 	.nav-tabs;
+	.nav-tabs;
 
  	> li {
  		span {
  			.badge;
- 		}
-
- 		&.selected > a {
- 			&,
- 			&:hover,
- 			&:focus {
- 				color: @nav-tabs-active-link-hover-color;
- 				background-color: @nav-tabs-active-link-hover-bg;
- 				border: 1px solid @nav-tabs-active-link-hover-border-color;
- 				border-bottom-color: transparent;
- 				cursor: default;
- 			}
  		}
  	}
  }
@@ -138,6 +126,7 @@
  				margin-left: 65px;
  				max-width: 500px;
  				.clearfix();
+ 				font-size: 90%;
 
  				ul {
  					list-style: none;
@@ -146,7 +135,7 @@
  					li {
  						background-color: @gray-lighter;
  						margin-bottom: 2px;
- 						padding: 5px;
+ 						padding: 6px;
 
  						.acomment-avatar {
  							.pull-left;
@@ -167,6 +156,10 @@
 
  						.acomment-content {
  							margin-left: 40px;
+ 							
+ 							> p {
+ 								margin-bottom: 0;
+ 							}
  						}
 
  						.acomment-options {
