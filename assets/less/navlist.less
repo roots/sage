@@ -6,18 +6,18 @@
 .nav-list-danger  { .generate-nav-list( @brand-danger ); }
 
 .nav-list-inverse {
-	@nav-list-inverse-secondary: #34495e;
+	@nav-list-inverse-secondary: @gray-dark;
 	.generate-nav-list( lighten( @nav-list-inverse-secondary, 25% ), @nav-list-inverse-secondary, 0px );
 
-	&.nav-list-primary { .generate-nav-list( #2980B9, @nav-list-inverse-secondary, 0px ); }
-	&.nav-list-success { .generate-nav-list( #1ABC9C, @nav-list-inverse-secondary, 0px  ); }
-	&.nav-list-warning { .generate-nav-list( #F39C12, @nav-list-inverse-secondary, 0px  ); }
-	&.nav-list-info    { .generate-nav-list( #3498DB, @nav-list-inverse-secondary, 0px  ); }
-	&.nav-list-danger  { .generate-nav-list( #E74C3C, @nav-list-inverse-secondary, 0px  ); }
+	&.nav-list-primary { .generate-nav-list( @brand-primary, @nav-list-inverse-secondary, 0px ); }
+	&.nav-list-success { .generate-nav-list( @brand-success, @nav-list-inverse-secondary, 0px ); }
+	&.nav-list-warning { .generate-nav-list( @brand-warning, @nav-list-inverse-secondary, 0px ); }
+	&.nav-list-info    { .generate-nav-list( @brand-info,    @nav-list-inverse-secondary, 0px ); }
+	&.nav-list-danger  { .generate-nav-list( @brand-danger,  @nav-list-inverse-secondary, 0px ); }
 }
 
 //Utility Mixins
-.generate-nav-list (@primary: @gray; @secondary: #fff; @border-width: 1px; @border-radius: @border-radius-base;) {
+.generate-nav-list (@primary: @gray; @secondary: @body-bg; @border-width: 1px; @border-radius: @border-radius-base;) {
 	background-color: @secondary;
 	border-radius: @border-radius;
 	border: @border-width solid;
