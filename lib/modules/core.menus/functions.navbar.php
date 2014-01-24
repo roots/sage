@@ -32,7 +32,8 @@ function shoestrap_navbar_class( $navbar = 'main') {
   $fixed    = shoestrap_getVariable( 'navbar_fixed' );
   $fixedpos = shoestrap_getVariable( 'navbar_fixed_position' );
   $style    = shoestrap_getVariable( 'navbar_style' );
-  $left     = ( shoestrap_getVariable( 'navbar_toggle' ) == 'left' ) ? true : false;
+  $toggle   = shoestrap_getVariable( 'navbar_toggle' );
+  $left     = ( $toggle == 'left' ) ? true : false;
 
   $bp = shoestrap_static_left_breakpoint();
 

@@ -168,12 +168,27 @@ if ( !function_exists( 'shoestrap_container_class' ) ) :
  * Return the container class
  */
 function shoestrap_container_class() {
-  $site_style = shoestrap_getVariable( 'site_style' );
+  $class = _( shoestrap_getVariable( 'site_style' ) != 'fluid' ) ? 'container' : 'fluid';
 
-  if ( $site_style != 'fluid' )
-    return 'container';
+  return $class;
+}
+endif;
+
+
+if ( !function_exists( 'shoestrap_navbar_container_class' ) ) :
+/*
+ * Return the container class
+ */
+function shoestrap_navbar_container_class() {
+  $site_style = shoestrap_getVariable( 'site_style' );
+  $toggle     = shoestrap_getVariable( 'navbar_toggle' );
+
+  if ( $toggle == 'full' )
+    $class = 'fluid';
   else
-    return 'fluid';
+    $class = ( $site_style != 'fluid' ) ? 'container' : 'fluid';
+
+  return $class;
 }
 endif;
 

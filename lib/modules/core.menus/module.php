@@ -36,6 +36,7 @@ function shoestrap_module_menus_options( $sections ) {
       'normal'    => __( 'Normal', 'shoestrap' ),
       'pills'     => __( 'Pills', 'shoestrap' ),
       'alt'       => __( 'Alternative', 'shoestrap' ),
+      'full'      => __( 'Full-Width', 'shoestrap' ),
       'left'      => __( 'Static-Left', 'shoestrap' ),
     ),
     'customizer'  => array(),
