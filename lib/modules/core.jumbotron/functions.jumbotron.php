@@ -25,7 +25,7 @@ function jumbotron_content() {
     <div class="jumbotron">
 
       <?php if ( $nocontainer != 1 && $site_style == 'wide' || $site_style == 'boxed' ) : ?>
-      	<div class="<?php echo shoestrap_container_class(); ?>">
+        <div class="<?php echo shoestrap_container_class(); ?>">
       <?php endif; ?>
 
         <?php dynamic_sidebar('Jumbotron'); ?>
@@ -52,60 +52,72 @@ function shoestrap_jumbotron_css() {
 
   $repeat   = '';
   $position = '';
-
   // $background is the saved custom image, or the default image.
   if ( shoestrap_getVariable( 'jumbotron_background_image_toggle' ) == 1 ) {
-    if ( shoestrap_getVariable( 'jumbotron_background_custom_image' ) != "" ) {
-    	$jVar = shoestrap_getVariable( 'jumbotron_background_custom_image' );
+
+    if ( shoestrap_getVariable( 'jumbotron_background_custom_image' ) != '' ) {
+      $jVar = shoestrap_getVariable( 'jumbotron_background_custom_image' );
       $background = set_url_scheme( $jVar['url'] );
-    } elseif ( shoestrap_getVariable( 'jumbotron_background_image' ) != "" ) {
-    	$jVar = shoestrap_getVariable( 'jumbotron_background_image' );
+    } elseif ( shoestrap_getVariable( 'jumbotron_background_image' ) != '' ) {
+      $jVar = shoestrap_getVariable( 'jumbotron_background_image' );
       $background = set_url_scheme( $jVar['url'] );
     }
     
-  } elseif ( shoestrap_getVariable( 'jumbotron_background_pattern_toggle' ) == 1 && shoestrap_getVariable( 'jumbotron_background_pattern' ) != "" ) {
+  } elseif ( shoestrap_getVariable( 'jumbotron_background_pattern_toggle' ) == 1 && shoestrap_getVariable( 'jumbotron_background_pattern' ) != '' ) {
     $background = shoestrap_getVariable( 'jumbotron_background_pattern' );
   }
 
-  $color = ( shoestrap_getVariable( 'jumbotron_background_color' ) != '' ) ? '#' . str_replace( '#', '', shoestrap_getVariable( 'jumbotron_background_color' ) ) : '';
+  $color = '';
+  if ( shoestrap_getVariable( 'jumbotron_background_color' ) != '' )
+    $color = '#' . str_replace( '#', '', shoestrap_getVariable( 'jumbotron_background_color' ) );
 
   if ( !isset( $background ) && !isset( $color ) )
     return;
 
   $style = $color ? "background-color: $color;" : '';
 
-  $style .= ( shoestrap_getVariable( 'jumbotron_background_fixed_toggle' ) == 1 ) ? 'background-attachment: fixed;' : '';
+  if ( shoestrap_getVariable( 'jumbotron_background_fixed_toggle' ) == 1 )
+    $style .= 'background-attachment: fixed;';
 
   $image = ( isset($background) && $background ) ? "background-image: url( '$background' );" : '';
 
-
   if ( shoestrap_getVariable( 'jumbotron_background_image_toggle' ) == 1 && ( shoestrap_getVariable( 'jumbotron_background_custom_image' ) != '' || shoestrap_getVariable( 'jumbotron_background_image' ) != '' ) ) {
     if ( shoestrap_getVariable( 'jumbotron_background_image_position_toggle' ) == 0 ) {
-      $style .= "background-size: cover; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-position: 50% 50%;";
+      $style .= "background-size: cover;";
+      $style .= "-webkit-background-size: cover;";
+      $style .= "-moz-background-size: cover;";
+      $style .= "-o-background-size: cover;";
+      $style .= "background-position: 50% 50%;";
 
-      $style .= ( shoestrap_getVariable( 'jumbotron_background_fixed_toggle' ) == 0 ) ? "background-repeat: no-repeat;" : '';
-    
-    } else {
-      // Not fixed position, custom
+      if ( shoestrap_getVariable( 'jumbotron_background_fixed_toggle' ) == 0 )
+        $style .= "background-repeat: no-repeat;";
+
+    } else { // Not fixed position, custom
       $repeat = shoestrap_getVariable( 'jumbotron_background_repeat' );
 
-      $repeat = ( !in_array( $repeat, array( 'no-repeat', 'repeat-x', 'repeat-y', 'repeat' ) ) ) ? 'repeat' : $repeat;
+      if ( !in_array( $repeat, array( 'no-repeat', 'repeat-x', 'repeat-y', 'repeat' ) ) )
+        $repeat = 'repeat';
 
-      $style .= ( $repeat == 'no-repeat' ) ? "background-size: auto;" : $repeat;
+      if ( $repeat == 'no-repeat' )
+        $style .= "background-size: auto;";
 
       $repeat = " background-repeat: $repeat;";
-
       $position = shoestrap_getVariable( 'jumbotron_background_position_x', 'left' );
-      $position = ( !in_array( $position, array( 'center', 'right', 'left' ) ) ) ? 'left' : $position;
+      
+      if ( !in_array( $position, array( 'center', 'right', 'left' ) ) )
+        $position = 'left';
+
       $position = " background-position: top $position;";
     }
   }
 
   $style .= $image . $repeat . $position;
 
-  $style .= ( $center == 1 ) ? 'text-align: center;' : '';
+  if ( $center == 1 )
+    $style .= 'text-align: center;';
 
-  $style .= ( !empty($border) && $border['border-bottom'] > 0 && !empty($border['border-color']) ) ? 'border-bottom:' . $border['border-bottom'] . ' ' . $border['border-style'] . ' ' . $border['border-color'] . ';' : '';
+  if ( !empty($border) && $border['border-bottom'] > 0 && !empty($border['border-color']) )
+    $style .= 'border-bottom:' . $border['border-bottom'] . ' ' . $border['border-style'] . ' ' . $border['border-color'] . ';';
 
   $style .= 'margin-bottom: 0px;';
 
