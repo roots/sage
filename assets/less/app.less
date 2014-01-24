@@ -777,6 +777,15 @@ ul.comment {
   &.col-static-11 { padding-left: 8.332%; }
 }
 
+@media (max-width: @screen-xs) {
+  header.sm.banner.navbar.static-left,
+  header.md.banner.navbar.static-left,
+  header.lg.banner.navbar.static-left {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
 @media (min-width: @screen-xs) {
   header.xs {
     &.banner.navbar.static-left {
