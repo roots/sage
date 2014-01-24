@@ -34,6 +34,8 @@ function shoestrap_navbar_class( $navbar = 'main') {
   $style    = shoestrap_getVariable( 'navbar_style' );
   $left     = ( shoestrap_getVariable( 'navbar_toggle' ) == 'left' ) ? true : false;
 
+  $bp = shoestrap_static_left_breakpoint();
+
   $defaults = 'navbar navbar-default topnavbar';
 
   if ( $fixed != 1 )
@@ -44,7 +46,7 @@ function shoestrap_navbar_class( $navbar = 'main') {
   $class = $defaults . $class;
 
   if ( $left ) {
-    $extra_classes = 'navbar navbar-default static-left col-sm-' . shoestrap_getVariable( 'layout_secondary_width' );
+    $extra_classes = 'navbar navbar-default static-left ' . $bp .  ' col-' . $bp . '-' . shoestrap_getVariable( 'layout_secondary_width' );
     $class = $extra_classes;
   }
 
@@ -52,6 +54,20 @@ function shoestrap_navbar_class( $navbar = 'main') {
     return $class . ' ' . $style;
   else
     return 'navbar ' . $style;
+}
+endif;
+
+
+if ( !function_exists( 'shoestrap_static_left_breakpoint' ) ) :
+function shoestrap_static_left_breakpoint() {
+  $break    = shoestrap_getVariable( 'grid_float_breakpoint' );
+
+  $bp = ( $break == 'min' || $break == 'screen_xs_min' ) ? 'xs' : 'xs';
+  $bp = ( $break == 'screen_sm_min' )                    ? 'sm' : $bp;
+  $bp = ( $break == 'screen_md_min' )                    ? 'md' : $bp;
+  $bp = ( $break == 'screen_lg_min' || $break == 'max' ) ? 'lg' : $bp;
+
+  return $bp;
 }
 endif;
 

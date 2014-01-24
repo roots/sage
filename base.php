@@ -43,7 +43,7 @@ $left                     = ( shoestrap_getVariable( 'navbar_toggle' ) == 'left'
   <?php endif; ?>
 
   <?php if ( $left ) : ?>
-    <section class="static-menu-main col-static-<?php echo ( 12 - shoestrap_getVariable( 'layout_secondary_width' ) ); ?>">
+    <section class="static-menu-main <?php echo shoestrap_static_left_breakpoint(); ?> col-static-<?php echo ( 12 - shoestrap_getVariable( 'layout_secondary_width' ) ); ?>">
   <?php endif; ?>
 
   <?php if ( has_action( 'shoestrap_below_top_navbar' ) ) : ?>
