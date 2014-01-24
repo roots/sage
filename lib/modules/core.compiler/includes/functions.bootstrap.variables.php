@@ -546,9 +546,9 @@ $variables = '
 @navbar-default-brand-hover-bg:            transparent;
 
 // Navbar toggle
-@navbar-default-toggle-hover-bg:           @table-border-color;
-@navbar-default-toggle-icon-bar-bg:        @ccc;
-@navbar-default-toggle-border-color:       @table-border-color;
+@navbar-default-toggle-hover-bg:           ' . $navbar_border . ';
+@navbar-default-toggle-icon-bar-bg:        ' . $navbar_text_color . ';
+@navbar-default-toggle-border-color:       ' . $navbar_border . ';
 
 
 // Inverted navbar
