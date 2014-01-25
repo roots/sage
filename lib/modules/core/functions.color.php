@@ -412,8 +412,8 @@ function shoestrap_color_difference( $color_1 = '#ffffff', $color_2 = '#000000' 
   $b1 = $color_1_rgb[2];
 
   $r2 = $color_2_rgb[0];
-  $r2 = $color_2_rgb[1];
-  $r2 = $color_2_rgb[2];
+  $g2 = $color_2_rgb[1];
+  $b2 = $color_2_rgb[2];
 
   $r_diff = max( $r1, $r2 ) - min( $r1, $r2 );
   $g_diff = max( $g1, $g2 ) - min( $g1, $g2 );
@@ -431,7 +431,7 @@ endif;
  * A return value of more than 125 is recommended.
  * Combining it with the shoestrap_color_difference function above might make sense.
  */
-if ( !function_exists( 'shoestrap_color_difference' ) ) :
+if ( !function_exists( 'shoestrap_brightness_difference' ) ) :
 function shoestrap_brightness_difference( $color_1 = '#ffffff', $color_2 = '#000000' ) {
   $color_1 = shoestrap_sanitize_hex( $color_1 );
   $color_2 = shoestrap_sanitize_hex( $color_2 );
@@ -444,8 +444,8 @@ function shoestrap_brightness_difference( $color_1 = '#ffffff', $color_2 = '#000
   $b1 = $color_1_rgb[2];
 
   $r2 = $color_2_rgb[0];
-  $r2 = $color_2_rgb[1];
-  $r2 = $color_2_rgb[2];
+  $g2 = $color_2_rgb[1];
+  $b2 = $color_2_rgb[2];
 
   $br_1 = ( 299 * $r1 + 587 * $g1 + 114 * $b1 ) / 1000;
   $br_2 = ( 299 * $r2 + 587 * $g2 + 114 * $b2 ) / 1000;
@@ -459,8 +459,8 @@ endif;
  * Uses the luminosity to calculate the difference between the given colors.
  * The returned value should be bigger than 5 for best readability.
  */
-if ( !function_exists( 'shoestrap_color_difference' ) ) :
-function shoestrap_brightness_difference( $color_1 = '#ffffff', $color_2 = '#000000' ) {
+if ( !function_exists( 'shoestrap_lumosity_difference' ) ) :
+function shoestrap_lumosity_difference( $color_1 = '#ffffff', $color_2 = '#000000' ) {
   $color_1 = shoestrap_sanitize_hex( $color_1 );
   $color_2 = shoestrap_sanitize_hex( $color_2 );
 
@@ -472,8 +472,8 @@ function shoestrap_brightness_difference( $color_1 = '#ffffff', $color_2 = '#000
   $b1 = $color_1_rgb[2];
 
   $r2 = $color_2_rgb[0];
-  $r2 = $color_2_rgb[1];
-  $r2 = $color_2_rgb[2];
+  $g2 = $color_2_rgb[1];
+  $b2 = $color_2_rgb[2];
 
   $l1 = 0.2126 * pow( $r1 / 255, 2.2 ) + 0.7152 * pow( $g1 / 255, 2.2 ) + 0.0722 * pow( $b1 / 255, 2.2 );
   $l2 = 0.2126 * pow( $r2 / 255, 2.2 ) + 0.7152 * pow( $g2 / 255, 2.2 ) + 0.0722 * pow( $b2 / 255, 2.2 );
