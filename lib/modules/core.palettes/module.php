@@ -43,6 +43,7 @@ function shoestrap_module_coulourlovers_options( $sections ) {
   $settings  = get_option( 'shoestrap' );
   $font_base = $settings['font_base'];
   $nav_font  = $settings['font_navbar'];
+  $jum_font  = $settings['font_jumbotron'];
 
   foreach($feed_xml->palette as $result) {
     $id       = $result->id;
@@ -152,7 +153,7 @@ function shoestrap_module_coulourlovers_options( $sections ) {
 
     // If the brightest color is bright enough, use that as background.
     // If not, then set a white background.
-    $background = ( shoestrap_get_brightness( $brightest_0_val ) > 180 ) ? $brightest_0_val : '#ffffff';
+    $background = ( shoestrap_get_brightness( $brightest_0_val ) > 210 ) ? $brightest_0_val : '#ffffff';
 
     // The text color
     $font_base['color'] = ( shoestrap_lumosity_difference( $background, $bright_dull_4_val ) > 5 ) ? $bright_dull_4_val : '#222222';
@@ -163,19 +164,40 @@ function shoestrap_module_coulourlovers_options( $sections ) {
     }
 
     $navbar_bg         = ( $bright_dull_3_val == $background ) ? $bright_dull_2_val : $bright_dull_3_val;
+
     $nav_font['color'] = ( shoestrap_lumosity_difference( $navbar_bg, $brightest_0_val ) > 8 ) ? $brightest_0_val : $nav_font['color'];
+    $nav_font['color'] = ( shoestrap_lumosity_difference( $navbar_bg, $brightest_0_val ) > shoestrap_lumosity_difference( $navbar_bg, $brightest_1_val ) ) ? $brightest_0_val : $nav_font['color'];
+    $nav_font['color'] = ( shoestrap_lumosity_difference( $navbar_bg, $brightest_1_val ) > shoestrap_lumosity_difference( $navbar_bg, $brightest_1_val ) ) ? $brightest_1_val : $nav_font['color'];
+    $nav_font['color'] = ( shoestrap_lumosity_difference( $navbar_bg, $brightest_2_val ) > shoestrap_lumosity_difference( $navbar_bg, $brightest_2_val ) ) ? $brightest_2_val : $nav_font['color'];
+    $nav_font['color'] = ( shoestrap_lumosity_difference( $navbar_bg, $brightest_3_val ) > shoestrap_lumosity_difference( $navbar_bg, $brightest_3_val ) ) ? $brightest_3_val : $nav_font['color'];
+    $nav_font['color'] = ( shoestrap_lumosity_difference( $navbar_bg, $brightest_4_val ) > shoestrap_lumosity_difference( $navbar_bg, $brightest_4_val ) ) ? $brightest_4_val : $nav_font['color'];
+
+    $jumbotron_bg = ( $background == $most_saturated_0_val ) ? $most_saturated_1_val : $most_saturated_0_val;
+    $jumbotron_bg = ( $background == $most_saturated_1_val ) ? $most_saturated_2_val : $jumbotron_bg;
+    $jumbotron_bg = ( $background == $most_saturated_2_val ) ? $most_saturated_3_val : $jumbotron_bg;
+    $jumbotron_bg = ( $background == $most_saturated_3_val ) ? $most_saturated_4_val : $jumbotron_bg;
+    $jumbotron_bg = ( $background == $most_saturated_4_val ) ? $most_saturated_0_val : $jumbotron_bg;
+
+    $jum_font['color'] = ( shoestrap_lumosity_difference( $jumbotron_bg, $brightest_0_val ) > 8 ) ? $brightest_0_val : $jum_font['color'];
+    $jum_font['color'] = ( shoestrap_lumosity_difference( $jumbotron_bg, $brightest_0_val ) > shoestrap_lumosity_difference( $jumbotron_bg, $brightest_1_val ) ) ? $brightest_0_val : $jum_font['color'];
+    $jum_font['color'] = ( shoestrap_lumosity_difference( $jumbotron_bg, $brightest_1_val ) > shoestrap_lumosity_difference( $jumbotron_bg, $brightest_1_val ) ) ? $brightest_1_val : $jum_font['color'];
+    $jum_font['color'] = ( shoestrap_lumosity_difference( $jumbotron_bg, $brightest_2_val ) > shoestrap_lumosity_difference( $jumbotron_bg, $brightest_2_val ) ) ? $brightest_2_val : $jum_font['color'];
+    $jum_font['color'] = ( shoestrap_lumosity_difference( $jumbotron_bg, $brightest_3_val ) > shoestrap_lumosity_difference( $jumbotron_bg, $brightest_3_val ) ) ? $brightest_3_val : $jum_font['color'];
+    $jum_font['color'] = ( shoestrap_lumosity_difference( $jumbotron_bg, $brightest_4_val ) > shoestrap_lumosity_difference( $jumbotron_bg, $brightest_4_val ) ) ? $brightest_4_val : $jum_font['color'];
+
+    $footer_background = $bright_dull_0_val;
+    $footer_background = ( $background == $footer_background ) ? $bright_dull_1_val : $footer_background;
+    $footer_background = ( $background == $footer_background ) ? $bright_dull_2_val : $footer_background;
+    $footer_background = ( $background == $footer_background ) ? $bright_dull_3_val : $footer_background;
+    $footer_background = ( $background == $footer_background ) ? $bright_dull_4_val : $footer_background;
 
     $footer_color = ( $background == $bright_dull_0_val || $background == $bright_dull_1_val ) ? $bright_dull_4_val : $bright_dull_0_val;
-    if ( $background == $bright_dull_0_val )
-      $footer_background  = $bright_dull_1_val;
-    elseif ( $background == $bright_dull_1_val )
-      $footer_background  = $bright_dull_2_val;
-    elseif ( $background == $bright_dull_2_val )
-      $footer_background  = $bright_dull_3_val;
-    elseif ( $background == $bright_dull_3_val )
-      $footer_background  = $bright_dull_0_val;
-    else
-      $footer_background  = $bright_dull_0_val;
+    $footer_color = ( shoestrap_lumosity_difference( $footer_background, $brightest_0_val ) > 8 ) ? $brightest_0_val : $footer_color;
+    $footer_color = ( shoestrap_lumosity_difference( $footer_background, $brightest_0_val ) > shoestrap_lumosity_difference( $footer_background, $brightest_1_val ) ) ? $brightest_0_val : $footer_color;
+    $footer_color = ( shoestrap_lumosity_difference( $footer_background, $brightest_1_val ) > shoestrap_lumosity_difference( $footer_background, $brightest_1_val ) ) ? $brightest_1_val : $footer_color;
+    $footer_color = ( shoestrap_lumosity_difference( $footer_background, $brightest_2_val ) > shoestrap_lumosity_difference( $footer_background, $brightest_2_val ) ) ? $brightest_2_val : $footer_color;
+    $footer_color = ( shoestrap_lumosity_difference( $footer_background, $brightest_3_val ) > shoestrap_lumosity_difference( $footer_background, $brightest_3_val ) ) ? $brightest_3_val : $footer_color;
+    $footer_color = ( shoestrap_lumosity_difference( $footer_background, $brightest_4_val ) > shoestrap_lumosity_difference( $footer_background, $brightest_4_val ) ) ? $brightest_4_val : $footer_color;
 
     $color_brand_primary = $color_brand_primary;
     $color_brand_success = $most_saturated_1_val;
@@ -203,6 +225,8 @@ function shoestrap_module_coulourlovers_options( $sections ) {
           'footer_background'   => '#' . str_replace( '#', '', $footer_background ),
           'footer_color'        => '#' . str_replace( '#', '', $footer_color ),
           'font_navbar'         => $nav_font,
+          'jumbotron_bg'        => $jumbotron_bg,
+          'font_jumbotron'      => $jum_font,
         )
       );
     }
