@@ -119,18 +119,36 @@ add_action( 'shoestrap_below_top_navbar', 'shoestrap_navbar_slidedown_content', 
 if ( !function_exists( 'shoestrap_navbar_slidedown_toggle' ) ) :
 function shoestrap_navbar_slidedown_toggle() {
   $navbar_color = shoestrap_getVariable( 'navbar_bg' );
+  $navbar_mode  = shoestrap_getVariable( 'navbar_toggle' );
+  $trigger = (
+    is_active_sidebar( 'navbar-slide-down-top' ) ||
+    is_active_sidebar( 'navbar-slide-down-1' ) ||
+    is_active_sidebar( 'navbar-slide-down-2' ) ||
+    is_active_sidebar( 'navbar-slide-down-3' ) ||
+    is_active_sidebar( 'navbar-slide-down-4' ) 
+  ) ? true : false;
   
-  if ( is_active_sidebar( 'navbar-slide-down-top' ) || is_active_sidebar( 'navbar-slide-down-1' ) || is_active_sidebar( 'navbar-slide-down-2' ) || is_active_sidebar( 'navbar-slide-down-3' ) || is_active_sidebar( 'navbar-slide-down-4' ) ) {
-    if ( shoestrap_get_brightness( $navbar_color ) >= 160 )
-      echo '<a style="width: 30px;" class="toggle-nav black" href="#">';
-    else
-      echo '<a style="width: 30px;" class="toggle-nav" href="#">';
+  if ( $trigger ) {
 
-    echo '<i class="el-icon-arrow-down"></i></a>';
+    $class = ( $navbar_mode == 'left' ) ? ' static-left' : ' nav-toggle';
+    $pre   = ( $navbar_mode != 'left' ) ? '<ul class="nav navbar-nav"><li>' : '';
+    $post  = ( $navbar_mode != 'left' ) ? '</li></ul>' : '';
+
+    echo $pre . '<a class="toggle-nav' . $class . '" href="#"><i class="el-icon-chevron-down"></i></a>' . $post;
+
   }
 }
 endif;
-add_action( 'shoestrap_pre_main_nav', 'shoestrap_navbar_slidedown_toggle' );
+
+
+if ( !function_exists( 'shoestrap_navbar_slidedown_toggle_trigger' ) ) :
+function shoestrap_navbar_slidedown_toggle_trigger() {
+  $hook = ( shoestrap_getVariable( 'navbar_toggle' ) == 'left' ) ? 'shoestrap_below_top_navbar' : 'shoestrap_pre_main_nav';
+  add_action( $hook, 'shoestrap_navbar_slidedown_toggle' );
+}
+add_action( 'init', 'shoestrap_navbar_slidedown_toggle_trigger' );
+endif;
+
 
 
 if ( !function_exists( 'shoestrap_megadrop_script' ) ) :

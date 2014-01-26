@@ -90,27 +90,40 @@ body {
 
 // Styling the (+) button on the navbar
 a.toggle-nav {
-  position: relative;
-  top: 14px;
-  width: 30px;
-  height: 30px;
-  display:block;
   opacity:0.6;
-  z-index:1;
-  float: left;
-  font-size: 20px;
-  color: @navbar-default-link-color;
-  text-decoration: none;
-  text-align: center;
   -webkit-transition:all 500ms ease-in-out;
   -moz-transition:all 500ms ease-in-out;
   -o-transition:all 500ms ease-in-out;
   -ms-transition:all 500ms ease-in-out;
+  border-radius: 50%;
+
+  color: @navbar-default-link-color;
+
+  &.nav-toggle {
+    color: @navbar-default-link-color;
+    position: relative;
+    float: left;
+  }
+
+  &.static-left {
+    z-index:1;
+    text-decoration: none;
+    text-align: center;
+    display:block;
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+    background: @body-bg;
+    color: @brand-info;
+    width: 100%;
+    border-radius: 0px;
+  }
+
   &.open {
     opacity:1;
-    top: 18px;
   }
 }
+
 
 // Megadrop styles
 #megaDrop {
@@ -248,14 +261,7 @@ a.toggle-nav {
 
 .jumbotron {
   border-radius: 0px;
-
 }
-
-// #boxed-container {
-//   .jumbotron {
-//     .border-bottom-radius(@border-radius-large)
-//   }
-// }
 
 .navbar {
   a.toggle-nav {
@@ -657,7 +663,6 @@ li.dropdown ul.dropdown-menu li.dropdown.pull-left {
 
   @media screen and (min-width: @screen-tablet) {
     padding: 50px 60px;
-    border-radius: @border-radius-large; // Only round corners at higher resolutions
     h1 {
       font-size: (@font-size-base * 4.5);
     }
@@ -684,10 +689,6 @@ li.dropdown ul.dropdown-menu li.dropdown.pull-left {
 
 .nav-pills > li > a {
   border-radius: @border-radius-base;
-}
-
-.container .jumbotron {
-  .border-top-radius(0px);
 }
 
 .page-header {
