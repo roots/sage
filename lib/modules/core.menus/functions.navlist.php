@@ -22,19 +22,15 @@ class Shoestrap_Nav_Menu_Widget extends WP_Widget {
 
     $instance['title'] = apply_filters( 'widget_title', empty( $instance['title'] ) ? '' : $instance['title'], $instance, $this->id_base );
 
-    if ( shoestrap_getVariable( 'widgets_mode' ) == 1 ) :
+    if ( shoestrap_getVariable( 'widgets_mode' ) == 1 )
       echo '<section id="widget-menu-' . $instance["nav_menu"] . '" class="widget">';
-    else :
+    else
       echo $args['before_widget'];
-    endif;
 
     if ( !empty($instance['title']) )
       echo $args['before_title'] . $instance['title'] . $args['after_title'];
 
-    $menu_class = '';
-    if ( shoestrap_getVariable( 'inverse_navlist' ) ) :
-      $menu_class = 'nav-list-inverse ';
-    endif;
+    $menu_class = ( shoestrap_getVariable( 'inverse_navlist' ) ) ? 'nav-list-inverse ' : '';
 
     $menu_class .= 'nav-list-' . shoestrap_getVariable( 'menus_class' );
 
@@ -95,4 +91,4 @@ function shoestrap_navlist_widget_init() {
   unregister_widget('WP_Nav_Menu_Widget');
   register_widget('Shoestrap_Nav_Menu_Widget');
 }
-add_action('widgets_init', 'shoestrap_navlist_widget_init', 1);
+add_action( 'widgets_init', 'shoestrap_navlist_widget_init', 1 );
