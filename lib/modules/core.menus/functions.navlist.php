@@ -39,8 +39,8 @@ class Shoestrap_Nav_Menu_Widget extends WP_Widget {
       'depth'             => 2,
       'container'         => 'false',
       'menu_class'        => 'nav nav-list ' . $menu_class,
-      'fallback_cb'       => 'wp_bootstrap_navlist_walker::fallback',
-      'walker'            => new wp_bootstrap_navlist_walker()
+      'fallback_cb'       => 'Shoestrap_Navlist_Walker::fallback',
+      'walker'            => new Shoestrap_Navlist_Walker()
     ) );
     echo $args['after_widget'];
   }

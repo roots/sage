@@ -309,7 +309,7 @@ add_filter( 'redux/options/'.REDUX_OPT_NAME.'/sections', 'shoestrap_module_menus
 include_once( dirname( __FILE__ ) . '/functions.navbar.php' );
 include_once( dirname( __FILE__ ) . '/functions.secondary.navbar.php' );
 include_once( dirname( __FILE__ ) . '/functions.slide-down.php' );
-include_once( dirname( __FILE__ ) . '/wp_bootstrap_navlist_walker.php' );
+include_once( dirname( __FILE__ ) . '/functions.navlist-walker.php' );
 include_once( dirname( __FILE__ ) . '/functions.navlist.php' );
 
 if ( shoestrap_getVariable( 'navbar_toggle' ) == 'alt' ) :

@@ -16,6 +16,18 @@
 	&.nav-list-danger  { .generate-nav-list( @brand-danger,  @nav-list-inverse-secondary, 0px ); }
 }
 
+li.active.parent { 
+	.nav-sublist { 
+		display: block; 
+	} 
+}
+
+li.parent { 
+	.nav-sublist { 
+		display: none; 
+	} 
+}
+
 //Utility Mixins
 .generate-nav-list (@primary: @gray; @secondary: @body-bg; @border-width: 1px; @border-radius: @border-radius-base;) {
 	background-color: @secondary;
