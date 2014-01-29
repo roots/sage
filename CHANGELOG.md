@@ -1,4 +1,5 @@
 ### HEAD
+* Update to jQuery 1.11.0
 * Add notice to theme activation, tidy activation table markup
 * Remove changing media folder from theme activation (use [Bedrock](https://github.com/roots/bedrock) for clean URLs out of the box)
 * Update to Bootstrap 3.0.3
