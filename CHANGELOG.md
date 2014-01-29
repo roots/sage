@@ -1,3 +1,33 @@
+### 3.0.309
+
+Important notice:
+
+This update will change the URL of your CSS files.
+PLEASE re-compile your stylesheets after updating.
+
+* Fix: Palettes module improvements
+* Fix: Better navlist walker
+* New: Using github updater
+* New: Included TGM Class
+* Fix: Better Megadrop triggers
+* Fix: Slightly better bbPress breadcrumbs
+* New: Ability to toggle container class in navbar on/off #459
+* Fix: Collapsed nav padding
+* Fix: Navbar toggle color
+* Fix: Jumbotron background
+* New: New screenshot
+* Fix: Footer bugfix
+* New: left-static navbar
+* Fix: Updating the Less.php compiler
+* Fix: Deleting obsolete style.css file
+* Fix: Rewrote the stylesheet detection script
+* New: Navlists now use variables to set their colors
+* New: added more color functions
+* Fix: moved bootstrap files to vendor/bootstrap
+* Fix: better color handling for button font color
+* Fix: Avatar class
+* Fix: Other bugfixes
+
 ### 3.0.308
 
 * Fix: Better calculation of color differences in the compiler
