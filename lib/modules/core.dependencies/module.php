@@ -35,6 +35,12 @@ function shoestrap_required_plugins() {
 			'force_activation'   => true,
 		),
 
+		array(
+			'name'               => 'Less PHP Compiler',
+			'slug'               => 'lessphp',
+			'required'           => true,
+			'force_activation'   => true,
+		),
 	);
 
 	$theme_text_domain = 'shoestrap';
