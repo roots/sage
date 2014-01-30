@@ -1,9 +1,0 @@
-codekit-config.json
-.DS_Store
-docs/
-node_modules/
-npm-debug.log
-grunt-phplint
-redux
-md5
-output
