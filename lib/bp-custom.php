@@ -4,6 +4,8 @@
 /**
  * Remove the button class from activity delete link
  * 
+ * @since 1.0.0
+ * @return string delete activity link
  */
 function customize_activity_delete_link($link) {
 	$link = str_replace('button ', '', $link);
@@ -17,6 +19,7 @@ add_filter( 'bp_get_activity_delete_link', 'customize_activity_delete_link' );
 /**
  * Return false to the function that checks if nested comments are available.
  * 
+ * @since 1.0.0
  * @return boolean false
  */
 function disable_nested_comments($arg) {
@@ -30,6 +33,7 @@ add_filter( 'bp_activity_can_comment_reply', 'disable_nested_comments' );
  * 
  * @author Tobias Møller Kjærsgaard
  * @since 1.0.0
+ * @return string html for the members directory search form
  */
 function customize_members_dir_search_form($search_form_html) {
 
@@ -65,6 +69,7 @@ add_filter( 'bp_directory_members_search_form', 'customize_members_dir_search_fo
  * 
  * @author Tobias Møller Kjærsgaard
  * @since 1.0.0
+ * @return string html for the groups directory search form
  */
 function customize_groups_dir_search_form($search_form_html) {
 
@@ -100,6 +105,7 @@ add_filter( 'bp_directory_groups_search_form', 'customize_groups_dir_search_form
  * 
  * @author Tobias Møller Kjærsgaard
  * @since 1.0.0
+ * @return string html for the blogs directory search form
  */
 function customize_blogs_dir_search_form($search_form_html) {
 
@@ -129,10 +135,6 @@ function customize_blogs_dir_search_form($search_form_html) {
 add_filter( 'bp_directory_blogs_search_form', 'customize_blogs_dir_search_form' );
 
 
-
-
-
-
 /**
  * Modify the ajax querystring to limit groups directory pages to 10 items each.
  * 
@@ -140,7 +142,6 @@ add_filter( 'bp_directory_blogs_search_form', 'customize_blogs_dir_search_form' 
  * @param string $query_string The passed ajax querystring from caller
  * @param string $object The passed object string from caller
  * @return string modified ajax querystring
- * 
  */
 function ajax_querystring_modification($query_string, $object) {
 	if($object == 'groups')
@@ -151,6 +152,15 @@ function ajax_querystring_modification($query_string, $object) {
 add_filter( 'bp_legacy_theme_ajax_querystring', 'ajax_querystring_modification', 10, 2 );
 
 
+/**
+ * Fetch a custom pagination array and pass it through the
+ * make_pagination_list() function to return html string.
+ * 
+ * @since 1.0.0
+ * @param string $pag_links original pagination links string
+ * @uses make_pagination_list() for formatting html return string
+ * @return string html string with pagination links
+ */
 function customize_members_pagination_links($pag_links) {
 	global $members_template;
 
@@ -170,6 +180,15 @@ function customize_members_pagination_links($pag_links) {
 add_filter( 'bp_get_members_pagination_links', 'customize_members_pagination_links' );
 
 
+/**
+ * Fetch a custom pagination array and pass it through the
+ * make_pagination_list() function to return html string.
+ * 
+ * @since 1.0.0
+ * @param string $pag_links original pagination links string
+ * @uses make_pagination_list() for formatting html return string
+ * @return string html string with pagination links
+ */
 function customize_groups_pagination_links($pag_links) {
 	global $groups_template;
 
@@ -190,7 +209,13 @@ add_filter( 'bp_get_groups_pagination_links', 'customize_groups_pagination_links
 
 
 /**
+ * Fetch a custom pagination array and pass it through the
+ * make_pagination_list() function to return html string.
  * 
+ * @since 1.0.0
+ * @param string $pag_links original pagination links string
+ * @uses make_pagination_list() for formatting html return string
+ * @return string html string with pagination links
  */
 function customize_sites_pagination_links($pag_links) {
 	global $blogs_template;
