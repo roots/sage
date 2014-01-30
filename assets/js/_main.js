@@ -36,12 +36,6 @@ var Roots = {
     init: function() {
       // JavaScript to be fired on the about us page
     }
-  },
-  // buddypress pages
-  buddypress: {
-    init: function() {
-
-    }
   }
 };
 
