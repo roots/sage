@@ -48,7 +48,7 @@ add_action( 'shoestrap_below_top_navbar', 'jumbotron_content', 10 );
 if ( !function_exists( 'shoestrap_jumbotron_css' ) ) :
 function shoestrap_jumbotron_css() {
   $center = shoestrap_getVariable( 'jumbotron_center' );
-  $border = shoestrap_getVariable( 'jumbotron_border_bottom' );
+  $border = shoestrap_getVariable( 'jumbotron_border' );
 
   $repeat   = '';
   $position = '';
