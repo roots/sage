@@ -1,9 +1,5 @@
 <?php
 
-if ( !class_exists( 'ReduxFramework' ) && file_exists( dirname( __FILE__ ) . '/ReduxFramework/ReduxCore/framework.php' ) ) :
-  include_once( dirname( __FILE__ ) . '/ReduxFramework/ReduxCore/framework.php' );
-endif;
-
 /*
  * Require the framework class before doing anything else, so we can use the defined urls and dirs
  * Also if running on windows you may have url problems, which can be fixed by defining the framework url first
