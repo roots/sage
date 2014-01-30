@@ -121,12 +121,24 @@
  					}
  				}
  			}
+			
+			&.has-comments .activity-comments:before {
+				width: 0; 
+				height: 0;
+				margin-bottom: -5px;
+				margin-left: 15px;
+				border-left: 5px solid transparent;
+				border-right: 5px solid transparent;
+				border-bottom: 5px solid @gray-lighter;
+			}
 
  			.activity-comments {
  				margin-left: 65px;
+ 				margin-top: 10px;
  				max-width: 500px;
- 				.clearfix();
  				font-size: 90%;
+
+ 				.clearfix();
 
  				ul {
  					list-style: none;
