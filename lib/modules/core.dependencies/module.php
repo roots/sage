@@ -28,15 +28,13 @@ function shoestrap_required_plugins() {
 			'external_url'       => '',
 		),
 
-		/*
-		 * When redux gets updated in the wordpress.org repo and delete it from the theme.
-		 */
-		// array(
-		// 	'name'               => 'Redux Framework',
-		// 	'slug'               => 'redux-framework',
-		// 	'required'           => true,
-		// 	'force_activation'   => true,
-		// ),
+		array(
+			'name'               => 'Redux Framework',
+			'slug'               => 'redux-framework',
+			'required'           => true,
+			'force_activation'   => true,
+		),
+
 	);
 
 	$theme_text_domain = 'shoestrap';
