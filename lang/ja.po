@@ -1,0 +1,267 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Project-Id-Version: Roots\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Takefumi Ota <taketakegogo@gmail.com>\n"
+"Language-Team: Gracix [takefumi-o] <taketakegogo@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Language: Japanese\n"
+"X-Generator: Poedit 1.5.7\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2\n"
+"X-Poedit-Basepath: ../\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPath-1: ../roots\n"
+
+#: 404.php:4
+msgid "Sorry, but the page you were trying to view does not exist."
+msgstr "申し訳ありません。表示しようとしていたページは存在しませんでした。"
+
+#: 404.php:7
+msgid "It looks like this was the result of either:"
+msgstr "こんな原因が考えられます："
+
+#: 404.php:9
+msgid "a mistyped address"
+msgstr "アドレス入力ミス"
+
+#: 404.php:10
+msgid "an out-of-date link"
+msgstr "期限切れのリンク"
+
+#: base.php:6
+msgid ""
+"You are using an <strong>outdated</strong> browser. Please <a href=\"http://"
+"browsehappy.com/\">upgrade your browser</a> to improve your experience."
+msgstr ""
+"ご使用のブラウザは非常に古いものです。<a href=\"http://browsehappy.com/\">ブ"
+"ラウザをアップグレードすれば</a>より良い体験ができます。"
+
+#: index.php:5
+msgid "Sorry, no results were found."
+msgstr "お探しのコンテンツは見つかりませんでした。"
+
+#: index.php:17
+msgid "&larr; Older posts"
+msgstr "&larr; 以前の記事へ"
+
+#: index.php:18
+msgid "Newer posts &rarr;"
+msgstr "新しい記事へ &rarr;"
+
+#: lib/activation.php:28 lib/activation.php:29
+msgid "Theme Activation"
+msgstr "テーマのアクティベーション"
+
+#: lib/activation.php:50
+msgid "%s Theme Activation"
+msgstr "%s テーマをアクティベーション"
+
+#: lib/activation.php:52
+msgid ""
+"These settings are optional and should usually be used only on a fresh "
+"installation"
+msgstr ""
+"これらの設定はオプションです。通常は、新規インストール時のみ使用してくださ"
+"い。"
+
+#: lib/activation.php:59 lib/activation.php:62
+msgid "Create static front page?"
+msgstr "固定フロントページを作りますか？"
+
+#: lib/activation.php:64 lib/activation.php:76 lib/activation.php:88
+#: lib/activation.php:100
+msgid "Yes"
+msgstr "はい"
+
+#: lib/activation.php:65 lib/activation.php:77 lib/activation.php:89
+#: lib/activation.php:101
+msgid "No"
+msgstr "いいえ"
+
+#: lib/activation.php:67
+msgid "Create a page called Home and set it to be the static front page"
+msgstr ""
+"\"ホーム\"というページを作成して、それを静的フロントページとして設定します"
+
+#: lib/activation.php:71
+msgid "Change permalink structure?"
+msgstr "パーマリンク構造を変更しますか？"
+
+#: lib/activation.php:74
+msgid "Update permalink structure?"
+msgstr "パーマリンク構造を更新しますか？"
+
+#: lib/activation.php:79
+msgid "Change permalink structure to /&#37;postname&#37;/"
+msgstr "パーマリンク構造を  /&#37;postname&#37;/ に設定します。"
+
+#: lib/activation.php:83 lib/activation.php:86
+msgid "Create navigation menu?"
+msgstr "ナビゲーションメニューを作成しますか？"
+
+#: lib/activation.php:91
+msgid "Create the Primary Navigation menu and set the location"
+msgstr "メインナビゲーションメニューを作成し、場所を設定"
+
+#: lib/activation.php:95 lib/activation.php:98
+msgid "Add pages to menu?"
+msgstr "ページをメニューに追加しますか？"
+
+#: lib/activation.php:103
+msgid "Add all current published pages to the Primary Navigation"
+msgstr "プライマリナビゲーションへすべての公開されたページを追加します"
+
+#: lib/cleanup.php:193
+msgid "Continued"
+msgstr "次へ"
+
+#: lib/init.php:11
+msgid "Primary Navigation"
+msgstr "プライマリ ナビゲーション"
+
+#: lib/titles.php:10
+msgid "Latest Posts"
+msgstr "最新の記事"
+
+#: lib/titles.php:19
+msgid "Daily Archives: %s"
+msgstr "日別アーカイブ：%s"
+
+#: lib/titles.php:21
+msgid "Monthly Archives: %s"
+msgstr "月別アーカイブ：%s"
+
+#: lib/titles.php:23
+msgid "Yearly Archives: %s"
+msgstr "年別のアーカイブ：%s"
+
+#: lib/titles.php:26
+msgid "Author Archives: %s"
+msgstr "著者のアーカイブ：%s"
+
+#: lib/titles.php:31
+msgid "Search Results for %s"
+msgstr "%s の検索結果"
+
+#: lib/titles.php:33
+msgid "Not Found"
+msgstr "見つかりません"
+
+#: lib/widgets.php:8
+msgid "Primary"
+msgstr "プライマリ"
+
+#: lib/widgets.php:17
+msgid "Footer"
+msgstr "フッター"
+
+#: lib/widgets.php:45
+msgid "Use this widget to add a vCard"
+msgstr "vCardを追加するには、このウィジェットを使用します"
+
+#: lib/widgets.php:47
+msgid "Roots: vCard"
+msgstr "Roots: vCard"
+
+#: lib/widgets.php:74
+msgid "vCard"
+msgstr "vCard"
+
+#: templates/comment.php:4
+msgid "%1$s"
+msgstr "%1$s"
+
+#: templates/comment.php:5
+msgid "(Edit)"
+msgstr "(編集)"
+
+#: templates/comment.php:9
+msgid "Your comment is awaiting moderation."
+msgstr "あなたのコメントは承認待ちです。"
+
+#: templates/comments.php:8
+msgid "One Response to &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s Responses to &ldquo;%2$s&rdquo;"
+msgstr[0] "&ldquo;%2$s&rdquo; に 1 件のコメントがあります"
+msgstr[1] "&ldquo;%2$s&rdquo; に %1$s 件のコメントがあります"
+
+#: templates/comments.php:18
+msgid "&larr; Older comments"
+msgstr "&larr; 過去のコメント"
+
+#: templates/comments.php:21
+msgid "Newer comments &rarr;"
+msgstr "新しいコメント &rarr;"
+
+#: templates/comments.php:29 templates/comments.php:38
+msgid "Comments are closed."
+msgstr "コメントは閉じられています。"
+
+#: templates/comments.php:45
+msgid "Leave a Reply"
+msgstr "コメントを残す"
+
+#: templates/comments.php:45
+msgid "Leave a Reply to %s"
+msgstr "%s に返信コメントを残す"
+
+#: templates/comments.php:48
+msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
+msgstr "コメントを投稿するには、<a href=\"%s\">ログイン</a>してください。"
+
+#: templates/comments.php:53
+msgid "Logged in as <a href=\"%s/wp-admin/profile.php\">%s</a>."
+msgstr "<a href=\"%s/wp-admin/profile.php\">%s</a>としてログイン中。"
+
+#: templates/comments.php:54
+msgid "Log out of this account"
+msgstr "このアカウントからログアウト"
+
+#: templates/comments.php:54
+msgid "Log out &raquo;"
+msgstr "ログアウト &raquo;"
+
+#: templates/comments.php:58
+msgid "Name"
+msgstr "名前"
+
+#: templates/comments.php:58 templates/comments.php:62
+msgid " (required)"
+msgstr "(必須)"
+
+#: templates/comments.php:62
+msgid "Email (will not be published)"
+msgstr "メールアドレス（公開はされません）"
+
+#: templates/comments.php:66
+msgid "Website"
+msgstr "ウェブサイト"
+
+#: templates/comments.php:71
+msgid "Comment"
+msgstr "コメント"
+
+#: templates/comments.php:74
+msgid "Submit Comment"
+msgstr "コメントの送信"
+
+#: templates/content-single.php:11
+msgid "Pages:"
+msgstr "ページ："
+
+#: templates/entry-meta.php:2
+msgid "By"
+msgstr "投稿："
+
+#: templates/searchform.php:3 templates/searchform.php:6
+msgid "Search"
+msgstr "検索"
+
+#: templates/searchform.php:4
+msgid "Search for:"
+msgstr "検索結果："
