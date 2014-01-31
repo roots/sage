@@ -36,7 +36,7 @@ function shoestrap_required_plugins() {
 		),
 
 		array(
-			'name'               => 'Less PHP Compiler',
+			'name'               => 'lessphp',
 			'slug'               => 'lessphp',
 			'required'           => true,
 			'force_activation'   => true,
