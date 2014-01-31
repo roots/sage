@@ -240,17 +240,6 @@ $variables = '
 @5bc0de: ' . $brand_info . ';
 
 
-//
-// Variables
-// --------------------------------------------------
-
-
-//== Colors
-//
-//## Gray and brand colors for use across Bootstrap.
-
-
-@ccc: mix(@gray-light, @gray-lighter);
 
 @brand-primary:         @428bca;
 @brand-success:         @5cb85c;
@@ -369,7 +358,6 @@ $variables = '
 @btn-font-weight:                normal;
 
 @btn-default-color:              @gray-dark;
-@btn-default-border:             @ccc;
 
 @btn-primary-color:              ' . $btn_primary_color . ';
 @btn-primary-bg:                 @brand-primary;
@@ -401,13 +389,8 @@ $variables = '
 //** `<input disabled>` background color
 @input-bg-disabled:              @gray-lighter;
 
-//** Text color for `<input>`s
 @input-color:                    @gray;
-//** `<input>` border color
-@input-border:                   @ccc;
-//** `<input>` border radius
 @input-border-radius:            @border-radius-base;
-//** Border color for inputs on focus
 @input-border-focus:             ' . $input_border_focus . ';
 
 //** Placeholder text color
@@ -704,8 +687,6 @@ $variables = '
 @popover-max-width:                   276px;
 //** Popover border color
 @popover-border-color:                rgba(0,0,0,.2);
-//** Popover fallback border color
-@popover-fallback-border-color:       @ccc;
 
 //** Popover title background color
 @popover-title-bg:                    darken(@popover-bg, 3%);
@@ -917,8 +898,6 @@ $variables = '
 @breadcrumb-padding-horizontal: @modal-title-padding;
 //** Breadcrumb background color
 @breadcrumb-bg:                 @table-bg-hover;
-//** Breadcrumb text color
-@breadcrumb-color:              @ccc;
 //** Text color of current page in the breadcrumb
 @breadcrumb-active-color:       @gray-light;
 //** Textual separator for between breadcrumb elements

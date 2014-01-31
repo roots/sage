@@ -21,12 +21,14 @@ function shoestrap_variables_background() {
 	}
 	$variables = '';
 
+	// Calculate grays
 	$variables .= '@gray-darker:            ' . $gray_darker . ';';
 	$variables .= '@gray-dark:              ' . $gray_dark . ';';
 	$variables .= '@gray:                   ' . $gray . ';';
 	$variables .= '@gray-light:             ' . $gray_light . ';';
 	$variables .= '@gray-lighter:           ' . $gray_lighter . ';';
 
+	// The below are declared as #fff in the default variables.
 	$variables .= '@body-bg:                                 ' . $body_bg . ';';
 	$variables .= '@component-active-color:                      @body-bg;';
 	$variables .= '@btn-default-bg:                              @body-bg;';
@@ -54,6 +56,13 @@ function shoestrap_variables_background() {
 	$variables .= '@close-text-shadow:                   0 1px 0 @body-bg;';
 	$variables .= '@input-bg:                                    @body-bg;';
 	$variables .= '@nav-open-link-hover-color:                   @body-bg;';
+
+	// These are #ccc
+	// We re-calculate the color based on the gray values above.
+	$variables .= '@btn-default-border:            mix(@gray-light, @gray-lighter);';
+	$variables .= '@input-border:                  mix(@gray-light, @gray-lighter);';
+	$variables .= '@popover-fallback-border-color: mix(@gray-light, @gray-lighter);';
+	$variables .= '@breadcrumb-color:              mix(@gray-light, @gray-lighter);';
 
 	return $variables;
 }
