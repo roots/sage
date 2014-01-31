@@ -15,7 +15,6 @@ function shoestrap_variables() {
 
   $site_style = shoestrap_getVariable( 'site_style' );
 
-  $body_bg          = '#' . str_replace( '#', '', shoestrap_sanitize_hex( shoestrap_getVariable( 'color_body_bg', true ) ) );
   $brand_primary    = '#' . str_replace( '#', '', shoestrap_sanitize_hex( shoestrap_getVariable( 'color_brand_primary', true ) ) );
   $brand_success    = '#' . str_replace( '#', '', shoestrap_sanitize_hex( shoestrap_getVariable( 'color_brand_success', true ) ) );
   $brand_warning    = '#' . str_replace( '#', '', shoestrap_sanitize_hex( shoestrap_getVariable( 'color_brand_warning', true ) ) );
@@ -162,22 +161,6 @@ function shoestrap_variables() {
     $jumbotron_headers_text_color  = $jumbotron_text_color;
   }
 
-  // Calculate the gray shadows based on the body background.
-  // We basically create 2 "presets": light and dark.
-  if ( shoestrap_get_brightness( $body_bg ) > 80 ) {
-    $gray_darker  = 'lighten(#000, 13.5%)';
-    $gray_dark    = 'lighten(#000, 20%)';
-    $gray         = 'lighten(#000, 33.5%)';
-    $gray_light   = 'lighten(#000, 60%)';
-    $gray_lighter = 'lighten(#000, 93.5%)';
-  } else {
-    $gray_darker  = 'darken(#fff, 13.5%)';
-    $gray_dark    = 'darken(#fff, 20%)';
-    $gray         = 'darken(#fff, 33.5%)';
-    $gray_light   = 'darken(#fff, 60%)';
-    $gray_lighter = 'darken(#fff, 93.5%)';
-  }
-
   $link_hover_color = ( shoestrap_get_brightness( $brand_primary ) > 50 ) ? 'darken(@link-color, 15%)' : 'lighten(@link-color, 15%)';
 
   if ( shoestrap_get_brightness( $brand_primary ) > 50 ) {
@@ -256,8 +239,6 @@ $variables = '
 @d9534f: ' . $brand_danger . ';
 @5bc0de: ' . $brand_info . ';
 
-@fff: ' . $body_bg . ';
-
 
 //
 // Variables
@@ -268,11 +249,6 @@ $variables = '
 //
 //## Gray and brand colors for use across Bootstrap.
 
-@gray-darker:            ' . $gray_darker . ';
-@gray-dark:              ' . $gray_dark . ';
-@gray:                   ' . $gray . ';
-@gray-light:             ' . $gray_light . ';
-@gray-lighter:           ' . $gray_lighter . ';
 
 @ccc: mix(@gray-light, @gray-lighter);
 
@@ -286,8 +262,6 @@ $variables = '
 //
 // ## Settings for some of the most global styles.
 
-//** Background color for `<body>`.
-@body-bg:               @fff;
 //** Global text color on `<body>`.
 @text-color:            ' . $text_color . ';
 
@@ -359,7 +333,6 @@ $variables = '
 @border-radius-small:            floor(@border-radius-base * 0.75);
 
 //** Global color for active items (e.g., navs or dropdowns).
-@component-active-color:    @fff;
 //** Global background color for active items (e.g., navs or dropdowns).
 @component-active-bg:       @brand-primary;
 
@@ -396,7 +369,6 @@ $variables = '
 @btn-font-weight:                normal;
 
 @btn-default-color:              @gray-dark;
-@btn-default-bg:                 @body-bg;
 @btn-default-border:             @ccc;
 
 @btn-primary-color:              ' . $btn_primary_color . ';
@@ -426,8 +398,6 @@ $variables = '
 //
 //##
 
-//** `<input>` background color
-@input-bg:                       @body-bg;
 //** `<input disabled>` background color
 @input-bg-disabled:              @gray-lighter;
 
@@ -463,8 +433,6 @@ $variables = '
 //
 //## Dropdown menu container and contents.
 
-//** Background for the dropdown menu.
-@dropdown-bg:                    ' . $body_bg . ';
 //** Dropdown menu `border-color`.
 @dropdown-border:                rgba(0,0,0,.15);
 //** Dropdown menu `border-color` **for IE8**.
@@ -630,19 +598,16 @@ $variables = '
 @nav-disabled-link-color:                   @gray-light;
 @nav-disabled-link-hover-color:             @gray-light;
 
-@nav-open-link-hover-color:                 @body-bg;
 
 //== Tabs
 @nav-tabs-border-color:                     @table-border-color;
 
 @nav-tabs-link-hover-border-color:          @gray-lighter;
 
-@nav-tabs-active-link-hover-bg:             @body-bg;
 @nav-tabs-active-link-hover-color:          @gray;
 @nav-tabs-active-link-hover-border-color:   @table-border-color;
 
 @nav-tabs-justified-link-border-color:            @table-border-color;
-@nav-tabs-justified-active-link-border-color:     @body-bg;
 
 //== Pills
 @nav-pills-border-radius:                   @border-radius-base;
@@ -655,19 +620,16 @@ $variables = '
 //##
 
 @pagination-color:                     @link-color;
-@pagination-bg:                        ' . $body_bg . ';
 @pagination-border:                    ' . $table_border_color . ';
 
 @pagination-hover-color:               @link-hover-color;
 @pagination-hover-bg:                  @gray-lighter;
 @pagination-hover-border:              @table-border-color;
 
-@pagination-active-color:              @fff;
 @pagination-active-bg:                 @brand-primary;
 @pagination-active-border:             @brand-primary;
 
 @pagination-disabled-color:            @gray-light;
-@pagination-disabled-bg:               @body-bg;
 @pagination-disabled-border:           @table-border-color;
 
 //== Pager
@@ -724,8 +686,6 @@ $variables = '
 
 //** Tooltip max width
 @tooltip-max-width:           200px;
-//** Tooltip text color
-@tooltip-color:               @body-bg;
 //** Tooltip background color
 @tooltip-bg:                  darken(@gray-darker, 15%);
 @tooltip-opacity:             .9;
@@ -740,8 +700,6 @@ $variables = '
 //
 //##
 
-//** Popover body background color
-@popover-bg:                          @body-bg;
 //** Popover maximum width
 @popover-max-width:                   276px;
 //** Popover border color
@@ -754,8 +712,6 @@ $variables = '
 
 //** Popover arrow width
 @popover-arrow-width:                 (@tooltip-arrow-width * 2);
-//** Popover arrow color
-@popover-arrow-color:                 @body-bg;
 
 //** Popover outer arrow width
 @popover-arrow-outer-width:           (@popover-arrow-width + 1);
@@ -782,11 +738,6 @@ $variables = '
 //** Danger label background color
 @label-danger-bg:             @brand-danger;
 
-//** Default label text color
-@label-color:                 @body-bg;
-//** Default text color of a linked label
-@label-link-hover-color:      @body-bg;
-
 
 //== Modals
 //
@@ -800,8 +751,6 @@ $variables = '
 //** Modal title line-height
 @modal-title-line-height:     @line-height-base;
 
-//** Background color of modal content area
-@modal-content-bg:                             @body-bg;
 //** Modal content border color
 @modal-content-border-color:                   rgba(0,0,0,.2);
 //** Modal content border color **for IE8**
@@ -852,7 +801,6 @@ $variables = '
 //** Background color of the whole progress component
 @progress-bg:                 ' . $table_bg_hover . ';
 //** Progress bar text color
-@progress-bar-color:          ' . $body_bg . ';
 
 //** Default progress bar color
 @progress-bar-bg:             @brand-primary;
@@ -870,8 +818,6 @@ $variables = '
 //
 //##
 
-//** Background color on `.list-group-item`
-@list-group-bg:               ' . $body_bg . ';
 //** `.list-group-item` border color
 @list-group-border:           ' . $table_border_color . ';
 //** List group border radius
@@ -894,7 +840,6 @@ $variables = '
 //== Panels
 //
 //##
-@panel-bg:                    ' . $body_bg . ';
 @panel-body-padding:          floor((@grid-gutter-width / 2));
 @panel-border-radius:         @border-radius-base;
 
@@ -906,7 +851,6 @@ $variables = '
 @panel-default-border:        @table-border-color;
 @panel-default-heading-bg:    @panel-footer-bg;
 
-@panel-primary-text:          ' . $body_bg . ';
 @panel-primary-border:        @brand-primary;
 @panel-primary-heading-bg:    @brand-primary;
 
@@ -932,8 +876,6 @@ $variables = '
 //##
 //** Padding around the thumbnail image
 @thumbnail-padding:           ceil(@table-cell-padding / 2 );
-//** Thumbnail background color
-@thumbnail-bg:                @body-bg;
 //** Thumbnail border color
 @thumbnail-border:            @list-group-border;
 //** Thumbnail border radius
@@ -956,15 +898,11 @@ $variables = '
 //
 //##
 
-@badge-color:                 @body-bg;
-//** Linked badge text color on hover
-@badge-link-hover-color:      @body-bg;
 //** Badge background color in active nav link
 @badge-bg:                    @gray-light;
 
 //** Badge text color in active nav link
 @badge-active-color:          @link-color;
-@badge-active-bg:             @body-bg;
 
 @badge-font-weight:           bold;
 @badge-line-height:           1;
@@ -993,15 +931,10 @@ $variables = '
 
 @carousel-text-shadow:                        0 1px 2px rgba(0,0,0,.6);
 
-@carousel-control-color:                      @body-bg;
 @carousel-control-width:                      15%;
 @carousel-control-opacity:                    .5;
 @carousel-control-font-size:                  @line-height-computed;
 
-@carousel-indicator-active-bg:                @body-bg;
-@carousel-indicator-border-color:             @body-bg;
-
-@carousel-caption-color:                      @body-bg;
 
 
 //== Close
@@ -1010,7 +943,6 @@ $variables = '
 
 @close-font-weight:           bold;
 @close-color:                 darken(@gray-darker, 15%);
-@close-text-shadow:           0 1px 0 @body-bg;
 
 
 // Code
