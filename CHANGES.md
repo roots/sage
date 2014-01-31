@@ -1,3 +1,7 @@
+### HEAD
+
+* Updating jQuery to 1.11.0
+
 ### 3.1.0.0
 
 * New: Updating to Bootstrap 3.1.0
