@@ -1,3 +1,14 @@
+### 3.1.0.0
+
+New: Updating to Bootstrap 3.1.0
+Fix: Removed the presets module
+Fix: Updating dependencies
+New: Removed the PHP compiler from vore and including it as an external dependency
+Fix: Jumbotron border color
+New: Removed ReduxFramework from the theme core and including it as a dependency.
+Fix: Removed link to github repo from redux footer until redux is updated in the WordPress repository
+Fix: Removed the palettes module
+
 ### 3.0.309
 
 Important notice:
