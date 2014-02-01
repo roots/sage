@@ -7,7 +7,7 @@ if ( !function_exists( 'shoestrap_module_featured_images_options' ) ) :
 function shoestrap_module_featured_images_options( $sections ) {
 
   $settings  = get_option( 'shoestrap' );
-  $screen_large_desktop = $settings[ 'screen_large_desktop' ];
+  $screen_large_desktop = filter_var( $settings[ 'screen_large_desktop' ], FILTER_SANITIZE_NUMBER_INT );
 
   $section = array( 
     'title'     => __( 'Featured Images', 'shoestrap' ),

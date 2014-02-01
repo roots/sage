@@ -21,8 +21,8 @@ function shoestrap_compiler() {
     // The main app.less file
     $parser->parseFile( $bootstrap_location . 'app.less', $bootstrap_uri );
     // Our custom variables
-    $parser->parse( shoestrap_variables() );
-    $parser->parse( shoestrap_variables_background() );
+    // $custom_variables = apply_filters( 'shoestrap_variables', '' );
+    // $parser->parse( $custom_variables );
 
     // Include the Elusive Icons
     $parser->parseFile( $webfont_location . 'elusive-webfont.less', $bootstrap_uri );

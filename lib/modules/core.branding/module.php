@@ -136,3 +136,4 @@ add_filter( 'redux/options/'.REDUX_OPT_NAME.'/sections', 'shoestrap_module_brand
 
 include_once( dirname( __FILE__ ) . '/functions.logo.php' );
 include_once( dirname( __FILE__ ) . '/functions.icons.php' );
+include_once( dirname( __FILE__ ) . '/variables.php' );

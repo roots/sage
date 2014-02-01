@@ -184,3 +184,4 @@ add_filter( 'redux/options/'.REDUX_OPT_NAME.'/sections', 'shoestrap_module_typog
 endif;
 
 include_once( dirname( __FILE__ ).'/functions.typography.php' );
+include_once( dirname( __FILE__ ).'/variables.php' );

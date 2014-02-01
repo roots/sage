@@ -94,7 +94,7 @@ function shoestrap_module_advanced_options( $sections ) {
     'title'     => __( 'Padding Base', 'shoestrap' ),
     'desc'      => __( 'You can adjust the padding base. This affects buttons size and lots of other cool stuff too! Default: 8', 'shoestrap' ),
     'id'        => 'padding_base',
-    'default'   => 8,
+    'default'   => 6,
     'min'       => 0,
     'step'      => 1,
     'max'       => 20,
@@ -200,6 +200,7 @@ add_filter( 'redux/options/'.REDUX_OPT_NAME.'/sections', 'shoestrap_module_advan
 
 include_once( dirname( __FILE__ ).'/functions.advanced.php' );
 include_once( dirname( __FILE__ ).'/debug-hooks.php' );
+include_once( dirname( __FILE__ ).'/variables.php' );
 
 if ( !function_exists( 'shoestrap_debug_hooks' ) ) :
 function shoestrap_debug_hooks() {

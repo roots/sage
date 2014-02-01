@@ -269,3 +269,4 @@ add_filter( 'redux/options/'.REDUX_OPT_NAME.'/sections', 'shoestrap_module_layou
 
 
 include_once( dirname( __FILE__ ).'/functions.layout.php' );
+include_once( dirname( __FILE__ ).'/variables.php' );

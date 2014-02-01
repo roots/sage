@@ -311,6 +311,7 @@ include_once( dirname( __FILE__ ) . '/functions.secondary.navbar.php' );
 include_once( dirname( __FILE__ ) . '/functions.slide-down.php' );
 include_once( dirname( __FILE__ ) . '/functions.navlist-walker.php' );
 include_once( dirname( __FILE__ ) . '/functions.navlist.php' );
+include_once( dirname( __FILE__ ) . '/variables.php' );
 
 if ( shoestrap_getVariable( 'navbar_toggle' ) == 'alt' ) :
   include_once( dirname( __FILE__ ) . '/functions.navwalker.php' );

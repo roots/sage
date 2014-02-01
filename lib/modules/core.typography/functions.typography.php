@@ -12,7 +12,7 @@ function getGoogleScript( $font ) {
     $data['link'] .= ':' . str_replace( '-', '', $font['font-weight'] );
   }
 
-	if ( !empty( $font['font-style'] ) ) {
+  if ( !empty( $font['font-style'] ) ) {
     $data['key'] .= '-' . str_replace( '_', '', $font['font-style'] );
   }
 
@@ -36,6 +36,9 @@ function shoestrap_module_typography_googlefont_links() {
   $font_brand           = shoestrap_getVariable( 'font_brand' );
   $font_jumbotron       = shoestrap_getVariable( 'font_jumbotron' );
   $font_heading         = shoestrap_getVariable( 'font_heading' );
+
+  if ( !isset( $font_base['google'] ) || is_null( $font_base['google'] ) || empty( $font_base['google'] ) )
+    $font_base['google'] = false;
 
   if ( shoestrap_getVariable( 'font_heading_custom' ) ) {
     $font_h1 = shoestrap_getVariable( 'font_h1' );
