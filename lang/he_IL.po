@@ -2,17 +2,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-14 18:49+0100\n"
+"POT-Creation-Date: 2014-02-1 18:49+0100\n"
 "PO-Revision-Date: \n"
-"Last-Translator: \n"
+"Last-Translator: Amit Tal \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-KeywordsList: _;gettext;gettext_noop;__;_e\n"
 "X-Poedit-Basepath: ../\n"
-"X-Poedit-Language: French\n"
-"X-Poedit-Country: FRANCE\n"
+"X-Poedit-Language: Hebrew\n"
+"X-Poedit-Country: ISRAEL\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPath-1: ./templates\n"
@@ -20,24 +20,24 @@ msgstr ""
 
 #: 404.php:5
 msgid "The page you are looking for might have been removed, had its name changed, or is temporarily unavailable."
-msgstr "La page demandée a changé de nom ou est temporairement inaccessible."
+msgstr "העמוד שאתם מחפשים כנראה נמחק, הוחלף או שאינו זמין כרגע."
 
 #: 404.php:8
 msgid "Please try the following:"
-msgstr "Veuillez essayer les actions suivantes :"
+msgstr "נסו את אחת מהאפשרויות הבאות:"
 
 #: 404.php:10
 msgid "Check your spelling"
-msgstr "Vérifiez votre syntaxe"
+msgstr "בדקו אם יש שגיאות כתיב"
 
 #: 404.php:11
 #, php-format
 msgid "Return to the <a href=\"%s\">home page</a>"
-msgstr "Revenir à la <a href=\"%s\">page d'accueil</a>"
+msgstr "חזרו אל <a href=\"%s\">דף הבית</a>"
 
 #: 404.php:12
 msgid "Click the <a href=\"javascript:history.back()\">Back</a> button"
-msgstr "Cliquer sur le bouton <a href=\"javascript:history.back()\">Retour</a>"
+msgstr "לחצו על כפתור <a href=\"javascript:history.back()\">חזרה</a>"
 
 #: lib/activation.php:31
 #: lib/activation.php:32
