@@ -247,3 +247,4 @@ endif;
 add_filter( 'redux/options/'.REDUX_OPT_NAME.'/sections', 'shoestrap_module_jumbotron_options', 70 ); 
 
 include_once( dirname(__FILE__).'/functions.jumbotron.php' );
+include_once( dirname(__FILE__).'/variables.php' );

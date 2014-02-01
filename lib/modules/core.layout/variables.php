@@ -7,6 +7,8 @@ function shoestrap_variables_layout() {
 	$gutter    = filter_var( shoestrap_getVariable( 'layout_gutter', true ), FILTER_SANITIZE_NUMBER_INT );
 	$gutter    = ( $gutter < 2 ) ? 2 : $gutter;
 
+	$site_style = shoestrap_getVariable( 'site_style' );
+
 	$screen_xs = ( $site_style == 'static' ) ? '50px' : '480px';
 	$screen_sm = ( $site_style == 'static' ) ? '50px' : $screen_sm;
 	$screen_md = ( $site_style == 'static' ) ? '50px' : $screen_md;
@@ -21,8 +23,6 @@ function shoestrap_variables_layout() {
 	$grid_float_breakpoint = ( $gfb == 'max' )           ? '9999px'         : $grid_float_breakpoint;
 
 	$grid_float_breakpoint = ( $gfb == 'screen-lg-min' ) ? '0 !important' : $grid_float_breakpoint;
-
-	$site_style = shoestrap_getVariable( 'site_style' );
 
 	$variables = '';
 
