@@ -66,7 +66,7 @@ function shoestrap_variables_typography() {
 
 	$variables .= '@text-color:             ' . $text_color . ';';
 	$variables .= '@font-family-sans-serif: ' . $sans_serif . ';';
-	$variables .= '@font-size-base:         ' . $font_size_base . ';';
+	$variables .= '@font-size-base:         ' . $font_size_base . 'px;';
 
 	$variables .= '@font-size-h1: floor((@font-size-base * ' . $font_h1_size . '));';
 	$variables .= '@font-size-h2: floor((@font-size-base * ' . $font_h2_size . '));';
