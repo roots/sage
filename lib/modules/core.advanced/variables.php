@@ -41,6 +41,6 @@ function shoestrap_variables_advanced() {
 
 
 function shoestrap_variables_advanced_filter( $variables ) {
-	$variables = $variables . shoestrap_variables_advanced();
+	return $variables . shoestrap_variables_advanced();
 }
-add_filter( 'shoestrap_variables', 'shoestrap_variables_advanced_filter' );
+add_filter( 'shoestrap_compiler', 'shoestrap_variables_advanced_filter' );

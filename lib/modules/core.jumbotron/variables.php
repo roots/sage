@@ -42,6 +42,6 @@ function shoestrap_variables_jumbotron() {
 
 
 function shoestrap_variables_jumbotron_filter( $variables ) {
-	$variables = $variables . shoestrap_variables_jumbotron();
+	return $variables . shoestrap_variables_jumbotron();
 }
-add_filter( 'shoestrap_variables', 'shoestrap_variables_jumbotron_filter' );
+add_filter( 'shoestrap_compiler', 'shoestrap_variables_jumbotron_filter' );

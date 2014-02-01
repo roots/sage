@@ -126,6 +126,6 @@ function shoestrap_variables_typography() {
 }
 
 function shoestrap_variables_typography_filter( $variables ) {
-	$variables = $variables . shoestrap_variables_typography();
+	return $variables . shoestrap_variables_typography();
 }
-add_filter( 'shoestrap_variables', 'shoestrap_variables_typography_filter' );
+add_filter( 'shoestrap_compiler', 'shoestrap_variables_typography_filter' );

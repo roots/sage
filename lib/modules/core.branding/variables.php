@@ -76,6 +76,6 @@ function shoestrap_variables_branding() {
 
 
 function shoestrap_variables_branding_filter( $variables ) {
-	$variables = $variables . shoestrap_variables_branding();
+	return $variables . shoestrap_variables_branding();
 }
-add_filter( 'shoestrap_variables', 'shoestrap_variables_branding_filter' );
+add_filter( 'shoestrap_compiler', 'shoestrap_variables_branding_filter' );

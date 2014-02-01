@@ -66,6 +66,6 @@ function shoestrap_variables_navbar() {
 
 
 function shoestrap_variables_navbar_filter( $variables ) {
-	$variables = $variables . shoestrap_variables_navbar();
+	return $variables . shoestrap_variables_navbar();
 }
-add_filter( 'shoestrap_variables', 'shoestrap_variables_navbar_filter' );
+add_filter( 'shoestrap_compiler', 'shoestrap_variables_navbar_filter' );

@@ -58,3 +58,9 @@ function shoestrap_variables_layout() {
 
 	return $variables;
 }
+
+
+function shoestrap_variables_layout_filter( $variables ) {
+	return $variables . shoestrap_variables_layout();
+}
+add_filter( 'shoestrap_compiler', 'shoestrap_variables_layout_filter' );
