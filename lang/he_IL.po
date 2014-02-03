@@ -172,7 +172,7 @@ msgstr "פוטר"
 
 #: lib/widgets.php:41
 msgid "Use this widget to add a vCard"
-msgstr "Utiliser ce widget pour ajouter une vCard"
+msgstr "השתמש בווידג'ט זה כדי להוסיף vCard"
 
 #: lib/widgets.php:43
 msgid "Roots: vCard"
@@ -259,7 +259,7 @@ msgstr "שם"
 #: templates/comments.php:92
 #: templates/comments.php:94
 msgid " (required)"
-msgstr " (obligatoire)"
+msgstr " (חובה)"
 
 #: templates/comments.php:94
 msgid "Email (will not be published)"
