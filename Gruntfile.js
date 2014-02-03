@@ -33,18 +33,18 @@ module.exports = function(grunt) {
       dist: {
         files: {
           'assets/js/scripts.min.js': [
-            'assets/js/plugins/bootstrap/transition.js',
-            'assets/js/plugins/bootstrap/alert.js',
-            'assets/js/plugins/bootstrap/button.js',
-            'assets/js/plugins/bootstrap/carousel.js',
-            'assets/js/plugins/bootstrap/collapse.js',
-            'assets/js/plugins/bootstrap/dropdown.js',
-            'assets/js/plugins/bootstrap/modal.js',
-            'assets/js/plugins/bootstrap/tooltip.js',
-            'assets/js/plugins/bootstrap/popover.js',
-            'assets/js/plugins/bootstrap/scrollspy.js',
-            'assets/js/plugins/bootstrap/tab.js',
-            'assets/js/plugins/bootstrap/affix.js',
+            'assets/vendor/bootstrap/js/transition.js',
+            'assets/vendor/bootstrap/js/alert.js',
+            'assets/vendor/bootstrap/js/button.js',
+            'assets/vendor/bootstrap/js/carousel.js',
+            'assets/vendor/bootstrap/js/collapse.js',
+            'assets/vendor/bootstrap/js/dropdown.js',
+            'assets/vendor/bootstrap/js/modal.js',
+            'assets/vendor/bootstrap/js/tooltip.js',
+            'assets/vendor/bootstrap/js/popover.js',
+            'assets/vendor/bootstrap/js/scrollspy.js',
+            'assets/vendor/bootstrap/js/tab.js',
+            'assets/vendor/bootstrap/js/affix.js',
             'assets/js/plugins/*.js',
             'assets/js/_*.js'
           ]
@@ -68,8 +68,7 @@ module.exports = function(grunt) {
     watch: {
       less: {
         files: [
-          'assets/less/*.less',
-          'assets/less/bootstrap/*.less'
+          'assets/less/*.less'
         ],
         tasks: ['less', 'version']
       },
