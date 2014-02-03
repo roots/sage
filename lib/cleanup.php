@@ -109,8 +109,12 @@ add_filter('style_loader_tag', 'roots_clean_style_tag');
 function roots_body_class($classes) {
     // Add post/page slug
     if (is_single() || is_page() && !is_front_page()) {
-        $classes[] = basename(get_permalink());
+        // removed for non-Latin charactars
+        if (!(preg_match('/[^\\p{Common}\\p{Latin}]/u', basename(get_permalink())))) {
+            $classes[] = basename(get_permalink());
+        }
     }
+
     // Remove unnecessary classes
     $home_id_class = 'page-id-' . get_option('page_on_front');
     $remove_classes = array(
@@ -118,6 +122,7 @@ function roots_body_class($classes) {
         $home_id_class
     );
     $classes = array_diff($classes, $remove_classes);
+
     return $classes;
 }
 
