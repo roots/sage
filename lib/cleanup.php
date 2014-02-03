@@ -109,10 +109,7 @@ add_filter('style_loader_tag', 'roots_clean_style_tag');
 function roots_body_class($classes) {
     // Add post/page slug
     if (is_single() || is_page() && !is_front_page()) {
-        // removed for non-Latin charactars
-        if (!(preg_match('/[^\\p{Common}\\p{Latin}]/u', basename(get_permalink())))) {
             $classes[] = basename(get_permalink());
-        }
     }
 
     // Remove unnecessary classes
