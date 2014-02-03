@@ -28,7 +28,7 @@ msgstr "или погрешно унете адресе"
 msgid "an out-of-date link"
 msgstr "или измењене/застареле везе"
 
-#: base.php:4
+#: base.php:6
 msgid ""
 "You are using an <strong>outdated</strong> browser. Please <a href=\"http://"
 "browsehappy.com/\">upgrade your browser</a> to improve your experience."
@@ -53,69 +53,64 @@ msgstr "Новији чланци &rarr;"
 msgid "Theme Activation"
 msgstr "Активирање теме"
 
-#: lib/activation.php:51
+#: lib/activation.php:50
 msgid "%s Theme Activation"
 msgstr "Активирање %s теме"
 
-#: lib/activation.php:62 lib/activation.php:64
+#: lib/activation.php:52
+msgid ""
+"These settings are optional and should usually be used only on a fresh "
+"installation"
+msgstr ""
+"Ове вредности су опционе, обично се постављају само при инсталирању теме"
+
+#: lib/activation.php:59 lib/activation.php:62
 msgid "Create static front page?"
 msgstr "Статична насловна страна?"
 
-#: lib/activation.php:66 lib/activation.php:79 lib/activation.php:92
-#: lib/activation.php:105 lib/activation.php:118
+#: lib/activation.php:64 lib/activation.php:76 lib/activation.php:88
+#: lib/activation.php:100
 msgid "Yes"
 msgstr "Да"
 
-#: lib/activation.php:67 lib/activation.php:80 lib/activation.php:93
-#: lib/activation.php:106 lib/activation.php:119
+#: lib/activation.php:65 lib/activation.php:77 lib/activation.php:89
+#: lib/activation.php:101
 msgid "No"
 msgstr "Не"
 
-#: lib/activation.php:70
+#: lib/activation.php:67
 msgid "Create a page called Home and set it to be the static front page"
 msgstr "Креирање нове стране под називом Home као статичне насловне стране"
 
-#: lib/activation.php:75
+#: lib/activation.php:71
 msgid "Change permalink structure?"
 msgstr "Измена структуре сталних веза?"
 
-#: lib/activation.php:77
+#: lib/activation.php:74
 msgid "Update permalink structure?"
 msgstr "Памћење структуре сталних веза?"
 
-#: lib/activation.php:83
+#: lib/activation.php:79
 msgid "Change permalink structure to /&#37;postname&#37;/"
 msgstr "Измена структуре сталних веза у /&#37;називпоста&#37;/"
 
-#: lib/activation.php:88
-msgid "Change uploads folder?"
-msgstr "Измена пријемног директоријума?"
-
-#: lib/activation.php:90
-msgid "Update uploads folder?"
-msgstr "Памћење пријемног директоријума?"
-
-#: lib/activation.php:96
-msgid "Change uploads folder to /media/ instead of /wp-content/uploads/"
-msgstr "Измена пријемног директоријума /wp-content/uploads/ у /assets/"
-
-#: lib/activation.php:101 lib/activation.php:103
+#: lib/activation.php:83 lib/activation.php:86
 msgid "Create navigation menu?"
 msgstr "Креирање навигационог изборника?"
 
-#: lib/activation.php:109
+#: lib/activation.php:91
 msgid "Create the Primary Navigation menu and set the location"
 msgstr "Креирање Основног навигационог изборника и његове позиције?"
 
-#: lib/activation.php:114 lib/activation.php:116
+#: lib/activation.php:95 lib/activation.php:98
 msgid "Add pages to menu?"
 msgstr "Додавање страна у изборник?"
 
-#: lib/activation.php:122
+#: lib/activation.php:103
 msgid "Add all current published pages to the Primary Navigation"
 msgstr "Додавање свих објављених страна у Основни навигациони изборник"
 
-#: lib/cleanup.php:210
+#: lib/cleanup.php:193
 msgid "Continued"
 msgstr "Наставак"
 
@@ -225,27 +220,27 @@ msgstr "Одјава са налога"
 msgid "Log out &raquo;"
 msgstr "Одјава &raquo;"
 
-#: templates/comments.php:57
+#: templates/comments.php:58
 msgid "Name"
 msgstr "Име"
 
-#: templates/comments.php:57 templates/comments.php:59
+#: templates/comments.php:58 templates/comments.php:62
 msgid " (required)"
 msgstr " (обавезно)"
 
-#: templates/comments.php:59
+#: templates/comments.php:62
 msgid "Email (will not be published)"
 msgstr "емеил адреса (невидљива)"
 
-#: templates/comments.php:61
+#: templates/comments.php:66
 msgid "Website"
 msgstr "Вебсајт"
 
-#: templates/comments.php:64
+#: templates/comments.php:71
 msgid "Comment"
 msgstr "Коментар"
 
-#: templates/comments.php:66
+#: templates/comments.php:74
 msgid "Submit Comment"
 msgstr "Пошаљи коментар"
 
@@ -257,10 +252,10 @@ msgstr "Стране:"
 msgid "By"
 msgstr "аутор"
 
-#: templates/searchform.php:2
-msgid "Search for:"
-msgstr "Претрага за:"
-
-#: templates/searchform.php:3 templates/searchform.php:4
+#: templates/searchform.php:3 templates/searchform.php:6
 msgid "Search"
 msgstr "Претрага"
+
+#: templates/searchform.php:4
+msgid "Search for:"
+msgstr "Претрага за:"
