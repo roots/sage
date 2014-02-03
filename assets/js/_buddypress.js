@@ -1,6 +1,24 @@
 // AJAX Functions
 var jq = jQuery;
 
+// Localization variable from original wp_localize_script output
+var BP_DTheme = {
+    "accepted":             "Accepted",
+    "close":                "Close",
+    "comments":             "comments",
+    "leave_group_confirm":  "Are you sure you want to leave this group?",
+    "mark_as_fav":          "Bookmark",
+    "my_favs":              "My Favorites",
+    "rejected":             "Rejected",
+    "remove_fav":           "Bookmarked",
+    "show_all":             "Show all",
+    "show_all_comments":    "Show all comments for this thread",
+    "show_x_comments":      "Show all %d comments",
+    "unsaved_changes":      "Your profile has unsaved changes. If you leave the page, the changes will be lost.",
+    "view":                 "View"
+};
+
+
 // Global variable to prevent multiple AJAX requests
 var bp_ajax_request = null;
 
