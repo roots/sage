@@ -9,11 +9,11 @@ module.exports = function(grunt) {
       all: [
         'Gruntfile.js',
         'assets/js/*.js',
-        '!assets/js/scripts.min.js',
+        '!assets/js/scripts.min.js'
       ]
     },
     less: {
-      theme: {
+      dist: {
         files: {
           'assets/css/main.min.css': [
             'assets/less/app.less'
@@ -21,6 +21,8 @@ module.exports = function(grunt) {
         },
         options: {
           compress: true,
+          // LESS source map
+          // To enable, set sourceMap to true and update sourceMapRootpath based on your install
           sourceMap: true,
           sourceMapFilename: 'assets/css/main.min.css.map',
           sourceMapRootpath: '/wordpress/wp-content/themes/pages-theme-roots/'
@@ -28,7 +30,7 @@ module.exports = function(grunt) {
       }
     },
     uglify: {
-      theme: {
+      dist: {
         files: {
           'assets/js/scripts.min.js': [
             'assets/js/plugins/bootstrap/transition.js',
@@ -48,22 +50,10 @@ module.exports = function(grunt) {
           ]
         },
         options: {
+          // JS source map: to enable, uncomment the lines below and update sourceMappingURL based on your install
           sourceMap: 'assets/js/scripts.min.js.map',
           sourceMapRoot: '/wordpress/wp-content/themes/pages-theme-roots/',
           sourceMappingURL: '/wordpress/wp-content/themes/pages-theme-roots/assets/js/scripts.min.js.map',
-          report: 'min'
-        }
-      },
-      buddypress: {
-        files: {
-          'buddypress/js/buddypress.js': [
-          'buddypress/js/_buddypress.js'
-          ]
-        },
-        options: {
-          sourceMap: 'buddypress/js/buddypress.js.map',
-          sourceMapRoot: '/wordpress/wp-content/themes/pages-theme-roots/',
-          sourceMappingURL: '/wordpress/wp-content/themes/pages-theme-roots/buddypress/js/buddypress.js.map',
           report: 'min'
         }
       }
@@ -81,15 +71,13 @@ module.exports = function(grunt) {
       less: {
         files: [
           'assets/less/*.less',
-          'assets/less/bootstrap/*.less',
-          'buddypress/css/*.less'
+          'assets/less/bootstrap/*.less'
         ],
         tasks: ['less', 'version', 'rsync:test']
       },
       js: {
         files: [
-          '<%= jshint.all %>',
-          'buddypress/js/_buddypress.js'
+          '<%= jshint.all %>'
         ],
         tasks: ['jshint', 'uglify', 'version', 'rsync:test']
       },
@@ -104,151 +92,115 @@ module.exports = function(grunt) {
         tasks: ['rsync:test']
       },
       livereload: {
-                // Browser live reloading
-                // https://github.com/gruntjs/grunt-contrib-watch#live-reloading
-                options: {
-                  livereload: false
-                },
-                files: [
-                'assets/css/main.min.css',
-                'assets/js/scripts.min.js',
-                '<%= watch.php.files %>'
-                ]
-              }
-            },
-            clean: {
-              dist: [
-                'assets/css/main.min.css',
-                'assets/css/main.min.css.map',
-                'assets/js/scripts.min.js',
-                'assets/js/scripts.min.js.map',
-                'buddypress/js/buddypress.js.map',
-                'buddypress/css/buddypress.css.map',
-                'buddypress/css/buddypress-rtl.css.map',
-                'dist'
-              ]
-            },
-            rsync: {
-              test: {
-                src: "./",
-                dest: "/var/www/wordpress/wp-content/themes/pages-theme-roots",
-                host: "tobias@test",
-                ssh: true,
-                privatekey: "~/.ssh/id_rsa",
-                recursive: true,
-                syncDest: true,
-                exclude: [
-                  '.git*',
-                  'node_modules',
-                  'Gruntfile.js',
-                  'package.json',
-                  '.DS_Store',
-                  '.editorconfig',
-                  'README.md',
-                  'CHANGELOG.md',
-                  'CONTRIBUTING.md',
-                  'LICENSE.md',
-                  'LICENSE.txt',
-                  'config.rb',
-                  '.jshintrc',
-                  '*.tmproj',
-                  '*.sublime-project',
-                  'ftpsync.settings',
-                  '.ftppass',
-                  'sftp-config.json'
-                ]
-              },
-              dist: {
-                src: "./",
-                dest: "dist",
-                recursive: true,
-                syncDest: true,
-                exclude: [
-                  '.git*',
-                  'node_modules',
-                  'Gruntfile.js',
-                  'package.json',
-                  '.DS_Store',
-                  '.editorconfig',
-                  'README.md',
-                  'CHANGELOG.md',
-                  'CONTRIBUTING.md',
-                  'LICENSE.md',
-                  'LICENSE.txt',
-                  'config.rb',
-                  '.jshintrc',
-                  '*.tmproj',
-                  '*.sublime-project',
-                  'ftpsync.settings',
-                  '.ftppass',
-                  'sftp-config.json',
-                  '*.css.map',
-                  '*.js.map',
-                  'assets/less',
-                  'assets/js/plugins',
-                  'assets/js/_*.js',
-                  'buddypress/js/_*.js',
-                  'buddypress/css/_*.css',
-                  'buddypress/css/*.less'
-                ]
-              }
-            },
-            'ftp-deploy': {
-              staging: {
-                auth: {
-                  host: 'pages-tdm-test.au.dk',
-                  port: 21,
-                  authKey: 'key1'
-                },
-                src: './',
-                dest: '/wp-content/themes/pages-theme-roots',
-                exclusions: [
-                '<%= rsync.test.exclude %>'
-                ]
-              },
-              production: {
-                auth: {
-                  host: 'pages-tdm.au.dk',
-                  port: 21,
-                  authKey: 'key1'
-                },
-                src: './',
-                dest: '/wp-content/themes/pages-theme-roots',
-                exclusions: [
-                '<%= rsync.test.exclude %>'
-                ]
-              }
-            }
-          });
+        // Browser live reloading
+        // https://github.com/gruntjs/grunt-contrib-watch#live-reloading
+        options: {
+          livereload: false
+        },
+        files: [
+          'assets/css/main.min.css',
+          'assets/js/scripts.min.js',
+          'templates/*.php',
+          '*.php'
+        ]
+      }
+    },
+    clean: {
+      dist: [
+        'assets/css/main.min.css',
+        'assets/js/scripts.min.js',
+        'assets/css/main.min.css.map',
+        'assets/js/scripts.min.js.map'
+      ]
+    },
+    rsync: {
+      test: {
+        src: './',
+        dest: '/var/www/wordpress/wp-content/themes/pages-theme-roots',
+        host: 'tobias@test',
+        ssh: true,
+        privatekey: '~/.ssh/id_rsa',
+        recursive: true,
+        syncDest: true,
+        exclude: [
+          '.git*',
+          'node_modules',
+          'Gruntfile.js',
+          'package.json',
+          '.DS_Store',
+          '.editorconfig',
+          'README.md',
+          'CHANGELOG.md',
+          'CONTRIBUTING.md',
+          'LICENSE.md',
+          'LICENSE.txt',
+          'config.rb',
+          '.jshintrc',
+          '*.tmproj',
+          '*.sublime-project',
+          'ftpsync.settings',
+          '.ftppass',
+          'sftp-config.json'
+        ]
+      }
+    },
+    'ftp-deploy': {
+      staging: {
+        auth: {
+          host: 'pages-tdm-test.au.dk',
+          port: 21,
+          authKey: 'key1'
+        },
+        src: './',
+        dest: '/wp-content/themes/pages-theme-roots',
+        exclusions: [
+        '<%= rsync.test.exclude %>'
+        ]
+      },
+      production: {
+        auth: {
+          host: 'pages-tdm.au.dk',
+          port: 21,
+          authKey: 'key1'
+        },
+        src: './',
+        dest: '/wp-content/themes/pages-theme-roots',
+        exclusions: [
+        '<%= rsync.test.exclude %>'
+        ]
+      }
+    }
+  });
 
-    // Load tasks
-    grunt.loadNpmTasks('grunt-contrib-clean');
-    grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-contrib-less');
-    grunt.loadNpmTasks('grunt-wp-version');
-    grunt.loadNpmTasks('grunt-ftp-deploy');
-    grunt.loadNpmTasks("grunt-rsync");
+  // Load tasks
+  grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-less');
+  grunt.loadNpmTasks('grunt-wp-version');
+  grunt.loadNpmTasks('grunt-ftp-deploy');
+  grunt.loadNpmTasks('grunt-rsync');
+  
+  // Register tasks
+  grunt.registerTask('default', [
+    'clean',
+    'less',
+    'uglify',
+    'version'
+  ]);
+  grunt.registerTask('dev', [
+    'default',
+    'rsync:test',
+    'watch'
+  ]);
+  grunt.registerTask('staging', [
+    'default',
+    'ftp-deploy:staging'
+  ]);
+  grunt.registerTask('dist', [
+    'default',
+    'rsync:dist'
+  ]);
 
-    // Register tasks
-    grunt.registerTask('default', [
-      'clean',
-      'less',
-      'uglify',
-      'version'
-      ]);
-    grunt.registerTask('test', [
-      'default',
-      'rsync:test'
-      ]);
-    grunt.registerTask('staging', [
-      'default',
-      'ftp-deploy:staging'
-      ]);
-    grunt.registerTask('dist', [
-      'default',
-      'rsync:dist'
-      ]);
-
-  };
+};
