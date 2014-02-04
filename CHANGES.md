@@ -1,6 +1,13 @@
-### HEAD
+### 3.1.0.1
 
 * Updating jQuery to 1.11.0
+* Fix: Re-Organizing Admin section settings
+* New: Modules are now Self-Contained.
+* Fix: Re-organizing file structure for modules
+* Fix: Fixed inline style generation of header margin. (props @larruda)
+* Fix: Adding variables using the shoestrap_compiler filter
+* FIx: Variables and Less files are now per-module.
+* Fix: Other Bugfixes
 
 ### 3.1.0.0
 
