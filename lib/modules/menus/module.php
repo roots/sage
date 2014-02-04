@@ -23,7 +23,7 @@ function shoestrap_module_menus_options( $sections ) {
 	$url = admin_url( 'nav-menus.php?action=locations' );
 	$fields[] = array( 
 		'title'       => __( 'Type of NavBar', 'shoestrap' ),
-		'desc'        => __( 'Choose the type of Navbar you want. Off completely hides the navbar, Alternative uses an alternative walker for the navigation menus. See <a target="_blank"href="https://github.com/twittem/wp-bootstrap-navwalker">here</a> for more details. <strong>WARNING:</strong> The "Static-Left" option is ONLY compatible with fluid layouts.', 'shoestrap' ),
+		'desc'        => __( 'Choose the type of Navbar you want. Off completely hides the navbar, Alternative uses an alternative walker for the navigation menus. See <a target="_blank"href="https://github.com/twittem/wp-bootstrap-navwalker">here</a> for more details.', 'shoestrap' ) . '<br>' . __( '<strong>WARNING:</strong> The "Static-Left" option is ONLY compatible with fluid layouts. The width of the static-left navbar is controlled by the secondary sidebar width.', 'shoestrap' ),
 		'id'          => 'navbar_toggle',
 		'default'     => 'normal',
 		'options'     => array(
