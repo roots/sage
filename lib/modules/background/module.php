@@ -9,7 +9,7 @@ function shoestrap_module_background_options( $sections ) {
 
 	//Background Patterns Reader
 	$bg_pattern_images_path = get_template_directory() . '/lib/modules/background/patterns';
-	$bg_pattern_images_url  = get_template_directory_uri() . '/lib/modules/background/patterns';
+	$bg_pattern_images_url  = get_template_directory_uri() . '/lib/modules/background/patterns/';
 
 	$bg_pattern_images      = array();
 
