@@ -1,0 +1,30 @@
+.widget_search {
+	form#searchform {
+		position: relative;
+		input.form-control {
+			padding-right: ((@padding-base-horizontal * 2) + @font-size-base);
+		}
+		button#searchsubmit {
+			position: absolute;
+			top: 0;
+			right: 0;
+			.border-left-radius(0px);
+		}
+	}
+}
+
+//Styling selects in widgets
+.widget select {
+	width: 100%;
+	color: @link-color;
+	background-color: @body-bg;
+	height: 110%;
+	font-size: 110%;
+} 
+
+.widget {
+	&.panel {
+		-webkit-box-shadow: none;
+		box-shadow: none;
+	}
+}

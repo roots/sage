@@ -14,10 +14,10 @@ if ( !function_exists( 'shoestrap_variables' ) ) :
 function shoestrap_variables() {
 
 
-  $font_brand             = shoestrap_process_font( shoestrap_getVariable( 'font_brand', true ) );
-  $font_heading           = shoestrap_process_font( shoestrap_getVariable( 'font_heading', true ) );  
+	$font_brand             = shoestrap_process_font( shoestrap_getVariable( 'font_brand', true ) );
+	$font_heading           = shoestrap_process_font( shoestrap_getVariable( 'font_heading', true ) );  
 
-  $font_style_base  = $font_base['font-style'];
-  $font_weight_base = $font_base['font-weight'];
+	$font_style_base  = $font_base['font-style'];
+	$font_weight_base = $font_base['font-weight'];
 }
 endif;
