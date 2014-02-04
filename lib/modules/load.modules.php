@@ -4,7 +4,7 @@
 require_once get_template_directory() . '/lib/modules/redux/module.php';
 require_once get_template_directory() . '/lib/modules/core/module.php';
 require_once get_template_directory() . '/lib/modules/layout/module.php';
-require_once get_template_directory() . '/lib/modules/images/module.php';
+require_once get_template_directory() . '/lib/modules/blog/module.php';
 
 if ( !function_exists( 'shoestrap_include_modules' ) ) :
 /*

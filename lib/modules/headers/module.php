@@ -3,8 +3,8 @@
 /*;
  * The jumbotron core options for the Shoestrap theme
  */
-if ( !function_exists( 'shoestrap_module_jumbotron_options' ) ) :
-function shoestrap_module_jumbotron_options($sections) {
+if ( !function_exists( 'shoestrap_module_headers_options' ) ) :
+function shoestrap_module_headers_options($sections) {
 
 	//Background Patterns Reader
 	$bg_pattern_images_path = get_template_directory() . '/lib/modules/background/patterns';
@@ -19,9 +19,94 @@ function shoestrap_module_jumbotron_options($sections) {
 		endwhile;
 	endif;
 
-	// Branding Options
+	$url = admin_url( 'widgets.php' );
+	$fields[] = array( 
+		'id'          => 'help9',
+		'title'       => __( 'Extra Branding Area', 'shoestrap' ),
+		'desc'        => __( "You can enable an extra branding/header area. In this header you can add your logo, and any other widgets you wish.
+											To add widgets on your header, visit <a href='$url'>this page</a> and add your widgets to the <strong>Header</strong> Widget Area.", 'shoestrap' ),
+		'type'        => 'info',
+	);
+
+	$fields[] = array( 
+		'title'       => __( 'Display the Header.', 'shoestrap' ),
+		'desc'        => __( 'Turn this ON to display the header. Default: OFF', 'shoestrap' ),
+		'id'          => 'header_toggle',
+		'customizer'  => array(),
+		'default'     => 0,
+		'type'        => 'switch',
+	);
+
+	$fields[] = array( 
+		'title'       => __( 'Display branding on your Header.', 'shoestrap' ),
+		'desc'        => __( 'Turn this ON to display branding ( Sitename or Logo )on your Header. Default: ON', 'shoestrap' ),
+		'id'          => 'header_branding',
+		'customizer'  => array(),
+		'default'     => 1,
+		'type'        => 'switch',
+		'required'    => array('header_toggle','=',array('1')),
+	);
+
+	$fields[] = array( 
+		'title'       => __( 'Header Background Color', 'shoestrap' ),
+		'desc'        => __( 'Select the background color for your header. Default: #EEEEEE.', 'shoestrap' ),
+		'id'          => 'header_bg',
+		'default'     => '#EEEEEE',
+		'customizer'  => array(),
+		'transparent' => false,    
+		'type'        => 'color',
+		'required'    => array('header_toggle','=',array('1')),
+	);
+
+	$fields[] = array( 
+		'title'       => __( 'Header Background Opacity', 'shoestrap' ),
+		'desc'        => __( 'Select the background opacity for your header. Default: 100%.', 'shoestrap' ),
+		'id'          => 'header_bg_opacity',
+		'default'     => 100,
+		'min'         => 0,
+		'step'        => 1,
+		'max'         => 100,
+		'compiler'    => true,
+		'type'        => 'slider',
+		'required'    => array('header_toggle','=',array('1')),
+	);
+
+	$fields[] = array( 
+		'title'       => __( 'Header Text Color', 'shoestrap' ),
+		'desc'        => __( 'Select the text color for your header. Default: #333333.', 'shoestrap' ),
+		'id'          => 'header_color',
+		'default'     => '#333333',
+		'customizer'  => array(),
+		'transparent' => false,    
+		'type'        => 'color',
+		'required'    => array('header_toggle','=',array('1')),
+	);
+
+	$fields[] = array( 
+		'title'       => __( 'Header Top Margin', 'shoestrap' ),
+		'desc'        => __( 'Select the top margin of header in pixels. Default: 0px.', 'shoestrap' ),
+		'id'          => 'header_margin_top',
+		'default'     => 0,
+		'min'         => 0,
+		'max'         => 200,
+		'type'        => 'slider',
+		'required'    => array('header_toggle','=',array('1')),
+	);
+
+	$fields[] = array( 
+		'title'       => __( 'Header Bottom Margin', 'shoestrap' ),
+		'desc'        => __( 'Select the bottom margin of header in pixels. Default: 0px.', 'shoestrap' ),
+		'id'          => 'header_margin_bottom',
+		'default'     => 0,
+		'min'         => 0,
+		'max'         => 200,
+		'type'        => 'slider',
+		'required'    => array('header_toggle','=',array('1')),
+	);
+
+	// Jumbotron Options
 	$section = array(
-		'title' => __('Jumbotron', 'shoestrap'),
+		'title' => __('Headers', 'shoestrap'),
 		'icon'  => 'el-icon-bullhorn icon-large'
 	);
 
@@ -237,20 +322,21 @@ function shoestrap_module_jumbotron_options($sections) {
 
 	$section['fields'] = $fields;
 
-	$section = apply_filters( 'shoestrap_module_jumbotron_options_modifier', $section );
+	$section = apply_filters( 'shoestrap_module_headers_options_modifier', $section );
 	
 	$sections[] = $section;
 	return $sections;
 
 }
 endif;
-add_filter( 'redux/options/'.REDUX_OPT_NAME.'/sections', 'shoestrap_module_jumbotron_options', 70 ); 
+add_filter( 'redux/options/'.REDUX_OPT_NAME.'/sections', 'shoestrap_module_headers_options', 80 ); 
 
+include_once( dirname( __FILE__ ) . '/functions.extra-header.php' );
 include_once( dirname(__FILE__).'/functions.jumbotron.php' );
 include_once( dirname(__FILE__).'/variables.php' );
 
-add_filter( 'shoestrap_compiler', 'shoestrap_admin_jumbotron_styles' );
-function shoestrap_admin_jumbotron_styles( $bootstrap ) {
+add_filter( 'shoestrap_compiler', 'shoestrap_admin_headers_styles' );
+function shoestrap_admin_headers_styles( $bootstrap ) {
 	return $bootstrap . '
-	@import "' . get_template_directory() . '/lib/modules/jumbotron/styles.less";';
+	@import "' . get_template_directory() . '/lib/modules/headers/styles.less";';
 }

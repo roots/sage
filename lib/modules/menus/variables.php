@@ -2,14 +2,15 @@
 
 function shoestrap_variables_navbar() {
 
-	$font_brand             = shoestrap_process_font( shoestrap_getVariable( 'font_brand', true ) );
+	$font_brand        = shoestrap_process_font( shoestrap_getVariable( 'font_brand', true ) );
 
 	$font_navbar       = shoestrap_process_font( shoestrap_getVariable( 'font_navbar', true ) );
 	$navbar_bg         = '#' . str_replace( '#', '', shoestrap_sanitize_hex( shoestrap_getVariable( 'navbar_bg', true ) ) );
 	$navbar_height     = filter_var( shoestrap_getVariable( 'navbar_height', true ), FILTER_SANITIZE_NUMBER_INT );
 	$navbar_text_color = '#' . str_replace( '#', '', $font_navbar['color'] );
 	$brand_text_color  = '#' . str_replace( '#', '', $font_brand['color'] );
-	$navbar_border      = ( shoestrap_get_brightness( $navbar_bg ) < 50 ) ? 'lighten(@navbar-default-bg, 6.5%)' : 'darken(@navbar-default-bg, 6.5%)';
+	$navbar_border     = ( shoestrap_get_brightness( $navbar_bg ) < 50 ) ? 'lighten(@navbar-default-bg, 6.5%)' : 'darken(@navbar-default-bg, 6.5%)';
+	$gfb = shoestrap_getVariable( 'grid_float_breakpoint' );
 
 	if ( shoestrap_get_brightness( $navbar_bg ) < 165 ) {
 		$navbar_link_hover_color    = 'darken(@navbar-default-color, 26.5%)';
@@ -22,6 +23,16 @@ function shoestrap_variables_navbar() {
 		$navbar_link_disabled_color = 'lighten(@navbar-default-bg, 6.5%)';
 		$navbar_brand_hover_color   = 'lighten(@navbar-default-brand-color, 10%)';
 	}
+
+	$grid_float_breakpoint = ( isset( $gfb ) )           ? $gfb             : '@screen-sm-min';
+	$grid_float_breakpoint = ( $gfb == 'min' )           ? '10px'           : $grid_float_breakpoint;
+	$grid_float_breakpoint = ( $gfb == 'screen_xs_min' ) ? '@screen-xs-min' : $grid_float_breakpoint;
+	$grid_float_breakpoint = ( $gfb == 'screen_sm_min' ) ? '@screen-sm-min' : $grid_float_breakpoint;
+	$grid_float_breakpoint = ( $gfb == 'screen_md_min' ) ? '@screen-md-min' : $grid_float_breakpoint;
+	$grid_float_breakpoint = ( $gfb == 'screen_lg_min' ) ? '@screen-lg-min' : $grid_float_breakpoint;
+	$grid_float_breakpoint = ( $gfb == 'max' )           ? '9999px'         : $grid_float_breakpoint;
+
+	$grid_float_breakpoint = ( $gfb == 'screen-lg-min' ) ? '0 !important' : $grid_float_breakpoint;
 
 	$variables = '';
 
@@ -60,6 +71,8 @@ function shoestrap_variables_navbar() {
 	$variables .= '@brand-font-color:        ' . $brand_text_color . ';';
 
 	$variables .= '@navbar-margin-top:       ' . shoestrap_getVariable( 'navbar_margin_top' ) . 'px;';
+
+	$variables .= '@grid-float-breakpoint: ' . $grid_float_breakpoint . ';';
 
 	return $variables;
 }

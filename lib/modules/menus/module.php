@@ -174,6 +174,23 @@ function shoestrap_module_menus_options( $sections ) {
 	);
 
 	$fields[] = array( 
+		'title'     => __( 'Responsive NavBar Threshold', 'shoestrap' ),
+		'desc'      => __( 'Point at which the navbar becomes uncollapsed', 'shoestrap' ),
+		'id'        => 'grid_float_breakpoint',
+		'type'      => 'button_set',
+		'options'   => array(
+			'min'           => __( 'Never', 'shoestrap' ),
+			'screen_xs_min' => __( 'Extra Small', 'shoestrap' ),
+			'screen_sm_min' => __( 'Small', 'shoestrap' ),
+			'screen_md_min' => __( 'Desktop', 'shoestrap' ),
+			'screen_lg_min' => __( 'Large Desktop', 'shoestrap' ),
+			'max'           => __( 'Always', 'shoestrap' ),
+		),
+		'default'   => 'screen_sm_min',
+		'compiler'  => true,
+	);
+
+	$fields[] = array( 
 		'title'       => __( 'NavBar Margin', 'shoestrap' ),
 		'desc'        => __( 'Select the top and bottom margin of the NavBar in pixels. Applies only in static top navbar ( scroll condition ). Default: 0px.', 'shoestrap' ),
 		'id'          => 'navbar_margin',
@@ -299,7 +316,7 @@ function shoestrap_module_menus_options( $sections ) {
 
 }
 endif;
-add_filter( 'redux/options/'.REDUX_OPT_NAME.'/sections', 'shoestrap_module_menus_options', 65 );  
+add_filter( 'redux/options/'.REDUX_OPT_NAME.'/sections', 'shoestrap_module_menus_options', 70 );  
 
 include_once( dirname( __FILE__ ) . '/functions.navbar.php' );
 include_once( dirname( __FILE__ ) . '/functions.secondary.navbar.php' );

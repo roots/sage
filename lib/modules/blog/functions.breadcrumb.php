@@ -241,9 +241,3 @@ function shoestrap_breadcrumb( $prepend = '', $delimiter = '', $wrap_before = ''
 		echo $wrap_after;
 	}
 }
-
-add_filter( 'shoestrap_compiler', 'shoestrap_admin_breadcrumbs_styles' );
-function shoestrap_admin_breadcrumbs_styles( $bootstrap ) {
-	return $bootstrap . '
-	@import "' . get_template_directory() . '/lib/modules/breadcrumbs/styles.less";';
-}

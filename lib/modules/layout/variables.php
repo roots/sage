@@ -13,17 +13,6 @@ function shoestrap_variables_layout() {
 	$screen_sm = ( $site_style == 'static' ) ? '50px' : $screen_sm;
 	$screen_md = ( $site_style == 'static' ) ? '50px' : $screen_md;
 
-	$gfb = shoestrap_getVariable( 'grid_float_breakpoint' );
-	$grid_float_breakpoint = ( isset( $gfb ) )           ? $gfb             : '@screen-sm-min';
-	$grid_float_breakpoint = ( $gfb == 'min' )           ? '10px'           : $grid_float_breakpoint;
-	$grid_float_breakpoint = ( $gfb == 'screen_xs_min' ) ? '@screen-xs-min' : $grid_float_breakpoint;
-	$grid_float_breakpoint = ( $gfb == 'screen_sm_min' ) ? '@screen-sm-min' : $grid_float_breakpoint;
-	$grid_float_breakpoint = ( $gfb == 'screen_md_min' ) ? '@screen-md-min' : $grid_float_breakpoint;
-	$grid_float_breakpoint = ( $gfb == 'screen_lg_min' ) ? '@screen-lg-min' : $grid_float_breakpoint;
-	$grid_float_breakpoint = ( $gfb == 'max' )           ? '9999px'         : $grid_float_breakpoint;
-
-	$grid_float_breakpoint = ( $gfb == 'screen-lg-min' ) ? '0 !important' : $grid_float_breakpoint;
-
 	$variables = '';
 
 	$variables .= '@screen-sm: ' . $screen_sm . 'px;';
@@ -31,8 +20,6 @@ function shoestrap_variables_layout() {
 	$variables .= '@screen-lg: ' . $screen_lg . 'px;';
 
 	$variables .= '@grid-gutter-width: ' . $gutter . 'px;';
-
-	$variables .= '@grid-float-breakpoint: ' . $grid_float_breakpoint . ';';
 
 	$variables .= '@jumbotron-padding: @grid-gutter-width;';
 

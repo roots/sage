@@ -12,39 +12,6 @@ function shoestrap_module_advanced_options( $sections ) {
 	);  
 
 	$fields[] = array( 
-		'title'     => __( 'Post excerpt length', 'shoestrap' ),
-		'desc'      => __( 'Choose how many words should be used for post excerpt. Default: 40', 'shoestrap' ),
-		'id'        => 'post_excerpt_length',
-		'default'   => 40,
-		'min'       => 10,
-		'step'      => 1,
-		'max'       => 1000,
-		'edit'      => 1,
-		'type'      => 'slider'
-	);
-	
-	$fields[] = array( 
-		'title'     => __( '"more" text', 'shoestrap' ),
-		'desc'      => __( 'Text to display in case of excerpt too long. Default: Continued', 'shoestrap' ),
-		'id'        => 'post_excerpt_link_text',
-		'default'   => __( 'Continued', 'roots' ),
-		'type'      => 'text'
-	);
-
-	$fields[] = array( 
-		'title'     => __( 'Select pagination style', 'shoestrap' ),
-		'desc'      => __( 'Switch between default pager or default pagination. Default: Pager.', 'shoestrap' ),
-		'id'        => 'pagination',
-		'type'      => 'button_set',
-		'options'   => array(
-			'pager'       => 'Default Pager',
-			'pagination'  => 'Default Pagination'
-		),
-		'default'   => 'pager',
-		'customizer'=> array()
-	);
-
-	$fields[] = array( 
 		'title'     => __( 'Enable Retina mode', 'shoestrap' ),
 		'desc'      => __( 'By enabling your site\'s featured images will be retina ready. Requires images to be uploaded at 2x the typical size desired. Default: On', 'shoestrap' ),
 		'id'        => 'retina_toggle',

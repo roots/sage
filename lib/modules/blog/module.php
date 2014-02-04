@@ -1,18 +1,31 @@
 <?php
 
-/*
- * The Featured Images core options for the Shoestrap theme
- */
-if ( !function_exists( 'shoestrap_module_featured_images_options' ) ) :
-function shoestrap_module_featured_images_options( $sections ) {
+if ( !function_exists( 'shoestrap_module_blog' ) ) :
+function shoestrap_module_blog( $sections ) {
 
-	$settings  = get_option( 'shoestrap' );
-	$screen_large_desktop = filter_var( $settings[ 'screen_large_desktop' ], FILTER_SANITIZE_NUMBER_INT );
-
-	$section = array( 
-		'title'     => __( 'Featured Images', 'shoestrap' ),
-		'icon'      => 'el-icon-picture icon-large',
+	// Post Meta Options
+	$section = array(
+		'title' => __( 'Blog', 'shoestrap' ),
+		'icon'  => 'el-icon-wordpress icon-large'
 	);
+
+	$fields[] = array(
+		'id'          => 'shoestrap_entry_meta_config',
+		'title'       => __( 'Activate and order Post Meta elements', 'shoestrap' ),
+		'options'     => array(
+			'tags'    => 'Tags',
+			'date'    => 'Date',
+			'category'=> 'Category',
+			'author'  => 'Author',
+			'sticky'  => 'Sticky'
+		),
+		'type'        => 'sortable',
+		'mode'        => 'checkbox'
+	);
+
+	// Featured Images Options
+	$settings  = get_option( REDUX_OPT_NAME );
+	$screen_large_desktop = filter_var( $settings[ 'screen_large_desktop' ], FILTER_SANITIZE_NUMBER_INT );
 
 	$fields[] = array( 
 		'id'        => 'help3',
@@ -134,17 +147,65 @@ function shoestrap_module_featured_images_options( $sections ) {
 		'default'   => $post_type_defaults,
 	);
 
-	$section['fields'] = $fields;
-
-	$section = apply_filters( 'shoestrap_module_featured_images_options_modifier', $section );
+	$fields[] = array( 
+		'title'     => __( 'Post excerpt length', 'shoestrap' ),
+		'desc'      => __( 'Choose how many words should be used for post excerpt. Default: 40', 'shoestrap' ),
+		'id'        => 'post_excerpt_length',
+		'default'   => 40,
+		'min'       => 10,
+		'step'      => 1,
+		'max'       => 1000,
+		'edit'      => 1,
+		'type'      => 'slider'
+	);
 	
-	$sections[] = $section;
-	return $sections;
+	$fields[] = array( 
+		'title'     => __( '"more" text', 'shoestrap' ),
+		'desc'      => __( 'Text to display in case of excerpt too long. Default: Continued', 'shoestrap' ),
+		'id'        => 'post_excerpt_link_text',
+		'default'   => __( 'Continued', 'roots' ),
+		'type'      => 'text'
+	);
 
+	$fields[] = array( 
+		'title'     => __( 'Select pagination style', 'shoestrap' ),
+		'desc'      => __( 'Switch between default pager or default pagination. Default: Pager.', 'shoestrap' ),
+		'id'        => 'pagination',
+		'type'      => 'button_set',
+		'options'   => array(
+			'pager'       => 'Default Pager',
+			'pagination'  => 'Default Pagination'
+		),
+		'default'   => 'pager',
+		'customizer'=> array()
+	);
+
+	$fields[] = array( 
+		'title'     => __( 'Show Breadcrumbs', 'shoestrap' ),
+		'desc'      => __( 'Display Breadcrumbs. Default: OFF.', 'shoestrap' ),
+		'id'        => 'breadcrumbs',
+		'default'   => 0,
+		'type'      => 'switch',
+		'customizer'=> array(),
+	);
+
+	$section['fields'] = $fields;
+	$section = apply_filters( 'shoestrap_module_blog_modifier', $section );
+	$sections[] = $section;
+
+	return $sections;
 }
 endif;
-add_filter( 'redux/options/'.REDUX_OPT_NAME.'/sections', 'shoestrap_module_featured_images_options', 90 );
+add_filter( 'redux/options/'.REDUX_OPT_NAME.'/sections', 'shoestrap_module_blog', 75 );   
 
-// Simply include our alternative functions for image resizing
-include_once( dirname(__FILE__).'/resize.php' );
-include_once( dirname(__FILE__).'/functions.images.php' );
+include_once( dirname( __FILE__ ) . '/functions.metaconfig.php' );
+include_once( dirname( __FILE__ ) . '/resize.php' );
+include_once( dirname( __FILE__ ) . '/functions.images.php' );
+include_once( dirname( __FILE__ ) . '/functions.advanced.php' );
+include_once( dirname( __FILE__ ) . '/functions.breadcrumb.php' );
+
+add_filter( 'shoestrap_compiler', 'shoestrap_admin_blog_styles' );
+function shoestrap_admin_blog_styles( $bootstrap ) {
+	return $bootstrap . '
+	@import "' . get_template_directory() . '/lib/modules/blog/styles.less";';
+}

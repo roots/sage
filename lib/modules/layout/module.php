@@ -142,15 +142,6 @@ function shoestrap_module_layout_options( $sections ) {
 	);
 
 	$fields[] = array( 
-		'title'     => __( 'Show Breadcrumbs', 'shoestrap' ),
-		'desc'      => __( 'Display Breadcrumbs. Default: OFF.', 'shoestrap' ),
-		'id'        => 'breadcrumbs',
-		'default'   => 0,
-		'type'      => 'switch',
-		'customizer'=> array(),
-	);
-
-	$fields[] = array( 
 		'title'     => __( 'Body Top Margin', 'shoestrap' ),
 		'desc'      => __( 'Select the top margin of body element in pixels. Default: 0px.', 'shoestrap' ),
 		'id'        => 'body_margin_top',
@@ -172,23 +163,6 @@ function shoestrap_module_layout_options( $sections ) {
 		'max'       => 200,
 		'edit'      => 1,
 		'type'      => 'slider',
-	);
-
-	$fields[] = array( 
-		'title'     => __( 'Responsive NavBar Threshold', 'shoestrap' ),
-		'desc'      => __( 'Point at which the navbar becomes uncollapsed', 'shoestrap' ),
-		'id'        => 'grid_float_breakpoint',
-		'type'      => 'button_set',
-		'options'   => array(
-			'min'           => __( 'Never', 'shoestrap' ),
-			'screen_xs_min' => __( 'Extra Small', 'shoestrap' ),
-			'screen_sm_min' => __( 'Small', 'shoestrap' ),
-			'screen_md_min' => __( 'Desktop', 'shoestrap' ),
-			'screen_lg_min' => __( 'Large Desktop', 'shoestrap' ),
-			'max'           => __( 'Always', 'shoestrap' ),
-		),
-		'default'   => 'screen_sm_min',
-		'compiler'  => true,
 	);
 
 	$fields[] = array( 

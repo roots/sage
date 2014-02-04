@@ -119,6 +119,6 @@ function shoestrap_module_footer_options( $sections ) {
 	return $sections;
 }
 endif;
-add_filter( 'redux/options/'.REDUX_OPT_NAME.'/sections', 'shoestrap_module_footer_options', 90 );   
+add_filter( 'redux/options/'.REDUX_OPT_NAME.'/sections', 'shoestrap_module_footer_options', 85 );   
 
 include_once( dirname( __FILE__ ) . '/functions.footer.php' );

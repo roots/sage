@@ -3,17 +3,17 @@
 /*
  * The social core options for the Shoestrap theme
  */
-if ( !function_exists( 'shoestrap_module_social_options' ) ) :
-function shoestrap_module_social_options( $sections ) {
+if ( !function_exists( 'shoestrap_module_socials_options' ) ) :
+function shoestrap_module_socials_options( $sections ) {
 
 	$section = array(
-		'title'     => __( 'Social Sharing', 'shoestrap' ),
-		'icon'      => 'el-icon-share icon-large',
+		'title'     => __( 'Socials', 'shoestrap' ),
+		'icon'      => 'el-icon-group icon-large',
 	);
 
 	$fields[] = array( 
 		'id'        => 'social_sharing_help_1',
-		'title'     => __( 'General Options', 'shoestrap' ),
+		'title'     => __( 'Social Sharing', 'shoestrap' ),
 		'type'      => 'info'
 	);
 
@@ -82,7 +82,7 @@ function shoestrap_module_social_options( $sections ) {
 
 	$fields[] = array( 
 		'id'        => 'social_sharing_help_2',
-		'title'     => __( 'Select Socials', 'shoestrap' ),
+		'title'     => __( 'Select Socials for "Share" button', 'shoestrap' ),
 		'type'      => 'info'
 	);
 
@@ -150,15 +150,11 @@ function shoestrap_module_social_options( $sections ) {
 		'type'      => 'switch'
 	);
 
-	$section['fields'] = $fields;
-	$section = apply_filters( 'shoestrap_module_social_share_options_modifier', $section );
-	$sections[] = $section;
-
-	$section = array( 
-		'title'     => __( 'Social Links', 'shoestrap' ),
-		'icon'      => 'el-icon-group icon-large',
+	$fields[] = array( 
+		'id'        => 'social_sharing_help_3',
+		'title'     => __( 'Social Links used in Menus && Footer', 'shoestrap' ),
+		'type'      => 'info'
 	);
-	$fields = array();
 
 	$fields[] = array( 
 		'title'     => __( 'Blogger', 'shoestrap' ),
@@ -343,14 +339,14 @@ function shoestrap_module_social_options( $sections ) {
 	
 	$section['fields'] = $fields;
 
-	$section = apply_filters( 'shoestrap_module_social_links_options_modifier', $section );
+	$section = apply_filters( 'shoestrap_module_socials_options_modifier', $section );
 	
 	$sections[] = $section;
 	return $sections;
 
 }
 endif;
-add_filter( 'redux/options/'.REDUX_OPT_NAME.'/sections', 'shoestrap_module_social_options', 85 ); 
+add_filter( 'redux/options/'.REDUX_OPT_NAME.'/sections', 'shoestrap_module_socials_options', 90 ); 
 
 include_once( dirname( __FILE__ ) . '/functions.social.php' );
 
