@@ -61,7 +61,7 @@ function shoestrap_header_css() {
 	if ( shoestrap_getVariable( 'header_toggle' ) == 1 ) {
 		$style = '.header-wrapper{ color: '.$cl.';';
 
-		$style .= ( $opacity != 1 && $opacity != '' ) ? 'background: rgb('.$rgb.'); background: rgba('.$rgb.', '.$opacity.');' : $style .= 'background: '.$bg.';';
+		$style .= ( $opacity != 1 && $opacity != '' ) ? 'background: rgb('.$rgb.'); background: rgba('.$rgb.', '.$opacity.');' : 'background: '.$bg.';';
 		$style .= 'margin-top:'.$header_margin_top.'px; margin-bottom:'.$header_margin_bottom.'px; }';
 
 		wp_add_inline_style( 'shoestrap_css', $style );
