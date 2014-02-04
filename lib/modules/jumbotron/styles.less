@@ -1,0 +1,24 @@
+.jumbotron {
+	padding: 30px;
+	margin-bottom: 30px;
+	line-height: (@line-height-base * 1.5);
+	font-weight:  @jumbotron-font-weight;
+	font-style:   @jumbotron-font-style;
+	font-family:  @jumbotron-font-family;
+	background-color: @jumbotron-bg;
+	h1, h2, h3, h4, h5, h6 {
+		font-weight:  @jumbotron-headers-font-weight;
+		font-style:   @jumbotron-headers-font-style;
+		font-family:  @jumbotron-headers-font-family;
+	}
+	p {
+		line-height: 1.4;
+	}
+
+	@media screen and (min-width: @screen-tablet) {
+		padding: 50px 60px;
+		h1 {
+			font-size: (@font-size-base * 4.5);
+		}
+	}
+}

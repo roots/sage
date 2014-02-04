@@ -1,5 +1,7 @@
 <?php
 
+if ( !defined( 'REDUX_OPT_NAME' ) )
+	define( 'REDUX_OPT_NAME', 'shoestrap' );
 // Load the modules
 require_once locate_template('/lib/modules/load.modules.php');
 

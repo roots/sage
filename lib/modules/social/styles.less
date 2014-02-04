@@ -1,0 +1,85 @@
+// Styles for the social sharing buttons that are generated from the sharrre script
+#social-sharing{
+	.clearfix;
+	.shareme {
+		.box{
+			.btn;
+			.btn-sm;
+			display:inline-block;
+			position:relative;
+			float:left;
+			clear:both;
+			overflow:hidden;
+			-webkit-transition:all 0.3s linear;
+			-moz-transition:all 0.3s linear;
+			-o-transition:all 0.3s linear;
+			transition:all 0.3s linear;
+		}
+		.left{
+			display:block;
+			white-space:nowrap;
+			-webkit-transition:all 0.2s linear;
+			-moz-transition:all 0.2s linear;
+			-o-transition:all 0.2s linear;
+			transition:all 0.2s linear;
+		}
+		.middle{
+			position:absolute;
+			top:0px;
+			right:40px;
+			width:0px;
+			white-space:nowrap;
+			text-align:left;
+			overflow:hidden;
+			-webkit-transition:width 0.3s linear;
+			-moz-transition:width 0.3s linear;
+			-o-transition:width 0.3s linear;
+			transition:width 0.3s linear;
+			a{
+				padding: 3px 0;
+				display: inline-block;
+				width: 30px;
+				height: 100%;
+				text-align:center;
+				float:left;
+				&:hover{
+					text-decoration:none;
+				}
+			}
+		}
+		.right{
+			position:absolute;
+			right:0px;
+			top:0px;
+			height:100%;
+			width: 3em;
+			text-align:center;
+			line-height:22px;
+		}
+	}
+}
+
+//Styling social inline links in navbar
+#navbar_social_bar a:hover, #footer_social_bar a:active { 
+	text-decoration: none;
+}
+
+.btn-group.social-share {
+	.social-link {
+		display: none;
+	} 
+	&:hover {
+		.social-share-main {
+			border-bottom-right-radius: 0px !important;
+			border-top-right-radius: 0px !important;
+		} 
+		a {
+			display: block;
+			width: auto;
+			padding: @padding-base-vertical @padding-base-horizontal;
+		}
+		a:hover {
+			// ??
+		}
+	}
+}
