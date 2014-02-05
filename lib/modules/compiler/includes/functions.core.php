@@ -14,6 +14,12 @@ function shoestrap_css( $target = 'path', $echo = false ) {
 
 	// Get the upload directory for this site.
 	$upload_dir      = wp_upload_dir();
+	// Hack to strip protocol
+	if ( strpos( $upload_dir['basedir'], 'https' ) !== false ) :
+	  $upload_dir = str_replace( 'https:', '', $upload_dir );
+  	else :
+  	  $upload_dir = str_replace( 'http:', '', $upload_dir );
+  	endif;
 	// Define a default folder for the stylesheets.
 	$def_folder_path = get_template_directory() . '/assets/css';
 	// The folder path for the stylesheet.
