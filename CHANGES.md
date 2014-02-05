@@ -1,3 +1,8 @@
+### 3.1.0.2
+
+* Fix: allow https in assets urls
+* Fix: path to github-updater plugin
+
 ### 3.1.0.1
 
 * Updating jQuery to 1.11.0
