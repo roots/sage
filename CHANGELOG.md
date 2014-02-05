@@ -1,4 +1,4 @@
-### HEAD
+### 6.5.2: February 4th, 2014
 * Update to Bootstrap 3.1.0
 * Move DOM routing into an anonymous function to support jQuery noConflict
 * Update to jQuery 1.11.0
