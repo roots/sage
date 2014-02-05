@@ -5,7 +5,7 @@ if ( !function_exists( 'getGoogleScript' ) ) :
  * Helper function
  */
 function getGoogleScript( $font ) {
-	$data['link'] = 'http://fonts.googleapis.com/css?family=' . str_replace( ' ', '+', $font['font-family'] );
+	$data['link'] = '//fonts.googleapis.com/css?family=' . str_replace( ' ', '+', $font['font-family'] );
 	$data['key'] = str_replace( ' ', '_', $font['font-family'] );
 
 	if ( !empty( $font['font-weight'] ) ) {
