@@ -65,6 +65,18 @@ module.exports = function(grunt) {
         jsHandle: 'roots_scripts'
       }
     },
+    modernizr: {
+      dist: {
+        devFile: 'assets/vendor/modernizr/modernizr.js',
+        outputFile: 'assets/js/vendor/modernizr.min.js',
+        files: [
+          ['assets/js/scripts.min.js'],
+          ['assets/css/main.min.css']
+        ],
+        uglify: true,
+        parseFiles: false
+      }
+    },
     watch: {
       less: {
         files: [
@@ -107,6 +119,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-wp-version');
+  grunt.loadNpmTasks('grunt-modernizr');
 
   // Register tasks
   grunt.registerTask('default', [
@@ -117,6 +130,10 @@ module.exports = function(grunt) {
   ]);
   grunt.registerTask('dev', [
     'watch'
+  ]);
+  grunt.registerTask('build', [
+    'default',
+    'modernizr'
   ]);
 
 };
