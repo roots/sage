@@ -115,12 +115,8 @@ module.exports = function(grunt) {
       ]
     },
     rsync: {
-      test: {
+      options: {
         src: './',
-        dest: '/var/www/wordpress/wp-content/themes/pages-theme-roots',
-        host: 'tobias@test',
-        ssh: true,
-        privatekey: '~/.ssh/id_rsa',
         recursive: true,
         syncDest: true,
         exclude: [
@@ -143,32 +139,21 @@ module.exports = function(grunt) {
           '.ftppass',
           'sftp-config.json'
         ]
-      }
-    },
-    'ftp-deploy': {
-      staging: {
-        auth: {
-          host: 'pages-tdm-test.au.dk',
-          port: 21,
-          authKey: 'key1'
-        },
-        src: './',
-        dest: '/wp-content/themes/pages-theme-roots',
-        exclusions: [
-        '<%= rsync.test.exclude %>'
-        ]
       },
-      production: {
-        auth: {
-          host: 'pages-tdm.au.dk',
-          port: 21,
-          authKey: 'key1'
-        },
-        src: './',
-        dest: '/wp-content/themes/pages-theme-roots',
-        exclusions: [
-        '<%= rsync.test.exclude %>'
-        ]
+      test: {
+        options: {
+          dest: 'kluun:/var/www/wordpress/wp-content/themes/pages-theme-roots'
+        }
+      },
+      stage: {
+        options: {
+          dest: 'pages-test:/var/www/html/wp-content/themes/pages-theme-roots'
+        }
+      },
+      prod: {
+        options: {
+          dest: 'pages-prod:/var/www/html/wp-content/themes/pages-theme-roots'
+        }
       }
     }
   });
@@ -180,7 +165,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-wp-version');
-  grunt.loadNpmTasks('grunt-ftp-deploy');
   grunt.loadNpmTasks('grunt-rsync');
   
   // Register tasks
@@ -195,13 +179,17 @@ module.exports = function(grunt) {
     'rsync:test',
     'watch'
   ]);
-  grunt.registerTask('staging', [
+  grunt.registerTask('test', [
     'default',
-    'ftp-deploy:staging'
+    'rsync:test'
   ]);
-  grunt.registerTask('dist', [
+  grunt.registerTask('stage', [
     'default',
-    'rsync:dist'
+    'rsync:stage'
+  ]);
+  grunt.registerTask('deploy', [
+    'default',
+    'rsync:prod'
   ]);
 
 };
