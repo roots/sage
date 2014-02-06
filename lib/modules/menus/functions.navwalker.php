@@ -3,8 +3,8 @@
 // Register Custom Navigation Walker
 require_once( 'wp_bootstrap_navwalker.php' );
 
-// Remove the default Roots Navwalker
-remove_filter('wp_nav_menu_args', 'roots_nav_menu_args');
+// Remove the default Shoestrap Navwalker
+remove_filter('wp_nav_menu_args', 'shoestrap_nav_menu_args');
 
 // Add the custom navwalker
 function shoestrap_alt_nav_menu_args($args = '') {

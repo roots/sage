@@ -52,7 +52,7 @@ module.exports = function(grunt) {
         options: {
           // JS source map: to enable, uncomment the lines below and update sourceMappingURL based on your install
           // sourceMap: 'assets/js/scripts.min.js.map',
-          // sourceMappingURL: '/app/themes/roots/assets/js/scripts.min.js.map'
+          // sourceMappingURL: '/app/themes/shoestrap/assets/js/scripts.min.js.map'
         }
       }
     },
@@ -60,9 +60,9 @@ module.exports = function(grunt) {
       options: {
         file: 'lib/scripts.php',
         css: 'assets/css/style.css',
-        cssHandle: 'roots_main',
+        cssHandle: 'shoestrap_main',
         js: 'assets/js/scripts.min.js',
-        jsHandle: 'roots_scripts'
+        jsHandle: 'shoestrap_scripts'
       }
     },
     watch: {

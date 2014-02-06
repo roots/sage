@@ -21,27 +21,27 @@ msgstr ""
 "X-Textdomain-Support: yes"
 
 #: 404.php:4
-#@ roots
+#@ shoestrap
 msgid "Sorry, but the page you were trying to view does not exist."
 msgstr ""
 
 #: 404.php:7
-#@ roots
+#@ shoestrap
 msgid "It looks like this was the result of either:"
 msgstr ""
 
 #: 404.php:9
-#@ roots
+#@ shoestrap
 msgid "a mistyped address"
 msgstr ""
 
 #: 404.php:10
-#@ roots
+#@ shoestrap
 msgid "an out-of-date link"
 msgstr ""
 
 #: base.php:11
-#@ roots
+#@ shoestrap
 msgid "You are using an <strong>outdated</strong> browser. Please <a href=\"http://browsehappy.com/\">upgrade your browser</a> to improve your experience."
 msgstr ""
 
@@ -132,7 +132,7 @@ msgstr ""
 #: lib/modules/core.menus/functions.navbar.php:20
 #: templates/searchform.php:6
 #@ bbpress
-#@ roots
+#@ shoestrap
 msgid "Search for:"
 msgstr ""
 
@@ -140,7 +140,7 @@ msgstr ""
 #: lib/modules/core.menus/functions.navbar.php:21
 #: templates/searchform.php:5
 #@ bbpress
-#@ roots
+#@ shoestrap
 msgid "Search"
 msgstr ""
 
@@ -351,40 +351,40 @@ msgid "Edit"
 msgstr ""
 
 #: index.php:12
-#@ roots
+#@ shoestrap
 msgid "Sorry, no results were found."
 msgstr ""
 
 #: index.php:40
-#@ roots
+#@ shoestrap
 msgid "&larr; Older posts"
 msgstr ""
 
 #: index.php:41
-#@ roots
+#@ shoestrap
 msgid "Newer posts &rarr;"
 msgstr ""
 
 #: lib/activation.php:28
 #: lib/activation.php:29
-#@ roots
+#@ shoestrap
 msgid "Theme Activation"
 msgstr ""
 
 #: lib/activation.php:50
 #, php-format
-#@ roots
+#@ shoestrap
 msgid "%s Theme Activation"
 msgstr ""
 
 #: lib/activation.php:52
-#@ roots
+#@ shoestrap
 msgid "These settings are optional and should usually be used only on a fresh installation"
 msgstr ""
 
 #: lib/activation.php:59
 #: lib/activation.php:62
-#@ roots
+#@ shoestrap
 msgid "Create static front page?"
 msgstr ""
 
@@ -392,7 +392,7 @@ msgstr ""
 #: lib/activation.php:76
 #: lib/activation.php:88
 #: lib/activation.php:100
-#@ roots
+#@ shoestrap
 msgid "Yes"
 msgstr ""
 
@@ -400,65 +400,65 @@ msgstr ""
 #: lib/activation.php:77
 #: lib/activation.php:89
 #: lib/activation.php:101
-#@ roots
+#@ shoestrap
 msgid "No"
 msgstr ""
 
 #: lib/activation.php:67
-#@ roots
+#@ shoestrap
 msgid "Create a page called Home and set it to be the static front page"
 msgstr ""
 
 #: lib/activation.php:71
-#@ roots
+#@ shoestrap
 msgid "Change permalink structure?"
 msgstr ""
 
 #: lib/activation.php:74
-#@ roots
+#@ shoestrap
 msgid "Update permalink structure?"
 msgstr ""
 
 #: lib/activation.php:79
-#@ roots
+#@ shoestrap
 msgid "Change permalink structure to /&#37;postname&#37;/"
 msgstr ""
 
 #: lib/activation.php:83
 #: lib/activation.php:86
-#@ roots
+#@ shoestrap
 msgid "Create navigation menu?"
 msgstr ""
 
 #: lib/activation.php:91
-#@ roots
+#@ shoestrap
 msgid "Create the Primary Navigation menu and set the location"
 msgstr ""
 
 #: lib/activation.php:95
 #: lib/activation.php:98
-#@ roots
+#@ shoestrap
 msgid "Add pages to menu?"
 msgstr ""
 
 #: lib/activation.php:103
-#@ roots
+#@ shoestrap
 msgid "Add all current published pages to the Primary Navigation"
 msgstr ""
 
 #: lib/cleanup.php:200
 #: lib/modules/core.advanced/module.php:42
-#@ roots
+#@ shoestrap
 msgid "Continued"
 msgstr ""
 
 #: lib/init.php:11
-#@ roots
+#@ shoestrap
 msgid "Primary Navigation"
 msgstr ""
 
 #: lib/init.php:12
-#@ roots
+#@ shoestrap
 msgid "Secondary Navigation"
 msgstr ""
 
@@ -1117,7 +1117,7 @@ msgstr ""
 #: lib/modules/core.footer/module.php:11
 #: lib/widgets.php:17
 #@ shoestrap
-#@ roots
+#@ shoestrap
 msgid "Footer"
 msgstr ""
 
@@ -4233,176 +4233,176 @@ msgid "Footer Widget Area 4"
 msgstr ""
 
 #: lib/titles.php:10
-#@ roots
+#@ shoestrap
 msgid "Latest Posts"
 msgstr ""
 
 #: lib/titles.php:19
 #, php-format
-#@ roots
+#@ shoestrap
 msgid "Daily Archives: %s"
 msgstr ""
 
 #: lib/titles.php:21
 #, php-format
-#@ roots
+#@ shoestrap
 msgid "Monthly Archives: %s"
 msgstr ""
 
 #: lib/titles.php:23
 #, php-format
-#@ roots
+#@ shoestrap
 msgid "Yearly Archives: %s"
 msgstr ""
 
 #: lib/titles.php:26
 #, php-format
-#@ roots
+#@ shoestrap
 msgid "Author Archives: %s"
 msgstr ""
 
 #: lib/titles.php:31
 #, php-format
-#@ roots
+#@ shoestrap
 msgid "Search Results for %s"
 msgstr ""
 
 #: lib/titles.php:33
-#@ roots
+#@ shoestrap
 msgid "Not Found"
 msgstr ""
 
 #: lib/widgets.php:8
-#@ roots
+#@ shoestrap
 msgid "Primary"
 msgstr ""
 
 #: lib/widgets.php:45
-#@ roots
+#@ shoestrap
 msgid "Use this widget to add a vCard"
 msgstr ""
 
 #: lib/widgets.php:47
-#@ roots
-msgid "Roots: vCard"
+#@ shoestrap
+msgid "Shoestrap: vCard"
 msgstr ""
 
 #: lib/widgets.php:74
-#@ roots
+#@ shoestrap
 msgid "vCard"
 msgstr ""
 
 #: templates/comment.php:4
 #, php-format
-#@ roots
+#@ shoestrap
 msgid "%1$s"
 msgstr ""
 
 #: templates/comment.php:5
-#@ roots
+#@ shoestrap
 msgid "(Edit)"
 msgstr ""
 
 #: templates/comment.php:9
-#@ roots
+#@ shoestrap
 msgid "Your comment is awaiting moderation."
 msgstr ""
 
 #: templates/comments.php:12
 #, php-format
-#@ roots
+#@ shoestrap
 msgid "One Response to &ldquo;%2$s&rdquo;"
 msgid_plural "%1$s Responses to &ldquo;%2$s&rdquo;"
 msgstr[0] ""
 msgstr[1] ""
 
 #: templates/comments.php:22
-#@ roots
+#@ shoestrap
 msgid "&larr; Older comments"
 msgstr ""
 
 #: templates/comments.php:25
-#@ roots
+#@ shoestrap
 msgid "Newer comments &rarr;"
 msgstr ""
 
 #: templates/comments.php:33
 #: templates/comments.php:42
-#@ roots
+#@ shoestrap
 msgid "Comments are closed."
 msgstr ""
 
 #: templates/comments.php:49
-#@ roots
+#@ shoestrap
 msgid "Leave a Reply"
 msgstr ""
 
 #: templates/comments.php:49
 #, php-format
-#@ roots
+#@ shoestrap
 msgid "Leave a Reply to %s"
 msgstr ""
 
 #: templates/comments.php:52
 #, php-format
-#@ roots
+#@ shoestrap
 msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
 msgstr ""
 
 #: templates/comments.php:57
 #, php-format
-#@ roots
+#@ shoestrap
 msgid "Logged in as <a href=\"%s/wp-admin/profile.php\">%s</a>."
 msgstr ""
 
 #: templates/comments.php:58
-#@ roots
+#@ shoestrap
 msgid "Log out of this account"
 msgstr ""
 
 #: templates/comments.php:58
-#@ roots
+#@ shoestrap
 msgid "Log out &raquo;"
 msgstr ""
 
 #: templates/comments.php:62
-#@ roots
+#@ shoestrap
 msgid "Name"
 msgstr ""
 
 #: templates/comments.php:62
 #: templates/comments.php:66
-#@ roots
+#@ shoestrap
 msgid " (required)"
 msgstr ""
 
 #: templates/comments.php:66
-#@ roots
+#@ shoestrap
 msgid "Email (will not be published)"
 msgstr ""
 
 #: templates/comments.php:70
-#@ roots
+#@ shoestrap
 msgid "Website"
 msgstr ""
 
 #: templates/comments.php:75
-#@ roots
+#@ shoestrap
 msgid "Comment"
 msgstr ""
 
 #: templates/comments.php:78
-#@ roots
+#@ shoestrap
 msgid "Submit Comment"
 msgstr ""
 
 #: templates/content-single.php:20
-#@ roots
+#@ shoestrap
 msgid "Pages:"
 msgstr ""
 
 #: templates/entry-meta.php:2
-#@ roots
+#@ shoestrap
 msgid "By"
 msgstr ""
 

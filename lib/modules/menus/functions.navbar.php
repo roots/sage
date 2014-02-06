@@ -18,8 +18,8 @@ function shoestrap_navbar_pre_searchbox() {
 	$show_searchbox = shoestrap_getVariable( 'navbar_search' );
 	if ( $show_searchbox == '1' ) : ?>
 		<form role="search" method="get" id="searchform" class="form-search pull-right navbar-form" action="<?php echo home_url('/'); ?>">
-			<label class="hide" for="s"><?php _e('Search for:', 'roots'); ?></label>
-			<input type="text" value="<?php if (is_search()) { echo get_search_query(); } ?>" name="s" id="s" class="form-control search-query" placeholder="<?php _e('Search', 'roots'); ?> <?php bloginfo('name'); ?>">
+			<label class="hide" for="s"><?php _e('Search for:', 'shoestrap'); ?></label>
+			<input type="text" value="<?php if (is_search()) { echo get_search_query(); } ?>" name="s" id="s" class="form-control search-query" placeholder="<?php _e('Search', 'shoestrap'); ?> <?php bloginfo('name'); ?>">
 		</form>
 		<?php
 	endif;
@@ -104,3 +104,41 @@ function shoestrap_navbar_css() {
 }
 endif;
 add_action( 'wp_enqueue_scripts', 'shoestrap_navbar_css', 101 );
+
+
+function shoestrap_do_navbar() {
+	$navbar_toggle = shoestrap_getVariable( 'navbar_toggle' );
+
+	if ( $navbar_toggle != 'none' ) {
+		if ( $navbar_toggle != 'pills' ) {
+			if ( !has_action( 'shoestrap_header_top_navbar_override' ) )
+				get_template_part( 'templates/header-top-navbar' );
+			else
+				do_action( 'shoestrap_header_top_navbar_override' );
+		} else {
+			if ( !has_action( 'shoestrap_header_override' ) )
+				get_template_part( 'templates/header' );
+			else
+				do_action( 'shoestrap_header_override' );
+		}
+	}
+}
+add_action( 'shoestrap_do_navbar', 'shoestrap_do_navbar' );
+
+
+function shoestrap_static_left_main_wrapper_open() {
+	$left = ( shoestrap_getVariable( 'navbar_toggle' ) == 'left' ) ? true : false;
+
+	if ( $left )
+		echo '<section class="static-menu-main ' . shoestrap_static_left_breakpoint() . ' col-static-' . ( 12 - shoestrap_getVariable( 'layout_secondary_width' ) ) . '">';
+}
+add_action( 'shoestrap_do_navbar', 'shoestrap_static_left_main_wrapper_open', 97 );
+
+
+function shoestrap_static_left_main_wrapper_close() {
+	$left = ( shoestrap_getVariable( 'navbar_toggle' ) == 'left' ) ? true : false;
+
+	if ( $left )
+		echo '</section>';
+}
+add_action( 'shoestrap_after_footer', 'shoestrap_close_boxed_container_div', 901 );

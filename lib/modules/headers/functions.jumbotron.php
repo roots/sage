@@ -16,33 +16,35 @@ function jumbotron_content() {
 	?>
 
 	<div class="clearfix"></div>
+	<div class="before-main-wrapper">
 
-	<?php if ( $hero == true ) : ?>
-		<?php if ( $site_style == 'boxed' && $nocontainer != 1 ) : ?>
-			<div class="<?php echo shoestrap_container_class(); ?>">
-		<?php endif; ?>
-
-		<div class="jumbotron">
-
-			<?php if ( $nocontainer != 1 && $site_style == 'wide' || $site_style == 'boxed' ) : ?>
+		<?php if ( $hero == true ) : ?>
+			<?php if ( $site_style == 'boxed' && $nocontainer != 1 ) : ?>
 				<div class="<?php echo shoestrap_container_class(); ?>">
 			<?php endif; ?>
 
-				<?php dynamic_sidebar('Jumbotron'); ?>
+			<div class="jumbotron">
 
-			<?php if ( $nocontainer != 1 && $site_style == 'wide' || $site_style == 'boxed' ) : ?>
+				<?php if ( $nocontainer != 1 && $site_style == 'wide' || $site_style == 'boxed' ) : ?>
+					<div class="<?php echo shoestrap_container_class(); ?>">
+				<?php endif; ?>
+
+					<?php dynamic_sidebar('Jumbotron'); ?>
+
+				<?php if ( $nocontainer != 1 && $site_style == 'wide' || $site_style == 'boxed' ) : ?>
+					</div>
+				<?php endif; ?>
+
+			<?php if ( $site_style == 'boxed' && $nocontainer != 1 ) : ?>
 				</div>
 			<?php endif; ?>
 
-		<?php if ( $site_style == 'boxed' && $nocontainer != 1 ) : ?>
 			</div>
-		<?php endif; ?>
-
 		</div>
 	<?php endif;
 }
 endif;
-add_action( 'shoestrap_below_top_navbar', 'jumbotron_content', 10 );
+add_action( 'shoestrap_pre_wrap', 'jumbotron_content', 5 );
 
 
 if ( !function_exists( 'shoestrap_jumbotron_css' ) ) :

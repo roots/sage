@@ -2,77 +2,77 @@
 /**
  * Enable theme features
  */
-add_theme_support('post-thumbnails');
+add_theme_support( 'post-thumbnails' );
 if ( shoestrap_getVariable( 'root_relative_urls' ) == 1  )
-  add_theme_support('root-relative-urls');    // Enable relative URLs
+	add_theme_support( 'root-relative-urls' );    // Enable relative URLs
 
-add_theme_support('bootstrap-top-navbar');  // Enable Bootstrap's top navbar
-add_theme_support('bootstrap-gallery');     // Enable Bootstrap's thumbnails component on [gallery]
+add_theme_support( 'bootstrap-top-navbar' );  // Enable Bootstrap's top navbar
+add_theme_support( 'bootstrap-gallery' );     // Enable Bootstrap's thumbnails component on [gallery]
 
 if ( shoestrap_getVariable( 'nice_search' ) == 1 )
-  add_theme_support('nice-search');           // Enable /?s= to /search/ redirect
+	add_theme_support( 'nice-search' );           // Enable /?s= to /search/ redirect
 
-add_theme_support('jquery-cdn');            // Enable to load jQuery from the Google CDN
+add_theme_support( 'jquery-cdn' );            // Enable to load jQuery from the Google CDN
 
 /**
  * Configuration values
  */
-define('GOOGLE_ANALYTICS_ID', shoestrap_getVariable('analytics_id')); // UA-XXXXX-Y (Note: Universal Analytics only, not Classic Analytics)
-define('POST_EXCERPT_LENGTH', shoestrap_getVariable('post_excerpt_length')); // Length in words for excerpt_length filter (http://codex.wordpress.org/Plugin_API/Filter_Reference/excerpt_length)
+define( 'GOOGLE_ANALYTICS_ID', shoestrap_getVariable( 'analytics_id' ) ); // UA-XXXXX-Y (Note: Universal Analytics only, not Classic Analytics)
+define( 'POST_EXCERPT_LENGTH', shoestrap_getVariable( 'post_excerpt_length' ) ); // Length in words for excerpt_length filter (http://codex.wordpress.org/Plugin_API/Filter_Reference/excerpt_length)
 
 /**
  * .main classes
  */
-function roots_main_class() {
-  if (roots_display_sidebar()) {
-    // Classes on pages with the sidebar
-    $class = 'col-sm-8';
-  } else {
-    // Classes on full width pages
-    $class = 'col-sm-12';
-  }
+function shoestrap_main_class() {
+	if ( shoestrap_display_primary_sidebar() ) {
+		// Classes on pages with the sidebar
+		$class = 'col-sm-8';
+	} else {
+		// Classes on full width pages
+		$class = 'col-sm-12';
+	}
 
-  return $class;
+	return $class;
 }
 
 /**
- * .sidebar classes
- */
-function roots_sidebar_class() {
-  return 'col-sm-4';
-}
-
-/**
- * Define which pages shouldn't have the sidebar
+ * Define which pages shouldn't have the primary sidebar
  *
  * See lib/sidebar.php for more details
  */
-function roots_display_sidebar() {
-  $sidebar_config = new Roots_Sidebar(
-    /**
-     * Conditional tag checks (http://codex.wordpress.org/Conditional_Tags)
-     * Any of these conditional tags that return true won't show the sidebar
-     *
-     * To use a function that accepts arguments, use the following format:
-     *
-     * array('function_name', array('arg1', 'arg2'))
-     *
-     * The second element must be an array even if there's only 1 argument.
-     */
-    array(
-      'is_404',
-      'is_front_page'
-    ),
-    /**
-     * Page template checks (via is_page_template())
-     * Any of these page templates that return true won't show the sidebar
-     */
-    array(
-      'template-custom.php'
-    )
-  );
+function shoestrap_display_primary_sidebar() {
+	$sidebar_config = new Shoestrap_Sidebar(
+		array(
+			'is_404',
+			'is_front_page'
+		),
+		array(
+			'template-0.php'
+		)
+	);
 
-  return apply_filters('roots_display_sidebar', $sidebar_config->display);
+	return apply_filters( 'shoestrap_display_primary_sidebar', $sidebar_config->display );
+}
+
+/**
+ * Define which pages shouldn't have the secondary sidebar
+ *
+ * See lib/sidebar.php for more details
+ */
+function shoestrap_display_secondary_sidebar() {
+	$sidebar_config = new Shoestrap_Sidebar(
+		array(
+			'is_404',
+			'is_front_page'
+		),
+		array(
+			'template-0.php',
+			'template-1.php',
+			'template-2.php'
+		)
+	);
+
+	return apply_filters( 'shoestrap_display_secondary_sidebar', $sidebar_config->display );
 }
 
 /**

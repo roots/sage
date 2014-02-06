@@ -74,46 +74,46 @@ if ( !function_exists( 'shoestrap_navbar_slidedown_content' ) ) :
 /*
  * Prints the content of the slide-down widget areas.
  */
-function shoestrap_navbar_slidedown_content() { ?>
-	<?php if ( shoestrap_getVariable( 'site_style' ) != 'fluid' ) : ?>
-		<div id="megaDrop" class="top-megamenu container">
-	<?php else : ?>
-		<div id="megaDrop" class="top-megamenu">
-	<?php endif; ?>
+function shoestrap_navbar_slidedown_content() {
+	if ( is_active_sidebar( 'navbar-slide-down-1' ) || is_active_sidebar( 'navbar-slide-down-2' ) || is_active_sidebar( 'navbar-slide-down-3' ) || is_active_sidebar( 'navbar-slide-down-4' ) || is_active_sidebar( 'navbar-slide-down-top' ) ) : ?>
+		<div class="before-main-wrapper">
+			<?php $megadrop_class = ( shoestrap_getVariable( 'site_style' ) != 'fluid' ) ? 'top-megamenu container' : 'top-megamenu'; ?>
+			<div id="megaDrop" class="' . $megadrop_class . '">
+				<?php $widgetareaclass = 'col-sm-' . shoestrap_navbar_widget_area_class(); ?>
 
-		<?php $widgetareaclass = 'col-sm-' . shoestrap_navbar_widget_area_class(); ?>
-		<?php dynamic_sidebar( 'navbar-slide-down-top' ); ?>
+				<?php dynamic_sidebar( 'navbar-slide-down-top' ); ?>
 
-		<div class="row">
-			<?php if ( is_active_sidebar( 'navbar-slide-down-1' ) ) : ?>
-				<div class="<?php echo $widgetareaclass; ?>">
-					<?php dynamic_sidebar( 'navbar-slide-down-1' ); ?>
-				</div>
-			<?php endif; ?>
+				<div class="row">
+					<?php if ( is_active_sidebar( 'navbar-slide-down-1' ) ) : ?>
+						<div class="<?php echo $widgetareaclass; ?>">
+							<?php dynamic_sidebar( 'navbar-slide-down-1' ); ?>
+						</div>
+					<?php endif; ?>
 		
-			<?php if ( is_active_sidebar( 'navbar-slide-down-2' ) ) : ?>
-				<div class="<?php echo $widgetareaclass; ?>">
-					<?php dynamic_sidebar( 'navbar-slide-down-2' ); ?>
-				</div>
-			<?php endif; ?>
+					<?php if ( is_active_sidebar( 'navbar-slide-down-2' ) ) : ?>
+						<div class="<?php echo $widgetareaclass; ?>">
+							<?php dynamic_sidebar( 'navbar-slide-down-2' ); ?>
+						</div>
+					<?php endif; ?>
 
-			<?php if ( is_active_sidebar( 'navbar-slide-down-3' ) ) : ?>
-				<div class="<?php echo $widgetareaclass; ?>">
-					<?php dynamic_sidebar( 'navbar-slide-down-3' ); ?>
-				</div>
-			<?php endif; ?>
+					<?php if ( is_active_sidebar( 'navbar-slide-down-3' ) ) : ?>
+						<div class="<?php echo $widgetareaclass; ?>">
+							<?php dynamic_sidebar( 'navbar-slide-down-3' ); ?>
+						</div>
+					<?php endif; ?>
 
-			<?php if ( is_active_sidebar( 'navbar-slide-down-4' ) ) : ?>
-				<div class="<?php echo $widgetareaclass; ?>">
-					<?php dynamic_sidebar( 'navbar-slide-down-4' ); ?>
+					<?php if ( is_active_sidebar( 'navbar-slide-down-4' ) ) : ?>
+						<div class="<?php echo $widgetareaclass; ?>">
+							<?php dynamic_sidebar( 'navbar-slide-down-4' ); ?>
+						</div>
+					<?php endif; ?>
 				</div>
-			<?php endif; ?>
+			</div>
 		</div>
-	</div>
-	<?php
+	<?php endif;
 }
 endif;
-add_action( 'shoestrap_below_top_navbar', 'shoestrap_navbar_slidedown_content', 1 );
+add_action( 'shoestrap_do_navbar', 'shoestrap_navbar_slidedown_content', 99 );
 
 
 if ( !function_exists( 'shoestrap_navbar_slidedown_toggle' ) ) :
@@ -143,7 +143,7 @@ endif;
 
 if ( !function_exists( 'shoestrap_navbar_slidedown_toggle_trigger' ) ) :
 function shoestrap_navbar_slidedown_toggle_trigger() {
-	$hook = ( shoestrap_getVariable( 'navbar_toggle' ) == 'left' ) ? 'shoestrap_below_top_navbar' : 'shoestrap_pre_main_nav';
+	$hook = ( shoestrap_getVariable( 'navbar_toggle' ) == 'left' ) ? 'shoestrap_do_navbar' : 'shoestrap_pre_main_nav';
 	add_action( $hook, 'shoestrap_navbar_slidedown_toggle' );
 }
 add_action( 'init', 'shoestrap_navbar_slidedown_toggle_trigger' );

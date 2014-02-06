@@ -8,13 +8,11 @@ function getGoogleScript( $font ) {
 	$data['link'] = '//fonts.googleapis.com/css?family=' . str_replace( ' ', '+', $font['font-family'] );
 	$data['key'] = str_replace( ' ', '_', $font['font-family'] );
 
-	if ( !empty( $font['font-weight'] ) ) {
+	if ( !empty( $font['font-weight'] ) )
 		$data['link'] .= ':' . str_replace( '-', '', $font['font-weight'] );
-	}
 
-	if ( !empty( $font['font-style'] ) ) {
+	if ( !empty( $font['font-style'] ) )
 		$data['key'] .= '-' . str_replace( '_', '', $font['font-style'] );
-	}
 
 	if ( !empty( $font['subsets'] ) ) {
 		$data['link'] .= '&subset=' . $font['subsets'];

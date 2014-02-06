@@ -1,6 +1,6 @@
-# [Shoestrap](http://shoestrap.org): [Roots](http://roots.io) on steroids!
+# [Shoestrap](http://shoestrap.org): [Shoestrap](http://shoestrap.io) on steroids!
 
-We Forked the Roots theme and added lots of options, hooks and actions in there, making it a theme that anyone can use and customize their site to a great extent, making it their own. Our goal was to make it easier for developers to create and prototype sites without any coding and with just a few clicks.
+We Forked the Shoestrap theme and added lots of options, hooks and actions in there, making it a theme that anyone can use and customize their site to a great extent, making it their own. Our goal was to make it easier for developers to create and prototype sites without any coding and with just a few clicks.
 
 ## Options Panel
 
@@ -55,27 +55,27 @@ Everyone is welcome to help [contribute](CONTRIBUTING.md) and improve this proje
 Use the [Shoestrap Forums](http://shoestrap.org/forums/forum/shoestrap/) to ask questions and get support.
 
 
-# [Roots Theme](http://roots.io/)
+# [Shoestrap Theme](http://shoestrap.io/)
 
 [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
 
-Roots is a WordPress starter theme based on [HTML5 Boilerplate](http://html5boilerplate.com/) & [Bootstrap](http://getbootstrap.com/) that will help you make better themes.
+Shoestrap is a WordPress starter theme based on [HTML5 Boilerplate](http://html5boilerplate.com/) & [Bootstrap](http://getbootstrap.com/) that will help you make better themes.
 
-* Source: [https://github.com/roots/roots](https://github.com/roots/roots)
-* Home Page: [http://roots.io/](http://roots.io/)
+* Source: [https://github.com/shoestrap/shoestrap](https://github.com/shoestrap/shoestrap)
+* Home Page: [http://shoestrap.io/](http://shoestrap.io/)
 * Twitter: [@retlehs](https://twitter.com/retlehs)
-* Newsletter: [Subscribe](http://roots.io/subscribe/)
-* Forum: [http://discourse.roots.io/](http://discourse.roots.io/)
+* Newsletter: [Subscribe](http://shoestrap.io/subscribe/)
+* Forum: [http://discourse.shoestrap.io/](http://discourse.shoestrap.io/)
 
 ## Installation
 
-Clone the git repo - `git clone git://github.com/roots/roots.git` - or [download it](https://github.com/roots/roots/zipball/master) and then rename the directory to the name of your theme or website. [Install Grunt](http://gruntjs.com/getting-started), and then install the dependencies for Roots contained in `package.json` by running the following from the Roots theme directory:
+Clone the git repo - `git clone git://github.com/shoestrap/shoestrap.git` - or [download it](https://github.com/shoestrap/shoestrap/zipball/master) and then rename the directory to the name of your theme or website. [Install Grunt](http://gruntjs.com/getting-started), and then install the dependencies for Shoestrap contained in `package.json` by running the following from the Shoestrap theme directory:
 
 ```
 npm install
 ```
 
-Reference the [theme activation](http://roots.io/roots-101/#theme-activation) documentation to understand everything that happens once you activate Roots.
+Reference the [theme activation](http://shoestrap.io/shoestrap-101/#theme-activation) documentation to understand everything that happens once you activate Shoestrap.
 
 ## Theme Development
 
@@ -89,21 +89,21 @@ Edit `lib/init.php` to setup custom navigation menus and post thumbnail sizes.
 
 ## Documentation
 
-### [Roots Docs](http://roots.io/docs/)
+### [Shoestrap Docs](http://shoestrap.io/docs/)
 
-* [Roots 101](http://roots.io/roots-101/) — A guide to installing Roots, the files and theme organization
-* [Theme Wrapper](http://roots.io/an-introduction-to-the-roots-theme-wrapper/) — Learn all about the theme wrapper
-* [Build Script](http://roots.io/using-grunt-for-wordpress-theme-development/) — A look into the Roots build script powered by Grunt
-* [Roots Sidebar](http://roots.io/the-roots-sidebar/) — Understand how to display or hide the sidebar in Roots
+* [Shoestrap 101](http://shoestrap.io/shoestrap-101/) — A guide to installing Shoestrap, the files and theme organization
+* [Theme Wrapper](http://shoestrap.io/an-introduction-to-the-shoestrap-theme-wrapper/) — Learn all about the theme wrapper
+* [Build Script](http://shoestrap.io/using-grunt-for-wordpress-theme-development/) — A look into the Shoestrap build script powered by Grunt
+* [Shoestrap Sidebar](http://shoestrap.io/the-shoestrap-sidebar/) — Understand how to display or hide the sidebar in Shoestrap
 
 ## Features
 
 * Organized file and template structure
 * HTML5 Boilerplate's markup along with ARIA roles and microformat
 * Bootstrap
-* [Grunt build script](http://roots.io/using-grunt-for-wordpress-theme-development/)
-* [Theme activation](http://roots.io/roots-101/#theme-activation)
-* [Theme wrapper](http://roots.io/an-introduction-to-the-roots-theme-wrapper/)
+* [Grunt build script](http://shoestrap.io/using-grunt-for-wordpress-theme-development/)
+* [Theme activation](http://shoestrap.io/shoestrap-101/#theme-activation)
+* [Theme wrapper](http://shoestrap.io/an-introduction-to-the-shoestrap-theme-wrapper/)
 * Root relative URLs
 * Cleaner HTML output of navigation menus
 * Cleaner output of `wp_head` and enqueued scripts/styles
@@ -111,7 +111,7 @@ Edit `lib/init.php` to setup custom navigation menus and post thumbnail sizes.
 * Image captions use `<figure>` and `<figcaption>`
 * Example vCard widget
 * Posts use the [hNews](http://microformats.org/wiki/hnews) microformat
-* [Multilingual ready](http://roots.io/wpml/) (Brazilian Portuguese, Bulgarian, Catalan, Danish, Dutch, English, Finnish, French, German, Hungarian, Indonesian, Italian, Korean, Macedonian, Norwegian, Polish, Russian, Simplified Chinese, Spanish, Swedish, Traditional Chinese, Turkish, Vietnamese, Serbian)
+* [Multilingual ready](http://shoestrap.io/wpml/) (Brazilian Portuguese, Bulgarian, Catalan, Danish, Dutch, English, Finnish, French, German, Hungarian, Indonesian, Italian, Korean, Macedonian, Norwegian, Polish, Russian, Simplified Chinese, Spanish, Swedish, Traditional Chinese, Turkish, Vietnamese, Serbian)
 
 ## Contributing
 
@@ -120,11 +120,11 @@ Everyone is welcome to help [contribute](CONTRIBUTING.md) and improve this proje
 * Reporting issues (please read [issue guidelines](https://github.com/necolas/issue-guidelines))
 * Suggesting new features
 * Writing or refactoring code
-* Fixing [issues](https://github.com/roots/roots/issues)
-* Replying to questions on the [forum](http://discourse.roots.io/)
+* Fixing [issues](https://github.com/shoestrap/shoestrap/issues)
+* Replying to questions on the [forum](http://discourse.shoestrap.io/)
 
 ## Support
 
-Use the [Roots Discourse](http://discourse.roots.io/) to ask questions and get support.
+Use the [Shoestrap Discourse](http://discourse.shoestrap.io/) to ask questions and get support.
 
 [![githalytics.com alpha](https://cruel-carlota.pagodabox.com/28b8970195f0fd45e6cbce37fd65c7e2 "githalytics.com")](http://githalytics.com/shoestrap/shoestrap)

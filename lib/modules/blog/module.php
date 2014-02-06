@@ -163,7 +163,7 @@ function shoestrap_module_blog( $sections ) {
 		'title'     => __( '"more" text', 'shoestrap' ),
 		'desc'      => __( 'Text to display in case of excerpt too long. Default: Continued', 'shoestrap' ),
 		'id'        => 'post_excerpt_link_text',
-		'default'   => __( 'Continued', 'roots' ),
+		'default'   => __( 'Continued', 'shoestrap' ),
 		'type'      => 'text'
 	);
 

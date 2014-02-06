@@ -17,7 +17,7 @@ while (have_posts()) : the_post(); ?>
       <?php do_action( 'shoestrap_single_after_content' ); ?>
     </div>
     <footer>
-      <?php wp_link_pages(array('before' => '<nav class="page-nav"><p>' . __('Pages:', 'roots'), 'after' => '</p></nav>')); ?>
+      <?php wp_link_pages(array('before' => '<nav class="page-nav"><p>' . __('Pages:', 'shoestrap'), 'after' => '</p></nav>')); ?>
     </footer>
     <?php
     // The comments section loaded when appropriate

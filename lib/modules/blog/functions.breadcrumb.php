@@ -21,7 +21,7 @@ function shoestrap_breadcrumbs() {
 
 }
 endif;
-add_action( 'shoestrap_breadcrumbs', 'shoestrap_breadcrumbs' );
+add_action( 'shoestrap_pre_wrap', 'shoestrap_breadcrumbs', 30 );
 
 /*
  * The breadcrumbs function.

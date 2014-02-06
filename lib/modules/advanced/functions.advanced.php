@@ -40,7 +40,7 @@ add_filter( 'show_admin_bar' , 'shoestrap_admin_bar' );
 // PJAX
 if ( shoestrap_getVariable( 'pjax' ) == 1 ) {
 	add_action( 'shoestrap_pre_wrap', 'shoestrap_pjax_open_container' );
-	add_action( 'shoestrap_after_wrap', 'shoestrap_pjax_close_container' );
+	add_action( 'shoestrap_pre_footer', 'shoestrap_pjax_close_container' );
 	add_action( 'wp_footer', 'shoestrap_pjax_trigger_script', 200 );
 }
 

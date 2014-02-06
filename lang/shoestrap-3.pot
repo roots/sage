@@ -3656,7 +3656,7 @@ msgid "Use this widget to add a vCard"
 msgstr ""
 
 #: lib/widgets.php:47
-msgid "Roots: vCard"
+msgid "Shoestrap: vCard"
 msgstr ""
 
 #: lib/widgets.php:74
@@ -3759,8 +3759,8 @@ msgstr ""
 
 #. Description of the plugin/theme
 msgid ""
-"Shoestrap is a WordPress theme based on the <a href=\"http://www.rootstheme."
-"com/\">Roots</a> theme, with many additional options."
+"Shoestrap is a WordPress theme based on the <a href=\"http://www.shoestraptheme."
+"com/\">Shoestrap</a> theme, with many additional options."
 msgstr ""
 
 #. Author of the plugin/theme

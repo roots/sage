@@ -1,21 +1,21 @@
 <?php
 
-if ( !function_exists( 'shoestrap_remove_roots_widgets' ) ) :
+if ( !function_exists( 'shoestrap_remove_Shoestrap_widgets' ) ) :
 /*
- * Remove default Roots widgets
+ * Remove default Shoestrap widgets
  */
-function shoestrap_remove_roots_widgets() {
-	remove_action( 'widgets_init', 'roots_widgets_init' );
+function shoestrap_remove_Shoestrap_widgets() {
+	remove_action( 'widgets_init', 'shoestrap_widgets_init_extras' );
 }
 endif;
-add_action( 'widgets_init', 'shoestrap_remove_roots_widgets', 1 );
+add_action( 'widgets_init', 'shoestrap_remove_Shoestrap_widgets', 1 );
 
 
-if ( !function_exists( 'shoestrap_widgets_init' ) ) :
+if ( !function_exists( 'shoestrap_widgets_init_extras' ) ) :
 /**
  * Register sidebars and widgets
  */
-function shoestrap_widgets_init() {
+function shoestrap_widgets_init_extras() {
 	$widgets_mode = shoestrap_getVariable( 'widgets_mode' );
 	
 	if ( $widgets_mode == 0 ) {
@@ -109,10 +109,10 @@ function shoestrap_widgets_init() {
 	));
 
 	// Widgets
-	register_widget( 'Roots_Vcard_Widget' );
+	register_widget( 'Shoestrap_Vcard_Widget' );
 }
 endif;
-add_action( 'init', 'shoestrap_widgets_init' );
+add_action( 'init', 'shoestrap_widgets_init_extras' );
 
 add_filter( 'shoestrap_compiler', 'shoestrap_admin_widgets_styles' );
 function shoestrap_admin_widgets_styles( $bootstrap ) {

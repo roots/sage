@@ -4,45 +4,46 @@ if ( !function_exists( 'shoestrap_branding' ) ) :
 /*
  * The Header template
  */
-function shoestrap_branding() { ?>
-	<?php if ( shoestrap_getVariable( 'header_toggle' ) == 1 ) : ?>
-		<?php if ( shoestrap_getVariable( 'site_style' ) == 'boxed' ) : ?>
-			<div class="container">
-		<?php endif; ?>
+function shoestrap_branding() {
+	if ( shoestrap_getVariable( 'header_toggle' ) == 1 ) { ?>
+		<div class="before-main-wrapper">
 
-		<div class="header-wrapper">
-			<?php if ( shoestrap_getVariable( 'site_style' ) == 'wide' ) : ?>
+			<?php if ( shoestrap_getVariable( 'site_style' ) == 'boxed' ) : ?>
 				<div class="container">
 			<?php endif; ?>
 
-			<?php if ( shoestrap_getVariable( 'header_branding' ) == 1 ) : ?>
-				<a class="brand-logo" href="<?php echo home_url(); ?>/">
-					<h1>
-						<?php if ( function_exists( 'shoestrap_logo' ) ) : ?>
-							<?php shoestrap_logo(); ?>
+				<div class="header-wrapper">
+
+					<?php if ( shoestrap_getVariable( 'site_style' ) == 'wide' ) : ?>
+						<div class="container">
+					<?php endif; ?>
+
+						<?php if ( shoestrap_getVariable( 'header_branding' ) == 1 ) : ?>
+							<a class="brand-logo" href="<?php echo home_url(); ?>/">
+								<h1><?php if ( function_exists( 'shoestrap_logo' ) ) shoestrap_logo(); ?></h1>
+							</a>
 						<?php endif; ?>
-					</h1>
-				</a>
+
+						<?php $pullclass = ( shoestrap_getVariable( 'header_branding' ) == 1 ) ? ' class="pull-right"' : ''; ?>
+
+						<div<?php echo $pullclass; ?>>
+							<?php dynamic_sidebar( 'header-area' ); ?>
+						</div >
+
+					<?php if ( shoestrap_getVariable( 'site_style' ) == 'wide' ) : ?>
+						</div>
+					<?php endif; ?>
+				</div>
+
+			<?php if ( shoestrap_getVariable( 'site_style' ) == 'boxed' ) : ?>
+				</div>
 			<?php endif; ?>
-
-			<?php if ( shoestrap_getVariable( 'header_branding' ) == 1 ) : ?>
-				<div class="pull-right">
-			<?php else : ?>
-				<div>
-			<?php endif; ?>
-
-			<?php dynamic_sidebar( 'header-area' ); ?>
 		</div>
-		</div>
-
-		<?php if ( shoestrap_getVariable( 'site_style' ) != 'fluid' ) : ?>
-			</div>
-		<?php endif; ?>
-
-	<?php endif;
+		<?php
+	}
 }
 endif;
-add_action( 'shoestrap_below_top_navbar', 'shoestrap_branding', 5 );
+add_action( 'shoestrap_pre_wrap', 'shoestrap_branding', 3 );
 
 if ( !function_exists( 'shoestrap_header_css' ) ) :
 /*
