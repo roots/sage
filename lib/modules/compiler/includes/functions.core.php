@@ -61,6 +61,11 @@ function shoestrap_css( $target = 'path', $echo = false ) {
 endif;
 
 
+function shoestrap_main_stylesheet_url() {
+	return shoestrap_css( 'url' );
+}
+add_filter( 'shoestrap_main_stylesheet_url', 'shoestrap_main_stylesheet_url' );
+
 if ( !function_exists( 'shoestrap_css_not_writeable' ) ) :
 /*
  * Admin notice if css is not writable

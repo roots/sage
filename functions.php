@@ -3,6 +3,9 @@
 if ( !defined( 'REDUX_OPT_NAME' ) )
 	define( 'REDUX_OPT_NAME', 'shoestrap' );
 
+if ( !defined( 'SHOESTRAP_ASSETS_URL' ) )
+	define( 'SHOESTRAP_ASSETS_URL', get_template_directory_uri() . '/assets' );
+
 require_once locate_template('/lib/modules/load.modules.php');
 
 require_once locate_template( '/lib/utils.php' );           // Utility functions
