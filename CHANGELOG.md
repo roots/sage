@@ -1,8 +1,9 @@
-### HEAD
+### 6.5.2: February 4th, 2014
+* Update to Bootstrap 3.1.0
+* Move DOM routing into an anonymous function to support jQuery noConflict
 * Update to jQuery 1.11.0
 * Add notice to theme activation, tidy activation table markup
 * Remove changing media folder from theme activation (use [Bedrock](https://github.com/roots/bedrock) for clean URLs out of the box)
-* Update to Bootstrap 3.0.3
 * Switch `div.main` to `main` element now that Modernizr uses the latest HTML5 Shiv
 * Update to Modernizr 2.7.0
 * Don't run JSHint on plugins (`assets/js/plugins/`)

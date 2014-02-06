@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Roots Bahasa Melayu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-08 02:01+0800\n"
-"PO-Revision-Date: 2013-07-08 02:01+0800\n"
+"POT-Creation-Date: 2014-02-06 17:48+0800\n"
+"PO-Revision-Date: 2014-02-06 17:48+0800\n"
 "Last-Translator: Hariadi Hinta <diperakui@gmail.com>\n"
 "Language-Team: Hariadi Hinta <diperakui@gmail.com>\n"
 "Language: Bahasa Melayu\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-KeywordsList: _;gettext;gettext_noop;__;_e\n"
 "X-Poedit-Basepath: ../\n"
-"X-Generator: Poedit 1.5.4\n"
+"X-Generator: Poedit 1.5.7\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPath-1: ./templates\n"
 "X-Poedit-SearchPath-2: ./lib\n"
@@ -33,7 +33,7 @@ msgstr "salah taip alamat"
 msgid "an out-of-date link"
 msgstr "pautan tamat tempoh"
 
-#: base.php:4
+#: base.php:6
 msgid ""
 "You are using an <strong>outdated</strong> browser. Please <a href=\"http://"
 "browsehappy.com/\">upgrade your browser</a> to improve your experience."
@@ -58,72 +58,68 @@ msgstr "Artikel selanjutnya &rarr;"
 msgid "Theme Activation"
 msgstr "Pengaktifan tema"
 
-#: lib/activation.php:51
+#: lib/activation.php:50
 #, php-format
 msgid "%s Theme Activation"
 msgstr "%s Pengaktifan tema"
 
-#: lib/activation.php:62 lib/activation.php:64
+#: lib/activation.php:52
+msgid ""
+"These settings are optional and should usually be used only on a fresh "
+"installation"
+msgstr ""
+"Tetapan ini adalah pilihan dan biasanya digunakan semasa pemasangan baru "
+"sahaja"
+
+#: lib/activation.php:59 lib/activation.php:62
 msgid "Create static front page?"
 msgstr "Buat halaman depan statik?"
 
-#: lib/activation.php:66 lib/activation.php:79 lib/activation.php:92
-#: lib/activation.php:105 lib/activation.php:118
+#: lib/activation.php:64 lib/activation.php:76 lib/activation.php:88
+#: lib/activation.php:100
 msgid "Yes"
 msgstr "Ya"
 
-#: lib/activation.php:67 lib/activation.php:80 lib/activation.php:93
-#: lib/activation.php:106 lib/activation.php:119
+#: lib/activation.php:65 lib/activation.php:77 lib/activation.php:89
+#: lib/activation.php:101
 msgid "No"
 msgstr "Tidak"
 
-#: lib/activation.php:70
+#: lib/activation.php:67
 msgid "Create a page called Home and set it to be the static front page"
 msgstr ""
 "Buat halaman dengan tajuk Home dan tetapkan ianya sebagai halaman depan "
 "statik"
 
-#: lib/activation.php:75
+#: lib/activation.php:71
 msgid "Change permalink structure?"
 msgstr "Ubah struktur permalink?"
 
-#: lib/activation.php:77
+#: lib/activation.php:74
 msgid "Update permalink structure?"
 msgstr "Kemaskini struktur permalink?"
 
-#: lib/activation.php:83
+#: lib/activation.php:79
 msgid "Change permalink structure to /&#37;postname&#37;/"
 msgstr "Tukar struktur permalink menjadi /&#37;postname&#37;/"
 
-#: lib/activation.php:88
-msgid "Change uploads folder?"
-msgstr "Tukar folder muat naik?"
-
-#: lib/activation.php:90
-msgid "Update uploads folder?"
-msgstr "Kemaskini folder muat naik?"
-
-#: lib/activation.php:96
-msgid "Change uploads folder to /media/ instead of /wp-content/uploads/"
-msgstr "Tukar folder muat naik ke /media/ berbanding /wp-content/uploads/"
-
-#: lib/activation.php:101 lib/activation.php:103
+#: lib/activation.php:83 lib/activation.php:86
 msgid "Create navigation menu?"
 msgstr "Buat menu navigasi?"
 
-#: lib/activation.php:109
+#: lib/activation.php:91
 msgid "Create the Primary Navigation menu and set the location"
 msgstr "Buat Menu Navigasi Utama dan tentukan lokasinya"
 
-#: lib/activation.php:114 lib/activation.php:116
+#: lib/activation.php:95 lib/activation.php:98
 msgid "Add pages to menu?"
 msgstr "Tambah halaman ke menu?"
 
-#: lib/activation.php:122
+#: lib/activation.php:103
 msgid "Add all current published pages to the Primary Navigation"
 msgstr "Tambah semua halaman yang sudah diterbitkan ke Menu Utama"
 
-#: lib/cleanup.php:210
+#: lib/cleanup.php:193
 msgid "Continued"
 msgstr "Teruskan"
 
@@ -207,7 +203,7 @@ msgstr "Komentar seterusnya &rarr;"
 
 #: templates/comments.php:29 templates/comments.php:38
 msgid "Comments are closed."
-msgstr "KOmen ditutup."
+msgstr "Komen ditutup."
 
 #: templates/comments.php:45
 msgid "Leave a Reply"
@@ -237,27 +233,27 @@ msgstr "Daftar keluar bagi akaun ini"
 msgid "Log out &raquo;"
 msgstr "Daftar keluar &raquo;"
 
-#: templates/comments.php:57
+#: templates/comments.php:58
 msgid "Name"
 msgstr "Nama"
 
-#: templates/comments.php:57 templates/comments.php:59
+#: templates/comments.php:58 templates/comments.php:62
 msgid " (required)"
 msgstr "(wajib)"
 
-#: templates/comments.php:59
+#: templates/comments.php:62
 msgid "Email (will not be published)"
 msgstr "Emel (tidak akan diterbitkan)"
 
-#: templates/comments.php:61
+#: templates/comments.php:66
 msgid "Website"
 msgstr "Laman Web"
 
-#: templates/comments.php:64
+#: templates/comments.php:71
 msgid "Comment"
 msgstr "Komen"
 
-#: templates/comments.php:66
+#: templates/comments.php:74
 msgid "Submit Comment"
 msgstr "Hantar Komen"
 
@@ -269,13 +265,22 @@ msgstr "Halaman:"
 msgid "By"
 msgstr "Oleh"
 
-#: templates/searchform.php:2
+#: templates/searchform.php:3 templates/searchform.php:6
+msgid "Search"
+msgstr "Cari"
+
+#: templates/searchform.php:4
 msgid "Search for:"
 msgstr "Carian untuk:"
 
-#: templates/searchform.php:3 templates/searchform.php:4
-msgid "Search"
-msgstr "Cari"
+#~ msgid "Change uploads folder?"
+#~ msgstr "Tukar folder muat naik?"
+
+#~ msgid "Update uploads folder?"
+#~ msgstr "Kemaskini folder muat naik?"
+
+#~ msgid "Change uploads folder to /media/ instead of /wp-content/uploads/"
+#~ msgstr "Tukar folder muat naik ke /media/ berbanding /wp-content/uploads/"
 
 #~ msgid ""
 #~ "The page you are looking for might have been removed, had its name "
