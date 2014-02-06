@@ -17,7 +17,6 @@ add_theme_support( 'jquery-cdn' );            // Enable to load jQuery from the 
 /**
  * Configuration values
  */
-define( 'GOOGLE_ANALYTICS_ID', shoestrap_getVariable( 'analytics_id' ) ); // UA-XXXXX-Y (Note: Universal Analytics only, not Classic Analytics)
 define( 'POST_EXCERPT_LENGTH', shoestrap_getVariable( 'post_excerpt_length' ) ); // Length in words for excerpt_length filter (http://codex.wordpress.org/Plugin_API/Filter_Reference/excerpt_length)
 
 /**
