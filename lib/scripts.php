@@ -12,7 +12,7 @@
  */
 function roots_scripts() {
 <<<<<<< HEAD
-  wp_enqueue_style('roots_main', get_template_directory_uri() . '/assets/css/main.min.css', false, 'a3a3b2c314b09939d6570666ccfc9ae6');
+  wp_enqueue_style('roots_main', get_template_directory_uri() . '/assets/css/main.min.css', false, '32f3d046b837fa5e890c34d23f2ab623');
 =======
   wp_enqueue_style('roots_main', get_template_directory_uri() . '/assets/css/main.min.css', false, 'c1a58eb4baaf24c3771085df3d54ff8d');
 >>>>>>> roots/master
@@ -32,7 +32,7 @@ function roots_scripts() {
 
   wp_register_script('modernizr', get_template_directory_uri() . '/assets/js/vendor/modernizr-2.7.0.min.js', array(), null, false);
 <<<<<<< HEAD
-  wp_register_script('roots_scripts', get_template_directory_uri() . '/assets/js/scripts.min.js', array(), '1daa7b3860abb3a457d7dd081b4cdf07', true);
+  wp_register_script('roots_scripts', get_template_directory_uri() . '/assets/js/scripts.min.js', array(), 'd7e439c6343aca4bff6ff8850ee62f4c', true);
 =======
   wp_register_script('roots_scripts', get_template_directory_uri() . '/assets/js/scripts.min.js', array(), '0fc6af96786d8f267c8686338a34cd38', true);
 >>>>>>> roots/master
