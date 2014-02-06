@@ -165,9 +165,10 @@ function shoestrap_module_advanced_options( $sections ) {
 endif;
 add_filter( 'redux/options/'.REDUX_OPT_NAME.'/sections', 'shoestrap_module_advanced_options', 95 );
 
-include_once( dirname( __FILE__ ).'/functions.advanced.php' );
-include_once( dirname( __FILE__ ).'/debug-hooks.php' );
-include_once( dirname( __FILE__ ).'/variables.php' );
+include_once( dirname( __FILE__ ) . '/functions.advanced.php' );
+include_once( dirname( __FILE__ ) . '/debug-hooks.php' );
+include_once( dirname( __FILE__ ) . '/variables.php' );
+include_once( dirname( __FILE__ ) . '/relative-urls.php' );
 
 if ( !function_exists( 'shoestrap_debug_hooks' ) ) :
 function shoestrap_debug_hooks() {
