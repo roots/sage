@@ -6,6 +6,7 @@ define( 'themePATH', get_theme_root() );
 define( 'themeNAME', wp_get_theme() );
 
 include_once( dirname( __FILE__ ).'/functions.color.php' );
+include_once( dirname( __FILE__ ).'/functions.scripts.php' );
 
 
 if ( !function_exists( 'shoestrap_getVariable' ) ) :

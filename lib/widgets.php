@@ -86,7 +86,7 @@ function shoestrap_widgets_init() {
 add_action( 'widgets_init', 'shoestrap_widgets_init' );
 
 /**
- * Example vCard widget
+ * vCard widget
  */
 class Shoestrap_Vcard_Widget extends WP_Widget {
 	private $fields = array( 
