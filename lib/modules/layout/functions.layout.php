@@ -307,8 +307,6 @@ function shoestrap_control_primary_sidebar_display() {
 	if ( !is_front_page() || ( is_front_page() && $layout_sidebar_on_front == 1 ) )
 		add_filter( 'shoestrap_display_primary_sidebar', 'shoestrap_return_true' );
 
-	if ( !is_active_sidebar( 'sidebar-primary' ) )
-		add_filter( 'shoestrap_display_primary_sidebar', 'shoestrap_return_false' );
 }
 add_action( 'wp', 'shoestrap_control_primary_sidebar_display' );
 
@@ -322,7 +320,29 @@ function shoestrap_control_secondary_sidebar_display() {
 	if ( is_front_page() && $layout_sidebar_on_front != 1 )
 		add_filter( 'shoestrap_display_primary_sidebar', 'shoestrap_return_false' );
 
-	if ( !is_active_sidebar( 'sidebar-secondary' ) )
-		add_filter( 'shoestrap_display_primary_sidebar', 'shoestrap_return_false' );
 }
 add_action( 'wp', 'shoestrap_control_secondary_sidebar_display' );
+
+
+add_action( 'after_setup_theme', 'shoestrap_alter_widgets' );
+function shoestrap_alter_widgets() {
+	$widgets_mode = shoestrap_getVariable( 'widgets_mode' );
+
+	if ( $widgets_mode == 0 || $widgets_mode == 1 ) {
+		add_filter( 'shoestrap_widgets_class', 'shoestrap_alter_widgets_class' );
+		add_filter( 'shoestrap_widgets_before_title', 'shoestrap_alter_widgets_before_title' );
+		add_filter( 'shoestrap_widgets_after_title', 'shoestrap_alter_widgets_after_title' );
+	}
+}
+
+function shoestrap_alter_widgets_class() {
+	return shoestrap_getVariable( 'widgets_mode' ) == 0 ? 'panel panel-default' : 'well';
+}
+
+function shoestrap_alter_widgets_before_title() {
+	return shoestrap_getVariable( 'widgets_mode' ) == 0 ? '<div class="panel-heading">' : '<h3 class="widget-title">';
+}
+
+function shoestrap_alter_widgets_after_title() {
+	return shoestrap_getVariable( 'widgets_mode' ) == 0 ? '</div><div class="panel-body">' : '</h3>';
+}

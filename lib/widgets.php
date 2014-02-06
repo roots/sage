@@ -3,24 +3,82 @@
  * Register sidebars and widgets
  */
 function shoestrap_widgets_init() {
-	// Sidebars
-	register_sidebar( array( 
-		'name'          => __( 'Primary', 'shoestrap' ),
-		'id'            => 'sidebar-primary',
-		'before_widget' => '<section class="widget %1$s %2$s">',
-		'after_widget'  => '</section>',
-		'before_title'  => '<h3>',
-		'after_title'   => '</h3>',
-	 ) );
+	$class        = apply_filters( 'shoestrap_widgets_class', '' );
+	$before_title = apply_filters( 'shoestrap_widgets_before_title', '<h3 class="widget-title">' );
+	$after_title  = apply_filters( 'shoestrap_widgets_after_title', '</h3>' );
 
-	register_sidebar( array( 
-		'name'          => __( 'Footer', 'shoestrap' ),
-		'id'            => 'sidebar-footer',
-		'before_widget' => '<section class="widget %1$s %2$s">',
+	// Sidebars
+	register_sidebar( array(
+		'name'          => __( 'Primary Sidebar', 'shoestrap' ),
+		'id'            => 'sidebar-primary',
+		'before_widget' => '<section id="%1$s" class="' . $class . ' widget %2$s">',
 		'after_widget'  => '</section>',
-		'before_title'  => '<h3>',
-		'after_title'   => '</h3>',
-	 ) );
+		'before_title'  => $before_title,
+		'after_title'   => $after_title,
+	));
+
+	register_sidebar( array(
+		'name'          => __( 'Secondary Sidebar', 'shoestrap' ),
+		'id'            => 'sidebar-secondary',
+		'before_widget' => '<section id="%1$s" class="' . $class . ' widget %2$s">',
+		'after_widget'  => '</section>',
+		'before_title'  => $before_title,
+		'after_title'   => $after_title,
+	));
+
+	register_sidebar( array(
+		'name'          => __( 'Jumbotron', 'shoestrap' ),
+		'id'            => 'jumbotron',
+		'before_widget' => '<section id="%1$s"><div class="section-inner">',
+		'after_widget'  => '</div></section>',
+		'before_title'  => '<h1>',
+		'after_title'   => '</h1>',
+	));
+
+	register_sidebar( array(
+		'name'          => __( 'Header Area', 'shoestrap' ),
+		'id'            => 'header-area',
+		'before_widget' => '<div class="container">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h1>',
+		'after_title'   => '</h1>',
+	));
+
+	register_sidebar( array(
+		'name'          => __( 'Footer Widget Area 1', 'shoestrap' ),
+		'id'            => 'sidebar-footer-1',
+		'before_widget' => '<section id="%1$s" class="' . $class . ' widget %2$s">',
+		'after_widget'  => '</section>',
+		'before_title'  => $before_title,
+		'after_title'   => $after_title,
+	));
+
+	register_sidebar( array(
+		'name'          => __( 'Footer Widget Area 2', 'shoestrap' ),
+		'id'            => 'sidebar-footer-2',
+		'before_widget' => '<section id="%1$s" class="' . $class . ' widget %2$s">',
+		'after_widget'  => '</section>',
+		'before_title'  => $before_title,
+		'after_title'   => $after_title,
+	));
+
+	register_sidebar( array(
+		'name'          => __( 'Footer Widget Area 3', 'shoestrap' ),
+		'id'            => 'sidebar-footer-3',
+		'before_widget' => '<section id="%1$s" class="' . $class . ' widget %2$s">',
+		'after_widget'  => '</section>',
+		'before_title'  => $before_title,
+		'after_title'   => $after_title,
+	));
+
+	register_sidebar( array(
+		'name'          => __( 'Footer Widget Area 4', 'shoestrap' ),
+		'id'            => 'sidebar-footer-4',
+		'before_widget' => '<section id="%1$s" class="' . $class . ' widget %2$s">',
+		'after_widget'  => '</section>',
+		'before_title'  => $before_title,
+		'after_title'   => $after_title,
+	));
 
 	// Widgets
 	register_widget( 'Shoestrap_Vcard_Widget' );
