@@ -22,6 +22,3 @@ require_once locate_template( '/lib/widgets.php' );         // Sidebars and widg
 require_once locate_template( '/lib/scripts.php' );         // Scripts and stylesheets
 
 do_action( 'shoestrap_include_files' );
-
-function shoestrap_return_true()  { return true;  }
-function shoestrap_return_false() { return false; }
