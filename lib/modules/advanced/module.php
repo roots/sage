@@ -168,6 +168,7 @@ add_filter( 'redux/options/'.REDUX_OPT_NAME.'/sections', 'shoestrap_module_advan
 include_once( dirname( __FILE__ ) . '/functions.advanced.php' );
 include_once( dirname( __FILE__ ) . '/debug-hooks.php' );
 include_once( dirname( __FILE__ ) . '/variables.php' );
+include_once( dirname( __FILE__ ) . '/scripts.php' );
 
 if ( shoestrap_getVariable( 'root_relative_urls' ) == 1  )
 	include_once( dirname( __FILE__ ) . '/relative-urls.php' );
