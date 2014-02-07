@@ -1,19 +1,4 @@
 <?php
-/**
- * Enable theme features
- */
-add_theme_support( 'post-thumbnails' );
-if ( shoestrap_getVariable( 'root_relative_urls' ) == 1  )
-	add_theme_support( 'root-relative-urls' );    // Enable relative URLs
-
-add_theme_support( 'bootstrap-top-navbar' );  // Enable Bootstrap's top navbar
-add_theme_support( 'bootstrap-gallery' );     // Enable Bootstrap's thumbnails component on [gallery]
-
-if ( shoestrap_getVariable( 'nice_search' ) == 1 )
-	add_theme_support( 'nice-search' );           // Enable /?s= to /search/ redirect
-
-add_theme_support( 'jquery-cdn' );            // Enable to load jQuery from the Google CDN
-
 
 /**
  * Define which pages shouldn't have the primary sidebar

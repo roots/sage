@@ -31,9 +31,8 @@ class Shoestrap_Navlist_Walker extends Walker_Nav_Menu {
 	function display_element($element, &$children_elements, $max_depth, $depth = 0, $args, &$output) {
 		$element->has_children = ((!empty($children_elements[$element->ID]) && (($depth + 1) < $max_depth || ($max_depth === 0))));
 
-		if ($element->has_children) {
+		if ($element->has_children)
 			$element->classes[] = 'parent';
-		}
 
 		parent::display_element($element, $children_elements, $max_depth, $depth, $args, $output);
 	}
@@ -67,17 +66,13 @@ add_filter('nav_menu_item_id', '__return_null');
 function shoestrap_nav_menu_args_alter($args = '') {
 	$shoestrap_nav_menu_args['container'] = false;
 
-	if (!$args['items_wrap']) {
+	if ( !$args['items_wrap'] )
 		$shoestrap_nav_menu_args['items_wrap'] = '<ul class="%2$s">%3$s</ul>';
-	}
 
-	if (current_theme_supports('bootstrap-top-navbar') && !$args['depth']) {
+	if ( !$args['depth'] )
 		$shoestrap_nav_menu_args['depth'] = 3;
-	}
-
-	if (!$args['walker']) {
+	if ( !$args['walker'] )
 		$shoestrap_nav_menu_args['walker'] = new Shoestrap_Nav_Walker();
-	}
 
 	return array_merge($args, $shoestrap_nav_menu_args);
 }

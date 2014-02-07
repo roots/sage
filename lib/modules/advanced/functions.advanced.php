@@ -94,3 +94,27 @@ if ( GOOGLE_ANALYTICS_ID && !current_user_can('manage_options' ) ) {
  * Post Excerpt Length
  */
 define( 'POST_EXCERPT_LENGTH', shoestrap_getVariable( 'post_excerpt_length' ) ); // Length in words for excerpt_length filter (http://codex.wordpress.org/Plugin_API/Filter_Reference/excerpt_length)
+
+if ( shoestrap_getVariable( 'root_relative_urls' ) == 1  )
+	add_theme_support( 'root-relative-urls' );    // Enable relative URLs
+
+
+/**
+ * Redirects search results from /?s=query to /search/query/, converts %20 to +
+ *
+ * @link http://txfx.net/wordpress-plugins/nice-search/
+ */
+function shoestrap_nice_search_redirect() {
+	global $wp_rewrite;
+
+	if ( !isset( $wp_rewrite ) || !is_object( $wp_rewrite ) || !$wp_rewrite->using_permalinks() )
+		return;
+
+	$search_base = $wp_rewrite->search_base;
+	if ( is_search() && !is_admin() && strpos( $_SERVER['REQUEST_URI'], "/{$search_base}/" ) === false ) {
+		wp_redirect( home_url( "/{$search_base}/" . urlencode( get_query_var( 's' ) ) ) );
+		exit();
+	}
+}
+if ( shoestrap_getVariable( 'nice_search' ) == 1 )
+	add_action( 'template_redirect', 'shoestrap_nice_search_redirect' );

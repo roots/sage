@@ -232,7 +232,7 @@ function shoestrap_nav_menu_args( $args = '' ) {
 	if ( !$args['items_wrap'] )
 		$shoestrap_nav_menu_args['items_wrap'] = '<ul class="%2$s">%3$s</ul>';
 
-	if ( current_theme_supports( 'bootstrap-top-navbar' ) && !$args['depth'] )
+	if ( !$args['depth'] )
 		$shoestrap_nav_menu_args['depth'] = 3;
 
 	if ( !$args['walker'] )

@@ -8,7 +8,7 @@ function shoestrap_scripts_jquery() {
 	// jQuery is loaded using the same method from HTML5 Boilerplate:
 	// Grab Google CDN's latest jQuery with a protocol relative URL; fallback to local if offline
 	// It's kept in the header instead of footer to avoid conflicts with plugins.
-	if ( !is_admin() && current_theme_supports( 'jquery-cdn' ) ) {
+	if ( !is_admin() ) {
 		wp_deregister_script( 'jquery' );
 		wp_register_script( 'jquery', '//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js', array(), null, false );
 		add_filter( 'script_loader_src', 'shoestrap_jquery_local_fallback', 10, 2 );

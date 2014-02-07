@@ -88,9 +88,9 @@ add_filter( 'wp_title', 'shoestrap_wp_title', 10 );
 function shoestrap_body_class( $classes ) {
 	// Add 'top-navbar' or 'bottom-navabr' class if using Bootstrap's Navbar
 	// Used to add styling to account for the WordPress admin bar
-	if ( current_theme_supports( 'bootstrap-top-navbar' ) && shoestrap_getVariable( 'navbar_fixed' ) == 1 && shoestrap_getVariable( 'navbar_fixed_position' ) != 1 )
+	if ( shoestrap_getVariable( 'navbar_fixed' ) == 1 && shoestrap_getVariable( 'navbar_fixed_position' ) != 1 )
 		$classes[] = 'top-navbar';
-	elseif ( current_theme_supports( 'bootstrap-top-navbar' ) && shoestrap_getVariable( 'navbar_fixed' ) == 1 && shoestrap_getVariable( 'navbar_fixed_position' ) == 1 )
+	elseif ( shoestrap_getVariable( 'navbar_fixed' ) == 1 && shoestrap_getVariable( 'navbar_fixed_position' ) == 1 )
 		$classes[] = 'bottom-navbar';
 
 	// Add post/page slug
@@ -190,25 +190,6 @@ function shoestrap_remove_default_description( $bloginfo ) {
 }
 add_filter( 'get_bloginfo_rss', 'shoestrap_remove_default_description' );
 
-/**
- * Redirects search results from /?s=query to /search/query/, converts %20 to +
- *
- * @link http://txfx.net/wordpress-plugins/nice-search/
- */
-function shoestrap_nice_search_redirect() {
-	global $wp_rewrite;
-
-	if ( !isset( $wp_rewrite ) || !is_object( $wp_rewrite ) || !$wp_rewrite->using_permalinks() )
-		return;
-
-	$search_base = $wp_rewrite->search_base;
-	if ( is_search() && !is_admin() && strpos( $_SERVER['REQUEST_URI'], "/{$search_base}/" ) === false ) {
-		wp_redirect( home_url( "/{$search_base}/" . urlencode( get_query_var( 's' ) ) ) );
-		exit();
-	}
-}
-if ( current_theme_supports( 'nice-search' ) )
-	add_action( 'template_redirect', 'shoestrap_nice_search_redirect' );
 
 /**
  * Fix for empty search queries redirecting to home page

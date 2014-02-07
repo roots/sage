@@ -5,9 +5,6 @@
  * WordPress likes to use absolute URLs on everything - let's clean that up.
  * Inspired by http://www.456bereastreet.com/archive/201010/how_to_make_wordpress_urls_root_relative/
  *
- * You can enable/disable this feature in config.php:
- * current_theme_supports('root-relative-urls');
- *
  * @author Scott Walkinshaw <scott.walkinshaw@gmail.com>
  */
 function shoestrap_root_relative_url($input) {
@@ -22,7 +19,7 @@ function shoestrap_root_relative_url($input) {
 }
 
 function shoestrap_enable_root_relative_urls() {
-	return !( is_admin() || in_array( $GLOBALS['pagenow'], array( 'wp-login.php', 'wp-register.php' ) ) ) && current_theme_supports( 'root-relative-urls' );
+	return !( is_admin() || in_array( $GLOBALS['pagenow'], array( 'wp-login.php', 'wp-register.php' ) ) );
 }
 
 if ( shoestrap_enable_root_relative_urls() ) {

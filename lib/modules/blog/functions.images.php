@@ -5,7 +5,6 @@ if ( !function_exists( 'shoestrap_featured_image' ) ) :
  * Display featured images on individual posts
  */
 function shoestrap_featured_image() {
-	add_theme_support( 'post-thumbnails' );
 
 	if ( !has_post_thumbnail() || '' == get_the_post_thumbnail() )
 		return;
