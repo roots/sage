@@ -238,6 +238,9 @@ function shoestrap_nav_menu_args( $args = '' ) {
 	if ( !$args['walker'] )
 		$shoestrap_nav_menu_args['walker'] = new Shoestrap_Nav_Walker();
 
+	if ( !$args['fallback_cb'] )
+		$shoestrap_nav_menu_args['fallback_cb'] = 'Shoestrap_Nav_Walker::fallback';
+
 	return array_merge( $args, $shoestrap_nav_menu_args );
 }
 add_filter( 'wp_nav_menu_args', 'shoestrap_nav_menu_args' );

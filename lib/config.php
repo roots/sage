@@ -20,21 +20,6 @@ add_theme_support( 'jquery-cdn' );            // Enable to load jQuery from the 
 define( 'POST_EXCERPT_LENGTH', shoestrap_getVariable( 'post_excerpt_length' ) ); // Length in words for excerpt_length filter (http://codex.wordpress.org/Plugin_API/Filter_Reference/excerpt_length)
 
 /**
- * .main classes
- */
-function shoestrap_main_class() {
-	if ( shoestrap_display_primary_sidebar() ) {
-		// Classes on pages with the sidebar
-		$class = 'col-sm-8';
-	} else {
-		// Classes on full width pages
-		$class = 'col-sm-12';
-	}
-
-	return $class;
-}
-
-/**
  * Define which pages shouldn't have the primary sidebar
  *
  * See lib/sidebar.php for more details
