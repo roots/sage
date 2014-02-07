@@ -89,3 +89,8 @@ function shoestrap_google_analytics() { ?>
 if ( GOOGLE_ANALYTICS_ID && !current_user_can('manage_options' ) ) {
 	add_action( 'wp_footer', 'shoestrap_google_analytics', 20 );
 }
+
+/**
+ * Post Excerpt Length
+ */
+define( 'POST_EXCERPT_LENGTH', shoestrap_getVariable( 'post_excerpt_length' ) ); // Length in words for excerpt_length filter (http://codex.wordpress.org/Plugin_API/Filter_Reference/excerpt_length)

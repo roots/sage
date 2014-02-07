@@ -14,10 +14,6 @@ if ( shoestrap_getVariable( 'nice_search' ) == 1 )
 
 add_theme_support( 'jquery-cdn' );            // Enable to load jQuery from the Google CDN
 
-/**
- * Configuration values
- */
-define( 'POST_EXCERPT_LENGTH', shoestrap_getVariable( 'post_excerpt_length' ) ); // Length in words for excerpt_length filter (http://codex.wordpress.org/Plugin_API/Filter_Reference/excerpt_length)
 
 /**
  * Define which pages shouldn't have the primary sidebar
