@@ -121,4 +121,4 @@ function shoestrap_module_footer_options( $sections ) {
 endif;
 add_filter( 'redux/options/'.REDUX_OPT_NAME.'/sections', 'shoestrap_module_footer_options', 85 );   
 
-include_once( dirname( __FILE__ ) . '/functions.footer.php' );
+include_once( dirname( __FILE__ ) . '/includes/functions.footer.php' );

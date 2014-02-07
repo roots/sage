@@ -198,15 +198,15 @@ function shoestrap_module_blog( $sections ) {
 endif;
 add_filter( 'redux/options/'.REDUX_OPT_NAME.'/sections', 'shoestrap_module_blog', 75 );   
 
-include_once( dirname( __FILE__ ) . '/functions.metaconfig.php' );
-include_once( dirname( __FILE__ ) . '/resize.php' );
-include_once( dirname( __FILE__ ) . '/functions.images.php' );
-include_once( dirname( __FILE__ ) . '/functions.advanced.php' );
-include_once( dirname( __FILE__ ) . '/functions.breadcrumb.php' );
-include_once( dirname( __FILE__ ) . '/functions.pagers.php' );
+include_once( dirname( __FILE__ ) . '/includes/functions.metaconfig.php' );
+include_once( dirname( __FILE__ ) . '/includes/resize.php' );
+include_once( dirname( __FILE__ ) . '/includes/functions.images.php' );
+include_once( dirname( __FILE__ ) . '/includes/functions.advanced.php' );
+include_once( dirname( __FILE__ ) . '/includes/functions.breadcrumb.php' );
+include_once( dirname( __FILE__ ) . '/includes/functions.pagers.php' );
 
 add_filter( 'shoestrap_compiler', 'shoestrap_admin_blog_styles' );
 function shoestrap_admin_blog_styles( $bootstrap ) {
 	return $bootstrap . '
-	@import "' . get_template_directory() . '/lib/modules/blog/styles.less";';
+	@import "' . SHOESTRAP_MODULES_PATH . '/blog/assets/less/styles.less";';
 }

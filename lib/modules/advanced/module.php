@@ -165,46 +165,10 @@ function shoestrap_module_advanced_options( $sections ) {
 endif;
 add_filter( 'redux/options/'.REDUX_OPT_NAME.'/sections', 'shoestrap_module_advanced_options', 95 );
 
-include_once( dirname( __FILE__ ) . '/functions.advanced.php' );
-include_once( dirname( __FILE__ ) . '/debug-hooks.php' );
-include_once( dirname( __FILE__ ) . '/variables.php' );
-include_once( dirname( __FILE__ ) . '/scripts.php' );
+include_once( dirname( __FILE__ ) . '/includes/functions.advanced.php' );
+include_once( dirname( __FILE__ ) . '/includes/debug-hooks.php' );
+include_once( dirname( __FILE__ ) . '/includes/variables.php' );
+include_once( dirname( __FILE__ ) . '/includes/scripts.php' );
 
 if ( shoestrap_getVariable( 'root_relative_urls' ) == 1  )
-	include_once( dirname( __FILE__ ) . '/relative-urls.php' );
-
-if ( !function_exists( 'shoestrap_debug_hooks' ) ) :
-function shoestrap_debug_hooks() {
-	global $redux;
-	if ( current_user_can( 'administrator' ) && shoestrap_getVariable( 'debug_hooks' ) == 1 ) : ?>
-		<div class='panel widget-inner clearfix'>
-			<div class='panel-heading'>Debug Information</div>
-			<ul class='nav nav-tabs' id='debugTabs'>
-				<li class='active'><a href='#SMOFData'>SMOF Data</a></li>
-				<li><a href='#hooksdebug'>Wordpress Hooks</a></li>
-			</ul>
-			<div class='tab-content'>
-				<div class='tab-pane active' id='SMOFData'>
-					<?php
-						$redux_r = print_r( $redux, true );
-						$redux_r_sans = htmlspecialchars( $redux_r, ENT_QUOTES );
-						echo '<pre>'. $redux_r_sans .'<pre>';
-					?>
-				</div>
-				<div class='tab-pane' id='hooksdebug'><?php echo list_hooks(); ?></div>
-			</div>
-		</div>
-		<script>
-			/** Fire up jQuery - let's dance! */
-			jQuery( document ).ready( function( $ ){
-				$( '#debugTabs a' ).click( function ( e ) {
-					e.preventDefault();
-					$( this ).tab( 'show' );
-				})
-			})
-		</script>
-		<?php
-	endif;
-}
-endif;
-add_action( 'shoestrap_after_content', 'shoestrap_debug_hooks' );
+	include_once( dirname( __FILE__ ) . '/includes/relative-urls.php' );

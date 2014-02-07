@@ -8,8 +8,8 @@ function shoestrap_module_background_options( $sections ) {
 	global $redux;
 
 	//Background Patterns Reader
-	$bg_pattern_images_path = get_template_directory() . '/lib/modules/background/patterns';
-	$bg_pattern_images_url  = get_template_directory_uri() . '/lib/modules/background/patterns/';
+	$bg_pattern_images_path = SHOESTRAP_MODULES_PATH . '/background/assets/patterns';
+	$bg_pattern_images_url  = SHOESTRAP_MODULES_URL . '/background/assets/patterns/';
 
 	$bg_pattern_images      = array();
 
@@ -172,5 +172,5 @@ function shoestrap_module_background_options( $sections ) {
 endif;
 add_filter( 'redux/options/'.REDUX_OPT_NAME.'/sections', 'shoestrap_module_background_options', 60 );
 
-include_once( dirname(__FILE__) . '/functions.background.php' );
-include_once( dirname(__FILE__) . '/variables.php' );
+include_once( dirname( __FILE__ ) . '/includes/functions.background.php' );
+include_once( dirname( __FILE__ ) . '/includes/variables.php' );

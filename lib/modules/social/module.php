@@ -346,13 +346,13 @@ function shoestrap_module_socials_options( $sections ) {
 
 }
 endif;
-add_filter( 'redux/options/'.REDUX_OPT_NAME.'/sections', 'shoestrap_module_socials_options', 90 ); 
+add_filter( 'redux/options/' . REDUX_OPT_NAME . '/sections', 'shoestrap_module_socials_options', 90 ); 
 
-include_once( dirname( __FILE__ ) . '/functions.social.php' );
+include_once( dirname( __FILE__ ) . '/includes/functions.social.php' );
 
 
 add_filter( 'shoestrap_compiler', 'shoestrap_admin_social_styles' );
 function shoestrap_admin_social_styles( $bootstrap ) {
 	return $bootstrap . '
-	@import "' . get_template_directory() . '/lib/modules/social/styles.less";';
+	@import "' . SHOESTRAP_MODULES_PATH . '/social/assets/less/styles.less";';
 }

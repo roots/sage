@@ -37,12 +37,12 @@ function shoestrap_module_layout_options( $sections ) {
 		'type'      => 'image_select',
 		'customizer'=> array(),
 		'options'   => array( 
-			0         => ReduxFramework::$_url . '/assets/img/1c.png',
-			1         => ReduxFramework::$_url . '/assets/img/2cr.png',
-			2         => ReduxFramework::$_url . '/assets/img/2cl.png',
-			3         => ReduxFramework::$_url . '/assets/img/3cl.png',
-			4         => ReduxFramework::$_url . '/assets/img/3cr.png',
-			5         => ReduxFramework::$_url . '/assets/img/3cm.png',
+			0 => ReduxFramework::$_url . '/assets/img/1c.png',
+			1 => ReduxFramework::$_url . '/assets/img/2cr.png',
+			2 => ReduxFramework::$_url . '/assets/img/2cl.png',
+			3 => ReduxFramework::$_url . '/assets/img/3cl.png',
+			4 => ReduxFramework::$_url . '/assets/img/3cr.png',
+			5 => ReduxFramework::$_url . '/assets/img/3cm.png',
 		)
 	);
 
@@ -242,11 +242,11 @@ endif;
 add_filter( 'redux/options/'.REDUX_OPT_NAME.'/sections', 'shoestrap_module_layout_options', 55 ); 
 
 
-include_once( dirname( __FILE__ ).'/functions.layout.php' );
-include_once( dirname( __FILE__ ).'/variables.php' );
+include_once( dirname( __FILE__ ) . '/includes/functions.layout.php' );
+include_once( dirname( __FILE__ ) . '/includes/variables.php' );
 
 add_filter( 'shoestrap_compiler', 'shoestrap_admin_layout_styles' );
 function shoestrap_admin_layout_styles( $bootstrap ) {
 	return $bootstrap . '
-	@import "' . get_template_directory() . '/lib/modules/layout/styles.less";';
+	@import "' . SHOESTRAP_MODULES_PATH . '/layout/assets/less/styles.less";';
 }

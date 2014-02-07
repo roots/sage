@@ -317,16 +317,16 @@ function shoestrap_module_menus_options( $sections ) {
 endif;
 add_filter( 'redux/options/'.REDUX_OPT_NAME.'/sections', 'shoestrap_module_menus_options', 70 );  
 
-include_once( dirname( __FILE__ ) . '/functions.navbar.php' );
-include_once( dirname( __FILE__ ) . '/functions.secondary.navbar.php' );
-include_once( dirname( __FILE__ ) . '/functions.slide-down.php' );
-include_once( dirname( __FILE__ ) . '/functions.navlist-walker.php' );
-include_once( dirname( __FILE__ ) . '/functions.navlist.php' );
-include_once( dirname( __FILE__ ) . '/variables.php' );
+include_once( dirname( __FILE__ ) . '/includes/functions.navbar.php' );
+include_once( dirname( __FILE__ ) . '/includes/functions.secondary.navbar.php' );
+include_once( dirname( __FILE__ ) . '/includes/functions.slide-down.php' );
+include_once( dirname( __FILE__ ) . '/includes/functions.navlist-walker.php' );
+include_once( dirname( __FILE__ ) . '/includes/functions.navlist.php' );
+include_once( dirname( __FILE__ ) . '/includes/variables.php' );
 
 
 add_filter( 'shoestrap_compiler', 'shoestrap_admin_menus_styles' );
 function shoestrap_admin_menus_styles( $bootstrap ) {
 	return $bootstrap . '
-	@import "' . get_template_directory() . '/lib/modules/menus/styles.less";';
+	@import "' . SHOESTRAP_MODULES_PATH . '/menus/assets/less/styles.less";';
 }

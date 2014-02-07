@@ -331,12 +331,12 @@ function shoestrap_module_headers_options($sections) {
 endif;
 add_filter( 'redux/options/'.REDUX_OPT_NAME.'/sections', 'shoestrap_module_headers_options', 80 ); 
 
-include_once( dirname( __FILE__ ) . '/functions.extra-header.php' );
-include_once( dirname(__FILE__).'/functions.jumbotron.php' );
-include_once( dirname(__FILE__).'/variables.php' );
+include_once( dirname( __FILE__ ) . '/includes/functions.extra-header.php' );
+include_once( dirname( __FILE__ ) . '/includes/functions.jumbotron.php' );
+include_once( dirname( __FILE__ ) . '/includes/variables.php' );
 
 add_filter( 'shoestrap_compiler', 'shoestrap_admin_headers_styles' );
 function shoestrap_admin_headers_styles( $bootstrap ) {
 	return $bootstrap . '
-	@import "' . get_template_directory() . '/lib/modules/headers/styles.less";';
+	@import "' . SHOESTRAP_MODULES_PATH . '/headers/assets/less/styles.less";';
 }

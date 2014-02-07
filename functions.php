@@ -6,6 +6,12 @@ if ( !defined( 'REDUX_OPT_NAME' ) )
 if ( !defined( 'SHOESTRAP_ASSETS_URL' ) )
 	define( 'SHOESTRAP_ASSETS_URL', get_template_directory_uri() . '/assets' );
 
+if ( !defined( 'SHOESTRAP_MODULES_PATH' ) )
+	define( 'SHOESTRAP_MODULES_PATH', get_template_directory() . '/lib/modules' );
+
+if ( !defined( 'SHOESTRAP_MODULES_URL' ) )
+	define( 'SHOESTRAP_MODULES_URL', get_template_directory_uri() . '/lib/modules' );
+
 require_once locate_template('/lib/modules/load.modules.php');
 
 require_once locate_template( '/lib/utils.php' );           // Utility functions

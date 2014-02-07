@@ -180,14 +180,14 @@ function shoestrap_module_typography_options( $sections ) {
 	return $sections;
 
 }
-add_filter( 'redux/options/'.REDUX_OPT_NAME.'/sections', 'shoestrap_module_typography_options', 65 );
+add_filter( 'redux/options/' . REDUX_OPT_NAME . '/sections', 'shoestrap_module_typography_options', 65 );
 endif;
 
-include_once( dirname( __FILE__ ).'/functions.typography.php' );
-include_once( dirname( __FILE__ ).'/variables.php' );
+include_once( dirname( __FILE__ ) . '/includes/functions.typography.php' );
+include_once( dirname( __FILE__ ) . '/includes/variables.php' );
 
 add_filter( 'shoestrap_compiler', 'shoestrap_admin_typography_styles' );
 function shoestrap_admin_typography_styles( $bootstrap ) {
 	return $bootstrap . '
-	@import "' . get_template_directory() . '/lib/modules/typography/styles.less";';
+	@import "' . SHOESTRAP_MODULES_PATH . '/typography/assets/less/styles.less";';
 }
