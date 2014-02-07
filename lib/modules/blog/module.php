@@ -203,6 +203,7 @@ include_once( dirname( __FILE__ ) . '/resize.php' );
 include_once( dirname( __FILE__ ) . '/functions.images.php' );
 include_once( dirname( __FILE__ ) . '/functions.advanced.php' );
 include_once( dirname( __FILE__ ) . '/functions.breadcrumb.php' );
+include_once( dirname( __FILE__ ) . '/functions.pagers.php' );
 
 add_filter( 'shoestrap_compiler', 'shoestrap_admin_blog_styles' );
 function shoestrap_admin_blog_styles( $bootstrap ) {

@@ -95,9 +95,6 @@ if ( GOOGLE_ANALYTICS_ID && !current_user_can('manage_options' ) ) {
  */
 define( 'POST_EXCERPT_LENGTH', shoestrap_getVariable( 'post_excerpt_length' ) ); // Length in words for excerpt_length filter (http://codex.wordpress.org/Plugin_API/Filter_Reference/excerpt_length)
 
-if ( shoestrap_getVariable( 'root_relative_urls' ) == 1  )
-	add_theme_support( 'root-relative-urls' );    // Enable relative URLs
-
 
 /**
  * Redirects search results from /?s=query to /search/query/, converts %20 to +

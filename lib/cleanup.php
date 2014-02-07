@@ -214,3 +214,17 @@ function shoestrap_get_search_form( $form ) {
 	return $form;
 }
 add_filter( 'get_search_form', 'shoestrap_get_search_form' );
+
+
+function shoestrap_pagers() {
+	global $wp_query;
+
+	if ( $wp_query->max_num_pages > 1) {
+		$nav  = '<nav class="post-nav"><ul class="pager">';
+		$nav .= '<li class="previous">' . get_next_posts_link( __( '&larr; Older posts', 'shoestrap' ) ) . '</li>';
+		$nav .= '<li class="next">' . get_previous_posts_link( __( 'Newer posts &rarr;', 'shoestrap' ) ) . '</li>';
+		$nav .= '</ul></nav>';
+
+		return $nav;
+	}
+}
