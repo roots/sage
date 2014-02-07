@@ -144,15 +144,6 @@ function shoestrap_module_advanced_options( $sections ) {
 		'type'      => 'switch',
 	);
 
-	$fields[] = array( 
-		'title'     => __( 'Debug Hooks', 'shoestrap' ),
-		'desc'      => __( 'Turn on very useful debug hooks. These will only be visible to admins. Default: Off.', 'shoestrap' ),
-		'id'        => 'debug_hooks',
-		'default'   => 0,
-		'customizer'=> array(),
-		'type'      => 'switch',
-	);
-
 	$section['fields'] = $fields;
 
 	$section = apply_filters( 'shoestrap_module_advanced_options_modifier', $section );
