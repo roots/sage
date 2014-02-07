@@ -30,7 +30,6 @@ function shoestrap_module_menus_options( $sections ) {
 			'none'      => __( 'Off', 'shoestrap' ),
 			'normal'    => __( 'Normal', 'shoestrap' ),
 			'pills'     => __( 'Pills', 'shoestrap' ),
-			'alt'       => __( 'Alternative', 'shoestrap' ),
 			'full'      => __( 'Full-Width', 'shoestrap' ),
 			'left'      => __( 'Static-Left', 'shoestrap' ),
 		),
@@ -324,9 +323,6 @@ include_once( dirname( __FILE__ ) . '/functions.slide-down.php' );
 include_once( dirname( __FILE__ ) . '/functions.navlist-walker.php' );
 include_once( dirname( __FILE__ ) . '/functions.navlist.php' );
 include_once( dirname( __FILE__ ) . '/variables.php' );
-
-if ( shoestrap_getVariable( 'navbar_toggle' ) == 'alt' )
-	include_once( dirname( __FILE__ ) . '/functions.navwalker.php' );
 
 
 add_filter( 'shoestrap_compiler', 'shoestrap_admin_menus_styles' );
