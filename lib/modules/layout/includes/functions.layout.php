@@ -56,11 +56,11 @@ function shoestrap_setLayout( $val ) {
 endif;
 
 
-if ( !function_exists( 'shoestrap_section_class' ) ) :
+if ( !function_exists( 'shoestrap_section_class_extended' ) ) :
 /*
  * Calculates the classes of the main area, main sidebar and secondary sidebar
  */
-function shoestrap_section_class( $target, $echo = false ) {
+function shoestrap_section_class_extended( $target, $echo = false ) {
 	global $redux;
 	
 	$layout = shoestrap_getLayout();
@@ -207,7 +207,7 @@ function shoestrap_content_width_px( $echo = false ) {
 	$container  = filter_var( shoestrap_getVariable( 'screen_large_desktop' ), FILTER_SANITIZE_NUMBER_INT );
 	$gutter     = filter_var( shoestrap_getVariable( 'layout_gutter' ), FILTER_SANITIZE_NUMBER_INT );
 
-	$main_span  = filter_var( shoestrap_section_class( 'main', false ), FILTER_SANITIZE_NUMBER_INT );
+	$main_span  = filter_var( shoestrap_section_class_extended( 'main', false ), FILTER_SANITIZE_NUMBER_INT );
 	$main_span  = str_replace( '-' , '', $main_span );
 
 	// If the layout is #5, override the default function and calculate the span width of the main area again.
