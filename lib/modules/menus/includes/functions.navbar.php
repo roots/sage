@@ -119,6 +119,8 @@ function shoestrap_do_navbar() {
 			else
 				do_action( 'shoestrap_header_override' );
 		}
+	} else {
+		return '';
 	}
 }
 add_action( 'shoestrap_do_navbar', 'shoestrap_do_navbar' );

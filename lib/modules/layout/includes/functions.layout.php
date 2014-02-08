@@ -76,7 +76,7 @@ function shoestrap_section_class( $target, $echo = false ) {
 	$secondary  = NULL;
 	$wrapper    = NULL;
 
-	if ( is_active_sidebar( 'sidebar-secondary' ) && is_active_sidebar( 'sidebar-primary' ) ) {
+	if ( shoestrap_display_primary_sidebar() && shoestrap_display_secondary_sidebar() ) {
 
 		if ( $layout == 5 ) {
 			$main       = $base . ( 12 - floor( ( 12 * $first ) / ( 12 - $second ) ) );
@@ -93,14 +93,14 @@ function shoestrap_section_class( $target, $echo = false ) {
 			$secondary  = $base . $second;
 		}
 
-	} elseif ( !is_active_sidebar( 'sidebar-secondary' ) && is_active_sidebar( 'sidebar-primary' ) ) {
+	} elseif ( shoestrap_display_primary_sidebar() && !shoestrap_display_secondary_sidebar() ) {
 
 		if ( $layout >= 1 ) {
 			$main       = $base . ( 12 - $first );
 			$primary    = $base . $first;
 		}
 
-	} elseif ( is_active_sidebar( 'sidebar-secondary' ) && !is_active_sidebar( 'sidebar-primary' ) ) {
+	} elseif ( !shoestrap_display_primary_sidebar() && shoestrap_display_secondary_sidebar() ) {
 
 		if ( $layout >= 3 ) {
 			$main       = $base . ( 12 - $second );
@@ -139,15 +139,6 @@ function shoestrap_section_class( $target, $echo = false ) {
 }
 endif;
 
-function shoestrap_alter_section_class_main() { return shoestrap_section_class( 'main' ); }
-add_filter( 'shoestrap_section_class_main', 'shoestrap_alter_section_class_main' );
-
-function shoestrap_alter_section_class_primary() { return shoestrap_section_class( 'main' ); }
-add_filter( 'shoestrap_section_class_secondary', 'shoestrap_alter_section_class_primary' );
-
-function shoestrap_alter_section_class_secondary() { return shoestrap_section_class( 'main' ); }
-add_filter( 'shoestrap_section_class_secondary', 'shoestrap_alter_section_class_secondary' );
-
 
 if ( !function_exists( 'shoestrap_layout_body_class' ) ) :
 /**
@@ -169,7 +160,7 @@ function shoestrap_layout_body_class( $classes ) {
 	return $classes;
 }
 endif;
-add_filter('body_class', 'shoestrap_layout_body_class');
+add_filter( 'body_class', 'shoestrap_layout_body_class' );
 
 
 if ( !function_exists( 'shoestrap_container_class' ) ) :
@@ -280,20 +271,6 @@ function shoestrap_close_boxed_container_div() {
 }
 add_action( 'shoestrap_do_navbar', 'shoestrap_close_boxed_container_div', 99 );
 add_action( 'shoestrap_after_footer', 'shoestrap_close_boxed_container_div', 899 );
-
-
-function shoestrap_mp_wrap_div_open() {
-	if ( shoestrap_section_class( 'wrap' ) )
-		echo '<div class="mp_wrap ' . shoestrap_section_class( 'wrapper' ) . '"><div class="row">';
-}
-add_action( 'shoestrap_pre_main', 'shoestrap_mp_wrap_div_open', 999 );
-
-
-function shoestrap_mp_wrap_div_close() {
-	if ( shoestrap_section_class( 'wrap' ) )
-		echo '</div></div>';
-}
-add_action( 'shoestrap_post_main', 'shoestrap_mp_wrap_div_close', 999 );
 
 
 function shoestrap_control_primary_sidebar_display() {
