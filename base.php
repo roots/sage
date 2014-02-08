@@ -8,7 +8,12 @@
 	<![endif]-->
 
 	<?php do_action( 'get_header' ); ?>
-	<?php do_action( 'shoestrap_do_navbar' ); ?>
+	<?php
+	if ( !has_action( 'shoestrap_do_navbar' ) )
+		get_template_part( 'templates/header-top-navbar' );
+	else
+		do_action( 'shoestrap_do_navbar' );
+	?>
 	<?php do_action( 'shoestrap_pre_wrap' ); ?>
 
 	<div class="wrap main-section <?php echo apply_filters( 'shoestrap_container_class', 'container' ); ?>" role="document">
