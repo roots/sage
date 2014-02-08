@@ -1,7 +1,16 @@
 <?php
+/*
+Plugin Name: Shoestrap Admin
+Plugin URI: http://wpmu.io
+Description: Add advanced controls to the Shoestrap theme
+Version: 0.9
+Author: Aristeides Stathopoulos
+Author URI:  http://aristeides.com
+GitHub Plugin URI: https://github.com/shoestrap/shoestrap-admin
+*/
 
 if ( !defined( 'SHOESTRAP_MODULES_PATH' ) )
-	define( 'SHOESTRAP_MODULES_PATH', get_template_directory() . '/lib/modules' );
+	define( 'SHOESTRAP_MODULES_PATH', dirname( __FILE__ ) );
 
 if ( !defined( 'SHOESTRAP_MODULES_URL' ) )
 	define( 'SHOESTRAP_MODULES_URL', get_template_directory_uri() . '/lib/modules' );
