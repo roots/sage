@@ -3,5 +3,5 @@
 	<div class="row">
 		<?php shoestrap_footer_content(); ?>
     </div>
-  </div>
+    <?php do_action( 'shoestrap_footer_after_content' ); ?>
 </footer>
