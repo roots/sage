@@ -1,10 +1,16 @@
 <?php
 
+if ( !defined( 'SHOESTRAP_MODULES_PATH' ) )
+	define( 'SHOESTRAP_MODULES_PATH', get_template_directory() . '/lib/modules' );
+
+if ( !defined( 'SHOESTRAP_MODULES_URL' ) )
+	define( 'SHOESTRAP_MODULES_URL', get_template_directory_uri() . '/lib/modules' );
+
 // Prioritize loading of some necessary core modules
-require_once get_template_directory() . '/lib/modules/redux/module.php';
-require_once get_template_directory() . '/lib/modules/core/module.php';
-require_once get_template_directory() . '/lib/modules/layout/module.php';
-require_once get_template_directory() . '/lib/modules/blog/module.php';
+require_once SHOESTRAP_MODULES_PATH . '/redux/module.php';
+require_once SHOESTRAP_MODULES_PATH . '/core/module.php';
+require_once SHOESTRAP_MODULES_PATH . '/layout/module.php';
+require_once SHOESTRAP_MODULES_PATH . '/blog/module.php';
 
 if ( !function_exists( 'shoestrap_include_modules' ) ) :
 /*
@@ -12,7 +18,7 @@ if ( !function_exists( 'shoestrap_include_modules' ) ) :
  */
 function shoestrap_include_modules() {
 	// Include all modules from the shoestrap theme (NOT the child themes)
-	$modules_path = new RecursiveDirectoryIterator( get_template_directory() . '/lib/modules/' );
+	$modules_path = new RecursiveDirectoryIterator( SHOESTRAP_MODULES_PATH . '/' );
 	$recIterator  = new RecursiveIteratorIterator( $modules_path );
 	$regex        = new RegexIterator( $recIterator, '/\/module.php$/i' );
 
@@ -38,22 +44,7 @@ endif;
 
 // PHP version control
 $phpversion = phpversion();
-if ( version_compare( $phpversion, '5.2.11', '<' ) ) :
+if ( version_compare( $phpversion, '5.2.11', '<' ) )
 	shoestrap_include_modules();
-else :
+else
 	shoestrap_include_modules_fallback();
-endif;
-
-
-if ( !function_exists( 'shoestrap_theme_active' ) ) :
-/*
- * The following function adds a 'shoestrap_activated' option in the database
- * and sets it to true, AFTER all the modules have been loaded above.
- * This helps skip the compiler on activation.
- */
-function shoestrap_theme_active() {
-	if ( get_option( 'shoestrap_activated' ) != true )
-		add_option( 'shoestrap_activated', true );
-}
-endif;
-add_action( 'after_setup_theme', 'shoestrap_theme_active' );

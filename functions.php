@@ -6,25 +6,21 @@ if ( !defined( 'REDUX_OPT_NAME' ) )
 if ( !defined( 'SHOESTRAP_ASSETS_URL' ) )
 	define( 'SHOESTRAP_ASSETS_URL', get_template_directory_uri() . '/assets' );
 
-if ( !defined( 'SHOESTRAP_MODULES_PATH' ) )
-	define( 'SHOESTRAP_MODULES_PATH', get_template_directory() . '/lib/modules' );
+if ( file_exists( locate_template( '/lib/modules/load.modules.php' ) ) )
+	require_once locate_template('/lib/modules/load.modules.php');
 
-if ( !defined( 'SHOESTRAP_MODULES_URL' ) )
-	define( 'SHOESTRAP_MODULES_URL', get_template_directory_uri() . '/lib/modules' );
-
-require_once locate_template('/lib/modules/load.modules.php');
-
-require_once locate_template( '/lib/utils.php' );           // Utility functions
-require_once locate_template( '/lib/init.php' );            // Initial theme setup and constants
-require_once locate_template( '/lib/wrapper.php' );         // Theme wrapper class
-require_once locate_template( '/lib/sidebar.php' );         // Sidebar class
-require_once locate_template( '/lib/config.php' );          // Configuration
-require_once locate_template( '/lib/titles.php' );          // Page titles
-require_once locate_template( '/lib/cleanup.php' );         // Cleanup
-require_once locate_template( '/lib/nav.php' );             // Custom nav modifications
-require_once locate_template( '/lib/gallery.php' );         // Custom [gallery] modifications
-require_once locate_template( '/lib/comments.php' );        // Custom comments modifications
-require_once locate_template( '/lib/widgets.php' );         // Sidebars and widgets
-require_once locate_template( '/lib/scripts.php' );         // Scripts and stylesheets
+require_once locate_template( '/lib/utils.php' );      // Utility functions
+require_once locate_template( '/lib/init.php' );       // Initial theme setup and constants
+require_once locate_template( '/lib/wrapper.php' );    // Theme wrapper class
+require_once locate_template( '/lib/sidebar.php' );    // Sidebar class
+require_once locate_template( '/lib/footer.php' );     // Footer configuration
+require_once locate_template( '/lib/config.php' );     // Configuration
+require_once locate_template( '/lib/titles.php' );     // Page titles
+require_once locate_template( '/lib/cleanup.php' );    // Cleanup
+require_once locate_template( '/lib/nav.php' );        // Custom nav modifications
+require_once locate_template( '/lib/gallery.php' );    // Custom [gallery] modifications
+require_once locate_template( '/lib/comments.php' );   // Custom comments modifications
+require_once locate_template( '/lib/widgets.php' );    // Sidebars and widgets
+require_once locate_template( '/lib/scripts.php' );    // Scripts and stylesheets
 
 do_action( 'shoestrap_include_files' );
