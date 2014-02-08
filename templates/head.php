@@ -4,14 +4,6 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title><?php wp_title('|', true, 'right'); ?></title>
-<?php if ( shoestrap_getVariable( 'site_style' ) != 'static' ): ?>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
-<?php endif; ?>
-
   <?php wp_head(); ?>
   <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
