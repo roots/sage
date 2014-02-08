@@ -96,14 +96,26 @@ function shoestrap_section_class( $target, $echo = false ) {
 endif;
 
 
+/*
+ * Some templates require an additional wrapper div around the Main Area and the Primary Sidebar.
+ * This function creates the opening <div> tag with the appropriate classes to be used.
+ */
 function shoestrap_mp_wrap_div_open() {
 	echo '<div class="mp_wrap ' . shoestrap_section_class( 'wrapper' ) . '"><div class="row">';
 }
 
+/*
+ * Closes the <div> opened by the shoestrap_mp_wrap_div_open() function.
+ */
 function shoestrap_mp_wrap_div_close() {
 	echo '</div></div>';
 }
 
+/*
+ * Adds the actions to open and close the wrapper divs when necessary.
+ *
+ * Uses the shoestrap_mp_wrap_div_open() and shoestrap_mp_wrap_div_close() functions.
+ */
 function shoestrap_mp_wrap_div_toggler() {
 	$wrapper = shoestrap_section_class( 'wrapper' );
 	if ( !is_null( $wrapper ) && !empty( $wrapper ) ) {

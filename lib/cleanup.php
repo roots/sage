@@ -209,6 +209,9 @@ function shoestrap_get_search_form( $form ) {
 add_filter( 'get_search_form', 'shoestrap_get_search_form' );
 
 
+/**
+ * Generate the default pagers.
+ */
 function shoestrap_pagers() {
 	global $wp_query;
 

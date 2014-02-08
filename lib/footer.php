@@ -1,5 +1,8 @@
 <?php
 
+/*
+ * Get the content and widget areas for the footer
+ */
 function shoestrap_footer_content() {
 	// Finding the number of active widget sidebars
 	$num_of_sidebars = 0;
