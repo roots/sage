@@ -4,7 +4,7 @@
  */
 function shoestrap_scripts() {
 
-	wp_enqueue_style( 'shoestrap_css', apply_filters( 'shoestrap_main_stylesheet_url', SHOESTRAP_ASSETS_URL . 'css/style-default.css' ), false, null );
+	wp_enqueue_style( 'shoestrap_css', apply_filters( 'shoestrap_main_stylesheet_url', SHOESTRAP_ASSETS_URL . '/css/style-default.css' ), false, null );
 
 	wp_register_script( 'modernizr',         SHOESTRAP_ASSETS_URL . '/js/vendor/modernizr-2.7.0.min.js', false, null, false );
 	wp_register_script( 'shoestrap_plugins', SHOESTRAP_ASSETS_URL . '/js/bootstrap.min.js',              false, null, true  );
