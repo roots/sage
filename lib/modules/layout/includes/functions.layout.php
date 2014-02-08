@@ -177,7 +177,7 @@ if ( !function_exists( 'shoestrap_container_class' ) ) :
  * Return the container class
  */
 function shoestrap_container_class() {
-	$class = _( shoestrap_getVariable( 'site_style' ) != 'fluid' ) ? 'container' : 'fluid';
+	$class = shoestrap_getVariable( 'site_style' ) != 'fluid' ? 'container' : 'fluid';
 
 	return $class;
 }
@@ -201,6 +201,7 @@ function shoestrap_navbar_container_class() {
 	return $class;
 }
 endif;
+add_filter( 'shoestrap_navbar_container_class', 'shoestrap_navbar_container_class' );
 
 
 if ( !function_exists( 'shoestrap_content_width_px' ) ) :
@@ -346,3 +347,14 @@ function shoestrap_alter_widgets_before_title() {
 function shoestrap_alter_widgets_after_title() {
 	return shoestrap_getVariable( 'widgets_mode' ) == 0 ? '</div><div class="panel-body">' : '</h3>';
 }
+
+function shoestrap_static_meta() {
+	if ( shoestrap_getVariable( 'site_style' ) != 'static' ) : ?>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<?php
+	endif;
+}
+add_action( 'wp_head', 'shoestrap_static_meta' );

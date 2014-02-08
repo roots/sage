@@ -86,13 +86,6 @@ add_filter( 'wp_title', 'shoestrap_wp_title', 10 );
  * Add and remove body_class() classes
  */
 function shoestrap_body_class( $classes ) {
-	// Add 'top-navbar' or 'bottom-navabr' class if using Bootstrap's Navbar
-	// Used to add styling to account for the WordPress admin bar
-	if ( shoestrap_getVariable( 'navbar_fixed' ) == 1 && shoestrap_getVariable( 'navbar_fixed_position' ) != 1 )
-		$classes[] = 'top-navbar';
-	elseif ( shoestrap_getVariable( 'navbar_fixed' ) == 1 && shoestrap_getVariable( 'navbar_fixed_position' ) == 1 )
-		$classes[] = 'bottom-navbar';
-
 	// Add post/page slug
 	if ( is_single() || is_page() && !is_front_page() )
 		$classes[] = basename( get_permalink() );

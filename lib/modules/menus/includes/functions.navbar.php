@@ -1,13 +1,10 @@
 <?php
 
-if ( !function_exists( 'shoestrap_nav_class_pull' ) ) :
-function shoestrap_nav_class_pull( $class = 'navbar-nav' ) {
-	$ul = ( shoestrap_getVariable( 'navbar_nav_right' ) == '1' ) ? 'nav pull-right ' . $class : 'nav ' . $class;
 
-	return $ul;
+function shoestrap_nav_class() {
+	return ( shoestrap_getVariable( 'navbar_nav_right' ) == '1' ) ? 'navbar-nav nav pull-right' : 'navbar-nav nav';
 }
-endif;
-add_filter( 'shoestrap_nav_class', 'shoestrap_nav_class_pull' );
+add_filter( 'shoestrap_nav_class', 'shoestrap_nav_class' );
 
 
 if ( !function_exists( 'shoestrap_navbar_pre_searchbox' ) ) :
@@ -58,6 +55,7 @@ function shoestrap_navbar_class( $navbar = 'main') {
 		return 'navbar ' . $style;
 }
 endif;
+add_filter( 'shoestrap_navbar_class', 'shoestrap_navbar_class' );
 
 
 if ( !function_exists( 'shoestrap_static_left_breakpoint' ) ) :
@@ -126,13 +124,13 @@ function shoestrap_do_navbar() {
 add_action( 'shoestrap_do_navbar', 'shoestrap_do_navbar' );
 
 
+add_action( 'shoestrap_do_navbar', 'shoestrap_static_left_main_wrapper_open', 97 );
 function shoestrap_static_left_main_wrapper_open() {
 	$left = ( shoestrap_getVariable( 'navbar_toggle' ) == 'left' ) ? true : false;
 
 	if ( $left )
 		echo '<section class="static-menu-main ' . shoestrap_static_left_breakpoint() . ' col-static-' . ( 12 - shoestrap_getVariable( 'layout_secondary_width' ) ) . '">';
 }
-add_action( 'shoestrap_do_navbar', 'shoestrap_static_left_main_wrapper_open', 97 );
 
 
 function shoestrap_static_left_main_wrapper_close() {
@@ -142,3 +140,42 @@ function shoestrap_static_left_main_wrapper_close() {
 		echo '</section>';
 }
 add_action( 'shoestrap_after_footer', 'shoestrap_close_boxed_container_div', 901 );
+
+
+function shoestrap_navbar_brand() {
+	// Make sure the branding module exists.
+	if ( function_exists( 'shoestrap_logo' ) ) {
+		$logo           = shoestrap_getVariable( 'logo' );
+		$branding_class = !empty( $logo['url'] ) ? 'logo' : 'text';
+
+		if ( shoestrap_getVariable( 'navbar_brand' ) != 0 ) {
+			$branding  = '<a class="navbar-brand ' . $branding_class . '" href="' . home_url('/') . '">';
+			$branding .= shoestrap_getVariable( 'navbar_logo' ) == 1 ? shoestrap_logo() : get_bloginfo( 'name' );
+			$branding .= '</a>';
+		} else {
+			$branding = '';
+		}
+	} else {
+		// If the branding module does not exist, return the defaults.
+		$branding = '<a class="navbar-brand text" href="' . home_url('/') . '">' . get_bloginfo( 'name' ) . '</a>';
+	}
+
+	return $branding;
+}
+add_filter( 'shoestrap_navbar_brand', 'shoestrap_navbar_brand' );
+
+
+/**
+ * Add and remove body_class() classes
+ */
+function shoestrap_navbar_body_class( $classes ) {
+	// Add 'top-navbar' or 'bottom-navabr' class if using Bootstrap's Navbar
+	// Used to add styling to account for the WordPress admin bar
+	if ( shoestrap_getVariable( 'navbar_fixed' ) == 1 && shoestrap_getVariable( 'navbar_fixed_position' ) != 1 )
+		$classes[] = 'top-navbar';
+	elseif ( shoestrap_getVariable( 'navbar_fixed' ) == 1 && shoestrap_getVariable( 'navbar_fixed_position' ) == 1 )
+		$classes[] = 'bottom-navbar';
+
+	return $classes;
+}
+add_filter( 'body_class', 'shoestrap_navbar_body_class' );
