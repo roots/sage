@@ -109,6 +109,6 @@ add_action( 'shoestrap_footer_pre_content', 'shoestrap_footer_pre_content' );
 
 function shoestrap_footer_after_content() {
 	if ( shoestrap_getVariable( 'site_style' ) != 'boxed'  )
-		echo '</div>'
+		echo '</div>';
 }
 add_action( 'shoestrap_footer_after_content', 'shoestrap_footer_after_content' );
