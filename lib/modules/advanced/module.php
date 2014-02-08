@@ -154,7 +154,7 @@ function shoestrap_module_advanced_options( $sections ) {
 
 }
 endif;
-add_filter( 'redux/options/'.REDUX_OPT_NAME.'/sections', 'shoestrap_module_advanced_options', 95 );
+add_filter( 'redux/options/' . SHOESTRAP_OPT_NAME . '/sections', 'shoestrap_module_advanced_options', 95 );
 
 include_once( dirname( __FILE__ ) . '/includes/functions.advanced.php' );
 include_once( dirname( __FILE__ ) . '/includes/variables.php' );

@@ -24,7 +24,7 @@ function shoestrap_module_blog( $sections ) {
 	);
 
 	// Featured Images Options
-	$settings  = get_option( REDUX_OPT_NAME );
+	$settings  = get_option( SHOESTRAP_OPT_NAME );
 	$screen_large_desktop = filter_var( $settings[ 'screen_large_desktop' ], FILTER_SANITIZE_NUMBER_INT );
 
 	$fields[] = array( 
@@ -196,7 +196,7 @@ function shoestrap_module_blog( $sections ) {
 	return $sections;
 }
 endif;
-add_filter( 'redux/options/'.REDUX_OPT_NAME.'/sections', 'shoestrap_module_blog', 75 );   
+add_filter( 'redux/options/' . SHOESTRAP_OPT_NAME . '/sections', 'shoestrap_module_blog', 75 );   
 
 include_once( dirname( __FILE__ ) . '/includes/functions.metaconfig.php' );
 include_once( dirname( __FILE__ ) . '/includes/resize.php' );

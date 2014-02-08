@@ -239,7 +239,7 @@ function shoestrap_module_layout_options( $sections ) {
 
 }
 endif;
-add_filter( 'redux/options/'.REDUX_OPT_NAME.'/sections', 'shoestrap_module_layout_options', 55 ); 
+add_filter( 'redux/options/' . SHOESTRAP_OPT_NAME . '/sections', 'shoestrap_module_layout_options', 55 ); 
 
 
 include_once( dirname( __FILE__ ) . '/includes/functions.layout.php' );

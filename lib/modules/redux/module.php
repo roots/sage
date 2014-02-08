@@ -25,14 +25,14 @@ if ( class_exists( 'ReduxFramework' ) ) :
 	 // );
 
 	// Choose a custom option name for your theme options, the default is the theme name in lowercase with spaces replaced by underscores
-	$args['opt_name']               = REDUX_OPT_NAME;
+	$args['opt_name']               = SHOESTRAP_OPT_NAME;
 	$args['customizer']             = false;
 	$args['forced_edd_license']     = true;
 	$args['google_api_key']         = 'AIzaSyCDiOc36EIOmwdwspLG3LYwCg9avqC5YLs';
 	$args['global_variable']        = 'redux';
 	$args['default_show']           = true;
 	$args['default_mark']           = '*';
-	$args['page_slug']              = REDUX_OPT_NAME;
+	$args['page_slug']              = SHOESTRAP_OPT_NAME;
 	$theme                          = wp_get_theme();
 	$args['display_name']           = $theme->get( 'Name' );
 	$args['menu_title']             = __( 'Theme Options', 'shoestrap' );
@@ -71,7 +71,7 @@ endif;
 
 // Saving functions on import, etc
 // If a compiler field was altered or import or reset defaults
-add_action( 'redux/options/' . REDUX_OPT_NAME . '/compiler' , 'shoestrap_makecss' );
+add_action( 'redux/options/' . SHOESTRAP_OPT_NAME . '/compiler' , 'shoestrap_makecss' );
 
 
 /**

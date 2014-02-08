@@ -315,7 +315,7 @@ function shoestrap_module_menus_options( $sections ) {
 
 }
 endif;
-add_filter( 'redux/options/'.REDUX_OPT_NAME.'/sections', 'shoestrap_module_menus_options', 70 );  
+add_filter( 'redux/options/' . SHOESTRAP_OPT_NAME . '/sections', 'shoestrap_module_menus_options', 70 );  
 
 include_once( dirname( __FILE__ ) . '/includes/functions.navbar.php' );
 include_once( dirname( __FILE__ ) . '/includes/functions.secondary.navbar.php' );

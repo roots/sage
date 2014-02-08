@@ -180,7 +180,7 @@ function shoestrap_module_typography_options( $sections ) {
 	return $sections;
 
 }
-add_filter( 'redux/options/' . REDUX_OPT_NAME . '/sections', 'shoestrap_module_typography_options', 65 );
+add_filter( 'redux/options/' . SHOESTRAP_OPT_NAME . '/sections', 'shoestrap_module_typography_options', 65 );
 endif;
 
 include_once( dirname( __FILE__ ) . '/includes/functions.typography.php' );

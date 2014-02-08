@@ -329,7 +329,7 @@ function shoestrap_module_headers_options($sections) {
 
 }
 endif;
-add_filter( 'redux/options/'.REDUX_OPT_NAME.'/sections', 'shoestrap_module_headers_options', 80 ); 
+add_filter( 'redux/options/' . SHOESTRAP_OPT_NAME . '/sections', 'shoestrap_module_headers_options', 80 ); 
 
 include_once( dirname( __FILE__ ) . '/includes/functions.extra-header.php' );
 include_once( dirname( __FILE__ ) . '/includes/functions.jumbotron.php' );
