@@ -76,4 +76,4 @@ function shoestrap_meta_custom_render() {
 		echo '<div class="row row-meta">' . $content . '</div>';
 }
 endif;
-add_action( 'shoestrap_entry_meta_override','shoestrap_meta_custom_render' );
+add_action( 'shoestrap_entry_meta','shoestrap_meta_custom_render' );

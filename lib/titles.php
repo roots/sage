@@ -43,7 +43,7 @@ function shoestrap_title_section( $header = true, $element = 'h1', $link = false
 	$content .= '<' . $element . ' class="' . $class . '">';
 	$content .= get_the_title();
 	$content .= '</' . $element . '>';
-	$content .= do_action( 'shoestrap_entry_meta_override' );
+	$content .= do_action( 'shoestrap_entry_meta' );
 	$content .= $header ? '</header>' : '';
 
 	echo apply_filters( 'shoestrap_title_section', $content );
