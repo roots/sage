@@ -20,3 +20,9 @@ function shoestrap_return_true()  {
 function shoestrap_return_false() {
 	return false;
 }
+
+function shoestrap_clearfix() {
+	$clear = apply_filters( 'shoestrap_clearfix', '<div class="clearfix"></div>' );
+
+	return $clear;
+}

@@ -92,7 +92,7 @@ function shoestrap_footer_html() {
 					<?php endforeach; ?>
 				</div>
 			<?php endif; ?>
-			<div class="clearfix"></div>
+			<?php echo shoestrap_clearfix(); ?>
 		</article>
 	</div>
 	<?php

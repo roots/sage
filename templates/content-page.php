@@ -5,7 +5,7 @@ while ( have_posts() ) : the_post();
 	do_action( 'shoestrap_entry_meta' );
 	do_action( 'shoestrap_page_pre_content' );
 	the_content();
-	echo '<div class="clearfix"></div>';
+	echo shoestrap_clearfix();
 	do_action( 'shoestrap_page_after_content' );
 
 	wp_link_pages( array( 'before' => '<nav class="pagination">', 'after' => '</nav>' ) );

@@ -6,7 +6,7 @@
 		<div class="entry-content">
 			<?php do_action( 'shoestrap_single_pre_content' ); ?>
 			<?php the_content(); ?>
-			<div class="clearfix"></div>
+			<?php echo shoestrap_clearfix(); ?>
 			<?php do_action( 'shoestrap_single_after_content' ); ?>
 		</div>
 		<footer>
