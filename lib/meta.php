@@ -6,7 +6,7 @@ function shoestrap_meta( $context = 'tags' ) {
 	$tags_label = '<i class="el-icon-tags"></i> ' . __( 'Tags:', 'shoestrap' );
 	$cats_label = '<i class="el-icon-tag"></i> ' . __( 'Categories:', 'shoestrap' );
 	$panel_body = '<div class="panel-body">';
-	$label_def  = '<span class="label label-default">';
+	$label_def  = '<span class="label label-tag">';
 
 	if ( $context == 'tags' )
 		echo apply_filters( 'shoestrap_the_tags', the_tags( $panel_open . $panel_head . $tags_label . '</div>' . $panel_body . $label_def,
