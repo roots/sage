@@ -58,7 +58,7 @@ function shoestrap_remove_featured_image_per_post_type() {
 }
 endif;
 add_action( 'wp', 'shoestrap_remove_featured_image_per_post_type' );
-add_action( 'shoestrap_after_entry_meta', 'shoestrap_featured_image' );
+add_action( 'shoestrap_entry_meta', 'shoestrap_featured_image', 50 );
 
 
 if ( !function_exists( 'shoestrap_image' ) ) :

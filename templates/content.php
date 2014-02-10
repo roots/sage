@@ -1,9 +1,7 @@
 <article <?php post_class(); ?>>
 	<?php do_action( 'shoestrap_in_article_top' ); ?>
-	<header>
-		<h2 class="entry-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-		<?php do_action( 'shoestrap_entry_meta_override' ); ?>
-		<?php do_action( 'shoestrap_after_entry_meta' ); ?>
+	<?php shoestrap_title_section( true, 'h2', true ); ?>
+	<?php do_action( 'shoestrap_entry_meta' ); ?>
 	</header>
 	<div class="entry-summary">
 		<?php
