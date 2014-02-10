@@ -38,8 +38,13 @@ function shoestrap_title() {
 	return apply_filters( 'shoestrap_title', $title );
 }
 
-function shoestrap_title_section() {
-	$content = '<header><h1 class="entry-title">' . get_the_title() . '</h1>' . do_action( 'shoestrap_entry_meta_override' ) . '</header>';
+function shoestrap_title_section( $header = true, $element = 'h1', $link = false, $class = 'entry-title' ) {
+	$content  = $header ? '<header>' : '';
+	$content .= '<' . $element . ' class="' . $class . '">';
+	$content .= get_the_title();
+	$content .= '</' . $element . '>';
+	$content .= do_action( 'shoestrap_entry_meta_override' );
+	$content .= $header ? '</header>' : '';
 
 	echo apply_filters( 'shoestrap_title_section', $content );
 }
