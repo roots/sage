@@ -21,6 +21,10 @@ function shoestrap_return_false() {
 	return false;
 }
 
+function shoestrap_blank() {
+	return '';
+}
+
 function shoestrap_clearfix() {
 	$clear = apply_filters( 'shoestrap_clearfix', '<div class="clearfix"></div>' );
 
