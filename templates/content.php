@@ -2,7 +2,6 @@
 	<?php do_action( 'shoestrap_in_article_top' ); ?>
 	<?php shoestrap_title_section( true, 'h2', true ); ?>
 	<?php do_action( 'shoestrap_entry_meta' ); ?>
-	</header>
 	<div class="entry-summary">
 		<?php
 		if ( !has_action( 'shoestrap_do_the_excerpt' ) )
