@@ -27,24 +27,6 @@ function shoestrap_widgets_init() {
 	));
 
 	register_sidebar( array(
-		'name'          => __( 'Jumbotron', 'shoestrap' ),
-		'id'            => 'jumbotron',
-		'before_widget' => '<section id="%1$s"><div class="section-inner">',
-		'after_widget'  => '</div></section>',
-		'before_title'  => '<h1>',
-		'after_title'   => '</h1>',
-	));
-
-	register_sidebar( array(
-		'name'          => __( 'Header Area', 'shoestrap' ),
-		'id'            => 'header-area',
-		'before_widget' => '<div class="container">',
-		'after_widget'  => '</div>',
-		'before_title'  => '<h1>',
-		'after_title'   => '</h1>',
-	));
-
-	register_sidebar( array(
 		'name'          => __( 'Footer Widget Area 1', 'shoestrap' ),
 		'id'            => 'sidebar-footer-1',
 		'before_widget' => '<section id="%1$s" class="' . $class . ' widget %2$s">',

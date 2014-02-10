@@ -49,7 +49,7 @@ function shoestrap_slidedown_widgets_init() {
 	) );
 }
 endif;
-add_action( 'widgets_init', 'shoestrap_slidedown_widgets_init', 20 );
+add_action( 'widgets_init', 'shoestrap_slidedown_widgets_init', 40 );
 
 if ( !function_exists( 'shoestrap_navbar_widget_area_class' ) ) :
 /*

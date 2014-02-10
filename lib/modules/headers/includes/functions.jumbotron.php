@@ -1,5 +1,21 @@
 <?php
 
+/**
+ * Register sidebars and widgets
+ */
+function shoestrap_jumbotron_widgets_init() {
+	register_sidebar( array(
+		'name'          => __( 'Jumbotron', 'shoestrap' ),
+		'id'            => 'jumbotron',
+		'before_widget' => '<section id="%1$s"><div class="section-inner">',
+		'after_widget'  => '</div></section>',
+		'before_title'  => '<h1>',
+		'after_title'   => '</h1>',
+	));
+}
+add_action( 'widgets_init', 'shoestrap_jumbotron_widgets_init', 20 );
+
+
 if ( !function_exists( 'jumbotron_content' ) ) :
 /*
  * The content of the hero region

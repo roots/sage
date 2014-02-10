@@ -1,5 +1,21 @@
 <?php
 
+/**
+ * Register sidebars and widgets
+ */
+function shoestrap_header_widgets_init() {
+	register_sidebar( array(
+		'name'          => __( 'Header Area', 'shoestrap' ),
+		'id'            => 'header-area',
+		'before_widget' => '<div class="container">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h1>',
+		'after_title'   => '</h1>',
+	));
+}
+add_action( 'widgets_init', 'shoestrap_header_widgets_init', 30 );
+
+
 if ( !function_exists( 'shoestrap_branding' ) ) :
 /*
  * The Header template
