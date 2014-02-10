@@ -38,6 +38,10 @@ function shoestrap_title() {
 	return apply_filters( 'shoestrap_title', $title );
 }
 
+/**
+ * The title secion.
+ * Includes a <head> element and link.
+ */
 function shoestrap_title_section( $header = true, $element = 'h1', $link = false, $class = 'entry-title' ) {
 	$content  = $header ? '<header>' : '';
 	$content .= '<' . $element . ' class="' . $class . '">';

@@ -10,4 +10,4 @@
   <li><?php _e('an out-of-date link', 'shoestrap'); ?></li>
 </ul>
 
-<?php get_search_form(); ?>
+<?php get_search_form();

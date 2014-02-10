@@ -90,3 +90,59 @@ function shoestrap_array_delete( $idx, $array ) {
 	return ( is_array( $array ) ) ? array_values( $array ) : null;
 }
 endif;
+
+/*
+ * Canonical URLs
+ */
+function shoestrap_rel_canonical() {
+	global $wp_the_query;
+
+	if ( !is_singular() )
+		return;
+
+	if ( !$id = $wp_the_query->get_queried_object_id() )
+		return;
+
+	$link = get_permalink( $id );
+	echo "\t<link rel=\"canonical\" href=\"$link\">\n";
+}
+add_action( 'init', 'shoestrap_head_cleanup' );
+
+/**
+ * Remove the WordPress version from RSS feeds
+ */
+add_filter( 'the_generator', '__return_false' );
+
+/**
+ * Remove unnecessary dashboard widgets
+ *
+ * @link http://www.deluxeblogtips.com/2011/01/remove-dashboard-widgets-in-wordpress.html
+ */
+function shoestrap_remove_dashboard_widgets() {
+	remove_meta_box( 'dashboard_incoming_links', 'dashboard', 'normal' );
+	remove_meta_box( 'dashboard_plugins', 'dashboard', 'normal' );
+	remove_meta_box( 'dashboard_primary', 'dashboard', 'normal' );
+	remove_meta_box( 'dashboard_secondary', 'dashboard', 'normal' );
+}
+add_action( 'admin_init', 'shoestrap_remove_dashboard_widgets' );
+
+/**
+ * Remove unnecessary self-closing tags
+ */
+function shoestrap_remove_self_closing_tags( $input ) {
+	return str_replace( ' />', '>', $input );
+}
+add_filter( 'get_avatar',          'shoestrap_remove_self_closing_tags' ); // <img />
+add_filter( 'comment_id_fields',   'shoestrap_remove_self_closing_tags' ); // <input />
+add_filter( 'post_thumbnail_html', 'shoestrap_remove_self_closing_tags' ); // <img />
+
+/**
+ * Don't return the default description in the RSS feed if it hasn't been changed
+ */
+function shoestrap_remove_default_description( $bloginfo ) {
+	$default_tagline = 'Just another WordPress site';
+	return ( $bloginfo === $default_tagline ) ? '' : $bloginfo;
+}
+add_filter( 'get_bloginfo_rss', 'shoestrap_remove_default_description' );
+
+

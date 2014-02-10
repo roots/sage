@@ -99,7 +99,7 @@ function shoestrap_post_format_audio_title( $title ) {
 }
 
 /**
- * Add icons to post format titles (audio)
+ * Add icons to post format titles (chat)
  */
 function shoestrap_post_format_chat_title( $title ) {
 	return '<i class="el-icon-comment-alt text-info"></i> ' . $title;
