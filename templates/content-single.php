@@ -1,6 +1,6 @@
 <?php while (have_posts()) : the_post(); ?>
   <article <?php post_class(); ?>>
-    <?php do_action( 'shoestrap_in_article_top' ); ?>
+    <?php do_action( 'shoestrap_single_top' ); ?>
     <?php shoestrap_title_section(); ?>
     <div class="entry-content">
       <?php do_action( 'shoestrap_single_pre_content' ); ?>
