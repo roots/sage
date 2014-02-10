@@ -29,18 +29,14 @@
 		<?php endif; ?>
 
 		<?php if (!comments_open() && !is_page() && post_type_supports(get_post_type(), 'comments')) : ?>
-		<div class="alert alert-warning">
-			<?php _e('Comments are closed.', 'shoestrap'); ?>
-		</div>
+			<?php shoestrap_alert( 'alert alert-warning', __( 'Comments are closed.', 'shoestrap' ) ); ?>
 		<?php endif; ?>
 	</section><!-- /#comments -->
 <?php endif; ?>
 
 <?php if (!have_comments() && !comments_open() && !is_page() && post_type_supports(get_post_type(), 'comments')) : ?>
 	<section id="comments">
-		<div class="alert alert-warning">
-			<?php _e('Comments are closed.', 'shoestrap'); ?>
-		</div>
+		<?php shoestrap_alert( 'alert alert-warning', __( 'Comments are closed.', 'shoestrap' ) ); ?>
 	</section><!-- /#comments -->
 <?php endif; ?>
 

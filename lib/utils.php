@@ -26,3 +26,12 @@ function shoestrap_clearfix() {
 
 	return $clear;
 }
+
+function shoestrap_alert( $class = 'alert alert-info', $content = '', $echo = true ) {
+	$alert = '<div class="' . $class . '">' . $content . '</div>';
+
+	if ( $echo )
+		echo $alert;
+	else
+		return $alert;
+}
