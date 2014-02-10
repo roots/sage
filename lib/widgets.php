@@ -61,8 +61,5 @@ function shoestrap_widgets_init() {
 		'before_title'  => $before_title,
 		'after_title'   => $after_title,
 	));
-
-	// Widgets
-	register_widget( 'Shoestrap_Vcard_Widget' );
 }
 add_action( 'widgets_init', 'shoestrap_widgets_init' );

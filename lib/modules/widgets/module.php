@@ -110,3 +110,8 @@ class Shoestrap_Vcard_Widget extends WP_Widget {
 		}
 	}
 }
+
+function shoestrap_vcard_widget_init() {
+	register_widget( 'Shoestrap_Vcard_Widget' );
+}
+add_action( 'widgets_init', 'shoestrap_vcard_widget_init' );
