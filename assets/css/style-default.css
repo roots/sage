@@ -8763,3 +8763,6 @@ h6,
   -webkit-box-shadow: none;
   box-shadow: none;
 }
+.label.label-default a {
+  color: #fff;
+}
