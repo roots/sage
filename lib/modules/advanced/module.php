@@ -21,15 +21,6 @@ function shoestrap_module_advanced_options( $sections ) {
 	);
 
 	$fields[] = array( 
-		'title'     => __( 'Dev mode', 'shoestrap' ),
-		'desc'      => __( 'By enabling your admin panel will have a Dev Mode Info with an output of the options object for addition debugging. Default: Off', 'shoestrap' ),
-		'id'        => 'dev_mode',
-		'default'   => 0,
-		'type'      => 'switch',
-		'customizer'=> array(),
-	);    
-
-	$fields[] = array( 
 		'title'     => __( 'Google Analytics ID', 'shoestrap' ),
 		'desc'      => __( 'Paste your Google Analytics ID here to enable analytics tracking. Only Universal Analytics properties. Your user ID should be in the form of UA-XXXXX-Y.', 'shoestrap' ),
 		'id'        => 'analytics_id',
