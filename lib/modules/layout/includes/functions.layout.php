@@ -139,6 +139,23 @@ function shoestrap_section_class_extended( $target, $echo = false ) {
 }
 endif;
 
+add_filter( 'shoestrap_section_class_main', 'shoestrap_apply_layout_classes_main' );
+function shoestrap_apply_layout_classes_main() {
+	return shoestrap_section_class_extended( 'main' );
+}
+
+
+add_filter( 'shoestrap_section_class_primary', 'shoestrap_apply_layout_classes_primary' );
+function shoestrap_apply_layout_classes_primary() {
+	return shoestrap_section_class_extended( 'primary' );
+}
+
+
+add_filter( 'shoestrap_section_class_secondary', 'shoestrap_apply_layout_classes_secondary' );
+function shoestrap_apply_layout_classes_secondary() {
+	return shoestrap_section_class_extended( 'secondary' );
+}
+
 
 if ( !function_exists( 'shoestrap_layout_body_class' ) ) :
 /**
