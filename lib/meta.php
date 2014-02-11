@@ -8,8 +8,8 @@ function shoestrap_meta( $context = 'tags' ) {
 	$panel_body = '<div class="panel-body">';
 	$label_def  = '<span class="label label-tag">';
 
-	if ( $context == 'tags' )
-		echo apply_filters( 'shoestrap_the_tags', the_tags( $panel_open . $panel_head . $tags_label . '</div>' . $panel_body . $label_def,
+	if ( $context == 'tags' && get_the_tag_list() )
+		echo apply_filters( 'shoestrap_the_tags', get_the_tag_list( $panel_open . $panel_head . $tags_label . '</div>' . $panel_body . $label_def,
 			'</span> ' . $label_def,
 			'</span></div></div>'
 		) );

@@ -77,3 +77,12 @@ function shoestrap_meta_custom_render() {
 }
 endif;
 add_action( 'shoestrap_entry_meta','shoestrap_meta_custom_render' );
+
+// Hide post meta data in footer of single posts
+function shoestrap_single_meta() {
+	if ( shoestrap_getVariable( 'single_meta' ) == 0 ) {
+		add_filter( 'shoestrap_the_tags', 'shoestrap_blank' );
+		add_filter( 'shoestrap_the_cats', 'shoestrap_blank' );
+	}
+}
+add_action( 'wp', 'shoestrap_single_meta' );
