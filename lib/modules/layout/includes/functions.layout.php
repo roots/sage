@@ -304,7 +304,7 @@ function shoestrap_control_secondary_sidebar_display() {
 	if ( shoestrap_getLayout() < 3 )
 		add_filter( 'shoestrap_display_secondary_sidebar', 'shoestrap_return_false' );
 
-	if ( !is_front_page() || ( is_front_page() && $layout_sidebar_on_front == 1 && shoestrap_getLayout() > 3 ) )
+	if ( ( !is_front_page() && shoestrap_display_secondary_sidebar() ) || ( is_front_page() && $layout_sidebar_on_front == 1 && shoestrap_getLayout() >= 3 ) )
 		add_filter( 'shoestrap_display_secondary_sidebar', 'shoestrap_return_true' );
 
 }
