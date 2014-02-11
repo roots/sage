@@ -108,12 +108,6 @@ function shoestrap_section_class_extended( $target, $echo = false ) {
 		}
 	}
 
-	// Overrides the main region class when on the frontpage and sidebars are set to not being displayed there.
-	if ( is_front_page() && shoestrap_getVariable( 'layout_sidebar_on_front' ) != 1 ) {
-		$main      = $base . 12;
-		$wrapper   = NULL;
-	}
-
 	if ( $target == 'primary' )
 		$class = $primary;
 	elseif ( $target == 'secondary' )
@@ -123,21 +117,19 @@ function shoestrap_section_class_extended( $target, $echo = false ) {
 	else
 		$class = $main;
 
-	if ( $target != 'wrap'  ) {
-		// echo or return the result.
-		if ( $echo )
-			echo $class;
-		else
-			return $class;
+	if ( $echo )
+		echo $class;
+	else
+		return $class;
 
-	} else {
-		if ( $layout == 5 )
-			return true;
-		else
-			return false;
-	}
 }
 endif;
+
+add_filter( 'shoestrap_section_class_wrapper', 'shoestrap_apply_layout_classes_wrapper' );
+function shoestrap_apply_layout_classes_wrapper() {
+	return shoestrap_section_class_extended( 'wrapper' );
+}
+
 
 add_filter( 'shoestrap_section_class_main', 'shoestrap_apply_layout_classes_main' );
 function shoestrap_apply_layout_classes_main() {
