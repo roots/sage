@@ -6,18 +6,20 @@ if ( !function_exists( 'shoestrap_featured_image' ) ) :
  */
 function shoestrap_featured_image() {
 
+	$data = array();
+
 	if ( !has_post_thumbnail() || '' == get_the_post_thumbnail() )
 		return;
 
 	$data['width']  = shoestrap_content_width_px();
 
-	if ( is_single() || is_page() ) {
+	if ( is_singular() ) {
 		if ( shoestrap_getVariable( 'feat_img_post' ) != 1 )
 			return; // Do not process if we don't want images on single posts
 
 		$data['url'] = wp_get_attachment_url( get_post_thumbnail_id() );
 		
-		if (shoestrap_getVariable( 'feat_img_post_custom_toggle' ) == 1) {
+		if ( shoestrap_getVariable( 'feat_img_post_custom_toggle' ) == 1 ) {
 			$data['width']  = shoestrap_getVariable( 'feat_img_post_width' );
 			$data['height'] = shoestrap_getVariable( 'feat_img_post_height' );
 		}
@@ -35,9 +37,10 @@ function shoestrap_featured_image() {
 	
 	$image = shoestrap_image_resize( $data );
 
-	echo '<a href="' . get_permalink() . '"><img class="featured-image" src="' . $image['url'] . '" /></a>';
+	echo shoestrap_clearfix() . '<a href="' . get_permalink() . '"><img class="featured-image" src="' . $image['url'] . '" /></a>' . shoestrap_clearfix();
 }
 endif;
+add_action( 'shoestrap_in_article_top', 'shoestrap_featured_image' );
 
 
 if ( !function_exists( 'shoestrap_remove_featured_image_per_post_type' ) ) :
@@ -58,7 +61,6 @@ function shoestrap_remove_featured_image_per_post_type() {
 }
 endif;
 add_action( 'wp', 'shoestrap_remove_featured_image_per_post_type' );
-add_action( 'shoestrap_entry_meta', 'shoestrap_featured_image', 50 );
 
 
 if ( !function_exists( 'shoestrap_image' ) ) :
