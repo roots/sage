@@ -36,7 +36,7 @@ function shoestrap_branding() {
 
 						<?php if ( shoestrap_getVariable( 'header_branding' ) == 1 ) : ?>
 							<a class="brand-logo" href="<?php echo home_url(); ?>/">
-								<h1><?php if ( function_exists( 'shoestrap_logo' ) ) shoestrap_logo(); ?></h1>
+								<h1><?php if ( function_exists( 'shoestrap_logo' ) ) echo shoestrap_logo(); ?></h1>
 							</a>
 						<?php endif; ?>
 
