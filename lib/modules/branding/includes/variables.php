@@ -16,20 +16,20 @@ function shoestrap_variables_branding() {
 	$brand_info_brightness    = shoestrap_get_brightness( $brand_info );
 
 	// Button text colors
-	$btn_primary_color  = $brand_primary_brightness < 165 ? '#fff' : '333';
-	$btn_success_color  = $brand_success_brightness < 165 ? '#fff' : '333';
-	$btn_warning_color  = $brand_warning_brightness < 165 ? '#fff' : '333';
-	$btn_danger_color   = $brand_danger_brightness < 165  ? '#fff' : '333';
-	$btn_info_color     = $brand_info_brightness < 165    ? '#fff' : '333';
+	$btn_primary_color  = $brand_primary_brightness < 195 ? '#fff' : '333';
+	$btn_success_color  = $brand_success_brightness < 195 ? '#fff' : '333';
+	$btn_warning_color  = $brand_warning_brightness < 195 ? '#fff' : '333';
+	$btn_danger_color   = $brand_danger_brightness  < 195 ? '#fff' : '333';
+	$btn_info_color     = $brand_info_brightness    < 195 ? '#fff' : '333';
 
 	// Button borders
-	$btn_primary_border = $brand_primary_brightness < 165 ? 'darken(@btn-primary-bg, 5%)' : 'lighten(@btn-primary-bg, 5%)';
-	$btn_success_border = $brand_success_brightness < 165 ? 'darken(@btn-success-bg, 5%)' : 'lighten(@btn-success-bg, 5%)';
-	$btn_warning_border = $brand_warning_brightness < 165 ? 'darken(@btn-warning-bg, 5%)' : 'lighten(@btn-warning-bg, 5%)';
-	$btn_danger_border  = $brand_danger_brightness < 165  ? 'darken(@btn-danger-bg, 5%)'  : 'lighten(@btn-danger-bg, 5%)';
-	$btn_info_border    = $brand_info_brightness < 165    ? 'darken(@btn-info-bg, 5%)'    : 'lighten(@btn-info-bg, 5%)';
+	$btn_primary_border = $brand_primary_brightness < 195 ? 'darken(@btn-primary-bg, 5%)' : 'lighten(@btn-primary-bg, 5%)';
+	$btn_success_border = $brand_success_brightness < 195 ? 'darken(@btn-success-bg, 5%)' : 'lighten(@btn-success-bg, 5%)';
+	$btn_warning_border = $brand_warning_brightness < 195 ? 'darken(@btn-warning-bg, 5%)' : 'lighten(@btn-warning-bg, 5%)';
+	$btn_danger_border  = $brand_danger_brightness  < 195 ? 'darken(@btn-danger-bg, 5%)'  : 'lighten(@btn-danger-bg, 5%)';
+	$btn_info_border    = $brand_info_brightness    < 195 ? 'darken(@btn-info-bg, 5%)'    : 'lighten(@btn-info-bg, 5%)';
 
-	$input_border_focus = ( shoestrap_get_brightness( $brand_primary ) < 165 ) ? 'lighten(@brand-primary, 10%);' : 'darken(@brand-primary, 10%);';
+	$input_border_focus = ( shoestrap_get_brightness( $brand_primary ) < 195 ) ? 'lighten(@brand-primary, 10%);' : 'darken(@brand-primary, 10%);';
 	$navbar_border      = ( shoestrap_get_brightness( $brand_primary ) < 50 ) ? 'lighten(@navbar-default-bg, 6.5%)' : 'darken(@navbar-default-bg, 6.5%)';
 
 
