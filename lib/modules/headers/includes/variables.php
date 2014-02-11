@@ -2,7 +2,7 @@
 
 function shoestrap_variables_jumbotron() {
 	$font_jumbotron         = shoestrap_process_font( shoestrap_getVariable( 'font_jumbotron', true ) );
-	$jumbotron_bg     = '#' . str_replace( '#', '', shoestrap_sanitize_hex( shoestrap_getVariable( 'jumbotron_bg', true ) ) );
+	$jumbotron_bg     			= '#' . str_replace( '#', '', shoestrap_sanitize_hex( shoestrap_getVariable( 'jumbotron_bg', true ) ) );
 	$jumbotron_text_color   = '#' . str_replace( '#', '', $font_jumbotron['color'] );
 
 	if ( shoestrap_getVariable( 'font_jumbotron_heading_custom', true ) == 1 ) {
