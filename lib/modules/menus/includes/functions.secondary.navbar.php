@@ -17,7 +17,7 @@ function shoestrap_secondary_navbar() {
 					shoestrap_navbar_social_links();
 				?>
 				<nav class="nav-secondary navbar-collapse collapse" role="navigation">
-					<?php wp_nav_menu( array( 'theme_location' => 'secondary_navigation', 'menu_class' => shoestrap_nav_class_pull() ) ); ?>
+					<?php wp_nav_menu( array( 'theme_location' => 'secondary_navigation', 'menu_class' => apply_filters( 'shoestrap_nav_class', 'navbar-nav nav' ) ) ); ?>
 				</nav>
 			</header>
 		</div>
