@@ -293,10 +293,10 @@ function shoestrap_control_secondary_sidebar_display() {
 	$layout_sidebar_on_front = shoestrap_getVariable( 'layout_sidebar_on_front' );
 
 	if ( shoestrap_getLayout() < 3 )
-		add_filter( 'shoestrap_display_primary_sidebar', 'shoestrap_return_false' );
+		add_filter( 'shoestrap_display_secondary_sidebar', 'shoestrap_return_false' );
 
-	if ( is_front_page() && $layout_sidebar_on_front != 1 )
-		add_filter( 'shoestrap_display_primary_sidebar', 'shoestrap_return_false' );
+	if ( !is_front_page() || ( is_front_page() && $layout_sidebar_on_front == 1 ) )
+		add_filter( 'shoestrap_display_secondary_sidebar', 'shoestrap_return_true' );
 
 }
 add_action( 'wp', 'shoestrap_control_secondary_sidebar_display' );
