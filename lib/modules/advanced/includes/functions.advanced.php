@@ -72,23 +72,20 @@ function shoestrap_pjax_trigger_script() { ?>
 endif;
 
 
-// UA-XXXXX-Y (Note: Universal Analytics only, not Classic Analytics)
-define( 'GOOGLE_ANALYTICS_ID', shoestrap_getVariable( 'analytics_id' ) );
+function shoestrap_google_analytics() {
+	$analytics_id = shoestrap_getVariable( 'analytics_id' );
 
-function shoestrap_google_analytics() { ?>
-<script>
+	if ( !is_null( $analytics_id ) && !empty( $analytics_id ) )
+		echo "<script>
 	(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
 	function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
 	e=o.createElement(i);r=o.getElementsByTagName(i)[0];
 	e.src='//www.google-analytics.com/analytics.js';
 	r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-	ga('create','<?php echo GOOGLE_ANALYTICS_ID; ?>');ga('send','pageview');
-</script>
-
-<?php }
-if ( GOOGLE_ANALYTICS_ID && !current_user_can('manage_options' ) ) {
-	add_action( 'wp_footer', 'shoestrap_google_analytics', 20 );
+	ga('create','" . $analytics_id . "');ga('send','pageview');
+	</script>";
 }
+add_action( 'wp_footer', 'shoestrap_google_analytics', 20 );
 
 /**
  * Post Excerpt Length
