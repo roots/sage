@@ -31,7 +31,7 @@ function shoestrap_meta_custom_render() {
 	if ( is_array( $metas ) ) {
 		foreach ( $metas as $meta => $value ) {
 			// output sticky element
-			if ( $meta == 'sticky' && is_sticky() ) {
+			if ( $meta == 'sticky' && !empty( $value ) && is_sticky() ) {
 				$content .= '<span class="featured-post ' . $colclass . '"><i class="el-icon-flag icon"></i> ' . __( 'Sticky', 'shoestrap' ) . '</span>';
 			}
 
