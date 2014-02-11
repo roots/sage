@@ -257,16 +257,8 @@ function shoestrap_add_social_actions() {
 	$social_sharing_single_page = shoestrap_getVariable( 'social_sharing_single_page' );
 
 	// Conditions for showing content in posts archives
-	if ( $social_sharing_archives == 1 ) {
-		if ( $social_sharing_location == 'top' ) {
-			add_action( 'shoestrap_entry_meta', 'shoestrap_social_sharing', 70 );
-		} elseif ( $social_sharing_location == 'bottom' ) {
-			add_action( 'shoestrap_entry_footer', 'shoestrap_social_sharing', 5 );
-		} elseif ( $social_sharing_location == 'both' ) {
-			// fallback only in bottom
-			add_action( 'shoestrap_entry_footer', 'shoestrap_social_sharing', 5 );
-		}
-	}
+	if ( $social_sharing_archives == 1 )
+		add_action( 'shoestrap_entry_footer', 'shoestrap_social_sharing', 5 );
 
 	// Conditions for showing content in single posts
 	if ( $social_sharing_single_post == 1 ) {
