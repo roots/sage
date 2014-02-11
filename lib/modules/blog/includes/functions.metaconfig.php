@@ -31,7 +31,7 @@ function shoestrap_meta_custom_render() {
 	if ( is_array( $metas ) ) {
 		foreach ( $metas as $meta => $value ) {
 			// output sticky element
-			if ( $meta == 'sticky' && is_sticky() ) {
+			if ( $meta == 'sticky' && !empty( $value ) && is_sticky() ) {
 				$content .= '<span class="featured-post ' . $colclass . '"><i class="el-icon-flag icon"></i> ' . __( 'Sticky', 'shoestrap' ) . '</span>';
 			}
 
@@ -77,3 +77,12 @@ function shoestrap_meta_custom_render() {
 }
 endif;
 add_action( 'shoestrap_entry_meta','shoestrap_meta_custom_render' );
+
+// Hide post meta data in footer of single posts
+function shoestrap_single_meta() {
+	if ( shoestrap_getVariable( 'single_meta' ) == 0 ) {
+		add_filter( 'shoestrap_the_tags', 'shoestrap_blank' );
+		add_filter( 'shoestrap_the_cats', 'shoestrap_blank' );
+	}
+}
+add_action( 'wp', 'shoestrap_single_meta' );

@@ -189,6 +189,15 @@ function shoestrap_module_blog( $sections ) {
 		'customizer'=> array(),
 	);
 
+	$fields[] = array( 
+		'title'     => __( 'Show Post Meta in single posts', 'shoestrap' ),
+		'desc'      => __( 'Toggle Post Meta showing in the footer of single posts. Default: ON.', 'shoestrap' ),
+		'id'        => 'single_meta',
+		'default'   => 1,
+		'type'      => 'switch',
+		'customizer'=> array(),
+	);
+
 	$section['fields'] = $fields;
 	$section = apply_filters( 'shoestrap_module_blog_modifier', $section );
 	$sections[] = $section;
