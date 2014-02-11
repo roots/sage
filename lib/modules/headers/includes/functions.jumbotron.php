@@ -27,7 +27,7 @@ function jumbotron_content() {
 	$visibility   = shoestrap_getVariable( 'jumbotron_visibility' );
 	$nocontainer  = shoestrap_getVariable( 'jumbotron_nocontainer' );
 
-	if ( ( ( $visibility == 1 && is_front_page() ) || $visibility != 1 ) && is_active_sidebar( 'Jumbotron' ) )
+	if ( ( ( $visibility == 1 && is_front_page() ) || $visibility != 1 ) && is_active_sidebar( 'jumbotron' ) )
 		$hero = true;
 	?>
 
