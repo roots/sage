@@ -46,6 +46,11 @@ module.exports = function(grunt) {
             'assets/js/plugins/bootstrap/tab.js',
             'assets/js/plugins/bootstrap/affix.js',
             'assets/js/plugins/*.js',
+            
+            // Ignore jquery and modernizr, they are loaded in the header
+            '!assets/js/vendor/jquery-1.*.min.js',
+            '!assets/js/vendor/modernizr-*.min.js',
+            
             'assets/js/_*.js'
           ]
         },
