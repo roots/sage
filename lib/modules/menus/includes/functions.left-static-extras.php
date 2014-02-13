@@ -22,4 +22,4 @@ add_action( 'widgets_init', 'shoestrap_static_left_widgets_init', 40 );
 function shoestrap_navbar_sidebar() {
 	dynamic_sidebar( 'navbar' );
 }
-add_action( 'shoestrap_post_main_nav', 'shoestrap_navbar_sidebar' );
+add_action( 'shoestrap_post_main_nav', 'shoestrap_navbar_sidebar' ); 
