@@ -323,6 +323,7 @@ include_once( dirname( __FILE__ ) . '/includes/functions.slide-down.php' );
 include_once( dirname( __FILE__ ) . '/includes/functions.navlist-walker.php' );
 include_once( dirname( __FILE__ ) . '/includes/functions.navlist.php' );
 include_once( dirname( __FILE__ ) . '/includes/variables.php' );
+include_once( dirname( __FILE__ ) . '/includes/functions.left-static-extras.php' );
 
 
 add_filter( 'shoestrap_compiler', 'shoestrap_admin_menus_styles' );
