@@ -21,7 +21,7 @@ function shoestrap_required_plugins() {
 			'name'               => 'GitHub Updater',
 			'slug'               => 'github-updater',
 			'source'             => get_template_directory() . '/lib/modules/dependencies/plugins/github-updater.zip',
-			'required'           => true,
+			'required'           => false,
 			'version'            => '2.4.4',
 			'force_activation'   => true,
 			'force_deactivation' => false,
