@@ -7,6 +7,7 @@ function shoestrap_static_left_widgets_init() {
 	register_sidebar( array(
 		'name'          => __( 'In-Navbar Widget Area', 'shoestrap' ),
 		'id'            => 'navbar',
+		'description'   => __( 'This widget area will show up in your NavBars. This is most useful when using a static-left navbar.', 'shoestrap' ),
 		'before_widget' => '<div class="container">',
 		'after_widget'  => '</div>',
 		'before_title'  => '<h1>',
