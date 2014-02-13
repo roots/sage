@@ -23,7 +23,7 @@ function shoestrap_required_plugins() {
 			'source'             => get_template_directory() . '/lib/modules/dependencies/plugins/github-updater.zip',
 			'required'           => false,
 			'version'            => '2.4.4',
-			'force_activation'   => true,
+			'force_activation'   => false,
 			'force_deactivation' => false,
 			'external_url'       => '',
 		),
