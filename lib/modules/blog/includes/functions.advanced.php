@@ -1,5 +1,10 @@
 <?php
 
+/**********************************************************************
+* This file contains a modified version of the WordPress core function.
+**********************************************************************/
+
+
 if ( !function_exists( 'shoestrap_excerpt_more' ) ) :
 function shoestrap_excerpt_more( $more ) {
 	$continue_text = shoestrap_getVariable( 'post_excerpt_link_text' );

@@ -1,5 +1,9 @@
 <?php
 
+if ( !function_exists( 'shoestrap_pagination_alter' ) ) :
+/**
+ * Use pagination instead of pagers
+ */
 function shoestrap_pagination_alter() {
 	global $wp_query;
 
@@ -24,10 +28,16 @@ function shoestrap_pagination_alter() {
 
 	return $nav;
 }
+endif;
 
 
+if ( !function_exists( 'shoestrap_pagination_trigger_mod' ) ) :
+/**
+ * Trigger the pager change based on the user's selections.
+ */
 function shoestrap_pagination_trigger_mod() {
 	if ( shoestrap_getVariable( 'pagination' ) != 'pager' )
 		add_filter( 'shoestrap_pagination_format', 'shoestrap_pagination_alter' );
 }
+endif;
 add_action( 'wp', 'shoestrap_pagination_trigger_mod' );

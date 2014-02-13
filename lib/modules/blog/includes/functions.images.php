@@ -44,6 +44,10 @@ add_action( 'shoestrap_in_article_top', 'shoestrap_featured_image' );
 
 
 if ( !function_exists( 'shoestrap_remove_featured_image_per_post_type' ) ) :
+/**
+ * Users can remove featured images per-post-type using the 'feat_img_per_post_type' control.
+ * This function makes sure that images are not added based on the user's selections.
+ */
 function shoestrap_remove_featured_image_per_post_type() {
 	$post_types = get_post_types( array( 'public' => true ), 'names' );
 	$post_type_options = shoestrap_getVariable( 'feat_img_per_post_type' );
@@ -115,6 +119,7 @@ function shoestrap_image_resize( $data ) {
 	return matthewruddy_image_resize( $settings['url'], $settings['width'], $settings['height'], $settings['crop'], false );    
 }
 endif;
+
 
 if ( !function_exists( 'shoestrap_get_attachment_id_from_src' ) ) :
 /*

@@ -64,6 +64,9 @@ add_action( 'shoestrap_pre_wrap', 'jumbotron_content', 5 );
 
 
 if ( !function_exists( 'shoestrap_jumbotron_css' ) ) :
+/**
+ * Any Jumbotron-specific CSS that can't be added in the .less stylesheet is calculated here.
+ */
 function shoestrap_jumbotron_css() {
 	$center = shoestrap_getVariable( 'jumbotron_center' );
 	$border = shoestrap_getVariable( 'jumbotron_border' );

@@ -125,28 +125,40 @@ function shoestrap_section_class_extended( $target, $echo = false ) {
 }
 endif;
 
-add_filter( 'shoestrap_section_class_wrapper', 'shoestrap_apply_layout_classes_wrapper' );
+/**
+ * Helper function for layout classes
+ */
 function shoestrap_apply_layout_classes_wrapper() {
 	return shoestrap_section_class_extended( 'wrapper' );
 }
+add_filter( 'shoestrap_section_class_wrapper', 'shoestrap_apply_layout_classes_wrapper' );
 
 
-add_filter( 'shoestrap_section_class_main', 'shoestrap_apply_layout_classes_main' );
+/**
+ * Helper function for layout classes
+ */
 function shoestrap_apply_layout_classes_main() {
 	return shoestrap_section_class_extended( 'main' );
 }
+add_filter( 'shoestrap_section_class_main', 'shoestrap_apply_layout_classes_main' );
 
 
-add_filter( 'shoestrap_section_class_primary', 'shoestrap_apply_layout_classes_primary' );
+/**
+ * Helper function for layout classes
+ */
 function shoestrap_apply_layout_classes_primary() {
 	return shoestrap_section_class_extended( 'primary' );
 }
+add_filter( 'shoestrap_section_class_primary', 'shoestrap_apply_layout_classes_primary' );
 
 
-add_filter( 'shoestrap_section_class_secondary', 'shoestrap_apply_layout_classes_secondary' );
+/**
+ * Helper function for layout classes
+ */
 function shoestrap_apply_layout_classes_secondary() {
 	return shoestrap_section_class_extended( 'secondary' );
 }
+add_filter( 'shoestrap_section_class_secondary', 'shoestrap_apply_layout_classes_secondary' );
 
 
 if ( !function_exists( 'shoestrap_layout_body_class' ) ) :
@@ -269,12 +281,18 @@ if ( ( shoestrap_getVariable( 'body_margin_top' ) != '0' ) || ( shoestrap_getVar
 	add_action( 'wp_enqueue_scripts', 'shoestrap_body_margin', 101 );
 
 
+/**
+ * Add a wrapper div when in "boxed" mode to disallow full-width elements
+ */
 function shoestrap_boxed_container_div() {
 	if ( shoestrap_getVariable( 'site_style' ) == 'boxed' ) echo '<div class="container boxed-container">';
 }
 add_action( 'get_header', 'shoestrap_boxed_container_div', 1 );
 add_action( 'shoestrap_pre_footer', 'shoestrap_boxed_container_div', 1 );
 
+/**
+ * Close the wrapper div that the 'shoestrap_boxed_container_div' opens when in "boxed" mode.
+ */
 function shoestrap_close_boxed_container_div() {
 	if ( shoestrap_getVariable( 'site_style' ) == 'boxed' ) echo '</div>';
 }
@@ -282,6 +300,9 @@ add_action( 'shoestrap_do_navbar', 'shoestrap_close_boxed_container_div', 99 );
 add_action( 'shoestrap_after_footer', 'shoestrap_close_boxed_container_div', 899 );
 
 
+/**
+ * Modify the rules for showing up or hiding the primary sidebar
+ */
 function shoestrap_control_primary_sidebar_display() {
 	$layout_sidebar_on_front = shoestrap_getVariable( 'layout_sidebar_on_front' );
 
@@ -298,6 +319,9 @@ function shoestrap_control_primary_sidebar_display() {
 add_action( 'wp', 'shoestrap_control_primary_sidebar_display' );
 
 
+/**
+ * Modify the rules for showing up or hiding the secondary sidebar
+ */
 function shoestrap_control_secondary_sidebar_display() {
 	$layout_sidebar_on_front = shoestrap_getVariable( 'layout_sidebar_on_front' );
 
@@ -311,7 +335,9 @@ function shoestrap_control_secondary_sidebar_display() {
 add_action( 'wp', 'shoestrap_control_secondary_sidebar_display' );
 
 
-add_action( 'after_setup_theme', 'shoestrap_alter_widgets' );
+/**
+ * Modify the appearance of widgets based on user selection.
+ */
 function shoestrap_alter_widgets() {
 	$widgets_mode = shoestrap_getVariable( 'widgets_mode' );
 
@@ -321,19 +347,36 @@ function shoestrap_alter_widgets() {
 		add_filter( 'shoestrap_widgets_after_title', 'shoestrap_alter_widgets_after_title' );
 	}
 }
+add_action( 'after_setup_theme', 'shoestrap_alter_widgets' );
 
+
+/**
+ * Get the widget class
+ */
 function shoestrap_alter_widgets_class() {
 	return shoestrap_getVariable( 'widgets_mode' ) == 0 ? 'panel panel-default' : 'well';
 }
 
+
+/**
+ * Widgets 'before_title' modifying based on widgets mode.
+ */
 function shoestrap_alter_widgets_before_title() {
 	return shoestrap_getVariable( 'widgets_mode' ) == 0 ? '<div class="panel-heading">' : '<h3 class="widget-title">';
 }
 
+
+/**
+ * Widgets 'after_title' modifying based on widgets mode.
+ */
 function shoestrap_alter_widgets_after_title() {
 	return shoestrap_getVariable( 'widgets_mode' ) == 0 ? '</div><div class="panel-body">' : '</h3>';
 }
 
+
+/**
+ * Add some metadata when users have selected a static mode for their layout (not responsive).
+ */
 function shoestrap_static_meta() {
 	if ( shoestrap_getVariable( 'site_style' ) != 'static' ) : ?>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
