@@ -28,13 +28,17 @@ endif;
 add_action( 'wp_footer', 'shoestrap_user_js', 200 );
 
 
-
+if ( !function_exists( 'shoestrap_admin_bar' ) ) :
+/**
+ * Switch the adminbar On/Off
+ */
 function shoestrap_admin_bar(){
 if ( shoestrap_getVariable( 'advanced_wordpress_disable_admin_bar_toggle' ) == 0 )
 	return false;
 else
 	return true;
 }
+endif;
 add_filter( 'show_admin_bar' , 'shoestrap_admin_bar' );
 
 // PJAX
@@ -72,6 +76,10 @@ function shoestrap_pjax_trigger_script() { ?>
 endif;
 
 
+if ( !function_exists( 'shoestrap_google_analytics' ) ) :
+/**
+ * The Google Analytics code
+ */
 function shoestrap_google_analytics() {
 	$analytics_id = shoestrap_getVariable( 'analytics_id' );
 
@@ -85,6 +93,7 @@ function shoestrap_google_analytics() {
 	ga('create','" . $analytics_id . "');ga('send','pageview');
 	</script>";
 }
+endif;
 add_action( 'wp_footer', 'shoestrap_google_analytics', 20 );
 
 /**
