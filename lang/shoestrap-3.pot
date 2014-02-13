@@ -1,10 +1,10 @@
-# Copyright (C) 2014 Aristeides Stathopoulos, Dimitris Kalliris, Dovy Paukstys
+# Copyright (C) 2014 aristath, fovoc, dovyp
 # This file is distributed under the GPL v3 License.
 msgid ""
 msgstr ""
-"Project-Id-Version: Shoestrap 3 3.0.3.05\n"
+"Project-Id-Version: Shoestrap 3 3.1.0.2\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tags/shoestrap-3\n"
-"POT-Creation-Date: 2014-01-16 14:39:51+00:00\n"
+"POT-Creation-Date: 2014-02-13 18:47:21+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -28,7 +28,7 @@ msgstr ""
 msgid "an out-of-date link"
 msgstr ""
 
-#: base.php:11
+#: base.php:5
 msgid ""
 "You are using an <strong>outdated</strong> browser. Please <a href=\"http://"
 "browsehappy.com/\">upgrade your browser</a> to improve your experience."
@@ -54,7 +54,7 @@ msgid ""
 "and attributes:"
 msgstr ""
 
-#: bbpress/form-reply.php:44
+#: bbpress/form-reply.php:44 lib/meta.php:6
 msgid "Tags:"
 msgstr ""
 
@@ -75,7 +75,7 @@ msgid "Optional reason for editing:"
 msgstr ""
 
 #: bbpress/form-reply.php:84 bbpress/form-topic.php:139
-#: lib/modules/core/module.php:198
+#: lib/modules/core/module.php:48
 msgid "Submit"
 msgstr ""
 
@@ -95,12 +95,14 @@ msgstr ""
 msgid "You must be logged in to reply to this topic."
 msgstr ""
 
-#: bbpress/form-search.php:15 lib/modules/core.menus/functions.navbar.php:20
+#: bbpress/form-search.php:15
+#: lib/modules/menus/includes/functions.navbar.php:21
 #: templates/searchform.php:6
 msgid "Search for:"
 msgstr ""
 
-#: bbpress/form-search.php:18 lib/modules/core.menus/functions.navbar.php:21
+#: bbpress/form-search.php:18
+#: lib/modules/menus/includes/functions.navbar.php:22
 #: templates/searchform.php:5
 msgid "Search"
 msgstr ""
@@ -260,80 +262,16 @@ msgstr ""
 msgid "Edit"
 msgstr ""
 
-#: index.php:12
+#: index.php:11
 msgid "Sorry, no results were found."
 msgstr ""
 
-#: index.php:40
+#: lib/cleanup.php:168
 msgid "&larr; Older posts"
 msgstr ""
 
-#: index.php:41
+#: lib/cleanup.php:169
 msgid "Newer posts &rarr;"
-msgstr ""
-
-#: lib/activation.php:28 lib/activation.php:29
-msgid "Theme Activation"
-msgstr ""
-
-#: lib/activation.php:50
-msgid "%s Theme Activation"
-msgstr ""
-
-#: lib/activation.php:52
-msgid ""
-"These settings are optional and should usually be used only on a fresh "
-"installation"
-msgstr ""
-
-#: lib/activation.php:59 lib/activation.php:62
-msgid "Create static front page?"
-msgstr ""
-
-#: lib/activation.php:64 lib/activation.php:76 lib/activation.php:88
-#: lib/activation.php:100
-msgid "Yes"
-msgstr ""
-
-#: lib/activation.php:65 lib/activation.php:77 lib/activation.php:89
-#: lib/activation.php:101
-msgid "No"
-msgstr ""
-
-#: lib/activation.php:67
-msgid "Create a page called Home and set it to be the static front page"
-msgstr ""
-
-#: lib/activation.php:71
-msgid "Change permalink structure?"
-msgstr ""
-
-#: lib/activation.php:74
-msgid "Update permalink structure?"
-msgstr ""
-
-#: lib/activation.php:79
-msgid "Change permalink structure to /&#37;postname&#37;/"
-msgstr ""
-
-#: lib/activation.php:83 lib/activation.php:86
-msgid "Create navigation menu?"
-msgstr ""
-
-#: lib/activation.php:91
-msgid "Create the Primary Navigation menu and set the location"
-msgstr ""
-
-#: lib/activation.php:95 lib/activation.php:98
-msgid "Add pages to menu?"
-msgstr ""
-
-#: lib/activation.php:103
-msgid "Add all current published pages to the Primary Navigation"
-msgstr ""
-
-#: lib/cleanup.php:200 lib/modules/core.advanced/module.php:42
-msgid "Continued"
 msgstr ""
 
 #: lib/init.php:11
@@ -342,6 +280,298 @@ msgstr ""
 
 #: lib/init.php:12
 msgid "Secondary Navigation"
+msgstr ""
+
+#: lib/meta.php:7
+msgid "Categories:"
+msgstr ""
+
+#: lib/modules/advanced/module.php:10
+msgid "Advanced"
+msgstr ""
+
+#: lib/modules/advanced/module.php:15
+msgid "Enable Retina mode"
+msgstr ""
+
+#: lib/modules/advanced/module.php:16
+msgid ""
+"By enabling your site's featured images will be retina ready. Requires "
+"images to be uploaded at 2x the typical size desired. Default: On"
+msgstr ""
+
+#: lib/modules/advanced/module.php:24
+msgid "Google Analytics ID"
+msgstr ""
+
+#: lib/modules/advanced/module.php:25
+msgid ""
+"Paste your Google Analytics ID here to enable analytics tracking. Only "
+"Universal Analytics properties. Your user ID should be in the form of UA-"
+"XXXXX-Y."
+msgstr ""
+
+#: lib/modules/advanced/module.php:34
+msgid ""
+"The following settings affect various areas of your site, most notably "
+"buttons."
+msgstr ""
+
+#: lib/modules/advanced/module.php:39
+msgid "Border-Radius"
+msgstr ""
+
+#: lib/modules/advanced/module.php:40
+msgid ""
+"You can adjust the corner-radius of all elements in your site here. This "
+"will affect buttons, navbars, widgets and many more. Default: 4"
+msgstr ""
+
+#: lib/modules/advanced/module.php:52
+msgid "Padding Base"
+msgstr ""
+
+#: lib/modules/advanced/module.php:53
+msgid ""
+"You can adjust the padding base. This affects buttons size and lots of other "
+"cool stuff too! Default: 8"
+msgstr ""
+
+#: lib/modules/advanced/module.php:65
+msgid "Root Relative URLs"
+msgstr ""
+
+#: lib/modules/advanced/module.php:66
+msgid ""
+"Return URLs such as <em>/assets/css/style.css</em> instead of <em>http://"
+"example.com/assets/css/style.css</em>. Default: ON"
+msgstr ""
+
+#: lib/modules/advanced/module.php:73
+msgid "Enable Nice Search"
+msgstr ""
+
+#: lib/modules/advanced/module.php:74
+msgid "Redirects /?s=query to /search/query/, convert %20 to +. Default: ON"
+msgstr ""
+
+#: lib/modules/advanced/module.php:81
+msgid "Custom CSS"
+msgstr ""
+
+#: lib/modules/advanced/module.php:82
+msgid ""
+"You can write your custom CSS here. This code will appear in a script tag "
+"appended in the header section of the page."
+msgstr ""
+
+#: lib/modules/advanced/module.php:91
+msgid "Custom LESS"
+msgstr ""
+
+#: lib/modules/advanced/module.php:92
+msgid ""
+"You can write your custom LESS here. This code will be compiled with the "
+"other LESS files of the theme and be appended to the header."
+msgstr ""
+
+#: lib/modules/advanced/module.php:102
+msgid "Custom JS"
+msgstr ""
+
+#: lib/modules/advanced/module.php:103
+msgid ""
+"You can write your custom JavaScript/jQuery here. The code will be included "
+"in a script tag appended to the bottom of the page."
+msgstr ""
+
+#: lib/modules/advanced/module.php:112
+msgid "Minimize CSS"
+msgstr ""
+
+#: lib/modules/advanced/module.php:113
+msgid ""
+"Minimize the genearated CSS. This should be ON for production sites. "
+"Default: OFF."
+msgstr ""
+
+#: lib/modules/advanced/module.php:122
+msgid "Toggle adminbar On/Off"
+msgstr ""
+
+#: lib/modules/advanced/module.php:123
+msgid "Turn the admin bar On or Off on the frontend. Default: Off."
+msgstr ""
+
+#: lib/modules/advanced/module.php:131
+msgid "Use Google CDN for jQuery"
+msgstr ""
+
+#: lib/modules/background/module.php:29
+msgid "Background"
+msgstr ""
+
+#: lib/modules/background/module.php:34
+msgid "General Background Color"
+msgstr ""
+
+#: lib/modules/background/module.php:35
+msgid "Select a background color for your site. Default: #ffffff."
+msgstr ""
+
+#: lib/modules/background/module.php:44
+msgid "Content Background Color"
+msgstr ""
+
+#: lib/modules/background/module.php:45
+msgid ""
+"Select a background color for your site's content area. Default: #ffffff."
+msgstr ""
+
+#: lib/modules/background/module.php:55
+msgid "Content Background Color Opacity"
+msgstr ""
+
+#: lib/modules/background/module.php:56
+msgid ""
+"Select the opacity of your background color for the main content area so "
+"that background images and patterns will show through. Default: 100 (fully "
+"opaque)"
+msgstr ""
+
+#: lib/modules/background/module.php:68
+msgid ""
+"If you want a background image, you can select one here.\n"
+"\t\t\t\t\t\t\t\t\t\tYou can either upload a custom image, or use one of our "
+"pre-defined image patterns.\n"
+"\t\t\t\t\t\t\t\t\t\tIf you both upload a custom image and select a pattern, "
+"your custom image will override the selected pattern.\n"
+"\t\t\t\t\t\t\t\t\t\tPlease note that the image only applies to the area on "
+"the right and left of the main content area,\n"
+"\t\t\t\t\t\t\t\t\t\tto ensure better content readability. You can also set "
+"the background position to be fixed or scroll!"
+msgstr ""
+
+#: lib/modules/background/module.php:77 lib/modules/headers/module.php:147
+msgid "Use a Background Image"
+msgstr ""
+
+#: lib/modules/background/module.php:78 lib/modules/headers/module.php:148
+msgid ""
+"Enable this option to upload a custom background image for your site. This "
+"will override any patterns you may have selected. Default: OFF."
+msgstr ""
+
+#: lib/modules/background/module.php:85 lib/modules/headers/module.php:155
+msgid "Upload a Custom Background Image"
+msgstr ""
+
+#: lib/modules/background/module.php:86 lib/modules/headers/module.php:156
+msgid ""
+"Upload a Custom Background image using the media uploader, or define the URL "
+"directly."
+msgstr ""
+
+#: lib/modules/background/module.php:95 lib/modules/headers/module.php:137
+msgid "Background position"
+msgstr ""
+
+#: lib/modules/background/module.php:96 lib/modules/headers/module.php:138
+msgid ""
+"Changes how the background image or pattern is displayed from scroll to "
+"fixed position. Default: Fixed."
+msgstr ""
+
+#: lib/modules/background/module.php:99 lib/modules/headers/module.php:141
+#: lib/modules/menus/module.php:111
+msgid "Fixed"
+msgstr ""
+
+#: lib/modules/background/module.php:100 lib/modules/headers/module.php:142
+#: lib/modules/menus/module.php:112
+msgid "Scroll"
+msgstr ""
+
+#: lib/modules/background/module.php:106 lib/modules/headers/module.php:165
+msgid "Background Image Positioning"
+msgstr ""
+
+#: lib/modules/background/module.php:107 lib/modules/headers/module.php:166
+msgid ""
+"Allows the user to modify how the background displays. By default it is full "
+"width and stretched to fill the page. Default: Full Width."
+msgstr ""
+
+#: lib/modules/background/module.php:111 lib/modules/headers/module.php:170
+msgid "Custom"
+msgstr ""
+
+#: lib/modules/background/module.php:112 lib/modules/blog/module.php:55
+#: lib/modules/blog/module.php:101 lib/modules/headers/module.php:171
+msgid "Full Width"
+msgstr ""
+
+#: lib/modules/background/module.php:117 lib/modules/headers/module.php:176
+msgid "Background Repeat"
+msgstr ""
+
+#: lib/modules/background/module.php:118 lib/modules/headers/module.php:177
+msgid ""
+"Select how (or if) the selected background should be tiled. Default: Tile"
+msgstr ""
+
+#: lib/modules/background/module.php:124 lib/modules/headers/module.php:183
+msgid "No Repeat"
+msgstr ""
+
+#: lib/modules/background/module.php:125 lib/modules/headers/module.php:184
+msgid "Tile"
+msgstr ""
+
+#: lib/modules/background/module.php:126 lib/modules/headers/module.php:185
+msgid "Tile Horizontally"
+msgstr ""
+
+#: lib/modules/background/module.php:127 lib/modules/headers/module.php:186
+msgid "Tile Vertically"
+msgstr ""
+
+#: lib/modules/background/module.php:132 lib/modules/headers/module.php:191
+msgid "Background Alignment"
+msgstr ""
+
+#: lib/modules/background/module.php:133 lib/modules/headers/module.php:192
+msgid ""
+"Select how the selected background should be horizontally aligned. Default: "
+"Left"
+msgstr ""
+
+#: lib/modules/background/module.php:139 lib/modules/headers/module.php:198
+msgid "Left"
+msgstr ""
+
+#: lib/modules/background/module.php:140 lib/modules/headers/module.php:199
+msgid "Right"
+msgstr ""
+
+#: lib/modules/background/module.php:141 lib/modules/headers/module.php:200
+msgid "Center"
+msgstr ""
+
+#: lib/modules/background/module.php:146 lib/modules/headers/module.php:205
+msgid "Use a Background Pattern"
+msgstr ""
+
+#: lib/modules/background/module.php:147 lib/modules/headers/module.php:206
+msgid "Select one of the already existing Background Patterns. Default: OFF."
+msgstr ""
+
+#: lib/modules/background/module.php:154 lib/modules/headers/module.php:213
+msgid "Choose a Background Pattern"
+msgstr ""
+
+#: lib/modules/background/module.php:155 lib/modules/headers/module.php:214
+msgid "Select a background pattern."
 msgstr ""
 
 #: lib/modules/bbpress/module.php:259
@@ -372,437 +602,247 @@ msgstr ""
 msgid "None available"
 msgstr ""
 
-#: lib/modules/core/module.php:194
+#: lib/modules/blog/includes/functions.advanced.php:75
+msgid "&laquo; Previous"
+msgstr ""
+
+#: lib/modules/blog/includes/functions.advanced.php:76
+msgid "Next &raquo;"
+msgstr ""
+
+#: lib/modules/blog/includes/functions.advanced.php:123
+msgid "&hellip;"
+msgstr ""
+
+#: lib/modules/blog/includes/functions.breadcrumb.php:134
+msgid "Search results for &ldquo;"
+msgstr ""
+
+#: lib/modules/blog/includes/functions.breadcrumb.php:189
+msgid "Error 404"
+msgstr ""
+
+#: lib/modules/blog/includes/functions.breadcrumb.php:234
+msgid "Author:"
+msgstr ""
+
+#: lib/modules/blog/includes/functions.breadcrumb.php:239
+msgid "Page"
+msgstr ""
+
+#: lib/modules/blog/includes/functions.metaconfig.php:13
+#: lib/modules/blog/includes/functions.metaconfig.php:14
+msgid ", "
+msgstr ""
+
+#: lib/modules/blog/includes/functions.metaconfig.php:35
+msgid "Sticky"
+msgstr ""
+
+#: lib/modules/blog/includes/functions.metaconfig.php:41
+msgctxt "1: post format name. 2: date"
+msgid "%1$s on %2$s"
+msgstr ""
+
+#: lib/modules/blog/includes/functions.metaconfig.php:45
+msgid "Permalink to %s"
+msgstr ""
+
+#: lib/modules/blog/includes/functions.metaconfig.php:68
+msgid "View all posts by %s"
+msgstr ""
+
+#: lib/modules/blog/includes/resize.php:43
+#: lib/modules/blog/includes/resize.php:181
+msgid "No image URL has been entered."
+msgstr ""
+
+#: lib/modules/blog/includes/resize.php:243
+msgid "Failed to get $file_path information using \"@getimagesize\"."
+msgstr ""
+
+#: lib/modules/blog/includes/resize.php:286
+msgid "Resize path invalid (GIF)"
+msgstr ""
+
+#: lib/modules/blog/includes/resize.php:290
+msgid "Resize path invalid (PNG)."
+msgstr ""
+
+#: lib/modules/blog/includes/resize.php:298
+msgid "Resize path invalid (JPG)."
+msgstr ""
+
+#: lib/modules/blog/includes/resize.php:313
+msgid "Failed to get $dest_file_name (resized image) info via @getimagesize"
+msgstr ""
+
+#: lib/modules/blog/module.php:8
+msgid "Blog"
+msgstr ""
+
+#: lib/modules/blog/module.php:14
+msgid "Activate and order Post Meta elements"
+msgstr ""
+
+#: lib/modules/blog/module.php:32
+msgid "Featured Images"
+msgstr ""
+
+#: lib/modules/blog/module.php:33
 msgid ""
-"This post is password protected. To view it please enter your password below:"
+"Here you can select if you want to display the featured images in post "
+"archives and individual posts.\n"
+"\t\t\t\t\t\t\t\t\t\tPlease note that these apply to posts, pages, as well as "
+"custom post types.\n"
+"\t\t\t\t\t\t\t\t\t\tYou can select image sizes independently for archives "
+"and individual posts view."
 msgstr ""
 
-#: lib/modules/core.advanced/module.php:10
-#: lib/modules/core.advanced/module.php:21
-#: lib/modules/core.branding/module.php:22
-#: lib/modules/core.jumbotron/module.php:35
-#: lib/modules/core.layout/module.php:23 lib/modules/core.menus/module.php:22
-msgid "Advanced"
+#: lib/modules/blog/module.php:40
+msgid "Featured Images on Archives"
 msgstr ""
 
-#: lib/modules/core.advanced/module.php:15
-msgid "Advanced Options Mode"
+#: lib/modules/blog/module.php:41
+msgid ""
+"Display featured Images on post archives ( such as categories, tags, month "
+"view etc ). Default: OFF."
 msgstr ""
 
-#: lib/modules/core.advanced/module.php:16
-#: lib/modules/core.jumbotron/module.php:30
-#: lib/modules/core.layout/module.php:18 lib/modules/core.menus/module.php:17
-msgid "Show or hide advanced options"
+#: lib/modules/blog/module.php:50
+msgid "Width of Featured Images on Archives"
 msgstr ""
 
-#: lib/modules/core.advanced/module.php:20
-#: lib/modules/core.branding/module.php:21
-#: lib/modules/core.jumbotron/module.php:34
-#: lib/modules/core.layout/module.php:22 lib/modules/core.menus/module.php:21
-msgid "Simple"
+#: lib/modules/blog/module.php:51
+msgid "Set dimensions of featured Images on Archives. Default: Full Width"
 msgstr ""
 
-#: lib/modules/core.advanced/module.php:27
+#: lib/modules/blog/module.php:56 lib/modules/blog/module.php:102
+msgid "Custom Dimensions"
+msgstr ""
+
+#: lib/modules/blog/module.php:62
+msgid "Archives Featured Image Custom Width"
+msgstr ""
+
+#: lib/modules/blog/module.php:63 lib/modules/blog/module.php:110
+msgid ""
+"Select the width of your featured images on single posts. Default: 550px"
+msgstr ""
+
+#: lib/modules/blog/module.php:75
+msgid "Archives Featured Image Custom Height"
+msgstr ""
+
+#: lib/modules/blog/module.php:76
+msgid ""
+"Select the height of your featured images on post archives. Default: 300px"
+msgstr ""
+
+#: lib/modules/blog/module.php:88
+msgid "Featured Images on Posts"
+msgstr ""
+
+#: lib/modules/blog/module.php:89
+msgid "Display featured Images on posts. Default: OFF."
+msgstr ""
+
+#: lib/modules/blog/module.php:97
+msgid "Width of Featured Images on Posts"
+msgstr ""
+
+#: lib/modules/blog/module.php:98
+msgid "Set dimensions of featured Images on Posts. Default: Full Width"
+msgstr ""
+
+#: lib/modules/blog/module.php:109
+msgid "Posts Featured Image Custom Width"
+msgstr ""
+
+#: lib/modules/blog/module.php:122
+msgid "Posts Featured Image Custom Height"
+msgstr ""
+
+#: lib/modules/blog/module.php:123
+msgid ""
+"Select the height of your featured images on single posts. Default: 330px"
+msgstr ""
+
+#: lib/modules/blog/module.php:143
+msgid "Disable featured images on single post types"
+msgstr ""
+
+#: lib/modules/blog/module.php:151
 msgid "Post excerpt length"
 msgstr ""
 
-#: lib/modules/core.advanced/module.php:28
+#: lib/modules/blog/module.php:152
 msgid "Choose how many words should be used for post excerpt. Default: 40"
 msgstr ""
 
-#: lib/modules/core.advanced/module.php:39
+#: lib/modules/blog/module.php:163
 msgid "\"more\" text"
 msgstr ""
 
-#: lib/modules/core.advanced/module.php:40
+#: lib/modules/blog/module.php:164
 msgid "Text to display in case of excerpt too long. Default: Continued"
 msgstr ""
 
-#: lib/modules/core.advanced/module.php:47
+#: lib/modules/blog/module.php:166
+msgid "Continued"
+msgstr ""
+
+#: lib/modules/blog/module.php:171
 msgid "Select pagination style"
 msgstr ""
 
-#: lib/modules/core.advanced/module.php:48
+#: lib/modules/blog/module.php:172
 msgid "Switch between default pager or default pagination. Default: Pager."
 msgstr ""
 
-#: lib/modules/core.advanced/module.php:60
-msgid "Enable Retina mode"
+#: lib/modules/blog/module.php:184
+msgid "Show Breadcrumbs"
 msgstr ""
 
-#: lib/modules/core.advanced/module.php:61
-msgid ""
-"By enabling your site's featured images will be retina ready. Requires "
-"images to be uploaded at 2x the typical size desired. Default: On"
+#: lib/modules/blog/module.php:185
+msgid "Display Breadcrumbs. Default: OFF."
 msgstr ""
 
-#: lib/modules/core.advanced/module.php:70
-msgid "Dev mode"
+#: lib/modules/blog/module.php:193
+msgid "Show Post Meta in single posts"
 msgstr ""
 
-#: lib/modules/core.advanced/module.php:71
-msgid ""
-"By enabling your admin panel will have a Dev Mode Info with an output of the "
-"options object for addition debugging. Default: Off"
+#: lib/modules/blog/module.php:194
+msgid "Toggle Post Meta showing in the footer of single posts. Default: ON."
 msgstr ""
 
-#: lib/modules/core.advanced/module.php:80
-msgid "Google Analytics ID"
-msgstr ""
-
-#: lib/modules/core.advanced/module.php:81
-msgid ""
-"Paste your Google Analytics ID here to enable analytics tracking. Only "
-"Universal Analytics properties. Your user ID should be in the form of UA-"
-"XXXXX-Y."
-msgstr ""
-
-#: lib/modules/core.advanced/module.php:90
-msgid ""
-"The following settings affect various areas of your site, most notably "
-"buttons."
-msgstr ""
-
-#: lib/modules/core.advanced/module.php:96
-msgid "Border-Radius"
-msgstr ""
-
-#: lib/modules/core.advanced/module.php:97
-msgid ""
-"You can adjust the corner-radius of all elements in your site here. This "
-"will affect buttons, navbars, widgets and many more. Default: 4"
-msgstr ""
-
-#: lib/modules/core.advanced/module.php:110
-msgid "Padding Base"
-msgstr ""
-
-#: lib/modules/core.advanced/module.php:111
-msgid ""
-"You can adjust the padding base. This affects buttons size and lots of other "
-"cool stuff too! Default: 8"
-msgstr ""
-
-#: lib/modules/core.advanced/module.php:124
-msgid "PJAX"
-msgstr ""
-
-#: lib/modules/core.advanced/module.php:125
-msgid ""
-"Use <a href=\"https://github.com/defunkt/jquery-pjax\" target=\"_blank"
-"\">PJAX</a> in link tags inside NavBars, Sibebars & Breadcrumb. This cause a "
-"fast linear fadeToggle effect in main page. Default: OFF"
-msgstr ""
-
-#: lib/modules/core.advanced/module.php:133
-msgid "Root Relative URLs"
-msgstr ""
-
-#: lib/modules/core.advanced/module.php:134
-msgid ""
-"Return URLs such as <em>/assets/css/style.css</em> instead of <em>http://"
-"example.com/assets/css/style.css</em>. Default: ON"
-msgstr ""
-
-#: lib/modules/core.advanced/module.php:141
-msgid "Enable Nice Search"
-msgstr ""
-
-#: lib/modules/core.advanced/module.php:142
-msgid "Redirects /?s=query to /search/query/, convert %20 to +. Default: ON"
-msgstr ""
-
-#: lib/modules/core.advanced/module.php:149
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:762
-msgid "Custom CSS"
-msgstr ""
-
-#: lib/modules/core.advanced/module.php:150
-msgid ""
-"You can write your custom CSS here. This code will appear in a script tag "
-"appended in the header section of the page."
-msgstr ""
-
-#: lib/modules/core.advanced/module.php:160
-msgid "Custom LESS"
-msgstr ""
-
-#: lib/modules/core.advanced/module.php:161
-msgid ""
-"You can write your custom LESS here. This code will be compiled with the "
-"other LESS files of the theme and be appended to the header."
-msgstr ""
-
-#: lib/modules/core.advanced/module.php:172
-msgid "Custom JS"
-msgstr ""
-
-#: lib/modules/core.advanced/module.php:173
-msgid ""
-"You can write your custom JavaScript/jQuery here. The code will be included "
-"in a script tag appended to the bottom of the page."
-msgstr ""
-
-#: lib/modules/core.advanced/module.php:183
-msgid "Minimize CSS"
-msgstr ""
-
-#: lib/modules/core.advanced/module.php:184
-msgid ""
-"Minimize the genearated CSS. This should be ON for production sites. "
-"Default: OFF."
-msgstr ""
-
-#: lib/modules/core.advanced/module.php:194
-msgid "Debug Hooks"
-msgstr ""
-
-#: lib/modules/core.advanced/module.php:195
-msgid ""
-"Turn on very useful debug hooks. These will only be visible to admins. "
-"Default: Off."
-msgstr ""
-
-#: lib/modules/core.background/module.php:28
-msgid "Background"
-msgstr ""
-
-#: lib/modules/core.background/module.php:33
-msgid "General Background Color"
-msgstr ""
-
-#: lib/modules/core.background/module.php:34
-msgid "Select a background color for your site. Default: #ffffff."
-msgstr ""
-
-#: lib/modules/core.background/module.php:43
-msgid "Content Background Color"
-msgstr ""
-
-#: lib/modules/core.background/module.php:44
-msgid ""
-"Select a background color for your site's content area. Default: #ffffff."
-msgstr ""
-
-#: lib/modules/core.background/module.php:54
-msgid "Content Background Color Opacity"
-msgstr ""
-
-#: lib/modules/core.background/module.php:55
-msgid ""
-"Select the opacity of your background color for the main content area so "
-"that background images and patterns will show through. Default: 100 (fully "
-"opaque)"
-msgstr ""
-
-#: lib/modules/core.background/module.php:68
-msgid ""
-"If you want a background image, you can select one here.\n"
-"                    You can either upload a custom image, or use one of our "
-"pre-defined image patterns.\n"
-"                    If you both upload a custom image and select a pattern, "
-"your custom image will override the selected pattern.\n"
-"                    Please note that the image only applies to the area on "
-"the right and left of the main content area,\n"
-"                    to ensure better content readability. You can also set "
-"the background position to be fixed or scroll!"
-msgstr ""
-
-#: lib/modules/core.background/module.php:77
-#: lib/modules/core.jumbotron/module.php:74
-msgid "Use a Background Image"
-msgstr ""
-
-#: lib/modules/core.background/module.php:78
-#: lib/modules/core.jumbotron/module.php:75
-msgid ""
-"Enable this option to upload a custom background image for your site. This "
-"will override any patterns you may have selected. Default: OFF."
-msgstr ""
-
-#: lib/modules/core.background/module.php:85
-#: lib/modules/core.jumbotron/module.php:82
-msgid "Upload a Custom Background Image"
-msgstr ""
-
-#: lib/modules/core.background/module.php:86
-#: lib/modules/core.jumbotron/module.php:83
-msgid ""
-"Upload a Custom Background image using the media uploader, or define the URL "
-"directly."
-msgstr ""
-
-#: lib/modules/core.background/module.php:95
-#: lib/modules/core.jumbotron/module.php:64
-msgid "Background position"
-msgstr ""
-
-#: lib/modules/core.background/module.php:96
-#: lib/modules/core.jumbotron/module.php:65
-msgid ""
-"Changes how the background image or pattern is displayed from scroll to "
-"fixed position. Default: Fixed."
-msgstr ""
-
-#: lib/modules/core.background/module.php:99
-#: lib/modules/core.jumbotron/module.php:68
-#: lib/modules/core.menus/module.php:127
-msgid "Fixed"
-msgstr ""
-
-#: lib/modules/core.background/module.php:100
-#: lib/modules/core.jumbotron/module.php:69
-#: lib/modules/core.menus/module.php:128
-msgid "Scroll"
-msgstr ""
-
-#: lib/modules/core.background/module.php:106
-#: lib/modules/core.jumbotron/module.php:92
-msgid "Background Image Positioning"
-msgstr ""
-
-#: lib/modules/core.background/module.php:107
-#: lib/modules/core.jumbotron/module.php:93
-msgid ""
-"Allows the user to modify how the background displays. By default it is full "
-"width and stretched to fill the page. Default: Full Width."
-msgstr ""
-
-#: lib/modules/core.background/module.php:111
-#: lib/modules/core.jumbotron/module.php:97
-msgid "Custom"
-msgstr ""
-
-#: lib/modules/core.background/module.php:112
-#: lib/modules/core.images/module.php:40 lib/modules/core.images/module.php:86
-#: lib/modules/core.jumbotron/module.php:98
-msgid "Full Width"
-msgstr ""
-
-#: lib/modules/core.background/module.php:117
-#: lib/modules/core.jumbotron/module.php:103
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/background/field_background.php:136
-msgid "Background Repeat"
-msgstr ""
-
-#: lib/modules/core.background/module.php:118
-#: lib/modules/core.jumbotron/module.php:104
-msgid ""
-"Select how (or if) the selected background should be tiled. Default: Tile"
-msgstr ""
-
-#: lib/modules/core.background/module.php:124
-#: lib/modules/core.jumbotron/module.php:110
-msgid "No Repeat"
-msgstr ""
-
-#: lib/modules/core.background/module.php:125
-#: lib/modules/core.jumbotron/module.php:111
-msgid "Tile"
-msgstr ""
-
-#: lib/modules/core.background/module.php:126
-#: lib/modules/core.jumbotron/module.php:112
-msgid "Tile Horizontally"
-msgstr ""
-
-#: lib/modules/core.background/module.php:127
-#: lib/modules/core.jumbotron/module.php:113
-msgid "Tile Vertically"
-msgstr ""
-
-#: lib/modules/core.background/module.php:132
-#: lib/modules/core.jumbotron/module.php:118
-msgid "Background Alignment"
-msgstr ""
-
-#: lib/modules/core.background/module.php:133
-#: lib/modules/core.jumbotron/module.php:119
-msgid ""
-"Select how the selected background should be horizontally aligned. Default: "
-"Left"
-msgstr ""
-
-#: lib/modules/core.background/module.php:139
-#: lib/modules/core.jumbotron/module.php:125
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/border/field_border.php:146
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/spacing/field_spacing.php:170
-msgid "Left"
-msgstr ""
-
-#: lib/modules/core.background/module.php:140
-#: lib/modules/core.jumbotron/module.php:126
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/border/field_border.php:132
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/spacing/field_spacing.php:156
-msgid "Right"
-msgstr ""
-
-#: lib/modules/core.background/module.php:141
-#: lib/modules/core.jumbotron/module.php:127
-msgid "Center"
-msgstr ""
-
-#: lib/modules/core.background/module.php:146
-#: lib/modules/core.jumbotron/module.php:132
-msgid "Use a Background Pattern"
-msgstr ""
-
-#: lib/modules/core.background/module.php:147
-#: lib/modules/core.jumbotron/module.php:133
-msgid "Select one of the already existing Background Patterns. Default: OFF."
-msgstr ""
-
-#: lib/modules/core.background/module.php:154
-#: lib/modules/core.jumbotron/module.php:140
-msgid "Choose a Background Pattern"
-msgstr ""
-
-#: lib/modules/core.background/module.php:155
-#: lib/modules/core.jumbotron/module.php:141
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:381
-msgid "Select a background pattern."
-msgstr ""
-
-#: lib/modules/core.branding/module.php:11
+#: lib/modules/branding/module.php:11
 msgid "Branding"
 msgstr ""
 
-#: lib/modules/core.branding/module.php:16
-msgid "Branding Options Mode"
-msgstr ""
-
-#: lib/modules/core.branding/module.php:17
-#: lib/modules/core.layout/module.php:93
-msgid ""
-"Select the width of the Primary Sidebar. Please note that the values "
-"represent grid columns. The total width of the page is 12 columns, so "
-"selecting 4 here will make the primary sidebar to have a width of 1/3 "
-"( 4/12 ) of the total page width."
-msgstr ""
-
-#: lib/modules/core.branding/module.php:28
+#: lib/modules/branding/module.php:16
 msgid "Logo"
 msgstr ""
 
-#: lib/modules/core.branding/module.php:29
+#: lib/modules/branding/module.php:17
 msgid ""
 "Upload a logo image using the media uploader, or define the URL directly."
 msgstr ""
 
-#: lib/modules/core.branding/module.php:45
+#: lib/modules/branding/module.php:25
 msgid "Custom Favicon"
 msgstr ""
 
-#: lib/modules/core.branding/module.php:46
+#: lib/modules/branding/module.php:26
 msgid ""
 "Upload a favicon image using the media uploader, or define the URL directly."
 msgstr ""
 
-#: lib/modules/core.branding/module.php:54
+#: lib/modules/branding/module.php:33
 msgid "Apple Icon"
 msgstr ""
 
-#: lib/modules/core.branding/module.php:55
+#: lib/modules/branding/module.php:34
 msgid ""
 "This will create icons for Apple iPhone ( 57px x 57px ), Apple iPhone Retina "
 "Version ( 114px x 114px ), Apple iPad ( 72px x 72px ) and Apple iPad Retina "
@@ -810,426 +850,565 @@ msgid ""
 "should be at least 144px x 144px."
 msgstr ""
 
-#: lib/modules/core.branding/module.php:67
+#: lib/modules/branding/module.php:45
 msgid ""
 "The primary color you select will also affect other elements on your site,\n"
-"                      such as table borders, widgets colors, input elements, "
+"\t\t\t\t\t\t\t\t\t\t\tsuch as table borders, widgets colors, input elements, "
 "dropdowns etc.\n"
-"                      The branding colors you select will be used throughout "
+"\t\t\t\t\t\t\t\t\t\t\tThe branding colors you select will be used throughout "
 "the site in various elements.\n"
-"                      One of the most important settings in your branding is "
+"\t\t\t\t\t\t\t\t\t\t\tOne of the most important settings in your branding is "
 "your primary color,\n"
-"                      since this will be used more often."
+"\t\t\t\t\t\t\t\t\t\t\tsince this will be used more often."
 msgstr ""
 
-#: lib/modules/core.branding/module.php:76
+#: lib/modules/branding/module.php:54
 msgid "Enable Gradients"
 msgstr ""
 
-#: lib/modules/core.branding/module.php:77
+#: lib/modules/branding/module.php:55
 msgid "Enable gradients for buttons and the navbar. Default: Off."
 msgstr ""
 
-#: lib/modules/core.branding/module.php:87
+#: lib/modules/branding/module.php:64
 msgid "Brand Colors: Primary"
 msgstr ""
 
-#: lib/modules/core.branding/module.php:88
+#: lib/modules/branding/module.php:65
 msgid ""
 "Select your primary branding color. Also referred to as an accent color. "
 "This will affect various areas of your site, including the color of your "
 "primary buttons, link color, the background of some elements and many more."
 msgstr ""
 
-#: lib/modules/core.branding/module.php:98
+#: lib/modules/branding/module.php:75
 msgid "Brand Colors: Success"
 msgstr ""
 
-#: lib/modules/core.branding/module.php:99
+#: lib/modules/branding/module.php:76
 msgid "Select your branding color for success messages etc. Default: #5cb85c."
 msgstr ""
 
-#: lib/modules/core.branding/module.php:109
+#: lib/modules/branding/module.php:86
 msgid "Brand Colors: Warning"
 msgstr ""
 
-#: lib/modules/core.branding/module.php:110
+#: lib/modules/branding/module.php:87
 msgid "Select your branding color for warning messages etc. Default: #f0ad4e."
 msgstr ""
 
-#: lib/modules/core.branding/module.php:120
+#: lib/modules/branding/module.php:97
 msgid "Brand Colors: Danger"
 msgstr ""
 
-#: lib/modules/core.branding/module.php:121
+#: lib/modules/branding/module.php:98
 msgid "Select your branding color for success messages etc. Default: #d9534f."
 msgstr ""
 
-#: lib/modules/core.branding/module.php:131
+#: lib/modules/branding/module.php:108
 msgid "Brand Colors: Info"
 msgstr ""
 
-#: lib/modules/core.branding/module.php:132
+#: lib/modules/branding/module.php:109
 msgid ""
 "Select your branding color for info messages etc. It will also be used for "
 "the Search button color as well as other areas where it semantically makes "
 "sense to use an 'info' class. Default: #5bc0de."
 msgstr ""
 
-#: lib/modules/core.breadcrumbs/module.php:73
-msgid "Search results for &ldquo;"
-msgstr ""
-
-#: lib/modules/core.breadcrumbs/module.php:140
-msgid "Error 404"
-msgstr ""
-
-#: lib/modules/core.breadcrumbs/module.php:185
-msgid "Author:"
-msgstr ""
-
-#: lib/modules/core.breadcrumbs/module.php:189
-msgid "Page"
-msgstr ""
-
-#: lib/modules/core.compiler/includes/functions.core.php:59
+#: lib/modules/compiler/includes/functions.core.php:82
 msgid ""
 "The following file does not exist and must be so in order to utilise this "
 "theme. Please create this file."
 msgstr ""
 
-#: lib/modules/core.compiler/includes/functions.core.php:60
+#: lib/modules/compiler/includes/functions.core.php:83
 msgid ""
 "Try visiting the theme options and clicking the \"Reset All\" button to "
 "attempt automatically creating it."
 msgstr ""
 
-#: lib/modules/core.compiler/includes/functions.core.php:67
+#: lib/modules/compiler/includes/functions.core.php:90
 msgid ""
 "The following file is not writable and must be so in order to utilise this "
 "theme. Please update the permissions."
 msgstr ""
 
-#: lib/modules/core.entry-meta/functions.metaconfig.php:33
-#: lib/modules/core.entry-meta/functions.metaconfig.php:34
-msgid ", "
+#: lib/modules/core/module.php:44
+msgid ""
+"This post is password protected. To view it please enter your password below:"
 msgstr ""
 
-#: lib/modules/core.entry-meta/functions.metaconfig.php:53
-msgid "Sticky"
+#: lib/modules/dependencies/class-tgm-plugin-activation.php:155
+#: lib/modules/dependencies/module.php:66
+msgid "Install Required Plugins"
 msgstr ""
 
-#: lib/modules/core.entry-meta/functions.metaconfig.php:60
-msgctxt "1: post format name. 2: date"
-msgid "%1$s on %2$s"
+#: lib/modules/dependencies/class-tgm-plugin-activation.php:156
+#: lib/modules/dependencies/module.php:67
+msgid "Install Plugins"
 msgstr ""
 
-#: lib/modules/core.entry-meta/functions.metaconfig.php:65
-msgid "Permalink to %s"
+#: lib/modules/dependencies/class-tgm-plugin-activation.php:157
+#: lib/modules/dependencies/module.php:68
+msgid "Installing Plugin: %s"
 msgstr ""
 
-#: lib/modules/core.entry-meta/functions.metaconfig.php:92
-msgid "View all posts by %s"
+#: lib/modules/dependencies/class-tgm-plugin-activation.php:158
+msgid "Something went wrong."
 msgstr ""
 
-#: lib/modules/core.entry-meta/module.php:15
-msgid "Post Meta"
+#: lib/modules/dependencies/class-tgm-plugin-activation.php:159
+#: lib/modules/dependencies/module.php:70
+msgid "This theme requires the following plugin: %1$s."
+msgid_plural "This theme requires the following plugins: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: lib/modules/dependencies/class-tgm-plugin-activation.php:160
+#: lib/modules/dependencies/module.php:71
+msgid "This theme recommends the following plugin: %1$s."
+msgid_plural "This theme recommends the following plugins: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: lib/modules/dependencies/class-tgm-plugin-activation.php:161
+#: lib/modules/dependencies/module.php:72
+msgid ""
+"Sorry, but you do not have the correct permissions to install the %s plugin. "
+"Contact the administrator of this site for help on getting the plugin "
+"installed."
+msgid_plural ""
+"Sorry, but you do not have the correct permissions to install the %s "
+"plugins. Contact the administrator of this site for help on getting the "
+"plugins installed."
+msgstr[0] ""
+msgstr[1] ""
+
+#: lib/modules/dependencies/class-tgm-plugin-activation.php:162
+#: lib/modules/dependencies/module.php:73
+msgid "The following required plugin is currently inactive: %1$s."
+msgid_plural "The following required plugins are currently inactive: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: lib/modules/dependencies/class-tgm-plugin-activation.php:163
+#: lib/modules/dependencies/module.php:74
+msgid "The following recommended plugin is currently inactive: %1$s."
+msgid_plural "The following recommended plugins are currently inactive: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: lib/modules/dependencies/class-tgm-plugin-activation.php:164
+#: lib/modules/dependencies/module.php:75
+msgid ""
+"Sorry, but you do not have the correct permissions to activate the %s "
+"plugin. Contact the administrator of this site for help on getting the "
+"plugin activated."
+msgid_plural ""
+"Sorry, but you do not have the correct permissions to activate the %s "
+"plugins. Contact the administrator of this site for help on getting the "
+"plugins activated."
+msgstr[0] ""
+msgstr[1] ""
+
+#: lib/modules/dependencies/class-tgm-plugin-activation.php:165
+#: lib/modules/dependencies/module.php:76
+msgid ""
+"The following plugin needs to be updated to its latest version to ensure "
+"maximum compatibility with this theme: %1$s."
+msgid_plural ""
+"The following plugins need to be updated to their latest version to ensure "
+"maximum compatibility with this theme: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: lib/modules/dependencies/class-tgm-plugin-activation.php:166
+#: lib/modules/dependencies/module.php:77
+msgid ""
+"Sorry, but you do not have the correct permissions to update the %s plugin. "
+"Contact the administrator of this site for help on getting the plugin "
+"updated."
+msgid_plural ""
+"Sorry, but you do not have the correct permissions to update the %s plugins. "
+"Contact the administrator of this site for help on getting the plugins "
+"updated."
+msgstr[0] ""
+msgstr[1] ""
+
+#: lib/modules/dependencies/class-tgm-plugin-activation.php:167
+#: lib/modules/dependencies/module.php:78
+msgid "Begin installing plugin"
+msgid_plural "Begin installing plugins"
+msgstr[0] ""
+msgstr[1] ""
+
+#: lib/modules/dependencies/class-tgm-plugin-activation.php:168
+#: lib/modules/dependencies/module.php:79
+msgid "Activate installed plugin"
+msgid_plural "Activate installed plugins"
+msgstr[0] ""
+msgstr[1] ""
+
+#: lib/modules/dependencies/class-tgm-plugin-activation.php:169
+#: lib/modules/dependencies/module.php:80
+msgid "Return to Required Plugins Installer"
 msgstr ""
 
-#: lib/modules/core.entry-meta/module.php:21
-msgid "Activate and order elements"
+#: lib/modules/dependencies/class-tgm-plugin-activation.php:170
+msgid "Return to the dashboard"
 msgstr ""
 
-#: lib/modules/core.footer/module.php:11 lib/widgets.php:17
+#: lib/modules/dependencies/class-tgm-plugin-activation.php:171
+#: lib/modules/dependencies/class-tgm-plugin-activation.php:1840
+#: lib/modules/dependencies/module.php:81
+msgid "Plugin activated successfully."
+msgstr ""
+
+#: lib/modules/dependencies/class-tgm-plugin-activation.php:172
+#: lib/modules/dependencies/class-tgm-plugin-activation.php:1538
+msgid "The following plugin was activated successfully:"
+msgstr ""
+
+#: lib/modules/dependencies/class-tgm-plugin-activation.php:173
+msgid "All plugins installed and activated successfully. %1$s"
+msgstr ""
+
+#: lib/modules/dependencies/class-tgm-plugin-activation.php:174
+msgid "Dismiss this notice"
+msgstr ""
+
+#: lib/modules/dependencies/class-tgm-plugin-activation.php:1085
+msgid "External Link"
+msgstr ""
+
+#: lib/modules/dependencies/class-tgm-plugin-activation.php:1090
+msgid "Private Repository"
+msgstr ""
+
+#: lib/modules/dependencies/class-tgm-plugin-activation.php:1093
+msgid "Pre-Packaged"
+msgstr ""
+
+#: lib/modules/dependencies/class-tgm-plugin-activation.php:1097
+msgid "WordPress Repository"
+msgstr ""
+
+#: lib/modules/dependencies/class-tgm-plugin-activation.php:1100
+msgid "Required"
+msgstr ""
+
+#: lib/modules/dependencies/class-tgm-plugin-activation.php:1100
+msgid "Recommended"
+msgstr ""
+
+#: lib/modules/dependencies/class-tgm-plugin-activation.php:1103
+msgid "Not Installed"
+msgstr ""
+
+#: lib/modules/dependencies/class-tgm-plugin-activation.php:1105
+msgid "Installed But Not Activated"
+msgstr ""
+
+#: lib/modules/dependencies/class-tgm-plugin-activation.php:1275
+msgid ""
+"No plugins to install or activate. <a href=\"%1$s\" title=\"Return to the "
+"Dashboard\">Return to the Dashboard</a>"
+msgstr ""
+
+#: lib/modules/dependencies/class-tgm-plugin-activation.php:1291
+msgid "Plugin"
+msgstr ""
+
+#: lib/modules/dependencies/class-tgm-plugin-activation.php:1292
+msgid "Source"
+msgstr ""
+
+#: lib/modules/dependencies/class-tgm-plugin-activation.php:1293
+msgid "Type"
+msgstr ""
+
+#: lib/modules/dependencies/class-tgm-plugin-activation.php:1294
+msgid "Status"
+msgstr ""
+
+#: lib/modules/dependencies/class-tgm-plugin-activation.php:1312
+msgid "Install"
+msgstr ""
+
+#: lib/modules/dependencies/class-tgm-plugin-activation.php:1313
+msgid "Activate"
+msgstr ""
+
+#: lib/modules/dependencies/class-tgm-plugin-activation.php:1823
+msgid "Install package not available."
+msgstr ""
+
+#: lib/modules/dependencies/class-tgm-plugin-activation.php:1824
+msgid "Downloading install package from <span class=\"code\">%s</span>&#8230;"
+msgstr ""
+
+#: lib/modules/dependencies/class-tgm-plugin-activation.php:1825
+msgid "Unpacking the package&#8230;"
+msgstr ""
+
+#: lib/modules/dependencies/class-tgm-plugin-activation.php:1826
+msgid "Installing the plugin&#8230;"
+msgstr ""
+
+#: lib/modules/dependencies/class-tgm-plugin-activation.php:1827
+msgid "Plugin install failed."
+msgstr ""
+
+#: lib/modules/dependencies/class-tgm-plugin-activation.php:1828
+msgid "Plugin installed successfully."
+msgstr ""
+
+#: lib/modules/dependencies/class-tgm-plugin-activation.php:1839
+msgid "Plugin activation failed."
+msgstr ""
+
+#: lib/modules/dependencies/class-tgm-plugin-activation.php:1949
+msgid ""
+"The installation and activation process is starting. This process may take a "
+"while on some hosts, so please be patient."
+msgstr ""
+
+#: lib/modules/dependencies/class-tgm-plugin-activation.php:1950
+msgid "%1$s installed and activated successfully."
+msgstr ""
+
+#: lib/modules/dependencies/class-tgm-plugin-activation.php:1950
+#: lib/modules/dependencies/class-tgm-plugin-activation.php:1959
+msgid "Show Details"
+msgstr ""
+
+#: lib/modules/dependencies/class-tgm-plugin-activation.php:1950
+#: lib/modules/dependencies/class-tgm-plugin-activation.php:1959
+msgid "Hide Details"
+msgstr ""
+
+#: lib/modules/dependencies/class-tgm-plugin-activation.php:1951
+msgid "All installations and activations have been completed."
+msgstr ""
+
+#: lib/modules/dependencies/class-tgm-plugin-activation.php:1952
+msgid "Installing and Activating Plugin %1$s (%2$d/%3$d)"
+msgstr ""
+
+#: lib/modules/dependencies/class-tgm-plugin-activation.php:1956
+msgid ""
+"The installation process is starting. This process may take a while on some "
+"hosts, so please be patient."
+msgstr ""
+
+#: lib/modules/dependencies/class-tgm-plugin-activation.php:1957
+msgid "An error occurred while installing %1$s: <strong>%2$s</strong>."
+msgstr ""
+
+#: lib/modules/dependencies/class-tgm-plugin-activation.php:1958
+msgid "The installation of %1$s failed."
+msgstr ""
+
+#: lib/modules/dependencies/class-tgm-plugin-activation.php:1959
+msgid "%1$s installed successfully."
+msgstr ""
+
+#: lib/modules/dependencies/class-tgm-plugin-activation.php:1960
+msgid "All installations have been completed."
+msgstr ""
+
+#: lib/modules/dependencies/class-tgm-plugin-activation.php:1961
+msgid "Installing Plugin %1$s (%2$d/%3$d)"
+msgstr ""
+
+#: lib/modules/dependencies/class-tgm-plugin-activation.php:2052
+msgid "Return to the Dashboard"
+msgstr ""
+
+#: lib/modules/dependencies/module.php:69
+msgid "Something went wrong with the plugin API."
+msgstr ""
+
+#: lib/modules/dependencies/module.php:82
+msgid "All plugins installed and activated successfully. %s"
+msgstr ""
+
+#: lib/modules/footer/module.php:11
 msgid "Footer"
 msgstr ""
 
-#: lib/modules/core.footer/module.php:16
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:672
+#: lib/modules/footer/module.php:16
 msgid "Footer Background Color"
 msgstr ""
 
-#: lib/modules/core.footer/module.php:17
+#: lib/modules/footer/module.php:17
 msgid "Select the background color for your footer. Default: #282a2b."
 msgstr ""
 
-#: lib/modules/core.footer/module.php:26
+#: lib/modules/footer/module.php:26
 msgid "Footer Background Opacity"
 msgstr ""
 
-#: lib/modules/core.footer/module.php:27
+#: lib/modules/footer/module.php:27
 msgid "Select the opacity level for the footer bar. Default: 100%."
 msgstr ""
 
-#: lib/modules/core.footer/module.php:37
+#: lib/modules/footer/module.php:37
 msgid "Footer Text Color"
 msgstr ""
 
-#: lib/modules/core.footer/module.php:38
+#: lib/modules/footer/module.php:38
 msgid "Select the text color for your footer. Default: #8C8989."
 msgstr ""
 
-#: lib/modules/core.footer/module.php:47
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:622
+#: lib/modules/footer/module.php:47
 msgid "Footer Text"
 msgstr ""
 
-#: lib/modules/core.footer/module.php:48
+#: lib/modules/footer/module.php:48
 msgid ""
 "The text that will be displayed in your footer. You can use [year] and "
 "[sitename] and they will be replaced appropriately. Default: &copy; [year] "
 "[sitename]"
 msgstr ""
 
-#: lib/modules/core.footer/module.php:74
+#: lib/modules/footer/module.php:73
 msgid "Footer Top Margin"
 msgstr ""
 
-#: lib/modules/core.footer/module.php:75
+#: lib/modules/footer/module.php:74
 msgid "Select the top margin of footer in pixels. Default: 0px."
 msgstr ""
 
-#: lib/modules/core.footer/module.php:85
+#: lib/modules/footer/module.php:83
 msgid "Show social icons in footer"
 msgstr ""
 
-#: lib/modules/core.footer/module.php:86
+#: lib/modules/footer/module.php:84
 msgid "Show social icons in the footer. Default: On."
 msgstr ""
 
-#: lib/modules/core.footer/module.php:95
+#: lib/modules/footer/module.php:92
 msgid "Footer social links column width"
 msgstr ""
 
-#: lib/modules/core.footer/module.php:96
+#: lib/modules/footer/module.php:93
 msgid ""
 "You can customize the width of the footer social links area. The footer text "
 "width will be adjusted accordingly. Default: 5."
 msgstr ""
 
-#: lib/modules/core.footer/module.php:108
+#: lib/modules/footer/module.php:105
 msgid "Footer social icons open new window"
 msgstr ""
 
-#: lib/modules/core.footer/module.php:109
+#: lib/modules/footer/module.php:106
 msgid "Social icons in footer will open a new window. Default: On."
 msgstr ""
 
-#: lib/modules/core.header/module.php:11
-msgid "Extra Header"
+#: lib/modules/headers/includes/functions.extra-header.php:8
+msgid "Header Area"
 msgstr ""
 
-#: lib/modules/core.header/module.php:18
+#: lib/modules/headers/includes/functions.jumbotron.php:8
+#: lib/modules/headers/module.php:116
+msgid "Jumbotron"
+msgstr ""
+
+#: lib/modules/headers/module.php:25
 msgid "Extra Branding Area"
 msgstr ""
 
-#: lib/modules/core.header/module.php:26
+#: lib/modules/headers/module.php:32
 msgid "Display the Header."
 msgstr ""
 
-#: lib/modules/core.header/module.php:27
+#: lib/modules/headers/module.php:33
 msgid "Turn this ON to display the header. Default: OFF"
 msgstr ""
 
-#: lib/modules/core.header/module.php:36
+#: lib/modules/headers/module.php:41
 msgid "Display branding on your Header."
 msgstr ""
 
-#: lib/modules/core.header/module.php:37
+#: lib/modules/headers/module.php:42
 msgid ""
 "Turn this ON to display branding ( Sitename or Logo )on your Header. "
 "Default: ON"
 msgstr ""
 
-#: lib/modules/core.header/module.php:46
+#: lib/modules/headers/module.php:51
 msgid "Header Background Color"
 msgstr ""
 
-#: lib/modules/core.header/module.php:47
+#: lib/modules/headers/module.php:52
 msgid "Select the background color for your header. Default: #EEEEEE."
 msgstr ""
 
-#: lib/modules/core.header/module.php:57
+#: lib/modules/headers/module.php:62
 msgid "Header Background Opacity"
 msgstr ""
 
-#: lib/modules/core.header/module.php:58
+#: lib/modules/headers/module.php:63
 msgid "Select the background opacity for your header. Default: 100%."
 msgstr ""
 
-#: lib/modules/core.header/module.php:70
+#: lib/modules/headers/module.php:75
 msgid "Header Text Color"
 msgstr ""
 
-#: lib/modules/core.header/module.php:71
+#: lib/modules/headers/module.php:76
 msgid "Select the text color for your header. Default: #333333."
 msgstr ""
 
-#: lib/modules/core.header/module.php:81
+#: lib/modules/headers/module.php:86
 msgid "Header Top Margin"
 msgstr ""
 
-#: lib/modules/core.header/module.php:82
+#: lib/modules/headers/module.php:87
 msgid "Select the top margin of header in pixels. Default: 0px."
 msgstr ""
 
-#: lib/modules/core.header/module.php:92
+#: lib/modules/headers/module.php:97
 msgid "Header Bottom Margin"
 msgstr ""
 
-#: lib/modules/core.header/module.php:93
+#: lib/modules/headers/module.php:98
 msgid "Select the bottom margin of header in pixels. Default: 0px."
 msgstr ""
 
-#: lib/modules/core.images/module.php:11 lib/modules/core.images/module.php:17
-msgid "Featured Images"
+#: lib/modules/headers/module.php:109
+msgid "Headers"
 msgstr ""
 
-#: lib/modules/core.images/module.php:18
-msgid ""
-"Here you can select if you want to display the featured images in post "
-"archives and individual posts.\n"
-"                    Please note that these apply to posts, pages, as well as "
-"custom post types.\n"
-"                    You can select image sizes independently for archives "
-"and individual posts view."
-msgstr ""
-
-#: lib/modules/core.images/module.php:25
-msgid "Featured Images on Archives"
-msgstr ""
-
-#: lib/modules/core.images/module.php:26
-msgid ""
-"Display featured Images on post archives ( such as categories, tags, month "
-"view etc ). Default: OFF."
-msgstr ""
-
-#: lib/modules/core.images/module.php:35
-msgid "Width of Featured Images on Archives"
-msgstr ""
-
-#: lib/modules/core.images/module.php:36
-msgid "Set dimensions of featured Images on Archives. Default: Full Width"
-msgstr ""
-
-#: lib/modules/core.images/module.php:41 lib/modules/core.images/module.php:87
-msgid "Custom Dimensions"
-msgstr ""
-
-#: lib/modules/core.images/module.php:47
-msgid "Archives Featured Image Width"
-msgstr ""
-
-#: lib/modules/core.images/module.php:48 lib/modules/core.images/module.php:95
-msgid ""
-"Select the width of your featured images on single posts. Default: 550px"
-msgstr ""
-
-#: lib/modules/core.images/module.php:60
-msgid "Archives Featured Image Height"
-msgstr ""
-
-#: lib/modules/core.images/module.php:61
-msgid ""
-"Select the height of your featured images on post archives. Default: 300px"
-msgstr ""
-
-#: lib/modules/core.images/module.php:73
-msgid "Featured Images on Posts"
-msgstr ""
-
-#: lib/modules/core.images/module.php:74
-msgid "Display featured Images on posts. Default: OFF."
-msgstr ""
-
-#: lib/modules/core.images/module.php:82
-msgid "Width of Featured Images on Posts"
-msgstr ""
-
-#: lib/modules/core.images/module.php:83
-msgid "Set dimensions of featured Images on Posts. Default: Full Width"
-msgstr ""
-
-#: lib/modules/core.images/module.php:94
-msgid "Posts Featured Image Width"
-msgstr ""
-
-#: lib/modules/core.images/module.php:107
-msgid "Posts Featured Image Height"
-msgstr ""
-
-#: lib/modules/core.images/module.php:108
-msgid ""
-"Select the height of your featured images on single posts. Default: 330px"
-msgstr ""
-
-#: lib/modules/core.images/module.php:128
-msgid "Disable featured images on single post types"
-msgstr ""
-
-#: lib/modules/core.images/resize.php:43
-#: lib/modules/core.images/resize.php:181
-msgid "No image URL has been entered."
-msgstr ""
-
-#: lib/modules/core.images/resize.php:243
-msgid "Failed to get $file_path information using \"@getimagesize\"."
-msgstr ""
-
-#: lib/modules/core.images/resize.php:286
-msgid "Resize path invalid (GIF)"
-msgstr ""
-
-#: lib/modules/core.images/resize.php:290
-msgid "Resize path invalid (PNG)."
-msgstr ""
-
-#: lib/modules/core.images/resize.php:298
-msgid "Resize path invalid (JPG)."
-msgstr ""
-
-#: lib/modules/core.images/resize.php:313
-msgid "Failed to get $dest_file_name (resized image) info via @getimagesize"
-msgstr ""
-
-#: lib/modules/core.jumbotron/module.php:24
-#: lib/modules/core.jumbotron/module.php:43
-#: lib/modules/core.widgets/module.php:58
-msgid "Jumbotron"
-msgstr ""
-
-#: lib/modules/core.jumbotron/module.php:29
-msgid "Jumbotron Options Mode"
-msgstr ""
-
-#: lib/modules/core.jumbotron/module.php:53
+#: lib/modules/headers/module.php:126
 msgid "Jumbotron Background Color"
 msgstr ""
 
-#: lib/modules/core.jumbotron/module.php:54
+#: lib/modules/headers/module.php:127
 msgid ""
 "Select the background color for your Jumbotron area. Please note that this "
 "area will only be visible if you assign a widget to the 'Jumbotron' Widget "
 "Area. Default: #EEEEEE."
 msgstr ""
 
-#: lib/modules/core.jumbotron/module.php:151
+#: lib/modules/headers/module.php:224
 msgid "Display Jumbotron only on the Frontpage."
 msgstr ""
 
-#: lib/modules/core.jumbotron/module.php:152
+#: lib/modules/headers/module.php:225
 msgid ""
 "When Turned OFF, the Jumbotron area is displayed in all your pages. If you "
 "wish to completely disable the Jumbotron, then please remove the widgets "
 "assigned to its area and it will no longer be displayed. Default: ON"
 msgstr ""
 
-#: lib/modules/core.jumbotron/module.php:160
+#: lib/modules/headers/module.php:233 lib/modules/menus/module.php:33
 msgid "Full-Width"
 msgstr ""
 
-#: lib/modules/core.jumbotron/module.php:161
+#: lib/modules/headers/module.php:234
 msgid ""
 "When Turned ON, the Jumbotron is no longer restricted by the width of your "
 "page, taking over the full width of your screen. This option is useful when "
@@ -1237,135 +1416,130 @@ msgid ""
 "width to be the maximum width of the screen. Default: OFF."
 msgstr ""
 
-#: lib/modules/core.jumbotron/module.php:169
+#: lib/modules/headers/module.php:242
 msgid "Use fittext script for the title."
 msgstr ""
 
-#: lib/modules/core.jumbotron/module.php:170
+#: lib/modules/headers/module.php:243
 msgid ""
 "Use the fittext script to enlarge or scale-down the font-size of the widget "
 "title to fit the Jumbotron area. Default: OFF"
 msgstr ""
 
-#: lib/modules/core.jumbotron/module.php:179
+#: lib/modules/headers/module.php:251
 msgid "Center-align the content."
 msgstr ""
 
-#: lib/modules/core.jumbotron/module.php:180
+#: lib/modules/headers/module.php:252
 msgid ""
 "Turn this on to center-align the contents of the Jumbotron area. Default: OFF"
 msgstr ""
 
-#: lib/modules/core.jumbotron/module.php:189
+#: lib/modules/headers/module.php:260
 msgid "Jumbotron Font"
 msgstr ""
 
-#: lib/modules/core.jumbotron/module.php:190
+#: lib/modules/headers/module.php:261
 msgid "The font used in jumbotron."
 msgstr ""
 
-#: lib/modules/core.jumbotron/module.php:201
-#: lib/modules/core.jumbotron/module.php:230
-#: lib/modules/core.menus/module.php:167 lib/modules/core.menus/module.php:185
-#: lib/modules/core.typography/module.php:31
-#: lib/modules/core.typography/module.php:63
-#: lib/modules/core.typography/module.php:84
-#: lib/modules/core.typography/module.php:105
-#: lib/modules/core.typography/module.php:126
-#: lib/modules/core.typography/module.php:147
-#: lib/modules/core.typography/module.php:169
+#: lib/modules/headers/module.php:272 lib/modules/headers/module.php:299
+#: lib/modules/menus/module.php:151 lib/modules/menus/module.php:169
+#: lib/modules/typography/module.php:31 lib/modules/typography/module.php:62
+#: lib/modules/typography/module.php:83 lib/modules/typography/module.php:104
+#: lib/modules/typography/module.php:125 lib/modules/typography/module.php:146
+#: lib/modules/typography/module.php:168
 msgid "This is my preview text!"
 msgstr ""
 
-#: lib/modules/core.jumbotron/module.php:209
+#: lib/modules/headers/module.php:279
 msgid "Jumbotron Header Overrides"
 msgstr ""
 
-#: lib/modules/core.jumbotron/module.php:210
-#: lib/modules/core.typography/module.php:39
+#: lib/modules/headers/module.php:280 lib/modules/typography/module.php:39
 msgid ""
 "By enabling this you can specify custom values for each <h*> tag. Default: "
 "Off"
 msgstr ""
 
-#: lib/modules/core.jumbotron/module.php:220
+#: lib/modules/headers/module.php:289
 msgid "Jumbotron Headers Font"
 msgstr ""
 
-#: lib/modules/core.jumbotron/module.php:221
-#: lib/modules/core.typography/module.php:17
-#: lib/modules/core.typography/module.php:50
-#: lib/modules/core.typography/module.php:73
-#: lib/modules/core.typography/module.php:94
-#: lib/modules/core.typography/module.php:114
-#: lib/modules/core.typography/module.php:135
-#: lib/modules/core.typography/module.php:156
+#: lib/modules/headers/module.php:290 lib/modules/typography/module.php:17
+#: lib/modules/typography/module.php:49 lib/modules/typography/module.php:72
+#: lib/modules/typography/module.php:93 lib/modules/typography/module.php:113
+#: lib/modules/typography/module.php:134 lib/modules/typography/module.php:155
 msgid "The main font for your site."
 msgstr ""
 
-#: lib/modules/core.jumbotron/module.php:239
+#: lib/modules/headers/module.php:308
 msgid "Select the border options for your Jumbotron"
 msgstr ""
 
-#: lib/modules/core.layout/module.php:11 lib/modules/core.layout/module.php:45
+#: lib/modules/layout/module.php:11 lib/modules/layout/module.php:33
 msgid "Layout"
 msgstr ""
 
-#: lib/modules/core.layout/module.php:17
-msgid "Layout Options Mode"
-msgstr ""
-
-#: lib/modules/core.layout/module.php:29
+#: lib/modules/layout/module.php:17
 msgid "Site Style"
 msgstr ""
 
-#: lib/modules/core.layout/module.php:30
+#: lib/modules/layout/module.php:18
 msgid "Select the default site layout. Default: Wide"
 msgstr ""
 
-#: lib/modules/core.layout/module.php:36
+#: lib/modules/layout/module.php:24
 msgid "Static (Non-Responsive)"
 msgstr ""
 
-#: lib/modules/core.layout/module.php:37
+#: lib/modules/layout/module.php:25
 msgid "Wide"
 msgstr ""
 
-#: lib/modules/core.layout/module.php:38
+#: lib/modules/layout/module.php:26
 msgid "Boxed"
 msgstr ""
 
-#: lib/modules/core.layout/module.php:39
+#: lib/modules/layout/module.php:27
 msgid "Fluid"
 msgstr ""
 
-#: lib/modules/core.layout/module.php:46
+#: lib/modules/layout/module.php:34
 msgid ""
 "Select main content and sidebar arrangement. Choose between 1, 2 or 3 column "
 "layout."
 msgstr ""
 
-#: lib/modules/core.layout/module.php:62
+#: lib/modules/layout/module.php:50
 msgid "Custom Layouts per Post Type"
 msgstr ""
 
-#: lib/modules/core.layout/module.php:63
+#: lib/modules/layout/module.php:51
 msgid "Set a default layout for each post type on your site."
 msgstr ""
 
-#: lib/modules/core.layout/module.php:75
+#: lib/modules/layout/module.php:62
 msgid "Override your default stylings. Choose between 1, 2 or 3 column layout."
 msgstr ""
 
-#: lib/modules/core.layout/module.php:92
+#: lib/modules/layout/module.php:79
 msgid "Primary Sidebar Width"
 msgstr ""
 
-#: lib/modules/core.layout/module.php:107
+#: lib/modules/layout/module.php:80
+msgid ""
+"Select the width of the Primary Sidebar. Please note that the values "
+"represent grid columns. The total width of the page is 12 columns, so "
+"selecting 4 here will make the primary sidebar to have a width of 1/3 "
+"( 4/12 ) of the total page width."
+msgstr ""
+
+#: lib/modules/layout/module.php:94
 msgid "Secondary Sidebar Width"
 msgstr ""
 
-#: lib/modules/core.layout/module.php:108
+#: lib/modules/layout/module.php:95
 msgid ""
 "Select the width of the Secondary Sidebar. Please note that the values "
 "represent grid columns. The total width of the page is 12 columns, so "
@@ -1373,2265 +1547,851 @@ msgid ""
 "( 4/12 ) of the total page width."
 msgstr ""
 
-#: lib/modules/core.layout/module.php:122
+#: lib/modules/layout/module.php:109
 msgid "Show sidebars on the frontpage"
 msgstr ""
 
-#: lib/modules/core.layout/module.php:123
+#: lib/modules/layout/module.php:110
 msgid ""
 "OFF by default. If you want to display the sidebars in your frontpage, turn "
 "this ON."
 msgstr ""
 
-#: lib/modules/core.layout/module.php:131
+#: lib/modules/layout/module.php:118
 msgid "Margin from top ( Works only in 'Boxed' mode )"
 msgstr ""
 
-#: lib/modules/core.layout/module.php:132
+#: lib/modules/layout/module.php:119
 msgid ""
 "This will add a margin above the navbar. Useful if you've enabled the "
 "'Boxed' mode above. Default: 0px"
 msgstr ""
 
-#: lib/modules/core.layout/module.php:144
+#: lib/modules/layout/module.php:131
 msgid "Widgets mode"
 msgstr ""
 
-#: lib/modules/core.layout/module.php:145
+#: lib/modules/layout/module.php:132
 msgid "How do you want your widgets to be displayed?"
 msgstr ""
 
-#: lib/modules/core.layout/module.php:149
+#: lib/modules/layout/module.php:136
 msgid "Panel"
 msgstr ""
 
-#: lib/modules/core.layout/module.php:150
+#: lib/modules/layout/module.php:137
 msgid "Well"
 msgstr ""
 
-#: lib/modules/core.layout/module.php:151
+#: lib/modules/layout/module.php:138
 msgid "None"
 msgstr ""
 
-#: lib/modules/core.layout/module.php:158
-msgid "Show Breadcrumbs"
-msgstr ""
-
-#: lib/modules/core.layout/module.php:159
-msgid "Display Breadcrumbs. Default: OFF."
-msgstr ""
-
-#: lib/modules/core.layout/module.php:167
+#: lib/modules/layout/module.php:145
 msgid "Body Top Margin"
 msgstr ""
 
-#: lib/modules/core.layout/module.php:168
+#: lib/modules/layout/module.php:146
 msgid "Select the top margin of body element in pixels. Default: 0px."
 msgstr ""
 
-#: lib/modules/core.layout/module.php:178
+#: lib/modules/layout/module.php:157
 msgid "Body Bottom Margin"
 msgstr ""
 
-#: lib/modules/core.layout/module.php:179
+#: lib/modules/layout/module.php:158
 msgid "Select the bottom margin of body element in pixels. Default: 0px."
 msgstr ""
 
-#: lib/modules/core.layout/module.php:189
+#: lib/modules/layout/module.php:169
 msgid "Custom Grid"
 msgstr ""
 
-#: lib/modules/core.layout/module.php:190
+#: lib/modules/layout/module.php:170
 msgid "CAUTION:"
 msgstr ""
 
-#: lib/modules/core.layout/module.php:190
+#: lib/modules/layout/module.php:170
 msgid ""
 "Only use this if you know what you are doing, as changing these values might "
 "break the way your site looks on some devices. The default settings should "
 "be fine for the vast majority of sites."
 msgstr ""
 
-#: lib/modules/core.layout/module.php:198
+#: lib/modules/layout/module.php:177
 msgid "Small Screen / Tablet view"
 msgstr ""
 
-#: lib/modules/core.layout/module.php:199
+#: lib/modules/layout/module.php:178
 msgid "The width of Tablet screens. Default: 768px"
 msgstr ""
 
-#: lib/modules/core.layout/module.php:212
+#: lib/modules/layout/module.php:191
 msgid "Desktop Container Width"
 msgstr ""
 
-#: lib/modules/core.layout/module.php:213
+#: lib/modules/layout/module.php:192
 msgid "The width of normal screens. Default: 992px"
 msgstr ""
 
-#: lib/modules/core.layout/module.php:227
+#: lib/modules/layout/module.php:206
 msgid "Large Desktop Container Width"
 msgstr ""
 
-#: lib/modules/core.layout/module.php:228
+#: lib/modules/layout/module.php:207
 msgid "The width of Large Desktop screens. Default: 1200px"
 msgstr ""
 
-#: lib/modules/core.layout/module.php:241
+#: lib/modules/layout/module.php:220
 msgid "Columns Gutter"
 msgstr ""
 
-#: lib/modules/core.layout/module.php:242
+#: lib/modules/layout/module.php:221
 msgid "The space between the columns in your grid. Default: 30px"
 msgstr ""
 
-#: lib/modules/core.menus/functions.navlist.php:12
+#: lib/modules/menus/includes/functions.left-static-extras.php:8
+msgid "In-Navbar Widget Area"
+msgstr ""
+
+#: lib/modules/menus/includes/functions.left-static-extras.php:10
+msgid ""
+"This widget area will show up in your NavBars. This is most useful when "
+"using a static-left navbar."
+msgstr ""
+
+#: lib/modules/menus/includes/functions.navlist.php:12
 msgid "Use this widget to add one of your custom menus as a widget."
 msgstr ""
 
-#: lib/modules/core.menus/functions.navlist.php:13
+#: lib/modules/menus/includes/functions.navlist.php:13
 msgid "Custom Menu"
 msgstr ""
 
-#: lib/modules/core.menus/functions.navlist.php:67
+#: lib/modules/menus/includes/functions.navlist.php:63
 msgid "No menus have been created yet. <a href=\"%s\">Create some</a>."
 msgstr ""
 
-#: lib/modules/core.menus/functions.navlist.php:72
+#: lib/modules/menus/includes/functions.navlist.php:68
 msgid "Title:"
 msgstr ""
 
-#: lib/modules/core.menus/functions.navlist.php:76
+#: lib/modules/menus/includes/functions.navlist.php:72
 msgid "Select Menu:"
 msgstr ""
 
-#: lib/modules/core.menus/functions.slide-down.php:7
+#: lib/modules/menus/includes/functions.slide-down.php:7
 msgid "Navbar Slide-Down Top"
 msgstr ""
 
-#: lib/modules/core.menus/functions.slide-down.php:16
+#: lib/modules/menus/includes/functions.slide-down.php:16
 msgid "Navbar Slide-Down 1"
 msgstr ""
 
-#: lib/modules/core.menus/functions.slide-down.php:25
+#: lib/modules/menus/includes/functions.slide-down.php:25
 msgid "Navbar Slide-Down 2"
 msgstr ""
 
-#: lib/modules/core.menus/functions.slide-down.php:34
+#: lib/modules/menus/includes/functions.slide-down.php:34
 msgid "Navbar Slide-Down 3"
 msgstr ""
 
-#: lib/modules/core.menus/functions.slide-down.php:43
+#: lib/modules/menus/includes/functions.slide-down.php:43
 msgid "Navbar Slide-Down 4"
 msgstr ""
 
-#: lib/modules/core.menus/module.php:11
+#: lib/modules/menus/module.php:11
 msgid "Menus"
 msgstr ""
 
-#: lib/modules/core.menus/module.php:16
-msgid "Menus Options Mode"
-msgstr ""
-
-#: lib/modules/core.menus/module.php:30
+#: lib/modules/menus/module.php:18
 msgid "Advanced NavBar Options"
 msgstr ""
 
-#: lib/modules/core.menus/module.php:39
+#: lib/modules/menus/module.php:25
 msgid "Type of NavBar"
 msgstr ""
 
-#: lib/modules/core.menus/module.php:40
+#: lib/modules/menus/module.php:26
 msgid ""
-"Choose the type of Navbar you want.\n"
-"                        Off completely hides the navbar, Alternative uses an "
-"alternative walker for the navigation menus.\n"
-"                        See <a target=\"_blank\"href=\"https://github.com/"
-"twittem/wp-bootstrap-navwalker\">here</a> for more details"
+"Choose the type of Navbar you want. Off completely hides the navbar, "
+"Alternative uses an alternative walker for the navigation menus. See <a "
+"target=\"_blank\"href=\"https://github.com/twittem/wp-bootstrap-navwalker"
+"\">here</a> for more details."
 msgstr ""
 
-#: lib/modules/core.menus/module.php:46
+#: lib/modules/menus/module.php:26
+msgid ""
+"<strong>WARNING:</strong> The \"Static-Left\" option is ONLY compatible with "
+"fluid layouts. The width of the static-left navbar is controlled by the "
+"secondary sidebar width."
+msgstr ""
+
+#: lib/modules/menus/module.php:30
 msgid "Off"
 msgstr ""
 
-#: lib/modules/core.menus/module.php:47
+#: lib/modules/menus/module.php:31
 msgid "Normal"
 msgstr ""
 
-#: lib/modules/core.menus/module.php:48
+#: lib/modules/menus/module.php:32
 msgid "Pills"
 msgstr ""
 
-#: lib/modules/core.menus/module.php:49
-msgid "Alternative"
+#: lib/modules/menus/module.php:34
+msgid "Static-Left"
 msgstr ""
 
-#: lib/modules/core.menus/module.php:57
+#: lib/modules/menus/module.php:42
 msgid "NavBar Styling Options"
 msgstr ""
 
-#: lib/modules/core.menus/module.php:58
+#: lib/modules/menus/module.php:43
 msgid "Customize the look and feel of your navbar below."
 msgstr ""
 
-#: lib/modules/core.menus/module.php:63
+#: lib/modules/menus/module.php:48
 msgid "NavBar Background Color"
 msgstr ""
 
-#: lib/modules/core.menus/module.php:64
+#: lib/modules/menus/module.php:49
 msgid "Pick a background color for the NavBar. Default: #eeeeee."
 msgstr ""
 
-#: lib/modules/core.menus/module.php:74
+#: lib/modules/menus/module.php:59
 msgid "NavBar Background Opacity"
 msgstr ""
 
-#: lib/modules/core.menus/module.php:75
+#: lib/modules/menus/module.php:60
 msgid "Pick a background opacity for the NavBar. Default: 100%."
 msgstr ""
 
-#: lib/modules/core.menus/module.php:86
+#: lib/modules/menus/module.php:70
 msgid "NavBar Menu Style"
 msgstr ""
 
-#: lib/modules/core.menus/module.php:87
+#: lib/modules/menus/module.php:71
 msgid "You can use an alternative menu style for your NavBars."
 msgstr ""
 
-#: lib/modules/core.menus/module.php:93 lib/modules/core.menus/module.php:294
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:1492
+#: lib/modules/menus/module.php:77 lib/modules/menus/module.php:292
 msgid "Default"
 msgstr ""
 
-#: lib/modules/core.menus/module.php:94 lib/modules/core.menus/module.php:95
-#: lib/modules/core.menus/module.php:96 lib/modules/core.menus/module.php:97
-#: lib/modules/core.menus/module.php:98 lib/modules/core.menus/module.php:99
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/typography/field_typography.php:190
+#: lib/modules/menus/module.php:78 lib/modules/menus/module.php:79
+#: lib/modules/menus/module.php:80 lib/modules/menus/module.php:81
+#: lib/modules/menus/module.php:82 lib/modules/menus/module.php:83
 msgid "Style"
 msgstr ""
 
-#: lib/modules/core.menus/module.php:100
+#: lib/modules/menus/module.php:84
 msgid "Metro"
 msgstr ""
 
-#: lib/modules/core.menus/module.php:105
+#: lib/modules/menus/module.php:89
 msgid "Display Branding ( Sitename or Logo ) on the NavBar"
 msgstr ""
 
-#: lib/modules/core.menus/module.php:106
+#: lib/modules/menus/module.php:90
 msgid "Default: ON"
 msgstr ""
 
-#: lib/modules/core.menus/module.php:114
+#: lib/modules/menus/module.php:98
 msgid "Use Logo ( if available ) for branding on the NavBar"
 msgstr ""
 
-#: lib/modules/core.menus/module.php:115
+#: lib/modules/menus/module.php:99
 msgid ""
 "If this option is OFF, or there is no logo available, then the sitename will "
 "be displayed instead. Default: ON"
 msgstr ""
 
-#: lib/modules/core.menus/module.php:123
+#: lib/modules/menus/module.php:107
 msgid "NavBar Positioning"
 msgstr ""
 
-#: lib/modules/core.menus/module.php:124 lib/modules/core.menus/module.php:134
+#: lib/modules/menus/module.php:108 lib/modules/menus/module.php:118
 msgid ""
 "Using this option you can set the navbar to be fixed to top, fixed to bottom "
 "or normal. When you're using one of the 'fixed' options, the navbar will "
 "stay fixed on the top or bottom of the page. Default: Normal"
 msgstr ""
 
-#: lib/modules/core.menus/module.php:133
+#: lib/modules/menus/module.php:117
 msgid "Fixed NavBar Position"
 msgstr ""
 
-#: lib/modules/core.menus/module.php:138
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/border/field_border.php:139
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/spacing/field_spacing.php:163
+#: lib/modules/menus/module.php:122
 msgid "Bottom"
 msgstr ""
 
-#: lib/modules/core.menus/module.php:139
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/border/field_border.php:125
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/spacing/field_spacing.php:149
+#: lib/modules/menus/module.php:123
 msgid "Top"
 msgstr ""
 
-#: lib/modules/core.menus/module.php:144
+#: lib/modules/menus/module.php:128
 msgid "NavBar Height"
 msgstr ""
 
-#: lib/modules/core.menus/module.php:145
+#: lib/modules/menus/module.php:129
 msgid ""
 "Select the height of the NavBar in pixels. Should be equal or greater than "
 "the height of your logo if you've added one."
 msgstr ""
 
-#: lib/modules/core.menus/module.php:156
+#: lib/modules/menus/module.php:140
 msgid "Navbar Font"
 msgstr ""
 
-#: lib/modules/core.menus/module.php:157
+#: lib/modules/menus/module.php:141
 msgid "The font used in navbars."
 msgstr ""
 
-#: lib/modules/core.menus/module.php:174
+#: lib/modules/menus/module.php:158
 msgid "Branding Font"
 msgstr ""
 
-#: lib/modules/core.menus/module.php:175
+#: lib/modules/menus/module.php:159
 msgid "The branding font for your site."
 msgstr ""
 
-#: lib/modules/core.menus/module.php:192
+#: lib/modules/menus/module.php:176
+msgid "Responsive NavBar Threshold"
+msgstr ""
+
+#: lib/modules/menus/module.php:177
+msgid "Point at which the navbar becomes uncollapsed"
+msgstr ""
+
+#: lib/modules/menus/module.php:181
+msgid "Never"
+msgstr ""
+
+#: lib/modules/menus/module.php:182
+msgid "Extra Small"
+msgstr ""
+
+#: lib/modules/menus/module.php:183
+msgid "Small"
+msgstr ""
+
+#: lib/modules/menus/module.php:184
+msgid "Desktop"
+msgstr ""
+
+#: lib/modules/menus/module.php:185
+msgid "Large Desktop"
+msgstr ""
+
+#: lib/modules/menus/module.php:186
+msgid "Always"
+msgstr ""
+
+#: lib/modules/menus/module.php:193
 msgid "NavBar Margin"
 msgstr ""
 
-#: lib/modules/core.menus/module.php:193
+#: lib/modules/menus/module.php:194
 msgid ""
 "Select the top and bottom margin of the NavBar in pixels. Applies only in "
 "static top navbar ( scroll condition ). Default: 0px."
 msgstr ""
 
-#: lib/modules/core.menus/module.php:204
+#: lib/modules/menus/module.php:204
 msgid "Display social links in the NavBar."
 msgstr ""
 
-#: lib/modules/core.menus/module.php:205
+#: lib/modules/menus/module.php:205
 msgid ""
 "Display social links in the NavBar. These can be setup in the 'Social' "
 "section on the left. Default: OFF"
 msgstr ""
 
-#: lib/modules/core.menus/module.php:213
+#: lib/modules/menus/module.php:213
 msgid "Display social links as a Dropdown list or an Inline list."
 msgstr ""
 
-#: lib/modules/core.menus/module.php:214
+#: lib/modules/menus/module.php:214
 msgid "How to display social links. Default: Dropdown list"
 msgstr ""
 
-#: lib/modules/core.menus/module.php:218
+#: lib/modules/menus/module.php:218
 msgid "Inline"
 msgstr ""
 
-#: lib/modules/core.menus/module.php:219
+#: lib/modules/menus/module.php:219
 msgid "Dropdown"
 msgstr ""
 
-#: lib/modules/core.menus/module.php:225
+#: lib/modules/menus/module.php:225
 msgid "Search form on the NavBar"
 msgstr ""
 
-#: lib/modules/core.menus/module.php:226
+#: lib/modules/menus/module.php:226
 msgid "Display a search form in the NavBar. Default: On"
 msgstr ""
 
-#: lib/modules/core.menus/module.php:234
+#: lib/modules/menus/module.php:234
 msgid "Float NavBar menu to the right"
 msgstr ""
 
-#: lib/modules/core.menus/module.php:235
+#: lib/modules/menus/module.php:235
 msgid "Floats the primary navigation to the right. Default: On"
 msgstr ""
 
-#: lib/modules/core.menus/module.php:244
+#: lib/modules/menus/module.php:244
 msgid "Secondary Navbar"
 msgstr ""
 
-#: lib/modules/core.menus/module.php:245
+#: lib/modules/menus/module.php:245
 msgid ""
 "The secondary navbar is a 2nd navbar, located right above the main wrapper. "
 "You can show a menu there, by assigning it from Appearance -> Menus."
 msgstr ""
 
-#: lib/modules/core.menus/module.php:251
+#: lib/modules/menus/module.php:250
 msgid "Enable the Secondary NavBar"
 msgstr ""
 
-#: lib/modules/core.menus/module.php:252
+#: lib/modules/menus/module.php:251
 msgid "Display a Secondary NavBar on top of the Main NavBar. Default: ON"
 msgstr ""
 
-#: lib/modules/core.menus/module.php:261
+#: lib/modules/menus/module.php:259
 msgid "Display social networks in the navbar"
 msgstr ""
 
-#: lib/modules/core.menus/module.php:262
+#: lib/modules/menus/module.php:260
 msgid ""
 "Enable this option to display your social networks as a dropdown menu on the "
 "seondary navbar."
 msgstr ""
 
-#: lib/modules/core.menus/module.php:270
+#: lib/modules/menus/module.php:268
 msgid "Secondary NavBar Margin"
 msgstr ""
 
-#: lib/modules/core.menus/module.php:271
+#: lib/modules/menus/module.php:269
 msgid "Select the top and bottom margin of header in pixels. Default: 0px."
 msgstr ""
 
-#: lib/modules/core.menus/module.php:282
+#: lib/modules/menus/module.php:280
 msgid "Sidebar Menus"
 msgstr ""
 
-#: lib/modules/core.menus/module.php:283
+#: lib/modules/menus/module.php:281
 msgid ""
 "If you're using the \"Custom Menu\" widgets in your sidebars, you can "
 "control their styling here"
 msgstr ""
 
-#: lib/modules/core.menus/module.php:288
+#: lib/modules/menus/module.php:286
 msgid "Color for sidebar menus"
 msgstr ""
 
-#: lib/modules/core.menus/module.php:289
+#: lib/modules/menus/module.php:287
 msgid ""
 "Select a style for menus added to your sidebars using the custom menu widget"
 msgstr ""
 
-#: lib/modules/core.menus/module.php:295
+#: lib/modules/menus/module.php:293
 msgid "Branding-Primary"
 msgstr ""
 
-#: lib/modules/core.menus/module.php:296
+#: lib/modules/menus/module.php:294
 msgid "Branding-Success"
 msgstr ""
 
-#: lib/modules/core.menus/module.php:297
+#: lib/modules/menus/module.php:295
 msgid "Branding-Warning"
 msgstr ""
 
-#: lib/modules/core.menus/module.php:298
+#: lib/modules/menus/module.php:296
 msgid "Branding-Info"
 msgstr ""
 
-#: lib/modules/core.menus/module.php:299
+#: lib/modules/menus/module.php:297
 msgid "Branding-Danger"
 msgstr ""
 
-#: lib/modules/core.menus/module.php:305
+#: lib/modules/menus/module.php:302
 msgid "Inverse Sidebar_menus."
 msgstr ""
 
-#: lib/modules/core.menus/module.php:306
+#: lib/modules/menus/module.php:303
 msgid ""
 "Default: OFF. See https://github.com/twittem/wp-bootstrap-navlist-walker for "
 "more details"
 msgstr ""
 
-#: lib/modules/core.presets/module.php:10
-msgid "Presets"
-msgstr ""
-
-#: lib/modules/core.presets/module.php:18
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:519
-msgid "Preset"
-msgstr ""
-
-#: lib/modules/core.presets/module.php:19
-#: lib/modules/core.presets/module.php:21
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:520
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:522
-msgid ""
-"This allows you to set a json string or array to override multiple "
-"preferences in your theme."
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/extensions/customizer/extension_customizer.php:338
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:1233
-msgid "You have changes that are not saved. Would you like to save them now?"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/extensions/customizer/extension_customizer.php:339
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:1234
-msgid "Are you sure? Resetting will lose all custom values."
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/extensions/customizer/extension_customizer.php:340
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:1236
-msgid ""
-"Your current options will be replaced with the values of this preset. Would "
-"you like to proceed?"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/extensions/customizer/extension_customizer.php:369
-msgid "You have changes that are not saved.  Would you like to save them now?"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/extensions/customizer/extension_customizer.php:370
-msgid "Are you sure?  Resetting will lose all custom values."
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/extensions/customizer/extension_customizer.php:371
-msgid ""
-"Your current options will be replaced with the values of this preset.  Would "
-"you like to proceed?"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/extensions/edd/edd_license/EDD_License_Handler.php:112
-msgid "%1$s License Key"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/extensions/edd/edd_license/EDD_License_Handler.php:218
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/extensions/edd/edd_license/field_edd_license.php:144
-msgid "Deactivate License"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/extensions/edd/edd_license/EDD_SL_Theme_Updater.php:54
-#: lib/modules/core.updater/EDD_SL_Theme_Updater.php:54
-msgid ""
-"Updating this theme will lose any customizations you have made. 'Cancel' to "
-"stop, 'OK' to update."
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/extensions/edd/edd_license/field_edd_license.php:110
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/extensions/edd/edd_license/field_edd_license.php:118
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/extensions/edd/extension_edd.php:170
-msgid "Not Activated"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/extensions/edd/edd_license/field_edd_license.php:114
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/extensions/edd/extension_edd.php:173
-msgid "Deactivated"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/extensions/edd/edd_license/field_edd_license.php:116
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/extensions/edd/extension_edd.php:77
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/extensions/edd/extension_edd.php:119
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/extensions/edd/extension_edd.php:176
-msgid "Valid"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/extensions/edd/edd_license/field_edd_license.php:124
-msgid "Verifying license..."
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/extensions/edd/edd_license/field_edd_license.php:125
-msgid "Status"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/extensions/edd/edd_license/field_edd_license.php:134
-msgid "Verify License"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/extensions/edd/edd_license/field_edd_license.php:139
-msgid "Activate License"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/extensions/edd/extension_edd.php:179
-msgid "Not Valid"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:115
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:121
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:280
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:283
-msgid "Options"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:277
-msgid "Options panel created using %1$s"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:277
-msgid "Redux Framework"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:922
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:923
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:1944
-msgid "Import / Export"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:933
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:934
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:1960
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:2058
-msgid "Options Object"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:944
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:945
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:1974
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:2078
-msgid "System Info"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:1235
-msgid "Are you sure? Resetting will lose all custom values in this section."
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:1804
-msgid "Warning- This options panel will not work properly without javascript!"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:1858
-msgid "Expand"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:1860
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:2119
-msgid "Save Changes"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:1862
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:2121
-msgid "Reset Section"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:1864
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:2123
-msgid "Reset All"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:1867
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:2126
-msgid "Working..."
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:1874
-msgid "Settings Imported!"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:1876
-msgid "Settings Saved!"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:1880
-msgid "Settings have changed, you should save them!"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:1881
-msgid "error(s) were found!"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:1882
-msgid "warning(s) were found!"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:2011
-msgid "Import / Export Options"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:2012
-msgid "Import Options"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:2013
-msgid "Import from file"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:2013
-msgid "Import from URL"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:2018
-msgid ""
-"Input your backup file below and hit Import to restore your sites options "
-"from a backup."
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:2028
-msgid ""
-"Input the URL to another sites options set and hit Import to load the "
-"options from that site."
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:2035
-msgid "Import"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:2035
-msgid ""
-"WARNING! This will overwrite all existing option values, please proceed with "
-"caution!"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:2038
-msgid "Export Options"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:2040
-msgid ""
-"Here you can copy/download your current option settings. Keep this safe as "
-"you can use it as a backup should anything go wrong, or you can use it to "
-"restore your settings on this site (or any other site)."
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:2044
-msgid "Copy"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:2044
-msgid "Download"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:2044
-msgid "Copy Link"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/framework.php:2067
-msgid "Show Object in Javascript Console Object"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/background/field_background.php:119
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/color/field_color.php:72
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/color_gradient/field_color_gradient.php:81
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/color_gradient/field_color_gradient.php:91
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/color_rgba/field_color_rgba.php:84
-msgid "Transparent"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/background/field_background.php:152
-msgid "Background Clip"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/background/field_background.php:168
-msgid "Background Origin"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/background/field_background.php:183
-msgid "Background Size"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/background/field_background.php:198
-msgid "Background Attachment"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/background/field_background.php:218
-msgid "Background Position"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/background/field_background.php:273
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/media/field_media.php:116
-msgid "No media selected"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/background/field_background.php:307
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/media/field_media.php:150
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/slides/field_slides.php:117
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/slides/field_slides.php:180
-msgid "Upload"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/background/field_background.php:313
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/media/field_media.php:156
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/multi_text/field_multi_text.php:75
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/multi_text/field_multi_text.php:78
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/multi_text/field_multi_text.php:81
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/slides/field_slides.php:123
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/slides/field_slides.php:182
-msgid "Remove"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/border/field_border.php:112
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/spacing/field_spacing.php:125
-msgid "All"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/border/field_border.php:162
-msgid "Border style"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/color_gradient/field_color_gradient.php:73
-msgid "From "
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/color_gradient/field_color_gradient.php:84
-msgid "To "
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/dimensions/field_dimensions.php:139
-msgid "Width"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/dimensions/field_dimensions.php:155
-msgid "height"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/dimensions/field_dimensions.php:168
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/dimensions/field_dimensions.php:169
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/spacing/field_spacing.php:181
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/spacing/field_spacing.php:182
-msgid "Units"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/gallery/field_gallery.php:77
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:305
-msgid "Add/Edit Gallery"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/gallery/field_gallery.php:78
-msgid "Clear Gallery"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/group/field_group.php:71
-msgid "New"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/group/field_group.php:84
-msgid "New "
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/group/field_group.php:133
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/group/field_group.php:198
-msgid "Delete"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/group/field_group.php:203
-msgid "Add"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/link_color/field_link_color.php:86
-msgid "Regular"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/link_color/field_link_color.php:90
-msgid "Hover"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/link_color/field_link_color.php:94
-msgid "Visited"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/link_color/field_link_color.php:98
-msgid "Active"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/multi_text/field_multi_text.php:65
-msgid "Add More"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/password/field_password.php:55
-msgid "Password"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/password/field_password.php:56
-msgid "Username"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/select/field_select.php:69
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/select_image/field_select_image.php:59
-msgid "Select an item"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/select/field_select.php:110
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/select_image/field_select_image.php:134
-msgid "No items of this type were found."
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/slides/field_slides.php:128
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/slides/field_slides.php:187
-msgid "Title"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/slides/field_slides.php:129
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/slides/field_slides.php:189
-msgid "Description"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/slides/field_slides.php:130
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/slides/field_slides.php:191
-msgid "URL"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/slides/field_slides.php:138
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/slides/field_slides.php:200
-msgid "Select an Option"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/slides/field_slides.php:158
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/slides/field_slides.php:220
-msgid "Delete Slide"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/slides/field_slides.php:223
-msgid "Add Slide"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/typography/field_typography.php:109
-msgid "Font family"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/typography/field_typography.php:150
-msgid "Standard Fonts"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/typography/field_typography.php:186
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/typography/field_typography.php:190
-msgid "Font style"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/typography/field_typography.php:216
-msgid "Font subsets"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/typography/field_typography.php:217
-msgid "Subsets"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/typography/field_typography.php:217
-msgid "Font script"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/typography/field_typography.php:235
-msgid "Size"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/typography/field_typography.php:244
-msgid "Height"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/typography/field_typography.php:252
-msgid "Word Spacing"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/typography/field_typography.php:260
-msgid "Letter Spacing"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/typography/field_typography.php:274
-msgid "Backup Font Family"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/typography/field_typography.php:294
-msgid "Font color"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/fields/typography/field_typography.php:569
-msgid "Google Webfonts"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/tracking.php:59
-msgid "Help improve Our Panel"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/tracking.php:60
-msgid ""
-"Please helps us improve our panel by allowing us to gather anonymous usage "
-"stats so we know which configurations, plugins and themes to test with."
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/tracking.php:65
-msgid "Allow tracking"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/tracking.php:70
-msgid "Do not allow tracking"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/validation/color/validation_color.php:15
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/validation/color_rgba/validation_color_rgba.php:15
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/validation/colorrgba/validation_colorrgba.php:15
-msgid "This field must be a valid color value."
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/validation/comma_numeric/validation_comma_numeric.php:15
-msgid ""
-"You must provide a comma separated list of numerical values for this option."
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/validation/date/validation_date.php:15
-msgid "This field must be a valid date."
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/validation/email/validation_email.php:15
-msgid "You must provide a valid email for this option."
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/validation/no_html/validation_no_html.php:15
-msgid ""
-"You must not enter any HTML in this field, all HTML tags have been removed."
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/validation/no_special_chars/validation_no_special_chars.php:15
-msgid ""
-"You must not enter any special characters in this field, all special "
-"characters have been removed."
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/validation/numeric/validation_numeric.php:15
-msgid "You must provide a numerical value for this option."
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/ReduxCore/inc/validation/url/validation_url.php:15
-msgid "You must provide a valid URL for this option."
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/class.redux-plugin.php:277
-msgid "Redux Framework has an embedded demo."
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/class.redux-plugin.php:277
-msgid "Click here to activate the sample config file."
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/class.redux-plugin.php:381
-msgid "Github Repo"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/class.redux-plugin.php:382
-msgid "Issue Tracker"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/class.redux-plugin.php:387
-msgid "Deactivate Demo Mode"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/class.redux-plugin.php:389
-msgid "Activate Demo Mode"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:106
-msgid "Section via hook"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:107
-msgid ""
-"<p class=\"description\">This is a section created by adding a filter to the "
-"sections array. Can be used by child themes to add/remove sections from the "
-"options.</p>"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:194
-msgid "Customize &#8220;%s&#8221;"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:201
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:204
-msgid "Current theme preview"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:213
-msgid "By %s"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:214
-msgid "Version %s"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:215
-msgid "Tags"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:219
-msgid "This <a href=\"%1$s\">child theme</a> requires its parent theme, %2$s."
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:220
-msgid "http://codex.wordpress.org/Child_Themes"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:250
-msgid "Home Settings"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:251
-msgid ""
-"Redux Framework was created with the developer in mind. It allows for any "
-"theme developer to have an advanced theme panel with most of the features a "
-"developer would need. For more information check out the Github repo at: <a "
-"href=\"https://github.com/ReduxFramework/Redux-Framework\">https://github."
-"com/ReduxFramework/Redux-Framework</a>"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:258
-msgid "Web Fonts"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:261
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:278
-msgid "Basic media uploader with disabled URL input field."
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:262
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:279
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:292
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:300
-msgid "Upload any media using the WordPress native uploader"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:267
-msgid "Media Options"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:268
-msgid "With the \"section\" field you can create indent option sections."
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:275
-msgid "Media w/ URL"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:290
-msgid "Media w/o URL"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:291
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:299
-msgid ""
-"This represents the minimalistic view. It does not have the preview box or "
-"the display URL in an input box. "
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:298
-msgid "Media No Preview"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:306
-msgid ""
-"Create a new Gallery by selecting existing or uploading new images using the "
-"WordPress native uploader"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:307
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:690
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:698
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:715
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:795
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:805
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:816
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:823
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:832
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:842
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:852
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:871
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:881
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:890
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:899
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:908
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:918
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:934
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:942
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:951
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:959
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:967
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:976
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:984
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1014
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1027
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1046
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1056
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1086
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1095
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1103
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1112
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1120
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1129
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1137
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1146
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1154
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1163
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1173
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1181
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1190
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1198
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1207
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1263
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1274
-msgid "This is the description field, again good for additional info."
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:312
-msgid "JQuery UI Slider Example 1"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:313
-msgid ""
-"JQuery UI slider description. Min: 1, max: 500, step: 3, default value: 45"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:323
-msgid "JQuery UI Slider Example 2 w/ Steps (5)"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:324
-msgid ""
-"JQuery UI slider description. Min: 0, max: 300, step: 5, default value: 75"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:333
-msgid "JQuery UI Spinner Example 1"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:334
-msgid ""
-"JQuery UI spinner description. Min:20, max: 100, step:20, default value: 40"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:343
-msgid "Switch On"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:344
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:352
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1326
-msgid "Look, it's on!"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:351
-msgid "Switch Off"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:359
-msgid "Switch - Custom Titles"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:360
-msgid "Look, it's on! Also hidden child elements!"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:370
-msgid "Switch - With Hidden Items (NESTED!)"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:371
-msgid "Also called a \"fold\" parent."
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:372
-msgid ""
-"Items set with a fold to this ID will hide unless this is set to the "
-"appropriate value."
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:380
-msgid "Images Option (with pattern=>true)"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:435
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:442
-msgid "Slides Options"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:436
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:443
-msgid "Unlimited slides with drag and drop sortings."
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:437
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:513
-msgid ""
-"This field will store all slides values into a multidimensional array to use "
-"into a foreach loop."
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:531
-#: lib/modules/core.typography/module.php:11
-msgid "Typography"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:547
-msgid "Typography option with each property can be called individually."
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:569
-msgid "General Settings"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:575
-msgid "Main Layout"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:576
-msgid ""
-"Select main content and sidebar alignment. Choose between 1, 2 or 3 column "
-"layout."
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:592
-msgid "Tracking Code"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:593
-msgid ""
-"Paste your Google Analytics (or other) tracking code here. This will be "
-"added into the footer template of your theme."
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:601
-msgid "CSS Code"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:602
-msgid "Paste your CSS code here."
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:611
-msgid "JS Code"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:612
-msgid "Paste your JS code here."
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:623
-msgid ""
-"You can use the following shortcodes in your footer text: [wp-url] [site-"
-"url] [theme-url] [login-url] [logout-url] [site-title] [site-tagline] "
-"[current-year]"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:641
-msgid "Styling Options"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:646
-msgid "Theme Stylesheet"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:647
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1340
-msgid "Select your themes alternative color scheme."
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:655
-msgid "Body Background Color"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:656
-msgid "Pick a background color for the theme (default: #fff)."
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:664
-msgid "Body Background"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:665
-msgid "Body background with image, color, etc."
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:673
-msgid "Pick a background color for the footer (default: #dd9933)."
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:680
-msgid "Color RGBA - BETA"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:681
-msgid ""
-"Gives you the RGBA color. Still quite experimental. Use at your own risk."
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:688
-msgid "Header Gradient Color Option"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:689
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:697
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:713
-msgid "Only color validation can be done on this field type"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:696
-msgid "Links Color Option"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:712
-msgid "Header Border Option"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:731
-msgid "Padding/Margin Option"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:732
-msgid "Allow your users to choose the spacing or margin they want."
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:733
-msgid ""
-"You can enable or disable any piece of this field. Top, Right, Bottom, Left, "
-"or Units."
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:741
-msgid "Dimensions (Width/Height) Option"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:742
-msgid "Allow your users to choose width, height, and/or unit."
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:743
-msgid ""
-"You can enable or disable any piece of this field. Width, Height, or Units."
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:749
-msgid "Body Font"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:750
-msgid "Specify the body font properties."
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:763
-msgid "Quickly add some CSS to your theme by adding it to this block."
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:764
-msgid "This field is even CSS validated!"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:770
-msgid "Custom HTML"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:771
-msgid "Just like a text box widget."
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:772
-msgid "This field is even HTML validated!"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:786
-msgid "Field Validation"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:787
-msgid "Validate ALL fields within Redux."
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:788
-msgid ""
-"<p class=\"description\">This is the Description. Again HTML is allowed2</p>"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:793
-msgid "Text Option - Email Validated"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:794
-msgid ""
-"This is a little space under the Field Title in the Options table, "
-"additional info is good in here."
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:803
-msgid "Text Option with Data Attributes"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:804
-msgid ""
-"You can also pass an options array if you want. Set the default to whatever "
-"you like."
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:813
-msgid "Multi Text Option - Color Validated"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:815
-msgid ""
-"If you enter an invalid color it will be removed. Try using the text \"blue"
-"\" as a color.  ;)"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:821
-msgid "Text Option - URL Validated"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:822
-msgid "This must be a URL."
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:830
-msgid "Text Option - Numeric Validated"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:831
-msgid "This must be numeric."
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:840
-msgid "Text Option - Comma Numeric Validated"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:841
-msgid "This must be a comma separated string of numerical values."
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:850
-msgid "Text Option - No Special Chars Validated"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:851
-msgid "This must be a alpha numeric only."
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:859
-msgid "Text Option - Str Replace Validated"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:860
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:870
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:880
-msgid "You decide."
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:861
-msgid "This field's default value was changed by a filter hook!"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:869
-msgid "Text Option - Preg Replace Validated"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:879
-msgid "Text Option - Custom Callback Validated"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:888
-msgid "Textarea Option - No HTML Validated"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:889
-msgid "All HTML will be stripped"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:897
-msgid "Textarea Option - HTML Validated"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:898
-msgid "HTML Allowed (wp_kses)"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:906
-msgid "Textarea Option - HTML Validated Custom"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:907
-msgid "Custom HTML Allowed (wp_kses)"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:916
-msgid "Textarea Option - JS Validated"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:917
-msgid "JS will be escaped"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:926
-msgid "Radio/Checkbox Fields"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:927
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1039
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1255
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1358
-msgid ""
-"<p class=\"description\">This is the Description. Again HTML is allowed</p>"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:932
-msgid "Checkbox Option"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:933
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:941
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:950
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:958
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:966
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:975
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:983
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:997
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1045
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1055
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1085
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1094
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1102
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1111
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1119
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1128
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1136
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1145
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1153
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1162
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1180
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1189
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1197
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1206
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1214
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1262
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1273
-msgid "No validation can be done on this field type"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:940
-msgid "Multi Checkbox Option"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:949
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:974
-msgid "Multi Checkbox Option (with menu data)"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:957
-msgid "Multi Checkbox Option (with sidebar data)"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:965
-msgid "Radio Option"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:982
-msgid "Images Option"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:996
-msgid "Images Option for Layout"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:998
-msgid ""
-"This uses some of the built in images, you can use them for layout options."
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1012
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1025
-msgid "Sortable Text Option"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1013
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1026
-msgid "Define and reorder these however you want."
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1038
-msgid "Select Fields"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1044
-msgid "Select Option"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1054
-msgid "Multi Select Option"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1065
-msgid "Select Image"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1066
-msgid "A preview of the selected image will appear underneath the select box."
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1078
-msgid "You can easily add a variety of data from WordPress."
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1084
-msgid "Categories Select Option"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1093
-msgid "Categories Multi Select Option"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1101
-msgid "Pages Select Option"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1110
-msgid "Pages Multi Select Option"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1118
-msgid "Tags Select Option"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1127
-msgid "Tags Multi Select Option"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1135
-msgid "Menus Select Option"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1144
-msgid "Menus Multi Select Option"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1152
-msgid "Post Type Select Option"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1161
-msgid "Post Type Multi Select Option"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1171
-msgid "Post Type Multi Select Option + Sortable"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1172
-msgid "This field also has sortable enabled!"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1179
-msgid "Posts Select Option2"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1188
-msgid "Posts Multi Select Option"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1196
-msgid "User Role Select Option"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1205
-msgid "Capabilities Select Option"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1213
-msgid "Elusive Icons Select Option"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1215
-msgid "Here's a list of all the elusive icons by name and icon."
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1223
-msgid "<strong>Theme URL:</strong> "
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1224
-msgid "<strong>Author:</strong> "
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1225
-msgid "<strong>Version:</strong> "
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1229
-msgid "<strong>Tags:</strong> "
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1236
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1372
-msgid "Documentation"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1254
-msgid "Additional Fields"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1261
-msgid "Date Option"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1272
-msgid "Button Set Option"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1282
-msgid "This is the info field, if you want to break sections up."
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1288
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1296
-msgid "This is a title."
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1289
-msgid "This is an info field with the warning style applied and a header."
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1297
-msgid ""
-"This is an info field with the success style applied, a header and an icon."
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1309
-msgid "Custom Field Callback"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1310
-msgid "This is a completely unique field type"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1311
-msgid ""
-"This is created with a callback function, so anything goes in this field. "
-"Make sure to define the function though."
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1317
-msgid "Group - BETA"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1318
-msgid "Group any items together. Experimental. Use at your own risk."
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1319
-msgid "Group"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1325
-msgid "testing fold with Group"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1332
-msgid "Text"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1333
-msgid "Here you put your subtitle"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1339
-msgid "Testing select"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1357
-msgid "Theme Information"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1384
-#: lib/modules/core.redux/module.php:49
-msgid "Theme Information 1"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1385
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1391
-#: lib/modules/core.redux/module.php:50
-msgid "<p>This is the tab content, HTML is allowed.</p>"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1390
-#: lib/modules/core.redux/module.php:54
-msgid "Theme Information 2"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1395
-#: lib/modules/core.redux/module.php:59
-msgid "<p>This is the sidebar content, HTML is allowed.</p>"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1418
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1419
-msgid "Sample Options"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1490
-msgid ""
-"<p>Did you know that Redux sets a global variable for you? To access any of "
-"your saved options from within your code you can use your global variable: "
-"<strong>$%1$s</strong></p>"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1492
-msgid ""
-"<p>This text is displayed above the options panel. It isn't required, but "
-"more info is always better! The intro_text field accepts all HTML.</p>"
-msgstr ""
-
-#: lib/modules/core.redux/ReduxFramework/sample/sample-config.php:1496
-msgid ""
-"<p>This text is displayed below the options panel. It isn't required, but "
-"more info is always better! The footer_text field accepts all HTML.</p>"
-msgstr ""
-
-#: lib/modules/core.redux/module.php:40
+#: lib/modules/redux/module.php:38
 msgid "Theme Options"
 msgstr ""
 
-#: lib/modules/core.redux/module.php:55
+#: lib/modules/redux/module.php:47
+msgid "Theme Information 1"
+msgstr ""
+
+#: lib/modules/redux/module.php:48
+msgid "<p>This is the tab content, HTML is allowed.</p>"
+msgstr ""
+
+#: lib/modules/redux/module.php:52
+msgid "Theme Information 2"
+msgstr ""
+
+#: lib/modules/redux/module.php:53
 msgid "<p>This is the tab content, HTML is allowed. Tab2</p>"
 msgstr ""
 
-#: lib/modules/core.social/module.php:10
+#: lib/modules/redux/module.php:57
+msgid "<p>This is the sidebar content, HTML is allowed.</p>"
+msgstr ""
+
+#: lib/modules/social/module.php:10
+msgid "Socials"
+msgstr ""
+
+#: lib/modules/social/module.php:16
 msgid "Social Sharing"
 msgstr ""
 
-#: lib/modules/core.social/module.php:16
-msgid "General Options"
-msgstr ""
-
-#: lib/modules/core.social/module.php:21
+#: lib/modules/social/module.php:21
 msgid "Button Text"
 msgstr ""
 
-#: lib/modules/core.social/module.php:22
+#: lib/modules/social/module.php:22
 msgid "Select the text for the social sharing button."
 msgstr ""
 
-#: lib/modules/core.social/module.php:29
+#: lib/modules/social/module.php:29
 msgid "Button Location"
 msgstr ""
 
-#: lib/modules/core.social/module.php:30
+#: lib/modules/social/module.php:30
 msgid ""
 "Select between NONE, TOP, BOTTOM & BOTH. For archives, 'BOTH' fallbacks in "
 "'BOTTOM' only."
 msgstr ""
 
-#: lib/modules/core.social/module.php:44
+#: lib/modules/social/module.php:44
 msgid "Button Styling"
 msgstr ""
 
-#: lib/modules/core.social/module.php:45
+#: lib/modules/social/module.php:45
 msgid "Select between standard Bootstrap's button classes"
 msgstr ""
 
-#: lib/modules/core.social/module.php:60
+#: lib/modules/social/module.php:60
 msgid "Show in Posts Archives"
 msgstr ""
 
-#: lib/modules/core.social/module.php:61
+#: lib/modules/social/module.php:61
 msgid "Show the sharing button in posts archives."
 msgstr ""
 
-#: lib/modules/core.social/module.php:68
+#: lib/modules/social/module.php:68
 msgid "Show in Single Post"
 msgstr ""
 
-#: lib/modules/core.social/module.php:69
+#: lib/modules/social/module.php:69
 msgid "Show the sharing button in single post."
 msgstr ""
 
-#: lib/modules/core.social/module.php:76
+#: lib/modules/social/module.php:76
 msgid "Show in Single Page"
 msgstr ""
 
-#: lib/modules/core.social/module.php:77
+#: lib/modules/social/module.php:77
 msgid "Show the sharing button in single page."
 msgstr ""
 
-#: lib/modules/core.social/module.php:85
-msgid "Select Socials"
+#: lib/modules/social/module.php:85
+msgid "Select Socials for \"Share\" button"
 msgstr ""
 
-#: lib/modules/core.social/module.php:90
-#: lib/modules/core.social/module.php:200
+#: lib/modules/social/module.php:90 lib/modules/social/module.php:196
 msgid "Facebook"
 msgstr ""
 
-#: lib/modules/core.social/module.php:91
+#: lib/modules/social/module.php:91
 msgid "Show the Facebook sharing icon in blog posts."
 msgstr ""
 
-#: lib/modules/core.social/module.php:98
-#: lib/modules/core.social/module.php:227
+#: lib/modules/social/module.php:98 lib/modules/social/module.php:223
 msgid "Google+"
 msgstr ""
 
-#: lib/modules/core.social/module.php:99
+#: lib/modules/social/module.php:99
 msgid "Show the Google+ sharing icon in blog posts."
 msgstr ""
 
-#: lib/modules/core.social/module.php:106
-#: lib/modules/core.social/module.php:236
+#: lib/modules/social/module.php:106 lib/modules/social/module.php:232
 msgid "LinkedIn"
 msgstr ""
 
-#: lib/modules/core.social/module.php:107
+#: lib/modules/social/module.php:107
 msgid "Show the LinkedIn sharing icon in blog posts."
 msgstr ""
 
-#: lib/modules/core.social/module.php:114
-#: lib/modules/core.social/module.php:254
+#: lib/modules/social/module.php:114 lib/modules/social/module.php:250
 msgid "Pinterest"
 msgstr ""
 
-#: lib/modules/core.social/module.php:115
+#: lib/modules/social/module.php:115
 msgid "Show the Pinterest sharing icon in blog posts."
 msgstr ""
 
-#: lib/modules/core.social/module.php:122
-#: lib/modules/core.social/module.php:263
+#: lib/modules/social/module.php:122 lib/modules/social/module.php:259
 msgid "Reddit"
 msgstr ""
 
-#: lib/modules/core.social/module.php:123
+#: lib/modules/social/module.php:123
 msgid "Show the Reddit sharing icon in blog posts."
 msgstr ""
 
-#: lib/modules/core.social/module.php:130
-#: lib/modules/core.social/module.php:299
+#: lib/modules/social/module.php:130 lib/modules/social/module.php:295
 msgid "Tumblr"
 msgstr ""
 
-#: lib/modules/core.social/module.php:131
+#: lib/modules/social/module.php:131
 msgid "Show the Tumblr sharing icon in blog posts."
 msgstr ""
 
-#: lib/modules/core.social/module.php:138
-#: lib/modules/core.social/module.php:308
+#: lib/modules/social/module.php:138 lib/modules/social/module.php:304
 msgid "Twitter"
 msgstr ""
 
-#: lib/modules/core.social/module.php:139
+#: lib/modules/social/module.php:139
 msgid "Show the Twitter sharing icon in blog posts."
 msgstr ""
 
-#: lib/modules/core.social/module.php:146
+#: lib/modules/social/module.php:146
 msgid "Email"
 msgstr ""
 
-#: lib/modules/core.social/module.php:147
+#: lib/modules/social/module.php:147
 msgid "Show the Email sharing icon in blog posts."
 msgstr ""
 
-#: lib/modules/core.social/module.php:158
-msgid "Social Links"
+#: lib/modules/social/module.php:155
+msgid "Social Links used in Menus && Footer"
 msgstr ""
 
-#: lib/modules/core.social/module.php:164
+#: lib/modules/social/module.php:160
 msgid "Blogger"
 msgstr ""
 
-#: lib/modules/core.social/module.php:165
+#: lib/modules/social/module.php:161
 msgid ""
 "Provide the link you desire and the Blogger icon will appear. To remove it, "
 "just leave it blank."
 msgstr ""
 
-#: lib/modules/core.social/module.php:173
+#: lib/modules/social/module.php:169
 msgid "DeviantART"
 msgstr ""
 
-#: lib/modules/core.social/module.php:174
+#: lib/modules/social/module.php:170
 msgid ""
 "Provide the link you desire and the DeviantART icon will appear. To remove "
 "it, just leave it blank."
 msgstr ""
 
-#: lib/modules/core.social/module.php:182
+#: lib/modules/social/module.php:178
 msgid "Digg"
 msgstr ""
 
-#: lib/modules/core.social/module.php:183
+#: lib/modules/social/module.php:179
 msgid ""
 "Provide the link you desire and the Digg icon will appear. To remove it, "
 "just leave it blank."
 msgstr ""
 
-#: lib/modules/core.social/module.php:191
+#: lib/modules/social/module.php:187
 msgid "Dribbble"
 msgstr ""
 
-#: lib/modules/core.social/module.php:192
+#: lib/modules/social/module.php:188
 msgid ""
 "Provide the link you desire and the Dribbble icon will appear. To remove it, "
 "just leave it blank."
 msgstr ""
 
-#: lib/modules/core.social/module.php:201
+#: lib/modules/social/module.php:197
 msgid ""
 "Provide the link you desire and the Facebook icon will appear. To remove it, "
 "just leave it blank."
 msgstr ""
 
-#: lib/modules/core.social/module.php:209
+#: lib/modules/social/module.php:205
 msgid "Flickr"
 msgstr ""
 
-#: lib/modules/core.social/module.php:210
+#: lib/modules/social/module.php:206
 msgid ""
 "Provide the link you desire and the Flickr icon will appear. To remove it, "
 "just leave it blank."
 msgstr ""
 
-#: lib/modules/core.social/module.php:218
+#: lib/modules/social/module.php:214
 msgid "GitHub"
 msgstr ""
 
-#: lib/modules/core.social/module.php:219
+#: lib/modules/social/module.php:215
 msgid ""
 "Provide the link you desire and the GitHub icon will appear. To remove it, "
 "just leave it blank."
 msgstr ""
 
-#: lib/modules/core.social/module.php:228
+#: lib/modules/social/module.php:224
 msgid ""
 "Provide the link you desire and the Google+ icon will appear. To remove it, "
 "just leave it blank."
 msgstr ""
 
-#: lib/modules/core.social/module.php:237
+#: lib/modules/social/module.php:233
 msgid ""
 "Provide the link you desire and the LinkedIn icon will appear. To remove it, "
 "just leave it blank."
 msgstr ""
 
-#: lib/modules/core.social/module.php:245
+#: lib/modules/social/module.php:241
 msgid "MySpace"
 msgstr ""
 
-#: lib/modules/core.social/module.php:246
+#: lib/modules/social/module.php:242
 msgid ""
 "Provide the link you desire and the MySpace icon will appear. To remove it, "
 "just leave it blank."
 msgstr ""
 
-#: lib/modules/core.social/module.php:255
+#: lib/modules/social/module.php:251
 msgid ""
 "Provide the link you desire and the Pinterest icon will appear. To remove "
 "it, just leave it blank."
 msgstr ""
 
-#: lib/modules/core.social/module.php:264
+#: lib/modules/social/module.php:260
 msgid ""
 "Provide the link you desire and the Reddit icon will appear. To remove it, "
 "just leave it blank."
 msgstr ""
 
-#: lib/modules/core.social/module.php:272
+#: lib/modules/social/module.php:268
 msgid "RSS"
 msgstr ""
 
-#: lib/modules/core.social/module.php:273
+#: lib/modules/social/module.php:269
 msgid ""
 "Provide the link you desire and the RSS icon will appear. To remove it, just "
 "leave it blank."
 msgstr ""
 
-#: lib/modules/core.social/module.php:281
+#: lib/modules/social/module.php:277
 msgid "Skype"
 msgstr ""
 
-#: lib/modules/core.social/module.php:282
+#: lib/modules/social/module.php:278
 msgid ""
 "Provide the link you desire and the Skype icon will appear. To remove it, "
 "just leave it blank."
 msgstr ""
 
-#: lib/modules/core.social/module.php:290
+#: lib/modules/social/module.php:286
 msgid "SoundCloud"
 msgstr ""
 
-#: lib/modules/core.social/module.php:291
+#: lib/modules/social/module.php:287
 msgid ""
 "Provide the link you desire and the SoundCloud icon will appear. To remove "
 "it, just leave it blank."
 msgstr ""
 
-#: lib/modules/core.social/module.php:300
+#: lib/modules/social/module.php:296
 msgid ""
 "Provide the link you desire and the Tumblr icon will appear. To remove it, "
 "just leave it blank."
 msgstr ""
 
-#: lib/modules/core.social/module.php:309
+#: lib/modules/social/module.php:305
 msgid ""
 "Provide the link you desire and the Twitter icon will appear. To remove it, "
 "just leave it blank."
 msgstr ""
 
-#: lib/modules/core.social/module.php:317
+#: lib/modules/social/module.php:313
 msgid "Vimeo"
 msgstr ""
 
-#: lib/modules/core.social/module.php:318
+#: lib/modules/social/module.php:314
 msgid ""
 "Provide the link you desire and the Vimeo icon will appear. To remove it, "
 "just leave it blank."
 msgstr ""
 
-#: lib/modules/core.typography/module.php:16
+#: lib/modules/typography/module.php:11
+msgid "Typography"
+msgstr ""
+
+#: lib/modules/typography/module.php:16
 msgid "Base Font"
 msgstr ""
 
-#: lib/modules/core.typography/module.php:38
+#: lib/modules/typography/module.php:38
 msgid "Header Overrides"
 msgstr ""
 
-#: lib/modules/core.typography/module.php:49
+#: lib/modules/typography/module.php:48
 msgid "H1 Font"
 msgstr ""
 
-#: lib/modules/core.typography/module.php:72
+#: lib/modules/typography/module.php:71
 msgid "H2 Font"
 msgstr ""
 
-#: lib/modules/core.typography/module.php:93
+#: lib/modules/typography/module.php:92
 msgid "H3 Font"
 msgstr ""
 
-#: lib/modules/core.typography/module.php:113
+#: lib/modules/typography/module.php:112
 msgid "H4 Font"
 msgstr ""
 
-#: lib/modules/core.typography/module.php:134
+#: lib/modules/typography/module.php:133
 msgid "H5 Font"
 msgstr ""
 
-#: lib/modules/core.typography/module.php:155
+#: lib/modules/typography/module.php:154
 msgid "H6 Font"
 msgstr ""
 
-#: lib/modules/core.updater/module.php:21
-msgid "Licencing"
+#: lib/modules/widgets/module.php:24
+msgid "Use this widget to add a vCard"
 msgstr ""
 
-#: lib/modules/core.updater/module.php:28
-msgid "Shoestrap Theme Licence"
+#: lib/modules/widgets/module.php:26
+msgid "Shoestrap: vCard"
 msgstr ""
 
-#: lib/modules/core.updater/module.php:30
-msgid ""
-"The Shoestrap theme no longer requires a licence for theme updates because a "
-"default licence is included."
-msgstr ""
-
-#: lib/modules/core.updater/module.php:30
-msgid ""
-"If you want to use your own licence key, you can add this line in your "
-"<code>wp-config.php</code> file:"
-msgstr ""
-
-#: lib/modules/core.widgets/module.php:40
-msgid "Primary Sidebar"
-msgstr ""
-
-#: lib/modules/core.widgets/module.php:49
-msgid "Secondary Sidebar"
-msgstr ""
-
-#: lib/modules/core.widgets/module.php:67
-msgid "Header Area"
-msgstr ""
-
-#: lib/modules/core.widgets/module.php:76
-msgid "Footer Widget Area 1"
-msgstr ""
-
-#: lib/modules/core.widgets/module.php:85
-msgid "Footer Widget Area 2"
-msgstr ""
-
-#: lib/modules/core.widgets/module.php:94
-msgid "Footer Widget Area 3"
-msgstr ""
-
-#: lib/modules/core.widgets/module.php:103
-msgid "Footer Widget Area 4"
+#: lib/modules/widgets/module.php:53
+msgid "vCard"
 msgstr ""
 
 #: lib/titles.php:10
 msgid "Latest Posts"
 msgstr ""
 
-#: lib/titles.php:19
+#: lib/titles.php:20
 msgid "Daily Archives: %s"
 msgstr ""
 
-#: lib/titles.php:21
+#: lib/titles.php:22
 msgid "Monthly Archives: %s"
 msgstr ""
 
-#: lib/titles.php:23
+#: lib/titles.php:24
 msgid "Yearly Archives: %s"
 msgstr ""
 
@@ -3647,20 +2407,28 @@ msgstr ""
 msgid "Not Found"
 msgstr ""
 
-#: lib/widgets.php:8
-msgid "Primary"
+#: lib/widgets.php:12
+msgid "Primary Sidebar"
 msgstr ""
 
-#: lib/widgets.php:45
-msgid "Use this widget to add a vCard"
+#: lib/widgets.php:21
+msgid "Secondary Sidebar"
 msgstr ""
 
-#: lib/widgets.php:47
-msgid "Shoestrap: vCard"
+#: lib/widgets.php:30
+msgid "Footer Widget Area 1"
 msgstr ""
 
-#: lib/widgets.php:74
-msgid "vCard"
+#: lib/widgets.php:39
+msgid "Footer Widget Area 2"
+msgstr ""
+
+#: lib/widgets.php:48
+msgid "Footer Widget Area 3"
+msgstr ""
+
+#: lib/widgets.php:57
+msgid "Footer Widget Area 4"
 msgstr ""
 
 #: templates/comment.php:4
@@ -3671,7 +2439,7 @@ msgstr ""
 msgid "(Edit)"
 msgstr ""
 
-#: templates/comment.php:9
+#: templates/comment.php:8
 msgid "Your comment is awaiting moderation."
 msgstr ""
 
@@ -3689,64 +2457,68 @@ msgstr ""
 msgid "Newer comments &rarr;"
 msgstr ""
 
-#: templates/comments.php:33 templates/comments.php:42
+#: templates/comments.php:32 templates/comments.php:39
 msgid "Comments are closed."
 msgstr ""
 
-#: templates/comments.php:49
+#: templates/comments.php:45
 msgid "Leave a Reply"
 msgstr ""
 
-#: templates/comments.php:49
+#: templates/comments.php:45
 msgid "Leave a Reply to %s"
 msgstr ""
 
-#: templates/comments.php:52
+#: templates/comments.php:48
 msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
 msgstr ""
 
-#: templates/comments.php:57
+#: templates/comments.php:53
 msgid "Logged in as <a href=\"%s/wp-admin/profile.php\">%s</a>."
 msgstr ""
 
-#: templates/comments.php:58
+#: templates/comments.php:54
 msgid "Log out of this account"
 msgstr ""
 
-#: templates/comments.php:58
+#: templates/comments.php:54
 msgid "Log out &raquo;"
 msgstr ""
 
-#: templates/comments.php:62
+#: templates/comments.php:58
 msgid "Name"
 msgstr ""
 
-#: templates/comments.php:62 templates/comments.php:66
+#: templates/comments.php:58 templates/comments.php:62
 msgid " (required)"
 msgstr ""
 
-#: templates/comments.php:66
+#: templates/comments.php:62
 msgid "Email (will not be published)"
 msgstr ""
 
-#: templates/comments.php:70
+#: templates/comments.php:66
 msgid "Website"
 msgstr ""
 
-#: templates/comments.php:75
+#: templates/comments.php:71
 msgid "Comment"
 msgstr ""
 
-#: templates/comments.php:78
+#: templates/comments.php:74
 msgid "Submit Comment"
 msgstr ""
 
-#: templates/content-single.php:20
+#: templates/content-single.php:15
 msgid "Pages:"
 msgstr ""
 
 #: templates/entry-meta.php:2
 msgid "By"
+msgstr ""
+
+#: templates/header-top-navbar.php:6
+msgid "Toggle navigation"
 msgstr ""
 
 #. Theme Name of the plugin/theme
@@ -3758,13 +2530,11 @@ msgid "http://shoestrap.org"
 msgstr ""
 
 #. Description of the plugin/theme
-msgid ""
-"Shoestrap is a WordPress theme based on the <a href=\"http://www.shoestraptheme."
-"com/\">Shoestrap</a> theme, with many additional options."
+msgid "Advanced WordPress theme based on Bootstrap."
 msgstr ""
 
 #. Author of the plugin/theme
-msgid "Aristeides Stathopoulos, Dimitris Kalliris, Dovy Paukstys"
+msgid "aristath, fovoc, dovyp"
 msgstr ""
 
 #. Author URI of the plugin/theme
@@ -3793,8 +2563,4 @@ msgstr ""
 
 #. Template Name of the plugin/theme
 msgid "Sidebar - Main - Sidebar"
-msgstr ""
-
-#. Template Name of the plugin/theme
-msgid "Custom Template"
 msgstr ""
