@@ -127,6 +127,15 @@ function shoestrap_module_advanced_options( $sections ) {
 		'type'      => 'switch',
 	);
 
+	$fields[] = array(
+		'title'     => __( 'Use Google CDN for jQuery', 'shoestrap' ),
+		'desc'      => '',
+		'id'        => 'shoestrap_jquery_cdn',
+		'default'   => 0,
+		'customizer'=> array(),
+		'type'      => 'switch',
+	);
+
 	$section['fields'] = $fields;
 
 	$section = apply_filters( 'shoestrap_module_advanced_options_modifier', $section );
@@ -139,9 +148,13 @@ function shoestrap_module_advanced_options( $sections ) {
 endif;
 add_filter( 'redux/options/' . SHOESTRAP_OPT_NAME . '/sections', 'shoestrap_module_advanced_options', 95 );
 
+
 include_once( dirname( __FILE__ ) . '/includes/functions.advanced.php' );
 include_once( dirname( __FILE__ ) . '/includes/variables.php' );
 include_once( dirname( __FILE__ ) . '/includes/scripts.php' );
 
-if ( shoestrap_getVariable( 'root_relative_urls' ) == 1  )
-	include_once( dirname( __FILE__ ) . '/includes/relative-urls.php' );
+function shoestrap_relative_urls_including() {
+	if ( shoestrap_getVariable( 'root_relative_urls' ) == 1  )
+		include_once( dirname( __FILE__ ) . '/includes/relative-urls.php' );
+}
+add_action( 'after_setup_theme', 'shoestrap_relative_urls_including' );

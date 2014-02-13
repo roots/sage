@@ -1,4 +1,4 @@
-# [Shoestrap](http://shoestrap.org): [Shoestrap](http://shoestrap.io) on steroids!
+# [Shoestrap](http://shoestrap.org): [Shoestrap](http://shoestrap.org) on steroids!
 
 Shoestrap started as a fork of the amazing [Roots](http://roots.io) theme.
 We added lots of hooks, actions, rewrote various parts of the theme and made it completely extensible.

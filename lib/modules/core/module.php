@@ -6,7 +6,6 @@ define( 'themePATH', get_theme_root() );
 define( 'themeNAME', wp_get_theme() );
 
 include_once( dirname( __FILE__ ) . '/includes/functions.color.php' );
-include_once( dirname( __FILE__ ) . '/includes/functions.scripts.php' );
 
 
 if ( !function_exists( 'shoestrap_getVariable' ) ) :
@@ -144,5 +143,3 @@ function shoestrap_remove_default_description( $bloginfo ) {
 	return ( $bloginfo === $default_tagline ) ? '' : $bloginfo;
 }
 add_filter( 'get_bloginfo_rss', 'shoestrap_remove_default_description' );
-
-
