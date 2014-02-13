@@ -1,6 +1,9 @@
 <?php
 
 
+/**
+ * Modify the nav class.
+ */
 function shoestrap_nav_class() {
 	return ( shoestrap_getVariable( 'navbar_nav_right' ) == '1' ) ? 'navbar-nav nav pull-right' : 'navbar-nav nav';
 }
@@ -26,6 +29,9 @@ add_action( 'shoestrap_inside_nav_begin', 'shoestrap_navbar_pre_searchbox', 11 )
 
 
 if ( !function_exists( 'shoestrap_navbar_class' ) ) :
+/**
+ * Modify the navbar class.
+ */
 function shoestrap_navbar_class( $navbar = 'main') {
 	$fixed    = shoestrap_getVariable( 'navbar_fixed' );
 	$fixedpos = shoestrap_getVariable( 'navbar_fixed_position' );
@@ -59,6 +65,9 @@ add_filter( 'shoestrap_navbar_class', 'shoestrap_navbar_class' );
 
 
 if ( !function_exists( 'shoestrap_static_left_breakpoint' ) ) :
+/**
+ * Modify the grid-float-breakpoint using Bootstrap classes.
+ */
 function shoestrap_static_left_breakpoint() {
 	$break    = shoestrap_getVariable( 'grid_float_breakpoint' );
 
@@ -73,6 +82,9 @@ endif;
 
 
 if ( !function_exists( 'shoestrap_navbar_css' ) ) :
+/**
+ * Add some CSS for the navbar when needed.
+ */
 function shoestrap_navbar_css() {
 	$navbar_bg_opacity = shoestrap_getVariable( 'navbar_bg_opacity' );
 	$style = "";
@@ -104,6 +116,10 @@ endif;
 add_action( 'wp_enqueue_scripts', 'shoestrap_navbar_css', 101 );
 
 
+/**
+ * Will the sidebar be shown?
+ * If yes, then which navbar?
+ */
 function shoestrap_do_navbar() {
 	$navbar_toggle = shoestrap_getVariable( 'navbar_toggle' );
 
@@ -127,6 +143,9 @@ add_action( 'shoestrap_do_navbar', 'shoestrap_do_navbar' );
 
 
 add_action( 'shoestrap_do_navbar', 'shoestrap_static_left_main_wrapper_open', 97 );
+/**
+ * When the navbar is set to static-left, we need to add some wrappers
+ */
 function shoestrap_static_left_main_wrapper_open() {
 	$left = ( shoestrap_getVariable( 'navbar_toggle' ) == 'left' ) ? true : false;
 
@@ -135,6 +154,9 @@ function shoestrap_static_left_main_wrapper_open() {
 }
 
 
+/**
+ * Close the wrapper div that the 'shoestrap_static_left_main_wrapper_open' opens.
+ */
 function shoestrap_static_left_main_wrapper_close() {
 	$left = ( shoestrap_getVariable( 'navbar_toggle' ) == 'left' ) ? true : false;
 
@@ -144,6 +166,10 @@ function shoestrap_static_left_main_wrapper_close() {
 add_action( 'shoestrap_after_footer', 'shoestrap_close_boxed_container_div', 901 );
 
 
+/**
+ * get the navbar branding options (if the branding module exists)
+ * and then add the appropriate logo or sitename.
+ */
 function shoestrap_navbar_brand() {
 	// Make sure the branding module exists.
 	if ( function_exists( 'shoestrap_logo' ) ) {

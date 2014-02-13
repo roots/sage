@@ -18,7 +18,9 @@ function shoestrap_static_left_widgets_init() {
 add_action( 'widgets_init', 'shoestrap_static_left_widgets_init', 40 );
 
 
-
+/**
+ * Add the sidebar to the navbar.
+ */
 function shoestrap_navbar_sidebar() {
 	dynamic_sidebar( 'navbar' );
 }

@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Return an array of the social links the user has entered.
+ * This is simply a helper function for other functions.
+ */
 function shoestrap_get_social_links() {
 	// An array of the available networks
 	$networks   = array();
@@ -30,7 +34,9 @@ function shoestrap_get_social_links() {
 }
 
 $socialShares = array();
-// An array of the available/enabled networks for social sharing
+/**
+ * Build an array of the available/enabled networks for social sharing.
+ */
 function shoestrap_get_social_shares() {
 	global $socialShares;
 	if ( !empty( $socialShares ) )
@@ -105,6 +111,10 @@ function shoestrap_get_social_shares() {
 		return $networks;
 }
 
+
+/**
+ * Build the social links for the navbar
+ */
 function shoestrap_navbar_social_links() {
 
 	// Get all the social networks the user is using
@@ -140,7 +150,10 @@ function shoestrap_navbar_social_links() {
 	echo $content;
 }
 
-// That's for inline icon links
+
+/**
+ * The inline icon links for social networks.
+ */
 function shoestrap_navbar_social_bar() {
 
 	// Get all the social networks the user is using
@@ -168,7 +181,10 @@ function shoestrap_navbar_social_bar() {
 	echo $content;
 }
 
-// Properly parses the twitter URL if set
+
+/**
+ * Properly parses the twitter URL if set
+ */
 function shoestrap_get_twitter_username() {
 	$twittername = '';
 	$twitter_link = shoestrap_getVariable ( 'twitter_link' );
@@ -181,6 +197,10 @@ function shoestrap_get_twitter_username() {
 	return $twittername;
 }
 
+
+/**
+ * Create the social sharing buttons
+ */
 function shoestrap_social_sharing() {
 	// An array of the available networks
 	$networks   = array();
@@ -247,6 +267,9 @@ function shoestrap_social_sharing() {
 }
 
 
+/**
+ * Add all the actions that are needed for social links and social sharing to work.
+ */
 function shoestrap_add_social_actions() {
 	// Social Share location
 	$social_sharing_location = shoestrap_getVariable( 'social_sharing_location' );
