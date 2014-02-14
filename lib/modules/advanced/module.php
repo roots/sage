@@ -47,11 +47,20 @@ if ( !class_exists( 'ShoestrapAdvanced' ) ) {
 					'style_loader_src'
 				);
 
-				add_filters( $root_rel_filters, array( $this, 'root_relative_url' ) );
+				self::add_filters( $root_rel_filters, array( $this, 'root_relative_url' ) );
 			}
 		}
 
-		/*
+		/**
+		* Utility function
+		*/
+		public static function add_filters( $tags, $function ) {
+			foreach( $tags as $tag ) {
+				add_filter( $tag, $function );
+			}
+		}
+
+		/**
 		 * The advanced core options for the Shoestrap theme
 		 */
 		function options( $sections ) {
@@ -381,7 +390,7 @@ if ( !class_exists( 'ShoestrapAdvanced' ) ) {
 		}
 
 		/**
-		 *
+		 * Add the variables to the compiler
 		 */
 		function variables_filter( $variables ) {
 			return $variables . self::variables();
