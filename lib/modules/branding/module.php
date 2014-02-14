@@ -11,6 +11,7 @@ if ( !class_exists( 'ShoestrapBranding' ) ) {
 		function __construct() {
 			add_filter( 'redux/options/' . SHOESTRAP_OPT_NAME . '/sections', array( $this, 'options' ), 50 );
 			add_action( 'wp_head', array( $this, 'icons' ) );
+			add_filter( 'shoestrap_compiler', array( $this, 'variables_filter' ) );
 		}
 
 		/*
