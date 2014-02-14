@@ -9,8 +9,8 @@ if( !class_exists( 'ShoestrapFooter' ) ) {
 
 		function __construct() {
 			add_filter( 'redux/options/' . SHOESTRAP_OPT_NAME . '/sections', array( $this, 'options' ), 85 ); 
-			add_action( 'wp_enqueue_scripts', array( $this, 'css' ), 101 );
-			add_action( 'shoestrap_footer_html', array( $this, 'html' ) );
+			add_action( 'wp_enqueue_scripts',    array( $this, 'css'  ), 101 );
+			add_action( 'shoestrap_footer_html', array( $this, 'html' )      );
 		}
 
 		/*

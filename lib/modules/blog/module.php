@@ -10,17 +10,21 @@ if ( !class_exists( 'ShoestrapBlog' ) ) {
 
 		function __construct() {
 			add_filter( 'redux/options/' . SHOESTRAP_OPT_NAME . '/sections', array( $this, 'options' ), 75 );
-			add_filter( 'shoestrap_compiler', array( $this, 'styles' ) );
-			add_action( 'shoestrap_entry_meta', array( $this, 'meta_custom_render' ) );
-			add_action( 'wp', array( $this, 'single_meta' ) );
-			add_filter( 'excerpt_more', array( $this, 'excerpt_more' ) );
-			add_filter( 'excerpt_length', array( $this, 'excerpt_length' ) );
+			add_filter( 'shoestrap_compiler',       array( $this, 'styles'                              ) );
+			add_action( 'shoestrap_entry_meta',     array( $this, 'meta_custom_render'                  ) );
+			add_filter( 'excerpt_more',             array( $this, 'excerpt_more'                        ) );
+			add_filter( 'excerpt_length',           array( $this, 'excerpt_length'                      ) );
+			add_action( 'shoestrap_in_article_top', array( $this, 'featured_image'                      ) );
+			add_action( 'wp',                       array( $this, 'remove_featured_image_per_post_type' ) );
 
 			if ( shoestrap_getVariable( 'pagination' ) != 'pager' )
 				add_filter( 'shoestrap_pagination_format', array( $this, 'pagination_toggler' ) );
 
-			add_action( 'shoestrap_in_article_top', array( $this, 'featured_image' ) );
-			add_action( 'wp', array( $this, 'remove_featured_image_per_post_type' ) );
+		 	// Hide post meta data in footer of single posts
+			if ( shoestrap_getVariable( 'single_meta' ) == 0 ) {
+				add_filter( 'shoestrap_the_tags', 'shoestrap_blank' );
+				add_filter( 'shoestrap_the_cats', 'shoestrap_blank' );
+			}
 		}
 
 		function options( $sections ) {
@@ -305,16 +309,6 @@ if ( !class_exists( 'ShoestrapBlog' ) ) {
 
 			if ( !empty( $content ) )
 				echo '<div class="row row-meta">' . $content . '</div>';
-		}
-
-		/**
-		 * Hide post meta data in footer of single posts
-		 */
-		function single_meta() {
-			if ( shoestrap_getVariable( 'single_meta' ) == 0 ) {
-				add_filter( 'shoestrap_the_tags', 'shoestrap_blank' );
-				add_filter( 'shoestrap_the_cats', 'shoestrap_blank' );
-			}
 		}
 
 		/**

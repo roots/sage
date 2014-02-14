@@ -10,8 +10,8 @@ if ( !class_exists( 'ShoestrapBackground' ) ) {
 		
 		function __construct() {
 			add_filter( 'redux/options/' . SHOESTRAP_OPT_NAME . '/sections', array( $this, 'options' ), 60 );
-			add_action( 'wp_enqueue_scripts', array( $this, 'css' ), 101 );
-			add_filter( 'shoestrap_compiler', array( $this, 'variables_filter' ) );
+			add_action( 'wp_enqueue_scripts', array( $this, 'css'              ), 101 );
+			add_filter( 'shoestrap_compiler', array( $this, 'variables_filter' )      );
 		}
 
 		/*

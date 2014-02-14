@@ -10,13 +10,18 @@ if ( !class_exists( 'ShoestrapAdvanced' ) ) {
 
 		function __construct() {
 			add_filter( 'redux/options/' . SHOESTRAP_OPT_NAME . '/sections', array( $this, 'options' ), 95 );
-			add_action( 'wp_enqueue_scripts', array( $this, 'user_css' ), 101 );
-			add_action( 'wp_footer', array( $this, 'user_js' ), 200 );
-			add_filter( 'show_admin_bar' , array( $this, 'admin_bar' ) );
-			add_action( 'wp_footer', array( $this, 'google_analytics' ), 20 );
-			add_action( 'wp_enqueue_scripts', array( $this, 'scripts' ), 100 );
-			add_action( 'after_setup_theme', array( $this, 'jquery_cdn_toggler' ) );
-			add_filter( 'shoestrap_compiler', array( $this, 'variables_filter' ) );
+			add_action( 'wp_enqueue_scripts', array( $this, 'user_css'           ), 101 );
+			add_action( 'wp_footer',          array( $this, 'user_js'            ), 200 );
+			add_filter( 'show_admin_bar',     array( $this, 'admin_bar'          )      );
+			add_action( 'wp_footer',          array( $this, 'google_analytics'   ), 20  );
+			add_action( 'wp_enqueue_scripts', array( $this, 'scripts'            ), 100 );
+			add_filter( 'shoestrap_compiler', array( $this, 'variables_filter'   )      );
+
+			 // Toggle activation of the jQuery CDN
+			if ( shoestrap_getVariable( 'jquery_cdn' ) == 1 ) {
+				add_action( 'wp_enqueue_scripts', 'jquery_cdn', 100 );
+				add_action( 'wp_head',            array( $this, 'jquery_local_fallback' ) );
+			}
 
 			if ( shoestrap_getVariable( 'nice_search' ) == 1 )
 				add_action( 'template_redirect', array( $this, 'nice_search_redirect' ) );
@@ -314,7 +319,7 @@ if ( !class_exists( 'ShoestrapAdvanced' ) ) {
 			if ( !is_admin() ) {
 				wp_deregister_script( 'jquery' );
 				wp_register_script( 'jquery', '//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js', array(), null, false );
-				add_filter( 'script_loader_src', 'jquery_local_fallback', 10, 2 );
+				add_filter( 'script_loader_src', array( $this, 'jquery_local_fallback' ), 10, 2 );
 			}
 		}
 
@@ -333,17 +338,6 @@ if ( !class_exists( 'ShoestrapAdvanced' ) ) {
 				$add_jquery_fallback = true;
 
 			return $src;
-		}
-
-
-		/**
-		 * Toggle activation of the jQuery CDN
-		 */
-		function jquery_cdn_toggler() {
-			if ( shoestrap_getVariable( 'jquery_cdn' ) == 1 ) {
-				add_action( 'wp_enqueue_scripts', 'jquery_cdn', 100 );
-				add_action( 'wp_head', 'jquery_local_fallback' );
-			}
 		}
 
 		/**

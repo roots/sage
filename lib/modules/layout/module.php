@@ -10,36 +10,36 @@ if ( !class_exists( 'ShoestrapLayout' ) ) {
 
 		function __construct() {
 			add_filter( 'redux/options/' . SHOESTRAP_OPT_NAME . '/sections', array( $this, 'options' ), 55 );
-			add_filter( 'shoestrap_section_class_wrapper', array( $this, 'apply_layout_classes_wrapper' ) );
-			add_filter( 'shoestrap_section_class_main', array( $this, 'apply_layout_classes_main' ) );
-			add_filter( 'shoestrap_section_class_primary', array( $this, 'apply_layout_classes_primary' ) );
-			add_filter( 'shoestrap_section_class_secondary', array( $this, 'apply_layout_classes_secondary' ) );
-			add_filter( 'shoestrap_container_class', array( $this, 'container_class' ) );
-			add_filter( 'body_class', array( $this, 'layout_body_class' ) );
-			add_filter( 'shoestrap_navbar_container_class', array( $this, 'navbar_container_class' ) );
-			add_action( 'template_redirect', array( $this, 'content_width' ) );
-			if ( ( shoestrap_getVariable( 'body_margin_top' ) != '0' ) || ( shoestrap_getVariable( 'body_margin_bottom' ) != '0' ) )
-				add_action( 'wp_enqueue_scripts', array( $this, 'body_margin' ), 101 );
+			add_filter( 'shoestrap_section_class_wrapper',   array( $this, 'apply_layout_classes_wrapper'   )     );
+			add_filter( 'shoestrap_section_class_main',      array( $this, 'apply_layout_classes_main'      )     );
+			add_filter( 'shoestrap_section_class_primary',   array( $this, 'apply_layout_classes_primary'   )     );
+			add_filter( 'shoestrap_section_class_secondary', array( $this, 'apply_layout_classes_secondary' )     );
+			add_filter( 'shoestrap_container_class',         array( $this, 'container_class'                )     );
+			add_filter( 'body_class',                        array( $this, 'layout_body_class'              )     );
+			add_filter( 'shoestrap_navbar_container_class',  array( $this, 'navbar_container_class'         )     );
+			add_action( 'template_redirect',                 array( $this, 'content_width'                  )     );
 
-			add_action( 'get_header', array( $this, 'boxed_container_div_open' ), 1 );
-			add_action( 'shoestrap_pre_footer', array( $this, 'boxed_container_div_open' ), 1 );
-			add_action( 'shoestrap_do_navbar', array( $this, 'boxed_container_div_close' ), 99 );
-			add_action( 'shoestrap_after_footer', array( $this, 'boxed_container_div_close' ), 899 );
-			add_action( 'wp', array( $this, 'control_primary_sidebar_display' ) );
-			add_action( 'wp', array( $this, 'control_secondary_sidebar_display' ) );
+			if ( ( shoestrap_getVariable( 'body_margin_top' ) != '0' ) || ( shoestrap_getVariable( 'body_margin_bottom' ) != '0' ) )
+				add_action( 'wp_enqueue_scripts',            array( $this, 'body_margin'                   ), 101 );
+
+			add_action( 'get_header',             array( $this, 'boxed_container_div_open'          ), 1   );
+			add_action( 'shoestrap_pre_footer',   array( $this, 'boxed_container_div_open'          ), 1   );
+			add_action( 'shoestrap_do_navbar',    array( $this, 'boxed_container_div_close'         ), 99  );
+			add_action( 'shoestrap_after_footer', array( $this, 'boxed_container_div_close'         ), 899 );
+			add_action( 'wp',                     array( $this, 'control_primary_sidebar_display'   )      );
+			add_action( 'wp',                     array( $this, 'control_secondary_sidebar_display' )      );
 
 			 // Modify the appearance of widgets based on user selection.
 			$widgets_mode = shoestrap_getVariable( 'widgets_mode' );
 			if ( $widgets_mode == 0 || $widgets_mode == 1 ) {
-				add_filter( 'shoestrap_widgets_class', array( $this, 'alter_widgets_class' ) );
+				add_filter( 'shoestrap_widgets_class',        array( $this, 'alter_widgets_class'        ) );
 				add_filter( 'shoestrap_widgets_before_title', array( $this, 'alter_widgets_before_title' ) );
-				add_filter( 'shoestrap_widgets_after_title', array( $this, 'alter_widgets_after_title' ) );
+				add_filter( 'shoestrap_widgets_after_title',  array( $this, 'alter_widgets_after_title'  ) );
 			}
 
-			add_action( 'wp_head', array( $this, 'static_meta' ) );
-
+			add_action( 'wp_head',            array( $this, 'static_meta'      ) );
 			add_filter( 'shoestrap_compiler', array( $this, 'variables_filter' ) );
-			add_filter( 'shoestrap_compiler', array( $this, 'styles' ) );
+			add_filter( 'shoestrap_compiler', array( $this, 'styles'           ) );
 		}
 
 		/*

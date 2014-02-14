@@ -9,7 +9,7 @@ if ( !class_exists( 'ShoestrapCompiler' ) ) {
 		
 		function __construct() {
 			add_filter( 'shoestrap_main_stylesheet_url', array( $this, 'stylesheet_url' ) );
-			add_action( 'admin_notices', array( $this, 'file_nag' ) );
+			add_action( 'admin_notices',                 array( $this, 'file_nag'       ) );
 
 			// If the Custom LESS exists and has changed after the last compilation, trigger the compiler.
 			if ( is_writable( get_stylesheet_directory() . '/assets/less/custom.less' ) ) {

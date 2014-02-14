@@ -10,16 +10,16 @@ if ( !class_exists( 'ShoestrapHeaders' ) ) {
 
 		function __construct() {
 			add_filter( 'redux/options/' . SHOESTRAP_OPT_NAME . '/sections', array( $this, 'options' ), 80 );
-			add_action( 'widgets_init', array( $this, 'header_widgets_init' ), 30 );
-			add_action( 'shoestrap_pre_wrap', array( $this, 'branding' ), 3 );
-			add_action( 'wp_enqueue_scripts', array( $this, 'header_css' ), 101 );
-			add_action( 'widgets_init', array( $this, 'jumbotron_widgets_init' ), 20 );
-			add_action( 'shoestrap_pre_wrap', array( $this, 'jumbotron_content' ), 5 );
-			add_action( 'wp_enqueue_scripts', array( $this, 'jumbotron_css' ), 101 );
-			add_action( 'wp_footer', array( $this, 'jumbotron_fittext' ), 10 );
-			add_action( 'wp_enqueue_scripts', array( $this, 'jumbotron_fittext_enqueue_script' ), 101);
-			add_filter( 'shoestrap_compiler', array( $this, 'variables_filter' ) );
-			add_filter( 'shoestrap_compiler', array( $this, 'styles' ) );
+			add_action( 'widgets_init',       array( $this, 'header_widgets_init'              ), 30  );
+			add_action( 'shoestrap_pre_wrap', array( $this, 'branding'                         ), 3   );
+			add_action( 'wp_enqueue_scripts', array( $this, 'header_css'                       ), 101 );
+			add_action( 'widgets_init',       array( $this, 'jumbotron_widgets_init'           ), 20  );
+			add_action( 'shoestrap_pre_wrap', array( $this, 'jumbotron_content'                ), 5   );
+			add_action( 'wp_enqueue_scripts', array( $this, 'jumbotron_css'                    ), 101 );
+			add_action( 'wp_footer',          array( $this, 'jumbotron_fittext'                ), 10  );
+			add_action( 'wp_enqueue_scripts', array( $this, 'jumbotron_fittext_enqueue_script' ), 101 );
+			add_filter( 'shoestrap_compiler', array( $this, 'variables_filter'                 )      );
+			add_filter( 'shoestrap_compiler', array( $this, 'styles'                           )      );
 		}
 		/*
 		 * The Headers module options.
