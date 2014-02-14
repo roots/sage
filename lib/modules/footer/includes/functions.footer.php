@@ -6,7 +6,7 @@ function shoestrap_footer_css() {
 	$cl         = shoestrap_getVariable( 'footer_color' );
 	$cl_brand   = shoestrap_getVariable( 'color_brand_primary' );
 	$opacity    = ( intval( shoestrap_getVariable( 'footer_opacity' ) ) ) / 100;
-	$rgb        = shoestrap_get_rgb( $bg, true );
+	$rgb        = ShoestrapColor::get_rgb( $bg, true );
 	$border     = shoestrap_getVariable( 'footer_border' );
 	$top_margin = shoestrap_getVariable( 'footer_top_margin' );
 

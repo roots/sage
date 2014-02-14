@@ -26,7 +26,7 @@ function shoestrap_background_css() {
 
 	// The Content background color
 	$content_bg = '#' . str_replace( '#', '', $bg_color ) . ';';
-	$content_bg .= ( $content_opacity != 100 ) ? 'background:' . shoestrap_get_rgba( $content_bg, $content_opacity ) . ';' : '';
+	$content_bg .= ( $content_opacity != 100 ) ? 'background:' . ShoestrapColor::get_rgba( $content_bg, $content_opacity ) . ';' : '';
 
 	$repeat  = ( !in_array( $repeat, array( 'no-repeat', 'repeat-x', 'repeat-y', 'repeat' ) ) ) ? 'repeat' : $repeat;
 	$repeat .= ( $repeat == 'no-repeat' ) ? 'background-size: auto;' : '';

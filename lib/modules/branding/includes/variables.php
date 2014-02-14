@@ -1,19 +1,19 @@
 <?php
 
 function shoestrap_variables_branding() {
-	$brand_primary = '#' . str_replace( '#', '', shoestrap_sanitize_hex( shoestrap_getVariable( 'color_brand_primary', true ) ) );
-	$brand_success = '#' . str_replace( '#', '', shoestrap_sanitize_hex( shoestrap_getVariable( 'color_brand_success', true ) ) );
-	$brand_warning = '#' . str_replace( '#', '', shoestrap_sanitize_hex( shoestrap_getVariable( 'color_brand_warning', true ) ) );
-	$brand_danger  = '#' . str_replace( '#', '', shoestrap_sanitize_hex( shoestrap_getVariable( 'color_brand_danger', true ) ) );
-	$brand_info    = '#' . str_replace( '#', '', shoestrap_sanitize_hex( shoestrap_getVariable( 'color_brand_info', true ) ) );
+	$brand_primary = '#' . str_replace( '#', '', ShoestrapColor::sanitize_hex( shoestrap_getVariable( 'color_brand_primary', true ) ) );
+	$brand_success = '#' . str_replace( '#', '', ShoestrapColor::sanitize_hex( shoestrap_getVariable( 'color_brand_success', true ) ) );
+	$brand_warning = '#' . str_replace( '#', '', ShoestrapColor::sanitize_hex( shoestrap_getVariable( 'color_brand_warning', true ) ) );
+	$brand_danger  = '#' . str_replace( '#', '', ShoestrapColor::sanitize_hex( shoestrap_getVariable( 'color_brand_danger', true ) ) );
+	$brand_info    = '#' . str_replace( '#', '', ShoestrapColor::sanitize_hex( shoestrap_getVariable( 'color_brand_info', true ) ) );
 
-	$link_hover_color = ( shoestrap_get_brightness( $brand_primary ) > 50 ) ? 'darken(@link-color, 15%)' : 'lighten(@link-color, 15%)';
+	$link_hover_color = ( ShoestrapColor::get_brightness( $brand_primary ) > 50 ) ? 'darken(@link-color, 15%)' : 'lighten(@link-color, 15%)';
 
-	$brand_primary_brightness = shoestrap_get_brightness( $brand_primary );
-	$brand_success_brightness = shoestrap_get_brightness( $brand_success );
-	$brand_warning_brightness = shoestrap_get_brightness( $brand_warning );
-	$brand_danger_brightness  = shoestrap_get_brightness( $brand_danger );
-	$brand_info_brightness    = shoestrap_get_brightness( $brand_info );
+	$brand_primary_brightness = ShoestrapColor::get_brightness( $brand_primary );
+	$brand_success_brightness = ShoestrapColor::get_brightness( $brand_success );
+	$brand_warning_brightness = ShoestrapColor::get_brightness( $brand_warning );
+	$brand_danger_brightness  = ShoestrapColor::get_brightness( $brand_danger );
+	$brand_info_brightness    = ShoestrapColor::get_brightness( $brand_info );
 
 	// Button text colors
 	$btn_primary_color  = $brand_primary_brightness < 195 ? '#fff' : '333';
@@ -29,8 +29,8 @@ function shoestrap_variables_branding() {
 	$btn_danger_border  = $brand_danger_brightness  < 195 ? 'darken(@btn-danger-bg, 5%)'  : 'lighten(@btn-danger-bg, 5%)';
 	$btn_info_border    = $brand_info_brightness    < 195 ? 'darken(@btn-info-bg, 5%)'    : 'lighten(@btn-info-bg, 5%)';
 
-	$input_border_focus = ( shoestrap_get_brightness( $brand_primary ) < 195 ) ? 'lighten(@brand-primary, 10%);' : 'darken(@brand-primary, 10%);';
-	$navbar_border      = ( shoestrap_get_brightness( $brand_primary ) < 50 ) ? 'lighten(@navbar-default-bg, 6.5%)' : 'darken(@navbar-default-bg, 6.5%)';
+	$input_border_focus = ( ShoestrapColor::get_brightness( $brand_primary ) < 195 ) ? 'lighten(@brand-primary, 10%);' : 'darken(@brand-primary, 10%);';
+	$navbar_border      = ( ShoestrapColor::get_brightness( $brand_primary ) < 50 ) ? 'lighten(@navbar-default-bg, 6.5%)' : 'darken(@navbar-default-bg, 6.5%)';
 
 
 	$variables = '';

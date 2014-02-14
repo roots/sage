@@ -2,11 +2,11 @@
 
 function shoestrap_variables_background() {
 	$bg      = shoestrap_getVariable( 'color_body_bg', true );
-	$body_bg = '#' . str_replace( '#', '', shoestrap_sanitize_hex( $bg ) );
+	$body_bg = '#' . str_replace( '#', '', ShoestrapColor::sanitize_hex( $bg ) );
 
 	// Calculate the gray shadows based on the body background.
 	// We basically create 2 "presets": light and dark.
-	if ( shoestrap_get_brightness( $body_bg ) > 80 ) {
+	if ( ShoestrapColor::get_brightness( $body_bg ) > 80 ) {
 		$gray_darker  = 'lighten(#000, 13.5%)';
 		$gray_dark    = 'lighten(#000, 20%)';
 		$gray         = 'lighten(#000, 33.5%)';
@@ -20,7 +20,7 @@ function shoestrap_variables_background() {
 		$gray_lighter = 'darken(#fff, 93.5%)';
 	}
 
-	$bg_brightness = shoestrap_get_brightness( $body_bg );
+	$bg_brightness = ShoestrapColor::get_brightness( $body_bg );
 
 	$table_bg_accent      = $bg_brightness > 50 ? 'darken(@body-bg, 2.5%)'    : 'lighten(@body-bg, 2.5%)';
 	$table_bg_hover       = $bg_brightness > 50 ? 'darken(@body-bg, 4%)'      : 'lighten(@body-bg, 4%)';

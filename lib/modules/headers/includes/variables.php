@@ -2,7 +2,7 @@
 
 function shoestrap_variables_jumbotron() {
 	$font_jumbotron         = shoestrap_process_font( shoestrap_getVariable( 'font_jumbotron', true ) );
-	$jumbotron_bg     			= '#' . str_replace( '#', '', shoestrap_sanitize_hex( shoestrap_getVariable( 'jumbotron_bg', true ) ) );
+	$jumbotron_bg     			= '#' . str_replace( '#', '', ShoestrapColor::sanitize_hex( shoestrap_getVariable( 'jumbotron_bg', true ) ) );
 	$jumbotron_text_color   = '#' . str_replace( '#', '', $font_jumbotron['color'] );
 
 	if ( shoestrap_getVariable( 'font_jumbotron_heading_custom', true ) == 1 ) {
@@ -11,7 +11,7 @@ function shoestrap_variables_jumbotron() {
 		$font_jumbotron_headers_face   = $font_jumbotron_headers['font-family'];
 		$font_jumbotron_headers_weight = $font_jumbotron_headers['font-weight'];
 		$font_jumbotron_headers_style  = $font_jumbotron_headers['font-style'];
-		$jumbotron_headers_text_color  = '#' . str_replace( '#', '', shoestrap_sanitize_hex( $font_jumbotron_headers['color'] ) );
+		$jumbotron_headers_text_color  = '#' . str_replace( '#', '', ShoestrapColor::sanitize_hex( $font_jumbotron_headers['color'] ) );
 	} else {
 		$font_jumbotron_headers_face   = $font_jumbotron['font-family'];
 		$font_jumbotron_headers_weight = $font_jumbotron['font-weight'];

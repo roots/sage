@@ -5,14 +5,14 @@ function shoestrap_variables_navbar() {
 	$font_brand        = shoestrap_process_font( shoestrap_getVariable( 'font_brand', true ) );
 
 	$font_navbar       = shoestrap_process_font( shoestrap_getVariable( 'font_navbar', true ) );
-	$navbar_bg         = '#' . str_replace( '#', '', shoestrap_sanitize_hex( shoestrap_getVariable( 'navbar_bg', true ) ) );
+	$navbar_bg         = '#' . str_replace( '#', '', ShoestrapColor::sanitize_hex( shoestrap_getVariable( 'navbar_bg', true ) ) );
 	$navbar_height     = filter_var( shoestrap_getVariable( 'navbar_height', true ), FILTER_SANITIZE_NUMBER_INT );
 	$navbar_text_color = '#' . str_replace( '#', '', $font_navbar['color'] );
 	$brand_text_color  = '#' . str_replace( '#', '', $font_brand['color'] );
-	$navbar_border     = ( shoestrap_get_brightness( $navbar_bg ) < 50 ) ? 'lighten(@navbar-default-bg, 6.5%)' : 'darken(@navbar-default-bg, 6.5%)';
+	$navbar_border     = ( ShoestrapColor::get_brightness( $navbar_bg ) < 50 ) ? 'lighten(@navbar-default-bg, 6.5%)' : 'darken(@navbar-default-bg, 6.5%)';
 	$gfb = shoestrap_getVariable( 'grid_float_breakpoint' );
 
-	if ( shoestrap_get_brightness( $navbar_bg ) < 165 ) {
+	if ( ShoestrapColor::get_brightness( $navbar_bg ) < 165 ) {
 		$navbar_link_hover_color    = 'darken(@navbar-default-color, 26.5%)';
 		$navbar_link_active_bg      = 'darken(@navbar-default-bg, 6.5%)';
 		$navbar_link_disabled_color = 'darken(@navbar-default-bg, 6.5%)';

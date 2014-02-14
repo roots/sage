@@ -73,7 +73,7 @@ function shoestrap_header_css() {
 	$header_margin_bottom = shoestrap_getVariable( 'header_margin_bottom' );
 	
 	$opacity  = (intval(shoestrap_getVariable( 'header_bg_opacity' )))/100;
-	$rgb      = shoestrap_get_rgb($bg, true);
+	$rgb      = ShoestrapColor::get_rgb( $bg, true );
 
 	if ( shoestrap_getVariable( 'header_toggle' ) == 1 ) {
 		$style = '.header-wrapper{ color: '.$cl.';';
