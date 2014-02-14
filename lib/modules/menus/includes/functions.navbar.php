@@ -172,13 +172,13 @@ add_action( 'shoestrap_after_footer', 'shoestrap_close_boxed_container_div', 901
  */
 function shoestrap_navbar_brand() {
 	// Make sure the branding module exists.
-	if ( function_exists( 'shoestrap_logo' ) ) {
+	if ( class_exists( 'ShoestrapBranding' ) ) {
 		$logo           = shoestrap_getVariable( 'logo' );
 		$branding_class = !empty( $logo['url'] ) ? 'logo' : 'text';
 
 		if ( shoestrap_getVariable( 'navbar_brand' ) != 0 ) {
 			$branding  = '<a class="navbar-brand ' . $branding_class . '" href="' . home_url('/') . '">';
-			$branding .= shoestrap_getVariable( 'navbar_logo' ) == 1 ? shoestrap_logo() : get_bloginfo( 'name' );
+			$branding .= shoestrap_getVariable( 'navbar_logo' ) == 1 ? ShoestrapBranding::logo() : get_bloginfo( 'name' );
 			$branding .= '</a>';
 		} else {
 			$branding = '';
