@@ -144,3 +144,17 @@ function shoestrap_remove_default_description( $bloginfo ) {
 	return ( $bloginfo === $default_tagline ) ? '' : $bloginfo;
 }
 add_filter( 'get_bloginfo_rss', 'shoestrap_remove_default_description' );
+
+function shoestrap_process_font( $font ) {
+
+	if ( empty( $font['font-weight'] ) )
+		$font['font-weight'] = "inherit";
+
+	if ( empty( $font['font-style'] ) )
+		$font['font-style'] = "inherit";
+
+	if ( isset( $font['font-size'] ) )
+		$font['font-size'] = filter_var( $font['font-size'], FILTER_SANITIZE_NUMBER_INT );
+
+	return $font;
+}
