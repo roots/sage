@@ -9,7 +9,7 @@ if ( !class_exists( 'ShoestrapHeaders' ) ) {
 	class ShoestrapHeaders {
 
 		function __construct() {
-			add_filter( 'redux/options/' . SHOESTRAP_OPT_NAME . '/sections', array( $this, 'options', 80 ) );
+			add_filter( 'redux/options/' . SHOESTRAP_OPT_NAME . '/sections', array( $this, 'options' ), 80 );
 			add_action( 'widgets_init', array( $this, 'header_widgets_init' ), 30 );
 			add_action( 'shoestrap_pre_wrap', array( $this, 'branding' ), 3 );
 			add_action( 'wp_enqueue_scripts', array( $this, 'header_css' ), 101 );
