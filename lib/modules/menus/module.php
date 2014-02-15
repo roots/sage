@@ -374,7 +374,7 @@ if ( !class_exists( 'ShoestrapMenus' ) ) {
 		/**
 		 * Modify the navbar class.
 		 */
-		function navbar_class( $navbar = 'main') {
+		public static function navbar_class( $navbar = 'main') {
 			$fixed    = shoestrap_getVariable( 'navbar_fixed' );
 			$fixedpos = shoestrap_getVariable( 'navbar_fixed_position' );
 			$style    = shoestrap_getVariable( 'navbar_style' );
@@ -562,8 +562,8 @@ if ( !class_exists( 'ShoestrapMenus' ) ) {
 
 			if ( shoestrap_getVariable( 'secondary_navbar_toggle' ) != 0 ) : ?>
 
-				<div class="<?php echo shoestrap_container_class(); ?>">
-					<header class="secondary navbar navbar-default <?php echo shoestrap_navbar_class( 'secondary' ); ?>" role="banner">
+				<div class="<?php echo ShoestrapLayout::container_class(); ?>">
+					<header class="secondary navbar navbar-default <?php echo self::navbar_class( 'secondary' ); ?>" role="banner">
 						<button data-target=".nav-secondary" data-toggle="collapse" type="button" class="navbar-toggle">
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
