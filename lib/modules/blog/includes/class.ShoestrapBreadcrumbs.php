@@ -124,6 +124,22 @@ if ( !class_exists( 'ShoestrapBreadcrumbs' ) ) {
 						}
 						$links[] = array( 'term' => $deepest_term );
 					}
+				} else {
+					if ( isset( $post->ancestors ) ) {
+						if ( is_array( $post->ancestors ) )
+							$ancestors = array_values( $post->ancestors );
+						else
+							$ancestors = array( $post->ancestors );
+					} else {
+						$ancestors = array( $post->post_parent );
+					}
+
+					// Reverse the order so it's oldest to newest
+					$ancestors = array_reverse( $ancestors );
+
+					foreach ( $ancestors as $ancestor ) {
+						$links[] = array( 'id' => $ancestor );
+					}
 				}
 				$links[] = array( 'id' => $post->ID );
 			} else {
@@ -295,8 +311,8 @@ function shoestrap_breadcrumbs() {
 
 	$class = shoestrap_getVariable( 'site_style' ) != 'fluid' ? 'container' : 'fluid';
 
-	echo '<div class="breadTrail ' . $class . '"><ul class="breadcrumb">';
+	echo '<div class="breadTrail ' . $class . '">';
 	echo $shoestrap_breadcrumbs->breadcrumb( true );
-	echo '</ul></div>';
+	echo '</div>';
 }
 add_action( 'shoestrap_pre_wrap', 'shoestrap_breadcrumbs', 99 );
