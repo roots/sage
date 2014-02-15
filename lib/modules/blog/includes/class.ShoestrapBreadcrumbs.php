@@ -312,7 +312,7 @@ function shoestrap_breadcrumbs() {
 	$class = shoestrap_getVariable( 'site_style' ) != 'fluid' ? 'container' : 'fluid';
 
 	echo '<div class="breadTrail ' . $class . '">';
-	echo $shoestrap_breadcrumbs->breadcrumb( true );
+	echo $shoestrap_breadcrumbs->breadcrumb( false );
 	echo '</div>';
 }
 add_action( 'shoestrap_pre_wrap', 'shoestrap_breadcrumbs', 99 );
