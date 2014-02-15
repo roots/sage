@@ -15,7 +15,12 @@ if ( !class_exists( 'ShoestrapCompiler' ) ) {
 			if ( is_writable( get_stylesheet_directory() . '/assets/less/custom.less' ) ) {
 				if ( filemtime( get_stylesheet_directory() . '/assets/less/custom.less' ) > filemtime( self::file() ) )
 					self::makecss();
+
 			}
+
+			// Saving functions on import, etc
+			// If a compiler field was altered or import or reset defaults
+			add_action( 'redux/options/' . SHOESTRAP_OPT_NAME . '/compiler' , array( $this, 'makecss' ) );
 		}
 
 		/*
@@ -160,7 +165,7 @@ if ( !class_exists( 'ShoestrapCompiler' ) ) {
 			return apply_filters( 'shoestrap_compiler_output', $css );
 		}
 
-		function makecss() {
+		public static function makecss() {
 			global $wp_filesystem;
 			$file = self::file();
 			
@@ -183,3 +188,5 @@ if ( !class_exists( 'ShoestrapCompiler' ) ) {
 		}
 	}
 }
+
+$compiler = new ShoestrapCompiler();

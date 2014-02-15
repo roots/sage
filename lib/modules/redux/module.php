@@ -69,11 +69,6 @@ if ( class_exists( 'ReduxFramework' ) ) :
 add_action('init', 'shoestrap_redux_init');
 endif;
 
-// Saving functions on import, etc
-// If a compiler field was altered or import or reset defaults
-add_action( 'redux/options/' . SHOESTRAP_OPT_NAME . '/compiler' , 'shoestrap_makecss' );
-
-
 /**
  * Adds tracking parameters for Redux settings. Outside of the main class as the class could also be in use in other plugins.
  *
