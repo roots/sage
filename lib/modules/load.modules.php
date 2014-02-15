@@ -38,8 +38,6 @@ if ( !defined( 'REDUX_OPT_NAME' ) )
 // Prioritize loading of some necessary core modules
 require_once SHOESTRAP_MODULES_PATH . '/redux/module.php';
 require_once SHOESTRAP_MODULES_PATH . '/core/module.php';
-require_once SHOESTRAP_MODULES_PATH . '/layout/module.php';
-require_once SHOESTRAP_MODULES_PATH . '/blog/module.php';
 
 if ( !function_exists( 'shoestrap_include_modules' ) ) :
 /*

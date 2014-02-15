@@ -456,7 +456,7 @@ if ( !class_exists( 'ShoestrapHeaders' ) ) {
 			$visibility   = shoestrap_getVariable( 'jumbotron_visibility' );
 			$nocontainer  = shoestrap_getVariable( 'jumbotron_nocontainer' );
 
-			if ( ( ( $visibility == 1 && is_front_page() ) || $visibility !== 1 ) && is_active_sidebar( 'jumbotron' ) )
+			if ( ( ( $visibility == 1 && is_front_page() ) || $visibility != 1 ) && is_active_sidebar( 'jumbotron' ) )
 				$hero = true;
 			?>
 
@@ -465,13 +465,13 @@ if ( !class_exists( 'ShoestrapHeaders' ) ) {
 
 				<?php if ( $hero == true ) : ?>
 					<?php if ( $site_style == 'boxed' && $nocontainer != 1 ) : ?>
-						<div class="<?php echo shoestrap_container_class(); ?>">
+						<div class="<?php echo ShoestrapLayout::container_class(); ?>">
 					<?php endif; ?>
 
 					<div class="jumbotron">
 
 						<?php if ( $nocontainer != 1 && $site_style == 'wide' || $site_style == 'boxed' ) : ?>
-							<div class="<?php echo shoestrap_container_class(); ?>">
+							<div class="<?php echo ShoestrapLayout::container_class(); ?>">
 						<?php endif; ?>
 
 							<?php dynamic_sidebar('Jumbotron'); ?>

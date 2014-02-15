@@ -373,7 +373,7 @@ if ( !class_exists( 'ShoestrapBlog' ) ) {
 		 * @param string|array $args Optional. Override defaults.
 		 * @return array|string String of page links or array of page links.
 		 */
-		function shoestrap_paginate_links( $args = '' ) {
+		public static function paginate_links( $args = '' ) {
 			$defaults = array(
 				'base' => '%_%', // http://example.com/all_posts.php%_% : %_% is replaced by format (below)
 				'format' => '?page=%#%', // ?page=%#% : %#% is replaced by the page number
@@ -474,7 +474,7 @@ if ( !class_exists( 'ShoestrapBlog' ) ) {
 				return;
 
 			$nav = '<nav class="pagination">';
-			$nav .= shoestrap_paginate_links(
+			$nav .= self::paginate_links(
 				apply_filters( 'pagination_args', array(
 					'base'      => str_replace( 999999999, '%#%', get_pagenum_link( 999999999 ) ),
 					'format'    => '',
@@ -502,7 +502,7 @@ if ( !class_exists( 'ShoestrapBlog' ) ) {
 			if ( !has_post_thumbnail() || '' == get_the_post_thumbnail() )
 				return;
 
-			$data['width']  = shoestrap_content_width_px();
+			$data['width']  = ShoestrapLayout::content_width_px();
 
 			if ( is_singular() ) {
 				if ( shoestrap_getVariable( 'feat_img_post' ) != 1 )
