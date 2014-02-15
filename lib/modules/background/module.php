@@ -1,6 +1,5 @@
 <?php
 
-
 if ( !class_exists( 'ShoestrapBackground' ) ) {
 
 	/**
@@ -44,30 +43,31 @@ if ( !class_exists( 'ShoestrapBackground' ) ) {
 			);   
 
 			$fields[] = array(
-				'title'     => __( 'General Background Color', 'shoestrap' ),
-				'desc'      => __( 'Select a background color for your site. Default: #ffffff.', 'shoestrap' ),
-				'id'        => 'html_color_bg',
-				'default'   => '#ffffff',
-				'customizer'=> array(),
-				'transparent'=> false,
-				'type'      => 'color',
+				'title'       => __( 'General Background Color', 'shoestrap' ),
+				'desc'        => __( 'Select a background color for your site. Default: #ffffff.', 'shoestrap' ),
+				'id'          => 'html_bg',
+				'default'     => '#ffffff',
+				'customizer'  => array(),
+				'transparent' => false,
+				'type'        => 'background',
+				'output'      => 'body'
 			);
 
 			$fields[] = array(
-				'title'     => __( 'Content Background Color', 'shoestrap' ),
-				'desc'      => __( 'Select a background color for your site\'s content area. Default: #ffffff.', 'shoestrap' ),
-				'id'        => 'color_body_bg',
-				'default'   => '#ffffff',
+				'title'     => __( 'Content Background', 'shoestrap' ),
+				'desc'      => __( 'Background for the content area. Colors also affect input areas and other colors.', 'shoestrap' ),
+				'id'        => 'body_bg',
+				'default'   => '',
 				'compiler'  => true,
 				'customizer'=> array(),
-				'transparent'=> false,
-				'type'      => 'color',
+				'type'      => 'background',
+				'output'    => '.wrap.main-section .content .bg'
 			);
 
 			$fields[] = array(
 				'title'     => __( 'Content Background Color Opacity', 'shoestrap' ),
 				'desc'      => __( 'Select the opacity of your background color for the main content area so that background images and patterns will show through. Default: 100 (fully opaque)', 'shoestrap' ),
-				'id'        => 'color_body_bg_opacity',
+				'id'        => 'body_bg_opacity',
 				'default'   => 100,
 				'min'       => 0,
 				'step'      => 1,
@@ -75,105 +75,6 @@ if ( !class_exists( 'ShoestrapBackground' ) ) {
 				'type'      => 'slider',
 			);
 
-			$fields[] = array(
-				'title'     => 'Background Images',
-				'id'        => 'help4',
-				'desc'      => __( 'If you want a background image, you can select one here.
-												You can either upload a custom image, or use one of our pre-defined image patterns.
-												If you both upload a custom image and select a pattern, your custom image will override the selected pattern.
-												Please note that the image only applies to the area on the right and left of the main content area,
-												to ensure better content readability. You can also set the background position to be fixed or scroll!', 'shoestrap' ),
-				'type'      => 'info'
-			);
-
-			$fields[] = array(
-				'title'     => __( 'Use a Background Image', 'shoestrap' ),
-				'desc'      => __( 'Enable this option to upload a custom background image for your site. This will override any patterns you may have selected. Default: OFF.', 'shoestrap' ),
-				'id'        => 'background_image_toggle',
-				'default'   => 0,
-				'type'      => 'switch'
-			);
-
-			$fields[] = array(
-				'title'     => __( 'Upload a Custom Background Image', 'shoestrap' ),
-				'desc'      => __( 'Upload a Custom Background image using the media uploader, or define the URL directly.', 'shoestrap' ),
-				'id'        => 'background_image',
-				'required'  => array('background_image_toggle','=',array('1')),
-				'default'   => '',
-				'type'      => 'media',
-				'customizer'=> array(),
-			);
-
-			$fields[] = array(
-				'title'     => __( 'Background position', 'shoestrap' ),
-				'desc'      => __( 'Changes how the background image or pattern is displayed from scroll to fixed position. Default: Fixed.', 'shoestrap' ),
-				'id'        => 'background_fixed_toggle',
-				'default'   => 1,
-				'on'        => __( 'Fixed', 'shoestrap' ),
-				'off'       => __( 'Scroll', 'shoestrap' ),
-				'type'      => 'switch',
-				'required'  => array('background_image_toggle','=',array('1')),
-			);
-
-			$fields[] = array(
-				'title'     => __( 'Background Image Positioning', 'shoestrap' ),
-				'desc'      => __( 'Allows the user to modify how the background displays. By default it is full width and stretched to fill the page. Default: Full Width.', 'shoestrap' ),
-				'id'        => 'background_image_position_toggle',
-				'default'   => 0,
-				'required'  => array('background_image_toggle','=',array('1')),
-				'on'        => __( 'Custom', 'shoestrap' ),
-				'off'       => __( 'Full Width', 'shoestrap' ),
-				'type'      => 'switch'
-			);
-
-			$fields[] = array(
-				'title'     => __( 'Background Repeat', 'shoestrap' ),
-				'desc'      => __( 'Select how (or if) the selected background should be tiled. Default: Tile', 'shoestrap' ),
-				'id'        => 'background_repeat',
-				'required'  => array('background_image_position_toggle','=',array('1')),
-				'default'   => 'repeat',
-				'type'      => 'select',
-				'options'   => array(
-					'no-repeat'  => __( 'No Repeat', 'shoestrap' ),
-					'repeat'     => __( 'Tile', 'shoestrap' ),
-					'repeat-x'   => __( 'Tile Horizontally', 'shoestrap' ),
-					'repeat-y'   => __( 'Tile Vertically', 'shoestrap' ),
-				),
-			);
-
-			$fields[] = array(
-				'title'     => __( 'Background Alignment', 'shoestrap' ),
-				'desc'      => __( 'Select how the selected background should be horizontally aligned. Default: Left', 'shoestrap' ),
-				'id'        => 'background_position_x',
-				'required'  => array('background_image_position_toggle','=',array('1')),
-				'default'   => 'repeat',
-				'type'      => 'select',
-				'options'   => array(
-					'left'    => __( 'Left', 'shoestrap' ),
-					'right'   => __( 'Right', 'shoestrap' ),
-					'center'  => __( 'Center', 'shoestrap' ),
-				),
-			);
-
-			$fields[] = array(
-				'title'     => __( 'Use a Background Pattern', 'shoestrap' ),
-				'desc'      => __( 'Select one of the already existing Background Patterns. Default: OFF.', 'shoestrap' ),
-				'id'        => 'background_pattern_toggle',
-				'default'   => 0,
-				'type'      => 'switch'
-			);
-
-			$fields[] = array(
-				'title'     => __( 'Choose a Background Pattern', 'shoestrap' ),
-				'desc'      => __( 'Select a background pattern.', 'shoestrap' ),
-				'id'        => 'background_pattern',
-				'required'  => array('background_pattern_toggle','=',array('1')),
-				'default'   => '',
-				'tiles'     => true,
-				'type'      => 'image_select',
-				'options'   => $bg_pattern_images,
-			);
-			
 			$section['fields'] = $fields;
 
 			$section = apply_filters( 'shoestrap_module_background_options_modifier', $section );
@@ -184,73 +85,15 @@ if ( !class_exists( 'ShoestrapBackground' ) ) {
 		}
 
 		function css() {
-
-			$image_toggle     = shoestrap_getVariable( 'background_image_toggle' );
-			$bg_img           = shoestrap_getVariable( 'background_image' );
-			$pattern_toggle   = shoestrap_getVariable( 'background_pattern_toggle' );
-			$bg_pattern       = shoestrap_getVariable( 'background_pattern' );
-			$html_bg          = shoestrap_getVariable( 'html_color_bg' );
-			$bg_color         = shoestrap_getVariable( 'color_body_bg' );
-			$content_opacity  = shoestrap_getVariable( 'color_body_bg_opacity' );
-			$repeat           = shoestrap_getVariable( 'background_repeat' );
-			$position         = shoestrap_getVariable( 'background_position_x', 'left' );
-			$fixed            = shoestrap_getVariable( 'background_image_position_toggle' );
-
-			// Do not process if there is no need to.
-			if ( $image_toggle == 0 && $pattern_toggle == 0 && $bg_color == $html_bg )
-				return;
-
-			$background = ( $pattern_toggle && !empty( $bg_pattern ) ) ? set_url_scheme( $bg_pattern ) : '';
-			$background = ( $image_toggle && $bg_img != '' ) ? set_url_scheme( $bg_img['url'] ) : $background;
-
-			// The Body background color
-			$html_bg    = '#' . str_replace( '#', '', $html_bg ) . ';';
+			$content_opacity  = shoestrap_getVariable( 'body_bg_opacity' );
+			$bg_color         = shoestrap_getVariable( 'body_bg' );
+			$bg_color         = $bg_color['background-color'];
 
 			// The Content background color
-			$content_bg = '#' . str_replace( '#', '', $bg_color ) . ';';
-			$content_bg .= ( $content_opacity != 100 ) ? 'background:' . ShoestrapColor::get_rgba( $content_bg, $content_opacity ) . ';' : '';
+			$content_bg = ( $content_opacity != 100 ) ? 'background:' . ShoestrapColor::get_rgba( $bg_color, $content_opacity ) . ';' : '';
 
-			$repeat  = ( !in_array( $repeat, array( 'no-repeat', 'repeat-x', 'repeat-y', 'repeat' ) ) ) ? 'repeat' : $repeat;
-			$repeat .= ( $repeat == 'no-repeat' ) ? 'background-size: auto;' : '';
-
-			$position = ( !in_array( $position, array( 'center', 'right', 'left' ) ) ) ? 'left' : $position;
-
-			$style = '';
-
-			if ( ( $image_toggle == 1 || $pattern_toggle == 1 ) && !empty( $background ) ) {
-
-				$style .= 'body {';
-
-				// Add the background image
-				$style .= 'background-image: url( "' . $background . '" );';
-
-				// Add the body background color
-				$style .= ( $bg_color != $html_bg ) ? 'background-color: ' . $html_bg . ';' : '';
-
-				// Apply fixed positioning for background when needed
-				$style .= ( shoestrap_getVariable( 'background_fixed_toggle' ) == 1 ) ? 'background-attachment: fixed;' : '';
-
-				if ( $image_toggle == 1 ) {
-					// Background image positioning
-					if ( $fixed == 0 ) {
-						// cover
-						$style .= 'background-size: cover;';
-						$style .= '-webkit-background-size: cover;';
-						$style .= '-moz-background-size: cover;';
-						$style .= '-o-background-size: cover;';
-						$style .= 'background-position: 50% 50%;';
-					} else {
-						$style .= ' background-repeat: ' . $repeat . ';';
-						$style .= ' background-position: top ' . $position . ';';
-					}
-				}
-				$style .= '}';
-			} else {
-				// Add the body background color
-				$style .= ( $bg_color != $html_bg ) ? 'body { background-color: ' . $html_bg . '; }' : '';
-			}
-
-			$style .= ( $bg_color != $html_bg ) ? '.wrap.main-section .content .bg { background: ' . $content_bg . '; }' : '';
+			if ( $content_opacity < 100 )
+				$style = '.wrap.main-section div.content .bg {' . $content_bg . '}';
 
 			wp_add_inline_style( 'shoestrap_css', $style );
 		}
@@ -260,7 +103,8 @@ if ( !class_exists( 'ShoestrapBackground' ) ) {
 		 * These override the default Bootstrap Variables.
 		 */
 		public static function variables() {
-			$bg      = shoestrap_getVariable( 'color_body_bg', true );
+			$bg      = shoestrap_getVariable( 'body_bg', true );
+			$bg      = $bg['background-color'];
 			$body_bg = '#' . str_replace( '#', '', ShoestrapColor::sanitize_hex( $bg ) );
 
 			// Calculate the gray shadows based on the body background.
