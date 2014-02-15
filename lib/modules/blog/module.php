@@ -555,5 +555,4 @@ if ( !class_exists( 'ShoestrapBlog' ) ) {
 
 $blog = new ShoestrapBlog();
 
-
-include_once( dirname( __FILE__ ) . '/includes/functions.breadcrumb.php' );
+include_once( dirname( __FILE__ ) . '/includes/class.ShoestrapBreadcrumbs.php' );
