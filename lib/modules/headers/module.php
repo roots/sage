@@ -12,7 +12,6 @@ if ( !class_exists( 'ShoestrapHeaders' ) ) {
 			add_filter( 'redux/options/' . SHOESTRAP_OPT_NAME . '/sections', array( $this, 'options' ), 80 );
 			add_action( 'widgets_init',       array( $this, 'header_widgets_init'              ), 30  );
 			add_action( 'shoestrap_pre_wrap', array( $this, 'branding'                         ), 3   );
-			add_action( 'wp_enqueue_scripts', array( $this, 'header_css'                       ), 101 );
 			add_action( 'widgets_init',       array( $this, 'jumbotron_widgets_init'           ), 20  );
 			add_action( 'shoestrap_pre_wrap', array( $this, 'jumbotron_content'                ), 5   );
 			add_action( 'wp_enqueue_scripts', array( $this, 'jumbotron_css'                    ), 101 );
@@ -69,14 +68,16 @@ if ( !class_exists( 'ShoestrapHeaders' ) ) {
 			);
 
 			$fields[] = array( 
-				'title'       => __( 'Header Background Color', 'shoestrap' ),
-				'desc'        => __( 'Select the background color for your header. Default: #EEEEEE.', 'shoestrap' ),
+				'title'       => __( 'Header Background', 'shoestrap' ),
+				'desc'        => __( 'Specify the background for your header.', 'shoestrap' ),
 				'id'          => 'header_bg',
-				'default'     => '#EEEEEE',
+				'default'     => array(
+					'background-color' => '#ffffff'
+				),
 				'customizer'  => array(),
-				'transparent' => false,    
-				'type'        => 'color',
-				'required'    => array('header_toggle','=',array('1')),
+				'output'      => '.header-wrapper',
+				'type'        => 'background',
+				'required'    => array( 'header_toggle','=',array( '1' ) ),
 			);
 
 			$fields[] = array( 
@@ -144,101 +145,15 @@ if ( !class_exists( 'ShoestrapHeaders' ) ) {
 			);
 
 			$fields[] = array(
-				'title'     => __('Jumbotron Background Color', 'shoestrap'),
-				'desc'      => __('Select the background color for your Jumbotron area. Please note that this area will only be visible if you assign a widget to the \'Jumbotron\' Widget Area. Default: #EEEEEE.', 'shoestrap'),
-				'id'        => 'jumbotron_bg',
-				'default'   => '#EEEEEE',
-				'compiler'  => true,
-				'transparent'=> false,    
-				'type'      => 'color'
-			);
-
-
-			$fields[] = array(
-				'title'     => __('Background position', 'shoestrap'),
-				'desc'      => __('Changes how the background image or pattern is displayed from scroll to fixed position. Default: Fixed.', 'shoestrap'),
-				'id'        => 'jumbotron_background_fixed_toggle',
-				'default'   => 1,
-				'on'        => __('Fixed', 'shoestrap'),
-				'off'       => __('Scroll', 'shoestrap'),
-				'type'      => 'switch'
-			);
-
-			$fields[] = array(
-				'title'     => __('Use a Background Image', 'shoestrap'),
-				'desc'      => __('Enable this option to upload a custom background image for your site. This will override any patterns you may have selected. Default: OFF.', 'shoestrap'),
-				'id'        => 'jumbotron_background_image_toggle',
-				'default'   => 0,
-				'type'      => 'switch'
-			);
-
-			$fields[] = array(
-				'title'     => __('Upload a Custom Background Image', 'shoestrap'),
-				'desc'      => __('Upload a Custom Background image using the media uploader, or define the URL directly.', 'shoestrap'),
-				'id'        => 'jumbotron_background_image',
-				'required'  => array('jumbotron_background_image_toggle','=',array('1')),
-				'default'   => '',
-				'type'      => 'media',
-				'customizer'=> array(),
-			);
-
-			$fields[] = array(
-				'title'     => __('Background Image Positioning', 'shoestrap'),
-				'desc'      => __('Allows the user to modify how the background displays. By default it is full width and stretched to fill the page. Default: Full Width.', 'shoestrap'),
-				'id'        => 'jumbotron_background_image_position_toggle',
-				'default'   => 0,
-				'required'  => array('jumbotron_background_image_toggle','=',array('1')),
-				'on'        => __('Custom', 'shoestrap'),
-				'off'       => __('Full Width', 'shoestrap'),
-				'type'      => 'switch'
-			);
-
-			$fields[] = array(
-				'title'     => __('Background Repeat', 'shoestrap'),
-				'desc'      => __('Select how (or if) the selected background should be tiled. Default: Tile', 'shoestrap'),
-				'id'        => 'jumbotron_background_repeat',
-				'required'  => array('jumbotron_background_image_position_toggle','=',array('1')),
-				'default'   => 'repeat',
-				'type'      => 'select',
-				'options'   => array(
-					'no-repeat'  => __( 'No Repeat', 'shoestrap' ),
-					'repeat'     => __( 'Tile', 'shoestrap' ),
-					'repeat-x'   => __( 'Tile Horizontally', 'shoestrap' ),
-					'repeat-y'   => __( 'Tile Vertically', 'shoestrap' ),
+				'title'       => __( 'Jumbotron Background', 'shoestrap' ),
+				'desc'        => __( 'Select the background for your Jumbotron area.', 'shoestrap'),
+				'id'          => 'jumbotron_bg',
+				'default'     => array(
+					'background-color' => '#eeeeee'
 				),
-			);
-
-			$fields[] = array(
-				'title'     => __('Background Alignment', 'shoestrap'),
-				'desc'      => __('Select how the selected background should be horizontally aligned. Default: Left', 'shoestrap'),
-				'id'        => 'jumbotron_background_position_x',
-				'required'  => array('jumbotron_background_image_position_toggle','=',array('1')),
-				'default'   => 'repeat',
-				'type'      => 'select',
-				'options'   => array(
-					'left'    => __( 'Left', 'shoestrap' ),
-					'right'   => __( 'Right', 'shoestrap' ),
-					'center'  => __( 'Center', 'shoestrap' ),
-				),
-			);
-
-			$fields[] = array(
-				'title'     => __('Use a Background Pattern', 'shoestrap'),
-				'desc'      => __('Select one of the already existing Background Patterns. Default: OFF.', 'shoestrap'),
-				'id'        => 'jumbotron_background_pattern_toggle',
-				'default'   => 0,
-				'type'      => 'switch'
-			);
-
-			$fields[] = array(
-				'title'     => __('Choose a Background Pattern', 'shoestrap'),
-				'desc'      => __('Select a background pattern.', 'shoestrap'),
-				'id'        => 'jumbotron_background_pattern',
-				'required'  => array('jumbotron_background_pattern_toggle','=',array('1')),
-				'default'   => '',
-				'tiles'     => true,
-				'type'      => 'image_select',
-				'options'   => $bg_pattern_images,
+				'compiler'    => true,
+				'output'      => '.jumbotron',
+				'type'        => 'background',
 			);
 
 			$fields[] = array(
@@ -406,30 +321,6 @@ if ( !class_exists( 'ShoestrapHeaders' ) ) {
 			}
 		}
 
-		/*
-		 * Any necessary extra CSS is generated here
-		 */
-		function header_css() {
-			$bg = shoestrap_getVariable( 'header_bg' );
-			$cl = shoestrap_getVariable( 'header_color' );
-			
-			$header_margin_top    = shoestrap_getVariable( 'header_margin_top' );
-			$header_margin_bottom = shoestrap_getVariable( 'header_margin_bottom' );
-			
-			$opacity  = (intval(shoestrap_getVariable( 'header_bg_opacity' )))/100;
-			$rgb      = ShoestrapColor::get_rgb( $bg, true );
-
-			if ( shoestrap_getVariable( 'header_toggle' ) == 1 ) {
-				$style = '.header-wrapper{ color: '.$cl.';';
-
-				$style .= ( $opacity != 1 && $opacity != '' ) ? 'background: rgb('.$rgb.'); background: rgba('.$rgb.', '.$opacity.');' : 'background: '.$bg.';';
-				$style .= 'margin-top:'.$header_margin_top.'px; margin-bottom:'.$header_margin_bottom.'px; }';
-
-				wp_add_inline_style( 'shoestrap_css', $style );
-			}
-		}
-
-
 		/**
 		 * Register sidebars and widgets
 		 */
@@ -499,68 +390,7 @@ if ( !class_exists( 'ShoestrapHeaders' ) ) {
 			$center = shoestrap_getVariable( 'jumbotron_center' );
 			$border = shoestrap_getVariable( 'jumbotron_border' );
 
-			$repeat   = '';
-			$position = '';
-			// $background is the saved custom image, or the default image.
-			if ( shoestrap_getVariable( 'jumbotron_background_image_toggle' ) == 1 ) {
-
-				if ( shoestrap_getVariable( 'jumbotron_background_custom_image' ) != '' ) {
-					$jVar = shoestrap_getVariable( 'jumbotron_background_custom_image' );
-					$background = set_url_scheme( $jVar['url'] );
-				} elseif ( shoestrap_getVariable( 'jumbotron_background_image' ) != '' ) {
-					$jVar = shoestrap_getVariable( 'jumbotron_background_image' );
-					$background = set_url_scheme( $jVar['url'] );
-				}
-				
-			} elseif ( shoestrap_getVariable( 'jumbotron_background_pattern_toggle' ) == 1 && shoestrap_getVariable( 'jumbotron_background_pattern' ) != '' ) {
-				$background = shoestrap_getVariable( 'jumbotron_background_pattern' );
-			}
-
-			$color = '';
-			if ( shoestrap_getVariable( 'jumbotron_background_color' ) != '' )
-				$color = '#' . str_replace( '#', '', shoestrap_getVariable( 'jumbotron_background_color' ) );
-
-			if ( !isset( $background ) && !isset( $color ) )
-				return;
-
-			$style = $color ? "background-color: $color;" : '';
-
-			if ( shoestrap_getVariable( 'jumbotron_background_fixed_toggle' ) == 1 )
-				$style .= 'background-attachment: fixed;';
-
-			$image = ( isset($background) && $background ) ? "background-image: url( '$background' );" : '';
-
-			if ( shoestrap_getVariable( 'jumbotron_background_image_toggle' ) == 1 && ( shoestrap_getVariable( 'jumbotron_background_custom_image' ) != '' || shoestrap_getVariable( 'jumbotron_background_image' ) != '' ) ) {
-				if ( shoestrap_getVariable( 'jumbotron_background_image_position_toggle' ) == 0 ) {
-					$style .= "background-size: cover;";
-					$style .= "-webkit-background-size: cover;";
-					$style .= "-moz-background-size: cover;";
-					$style .= "-o-background-size: cover;";
-					$style .= "background-position: 50% 50%;";
-
-					if ( shoestrap_getVariable( 'jumbotron_background_fixed_toggle' ) == 0 )
-						$style .= "background-repeat: no-repeat;";
-
-				} else { // Not fixed position, custom
-					$repeat = shoestrap_getVariable( 'jumbotron_background_repeat' );
-
-					if ( !in_array( $repeat, array( 'no-repeat', 'repeat-x', 'repeat-y', 'repeat' ) ) )
-						$repeat = 'repeat';
-
-					if ( $repeat == 'no-repeat' )
-						$style .= "background-size: auto;";
-
-					$repeat = " background-repeat: $repeat;";
-					$position = shoestrap_getVariable( 'jumbotron_background_position_x', 'left' );
-					
-					if ( !in_array( $position, array( 'center', 'right', 'left' ) ) )
-						$position = 'left';
-
-					$position = " background-position: top $position;";
-				}
-			}
-
-			$style .= $image . $repeat . $position;
+			$style = '';
 
 			if ( $center == 1 )
 				$style .= 'text-align: center;';
@@ -571,8 +401,7 @@ if ( !class_exists( 'ShoestrapHeaders' ) ) {
 			$style .= 'margin-bottom: 0px;';
 
 			$theCSS = '.jumbotron {' . trim( $style ) . '}';
-			$theCSS .= $color ? ".jumbotron{background: $color;}" : '';
-			
+
 			wp_add_inline_style( 'shoestrap_css', $theCSS );
 		}
 
@@ -607,7 +436,8 @@ if ( !class_exists( 'ShoestrapHeaders' ) ) {
 		 */
 		function variables() {
 			$font_jumbotron         = shoestrap_process_font( shoestrap_getVariable( 'font_jumbotron', true ) );
-			$jumbotron_bg     			= '#' . str_replace( '#', '', ShoestrapColor::sanitize_hex( shoestrap_getVariable( 'jumbotron_bg', true ) ) );
+			$jumbotron_bg           = shoestrap_getVariable( 'jumbotron_bg', true );
+			$jumbotron_bg           = '#' . str_replace( '#', '', ShoestrapColor::sanitize_hex( $jumbotron_bg['background-color'] ) );
 			$jumbotron_text_color   = '#' . str_replace( '#', '', $font_jumbotron['color'] );
 
 			if ( shoestrap_getVariable( 'font_jumbotron_heading_custom', true ) == 1 ) {
