@@ -46,7 +46,9 @@ if ( !class_exists( 'ShoestrapBackground' ) ) {
 				'title'       => __( 'General Background Color', 'shoestrap' ),
 				'desc'        => __( 'Select a background color for your site. Default: #ffffff.', 'shoestrap' ),
 				'id'          => 'html_bg',
-				'default'     => '#ffffff',
+				'default'     => array(
+					'background-color' => '#ffffff'
+				),
 				'customizer'  => array(),
 				'transparent' => false,
 				'type'        => 'background',
@@ -54,14 +56,17 @@ if ( !class_exists( 'ShoestrapBackground' ) ) {
 			);
 
 			$fields[] = array(
-				'title'     => __( 'Content Background', 'shoestrap' ),
-				'desc'      => __( 'Background for the content area. Colors also affect input areas and other colors.', 'shoestrap' ),
-				'id'        => 'body_bg',
-				'default'   => '',
-				'compiler'  => true,
-				'customizer'=> array(),
-				'type'      => 'background',
-				'output'    => '.wrap.main-section .content .bg'
+				'title'       => __( 'Content Background', 'shoestrap' ),
+				'desc'        => __( 'Background for the content area. Colors also affect input areas and other colors.', 'shoestrap' ),
+				'id'          => 'body_bg',
+				'default'     => array(
+					'background-color' => '#ffffff'
+				),
+				'compiler'    => true,
+				'transparent' => false,
+				'customizer'  => array(),
+				'type'        => 'background',
+				'output'      => '.wrap.main-section .content .bg'
 			);
 
 			$fields[] = array(
@@ -87,13 +92,12 @@ if ( !class_exists( 'ShoestrapBackground' ) ) {
 		function css() {
 			$content_opacity  = shoestrap_getVariable( 'body_bg_opacity' );
 			$bg_color         = shoestrap_getVariable( 'body_bg' );
-			$bg_color         = $bg_color['background-color'];
+			$bg_color         = isset( $bg_color['background-color'] ) ? $bg_color['background-color'] : '#ffffff';
 
 			// The Content background color
-			$content_bg = ( $content_opacity != 100 ) ? 'background:' . ShoestrapColor::get_rgba( $bg_color, $content_opacity ) . ';' : '';
+			$content_bg = $content_opacity < 100 ? 'background:' . ShoestrapColor::get_rgba( $bg_color, $content_opacity ) . ';' : '';
 
-			if ( $content_opacity < 100 )
-				$style = '.wrap.main-section div.content .bg {' . $content_bg . '}';
+			$style = $content_opacity < 100 ? '.wrap.main-section div.content .bg {' . $content_bg . '}' : '';
 
 			wp_add_inline_style( 'shoestrap_css', $style );
 		}
@@ -104,7 +108,7 @@ if ( !class_exists( 'ShoestrapBackground' ) ) {
 		 */
 		public static function variables() {
 			$bg      = shoestrap_getVariable( 'body_bg', true );
-			$bg      = $bg['background-color'];
+			$bg      = isset( $bg_color['background-color'] ) ? $bg_color['background-color'] : '#ffffff';
 			$body_bg = '#' . str_replace( '#', '', ShoestrapColor::sanitize_hex( $bg ) );
 
 			// Calculate the gray shadows based on the body background.
