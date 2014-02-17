@@ -31,7 +31,7 @@ if ( !class_exists( 'ShoestrapMenus' ) ) {
 			if ( shoestrap_getVariable( 'secondary_navbar_margin' ) != 0 )
 				add_action( 'wp_enqueue_scripts', array( $this, 'secondary_navbar_margin' ), 101 );
 
-			$hook = ( shoestrap_getVariable( 'navbar_toggle' ) == 'left' ) ? 'shoestrap_do_navbar' : 'shoestrap_pre_main_nav';
+			$hook = ( shoestrap_getVariable( 'navbar_toggle' ) == 'left' ) ? 'shoestrap_do_navbar' : 'shoestrap_inside_nav_begin';
 			add_action( $hook, array( $this, 'navbar_slidedown_toggle' ) );
 		}
 

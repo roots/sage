@@ -19,7 +19,7 @@ if ( !class_exists( 'ShoestrapLayout' ) ) {
 			add_filter( 'shoestrap_navbar_container_class',  array( $this, 'navbar_container_class'         )     );
 			add_action( 'template_redirect',                 array( $this, 'content_width'                  )     );
 
-			if ( ( shoestrap_getVariable( 'body_margin_top' ) != '0' ) || ( shoestrap_getVariable( 'body_margin_bottom' ) != '0' ) )
+			if ( ( shoestrap_getVariable( 'body_margin_top' ) > 0 ) || ( shoestrap_getVariable( 'body_margin_bottom' ) > 0 ) )
 				add_action( 'wp_enqueue_scripts',            array( $this, 'body_margin'                   ), 101 );
 
 			add_action( 'get_header',             array( $this, 'boxed_container_div_open'          ), 1   );
