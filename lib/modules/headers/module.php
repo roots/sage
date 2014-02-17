@@ -25,19 +25,7 @@ if ( !class_exists( 'ShoestrapHeaders' ) ) {
 		 * Include Jumbotron, Extra Header and more.
 		 */
 		function options( $sections ) {
-
-			//Background Patterns Reader
-			$bg_pattern_images_path = get_template_directory() . '/lib/modules/background/patterns';
-			$bg_pattern_images_url  = get_template_directory_uri() . '/lib/modules/background/patterns/';
-			$bg_pattern_images      = array();
-
-			if ( is_dir( $bg_pattern_images_path ) && $bg_pattern_images_dir = opendir( $bg_pattern_images_path ) ) {
-				while ( ( $bg_pattern_images_file = readdir( $bg_pattern_images_dir ) ) !== false ) :
-					if ( stristr( $bg_pattern_images_file, '.png' ) !== false || stristr( $bg_pattern_images_file, '.jpg' ) !== false )
-						$bg_pattern_images[] = $bg_pattern_images_url . $bg_pattern_images_file;
-
-				endwhile;
-			}
+			$settings = get_option( SHOESTRAP_OPT_NAME );
 
 			$url = admin_url( 'widgets.php' );
 			$fields[] = array( 
@@ -147,9 +135,12 @@ if ( !class_exists( 'ShoestrapHeaders' ) ) {
 			$fields[] = array(
 				'title'       => __( 'Jumbotron Background', 'shoestrap' ),
 				'desc'        => __( 'Select the background for your Jumbotron area.', 'shoestrap'),
-				'id'          => 'jumbotron_bg',
+				'id'          => 'jumbo_bg',
 				'default'     => array(
-					'background-color' => '#eeeeee'
+					'background-color'    => isset( $settings['jumbotron_bg'] ) ? $settings['jumbotron_bg'] : '#eeeeee',
+					'background-repeat'   => isset( $settings['jumbotron_background_repeat'] ) ? $settings['jumbotron_background_repeat'] : NULL,
+					'background-position' => isset( $settings['jumbotron_background_image_position_toggle'] ) ? $settings['jumbotron_background_image_position_toggle'] . ' center' : NULL,
+					'background-image'    => isset( $settings['jumbotron_background_image']['url'] ) ? $settings['jumbotron_background_image']['url'] : NULL,
 				),
 				'compiler'    => true,
 				'output'      => '.jumbotron',
@@ -436,7 +427,7 @@ if ( !class_exists( 'ShoestrapHeaders' ) ) {
 		 */
 		function variables() {
 			$font_jumbotron         = shoestrap_process_font( shoestrap_getVariable( 'font_jumbotron', true ) );
-			$jumbotron_bg           = shoestrap_getVariable( 'jumbotron_bg', true );
+			$jumbotron_bg           = shoestrap_getVariable( 'jumbo_bg', true );
 			$jumbotron_bg           = '#' . str_replace( '#', '', ShoestrapColor::sanitize_hex( $jumbotron_bg['background-color'] ) );
 			$jumbotron_text_color   = '#' . str_replace( '#', '', $font_jumbotron['color'] );
 
