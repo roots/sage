@@ -25,6 +25,7 @@
     "gulp-minify-css": "~0.3.0",
     "gulp-concat": "~2.1.7",
     "gulp-uglify": "~0.2.1",
-    "gulp-rename": "~1.0.0"
+    "gulp-rename": "~1.0.0",
+    "gulp-wp-rev": "~0.0.1"
   }
 }

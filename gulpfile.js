@@ -5,7 +5,8 @@ var gulp   = require('gulp'),
     minify = require('gulp-minify-css'),
     concat = require('gulp-concat'),
     uglify = require('gulp-uglify'),
-    rename = require('gulp-rename');
+    rename = require('gulp-rename'),
+    rev    = require('gulp-wp-rev');
 
 gulp.task('lint', function() {
   /*
@@ -43,12 +44,23 @@ gulp.task('scripts', function() {
     .pipe(gulp.dest('assets/js'));
 });
 
+gulp.task('rev', function () {
+    gulp.src('lib/scripts.php')
+        .pipe(rev({
+            css: "assets/css/main.min.css",
+            cssHandle: "roots_main",
+            js: "assets/js/scripts.min.js",
+            jsHandle: "roots_scripts"
+        }))
+        .pipe(gulp.dest('lib'));
+});
+
 gulp.task('watch', function() {
   // Watch our JS files for changes
-  gulp.watch(['!assets/js/scripts.min.js', 'assets/js/*.js', 'assets/js/plugins/*/*.js', 'assets/js/plugins/*.js'], ['lint', 'scripts']);
+  gulp.watch(['!assets/js/scripts.min.js', 'assets/js/*.js', 'assets/js/plugins/*/*.js', 'assets/js/plugins/*.js'], ['lint', 'scripts', 'rev']);
 
   // Watch our LESS files for changes
-  gulp.watch(['assets/less/bootstrap/*.less', 'assets/less/*.less'], ['less']);
+  gulp.watch(['assets/less/bootstrap/*.less', 'assets/less/*.less'], ['less', 'rev']);
 });
 
 gulp.task('default', ['lint', 'scripts', 'less']);
