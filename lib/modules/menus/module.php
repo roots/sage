@@ -428,7 +428,7 @@ if ( !class_exists( 'ShoestrapMenus' ) ) {
 
 			if ( $opacity != 1 && $opacity != '' ) {
 				$bg  = str_replace( '#', '', shoestrap_getVariable( 'navbar_bg' ) );
-				$rgb = shoestrap_get_rgb( $bg, true );
+				$rgb = ShoestrapColor::get_rgb( $bg, true );
 				$opacityie = str_replace( '0.', '', $opacity );
 
 				$style .= '.navbar, .navbar-default {';
