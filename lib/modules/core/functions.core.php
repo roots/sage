@@ -5,10 +5,6 @@ define( 'themeFOLDER', get_template() );
 define( 'themePATH', get_theme_root() );
 define( 'themeNAME', wp_get_theme() );
 
-include_once( dirname( __FILE__ ) . '/includes/class.ShoestrapColor.php' );
-include_once( dirname( __FILE__ ) . '/includes/class.ShoestrapImage.php' );
-
-
 if ( !function_exists( 'shoestrap_getVariable' ) ) :
 /*
  * Gets the current values from REDUX, and if not there, grabs the defaults

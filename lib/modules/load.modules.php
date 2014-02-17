@@ -36,10 +36,9 @@ if ( !defined( 'REDUX_OPT_NAME' ) )
 	define( 'REDUX_OPT_NAME', SHOESTRAP_OPT_NAME );
 
 // Prioritize loading of some necessary core modules
-require_once SHOESTRAP_MODULES_PATH . '/redux/module.php';
-require_once SHOESTRAP_MODULES_PATH . '/core/module.php';
+require_once SHOESTRAP_MODULES_PATH . '/redux/redux-init.php';
+require_once SHOESTRAP_MODULES_PATH . '/core/functions.core.php';
 
-if ( !function_exists( 'shoestrap_include_modules' ) ) :
 /*
  * Use 'RecursiveDirectoryIterator' if PHP Version >= 5.2.11
  */
@@ -47,27 +46,22 @@ function shoestrap_include_modules() {
 	// Include all modules from the shoestrap theme (NOT the child themes)
 	$modules_path = new RecursiveDirectoryIterator( SHOESTRAP_MODULES_PATH . '/' );
 	$recIterator  = new RecursiveIteratorIterator( $modules_path );
-	$regex        = new RegexIterator( $recIterator, '/\/module.php$/i' );
+	$regex        = new RegexIterator( $recIterator, '/\/*.php$/i' );
 
 	foreach( $regex as $item ) {
 		require_once $item->getPathname();
 	}
 }
-endif;
 
-
-if ( !function_exists( 'shoestrap_include_modules_fallback' ) ) :
 /*
  * Fallback to 'glob' if PHP Version < 5.2.11
  */
 function shoestrap_include_modules_fallback() {
 	// Include all modules from the shoestrap theme (NOT the child themes)
-	foreach( glob( get_template_directory() . '/lib/modules/*/module.php' ) as $module ) {
+	foreach( glob( SHOESTRAP_MODULES_PATH . '/*/*.php' ) as $module ) {
 		require_once $module;
 	}
 }
-endif;
-
 
 // PHP version control
 $phpversion = phpversion();
