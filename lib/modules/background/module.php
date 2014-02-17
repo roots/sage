@@ -14,55 +14,12 @@ if ( !class_exists( 'ShoestrapBackground' ) ) {
 			add_action( 'plugins_loaded',     array( $this, 'upgrade_options'  )      );
 		}
 
-		/**
-		 * Migrate some deprecated options to their new versions.
-		 */
-		function upgrade_options( $context ) {
-			// Get an array of all the options
-			$settings = get_option( SHOESTRAP_OPT_NAME );
-
-			if ( ( $settings['color_body_bg'] && !$settings['body_bg'] ) || ( $settings['html_color_bg'] && !$settings['html_bg'] ) ) {
-
-				$html_color_bg                    = $settings['html_color_bg'];
-				$color_body_bg                    = $settings['color_body_bg'];
-				$color_body_bg_opacity            = $settings['color_body_bg_opacity'];
-				$background_image_toggle          = $settings['background_image_toggle'];
-				$background_image                 = $settings['background_image'];
-				$background_fixed_toggle          = $settings['background_fixed_toggle'];
-				$background_image_position_toggle = $settings['background_image_position_toggle'];
-				$background_repeat                = $settings['background_repeat'];
-				$background_position_x            = $settings['background_position_x'];
-				$background_pattern_toggle        = $settings['background_pattern_toggle'];
-				$background_pattern               = $settings['background_pattern'];
-
-				if ( $background_pattern_toggle  == 1 && $background_image_toggle != 1 ) {
-					$background_image  = $background_pattern;
-					$background_repeat = 'repeat';
-				}
-
-				$body_bg = array(
-					'background-color'    => $color_body_bg,
-				);
-
-				$html_bg = array(
-					'background-color'    => $html_color_bg,
-					'background-repeat'   => $background_repeat,
-					'background-position' => $background_position_x . ' center',
-					'background-image'    => $background_image
-				);
-
-				$settings['html_bg'] = $html_bg;
-				$settings['body_bg'] = $body_bg;
-
-				update_option( SHOESTRAP_OPT_NAME, $settings );
-			}
-		}
-
 		/*
 		 * The background core options for the Shoestrap theme
 		 */
 		function options( $sections ) {
 			global $redux;
+			$settings = get_option( SHOESTRAP_OPT_NAME );
 
 			//Background Patterns Reader
 			$bg_pattern_images_path = SHOESTRAP_MODULES_PATH . '/background/assets/patterns';
@@ -92,7 +49,7 @@ if ( !class_exists( 'ShoestrapBackground' ) ) {
 				'desc'        => __( 'Select a background color for your site. Default: #ffffff.', 'shoestrap' ),
 				'id'          => 'html_bg',
 				'default'     => array(
-					'background-color' => '#ffffff'
+					'background-color' => isset( $settings['html_color_bg'] ) ? $settings['html_color_bg'] : '#ffffff',
 				),
 				'customizer'  => array(),
 				'transparent' => false,
@@ -105,7 +62,10 @@ if ( !class_exists( 'ShoestrapBackground' ) ) {
 				'desc'        => __( 'Background for the content area. Colors also affect input areas and other colors.', 'shoestrap' ),
 				'id'          => 'body_bg',
 				'default'     => array(
-					'background-color' => '#ffffff'
+					'background-color'    => isset( $settings['color_body_bg'] ) ? $settings['color_body_bg'] : '#ffffff',
+					'background-repeat'   => isset( $settings['background_repeat'] ) ? $settings['background_repeat'] : NULL,
+					'background-position' => isset( $settings['background_position_x'] ) ? $settings['background_position_x'] . ' center' : NULL,
+					'background-image'    => isset( $settings['background_image'] ) ? $settings['background_image'] : NULL,
 				),
 				'compiler'    => true,
 				'transparent' => false,
