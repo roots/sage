@@ -1,6 +1,6 @@
 # [Roots Theme](http://roots.io/)
 
-[![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
+[![Built with Gulp](https://raw.github.com/gulpjs/artwork/master/gulp.png)](http://gulpjs.com/)
 
 Roots is a WordPress starter theme based on [HTML5 Boilerplate](http://html5boilerplate.com/) & [Bootstrap](http://getbootstrap.com/) that will help you make better themes.
 
