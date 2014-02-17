@@ -21,23 +21,6 @@ if ( !class_exists( 'ShoestrapBackground' ) ) {
 			global $redux;
 			$settings = get_option( SHOESTRAP_OPT_NAME );
 
-			//Background Patterns Reader
-			$bg_pattern_images_path = SHOESTRAP_MODULES_PATH . '/background/assets/patterns';
-			$bg_pattern_images_url  = SHOESTRAP_MODULES_URL . '/background/assets/patterns/';
-
-			$bg_pattern_images      = array();
-
-			if ( is_dir( $bg_pattern_images_path ) ) {
-				if ( $bg_pattern_images_dir = opendir( $bg_pattern_images_path ) ) {
-					$bg_pattern_images = array();
-
-					while ( ( $bg_pattern_images_file = readdir( $bg_pattern_images_dir ) ) !== false ) {
-						if( stristr( $bg_pattern_images_file, '.png' ) !== false || stristr( $bg_pattern_images_file, '.jpg' ) !== false )
-							array_push( $bg_pattern_images, $bg_pattern_images_url . $bg_pattern_images_file );
-					}
-				}
-			}
-
 			// Blog Options
 			$section = array(
 				'title' => __( 'Background', 'shoestrap' ),
@@ -65,7 +48,7 @@ if ( !class_exists( 'ShoestrapBackground' ) ) {
 					'background-color'    => isset( $settings['color_body_bg'] ) ? $settings['color_body_bg'] : '#ffffff',
 					'background-repeat'   => isset( $settings['background_repeat'] ) ? $settings['background_repeat'] : NULL,
 					'background-position' => isset( $settings['background_position_x'] ) ? $settings['background_position_x'] . ' center' : NULL,
-					'background-image'    => isset( $settings['background_image'] ) ? $settings['background_image'] : NULL,
+					'background-image'    => isset( $settings['background_image']['url'] ) ? $settings['background_image']['url'] : NULL,
 				),
 				'compiler'    => true,
 				'transparent' => false,
