@@ -5,7 +5,7 @@
  */
 
 
-/*
+/**
  * Color functions
  */
 function shoestrap_sanitize_hex( $color ) {
@@ -68,7 +68,28 @@ function shoestrap_lumosity_difference( $hex1, $hex2 ) {
 	return ShoestrapColor::lumosity_difference( $hex1, $hex2 );
 }
 
-/*
+/**
+ * Layout functions
+ */
+function shoestrap_content_width_px( $echo = false ) {
+	ShoestrapLayout::content_width_px( $echo );
+}
+
+/**
+ * Image functions
+ */
+function shoestrap_image_resize( $data ) {
+	ShoestrapImage::image_resize( $data );
+}
+
+/**
+ * Blog functions
+ */
+function shoestrap_paginate_links() {
+	ShoestrapBlog::paginate_links();
+}
+
+/**
  * Actions & filters
  */
 add_action( 'shoestrap_single_top', 'shoestrap_in_article_top_deprecated' );
