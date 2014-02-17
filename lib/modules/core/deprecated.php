@@ -77,12 +77,6 @@ function shoestrap_in_article_top_deprecated() {
 		do_action( 'shoestrap_in_article_top' );
 }
 
-add_filter( 'shoestrap_title_section', 'shoestrap_override_header_deprecated' );
-function shoestrap_override_header_deprecated() {
-	if ( has_action( 'shoestrap_override_header' ) )
-		do_action( 'shoestrap_override_header' );
-}
-
 add_action( 'shoestrap_entry_meta', 'shoestrap_entry_meta_override_deprecated' );
 function shoestrap_entry_meta_override_deprecated() {
 	if ( has_action( 'shoestrap_entry_meta_override' ) )
@@ -148,4 +142,3 @@ function shoestrap_after_the_content_deprecated() {
 	if ( has_action( 'shoestrap_after_the_content' ) )
 		do_action( 'shoestrap_after_the_content' );
 }
-
