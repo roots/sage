@@ -4,6 +4,10 @@
  * Developers should NOT use these functions and actions and should instead migrate to the new ones.
  */
 
+
+/*
+ * Color functions
+ */
 function shoestrap_sanitize_hex( $color ) {
 	return ShoestrapColor::sanitize_hex( $color );
 }
@@ -62,5 +66,86 @@ function shoestrap_color_difference( $hex1, $hex2 ) {
 
 function shoestrap_lumosity_difference( $hex1, $hex2 ) {
 	return ShoestrapColor::lumosity_difference( $hex1, $hex2 );
+}
+
+/*
+ * Actions & filters
+ */
+add_action( 'shoestrap_single_top', 'shoestrap_in_article_top_deprecated' );
+function shoestrap_in_article_top_deprecated() {
+	if ( has_action( 'shoestrap_in_article_top' ) )
+		do_action( 'shoestrap_in_article_top' );
+}
+
+add_filter( 'shoestrap_title_section', 'shoestrap_override_header_deprecated' );
+function shoestrap_override_header_deprecated() {
+	if ( has_action( 'shoestrap_override_header' ) )
+		do_action( 'shoestrap_override_header' );
+}
+
+add_action( 'shoestrap_entry_meta', 'shoestrap_entry_meta_override_deprecated' );
+function shoestrap_entry_meta_override_deprecated() {
+	if ( has_action( 'shoestrap_entry_meta_override' ) )
+		do_action( 'shoestrap_entry_meta_override' );
+}
+
+add_action( 'shoestrap_entry_meta', 'shoestrap_after_entry_meta_deprecated', 99 );
+function shoestrap_after_entry_meta_deprecated() {
+	if ( has_action( 'shoestrap_after_entry_meta' ) )
+		do_action( 'shoestrap_after_entry_meta' );
+}
+
+add_action( 'shoestrap_do_navbar', 'shoestrap_pre_navbar_deprecated', 9 );
+function shoestrap_pre_navbar_deprecated() {
+	if ( has_action( 'shoestrap_pre_navbar' ) )
+		do_action( 'shoestrap_pre_navbar' );
+}
+
+add_action( 'shoestrap_do_navbar', 'shoestrap_post_navbar_deprecated', 15 );
+function shoestrap_post_navbar_deprecated() {
+	if ( has_action( 'shoestrap_post_navbar' ) )
+		do_action( 'shoestrap_post_navbar' );
+}
+
+add_action( 'shoestrap_pre_wrap', 'shoestrap_below_top_navbar_deprecated' );
+function shoestrap_below_top_navbar_deprecated() {
+	if ( has_action( 'shoestrap_below_top_navbar' ) )
+		do_action( 'shoestrap_below_top_navbar' );
+}
+
+add_action( 'shoestrap_pre_wrap', 'shoestrap_breadcrumbs_deprecated' );
+function shoestrap_breadcrumbs_deprecated() {
+	if ( has_action( 'shoestrap_breadcrumbs' ) )
+		do_action( 'shoestrap_breadcrumbs' );
+}
+
+add_action( 'shoestrap_pre_wrap', 'shoestrap_header_media_deprecated' );
+function shoestrap_header_media_deprecated() {
+	if ( has_action( 'shoestrap_header_media' ) )
+		do_action( 'shoestrap_header_media' );
+}
+
+add_action( 'shoestrap_pre_footer', 'shoestrap_after_wrap_deprecated' );
+function shoestrap_after_wrap_deprecated() {
+	if ( has_action( 'shoestrap_after_wrap' ) )
+		do_action( 'shoestrap_after_wrap' );
+}
+
+add_action( 'shoestrap_in_loop_start', 'shoestrap_after_wrap_deprecated' );
+function shoestrap_before_the_content_deprecated() {
+	if ( has_action( 'shoestrap_before_the_content' ) )
+		do_action( 'shoestrap_before_the_content' );
+}
+
+add_action( 'shoestrap_in_loop_start', 'shoestrap_in_loop_start_action_deprecated' );
+function shoestrap_in_loop_start_action_deprecated() {
+	if ( has_action( 'shoestrap_in_loop_start_action' ) )
+		do_action( 'shoestrap_in_loop_start_action' );
+}
+
+add_action( 'shoestrap_in_loop_end', 'shoestrap_after_the_content_deprecated' );
+function shoestrap_after_the_content_deprecated() {
+	if ( has_action( 'shoestrap_after_the_content' ) )
+		do_action( 'shoestrap_after_the_content' );
 }
 
