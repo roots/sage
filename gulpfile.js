@@ -22,13 +22,14 @@ gulp.task('lint', function() {
 
 gulp.task('less', function() {
   /*
-   * Grab any .less files in our assets/less folder (not including subdirectories)
-   * and the main file for Bootstrap (the one with the imports!)
+   * Grab our main LESS file (app.less) which imports all other files
    *
    * Crunch it all down into assets/css/main.min.css
    */
-  return gulp.src(['assets/less/*.less', 'assets/less/bootstrap/bootstrap.less'])
-    .pipe(less())
+  return gulp.src('assets/less/app.less')
+    .pipe(less({
+      sourceMap: true
+    }))
     .pipe(concat('main.min.css'))
     .pipe(minify())
     .pipe(gulp.dest('assets/css'));
@@ -45,7 +46,7 @@ gulp.task('scripts', function() {
 });
 
 gulp.task('rev', function () {
-    gulp.src('lib/scripts.php')
+    return gulp.src('lib/scripts.php')
         .pipe(rev({
             css: "assets/css/main.min.css",
             cssHandle: "roots_main",
@@ -58,9 +59,12 @@ gulp.task('rev', function () {
 gulp.task('watch', function() {
   // Watch our JS files for changes
   gulp.watch(['!assets/js/scripts.min.js', 'assets/js/*.js', 'assets/js/plugins/*/*.js', 'assets/js/plugins/*.js'], ['lint', 'scripts', 'rev']);
+  gutil.log('Watching scripts');
 
   // Watch our LESS files for changes
   gulp.watch(['assets/less/bootstrap/*.less', 'assets/less/*.less'], ['less', 'rev']);
+  gutil.log('Watching styles');
+
 });
 
 gulp.task('default', ['lint', 'scripts', 'less']);
