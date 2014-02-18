@@ -1,5 +1,6 @@
 <?php get_template_part('templates/head'); ?>
 <body <?php body_class(); ?>>
+<a href="#content" class="sr-only"><?php _e( 'Skip to main content', 'shoestrap' ); ?></a>
 
 	<!--[if lt IE 8]>
 		<?php shoestrap_alert( 'alert alert-warning', __('You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.', 'shoestrap') ); ?>
@@ -18,7 +19,7 @@
 
 		<?php do_action('shoestrap_pre_content'); ?>
 
-		<div class="content">
+		<div id="content" class="content">
 			<div class="row bg">
 
 				<?php do_action( 'shoestrap_pre_main' ); ?>

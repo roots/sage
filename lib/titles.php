@@ -44,7 +44,7 @@ function shoestrap_title() {
  */
 function shoestrap_title_section( $header = true, $element = 'h1', $link = false, $class = 'entry-title' ) {
 	$content  = $header ? '<header>' : '';
-	$content .= '<' . $element . ' class="' . $class . '">';
+	$content .= '<title><' . $element . ' class="' . $class . '"></title>';
 	$content .= $link ? '<a href="' . get_permalink() . '">' : '';
 	$content .= is_singular() ? shoestrap_title() : apply_filters( 'shoestrap_title', get_the_title() );
 	$content .= $link ? '</a>' : '';
