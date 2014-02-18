@@ -49,6 +49,14 @@ if ( !class_exists( 'ShoestrapBlog' ) ) {
 				'mode'        => 'checkbox'
 			);
 
+			$fields[] = array( 
+				'title'     => __( 'Switch Date Meta in time_diff mode', 'shoestrap' ),
+				'desc'      => __( 'Replace Date Meta element by displaying the difference between post creation timestamp and current timestamp. Default: OFF.', 'shoestrap' ),
+				'id'        => 'date_meta_format',
+				'default'   => 0,
+				'type'      => 'switch',
+			);
+
 			// Featured Images Options
 			$settings  = get_option( SHOESTRAP_OPT_NAME );
 			$screen_large_desktop = filter_var( $settings[ 'screen_large_desktop' ], FILTER_SANITIZE_NUMBER_INT );
@@ -244,6 +252,7 @@ if ( !class_exists( 'ShoestrapBlog' ) ) {
 		function meta_custom_render() {
 			// get config and data
 			$metas = shoestrap_getVariable( 'shoestrap_entry_meta_config' );
+			$date_format = shoestrap_getVariable( 'date_meta_format' );
 
 			$categories_list = get_the_category_list( __( ', ', 'shoestrap' ) );
 			$tag_list        = get_the_tag_list( '', __( ', ', 'shoestrap' ) );
@@ -275,11 +284,20 @@ if ( !class_exists( 'ShoestrapBlog' ) ) {
 						if ( !has_post_format( 'link' ) ) {
 							$format_prefix = ( has_post_format( 'chat' ) || has_post_format( 'status' ) ) ? _x( '%1$s on %2$s', '1: post format name. 2: date', 'shoestrap' ): '%2$s';
 
-							$content .= sprintf( '<span class="date ' . $colclass . '"><i class="el-icon-time icon"></i> <a href="%1$s" title="%2$s" rel="bookmark"><time class="entry-date" datetime="%3$s">%4$s</time></a></span>',
+							if ( $date_format == 0 ) {
+								$text = esc_html( sprintf( $format_prefix, get_post_format_string( get_post_format() ), get_the_date() ) );
+								$icon = "el-icon-calendar icon";
+							} 
+							elseif ( $date_format == 1 ) {
+								$text = sprintf( human_time_diff( get_the_time('U'), current_time('timestamp') ) . ' ago');
+								$icon = "el-icon-time icon";
+							}
+
+							$content .= sprintf( '<span class="date ' . $colclass . '"><i class="' . $icon . '"></i> <a href="%1$s" title="%2$s" rel="bookmark"><time class="entry-date" datetime="%3$s">%4$s</time></a></span>',
 								esc_url( get_permalink() ),
 								esc_attr( sprintf( __( 'Permalink to %s', 'shoestrap' ), the_title_attribute( 'echo=0' ) ) ),
 								esc_attr( get_the_date( 'c' ) ),
-								esc_html( sprintf( $format_prefix, get_post_format_string( get_post_format() ), get_the_date() ) )
+								$text
 							);
 						}
 					}
