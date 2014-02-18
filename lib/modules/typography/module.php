@@ -254,76 +254,76 @@ if ( !class_exists( 'ShoestrapTypography' ) ) {
 
 			if ( $font_base['google'] === 'true' ) {
 				$font = self::getGoogleScript( $font_base );
-				wp_register_style( $font['key'], $font['link'] );
-				wp_enqueue_style( $font['key'] );
+				wp_register_style( 'ss-googlefont-base', $font['link'] );
+				wp_enqueue_style( 'ss-googlefont-base' );
 			}
 
 			if ( $font_navbar['google'] === 'true' ) {
 				$font = self::getGoogleScript( $font_navbar );
-				wp_register_style( $font['key'], $font['link'] );
-				wp_enqueue_style( $font['key'] );
+				wp_register_style( 'ss-googlefont-navbar', $font['link'] );
+				wp_enqueue_style( 'ss-googlefont-navbar' );
 			}
 
 			if ( $font_brand['google'] === 'true' ) {
 				$font = self::getGoogleScript( $font_brand );
-				wp_register_style( $font['key'], $font['link'] );
-				wp_enqueue_style( $font['key'] );
+				wp_register_style( 'ss-googlefont-brand', $font['link'] );
+				wp_enqueue_style( 'ss-googlefont-brand' );
 			}
 
 			if ( $font_jumbotron['google'] === 'true' ) {
 				$font = self::getGoogleScript( $font_jumbotron );
-				wp_register_style( $font['key'], $font['link'] );
-				wp_enqueue_style( $font['key'] );
+				wp_register_style( 'ss-googlefont-jumbotron', $font['link'] );
+				wp_enqueue_style( 'ss-googlefont-jumbotron' );
 			}
 
 			if ( shoestrap_getVariable( 'font_heading_custom' ) ) {
 
 				if ( $font_h1['google'] === 'true' ) {
 					$font = self::getGoogleScript( $font_h1 );
-					wp_register_style( $font['key'], $font['link'] );
-					wp_enqueue_style( $font['key'] );
+					wp_register_style( 'ss-googlefont-h1', $font['link'] );
+					wp_enqueue_style( 'ss-googlefont-h1' );
 				}
 
 				if ( $font_h2['google'] === 'true' ) {
 					$font = self::getGoogleScript( $font_h2 );
-					wp_register_style( $font['key'], $font['link'] );
-					wp_enqueue_style( $font['key'] );
+					wp_register_style( 'ss-googlefont-h2', $font['link'] );
+					wp_enqueue_style( 'ss-googlefont-h2' );
 				}
 
 				if ( $font_h3['google'] === 'true' ) {
 					$font = self::getGoogleScript( $font_h3 );
-					wp_register_style( $font['key'], $font['link'] );
-					wp_enqueue_style( $font['key'] );
+					wp_register_style( 'ss-googlefont-h3', $font['link'] );
+					wp_enqueue_style( 'ss-googlefont-h3' );
 				}
 
 				if ( $font_h4['google'] === 'true' ) {
 					$font = self::getGoogleScript( $font_h4 );
-					wp_register_style( $font['key'], $font['link'] );
-					wp_enqueue_style( $font['key'] );
+					wp_register_style( 'ss-googlefont-h4', $font['link'] );
+					wp_enqueue_style( 'ss-googlefont-h4' );
 				}
 
 				if ( $font_h5['google'] === 'true' ) {
 					$font = self::getGoogleScript( $font_h5 );
-					wp_register_style( $font['key'], $font['link'] );
-					wp_enqueue_style( $font['key'] );
+					wp_register_style( 'ss-googlefont-h5', $font['link'] );
+					wp_enqueue_style( 'ss-googlefont-h5' );
 				}
 
 				if ( $font_h6['google'] === 'true' ) {
 					$font = self::getGoogleScript( $font_h6 );
-					wp_register_style( $font['key'], $font['link'] );
-					wp_enqueue_style( $font['key'] );
+					wp_register_style( 'ss-googlefont-h6', $font['link'] );
+					wp_enqueue_style( 'ss-googlefont-h6' );
 				}
 			} elseif ( isset( $font_heading['google'] ) && $font_heading['google'] === 'true' ) {
 				$font = self::getGoogleScript( $font_heading );
-				wp_register_style( $font['key'], $font['link'] );
-				wp_enqueue_style( $font['key'] );
+				wp_register_style( 'ss-googlefont-heading', $font['link'] );
+				wp_enqueue_style( 'ss-googlefont-heading' );
 			}
 
 			if ( shoestrap_getVariable( 'font_jumbotron_heading_custom' ) == 1 ) {
 				if ($font_jumbotron_headers['google'] === 'true' ) {
 					$font = self::getGoogleScript( $font_jumbotron_headers );
-					wp_register_style( $font['key'], $font['link'] );
-					wp_enqueue_style( $font['key'] );
+					wp_register_style( 'ss-googlefont-jumbotron-headings', $font['link'] );
+					wp_enqueue_style( 'ss-googlefont-jumbotron-headings' );
 				}
 			}
 		}
@@ -341,9 +341,10 @@ if ( !class_exists( 'ShoestrapTypography' ) ) {
 			$font_h5   = shoestrap_process_font( shoestrap_getVariable( 'font_h5', true ) );
 			$font_h6   = shoestrap_process_font( shoestrap_getVariable( 'font_h6', true ) );
 
-			$text_color     = '#' . str_replace( '#', '', ShoestrapColor::sanitize_hex( $font_base['color'] ) );
-			$sans_serif     = $font_base['font-family'];
-			$font_size_base = $font_base['font-size'];
+			$text_color       = '#' . str_replace( '#', '', ShoestrapColor::sanitize_hex( $font_base['color'] ) );
+			$sans_serif       = $font_base['font-family'];
+			$font_size_base   = $font_base['font-size'];
+			$font_weight_base = $font_base['font-weight'];
 
 			$font_h1_size   = ( ( filter_var( $font_h1['font-size'], FILTER_SANITIZE_NUMBER_INT ) ) / 100 );
 			$font_h2_size   = ( ( filter_var( $font_h2['font-size'], FILTER_SANITIZE_NUMBER_INT ) ) / 100 );
@@ -417,6 +418,8 @@ if ( !class_exists( 'ShoestrapTypography' ) ) {
 
 			// Shoestrap-specific variables
 			// --------------------------------------------------
+
+			$variables .= '@base-font-weight:        ' . $font_weight_base . ';';
 
 			// H1
 			$variables .= '@heading-h1-face:         ' . $font_h1_face . ';';
