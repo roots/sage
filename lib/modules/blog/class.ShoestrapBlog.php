@@ -322,6 +322,15 @@ if ( !class_exists( 'ShoestrapBlog' ) ) {
 							get_the_author()
 						);
 					}
+
+					// Output author meta but do not display it if user has selected not to show it.
+					if ( $meta == 'author' && empty( $value ) ) {
+						$content .= sprintf( '<span class="sr-only author vcard ' . $colclass . '"><a class="url fn n" href="%1$s" title="%2$s" rel="author">%3$s</a></span>',
+							esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
+							esc_attr( sprintf( __( 'View all posts by %s', 'shoestrap' ), get_the_author() ) ),
+							get_the_author()
+						);
+					}
 				}
 			}
 
