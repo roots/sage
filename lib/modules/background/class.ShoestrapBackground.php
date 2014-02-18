@@ -10,7 +10,7 @@ if ( !class_exists( 'ShoestrapBackground' ) ) {
 		function __construct() {
 			add_filter( 'redux/options/' . SHOESTRAP_OPT_NAME . '/sections', array( $this, 'options' ), 60 );
 			add_action( 'wp_enqueue_scripts', array( $this, 'css'              ), 101 );
-			add_filter( 'shoestrap_compiler', array( $this, 'variables_filter' )      );
+			add_filter( 'shoestrap_compiler', array( $this, 'variables_filter' ), 1   );
 			add_action( 'plugins_loaded',     array( $this, 'upgrade_options'  )      );
 		}
 
@@ -94,9 +94,9 @@ if ( !class_exists( 'ShoestrapBackground' ) ) {
 		 * Variables to use for the compiler.
 		 * These override the default Bootstrap Variables.
 		 */
-		public static function variables() {
+		function variables() {
 			$bg      = shoestrap_getVariable( 'body_bg', true );
-			$bg      = isset( $bg_color['background-color'] ) ? $bg_color['background-color'] : '#ffffff';
+			$bg      = isset( $bg['background-color'] ) ? $bg['background-color'] : '#ffffff';
 			$body_bg = '#' . str_replace( '#', '', ShoestrapColor::sanitize_hex( $bg ) );
 
 			// Calculate the gray shadows based on the body background.
@@ -223,7 +223,7 @@ if ( !class_exists( 'ShoestrapBackground' ) ) {
 		 * Add the variables to the compiler
 		 */
 		function variables_filter( $variables ) {
-			return $variables . self::variables();
+			return $variables . $this->variables();
 		}
 	}
 }
