@@ -3,5 +3,7 @@
 node_modules
 assets/css/main.min.css.map
 assets/css/main.min.css
+assets/css/main.min.*.css
 assets/js/scripts.min.js
+assets/js/scripts.min.*.js
 lib/versions.php
