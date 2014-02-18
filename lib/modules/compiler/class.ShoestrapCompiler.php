@@ -9,6 +9,7 @@ if ( !class_exists( 'ShoestrapCompiler' ) ) {
 		
 		function __construct() {
 			add_filter( 'shoestrap_main_stylesheet_url', array( $this, 'stylesheet_url' ) );
+			add_filter( 'shoestrap_main_stylesheet_ver', array( $this, 'stylesheet_ver' ) );
 			add_action( 'admin_notices',                 array( $this, 'file_nag'       ) );
 
 			// If the Custom LESS exists and has changed after the last compilation, trigger the compiler.
@@ -74,6 +75,13 @@ if ( !class_exists( 'ShoestrapCompiler' ) ) {
 
 			$value    = ( $target == 'url' ) ? $css_uri : $css_path;
 
+			if ( $target == 'ver' ) {
+				if ( !get_transient( 'shoestrap_stylesheet_time' ) )
+					set_transient( 'shoestrap_stylesheet_time', filemtime( $css_path ), 24 * 60 * 60 );
+
+				$value = get_transient( 'shoestrap_stylesheet_time' );
+			}
+
 			if ( $echo )
 				echo $value;
 			else
@@ -85,6 +93,13 @@ if ( !class_exists( 'ShoestrapCompiler' ) ) {
 		 */
 		function stylesheet_url() {
 			return self::file( 'url' );
+		}
+
+		/**
+		 * Get the version of the stylesheet
+		 */
+		function stylesheet_ver() {
+			return self::file( 'ver' );
 		}
 
 		/*
@@ -185,6 +200,8 @@ if ( !class_exists( 'ShoestrapCompiler' ) ) {
 				if ( !$wp_filesystem->put_contents( $file, $content, FS_CHMOD_FILE ) )
 					return apply_filters( 'shoestrap_css_output', $content );
 			}
+			// Force re-building the stylesheet version transient
+			delete_transient( 'shoestrap_stylesheet_time' );
 		}
 	}
 }
