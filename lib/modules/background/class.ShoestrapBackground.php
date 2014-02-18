@@ -59,7 +59,7 @@ if ( !class_exists( 'ShoestrapBackground' ) ) {
 
 			$fields[] = array(
 				'title'     => __( 'Content Background Color Opacity', 'shoestrap' ),
-				'desc'      => __( 'Select the opacity of your background color for the main content area so that background images and patterns will show through. Default: 100 (fully opaque)', 'shoestrap' ),
+				'desc'      => __( 'Select the opacity of your background color for the main content area so that background images will show through. Default: 100 (fully opaque)', 'shoestrap' ),
 				'id'        => 'body_bg_opacity',
 				'default'   => 100,
 				'min'       => 0,
