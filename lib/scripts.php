@@ -3,11 +3,20 @@
  * Enqueue scripts and stylesheets
  */
 function shoestrap_scripts() {
+	global $wp_customize;
 
 	$stylesheet_url = apply_filters( 'shoestrap_main_stylesheet_url', SHOESTRAP_ASSETS_URL . '/css/style-default.css' );
 	$stylesheet_ver = apply_filters( 'shoestrap_main_stylesheet_ver', null );
 
-	wp_enqueue_style( 'shoestrap_css', $stylesheet_url, false, $stylesheet_ver );
+	// Only load the stylesheet when not in the customizer.
+	if ( !isset( $wp_customize ) )
+		wp_enqueue_style( 'shoestrap_css', $stylesheet_url, false, $stylesheet_ver );
+
+	// If we are in the customizer screen, load the less.js script
+	if ( isset( $wp_customize ) ) {
+		wp_register_script( 'less_js', SHOESTRAP_ASSETS_URL . '/js/vendor/less.min.js', false, '1.6.3' );
+		wp_enqueue_script( 'less_js' );
+	}
 
 	wp_register_script( 'modernizr',         SHOESTRAP_ASSETS_URL . '/js/vendor/modernizr-2.7.0.min.js', false, null, false );
 	wp_register_script( 'shoestrap_plugins', SHOESTRAP_ASSETS_URL . '/js/bootstrap.min.js',              false, null, true  );
