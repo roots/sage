@@ -351,7 +351,7 @@ if ( !class_exists( 'ShoestrapSocial' ) ) {
 		 * Return an array of the social links the user has entered.
 		 * This is simply a helper function for other functions.
 		 */
-		function get_social_links() {
+		public static function get_social_links() {
 			// An array of the available networks
 			$networks   = array();
 
@@ -465,7 +465,7 @@ if ( !class_exists( 'ShoestrapSocial' ) ) {
 		function navbar_social_links() {
 
 			// Get all the social networks the user is using
-			$networks = $this->get_social_links();
+			$networks = self::get_social_links();
 
 			// The base class for icons that will be used
 			$baseclass  = 'el-icon-';
@@ -504,7 +504,7 @@ if ( !class_exists( 'ShoestrapSocial' ) ) {
 		function navbar_social_bar() {
 
 			// Get all the social networks the user is using
-			$networks = $this->get_social_links();
+			$networks = self::get_social_links();
 
 			// The base class for icons that will be used
 			$baseclass  = 'icon el-icon-';

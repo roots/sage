@@ -185,7 +185,7 @@ if( !class_exists( 'ShoestrapFooter' ) ) {
 
 			$blank = ( $social_blank == 1 ) ? ' target="_blank"' : '';
 
-			$networks = shoestrap_get_social_links();
+			$networks = ( class_exists( 'ShoestrapSocial' ) ) ? ShoestrapSocial::get_social_links() : null;
 
 			do_action( 'shoestrap_footer_before_copyright' );
 			?>
@@ -193,7 +193,7 @@ if( !class_exists( 'ShoestrapFooter' ) ) {
 			<div id="footer-copyright">
 				<article class="<?php echo ShoestrapLayout::container_class(); ?>">
 					<div id="copyright-bar" class="col-lg-<?php echo $width; ?>"><?php echo $ftext; ?></div>
-					<?php if ( $social && count( $networks ) > 0 ) : ?>
+					<?php if ( $social && !is_null( $networks ) && count( $networks ) > 0 ) : ?>
 						<div id="footer_social_bar" class="col-lg-<?php echo $social_width; ?>">
 							<?php foreach ( $networks as $network ) : ?>
 								<?php if ( $network['url'] == '' ) continue; ?>

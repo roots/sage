@@ -422,7 +422,7 @@ if ( !class_exists( 'ShoestrapMenus' ) ) {
 		 */
 		function navbar_css() {
 			$navbar_bg_opacity = shoestrap_getVariable( 'navbar_bg_opacity' );
-			$style = "";
+			$style = '';
 
 			$opacity = ( $navbar_bg_opacity == '' ) ? '0' : ( intval( $navbar_bg_opacity ) ) / 100;
 
@@ -434,16 +434,16 @@ if ( !class_exists( 'ShoestrapMenus' ) ) {
 				$style .= '.navbar, .navbar-default {';
 
 				if ( $opacity != 1 && $opacity != '')
-					$style .= 'background: transparent; background: rgba('.$rgb.', '.$opacity.'); filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#'.$opacityie.$bg.',endColorstr=#'.$opacityie.$bg.'); ;';
+					$style .= 'background: transparent; background: rgba(' . $rgb . ', ' . $opacity . '); filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#' . $opacityie . $bg . ',endColorstr=#' . $opacityie . $bg . '); ;';
 				else
-					$style .= 'background: #'.$bg.';';
+					$style .= 'background: #' . $bg . ';';
 
 				$style .= '}';
 
 			}
 
 			if ( shoestrap_getVariable( 'navbar_margin' ) != 1 )
-				$style .= '.navbar-static-top { margin-top:'. shoestrap_getVariable( 'navbar_margin' ) .'px !important; margin-bottom:'. shoestrap_getVariable( 'navbar_margin' ) .'px !important; }';
+				$style .= '.navbar-static-top { margin-top:'. shoestrap_getVariable( 'navbar_margin' ) . 'px !important; margin-bottom:' . shoestrap_getVariable( 'navbar_margin' ) . 'px !important; }';
 
 			wp_add_inline_style( 'shoestrap_css', $style );
 		}

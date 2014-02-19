@@ -450,6 +450,12 @@ if ( !class_exists( 'ShoestrapLayout' ) ) {
 		function container_class() {
 			$class = shoestrap_getVariable( 'site_style' ) != 'fluid' ? 'container' : 'fluid';
 
+			// override if navbar module exists and 'navbar-toggle' is set to left.
+			if ( class_exists( 'ShoestrapMenus' ) ) {
+				if ( shoestrap_getVariable( 'navbar_toggle' ) == 'left' )
+					$class = 'fluid';
+			}
+
 			return $class;
 		}
 
@@ -464,6 +470,12 @@ if ( !class_exists( 'ShoestrapLayout' ) ) {
 				$class = 'fluid';
 			else
 				$class = ( $site_style != 'fluid' ) ? 'container' : 'fluid';
+
+			// override if navbar module exists and 'navbar-toggle' is set to left.
+			if ( class_exists( 'ShoestrapMenus' ) ) {
+				if ( shoestrap_getVariable( 'navbar_toggle' ) == 'left' )
+					$class = 'fluid';
+			}
 
 			return $class;
 		}
