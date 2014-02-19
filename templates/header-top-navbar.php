@@ -1,4 +1,4 @@
-<header class="banner <?php echo apply_filters( 'shoestrap_navbar_class', 'navbar navbar-default' ); ?>" role="banner">
+<header id="banner-header" class="banner <?php echo apply_filters( 'shoestrap_navbar_class', 'navbar navbar-default' ); ?>" role="banner">
 	<div class="<?php echo apply_filters( 'shoestrap_navbar_container_class', 'container' ); ?>">
 		<div class="navbar-header">
 			<?php echo apply_filters( 'shoestrap_nav_toggler', '

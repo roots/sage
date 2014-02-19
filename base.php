@@ -15,7 +15,7 @@
 	?>
 	<?php do_action( 'shoestrap_pre_wrap' ); ?>
 
-	<div class="wrap main-section <?php echo apply_filters( 'shoestrap_container_class', 'container' ); ?>" role="document">
+	<div id="wrap-main-section" class="wrap main-section <?php echo apply_filters( 'shoestrap_container_class', 'container' ); ?>" role="document">
 
 		<?php do_action('shoestrap_pre_content'); ?>
 
@@ -31,7 +31,7 @@
 				<?php do_action('shoestrap_after_main'); ?>
 
 				<?php if ( shoestrap_display_primary_sidebar() ) : ?>
-					<aside class="sidebar <?php shoestrap_section_class( 'primary', true ); ?>" role="complementary">
+					<aside id="sidebar-primary" class="sidebar <?php shoestrap_section_class( 'primary', true ); ?>" role="complementary">
 						<?php if ( !has_action( 'shoestrap_sidebar_override' ) )
 							include shoestrap_sidebar_path();
 						else
@@ -42,7 +42,7 @@
 				<?php do_action( 'shoestrap_post_main' ); ?>
 
 				<?php if ( shoestrap_display_secondary_sidebar() ) : ?>
-					<aside class="sidebar secondary <?php shoestrap_section_class( 'secondary', true ); ?>" role="complementary">
+					<aside id="sidebar-secondary" class="sidebar secondary <?php shoestrap_section_class( 'secondary', true ); ?>" role="complementary">
 						<?php dynamic_sidebar( 'sidebar-secondary' ); ?>
 					</aside><!-- /.sidebar -->
 				<?php endif; ?>

@@ -1,4 +1,4 @@
-<header class="banner <?php echo apply_filters( 'shoestrap_navbar_class', 'navbar navbar-default' ); ?>" role="banner">
+<header id="banner-header" class="banner <?php echo apply_filters( 'shoestrap_navbar_class', 'navbar navbar-default' ); ?>" role="banner">
 	<div class="container">
 	<?php echo apply_filters( 'shoestrap_navbar_brand', '<a class="navbar-brand text" href="' . home_url('/') . '">' . get_bloginfo( 'name' ) . '</a>' ); ?>
 		<nav class="nav-main" role="navigation">
