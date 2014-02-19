@@ -16,7 +16,13 @@ if ( !class_exists( 'ShoestrapCompiler' ) ) {
 			if ( is_writable( get_stylesheet_directory() . '/assets/less/custom.less' ) ) {
 				if ( filemtime( get_stylesheet_directory() . '/assets/less/custom.less' ) > filemtime( self::file() ) )
 					self::makecss();
+			}
 
+			// If we are on the customizer then output the necessary elements to wp_head so that the less.js customizer kicks in.
+			global $wp_customize;
+			if ( isset( $wp_customize ) ) {
+				add_action( 'wp_head', array( $this, 'less_js_vars'       ), 150 );
+				add_action( 'wp_head', array( $this, 'less_js_stylesheet' ), 1  );
 			}
 
 			// Saving functions on import, etc
@@ -202,6 +208,20 @@ if ( !class_exists( 'ShoestrapCompiler' ) ) {
 			}
 			// Force re-building the stylesheet version transient
 			delete_transient( 'shoestrap_stylesheet_time' );
+		}
+		function less_js_vars() {
+			// Get the variables from the settings
+			$variables = apply_filters( 'shoestrap_compiler', '' );
+
+			// Since this will be used for less.js, replace path with URI.
+			$variables = str_replace( SHOESTRAP_MODULES_PATH, SHOESTRAP_MODULES_URL, $variables );
+
+			// Add the variables in the head js
+			echo '<script>less.watch(); less.modifyVars({ ' . $variables . ' }); </script>';
+		}
+
+		function less_js_stylesheet() {
+			echo '<link rel="stylesheet/less" type="text/css" href="' . SHOESTRAP_ASSETS_URL . '/less/app.less"/>';
 		}
 	}
 }
