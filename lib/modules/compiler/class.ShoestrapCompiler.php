@@ -245,6 +245,7 @@ if ( !class_exists( 'ShoestrapCompiler' ) ) {
 			wp_enqueue_script( 'less_js' );
 			// remove the default stylesheet
 			wp_dequeue_style( 'shoestrap_css' );
+			wp_enqueue_style( 'shoestrap_css', '' );
 		}
 	}
 }
