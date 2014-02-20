@@ -31,7 +31,8 @@ if ( !class_exists( 'ShoestrapCompiler' ) ) {
 
 			// Saving functions on import, etc
 			// If a compiler field was altered or import or reset defaults
-			add_action( 'redux/options/' . SHOESTRAP_OPT_NAME . '/compiler' , array( $this, 'makecss' ) );
+			if ( !isset( $wp_customize ) || $lessjs != 1 )
+				add_action( 'redux/options/' . SHOESTRAP_OPT_NAME . '/compiler' , array( $this, 'makecss' ) );
 		}
 
 		/*
@@ -225,7 +226,16 @@ if ( !class_exists( 'ShoestrapCompiler' ) ) {
 		}
 
 		function less_js_stylesheet() {
-			echo '<link rel="stylesheet/less" type="text/css" href="' . SHOESTRAP_ASSETS_URL . '/less/app.less"/>';
+			// Get the variables from the settings
+			$variables = apply_filters( 'shoestrap_compiler', '' );
+			// Since this will be used for less.js, replace path with URI.
+			$variables = str_replace( SHOESTRAP_MODULES_PATH, SHOESTRAP_MODULES_URL, $variables );
+
+			$app_less = file_get_contents( get_stylesheet_directory() . '/assets/less/app.less' );
+			$app_less = str_replace( '@import "', '@import "' . get_stylesheet_directory_uri() . '/assets/less/', $app_less );
+
+			echo '<style type="text/less">' . $app_less . $variables . '</style>';
+			// echo '<link rel="stylesheet/less" type="text/css" href="' . SHOESTRAP_ASSETS_URL . '/less/app.less"/>';
 		}
 
 		function less_js_enqueue() {
