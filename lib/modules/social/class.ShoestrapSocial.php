@@ -386,6 +386,8 @@ if ( !class_exists( 'ShoestrapSocial' ) ) {
 		function get_social_shares() {
 			$nets   = shoestrap_getVariable( 'share_networks' );
 
+			$networks = null;
+
 			if ( isset( $nets['fb'] ) ) {
 				$networks['facebook'] = array(
 					'icon'      => 'facebook',
@@ -566,7 +568,8 @@ if ( !class_exists( 'ShoestrapSocial' ) ) {
 			$content .= '<button class="social-share-main btn ' . $button_class . '">' . $text . '</button>';
 
 			// An array of the available networks
-			$networks   = $this->get_social_shares();
+			$networks = $this->get_social_shares();
+			$networks = is_null( $networks ) ? array() : $networks;
 
 			foreach ( $networks as $network ) {
 				$content .= '<a class="social-link btn ' . $button_class . '" href="' . $network['url'] . '" target="_blank">';
@@ -576,7 +579,7 @@ if ( !class_exists( 'ShoestrapSocial' ) ) {
 			$content .= '</div>';
 
 			// If at least ONE social share option is enabled then echo the content
-			if ( !is_null( $networks ) )
+			if ( !empty( $networks ) )
 				echo $content;
 		}
 
