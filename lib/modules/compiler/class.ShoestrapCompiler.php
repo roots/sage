@@ -234,7 +234,10 @@ if ( !class_exists( 'ShoestrapCompiler' ) ) {
 			// Since this will be used for less.js, replace relative URIs.
 			$app_less = str_replace( '@import "', '@import "' . get_stylesheet_directory_uri() . '/assets/less/', $app_less );
 
-			echo '<style type="text/less">' . $app_less . $variables . '</style>';
+			// Get the extra webfont styles.
+			$icons = '@import "' . get_stylesheet_directory_uri() . '/assets/fonts/elusive-webfont.less"; @elusiveWebfontPath: "' . get_stylesheet_directory_uri() . '/assets/fonts/";';
+
+			echo '<style type="text/less">' . $app_less . $variables . $icons . '</style>';
 		}
 
 		function less_js_enqueue() {
