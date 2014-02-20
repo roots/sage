@@ -186,7 +186,7 @@ if ( !class_exists( 'ShoestrapAdvanced' ) ) {
 				'title'     => __( 'Toggle adminbar On/Off', 'shoestrap' ),
 				'desc'      => __( 'Turn the admin bar On or Off on the frontend. Default: Off.', 'shoestrap' ),
 				'id'        => 'advanced_wordpress_disable_admin_bar_toggle',
-				'default'   => 0,
+				'default'   => 1,
 				'type'      => 'switch',
 			);
 

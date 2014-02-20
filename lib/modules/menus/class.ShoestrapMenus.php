@@ -514,7 +514,7 @@ if ( !class_exists( 'ShoestrapMenus' ) ) {
 		function navbar_body_class( $classes ) {
 			// Add 'top-navbar' or 'bottom-navabr' class if using Bootstrap's Navbar
 			// Used to add styling to account for the WordPress admin bar
-			if ( shoestrap_getVariable( 'navbar_fixed' ) == 1 && shoestrap_getVariable( 'navbar_fixed_position' ) != 1 )
+			if ( shoestrap_getVariable( 'navbar_fixed' ) == 1 && shoestrap_getVariable( 'navbar_fixed_position' ) != 1 && shoestrap_getVariable( 'navbar_toggle' ) != 'left' )
 				$classes[] = 'top-navbar';
 			elseif ( shoestrap_getVariable( 'navbar_fixed' ) == 1 && shoestrap_getVariable( 'navbar_fixed_position' ) == 1 )
 				$classes[] = 'bottom-navbar';
