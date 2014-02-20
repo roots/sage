@@ -6,8 +6,10 @@ if ( !class_exists( 'ShoestrapCompiler' ) ) {
 	* The Shoestrap Compiler
 	*/
 	class ShoestrapCompiler {
-		
+
 		function __construct() {
+			$settings = get_option( SHOESTRAP_OPT_NAME );
+
 			add_filter( 'shoestrap_main_stylesheet_url', array( $this, 'stylesheet_url' ) );
 			add_filter( 'shoestrap_main_stylesheet_ver', array( $this, 'stylesheet_ver' ) );
 			add_action( 'admin_notices',                 array( $this, 'file_nag'       ) );
@@ -16,12 +18,29 @@ if ( !class_exists( 'ShoestrapCompiler' ) ) {
 			if ( is_writable( get_stylesheet_directory() . '/assets/less/custom.less' ) ) {
 				if ( filemtime( get_stylesheet_directory() . '/assets/less/custom.less' ) > filemtime( self::file() ) )
 					self::makecss();
+			}
 
+			// If the less.php compiler is not found, force the use the less.js compiler.
+			if ( !class_exists( 'Less_Cache' ) || !class_exists( 'Less_Parser' ) ) {
+				if ( isset( $settings['lessjs'] ) || $settings['lessjs'] != 1 ) {
+					$settings['lessjs'] = 1;
+					update_option( SHOESTRAP_OPT_NAME, $settings );
+				}
+			}
+
+
+			// If we are on the customizer then output the necessary elements to wp_head so that the less.js customizer kicks in.
+			global $wp_customize;
+			$lessjs = $settings['lessjs'];
+			if ( isset( $wp_customize ) || $lessjs == 1 ) {
+				add_action( 'wp_head', array( $this, 'less_js_stylesheet' ), 1  );
+				add_action( 'wp_enqueue_scripts', array( $this, 'less_js_enqueue' ), 110 );
 			}
 
 			// Saving functions on import, etc
 			// If a compiler field was altered or import or reset defaults
-			add_action( 'redux/options/' . SHOESTRAP_OPT_NAME . '/compiler' , array( $this, 'makecss' ) );
+			if ( !isset( $wp_customize ) || $lessjs != 1 )
+				add_action( 'redux/options/' . SHOESTRAP_OPT_NAME . '/compiler' , array( $this, 'makecss' ) );
 		}
 
 		/*
@@ -183,7 +202,7 @@ if ( !class_exists( 'ShoestrapCompiler' ) ) {
 		public static function makecss() {
 			global $wp_filesystem;
 			$file = self::file();
-			
+
 			// Initialize the Wordpress filesystem.
 			if ( empty( $wp_filesystem ) ) {
 				require_once( ABSPATH . '/wp-admin/includes/file.php' );
@@ -202,6 +221,27 @@ if ( !class_exists( 'ShoestrapCompiler' ) ) {
 			}
 			// Force re-building the stylesheet version transient
 			delete_transient( 'shoestrap_stylesheet_time' );
+		}
+
+		function less_js_stylesheet() {
+			// Get the variables from the settings
+			$variables = apply_filters( 'shoestrap_compiler', '' );
+			// Since this will be used for less.js, replace path with URI.
+			$variables = str_replace( SHOESTRAP_MODULES_PATH, SHOESTRAP_MODULES_URL, $variables );
+
+			// Get the main app.less file
+			$app_less = file_get_contents( get_stylesheet_directory() . '/assets/less/app.less' );
+			// Since this will be used for less.js, replace relative URIs.
+			$app_less = str_replace( '@import "', '@import "' . get_stylesheet_directory_uri() . '/assets/less/', $app_less );
+
+			echo '<style type="text/less">' . $app_less . $variables . '</style>';
+		}
+
+		function less_js_enqueue() {
+			wp_register_script( 'less_js', SHOESTRAP_ASSETS_URL . '/js/vendor/less.min.js', false, '1.6.3' );
+			wp_enqueue_script( 'less_js' );
+			// remove the default stylesheet
+			wp_dequeue_style( 'shoestrap_css' );
 		}
 	}
 }

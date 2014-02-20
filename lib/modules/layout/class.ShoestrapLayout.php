@@ -60,7 +60,6 @@ if ( !class_exists( 'ShoestrapLayout' ) ) {
 				'id'        => 'site_style',
 				'default'   => 'wide',
 				'type'      => 'select',
-				'customizer'=> array(),
 				'options'   => array( 
 					'static'  => __( 'Static (Non-Responsive)', 'shoestrap' ),
 					'wide'    => __( 'Wide', 'shoestrap' ),
@@ -76,7 +75,6 @@ if ( !class_exists( 'ShoestrapLayout' ) ) {
 				'id'        => 'layout',
 				'default'   => 1,
 				'type'      => 'image_select',
-				'customizer'=> array(),
 				'options'   => array( 
 					0 => ReduxFramework::$_url . '/assets/img/1c.png',
 					1 => ReduxFramework::$_url . '/assets/img/2cr.png',
@@ -93,7 +91,6 @@ if ( !class_exists( 'ShoestrapLayout' ) ) {
 				'id'        => 'cpt_layout_toggle',
 				'default'   => 0,
 				'type'      => 'switch',
-				'customizer'=> array(),
 			);
 
 			$post_types = get_post_types( array( 'public' => true ), 'names' );
@@ -150,7 +147,6 @@ if ( !class_exists( 'ShoestrapLayout' ) ) {
 				'title'     => __( 'Show sidebars on the frontpage', 'shoestrap' ),
 				'desc'      => __( 'OFF by default. If you want to display the sidebars in your frontpage, turn this ON.', 'shoestrap' ),
 				'id'        => 'layout_sidebar_on_front',
-				'customizer'=> array(),
 				'default'   => 0,
 				'type'      => 'switch'
 			);
@@ -179,7 +175,6 @@ if ( !class_exists( 'ShoestrapLayout' ) ) {
 					2           => __( 'None', 'shoestrap' ),
 				),
 				'type'      => 'button_set',
-				'customizer'=> array(),
 			);
 
 			$fields[] = array( 

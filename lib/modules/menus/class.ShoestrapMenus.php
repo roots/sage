@@ -67,7 +67,6 @@ if ( !class_exists( 'ShoestrapMenus' ) ) {
 					'full'      => __( 'Full-Width', 'shoestrap' ),
 					'left'      => __( 'Static-Left', 'shoestrap' ),
 				),
-				'customizer'  => array(),
 				'type'        => 'button_set'
 			);
 
@@ -84,7 +83,6 @@ if ( !class_exists( 'ShoestrapMenus' ) ) {
 				'id'          => 'navbar_bg',
 				'default'     => '#f8f8f8',
 				'compiler'    => true,
-				'customizer'  => array(),
 				'transparent' => false,    
 				'type'        => 'color'
 			);
@@ -106,7 +104,6 @@ if ( !class_exists( 'ShoestrapMenus' ) ) {
 				'id'          => 'navbar_style',
 				'default'     => 'default',
 				'type'        => 'select',
-				'customizer'  => array(),
 				'options'     => array( 
 					'default'   => __( 'Default', 'shoestrap' ),
 					'style1'    => __( 'Style', 'shoestrap' ) . ' 1',
@@ -124,7 +121,6 @@ if ( !class_exists( 'ShoestrapMenus' ) ) {
 				'desc'        => __( 'Default: ON', 'shoestrap' ),
 				'id'          => 'navbar_brand',
 				'default'     => 1,
-				'customizer'  => array(),
 				'type'        => 'switch'
 			);
 
@@ -133,7 +129,6 @@ if ( !class_exists( 'ShoestrapMenus' ) ) {
 				'desc'        => __( 'If this option is OFF, or there is no logo available, then the sitename will be displayed instead. Default: ON', 'shoestrap' ),
 				'id'          => 'navbar_logo',
 				'default'     => 1,
-				'customizer'  => array(),
 				'type'        => 'switch'
 			);
 
@@ -238,7 +233,6 @@ if ( !class_exists( 'ShoestrapMenus' ) ) {
 				'title'       => __( 'Display social links in the NavBar.', 'shoestrap' ),
 				'desc'        => __( 'Display social links in the NavBar. These can be setup in the \'Social\' section on the left. Default: OFF', 'shoestrap' ),
 				'id'          => 'navbar_social',
-				'customizer'  => array(),
 				'default'     => 0,
 				'type'        => 'switch'
 			);
@@ -247,7 +241,6 @@ if ( !class_exists( 'ShoestrapMenus' ) ) {
 				'title'       => __( 'Display social links as a Dropdown list or an Inline list.', 'shoestrap' ),
 				'desc'        => __( 'How to display social links. Default: Dropdown list', 'shoestrap' ),
 				'id'          => 'navbar_social_style',
-				'customizer'  => array(),
 				'default'     => 0,
 				'on'          => __( 'Inline', 'shoestrap' ),
 				'off'         => __( 'Dropdown', 'shoestrap' ),
@@ -259,7 +252,6 @@ if ( !class_exists( 'ShoestrapMenus' ) ) {
 				'title'       => __( 'Search form on the NavBar', 'shoestrap' ),
 				'desc'        => __( 'Display a search form in the NavBar. Default: On', 'shoestrap' ),
 				'id'          => 'navbar_search',
-				'customizer'  => array(),
 				'default'     => 1,
 				'type'        => 'switch'
 			);
@@ -269,7 +261,6 @@ if ( !class_exists( 'ShoestrapMenus' ) ) {
 				'desc'        => __( 'Floats the primary navigation to the right. Default: On', 'shoestrap' ),
 				'id'          => 'navbar_nav_right',
 				'default'     => 1,
-				'customizer'  => array(),
 				'type'        => 'switch'
 			);
 
@@ -284,7 +275,6 @@ if ( !class_exists( 'ShoestrapMenus' ) ) {
 				'title'       => __( 'Enable the Secondary NavBar', 'shoestrap' ),
 				'desc'        => __( 'Display a Secondary NavBar on top of the Main NavBar. Default: ON', 'shoestrap' ),
 				'id'          => 'secondary_navbar_toggle',
-				'customizer'  => array(),
 				'default'     => 0,
 				'type'        => 'switch',
 			);

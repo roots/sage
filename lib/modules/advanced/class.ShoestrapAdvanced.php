@@ -69,6 +69,8 @@ if ( !class_exists( 'ShoestrapAdvanced' ) ) {
 		 * The advanced core options for the Shoestrap theme
 		 */
 		function options( $sections ) {
+			$settings = get_option( SHOESTRAP_OPT_NAME );
+
 			// Advanced Settings
 			$section = array( 
 				'title'   => __( 'Advanced', 'shoestrap' ),
@@ -81,7 +83,6 @@ if ( !class_exists( 'ShoestrapAdvanced' ) ) {
 				'id'        => 'retina_toggle',
 				'default'   => 1,
 				'type'      => 'switch',
-				'customizer'=> array(),
 			);
 
 			$fields[] = array( 
@@ -178,7 +179,6 @@ if ( !class_exists( 'ShoestrapAdvanced' ) ) {
 				'id'        => 'minimize_css',
 				'default'   => 1,
 				'compiler'  => true,
-				'customizer'=> array(),
 				'type'      => 'switch',
 			);
 
@@ -187,7 +187,6 @@ if ( !class_exists( 'ShoestrapAdvanced' ) ) {
 				'desc'      => __( 'Turn the admin bar On or Off on the frontend. Default: Off.', 'shoestrap' ),
 				'id'        => 'advanced_wordpress_disable_admin_bar_toggle',
 				'default'   => 0,
-				'customizer'=> array(),
 				'type'      => 'switch',
 			);
 
@@ -196,9 +195,19 @@ if ( !class_exists( 'ShoestrapAdvanced' ) ) {
 				'desc'      => '',
 				'id'        => 'jquery_cdn_toggler',
 				'default'   => 0,
-				'customizer'=> array(),
 				'type'      => 'switch',
 			);
+
+			// Do not show this option if the less.php compiler is not present.
+			if ( class_exists( 'Less_Cache' ) && class_exists( 'Less_Parser' ) ) {
+				$fields[] = array(
+					'title'     => __( 'Use less.js instead of less.php compiler', 'shoestrap' ),
+					'desc'      => __( 'The less.js compiler works by compiling the stylesheets on the browser, while the less.php compiler compiles the stylesheets on your server and users are then served the pre-compiled css file.', 'shoestrap' ),
+					'id'        => 'lessjs',
+					'default'   => 0,
+					'type'      => 'switch',
+				);
+			}
 
 			$section['fields'] = $fields;
 

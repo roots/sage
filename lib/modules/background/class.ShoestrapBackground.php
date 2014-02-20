@@ -34,7 +34,6 @@ if ( !class_exists( 'ShoestrapBackground' ) ) {
 				'default'     => array(
 					'background-color' => isset( $settings['html_color_bg'] ) ? $settings['html_color_bg'] : '#ffffff',
 				),
-				'customizer'  => array(),
 				'transparent' => false,
 				'type'        => 'background',
 				'output'      => 'body'
@@ -52,7 +51,6 @@ if ( !class_exists( 'ShoestrapBackground' ) ) {
 				),
 				'compiler'    => true,
 				'transparent' => false,
-				'customizer'  => array(),
 				'type'        => 'background',
 				'output'      => '.wrap.main-section .content .bg'
 			);
