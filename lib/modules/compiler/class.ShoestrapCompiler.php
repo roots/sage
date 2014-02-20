@@ -22,7 +22,7 @@ if ( !class_exists( 'ShoestrapCompiler' ) ) {
 
 			// If the less.php compiler is not found, force the use the less.js compiler.
 			if ( !class_exists( 'Less_Cache' ) || !class_exists( 'Less_Parser' ) ) {
-				if ( isset( $settings['lessjs'] || $settings['lessjs'] != 1 ) {
+				if ( isset( $settings['lessjs'] ) || $settings['lessjs'] != 1 ) {
 					$settings['lessjs'] = 1;
 					update_option( SHOESTRAP_OPT_NAME, $settings );
 				}
