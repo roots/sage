@@ -200,6 +200,15 @@ if ( !class_exists( 'ShoestrapAdvanced' ) ) {
 				'type'      => 'switch',
 			);
 
+			$fields[] = array(
+				'title'     => __( 'Use less.js instead of less.php compiler', 'shoestrap' ),
+				'desc'      => __( 'The less.js compiler works by compiling the stylesheets on the browser, while the less.php compiler compiles the stylesheets on your server and users are then served the pre-compiled css file.', 'shoestrap' ),
+				'id'        => 'lessjs',
+				'default'   => 0,
+				'customizer'=> array(),
+				'type'      => 'switch',
+			);
+
 			$section['fields'] = $fields;
 
 			$section = apply_filters( 'shoestrap_module_advanced_options_modifier', $section );
