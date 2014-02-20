@@ -31,7 +31,6 @@ if ( !class_exists( 'ShoestrapBranding' ) ) {
 				'id'          => 'logo',
 				'default'     => '',
 				'type'        => 'media',
-				'customizer'  => array(),
 			);
 
 			$fields[] = array( 
@@ -68,7 +67,6 @@ if ( !class_exists( 'ShoestrapBranding' ) ) {
 				'desc'        => __( 'Enable gradients for buttons and the navbar. Default: Off.', 'shoestrap' ),
 				'id'          => 'gradients_toggle',
 				'default'     => 0,
-				'customizer'  => array(),
 				'compiler'    => true,
 				'type'        => 'switch',
 			);
@@ -79,7 +77,6 @@ if ( !class_exists( 'ShoestrapBranding' ) ) {
 				'id'          => 'color_brand_primary',
 				'default'     => '#428bca',
 				'compiler'    => true,
-				'customizer'  => array(),
 				'transparent' => false,    
 				'type'        => 'color'
 			);
@@ -90,7 +87,6 @@ if ( !class_exists( 'ShoestrapBranding' ) ) {
 				'id'          => 'color_brand_success',
 				'default'     => '#5cb85c',
 				'compiler'    => true,
-				'customizer'  => array(),
 				'transparent' => false,    
 				'type'        => 'color',
 			);
@@ -101,7 +97,6 @@ if ( !class_exists( 'ShoestrapBranding' ) ) {
 				'id'          => 'color_brand_warning',
 				'default'     => '#f0ad4e',
 				'compiler'    => true,
-				'customizer'  => array(),
 				'type'        => 'color',
 				'transparent' => false,    
 			);
@@ -112,7 +107,6 @@ if ( !class_exists( 'ShoestrapBranding' ) ) {
 				'id'          => 'color_brand_danger',
 				'default'     => '#d9534f',
 				'compiler'    => true,
-				'customizer'  => array(),
 				'type'        => 'color',
 				'transparent' => false,    
 			);
@@ -123,7 +117,6 @@ if ( !class_exists( 'ShoestrapBranding' ) ) {
 				'id'          => 'color_brand_info',
 				'default'     => '#5bc0de',
 				'compiler'    => true,
-				'customizer'  => array(),
 				'type'        => 'color',
 				'transparent' => false,    
 			);

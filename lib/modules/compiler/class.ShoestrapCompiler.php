@@ -220,11 +220,12 @@ if ( !class_exists( 'ShoestrapCompiler' ) ) {
 			// Since this will be used for less.js, replace path with URI.
 			$variables = str_replace( SHOESTRAP_MODULES_PATH, SHOESTRAP_MODULES_URL, $variables );
 
+			// Get the main app.less file
 			$app_less = file_get_contents( get_stylesheet_directory() . '/assets/less/app.less' );
+			// Since this will be used for less.js, replace relative URIs.
 			$app_less = str_replace( '@import "', '@import "' . get_stylesheet_directory_uri() . '/assets/less/', $app_less );
 
 			echo '<style type="text/less">' . $app_less . $variables . '</style>';
-			// echo '<link rel="stylesheet/less" type="text/css" href="' . SHOESTRAP_ASSETS_URL . '/less/app.less"/>';
 		}
 
 		function less_js_enqueue() {

@@ -54,7 +54,6 @@ if ( !class_exists( 'ShoestrapTypography' ) ) {
 				'default'   => 0,
 				'compiler'  => true,
 				'type'      => 'switch',
-				'customizer'=> array(),
 			);
 
 			$fields[] = array(

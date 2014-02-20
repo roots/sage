@@ -29,7 +29,6 @@ if( !class_exists( 'ShoestrapFooter' ) ) {
 				'desc'        => __( 'Select the background color for your footer. Default: #282a2b.', 'shoestrap' ),
 				'id'          => 'footer_background',
 				'default'     => '#282a2b',
-				'customizer'  => array(),
 				'transparent' => false,    
 				'type'        => 'color'
 			);
@@ -50,7 +49,6 @@ if( !class_exists( 'ShoestrapFooter' ) ) {
 				'desc'        => __( 'Select the text color for your footer. Default: #8C8989.', 'shoestrap' ),
 				'id'          => 'footer_color',
 				'default'     => '#8C8989',
-				'customizer'  => array(),
 				'transparent' => false,    
 				'type'        => 'color'
 			);
@@ -60,7 +58,6 @@ if( !class_exists( 'ShoestrapFooter' ) ) {
 				'desc'        => __( 'The text that will be displayed in your footer. You can use [year] and [sitename] and they will be replaced appropriately. Default: &copy; [year] [sitename]', 'shoestrap' ),
 				'id'          => 'footer_text',
 				'default'     => '&copy; [year] [sitename]',
-				'customizer'  => array(),
 				'type'        => 'textarea'
 			);
 
@@ -96,7 +93,6 @@ if( !class_exists( 'ShoestrapFooter' ) ) {
 				'desc'        => __( 'Show social icons in the footer. Default: On.', 'shoestrap' ),
 				'id'          => 'footer_social_toggle',
 				'default'     => 0,
-				'customizer'  => array(),
 				'type'        => 'switch',
 			);
 
@@ -109,7 +105,6 @@ if( !class_exists( 'ShoestrapFooter' ) ) {
 				'min'         => 3,
 				'step'        => 1,
 				'max'         => 10,
-				'customizer'  => array(),
 				'type'        => 'slider',
 			);    
 
@@ -119,7 +114,6 @@ if( !class_exists( 'ShoestrapFooter' ) ) {
 				'id'          => 'footer_social_new_window_toggle',
 				'required'    => array('footer_social_toggle','=',array('1')),
 				'default'     => 1,
-				'customizer'  => array(),
 				'type'        => 'switch',
 			);
 

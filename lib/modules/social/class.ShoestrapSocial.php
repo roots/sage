@@ -84,7 +84,6 @@ if ( !class_exists( 'ShoestrapSocial' ) ) {
 				'id'        => 'social_sharing_location',
 				'default'   => 'top',
 				'type'      => 'select',
-				'customizer'=> array(),
 				'options'   => array( 
 					'none'    =>'None',
 					'top'     =>'Top',
@@ -99,7 +98,6 @@ if ( !class_exists( 'ShoestrapSocial' ) ) {
 				'id'        => 'social_sharing_button_class',
 				'default'   => 'btn-default',
 				'type'      => 'select',
-				'customizer'=> array(),
 				'options'   => array( 
 					'btn-default'    => 'Default',
 					'btn-primary'    => 'Primary',
