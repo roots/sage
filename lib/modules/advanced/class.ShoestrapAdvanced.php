@@ -69,6 +69,8 @@ if ( !class_exists( 'ShoestrapAdvanced' ) ) {
 		 * The advanced core options for the Shoestrap theme
 		 */
 		function options( $sections ) {
+			$settings = get_option( SHOESTRAP_OPT_NAME );
+
 			// Advanced Settings
 			$section = array( 
 				'title'   => __( 'Advanced', 'shoestrap' ),
@@ -196,13 +198,16 @@ if ( !class_exists( 'ShoestrapAdvanced' ) ) {
 				'type'      => 'switch',
 			);
 
-			$fields[] = array(
-				'title'     => __( 'Use less.js instead of less.php compiler', 'shoestrap' ),
-				'desc'      => __( 'The less.js compiler works by compiling the stylesheets on the browser, while the less.php compiler compiles the stylesheets on your server and users are then served the pre-compiled css file.', 'shoestrap' ),
-				'id'        => 'lessjs',
-				'default'   => 0,
-				'type'      => 'switch',
-			);
+			// Do not show this option if the less.php compiler is not present.
+			if ( class_exists( 'Less_Cache' ) && class_exists( 'Less_Parser' ) ) {
+				$fields[] = array(
+					'title'     => __( 'Use less.js instead of less.php compiler', 'shoestrap' ),
+					'desc'      => __( 'The less.js compiler works by compiling the stylesheets on the browser, while the less.php compiler compiles the stylesheets on your server and users are then served the pre-compiled css file.', 'shoestrap' ),
+					'id'        => 'lessjs',
+					'default'   => 0,
+					'type'      => 'switch',
+				);
+			}
 
 			$section['fields'] = $fields;
 

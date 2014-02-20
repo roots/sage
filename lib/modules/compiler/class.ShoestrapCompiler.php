@@ -20,6 +20,15 @@ if ( !class_exists( 'ShoestrapCompiler' ) ) {
 					self::makecss();
 			}
 
+			// If the less.php compiler is not found, force the use the less.js compiler.
+			if ( !class_exists( 'Less_Cache' ) || !class_exists( 'Less_Parser' ) ) {
+				if ( isset( $settings['lessjs'] || $settings['lessjs'] != 1 ) {
+					$settings['lessjs'] = 1;
+					update_option( SHOESTRAP_OPT_NAME, $settings );
+				}
+			}
+
+
 			// If we are on the customizer then output the necessary elements to wp_head so that the less.js customizer kicks in.
 			global $wp_customize;
 			$lessjs = $settings['lessjs'];
