@@ -3,7 +3,6 @@
  * Enqueue scripts and stylesheets
  */
 function shoestrap_scripts() {
-	global $wp_customize;
 
 	$stylesheet_url = apply_filters( 'shoestrap_main_stylesheet_url', SHOESTRAP_ASSETS_URL . '/css/style-default.css' );
 	$stylesheet_ver = apply_filters( 'shoestrap_main_stylesheet_ver', null );
