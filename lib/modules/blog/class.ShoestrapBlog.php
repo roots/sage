@@ -9,6 +9,9 @@ if ( !class_exists( 'ShoestrapBlog' ) ) {
 	class ShoestrapBlog {
 
 		function __construct() {
+
+			$settings = get_option( SHOESTRAP_OPT_NAME );
+
 			add_filter( 'redux/options/' . SHOESTRAP_OPT_NAME . '/sections', array( $this, 'options' ), 75 );
 			add_filter( 'shoestrap_compiler',       array( $this, 'styles'                              ) );
 			add_action( 'shoestrap_entry_meta',     array( $this, 'meta_custom_render'                  ) );
@@ -17,11 +20,11 @@ if ( !class_exists( 'ShoestrapBlog' ) ) {
 			add_action( 'shoestrap_in_article_top', array( $this, 'featured_image'                      ) );
 			add_action( 'wp',                       array( $this, 'remove_featured_image_per_post_type' ) );
 
-			if ( shoestrap_getVariable( 'pagination' ) != 'pager' )
+			if ( $settings['pagination'] != 'pager' )
 				add_filter( 'shoestrap_pagination_format', array( $this, 'pagination_toggler' ) );
 
 		 	// Hide post meta data in footer of single posts
-			if ( shoestrap_getVariable( 'single_meta' ) == 0 ) {
+			if ( $settings['single_meta'] == 0 ) {
 				add_filter( 'shoestrap_the_tags', 'shoestrap_blank' );
 				add_filter( 'shoestrap_the_cats', 'shoestrap_blank' );
 			}
@@ -204,8 +207,8 @@ if ( !class_exists( 'ShoestrapBlog' ) ) {
 				'id'        => 'pagination',
 				'type'      => 'button_set',
 				'options'   => array(
-					'pager'       => 'Default Pager',
-					'pagination'  => 'Default Pagination'
+					'pager'       => 'Pager',
+					'pagination'  => 'Pagination'
 				),
 				'default'   => 'pager',
 			);

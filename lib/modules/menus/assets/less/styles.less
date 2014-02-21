@@ -1,15 +1,17 @@
 body {
 	word-wrap: break-word;
 	-ms-word-wrap: break-word;
-	&.top-navbar {
-		&.admin-bar {
-			margin-top: @navbar-height;
+	&.admin-bar {
+		&.top-navbar {
 			padding-top: @navbar-height;
 			.topnavbar {
 				&.navbar-fixed-top {
 					padding-top: 32px;
 				}
 			}
+		}
+		.navbar.static-left {
+			margin-top: 32px;
 		}
 	}
 	.navbar.navbar-static-top {
@@ -18,12 +20,6 @@ body {
 	&.bottom-navbar {
 		padding-bottom: @navbar-height;
 	}
-	&.admin-bar {
-		.navbar.static-left {
-			margin-top: 32px;
-		}
-	}
-
 }
 
 // Styling the (+) button on the navbar

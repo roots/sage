@@ -9,6 +9,8 @@ if ( !class_exists( 'ShoestrapLayout' ) ) {
 	class ShoestrapLayout {
 
 		function __construct() {
+			$settings = get_option( SHOESTRAP_OPT_NAME );
+
 			add_filter( 'redux/options/' . SHOESTRAP_OPT_NAME . '/sections', array( $this, 'options' ), 55 );
 			add_filter( 'shoestrap_section_class_wrapper',   array( $this, 'apply_layout_classes_wrapper'   )     );
 			add_filter( 'shoestrap_section_class_main',      array( $this, 'apply_layout_classes_main'      )     );
@@ -19,7 +21,7 @@ if ( !class_exists( 'ShoestrapLayout' ) ) {
 			add_filter( 'shoestrap_navbar_container_class',  array( $this, 'navbar_container_class'         )     );
 			add_action( 'template_redirect',                 array( $this, 'content_width'                  )     );
 
-			if ( ( shoestrap_getVariable( 'body_margin_top' ) > 0 ) || ( shoestrap_getVariable( 'body_margin_bottom' ) > 0 ) )
+			if ( $settings['body_margin_top'] > 0 || $settings['body_margin_bottom'] > 0 )
 				add_action( 'wp_enqueue_scripts',            array( $this, 'body_margin'                   ), 101 );
 
 			add_action( 'get_header',             array( $this, 'boxed_container_div_open'          ), 1   );
@@ -30,7 +32,7 @@ if ( !class_exists( 'ShoestrapLayout' ) ) {
 			add_action( 'wp',                     array( $this, 'control_secondary_sidebar_display' )      );
 
 			 // Modify the appearance of widgets based on user selection.
-			$widgets_mode = shoestrap_getVariable( 'widgets_mode' );
+			$widgets_mode = $settings['widgets_mode'];
 			if ( $widgets_mode == 0 || $widgets_mode == 1 ) {
 				add_filter( 'shoestrap_widgets_class',        array( $this, 'alter_widgets_class'        ) );
 				add_filter( 'shoestrap_widgets_before_title', array( $this, 'alter_widgets_before_title' ) );
@@ -46,6 +48,7 @@ if ( !class_exists( 'ShoestrapLayout' ) ) {
 		 * The layout core options for the Shoestrap theme
 		 */
 		function options( $sections ) {
+			$settings = get_option( SHOESTRAP_OPT_NAME );
 
 			// Layout Settings
 			$section = array( 
@@ -99,7 +102,7 @@ if ( !class_exists( 'ShoestrapLayout' ) ) {
 					'title'     => __( $post_type . ' Layout', 'shoestrap' ),
 					'desc'      => __( 'Override your default stylings. Choose between 1, 2 or 3 column layout.', 'shoestrap' ),
 					'id'        => $post_type . '_layout',
-					'default'   => shoestrap_getVariable( 'layout' ),
+					'default'   => $settings['layout'],
 					'type'      => 'image_select',
 					'required'  => array( 'cpt_layout_toggle','=',array( '1' ) ),
 					'options'   => array(
@@ -280,11 +283,12 @@ if ( !class_exists( 'ShoestrapLayout' ) ) {
 		 */
 		static public function get_layout() {
 			global $shoestrap_layout;
+			$settings = get_option( SHOESTRAP_OPT_NAME );
 
 			if ( !isset( $shoestrap_layout ) ) {
 				do_action( 'shoestrap_layout_modifier' );
 				
-				$shoestrap_layout = intval( shoestrap_getVariable( 'layout' ) );
+				$shoestrap_layout = intval( $settings['layout'] );
 
 				// Looking for a per-page template ?
 				if ( is_page() && is_page_template() ) {
@@ -302,11 +306,11 @@ if ( !class_exists( 'ShoestrapLayout' ) ) {
 						$shoestrap_layout = 5;
 				}
 
-				if ( shoestrap_getVariable( 'cpt_layout_toggle' ) == 1 ) {
+				if ( $settings['cpt_layout_toggle'] == 1 ) {
 					if ( !is_page_template() ) {
 						$post_types = get_post_types( array( 'public' => true ), 'names' );
 						foreach ( $post_types as $post_type ) {
-							$shoestrap_layout = ( is_singular( $post_type ) ) ? intval( shoestrap_getVariable( $post_type . '_layout' ) ) : $shoestrap_layout;
+							$shoestrap_layout = ( is_singular( $post_type ) ) ? intval( $settings[$post_type . '_layout'] ) : $shoestrap_layout;
 						}
 					}
 				}
@@ -330,13 +334,14 @@ if ( !class_exists( 'ShoestrapLayout' ) ) {
 		 */
 		public static function section_class_ext( $target, $echo = false ) {
 			global $redux;
+			$settings = get_option( SHOESTRAP_OPT_NAME );
 			
 			$layout = self::get_layout();
-			$first  = intval( shoestrap_getVariable( 'layout_primary_width' ) );
-			$second = intval( shoestrap_getVariable( 'layout_secondary_width' ) );
+			$first  = intval( $settings['layout_primary_width'] );
+			$second = intval( $settings['layout_secondary_width'] );
 			
 			// disable responsiveness if layout is set to non-responsive
-			$base = ( shoestrap_getVariable( 'site_style' ) == 'static' ) ? 'col-xs-' : 'col-sm-';
+			$base = ( $settings['site_style'] == 'static' ) ? 'col-xs-' : 'col-sm-';
 			
 			// Set some defaults so that we can change them depending on the selected template
 			$main       = $base . 12;
@@ -424,9 +429,10 @@ if ( !class_exists( 'ShoestrapLayout' ) ) {
 		 * Add and remove body_class() classes to accomodate layouts
 		 */
 		function layout_body_class( $classes ) {
+			$settings   = get_option( SHOESTRAP_OPT_NAME );
 			$layout     = self::get_layout();
-			$site_style = shoestrap_getVariable( 'site_style' );
-			$margin     = shoestrap_getVariable( 'navbar_margin_top' );
+			$site_style = $settings['site_style'];
+			$margin     = $settings['navbar_margin_top'];
 			$style      = '';
 
 			$classes[] = ( $layout == 2 || $layout == 3 || $layout == 5 ) ? 'main-float-right' : '';
@@ -443,11 +449,12 @@ if ( !class_exists( 'ShoestrapLayout' ) ) {
 		 * Return the container class
 		 */
 		function container_class() {
-			$class = shoestrap_getVariable( 'site_style' ) != 'fluid' ? 'container' : 'fluid';
+			$settings = get_option( SHOESTRAP_OPT_NAME );
+			$class    = $settings['site_style'] != 'fluid' ? 'container' : 'fluid';
 
 			// override if navbar module exists and 'navbar-toggle' is set to left.
 			if ( class_exists( 'ShoestrapMenus' ) ) {
-				if ( shoestrap_getVariable( 'navbar_toggle' ) == 'left' )
+				if ( $settings['navbar_toggle'] == 'left' )
 					$class = 'fluid';
 			}
 
@@ -458,8 +465,10 @@ if ( !class_exists( 'ShoestrapLayout' ) ) {
 		 * Return the container class
 		 */
 		function navbar_container_class() {
-			$site_style = shoestrap_getVariable( 'site_style' );
-			$toggle     = shoestrap_getVariable( 'navbar_toggle' );
+			$settings   = get_option( SHOESTRAP_OPT_NAME );
+
+			$site_style = $settings['site_style'];
+			$toggle     = $settings['navbar_toggle'];
 
 			if ( $toggle == 'full' )
 				$class = 'fluid';
@@ -468,7 +477,7 @@ if ( !class_exists( 'ShoestrapLayout' ) ) {
 
 			// override if navbar module exists and 'navbar-toggle' is set to left.
 			if ( class_exists( 'ShoestrapMenus' ) ) {
-				if ( shoestrap_getVariable( 'navbar_toggle' ) == 'left' )
+				if ( $settings['navbar_toggle'] == 'left' )
 					$class = 'fluid';
 			}
 
@@ -480,20 +489,21 @@ if ( !class_exists( 'ShoestrapLayout' ) ) {
 		 */
 		public static function content_width_px( $echo = false ) {
 			global $redux;
+			$settings = get_option( SHOESTRAP_OPT_NAME );
 
 			$layout = self::get_layout();
 
-			$container  = filter_var( shoestrap_getVariable( 'screen_large_desktop' ), FILTER_SANITIZE_NUMBER_INT );
-			$gutter     = filter_var( shoestrap_getVariable( 'layout_gutter' ), FILTER_SANITIZE_NUMBER_INT );
+			$container  = filter_var( $settings['screen_large_desktop'], FILTER_SANITIZE_NUMBER_INT );
+			$gutter     = filter_var( $settings['layout_gutter'], FILTER_SANITIZE_NUMBER_INT );
 
 			$main_span  = filter_var( self::section_class_ext( 'main', false ), FILTER_SANITIZE_NUMBER_INT );
 			$main_span  = str_replace( '-' , '', $main_span );
 
 			// If the layout is #5, override the default function and calculate the span width of the main area again.
 			if ( is_active_sidebar( 'sidebar-secondary' ) && is_active_sidebar( 'sidebar-primary' ) && $layout == 5 )
-				$main_span = 12 - intval( shoestrap_getVariable( 'layout_primary_width' ) ) - intval( shoestrap_getVariable( 'layout_secondary_width' ) );
+				$main_span = 12 - intval( $settings['layout_primary_width'] ) - intval( $settings['layout_secondary_width'] );
 
-			if ( is_front_page() && shoestrap_getVariable( 'layout_sidebar_on_front' ) != 1 )
+			if ( is_front_page() && $settings['layout_sidebar_on_front'] != 1 )
 				$main_span = 12;
 
 			$width = $container * ( $main_span / 12 ) - $gutter;
@@ -519,8 +529,10 @@ if ( !class_exists( 'ShoestrapLayout' ) ) {
 		 * Body Margins
 		 */
 		function body_margin() {
-			$body_margin_top = shoestrap_getVariable( 'body_margin_top' );
-			$body_margin_bottom = shoestrap_getVariable( 'body_margin_bottom' );
+			$settings = get_option( SHOESTRAP_OPT_NAME );
+
+			$body_margin_top    = $settings['body_margin_top'];
+			$body_margin_bottom = $settings['body_margin_bottom'];
 
 			$style = 'body { margin-top:'. $body_margin_top .'px; margin-bottom:'. $body_margin_bottom .'px; }';
 
@@ -531,21 +543,27 @@ if ( !class_exists( 'ShoestrapLayout' ) ) {
 		 * Add a wrapper div when in "boxed" mode to disallow full-width elements
 		 */
 		function boxed_container_div_open() {
-			if ( shoestrap_getVariable( 'site_style' ) == 'boxed' ) echo '<div class="container boxed-container">';
+			$settings = get_option( SHOESTRAP_OPT_NAME );
+
+			if ( $settings['site_style'] == 'boxed' ) echo '<div class="container boxed-container">';
 		}
 
 		/**
 		 * Close the wrapper div that the 'boxed_container_div_open' opens when in "boxed" mode.
 		 */
 		function boxed_container_div_close() {
-			if ( shoestrap_getVariable( 'site_style' ) == 'boxed' ) echo '</div>';
+			$settings = get_option( SHOESTRAP_OPT_NAME );
+
+			if ( $settings['site_style'] == 'boxed' ) echo '</div>';
 		}
 
 		/**
 		 * Modify the rules for showing up or hiding the primary sidebar
 		 */
 		function control_primary_sidebar_display() {
-			$layout_sidebar_on_front = shoestrap_getVariable( 'layout_sidebar_on_front' );
+			$settings = get_option( SHOESTRAP_OPT_NAME );
+
+			$layout_sidebar_on_front = $settings['layout_sidebar_on_front'];
 
 			if ( self::get_layout() == 0 )
 				add_filter( 'shoestrap_display_primary_sidebar', 'shoestrap_return_false' );
@@ -562,7 +580,9 @@ if ( !class_exists( 'ShoestrapLayout' ) ) {
 		 * Modify the rules for showing up or hiding the secondary sidebar
 		 */
 		function control_secondary_sidebar_display() {
-			$layout_sidebar_on_front = shoestrap_getVariable( 'layout_sidebar_on_front' );
+			$settings = get_option( SHOESTRAP_OPT_NAME );
+
+			$layout_sidebar_on_front = $settings['layout_sidebar_on_front'];
 
 			if ( self::get_layout() < 3 )
 				add_filter( 'shoestrap_display_secondary_sidebar', 'shoestrap_return_false' );
@@ -576,28 +596,33 @@ if ( !class_exists( 'ShoestrapLayout' ) ) {
 		 * Get the widget class
 		 */
 		function alter_widgets_class() {
-			return shoestrap_getVariable( 'widgets_mode' ) == 0 ? 'panel panel-default' : 'well';
+			$settings = get_option( SHOESTRAP_OPT_NAME );
+			return $settings['widgets_mode'] == 0 ? 'panel panel-default' : 'well';
 		}
 
 		/**
 		 * Widgets 'before_title' modifying based on widgets mode.
 		 */
 		function alter_widgets_before_title() {
-			return shoestrap_getVariable( 'widgets_mode' ) == 0 ? '<div class="panel-heading">' : '<h3 class="widget-title">';
+			$settings = get_option( SHOESTRAP_OPT_NAME );
+			return $settings['widgets_mode'] == 0 ? '<div class="panel-heading">' : '<h3 class="widget-title">';
 		}
 
 		/**
 		 * Widgets 'after_title' modifying based on widgets mode.
 		 */
 		function alter_widgets_after_title() {
-			return shoestrap_getVariable( 'widgets_mode' ) == 0 ? '</div><div class="panel-body">' : '</h3>';
+			$settings = get_option( SHOESTRAP_OPT_NAME );
+			return $settings['widgets_mode'] == 0 ? '</div><div class="panel-body">' : '</h3>';
 		}
 
 		/**
 		 * Add some metadata when users have selected a static mode for their layout (not responsive).
 		 */
 		function static_meta() {
-			if ( shoestrap_getVariable( 'site_style' ) != 'static' ) : ?>
+			$settings = get_option( SHOESTRAP_OPT_NAME );
+
+			if ( $settings['site_style'] != 'static' ) : ?>
 				<meta name="viewport" content="width=device-width, initial-scale=1">
 				<meta name="mobile-web-app-capable" content="yes">
 				<meta name="apple-mobile-web-app-capable" content="yes">
@@ -611,13 +636,15 @@ if ( !class_exists( 'ShoestrapLayout' ) ) {
 		 * These override the default Bootstrap Variables.
 		 */
 		function variables() {
-			$screen_sm = filter_var( shoestrap_getVariable( 'screen_tablet', true ), FILTER_SANITIZE_NUMBER_INT );
-			$screen_md = filter_var( shoestrap_getVariable( 'screen_desktop', true ), FILTER_SANITIZE_NUMBER_INT );
-			$screen_lg = filter_var( shoestrap_getVariable( 'screen_large_desktop', true ), FILTER_SANITIZE_NUMBER_INT );
-			$gutter    = filter_var( shoestrap_getVariable( 'layout_gutter', true ), FILTER_SANITIZE_NUMBER_INT );
+			$settings = get_option( SHOESTRAP_OPT_NAME );
+
+			$screen_sm = filter_var( $settings['screen_tablet'], FILTER_SANITIZE_NUMBER_INT );
+			$screen_md = filter_var( $settings['screen_desktop'], FILTER_SANITIZE_NUMBER_INT );
+			$screen_lg = filter_var( $settings['screen_large_desktop'], FILTER_SANITIZE_NUMBER_INT );
+			$gutter    = filter_var( $settings['layout_gutter'], FILTER_SANITIZE_NUMBER_INT );
 			$gutter    = ( $gutter < 2 ) ? 2 : $gutter;
 
-			$site_style = shoestrap_getVariable( 'site_style' );
+			$site_style = $settings['site_style'];
 
 			$screen_xs = ( $site_style == 'static' ) ? '50px' : '480px';
 			$screen_sm = ( $site_style == 'static' ) ? '50px' : $screen_sm;
