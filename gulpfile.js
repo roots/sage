@@ -28,10 +28,12 @@ gulp.task('less', function() {
    */
   return gulp.src('assets/less/app.less')
     .pipe(less({
-      sourceMap: true
+      sourceMap: true,
+      //compress: true
     }))
+    .on('error', gutil.log)
+    .on('error', gutil.beep)
     .pipe(concat('main.min.css'))
-    .pipe(minify())
     .pipe(gulp.dest('assets/css'));
 });
 
