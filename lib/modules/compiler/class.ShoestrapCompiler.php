@@ -213,6 +213,7 @@ if ( !class_exists( 'ShoestrapCompiler' ) ) {
 			$scss = new scssc();
 			$scss->setImportPaths( get_template_directory() . '/assets/scss/' );
 
+			$css =  $scss->compile( '@import "normalize.scss"' );
 			$css =  $scss->compile( '@import "foundation.scss"' );
 
 			return $css;
