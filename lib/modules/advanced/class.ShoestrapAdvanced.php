@@ -95,38 +95,41 @@ if ( !class_exists( 'ShoestrapAdvanced' ) ) {
 				'type'      => 'text',
 			);
 
-			$fields[] = array(
-				'title'     => 'Border-Radius and Padding Base',
-				'id'        => 'help2',
-				'desc'      => __( 'The following settings affect various areas of your site, most notably buttons.', 'shoestrap' ),
-				'type'      => 'info',
-			);
+			if ( $settings['framework'] != 'foundation' ) {
 
-			$fields[] = array(
-				'title'     => __( 'Border-Radius', 'shoestrap' ),
-				'desc'      => __( 'You can adjust the corner-radius of all elements in your site here. This will affect buttons, navbars, widgets and many more. Default: 4', 'shoestrap' ),
-				'id'        => 'general_border_radius',
-				'default'   => 4,
-				'min'       => 0,
-				'step'      => 1,
-				'max'       => 50,
-				'advanced'  => true,
-				'compiler'  => true,
-				'type'      => 'slider',
-			);
+				$fields[] = array(
+					'title'     => 'Border-Radius and Padding Base',
+					'id'        => 'help2',
+					'desc'      => __( 'The following settings affect various areas of your site, most notably buttons.', 'shoestrap' ),
+					'type'      => 'info',
+				);
 
-			$fields[] = array(
-				'title'     => __( 'Padding Base', 'shoestrap' ),
-				'desc'      => __( 'You can adjust the padding base. This affects buttons size and lots of other cool stuff too! Default: 8', 'shoestrap' ),
-				'id'        => 'padding_base',
-				'default'   => 6,
-				'min'       => 0,
-				'step'      => 1,
-				'max'       => 20,
-				'advanced'  => true,
-				'compiler'  => true,
-				'type'      => 'slider',
-			);
+				$fields[] = array(
+					'title'     => __( 'Border-Radius', 'shoestrap' ),
+					'desc'      => __( 'You can adjust the corner-radius of all elements in your site here. This will affect buttons, navbars, widgets and many more. Default: 4', 'shoestrap' ),
+					'id'        => 'general_border_radius',
+					'default'   => 4,
+					'min'       => 0,
+					'step'      => 1,
+					'max'       => 50,
+					'advanced'  => true,
+					'compiler'  => true,
+					'type'      => 'slider',
+				);
+
+				$fields[] = array(
+					'title'     => __( 'Padding Base', 'shoestrap' ),
+					'desc'      => __( 'You can adjust the padding base. This affects buttons size and lots of other cool stuff too! Default: 8', 'shoestrap' ),
+					'id'        => 'padding_base',
+					'default'   => 6,
+					'min'       => 0,
+					'step'      => 1,
+					'max'       => 20,
+					'advanced'  => true,
+					'compiler'  => true,
+					'type'      => 'slider',
+				);
+			}
 
 			$fields[] = array(
 				'title'     => __( 'Root Relative URLs', 'shoestrap' ),
@@ -154,16 +157,29 @@ if ( !class_exists( 'ShoestrapAdvanced' ) ) {
 				'theme'     => 'monokai',
 			);
 
-			$fields[] = array(
-				'title'     => __( 'Custom LESS', 'shoestrap' ),
-				'desc'      => __( 'You can write your custom LESS here. This code will be compiled with the other LESS files of the theme and be appended to the header.', 'shoestrap' ),
-				'id'        => 'user_less',
-				'default'   => '',
-				'type'      => 'ace_editor',
-				'mode'      => 'less',
-				'theme'     => 'monokai',
-				'compiler'  => true,
-			);
+			if ( $settings['framework'] != 'foundation' ) {
+				$fields[] = array(
+					'title'     => __( 'Custom LESS', 'shoestrap' ),
+					'desc'      => __( 'You can write your custom LESS here. This code will be compiled with the other LESS files of the theme and be appended to the header.', 'shoestrap' ),
+					'id'        => 'user_less',
+					'default'   => '',
+					'type'      => 'ace_editor',
+					'mode'      => 'less',
+					'theme'     => 'monokai',
+					'compiler'  => true,
+				);
+			} else {
+				$fields[] = array(
+					'title'     => __( 'Custom SASS', 'shoestrap' ),
+					'desc'      => __( 'You can write your custom SASS here. This code will be compiled with the other SASS files of the theme and be appended to the header.', 'shoestrap' ),
+					'id'        => 'user_sass',
+					'default'   => '',
+					'type'      => 'ace_editor',
+					'mode'      => 'sass',
+					'theme'     => 'monokai',
+					'compiler'  => true,
+				);
+			}
 
 			$fields[] = array(
 				'title'     => __( 'Custom JS', 'shoestrap' ),
@@ -370,34 +386,37 @@ if ( !class_exists( 'ShoestrapAdvanced' ) ) {
 
 			$variables = '';
 
-			$variables .= '@padding-base-vertical:    ' . round( $padding_base * 6 / 6 ) . 'px;';
-			$variables .= '@padding-base-horizontal:  ' . round( $padding_base * 12 / 6 ) . 'px;';
+			if ( $settings['framework'] != 'foundation' ) {
 
-			$variables .= '@padding-large-vertical:   ' . round( $padding_base * 10 / 6 ) . 'px;';
-			$variables .= '@padding-large-horizontal: ' . round( $padding_base * 16 / 6 ) . 'px;';
+				$variables .= '@padding-base-vertical:    ' . round( $padding_base * 6 / 6 ) . 'px;';
+				$variables .= '@padding-base-horizontal:  ' . round( $padding_base * 12 / 6 ) . 'px;';
 
-			$variables .= '@padding-small-vertical:   ' . round( $padding_base * 5 / 6 ) . 'px;';
-			$variables .= '@padding-small-horizontal: @padding-large-vertical;';
+				$variables .= '@padding-large-vertical:   ' . round( $padding_base * 10 / 6 ) . 'px;';
+				$variables .= '@padding-large-horizontal: ' . round( $padding_base * 16 / 6 ) . 'px;';
 
-			$variables .= '@padding-xs-vertical:      ' . round( $padding_base * 1 / 6 ) . 'px;';
-			$variables .= '@padding-xs-horizontal:    @padding-small-vertical;';
+				$variables .= '@padding-small-vertical:   ' . round( $padding_base * 5 / 6 ) . 'px;';
+				$variables .= '@padding-small-horizontal: @padding-large-vertical;';
 
-			$variables .= '@border-radius-base:  ' . round( $border_radius * 4 / 4 ) . 'px;';
-			$variables .= '@border-radius-large: ' . round( $border_radius * 6 / 4 ) . 'px;';
-			$variables .= '@border-radius-small: ' . round( $border_radius * 3 / 4 ) . 'px;';
+				$variables .= '@padding-xs-vertical:      ' . round( $padding_base * 1 / 6 ) . 'px;';
+				$variables .= '@padding-xs-horizontal:    @padding-small-vertical;';
 
-			$variables .= '@pager-border-radius: ' . round( $border_radius * 15 / 4 ) . 'px;';
+				$variables .= '@border-radius-base:  ' . round( $border_radius * 4 / 4 ) . 'px;';
+				$variables .= '@border-radius-large: ' . round( $border_radius * 6 / 4 ) . 'px;';
+				$variables .= '@border-radius-small: ' . round( $border_radius * 3 / 4 ) . 'px;';
 
-			$variables .= '@tooltip-arrow-width: @padding-small-vertical;';
-			$variables .= '@popover-arrow-width: (@tooltip-arrow-width * 2);';
+				$variables .= '@pager-border-radius: ' . round( $border_radius * 15 / 4 ) . 'px;';
 
-			$variables .= '@thumbnail-padding:         ' . round( $padding_base * 4 / 6 ) . 'px;';
-			$variables .= '@thumbnail-caption-padding: ' . round( $padding_base * 9 / 6 ) . 'px;';
+				$variables .= '@tooltip-arrow-width: @padding-small-vertical;';
+				$variables .= '@popover-arrow-width: (@tooltip-arrow-width * 2);';
 
-			$variables .= '@badge-border-radius: ' . round( $border_radius * 10 / 4 ) . 'px;';
+				$variables .= '@thumbnail-padding:         ' . round( $padding_base * 4 / 6 ) . 'px;';
+				$variables .= '@thumbnail-caption-padding: ' . round( $padding_base * 9 / 6 ) . 'px;';
 
-			$variables .= '@breadcrumb-padding-vertical:   ' . round( $padding_base * 8 / 6 ) . 'px;';
-			$variables .= '@breadcrumb-padding-horizontal: ' . round( $padding_base * 15 / 6 ) . 'px;';
+				$variables .= '@badge-border-radius: ' . round( $border_radius * 10 / 4 ) . 'px;';
+
+				$variables .= '@breadcrumb-padding-vertical:   ' . round( $padding_base * 8 / 6 ) . 'px;';
+				$variables .= '@breadcrumb-padding-horizontal: ' . round( $padding_base * 15 / 6 ) . 'px;';
+			}
 
 			return $variables;
 		}
