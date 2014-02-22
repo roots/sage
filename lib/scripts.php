@@ -11,23 +11,38 @@
  * 3. /theme/assets/js/main.js (in footer)
  */
 function roots_scripts() {
-  // The build task in Grunt renames production assets with a hash
-  // Read the asset names from assets-manifest.json
-  $get_assets = file_get_contents(get_template_directory_uri() . '/assets-manifest.json');
-  $assets     = json_decode($get_assets, true);
-
-  if (WP_ENV === 'development') {
-    wp_enqueue_style('roots_main_dev', get_template_directory_uri() . '/assets/css/main.css', false, null);
+  /**
+   * The build task in Grunt renames production assets with a hash
+   * Read the asset names from assets-manifest.json
+   */
+  if (!(WP_ENV === 'development')) {
+    $get_assets = file_get_contents(get_template_directory_uri() . '/assets-manifest.json');
+    $assets     = json_decode($get_assets, true);
+    $assets     = array(
+      'css'       => '/' . $assets['assets/css/main.min.css'],
+      'js'        => '/' . $assets['assets/js/scripts.min.js'],
+      'modernizr' => '/assets/js/vendor/modernizr.min.js',
+      'jquery'    => '//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js'
+    );
   } else {
-    wp_enqueue_style('roots_main',     get_template_directory_uri() . '/' . $assets['assets/css/main.min.css'], false, null);
+    $assets = array(
+      'css'       => '/assets/css/main.css',
+      'js'        => '/assets/js/scripts.js',
+      'modernizr' => '/assets/js/vendor/modernizr.min.js',
+      'jquery'    => '//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.js'
+    );
   }
 
-  // jQuery is loaded using the same method from HTML5 Boilerplate:
-  // Grab Google CDN's latest jQuery with a protocol relative URL; fallback to local if offline
-  // It's kept in the header instead of footer to avoid conflicts with plugins.
+  wp_enqueue_style('roots_main', get_template_directory_uri() . $assets['css'], false, null);
+
+  /**
+   * jQuery is loaded using the same method from HTML5 Boilerplate:
+   * Grab Google CDN's latest jQuery with a protocol relative URL; fallback to local if offline
+   * It's kept in the header instead of footer to avoid conflicts with plugins.
+   */
   if (!is_admin() && current_theme_supports('jquery-cdn')) {
     wp_deregister_script('jquery');
-    wp_register_script('jquery', '//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js', array(), null, false);
+    wp_register_script('jquery', $assets['jquery'], array(), null, false);
     add_filter('script_loader_src', 'roots_jquery_local_fallback', 10, 2);
   }
 
@@ -35,16 +50,11 @@ function roots_scripts() {
     wp_enqueue_script('comment-reply');
   }
 
-  wp_register_script('modernizr',         get_template_directory_uri() . '/assets/js/vendor/modernizr.min.js', array(), null, false);
-  wp_register_script('roots_scripts_dev', get_template_directory_uri() . '/assets/js/scripts.js', array(), null, true);
-  wp_register_script('roots_scripts',     get_template_directory_uri() . '/' . $assets['assets/js/scripts.min.js'], array(), null, true);
+  wp_register_script('modernizr', get_template_directory_uri() . $assets['modernizr'], array(), null, false);
+  wp_register_script('roots_main', get_template_directory_uri() . $assets['js'], array(), null, true);
   wp_enqueue_script('modernizr');
   wp_enqueue_script('jquery');
-  if (WP_ENV === 'development') {
-    wp_enqueue_script('roots_scripts_dev');
-  } else {
-    wp_enqueue_script('roots_scripts');
-  }
+  wp_enqueue_script('roots_main');
 }
 add_action('wp_enqueue_scripts', 'roots_scripts', 100);
 
