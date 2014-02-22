@@ -571,7 +571,7 @@ if ( !class_exists( 'ShoestrapLayout' ) ) {
 			if ( is_front_page() && $layout_sidebar_on_front == 1 && self::get_layout() != 0 )
 				add_filter( 'shoestrap_display_primary_sidebar', 'shoestrap_return_true' );
 
-			if ( !is_front_page() || ( is_front_page() && $layout_sidebar_on_front == 1 ) )
+			if ( ( !is_front_page() || ( is_front_page() && $layout_sidebar_on_front == 1 ) ) && self::get_layout() != 0 )
 				add_filter( 'shoestrap_display_primary_sidebar', 'shoestrap_return_true' );
 
 		}
