@@ -16,10 +16,14 @@
       "url": "http://opensource.org/licenses/MIT"
     }
   ],
+  "scripts": {
+    "postinstall": "node_modules/.bin/bower install"
+  },
   "engines": {
     "node": ">= 0.10.0"
   },
   "devDependencies": {
+    "bower": "~1.2.8",
     "grunt": "~0.4.2",
     "grunt-contrib-clean": "~0.5.0",
     "grunt-contrib-jshint": "~0.6.4",
