@@ -3,3 +3,5 @@
 node_modules
 assets/vendor/*
 assets/css/main.min.css.map
+assets/css/*main.*.min.css
+assets/js/*scripts.*.min.js
