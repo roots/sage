@@ -2,6 +2,9 @@
 /**
  * Roots includes
  */
+if (is_file(locate_template('/lib/versions.php'))) {
+	include_once locate_template('/lib/versions.php');        // Versions utility
+}
 require_once locate_template('/lib/utils.php');           // Utility functions
 require_once locate_template('/lib/init.php');            // Initial theme setup and constants
 require_once locate_template('/lib/wrapper.php');         // Theme wrapper class

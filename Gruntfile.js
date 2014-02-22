@@ -9,6 +9,7 @@ module.exports = function(grunt) {
       all: [
         'Gruntfile.js',
         'assets/js/*.js',
+        '!assets/js/scripts.min.*.js',
         '!assets/js/scripts.min.js'
       ]
     },
@@ -58,11 +59,11 @@ module.exports = function(grunt) {
     },
     version: {
       options: {
-        file: 'lib/scripts.php',
+        file: 'lib/versions.php',
         css: 'assets/css/main.min.css',
-        cssHandle: 'roots_main',
+        cssHandle: 'MAIN_CSS_VERSION',
         js: 'assets/js/scripts.min.js',
-        jsHandle: 'roots_scripts'
+        jsHandle: 'MAIN_JS_VERSION'
       }
     },
     watch: {
@@ -107,7 +108,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-less');
-  grunt.loadNpmTasks('grunt-wp-version');
+  grunt.loadNpmTasks('grunt-wordpress-version');
 
   // Register tasks
   grunt.registerTask('default', [
