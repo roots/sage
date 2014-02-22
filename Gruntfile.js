@@ -25,8 +25,8 @@ module.exports = function(grunt) {
       all: [
         'Gruntfile.js',
         'assets/js/*.js',
-        '!assets/js/*.min.js',
-        '!assets/js/scripts.js'
+        '!assets/js/scripts.js',
+        '!assets/**/*.min.*'
       ]
     },
     less: {
@@ -72,12 +72,6 @@ module.exports = function(grunt) {
         }
       }
     },
-    version: {
-      assets: {
-        src: ['assets/css/main.min.css', 'assets/js/scripts.min.js'],
-        dest: 'lib/scripts.php'
-      }
-    },
     modernizr: {
       build: {
         devFile: 'assets/vendor/modernizr/modernizr.js',
@@ -90,6 +84,18 @@ module.exports = function(grunt) {
         },
         uglify: true,
         parseFiles: true
+      }
+    },
+    filerev: {
+      assets: {
+        src: ['assets/css/main.min.css', 'assets/js/scripts.min.js']
+      }
+    },
+    filerev_assets: {
+      assets: {
+        options: {
+          dest: 'assets-manifest.json'
+        }
       }
     },
     watch: {
@@ -146,7 +152,8 @@ module.exports = function(grunt) {
     'less:build',
     'uglify',
     'modernizr',
-    'version'
+    'filerev',
+    'filerev_assets'
   ]);
 
 };

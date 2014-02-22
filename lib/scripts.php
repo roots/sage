@@ -3,18 +3,23 @@
  * Enqueue scripts and stylesheets
  *
  * Enqueue stylesheets in the following order:
- * 1. /theme/assets/css/main.3368efd2.min.css
+ * 1. /theme/assets/css/main.css
  *
  * Enqueue scripts in the following order:
  * 1. jquery-1.11.0.min.js via Google CDN
  * 2. /theme/assets/js/vendor/modernizr.min.js
- * 3. /theme/assets/js/main.min.js (in footer)
+ * 3. /theme/assets/js/main.js (in footer)
  */
 function roots_scripts() {
+  // The build task in Grunt renames production assets with a hash
+  // Read the asset names from assets-manifest.json
+  $get_assets = file_get_contents(get_template_directory_uri() . '/assets-manifest.json');
+  $assets     = json_decode($get_assets, true);
+
   if (WP_ENV === 'development') {
     wp_enqueue_style('roots_main_dev', get_template_directory_uri() . '/assets/css/main.css', false, null);
   } else {
-    wp_enqueue_style('roots_main',     get_template_directory_uri() . '/assets/css/main.3368efd2.min.css', false, null);
+    wp_enqueue_style('roots_main',     get_template_directory_uri() . '/' . $assets['assets/css/main.min.css'], false, null);
   }
 
   // jQuery is loaded using the same method from HTML5 Boilerplate:
@@ -32,7 +37,7 @@ function roots_scripts() {
 
   wp_register_script('modernizr',         get_template_directory_uri() . '/assets/js/vendor/modernizr.min.js', array(), null, false);
   wp_register_script('roots_scripts_dev', get_template_directory_uri() . '/assets/js/scripts.js', array(), null, true);
-  wp_register_script('roots_scripts',     get_template_directory_uri() . '/assets/js/scripts.0fc6af96.min.js', array(), null, true);
+  wp_register_script('roots_scripts',     get_template_directory_uri() . '/' . $assets['assets/js/scripts.min.js'], array(), null, true);
   wp_enqueue_script('modernizr');
   wp_enqueue_script('jquery');
   if (WP_ENV === 'development') {
