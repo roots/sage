@@ -66,12 +66,14 @@ module.exports = function(grunt) {
       dist: {
         devFile: 'assets/vendor/modernizr/modernizr.js',
         outputFile: 'assets/js/vendor/modernizr.min.js',
-        files: [
-          ['assets/js/scripts.min.js'],
-          ['assets/css/main.min.css']
-        ],
+        files: {
+          'src': [
+            ['assets/js/scripts.min.js'],
+            ['assets/css/main.min.css']
+          ]
+        },
         uglify: true,
-        parseFiles: false
+        parseFiles: true
       }
     },
     watch: {
