@@ -32,6 +32,7 @@
     "grunt-contrib-watch": "~0.5.3",
     "grunt-contrib-less": "~0.8.1",
     "grunt-wp-assets": "~0.2.1",
-    "grunt-modernizr": "~0.5.1"
+    "grunt-modernizr": "~0.5.1",
+    "load-grunt-tasks": "~0.3.0"
   }
 }
