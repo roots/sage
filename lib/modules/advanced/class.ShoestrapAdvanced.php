@@ -9,6 +9,8 @@ if ( !class_exists( 'ShoestrapAdvanced' ) ) {
 	class ShoestrapAdvanced {
 
 		function __construct() {
+			$settings = get_option( SHOESTRAP_OPT_NAME );
+
 			add_filter( 'redux/options/' . SHOESTRAP_OPT_NAME . '/sections', array( $this, 'options' ), 95 );
 			add_action( 'wp_enqueue_scripts', array( $this, 'user_css'           ), 101 );
 			add_action( 'wp_footer',          array( $this, 'user_js'            ), 200 );
@@ -18,19 +20,19 @@ if ( !class_exists( 'ShoestrapAdvanced' ) ) {
 			add_filter( 'shoestrap_compiler', array( $this, 'variables_filter'   )      );
 
 			 // Toggle activation of the jQuery CDN
-			if ( shoestrap_getVariable( 'jquery_cdn' ) == 1 ) {
-				add_action( 'wp_enqueue_scripts', 'jquery_cdn', 100 );
+			if ( $settings['jquery_cdn_toggler'] == 1 ) {
+				add_action( 'wp_enqueue_scripts', array( $this, 'jquery_cdn' ), 101 );
 				add_action( 'wp_head',            array( $this, 'jquery_local_fallback' ) );
 			}
 
-			if ( shoestrap_getVariable( 'nice_search' ) == 1 )
+			if ( $settings['nice_search'] == 1 )
 				add_action( 'template_redirect', array( $this, 'nice_search_redirect' ) );
 
 			/**
 			 * Post Excerpt Length
 			 * Length in words for excerpt_length filter (http://codex.wordpress.org/Plugin_API/Filter_Reference/excerpt_length)
 			 */
-			define( 'POST_EXCERPT_LENGTH', shoestrap_getVariable( 'post_excerpt_length' ) );
+			define( 'POST_EXCERPT_LENGTH', $settings['post_excerpt_length'] );
 
 			if ( self::enable_root_relative_urls() ) {
 				$root_rel_filters = array(
@@ -72,12 +74,12 @@ if ( !class_exists( 'ShoestrapAdvanced' ) ) {
 			$settings = get_option( SHOESTRAP_OPT_NAME );
 
 			// Advanced Settings
-			$section = array( 
+			$section = array(
 				'title'   => __( 'Advanced', 'shoestrap' ),
 				'icon'    => 'el-icon-cogs icon-large'
-			);  
+			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'     => __( 'Enable Retina mode', 'shoestrap' ),
 				'desc'      => __( 'By enabling your site\'s featured images will be retina ready. Requires images to be uploaded at 2x the typical size desired. Default: On', 'shoestrap' ),
 				'id'        => 'retina_toggle',
@@ -85,7 +87,7 @@ if ( !class_exists( 'ShoestrapAdvanced' ) ) {
 				'type'      => 'switch',
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'     => __( 'Google Analytics ID', 'shoestrap' ),
 				'desc'      => __( 'Paste your Google Analytics ID here to enable analytics tracking. Only Universal Analytics properties. Your user ID should be in the form of UA-XXXXX-Y.', 'shoestrap' ),
 				'id'        => 'analytics_id',
@@ -93,14 +95,14 @@ if ( !class_exists( 'ShoestrapAdvanced' ) ) {
 				'type'      => 'text',
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'     => 'Border-Radius and Padding Base',
 				'id'        => 'help2',
 				'desc'      => __( 'The following settings affect various areas of your site, most notably buttons.', 'shoestrap' ),
 				'type'      => 'info',
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'     => __( 'Border-Radius', 'shoestrap' ),
 				'desc'      => __( 'You can adjust the corner-radius of all elements in your site here. This will affect buttons, navbars, widgets and many more. Default: 4', 'shoestrap' ),
 				'id'        => 'general_border_radius',
@@ -113,7 +115,7 @@ if ( !class_exists( 'ShoestrapAdvanced' ) ) {
 				'type'      => 'slider',
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'     => __( 'Padding Base', 'shoestrap' ),
 				'desc'      => __( 'You can adjust the padding base. This affects buttons size and lots of other cool stuff too! Default: 8', 'shoestrap' ),
 				'id'        => 'padding_base',
@@ -126,7 +128,7 @@ if ( !class_exists( 'ShoestrapAdvanced' ) ) {
 				'type'      => 'slider',
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'     => __( 'Root Relative URLs', 'shoestrap' ),
 				'desc'      => __( 'Return URLs such as <em>/assets/css/style.css</em> instead of <em>http://example.com/assets/css/style.css</em>. Default: ON', 'shoestrap' ),
 				'id'        => 'root_relative_urls',
@@ -134,7 +136,7 @@ if ( !class_exists( 'ShoestrapAdvanced' ) ) {
 				'type'      => 'switch'
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'     => __( 'Enable Nice Search', 'shoestrap' ),
 				'desc'      => __( 'Redirects /?s=query to /search/query/, convert %20 to +. Default: ON', 'shoestrap' ),
 				'id'        => 'nice_search',
@@ -142,7 +144,7 @@ if ( !class_exists( 'ShoestrapAdvanced' ) ) {
 				'type'      => 'switch'
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'     => __( 'Custom CSS', 'shoestrap' ),
 				'desc'      => __( 'You can write your custom CSS here. This code will appear in a script tag appended in the header section of the page.', 'shoestrap' ),
 				'id'        => 'user_css',
@@ -152,7 +154,7 @@ if ( !class_exists( 'ShoestrapAdvanced' ) ) {
 				'theme'     => 'monokai',
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'     => __( 'Custom LESS', 'shoestrap' ),
 				'desc'      => __( 'You can write your custom LESS here. This code will be compiled with the other LESS files of the theme and be appended to the header.', 'shoestrap' ),
 				'id'        => 'user_less',
@@ -161,9 +163,9 @@ if ( !class_exists( 'ShoestrapAdvanced' ) ) {
 				'mode'      => 'less',
 				'theme'     => 'monokai',
 				'compiler'  => true,
-			);  
+			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'     => __( 'Custom JS', 'shoestrap' ),
 				'desc'      => __( 'You can write your custom JavaScript/jQuery here. The code will be included in a script tag appended to the bottom of the page.', 'shoestrap' ),
 				'id'        => 'user_js',
@@ -173,7 +175,7 @@ if ( !class_exists( 'ShoestrapAdvanced' ) ) {
 				'theme'     => 'monokai',
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'     => __( 'Minimize CSS', 'shoestrap' ),
 				'desc'      => __( 'Minimize the genearated CSS. This should be ON for production sites. Default: OFF.', 'shoestrap' ),
 				'id'        => 'minimize_css',
@@ -212,9 +214,9 @@ if ( !class_exists( 'ShoestrapAdvanced' ) ) {
 			$section['fields'] = $fields;
 
 			$section = apply_filters( 'shoestrap_module_advanced_options_modifier', $section );
-			
+
 			$sections[] = $section;
-			
+
 			return $sections;
 
 		}
@@ -223,8 +225,9 @@ if ( !class_exists( 'ShoestrapAdvanced' ) ) {
 		 * echo any custom CSS the user has written to the <head> of the page
 		 */
 		function user_css() {
-			$header_scripts = shoestrap_getVariable( 'user_css' );
-			
+			$settings = get_option( SHOESTRAP_OPT_NAME );
+			$header_scripts = $settings['user_css'];
+
 			if ( trim( $header_scripts ) != '' )
 				wp_add_inline_style( 'shoestrap_css', $header_scripts );
 		}
@@ -233,7 +236,8 @@ if ( !class_exists( 'ShoestrapAdvanced' ) ) {
 		 * echo any custom JS the user has written to the footer of the page
 		 */
 		function user_js() {
-			$footer_scripts = shoestrap_getVariable( 'user_js' );
+			$settings = get_option( SHOESTRAP_OPT_NAME );
+			$footer_scripts = $settings['user_js'];
 
 			if ( trim( $footer_scripts ) != '' )
 				echo '<script id="core.advanced-user-js">' . $footer_scripts . '</script>';
@@ -243,7 +247,8 @@ if ( !class_exists( 'ShoestrapAdvanced' ) ) {
 		 * Switch the adminbar On/Off
 		 */
 		function admin_bar() {
-			if ( shoestrap_getVariable( 'advanced_wordpress_disable_admin_bar_toggle' ) == 0 )
+			$settings = get_option( SHOESTRAP_OPT_NAME );
+			if ( $settings['advanced_wordpress_disable_admin_bar_toggle'] == 0 )
 				return false;
 			else
 				return true;
@@ -253,7 +258,8 @@ if ( !class_exists( 'ShoestrapAdvanced' ) ) {
 		 * The Google Analytics code
 		 */
 		function google_analytics() {
-			$analytics_id = shoestrap_getVariable( 'analytics_id' );
+			$settings = get_option( SHOESTRAP_OPT_NAME );
+			$analytics_id = $settings['analytics_id'];
 
 			if ( !is_null( $analytics_id ) && !empty( $analytics_id ) )
 				echo "<script>
@@ -311,7 +317,9 @@ if ( !class_exists( 'ShoestrapAdvanced' ) ) {
 		 * Enqueue some extra scripts
 		 */
 		function scripts() {
-			if ( shoestrap_getVariable( 'retina_toggle' ) == 1 ) {
+			$settings = get_option( SHOESTRAP_OPT_NAME );
+
+			if ( $settings['retina_toggle'] == 1 ) {
 				wp_register_script( 'retinajs', SHOESTRAP_ASSETS_URL . '/js/vendor/retina.js', false, null, true );
 				wp_enqueue_script( 'retinajs' );
 			}
@@ -354,8 +362,10 @@ if ( !class_exists( 'ShoestrapAdvanced' ) ) {
 		 * These override the default Bootstrap Variables.
 		 */
 		public static function variables() {
-			$padding_base  = intval( shoestrap_getVariable( 'padding_base', true ) );
-			$border_radius = filter_var( shoestrap_getVariable( 'general_border_radius', true ), FILTER_SANITIZE_NUMBER_INT );
+			$settings = get_option( SHOESTRAP_OPT_NAME );
+
+			$padding_base  = intval( $settings['padding_base'] );
+			$border_radius = filter_var( $settings['general_border_radius'], FILTER_SANITIZE_NUMBER_INT );
 			$border_radius = ( strlen( $border_radius ) < 1 ) ? 0 : $border_radius;
 
 			$variables = '';
