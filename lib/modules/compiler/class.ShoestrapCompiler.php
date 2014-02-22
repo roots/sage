@@ -210,7 +210,12 @@ if ( !class_exists( 'ShoestrapCompiler' ) ) {
 		 * This function can be used to compile a less file to css using the lessphp compiler
 		 */
 		public static function sass_compiler() {
+			$scss = new scssc();
+			$scss->setImportPaths( get_template_directory() . '/assets/scss/' );
 
+			$css =  $scss->compile( '@import "foundation.scss"' );
+
+			return $css;
 		}
 
 		public static function makecss() {
