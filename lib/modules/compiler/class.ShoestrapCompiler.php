@@ -8,6 +8,7 @@ if ( !class_exists( 'ShoestrapCompiler' ) ) {
 	class ShoestrapCompiler {
 
 		function __construct() {
+			global $wp_customize;
 			$settings = get_option( SHOESTRAP_OPT_NAME );
 
 			add_filter( 'shoestrap_main_stylesheet_url', array( $this, 'stylesheet_url' ) );
@@ -20,21 +21,27 @@ if ( !class_exists( 'ShoestrapCompiler' ) ) {
 					self::makecss();
 			}
 
-			// If the less.php compiler is not found, force the use the less.js compiler.
-			if ( !class_exists( 'Less_Cache' ) || !class_exists( 'Less_Parser' ) ) {
-				if ( isset( $settings['lessjs'] ) || $settings['lessjs'] != 1 ) {
-					$settings['lessjs'] = 1;
-					update_option( SHOESTRAP_OPT_NAME, $settings );
+			// If user has selected to use foundation and not bootstrap then include the SASS compiler
+			if ( $settings['framework'] == 'foundation' ) {
+				if ( !class_exists( 'scssc' ) )
+					include_once( 'compilers/scss.inc.php' );
+
+			} else {
+
+				// If the less.php compiler is not found, force the use the less.js compiler.
+				if ( !class_exists( 'Less_Cache' ) || !class_exists( 'Less_Parser' ) ) {
+					if ( isset( $settings['lessjs'] ) || $settings['lessjs'] != 1 ) {
+						$settings['lessjs'] = 1;
+						update_option( SHOESTRAP_OPT_NAME, $settings );
+					}
 				}
-			}
 
-
-			// If we are on the customizer then output the necessary elements to wp_head so that the less.js customizer kicks in.
-			global $wp_customize;
-			$lessjs = $settings['lessjs'];
-			if ( isset( $wp_customize ) || $lessjs == 1 ) {
-				add_action( 'wp_head', array( $this, 'less_js_stylesheet' ), 1  );
-				add_action( 'wp_enqueue_scripts', array( $this, 'less_js_enqueue' ), 110 );
+				// If we are on the customizer then output the necessary elements to wp_head so that the less.js customizer kicks in.
+				$lessjs = $settings['lessjs'];
+				if ( isset( $wp_customize ) || $lessjs == 1 ) {
+					add_action( 'wp_head', array( $this, 'less_js_stylesheet' ), 1  );
+					add_action( 'wp_enqueue_scripts', array( $this, 'less_js_enqueue' ), 110 );
+				}
 			}
 
 			// Saving functions on import, etc
@@ -154,7 +161,7 @@ if ( !class_exists( 'ShoestrapCompiler' ) ) {
 		/*
 		 * This function can be used to compile a less file to css using the lessphp compiler
 		 */
-		public static function compiler() {
+		public static function less_compiler() {
 			$minimize_css = shoestrap_getVariable( 'minimize_css', true );
 			$options = ( $minimize_css == 1 ) ? array( 'compress'=>true ) : array( 'compress'=>false );
 
@@ -199,8 +206,17 @@ if ( !class_exists( 'ShoestrapCompiler' ) ) {
 			return apply_filters( 'shoestrap_compiler_output', $css );
 		}
 
+		/*
+		 * This function can be used to compile a less file to css using the lessphp compiler
+		 */
+		public static function sass_compiler() {
+
+		}
+
 		public static function makecss() {
 			global $wp_filesystem;
+			$settings = get_option( SHOESTRAP_OPT_NAME );
+
 			$file = self::file();
 
 			// Initialize the Wordpress filesystem.
@@ -213,7 +229,7 @@ if ( !class_exists( 'ShoestrapCompiler' ) ) {
 
 			';
 
-			$content .= self::compiler();
+			$content .= $settings['framework'] == 'foundation' ? self::sass_compiler() : self::less_compiler();
 
 			if ( is_writeable( $file ) || ( !file_exists( $file ) && is_writeable( dirname( $file ) ) ) ) {
 				if ( !$wp_filesystem->put_contents( $file, $content, FS_CHMOD_FILE ) )
