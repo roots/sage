@@ -176,6 +176,9 @@ if ( !class_exists( 'ShoestrapBranding' ) ) {
 		 * These override the default Bootstrap Variables.
 		 */
 		public static function variables() {
+
+			$settings = get_option( SHOESTRAP_OPT_NAME );
+
 			$brand_primary = '#' . str_replace( '#', '', ShoestrapColor::sanitize_hex( shoestrap_getVariable( 'color_brand_primary', true ) ) );
 			$brand_success = '#' . str_replace( '#', '', ShoestrapColor::sanitize_hex( shoestrap_getVariable( 'color_brand_success', true ) ) );
 			$brand_warning = '#' . str_replace( '#', '', ShoestrapColor::sanitize_hex( shoestrap_getVariable( 'color_brand_warning', true ) ) );
@@ -210,41 +213,45 @@ if ( !class_exists( 'ShoestrapBranding' ) ) {
 
 			$variables = '';
 
-			// Branding colors
-			$variables .= '@brand-primary: ' . $brand_primary . ';';
-			$variables .= '@brand-success: ' . $brand_success . ';';
-			$variables .= '@brand-info:    ' . $brand_info . ';';
-			$variables .= '@brand-warning: ' . $brand_warning . ';';
-			$variables .= '@brand-danger:  ' . $brand_danger . ';';
+			if ( $settings['framework'] != 'foundation' ) {
+				// Branding colors
+				$variables .= '@brand-primary: ' . $brand_primary . ';';
+				$variables .= '@brand-success: ' . $brand_success . ';';
+				$variables .= '@brand-info:    ' . $brand_info . ';';
+				$variables .= '@brand-warning: ' . $brand_warning . ';';
+				$variables .= '@brand-danger:  ' . $brand_danger . ';';
 
-			// Link-hover
-			$variables .= '@link-hover-color: ' . $link_hover_color . ';';
+				// Link-hover
+				$variables .= '@link-hover-color: ' . $link_hover_color . ';';
 
-			$variables .= '@btn-default-color:  @gray-dark;';
-			$variables .= '@btn-primary-color:  ' . $btn_primary_color . ';';
-			$variables .= '@btn-primary-border: ' . $btn_primary_border . ';';
-			$variables .= '@btn-success-color:  ' . $btn_success_color . ';';
-			$variables .= '@btn-success-border: ' . $btn_success_border . ';';
-			$variables .= '@btn-info-color:     ' . $btn_info_color . ';';
-			$variables .= '@btn-info-border:    ' . $btn_info_border . ';';
-			$variables .= '@btn-warning-color:  ' . $btn_warning_color . ';';
-			$variables .= '@btn-warning-border: ' . $btn_warning_border . ';';
-			$variables .= '@btn-danger-color:   ' . $btn_danger_color . ';';
-			$variables .= '@btn-danger-border:  ' . $btn_danger_border . ';';
+				$variables .= '@btn-default-color:  @gray-dark;';
+				$variables .= '@btn-primary-color:  ' . $btn_primary_color . ';';
+				$variables .= '@btn-primary-border: ' . $btn_primary_border . ';';
+				$variables .= '@btn-success-color:  ' . $btn_success_color . ';';
+				$variables .= '@btn-success-border: ' . $btn_success_border . ';';
+				$variables .= '@btn-info-color:     ' . $btn_info_color . ';';
+				$variables .= '@btn-info-border:    ' . $btn_info_border . ';';
+				$variables .= '@btn-warning-color:  ' . $btn_warning_color . ';';
+				$variables .= '@btn-warning-border: ' . $btn_warning_border . ';';
+				$variables .= '@btn-danger-color:   ' . $btn_danger_color . ';';
+				$variables .= '@btn-danger-border:  ' . $btn_danger_border . ';';
 
-			$variables .= '@input-border-focus: ' . $input_border_focus . ';';
+				$variables .= '@input-border-focus: ' . $input_border_focus . ';';
 
-			$variables .= '@state-success-text: mix(@gray-darker, @brand-success, 20%);';
-			$variables .= '@state-success-bg:   mix(@body-bg, @brand-success, 50%);';
+				$variables .= '@state-success-text: mix(@gray-darker, @brand-success, 20%);';
+				$variables .= '@state-success-bg:   mix(@body-bg, @brand-success, 50%);';
 
-			$variables .= '@state-info-text:    mix(@gray-darker, @brand-info, 20%);';
-			$variables .= '@state-info-bg:      mix(@body-bg, @brand-info, 50%);';
+				$variables .= '@state-info-text:    mix(@gray-darker, @brand-info, 20%);';
+				$variables .= '@state-info-bg:      mix(@body-bg, @brand-info, 50%);';
 
-			$variables .= '@state-warning-text: mix(@gray-darker, @brand-warning, 20%);';
-			$variables .= '@state-warning-bg:   mix(@body-bg, @brand-warning, 50%);';
+				$variables .= '@state-warning-text: mix(@gray-darker, @brand-warning, 20%);';
+				$variables .= '@state-warning-bg:   mix(@body-bg, @brand-warning, 50%);';
 
-			$variables .= '@state-danger-text:  mix(@gray-darker, @brand-danger, 20%);';
-			$variables .= '@state-danger-bg:    mix(@body-bg, @brand-danger, 50%);';
+				$variables .= '@state-danger-text:  mix(@gray-darker, @brand-danger, 20%);';
+				$variables .= '@state-danger-bg:    mix(@body-bg, @brand-danger, 50%);';
+			} else {
+				
+			}
 
 			return $variables;
 		}
