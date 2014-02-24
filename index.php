@@ -1,9 +1,10 @@
 <?php
 
-if ( !has_action( 'shoestrap_page_header_override' ) )
+if ( !has_action( 'shoestrap_page_header_override' ) ) {
 	get_template_part( 'templates/page', 'header' );
-else
+} else {
 	do_action( 'shoestrap_page_header_override' );
+}
 
 do_action( 'shoestrap_index_begin' );
 
@@ -16,10 +17,11 @@ if ( !has_action( 'shoestrap_override_index_loop' ) ) {
 	while (have_posts()) : the_post();
 		do_action( 'shoestrap_in_loop_start' );
 
-		if ( !has_action( 'shoestrap_content_override' ) )
+		if ( !has_action( 'shoestrap_content_override' ) ) {
 			get_template_part( 'templates/content', get_post_format() );
-		else
+		} else {
 			do_action( 'shoestrap_content_override' );
+		}
 
 		do_action( 'shoestrap_in_loop_end' );
 	endwhile;

@@ -1,3 +1,4 @@
+<?php $fw = new Shoestrap_Framework(); ?>
 <?php while (have_posts()) : the_post(); ?>
 	<article <?php post_class(); ?>>
 		<?php do_action( 'shoestrap_single_top' ); ?>
@@ -6,7 +7,7 @@
 		<div class="entry-content">
 			<?php do_action( 'shoestrap_single_pre_content' ); ?>
 			<?php the_content(); ?>
-			<?php echo shoestrap_clearfix(); ?>
+			<?php echo $fw->clearfix(); ?>
 			<?php do_action( 'shoestrap_single_after_content' ); ?>
 		</div>
 		<footer>

@@ -159,6 +159,8 @@ if( !class_exists( 'ShoestrapFooter' ) ) {
 		}
 
 		function html() {
+			$fw = new Shoestrap_Framework();
+
 			$blog_name  = get_bloginfo( 'name', 'display' );
 			$ftext      = shoestrap_getVariable( 'footer_text' );
 
@@ -197,7 +199,7 @@ if( !class_exists( 'ShoestrapFooter' ) ) {
 							<?php endforeach; ?>
 						</div>
 					<?php endif; ?>
-					<?php echo shoestrap_clearfix(); ?>
+					<?php echo $fw->clearfix(); ?>
 				</article>
 			</div>
 			<?php

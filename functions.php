@@ -1,12 +1,14 @@
 <?php
 
 // define the 'SHOESTRAP_ASSETS_URL' constant.
-if ( !defined( 'SHOESTRAP_ASSETS_URL' ) )
+if ( !defined( 'SHOESTRAP_ASSETS_URL' ) ) {
 	define( 'SHOESTRAP_ASSETS_URL', get_template_directory_uri() . '/assets' );
+}
 
 // If modules exist, load them.
-if ( file_exists( locate_template( '/lib/modules/load.modules.php' ) ) )
+if ( file_exists( locate_template( '/lib/modules/load.modules.php' ) ) ) {
 	require_once locate_template('/lib/modules/load.modules.php');
+}
 
 require_once locate_template( '/lib/utils.php' );        // Utility functions
 require_once locate_template( '/lib/init.php' );         // Initial theme setup and constants

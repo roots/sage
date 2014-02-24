@@ -5,7 +5,8 @@
 	<?php edit_comment_link(__('(Edit)', 'shoestrap'), '', ''); ?>
 
 	<?php if ($comment->comment_approved == '0') : ?>
-		<?php shoestrap_alert( 'alert alert-info', __( 'Your comment is awaiting moderation.', 'shoestrap' ) ); ?>
+		<?php $fw = new Shoestrap_Framework(); ?>
+		<?php echo $fw->alert( 'info', __( 'Your comment is awaiting moderation.', 'shoestrap' ) ); ?>
 	<?php endif; ?>
 
 	<?php comment_text(); ?>
