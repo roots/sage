@@ -1,4 +1,5 @@
 <?php
 
-require_once 'class-Shoestrap_Bootstrap.php'; // get the Framework class.
-require_once 'nav.php';                       // get the nav mods.
+include_once( dirname( __FILE__ ) . '/class-Shoestrap_Bootstrap.php' );    // Framework class.
+include_once( dirname( __FILE__ ) . '/menus/nav.php' );                    // NavWalker
+include_once( dirname( __FILE__ ) . '/menus/class-Shoestrap_Menus.php' );  // The menus module

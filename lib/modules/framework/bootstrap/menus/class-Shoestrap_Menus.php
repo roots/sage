@@ -1,12 +1,12 @@
 <?php
 
 
-if ( !class_exists( 'ShoestrapMenus' ) ) {
+if ( !class_exists( 'Shoestrap_Menus' ) ) {
 
 	/**
 	* The "Menus" module
 	*/
-	class ShoestrapMenus {
+	class Shoestrap_Menus {
 
 		function __construct() {
 			add_filter( 'redux/options/' . SHOESTRAP_OPT_NAME . '/sections', array( $this, 'options' ), 70 );
@@ -46,15 +46,13 @@ if ( !class_exists( 'ShoestrapMenus' ) ) {
 				'icon'  => 'el-icon-lines icon-large'
 			);
 
-			$url = admin_url( 'nav-menus.php' );
 			$fields[] = array( 
 				'id'          => 'help7',
 				'title'       => __( 'Advanced NavBar Options', 'shoestrap' ),
-				'desc'        => __( "You can activate or deactivate your Primary NavBar here, and define its properties. Please note that you might have to manually create a menu if it doesn't already exist and add items to it from <a href='$url'>this page</a>.", 'shoestrap' ),
+				'desc'        => __( "You can activate or deactivate your Primary NavBar here, and define its properties. Please note that you might have to manually create a menu if it doesn't already exist.", 'shoestrap' ),
 				'type'        => 'info'
 			);
 
-			$url = admin_url( 'nav-menus.php?action=locations' );
 			$fields[] = array( 
 				'title'       => __( 'Type of NavBar', 'shoestrap' ),
 				'desc'        => __( 'Choose the type of Navbar you want. Off completely hides the navbar, Alternative uses an alternative walker for the navigation menus. See <a target="_blank"href="https://github.com/twittem/wp-bootstrap-navwalker">here</a> for more details.', 'shoestrap' ) . '<br>' . __( '<strong>WARNING:</strong> The "Static-Left" option is ONLY compatible with fluid layouts. The width of the static-left navbar is controlled by the secondary sidebar width.', 'shoestrap' ),
@@ -816,7 +814,7 @@ if ( !class_exists( 'ShoestrapMenus' ) ) {
 
 		function styles( $bootstrap ) {
 			return $bootstrap . '
-			@import "' . SHOESTRAP_MODULES_PATH . '/menus/assets/less/styles.less";';
+			@import "' . SHOESTRAP_MODULES_PATH . '/framework/bootstrap/menus/assets/less/styles.less";';
 		}
 	}
 }
@@ -824,4 +822,4 @@ if ( !class_exists( 'ShoestrapMenus' ) ) {
 include_once( dirname( __FILE__ ) . '/includes/functions.navlist-walker.php' );
 include_once( dirname( __FILE__ ) . '/includes/functions.navlist.php' );
 
-$menus = new ShoestrapMenus();
+$menus = new Shoestrap_Menus();
