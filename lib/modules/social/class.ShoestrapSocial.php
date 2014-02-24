@@ -61,7 +61,7 @@ if ( !class_exists( 'ShoestrapSocial' ) ) {
 
 			$section = array(
 				'title'     => __( 'Social', 'shoestrap' ),
-				'icon'      => 'el-icon-group icon-large',
+				'icon'      => 'el-icon-group',
 			);
 
 			$fields[] = array( 
@@ -96,14 +96,14 @@ if ( !class_exists( 'ShoestrapSocial' ) ) {
 				'title'     => __( 'Button Styling', 'shoestrap' ),
 				'desc'      => __( 'Select between standard Bootstrap\'s button classes', 'shoestrap' ),
 				'id'        => 'social_sharing_button_class',
-				'default'   => 'btn-default',
+				'default'   => 'default',
 				'type'      => 'select',
 				'options'   => array( 
-					'btn-default'    => 'Default',
-					'btn-primary'    => 'Primary',
-					'btn-success'    => 'Success',
-					'btn-warning'    => 'Warning',
-					'btn-danger'     => 'Danger',
+					'default'    => 'Default',
+					'primary'    => 'Primary',
+					'success'    => 'Success',
+					'warning'    => 'Warning',
+					'danger'     => 'Danger',
 				)
 			);
 
@@ -549,6 +549,8 @@ if ( !class_exists( 'ShoestrapSocial' ) ) {
 		 * Create the social sharing buttons
 		 */
 		function social_sharing() {
+			// Initialize the framework
+			$fw = new Shoestrap_Framework();
 			// The base class for icons that will be used
 			$baseclass  = 'icon el-icon-';
 
@@ -556,21 +558,21 @@ if ( !class_exists( 'ShoestrapSocial' ) ) {
 			$show = false;
 
 			// Button class
-			$button_class = shoestrap_getVariable( 'social_sharing_button_class' );
+			$button_color = shoestrap_getVariable( 'social_sharing_button_class' );
 
 			// Button Text
 			$text = shoestrap_getVariable( 'social_sharing_text' );
 
 			// Build the content
-			$content  = '<div class="btn-group btn-group-sm social-share">';
-			$content .= '<button class="social-share-main btn ' . $button_class . '">' . $text . '</button>';
+			$content  = '<div class="' . $fw->button_group_classes( 'small', null, 'social-share' ) . '">';
+			$content .= '<button class="' . $fw->button_classes( $button_color, null, null, 'social-share-main' ) . '">' . $text . '</button>';
 
 			// An array of the available networks
 			$networks = $this->get_social_shares();
 			$networks = is_null( $networks ) ? array() : $networks;
 
 			foreach ( $networks as $network ) {
-				$content .= '<a class="social-link btn ' . $button_class . '" href="' . $network['url'] . '" target="_blank">';
+				$content .= '<a class="' . $fw->button_classes( $button_color, null, null, 'social-link' ) . '" href="' . $network['url'] . '" target="_blank">';
 				$content .= '<i class="' . $baseclass . $network['icon'] . '"></i>';
 				$content .= '</a>';
 			}

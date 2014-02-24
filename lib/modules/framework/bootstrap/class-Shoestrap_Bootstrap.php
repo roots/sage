@@ -35,6 +35,15 @@ if ( !class_exists( 'Shoestrap_Bootstrap' ) ) {
 				'button-small'       => 'btn-sm',
 				'button-medium'      => null,
 				'button-large'       => 'btn-lg',
+				'button-extra-large' => 'btn-lg',
+
+				// Button-Groups
+				'button-group'             => 'btn-group',
+				'button-group-extra-small' => 'btn-group-xs',
+				'button-group-small'       => 'btn-group-sm',
+				'button-group-default'     => null,
+				'button-group-large'       => 'btn-group-lg',
+				'button-group-extra-large' => 'btn-group-lg',
 
 				// Alerts
 				'alert'         => 'alert',
@@ -173,7 +182,7 @@ if ( !class_exists( 'Shoestrap_Bootstrap' ) ) {
 
 			$classes = array();
 
-			$classes = $this->defines['button'];
+			$classes[] = $this->defines['button'];
 
 			// Should we allow multiple colors?
 			// Perhaps we should... you never know.
@@ -181,7 +190,7 @@ if ( !class_exists( 'Shoestrap_Bootstrap' ) ) {
 				$colors = explode( ' ', $color );
 
 				foreach ( $colors as $color ) {
-					$classes[] = $color;
+					$classes[] = $this->defines['button-' . $color];
 				}
 			}
 
@@ -194,6 +203,8 @@ if ( !class_exists( 'Shoestrap_Bootstrap' ) ) {
 				$classes[] = $this->defines['button-medium'];
 			} elseif ( $size == 'large' ) {
 				$classes[] = $this->defines['button-large'];
+			} elseif ( $size == 'extra-large' ) {
+				$classes[] = $this->defines['button-extra-large'];
 			}
 
 			if ( !is_null( $type ) ) {
@@ -216,6 +227,45 @@ if ( !class_exists( 'Shoestrap_Bootstrap' ) ) {
 			$css_classes = implode( ' ', $classes );
 
 			return $css_classes;
+		}
+
+		function button_group_classes( $size = 'medium', $type = null, $extra_classes = null ) {
+
+			$classes = array();
+
+			$classes[] = $this->defines['button-group'];
+
+			// Get the proper class for button sizing from the framework definitions.
+			if ( $size == 'extra-small' ) {
+				$classes[] = $this->defines['button-group-extra-small'];
+			} elseif ( $size == 'small' ) {
+				$classes[] = $this->defines['button-group-small'];
+			} elseif ( $size == 'medium' ) {
+				$classes[] = $this->defines['button-group-medium'];
+			} elseif ( $size == 'large' ) {
+				$classes[] = $this->defines['button-group-large'];
+			} elseif ( $size == 'extra-large' ) {
+				$classes[] = $this->defines['button-group-extra-large'];
+			}
+
+			if ( !is_null( $extra_classes ) ) {
+				$extras = explode( ' ', $extra_classes );
+
+				foreach ( $extras as $extra ) {
+					$classes[] = $extra;
+				}
+			}
+
+			if ( !is_null( $type ) ) {
+				$types = explode( ' ', $type );
+
+				foreach ( $types as $type ) {
+					$classes[] = $type;
+				}
+			}
+			$classes = implode( ' ', $classes );
+
+			return $classes;
 		}
 
 		/**

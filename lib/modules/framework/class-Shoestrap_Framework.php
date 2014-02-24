@@ -113,6 +113,13 @@ if ( !class_exists( 'Shoestrap_Framework' ) ) {
 		}
 
 		/**
+		 * Calls the framework-specific button_group_classes() function
+		 */
+		function button_group_classes( $size = 'medium', $type = null, $extra_classes = null ) {
+			return $this->fw->button_group_classes( $size, $type, $extra_classes );
+		}
+
+		/**
 		 * Calls the framework-specific clearfix() function
 		 */
 		function clearfix() {
