@@ -21,7 +21,7 @@ if ( !class_exists( 'Shoestrap_Framework' ) ) {
 			// Include all frameworks
 			$modules_path = new RecursiveDirectoryIterator( SHOESTRAP_MODULES_PATH . '/framework/' );
 			$recIterator  = new RecursiveIteratorIterator( $modules_path );
-			$regex        = new RegexIterator( $recIterator, '/\/*.php$/i' );
+			$regex        = new RegexIterator( $recIterator, '/\/framework.php$/i' );
 
 			foreach( $regex as $item ) {
 				require_once $item->getPathname();

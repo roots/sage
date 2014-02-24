@@ -259,8 +259,6 @@ if ( !class_exists( 'Shoestrap_Bootstrap' ) ) {
 
 			return '<div class="' . $classes . '"' . $id . '>' . $dismiss . $content . '</div>';
 		}
-
-
 	}
 
 	$bootstrap = new Shoestrap_Bootstrap();
