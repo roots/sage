@@ -519,7 +519,7 @@ if ( !class_exists( 'ShoestrapBlog' ) ) {
 		 * Display featured images on individual posts
 		 */
 		function featured_image() {
-			$fw = new Shoestrap_Framework();
+			global $ss_framework;
 
 			$data = array();
 
@@ -552,7 +552,7 @@ if ( !class_exists( 'ShoestrapBlog' ) ) {
 			
 			$image = ShoestrapImage::image_resize( $data );
 
-			echo $fw->clearfix() . '<a href="' . get_permalink() . '"><img class="featured-image" src="' . $image['url'] . '" /></a>' . $fw->clearfix();
+			echo $ss_framework->clearfix() . '<a href="' . get_permalink() . '"><img class="featured-image" src="' . $image['url'] . '" /></a>' . $ss_framework->clearfix();
 		}
 
 		/**

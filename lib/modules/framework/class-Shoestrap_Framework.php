@@ -42,6 +42,8 @@ if ( !class_exists( 'Shoestrap_Framework' ) ) {
 			}
 
 			$this->fw = new $active;
+
+			add_action( 'shoestrap_nav', array( $this, 'nav_template' ) );
 		}
 
 		/**
@@ -132,6 +134,12 @@ if ( !class_exists( 'Shoestrap_Framework' ) ) {
 		function alert( $type = 'info', $content = '', $id = null, $extra_classes = null, $dismiss = false ) {
 			$this->fw->alert( $type, $content, $id, $extra_classes, $dismiss );
 		}
+
+		function nav_template() {
+			$initialize = $this->fw->nav_template();
+		}
 	}
-	$frameworks = new Shoestrap_Framework();
 }
+
+global $ss_framework;
+$ss_framework = new Shoestrap_Framework();

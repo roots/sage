@@ -1,19 +1,14 @@
 <?php get_template_part('templates/head'); ?>
 <body <?php body_class(); ?>>
 <a href="#content" class="sr-only"><?php _e( 'Skip to main content', 'shoestrap' ); ?></a>
-<?php $fw = new Shoestrap_Framework(); ?>
+<?php global $ss_framework; ?>
 
 	<!--[if lt IE 8]>
-		<?php echo $fw->alert( 'warning', __('You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.', 'shoestrap') ); ?>
+		<?php echo $ss_framework->alert( 'warning', __('You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.', 'shoestrap') ); ?>
 	<![endif]-->
 
 	<?php do_action( 'get_header' ); ?>
-	<?php
-	if ( !has_action( 'shoestrap_do_navbar' ) ) {
-		get_template_part( 'templates/header-top-navbar' );
-	} else {
-		do_action( 'shoestrap_do_navbar' );
-	} ?>
+	<?php do_action( 'shoestrap_nav' ); ?>
 	<?php do_action( 'shoestrap_pre_wrap' ); ?>
 
 	<div id="wrap-main-section" class="wrap main-section <?php echo apply_filters( 'shoestrap_container_class', 'container' ); ?>" role="document">

@@ -1,3 +1,4 @@
+<?php global $ss_framework; ?>
 <?php echo get_avatar($comment, $size = '64'); ?>
 <div class="media-body">
 	<h4 class="media-heading"><?php echo get_comment_author_link(); ?></h4>
@@ -5,8 +6,7 @@
 	<?php edit_comment_link(__('(Edit)', 'shoestrap'), '', ''); ?>
 
 	<?php if ($comment->comment_approved == '0') : ?>
-		<?php $fw = new Shoestrap_Framework(); ?>
-		<?php echo $fw->alert( 'info', __( 'Your comment is awaiting moderation.', 'shoestrap' ) ); ?>
+		<?php echo $ss_framework->alert( 'info', __( 'Your comment is awaiting moderation.', 'shoestrap' ) ); ?>
 	<?php endif; ?>
 
 	<?php comment_text(); ?>

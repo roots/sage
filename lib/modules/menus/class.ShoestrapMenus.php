@@ -61,11 +61,11 @@ if ( !class_exists( 'ShoestrapMenus' ) ) {
 				'id'          => 'navbar_toggle',
 				'default'     => 'normal',
 				'options'     => array(
-					'none'      => __( 'Off', 'shoestrap' ),
-					'normal'    => __( 'Normal', 'shoestrap' ),
-					'pills'     => __( 'Pills', 'shoestrap' ),
-					'full'      => __( 'Full-Width', 'shoestrap' ),
-					'left'      => __( 'Static-Left', 'shoestrap' ),
+					'none'    => __( 'Off', 'shoestrap' ),
+					'normal'  => __( 'Normal', 'shoestrap' ),
+					'pills'   => __( 'Pills', 'shoestrap' ),
+					'full'    => __( 'Full-Width', 'shoestrap' ),
+					'left'    => __( 'Static-Left', 'shoestrap' ),
 				),
 				'type'        => 'button_set'
 			);
@@ -73,7 +73,7 @@ if ( !class_exists( 'ShoestrapMenus' ) ) {
 			$fields[] = array( 
 				'id'          => 'helpnavbarbg',
 				'title'       => __( 'NavBar Styling Options', 'shoestrap' ),
-				'desc'   	    => __( 'Customize the look and feel of your navbar below.', 'shoestrap' ),
+				'desc'   	  => __( 'Customize the look and feel of your navbar below.', 'shoestrap' ),
 				'type'        => 'info'
 			);    
 
@@ -105,14 +105,14 @@ if ( !class_exists( 'ShoestrapMenus' ) ) {
 				'default'     => 'default',
 				'type'        => 'select',
 				'options'     => array( 
-					'default'   => __( 'Default', 'shoestrap' ),
-					'style1'    => __( 'Style', 'shoestrap' ) . ' 1',
-					'style2'    => __( 'Style', 'shoestrap' ) . ' 2',
-					'style3'    => __( 'Style', 'shoestrap' ) . ' 3',
-					'style4'    => __( 'Style', 'shoestrap' ) . ' 4',
-					'style5'    => __( 'Style', 'shoestrap' ) . ' 5',
-					'style6'    => __( 'Style', 'shoestrap' ) . ' 6',
-					'metro'     => __( 'Metro', 'shoestrap' ),
+					'default' => __( 'Default', 'shoestrap' ),
+					'style1'  => __( 'Style', 'shoestrap' ) . ' 1',
+					'style2'  => __( 'Style', 'shoestrap' ) . ' 2',
+					'style3'  => __( 'Style', 'shoestrap' ) . ' 3',
+					'style4'  => __( 'Style', 'shoestrap' ) . ' 4',
+					'style5'  => __( 'Style', 'shoestrap' ) . ' 5',
+					'style6'  => __( 'Style', 'shoestrap' ) . ' 6',
+					'metro'   => __( 'Metro', 'shoestrap' ),
 				)
 			);
 
@@ -173,12 +173,12 @@ if ( !class_exists( 'ShoestrapMenus' ) ) {
 				'default'     => array( 
 					'font-family' => 'Arial, Helvetica, sans-serif',
 					'font-size'   => 14,
-					'color'     => '#333333',
-					'google'    => 'false',
+					'color'       => '#333333',
+					'google'      => 'false',
 				),
 				'preview'     => array( 
-					'text'      => __( 'This is my preview text!', 'shoestrap' ), //this is the text from preview box
-					'size'      => 30 //this is the text size from preview box
+					'text'    => __( 'This is my preview text!', 'shoestrap' ), //this is the text from preview box
+					'size'    => 30 //this is the text size from preview box
 				),
 				'type'        => 'typography',
 			);
@@ -189,14 +189,14 @@ if ( !class_exists( 'ShoestrapMenus' ) ) {
 				'id'          => 'font_brand',
 				'compiler'    => true,
 				'default'     => array( 
-					'font-family'  => 'Arial, Helvetica, sans-serif',
-					'font-size'    => 18,
-					'google'    => 'false',
-					'color'     => '#333333',
+					'font-family' => 'Arial, Helvetica, sans-serif',
+					'font-size'   => 18,
+					'google'      => 'false',
+					'color'       => '#333333',
 				),
 				'preview'     => array( 
-					'text'      => __( 'This is my preview text!', 'shoestrap' ), //this is the text from preview box
-					'size'      => 30 //this is the text size from preview box
+					'text'    => __( 'This is my preview text!', 'shoestrap' ), //this is the text from preview box
+					'size'    => 30 //this is the text size from preview box
 				),
 				'type'        => 'typography',
 			);
@@ -313,12 +313,12 @@ if ( !class_exists( 'ShoestrapMenus' ) ) {
 				'default'     => 1,
 				'type'        => 'select',
 				'options'     => array( 
-					'default'   => __( 'Default', 'shoestrap' ),
-					'primary'   => __( 'Branding-Primary', 'shoestrap' ),
-					'success'   => __( 'Branding-Success', 'shoestrap' ),
-					'warning'   => __( 'Branding-Warning', 'shoestrap' ),
-					'info'      => __( 'Branding-Info', 'shoestrap' ),
-					'danger'    => __( 'Branding-Danger', 'shoestrap' ),
+					'default' => __( 'Default', 'shoestrap' ),
+					'primary' => __( 'Branding-Primary', 'shoestrap' ),
+					'success' => __( 'Branding-Success', 'shoestrap' ),
+					'warning' => __( 'Branding-Warning', 'shoestrap' ),
+					'info'    => __( 'Branding-Info', 'shoestrap' ),
+					'danger'  => __( 'Branding-Danger', 'shoestrap' ),
 				),
 			);
 

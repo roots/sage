@@ -1,6 +1,6 @@
 <?php
 
-$fw = new Shoestrap_Framework();
+global $ss_framework;
 
 	if (post_password_required()) {
 		return;
@@ -28,14 +28,14 @@ $fw = new Shoestrap_Framework();
 		<?php endif; ?>
 
 		<?php if (!comments_open() && !is_page() && post_type_supports(get_post_type(), 'comments')) : ?>
-			<?php echo $fw->alert( 'warning', __( 'Comments are closed.', 'shoestrap' ) ); ?>
+			<?php echo $ss_framework->alert( 'warning', __( 'Comments are closed.', 'shoestrap' ) ); ?>
 		<?php endif; ?>
 	</section><!-- /#comments -->
 <?php endif; ?>
 
 <?php if (!have_comments() && !comments_open() && !is_page() && post_type_supports(get_post_type(), 'comments')) : ?>
 	<section id="comments">
-		<?php echo $fw->alert( 'warning', __( 'Comments are closed.', 'shoestrap' ) ); ?>
+		<?php echo $ss_framework->alert( 'warning', __( 'Comments are closed.', 'shoestrap' ) ); ?>
 	</section><!-- /#comments -->
 <?php endif; ?>
 

@@ -309,6 +309,14 @@ if ( !class_exists( 'Shoestrap_Bootstrap' ) ) {
 
 			return '<div class="' . $classes . '"' . $id . '>' . $dismiss . $content . '</div>';
 		}
+
+		function nav_template() {
+			if ( !has_action( 'shoestrap_do_navbar' ) ) {
+				get_template_part( 'lib/modules/framework/bootstrap/header-top-navbar' );
+			} else {
+				do_action( 'shoestrap_do_navbar' );
+			}
+		}
 	}
 
 	$bootstrap = new Shoestrap_Bootstrap();

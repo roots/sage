@@ -549,8 +549,8 @@ if ( !class_exists( 'ShoestrapSocial' ) ) {
 		 * Create the social sharing buttons
 		 */
 		function social_sharing() {
-			// Initialize the framework
-			$fw = new Shoestrap_Framework();
+			global $ss_framework;
+
 			// The base class for icons that will be used
 			$baseclass  = 'icon el-icon-';
 
@@ -564,15 +564,15 @@ if ( !class_exists( 'ShoestrapSocial' ) ) {
 			$text = shoestrap_getVariable( 'social_sharing_text' );
 
 			// Build the content
-			$content  = '<div class="' . $fw->button_group_classes( 'small', null, 'social-share' ) . '">';
-			$content .= '<button class="' . $fw->button_classes( $button_color, null, null, 'social-share-main' ) . '">' . $text . '</button>';
+			$content  = '<div class="' . $ss_framework->button_group_classes( 'small', null, 'social-share' ) . '">';
+			$content .= '<button class="' . $ss_framework->button_classes( $button_color, null, null, 'social-share-main' ) . '">' . $text . '</button>';
 
 			// An array of the available networks
 			$networks = $this->get_social_shares();
 			$networks = is_null( $networks ) ? array() : $networks;
 
 			foreach ( $networks as $network ) {
-				$content .= '<a class="' . $fw->button_classes( $button_color, null, null, 'social-link' ) . '" href="' . $network['url'] . '" target="_blank">';
+				$content .= '<a class="' . $ss_framework->button_classes( $button_color, null, null, 'social-link' ) . '" href="' . $network['url'] . '" target="_blank">';
 				$content .= '<i class="' . $baseclass . $network['icon'] . '"></i>';
 				$content .= '</a>';
 			}
@@ -589,7 +589,5 @@ if ( !class_exists( 'ShoestrapSocial' ) ) {
 		}
 	}
 }
-
-
 
 $social = new ShoestrapSocial();
