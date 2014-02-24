@@ -72,7 +72,7 @@ if ( !class_exists( 'Shoestrap_Framework' ) ) {
 			// Blog Options
 			$section = array(
 				'title' => __( 'Framework', 'shoestrap' ),
-				'icon'  => 'el-icon-home',
+				'icon'  => 'el-icon-website',
 			);
 
 			$fields[] = array(

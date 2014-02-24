@@ -1,17 +1,15 @@
 <?php
 
 
-if ( !class_exists( 'ShoestrapHeaders' ) ) {
+if ( !class_exists( 'Shoestrap_Jumbotron' ) ) {
 
 	/**
-	* The Headers module
+	* The Jumbotron module
 	*/
-	class ShoestrapHeaders {
+	class Shoestrap_Jumbotron {
 
 		function __construct() {
-			add_filter( 'redux/options/' . SHOESTRAP_OPT_NAME . '/sections', array( $this, 'options' ), 80 );
-			add_action( 'widgets_init',       array( $this, 'header_widgets_init'              ), 30  );
-			add_action( 'shoestrap_pre_wrap', array( $this, 'branding'                         ), 3   );
+			add_filter( 'redux/options/' . SHOESTRAP_OPT_NAME . '/sections', array( $this, 'options' ), 81 );
 			add_action( 'widgets_init',       array( $this, 'jumbotron_widgets_init'           ), 20  );
 			add_action( 'shoestrap_pre_wrap', array( $this, 'jumbotron_content'                ), 5   );
 			add_action( 'wp_enqueue_scripts', array( $this, 'jumbotron_css'                    ), 101 );
@@ -21,110 +19,21 @@ if ( !class_exists( 'ShoestrapHeaders' ) ) {
 			add_filter( 'shoestrap_compiler', array( $this, 'styles'                           )      );
 		}
 		/*
-		 * The Headers module options.
-		 * Include Jumbotron, Extra Header and more.
+		 * The Jumbotron module options.
 		 */
 		function options( $sections ) {
 			$settings = get_option( SHOESTRAP_OPT_NAME );
 
-			$url = admin_url( 'widgets.php' );
-			$fields[] = array( 
-				'id'          => 'help9',
-				'title'       => __( 'Extra Branding Area', 'shoestrap' ),
-				'desc'        => __( "You can enable an extra branding/header area. In this header you can add your logo, and any other widgets you wish.
-													To add widgets on your header, visit <a href='$url'>this page</a> and add your widgets to the <strong>Header</strong> Widget Area.", 'shoestrap' ),
-				'type'        => 'info',
-			);
-
-			$fields[] = array( 
-				'title'       => __( 'Display the Header.', 'shoestrap' ),
-				'desc'        => __( 'Turn this ON to display the header. Default: OFF', 'shoestrap' ),
-				'id'          => 'header_toggle',
-				'default'     => 0,
-				'type'        => 'switch',
-			);
-
-			$fields[] = array( 
-				'title'       => __( 'Display branding on your Header.', 'shoestrap' ),
-				'desc'        => __( 'Turn this ON to display branding ( Sitename or Logo )on your Header. Default: ON', 'shoestrap' ),
-				'id'          => 'header_branding',
-				'default'     => 1,
-				'type'        => 'switch',
-				'required'    => array('header_toggle','=',array('1')),
-			);
-
-			$fields[] = array( 
-				'title'       => __( 'Header Background', 'shoestrap' ),
-				'desc'        => __( 'Specify the background for your header.', 'shoestrap' ),
-				'id'          => 'header_bg',
-				'default'     => array(
-					'background-color' => '#ffffff'
-				),
-				'output'      => '.header-wrapper',
-				'type'        => 'background',
-				'required'    => array( 'header_toggle','=',array( '1' ) ),
-			);
-
-			$fields[] = array( 
-				'title'       => __( 'Header Background Opacity', 'shoestrap' ),
-				'desc'        => __( 'Select the background opacity for your header. Default: 100%.', 'shoestrap' ),
-				'id'          => 'header_bg_opacity',
-				'default'     => 100,
-				'min'         => 0,
-				'step'        => 1,
-				'max'         => 100,
-				'compiler'    => true,
-				'type'        => 'slider',
-				'required'    => array('header_toggle','=',array('1')),
-			);
-
-			$fields[] = array( 
-				'title'       => __( 'Header Text Color', 'shoestrap' ),
-				'desc'        => __( 'Select the text color for your header. Default: #333333.', 'shoestrap' ),
-				'id'          => 'header_color',
-				'default'     => '#333333',
-				'transparent' => false,    
-				'type'        => 'color',
-				'required'    => array('header_toggle','=',array('1')),
-			);
-
-			$fields[] = array( 
-				'title'       => __( 'Header Top Margin', 'shoestrap' ),
-				'desc'        => __( 'Select the top margin of header in pixels. Default: 0px.', 'shoestrap' ),
-				'id'          => 'header_margin_top',
-				'default'     => 0,
-				'min'         => 0,
-				'max'         => 200,
-				'type'        => 'slider',
-				'required'    => array('header_toggle','=',array('1')),
-			);
-
-			$fields[] = array( 
-				'title'       => __( 'Header Bottom Margin', 'shoestrap' ),
-				'desc'        => __( 'Select the bottom margin of header in pixels. Default: 0px.', 'shoestrap' ),
-				'id'          => 'header_margin_bottom',
-				'default'     => 0,
-				'min'         => 0,
-				'max'         => 200,
-				'type'        => 'slider',
-				'required'    => array('header_toggle','=',array('1')),
-			);
-
 			// Jumbotron Options
 			$section = array(
-				'title' => __('Headers', 'shoestrap'),
-				'icon'  => 'el-icon-bullhorn icon-large'
+				'title' => __( 'Jumbotron', 'shoestrap'),
+				'icon'  => 'el-icon-bullhorn'
 			);
 
-			$url = admin_url( 'widgets.php' );
 			$fields[] = array(
 				'id'        => 'help8',
 				'title'     => __( 'Jumbotron', 'shoestrap'),
-				'desc'      => __( "A 'Jumbotron', also known as 'Hero' area,
-												is an area in your site where you can display in a prominent position things that matter to you.
-												This can be a slideshow, some text or whatever else you wish.
-												This area is implemented as a widget area, so in order for something to be displayed
-												you will have to add a widget from <a href='$url'>here</a>.", 'shoestrap' ),
+				'desc'      => __( "A 'Jumbotron', also known as 'Hero' area, is an area in your site where you can display in a prominent position things that matter to you. This can be a slideshow, some text or whatever else you wish. This area is implemented as a widget area, so in order for something to be displayed you will have to add a widget to it.", 'shoestrap' ),
 				'type'      => 'info'
 			);
 
@@ -144,40 +53,40 @@ if ( !class_exists( 'ShoestrapHeaders' ) ) {
 			);
 
 			$fields[] = array(
-				'title'     => __('Display Jumbotron only on the Frontpage.', 'shoestrap'),
-				'desc'      => __('When Turned OFF, the Jumbotron area is displayed in all your pages. If you wish to completely disable the Jumbotron, then please remove the widgets assigned to its area and it will no longer be displayed. Default: ON', 'shoestrap'),
+				'title'     => __( 'Display Jumbotron only on the Frontpage.', 'shoestrap' ),
+				'desc'      => __( 'When Turned OFF, the Jumbotron area is displayed in all your pages. If you wish to completely disable the Jumbotron, then please remove the widgets assigned to its area and it will no longer be displayed. Default: ON', 'shoestrap' ),
 				'id'        => 'jumbotron_visibility',
 				'default'   => 1,
 				'type'      => 'switch'
 			);
 
 			$fields[] = array(
-				'title'     => __('Full-Width', 'shoestrap'),
-				'desc'      => __('When Turned ON, the Jumbotron is no longer restricted by the width of your page, taking over the full width of your screen. This option is useful when you have assigned a slider widget on the Jumbotron area and you want its width to be the maximum width of the screen. Default: OFF.', 'shoestrap'),
+				'title'     => __( 'Full-Width', 'shoestrap' ),
+				'desc'      => __( 'When Turned ON, the Jumbotron is no longer restricted by the width of your page, taking over the full width of your screen. This option is useful when you have assigned a slider widget on the Jumbotron area and you want its width to be the maximum width of the screen. Default: OFF.', 'shoestrap' ),
 				'id'        => 'jumbotron_nocontainer',
 				'default'   => 1,
 				'type'      => 'switch'
 			);
 
 			$fields[] = array(
-				'title'     => __('Use fittext script for the title.', 'shoestrap'),
-				'desc'      => __('Use the fittext script to enlarge or scale-down the font-size of the widget title to fit the Jumbotron area. Default: OFF', 'shoestrap'),
+				'title'     => __( 'Use fittext script for the title.', 'shoestrap' ),
+				'desc'      => __( 'Use the fittext script to enlarge or scale-down the font-size of the widget title to fit the Jumbotron area. Default: OFF', 'shoestrap' ),
 				'id'        => 'jumbotron_title_fit',
 				'default'   => 0,
 				'type'      => 'switch',
 			);
 
 			$fields[] = array(
-				'title'     => __('Center-align the content.', 'shoestrap'),
-				'desc'      => __('Turn this on to center-align the contents of the Jumbotron area. Default: OFF', 'shoestrap'),
+				'title'     => __( 'Center-align the content.', 'shoestrap' ),
+				'desc'      => __( 'Turn this on to center-align the contents of the Jumbotron area. Default: OFF', 'shoestrap' ),
 				'id'        => 'jumbotron_center',
 				'default'   => 0,
 				'type'      => 'switch',
 			);
 
 			$fields[] = array(
-				'title'     => __('Jumbotron Font', 'shoestrap'),
-				'desc'      => __('The font used in jumbotron.', 'shoestrap'),
+				'title'     => __( 'Jumbotron Font', 'shoestrap' ),
+				'desc'      => __( 'The font used in jumbotron.', 'shoestrap' ),
 				'id'        => 'font_jumbotron',
 				'compiler'  => true,
 				'default'   => array(
@@ -188,15 +97,15 @@ if ( !class_exists( 'ShoestrapHeaders' ) ) {
 					'units'       => 'px'
 				),
 				'preview'   => array(
-					'text'    => __( 'This is my preview text!', 'shoestrap' ), //this is the text from preview box
-					'size'    => '30px' //this is the text size from preview box
+					'text'  => __( 'This is my preview text!', 'shoestrap' ), //this is the text from preview box
+					'size'  => '30px' //this is the text size from preview box
 				),
 				'type'      => 'typography',
 			);
 
 			$fields[] = array(
-				'title'     => __('Jumbotron Header Overrides', 'shoestrap'),
-				'desc'      => __('By enabling this you can specify custom values for each <h*> tag. Default: Off', 'shoestrap'),
+				'title'     => __( 'Jumbotron Header Overrides', 'shoestrap' ),
+				'desc'      => __( 'By enabling this you can specify custom values for each <h*> tag. Default: Off', 'shoestrap' ),
 				'id'        => 'font_jumbotron_heading_custom',
 				'default'   => 0,
 				'compiler'  => true,
@@ -204,8 +113,8 @@ if ( !class_exists( 'ShoestrapHeaders' ) ) {
 			);
 
 			$fields[] = array(
-				'title'     => __('Jumbotron Headers Font', 'shoestrap'),
-				'desc'      => __('The main font for your site.', 'shoestrap'),
+				'title'     => __( 'Jumbotron Headers Font', 'shoestrap' ),
+				'desc'      => __( 'The main font for your site.', 'shoestrap' ),
 				'id'        => 'font_jumbotron_headers',
 				'compiler'  => true,
 				'default'   => array(
@@ -214,16 +123,16 @@ if ( !class_exists( 'ShoestrapHeaders' ) ) {
 					'google'      => 'false'
 				),
 				'preview'   => array(
-					'text'    => __( 'This is my preview text!', 'shoestrap' ), //this is the text from preview box
-					'size'    => '30px' //this is the text size from preview box
+					'text'  => __( 'This is my preview text!', 'shoestrap' ), //this is the text from preview box
+					'size'  => '30px' //this is the text size from preview box
 				),
 				'type'      => 'typography',
-				'required'  => array('font_jumbotron_heading_custom','=',array('1')),
+				'required'  => array( 'font_jumbotron_heading_custom','=',array( '1' ) ),
 			);
 
 			$fields[] = array(
 				'title'     => 'Jumbotron Border',
-				'desc'      => __('Select the border options for your Jumbotron', 'shoestrap'),
+				'desc'      => __( 'Select the border options for your Jumbotron', 'shoestrap' ),
 				'id'        => 'jumbotron_border',
 				'type'      => 'border',
 				'all'       => false, 
@@ -240,67 +149,11 @@ if ( !class_exists( 'ShoestrapHeaders' ) ) {
 
 			$section['fields'] = $fields;
 
-			$section = apply_filters( 'shoestrap_module_headers_options_modifier', $section );
+			$section = apply_filters( 'shoestrap_module_jumbotron_options_modifier', $section );
 			
 			$sections[] = $section;
 			return $sections;
 
-		}
-
-		/**
-		 * Register sidebars and widgets
-		 */
-		function header_widgets_init() {
-			register_sidebar( array(
-				'name'          => __( 'Header Area', 'shoestrap' ),
-				'id'            => 'header-area',
-				'before_widget' => '<div class="container">',
-				'after_widget'  => '</div>',
-				'before_title'  => '<h1>',
-				'after_title'   => '</h1>',
-			));
-		}
-
-		/*
-		 * The Header template
-		 */
-		function branding() {
-			if ( shoestrap_getVariable( 'header_toggle' ) == 1 ) { ?>
-				<div class="before-main-wrapper">
-
-					<?php if ( shoestrap_getVariable( 'site_style' ) == 'boxed' ) : ?>
-						<div class="container">
-					<?php endif; ?>
-
-						<div class="header-wrapper">
-
-							<?php if ( shoestrap_getVariable( 'site_style' ) == 'wide' ) : ?>
-								<div class="container">
-							<?php endif; ?>
-
-								<?php if ( shoestrap_getVariable( 'header_branding' ) == 1 ) : ?>
-									<a class="brand-logo" href="<?php echo home_url(); ?>/">
-										<h1><?php if ( class_exists( 'ShoestrapBranding' ) ) echo ShoestrapBranding::logo(); ?></h1>
-									</a>
-								<?php endif; ?>
-
-								<?php $pullclass = ( shoestrap_getVariable( 'header_branding' ) == 1 ) ? ' class="pull-right"' : ''; ?>
-
-								<div<?php echo $pullclass; ?>>
-									<?php dynamic_sidebar( 'header-area' ); ?>
-								</div >
-
-							<?php if ( shoestrap_getVariable( 'site_style' ) == 'wide' ) : ?>
-								</div>
-							<?php endif; ?>
-						</div>
-
-					<?php if ( shoestrap_getVariable( 'site_style' ) == 'boxed' ) : ?>
-						</div>
-					<?php endif; ?>
-				</div>
-				<?php
-			}
 		}
 
 		/**
@@ -316,8 +169,6 @@ if ( !class_exists( 'ShoestrapHeaders' ) ) {
 				'after_title'   => '</h1>',
 			));
 		}
-
-
 
 		/*
 		 * The content of the Jumbotron region
@@ -361,9 +212,6 @@ if ( !class_exists( 'ShoestrapHeaders' ) ) {
 				</div>
 			<?php endif;
 		}
-
-
-
 
 		/**
 		 * Any Jumbotron-specific CSS that can't be added in the .less stylesheet is calculated here.
@@ -467,9 +315,9 @@ if ( !class_exists( 'ShoestrapHeaders' ) ) {
 
 		function styles( $bootstrap ) {
 			return $bootstrap . '
-			@import "' . SHOESTRAP_MODULES_PATH . '/headers/assets/less/styles.less";';
+			@import "' . SHOESTRAP_MODULES_PATH . '/framework/bootstrap/jumbotron/assets/less/styles.less";';
 		}
 	}
 }
 
-$headers = new ShoestrapHeaders();
+$jumbotron = new Shoestrap_Jumbotron();
