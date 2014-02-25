@@ -27,21 +27,29 @@ if ( !class_exists( 'Shoestrap_Framework' ) ) {
 				require_once $item->getPathname();
 			}
 
-			$frameworks       = $this->frameworks_list();
+			$frameworks = $this->frameworks_list();
 
 			// Return the classname of the active framework.
 			foreach ( $frameworks as $framework ) {
 				if ( $active_framework == $framework['shortname'] ) {
-					$active = $framework['classname'];
+					$active   = $framework['classname'];
+					$compiler = $framework['compiler'];
 				}
 			}
 
 			// If no framework is active, return.
 			if ( !isset( $active ) ) {
 				return;
+			} else {
+				$this->fw = new $active;
 			}
 
-			$this->fw = new $active;
+			// Get the compiler that will be used and initialize it.
+			if ( $compiler == 'less_php' ) {
+				require_once 'compilers/less-php/class-Shoestrap_Less_php.php';
+				$compiler_init = new Shoestrap_Less_PHP();
+				$this->fw->compiler();
+			}
 
 			add_action( 'shoestrap_nav', array( $this, 'nav_template' ) );
 		}
@@ -144,6 +152,10 @@ if ( !class_exists( 'Shoestrap_Framework' ) ) {
 
 		function nav_template() {
 			$initialize = $this->fw->nav_template();
+		}
+
+		function compiler() {
+			return $this->fw->compiler();
 		}
 	}
 }

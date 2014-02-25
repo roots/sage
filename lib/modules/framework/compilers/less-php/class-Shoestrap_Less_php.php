@@ -1,15 +1,19 @@
 <?php
 
-if ( !class_exists( 'ShoestrapCompiler' ) ) {
+if ( !class_exists( 'Shoestrap_Less_PHP' ) ) {
 
 	/**
 	* The Shoestrap Compiler
 	*/
-	class ShoestrapCompiler {
+	class Shoestrap_Less_PHP {
 
 		function __construct() {
-			global $wp_customize;
-			$settings = get_option( SHOESTRAP_OPT_NAME );
+			global $ss_framework;
+
+			// Require the less parser
+			if ( !class_exists( 'Less_Parser' ) ) {
+				require_once( 'less.php' );
+			}
 
 			add_filter( 'shoestrap_main_stylesheet_url', array( $this, 'stylesheet_url' ) );
 			add_filter( 'shoestrap_main_stylesheet_ver', array( $this, 'stylesheet_ver' ) );
@@ -17,37 +21,14 @@ if ( !class_exists( 'ShoestrapCompiler' ) ) {
 
 			// If the Custom LESS exists and has changed after the last compilation, trigger the compiler.
 			if ( is_writable( get_stylesheet_directory() . '/assets/less/custom.less' ) ) {
-				if ( filemtime( get_stylesheet_directory() . '/assets/less/custom.less' ) > filemtime( self::file() ) )
+				if ( filemtime( get_stylesheet_directory() . '/assets/less/custom.less' ) > filemtime( self::file() ) ) {
 					self::makecss();
-			}
-
-			// If user has selected to use foundation and not bootstrap then include the SASS compiler
-			if ( $settings['framework'] == 'foundation' ) {
-				if ( !class_exists( 'scssc' ) )
-					include_once( 'compilers/scss.inc.php' );
-
-			} else {
-
-				// If the less.php compiler is not found, force the use the less.js compiler.
-				if ( !class_exists( 'Less_Cache' ) || !class_exists( 'Less_Parser' ) ) {
-					if ( isset( $settings['lessjs'] ) || $settings['lessjs'] != 1 ) {
-						$settings['lessjs'] = 1;
-						update_option( SHOESTRAP_OPT_NAME, $settings );
-					}
-				}
-
-				// If we are on the customizer then output the necessary elements to wp_head so that the less.js customizer kicks in.
-				$lessjs = $settings['lessjs'];
-				if ( isset( $wp_customize ) || $lessjs == 1 ) {
-					add_action( 'wp_head', array( $this, 'less_js_stylesheet' ), 1  );
-					add_action( 'wp_enqueue_scripts', array( $this, 'less_js_enqueue' ), 110 );
 				}
 			}
 
 			// Saving functions on import, etc
 			// If a compiler field was altered or import or reset defaults
-			if ( !isset( $wp_customize ) || $lessjs != 1 )
-				add_action( 'redux/options/' . SHOESTRAP_OPT_NAME . '/compiler' , array( $this, 'makecss' ) );
+			add_action( 'redux/options/' . SHOESTRAP_OPT_NAME . '/compiler' , array( $this, 'makecss' ) );
 		}
 
 		/*
@@ -63,11 +44,12 @@ if ( !class_exists( 'ShoestrapCompiler' ) ) {
 			// Get the upload directory for this site.
 			$upload_dir      = wp_upload_dir();
 			// Hack to strip protocol
-			if ( strpos( $upload_dir['basedir'], 'https' ) !== false ) :
+			if ( strpos( $upload_dir['basedir'], 'https' ) !== false ) {
 			  $upload_dir = str_replace( 'https:', '', $upload_dir );
-		  	else :
+			} else {
 		  	  $upload_dir = str_replace( 'http:', '', $upload_dir );
-		  	endif;
+			}
+
 			// Define a default folder for the stylesheets.
 			$def_folder_path = get_template_directory() . '/assets/css';
 			// The folder path for the stylesheet.
@@ -102,16 +84,18 @@ if ( !class_exists( 'ShoestrapCompiler' ) ) {
 			$value    = ( $target == 'url' ) ? $css_uri : $css_path;
 
 			if ( $target == 'ver' ) {
-				if ( !get_transient( 'shoestrap_stylesheet_time' ) )
+				if ( !get_transient( 'shoestrap_stylesheet_time' ) ) {
 					set_transient( 'shoestrap_stylesheet_time', filemtime( $css_path ), 24 * 60 * 60 );
+				}
 
 				$value = get_transient( 'shoestrap_stylesheet_time' );
 			}
 
-			if ( $echo )
+			if ( $echo ) {
 				echo $value;
-			else
+			} else {
 				return $value;
+			}
 		}
 
 		/**
@@ -136,7 +120,7 @@ if ( !class_exists( 'ShoestrapCompiler' ) ) {
 
 			if ( $current_screen->parent_base == 'themes' ) {
 				$filename = self::file();
-				$url = self::stylesheet_url('url');
+				$url = self::stylesheet_url( 'url' );
 
 				if ( !file_exists( $filename ) ) {
 					if ( !$wp_filesystem->put_contents( $filename, ' ', FS_CHMOD_FILE ) ) {
@@ -158,70 +142,8 @@ if ( !class_exists( 'ShoestrapCompiler' ) ) {
 			}
 		}
 
-		/*
-		 * This function can be used to compile a less file to css using the lessphp compiler
-		 */
-		public static function less_compiler() {
-			$minimize_css = shoestrap_getVariable( 'minimize_css', true );
-			$options = ( $minimize_css == 1 ) ? array( 'compress'=>true ) : array( 'compress'=>false );
-
-			$bootstrap_location = get_template_directory() . '/assets/less/';
-			$webfont_location   = get_template_directory() . '/assets/fonts/';
-			$bootstrap_uri      = '';
-			$custom_less_file   = get_template_directory() . '/assets/less/custom.less';
-
-			$css = '';
-			try {
-
-				$parser = new Less_Parser( $options );
-
-				// The main app.less file
-				$parser->parseFile( $bootstrap_location . 'app.less', $bootstrap_uri );
-
-				// Include the Elusive Icons
-				$parser->parseFile( $webfont_location . 'elusive-webfont.less', $bootstrap_uri );
-
-				// Enable gradients
-				if ( shoestrap_getVariable( 'gradients_toggle' ) == 1 )
-					$parser->parseFile( $bootstrap_location . 'gradients.less', $bootstrap_uri );
-
-				// The custom.less file
-				if ( is_writable( $custom_less_file ) )
-					$parser->parseFile( $bootstrap_location . 'custom.less', $bootstrap_uri );
-
-				// Parse any custom less added by the user
-				$parser->parse( shoestrap_getVariable( 'user_less' ) );
-				// Add a filter to the compiler
-				$parser->parse( apply_filters( 'shoestrap_compiler', '' ) );
-
-				$css = $parser->getCss();
-
-			} catch( Exception $e ) {
-				$error_message = $e->getMessage();
-			}
-
-			// Below is just an ugly hack
-			$css = str_replace( '../', get_template_directory_uri() . '/assets/', $css );
-
-			return apply_filters( 'shoestrap_compiler_output', $css );
-		}
-
-		/*
-		 * This function can be used to compile a less file to css using the lessphp compiler
-		 */
-		public static function sass_compiler() {
-			$scss = new scssc();
-			$scss->setImportPaths( get_template_directory() . '/assets/scss/' );
-
-			$css =  $scss->compile( '@import "normalize.scss"' );
-			$css =  $scss->compile( '@import "foundation.scss"' );
-
-			return $css;
-		}
-
 		public static function makecss() {
-			global $wp_filesystem;
-			$settings = get_option( SHOESTRAP_OPT_NAME );
+			global $wp_filesystem, $ss_framework;
 
 			$file = self::file();
 
@@ -235,41 +157,15 @@ if ( !class_exists( 'ShoestrapCompiler' ) ) {
 
 			';
 
-			$content .= $settings['framework'] == 'foundation' ? self::sass_compiler() : self::less_compiler();
+			$content .= $ss_framework->compiler();
 
 			if ( is_writeable( $file ) || ( !file_exists( $file ) && is_writeable( dirname( $file ) ) ) ) {
-				if ( !$wp_filesystem->put_contents( $file, $content, FS_CHMOD_FILE ) )
+				if ( !$wp_filesystem->put_contents( $file, $content, FS_CHMOD_FILE ) ) {
 					return apply_filters( 'shoestrap_css_output', $content );
+				}
 			}
 			// Force re-building the stylesheet version transient
 			delete_transient( 'shoestrap_stylesheet_time' );
 		}
-
-		function less_js_stylesheet() {
-			// Get the variables from the settings
-			$variables = apply_filters( 'shoestrap_compiler', '' );
-			// Since this will be used for less.js, replace path with URI.
-			$variables = str_replace( SHOESTRAP_MODULES_PATH, SHOESTRAP_MODULES_URL, $variables );
-
-			// Get the main app.less file
-			$app_less = file_get_contents( get_stylesheet_directory() . '/assets/less/app.less' );
-			// Since this will be used for less.js, replace relative URIs.
-			$app_less = str_replace( '@import "', '@import "' . get_stylesheet_directory_uri() . '/assets/less/', $app_less );
-
-			// Get the extra webfont styles.
-			$icons = '@import "' . get_stylesheet_directory_uri() . '/assets/fonts/elusive-webfont.less"; @elusiveWebfontPath: "' . get_stylesheet_directory_uri() . '/assets/fonts/";';
-
-			echo '<style type="text/less">' . $app_less . $variables . $icons . '</style>';
-		}
-
-		function less_js_enqueue() {
-			wp_register_script( 'less_js', SHOESTRAP_ASSETS_URL . '/js/vendor/less.min.js', false, '1.6.3' );
-			wp_enqueue_script( 'less_js' );
-			// remove the default stylesheet
-			wp_dequeue_style( 'shoestrap_css' );
-			wp_enqueue_style( 'shoestrap_css', '' );
-		}
 	}
 }
-
-$compiler = new ShoestrapCompiler();

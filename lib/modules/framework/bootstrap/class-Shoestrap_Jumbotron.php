@@ -175,10 +175,12 @@ if ( !class_exists( 'Shoestrap_Jumbotron' ) ) {
 		 * according to what we've entered in the customizer
 		 */
 		function jumbotron_content() {
+			$settings = get_option( SHOESTRAP_OPT_NAME );
+
 			$hero         = false;
-			$site_style   = shoestrap_getVariable( 'site_style' );
-			$visibility   = shoestrap_getVariable( 'jumbotron_visibility' );
-			$nocontainer  = shoestrap_getVariable( 'jumbotron_nocontainer' );
+			$site_style   = $settings['site_style'];
+			$visibility   = $settings['jumbotron_visibility'];
+			$nocontainer  = $settings['jumbotron_nocontainer'];
 
 			if ( ( ( $visibility == 1 && is_front_page() ) || $visibility != 1 ) && is_active_sidebar( 'jumbotron' ) )
 				$hero = true;
@@ -217,8 +219,10 @@ if ( !class_exists( 'Shoestrap_Jumbotron' ) ) {
 		 * Any Jumbotron-specific CSS that can't be added in the .less stylesheet is calculated here.
 		 */
 		function jumbotron_css() {
-			$center = shoestrap_getVariable( 'jumbotron_center' );
-			$border = shoestrap_getVariable( 'jumbotron_border' );
+			$settings = get_option( SHOESTRAP_OPT_NAME );
+
+			$center = $settings['jumbotron_center'];
+			$border = $settings['jumbotron_border'];
 
 			$style = '';
 
@@ -239,8 +243,10 @@ if ( !class_exists( 'Shoestrap_Jumbotron' ) ) {
 		 * Enables the fittext.js for h1 headings
 		 */
 		function jumbotron_fittext() {
-			$fittext_toggle   = shoestrap_getVariable( 'jumbotron_title_fit' );
-			$jumbo_visibility = shoestrap_getVariable( 'jumbotron_visibility' );
+			$settings = get_option( SHOESTRAP_OPT_NAME );
+
+			$fittext_toggle   = $settings['jumbotron_title_fit'];
+			$jumbo_visibility = $settings['jumbotron_visibility'];
 
 			// Should only show on the front page if it's enabled, or site-wide when appropriate
 			if ( $fittext_toggle == 1 && ( $jumbo_visibility == 0 && ( $jumbo_visibility == 1 && is_front_page() ) ) )
@@ -251,8 +257,10 @@ if ( !class_exists( 'Shoestrap_Jumbotron' ) ) {
 		 * Enqueues fittext.js when needed
 		 */
 		function jumbotron_fittext_enqueue_script() {
-			$fittext_toggle   = shoestrap_getVariable( 'jumbotron_title_fit' );
-			$jumbo_visibility = shoestrap_getVariable( 'jumbotron_visibility' );
+			$settings = get_option( SHOESTRAP_OPT_NAME );
+
+			$fittext_toggle   = $settings['jumbotron_title_fit'];
+			$jumbo_visibility = $settings['jumbotron_visibility'];
 
 			if ( $fittext_toggle == 1 && ( $jumbo_visibility == 0 && ( $jumbo_visibility == 1 && is_front_page() ) ) ) {
 				wp_register_script('fittext', get_template_directory_uri() . '/assets/js/vendor/jquery.fittext.js', false, null, false);
@@ -265,13 +273,15 @@ if ( !class_exists( 'Shoestrap_Jumbotron' ) ) {
 		 * These override the default Bootstrap Variables.
 		 */
 		function variables() {
-			$font_jumbotron         = shoestrap_process_font( shoestrap_getVariable( 'font_jumbotron', true ) );
-			$jumbotron_bg           = shoestrap_getVariable( 'jumbo_bg', true );
+			$settings = get_option( SHOESTRAP_OPT_NAME );
+
+			$font_jumbotron         = shoestrap_process_font( $settings['font_jumbotron'] );
+			$jumbotron_bg           = $settings['jumbo_bg'];
 			$jumbotron_bg           = '#' . str_replace( '#', '', ShoestrapColor::sanitize_hex( $jumbotron_bg['background-color'] ) );
 			$jumbotron_text_color   = '#' . str_replace( '#', '', $font_jumbotron['color'] );
 
-			if ( shoestrap_getVariable( 'font_jumbotron_heading_custom', true ) == 1 ) {
-				$font_jumbotron_headers = shoestrap_process_font( shoestrap_getVariable( 'font_jumbotron_headers', true ) );
+			if ( $settings['font_jumbotron_heading_custom'] == 1 ) {
+				$font_jumbotron_headers = shoestrap_process_font( $settings['font_jumbotron_headers'] );
 
 				$font_jumbotron_headers_face   = $font_jumbotron_headers['font-family'];
 				$font_jumbotron_headers_weight = $font_jumbotron_headers['font-weight'];

@@ -68,6 +68,7 @@ if ( !class_exists( 'Shoestrap_Bootstrap' ) ) {
 				'shortname' => 'bootstrap',
 				'name'      => 'Bootstrap',
 				'classname' => 'Shoestrap_Bootstrap',
+				'compiler'  => 'less_php'
 			);
 
 			return $framework;
@@ -321,6 +322,63 @@ if ( !class_exists( 'Shoestrap_Bootstrap' ) ) {
 			} else {
 				do_action( 'shoestrap_do_navbar' );
 			}
+		}
+
+		/*
+		 * This function can be used to compile a less file to css using the lessphp compiler
+		 */
+		function compiler() {
+			$settings = get_option( SHOESTRAP_OPT_NAME );
+
+			if ( $settings['minimize_css'] == 1 ) {
+				$compress = true;
+			} else {
+				$compress = false;
+			}
+
+			$options = array( 'compress' => $compress );
+
+			$bootstrap_location = dirname( __FILE__ ) . '/assets/less/';
+			$webfont_location   = get_template_directory() . '/assets/fonts/';
+			$bootstrap_uri      = '';
+			$custom_less_file   = get_stylesheet_directory() . '/assets/less/custom.less';
+
+			$css = '';
+			try {
+
+				$parser = new Less_Parser( $options );
+
+				// The main app.less file
+				$parser->parseFile( $bootstrap_location . 'app.less', $bootstrap_uri );
+
+				// Include the Elusive Icons
+				$parser->parseFile( $webfont_location . 'elusive-webfont.less', $bootstrap_uri );
+
+				// Enable gradients
+				if ( $settings['gradients_toggle'] == 1 ) {
+					$parser->parseFile( $bootstrap_location . 'gradients.less', $bootstrap_uri );
+				}
+
+				// The custom.less file
+				if ( is_writable( $custom_less_file ) ) {
+					$parser->parseFile( $bootstrap_location . 'custom.less', $bootstrap_uri );
+				}
+
+				// Parse any custom less added by the user
+				$parser->parse( $settings['user_less'] );
+				// Add a filter to the compiler
+				$parser->parse( apply_filters( 'shoestrap_compiler', '' ) );
+
+				$css = $parser->getCss();
+
+			} catch( Exception $e ) {
+				$error_message = $e->getMessage();
+			}
+
+			// Below is just an ugly hack
+			$css = str_replace( '../', get_template_directory_uri() . '/assets/', $css );
+
+			return apply_filters( 'shoestrap_compiler_output', $css );
 		}
 	}
 
