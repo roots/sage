@@ -108,6 +108,13 @@ if ( !class_exists( 'Shoestrap_Framework' ) ) {
 		}
 
 		/**
+		 * Calls the framework-specific column_classes() function
+		 */
+		function column_classes( $sizes = array(), $return = 'string' ) {
+			return $this->fw->column_classes( $sizes, $return );
+		}
+
+		/**
 		 * Calls the framework-specific button_classes() function
 		 */
 		function button_classes( $color = 'primary', $size = 'medium', $type = 'normal', $extra = null ) {

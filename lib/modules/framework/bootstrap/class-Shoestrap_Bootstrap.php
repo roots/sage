@@ -128,12 +128,9 @@ if ( !class_exists( 'Shoestrap_Bootstrap' ) ) {
 		 */
 		function make_col( $element = 'div', $sizes = array( 'medium' => 12 ), $id = null, $extra_classes = null, $properties = null ) {
 
-			$classes = array();
-
 			// Get the classes based on the $sizes array.
-			foreach ( $sizes as $size => $columns ) {
-				$classes[] = $this->defines['col-' . $size] . '-' . $columns;
-			}
+			$classes = $this->column_classes( $sizes );
+
 
 			// If extra classes are defined, add them to the array of classes.
 			if ( !is_null( $extra_classes ) ) {
@@ -158,6 +155,25 @@ if ( !class_exists( 'Shoestrap_Bootstrap' ) ) {
 			}
 
 			return '<' . $element . $id . ' class="' . $css_classes . '"' . $properties . '>';
+		}
+
+		/**
+		 * Column classes
+		 */
+		function column_classes( $sizes = array(), $return = 'array' ) {
+			$classes = array();
+
+			// Get the classes based on the $sizes array.
+			foreach ( $sizes as $size => $columns ) {
+				$classes[] = $this->defines['col-' . $size] . '-' . $columns;
+			}
+
+			if ( $return == 'array' ) {
+				return $classes;
+			} else {
+				return implode( ' ', $classes );
+			}
+
 		}
 
 		/**
