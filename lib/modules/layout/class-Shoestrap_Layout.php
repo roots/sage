@@ -446,7 +446,7 @@ if ( !class_exists( 'Shoestrap_Layout' ) ) {
 		/*
 		 * Return the container class
 		 */
-		function container_class() {
+		public static function container_class() {
 			global $ss_settings;
 			$class    = $ss_settings['site_style'] != 'fluid' ? 'container' : 'fluid';
 
