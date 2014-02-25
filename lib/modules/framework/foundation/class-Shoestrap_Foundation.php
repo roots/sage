@@ -3,7 +3,7 @@
 if ( !class_exists( 'Shoestrap_Foundation' ) ) {
 
 	/**
-	* The Bootstrap Framework module
+	* The Foundation Framework module
 	*/
 	class Shoestrap_Foundation {
 
@@ -60,33 +60,7 @@ if ( !class_exists( 'Shoestrap_Foundation' ) ) {
 				'clearfix' => '<div class="clearfix"></div>',
 			);
 
-			add_filter( 'shoestrap_frameworks_array', array( $this, 'add_framework' ) );
 			// add_filter( 'shoestrap_compiler', array( $this, 'styles' ) );
-		}
-
-		/**
-		 * Define the framework.
-		 * These will be used in the redux admin option to choose a framework.
-		 */
-		function define_framework() {
-			$framework = array(
-				'shortname' => 'foundation',
-				'name'      => 'Foundation',
-				'classname' => 'Shoestrap_Foundation',
-				'compiler'  => 'scssc'
-			);
-
-			return $framework;
-
-		}
-
-		/**
-		 * Add the framework to redux
-		 */
-		function add_framework( $frameworks ) {
-			$frameworks[] = $this->define_framework();
-
-			return $frameworks;
 		}
 
 		/**
@@ -316,66 +290,37 @@ if ( !class_exists( 'Shoestrap_Foundation' ) ) {
 				do_action( 'shoestrap_do_navbar' );
 		}
 
-	// 	/*
-	// 	 * This function can be used to compile a less file to css using the lessphp compiler
-	// 	 */
-	// 	function compiler() {
-	// 		global $ss_settings;
+		/*
+		 * This function can be used to compile a less file to css using the lessphp compiler
+		 */
+		function compiler() {
+			global $ss_settings;
 
-	// 		if ( $ss_settings['minimize_css'] == 1 ) {
-	// 			$compress = true;
-	// 		} else {
-	// 			$compress = false;
-	// 		}
+			if ( $ss_settings['minimize_css'] == 1 ) {
+				$compress = true;
+			} else {
+				$compress = false;
+			}
 
-	// 		$options = array( 'compress' => $compress );
+			$options = array( 'compress' => $compress );
 
-	// 		$bootstrap_location = dirname( __FILE__ ) . '/assets/less/';
-	// 		$webfont_location   = get_template_directory() . '/assets/fonts/';
-	// 		$bootstrap_uri      = '';
-	// 		$custom_less_file   = get_stylesheet_directory() . '/assets/less/custom.less';
+			$scss_location    = dirname( __FILE__ ) . '/assets/scss/';
+			$webfont_location = get_template_directory() . '/assets/fonts/';
+			$custom_less_file = get_stylesheet_directory() . '/assets/less/custom.less';
 
-	// 		$css = '';
-	// 		try {
 
-	// 			$parser = new Less_Parser( $options );
+			$scss = new scssc();
+			$scss->setImportPaths( $scss_location );
 
-	// 			// The main app.less file
-	// 			$parser->parseFile( $bootstrap_location . 'app.less', $bootstrap_uri );
+			$css =  $scss->compile( '@import "normalize.scss"' );
+			$css =  $scss->compile( '@import "foundation.scss"' );
 
-	// 			// Include the Elusive Icons
-	// 			$parser->parseFile( $webfont_location . 'elusive-webfont.less', $bootstrap_uri );
-
-	// 			// Enable gradients
-	// 			if ( $ss_settings['gradients_toggle'] == 1 ) {
-	// 				$parser->parseFile( $bootstrap_location . 'gradients.less', $bootstrap_uri );
-	// 			}
-
-	// 			// The custom.less file
-	// 			if ( is_writable( $custom_less_file ) ) {
-	// 				$parser->parseFile( $bootstrap_location . 'custom.less', $bootstrap_uri );
-	// 			}
-
-	// 			// Parse any custom less added by the user
-	// 			$parser->parse( $ss_settings['user_less'] );
-	// 			// Add a filter to the compiler
-	// 			$parser->parse( apply_filters( 'shoestrap_compiler', '' ) );
-
-	// 			$css = $parser->getCss();
-
-	// 		} catch( Exception $e ) {
-	// 			$error_message = $e->getMessage();
-	// 		}
-
-	// 		// Below is just an ugly hack
-	// 		$css = str_replace( '../', get_template_directory_uri() . '/assets/', $css );
-
-	// 		return apply_filters( 'shoestrap_compiler_output', $css );
-	// 	}
+			return $css;
+		}
 
 	// 	/**
 	// 	 * Variables to use for the compiler.
-	// 	 * These override the default Bootstrap Variables.
+	// 	 * These override the default Foundation Variables.
 	// 	 */
 	// 	function variables() {
 	// 		global $ss_settings;
@@ -562,8 +507,8 @@ if ( !class_exists( 'Shoestrap_Foundation' ) ) {
 	// 		return $variables . self::variables();
 	// 	}
 
-	// 	function styles( $bootstrap ) {
-	// 			$return  = $bootstrap;
+	// 	function styles( $foundation ) {
+	// 			$return  = $foundation;
 	// 			$return .= '@import "' . dirname( __FILE__ ) . '/assets/less/blog.less";';
 	// 			$return .= '@import "' . dirname( __FILE__ ) . '/assets/less/headers.less";';
 	// 			$return .= '@import "' . dirname( __FILE__ ) . '/assets/less/layout.less";';
@@ -573,6 +518,29 @@ if ( !class_exists( 'Shoestrap_Foundation' ) ) {
 	// 			$return .= '@import "' . dirname( __FILE__ ) . '/assets/less/widgets.less";';
 	// 	}
 	 }
-
-	$bootstrap = new Shoestrap_Foundation();
 }
+
+/**
+ * Define the framework.
+ * These will be used in the redux admin option to choose a framework.
+ */
+function shoestrap_define_framework_foundation() {
+	$framework = array(
+		'shortname' => 'foundation',
+		'name'      => 'Foundation',
+		'classname' => 'Shoestrap_Foundation',
+		'compiler'  => 'sass_php'
+	);
+
+	return $framework;
+}
+
+/**
+ * Add the framework to redux
+ */
+function shoestrap_add_framework_foundation( $frameworks ) {
+	$frameworks[] = shoestrap_define_framework_foundation();
+
+	return $frameworks;
+}
+add_filter( 'shoestrap_frameworks_array', 'shoestrap_add_framework_foundation' );

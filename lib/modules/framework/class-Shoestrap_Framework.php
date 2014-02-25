@@ -50,7 +50,7 @@ if ( !class_exists( 'Shoestrap_Framework' ) ) {
 				$compiler_init = new Shoestrap_Less_PHP();
 				$this->fw->compiler();
 			} elseif ( $compiler == 'sass_php' ) {
-				require_once 'compilers/less-php/class-Shoestrap_Sass_php.php';
+				require_once 'compilers/sass-php/class-Shoestrap_Sass_php.php';
 				$compiler_init = new Shoestrap_Sass_PHP();
 				$this->fw->compiler();
 			}

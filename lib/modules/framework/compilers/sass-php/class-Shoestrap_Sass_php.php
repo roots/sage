@@ -12,7 +12,7 @@ if ( !class_exists( 'Shoestrap_Sass_PHP' ) ) {
 
 			// Require the less parser
 			if ( !class_exists( 'scssc' ) ) {
-				require_once( 'scssc.inc.php' );
+				require_once( 'scss.inc.php' );
 			}
 
 			add_filter( 'shoestrap_main_stylesheet_url', array( $this, 'stylesheet_url' ) );
