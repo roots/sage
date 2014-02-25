@@ -49,6 +49,10 @@ if ( !class_exists( 'Shoestrap_Framework' ) ) {
 				require_once 'compilers/less-php/class-Shoestrap_Less_php.php';
 				$compiler_init = new Shoestrap_Less_PHP();
 				$this->fw->compiler();
+			} elseif ( $compiler == 'sass_php' ) {
+				require_once 'compilers/less-php/class-Shoestrap_Sass_php.php';
+				$compiler_init = new Shoestrap_Sass_PHP();
+				$this->fw->compiler();
 			}
 
 			add_action( 'shoestrap_nav', array( $this, 'nav_template' ) );
