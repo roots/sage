@@ -8,44 +8,44 @@ if ( !class_exists( 'ShoestrapSocial' ) ) {
 	class ShoestrapSocial {
 
 		function __construct() {
+			global $ss_settings;
 			add_filter( 'redux/options/' . SHOESTRAP_OPT_NAME . '/sections', array( $this, 'options' ), 90 );
 
-			$settings = get_option( SHOESTRAP_OPT_NAME );
 			$social_sharing_location = shoestrap_getVariable( 'social_sharing_location' );
 
 			// Social Share select
 			$social_sharing_single_page = shoestrap_getVariable( 'social_sharing_single_page' );
 
 			// Conditions for showing content in posts archives
-			if ( $settings['social_sharing_archives'] == 1 )
+			if ( $ss_settings['social_sharing_archives'] == 1 )
 				add_action( 'shoestrap_entry_footer', array( $this, 'social_sharing' ), 5 );
 
 			// Conditions for showing content in single posts
-			if ( $settings['social_sharing_single_post'] == 1 ) {
-				if ( $settings['social_sharing_location'] == 'top' ) {
+			if ( $ss_settings['social_sharing_single_post'] == 1 ) {
+				if ( $ss_settings['social_sharing_location'] == 'top' ) {
 					add_action( 'shoestrap_single_pre_content',   array( $this, 'social_sharing' ), 5 );
-				} elseif ( $settings['social_sharing_location'] == 'bottom' ) {
+				} elseif ( $ss_settings['social_sharing_location'] == 'bottom' ) {
 					add_action( 'shoestrap_single_after_content', array( $this, 'social_sharing' ), 5 );
-				} elseif ( $settings['social_sharing_location'] == 'both' ) {
+				} elseif ( $ss_settings['social_sharing_location'] == 'both' ) {
 					add_action( 'shoestrap_single_pre_content',   array( $this, 'social_sharing' ), 5 );
 					add_action( 'shoestrap_single_after_content', array( $this, 'social_sharing' ), 5 );
 				}
 			}
 
 			// Conditions for showing content in single pages
-			if ( $settings['social_sharing_single_page'] == 1 ) {
-				if ( $settings['social_sharing_location'] == 'top' ) {
+			if ( $ss_settings['social_sharing_single_page'] == 1 ) {
+				if ( $ss_settings['social_sharing_location'] == 'top' ) {
 					add_action( 'shoestrap_page_pre_content',   array( $this, 'social_sharing' ), 5 );
-				} elseif ( $settings['social_sharing_location'] == 'bottom' ) {
+				} elseif ( $ss_settings['social_sharing_location'] == 'bottom' ) {
 					add_action( 'shoestrap_page_after_content', array( $this, 'social_sharing' ), 5 );
-				} elseif ( $settings['social_sharing_location'] == 'both' ) {
+				} elseif ( $ss_settings['social_sharing_location'] == 'both' ) {
 					add_action( 'shoestrap_page_pre_content',   array( $this, 'social_sharing' ), 5 );
 					add_action( 'shoestrap_page_after_content', array( $this, 'social_sharing' ), 5 );
 				}
 			}
 
-			if ( $settings['navbar_social'] == 1 ) {
-				if ( $settings['navbar_social_style'] == 1 )
+			if ( $ss_settings['navbar_social'] == 1 ) {
+				if ( $ss_settings['navbar_social_style'] == 1 )
 					add_action( 'shoestrap_inside_nav_end', array( $this, 'navbar_social_bar' ) );
 				else
 					add_action( 'shoestrap_inside_nav_end', array( $this, 'navbar_social_links' ) );

@@ -22,7 +22,7 @@ if ( !class_exists( 'Shoestrap_Jumbotron' ) ) {
 		 * The Jumbotron module options.
 		 */
 		function options( $sections ) {
-			$settings = get_option( SHOESTRAP_OPT_NAME );
+			global $ss_settings;
 
 			// Jumbotron Options
 			$section = array(
@@ -42,10 +42,10 @@ if ( !class_exists( 'Shoestrap_Jumbotron' ) ) {
 				'desc'        => __( 'Select the background for your Jumbotron area.', 'shoestrap'),
 				'id'          => 'jumbo_bg',
 				'default'     => array(
-					'background-color'    => isset( $settings['jumbotron_bg'] ) ? $settings['jumbotron_bg'] : '#eeeeee',
-					'background-repeat'   => isset( $settings['jumbotron_background_repeat'] ) ? $settings['jumbotron_background_repeat'] : NULL,
-					'background-position' => isset( $settings['jumbotron_background_image_position_toggle'] ) ? $settings['jumbotron_background_image_position_toggle'] . ' center' : NULL,
-					'background-image'    => isset( $settings['jumbotron_background_image']['url'] ) ? $settings['jumbotron_background_image']['url'] : NULL,
+					'background-color'    => isset( $ss_settings['jumbotron_bg'] ) ? $ss_settings['jumbotron_bg'] : '#eeeeee',
+					'background-repeat'   => isset( $ss_settings['jumbotron_background_repeat'] ) ? $ss_settings['jumbotron_background_repeat'] : NULL,
+					'background-position' => isset( $ss_settings['jumbotron_background_image_position_toggle'] ) ? $ss_settings['jumbotron_background_image_position_toggle'] . ' center' : NULL,
+					'background-image'    => isset( $ss_settings['jumbotron_background_image']['url'] ) ? $ss_settings['jumbotron_background_image']['url'] : NULL,
 				),
 				'compiler'    => true,
 				'output'      => '.jumbotron',
@@ -175,12 +175,12 @@ if ( !class_exists( 'Shoestrap_Jumbotron' ) ) {
 		 * according to what we've entered in the customizer
 		 */
 		function jumbotron_content() {
-			$settings = get_option( SHOESTRAP_OPT_NAME );
+			global $ss_settings;
 
 			$hero         = false;
-			$site_style   = $settings['site_style'];
-			$visibility   = $settings['jumbotron_visibility'];
-			$nocontainer  = $settings['jumbotron_nocontainer'];
+			$site_style   = $ss_settings['site_style'];
+			$visibility   = $ss_settings['jumbotron_visibility'];
+			$nocontainer  = $ss_settings['jumbotron_nocontainer'];
 
 			if ( ( ( $visibility == 1 && is_front_page() ) || $visibility != 1 ) && is_active_sidebar( 'jumbotron' ) )
 				$hero = true;
@@ -219,10 +219,10 @@ if ( !class_exists( 'Shoestrap_Jumbotron' ) ) {
 		 * Any Jumbotron-specific CSS that can't be added in the .less stylesheet is calculated here.
 		 */
 		function jumbotron_css() {
-			$settings = get_option( SHOESTRAP_OPT_NAME );
+			global $ss_settings;
 
-			$center = $settings['jumbotron_center'];
-			$border = $settings['jumbotron_border'];
+			$center = $ss_settings['jumbotron_center'];
+			$border = $ss_settings['jumbotron_border'];
 
 			$style = '';
 
@@ -243,10 +243,10 @@ if ( !class_exists( 'Shoestrap_Jumbotron' ) ) {
 		 * Enables the fittext.js for h1 headings
 		 */
 		function jumbotron_fittext() {
-			$settings = get_option( SHOESTRAP_OPT_NAME );
+			global $ss_settings;
 
-			$fittext_toggle   = $settings['jumbotron_title_fit'];
-			$jumbo_visibility = $settings['jumbotron_visibility'];
+			$fittext_toggle   = $ss_settings['jumbotron_title_fit'];
+			$jumbo_visibility = $ss_settings['jumbotron_visibility'];
 
 			// Should only show on the front page if it's enabled, or site-wide when appropriate
 			if ( $fittext_toggle == 1 && ( $jumbo_visibility == 0 && ( $jumbo_visibility == 1 && is_front_page() ) ) )
@@ -257,10 +257,10 @@ if ( !class_exists( 'Shoestrap_Jumbotron' ) ) {
 		 * Enqueues fittext.js when needed
 		 */
 		function jumbotron_fittext_enqueue_script() {
-			$settings = get_option( SHOESTRAP_OPT_NAME );
+			global $ss_settings;
 
-			$fittext_toggle   = $settings['jumbotron_title_fit'];
-			$jumbo_visibility = $settings['jumbotron_visibility'];
+			$fittext_toggle   = $ss_settings['jumbotron_title_fit'];
+			$jumbo_visibility = $ss_settings['jumbotron_visibility'];
 
 			if ( $fittext_toggle == 1 && ( $jumbo_visibility == 0 && ( $jumbo_visibility == 1 && is_front_page() ) ) ) {
 				wp_register_script('fittext', get_template_directory_uri() . '/assets/js/vendor/jquery.fittext.js', false, null, false);
@@ -273,15 +273,15 @@ if ( !class_exists( 'Shoestrap_Jumbotron' ) ) {
 		 * These override the default Bootstrap Variables.
 		 */
 		function variables() {
-			$settings = get_option( SHOESTRAP_OPT_NAME );
+			global $ss_settings;
 
-			$font_jumbotron         = shoestrap_process_font( $settings['font_jumbotron'] );
-			$jumbotron_bg           = $settings['jumbo_bg'];
+			$font_jumbotron         = shoestrap_process_font( $ss_settings['font_jumbotron'] );
+			$jumbotron_bg           = $ss_settings['jumbo_bg'];
 			$jumbotron_bg           = '#' . str_replace( '#', '', ShoestrapColor::sanitize_hex( $jumbotron_bg['background-color'] ) );
 			$jumbotron_text_color   = '#' . str_replace( '#', '', $font_jumbotron['color'] );
 
-			if ( $settings['font_jumbotron_heading_custom'] == 1 ) {
-				$font_jumbotron_headers = shoestrap_process_font( $settings['font_jumbotron_headers'] );
+			if ( $ss_settings['font_jumbotron_heading_custom'] == 1 ) {
+				$font_jumbotron_headers = shoestrap_process_font( $ss_settings['font_jumbotron_headers'] );
 
 				$font_jumbotron_headers_face   = $font_jumbotron_headers['font-family'];
 				$font_jumbotron_headers_weight = $font_jumbotron_headers['font-weight'];

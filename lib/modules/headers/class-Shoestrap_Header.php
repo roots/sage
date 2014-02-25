@@ -17,9 +17,7 @@ if ( !class_exists( 'Shoestrap_Header' ) ) {
 		 * The Header module options.
 		 */
 		function options( $sections ) {
-			$settings = get_option( SHOESTRAP_OPT_NAME );
-
-			// Jumbotron Options
+			// Header Options
 			$section = array(
 				'title' => __( 'Header', 'shoestrap'),
 				'icon'  => 'el-icon-eye-open'

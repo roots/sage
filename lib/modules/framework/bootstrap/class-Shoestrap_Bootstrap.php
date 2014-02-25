@@ -328,9 +328,9 @@ if ( !class_exists( 'Shoestrap_Bootstrap' ) ) {
 		 * This function can be used to compile a less file to css using the lessphp compiler
 		 */
 		function compiler() {
-			$settings = get_option( SHOESTRAP_OPT_NAME );
+			global $ss_settings;
 
-			if ( $settings['minimize_css'] == 1 ) {
+			if ( $ss_settings['minimize_css'] == 1 ) {
 				$compress = true;
 			} else {
 				$compress = false;
@@ -355,7 +355,7 @@ if ( !class_exists( 'Shoestrap_Bootstrap' ) ) {
 				$parser->parseFile( $webfont_location . 'elusive-webfont.less', $bootstrap_uri );
 
 				// Enable gradients
-				if ( $settings['gradients_toggle'] == 1 ) {
+				if ( $ss_settings['gradients_toggle'] == 1 ) {
 					$parser->parseFile( $bootstrap_location . 'gradients.less', $bootstrap_uri );
 				}
 
@@ -365,7 +365,7 @@ if ( !class_exists( 'Shoestrap_Bootstrap' ) ) {
 				}
 
 				// Parse any custom less added by the user
-				$parser->parse( $settings['user_less'] );
+				$parser->parse( $ss_settings['user_less'] );
 				// Add a filter to the compiler
 				$parser->parse( apply_filters( 'shoestrap_compiler', '' ) );
 

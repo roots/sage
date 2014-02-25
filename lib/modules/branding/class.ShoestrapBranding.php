@@ -177,7 +177,7 @@ if ( !class_exists( 'ShoestrapBranding' ) ) {
 		 */
 		public static function variables() {
 
-			$settings = get_option( SHOESTRAP_OPT_NAME );
+			global $ss_settings;
 
 			$brand_primary = '#' . str_replace( '#', '', ShoestrapColor::sanitize_hex( shoestrap_getVariable( 'color_brand_primary', true ) ) );
 			$brand_success = '#' . str_replace( '#', '', ShoestrapColor::sanitize_hex( shoestrap_getVariable( 'color_brand_success', true ) ) );
@@ -213,7 +213,7 @@ if ( !class_exists( 'ShoestrapBranding' ) ) {
 
 			$variables = '';
 
-			if ( $settings['framework'] != 'foundation' ) {
+			if ( $ss_settings['framework'] != 'foundation' ) {
 				// Branding colors
 				$variables .= '@brand-primary: ' . $brand_primary . ';';
 				$variables .= '@brand-success: ' . $brand_success . ';';

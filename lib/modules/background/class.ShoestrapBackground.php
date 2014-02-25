@@ -18,8 +18,7 @@ if ( !class_exists( 'ShoestrapBackground' ) ) {
 		 * The background core options for the Shoestrap theme
 		 */
 		function options( $sections ) {
-			global $redux;
-			$settings = get_option( SHOESTRAP_OPT_NAME );
+			global $redux, $ss_settings;
 
 			// Blog Options
 			$section = array(
@@ -32,7 +31,7 @@ if ( !class_exists( 'ShoestrapBackground' ) ) {
 				'desc'        => __( 'Select a background color for your site. Default: #ffffff.', 'shoestrap' ),
 				'id'          => 'html_bg',
 				'default'     => array(
-					'background-color' => isset( $settings['html_color_bg'] ) ? $settings['html_color_bg'] : '#ffffff',
+					'background-color' => isset( $ss_settings['html_color_bg'] ) ? $ss_settings['html_color_bg'] : '#ffffff',
 				),
 				'transparent' => false,
 				'type'        => 'background',
@@ -44,10 +43,10 @@ if ( !class_exists( 'ShoestrapBackground' ) ) {
 				'desc'        => __( 'Background for the content area. Colors also affect input areas and other colors.', 'shoestrap' ),
 				'id'          => 'body_bg',
 				'default'     => array(
-					'background-color'    => isset( $settings['color_body_bg'] ) ? $settings['color_body_bg'] : '#ffffff',
-					'background-repeat'   => isset( $settings['background_repeat'] ) ? $settings['background_repeat'] : NULL,
-					'background-position' => isset( $settings['background_position_x'] ) ? $settings['background_position_x'] . ' center' : NULL,
-					'background-image'    => isset( $settings['background_image']['url'] ) ? $settings['background_image']['url'] : NULL,
+					'background-color'    => isset( $ss_settings['color_body_bg'] ) ? $ss_settings['color_body_bg'] : '#ffffff',
+					'background-repeat'   => isset( $ss_settings['background_repeat'] ) ? $ss_settings['background_repeat'] : NULL,
+					'background-position' => isset( $ss_settings['background_position_x'] ) ? $ss_settings['background_position_x'] . ' center' : NULL,
+					'background-image'    => isset( $ss_settings['background_image']['url'] ) ? $ss_settings['background_image']['url'] : NULL,
 				),
 				'compiler'    => true,
 				'transparent' => false,

@@ -10,7 +10,7 @@ if ( !class_exists( 'ShoestrapBlog' ) ) {
 
 		function __construct() {
 
-			$settings = get_option( SHOESTRAP_OPT_NAME );
+			global $ss_settings;
 
 			add_filter( 'redux/options/' . SHOESTRAP_OPT_NAME . '/sections', array( $this, 'options' ), 75 );
 			add_filter( 'shoestrap_compiler',       array( $this, 'styles'                              ) );
@@ -20,11 +20,11 @@ if ( !class_exists( 'ShoestrapBlog' ) ) {
 			add_action( 'shoestrap_in_article_top', array( $this, 'featured_image'                      ) );
 			add_action( 'wp',                       array( $this, 'remove_featured_image_per_post_type' ) );
 
-			if ( $settings['pagination'] != 'pager' )
+			if ( $ss_settings['pagination'] != 'pager' )
 				add_filter( 'shoestrap_pagination_format', array( $this, 'pagination_toggler' ) );
 
 		 	// Hide post meta data in footer of single posts
-			if ( $settings['single_meta'] == 0 ) {
+			if ( $ss_settings['single_meta'] == 0 ) {
 				add_filter( 'shoestrap_the_tags', 'shoestrap_blank' );
 				add_filter( 'shoestrap_the_cats', 'shoestrap_blank' );
 			}
@@ -61,8 +61,9 @@ if ( !class_exists( 'ShoestrapBlog' ) ) {
 			);
 
 			// Featured Images Options
-			$settings  = get_option( SHOESTRAP_OPT_NAME );
-			$screen_large_desktop = filter_var( $settings[ 'screen_large_desktop' ], FILTER_SANITIZE_NUMBER_INT );
+			global $ss_settings;
+
+			$screen_large_desktop = filter_var( $ss_settings[ 'screen_large_desktop' ], FILTER_SANITIZE_NUMBER_INT );
 
 			$fields[] = array( 
 				'id'        => 'help3',

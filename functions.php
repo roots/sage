@@ -5,6 +5,19 @@ if ( !defined( 'SHOESTRAP_ASSETS_URL' ) ) {
 	define( 'SHOESTRAP_ASSETS_URL', get_template_directory_uri() . '/assets' );
 }
 
+/*
+ * The option that is used by Shoestrap in the database for all settings.
+ *
+ * This can be overriden by adding this in your wp-config.php:
+ * define( 'SHOESTRAP_OPT_NAME', 'custom_option' )
+ */
+if ( !defined( 'SHOESTRAP_OPT_NAME' ) ) {
+	define( 'SHOESTRAP_OPT_NAME', 'shoestrap' );
+}
+
+global $ss_settings;
+$ss_settings = get_option( SHOESTRAP_OPT_NAME );
+
 // If modules exist, load them.
 if ( file_exists( locate_template( '/lib/modules/load.modules.php' ) ) ) {
 	require_once locate_template('/lib/modules/load.modules.php');

@@ -9,7 +9,7 @@ if ( !class_exists( 'Shoestrap_Menus' ) ) {
 	class Shoestrap_Menus {
 
 		function __construct() {
-			$settings = get_option( SHOESTRAP_OPT_NAME );
+			global $ss_settings;
 
 			add_filter( 'redux/options/' . SHOESTRAP_OPT_NAME . '/sections', array( $this, 'options' ), 70 );
 			add_filter( 'shoestrap_nav_class',        array( $this, 'nav_class'                )      );
@@ -30,10 +30,10 @@ if ( !class_exists( 'Shoestrap_Menus' ) ) {
 			add_filter( 'shoestrap_compiler',         array( $this, 'variables_filter'         )      );
 			add_filter( 'shoestrap_compiler',         array( $this, 'styles'                   )      );
 
-			if ( $settings['secondary_navbar_margin'] != 0 )
+			if ( $ss_settings['secondary_navbar_margin'] != 0 )
 				add_action( 'wp_enqueue_scripts', array( $this, 'secondary_navbar_margin' ), 101 );
 
-			$hook = ( $settings['navbar_toggle'] == 'left' ) ? 'shoestrap_do_navbar' : 'shoestrap_inside_nav_begin';
+			$hook = ( $ss_settings['navbar_toggle'] == 'left' ) ? 'shoestrap_do_navbar' : 'shoestrap_inside_nav_begin';
 			add_action( $hook, array( $this, 'navbar_slidedown_toggle' ) );
 		}
 
@@ -343,9 +343,9 @@ if ( !class_exists( 'Shoestrap_Menus' ) ) {
 		 * Modify the nav class.
 		 */
 		function nav_class() {
-			$settings = get_option( SHOESTRAP_OPT_NAME );
+			global $ss_settings;
 
-			if ( $settings['navbar_nav_right'] == '1' ) {
+			if ( $ss_settings['navbar_nav_right'] == '1' ) {
 				return 'navbar-nav nav pull-right';
 			} else {
 				return 'navbar-nav nav';
@@ -357,9 +357,9 @@ if ( !class_exists( 'Shoestrap_Menus' ) ) {
 		 * The template for the primary navbar searchbox
 		 */
 		function navbar_pre_searchbox() {
-			$settings = get_option( SHOESTRAP_OPT_NAME );
+			global $ss_settings;
 
-			$show_searchbox = $settings['navbar_search'];
+			$show_searchbox = $ss_settings['navbar_search'];
 			if ( $show_searchbox == '1' ) : ?>
 				<form role="search" method="get" id="searchform" class="form-search pull-right navbar-form" action="<?php echo home_url('/'); ?>">
 					<label class="hide" for="s"><?php _e('Search for:', 'shoestrap'); ?></label>
@@ -373,11 +373,12 @@ if ( !class_exists( 'Shoestrap_Menus' ) ) {
 		 * Modify the navbar class.
 		 */
 		public static function navbar_class( $navbar = 'main') {
-			$settings = get_option( SHOESTRAP_OPT_NAME );
-			$fixed    = $settings['navbar_fixed'];
-			$fixedpos = $settings['navbar_fixed_position'];
-			$style    = $settings['navbar_style'];
-			$toggle   = $settings['navbar_toggle'];
+			global $ss_settings;
+
+			$fixed    = $ss_settings['navbar_fixed'];
+			$fixedpos = $ss_settings['navbar_fixed_position'];
+			$style    = $ss_settings['navbar_style'];
+			$toggle   = $ss_settings['navbar_toggle'];
 			$left     = ( $toggle == 'left' ) ? true : false;
 
 			$bp = self::sl_breakpoint();
@@ -392,7 +393,7 @@ if ( !class_exists( 'Shoestrap_Menus' ) ) {
 			$class = $defaults . $class;
 
 			if ( $left ) {
-				$extra_classes = 'navbar navbar-default static-left ' . $bp .  ' col-' . $bp . '-' . $settings['layout_secondary_width'];
+				$extra_classes = 'navbar navbar-default static-left ' . $bp .  ' col-' . $bp . '-' . $ss_settings['layout_secondary_width'];
 				$class = $extra_classes;
 			}
 
@@ -406,9 +407,9 @@ if ( !class_exists( 'Shoestrap_Menus' ) ) {
 		 * Modify the grid-float-breakpoint using Bootstrap classes.
 		 */
 		public static function sl_breakpoint() {
-			$settings = get_option( SHOESTRAP_OPT_NAME );
+			global $ss_settings;
 
-			$break    = $settings['grid_float_breakpoint'];
+			$break    = $ss_settings['grid_float_breakpoint'];
 
 			$bp = ( $break == 'min' || $break == 'screen_xs_min' ) ? 'xs' : 'xs';
 			$bp = ( $break == 'screen_sm_min' )                    ? 'sm' : $bp;
@@ -422,15 +423,15 @@ if ( !class_exists( 'Shoestrap_Menus' ) ) {
 		 * Add some CSS for the navbar when needed.
 		 */
 		function navbar_css() {
-			$settings = get_option( SHOESTRAP_OPT_NAME );
+			global $ss_settings;
 
-			$navbar_bg_opacity = $settings['navbar_bg_opacity'];
+			$navbar_bg_opacity = $ss_settings['navbar_bg_opacity'];
 			$style = '';
 
 			$opacity = ( $navbar_bg_opacity == '' ) ? '0' : ( intval( $navbar_bg_opacity ) ) / 100;
 
 			if ( $opacity != 1 && $opacity != '' ) {
-				$bg  = str_replace( '#', '', $settings['navbar_bg'] );
+				$bg  = str_replace( '#', '', $ss_settings['navbar_bg'] );
 				$rgb = ShoestrapColor::get_rgb( $bg, true );
 				$opacityie = str_replace( '0.', '', $opacity );
 
@@ -445,8 +446,8 @@ if ( !class_exists( 'Shoestrap_Menus' ) ) {
 
 			}
 
-			if ( $settings['navbar_margin'] != 1 )
-				$style .= '.navbar-static-top { margin-top:'. $settings['navbar_margin'] . 'px !important; margin-bottom:' . $settings['navbar_margin'] . 'px !important; }';
+			if ( $ss_settings['navbar_margin'] != 1 )
+				$style .= '.navbar-static-top { margin-top:'. $ss_settings['navbar_margin'] . 'px !important; margin-bottom:' . $ss_settings['navbar_margin'] . 'px !important; }';
 
 			wp_add_inline_style( 'shoestrap_css', $style );
 		}
@@ -456,9 +457,9 @@ if ( !class_exists( 'Shoestrap_Menus' ) ) {
 		 * If yes, then which navbar?
 		 */
 		function do_navbar() {
-			$settings = get_option( SHOESTRAP_OPT_NAME );
+			global $ss_settings;
 
-			$navbar_toggle = $settings['navbar_toggle'];
+			$navbar_toggle = $ss_settings['navbar_toggle'];
 
 			if ( $navbar_toggle != 'none' ) {
 				if ( $navbar_toggle != 'pills' ) {
@@ -481,12 +482,12 @@ if ( !class_exists( 'Shoestrap_Menus' ) ) {
 		 * When the navbar is set to static-left, we need to add some wrappers
 		 */
 		function sl_main_wrapper_open() {
-			$settings = get_option( SHOESTRAP_OPT_NAME );
+			global $ss_settings;
 
-			$left = $settings['navbar_toggle'] == 'left' ? true : false;
+			$left = $ss_settings['navbar_toggle'] == 'left' ? true : false;
 
 			if ( $left ) {
-				echo '<section class="static-menu-main ' . self::sl_breakpoint() . ' col-static-' . ( 12 - $settings['layout_secondary_width'] ) . '">';
+				echo '<section class="static-menu-main ' . self::sl_breakpoint() . ' col-static-' . ( 12 - $ss_settings['layout_secondary_width'] ) . '">';
 			}
 		}
 
@@ -495,9 +496,9 @@ if ( !class_exists( 'Shoestrap_Menus' ) ) {
 		 * Close the wrapper div that the 'sl_main_wrapper_open' opens.
 		 */
 		function sl_main_wrapper_close() {
-			$settings = get_option( SHOESTRAP_OPT_NAME );
+			global $ss_settings;
 
-			$left = $settings['navbar_toggle'] == 'left' ? true : false;
+			$left = $ss_settings['navbar_toggle'] == 'left' ? true : false;
 
 			if ( $left ) {
 				echo '</section>';
@@ -511,14 +512,14 @@ if ( !class_exists( 'Shoestrap_Menus' ) ) {
 		function navbar_brand() {
 			// Make sure the branding module exists.
 			if ( class_exists( 'ShoestrapBranding' ) ) {
-				$settings = get_option( SHOESTRAP_OPT_NAME );
+				global $ss_settings;
 
-				$logo           = $settings['logo'];
+				$logo           = $ss_settings['logo'];
 				$branding_class = !empty( $logo['url'] ) ? 'logo' : 'text';
 
-				if ( $settings['navbar_brand'] != 0 ) {
+				if ( $ss_settings['navbar_brand'] != 0 ) {
 					$branding  = '<a class="navbar-brand ' . $branding_class . '" href="' . home_url('/') . '">';
-					$branding .= $settings['navbar_logo'] == 1 ? ShoestrapBranding::logo() : get_bloginfo( 'name' );
+					$branding .= $ss_settings['navbar_logo'] == 1 ? ShoestrapBranding::logo() : get_bloginfo( 'name' );
 					$branding .= '</a>';
 				} else {
 					$branding = '';
@@ -535,13 +536,13 @@ if ( !class_exists( 'Shoestrap_Menus' ) ) {
 		 * Add and remove body_class() classes
 		 */
 		function navbar_body_class( $classes ) {
-			$settings = get_option( SHOESTRAP_OPT_NAME );
+			global $ss_settings;
 
 			// Add 'top-navbar' or 'bottom-navabr' class if using Bootstrap's Navbar
 			// Used to add styling to account for the WordPress admin bar
-			if ( $settings['navbar_fixed'] == 1 && $settings['navbar_fixed_position'] != 1 && $settings['navbar_toggle'] != 'left' ) {
+			if ( $ss_settings['navbar_fixed'] == 1 && $ss_settings['navbar_fixed_position'] != 1 && $ss_settings['navbar_toggle'] != 'left' ) {
 				$classes[] = 'top-navbar';
-			} elseif ( $settings['navbar_fixed'] == 1 && $settings['navbar_fixed_position'] == 1 ) {
+			} elseif ( $ss_settings['navbar_fixed'] == 1 && $ss_settings['navbar_fixed_position'] == 1 ) {
 				$classes[] = 'bottom-navbar';
 			}
 
@@ -575,9 +576,9 @@ if ( !class_exists( 'Shoestrap_Menus' ) ) {
 		 * The contents of the secondary navbar
 		 */
 		function secondary_navbar() {
-			$settings = get_option( SHOESTRAP_OPT_NAME );
+			global $ss_settings;
 
-			if ( $settings['secondary_navbar_toggle'] != 0 ) : ?>
+			if ( $ss_settings['secondary_navbar_toggle'] != 0 ) : ?>
 
 				<div class="<?php echo ShoestrapLayout::container_class(); ?>">
 					<header class="secondary navbar navbar-default <?php echo self::navbar_class( 'secondary' ); ?>" role="banner">
@@ -587,7 +588,7 @@ if ( !class_exists( 'Shoestrap_Menus' ) ) {
 							<span class="icon-bar"></span>
 						</button>
 						<?php
-						if ( $settings['navbar_secondary_social'] != 0 )
+						if ( $ss_settings['navbar_secondary_social'] != 0 )
 							shoestrap_navbar_social_links();
 						?>
 						<nav class="nav-secondary navbar-collapse collapse" role="navigation">
@@ -603,9 +604,9 @@ if ( !class_exists( 'Shoestrap_Menus' ) ) {
 		 * Add margin to the secondary nvbar if needed
 		 */
 		function secondary_navbar_margin() {
-			$settings = get_option( SHOESTRAP_OPT_NAME );
+			global $ss_settings;
 
-			$secondary_navbar_margin = $settings['secondary_navbar_margin'];
+			$secondary_navbar_margin = $ss_settings['secondary_navbar_margin'];
 			$style = '.secondary { margin-top:' . $secondary_navbar_margin . 'px !important; margin-bottom:'. $secondary_navbar_margin .'px !important; }';
 
 			wp_add_inline_style( 'shoestrap_css', $style );
@@ -683,11 +684,11 @@ if ( !class_exists( 'Shoestrap_Menus' ) ) {
 		 * Prints the content of the slide-down widget areas.
 		 */
 		function navbar_slidedown_content() {
-			$settings = get_option( SHOESTRAP_OPT_NAME );
+			global $ss_settings;
 
 			if ( is_active_sidebar( 'navbar-slide-down-1' ) || is_active_sidebar( 'navbar-slide-down-2' ) || is_active_sidebar( 'navbar-slide-down-3' ) || is_active_sidebar( 'navbar-slide-down-4' ) || is_active_sidebar( 'navbar-slide-down-top' ) ) : ?>
 				<div class="before-main-wrapper">
-					<?php $megadrop_class = ( $settings['site_style'] != 'fluid' ) ? 'top-megamenu container' : 'top-megamenu'; ?>
+					<?php $megadrop_class = ( $ss_settings['site_style'] != 'fluid' ) ? 'top-megamenu container' : 'top-megamenu'; ?>
 					<div id="megaDrop" class="' . $megadrop_class . '">
 						<?php $widgetareaclass = 'col-sm-' . self::navbar_widget_area_class(); ?>
 
@@ -727,10 +728,10 @@ if ( !class_exists( 'Shoestrap_Menus' ) ) {
 		 * The icon that helps us open/close the dropdown widgets.
 		 */
 		function navbar_slidedown_toggle() {
-			$settings = get_option( SHOESTRAP_OPT_NAME );
+			global $ss_settings;
 
-			$navbar_color = $settings['navbar_bg'];
-			$navbar_mode  = $settings['navbar_toggle'];
+			$navbar_color = $ss_settings['navbar_bg'];
+			$navbar_mode  = $ss_settings['navbar_toggle'];
 			$trigger = (
 				is_active_sidebar( 'navbar-slide-down-top' ) ||
 				is_active_sidebar( 'navbar-slide-down-1' ) ||
@@ -765,17 +766,17 @@ if ( !class_exists( 'Shoestrap_Menus' ) ) {
 		 * These override the default Bootstrap Variables.
 		 */
 		function variables() {
-			$settings = get_option( SHOESTRAP_OPT_NAME );
+			global $ss_settings;
 
-			$font_brand        = shoestrap_process_font( $settings['font_brand'] );
+			$font_brand        = shoestrap_process_font( $ss_settings['font_brand'] );
 
-			$font_navbar       = shoestrap_process_font( $settings['font_navbar'] );
-			$navbar_bg         = '#' . str_replace( '#', '', ShoestrapColor::sanitize_hex( $settings['navbar_bg'] ) );
-			$navbar_height     = filter_var( $settings['navbar_height'], FILTER_SANITIZE_NUMBER_INT );
+			$font_navbar       = shoestrap_process_font( $ss_settings['font_navbar'] );
+			$navbar_bg         = '#' . str_replace( '#', '', ShoestrapColor::sanitize_hex( $ss_settings['navbar_bg'] ) );
+			$navbar_height     = filter_var( $ss_settings['navbar_height'], FILTER_SANITIZE_NUMBER_INT );
 			$navbar_text_color = '#' . str_replace( '#', '', $font_navbar['color'] );
 			$brand_text_color  = '#' . str_replace( '#', '', $font_brand['color'] );
 			$navbar_border     = ( ShoestrapColor::get_brightness( $navbar_bg ) < 50 ) ? 'lighten(@navbar-default-bg, 6.5%)' : 'darken(@navbar-default-bg, 6.5%)';
-			$gfb = $settings['grid_float_breakpoint'];
+			$gfb = $ss_settings['grid_float_breakpoint'];
 
 			if ( ShoestrapColor::get_brightness( $navbar_bg ) < 165 ) {
 				$navbar_link_hover_color    = 'darken(@navbar-default-color, 26.5%)';
@@ -835,7 +836,7 @@ if ( !class_exists( 'Shoestrap_Menus' ) ) {
 			$variables .= '@brand-font-family:       ' . $font_brand['font-family'] . ';';
 			$variables .= '@brand-font-color:        ' . $brand_text_color . ';';
 
-			$variables .= '@navbar-margin-top:       ' . $settings['navbar_margin_top'] . 'px;';
+			$variables .= '@navbar-margin-top:       ' . $ss_settings['navbar_margin_top'] . 'px;';
 
 			$variables .= '@grid-float-breakpoint: ' . $grid_float_breakpoint . ';';
 
