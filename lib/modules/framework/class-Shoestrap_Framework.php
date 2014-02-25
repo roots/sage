@@ -166,6 +166,10 @@ if ( !class_exists( 'Shoestrap_Framework' ) ) {
 			return $this->fw->make_panel_footer( $extra_classes );
 		}
 
+		function pagination_ul_class() {
+			return $this->fw->pagination_ul_class();
+		}
+
 		function nav_template() {
 			$initialize = $this->fw->nav_template();
 		}

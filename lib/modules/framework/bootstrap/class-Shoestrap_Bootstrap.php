@@ -286,6 +286,10 @@ if ( !class_exists( 'Shoestrap_Bootstrap' ) ) {
 			return $this->defines['clearfix'];
 		}
 
+		function pagination_ul_class() {
+			return 'pagination';
+		}
+
 		/**
 		 * The framework's alert boxes.
 		 */
