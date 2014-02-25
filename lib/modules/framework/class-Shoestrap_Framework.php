@@ -147,7 +147,23 @@ if ( !class_exists( 'Shoestrap_Framework' ) ) {
 		 * Calls the framework-specific alert() function
 		 */
 		function alert( $type = 'info', $content = '', $id = null, $extra_classes = null, $dismiss = false ) {
-			$this->fw->alert( $type, $content, $id, $extra_classes, $dismiss );
+			return $this->fw->alert( $type, $content, $id, $extra_classes, $dismiss );
+		}
+
+		function make_panel( $extra_classes = null, $id = null  ) {
+			return $this->fw->make_panel( $extra_classes, $id );
+		}
+
+		function make_panel_heading( $extra_classes = null ) {
+			return $this->fw->make_panel_heading( $extra_classes );
+		}
+
+		function make_panel_body( $extra_classes = null ) {
+			return $this->fw->make_panel_body( $extra_classes );
+		}
+
+		function make_panel_footer( $extra_classes = null ) {
+			return $this->fw->make_panel_footer( $extra_classes );
 		}
 
 		function nav_template() {

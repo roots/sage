@@ -321,6 +321,84 @@ if ( !class_exists( 'Shoestrap_Bootstrap' ) ) {
 			return '<div class="' . $classes . '"' . $id . '>' . $dismiss . $content . '</div>';
 		}
 
+		function make_panel( $extra_classes = null, $id = null  ) {
+
+			$classes = array();
+
+			if ( !is_null( $extra_classes ) ) {
+				$extras = explode( ' ', $extra_classes );
+
+				foreach ( $extras as $extra ) {
+					$classes[] = $extra;
+				}
+				$classes = ' ' . implode( ' ', $classes );
+			} else {
+				$classes = null;
+			}
+
+			// If an ID has been defined, format it properly.
+			if ( !is_null( $id ) ) {
+				$id = ' id=' . $id . '"';
+			}
+
+			$classes = implode( ' ', $classes );
+
+			return '<div class="panel panel-default' . $classes . '"' . $id . '>';
+		}
+
+		function make_panel_heading( $extra_classes = null ) {
+
+			$classes = array();
+
+			if ( !is_null( $extra_classes ) ) {
+				$extras = explode( ' ', $extra_classes );
+
+				foreach ( $extras as $extra ) {
+					$classes[] = $extra;
+				}
+				$classes = ' ' . implode( ' ', $classes );
+			} else {
+				$classes = null;
+			}
+
+			return '<div class="panel-heading' . $classes . '">';
+		}
+
+		function make_panel_body( $extra_classes = null ) {
+			$classes = array();
+
+			if ( !is_null( $extra_classes ) ) {
+				$extras = explode( ' ', $extra_classes );
+
+				foreach ( $extras as $extra ) {
+					$classes[] = $extra;
+				}
+				$classes = ' ' . implode( ' ', $classes );
+			} else {
+				$classes = null;
+			}
+
+			return '<div class="panel-body' . $classes . '">';
+		}
+
+		function make_panel_footer( $extra_classes = null ) {
+
+			$classes = array();
+
+			if ( !is_null( $extra_classes ) ) {
+				$extras = explode( ' ', $extra_classes );
+
+				foreach ( $extras as $extra ) {
+					$classes[] = $extra;
+				}
+				$classes = ' ' . implode( ' ', $classes );
+			} else {
+				$classes = null;
+			}
+
+			return '<div class="panel-footer' . $classes . '">';
+		}
+
 		function nav_template() {
 			if ( !has_action( 'shoestrap_do_navbar' ) ) {
 				get_template_part( 'lib/modules/framework/bootstrap/header-top-navbar' );
