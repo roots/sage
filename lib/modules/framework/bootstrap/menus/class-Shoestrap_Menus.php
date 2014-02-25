@@ -28,7 +28,6 @@ if ( !class_exists( 'Shoestrap_Menus' ) ) {
 			add_action( 'shoestrap_do_navbar',        array( $this, 'navbar_slidedown_content' ), 99  );
 			add_action( 'wp_enqueue_scripts',         array( $this, 'megadrop_script'          ), 200 );
 			add_filter( 'shoestrap_compiler',         array( $this, 'variables_filter'         )      );
-			add_filter( 'shoestrap_compiler',         array( $this, 'styles'                   )      );
 
 			if ( $ss_settings['secondary_navbar_margin'] != 0 )
 				add_action( 'wp_enqueue_scripts', array( $this, 'secondary_navbar_margin' ), 101 );
@@ -847,11 +846,6 @@ if ( !class_exists( 'Shoestrap_Menus' ) ) {
 		 */
 		function variables_filter( $variables ) {
 			return $variables . self::variables();
-		}
-
-		function styles( $bootstrap ) {
-			return $bootstrap . '
-			@import "' . SHOESTRAP_MODULES_PATH . '/framework/bootstrap/menus/assets/less/styles.less";';
 		}
 	}
 }

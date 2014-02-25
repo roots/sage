@@ -13,7 +13,6 @@ if ( !class_exists( 'ShoestrapBlog' ) ) {
 			global $ss_settings;
 
 			add_filter( 'redux/options/' . SHOESTRAP_OPT_NAME . '/sections', array( $this, 'options' ), 75 );
-			add_filter( 'shoestrap_compiler',       array( $this, 'styles'                              ) );
 			add_action( 'shoestrap_entry_meta',     array( $this, 'meta_custom_render'                  ) );
 			add_filter( 'excerpt_more',             array( $this, 'excerpt_more'                        ) );
 			add_filter( 'excerpt_length',           array( $this, 'excerpt_length'                      ) );
@@ -235,12 +234,6 @@ if ( !class_exists( 'ShoestrapBlog' ) ) {
 			$sections[] = $section;
 
 			return $sections;
-		}
-
-
-		function styles( $bootstrap ) {
-			return $bootstrap . '
-			@import "' . SHOESTRAP_MODULES_PATH . '/blog/assets/less/styles.less";';
 		}
 
 		/**

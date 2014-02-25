@@ -50,8 +50,6 @@ if ( !class_exists( 'Shoestrap_Social' ) ) {
 				else
 					add_action( 'shoestrap_inside_nav_end', array( $this, 'navbar_social_links' ) );
 			}
-
-			add_filter( 'shoestrap_compiler', array( $this, 'styles' ) );
 		}
 
 		/*
@@ -581,11 +579,6 @@ if ( !class_exists( 'Shoestrap_Social' ) ) {
 			// If at least ONE social share option is enabled then echo the content
 			if ( !empty( $networks ) )
 				echo $content;
-		}
-
-		function styles( $bootstrap ) {
-			return $bootstrap . '
-			@import "' . SHOESTRAP_MODULES_PATH . '/social/assets/less/styles.less";';
 		}
 	}
 }

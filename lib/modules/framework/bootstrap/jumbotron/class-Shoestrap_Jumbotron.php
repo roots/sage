@@ -16,7 +16,6 @@ if ( !class_exists( 'Shoestrap_Jumbotron' ) ) {
 			add_action( 'wp_footer',          array( $this, 'jumbotron_fittext'                ), 10  );
 			add_action( 'wp_enqueue_scripts', array( $this, 'jumbotron_fittext_enqueue_script' ), 101 );
 			add_filter( 'shoestrap_compiler', array( $this, 'variables_filter'                 )      );
-			add_filter( 'shoestrap_compiler', array( $this, 'styles'                           )      );
 		}
 		/*
 		 * The Jumbotron module options.
@@ -321,11 +320,6 @@ if ( !class_exists( 'Shoestrap_Jumbotron' ) ) {
 		 */
 		function variables_filter( $variables ) {
 			return $variables . self::variables();
-		}
-
-		function styles( $bootstrap ) {
-			return $bootstrap . '
-			@import "' . SHOESTRAP_MODULES_PATH . '/framework/bootstrap/jumbotron/assets/less/styles.less";';
 		}
 	}
 }

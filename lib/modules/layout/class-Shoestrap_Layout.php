@@ -40,8 +40,6 @@ if ( !class_exists( 'Shoestrap_Layout' ) ) {
 			}
 
 			add_action( 'wp_head',            array( $this, 'static_meta'      ) );
-			add_filter( 'shoestrap_compiler', array( $this, 'variables_filter' ) );
-			add_filter( 'shoestrap_compiler', array( $this, 'styles'           ) );
 		}
 
 		/*
@@ -629,71 +627,6 @@ if ( !class_exists( 'Shoestrap_Layout' ) ) {
 				<meta name="apple-mobile-web-app-status-bar-style" content="black">
 				<?php
 			endif;
-		}
-
-		/**
-		 * Variables to use for the compiler.
-		 * These override the default Bootstrap Variables.
-		 */
-		function variables() {
-			global $ss_settings;
-
-			$screen_sm = filter_var( $ss_settings['screen_tablet'], FILTER_SANITIZE_NUMBER_INT );
-			$screen_md = filter_var( $ss_settings['screen_desktop'], FILTER_SANITIZE_NUMBER_INT );
-			$screen_lg = filter_var( $ss_settings['screen_large_desktop'], FILTER_SANITIZE_NUMBER_INT );
-			$gutter    = filter_var( $ss_settings['layout_gutter'], FILTER_SANITIZE_NUMBER_INT );
-			$gutter    = ( $gutter < 2 ) ? 2 : $gutter;
-
-			$site_style = $ss_settings['site_style'];
-
-			$screen_xs = ( $site_style == 'static' ) ? '50px' : '480px';
-			$screen_sm = ( $site_style == 'static' ) ? '50px' : $screen_sm;
-			$screen_md = ( $site_style == 'static' ) ? '50px' : $screen_md;
-
-			$variables = '';
-
-			$variables .= '@screen-sm: ' . $screen_sm . 'px;';
-			$variables .= '@screen-md: ' . $screen_md . 'px;';
-			$variables .= '@screen-lg: ' . $screen_lg . 'px;';
-
-			$variables .= '@grid-gutter-width: ' . $gutter . 'px;';
-
-			$variables .= '@jumbotron-padding: @grid-gutter-width;';
-
-			$variables .= '@modal-inner-padding: ' . round( $gutter * 20 / 30 ) . 'px;';
-			$variables .= '@modal-title-padding: ' . round( $gutter * 15 / 30 ) . 'px;';
-
-			$variables .= '@modal-lg: ' . round( $screen_md - ( 3 * $gutter ) ) . 'px;';
-			$variables .= '@modal-md: ' . round( $screen_sm - ( 3 * $gutter ) ) . 'px;';
-			$variables .= '@modal-sm: ' . round( $screen_xs - ( 3 * $gutter ) ) . 'px;';
-
-			$variables .= '@panel-body-padding: @modal-title-padding;';
-
-			$variables .= '@container-tablet:        ' . ( $screen_sm - ( $gutter / 2 ) ). 'px;';
-			$variables .= '@container-desktop:       ' . ( $screen_md - ( $gutter / 2 ) ). 'px;';
-			$variables .= '@container-large-desktop: ' . ( $screen_lg - $gutter ). 'px;';
-
-			if ( $site_style == 'static' ) {
-				// disable responsiveness
-				$variables .= '@screen-xs-max: 0 !important;
-				.container { max-width: none !important; width: @container-large-desktop; }
-				html { overflow-x: auto !important; }';
-			}
-
-			return $variables;
-		}
-
-
-		/**
-		 * Add the variables to the compiler
-		 */
-		function variables_filter( $variables ) {
-			return $variables . self::variables();
-		}
-
-		function styles( $bootstrap ) {
-			return $bootstrap . '
-			@import "' . SHOESTRAP_MODULES_PATH . '/layout/assets/less/styles.less";';
 		}
 	}
 }
