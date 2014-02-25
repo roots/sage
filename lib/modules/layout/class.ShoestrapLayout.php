@@ -272,7 +272,7 @@ if ( !class_exists( 'ShoestrapLayout' ) ) {
 			$section['fields'] = $fields;
 
 			do_action( 'shoestrap_module_layout_options_modifier' );
-			
+
 			$sections[] = $section;
 			return $sections;
 
@@ -287,7 +287,7 @@ if ( !class_exists( 'ShoestrapLayout' ) ) {
 
 			if ( !isset( $shoestrap_layout ) ) {
 				do_action( 'shoestrap_layout_modifier' );
-				
+
 				$shoestrap_layout = intval( $settings['layout'] );
 
 				// Looking for a per-page template ?
@@ -333,18 +333,18 @@ if ( !class_exists( 'ShoestrapLayout' ) ) {
 		 * Calculates the classes of the main area, main sidebar and secondary sidebar
 		 */
 		public static function section_class_ext( $target, $echo = false ) {
-			global $redux;
+			global $redux, $ss_framework;
 			$settings = get_option( SHOESTRAP_OPT_NAME );
-			
+
 			$layout = self::get_layout();
 			$first  = intval( $settings['layout_primary_width'] );
 			$second = intval( $settings['layout_secondary_width'] );
-			
+
 			// disable responsiveness if layout is set to non-responsive
-			$base = ( $settings['site_style'] == 'static' ) ? 'col-xs-' : 'col-sm-';
-			
+			$width = ( $settings['site_style'] == 'static' ) ? 'mobile' : 'tablet';
+
 			// Set some defaults so that we can change them depending on the selected template
-			$main       = $base . 12;
+			$main       = 12;
 			$primary    = NULL;
 			$secondary  = NULL;
 			$wrapper    = NULL;
@@ -352,43 +352,43 @@ if ( !class_exists( 'ShoestrapLayout' ) ) {
 			if ( shoestrap_display_primary_sidebar() && shoestrap_display_secondary_sidebar() ) {
 
 				if ( $layout == 5 ) {
-					$main       = $base . ( 12 - floor( ( 12 * $first ) / ( 12 - $second ) ) );
-					$primary    = $base . floor( ( 12 * $first ) / ( 12 - $second ) );
-					$secondary  = $base . $second;
-					$wrapper    = $base . ( 12 - $second );
+					$main       = 12 - floor( ( 12 * $first ) / ( 12 - $second ) );
+					$primary    = floor( ( 12 * $first ) / ( 12 - $second ) );
+					$secondary  = $second;
+					$wrapper    = 12 - $second;
 				} elseif ( $layout >= 3 ) {
-					$main       = $base . ( 12 - $first - $second );
-					$primary    = $base . $first;
-					$secondary  = $base . $second;
+					$main       = 12 - $first - $second;
+					$primary    = $first;
+					$secondary  = $second;
 				} elseif ( $layout >= 1 ) {
-					$main       = $base . ( 12 - $first );
-					$primary    = $base . $first;
-					$secondary  = $base . $second;
+					$main       = 12 - $first;
+					$primary    = $first;
+					$secondary  = $second;
 				}
 
 			} elseif ( shoestrap_display_primary_sidebar() && !shoestrap_display_secondary_sidebar() ) {
 
 				if ( $layout >= 1 ) {
-					$main       = $base . ( 12 - $first );
-					$primary    = $base . $first;
+					$main       = 12 - $first;
+					$primary    = $first;
 				}
 
 			} elseif ( !shoestrap_display_primary_sidebar() && shoestrap_display_secondary_sidebar() ) {
 
 				if ( $layout >= 3 ) {
-					$main       = $base . ( 12 - $second );
-					$secondary  = $base . $second;
+					$main       = 12 - $second;
+					$secondary  = $second;
 				}
 			}
 
 			if ( $target == 'primary' )
-				$class = $primary;
+				$class = $ss_framework->column_classes( array( $width => $primary ) );
 			elseif ( $target == 'secondary' )
-				$class = $secondary;
+				$class = $ss_framework->column_classes( array( $width => $secondary ) );
 			elseif ( $target == 'wrapper' )
-				$class = $wrapper;
+				$class = $ss_framework->column_classes( array( $width => $wrapper ) );
 			else
-				$class = $main;
+				$class = $ss_framework->column_classes( array( $width => $main ) );
 
 			if ( $echo )
 				echo $class;
