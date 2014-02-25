@@ -18,7 +18,7 @@ if ( !class_exists( 'Shoestrap_Bootstrap' ) ) {
 				'row'        => 'row',
 				'col-mobile' => 'col-xs',
 				'col-tablet' => 'col-sm',
-				'col-normal' => 'col-md',
+				'col-medium' => 'col-md',
 				'col-large'  => 'col-lg',
 
 				// Buttons
@@ -87,7 +87,7 @@ if ( !class_exists( 'Shoestrap_Bootstrap' ) ) {
 		 * Makes a container
 		 */
 		function make_container() {
-			
+
 		}
 
 		/**
@@ -121,12 +121,12 @@ if ( !class_exists( 'Shoestrap_Bootstrap' ) ) {
 		 * Creates a column using the framework definitions.
 		 *
 		 * @param string $element         Can be any valid dom element.
-		 * @param array  $sizes           Format is size => columns. Example: array( 'mobile' => 12, 'tablet' => 12, 'normal' => 6, 'large' => 4 )
+		 * @param array  $sizes           Format is size => columns. Example: array( 'mobile' => 12, 'tablet' => 12, 'medium' => 6, 'large' => 4 )
 		 * @param string $id              The element ID.
 		 * @param string $extra_classes   Any extra classes we want to add to the row. extra classes should be separated using a space.
 		 * @param string $properties      Can be something like 'name="left_top"'.
 		 */
-		function make_col( $element = 'div', $sizes = array( 'normal' => 12 ), $id = null, $extra_classes = null, $properties = null ) {
+		function make_col( $element = 'div', $sizes = array( 'medium' => 12 ), $id = null, $extra_classes = null, $properties = null ) {
 
 			$classes = array();
 
