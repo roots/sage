@@ -43,13 +43,6 @@ if ( !class_exists( 'Shoestrap_Social' ) ) {
 					add_action( 'shoestrap_page_after_content', array( $this, 'social_sharing' ), 5 );
 				}
 			}
-
-			if ( $ss_settings['navbar_social'] == 1 ) {
-				if ( $ss_settings['navbar_social_style'] == 1 )
-					add_action( 'shoestrap_inside_nav_end', array( $this, 'navbar_social_bar' ) );
-				else
-					add_action( 'shoestrap_inside_nav_end', array( $this, 'navbar_social_links' ) );
-			}
 		}
 
 		/*
@@ -347,7 +340,7 @@ if ( !class_exists( 'Shoestrap_Social' ) ) {
 		 * Return an array of the social links the user has entered.
 		 * This is simply a helper function for other functions.
 		 */
-		public static function get_social_links() {
+		function get_social_links() {
 			// An array of the available networks
 			$networks   = array();
 
@@ -458,76 +451,6 @@ if ( !class_exists( 'Shoestrap_Social' ) ) {
 		}
 
 		/**
-		 * Build the social links for the navbar
-		 */
-		function navbar_social_links() {
-
-			// Get all the social networks the user is using
-			$networks = self::get_social_links();
-
-			// The base class for icons that will be used
-			$baseclass  = 'el-icon-';
-
-			// Build the content
-			$content = '';
-			$content .= '<ul class="nav navbar-nav pull-left">';
-			$content .= '<li class="dropdown">';
-			$content .= '<a href="#" class="dropdown-toggle" data-toggle="dropdown">';
-			$content .= '<i class="' . $baseclass . 'network"></i>';
-			$content .= '<b class="caret"></b>';
-			$content .= '</a>';
-			$content .= '<ul class="dropdown-menu dropdown-social">';
-
-			// populate the networks
-			foreach ( $networks as $network ) {
-				if ( strlen( $network['url'] ) > 7 ) {
-					// add the $show variable to check if the user has actually entered a url in any of the available networks
-					$show     = true;
-					$content .= '<li>';
-					$content .= '<a href="' . $network['url'] . '" target="_blank">';
-					$content .= '<i class="' . $baseclass . $network['icon'] . '"></i> ';
-					$content .= $network['fullname'];
-					$content .= '</a></li>';
-				}
-			}
-			$content .= '</ul></li></ul>';
-
-			if ( $networks )
-				echo $content;
-		}
-
-		/**
-		 * The inline icon links for social networks.
-		 */
-		function navbar_social_bar() {
-
-			// Get all the social networks the user is using
-			$networks = self::get_social_links();
-
-			// The base class for icons that will be used
-			$baseclass  = 'icon el-icon-';
-
-			// Build the content
-			$content = '';
-			$content .= '<div id="navbar_social_bar">';
-
-			// populate the networks
-			foreach ( $networks as $network ) {
-				if ( strlen( $network['url'] ) > 7 ) {
-					// add the $show variable to check if the user has actually entered a url in any of the available networks
-					$show     = true;
-					$content .= '<a class="btn btn-link navbar-btn" href="' . $network['url'] . '" target="_blank" title="'. $network['icon'] .'">';
-					$content .= '<i class="' . $baseclass . $network['icon'] . '"></i> ';
-					$content .= '</a>';
-				}
-			}
-			$content .= '</div>';
-
-			echo ( $networks ) ? $content : '';
-		}
-
-
-		/**
 		 * Properly parses the twitter URL if set
 		 */
 		function get_tw_username() {
@@ -583,4 +506,5 @@ if ( !class_exists( 'Shoestrap_Social' ) ) {
 	}
 }
 
-$social = new Shoestrap_Social();
+global $ss_social;
+$ss_social = new Shoestrap_Social();

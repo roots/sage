@@ -15,7 +15,6 @@ if ( !class_exists( 'Shoestrap_Jumbotron' ) ) {
 			add_action( 'wp_enqueue_scripts', array( $this, 'jumbotron_css'                    ), 101 );
 			add_action( 'wp_footer',          array( $this, 'jumbotron_fittext'                ), 10  );
 			add_action( 'wp_enqueue_scripts', array( $this, 'jumbotron_fittext_enqueue_script' ), 101 );
-			add_filter( 'shoestrap_compiler', array( $this, 'variables_filter'                 )      );
 		}
 		/*
 		 * The Jumbotron module options.
@@ -265,61 +264,6 @@ if ( !class_exists( 'Shoestrap_Jumbotron' ) ) {
 				wp_register_script('fittext', get_template_directory_uri() . '/assets/js/vendor/jquery.fittext.js', false, null, false);
 				wp_enqueue_script('fittext');
 			}
-		}
-
-		/**
-		 * Variables to use for the compiler.
-		 * These override the default Bootstrap Variables.
-		 */
-		function variables() {
-			global $ss_settings;
-
-			$font_jumbotron         = shoestrap_process_font( $ss_settings['font_jumbotron'] );
-			$jumbotron_bg           = $ss_settings['jumbo_bg'];
-			$jumbotron_bg           = '#' . str_replace( '#', '', Shoestrap_Color::sanitize_hex( $jumbotron_bg['background-color'] ) );
-			$jumbotron_text_color   = '#' . str_replace( '#', '', $font_jumbotron['color'] );
-
-			if ( $ss_settings['font_jumbotron_heading_custom'] == 1 ) {
-				$font_jumbotron_headers = shoestrap_process_font( $ss_settings['font_jumbotron_headers'] );
-
-				$font_jumbotron_headers_face   = $font_jumbotron_headers['font-family'];
-				$font_jumbotron_headers_weight = $font_jumbotron_headers['font-weight'];
-				$font_jumbotron_headers_style  = $font_jumbotron_headers['font-style'];
-				$jumbotron_headers_text_color  = '#' . str_replace( '#', '', Shoestrap_Color::sanitize_hex( $font_jumbotron_headers['color'] ) );
-
-			} else {
-				$font_jumbotron_headers_face   = $font_jumbotron['font-family'];
-				$font_jumbotron_headers_weight = $font_jumbotron['font-weight'];
-				$font_jumbotron_headers_style  = $font_jumbotron['font-style'];
-				$jumbotron_headers_text_color  = $jumbotron_text_color;
-			}
-
-			$variables = '';
-
-			$variables .= '@jumbotron-color:         ' . $jumbotron_text_color . ';';
-			$variables .= '@jumbotron-bg:            ' . $jumbotron_bg . ';';
-			$variables .= '@jumbotron-heading-color: ' . $jumbotron_headers_text_color . ';';
-			$variables .= '@jumbotron-font-size:     ' . $font_jumbotron['font-size'] . 'px;';
-
-			// Shoestrap-specific variables
-			// --------------------------------------------------
-
-			$variables .= '@jumbotron-font-weight:       ' . $font_jumbotron['font-weight'] . ';';
-			$variables .= '@jumbotron-font-style:        ' . $font_jumbotron['font-style'] . ';';
-			$variables .= '@jumbotron-font-family:       ' . $font_jumbotron['font-family'] . ';';
-
-			$variables .= '@jumbotron-headers-font-weight:       ' . $font_jumbotron_headers_weight . ';';
-			$variables .= '@jumbotron-headers-font-style:        ' . $font_jumbotron_headers_style . ';';
-			$variables .= '@jumbotron-headers-font-family:       ' . $font_jumbotron_headers_face . ';';
-
-			return $variables;
-		}
-
-		/**
-		 * Add the variables to the compiler
-		 */
-		function variables_filter( $variables ) {
-			return $variables . self::variables();
 		}
 	}
 }

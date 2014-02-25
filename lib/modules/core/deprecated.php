@@ -83,13 +83,6 @@ function shoestrap_image_resize( $data ) {
 }
 
 /**
- * Blog functions
- */
-function shoestrap_paginate_links() {
-	return Shoestrap_Blog::paginate_links();
-}
-
-/**
  * Actions & filters
  */
 add_action( 'shoestrap_single_top', 'shoestrap_in_article_top_deprecated' );

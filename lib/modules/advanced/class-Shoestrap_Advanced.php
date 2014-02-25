@@ -17,7 +17,6 @@ if ( !class_exists( 'ShoestrapAdvanced' ) ) {
 			add_filter( 'show_admin_bar',     array( $this, 'admin_bar'          )      );
 			add_action( 'wp_footer',          array( $this, 'google_analytics'   ), 20  );
 			add_action( 'wp_enqueue_scripts', array( $this, 'scripts'            ), 100 );
-			add_filter( 'shoestrap_compiler', array( $this, 'variables_filter'   )      );
 
 			 // Toggle activation of the jQuery CDN
 			if ( $ss_settings['jquery_cdn_toggler'] == 1 ) {

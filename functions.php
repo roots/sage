@@ -31,7 +31,6 @@ require_once locate_template( '/lib/footer.php' );       // Footer configuration
 require_once locate_template( '/lib/config.php' );       // Configuration
 require_once locate_template( '/lib/titles.php' );       // Page titles
 require_once locate_template( '/lib/cleanup.php' );      // Cleanup
-require_once locate_template( '/lib/gallery.php' );      // Custom [gallery] modifications
 require_once locate_template( '/lib/comments.php' );     // Custom comments modifications
 require_once locate_template( '/lib/meta.php' );         // Tags
 require_once locate_template( '/lib/widgets.php' );      // Sidebars and widgets

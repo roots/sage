@@ -1,11 +1,13 @@
 <?php
 
 function shoestrap_meta( $context = 'tags' ) {
-	$panel_open = '<div class="panel panel-default post-meta-' . $context . '">';
-	$panel_head = '<div class="panel-heading">';
+	global $ss_framework;
+
+	$panel_open = $ss_framework->make_panel( 'post-meta-' . $context );
+	$panel_head = $ss_framework->make_panel_heading();
 	$tags_label = '<i class="el-icon-tags"></i> ' . __( 'Tags:', 'shoestrap' );
 	$cats_label = '<i class="el-icon-tag"></i> ' . __( 'Categories:', 'shoestrap' );
-	$panel_body = '<div class="panel-body">';
+	$panel_body = $ss_framework->make_panel_body();
 	$label_def  = '<span class="label label-tag">';
 
 	if ( $context == 'tags' && get_the_tag_list() )

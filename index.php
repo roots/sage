@@ -31,5 +31,4 @@ if ( !has_action( 'shoestrap_override_index_loop' ) ) {
 
 do_action( 'shoestrap_index_end' );
 
-$pager = shoestrap_pagers();
-echo apply_filters( 'shoestrap_pagination_format', $pager );
+echo shoestrap_pagination_toggler();
