@@ -190,7 +190,7 @@ if( !class_exists( 'ShoestrapFooter' ) ) {
 				<article class="<?php echo ShoestrapLayout::container_class(); ?>">
 					<div id="copyright-bar" class="col-lg-<?php echo $width; ?>"><?php echo $ftext; ?></div>
 					<?php if ( $social && !is_null( $networks ) && count( $networks ) > 0 ) : ?>
-						<div id="footer_social_bar" class="col-lg-<?php echo $social_width; ?>">
+						<?php echo $ss_framework->make_col( 'open', 'div', array( 'large' => $social_width ), 'footer_social_bar' ); ?>">
 							<?php foreach ( $networks as $network ) : ?>
 								<?php if ( $network['url'] == '' ) continue; ?>
 								<a href="<?php echo $network['url']; ?>"<?php echo $blank;?> title="<?php echo $network['icon']; ?>">

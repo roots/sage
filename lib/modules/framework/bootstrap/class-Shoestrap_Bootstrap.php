@@ -86,18 +86,19 @@ if ( !class_exists( 'Shoestrap_Bootstrap' ) ) {
 		/**
 		 * Makes a container
 		 */
-		// function make_container( $context = 'open' )
+		function make_container() {
+			
+		}
 
 		/**
 		 * Creates a row using the framework definitions.
 		 *
-		 * @param string $context         'open' or 'close'. 'open' uses all the other variables as well to build the row. 'close' only uses the 'element' argument to close the row.
 		 * @param string $element         Can be any valid dom element.
 		 * @param string $id              The element ID.
 		 * @param string $extra_classes   Any extra classes we want to add to the row. extra classes should be separated using a space.
 		 * @param string $properties      Can be something like 'name="left_top"'.
 		 */
-		function make_row( $context = 'open', $element = 'div', $id = null, $extra_classes = null, $properties = null ) {
+		function make_row( $element = 'div', $id = null, $extra_classes = null, $properties = null ) {
 
 			$classes = $this->defines['row'];
 
@@ -113,25 +114,19 @@ if ( !class_exists( 'Shoestrap_Bootstrap' ) ) {
 				$properties = ' ' . $properties;
 			}
 
-			if ( $context == 'open' ) {
-				return '<' . $element . $id . ' class="' . $classes . '"' . $properties . '>';
-			} elseif ( $context == 'close' ) {
-				return '</' . $element . '>';
-			}
-
+			return '<' . $element . $id . ' class="' . $classes . '"' . $properties . '>';
 		}
 
 		/**
 		 * Creates a column using the framework definitions.
 		 *
-		 * @param string $context         'open' or 'close'. 'open' uses all the other variables as well to build the row. 'close' only uses the 'element' argument to close the row.
 		 * @param string $element         Can be any valid dom element.
 		 * @param array  $sizes           Format is size => columns. Example: array( 'mobile' => 12, 'tablet' => 12, 'normal' => 6, 'large' => 4 )
 		 * @param string $id              The element ID.
 		 * @param string $extra_classes   Any extra classes we want to add to the row. extra classes should be separated using a space.
 		 * @param string $properties      Can be something like 'name="left_top"'.
 		 */
-		function make_col( $context = 'open', $element = 'div', $sizes = array( 'normal' => 12 ), $id = null, $extra_classes = null, $properties = null ) {
+		function make_col( $element = 'div', $sizes = array( 'normal' => 12 ), $id = null, $extra_classes = null, $properties = null ) {
 
 			$classes = array();
 
@@ -162,13 +157,7 @@ if ( !class_exists( 'Shoestrap_Bootstrap' ) ) {
 				$properties = ' ' . $properties;
 			}
 
-			if ( $context == 'open' ) {
-				// Open the column
-				return '<' . $element . $id . ' class="' . $css_classes . '"' . $properties . '>';
-			} elseif ( $context == 'close' ) {
-				// Close the column.
-				return '</' . $element . '>';
-			}
+			return '<' . $element . $id . ' class="' . $css_classes . '"' . $properties . '>';
 		}
 
 		/**
