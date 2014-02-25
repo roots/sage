@@ -27,7 +27,6 @@ if ( !class_exists( 'Shoestrap_Menus' ) ) {
 			add_action( 'widgets_init',               array( $this, 'slidedown_widgets_init'   ), 40  );
 			add_action( 'shoestrap_do_navbar',        array( $this, 'navbar_slidedown_content' ), 99  );
 			add_action( 'wp_enqueue_scripts',         array( $this, 'megadrop_script'          ), 200 );
-			add_filter( 'shoestrap_compiler',         array( $this, 'variables_filter'         )      );
 
 			if ( $ss_settings['secondary_navbar_margin'] != 0 )
 				add_action( 'wp_enqueue_scripts', array( $this, 'secondary_navbar_margin' ), 101 );
@@ -758,94 +757,6 @@ if ( !class_exists( 'Shoestrap_Menus' ) ) {
 				wp_register_script( 'shoestrap_megadrop', get_template_directory_uri() . '/assets/js/megadrop.js', false, null, false );
 				wp_enqueue_script( 'shoestrap_megadrop' );
 			}
-		}
-
-		/**
-		 * Variables to use for the compiler.
-		 * These override the default Bootstrap Variables.
-		 */
-		function variables() {
-			global $ss_settings;
-
-			$font_brand        = shoestrap_process_font( $ss_settings['font_brand'] );
-
-			$font_navbar       = shoestrap_process_font( $ss_settings['font_navbar'] );
-			$navbar_bg         = '#' . str_replace( '#', '', Shoestrap_Color::sanitize_hex( $ss_settings['navbar_bg'] ) );
-			$navbar_height     = filter_var( $ss_settings['navbar_height'], FILTER_SANITIZE_NUMBER_INT );
-			$navbar_text_color = '#' . str_replace( '#', '', $font_navbar['color'] );
-			$brand_text_color  = '#' . str_replace( '#', '', $font_brand['color'] );
-			$navbar_border     = ( Shoestrap_Color::get_brightness( $navbar_bg ) < 50 ) ? 'lighten(@navbar-default-bg, 6.5%)' : 'darken(@navbar-default-bg, 6.5%)';
-			$gfb = $ss_settings['grid_float_breakpoint'];
-
-			if ( Shoestrap_Color::get_brightness( $navbar_bg ) < 165 ) {
-				$navbar_link_hover_color    = 'darken(@navbar-default-color, 26.5%)';
-				$navbar_link_active_bg      = 'darken(@navbar-default-bg, 6.5%)';
-				$navbar_link_disabled_color = 'darken(@navbar-default-bg, 6.5%)';
-				$navbar_brand_hover_color   = 'darken(@navbar-default-brand-color, 10%)';
-			} else {
-				$navbar_link_hover_color    = 'lighten(@navbar-default-color, 26.5%)';
-				$navbar_link_active_bg      = 'lighten(@navbar-default-bg, 6.5%)';
-				$navbar_link_disabled_color = 'lighten(@navbar-default-bg, 6.5%)';
-				$navbar_brand_hover_color   = 'lighten(@navbar-default-brand-color, 10%)';
-			}
-
-			$grid_float_breakpoint = ( isset( $gfb ) )           ? $gfb             : '@screen-sm-min';
-			$grid_float_breakpoint = ( $gfb == 'min' )           ? '10px'           : $grid_float_breakpoint;
-			$grid_float_breakpoint = ( $gfb == 'screen_xs_min' ) ? '@screen-xs-min' : $grid_float_breakpoint;
-			$grid_float_breakpoint = ( $gfb == 'screen_sm_min' ) ? '@screen-sm-min' : $grid_float_breakpoint;
-			$grid_float_breakpoint = ( $gfb == 'screen_md_min' ) ? '@screen-md-min' : $grid_float_breakpoint;
-			$grid_float_breakpoint = ( $gfb == 'screen_lg_min' ) ? '@screen-lg-min' : $grid_float_breakpoint;
-			$grid_float_breakpoint = ( $gfb == 'max' )           ? '9999px'         : $grid_float_breakpoint;
-
-			$grid_float_breakpoint = ( $gfb == 'screen-lg-min' ) ? '0 !important' : $grid_float_breakpoint;
-
-			$variables = '';
-
-			$variables .= '@navbar-height:         ' . $navbar_height . 'px;';
-
-			$variables .= '@navbar-default-color:  ' . $navbar_text_color . ';';
-			$variables .= '@navbar-default-bg:     ' . $navbar_bg . ';';
-			$variables .= '@navbar-default-border: ' . $navbar_border . ';';
-
-			$variables .= '@navbar-default-link-color:          @navbar-default-color;';
-			$variables .= '@navbar-default-link-hover-color:    ' . $navbar_link_hover_color . ';';
-			$variables .= '@navbar-default-link-active-color:   mix(@navbar-default-color, @navbar-default-link-hover-color, 50%);';
-			$variables .= '@navbar-default-link-active-bg:      ' . $navbar_link_active_bg . ';';
-			$variables .= '@navbar-default-link-disabled-color: ' . $navbar_link_disabled_color . ';';
-
-			$variables .= '@navbar-default-brand-color:         @navbar-default-link-color;';
-			$variables .= '@navbar-default-brand-hover-color:   ' . $navbar_brand_hover_color . ';';
-
-			$variables .= '@navbar-default-toggle-hover-bg:     ' . $navbar_border . ';';
-			$variables .= '@navbar-default-toggle-icon-bar-bg:  ' . $navbar_text_color . ';';
-			$variables .= '@navbar-default-toggle-border-color: ' . $navbar_border . ';';
-
-			// Shoestrap-specific variables
-			// --------------------------------------------------
-
-			$variables .= '@navbar-font-size:        ' . $font_navbar['font-size'] . 'px;';
-			$variables .= '@navbar-font-weight:      ' . $font_navbar['font-weight'] . ';';
-			$variables .= '@navbar-font-style:       ' . $font_navbar['font-style'] . ';';
-			$variables .= '@navbar-font-family:      ' . $font_navbar['font-family'] . ';';
-			$variables .= '@navbar-font-color:       ' . $navbar_text_color . ';';
-
-			$variables .= '@brand-font-size:         ' . $font_brand['font-size'] . 'px;';
-			$variables .= '@brand-font-weight:       ' . $font_brand['font-weight'] . ';';
-			$variables .= '@brand-font-style:        ' . $font_brand['font-style'] . ';';
-			$variables .= '@brand-font-family:       ' . $font_brand['font-family'] . ';';
-			$variables .= '@brand-font-color:        ' . $brand_text_color . ';';
-
-			$variables .= '@navbar-margin-top:       ' . $ss_settings['navbar_margin_top'] . 'px;';
-
-			$variables .= '@grid-float-breakpoint: ' . $grid_float_breakpoint . ';';
-
-			return $variables;
-		}
-		/**
-		 * Add the variables to the compiler
-		 */
-		function variables_filter( $variables ) {
-			return $variables . self::variables();
 		}
 	}
 }
