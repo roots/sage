@@ -11,6 +11,7 @@ if ( !class_exists( 'Shoestrap_Bootstrap' ) ) {
 		 * Class constructor
 		 */
 		function __construct() {
+			global $ss_settings;
 
 			$this->defines = array(
 				// Layout
@@ -60,33 +61,15 @@ if ( !class_exists( 'Shoestrap_Bootstrap' ) ) {
 				'clearfix' => '<div class="clearfix"></div>',
 			);
 
-			add_filter( 'shoestrap_frameworks_array', array( $this, 'add_framework' ) );
 			add_filter( 'shoestrap_compiler', array( $this, 'styles_filter' ) );
-		}
 
-		/**
-		 * Define the framework.
-		 * These will be used in the redux admin option to choose a framework.
-		 */
-		function define_framework() {
-			$framework = array(
-				'shortname' => 'bootstrap',
-				'name'      => 'Bootstrap',
-				'classname' => 'Shoestrap_Bootstrap',
-				'compiler'  => 'less_php'
-			);
-
-			return $framework;
-
-		}
-
-		/**
-		 * Add the framework to redux
-		 */
-		function add_framework( $frameworks ) {
-			$frameworks[] = $this->define_framework();
-
-			return $frameworks;
+			if ( $ss_settings['navbar_social'] == 1 ) {
+				if ( $ss_settings['navbar_social_style'] == 1 ) {
+					add_action( 'shoestrap_inside_nav_end', array( $this, 'navbar_social_bar' ) );
+				} else {
+					add_action( 'shoestrap_inside_nav_end', array( $this, 'navbar_social_links' ) );
+				}
+			}
 		}
 
 		/**
@@ -971,7 +954,102 @@ if ( !class_exists( 'Shoestrap_Bootstrap' ) ) {
 
 			return apply_filters( 'shoestrap_compiler_output', $css );
 		}
-	}
 
-	$bootstrap = new Shoestrap_Bootstrap();
+		/**
+		 * The inline icon links for social networks.
+		 */
+		function navbar_social_bar() {
+			global $ss_social;
+
+			// Get all the social networks the user is using
+			$networks = $ss_social->get_social_links();
+
+			// The base class for icons that will be used
+			$baseclass  = 'icon el-icon-';
+
+			// Build the content
+			$content = '';
+			$content .= '<div id="navbar_social_bar">';
+
+			// populate the networks
+			foreach ( $networks as $network ) {
+				if ( strlen( $network['url'] ) > 7 ) {
+					// add the $show variable to check if the user has actually entered a url in any of the available networks
+					$show     = true;
+					$content .= '<a class="btn btn-link navbar-btn" href="' . $network['url'] . '" target="_blank" title="'. $network['icon'] .'">';
+					$content .= '<i class="' . $baseclass . $network['icon'] . '"></i> ';
+					$content .= '</a>';
+				}
+			}
+			$content .= '</div>';
+
+			echo ( $networks ) ? $content : '';
+		}
+
+		/**
+		 * Build the social links for the navbar
+		 */
+		function navbar_social_links() {
+			global $ss_social;
+
+			// Get all the social networks the user is using
+			$networks = $ss_social->get_social_links();
+
+			// The base class for icons that will be used
+			$baseclass  = 'el-icon-';
+
+			// Build the content
+			$content = '';
+			$content .= '<ul class="nav navbar-nav pull-left">';
+			$content .= '<li class="dropdown">';
+			$content .= '<a href="#" class="dropdown-toggle" data-toggle="dropdown">';
+			$content .= '<i class="' . $baseclass . 'network"></i>';
+			$content .= '<b class="caret"></b>';
+			$content .= '</a>';
+			$content .= '<ul class="dropdown-menu dropdown-social">';
+
+			// populate the networks
+			foreach ( $networks as $network ) {
+				if ( strlen( $network['url'] ) > 7 ) {
+					// add the $show variable to check if the user has actually entered a url in any of the available networks
+					$show     = true;
+					$content .= '<li>';
+					$content .= '<a href="' . $network['url'] . '" target="_blank">';
+					$content .= '<i class="' . $baseclass . $network['icon'] . '"></i> ';
+					$content .= $network['fullname'];
+					$content .= '</a></li>';
+				}
+			}
+			$content .= '</ul></li></ul>';
+
+			if ( $networks ) {
+				echo $content;
+			}
+		}
+	}
 }
+
+/**
+ * Define the framework.
+ * These will be used in the redux admin option to choose a framework.
+ */
+function shoestrap_define_framework_bootstrap() {
+	$framework = array(
+		'shortname' => 'bootstrap',
+		'name'      => 'Bootstrap',
+		'classname' => 'Shoestrap_Bootstrap',
+		'compiler'  => 'less_php'
+	);
+
+	return $framework;
+}
+
+/**
+ * Add the framework to redux
+ */
+function shoestrap_add_framework_bootstrap( $frameworks ) {
+	$frameworks[] = shoestrap_define_framework_bootstrap();
+
+	return $frameworks;
+}
+add_filter( 'shoestrap_frameworks_array', 'shoestrap_add_framework_bootstrap' );

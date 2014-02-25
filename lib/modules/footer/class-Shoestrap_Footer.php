@@ -159,7 +159,7 @@ if( !class_exists( 'Shoestrap_Footer' ) ) {
 		}
 
 		function html() {
-			global $ss_framework;
+			global $ss_framework, $ss_social;
 
 			$blog_name  = get_bloginfo( 'name', 'display' );
 			$ftext      = shoestrap_getVariable( 'footer_text' );
@@ -181,7 +181,7 @@ if( !class_exists( 'Shoestrap_Footer' ) ) {
 
 			$blank = ( $social_blank == 1 ) ? ' target="_blank"' : '';
 
-			$networks = ( class_exists( 'Shoestrap_Social' ) ) ? Shoestrap_Social::get_social_links() : null;
+			$networks = $ss_social->get_social_links();
 
 			do_action( 'shoestrap_footer_before_copyright' );
 			?>
