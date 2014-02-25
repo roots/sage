@@ -97,14 +97,14 @@ if ( !class_exists( 'Shoestrap_Framework' ) ) {
 		 * Calls the framework-specific make_row() function
 		 */
 		function make_row( $element = 'div', $id = null, $extra_classes = null, $properties = null ) {
-			return $this->fw->make_row( $context, $element, $id, $extra_classes, $properties );
+			return $this->fw->make_row( $element, $id, $extra_classes, $properties );
 		}
 
 		/**
 		 * Calls the framework-specific make_col() function
 		 */
-		function make_col( $element = 'div', $sizes = array( 'normal' => 12 ), $id = null, $extra_classes = null, $properties = null ) {
-			return $this->fw->make_col( $context, $element, $sizes, $id, $extra_classes, $properties );
+		function make_col( $element = 'div', $sizes = array( 'menium' => 12 ), $id = null, $extra_classes = null, $properties = null ) {
+			return $this->fw->make_col( $element, $sizes, $id, $extra_classes, $properties );
 		}
 
 		/**
