@@ -1028,28 +1028,3 @@ if ( !class_exists( 'Shoestrap_Bootstrap' ) ) {
 		}
 	}
 }
-
-/**
- * Define the framework.
- * These will be used in the redux admin option to choose a framework.
- */
-function shoestrap_define_framework_bootstrap() {
-	$framework = array(
-		'shortname' => 'bootstrap',
-		'name'      => 'Bootstrap',
-		'classname' => 'Shoestrap_Bootstrap',
-		'compiler'  => 'less_php'
-	);
-
-	return $framework;
-}
-
-/**
- * Add the framework to redux
- */
-function shoestrap_add_framework_bootstrap( $frameworks ) {
-	$frameworks[] = shoestrap_define_framework_bootstrap();
-
-	return $frameworks;
-}
-add_filter( 'shoestrap_frameworks_array', 'shoestrap_add_framework_bootstrap' );

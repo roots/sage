@@ -41,7 +41,9 @@ if ( !class_exists( 'Shoestrap_Framework' ) ) {
 			if ( !isset( $active ) ) {
 				return;
 			} else {
-				$this->fw = new $active;
+				if ( class_exists( $active ) ) {
+					$this->fw = new $active;
+				}
 			}
 
 			// Get the compiler that will be used and initialize it.
