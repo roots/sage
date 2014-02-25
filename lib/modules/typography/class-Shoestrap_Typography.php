@@ -1,11 +1,11 @@
 <?php
 
 
-if ( !class_exists( 'ShoestrapTypography' ) ) {
+if ( !class_exists( 'Shoestrap_Typography' ) ) {
 	/**
 	 * The "Typography" module
 	 */
-	class ShoestrapTypography {
+	class Shoestrap_Typography {
 		
 		function __construct() {
 			add_filter( 'redux/options/' . SHOESTRAP_OPT_NAME . '/sections', array( $this, 'options' ), 65 );
@@ -340,7 +340,7 @@ if ( !class_exists( 'ShoestrapTypography' ) ) {
 			$font_h5   = shoestrap_process_font( shoestrap_getVariable( 'font_h5', true ) );
 			$font_h6   = shoestrap_process_font( shoestrap_getVariable( 'font_h6', true ) );
 
-			$text_color       = '#' . str_replace( '#', '', ShoestrapColor::sanitize_hex( $font_base['color'] ) );
+			$text_color       = '#' . str_replace( '#', '', Shoestrap_Color::sanitize_hex( $font_base['color'] ) );
 			$sans_serif       = $font_base['font-family'];
 			$font_size_base   = $font_base['font-size'];
 			$font_weight_base = $font_base['font-weight'];
@@ -366,32 +366,32 @@ if ( !class_exists( 'ShoestrapTypography' ) ) {
 				$font_h1_face   = $font_h1['font-family'];
 				$font_h1_weight = $font_h1['font-weight'];
 				$font_h1_style  = $font_h1['font-style'];
-				$font_h1_color  = '#' . str_replace( '#', '', ShoestrapColor::sanitize_hex( $font_h1['color'] ) );
+				$font_h1_color  = '#' . str_replace( '#', '', Shoestrap_Color::sanitize_hex( $font_h1['color'] ) );
 
 				$font_h2_face   = $font_h2['font-family'];
 				$font_h2_weight = $font_h2['font-weight'];
 				$font_h2_style  = $font_h2['font-style'];
-				$font_h2_color  = '#' . str_replace( '#', '', ShoestrapColor::sanitize_hex( $font_h2['color'] ) );
+				$font_h2_color  = '#' . str_replace( '#', '', Shoestrap_Color::sanitize_hex( $font_h2['color'] ) );
 
 				$font_h3_face   = $font_h3['font-family'];
 				$font_h3_weight = $font_h3['font-weight'];
 				$font_h3_style  = $font_h3['font-style'];
-				$font_h3_color  = '#' . str_replace( '#', '', ShoestrapColor::sanitize_hex( $font_h3['color'] ) );
+				$font_h3_color  = '#' . str_replace( '#', '', Shoestrap_Color::sanitize_hex( $font_h3['color'] ) );
 
 				$font_h4_face   = $font_h4['font-family'];
 				$font_h4_weight = $font_h4['font-weight'];
 				$font_h4_style  = $font_h4['font-style'];
-				$font_h4_color  = '#' . str_replace( '#', '', ShoestrapColor::sanitize_hex( $font_h4['color'] ) );
+				$font_h4_color  = '#' . str_replace( '#', '', Shoestrap_Color::sanitize_hex( $font_h4['color'] ) );
 
 				$font_h5_face   = $font_h5['font-family'];
 				$font_h5_weight = $font_h5['font-weight'];
 				$font_h5_style  = $font_h5['font-style'];
-				$font_h5_color  = '#' . str_replace( '#', '', ShoestrapColor::sanitize_hex( $font_h5['color'] ) );
+				$font_h5_color  = '#' . str_replace( '#', '', Shoestrap_Color::sanitize_hex( $font_h5['color'] ) );
 
 				$font_h6_face   = $font_h6['font-family'];
 				$font_h6_weight = $font_h6['font-weight'];
 				$font_h6_style  = $font_h6['font-style'];
-				$font_h6_color  = '#' . str_replace( '#', '', ShoestrapColor::sanitize_hex( $font_h6['color'] ) );
+				$font_h6_color  = '#' . str_replace( '#', '', Shoestrap_Color::sanitize_hex( $font_h6['color'] ) );
 			}
 
 			$variables = '';
@@ -473,4 +473,4 @@ if ( !class_exists( 'ShoestrapTypography' ) ) {
 	}
 }
 
-$typography = new ShoestrapTypography();
+$typography = new Shoestrap_Typography();

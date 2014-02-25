@@ -432,7 +432,7 @@ if ( !class_exists( 'Shoestrap_Menus' ) ) {
 
 			if ( $opacity != 1 && $opacity != '' ) {
 				$bg  = str_replace( '#', '', $ss_settings['navbar_bg'] );
-				$rgb = ShoestrapColor::get_rgb( $bg, true );
+				$rgb = Shoestrap_Color::get_rgb( $bg, true );
 				$opacityie = str_replace( '0.', '', $opacity );
 
 				$style .= '.navbar, .navbar-default {';
@@ -580,7 +580,7 @@ if ( !class_exists( 'Shoestrap_Menus' ) ) {
 
 			if ( $ss_settings['secondary_navbar_toggle'] != 0 ) : ?>
 
-				<div class="<?php echo ShoestrapLayout::container_class(); ?>">
+				<div class="<?php echo Shoestrap_Layout::container_class(); ?>">
 					<header class="secondary navbar navbar-default <?php echo self::navbar_class( 'secondary' ); ?>" role="banner">
 						<button data-target=".nav-secondary" data-toggle="collapse" type="button" class="navbar-toggle">
 							<span class="icon-bar"></span>
@@ -771,14 +771,14 @@ if ( !class_exists( 'Shoestrap_Menus' ) ) {
 			$font_brand        = shoestrap_process_font( $ss_settings['font_brand'] );
 
 			$font_navbar       = shoestrap_process_font( $ss_settings['font_navbar'] );
-			$navbar_bg         = '#' . str_replace( '#', '', ShoestrapColor::sanitize_hex( $ss_settings['navbar_bg'] ) );
+			$navbar_bg         = '#' . str_replace( '#', '', Shoestrap_Color::sanitize_hex( $ss_settings['navbar_bg'] ) );
 			$navbar_height     = filter_var( $ss_settings['navbar_height'], FILTER_SANITIZE_NUMBER_INT );
 			$navbar_text_color = '#' . str_replace( '#', '', $font_navbar['color'] );
 			$brand_text_color  = '#' . str_replace( '#', '', $font_brand['color'] );
-			$navbar_border     = ( ShoestrapColor::get_brightness( $navbar_bg ) < 50 ) ? 'lighten(@navbar-default-bg, 6.5%)' : 'darken(@navbar-default-bg, 6.5%)';
+			$navbar_border     = ( Shoestrap_Color::get_brightness( $navbar_bg ) < 50 ) ? 'lighten(@navbar-default-bg, 6.5%)' : 'darken(@navbar-default-bg, 6.5%)';
 			$gfb = $ss_settings['grid_float_breakpoint'];
 
-			if ( ShoestrapColor::get_brightness( $navbar_bg ) < 165 ) {
+			if ( Shoestrap_Color::get_brightness( $navbar_bg ) < 165 ) {
 				$navbar_link_hover_color    = 'darken(@navbar-default-color, 26.5%)';
 				$navbar_link_active_bg      = 'darken(@navbar-default-bg, 6.5%)';
 				$navbar_link_disabled_color = 'darken(@navbar-default-bg, 6.5%)';

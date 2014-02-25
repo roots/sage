@@ -135,17 +135,17 @@ if ( !class_exists( 'ShoestrapBranding' ) ) {
 
 			// Add the favicon
 			if ( !empty( $favicon_item['url'] ) && $favicon_item['url'] != '' ) {
-				$favicon = ShoestrapImage::_resize( $favicon_item['url'], 32, 32, true, false );
+				$favicon = Shoestrap_Image::_resize( $favicon_item['url'], 32, 32, true, false );
 
 				echo '<link rel="shortcut icon" href="'.$favicon['url'].'" type="image/x-icon" />';
 			}
 
 			// Add the apple icons
 			if ( !empty( $apple_icon_item['url'] ) ) {
-				$iphone_icon        = ShoestrapImage::_resize( $apple_icon_item['url'], 57, 57, true, false );
-				$iphone_icon_retina = ShoestrapImage::_resize( $apple_icon_item['url'], 57, 57, true, true );
-				$ipad_icon          = ShoestrapImage::_resize( $apple_icon_item['url'], 72, 72, true, false );
-				$ipad_icon_retina   = ShoestrapImage::_resize( $apple_icon_item['url'], 72, 72, true, true );
+				$iphone_icon        = Shoestrap_Image::_resize( $apple_icon_item['url'], 57, 57, true, false );
+				$iphone_icon_retina = Shoestrap_Image::_resize( $apple_icon_item['url'], 57, 57, true, true );
+				$ipad_icon          = Shoestrap_Image::_resize( $apple_icon_item['url'], 72, 72, true, false );
+				$ipad_icon_retina   = Shoestrap_Image::_resize( $apple_icon_item['url'], 72, 72, true, true );
 				?>
 
 				<!-- For iPhone --><link rel="apple-touch-icon-precomposed" href="<?php echo $iphone_icon['url'] ?>">
@@ -179,19 +179,19 @@ if ( !class_exists( 'ShoestrapBranding' ) ) {
 
 			global $ss_settings;
 
-			$brand_primary = '#' . str_replace( '#', '', ShoestrapColor::sanitize_hex( shoestrap_getVariable( 'color_brand_primary', true ) ) );
-			$brand_success = '#' . str_replace( '#', '', ShoestrapColor::sanitize_hex( shoestrap_getVariable( 'color_brand_success', true ) ) );
-			$brand_warning = '#' . str_replace( '#', '', ShoestrapColor::sanitize_hex( shoestrap_getVariable( 'color_brand_warning', true ) ) );
-			$brand_danger  = '#' . str_replace( '#', '', ShoestrapColor::sanitize_hex( shoestrap_getVariable( 'color_brand_danger', true ) ) );
-			$brand_info    = '#' . str_replace( '#', '', ShoestrapColor::sanitize_hex( shoestrap_getVariable( 'color_brand_info', true ) ) );
+			$brand_primary = '#' . str_replace( '#', '', Shoestrap_Color::sanitize_hex( shoestrap_getVariable( 'color_brand_primary', true ) ) );
+			$brand_success = '#' . str_replace( '#', '', Shoestrap_Color::sanitize_hex( shoestrap_getVariable( 'color_brand_success', true ) ) );
+			$brand_warning = '#' . str_replace( '#', '', Shoestrap_Color::sanitize_hex( shoestrap_getVariable( 'color_brand_warning', true ) ) );
+			$brand_danger  = '#' . str_replace( '#', '', Shoestrap_Color::sanitize_hex( shoestrap_getVariable( 'color_brand_danger', true ) ) );
+			$brand_info    = '#' . str_replace( '#', '', Shoestrap_Color::sanitize_hex( shoestrap_getVariable( 'color_brand_info', true ) ) );
 
-			$link_hover_color = ( ShoestrapColor::get_brightness( $brand_primary ) > 50 ) ? 'darken(@link-color, 15%)' : 'lighten(@link-color, 15%)';
+			$link_hover_color = ( Shoestrap_Color::get_brightness( $brand_primary ) > 50 ) ? 'darken(@link-color, 15%)' : 'lighten(@link-color, 15%)';
 
-			$brand_primary_brightness = ShoestrapColor::get_brightness( $brand_primary );
-			$brand_success_brightness = ShoestrapColor::get_brightness( $brand_success );
-			$brand_warning_brightness = ShoestrapColor::get_brightness( $brand_warning );
-			$brand_danger_brightness  = ShoestrapColor::get_brightness( $brand_danger );
-			$brand_info_brightness    = ShoestrapColor::get_brightness( $brand_info );
+			$brand_primary_brightness = Shoestrap_Color::get_brightness( $brand_primary );
+			$brand_success_brightness = Shoestrap_Color::get_brightness( $brand_success );
+			$brand_warning_brightness = Shoestrap_Color::get_brightness( $brand_warning );
+			$brand_danger_brightness  = Shoestrap_Color::get_brightness( $brand_danger );
+			$brand_info_brightness    = Shoestrap_Color::get_brightness( $brand_info );
 
 			// Button text colors
 			$btn_primary_color  = $brand_primary_brightness < 195 ? '#fff' : '333';
@@ -207,8 +207,8 @@ if ( !class_exists( 'ShoestrapBranding' ) ) {
 			$btn_danger_border  = $brand_danger_brightness  < 195 ? 'darken(@btn-danger-bg, 5%)'  : 'lighten(@btn-danger-bg, 5%)';
 			$btn_info_border    = $brand_info_brightness    < 195 ? 'darken(@btn-info-bg, 5%)'    : 'lighten(@btn-info-bg, 5%)';
 
-			$input_border_focus = ( ShoestrapColor::get_brightness( $brand_primary ) < 195 ) ? 'lighten(@brand-primary, 10%);' : 'darken(@brand-primary, 10%);';
-			$navbar_border      = ( ShoestrapColor::get_brightness( $brand_primary ) < 50 ) ? 'lighten(@navbar-default-bg, 6.5%)' : 'darken(@navbar-default-bg, 6.5%)';
+			$input_border_focus = ( Shoestrap_Color::get_brightness( $brand_primary ) < 195 ) ? 'lighten(@brand-primary, 10%);' : 'darken(@brand-primary, 10%);';
+			$navbar_border      = ( Shoestrap_Color::get_brightness( $brand_primary ) < 50 ) ? 'lighten(@navbar-default-bg, 6.5%)' : 'darken(@navbar-default-bg, 6.5%)';
 
 
 			$variables = '';

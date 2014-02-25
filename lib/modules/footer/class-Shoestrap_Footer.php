@@ -1,11 +1,11 @@
 <?php
 
 
-if( !class_exists( 'ShoestrapFooter' ) ) {
+if( !class_exists( 'Shoestrap_Footer' ) ) {
 	/**
 	* Build the Shoestrap Footer module class.
 	*/
-	class ShoestrapFooter {
+	class Shoestrap_Footer {
 
 		function __construct() {
 			add_filter( 'redux/options/' . SHOESTRAP_OPT_NAME . '/sections', array( $this, 'options' ), 85 ); 
@@ -134,7 +134,7 @@ if( !class_exists( 'ShoestrapFooter' ) ) {
 			$cl         = shoestrap_getVariable( 'footer_color' );
 			$cl_brand   = shoestrap_getVariable( 'color_brand_primary' );
 			$opacity    = ( intval( shoestrap_getVariable( 'footer_opacity' ) ) ) / 100;
-			$rgb        = ShoestrapColor::get_rgb( $bg, true );
+			$rgb        = Shoestrap_Color::get_rgb( $bg, true );
 			$border     = shoestrap_getVariable( 'footer_border' );
 			$top_margin = shoestrap_getVariable( 'footer_top_margin' );
 
@@ -181,13 +181,13 @@ if( !class_exists( 'ShoestrapFooter' ) ) {
 
 			$blank = ( $social_blank == 1 ) ? ' target="_blank"' : '';
 
-			$networks = ( class_exists( 'ShoestrapSocial' ) ) ? ShoestrapSocial::get_social_links() : null;
+			$networks = ( class_exists( 'Shoestrap_Social' ) ) ? Shoestrap_Social::get_social_links() : null;
 
 			do_action( 'shoestrap_footer_before_copyright' );
 			?>
 
 			<div id="footer-copyright">
-				<article class="<?php echo ShoestrapLayout::container_class(); ?>">
+				<article class="<?php echo Shoestrap_Layout::container_class(); ?>">
 					<div id="copyright-bar" class="col-lg-<?php echo $width; ?>"><?php echo $ftext; ?></div>
 					<?php if ( $social && !is_null( $networks ) && count( $networks ) > 0 ) : ?>
 						<?php echo $ss_framework->make_col( 'open', 'div', array( 'large' => $social_width ), 'footer_social_bar' ); ?>">
@@ -207,4 +207,4 @@ if( !class_exists( 'ShoestrapFooter' ) ) {
 	}
 }
 
-$footer = new ShoestrapFooter();
+$footer = new Shoestrap_Footer();

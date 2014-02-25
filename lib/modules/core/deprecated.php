@@ -9,84 +9,84 @@
  * Color functions
  */
 function shoestrap_sanitize_hex( $color ) {
-	return ShoestrapColor::sanitize_hex( $color );
+	return Shoestrap_Color::sanitize_hex( $color );
 }
 
 function shoestrap_get_rgb( $hex, $implode = false ) {
-	return ShoestrapColor::get_rgb( $hex, $implode );
+	return Shoestrap_Color::get_rgb( $hex, $implode );
 }
 
 function shoestrap_get_rgba( $hex, $opacity, $echo ) {
-	return ShoestrapColor::get_rgba( $hex, $opacity, $echo );
+	return Shoestrap_Color::get_rgba( $hex, $opacity, $echo );
 }
 
 function shoestrap_get_brightness( $hex ) {
-	return ShoestrapColor::get_brightness( $hex );
+	return Shoestrap_Color::get_brightness( $hex );
 }
 
 function shoestrap_adjust_brightness( $hex, $steps ) {
-	return ShoestrapColor::adjust_brightness( $hex, $steps );
+	return Shoestrap_Color::adjust_brightness( $hex, $steps );
 }
 
 function shoestrap_mix_colors( $hex1, $hex2, $percentage ) {
-	return ShoestrapColor::mix_colors( $hex1, $hex2, $percentage );
+	return Shoestrap_Color::mix_colors( $hex1, $hex2, $percentage );
 }
 
 function shoestrap_hex_to_hsv( $hex ) {
-	return ShoestrapColor::hex_to_hsv( $hex );
+	return Shoestrap_Color::hex_to_hsv( $hex );
 }
 
 function shoestrap_rgb_to_hsv( $color = array() ) {
-	return ShoestrapColor::rgb_to_hsv( $rgb );
+	return Shoestrap_Color::rgb_to_hsv( $rgb );
 }
 
 function shoestrap_brightest_color( $colors = array(), $context = 'key' ) {
-	return ShoestrapColor::brightest_color( $colors, $context );
+	return Shoestrap_Color::brightest_color( $colors, $context );
 }
 
 function shoestrap_most_saturated_color( $colors = array(), $context = 'key' ) {
-	return ShoestrapColor::most_saturated_color( $colors, $context );
+	return Shoestrap_Color::most_saturated_color( $colors, $context );
 }
 
 function shoestrap_most_intense_color( $colors = array(), $context = 'key' ) {
-	return ShoestrapColor::most_intense_color( $colors, $context );
+	return Shoestrap_Color::most_intense_color( $colors, $context );
 }
 
 function shoestrap_brightest_dull_color( $colors = array(), $context = 'key' ) {
-	return ShoestrapColor::brightest_dull_color( $colors, $context );
+	return Shoestrap_Color::brightest_dull_color( $colors, $context );
 }
 
 function shoestrap_brightness_difference( $hex1, $hex2 ) {
-	return ShoestrapColor::brightness_difference( $hex1, $hex2 );
+	return Shoestrap_Color::brightness_difference( $hex1, $hex2 );
 }
 
 function shoestrap_color_difference( $hex1, $hex2 ) {
-	return ShoestrapColor::color_difference( $hex1, $hex2 );
+	return Shoestrap_Color::color_difference( $hex1, $hex2 );
 }
 
 function shoestrap_lumosity_difference( $hex1, $hex2 ) {
-	return ShoestrapColor::lumosity_difference( $hex1, $hex2 );
+	return Shoestrap_Color::lumosity_difference( $hex1, $hex2 );
 }
 
 /**
  * Layout functions
  */
 function shoestrap_content_width_px( $echo = false ) {
-	ShoestrapLayout::content_width_px( $echo );
+	return Shoestrap_Layout::content_width_px( $echo );
 }
 
 /**
  * Image functions
  */
 function shoestrap_image_resize( $data ) {
-	ShoestrapImage::image_resize( $data );
+	return Shoestrap_Image::image_resize( $data );
 }
 
 /**
  * Blog functions
  */
 function shoestrap_paginate_links() {
-	ShoestrapBlog::paginate_links();
+	return Shoestrap_Blog::paginate_links();
 }
 
 /**

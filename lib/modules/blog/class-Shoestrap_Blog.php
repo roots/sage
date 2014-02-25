@@ -528,7 +528,7 @@ if ( !class_exists( 'ShoestrapBlog' ) ) {
 			if ( !has_post_thumbnail() || '' == get_the_post_thumbnail() )
 				return;
 
-			$data['width']  = ShoestrapLayout::content_width_px();
+			$data['width']  = Shoestrap_Layout::content_width_px();
 
 			if ( is_singular() ) {
 				if ( shoestrap_getVariable( 'feat_img_post' ) != 1 )
@@ -552,7 +552,7 @@ if ( !class_exists( 'ShoestrapBlog' ) ) {
 				}
 			}
 			
-			$image = ShoestrapImage::image_resize( $data );
+			$image = Shoestrap_Image::image_resize( $data );
 
 			echo $ss_framework->clearfix() . '<a href="' . get_permalink() . '"><img class="featured-image" src="' . $image['url'] . '" /></a>' . $ss_framework->clearfix();
 		}

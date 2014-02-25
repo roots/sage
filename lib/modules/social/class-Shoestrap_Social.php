@@ -1,11 +1,11 @@
 <?php
 
 
-if ( !class_exists( 'ShoestrapSocial' ) ) {
+if ( !class_exists( 'Shoestrap_Social' ) ) {
 	/**
 	* The "Social" modue
 	*/
-	class ShoestrapSocial {
+	class Shoestrap_Social {
 
 		function __construct() {
 			global $ss_settings;
@@ -590,4 +590,4 @@ if ( !class_exists( 'ShoestrapSocial' ) ) {
 	}
 }
 
-$social = new ShoestrapSocial();
+$social = new Shoestrap_Social();

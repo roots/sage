@@ -1,11 +1,11 @@
 <?php
 
-if ( !class_exists( 'ShoestrapImage' ) ) {
+if ( !class_exists( 'Shoestrap_Image' ) ) {
 
 	/**
 	* The Image handling class
 	*/
-	class ShoestrapImage {
+	class Shoestrap_Image {
 
 		function __construct() {
 		}
@@ -185,4 +185,4 @@ if ( !class_exists( 'ShoestrapImage' ) ) {
 	}
 }
 
-$image = new ShoestrapImage();
+$image = new Shoestrap_Image();

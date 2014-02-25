@@ -1,12 +1,12 @@
 <?php
 
 
-if ( !class_exists( 'ShoestrapLayout' ) ) {
+if ( !class_exists( 'Shoestrap_Layout' ) ) {
 
 	/**
 	* The "Layout Module"
 	*/
-	class ShoestrapLayout {
+	class Shoestrap_Layout {
 
 		function __construct() {
 			global $ss_settings;
@@ -698,4 +698,4 @@ if ( !class_exists( 'ShoestrapLayout' ) ) {
 	}
 }
 
-$layout = new ShoestrapLayout();
+$layout = new Shoestrap_Layout();

@@ -1,11 +1,11 @@
 <?php
 
 
-if ( !class_exists( 'ShoestrapColor' ) ) {
+if ( !class_exists( 'Shoestrap_Color' ) ) {
 	/**
 	* Color Calculations class for Shoestrap
 	*/
-	class ShoestrapColor {
+	class Shoestrap_Color {
 
 		function __construct() {
 		}

@@ -80,7 +80,7 @@ if ( !class_exists( 'ShoestrapBackground' ) ) {
 			$bg_color         = isset( $bg_color['background-color'] ) ? $bg_color['background-color'] : '#ffffff';
 
 			// The Content background color
-			$content_bg = $content_opacity < 100 ? 'background:' . ShoestrapColor::get_rgba( $bg_color, $content_opacity ) . ';' : '';
+			$content_bg = $content_opacity < 100 ? 'background:' . Shoestrap_Color::get_rgba( $bg_color, $content_opacity ) . ';' : '';
 
 			$style = $content_opacity < 100 ? '.wrap.main-section div.content .bg {' . $content_bg . '}' : '';
 
@@ -94,11 +94,11 @@ if ( !class_exists( 'ShoestrapBackground' ) ) {
 		function variables() {
 			$bg      = shoestrap_getVariable( 'body_bg', true );
 			$bg      = isset( $bg['background-color'] ) ? $bg['background-color'] : '#ffffff';
-			$body_bg = '#' . str_replace( '#', '', ShoestrapColor::sanitize_hex( $bg ) );
+			$body_bg = '#' . str_replace( '#', '', Shoestrap_Color::sanitize_hex( $bg ) );
 
 			// Calculate the gray shadows based on the body background.
 			// We basically create 2 "presets": light and dark.
-			if ( ShoestrapColor::get_brightness( $body_bg ) > 80 ) {
+			if ( Shoestrap_Color::get_brightness( $body_bg ) > 80 ) {
 				$gray_darker  = 'lighten(#000, 13.5%)';
 				$gray_dark    = 'lighten(#000, 20%)';
 				$gray         = 'lighten(#000, 33.5%)';
@@ -112,7 +112,7 @@ if ( !class_exists( 'ShoestrapBackground' ) ) {
 				$gray_lighter = 'darken(#fff, 93.5%)';
 			}
 
-			$bg_brightness = ShoestrapColor::get_brightness( $body_bg );
+			$bg_brightness = Shoestrap_Color::get_brightness( $body_bg );
 
 			$table_bg_accent      = $bg_brightness > 50 ? 'darken(@body-bg, 2.5%)'    : 'lighten(@body-bg, 2.5%)';
 			$table_bg_hover       = $bg_brightness > 50 ? 'darken(@body-bg, 4%)'      : 'lighten(@body-bg, 4%)';

@@ -191,13 +191,13 @@ if ( !class_exists( 'Shoestrap_Jumbotron' ) ) {
 
 				<?php if ( $hero == true ) : ?>
 					<?php if ( $site_style == 'boxed' && $nocontainer != 1 ) : ?>
-						<div class="<?php echo ShoestrapLayout::container_class(); ?>">
+						<div class="<?php echo Shoestrap_Layout::container_class(); ?>">
 					<?php endif; ?>
 
 					<div class="jumbotron">
 
 						<?php if ( $nocontainer != 1 && $site_style == 'wide' || $site_style == 'boxed' ) : ?>
-							<div class="<?php echo ShoestrapLayout::container_class(); ?>">
+							<div class="<?php echo Shoestrap_Layout::container_class(); ?>">
 						<?php endif; ?>
 
 							<?php dynamic_sidebar('Jumbotron'); ?>
@@ -277,7 +277,7 @@ if ( !class_exists( 'Shoestrap_Jumbotron' ) ) {
 
 			$font_jumbotron         = shoestrap_process_font( $ss_settings['font_jumbotron'] );
 			$jumbotron_bg           = $ss_settings['jumbo_bg'];
-			$jumbotron_bg           = '#' . str_replace( '#', '', ShoestrapColor::sanitize_hex( $jumbotron_bg['background-color'] ) );
+			$jumbotron_bg           = '#' . str_replace( '#', '', Shoestrap_Color::sanitize_hex( $jumbotron_bg['background-color'] ) );
 			$jumbotron_text_color   = '#' . str_replace( '#', '', $font_jumbotron['color'] );
 
 			if ( $ss_settings['font_jumbotron_heading_custom'] == 1 ) {
@@ -286,7 +286,7 @@ if ( !class_exists( 'Shoestrap_Jumbotron' ) ) {
 				$font_jumbotron_headers_face   = $font_jumbotron_headers['font-family'];
 				$font_jumbotron_headers_weight = $font_jumbotron_headers['font-weight'];
 				$font_jumbotron_headers_style  = $font_jumbotron_headers['font-style'];
-				$jumbotron_headers_text_color  = '#' . str_replace( '#', '', ShoestrapColor::sanitize_hex( $font_jumbotron_headers['color'] ) );
+				$jumbotron_headers_text_color  = '#' . str_replace( '#', '', Shoestrap_Color::sanitize_hex( $font_jumbotron_headers['color'] ) );
 
 			} else {
 				$font_jumbotron_headers_face   = $font_jumbotron['font-family'];
