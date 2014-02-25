@@ -43,7 +43,7 @@ if ( !class_exists( 'Shoestrap_Menus' ) ) {
 			// Branding Options
 			$section = array( 
 				'title' => __( 'Menus', 'shoestrap' ),
-				'icon'  => 'el-icon-lines icon-large'
+				'icon'  => 'el-icon-lines'
 			);
 
 			$fields[] = array( 
@@ -446,12 +446,12 @@ if ( !class_exists( 'Shoestrap_Menus' ) ) {
 			if ( $navbar_toggle != 'none' ) {
 				if ( $navbar_toggle != 'pills' ) {
 					if ( !has_action( 'shoestrap_header_top_navbar_override' ) )
-						get_template_part( 'templates/header-top-navbar' );
+						require( 'header-top-navbar.php' );
 					else
 						do_action( 'shoestrap_header_top_navbar_override' );
 				} else {
 					if ( !has_action( 'shoestrap_header_override' ) )
-						get_template_part( 'templates/header' );
+						require( 'header.php' );
 					else
 						do_action( 'shoestrap_header_override' );
 				}
