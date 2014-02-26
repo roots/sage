@@ -19,18 +19,3 @@ function shoestrap_return_false() {
 function shoestrap_blank() {
 	return '';
 }
-
-function shoestrap_clearfix() {
-	$clear = apply_filters( 'shoestrap_clearfix', '<div class="clearfix"></div>' );
-
-	return $clear;
-}
-
-function shoestrap_alert( $class = 'alert alert-info', $content = '', $echo = true ) {
-	$alert = '<div class="' . $class . '">' . $content . '</div>';
-
-	if ( $echo )
-		echo $alert;
-	else
-		return $alert;
-}

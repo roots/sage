@@ -9,35 +9,13 @@ Author URI:  http://aristeides.com
 GitHub Plugin URI: https://github.com/shoestrap/shoestrap-admin
 */
 
-if ( !defined( 'SHOESTRAP_MODULES_PATH' ) )
+if ( !defined( 'SHOESTRAP_MODULES_PATH' ) ) {
 	define( 'SHOESTRAP_MODULES_PATH', dirname( __FILE__ ) );
+}
 
-if ( !defined( 'SHOESTRAP_MODULES_URL' ) )
+if ( !defined( 'SHOESTRAP_MODULES_URL' ) ) {
 	define( 'SHOESTRAP_MODULES_URL', get_template_directory_uri() . '/lib/modules' );
-
-
-/*
- * The option that is used by Shoestrap in the database for all settings.
- *
- * This can be overriden by adding this in your wp-config.php:
- * define( 'SHOESTRAP_OPT_NAME', 'custom_option' )
- */
-if ( !defined( 'SHOESTRAP_OPT_NAME' ) )
-	define( 'SHOESTRAP_OPT_NAME', 'shoestrap' );
-
-
-/*
- * Define 'REDUX_OPT_NAME' the same as 'SHOESTRAP_OPT_NAME'.
- *
- * This ensures compatibility with older add-on plugins and child themes.
- * If you are developing on Shoestrap you should change it on your plugin/theme as well.
- */
-if ( !defined( 'REDUX_OPT_NAME' ) )
-	define( 'REDUX_OPT_NAME', SHOESTRAP_OPT_NAME );
-
-// Prioritize loading of some necessary core modules
-require_once SHOESTRAP_MODULES_PATH . '/redux/redux-init.php';
-require_once SHOESTRAP_MODULES_PATH . '/core/functions.core.php';
+}
 
 /*
  * Use 'RecursiveDirectoryIterator' if PHP Version >= 5.2.11
@@ -65,7 +43,8 @@ function shoestrap_include_modules_fallback() {
 
 // PHP version control
 $phpversion = phpversion();
-if ( version_compare( $phpversion, '5.2.11', '<' ) )
+if ( version_compare( $phpversion, '5.2.11', '<' ) ) {
 	shoestrap_include_modules();
-else
+} else {
 	shoestrap_include_modules_fallback();
+}

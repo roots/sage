@@ -1,18 +1,16 @@
-<?php get_template_part('templates/head'); ?>
+<?php ss_get_template_part('templates/head'); ?>
 <body <?php body_class(); ?>>
 <a href="#content" class="sr-only"><?php _e( 'Skip to main content', 'shoestrap' ); ?></a>
+<?php global $ss_framework; ?>
 
 	<!--[if lt IE 8]>
-		<?php shoestrap_alert( 'alert alert-warning', __('You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.', 'shoestrap') ); ?>
+		<?php echo $ss_framework->alert( 'warning', __('You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.', 'shoestrap') ); ?>
 	<![endif]-->
 
 	<?php do_action( 'get_header' ); ?>
-	<?php
-	if ( !has_action( 'shoestrap_do_navbar' ) )
-		get_template_part( 'templates/header-top-navbar' );
-	else
-		do_action( 'shoestrap_do_navbar' );
-	?>
+
+	<?php ss_get_template_part( 'templates/top-bar' ); ?>
+
 	<?php do_action( 'shoestrap_pre_wrap' ); ?>
 
 	<div id="wrap-main-section" class="wrap main-section <?php echo apply_filters( 'shoestrap_container_class', 'container' ); ?>" role="document">
@@ -32,10 +30,11 @@
 
 				<?php if ( shoestrap_display_primary_sidebar() ) : ?>
 					<aside id="sidebar-primary" class="sidebar <?php shoestrap_section_class( 'primary', true ); ?>" role="complementary">
-						<?php if ( !has_action( 'shoestrap_sidebar_override' ) )
+						<?php if ( !has_action( 'shoestrap_sidebar_override' ) ) {
 							include shoestrap_sidebar_path();
-						else
-							do_action( 'shoestrap_sidebar_override' ); ?>
+						} else {
+							do_action( 'shoestrap_sidebar_override' );
+						} ?>
 					</aside><!-- /.sidebar -->
 				<?php endif; ?>
 
@@ -54,10 +53,11 @@
 
 	do_action('shoestrap_pre_footer');
 
-	if ( !has_action( 'shoestrap_footer_override' ) )
-		get_template_part( 'templates/footer' );
-	else
+	if ( !has_action( 'shoestrap_footer_override' ) ) {
+		ss_get_template_part( 'templates/footer' );
+	} else {
 		do_action( 'shoestrap_footer_override' );
+	}
 
 	do_action( 'shoestrap_after_footer' );
 

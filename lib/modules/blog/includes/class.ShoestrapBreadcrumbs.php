@@ -304,12 +304,17 @@ $shoestrap_breadcrumbs = new ShoestrapBreadcrumbs();
  * @return string
  */
 function shoestrap_breadcrumbs() {
-	global $shoestrap_breadcrumbs;
+	global $ss_settings, $shoestrap_breadcrumbs;
 
-	if ( is_front_page() || shoestrap_getVariable('breadcrumbs') == 0 )
+	if ( is_front_page() || $ss_settings['breadcrumbs'] == 0 ) {
 		return;
+	}
 
-	$class = shoestrap_getVariable( 'site_style' ) != 'fluid' ? 'container' : 'fluid';
+	if ( $ss_settings['site_style'] != 'fluid' ) {
+		$class = 'container';
+	} else {
+		$class = 'fluid';
+	}
 
 	echo '<div class="breadTrail ' . $class . '">';
 	echo $shoestrap_breadcrumbs->breadcrumb( false );

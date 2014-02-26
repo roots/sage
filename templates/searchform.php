@@ -1,6 +1,3 @@
-<?php
-if ( !has_action( 'shoestrap_searchform_override' ) ) : ?>
-
 <form role="search" class="form" method="get" id="searchform" action="<?php echo home_url('/'); ?>">
 	<div class="input-group">
 		<label class="sr-only" for="s"><?php _e('Search for:', 'shoestrap'); ?></label>
@@ -10,8 +7,3 @@ if ( !has_action( 'shoestrap_searchform_override' ) ) : ?>
 		</span>
 	</div>
 </form>
-
-<?php
-else:
-	do_action( 'shoestrap_searchform_override' );
-endif;

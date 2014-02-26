@@ -46,37 +46,49 @@ if ( !function_exists( 'shoestrap_section_class' ) ) :
  * Calculates the classes of the main area, main sidebar and secondary sidebar
  */
 function shoestrap_section_class( $target, $echo = false ) {
-	global $redux;
+	global $redux, $ss_framework;
 	// Disable the wrapper by default
 	$wrapper = NULL;
 
 	if ( shoestrap_display_primary_sidebar() ) {
 		// Both sidebars are displayed
 		if ( shoestrap_display_secondary_sidebar() ) {
-			$main      = is_page_template( 'template-5.php' ) ? 'col-md-8' : 'col-md-7';
-			$primary   = is_page_template( 'template-5.php' ) ? 'col-md-4' : 'col-md-3';
-			$secondary = 'col-md-2';
+			if ( is_page_template( 'template-5.php' ) ) {
+				$main    = $ss_framework->column_classes( array( 'medium' => 8 ), 'string' );
+				$primary = $ss_framework->column_classes( array( 'medium' => 4 ), 'string' );
+			} else {
+				$main    = $ss_framework->column_classes( array( 'medium' => 7 ), 'string' );
+				$primary = $ss_framework->column_classes( array( 'medium' => 3 ), 'string' );
+			}
 
-			$wrapper = is_page_template( 'template-5.php' ) ? 'col-md-10 pull-right' : NULL;
+			$secondary = $ss_framework->column_classes( array( 'medium' => 2 ), 'string' );
+
+			if ( is_page_template( 'template-5.php' ) ) {
+				$wrapper = $ss_framework->column_classes( array( 'medium' => 10 ), 'string' ) . 'pull-right';
+			} else {
+				$wrapper = NULL;
+			}
 
 		// Only the primary sidebar is displayed
 		} else {
-			$main    = 'col-md-8';
-			$primary = 'col-md-4';
+			$main    = $ss_framework->column_classes( array( 'medium' => 8 ), 'string' );
+			$primary = $ss_framework->column_classes( array( 'medium' => 4 ), 'string' );
 		}
 	} else {
 		// Only the secondary sidebar is displayed
 		if ( shoestrap_display_secondary_sidebar() ) {
-			$main      = 'col-md-8';
-			$secondary = 'col-md-4';
+			$main      = $ss_framework->column_classes( array( 'medium' => 8 ), 'string' );
+			$secondary = $ss_framework->column_classes( array( 'medium' => 4 ), 'string' );
 		} else {
 			// No sidebars displayed
-			$main = 'col-md-12';
+			$main = $ss_framework->column_classes( array( 'medium' => 12 ), 'string' );
 		}
 	}
 
 	// Add floats where needed.
-	$main = ( is_page_template( 'template-2.php' ) || is_page_template( 'template-3.php' ) ) ? $main . ' pull-right' : $main;
+	if ( is_page_template( 'template-2.php' ) || is_page_template( 'template-3.php' ) ) {
+		$main .= ' pull-right';
+	}
 
 	if ( $target == 'primary' )
 		$class = apply_filters( 'shoestrap_section_class_primary', $primary );
@@ -101,7 +113,8 @@ endif;
  * This function creates the opening <div> tag with the appropriate classes to be used.
  */
 function shoestrap_mp_wrap_div_open() {
-	echo '<div class="mp_wrap ' . shoestrap_section_class( 'wrapper' ) . '"><div class="row">';
+	global $ss_framework;
+	echo '<div class="mp_wrap ' . shoestrap_section_class( 'wrapper' ) . '">' . $ss_framework->make_row( 'div' );
 }
 
 /*
@@ -132,4 +145,6 @@ add_action( 'wp', 'shoestrap_mp_wrap_div_toggler' );
  * Example: If the content area is 640px wide, set $content_width = 620; so images and videos will not overflow.
  * Default: 1140px is the default Bootstrap container width.
  */
-if (!isset($content_width)) { $content_width = 1140; }
+if ( !isset( $content_width ) ) {
+	$content_width = 1140;
+}

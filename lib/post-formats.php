@@ -110,5 +110,7 @@ function shoestrap_post_format_chat_title( $title ) {
  * If the post format is set to "link", make the link into a button.
  */
 function shoestrap_post_formats_link( $content ) {
-	return str_replace( '<a ', '<a class="btn btn-primary btn-block btn-lg" ', $content );
+	global $ss_framework;
+
+	return str_replace( '<a ', '<a class="' . $ss_framework->button_classes( 'primary', 'large' ) . '" ', $content );
 }
