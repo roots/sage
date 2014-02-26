@@ -74,8 +74,10 @@ if ( !class_exists( 'ShoestrapBackground' ) ) {
 		}
 
 		function css() {
-			$content_opacity  = shoestrap_getVariable( 'body_bg_opacity' );
-			$bg_color         = shoestrap_getVariable( 'body_bg' );
+			global $ss_settings;
+
+			$content_opacity  = $ss_settings['body_bg_opacity'];
+			$bg_color         = $ss_settings['body_bg'];
 			$bg_color         = isset( $bg_color['background-color'] ) ? $bg_color['background-color'] : '#ffffff';
 
 			// The Content background color

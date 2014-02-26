@@ -131,37 +131,39 @@ if ( !class_exists( 'Shoestrap_Header' ) ) {
 		 * The Header template
 		 */
 		function branding() {
-			if ( shoestrap_getVariable( 'header_toggle' ) == 1 ) { ?>
+			global $ss_settings;
+
+			if ( $ss_settings['header_toggle'] == 1 ) { ?>
 				<div class="before-main-wrapper">
 
-					<?php if ( shoestrap_getVariable( 'site_style' ) == 'boxed' ) : ?>
+					<?php if ( $ss_settings['site_style'] == 'boxed' ) : ?>
 						<div class="container">
 					<?php endif; ?>
 
 						<div class="header-wrapper">
 
-							<?php if ( shoestrap_getVariable( 'site_style' ) == 'wide' ) : ?>
+							<?php if ( $ss_settings['site_style'] == 'wide' ) : ?>
 								<div class="container">
 							<?php endif; ?>
 
-								<?php if ( shoestrap_getVariable( 'header_branding' ) == 1 ) : ?>
+								<?php if ( $ss_settings['header_branding'] == 1 ) : ?>
 									<a class="brand-logo" href="<?php echo home_url(); ?>/">
 										<h1><?php if ( class_exists( 'ShoestrapBranding' ) ) echo ShoestrapBranding::logo(); ?></h1>
 									</a>
 								<?php endif; ?>
 
-								<?php $pullclass = ( shoestrap_getVariable( 'header_branding' ) == 1 ) ? ' class="pull-right"' : ''; ?>
+								<?php $pullclass = ( $ss_settings['header_branding'] == 1 ) ? ' class="pull-right"' : ''; ?>
 
 								<div<?php echo $pullclass; ?>>
 									<?php dynamic_sidebar( 'header-area' ); ?>
 								</div >
 
-							<?php if ( shoestrap_getVariable( 'site_style' ) == 'wide' ) : ?>
+							<?php if ( $ss_settings['site_style'] == 'wide' ) : ?>
 								</div>
 							<?php endif; ?>
 						</div>
 
-					<?php if ( shoestrap_getVariable( 'site_style' ) == 'boxed' ) : ?>
+					<?php if ( $ss_settings['site_style'] == 'boxed' ) : ?>
 						</div>
 					<?php endif; ?>
 				</div>

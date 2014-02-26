@@ -36,3 +36,7 @@ function shoestrap_add_framework_bootstrap( $frameworks ) {
 	return $frameworks;
 }
 add_filter( 'shoestrap_frameworks_array', 'shoestrap_add_framework_bootstrap' );
+
+if ( $ss_settings['retina_toggle'] ) {
+	add_theme_support( 'retina' );
+}

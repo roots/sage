@@ -14,6 +14,7 @@ class Shoestrap_Nav_Menu_Widget extends WP_Widget {
 	}
 
 	function widget($args, $instance) {
+		global $ss_settings;
 		// Get menu
 		$nav_menu = ! empty( $instance['nav_menu'] ) ? wp_get_nav_menu_object( $instance['nav_menu'] ) : false;
 
@@ -22,7 +23,7 @@ class Shoestrap_Nav_Menu_Widget extends WP_Widget {
 
 		$instance['title'] = apply_filters( 'widget_title', empty( $instance['title'] ) ? '' : $instance['title'], $instance, $this->id_base );
 
-		if ( shoestrap_getVariable( 'widgets_mode' ) == 1 )
+		if ( $ss_settings['widgets_mode'] == 1 )
 			echo '<section id="widget-menu-' . $instance["nav_menu"] . '" class="widget">';
 		else
 			echo $args['before_widget'];
@@ -30,9 +31,9 @@ class Shoestrap_Nav_Menu_Widget extends WP_Widget {
 		if ( !empty($instance['title']) )
 			echo $args['before_title'] . $instance['title'] . $args['after_title'];
 
-		$menu_class = ( shoestrap_getVariable( 'inverse_navlist' ) ) ? 'nav-list-inverse ' : '';
+		$menu_class = ( $ss_settings['inverse_navlist'] ) ? 'nav-list-inverse ' : '';
 
-		$menu_class .= 'nav-list-' . shoestrap_getVariable( 'menus_class' );
+		$menu_class .= 'nav-list-' . $ss_settings['menus_class'];
 
 		wp_nav_menu( array(
 			'menu'              => $nav_menu,

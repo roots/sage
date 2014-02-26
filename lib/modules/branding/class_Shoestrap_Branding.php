@@ -129,8 +129,10 @@ if ( !class_exists( 'ShoestrapBranding' ) ) {
 		}
 
 		function icons() {
-			$favicon_item    = shoestrap_getVariable( 'favicon' );
-			$apple_icon_item = shoestrap_getVariable( 'apple_icon' );
+			global $ss_settings;
+
+			$favicon_item    = $ss_settings['favicon'];
+			$apple_icon_item = $ss_settings['apple_icon'];
 
 			// Add the favicon
 			if ( !empty( $favicon_item['url'] ) && $favicon_item['url'] != '' ) {
@@ -160,7 +162,8 @@ if ( !class_exists( 'ShoestrapBranding' ) ) {
 		 * If no custom logo is uploaded, use the sitename
 		 */
 		public static function logo() {
-			$logo  = shoestrap_getVariable( 'logo' );
+			global $ss_settings;
+			$logo  = $ss_settings['logo'];
 
 			if ( !empty( $logo['url'] ) )
 				$branding = '<img id="site-logo" src="' . $logo['url'] . '" alt="' . get_bloginfo( 'name' ) . '">';

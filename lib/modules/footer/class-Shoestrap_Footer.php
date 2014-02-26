@@ -130,13 +130,14 @@ if( !class_exists( 'Shoestrap_Footer' ) ) {
 		 */
 
 		function css() {
-			$bg         = shoestrap_getVariable( 'footer_background' );
-			$cl         = shoestrap_getVariable( 'footer_color' );
-			$cl_brand   = shoestrap_getVariable( 'color_brand_primary' );
-			$opacity    = ( intval( shoestrap_getVariable( 'footer_opacity' ) ) ) / 100;
+			global $ss_settings;
+			$bg         = $ss_settings['footer_background'];
+			$cl         = $ss_settings['footer_color'];
+			$cl_brand   = $ss_settings['color_brand_primary'];
+			$opacity    = ( intval( $ss_settings['footer_opacity'] ) ) / 100;
 			$rgb        = Shoestrap_Color::get_rgb( $bg, true );
-			$border     = shoestrap_getVariable( 'footer_border' );
-			$top_margin = shoestrap_getVariable( 'footer_top_margin' );
+			$border     = $ss_settings['footer_border'];
+			$top_margin = $ss_settings['footer_top_margin'];
 
 			$container_margin = $top_margin * 0.381966011;
 
@@ -159,25 +160,25 @@ if( !class_exists( 'Shoestrap_Footer' ) ) {
 		}
 
 		function html() {
-			global $ss_framework, $ss_social;
+			global $ss_framework, $ss_social, $ss_settings;
 
 			$blog_name  = get_bloginfo( 'name', 'display' );
-			$ftext      = shoestrap_getVariable( 'footer_text' );
+			$ftext      = $ss_settings['footer_text'];
 
 			$ftext = ( $ftext == '' ) ? '&copy; [year] [sitename]' : $ftext;
 
 			$ftext = str_replace( '[year]', date( 'Y' ), $ftext );
 			$ftext = str_replace( '[sitename]', $blog_name, $ftext );
 
-			$social = shoestrap_getVariable( 'footer_social_toggle' );
-			$social_width = shoestrap_getVariable( 'footer_social_width' );
+			$social = $ss_settings['footer_social_toggle'];
+			$social_width = $ss_settings['footer_social_width'];
 
 			$width = 12;
 
 			// Social is enabled, we're modifying the width!
 			$width = ( intval( $social_width ) > 0 && $social ) ? $width - intval( $social_width ) : $width;
 
-			$social_blank = shoestrap_getVariable( 'footer_social_new_window_toggle' );
+			$social_blank = $ss_settings['footer_social_new_window_toggle'];
 
 			$blank = ( $social_blank == 1 ) ? ' target="_blank"' : '';
 

@@ -215,11 +215,13 @@ if ( !class_exists( 'Shoestrap_Typography' ) ) {
 		 * The Google Webonts script
 		 */
 		function googlefont_links() {
-			$font_base            = shoestrap_getVariable( 'font_base' );
-			$font_navbar          = shoestrap_getVariable( 'font_navbar' );
-			$font_brand           = shoestrap_getVariable( 'font_brand' );
-			$font_jumbotron       = shoestrap_getVariable( 'font_jumbotron' );
-			$font_heading         = shoestrap_getVariable( 'font_heading' );
+			global $ss_settings;
+
+			$font_base            = $ss_settings['font_base'];
+			$font_navbar          = $ss_settings['font_navbar'];
+			$font_brand           = $ss_settings['font_brand'];
+			$font_jumbotron       = $ss_settings['font_jumbotron'];
+			$font_heading         = $ss_settings['font_heading'];
 
 			if ( !isset( $font_base['google'] ) || is_null( $font_base['google'] ) || empty( $font_base['google'] ) )
 				$font_base['google'] = false;
@@ -236,17 +238,17 @@ if ( !class_exists( 'Shoestrap_Typography' ) ) {
 			if ( !isset( $font_heading['google'] ) || is_null( $font_heading['google'] ) || empty( $font_heading['google'] ) )
 				$font_heading['google'] = false;
 
-			if ( shoestrap_getVariable( 'font_heading_custom' ) ) {
-				$font_h1 = shoestrap_getVariable( 'font_h1' );
-				$font_h2 = shoestrap_getVariable( 'font_h2' );
-				$font_h3 = shoestrap_getVariable( 'font_h3' );
-				$font_h4 = shoestrap_getVariable( 'font_h4' );
-				$font_h5 = shoestrap_getVariable( 'font_h5' );
-				$font_h6 = shoestrap_getVariable( 'font_h6' );
+			if ( $ss_settings['font_heading_custom'] ) {
+				$font_h1 = $ss_settings['font_h1'];
+				$font_h2 = $ss_settings['font_h2'];
+				$font_h3 = $ss_settings['font_h3'];
+				$font_h4 = $ss_settings['font_h4'];
+				$font_h5 = $ss_settings['font_h5'];
+				$font_h6 = $ss_settings['font_h6'];
 			}
 
-			if (shoestrap_getVariable( 'font_jumbotron_heading_custom' ) == 1) {
-				$font_jumbotron_headers = shoestrap_getVariable( 'font_jumbotron_headers' );
+			if ( $ss_settings['font_jumbotron_heading_custom'] == 1) {
+				$font_jumbotron_headers = $ss_settings['font_jumbotron_headers'];
 			}
 
 			if ( $font_base['google'] === 'true' ) {
@@ -273,7 +275,7 @@ if ( !class_exists( 'Shoestrap_Typography' ) ) {
 				wp_enqueue_style( 'ss-googlefont-jumbotron' );
 			}
 
-			if ( shoestrap_getVariable( 'font_heading_custom' ) ) {
+			if ( $ss_settings['font_heading_custom'] ) {
 
 				if ( $font_h1['google'] === 'true' ) {
 					$font = self::getGoogleScript( $font_h1 );
@@ -316,7 +318,7 @@ if ( !class_exists( 'Shoestrap_Typography' ) ) {
 				wp_enqueue_style( 'ss-googlefont-heading' );
 			}
 
-			if ( shoestrap_getVariable( 'font_jumbotron_heading_custom' ) == 1 ) {
+			if ( $ss_settings['font_jumbotron_heading_custom'] == 1 ) {
 				if ($font_jumbotron_headers['google'] === 'true' ) {
 					$font = self::getGoogleScript( $font_jumbotron_headers );
 					wp_register_style( 'ss-googlefont-jumbotron-headings', $font['link'] );

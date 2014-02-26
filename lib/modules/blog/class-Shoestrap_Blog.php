@@ -225,11 +225,11 @@ if ( !class_exists( 'ShoestrapBlog' ) ) {
 		 * Output of meta information for current post: categories, tags, permalink, author, and date.
 		 */
 		function meta_custom_render() {
-			global $ss_framework;
+			global $ss_framework, $ss_settings;
 
 			// get config and data
-			$metas = shoestrap_getVariable( 'shoestrap_entry_meta_config' );
-			$date_format = shoestrap_getVariable( 'date_meta_format' );
+			$metas = $ss_settings['shoestrap_entry_meta_config'];
+			$date_format = $ss_settings['date_meta_format'];
 
 			$categories_list = get_the_category_list( __( ', ', 'shoestrap' ) );
 			$tag_list        = get_the_tag_list( '', __( ', ', 'shoestrap' ) );
@@ -318,7 +318,9 @@ if ( !class_exists( 'ShoestrapBlog' ) ) {
 		 * The "more" text
 		 */
 		function excerpt_more( $more ) {
-			$continue_text = shoestrap_getVariable( 'post_excerpt_link_text' );
+			global $ss_settings;
+
+			$continue_text = $ss_settings['post_excerpt_link_text'];
 			return ' &hellip; <a href="' . get_permalink() . '">' . $continue_text . '</a>';
 		}
 
@@ -326,7 +328,9 @@ if ( !class_exists( 'ShoestrapBlog' ) ) {
 		 * Excerpt length
 		 */
 		function excerpt_length($length) {
-			$excerpt_length = shoestrap_getVariable( 'post_excerpt_length' );
+			global $ss_settings;
+
+			$excerpt_length = $ss_settings['post_excerpt_length'];
 			return $excerpt_length;
 		}
 
@@ -334,7 +338,7 @@ if ( !class_exists( 'ShoestrapBlog' ) ) {
 		 * Display featured images on individual posts
 		 */
 		function featured_image() {
-			global $ss_framework;
+			global $ss_framework, $ss_settings;
 
 			$data = array();
 
@@ -344,24 +348,28 @@ if ( !class_exists( 'ShoestrapBlog' ) ) {
 			$data['width']  = Shoestrap_Layout::content_width_px();
 
 			if ( is_singular() ) {
-				if ( shoestrap_getVariable( 'feat_img_post' ) != 1 )
-					return; // Do not process if we don't want images on single posts
+				// Do not process if we don't want images on single posts
+				if ( $ss_settings['feat_img_post'] != 1 ) {
+					return;
+				}
 
 				$data['url'] = wp_get_attachment_url( get_post_thumbnail_id() );
 				
-				if ( shoestrap_getVariable( 'feat_img_post_custom_toggle' ) == 1 ) {
-					$data['width']  = shoestrap_getVariable( 'feat_img_post_width' );
-					$data['height'] = shoestrap_getVariable( 'feat_img_post_height' );
+				if ( $ss_settings['feat_img_post_custom_toggle'] == 1 ) {
+					$data['width']  = $ss_settings['feat_img_post_width'];
+					$data['height'] = $ss_settings['feat_img_post_height'];
 				}
 			} else {
-				if ( shoestrap_getVariable( 'feat_img_archive' ) == 0 )
-					return; // Do not process if we don't want images on post archives
+				// Do not process if we don't want images on post archives
+				if ( $ss_settings['feat_img_archive'] == 0 ) {
+					return;
+				}
 
 				$data['url'] = wp_get_attachment_url( get_post_thumbnail_id() );
 				
-				if (shoestrap_getVariable( 'feat_img_archive_custom_toggle' ) == 1) {
-					$data['width']  = shoestrap_getVariable( 'feat_img_archive_width' );
-					$data['height'] = shoestrap_getVariable( 'feat_img_archive_height' );
+				if ( $ss_settings['feat_img_archive_custom_toggle'] == 1 ) {
+					$data['width']  = $ss_settings['feat_img_archive_width'];
+					$data['height'] = $ss_settings['feat_img_archive_height'];
 				}
 			}
 			
@@ -376,7 +384,7 @@ if ( !class_exists( 'ShoestrapBlog' ) ) {
 		 */
 		function remove_featured_image_per_post_type() {
 			$post_types = get_post_types( array( 'public' => true ), 'names' );
-			$post_type_options = shoestrap_getVariable( 'feat_img_per_post_type' );
+			$post_type_options = $ss_settings['feat_img_per_post_type'];
 
 			foreach ( $post_types as $post_type ) {
 				// Simply prevents "illegal string offset" messages

@@ -9,12 +9,13 @@ if ( !class_exists( 'Shoestrap_Social' ) ) {
 
 		function __construct() {
 			global $ss_settings;
+
 			add_filter( 'redux/options/' . SHOESTRAP_OPT_NAME . '/sections', array( $this, 'options' ), 90 );
 
-			$social_sharing_location = shoestrap_getVariable( 'social_sharing_location' );
+			$social_sharing_location = $ss_settings['social_sharing_location'];
 
 			// Social Share select
-			$social_sharing_single_page = shoestrap_getVariable( 'social_sharing_single_page' );
+			$social_sharing_single_page = $ss_settings['social_sharing_single_page'];
 
 			// Conditions for showing content in posts archives
 			if ( $ss_settings['social_sharing_archives'] == 1 )
@@ -341,30 +342,31 @@ if ( !class_exists( 'Shoestrap_Social' ) ) {
 		 * This is simply a helper function for other functions.
 		 */
 		function get_social_links() {
+			global $ss_Settings;
 			// An array of the available networks
 			$networks   = array();
 
 			// Started on the new stuff, not done yet.
-			$networks[] = array( 'url' => shoestrap_getVariable( 'blogger_link' ),      'icon' => 'blogger',    'fullname' => 'Blogger' );
-			$networks[] = array( 'url' => shoestrap_getVariable( 'deviantart_link' ),   'icon' => 'deviantart', 'fullname' => 'DeviantART' );
-			$networks[] = array( 'url' => shoestrap_getVariable( 'digg_link' ),         'icon' => 'digg',       'fullname' => 'Digg' );
-			$networks[] = array( 'url' => shoestrap_getVariable( 'dribbble_link' ),     'icon' => 'dribbble',   'fullname' => 'Dribbble' );
-			$networks[] = array( 'url' => shoestrap_getVariable( 'facebook_link' ),     'icon' => 'facebook',   'fullname' => 'Facebook' );
-			$networks[] = array( 'url' => shoestrap_getVariable( 'flickr_link' ),       'icon' => 'flickr',     'fullname' => 'Flickr' );
-			$networks[] = array( 'url' => shoestrap_getVariable( 'github_link' ),       'icon' => 'github',     'fullname' => 'GitHub' );
-			$networks[] = array( 'url' => shoestrap_getVariable( 'google_plus_link' ),  'icon' => 'googleplus', 'fullname' => 'Google+' );
-			$networks[] = array( 'url' => shoestrap_getVariable( 'linkedin_link' ),     'icon' => 'linkedin',   'fullname' => 'LinkedIn' );
-			$networks[] = array( 'url' => shoestrap_getVariable( 'myspace_link' ),      'icon' => 'myspace',    'fullname' => 'Myspace' );
-			$networks[] = array( 'url' => shoestrap_getVariable( 'pinterest_link' ),    'icon' => 'pinterest',  'fullname' => 'Pinterest' );
-			$networks[] = array( 'url' => shoestrap_getVariable( 'reddit_link' ),       'icon' => 'reddit',     'fullname' => 'Reddit' );
-			$networks[] = array( 'url' => shoestrap_getVariable( 'rss_link' ),          'icon' => 'rss',        'fullname' => 'RSS' );
-			$networks[] = array( 'url' => shoestrap_getVariable( 'skype_link' ),        'icon' => 'skype',      'fullname' => 'Skype' );
-			$networks[] = array( 'url' => shoestrap_getVariable( 'soundcloud_link' ),   'icon' => 'soundcloud', 'fullname' => 'SoundCloud' );
-			$networks[] = array( 'url' => shoestrap_getVariable( 'tumblr_link' ),       'icon' => 'tumblr',     'fullname' => 'Tumblr' );
-			$networks[] = array( 'url' => shoestrap_getVariable( 'twitter_link' ),      'icon' => 'twitter',    'fullname' => 'Twitter' );
-			$networks[] = array( 'url' => shoestrap_getVariable( 'vimeo_link' ),        'icon' => 'vimeo',      'fullname' => 'Vimeo' );
-			$networks[] = array( 'url' => shoestrap_getVariable( 'vkontakte' ),         'icon' => 'vkontakte',  'fullname' => 'Vkontakte' );
-			$networks[] = array( 'url' => shoestrap_getVariable( 'youtube_link' ),      'icon' => 'youtube',    'fullname' => 'YouTube' );
+			$networks[] = array( 'url' => $ss_settings['blogger_link'],      'icon' => 'blogger',    'fullname' => 'Blogger' );
+			$networks[] = array( 'url' => $ss_settings['deviantart_link'],   'icon' => 'deviantart', 'fullname' => 'DeviantART' );
+			$networks[] = array( 'url' => $ss_settings['digg_link'],         'icon' => 'digg',       'fullname' => 'Digg' );
+			$networks[] = array( 'url' => $ss_settings['dribbble_link'],     'icon' => 'dribbble',   'fullname' => 'Dribbble' );
+			$networks[] = array( 'url' => $ss_settings['facebook_link'],     'icon' => 'facebook',   'fullname' => 'Facebook' );
+			$networks[] = array( 'url' => $ss_settings['flickr_link'],       'icon' => 'flickr',     'fullname' => 'Flickr' );
+			$networks[] = array( 'url' => $ss_settings['github_link'],       'icon' => 'github',     'fullname' => 'GitHub' );
+			$networks[] = array( 'url' => $ss_settings['google_plus_link'],  'icon' => 'googleplus', 'fullname' => 'Google+' );
+			$networks[] = array( 'url' => $ss_settings['linkedin_link'],     'icon' => 'linkedin',   'fullname' => 'LinkedIn' );
+			$networks[] = array( 'url' => $ss_settings['myspace_link'],      'icon' => 'myspace',    'fullname' => 'Myspace' );
+			$networks[] = array( 'url' => $ss_settings['pinterest_link'],    'icon' => 'pinterest',  'fullname' => 'Pinterest' );
+			$networks[] = array( 'url' => $ss_settings['reddit_link'],       'icon' => 'reddit',     'fullname' => 'Reddit' );
+			$networks[] = array( 'url' => $ss_settings['rss_link'],          'icon' => 'rss',        'fullname' => 'RSS' );
+			$networks[] = array( 'url' => $ss_settings['skype_link'],        'icon' => 'skype',      'fullname' => 'Skype' );
+			$networks[] = array( 'url' => $ss_settings['soundcloud_link'],   'icon' => 'soundcloud', 'fullname' => 'SoundCloud' );
+			$networks[] = array( 'url' => $ss_settings['tumblr_link'],       'icon' => 'tumblr',     'fullname' => 'Tumblr' );
+			$networks[] = array( 'url' => $ss_settings['twitter_link'],      'icon' => 'twitter',    'fullname' => 'Twitter' );
+			$networks[] = array( 'url' => $ss_settings['vimeo_link'],        'icon' => 'vimeo',      'fullname' => 'Vimeo' );
+			$networks[] = array( 'url' => $ss_settings['vkontakte'],         'icon' => 'vkontakte',  'fullname' => 'Vkontakte' );
+			$networks[] = array( 'url' => $ss_settings['youtube_link'],      'icon' => 'youtube',    'fullname' => 'YouTube' );
 
 			return $networks;
 		}
@@ -373,7 +375,9 @@ if ( !class_exists( 'Shoestrap_Social' ) ) {
 		 * Build an array of the available/enabled networks for social sharing.
 		 */
 		function get_social_shares() {
-			$nets   = shoestrap_getVariable( 'share_networks' );
+			global $ss_framework;
+
+			$nets   = $ss_settings['share_networks'];
 
 			$networks = null;
 
@@ -454,8 +458,9 @@ if ( !class_exists( 'Shoestrap_Social' ) ) {
 		 * Properly parses the twitter URL if set
 		 */
 		function get_tw_username() {
-			$twittername = '';
-			$twitter_link = shoestrap_getVariable ( 'twitter_link' );
+			global $ss_settings;
+			$twittername  = '';
+			$twitter_link = $ss_settings['twitter_link'];
 
 			if ( $twitter_link != "" ) {
 				$twitter_link = explode( '/', rtrim( $twitter_link, '/' ) );
@@ -470,7 +475,7 @@ if ( !class_exists( 'Shoestrap_Social' ) ) {
 		 * Create the social sharing buttons
 		 */
 		function social_sharing() {
-			global $ss_framework;
+			global $ss_framework, $ss_settings;
 
 			// The base class for icons that will be used
 			$baseclass  = 'icon el-icon-';
@@ -479,10 +484,10 @@ if ( !class_exists( 'Shoestrap_Social' ) ) {
 			$show = false;
 
 			// Button class
-			$button_color = shoestrap_getVariable( 'social_sharing_button_class' );
+			$button_color = $ss_settings['social_sharing_button_class'];
 
 			// Button Text
-			$text = shoestrap_getVariable( 'social_sharing_text' );
+			$text = $ss_settings['social_sharing_text'];
 
 			// Build the content
 			$content  = '<div class="' . $ss_framework->button_group_classes( 'small', null, 'social-share' ) . '">';

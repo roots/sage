@@ -46,8 +46,9 @@ if ( !class_exists( 'Shoestrap_Image' ) ) {
 				return;
 
 			// Generate the @2x file if retina is enabled
-			if ( shoestrap_getVariable( 'retina_toggle' ) == 1 && empty( $settings['retina'] ) )
+			if ( current_theme_supports( 'retina' ) && empty( $settings['retina'] ) ) {
 				$results['retina'] = self::_resize( $settings['url'], $settings['width'], $settings['height'], $settings['crop'], true );
+			}
 
 			return self::_resize( $settings['url'], $settings['width'], $settings['height'], $settings['crop'], false );    
 		}
@@ -61,8 +62,9 @@ if ( !class_exists( 'Shoestrap_Image' ) ) {
 		public static function _resize( $url, $width = NULL, $height = NULL, $crop = true, $retina = false ) {
 			global $wpdb;
 
-			if ( empty( $url ) )
+			if ( empty( $url ) ) {
 				return new WP_Error( 'no_image_url', __( 'No image URL has been entered.', 'shoestrap' ), $url );
+			}
 
 			// Get default size from database
 			$width  = ( $width )  ? $width  : get_option( 'thumbnail_size_w' );
@@ -90,8 +92,9 @@ if ( !class_exists( 'Shoestrap_Image' ) ) {
 			$dir = $info['dirname'];
 			$ext = "";
 
-			if ( !empty( $info['extension'] ) )
+			if ( !empty( $info['extension'] ) ) {
 				$ext = $info['extension'];
+			}
 
 			$name = wp_basename( $file_path, ".$ext" );
 
@@ -112,13 +115,15 @@ if ( !class_exists( 'Shoestrap_Image' ) ) {
 				$query          = $wpdb->prepare( "SELECT * FROM $wpdb->posts WHERE guid='%s'", $url );
 				$get_attachment = $wpdb->get_results( $query );
 
-				if ( !$get_attachment )
+				if ( !$get_attachment ) {
 					return array( 'url' => $url, 'width' => $width, 'height' => $height );
+				}
 
 				// Load Wordpress Image Editor
 				$editor = wp_get_image_editor( $file_path );
-				if ( is_wp_error( $editor ) )
+				if ( is_wp_error( $editor ) ) {
 					return array( 'url' => $url, 'width' => $width, 'height' => $height );
+				}
 
 				// Get the original image size
 				$size = $editor->get_size();
