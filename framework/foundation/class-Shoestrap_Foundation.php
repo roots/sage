@@ -375,8 +375,6 @@ if ( !class_exists( 'Shoestrap_Foundation' ) ) {
 			$vars .= '$off-canvas-bg : ' . $ss_settings['navbar_bg'] . ';';
 			$vars .= '$topbar-height : ' . $ss_settings['navbar_height'] . 'px;';
 
-			print_r($vars);
-
 			return $vars;
 		}
 

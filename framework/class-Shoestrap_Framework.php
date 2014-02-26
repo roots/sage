@@ -19,7 +19,7 @@ if ( !class_exists( 'Shoestrap_Framework' ) ) {
 			add_filter( 'redux/options/' . SHOESTRAP_OPT_NAME . '/sections', array( $this, 'options' ), 75 );
 
 			// Include all frameworks
-			$modules_path = new RecursiveDirectoryIterator( SHOESTRAP_MODULES_PATH . '/framework/' );
+			$modules_path = new RecursiveDirectoryIterator( dirname( __FILE__ ) );
 			$recIterator  = new RecursiveIteratorIterator( $modules_path );
 			$regex        = new RegexIterator( $recIterator, '/\/framework.php$/i' );
 
