@@ -59,6 +59,8 @@ if ( !class_exists( 'Shoestrap_Foundation' ) ) {
 				// Miscelaneous
 				'clearfix' => '<div class="clearfix"></div>',
 			);
+
+			add_filter( 'shoestrap_foundation_scss', array( $this, 'styles_filter' ) );
 		}
 
 		/**
@@ -365,12 +367,25 @@ if ( !class_exists( 'Shoestrap_Foundation' ) ) {
 		 * Variables to use for the compiler.
 		 * These override the default Bootstrap Variables.
 		 */
-		function styles() {}
+		function styles() {
+			global $ss_settings;
+			$vars  = '';
+
+			$vars .= '$topbar-bg:      ' . $ss_settings['navbar_bg'] . ';';
+			$vars .= '$off-canvas-bg : ' . $ss_settings['navbar_bg'] . ';';
+			$vars .= '$topbar-height : ' . $ss_settings['navbar_height'] . 'px;';
+
+			print_r($vars);
+
+			return $vars;
+		}
 
 		/**
 		 * Add styles to the compiler
 		 */
-		function styles_filter( $scss ) {}
+		function styles_filter( $scss ) {
+			return $this->styles() . $scss;
+		}
 
 		/*
 		 * This function can be used to compile a less file to css using the lessphp compiler
@@ -394,7 +409,7 @@ if ( !class_exists( 'Shoestrap_Foundation' ) ) {
 			$scss = new scssc();
 			$scss->setImportPaths( $scss_location );
 
-			$css .=  $scss->compile( '@import "app.scss"' );
+			$css .=  $scss->compile( apply_filters( 'shoestrap_foundation_scss', '@import "app.scss"' ) );
 
 			// Ugly hack to properly set the path to webfonts
 			$css = str_replace( "url('Elusive-Icons", "url('" . $webfont_location . "Elusive-Icons", $css );

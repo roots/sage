@@ -11,9 +11,9 @@ if ( !class_exists( 'Shoestrap_Framework' ) ) {
 		 * Class constructor
 		 */
 		function __construct() {
+			global $ss_settings;
 
-			$settings         = get_option( SHOESTRAP_OPT_NAME );
-			$active_framework = $settings['framework'];
+			$active_framework = $ss_settings['framework'];
 
 			// Add the frameworks select to redux.
 			add_filter( 'redux/options/' . SHOESTRAP_OPT_NAME . '/sections', array( $this, 'options' ), 75 );

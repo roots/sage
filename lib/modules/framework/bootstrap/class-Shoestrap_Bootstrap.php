@@ -328,8 +328,6 @@ if ( !class_exists( 'Shoestrap_Bootstrap' ) ) {
 				$id = ' id=' . $id . '"';
 			}
 
-			$classes = implode( ' ', $classes );
-
 			return '<div class="panel panel-default' . $classes . '"' . $id . '>';
 		}
 

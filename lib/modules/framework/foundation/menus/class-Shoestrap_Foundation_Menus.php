@@ -130,7 +130,7 @@ if ( !class_exists( 'Shoestrap_Foundation_Menus' ) ) {
 				'title'       => __( 'NavBar Height', 'shoestrap' ),
 				'desc'        => __( 'Select the height of the NavBar in pixels. Should be equal or greater than the height of your logo if you\'ve added one.', 'shoestrap' ),
 				'id'          => 'navbar_height',
-				'default'     => 50,
+				'default'     => 45,
 				'min'         => 38,
 				'step'        => 1,
 				'max'         => 200,
