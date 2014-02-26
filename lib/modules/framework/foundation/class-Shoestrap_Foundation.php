@@ -59,8 +59,6 @@ if ( !class_exists( 'Shoestrap_Foundation' ) ) {
 				// Miscelaneous
 				'clearfix' => '<div class="clearfix"></div>',
 			);
-
-			// add_filter( 'shoestrap_compiler', array( $this, 'styles' ) );
 		}
 
 		/**
@@ -250,6 +248,10 @@ if ( !class_exists( 'Shoestrap_Foundation' ) ) {
 			return $this->defines['clearfix'];
 		}
 
+		function pagination_ul_class() {
+			return 'pagination';
+		}
+
 		/**
 		 * The framework's alert boxes.
 		 */
@@ -283,12 +285,92 @@ if ( !class_exists( 'Shoestrap_Foundation' ) ) {
 			return '<div data-alert class="' . $classes . '"' . $id . '>' . $content . $dismiss . '</div>';
 		}
 
-		function nav_template() {
-			if ( !has_action( 'shoestrap_do_navbar' ) )
-				get_template_part( 'lib/modules/framework/foundation/menus/top-bar' );
-			else
-				do_action( 'shoestrap_do_navbar' );
+		function make_panel( $extra_classes = null, $id = null  ) {
+
+			$classes = array();
+
+			if ( !is_null( $extra_classes ) ) {
+				$extras = explode( ' ', $extra_classes );
+
+				foreach ( $extras as $extra ) {
+					$classes[] = $extra;
+				}
+				$classes = ' ' . implode( ' ', $classes );
+			} else {
+				$classes = null;
+			}
+
+			// If an ID has been defined, format it properly.
+			if ( !is_null( $id ) ) {
+				$id = ' id=' . $id . '"';
+			}
+
+			return '<div class="panel ' . $classes . '"' . $id . '>';
 		}
+
+		function make_panel_heading( $extra_classes = null ) {
+
+			$classes = array();
+
+			if ( !is_null( $extra_classes ) ) {
+				$extras = explode( ' ', $extra_classes );
+
+				foreach ( $extras as $extra ) {
+					$classes[] = $extra;
+				}
+				$classes = ' ' . implode( ' ', $classes );
+			} else {
+				$classes = null;
+			}
+
+			return '<div class="panel-heading' . $classes . '">';
+		}
+
+		function make_panel_body( $extra_classes = null ) {
+			$classes = array();
+
+			if ( !is_null( $extra_classes ) ) {
+				$extras = explode( ' ', $extra_classes );
+
+				foreach ( $extras as $extra ) {
+					$classes[] = $extra;
+				}
+				$classes = ' ' . implode( ' ', $classes );
+			} else {
+				$classes = null;
+			}
+
+			return '<div class="panel-body' . $classes . '">';
+		}
+
+		function make_panel_footer( $extra_classes = null ) {
+
+			$classes = array();
+
+			if ( !is_null( $extra_classes ) ) {
+				$extras = explode( ' ', $extra_classes );
+
+				foreach ( $extras as $extra ) {
+					$classes[] = $extra;
+				}
+				$classes = ' ' . implode( ' ', $classes );
+			} else {
+				$classes = null;
+			}
+
+			return '<div class="panel-footer' . $classes . '">';
+		}
+
+		/**
+		 * Variables to use for the compiler.
+		 * These override the default Bootstrap Variables.
+		 */
+		function styles() {}
+
+		/**
+		 * Add styles to the compiler
+		 */
+		function styles_filter( $scss ) {}
 
 		/*
 		 * This function can be used to compile a less file to css using the lessphp compiler
@@ -305,217 +387,29 @@ if ( !class_exists( 'Shoestrap_Foundation' ) ) {
 			$options = array( 'compress' => $compress );
 
 			$scss_location    = dirname( __FILE__ ) . '/assets/scss/';
-			$webfont_location = get_template_directory() . '/assets/fonts/';
+			$webfont_location = get_template_directory_uri() . '/assets/fonts/';
 			$custom_less_file = get_stylesheet_directory() . '/assets/less/custom.less';
 
 
 			$scss = new scssc();
 			$scss->setImportPaths( $scss_location );
 
-			$css =  $scss->compile( '@import "normalize.scss"' );
-			$css =  $scss->compile( '@import "foundation.scss"' );
+			$css .=  $scss->compile( '@import "app.scss"' );
+
+			// Ugly hack to properly set the path to webfonts
+			$css = str_replace( "url('Elusive-Icons", "url('" . $webfont_location . "Elusive-Icons", $css );
 
 			return $css;
 		}
 
-	// 	/**
-	// 	 * Variables to use for the compiler.
-	// 	 * These override the default Foundation Variables.
-	// 	 */
-	// 	function variables() {
-	// 		global $ss_settings;
+		/**
+		 * The inline icon links for social networks.
+		 */
+		function navbar_social_bar() {}
 
-	// 		/**
-	// 		 * LAYOUT
-	// 		 */
-	// 		$screen_sm = filter_var( $ss_settings['screen_tablet'], FILTER_SANITIZE_NUMBER_INT );
-	// 		$screen_md = filter_var( $ss_settings['screen_desktop'], FILTER_SANITIZE_NUMBER_INT );
-	// 		$screen_lg = filter_var( $ss_settings['screen_large_desktop'], FILTER_SANITIZE_NUMBER_INT );
-	// 		$gutter    = filter_var( $ss_settings['layout_gutter'], FILTER_SANITIZE_NUMBER_INT );
-	// 		$gutter    = ( $gutter < 2 ) ? 2 : $gutter;
-
-	// 		$site_style = $ss_settings['site_style'];
-
-	// 		$screen_xs = ( $site_style == 'static' ) ? '50px' : '480px';
-	// 		$screen_sm = ( $site_style == 'static' ) ? '50px' : $screen_sm;
-	// 		$screen_md = ( $site_style == 'static' ) ? '50px' : $screen_md;
-
-	// 		$variables = '';
-
-	// 		$variables .= '@screen-sm: ' . $screen_sm . 'px;';
-	// 		$variables .= '@screen-md: ' . $screen_md . 'px;';
-	// 		$variables .= '@screen-lg: ' . $screen_lg . 'px;';
-
-	// 		$variables .= '@grid-gutter-width: ' . $gutter . 'px;';
-
-	// 		$variables .= '@jumbotron-padding: @grid-gutter-width;';
-
-	// 		$variables .= '@modal-inner-padding: ' . round( $gutter * 20 / 30 ) . 'px;';
-	// 		$variables .= '@modal-title-padding: ' . round( $gutter * 15 / 30 ) . 'px;';
-
-	// 		$variables .= '@modal-lg: ' . round( $screen_md - ( 3 * $gutter ) ) . 'px;';
-	// 		$variables .= '@modal-md: ' . round( $screen_sm - ( 3 * $gutter ) ) . 'px;';
-	// 		$variables .= '@modal-sm: ' . round( $screen_xs - ( 3 * $gutter ) ) . 'px;';
-
-	// 		$variables .= '@panel-body-padding: @modal-title-padding;';
-
-	// 		$variables .= '@container-tablet:        ' . ( $screen_sm - ( $gutter / 2 ) ). 'px;';
-	// 		$variables .= '@container-desktop:       ' . ( $screen_md - ( $gutter / 2 ) ). 'px;';
-	// 		$variables .= '@container-large-desktop: ' . ( $screen_lg - $gutter ). 'px;';
-
-	// 		if ( $site_style == 'static' ) {
-	// 			// disable responsiveness
-	// 			$variables .= '@screen-xs-max: 0 !important;
-	// 			.container { max-width: none !important; width: @container-large-desktop; }
-	// 			html { overflow-x: auto !important; }';
-	// 		}
-
-	// 		/**
-	// 		 * TYPOGRAPHY
-	// 		 */
-	// 		$font_base = shoestrap_process_font( shoestrap_getVariable( 'font_base', true ) );
-	// 		$font_h1   = shoestrap_process_font( shoestrap_getVariable( 'font_h1', true ) );
-	// 		$font_h2   = shoestrap_process_font( shoestrap_getVariable( 'font_h2', true ) );
-	// 		$font_h3   = shoestrap_process_font( shoestrap_getVariable( 'font_h3', true ) );
-	// 		$font_h4   = shoestrap_process_font( shoestrap_getVariable( 'font_h4', true ) );
-	// 		$font_h5   = shoestrap_process_font( shoestrap_getVariable( 'font_h5', true ) );
-	// 		$font_h6   = shoestrap_process_font( shoestrap_getVariable( 'font_h6', true ) );
-
-	// 		$text_color       = '#' . str_replace( '#', '', Shoestrap_Color::sanitize_hex( $font_base['color'] ) );
-	// 		$sans_serif       = $font_base['font-family'];
-	// 		$font_size_base   = $font_base['font-size'];
-	// 		$font_weight_base = $font_base['font-weight'];
-
-	// 		$font_h1_size   = ( ( filter_var( $font_h1['font-size'], FILTER_SANITIZE_NUMBER_INT ) ) / 100 );
-	// 		$font_h2_size   = ( ( filter_var( $font_h2['font-size'], FILTER_SANITIZE_NUMBER_INT ) ) / 100 );
-	// 		$font_h3_size   = ( ( filter_var( $font_h3['font-size'], FILTER_SANITIZE_NUMBER_INT ) ) / 100 );
-	// 		$font_h4_size   = ( ( filter_var( $font_h4['font-size'], FILTER_SANITIZE_NUMBER_INT ) ) / 100 );
-	// 		$font_h5_size   = ( ( filter_var( $font_h5['font-size'], FILTER_SANITIZE_NUMBER_INT ) ) / 100 );
-	// 		$font_h6_size   = ( ( filter_var( $font_h6['font-size'], FILTER_SANITIZE_NUMBER_INT ) ) / 100 );
-
-	// 		if ( shoestrap_getVariable( 'font_heading_custom', true ) != 1 ) {
-
-	// 			$font_h1_face = $font_h2_face = $font_h3_face = $font_h4_face = $font_h5_face = $font_h6_face = 'inherit';
-
-	// 			$font_h1_weight = $font_h2_weight = $font_h3_weight = $font_h5_weight = $font_h4_weight = $font_h6_weight = '500';
-
-	// 			$font_h1_style = $font_h2_style = $font_h3_style = $font_h4_style = $font_h5_style = $font_h6_style = 'inherit';
-
-	// 			$font_h1_color  = $font_h2_color  = $font_h3_color  = $font_h4_color  = $font_h5_color  = $font_h6_color  = 'inherit';
-
-	// 		} else {
-	// 			$font_h1_face   = $font_h1['font-family'];
-	// 			$font_h1_weight = $font_h1['font-weight'];
-	// 			$font_h1_style  = $font_h1['font-style'];
-	// 			$font_h1_color  = '#' . str_replace( '#', '', Shoestrap_Color::sanitize_hex( $font_h1['color'] ) );
-
-	// 			$font_h2_face   = $font_h2['font-family'];
-	// 			$font_h2_weight = $font_h2['font-weight'];
-	// 			$font_h2_style  = $font_h2['font-style'];
-	// 			$font_h2_color  = '#' . str_replace( '#', '', Shoestrap_Color::sanitize_hex( $font_h2['color'] ) );
-
-	// 			$font_h3_face   = $font_h3['font-family'];
-	// 			$font_h3_weight = $font_h3['font-weight'];
-	// 			$font_h3_style  = $font_h3['font-style'];
-	// 			$font_h3_color  = '#' . str_replace( '#', '', Shoestrap_Color::sanitize_hex( $font_h3['color'] ) );
-
-	// 			$font_h4_face   = $font_h4['font-family'];
-	// 			$font_h4_weight = $font_h4['font-weight'];
-	// 			$font_h4_style  = $font_h4['font-style'];
-	// 			$font_h4_color  = '#' . str_replace( '#', '', Shoestrap_Color::sanitize_hex( $font_h4['color'] ) );
-
-	// 			$font_h5_face   = $font_h5['font-family'];
-	// 			$font_h5_weight = $font_h5['font-weight'];
-	// 			$font_h5_style  = $font_h5['font-style'];
-	// 			$font_h5_color  = '#' . str_replace( '#', '', Shoestrap_Color::sanitize_hex( $font_h5['color'] ) );
-
-	// 			$font_h6_face   = $font_h6['font-family'];
-	// 			$font_h6_weight = $font_h6['font-weight'];
-	// 			$font_h6_style  = $font_h6['font-style'];
-	// 			$font_h6_color  = '#' . str_replace( '#', '', Shoestrap_Color::sanitize_hex( $font_h6['color'] ) );
-	// 		}
-
-	// 		$variables = '';
-
-	// 		$variables .= '@text-color:             ' . $text_color . ';';
-	// 		$variables .= '@font-family-sans-serif: ' . $sans_serif . ';';
-	// 		$variables .= '@font-size-base:         ' . $font_size_base . 'px;';
-
-	// 		$variables .= '@font-size-h1: floor((@font-size-base * ' . $font_h1_size . '));';
-	// 		$variables .= '@font-size-h2: floor((@font-size-base * ' . $font_h2_size . '));';
-	// 		$variables .= '@font-size-h3: ceil((@font-size-base * ' . $font_h3_size . '));';
-	// 		$variables .= '@font-size-h4: ceil((@font-size-base * ' . $font_h4_size . '));';
-	// 		$variables .= '@font-size-h5: ' . $font_h5_size . ';';
-	// 		$variables .= '@font-size-h6: ceil((@font-size-base * ' . $font_h6_size . '));';
-
-	// 		$variables .= '@caret-width-base:  ceil(@font-size-small / 3 );';
-	// 		$variables .= '@caret-width-large: ceil(@caret-width-base * (5/4) );';
-
-	// 		$variables .= '@table-cell-padding:           ceil((@font-size-small * 2) / 3 );';
-	// 		$variables .= '@table-condensed-cell-padding: ceil(((@font-size-small / 3 ) * 5) / 4);';
-
-	// 		$variables .= '@carousel-control-font-size: ceil((@font-size-base * 1.43));';
-
-	// 		// Shoestrap-specific variables
-	// 		// --------------------------------------------------
-
-	// 		$variables .= '@base-font-weight:        ' . $font_weight_base . ';';
-
-	// 		// H1
-	// 		$variables .= '@heading-h1-face:         ' . $font_h1_face . ';';
-	// 		$variables .= '@heading-h1-weight:       ' . $font_h1_weight . ';';
-	// 		$variables .= '@heading-h1-style:        ' . $font_h1_style . ';';
-	// 		$variables .= '@heading-h1-color:        ' . $font_h1_color . ';';
-
-	// 		// H2
-	// 		$variables .= '@heading-h2-face:         ' . $font_h2_face . ';';
-	// 		$variables .= '@heading-h2-weight:       ' . $font_h2_weight . ';';
-	// 		$variables .= '@heading-h2-style:        ' . $font_h2_style . ';';
-	// 		$variables .= '@heading-h2-color:        ' . $font_h2_color . ';';
-
-	// 		// H3
-	// 		$variables .= '@heading-h3-face:         ' . $font_h3_face . ';';
-	// 		$variables .= '@heading-h3-weight:       ' . $font_h3_weight . ';';
-	// 		$variables .= '@heading-h3-style:        ' . $font_h3_style . ';';
-	// 		$variables .= '@heading-h3-color:        ' . $font_h3_color . ';';
-
-	// 		// H4
-	// 		$variables .= '@heading-h4-face:         ' . $font_h4_face . ';';
-	// 		$variables .= '@heading-h4-weight:       ' . $font_h4_weight . ';';
-	// 		$variables .= '@heading-h4-style:        ' . $font_h4_style . ';';
-	// 		$variables .= '@heading-h4-color:        ' . $font_h4_color . ';';
-
-	// 		// H5
-	// 		$variables .= '@heading-h5-face:         ' . $font_h5_face . ';';
-	// 		$variables .= '@heading-h5-weight:       ' . $font_h5_weight . ';';
-	// 		$variables .= '@heading-h5-style:        ' . $font_h5_style . ';';
-	// 		$variables .= '@heading-h5-color:        ' . $font_h5_color . ';';
-
-	// 		// H6
-	// 		$variables .= '@heading-h6-face:         ' . $font_h6_face . ';';
-	// 		$variables .= '@heading-h6-weight:       ' . $font_h6_weight . ';';
-	// 		$variables .= '@heading-h6-style:        ' . $font_h6_style . ';';
-	// 		$variables .= '@heading-h6-color:        ' . $font_h6_color . ';';
-
-	// 		return $variables;
-	// 	}
-
-	// 	/**
-	// 	 * Add the variables to the compiler
-	// 	 */
-	// 	function variables_filter( $variables ) {
-	// 		return $variables . self::variables();
-	// 	}
-
-	// 	function styles( $foundation ) {
-	// 			$return  = $foundation;
-	// 			$return .= '@import "' . dirname( __FILE__ ) . '/assets/less/blog.less";';
-	// 			$return .= '@import "' . dirname( __FILE__ ) . '/assets/less/headers.less";';
-	// 			$return .= '@import "' . dirname( __FILE__ ) . '/assets/less/layout.less";';
-	// 			$return .= '@import "' . dirname( __FILE__ ) . '/assets/less/typography.less";';
-	// 			$return .= '@import "' . dirname( __FILE__ ) . '/assets/less/social.less";';
-	// 			$return .= '@import "' . dirname( __FILE__ ) . '/assets/less/menus.less";';
-	// 			$return .= '@import "' . dirname( __FILE__ ) . '/assets/less/widgets.less";';
-	// 	}
-	 }
+		/**
+		 * Build the social links for the navbar
+		 */
+		function navbar_social_links() {}
+	}
 }

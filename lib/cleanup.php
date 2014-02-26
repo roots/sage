@@ -151,7 +151,7 @@ add_filter( 'request', 'shoestrap_request_filter' );
  */
 function shoestrap_get_search_form( $form ) {
 	$form = '';
-	locate_template( '/templates/searchform.php', true, false );
+	ss_locate_template( '/templates/searchform.php', true, false );
 	return $form;
 }
 add_filter( 'get_search_form', 'shoestrap_get_search_form' );

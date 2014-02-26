@@ -56,8 +56,6 @@ if ( !class_exists( 'Shoestrap_Framework' ) ) {
 				$compiler_init = new Shoestrap_Sass_PHP();
 				$this->fw->compiler();
 			}
-
-			add_action( 'shoestrap_nav', array( $this, 'nav_template' ) );
 		}
 
 		/**
@@ -174,10 +172,6 @@ if ( !class_exists( 'Shoestrap_Framework' ) ) {
 
 		function pagination_ul_class() {
 			return $this->fw->pagination_ul_class();
-		}
-
-		function nav_template() {
-			$initialize = $this->fw->nav_template();
 		}
 
 		function compiler() {

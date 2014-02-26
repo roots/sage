@@ -386,14 +386,6 @@ if ( !class_exists( 'Shoestrap_Bootstrap' ) ) {
 			return '<div class="panel-footer' . $classes . '">';
 		}
 
-		function nav_template() {
-			if ( !has_action( 'shoestrap_do_navbar' ) ) {
-				get_template_part( 'lib/modules/framework/bootstrap/header-top-navbar' );
-			} else {
-				do_action( 'shoestrap_do_navbar' );
-			}
-		}
-
 		/**
 		 * Variables to use for the compiler.
 		 * These override the default Bootstrap Variables.
@@ -893,6 +885,7 @@ if ( !class_exists( 'Shoestrap_Bootstrap' ) ) {
 		function styles_filter( $bootstrap ) {
 			return $bootstrap . $this->styles();
 		}
+
 		/*
 		 * This function can be used to compile a less file to css using the lessphp compiler
 		 */

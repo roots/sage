@@ -3,6 +3,8 @@
 global $ss_settings;
 
 if ( $ss_settings['framework'] == 'bootstrap' ) {
+	define( 'SS_FRAMEWORK_PATH', dirname( __FILE__ ) );
+
 	include_once( dirname( __FILE__ ) . '/class-Shoestrap_Bootstrap.php' );            // Framework class.
 	include_once( dirname( __FILE__ ) . '/menus/nav.php' );                            // NavWalker
 	include_once( dirname( __FILE__ ) . '/gallery.php' );                              // Custom [gallery] modifications

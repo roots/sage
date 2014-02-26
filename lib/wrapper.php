@@ -32,7 +32,7 @@ class Shoestrap_Wrapping {
 
 	public function __toString() {
 		$this->templates = apply_filters( 'shoestrap_wrap_' . $this->slug, $this->templates );
-		return locate_template( $this->templates );
+		return ss_locate_template( $this->templates );
 	}
 
 	static function wrap( $main ) {

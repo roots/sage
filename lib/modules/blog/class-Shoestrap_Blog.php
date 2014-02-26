@@ -311,7 +311,7 @@ if ( !class_exists( 'ShoestrapBlog' ) ) {
 			}
 
 			if ( !empty( $content ) )
-				echo $ss_framework->make_row( 'div', null, 'row-meta' ) . $content . '</div>';
+				echo $ss_framework->make_row( 'div', null, 'row-meta' ) . $content . '</div><hr>';
 		}
 
 		/**

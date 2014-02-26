@@ -1,4 +1,4 @@
-<?php get_template_part('templates/head'); ?>
+<?php ss_get_template_part('templates/head'); ?>
 <body <?php body_class(); ?>>
 <a href="#content" class="sr-only"><?php _e( 'Skip to main content', 'shoestrap' ); ?></a>
 <?php global $ss_framework; ?>
@@ -8,7 +8,9 @@
 	<![endif]-->
 
 	<?php do_action( 'get_header' ); ?>
-	<?php do_action( 'shoestrap_nav' ); ?>
+
+	<?php ss_get_template_part( 'templates/top-bar' ); ?>
+
 	<?php do_action( 'shoestrap_pre_wrap' ); ?>
 
 	<div id="wrap-main-section" class="wrap main-section <?php echo apply_filters( 'shoestrap_container_class', 'container' ); ?>" role="document">
@@ -52,7 +54,7 @@
 	do_action('shoestrap_pre_footer');
 
 	if ( !has_action( 'shoestrap_footer_override' ) ) {
-		get_template_part( 'templates/footer' );
+		ss_get_template_part( 'templates/footer' );
 	} else {
 		do_action( 'shoestrap_footer_override' );
 	}

@@ -330,6 +330,7 @@ if ( !class_exists( 'Shoestrap_Foundation_Menus' ) ) {
 		 */
 		public static function navbar_class( $navbar = 'main') {
 			global $ss_settings;
+			$toggle   = $ss_settings['navbar_toggle'];
 
 			$fixed    = $ss_settings['navbar_fixed'];
 			$contain  = ( $toggle == 'contain' ) ? true : false;
