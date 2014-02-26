@@ -158,6 +158,16 @@ add_filter( 'get_search_form', 'shoestrap_get_search_form' );
 
 
 /**
+ * Remove unnecessary self-closing tags
+ */
+function shoestrap_remove_self_closing_tags( $input ) {
+	return str_replace( ' />', '>', $input );
+}
+add_filter( 'get_avatar',          'shoestrap_remove_self_closing_tags' ); // <img />
+add_filter( 'comment_id_fields',   'shoestrap_remove_self_closing_tags' ); // <input />
+add_filter( 'post_thumbnail_html', 'shoestrap_remove_self_closing_tags' ); // <img />
+
+/**
  * Retrieve paginated link for archive post pages.
  *
  * Technically, the function can be used to create paginated link list for any

@@ -383,6 +383,8 @@ if ( !class_exists( 'ShoestrapBlog' ) ) {
 		 * This function makes sure that images are not added based on the user's selections.
 		 */
 		function remove_featured_image_per_post_type() {
+			global $ss_settings;
+
 			$post_types = get_post_types( array( 'public' => true ), 'names' );
 			$post_type_options = $ss_settings['feat_img_per_post_type'];
 

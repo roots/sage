@@ -342,7 +342,7 @@ if ( !class_exists( 'Shoestrap_Social' ) ) {
 		 * This is simply a helper function for other functions.
 		 */
 		function get_social_links() {
-			global $ss_Settings;
+			global $ss_settings;
 			// An array of the available networks
 			$networks   = array();
 

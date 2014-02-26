@@ -18,10 +18,11 @@ if ( !defined( 'SHOESTRAP_OPT_NAME' ) ) {
 global $ss_settings;
 $ss_settings = get_option( SHOESTRAP_OPT_NAME );
 
-// If modules exist, load them.
-if ( file_exists( locate_template( '/lib/modules/load.modules.php' ) ) ) {
-	require_once locate_template('/lib/modules/load.modules.php');
-}
+require_once locate_template('/lib/class-Shoestrap_Color.php');
+require_once locate_template('/lib/class-Shoestrap_Image.php');
+require_once locate_template('/lib/functions-core.php');
+require_once locate_template('/lib/redux-init.php');
+require_once locate_template('/lib/modules/load.modules.php');
 
 // Get the framework
 require_once locate_template( '/framework/class-Shoestrap_Framework.php' );

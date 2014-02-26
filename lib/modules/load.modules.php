@@ -17,10 +17,6 @@ if ( !defined( 'SHOESTRAP_MODULES_URL' ) ) {
 	define( 'SHOESTRAP_MODULES_URL', get_template_directory_uri() . '/lib/modules' );
 }
 
-// Prioritize loading of some necessary core modules
-require_once SHOESTRAP_MODULES_PATH . '/redux/redux-init.php';
-// require_once SHOESTRAP_MODULES_PATH . '/core/functions.core.php';
-
 /*
  * Use 'RecursiveDirectoryIterator' if PHP Version >= 5.2.11
  */

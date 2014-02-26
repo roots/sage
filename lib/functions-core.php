@@ -122,24 +122,6 @@ function shoestrap_remove_dashboard_widgets() {
 }
 add_action( 'admin_init', 'shoestrap_remove_dashboard_widgets' );
 
-/**
- * Remove unnecessary self-closing tags
- */
-function shoestrap_remove_self_closing_tags( $input ) {
-	return str_replace( ' />', '>', $input );
-}
-add_filter( 'get_avatar',          'shoestrap_remove_self_closing_tags' ); // <img />
-add_filter( 'comment_id_fields',   'shoestrap_remove_self_closing_tags' ); // <input />
-add_filter( 'post_thumbnail_html', 'shoestrap_remove_self_closing_tags' ); // <img />
-
-/**
- * Don't return the default description in the RSS feed if it hasn't been changed
- */
-function shoestrap_remove_default_description( $bloginfo ) {
-	$default_tagline = 'Just another WordPress site';
-	return ( $bloginfo === $default_tagline ) ? '' : $bloginfo;
-}
-add_filter( 'get_bloginfo_rss', 'shoestrap_remove_default_description' );
 
 function shoestrap_process_font( $font ) {
 

@@ -91,10 +91,10 @@ if ( !class_exists( 'Shoestrap_Framework' ) ) {
 				'title'     => __( 'Framework Select', 'shoestrap' ),
 				'desc'      => __( 'Select a framework.', 'shoestrap' ),
 				'id'        => 'framework',
-				'default'   => '',
+				'default'   => 'bootstrap',
 				'type'      => 'select',
 				'options'   => $frameworks_select,
-				'compiler'  => true,
+				'compiler'  => false,
 			);
 
 			$section['fields'] = $fields;
