@@ -6,6 +6,13 @@ if ( $ss_settings['framework'] == 'bootstrap' ) {
 	define( 'SS_FRAMEWORK_PATH', dirname( __FILE__ ) );
 
 	include_once( dirname( __FILE__ ) . '/class-Shoestrap_Bootstrap.php' );            // Framework class.
+
+	include_once( dirname( __FILE__ ) . '/modules/class-Shoestrap_Branding.php' );     // Branding
+	include_once( dirname( __FILE__ ) . '/modules/class-Shoestrap_Typography.php' );   // Typography
+	include_once( dirname( __FILE__ ) . '/modules/class-Shoestrap_Social.php' );       // Social
+	include_once( dirname( __FILE__ ) . '/modules/class-Shoestrap_Layout.php' );       // layout
+	include_once( dirname( __FILE__ ) . '/modules/widgets.php' );                      // Widgets
+
 	include_once( dirname( __FILE__ ) . '/menus/nav.php' );                            // NavWalker
 	include_once( dirname( __FILE__ ) . '/gallery.php' );                              // Custom [gallery] modifications
 	include_once( dirname( __FILE__ ) . '/menus/class-Shoestrap_Menus.php' );          // The menus module
