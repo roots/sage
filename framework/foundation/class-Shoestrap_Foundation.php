@@ -371,9 +371,13 @@ if ( !class_exists( 'Shoestrap_Foundation' ) ) {
 			global $ss_settings;
 			$vars  = '';
 
-			// $vars .= '$topbar-bg:      ' . $ss_settings['navbar_bg'] . ';';
-			// $vars .= '$off-canvas-bg : ' . $ss_settings['navbar_bg'] . ';';
-			// $vars .= '$topbar-height : ' . $ss_settings['navbar_height'] . 'px;';
+			$vars .= '$base-font-size:' . $ss_settings['base-font']['font-size'] . ';';
+			$vars .= '$body-font-color:' . $ss_settings['base-font']['color'] . ';';
+			$vars .= '$body-font-family:' . $ss_settings['base-font']['font-family'] . ';';
+			$vars .= '$body-font-weight:' . $ss_settings['base-font']['font-weight'] . ';';
+
+			$vars .= '$header-font-family: ' . $ss_settings['header-font']['font-family'] . ';';
+			$vars .= '$header-font-color: ' . $ss_settings['header-font']['color'] . ';';
 
 			return $vars;
 		}
