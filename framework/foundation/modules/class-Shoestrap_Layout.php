@@ -16,18 +16,12 @@ if ( !class_exists( 'Shoestrap_Layout' ) ) {
 			add_filter( 'shoestrap_section_class_main',      array( $this, 'apply_layout_classes_main'      )     );
 			add_filter( 'shoestrap_section_class_primary',   array( $this, 'apply_layout_classes_primary'   )     );
 			add_filter( 'shoestrap_section_class_secondary', array( $this, 'apply_layout_classes_secondary' )     );
-			add_filter( 'shoestrap_container_class',         array( $this, 'container_class'                )     );
-			add_filter( 'body_class',                        array( $this, 'layout_body_class'              )     );
 			add_filter( 'shoestrap_navbar_container_class',  array( $this, 'navbar_container_class'         )     );
 			add_action( 'template_redirect',                 array( $this, 'content_width'                  )     );
 
 			if ( $ss_settings['body_margin_top'] > 0 || $ss_settings['body_margin_bottom'] > 0 )
 				add_action( 'wp_enqueue_scripts',            array( $this, 'body_margin'                   ), 101 );
 
-			add_action( 'get_header',             array( $this, 'boxed_container_div_open'          ), 1   );
-			add_action( 'shoestrap_pre_footer',   array( $this, 'boxed_container_div_open'          ), 1   );
-			add_action( 'shoestrap_do_navbar',    array( $this, 'boxed_container_div_close'         ), 99  );
-			add_action( 'shoestrap_after_footer', array( $this, 'boxed_container_div_close'         ), 899 );
 			add_action( 'wp',                     array( $this, 'control_primary_sidebar_display'   )      );
 			add_action( 'wp',                     array( $this, 'control_secondary_sidebar_display' )      );
 
@@ -38,8 +32,6 @@ if ( !class_exists( 'Shoestrap_Layout' ) ) {
 				add_filter( 'shoestrap_widgets_before_title', array( $this, 'alter_widgets_before_title' ) );
 				add_filter( 'shoestrap_widgets_after_title',  array( $this, 'alter_widgets_after_title'  ) );
 			}
-
-			add_action( 'wp_head',            array( $this, 'static_meta'      ) );
 		}
 
 		/*
@@ -223,9 +215,6 @@ if ( !class_exists( 'Shoestrap_Layout' ) ) {
 			$first  = intval( $ss_settings['layout_primary_width'] );
 			$second = intval( $ss_settings['layout_secondary_width'] );
 
-			// disable responsiveness if layout is set to non-responsive
-			$width = ( $ss_settings['site_style'] == 'static' ) ? 'mobile' : 'tablet';
-
 			// Set some defaults so that we can change them depending on the selected template
 			$main       = 12;
 			$primary    = NULL;
@@ -265,13 +254,13 @@ if ( !class_exists( 'Shoestrap_Layout' ) ) {
 			}
 
 			if ( $target == 'primary' ) {
-				$class = $ss_framework->column_classes( array( $width => $primary ) );
+				$class = $ss_framework->column_classes( array( 'tablet' => $primary ) );
 			} elseif ( $target == 'secondary' ) {
-				$class = $ss_framework->column_classes( array( $width => $secondary ) );
+				$class = $ss_framework->column_classes( array( 'tablet' => $secondary ) );
 			} elseif ( $target == 'wrapper' ) {
-				$class = $ss_framework->column_classes( array( $width => $wrapper ) );
+				$class = $ss_framework->column_classes( array( 'tablet' => $wrapper ) );
 			} else {
-				$class = $ss_framework->column_classes( array( $width => $main ) );
+				$class = $ss_framework->column_classes( array( 'tablet' => $main ) );
 			}
 
 			if ( $echo ) {
@@ -310,65 +299,6 @@ if ( !class_exists( 'Shoestrap_Layout' ) ) {
 			return self::section_class_ext( 'secondary' );
 		}
 
-		/**
-		 * Add and remove body_class() classes to accomodate layouts
-		 */
-		function layout_body_class( $classes ) {
-			global $ss_settings;
-			$layout     = self::get_layout();
-			$site_style = $ss_settings['site_style'];
-			$margin     = $ss_settings['navbar_margin_top'];
-			$style      = '';
-
-			$classes[] = ( $layout == 2 || $layout == 3 || $layout == 5 ) ? 'main-float-right' : '';
-			$classes[] = ( $site_style == 'boxed' && $margin != 0 ) ? 'boxed-style' : '';
-
-			// Remove unnecessary classes
-			$remove_classes = array();
-			$classes = array_diff( $classes, $remove_classes );
-
-			return $classes;
-		}
-
-		/*
-		 * Return the container class
-		 */
-		public static function container_class() {
-			global $ss_settings;
-			$class    = $ss_settings['site_style'] != 'fluid' ? 'container' : 'fluid';
-
-			// override if navbar module exists and 'navbar-toggle' is set to left.
-			if ( class_exists( 'ShoestrapMenus' ) ) {
-				if ( $ss_settings['navbar_toggle'] == 'left' )
-					$class = 'fluid';
-			}
-
-			return $class;
-		}
-
-		/*
-		 * Return the container class
-		 */
-		function navbar_container_class() {
-			global $ss_settings;
-
-			$site_style = $ss_settings['site_style'];
-			$toggle     = $ss_settings['navbar_toggle'];
-
-			if ( $toggle == 'full' )
-				$class = 'fluid';
-			else
-				$class = ( $site_style != 'fluid' ) ? 'container' : 'fluid';
-
-			// override if navbar module exists and 'navbar-toggle' is set to left.
-			if ( class_exists( 'ShoestrapMenus' ) ) {
-				if ( $ss_settings['navbar_toggle'] == 'left' )
-					$class = 'fluid';
-			}
-
-			return $class;
-		}
-
 		/*
 		 * Calculate the width of the content area in pixels.
 		 */
@@ -378,7 +308,7 @@ if ( !class_exists( 'Shoestrap_Layout' ) ) {
 
 			$layout = self::get_layout();
 
-			$container  = filter_var( $ss_settings['screen_large_desktop'], FILTER_SANITIZE_NUMBER_INT );
+			$container  = filter_var( $ss_settings['max-width'], FILTER_SANITIZE_NUMBER_INT );
 			$gutter     = filter_var( $ss_settings['layout_gutter'], FILTER_SANITIZE_NUMBER_INT );
 
 			$main_span  = filter_var( self::section_class_ext( 'main', false ), FILTER_SANITIZE_NUMBER_INT );
@@ -396,10 +326,11 @@ if ( !class_exists( 'Shoestrap_Layout' ) ) {
 			// Width should be an integer since we're talking pixels, round up!.
 			$width = round( $width );
 
-			if ( $echo )
+			if ( $echo ) {
 				echo $width;
-			else
+			} else {
 				return $width;
+			}
 		}
 
 		/*
@@ -408,38 +339,6 @@ if ( !class_exists( 'Shoestrap_Layout' ) ) {
 		public static function content_width() {
 			global $content_width;
 			$content_width = self::content_width_px();
-		}
-
-		/*
-		 * Body Margins
-		 */
-		function body_margin() {
-			global $ss_settings;
-
-			$body_margin_top    = $ss_settings['body_margin_top'];
-			$body_margin_bottom = $ss_settings['body_margin_bottom'];
-
-			$style = 'body { margin-top:'. $body_margin_top .'px; margin-bottom:'. $body_margin_bottom .'px; }';
-
-			wp_add_inline_style( 'shoestrap_css', $style );
-		}
-
-		/**
-		 * Add a wrapper div when in "boxed" mode to disallow full-width elements
-		 */
-		function boxed_container_div_open() {
-			global $ss_settings;
-
-			if ( $ss_settings['site_style'] == 'boxed' ) echo '<div class="container boxed-container">';
-		}
-
-		/**
-		 * Close the wrapper div that the 'boxed_container_div_open' opens when in "boxed" mode.
-		 */
-		function boxed_container_div_close() {
-			global $ss_settings;
-
-			if ( $ss_settings['site_style'] == 'boxed' ) echo '</div>';
 		}
 
 		/**
@@ -475,45 +374,6 @@ if ( !class_exists( 'Shoestrap_Layout' ) ) {
 			if ( ( !is_front_page() && shoestrap_display_secondary_sidebar() ) || ( is_front_page() && $layout_sidebar_on_front == 1 && self::get_layout() >= 3 ) )
 				add_filter( 'shoestrap_display_secondary_sidebar', 'shoestrap_return_true' );
 
-		}
-
-		/**
-		 * Get the widget class
-		 */
-		function alter_widgets_class() {
-			global $ss_settings;
-			return $ss_settings['widgets_mode'] == 0 ? 'panel panel-default' : 'well';
-		}
-
-		/**
-		 * Widgets 'before_title' modifying based on widgets mode.
-		 */
-		function alter_widgets_before_title() {
-			global $ss_settings;
-			return $ss_settings['widgets_mode'] == 0 ? '<div class="panel-heading">' : '<h3 class="widget-title">';
-		}
-
-		/**
-		 * Widgets 'after_title' modifying based on widgets mode.
-		 */
-		function alter_widgets_after_title() {
-			global $ss_settings;
-			return $ss_settings['widgets_mode'] == 0 ? '</div><div class="panel-body">' : '</h3>';
-		}
-
-		/**
-		 * Add some metadata when users have selected a static mode for their layout (not responsive).
-		 */
-		function static_meta() {
-			global $ss_settings;
-
-			if ( $ss_settings['site_style'] != 'static' ) : ?>
-				<meta name="viewport" content="width=device-width, initial-scale=1">
-				<meta name="mobile-web-app-capable" content="yes">
-				<meta name="apple-mobile-web-app-capable" content="yes">
-				<meta name="apple-mobile-web-app-status-bar-style" content="black">
-				<?php
-			endif;
 		}
 	}
 }
