@@ -374,7 +374,9 @@ if ( !class_exists( 'Shoestrap_Foundation' ) ) {
 			$vars .= '$base-font-size:' . $ss_settings['base-font']['font-size'] . ';';
 			$vars .= '$body-font-color:' . $ss_settings['base-font']['color'] . ';';
 			$vars .= '$body-font-family:' . $ss_settings['base-font']['font-family'] . ';';
-			$vars .= '$body-font-weight:' . $ss_settings['base-font']['font-weight'] . ';';
+			if ( isset( $ss_settings['base-font']['font-weight'] ) && ! empty( $ss_settings['base-font']['font-weight'] ) ) {
+				$vars .= '$body-font-weight:' . $ss_settings['base-font']['font-weight'] . ';';
+			}
 
 			$vars .= '$header-font-family: ' . $ss_settings['header-font']['font-family'] . ';';
 			$vars .= '$header-font-color: ' . $ss_settings['header-font']['color'] . ';';
