@@ -371,9 +371,9 @@ if ( !class_exists( 'Shoestrap_Foundation' ) ) {
 			global $ss_settings;
 			$vars  = '';
 
-			$vars .= '$topbar-bg:      ' . $ss_settings['navbar_bg'] . ';';
-			$vars .= '$off-canvas-bg : ' . $ss_settings['navbar_bg'] . ';';
-			$vars .= '$topbar-height : ' . $ss_settings['navbar_height'] . 'px;';
+			// $vars .= '$topbar-bg:      ' . $ss_settings['navbar_bg'] . ';';
+			// $vars .= '$off-canvas-bg : ' . $ss_settings['navbar_bg'] . ';';
+			// $vars .= '$topbar-height : ' . $ss_settings['navbar_height'] . 'px;';
 
 			return $vars;
 		}

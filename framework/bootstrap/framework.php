@@ -7,7 +7,10 @@ if ( $ss_settings['framework'] == 'bootstrap' ) {
 
 	include_once( dirname( __FILE__ ) . '/class-Shoestrap_Bootstrap.php' );            // Framework class.
 
+	include_once( dirname( __FILE__ ) . '/modules/class-Shoestrap_Advanced.php' );     // Advanced
+	include_once( dirname( __FILE__ ) . '/modules/class-Shoestrap_Background.php' );   // Background
 	include_once( dirname( __FILE__ ) . '/modules/class-Shoestrap_Branding.php' );     // Branding
+	include_once( dirname( __FILE__ ) . '/modules/class-Shoestrap_Header.php' );       // Header
 	include_once( dirname( __FILE__ ) . '/modules/class-Shoestrap_Typography.php' );   // Typography
 	include_once( dirname( __FILE__ ) . '/modules/class-Shoestrap_Social.php' );       // Social
 	include_once( dirname( __FILE__ ) . '/modules/class-Shoestrap_Layout.php' );       // layout
