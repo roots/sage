@@ -21,7 +21,7 @@ if( !class_exists( 'Shoestrap_Footer' ) ) {
 			// Branding Options
 			$section = array(
 				'title' => __( 'Footer', 'shoestrap' ),
-				'icon' => 'el-icon-caret-down icon-large'
+				'icon' => 'el-icon-caret-down'
 			);
 
 			$fields[] = array( 
