@@ -244,6 +244,8 @@ if ( !class_exists( 'SS_Foundation_Layout' ) ) {
 
 			if ( $layout == 2 || $layout == 3 || $layout == 5 ) {
 				$main_extra = ' right';
+			} else {
+				$main_extra = null;
 			}
 
 			if ( $target == 'primary' ) {
@@ -302,7 +304,6 @@ if ( !class_exists( 'SS_Foundation_Layout' ) ) {
 			$layout = self::get_layout();
 
 			$container  = filter_var( $ss_settings['max-width'], FILTER_SANITIZE_NUMBER_INT );
-			$gutter     = filter_var( $ss_settings['layout_gutter'], FILTER_SANITIZE_NUMBER_INT );
 
 			$main_span  = filter_var( self::section_class_ext( 'main', false ), FILTER_SANITIZE_NUMBER_INT );
 			$main_span  = str_replace( '-' , '', $main_span );
@@ -311,10 +312,11 @@ if ( !class_exists( 'SS_Foundation_Layout' ) ) {
 			if ( is_active_sidebar( 'sidebar-secondary' ) && is_active_sidebar( 'sidebar-primary' ) && $layout == 5 )
 				$main_span = 12 - intval( $ss_settings['layout_primary_width'] ) - intval( $ss_settings['layout_secondary_width'] );
 
-			if ( is_front_page() && $ss_settings['layout_sidebar_on_front'] != 1 )
+			if ( is_front_page() && $ss_settings['layout_sidebar_on_front'] != 1 ) {
 				$main_span = 12;
+			}
 
-			$width = $container * ( $main_span / 12 ) - $gutter;
+			$width = $container * ( $main_span / 12 ) - 30;
 
 			// Width should be an integer since we're talking pixels, round up!.
 			$width = round( $width );

@@ -20,7 +20,7 @@ if ( !class_exists( 'SS_Foundation_Colors' ) ) {
 			$fields = array();
 			// Branding Options
 			$section = array(
-				'title' => __( 'Branding', 'shoestrap' ),
+				'title' => __( 'Colors', 'shoestrap' ),
 				'icon' => 'el-icon-certificate'
 			);
 

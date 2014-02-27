@@ -1,12 +1,12 @@
 <?php
 
 
-if ( !class_exists( 'Shoestrap_Header' ) ) {
+if ( !class_exists( 'SS_Foundation_Header' ) ) {
 
 	/**
 	* The Header module
 	*/
-	class Shoestrap_Header {
+	class SS_Foundation_Header {
 
 		function __construct() {
 			add_filter( 'redux/options/' . SHOESTRAP_OPT_NAME . '/sections', array( $this, 'options' ), 80 );
@@ -36,40 +36,41 @@ if ( !class_exists( 'Shoestrap_Header' ) ) {
 				'id'          => 'header_toggle',
 				'default'     => 0,
 				'type'        => 'switch',
+				'compiler'    => false,
 			);
 
 			$fields[] = array( 
 				'title'       => __( 'Display branding on your Header.', 'shoestrap' ),
-				'desc'        => __( 'Turn this ON to display branding ( Sitename or Logo )on your Header. Default: ON', 'shoestrap' ),
+				'desc'        => __( 'Turn this ON to display branding ( Sitename or Logo )on your Header.', 'shoestrap' ),
 				'id'          => 'header_branding',
 				'default'     => 1,
 				'type'        => 'switch',
-				'required'    => array('header_toggle','=',array('1')),
+				'required'    => array( 'header_toggle', '=', array( '1' ) ),
+				'compiler'    => false,
+			);
+
+			$fields[] = array(
+				'title'       => __( 'Branding width', 'shoestrap' ),
+				'desc'        => '',
+				'id'          => 'header-branding-width',
+				'default'     => 6,
+				'min'         => 0,
+				'step'        => 1,
+				'max'         => 12,
+				'type'        => 'slider',
+				'required'    => array( 'header_toggle', '=', array( '1' ) ),
+				'compiler'    => false,
 			);
 
 			$fields[] = array( 
 				'title'       => __( 'Header Background', 'shoestrap' ),
 				'desc'        => __( 'Specify the background for your header.', 'shoestrap' ),
-				'id'          => 'header_bg',
-				'default'     => array(
-					'background-color' => '#ffffff'
-				),
+				'id'          => 'header-bg',
+				'default'     => array( 'background-color' => '#ffffff' ),
 				'output'      => '.header-wrapper',
 				'type'        => 'background',
 				'required'    => array( 'header_toggle','=',array( '1' ) ),
-			);
-
-			$fields[] = array( 
-				'title'       => __( 'Header Background Opacity', 'shoestrap' ),
-				'desc'        => __( 'Select the background opacity for your header. Default: 100%.', 'shoestrap' ),
-				'id'          => 'header_bg_opacity',
-				'default'     => 100,
-				'min'         => 0,
-				'step'        => 1,
-				'max'         => 100,
-				'compiler'    => true,
-				'type'        => 'slider',
-				'required'    => array('header_toggle','=',array('1')),
+				'compiler'    => false,
 			);
 
 			$fields[] = array( 
@@ -79,7 +80,8 @@ if ( !class_exists( 'Shoestrap_Header' ) ) {
 				'default'     => '#333333',
 				'transparent' => false,    
 				'type'        => 'color',
-				'required'    => array('header_toggle','=',array('1')),
+				'required'    => array( 'header_toggle', '=', array( '1' ) ),
+				'compiler'    => false,
 			);
 
 			$fields[] = array( 
@@ -90,7 +92,8 @@ if ( !class_exists( 'Shoestrap_Header' ) ) {
 				'min'         => 0,
 				'max'         => 200,
 				'type'        => 'slider',
-				'required'    => array('header_toggle','=',array('1')),
+				'required'    => array( 'header_toggle', '=', array( '1' ) ),
+				'compiler'    => false,
 			);
 
 			$fields[] = array( 
@@ -101,7 +104,8 @@ if ( !class_exists( 'Shoestrap_Header' ) ) {
 				'min'         => 0,
 				'max'         => 200,
 				'type'        => 'slider',
-				'required'    => array('header_toggle','=',array('1')),
+				'required'    => array( 'header_toggle', '=', array( '1' ) ),
+				'compiler'    => false,
 			);
 
 			$section['fields'] = $fields;
@@ -120,8 +124,8 @@ if ( !class_exists( 'Shoestrap_Header' ) ) {
 			register_sidebar( array(
 				'name'          => __( 'Header Area', 'shoestrap' ),
 				'id'            => 'header-area',
-				'before_widget' => '<div class="container">',
-				'after_widget'  => '</div>',
+				'before_widget' => '',
+				'after_widget'  => '',
 				'before_title'  => '<h1>',
 				'after_title'   => '</h1>',
 			));
@@ -134,38 +138,22 @@ if ( !class_exists( 'Shoestrap_Header' ) ) {
 			global $ss_settings;
 
 			if ( $ss_settings['header_toggle'] == 1 ) { ?>
-				<div class="before-main-wrapper">
-
-					<?php if ( $ss_settings['site_style'] == 'boxed' ) : ?>
-						<div class="container">
-					<?php endif; ?>
-
-						<div class="header-wrapper">
-
-							<?php if ( $ss_settings['site_style'] == 'wide' ) : ?>
-								<div class="container">
-							<?php endif; ?>
-
-								<?php if ( $ss_settings['header_branding'] == 1 ) : ?>
-									<a class="brand-logo" href="<?php echo home_url(); ?>/">
-										<h1><?php if ( class_exists( 'ShoestrapBranding' ) ) echo ShoestrapBranding::logo(); ?></h1>
-									</a>
-								<?php endif; ?>
-
-								<?php $pullclass = ( $ss_settings['header_branding'] == 1 ) ? ' class="pull-right"' : ''; ?>
-
-								<div<?php echo $pullclass; ?>>
-									<?php dynamic_sidebar( 'header-area' ); ?>
-								</div >
-
-							<?php if ( $ss_settings['site_style'] == 'wide' ) : ?>
-								</div>
+				<div class="header-wrapper">
+					<div class="row">
+						<div class="medium-<?php echo $ss_settings['header-branding-width']; ?> columns">
+							<?php if ( $ss_settings['header_branding'] == 1 ) : ?>
+								<a class="brand-logo left" href="<?php echo home_url(); ?>/">
+									<h1 class="brand"><?php echo Shoestrap_Framework::logo(); ?></h1>
+								</a>
 							<?php endif; ?>
 						</div>
 
-					<?php if ( $ss_settings['site_style'] == 'boxed' ) : ?>
+						<div class="medium-<?php echo 12 - $ss_settings['header-branding-width']; ?> columns">
+							<div<?php echo $pullclass; ?>>
+								<?php dynamic_sidebar( 'header-area' ); ?>
+							</div>
 						</div>
-					<?php endif; ?>
+					</div>
 				</div>
 				<?php
 			}
@@ -173,4 +161,4 @@ if ( !class_exists( 'Shoestrap_Header' ) ) {
 	}
 }
 
-$headers = new Shoestrap_Header();
+$headers = new SS_Foundation_Header();
