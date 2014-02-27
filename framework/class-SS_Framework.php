@@ -83,10 +83,15 @@ if ( !class_exists( 'SS_Framework' ) ) {
 
 			$frameworks = $this->frameworks_list();
 
-			$frameworks_select = array();
+			$frameworks_select    = array();
+			$frameworks_shortlist = array();
+
 			foreach ( $frameworks as $framework ) {
 				$frameworks_select[$framework['shortname']] = $framework['name'];
+				$frameworks_shortlist[] = $framework['shortname'];
 			}
+
+			$frameworks_shortlist = implode( ', ', $frameworks_shortlist );
 
 			// Blog Options
 			$section = array(
@@ -95,6 +100,18 @@ if ( !class_exists( 'SS_Framework' ) ) {
 			);
 
 			if ( ! defined( 'SS_FRAMEWORK' ) ) {
+
+				$fields[] = array(
+					'title'     => __( 'Framework Locking', 'shoestrap' ),
+					'desc'      => __( 'You can select a framework here. Keep in mind that if you reset your options, this option will also be reset and you will lose all your settings. When changing frameworks, your settings are also reset.
+						<br>If you want to lock your site to a specific framework, then please define it in your wp-config.php file like this:', 'shoestrap' ) . ' <code>define( "SS_Framework", "foundation" );</code><br>' . __( 'Accepted values: ', 'shoestrap' ) . $frameworks_shortlist . '</p>',
+					'id'        => 'framework_lock_help',
+					'type'      => 'info',
+					'options'   => $frameworks_select,
+					'compiler'  => false,
+				);
+
+
 				$fields[] = array(
 					'title'     => __( 'Framework Select', 'shoestrap' ),
 					'desc'      => __( 'Select a framework.', 'shoestrap' ),
