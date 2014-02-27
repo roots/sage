@@ -13,7 +13,14 @@ if ( !class_exists( 'SS_Framework' ) ) {
 		function __construct() {
 			global $ss_settings;
 
-			$active_framework = $ss_settings['framework'];
+			if ( ! defined( 'SS_FRAMEWORK' ) ) {
+				$active_framework = $ss_settings['framework'];
+			} else {
+				if ( SS_FRAMEWORK != $ss_settings['framework'] ) {
+					$ss_settings['framework'] = SS_FRAMEWORK;
+					update_option( SHOESTRAP_OPT_NAME, $ss_settings );
+				}
+			}
 
 			// Add the frameworks select to redux.
 			add_filter( 'redux/options/' . SHOESTRAP_OPT_NAME . '/sections', array( $this, 'options' ), 1 );
@@ -87,15 +94,17 @@ if ( !class_exists( 'SS_Framework' ) ) {
 				'icon'  => 'el-icon-website',
 			);
 
-			$fields[] = array(
-				'title'     => __( 'Framework Select', 'shoestrap' ),
-				'desc'      => __( 'Select a framework.', 'shoestrap' ),
-				'id'        => 'framework',
-				'default'   => 'bootstrap',
-				'type'      => 'select',
-				'options'   => $frameworks_select,
-				'compiler'  => false,
-			);
+			if ( ! defined( 'SS_FRAMEWORK' ) ) {
+				$fields[] = array(
+					'title'     => __( 'Framework Select', 'shoestrap' ),
+					'desc'      => __( 'Select a framework.', 'shoestrap' ),
+					'id'        => 'framework',
+					'default'   => 'bootstrap',
+					'type'      => 'select',
+					'options'   => $frameworks_select,
+					'compiler'  => false,
+				);
+			}
 
 			$fields[] = array( 
 				'title'       => __( 'Logo', 'shoestrap' ),
