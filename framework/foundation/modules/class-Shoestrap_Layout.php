@@ -56,18 +56,15 @@ if ( !class_exists( 'Shoestrap_Layout' ) ) {
 			);
 
 			$fields[] = array( 
-				'title'     => __( 'Site Style', 'shoestrap' ),
-				'desc'      => __( 'Select the default site layout. Default: Wide', 'shoestrap' ),
-				'id'        => 'site_style',
-				'default'   => 'wide',
-				'type'      => 'select',
-				'options'   => array( 
-					'static'  => __( 'Static (Non-Responsive)', 'shoestrap' ),
-					'wide'    => __( 'Wide', 'shoestrap' ),
-					'boxed'   => __( 'Boxed', 'shoestrap' ),
-					'fluid'   => __( 'Fluid', 'shoestrap' ),
-				),
-				'compiler'  => true,
+				'title'     => __( 'Maximum site width (px)', 'shoestrap' ),
+				'desc'      => __( 'Set to maximum for fluid.', 'shoestrap' ),
+				'id'        => 'max-width',
+				'default'   => 1200,
+				'min'       => 480,
+				'step'      => 1,
+				'max'       => 2560,
+				'compiler'  => false,
+				'type'      => 'slider'
 			);
 
 			$fields[] = array( 
@@ -152,121 +149,6 @@ if ( !class_exists( 'Shoestrap_Layout' ) ) {
 				'type'      => 'switch'
 			);
 
-			$fields[] = array( 
-				'title'     => __( 'Margin from top ( Works only in \'Boxed\' mode )', 'shoestrap' ),
-				'desc'      => __( 'This will add a margin above the navbar. Useful if you\'ve enabled the \'Boxed\' mode above. Default: 0px', 'shoestrap' ),
-				'id'        => 'navbar_margin_top',
-				'required'  => array('navbar_boxed','=',array('1')),
-				'default'   => 0,
-				'min'       => 0,
-				'step'      => 1,
-				'max'       => 120,
-				'compiler'  => true,
-				'type'      => 'slider'
-			);
-
-			$fields[] = array( 
-				'title'     => __( 'Widgets mode', 'shoestrap' ),
-				'desc'      => __( 'How do you want your widgets to be displayed?', 'shoestrap' ),
-				'id'        => 'widgets_mode',
-				'default'   => 1,
-				'options'   => array(
-					0           => __( 'Panel', 'shoestrap' ),
-					1           => __( 'Well', 'shoestrap' ),
-					2           => __( 'None', 'shoestrap' ),
-				),
-				'type'      => 'button_set',
-			);
-
-			$fields[] = array( 
-				'title'     => __( 'Body Top Margin', 'shoestrap' ),
-				'desc'      => __( 'Select the top margin of body element in pixels. Default: 0px.', 'shoestrap' ),
-				'id'        => 'body_margin_top',
-				'default'   => 0,
-				'min'       => 0,
-				'step'      => 1,
-				'max'       => 200,
-				'edit'      => 1,
-				'type'      => 'slider'
-			);
-
-			$fields[] = array( 
-				'title'     => __( 'Body Bottom Margin', 'shoestrap' ),
-				'desc'      => __( 'Select the bottom margin of body element in pixels. Default: 0px.', 'shoestrap' ),
-				'id'        => 'body_margin_bottom',
-				'default'   => 0,
-				'min'       => 0,
-				'step'      => 1,
-				'max'       => 200,
-				'edit'      => 1,
-				'type'      => 'slider',
-			);
-
-			$fields[] = array( 
-				'title'     => __( 'Custom Grid', 'shoestrap' ),
-				'desc'      => '<strong>' . __( 'CAUTION:', 'shoestrap' ) . '</strong> ' . __( 'Only use this if you know what you are doing, as changing these values might break the way your site looks on some devices. The default settings should be fine for the vast majority of sites.', 'shoestrap' ),
-				'id'        => 'custom_grid',
-				'default'   => 0,
-				'type'      => 'switch',
-			);
-
-			$fields[] = array( 
-				'title'     => __( 'Small Screen / Tablet view', 'shoestrap' ),
-				'desc'      => __( 'The width of Tablet screens. Default: 768px', 'shoestrap' ),
-				'id'        => 'screen_tablet',
-				'required'  => array('custom_grid','=',array('1')),
-				'default'   => 768,
-				'min'       => 620,
-				'step'      => 2,
-				'max'       => 2100,
-				'advanced'  => true,
-				'compiler'  => true,
-				'type'      => 'slider'
-			);
-
-			$fields[] = array( 
-				'title'     => __( 'Desktop Container Width', 'shoestrap' ),
-				'desc'      => __( 'The width of normal screens. Default: 992px', 'shoestrap' ),
-				'id'        => 'screen_desktop',
-				'required'  => array('custom_grid','=',array('1')),
-				'default'   => 992,
-				'min'       => 620,
-				'step'      => 2,
-				'max'       => 2100,
-				'advanced'  => true,
-				'compiler'  => true,
-				'type'      => 'slider',
-
-			);
-
-			$fields[] = array( 
-				'title'     => __( 'Large Desktop Container Width', 'shoestrap' ),
-				'desc'      => __( 'The width of Large Desktop screens. Default: 1200px', 'shoestrap' ),
-				'id'        => 'screen_large_desktop',
-				'required'  => array('custom_grid','=',array('1')),
-				'default'   => 1200,
-				'min'       => 620,
-				'step'      => 2,
-				'max'       => 2100,
-				'advanced'  => true,
-				'compiler'  => true,
-				'type'      => 'slider'
-			);
-
-			$fields[] = array( 
-				'title'     => __( 'Columns Gutter', 'shoestrap' ),
-				'desc'      => __( 'The space between the columns in your grid. Default: 30px', 'shoestrap' ),
-				'id'        => 'layout_gutter',
-				'required'  => array('custom_grid','=',array('1')),
-				'default'   => 30,
-				'min'       => 2,
-				'step'      => 2,
-				'max'       => 100,
-				'advanced'  => true,
-				'compiler'  => true,
-				'type'      => 'slider',
-			);
-
 			$section['fields'] = $fields;
 
 			do_action( 'shoestrap_module_layout_options_modifier' );
@@ -290,31 +172,34 @@ if ( !class_exists( 'Shoestrap_Layout' ) ) {
 
 				// Looking for a per-page template ?
 				if ( is_page() && is_page_template() ) {
-					if ( is_page_template( 'template-0.php' ) )
+					if ( is_page_template( 'template-0.php' ) ) {
 						$shoestrap_layout = 0;
-					elseif ( is_page_template( 'template-1.php' ) )
+					} elseif ( is_page_template( 'template-1.php' ) ) {
 						$shoestrap_layout = 1;
-					elseif ( is_page_template( 'template-2.php' ) )
+					} elseif ( is_page_template( 'template-2.php' ) ) {
 						$shoestrap_layout = 2;
-					elseif ( is_page_template( 'template-3.php' ) )
+					} elseif ( is_page_template( 'template-3.php' ) ) {
 						$shoestrap_layout = 3;
-					elseif ( is_page_template( 'template-4.php' ) )
+					} elseif ( is_page_template( 'template-4.php' ) ) {
 						$shoestrap_layout = 4;
-					elseif ( is_page_template( 'template-5.php' ) )
+					} elseif ( is_page_template( 'template-5.php' ) ) {
 						$shoestrap_layout = 5;
+					}
 				}
 
 				if ( $ss_settings['cpt_layout_toggle'] == 1 ) {
 					if ( !is_page_template() ) {
 						$post_types = get_post_types( array( 'public' => true ), 'names' );
+
 						foreach ( $post_types as $post_type ) {
 							$shoestrap_layout = ( is_singular( $post_type ) ) ? intval( $ss_settings[$post_type . '_layout'] ) : $shoestrap_layout;
 						}
 					}
 				}
 
-				if ( !is_active_sidebar( 'sidebar-secondary' ) && is_active_sidebar( 'sidebar-primary' ) && $shoestrap_layout == 5 )
+				if ( !is_active_sidebar( 'sidebar-secondary' ) && is_active_sidebar( 'sidebar-primary' ) && $shoestrap_layout == 5 ) {
 					$shoestrap_layout = 3;
+				}
 			}
 			return $shoestrap_layout;
 		}
@@ -324,6 +209,7 @@ if ( !class_exists( 'Shoestrap_Layout' ) ) {
 		 */
 		function set_layout( $val ) {
 			global $shoestrap_layout, $redux;
+
 			$shoestrap_layout = intval( $val );
 		}
 
@@ -331,8 +217,7 @@ if ( !class_exists( 'Shoestrap_Layout' ) ) {
 		 * Calculates the classes of the main area, main sidebar and secondary sidebar
 		 */
 		public static function section_class_ext( $target, $echo = false ) {
-			global $redux, $ss_framework;
-			global $ss_settings;
+			global $redux, $ss_framework, $ss_settings;
 
 			$layout = self::get_layout();
 			$first  = intval( $ss_settings['layout_primary_width'] );
@@ -379,19 +264,21 @@ if ( !class_exists( 'Shoestrap_Layout' ) ) {
 				}
 			}
 
-			if ( $target == 'primary' )
+			if ( $target == 'primary' ) {
 				$class = $ss_framework->column_classes( array( $width => $primary ) );
-			elseif ( $target == 'secondary' )
+			} elseif ( $target == 'secondary' ) {
 				$class = $ss_framework->column_classes( array( $width => $secondary ) );
-			elseif ( $target == 'wrapper' )
+			} elseif ( $target == 'wrapper' ) {
 				$class = $ss_framework->column_classes( array( $width => $wrapper ) );
-			else
+			} else {
 				$class = $ss_framework->column_classes( array( $width => $main ) );
+			}
 
-			if ( $echo )
+			if ( $echo ) {
 				echo $class;
-			else
+			} else {
 				return $class;
+			}
 
 		}
 

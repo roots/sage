@@ -61,6 +61,8 @@ if ( !class_exists( 'Shoestrap_Foundation' ) ) {
 			);
 
 			add_filter( 'shoestrap_foundation_scss', array( $this, 'styles_filter' ) );
+
+			add_action( 'wp_enqueue_scripts',    array( $this, 'css'  ), 101 );
 		}
 
 		/**
@@ -374,6 +376,8 @@ if ( !class_exists( 'Shoestrap_Foundation' ) ) {
 			$vars .= '$base-font-size:' . $ss_settings['base-font']['font-size'] . ';';
 			$vars .= '$body-font-color:' . $ss_settings['base-font']['color'] . ';';
 			$vars .= '$body-font-family:' . $ss_settings['base-font']['font-family'] . ';';
+
+			// Sometimes font-weight is not set, so check before adding.
 			if ( isset( $ss_settings['base-font']['font-weight'] ) && ! empty( $ss_settings['base-font']['font-weight'] ) ) {
 				$vars .= '$body-font-weight:' . $ss_settings['base-font']['font-weight'] . ';';
 			}
@@ -413,7 +417,7 @@ if ( !class_exists( 'Shoestrap_Foundation' ) ) {
 			$scss = new scssc();
 			$scss->setImportPaths( $scss_location );
 
-			$css .=  $scss->compile( apply_filters( 'shoestrap_foundation_scss', '@import "app.scss"' ) );
+			$css .=  $scss->compile( apply_filters( 'shoestrap_foundation_scss', '@import "app.scss";' ) );
 
 			// Ugly hack to properly set the path to webfonts
 			$css = str_replace( "url('Elusive-Icons", "url('" . $webfont_location . "Elusive-Icons", $css );
@@ -430,5 +434,21 @@ if ( !class_exists( 'Shoestrap_Foundation' ) ) {
 		 * Build the social links for the navbar
 		 */
 		function navbar_social_links() {}
+
+		/**
+		 * Additiona CSS that is not included in the compiler
+		 */
+		function css() {
+			global $ss_settings;
+
+			$css = '';
+
+			if( $ss_settings != 1000 ) {
+				$css .= ".row { max-width:" . $ss_settings['max-width'] . "px }";
+			}
+
+			wp_add_inline_style( 'shoestrap_css', $css );
+		}
+
 	}
 }
