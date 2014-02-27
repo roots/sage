@@ -33,7 +33,7 @@ if ( ! function_exists( 'shoestrap_password_form' ) ) :
  * Replace the password forms with a bootstrap-formatted version.
  */
 function shoestrap_password_form() {
-	global $post;
+	global $post, $ss_framework;
 	$label    = 'pwbox-' . ( empty( $post->ID ) ? rand() : $post->ID );
 	$content  = '<form action="';
 	$content .= esc_url( site_url( 'wp-login.php?action=postpass', 'login_post' ) );
@@ -42,7 +42,7 @@ function shoestrap_password_form() {
 	$content .= '<div class="input-group">';
 	$content .= '<input name="post_password" id="' . $label . '" type="password" size="20" />';
 	$content .= '<span class="input-group-btn">';
-	$content .= '<input type="submit" name="Submit" value="' . esc_attr__( "Submit" ) . '" class="btn btn-default" />';
+	$content .= '<input type="submit" name="Submit" value="' . esc_attr__( "Submit" ) . '" class="' . $ss_framework->button_classes() . '" />';
 	$content .= '</span></div></form>';
 
 	return $content;
@@ -56,7 +56,8 @@ if ( ! function_exists( 'shoestrap_replace_reply_link_class' ) ) :
  * Apply the proper classes to comment reply links
  */
 function shoestrap_replace_reply_link_class( $class ) {
-	$class = str_replace( "class='comment-reply-link", "class='comment-reply-link btn btn-primary btn-small", $class );
+	global $ss_framework;
+	$class = str_replace( "class='comment-reply-link", "class='comment-reply-link " . $ss_framework->button_classes( 'primary', 'small' ), $class );
 	return $class;
 }
 endif;
