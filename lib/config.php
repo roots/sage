@@ -114,14 +114,21 @@ endif;
  */
 function shoestrap_mp_wrap_div_open() {
 	global $ss_framework;
-	echo '<div class="mp_wrap ' . shoestrap_section_class( 'wrapper' ) . '">' . $ss_framework->make_row( 'div' );
+
+	if ( $ss_framework->include_wrapper() ) {
+		echo '<div class="mp_wrap ' . shoestrap_section_class( 'wrapper' ) . '">' . $ss_framework->make_row( 'div' );
+	}
 }
 
 /*
  * Closes the <div> opened by the shoestrap_mp_wrap_div_open() function.
  */
 function shoestrap_mp_wrap_div_close() {
-	echo '</div></div>';
+	global $ss_framework;
+
+	if ( $ss_framework->include_wrapper() ) {
+		echo '</div></div>';
+	}
 }
 
 /*

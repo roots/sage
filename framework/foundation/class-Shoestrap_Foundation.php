@@ -450,5 +450,11 @@ if ( !class_exists( 'Shoestrap_Foundation' ) ) {
 			wp_add_inline_style( 'shoestrap_css', $css );
 		}
 
+		function include_wrapper() {
+			global $ss_layout;
+
+			return $ss_layout->include_wrapper();
+		}
+
 	}
 }

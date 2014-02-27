@@ -201,6 +201,10 @@ if ( !class_exists( 'Shoestrap_Framework' ) ) {
 		function compiler() {
 			return $this->fw->compiler();
 		}
+
+		function include_wrapper() {
+			return $this->fw->include_wrapper();
+		}
 	}
 }
 

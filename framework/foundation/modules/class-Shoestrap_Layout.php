@@ -12,26 +12,15 @@ if ( !class_exists( 'Shoestrap_Layout' ) ) {
 			global $ss_settings;
 
 			add_filter( 'redux/options/' . SHOESTRAP_OPT_NAME . '/sections', array( $this, 'options' ), 55 );
-			add_filter( 'shoestrap_section_class_wrapper',   array( $this, 'apply_layout_classes_wrapper'   )     );
-			add_filter( 'shoestrap_section_class_main',      array( $this, 'apply_layout_classes_main'      )     );
-			add_filter( 'shoestrap_section_class_primary',   array( $this, 'apply_layout_classes_primary'   )     );
-			add_filter( 'shoestrap_section_class_secondary', array( $this, 'apply_layout_classes_secondary' )     );
-			add_filter( 'shoestrap_navbar_container_class',  array( $this, 'navbar_container_class'         )     );
-			add_action( 'template_redirect',                 array( $this, 'content_width'                  )     );
+			add_filter( 'shoestrap_section_class_wrapper',   array( $this, 'apply_layout_classes_wrapper'   ) );
+			add_filter( 'shoestrap_section_class_main',      array( $this, 'apply_layout_classes_main'      ) );
+			add_filter( 'shoestrap_section_class_primary',   array( $this, 'apply_layout_classes_primary'   ) );
+			add_filter( 'shoestrap_section_class_secondary', array( $this, 'apply_layout_classes_secondary' ) );
+			add_filter( 'shoestrap_navbar_container_class',  array( $this, 'navbar_container_class'         ) );
+			add_action( 'template_redirect',                 array( $this, 'content_width'                  ) );
 
-			if ( $ss_settings['body_margin_top'] > 0 || $ss_settings['body_margin_bottom'] > 0 )
-				add_action( 'wp_enqueue_scripts',            array( $this, 'body_margin'                   ), 101 );
-
-			add_action( 'wp',                     array( $this, 'control_primary_sidebar_display'   )      );
-			add_action( 'wp',                     array( $this, 'control_secondary_sidebar_display' )      );
-
-			 // Modify the appearance of widgets based on user selection.
-			$widgets_mode = $ss_settings['widgets_mode'];
-			if ( $widgets_mode == 0 || $widgets_mode == 1 ) {
-				add_filter( 'shoestrap_widgets_class',        array( $this, 'alter_widgets_class'        ) );
-				add_filter( 'shoestrap_widgets_before_title', array( $this, 'alter_widgets_before_title' ) );
-				add_filter( 'shoestrap_widgets_after_title',  array( $this, 'alter_widgets_after_title'  ) );
-			}
+			add_action( 'wp', array( $this, 'control_primary_sidebar_display'   ) );
+			add_action( 'wp', array( $this, 'control_secondary_sidebar_display' ) );
 		}
 
 		/*
@@ -253,6 +242,10 @@ if ( !class_exists( 'Shoestrap_Layout' ) ) {
 				}
 			}
 
+			if ( $layout == 2 || $layout == 3 || $layout == 5 ) {
+				$main_extra = ' right';
+			}
+
 			if ( $target == 'primary' ) {
 				$class = $ss_framework->column_classes( array( 'tablet' => $primary ) );
 			} elseif ( $target == 'secondary' ) {
@@ -260,7 +253,7 @@ if ( !class_exists( 'Shoestrap_Layout' ) ) {
 			} elseif ( $target == 'wrapper' ) {
 				$class = $ss_framework->column_classes( array( 'tablet' => $wrapper ) );
 			} else {
-				$class = $ss_framework->column_classes( array( 'tablet' => $main ) );
+				$class = $ss_framework->column_classes( array( 'tablet' => $main ) ) . $main_extra;
 			}
 
 			if ( $echo ) {
@@ -375,7 +368,18 @@ if ( !class_exists( 'Shoestrap_Layout' ) ) {
 				add_filter( 'shoestrap_display_secondary_sidebar', 'shoestrap_return_true' );
 
 		}
+
+		function include_wrapper() {
+			global $shoestrap_layout;
+
+			if ( $shoestrap_layout == 5 ) {
+				return true;
+			} else {
+				return false;
+			}
+		}
 	}
 }
 
-$layout = new Shoestrap_Layout();
+global $ss_layout;
+$ss_layout = new Shoestrap_Layout();
