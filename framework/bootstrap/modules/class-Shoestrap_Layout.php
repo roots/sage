@@ -628,7 +628,18 @@ if ( !class_exists( 'Shoestrap_Layout' ) ) {
 				<?php
 			endif;
 		}
+
+		function include_wrapper() {
+			global $shoestrap_layout;
+
+			if ( $shoestrap_layout == 5 ) {
+				return true;
+			} else {
+				return false;
+			}
+		}
 	}
 }
 
-$layout = new Shoestrap_Layout();
+global $ss_layout;
+$ss_layout = new Shoestrap_Layout();

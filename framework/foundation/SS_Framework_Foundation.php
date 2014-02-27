@@ -1,11 +1,11 @@
 <?php
 
-if ( !class_exists( 'Shoestrap_Foundation' ) ) {
+if ( !class_exists( 'SS_Framework_Foundation' ) ) {
 
 	/**
 	* The Foundation Framework module
 	*/
-	class Shoestrap_Foundation {
+	class SS_Framework_Foundation {
 
 		/**
 		 * Class constructor

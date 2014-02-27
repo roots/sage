@@ -8,7 +8,7 @@ if ( $ss_settings['framework'] == 'foundation' ) {
 	add_filter( 'comments_template', 'shoestrap_foundation_comments_template' );
 
 	// Framework class.
-	include_once( dirname( __FILE__ ) . '/class-Shoestrap_Foundation.php' );
+	include_once( dirname( __FILE__ ) . '/class-SS_Framework_Foundation.php' );
 
 	// Branding
 	include_once( dirname( __FILE__ ) . '/modules/class-SS_Foundation_Colors.php' );
@@ -38,7 +38,7 @@ function shoestrap_define_framework_foundation() {
 	$framework = array(
 		'shortname' => 'foundation',
 		'name'      => 'Foundation',
-		'classname' => 'Shoestrap_Foundation',
+		'classname' => 'SS_Framework_Foundation',
 		'compiler'  => 'sass_php'
 	);
 

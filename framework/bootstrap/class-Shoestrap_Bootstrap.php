@@ -1255,5 +1255,11 @@ if ( !class_exists( 'Shoestrap_Bootstrap' ) ) {
 				echo $content;
 			}
 		}
+
+		function include_wrapper() {
+			global $ss_layout;
+
+			return $ss_layout->include_wrapper();
+		}
 	}
 }

@@ -1,11 +1,11 @@
 <?php
 
-if ( !class_exists( 'Shoestrap_Framework' ) ) {
+if ( !class_exists( 'SS_Framework' ) ) {
 
 	/**
 	* The "Advanced" module
 	*/
-	class Shoestrap_Framework {
+	class SS_Framework {
 
 		/**
 		 * Class constructor
@@ -225,4 +225,4 @@ if ( !class_exists( 'Shoestrap_Framework' ) ) {
 }
 
 global $ss_framework;
-$ss_framework = new Shoestrap_Framework();
+$ss_framework = new SS_Framework();

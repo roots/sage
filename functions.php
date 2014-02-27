@@ -25,7 +25,7 @@ require_once locate_template('/lib/redux-init.php');
 require_once locate_template('/lib/modules/load.modules.php');
 
 // Get the framework
-require_once locate_template( '/framework/class-Shoestrap_Framework.php' );
+require_once locate_template( '/framework/class-SS_Framework.php' );
 
 require_once locate_template( '/lib/template.php' );     // Custom get_template_part function.
 require_once locate_template( '/lib/utils.php' );        // Utility functions
