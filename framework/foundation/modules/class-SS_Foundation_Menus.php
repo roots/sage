@@ -34,38 +34,22 @@ if ( !class_exists( 'SS_Foundation_Menus' ) ) {
 			);
 
 			$fields[] = array( 
-				'id'          => 'help7',
-				'title'       => __( 'Advanced NavBar Options', 'shoestrap' ),
-				'desc'        => __( "You can activate or deactivate your Primary NavBar here, and define its properties. Please note that you might have to manually create a menu if it doesn't already exist.", 'shoestrap' ),
-				'type'        => 'info'
-			);
-
-			$fields[] = array( 
-				'title'       => __( 'Type of NavBar', 'shoestrap' ),
-				'desc'        => __( 'Choose the type of Navbar you want. Off completely hides the navbar, Alternative uses an alternative walker for the navigation menus. See <a target="_blank"href="https://github.com/twittem/wp-bootstrap-navwalker">here</a> for more details.', 'shoestrap' ) . '<br>' . __( '<strong>WARNING:</strong> The "Static-Left" option is ONLY compatible with fluid layouts. The width of the static-left navbar is controlled by the secondary sidebar width.', 'shoestrap' ),
-				'id'          => 'navbar_toggle',
+				'title'       => __( 'Navigation type', 'shoestrap' ),
+				'desc'        => __( 'Choose the type of Navigation you want on your website.', 'shoestrap' ),
+				'id'          => 'navigation-type',
 				'default'     => 'normal',
 				'options'     => array(
 					'none'    => __( 'Off', 'shoestrap' ),
 					'normal'  => __( 'Normal', 'shoestrap' ),
-					// 'pills'   => __( 'Pills', 'shoestrap' ),
 					'contain'    => __( 'Contain-To-Grid', 'shoestrap' ),
-					// 'left'    => __( 'Static-Left', 'shoestrap' ),
 				),
 				'type'        => 'button_set'
 			);
 
 			$fields[] = array( 
-				'id'          => 'helpnavbarbg',
-				'title'       => __( 'NavBar Styling Options', 'shoestrap' ),
-				'desc'   	  => __( 'Customize the look and feel of your navbar below.', 'shoestrap' ),
-				'type'        => 'info'
-			);    
-
-			$fields[] = array( 
-				'title'       => __( 'NavBar Background Color', 'shoestrap' ),
-				'desc'        => __( 'Pick a background color for the NavBar. Default: #eeeeee.', 'shoestrap' ),
-				'id'          => 'navbar_bg',
+				'title'       => __( 'Navigation Background Color', 'shoestrap' ),
+				'desc'        => '',
+				'id'          => 'navigation-bg',
 				'default'     => '#f8f8f8',
 				'compiler'    => true,
 				'transparent' => false,    
@@ -75,7 +59,7 @@ if ( !class_exists( 'SS_Foundation_Menus' ) ) {
 			$fields[] = array( 
 				'title'       => __( 'NavBar Background Opacity', 'shoestrap' ),
 				'desc'        => __( 'Pick a background opacity for the NavBar. Default: 100%.', 'shoestrap' ),
-				'id'          => 'navbar_bg_opacity',
+				'id'          => 'navigation-opacity',
 				'default'     => 100,
 				'min'         => 0,
 				'step'        => 1,
@@ -250,7 +234,7 @@ if ( !class_exists( 'SS_Foundation_Menus' ) ) {
 		 */
 		public static function navbar_class( $navbar = 'main') {
 			global $ss_settings;
-			$toggle   = $ss_settings['navbar_toggle'];
+			$toggle   = $ss_settings['navigation-type'];
 
 			$fixed    = $ss_settings['navbar_fixed'];
 			$contain  = ( $toggle == 'contain' ) ? true : false;
@@ -269,13 +253,13 @@ if ( !class_exists( 'SS_Foundation_Menus' ) ) {
 		function navbar_css() {
 			global $ss_settings;
 
-			$navbar_bg_opacity = $ss_settings['navbar_bg_opacity'];
+			$navigation_opacity = $ss_settings['navigation-opacity'];
 			$style = '';
 
-			$opacity = ( $navbar_bg_opacity == '' ) ? '0' : ( intval( $navbar_bg_opacity ) ) / 100;
+			$opacity = ( $navigation_opacity == '' ) ? '0' : ( intval( $navigation_opacity ) ) / 100;
 
 			if ( $opacity != 1 && $opacity != '' ) {
-				$bg  = str_replace( '#', '', $ss_settings['navbar_bg'] );
+				$bg  = str_replace( '#', '', $ss_settings['navigation-bg'] );
 				$rgb = Shoestrap_Color::get_rgb( $bg, true );
 				$opacityie = str_replace( '0.', '', $opacity );
 
@@ -303,15 +287,12 @@ if ( !class_exists( 'SS_Foundation_Menus' ) ) {
 		function do_navbar() {
 			global $ss_settings;
 
-			$navbar_toggle = $ss_settings['navbar_toggle'];
-
-			if ( $navbar_toggle != 'none' ) {
-				if ( !has_action( 'shoestrap_header_top_navbar_override' ) )
+			if ( $ss_settings['navigation-type'] != 'none' ) {
+				if ( ! has_action( 'shoestrap_header_top_navbar_override' ) ) {
 					require( 'top-bar.php' );
-				else
+				} else {
 					do_action( 'shoestrap_header_top_navbar_override' );
-			} else {
-				return '';
+				}
 			}
 		}
 
