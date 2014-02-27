@@ -373,17 +373,65 @@ if ( !class_exists( 'Shoestrap_Foundation' ) ) {
 			global $ss_settings;
 			$vars  = '';
 
-			$vars .= '$base-font-size:' . $ss_settings['base-font']['font-size'] . ';';
-			$vars .= '$body-font-color:' . $ss_settings['base-font']['color'] . ';';
-			$vars .= '$body-font-family:' . $ss_settings['base-font']['font-family'] . ';';
+			// Base font-size
+			if ( isset( $ss_settings['base-font']['font-size'] ) && ! empty( $ss_settings['base-font']['font-size'] ) ) {
+				$vars .= '$base-font-size:' . $ss_settings['base-font']['font-size'] . ';';
+			}
 
-			// Sometimes font-weight is not set, so check before adding.
+			// Base font-color
+			if ( isset( $ss_settings['base-font']['font-color'] ) && ! empty( $ss_settings['base-font']['font-color'] ) ) {
+				$vars .= '$body-font-color:' . $ss_settings['base-font']['color'] . ';';
+			}
+
+			// Base font-family
+			if ( isset( $ss_settings['base-font']['font-family'] ) && ! empty( $ss_settings['base-font']['font-family'] ) ) {
+				$vars .= '$body-font-family:' . $ss_settings['base-font']['font-family'] . ';';
+			}
+
+			// Base font-weight
 			if ( isset( $ss_settings['base-font']['font-weight'] ) && ! empty( $ss_settings['base-font']['font-weight'] ) ) {
 				$vars .= '$body-font-weight:' . $ss_settings['base-font']['font-weight'] . ';';
 			}
 
-			$vars .= '$header-font-family: ' . $ss_settings['header-font']['font-family'] . ';';
-			$vars .= '$header-font-color: ' . $ss_settings['header-font']['color'] . ';';
+			// Headers font-family
+			if ( isset( $ss_settings['header-font']['font-family'] ) && ! empty( $ss_settings['header-font']['font-family'] ) ) {
+				$vars .= '$header-font-family: ' . $ss_settings['header-font']['font-family'] . ';';
+			}
+
+			// Headers font-color
+			if ( isset( $ss_settings['header-font']['font-color'] ) && ! empty( $ss_settings['header-font']['font-color'] ) ) {
+				$vars .= '$header-font-color: ' . $ss_settings['header-font']['color'] . ';';
+			}
+
+			// Primary Color
+			if ( isset( $ss_settings['primary-color'] ) && ! empty( $ss_settings['primary-color'] ) ) {
+				$vars .= '$primary-color: ' . $ss_settings['primary-color'] . ';';
+			}
+
+			// Secondary Color
+			if ( isset( $ss_settings['secondary-color'] ) && ! empty( $ss_settings['secondary-color'] ) ) {
+				$vars .= '$secondary-color: ' . $ss_settings['secondary-color'] . ';';
+			}
+
+			// Alert Color
+			if ( isset( $ss_settings['alert-color'] ) && ! empty( $ss_settings['alert-color'] ) ) {
+				$vars .= '$alert-color: ' . $ss_settings['alert-color'] . ';';
+			}
+
+			// Success Color
+			if ( isset( $ss_settings['success-color'] ) && ! empty( $ss_settings['success-color'] ) ) {
+				$vars .= '$success-color: ' . $ss_settings['success-color'] . ';';
+			}
+
+			// Warning Color
+			if ( isset( $ss_settings['warning-color'] ) && ! empty( $ss_settings['warning-color'] ) ) {
+				$vars .= '$warning-color: ' . $ss_settings['warning-color'] . ';';
+			}
+
+			// Info Color
+			if ( isset( $ss_settings['info-color'] ) && ! empty( $ss_settings['info-color'] ) ) {
+				$vars .= '$info-color: ' . $ss_settings['info-color'] . ';';
+			}
 
 			return $vars;
 		}
