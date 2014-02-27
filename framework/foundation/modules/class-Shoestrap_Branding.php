@@ -25,31 +25,6 @@ if ( !class_exists( 'Shoestrap_Branding' ) ) {
 			);
 
 			$fields[] = array( 
-				'title'       => __( 'Logo', 'shoestrap' ),
-				'desc'        => __( 'Upload a logo image using the media uploader, or define the URL directly.', 'shoestrap' ),
-				'id'          => 'logo',
-				'default'     => '',
-				'type'        => 'media',
-			);
-
-			$fields[] = array( 
-				'title'       => __( 'Custom Favicon', 'shoestrap' ),
-				'desc'        => __( 'Upload a favicon image using the media uploader, or define the URL directly.', 'shoestrap' ),
-				'id'          => 'favicon',
-				'default'     => '',
-				'type'        => 'media',
-			);
-
-			$fields[] = array( 
-				'title'       => __( 'Apple Icon', 'shoestrap' ),
-				'desc'        => __( 'This will create icons for Apple iPhone ( 57px x 57px ), Apple iPhone Retina Version ( 114px x 114px ), Apple iPad ( 72px x 72px ) and Apple iPad Retina ( 144px x 144px ). Please note that for better results the image you upload should be at least 144px x 144px.', 'shoestrap' ),
-				'id'          => 'apple_icon',
-				'default'     => '',
-				'type'        => 'media',
-			);
-
-
-			$fields[] = array( 
 				'title'       => 'Colors',
 				'desc'        => '',
 				'id'          => 'help6',
