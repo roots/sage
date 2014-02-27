@@ -20,7 +20,7 @@ if ( !class_exists( 'Shoestrap_Typography' ) ) {
 			// Typography Options
 			$section = array(
 				'title'   => __( 'Typography', 'shoestrap' ),
-				'icon'    => 'el-icon-font icon-large',
+				'icon'    => 'el-icon-font',
 			);
 
 			$fields[] = array(

@@ -21,7 +21,7 @@ if ( !class_exists( 'Shoestrap_Branding' ) ) {
 			// Branding Options
 			$section = array(
 				'title' => __( 'Branding', 'shoestrap' ),
-				'icon' => 'el-icon-certificate icon-large'
+				'icon' => 'el-icon-certificate'
 			);
 
 			$fields[] = array( 

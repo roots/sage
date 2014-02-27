@@ -22,7 +22,7 @@ if ( !class_exists( 'ShoestrapBackground' ) ) {
 			// Blog Options
 			$section = array(
 				'title' => __( 'Background', 'shoestrap' ),
-				'icon'  => 'el-icon-photo icon-large',
+				'icon'  => 'el-icon-photo',
 			);   
 
 			$fields[] = array(

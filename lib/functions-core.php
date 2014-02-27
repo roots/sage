@@ -57,7 +57,7 @@ if ( ! function_exists( 'shoestrap_replace_reply_link_class' ) ) :
  */
 function shoestrap_replace_reply_link_class( $class ) {
 	global $ss_framework;
-	$class = str_replace( "class='comment-reply-link", "class='comment-reply-link " . $ss_framework->button_classes( 'primary', 'small' ), $class );
+	$class = str_replace( "class='comment-reply-link", "class='comment-reply-link " . $ss_framework->button_classes( 'success', 'small' ), $class );
 	return $class;
 }
 endif;

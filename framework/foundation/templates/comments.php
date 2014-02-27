@@ -71,7 +71,7 @@ global $ss_framework;
 					<label for="comment"><?php _e('Comment', 'shoestrap'); ?></label>
 					<textarea name="comment" id="comment" class="form-control" rows="5" aria-required="true"></textarea>
 				</div>
-				<p><input name="submit" class="btn btn-primary" type="submit" id="submit" value="<?php _e('Submit Comment', 'shoestrap'); ?>"></p>
+				<p><input name="submit" class="button" type="submit" id="submit" value="<?php _e('Submit Comment', 'shoestrap'); ?>"></p>
 				<?php comment_id_fields(); ?>
 				<?php do_action('comment_form', $post->ID); ?>
 			</form>

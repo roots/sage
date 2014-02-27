@@ -75,7 +75,7 @@ if ( !class_exists( 'ShoestrapAdvanced' ) ) {
 			// Advanced Settings
 			$section = array(
 				'title'   => __( 'Advanced', 'shoestrap' ),
-				'icon'    => 'el-icon-cogs icon-large'
+				'icon'    => 'el-icon-cogs'
 			);
 
 			$fields[] = array(

@@ -31,7 +31,7 @@ if ( !class_exists( 'ShoestrapBlog' ) ) {
 			// Post Meta Options
 			$section = array(
 				'title' => __( 'Blog', 'shoestrap' ),
-				'icon'  => 'el-icon-wordpress icon-large'
+				'icon'  => 'el-icon-wordpress'
 			);
 
 			$fields[] = array(

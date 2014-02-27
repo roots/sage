@@ -51,7 +51,7 @@ if ( !class_exists( 'Shoestrap_Layout' ) ) {
 			// Layout Settings
 			$section = array( 
 				'title'       => __( 'Layout', 'shoestrap' ),
-				'icon'        => 'el-icon-screen icon-large',
+				'icon'        => 'el-icon-screen',
 				'description' => '<p>In this area you can select your site\'s layout, the width of your sidebars, as well as other, more advanced options.</p>',
 			);
 

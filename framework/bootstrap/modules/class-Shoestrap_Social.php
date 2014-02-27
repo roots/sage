@@ -375,7 +375,7 @@ if ( !class_exists( 'Shoestrap_Social' ) ) {
 		 * Build an array of the available/enabled networks for social sharing.
 		 */
 		function get_social_shares() {
-			global $ss_framework;
+			global $ss_framework, $ss_settings;
 
 			$nets   = $ss_settings['share_networks'];
 
