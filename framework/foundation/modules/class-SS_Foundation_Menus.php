@@ -1,12 +1,12 @@
 <?php
 
 
-if ( !class_exists( 'Shoestrap_Foundation_Menus' ) ) {
+if ( !class_exists( 'SS_Foundation_Menus' ) ) {
 
 	/**
 	* The "Menus" module
 	*/
-	class Shoestrap_Foundation_Menus {
+	class SS_Foundation_Menus {
 
 		function __construct() {
 			global $ss_settings;
@@ -699,4 +699,4 @@ if ( !class_exists( 'Shoestrap_Foundation_Menus' ) ) {
 // include_once( dirname( __FILE__ ) . '/includes/functions.navlist-walker.php' );
 // include_once( dirname( __FILE__ ) . '/includes/functions.navlist.php' );
 
-$menus = new Shoestrap_Foundation_Menus();
+$menus = new SS_Foundation_Menus();

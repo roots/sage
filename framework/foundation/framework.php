@@ -11,7 +11,7 @@ if ( $ss_settings['framework'] == 'foundation' ) {
 	include_once( dirname( __FILE__ ) . '/class-Shoestrap_Foundation.php' );
 
 	// Branding
-	include_once( dirname( __FILE__ ) . '/modules/class-Shoestrap_Branding.php' );
+	include_once( dirname( __FILE__ ) . '/modules/class-SS_Foundation_Colors.php' );
 	// Typography
 	include_once( dirname( __FILE__ ) . '/modules/class-SS_Foundation_Typography.php' );
 	// Comments Walker
@@ -19,9 +19,9 @@ if ( $ss_settings['framework'] == 'foundation' ) {
 	// Social
 	include_once( dirname( __FILE__ ) . '/modules/class-Shoestrap_Social.php' );
 	// layout
-	include_once( dirname( __FILE__ ) . '/modules/class-Shoestrap_Layout.php' );
+	include_once( dirname( __FILE__ ) . '/modules/class-SS_Foundation_Layout.php' );
 	// The menus module
-	include_once( dirname( __FILE__ ) . '/modules/class-Shoestrap_Foundation_Menus.php' );
+	include_once( dirname( __FILE__ ) . '/modules/class-SS_Foundation_Menus.php' );
 	// Widgets
 	include_once( dirname( __FILE__ ) . '/modules/widgets.php' );
 	// Specific classes for navbar

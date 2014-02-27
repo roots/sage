@@ -1,12 +1,12 @@
 <?php
 
 
-if ( !class_exists( 'Shoestrap_Branding' ) ) {
+if ( !class_exists( 'SS_Foundation_Colors' ) ) {
 
 	/**
 	* The Branding module
 	*/
-	class Shoestrap_Branding {
+	class SS_Foundation_Colors {
 		
 		function __construct() {
 			add_filter( 'redux/options/' . SHOESTRAP_OPT_NAME . '/sections', array( $this, 'options' ), 50 );
@@ -160,4 +160,4 @@ if ( !class_exists( 'Shoestrap_Branding' ) ) {
 	}
 }
 
-$branding = new Shoestrap_Branding();
+$branding = new SS_Foundation_Colors();
