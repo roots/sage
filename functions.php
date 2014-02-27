@@ -1,7 +1,7 @@
 <?php
 
 // define the 'SHOESTRAP_ASSETS_URL' constant.
-if ( !defined( 'SHOESTRAP_ASSETS_URL' ) ) {
+if ( ! defined( 'SHOESTRAP_ASSETS_URL' ) ) {
 	define( 'SHOESTRAP_ASSETS_URL', get_template_directory_uri() . '/assets' );
 }
 
@@ -11,7 +11,7 @@ if ( !defined( 'SHOESTRAP_ASSETS_URL' ) ) {
  * This can be overriden by adding this in your wp-config.php:
  * define( 'SHOESTRAP_OPT_NAME', 'custom_option' )
  */
-if ( !defined( 'SHOESTRAP_OPT_NAME' ) ) {
+if ( ! defined( 'SHOESTRAP_OPT_NAME' ) ) {
 	define( 'SHOESTRAP_OPT_NAME', 'shoestrap' );
 }
 

@@ -21,7 +21,7 @@ class Shoestrap_Walker_Comment extends Walker_Comment {
 		$GLOBALS['comment_depth'] = $depth;
 		$GLOBALS['comment'] = $comment;
 
-		if ( !empty( $args['callback'] ) ) {
+		if ( ! empty( $args['callback'] ) ) {
 			call_user_func( $args['callback'], $comment, $args, $depth );
 			return;
 		}
@@ -34,7 +34,7 @@ class Shoestrap_Walker_Comment extends Walker_Comment {
 	}
 
 	function end_el( &$output, $comment, $depth = 0, $args = array() ) {
-		if ( !empty( $args['end-callback'] ) ) {
+		if ( ! empty( $args['end-callback'] ) ) {
 			call_user_func( $args['end-callback'], $comment, $args, $depth );
 			return;
 		}
@@ -43,7 +43,7 @@ class Shoestrap_Walker_Comment extends Walker_Comment {
 }
 
 function shoestrap_get_avatar( $avatar, $type ) {
-	if ( !is_object( $type ) ) { return $avatar; }
+	if ( ! is_object( $type ) ) { return $avatar; }
 
 	$avatar = str_replace( "class='avatar", "class='avatar pull-left media-object", $avatar );
 	return $avatar;

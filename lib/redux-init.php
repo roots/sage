@@ -61,7 +61,7 @@ if ( class_exists( 'ReduxFramework' ) ) :
 
 	$ReduxFramework = new ReduxFramework( $sections, $args );
 
-	if ( !empty( $redux['dev_mode'] ) && $redux['dev_mode'] == 1 ) :
+	if ( ! empty( $redux['dev_mode'] ) && $redux['dev_mode'] == 1 ) :
 		$ReduxFramework->args['dev_mode']     = true;
 		$ReduxFramework->args['system_info']  = true;
 	endif;

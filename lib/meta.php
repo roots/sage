@@ -10,12 +10,14 @@ function shoestrap_meta( $context = 'tags' ) {
 	$panel_body = $ss_framework->make_panel_body();
 	$label_def  = '<span class="label label-tag">';
 
-	if ( $context == 'tags' && get_the_tag_list() )
+	if ( $context == 'tags' && get_the_tag_list() ) {
 		echo apply_filters( 'shoestrap_the_tags', get_the_tag_list( $panel_open . $panel_head . $tags_label . '</div>' . $panel_body . $label_def,
 			'</span> ' . $label_def,
 			'</span></div></div>'
 		) );
+	}
 
-	if ( $context == 'cats' && get_the_category_list() )
+	if ( $context == 'cats' && get_the_category_list() ) {
 		echo apply_filters( 'shoestrap_the_cats', $panel_open . $panel_head . $cats_label . '</div>' . $panel_body . $label_def . get_the_category_list( '</span> ' . $label_def ) . '</span></div></div>' );
+	}
 }

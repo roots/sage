@@ -5,7 +5,7 @@ define( 'themeFOLDER', get_template() );
 define( 'themePATH', get_theme_root() );
 define( 'themeNAME', wp_get_theme() );
 
-if ( !function_exists( 'shoestrap_getVariable' ) ) :
+if ( ! function_exists( 'shoestrap_getVariable' ) ) :
 /*
  * Gets the current values from REDUX, and if not there, grabs the defaults
  */
@@ -16,11 +16,11 @@ function shoestrap_getVariable( $name, $key = false ) {
 	// Set this to your preferred default value
 	$var = '';
 
-	if ( empty( $name ) && !empty( $options ) ) {
+	if ( empty( $name ) && ! empty( $options ) ) {
 		$var = $options;
 	} else {
-		if ( !empty( $options[$name] ) ) {
-			$var = ( !empty( $key ) && !empty( $options[$name][$key] ) && $key !== true ) ? $options[$name][$key] : $var = $options[$name];;
+		if ( ! empty( $options[$name] ) ) {
+			$var = ( ! empty( $key ) && ! empty( $options[$name][$key] ) && $key !== true ) ? $options[$name][$key] : $var = $options[$name];;
 		}
 	}
 	return $var;
@@ -28,7 +28,7 @@ function shoestrap_getVariable( $name, $key = false ) {
 endif;
 
 
-if ( !function_exists( 'shoestrap_password_form' ) ) :
+if ( ! function_exists( 'shoestrap_password_form' ) ) :
 /*
  * Replace the password forms with a bootstrap-formatted version.
  */
@@ -51,7 +51,7 @@ endif;
 add_filter( 'the_password_form', 'shoestrap_password_form' );
 
 
-if ( !function_exists( 'shoestrap_replace_reply_link_class' ) ) :
+if ( ! function_exists( 'shoestrap_replace_reply_link_class' ) ) :
 /*
  * Apply the proper classes to comment reply links
  */
@@ -63,7 +63,7 @@ endif;
 add_filter('comment_reply_link', 'shoestrap_replace_reply_link_class');
 
 
-if ( !function_exists( 'shoestrap_init_filesystem' ) ) :
+if ( ! function_exists( 'shoestrap_init_filesystem' ) ) :
 /*
  * Initialize the Wordpress filesystem, no more using file_put_contents function
  */
@@ -77,7 +77,7 @@ endif;
 add_filter('init', 'shoestrap_init_filesystem');
 
 
-if ( !function_exists( 'shoestrap_array_delete' ) ) :
+if ( ! function_exists( 'shoestrap_array_delete' ) ) :
 /*
  * Unset a row from an array.
  */
@@ -93,10 +93,10 @@ endif;
 function shoestrap_rel_canonical() {
 	global $wp_the_query;
 
-	if ( !is_singular() )
+	if ( ! is_singular() )
 		return;
 
-	if ( !$id = $wp_the_query->get_queried_object_id() )
+	if ( ! $id = $wp_the_query->get_queried_object_id() )
 		return;
 
 	$link = get_permalink( $id );

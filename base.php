@@ -30,7 +30,7 @@
 
 				<?php if ( shoestrap_display_primary_sidebar() ) : ?>
 					<aside id="sidebar-primary" class="sidebar <?php shoestrap_section_class( 'primary', true ); ?>" role="complementary">
-						<?php if ( !has_action( 'shoestrap_sidebar_override' ) ) {
+						<?php if ( ! has_action( 'shoestrap_sidebar_override' ) ) {
 							include shoestrap_sidebar_path();
 						} else {
 							do_action( 'shoestrap_sidebar_override' );
@@ -53,7 +53,7 @@
 
 	do_action('shoestrap_pre_footer');
 
-	if ( !has_action( 'shoestrap_footer_override' ) ) {
+	if ( ! has_action( 'shoestrap_footer_override' ) ) {
 		ss_get_template_part( 'templates/footer' );
 	} else {
 		do_action( 'shoestrap_footer_override' );

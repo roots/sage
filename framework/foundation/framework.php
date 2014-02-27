@@ -7,14 +7,13 @@ if ( $ss_settings['framework'] == 'foundation' ) {
 
 	include_once( dirname( __FILE__ ) . '/class-Shoestrap_Foundation.php' );               // Framework class.
 
-	include_once( dirname( __FILE__ ) . '/modules/class-Shoestrap_Branding.php' );     // Branding
-	include_once( dirname( __FILE__ ) . '/modules/class-Shoestrap_Typography.php' );   // Typography
-	include_once( dirname( __FILE__ ) . '/modules/class-Shoestrap_Social.php' );       // Social
-	include_once( dirname( __FILE__ ) . '/modules/class-Shoestrap_Layout.php' );       // layout
-	include_once( dirname( __FILE__ ) . '/modules/widgets.php' );                      // Widgets
-
-	include_once( dirname( __FILE__ ) . '/menus/class-Shoestrap_Foundation_Menus.php' );   // The menus module
-	include_once( dirname( __FILE__ ) . '/menus/nav-foundation.php' );                     // Specific classes for navbar
+	include_once( dirname( __FILE__ ) . '/modules/class-Shoestrap_Branding.php' );         // Branding
+	include_once( dirname( __FILE__ ) . '/modules/class-Shoestrap_Typography.php' );       // Typography
+	include_once( dirname( __FILE__ ) . '/modules/class-Shoestrap_Social.php' );           // Social
+	include_once( dirname( __FILE__ ) . '/modules/class-Shoestrap_Layout.php' );           // layout
+	include_once( dirname( __FILE__ ) . '/modules/class-Shoestrap_Foundation_Menus.php' ); // The menus module
+	include_once( dirname( __FILE__ ) . '/modules/widgets.php' );                          // Widgets
+	include_once( dirname( __FILE__ ) . '/nav-foundation.php' );                           // Specific classes for navbar
 }
 
 /**

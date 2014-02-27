@@ -1,6 +1,6 @@
 <?php
 
-if ( !class_exists( 'Shoestrap_Image' ) ) {
+if ( ! class_exists( 'Shoestrap_Image' ) ) {
 
 	/**
 	* The Image handling class
@@ -15,8 +15,9 @@ if ( !class_exists( 'Shoestrap_Image' ) ) {
 		 */
 		public static function image( $img ) {
 
-			if ( empty( $img ) || ( empty( $img['id'] ) && empty( $img['url'] ) ) )
+			if ( empty( $img ) || ( empty( $img['id'] ) && empty( $img['url'] ) ) ) {
 				return; // Nothing here to do!
+			}
 
 			// Get the full size attachment
 			$image = wp_get_attachment_image_src( $img['id'], 'full' );
@@ -42,8 +43,9 @@ if ( !class_exists( 'Shoestrap_Image' ) ) {
 
 			$settings = wp_parse_args( $data, $defaults );
 
-			if ( empty( $settings['url'] ) )
+			if ( empty( $settings['url'] ) ) {
 				return;
+			}
 
 			// Generate the @2x file if retina is enabled
 			if ( current_theme_supports( 'retina' ) && empty( $settings['retina'] ) ) {
@@ -92,7 +94,7 @@ if ( !class_exists( 'Shoestrap_Image' ) ) {
 			$dir = $info['dirname'];
 			$ext = "";
 
-			if ( !empty( $info['extension'] ) ) {
+			if ( ! empty( $info['extension'] ) ) {
 				$ext = $info['extension'];
 			}
 
@@ -107,7 +109,7 @@ if ( !class_exists( 'Shoestrap_Image' ) ) {
 			// Get the destination file name
 			$dest_file_name = "{$dir}/{$name}-{$suffix}.{$ext}";
 
-			if ( !file_exists( $dest_file_name ) ) {
+			if ( ! file_exists( $dest_file_name ) ) {
 				/*
 				 *  Bail if this image isn't in the Media Library.
 				 *  We only want to resize Media Library images, so we can be sure they get deleted correctly when appropriate.
@@ -115,7 +117,7 @@ if ( !class_exists( 'Shoestrap_Image' ) ) {
 				$query          = $wpdb->prepare( "SELECT * FROM $wpdb->posts WHERE guid='%s'", $url );
 				$get_attachment = $wpdb->get_results( $query );
 
-				if ( !$get_attachment ) {
+				if ( ! $get_attachment ) {
 					return array( 'url' => $url, 'width' => $width, 'height' => $height );
 				}
 

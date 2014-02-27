@@ -20,7 +20,7 @@ function shoestrap_head_cleanup() {
 	global $wp_widget_factory;
 	remove_action( 'wp_head', array( $wp_widget_factory->widgets['WP_Widget_Recent_Comments'], 'recent_comments_style' ) );
 
-	if ( !class_exists( 'WPSEO_Frontend' ) ) {
+	if ( ! class_exists( 'WPSEO_Frontend' ) ) {
 		remove_action( 'wp_head', 'rel_canonical' );
 		add_action( 'wp_head', 'shoestrap_rel_canonical' );
 	}
@@ -35,13 +35,15 @@ function shoestrap_language_attributes() {
 	$attributes = array();
 	$output = '';
 
-	if ( is_rtl() )
+	if ( is_rtl() ) {
 		$attributes[] = 'dir="rtl"';
+	}
 
 	$lang = get_bloginfo( 'language' );
 
-	if ( $lang )
+	if ( $lang ) {
 		$attributes[] = "lang=\"$lang\"";
+	}
 
 	$output = implode( ' ', $attributes );
 	$output = apply_filters( 'shoestrap_language_attributes', $output );
@@ -54,8 +56,9 @@ add_filter( 'language_attributes', 'shoestrap_language_attributes' );
  * Manage output of wp_title()
  */
 function shoestrap_wp_title( $title ) {
-	if ( is_feed() )
+	if ( is_feed() ) {
 		return $title;
+	}
 
 	$title .= get_bloginfo( 'name' );
 
@@ -68,8 +71,9 @@ add_filter( 'wp_title', 'shoestrap_wp_title', 10 );
  */
 function shoestrap_body_class( $classes ) {
 	// Add post/page slug
-	if ( is_single() || is_page() && !is_front_page() )
+	if ( is_single() || is_page() && ! is_front_page() ) {
 		$classes[] = basename( get_permalink() );
+	}
 
 	// Remove unnecessary classes
 	$home_id_class = 'page-id-' . get_option( 'page_on_front' );
@@ -102,8 +106,9 @@ add_filter( 'embed_oembed_html', 'shoestrap_embed_wrap', 10, 4 );
  * @link http://justintadlock.com/archives/2011/07/01/captions-in-wordpress
  */
 function shoestrap_caption( $output, $attr, $content ) {
-	if ( is_feed() )
+	if ( is_feed() ) {
 		return $output;
+	}
 
 	$defaults = array( 
 		'id'      => '',
@@ -115,11 +120,12 @@ function shoestrap_caption( $output, $attr, $content ) {
 	$attr = shortcode_atts( $defaults, $attr );
 
 	// If the width is less than 1 or there is no caption, return the content wrapped between the [caption] tags
-	if ( $attr['width'] < 1 || empty( $attr['caption'] ) )
+	if ( $attr['width'] < 1 || empty( $attr['caption'] ) ) {
 		return $content;
+	}
 
 	// Set up the attributes for the caption <figure>
-	$attributes  = ( !empty( $attr['id'] ) ? ' id="' . esc_attr( $attr['id'] ) . '"' : '' );
+	$attributes  = ( ! empty( $attr['id'] ) ? ' id="' . esc_attr( $attr['id'] ) . '"' : '' );
 	$attributes .= ' class="thumbnail wp-caption ' . esc_attr( $attr['align'] ) . '"';
 	$attributes .= ' style="width: ' . ( esc_attr( $attr['width'] ) + 10 ) . 'px"';
 
@@ -139,8 +145,9 @@ add_filter( 'img_caption_shortcode', 'shoestrap_caption', 10, 3 );
  * @link http://core.trac.wordpress.org/ticket/11330
  */
 function shoestrap_request_filter( $query_vars ) {
-	if ( isset( $_GET['s'] ) && empty( $_GET['s'] ) )
+	if ( isset( $_GET['s'] ) && empty( $_GET['s'] ) ) {
 		$query_vars['s'] = ' ';
+	}
 
 	return $query_vars;
 }
@@ -312,8 +319,9 @@ function shoestrap_paginate_links( $args = '' ) {
 function shoestrap_pagination_toggler() {
 	global $wp_query;
 
-	if ( $wp_query->max_num_pages <= 1 )
+	if ( $wp_query->max_num_pages <= 1 ) {
 		return;
+	}
 
 	$nav  = '<nav class="pagination">';
 	$nav .= shoestrap_paginate_links(

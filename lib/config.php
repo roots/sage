@@ -41,7 +41,7 @@ function shoestrap_display_secondary_sidebar() {
 }
 
 
-if ( !function_exists( 'shoestrap_section_class' ) ) :
+if ( ! function_exists( 'shoestrap_section_class' ) ) :
 /*
  * Calculates the classes of the main area, main sidebar and secondary sidebar
  */
@@ -131,7 +131,7 @@ function shoestrap_mp_wrap_div_close() {
  */
 function shoestrap_mp_wrap_div_toggler() {
 	$wrapper = shoestrap_section_class( 'wrapper' );
-	if ( !is_null( $wrapper ) && !empty( $wrapper ) ) {
+	if ( ! is_null( $wrapper ) && ! empty( $wrapper ) ) {
 		add_action( 'shoestrap_pre_main', 'shoestrap_mp_wrap_div_open', 999 );
 		add_action( 'shoestrap_post_main', 'shoestrap_mp_wrap_div_close', 999 );
 	}
@@ -145,6 +145,6 @@ add_action( 'wp', 'shoestrap_mp_wrap_div_toggler' );
  * Example: If the content area is 640px wide, set $content_width = 620; so images and videos will not overflow.
  * Default: 1140px is the default Bootstrap container width.
  */
-if ( !isset( $content_width ) ) {
+if ( ! isset( $content_width ) ) {
 	$content_width = 1140;
 }

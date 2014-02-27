@@ -27,13 +27,13 @@ global $ss_framework;
 		</nav>
 		<?php endif; ?>
 
-		<?php if (!comments_open() && !is_page() && post_type_supports(get_post_type(), 'comments')) : ?>
+		<?php if ( ! comments_open() && ! is_page() && post_type_supports(get_post_type(), 'comments')) : ?>
 			<?php echo $ss_framework->alert( 'warning', __( 'Comments are closed.', 'shoestrap' ) ); ?>
 		<?php endif; ?>
 	</section><!-- /#comments -->
 <?php endif; ?>
 
-<?php if (!have_comments() && !comments_open() && !is_page() && post_type_supports(get_post_type(), 'comments')) : ?>
+<?php if ( ! have_comments() && ! comments_open() && ! is_page() && post_type_supports(get_post_type(), 'comments')) : ?>
 	<section id="comments">
 		<?php echo $ss_framework->alert( 'warning', __( 'Comments are closed.', 'shoestrap' ) ); ?>
 	</section><!-- /#comments -->
@@ -43,7 +43,7 @@ global $ss_framework;
 	<section id="respond">
 		<h3><?php comment_form_title(__('Leave a Reply', 'shoestrap'), __('Leave a Reply to %s', 'shoestrap')); ?></h3>
 		<p class="cancel-comment-reply"><?php cancel_comment_reply_link(); ?></p>
-		<?php if (get_option('comment_registration') && !is_user_logged_in()) : ?>
+		<?php if (get_option('comment_registration') && ! is_user_logged_in()) : ?>
 			<p><?php printf(__('You must be <a href="%s">logged in</a> to post a comment.', 'shoestrap'), wp_login_url(get_permalink())); ?></p>
 		<?php else : ?>
 			<form action="<?php echo get_option('siteurl'); ?>/wp-comments-post.php" method="post" id="commentform">

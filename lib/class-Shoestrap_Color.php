@@ -1,7 +1,7 @@
 <?php
 
 
-if ( !class_exists( 'Shoestrap_Color' ) ) {
+if ( ! class_exists( 'Shoestrap_Color' ) ) {
 	/**
 	* Color Calculations class for Shoestrap
 	*/
@@ -18,8 +18,9 @@ if ( !class_exists( 'Shoestrap_Color' ) ) {
 			$color = str_replace( '#', '', $color );
 
 			// If there are more than 6 characters, only keep the first 6.
-			if ( strlen( $color ) > 6 )
+			if ( strlen( $color ) > 6 ) {
 				$color = substr( $color, 0, 6 );
+			}
 
 			if ( strlen( $color ) == 6 ) {
 				$hex = $color; // If string consists of 6 characters, then this is our color
@@ -28,8 +29,9 @@ if ( !class_exists( 'Shoestrap_Color' ) ) {
 				// We will have to do some calculations below to get the actual 6-digit hex value.
 
 				// If the string is longer than 3 characters, only keep the first 3.
-				if ( strlen( $color ) > 3 )
+				if ( strlen( $color ) > 3 ) {
 					$color = substr( $color, 0, 3 );
+				}
 
 				// If this is a 3-character string, format it to 6 characters.
 				if ( strlen( $color ) == 3 ) {
@@ -41,11 +43,13 @@ if ( !class_exists( 'Shoestrap_Color' ) ) {
 				}
 
 				// If this is shorter than 3 characters, do some voodoo.
-				if ( strlen( $color ) == 2 )
+				if ( strlen( $color ) == 2 ) {
 					$hex = $color . $color . $color;
+				}
 
-				if ( strlen( $color ) == 1 )
+				if ( strlen( $color ) == 1 ) {
 					$hex = $color . $color . $color . $color . $color . $color;
+				}
 			}
 
 			return '#' . $hex;
@@ -90,14 +94,15 @@ if ( !class_exists( 'Shoestrap_Color' ) ) {
 			// Set the opacity to 100 if a larger value has been entered by mistake.
 			// If a negative value is used, then set to 0.
 			// If an opacity value is entered in a decimal form (for example 0.25), then multiply by 100.
-			if ( $opacity >= 100 )
+			if ( $opacity >= 100 ) {
 				$opacity = 100;
-			elseif ( $opacity < 0 )
+			} elseif ( $opacity < 0 ) {
 				$opacity = 0;
-			elseif ( $opacity < 1 && $opacity != 0 )
+			} elseif ( $opacity < 1 && $opacity != 0 ) {
 				$opacity = ( $opacity * 100 );
-			else
+			} else {
 				$opacity = $opacity;
+			}
 
 			// Divide the opacity by 100 to end-up with a CSS value for the opacity
 			$opacity = ( $opacity / 100 );
@@ -105,10 +110,11 @@ if ( !class_exists( 'Shoestrap_Color' ) ) {
 			$color = 'rgba(' . self::get_rgb( $hex, true ) . ', ' . $opacity . ')';
 
 			// Echo or Return the value
-			if ( $echo == true )
+			if ( $echo == true ) {
 				echo $color;
-			else
+			} else {
 				return $color;
+			}
 
 		}
 
@@ -140,7 +146,9 @@ if ( !class_exists( 'Shoestrap_Color' ) ) {
 
 			// Format the hex color string
 			$hex = str_replace( '#', '', $hex );
-			$hex = ( strlen( $hex ) == 3 ) ? str_repeat( substr( $hex, 0, 1 ), 2 ) . str_repeat( substr( $hex, 1, 1 ), 2 ) . str_repeat( substr( $hex, 2, 1 ), 2 ) : $hex;
+			if ( strlen( $hex ) == 3 ) {
+				$hex = str_repeat( substr( $hex, 0, 1 ), 2 ) . str_repeat( substr( $hex, 1, 1 ), 2 ) . str_repeat( substr( $hex, 2, 1 ), 2 );
+			}
 
 			// Get decimal values
 			$red    = hexdec( substr( $hex, 0, 2 ) );
@@ -170,10 +178,14 @@ if ( !class_exists( 'Shoestrap_Color' ) ) {
 
 			// Format the hex color string
 			$hex1 = str_replace( '#', '', $hex1 );
-			$hex1 = ( strlen( $hex1 ) == 3 ) ? str_repeat( substr( $hex1, 0, 1 ), 2 ) . str_repeat( substr( $hex1, 1, 1 ), 2 ) . str_repeat( substr( $hex1, 2, 1 ), 2 ) : $hex1;
+			if ( strlen( $hex1 ) == 3 ) {
+				$hex1 = str_repeat( substr( $hex1, 0, 1 ), 2 ) . str_repeat( substr( $hex1, 1, 1 ), 2 ) . str_repeat( substr( $hex1, 2, 1 ), 2 );
+			}
 
 			$hex2 = str_replace( '#', '', $hex2 );
-			$hex2 = ( strlen( $hex2 ) == 3 ) ? str_repeat( substr( $hex2, 0, 1 ), 2 ) . str_repeat( substr( $hex2, 1, 1 ), 2 ) . str_repeat( substr( $hex2, 2, 1 ), 2 ) : $hex2;
+			if ( strlen( $hex2 ) == 3 ) {
+				str_repeat( substr( $hex2, 0, 1 ), 2 ) . str_repeat( substr( $hex2, 1, 1 ), 2 ) . str_repeat( substr( $hex2, 2, 1 ), 2 );
+			}
 
 			// Get decimal values
 			$red_1    = hexdec( substr( $hex1, 0, 2 ) );
@@ -236,18 +248,21 @@ if ( !class_exists( 'Shoestrap_Color' ) ) {
 				$del_g = ( ( ( $var_max - $var_g ) / 6 ) + ( $del_max / 2 ) ) / $del_max;
 				$del_b = ( ( ( $var_max - $var_b ) / 6 ) + ( $del_max / 2 ) ) / $del_max;
 
-				if ( $var_r == $var_max )
+				if ( $var_r == $var_max ) {
 					$h = $del_b - $del_g;
-				elseif ( $var_g == $var_max)
+				} elseif ( $var_g == $var_max ) {
 					$h = ( 1 / 3 ) + $del_r - $del_b;
-				elseif ( $var_b == $var_max )
+				} elseif ( $var_b == $var_max ) {
 					$h = ( 2 / 3 ) + $del_g - $del_r;
+				}
 
-				if ( $h<0 )
+				if ( $h<0 ) {
 					$h++;
+				}
 
-				if ( $h>1 )
+				if ( $h>1 ) {
 					$h--;
+				}
 			}
 
 			$hsl['h'] = $h;
@@ -270,14 +285,16 @@ if ( !class_exists( 'Shoestrap_Color' ) ) {
 				$hex        = str_replace( '#', '', $color );
 				$brightness = self::get_brightness( $hex );
 
-				if ( !$brightest || self::get_brightness( $hex ) > self::get_brightness( $brightest ) )
+				if ( ! $brightest || self::get_brightness( $hex ) > self::get_brightness( $brightest ) ) {
 					$brightest = $hex;
+				}
 			}
 
-			if ( $context == 'key' )
+			if ( $context == 'key' ) {
 				return array_search( $brightest, $colors );
-			elseif ( $context == 'value' )
+			} elseif ( $context == 'value' ) {
 				return $brightest;
+			}
 		}
 
 		/*
@@ -294,17 +311,20 @@ if ( !class_exists( 'Shoestrap_Color' ) ) {
 				$hsv        = self::hex_to_hsv( $hex );
 				$saturation = $hsv['s'];
 
-				if ( $most_saturated )
+				if ( $most_saturated ) {
 					$hsv_old = self::hex_to_hsv( $most_saturated );
+				}
 
-				if ( !$most_saturated || $saturation > $hsv_old['s'] );
+				if ( ! $most_saturated || $saturation > $hsv_old['s'] ) {
 					$most_saturated = $hex;
+				}
 			}
 
-			if ( $context == 'key' )
+			if ( $context == 'key' ) {
 				return array_search( $most_saturated, $colors );
-			elseif ( $context == 'value' )
+			} elseif ( $context == 'value' ) {
 				return $most_saturated;
+			}
 		}
 
 		/*
@@ -321,17 +341,20 @@ if ( !class_exists( 'Shoestrap_Color' ) ) {
 				$hsv        = self::hex_to_hsv( $hex );
 				$saturation = $hsv['s'];
 
-				if ( $most_intense )
+				if ( $most_intense ) {
 					$hsv_old = self::hex_to_hsv( $most_intense );
+				}
 
-				if ( !$most_intense || $saturation > $hsv_old['s'] );
+				if ( ! $most_intense || $saturation > $hsv_old['s'] ) {
 					$most_intense = $hex;
+				}
 			}
 
-			if ( $context == 'key' )
+			if ( $context == 'key' ) {
 				return array_search( $most_intense, $colors );
-			elseif ( $context == 'value' )
+			} elseif ( $context == 'value' ) {
 				return $most_intense;
+			}
 		}
 
 		/*
@@ -359,14 +382,16 @@ if ( !class_exists( 'Shoestrap_Color' ) ) {
 					$dullness_old = 1 / $hsv_old['s'];
 				}
 
-				if ( !$brightest_dull || self::get_brightness( $hex ) * $dullness > self::get_brightness( $brightest_dull ) * $dullness_old )
+				if ( ! $brightest_dull || self::get_brightness( $hex ) * $dullness > self::get_brightness( $brightest_dull ) * $dullness_old ) {
 					$brightest_dull = $hex;
+				}
 			}
 
-			if ( $context == 'key' )
+			if ( $context == 'key' ) {
 				return array_search( $brightest_dull, $colors );
-			elseif ( $context == 'value' )
+			} elseif ( $context == 'value' ) {
 				return $brightest_dull;
+			}
 		}
 
 		/*
