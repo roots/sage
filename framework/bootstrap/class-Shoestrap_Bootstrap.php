@@ -61,7 +61,9 @@ if ( !class_exists( 'Shoestrap_Bootstrap' ) ) {
 				'clearfix' => '<div class="clearfix"></div>',
 			);
 
-			add_filter( 'shoestrap_compiler', array( $this, 'styles_filter' ) );
+			if ( ! isset ( $ss_settings['color_brand_primary'] ) && ! empty( $ss_settings['color_brand_primary'] ) ) {
+				add_filter( 'shoestrap_compiler', array( $this, 'styles_filter' ) );
+			}
 
 			if ( $ss_settings['navbar_social'] == 1 ) {
 				if ( $ss_settings['navbar_social_style'] == 1 ) {
@@ -425,133 +427,164 @@ if ( !class_exists( 'Shoestrap_Bootstrap' ) ) {
 			$variables = '';
 
 			// Calculate grays
-			$variables .= '@gray-darker:            ' . $gray_darker . ';';
-			$variables .= '@gray-dark:              ' . $gray_dark . ';';
-			$variables .= '@gray:                   ' . $gray . ';';
-			$variables .= '@gray-light:             ' . $gray_light . ';';
-			$variables .= '@gray-lighter:           ' . $gray_lighter . ';';
+			if ( isset( $body_bg ) && ! empty( $body_bg ) ) {
+				$variables .= '@gray-darker:            ' . $gray_darker . ';';
+				$variables .= '@gray-dark:              ' . $gray_dark . ';';
+				$variables .= '@gray:                   ' . $gray . ';';
+				$variables .= '@gray-light:             ' . $gray_light . ';';
+				$variables .= '@gray-lighter:           ' . $gray_lighter . ';';
 
-			// The below are declared as #fff in the default variables.
-			$variables .= '@body-bg:                     ' . $body_bg . ';';
-			$variables .= '@component-active-color:          @body-bg;';
-			$variables .= '@btn-default-bg:                  @body-bg;';
-			$variables .= '@dropdown-bg:                     @body-bg;';
-			$variables .= '@pagination-bg:                   @body-bg;';
-			$variables .= '@progress-bar-color:              @body-bg;';
-			$variables .= '@list-group-bg:                   @body-bg;';
-			$variables .= '@panel-bg:                        @body-bg;';
-			$variables .= '@panel-primary-text:              @body-bg;';
-			$variables .= '@pagination-active-color:         @body-bg;';
-			$variables .= '@pagination-disabled-bg:          @body-bg;';
-			$variables .= '@tooltip-color:                   @body-bg;';
-			$variables .= '@popover-bg:                      @body-bg;';
-			$variables .= '@popover-arrow-color:             @body-bg;';
-			$variables .= '@label-color:                     @body-bg;';
-			$variables .= '@label-link-hover-color:          @body-bg;';
-			$variables .= '@modal-content-bg:                @body-bg;';
-			$variables .= '@badge-color:                     @body-bg;';
-			$variables .= '@badge-link-hover-color:          @body-bg;';
-			$variables .= '@badge-active-bg:                 @body-bg;';
-			$variables .= '@carousel-control-color:          @body-bg;';
-			$variables .= '@carousel-indicator-active-bg:    @body-bg;';
-			$variables .= '@carousel-indicator-border-color: @body-bg;';
-			$variables .= '@carousel-caption-color:          @body-bg;';
-			$variables .= '@close-text-shadow:       0 1px 0 @body-bg;';
-			$variables .= '@input-bg:                        @body-bg;';
-			$variables .= '@nav-open-link-hover-color:       @body-bg;';
+				// The below are declared as #fff in the default variables.
+				$variables .= '@body-bg:                     ' . $body_bg . ';';
+				$variables .= '@component-active-color:          @body-bg;';
+				$variables .= '@btn-default-bg:                  @body-bg;';
+				$variables .= '@dropdown-bg:                     @body-bg;';
+				$variables .= '@pagination-bg:                   @body-bg;';
+				$variables .= '@progress-bar-color:              @body-bg;';
+				$variables .= '@list-group-bg:                   @body-bg;';
+				$variables .= '@panel-bg:                        @body-bg;';
+				$variables .= '@panel-primary-text:              @body-bg;';
+				$variables .= '@pagination-active-color:         @body-bg;';
+				$variables .= '@pagination-disabled-bg:          @body-bg;';
+				$variables .= '@tooltip-color:                   @body-bg;';
+				$variables .= '@popover-bg:                      @body-bg;';
+				$variables .= '@popover-arrow-color:             @body-bg;';
+				$variables .= '@label-color:                     @body-bg;';
+				$variables .= '@label-link-hover-color:          @body-bg;';
+				$variables .= '@modal-content-bg:                @body-bg;';
+				$variables .= '@badge-color:                     @body-bg;';
+				$variables .= '@badge-link-hover-color:          @body-bg;';
+				$variables .= '@badge-active-bg:                 @body-bg;';
+				$variables .= '@carousel-control-color:          @body-bg;';
+				$variables .= '@carousel-indicator-active-bg:    @body-bg;';
+				$variables .= '@carousel-indicator-border-color: @body-bg;';
+				$variables .= '@carousel-caption-color:          @body-bg;';
+				$variables .= '@close-text-shadow:       0 1px 0 @body-bg;';
+				$variables .= '@input-bg:                        @body-bg;';
+				$variables .= '@nav-open-link-hover-color:       @body-bg;';
 
-			// These are #ccc
-			// We re-calculate the color based on the gray values above.
-			$variables .= '@btn-default-border:            mix(@gray-light, @gray-lighter);';
-			$variables .= '@input-border:                  mix(@gray-light, @gray-lighter);';
-			$variables .= '@popover-fallback-border-color: mix(@gray-light, @gray-lighter);';
-			$variables .= '@breadcrumb-color:              mix(@gray-light, @gray-lighter);';
-			$variables .= '@dropdown-fallback-border:      mix(@gray-light, @gray-lighter);';
+				// These are #ccc
+				// We re-calculate the color based on the gray values above.
+				$variables .= '@btn-default-border:            mix(@gray-light, @gray-lighter);';
+				$variables .= '@input-border:                  mix(@gray-light, @gray-lighter);';
+				$variables .= '@popover-fallback-border-color: mix(@gray-light, @gray-lighter);';
+				$variables .= '@breadcrumb-color:              mix(@gray-light, @gray-lighter);';
+				$variables .= '@dropdown-fallback-border:      mix(@gray-light, @gray-lighter);';
 
-			$variables .= '@table-bg-accent:    ' . $table_bg_accent . ';';
-			$variables .= '@table-bg-hover:     ' . $table_bg_hover . ';';
-			$variables .= '@table-border-color: ' . $table_border_color . ';';
+				$variables .= '@table-bg-accent:    ' . $table_bg_accent . ';';
+				$variables .= '@table-bg-hover:     ' . $table_bg_hover . ';';
+				$variables .= '@table-border-color: ' . $table_border_color . ';';
 
-			$variables .= '@legend-border-color: @gray-lighter;';
-			$variables .= '@dropdown-divider-bg: @gray-lighter;';
+				$variables .= '@legend-border-color: @gray-lighter;';
+				$variables .= '@dropdown-divider-bg: @gray-lighter;';
 
-			$variables .= '@dropdown-link-hover-bg: @table-bg-hover;';
-			$variables .= '@dropdown-caret-color:   @gray-darker;';
+				$variables .= '@dropdown-link-hover-bg: @table-bg-hover;';
+				$variables .= '@dropdown-caret-color:   @gray-darker;';
 
-			$variables .= '@nav-tabs-border-color:                   @table-border-color;';
-			$variables .= '@nav-tabs-active-link-hover-border-color: @table-border-color;';
-			$variables .= '@nav-tabs-justified-link-border-color:    @table-border-color;';
+				$variables .= '@nav-tabs-border-color:                   @table-border-color;';
+				$variables .= '@nav-tabs-active-link-hover-border-color: @table-border-color;';
+				$variables .= '@nav-tabs-justified-link-border-color:    @table-border-color;';
 
-			$variables .= '@pagination-border:          @table-border-color;';
-			$variables .= '@pagination-hover-border:    @table-border-color;';
-			$variables .= '@pagination-disabled-border: @table-border-color;';
+				$variables .= '@pagination-border:          @table-border-color;';
+				$variables .= '@pagination-hover-border:    @table-border-color;';
+				$variables .= '@pagination-disabled-border: @table-border-color;';
 
-			$variables .= '@tooltip-bg: darken(@gray-darker, 15%);';
+				$variables .= '@tooltip-bg: darken(@gray-darker, 15%);';
 
-			$variables .= '@popover-arrow-outer-fallback-color: @gray-light;';
+				$variables .= '@popover-arrow-outer-fallback-color: @gray-light;';
 
-			$variables .= '@modal-content-fallback-border-color: @gray-light;';
-			$variables .= '@modal-backdrop-bg:                   darken(@gray-darker, 15%);';
-			$variables .= '@modal-header-border-color:           lighten(@gray-lighter, 12%);';
+				$variables .= '@modal-content-fallback-border-color: @gray-light;';
+				$variables .= '@modal-backdrop-bg:                   darken(@gray-darker, 15%);';
+				$variables .= '@modal-header-border-color:           lighten(@gray-lighter, 12%);';
 
-			$variables .= '@progress-bg: ' . $table_bg_hover . ';';
+				$variables .= '@progress-bg: ' . $table_bg_hover . ';';
 
-			$variables .= '@list-group-border:   ' . $table_border_color . ';';
-			$variables .= '@list-group-hover-bg: ' . $table_bg_hover . ';';
+				$variables .= '@list-group-border:   ' . $table_border_color . ';';
+				$variables .= '@list-group-hover-bg: ' . $table_bg_hover . ';';
 
-			$variables .= '@list-group-link-color:         @gray;';
-			$variables .= '@list-group-link-heading-color: @gray-dark;';
+				$variables .= '@list-group-link-color:         @gray;';
+				$variables .= '@list-group-link-heading-color: @gray-dark;';
 
-			$variables .= '@panel-inner-border:       @list-group-border;';
-			$variables .= '@panel-footer-bg:          @list-group-hover-bg;';
-			$variables .= '@panel-default-border:     @table-border-color;';
-			$variables .= '@panel-default-heading-bg: @panel-footer-bg;';
+				$variables .= '@panel-inner-border:       @list-group-border;';
+				$variables .= '@panel-footer-bg:          @list-group-hover-bg;';
+				$variables .= '@panel-default-border:     @table-border-color;';
+				$variables .= '@panel-default-heading-bg: @panel-footer-bg;';
 
-			$variables .= '@thumbnail-border: @list-group-border;';
+				$variables .= '@thumbnail-border: @list-group-border;';
 
-			$variables .= '@well-bg: @table-bg-hover;';
+				$variables .= '@well-bg: @table-bg-hover;';
 
-			$variables .= '@breadcrumb-bg: @table-bg-hover;';
+				$variables .= '@breadcrumb-bg: @table-bg-hover;';
 
-			$variables .= '@close-color: darken(@gray-darker, 15%);';
+				$variables .= '@close-color: darken(@gray-darker, 15%);';
+			}
 
 			/**
 			 * LAYOUT
 			 */
-			$screen_sm = filter_var( $ss_settings['screen_tablet'], FILTER_SANITIZE_NUMBER_INT );
-			$screen_md = filter_var( $ss_settings['screen_desktop'], FILTER_SANITIZE_NUMBER_INT );
-			$screen_lg = filter_var( $ss_settings['screen_large_desktop'], FILTER_SANITIZE_NUMBER_INT );
-			$gutter    = filter_var( $ss_settings['layout_gutter'], FILTER_SANITIZE_NUMBER_INT );
-			$gutter    = ( $gutter < 2 ) ? 2 : $gutter;
+			if ( isset( $ss_settings['screen_tablet'] ) && ! empty( $ss_settings['screen_tablet'] ) ) {
+				$screen_sm = filter_var( $ss_settings['screen_tablet'], FILTER_SANITIZE_NUMBER_INT );
+			}
 
-			$site_style = $ss_settings['site_style'];
+			if ( isset( $ss_settings['screen_desktop'] ) && ! empty( $ss_settings['screen_desktop'] ) ) {
+				$screen_md = filter_var( $ss_settings['screen_desktop'], FILTER_SANITIZE_NUMBER_INT );
+			}
 
-			$screen_xs = ( $site_style == 'static' ) ? '50px' : '480px';
-			$screen_sm = ( $site_style == 'static' ) ? '50px' : $screen_sm;
-			$screen_md = ( $site_style == 'static' ) ? '50px' : $screen_md;
+			if ( isset( $ss_settings['screen_large_desktop'] ) && ! empty( $ss_settings['screen_large_desktop'] ) ) {
+				$screen_lg = filter_var( $ss_settings['screen_large_desktop'], FILTER_SANITIZE_NUMBER_INT );
+			}
 
-			$variables .= '@screen-sm: ' . $screen_sm . 'px;';
-			$variables .= '@screen-md: ' . $screen_md . 'px;';
-			$variables .= '@screen-lg: ' . $screen_lg . 'px;';
+			if ( isset( $ss_settings['layout_gutter'] ) && ! empty( $ss_settings['layout_gutter'] ) ) {
+				$gutter    = filter_var( $ss_settings['layout_gutter'], FILTER_SANITIZE_NUMBER_INT );
+				$gutter    = ( $gutter < 2 ) ? 2 : $gutter;
+			}
 
-			$variables .= '@grid-gutter-width: ' . $gutter . 'px;';
+			if ( isset( $ss_settings['site_style'] ) && ! empty( $ss_settings['site_style'] ) ) {
+				$site_style = $ss_settings['site_style'];
+			}
+
+			if ( isset( $site_style ) && ! empty( $site_style ) ) {
+				$screen_xs = ( $site_style == 'static' ) ? '50px' : '480px';
+				$screen_sm = ( $site_style == 'static' ) ? '50px' : $screen_sm;
+				$screen_md = ( $site_style == 'static' ) ? '50px' : $screen_md;
+			}
+
+			if ( isset( $screen_sm ) && ! empty( $screen_sm ) ) {
+				$variables .= '@screen-sm: ' . $screen_sm . 'px;';
+			}
+
+			if ( isset( $screen_md ) && ! empty( $screen_md ) ) {
+				$variables .= '@screen-md: ' . $screen_md . 'px;';
+			}
+
+			if ( isset( $screen_lg ) && ! empty( $screen_lg ) ) {
+				$variables .= '@screen-lg: ' . $screen_lg . 'px;';
+			}
+
+			if ( isset( $gutter ) && ! empty( $gutter ) ) {
+				$variables .= '@grid-gutter-width: ' . $gutter . 'px;';
+			}
 
 			$variables .= '@jumbotron-padding: @grid-gutter-width;';
 
-			$variables .= '@modal-inner-padding: ' . round( $gutter * 20 / 30 ) . 'px;';
-			$variables .= '@modal-title-padding: ' . round( $gutter * 15 / 30 ) . 'px;';
+			if ( isset( $gutter ) && ! empty( $gutter ) ) {
+				$variables .= '@modal-inner-padding: ' . round( $gutter * 20 / 30 ) . 'px;';
+				$variables .= '@modal-title-padding: ' . round( $gutter * 15 / 30 ) . 'px;';
 
-			$variables .= '@modal-lg: ' . round( $screen_md - ( 3 * $gutter ) ) . 'px;';
-			$variables .= '@modal-md: ' . round( $screen_sm - ( 3 * $gutter ) ) . 'px;';
-			$variables .= '@modal-sm: ' . round( $screen_xs - ( 3 * $gutter ) ) . 'px;';
+				$variables .= '@modal-lg: ' . round( $screen_md - ( 3 * $gutter ) ) . 'px;';
+				$variables .= '@modal-md: ' . round( $screen_sm - ( 3 * $gutter ) ) . 'px;';
+				$variables .= '@modal-sm: ' . round( $screen_xs - ( 3 * $gutter ) ) . 'px;';
+			}
 
 			$variables .= '@panel-body-padding: @modal-title-padding;';
 
-			$variables .= '@container-tablet:        ' . ( $screen_sm - ( $gutter / 2 ) ). 'px;';
-			$variables .= '@container-desktop:       ' . ( $screen_md - ( $gutter / 2 ) ). 'px;';
-			$variables .= '@container-large-desktop: ' . ( $screen_lg - $gutter ). 'px;';
+			if ( isset( $gutter ) && ! empty( $gutter ) ) {
+				$variables .= '@container-tablet:        ' . ( $screen_sm - ( $gutter / 2 ) ). 'px;';
+				$variables .= '@container-desktop:       ' . ( $screen_md - ( $gutter / 2 ) ). 'px;';
+				$variables .= '@container-large-desktop: ' . ( $screen_lg - $gutter ). 'px;';
+			}
 
-			if ( $site_style == 'static' ) {
+			if ( isset( $gutter ) && ! empty( $gutter ) && $site_style == 'static' ) {
 				// disable responsiveness
 				$variables .= '@screen-xs-max: 0 !important;
 				.container { max-width: none !important; width: @container-large-desktop; }
@@ -623,16 +656,41 @@ if ( !class_exists( 'Shoestrap_Bootstrap' ) ) {
 				$font_h6_color  = '#' . str_replace( '#', '', Shoestrap_Color::sanitize_hex( $font_h6['color'] ) );
 			}
 
-			$variables .= '@text-color:             ' . $text_color . ';';
-			$variables .= '@font-family-sans-serif: ' . $sans_serif . ';';
-			$variables .= '@font-size-base:         ' . $font_size_base . 'px;';
+			if ( isset( $text_color ) && ! empty( $text_color ) ) {
+				$variables .= '@text-color:             ' . $text_color . ';';
+			}
 
-			$variables .= '@font-size-h1: floor((@font-size-base * ' . $font_h1_size . '));';
-			$variables .= '@font-size-h2: floor((@font-size-base * ' . $font_h2_size . '));';
-			$variables .= '@font-size-h3: ceil((@font-size-base * ' . $font_h3_size . '));';
-			$variables .= '@font-size-h4: ceil((@font-size-base * ' . $font_h4_size . '));';
-			$variables .= '@font-size-h5: ' . $font_h5_size . ';';
-			$variables .= '@font-size-h6: ceil((@font-size-base * ' . $font_h6_size . '));';
+			if ( isset( $sans_serif ) && ! empty( $sans_serif ) ) {
+				$variables .= '@font-family-sans-serif: ' . $sans_serif . ';';
+			}
+
+			if ( isset( $font_size_base ) && ! empty( $font_size_base ) ) {
+				$variables .= '@font-size-base:         ' . $font_size_base . 'px;';
+			}
+
+			if ( isset( $font_h1_size ) && ! empty( $font_h1_size ) ) {
+				$variables .= '@font-size-h1: floor((@font-size-base * ' . $font_h1_size . '));';
+			}
+
+			if ( isset( $font_h2_size ) && ! empty( $font_h2_size ) ) {
+				$variables .= '@font-size-h2: floor((@font-size-base * ' . $font_h2_size . '));';
+			}
+
+			if ( isset( $font_h3_size ) && ! empty( $font_h3_size ) ) {
+				$variables .= '@font-size-h3: ceil((@font-size-base * ' . $font_h3_size . '));';
+			}
+
+			if ( isset( $font_h4_size ) && ! empty( $font_h4_size ) ) {
+				$variables .= '@font-size-h4: ceil((@font-size-base * ' . $font_h4_size . '));';
+			}
+
+			if ( isset( $font_h5_size ) && ! empty( $font_h5_size ) ) {
+				$variables .= '@font-size-h5: ' . $font_h5_size . ';';
+			}
+
+			if ( isset( $font_h6_size ) && ! empty( $font_h6_size ) ) {
+				$variables .= '@font-size-h6: ceil((@font-size-base * ' . $font_h6_size . '));';
+			}
 
 			$variables .= '@caret-width-base:  ceil(@font-size-small / 3 );';
 			$variables .= '@caret-width-large: ceil(@caret-width-base * (5/4) );';
@@ -645,43 +703,111 @@ if ( !class_exists( 'Shoestrap_Bootstrap' ) ) {
 			// Shoestrap-specific variables
 			// --------------------------------------------------
 
-			$variables .= '@base-font-weight:        ' . $font_weight_base . ';';
+			if ( isset( $font_weight_base ) && ! empty( $font_weight_base ) ) {
+				$variables .= '@base-font-weight:        ' . $font_weight_base . ';';
+			}
 
 			// H1
-			$variables .= '@heading-h1-face:         ' . $font_h1_face . ';';
-			$variables .= '@heading-h1-weight:       ' . $font_h1_weight . ';';
-			$variables .= '@heading-h1-style:        ' . $font_h1_style . ';';
-			$variables .= '@heading-h1-color:        ' . $font_h1_color . ';';
+			if ( isset( $font_h1_face ) && ! empty( $font_h1_face ) ) {
+				$variables .= '@heading-h1-face:         ' . $font_h1_face . ';';
+			}
+
+			if ( isset( $font_h1_weight ) && ! empty( $font_h1_weight ) ) {
+				$variables .= '@heading-h1-weight:       ' . $font_h1_weight . ';';
+			}
+
+			if ( isset( $font_h1_style ) && ! empty( $font_h1_style ) ) {
+				$variables .= '@heading-h1-style:        ' . $font_h1_style . ';';
+			}
+
+			if ( isset( $font_h1_color ) && ! empty( $font_h1_color ) ) {
+				$variables .= '@heading-h1-color:        ' . $font_h1_color . ';';
+			}
 
 			// H2
-			$variables .= '@heading-h2-face:         ' . $font_h2_face . ';';
-			$variables .= '@heading-h2-weight:       ' . $font_h2_weight . ';';
-			$variables .= '@heading-h2-style:        ' . $font_h2_style . ';';
-			$variables .= '@heading-h2-color:        ' . $font_h2_color . ';';
+			if ( isset( $font_h2_face ) && ! empty( $font_h2_face ) ) {
+				$variables .= '@heading-h2-face:         ' . $font_h2_face . ';';
+			}
+
+			if ( isset( $font_h2_weight ) && ! empty( $font_h2_weight ) ) {
+				$variables .= '@heading-h2-weight:       ' . $font_h2_weight . ';';
+			}
+
+			if ( isset( $font_h2_style ) && ! empty( $font_h2_style ) ) {
+				$variables .= '@heading-h2-style:        ' . $font_h2_style . ';';
+			}
+
+			if ( isset( $font_h2_color ) && ! empty( $font_h2_color ) ) {
+				$variables .= '@heading-h2-color:        ' . $font_h2_color . ';';
+			}
 
 			// H3
-			$variables .= '@heading-h3-face:         ' . $font_h3_face . ';';
-			$variables .= '@heading-h3-weight:       ' . $font_h3_weight . ';';
-			$variables .= '@heading-h3-style:        ' . $font_h3_style . ';';
-			$variables .= '@heading-h3-color:        ' . $font_h3_color . ';';
+			if ( isset( $font_h3_face ) && ! empty( $font_h3_face ) ) {
+				$variables .= '@heading-h3-face:         ' . $font_h3_face . ';';
+			}
+
+			if ( isset( $font_h3_weight ) && ! empty( $font_h3_weight ) ) {
+				$variables .= '@heading-h3-weight:       ' . $font_h3_weight . ';';
+			}
+
+			if ( isset( $font_h3_style ) && ! empty( $font_h3_style ) ) {
+				$variables .= '@heading-h3-style:        ' . $font_h3_style . ';';
+			}
+
+			if ( isset( $font_h3_color ) && ! empty( $font_h3_color ) ) {
+				$variables .= '@heading-h3-color:        ' . $font_h3_color . ';';
+			}
 
 			// H4
-			$variables .= '@heading-h4-face:         ' . $font_h4_face . ';';
-			$variables .= '@heading-h4-weight:       ' . $font_h4_weight . ';';
-			$variables .= '@heading-h4-style:        ' . $font_h4_style . ';';
-			$variables .= '@heading-h4-color:        ' . $font_h4_color . ';';
+			if ( isset( $font_h4_face ) && ! empty( $font_h4_face ) ) {
+				$variables .= '@heading-h4-face:         ' . $font_h4_face . ';';
+			}
+
+			if ( isset( $font_h4_weight ) && ! empty( $font_h4_weight ) ) {
+				$variables .= '@heading-h4-weight:       ' . $font_h4_weight . ';';
+			}
+
+			if ( isset( $font_h4_style ) && ! empty( $font_h4_style ) ) {
+				$variables .= '@heading-h4-style:        ' . $font_h4_style . ';';
+			}
+
+			if ( isset( $font_h4_color ) && ! empty( $font_h4_color ) ) {
+				$variables .= '@heading-h4-color:        ' . $font_h4_color . ';';
+			}
 
 			// H5
-			$variables .= '@heading-h5-face:         ' . $font_h5_face . ';';
-			$variables .= '@heading-h5-weight:       ' . $font_h5_weight . ';';
-			$variables .= '@heading-h5-style:        ' . $font_h5_style . ';';
-			$variables .= '@heading-h5-color:        ' . $font_h5_color . ';';
+			if ( isset( $font_h5_face ) && ! empty( $font_h5_face ) ) {
+				$variables .= '@heading-h5-face:         ' . $font_h5_face . ';';
+			}
+
+			if ( isset( $font_h5_weight ) && ! empty( $font_h5_weight ) ) {
+				$variables .= '@heading-h5-weight:       ' . $font_h5_weight . ';';
+			}
+
+			if ( isset( $font_h5_style ) && ! empty( $font_h5_style ) ) {
+				$variables .= '@heading-h5-style:        ' . $font_h5_style . ';';
+			}
+
+			if ( isset( $font_h5_color ) && ! empty( $font_h5_color ) ) {
+				$variables .= '@heading-h5-color:        ' . $font_h5_color . ';';
+			}
 
 			// H6
-			$variables .= '@heading-h6-face:         ' . $font_h6_face . ';';
-			$variables .= '@heading-h6-weight:       ' . $font_h6_weight . ';';
-			$variables .= '@heading-h6-style:        ' . $font_h6_style . ';';
-			$variables .= '@heading-h6-color:        ' . $font_h6_color . ';';
+			if ( isset( $font_h6_face ) && ! empty( $font_h6_face ) ) {
+				$variables .= '@heading-h6-face:         ' . $font_h6_face . ';';
+			}
+
+			if ( isset( $font_h6_weight ) && ! empty( $font_h6_weight ) ) {
+				$variables .= '@heading-h6-weight:       ' . $font_h6_weight . ';';
+			}
+
+			if ( isset( $font_h6_style ) && ! empty( $font_h6_style ) ) {
+				$variables .= '@heading-h6-style:        ' . $font_h6_style . ';';
+			}
+
+			if ( isset( $font_h6_color ) && ! empty( $font_h6_color ) ) {
+				$variables .= '@heading-h6-color:        ' . $font_h6_color . ';';
+			}
 
 
 			/**
@@ -719,28 +845,76 @@ if ( !class_exists( 'Shoestrap_Bootstrap' ) ) {
 			$navbar_border      = ( Shoestrap_Color::get_brightness( $brand_primary ) < 50 ) ? 'lighten(@navbar-default-bg, 6.5%)' : 'darken(@navbar-default-bg, 6.5%)';
 
 			// Branding colors
-			$variables .= '@brand-primary: ' . $brand_primary . ';';
-			$variables .= '@brand-success: ' . $brand_success . ';';
-			$variables .= '@brand-info:    ' . $brand_info . ';';
-			$variables .= '@brand-warning: ' . $brand_warning . ';';
-			$variables .= '@brand-danger:  ' . $brand_danger . ';';
+			if ( isset( $brand_primary ) && ! empty( $brand_primary ) ) {
+				$variables .= '@brand-primary: ' . $brand_primary . ';';
+			}
+
+			if ( isset( $brand_success ) && ! empty( $brand_success ) ) {
+				$variables .= '@brand-success: ' . $brand_success . ';';
+			}
+
+			if ( isset( $brand_info ) && ! empty( $brand_info ) ) {
+				$variables .= '@brand-info:    ' . $brand_info . ';';
+			}
+
+			if ( isset( $brand_warning ) && ! empty( $brand_warning ) ) {
+				$variables .= '@brand-warning: ' . $brand_warning . ';';
+			}
+
+			if ( isset( $brand_danger ) && ! empty( $brand_danger ) ) {
+				$variables .= '@brand-danger:  ' . $brand_danger . ';';
+			}
 
 			// Link-hover
-			$variables .= '@link-hover-color: ' . $link_hover_color . ';';
+			if ( isset( $link_hover_color ) && ! empty( $link_hover_color ) ) {
+				$variables .= '@link-hover-color: ' . $link_hover_color . ';';
+			}
 
 			$variables .= '@btn-default-color:  @gray-dark;';
-			$variables .= '@btn-primary-color:  ' . $btn_primary_color . ';';
-			$variables .= '@btn-primary-border: ' . $btn_primary_border . ';';
-			$variables .= '@btn-success-color:  ' . $btn_success_color . ';';
-			$variables .= '@btn-success-border: ' . $btn_success_border . ';';
-			$variables .= '@btn-info-color:     ' . $btn_info_color . ';';
-			$variables .= '@btn-info-border:    ' . $btn_info_border . ';';
-			$variables .= '@btn-warning-color:  ' . $btn_warning_color . ';';
-			$variables .= '@btn-warning-border: ' . $btn_warning_border . ';';
-			$variables .= '@btn-danger-color:   ' . $btn_danger_color . ';';
-			$variables .= '@btn-danger-border:  ' . $btn_danger_border . ';';
 
-			$variables .= '@input-border-focus: ' . $input_border_focus . ';';
+			if ( isset( $btn_primary_color ) && ! empty( $btn_primary_color ) ) {
+				$variables .= '@btn-primary-color:  ' . $btn_primary_color . ';';
+			}
+
+			if ( isset( $btn_primary_border ) && ! empty( $btn_primary_border ) ) {
+				$variables .= '@btn-primary-border: ' . $btn_primary_border . ';';
+			}
+
+			if ( isset( $btn_success_color ) && ! empty( $btn_success_color ) ) {
+				$variables .= '@btn-success-color:  ' . $btn_success_color . ';';
+			}
+
+			if ( isset( $btn_success_border ) && ! empty( $btn_success_border ) ) {
+				$variables .= '@btn-success-border: ' . $btn_success_border . ';';
+			}
+
+			if ( isset( $btn_info_color ) && ! empty( $btn_info_color ) ) {
+				$variables .= '@btn-info-color:     ' . $btn_info_color . ';';
+			}
+
+			if ( isset( $btn_info_border ) && ! empty( $btn_info_border ) ) {
+				$variables .= '@btn-info-border:    ' . $btn_info_border . ';';
+			}
+
+			if ( isset( $btn_warning_color ) && ! empty( $btn_warning_color ) ) {
+				$variables .= '@btn-warning-color:  ' . $btn_warning_color . ';';
+			}
+
+			if ( isset( $btn_warning_border ) && ! empty( $btn_warning_border ) ) {
+				$variables .= '@btn-warning-border: ' . $btn_warning_border . ';';
+			}
+
+			if ( isset( $btn_danger_color ) && ! empty( $btn_danger_color ) ) {
+				$variables .= '@btn-danger-color:   ' . $btn_danger_color . ';';
+			}
+
+			if ( isset( $btn_danger_border ) && ! empty( $btn_danger_border ) ) {
+				$variables .= '@btn-danger-border:  ' . $btn_danger_border . ';';
+			}
+
+			if ( isset( $input_border_focus ) && ! empty( $input_border_focus ) ) {
+				$variables .= '@input-border-focus: ' . $input_border_focus . ';';
+			}
 
 			$variables .= '@state-success-text: mix(@gray-darker, @brand-success, 20%);';
 			$variables .= '@state-success-bg:   mix(@body-bg, @brand-success, 50%);';
@@ -777,21 +951,42 @@ if ( !class_exists( 'Shoestrap_Bootstrap' ) ) {
 				$jumbotron_headers_text_color  = $jumbotron_text_color;
 			}
 
-			$variables .= '@jumbotron-color:         ' . $jumbotron_text_color . ';';
-			$variables .= '@jumbotron-bg:            ' . $jumbotron_bg . ';';
-			$variables .= '@jumbotron-heading-color: ' . $jumbotron_headers_text_color . ';';
-			$variables .= '@jumbotron-font-size:     ' . $font_jumbotron['font-size'] . 'px;';
+			if ( isset( $jumbotron_text_color ) && ! empty( $jumbotron_text_color ) ) {
+				$variables .= '@jumbotron-color:         ' . $jumbotron_text_color . ';';
+			}
+
+			if ( isset( $jumbotron_bg ) && ! empty( $jumbotron_bg ) ) {
+				$variables .= '@jumbotron-bg:            ' . $jumbotron_bg . ';';
+			}
+
+			if ( isset( $jumbotron_headers_text_color ) && ! empty( $jumbotron_headers_text_color ) ) {
+				$variables .= '@jumbotron-heading-color: ' . $jumbotron_headers_text_color . ';';
+			}
+
+			if ( isset( $font_jumbotron ) && ! empty( $font_jumbotron ) ) {
+				$variables .= '@jumbotron-font-size:     ' . $font_jumbotron['font-size'] . 'px;';
+			}
 
 			// Shoestrap-specific variables
 			// --------------------------------------------------
 
-			$variables .= '@jumbotron-font-weight:       ' . $font_jumbotron['font-weight'] . ';';
-			$variables .= '@jumbotron-font-style:        ' . $font_jumbotron['font-style'] . ';';
-			$variables .= '@jumbotron-font-family:       ' . $font_jumbotron['font-family'] . ';';
+			if ( isset( $font_jumbotron ) && ! empty( $font_jumbotron ) ) {
+				$variables .= '@jumbotron-font-weight:       ' . $font_jumbotron['font-weight'] . ';';
+				$variables .= '@jumbotron-font-style:        ' . $font_jumbotron['font-style'] . ';';
+				$variables .= '@jumbotron-font-family:       ' . $font_jumbotron['font-family'] . ';';
+			}
 
-			$variables .= '@jumbotron-headers-font-weight:       ' . $font_jumbotron_headers_weight . ';';
-			$variables .= '@jumbotron-headers-font-style:        ' . $font_jumbotron_headers_style . ';';
-			$variables .= '@jumbotron-headers-font-family:       ' . $font_jumbotron_headers_face . ';';
+			if ( isset( $font_jumbotron_headers_weight ) && ! empty( $font_jumbotron_headers_weight ) ) {
+				$variables .= '@jumbotron-headers-font-weight:       ' . $font_jumbotron_headers_weight . ';';
+			}
+
+			if ( isset( $font_jumbotron_headers_style ) && ! empty( $font_jumbotron_headers_style ) ) {
+				$variables .= '@jumbotron-headers-font-style:        ' . $font_jumbotron_headers_style . ';';
+			}
+
+			if ( isset( $font_jumbotron_headers_face ) && ! empty( $font_jumbotron_headers_face ) ) {
+				$variables .= '@jumbotron-headers-font-family:       ' . $font_jumbotron_headers_face . ';';
+			}
 
 			/**
 			 * MENUS
@@ -828,43 +1023,86 @@ if ( !class_exists( 'Shoestrap_Bootstrap' ) ) {
 
 			$grid_float_breakpoint = ( $gfb == 'screen-lg-min' ) ? '0 !important' : $grid_float_breakpoint;
 
-			$variables .= '@navbar-height:         ' . $navbar_height . 'px;';
+			if ( isset( $navbar_height ) && ! empty( $navbar_height ) ) {
+				$variables .= '@navbar-height:         ' . $navbar_height . 'px;';
+			}
 
-			$variables .= '@navbar-default-color:  ' . $navbar_text_color . ';';
-			$variables .= '@navbar-default-bg:     ' . $navbar_bg . ';';
-			$variables .= '@navbar-default-border: ' . $navbar_border . ';';
+			if ( isset( $navbar_text_color ) && ! empty( $navbar_text_color ) ) {
+				$variables .= '@navbar-default-color:  ' . $navbar_text_color . ';';
+			}
+
+			if ( isset( $navbar_bg ) && ! empty( $navbar_bg ) ) {
+				$variables .= '@navbar-default-bg:     ' . $navbar_bg . ';';
+			}
+
+			if ( isset( $navbar_border ) && ! empty( $navbar_border ) ) {
+				$variables .= '@navbar-default-border: ' . $navbar_border . ';';
+			}
 
 			$variables .= '@navbar-default-link-color:          @navbar-default-color;';
-			$variables .= '@navbar-default-link-hover-color:    ' . $navbar_link_hover_color . ';';
+			if ( isset( $navbar_link_hover_color ) && ! empty( $navbar_link_hover_color ) ) {
+				$variables .= '@navbar-default-link-hover-color:    ' . $navbar_link_hover_color . ';';
+			}
+
 			$variables .= '@navbar-default-link-active-color:   mix(@navbar-default-color, @navbar-default-link-hover-color, 50%);';
-			$variables .= '@navbar-default-link-active-bg:      ' . $navbar_link_active_bg . ';';
-			$variables .= '@navbar-default-link-disabled-color: ' . $navbar_link_disabled_color . ';';
+
+			if ( isset( $navbar_link_active_bg ) && ! empty( $navbar_link_active_bg ) ) {
+				$variables .= '@navbar-default-link-active-bg:      ' . $navbar_link_active_bg . ';';
+			}
+
+			if ( isset( $navbar_link_disabled_color ) && ! empty( $navbar_link_disabled_color ) ) {
+				$variables .= '@navbar-default-link-disabled-color: ' . $navbar_link_disabled_color . ';';
+			}
 
 			$variables .= '@navbar-default-brand-color:         @navbar-default-link-color;';
-			$variables .= '@navbar-default-brand-hover-color:   ' . $navbar_brand_hover_color . ';';
+			if ( isset( $navbar_brand_hover_color ) && ! empty( $navbar_brand_hover_color ) ) {
+				$variables .= '@navbar-default-brand-hover-color:   ' . $navbar_brand_hover_color . ';';
+			}
 
-			$variables .= '@navbar-default-toggle-hover-bg:     ' . $navbar_border . ';';
-			$variables .= '@navbar-default-toggle-icon-bar-bg:  ' . $navbar_text_color . ';';
-			$variables .= '@navbar-default-toggle-border-color: ' . $navbar_border . ';';
+			if ( isset( $navbar_border ) && ! empty( $navbar_border ) ) {
+				$variables .= '@navbar-default-toggle-hover-bg:     ' . $navbar_border . ';';
+			}
+
+			if ( isset( $navbar_text_color ) && ! empty( $navbar_text_color ) ) {
+				$variables .= '@navbar-default-toggle-icon-bar-bg:  ' . $navbar_text_color . ';';
+			}
+
+			if ( isset( $navbar_border ) && ! empty( $navbar_border ) ) {
+				$variables .= '@navbar-default-toggle-border-color: ' . $navbar_border . ';';
+			}
 
 			// Shoestrap-specific variables
 			// --------------------------------------------------
 
-			$variables .= '@navbar-font-size:        ' . $font_navbar['font-size'] . 'px;';
-			$variables .= '@navbar-font-weight:      ' . $font_navbar['font-weight'] . ';';
-			$variables .= '@navbar-font-style:       ' . $font_navbar['font-style'] . ';';
-			$variables .= '@navbar-font-family:      ' . $font_navbar['font-family'] . ';';
-			$variables .= '@navbar-font-color:       ' . $navbar_text_color . ';';
+			if ( isset( $font_navbar ) && ! empty( $font_navbar ) ) {
+				$variables .= '@navbar-font-size:        ' . $font_navbar['font-size'] . 'px;';
+				$variables .= '@navbar-font-weight:      ' . $font_navbar['font-weight'] . ';';
+				$variables .= '@navbar-font-style:       ' . $font_navbar['font-style'] . ';';
+				$variables .= '@navbar-font-family:      ' . $font_navbar['font-family'] . ';';
+			}
 
-			$variables .= '@brand-font-size:         ' . $font_brand['font-size'] . 'px;';
-			$variables .= '@brand-font-weight:       ' . $font_brand['font-weight'] . ';';
-			$variables .= '@brand-font-style:        ' . $font_brand['font-style'] . ';';
-			$variables .= '@brand-font-family:       ' . $font_brand['font-family'] . ';';
-			$variables .= '@brand-font-color:        ' . $brand_text_color . ';';
+			if ( isset( $navbar_text_color ) && ! empty( $navbar_text_color ) ) {
+				$variables .= '@navbar-font-color:       ' . $navbar_text_color . ';';
+			}
 
-			$variables .= '@navbar-margin-top:       ' . $ss_settings['navbar_margin_top'] . 'px;';
+			if ( isset( $font_brand ) && ! empty( $font_brand ) ) {
+				$variables .= '@brand-font-size:         ' . $font_brand['font-size'] . 'px;';
+				$variables .= '@brand-font-weight:       ' . $font_brand['font-weight'] . ';';
+				$variables .= '@brand-font-style:        ' . $font_brand['font-style'] . ';';
+				$variables .= '@brand-font-family:       ' . $font_brand['font-family'] . ';';
+			}
 
-			$variables .= '@grid-float-breakpoint: ' . $grid_float_breakpoint . ';';
+			if ( isset( $brand_text_color ) && ! empty( $brand_text_color ) ) {
+				$variables .= '@brand-font-color:        ' . $brand_text_color . ';';
+			}
+
+			if ( isset( $ss_settings['navbar_margin_top'] ) && ! empty( $ss_settings['navbar_margin_top'] ) ) {
+				$variables .= '@navbar-margin-top:       ' . $ss_settings['navbar_margin_top'] . 'px;';
+			}
+
+			if ( isset( $grid_float_breakpoint ) && ! empty( $grid_float_breakpoint ) ) {
+				$variables .= '@grid-float-breakpoint: ' . $grid_float_breakpoint . ';';
+			}
 
 			$variables .= '@import "' . dirname( __FILE__ ) . '/assets/less/blog.less";';
 			$variables .= '@import "' . dirname( __FILE__ ) . '/assets/less/headers.less";';
