@@ -33,3 +33,14 @@ div.row-meta {
 		padding-bottom: 0;
 	}
 }
+
+#comments {
+	li.comment {
+		img.avatar {
+			margin-right: 1em;
+		}
+		ul {
+			margin-left: 3em;
+		}
+	}
+}
