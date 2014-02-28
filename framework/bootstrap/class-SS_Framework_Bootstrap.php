@@ -1,65 +1,64 @@
 <?php
 
-if ( !class_exists( 'Shoestrap_Bootstrap' ) ) {
+if ( !class_exists( 'SS_Framework_Bootstrap' ) ) {
 
 	/**
 	* The Bootstrap Framework module
 	*/
-	class Shoestrap_Bootstrap {
+	class SS_Framework_Bootstrap extends SS_Framework_Core {
 
+		var $defines = array(
+			// Layout
+			'container'  => 'container',
+			'row'        => 'row',
+			'col-mobile' => 'col-xs',
+			'col-tablet' => 'col-sm',
+			'col-medium' => 'col-md',
+			'col-large'  => 'col-lg',
+
+			// Buttons
+			'button'         => 'btn',
+			'button-default' => 'btn-default',
+			'button-primary' => 'btn-primary',
+			'button-success' => 'btn-success',
+			'button-info'    => 'btn-info',
+			'button-warning' => 'btn-warning',
+			'button-danger'  => 'btn-danger',
+			'button-link'    => 'btn-link',
+
+			'button-extra-small' => 'btn-xs',
+			'button-small'       => 'btn-sm',
+			'button-medium'      => null,
+			'button-large'       => 'btn-lg',
+			'button-extra-large' => 'btn-lg',
+
+			'button-block'    => 'btn-block',
+			'button-radius'   => null,
+			'button-round'    => null,
+
+			// Button-Groups
+			'button-group'             => 'btn-group',
+			'button-group-extra-small' => 'btn-group-xs',
+			'button-group-small'       => 'btn-group-sm',
+			'button-group-default'     => null,
+			'button-group-large'       => 'btn-group-lg',
+			'button-group-extra-large' => 'btn-group-lg',
+
+			// Alerts
+			'alert'         => 'alert',
+			'alert-success' => 'alert-success',
+			'alert-info'    => 'alert-info',
+			'alert-warning' => 'alert-warning',
+			'alert-danger'  => 'alert-danger',
+
+			// Miscelaneous
+			'clearfix' => '<div class="clearfix"></div>',
+		);
 		/**
 		 * Class constructor
 		 */
 		function __construct() {
 			global $ss_settings;
-
-			$this->defines = array(
-				// Layout
-				'container'  => 'container',
-				'row'        => 'row',
-				'col-mobile' => 'col-xs',
-				'col-tablet' => 'col-sm',
-				'col-medium' => 'col-md',
-				'col-large'  => 'col-lg',
-
-				// Buttons
-				'button'         => 'btn',
-				'button-default' => 'btn-default',
-				'button-primary' => 'btn-primary',
-				'button-success' => 'btn-success',
-				'button-info'    => 'btn-info',
-				'button-warning' => 'btn-warning',
-				'button-danger'  => 'btn-danger',
-				'button-link'    => 'btn-link',
-
-				'button-extra-small' => 'btn-xs',
-				'button-small'       => 'btn-sm',
-				'button-medium'      => null,
-				'button-large'       => 'btn-lg',
-				'button-extra-large' => 'btn-lg',
-
-				'button-block'    => 'btn-block',
-				'button-radius'   => null,
-				'button-round'    => null,
-
-				// Button-Groups
-				'button-group'             => 'btn-group',
-				'button-group-extra-small' => 'btn-group-xs',
-				'button-group-small'       => 'btn-group-sm',
-				'button-group-default'     => null,
-				'button-group-large'       => 'btn-group-lg',
-				'button-group-extra-large' => 'btn-group-lg',
-
-				// Alerts
-				'alert'         => 'alert',
-				'alert-success' => 'alert-success',
-				'alert-info'    => 'alert-info',
-				'alert-warning' => 'alert-warning',
-				'alert-danger'  => 'alert-danger',
-
-				// Miscelaneous
-				'clearfix' => '<div class="clearfix"></div>',
-			);
 
 			if ( ! isset ( $ss_settings['color_brand_primary'] ) && ! empty( $ss_settings['color_brand_primary'] ) ) {
 				add_filter( 'shoestrap_compiler', array( $this, 'styles_filter' ) );
@@ -82,73 +81,6 @@ if ( !class_exists( 'Shoestrap_Bootstrap' ) ) {
 		}
 
 		/**
-		 * Creates a row using the framework definitions.
-		 *
-		 * @param string $element         Can be any valid dom element.
-		 * @param string $id              The element ID.
-		 * @param string $extra_classes   Any extra classes we want to add to the row. extra classes should be separated using a space.
-		 * @param string $properties      Can be something like 'name="left_top"'.
-		 */
-		function make_row( $element = 'div', $id = null, $extra_classes = null, $properties = null ) {
-
-			$classes = $this->defines['row'];
-
-			if ( !is_null( $id ) ) {
-				$id = ' id=' . $id . '"';
-			}
-
-			if ( !is_null( $extra_classes ) ) {
-				$classes .= ' ' . $extra_classes;
-			}
-
-			if ( !is_null( $properties ) ) {
-				$properties = ' ' . $properties;
-			}
-
-			return '<' . $element . $id . ' class="' . $classes . '"' . $properties . '>';
-		}
-
-		/**
-		 * Creates a column using the framework definitions.
-		 *
-		 * @param string $element         Can be any valid dom element.
-		 * @param array  $sizes           Format is size => columns. Example: array( 'mobile' => 12, 'tablet' => 12, 'medium' => 6, 'large' => 4 )
-		 * @param string $id              The element ID.
-		 * @param string $extra_classes   Any extra classes we want to add to the row. extra classes should be separated using a space.
-		 * @param string $properties      Can be something like 'name="left_top"'.
-		 */
-		function make_col( $element = 'div', $sizes = array( 'medium' => 12 ), $id = null, $extra_classes = null, $properties = null ) {
-
-			// Get the classes based on the $sizes array.
-			$classes = $this->column_classes( $sizes );
-
-
-			// If extra classes are defined, add them to the array of classes.
-			if ( !is_null( $extra_classes ) ) {
-				$extra_classes = explode( ' ', $extra_classes );
-
-				foreach ( $extra_classes as $extra_class ) {
-					$classes[] = $extra_class;
-				}
-			}
-
-			// build the CSS classes from the array
-			$css_classes = implode( ' ', $classes );
-
-			// If an ID has been defined, format it properly.
-			if ( !is_null( $id ) ) {
-				$id = ' id=' . $id . '"';
-			}
-
-			// Are there any extra properties to add?
-			if ( !is_null( $properties ) ) {
-				$properties = ' ' . $properties;
-			}
-
-			return '<' . $element . $id . ' class="' . $css_classes . '"' . $properties . '>';
-		}
-
-		/**
 		 * Column classes
 		 */
 		function column_classes( $sizes = array(), $return = 'array' ) {
@@ -165,64 +97,6 @@ if ( !class_exists( 'Shoestrap_Bootstrap' ) ) {
 				return implode( ' ', $classes );
 			}
 
-		}
-
-		/**
-		 * Get the button classes
-		 *
-		 * @param string $color
-		 * @param string $size
-		 * @param string $type
-		 */
-		function button_classes( $color = 'primary', $size = 'medium', $type = null, $extra = null ) {
-
-			$classes = array();
-
-			$classes[] = $this->defines['button'];
-
-			// Should we allow multiple colors?
-			// Perhaps we should... you never know.
-			if ( !is_null( $color ) ) {
-				$colors = explode( ' ', $color );
-
-				foreach ( $colors as $color ) {
-					$classes[] = $this->defines['button-' . $color];
-				}
-			}
-
-			// Get the proper class for button sizing from the framework definitions.
-			if ( $size == 'extra-small' ) {
-				$classes[] = $this->defines['button-extra-small'];
-			} elseif ( $size == 'small' ) {
-				$classes[] = $this->defines['button-small'];
-			} elseif ( $size == 'medium' ) {
-				$classes[] = $this->defines['button-medium'];
-			} elseif ( $size == 'large' ) {
-				$classes[] = $this->defines['button-large'];
-			} elseif ( $size == 'extra-large' ) {
-				$classes[] = $this->defines['button-extra-large'];
-			}
-
-			if ( !is_null( $type ) ) {
-				$types = explode( ' ', $type );
-
-				foreach ( $types as $type ) {
-					$classes[] = $type;
-				}
-			}
-
-			if ( !is_null( $extra ) ) {
-				$extras = explode( ' ', $extra );
-
-				foreach ( $extras as $extra ) {
-					$classes[] = $extra;
-				}
-			}
-
-			// build the CSS classes from the array
-			$css_classes = implode( ' ', $classes );
-
-			return $css_classes;
 		}
 
 		function button_group_classes( $size = 'medium', $type = null, $extra_classes = null ) {
@@ -262,17 +136,6 @@ if ( !class_exists( 'Shoestrap_Bootstrap' ) ) {
 			$classes = implode( ' ', $classes );
 
 			return $classes;
-		}
-
-		/**
-		 * The framework's clearfix
-		 */
-		function clearfix() {
-			return $this->defines['clearfix'];
-		}
-
-		function pagination_ul_class() {
-			return 'pagination';
 		}
 
 		/**
@@ -331,59 +194,6 @@ if ( !class_exists( 'Shoestrap_Bootstrap' ) ) {
 			}
 
 			return '<div class="panel panel-default' . $classes . '"' . $id . '>';
-		}
-
-		function make_panel_heading( $extra_classes = null ) {
-
-			$classes = array();
-
-			if ( !is_null( $extra_classes ) ) {
-				$extras = explode( ' ', $extra_classes );
-
-				foreach ( $extras as $extra ) {
-					$classes[] = $extra;
-				}
-				$classes = ' ' . implode( ' ', $classes );
-			} else {
-				$classes = null;
-			}
-
-			return '<div class="panel-heading' . $classes . '">';
-		}
-
-		function make_panel_body( $extra_classes = null ) {
-			$classes = array();
-
-			if ( !is_null( $extra_classes ) ) {
-				$extras = explode( ' ', $extra_classes );
-
-				foreach ( $extras as $extra ) {
-					$classes[] = $extra;
-				}
-				$classes = ' ' . implode( ' ', $classes );
-			} else {
-				$classes = null;
-			}
-
-			return '<div class="panel-body' . $classes . '">';
-		}
-
-		function make_panel_footer( $extra_classes = null ) {
-
-			$classes = array();
-
-			if ( !is_null( $extra_classes ) ) {
-				$extras = explode( ' ', $extra_classes );
-
-				foreach ( $extras as $extra ) {
-					$classes[] = $extra;
-				}
-				$classes = ' ' . implode( ' ', $classes );
-			} else {
-				$classes = null;
-			}
-
-			return '<div class="panel-footer' . $classes . '">';
 		}
 
 		/**

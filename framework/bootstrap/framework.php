@@ -5,7 +5,7 @@ global $ss_settings;
 if ( $ss_settings['framework'] == 'bootstrap' ) {
 	define( 'SS_FRAMEWORK_PATH', dirname( __FILE__ ) );
 
-	include_once( dirname( __FILE__ ) . '/class-Shoestrap_Bootstrap.php' );            // Framework class.
+	include_once( dirname( __FILE__ ) . '/class-SS_Framework_Bootstrap.php' );            // Framework class.
 
 	include_once( dirname( __FILE__ ) . '/modules/class-Shoestrap_Advanced.php' );     // Advanced
 	include_once( dirname( __FILE__ ) . '/modules/class-Shoestrap_Background.php' );   // Background
@@ -31,7 +31,7 @@ function shoestrap_define_framework_bootstrap() {
 	$framework = array(
 		'shortname' => 'bootstrap',
 		'name'      => 'Bootstrap',
-		'classname' => 'Shoestrap_Bootstrap',
+		'classname' => 'SS_Framework_Bootstrap',
 		'compiler'  => 'less_php'
 	);
 
