@@ -42,7 +42,10 @@ if ( !class_exists( 'SS_Framework' ) ) {
 			foreach ( $frameworks as $framework ) {
 				if ( $active_framework == $framework['shortname'] ) {
 					$active   = $framework['classname'];
-					$compiler = $framework['compiler'];
+
+					if ( isset( $framework['compiler'] ) ) {
+						$compiler = $framework['compiler'];
+					}
 				}
 			}
 
@@ -56,14 +59,16 @@ if ( !class_exists( 'SS_Framework' ) ) {
 			}
 
 			// Get the compiler that will be used and initialize it.
-			if ( $compiler == 'less_php' ) {
-				require_once 'compilers/less-php/class-Shoestrap_Less_php.php';
-				$compiler_init = new Shoestrap_Less_PHP();
-				$this->fw->compiler();
-			} elseif ( $compiler == 'sass_php' ) {
-				require_once 'compilers/sass-php/class-Shoestrap_Sass_php.php';
-				$compiler_init = new Shoestrap_Sass_PHP();
-				$this->fw->compiler();
+			if ( $compiler ) {
+				if ( $compiler == 'less_php' ) {
+					require_once 'compilers/less-php/class-Shoestrap_Less_php.php';
+					$compiler_init = new Shoestrap_Less_PHP();
+					$this->fw->compiler();
+				} elseif ( $compiler == 'sass_php' ) {
+					require_once 'compilers/sass-php/class-Shoestrap_Sass_php.php';
+					$compiler_init = new Shoestrap_Sass_PHP();
+					$this->fw->compiler();
+				}
 			}
 		}
 
