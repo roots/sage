@@ -13,6 +13,8 @@ if ( !class_exists( 'SS_Framework' ) ) {
 		function __construct() {
 			global $ss_settings;
 
+			require_once dirname( __FILE__ ) . '/core/class-SS_Framework_Core.php';
+
 			if ( ! defined( 'SS_FRAMEWORK' ) ) {
 				$active_framework = $ss_settings['framework'];
 			} else {
@@ -170,85 +172,7 @@ if ( !class_exists( 'SS_Framework' ) ) {
 
 			return $branding;
 		}
-
-		/**
-		 * Calls the framework-specific make_row() function
-		 */
-		function make_row( $element = 'div', $id = null, $extra_classes = null, $properties = null ) {
-			return $this->fw->make_row( $element, $id, $extra_classes, $properties );
-		}
-
-		/**
-		 * Calls the framework-specific make_col() function
-		 */
-		function make_col( $element = 'div', $sizes = array( 'menium' => 12 ), $id = null, $extra_classes = null, $properties = null ) {
-			return $this->fw->make_col( $element, $sizes, $id, $extra_classes, $properties );
-		}
-
-		/**
-		 * Calls the framework-specific column_classes() function
-		 */
-		function column_classes( $sizes = array(), $return = 'string' ) {
-			return $this->fw->column_classes( $sizes, $return );
-		}
-
-		/**
-		 * Calls the framework-specific button_classes() function
-		 */
-		function button_classes( $color = 'primary', $size = 'medium', $type = 'normal', $extra = null ) {
-			return $this->fw->button_classes( $color, $size, $type, $extra );
-		}
-
-		/**
-		 * Calls the framework-specific button_group_classes() function
-		 */
-		function button_group_classes( $size = 'medium', $type = null, $extra_classes = null ) {
-			return $this->fw->button_group_classes( $size, $type, $extra_classes );
-		}
-
-		/**
-		 * Calls the framework-specific clearfix() function
-		 */
-		function clearfix() {
-			return $this->fw->clearfix();
-		}
-
-		/**
-		 * Calls the framework-specific alert() function
-		 */
-		function alert( $type = 'info', $content = '', $id = null, $extra_classes = null, $dismiss = false ) {
-			return $this->fw->alert( $type, $content, $id, $extra_classes, $dismiss );
-		}
-
-		function make_panel( $extra_classes = null, $id = null  ) {
-			return $this->fw->make_panel( $extra_classes, $id );
-		}
-
-		function make_panel_heading( $extra_classes = null ) {
-			return $this->fw->make_panel_heading( $extra_classes );
-		}
-
-		function make_panel_body( $extra_classes = null ) {
-			return $this->fw->make_panel_body( $extra_classes );
-		}
-
-		function make_panel_footer( $extra_classes = null ) {
-			return $this->fw->make_panel_footer( $extra_classes );
-		}
-
-		function pagination_ul_class() {
-			return $this->fw->pagination_ul_class();
-		}
-
-		function compiler() {
-			return $this->fw->compiler();
-		}
-
-		function include_wrapper() {
-			return $this->fw->include_wrapper();
-		}
 	}
 }
 
-global $ss_framework;
-$ss_framework = new SS_Framework();
+$framework = new SS_Framework();
