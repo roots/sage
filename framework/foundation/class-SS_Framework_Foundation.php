@@ -273,6 +273,11 @@ if ( !class_exists( 'SS_Framework_Foundation' ) ) {
 				$vars .= '$info-color: ' . $ss_settings['info-color'] . ';';
 			}
 
+			// top-bar background
+			if ( isset( $ss_settings['navigation-bg'] ) && ! empty( $ss_settings['navigation-bg'] ) ) {
+				$vars .= '$topbar-bg: ' . $ss_settings['navigation-bg'] . ';';
+			}
+
 			return $vars;
 		}
 
@@ -289,7 +294,7 @@ if ( !class_exists( 'SS_Framework_Foundation' ) ) {
 		function compiler() {
 			global $ss_settings;
 
-			if ( $ss_settings['minimize_css'] == 1 ) {
+			if ( isset( $ss_settings['minimize_css'] ) && $ss_settings['minimize_css'] == 1 ) {
 				$compress = true;
 			} else {
 				$compress = false;
