@@ -22,6 +22,7 @@ if ( !class_exists( 'SS_Framework' ) ) {
 					$ss_settings['framework'] = SS_FRAMEWORK;
 					update_option( SHOESTRAP_OPT_NAME, $ss_settings );
 				}
+				$active_framework = SS_FRAMEWORK;
 			}
 
 			// Add the frameworks select to redux.
@@ -63,11 +64,9 @@ if ( !class_exists( 'SS_Framework' ) ) {
 				if ( $compiler == 'less_php' ) {
 					require_once 'compilers/less-php/class-Shoestrap_Less_php.php';
 					$compiler_init = new Shoestrap_Less_PHP();
-					$this->fw->compiler();
 				} elseif ( $compiler == 'sass_php' ) {
 					require_once 'compilers/sass-php/class-Shoestrap_Sass_php.php';
 					$compiler_init = new Shoestrap_Sass_PHP();
-					$this->fw->compiler();
 				}
 			}
 		}

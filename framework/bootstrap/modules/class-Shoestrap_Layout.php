@@ -380,13 +380,13 @@ if ( !class_exists( 'Shoestrap_Layout' ) ) {
 			}
 
 			if ( $target == 'primary' )
-				$class = $ss_framework->column_classes( array( $width => $primary ) );
+				$class = $ss_framework->column_classes( array( $width => $primary ), 'strimg' );
 			elseif ( $target == 'secondary' )
-				$class = $ss_framework->column_classes( array( $width => $secondary ) );
+				$class = $ss_framework->column_classes( array( $width => $secondary ), 'strimg' );
 			elseif ( $target == 'wrapper' )
-				$class = $ss_framework->column_classes( array( $width => $wrapper ) );
+				$class = $ss_framework->column_classes( array( $width => $wrapper ), 'strimg' );
 			else
-				$class = $ss_framework->column_classes( array( $width => $main ) );
+				$class = $ss_framework->column_classes( array( $width => $main ), 'strimg' );
 
 			if ( $echo )
 				echo $class;

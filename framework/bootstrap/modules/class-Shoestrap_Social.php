@@ -365,7 +365,7 @@ if ( !class_exists( 'Shoestrap_Social' ) ) {
 			$networks[] = array( 'url' => $ss_settings['tumblr_link'],       'icon' => 'tumblr',     'fullname' => 'Tumblr' );
 			$networks[] = array( 'url' => $ss_settings['twitter_link'],      'icon' => 'twitter',    'fullname' => 'Twitter' );
 			$networks[] = array( 'url' => $ss_settings['vimeo_link'],        'icon' => 'vimeo',      'fullname' => 'Vimeo' );
-			$networks[] = array( 'url' => $ss_settings['vkontakte'],         'icon' => 'vkontakte',  'fullname' => 'Vkontakte' );
+			$networks[] = array( 'url' => $ss_settings['vkontakte_link'],         'icon' => 'vkontakte',  'fullname' => 'Vkontakte' );
 			$networks[] = array( 'url' => $ss_settings['youtube_link'],      'icon' => 'youtube',    'fullname' => 'YouTube' );
 
 			return $networks;

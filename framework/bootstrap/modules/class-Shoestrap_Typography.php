@@ -27,7 +27,7 @@ if ( !class_exists( 'Shoestrap_Typography' ) ) {
 				'title'     => __( 'Base Font', 'shoestrap' ),
 				'desc'      => __( 'The main font for your site.', 'shoestrap' ),
 				'id'        => 'font_base',
-				'compiler'  => true,
+				'compiler'  => false,
 				'units'     => 'px',
 				'default'   => array(
 					'font-family'   => 'Arial, Helvetica, sans-serif',
@@ -43,22 +43,14 @@ if ( !class_exists( 'Shoestrap_Typography' ) ) {
 					'font-size'   => '30px' //this is the text size from preview box
 				),
 				'type'      => 'typography',
-			);
-
-			$fields[] = array(
-				'title'     => __( 'Header Overrides', 'shoestrap' ),
-				'desc'      => __( 'By enabling this you can specify custom values for each <h*> tag. Default: Off', 'shoestrap' ),
-				'id'        => 'font_heading_custom',
-				'default'   => 0,
-				'compiler'  => true,
-				'type'      => 'switch',
+				'output'    => 'body',
 			);
 
 			$fields[] = array(
 				'title'     => __( 'H1 Font', 'shoestrap' ),
 				'desc'      => __( 'The main font for your site.', 'shoestrap' ),
 				'id'        => 'font_h1',
-				'compiler'  => true,
+				'compiler'  => false,
 				'units'     => '%',
 				'default'   => array(
 					'font-family' => 'Arial, Helvetica, sans-serif',
@@ -73,14 +65,14 @@ if ( !class_exists( 'Shoestrap_Typography' ) ) {
 					'font-size'   => '30px' //this is the text size from preview box
 				),
 				'type'      => 'typography',
-				'required'  => array('font_heading_custom','=',array('1')),
+				'output'    => 'h1, .h1',
 			);
 
 			$fields[] = array(
 				'id'        => 'font_h2',
 				'title'     => __( 'H2 Font', 'shoestrap' ),
 				'desc'      => __( 'The main font for your site.', 'shoestrap' ),
-				'compiler'  => true,
+				'compiler'  => false,
 				'units'     => '%',
 				'default'   => array(
 					'font-family' => 'Arial, Helvetica, sans-serif',
@@ -94,14 +86,14 @@ if ( !class_exists( 'Shoestrap_Typography' ) ) {
 					'font-size'   => '30px' //this is the text size from preview box
 				),
 				'type'      => 'typography',
-				'required'  => array('font_heading_custom','=',array('1')),
+				'output'    => 'h2, .h2',
 			);
 
 			$fields[] = array(
 				'id'        => 'font_h3',
 				'title'     => __( 'H3 Font', 'shoestrap' ),
 				'desc'      => __( 'The main font for your site.', 'shoestrap' ),
-				'compiler'  => true,
+				'compiler'  => false,
 				'units'     => '%',
 				'default'   => array(
 					'font-family' => 'Arial, Helvetica, sans-serif',
@@ -115,14 +107,14 @@ if ( !class_exists( 'Shoestrap_Typography' ) ) {
 					'font-size'   => '30px' //this is the text size from preview box
 				),
 				'type'      => 'typography',
-				'required'  => array('font_heading_custom','=',array('1')),
+				'output'    => 'h3, .h3',
 			);
 
 			$fields[] = array(
 				'title'     => __( 'H4 Font', 'shoestrap' ),
 				'desc'      => __( 'The main font for your site.', 'shoestrap' ),
 				'id'        => 'font_h4',
-				'compiler'  => true,
+				'compiler'  => false,
 				'units'     => '%',
 				'default'   => array(
 					'font-family' => 'Arial, Helvetica, sans-serif',
@@ -136,14 +128,14 @@ if ( !class_exists( 'Shoestrap_Typography' ) ) {
 					'font-size'   => '30px' //this is the text size from preview box
 				),
 				'type'      => 'typography',
-				'required'  => array('font_heading_custom','=',array('1')),
+				'output'    => 'h4, .h4',
 			);
 
 			$fields[] = array(
 				'title'     => __( 'H5 Font', 'shoestrap' ),
 				'desc'      => __( 'The main font for your site.', 'shoestrap' ),
 				'id'        => 'font_h5',
-				'compiler'  => true,
+				'compiler'  => false,
 				'units'     => '%',
 				'default'   => array(
 					'font-family' => 'Arial, Helvetica, sans-serif',
@@ -157,14 +149,14 @@ if ( !class_exists( 'Shoestrap_Typography' ) ) {
 					'font-size'   => '30px' //this is the text size from preview box
 				),
 				'type'      => 'typography',
-				'required'  => array('font_heading_custom','=',array('1')),
+				'output'    => 'h5, .h5',
 			);
 
 			$fields[] = array(
 				'title'     => __( 'H6 Font', 'shoestrap' ),
 				'desc'      => __( 'The main font for your site.', 'shoestrap' ),
 				'id'        => 'font_h6',
-				'compiler'  => true,
+				'compiler'  => false,
 				'units'     => '%',
 				'default'   => array(
 					'font-family' => 'Arial, Helvetica, sans-serif',
@@ -179,7 +171,7 @@ if ( !class_exists( 'Shoestrap_Typography' ) ) {
 					'font-size'   => '30px' //this is the text size from preview box
 				),
 				'type'      => 'typography',
-				'required'  => array('font_heading_custom','=',array('1')),
+				'output'    => 'h6, .h6',
 			);
 
 			$section['fields'] = $fields;
@@ -221,31 +213,36 @@ if ( !class_exists( 'Shoestrap_Typography' ) ) {
 			$font_navbar          = $ss_settings['font_navbar'];
 			$font_brand           = $ss_settings['font_brand'];
 			$font_jumbotron       = $ss_settings['font_jumbotron'];
-			$font_heading         = $ss_settings['font_heading'];
-
-			if ( !isset( $font_base['google'] ) || is_null( $font_base['google'] ) || empty( $font_base['google'] ) )
-				$font_base['google'] = false;
-
-			if ( !isset( $font_navbar['google'] ) || is_null( $font_navbar['google'] ) || empty( $font_navbar['google'] ) )
-				$font_navbar['google'] = false;
-
-			if ( !isset( $font_brand['google'] ) || is_null( $font_brand['google'] ) || empty( $font_brand['google'] ) )
-				$font_brand['google'] = false;
-
-			if ( !isset( $font_jumbotron['google'] ) || is_null( $font_jumbotron['google'] ) || empty( $font_jumbotron['google'] ) )
-				$font_jumbotron['google'] = false;
-
-			if ( !isset( $font_heading['google'] ) || is_null( $font_heading['google'] ) || empty( $font_heading['google'] ) )
-				$font_heading['google'] = false;
-
-			if ( $ss_settings['font_heading_custom'] ) {
-				$font_h1 = $ss_settings['font_h1'];
-				$font_h2 = $ss_settings['font_h2'];
-				$font_h3 = $ss_settings['font_h3'];
-				$font_h4 = $ss_settings['font_h4'];
-				$font_h5 = $ss_settings['font_h5'];
-				$font_h6 = $ss_settings['font_h6'];
+			if ( isset( $ss_settings['font_heading'] ) ) {
+				$font_heading         = $ss_settings['font_heading'];
 			}
+
+			if ( !isset( $font_base['google'] ) || is_null( $font_base['google'] ) || empty( $font_base['google'] ) ) {
+				$font_base['google'] = false;
+			}
+
+			if ( !isset( $font_navbar['google'] ) || is_null( $font_navbar['google'] ) || empty( $font_navbar['google'] ) ) {
+				$font_navbar['google'] = false;
+			}
+
+			if ( !isset( $font_brand['google'] ) || is_null( $font_brand['google'] ) || empty( $font_brand['google'] ) ) {
+				$font_brand['google'] = false;
+			}
+
+			if ( !isset( $font_jumbotron['google'] ) || is_null( $font_jumbotron['google'] ) || empty( $font_jumbotron['google'] ) ) {
+				$font_jumbotron['google'] = false;
+			}
+
+			if ( !isset( $font_heading['google'] ) || is_null( $font_heading['google'] ) || empty( $font_heading['google'] ) ) {
+				$font_heading['google'] = false;
+			}
+
+			$font_h1 = $ss_settings['font_h1'];
+			$font_h2 = $ss_settings['font_h2'];
+			$font_h3 = $ss_settings['font_h3'];
+			$font_h4 = $ss_settings['font_h4'];
+			$font_h5 = $ss_settings['font_h5'];
+			$font_h6 = $ss_settings['font_h6'];
 
 			if ( $ss_settings['font_jumbotron_heading_custom'] == 1) {
 				$font_jumbotron_headers = $ss_settings['font_jumbotron_headers'];
@@ -275,44 +272,43 @@ if ( !class_exists( 'Shoestrap_Typography' ) ) {
 				wp_enqueue_style( 'ss-googlefont-jumbotron' );
 			}
 
-			if ( $ss_settings['font_heading_custom'] ) {
+			if ( $font_h1['google'] === 'true' ) {
+				$font = self::getGoogleScript( $font_h1 );
+				wp_register_style( 'ss-googlefont-h1', $font['link'] );
+				wp_enqueue_style( 'ss-googlefont-h1' );
+			}
 
-				if ( $font_h1['google'] === 'true' ) {
-					$font = self::getGoogleScript( $font_h1 );
-					wp_register_style( 'ss-googlefont-h1', $font['link'] );
-					wp_enqueue_style( 'ss-googlefont-h1' );
-				}
+			if ( $font_h2['google'] === 'true' ) {
+				$font = self::getGoogleScript( $font_h2 );
+				wp_register_style( 'ss-googlefont-h2', $font['link'] );
+				wp_enqueue_style( 'ss-googlefont-h2' );
+			}
 
-				if ( $font_h2['google'] === 'true' ) {
-					$font = self::getGoogleScript( $font_h2 );
-					wp_register_style( 'ss-googlefont-h2', $font['link'] );
-					wp_enqueue_style( 'ss-googlefont-h2' );
-				}
+			if ( $font_h3['google'] === 'true' ) {
+				$font = self::getGoogleScript( $font_h3 );
+				wp_register_style( 'ss-googlefont-h3', $font['link'] );
+				wp_enqueue_style( 'ss-googlefont-h3' );
+			}
 
-				if ( $font_h3['google'] === 'true' ) {
-					$font = self::getGoogleScript( $font_h3 );
-					wp_register_style( 'ss-googlefont-h3', $font['link'] );
-					wp_enqueue_style( 'ss-googlefont-h3' );
-				}
+			if ( $font_h4['google'] === 'true' ) {
+				$font = self::getGoogleScript( $font_h4 );
+				wp_register_style( 'ss-googlefont-h4', $font['link'] );
+				wp_enqueue_style( 'ss-googlefont-h4' );
+			}
 
-				if ( $font_h4['google'] === 'true' ) {
-					$font = self::getGoogleScript( $font_h4 );
-					wp_register_style( 'ss-googlefont-h4', $font['link'] );
-					wp_enqueue_style( 'ss-googlefont-h4' );
-				}
+			if ( $font_h5['google'] === 'true' ) {
+				$font = self::getGoogleScript( $font_h5 );
+				wp_register_style( 'ss-googlefont-h5', $font['link'] );
+				wp_enqueue_style( 'ss-googlefont-h5' );
+			}
 
-				if ( $font_h5['google'] === 'true' ) {
-					$font = self::getGoogleScript( $font_h5 );
-					wp_register_style( 'ss-googlefont-h5', $font['link'] );
-					wp_enqueue_style( 'ss-googlefont-h5' );
-				}
+			if ( $font_h6['google'] === 'true' ) {
+				$font = self::getGoogleScript( $font_h6 );
+				wp_register_style( 'ss-googlefont-h6', $font['link'] );
+				wp_enqueue_style( 'ss-googlefont-h6' );
+			}
 
-				if ( $font_h6['google'] === 'true' ) {
-					$font = self::getGoogleScript( $font_h6 );
-					wp_register_style( 'ss-googlefont-h6', $font['link'] );
-					wp_enqueue_style( 'ss-googlefont-h6' );
-				}
-			} elseif ( isset( $font_heading['google'] ) && $font_heading['google'] === 'true' ) {
+			if ( isset( $font_heading['google'] ) && $font_heading['google'] === 'true' ) {
 				$font = self::getGoogleScript( $font_heading );
 				wp_register_style( 'ss-googlefont-heading', $font['link'] );
 				wp_enqueue_style( 'ss-googlefont-heading' );

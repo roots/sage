@@ -64,7 +64,7 @@ function shoestrap_section_class( $target, $echo = false ) {
 			$secondary = $ss_framework->column_classes( array( 'medium' => 2 ), 'string' );
 
 			if ( is_page_template( 'template-5.php' ) ) {
-				$wrapper = $ss_framework->column_classes( array( 'medium' => 10 ), 'string' ) . 'pull-right';
+				$wrapper = $ss_framework->column_classes( array( 'medium' => 10 ), 'string' ) . 'right';
 			} else {
 				$wrapper = NULL;
 			}
@@ -100,10 +100,11 @@ function shoestrap_section_class( $target, $echo = false ) {
 		$class = apply_filters( 'shoestrap_section_class_main', $main );
 
 	// echo or return the result.
-	if ( $echo )
+	if ( $echo ) {
 		echo $class;
-	else
+	} else {
 		return $class;
+	}
 }
 endif;
 

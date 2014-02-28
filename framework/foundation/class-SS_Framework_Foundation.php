@@ -59,9 +59,41 @@ if ( !class_exists( 'SS_Framework_Foundation' ) ) {
 		 */
 		function __construct() {
 
-			add_filter( 'shoestrap_foundation_scss', array( $this, 'styles_filter' ) );
+			// Branding
+			include_once( dirname( __FILE__ ) . '/modules/class-SS_Foundation_Colors.php' );
+			// Typography
+			include_once( dirname( __FILE__ ) . '/modules/class-SS_Foundation_Typography.php' );
+			// Comments Walker
+			include_once( dirname( __FILE__ ) . '/modules/class-SS_Foundation_Walker_Comment.php' );
+			// Social
+			// include_once( dirname( __FILE__ ) . '/modules/class-Shoestrap_Social.php' );
+			// layout
+			include_once( dirname( __FILE__ ) . '/modules/class-SS_Foundation_Layout.php' );
+			// Header
+			include_once( dirname( __FILE__ ) . '/modules/class-SS_Foundation_Header.php' );
+			// The menus module
+			include_once( dirname( __FILE__ ) . '/modules/class-SS_Foundation_Menus.php' );
+			// Widgets
+			include_once( dirname( __FILE__ ) . '/modules/widgets.php' );
+			// Specific classes for navbar
+			include_once( dirname( __FILE__ ) . '/nav-foundation.php' );
 
-			add_action( 'wp_enqueue_scripts',    array( $this, 'css'  ), 101 );
+			add_filter( 'foundation_scss',    array( $this, 'styles_filter' ) );
+			add_filter( 'comments_template',  array( $this, 'comments_template' ) );
+			add_action( 'wp_enqueue_scripts', array( $this, 'css'  ), 101 );
+			add_action( 'wp_enqueue_scripts', array( &$this, 'enqueue_scripts' ), 110 );
+		}
+
+		/**
+		 * Enqueue scripts and stylesheets
+		 */
+		function enqueue_scripts() {
+			wp_register_script( 'bootstrap-min', get_template_directory_uri() . '/framework/foundation/assets/js/foundation.min.js',              false, null, true  );
+			wp_enqueue_script( 'bootstrap-min' );
+		}
+
+		function comments_template() {
+			return dirname( __FILE__ ) . '/templates/comments.php';
 		}
 
 		/**
@@ -273,7 +305,7 @@ if ( !class_exists( 'SS_Framework_Foundation' ) ) {
 			$scss = new scssc();
 			$scss->setImportPaths( $scss_location );
 
-			$css .=  $scss->compile( apply_filters( 'shoestrap_foundation_scss', '@import "app.scss";' ) );
+			$css .=  $scss->compile( apply_filters( 'foundation_scss', '@import "app.scss";' ) );
 
 			// Ugly hack to properly set the path to webfonts
 			$css = str_replace( "url('Elusive-Icons", "url('" . $webfont_location . "Elusive-Icons", $css );

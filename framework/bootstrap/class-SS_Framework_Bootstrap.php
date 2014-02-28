@@ -1,6 +1,6 @@
 <?php
 
-if ( !class_exists( 'SS_Framework_Bootstrap' ) ) {
+if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 
 	/**
 	* The Bootstrap Framework module
@@ -54,15 +54,29 @@ if ( !class_exists( 'SS_Framework_Bootstrap' ) ) {
 			// Miscelaneous
 			'clearfix' => '<div class="clearfix"></div>',
 		);
+
 		/**
 		 * Class constructor
 		 */
-		function __construct() {
+		public function __construct() {
 			global $ss_settings;
 
-			if ( ! isset ( $ss_settings['color_brand_primary'] ) && ! empty( $ss_settings['color_brand_primary'] ) ) {
-				add_filter( 'shoestrap_compiler', array( $this, 'styles_filter' ) );
-			}
+			// include_once( SS_FRAMEWORK_PATH . '/modules/class-Shoestrap_Advanced.php' );     // Advanced
+			include_once( SS_FRAMEWORK_PATH . '/modules/class-Shoestrap_Background.php' );   // Background
+			include_once( SS_FRAMEWORK_PATH . '/modules/class-Shoestrap_Branding.php' );     // Branding
+			// include_once( SS_FRAMEWORK_PATH . '/modules/class-Shoestrap_Header.php' );       // Header
+			include_once( SS_FRAMEWORK_PATH . '/modules/class-Shoestrap_Typography.php' );   // Typography
+			include_once( SS_FRAMEWORK_PATH . '/modules/class-Shoestrap_Footer.php' );       // Footer
+			include_once( SS_FRAMEWORK_PATH . '/modules/class-Shoestrap_Social.php' );       // Social
+			include_once( SS_FRAMEWORK_PATH . '/modules/class-Shoestrap_Layout.php' );       // layout
+			include_once( SS_FRAMEWORK_PATH . '/modules/widgets.php' );                      // Widgets
+
+			include_once( SS_FRAMEWORK_PATH . '/menus/nav.php' );                            // NavWalker
+			include_once( SS_FRAMEWORK_PATH . '/gallery.php' );                              // Custom [gallery] modifications
+			include_once( SS_FRAMEWORK_PATH . '/menus/class-Shoestrap_Menus.php' );          // The menus module
+			include_once( SS_FRAMEWORK_PATH . '/jumbotron/class-Shoestrap_Jumbotron.php' );  // The Jumbotron module
+
+			add_filter( 'shoestrap_compiler', array( $this, 'styles_filter' ) );
 
 			if ( $ss_settings['navbar_social'] == 1 ) {
 				if ( $ss_settings['navbar_social_style'] == 1 ) {
@@ -71,19 +85,33 @@ if ( !class_exists( 'SS_Framework_Bootstrap' ) ) {
 					add_action( 'shoestrap_inside_nav_end', array( $this, 'navbar_social_links' ) );
 				}
 			}
+
+			if ( isset( $ss_settings['retina_toggle'] ) && $ss_settings['retina_toggle'] ) {
+				add_theme_support( 'retina' );
+			}
+
+			add_action( 'wp_enqueue_scripts', array( &$this, 'enqueue_scripts' ), 110 );
+		}
+
+		/**
+		 * Enqueue scripts and stylesheets
+		 */
+		function enqueue_scripts() {
+			wp_register_script( 'bootstrap-min', get_template_directory_uri() . '/framework/bootstrap/assets/js/bootstrap.min.js',              false, null, true  );
+			wp_enqueue_script( 'bootstrap-min' );
 		}
 
 		/**
 		 * Makes a container
 		 */
-		function make_container() {
+		public function make_container() {
 
 		}
 
 		/**
 		 * Column classes
 		 */
-		function column_classes( $sizes = array(), $return = 'array' ) {
+		public function column_classes( $sizes = array(), $return = 'array' ) {
 			$classes = array();
 
 			// Get the classes based on the $sizes array.
@@ -99,7 +127,7 @@ if ( !class_exists( 'SS_Framework_Bootstrap' ) ) {
 
 		}
 
-		function button_group_classes( $size = 'medium', $type = null, $extra_classes = null ) {
+		public function button_group_classes( $size = 'medium', $type = null, $extra_classes = null ) {
 
 			$classes = array();
 
@@ -141,7 +169,7 @@ if ( !class_exists( 'SS_Framework_Bootstrap' ) ) {
 		/**
 		 * The framework's alert boxes.
 		 */
-		function alert( $type = 'info', $content = '', $id = null, $extra_classes = null, $dismiss = false ) {
+		public function alert( $type = 'info', $content = '', $id = null, $extra_classes = null, $dismiss = false ) {
 			$classes = array();
 
 			$classes[] = $this->defines['alert'];
@@ -173,7 +201,7 @@ if ( !class_exists( 'SS_Framework_Bootstrap' ) ) {
 			return '<div class="' . $classes . '"' . $id . '>' . $dismiss . $content . '</div>';
 		}
 
-		function make_panel( $extra_classes = null, $id = null  ) {
+		public function make_panel( $extra_classes = null, $id = null  ) {
 
 			$classes = array();
 
@@ -200,14 +228,17 @@ if ( !class_exists( 'SS_Framework_Bootstrap' ) ) {
 		 * Variables to use for the compiler.
 		 * These override the default Bootstrap Variables.
 		 */
-		function styles() {
+		public function styles() {
 			global $ss_settings;
 
 			/**
 			 * BACKGROUND
 			 */
-			$bg      = $ss_settings['body_bg'];
-			$bg      = isset( $bg['background-color'] ) ? $bg['background-color'] : '#ffffff';
+			if ( isset( $ss_settings['body_bg']['background-color'] ) && ! empty( $ss_settings['body_bg']['background-color'] ) ) {
+				$bg  = $ss_settings['body_bg']['background-color'];
+			} else {
+				$bg  = '#ffffff';
+			}
 			$body_bg = '#' . str_replace( '#', '', Shoestrap_Color::sanitize_hex( $bg ) );
 
 			// Calculate the gray shadows based on the body background.
@@ -237,7 +268,7 @@ if ( !class_exists( 'SS_Framework_Bootstrap' ) ) {
 			$variables = '';
 
 			// Calculate grays
-			if ( isset( $body_bg ) && ! empty( $body_bg ) ) {
+			if ( isset( $ss_settings['body_bg'] ) && ! empty( $ss_settings['body_bg'] ) ) {
 				$variables .= '@gray-darker:            ' . $gray_darker . ';';
 				$variables .= '@gray-dark:              ' . $gray_dark . ';';
 				$variables .= '@gray:                   ' . $gray . ';';
@@ -400,225 +431,6 @@ if ( !class_exists( 'SS_Framework_Bootstrap' ) ) {
 				.container { max-width: none !important; width: @container-large-desktop; }
 				html { overflow-x: auto !important; }';
 			}
-
-			/**
-			 * TYPOGRAPHY
-			 */
-			$font_base = shoestrap_process_font( $ss_settings['font_base'] );
-			$font_h1   = shoestrap_process_font( $ss_settings['font_h1'] );
-			$font_h2   = shoestrap_process_font( $ss_settings['font_h2'] );
-			$font_h3   = shoestrap_process_font( $ss_settings['font_h3'] );
-			$font_h4   = shoestrap_process_font( $ss_settings['font_h4'] );
-			$font_h5   = shoestrap_process_font( $ss_settings['font_h5'] );
-			$font_h6   = shoestrap_process_font( $ss_settings['font_h6'] );
-
-			$text_color       = '#' . str_replace( '#', '', Shoestrap_Color::sanitize_hex( $font_base['color'] ) );
-			$sans_serif       = $font_base['font-family'];
-			$font_size_base   = $font_base['font-size'];
-			$font_weight_base = $font_base['font-weight'];
-
-			$font_h1_size   = ( ( filter_var( $font_h1['font-size'], FILTER_SANITIZE_NUMBER_INT ) ) / 100 );
-			$font_h2_size   = ( ( filter_var( $font_h2['font-size'], FILTER_SANITIZE_NUMBER_INT ) ) / 100 );
-			$font_h3_size   = ( ( filter_var( $font_h3['font-size'], FILTER_SANITIZE_NUMBER_INT ) ) / 100 );
-			$font_h4_size   = ( ( filter_var( $font_h4['font-size'], FILTER_SANITIZE_NUMBER_INT ) ) / 100 );
-			$font_h5_size   = ( ( filter_var( $font_h5['font-size'], FILTER_SANITIZE_NUMBER_INT ) ) / 100 );
-			$font_h6_size   = ( ( filter_var( $font_h6['font-size'], FILTER_SANITIZE_NUMBER_INT ) ) / 100 );
-
-			if ( $ss_settings['font_heading_custom'] != 1 ) {
-
-				$font_h1_face = $font_h2_face = $font_h3_face = $font_h4_face = $font_h5_face = $font_h6_face = 'inherit';
-
-				$font_h1_weight = $font_h2_weight = $font_h3_weight = $font_h5_weight = $font_h4_weight = $font_h6_weight = '500';
-
-				$font_h1_style = $font_h2_style = $font_h3_style = $font_h4_style = $font_h5_style = $font_h6_style = 'inherit';
-
-				$font_h1_color  = $font_h2_color  = $font_h3_color  = $font_h4_color  = $font_h5_color  = $font_h6_color  = 'inherit';
-
-			} else {
-				$font_h1_face   = $font_h1['font-family'];
-				$font_h1_weight = $font_h1['font-weight'];
-				$font_h1_style  = $font_h1['font-style'];
-				$font_h1_color  = '#' . str_replace( '#', '', Shoestrap_Color::sanitize_hex( $font_h1['color'] ) );
-
-				$font_h2_face   = $font_h2['font-family'];
-				$font_h2_weight = $font_h2['font-weight'];
-				$font_h2_style  = $font_h2['font-style'];
-				$font_h2_color  = '#' . str_replace( '#', '', Shoestrap_Color::sanitize_hex( $font_h2['color'] ) );
-
-				$font_h3_face   = $font_h3['font-family'];
-				$font_h3_weight = $font_h3['font-weight'];
-				$font_h3_style  = $font_h3['font-style'];
-				$font_h3_color  = '#' . str_replace( '#', '', Shoestrap_Color::sanitize_hex( $font_h3['color'] ) );
-
-				$font_h4_face   = $font_h4['font-family'];
-				$font_h4_weight = $font_h4['font-weight'];
-				$font_h4_style  = $font_h4['font-style'];
-				$font_h4_color  = '#' . str_replace( '#', '', Shoestrap_Color::sanitize_hex( $font_h4['color'] ) );
-
-				$font_h5_face   = $font_h5['font-family'];
-				$font_h5_weight = $font_h5['font-weight'];
-				$font_h5_style  = $font_h5['font-style'];
-				$font_h5_color  = '#' . str_replace( '#', '', Shoestrap_Color::sanitize_hex( $font_h5['color'] ) );
-
-				$font_h6_face   = $font_h6['font-family'];
-				$font_h6_weight = $font_h6['font-weight'];
-				$font_h6_style  = $font_h6['font-style'];
-				$font_h6_color  = '#' . str_replace( '#', '', Shoestrap_Color::sanitize_hex( $font_h6['color'] ) );
-			}
-
-			if ( isset( $text_color ) && ! empty( $text_color ) ) {
-				$variables .= '@text-color:             ' . $text_color . ';';
-			}
-
-			if ( isset( $sans_serif ) && ! empty( $sans_serif ) ) {
-				$variables .= '@font-family-sans-serif: ' . $sans_serif . ';';
-			}
-
-			if ( isset( $font_size_base ) && ! empty( $font_size_base ) ) {
-				$variables .= '@font-size-base:         ' . $font_size_base . 'px;';
-			}
-
-			if ( isset( $font_h1_size ) && ! empty( $font_h1_size ) ) {
-				$variables .= '@font-size-h1: floor((@font-size-base * ' . $font_h1_size . '));';
-			}
-
-			if ( isset( $font_h2_size ) && ! empty( $font_h2_size ) ) {
-				$variables .= '@font-size-h2: floor((@font-size-base * ' . $font_h2_size . '));';
-			}
-
-			if ( isset( $font_h3_size ) && ! empty( $font_h3_size ) ) {
-				$variables .= '@font-size-h3: ceil((@font-size-base * ' . $font_h3_size . '));';
-			}
-
-			if ( isset( $font_h4_size ) && ! empty( $font_h4_size ) ) {
-				$variables .= '@font-size-h4: ceil((@font-size-base * ' . $font_h4_size . '));';
-			}
-
-			if ( isset( $font_h5_size ) && ! empty( $font_h5_size ) ) {
-				$variables .= '@font-size-h5: ' . $font_h5_size . ';';
-			}
-
-			if ( isset( $font_h6_size ) && ! empty( $font_h6_size ) ) {
-				$variables .= '@font-size-h6: ceil((@font-size-base * ' . $font_h6_size . '));';
-			}
-
-			$variables .= '@caret-width-base:  ceil(@font-size-small / 3 );';
-			$variables .= '@caret-width-large: ceil(@caret-width-base * (5/4) );';
-
-			$variables .= '@table-cell-padding:           ceil((@font-size-small * 2) / 3 );';
-			$variables .= '@table-condensed-cell-padding: ceil(((@font-size-small / 3 ) * 5) / 4);';
-
-			$variables .= '@carousel-control-font-size: ceil((@font-size-base * 1.43));';
-
-			// Shoestrap-specific variables
-			// --------------------------------------------------
-
-			if ( isset( $font_weight_base ) && ! empty( $font_weight_base ) ) {
-				$variables .= '@base-font-weight:        ' . $font_weight_base . ';';
-			}
-
-			// H1
-			if ( isset( $font_h1_face ) && ! empty( $font_h1_face ) ) {
-				$variables .= '@heading-h1-face:         ' . $font_h1_face . ';';
-			}
-
-			if ( isset( $font_h1_weight ) && ! empty( $font_h1_weight ) ) {
-				$variables .= '@heading-h1-weight:       ' . $font_h1_weight . ';';
-			}
-
-			if ( isset( $font_h1_style ) && ! empty( $font_h1_style ) ) {
-				$variables .= '@heading-h1-style:        ' . $font_h1_style . ';';
-			}
-
-			if ( isset( $font_h1_color ) && ! empty( $font_h1_color ) ) {
-				$variables .= '@heading-h1-color:        ' . $font_h1_color . ';';
-			}
-
-			// H2
-			if ( isset( $font_h2_face ) && ! empty( $font_h2_face ) ) {
-				$variables .= '@heading-h2-face:         ' . $font_h2_face . ';';
-			}
-
-			if ( isset( $font_h2_weight ) && ! empty( $font_h2_weight ) ) {
-				$variables .= '@heading-h2-weight:       ' . $font_h2_weight . ';';
-			}
-
-			if ( isset( $font_h2_style ) && ! empty( $font_h2_style ) ) {
-				$variables .= '@heading-h2-style:        ' . $font_h2_style . ';';
-			}
-
-			if ( isset( $font_h2_color ) && ! empty( $font_h2_color ) ) {
-				$variables .= '@heading-h2-color:        ' . $font_h2_color . ';';
-			}
-
-			// H3
-			if ( isset( $font_h3_face ) && ! empty( $font_h3_face ) ) {
-				$variables .= '@heading-h3-face:         ' . $font_h3_face . ';';
-			}
-
-			if ( isset( $font_h3_weight ) && ! empty( $font_h3_weight ) ) {
-				$variables .= '@heading-h3-weight:       ' . $font_h3_weight . ';';
-			}
-
-			if ( isset( $font_h3_style ) && ! empty( $font_h3_style ) ) {
-				$variables .= '@heading-h3-style:        ' . $font_h3_style . ';';
-			}
-
-			if ( isset( $font_h3_color ) && ! empty( $font_h3_color ) ) {
-				$variables .= '@heading-h3-color:        ' . $font_h3_color . ';';
-			}
-
-			// H4
-			if ( isset( $font_h4_face ) && ! empty( $font_h4_face ) ) {
-				$variables .= '@heading-h4-face:         ' . $font_h4_face . ';';
-			}
-
-			if ( isset( $font_h4_weight ) && ! empty( $font_h4_weight ) ) {
-				$variables .= '@heading-h4-weight:       ' . $font_h4_weight . ';';
-			}
-
-			if ( isset( $font_h4_style ) && ! empty( $font_h4_style ) ) {
-				$variables .= '@heading-h4-style:        ' . $font_h4_style . ';';
-			}
-
-			if ( isset( $font_h4_color ) && ! empty( $font_h4_color ) ) {
-				$variables .= '@heading-h4-color:        ' . $font_h4_color . ';';
-			}
-
-			// H5
-			if ( isset( $font_h5_face ) && ! empty( $font_h5_face ) ) {
-				$variables .= '@heading-h5-face:         ' . $font_h5_face . ';';
-			}
-
-			if ( isset( $font_h5_weight ) && ! empty( $font_h5_weight ) ) {
-				$variables .= '@heading-h5-weight:       ' . $font_h5_weight . ';';
-			}
-
-			if ( isset( $font_h5_style ) && ! empty( $font_h5_style ) ) {
-				$variables .= '@heading-h5-style:        ' . $font_h5_style . ';';
-			}
-
-			if ( isset( $font_h5_color ) && ! empty( $font_h5_color ) ) {
-				$variables .= '@heading-h5-color:        ' . $font_h5_color . ';';
-			}
-
-			// H6
-			if ( isset( $font_h6_face ) && ! empty( $font_h6_face ) ) {
-				$variables .= '@heading-h6-face:         ' . $font_h6_face . ';';
-			}
-
-			if ( isset( $font_h6_weight ) && ! empty( $font_h6_weight ) ) {
-				$variables .= '@heading-h6-weight:       ' . $font_h6_weight . ';';
-			}
-
-			if ( isset( $font_h6_style ) && ! empty( $font_h6_style ) ) {
-				$variables .= '@heading-h6-style:        ' . $font_h6_style . ';';
-			}
-
-			if ( isset( $font_h6_color ) && ! empty( $font_h6_color ) ) {
-				$variables .= '@heading-h6-color:        ' . $font_h6_color . ';';
-			}
-
 
 			/**
 			 * BRANDING
@@ -914,13 +726,12 @@ if ( !class_exists( 'SS_Framework_Bootstrap' ) ) {
 				$variables .= '@grid-float-breakpoint: ' . $grid_float_breakpoint . ';';
 			}
 
-			$variables .= '@import "' . dirname( __FILE__ ) . '/assets/less/blog.less";';
-			$variables .= '@import "' . dirname( __FILE__ ) . '/assets/less/headers.less";';
-			$variables .= '@import "' . dirname( __FILE__ ) . '/assets/less/layout.less";';
-			$variables .= '@import "' . dirname( __FILE__ ) . '/assets/less/typography.less";';
-			$variables .= '@import "' . dirname( __FILE__ ) . '/assets/less/social.less";';
-			$variables .= '@import "' . dirname( __FILE__ ) . '/assets/less/menus.less";';
-			$variables .= '@import "' . dirname( __FILE__ ) . '/assets/less/widgets.less";';
+			// $variables .= '@import "' . dirname( __FILE__ ) . '/assets/less/blog.less";';
+			// $variables .= '@import "' . dirname( __FILE__ ) . '/assets/less/headers.less";';
+			// $variables .= '@import "' . dirname( __FILE__ ) . '/assets/less/layout.less";';
+			// $variables .= '@import "' . dirname( __FILE__ ) . '/assets/less/social.less";';
+			// $variables .= '@import "' . dirname( __FILE__ ) . '/assets/less/menus.less";';
+			// $variables .= '@import "' . dirname( __FILE__ ) . '/assets/less/widgets.less";';
 
 			return $variables;
 		}
@@ -928,17 +739,17 @@ if ( !class_exists( 'SS_Framework_Bootstrap' ) ) {
 		/**
 		 * Add styles to the compiler
 		 */
-		function styles_filter( $bootstrap ) {
+		public function styles_filter( $bootstrap ) {
 			return $bootstrap . $this->styles();
 		}
 
 		/*
 		 * This function can be used to compile a less file to css using the lessphp compiler
 		 */
-		function compiler() {
+		public function compiler() {
 			global $ss_settings;
 
-			if ( $ss_settings['minimize_css'] == 1 ) {
+			if ( isset( $ss_settings['minimize_css'] ) && $ss_settings['minimize_css'] == 1 ) {
 				$compress = true;
 			} else {
 				$compress = false;
@@ -973,7 +784,9 @@ if ( !class_exists( 'SS_Framework_Bootstrap' ) ) {
 				}
 
 				// Parse any custom less added by the user
-				$parser->parse( $ss_settings['user_less'] );
+				if ( isset( $ss_settings['user_less'] ) && !empty( $ss_settings['user_less'] ) ) {
+					$parser->parse( $ss_settings['user_less'] );
+				}
 
 				// Get the extra variables & imports
 				$extra_vars = do_action( 'ss_bootstrap_less_vars' );
@@ -997,7 +810,7 @@ if ( !class_exists( 'SS_Framework_Bootstrap' ) ) {
 		/**
 		 * The inline icon links for social networks.
 		 */
-		function navbar_social_bar() {
+		public function navbar_social_bar() {
 			global $ss_social;
 
 			// Get all the social networks the user is using
@@ -1028,7 +841,7 @@ if ( !class_exists( 'SS_Framework_Bootstrap' ) ) {
 		/**
 		 * Build the social links for the navbar
 		 */
-		function navbar_social_links() {
+		public function navbar_social_links() {
 			global $ss_social;
 
 			// Get all the social networks the user is using
@@ -1066,7 +879,7 @@ if ( !class_exists( 'SS_Framework_Bootstrap' ) ) {
 			}
 		}
 
-		function include_wrapper() {
+		public function include_wrapper() {
 			global $ss_layout;
 
 			return $ss_layout->include_wrapper();

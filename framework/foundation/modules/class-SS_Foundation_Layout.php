@@ -255,7 +255,7 @@ if ( !class_exists( 'SS_Foundation_Layout' ) ) {
 			} elseif ( $target == 'wrapper' ) {
 				$class = $ss_framework->column_classes( array( 'tablet' => $wrapper ) );
 			} else {
-				$class = $ss_framework->column_classes( array( 'tablet' => $main ) ) . $main_extra;
+				$class = $ss_framework->column_classes( array( 'tablet' => $main ), 'string' ) . $main_extra;
 			}
 
 			if ( $echo ) {

@@ -56,7 +56,7 @@ class SS_Framework_Core {
 	/**
 	 * Makes a container
 	 */
-	function make_container() { }
+	public function make_container() { }
 
 	/**
 	 * Creates a row using the framework definitions.
@@ -66,7 +66,7 @@ class SS_Framework_Core {
 	 * @param string $extra_classes   Any extra classes we want to add to the row. extra classes should be separated using a space.
 	 * @param string $properties      Can be something like 'name="left_top"'.
 	 */
-	function make_row( $element = 'div', $id = null, $extra_classes = null, $properties = null ) {
+	public function make_row( $element = 'div', $id = null, $extra_classes = null, $properties = null ) {
 
 		$classes = $this->defines['row'];
 
@@ -94,7 +94,7 @@ class SS_Framework_Core {
 	 * @param string $extra_classes   Any extra classes we want to add to the row. extra classes should be separated using a space.
 	 * @param string $properties      Can be something like 'name="left_top"'.
 	 */
-	function make_col( $element = 'div', $sizes = array( 'medium' => 12 ), $id = null, $extra_classes = null, $properties = null ) {
+	public function make_col( $element = 'div', $sizes = array( 'medium' => 12 ), $id = null, $extra_classes = null, $properties = null ) {
 
 		// Get the classes based on the $sizes array.
 		$classes = $this->column_classes( $sizes );
@@ -128,7 +128,7 @@ class SS_Framework_Core {
 	/**
 	 * Column classes
 	 */
-	function column_classes( $sizes = array(), $return = 'array' ) {
+	public function column_classes( $sizes = array(), $return = 'array' ) {
 		$classes = array();
 
 		// Get the classes based on the $sizes array.
@@ -152,7 +152,7 @@ class SS_Framework_Core {
 	 * @param string $size
 	 * @param string $type
 	 */
-	function button_classes( $color = 'primary', $size = 'medium', $type = null, $extra = null ) {
+	public function button_classes( $color = 'primary', $size = 'medium', $type = null, $extra = null ) {
 
 		$classes = array();
 
@@ -205,7 +205,7 @@ class SS_Framework_Core {
 		return $css_classes;
 	}
 
-	function button_group_classes( $size = null, $type = null, $extra_classes = null ) {
+	public function button_group_classes( $size = null, $type = null, $extra_classes = null ) {
 
 		$classes = array();
 
@@ -236,18 +236,18 @@ class SS_Framework_Core {
 	/**
 	 * The framework's clearfix
 	 */
-	function clearfix() {
+	public function clearfix() {
 		return $this->defines['clearfix'];
 	}
 
-	function pagination_ul_class() {
+	public function pagination_ul_class() {
 		return 'pagination';
 	}
 
 	/**
 	 * The framework's alert boxes.
 	 */
-	function alert( $type = 'info', $content = '', $id = null, $extra_classes = null, $dismiss = false ) {
+	public function alert( $type = 'info', $content = '', $id = null, $extra_classes = null, $dismiss = false ) {
 		$classes = array();
 
 		$classes[] = $this->defines['alert'];
@@ -277,7 +277,7 @@ class SS_Framework_Core {
 		return '<div data-alert class="' . $classes . '"' . $id . '>' . $content . $dismiss . '</div>';
 	}
 
-	function make_panel( $extra_classes = null, $id = null  ) {
+	public function make_panel( $extra_classes = null, $id = null  ) {
 
 		$classes = array();
 
@@ -300,7 +300,7 @@ class SS_Framework_Core {
 		return '<div class="panel ' . $classes . '"' . $id . '>';
 	}
 
-	function make_panel_heading( $extra_classes = null ) {
+	public function make_panel_heading( $extra_classes = null ) {
 
 		$classes = array();
 
@@ -318,7 +318,7 @@ class SS_Framework_Core {
 		return '<div class="panel-heading' . $classes . '">';
 	}
 
-	function make_panel_body( $extra_classes = null ) {
+	public function make_panel_body( $extra_classes = null ) {
 		$classes = array();
 
 		if ( !is_null( $extra_classes ) ) {
@@ -335,7 +335,7 @@ class SS_Framework_Core {
 		return '<div class="panel-body' . $classes . '">';
 	}
 
-	function make_panel_footer( $extra_classes = null ) {
+	public function make_panel_footer( $extra_classes = null ) {
 
 		$classes = array();
 
@@ -353,5 +353,5 @@ class SS_Framework_Core {
 		return '<div class="panel-footer' . $classes . '">';
 	}
 
-	function include_wrapper() {}
+	public function include_wrapper() {}
 }
