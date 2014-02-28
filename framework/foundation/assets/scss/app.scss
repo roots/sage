@@ -3,6 +3,7 @@
 	"foundation.scss",
 	"elusive-webfont.scss";
 
+// General styles for the html element
 html {
 	-ms-word-wrap: break-word;
 	word-wrap: break-word;
@@ -23,6 +24,7 @@ html {
   border: 0;
 }
 
+// remove vcard styling from post meta authors.
 div.row-meta {
 	.vcard {
 		margin: 0;
@@ -34,6 +36,7 @@ div.row-meta {
 	}
 }
 
+// Style the comments
 #comments {
 	li.comment {
 		img.avatar {
@@ -43,4 +46,10 @@ div.row-meta {
 			margin-left: 3em;
 		}
 	}
+}
+
+// A simple hack to contain the logo image inside top navbars.
+.top-bar img#site-logo {
+	max-height: 100%;
+	width: auto;
 }

@@ -1,4 +1,4 @@
-<?php global $ss_settings; ?>
+<?php global $ss_framework, $ss_settings; ?>
 <div class="navbar <?php echo apply_filters( 'shoestrap_navbar_class', '' ); ?>">
 	<nav class="top-bar" data-topbar data-options="mobile_show_parent_link: true">
 		

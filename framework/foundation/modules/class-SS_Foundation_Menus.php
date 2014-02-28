@@ -256,23 +256,17 @@ if ( !class_exists( 'SS_Foundation_Menus' ) ) {
 		 * and then add the appropriate logo or sitename.
 		 */
 		function navbar_brand() {
-			// Make sure the branding module exists.
-			if ( class_exists( 'ShoestrapBranding' ) ) {
-				global $ss_settings;
+			global $ss_settings, $ss_framework;
 
-				$logo           = $ss_settings['logo'];
-				$branding_class = !empty( $logo['url'] ) ? 'logo' : 'text';
+			$logo           = $ss_settings['logo'];
+			$branding_class = ! empty( $logo['url'] ) ? 'logo' : 'text';
 
-				if ( $ss_settings['navbar_brand'] != 0 ) {
-					$branding  = '<a class="' . $branding_class . '" href="' . home_url('/') . '">';
-					$branding .= $ss_settings['navbar_logo'] == 1 ? ShoestrapBranding::logo() : get_bloginfo( 'name' );
-					$branding .= '</a>';
-				} else {
-					$branding = '';
-				}
+			if ( $ss_settings['nav_brand'] != 0 ) {
+				$branding  = '<a class="' . $branding_class . '" href="' . home_url('/') . '">';
+				$branding .= $ss_settings['navbar_logo'] == 1 ? $ss_framework::logo() : get_bloginfo( 'name' );
+				$branding .= '</a>';
 			} else {
-				// If the branding module does not exist, return the defaults.
-				$branding = '<a class="text" href="' . home_url('/') . '">' . get_bloginfo( 'name' ) . '</a>';
+				$branding = '';
 			}
 
 			return $branding;

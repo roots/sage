@@ -354,4 +354,20 @@ class SS_Framework_Core {
 	}
 
 	public function include_wrapper() {}
+
+	/*
+	 * The site logo.
+	 * If no custom logo is uploaded, use the sitename
+	 */
+	public static function logo() {
+		global $ss_settings;
+		$logo  = $ss_settings['logo'];
+
+		if ( !empty( $logo['url'] ) )
+			$branding = '<img id="site-logo" src="' . $logo['url'] . '" alt="' . get_bloginfo( 'name' ) . '">';
+		else
+			$branding = '<span class="sitename">' . get_bloginfo( 'name' ) . '</span>';
+
+		return $branding;
+	}
 }
