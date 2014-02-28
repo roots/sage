@@ -33,4 +33,3 @@
 
 	</nav>
 </div>
-<?php print_r($ss_settings['nav_brand']);
