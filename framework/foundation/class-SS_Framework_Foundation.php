@@ -343,7 +343,7 @@ if ( !class_exists( 'SS_Framework_Foundation' ) ) {
 			$css = '';
 
 			if( $ss_settings != 1000 ) {
-				$css .= ".row { max-width:" . $ss_settings['max-width'] . "px }";
+				$css .= ".row, .contain-to-grid .top-bar { max-width:" . $ss_settings['max-width'] . "px }";
 			}
 
 			wp_add_inline_style( 'shoestrap_css', $css );
