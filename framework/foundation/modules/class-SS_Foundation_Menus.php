@@ -15,7 +15,6 @@ if ( !class_exists( 'SS_Foundation_Menus' ) ) {
 			add_filter( 'shoestrap_nav_class',        array( $this, 'nav_class'                )      );
 			add_action( 'shoestrap_inside_nav_begin', array( $this, 'navbar_pre_searchbox'     ), 11  );
 			add_filter( 'shoestrap_navbar_class',     array( $this, 'navbar_class'             )      );
-			add_action( 'wp_enqueue_scripts',         array( $this, 'navbar_css'               ), 101 );
 			add_action( 'shoestrap_do_navbar',        array( $this, 'do_navbar'                )      );
 			add_filter( 'shoestrap_navbar_brand',     array( $this, 'navbar_brand'             )      );
 			add_filter( 'body_class',                 array( $this, 'navbar_body_class'        )      );
@@ -50,27 +49,16 @@ if ( !class_exists( 'SS_Foundation_Menus' ) ) {
 				'title'       => __( 'Navigation Background Color', 'shoestrap' ),
 				'desc'        => '',
 				'id'          => 'navigation-bg',
-				'default'     => '#f8f8f8',
+				'default'     => '#111111',
 				'compiler'    => true,
 				'transparent' => false,    
 				'type'        => 'color'
 			);
 
 			$fields[] = array( 
-				'title'       => __( 'NavBar Background Opacity', 'shoestrap' ),
-				'desc'        => __( 'Pick a background opacity for the NavBar. Default: 100%.', 'shoestrap' ),
-				'id'          => 'navigation-opacity',
-				'default'     => 100,
-				'min'         => 0,
-				'step'        => 1,
-				'max'         => 100,
-				'type'        => 'slider',
-			);
-
-			$fields[] = array( 
 				'title'       => __( 'Display Branding ( Sitename or Logo ) on the NavBar', 'shoestrap' ),
 				'desc'        => __( 'Default: ON', 'shoestrap' ),
-				'id'          => 'navbar_brand',
+				'id'          => 'nav_brand',
 				'default'     => 1,
 				'type'        => 'switch'
 			);
@@ -245,39 +233,6 @@ if ( !class_exists( 'SS_Foundation_Menus' ) ) {
 				$classes .= ' contain-to-grid';
 
 			return $classes;
-		}
-
-		/**
-		 * Add some CSS for the navbar when needed.
-		 */
-		function navbar_css() {
-			global $ss_settings;
-
-			$navigation_opacity = $ss_settings['navigation-opacity'];
-			$style = '';
-
-			$opacity = ( $navigation_opacity == '' ) ? '0' : ( intval( $navigation_opacity ) ) / 100;
-
-			if ( $opacity != 1 && $opacity != '' ) {
-				$bg  = str_replace( '#', '', $ss_settings['navigation-bg'] );
-				$rgb = Shoestrap_Color::get_rgb( $bg, true );
-				$opacityie = str_replace( '0.', '', $opacity );
-
-				$style .= '.navbar {';
-
-				if ( $opacity != 1 && $opacity != '')
-					$style .= 'background: transparent; background: rgba(' . $rgb . ', ' . $opacity . '); filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#' . $opacityie . $bg . ',endColorstr=#' . $opacityie . $bg . '); ;';
-				else
-					$style .= 'background: #' . $bg . ';';
-
-				$style .= '}';
-
-			}
-
-			if ( $ss_settings['navbar_margin'] != 1 )
-				$style .= '.navbar { margin-top:'. $ss_settings['navbar_margin'] . 'px !important; margin-bottom:' . $ss_settings['navbar_margin'] . 'px !important; }';
-
-			wp_add_inline_style( 'shoestrap_css', $style );
 		}
 
 		/**

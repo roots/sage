@@ -276,6 +276,12 @@ if ( !class_exists( 'SS_Framework_Foundation' ) ) {
 			// top-bar background
 			if ( isset( $ss_settings['navigation-bg'] ) && ! empty( $ss_settings['navigation-bg'] ) ) {
 				$vars .= '$topbar-bg: ' . $ss_settings['navigation-bg'] . ';';
+
+				if ( Shoestrap_Color::get_brightness( $ss_settings['navigation-bg'] ) > 150 ) {
+					$vars .= '$topbar-link-bg-hover: ' . Shoestrap_Color::adjust_brightness( $ss_settings['navigation-bg'], -15 ) . ';';
+				} else {
+					$vars .= '$topbar-link-bg-hover: ' . Shoestrap_Color::adjust_brightness( $ss_settings['navigation-bg'], 15 ) . ';';
+				}
 			}
 
 			return $vars;
