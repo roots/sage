@@ -54,9 +54,31 @@ class SS_Framework_Core {
 	);
 
 	/**
-	 * Makes a container
+	 * Creates a row using the framework definitions.
+	 *
+	 * @param string $element         Can be any valid dom element.
+	 * @param string $id              The element ID.
+	 * @param string $extra_classes   Any extra classes we want to add to the row. extra classes should be separated using a space.
+	 * @param string $properties      Can be something like 'name="left_top"'.
 	 */
-	public function make_container() { }
+	public function make_container( $element = 'div', $id = null, $extra_classes = null, $properties = null ) {
+
+		$classes = apply_filters( 'shoestrap_container_class', $this->defines['container'] );
+
+		if ( ! is_null( $id ) ) {
+			$id = ' id=' . $id . '"';
+		}
+
+		if ( ! is_null( $extra_classes ) ) {
+			$classes .= ' ' . $extra_classes;
+		}
+
+		if ( ! is_null( $properties ) ) {
+			$properties = ' ' . $properties;
+		}
+
+		return '<' . $element . $id . ' class="' . $classes . '"' . $properties . '>';
+	}
 
 	/**
 	 * Creates a row using the framework definitions.

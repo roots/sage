@@ -218,11 +218,6 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 		}
 
 		/**
-		 * Makes a container
-		 */
-		public function make_container() {}
-
-		/**
 		 * Column classes
 		 */
 		public function column_classes( $sizes = array(), $return = 'array' ) {

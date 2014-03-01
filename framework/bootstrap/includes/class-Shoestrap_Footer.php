@@ -228,47 +228,68 @@ if( ! class_exists( 'Shoestrap_Footer' ) ) {
 			global $ss_framework, $ss_social, $ss_settings;
 
 			$blog_name  = get_bloginfo( 'name', 'display' );
-			$ftext      = $ss_settings['footer_text'];
 
-			$ftext = ( $ftext == '' ) ? '&copy; [year] [sitename]' : $ftext;
+			if ( isset( $ss_settings['footer_text'] ) ) {
+				$ftext = $ss_settings['footer_text'];
+			} else {
+				$ftext = '&copy; [year] [sitename]';
+			}
 
 			$ftext = str_replace( '[year]', date( 'Y' ), $ftext );
 			$ftext = str_replace( '[sitename]', $blog_name, $ftext );
 
-			$social = $ss_settings['footer_social_toggle'];
-			$social_width = $ss_settings['footer_social_width'];
+			if ( isset( $ss_settings['footer_social_toggle'] ) ) {
+				$social = $ss_settings['footer_social_toggle'];
+			}
+
+			if ( isset( $ss_settings['footer_social_width'] ) ) {
+				$social_width = $ss_settings['footer_social_width'];
+			}
 
 			$width = 12;
 
 			// Social is enabled, we're modifying the width!
-			$width = ( intval( $social_width ) > 0 && $social ) ? $width - intval( $social_width ) : $width;
+			if ( isset( $social_width ) && isset( $social ) && intval( $social_width ) > 0 ) {
+				$width = 12 - intval( $social_width );
+			} else {
+				$width = 12;
+			}
 
-			$social_blank = $ss_settings['footer_social_new_window_toggle'];
-
-			$blank = ( $social_blank == 1 ) ? ' target="_blank"' : '';
+			if ( isset( $ss_settings['footer_social_new_window_toggle'] ) && ! empty( $ss_settings['footer_social_new_window_toggle'] ) ) {
+				$blank = ' target="_blank"';
+			} else {
+				$blank = null;
+			}
 
 			$networks = $ss_social->get_social_links();
 
 			do_action( 'shoestrap_footer_before_copyright' );
-			?>
 
-			<div id="footer-copyright">
-				<article class="<?php echo Shoestrap_Layout::container_class(); ?>">
-					<div id="copyright-bar" class="col-lg-<?php echo $width; ?>"><?php echo $ftext; ?></div>
-					<?php if ( $social && ! is_null( $networks ) && count( $networks ) > 0 ) : ?>
-						<?php echo $ss_framework->make_col( 'open', 'div', array( 'large' => $social_width ), 'footer_social_bar' ); ?>">
-							<?php foreach ( $networks as $network ) : ?>
-								<?php if ( $network['url'] == '' ) continue; ?>
-								<a href="<?php echo $network['url']; ?>"<?php echo $blank;?> title="<?php echo $network['icon']; ?>">
-									<span class="icon el-icon-<?php echo $network['icon']; ?>"></span>
-								</a>
-							<?php endforeach; ?>
-						</div>
-					<?php endif; ?>
-					<?php echo $ss_framework->clearfix(); ?>
-				</article>
-			</div>
-			<?php
+			echo '<div id="footer-copyright">';
+
+			echo $ss_framework->make_col( $element = 'div', array( 'large' => $width ), 'copyright-bar' );
+			echo $ftext;
+			echo '</div>';
+
+			if ( isset( $social ) && ! isset( $networks ) && is_null( $networks ) && count( $networks ) > 0 ) {
+				echo $ss_framework->make_col( 'open', 'div', array( 'large' => $social_width ), 'footer_social_bar' );
+
+				foreach ( $networks as $network ) {
+					if ( $network['url'] == '' ) {
+						continue;
+					}
+
+					echo '<a href="' . $network['url'] . '"' . $blank . ' title="' . $network['icon'] . '">';
+					echo '<span class="el-icon-' . $network['icon'] . '"></span>';
+					echo '</a>';
+				}
+
+				echo '</div>';
+			}
+
+			echo $ss_framework->clearfix();
+
+			echo '</div>';
 		}
 	}
 }
