@@ -29,3 +29,18 @@ foreach ( $frameworks as $framework ) {
 
 global $ss_framework;
 $ss_framework = new $active;
+
+/**
+ * Remove the demo link and the notice of integrated demo from the redux-framework plugin
+ */
+function shoestrap_remove_demo() {
+
+	// Used to hide the demo mode link from the plugin page. Only used when Redux is a plugin.
+	if ( class_exists( 'ReduxFrameworkPlugin' ) ) {
+		remove_filter( 'plugin_row_meta', array( ReduxFrameworkPlugin::instance(), 'plugin_metalinks' ), null, 2 );
+
+		// Used to hide the activation notice informing users of the demo panel. Only used when Redux is a plugin.
+		remove_action( 'admin_notices', array( ReduxFrameworkPlugin::instance(), 'admin_notices' ) );
+    }
+}
+add_action( 'redux/loaded', 'shoestrap_remove_demo' );
