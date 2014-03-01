@@ -1,6 +1,6 @@
 <?php
 
-if ( !class_exists( 'Shoestrap_Sass_PHP' ) ) {
+if ( ! class_exists( 'Shoestrap_Sass_PHP' ) ) {
 
 	/**
 	* The Shoestrap Compiler
@@ -11,7 +11,7 @@ if ( !class_exists( 'Shoestrap_Sass_PHP' ) ) {
 			global $ss_framework;
 
 			// Require the less parser
-			if ( !class_exists( 'scssc' ) ) {
+			if ( ! class_exists( 'scssc' ) ) {
 				require_once( 'scss.inc.php' );
 			}
 
@@ -84,7 +84,7 @@ if ( !class_exists( 'Shoestrap_Sass_PHP' ) ) {
 			$value    = ( $target == 'url' ) ? $css_uri : $css_path;
 
 			if ( $target == 'ver' ) {
-				if ( !get_transient( 'shoestrap_stylesheet_time' ) ) {
+				if ( ! get_transient( 'shoestrap_stylesheet_time' ) ) {
 					set_transient( 'shoestrap_stylesheet_time', filemtime( $css_path ), 24 * 60 * 60 );
 				}
 
@@ -122,8 +122,8 @@ if ( !class_exists( 'Shoestrap_Sass_PHP' ) ) {
 				$filename = self::file();
 				$url = self::stylesheet_url( 'url' );
 
-				if ( !file_exists( $filename ) ) {
-					if ( !$wp_filesystem->put_contents( $filename, ' ', FS_CHMOD_FILE ) ) {
+				if ( ! file_exists( $filename ) ) {
+					if ( ! $wp_filesystem->put_contents( $filename, ' ', FS_CHMOD_FILE ) ) {
 						$content = __( 'The following file does not exist and must be so in order to utilise this theme. Please create this file.', 'shoestrap' );
 						$content .= '<br>' . __( 'Try visiting the theme options and clicking the "Reset All" button to attempt automatically creating it.', 'shoestrap' );
 						$content .= '<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="' . $filename . '" target="_blank">' . $filename . '</a>';
@@ -131,7 +131,7 @@ if ( !class_exists( 'Shoestrap_Sass_PHP' ) ) {
 						settings_errors();
 					}
 				} else {
-					if ( !is_writable( $filename ) ) {
+					if ( ! is_writable( $filename ) ) {
 						$content = __( 'The following file is not writable and must be so in order to utilise this theme. Please update the permissions.', 'shoestrap' );
 						$content .= '<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="' . $filename . '" target="_blank">' . $filename . '</a>';
 
@@ -159,8 +159,8 @@ if ( !class_exists( 'Shoestrap_Sass_PHP' ) ) {
 
 			$content .= $ss_framework->compiler();
 
-			if ( is_writeable( $file ) || ( !file_exists( $file ) && is_writeable( dirname( $file ) ) ) ) {
-				if ( !$wp_filesystem->put_contents( $file, $content, FS_CHMOD_FILE ) ) {
+			if ( is_writeable( $file ) || ( ! file_exists( $file ) && is_writeable( dirname( $file ) ) ) ) {
+				if ( ! $wp_filesystem->put_contents( $file, $content, FS_CHMOD_FILE ) ) {
 					return apply_filters( 'shoestrap_css_output', $content );
 				}
 			}

@@ -22,15 +22,17 @@ class Shoestrap_Sidebar {
 		$conditionals = array_map( array( $this, 'check_conditional_tag' ), $this->conditionals );
 		$templates    = array_map( array( $this, 'check_page_template' ), $this->templates );
 
-		if ( in_array( true, $conditionals ) || in_array( true, $templates ) )
+		if ( in_array( true, $conditionals ) || in_array( true, $templates ) ) {
 			$this->display = false;
+		}
 	}
 
 	private function check_conditional_tag( $conditional_tag ) {
-		if ( is_array( $conditional_tag ) )
+		if ( is_array( $conditional_tag ) ) {
 			return $conditional_tag[0]( $conditional_tag[1] );
-		else
+		} else {
 			return $conditional_tag();
+		}
 	}
 
 	private function check_page_template( $page_template ) {

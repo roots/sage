@@ -28,8 +28,9 @@ function ss_get_template_part( $slug, $name = null ) {
 
 	$templates = array();
 	$name = (string) $name;
-	if ( '' !== $name )
+	if ( '' !== $name ) {
 		$templates[] = "{$slug}-{$name}.php";
+	}
 
 	$templates[] = "{$slug}.php";
 
@@ -52,8 +53,10 @@ function ss_get_template_part( $slug, $name = null ) {
 function ss_locate_template($template_names, $load = false, $require_once = true ) {
 	$located = '';
 	foreach ( (array) $template_names as $template_name ) {
-		if ( ! $template_name )
+		if ( ! $template_name ) {
 			continue;
+		}
+
 		if ( file_exists( SS_FRAMEWORK_PATH . '/' . $template_name ) ) {
 			$located = SS_FRAMEWORK_PATH . '/' . $template_name;
 			break;
@@ -66,8 +69,9 @@ function ss_locate_template($template_names, $load = false, $require_once = true
 		}
 	}
 
-	if ( $load && '' != $located )
+	if ( $load && '' != $located ) {
 		load_template( $located, $require_once );
+	}
 
 	return $located;
 }

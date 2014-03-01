@@ -12,20 +12,21 @@ function shoestrap_title() {
 	} elseif ( is_archive() ) {
 		$term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
 
-		if ( $term )
+		if ( $term ) {
 			$title = apply_filters( 'single_term_title', $term->name );
-		elseif ( is_post_type_archive() )
+		} elseif ( is_post_type_archive() ) {
 			$title = apply_filters( 'the_title', get_queried_object()->labels->name );
-		elseif ( is_day() )
+		} elseif ( is_day() ) {
 			$title = sprintf(__( 'Daily Archives: %s', 'shoestrap' ), get_the_date() );
-		elseif ( is_month() )
+		} elseif ( is_month() ) {
 			$title = sprintf(__( 'Monthly Archives: %s', 'shoestrap' ), get_the_date( 'F Y' ) );
-		elseif ( is_year() )
+		} elseif ( is_year() ) {
 			$title = sprintf(__( 'Yearly Archives: %s', 'shoestrap' ), get_the_date( 'Y' ) );
-		elseif ( is_author() )
+		} elseif ( is_author() ) {
 			$title = sprintf( __( 'Author Archives: %s', 'shoestrap' ), get_queried_object()->display_name );
-		else
+		} else {
 			$title = single_cat_title( '', false );
+		}
 
 	} elseif ( is_search() ) {
 		$title = sprintf( __( 'Search Results for %s', 'shoestrap' ), get_search_query() );

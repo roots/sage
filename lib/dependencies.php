@@ -35,8 +35,6 @@ function shoestrap_required_plugins() {
 		),
 	);
 
-	$theme_text_domain = 'shoestrap';
-
 	/**
 	 * Array of configuration settings.
 	 * If you want the default strings to be available under your own theme domain,
@@ -46,7 +44,7 @@ function shoestrap_required_plugins() {
 	 */
 
 	$config = array(
-		'domain'           => $theme_text_domain,
+		'domain'           => 'shoestrap',
 		'default_path'     => '',
 		'parent_menu_slug' => 'themes.php',
 		'parent_url_slug'  => 'themes.php',
@@ -55,10 +53,10 @@ function shoestrap_required_plugins() {
 		'is_automatic'     => true,
 		'message'          => '',
 		'strings'          => array(
-			'page_title'                      => __( 'Install Required Plugins', $theme_text_domain ),
-			'menu_title'                      => __( 'Install Plugins', $theme_text_domain ),
-			'installing'                      => __( 'Installing Plugin: %s', $theme_text_domain ),
-			'oops'                            => __( 'Something went wrong with the plugin API.', $theme_text_domain ),
+			'page_title'                      => __( 'Install Required Plugins', 'shoestrap' ),
+			'menu_title'                      => __( 'Install Plugins', 'shoestrap' ),
+			'installing'                      => __( 'Installing Plugin: %s', 'shoestrap' ),
+			'oops'                            => __( 'Something went wrong with the plugin API.', 'shoestrap' ),
 			'notice_can_install_required'     => _n_noop( 'This theme requires the following plugin: %1$s.', 'This theme requires the following plugins: %1$s.' ),
 			'notice_can_install_recommended'  => _n_noop( 'This theme recommends the following plugin: %1$s.', 'This theme recommends the following plugins: %1$s.' ),
 			'notice_cannot_install'           => _n_noop( 'Sorry, but you do not have the correct permissions to install the %s plugin. Contact the administrator of this site for help on getting the plugin installed.', 'Sorry, but you do not have the correct permissions to install the %s plugins. Contact the administrator of this site for help on getting the plugins installed.' ),
@@ -69,9 +67,9 @@ function shoestrap_required_plugins() {
 			'notice_cannot_update'            => _n_noop( 'Sorry, but you do not have the correct permissions to update the %s plugin. Contact the administrator of this site for help on getting the plugin updated.', 'Sorry, but you do not have the correct permissions to update the %s plugins. Contact the administrator of this site for help on getting the plugins updated.' ),
 			'install_link'                    => _n_noop( 'Begin installing plugin', 'Begin installing plugins' ),
 			'activate_link'                   => _n_noop( 'Activate installed plugin', 'Activate installed plugins' ),
-			'return'                          => __( 'Return to Required Plugins Installer', $theme_text_domain ),
-			'plugin_activated'                => __( 'Plugin activated successfully.', $theme_text_domain ),
-			'complete'                        => __( 'All plugins installed and activated successfully. %s', $theme_text_domain ),
+			'return'                          => __( 'Return to Required Plugins Installer', 'shoestrap' ),
+			'plugin_activated'                => __( 'Plugin activated successfully.', 'shoestrap' ),
+			'complete'                        => __( 'All plugins installed and activated successfully. %s', 'shoestrap' ),
 			'nag_type'                        => 'updated'
 		)
 	);

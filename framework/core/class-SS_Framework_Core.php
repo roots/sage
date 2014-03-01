@@ -70,15 +70,15 @@ class SS_Framework_Core {
 
 		$classes = $this->defines['row'];
 
-		if ( !is_null( $id ) ) {
+		if ( ! is_null( $id ) ) {
 			$id = ' id=' . $id . '"';
 		}
 
-		if ( !is_null( $extra_classes ) ) {
+		if ( ! is_null( $extra_classes ) ) {
 			$classes .= ' ' . $extra_classes;
 		}
 
-		if ( !is_null( $properties ) ) {
+		if ( ! is_null( $properties ) ) {
 			$properties = ' ' . $properties;
 		}
 
@@ -101,7 +101,7 @@ class SS_Framework_Core {
 
 
 		// If extra classes are defined, add them to the array of classes.
-		if ( !is_null( $extra_classes ) ) {
+		if ( ! is_null( $extra_classes ) ) {
 			$extra_classes = explode( ' ', $extra_classes );
 
 			foreach ( $extra_classes as $extra_class ) {
@@ -113,12 +113,12 @@ class SS_Framework_Core {
 		$css_classes = implode( ' ', $classes );
 
 		// If an ID has been defined, format it properly.
-		if ( !is_null( $id ) ) {
+		if ( ! is_null( $id ) ) {
 			$id = ' id=' . $id . '"';
 		}
 
 		// Are there any extra properties to add?
-		if ( !is_null( $properties ) ) {
+		if ( ! is_null( $properties ) ) {
 			$properties = ' ' . $properties;
 		}
 
@@ -160,7 +160,7 @@ class SS_Framework_Core {
 
 		// Should we allow multiple colors?
 		// Perhaps we should... you never know.
-		if ( !is_null( $color ) ) {
+		if ( ! is_null( $color ) ) {
 			$colors = explode( ' ', $color );
 
 			foreach ( $colors as $color ) {
@@ -183,7 +183,7 @@ class SS_Framework_Core {
 			$classes[] = $this->defines['button-block'];
 		}
 
-		if ( !is_null( $type ) ) {
+		if ( ! is_null( $type ) ) {
 			$types = explode( ' ', $type );
 
 			foreach ( $types as $type ) {
@@ -191,7 +191,7 @@ class SS_Framework_Core {
 			}
 		}
 
-		if ( !is_null( $extra ) ) {
+		if ( ! is_null( $extra ) ) {
 			$extras = explode( ' ', $extra );
 
 			foreach ( $extras as $extra ) {
@@ -211,7 +211,7 @@ class SS_Framework_Core {
 
 		$classes[] = $this->defines['button-group'];
 
-		if ( !is_null( $extra_classes ) ) {
+		if ( ! is_null( $extra_classes ) ) {
 			$extras = explode( ' ', $extra_classes );
 
 			foreach ( $extras as $extra ) {
@@ -219,7 +219,7 @@ class SS_Framework_Core {
 			}
 		}
 
-		if ( !is_null( $type ) ) {
+		if ( ! is_null( $type ) ) {
 			$types = explode( ' ', $type );
 
 			foreach ( $types as $type ) {
@@ -259,7 +259,7 @@ class SS_Framework_Core {
 			$dismiss = null;
 		}
 
-		if ( !is_null( $extra_classes ) ) {
+		if ( ! is_null( $extra_classes ) ) {
 			$extras = explode( ' ', $extra_classes );
 
 			foreach ( $extras as $extra ) {
@@ -268,7 +268,7 @@ class SS_Framework_Core {
 		}
 
 		// If an ID has been defined, format it properly.
-		if ( !is_null( $id ) ) {
+		if ( ! is_null( $id ) ) {
 			$id = ' id=' . $id . '"';
 		}
 
@@ -281,7 +281,7 @@ class SS_Framework_Core {
 
 		$classes = array();
 
-		if ( !is_null( $extra_classes ) ) {
+		if ( ! is_null( $extra_classes ) ) {
 			$extras = explode( ' ', $extra_classes );
 
 			foreach ( $extras as $extra ) {
@@ -293,7 +293,7 @@ class SS_Framework_Core {
 		}
 
 		// If an ID has been defined, format it properly.
-		if ( !is_null( $id ) ) {
+		if ( ! is_null( $id ) ) {
 			$id = ' id=' . $id . '"';
 		}
 
@@ -304,7 +304,7 @@ class SS_Framework_Core {
 
 		$classes = array();
 
-		if ( !is_null( $extra_classes ) ) {
+		if ( ! is_null( $extra_classes ) ) {
 			$extras = explode( ' ', $extra_classes );
 
 			foreach ( $extras as $extra ) {
@@ -321,7 +321,7 @@ class SS_Framework_Core {
 	public function make_panel_body( $extra_classes = null ) {
 		$classes = array();
 
-		if ( !is_null( $extra_classes ) ) {
+		if ( ! is_null( $extra_classes ) ) {
 			$extras = explode( ' ', $extra_classes );
 
 			foreach ( $extras as $extra ) {
@@ -339,7 +339,7 @@ class SS_Framework_Core {
 
 		$classes = array();
 
-		if ( !is_null( $extra_classes ) ) {
+		if ( ! is_null( $extra_classes ) ) {
 			$extras = explode( ' ', $extra_classes );
 
 			foreach ( $extras as $extra ) {
@@ -363,7 +363,7 @@ class SS_Framework_Core {
 		global $ss_settings;
 		$logo  = $ss_settings['logo'];
 
-		if ( !empty( $logo['url'] ) )
+		if ( ! empty( $logo['url'] ) )
 			$branding = '<img id="site-logo" src="' . $logo['url'] . '" alt="' . get_bloginfo( 'name' ) . '">';
 		else
 			$branding = '<span class="sitename">' . get_bloginfo( 'name' ) . '</span>';

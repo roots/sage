@@ -6,9 +6,7 @@
  */
 
 if ( class_exists( 'ReduxFramework' ) ) :
-	function shoestrap_redux_init() {
-	
-	
+function shoestrap_redux_init() {
 
 	$args = array();
 
@@ -18,11 +16,11 @@ if ( class_exists( 'ReduxFramework' ) ) :
 	 * Remove the link until Redux is updated on wp.org
 	 */
 	//Setup custom links in the footer for share icons
-	 // $args['share_icons'][] = array(
-	 //  'url'  => 'https://github.com/shoestrap/shoestrap',
-	 //  'title' => 'Fork Me on GitHub',
-	 //  'icon'   => 'el-icon-github'
-	 // );
+	$args['share_icons'][] = array(
+		'url'   => 'https://github.com/shoestrap/shoestrap',
+		'title' => 'Fork Me on GitHub',
+		'icon'  => 'el-icon-github'
+	);
 
 	// Choose a custom option name for your theme options, the default is the theme name in lowercase with spaces replaced by underscores
 	$args['opt_name']               = SHOESTRAP_OPT_NAME;
@@ -61,10 +59,10 @@ if ( class_exists( 'ReduxFramework' ) ) :
 
 	$ReduxFramework = new ReduxFramework( $sections, $args );
 
-	if ( ! empty( $redux['dev_mode'] ) && $redux['dev_mode'] == 1 ) :
+	if ( ! empty( $redux['dev_mode'] ) && $redux['dev_mode'] == 1 ) {
 		$ReduxFramework->args['dev_mode']     = true;
 		$ReduxFramework->args['system_info']  = true;
-	endif;
+	}
 }
 add_action('init', 'shoestrap_redux_init');
 endif;
@@ -79,9 +77,7 @@ function shoestrap_tracking_additions( $options ) {
 	$opt = array();
 	// This is a Shoestrap specific key. Please do not remove or use in any product
 	// that is not based on Shoestrap.
-	$options['3a91ce2622596f6b4c67e27a4a2dc313'] = array(
-		'title'=>'Shoestrap'
-	);
+	$options['3a91ce2622596f6b4c67e27a4a2dc313'] = array( 'title'=>'Shoestrap' );
 
 	return $options;
 }

@@ -90,14 +90,15 @@ function shoestrap_section_class( $target, $echo = false ) {
 		$main .= ' pull-right';
 	}
 
-	if ( $target == 'primary' )
+	if ( $target == 'primary' ) {
 		$class = apply_filters( 'shoestrap_section_class_primary', $primary );
-	elseif ( $target == 'secondary' )
+	} elseif ( $target == 'secondary' ) {
 		$class = apply_filters( 'shoestrap_section_class_secondary', $secondary );
-	elseif ( $target == 'wrapper' )
+	} elseif ( $target == 'wrapper' ) {
 		$class = apply_filters( 'shoestrap_section_class_wrapper', $wrapper );
-	else
+	} else {
 		$class = apply_filters( 'shoestrap_section_class_main', $main );
+	}
 
 	// echo or return the result.
 	if ( $echo ) {

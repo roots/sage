@@ -243,8 +243,9 @@ function shoestrap_paginate_links( $args = '' ) {
 
 	// Who knows what else people pass in $args
 	$total = (int) $total;
-	if ( $total < 2 )
+	if ( $total < 2 ) {
 		return;
+	}
 
 	$current  = (int) $current;
 	$end_size = 0  < (int) $end_size ? (int) $end_size : 1; // Out of bounds?  Make it the default.
@@ -280,7 +281,7 @@ function shoestrap_paginate_links( $args = '' ) {
 				$link .= $add_fragment;
 				$page_links[] = "<li><a class='page-numbers' href='" . esc_url( apply_filters( 'paginate_links', $link ) ) . "'>$n_display</a></li>";
 				$dots = true;
-			} elseif ( $dots && !$show_all ) {
+			} elseif ( $dots && ! $show_all ) {
 				$page_links[] = '<li><span class="page-numbers dots">' . __( '&hellip;' ) . '</span></li>';
 				$dots = false;
 			}
@@ -291,8 +292,9 @@ function shoestrap_paginate_links( $args = '' ) {
 		$link = str_replace('%_%', $format, $base);
 		$link = str_replace('%#%', $current + 1, $link);
 
-		if ( $add_args )
+		if ( $add_args ) {
 			$link = add_query_arg( $add_args, $link );
+		}
 
 		$link .= $add_fragment;
 		$page_links[] = '<li><a class="next page-numbers" href="' . esc_url( apply_filters( 'paginate_links', $link ) ) . '">' . $next_text . '</a></li>';

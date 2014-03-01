@@ -94,11 +94,13 @@ endif;
 function shoestrap_rel_canonical() {
 	global $wp_the_query;
 
-	if ( ! is_singular() )
+	if ( ! is_singular() ) {
 		return;
+	}
 
-	if ( ! $id = $wp_the_query->get_queried_object_id() )
+	if ( ! $id = $wp_the_query->get_queried_object_id() ) {
 		return;
+	}
 
 	$link = get_permalink( $id );
 	echo "\t<link rel=\"canonical\" href=\"$link\">\n";
@@ -126,14 +128,17 @@ add_action( 'admin_init', 'shoestrap_remove_dashboard_widgets' );
 
 function shoestrap_process_font( $font ) {
 
-	if ( empty( $font['font-weight'] ) )
+	if ( empty( $font['font-weight'] ) ) {
 		$font['font-weight'] = "inherit";
+	}
 
-	if ( empty( $font['font-style'] ) )
+	if ( empty( $font['font-style'] ) ) {
 		$font['font-style'] = "inherit";
+	}
 
-	if ( isset( $font['font-size'] ) )
+	if ( isset( $font['font-size'] ) ) {
 		$font['font-size'] = filter_var( $font['font-size'], FILTER_SANITIZE_NUMBER_INT );
+	}
 
 	return $font;
 }

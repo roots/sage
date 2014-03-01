@@ -79,10 +79,11 @@ if ( ! class_exists( 'Shoestrap_Color' ) ) {
 
 			// rgb is an array
 			$rgb = array( $red, $green, $blue );
-			if ( $implode )
+			if ( $implode ) {
 				return implode( ',', $rgb );
-			else
+			} else {
 				return $rgb;
+			}
 		}
 
 		/*
@@ -238,7 +239,7 @@ if ( ! class_exists( 'Shoestrap_Color' ) ) {
 
 			$v = $var_max;
 
-			 if ( $del_max == 0 ) {
+			if ( $del_max == 0 ) {
 				$h = 0;
 				$s = 0;
 			} else {

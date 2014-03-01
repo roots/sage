@@ -160,7 +160,7 @@ if ( !class_exists( 'SS_Framework' ) ) {
 		public static function logo() {
 			$logo  = shoestrap_getVariable( 'logo' );
 
-			if ( !empty( $logo['url'] ) ) {
+			if ( ! empty( $logo['url'] ) ) {
 				$branding = '<img id="site-logo" src="' . $logo['url'] . '" alt="' . get_bloginfo( 'name' ) . '">';
 			} else {
 				$branding = '<span class="sitename">' . get_bloginfo( 'name' ) . '</span>';
