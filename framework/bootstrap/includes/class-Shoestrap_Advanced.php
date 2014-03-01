@@ -32,7 +32,9 @@ if ( !class_exists( 'Shoestrap_Advanced' ) ) {
 			 * Post Excerpt Length
 			 * Length in words for excerpt_length filter (http://codex.wordpress.org/Plugin_API/Filter_Reference/excerpt_length)
 			 */
-			define( 'POST_EXCERPT_LENGTH', $ss_settings['post_excerpt_length'] );
+			if ( isset( $ss_settings['post_excerpt_length'] ) ) {
+				define( 'POST_EXCERPT_LENGTH', $ss_settings['post_excerpt_length'] );
+			}
 
 			if ( self::enable_root_relative_urls() ) {
 				$root_rel_filters = array(

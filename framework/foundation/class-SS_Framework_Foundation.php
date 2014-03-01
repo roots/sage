@@ -58,7 +58,10 @@ if ( !class_exists( 'SS_Framework_Foundation' ) ) {
 		 * Class constructor
 		 */
 		function __construct() {
-			define( 'SS_FRAMEWORK_PATH', dirname( __FILE__ ) );
+
+			if ( ! defined( 'SS_FRAMEWORK_PATH' ) ) {
+				define( 'SS_FRAMEWORK_PATH', dirname( __FILE__ ) );
+			}
 
 			// Branding
 			include_once( dirname( __FILE__ ) . '/modules/class-SS_Foundation_Colors.php' );

@@ -15,9 +15,12 @@ if ( !class_exists( 'Shoestrap_Blog' ) ) {
 			add_filter( 'redux/options/' . SHOESTRAP_OPT_NAME . '/sections', array( $this, 'options' ), 75 );
 			add_action( 'shoestrap_entry_meta',     array( $this, 'meta_custom_render'                  ) );
 			add_filter( 'excerpt_more',             array( $this, 'excerpt_more'                        ) );
-			add_filter( 'excerpt_length',           array( $this, 'excerpt_length'                      ) );
 			add_action( 'shoestrap_in_article_top', array( $this, 'featured_image'                      ) );
 			add_action( 'wp',                       array( $this, 'remove_featured_image_per_post_type' ) );
+
+			if ( isset( $ss_settings['post_excerpt_length'] ) ) {
+				add_filter( 'excerpt_length', array( $this, 'excerpt_length' ) );
+			}
 
 		 	// Hide post meta data in footer of single posts
 			if ( $ss_settings['single_meta'] == 0 ) {
