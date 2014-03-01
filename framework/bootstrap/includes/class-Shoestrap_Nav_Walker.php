@@ -61,11 +61,13 @@ class Shoestrap_Nav_Walker extends Walker_Nav_Menu {
 
 			$class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item, $args ) );
 
-			if ( $args->has_children )
+			if ( $args->has_children ) {
 				$class_names .= ' dropdown';
+			}
 
-			if ( in_array( 'current-menu-item', $classes ) )
+			if ( in_array( 'current-menu-item', $classes ) ) {
 				$class_names .= ' active';
+			}
 
 			$class_names = $class_names ? ' class="' . esc_attr( $class_names ) . '"' : '';
 
@@ -108,10 +110,11 @@ class Shoestrap_Nav_Walker extends Walker_Nav_Menu {
 			 * if there is a value in the attr_title property. If the attr_title
 			 * property is NOT null we apply it as the class name for the el-icon.
 			 */
-			if ( ! empty( $item->attr_title ) )
+			if ( ! empty( $item->attr_title ) ) {
 				$item_output .= '<a'. $attributes .'><span class="el-icon-' . esc_attr( $item->attr_title ) . '"></span>&nbsp;';
-			else
+			} else {
 				$item_output .= '<a'. $attributes .'>';
+			}
 
 			$item_output .= $args->link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $args->link_after;
 			$item_output .= ( $args->has_children && 0 === $depth ) ? ' <span class="caret"></span></a>' : '</a>';
@@ -142,14 +145,16 @@ class Shoestrap_Nav_Walker extends Walker_Nav_Menu {
 	 * @return null Null on failure with no changes to parameters.
 	 */
 	public function display_element( $element, &$children_elements, $max_depth, $depth, $args, &$output ) {
-		if ( ! $element )
+		if ( ! $element ) {
 			return;
+		}
 
 		$id_field = $this->db_fields['id'];
 
 		// Display this element.
-		if ( is_object( $args[0] ) )
+		if ( is_object( $args[0] ) ) {
 		   $args[0]->has_children = ! empty( $children_elements[ $element->$id_field ] );
+		}
 
 		parent::display_element( $element, $children_elements, $max_depth, $depth, $args, $output );
 	}
@@ -175,29 +180,34 @@ class Shoestrap_Nav_Walker extends Walker_Nav_Menu {
 			if ( $container ) {
 				$fb_output = '<' . $container;
 
-				if ( $container_id )
+				if ( $container_id ) {
 					$fb_output .= ' id="' . $container_id . '"';
+				}
 
-				if ( $container_class )
+				if ( $container_class ) {
 					$fb_output .= ' class="' . $container_class . '"';
+				}
 
 				$fb_output .= '>';
 			}
 
 			$fb_output .= '<ul';
 
-			if ( $menu_id )
+			if ( $menu_id ) {
 				$fb_output .= ' id="' . $menu_id . '"';
+			}
 
-			if ( $menu_class )
+			if ( $menu_class ) {
 				$fb_output .= ' class="' . $menu_class . '"';
+			}
 
 			$fb_output .= '>';
 			$fb_output .= '<li><a href="' . admin_url( 'nav-menus.php' ) . '">Add a menu</a></li>';
 			$fb_output .= '</ul>';
 
-			if ( $container )
+			if ( $container ) {
 				$fb_output .= '</' . $container . '>';
+			}
 
 			echo $fb_output;
 		}

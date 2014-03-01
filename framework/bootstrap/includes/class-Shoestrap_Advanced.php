@@ -25,8 +25,9 @@ if ( !class_exists( 'Shoestrap_Advanced' ) ) {
 				add_action( 'wp_head',            array( $this, 'jquery_local_fallback' ) );
 			}
 
-			if ( $ss_settings['nice_search'] == 1 )
+			if ( $ss_settings['nice_search'] == 1 ) {
 				add_action( 'template_redirect', array( $this, 'nice_search_redirect' ) );
+			}
 
 			/**
 			 * Post Excerpt Length
@@ -246,8 +247,9 @@ if ( !class_exists( 'Shoestrap_Advanced' ) ) {
 			$settings = get_option( SHOESTRAP_OPT_NAME );
 			$header_scripts = $settings['user_css'];
 
-			if ( trim( $header_scripts ) != '' )
+			if ( trim( $header_scripts ) != '' ) {
 				wp_add_inline_style( 'shoestrap_css', $header_scripts );
+			}
 		}
 
 		/*
@@ -257,8 +259,9 @@ if ( !class_exists( 'Shoestrap_Advanced' ) ) {
 			$settings = get_option( SHOESTRAP_OPT_NAME );
 			$footer_scripts = $settings['user_js'];
 
-			if ( trim( $footer_scripts ) != '' )
+			if ( trim( $footer_scripts ) != '' ) {
 				echo '<script id="core.advanced-user-js">' . $footer_scripts . '</script>';
+			}
 		}
 
 		/**
@@ -266,10 +269,11 @@ if ( !class_exists( 'Shoestrap_Advanced' ) ) {
 		 */
 		function admin_bar() {
 			$settings = get_option( SHOESTRAP_OPT_NAME );
-			if ( $settings['advanced_wordpress_disable_admin_bar_toggle'] == 0 )
+			if ( $settings['advanced_wordpress_disable_admin_bar_toggle'] == 0 ) {
 				return false;
-			else
+			} else {
 				return true;
+			}
 		}
 
 		/**
@@ -279,15 +283,9 @@ if ( !class_exists( 'Shoestrap_Advanced' ) ) {
 			$settings = get_option( SHOESTRAP_OPT_NAME );
 			$analytics_id = $settings['analytics_id'];
 
-			if ( !is_null( $analytics_id ) && !empty( $analytics_id ) )
-				echo "<script>
-			(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-			function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-			e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-			e.src='//www.google-analytics.com/analytics.js';
-			r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-			ga('create','" . $analytics_id . "');ga('send','pageview');
-			</script>";
+			if ( !is_null( $analytics_id ) && !empty( $analytics_id ) ) {
+				echo "<script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create','" . $analytics_id . "');ga('send','pageview');</script>";
+			}
 		}
 
 		/**
@@ -298,8 +296,9 @@ if ( !class_exists( 'Shoestrap_Advanced' ) ) {
 		function nice_search_redirect() {
 			global $wp_rewrite;
 
-			if ( !isset( $wp_rewrite ) || !is_object( $wp_rewrite ) || !$wp_rewrite->using_permalinks() )
+			if ( !isset( $wp_rewrite ) || !is_object( $wp_rewrite ) || !$wp_rewrite->using_permalinks() ) {
 				return;
+			}
 
 			$search_base = $wp_rewrite->search_base;
 			if ( is_search() && !is_admin() && strpos( $_SERVER['REQUEST_URI'], "/{$search_base}/" ) === false ) {
@@ -319,12 +318,13 @@ if ( !class_exists( 'Shoestrap_Advanced' ) ) {
 		function root_relative_url( $input ) {
 			preg_match( '|https?://([^/]+)(/.*)|i', $input, $matches );
 
-			if ( !isset( $matches[1] ) || !isset( $matches[2] ) )
+			if ( !isset( $matches[1] ) || !isset( $matches[2] ) ) {
 				return $input;
-			elseif ( ( $matches[1] === $_SERVER['SERVER_NAME'] ) || $matches[1] === $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] )
+			} elseif ( ( $matches[1] === $_SERVER['SERVER_NAME'] ) || $matches[1] === $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] ) {
 				return wp_make_link_relative($input);
-			else
+			} else {
 				return $input;
+			}
 		}
 
 		function enable_root_relative_urls() {
@@ -369,65 +369,11 @@ if ( !class_exists( 'Shoestrap_Advanced' ) ) {
 				$add_jquery_fallback = false;
 			}
 
-			if ( $handle === 'jquery' )
+			if ( $handle === 'jquery' ) {
 				$add_jquery_fallback = true;
-
-			return $src;
-		}
-
-		/**
-		 * Variables to use for the compiler.
-		 * These override the default Bootstrap Variables.
-		 */
-		public static function variables() {
-			$settings = get_option( SHOESTRAP_OPT_NAME );
-
-			$padding_base  = intval( $settings['padding_base'] );
-			$border_radius = filter_var( $settings['general_border_radius'], FILTER_SANITIZE_NUMBER_INT );
-			$border_radius = ( strlen( $border_radius ) < 1 ) ? 0 : $border_radius;
-
-			$variables = '';
-
-			if ( $settings['framework'] != 'foundation' ) {
-
-				$variables .= '@padding-base-vertical:    ' . round( $padding_base * 6 / 6 ) . 'px;';
-				$variables .= '@padding-base-horizontal:  ' . round( $padding_base * 12 / 6 ) . 'px;';
-
-				$variables .= '@padding-large-vertical:   ' . round( $padding_base * 10 / 6 ) . 'px;';
-				$variables .= '@padding-large-horizontal: ' . round( $padding_base * 16 / 6 ) . 'px;';
-
-				$variables .= '@padding-small-vertical:   ' . round( $padding_base * 5 / 6 ) . 'px;';
-				$variables .= '@padding-small-horizontal: @padding-large-vertical;';
-
-				$variables .= '@padding-xs-vertical:      ' . round( $padding_base * 1 / 6 ) . 'px;';
-				$variables .= '@padding-xs-horizontal:    @padding-small-vertical;';
-
-				$variables .= '@border-radius-base:  ' . round( $border_radius * 4 / 4 ) . 'px;';
-				$variables .= '@border-radius-large: ' . round( $border_radius * 6 / 4 ) . 'px;';
-				$variables .= '@border-radius-small: ' . round( $border_radius * 3 / 4 ) . 'px;';
-
-				$variables .= '@pager-border-radius: ' . round( $border_radius * 15 / 4 ) . 'px;';
-
-				$variables .= '@tooltip-arrow-width: @padding-small-vertical;';
-				$variables .= '@popover-arrow-width: (@tooltip-arrow-width * 2);';
-
-				$variables .= '@thumbnail-padding:         ' . round( $padding_base * 4 / 6 ) . 'px;';
-				$variables .= '@thumbnail-caption-padding: ' . round( $padding_base * 9 / 6 ) . 'px;';
-
-				$variables .= '@badge-border-radius: ' . round( $border_radius * 10 / 4 ) . 'px;';
-
-				$variables .= '@breadcrumb-padding-vertical:   ' . round( $padding_base * 8 / 6 ) . 'px;';
-				$variables .= '@breadcrumb-padding-horizontal: ' . round( $padding_base * 15 / 6 ) . 'px;';
 			}
 
-			return $variables;
-		}
-
-		/**
-		 * Add the variables to the compiler
-		 */
-		function variables_filter( $variables ) {
-			return $variables . self::variables();
+			return $src;
 		}
 	}
 }

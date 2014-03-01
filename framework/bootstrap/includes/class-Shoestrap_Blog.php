@@ -1,7 +1,7 @@
 <?php
 
 
-if ( !class_exists( 'Shoestrap_Blog' ) ) {
+if ( ! class_exists( 'Shoestrap_Blog' ) ) {
 
 	/**
 	* The "Blog" module
@@ -218,7 +218,7 @@ if ( !class_exists( 'Shoestrap_Blog' ) ) {
 			);
 
 			$section['fields'] = $fields;
-			$section = apply_filters( 'shoestrap_module_blog_modifier', $section );
+			$section    = apply_filters( 'shoestrap_module_blog_modifier', $section );
 			$sections[] = $section;
 
 			return $sections;
@@ -240,11 +240,11 @@ if ( !class_exists( 'Shoestrap_Blog' ) ) {
 			$i = 0;
 			if ( is_array( $metas ) ) {
 				foreach ( $metas as $meta => $value ) {
-					if ( $meta == 'sticky'   && is_sticky() )      $i++;
-					if ( $meta == 'date'     && !empty( $value ) ) $i++;
-					if ( $meta == 'category' && !empty( $value ) ) $i++;
-					if ( $meta == 'tags'     && !empty( $value ) ) $i++;
-					if ( $meta == 'author'   && !empty( $value ) ) $i++;
+					if ( $meta == 'sticky'   && is_sticky() )       $i++;
+					if ( $meta == 'date'     && ! empty( $value ) ) $i++;
+					if ( $meta == 'category' && ! empty( $value ) ) $i++;
+					if ( $meta == 'tags'     && ! empty( $value ) ) $i++;
+					if ( $meta == 'author'   && ! empty( $value ) ) $i++;
 				}
 			}
 
@@ -254,13 +254,13 @@ if ( !class_exists( 'Shoestrap_Blog' ) ) {
 			if ( is_array( $metas ) ) {
 				foreach ( $metas as $meta => $value ) {
 					// output sticky element
-					if ( $meta == 'sticky' && !empty( $value ) && is_sticky() ) {
+					if ( $meta == 'sticky' && ! empty( $value ) && is_sticky() ) {
 						$content .= $ss_framework->make_col( 'span', array( 'medium' => $col ), null, 'featured-post' ) . '<i class="el-icon-flag icon"></i> ' . __( 'Sticky', 'shoestrap' ) . '</span>';
 					}
 
 					// output date element
-					if ( $meta == 'date' && !empty( $value ) ) {
-						if ( !has_post_format( 'link' ) ) {
+					if ( $meta == 'date' && ! empty( $value ) ) {
+						if ( ! has_post_format( 'link' ) ) {
 							$format_prefix = ( has_post_format( 'chat' ) || has_post_format( 'status' ) ) ? _x( '%1$s on %2$s', '1: post format name. 2: date', 'shoestrap' ): '%2$s';
 
 							if ( $date_format == 0 ) {
@@ -282,19 +282,21 @@ if ( !class_exists( 'Shoestrap_Blog' ) ) {
 					}
 
 					// output category element
-					if ( $meta == 'category' && !empty( $value ) ) {
-						if ( $categories_list )
+					if ( $meta == 'category' && ! empty( $value ) ) {
+						if ( $categories_list ) {
 							$content .= $ss_framework->make_col( 'span', array( 'medium' => $col ), null, 'categories-links' ) . '<i class="el-icon-folder-open icon"></i> ' . $categories_list . '</span>';
+						}
 					}
 
 					// output tag element
-					if ( $meta == 'tags' && !empty( $value ) ) {
-						if ( $tag_list )
+					if ( $meta == 'tags' && ! empty( $value ) ) {
+						if ( $tag_list ) {
 							$content .= $ss_framework->make_col( 'span', array( 'medium' => $col ), null, 'tags-links' ) . '<i class="el-icon-tags icon"></i> ' . $tag_list . '</span>';
+						}
 					}
 
 					// output author element
-					if ( $meta == 'author' && !empty( $value ) ) {
+					if ( $meta == 'author' && ! empty( $value ) ) {
 						$content .= sprintf( $ss_framework->make_col( 'span', array( 'medium' => $col ), null, 'author vcard' ) . '<i class="el-icon-user icon"></i> <a class="url fn n" href="%1$s" title="%2$s" rel="author">%3$s</a></span>',
 							esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
 							esc_attr( sprintf( __( 'View all posts by %s', 'shoestrap' ), get_the_author() ) ),
@@ -313,8 +315,9 @@ if ( !class_exists( 'Shoestrap_Blog' ) ) {
 				}
 			}
 
-			if ( !empty( $content ) )
+			if ( ! empty( $content ) ) {
 				echo $ss_framework->make_row( 'div', null, 'row-meta' ) . $content . '</div><hr>';
+			}
 		}
 
 		/**
@@ -345,8 +348,9 @@ if ( !class_exists( 'Shoestrap_Blog' ) ) {
 
 			$data = array();
 
-			if ( !has_post_thumbnail() || '' == get_the_post_thumbnail() )
+			if ( ! has_post_thumbnail() || '' == get_the_post_thumbnail() ) {
 				return;
+			}
 
 			$data['width']  = Shoestrap_Layout::content_width_px();
 

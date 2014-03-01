@@ -9,8 +9,8 @@ if( ! class_exists( 'Shoestrap_Footer' ) ) {
 
 		function __construct() {
 			add_filter( 'redux/options/' . SHOESTRAP_OPT_NAME . '/sections', array( $this, 'options' ), 85 ); 
-			add_action( 'wp_enqueue_scripts',    array( $this, 'css'  ), 101 );
-			add_action( 'shoestrap_footer_html', array( $this, 'html' )      );
+			add_action( 'wp_enqueue_scripts',    array( $this, 'css' ), 101 );
+			add_action( 'shoestrap_footer_html', array( $this, 'html' ) );
 			add_action( 'widgets_init',          array( $this, 'widgets_init' ) );
 		}
 
@@ -101,7 +101,7 @@ if( ! class_exists( 'Shoestrap_Footer' ) ) {
 				'title'       => __( 'Footer social links column width', 'shoestrap' ),
 				'desc'        => __( 'You can customize the width of the footer social links area. The footer text width will be adjusted accordingly. Default: 5.', 'shoestrap' ),
 				'id'          => 'footer_social_width',
-				'required'    => array('footer_social_toggle','=',array('1')),
+				'required'    => array( 'footer_social_toggle','=',array('1') ),
 				'default'     => 6,
 				'min'         => 3,
 				'step'        => 1,
@@ -113,7 +113,7 @@ if( ! class_exists( 'Shoestrap_Footer' ) ) {
 				'title'       => __( 'Footer social icons open new window', 'shoestrap' ),
 				'desc'        => __( 'Social icons in footer will open a new window. Default: On.', 'shoestrap' ),
 				'id'          => 'footer_social_new_window_toggle',
-				'required'    => array('footer_social_toggle','=',array('1')),
+				'required'    => array( 'footer_social_toggle','=',array('1') ),
 				'default'     => 1,
 				'type'        => 'switch',
 			);
@@ -210,9 +210,9 @@ if( ! class_exists( 'Shoestrap_Footer' ) ) {
 				$style .= 'color:' . $cl . ';';
 
 				$style .= ( $opacity != 1 && $opacity != "" ) ? 'background: rgba(' . $rgb . ',' . $opacity . ');' : 'background:' . $bg . ';';
-				$style .= ( !empty($border) && $border['border-top'] > 0 && !empty($border['border-color']) ) ? 'border-top:' . $border['border-top'] . ' ' . $border['border-style'] . ' ' . $border['border-color'] . ';' : '';
+				$style .= ( ! empty($border) && $border['border-top'] > 0 && ! empty($border['border-color']) ) ? 'border-top:' . $border['border-top'] . ' ' . $border['border-style'] . ' ' . $border['border-color'] . ';' : '';
 				$style .= 'padding: 18px 10px 18px;';
-				$style .= ( !empty($top_margin) ) ? 'margin-top:'. $top_margin .'px;' : '';
+				$style .= ( ! empty($top_margin) ) ? 'margin-top:'. $top_margin .'px;' : '';
 			$style .= '}';
 
 			$style .= 'footer div.container { margin-top:'. $container_margin .'px; }';
@@ -255,7 +255,7 @@ if( ! class_exists( 'Shoestrap_Footer' ) ) {
 			<div id="footer-copyright">
 				<article class="<?php echo Shoestrap_Layout::container_class(); ?>">
 					<div id="copyright-bar" class="col-lg-<?php echo $width; ?>"><?php echo $ftext; ?></div>
-					<?php if ( $social && !is_null( $networks ) && count( $networks ) > 0 ) : ?>
+					<?php if ( $social && ! is_null( $networks ) && count( $networks ) > 0 ) : ?>
 						<?php echo $ss_framework->make_col( 'open', 'div', array( 'large' => $social_width ), 'footer_social_bar' ); ?>">
 							<?php foreach ( $networks as $network ) : ?>
 								<?php if ( $network['url'] == '' ) continue; ?>

@@ -10,8 +10,8 @@ if ( ! class_exists( 'Shoestrap_Header' ) ) {
 
 		function __construct() {
 			add_filter( 'redux/options/' . SHOESTRAP_OPT_NAME . '/sections', array( $this, 'options' ), 80 );
-			add_action( 'widgets_init',       array( $this, 'header_widgets_init'              ), 30  );
-			add_action( 'shoestrap_pre_wrap', array( $this, 'branding'                         ), 3   );
+			add_action( 'widgets_init',       array( $this, 'header_widgets_init' ), 30 );
+			add_action( 'shoestrap_pre_wrap', array( $this, 'branding' ), 3 );
 		}
 		/*
 		 * The Header module options.
@@ -92,7 +92,7 @@ if ( ! class_exists( 'Shoestrap_Header' ) ) {
 				'min'         => 0,
 				'max'         => 200,
 				'type'        => 'slider',
-				'required'    => array('header_toggle','=',array('1')),
+				'required'    => array( 'header_toggle', '=', array('1') ),
 			);
 
 			$fields[] = array( 
@@ -103,7 +103,7 @@ if ( ! class_exists( 'Shoestrap_Header' ) ) {
 				'min'         => 0,
 				'max'         => 200,
 				'type'        => 'slider',
-				'required'    => array('header_toggle','=',array('1')),
+				'required'    => array( 'header_toggle', '=', array('1') ),
 			);
 
 			$section['fields'] = $fields;
@@ -126,48 +126,51 @@ if ( ! class_exists( 'Shoestrap_Header' ) ) {
 				'after_widget'  => '</div>',
 				'before_title'  => '<h1>',
 				'after_title'   => '</h1>',
-			));
+			) );
 		}
 
 		/*
 		 * The Header template
 		 */
 		function branding() {
-			if ( shoestrap_getVariable( 'header_toggle' ) == 1 ) { ?>
-				<div class="before-main-wrapper">
+			if ( shoestrap_getVariable( 'header_toggle' ) == 1 ) {
+				echo '<div class="before-main-wrapper">';
 
-					<?php if ( shoestrap_getVariable( 'site_style' ) == 'boxed' ) : ?>
-						<div class="container">
-					<?php endif; ?>
+				if ( shoestrap_getVariable( 'site_style' ) == 'boxed' ) {
+					echo '<div class="container">';
+				}
 
-						<div class="header-wrapper">
+				echo '<div class="header-wrapper">';
 
-							<?php if ( shoestrap_getVariable( 'site_style' ) == 'wide' ) : ?>
-								<div class="container">
-							<?php endif; ?>
+				if ( shoestrap_getVariable( 'site_style' ) == 'wide' ) {
+					echo '<div class="container">';
+				}
 
-								<?php if ( shoestrap_getVariable( 'header_branding' ) == 1 ) : ?>
-									<a class="brand-logo" href="<?php echo home_url(); ?>/">
-										<h1><?php if ( class_exists( 'ShoestrapBranding' ) ) echo ShoestrapBranding::logo(); ?></h1>
-									</a>
-								<?php endif; ?>
+				if ( shoestrap_getVariable( 'header_branding' ) == 1 ) {
+					echo '<a class="brand-logo" href="' . home_url() . '/"><h1>' . Shoestrap_Branding::logo() . '</h1></a>';
+				}
 
-								<?php $pullclass = ( shoestrap_getVariable( 'header_branding' ) == 1 ) ? ' class="pull-right"' : ''; ?>
+				if ( shoestrap_getVariable( 'header_branding' ) == 1 ) {
+					$pullclass = ' class="pull-right"';
+				} else {
+					$pullclass = null;
+				}
 
-								<div<?php echo $pullclass; ?>>
-									<?php dynamic_sidebar( 'header-area' ); ?>
-								</div >
+				echo '<div' . $pullclass . '>';
+				dynamic_sidebar( 'header-area' );
+				echo '</div >';
 
-							<?php if ( shoestrap_getVariable( 'site_style' ) == 'wide' ) : ?>
-								</div>
-							<?php endif; ?>
-						</div>
+				if ( shoestrap_getVariable( 'site_style' ) == 'wide' ) {
+					echo '</div >';
+				}
 
-					<?php if ( shoestrap_getVariable( 'site_style' ) == 'boxed' ) : ?>
-						</div>
-					<?php endif; ?>
-				</div>
-				<?php
+				echo '</div >';
+
+				if ( shoestrap_getVariable( 'site_style' ) == 'boxed' ) {
+					echo '</div >';
+				}
+
+				echo '</div >';
 			}
 		}
 	}

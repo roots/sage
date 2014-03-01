@@ -1,7 +1,7 @@
 <?php
 
 
-if ( !class_exists( 'Shoestrap_Layout' ) ) {
+if ( ! class_exists( 'Shoestrap_Layout' ) ) {
 
 	/**
 	* The "Layout Module"
@@ -21,8 +21,9 @@ if ( !class_exists( 'Shoestrap_Layout' ) ) {
 			add_filter( 'shoestrap_navbar_container_class',  array( $this, 'navbar_container_class'         )     );
 			add_action( 'template_redirect',                 array( $this, 'content_width'                  )     );
 
-			if ( $ss_settings['body_margin_top'] > 0 || $ss_settings['body_margin_bottom'] > 0 )
+			if ( $ss_settings['body_margin_top'] > 0 || $ss_settings['body_margin_bottom'] > 0 ) {
 				add_action( 'wp_enqueue_scripts',            array( $this, 'body_margin'                   ), 101 );
+			}
 
 			add_action( 'get_header',             array( $this, 'boxed_container_div_open'          ), 1   );
 			add_action( 'shoestrap_pre_footer',   array( $this, 'boxed_container_div_open'          ), 1   );
@@ -283,29 +284,30 @@ if ( !class_exists( 'Shoestrap_Layout' ) ) {
 			global $shoestrap_layout;
 			global $ss_settings;
 
-			if ( !isset( $shoestrap_layout ) ) {
+			if ( ! isset( $shoestrap_layout ) ) {
 				do_action( 'shoestrap_layout_modifier' );
 
 				$shoestrap_layout = intval( $ss_settings['layout'] );
 
 				// Looking for a per-page template ?
 				if ( is_page() && is_page_template() ) {
-					if ( is_page_template( 'template-0.php' ) )
+					if ( is_page_template( 'template-0.php' ) ) {
 						$shoestrap_layout = 0;
-					elseif ( is_page_template( 'template-1.php' ) )
+					} elseif ( is_page_template( 'template-1.php' ) ) {
 						$shoestrap_layout = 1;
-					elseif ( is_page_template( 'template-2.php' ) )
+					} elseif ( is_page_template( 'template-2.php' ) ) {
 						$shoestrap_layout = 2;
-					elseif ( is_page_template( 'template-3.php' ) )
+					} elseif ( is_page_template( 'template-3.php' ) ) {
 						$shoestrap_layout = 3;
-					elseif ( is_page_template( 'template-4.php' ) )
+					} elseif ( is_page_template( 'template-4.php' ) ) {
 						$shoestrap_layout = 4;
-					elseif ( is_page_template( 'template-5.php' ) )
+					} elseif ( is_page_template( 'template-5.php' ) ) {
 						$shoestrap_layout = 5;
+					}
 				}
 
 				if ( $ss_settings['cpt_layout_toggle'] == 1 ) {
-					if ( !is_page_template() ) {
+					if ( ! is_page_template() ) {
 						$post_types = get_post_types( array( 'public' => true ), 'names' );
 						foreach ( $post_types as $post_type ) {
 							$shoestrap_layout = ( is_singular( $post_type ) ) ? intval( $ss_settings[$post_type . '_layout'] ) : $shoestrap_layout;
@@ -313,8 +315,9 @@ if ( !class_exists( 'Shoestrap_Layout' ) ) {
 					}
 				}
 
-				if ( !is_active_sidebar( 'sidebar-secondary' ) && is_active_sidebar( 'sidebar-primary' ) && $shoestrap_layout == 5 )
+				if ( ! is_active_sidebar( 'sidebar-secondary' ) && is_active_sidebar( 'sidebar-primary' ) && $shoestrap_layout == 5 ) {
 					$shoestrap_layout = 3;
+				}
 			}
 			return $shoestrap_layout;
 		}
@@ -364,14 +367,14 @@ if ( !class_exists( 'Shoestrap_Layout' ) ) {
 					$secondary  = $second;
 				}
 
-			} elseif ( shoestrap_display_primary_sidebar() && !shoestrap_display_secondary_sidebar() ) {
+			} elseif ( shoestrap_display_primary_sidebar() && ! shoestrap_display_secondary_sidebar() ) {
 
 				if ( $layout >= 1 ) {
 					$main       = 12 - $first;
 					$primary    = $first;
 				}
 
-			} elseif ( !shoestrap_display_primary_sidebar() && shoestrap_display_secondary_sidebar() ) {
+			} elseif ( ! shoestrap_display_primary_sidebar() && shoestrap_display_secondary_sidebar() ) {
 
 				if ( $layout >= 3 ) {
 					$main       = 12 - $second;
@@ -379,20 +382,21 @@ if ( !class_exists( 'Shoestrap_Layout' ) ) {
 				}
 			}
 
-			if ( $target == 'primary' )
+			if ( $target == 'primary' ) {
 				$class = $ss_framework->column_classes( array( $width => $primary ), 'strimg' );
-			elseif ( $target == 'secondary' )
+			} elseif ( $target == 'secondary' ) {
 				$class = $ss_framework->column_classes( array( $width => $secondary ), 'strimg' );
-			elseif ( $target == 'wrapper' )
+			} elseif ( $target == 'wrapper' ) {
 				$class = $ss_framework->column_classes( array( $width => $wrapper ), 'strimg' );
-			else
+			} else {
 				$class = $ss_framework->column_classes( array( $width => $main ), 'strimg' );
+			}
 
-			if ( $echo )
+			if ( $echo ) {
 				echo $class;
-			else
+			} else {
 				return $class;
-
+			}
 		}
 
 		/**
@@ -451,9 +455,10 @@ if ( !class_exists( 'Shoestrap_Layout' ) ) {
 			$class    = $ss_settings['site_style'] != 'fluid' ? 'container' : 'fluid';
 
 			// override if navbar module exists and 'navbar-toggle' is set to left.
-			if ( class_exists( 'ShoestrapMenus' ) ) {
-				if ( $ss_settings['navbar_toggle'] == 'left' )
+			if ( class_exists( 'Shoestrap_Menus' ) ) {
+				if ( $ss_settings['navbar_toggle'] == 'left' ) {
 					$class = 'fluid';
+				}
 			}
 
 			return $class;
@@ -468,15 +473,17 @@ if ( !class_exists( 'Shoestrap_Layout' ) ) {
 			$site_style = $ss_settings['site_style'];
 			$toggle     = $ss_settings['navbar_toggle'];
 
-			if ( $toggle == 'full' )
+			if ( $toggle == 'full' ) {
 				$class = 'fluid';
-			else
+			} else {
 				$class = ( $site_style != 'fluid' ) ? 'container' : 'fluid';
+			}
 
 			// override if navbar module exists and 'navbar-toggle' is set to left.
 			if ( class_exists( 'ShoestrapMenus' ) ) {
-				if ( $ss_settings['navbar_toggle'] == 'left' )
+				if ( $ss_settings['navbar_toggle'] == 'left' ) {
 					$class = 'fluid';
+				}
 			}
 
 			return $class;
@@ -498,21 +505,24 @@ if ( !class_exists( 'Shoestrap_Layout' ) ) {
 			$main_span  = str_replace( '-' , '', $main_span );
 
 			// If the layout is #5, override the default function and calculate the span width of the main area again.
-			if ( is_active_sidebar( 'sidebar-secondary' ) && is_active_sidebar( 'sidebar-primary' ) && $layout == 5 )
+			if ( is_active_sidebar( 'sidebar-secondary' ) && is_active_sidebar( 'sidebar-primary' ) && $layout == 5 ) {
 				$main_span = 12 - intval( $ss_settings['layout_primary_width'] ) - intval( $ss_settings['layout_secondary_width'] );
+			}
 
-			if ( is_front_page() && $ss_settings['layout_sidebar_on_front'] != 1 )
+			if ( is_front_page() && $ss_settings['layout_sidebar_on_front'] != 1 ) {
 				$main_span = 12;
+			}
 
 			$width = $container * ( $main_span / 12 ) - $gutter;
 
 			// Width should be an integer since we're talking pixels, round up!.
 			$width = round( $width );
 
-			if ( $echo )
+			if ( $echo ) {
 				echo $width;
-			else
+			} else {
 				return $width;
+			}
 		}
 
 		/*
@@ -563,15 +573,17 @@ if ( !class_exists( 'Shoestrap_Layout' ) ) {
 
 			$layout_sidebar_on_front = $ss_settings['layout_sidebar_on_front'];
 
-			if ( self::get_layout() == 0 )
+			if ( self::get_layout() == 0 ) {
 				add_filter( 'shoestrap_display_primary_sidebar', 'shoestrap_return_false' );
+			}
 
-			if ( is_front_page() && $layout_sidebar_on_front == 1 && self::get_layout() != 0 )
+			if ( is_front_page() && $layout_sidebar_on_front == 1 && self::get_layout() != 0 ) {
 				add_filter( 'shoestrap_display_primary_sidebar', 'shoestrap_return_true' );
+			}
 
-			if ( ( !is_front_page() || ( is_front_page() && $layout_sidebar_on_front == 1 ) ) && self::get_layout() != 0 )
+			if ( ( ! is_front_page() || ( is_front_page() && $layout_sidebar_on_front == 1 ) ) && self::get_layout() != 0 ) {
 				add_filter( 'shoestrap_display_primary_sidebar', 'shoestrap_return_true' );
-
+			}
 		}
 
 		/**
@@ -582,12 +594,13 @@ if ( !class_exists( 'Shoestrap_Layout' ) ) {
 
 			$layout_sidebar_on_front = $ss_settings['layout_sidebar_on_front'];
 
-			if ( self::get_layout() < 3 )
+			if ( self::get_layout() < 3 ) {
 				add_filter( 'shoestrap_display_secondary_sidebar', 'shoestrap_return_false' );
+			}
 
-			if ( ( !is_front_page() && shoestrap_display_secondary_sidebar() ) || ( is_front_page() && $layout_sidebar_on_front == 1 && self::get_layout() >= 3 ) )
+			if ( ( ! is_front_page() && shoestrap_display_secondary_sidebar() ) || ( is_front_page() && $layout_sidebar_on_front == 1 && self::get_layout() >= 3 ) ) {
 				add_filter( 'shoestrap_display_secondary_sidebar', 'shoestrap_return_true' );
-
+			}
 		}
 
 		/**
@@ -640,6 +653,3 @@ if ( !class_exists( 'Shoestrap_Layout' ) ) {
 		}
 	}
 }
-
-global $ss_layout;
-$ss_layout = new Shoestrap_Layout();

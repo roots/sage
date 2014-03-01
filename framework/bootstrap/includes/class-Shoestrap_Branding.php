@@ -28,11 +28,7 @@ if ( !class_exists( 'Shoestrap_Branding' ) ) {
 				'title'       => 'Colors',
 				'desc'        => '',
 				'id'          => 'help6',
-				'default'     => __( 'The primary color you select will also affect other elements on your site,
-													such as table borders, widgets colors, input elements, dropdowns etc.
-													The branding colors you select will be used throughout the site in various elements.
-													One of the most important settings in your branding is your primary color,
-													since this will be used more often.', 'shoestrap' ),
+				'default'     => __( 'The primary color you select will also affect other elements on your site, such as table borders, widgets colors, input elements, dropdowns etc. The branding colors you select will be used throughout the site in various elements. One of the most important settings in your branding is your primary color, since this will be used more often.', 'shoestrap' ),
 				'type'        => 'info'
 			);
 
@@ -110,14 +106,14 @@ if ( !class_exists( 'Shoestrap_Branding' ) ) {
 			$apple_icon_item = $ss_settings['apple_icon'];
 
 			// Add the favicon
-			if ( !empty( $favicon_item['url'] ) && $favicon_item['url'] != '' ) {
+			if ( ! empty( $favicon_item['url'] ) && $favicon_item['url'] != '' ) {
 				$favicon = Shoestrap_Image::_resize( $favicon_item['url'], 32, 32, true, false );
 
 				echo '<link rel="shortcut icon" href="'.$favicon['url'].'" type="image/x-icon" />';
 			}
 
 			// Add the apple icons
-			if ( !empty( $apple_icon_item['url'] ) ) {
+			if ( ! empty( $apple_icon_item['url'] ) ) {
 				$iphone_icon        = Shoestrap_Image::_resize( $apple_icon_item['url'], 57, 57, true, false );
 				$iphone_icon_retina = Shoestrap_Image::_resize( $apple_icon_item['url'], 57, 57, true, true );
 				$ipad_icon          = Shoestrap_Image::_resize( $apple_icon_item['url'], 72, 72, true, false );
@@ -140,10 +136,11 @@ if ( !class_exists( 'Shoestrap_Branding' ) ) {
 			global $ss_settings;
 			$logo  = $ss_settings['logo'];
 
-			if ( !empty( $logo['url'] ) )
+			if ( ! empty( $logo['url'] ) ) {
 				$branding = '<img id="site-logo" src="' . $logo['url'] . '" alt="' . get_bloginfo( 'name' ) . '">';
-			else
+			} else {
 				$branding = '<span class="sitename">' . get_bloginfo( 'name' ) . '</span>';
+			}
 
 			return $branding;
 		}

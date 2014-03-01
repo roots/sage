@@ -66,7 +66,7 @@ if ( ! class_exists( 'Shoestrap_Breadcrumbs' ) ) {
 					// Detect any hierarchical taxonomies that might exist on this post type
 					$hierarchical = false;
 					foreach ( $taxonomy_names as $taxonomy_name ) {
-						if ( !$hierarchical ) {
+						if ( ! $hierarchical ) {
 							$hierarchical = ( is_taxonomy_hierarchical( $taxonomy_name ) ) ? true : $hierarchical;
 							$tn = $taxonomy_name;
 						}
@@ -126,10 +126,11 @@ if ( ! class_exists( 'Shoestrap_Breadcrumbs' ) ) {
 					}
 				} else {
 					if ( isset( $post->ancestors ) ) {
-						if ( is_array( $post->ancestors ) )
+						if ( is_array( $post->ancestors ) ) {
 							$ancestors = array_values( $post->ancestors );
-						else
+						} else {
 							$ancestors = array( $post->ancestors );
+						}
 					} else {
 						$ancestors = array( $post->post_parent );
 					}
@@ -181,7 +182,7 @@ if ( ! class_exists( 'Shoestrap_Breadcrumbs' ) ) {
 
 					if ( 0 !== get_query_var( 'year' ) || ( 0 !== get_query_var( 'monthnum' ) || 0 !== get_query_var( 'day' ) ) ) {
 						
-						if ( 'page' == $on_front && !is_home() ) {
+						if ( 'page' == $on_front && ! is_home() ) {
 							$links[] = array( 'id' => $blog_page );
 						}
 
@@ -264,10 +265,11 @@ if ( ! class_exists( 'Shoestrap_Breadcrumbs' ) ) {
 					}*/
 					$post_type_obj = get_post_type_object( $link['post_type_archive'] );
 
-					if( isset( $post_type_obj->label ) && $post_type_obj->label !== '' )
+					if( isset( $post_type_obj->label ) && $post_type_obj->label !== '' ) {
 						$archive_title = $post_type_obj->label;
-					else
+					} else {
 						$archive_title = $post_type_obj->labels->menu_name;
+					}
 
 					$link['url']  = get_post_type_archive_link( $link['post_type_archive'] );
 					$link['text'] = $archive_title;
@@ -276,14 +278,15 @@ if ( ! class_exists( 'Shoestrap_Breadcrumbs' ) ) {
 				$element     = esc_attr( $element );
 				$link_output = '<li>';
 
-				if ( isset( $link['url'] ) && ( $i < ( count( $links ) - 1 ) || $paged ) )
+				if ( isset( $link['url'] ) && ( $i < ( count( $links ) - 1 ) || $paged ) ) {
 					$link_output .= '<a href="' . esc_url( $link['url'] ) . '" rel="v:url" property="v:title">' . $link['text'] . '</a>';
-				else
+				} else {
 					$link_output .= '<span class="breadcrumb_last" property="v:title">' . $link['text'] . '</span>';
+				}
 
 				$link_output .= '</li>';
 
-				$link_sep = ( !empty( $output ) ? " $sep " : '' );
+				$link_sep = ( ! empty( $output ) ? " $sep " : '' );
 				$output .= apply_filters( 'wpseo_breadcrumb_single_link_with_sep', $link_sep . $link_output, $link );
 			}
 
@@ -291,6 +294,3 @@ if ( ! class_exists( 'Shoestrap_Breadcrumbs' ) ) {
 		}
 	}
 }
-
-global $ss_breadcrumbs;
-$ss_breadcrumbs = new Shoestrap_Breadcrumbs();

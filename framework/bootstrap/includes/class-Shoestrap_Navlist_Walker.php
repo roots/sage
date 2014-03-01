@@ -13,29 +13,29 @@
  *   <li class="menu-sample-page"><a href="/sample-page/">Sample Page</a></li>
  */
 class Shoestrap_Navlist_Walker extends Walker_Nav_Menu {
-	function check_current($classes) {
-		return preg_match('/(current[-_])|active/', $classes);
+	function check_current( $classes ) {
+		return preg_match( '/(current[-_])|active/', $classes );
 	}
 
-	function start_lvl(&$output, $depth = 2, $args = array()) {
+	function start_lvl( &$output, $depth = 2, $args = array() ) {
 		$output .= "\n<ul class=\"nav nav-sublist\">\n";
 	}
 
-	function start_el(&$output, $item, $depth = 2, $args = array(), $id = 0) {
+	function start_el( &$output, $item, $depth = 2, $args = array(), $id = 0 ) {
 		$item_html = '';
-		parent::start_el($item_html, $item, $depth, $args);
+		parent::start_el( $item_html, $item, $depth, $args );
 
-		$item_html = apply_filters('shoestrap_wp_nav_menu_item', $item_html);
+		$item_html = apply_filters( 'shoestrap_wp_nav_menu_item', $item_html );
 		$output .= $item_html;
 	}
 
-	function display_element($element, &$children_elements, $max_depth, $depth = 0, $args, &$output) {
-		$element->has_children = ((!empty($children_elements[$element->ID]) && (($depth + 1) < $max_depth || ($max_depth === 0))));
+	function display_element( $element, &$children_elements, $max_depth, $depth = 0, $args, &$output ) {
+		$element->has_children = ( ( ! empty( $children_elements[$element->ID] ) && ( ( $depth + 1 ) < $max_depth || ( $max_depth === 0 ) ) ) );
 
-		if ($element->has_children)
+		if ( $element->has_children ) {
 			$element->classes[] = 'parent';
+		}
 
-		parent::display_element($element, $children_elements, $max_depth, $depth, $args, $output);
+		parent::display_element( $element, $children_elements, $max_depth, $depth, $args, $output );
 	}
-
 }

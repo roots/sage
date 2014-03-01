@@ -18,30 +18,33 @@ class Shoestrap_Nav_Menu_Widget extends WP_Widget {
 		// Get menu
 		$nav_menu = ! empty( $instance['nav_menu'] ) ? wp_get_nav_menu_object( $instance['nav_menu'] ) : false;
 
-		if ( !$nav_menu )
+		if ( ! $nav_menu ) {
 			return;
+		}
 
 		$instance['title'] = apply_filters( 'widget_title', empty( $instance['title'] ) ? '' : $instance['title'], $instance, $this->id_base );
 
-		if ( $ss_settings['widgets_mode'] == 1 )
+		if ( $ss_settings['widgets_mode'] == 1 ) {
 			echo '<section id="widget-menu-' . $instance["nav_menu"] . '" class="widget">';
-		else
+		} else {
 			echo $args['before_widget'];
+		}
 
-		if ( !empty($instance['title']) )
+		if ( ! empty( $instance['title'] ) ) {
 			echo $args['before_title'] . $instance['title'] . $args['after_title'];
+		}
 
 		$menu_class = ( $ss_settings['inverse_navlist'] ) ? 'nav-list-inverse ' : '';
 
 		$menu_class .= 'nav-list-' . $ss_settings['menus_class'];
 
 		wp_nav_menu( array(
-			'menu'              => $nav_menu,
-			'depth'             => 2,
-			'container'         => 'false',
-			'menu_class'        => 'nav nav-list ' . $menu_class,
-			'fallback_cb'       => 'Shoestrap_Navlist_Walker::fallback',
-			'walker'            => new Shoestrap_Navlist_Walker()
+			'menu'        => $nav_menu,
+			'depth'       => 2,
+			'container'   => 'false',
+			'menu_class'  => 'nav nav-list ' . $menu_class,
+			'fallback_cb' => 'Shoestrap_Navlist_Walker::fallback',
+			'walker'      => new Shoestrap_Navlist_Walker()
 		) );
 		echo $args['after_widget'];
 	}
@@ -60,7 +63,7 @@ class Shoestrap_Nav_Menu_Widget extends WP_Widget {
 		$menus = wp_get_nav_menus( array( 'orderby' => 'name' ) );
 
 		// If no menus exists, direct the user to go and create some.
-		if ( !$menus ) {
+		if ( ! $menus ) {
 			echo '<p>'. sprintf( __('No menus have been created yet. <a href="%s">Create some</a>.', 'shoestrap'), admin_url('nav-menus.php') ) .'</p>';
 			return;
 		}

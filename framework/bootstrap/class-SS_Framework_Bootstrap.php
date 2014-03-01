@@ -86,15 +86,25 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 				include_once( SS_FRAMEWORK_PATH . '/includes/widgets.php' );                         // Widgets
 				include_once( SS_FRAMEWORK_PATH . '/includes/gallery.php' );                         // Custom [gallery]
 
-				// Initialize the classes
-				$background = new Shoestrap_Background();
-				$advanced   = new Shoestrap_Advanced();
-				$branding   = new Shoestrap_Branding();
-				$blog       = new Shoestrap_Blog();
-				$footer     = new Shoestrap_Footer();
-				$headers    = new Shoestrap_Header();
-				$jumbotron  = new Shoestrap_Jumbotron();
-				$menus      = new Shoestrap_Menus();
+				// instantiate the classes
+				global $ss_layout;
+				$ss_layout      = new Shoestrap_Layout();
+
+				$background     = new Shoestrap_Background();
+				$advanced       = new Shoestrap_Advanced();
+				$branding       = new Shoestrap_Branding();
+				$blog           = new Shoestrap_Blog();
+				$footer         = new Shoestrap_Footer();
+				$headers        = new Shoestrap_Header();
+				$jumbotron      = new Shoestrap_Jumbotron();
+				$menus          = new Shoestrap_Menus();
+				$typography     = new Shoestrap_Typography();
+
+				global $ss_breadcrumbs;
+				$ss_breadcrumbs = new Shoestrap_Breadcrumbs();
+
+				global $ss_social;
+				$ss_social      = new Shoestrap_Social();
 
 				add_filter( 'shoestrap_compiler', array( $this, 'styles_filter' ) );
 
@@ -250,7 +260,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 				$classes[] = $this->defines['button-group-extra-large'];
 			}
 
-			if ( !is_null( $extra_classes ) ) {
+			if ( ! is_null( $extra_classes ) ) {
 				$extras = explode( ' ', $extra_classes );
 
 				foreach ( $extras as $extra ) {
@@ -258,7 +268,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 				}
 			}
 
-			if ( !is_null( $type ) ) {
+			if ( ! is_null( $type ) ) {
 				$types = explode( ' ', $type );
 
 				foreach ( $types as $type ) {
@@ -287,7 +297,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 				$dismiss = null;
 			}
 
-			if ( !is_null( $extra_classes ) ) {
+			if ( ! is_null( $extra_classes ) ) {
 				$extras = explode( ' ', $extra_classes );
 
 				foreach ( $extras as $extra ) {
@@ -296,7 +306,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 			}
 
 			// If an ID has been defined, format it properly.
-			if ( !is_null( $id ) ) {
+			if ( ! is_null( $id ) ) {
 				$id = ' id=' . $id . '"';
 			}
 
@@ -309,7 +319,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 
 			$classes = array();
 
-			if ( !is_null( $extra_classes ) ) {
+			if ( ! is_null( $extra_classes ) ) {
 				$extras = explode( ' ', $extra_classes );
 
 				foreach ( $extras as $extra ) {
@@ -321,7 +331,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 			}
 
 			// If an ID has been defined, format it properly.
-			if ( !is_null( $id ) ) {
+			if ( ! is_null( $id ) ) {
 				$id = ' id=' . $id . '"';
 			}
 
@@ -693,6 +703,48 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 				$variables .= '@jumbotron-font-size:     ' . $font_jumbotron['font-size'] . 'px;';
 			}
 
+			if ( isset( $ss_settings['padding_base'] ) && !empty( $ss_settings['padding_base'] ) ) {
+				$padding_base  = intval( $settings['padding_base'] );
+			} else {
+				$padding_base = 6;
+			}
+
+			if ( isset( $ss_settings['general_border_radius'] ) && !empty( $ss_settings['general_border_radius'] ) ) {
+				$border_radius = filter_var( $settings['general_border_radius'], FILTER_SANITIZE_NUMBER_INT );
+				$border_radius = ( strlen( $border_radius ) < 1 ) ? 0 : $border_radius;
+			} else {
+				$border_radius = 4;
+			}
+
+			$variables .= '@padding-base-vertical:    ' . round( $padding_base * 6 / 6 ) . 'px;';
+			$variables .= '@padding-base-horizontal:  ' . round( $padding_base * 12 / 6 ) . 'px;';
+
+			$variables .= '@padding-large-vertical:   ' . round( $padding_base * 10 / 6 ) . 'px;';
+			$variables .= '@padding-large-horizontal: ' . round( $padding_base * 16 / 6 ) . 'px;';
+
+			$variables .= '@padding-small-vertical:   ' . round( $padding_base * 5 / 6 ) . 'px;';
+			$variables .= '@padding-small-horizontal: @padding-large-vertical;';
+
+			$variables .= '@padding-xs-vertical:      ' . round( $padding_base * 1 / 6 ) . 'px;';
+			$variables .= '@padding-xs-horizontal:    @padding-small-vertical;';
+
+			$variables .= '@border-radius-base:  ' . round( $border_radius * 4 / 4 ) . 'px;';
+			$variables .= '@border-radius-large: ' . round( $border_radius * 6 / 4 ) . 'px;';
+			$variables .= '@border-radius-small: ' . round( $border_radius * 3 / 4 ) . 'px;';
+
+			$variables .= '@pager-border-radius: ' . round( $border_radius * 15 / 4 ) . 'px;';
+
+			$variables .= '@tooltip-arrow-width: @padding-small-vertical;';
+			$variables .= '@popover-arrow-width: (@tooltip-arrow-width * 2);';
+
+			$variables .= '@thumbnail-padding:         ' . round( $padding_base * 4 / 6 ) . 'px;';
+			$variables .= '@thumbnail-caption-padding: ' . round( $padding_base * 9 / 6 ) . 'px;';
+
+			$variables .= '@badge-border-radius: ' . round( $border_radius * 10 / 4 ) . 'px;';
+
+			$variables .= '@breadcrumb-padding-vertical:   ' . round( $padding_base * 8 / 6 ) . 'px;';
+			$variables .= '@breadcrumb-padding-horizontal: ' . round( $padding_base * 15 / 6 ) . 'px;';
+
 			// Shoestrap-specific variables
 			// --------------------------------------------------
 
@@ -830,12 +882,12 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 				$variables .= '@grid-float-breakpoint: ' . $grid_float_breakpoint . ';';
 			}
 
-			// $variables .= '@import "' . dirname( __FILE__ ) . '/assets/less/blog.less";';
-			// $variables .= '@import "' . dirname( __FILE__ ) . '/assets/less/headers.less";';
-			// $variables .= '@import "' . dirname( __FILE__ ) . '/assets/less/layout.less";';
-			// $variables .= '@import "' . dirname( __FILE__ ) . '/assets/less/social.less";';
-			// $variables .= '@import "' . dirname( __FILE__ ) . '/assets/less/menus.less";';
-			// $variables .= '@import "' . dirname( __FILE__ ) . '/assets/less/widgets.less";';
+			$variables .= '@import "' . dirname( __FILE__ ) . '/assets/less/blog.less";';
+			$variables .= '@import "' . dirname( __FILE__ ) . '/assets/less/headers.less";';
+			$variables .= '@import "' . dirname( __FILE__ ) . '/assets/less/layout.less";';
+			$variables .= '@import "' . dirname( __FILE__ ) . '/assets/less/social.less";';
+			$variables .= '@import "' . dirname( __FILE__ ) . '/assets/less/menus.less";';
+			$variables .= '@import "' . dirname( __FILE__ ) . '/assets/less/widgets.less";';
 
 			return $variables;
 		}
@@ -888,7 +940,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 				}
 
 				// Parse any custom less added by the user
-				if ( isset( $ss_settings['user_less'] ) && !empty( $ss_settings['user_less'] ) ) {
+				if ( isset( $ss_settings['user_less'] ) && ! empty( $ss_settings['user_less'] ) ) {
 					$parser->parse( $ss_settings['user_less'] );
 				}
 

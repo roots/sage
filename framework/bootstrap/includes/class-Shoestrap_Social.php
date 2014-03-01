@@ -1,7 +1,7 @@
 <?php
 
 
-if ( !class_exists( 'Shoestrap_Social' ) ) {
+if ( ! class_exists( 'Shoestrap_Social' ) ) {
 	/**
 	* The "Social" modue
 	*/
@@ -18,8 +18,9 @@ if ( !class_exists( 'Shoestrap_Social' ) ) {
 			$social_sharing_single_page = $ss_settings['social_sharing_single_page'];
 
 			// Conditions for showing content in posts archives
-			if ( $ss_settings['social_sharing_archives'] == 1 )
+			if ( $ss_settings['social_sharing_archives'] == 1 ) {
 				add_action( 'shoestrap_entry_footer', array( $this, 'social_sharing' ), 5 );
+			}
 
 			// Conditions for showing content in single posts
 			if ( $ss_settings['social_sharing_single_post'] == 1 ) {
@@ -505,11 +506,9 @@ if ( !class_exists( 'Shoestrap_Social' ) ) {
 			$content .= '</div>';
 
 			// If at least ONE social share option is enabled then echo the content
-			if ( !empty( $networks ) )
+			if ( ! empty( $networks ) ) {
 				echo $content;
+			}
 		}
 	}
 }
-
-global $ss_social;
-$ss_social = new Shoestrap_Social();

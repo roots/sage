@@ -1,7 +1,7 @@
 <?php
 
 
-if ( !class_exists( 'Shoestrap_Jumbotron' ) ) {
+if ( ! class_exists( 'Shoestrap_Jumbotron' ) ) {
 
 	/**
 	* The Jumbotron module
@@ -165,7 +165,7 @@ if ( !class_exists( 'Shoestrap_Jumbotron' ) ) {
 				'after_widget'  => '</div></section>',
 				'before_title'  => '<h1>',
 				'after_title'   => '</h1>',
-			));
+			) );
 		}
 
 		/*
@@ -173,44 +173,45 @@ if ( !class_exists( 'Shoestrap_Jumbotron' ) ) {
 		 * according to what we've entered in the customizer
 		 */
 		function jumbotron_content() {
-			global $ss_settings;
+			global $ss_settings, $ss_framework;
 
 			$hero         = false;
 			$site_style   = $ss_settings['site_style'];
 			$visibility   = $ss_settings['jumbotron_visibility'];
 			$nocontainer  = $ss_settings['jumbotron_nocontainer'];
 
-			if ( ( ( $visibility == 1 && is_front_page() ) || $visibility != 1 ) && is_active_sidebar( 'jumbotron' ) )
+			if ( ( ( $visibility == 1 && is_front_page() ) || $visibility != 1 ) && is_active_sidebar( 'jumbotron' ) ) {
 				$hero = true;
-			?>
+			}
 
-			<div class="clearfix"></div>
-			<div class="before-main-wrapper">
+			if ( $hero ) {
+				echo $ss_framework->clearfix();
+				echo '<div class="before-main-wrapper">';
 
-				<?php if ( $hero == true ) : ?>
-					<?php if ( $site_style == 'boxed' && $nocontainer != 1 ) : ?>
-						<div class="<?php echo Shoestrap_Layout::container_class(); ?>">
-					<?php endif; ?>
+				if ( $site_style == 'boxed' && $nocontainer != 1 ) {
+					echo '<div class="' . Shoestrap_Layout::container_class() . '">';
+				}
 
-					<div class="jumbotron">
+				echo '<div class="jumbotron">';
 
-						<?php if ( $nocontainer != 1 && $site_style == 'wide' || $site_style == 'boxed' ) : ?>
-							<div class="<?php echo Shoestrap_Layout::container_class(); ?>">
-						<?php endif; ?>
+				if ( $nocontainer != 1 && $site_style == 'wide' || $site_style == 'boxed' ) {
+					echo '<div class="' . Shoestrap_Layout::container_class() . '">';
+				}
 
-							<?php dynamic_sidebar('Jumbotron'); ?>
+				dynamic_sidebar( 'Jumbotron' );
 
-						<?php if ( $nocontainer != 1 && $site_style == 'wide' || $site_style == 'boxed' ) : ?>
-							</div>
-						<?php endif; ?>
+				if ( $nocontainer != 1 && $site_style == 'wide' || $site_style == 'boxed' ) {
+					echo '</div>';
+				}
 
-					<?php if ( $site_style == 'boxed' && $nocontainer != 1 ) : ?>
-						</div>
-					<?php endif; ?>
+				echo '</div>';
 
-					</div>
-				</div>
-			<?php endif;
+				if ( $site_style == 'boxed' && $nocontainer != 1 ) {
+					echo '</div>';
+				}
+
+				echo '</div>';
+			}
 		}
 
 		/**
@@ -224,11 +225,13 @@ if ( !class_exists( 'Shoestrap_Jumbotron' ) ) {
 
 			$style = '';
 
-			if ( $center == 1 )
+			if ( $center == 1 ) {
 				$style .= 'text-align: center;';
+			}
 
-			if ( !empty($border) && $border['border-bottom'] > 0 && !empty($border['border-color']) )
+			if ( ! empty( $border ) && $border['border-bottom'] > 0 && ! empty( $border['border-color'] ) ) {
 				$style .= 'border-bottom:' . $border['border-bottom'] . ' ' . $border['border-style'] . ' ' . $border['border-color'] . ';';
+			}
 
 			$style .= 'margin-bottom: 0px;';
 
@@ -247,8 +250,9 @@ if ( !class_exists( 'Shoestrap_Jumbotron' ) ) {
 			$jumbo_visibility = $ss_settings['jumbotron_visibility'];
 
 			// Should only show on the front page if it's enabled, or site-wide when appropriate
-			if ( $fittext_toggle == 1 && ( $jumbo_visibility == 0 && ( $jumbo_visibility == 1 && is_front_page() ) ) )
+			if ( $fittext_toggle == 1 && ( $jumbo_visibility == 0 && ( $jumbo_visibility == 1 && is_front_page() ) ) ) {
 				echo '<script>jQuery(".jumbotron h1").fitText(1.3);</script>';
+			}
 		}
 
 		/*
@@ -261,8 +265,8 @@ if ( !class_exists( 'Shoestrap_Jumbotron' ) ) {
 			$jumbo_visibility = $ss_settings['jumbotron_visibility'];
 
 			if ( $fittext_toggle == 1 && ( $jumbo_visibility == 0 && ( $jumbo_visibility == 1 && is_front_page() ) ) ) {
-				wp_register_script('fittext', get_template_directory_uri() . '/assets/js/vendor/jquery.fittext.js', false, null, false);
-				wp_enqueue_script('fittext');
+				wp_register_script( 'fittext', get_template_directory_uri() . '/assets/js/vendor/jquery.fittext.js', false, null, false );
+				wp_enqueue_script( 'fittext' );
 			}
 		}
 	}

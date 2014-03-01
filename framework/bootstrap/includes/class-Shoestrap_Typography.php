@@ -1,7 +1,7 @@
 <?php
 
 
-if ( !class_exists( 'Shoestrap_Typography' ) ) {
+if ( ! class_exists( 'Shoestrap_Typography' ) ) {
 	/**
 	 * The "Typography" module
 	 */
@@ -189,13 +189,15 @@ if ( !class_exists( 'Shoestrap_Typography' ) ) {
 			$data['link'] = '//fonts.googleapis.com/css?family=' . str_replace( ' ', '+', $font['font-family'] );
 			$data['key'] = str_replace( ' ', '_', $font['font-family'] );
 
-			if ( !empty( $font['font-weight'] ) )
+			if ( ! empty( $font['font-weight'] ) ) {
 				$data['link'] .= ':' . str_replace( '-', '', $font['font-weight'] );
+			}
 
-			if ( !empty( $font['font-style'] ) )
+			if ( ! empty( $font['font-style'] ) ) {
 				$data['key'] .= '-' . str_replace( '_', '', $font['font-style'] );
+			}
 
-			if ( !empty( $font['subsets'] ) ) {
+			if ( ! empty( $font['subsets'] ) ) {
 				$data['link'] .= '&subset=' . $font['subsets'];
 				$data['key'] .= '-' . str_replace( '_', '', $font['subsets'] );
 			}
@@ -217,23 +219,23 @@ if ( !class_exists( 'Shoestrap_Typography' ) ) {
 				$font_heading         = $ss_settings['font_heading'];
 			}
 
-			if ( !isset( $font_base['google'] ) || is_null( $font_base['google'] ) || empty( $font_base['google'] ) ) {
+			if ( ! isset( $font_base['google'] ) || is_null( $font_base['google'] ) || empty( $font_base['google'] ) ) {
 				$font_base['google'] = false;
 			}
 
-			if ( !isset( $font_navbar['google'] ) || is_null( $font_navbar['google'] ) || empty( $font_navbar['google'] ) ) {
+			if ( ! isset( $font_navbar['google'] ) || is_null( $font_navbar['google'] ) || empty( $font_navbar['google'] ) ) {
 				$font_navbar['google'] = false;
 			}
 
-			if ( !isset( $font_brand['google'] ) || is_null( $font_brand['google'] ) || empty( $font_brand['google'] ) ) {
+			if ( ! isset( $font_brand['google'] ) || is_null( $font_brand['google'] ) || empty( $font_brand['google'] ) ) {
 				$font_brand['google'] = false;
 			}
 
-			if ( !isset( $font_jumbotron['google'] ) || is_null( $font_jumbotron['google'] ) || empty( $font_jumbotron['google'] ) ) {
+			if ( ! isset( $font_jumbotron['google'] ) || is_null( $font_jumbotron['google'] ) || empty( $font_jumbotron['google'] ) ) {
 				$font_jumbotron['google'] = false;
 			}
 
-			if ( !isset( $font_heading['google'] ) || is_null( $font_heading['google'] ) || empty( $font_heading['google'] ) ) {
+			if ( ! isset( $font_heading['google'] ) || is_null( $font_heading['google'] ) || empty( $font_heading['google'] ) ) {
 				$font_heading['google'] = false;
 			}
 
@@ -324,5 +326,3 @@ if ( !class_exists( 'Shoestrap_Typography' ) ) {
 		}
 	}
 }
-
-$typography = new Shoestrap_Typography();

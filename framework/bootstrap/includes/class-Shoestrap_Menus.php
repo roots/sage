@@ -28,8 +28,9 @@ if ( ! class_exists( 'Shoestrap_Menus' ) ) {
 			add_action( 'shoestrap_do_navbar',        array( $this, 'navbar_slidedown_content' ), 99  );
 			add_action( 'wp_enqueue_scripts',         array( $this, 'megadrop_script'          ), 200 );
 
-			if ( $ss_settings['secondary_navbar_margin'] != 0 )
+			if ( $ss_settings['secondary_navbar_margin'] != 0 ) {
 				add_action( 'wp_enqueue_scripts', array( $this, 'secondary_navbar_margin' ), 101 );
+			}
 
 			$hook = ( $ss_settings['navbar_toggle'] == 'left' ) ? 'shoestrap_do_navbar' : 'shoestrap_inside_nav_begin';
 			add_action( $hook, array( $this, 'navbar_slidedown_toggle' ) );
@@ -363,8 +364,7 @@ if ( ! class_exists( 'Shoestrap_Menus' ) ) {
 					<label class="hide" for="s"><?php _e('Search for:', 'shoestrap'); ?></label>
 					<input type="text" value="<?php if (is_search()) { echo get_search_query(); } ?>" name="s" id="s" class="form-control search-query" placeholder="<?php _e('Search', 'shoestrap'); ?> <?php bloginfo('name'); ?>">
 				</form>
-				<?php
-			endif;
+			<?php endif;
 		}
 
 		/**
@@ -383,10 +383,11 @@ if ( ! class_exists( 'Shoestrap_Menus' ) ) {
 
 			$defaults = 'navbar navbar-default topnavbar';
 
-			if ( $fixed != 1 )
+			if ( $fixed != 1 ) {
 				$class = ' navbar-static-top';
-			else
+			} else {
 				$class = ( $fixedpos == 1 ) ? ' navbar-fixed-bottom' : ' navbar-fixed-top';
+			}
 
 			$class = $defaults . $class;
 
@@ -395,10 +396,11 @@ if ( ! class_exists( 'Shoestrap_Menus' ) ) {
 				$class = $extra_classes;
 			}
 
-			if ( $navbar != 'secondary' )
+			if ( $navbar != 'secondary' ) {
 				return $class . ' ' . $style;
-			else
+			} else {
 				return 'navbar ' . $style;
+			}
 		}
 
 		/**
@@ -435,17 +437,18 @@ if ( ! class_exists( 'Shoestrap_Menus' ) ) {
 
 				$style .= '.navbar, .navbar-default {';
 
-				if ( $opacity != 1 && $opacity != '')
+				if ( $opacity != 1 && $opacity != '') {
 					$style .= 'background: transparent; background: rgba(' . $rgb . ', ' . $opacity . '); filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#' . $opacityie . $bg . ',endColorstr=#' . $opacityie . $bg . '); ;';
-				else
+				} else {
 					$style .= 'background: #' . $bg . ';';
+				}
 
 				$style .= '}';
-
 			}
 
-			if ( $ss_settings['navbar_margin'] != 1 )
+			if ( $ss_settings['navbar_margin'] != 1 ) {
 				$style .= '.navbar-static-top { margin-top:'. $ss_settings['navbar_margin'] . 'px !important; margin-bottom:' . $ss_settings['navbar_margin'] . 'px !important; }';
+			}
 
 			wp_add_inline_style( 'shoestrap_css', $style );
 		}
@@ -461,15 +464,17 @@ if ( ! class_exists( 'Shoestrap_Menus' ) ) {
 
 			if ( $navbar_toggle != 'none' ) {
 				if ( $navbar_toggle != 'pills' ) {
-					if ( !has_action( 'shoestrap_header_top_navbar_override' ) )
+					if ( ! has_action( 'shoestrap_header_top_navbar_override' ) ) {
 						require( 'header-top-navbar.php' );
-					else
+					} else {
 						do_action( 'shoestrap_header_top_navbar_override' );
+					}
 				} else {
-					if ( !has_action( 'shoestrap_header_override' ) )
+					if ( ! has_action( 'shoestrap_header_override' ) ) {
 						require( 'header.php' );
-					else
+					} else {
 						do_action( 'shoestrap_header_override' );
+					}
 				}
 			} else {
 				return '';
@@ -513,7 +518,7 @@ if ( ! class_exists( 'Shoestrap_Menus' ) ) {
 				global $ss_settings;
 
 				$logo           = $ss_settings['logo'];
-				$branding_class = !empty( $logo['url'] ) ? 'logo' : 'text';
+				$branding_class = ! empty( $logo['url'] ) ? 'logo' : 'text';
 
 				if ( $ss_settings['navbar_brand'] != 0 ) {
 					$branding  = '<a class="navbar-brand ' . $branding_class . '" href="' . home_url('/') . '">';
@@ -547,7 +552,6 @@ if ( ! class_exists( 'Shoestrap_Menus' ) ) {
 			return $classes;
 		}
 
-
 		/**
 		 * Register sidebars and widgets
 		 */
@@ -560,7 +564,7 @@ if ( ! class_exists( 'Shoestrap_Menus' ) ) {
 				'after_widget'  => '</div>',
 				'before_title'  => '<h1>',
 				'after_title'   => '</h1>',
-			));
+			) );
 		}
 
 		/**
