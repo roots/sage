@@ -393,7 +393,7 @@ if ( ! class_exists( 'Shoestrap_Blog' ) ) {
 			global $ss_settings;
 
 			$post_types = get_post_types( array( 'public' => true ), 'names' );
-			$post_type_options = $ss_settings['feat_img_per_post_type'];
+			$post_type_options = (array) $ss_settings['feat_img_per_post_type'];
 
 			foreach ( $post_types as $post_type ) {
 				// Simply prevents "illegal string offset" messages
