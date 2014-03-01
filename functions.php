@@ -1,8 +1,8 @@
 <?php
 
 if ( ! defined( 'SS_FRAMEWORK' ) ) {
-	// Define bootstrap as the default framework to avoid user confusion when resetting options etc.
-	// If you want to be able to switch frameworks, please comment the line below.
+	// Define bootstrap as the default framework.
+	// Other frameworks can be added via plugins and override this.
 	define( 'SS_FRAMEWORK', 'bootstrap' );
 }
 

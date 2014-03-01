@@ -3,6 +3,7 @@
 global $ss_settings;
 
 require_once dirname( __FILE__ ) . '/class-SS_Framework.php';
+do_action( 'shoestrap_include_frameworks' );
 
 if ( ! defined( 'SS_FRAMEWORK' ) ) {
 	if ( ! is_null( $ss_settings['framework'] ) && ! empty( $ss_settings['framework'] ) ) {
