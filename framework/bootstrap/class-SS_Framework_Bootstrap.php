@@ -704,13 +704,13 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 			}
 
 			if ( isset( $ss_settings['padding_base'] ) && !empty( $ss_settings['padding_base'] ) ) {
-				$padding_base  = intval( $settings['padding_base'] );
+				$padding_base  = intval( $ss_settings['padding_base'] );
 			} else {
 				$padding_base = 6;
 			}
 
 			if ( isset( $ss_settings['general_border_radius'] ) && !empty( $ss_settings['general_border_radius'] ) ) {
-				$border_radius = filter_var( $settings['general_border_radius'], FILTER_SANITIZE_NUMBER_INT );
+				$border_radius = filter_var( $ss_settings['general_border_radius'], FILTER_SANITIZE_NUMBER_INT );
 				$border_radius = ( strlen( $border_radius ) < 1 ) ? 0 : $border_radius;
 			} else {
 				$border_radius = 4;
@@ -876,6 +876,8 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 
 			if ( isset( $ss_settings['navbar_margin_top'] ) && ! empty( $ss_settings['navbar_margin_top'] ) ) {
 				$variables .= '@navbar-margin-top:       ' . $ss_settings['navbar_margin_top'] . 'px;';
+			} else {
+				$variables .= '@navbar-margin-top: 0px;';
 			}
 
 			if ( isset( $grid_float_breakpoint ) && ! empty( $grid_float_breakpoint ) ) {
