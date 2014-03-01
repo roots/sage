@@ -1,12 +1,12 @@
 <?php
 
 
-if ( !class_exists( 'ShoestrapBreadcrumbs' ) ) {
+if ( ! class_exists( 'Shoestrap_Breadcrumbs' ) ) {
 
 	/**
 	 * This class handles the Breadcrumbs generation and display
 	 */
-	class ShoestrapBreadcrumbs {
+	class Shoestrap_Breadcrumbs {
 
 		/**
 		 * Class constructor
@@ -293,31 +293,4 @@ if ( !class_exists( 'ShoestrapBreadcrumbs' ) ) {
 }
 
 global $shoestrap_breadcrumbs;
-$shoestrap_breadcrumbs = new ShoestrapBreadcrumbs();
-
-/**
- * Template tag for breadcrumbs.
- *
- * @param string $before  What to show before the breadcrumb.
- * @param string $after   What to show after the breadcrumb.
- * @param bool   $display Whether to display the breadcrumb (true) or return it (false).
- * @return string
- */
-function shoestrap_breadcrumbs() {
-	global $ss_settings, $shoestrap_breadcrumbs;
-
-	if ( is_front_page() || $ss_settings['breadcrumbs'] == 0 ) {
-		return;
-	}
-
-	if ( $ss_settings['site_style'] != 'fluid' ) {
-		$class = 'container';
-	} else {
-		$class = 'fluid';
-	}
-
-	echo '<div class="breadTrail ' . $class . '">';
-	echo $shoestrap_breadcrumbs->breadcrumb( false );
-	echo '</div>';
-}
-add_action( 'shoestrap_pre_wrap', 'shoestrap_breadcrumbs', 99 );
+$shoestrap_breadcrumbs = new Shoestrap_Breadcrumbs();

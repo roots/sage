@@ -61,20 +61,34 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 		public function __construct() {
 			global $ss_settings;
 
-			// include_once( SS_FRAMEWORK_PATH . '/modules/class-Shoestrap_Advanced.php' );     // Advanced
-			include_once( SS_FRAMEWORK_PATH . '/modules/class-Shoestrap_Background.php' );   // Background
-			include_once( SS_FRAMEWORK_PATH . '/modules/class-Shoestrap_Branding.php' );     // Branding
-			// include_once( SS_FRAMEWORK_PATH . '/modules/class-Shoestrap_Header.php' );       // Header
-			include_once( SS_FRAMEWORK_PATH . '/modules/class-Shoestrap_Typography.php' );   // Typography
-			include_once( SS_FRAMEWORK_PATH . '/modules/class-Shoestrap_Footer.php' );       // Footer
-			include_once( SS_FRAMEWORK_PATH . '/modules/class-Shoestrap_Social.php' );       // Social
-			include_once( SS_FRAMEWORK_PATH . '/modules/class-Shoestrap_Layout.php' );       // layout
-			include_once( SS_FRAMEWORK_PATH . '/modules/widgets.php' );                      // Widgets
+			include_once( SS_FRAMEWORK_PATH . '/modules/class-Shoestrap_Advanced.php' );        // Advanced
+			include_once( SS_FRAMEWORK_PATH . '/modules/class-Shoestrap_Background.php' );      // Background
+			include_once( SS_FRAMEWORK_PATH . '/modules/class-Shoestrap_Branding.php' );        // Branding
+			include_once( SS_FRAMEWORK_PATH . '/modules/class-Shoestrap_Blog.php' );            // Blog
+			include_once( SS_FRAMEWORK_PATH . '/modules/class-Shoestrap_Breadcrumbs.php' );     // Breadcrumbs
+			include_once( SS_FRAMEWORK_PATH . '/modules/class-Shoestrap_Header.php' );          // Header
+			include_once( SS_FRAMEWORK_PATH . '/modules/class-Shoestrap_Typography.php' );      // Typography
+			include_once( SS_FRAMEWORK_PATH . '/modules/class-Shoestrap_Footer.php' );          // Footer
+			include_once( SS_FRAMEWORK_PATH . '/modules/class-Shoestrap_Social.php' );          // Social
+			include_once( SS_FRAMEWORK_PATH . '/modules/class-Shoestrap_Layout.php' );          // layout
+			include_once( SS_FRAMEWORK_PATH . '/modules/class-Shoestrap_Jumbotron.php' );       // Jumbotron
+			include_once( SS_FRAMEWORK_PATH . '/modules/widgets.php' );                         // Widgets
+			include_once( SS_FRAMEWORK_PATH . '/modules/class-Shoestrap_Menus.php' );           // Menus
+			include_once( SS_FRAMEWORK_PATH . '/modules/class-Shoestrap_Nav_Walker.php' );      // NavWalker
+			include_once( SS_FRAMEWORK_PATH . '/modules/class-Shoestrap_Nav_Menu_Widget.php' ); // NavMenus
+			include_once( SS_FRAMEWORK_PATH . '/modules/class-Shoestrap_Navlist_Walker.php' );  // NavLists
 
-			include_once( SS_FRAMEWORK_PATH . '/menus/nav.php' );                            // NavWalker
 			include_once( SS_FRAMEWORK_PATH . '/gallery.php' );                              // Custom [gallery] modifications
-			include_once( SS_FRAMEWORK_PATH . '/menus/class-Shoestrap_Menus.php' );          // The menus module
-			include_once( SS_FRAMEWORK_PATH . '/jumbotron/class-Shoestrap_Jumbotron.php' );  // The Jumbotron module
+
+			// Initialize the classes
+			$background = new Shoestrap_Background();
+			$advanced   = new Shoestrap_Advanced();
+			$branding   = new Shoestrap_Branding();
+			$blog       = new Shoestrap_Blog();
+			$footer     = new Shoestrap_Footer();
+			$headers    = new Shoestrap_Header();
+			$jumbotron  = new Shoestrap_Jumbotron();
+			$menus      = new Shoestrap_Menus();
 
 			add_filter( 'shoestrap_compiler', array( $this, 'styles_filter' ) );
 
@@ -90,7 +104,90 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 				add_theme_support( 'retina' );
 			}
 
-			add_action( 'wp_enqueue_scripts', array( &$this, 'enqueue_scripts' ), 110 );
+			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ), 110 );
+			add_action( 'shoestrap_pre_wrap', array( $this, 'breadcrumbs' ), 99 );
+			add_filter( 'wp_nav_menu_args',   array( $this, 'nav_menu_args' ) );
+			add_action( 'widgets_init',       array( $this, 'navlist_widget_init' ), 1 );
+			add_filter( 'nav_menu_css_class', array( $this, 'nav_menu_css_class' ), 10, 2 );
+			add_filter( 'nav_menu_item_id',   '__return_null' );
+		}
+
+		/*
+		 * Replace the default menus widget with our custom one
+		 */
+		function navlist_widget_init() {
+			unregister_widget( 'WP_Nav_Menu_Widget' );
+			register_widget( 'Shoestrap_Nav_Menu_Widget' );
+		}
+
+		/**
+		 * Remove the id="" on nav menu items
+		 * Return 'menu-slug' for nav menu classes
+		 */
+		function nav_menu_css_class( $classes, $item ) {
+			$slug = sanitize_title( $item->title );
+			$classes = preg_replace( '/( current( -menu-|[-_]page[-_] )( item|parent|ancestor ) )/', 'active', $classes );
+			$classes = preg_replace( '/^( ( menu|page )[-_\w+]+ )+/', '', $classes );
+
+			$classes[] = 'menu-' . $slug;
+
+			$classes = array_unique( $classes );
+
+			return array_filter( $classes, 'is_element_empty' );
+		}
+
+		/**
+		 * Clean up wp_nav_menu_args
+		 *
+		 * Remove the container
+		 * Use Shoestrap_Nav_Walker() by default
+		 */
+		function nav_menu_args( $args = '' ) {
+			$nav_menu_args['container'] = false;
+
+			if ( ! $args['items_wrap'] ) {
+				$nav_menu_args['items_wrap'] = '<ul class="%2$s">%3$s</ul>';
+			}
+
+			if ( ! $args['depth'] ) {
+				$nav_menu_args['depth'] = 3;
+			}
+
+			if ( ! $args['walker'] ) {
+				$nav_menu_args['walker'] = new Shoestrap_Nav_Walker();
+			}
+
+			if ( ! $args['fallback_cb'] ) {
+				$nav_menu_args['fallback_cb'] = 'Shoestrap_Nav_Walker::fallback';
+			}
+
+			return array_merge( $args, $nav_menu_args );
+		}
+
+		/**
+		 * Template tag for breadcrumbs.
+		 *
+		 * @param string $before  What to show before the breadcrumb.
+		 * @param string $after   What to show after the breadcrumb.
+		 * @param bool   $display Whether to display the breadcrumb (true) or return it (false).
+		 * @return string
+		 */
+		function shoestrap_breadcrumbs() {
+			global $ss_settings, $shoestrap_breadcrumbs;
+
+			if ( is_front_page() || $ss_settings['breadcrumbs'] == 0 ) {
+				return;
+			}
+
+			if ( $ss_settings['site_style'] != 'fluid' ) {
+				$class = 'container';
+			} else {
+				$class = 'fluid';
+			}
+
+			echo '<div class="breadTrail ' . $class . '">';
+			echo $shoestrap_breadcrumbs->breadcrumb( false );
+			echo '</div>';
 		}
 
 		/**
@@ -104,9 +201,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 		/**
 		 * Makes a container
 		 */
-		public function make_container() {
-
-		}
+		public function make_container() {}
 
 		/**
 		 * Column classes

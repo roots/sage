@@ -1,7 +1,7 @@
 <?php
 
 
-if( !class_exists( 'Shoestrap_Footer' ) ) {
+if( ! class_exists( 'Shoestrap_Footer' ) ) {
 	/**
 	* Build the Shoestrap Footer module class.
 	*/
@@ -207,5 +207,3 @@ if( !class_exists( 'Shoestrap_Footer' ) ) {
 		}
 	}
 }
-
-$footer = new Shoestrap_Footer();

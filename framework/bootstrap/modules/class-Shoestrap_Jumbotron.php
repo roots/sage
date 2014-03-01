@@ -267,5 +267,3 @@ if ( !class_exists( 'Shoestrap_Jumbotron' ) ) {
 		}
 	}
 }
-
-$jumbotron = new Shoestrap_Jumbotron();

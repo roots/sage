@@ -50,15 +50,6 @@ if ( !class_exists( 'SS_Framework' ) ) {
 				}
 			}
 
-			// If no framework is active, return.
-			if ( !isset( $active ) ) {
-				return;
-			} else {
-				if ( class_exists( $active ) ) {
-					$this->fw = new $active;
-				}
-			}
-
 			// Get the compiler that will be used and initialize it.
 			if ( $compiler ) {
 				if ( $compiler == 'less_php' ) {

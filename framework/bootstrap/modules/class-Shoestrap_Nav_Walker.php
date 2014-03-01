@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Class Name: Shoestrap_Nav_Walker
  * GitHub URI: https://github.com/twittem/wp-bootstrap-navwalker
@@ -202,46 +203,3 @@ class Shoestrap_Nav_Walker extends Walker_Nav_Menu {
 		}
 	}
 }
-
-/**
- * Remove the id="" on nav menu items
- * Return 'menu-slug' for nav menu classes
- */
-function shoestrap_nav_menu_css_class( $classes, $item ) {
-	$slug = sanitize_title( $item->title );
-	$classes = preg_replace( '/( current( -menu-|[-_]page[-_] )( item|parent|ancestor ) )/', 'active', $classes );
-	$classes = preg_replace( '/^( ( menu|page )[-_\w+]+ )+/', '', $classes );
-
-	$classes[] = 'menu-' . $slug;
-
-	$classes = array_unique( $classes );
-
-	return array_filter( $classes, 'is_element_empty' );
-}
-add_filter( 'nav_menu_css_class', 'shoestrap_nav_menu_css_class', 10, 2 );
-add_filter( 'nav_menu_item_id', '__return_null' );
-
-/**
- * Clean up wp_nav_menu_args
- *
- * Remove the container
- * Use Shoestrap_Nav_Walker() by default
- */
-function shoestrap_nav_menu_args( $args = '' ) {
-	$shoestrap_nav_menu_args['container'] = false;
-
-	if ( !$args['items_wrap'] )
-		$shoestrap_nav_menu_args['items_wrap'] = '<ul class="%2$s">%3$s</ul>';
-
-	if ( !$args['depth'] )
-		$shoestrap_nav_menu_args['depth'] = 3;
-
-	if ( !$args['walker'] )
-		$shoestrap_nav_menu_args['walker'] = new Shoestrap_Nav_Walker();
-
-	if ( !$args['fallback_cb'] )
-		$shoestrap_nav_menu_args['fallback_cb'] = 'Shoestrap_Nav_Walker::fallback';
-
-	return array_merge( $args, $shoestrap_nav_menu_args );
-}
-add_filter( 'wp_nav_menu_args', 'shoestrap_nav_menu_args' );

@@ -149,5 +149,3 @@ if ( !class_exists( 'Shoestrap_Branding' ) ) {
 		}
 	}
 }
-
-$branding = new Shoestrap_Branding();

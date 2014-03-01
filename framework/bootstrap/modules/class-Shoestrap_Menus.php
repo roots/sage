@@ -1,7 +1,7 @@
 <?php
 
 
-if ( !class_exists( 'Shoestrap_Menus' ) ) {
+if ( ! class_exists( 'Shoestrap_Menus' ) ) {
 
 	/**
 	* The "Menus" module
@@ -760,8 +760,3 @@ if ( !class_exists( 'Shoestrap_Menus' ) ) {
 		}
 	}
 }
-
-include_once( dirname( __FILE__ ) . '/includes/functions.navlist-walker.php' );
-include_once( dirname( __FILE__ ) . '/includes/functions.navlist.php' );
-
-$menus = new Shoestrap_Menus();

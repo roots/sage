@@ -1,11 +1,11 @@
 <?php
 
-if ( !class_exists( 'ShoestrapBackground' ) ) {
+if ( !class_exists( 'Shoestrap_Background' ) ) {
 
 	/**
 	* The "Background" module
 	*/
-	class ShoestrapBackground {
+	class Shoestrap_Background {
 		
 		function __construct() {
 			add_filter( 'redux/options/' . SHOESTRAP_OPT_NAME . '/sections', array( $this, 'options' ), 60 );
@@ -225,5 +225,3 @@ if ( !class_exists( 'ShoestrapBackground' ) ) {
 		}
 	}
 }
-
-$background = new ShoestrapBackground();

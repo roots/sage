@@ -84,12 +84,3 @@ class Shoestrap_Nav_Menu_Widget extends WP_Widget {
 		<?php
 	}
 }
-
-/*
- * Replace the default menus widget with our custom one
- */
-function shoestrap_navlist_widget_init() {
-	unregister_widget('WP_Nav_Menu_Widget');
-	register_widget('Shoestrap_Nav_Menu_Widget');
-}
-add_action( 'widgets_init', 'shoestrap_navlist_widget_init', 1 );
