@@ -65,55 +65,58 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 				define( 'SS_FRAMEWORK_PATH', dirname( __FILE__ ) );
 			}
 
-			include_once( SS_FRAMEWORK_PATH . '/includes/class-Shoestrap_Advanced.php' );        // Advanced
-			include_once( SS_FRAMEWORK_PATH . '/includes/class-Shoestrap_Background.php' );      // Background
-			include_once( SS_FRAMEWORK_PATH . '/includes/class-Shoestrap_Branding.php' );        // Branding
-			include_once( SS_FRAMEWORK_PATH . '/includes/class-Shoestrap_Blog.php' );            // Blog
-			include_once( SS_FRAMEWORK_PATH . '/includes/class-Shoestrap_Breadcrumbs.php' );     // Breadcrumbs
-			include_once( SS_FRAMEWORK_PATH . '/includes/class-Shoestrap_Header.php' );          // Header
-			include_once( SS_FRAMEWORK_PATH . '/includes/class-Shoestrap_Typography.php' );      // Typography
-			include_once( SS_FRAMEWORK_PATH . '/includes/class-Shoestrap_Footer.php' );          // Footer
-			include_once( SS_FRAMEWORK_PATH . '/includes/class-Shoestrap_Social.php' );          // Social
-			include_once( SS_FRAMEWORK_PATH . '/includes/class-Shoestrap_Layout.php' );          // layout
-			include_once( SS_FRAMEWORK_PATH . '/includes/class-Shoestrap_Jumbotron.php' );       // Jumbotron
-			include_once( SS_FRAMEWORK_PATH . '/includes/class-Shoestrap_Menus.php' );           // Menus
-			include_once( SS_FRAMEWORK_PATH . '/includes/class-Shoestrap_Nav_Walker.php' );      // NavWalker
-			include_once( SS_FRAMEWORK_PATH . '/includes/class-Shoestrap_Nav_Menu_Widget.php' ); // NavMenus
-			include_once( SS_FRAMEWORK_PATH . '/includes/class-Shoestrap_Navlist_Walker.php' );  // NavLists
+			if ( class_exists( 'ReduxFrameworkPlugin' ) ) {
 
-			include_once( SS_FRAMEWORK_PATH . '/includes/widgets.php' );                         // Widgets
-			include_once( SS_FRAMEWORK_PATH . '/includes/gallery.php' );                         // Custom [gallery]
+				include_once( SS_FRAMEWORK_PATH . '/includes/class-Shoestrap_Advanced.php' );        // Advanced
+				include_once( SS_FRAMEWORK_PATH . '/includes/class-Shoestrap_Background.php' );      // Background
+				include_once( SS_FRAMEWORK_PATH . '/includes/class-Shoestrap_Branding.php' );        // Branding
+				include_once( SS_FRAMEWORK_PATH . '/includes/class-Shoestrap_Blog.php' );            // Blog
+				include_once( SS_FRAMEWORK_PATH . '/includes/class-Shoestrap_Breadcrumbs.php' );     // Breadcrumbs
+				include_once( SS_FRAMEWORK_PATH . '/includes/class-Shoestrap_Header.php' );          // Header
+				include_once( SS_FRAMEWORK_PATH . '/includes/class-Shoestrap_Typography.php' );      // Typography
+				include_once( SS_FRAMEWORK_PATH . '/includes/class-Shoestrap_Footer.php' );          // Footer
+				include_once( SS_FRAMEWORK_PATH . '/includes/class-Shoestrap_Social.php' );          // Social
+				include_once( SS_FRAMEWORK_PATH . '/includes/class-Shoestrap_Layout.php' );          // layout
+				include_once( SS_FRAMEWORK_PATH . '/includes/class-Shoestrap_Jumbotron.php' );       // Jumbotron
+				include_once( SS_FRAMEWORK_PATH . '/includes/class-Shoestrap_Menus.php' );           // Menus
+				include_once( SS_FRAMEWORK_PATH . '/includes/class-Shoestrap_Nav_Walker.php' );      // NavWalker
+				include_once( SS_FRAMEWORK_PATH . '/includes/class-Shoestrap_Nav_Menu_Widget.php' ); // NavMenus
+				include_once( SS_FRAMEWORK_PATH . '/includes/class-Shoestrap_Navlist_Walker.php' );  // NavLists
 
-			// Initialize the classes
-			$background = new Shoestrap_Background();
-			$advanced   = new Shoestrap_Advanced();
-			$branding   = new Shoestrap_Branding();
-			$blog       = new Shoestrap_Blog();
-			$footer     = new Shoestrap_Footer();
-			$headers    = new Shoestrap_Header();
-			$jumbotron  = new Shoestrap_Jumbotron();
-			$menus      = new Shoestrap_Menus();
+				include_once( SS_FRAMEWORK_PATH . '/includes/widgets.php' );                         // Widgets
+				include_once( SS_FRAMEWORK_PATH . '/includes/gallery.php' );                         // Custom [gallery]
 
-			add_filter( 'shoestrap_compiler', array( $this, 'styles_filter' ) );
+				// Initialize the classes
+				$background = new Shoestrap_Background();
+				$advanced   = new Shoestrap_Advanced();
+				$branding   = new Shoestrap_Branding();
+				$blog       = new Shoestrap_Blog();
+				$footer     = new Shoestrap_Footer();
+				$headers    = new Shoestrap_Header();
+				$jumbotron  = new Shoestrap_Jumbotron();
+				$menus      = new Shoestrap_Menus();
 
-			if ( $ss_settings['navbar_social'] == 1 ) {
-				if ( $ss_settings['navbar_social_style'] == 1 ) {
-					add_action( 'shoestrap_inside_nav_end', array( $this, 'navbar_social_bar' ) );
-				} else {
-					add_action( 'shoestrap_inside_nav_end', array( $this, 'navbar_social_links' ) );
+				add_filter( 'shoestrap_compiler', array( $this, 'styles_filter' ) );
+
+				if ( $ss_settings['navbar_social'] == 1 ) {
+					if ( $ss_settings['navbar_social_style'] == 1 ) {
+						add_action( 'shoestrap_inside_nav_end', array( $this, 'navbar_social_bar' ) );
+					} else {
+						add_action( 'shoestrap_inside_nav_end', array( $this, 'navbar_social_links' ) );
+					}
 				}
-			}
 
-			if ( isset( $ss_settings['retina_toggle'] ) && $ss_settings['retina_toggle'] ) {
-				add_theme_support( 'retina' );
-			}
+				if ( isset( $ss_settings['retina_toggle'] ) && $ss_settings['retina_toggle'] ) {
+					add_theme_support( 'retina' );
+				}
 
-			add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ), 110 );
+				add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ), 110 );
+				add_action( 'widgets_init',       array( $this, 'navlist_widget_init' ), 1 );
+				add_filter( 'nav_menu_css_class', array( $this, 'nav_menu_css_class' ), 10, 2 );
+				add_filter( 'nav_menu_item_id',   '__return_null' );
+			}
 			add_action( 'shoestrap_pre_wrap', array( $this, 'breadcrumbs' ), 99 );
 			add_filter( 'wp_nav_menu_args',   array( $this, 'nav_menu_args' ) );
-			add_action( 'widgets_init',       array( $this, 'navlist_widget_init' ), 1 );
-			add_filter( 'nav_menu_css_class', array( $this, 'nav_menu_css_class' ), 10, 2 );
-			add_filter( 'nav_menu_item_id',   '__return_null' );
 		}
 
 		/*
@@ -179,19 +182,21 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 		function breadcrumbs() {
 			global $ss_settings, $ss_breadcrumbs;
 
-			if ( is_front_page() || $ss_settings['breadcrumbs'] == 0 ) {
+			if ( is_front_page() || ( isset( $ss_settings['breadcrumbs'] ) && $ss_settings['breadcrumbs'] == 0 ) ) {
 				return;
 			}
 
-			if ( $ss_settings['site_style'] != 'fluid' ) {
+			if ( isset( $ss_settings['site_style'] ) && $ss_settings['site_style'] != 'fluid' ) {
 				$class = 'container';
 			} else {
 				$class = 'fluid';
 			}
 
-			echo '<div class="breadTrail ' . $class . '">';
-			echo $ss_breadcrumbs->breadcrumb( false );
-			echo '</div>';
+			if ( class_exists( 'Shoestrap_Breadcrumbs' ) ) {
+				echo '<div class="breadTrail ' . $class . '">';
+				echo $ss_breadcrumbs->breadcrumb( false );
+				echo '</div>';
+			}
 		}
 
 		/**

@@ -63,29 +63,31 @@ if ( !class_exists( 'SS_Framework_Foundation' ) ) {
 				define( 'SS_FRAMEWORK_PATH', dirname( __FILE__ ) );
 			}
 
-			// Branding
-			include_once( dirname( __FILE__ ) . '/modules/class-SS_Foundation_Colors.php' );
-			// Typography
-			include_once( dirname( __FILE__ ) . '/modules/class-SS_Foundation_Typography.php' );
-			// Comments Walker
-			include_once( dirname( __FILE__ ) . '/modules/class-SS_Foundation_Walker_Comment.php' );
-			// Social
-			// include_once( dirname( __FILE__ ) . '/modules/class-Shoestrap_Social.php' );
-			// layout
-			include_once( dirname( __FILE__ ) . '/modules/class-SS_Foundation_Layout.php' );
-			// Header
-			include_once( dirname( __FILE__ ) . '/modules/class-SS_Foundation_Header.php' );
-			// The menus module
-			include_once( dirname( __FILE__ ) . '/modules/class-SS_Foundation_Menus.php' );
-			// Widgets
-			include_once( dirname( __FILE__ ) . '/modules/widgets.php' );
-			// Specific classes for navbar
-			include_once( dirname( __FILE__ ) . '/nav-foundation.php' );
+			if ( class_exists( 'ReduxFrameworkPlugin' ) ) {
+				// Branding
+				include_once( dirname( __FILE__ ) . '/modules/class-SS_Foundation_Colors.php' );
+				// Typography
+				include_once( dirname( __FILE__ ) . '/modules/class-SS_Foundation_Typography.php' );
+				// Comments Walker
+				include_once( dirname( __FILE__ ) . '/modules/class-SS_Foundation_Walker_Comment.php' );
+				// Social
+				// include_once( dirname( __FILE__ ) . '/modules/class-Shoestrap_Social.php' );
+				// layout
+				include_once( dirname( __FILE__ ) . '/modules/class-SS_Foundation_Layout.php' );
+				// Header
+				include_once( dirname( __FILE__ ) . '/modules/class-SS_Foundation_Header.php' );
+				// The menus module
+				include_once( dirname( __FILE__ ) . '/modules/class-SS_Foundation_Menus.php' );
+				// Widgets
+				include_once( dirname( __FILE__ ) . '/modules/widgets.php' );
+				// Specific classes for navbar
+				include_once( dirname( __FILE__ ) . '/nav-foundation.php' );
 
-			add_filter( 'foundation_scss',    array( $this, 'styles_filter' ) );
-			add_filter( 'comments_template',  array( $this, 'comments_template' ) );
-			add_action( 'wp_enqueue_scripts', array( $this, 'css'  ), 101 );
-			add_action( 'wp_enqueue_scripts', array( &$this, 'enqueue_scripts' ), 110 );
+				add_filter( 'foundation_scss',    array( $this, 'styles_filter' ) );
+				add_filter( 'comments_template',  array( $this, 'comments_template' ) );
+				add_action( 'wp_enqueue_scripts', array( $this, 'css'  ), 101 );
+				add_action( 'wp_enqueue_scripts', array( &$this, 'enqueue_scripts' ), 110 );
+			}
 		}
 
 		/**

@@ -1,5 +1,10 @@
 <?php
 
+// Define bootstrap as the default framework to avoid user confusion when resetting options etc.
+if ( ! defined( 'SS_FRAMEWORK' ) ) {
+	define( 'SS_FRAMEWORK', 'bootstrap' );
+}
+
 // define the 'SHOESTRAP_ASSETS_URL' constant.
 if ( ! defined( 'SHOESTRAP_ASSETS_URL' ) ) {
 	define( 'SHOESTRAP_ASSETS_URL', get_template_directory_uri() . '/assets' );
