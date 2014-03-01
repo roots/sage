@@ -20,12 +20,11 @@ function shoestrap_required_plugins() {
 		array(
 			'name'               => 'GitHub Updater',
 			'slug'               => 'github-updater',
-			'source'             => get_template_directory() . '/lib/modules/dependencies/plugins/github-updater.zip',
+			'source'             => get_template_directory() . '/lib/plugins/github-updater-2.5.0.zip',
 			'required'           => false,
-			'version'            => '2.4.4',
+			'version'            => '2.5.0',
 			'force_activation'   => false,
 			'force_deactivation' => false,
-			'external_url'       => '',
 		),
 
 		array(
