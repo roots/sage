@@ -61,24 +61,24 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 		public function __construct() {
 			global $ss_settings;
 
-			include_once( SS_FRAMEWORK_PATH . '/modules/class-Shoestrap_Advanced.php' );        // Advanced
-			include_once( SS_FRAMEWORK_PATH . '/modules/class-Shoestrap_Background.php' );      // Background
-			include_once( SS_FRAMEWORK_PATH . '/modules/class-Shoestrap_Branding.php' );        // Branding
-			include_once( SS_FRAMEWORK_PATH . '/modules/class-Shoestrap_Blog.php' );            // Blog
-			include_once( SS_FRAMEWORK_PATH . '/modules/class-Shoestrap_Breadcrumbs.php' );     // Breadcrumbs
-			include_once( SS_FRAMEWORK_PATH . '/modules/class-Shoestrap_Header.php' );          // Header
-			include_once( SS_FRAMEWORK_PATH . '/modules/class-Shoestrap_Typography.php' );      // Typography
-			include_once( SS_FRAMEWORK_PATH . '/modules/class-Shoestrap_Footer.php' );          // Footer
-			include_once( SS_FRAMEWORK_PATH . '/modules/class-Shoestrap_Social.php' );          // Social
-			include_once( SS_FRAMEWORK_PATH . '/modules/class-Shoestrap_Layout.php' );          // layout
-			include_once( SS_FRAMEWORK_PATH . '/modules/class-Shoestrap_Jumbotron.php' );       // Jumbotron
-			include_once( SS_FRAMEWORK_PATH . '/modules/widgets.php' );                         // Widgets
-			include_once( SS_FRAMEWORK_PATH . '/modules/class-Shoestrap_Menus.php' );           // Menus
-			include_once( SS_FRAMEWORK_PATH . '/modules/class-Shoestrap_Nav_Walker.php' );      // NavWalker
-			include_once( SS_FRAMEWORK_PATH . '/modules/class-Shoestrap_Nav_Menu_Widget.php' ); // NavMenus
-			include_once( SS_FRAMEWORK_PATH . '/modules/class-Shoestrap_Navlist_Walker.php' );  // NavLists
+			include_once( SS_FRAMEWORK_PATH . '/includes/class-Shoestrap_Advanced.php' );        // Advanced
+			include_once( SS_FRAMEWORK_PATH . '/includes/class-Shoestrap_Background.php' );      // Background
+			include_once( SS_FRAMEWORK_PATH . '/includes/class-Shoestrap_Branding.php' );        // Branding
+			include_once( SS_FRAMEWORK_PATH . '/includes/class-Shoestrap_Blog.php' );            // Blog
+			include_once( SS_FRAMEWORK_PATH . '/includes/class-Shoestrap_Breadcrumbs.php' );     // Breadcrumbs
+			include_once( SS_FRAMEWORK_PATH . '/includes/class-Shoestrap_Header.php' );          // Header
+			include_once( SS_FRAMEWORK_PATH . '/includes/class-Shoestrap_Typography.php' );      // Typography
+			include_once( SS_FRAMEWORK_PATH . '/includes/class-Shoestrap_Footer.php' );          // Footer
+			include_once( SS_FRAMEWORK_PATH . '/includes/class-Shoestrap_Social.php' );          // Social
+			include_once( SS_FRAMEWORK_PATH . '/includes/class-Shoestrap_Layout.php' );          // layout
+			include_once( SS_FRAMEWORK_PATH . '/includes/class-Shoestrap_Jumbotron.php' );       // Jumbotron
+			include_once( SS_FRAMEWORK_PATH . '/includes/class-Shoestrap_Menus.php' );           // Menus
+			include_once( SS_FRAMEWORK_PATH . '/includes/class-Shoestrap_Nav_Walker.php' );      // NavWalker
+			include_once( SS_FRAMEWORK_PATH . '/includes/class-Shoestrap_Nav_Menu_Widget.php' ); // NavMenus
+			include_once( SS_FRAMEWORK_PATH . '/includes/class-Shoestrap_Navlist_Walker.php' );  // NavLists
 
-			include_once( SS_FRAMEWORK_PATH . '/gallery.php' );                              // Custom [gallery] modifications
+			include_once( SS_FRAMEWORK_PATH . '/includes/widgets.php' );                         // Widgets
+			include_once( SS_FRAMEWORK_PATH . '/includes/gallery.php' );                         // Custom [gallery]
 
 			// Initialize the classes
 			$background = new Shoestrap_Background();
@@ -172,8 +172,8 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 		 * @param bool   $display Whether to display the breadcrumb (true) or return it (false).
 		 * @return string
 		 */
-		function shoestrap_breadcrumbs() {
-			global $ss_settings, $shoestrap_breadcrumbs;
+		function breadcrumbs() {
+			global $ss_settings, $ss_breadcrumbs;
 
 			if ( is_front_page() || $ss_settings['breadcrumbs'] == 0 ) {
 				return;
@@ -186,7 +186,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 			}
 
 			echo '<div class="breadTrail ' . $class . '">';
-			echo $shoestrap_breadcrumbs->breadcrumb( false );
+			echo $ss_breadcrumbs->breadcrumb( false );
 			echo '</div>';
 		}
 

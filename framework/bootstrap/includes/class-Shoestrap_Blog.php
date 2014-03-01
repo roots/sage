@@ -390,8 +390,9 @@ if ( !class_exists( 'Shoestrap_Blog' ) ) {
 
 			foreach ( $post_types as $post_type ) {
 				// Simply prevents "illegal string offset" messages
-				if ( !isset( $post_type_options[$post_type] ) )
+				if ( ! isset( $post_type_options[$post_type] ) ) {
 					$post_type_options[$post_type] = 0;
+				}
 
 				if ( isset( $post_type ) && is_singular( $post_type ) ) {
 					add_action( 'shoestrap_page_pre_content', array( $this, 'featured_image' ) );

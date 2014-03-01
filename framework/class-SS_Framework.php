@@ -18,7 +18,7 @@ if ( !class_exists( 'SS_Framework' ) ) {
 			if ( ! defined( 'SS_FRAMEWORK' ) ) {
 				$active_framework = $ss_settings['framework'];
 			} else {
-				if ( SS_FRAMEWORK != $ss_settings['framework'] ) {
+				if ( ! isset( $ss_settings['framework'] ) || SS_FRAMEWORK != $ss_settings['framework'] ) {
 					$ss_settings['framework'] = SS_FRAMEWORK;
 					update_option( SHOESTRAP_OPT_NAME, $ss_settings );
 				}

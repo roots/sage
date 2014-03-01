@@ -292,5 +292,5 @@ if ( ! class_exists( 'Shoestrap_Breadcrumbs' ) ) {
 	}
 }
 
-global $shoestrap_breadcrumbs;
-$shoestrap_breadcrumbs = new Shoestrap_Breadcrumbs();
+global $ss_breadcrumbs;
+$ss_breadcrumbs = new Shoestrap_Breadcrumbs();
