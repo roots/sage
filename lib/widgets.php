@@ -25,41 +25,5 @@ function shoestrap_widgets_init() {
 		'before_title'  => $before_title,
 		'after_title'   => $after_title,
 	));
-
-	register_sidebar( array(
-		'name'          => __( 'Footer Widget Area 1', 'shoestrap' ),
-		'id'            => 'sidebar-footer-1',
-		'before_widget' => '<section id="%1$s" class="' . $class . ' widget %2$s">',
-		'after_widget'  => '</section>',
-		'before_title'  => $before_title,
-		'after_title'   => $after_title,
-	));
-
-	register_sidebar( array(
-		'name'          => __( 'Footer Widget Area 2', 'shoestrap' ),
-		'id'            => 'sidebar-footer-2',
-		'before_widget' => '<section id="%1$s" class="' . $class . ' widget %2$s">',
-		'after_widget'  => '</section>',
-		'before_title'  => $before_title,
-		'after_title'   => $after_title,
-	));
-
-	register_sidebar( array(
-		'name'          => __( 'Footer Widget Area 3', 'shoestrap' ),
-		'id'            => 'sidebar-footer-3',
-		'before_widget' => '<section id="%1$s" class="' . $class . ' widget %2$s">',
-		'after_widget'  => '</section>',
-		'before_title'  => $before_title,
-		'after_title'   => $after_title,
-	));
-
-	register_sidebar( array(
-		'name'          => __( 'Footer Widget Area 4', 'shoestrap' ),
-		'id'            => 'sidebar-footer-4',
-		'before_widget' => '<section id="%1$s" class="' . $class . ' widget %2$s">',
-		'after_widget'  => '</section>',
-		'before_title'  => $before_title,
-		'after_title'   => $after_title,
-	));
 }
 add_action( 'widgets_init', 'shoestrap_widgets_init' );
