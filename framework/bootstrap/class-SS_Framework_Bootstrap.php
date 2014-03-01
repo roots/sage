@@ -885,6 +885,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 			$variables .= '@import "' . dirname( __FILE__ ) . '/assets/less/social.less";';
 			$variables .= '@import "' . dirname( __FILE__ ) . '/assets/less/menus.less";';
 			$variables .= '@import "' . dirname( __FILE__ ) . '/assets/less/widgets.less";';
+			$variables .= '@import "' . dirname( __FILE__ ) . '/assets/less/footer.less";';
 
 			return $variables;
 		}
