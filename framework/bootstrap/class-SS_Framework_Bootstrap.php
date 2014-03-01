@@ -60,6 +60,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 		 */
 		public function __construct() {
 			global $ss_settings;
+			define( 'SS_FRAMEWORK_PATH', dirname( __FILE__ ) );
 
 			include_once( SS_FRAMEWORK_PATH . '/includes/class-Shoestrap_Advanced.php' );        // Advanced
 			include_once( SS_FRAMEWORK_PATH . '/includes/class-Shoestrap_Background.php' );      // Background

@@ -22,7 +22,6 @@ require_once locate_template('/lib/class-Shoestrap_Color.php');
 require_once locate_template('/lib/class-Shoestrap_Image.php');
 require_once locate_template('/lib/functions-core.php');
 require_once locate_template('/lib/redux-init.php');
-require_once locate_template('/lib/modules/load.modules.php');
 
 // Get the framework
 require_once locate_template( '/framework/framework.php' );
@@ -41,5 +40,13 @@ require_once locate_template( '/lib/meta.php' );         // Tags
 require_once locate_template( '/lib/widgets.php' );      // Sidebars and widgets
 require_once locate_template( '/lib/post-formats.php' ); // Sidebars and widgets
 require_once locate_template( '/lib/scripts.php' );      // Scripts and stylesheets
+
+require_once locate_template( '/lib/class-TGM_Plugin_Activation.php' ); // TGM_Plugin_Activation
+require_once locate_template( '/lib/dependencies.php' );                // load our dependencies
+
+
+if ( class_exists( 'bbPress' ) ) {
+	require_once locate_template( '/lib/bbpress.php' );      // Scripts and stylesheets
+}
 
 do_action( 'shoestrap_include_files' );

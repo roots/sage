@@ -3,7 +3,7 @@
 /**
  * Include the TGM_Plugin_Activation class.
  */
-require_once dirname( __FILE__ ) . '/class-tgm-plugin-activation.php';
+require_once dirname( __FILE__ ) . '/class-TGM_Plugin_Activation.php';
 
 add_action( 'tgmpa_register', 'shoestrap_required_plugins' );
 /**
@@ -33,13 +33,6 @@ function shoestrap_required_plugins() {
 			'slug'               => 'redux-framework',
 			'required'           => true,
 			'force_activation'   => true,
-		),
-
-		array(
-			'name'               => 'lessphp',
-			'slug'               => 'lessphp',
-			'required'           => false,
-			'force_activation'   => false,
 		),
 	);
 

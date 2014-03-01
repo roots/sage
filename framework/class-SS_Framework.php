@@ -39,6 +39,7 @@ if ( !class_exists( 'SS_Framework' ) ) {
 
 			$frameworks = $this->frameworks_list();
 
+			$compiler = false;
 			// Return the classname of the active framework.
 			foreach ( $frameworks as $framework ) {
 				if ( $active_framework == $framework['shortname'] ) {
