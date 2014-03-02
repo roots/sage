@@ -10,7 +10,6 @@ if ( ! class_exists( 'Shoestrap_Background' ) ) {
 		function __construct() {
 			add_filter( 'redux/options/' . SHOESTRAP_OPT_NAME . '/sections', array( $this, 'options' ), 60 );
 			add_action( 'wp_enqueue_scripts', array( $this, 'css' ), 101 );
-			add_filter( 'shoestrap_compiler', array( $this, 'variables_filter' ), 1 );
 			add_action( 'plugins_loaded',     array( $this, 'upgrade_options' ) );
 		}
 
@@ -57,7 +56,7 @@ if ( ! class_exists( 'Shoestrap_Background' ) ) {
 
 			$fields[] = array(
 				'title'     => __( 'Content Background Color Opacity', 'shoestrap' ),
-				'desc'      => __( 'Select the opacity of your background color for the main content area so that background images will show through. Default: 100 (fully opaque)', 'shoestrap' ),
+				'desc'      => __( 'Select the opacity of your background color for the main content area so that background images will show through. Please note that if you have added an image for your content background, changing the opacity to something other than 100 will result in your background image not being shown. If you need to add opacity to your content background image, you will need to do it by adding transparency to the PNG background image itself.', 'shoestrap' ),
 				'id'        => 'body_bg_opacity',
 				'default'   => 100,
 				'min'       => 0,
