@@ -58,7 +58,7 @@ if ( ! class_exists( 'Shoestrap_Layout' ) ) {
 
 			$fields[] = array( 
 				'title'     => __( 'Site Style', 'shoestrap' ),
-				'desc'      => __( 'Select the default site layout. Default: Wide', 'shoestrap' ),
+				'desc'      => __( 'Select the default site layout. Defaults to "Wide". Please note that if you select a non-responsive layout, you will have to trigger the compiler so that your changes take effect.', 'shoestrap' ),
 				'id'        => 'site_style',
 				'default'   => 'wide',
 				'type'      => 'select',
