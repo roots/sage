@@ -17,8 +17,6 @@ if ( ! class_exists( 'Shoestrap_Menus' ) ) {
 			add_filter( 'shoestrap_navbar_class',     array( $this, 'navbar_class' ) );
 			add_action( 'wp_enqueue_scripts',         array( $this, 'navbar_css' ), 101 );
 			add_action( 'shoestrap_do_navbar',        array( $this, 'do_navbar' ) );
-			add_action( 'shoestrap_do_navbar',        array( $this, 'sl_main_wrapper_open' ), 97 );
-			add_action( 'shoestrap_after_footer',     array( $this, 'sl_main_wrapper_close' ), 901 );
 			add_filter( 'shoestrap_navbar_brand',     array( $this, 'navbar_brand' ) );
 			add_filter( 'body_class',                 array( $this, 'navbar_body_class' ) );
 			add_action( 'widgets_init',               array( $this, 'sl_widgets_init' ), 40 );
@@ -484,33 +482,6 @@ if ( ! class_exists( 'Shoestrap_Menus' ) ) {
 		}
 
 		/**
-		 * When the navbar is set to static-left, we need to add some wrappers
-		 */
-		function sl_main_wrapper_open() {
-			global $ss_settings;
-
-			$left = $ss_settings['navbar_toggle'] == 'left' ? true : false;
-
-			if ( $left ) {
-				echo '<section class="static-menu-main ' . self::sl_breakpoint() . ' col-static-' . ( 12 - $ss_settings['layout_secondary_width'] ) . '">';
-			}
-		}
-
-
-		/**
-		 * Close the wrapper div that the 'sl_main_wrapper_open' opens.
-		 */
-		function sl_main_wrapper_close() {
-			global $ss_settings;
-
-			$left = $ss_settings['navbar_toggle'] == 'left' ? true : false;
-
-			if ( $left ) {
-				echo '</section>';
-			}
-		}
-
-		/**
 		 * get the navbar branding options (if the branding module exists)
 		 * and then add the appropriate logo or sitename.
 		 */
@@ -734,8 +705,20 @@ if ( ! class_exists( 'Shoestrap_Menus' ) ) {
 		function content_wrapper_static_left_open() {
 			global $ss_settings, $ss_framework;
 
+			$breakpoint = self::sl_breakpoint();
+
+			if ( $breakpoint == 'xs' ) {
+				$width = 'mobile';
+			} elseif ( $breakpoint == 'sm' ) {
+				$width = 'tablet';
+			} elseif ( $breakpoint == 'md' ) {
+				$width = 'medium';
+			} elseif ( $breakpoint == 'lg' ) {
+				$width = 'large';
+			}
+
 			if ( isset( $ss_settings['navbar_toggle'] ) && $ss_settings['navbar_toggle'] == 'left' ) {
-				echo $ss_framework->make_col( 'div', array( 'tablet' => 12 - $ss_settings['layout_secondary_width'] ), 'content-wrapper-left', 'col-md-offset-' . $ss_settings['layout_secondary_width'] );
+				echo $ss_framework->make_col( 'div', array( $width => 12 - $ss_settings['layout_secondary_width'] ), 'content-wrapper-left', 'col-' . $breakpoint . '-offset-' . $ss_settings['layout_secondary_width'] );
 			}
 		}
 
