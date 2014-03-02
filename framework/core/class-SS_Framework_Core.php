@@ -66,7 +66,7 @@ class SS_Framework_Core {
 		$classes = apply_filters( 'shoestrap_container_class', $this->defines['container'] );
 
 		if ( ! is_null( $id ) ) {
-			$id = ' id=' . $id . '"';
+			$id = ' id="' . $id . '"';
 		}
 
 		if ( ! is_null( $extra_classes ) ) {
@@ -93,7 +93,7 @@ class SS_Framework_Core {
 		$classes = $this->defines['row'];
 
 		if ( ! is_null( $id ) ) {
-			$id = ' id=' . $id . '"';
+			$id = ' id="' . $id . '"';
 		}
 
 		if ( ! is_null( $extra_classes ) ) {
@@ -291,7 +291,7 @@ class SS_Framework_Core {
 
 		// If an ID has been defined, format it properly.
 		if ( ! is_null( $id ) ) {
-			$id = ' id=' . $id . '"';
+			$id = ' id="' . $id . '"';
 		}
 
 		$classes = implode( ' ', $classes );
@@ -316,7 +316,7 @@ class SS_Framework_Core {
 
 		// If an ID has been defined, format it properly.
 		if ( ! is_null( $id ) ) {
-			$id = ' id=' . $id . '"';
+			$id = ' id="' . $id . '"';
 		}
 
 		return '<div class="panel ' . $classes . '"' . $id . '>';

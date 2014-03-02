@@ -302,7 +302,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 
 			// If an ID has been defined, format it properly.
 			if ( ! is_null( $id ) ) {
-				$id = ' id=' . $id . '"';
+				$id = ' id="' . $id . '"';
 			}
 
 			$classes = implode( ' ', $classes );
@@ -327,7 +327,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 
 			// If an ID has been defined, format it properly.
 			if ( ! is_null( $id ) ) {
-				$id = ' id=' . $id . '"';
+				$id = ' id="' . $id . '"';
 			}
 
 			return '<div class="panel panel-default' . $classes . '"' . $id . '>';

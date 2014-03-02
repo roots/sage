@@ -20,7 +20,7 @@ if ( ! class_exists( 'Shoestrap_Menus' ) ) {
 			add_filter( 'shoestrap_navbar_brand',     array( $this, 'navbar_brand' ) );
 			add_filter( 'body_class',                 array( $this, 'navbar_body_class' ) );
 			add_action( 'widgets_init',               array( $this, 'sl_widgets_init' ), 40 );
-			add_action( 'shoestrap_post_main_nav',    array( $this, 'navbar_sidebar' ) ); 
+			add_action( 'shoestrap_post_main_nav',    array( $this, 'navbar_sidebar' ) );
 			add_action( 'shoestrap_pre_wrap',         array( $this, 'secondary_navbar' ) );
 			add_action( 'widgets_init',               array( $this, 'slidedown_widgets_init' ), 40 );
 			add_action( 'shoestrap_do_navbar',        array( $this, 'navbar_slidedown_content' ), 99 );
@@ -42,19 +42,19 @@ if ( ! class_exists( 'Shoestrap_Menus' ) ) {
 		function options( $sections ) {
 
 			// Branding Options
-			$section = array( 
+			$section = array(
 				'title' => __( 'Menus', 'shoestrap' ),
 				'icon'  => 'el-icon-lines'
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'id'          => 'help7',
 				'title'       => __( 'Advanced NavBar Options', 'shoestrap' ),
 				'desc'        => __( "You can activate or deactivate your Primary NavBar here, and define its properties. Please note that you might have to manually create a menu if it doesn't already exist.", 'shoestrap' ),
 				'type'        => 'info'
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'       => __( 'Type of NavBar', 'shoestrap' ),
 				'desc'        => __( 'Choose the type of Navbar you want. Off completely hides the navbar, Alternative uses an alternative walker for the navigation menus. See <a target="_blank"href="https://github.com/twittem/wp-bootstrap-navwalker">here</a> for more details.', 'shoestrap' ) . '<br>' . __( '<strong>WARNING:</strong> The "Static-Left" option is ONLY compatible with fluid layouts. The width of the static-left navbar is controlled by the secondary sidebar width.', 'shoestrap' ),
 				'id'          => 'navbar_toggle',
@@ -69,24 +69,24 @@ if ( ! class_exists( 'Shoestrap_Menus' ) ) {
 				'type'        => 'button_set'
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'id'          => 'helpnavbarbg',
 				'title'       => __( 'NavBar Styling Options', 'shoestrap' ),
 				'desc'   	  => __( 'Customize the look and feel of your navbar below.', 'shoestrap' ),
 				'type'        => 'info'
-			);    
+			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'       => __( 'NavBar Background Color', 'shoestrap' ),
 				'desc'        => __( 'Pick a background color for the NavBar. Default: #eeeeee.', 'shoestrap' ),
 				'id'          => 'navbar_bg',
 				'default'     => '#f8f8f8',
 				'compiler'    => true,
-				'transparent' => false,    
+				'transparent' => false,
 				'type'        => 'color'
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'       => __( 'NavBar Background Opacity', 'shoestrap' ),
 				'desc'        => __( 'Pick a background opacity for the NavBar. Default: 100%.', 'shoestrap' ),
 				'id'          => 'navbar_bg_opacity',
@@ -97,13 +97,13 @@ if ( ! class_exists( 'Shoestrap_Menus' ) ) {
 				'type'        => 'slider',
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'       => __( 'NavBar Menu Style', 'shoestrap' ),
 				'desc'        => __( 'You can use an alternative menu style for your NavBars.', 'shoestrap' ),
 				'id'          => 'navbar_style',
 				'default'     => 'default',
 				'type'        => 'select',
-				'options'     => array( 
+				'options'     => array(
 					'default' => __( 'Default', 'shoestrap' ),
 					'style1'  => __( 'Style', 'shoestrap' ) . ' 1',
 					'style2'  => __( 'Style', 'shoestrap' ) . ' 2',
@@ -115,7 +115,7 @@ if ( ! class_exists( 'Shoestrap_Menus' ) ) {
 				)
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'       => __( 'Display Branding ( Sitename or Logo ) on the NavBar', 'shoestrap' ),
 				'desc'        => __( 'Default: ON', 'shoestrap' ),
 				'id'          => 'navbar_brand',
@@ -123,7 +123,7 @@ if ( ! class_exists( 'Shoestrap_Menus' ) ) {
 				'type'        => 'switch'
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'       => __( 'Use Logo ( if available ) for branding on the NavBar', 'shoestrap' ),
 				'desc'        => __( 'If this option is OFF, or there is no logo available, then the sitename will be displayed instead. Default: ON', 'shoestrap' ),
 				'id'          => 'navbar_logo',
@@ -131,7 +131,7 @@ if ( ! class_exists( 'Shoestrap_Menus' ) ) {
 				'type'        => 'switch'
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'       => __( 'NavBar Positioning', 'shoestrap' ),
 				'desc'        => __( 'Using this option you can set the navbar to be fixed to top, fixed to bottom or normal. When you\'re using one of the \'fixed\' options, the navbar will stay fixed on the top or bottom of the page. Default: Normal', 'shoestrap' ),
 				'id'          => 'navbar_fixed',
@@ -141,7 +141,7 @@ if ( ! class_exists( 'Shoestrap_Menus' ) ) {
 				'type'        => 'switch'
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'       => __( 'Fixed NavBar Position', 'shoestrap' ),
 				'desc'        => __( 'Using this option you can set the navbar to be fixed to top, fixed to bottom or normal. When you\'re using one of the \'fixed\' options, the navbar will stay fixed on the top or bottom of the page. Default: Normal', 'shoestrap' ),
 				'id'          => 'navbar_fixed_position',
@@ -152,7 +152,7 @@ if ( ! class_exists( 'Shoestrap_Menus' ) ) {
 				'type'        => 'switch'
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'       => __( 'NavBar Height', 'shoestrap' ),
 				'desc'        => __( 'Select the height of the NavBar in pixels. Should be equal or greater than the height of your logo if you\'ve added one.', 'shoestrap' ),
 				'id'          => 'navbar_height',
@@ -164,43 +164,43 @@ if ( ! class_exists( 'Shoestrap_Menus' ) ) {
 				'type'        => 'slider'
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'       => __( 'Navbar Font', 'shoestrap' ),
 				'desc'        => __( 'The font used in navbars.', 'shoestrap' ),
 				'id'          => 'font_navbar',
 				'compiler'    => true,
-				'default'     => array( 
+				'default'     => array(
 					'font-family' => 'Arial, Helvetica, sans-serif',
 					'font-size'   => 14,
 					'color'       => '#333333',
 					'google'      => 'false',
 				),
-				'preview'     => array( 
+				'preview'     => array(
 					'text'    => __( 'This is my preview text!', 'shoestrap' ), //this is the text from preview box
 					'size'    => 30 //this is the text size from preview box
 				),
 				'type'        => 'typography',
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'       => __( 'Branding Font', 'shoestrap' ),
 				'desc'        => __( 'The branding font for your site.', 'shoestrap' ),
 				'id'          => 'font_brand',
 				'compiler'    => true,
-				'default'     => array( 
+				'default'     => array(
 					'font-family' => 'Arial, Helvetica, sans-serif',
 					'font-size'   => 18,
 					'google'      => 'false',
 					'color'       => '#333333',
 				),
-				'preview'     => array( 
+				'preview'     => array(
 					'text'    => __( 'This is my preview text!', 'shoestrap' ), //this is the text from preview box
 					'size'    => 30 //this is the text size from preview box
 				),
 				'type'        => 'typography',
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'     => __( 'Responsive NavBar Threshold', 'shoestrap' ),
 				'desc'      => __( 'Point at which the navbar becomes uncollapsed', 'shoestrap' ),
 				'id'        => 'grid_float_breakpoint',
@@ -217,7 +217,7 @@ if ( ! class_exists( 'Shoestrap_Menus' ) ) {
 				'compiler'  => true,
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'       => __( 'NavBar Margin', 'shoestrap' ),
 				'desc'        => __( 'Select the top and bottom margin of the NavBar in pixels. Applies only in static top navbar ( scroll condition ). Default: 0px.', 'shoestrap' ),
 				'id'          => 'navbar_margin',
@@ -228,7 +228,7 @@ if ( ! class_exists( 'Shoestrap_Menus' ) ) {
 				'type'        => 'slider',
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'       => __( 'Display social links in the NavBar.', 'shoestrap' ),
 				'desc'        => __( 'Display social links in the NavBar. These can be setup in the \'Social\' section on the left. Default: OFF', 'shoestrap' ),
 				'id'          => 'navbar_social',
@@ -236,7 +236,7 @@ if ( ! class_exists( 'Shoestrap_Menus' ) ) {
 				'type'        => 'switch'
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'       => __( 'Display social links as a Dropdown list or an Inline list.', 'shoestrap' ),
 				'desc'        => __( 'How to display social links. Default: Dropdown list', 'shoestrap' ),
 				'id'          => 'navbar_social_style',
@@ -247,7 +247,7 @@ if ( ! class_exists( 'Shoestrap_Menus' ) ) {
 				'required'    => array('navbar_social','=',array('1')),
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'       => __( 'Search form on the NavBar', 'shoestrap' ),
 				'desc'        => __( 'Display a search form in the NavBar. Default: On', 'shoestrap' ),
 				'id'          => 'navbar_search',
@@ -255,7 +255,7 @@ if ( ! class_exists( 'Shoestrap_Menus' ) ) {
 				'type'        => 'switch'
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'       => __( 'Float NavBar menu to the right', 'shoestrap' ),
 				'desc'        => __( 'Floats the primary navigation to the right. Default: On', 'shoestrap' ),
 				'id'          => 'navbar_nav_right',
@@ -263,31 +263,22 @@ if ( ! class_exists( 'Shoestrap_Menus' ) ) {
 				'type'        => 'switch'
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'id'          => 'help9',
 				'title'       => __( 'Secondary Navbar', 'shoestrap' ),
 				'desc'        => __( 'The secondary navbar is a 2nd navbar, located right above the main wrapper. You can show a menu there, by assigning it from Appearance -> Menus.', 'shoestrap' ),
 				'type'        => 'info',
 			);
 
-			$fields[] = array( 
-				'title'       => __( 'Enable the Secondary NavBar', 'shoestrap' ),
-				'desc'        => __( 'Display a Secondary NavBar on top of the Main NavBar. Default: ON', 'shoestrap' ),
-				'id'          => 'secondary_navbar_toggle',
-				'default'     => 0,
-				'type'        => 'switch',
-			);
-
-			$fields[] = array( 
-				'title'       => __( 'Display social networks in the navbar', 'shoestrap' ),
+			$fields[] = array(
+				'title'       => __( 'Display social networks in the secondary navigation bar.', 'shoestrap' ),
 				'desc'        => __( 'Enable this option to display your social networks as a dropdown menu on the seondary navbar.', 'shoestrap' ),
 				'id'          => 'navbar_secondary_social',
-				'required'    => array('secondary_navbar_toggle','=',array('1')),
 				'default'     => 0,
 				'type'        => 'switch',
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'       => __( 'Secondary NavBar Margin', 'shoestrap' ),
 				'desc'        => __( 'Select the top and bottom margin of header in pixels. Default: 0px.', 'shoestrap' ),
 				'id'          => 'secondary_navbar_margin',
@@ -295,23 +286,22 @@ if ( ! class_exists( 'Shoestrap_Menus' ) ) {
 				'min'         => 0,
 				'max'         => 200,
 				'type'        => 'slider',
-				'required'    => array('secondary_navbar_toggle','=',array('1')),
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'id'          => 'helpsidebarmenus',
 				'title'       => __( 'Sidebar Menus', 'shoestrap' ),
 				'desc'        => __( 'If you\'re using the "Custom Menu" widgets in your sidebars, you can control their styling here', 'shoestrap' ),
 				'type'        => 'info',
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'       => __( 'Color for sidebar menus', 'shoestrap' ),
 				'desc'        => __( 'Select a style for menus added to your sidebars using the custom menu widget', 'shoestrap' ),
 				'id'          => 'menus_class',
 				'default'     => 1,
 				'type'        => 'select',
-				'options'     => array( 
+				'options'     => array(
 					'default' => __( 'Default', 'shoestrap' ),
 					'primary' => __( 'Branding-Primary', 'shoestrap' ),
 					'success' => __( 'Branding-Success', 'shoestrap' ),
@@ -321,7 +311,7 @@ if ( ! class_exists( 'Shoestrap_Menus' ) ) {
 				),
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'       => __( 'Inverse Sidebar_menus.', 'shoestrap' ),
 				'desc'        => __( 'Default: OFF. See https://github.com/twittem/wp-bootstrap-navlist-walker for more details', 'shoestrap' ),
 				'id'          => 'inverse_navlist',
@@ -332,7 +322,7 @@ if ( ! class_exists( 'Shoestrap_Menus' ) ) {
 			$section['fields'] = $fields;
 
 			$section = apply_filters( 'shoestrap_module_menus_options_modifier', $section );
-			
+
 			$sections[] = $section;
 			return $sections;
 
@@ -551,11 +541,11 @@ if ( ! class_exists( 'Shoestrap_Menus' ) ) {
 		 * The contents of the secondary navbar
 		 */
 		function secondary_navbar() {
-			global $ss_settings;
+			global $ss_settings, $ss_framework;
 
-			if ( $ss_settings['secondary_navbar_toggle'] != 0 ) : ?>
+			if ( has_nav_menu( 'secondary_navigation' ) ) : ?>
 
-				<div class="<?php echo Shoestrap_Layout::container_class(); ?>">
+				<?php echo $ss_framework->make_container( 'div' ); ?>
 					<header class="secondary navbar navbar-default <?php echo self::navbar_class( 'secondary' ); ?>" role="banner">
 						<button data-target=".nav-secondary" data-toggle="collapse" type="button" class="navbar-toggle">
 							<span class="icon-bar"></span>
@@ -563,15 +553,15 @@ if ( ! class_exists( 'Shoestrap_Menus' ) ) {
 							<span class="icon-bar"></span>
 						</button>
 						<?php
-						if ( $ss_settings['navbar_secondary_social'] != 0 )
-							shoestrap_navbar_social_links();
-						?>
+						if ( $ss_settings['navbar_secondary_social'] != 0 ) {
+							SS_Framework_Bootstrap::navbar_social_links();
+						} ?>
 						<nav class="nav-secondary navbar-collapse collapse" role="navigation">
 							<?php wp_nav_menu( array( 'theme_location' => 'secondary_navigation', 'menu_class' => apply_filters( 'shoestrap_nav_class', 'navbar-nav nav' ) ) ); ?>
 						</nav>
 					</header>
 				</div>
-			
+
 			<?php endif;
 		}
 
@@ -592,7 +582,7 @@ if ( ! class_exists( 'Shoestrap_Menus' ) ) {
 		 */
 		function slidedown_widgets_init() {
 			// Register widgetized areas
-			register_sidebar( array( 
+			register_sidebar( array(
 				'name'          => __( 'Navbar Slide-Down Top', 'shoestrap' ),
 				'id'            => 'navbar-slide-down-top',
 				'before_widget' => '<section id="%1$s" class="widget %2$s"><div class="widget-inner">',
@@ -601,7 +591,7 @@ if ( ! class_exists( 'Shoestrap_Menus' ) ) {
 				'after_title'   => '</h3>',
 			) );
 
-			register_sidebar( array( 
+			register_sidebar( array(
 				'name'          => __( 'Navbar Slide-Down 1', 'shoestrap' ),
 				'id'            => 'navbar-slide-down-1',
 				'before_widget' => '<section id="%1$s" class="widget %2$s"><div class="widget-inner">',
@@ -610,7 +600,7 @@ if ( ! class_exists( 'Shoestrap_Menus' ) ) {
 				'after_title'   => '</h3>',
 			) );
 
-			register_sidebar( array( 
+			register_sidebar( array(
 				'name'          => __( 'Navbar Slide-Down 2', 'shoestrap' ),
 				'id'            => 'navbar-slide-down-2',
 				'before_widget' => '<section id="%1$s" class="widget %2$s"><div class="widget-inner">',
@@ -619,7 +609,7 @@ if ( ! class_exists( 'Shoestrap_Menus' ) ) {
 				'after_title'   => '</h3>',
 			) );
 
-			register_sidebar( array( 
+			register_sidebar( array(
 				'name'          => __( 'Navbar Slide-Down 3', 'shoestrap' ),
 				'id'            => 'navbar-slide-down-3',
 				'before_widget' => '<section id="%1$s" class="widget %2$s"><div class="widget-inner">',
@@ -628,7 +618,7 @@ if ( ! class_exists( 'Shoestrap_Menus' ) ) {
 				'after_title'   => '</h3>',
 			) );
 
-			register_sidebar( array( 
+			register_sidebar( array(
 				'name'          => __( 'Navbar Slide-Down 4', 'shoestrap' ),
 				'id'            => 'navbar-slide-down-4',
 				'before_widget' => '<section id="%1$s" class="widget %2$s"><div class="widget-inner">',
@@ -675,7 +665,7 @@ if ( ! class_exists( 'Shoestrap_Menus' ) ) {
 									<?php dynamic_sidebar( 'navbar-slide-down-1' ); ?>
 								</div>
 							<?php endif; ?>
-				
+
 							<?php if ( is_active_sidebar( 'navbar-slide-down-2' ) ) : ?>
 								<div class="<?php echo $widgetareaclass; ?>">
 									<?php dynamic_sidebar( 'navbar-slide-down-2' ); ?>
@@ -746,9 +736,9 @@ if ( ! class_exists( 'Shoestrap_Menus' ) ) {
 				is_active_sidebar( 'navbar-slide-down-1' ) ||
 				is_active_sidebar( 'navbar-slide-down-2' ) ||
 				is_active_sidebar( 'navbar-slide-down-3' ) ||
-				is_active_sidebar( 'navbar-slide-down-4' ) 
+				is_active_sidebar( 'navbar-slide-down-4' )
 			) ? true : false;
-			
+
 			if ( $trigger ) {
 
 				$class = ( $navbar_mode == 'left' ) ? ' static-left' : ' nav-toggle';
