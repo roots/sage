@@ -12,21 +12,23 @@ if ( ! class_exists( 'Shoestrap_Menus' ) ) {
 			global $ss_settings;
 
 			add_filter( 'redux/options/' . SHOESTRAP_OPT_NAME . '/sections', array( $this, 'options' ), 70 );
-			add_filter( 'shoestrap_nav_class',        array( $this, 'nav_class'                )      );
-			add_action( 'shoestrap_inside_nav_begin', array( $this, 'navbar_pre_searchbox'     ), 11  );
-			add_filter( 'shoestrap_navbar_class',     array( $this, 'navbar_class'             )      );
-			add_action( 'wp_enqueue_scripts',         array( $this, 'navbar_css'               ), 101 );
-			add_action( 'shoestrap_do_navbar',        array( $this, 'do_navbar'                )      );
-			add_action( 'shoestrap_do_navbar',        array( $this, 'sl_main_wrapper_open'     ), 97  );
-			add_action( 'shoestrap_after_footer',     array( $this, 'sl_main_wrapper_close'    ), 901 );
-			add_filter( 'shoestrap_navbar_brand',     array( $this, 'navbar_brand'             )      );
-			add_filter( 'body_class',                 array( $this, 'navbar_body_class'        )      );
-			add_action( 'widgets_init',               array( $this, 'sl_widgets_init'          ), 40  );
-			add_action( 'shoestrap_post_main_nav',    array( $this, 'navbar_sidebar'           )      ); 
-			add_action( 'shoestrap_pre_wrap',         array( $this, 'secondary_navbar'         )      );
-			add_action( 'widgets_init',               array( $this, 'slidedown_widgets_init'   ), 40  );
-			add_action( 'shoestrap_do_navbar',        array( $this, 'navbar_slidedown_content' ), 99  );
-			add_action( 'wp_enqueue_scripts',         array( $this, 'megadrop_script'          ), 200 );
+			add_filter( 'shoestrap_nav_class',        array( $this, 'nav_class' ) );
+			add_action( 'shoestrap_inside_nav_begin', array( $this, 'navbar_pre_searchbox' ), 11 );
+			add_filter( 'shoestrap_navbar_class',     array( $this, 'navbar_class' ) );
+			add_action( 'wp_enqueue_scripts',         array( $this, 'navbar_css' ), 101 );
+			add_action( 'shoestrap_do_navbar',        array( $this, 'do_navbar' ) );
+			add_action( 'shoestrap_do_navbar',        array( $this, 'sl_main_wrapper_open' ), 97 );
+			add_action( 'shoestrap_after_footer',     array( $this, 'sl_main_wrapper_close' ), 901 );
+			add_filter( 'shoestrap_navbar_brand',     array( $this, 'navbar_brand' ) );
+			add_filter( 'body_class',                 array( $this, 'navbar_body_class' ) );
+			add_action( 'widgets_init',               array( $this, 'sl_widgets_init' ), 40 );
+			add_action( 'shoestrap_post_main_nav',    array( $this, 'navbar_sidebar' ) ); 
+			add_action( 'shoestrap_pre_wrap',         array( $this, 'secondary_navbar' ) );
+			add_action( 'widgets_init',               array( $this, 'slidedown_widgets_init' ), 40 );
+			add_action( 'shoestrap_do_navbar',        array( $this, 'navbar_slidedown_content' ), 99 );
+			add_action( 'wp_enqueue_scripts',         array( $this, 'megadrop_script' ), 200 );
+			add_action( 'shoestrap_pre_wrap',         array( $this, 'content_wrapper_static_left_open' ) );
+			add_action( 'shoestrap_after_footer',     array( $this, 'content_wrapper_static_left_close' ), 1 );
 
 			if ( $ss_settings['secondary_navbar_margin'] != 0 ) {
 				add_action( 'wp_enqueue_scripts', array( $this, 'secondary_navbar_margin' ), 101 );
@@ -724,6 +726,28 @@ if ( ! class_exists( 'Shoestrap_Menus' ) ) {
 					</div>
 				</div>
 			<?php endif;
+		}
+
+		/**
+		 * When static-left navbar is selected, we need to add a wrapper to the whole content
+		 */
+		function content_wrapper_static_left_open() {
+			global $ss_settings, $ss_framework;
+
+			if ( isset( $ss_settings['navbar_toggle'] ) && $ss_settings['navbar_toggle'] == 'left' ) {
+				echo $ss_framework->make_col( 'div', array( 'tablet' => 12 - $ss_settings['layout_secondary_width'] ), 'content-wrapper-left', 'col-md-offset-' . $ss_settings['layout_secondary_width'] );
+			}
+		}
+
+		/**
+		 * When static-left navbar is selected, we need to close the wrapper opened by the content_wrapper_static_left function.
+		 */
+		function content_wrapper_static_left_close() {
+			global $ss_settings, $ss_framework;
+
+			if ( isset( $ss_settings['navbar_toggle'] ) && $ss_settings['navbar_toggle'] == 'left' ) {
+				echo '</div>';
+			}
 		}
 
 		/**

@@ -136,7 +136,7 @@ class SS_Framework_Core {
 
 		// If an ID has been defined, format it properly.
 		if ( ! is_null( $id ) ) {
-			$id = ' id=' . $id . '"';
+			$id = ' id="' . $id . '"';
 		}
 
 		// Are there any extra properties to add?

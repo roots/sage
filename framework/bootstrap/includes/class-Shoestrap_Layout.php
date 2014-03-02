@@ -348,7 +348,7 @@ if ( ! class_exists( 'Shoestrap_Layout' ) ) {
 			$main       = 12;
 			$primary    = NULL;
 			$secondary  = NULL;
-			$wrapper    = NULL;
+			$wrapper    = 12;
 
 			if ( shoestrap_display_primary_sidebar() && shoestrap_display_secondary_sidebar() ) {
 
