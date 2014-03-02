@@ -62,7 +62,7 @@ if ( ! class_exists( 'Shoestrap_Menus' ) ) {
 				'options'     => array(
 					'none'    => __( 'Off', 'shoestrap' ),
 					'normal'  => __( 'Normal', 'shoestrap' ),
-					'pills'   => __( 'Pills', 'shoestrap' ),
+					// 'pills'   => __( 'Pills', 'shoestrap' ),
 					'full'    => __( 'Full-Width', 'shoestrap' ),
 					'left'    => __( 'Static-Left', 'shoestrap' ),
 				),
