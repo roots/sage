@@ -196,6 +196,7 @@ if( ! class_exists( 'Shoestrap_Footer' ) ) {
 
 		function css() {
 			global $ss_settings;
+
 			$bg         = $ss_settings['footer_background'];
 			$cl         = $ss_settings['footer_color'];
 			$cl_brand   = $ss_settings['color_brand_primary'];
@@ -211,7 +212,11 @@ if( ! class_exists( 'Shoestrap_Footer' ) ) {
 
 				$style .= ( $opacity != 1 && $opacity != "" ) ? 'background: rgba(' . $rgb . ',' . $opacity . ');' : 'background:' . $bg . ';';
 				$style .= ( ! empty($border) && $border['border-top'] > 0 && ! empty($border['border-color']) ) ? 'border-top:' . $border['border-top'] . ' ' . $border['border-style'] . ' ' . $border['border-color'] . ';' : '';
-				$style .= 'padding: 18px 10px 18px;';
+				if ( isset( $ss_settings['layout_gutter'] ) ) {
+					$style .= 'padding-top:' . $ss_settings['layout_gutter'] / 2 . 'px;';
+					$style .= 'padding-bottom:' . $ss_settings['layout_gutter'] / 2 . 'px;';
+				}
+				
 				$style .= ( ! empty($top_margin) ) ? 'margin-top:'. $top_margin .'px;' : '';
 			$style .= '}';
 

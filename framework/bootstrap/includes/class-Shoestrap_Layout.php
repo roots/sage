@@ -432,17 +432,20 @@ if ( ! class_exists( 'Shoestrap_Layout' ) ) {
 		 */
 		function layout_body_class( $classes ) {
 			global $ss_settings;
+
 			$layout     = self::get_layout();
 			$site_style = $ss_settings['site_style'];
 			$margin     = $ss_settings['navbar_margin_top'];
-			$style      = '';
 
-			$classes[] = ( $layout == 2 || $layout == 3 || $layout == 5 ) ? 'main-float-right' : '';
-			$classes[] = ( $site_style == 'boxed' && $margin != 0 ) ? 'boxed-style' : '';
+			if ( $layout == 2 || $layout == 3 || $layout == 5 ) {
+				$classes[] = 'main-float-right';
+			}
 
-			// Remove unnecessary classes
-			$remove_classes = array();
-			$classes = array_diff( $classes, $remove_classes );
+			if ( $site_style == 'boxed' ) {
+				$classes[] = 'boxed-style';
+			} elseif ( $site_style == 'fluid' ) {
+				$classes[] = 'fluid';
+			}
 
 			return $classes;
 		}
