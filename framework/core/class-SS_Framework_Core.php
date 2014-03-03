@@ -54,7 +54,7 @@ class SS_Framework_Core {
 	);
 
 	/**
-	 * Creates a row using the framework definitions.
+	 * Creates a container using the framework definitions.
 	 *
 	 * @param string $element         Can be any valid dom element.
 	 * @param string $id              The element ID.
@@ -63,21 +63,35 @@ class SS_Framework_Core {
 	 */
 	public function make_container( $element = 'div', $id = null, $extra_classes = null, $properties = null ) {
 
-		$classes = apply_filters( 'shoestrap_container_class', $this->defines['container'] );
+		if ( ! is_null( apply_filters( 'shoestrap_container_class', $this->defines['container'] ) ) ) {
+			$default_classes = explode( ' ', apply_filters( 'shoestrap_container_class', $this->defines['container'] ) );
+
+			foreach ( $default_classes as $default_class ) {
+				$classes[] = $default_class;
+			}
+		}
+
+		// If extra classes are defined, add them to the array of classes.
+		if ( ! is_null( $extra_classes ) ) {
+			$extra_classes = explode( ' ', $extra_classes );
+
+			foreach ( $extra_classes as $extra_class ) {
+				$classes[] = $extra_class;
+			}
+		}
+
+		// build the CSS classes from the array
+		$css_classes = implode( ' ', $classes );
 
 		if ( ! is_null( $id ) ) {
 			$id = ' id="' . $id . '"';
-		}
-
-		if ( ! is_null( $extra_classes ) ) {
-			$classes .= ' ' . $extra_classes;
 		}
 
 		if ( ! is_null( $properties ) ) {
 			$properties = ' ' . $properties;
 		}
 
-		return '<' . $element . $id . ' class="' . $classes . '"' . $properties . '>';
+		return '<' . $element . ' class="' . $css_classes . '"' . $id . $properties . '>';
 	}
 
 	/**

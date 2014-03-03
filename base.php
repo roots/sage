@@ -13,16 +13,16 @@
 
 	<?php do_action( 'shoestrap_pre_wrap' ); ?>
 
-	<div id="wrap-main-section" class="wrap main-section <?php echo apply_filters( 'shoestrap_container_class', 'container' ); ?>" role="document">
+	<?php echo $ss_framework->make_container( 'div', 'wrap-main-section', 'wrap main-section' ); ?>
 
 		<?php do_action('shoestrap_pre_content'); ?>
 
 		<div id="content" class="content">
-			<div class="row bg">
+			<?php echo $ss_framework->make_row( 'div', null, 'bg' ); ?>
 
 				<?php do_action( 'shoestrap_pre_main' ); ?>
 
-				<main class="main <?php shoestrap_section_class( 'main', true ); ?>" <?php if (is_home()){ echo 'id="home-blog"';} ?> role="main">
+				<main class="main <?php shoestrap_section_class( 'main', true ); ?>" <?php if ( is_home() ) { echo 'id="home-blog"'; } ?> role="main">
 					<?php include shoestrap_template_path(); ?>
 				</main><!-- /.main -->
 
