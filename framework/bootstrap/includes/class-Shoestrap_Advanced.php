@@ -19,7 +19,7 @@ if ( !class_exists( 'Shoestrap_Advanced' ) ) {
 			add_action( 'wp_enqueue_scripts', array( $this, 'scripts'            ), 100 );
 
 			 // Toggle activation of the jQuery CDN
-			if ( $ss_settings['jquery_cdn_toggler'] == 1 ) {
+			if ( isset( $ss_settings['jquery_cdn_toggler'] ) && $ss_settings['jquery_cdn_toggler'] == 1 ) {
 				add_action( 'wp_enqueue_scripts', array( $this, 'jquery_cdn' ), 101 );
 				add_action( 'wp_head',            array( $this, 'jquery_local_fallback' ) );
 			}

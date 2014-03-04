@@ -182,7 +182,11 @@ if ( ! class_exists( 'Shoestrap_Header' ) ) {
 		function css() {
 			global $ss_settings;
 
-			$bg = Shoestrap_Color::sanitize_hex( $ss_settings['header_bg']['background-color'] );
+			if ( is_array( $ss_settings['header_bg'] ) ) {
+				$bg = Shoestrap_Color::sanitize_hex( $ss_settings['header_bg']['background-color'] );
+			} else {
+				$bg = Shoestrap_Color::sanitize_hex( $ss_settings['header_bg'] );
+			}
 			$cl = Shoestrap_Color::sanitize_hex( $ss_settings['header_color'] );
 
 			$header_margin_top    = $ss_settings['header_margin_top'];
