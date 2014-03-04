@@ -5,6 +5,10 @@
 */
 class SS_Framework_Core {
 
+	function __construct() {
+		do_action( 'shoestrap_framework_include_modules' );
+	}
+
 	var $defines = array(
 		// Layout
 		'container'  => null,
