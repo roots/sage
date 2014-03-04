@@ -9,7 +9,7 @@ if ( ! class_exists( 'Shoestrap_Jumbotron' ) ) {
 	class Shoestrap_Jumbotron {
 
 		function __construct() {
-			add_filter( 'redux/options/' . SHOESTRAP_OPT_NAME . '/sections', array( $this, 'options' ), 81 );
+			add_filter( 'redux/options/' . SHOESTRAP_OPT_NAME . '/sections', array( $this, 'options' ), 90 );
 			add_action( 'widgets_init',       array( $this, 'jumbotron_widgets_init'           ), 20  );
 			add_action( 'shoestrap_pre_wrap', array( $this, 'jumbotron_content'                ), 5   );
 			add_action( 'wp_enqueue_scripts', array( $this, 'jumbotron_css'                    ), 101 );

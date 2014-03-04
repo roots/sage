@@ -11,7 +11,7 @@ if ( ! class_exists( 'Shoestrap_Layout' ) ) {
 		function __construct() {
 			global $ss_settings;
 
-			add_filter( 'redux/options/' . SHOESTRAP_OPT_NAME . '/sections', array( $this, 'options' ), 55 );
+			add_filter( 'redux/options/' . SHOESTRAP_OPT_NAME . '/sections', array( $this, 'options' ), 50 );
 			add_filter( 'shoestrap_section_class_wrapper',   array( $this, 'apply_layout_classes_wrapper'   )     );
 			add_filter( 'shoestrap_section_class_main',      array( $this, 'apply_layout_classes_main'      )     );
 			add_filter( 'shoestrap_section_class_primary',   array( $this, 'apply_layout_classes_primary'   )     );

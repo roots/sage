@@ -8,7 +8,7 @@ if ( ! class_exists( 'Shoestrap_Typography' ) ) {
 	class Shoestrap_Typography {
 		
 		function __construct() {
-			add_filter( 'redux/options/' . SHOESTRAP_OPT_NAME . '/sections', array( $this, 'options' ), 65 );
+			add_filter( 'redux/options/' . SHOESTRAP_OPT_NAME . '/sections', array( $this, 'options' ), 40 );
 			add_action( 'wp_enqueue_scripts', array( $this, 'googlefont_links' ) );
 		}
 

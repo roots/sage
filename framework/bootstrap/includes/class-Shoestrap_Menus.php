@@ -11,7 +11,7 @@ if ( ! class_exists( 'Shoestrap_Menus' ) ) {
 		function __construct() {
 			global $ss_settings;
 
-			add_filter( 'redux/options/' . SHOESTRAP_OPT_NAME . '/sections', array( $this, 'options' ), 70 );
+			add_filter( 'redux/options/' . SHOESTRAP_OPT_NAME . '/sections', array( $this, 'options' ), 60 );
 			add_filter( 'shoestrap_nav_class',        array( $this, 'nav_class' ) );
 			add_action( 'shoestrap_inside_nav_begin', array( $this, 'navbar_pre_searchbox' ), 11 );
 			add_filter( 'shoestrap_navbar_class',     array( $this, 'navbar_class' ) );

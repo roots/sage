@@ -10,7 +10,7 @@ if ( ! class_exists( 'Shoestrap_Social' ) ) {
 		function __construct() {
 			global $ss_settings;
 
-			add_filter( 'redux/options/' . SHOESTRAP_OPT_NAME . '/sections', array( $this, 'options' ), 90 );
+			add_filter( 'redux/options/' . SHOESTRAP_OPT_NAME . '/sections', array( $this, 'options' ), 140 );
 
 			$social_sharing_location = $ss_settings['social_sharing_location'];
 

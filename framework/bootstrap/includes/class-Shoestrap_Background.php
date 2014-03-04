@@ -8,7 +8,7 @@ if ( ! class_exists( 'Shoestrap_Background' ) ) {
 	class Shoestrap_Background {
 		
 		function __construct() {
-			add_filter( 'redux/options/' . SHOESTRAP_OPT_NAME . '/sections', array( $this, 'options' ), 60 );
+			add_filter( 'redux/options/' . SHOESTRAP_OPT_NAME . '/sections', array( $this, 'options' ), 30 );
 			add_action( 'wp_enqueue_scripts', array( $this, 'css' ), 101 );
 			add_action( 'plugins_loaded',     array( $this, 'upgrade_options' ) );
 		}

@@ -11,7 +11,7 @@ if ( !class_exists( 'Shoestrap_Advanced' ) ) {
 		function __construct() {
 			global $ss_settings;
 
-			add_filter( 'redux/options/' . SHOESTRAP_OPT_NAME . '/sections', array( $this, 'options' ), 95 );
+			add_filter( 'redux/options/' . SHOESTRAP_OPT_NAME . '/sections', array( $this, 'options' ), 150 );
 			add_action( 'wp_enqueue_scripts', array( $this, 'user_css'           ), 101 );
 			add_action( 'wp_footer',          array( $this, 'user_js'            ), 200 );
 			add_filter( 'show_admin_bar',     array( $this, 'admin_bar'          )      );
