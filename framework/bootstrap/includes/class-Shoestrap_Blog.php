@@ -332,7 +332,7 @@ if ( ! class_exists( 'Shoestrap_Blog' ) ) {
 			}
 
 			if ( ! empty( $content ) ) {
-				echo $ss_framework->open_row( 'div', null, 'row-meta' ) . $content . $ss_framework->close_row( 'div' ) . '<hr>';
+				echo $ss_framework->open_row( 'div', null, 'row-meta' ) . $content . $ss_framework->close_row( 'div' );
 			}
 		}
 
