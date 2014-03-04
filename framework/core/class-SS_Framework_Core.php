@@ -395,14 +395,15 @@ class SS_Framework_Core {
 	 * The site logo.
 	 * If no custom logo is uploaded, use the sitename
 	 */
-	public static function logo() {
+	public function logo() {
 		global $ss_settings;
 		$logo  = $ss_settings['logo'];
 
-		if ( ! empty( $logo['url'] ) )
+		if ( ! empty( $logo['url'] ) ) {
 			$branding = '<img id="site-logo" src="' . $logo['url'] . '" alt="' . get_bloginfo( 'name' ) . '">';
-		else
+		} else {
 			$branding = '<span class="sitename">' . get_bloginfo( 'name' ) . '</span>';
+		}
 
 		return $branding;
 	}
