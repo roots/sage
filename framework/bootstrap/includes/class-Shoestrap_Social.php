@@ -433,7 +433,7 @@ if ( ! class_exists( 'Shoestrap_Social' ) ) {
 				$networks['tumblr'] = array(
 					'icon'      => 'tumblr',
 					'fullname'  => 'Tumblr',
-					'url'       =>  'http://www.tumblr.com/share/link?url=' .urlencode(get_permalink()) . '&amp;name=' . urlencode(get_the_title()) . "&amp;description=".urlencode(the_excerpt())
+					'url'       =>  'http://www.tumblr.com/share/link?url=' . urlencode( get_permalink() ) . '&amp;name=' . urlencode( get_the_title() ) . "&amp;description=" . urlencode( get_the_excerpt() )
 				);
 			}
 
