@@ -281,21 +281,15 @@ if( ! class_exists( 'Shoestrap_Footer' ) ) {
 
 			echo $ss_framework->make_row( 'div' );
 
-			echo $ss_framework->make_col( $element = 'div', array( 'large' => $width ), 'copyright-bar' );
-			echo $ftext;
-			echo '</div>';
+			echo $ss_framework->make_col( $element = 'div', array( 'large' => $width ), 'copyright-bar' ) . $ftext . '</div>';
 
-			if ( isset( $social ) && ! isset( $networks ) && is_null( $networks ) && count( $networks ) > 0 ) {
+			if ( $social && ! is_null( $networks ) && count( $networks ) > 0 ) {
 				echo $ss_framework->make_col( 'open', 'div', array( 'large' => $social_width ), 'footer_social_bar' );
 
 				foreach ( $networks as $network ) {
-					if ( $network['url'] == '' ) {
-						continue;
-					}
-
 					echo '<a href="' . $network['url'] . '"' . $blank . ' title="' . $network['icon'] . '">';
 					echo '<span class="el-icon-' . $network['icon'] . '"></span>';
-					echo '</a>';
+					echo '</a> ';
 				}
 
 				echo '</div>';
