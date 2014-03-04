@@ -458,7 +458,6 @@ if ( ! class_exists( 'Shoestrap_Menus' ) ) {
 				} else {
 					do_action( 'shoestrap_header_top_navbar_override' );
 				}
-				} else {
 			} else {
 				return '';
 			}
