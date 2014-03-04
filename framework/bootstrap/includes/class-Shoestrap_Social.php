@@ -485,7 +485,11 @@ if ( ! class_exists( 'Shoestrap_Social' ) ) {
 			$show = false;
 
 			// Button class
-			$button_color = $ss_settings['social_sharing_button_class'];
+			if ( isset( $ss_settings['social_sharing_button_class'] ) && ! empty( $ss_settings['social_sharing_button_class'] ) ) {
+				$button_color = $ss_settings['social_sharing_button_class'];
+			} else {
+				$button_color = 'default';
+			}
 
 			// Button Text
 			$text = $ss_settings['social_sharing_text'];
