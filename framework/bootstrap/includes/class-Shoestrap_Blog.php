@@ -228,7 +228,7 @@ if ( ! class_exists( 'Shoestrap_Blog' ) ) {
 		 * Output of meta information for current post: categories, tags, permalink, author, and date.
 		 */
 		function meta_custom_render() {
-			global $ss_framework, $ss_settings;
+			global $ss_framework, $ss_settings, $post;
 
 			// get config and data
 			$metas = $ss_settings['shoestrap_entry_meta_config'];
@@ -240,11 +240,27 @@ if ( ! class_exists( 'Shoestrap_Blog' ) ) {
 			$i = 0;
 			if ( is_array( $metas ) ) {
 				foreach ( $metas as $meta => $value ) {
-					if ( $meta == 'sticky'   && is_sticky() )       $i++;
-					if ( $meta == 'date'     && ! empty( $value ) ) $i++;
-					if ( $meta == 'category' && ! empty( $value ) ) $i++;
-					if ( $meta == 'tags'     && ! empty( $value ) ) $i++;
-					if ( $meta == 'author'   && ! empty( $value ) ) $i++;
+					if ( $meta == 'sticky' ) {
+						if ( is_sticky() ) {
+							$i++;
+						}
+					} elseif ( $meta == 'date' ) {
+						if ( ! empty( $value ) ) {
+							$i++;
+						}
+					} elseif ( $meta == 'category' ) {
+						if ( ! empty( $value ) && has_category() ) {
+							$i++;
+						}
+					} elseif ( $meta == 'tags' ) {
+						if ( ! empty( $value ) && has_tag() ) {
+							$i++;
+						}
+					} elseif ( $meta == 'author' ) {
+						if ( ! empty( $value ) ) {
+							$i++;
+						}
+					}
 				}
 			}
 
