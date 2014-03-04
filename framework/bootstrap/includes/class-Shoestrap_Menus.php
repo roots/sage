@@ -16,14 +16,12 @@ if ( ! class_exists( 'Shoestrap_Menus' ) ) {
 			add_action( 'shoestrap_inside_nav_begin', array( $this, 'navbar_pre_searchbox' ), 11 );
 			add_filter( 'shoestrap_navbar_class',     array( $this, 'navbar_class' ) );
 			add_action( 'wp_enqueue_scripts',         array( $this, 'navbar_css' ), 101 );
-			add_action( 'shoestrap_do_navbar',        array( $this, 'do_navbar' ) );
 			add_filter( 'shoestrap_navbar_brand',     array( $this, 'navbar_brand' ) );
 			add_filter( 'body_class',                 array( $this, 'navbar_body_class' ) );
 			add_action( 'widgets_init',               array( $this, 'sl_widgets_init' ), 40 );
 			add_action( 'shoestrap_post_main_nav',    array( $this, 'navbar_sidebar' ) );
 			add_action( 'shoestrap_pre_wrap',         array( $this, 'secondary_navbar' ) );
-			add_action( 'widgets_init',               array( $this, 'slidedown_widgets_init' ), 40 );
-			add_action( 'shoestrap_do_navbar',        array( $this, 'navbar_slidedown_content' ), 99 );
+			add_action( 'widgets_init',               array( $this, 'slidedown_widgets_init' ), 50 );
 			add_action( 'wp_enqueue_scripts',         array( $this, 'megadrop_script' ), 200 );
 			add_action( 'shoestrap_pre_wrap',         array( $this, 'content_wrapper_static_left_open' ) );
 			add_action( 'shoestrap_after_footer',     array( $this, 'content_wrapper_static_left_close' ), 1 );
@@ -32,8 +30,11 @@ if ( ! class_exists( 'Shoestrap_Menus' ) ) {
 				add_action( 'wp_enqueue_scripts', array( $this, 'secondary_navbar_margin' ), 101 );
 			}
 
-			$hook = ( $ss_settings['navbar_toggle'] == 'left' ) ? 'shoestrap_do_navbar' : 'shoestrap_inside_nav_begin';
-			add_action( $hook, array( $this, 'navbar_slidedown_toggle' ) );
+			$hook_navbar_slidedown_toggle = ( $ss_settings['navbar_toggle'] == 'left' ) ? 'shoestrap_pre_content' : 'shoestrap_inside_nav_begin';
+			add_action( $hook_navbar_slidedown_toggle, array( $this, 'navbar_slidedown_toggle' ) );
+
+			$hook_navbar_slidedown_content = ( $ss_settings['navbar_toggle'] == 'left' ) ? 'shoestrap_pre_content' : 'shoestrap_do_navbar';
+			add_action( $hook_navbar_slidedown_content, array( $this, 'navbar_slidedown_content' ), 99 );
 		}
 
 		/*
@@ -444,26 +445,6 @@ if ( ! class_exists( 'Shoestrap_Menus' ) ) {
 		}
 
 		/**
-		 * Will the sidebar be shown?
-		 * If yes, then which navbar?
-		 */
-		function do_navbar() {
-			global $ss_settings;
-
-			$navbar_toggle = $ss_settings['navbar_toggle'];
-
-			if ( $navbar_toggle != 'none' ) {
-				if ( ! has_action( 'shoestrap_header_top_navbar_override' ) ) {
-					require( 'header-top-navbar.php' );
-				} else {
-					do_action( 'shoestrap_header_top_navbar_override' );
-				}
-			} else {
-				return '';
-			}
-		}
-
-		/**
 		 * get the navbar branding options (if the branding module exists)
 		 * and then add the appropriate logo or sitename.
 		 */
@@ -617,15 +598,13 @@ if ( ! class_exists( 'Shoestrap_Menus' ) ) {
 		 * Calculates the class of the widget areas based on a 12-column bootstrap grid.
 		 */
 		public static function navbar_widget_area_class() {
-			$str = '';
-			$str .= ( is_active_sidebar( 'navbar-slide-down-1' ) ) ? '1' : '';
-			$str .= ( is_active_sidebar( 'navbar-slide-down-2' ) ) ? '2' : '';
-			$str .= ( is_active_sidebar( 'navbar-slide-down-3' ) ) ? '3' : '';
-			$str .= ( is_active_sidebar( 'navbar-slide-down-4' ) ) ? '4' : '';
+			$str = 0;
+			if ( is_active_sidebar( 'navbar-slide-down-1' ) ) { $str++; }
+			if ( is_active_sidebar( 'navbar-slide-down-2' ) ) { $str++; }
+			if ( is_active_sidebar( 'navbar-slide-down-3' ) ) { $str++; }
+			if ( is_active_sidebar( 'navbar-slide-down-4' ) ) { $str++; }
 
-			$strlen = strlen( $str );
-
-			$colwidth = ( $strlen > 0 ) ? 12 / $strlen : 12;
+			$colwidth = ( $str > 0 ) ? 12 / $str : 12;
 
 			return $colwidth;
 		}
@@ -639,10 +618,12 @@ if ( ! class_exists( 'Shoestrap_Menus' ) ) {
 			if ( is_active_sidebar( 'navbar-slide-down-1' ) || is_active_sidebar( 'navbar-slide-down-2' ) || is_active_sidebar( 'navbar-slide-down-3' ) || is_active_sidebar( 'navbar-slide-down-4' ) || is_active_sidebar( 'navbar-slide-down-top' ) ) : ?>
 				<div class="before-main-wrapper">
 					<?php $megadrop_class = ( $ss_settings['site_style'] != 'fluid' ) ? 'top-megamenu container' : 'top-megamenu'; ?>
-					<div id="megaDrop" class="' . $megadrop_class . '">
+					<div id="megaDrop" class="<?php echo $megadrop_class; ?>">
 						<?php $widgetareaclass = 'col-sm-' . self::navbar_widget_area_class(); ?>
-
-						<?php dynamic_sidebar( 'navbar-slide-down-top' ); ?>
+						
+						<?php if ( is_active_sidebar( 'navbar-slide-down-top' ) ) : ?>
+							<?php dynamic_sidebar( 'navbar-slide-down-top' ); ?>
+						<?php endif; ?>
 
 						<div class="row">
 							<?php if ( is_active_sidebar( 'navbar-slide-down-1' ) ) : ?>
