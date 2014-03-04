@@ -1,24 +1,3 @@
-### HEAD
-
-* Fix: Rename all `roots_*` functions to `shoestrap_` for consistency
-* Fix: Use tabs for identation instead of 2 spaces from now on. Closer to WordPress Coding Standards.
-* Fix: Rename all `Roots_*` classes to `Shoestrap_*`
-* Fix: Use a single translation domain: shoestrap for consistency. All strings that were using roots as a textdomain were switched to shoestrap.
-* Fix: Use the "alternative" NavWalker as a default. Deprecating the default NavWalker
-* Fix: Move jQuery CDN to the "core" module instead of scripts.php
-* Fix: Move Analytics scripts etc to the advanced module and removed it from scripts.php and config.php
-* Fix: Remove custom.php file. It was used in the Roots theme for user customizations but we advise against it in this theme as updates will delete user customizations anyway.
-* Fix: Move widgets initialization from the widgets module to lib/widgets.php. Widgets are now properly initialized and included in the theme.
-* New: Use filters for the widget modes. This way we can de-couple the layout module from widgets initialization as well.
-* New: Add filters in the template files themselves so that templates can be switched with the layouts module absent.
-* Fix: Move scripts to their respective modules and load them from there instead from the generic scripts.php file.
-* Fix: Added support for post formats
-* Fix: Clean up theme_supports and removed the ones we use by default. There's no point in having them in-code as they can be de-activated using the modules.
-* Fix: Inline documentation of all functions used.
-* Fix: Restructure the plugins in a more sensible way.
-* Fix: Check if modules exist before including them
-* Fix: Make layouts paly nicely on the stand-alone theme (without modules)
-
 ### 3.1.0.2
 
 * Fix: allow https in assets urls
