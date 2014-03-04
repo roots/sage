@@ -241,7 +241,7 @@ if ( ! class_exists( 'Shoestrap_Blog' ) ) {
 			if ( is_array( $metas ) ) {
 				foreach ( $metas as $meta => $value ) {
 					if ( $meta == 'sticky' ) {
-						if ( is_sticky() ) {
+						if ( ! empty( $value ) && is_sticky() ) {
 							$i++;
 						}
 					} elseif ( $meta == 'date' ) {
