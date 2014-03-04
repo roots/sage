@@ -17,12 +17,12 @@ body {
 	.navbar.navbar-static-top {
 		margin-bottom: 0;
 	}
-	.navbar.static-left {
-		.nav > li > a {
-			padding-left: 0;
-			padding-right: 0;
-		}
-	}
+	// .navbar.static-left {
+	// 	.nav > li > a {
+	// 		padding-left: 0;
+	// 		padding-right: 0;
+	// 	}
+	// }
 	&.bottom-navbar {
 		padding-bottom: @navbar-height;
 	}
@@ -228,7 +228,8 @@ a.toggle-nav {
 
 	&.logo {
 		height: @navbar-height;
-		padding: @padding-base-vertical;
+		padding-top: @padding-base-vertical;
+		padding-bottom: @padding-base-vertical;
 		img {
 			max-height: 100%;
 			width: auto;
@@ -326,7 +327,7 @@ li.dropdown ul.dropdown-menu li.dropdown.pull-left {
 	}
 
 	form#searchform {
-		padding: (@grid-gutter-width / 2) 0;
+		padding: (@grid-gutter-width / 2);
 	}
 
 	.logo {
