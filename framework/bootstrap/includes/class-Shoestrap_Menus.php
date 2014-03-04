@@ -453,19 +453,12 @@ if ( ! class_exists( 'Shoestrap_Menus' ) ) {
 			$navbar_toggle = $ss_settings['navbar_toggle'];
 
 			if ( $navbar_toggle != 'none' ) {
-				if ( $navbar_toggle != 'pills' ) {
-					if ( ! has_action( 'shoestrap_header_top_navbar_override' ) ) {
-						require( 'header-top-navbar.php' );
-					} else {
-						do_action( 'shoestrap_header_top_navbar_override' );
-					}
+				if ( ! has_action( 'shoestrap_header_top_navbar_override' ) ) {
+					require( 'header-top-navbar.php' );
 				} else {
-					if ( ! has_action( 'shoestrap_header_override' ) ) {
-						require( 'header.php' );
-					} else {
-						do_action( 'shoestrap_header_override' );
-					}
+					do_action( 'shoestrap_header_top_navbar_override' );
 				}
+				} else {
 			} else {
 				return '';
 			}
