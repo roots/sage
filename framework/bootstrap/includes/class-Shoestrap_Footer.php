@@ -278,27 +278,23 @@ if( ! class_exists( 'Shoestrap_Footer' ) ) {
 			do_action( 'shoestrap_footer_before_copyright' );
 
 			echo '<div id="footer-copyright">';
+				echo $ss_framework->open_row( 'div' );
+					echo $ss_framework->open_col( 'div', array( 'large' => $width ), 'copyright-bar' ) . $ftext . '</div>';
 
-			echo $ss_framework->make_row( 'div' );
+						if ( $social && ! is_null( $networks ) && count( $networks ) > 0 ) {
+							echo $ss_framework->open_col( 'div', array( 'large' => $social_width ), 'footer_social_bar' );
 
-			echo $ss_framework->make_col( $element = 'div', array( 'large' => $width ), 'copyright-bar' ) . $ftext . '</div>';
+								foreach ( $networks as $network ) {
+									echo '<a href="' . $network['url'] . '"' . $blank . ' title="' . $network['icon'] . '"><span class="el-icon-' . $network['icon'] . '"></span></a>';
+								}
 
-			if ( $social && ! is_null( $networks ) && count( $networks ) > 0 ) {
-				echo $ss_framework->make_col( 'open', 'div', array( 'large' => $social_width ), 'footer_social_bar' );
+							echo $ss_framework->close_col( 'div' );
+						}
 
-				foreach ( $networks as $network ) {
-					echo '<a href="' . $network['url'] . '"' . $blank . ' title="' . $network['icon'] . '">';
-					echo '<span class="el-icon-' . $network['icon'] . '"></span>';
-					echo '</a> ';
-				}
+					echo $ss_framework->close_col( 'div' );
 
-				echo '</div>';
-			}
-
-			echo '</div>';
-
-			echo $ss_framework->clearfix();
-
+					echo $ss_framework->clearfix();
+				echo $ss_framework->close_row( 'row' );
 			echo '</div>';
 		}
 	}

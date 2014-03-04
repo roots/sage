@@ -23,9 +23,9 @@ function shoestrap_footer_content() {
 			// Setting each column width accordingly
 			$col_class = 12 / $num_of_sidebars;
 		
-			echo$ss_framework->make_col( 'div', array( 'medium' => $col_class ) );
+			echo $ss_framework->open_col( 'div', array( 'medium' => $col_class ) );
 			dynamic_sidebar( $sidebar );
-			echo '</div>';
+			echo $ss_framework->close_col( 'div' );
 		}
 	}
 	echo '</div>';

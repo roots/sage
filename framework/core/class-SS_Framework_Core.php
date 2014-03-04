@@ -61,7 +61,7 @@ class SS_Framework_Core {
 	 * @param string $extra_classes   Any extra classes we want to add to the row. extra classes should be separated using a space.
 	 * @param string $properties      Can be something like 'name="left_top"'.
 	 */
-	public function make_container( $element = 'div', $id = null, $extra_classes = null, $properties = null ) {
+	public function open_container( $element = 'div', $id = null, $extra_classes = null, $properties = null ) {
 
 		if ( ! is_null( apply_filters( 'shoestrap_container_class', $this->defines['container'] ) ) ) {
 			$default_classes = explode( ' ', apply_filters( 'shoestrap_container_class', $this->defines['container'] ) );
@@ -95,6 +95,16 @@ class SS_Framework_Core {
 	}
 
 	/**
+	 * Closes a container
+	 *
+	 * @param string $element         Can be any valid dom element.
+	 */
+	public function close_container( $element = 'div' ) {
+
+		return '</' . $element . '>';
+	}
+
+	/**
 	 * Creates a row using the framework definitions.
 	 *
 	 * @param string $element         Can be any valid dom element.
@@ -102,7 +112,7 @@ class SS_Framework_Core {
 	 * @param string $extra_classes   Any extra classes we want to add to the row. extra classes should be separated using a space.
 	 * @param string $properties      Can be something like 'name="left_top"'.
 	 */
-	public function make_row( $element = 'div', $id = null, $extra_classes = null, $properties = null ) {
+	public function open_row( $element = 'div', $id = null, $extra_classes = null, $properties = null ) {
 
 		$classes = $this->defines['row'];
 
@@ -122,6 +132,16 @@ class SS_Framework_Core {
 	}
 
 	/**
+	 * Closes a row
+	 *
+	 * @param string $element         Can be any valid dom element.
+	 */
+	public function close_row( $element = 'div' ) {
+
+		return '</' . $element . '>';
+	}
+
+	/**
 	 * Creates a column using the framework definitions.
 	 *
 	 * @param string $element         Can be any valid dom element.
@@ -130,7 +150,7 @@ class SS_Framework_Core {
 	 * @param string $extra_classes   Any extra classes we want to add to the row. extra classes should be separated using a space.
 	 * @param string $properties      Can be something like 'name="left_top"'.
 	 */
-	public function make_col( $element = 'div', $sizes = array( 'medium' => 12 ), $id = null, $extra_classes = null, $properties = null ) {
+	public function open_col( $element = 'div', $sizes = array( 'medium' => 12 ), $id = null, $extra_classes = null, $properties = null ) {
 
 		// Get the classes based on the $sizes array.
 		$classes = $this->column_classes( $sizes );
@@ -159,6 +179,16 @@ class SS_Framework_Core {
 		}
 
 		return '<' . $element . $id . ' class="' . $css_classes . '"' . $properties . '>';
+	}
+
+	/**
+	 * Closes a row
+	 *
+	 * @param string $element         Can be any valid dom element.
+	 */
+	public function close_col( $element = 'div' ) {
+
+		return '</' . $element . '>';
 	}
 
 	/**

@@ -511,7 +511,7 @@ if ( ! class_exists( 'Shoestrap_Menus' ) ) {
 
 			if ( has_nav_menu( 'secondary_navigation' ) ) : ?>
 
-				<?php echo $ss_framework->make_container( 'div' ); ?>
+				<?php echo $ss_framework->open_container( 'div' ); ?>
 					<header class="secondary navbar navbar-default <?php echo self::navbar_class( 'secondary' ); ?>" role="banner">
 						<button data-target=".nav-secondary" data-toggle="collapse" type="button" class="navbar-toggle">
 							<span class="icon-bar"></span>
@@ -526,7 +526,7 @@ if ( ! class_exists( 'Shoestrap_Menus' ) ) {
 							<?php wp_nav_menu( array( 'theme_location' => 'secondary_navigation', 'menu_class' => apply_filters( 'shoestrap_nav_class', 'navbar-nav nav' ) ) ); ?>
 						</nav>
 					</header>
-				</div>
+				<?php echo $ss_framework->close_container( 'div' ); ?>
 
 			<?php endif;
 		}
@@ -674,7 +674,7 @@ if ( ! class_exists( 'Shoestrap_Menus' ) ) {
 			}
 
 			if ( isset( $ss_settings['navbar_toggle'] ) && $ss_settings['navbar_toggle'] == 'left' ) {
-				echo $ss_framework->make_col( 'div', array( $width => 12 - $ss_settings['layout_secondary_width'] ), 'content-wrapper-left', 'col-' . $breakpoint . '-offset-' . $ss_settings['layout_secondary_width'] );
+				echo $ss_framework->open_col( 'div', array( $width => 12 - $ss_settings['layout_secondary_width'] ), 'content-wrapper-left', 'col-' . $breakpoint . '-offset-' . $ss_settings['layout_secondary_width'] );
 			}
 		}
 
@@ -685,7 +685,7 @@ if ( ! class_exists( 'Shoestrap_Menus' ) ) {
 			global $ss_settings, $ss_framework;
 
 			if ( isset( $ss_settings['navbar_toggle'] ) && $ss_settings['navbar_toggle'] == 'left' ) {
-				echo '</div>';
+				echo $ss_framework->close_col( 'div' );
 			}
 		}
 

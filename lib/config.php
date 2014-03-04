@@ -118,7 +118,7 @@ function shoestrap_mp_wrap_div_open() {
 	global $ss_framework;
 
 	if ( $ss_framework->include_wrapper() ) {
-		echo '<div class="mp_wrap ' . shoestrap_section_class( 'wrapper' ) . '">' . $ss_framework->make_row( 'div' );
+		echo '<div class="mp_wrap ' . shoestrap_section_class( 'wrapper' ) . '">' . $ss_framework->open_row( 'div' );
 	}
 }
 
@@ -129,7 +129,7 @@ function shoestrap_mp_wrap_div_close() {
 	global $ss_framework;
 
 	if ( $ss_framework->include_wrapper() ) {
-		echo '</div></div>';
+		echo $ss_framework->close_row( 'div' ) . '</div>';
 	}
 }
 

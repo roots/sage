@@ -13,12 +13,12 @@
 
 	<?php do_action( 'shoestrap_pre_wrap' ); ?>
 
-	<?php echo $ss_framework->make_container( 'div', 'wrap-main-section', 'wrap main-section' ); ?>
+	<?php echo $ss_framework->open_container( 'div', 'wrap-main-section', 'wrap main-section' ); ?>
 
 		<?php do_action('shoestrap_pre_content'); ?>
 
 		<div id="content" class="content">
-			<?php echo $ss_framework->make_row( 'div', null, 'bg' ); ?>
+			<?php echo $ss_framework->open_row( 'div', null, 'bg' ); ?>
 
 				<?php do_action( 'shoestrap_pre_main' ); ?>
 
@@ -45,10 +45,10 @@
 						<?php dynamic_sidebar( 'sidebar-secondary' ); ?>
 					</aside><!-- /.sidebar -->
 				<?php endif; ?>
-			</div>
+			<?php echo $ss_framework->close_row( 'div' ); ?>
 		</div><!-- /.content -->
 		<?php do_action('shoestrap_after_content'); ?>
-	</div><!-- /.wrap -->
+	<?php echo $ss_framework->close_container( 'div' ); ?><!-- /.wrap -->
 	<?php
 
 	do_action('shoestrap_pre_footer');
