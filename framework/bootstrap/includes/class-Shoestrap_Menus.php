@@ -92,7 +92,7 @@ if ( ! class_exists( 'Shoestrap_Menus' ) ) {
 				'desc'        => __( 'Pick a background opacity for the NavBar. Default: 100%.', 'shoestrap' ),
 				'id'          => 'navbar_bg_opacity',
 				'default'     => 100,
-				'min'         => 0,
+				'min'         => 1,
 				'step'        => 1,
 				'max'         => 100,
 				'type'        => 'slider',
