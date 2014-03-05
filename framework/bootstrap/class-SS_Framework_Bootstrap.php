@@ -87,8 +87,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 
 				include_once( SS_FRAMEWORK_PATH . '/includes/widgets.php' );                         // Widgets
 				include_once( SS_FRAMEWORK_PATH . '/includes/gallery.php' );                         // Custom [gallery]
-include_once( S3EWA_PLUGIN_DIR . 'includes/admin.php' );
-include_once( S3EWA_PLUGIN_DIR . 'includes/functions.php' );
+
 				// instantiate the classes
 				global $ss_layout;
 				$ss_layout      = new Shoestrap_Layout();
