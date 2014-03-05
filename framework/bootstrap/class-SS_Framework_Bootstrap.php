@@ -95,15 +95,32 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 				global $ss_layout;
 				$ss_layout      = new Shoestrap_Layout();
 
-				$background     = new Shoestrap_Background();
-				$advanced       = new Shoestrap_Advanced();
-				$branding       = new Shoestrap_Branding();
-				$blog           = new Shoestrap_Blog();
-				$footer         = new Shoestrap_Footer();
-				$headers        = new Shoestrap_Header();
-				$jumbotron      = new Shoestrap_Jumbotron();
-				$menus          = new Shoestrap_Menus();
-				$typography     = new Shoestrap_Typography();
+				global $ss_background;
+				$ss_background  = new Shoestrap_Background();
+
+				global $ss_advanced;
+				$ss_advanced    = new Shoestrap_Advanced();
+
+				global $ss_branding;
+				$ss_branding    = new Shoestrap_Branding();
+
+				global $ss_blog;
+				$ss_blog        = new Shoestrap_Blog();
+
+				global $ss_footer;
+				$ss_footer      = new Shoestrap_Footer();
+
+				global $ss_headers;
+				$ss_headers     = new Shoestrap_Header();
+
+				global $ss_jumbotron;
+				$ss_jumbotron   = new Shoestrap_Jumbotron();
+
+				global $ss_menus;
+				$ss_menus       = new Shoestrap_Menus();
+
+				global $ss_typography;
+				$ss_typography  = new Shoestrap_Typography();
 
 				global $ss_breadcrumbs;
 				$ss_breadcrumbs = new Shoestrap_Breadcrumbs();
