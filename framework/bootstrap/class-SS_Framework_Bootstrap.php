@@ -238,7 +238,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 
 		}
 
-		public function button_group_classes( $size = 'medium', $type = null, $extra_classes = null ) {
+		public function button_group_classes( $size = 'default', $type = null, $extra_classes = null ) {
 
 			$classes = array();
 

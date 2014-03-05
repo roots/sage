@@ -55,6 +55,9 @@ class SS_Framework_Core {
 
 		// Miscelaneous
 		'clearfix' => '<div class="clearfix"></div>',
+
+		// Forms
+		'form-input' => 'form-control',
 	);
 
 	/**
@@ -456,6 +459,10 @@ class SS_Framework_Core {
 	}
 
 	public function include_wrapper() {}
+
+	public function form_input_classes() {
+		return $this->defines['form-input'];
+	}
 
 	/*
 	 * The site logo.
