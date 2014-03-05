@@ -438,7 +438,7 @@ if ( ! class_exists( 'Shoestrap_Menus' ) ) {
 			}
 
 			if ( $ss_settings['navbar_margin'] != 1 ) {
-				$style .= '.navbar-static-top { margin-top:'. $ss_settings['navbar_margin'] . 'px !important; margin-bottom:' . $ss_settings['navbar_margin'] . 'px !important; }';
+				$style .= '.navbar-static-top { margin-top:'. $ss_settings['navbar_margin'] . 'px; margin-bottom:' . $ss_settings['navbar_margin'] . 'px; }';
 			}
 
 			wp_add_inline_style( 'shoestrap_css', $style );
