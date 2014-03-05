@@ -347,7 +347,7 @@ class SS_Framework_Core {
 		return '<div data-alert class="' . $classes . '"' . $id . '>' . $content . $dismiss . '</div>';
 	}
 
-	public function make_panel( $extra_classes = null, $id = null  ) {
+	public function open_panel( $extra_classes = null, $id = null  ) {
 
 		$classes = array();
 
@@ -370,7 +370,15 @@ class SS_Framework_Core {
 		return '<div class="panel ' . $classes . '"' . $id . '>';
 	}
 
-	public function make_panel_heading( $extra_classes = null ) {
+	/**
+	 * Closes a panel
+	 */
+	public function close_panel() {
+
+		return '</div>';
+	}
+
+	public function open_panel_heading( $extra_classes = null ) {
 
 		$classes = array();
 
@@ -388,7 +396,15 @@ class SS_Framework_Core {
 		return '<div class="panel-heading' . $classes . '">';
 	}
 
-	public function make_panel_body( $extra_classes = null ) {
+	/**
+	 * Closes a panel heading
+	 */
+	public function close_panel_heading() {
+
+		return '</div>';
+	}
+
+	public function open_panel_body( $extra_classes = null ) {
 		$classes = array();
 
 		if ( ! is_null( $extra_classes ) ) {
@@ -405,7 +421,15 @@ class SS_Framework_Core {
 		return '<div class="panel-body' . $classes . '">';
 	}
 
-	public function make_panel_footer( $extra_classes = null ) {
+	/**
+	 * Closes a panel body
+	 */
+	public function close_panel_body() {
+
+		return '</div>';
+	}
+
+	public function open_panel_footer( $extra_classes = null ) {
 
 		$classes = array();
 
@@ -421,6 +445,14 @@ class SS_Framework_Core {
 		}
 
 		return '<div class="panel-footer' . $classes . '">';
+	}
+
+	/**
+	 * Closes a panel footer
+	 */
+	public function close_panel_footer() {
+
+		return '</div>';
 	}
 
 	public function include_wrapper() {}
