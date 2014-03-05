@@ -53,6 +53,9 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 
 			// Miscelaneous
 			'clearfix' => '<div class="clearfix"></div>',
+
+			// Forms
+			'form-input' => 'form-control',
 		);
 
 		/**
