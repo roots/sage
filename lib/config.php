@@ -100,6 +100,10 @@ function shoestrap_section_class( $target, $echo = false ) {
 		$class = apply_filters( 'shoestrap_section_class_main', $main );
 	}
 
+	if ( is_array( $class ) ) {
+		$class = implode( ' ', $class );
+	}
+
 	// echo or return the result.
 	if ( $echo ) {
 		echo $class;
