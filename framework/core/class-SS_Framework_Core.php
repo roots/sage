@@ -70,6 +70,8 @@ class SS_Framework_Core {
 	 */
 	public function open_container( $element = 'div', $id = null, $extra_classes = null, $properties = null ) {
 
+		$classes = array();
+
 		if ( ! is_null( apply_filters( 'shoestrap_container_class', $this->defines['container'] ) ) ) {
 			$default_classes = explode( ' ', apply_filters( 'shoestrap_container_class', $this->defines['container'] ) );
 
