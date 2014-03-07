@@ -258,6 +258,19 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 
 		}
 
+		public function make_dropdown_button( $color = 'primary', $size = 'medium', $type = null, $extra = null, $label = '', $content = '' ) {
+			global $ss_framework;
+
+			$return = '<div class="btn-group">';
+				$return .= '<button type="button" class="' . $ss_framework->button_classes( $color, $size, $type, 'dropdown-toggle' ) . '" data-toggle="dropdown">';
+					$return .= $label . ' <span class="caret"></span>';
+				$return .= '</button>';
+				$return .= '<ul class="dropdown-menu" role="menu">' . $content . '</ul>';
+			$return .= '</div>';
+
+			return $return;
+		}
+
 		public function button_group_classes( $size = 'default', $type = null, $extra_classes = null ) {
 
 			$classes = array();
