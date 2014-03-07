@@ -28,7 +28,6 @@ function shoestrap_footer_content() {
 			echo $ss_framework->close_col( 'div' );
 		}
 	}
-	echo '</div>';
 
 	do_action( 'shoestrap_footer_html' );
 }
