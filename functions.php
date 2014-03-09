@@ -24,10 +24,11 @@ if ( ! defined( 'SHOESTRAP_OPT_NAME' ) ) {
 global $ss_settings;
 $ss_settings = get_option( SHOESTRAP_OPT_NAME );
 
-require_once locate_template('/lib/class-Shoestrap_Color.php');
-require_once locate_template('/lib/class-Shoestrap_Image.php');
-require_once locate_template('/lib/functions-core.php');
-require_once locate_template('/lib/redux-init.php');
+require_once locate_template( '/lib/class-Shoestrap_Color.php' );
+require_once locate_template( '/lib/class-Shoestrap_Image.php' );
+require_once locate_template( '/lib/functions-core.php' );
+require_once locate_template( '/lib/redux-init.php' );
+require_once locate_template( '/lib/updater.php' );
 
 // Get the framework
 require_once locate_template( '/framework/framework.php' );
