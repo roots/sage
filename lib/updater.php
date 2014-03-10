@@ -31,12 +31,10 @@ if ( ! class_exists( 'Shoestrap_Updater' ) ) {
 
 				// Check if get_plugin_data has been loaded. If not, load it now.
 				if ( ! function_exists( 'get_plugin_data' ) ) {
-					require_once( ABSPATH . WPINC . '/plugin.php' );
+					require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 				}
 
-				if ( function_exists( 'get_plugin_data' ) ) {
-					$plugin_data = get_plugin_data( $args['path'] );
-				}
+				$plugin_data = get_plugin_data( $args['path'] );
 			}
 
 
@@ -58,7 +56,7 @@ if ( ! class_exists( 'Shoestrap_Updater' ) ) {
 
 			// If this is a plugin and the item_name has not been set, get the plugin name from the plugin file.
 			if ( 'plugin' == $args['mode'] && ( ! isset( $args['item_name'] ) || is_null( $args['item_name'] ) || empty( $args['item_name'] ) ) ) {
-				$this->item_name = plugin_basename( $args['path'] );
+				$this->item_name = $plugin_data['Name'];
 			} else {
 				$this->item_name = $args['item_name'];
 			}
@@ -68,7 +66,7 @@ if ( ! class_exists( 'Shoestrap_Updater' ) ) {
 			if ( isset( $args['title'] ) && ! is_null( $args['title'] ) && ! empty( $args['title'] ) ) {
 				$this->title = $args['title'];
 			} else {
-				$this->title = $this->item_name . __( 'License Key', 'shoestrap' );
+				$this->title = $this->item_name . ' ' . __( 'License Key', 'shoestrap' );
 			}
 
 
