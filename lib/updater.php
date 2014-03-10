@@ -28,7 +28,15 @@ if ( ! class_exists( 'Shoestrap_Updater' ) ) {
 
 			// If this is a plugin, get its plugin data
 			if ( 'plugin' == $this->mode ) {
-				$plugin_data = get_plugin_data( $args['path'] );
+
+				// Check if get_plugin_data has been loaded. If not, load it now.
+				if ( ! function_exists( 'get_plugin_data' ) ) {
+					require_once( ABSPATH . WPINC . '/plugin.php' );
+				}
+
+				if ( function_exists( 'get_plugin_data' ) ) {
+					$plugin_data = get_plugin_data( $args['path'] );
+				}
 			}
 
 
