@@ -181,7 +181,7 @@ if ( ! class_exists( 'Shoestrap_Updater' ) ) {
 			$license_data = json_decode( wp_remote_retrieve_body( $response ) );
 
 			// If the license is active, set the transient for 6 more hours and return.
-			if( $license_data->license == 'valid' ) {
+			if( isset($license_data) && $license_data->license == 'valid' ) {
 				set_transient( $this->id . '_license_status', $license_data->license, 6 * 60 * 60 );
 				return;
 			}
