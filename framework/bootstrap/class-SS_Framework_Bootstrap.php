@@ -8,6 +8,12 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 	class SS_Framework_Bootstrap extends SS_Framework_Core {
 
 		var $defines = array(
+			// Generic framework definitions
+			'shortname' => 'bootstrap',
+			'name'      => 'Bootstrap',
+			'classname' => 'SS_Framework_Bootstrap',
+			'compiler'  => 'less_php',
+
 			// Layout
 			'container'  => 'container',
 			'row'        => 'row',
