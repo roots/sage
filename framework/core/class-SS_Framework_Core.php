@@ -490,6 +490,42 @@ class SS_Framework_Core {
 			return 'right';
 		}
 	}
+
+	function make_tabs( $tab_titles = array(), $tab_contents = array() ) {
+
+		$content = '<ul class="nav nav-tabs">';
+
+		$i = 0;
+		foreach ( $tab_titles as $tab_title ) {
+
+			// Make the first tab active
+			$active = $i = 0 ? ' class="active"' : null;
+
+			$content .= '<li' . $active . '><a href="#home" data-toggle="tab">Home</a></li>';
+
+			$i++;
+		}
+
+		$content .= '</ul>';
+
+		$content .= '<div class="tab-content">';
+
+		$i = 0;
+		foreach ( $tab_contents as $tab_content ) {
+
+			// Make the first tab active
+			$active = $i = 0 ? ' active' : null;
+
+			$content .= '<div class="tab-pane' . $active . '" id="panel' . $i . '">' . $tab_content . '</div>';
+
+			$i++;
+		}
+
+		$content .= '</div>';
+
+		return $content;
+	}
+
 	/*
 	 * The site logo.
 	 * If no custom logo is uploaded, use the sitename
