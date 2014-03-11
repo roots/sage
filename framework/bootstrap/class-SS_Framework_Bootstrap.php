@@ -1073,5 +1073,12 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 
 			return $ss_layout->include_wrapper();
 		}
+		public function float_class( $alignment = 'left' ) {
+			if ( $alignment == 'left' || $alignment == 'l' ) {
+				return 'pull-left';
+			} elseif ( $alignment == 'right' || $alignment == 'r' ) {
+				return 'pull-right';
+			}
+		}
 	}
 }

@@ -483,6 +483,13 @@ class SS_Framework_Core {
 		return 'panel';
 	}
 
+	public function float_class( $alignment = 'left' ) {
+		if ( $alignment == 'left' || $alignment == 'l' ) {
+			return 'left';
+		} elseif ( $alignment == 'right' || $alignment == 'r' ) {
+			return 'right';
+		}
+	}
 	/*
 	 * The site logo.
 	 * If no custom logo is uploaded, use the sitename
