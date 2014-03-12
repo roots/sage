@@ -78,11 +78,11 @@ gulp.task('rev', function () {
 
 gulp.task('watch', function() {
   // Watch our JS files for changes
-  gulp.watch(['!assets/js/scripts.min.js', 'assets/js/*.js', 'assets/js/plugins/*/*.js', 'assets/js/plugins/*.js'], ['lint', 'scripts', 'rev']);
+  gulp.watch(['!assets/js/scripts.min.js', 'assets/js/*.js', 'assets/js/plugins/*/*.js', 'assets/js/plugins/*.js'], ['lint', 'scripts'/*, 'rev'*/]);
   gutil.log('Watching scripts');
 
   // Watch our LESS files for changes
-  gulp.watch(['assets/less/bootstrap/*.less', 'assets/less/*.less'], ['less', 'rev']);
+  gulp.watch(['assets/less/bootstrap/*.less', 'assets/less/*.less'], ['less'/*, 'rev'*/]);
   gutil.log('Watching styles');
 
 });
