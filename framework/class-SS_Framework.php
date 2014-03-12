@@ -27,8 +27,6 @@ if ( ! class_exists( 'SS_Framework' ) ) {
 
 			// Add the general section to redux.
 			add_filter( 'redux/options/' . SHOESTRAP_OPT_NAME . '/sections', array( $this, 'options' ), 1 );
-			// Add licensing section to redux
-			add_filter( 'redux/options/' . SHOESTRAP_OPT_NAME . '/sections', array( $this, 'licensing' ), 999 );
 
 			// Include all frameworks
 			$modules_path = new RecursiveDirectoryIterator( dirname( __FILE__ ) );
@@ -64,8 +62,6 @@ if ( ! class_exists( 'SS_Framework' ) ) {
 				}
 			}
 
-			// Add the updater fields.
-			do_action( 'shoestrap_updater_init' );
 		}
 
 		/**
@@ -155,28 +151,6 @@ if ( ! class_exists( 'SS_Framework' ) ) {
 			do_action( 'shoestrap_module_layout_options_modifier' );
 			
 			$sections[] = $section;
-			return $sections;
-		}
-
-		/*
-		 * Create the licensing section
-		 */
-		function licensing( $sections ) {
-			global $redux;
-
-			// Blog Options
-			$section = array(
-				'title' => __( 'Licensing', 'shoestrap' ),
-				'icon'  => 'el-icon-laptop',
-			);
-
-
-			$fields[] = array();
-
-			$section['fields'] = apply_filters( 'shoestrap_licensing_options_modifier', $fields );
-
-			$sections[] = $section;
-
 			return $sections;
 		}
 	}
