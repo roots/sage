@@ -106,7 +106,16 @@ if ( ! class_exists( 'Shoestrap_Updater' ) ) {
 			add_filter( 'shoestrap_licensing_options_modifier', array( $this, 'options' ) );
 			add_action( 'admin_init', array( $this, 'updater' ) );
 			add_action( 'admin_init', array( $this, 'activate_license' ) );
-			add_action( 'switch_theme', array( $this, 'deactivate_license' ) );
+
+			// de-activate the theme license when we switch to another theme
+			if ( 'theme' == $this->mode ) {
+				add_action( 'switch_theme', array( $this, 'deactivate_license' ) );
+			}
+
+			// de-activate the plugin license when the plugin is disabled.
+			if ( 'plugin' == $this->mode ) {
+				register_deactivation_hook( $args['path'], array( $this, 'deactivate_license' ) );
+			}
 		}
 
 
@@ -157,6 +166,7 @@ if ( ! class_exists( 'Shoestrap_Updater' ) ) {
 			global $wp_version;
 
 			// If the licence is already activated, we don't need to re-activate it.
+			// Since the transient times out after 6 hours, the check will only be performed then.
 			if ( get_transient( $this->id . '_license_status' ) == 'valid' ) {
 				return;
 			}
@@ -170,20 +180,14 @@ if ( ! class_exists( 'Shoestrap_Updater' ) ) {
 			);
 
 			// Call the custom API.
-			$response = wp_remote_get( add_query_arg( $api_params_check, $this->remote_api_url ), array( 'timeout' => 15, 'sslverify' => false ) );
-
-			// make sure the response came back okay
-			if ( is_wp_error( $response ) ) {
-				return false;
-			}
+			$check_response = wp_remote_get( add_query_arg( $api_params_check, $this->remote_api_url ), array( 'timeout' => 15, 'sslverify' => false ) );
 
 			// decode the license data
-			$license_data = json_decode( wp_remote_retrieve_body( $response ) );
+			$check_license_data = json_decode( wp_remote_retrieve_body( $check_response ) );
 
-			// If the license is active, set the transient for 6 more hours and return.
-			if( isset($license_data) && $license_data->license == 'valid' ) {
-				set_transient( $this->id . '_license_status', $license_data->license, 6 * 60 * 60 );
-				return;
+			// If the license is active, set the transient for 6 more hours.
+			if( isset( $check_license_data ) && $check_license_data->license == 'valid' ) {
+				set_transient( $this->id . '_license_status', $check_license_data->license, 6 * 60 * 60 );
 			}
 
 			// If we have all the above tests, continue with the actual activation.
