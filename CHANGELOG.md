@@ -1,3 +1,10 @@
+### 7.0.0: TBD
+* Updated Grunt workflow
+* Move clean up, relative URLs, and nice search to [Soil](https://github.com/roots/soil)
+* Update LESS organization
+* Use grunt-modernizr to make a lean Modernizr build
+* Use Bower for front-end package management
+
 ### 6.5.2: February 4th, 2014
 * Update to Bootstrap 3.1.0
 * Move DOM routing into an anonymous function to support jQuery noConflict
