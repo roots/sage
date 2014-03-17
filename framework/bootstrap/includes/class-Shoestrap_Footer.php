@@ -8,7 +8,7 @@ if( ! class_exists( 'Shoestrap_Footer' ) ) {
 	class Shoestrap_Footer {
 
 		function __construct() {
-			add_filter( 'redux/options/' . SHOESTRAP_OPT_NAME . '/sections', array( $this, 'options' ), 100 ); 
+			add_filter( 'redux/options/' . SHOESTRAP_OPT_NAME . '/sections', array( $this, 'options' ), 100 );
 			add_action( 'wp_enqueue_scripts',    array( $this, 'css' ), 101 );
 			add_action( 'shoestrap_footer_html', array( $this, 'html' ) );
 			add_action( 'widgets_init',          array( $this, 'widgets_init' ) );
@@ -25,16 +25,16 @@ if( ! class_exists( 'Shoestrap_Footer' ) ) {
 				'icon' => 'el-icon-caret-down'
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'       => __( 'Footer Background Color', 'shoestrap' ),
 				'desc'        => __( 'Select the background color for your footer. Default: #282a2b.', 'shoestrap' ),
 				'id'          => 'footer_background',
 				'default'     => '#282a2b',
-				'transparent' => false,    
+				'transparent' => false,
 				'type'        => 'color'
 			);
-			
-			$fields[] = array( 
+
+			$fields[] = array(
 				'title'       => __( 'Footer Background Opacity', 'shoestrap' ),
 				'desc'        => __( 'Select the opacity level for the footer bar. Default: 100%.', 'shoestrap' ),
 				'id'          => 'footer_opacity',
@@ -45,16 +45,16 @@ if( ! class_exists( 'Shoestrap_Footer' ) ) {
 				'required'    => array('retina_toggle','=',array('1')),
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'       => __( 'Footer Text Color', 'shoestrap' ),
 				'desc'        => __( 'Select the text color for your footer. Default: #8C8989.', 'shoestrap' ),
 				'id'          => 'footer_color',
 				'default'     => '#8C8989',
-				'transparent' => false,    
+				'transparent' => false,
 				'type'        => 'color'
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'       => __( 'Footer Text', 'shoestrap' ),
 				'desc'        => __( 'The text that will be displayed in your footer. You can use [year] and [sitename] and they will be replaced appropriately. Default: &copy; [year] [sitename]', 'shoestrap' ),
 				'id'          => 'footer_text',
@@ -62,14 +62,14 @@ if( ! class_exists( 'Shoestrap_Footer' ) ) {
 				'type'        => 'textarea'
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'       => 'Footer Border',
 				'desc'        => 'Select the border options for your Footer',
 				'id'          => 'footer_border',
 				'type'        => 'border',
-				'all'         => false, 
-				'left'        => false, 
-				'bottom'      => false, 
+				'all'         => false,
+				'left'        => false,
+				'bottom'      => false,
 				'right'       => false,
 				'default'     => array(
 					'border-top'      => '0',
@@ -79,7 +79,7 @@ if( ! class_exists( 'Shoestrap_Footer' ) ) {
 				),
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'       => __( 'Footer Top Margin', 'shoestrap' ),
 				'desc'        => __( 'Select the top margin of footer in pixels. Default: 0px.', 'shoestrap' ),
 				'id'          => 'footer_top_margin',
@@ -89,7 +89,7 @@ if( ! class_exists( 'Shoestrap_Footer' ) ) {
 				'type'        => 'slider',
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'       => __( 'Show social icons in footer', 'shoestrap' ),
 				'desc'        => __( 'Show social icons in the footer. Default: On.', 'shoestrap' ),
 				'id'          => 'footer_social_toggle',
@@ -97,7 +97,7 @@ if( ! class_exists( 'Shoestrap_Footer' ) ) {
 				'type'        => 'switch',
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'       => __( 'Footer social links column width', 'shoestrap' ),
 				'desc'        => __( 'You can customize the width of the footer social links area. The footer text width will be adjusted accordingly. Default: 5.', 'shoestrap' ),
 				'id'          => 'footer_social_width',
@@ -107,9 +107,9 @@ if( ! class_exists( 'Shoestrap_Footer' ) ) {
 				'step'        => 1,
 				'max'         => 10,
 				'type'        => 'slider',
-			);    
+			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'       => __( 'Footer social icons open new window', 'shoestrap' ),
 				'desc'        => __( 'Social icons in footer will open a new window. Default: On.', 'shoestrap' ),
 				'id'          => 'footer_social_new_window_toggle',
@@ -121,7 +121,7 @@ if( ! class_exists( 'Shoestrap_Footer' ) ) {
 			$section['fields'] = $fields;
 
 			$section = apply_filters( 'shoestrap_module_footer_options_modifier', $section );
-			
+
 			$sections[] = $section;
 			return $sections;
 		}
@@ -216,7 +216,7 @@ if( ! class_exists( 'Shoestrap_Footer' ) ) {
 					$style .= 'padding-top:' . $ss_settings['layout_gutter'] / 2 . 'px;';
 					$style .= 'padding-bottom:' . $ss_settings['layout_gutter'] / 2 . 'px;';
 				}
-				
+
 				$style .= ( ! empty($top_margin) ) ? 'margin-top:'. $top_margin .'px;' : '';
 			$style .= '}';
 
@@ -285,7 +285,10 @@ if( ! class_exists( 'Shoestrap_Footer' ) ) {
 							echo $ss_framework->open_col( 'div', array( 'large' => $social_width ), 'footer_social_bar' );
 
 								foreach ( $networks as $network ) {
-									echo '<a href="' . $network['url'] . '"' . $blank . ' title="' . $network['icon'] . '"><span class="el-icon-' . $network['icon'] . '"></span></a>';
+									// Check if the social network URL has been defined
+									if ( isset( $network['url'] ) && ! empty( $network['url'] ) && strlen( $network['url'] ) > 7 ) {
+										echo '<a href="' . $network['url'] . '"' . $blank . ' title="' . $network['icon'] . '"><span class="el-icon-' . $network['icon'] . '"></span></a>';
+									}
 								}
 
 							echo $ss_framework->close_col( 'div' );
