@@ -57,13 +57,13 @@ if ( ! class_exists( 'Shoestrap_Social' ) ) {
 				'icon'      => 'el-icon-group',
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'id'        => 'social_sharing_help_1',
 				'title'     => __( 'Social Sharing', 'shoestrap' ),
 				'type'      => 'info'
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'     => __( 'Button Text', 'shoestrap' ),
 				'desc'      => __( 'Select the text for the social sharing button.', 'shoestrap' ),
 				'id'        => 'social_sharing_text',
@@ -71,13 +71,13 @@ if ( ! class_exists( 'Shoestrap_Social' ) ) {
 				'type'      => 'text'
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'     => __( 'Button Location', 'shoestrap' ),
 				'desc'      => __( 'Select between NONE, TOP, BOTTOM & BOTH. For archives, "BOTH" fallbacks to "BOTTOM" only.', 'shoestrap' ),
 				'id'        => 'social_sharing_location',
 				'default'   => 'top',
 				'type'      => 'select',
-				'options'   => array( 
+				'options'   => array(
 					'none'    =>'None',
 					'top'     =>'Top',
 					'bottom'  =>'Bottom',
@@ -85,13 +85,13 @@ if ( ! class_exists( 'Shoestrap_Social' ) ) {
 				)
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'     => __( 'Button Styling', 'shoestrap' ),
 				'desc'      => __( 'Select between standard Bootstrap\'s button classes', 'shoestrap' ),
 				'id'        => 'social_sharing_button_class',
 				'default'   => 'default',
 				'type'      => 'select',
-				'options'   => array( 
+				'options'   => array(
 					'default'    => 'Default',
 					'primary'    => 'Primary',
 					'success'    => 'Success',
@@ -100,7 +100,7 @@ if ( ! class_exists( 'Shoestrap_Social' ) ) {
 				)
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'     => __( 'Show in Posts Archives', 'shoestrap' ),
 				'desc'      => __( 'Show the sharing button in posts archives.', 'shoestrap' ),
 				'id'        => 'social_sharing_archives',
@@ -108,7 +108,7 @@ if ( ! class_exists( 'Shoestrap_Social' ) ) {
 				'type'      => 'switch'
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'     => __( 'Show in Single Post', 'shoestrap' ),
 				'desc'      => __( 'Show the sharing button in single post.', 'shoestrap' ),
 				'id'        => 'social_sharing_single_post',
@@ -116,7 +116,7 @@ if ( ! class_exists( 'Shoestrap_Social' ) ) {
 				'type'      => 'switch'
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'     => __( 'Show in Single Page', 'shoestrap' ),
 				'desc'      => __( 'Show the sharing button in single page.', 'shoestrap' ),
 				'id'        => 'social_sharing_single_page',
@@ -142,13 +142,13 @@ if ( ! class_exists( 'Shoestrap_Social' ) ) {
 				)
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'id'        => 'social_sharing_help_3',
 				'title'     => __( 'Social Links used in Menus && Footer', 'shoestrap' ),
 				'type'      => 'info'
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'     => __( 'Blogger', 'shoestrap' ),
 				'desc'      => __( 'Provide the link you desire and the Blogger icon will appear. To remove it, just leave it blank.', 'shoestrap' ),
 				'id'        => 'blogger_link',
@@ -157,7 +157,7 @@ if ( ! class_exists( 'Shoestrap_Social' ) ) {
 				'type'      => 'text'
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'     => __( 'DeviantART', 'shoestrap' ),
 				'desc'      => __( 'Provide the link you desire and the DeviantART icon will appear. To remove it, just leave it blank.', 'shoestrap' ),
 				'id'        => 'deviantart_link',
@@ -166,7 +166,7 @@ if ( ! class_exists( 'Shoestrap_Social' ) ) {
 				'type'      => 'text'
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'     => __( 'Digg', 'shoestrap' ),
 				'desc'      => __( 'Provide the link you desire and the Digg icon will appear. To remove it, just leave it blank.', 'shoestrap' ),
 				'id'        => 'digg_link',
@@ -175,7 +175,7 @@ if ( ! class_exists( 'Shoestrap_Social' ) ) {
 				'type'      => 'text'
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'     => __( 'Dribbble', 'shoestrap' ),
 				'desc'      => __( 'Provide the link you desire and the Dribbble icon will appear. To remove it, just leave it blank.', 'shoestrap' ),
 				'id'        => 'dribbble_link',
@@ -184,7 +184,7 @@ if ( ! class_exists( 'Shoestrap_Social' ) ) {
 				'type'      => 'text'
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'     => __( 'Facebook', 'shoestrap' ),
 				'desc'      => __( 'Provide the link you desire and the Facebook icon will appear. To remove it, just leave it blank.', 'shoestrap' ),
 				'id'        => 'facebook_link',
@@ -193,7 +193,7 @@ if ( ! class_exists( 'Shoestrap_Social' ) ) {
 				'type'      => 'text'
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'     => __( 'Flickr', 'shoestrap' ),
 				'desc'      => __( 'Provide the link you desire and the Flickr icon will appear. To remove it, just leave it blank.', 'shoestrap' ),
 				'id'        => 'flickr_link',
@@ -202,7 +202,7 @@ if ( ! class_exists( 'Shoestrap_Social' ) ) {
 				'type'      => 'text'
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'     => __( 'GitHub', 'shoestrap' ),
 				'desc'      => __( 'Provide the link you desire and the GitHub icon will appear. To remove it, just leave it blank.', 'shoestrap' ),
 				'id'        => 'github_link',
@@ -211,7 +211,7 @@ if ( ! class_exists( 'Shoestrap_Social' ) ) {
 				'type'      => 'text'
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'     => __( 'Google+', 'shoestrap' ),
 				'desc'      => __( 'Provide the link you desire and the Google+ icon will appear. To remove it, just leave it blank.', 'shoestrap' ),
 				'id'        => 'google_plus_link',
@@ -220,7 +220,16 @@ if ( ! class_exists( 'Shoestrap_Social' ) ) {
 				'type'      => 'text'
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
+				'title'     => __( 'Instagram', 'shoestrap' ),
+				'desc'      => __( 'Provide the link you desire and the Instagram icon will appear. To remove it, just leave it blank.', 'shoestrap' ),
+				'id'        => 'instagram_link',
+				'validate'  => 'url',
+				'default'   => '',
+				'type'      => 'text'
+			);
+
+			$fields[] = array(
 				'title'     => __( 'LinkedIn', 'shoestrap' ),
 				'desc'      => __( 'Provide the link you desire and the LinkedIn icon will appear. To remove it, just leave it blank.', 'shoestrap' ),
 				'id'        => 'linkedin_link',
@@ -229,7 +238,7 @@ if ( ! class_exists( 'Shoestrap_Social' ) ) {
 				'type'      => 'text'
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'     => __( 'MySpace', 'shoestrap' ),
 				'desc'      => __( 'Provide the link you desire and the MySpace icon will appear. To remove it, just leave it blank.', 'shoestrap' ),
 				'id'        => 'myspace_link',
@@ -238,7 +247,7 @@ if ( ! class_exists( 'Shoestrap_Social' ) ) {
 				'type'      => 'text'
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'     => __( 'Pinterest', 'shoestrap' ),
 				'desc'      => __( 'Provide the link you desire and the Pinterest icon will appear. To remove it, just leave it blank.', 'shoestrap' ),
 				'id'        => 'pinterest_link',
@@ -247,7 +256,7 @@ if ( ! class_exists( 'Shoestrap_Social' ) ) {
 				'type'      => 'text'
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'     => __( 'Reddit', 'shoestrap' ),
 				'desc'      => __( 'Provide the link you desire and the Reddit icon will appear. To remove it, just leave it blank.', 'shoestrap' ),
 				'id'        => 'reddit_link',
@@ -256,7 +265,7 @@ if ( ! class_exists( 'Shoestrap_Social' ) ) {
 				'type'      => 'text'
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'     => __( 'RSS', 'shoestrap' ),
 				'desc'      => __( 'Provide the link you desire and the RSS icon will appear. To remove it, just leave it blank.', 'shoestrap' ),
 				'id'        => 'rss_link',
@@ -265,7 +274,7 @@ if ( ! class_exists( 'Shoestrap_Social' ) ) {
 				'type'      => 'text'
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'     => __( 'Skype', 'shoestrap' ),
 				'desc'      => __( 'Provide the link you desire and the Skype icon will appear. To remove it, just leave it blank.', 'shoestrap' ),
 				'id'        => 'skype_link',
@@ -274,7 +283,7 @@ if ( ! class_exists( 'Shoestrap_Social' ) ) {
 				'type'      => 'text'
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'     => __( 'SoundCloud', 'shoestrap' ),
 				'desc'      => __( 'Provide the link you desire and the SoundCloud icon will appear. To remove it, just leave it blank.', 'shoestrap' ),
 				'id'        => 'soundcloud_link',
@@ -283,7 +292,7 @@ if ( ! class_exists( 'Shoestrap_Social' ) ) {
 				'type'      => 'text'
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'     => __( 'Tumblr', 'shoestrap' ),
 				'desc'      => __( 'Provide the link you desire and the Tumblr icon will appear. To remove it, just leave it blank.', 'shoestrap' ),
 				'id'        => 'tumblr_link',
@@ -292,7 +301,7 @@ if ( ! class_exists( 'Shoestrap_Social' ) ) {
 				'type'      => 'text'
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'     => __( 'Twitter', 'shoestrap' ),
 				'desc'      => __( 'Provide the link you desire and the Twitter icon will appear. To remove it, just leave it blank.', 'shoestrap' ),
 				'id'        => 'twitter_link',
@@ -301,7 +310,7 @@ if ( ! class_exists( 'Shoestrap_Social' ) ) {
 				'type'      => 'text'
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'     => __( 'Vimeo', 'shoestrap' ),
 				'desc'      => __( 'Provide the link you desire and the Vimeo icon will appear. To remove it, just leave it blank.', 'shoestrap' ),
 				'id'        => 'vimeo_link',
@@ -311,7 +320,7 @@ if ( ! class_exists( 'Shoestrap_Social' ) ) {
 			);
 
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'     => 'Vkontakte',
 				'desc'      => 'Provide the link you desire and the Vkontakte icon will appear. To remove it, just leave it blank.',
 				'id'        => 'vkontakte_link',
@@ -320,7 +329,7 @@ if ( ! class_exists( 'Shoestrap_Social' ) ) {
 				'type'      => 'text'
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'     => 'YouTube Link',
 				'desc'      => 'Provide the link you desire and the YouTube icon will appear. To remove it, just leave it blank.',
 				'id'        => 'youtube_link',
@@ -328,11 +337,11 @@ if ( ! class_exists( 'Shoestrap_Social' ) ) {
 				'default'   => '',
 				'type'      => 'text'
 			);
-			
+
 			$section['fields'] = $fields;
 
 			$section = apply_filters( 'shoestrap_module_socials_options_modifier', $section );
-			
+
 			$sections[] = $section;
 			return $sections;
 
@@ -356,6 +365,7 @@ if ( ! class_exists( 'Shoestrap_Social' ) ) {
 			$networks[] = array( 'url' => $ss_settings['flickr_link'],       'icon' => 'flickr',     'fullname' => 'Flickr' );
 			$networks[] = array( 'url' => $ss_settings['github_link'],       'icon' => 'github',     'fullname' => 'GitHub' );
 			$networks[] = array( 'url' => $ss_settings['google_plus_link'],  'icon' => 'googleplus', 'fullname' => 'Google+' );
+			$networks[] = array( 'url' => $ss_settings['instagram_link'],    'icon' => 'instagram',  'fullname' => 'Instagram' );
 			$networks[] = array( 'url' => $ss_settings['linkedin_link'],     'icon' => 'linkedin',   'fullname' => 'LinkedIn' );
 			$networks[] = array( 'url' => $ss_settings['myspace_link'],      'icon' => 'myspace',    'fullname' => 'Myspace' );
 			$networks[] = array( 'url' => $ss_settings['pinterest_link'],    'icon' => 'pinterest',  'fullname' => 'Pinterest' );
@@ -396,7 +406,7 @@ if ( ! class_exists( 'Shoestrap_Social' ) ) {
 					'fullname'  => 'Twitter',
 					'url'       => 'http://twitter.com/home/?status=' . get_the_title() . ' - ' . get_permalink()
 				);
-			
+
 				$twittername = $this->get_tw_username();
 
 				if ( $twittername != '' ) {
