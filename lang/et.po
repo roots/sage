@@ -1,0 +1,262 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Illimar Tambek\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"X-Generator: Poedit 1.6.4\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: et\n"
+
+#: 404.php:4
+msgid "Sorry, but the page you were trying to view does not exist."
+msgstr "Kahjuks ei ole lehte, mida soovisid vaadata, olemas."
+
+#: 404.php:7
+msgid "It looks like this was the result of either:"
+msgstr "Tundub, et selle põhjuseks oli üks kahest:"
+
+#: 404.php:9
+msgid "a mistyped address"
+msgstr "valesti kirjutatud aadress"
+
+#: 404.php:10
+msgid "an out-of-date link"
+msgstr "vananenud link"
+
+#: base.php:6
+msgid ""
+"You are using an <strong>outdated</strong> browser. Please <a href=\"http://"
+"browsehappy.com/\">upgrade your browser</a> to improve your experience."
+msgstr ""
+"Kasutad <strong>vananenud</strong> brauserit. Palun <a href=\"http://"
+"browsehappy.com/\">uuenda oma brauseri versiooni</a>, et saaksid parema "
+"kogemuse."
+
+#: index.php:5
+msgid "Sorry, no results were found."
+msgstr "Kahjuks ei leitud tulemusi."
+
+#: index.php:17
+msgid "&larr; Older posts"
+msgstr "&larr; Vanemad postitused"
+
+#: index.php:18
+msgid "Newer posts &rarr;"
+msgstr "Uuemad postitused &rarr;"
+
+#: lib/activation.php:28 lib/activation.php:29
+msgid "Theme Activation"
+msgstr "Teema aktiveerimine"
+
+#: lib/activation.php:50
+msgid "%s Theme Activation"
+msgstr "%s teema aktiveerimine"
+
+#: lib/activation.php:52
+msgid ""
+"These settings are optional and should usually be used only on a fresh "
+"installation"
+msgstr ""
+"Need seaded on valikulised ning neid peaks kasutama ainult värske paigalduse "
+"puhul"
+
+#: lib/activation.php:59 lib/activation.php:62
+msgid "Create static front page?"
+msgstr "Loo staatiline avaleht?"
+
+#: lib/activation.php:64 lib/activation.php:76 lib/activation.php:88
+#: lib/activation.php:100
+msgid "Yes"
+msgstr "Jah"
+
+#: lib/activation.php:65 lib/activation.php:77 lib/activation.php:89
+#: lib/activation.php:101
+msgid "No"
+msgstr "Ei"
+
+#: lib/activation.php:67
+msgid "Create a page called Home and set it to be the static front page"
+msgstr "Loo leht nimega Avaleht ja seadista see staatiliseks avaleheks"
+
+#: lib/activation.php:71
+msgid "Change permalink structure?"
+msgstr "Muuda püsiviidete struktuuri?"
+
+#: lib/activation.php:74
+msgid "Update permalink structure?"
+msgstr "Uuenda püsiviidete struktuuri?"
+
+#: lib/activation.php:79
+msgid "Change permalink structure to /&#37;postname&#37;/"
+msgstr "Seadista püsiviidete struktuuriks /&#37;postname&#37;/"
+
+#: lib/activation.php:83 lib/activation.php:86
+msgid "Create navigation menu?"
+msgstr "Loo navigatsioonimenüü?"
+
+#: lib/activation.php:91
+msgid "Create the Primary Navigation menu and set the location"
+msgstr "Loo peamenüü ja seadista selle asukoht"
+
+#: lib/activation.php:95 lib/activation.php:98
+msgid "Add pages to menu?"
+msgstr "Lisa lehed menüüsse?"
+
+#: lib/activation.php:103
+msgid "Add all current published pages to the Primary Navigation"
+msgstr "Lisa kõik hetkel avaldatud lehed peamenüüsse"
+
+#: lib/cleanup.php:193
+msgid "Continued"
+msgstr "Jätkub"
+
+#: lib/init.php:11
+msgid "Primary Navigation"
+msgstr "Peamanüü"
+
+#: lib/titles.php:10
+msgid "Latest Posts"
+msgstr "Viimased postitused"
+
+#: lib/titles.php:19
+msgid "Daily Archives: %s"
+msgstr "Arhiiv kuupäevade lõikes: %"
+
+#: lib/titles.php:21
+msgid "Monthly Archives: %s"
+msgstr "Arhiiv kuude lõikes: %s"
+
+#: lib/titles.php:23
+msgid "Yearly Archives: %s"
+msgstr "Arhiiv aastate lõikes: %s"
+
+#: lib/titles.php:26
+msgid "Author Archives: %s"
+msgstr "Autoriarhiiv: %s"
+
+#: lib/titles.php:31
+msgid "Search Results for %s"
+msgstr "Otsitulemused: %s"
+
+#: lib/titles.php:33
+msgid "Not Found"
+msgstr "Ei leitud"
+
+#: lib/widgets.php:8
+msgid "Primary"
+msgstr "Peamine"
+
+#: lib/widgets.php:17
+msgid "Footer"
+msgstr "Jalus"
+
+#: lib/widgets.php:45
+msgid "Use this widget to add a vCard"
+msgstr "Kasuta seda moodulit, et lisada vCard"
+
+#: lib/widgets.php:47
+msgid "Roots: vCard"
+msgstr "Roots: vCard"
+
+#: lib/widgets.php:74
+msgid "vCard"
+msgstr "vCard"
+
+#: templates/comment.php:4
+msgid "%1$s"
+msgstr "%1$s"
+
+#: templates/comment.php:5
+msgid "(Edit)"
+msgstr "(Muuda)"
+
+#: templates/comment.php:9
+msgid "Your comment is awaiting moderation."
+msgstr "Sinu kommentaar ootab modereerimist."
+
+#: templates/comments.php:8
+msgid "One Response to &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s Responses to &ldquo;%2$s&rdquo;"
+msgstr[0] "Üks vastus teemale &ldquo;%2$s&rdquo;"
+msgstr[1] "%1$s vastust teemale &ldquo;%2$s&rdquo;"
+
+#: templates/comments.php:18
+msgid "&larr; Older comments"
+msgstr "&larr; Vanemad kommentaarid"
+
+#: templates/comments.php:21
+msgid "Newer comments &rarr;"
+msgstr "Uuemad kommentaarid &rarr;"
+
+#: templates/comments.php:29 templates/comments.php:38
+msgid "Comments are closed."
+msgstr "Kommenteerimine on suletud."
+
+#: templates/comments.php:45
+msgid "Leave a Reply"
+msgstr "Lisa kommentaar"
+
+#: templates/comments.php:45
+msgid "Leave a Reply to %s"
+msgstr "Lisa kommentaar teemale %s"
+
+#: templates/comments.php:48
+msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
+msgstr "Kommenteerimiseks pead olema <a href=\"%s\">sisse logitud</a>."
+
+#: templates/comments.php:53
+msgid "Logged in as <a href=\"%s/wp-admin/profile.php\">%s</a>."
+msgstr "Sisse logitud kasutajana <a href=\"%s/wp-admin/profile.php\">%s</a>."
+
+#: templates/comments.php:54
+msgid "Log out of this account"
+msgstr "Logi sellelt kontolt välja"
+
+#: templates/comments.php:54
+msgid "Log out &raquo;"
+msgstr "Logi välja &raquo;"
+
+#: templates/comments.php:58
+msgid "Name"
+msgstr "Nimi"
+
+#: templates/comments.php:58 templates/comments.php:62
+msgid " (required)"
+msgstr " (nõutav)"
+
+#: templates/comments.php:62
+msgid "Email (will not be published)"
+msgstr "E-post (ei avalikustata)"
+
+#: templates/comments.php:66
+msgid "Website"
+msgstr "Koduleht"
+
+#: templates/comments.php:71
+msgid "Comment"
+msgstr "Kommentaar"
+
+#: templates/comments.php:74
+msgid "Submit Comment"
+msgstr "Saada kommentaar"
+
+#: templates/content-single.php:11
+msgid "Pages:"
+msgstr "Lehed:"
+
+#: templates/entry-meta.php:2
+msgid "By"
+msgstr "kirjutas"
+
+#: templates/searchform.php:3 templates/searchform.php:6
+msgid "Search"
+msgstr "Otsing"
+
+#: templates/searchform.php:4
+msgid "Search for:"
+msgstr "Otsi:"
