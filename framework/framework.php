@@ -28,6 +28,10 @@ foreach ( $frameworks as $framework ) {
 	}
 }
 
+if ( ! isset( $active ) ) {
+	$active = 'SS_Framework_Bootstrap';
+}
+
 global $ss_framework;
 $ss_framework = new $active;
 
@@ -42,6 +46,6 @@ function shoestrap_remove_demo() {
 
 		// Used to hide the activation notice informing users of the demo panel. Only used when Redux is a plugin.
 		remove_action( 'admin_notices', array( ReduxFrameworkPlugin::instance(), 'admin_notices' ) );
-    }
+	}
 }
 add_action( 'redux/loaded', 'shoestrap_remove_demo' );
