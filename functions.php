@@ -57,3 +57,25 @@ if ( class_exists( 'bbPress' ) ) {
 }
 
 do_action( 'shoestrap_include_files' );
+
+function shoestrap_core_updater() {
+
+	$args = array(
+		'remote_api_url' => 'http://shoestrap.org',
+		'item_name'      => 'Shoestrap 3',
+		'license'        => 'c5305a091a9e61268c5be6096bfa3d38',
+		'version'        => '3.2b1',
+		'author'         => 'aristath, fovoc, dovy',
+		'mode'           => 'theme',
+		'title'          => 'Shoestrap Theme License',
+		'field_name'     => 'shoestrap_theme_license',
+		'description'    => 'The Shoestrap theme already contains a pre-defined license number to allow auto-updating itself.',
+		'single_license' => true
+	);
+
+	if ( class_exists( 'SS_EDD_SL_Updater' ) ) {
+		$updater = new SS_EDD_SL_Updater( $args );
+	}
+
+}
+add_action( 'admin_init', 'shoestrap_core_updater' );
