@@ -40,7 +40,7 @@ if ( ! class_exists( 'Shoestrap_Jumbotron' ) ) {
 				'desc'        => __( 'Select the background for your Jumbotron area.', 'shoestrap'),
 				'id'          => 'jumbo_bg',
 				'default'     => array(
-					'background-color'    => isset( $ss_settings['jumbotron_bg'] ) ? $ss_settings['jumbotron_bg'] : '#eeeeee',
+					'background-color'    => isset( $ss_settings['jumbotron_bg'] ) ? Shoestrap_Color::sanitize_hex( $ss_settings['jumbotron_bg'] ) : '#eeeeee',
 					'background-repeat'   => isset( $ss_settings['jumbotron_background_repeat'] ) ? $ss_settings['jumbotron_background_repeat'] : NULL,
 					'background-position' => isset( $ss_settings['jumbotron_background_image_position_toggle'] ) ? $ss_settings['jumbotron_background_image_position_toggle'] . ' center' : NULL,
 					'background-image'    => isset( $ss_settings['jumbotron_background_image']['url'] ) ? $ss_settings['jumbotron_background_image']['url'] : NULL,
@@ -88,11 +88,12 @@ if ( ! class_exists( 'Shoestrap_Jumbotron' ) ) {
 				'id'        => 'font_jumbotron',
 				'compiler'  => true,
 				'default'   => array(
-					'font-family' => 'Arial, Helvetica, sans-serif',
-					'font-size'   => 20,
-					'color'       => '#333333',
-					'google'      => 'false',
-					'units'       => 'px'
+					'font-family'   => 'Arial, Helvetica, sans-serif',
+					'font-size'     => '20px',
+					'google'        => 'false',
+					'weight'        => 'inherit',
+					'color'         => '#333333',
+					'font-style'    => 400,
 				),
 				'preview'   => array(
 					'text'  => __( 'This is my preview text!', 'shoestrap' ), //this is the text from preview box
@@ -133,9 +134,9 @@ if ( ! class_exists( 'Shoestrap_Jumbotron' ) ) {
 				'desc'      => __( 'Select the border options for your Jumbotron', 'shoestrap' ),
 				'id'        => 'jumbotron_border',
 				'type'      => 'border',
-				'all'       => false, 
-				'left'      => false, 
-				'top'       => false, 
+				'all'       => false,
+				'left'      => false,
+				'top'       => false,
 				'right'     => false,
 				'default'   => array(
 					'border-top'      => '0',
@@ -148,7 +149,7 @@ if ( ! class_exists( 'Shoestrap_Jumbotron' ) ) {
 			$section['fields'] = $fields;
 
 			$section = apply_filters( 'shoestrap_module_jumbotron_options_modifier', $section );
-			
+
 			$sections[] = $section;
 			return $sections;
 

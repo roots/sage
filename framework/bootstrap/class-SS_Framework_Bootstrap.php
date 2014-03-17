@@ -613,7 +613,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 			$btn_danger_border  = $brand_danger_brightness  < 195 ? 'darken(@btn-danger-bg, 5%)'  : 'lighten(@btn-danger-bg, 5%)';
 			$btn_info_border    = $brand_info_brightness    < 195 ? 'darken(@btn-info-bg, 5%)'    : 'lighten(@btn-info-bg, 5%)';
 
-			$input_border_focus = ( Shoestrap_Color::get_brightness( $brand_primary ) < 195 ) ? 'lighten(@brand-primary, 10%);' : 'darken(@brand-primary, 10%);';
+			$input_border_focus = ( Shoestrap_Color::get_brightness( $brand_primary ) < 195 ) ? 'lighten(@brand-primary, 10%)' : 'darken(@brand-primary, 10%)';
 			$navbar_border      = ( Shoestrap_Color::get_brightness( $brand_primary ) < 50 ) ? 'lighten(@navbar-default-bg, 6.5%)' : 'darken(@navbar-default-bg, 6.5%)';
 
 			// Branding colors
@@ -735,7 +735,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 				$variables .= '@jumbotron-heading-color: ' . $jumbotron_headers_text_color . ';';
 			}
 
-			if ( isset( $font_jumbotron ) && ! empty( $font_jumbotron ) ) {
+			if ( isset( $font_jumbotron['font-size'] ) && ! empty( $font_jumbotron['font-size'] ) ) {
 				$variables .= '@jumbotron-font-size:     ' . $font_jumbotron['font-size'] . 'px;';
 			}
 
@@ -784,22 +784,36 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 			// Shoestrap-specific variables
 			// --------------------------------------------------
 
-			if ( isset( $font_jumbotron ) && ! empty( $font_jumbotron ) ) {
+			if ( isset( $font_jumbotron['font-weight'] ) && ! empty( $font_jumbotron['font-weight'] ) ) {
 				$variables .= '@jumbotron-font-weight:       ' . $font_jumbotron['font-weight'] . ';';
+			}
+
+			if ( isset( $font_jumbotron['font-style'] ) && ! empty( $font_jumbotron['font-style'] ) ) {
 				$variables .= '@jumbotron-font-style:        ' . $font_jumbotron['font-style'] . ';';
+			}
+
+			if ( isset( $font_jumbotron['font-family'] ) && ! empty( $font_jumbotron['font-family'] ) ) {
 				$variables .= '@jumbotron-font-family:       ' . $font_jumbotron['font-family'] . ';';
+			} else {
+				$variables .= '@jumbotron-font-family: inherit;';
 			}
 
 			if ( isset( $font_jumbotron_headers_weight ) && ! empty( $font_jumbotron_headers_weight ) ) {
 				$variables .= '@jumbotron-headers-font-weight:       ' . $font_jumbotron_headers_weight . ';';
+			} else {
+				$variables .= '@jumbotron-headers-font-weight: inherit;';
 			}
 
 			if ( isset( $font_jumbotron_headers_style ) && ! empty( $font_jumbotron_headers_style ) ) {
 				$variables .= '@jumbotron-headers-font-style:        ' . $font_jumbotron_headers_style . ';';
+			} else {
+				$variables .= '@jumbotron-headers-font-style: inherit;';
 			}
 
 			if ( isset( $font_jumbotron_headers_face ) && ! empty( $font_jumbotron_headers_face ) ) {
 				$variables .= '@jumbotron-headers-font-family:       ' . $font_jumbotron_headers_face . ';';
+			} else {
+				$variables .= '@jumbotron-headers-font-family: inherit;';
 			}
 
 			/**
@@ -928,6 +942,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 			$variables .= '@import "' . dirname( __FILE__ ) . '/assets/less/widgets.less";';
 			$variables .= '@import "' . dirname( __FILE__ ) . '/assets/less/footer.less";';
 
+			print_r($variables);
 			return $variables;
 		}
 
