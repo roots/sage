@@ -18,16 +18,6 @@ function shoestrap_required_plugins() {
 	 */
 	$plugins = array(
 		array(
-			'name'               => 'GitHub Updater',
-			'slug'               => 'github-updater',
-			'source'             => get_template_directory() . '/lib/plugins/github-updater-2.5.0.zip',
-			'required'           => false,
-			'version'            => '2.5.0',
-			'force_activation'   => false,
-			'force_deactivation' => false,
-		),
-
-		array(
 			'name'               => 'Redux Framework',
 			'slug'               => 'redux-framework',
 			'required'           => true,
