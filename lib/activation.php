@@ -123,7 +123,7 @@ function roots_theme_activation_action() {
   if ($roots_theme_activation_options['create_front_page'] === 'true') {
     $roots_theme_activation_options['create_front_page'] = false;
 
-    $default_pages = array('Home');
+    $default_pages = array(__('Home', 'roots'));
     $existing_pages = get_pages();
     $temp = array();
 
@@ -144,7 +144,7 @@ function roots_theme_activation_action() {
       $result = wp_insert_post($add_default_pages);
     }
 
-    $home = get_page_by_title('Home');
+    $home = get_page_by_title(__('Home', 'roots'));
     update_option('show_on_front', 'page');
     update_option('page_on_front', $home->ID);
 
@@ -170,10 +170,10 @@ function roots_theme_activation_action() {
 
     $roots_nav_theme_mod = false;
 
-    $primary_nav = wp_get_nav_menu_object('Primary Navigation');
+    $primary_nav = wp_get_nav_menu_object(__('Primary Navigation', 'roots'));
 
     if (!$primary_nav) {
-      $primary_nav_id = wp_create_nav_menu('Primary Navigation', array('slug' => 'primary_navigation'));
+      $primary_nav_id = wp_create_nav_menu(__('Primary Navigation', 'roots'), array('slug' => 'primary_navigation'));
       $roots_nav_theme_mod['primary_navigation'] = $primary_nav_id;
     } else {
       $roots_nav_theme_mod['primary_navigation'] = $primary_nav->term_id;
@@ -187,7 +187,7 @@ function roots_theme_activation_action() {
   if ($roots_theme_activation_options['add_pages_to_primary_navigation'] === 'true') {
     $roots_theme_activation_options['add_pages_to_primary_navigation'] = false;
 
-    $primary_nav = wp_get_nav_menu_object('Primary Navigation');
+    $primary_nav = wp_get_nav_menu_object(__('Primary Navigation', 'roots'));
     $primary_nav_term_id = (int) $primary_nav->term_id;
     $menu_items= wp_get_nav_menu_items($primary_nav_term_id);
 
