@@ -374,6 +374,10 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 			return '<div class="panel panel-default' . $classes . '"' . $id . '>';
 		}
 
+		public function panel_classes() {
+			return 'panel panel-default';
+		}
+
 		/**
 		 * Variables to use for the compiler.
 		 * These override the default Bootstrap Variables.
