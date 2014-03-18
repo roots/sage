@@ -15,14 +15,14 @@ if ( ! class_exists( 'Shoestrap_Blog' ) ) {
 			add_filter( 'redux/options/' . SHOESTRAP_OPT_NAME . '/sections', array( $this, 'options' ), 70 );
 			add_action( 'shoestrap_entry_meta',     array( $this, 'meta_custom_render'                  ) );
 			add_filter( 'excerpt_more',             array( $this, 'excerpt_more'                        ) );
-			add_action( 'shoestrap_in_article_top', array( $this, 'featured_image'                      ) );
+			add_action( 'shoestrap_entry_meta',     array( $this, 'featured_image'                      ) );
 			add_action( 'wp',                       array( $this, 'remove_featured_image_per_post_type' ) );
 
 			if ( isset( $ss_settings['post_excerpt_length'] ) ) {
 				add_filter( 'excerpt_length', array( $this, 'excerpt_length' ) );
 			}
 
-		 	// Hide post meta data in footer of single posts
+			// Hide post meta data in footer of single posts
 			if ( $ss_settings['single_meta'] == 0 ) {
 				add_filter( 'shoestrap_the_tags', 'shoestrap_blank' );
 				add_filter( 'shoestrap_the_cats', 'shoestrap_blank' );
@@ -51,7 +51,7 @@ if ( ! class_exists( 'Shoestrap_Blog' ) ) {
 				'mode'        => 'checkbox'
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'     => __( 'Switch Date Meta in time_diff mode', 'shoestrap' ),
 				'desc'      => __( 'Replace Date Meta element by displaying the difference between post creation timestamp and current timestamp. Default: OFF.', 'shoestrap' ),
 				'id'        => 'date_meta_format',
@@ -64,7 +64,7 @@ if ( ! class_exists( 'Shoestrap_Blog' ) ) {
 
 			$screen_large_desktop = filter_var( $ss_settings[ 'screen_large_desktop' ], FILTER_SANITIZE_NUMBER_INT );
 
-			$fields[] = array( 
+			$fields[] = array(
 				'id'        => 'help3',
 				'title'     => __( 'Featured Images', 'shoestrap' ),
 				'desc'      => __( 'Here you can select if you want to display the featured images in post archives and individual posts.
@@ -73,7 +73,7 @@ if ( ! class_exists( 'Shoestrap_Blog' ) ) {
 				'type'      => 'info',
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'     => __( 'Featured Images on Archives', 'shoestrap' ),
 				'desc'      => __( 'Display featured Images on post archives ( such as categories, tags, month view etc ). Default: OFF.', 'shoestrap' ),
 				'id'        => 'feat_img_archive',
@@ -82,7 +82,7 @@ if ( ! class_exists( 'Shoestrap_Blog' ) ) {
 			);
 
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'     => __( 'Width of Featured Images on Archives', 'shoestrap' ),
 				'desc'      => __( 'Set dimensions of featured Images on Archives. Default: Full Width', 'shoestrap' ),
 				'id'        => 'feat_img_archive_custom_toggle',
@@ -93,7 +93,7 @@ if ( ! class_exists( 'Shoestrap_Blog' ) ) {
 				'type'      => 'switch',
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'     => __( 'Archives Featured Image Custom Width', 'shoestrap' ),
 				'desc'      => __( 'Select the width of your featured images on single posts. Default: 550px', 'shoestrap' ),
 				'id'        => 'feat_img_archive_width',
@@ -106,7 +106,7 @@ if ( ! class_exists( 'Shoestrap_Blog' ) ) {
 				'type'      => 'slider'
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'     => __( 'Archives Featured Image Custom Height', 'shoestrap' ),
 				'desc'      => __( 'Select the height of your featured images on post archives. Default: 300px', 'shoestrap' ),
 				'id'        => 'feat_img_archive_height',
@@ -119,7 +119,7 @@ if ( ! class_exists( 'Shoestrap_Blog' ) ) {
 				'type'      => 'slider'
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'     => __( 'Featured Images on Posts', 'shoestrap' ),
 				'desc'      => __( 'Display featured Images on posts. Default: OFF.', 'shoestrap' ),
 				'id'        => 'feat_img_post',
@@ -127,7 +127,7 @@ if ( ! class_exists( 'Shoestrap_Blog' ) ) {
 				'type'      => 'switch',
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'     => __( 'Width of Featured Images on Posts', 'shoestrap' ),
 				'desc'      => __( 'Set dimensions of featured Images on Posts. Default: Full Width', 'shoestrap' ),
 				'id'        => 'feat_img_post_custom_toggle',
@@ -138,7 +138,7 @@ if ( ! class_exists( 'Shoestrap_Blog' ) ) {
 				'required'  => array('feat_img_post','=',array('1')),
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'     => __( 'Posts Featured Image Custom Width', 'shoestrap' ),
 				'desc'      => __( 'Select the width of your featured images on single posts. Default: 550px', 'shoestrap' ),
 				'id'        => 'feat_img_post_width',
@@ -151,7 +151,7 @@ if ( ! class_exists( 'Shoestrap_Blog' ) ) {
 				'type'      => 'slider'
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'     => __( 'Posts Featured Image Custom Height', 'shoestrap' ),
 				'desc'      => __( 'Select the height of your featured images on single posts. Default: 330px', 'shoestrap' ),
 				'id'        => 'feat_img_post_height',
@@ -181,7 +181,7 @@ if ( ! class_exists( 'Shoestrap_Blog' ) ) {
 				'default'   => $post_type_defaults,
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'     => __( 'Post excerpt length', 'shoestrap' ),
 				'desc'      => __( 'Choose how many words should be used for post excerpt. Default: 40', 'shoestrap' ),
 				'id'        => 'post_excerpt_length',
@@ -192,8 +192,8 @@ if ( ! class_exists( 'Shoestrap_Blog' ) ) {
 				'edit'      => 1,
 				'type'      => 'slider'
 			);
-			
-			$fields[] = array( 
+
+			$fields[] = array(
 				'title'     => __( '"more" text', 'shoestrap' ),
 				'desc'      => __( 'Text to display in case of excerpt too long. Default: Continued', 'shoestrap' ),
 				'id'        => 'post_excerpt_link_text',
@@ -201,7 +201,7 @@ if ( ! class_exists( 'Shoestrap_Blog' ) ) {
 				'type'      => 'text'
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'     => __( 'Show Breadcrumbs', 'shoestrap' ),
 				'desc'      => __( 'Display Breadcrumbs. Default: OFF.', 'shoestrap' ),
 				'id'        => 'breadcrumbs',
@@ -209,7 +209,7 @@ if ( ! class_exists( 'Shoestrap_Blog' ) ) {
 				'type'      => 'switch',
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'     => __( 'Show Post Meta in single posts', 'shoestrap' ),
 				'desc'      => __( 'Toggle Post Meta showing in the footer of single posts. Default: ON.', 'shoestrap' ),
 				'id'        => 'single_meta',
@@ -282,7 +282,7 @@ if ( ! class_exists( 'Shoestrap_Blog' ) ) {
 							if ( $date_format == 0 ) {
 								$text = esc_html( sprintf( $format_prefix, get_post_format_string( get_post_format() ), get_the_date() ) );
 								$icon = "el-icon-calendar icon";
-							} 
+							}
 							elseif ( $date_format == 1 ) {
 								$text = sprintf( human_time_diff( get_the_time('U'), current_time('timestamp') ) . ' ago');
 								$icon = "el-icon-time icon";
@@ -377,7 +377,7 @@ if ( ! class_exists( 'Shoestrap_Blog' ) ) {
 				}
 
 				$data['url'] = wp_get_attachment_url( get_post_thumbnail_id() );
-				
+
 				if ( $ss_settings['feat_img_post_custom_toggle'] == 1 ) {
 					$data['width']  = $ss_settings['feat_img_post_width'];
 					$data['height'] = $ss_settings['feat_img_post_height'];
@@ -389,13 +389,13 @@ if ( ! class_exists( 'Shoestrap_Blog' ) ) {
 				}
 
 				$data['url'] = wp_get_attachment_url( get_post_thumbnail_id() );
-				
+
 				if ( $ss_settings['feat_img_archive_custom_toggle'] == 1 ) {
 					$data['width']  = $ss_settings['feat_img_archive_width'];
 					$data['height'] = $ss_settings['feat_img_archive_height'];
 				}
 			}
-			
+
 			$image = Shoestrap_Image::image_resize( $data );
 
 			echo $ss_framework->clearfix() . '<a href="' . get_permalink() . '"><img class="featured-image" src="' . $image['url'] . '" /></a>' . $ss_framework->clearfix();
