@@ -745,11 +745,11 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 				$padding_base = 6;
 			}
 
-			if ( isset( $ss_settings['general_border_radius'] ) && !empty( $ss_settings['general_border_radius'] ) ) {
+			if ( isset( $ss_settings['general_border_radius'] ) && ! empty( $ss_settings['general_border_radius'] ) ) {
 				$border_radius = filter_var( $ss_settings['general_border_radius'], FILTER_SANITIZE_NUMBER_INT );
 				$border_radius = ( strlen( $border_radius ) < 1 ) ? 0 : $border_radius;
 			} else {
-				$border_radius = 4;
+				$border_radius = 0;
 			}
 
 			$variables .= '@padding-base-vertical:    ' . round( $padding_base * 6 / 6 ) . 'px;';
