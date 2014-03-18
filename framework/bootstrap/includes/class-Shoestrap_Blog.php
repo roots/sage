@@ -15,8 +15,11 @@ if ( ! class_exists( 'Shoestrap_Blog' ) ) {
 			add_filter( 'redux/options/' . SHOESTRAP_OPT_NAME . '/sections', array( $this, 'options' ), 70 );
 			add_action( 'shoestrap_entry_meta',     array( $this, 'meta_custom_render'                  ) );
 			add_filter( 'excerpt_more',             array( $this, 'excerpt_more'                        ) );
-			add_action( 'shoestrap_entry_meta',     array( $this, 'featured_image'                      ) );
 			add_action( 'wp',                       array( $this, 'remove_featured_image_per_post_type' ) );
+
+			if ( ! is_singular() ) {
+				add_action( 'shoestrap_entry_meta',   array( $this, 'featured_image'                      ) );
+			}
 
 			if ( isset( $ss_settings['post_excerpt_length'] ) ) {
 				add_filter( 'excerpt_length', array( $this, 'excerpt_length' ) );
@@ -418,8 +421,7 @@ if ( ! class_exists( 'Shoestrap_Blog' ) ) {
 				}
 
 				if ( isset( $post_type ) && is_singular( $post_type ) ) {
-					add_action( 'shoestrap_page_pre_content', array( $this, 'featured_image' ) );
-					add_action( 'shoestrap_single_pre_content', array( $this, 'featured_image' ) );
+					add_action( 'shoestrap_entry_meta', array( $this, 'featured_image' ) );
 				}
 			}
 		}
