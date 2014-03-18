@@ -9,6 +9,8 @@
 
 	<?php do_action( 'get_header' ); ?>
 
+	<?php do_action( 'shoestrap_pre_top_bar' ); ?>
+
 	<?php ss_get_template_part( apply_filters( 'shoestrap_top_bar_template', 'templates/top-bar' ) ); ?>
 
 	<?php do_action( 'shoestrap_pre_wrap' ); ?>
