@@ -1,11 +1,5 @@
 <?php
 
-if ( ! has_action( 'shoestrap_page_header_override' ) ) {
-	ss_get_template_part( 'templates/page', 'header' );
-} else {
-	do_action( 'shoestrap_page_header_override' );
-}
-
 do_action( 'shoestrap_index_begin' );
 
 if ( ! have_posts() ) {
