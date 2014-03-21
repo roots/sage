@@ -19,9 +19,13 @@
 
   <div class="wrap container" role="document">
     <div class="content row">
+      <?php roots_content_before(); ?>
       <main class="main <?php echo roots_main_class(); ?>" role="main">
+        <?php roots_content_top(); ?>
         <?php include roots_template_path(); ?>
+        <?php roots_content_bottom(); ?>
       </main><!-- /.main -->
+      <?php roots_content_after(); ?>
       <?php if (roots_display_sidebar()) : ?>
         <?php roots_sidebars_before(); ?>
         <aside class="sidebar <?php echo roots_sidebar_class(); ?>" role="complementary">
