@@ -23,10 +23,14 @@
         <?php include roots_template_path(); ?>
       </main><!-- /.main -->
       <?php if (roots_display_sidebar()) : ?>
+        <?php roots_sidebars_before(); ?>
         <aside class="sidebar <?php echo roots_sidebar_class(); ?>" role="complementary">
+          <?php roots_sidebar_top(); ?>
           <?php include roots_sidebar_path(); ?>
+          <?php roots_sidebar_top(); ?>
         </aside><!-- /.sidebar -->
       <?php endif; ?>
+      <?php tha_sidebars_after(); ?>
     </div><!-- /.content -->
   </div><!-- /.wrap -->
 
