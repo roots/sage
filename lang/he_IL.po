@@ -250,7 +250,7 @@ msgstr "התנתק מחשבון זה"
 
 #: templates/comments.php:90
 msgid "Log out &raquo;"
-msgstr "התנתק &raquo;"
+msgstr "התנתק"
 
 #: templates/comments.php:92
 msgid "Name"

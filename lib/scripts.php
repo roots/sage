@@ -11,6 +11,7 @@
  * 3. /theme/assets/js/scripts.js (in footer)
  */
 function roots_scripts() {
+<<<<<<< HEAD
   /**
    * The build task in Grunt renames production assets with a hash
    * Read the asset names from assets-manifest.json
@@ -34,6 +35,9 @@ function roots_scripts() {
   }
 
   wp_enqueue_style('roots_css', get_template_directory_uri() . $assets['css'], false, null);
+=======
+  wp_enqueue_style('roots_main', get_template_directory_uri() . '/assets/css/main.min.css', false, '9880649384aea9f1ee166331c0a30daa');
+>>>>>>> f411b8d0c83f95ca04ade1b1d041da9538bc6208
 
   /**
    * jQuery is loaded using the same method from HTML5 Boilerplate:
