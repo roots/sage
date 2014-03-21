@@ -34,7 +34,7 @@
           <?php roots_sidebar_top(); ?>
         </aside><!-- /.sidebar -->
       <?php endif; ?>
-      <?php tha_sidebars_after(); ?>
+      <?php roots_sidebars_after(); ?>
     </div><!-- /.content -->
   </div><!-- /.wrap -->
 
