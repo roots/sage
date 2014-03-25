@@ -242,7 +242,7 @@ if (current_theme_supports('nice-search')) {
  * @link http://core.trac.wordpress.org/ticket/11330
  */
 function roots_request_filter($query_vars) {
-  if (isset($_GET['s']) && empty($_GET['s'])) {
+  if (isset($_GET['s']) && empty($_GET['s']) && !is_admin()) {
     $query_vars['s'] = ' ';
   }
 
