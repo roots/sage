@@ -239,6 +239,6 @@ msgstr ""
 msgid "Search"
 msgstr ""
 
-#: templates/searchform.php:4
+#: templates/searchform.php:3
 msgid "Search for:"
 msgstr ""

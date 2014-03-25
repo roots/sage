@@ -11,7 +11,7 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Generator: Poedit 1.6.4\n"
 "POT-Creation-Date: 2014-01-29 07:23+0400\n"
-"PO-Revision-Date: 2014-03-11 13:37+0400\n"
+"PO-Revision-Date: 2014-03-13 13:37+0400\n"
 
 #: 404.php:4
 msgid "Sorry, but the page you were trying to view does not exist."
@@ -250,6 +250,6 @@ msgstr "Автор:"
 msgid "Search"
 msgstr "Поиск"
 
-#: templates/searchform.php:4
+#: templates/searchform.php:3
 msgid "Search for:"
 msgstr "Поиск:"
