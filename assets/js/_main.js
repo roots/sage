@@ -8,17 +8,13 @@
  * .noConflict()
  * The routing is enclosed within an anonymous function so that you can 
  * always reference jQuery with $, even when in .noConflict() mode.
- *
- * Google CDN, Latest jQuery
- * To use the default WordPress version of jQuery, go to lib/config.php and
- * remove or comment out: add_theme_support('jquery-cdn');
  * ======================================================================== */
 
 (function($) {
 
 // Use this variable to set up the common and page specific functions. If you 
 // rename this variable, you will also need to rename the namespace below.
-var Roots = {
+var Shoestrap = {
   // All pages
   common: {
     init: function() {
@@ -43,7 +39,7 @@ var Roots = {
 // Add additional events for more control over timing e.g. a finalize event
 var UTIL = {
   fire: function(func, funcname, args) {
-    var namespace = Roots;
+    var namespace = Shoestrap;
     funcname = (funcname === undefined) ? 'init' : funcname;
     if (func !== '' && namespace[func] && typeof namespace[func][funcname] === 'function') {
       namespace[func][funcname](args);

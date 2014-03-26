@@ -1,0 +1,431 @@
+body {
+	word-wrap: break-word;
+	-ms-word-wrap: break-word;
+	&.admin-bar {
+		&.top-navbar {
+			padding-top: @navbar-height;
+			.topnavbar {
+				&.navbar-fixed-top {
+					padding-top: 32px;
+				}
+			}
+		}
+		.navbar.static-left {
+			margin-top: 32px;
+		}
+	}
+	.navbar.navbar-static-top {
+		margin-bottom: 0;
+	}
+	// .navbar.static-left {
+	// 	.nav > li > a {
+	// 		padding-left: 0;
+	// 		padding-right: 0;
+	// 	}
+	// }
+	&.bottom-navbar {
+		padding-bottom: @navbar-height;
+	}
+}
+
+// Styling the (+) button on the navbar
+a.toggle-nav {
+	opacity:0.6;
+	-webkit-transition:all 500ms ease-in-out;
+	-moz-transition:all 500ms ease-in-out;
+	-o-transition:all 500ms ease-in-out;
+	-ms-transition:all 500ms ease-in-out;
+	border-radius: 50%;
+
+	color: @navbar-default-link-color;
+
+	&.nav-toggle {
+		color: @navbar-default-link-color;
+		position: relative;
+		float: left;
+	}
+
+	&.static-left {
+		z-index:1;
+		text-decoration: none;
+		text-align: center;
+		display:block;
+		width: 30px;
+		height: 30px;
+		font-size: 20px;
+		background: transparent;
+		color: @brand-info;
+		width: 100%;
+		border-radius: 0px;
+	}
+
+	&.open {
+		opacity:1;
+		transform: rotate(540deg);
+		-ms-transform: rotate(540deg);
+		-webkit-transform: rotate(540deg);
+	}
+}
+
+// Megadrop styles
+#megaDrop {
+	display: none;
+	padding: 20px 10px;
+}
+
+.navbar {
+	#searchform {
+		border: 0;
+		padding: 0;
+	}
+	.dropdown-menu {
+		padding: 0;
+		background: @navbar-default-bg;
+		li.active a,
+		li:hover a{
+			background: @navbar-default-link-active-bg;
+			color: @navbar-default-link-active-color;
+		}
+	}
+
+	&.style1 {
+		.open > a,
+		.open > a:hover,
+		.open > a:focus,
+		a:hover,
+		a:focus {
+			&:first-child {
+				background: @navbar-default-bg;
+				border-bottom: 5px solid @brand-primary;
+				padding-bottom: 10px;
+			}
+			
+		}
+
+		.active > a,
+		.active > a:hover,
+		.active > a:focus {
+			background: @navbar-default-bg;
+			border-bottom: 5px solid @brand-primary;
+		}
+		.dropdown-menu {
+			border-top: 5px;
+			margin-top: -5px;
+			padding-top: 0;
+			padding-bottom: 0;
+			right: auto !important;
+			border-top: 1px solid @brand-primary;
+			a,
+			a:hover,
+			a:focus {
+				background: block;
+				color: @brand-primary;
+				border-bottom: 0;
+				border-top: 1px solid @brand-primary;
+				padding-bottom: 0px;
+			}
+		}
+		.navbar-nav > li > a {
+				padding-bottom: 10px;
+		}
+	}
+	&.style2 {
+		li > a {
+			padding-top: (((@navbar-height - @line-height-computed) / 2));
+		}
+		.active > a,
+		.active > a:hover,
+		.active > a:focus {
+			background: @navbar-default-bg;
+			border-top: 3px solid @brand-primary;
+			padding-top: (((@navbar-height - @line-height-computed) / 2) - 3);
+		}
+		li ul li > a {
+			border-top: none !important;
+			padding-top: 0 !important;
+		}
+		.dropdown-menu {
+			.active > a,
+			.active > a:hover,
+			.active > a:focus {
+				color: @brand-primary;
+			}
+		}
+	}
+	&.style3 {
+		border-top: 5px solid @brand-primary;
+		.active > a,
+		.active > a:hover,
+		.active > a:focus {
+			border-top: 5px solid @brand-warning;
+			margin-top: -5px;
+		}
+		.dropdown-menu {
+			.active > a, 
+			.active > a:hover,
+			.active > a:focus {
+			border-top: 2px solid @brand-warning !important;
+			}
+		}
+	}
+	&.style4 {
+		border-top: 5px solid @brand-primary;
+		li > a {
+		}
+		.active > a,
+		.active > a:hover,
+		.active > a:focus {
+			background: @brand-primary;
+			color: @body-bg;
+		}
+	}
+	&.style5 {
+		.active > a,
+		.active > a:hover,
+		.active > a:focus {
+			background: @body-bg;
+			color: @link-color;
+		}
+	}
+	&.style6 {
+		border-bottom: 5px solid @brand-primary;
+		li > a {
+		}
+		.active > a,
+		.active > a:hover,
+		.active > a:focus {
+			border-bottom: 5px solid @brand-warning;
+			margin-bottom: -5px;
+		}
+		.dropdown-menu {
+			.active > a,
+			.active > a:hover,
+			.active > a:focus {
+				border-bottom: 2px solid @brand-warning !important;
+			}
+		}
+	}
+	&.metro {
+		.active > a,
+		.active > a:hover,
+		.active > a:focus {
+			background: @brand-danger;
+		}
+		li.open {
+			a.dropdown-toggle {
+				background: @brand-primary;
+			}
+		}
+		.dropdown-menu > li > a:hover,
+		.dropdown-menu > li > a:focus {
+			background: @brand-primary;
+		}
+	}
+}
+
+.navbar a.navbar-brand {
+	max-width: inherit !important;
+
+	&.logo {
+		height: @navbar-height;
+		padding-top: @padding-base-vertical;
+		padding-bottom: @padding-base-vertical;
+		img {
+			max-height: 100%;
+			width: auto;
+			max-width: inherit !important;
+			vertical-align: -webkit-baseline-middle;
+		}
+	}
+}
+
+// Sub menus
+// ---------------------------
+.dropdown-submenu {
+	position: relative;
+}
+// Default dropdowns
+li.dropdown ul.dropdown-menu li.dropdown > .dropdown-menu {
+	top: 0;
+	left: 100%;
+}
+li.dropdown ul.dropdown-menu li.dropdown:hover > .dropdown-menu {
+	display: block;
+}
+
+// Left aligned submenus
+li.dropdown ul.dropdown-menu li.dropdown.pull-left {
+	float: none;
+}
+
+.nav-pills > li > a {
+	border-radius: @border-radius-base;
+}
+
+.navbar {
+	font-family:  @navbar-font-family;
+	font-size:    @navbar-font-size;
+	font-style:   @navbar-font-style;
+	font-weight:  @navbar-font-weight;
+	li > a {
+		color:        @navbar-default-link-color !important;
+	}
+	a.navbar-brand {
+		font-family:  @brand-font-family;
+		font-size:    @brand-font-size;
+		font-style:   @brand-font-style;
+		font-weight:  @brand-font-weight;
+		color:        @brand-font-color;
+	}
+	.nav.nav-pills {
+		li a {
+			padding: @navbar-padding-vertical @navbar-padding-horizontal;
+		}
+	}
+}
+
+//Having topnavbar always on top of secondary
+.topnavbar {
+	z-index: @zindex-navbar;
+	&.navbar-fixed-top {
+		z-index: @zindex-navbar-fixed;
+	}
+}
+.secondary {
+	z-index: 1;
+}
+
+@media (max-width: @screen-sm) {
+	.navbar .pull-right {
+		float: none !important;
+	}
+}
+
+.banner-navbar-static-left-mixin {
+	position: fixed;
+	overflow-y: auto;
+	height: 100%;
+	padding: 0;
+	border-radius : 0px;
+	top:0;
+
+	.navbar-header {
+		float: none;
+	}
+
+	.nav-main.navbar-collapse {
+		padding: 0;
+
+		ul.nav.navbar-nav,
+		.pull-right {
+			float: none !important;
+
+			> li {
+				width: 100%;
+			}
+		}
+	}
+
+	form#searchform {
+		padding: (@grid-gutter-width / 2);
+	}
+
+	.logo {
+		max-width: 100% !important;
+		height: auto;
+	}
+}
+
+.static-menu-main-mixin {
+	&.col-static-1  { padding-left: 91.66%; }
+	&.col-static-2  { padding-left: 83.33%; }
+	&.col-static-3  { padding-left: 75%;    }
+	&.col-static-4  { padding-left: 66.66%; }
+	&.col-static-5  { padding-left: 58.33%; }
+	&.col-static-6  { padding-left: 50%;    }
+	&.col-static-7  { padding-left: 41.66%; }
+	&.col-static-8  { padding-left: 33.33%; }
+	&.col-static-9  { padding-left: 25%;    }
+	&.col-static-10 { padding-left: 16.66%; }
+	&.col-static-11 { padding-left: 8.332%; }
+}
+
+@media (max-width: @screen-xs) {
+	header.sm.banner.navbar.static-left,
+	header.md.banner.navbar.static-left,
+	header.lg.banner.navbar.static-left {
+		padding-left: 0;
+		padding-right: 0;
+	}
+}
+
+@media (min-width: @screen-xs) {
+	header.xs {
+		&.banner.navbar.static-left {
+			.banner-navbar-static-left-mixin;
+		}
+	}
+	header.sm.banner.navbar.static-left,
+	header.md.banner.navbar.static-left,
+	header.lg.banner.navbar.static-left {
+		padding-left: 0;
+		padding-right: 0;
+	}
+	section.xs {
+		&.static-menu-main {
+			.static-menu-main-mixin;
+		}
+	}
+}
+
+@media (min-width: @screen-sm) {
+	header.sm {
+		&.banner.navbar.static-left {
+			.banner-navbar-static-left-mixin;
+		}
+	}
+	header.md.banner.navbar.static-left,
+	header.lg.banner.navbar.static-left {
+		padding-left: 0;
+		padding-right: 0;
+	}
+	section.sm {
+		&.static-menu-main {
+			.static-menu-main-mixin;
+		}
+	}
+}
+
+@media (min-width: @screen-md) {
+	header.md {
+		&.banner.navbar.static-left {
+			.banner-navbar-static-left-mixin;
+		}
+	}
+	header.lg.banner.navbar.static-left {
+		padding-left: 0;
+		padding-right: 0;
+	}
+	section.md {
+		&.static-menu-main {
+			.static-menu-main-mixin;
+		}
+	}
+}
+
+@media (min-width: @screen-lg) {
+	header.lg {
+		&.banner.navbar.static-left {
+			.banner-navbar-static-left-mixin;
+		}
+	}
+	section.lg {
+		&.static-menu-main {
+			.static-menu-main-mixin;
+		}
+	}
+}
+
+.fluid nav.nav-main {
+	padding-right: (@grid-gutter-width / 2);
+}

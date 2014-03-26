@@ -1,4 +1,4 @@
-# Contributing to Roots Theme
+# Contributing to Shoestrap Theme
 
 Please take a moment to review this document in order to make the contribution
 process easy and effective for everyone involved.
@@ -16,7 +16,7 @@ The issue tracker is the preferred channel for [bug reports](#bugs),
 requests](#pull-requests), but please respect the following restrictions:
 
 * Please **do not** use the issue tracker for personal support requests (use the
-  [Roots Discourse](http://discourse.roots.io/)).
+  [Shoestrap Forums](http://shoestrap.org/forums/)).
 
 * Please **do not** derail or troll issues. Keep the discussion on topic and
   respect the opinions of others.
@@ -36,7 +36,7 @@ Guidelines for bug reports:
 2. **Check if the issue has been fixed** &mdash; try to reproduce it using the
    latest `master` or development branch in the repository.
 
-3. **Isolate the problem to Roots** &mdash; make sure that the code in the Roots
+3. **Isolate the problem to Shoestrap** &mdash; make sure that the code in the Shoestrap
 repository is _definitely_ responsible for the issue. Switch to a core WordPress
 theme (such as Twenty Thirteen) to confirm problems before reporting an issue.
 Make sure you have reproduced the bug with all plugins disabled. Any issues
@@ -51,8 +51,8 @@ information. Please try to be as detailed as possible in your report.
 ## Feature requests
 
 Feature requests are welcome. But take a moment to find out whether your idea
-fits with the scope and aims of Roots. It's up to *you* to make a strong
-case to convince the Roots developers of the merits of this feature. Please
+fits with the scope and aims of Shoestrap. It's up to *you* to make a strong
+case to convince the Shoestrap developers of the merits of this feature. Please
 provide as much detail and context as possible.
 
 
@@ -65,15 +65,15 @@ commits.
 
 **Please ask first** before embarking on any significant pull request (e.g.
 implementing features, refactoring code), otherwise you risk spending a lot of
-time working on something that the developers might not want to merge into Roots.
+time working on something that the developers might not want to merge into Shoestrap.
 
 Please adhere to the coding conventions used throughout the project (indentation,
 comments, etc.).
 
 Adhering to the following this process is the best way to get your work
-included in Roots:
+included in Shoestrap:
 
-1. [Fork](http://help.github.com/fork-a-repo/) Roots, clone your fork,
+1. [Fork](http://help.github.com/fork-a-repo/) Shoestrap, clone your fork,
    and configure the remotes:
 
    ```bash

@@ -3,4 +3,4 @@
 Template Name: Full-Screen
 */
 
-get_template_part( 'page' );
+ss_get_template_part( 'page' );

@@ -1,8 +1,8 @@
-<footer class="content-info" role="contentinfo">
-  <?php if ( shoestrap_getVariable( 'site_style' ) != 'boxed'  ) : ?><div class="<?php echo shoestrap_container_class(); ?>"><?php endif; ?>
-    <div class="row">
-      <?php shoestrap_footer_content(); ?>
-      <?php shoestrap_footer_html(); ?>
-    </div>
-  </div>
+<?php global $ss_framework; ?>
+<footer id="page-footer" class="content-info" role="contentinfo">
+	<?php echo $ss_framework->open_container( 'div' ); ?>
+		<?php echo $ss_framework->open_row( 'div' ); ?>
+			<?php shoestrap_footer_content(); ?>
+		<?php echo $ss_framework->close_row( 'div' ); ?>
+	<?php echo $ss_framework->close_container( 'div' ); ?>
 </footer>
