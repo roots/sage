@@ -28,6 +28,10 @@ foreach ( $frameworks as $framework ) {
 	}
 }
 
+if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
+	require_once dirname( __FILE__ ) . '/bootstrap/class-SS_Framework_Bootstrap.php'
+}
+
 if ( ! isset( $active ) ) {
 	$active = 'SS_Framework_Bootstrap';
 }
