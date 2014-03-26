@@ -81,3 +81,27 @@ function shoestrap_core_updater() {
 
 }
 add_action( 'admin_init', 'shoestrap_core_updater' );
+
+/*
+* Notice for Shoestrap Updater
+*/
+add_action('admin_notices', 'shoestrap_new_version_notice');
+function shoestrap_new_version_notice() {
+	global $current_user ;
+	$user_id = $current_user->ID;
+	/* Check that the user hasn't already clicked to ignore the message */
+	if ( ! get_user_meta($user_id, 'shoestrap_ignore_notice') ) {
+		echo "<div class='updated'><p><h3>Theme Notice</h3><h4>Welcome <i>Shoestrap Updater</i> plugin</h4><div>Please make sure to <a href='http://shoestrap.org/downloads/shoestrap-updater/' target='_blank'>download and install Shoestrap Updater</a> in order to get noticed of updates concerning all Shoestrap products.<br>From now on, Github Updater is longer needed, so feel free to deactivate and delete it.</div><br/>";
+		printf(__('<a href="%1$s">Hide Notice</a>'), '?shoestrap_nag_ignore=0');
+		echo "</p></div>";
+	}
+}
+add_action('admin_init', 'shoestrap_nag_ignore');
+function shoestrap_nag_ignore() {
+	global $current_user;
+	$user_id = $current_user->ID;
+	/* If user clicks to ignore the notice, add that to their user meta */
+	if ( isset($_GET['shoestrap_nag_ignore']) && '0' == $_GET['shoestrap_nag_ignore'] ) {
+		add_user_meta($user_id, 'shoestrap_ignore_notice', 'true', true);
+	}
+}
