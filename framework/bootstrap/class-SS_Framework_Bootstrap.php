@@ -1016,6 +1016,8 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 
 			// Below is just an ugly hack
 			$css = str_replace( '../', get_template_directory_uri() . '/assets/', $css );
+			$css = str_replace( 'http:', '', $css );
+			$css = str_replace( 'https:', '', $css );
 
 			return apply_filters( 'shoestrap_compiler_output', $css );
 		}

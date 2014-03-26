@@ -8,7 +8,9 @@ if ( ! defined( 'SS_FRAMEWORK' ) ) {
 
 // define the 'SHOESTRAP_ASSETS_URL' constant.
 if ( ! defined( 'SHOESTRAP_ASSETS_URL' ) ) {
-	define( 'SHOESTRAP_ASSETS_URL', get_template_directory_uri() . '/assets' );
+	$shoestrap_assets_url = str_replace( 'http:', '', get_template_directory_uri() . '/assets' );
+	$shoestrap_assets_url = str_replace( 'https:', '', $shoestrap_assets_url );
+	define( 'SHOESTRAP_ASSETS_URL', $shoestrap_assets_url );
 }
 
 /*
