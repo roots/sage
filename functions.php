@@ -91,7 +91,7 @@ function shoestrap_new_version_notice() {
 	$user_id = $current_user->ID;
 	/* Check that the user hasn't already clicked to ignore the message */
 	if ( ! get_user_meta($user_id, 'shoestrap_ignore_notice') ) {
-		echo "<div class='updated'><p><h3>Theme Notice</h3><h4>Welcome <i>Shoestrap Updater</i> plugin</h4><div>Please make sure to <a href='http://shoestrap.org/downloads/shoestrap-updater/' target='_blank'>download and install Shoestrap Updater</a> in order to get noticed of updates concerning all Shoestrap products.<br>From now on, Github Updater is longer needed, so feel free to deactivate and delete it.</div><br/>";
+		echo "<div class='updated'><p><h3>Theme Notice</h3><h4>Welcome <i>Shoestrap Updater</i> plugin</h4><div>Please make sure to <a href='http://shoestrap.org/downloads/shoestrap-updater/' target='_blank'>download and install Shoestrap Updater</a> in order to get noticed of updates concerning all Shoestrap products.<br>From now on, Github Updater is no longer needed, so feel free to deactivate and delete it.</div><br/>";
 		printf(__('<a href="%1$s">Hide Notice</a>'), '?shoestrap_nag_ignore=0');
 		echo "</p></div>";
 	}
