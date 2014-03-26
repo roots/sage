@@ -202,15 +202,15 @@ if ( !class_exists( 'Shoestrap_Advanced' ) ) {
 			);
 
 			// Do not show this option if the less.php compiler is not present.
-			if ( class_exists( 'Less_Cache' ) && class_exists( 'Less_Parser' ) ) {
-				$fields[] = array(
-					'title'     => __( 'Use less.js instead of less.php compiler', 'shoestrap' ),
-					'desc'      => __( 'The less.js compiler works by compiling the stylesheets on the browser, while the less.php compiler compiles the stylesheets on your server and users are then served the pre-compiled css file.', 'shoestrap' ),
-					'id'        => 'lessjs',
-					'default'   => 0,
-					'type'      => 'switch',
-				);
-			}
+			// if ( class_exists( 'Less_Cache' ) && class_exists( 'Less_Parser' ) ) {
+			// 	$fields[] = array(
+			// 		'title'     => __( 'Use less.js instead of less.php compiler', 'shoestrap' ),
+			// 		'desc'      => __( 'The less.js compiler works by compiling the stylesheets on the browser, while the less.php compiler compiles the stylesheets on your server and users are then served the pre-compiled css file.', 'shoestrap' ),
+			// 		'id'        => 'lessjs',
+			// 		'default'   => 0,
+			// 		'type'      => 'switch',
+			// 	);
+			// }
 
 			$section['fields'] = $fields;
 
