@@ -174,7 +174,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 			$classes = preg_replace( '/( current( -menu-|[-_]page[-_] )( item|parent|ancestor ) )/', 'active', $classes );
 			$classes = preg_replace( '/^( ( menu|page )[-_\w+]+ )+/', '', $classes );
 
-			$classes[] = 'menu-' . $slug;
+			$classes[] = 'menu-' . shoestrap_transliterate( $slug );
 
 			$classes = array_unique( $classes );
 
