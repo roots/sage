@@ -396,7 +396,7 @@ if ( ! class_exists( 'Shoestrap_Social' ) ) {
 				$networks['facebook'] = array(
 					'icon'      => 'facebook',
 					'fullname'  => 'Facebook',
-					'url'       => 'http://www.facebook.com/sharer.php?u=' . get_permalink() . '&amp;title=' . get_the_title()
+					'url'       => 'http://www.facebook.com/sharer.php?u=' . get_permalink() . '&amp;title=' . urlencode( html_entity_decode( get_the_title(),ENT_QUOTES,'UTF-8' ) )
 				);
 			}
 
@@ -404,7 +404,7 @@ if ( ! class_exists( 'Shoestrap_Social' ) ) {
 				$networks['twitter'] = array(
 					'icon'      => 'twitter',
 					'fullname'  => 'Twitter',
-					'url'       => 'http://twitter.com/home/?status=' . get_the_title() . ' - ' . get_permalink()
+					'url'       => 'http://twitter.com/home/?status=' . urlencode( html_entity_decode( get_the_title(),ENT_QUOTES,'UTF-8' ) ) . ' - ' . get_permalink()
 				);
 
 				$twittername = $this->get_tw_username();
@@ -419,7 +419,7 @@ if ( ! class_exists( 'Shoestrap_Social' ) ) {
 				$networks['reddit'] = array(
 					'icon'      => 'reddit',
 					'fullname'  => 'Reddit',
-					'url'       => 'http://reddit.com/submit?url=' .get_permalink() . '&amp;title=' . get_the_title()
+					'url'       => 'http://reddit.com/submit?url=' .get_permalink() . '&amp;title=' . urlencode( html_entity_decode( get_the_title(),ENT_QUOTES,'UTF-8' ) )
 				);
 			}
 
@@ -427,7 +427,7 @@ if ( ! class_exists( 'Shoestrap_Social' ) ) {
 				$networks['linkedin'] = array(
 					'icon'      => 'linkedin',
 					'fullname'  => 'LinkedIn',
-					'url'       => 'http://linkedin.com/shareArticle?mini=true&amp;url=' .get_permalink() . '&amp;title=' . get_the_title()
+					'url'       => 'http://linkedin.com/shareArticle?mini=true&amp;url=' .get_permalink() . '&amp;title=' . urlencode( html_entity_decode( get_the_title(),ENT_QUOTES,'UTF-8' ) )
 				);
 			}
 
@@ -443,7 +443,7 @@ if ( ! class_exists( 'Shoestrap_Social' ) ) {
 				$networks['tumblr'] = array(
 					'icon'      => 'tumblr',
 					'fullname'  => 'Tumblr',
-					'url'       =>  'http://www.tumblr.com/share/link?url=' . urlencode( get_permalink() ) . '&amp;name=' . urlencode( get_the_title() ) . "&amp;description=" . urlencode( get_the_excerpt() )
+					'url'       =>  'http://www.tumblr.com/share/link?url=' . urlencode( get_permalink() ) . '&amp;name=' . urlencode( html_entity_decode( get_the_title(),ENT_QUOTES,'UTF-8' ) ) . "&amp;description=" . urlencode( get_the_excerpt() )
 				);
 			}
 
@@ -459,7 +459,7 @@ if ( ! class_exists( 'Shoestrap_Social' ) ) {
 				$networks['email'] = array(
 					'icon'      => 'envelope',
 					'fullname'  => 'Email',
-					'url'       => 'mailto:?subject=' .get_the_title() . '&amp;body=' . get_permalink()
+					'url'       => 'mailto:?subject=' . urlencode( html_entity_decode( get_the_title(),ENT_QUOTES,'UTF-8' ) ) . '&amp;body=' . get_permalink()
 				);
 			}
 			return $networks;

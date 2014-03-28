@@ -1,3 +1,7 @@
+### 3.2
+
+* Complete rewrite [link](https://github.com/shoestrap/shoestrap-3/pull/479)
+
 ### 3.1.0.2
 
 * Fix: allow https in assets urls

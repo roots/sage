@@ -28,6 +28,14 @@ foreach ( $frameworks as $framework ) {
 	}
 }
 
+if ( ! function_exists( 'shoestrap_define_framework_bootstrap' ) ) {
+	require_once dirname( __FILE__ ) . '/bootstrap/framework.php';
+}
+
+if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
+	require_once dirname( __FILE__ ) . '/bootstrap/class-SS_Framework_Bootstrap.php';
+}
+
 if ( ! isset( $active ) ) {
 	$active = 'SS_Framework_Bootstrap';
 }
