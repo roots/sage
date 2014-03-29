@@ -66,7 +66,7 @@ function shoestrap_core_updater() {
 		'remote_api_url' => 'http://shoestrap.org',
 		'item_name'      => 'Shoestrap 3',
 		'license'        => 'c5305a091a9e61268c5be6096bfa3d38',
-		'version'        => '3.2',
+		'version'        => '3.2.1',
 		'author'         => 'aristath, fovoc, dovy',
 		'mode'           => 'theme',
 		'title'          => 'Shoestrap Theme License',

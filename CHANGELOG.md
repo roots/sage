@@ -1,3 +1,10 @@
+### 3.2.1
+
+* Fix: Header margins and paddings
+* Fix: Social buttons URL decoding
+* Fix: Menu classes transliteration
+* Fix: Fixed fatal error on XAMPP development instalations
+
 ### 3.2
 
 * Complete rewrite [link](https://github.com/shoestrap/shoestrap-3/pull/479)
