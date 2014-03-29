@@ -75,9 +75,11 @@ function shoestrap_body_class( $classes ) {
 		$classes[] = basename( get_permalink() );
 	}
 
+	$classes[] = SS_FRAMEWORK;
+
 	// Remove unnecessary classes
 	$home_id_class = 'page-id-' . get_option( 'page_on_front' );
-	$remove_classes = array( 
+	$remove_classes = array(
 		'page-template-default',
 		$home_id_class
 	);
@@ -110,7 +112,7 @@ function shoestrap_caption( $output, $attr, $content ) {
 		return $output;
 	}
 
-	$defaults = array( 
+	$defaults = array(
 		'id'      => '',
 		'align'   => 'alignnone',
 		'width'   => '',
