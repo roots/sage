@@ -577,15 +577,15 @@ if ( ! class_exists( 'Shoestrap_Layout' ) ) {
 			$layout_sidebar_on_front = $ss_settings['layout_sidebar_on_front'];
 
 			if ( self::get_layout() == 0 ) {
-				add_filter( 'shoestrap_display_primary_sidebar', 'shoestrap_return_false' );
+				add_filter( 'shoestrap_display_primary_sidebar', '__return_false' );
 			}
 
 			if ( is_front_page() && $layout_sidebar_on_front == 1 && self::get_layout() != 0 ) {
-				add_filter( 'shoestrap_display_primary_sidebar', 'shoestrap_return_true' );
+				add_filter( 'shoestrap_display_primary_sidebar', '__return_true' );
 			}
 
 			if ( ( ! is_front_page() || ( is_front_page() && $layout_sidebar_on_front == 1 ) ) && self::get_layout() != 0 ) {
-				add_filter( 'shoestrap_display_primary_sidebar', 'shoestrap_return_true' );
+				add_filter( 'shoestrap_display_primary_sidebar', '__return_true' );
 			}
 		}
 
@@ -598,11 +598,11 @@ if ( ! class_exists( 'Shoestrap_Layout' ) ) {
 			$layout_sidebar_on_front = $ss_settings['layout_sidebar_on_front'];
 
 			if ( self::get_layout() < 3 ) {
-				add_filter( 'shoestrap_display_secondary_sidebar', 'shoestrap_return_false' );
+				add_filter( 'shoestrap_display_secondary_sidebar', '__return_false' );
 			}
 
 			if ( ( ! is_front_page() && shoestrap_display_secondary_sidebar() ) || ( is_front_page() && $layout_sidebar_on_front == 1 && self::get_layout() >= 3 ) ) {
-				add_filter( 'shoestrap_display_secondary_sidebar', 'shoestrap_return_true' );
+				add_filter( 'shoestrap_display_secondary_sidebar', '__return_true' );
 			}
 		}
 

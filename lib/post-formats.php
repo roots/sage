@@ -8,7 +8,7 @@ function shoestrap_post_formats() {
 
 		// If the post format is set to "aside", don't display a title.
 		if ( get_post_format() == 'aside' ) {
-			add_filter( 'shoestrap_title_section', 'shoestrap_blank', 20 );
+			add_filter( 'shoestrap_title_section', '__return_null', 20 );
 		}
 
 		if ( get_post_format() == 'gallery' ) {

@@ -167,3 +167,24 @@ function shoestrap_after_the_content_deprecated() {
 		do_action( 'shoestrap_after_the_content' );
 	}
 }
+
+/**
+ * Alias of __return_true
+ */
+function shoestrap_return_true()  {
+	return __return_true();
+}
+
+/**
+ * Alias of __return_false
+ */
+function shoestrap_return_false() {
+	return __return_false();
+}
+
+/**
+ * Alias of __return_null
+ */
+function shoestrap_blank() {
+	return __return_null();
+}

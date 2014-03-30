@@ -27,8 +27,8 @@ if ( ! class_exists( 'Shoestrap_Blog' ) ) {
 
 			// Hide post meta data in footer of single posts
 			if ( $ss_settings['single_meta'] == 0 ) {
-				add_filter( 'shoestrap_the_tags', 'shoestrap_blank' );
-				add_filter( 'shoestrap_the_cats', 'shoestrap_blank' );
+				add_filter( 'shoestrap_the_tags', '__return_null' );
+				add_filter( 'shoestrap_the_cats', '__return_null' );
 			}
 		}
 
