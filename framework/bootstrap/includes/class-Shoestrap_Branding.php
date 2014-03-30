@@ -7,7 +7,7 @@ if ( !class_exists( 'Shoestrap_Branding' ) ) {
 	* The Branding module
 	*/
 	class Shoestrap_Branding {
-		
+
 		function __construct() {
 			add_filter( 'redux/options/' . SHOESTRAP_OPT_NAME . '/sections', array( $this, 'options' ), 20 );
 			add_action( 'wp_head',            array( $this, 'icons'            ) );
@@ -24,7 +24,7 @@ if ( !class_exists( 'Shoestrap_Branding' ) ) {
 				'icon' => 'el-icon-certificate'
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'       => 'Colors',
 				'desc'        => '',
 				'id'          => 'help6',
@@ -41,60 +41,60 @@ if ( !class_exists( 'Shoestrap_Branding' ) ) {
 				'type'        => 'switch',
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'       => __( 'Brand Colors: Primary', 'shoestrap' ),
 				'desc'        => __( 'Select your primary branding color. Also referred to as an accent color. This will affect various areas of your site, including the color of your primary buttons, link color, the background of some elements and many more.', 'shoestrap' ),
 				'id'          => 'color_brand_primary',
 				'default'     => '#428bca',
 				'compiler'    => true,
-				'transparent' => false,    
+				'transparent' => false,
 				'type'        => 'color'
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'       => __( 'Brand Colors: Success', 'shoestrap' ),
 				'desc'        => __( 'Select your branding color for success messages etc. Default: #5cb85c.', 'shoestrap' ),
 				'id'          => 'color_brand_success',
 				'default'     => '#5cb85c',
 				'compiler'    => true,
-				'transparent' => false,    
+				'transparent' => false,
 				'type'        => 'color',
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'       => __( 'Brand Colors: Warning', 'shoestrap' ),
 				'desc'        => __( 'Select your branding color for warning messages etc. Default: #f0ad4e.', 'shoestrap' ),
 				'id'          => 'color_brand_warning',
 				'default'     => '#f0ad4e',
 				'compiler'    => true,
 				'type'        => 'color',
-				'transparent' => false,    
+				'transparent' => false,
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'       => __( 'Brand Colors: Danger', 'shoestrap' ),
 				'desc'        => __( 'Select your branding color for success messages etc. Default: #d9534f.', 'shoestrap' ),
 				'id'          => 'color_brand_danger',
 				'default'     => '#d9534f',
 				'compiler'    => true,
 				'type'        => 'color',
-				'transparent' => false,    
+				'transparent' => false,
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'       => __( 'Brand Colors: Info', 'shoestrap' ),
 				'desc'        => __( 'Select your branding color for info messages etc. It will also be used for the Search button color as well as other areas where it semantically makes sense to use an \'info\' class. Default: #5bc0de.', 'shoestrap' ),
 				'id'          => 'color_brand_info',
 				'default'     => '#5bc0de',
 				'compiler'    => true,
 				'type'        => 'color',
-				'transparent' => false,    
+				'transparent' => false,
 			);
 
 			$section['fields'] = $fields;
 
 			$section = apply_filters( 'shoestrap_module_branding_options_modifier', $section );
-			
+
 			$sections[] = $section;
 			return $sections;
 		}

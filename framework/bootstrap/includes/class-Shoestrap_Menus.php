@@ -620,7 +620,7 @@ if ( ! class_exists( 'Shoestrap_Menus' ) ) {
 					<?php $megadrop_class = ( $ss_settings['site_style'] != 'fluid' ) ? 'top-megamenu container' : 'top-megamenu'; ?>
 					<div id="megaDrop" class="<?php echo $megadrop_class; ?>">
 						<?php $widgetareaclass = 'col-sm-' . self::navbar_widget_area_class(); ?>
-						
+
 						<?php if ( is_active_sidebar( 'navbar-slide-down-top' ) ) : ?>
 							<?php dynamic_sidebar( 'navbar-slide-down-top' ); ?>
 						<?php endif; ?>

@@ -50,19 +50,19 @@ if ( ! class_exists( 'Shoestrap_Layout' ) ) {
 			global $ss_settings;
 
 			// Layout Settings
-			$section = array( 
+			$section = array(
 				'title'       => __( 'Layout', 'shoestrap' ),
 				'icon'        => 'el-icon-screen',
 				'description' => '<p>In this area you can select your site\'s layout, the width of your sidebars, as well as other, more advanced options.</p>',
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'     => __( 'Site Style', 'shoestrap' ),
 				'desc'      => __( 'Select the default site layout. Defaults to "Wide". Please note that if you select a non-responsive layout, you will have to trigger the compiler so that your changes take effect.', 'shoestrap' ),
 				'id'        => 'site_style',
 				'default'   => 'wide',
 				'type'      => 'select',
-				'options'   => array( 
+				'options'   => array(
 					'static'  => __( 'Static (Non-Responsive)', 'shoestrap' ),
 					'wide'    => __( 'Wide', 'shoestrap' ),
 					'boxed'   => __( 'Boxed', 'shoestrap' ),
@@ -71,13 +71,13 @@ if ( ! class_exists( 'Shoestrap_Layout' ) ) {
 				'compiler'  => true,
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'     => __( 'Layout', 'shoestrap' ),
 				'desc'      => __( 'Select main content and sidebar arrangement. Choose between 1, 2 or 3 column layout.', 'shoestrap' ),
 				'id'        => 'layout',
 				'default'   => 1,
 				'type'      => 'image_select',
-				'options'   => array( 
+				'options'   => array(
 					0 => ReduxFramework::$_url . '/assets/img/1c.png',
 					1 => ReduxFramework::$_url . '/assets/img/2cr.png',
 					2 => ReduxFramework::$_url . '/assets/img/2cl.png',
@@ -115,7 +115,7 @@ if ( ! class_exists( 'Shoestrap_Layout' ) ) {
 				);
 			}
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'     => __( 'Primary Sidebar Width', 'shoestrap' ),
 				'desc'      => __( 'Select the width of the Primary Sidebar. Please note that the values represent grid columns. The total width of the page is 12 columns, so selecting 4 here will make the primary sidebar to have a width of 1/3 ( 4/12 ) of the total page width.', 'shoestrap' ),
 				'id'        => 'layout_primary_width',
@@ -130,7 +130,7 @@ if ( ! class_exists( 'Shoestrap_Layout' ) ) {
 				'default' => '4'
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'     => __( 'Secondary Sidebar Width', 'shoestrap' ),
 				'desc'      => __( 'Select the width of the Secondary Sidebar. Please note that the values represent grid columns. The total width of the page is 12 columns, so selecting 4 here will make the secondary sidebar to have a width of 1/3 ( 4/12 ) of the total page width.', 'shoestrap' ),
 				'id'        => 'layout_secondary_width',
@@ -145,7 +145,7 @@ if ( ! class_exists( 'Shoestrap_Layout' ) ) {
 				'default' => '3'
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'     => __( 'Show sidebars on the frontpage', 'shoestrap' ),
 				'desc'      => __( 'OFF by default. If you want to display the sidebars in your frontpage, turn this ON.', 'shoestrap' ),
 				'id'        => 'layout_sidebar_on_front',
@@ -153,7 +153,7 @@ if ( ! class_exists( 'Shoestrap_Layout' ) ) {
 				'type'      => 'switch'
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'     => __( 'Margin from top ( Works only in \'Boxed\' mode )', 'shoestrap' ),
 				'desc'      => __( 'This will add a margin above the navbar. Useful if you\'ve enabled the \'Boxed\' mode above. Default: 0px', 'shoestrap' ),
 				'id'        => 'navbar_margin_top',
@@ -166,7 +166,7 @@ if ( ! class_exists( 'Shoestrap_Layout' ) ) {
 				'type'      => 'slider'
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'     => __( 'Widgets mode', 'shoestrap' ),
 				'desc'      => __( 'How do you want your widgets to be displayed?', 'shoestrap' ),
 				'id'        => 'widgets_mode',
@@ -179,7 +179,7 @@ if ( ! class_exists( 'Shoestrap_Layout' ) ) {
 				'type'      => 'button_set',
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'     => __( 'Body Top Margin', 'shoestrap' ),
 				'desc'      => __( 'Select the top margin of body element in pixels. Default: 0px.', 'shoestrap' ),
 				'id'        => 'body_margin_top',
@@ -191,7 +191,7 @@ if ( ! class_exists( 'Shoestrap_Layout' ) ) {
 				'type'      => 'slider'
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'     => __( 'Body Bottom Margin', 'shoestrap' ),
 				'desc'      => __( 'Select the bottom margin of body element in pixels. Default: 0px.', 'shoestrap' ),
 				'id'        => 'body_margin_bottom',
@@ -203,7 +203,7 @@ if ( ! class_exists( 'Shoestrap_Layout' ) ) {
 				'type'      => 'slider',
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'     => __( 'Custom Grid', 'shoestrap' ),
 				'desc'      => '<strong>' . __( 'CAUTION:', 'shoestrap' ) . '</strong> ' . __( 'Only use this if you know what you are doing, as changing these values might break the way your site looks on some devices. The default settings should be fine for the vast majority of sites.', 'shoestrap' ),
 				'id'        => 'custom_grid',
@@ -211,7 +211,7 @@ if ( ! class_exists( 'Shoestrap_Layout' ) ) {
 				'type'      => 'switch',
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'     => __( 'Small Screen / Tablet view', 'shoestrap' ),
 				'desc'      => __( 'The width of Tablet screens. Default: 768px', 'shoestrap' ),
 				'id'        => 'screen_tablet',
@@ -225,7 +225,7 @@ if ( ! class_exists( 'Shoestrap_Layout' ) ) {
 				'type'      => 'slider'
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'     => __( 'Desktop Container Width', 'shoestrap' ),
 				'desc'      => __( 'The width of normal screens. Default: 992px', 'shoestrap' ),
 				'id'        => 'screen_desktop',
@@ -240,7 +240,7 @@ if ( ! class_exists( 'Shoestrap_Layout' ) ) {
 
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'     => __( 'Large Desktop Container Width', 'shoestrap' ),
 				'desc'      => __( 'The width of Large Desktop screens. Default: 1200px', 'shoestrap' ),
 				'id'        => 'screen_large_desktop',
@@ -254,7 +254,7 @@ if ( ! class_exists( 'Shoestrap_Layout' ) ) {
 				'type'      => 'slider'
 			);
 
-			$fields[] = array( 
+			$fields[] = array(
 				'title'     => __( 'Columns Gutter', 'shoestrap' ),
 				'desc'      => __( 'The space between the columns in your grid. Default: 30px', 'shoestrap' ),
 				'id'        => 'layout_gutter',

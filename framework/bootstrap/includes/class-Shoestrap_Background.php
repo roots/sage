@@ -6,7 +6,7 @@ if ( ! class_exists( 'Shoestrap_Background' ) ) {
 	* The "Background" module
 	*/
 	class Shoestrap_Background {
-		
+
 		function __construct() {
 			add_filter( 'redux/options/' . SHOESTRAP_OPT_NAME . '/sections', array( $this, 'options' ), 30 );
 			add_action( 'wp_enqueue_scripts', array( $this, 'css' ), 101 );
@@ -24,7 +24,7 @@ if ( ! class_exists( 'Shoestrap_Background' ) ) {
 			$section = array(
 				'title' => __( 'Background', 'shoestrap' ),
 				'icon'  => 'el-icon-photo',
-			);   
+			);
 
 			$fields[] = array(
 				'title'       => __( 'General Background Color', 'shoestrap' ),
@@ -68,21 +68,30 @@ if ( ! class_exists( 'Shoestrap_Background' ) ) {
 			$section['fields'] = $fields;
 
 			$section = apply_filters( 'shoestrap_module_background_options_modifier', $section );
-			
+
 			$sections[] = $section;
 			return $sections;
 
 		}
 
 		function css() {
-			$content_opacity  = shoestrap_getVariable( 'body_bg_opacity' );
-			$bg_color         = shoestrap_getVariable( 'body_bg' );
+			global $ss_settings;
+
+			$content_opacity  = $ss_settings['body_bg_opacity'];
+			$bg_color         = $ss_settings['body_bg'];
 			$bg_color         = isset( $bg_color['background-color'] ) ? $bg_color['background-color'] : '#ffffff';
 
 			// The Content background color
-			$content_bg = $content_opacity < 100 ? 'background:' . Shoestrap_Color::get_rgba( $bg_color, $content_opacity ) . ';' : '';
+			if ( $content_opacity < 100 ) {
 
-			$style = $content_opacity < 100 ? '.wrap.main-section div.content .bg {' . $content_bg . '}' : '';
+				$content_bg =  'background:' . Shoestrap_Color::get_rgba( $bg_color, $content_opacity ) . ';';
+				$style = '.wrap.main-section div.content .bg {' . $content_bg . '}';
+
+			} else {
+
+				$style = null;
+
+			}
 
 			wp_add_inline_style( 'shoestrap_css', $style );
 		}

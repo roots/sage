@@ -181,7 +181,7 @@ if ( ! class_exists( 'Shoestrap_Breadcrumbs' ) ) {
 				} elseif ( is_404() ) {
 
 					if ( 0 !== get_query_var( 'year' ) || ( 0 !== get_query_var( 'monthnum' ) || 0 !== get_query_var( 'day' ) ) ) {
-						
+
 						if ( 'page' == $on_front && ! is_home() ) {
 							$links[] = array( 'id' => $blog_page );
 						}

@@ -4,7 +4,7 @@
  * vCard widget
  */
 class Shoestrap_Vcard_Widget extends WP_Widget {
-	private $fields = array( 
+	private $fields = array(
 		'title'          => 'Title ( optional )',
 		'street_address' => 'Street Address',
 		'locality'       => 'City/Locality',

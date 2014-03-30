@@ -32,7 +32,7 @@ function shoestrap_gallery( $attr ) {
 
 	}
 
-	extract( shortcode_atts( array( 
+	extract( shortcode_atts( array(
 		'order'      => 'ASC',
 		'orderby'    => 'menu_order ID',
 		'id'         => $post->ID,
