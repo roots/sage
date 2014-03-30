@@ -58,7 +58,6 @@ if ( ! class_exists( 'Shoestrap_Header' ) ) {
 				'default'     => array(
 					'background-color' => '#ffffff'
 				),
-				'output'      => '.header-wrapper',
 				'type'        => 'background',
 				'required'    => array( 'header_toggle','=',array( '1' ) ),
 			);
