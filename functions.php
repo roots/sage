@@ -67,23 +67,45 @@ do_action( 'shoestrap_include_files' );
 /*
 * Notice for Shoestrap Updater
 */
-add_action('admin_notices', 'shoestrap_new_version_notice');
+add_action( 'admin_notices', 'shoestrap_new_version_notice' );
 function shoestrap_new_version_notice() {
 	global $current_user ;
+
 	$user_id = $current_user->ID;
+
 	/* Check that the user hasn't already clicked to ignore the message */
-	if ( ! get_user_meta($user_id, 'shoestrap_ignore_notice') ) {
-		echo "<div class='updated'><p><h3>Theme Notice</h3><h4>Welcome <i>Shoestrap Updater</i> plugin</h4><div>Please make sure to <a href='http://shoestrap.org/downloads/shoestrap-updater/' target='_blank'>download and install Shoestrap Updater</a> in order to get noticed of updates concerning all Shoestrap products.<br>From now on, Github Updater is no longer needed, so feel free to deactivate and delete it.</div><br/>";
-		printf(__('<a href="%1$s">Hide Notice</a>'), '?shoestrap_nag_ignore=0');
-		echo "</p></div>";
+	if ( ! get_user_meta( $user_id, 'shoestrap_ignore_notice' ) ) {
+
+		if ( ! class_exists( 'SS_EDD_SL_Updater' ) ) {
+
+			echo '<div class="updated">';
+				echo '<h3>' . __( 'Theme Notice', 'shoestrap' ) . '</h3>';
+				echo '<a href="http://shoestrap.org/downloads/shoestrap-updater/" target="_blank">';
+					_e( 'Please make sure you download and install the Shoestrap Updater plugin', 'shoestrap' );
+				echo '</a>';
+				_e( 'so that your shoestrap themes and plugin will be automatically updated when a new release is available.', 'shoestrap' );
+
+			if ( class_exists( 'GitHub_Updater' ) ) {
+
+				_e( 'The "Github Updater" plugin is no longer required by the Shoestrap theme, so you can deactivate it and delete it from your installation.', 'shoestrap' );
+
+				printf(__( '<a href="%1$s">Hide Notice</a>' ), '?shoestrap_nag_ignore=0' );
+
+			}
+
+			echo '</div>';
+		}
 	}
 }
+
 add_action('admin_init', 'shoestrap_nag_ignore');
 function shoestrap_nag_ignore() {
 	global $current_user;
+
 	$user_id = $current_user->ID;
+
 	/* If user clicks to ignore the notice, add that to their user meta */
-	if ( isset($_GET['shoestrap_nag_ignore']) && '0' == $_GET['shoestrap_nag_ignore'] ) {
-		add_user_meta($user_id, 'shoestrap_ignore_notice', 'true', true);
+	if ( isset( $_GET['shoestrap_nag_ignore'] ) && '0' == $_GET['shoestrap_nag_ignore'] ) {
+		add_user_meta( $user_id, 'shoestrap_ignore_notice', 'true', true );
 	}
 }
