@@ -28,6 +28,7 @@ function roots_main_class() {
 
   return $class;
 }
+add_filter('roots/main_class', 'roots_main_class');
 
 /**
  * .sidebar classes
@@ -35,6 +36,7 @@ function roots_main_class() {
 function roots_sidebar_class() {
   return 'col-sm-4';
 }
+add_filter('roots/sidebar_class', 'roots_sidebar_class');
 
 /**
  * Define which pages shouldn't have the sidebar
