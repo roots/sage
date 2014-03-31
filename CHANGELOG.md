@@ -1,3 +1,10 @@
+### 3.2.2
+
+* Fix: Header backgrounds
+* Fix: Syntax Improvements
+* Fix: Better Less compiler class
+* Fix: Stylesheets compiling on XAMPP & Windows servers
+
 ### 3.2.1
 
 * Fix: Header margins and paddings
