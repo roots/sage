@@ -4,6 +4,7 @@
  */
 function roots_setup() {
   // Make theme available for translation
+  // Community translations can be found at https://github.com/roots/roots-translations
   load_theme_textdomain('roots', get_template_directory() . '/lang');
 
   // Register wp_nav_menu() menus (http://codex.wordpress.org/Function_Reference/register_nav_menus)
