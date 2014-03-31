@@ -39,6 +39,20 @@ if ( ! class_exists( 'SS_Framework' ) ) {
 
 			$frameworks = $this->frameworks_list();
 
+			// On Windows servers and XAMPP there seems to be an issue with this
+			// and it returns empty. In that case, specify a default array for the 
+			// Bootstrap Framework.
+			if ( empty( $frameworks ) ) {
+				$frameworks = array(
+					array(
+						'shortname' => 'bootstrap',
+						'name'      => 'Bootstrap',
+						'classname' => 'SS_Framework_Bootstrap',
+						'compiler'  => 'less_php'
+					),
+				);
+			}
+
 			$compiler = false;
 			// Return the classname of the active framework.
 			foreach ( $frameworks as $framework ) {
