@@ -40,7 +40,7 @@ module.exports = function(grunt) {
           compress: false,
           // LESS source map
           // To enable, set sourceMap to true and update sourceMapRootpath based on your install
-          sourceMap: false,
+          sourceMap: true,
           sourceMapFilename: 'assets/css/main.css.map',
           sourceMapRootpath: '/app/themes/roots/'
         }
@@ -70,6 +70,20 @@ module.exports = function(grunt) {
         files: {
           'assets/js/scripts.min.js': [jsFileList]
         }
+      }
+    },
+    autoprefixer: {
+      options: {
+        browsers: ['last 2 versions', 'ie 8', 'ie 9', 'android 2.3', 'android 4', 'opera 12']
+      },
+      dev: {
+        options: {
+          map: 'assets/css/'
+        },
+        src: 'assets/css/main.css'
+      },
+      build: {
+        src: 'assets/css/main.min.css'
       }
     },
     modernizr: {
@@ -128,8 +142,8 @@ module.exports = function(grunt) {
     },
     clean: {
       dist: [
-        'assets/css/*main*.min.css',
-        'assets/js/*scripts*.min.js'
+        'assets/css/main.min.*.css',
+        'assets/js/scripts.min.*.js'
       ]
     }
   });
@@ -144,16 +158,17 @@ module.exports = function(grunt) {
   grunt.registerTask('dev', [
     'jshint',
     'less:dev',
+    'autoprefixer:dev',
     'concat'
   ]);
   grunt.registerTask('build', [
     'jshint',
     'clean',
     'less:build',
+    'autoprefixer:build',
     'uglify',
     'modernizr',
     'filerev',
     'filerev_assets'
   ]);
-
 };
