@@ -1,5 +1,10 @@
 'use strict';
 module.exports = function(grunt) {
+  // Load all tasks
+  require('load-grunt-tasks')(grunt);
+  // Show elapsed time
+  require('time-grunt')(grunt);
+
   var jsFileList = [
     'assets/vendor/bootstrap/js/transition.js',
     'assets/vendor/bootstrap/js/alert.js',
@@ -147,9 +152,6 @@ module.exports = function(grunt) {
       ]
     }
   });
-
-  // Load tasks
-  require('load-grunt-tasks')(grunt);
 
   // Register tasks
   grunt.registerTask('default', [
