@@ -119,8 +119,8 @@ module.exports = function(grunt) {
           livereload: false
         },
         files: [
-          'assets/css/main.min.css',
-          'assets/js/scripts.min.js',
+          'assets/css/main.css',
+          'assets/js/scripts.js',
           'templates/*.php',
           '*.php'
         ]
