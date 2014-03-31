@@ -1,6 +1,6 @@
 <?php
 /**
- * Enqueue scripts and stylesheets
+ * Scripts and stylesheets
  *
  * Enqueue stylesheets in the following order:
  * 1. /theme/assets/css/main.css
@@ -9,6 +9,10 @@
  * 1. jquery-1.11.0.min.js via Google CDN
  * 2. /theme/assets/js/vendor/modernizr.min.js
  * 3. /theme/assets/js/scripts.js (in footer)
+ *
+ * Google Analytics is loaded after enqueued scripts if:
+ * - An ID has been defined in config.php
+ * - You're not logged in as an administrator
  */
 function roots_scripts() {
   /**
@@ -73,6 +77,9 @@ function roots_jquery_local_fallback($src, $handle = null) {
 }
 add_action('wp_head', 'roots_jquery_local_fallback');
 
+/**
+ * Google Analytics snippet from HTML5 Boilerplate
+ */
 function roots_google_analytics() { ?>
 <script>
   (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
