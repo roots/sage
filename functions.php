@@ -13,4 +13,4 @@ require_once locate_template('/lib/nav.php');             // Custom nav modifica
 require_once locate_template('/lib/gallery.php');         // Custom [gallery] modifications
 require_once locate_template('/lib/comments.php');        // Custom comments modifications
 require_once locate_template('/lib/scripts.php');         // Scripts and stylesheets
-require_once locate_template('/lib/custom.php');          // Custom functions
+require_once locate_template('/lib/extras.php');          // Custom functions
