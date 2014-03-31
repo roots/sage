@@ -34,7 +34,7 @@ class Roots_Nav_Walker extends Walker_Nav_Menu {
       $item_html = preg_replace('/<a[^>]*>(.*)<\/a>/iU', '$1', $item_html);
     }
 
-    $item_html = apply_filters('roots_wp_nav_menu_item', $item_html);
+    $item_html = apply_filters('roots/wp_nav_menu_item', $item_html);
     $output .= $item_html;
   }
 
