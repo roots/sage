@@ -105,15 +105,19 @@ module.exports = function(grunt) {
         parseFiles: true
       }
     },
-    filerev: {
-      assets: {
-        src: ['assets/css/main.min.css', 'assets/js/scripts.min.js']
-      }
-    },
-    filerev_assets: {
-      assets: {
+    version: {
+      default: {
         options: {
-          dest: 'assets-manifest.json'
+          format: true,
+          length: 32,
+          manifest: 'assets/manifest.json',
+          querystring: {
+            style: 'roots_css',
+            script: 'roots_js'
+          }
+        },
+        files: {
+          'lib/scripts.php': 'assets/{css,js}/{main,scripts}.min.{css,js}'
         }
       }
     },
@@ -144,12 +148,6 @@ module.exports = function(grunt) {
           '*.php'
         ]
       }
-    },
-    clean: {
-      dist: [
-        'assets/css/main.min.*.css',
-        'assets/js/scripts.min.*.js'
-      ]
     }
   });
 
@@ -165,12 +163,10 @@ module.exports = function(grunt) {
   ]);
   grunt.registerTask('build', [
     'jshint',
-    'clean',
     'less:build',
     'autoprefixer:build',
     'uglify',
     'modernizr',
-    'filerev',
-    'filerev_assets'
+    'version'
   ]);
 };

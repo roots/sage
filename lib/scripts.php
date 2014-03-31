@@ -20,11 +20,11 @@ function roots_scripts() {
    * Read the asset names from assets-manifest.json
    */
   if (!(WP_ENV === 'development')) {
-    $get_assets = file_get_contents(get_template_directory_uri() . '/assets-manifest.json');
+    $get_assets = file_get_contents(get_template_directory_uri() . '/assets/manifest.json');
     $assets     = json_decode($get_assets, true);
     $assets     = array(
-      'css'       => '/' . $assets['assets/css/main.min.css'],
-      'js'        => '/' . $assets['assets/js/scripts.min.js'],
+      'css'       => '/assets/css/main.min.css' . '?' . $assets['assets/css/main.min.css']['hash'],
+      'js'        => '/assets/js/scripts.min.js' . '?' . $assets['assets/js/scripts.min.js']['hash'],
       'modernizr' => '/assets/js/vendor/modernizr.min.js',
       'jquery'    => '//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js'
     );

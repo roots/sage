@@ -26,15 +26,13 @@
     "bower": "~1.2.8",
     "grunt": "~0.4.2",
     "grunt-autoprefixer": "~0.7.2",
-    "grunt-filerev": "~0.2.1",
-    "grunt-filerev-assets": "~0.3.0",
-    "grunt-contrib-clean": "~0.5.0",
     "grunt-contrib-concat": "~0.3.0",
     "grunt-contrib-jshint": "~0.6.4",
     "grunt-contrib-less": "~0.8.1",
     "grunt-contrib-uglify": "~0.2.4",
     "grunt-contrib-watch": "~0.5.3",
     "grunt-modernizr": "~0.5.1",
+    "grunt-wp-assets": "git://github.com/roots/grunt-wp-assets.git#master",
     "load-grunt-tasks": "~0.3.0",
     "time-grunt": "~0.3.1"
   }
