@@ -8,7 +8,6 @@ while ( have_posts() ) : the_post();
 		do_action( 'shoestrap_single_top' );
 		shoestrap_title_section();
 		do_action( 'shoestrap_entry_meta' );
-		echo '<hr>';
 
 		echo '<div class="entry-content">';
 			do_action( 'shoestrap_single_pre_content' );
