@@ -1014,8 +1014,9 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 				$error_message = $e->getMessage();
 			}
 
-			// Below is just an ugly hack
+			// Below are just some ugly hacks.
 			$css = str_replace( '../', get_template_directory_uri() . '/assets/', $css );
+			$css = preg_replace( '|https?:\/\/([^\/]+)|i', null, $css );
 			$css = str_replace( 'http:', '', $css );
 			$css = str_replace( 'https:', '', $css );
 
