@@ -44,11 +44,12 @@ if ( ! class_exists( 'Shoestrap_Blog' ) ) {
 				'id'          => 'shoestrap_entry_meta_config',
 				'title'       => __( 'Activate and order Post Meta elements', 'shoestrap' ),
 				'options'     => array(
-					'tags'    => 'Tags',
-					'date'    => 'Date',
-					'category'=> 'Category',
-					'author'  => 'Author',
-					'sticky'  => 'Sticky'
+					'tags'    			=> 'Tags',
+					'date'    			=> 'Date',
+					'category'			=> 'Category',
+					'author'  			=> 'Author',
+					'comment-count'	=> 'Comments',
+					'sticky'  			=> 'Sticky'
 				),
 				'type'        => 'sortable',
 				'mode'        => 'checkbox'
@@ -263,6 +264,10 @@ if ( ! class_exists( 'Shoestrap_Blog' ) ) {
 						if ( ! empty( $value ) ) {
 							$i++;
 						}
+					} elseif ( $meta == 'comment-count' && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
+						if ( ! empty( $value ) ) {
+							$i++;
+						}
 					}
 				}
 			}
@@ -321,6 +326,13 @@ if ( ! class_exists( 'Shoestrap_Blog' ) ) {
 							esc_attr( sprintf( __( 'View all posts by %s', 'shoestrap' ), get_the_author() ) ),
 							get_the_author()
 						);
+					}
+
+					// output comment count element
+					if ( $meta == 'comment-count' && ! empty( $value ) ) {
+						if ( ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
+							$content .= $ss_framework->open_col( 'span', array( 'medium' => $col ), null, 'comments-link' ) . '<i class="el-icon-comment icon"></i> <a href="' . get_comments_link( $post->ID ) . '">' . get_comments_number( $post->ID ) . ' ' . __( 'Comments', 'shoestrap' ) . '</a>' . $ss_framework->close_col( 'span' );
+						}
 					}
 
 					// Output author meta but do not display it if user has selected not to show it.
