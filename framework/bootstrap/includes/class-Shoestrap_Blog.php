@@ -401,7 +401,7 @@ if ( ! class_exists( 'Shoestrap_Blog' ) ) {
 
 			$image = Shoestrap_Image::image_resize( $data );
 
-			echo $ss_framework->clearfix() . '<a href="' . get_permalink() . '"><img class="featured-image" src="' . $image['url'] . '" /></a>' . $ss_framework->clearfix();
+			echo $ss_framework->clearfix() . '<a href="' . get_permalink() . '"><img class="featured-image ' . $ss_framework->float_class('left') . '" src="' . $image['url'] . '" /></a>';
 		}
 
 		/**
