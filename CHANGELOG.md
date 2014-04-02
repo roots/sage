@@ -1,3 +1,7 @@
+### HEAD
+
+* Fix: metadata now aligned to the left.
+
 ### 3.2.3
 
 * Fix: Removing deprecated github-updater zip file
