@@ -13,16 +13,25 @@ if ( ! class_exists( 'Shoestrap_Blog' ) ) {
 			global $ss_settings;
 
 			add_filter( 'redux/options/' . SHOESTRAP_OPT_NAME . '/sections', array( $this, 'options' ), 70 );
-			add_action( 'shoestrap_entry_meta',     array( $this, 'meta_custom_render'                  ) );
-			add_filter( 'excerpt_more',             array( $this, 'excerpt_more'                        ) );
-			add_action( 'wp',                       array( $this, 'remove_featured_image_per_post_type' ) );
+			add_action( 'shoestrap_entry_meta', array( $this, 'meta_custom_render' ) );
+			add_filter( 'excerpt_more', array( $this, 'excerpt_more' ) );
+			add_action( 'wp', array( $this, 'remove_featured_image_per_post_type' ) );
 
+			// Add featured images
 			if ( ! is_singular() ) {
-				add_action( 'shoestrap_entry_meta',   array( $this, 'featured_image'                      ) );
+				add_action( 'shoestrap_entry_meta', array( $this, 'featured_image' ) );
 			}
 
+			// Chamnge the excerpt length
 			if ( isset( $ss_settings['post_excerpt_length'] ) ) {
 				add_filter( 'excerpt_length', array( $this, 'excerpt_length' ) );
+			}
+
+			// Show full content instead of excerpt
+			if ( isset( $ss_settings['blog_post_mode'] ) && 'full' == $ss_settings['blog_post_mode'] ) {
+				add_filter( 'shoestrap_do_the_excerpt', 'get_the_content' );
+				add_filter( 'shoestrap_do_the_excerpt', 'do_shortcode', 99 );
+				add_action( 'shoestrap_entry_footer', array( $this, 'archives_full_footer' ) );
 			}
 
 			// Hide post meta data in footer of single posts
@@ -33,11 +42,24 @@ if ( ! class_exists( 'Shoestrap_Blog' ) ) {
 		}
 
 		function options( $sections ) {
+			global $ss_settings;
 
 			// Post Meta Options
 			$section = array(
 				'title' => __( 'Blog', 'shoestrap' ),
 				'icon'  => 'el-icon-wordpress'
+			);
+
+			$fields[] = array(
+				'title'     => __( 'Archives Display Mode', 'shoestrap' ),
+				'desc'      => __( 'Display the excerpt or the full post on post archives.', 'shoestrap' ),
+				'id'        => 'blog_post_mode',
+				'default'   => 'excerpt',
+				'type'      => 'button_set',
+				'options'   => array(
+					'excerpt' => __( 'Excerpt', 'shoestrap' ),
+					'full'    => __( 'Full Post', 'shoestrap' ),
+				),
 			);
 
 			$fields[] = array(
@@ -63,9 +85,6 @@ if ( ! class_exists( 'Shoestrap_Blog' ) ) {
 				'type'      => 'switch',
 			);
 
-			// Featured Images Options
-			global $ss_settings;
-
 			$screen_large_desktop = filter_var( $ss_settings[ 'screen_large_desktop' ], FILTER_SANITIZE_NUMBER_INT );
 
 			$fields[] = array(
@@ -84,7 +103,6 @@ if ( ! class_exists( 'Shoestrap_Blog' ) ) {
 				'default'   => 0,
 				'type'      => 'switch',
 			);
-
 
 			$fields[] = array(
 				'title'     => __( 'Width of Featured Images on Archives', 'shoestrap' ),
@@ -226,6 +244,21 @@ if ( ! class_exists( 'Shoestrap_Blog' ) ) {
 			$sections[] = $section;
 
 			return $sections;
+		}
+
+		/**
+		 * Footer for full-content posts.
+		 * Used on archives when 'blog_post_mode' == full
+		 */
+		function archives_full_footer() {
+			echo '<footer>';
+				shoestrap_meta( 'cats' );
+				shoestrap_meta( 'tags' );
+				wp_link_pages( array(
+					'before' => '<nav class="page-nav"><p>' . __('Pages:', 'shoestrap'),
+					'after'  => '</p></nav>'
+				) );
+			echo '</footer>';
 		}
 
 		/**
