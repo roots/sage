@@ -4,7 +4,7 @@
 * Fix: Better updater nag.
 * Fix: No more https errors when domain mapping is used.
 * Fix: Float featured images on archives to the left.
-* Fix: Removing <hr> from content-single.
+* Fix: Removing \<hr\> from content-single.
 * New: Added comment count to Post Meta.
 * New: Added default styling for CF7 (conditionally, only when CF7 is installed).
 
