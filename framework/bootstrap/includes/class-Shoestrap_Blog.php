@@ -250,15 +250,21 @@ if ( ! class_exists( 'Shoestrap_Blog' ) ) {
 		 * Footer for full-content posts.
 		 * Used on archives when 'blog_post_mode' == full
 		 */
-		function archives_full_footer() {
-			echo '<footer>';
-				shoestrap_meta( 'cats' );
-				shoestrap_meta( 'tags' );
-				wp_link_pages( array(
-					'before' => '<nav class="page-nav"><p>' . __('Pages:', 'shoestrap'),
+		function archives_full_footer() { ?>
+			<footer style="margin-top: 2em;">
+				<i class="el-icon-tag"></i> <?php _e( 'Categories: ', 'shoestrap' ); ?>
+				<span class="label label-tag">
+					<?php echo get_the_category_list( '</span> ' . '<span class="label label-tag">' ); ?>
+				</span>
+
+				<?php echo get_the_tag_list( '<i class="el-icon-tags"></i> ' . __( 'Tags: ', 'shoestrap' ) . '<span class="label label-tag">', '</span> ' . '<span class="label label-tag">', '</span>' ); ?>
+
+				<?php wp_link_pages( array(
+					'before' => '<nav class="page-nav"><p>' . __( 'Pages:', 'shoestrap' ),
 					'after'  => '</p></nav>'
-				) );
-			echo '</footer>';
+				) ); ?>
+			</footer>
+			<?php
 		}
 
 		/**
