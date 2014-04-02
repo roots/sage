@@ -946,6 +946,11 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 			$variables .= '@import "' . dirname( __FILE__ ) . '/assets/less/widgets.less";';
 			$variables .= '@import "' . dirname( __FILE__ ) . '/assets/less/footer.less";';
 
+			// Include styles for Contact Form 7.
+			if ( defined( 'WPCF7_PLUGIN_DIR' ) && ! empty( WPCF7_PLUGIN_DIR ) ) {
+				$variables .= '@import "' . dirname( __FILE__ ) . '/assets/less/cf7.less";';
+			}
+
 			return $variables;
 		}
 
