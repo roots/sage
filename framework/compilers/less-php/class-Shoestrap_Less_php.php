@@ -41,77 +41,91 @@ if ( ! class_exists( 'Shoestrap_Less_PHP' ) ) {
 		public static function file( $target = 'path', $echo = false ) {
 			global $blog_id;
 
-			// Get the upload directory for this site.
-			$upload_dir = wp_upload_dir();
+			// No need to process this on each page load... Use transients to improve performance.
+			// Transients are valid for 24 hours, so these calculations only run once aday.
+			if ( ! get_transient( 'shoestrap_stylesheet_path' ) || ! get_transient( 'shoestrap_stylesheet_uri' ) ) {
 
-			// If this is a multisite installation, append the blogid to the filename
-			if ( is_multisite() && $blog_id > 1 ) {
-				$cssid = '_id-' . $blog_id;
-			} else {
-				$cssid = null;
-			}
-			$file_name = '/ss-style' . $cssid . '.css';
+				// Get the upload directory for this site.
+				$upload_dir = wp_upload_dir();
 
-			// Define a default folder for the stylesheets.
-			$def_folder_path = get_template_directory() . '/assets/css';
+				// If this is a multisite installation, append the blogid to the filename
+				if ( is_multisite() && $blog_id > 1 ) {
+					$cssid = '_id-' . $blog_id;
+				} else {
+					$cssid = null;
+				}
+				$file_name = '/ss-style' . $cssid . '.css';
 
-			// The folder path for the stylesheet.
-			// We try to first write to the uploads folder.
-			// If we can write there, then use that folder for the stylesheet.
-			// This helps so that the stylesheets don't get overwritten when the theme gets updated.
-			if ( is_writable( $upload_dir['basedir'] . $file_name ) || is_writable( $upload_dir['basedir'] ) ) {
-				$folder_path = $upload_dir['basedir'];
-			} elseif ( is_writable( ABSPATH . '/css' . $file_name ) || is_writable( ABSPATH . '/css' ) ) {
-				// Fallback to the WordPress root folder /css
-				$folder_path = ABSPATH . '/css';
-			} else {
-				// Fallback to the theme's default folder.
-				$folder_path = $def_folder_path;
-			}
+				// Define a default folder for the stylesheets.
+				$def_folder_path = get_template_directory() . '/assets/css';
 
-			// The complete path to the file.
-			$file_path = $folder_path . $file_name;
-
-			// Get the URL directory of the stylesheet
-			if ( $folder_path == $upload_dir['basedir'] ) {
-				// Path is set to WordPress uploads dir
-				$css_uri_folder = $upload_dir['baseurl'];
-
-			} elseif ( $folder_path == ABSPATH . '/css' ) {
-				// Path is set to WordPress root /css
-				$css_uri_folder = site_url() . '/css';
-
-				// On multisites use network_site_url() instead of site_url()
-				if ( is_multisite() ) {
-					$css_uri_folder = network_site_url() . '/css';
+				// The folder path for the stylesheet.
+				// We try to first write to the uploads folder.
+				// If we can write there, then use that folder for the stylesheet.
+				// This helps so that the stylesheets don't get overwritten when the theme gets updated.
+				if ( is_writable( $upload_dir['basedir'] . $file_name ) || is_writable( $upload_dir['basedir'] ) ) {
+					$folder_path = $upload_dir['basedir'];
+				} elseif ( is_writable( ABSPATH . '/css' . $file_name ) || is_writable( ABSPATH . '/css' ) ) {
+					// Fallback to the WordPress root folder /css
+					$folder_path = ABSPATH . '/css';
+				} else {
+					// Fallback to the theme's default folder.
+					$folder_path = $def_folder_path;
 				}
 
-			} else {
-				// Fallback to the theme's assets/css folder.
-				$css_uri_folder = get_template_directory_uri() . '/assets/css';
+				// The complete path to the file.
+				$file_path = $folder_path . $file_name;
 
+				// Get the URL directory of the stylesheet
+				if ( $folder_path == $upload_dir['basedir'] ) {
+					// Path is set to WordPress uploads dir
+					$css_uri_folder = $upload_dir['baseurl'];
+
+				} elseif ( $folder_path == ABSPATH . '/css' ) {
+					// Path is set to WordPress root /css
+					$css_uri_folder = site_url() . '/css';
+
+					// On multisites use network_site_url() instead of site_url()
+					if ( is_multisite() ) {
+						$css_uri_folder = network_site_url() . '/css';
+					}
+
+				} else {
+					// Fallback to the theme's assets/css folder.
+					$css_uri_folder = get_template_directory_uri() . '/assets/css';
+
+				}
+
+				// If the CSS file does not exist, use the default file.
+				if ( file_exists( $file_path ) ) {
+					$css_uri = $css_uri_folder . $file_name;
+				} else {
+					$css_uri = get_template_directory_uri() . '/assets/css/style-default.css';
+				}
+
+				// If a style.css file exists in the assets/css folder, use that file instead.
+				// This is mostly for backwards-compatibility with previous versions.
+				// Also if the stylesheet is compiled using grunt, this will make sure the correct file is used.
+				if ( ! file_exists( $file_path . $file_name ) && file_exists( $def_folder_path . $file_name) ) {
+					$css_uri   = get_template_directory_uri() . '/assets/css/style' . $cssid . '.css';
+					$file_path = $def_folder_path . '/style' . $cssid . '.css';
+				}
+
+				$css_path = $file_path;
+
+				// Strip protocols
+				$css_uri = str_replace( 'https://', '//', $css_uri );
+				$css_uri = str_replace( 'http://', '//', $css_uri );
+
+				// Set a transient for the stylesheet path and url.
+				if ( ! get_transient( 'shoestrap_stylesheet_path' ) || ! get_transient( 'shoestrap_stylesheet_uri' ) ) {
+					set_transient( 'shoestrap_stylesheet_path', $css_path, 24 * 60 *60 );
+					set_transient( 'shoestrap_stylesheet_uri', $css_uri, 24 * 60 *60 );
+				}
 			}
 
-			// If the CSS file does not exist, use the default file.
-			if ( file_exists( $file_path ) ) {
-				$css_uri = $css_uri_folder . $file_name;
-			} else {
-				$css_uri = get_template_directory_uri() . '/assets/css/style-default.css';
-			}
-
-			// If a style.css file exists in the assets/css folder, use that file instead.
-			// This is mostly for backwards-compatibility with previous versions.
-			// Also if the stylesheet is compiled using grunt, this will make sure the correct file is used.
-			if ( ! file_exists( $file_path . $file_name ) && file_exists( $def_folder_path . $file_name) ) {
-				$css_uri   = get_template_directory_uri() . '/assets/css/style' . $cssid . '.css';
-				$file_path = $def_folder_path . '/style' . $cssid . '.css';
-			}
-
-			$css_path = $file_path;
-
-			// Strip protocols
-			$css_uri = str_replace( 'https://', '//', $css_uri );
-			$css_uri = str_replace( 'http://', '//', $css_uri );
+			$css_path = get_transient( 'shoestrap_stylesheet_path' );
+			$css_uri  = get_transient( 'shoestrap_stylesheet_uri' );
 
 			$value = ( $target == 'url' ) ? $css_uri : $css_path;
 

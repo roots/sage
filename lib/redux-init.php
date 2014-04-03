@@ -34,7 +34,7 @@ function shoestrap_redux_init() {
 	$theme                          = wp_get_theme();
 	$args['display_name']           = $theme->get( 'Name' );
 	$args['menu_title']             = __( 'Theme Options', 'shoestrap' );
-	$args['display_version']        = $theme->get( 'Version' );    
+	$args['display_version']        = $theme->get( 'Version' );
 	$args['page_position']          = 99;
 	$args['dev_mode']               = false;
 	$args['page_type']              = 'submenu';
@@ -51,7 +51,7 @@ function shoestrap_redux_init() {
 		'content' => __( '<p>This is the tab content, HTML is allowed. Tab2</p>', 'shoestrap' )
 	);
 
-	//Set the Help Sidebar for the options page - no sidebar by default                   
+	//Set the Help Sidebar for the options page - no sidebar by default
 	$args['help_sidebar'] = __( '<p>This is the sidebar content, HTML is allowed.</p>', 'shoestrap' );
 
 	$sections = array();
