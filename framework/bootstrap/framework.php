@@ -1,6 +1,6 @@
 <?php
 
-global $ss_settings;
+global $ss_settings, $wp_customize;
 
 // Include the framework class
 include_once( dirname( __FILE__ ) . '/class-SS_Framework_Bootstrap.php' );
@@ -34,4 +34,6 @@ function shoestrap_add_framework_bootstrap( $frameworks ) {
 }
 add_filter( 'shoestrap_frameworks_array', 'shoestrap_add_framework_bootstrap' );
 
-include_once( SS_FRAMEWORK_PATH . '/includes/customizer.php' ); // Customizer mods
+if ( isset( $wp_customize ) ) {
+	include_once( SS_FRAMEWORK_PATH . '/includes/customizer.php' ); // Customizer mods
+}

@@ -96,3 +96,22 @@ function shoestrap_background_css() {
 	echo '</style>';
 }
 add_action( 'wp_head', 'shoestrap_background_css', 210 );
+
+/**
+ * Copy theme mods as options in our array
+ */
+function shoestrap_customizer_copy_options() {
+	global $ss_settings;
+}
+add_action( 'customize_save_after', 'shoestrap_customizer_copy_options', 127 );
+
+/**
+ * Trigger the compiler after the customizer is saved
+ */
+function shoestrap_customizer_trigger_compiler() {
+
+	$compiler = new Shoestrap_Less_PHP();
+	add_action( 'redux/options/' . SHOESTRAP_OPT_NAME . '/compiler' , array( $compiler, 'makecss' ) );
+
+}
+add_action( 'customize_save_after', 'shoestrap_customizer_trigger_compiler', 130 );
