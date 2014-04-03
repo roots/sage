@@ -33,3 +33,5 @@ function shoestrap_add_framework_bootstrap( $frameworks ) {
 	return $frameworks;
 }
 add_filter( 'shoestrap_frameworks_array', 'shoestrap_add_framework_bootstrap' );
+
+include_once( SS_FRAMEWORK_PATH . '/includes/customizer.php' ); // Customizer mods
