@@ -47,16 +47,17 @@ function shoestrap_customizer( $wp_customize ) {
 		$fields = $section['fields'];
 		foreach ( $fields as $field => $args ) {
 
-			// Add settings
-			$wp_customize->add_setting( $field,
-				array(
-					'default'    => $ss_settings[$field],
-					'type'       => 'theme_mod',
-					'capability' => 'edit_theme_options'
-				)
-			);
-
 			if ( 'background' == $args['type'] ) {
+
+				// Add settings
+				$wp_customize->add_setting( $field,
+					array(
+						'default'    => $ss_settings[$field]['background-color'],
+						'type'       => 'theme_mod',
+						'capability' => 'edit_theme_options'
+					)
+				);
+
 				// Add control
 				$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, $field, array(
 					'label'    => $args['label'],
@@ -98,20 +99,36 @@ function shoestrap_background_css() {
 add_action( 'wp_head', 'shoestrap_background_css', 210 );
 
 /**
- * Copy theme mods as options in our array
+ * This function takes care of copying theme mods as options in our array,
+ * cleaning up the db from our theme-mods and then triggering the compiler.
  */
 function shoestrap_customizer_copy_options() {
 	global $ss_settings;
-}
-add_action( 'customize_save_after', 'shoestrap_customizer_copy_options', 127 );
 
-/**
- * Trigger the compiler after the customizer is saved
- */
-function shoestrap_customizer_trigger_compiler() {
+	$sections = shoestrap_customizer_fields();
+
+	foreach ( $sections as $section ) {
+
+		$fields = $section['fields'];
+
+		foreach ( $fields as $field => $args ) {
+
+			// Backgrounds are an array of options, so we have to include each one of them separately
+			if ( 'background' == $args['type'] ) {
+				// Copy the theme_mod to our settings array
+				$ss_settings[$field]['background-color'] = get_theme_mod( $field );
+				// Clean up theme mods
+				remove_theme_mod( $field );
+			}
+
+		}
+
+	}
+
+	update_option( SHOESTRAP_OPT_NAME, $ss_settings );
 
 	$compiler = new Shoestrap_Less_PHP();
-	add_action( 'redux/options/' . SHOESTRAP_OPT_NAME . '/compiler' , array( $compiler, 'makecss' ) );
+	add_action( 'customize_save_after', array( $compiler, 'makecss' ), 77 );
 
 }
-add_action( 'customize_save_after', 'shoestrap_customizer_trigger_compiler', 130 );
+add_action( 'customize_save_after', 'shoestrap_customizer_copy_options', 75 );
