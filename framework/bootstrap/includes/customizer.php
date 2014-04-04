@@ -7,29 +7,23 @@ function shoestrap_customizer_fields() {
 
 	$settings = array(
 		'colors_section' => array(
-			'slug'   => 'colors',
-			'title'  => __( 'Colors', 'shoestrap' ),
+			'slug'   => 'general',
+			'title'  => __( 'General', 'shoestrap' ),
 			'fields' => array(
 				'body_bg' => array(
-					'label' => __( 'Background Color', 'shoestrap' ),
+					'label' => __( 'Background', 'shoestrap' ),
 					'type'  => 'background',
 					'style' => 'body, .wrap.main-section .content .bg, .form-control, .btn, .panel',
 					'priority' => 1,
 				),
-				'font_base' => array(
-					'label' => __( 'Text Color', 'shoestrap' ),
-					'type'  => 'typography',
-					'style' => 'body, h1, h2, h3, h4, h5, h6',
-					'priority' => 2,
-				),
 				'color_brand_primary' => array(
-					'label' => __( 'Primary Brand Color', 'shoestrap' ),
+					'label' => __( 'Accent', 'shoestrap' ),
 					'type'  => 'color',
 					'style' => 'a',
 					'priority' => 3,
 				),
 				'navbar_bg' => array(
-					'label' => __( 'NavBar Background Color', 'shoestrap' ),
+					'label' => __( 'NavBar', 'shoestrap' ),
 					'type'  => 'color',
 					'style' => '',
 					'priority' => 4,
@@ -61,60 +55,30 @@ function shoestrap_customizer( $wp_customize ) {
 		$fields = $section['fields'];
 		foreach ( $fields as $field => $args ) {
 
-			if ( 'background' == $args['type'] ) { // Background-color setting
+			if ( 'background' == $args['type'] || 'color' == $args['type'] ) {
+				if ( 'background' == $args['type'] ) { // Background-color setting
 
-				// Add settings
-				$wp_customize->add_setting( $field,
-					array(
-						'default'    => $ss_settings[$field]['background-color'],
-						'type'       => 'theme_mod',
-						'capability' => 'edit_theme_options'
-					)
-				);
+					// Add settings
+					$wp_customize->add_setting( $field,
+						array(
+							'default'    => $ss_settings[$field]['background-color'],
+							'type'       => 'theme_mod',
+							'capability' => 'edit_theme_options'
+						)
+					);
 
-				// Add control
-				$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, $field, array(
-					'label'    => $args['label'],
-					'section'  => $section['slug'],
-					'settings' => $field,
-					'priority' => isset( $args['priority'] ) ? $args['priority'] : null,
-				) ) );
+				} elseif ( 'color' == $args['type'] ) { // Color setting
 
-			} elseif ( 'color' == $args['type'] ) { // Color setting
+					// Add settings
+					$wp_customize->add_setting( $field,
+						array(
+							'default'    => $ss_settings[$field],
+							'type'       => 'theme_mod',
+							'capability' => 'edit_theme_options'
+						)
+					);
 
-				// Add settings
-				$wp_customize->add_setting( $field,
-					array(
-						'default'    => $ss_settings[$field],
-						'type'       => 'theme_mod',
-						'capability' => 'edit_theme_options'
-					)
-				);
-
-				// Add control
-				$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, $field, array(
-					'label'    => $args['label'],
-					'section'  => $section['slug'],
-					'settings' => $field,
-					'priority' => isset( $args['priority'] ) ? $args['priority'] : null,
-				) ) );
-
-			} elseif ( 'typography' == $args['type'] ) { // Typography setting
-
-				if ( 'font_h' == $field ) {
-					$default = $ss_settings['font_h1']['color'];
-				} else {
-					$default = $ss_settings[$field]['color'];
 				}
-
-				// Add settings
-				$wp_customize->add_setting( $field,
-					array(
-						'default'    => $default,
-						'type'       => 'theme_mod',
-						'capability' => 'edit_theme_options'
-					)
-				);
 
 				// Add control
 				$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, $field, array(
@@ -125,6 +89,7 @@ function shoestrap_customizer( $wp_customize ) {
 				) ) );
 
 			}
+
 		}
 	}
 }
@@ -159,7 +124,7 @@ function shoestrap_background_css() {
 				if ( 'body_bg' == $field ) {
 					$bg_brightness = Shoestrap_Color::get_brightness( $value );
 					// Set an "accent" color depending on the background's brightness
-					if ( $bg_brightness > 50 ) {
+					if ( $bg_brightness > 120 ) {
 						$accent = Shoestrap_Color::adjust_brightness( $value, -20 );
 						$border = Shoestrap_Color::adjust_brightness( $value, -30 );
 					} else {
@@ -167,9 +132,19 @@ function shoestrap_background_css() {
 						$border = Shoestrap_Color::adjust_brightness( $value, 30 );
 					}
 
+					// Use lumosity difference to find a text color with great readability
+					if ( Shoestrap_Color::lumosity_difference( $value, '#ffffff' ) > 5 ) {
+						$text = '#ffffff';
+					} elseif ( Shoestrap_Color::lumosity_difference( $value, '#222222' ) > 5 ) {
+						$text = '#222222';
+					}
+
 					echo '.well {
 						background: ' . $accent . ';
 						border-color: ' . $border . ';
+					}
+					body, h1, h2, h3, h4, h5, h6 {
+						color: ' . $text . ';
 					}';
 				}
 
@@ -201,14 +176,6 @@ function shoestrap_background_css() {
 					}';
 
 				}
-
-			} elseif ( 'typography' == $args['type'] ) {
-
-				// Generic style for all "typography" settings
-				echo $args['style'] . ' {
-					color: ' . $value . ';
-				}';
-
 			}
 
 		}
@@ -242,24 +209,26 @@ function shoestrap_customizer_copy_options() {
 				// If we're changing the 'body_bg' setting, save the option to 'html_bg' as well.
 				if ( 'body_bg' == $field ) {
 					$ss_settings['html_bg']['background-color'] = $value;
+
+					// Use lumosity difference to find a text color with great readability
+					if ( Shoestrap_Color::lumosity_difference( $value, '#ffffff' ) > 5 ) {
+						$text = '#ffffff';
+					} elseif ( Shoestrap_Color::lumosity_difference( $value, '#222222' ) > 5 ) {
+						$text = '#222222';
+					}
+					$ss_settings['font_base']['color'] = $text;
+					$ss_settings['font_h1']['color'] = $text;
+					$ss_settings['font_h2']['color'] = $text;
+					$ss_settings['font_h3']['color'] = $text;
+					$ss_settings['font_h4']['color'] = $text;
+					$ss_settings['font_h5']['color'] = $text;
+					$ss_settings['font_h6']['color'] = $text;
 				}
 
 				// Copy the theme_mod to our settings array
 				$ss_settings[$field]['background-color'] = $value;
 				// Clean up theme mods
 				remove_theme_mod( $field );
-
-			} elseif ( 'typography' == $args['type'] ) {
-
-				if ( 'font_base' == $field ) {
-					$ss_settings[$field] = $value;
-					$ss_settings['font_h1']['color'] = $value;
-					$ss_settings['font_h2']['color'] = $value;
-					$ss_settings['font_h3']['color'] = $value;
-					$ss_settings['font_h4']['color'] = $value;
-					$ss_settings['font_h5']['color'] = $value;
-					$ss_settings['font_h6']['color'] = $value;
-				}
 
 			} else {
 				// Copy the theme_mod to our settings array
