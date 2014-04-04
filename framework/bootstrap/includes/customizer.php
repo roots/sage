@@ -18,7 +18,7 @@ function shoestrap_customizer_fields() {
 				'body_bg'   => array(
 					'label' => __( 'Content Background', 'shoestrap' ),
 					'type'  => 'background',
-					'style' => '.wrap.main-section .content .bg',
+					'style' => '.wrap.main-section .content .bg, .form-control, .btn, .panel',
 				),
 			),
 		),
@@ -86,7 +86,23 @@ function shoestrap_background_css() {
 
 			if ( 'background' == $args['type'] ) {
 
+				// Generic style for all "background" settings
 				echo $args['style'] . ' { background: ' . get_theme_mod( $field ) . '; }';
+
+				// Additional styles for the content background setting
+				if ( 'body_bg' == $field ) {
+					$bg_brightness = Shoestrap_Color::get_brightness( get_theme_mod( $field ) );
+					// Set an "accent" color depending on the background's brightness
+					if ( $bg_brightness > 50 ) {
+						$accent = Shoestrap_Color::adjust_brightness( get_theme_mod( $field ), -20 );
+						$border = Shoestrap_Color::adjust_brightness( get_theme_mod( $field ), -30 );
+					} else {
+						$accent = Shoestrap_Color::adjust_brightness( get_theme_mod( $field ), 20 );
+						$border = Shoestrap_Color::adjust_brightness( get_theme_mod( $field ), 30 );
+					}
+
+					echo '.well { background: ' . $accent . '; border-color: ' . $border . ' }';
+				}
 
 			}
 
