@@ -6,19 +6,50 @@
 function shoestrap_customizer_fields() {
 
 	$settings = array(
-		'section' => array(
+		'background_section' => array(
 			'slug'   => 'background',
 			'title'  => __( 'Background', 'shoestrap' ),
 			'fields' => array(
-				'html_bg'   => array(
+				'html_bg' => array(
 					'label' => __( 'General Background Color', 'shoestrap' ),
 					'type'  => 'background',
 					'style' => 'body',
 				),
-				'body_bg'   => array(
+				'body_bg' => array(
 					'label' => __( 'Content Background', 'shoestrap' ),
 					'type'  => 'background',
 					'style' => '.wrap.main-section .content .bg, .form-control, .btn, .panel',
+				),
+			),
+		),
+		'branding_section' => array(
+			'slug'   => 'branding',
+			'title'  => __( 'Branding', 'shoestrap' ),
+			'fields' => array(
+				'color_brand_primary' => array(
+					'label' => __( 'Brand Colors: Primary', 'shoestrap' ),
+					'type'  => 'color',
+					'style' => 'a',
+				),
+				'color_brand_success' => array(
+					'label' => __( 'Brand Colors: Success', 'shoestrap' ),
+					'type'  => 'color',
+					'style' => '',
+				),
+				'color_brand_warning' => array(
+					'label' => __( 'Brand Colors: Warning', 'shoestrap' ),
+					'type'  => 'color',
+					'style' => '',
+				),
+				'color_brand_danger' => array(
+					'label' => __( 'Brand Colors: Danger', 'shoestrap' ),
+					'type'  => 'color',
+					'style' => '',
+				),
+				'color_brand_info' => array(
+					'label' => __( 'Brand Colors: Info', 'shoestrap' ),
+					'type'  => 'color',
+					'style' => '',
 				),
 			),
 		),
@@ -47,12 +78,30 @@ function shoestrap_customizer( $wp_customize ) {
 		$fields = $section['fields'];
 		foreach ( $fields as $field => $args ) {
 
-			if ( 'background' == $args['type'] ) {
+			if ( 'background' == $args['type'] ) { // Background-color setting
 
 				// Add settings
 				$wp_customize->add_setting( $field,
 					array(
 						'default'    => $ss_settings[$field]['background-color'],
+						'type'       => 'theme_mod',
+						'capability' => 'edit_theme_options'
+					)
+				);
+
+				// Add control
+				$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, $field, array(
+					'label'    => $args['label'],
+					'section'  => $section['slug'],
+					'settings' => $field,
+				) ) );
+
+			} elseif ( 'color' == $args['type'] ) { // Color setting
+
+				// Add settings
+				$wp_customize->add_setting( $field,
+					array(
+						'default'    => $ss_settings[$field],
 						'type'       => 'theme_mod',
 						'capability' => 'edit_theme_options'
 					)
@@ -104,6 +153,99 @@ function shoestrap_background_css() {
 					echo '.well { background: ' . $accent . '; border-color: ' . $border . ' }';
 				}
 
+			} elseif ( 'color' == $args['type'] ) {
+
+				// Generic style for all "color" settings
+				echo $args['style'] . ' { color: ' . get_theme_mod( $field ) . '; }';
+
+				// Additional styles per setting
+				if ( 'color_brand_primary' == $field ) {
+
+					$brightness = Shoestrap_Color::get_brightness( get_theme_mod( $field ) );
+					if ( $brightness < 195 ) {
+						$border = Shoestrap_Color::adjust_brightness( get_theme_mod( $field ), -20 );
+						$text_c = '#fff';
+					} else {
+						$border = Shoestrap_Color::adjust_brightness( get_theme_mod( $field ), 20 );
+						$text_c = '#333';
+					}
+
+					echo '.btn.btn-primary {
+						background-color: ' . get_theme_mod( $field ) . ';
+						border-color: ' . $border . ';
+						color: ' . $text_c . ';
+					}';
+
+				} elseif ( 'color_brand_success' == $field ) {
+
+					$brightness = Shoestrap_Color::get_brightness( get_theme_mod( $field ) );
+					if ( $brightness < 195 ) {
+						$border = Shoestrap_Color::adjust_brightness( get_theme_mod( $field ), -20 );
+						$text_c = '#fff';
+					} else {
+						$border = Shoestrap_Color::adjust_brightness( get_theme_mod( $field ), 20 );
+						$text_c = '#333';
+					}
+
+					echo '.btn.btn-success {
+						background-color: ' . get_theme_mod( $field ) . ';
+						border-color: ' . $border . ';
+						color: ' . $text_c . ';
+					}';
+
+				} elseif ( 'color_brand_warning' == $field ) {
+
+					$brightness = Shoestrap_Color::get_brightness( get_theme_mod( $field ) );
+					if ( $brightness < 195 ) {
+						$border = Shoestrap_Color::adjust_brightness( get_theme_mod( $field ), -20 );
+						$text_c = '#fff';
+					} else {
+						$border = Shoestrap_Color::adjust_brightness( get_theme_mod( $field ), 20 );
+						$text_c = '#333';
+					}
+
+					echo '.btn.btn-warning {
+						background-color: ' . get_theme_mod( $field ) . ';
+						border-color: ' . $border . ';
+						color: ' . $text_c . ';
+					}';
+
+				} elseif ( 'color_brand_danger' == $field ) {
+
+					$brightness = Shoestrap_Color::get_brightness( get_theme_mod( $field ) );
+					if ( $brightness < 195 ) {
+						$border = Shoestrap_Color::adjust_brightness( get_theme_mod( $field ), -20 );
+						$text_c = '#fff';
+					} else {
+						$border = Shoestrap_Color::adjust_brightness( get_theme_mod( $field ), 20 );
+						$text_c = '#333';
+					}
+
+					echo '.btn.btn-danger {
+						background-color: ' . get_theme_mod( $field ) . ';
+						border-color: ' . $border . ';
+						color: ' . $text_c . ';
+					}';
+
+				} elseif ( 'color_brand_info' == $field ) {
+
+					$brightness = Shoestrap_Color::get_brightness( get_theme_mod( $field ) );
+					if ( $brightness < 195 ) {
+						$border = Shoestrap_Color::adjust_brightness( get_theme_mod( $field ), -20 );
+						$text_c = '#fff';
+					} else {
+						$border = Shoestrap_Color::adjust_brightness( get_theme_mod( $field ), 20 );
+						$text_c = '#333';
+					}
+
+					echo '.btn.btn-info {
+						background-color: ' . get_theme_mod( $field ) . ';
+						border-color: ' . $border . ';
+						color: ' . $text_c . ';
+					}';
+
+				}
+
 			}
 
 		}
@@ -133,6 +275,11 @@ function shoestrap_customizer_copy_options() {
 			if ( 'background' == $args['type'] ) {
 				// Copy the theme_mod to our settings array
 				$ss_settings[$field]['background-color'] = get_theme_mod( $field );
+				// Clean up theme mods
+				remove_theme_mod( $field );
+			} else {
+				// Copy the theme_mod to our settings array
+				$ss_settings[$field] = get_theme_mod( $field );
 				// Clean up theme mods
 				remove_theme_mod( $field );
 			}
