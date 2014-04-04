@@ -6,62 +6,63 @@
 function shoestrap_customizer_fields() {
 
 	$settings = array(
-		'background_section' => array(
-			'slug'   => 'background',
-			'title'  => __( 'Background', 'shoestrap' ),
-			'fields' => array(
-				'html_bg' => array(
-					'label' => __( 'General Background Color', 'shoestrap' ),
-					'type'  => 'background',
-					'style' => 'body',
-				),
-				'body_bg' => array(
-					'label' => __( 'Content Background', 'shoestrap' ),
-					'type'  => 'background',
-					'style' => '.wrap.main-section .content .bg, .form-control, .btn, .panel',
-				),
-			),
-		),
 		'colors_section' => array(
 			'slug'   => 'colors',
 			'title'  => __( 'Colors', 'shoestrap' ),
 			'fields' => array(
+				'body_bg' => array(
+					'label' => __( 'Content Background', 'shoestrap' ),
+					'type'  => 'background',
+					'style' => '.wrap.main-section .content .bg, .form-control, .btn, .panel',
+					'priority' => 1,
+				),
+				'html_bg' => array(
+					'label' => __( 'General Background Color', 'shoestrap' ),
+					'type'  => 'background',
+					'style' => 'body',
+					'priority' => 2,
+				),
 				'font_base' => array(
 					'label' => __( 'Base Font', 'shoestrap' ),
 					'type'  => 'typography',
 					'style' => 'body',
-					'priority' => 1,
+					'priority' => 3,
 				),
 				'font_h' => array(
 					'label' => __( 'Headers', 'shoestrap' ),
 					'type'  => 'typography',
 					'style' => 'h1, h2, h3, h4, h5, h6',
-					'priority' => 2,
+					'priority' => 4,
 				),
 				'color_brand_primary' => array(
 					'label' => __( 'Brand Colors: Primary', 'shoestrap' ),
 					'type'  => 'color',
 					'style' => 'a',
+					'priority' => 5,
 				),
 				'color_brand_success' => array(
 					'label' => __( 'Brand Colors: Success', 'shoestrap' ),
 					'type'  => 'color',
 					'style' => '',
+					'priority' => 6,
 				),
 				'color_brand_warning' => array(
 					'label' => __( 'Brand Colors: Warning', 'shoestrap' ),
 					'type'  => 'color',
 					'style' => '',
+					'priority' => 7,
 				),
 				'color_brand_danger' => array(
 					'label' => __( 'Brand Colors: Danger', 'shoestrap' ),
 					'type'  => 'color',
 					'style' => '',
+					'priority' => 8,
 				),
 				'color_brand_info' => array(
 					'label' => __( 'Brand Colors: Info', 'shoestrap' ),
 					'type'  => 'color',
 					'style' => '',
+					'priority' => 9,
 				),
 			),
 		),
