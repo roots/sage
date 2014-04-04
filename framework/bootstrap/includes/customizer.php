@@ -64,6 +64,12 @@ function shoestrap_customizer_fields() {
 					'style' => '',
 					'priority' => 9,
 				),
+				'navbar_bg' => array(
+					'label' => __( 'NavBar Background Color', 'shoestrap' ),
+					'type'  => 'color',
+					'style' => '',
+					'priority' => 10,
+				),
 			),
 		),
 	);
@@ -179,7 +185,11 @@ function shoestrap_background_css() {
 			if ( 'background' == $args['type'] ) {
 
 				// Generic style for all "background" settings
-				echo $args['style'] . ' { background: ' . $value . '; }';
+				if ( isset( $args['style'] ) && ! empty( $args['style'] ) ) {
+					echo $args['style'] . ' {
+						background: ' . $value . ';
+					}';
+				}
 
 				// Additional styles for the content background setting
 				if ( 'body_bg' == $field ) {
@@ -193,13 +203,20 @@ function shoestrap_background_css() {
 						$border = Shoestrap_Color::adjust_brightness( $value, 30 );
 					}
 
-					echo '.well { background: ' . $accent . '; border-color: ' . $border . ' }';
+					echo '.well {
+						background: ' . $accent . ';
+						border-color: ' . $border . ';
+					}';
 				}
 
 			} elseif ( 'color' == $args['type'] ) {
 
 				// Generic style for all "color" settings
-				echo $args['style'] . ' { color: ' . $value . '; }';
+				if ( isset( $args['style'] ) && ! empty( $args['style'] ) ) {
+					echo $args['style'] . ' {
+						color: ' . $value . ';
+					}';
+				}
 
 				// Additional styles per setting
 				if ( 'color_brand_primary' == $field ) {
@@ -286,12 +303,18 @@ function shoestrap_background_css() {
 						border-color: ' . $border . ';
 						color: ' . $text_c . ';
 					}';
+				} elseif ( 'navbar_bg' == $field ) {
+					echo '#banner-header {
+						background-color: ' . $value . ';
+					}';
 				}
 
 			} elseif ( 'typography' == $args['type'] ) {
 
 				// Generic style for all "typography" settings
-				echo $args['style'] . ' { color: ' . $value . '; }';
+				echo $args['style'] . ' {
+					color: ' . $value . ';
+				}';
 
 			}
 
