@@ -11,64 +11,28 @@ function shoestrap_customizer_fields() {
 			'title'  => __( 'Colors', 'shoestrap' ),
 			'fields' => array(
 				'body_bg' => array(
-					'label' => __( 'Content Background', 'shoestrap' ),
+					'label' => __( 'Background Color', 'shoestrap' ),
 					'type'  => 'background',
-					'style' => '.wrap.main-section .content .bg, .form-control, .btn, .panel',
+					'style' => 'body, .wrap.main-section .content .bg, .form-control, .btn, .panel',
 					'priority' => 1,
 				),
-				'html_bg' => array(
-					'label' => __( 'General Background Color', 'shoestrap' ),
-					'type'  => 'background',
-					'style' => 'body',
+				'font_base' => array(
+					'label' => __( 'Text Color', 'shoestrap' ),
+					'type'  => 'typography',
+					'style' => 'body, h1, h2, h3, h4, h5, h6',
 					'priority' => 2,
 				),
-				'font_base' => array(
-					'label' => __( 'Base Font', 'shoestrap' ),
-					'type'  => 'typography',
-					'style' => 'body',
-					'priority' => 3,
-				),
-				'font_h' => array(
-					'label' => __( 'Headers', 'shoestrap' ),
-					'type'  => 'typography',
-					'style' => 'h1, h2, h3, h4, h5, h6',
-					'priority' => 4,
-				),
 				'color_brand_primary' => array(
-					'label' => __( 'Brand Colors: Primary', 'shoestrap' ),
+					'label' => __( 'Primary Brand Color', 'shoestrap' ),
 					'type'  => 'color',
 					'style' => 'a',
-					'priority' => 5,
-				),
-				'color_brand_success' => array(
-					'label' => __( 'Brand Colors: Success', 'shoestrap' ),
-					'type'  => 'color',
-					'style' => '',
-					'priority' => 6,
-				),
-				'color_brand_warning' => array(
-					'label' => __( 'Brand Colors: Warning', 'shoestrap' ),
-					'type'  => 'color',
-					'style' => '',
-					'priority' => 7,
-				),
-				'color_brand_danger' => array(
-					'label' => __( 'Brand Colors: Danger', 'shoestrap' ),
-					'type'  => 'color',
-					'style' => '',
-					'priority' => 8,
-				),
-				'color_brand_info' => array(
-					'label' => __( 'Brand Colors: Info', 'shoestrap' ),
-					'type'  => 'color',
-					'style' => '',
-					'priority' => 9,
+					'priority' => 3,
 				),
 				'navbar_bg' => array(
 					'label' => __( 'NavBar Background Color', 'shoestrap' ),
 					'type'  => 'color',
 					'style' => '',
-					'priority' => 10,
+					'priority' => 4,
 				),
 			),
 		),
@@ -236,77 +200,6 @@ function shoestrap_background_css() {
 						color: ' . $text_c . ';
 					}';
 
-				} elseif ( 'color_brand_success' == $field ) {
-
-					$brightness = Shoestrap_Color::get_brightness( $value );
-					if ( $brightness < 195 ) {
-						$border = Shoestrap_Color::adjust_brightness( $value, -20 );
-						$text_c = '#fff';
-					} else {
-						$border = Shoestrap_Color::adjust_brightness( $value, 20 );
-						$text_c = '#333';
-					}
-
-					echo '.btn.btn-success {
-						background-color: ' . $value . ';
-						border-color: ' . $border . ';
-						color: ' . $text_c . ';
-					}';
-
-				} elseif ( 'color_brand_warning' == $field ) {
-
-					$brightness = Shoestrap_Color::get_brightness( $value );
-					if ( $brightness < 195 ) {
-						$border = Shoestrap_Color::adjust_brightness( $value, -20 );
-						$text_c = '#fff';
-					} else {
-						$border = Shoestrap_Color::adjust_brightness( $value, 20 );
-						$text_c = '#333';
-					}
-
-					echo '.btn.btn-warning {
-						background-color: ' . $value . ';
-						border-color: ' . $border . ';
-						color: ' . $text_c . ';
-					}';
-
-				} elseif ( 'color_brand_danger' == $field ) {
-
-					$brightness = Shoestrap_Color::get_brightness( $value );
-					if ( $brightness < 195 ) {
-						$border = Shoestrap_Color::adjust_brightness( $value, -20 );
-						$text_c = '#fff';
-					} else {
-						$border = Shoestrap_Color::adjust_brightness( $value, 20 );
-						$text_c = '#333';
-					}
-
-					echo '.btn.btn-danger {
-						background-color: ' . $value . ';
-						border-color: ' . $border . ';
-						color: ' . $text_c . ';
-					}';
-
-				} elseif ( 'color_brand_info' == $field ) {
-
-					$brightness = Shoestrap_Color::get_brightness( $value );
-					if ( $brightness < 195 ) {
-						$border = Shoestrap_Color::adjust_brightness( $value, -20 );
-						$text_c = '#fff';
-					} else {
-						$border = Shoestrap_Color::adjust_brightness( $value, 20 );
-						$text_c = '#333';
-					}
-
-					echo '.btn.btn-info {
-						background-color: ' . $value . ';
-						border-color: ' . $border . ';
-						color: ' . $text_c . ';
-					}';
-				} elseif ( 'navbar_bg' == $field ) {
-					echo '#banner-header {
-						background-color: ' . $value . ';
-					}';
 				}
 
 			} elseif ( 'typography' == $args['type'] ) {
@@ -346,6 +239,11 @@ function shoestrap_customizer_copy_options() {
 			// Backgrounds are an array of options, so we have to include each one of them separately
 			if ( 'background' == $args['type'] ) {
 
+				// If we're changing the 'body_bg' setting, save the option to 'html_bg' as well.
+				if ( 'body_bg' == $field ) {
+					$ss_settings['html_bg']['background-color'] = $value;
+				}
+
 				// Copy the theme_mod to our settings array
 				$ss_settings[$field]['background-color'] = $value;
 				// Clean up theme mods
@@ -353,7 +251,8 @@ function shoestrap_customizer_copy_options() {
 
 			} elseif ( 'typography' == $args['type'] ) {
 
-				if ( 'font_h' == $field ) {
+				if ( 'font_base' == $field ) {
+					$ss_settings[$field] = $value;
 					$ss_settings['font_h1']['color'] = $value;
 					$ss_settings['font_h2']['color'] = $value;
 					$ss_settings['font_h3']['color'] = $value;
