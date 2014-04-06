@@ -72,9 +72,13 @@ body { }
    See: http://codex.wordpress.org/CSS#WordPress_Generated_Classes
    ========================================================================== */
 
+img[class*="align"],
+img[class*="wp-image-"],
+img[class*="attachment-"],
+.wp-caption { display: block; max-width: 100%; height: auto; }
+
 .aligncenter { display: block; margin: 0 auto; }
-.alignleft { float: left; }
-.alignright { float: right; }
+.alignleft, .alignright { margin-bottom: 20px; }
 figure.alignnone { margin-left: 0; margin-right: 0; }
 
 
@@ -85,6 +89,9 @@ figure.alignnone { margin-left: 0; margin-right: 0; }
 
 @media (min-width: @screen-sm-min) { }
 
-@media (min-width: @screen-md-min) { }
+@media (min-width: @screen-md-min) { 
+   .alignleft { float: left; margin: 0 10px 20px 0; }
+   .alignright { float: right; margin: 0 0 20px 20px; }
+}
 
 @media (min-width: @screen-lg-min) { }
