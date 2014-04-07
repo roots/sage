@@ -1,6 +1,11 @@
 ### HEAD
 
-* Fix: metadata now aligned to the left.
+* Fix: Metadata now aligned to the left.
+* Fix: Performance improvements
+* Fix: Removed the updater nag
+* Fix: Reset stylesheet path & url transients on compile
+* New: Started simplified customizer implementation
+* New: Bootstrap styling for non-bootstrap form elements
 
 ### 3.2.3
 
