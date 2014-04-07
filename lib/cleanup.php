@@ -327,7 +327,7 @@ function shoestrap_pagination_toggler() {
 		return;
 	}
 
-	$nav  = '<hr><nav class="pagination">';
+	$nav  = '<nav class="pagination">';
 	$nav .= shoestrap_paginate_links(
 		apply_filters( 'pagination_args', array(
 			'base'      => str_replace( 999999999, '%#%', get_pagenum_link( 999999999 ) ),
