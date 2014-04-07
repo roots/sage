@@ -4,6 +4,8 @@
 * Fix: Performance improvements
 * Fix: Removed the updater nag
 * Fix: Reset stylesheet path & url transients on compile
+* Fix: fatal error when mb_convert_encoding is not installed on the server
+* Fix: removed \<hr\> from breadcrumbs
 * New: Started simplified customizer implementation
 * New: Bootstrap styling for non-bootstrap form elements
 
