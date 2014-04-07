@@ -217,6 +217,8 @@ if ( ! class_exists( 'Shoestrap_Less_PHP' ) ) {
 			}
 			// Force re-building the stylesheet version transient
 			delete_transient( 'shoestrap_stylesheet_time' );
+			delete_transient( 'shoestrap_stylesheet_path' );
+			delete_transient( 'shoestrap_stylesheet_uri' );
 		}
 	}
 }
