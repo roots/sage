@@ -47,6 +47,7 @@
 						<?php dynamic_sidebar( 'sidebar-secondary' ); ?>
 					</aside><!-- /.sidebar -->
 				<?php endif; ?>
+				<?php echo $ss_framework->clearfix(); ?>
 			<?php echo $ss_framework->close_row( 'div' ); ?>
 		</div><!-- /.content -->
 		<?php do_action( 'shoestrap_after_content' ); ?>
