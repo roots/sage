@@ -125,11 +125,3 @@ function shoestrap_is_bp() {
 
 	return $bp;
 }
-
-
-function shoestrap_bp_remove_meta() {
-	global $ss_blog;
-
-	remove_action( 'shoestrap_entry_meta', array( $ss_blog, 'meta_custom_render' ) );
-}
-add_action( 'shoestrap_entry_meta', 'shoestrap_bp_remove_meta', 20 );

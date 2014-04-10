@@ -13,7 +13,10 @@ if ( ! class_exists( 'Shoestrap_Blog' ) ) {
 			global $ss_settings;
 
 			add_filter( 'redux/options/' . SHOESTRAP_OPT_NAME . '/sections', array( $this, 'options' ), 70 );
-			add_action( 'shoestrap_entry_meta', array( $this, 'meta_custom_render' ) );
+
+			if ( ! shoestrap_is_bp() ) {
+				add_action( 'shoestrap_entry_meta', array( $this, 'meta_custom_render' ) );
+			}
 			add_filter( 'excerpt_more', array( $this, 'excerpt_more' ) );
 			add_action( 'wp', array( $this, 'remove_featured_image_per_post_type' ) );
 

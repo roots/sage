@@ -1,5 +1,9 @@
 <?php
 
+if ( class_exists( 'BuddyPress' ) ) {
+	require_once locate_template( '/lib/buddypress.php' );
+}
+
 if ( ! defined( 'SS_FRAMEWORK' ) ) {
 	// Define bootstrap as the default framework.
 	// Other frameworks can be added via plugins and override this.
@@ -59,7 +63,7 @@ if ( file_exists( locate_template( '/lib/updater/updater.php' ) ) ) {
 }
 
 if ( class_exists( 'bbPress' ) ) {
-	require_once locate_template( '/lib/bbpress.php' );      // Scripts and stylesheets
+	require_once locate_template( '/lib/bbpress.php' );
 }
 
 do_action( 'shoestrap_include_files' );
