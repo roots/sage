@@ -10,6 +10,13 @@ if ( ! class_exists( 'Shoestrap_Social' ) ) {
 		function __construct() {
 			global $ss_settings;
 
+			// When on a BuddyPress, disable social shares.
+			if ( shoestrap_is_bp() ) {
+				$ss_settings['social_sharing_single_post'] = 0;
+				$ss_settings['social_sharing_single_page'] = 0;
+				$ss_settings['social_sharing_archives'] = 0;
+			}
+
 			add_filter( 'redux/options/' . SHOESTRAP_OPT_NAME . '/sections', array( $this, 'options' ), 140 );
 
 			$social_sharing_location = $ss_settings['social_sharing_location'];
