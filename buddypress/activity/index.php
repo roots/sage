@@ -67,13 +67,13 @@
 	</div><!-- .item-list-tabs -->
 
 	<div class="item-list-tabs no-ajax" id="subnav" role="navigation">
-		<ul>
-			<li class="feed"><a href="<?php bp_sitewide_activity_feed_link(); ?>" title="<?php esc_attr_e( 'RSS Feed', 'buddypress' ); ?>"><?php _e( 'RSS', 'buddypress' ); ?></a></li>
+		<ul class="list-inline">
+			<li class="feed"><a class="btn btn-warning btn-sm" href="<?php bp_sitewide_activity_feed_link(); ?>" title="<?php esc_attr_e( 'RSS Feed', 'buddypress' ); ?>"><i class="el-icon-rss"></i> <?php _e( 'RSS', 'buddypress' ); ?></a></li>
 
 			<?php do_action( 'bp_activity_syndication_options' ); ?>
 
-			<li id="activity-filter-select" class="last">
-				<label for="activity-filter-by"><?php _e( 'Show:', 'buddypress' ); ?></label>
+			<li id="activity-filter-select" class="last pull-right right">
+				<label for="activity-filter-by" class="sr-only"><?php _e( 'Show:', 'buddypress' ); ?></label>
 				<select id="activity-filter-by">
 					<option value="-1"><?php _e( 'Everything', 'buddypress' ); ?></option>
 					<option value="activity_update"><?php _e( 'Updates', 'buddypress' ); ?></option>
