@@ -1,0 +1,65 @@
+#buddypress {
+	button,
+	a.button,
+	input[type=submit],
+	input[type=button],
+	input[type=reset],
+	ul.button-nav li a,
+	div.generic-button a,
+	.comment-reply-link,
+	a.bp-title-button {
+		.btn;
+	}
+
+	input[type=submit],
+	.bp-primary-action {
+		.btn-primary;
+	}
+
+	.bp-secondary-action {
+		&.fav {
+			.btn-success;
+		}
+
+		&.delete-activity {
+			.btn-danger;
+		}
+	}
+
+	form.ac-form {
+		display: none;
+	}
+
+	li.media {
+		list-style: none;
+		list-style-type: none;
+	}
+
+	li.selected {
+		background: @btn-primary-bg;
+		color: @btn-primary-color;
+
+		a {
+			color: @btn-primary-color;
+		}
+
+		.badge {
+			color: @btn-primary-bg;
+			background: @btn-primary-color;
+		}
+	}
+
+}
+
+.activity_update.activity-item {
+
+	iframe {
+		max-width: 100%;
+	}
+
+	.activity-avatar {
+		float: left;
+		border-radius: 50%;
+		overflow: hidden;
+	}
+}
