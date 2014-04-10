@@ -36,30 +36,45 @@
 	}
 
 	li.selected {
-		background: @btn-primary-bg;
-		color: @btn-primary-color;
+		a {
+			.btn-primary;
+
+			.badge {
+				color: @btn-primary-bg;
+				background: @btn-primary-color;
+			}
+		}
+	}
+
+	.activity_update.activity-item {
+
+		iframe {
+			max-width: 100%;
+		}
+
+		.activity-avatar {
+			float: left;
+			border-radius: 50%;
+			overflow: hidden;
+		}
+
+		.activity-meta {
+			text-align: right;
+			a {
+				.btn-sm;
+			}
+		}
+	}
+
+	li.load-more {
+		list-style-type: none;
+		list-style: none;
 
 		a {
-			color: @btn-primary-color;
+			.btn;
+			.btn-default;
+			.btn-block;
+			.btn-lg;
 		}
-
-		.badge {
-			color: @btn-primary-bg;
-			background: @btn-primary-color;
-		}
-	}
-
-}
-
-.activity_update.activity-item {
-
-	iframe {
-		max-width: 100%;
-	}
-
-	.activity-avatar {
-		float: left;
-		border-radius: 50%;
-		overflow: hidden;
 	}
 }
