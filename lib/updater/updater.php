@@ -8,7 +8,7 @@ function shoestrap_theme_updater() {
 
 	$edd_updater = new EDD_SL_Theme_Updater( array(
 			'remote_api_url' 	=> 'http://shoestrap.org',
-			'version' 			=> '3.2.3',
+			'version' 			=> '3.2.4',
 			'license' 			=> 'c5305a091a9e61268c5be6096bfa3d38',
 			'item_name' 		=> 'Shoestrap 3',
 			'author'			=> 'aristath, fovoc, dovyp'

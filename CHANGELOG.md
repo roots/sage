@@ -1,13 +1,16 @@
-### HEAD
+### 3.2.4
 
+* Fix: Footer layout fixes.
 * Fix: Metadata now aligned to the left.
 * Fix: Performance improvements
 * Fix: Removed the updater nag
 * Fix: Reset stylesheet path & url transients on compile
-* Fix: fatal error when mb_convert_encoding is not installed on the server
-* Fix: removed \<hr\> from breadcrumbs
+* Fix: Fatal error when mb_convert_encoding is not installed on the server
+* Fix: Removed \<hr\> from breadcrumbs
+* Fix: Removed \<hr\> form pagination links.
 * New: Started simplified customizer implementation
 * New: Bootstrap styling for non-bootstrap form elements
+* New: Started BuddyPress integration. (activity)
 
 ### 3.2.3
 
