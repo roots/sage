@@ -15,6 +15,11 @@ function shoestrap_footer_content() {
 		}
 	}
 
+	// If sidebars exist, open row.
+	if ( $num_of_sidebars >= 0 ) {
+		echo $ss_framework->open_row( 'div' );
+	}
+
 	// Showing the active sidebars
 	for ( $i = 0; $i < 5; $i++ ) {
 		$sidebar = 'sidebar-footer-' . $i;
@@ -26,7 +31,16 @@ function shoestrap_footer_content() {
 			echo $ss_framework->open_col( 'div', array( 'medium' => $col_class ) );
 			dynamic_sidebar( $sidebar );
 			echo $ss_framework->close_col( 'div' );
+
 		}
+	}
+
+	// If sidebars exist, close row.
+	if ( $num_of_sidebars >= 0 ) {
+		echo $ss_framework->close_row( 'div' );
+
+		// add a clearfix div.
+		echo $ss_framework->clearfix();
 	}
 
 	do_action( 'shoestrap_footer_html' );
