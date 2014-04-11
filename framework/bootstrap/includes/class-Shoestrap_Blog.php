@@ -14,7 +14,7 @@ if ( ! class_exists( 'Shoestrap_Blog' ) ) {
 
 			add_filter( 'redux/options/' . SHOESTRAP_OPT_NAME . '/sections', array( $this, 'options' ), 70 );
 
-			if ( ! shoestrap_is_bp() ) {
+			if ( ! class_exists( 'BuddyPress' ) || ( class_exists( 'BuddyPress' ) && ! shoestrap_is_bp() ) ) {
 				add_action( 'shoestrap_entry_meta', array( $this, 'meta_custom_render' ) );
 			}
 			add_filter( 'excerpt_more', array( $this, 'excerpt_more' ) );

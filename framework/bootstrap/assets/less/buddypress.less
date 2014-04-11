@@ -1,0 +1,93 @@
+#buddypress {
+	button,
+	a.button,
+	input[type=submit],
+	input[type=button],
+	input[type=reset],
+	ul.button-nav li a,
+	div.generic-button a,
+	.comment-reply-link,
+	a.bp-title-button {
+		.btn;
+	}
+
+	input[type=submit],
+	.bp-primary-action {
+		.btn-primary;
+	}
+
+	.bp-secondary-action {
+		&.fav {
+			.btn-success;
+		}
+
+		&.delete-activity {
+			.btn-danger;
+		}
+	}
+
+	form.ac-form {
+		display: none;
+	}
+
+	li.media {
+		list-style: none;
+		list-style-type: none;
+	}
+
+	li.selected {
+		a {
+			.btn-primary;
+
+			.badge {
+				color: @btn-primary-bg;
+				background: @btn-primary-color;
+			}
+		}
+	}
+
+	.activity_update.activity-item {
+
+		iframe {
+			max-width: 100%;
+		}
+
+		.activity-avatar {
+			float: left;
+			overflow: hidden;
+		}
+
+		.activity-meta {
+			text-align: right;
+			a {
+				.btn-sm;
+			}
+		}
+	}
+
+	li.load-more {
+		list-style-type: none;
+		list-style: none;
+
+		a {
+			.btn;
+			.btn-default;
+			.btn-block;
+			.btn-lg;
+		}
+	}
+
+	#whats-new-options {
+		height: auto !important;
+	}
+
+	#whats-new {
+		height: auto;
+		min-height: 3em;
+	}
+
+}
+
+img.avatar {
+	border-radius: 50%;
+}
