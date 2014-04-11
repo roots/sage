@@ -11,7 +11,7 @@ if ( ! class_exists( 'Shoestrap_Social' ) ) {
 			global $ss_settings;
 
 			// When on a BuddyPress, disable social shares.
-			if ( shoestrap_is_bp() ) {
+			if ( class_exists( 'BuddyPress' ) && shoestrap_is_bp() ) {
 				$ss_settings['social_sharing_single_post'] = 0;
 				$ss_settings['social_sharing_single_page'] = 0;
 				$ss_settings['social_sharing_archives'] = 0;
