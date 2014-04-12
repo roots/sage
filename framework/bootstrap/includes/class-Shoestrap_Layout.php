@@ -22,15 +22,15 @@ if ( ! class_exists( 'Shoestrap_Layout' ) ) {
 			add_action( 'template_redirect',                 array( $this, 'content_width'                  )     );
 
 			if ( $ss_settings['body_margin_top'] > 0 || $ss_settings['body_margin_bottom'] > 0 ) {
-				add_action( 'wp_enqueue_scripts',            array( $this, 'body_margin'                   ), 101 );
+				add_action( 'wp_enqueue_scripts', array( $this, 'body_margin' ), 101 );
 			}
 
-			add_action( 'get_header',             array( $this, 'boxed_container_div_open'          ), 1   );
-			add_action( 'shoestrap_pre_footer',   array( $this, 'boxed_container_div_open'          ), 1   );
-			add_action( 'shoestrap_do_navbar',    array( $this, 'boxed_container_div_close'         ), 99  );
-			add_action( 'shoestrap_after_footer', array( $this, 'boxed_container_div_close'         ), 899 );
-			add_action( 'wp',                     array( $this, 'control_primary_sidebar_display'   )      );
-			add_action( 'wp',                     array( $this, 'control_secondary_sidebar_display' )      );
+			add_action( 'get_header',             array( $this, 'boxed_container_div_open' ), 1 );
+			add_action( 'shoestrap_pre_footer',   array( $this, 'boxed_container_div_open' ), 1 );
+			add_action( 'shoestrap_do_navbar',    array( $this, 'boxed_container_div_close' ), 99 );
+			add_action( 'shoestrap_after_footer', array( $this, 'boxed_container_div_close' ), 899 );
+			add_action( 'wp',                     array( $this, 'control_primary_sidebar_display' ) );
+			add_action( 'wp',                     array( $this, 'control_secondary_sidebar_display' ) );
 
 			 // Modify the appearance of widgets based on user selection.
 			$widgets_mode = $ss_settings['widgets_mode'];
