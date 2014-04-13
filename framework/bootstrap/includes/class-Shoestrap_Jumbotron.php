@@ -100,6 +100,7 @@ if ( ! class_exists( 'Shoestrap_Jumbotron' ) ) {
 					'size'  => '30px' //this is the text size from preview box
 				),
 				'type'      => 'typography',
+				'output'    => '.jumbotron',
 			);
 
 			$fields[] = array(
