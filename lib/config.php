@@ -25,17 +25,15 @@ function roots_main_class() {
     $class = 'col-sm-12';
   }
 
-  return $class;
+  return apply_filters('roots/main_class', $class);
 }
-add_filter('roots/main_class', 'roots_main_class');
 
 /**
  * .sidebar classes
  */
 function roots_sidebar_class() {
-  return 'col-sm-4';
+  return apply_filters('roots/sidebar_class', 'col-sm-4');
 }
-add_filter('roots/sidebar_class', 'roots_sidebar_class');
 
 /**
  * Define which pages shouldn't have the sidebar
