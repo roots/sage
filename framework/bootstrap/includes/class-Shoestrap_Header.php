@@ -58,6 +58,7 @@ if ( ! class_exists( 'Shoestrap_Header' ) ) {
 				'default'     => array(
 					'background-color' => '#ffffff'
 				),
+				'output'      => '.before-main-wrapper .header-boxed, .before-main-wrapper .header-wrapper',
 				'type'        => 'background',
 				'required'    => array( 'header_toggle','=',array( '1' ) ),
 			);
@@ -198,13 +199,14 @@ if ( ! class_exists( 'Shoestrap_Header' ) ) {
 			$rgb      = Shoestrap_Color::get_rgb( $bg, true );
 
 			if ( $ss_settings['site_style'] == 'boxed' ) {
-				$element = '.before-main-wrapper .header-boxed';
+				$element = 'body .before-main-wrapper .header-boxed';
 			} else {
-				$element = '.before-main-wrapper .header-wrapper';
+				$element = 'body .before-main-wrapper .header-wrapper';
 			}
 
 			if ( $ss_settings['header_toggle'] == 1 ) {
-				$style = $element . '{ color: ' . $cl . ';';
+				$style  = $element . ' a, ' . $element . ' h1, ' . $element . ' h2, ' . $element . ' h3, ' . $element . ' h4, ' . $element . ' h5, ' . $element . ' h6  { color: ' . $cl . '; }';
+				$style .= $element . '{ color: ' . $cl . ';';
 
 				if ( $opacity < 1 && ! $ss_settings['header_bg']['background-image'] ) {
 					$style .= 'background: rgb(' . $rgb . '); background: rgba(' . $rgb . ', ' . $opacity . ');';
