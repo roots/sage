@@ -28,6 +28,12 @@ function shoestrap_customizer_fields() {
 					'style' => '',
 					'priority' => 4,
 				),
+				'font_base' => array( 
+					'label'    => __( 'Base Font', 'shoestrap' ),         
+					'type'     => 'font',
+					'style'    => '',
+					'priority' => 5, 
+				),
 			),
 		),
 	);
@@ -78,7 +84,7 @@ function shoestrap_customizer( $wp_customize ) {
 						)
 					);
 
-				}
+				} 
 
 				// Add control
 				$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, $field, array(
@@ -88,8 +94,25 @@ function shoestrap_customizer( $wp_customize ) {
 					'priority' => isset( $args['priority'] ) ? $args['priority'] : null,
 				) ) );
 
-			}
+			}	elseif ( 'font' == $args['type'] ) {
+					
+					// Add setting
+					$wp_customize->add_setting( $field,
+						array(
+							'default'    => $ss_settings[$field],
+							'type'       => 'theme_mod',
+							'capability' => 'edit_theme_options'
+						)
+					);
 
+					// Add control
+					$wp_customize->add_control( new Shoestrap_Google_WebFont_Control( $wp_customize, $field, array(
+				    'label'       => $args['label'],
+				    'section'     => $section['slug'],
+				    'settings'    => $field,
+				    'priority'    => isset( $args['priority'] ) ? $args['priority'] : null,
+				  ) ) );	
+			}
 		}
 	}
 }
@@ -230,6 +253,11 @@ function shoestrap_customizer_copy_options() {
 				// Clean up theme mods
 				remove_theme_mod( $field );
 
+			} elseif ( 'font' == $args['type'] ) {
+				// Copy the theme_mod to our settings array
+				$ss_settings[$field]['font-family'] = $value;
+				// Clean up theme mods
+				remove_theme_mod( $field );
 			} else {
 				// Copy the theme_mod to our settings array
 				$ss_settings[$field] = $value;
@@ -248,3 +276,71 @@ function shoestrap_customizer_copy_options() {
 
 }
 add_action( 'customize_save_after', 'shoestrap_customizer_copy_options', 75 );
+
+
+/*
+ * This class creates a custom Customizer control for Google Fonts
+ */
+if ( class_exists( 'WP_Customize_Control' ) ) {
+  class Shoestrap_Google_WebFont_Control extends WP_Customize_Control {
+    public $type = 'select';
+
+    public function render_content() { ?>
+
+        <label>
+          <span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
+          <select <?php $this->link(); ?>>
+            <option value="" data-details=''>Select a Font</option>
+            <?php
+              $fonts = shoestrap_google_webfonts_array();
+              foreach ($fonts as $font => $details) {
+                if ($this->value() == $font) {
+                  $selected = ' selected="selected"';
+                } else {
+                  $selected = '';
+                }
+                ?>
+                  <option value="<?php echo $font;?>" data-details='<?php echo json_encode($details)?>'<?php echo $selected; ?>><?php echo $font;?></option>
+                <?php
+              }
+            ?>
+          </select>
+        </label>
+    <?php }
+  }
+}
+
+
+/*
+ * Ccall the API and enable Google Font dropdown.
+ */
+function shoestrap_google_webfonts_array() {
+	define('GOOGLE_FONTS_API_KEY','AIzaSyCDiOc36EIOmwdwspLG3LYwCg9avqC5YLs');
+
+	// Check if they have a valid API key and SSL on this box. Won't work without SSL.
+	if(extension_loaded('openssl') && GOOGLE_FONTS_API_KEY != "") {
+		$url = "https://www.googleapis.com/webfonts/v1/webfonts?key=".GOOGLE_FONTS_API_KEY;
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+		curl_setopt($ch, CURLOPT_HEADER, false);
+		curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+		curl_setopt($ch, CURLOPT_URL, $url);
+		curl_setopt($ch, CURLOPT_REFERER, $url);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+		$result = json_decode(curl_exec($ch));
+		curl_close($ch);
+		if ($result->error->code !== 400) {
+			$res = array();
+			foreach ($result->items as $font) {
+				$res[$font->family] = array(
+					'variants' => '',
+					'subsets' => ''
+				);
+			}
+			return $res;
+		}
+	} else {
+		// No API key specified
+		return json_decode(file_get_contents(ReduxFramework::$_dir . 'inc/fields/typography/googlefonts.json'));
+	}
+}
