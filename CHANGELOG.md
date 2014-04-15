@@ -5,7 +5,7 @@
 * Fix: Jumbotron Text Size
 * Fix: Regenerating .pot file
 * Fix: Titles on archives
-
+* New: Support HTML5 Galleries & Captions ([feature added in WP 3.9](http://make.wordpress.org/core/2014/04/15/html5-galleries-captions-in-wordpress-3-9/#comments))
 ### 3.2.4
 
 * Fix: Footer layout fixes.
