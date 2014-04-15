@@ -1,3 +1,11 @@
+### HEAD
+
+* Fix: Header Background
+* Fix: Header Text Colors
+* Fix: Jumbotron Text Size
+* Fix: Regenerating .pot file
+* Fix: Titles on archives
+
 ### 3.2.4
 
 * Fix: Footer layout fixes.
