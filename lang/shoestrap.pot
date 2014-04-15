@@ -1,0 +1,2640 @@
+# Copyright (C) 2014 aristath, fovoc, dovyp
+# This file is distributed under the GPL v3 License.
+msgid ""
+msgstr ""
+"Project-Id-Version: Shoestrap 3 3.2.4\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tags/shoestrap-3\n"
+"POT-Creation-Date: 2014-04-15 14:12:05+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2014-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: 404.php:7
+msgid "Sorry, but the page you were trying to view does not exist."
+msgstr ""
+
+#: 404.php:11
+msgid "It looks like this was the result of either:"
+msgstr ""
+
+#: 404.php:13
+msgid "a mistyped address"
+msgstr ""
+
+#: 404.php:14
+msgid "an out-of-date link"
+msgstr ""
+
+#: base.php:3
+msgid "Skip to main content"
+msgstr ""
+
+#: base.php:7
+msgid ""
+" You are using an <strong>outdated</strong> browser. Please <a href=\"http://"
+"browsehappy.com/\">upgrade your browser</a> to improve your experience."
+msgstr ""
+
+#: bbpress/form-reply.php:17
+msgid "Reply To: %s"
+msgstr ""
+
+#: bbpress/form-reply.php:20
+msgid ""
+"This topic is marked as closed to new replies, however your posting "
+"capabilities still allow you to do so."
+msgstr ""
+
+#: bbpress/form-reply.php:24 bbpress/form-topic.php:43
+msgid "Your account has the ability to post unrestricted HTML content."
+msgstr ""
+
+#: bbpress/form-reply.php:36 bbpress/form-topic.php:63
+msgid ""
+"You may use these <abbr title=\"HyperText Markup Language\">HTML</abbr> tags "
+"and attributes:"
+msgstr ""
+
+#: bbpress/form-reply.php:44 lib/meta.php:10
+msgid "Tags:"
+msgstr ""
+
+#: bbpress/form-reply.php:56 bbpress/form-topic.php:111
+msgid "Notify the author of follow-up replies via email"
+msgstr ""
+
+#: bbpress/form-reply.php:58 bbpress/form-topic.php:113
+msgid "Notify me of follow-up replies via email"
+msgstr ""
+
+#: bbpress/form-reply.php:69 bbpress/form-topic.php:124
+msgid "Keep a log of this edit:"
+msgstr ""
+
+#: bbpress/form-reply.php:72 bbpress/form-topic.php:128
+msgid "Optional reason for editing:"
+msgstr ""
+
+#: bbpress/form-reply.php:84 bbpress/form-topic.php:139
+#: lib/functions-core.php:45
+msgid "Submit"
+msgstr ""
+
+#: bbpress/form-reply.php:97
+msgid "The topic &#8216;%s&#8217; is closed to new replies."
+msgstr ""
+
+#: bbpress/form-reply.php:101 bbpress/form-topic.php:159
+msgid "The forum &#8216;%s&#8217; is closed to new topics and replies."
+msgstr ""
+
+#: bbpress/form-reply.php:105
+msgid "You cannot reply to this topic."
+msgstr ""
+
+#: bbpress/form-reply.php:105
+msgid "You must be logged in to reply to this topic."
+msgstr ""
+
+#: bbpress/form-search.php:15
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:355
+#: templates/searchform.php:3
+msgid "Search for:"
+msgstr ""
+
+#: bbpress/form-search.php:18
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:356
+#: templates/searchform.php:4
+msgid "Search"
+msgstr ""
+
+#: bbpress/form-topic.php:29
+msgid "Now Editing &ldquo;%s&rdquo;"
+msgstr ""
+
+#: bbpress/form-topic.php:31
+msgid "Create New Topic in &ldquo;%s&rdquo;"
+msgstr ""
+
+#: bbpress/form-topic.php:31
+msgid "Create New Topic"
+msgstr ""
+
+#: bbpress/form-topic.php:37
+msgid ""
+"This forum is marked as closed to new topics, however your posting "
+"capabilities still allow you to do so."
+msgstr ""
+
+#: bbpress/form-topic.php:53
+msgid "Topic Title (Maximum Length: %d):"
+msgstr ""
+
+#: bbpress/form-topic.php:71
+msgid "Topic Tags:"
+msgstr ""
+
+#: bbpress/form-topic.php:80
+msgid "Forum:"
+msgstr ""
+
+#: bbpress/form-topic.php:83
+msgid "(No Forum)"
+msgstr ""
+
+#: bbpress/form-topic.php:94
+msgid "Topic Type:"
+msgstr ""
+
+#: bbpress/form-topic.php:100
+msgid "Topic Status:"
+msgstr ""
+
+#: bbpress/form-topic.php:165
+msgid "You cannot create new topics."
+msgstr ""
+
+#: bbpress/form-topic.php:165
+msgid "You must be logged in to create new topics."
+msgstr ""
+
+#: bbpress/loop-forums.php:19
+msgid "Forum"
+msgstr ""
+
+#: bbpress/loop-forums.php:20
+msgid "Topics"
+msgstr ""
+
+#: bbpress/loop-forums.php:21 bbpress/loop-replies.php:26
+#: bbpress/loop-topics.php:22
+msgid "Replies"
+msgstr ""
+
+#: bbpress/loop-forums.php:21 bbpress/loop-topics.php:22
+#: buddypress/activity/index.php:83
+msgid "Posts"
+msgstr ""
+
+#: bbpress/loop-forums.php:22 bbpress/loop-topics.php:23
+msgid "Freshness"
+msgstr ""
+
+#: bbpress/loop-replies.php:18 bbpress/loop-search.php:23
+msgid "Author"
+msgstr ""
+
+#: bbpress/loop-search-forum.php:13
+msgid "Last updated %s"
+msgstr ""
+
+#: bbpress/loop-search-forum.php:18
+msgid "Forum: "
+msgstr ""
+
+#: bbpress/loop-search-reply.php:18
+msgid "In reply to: "
+msgstr ""
+
+#: bbpress/loop-search.php:25
+msgid "Search Results"
+msgstr ""
+
+#: bbpress/loop-single-reply.php:17
+msgid "in reply to: "
+msgstr ""
+
+#: bbpress/loop-single-topic.php:47
+msgid "in: <a href=\"%1$s\">%2$s</a>"
+msgstr ""
+
+#: bbpress/loop-topics.php:20
+msgid "Topic"
+msgstr ""
+
+#: bbpress/loop-topics.php:21
+msgid "Voices"
+msgstr ""
+
+#: bbpress/user-details.php:29
+msgid "%s's Profile"
+msgstr ""
+
+#: bbpress/user-details.php:29
+msgid "Profile"
+msgstr ""
+
+#: bbpress/user-details.php:35
+msgid "%s's Topics Started"
+msgstr ""
+
+#: bbpress/user-details.php:35
+msgid "Topics Started"
+msgstr ""
+
+#: bbpress/user-details.php:41
+msgid "%s's Replies Created"
+msgstr ""
+
+#: bbpress/user-details.php:41
+msgid "Replies Created"
+msgstr ""
+
+#: bbpress/user-details.php:48
+msgid "%s's Favorites"
+msgstr ""
+
+#: bbpress/user-details.php:48
+msgid "Favorites"
+msgstr ""
+
+#: bbpress/user-details.php:58
+msgid "%s's Subscriptions"
+msgstr ""
+
+#: bbpress/user-details.php:58
+msgid "Subscriptions"
+msgstr ""
+
+#: bbpress/user-details.php:65
+msgid "Edit %s's Profile"
+msgstr ""
+
+#: bbpress/user-details.php:65
+msgid "Edit"
+msgstr ""
+
+#: buddypress/activity/activity-loop.php:28
+msgid "Load More"
+msgstr ""
+
+#: buddypress/activity/activity-loop.php:42
+msgid "Sorry, there was no activity found. Please try a different filter."
+msgstr ""
+
+#: buddypress/activity/entry.php:50
+msgid "View Conversation"
+msgstr ""
+
+#: buddypress/activity/entry.php:58
+msgid "Comment <span>%s</span>"
+msgstr ""
+
+#: buddypress/activity/entry.php:66
+msgid "Mark as Favorite"
+msgstr ""
+
+#: buddypress/activity/entry.php:66 lib/bbpress.php:360
+msgid "Favorite"
+msgstr ""
+
+#: buddypress/activity/entry.php:70
+msgid "Remove Favorite"
+msgstr ""
+
+#: buddypress/activity/entry.php:102
+msgid "Post"
+msgstr ""
+
+#: buddypress/activity/entry.php:102
+msgid "Cancel"
+msgstr ""
+
+#: buddypress/activity/index.php:19
+msgid "The public activity for everyone on this site."
+msgstr ""
+
+#: buddypress/activity/index.php:19
+msgid "All Members <span class=\"badge\">%s</span>"
+msgstr ""
+
+#: buddypress/activity/index.php:29
+msgid "The activity of my friends only."
+msgstr ""
+
+#: buddypress/activity/index.php:29
+msgid "My Friends <span class=\"badge\">%s</span>"
+msgstr ""
+
+#: buddypress/activity/index.php:41
+msgid "The activity of groups I am a member of."
+msgstr ""
+
+#: buddypress/activity/index.php:41
+msgid "My Groups <span class=\"badge\">%s</span>"
+msgstr ""
+
+#: buddypress/activity/index.php:51
+msgid "The activity I've marked as a favorite."
+msgstr ""
+
+#: buddypress/activity/index.php:51
+msgid "My Favorites <span class=\"badge\">%s</span>"
+msgstr ""
+
+#: buddypress/activity/index.php:59
+msgid "Activity that I have been mentioned in."
+msgstr ""
+
+#: buddypress/activity/index.php:59
+msgid "Mentions"
+msgstr ""
+
+#: buddypress/activity/index.php:59
+msgctxt "Number of new activity mentions"
+msgid "%s new"
+msgid_plural "%s new"
+msgstr[0] ""
+msgstr[1] ""
+
+#: buddypress/activity/index.php:71
+msgid "RSS Feed"
+msgstr ""
+
+#: buddypress/activity/index.php:71
+#: framework/bootstrap/includes/class-Shoestrap_Social.php:276
+msgid "RSS"
+msgstr ""
+
+#: buddypress/activity/index.php:76
+msgid "Show:"
+msgstr ""
+
+#: buddypress/activity/index.php:78
+msgid "Everything"
+msgstr ""
+
+#: buddypress/activity/index.php:79
+msgid "Updates"
+msgstr ""
+
+#: buddypress/activity/index.php:84
+#: framework/bootstrap/includes/class-Shoestrap_Blog.php:376
+msgid "Comments"
+msgstr ""
+
+#: buddypress/activity/index.php:90
+msgid "Forum Topics"
+msgstr ""
+
+#: buddypress/activity/index.php:91
+msgid "Forum Replies"
+msgstr ""
+
+#: buddypress/activity/index.php:97
+msgid "New Groups"
+msgstr ""
+
+#: buddypress/activity/index.php:98
+msgid "Group Memberships"
+msgstr ""
+
+#: buddypress/activity/index.php:104
+msgid "Friendships"
+msgstr ""
+
+#: buddypress/activity/index.php:108
+msgid "New Members"
+msgstr ""
+
+#: buddypress/activity/post-form.php:23
+msgid "What's new in %s, %s?"
+msgstr ""
+
+#: buddypress/activity/post-form.php:25
+msgid "What's new, %s?"
+msgstr ""
+
+#: buddypress/activity/post-form.php:35
+msgid "Post Update"
+msgstr ""
+
+#: buddypress/activity/post-form.php:42
+msgid "Post in"
+msgstr ""
+
+#: buddypress/activity/post-form.php:45
+msgid "My Profile"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Advanced.php:79
+msgid "Advanced"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Advanced.php:84
+msgid "Enable Retina mode"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Advanced.php:85
+msgid ""
+"By enabling your site's featured images will be retina ready. Requires "
+"images to be uploaded at 2x the typical size desired. Default: On"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Advanced.php:92
+msgid "Google Analytics ID"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Advanced.php:93
+msgid ""
+"Paste your Google Analytics ID here to enable analytics tracking. Only "
+"Universal Analytics properties. Your user ID should be in the form of UA-"
+"XXXXX-Y."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Advanced.php:102
+msgid ""
+"The following settings affect various areas of your site, most notably "
+"buttons."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Advanced.php:107
+msgid "Border-Radius"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Advanced.php:108
+msgid ""
+"You can adjust the corner-radius of all elements in your site here. This "
+"will affect buttons, navbars, widgets and many more. Default: 4"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Advanced.php:120
+msgid "Padding Base"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Advanced.php:121
+msgid ""
+"You can adjust the padding base. This affects buttons size and lots of other "
+"cool stuff too! Default: 8"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Advanced.php:133
+msgid "Root Relative URLs"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Advanced.php:134
+msgid ""
+"Return URLs such as <em>/assets/css/style.css</em> instead of <em>http://"
+"example.com/assets/css/style.css</em>. Default: ON"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Advanced.php:141
+msgid "Enable Nice Search"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Advanced.php:142
+msgid "Redirects /?s=query to /search/query/, convert %20 to +. Default: ON"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Advanced.php:149
+msgid "Custom CSS"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Advanced.php:150
+msgid ""
+"You can write your custom CSS here. This code will appear in a script tag "
+"appended in the header section of the page."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Advanced.php:159
+msgid "Custom LESS"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Advanced.php:160
+msgid ""
+"You can write your custom LESS here. This code will be compiled with the "
+"other LESS files of the theme and be appended to the header."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Advanced.php:170
+msgid "Custom JS"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Advanced.php:171
+msgid ""
+"You can write your custom JavaScript/jQuery here. The code will be included "
+"in a script tag appended to the bottom of the page."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Advanced.php:180
+msgid "Minimize CSS"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Advanced.php:181
+msgid ""
+"Minimize the genearated CSS. This should be ON for production sites. "
+"Default: OFF."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Advanced.php:189
+msgid "Toggle adminbar On/Off"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Advanced.php:190
+msgid "Turn the admin bar On or Off on the frontend. Default: Off."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Advanced.php:197
+msgid "Use Google CDN for jQuery"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Background.php:25
+#: framework/bootstrap/includes/customizer.php:14
+msgid "Background"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Background.php:30
+msgid "General Background Color"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Background.php:31
+msgid "Select a background color for your site. Default: #ffffff."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Background.php:42
+msgid "Content Background"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Background.php:43
+msgid ""
+"Background for the content area. Colors also affect input areas and other "
+"colors."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Background.php:58
+msgid "Content Background Color Opacity"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Background.php:59
+msgid ""
+"Select the opacity of your background color for the main content area so "
+"that background images will show through. Please note that if you have added "
+"an image for your content background, changing the opacity to something "
+"other than 100 will result in your background image not being shown. If you "
+"need to add opacity to your content background image, you will need to do it "
+"by adding transparency to the PNG background image itself."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Blog.php:52
+msgid "Blog"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Blog.php:57
+msgid "Archives Display Mode"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Blog.php:58
+msgid "Display the excerpt or the full post on post archives."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Blog.php:63
+msgid "Excerpt"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Blog.php:64
+msgid "Full Post"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Blog.php:70
+msgid "Activate and order Post Meta elements"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Blog.php:84
+msgid "Switch Date Meta in time_diff mode"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Blog.php:85
+msgid ""
+"Replace Date Meta element by displaying the difference between post creation "
+"timestamp and current timestamp. Default: OFF."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Blog.php:95
+msgid "Featured Images"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Blog.php:96
+msgid ""
+"Here you can select if you want to display the featured images in post "
+"archives and individual posts.\n"
+"\t\t\t\t\t\t\t\t\t\t\t\tPlease note that these apply to posts, pages, as "
+"well as custom post types.\n"
+"\t\t\t\t\t\t\t\t\t\t\t\tYou can select image sizes independently for "
+"archives and individual posts view."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Blog.php:103
+msgid "Featured Images on Archives"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Blog.php:104
+msgid ""
+"Display featured Images on post archives ( such as categories, tags, month "
+"view etc ). Default: OFF."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Blog.php:111
+msgid "Width of Featured Images on Archives"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Blog.php:112
+msgid "Set dimensions of featured Images on Archives. Default: Full Width"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Blog.php:116
+#: framework/bootstrap/includes/class-Shoestrap_Blog.php:160
+msgid "Full Width"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Blog.php:117
+#: framework/bootstrap/includes/class-Shoestrap_Blog.php:161
+msgid "Custom Dimensions"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Blog.php:122
+msgid "Archives Featured Image Custom Width"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Blog.php:123
+#: framework/bootstrap/includes/class-Shoestrap_Blog.php:168
+msgid ""
+"Select the width of your featured images on single posts. Default: 550px"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Blog.php:135
+msgid "Archives Featured Image Custom Height"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Blog.php:136
+msgid ""
+"Select the height of your featured images on post archives. Default: 300px"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Blog.php:148
+msgid "Featured Images on Posts"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Blog.php:149
+msgid "Display featured Images on posts. Default: OFF."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Blog.php:156
+msgid "Width of Featured Images on Posts"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Blog.php:157
+msgid "Set dimensions of featured Images on Posts. Default: Full Width"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Blog.php:167
+msgid "Posts Featured Image Custom Width"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Blog.php:180
+msgid "Posts Featured Image Custom Height"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Blog.php:181
+msgid ""
+"Select the height of your featured images on single posts. Default: 330px"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Blog.php:202
+msgid "Disable featured images on single post types"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Blog.php:210
+msgid "Post excerpt length"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Blog.php:211
+msgid "Choose how many words should be used for post excerpt. Default: 40"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Blog.php:222
+msgid "\"more\" text"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Blog.php:223
+msgid "Text to display in case of excerpt too long. Default: Continued"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Blog.php:225
+msgid "Continued"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Blog.php:230
+msgid "Show Breadcrumbs"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Blog.php:231
+msgid "Display Breadcrumbs. Default: OFF."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Blog.php:238
+msgid "Show Post Meta in single posts"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Blog.php:239
+msgid "Toggle Post Meta showing in the footer of single posts. Default: ON."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Blog.php:258
+msgid "Categories: "
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Blog.php:263
+msgid "Tags: "
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Blog.php:266
+#: templates/content-single.php:23
+msgid "Pages:"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Blog.php:283
+#: framework/bootstrap/includes/class-Shoestrap_Blog.php:284
+msgid ", "
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Blog.php:324
+msgid "Sticky"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Blog.php:330
+msgctxt "1: post format name. 2: date"
+msgid "%1$s on %2$s"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Blog.php:343
+msgid "Permalink to %s"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Blog.php:368
+#: framework/bootstrap/includes/class-Shoestrap_Blog.php:384
+msgid "View all posts by %s"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Branding.php:23
+msgid "Colors"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Branding.php:31
+msgid ""
+"The primary color you select will also affect other elements on your site, "
+"such as table borders, widgets colors, input elements, dropdowns etc. The "
+"branding colors you select will be used throughout the site in various "
+"elements. One of the most important settings in your branding is your "
+"primary color, since this will be used more often."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Branding.php:36
+msgid "Enable Gradients"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Branding.php:37
+msgid "Enable gradients for buttons and the navbar. Default: Off."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Branding.php:45
+msgid "Brand Colors: Primary"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Branding.php:46
+msgid ""
+"Select your primary branding color. Also referred to as an accent color. "
+"This will affect various areas of your site, including the color of your "
+"primary buttons, link color, the background of some elements and many more."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Branding.php:55
+msgid "Brand Colors: Success"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Branding.php:56
+msgid "Select your branding color for success messages etc. Default: #5cb85c."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Branding.php:65
+msgid "Brand Colors: Warning"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Branding.php:66
+msgid "Select your branding color for warning messages etc. Default: #f0ad4e."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Branding.php:75
+msgid "Brand Colors: Danger"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Branding.php:76
+msgid "Select your branding color for success messages etc. Default: #d9534f."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Branding.php:85
+msgid "Brand Colors: Info"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Branding.php:86
+msgid ""
+"Select your branding color for info messages etc. It will also be used for "
+"the Search button color as well as other areas where it semantically makes "
+"sense to use an 'info' class. Default: #5bc0de."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Breadcrumbs.php:160
+#: framework/bootstrap/includes/class-Shoestrap_Breadcrumbs.php:175
+#: framework/bootstrap/includes/class-Shoestrap_Breadcrumbs.php:189
+msgid "Archives for"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Breadcrumbs.php:179
+msgid "You searched for"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Breadcrumbs.php:210
+msgid "Error 404: Page not found"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Footer.php:24
+msgid "Footer"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Footer.php:29
+msgid "Footer Background Color"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Footer.php:30
+msgid "Select the background color for your footer. Default: #282a2b."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Footer.php:38
+msgid "Footer Background Opacity"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Footer.php:39
+msgid "Select the opacity level for the footer bar. Default: 100%."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Footer.php:49
+msgid "Footer Text Color"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Footer.php:50
+msgid "Select the text color for your footer. Default: #8C8989."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Footer.php:58
+msgid "Footer Text"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Footer.php:59
+msgid ""
+"The text that will be displayed in your footer. You can use [year] and "
+"[sitename] and they will be replaced appropriately. Default: &copy; [year] "
+"[sitename]"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Footer.php:83
+msgid "Footer Top Margin"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Footer.php:84
+msgid "Select the top margin of footer in pixels. Default: 0px."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Footer.php:93
+msgid "Show social icons in footer"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Footer.php:94
+msgid "Show social icons in the footer. Default: On."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Footer.php:101
+msgid "Footer social links column width"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Footer.php:102
+msgid ""
+"You can customize the width of the footer social links area. The footer text "
+"width will be adjusted accordingly. Default: 5."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Footer.php:113
+msgid "Footer social icons open new window"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Footer.php:114
+msgid "Social icons in footer will open a new window. Default: On."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Footer.php:139
+#: lib/widgets.php:12
+msgid "Primary Sidebar"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Footer.php:148
+#: lib/widgets.php:21
+msgid "Secondary Sidebar"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Footer.php:157
+msgid "Footer Widget Area 1"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Footer.php:166
+msgid "Footer Widget Area 2"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Footer.php:175
+msgid "Footer Widget Area 3"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Footer.php:184
+msgid "Footer Widget Area 4"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Header.php:26
+msgid "Header"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Header.php:32
+msgid "Extra Branding Area"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Header.php:33
+msgid ""
+"You can enable an extra branding/header area. In this header you can add "
+"your logo, and any other widgets you wish."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Header.php:38
+msgid "Display the Header."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Header.php:39
+msgid "Turn this ON to display the header. Default: OFF"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Header.php:46
+msgid "Display branding on your Header."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Header.php:47
+msgid ""
+"Turn this ON to display branding ( Sitename or Logo )on your Header. "
+"Default: ON"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Header.php:55
+msgid "Header Background"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Header.php:56
+msgid "Specify the background for your header."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Header.php:67
+msgid "Header Background Opacity"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Header.php:68
+msgid "Select the background opacity for your header. Default: 100%."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Header.php:80
+msgid "Header Text Color"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Header.php:81
+msgid "Select the text color for your header. Default: #333333."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Header.php:90
+msgid "Header Top Margin"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Header.php:91
+msgid "Select the top margin of header in pixels. Default: 0px."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Header.php:101
+msgid "Header Bottom Margin"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Header.php:102
+msgid "Select the bottom margin of header in pixels. Default: 0px."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Header.php:125
+msgid "Header Area"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Jumbotron.php:27
+#: framework/bootstrap/includes/class-Shoestrap_Jumbotron.php:33
+#: framework/bootstrap/includes/class-Shoestrap_Jumbotron.php:164
+msgid "Jumbotron"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Jumbotron.php:34
+msgid ""
+"A 'Jumbotron', also known as 'Hero' area, is an area in your site where you "
+"can display in a prominent position things that matter to you. This can be a "
+"slideshow, some text or whatever else you wish. This area is implemented as "
+"a widget area, so in order for something to be displayed you will have to "
+"add a widget to it."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Jumbotron.php:39
+msgid "Jumbotron Background"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Jumbotron.php:40
+msgid "Select the background for your Jumbotron area."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Jumbotron.php:54
+msgid "Display Jumbotron only on the Frontpage."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Jumbotron.php:55
+msgid ""
+"When Turned OFF, the Jumbotron area is displayed in all your pages. If you "
+"wish to completely disable the Jumbotron, then please remove the widgets "
+"assigned to its area and it will no longer be displayed. Default: ON"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Jumbotron.php:62
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:67
+msgid "Full-Width"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Jumbotron.php:63
+msgid ""
+"When Turned ON, the Jumbotron is no longer restricted by the width of your "
+"page, taking over the full width of your screen. This option is useful when "
+"you have assigned a slider widget on the Jumbotron area and you want its "
+"width to be the maximum width of the screen. Default: OFF."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Jumbotron.php:70
+msgid "Use fittext script for the title."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Jumbotron.php:71
+msgid ""
+"Use the fittext script to enlarge or scale-down the font-size of the widget "
+"title to fit the Jumbotron area. Default: OFF"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Jumbotron.php:78
+msgid "Center-align the content."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Jumbotron.php:79
+msgid ""
+"Turn this on to center-align the contents of the Jumbotron area. Default: OFF"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Jumbotron.php:86
+msgid "Jumbotron Font"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Jumbotron.php:87
+msgid "The font used in jumbotron."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Jumbotron.php:99
+#: framework/bootstrap/includes/class-Shoestrap_Jumbotron.php:126
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:180
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:198
+#: framework/bootstrap/includes/class-Shoestrap_Typography.php:42
+#: framework/bootstrap/includes/class-Shoestrap_Typography.php:64
+#: framework/bootstrap/includes/class-Shoestrap_Typography.php:85
+#: framework/bootstrap/includes/class-Shoestrap_Typography.php:106
+#: framework/bootstrap/includes/class-Shoestrap_Typography.php:127
+#: framework/bootstrap/includes/class-Shoestrap_Typography.php:148
+#: framework/bootstrap/includes/class-Shoestrap_Typography.php:170
+msgid "This is my preview text!"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Jumbotron.php:107
+msgid "Jumbotron Header Overrides"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Jumbotron.php:108
+msgid ""
+"By enabling this you can specify custom values for each <h*> tag. Default: "
+"Off"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Jumbotron.php:116
+msgid "Jumbotron Headers Font"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Jumbotron.php:117
+#: framework/bootstrap/includes/class-Shoestrap_Typography.php:28
+#: framework/bootstrap/includes/class-Shoestrap_Typography.php:51
+#: framework/bootstrap/includes/class-Shoestrap_Typography.php:74
+#: framework/bootstrap/includes/class-Shoestrap_Typography.php:95
+#: framework/bootstrap/includes/class-Shoestrap_Typography.php:115
+#: framework/bootstrap/includes/class-Shoestrap_Typography.php:136
+#: framework/bootstrap/includes/class-Shoestrap_Typography.php:157
+msgid "The main font for your site."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Jumbotron.php:135
+msgid "Select the border options for your Jumbotron"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Layout.php:54
+#: framework/bootstrap/includes/class-Shoestrap_Layout.php:75
+msgid "Layout"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Layout.php:60
+msgid "Site Style"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Layout.php:61
+msgid ""
+"Select the default site layout. Defaults to \"Wide\". Please note that if "
+"you select a non-responsive layout, you will have to trigger the compiler so "
+"that your changes take effect."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Layout.php:66
+msgid "Static (Non-Responsive)"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Layout.php:67
+msgid "Wide"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Layout.php:68
+msgid "Boxed"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Layout.php:69
+msgid "Fluid"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Layout.php:76
+msgid ""
+"Select main content and sidebar arrangement. Choose between 1, 2 or 3 column "
+"layout."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Layout.php:91
+msgid "Custom Layouts per Post Type"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Layout.php:92
+msgid "Set a default layout for each post type on your site."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Layout.php:102
+msgid "Override your default stylings. Choose between 1, 2 or 3 column layout."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Layout.php:119
+msgid "Primary Sidebar Width"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Layout.php:120
+msgid ""
+"Select the width of the Primary Sidebar. Please note that the values "
+"represent grid columns. The total width of the page is 12 columns, so "
+"selecting 4 here will make the primary sidebar to have a width of 1/3 "
+"( 4/12 ) of the total page width."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Layout.php:134
+msgid "Secondary Sidebar Width"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Layout.php:135
+msgid ""
+"Select the width of the Secondary Sidebar. Please note that the values "
+"represent grid columns. The total width of the page is 12 columns, so "
+"selecting 4 here will make the secondary sidebar to have a width of 1/3 "
+"( 4/12 ) of the total page width."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Layout.php:149
+msgid "Show sidebars on the frontpage"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Layout.php:150
+msgid ""
+"OFF by default. If you want to display the sidebars in your frontpage, turn "
+"this ON."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Layout.php:157
+msgid "Margin from top ( Works only in 'Boxed' mode )"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Layout.php:158
+msgid ""
+"This will add a margin above the navbar. Useful if you've enabled the "
+"'Boxed' mode above. Default: 0px"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Layout.php:170
+msgid "Widgets mode"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Layout.php:171
+msgid "How do you want your widgets to be displayed?"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Layout.php:175
+msgid "Panel"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Layout.php:176
+msgid "Well"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Layout.php:177
+msgid "None"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Layout.php:183
+msgid "Body Top Margin"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Layout.php:184
+msgid "Select the top margin of body element in pixels. Default: 0px."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Layout.php:195
+msgid "Body Bottom Margin"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Layout.php:196
+msgid "Select the bottom margin of body element in pixels. Default: 0px."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Layout.php:207
+msgid "Custom Grid"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Layout.php:208
+msgid "CAUTION:"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Layout.php:208
+msgid ""
+"Only use this if you know what you are doing, as changing these values might "
+"break the way your site looks on some devices. The default settings should "
+"be fine for the vast majority of sites."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Layout.php:215
+msgid "Small Screen / Tablet view"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Layout.php:216
+msgid "The width of Tablet screens. Default: 768px"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Layout.php:229
+msgid "Desktop Container Width"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Layout.php:230
+msgid "The width of normal screens. Default: 992px"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Layout.php:244
+msgid "Large Desktop Container Width"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Layout.php:245
+msgid "The width of Large Desktop screens. Default: 1200px"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Layout.php:258
+msgid "Columns Gutter"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Layout.php:259
+msgid "The space between the columns in your grid. Default: 30px"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:47
+msgid "Menus"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:53
+msgid "Advanced NavBar Options"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:54
+msgid ""
+"You can activate or deactivate your Primary NavBar here, and define its "
+"properties. Please note that you might have to manually create a menu if it "
+"doesn't already exist."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:59
+msgid "Type of NavBar"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:60
+msgid ""
+"Choose the type of Navbar you want. Off completely hides the navbar, "
+"Alternative uses an alternative walker for the navigation menus. See <a "
+"target=\"_blank\"href=\"https://github.com/twittem/wp-bootstrap-navwalker"
+"\">here</a> for more details."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:60
+msgid ""
+"<strong>WARNING:</strong> The \"Static-Left\" option is ONLY compatible with "
+"fluid layouts. The width of the static-left navbar is controlled by the "
+"secondary sidebar width."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:64
+msgid "Off"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:65
+msgid "Normal"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:68
+msgid "Static-Left"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:75
+msgid "NavBar Styling Options"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:76
+msgid "Customize the look and feel of your navbar below."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:81
+msgid "NavBar Background Color"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:82
+msgid "Pick a background color for the NavBar. Default: #eeeeee."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:91
+msgid "NavBar Background Opacity"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:92
+msgid "Pick a background opacity for the NavBar. Default: 100%."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:102
+msgid "NavBar Menu Style"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:103
+msgid "You can use an alternative menu style for your NavBars."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:108
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:306
+msgid "Default"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:109
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:110
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:111
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:112
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:113
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:114
+msgid "Style"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:115
+msgid "Metro"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:120
+msgid "Display Branding ( Sitename or Logo ) on the NavBar"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:121
+msgid "Default: ON"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:128
+msgid "Use Logo ( if available ) for branding on the NavBar"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:129
+msgid ""
+"If this option is OFF, or there is no logo available, then the sitename will "
+"be displayed instead. Default: ON"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:136
+msgid "NavBar Positioning"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:137
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:147
+msgid ""
+"Using this option you can set the navbar to be fixed to top, fixed to bottom "
+"or normal. When you're using one of the 'fixed' options, the navbar will "
+"stay fixed on the top or bottom of the page. Default: Normal"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:140
+msgid "Fixed"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:141
+msgid "Scroll"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:146
+msgid "Fixed NavBar Position"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:151
+msgid "Bottom"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:152
+msgid "Top"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:157
+msgid "NavBar Height"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:158
+msgid ""
+"Select the height of the NavBar in pixels. Should be equal or greater than "
+"the height of your logo if you've added one."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:169
+msgid "Navbar Font"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:170
+msgid "The font used in navbars."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:187
+msgid "Branding Font"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:188
+msgid "The branding font for your site."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:205
+msgid "Responsive NavBar Threshold"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:206
+msgid "Point at which the navbar becomes uncollapsed"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:210
+msgid "Never"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:211
+msgid "Extra Small"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:212
+msgid "Small"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:213
+msgid "Desktop"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:214
+msgid "Large Desktop"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:215
+msgid "Always"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:222
+msgid "NavBar Margin"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:223
+msgid ""
+"Select the top and bottom margin of the NavBar in pixels. Applies only in "
+"static top navbar ( scroll condition ). Default: 0px."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:233
+msgid "Display social links in the NavBar."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:234
+msgid ""
+"Display social links in the NavBar. These can be setup in the 'Social' "
+"section on the left. Default: OFF"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:241
+msgid "Display social links as a Dropdown list or an Inline list."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:242
+msgid "How to display social links. Default: Dropdown list"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:245
+msgid "Inline"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:246
+msgid "Dropdown"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:252
+msgid "Search form on the NavBar"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:253
+msgid "Display a search form in the NavBar. Default: On"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:260
+msgid "Float NavBar menu to the right"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:261
+msgid "Floats the primary navigation to the right. Default: On"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:269
+msgid "Secondary Navbar"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:270
+msgid ""
+"The secondary navbar is a 2nd navbar, located right above the main wrapper. "
+"You can show a menu there, by assigning it from Appearance -> Menus."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:275
+msgid "Display social networks in the secondary navigation bar."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:276
+msgid ""
+"Enable this option to display your social networks as a dropdown menu on the "
+"seondary navbar."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:283
+msgid "Secondary NavBar Margin"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:284
+msgid "Select the top and bottom margin of header in pixels. Default: 0px."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:294
+msgid "Sidebar Menus"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:295
+msgid ""
+"If you're using the \"Custom Menu\" widgets in your sidebars, you can "
+"control their styling here"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:300
+msgid "Color for sidebar menus"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:301
+msgid ""
+"Select a style for menus added to your sidebars using the custom menu widget"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:307
+msgid "Branding-Primary"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:308
+msgid "Branding-Success"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:309
+msgid "Branding-Warning"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:310
+msgid "Branding-Info"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:311
+msgid "Branding-Danger"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:316
+msgid "Inverse Sidebar_menus."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:317
+msgid ""
+"Default: OFF. See https://github.com/twittem/wp-bootstrap-navlist-walker for "
+"more details"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:489
+msgid "In-Navbar Widget Area"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:491
+msgid ""
+"This widget area will show up in your NavBars. This is most useful when "
+"using a static-left navbar."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:552
+msgid "Navbar Slide-Down Top"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:561
+msgid "Navbar Slide-Down 1"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:570
+msgid "Navbar Slide-Down 2"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:579
+msgid "Navbar Slide-Down 3"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Menus.php:588
+msgid "Navbar Slide-Down 4"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Nav_Menu_Widget.php:12
+msgid "Use this widget to add one of your custom menus as a widget."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Nav_Menu_Widget.php:13
+msgid "Custom Menu"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Nav_Menu_Widget.php:67
+msgid "No menus have been created yet. <a href=\"%s\">Create some</a>."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Nav_Menu_Widget.php:72
+msgid "Title:"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Nav_Menu_Widget.php:76
+msgid "Select Menu:"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Social.php:63
+msgid "Social"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Social.php:69
+msgid "Social Sharing"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Social.php:74
+msgid "Button Text"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Social.php:75
+msgid "Select the text for the social sharing button."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Social.php:82
+msgid "Button Location"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Social.php:83
+msgid ""
+"Select between NONE, TOP, BOTTOM & BOTH. For archives, \"BOTH\" fallbacks to "
+"\"BOTTOM\" only."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Social.php:96
+msgid "Button Styling"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Social.php:97
+msgid "Select between standard Bootstrap's button classes"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Social.php:111
+msgid "Show in Posts Archives"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Social.php:112
+msgid "Show the sharing button in posts archives."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Social.php:119
+msgid "Show in Single Post"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Social.php:120
+msgid "Show the sharing button in single post."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Social.php:127
+msgid "Show in Single Page"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Social.php:128
+msgid "Show the sharing button in single page."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Social.php:137
+msgid "Social Share Networks"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Social.php:138
+msgid "Select the Social Networks you want to enable for social shares"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Social.php:141
+#: framework/bootstrap/includes/class-Shoestrap_Social.php:195
+msgid "Facebook"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Social.php:142
+#: framework/bootstrap/includes/class-Shoestrap_Social.php:222
+msgid "Google+"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Social.php:143
+#: framework/bootstrap/includes/class-Shoestrap_Social.php:240
+msgid "LinkedIn"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Social.php:144
+#: framework/bootstrap/includes/class-Shoestrap_Social.php:258
+msgid "Pinterest"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Social.php:145
+#: framework/bootstrap/includes/class-Shoestrap_Social.php:267
+msgid "Reddit"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Social.php:146
+#: framework/bootstrap/includes/class-Shoestrap_Social.php:303
+msgid "Tumblr"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Social.php:147
+#: framework/bootstrap/includes/class-Shoestrap_Social.php:312
+msgid "Twitter"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Social.php:148
+msgid "Email"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Social.php:154
+msgid "Social Links used in Menus && Footer"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Social.php:159
+msgid "Blogger"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Social.php:160
+msgid ""
+"Provide the link you desire and the Blogger icon will appear. To remove it, "
+"just leave it blank."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Social.php:168
+msgid "DeviantART"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Social.php:169
+msgid ""
+"Provide the link you desire and the DeviantART icon will appear. To remove "
+"it, just leave it blank."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Social.php:177
+msgid "Digg"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Social.php:178
+msgid ""
+"Provide the link you desire and the Digg icon will appear. To remove it, "
+"just leave it blank."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Social.php:186
+msgid "Dribbble"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Social.php:187
+msgid ""
+"Provide the link you desire and the Dribbble icon will appear. To remove it, "
+"just leave it blank."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Social.php:196
+msgid ""
+"Provide the link you desire and the Facebook icon will appear. To remove it, "
+"just leave it blank."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Social.php:204
+msgid "Flickr"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Social.php:205
+msgid ""
+"Provide the link you desire and the Flickr icon will appear. To remove it, "
+"just leave it blank."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Social.php:213
+msgid "GitHub"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Social.php:214
+msgid ""
+"Provide the link you desire and the GitHub icon will appear. To remove it, "
+"just leave it blank."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Social.php:223
+msgid ""
+"Provide the link you desire and the Google+ icon will appear. To remove it, "
+"just leave it blank."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Social.php:231
+msgid "Instagram"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Social.php:232
+msgid ""
+"Provide the link you desire and the Instagram icon will appear. To remove "
+"it, just leave it blank."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Social.php:241
+msgid ""
+"Provide the link you desire and the LinkedIn icon will appear. To remove it, "
+"just leave it blank."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Social.php:249
+msgid "MySpace"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Social.php:250
+msgid ""
+"Provide the link you desire and the MySpace icon will appear. To remove it, "
+"just leave it blank."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Social.php:259
+msgid ""
+"Provide the link you desire and the Pinterest icon will appear. To remove "
+"it, just leave it blank."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Social.php:268
+msgid ""
+"Provide the link you desire and the Reddit icon will appear. To remove it, "
+"just leave it blank."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Social.php:277
+msgid ""
+"Provide the link you desire and the RSS icon will appear. To remove it, just "
+"leave it blank."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Social.php:285
+msgid "Skype"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Social.php:286
+msgid ""
+"Provide the link you desire and the Skype icon will appear. To remove it, "
+"just leave it blank."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Social.php:294
+msgid "SoundCloud"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Social.php:295
+msgid ""
+"Provide the link you desire and the SoundCloud icon will appear. To remove "
+"it, just leave it blank."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Social.php:304
+msgid ""
+"Provide the link you desire and the Tumblr icon will appear. To remove it, "
+"just leave it blank."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Social.php:313
+msgid ""
+"Provide the link you desire and the Twitter icon will appear. To remove it, "
+"just leave it blank."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Social.php:321
+msgid "Vimeo"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Social.php:322
+msgid ""
+"Provide the link you desire and the Vimeo icon will appear. To remove it, "
+"just leave it blank."
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Typography.php:22
+msgid "Typography"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Typography.php:27
+msgid "Base Font"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Typography.php:50
+msgid "H1 Font"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Typography.php:73
+msgid "H2 Font"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Typography.php:94
+msgid "H3 Font"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Typography.php:114
+msgid "H4 Font"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Typography.php:135
+msgid "H5 Font"
+msgstr ""
+
+#: framework/bootstrap/includes/class-Shoestrap_Typography.php:156
+msgid "H6 Font"
+msgstr ""
+
+#: framework/bootstrap/includes/customizer.php:11
+#: framework/class-SS_Framework.php:111
+msgid "General"
+msgstr ""
+
+#: framework/bootstrap/includes/customizer.php:20
+msgid "Accent"
+msgstr ""
+
+#: framework/bootstrap/includes/customizer.php:26
+msgid "NavBar"
+msgstr ""
+
+#: framework/bootstrap/includes/widgets.php:18
+msgid "Use this widget to add a vCard"
+msgstr ""
+
+#: framework/bootstrap/includes/widgets.php:20
+msgid "Shoestrap: vCard"
+msgstr ""
+
+#: framework/bootstrap/includes/widgets.php:47
+msgid "vCard"
+msgstr ""
+
+#: framework/bootstrap/templates/top-bar.php:14
+msgid "Toggle navigation"
+msgstr ""
+
+#: framework/class-SS_Framework.php:118
+msgid "Framework Locking"
+msgstr ""
+
+#: framework/class-SS_Framework.php:119
+msgid ""
+"You can select a framework here. Keep in mind that if you reset your "
+"options, this option will also be reset and you will lose all your settings. "
+"When changing frameworks, your settings are also reset.\n"
+"\t\t\t\t\t\t<br>If you want to lock your site to a specific framework, then "
+"please define it in your wp-config.php file like this:"
+msgstr ""
+
+#: framework/class-SS_Framework.php:120
+msgid "Accepted values: "
+msgstr ""
+
+#: framework/class-SS_Framework.php:129
+msgid "Framework Select"
+msgstr ""
+
+#: framework/class-SS_Framework.php:130
+msgid "Select a framework."
+msgstr ""
+
+#: framework/class-SS_Framework.php:140
+msgid "Logo"
+msgstr ""
+
+#: framework/class-SS_Framework.php:141
+msgid ""
+"Upload a logo image using the media uploader, or define the URL directly."
+msgstr ""
+
+#: framework/class-SS_Framework.php:148
+msgid "Custom Favicon"
+msgstr ""
+
+#: framework/class-SS_Framework.php:149
+msgid ""
+"Upload a favicon image using the media uploader, or define the URL directly."
+msgstr ""
+
+#: framework/class-SS_Framework.php:156
+msgid "Apple Icon"
+msgstr ""
+
+#: framework/class-SS_Framework.php:157
+msgid ""
+"This will create icons for Apple iPhone ( 57px x 57px ), Apple iPhone Retina "
+"Version ( 114px x 114px ), Apple iPad ( 72px x 72px ) and Apple iPad Retina "
+"( 144px x 144px ). Please note that for better results the image you upload "
+"should be at least 144px x 144px."
+msgstr ""
+
+#: framework/compilers/less-php/class-Shoestrap_Less_php.php:174
+#: framework/compilers/sass-php/class-Shoestrap_Sass_php.php:127
+msgid ""
+"The following file does not exist and must be so in order to utilise this "
+"theme. Please create this file."
+msgstr ""
+
+#: framework/compilers/less-php/class-Shoestrap_Less_php.php:175
+#: framework/compilers/sass-php/class-Shoestrap_Sass_php.php:128
+msgid ""
+"Try visiting the theme options and clicking the \"Reset All\" button to "
+"attempt automatically creating it."
+msgstr ""
+
+#: framework/compilers/less-php/class-Shoestrap_Less_php.php:182
+#: framework/compilers/sass-php/class-Shoestrap_Sass_php.php:135
+msgid ""
+"The following file is not writable and must be so in order to utilise this "
+"theme. Please update the permissions."
+msgstr ""
+
+#: index.php:6
+msgid "Sorry, no results were found."
+msgstr ""
+
+#: lib/bbpress.php:259
+msgid "Subscribe"
+msgstr ""
+
+#: lib/bbpress.php:260
+msgid "Unsubscribe"
+msgstr ""
+
+#: lib/bbpress.php:361
+msgid "Favorited"
+msgstr ""
+
+#: lib/bbpress.php:604
+msgid "No topics available"
+msgstr ""
+
+#: lib/bbpress.php:609
+msgid "No forums available"
+msgstr ""
+
+#: lib/bbpress.php:614
+msgid "None available"
+msgstr ""
+
+#: lib/class-Shoestrap_Image.php:68
+msgid "No image URL has been entered."
+msgstr ""
+
+#: lib/class-TGM_Plugin_Activation.php:164 lib/dependencies.php:46
+msgid "Install Required Plugins"
+msgstr ""
+
+#: lib/class-TGM_Plugin_Activation.php:165 lib/dependencies.php:47
+msgid "Install Plugins"
+msgstr ""
+
+#: lib/class-TGM_Plugin_Activation.php:166 lib/dependencies.php:48
+msgid "Installing Plugin: %s"
+msgstr ""
+
+#: lib/class-TGM_Plugin_Activation.php:167
+msgid "Something went wrong."
+msgstr ""
+
+#: lib/class-TGM_Plugin_Activation.php:168 lib/dependencies.php:50
+msgid "This theme requires the following plugin: %1$s."
+msgid_plural "This theme requires the following plugins: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: lib/class-TGM_Plugin_Activation.php:169 lib/dependencies.php:51
+msgid "This theme recommends the following plugin: %1$s."
+msgid_plural "This theme recommends the following plugins: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: lib/class-TGM_Plugin_Activation.php:170 lib/dependencies.php:52
+msgid ""
+"Sorry, but you do not have the correct permissions to install the %s plugin. "
+"Contact the administrator of this site for help on getting the plugin "
+"installed."
+msgid_plural ""
+"Sorry, but you do not have the correct permissions to install the %s "
+"plugins. Contact the administrator of this site for help on getting the "
+"plugins installed."
+msgstr[0] ""
+msgstr[1] ""
+
+#: lib/class-TGM_Plugin_Activation.php:171 lib/dependencies.php:53
+msgid "The following required plugin is currently inactive: %1$s."
+msgid_plural "The following required plugins are currently inactive: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: lib/class-TGM_Plugin_Activation.php:172 lib/dependencies.php:54
+msgid "The following recommended plugin is currently inactive: %1$s."
+msgid_plural "The following recommended plugins are currently inactive: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: lib/class-TGM_Plugin_Activation.php:173 lib/dependencies.php:55
+msgid ""
+"Sorry, but you do not have the correct permissions to activate the %s "
+"plugin. Contact the administrator of this site for help on getting the "
+"plugin activated."
+msgid_plural ""
+"Sorry, but you do not have the correct permissions to activate the %s "
+"plugins. Contact the administrator of this site for help on getting the "
+"plugins activated."
+msgstr[0] ""
+msgstr[1] ""
+
+#: lib/class-TGM_Plugin_Activation.php:174 lib/dependencies.php:56
+msgid ""
+"The following plugin needs to be updated to its latest version to ensure "
+"maximum compatibility with this theme: %1$s."
+msgid_plural ""
+"The following plugins need to be updated to their latest version to ensure "
+"maximum compatibility with this theme: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: lib/class-TGM_Plugin_Activation.php:175 lib/dependencies.php:57
+msgid ""
+"Sorry, but you do not have the correct permissions to update the %s plugin. "
+"Contact the administrator of this site for help on getting the plugin "
+"updated."
+msgid_plural ""
+"Sorry, but you do not have the correct permissions to update the %s plugins. "
+"Contact the administrator of this site for help on getting the plugins "
+"updated."
+msgstr[0] ""
+msgstr[1] ""
+
+#: lib/class-TGM_Plugin_Activation.php:176 lib/dependencies.php:58
+msgid "Begin installing plugin"
+msgid_plural "Begin installing plugins"
+msgstr[0] ""
+msgstr[1] ""
+
+#: lib/class-TGM_Plugin_Activation.php:177 lib/dependencies.php:59
+msgid "Activate installed plugin"
+msgid_plural "Activate installed plugins"
+msgstr[0] ""
+msgstr[1] ""
+
+#: lib/class-TGM_Plugin_Activation.php:178
+#: lib/class-TGM_Plugin_Activation.php:490 lib/dependencies.php:60
+msgid "Return to Required Plugins Installer"
+msgstr ""
+
+#: lib/class-TGM_Plugin_Activation.php:179
+#: lib/class-TGM_Plugin_Activation.php:1846 lib/dependencies.php:61
+msgid "Plugin activated successfully."
+msgstr ""
+
+#: lib/class-TGM_Plugin_Activation.php:180
+msgid "All plugins installed and activated successfully. %1$s"
+msgstr ""
+
+#: lib/class-TGM_Plugin_Activation.php:517
+#: lib/class-TGM_Plugin_Activation.php:2058
+msgid "Return to the Dashboard"
+msgstr ""
+
+#: lib/class-TGM_Plugin_Activation.php:545
+msgid "The following plugin was activated successfully: %s."
+msgstr ""
+
+#: lib/class-TGM_Plugin_Activation.php:704
+msgid "Dismiss this notice"
+msgstr ""
+
+#: lib/class-TGM_Plugin_Activation.php:1091
+msgid "External Link"
+msgstr ""
+
+#: lib/class-TGM_Plugin_Activation.php:1096
+msgid "Private Repository"
+msgstr ""
+
+#: lib/class-TGM_Plugin_Activation.php:1099
+msgid "Pre-Packaged"
+msgstr ""
+
+#: lib/class-TGM_Plugin_Activation.php:1103
+msgid "WordPress Repository"
+msgstr ""
+
+#: lib/class-TGM_Plugin_Activation.php:1106
+msgid "Required"
+msgstr ""
+
+#: lib/class-TGM_Plugin_Activation.php:1106
+msgid "Recommended"
+msgstr ""
+
+#: lib/class-TGM_Plugin_Activation.php:1109
+msgid "Not Installed"
+msgstr ""
+
+#: lib/class-TGM_Plugin_Activation.php:1111
+msgid "Installed But Not Activated"
+msgstr ""
+
+#: lib/class-TGM_Plugin_Activation.php:1281
+msgid ""
+"No plugins to install or activate. <a href=\"%1$s\" title=\"Return to the "
+"Dashboard\">Return to the Dashboard</a>"
+msgstr ""
+
+#: lib/class-TGM_Plugin_Activation.php:1297
+msgid "Plugin"
+msgstr ""
+
+#: lib/class-TGM_Plugin_Activation.php:1298
+msgid "Source"
+msgstr ""
+
+#: lib/class-TGM_Plugin_Activation.php:1299
+msgid "Type"
+msgstr ""
+
+#: lib/class-TGM_Plugin_Activation.php:1300
+msgid "Status"
+msgstr ""
+
+#: lib/class-TGM_Plugin_Activation.php:1318
+msgid "Install"
+msgstr ""
+
+#: lib/class-TGM_Plugin_Activation.php:1319
+msgid "Activate"
+msgstr ""
+
+#: lib/class-TGM_Plugin_Activation.php:1544
+msgid "The following plugin was activated successfully:"
+msgid_plural "The following plugins were activated successfully:"
+msgstr[0] ""
+msgstr[1] ""
+
+#: lib/class-TGM_Plugin_Activation.php:1829
+msgid "Install package not available."
+msgstr ""
+
+#: lib/class-TGM_Plugin_Activation.php:1830
+msgid "Downloading install package from <span class=\"code\">%s</span>&#8230;"
+msgstr ""
+
+#: lib/class-TGM_Plugin_Activation.php:1831
+msgid "Unpacking the package&#8230;"
+msgstr ""
+
+#: lib/class-TGM_Plugin_Activation.php:1832
+msgid "Installing the plugin&#8230;"
+msgstr ""
+
+#: lib/class-TGM_Plugin_Activation.php:1833
+msgid "Plugin install failed."
+msgstr ""
+
+#: lib/class-TGM_Plugin_Activation.php:1834
+msgid "Plugin installed successfully."
+msgstr ""
+
+#: lib/class-TGM_Plugin_Activation.php:1845
+msgid "Plugin activation failed."
+msgstr ""
+
+#: lib/class-TGM_Plugin_Activation.php:1955
+msgid ""
+"The installation and activation process is starting. This process may take a "
+"while on some hosts, so please be patient."
+msgstr ""
+
+#: lib/class-TGM_Plugin_Activation.php:1956
+msgid "%1$s installed and activated successfully."
+msgstr ""
+
+#: lib/class-TGM_Plugin_Activation.php:1956
+#: lib/class-TGM_Plugin_Activation.php:1965
+msgid "Show Details"
+msgstr ""
+
+#: lib/class-TGM_Plugin_Activation.php:1956
+#: lib/class-TGM_Plugin_Activation.php:1965
+msgid "Hide Details"
+msgstr ""
+
+#: lib/class-TGM_Plugin_Activation.php:1957
+msgid "All installations and activations have been completed."
+msgstr ""
+
+#: lib/class-TGM_Plugin_Activation.php:1958
+msgid "Installing and Activating Plugin %1$s (%2$d/%3$d)"
+msgstr ""
+
+#: lib/class-TGM_Plugin_Activation.php:1962
+msgid ""
+"The installation process is starting. This process may take a while on some "
+"hosts, so please be patient."
+msgstr ""
+
+#: lib/class-TGM_Plugin_Activation.php:1963
+msgid "An error occurred while installing %1$s: <strong>%2$s</strong>."
+msgstr ""
+
+#: lib/class-TGM_Plugin_Activation.php:1964
+msgid "The installation of %1$s failed."
+msgstr ""
+
+#: lib/class-TGM_Plugin_Activation.php:1965
+msgid "%1$s installed successfully."
+msgstr ""
+
+#: lib/class-TGM_Plugin_Activation.php:1966
+msgid "All installations have been completed."
+msgstr ""
+
+#: lib/class-TGM_Plugin_Activation.php:1967
+msgid "Installing Plugin %1$s (%2$d/%3$d)"
+msgstr ""
+
+#: lib/cleanup.php:234
+msgid "&laquo; Previous"
+msgstr ""
+
+#: lib/cleanup.php:235
+msgid "Next &raquo;"
+msgstr ""
+
+#: lib/cleanup.php:287
+msgid "&hellip;"
+msgstr ""
+
+#: lib/dependencies.php:49
+msgid "Something went wrong with the plugin API."
+msgstr ""
+
+#: lib/dependencies.php:62
+msgid "All plugins installed and activated successfully. %s"
+msgstr ""
+
+#: lib/functions-core.php:41
+msgid ""
+"This post is password protected. To view it please enter your password below:"
+msgstr ""
+
+#: lib/init.php:11
+msgid "Primary Navigation"
+msgstr ""
+
+#: lib/init.php:12
+msgid "Secondary Navigation"
+msgstr ""
+
+#: lib/meta.php:11
+msgid "Categories:"
+msgstr ""
+
+#: lib/redux-init.php:36
+msgid "Theme Options"
+msgstr ""
+
+#: lib/redux-init.php:45
+msgid "Theme Information 1"
+msgstr ""
+
+#: lib/redux-init.php:46
+msgid "<p>This is the tab content, HTML is allowed.</p>"
+msgstr ""
+
+#: lib/redux-init.php:50
+msgid "Theme Information 2"
+msgstr ""
+
+#: lib/redux-init.php:51
+msgid "<p>This is the tab content, HTML is allowed. Tab2</p>"
+msgstr ""
+
+#: lib/redux-init.php:55
+msgid "<p>This is the sidebar content, HTML is allowed.</p>"
+msgstr ""
+
+#: lib/titles.php:10
+msgid "Latest Posts"
+msgstr ""
+
+#: lib/titles.php:20
+msgid "Daily Archives: %s"
+msgstr ""
+
+#: lib/titles.php:22
+msgid "Monthly Archives: %s"
+msgstr ""
+
+#: lib/titles.php:24
+msgid "Yearly Archives: %s"
+msgstr ""
+
+#: lib/titles.php:26
+msgid "Author Archives: %s"
+msgstr ""
+
+#: lib/titles.php:32
+msgid "Search Results for %s"
+msgstr ""
+
+#: lib/titles.php:34
+msgid "Not Found"
+msgstr ""
+
+#: lib/updater/EDD_SL_Theme_Updater.php:54
+msgid ""
+"Updating this theme will lose any customizations you have made. 'Cancel' to "
+"stop, 'OK' to update."
+msgstr ""
+
+#: templates/comment.php:10
+msgid "%1$s"
+msgstr ""
+
+#: templates/comment.php:13
+msgid "(Edit)"
+msgstr ""
+
+#: templates/comment.php:16
+msgid "Your comment is awaiting moderation."
+msgstr ""
+
+#: templates/comments.php:11
+msgid "One Response to &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s Responses to &ldquo;%2$s&rdquo;"
+msgstr[0] ""
+msgstr[1] ""
+
+#: templates/comments.php:21
+msgid "&larr; Older comments"
+msgstr ""
+
+#: templates/comments.php:24
+msgid "Newer comments &rarr;"
+msgstr ""
+
+#: templates/comments.php:31 templates/comments.php:38
+msgid "Comments are closed."
+msgstr ""
+
+#: templates/comments.php:44
+msgid "Leave a Reply"
+msgstr ""
+
+#: templates/comments.php:44
+msgid "Leave a Reply to %s"
+msgstr ""
+
+#: templates/comments.php:47
+msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
+msgstr ""
+
+#: templates/comments.php:52
+msgid "Logged in as <a href=\"%s/wp-admin/profile.php\">%s</a>."
+msgstr ""
+
+#: templates/comments.php:53
+msgid "Log out of this account"
+msgstr ""
+
+#: templates/comments.php:53
+msgid "Log out &raquo;"
+msgstr ""
+
+#: templates/comments.php:57
+msgid "Name"
+msgstr ""
+
+#: templates/comments.php:57 templates/comments.php:61
+msgid " (required)"
+msgstr ""
+
+#: templates/comments.php:61
+msgid "Email (will not be published)"
+msgstr ""
+
+#: templates/comments.php:65
+msgid "Website"
+msgstr ""
+
+#: templates/comments.php:70
+msgid "Comment"
+msgstr ""
+
+#: templates/comments.php:73
+msgid "Submit Comment"
+msgstr ""
+
+#. Theme Name of the plugin/theme
+msgid "Shoestrap 3"
+msgstr ""
+
+#. Theme URI of the plugin/theme
+msgid "http://shoestrap.org"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Advanced WordPress theme based on Bootstrap."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "aristath, fovoc, dovyp"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://wpmu.io"
+msgstr ""
+
+#. Template Name of the plugin/theme
+msgid "Full-Screen"
+msgstr ""
+
+#. Template Name of the plugin/theme
+msgid "Main - Sidebar"
+msgstr ""
+
+#. Template Name of the plugin/theme
+msgid "Sidebar - Main"
+msgstr ""
+
+#. Template Name of the plugin/theme
+msgid "Sidebar - Sidebar - Main"
+msgstr ""
+
+#. Template Name of the plugin/theme
+msgid "Main - Sidebar - Sidebar"
+msgstr ""
+
+#. Template Name of the plugin/theme
+msgid "Sidebar - Main - Sidebar"
+msgstr ""
