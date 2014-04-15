@@ -1,5 +1,7 @@
 <?php
 
+echo apply_filters( 'shoestrap_title_section', '<header><title>' . shoestrap_title() . '</title><h1 class="entry-title">' . shoestrap_title() . '</h1></header>' );
+
 do_action( 'shoestrap_index_begin' );
 
 if ( ! have_posts() ) {
@@ -8,7 +10,7 @@ if ( ! have_posts() ) {
 }
 
 if ( ! has_action( 'shoestrap_override_index_loop' ) ) {
-	while (have_posts()) : the_post();
+	while ( have_posts() ) : the_post();
 		do_action( 'shoestrap_in_loop_start' );
 
 		if ( ! has_action( 'shoestrap_content_override' ) ) {
