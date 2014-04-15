@@ -124,7 +124,7 @@ if ( ! class_exists( 'Shoestrap_Header' ) ) {
 			register_sidebar( array(
 				'name'          => __( 'Header Area', 'shoestrap' ),
 				'id'            => 'header-area',
-				'before_widget' => '<div class="container">',
+				'before_widget' => '<div>',
 				'after_widget'  => '</div>',
 				'before_title'  => '<h1>',
 				'after_title'   => '</h1>',
