@@ -7,7 +7,11 @@ while ( have_posts() ) : the_post();
 	echo '<article class="' . implode( ' ', get_post_class() ) . '">';
 		do_action( 'shoestrap_single_top' );
 		shoestrap_title_section();
-		do_action( 'shoestrap_entry_meta' );
+		if ( has_action( 'shoestrap_entry_meta_override' ) ) {
+			do_action( 'shoestrap_entry_meta_override' );
+		} else {
+			do_action( 'shoestrap_entry_meta' );	
+		}
 
 		echo '<div class="entry-content">';
 			do_action( 'shoestrap_single_pre_content' );
