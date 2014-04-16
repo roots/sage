@@ -1,11 +1,14 @@
-### HEAD
+### 3.2.5
 
+* Fix: Compatibility with WordPress 3.9
 * Fix: Header Background
 * Fix: Header Text Colors
 * Fix: Jumbotron Text Size
 * Fix: Regenerating .pot file
 * Fix: Titles on archives
 * Fix: Changed default height of textareas to 10em.
+* Fix: TGL now only loads if Redux is not installed
+* Fix: Removed container class from Extra Header widgets.
 * New: Support HTML5 Galleries & Captions ([feature added in WP 3.9](http://make.wordpress.org/core/2014/04/15/html5-galleries-captions-in-wordpress-3-9/#comments))
 
 ### 3.2.4

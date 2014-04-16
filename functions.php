@@ -1,5 +1,10 @@
 <?php
 
+// Define the theme version
+if ( ! defined( 'SHOESTRAP_VERSION' ) ) {
+	define( 'SHOESTRAP_VERSION', '3.2.5' );
+}
+
 if ( class_exists( 'BuddyPress' ) ) {
 	require_once locate_template( '/lib/buddypress.php' );
 }
