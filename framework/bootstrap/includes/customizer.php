@@ -28,12 +28,12 @@ function shoestrap_customizer_fields() {
 					'style' => '',
 					'priority' => 4,
 				),
-				'font_base' => array( 
-					'label'    => __( 'Base Font', 'shoestrap' ),         
-					'type'     => 'font',
-					'style'    => '',
-					'priority' => 5, 
-				),
+				// 'font_base' => array(
+				// 	'label'    => __( 'Base Font', 'shoestrap' ),
+				// 	'type'     => 'font',
+				// 	'style'    => '',
+				// 	'priority' => 5,
+				// ),
 			),
 		),
 	);
@@ -84,7 +84,7 @@ function shoestrap_customizer( $wp_customize ) {
 						)
 					);
 
-				} 
+				}
 
 				// Add control
 				$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, $field, array(
@@ -95,7 +95,7 @@ function shoestrap_customizer( $wp_customize ) {
 				) ) );
 
 			}	elseif ( 'font' == $args['type'] ) {
-					
+
 					// Add setting
 					$wp_customize->add_setting( $field,
 						array(
@@ -111,7 +111,7 @@ function shoestrap_customizer( $wp_customize ) {
 				    'section'     => $section['slug'],
 				    'settings'    => $field,
 				    'priority'    => isset( $args['priority'] ) ? $args['priority'] : null,
-				  ) ) );	
+				  ) ) );
 			}
 		}
 	}
