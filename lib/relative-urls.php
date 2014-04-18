@@ -6,7 +6,7 @@
  * Inspired by http://www.456bereastreet.com/archive/201010/how_to_make_wordpress_urls_root_relative/
  *
  * You can enable/disable this feature in config.php:
- * current_theme_supports('root-relative-urls');
+ * add_theme_support('root-relative-urls');
  *
  * @author Scott Walkinshaw <scott.walkinshaw@gmail.com>
  */
