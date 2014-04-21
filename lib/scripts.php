@@ -63,7 +63,7 @@ function roots_google_tag_manager() {
 }
 
 
-if (GOOGLE_TAG_ID) {
+if (GOOGLE_TAG_ID && !current_user_can('manage_options')) {
   add_action('wp_head', 'roots_google_tag_manager', 20);
 }
 
