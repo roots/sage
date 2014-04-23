@@ -24,7 +24,7 @@ if ( !class_exists( 'Shoestrap_Advanced' ) ) {
 				add_action( 'wp_head',            array( $this, 'jquery_local_fallback' ) );
 			}
 
-			if ( $ss_settings['nice_search'] == 1 ) {
+			if ( isset( $ss_settings['nice_search'] ) && $ss_settings['nice_search'] == 1 ) {
 				add_action( 'template_redirect', array( $this, 'nice_search_redirect' ) );
 			}
 

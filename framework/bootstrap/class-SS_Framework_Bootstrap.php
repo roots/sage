@@ -136,7 +136,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 
 				add_filter( 'shoestrap_compiler', array( $this, 'styles_filter' ) );
 
-				if ( $ss_settings['navbar_social'] == 1 ) {
+				if ( isset( $ss_settings['navbar_social'] ) && $ss_settings['navbar_social'] == 1 ) {
 					if ( $ss_settings['navbar_social_style'] == 1 ) {
 						add_action( 'shoestrap_inside_nav_end', array( $this, 'navbar_social_bar' ) );
 					} else {

@@ -38,7 +38,7 @@ if ( ! class_exists( 'Shoestrap_Blog' ) ) {
 			}
 
 			// Hide post meta data in footer of single posts
-			if ( $ss_settings['single_meta'] == 0 ) {
+			if ( isset( $ss_settings['single_meta'] ) && $ss_settings['single_meta'] == 0 ) {
 				add_filter( 'shoestrap_the_tags', '__return_null' );
 				add_filter( 'shoestrap_the_cats', '__return_null' );
 			}
@@ -88,7 +88,7 @@ if ( ! class_exists( 'Shoestrap_Blog' ) ) {
 				'type'      => 'switch',
 			);
 
-			$screen_large_desktop = filter_var( $ss_settings[ 'screen_large_desktop' ], FILTER_SANITIZE_NUMBER_INT );
+			$screen_large_desktop = isset( $ss_settings['screen_large_desktop'] ) ? filter_var( $ss_settings['screen_large_desktop'], FILTER_SANITIZE_NUMBER_INT ) : 1200;
 
 			$fields[] = array(
 				'id'        => 'help3',

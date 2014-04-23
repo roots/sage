@@ -21,7 +21,7 @@ if ( ! class_exists( 'Shoestrap_Layout' ) ) {
 			add_filter( 'shoestrap_navbar_container_class',  array( $this, 'navbar_container_class'         )     );
 			add_action( 'template_redirect',                 array( $this, 'content_width'                  )     );
 
-			if ( $ss_settings['body_margin_top'] > 0 || $ss_settings['body_margin_bottom'] > 0 ) {
+			if ( isset( $ss_settings['body_margin_top'] ) && ( $ss_settings['body_margin_top'] > 0 || $ss_settings['body_margin_bottom'] > 0 ) ) {
 				add_action( 'wp_enqueue_scripts', array( $this, 'body_margin' ), 101 );
 			}
 
@@ -33,14 +33,16 @@ if ( ! class_exists( 'Shoestrap_Layout' ) ) {
 			add_action( 'wp',                     array( $this, 'control_secondary_sidebar_display' ) );
 
 			 // Modify the appearance of widgets based on user selection.
-			$widgets_mode = $ss_settings['widgets_mode'];
-			if ( $widgets_mode == 0 || $widgets_mode == 1 ) {
-				add_filter( 'shoestrap_widgets_class',        array( $this, 'alter_widgets_class'        ) );
-				add_filter( 'shoestrap_widgets_before_title', array( $this, 'alter_widgets_before_title' ) );
-				add_filter( 'shoestrap_widgets_after_title',  array( $this, 'alter_widgets_after_title'  ) );
+			if ( isset( $ss_settings['widgets_mode'] ) ) {
+				$widgets_mode = $ss_settings['widgets_mode'];
+				if ( $widgets_mode == 0 || $widgets_mode == 1 ) {
+					add_filter( 'shoestrap_widgets_class',        array( $this, 'alter_widgets_class'        ) );
+					add_filter( 'shoestrap_widgets_before_title', array( $this, 'alter_widgets_before_title' ) );
+					add_filter( 'shoestrap_widgets_after_title',  array( $this, 'alter_widgets_after_title'  ) );
+				}
 			}
 
-			add_action( 'wp_head',            array( $this, 'static_meta'      ) );
+			add_action( 'wp_head', array( $this, 'static_meta'      ) );
 		}
 
 		/*
@@ -96,12 +98,13 @@ if ( ! class_exists( 'Shoestrap_Layout' ) ) {
 			);
 
 			$post_types = get_post_types( array( 'public' => true ), 'names' );
+			$layout = isset( $ss_settings['layout'] ) ? $ss_settings['layout'] : 1;
 			foreach ( $post_types as $post_type ) {
 				$fields[] = array(
 					'title'     => __( $post_type . ' Layout', 'shoestrap' ),
 					'desc'      => __( 'Override your default stylings. Choose between 1, 2 or 3 column layout.', 'shoestrap' ),
 					'id'        => $post_type . '_layout',
-					'default'   => $ss_settings['layout'],
+					'default'   => $layout,
 					'type'      => 'image_select',
 					'required'  => array( 'cpt_layout_toggle','=',array( '1' ) ),
 					'options'   => array(

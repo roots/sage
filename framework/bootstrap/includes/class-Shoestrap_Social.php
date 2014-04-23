@@ -19,18 +19,18 @@ if ( ! class_exists( 'Shoestrap_Social' ) ) {
 
 			add_filter( 'redux/options/' . SHOESTRAP_OPT_NAME . '/sections', array( $this, 'options' ), 140 );
 
-			$social_sharing_location = $ss_settings['social_sharing_location'];
+			$social_sharing_location = isset( $ss_settings['social_sharing_location'] ) ? $ss_settings['social_sharing_location'] : null;
 
 			// Social Share select
-			$social_sharing_single_page = $ss_settings['social_sharing_single_page'];
+			$social_sharing_single_page = isset( $ss_settings['social_sharing_single_page'] ) ? $ss_settings['social_sharing_single_page'] : null;
 
 			// Conditions for showing content in posts archives
-			if ( $ss_settings['social_sharing_archives'] == 1 ) {
+			if ( isset( $ss_settings['social_sharing_archives'] ) && $ss_settings['social_sharing_archives'] == 1 ) {
 				add_action( 'shoestrap_entry_footer', array( $this, 'social_sharing' ), 5 );
 			}
 
 			// Conditions for showing content in single posts
-			if ( $ss_settings['social_sharing_single_post'] == 1 ) {
+			if ( isset( $ss_settings['social_sharing_single_post'] ) && $ss_settings['social_sharing_single_post'] == 1 ) {
 				if ( $ss_settings['social_sharing_location'] == 'top' ) {
 					add_action( 'shoestrap_single_pre_content',   array( $this, 'social_sharing' ), 5 );
 				} elseif ( $ss_settings['social_sharing_location'] == 'bottom' ) {
@@ -42,7 +42,7 @@ if ( ! class_exists( 'Shoestrap_Social' ) ) {
 			}
 
 			// Conditions for showing content in single pages
-			if ( $ss_settings['social_sharing_single_page'] == 1 ) {
+			if ( isset( $ss_settings['social_sharing_single_page'] ) && $ss_settings['social_sharing_single_page'] == 1 ) {
 				if ( $ss_settings['social_sharing_location'] == 'top' ) {
 					add_action( 'shoestrap_page_pre_content',   array( $this, 'social_sharing' ), 5 );
 				} elseif ( $ss_settings['social_sharing_location'] == 'bottom' ) {
