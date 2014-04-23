@@ -58,6 +58,7 @@ require_once locate_template( '/lib/meta.php' );         // Tags
 require_once locate_template( '/lib/widgets.php' );      // Sidebars and widgets
 require_once locate_template( '/lib/post-formats.php' ); // Sidebars and widgets
 require_once locate_template( '/lib/scripts.php' );      // Scripts and stylesheets
+require_once locate_template( '/lib/deprecated.php' );   // Deprecated functions
 
 // Only load TGM if REDUX is not installed
 if ( ! class_exists( 'ReduxFramework' ) ) {
