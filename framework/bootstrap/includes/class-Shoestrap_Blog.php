@@ -69,6 +69,7 @@ if ( ! class_exists( 'Shoestrap_Blog' ) ) {
 				'id'          => 'shoestrap_entry_meta_config',
 				'title'       => __( 'Activate and order Post Meta elements', 'shoestrap' ),
 				'options'     => array(
+					'post-format'		=> 'Post Format',
 					'tags'    			=> 'Tags',
 					'date'    			=> 'Date',
 					'category'			=> 'Category',
@@ -310,6 +311,10 @@ if ( ! class_exists( 'Shoestrap_Blog' ) ) {
 						if ( ! empty( $value ) ) {
 							$i++;
 						}
+					}  elseif ( $meta == 'post-format' ) {
+						if ( ! empty( $value ) ) {
+							$i++;
+						}
 					}
 				}
 			}
@@ -322,6 +327,37 @@ if ( ! class_exists( 'Shoestrap_Blog' ) ) {
 					// output sticky element
 					if ( $meta == 'sticky' && ! empty( $value ) && is_sticky() ) {
 						$content .= $ss_framework->open_col( 'span', array( 'medium' => $col ), null, 'featured-post' ) . '<i class="el-icon-flag icon"></i> ' . __( 'Sticky', 'shoestrap' ) . $ss_framework->close_col( 'span' );
+					}
+
+					// output post format element
+					if ( $meta == 'post-format' && ! empty( $value ) ) {
+						if ( get_post_format( $post->ID ) === 'gallery' ) {
+						  $content .= $ss_framework->open_col( 'span', array( 'medium' => $col ), null, 'post-format' ) . '<i class="el-icon-picture"></i> <a href="' . esc_url( get_post_format_link( 'gallery' ) ) . '">' . __('Gallery','shoestrap') . '</a>' . $ss_framework->close_col( 'span' );
+						}
+						if ( get_post_format( $post->ID ) === 'aside' ) {
+						  $content .= $ss_framework->open_col( 'span', array( 'medium' => $col ), null, 'post-format' ) . '<i class="el-icon-chevron-right"></i> <a href="' . esc_url( get_post_format_link( 'aside' ) ) . '">' . __('Aside','shoestrap') . '</a>' . $ss_framework->close_col( 'span' );
+						}
+						if ( get_post_format( $post->ID ) === 'link' ) {
+						  $content .= $ss_framework->open_col( 'span', array( 'medium' => $col ), null, 'post-format' ) . '<i class="el-icon-link"></i> <a href="' . esc_url( get_post_format_link( 'link' ) ) . '">' . __('Aside','shoestrap') . '</a>' . $ss_framework->close_col( 'span' );
+						}
+						if ( get_post_format( $post->ID ) === 'image' ) {
+						  $content .= $ss_framework->open_col( 'span', array( 'medium' => $col ), null, 'post-format' ) . '<i class="el-icon-picture"></i> <a href="' . esc_url( get_post_format_link( 'image' ) ) . '">' . __('Image','shoestrap') . '</a>' . $ss_framework->close_col( 'span' );
+						}
+						if ( get_post_format( $post->ID ) === 'quote' ) {
+						  $content .= $ss_framework->open_col( 'span', array( 'medium' => $col ), null, 'post-format' ) . '<i class="el-icon-quotes-alt"></i> <a href="' . esc_url( get_post_format_link( 'quote' ) ) . '">' . __('Quote','shoestrap') . '</a>' . $ss_framework->close_col( 'span' );
+						}
+						if ( get_post_format( $post->ID ) === 'status' ) {
+						  $content .= $ss_framework->open_col( 'span', array( 'medium' => $col ), null, 'post-format' ) . '<i class="el-icon-comment"></i> <a href="' . esc_url( get_post_format_link( 'status' ) ) . '">' . __('Status','shoestrap') . '</a>' . $ss_framework->close_col( 'span' );
+						}
+						if ( get_post_format( $post->ID ) === 'video' ) {
+						  $content .= $ss_framework->open_col( 'span', array( 'medium' => $col ), null, 'post-format' ) . '<i class="el-icon-video"></i> <a href="' . esc_url( get_post_format_link( 'video' ) ) . '">' . __('Video','shoestrap') . '</a>' . $ss_framework->close_col( 'span' );
+						}
+						if ( get_post_format( $post->ID ) === 'audio' ) {
+						  $content .= $ss_framework->open_col( 'span', array( 'medium' => $col ), null, 'post-format' ) . '<i class="el-icon-volume-up"></i> <a href="' . esc_url( get_post_format_link( 'audio' ) ) . '">' . __('Audio','shoestrap') . '</a>' . $ss_framework->close_col( 'span' );
+						}
+						if ( get_post_format( $post->ID ) === 'chat' ) {
+						  $content .= $ss_framework->open_col( 'span', array( 'medium' => $col ), null, 'post-format' ) . '<i class="el-icon-comment-alt"></i> <a href="' . esc_url( get_post_format_link( 'chat' ) ) . '">' . __('Chat','shoestrap') . '</a>' . $ss_framework->close_col( 'span' );
+						}
 					}
 
 					// output date element

@@ -85,7 +85,7 @@ function shoestrap_post_format_status_title( $title ) {
 }
 
 /**
- * Add icons to post format titles (image)
+ * Add icons to post format titles (video)
  */
 function shoestrap_post_format_video_title( $title ) {
 	return '<i class="el-icon-video text-info"></i> ' . $title;
