@@ -447,10 +447,12 @@ if ( ! class_exists( 'Shoestrap_Blog' ) ) {
 
 				$data['url'] = wp_get_attachment_url( get_post_thumbnail_id() );
 
-				if ( $ss_settings['feat_img_archive_custom_toggle'] == 1 ) {
+				if ( $ss_settings['feat_img_archive_custom_toggle'] == 'on' ) {
 					$data['width']  = $ss_settings['feat_img_archive_width'];
-					$data['height'] = $ss_settings['feat_img_archive_height'];
 				}
+
+				$data['height'] = $ss_settings['feat_img_archive_height'];
+
 			}
 
 			$image = Shoestrap_Image::image_resize( $data );
