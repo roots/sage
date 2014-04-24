@@ -78,6 +78,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 
 			if ( class_exists( 'ReduxFrameworkPlugin' ) ) {
 
+				include_once( SS_FRAMEWORK_PATH . '/includes/class-Shoestrap_Options.php' );         // Redux Options
 				include_once( SS_FRAMEWORK_PATH . '/includes/class-Shoestrap_Advanced.php' );        // Advanced
 				include_once( SS_FRAMEWORK_PATH . '/includes/class-Shoestrap_Background.php' );      // Background
 				include_once( SS_FRAMEWORK_PATH . '/includes/class-Shoestrap_Branding.php' );        // Branding
