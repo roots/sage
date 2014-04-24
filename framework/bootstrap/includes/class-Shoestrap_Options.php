@@ -332,7 +332,7 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 
 			$this->sections[] = array(
 				'title'       => __( 'Advanced', 'shoestrap' ),
-				'icon'        => 'el-icon-screen',
+				'icon'        => 'el-icon-chevron-right',
 				'subsection'  => true,
 				'fields'  => apply_filters( 'shoestrap_module_layout_options_modifier', array(
 					array(
@@ -554,7 +554,7 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 
 			$this->sections[] = array(
 				'title'   => __( 'Featured Images', 'shoestrap' ),
-				'icon'    => 'el-icon-wordpress',
+				'icon'    => 'el-icon-chevron-right',
 				'subsection' => true,
 				'fields'  => apply_filters( 'shoestrap_module_featured_images_modifier', array(
 					array(
@@ -697,6 +697,35 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 						'type'      => 'switch'
 					),
 					array(
+						'title'     => __( 'Jumbotron Font', 'shoestrap' ),
+						'desc'      => __( 'The font used in jumbotron.', 'shoestrap' ),
+						'id'        => 'font_jumbotron',
+						'compiler'  => true,
+						'default'   => array(
+							'font-family'   => 'Arial, Helvetica, sans-serif',
+							'font-size'     => '20px',
+							'google'        => 'false',
+							'weight'        => 'inherit',
+							'color'         => '#333333',
+							'font-style'    => 400,
+						),
+						'preview'   => array(
+							'text'  => __( 'This is my preview text!', 'shoestrap' ), //this is the text from preview box
+							'size'  => '30px' //this is the text size from preview box
+						),
+						'type'      => 'typography',
+						'output'    => '.jumbotron',
+					),
+				) ),
+			);
+
+			// Jumbotron Settings
+			$this->sections[] = array(
+				'title' => __( 'Advanced Jumbotron', 'shoestrap'),
+				'icon'  => 'el-icon-chevron-right',
+				'subsection' => true,
+				'fields'  => apply_filters( 'shoestrap_module_jumbotron_advanced_options_modifier', array(
+					array(
 						'title'     => __( 'Use fittext script for the title.', 'shoestrap' ),
 						'desc'      => __( 'Use the fittext script to enlarge or scale-down the font-size of the widget title to fit the Jumbotron area. Default: OFF', 'shoestrap' ),
 						'id'        => 'jumbotron_title_fit',
@@ -774,7 +803,6 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 				) ),
 			);
 
-
 			// Menus Settings
 			$this->sections[] = array(
 				'title' => __( 'Menus', 'shoestrap' ),
@@ -800,6 +828,95 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 						),
 						'type'        => 'button_set'
 					),
+					array(
+						'title'       => __( 'Display Branding ( Sitename or Logo ) on the NavBar', 'shoestrap' ),
+						'desc'        => __( 'Default: ON', 'shoestrap' ),
+						'id'          => 'navbar_brand',
+						'default'     => 1,
+						'type'        => 'switch'
+					),
+					array(
+						'title'       => __( 'Use Logo ( if available ) for branding on the NavBar', 'shoestrap' ),
+						'desc'        => __( 'If this option is OFF, or there is no logo available, then the sitename will be displayed instead. Default: ON', 'shoestrap' ),
+						'id'          => 'navbar_logo',
+						'default'     => 1,
+						'type'        => 'switch'
+					),
+					array(
+						'title'       => __( 'NavBar Positioning', 'shoestrap' ),
+						'desc'        => __( 'Using this option you can set the navbar to be fixed to top, fixed to bottom or normal. When you\'re using one of the \'fixed\' options, the navbar will stay fixed on the top or bottom of the page. Default: Normal', 'shoestrap' ),
+						'id'          => 'navbar_fixed',
+						'default'     => 0,
+						'on'          => __( 'Fixed', 'shoestrap' ),
+						'off'         => __( 'Scroll', 'shoestrap' ),
+						'type'        => 'switch'
+					),
+					array(
+						'title'       => __( 'Fixed NavBar Position', 'shoestrap' ),
+						'desc'        => __( 'Using this option you can set the navbar to be fixed to top, fixed to bottom or normal. When you\'re using one of the \'fixed\' options, the navbar will stay fixed on the top or bottom of the page. Default: Normal', 'shoestrap' ),
+						'id'          => 'navbar_fixed_position',
+						'required'    => array('navbar_fixed','=',array('1')),
+						'default'     => 0,
+						'on'          => __( 'Bottom', 'shoestrap' ),
+						'off'         => __( 'Top', 'shoestrap' ),
+						'type'        => 'switch'
+					),
+					array(
+						'title'     => __( 'Responsive NavBar Threshold', 'shoestrap' ),
+						'desc'      => __( 'Point at which the navbar becomes uncollapsed', 'shoestrap' ),
+						'id'        => 'grid_float_breakpoint',
+						'type'      => 'button_set',
+						'options'   => array(
+							'min'           => __( 'Never', 'shoestrap' ),
+							'screen_xs_min' => __( 'Extra Small', 'shoestrap' ),
+							'screen_sm_min' => __( 'Small', 'shoestrap' ),
+							'screen_md_min' => __( 'Desktop', 'shoestrap' ),
+							'screen_lg_min' => __( 'Large Desktop', 'shoestrap' ),
+							'max'           => __( 'Always', 'shoestrap' ),
+						),
+						'default'   => 'screen_sm_min',
+						'compiler'  => true,
+					),
+					array(
+						'title'       => __( 'Display social links in the NavBar.', 'shoestrap' ),
+						'desc'        => __( 'Display social links in the NavBar. These can be setup in the \'Social\' section on the left. Default: OFF', 'shoestrap' ),
+						'id'          => 'navbar_social',
+						'default'     => 0,
+						'type'        => 'switch'
+					),
+					array(
+						'title'       => __( 'Display social links as a Dropdown list or an Inline list.', 'shoestrap' ),
+						'desc'        => __( 'How to display social links. Default: Dropdown list', 'shoestrap' ),
+						'id'          => 'navbar_social_style',
+						'default'     => 0,
+						'on'          => __( 'Inline', 'shoestrap' ),
+						'off'         => __( 'Dropdown', 'shoestrap' ),
+						'type'        => 'switch',
+						'required'    => array('navbar_social','=',array('1')),
+					),
+					array(
+						'title'       => __( 'Search form on the NavBar', 'shoestrap' ),
+						'desc'        => __( 'Display a search form in the NavBar. Default: On', 'shoestrap' ),
+						'id'          => 'navbar_search',
+						'default'     => 1,
+						'type'        => 'switch'
+					),
+					array(
+						'title'       => __( 'Float NavBar menu to the right', 'shoestrap' ),
+						'desc'        => __( 'Floats the primary navigation to the right. Default: On', 'shoestrap' ),
+						'id'          => 'navbar_nav_right',
+						'default'     => 1,
+						'type'        => 'switch'
+					),
+				) ),
+			);
+
+			// Menus Styling Settings
+			$this->sections[] = array(
+				'title' => __( 'Menus Styling', 'shoestrap' ),
+				'icon'  => 'el-icon-chevron-right',
+				'subsection' => true,
+				'fields'  => apply_filters( 'shoestrap_module_menus_styling_options_modifier', array(
 					array(
 						'id'          => 'helpnavbarbg',
 						'title'       => __( 'NavBar Styling Options', 'shoestrap' ),
@@ -841,39 +958,6 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 							'style6'  => __( 'Style', 'shoestrap' ) . ' 6',
 							'metro'   => __( 'Metro', 'shoestrap' ),
 						)
-					),
-					array(
-						'title'       => __( 'Display Branding ( Sitename or Logo ) on the NavBar', 'shoestrap' ),
-						'desc'        => __( 'Default: ON', 'shoestrap' ),
-						'id'          => 'navbar_brand',
-						'default'     => 1,
-						'type'        => 'switch'
-					),
-					array(
-						'title'       => __( 'Use Logo ( if available ) for branding on the NavBar', 'shoestrap' ),
-						'desc'        => __( 'If this option is OFF, or there is no logo available, then the sitename will be displayed instead. Default: ON', 'shoestrap' ),
-						'id'          => 'navbar_logo',
-						'default'     => 1,
-						'type'        => 'switch'
-					),
-					array(
-						'title'       => __( 'NavBar Positioning', 'shoestrap' ),
-						'desc'        => __( 'Using this option you can set the navbar to be fixed to top, fixed to bottom or normal. When you\'re using one of the \'fixed\' options, the navbar will stay fixed on the top or bottom of the page. Default: Normal', 'shoestrap' ),
-						'id'          => 'navbar_fixed',
-						'default'     => 0,
-						'on'          => __( 'Fixed', 'shoestrap' ),
-						'off'         => __( 'Scroll', 'shoestrap' ),
-						'type'        => 'switch'
-					),
-					array(
-						'title'       => __( 'Fixed NavBar Position', 'shoestrap' ),
-						'desc'        => __( 'Using this option you can set the navbar to be fixed to top, fixed to bottom or normal. When you\'re using one of the \'fixed\' options, the navbar will stay fixed on the top or bottom of the page. Default: Normal', 'shoestrap' ),
-						'id'          => 'navbar_fixed_position',
-						'required'    => array('navbar_fixed','=',array('1')),
-						'default'     => 0,
-						'on'          => __( 'Bottom', 'shoestrap' ),
-						'off'         => __( 'Top', 'shoestrap' ),
-						'type'        => 'switch'
 					),
 					array(
 						'title'       => __( 'NavBar Height', 'shoestrap' ),
@@ -921,22 +1005,6 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 						'type'        => 'typography',
 					),
 					array(
-						'title'     => __( 'Responsive NavBar Threshold', 'shoestrap' ),
-						'desc'      => __( 'Point at which the navbar becomes uncollapsed', 'shoestrap' ),
-						'id'        => 'grid_float_breakpoint',
-						'type'      => 'button_set',
-						'options'   => array(
-							'min'           => __( 'Never', 'shoestrap' ),
-							'screen_xs_min' => __( 'Extra Small', 'shoestrap' ),
-							'screen_sm_min' => __( 'Small', 'shoestrap' ),
-							'screen_md_min' => __( 'Desktop', 'shoestrap' ),
-							'screen_lg_min' => __( 'Large Desktop', 'shoestrap' ),
-							'max'           => __( 'Always', 'shoestrap' ),
-						),
-						'default'   => 'screen_sm_min',
-						'compiler'  => true,
-					),
-					array(
 						'title'       => __( 'NavBar Margin', 'shoestrap' ),
 						'desc'        => __( 'Select the top and bottom margin of the NavBar in pixels. Applies only in static top navbar ( scroll condition ). Default: 0px.', 'shoestrap' ),
 						'id'          => 'navbar_margin',
@@ -946,37 +1014,15 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 						'max'         => 200,
 						'type'        => 'slider',
 					),
-					array(
-						'title'       => __( 'Display social links in the NavBar.', 'shoestrap' ),
-						'desc'        => __( 'Display social links in the NavBar. These can be setup in the \'Social\' section on the left. Default: OFF', 'shoestrap' ),
-						'id'          => 'navbar_social',
-						'default'     => 0,
-						'type'        => 'switch'
-					),
-					array(
-						'title'       => __( 'Display social links as a Dropdown list or an Inline list.', 'shoestrap' ),
-						'desc'        => __( 'How to display social links. Default: Dropdown list', 'shoestrap' ),
-						'id'          => 'navbar_social_style',
-						'default'     => 0,
-						'on'          => __( 'Inline', 'shoestrap' ),
-						'off'         => __( 'Dropdown', 'shoestrap' ),
-						'type'        => 'switch',
-						'required'    => array('navbar_social','=',array('1')),
-					),
-					array(
-						'title'       => __( 'Search form on the NavBar', 'shoestrap' ),
-						'desc'        => __( 'Display a search form in the NavBar. Default: On', 'shoestrap' ),
-						'id'          => 'navbar_search',
-						'default'     => 1,
-						'type'        => 'switch'
-					),
-					array(
-						'title'       => __( 'Float NavBar menu to the right', 'shoestrap' ),
-						'desc'        => __( 'Floats the primary navigation to the right. Default: On', 'shoestrap' ),
-						'id'          => 'navbar_nav_right',
-						'default'     => 1,
-						'type'        => 'switch'
-					),
+				) ),
+			);
+
+			// Secondary Menus Settings
+			$this->sections[] = array(
+				'title' => __( 'Secondary Navbar', 'shoestrap' ),
+				'icon'  => 'el-icon-chevron-right',
+				'subsection' => true,
+				'fields'  => apply_filters( 'shoestrap_module_menus_secondary_options_modifier', array(
 					array(
 						'id'          => 'help9',
 						'title'       => __( 'Secondary Navbar', 'shoestrap' ),
@@ -999,6 +1045,15 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 						'max'         => 200,
 						'type'        => 'slider',
 					),
+				) ),
+			);
+
+			// Secondary Menus Settings
+			$this->sections[] = array(
+				'title' => __( 'Sidebar Menus', 'shoestrap' ),
+				'icon'  => 'el-icon-chevron-right',
+				'subsection' => true,
+				'fields'  => apply_filters( 'shoestrap_module_menus_secondary_options_modifier', array(
 					array(
 						'id'          => 'helpsidebarmenus',
 						'title'       => __( 'Sidebar Menus', 'shoestrap' ),
@@ -1437,6 +1492,15 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 							'em'    => __( 'Email', 'shoestrap' ),
 						)
 					),
+				) ),
+			);
+
+			// Social Settings
+			$this->sections[] = array(
+				'title'     => __( 'Social Links', 'shoestrap' ),
+				'icon'      => 'el-icon-chevron-right',
+				'subsection' => true,
+				'fields'  => apply_filters( 'shoestrap_module_social_links_options_modifier', array(
 					array(
 						'id'        => 'social_sharing_help_3',
 						'title'     => __( 'Social Links used in Menus && Footer', 'shoestrap' ),
