@@ -293,16 +293,6 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 						)
 					),
 					array(
-						'title'     => __( 'Custom Layouts per Post Type', 'shoestrap' ),
-						'desc'      => __( 'Set a default layout for each post type on your site.', 'shoestrap' ),
-						'id'        => 'cpt_layout_toggle',
-						'default'   => 0,
-						'type'      => 'switch',
-					),
-
-					$layout_ppt_fields,
-
-					array(
 						'title'     => __( 'Primary Sidebar Width', 'shoestrap' ),
 						'desc'      => __( 'Select the width of the Primary Sidebar. Please note that the values represent grid columns. The total width of the page is 12 columns, so selecting 4 here will make the primary sidebar to have a width of 1/3 ( 4/12 ) of the total page width.', 'shoestrap' ),
 						'id'        => 'layout_primary_width',
@@ -337,6 +327,24 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 						'default'   => 0,
 						'type'      => 'switch'
 					),
+				) ),
+			);
+
+			$this->sections[] = array(
+				'title'       => __( 'Advanced', 'shoestrap' ),
+				'icon'        => 'el-icon-screen',
+				'subsection'  => true,
+				'fields'  => apply_filters( 'shoestrap_module_layout_options_modifier', array(
+					array(
+						'title'     => __( 'Custom Layouts per Post Type', 'shoestrap' ),
+						'desc'      => __( 'Set a default layout for each post type on your site.', 'shoestrap' ),
+						'id'        => 'cpt_layout_toggle',
+						'default'   => 0,
+						'type'      => 'switch',
+					),
+
+					$layout_ppt_fields,
+
 					array(
 						'title'     => __( 'Margin from top ( Works only in \'Boxed\' mode )', 'shoestrap' ),
 						'desc'      => __( 'This will add a margin above the navbar. Useful if you\'ve enabled the \'Boxed\' mode above. Default: 0px', 'shoestrap' ),
