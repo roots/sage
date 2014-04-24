@@ -505,6 +505,59 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 						'type'      => 'switch',
 					),
 					array(
+						'title'     => __( 'Post excerpt length', 'shoestrap' ),
+						'desc'      => __( 'Choose how many words should be used for post excerpt. Default: 40', 'shoestrap' ),
+						'id'        => 'post_excerpt_length',
+						'default'   => 40,
+						'min'       => 10,
+						'step'      => 1,
+						'max'       => 1000,
+						'edit'      => 1,
+						'type'      => 'slider'
+					),
+					array(
+						'title'     => __( '"more" text', 'shoestrap' ),
+						'desc'      => __( 'Text to display in case of excerpt too long. Default: Continued', 'shoestrap' ),
+						'id'        => 'post_excerpt_link_text',
+						'default'   => __( 'Continued', 'shoestrap' ),
+						'type'      => 'text'
+					),
+					array(
+						'title'     => __( 'Show Breadcrumbs', 'shoestrap' ),
+						'desc'      => __( 'Display Breadcrumbs. Default: OFF.', 'shoestrap' ),
+						'id'        => 'breadcrumbs',
+						'default'   => 0,
+						'type'      => 'switch',
+					),
+					array(
+						'title'     => __( 'Show Post Meta in single posts', 'shoestrap' ),
+						'desc'      => __( 'Toggle Post Meta showing in the footer of single posts. Default: ON.', 'shoestrap' ),
+						'id'        => 'single_meta',
+						'default'   => 1,
+						'type'      => 'switch',
+					),
+				) ),
+			);
+
+			// Blog Settings
+
+			$screen_large_desktop = isset( $ss_settings['screen_large_desktop'] ) ? filter_var( $ss_settings['screen_large_desktop'], FILTER_SANITIZE_NUMBER_INT ) : 1200;
+
+			$post_types = get_post_types( array( 'public' => true ), 'names' );
+			$post_type_options  = array();
+			$post_type_defaults = array();
+
+			foreach ( $post_types as $post_type ) {
+				$post_type_options[$post_type]  = $post_type;
+				$post_type_defaults[$post_type] = 0;
+			}
+
+			$this->sections[] = array(
+				'title'   => __( 'Featured Images', 'shoestrap' ),
+				'icon'    => 'el-icon-wordpress',
+				'subsection' => true,
+				'fields'  => apply_filters( 'shoestrap_module_featured_images_modifier', array(
+					array(
 						'id'        => 'help3',
 						'title'     => __( 'Featured Images', 'shoestrap' ),
 						'desc'      => __( 'Here you can select if you want to display the featured images in post archives and individual posts.
@@ -600,38 +653,6 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 						'type'      => 'checkbox',
 						'options'   => $post_type_options,
 						'default'   => $post_type_defaults,
-					),
-					array(
-						'title'     => __( 'Post excerpt length', 'shoestrap' ),
-						'desc'      => __( 'Choose how many words should be used for post excerpt. Default: 40', 'shoestrap' ),
-						'id'        => 'post_excerpt_length',
-						'default'   => 40,
-						'min'       => 10,
-						'step'      => 1,
-						'max'       => 1000,
-						'edit'      => 1,
-						'type'      => 'slider'
-					),
-					array(
-						'title'     => __( '"more" text', 'shoestrap' ),
-						'desc'      => __( 'Text to display in case of excerpt too long. Default: Continued', 'shoestrap' ),
-						'id'        => 'post_excerpt_link_text',
-						'default'   => __( 'Continued', 'shoestrap' ),
-						'type'      => 'text'
-					),
-					array(
-						'title'     => __( 'Show Breadcrumbs', 'shoestrap' ),
-						'desc'      => __( 'Display Breadcrumbs. Default: OFF.', 'shoestrap' ),
-						'id'        => 'breadcrumbs',
-						'default'   => 0,
-						'type'      => 'switch',
-					),
-					array(
-						'title'     => __( 'Show Post Meta in single posts', 'shoestrap' ),
-						'desc'      => __( 'Toggle Post Meta showing in the footer of single posts. Default: ON.', 'shoestrap' ),
-						'id'        => 'single_meta',
-						'default'   => 1,
-						'type'      => 'switch',
 					),
 				) ),
 			);
