@@ -18,7 +18,10 @@ function roots_head_cleanup() {
   remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0);
 
   global $wp_widget_factory;
-  remove_action('wp_head', array($wp_widget_factory->widgets['WP_Widget_Recent_Comments'], 'recent_comments_style'));
+  
+  if(isset($wp_widget_factory->widgets['WP_Widget_Recent_Comments'])) {
+    remove_action('wp_head', array($wp_widget_factory->widgets['WP_Widget_Recent_Comments'], 'recent_comments_style'));
+  }
 
   if (!class_exists('WPSEO_Frontend')) {
     remove_action('wp_head', 'rel_canonical');
