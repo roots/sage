@@ -130,7 +130,7 @@ if ( ! class_exists( 'Shoestrap_Blog' ) ) {
 						  $content .= $ss_framework->open_col( 'span', array( 'medium' => $col ), null, 'post-format' ) . '<i class="el-icon-chevron-right"></i> <a href="' . esc_url( get_post_format_link( 'aside' ) ) . '">' . __('Aside','shoestrap') . '</a>' . $ss_framework->close_col( 'span' );
 						}
 						if ( get_post_format( $post->ID ) === 'link' ) {
-						  $content .= $ss_framework->open_col( 'span', array( 'medium' => $col ), null, 'post-format' ) . '<i class="el-icon-link"></i> <a href="' . esc_url( get_post_format_link( 'link' ) ) . '">' . __('Aside','shoestrap') . '</a>' . $ss_framework->close_col( 'span' );
+						  $content .= $ss_framework->open_col( 'span', array( 'medium' => $col ), null, 'post-format' ) . '<i class="el-icon-link"></i> <a href="' . esc_url( get_post_format_link( 'link' ) ) . '">' . __('Link','shoestrap') . '</a>' . $ss_framework->close_col( 'span' );
 						}
 						if ( get_post_format( $post->ID ) === 'image' ) {
 						  $content .= $ss_framework->open_col( 'span', array( 'medium' => $col ), null, 'post-format' ) . '<i class="el-icon-picture"></i> <a href="' . esc_url( get_post_format_link( 'image' ) ) . '">' . __('Image','shoestrap') . '</a>' . $ss_framework->close_col( 'span' );
