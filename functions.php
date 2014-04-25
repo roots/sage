@@ -35,6 +35,8 @@ if ( ! defined( 'SHOESTRAP_OPT_NAME' ) ) {
 global $ss_settings;
 $ss_settings = get_option( SHOESTRAP_OPT_NAME );
 
+do_action( 'shoestrap_include_files' );
+
 require_once locate_template( '/lib/class-Shoestrap_Color.php' );
 require_once locate_template( '/lib/class-Shoestrap_Image.php' );
 require_once locate_template( '/lib/functions-core.php' );
@@ -72,5 +74,3 @@ if ( file_exists( locate_template( '/lib/updater/updater.php' ) ) ) {
 if ( class_exists( 'bbPress' ) ) {
 	require_once locate_template( '/lib/bbpress.php' );
 }
-
-do_action( 'shoestrap_include_files' );

@@ -39,10 +39,7 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 			// If Redux is running as a plugin, this will remove the demo notice and links
 			add_action( 'redux/loaded', array( $this, 'remove_demo' ) );
 
-			$sections = apply_filters( 'redux/options/' . SHOESTRAP_OPT_NAME . '/sections', $this->sections );
-			$sections = apply_filters( 'shoestrap_add_sections', $sections );
-
-			$this->ReduxFramework = new ReduxFramework( $sections, $this->args );
+			$this->ReduxFramework = new ReduxFramework( $this->sections, $this->args );
 		}
 
 		public function setSections() {
