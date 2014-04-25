@@ -54,6 +54,17 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 				'icon'  => 'el-icon-website',
 				'fields'  => apply_filters( 'shoestrap_module_general_options_modifier', array(
 					array(
+						'title'     => __( 'Setup Mode', 'shoestrap' ),
+						'desc'      => __( 'Select Easy or Advanced setup. Easy mode hides most options and allows for quick customization.', 'shoestrap' ),
+						'id'        => 'options_mode',
+						'type'      => 'button_set',
+						'options'   => array(
+							'easy'     => __( 'Easy', 'shoestrap' ),
+							'advanced' => __( 'Advanced', 'shoestrap' )
+						),
+						'default' => 'easy'
+					),
+					array(
 						'title'       => __( 'Logo', 'shoestrap' ),
 						'desc'        => __( 'Upload a logo image using the media uploader, or define the URL directly.', 'shoestrap' ),
 						'id'          => 'logo',
@@ -66,6 +77,7 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 						'id'          => 'favicon',
 						'default'     => '',
 						'type'        => 'media',
+						'required'    => array( 'options_mode', '=', array( 'advanced' ) ),
 					),
 					array(
 						'title'       => __( 'Apple Icon', 'shoestrap' ),
@@ -73,6 +85,7 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 						'id'          => 'apple_icon',
 						'default'     => '',
 						'type'        => 'media',
+						'required'    => array( 'options_mode', '=', array( 'advanced' ) ),
 					),
 				) ),
 			);
@@ -115,6 +128,7 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 						'compiler'    => true,
 						'transparent' => false,
 						'type'        => 'color',
+						'required'    => array( 'options_mode', '=', array( 'advanced' ) ),
 					),
 					array(
 						'title'       => __( 'Brand Colors: Warning', 'shoestrap' ),
@@ -124,6 +138,7 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 						'compiler'    => true,
 						'type'        => 'color',
 						'transparent' => false,
+						'required'    => array( 'options_mode', '=', array( 'advanced' ) ),
 					),
 					array(
 						'title'       => __( 'Brand Colors: Danger', 'shoestrap' ),
@@ -133,6 +148,7 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 						'compiler'    => true,
 						'type'        => 'color',
 						'transparent' => false,
+						'required'    => array( 'options_mode', '=', array( 'advanced' ) ),
 					),
 					array(
 						'title'       => __( 'Brand Colors: Info', 'shoestrap' ),
@@ -142,6 +158,7 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 						'compiler'    => true,
 						'type'        => 'color',
 						'transparent' => false,
+						'required'    => array( 'options_mode', '=', array( 'advanced' ) ),
 					),
 				) ),
 			);
@@ -287,16 +304,27 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 			);
 
 			$this->sections[] = array(
-				'title'       => __( 'Advanced', 'shoestrap' ),
+				'title'       => __( 'Advanced Layout', 'shoestrap' ),
 				'icon'        => 'el-icon-chevron-right',
 				'subsection'  => true,
 				'fields'  => apply_filters( 'shoestrap_module_layout_options_modifier', array(
+					array(
+						'title'     => 'Looking for Advanced Layout Options?',
+						'desc'      => '',
+						'id'        => 'help632165',
+						'default'   => __( 'Advanced layout options are not available when using the Easy setup mode.
+							Please switch to Anvanced Setup Mode from the "General" section.', 'shoestrap' ),
+						'type'      => 'info',
+						'style'     => 'warning',
+						'required'  => array( 'options_mode', '=', array( 'easy' ) ),
+					),
 					array(
 						'title'     => __( 'Custom Layouts per Post Type', 'shoestrap' ),
 						'desc'      => __( 'Set a default layout for each post type on your site.', 'shoestrap' ),
 						'id'        => 'cpt_layout_toggle',
 						'default'   => 0,
 						'type'      => 'switch',
+						'required'  => array( 'options_mode', '=', array( 'advanced' ) ),
 					),
 
 					$layout_ppt_fields,
@@ -311,7 +339,8 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 						'step'      => 1,
 						'max'       => 120,
 						'compiler'  => true,
-						'type'      => 'slider'
+						'type'      => 'slider',
+						'required'  => array( 'options_mode', '=', array( 'advanced' ) ),
 					),
 					array(
 						'title'     => __( 'Widgets mode', 'shoestrap' ),
@@ -324,6 +353,7 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 							2           => __( 'None', 'shoestrap' ),
 						),
 						'type'      => 'button_set',
+						'required'  => array( 'options_mode', '=', array( 'advanced' ) ),
 					),
 					array(
 						'title'     => __( 'Body Top Margin', 'shoestrap' ),
@@ -334,7 +364,8 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 						'step'      => 1,
 						'max'       => 200,
 						'edit'      => 1,
-						'type'      => 'slider'
+						'type'      => 'slider',
+						'required'  => array( 'options_mode', '=', array( 'advanced' ) ),
 					),
 					array(
 						'title'     => __( 'Body Bottom Margin', 'shoestrap' ),
@@ -346,6 +377,7 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 						'max'       => 200,
 						'edit'      => 1,
 						'type'      => 'slider',
+						'required'  => array( 'options_mode', '=', array( 'advanced' ) ),
 					),
 					array(
 						'title'     => __( 'Custom Grid', 'shoestrap' ),
@@ -353,6 +385,7 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 						'id'        => 'custom_grid',
 						'default'   => 0,
 						'type'      => 'switch',
+						'required'  => array( 'options_mode', '=', array( 'advanced' ) ),
 					),
 					array(
 						'title'     => __( 'Small Screen / Tablet view', 'shoestrap' ),
@@ -365,7 +398,8 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 						'max'       => 2100,
 						'advanced'  => true,
 						'compiler'  => true,
-						'type'      => 'slider'
+						'type'      => 'slider',
+						'required'  => array( 'options_mode', '=', array( 'advanced' ) ),
 					),
 					array(
 						'title'     => __( 'Desktop Container Width', 'shoestrap' ),
@@ -379,7 +413,7 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 						'advanced'  => true,
 						'compiler'  => true,
 						'type'      => 'slider',
-
+						'required'  => array( 'options_mode', '=', array( 'advanced' ) ),
 					),
 					array(
 						'title'     => __( 'Large Desktop Container Width', 'shoestrap' ),
@@ -392,7 +426,8 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 						'max'       => 2100,
 						'advanced'  => true,
 						'compiler'  => true,
-						'type'      => 'slider'
+						'type'      => 'slider',
+						'required'  => array( 'options_mode', '=', array( 'advanced' ) ),
 					),
 					array(
 						'title'     => __( 'Columns Gutter', 'shoestrap' ),
@@ -406,6 +441,7 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 						'advanced'  => true,
 						'compiler'  => true,
 						'type'      => 'slider',
+						'required'  => array( 'options_mode', '=', array( 'advanced' ) ),
 					),
 				) ),
 			);
@@ -459,6 +495,7 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 						'id'        => 'date_meta_format',
 						'default'   => 0,
 						'type'      => 'switch',
+						'required'  => array( 'options_mode', '=', array( 'advanced' ) ),
 					),
 					array(
 						'title'     => __( 'Post excerpt length', 'shoestrap' ),
@@ -469,14 +506,16 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 						'step'      => 1,
 						'max'       => 1000,
 						'edit'      => 1,
-						'type'      => 'slider'
+						'type'      => 'slider',
+						'required'  => array( 'options_mode', '=', array( 'advanced' ) ),
 					),
 					array(
 						'title'     => __( '"more" text', 'shoestrap' ),
 						'desc'      => __( 'Text to display in case of excerpt too long. Default: Continued', 'shoestrap' ),
 						'id'        => 'post_excerpt_link_text',
 						'default'   => __( 'Continued', 'shoestrap' ),
-						'type'      => 'text'
+						'type'      => 'text',
+						'required'  => array( 'options_mode', '=', array( 'advanced' ) ),
 					),
 					array(
 						'title'     => __( 'Show Breadcrumbs', 'shoestrap' ),
@@ -491,6 +530,7 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 						'id'        => 'single_meta',
 						'default'   => 1,
 						'type'      => 'switch',
+						'required'  => array( 'options_mode', '=', array( 'advanced' ) ),
 					),
 				) ),
 			);
@@ -533,7 +573,7 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 						'desc'      => __( 'Set dimensions of featured Images on Archives. Default: Full Width', 'shoestrap' ),
 						'id'        => 'feat_img_archive_custom_toggle',
 						'default'   => 0,
-						'required'  => array('feat_img_archive','=',array('1')),
+						'required'  => array( 'feat_img_archive','=',array( '1' ) ),
 						'off'       => __( 'Full Width', 'shoestrap' ),
 						'on'        => __( 'Custom Dimensions', 'shoestrap' ),
 						'type'      => 'switch',
@@ -546,7 +586,10 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 						'min'       => 100,
 						'step'      => 1,
 						'max'       => $screen_large_desktop,
-						'required'  => array('feat_img_archive','=',array('1')),
+						'required'  => array(
+							array( 'feat_img_archive', '=', 1 ),
+							array( 'feat_img_archive_custom_toggle', '=', 1 ),
+						),
 						'edit'      => 1,
 						'type'      => 'slider'
 					),
@@ -559,7 +602,7 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 						'step'      => 1,
 						'edit'      => 1,
 						'max'       => $screen_large_desktop,
-						'required'  => array('feat_img_archive','=',array('1')),
+						'required'  => array( 'feat_img_archive', '=', 1 ),
 						'type'      => 'slider'
 					),
 					array(
@@ -577,7 +620,7 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 						'off'       => __( 'Full Width', 'shoestrap' ),
 						'on'        => __( 'Custom Dimensions', 'shoestrap' ),
 						'type'      => 'switch',
-						'required'  => array('feat_img_post','=',array('1')),
+						'required'  => array( 'feat_img_post', '=', 1 ),
 					),
 					array(
 						'title'     => __( 'Posts Featured Image Custom Width', 'shoestrap' ),
@@ -588,7 +631,10 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 						'step'      => 1,
 						'max'       => $screen_large_desktop,
 						'edit'      => 1,
-						'required'  => array('feat_img_post','=',array('1')),
+						'required'  => array(
+							array( 'feat_img_post', '=', 1 ),
+							array( 'feat_img_post_custom_toggle', '=', 1 ),
+						),
 						'type'      => 'slider'
 					),
 					array(
@@ -600,7 +646,7 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 						'step'      => 1,
 						'max'       => $screen_large_desktop,
 						'edit'      => 1,
-						'required'  => array('feat_img_post','=',array('1')),
+						'required'  => array( 'feat_img_post', '=', 1 ),
 						'type'      => 'slider'
 					),
 					array(
@@ -609,6 +655,7 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 						'type'      => 'checkbox',
 						'options'   => $post_type_options,
 						'default'   => $post_type_defaults,
+						'required'  => array( 'options_mode', '=', array( 'advanced' ) ),
 					),
 				) ),
 			);
@@ -687,6 +734,7 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 						'id'        => 'jumbotron_title_fit',
 						'default'   => 0,
 						'type'      => 'switch',
+						'required'  => array( 'options_mode', '=', array( 'advanced' ) ),
 					),
 					array(
 						'title'     => __( 'Center-align the content.', 'shoestrap' ),
@@ -694,6 +742,7 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 						'id'        => 'jumbotron_center',
 						'default'   => 0,
 						'type'      => 'switch',
+						'required'  => array( 'options_mode', '=', array( 'advanced' ) ),
 					),
 					array(
 						'title'     => __( 'Jumbotron Font', 'shoestrap' ),
@@ -722,6 +771,7 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 						'default'   => 0,
 						'compiler'  => true,
 						'type'      => 'switch',
+						'required'  => array( 'options_mode', '=', array( 'advanced' ) ),
 					),
 					array(
 						'title'     => __( 'Jumbotron Headers Font', 'shoestrap' ),
@@ -738,7 +788,10 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 							'size'  => '30px' //this is the text size from preview box
 						),
 						'type'      => 'typography',
-						'required'  => array( 'font_jumbotron_heading_custom','=',array( '1' ) ),
+						'required'  => array(
+							array( 'font_jumbotron_heading_custom', '=', 1 ),
+							array( 'options_mode', '=', array( 'advanced' ) ),
+						),
 					),
 					array(
 						'title'     => 'Jumbotron Border',
@@ -755,6 +808,7 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 							'border-style'    => 'solid',
 							'border-color'    => '#428bca',
 						),
+						'required'  => array( 'options_mode', '=', array( 'advanced' ) ),
 					),
 				) ),
 			);
@@ -815,7 +869,8 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 						'default'     => 0,
 						'on'          => __( 'Bottom', 'shoestrap' ),
 						'off'         => __( 'Top', 'shoestrap' ),
-						'type'        => 'switch'
+						'type'        => 'switch',
+						'required'    => array( 'options_mode', '=', array( 'advanced' ) ),
 					),
 					array(
 						'title'     => __( 'Responsive NavBar Threshold', 'shoestrap' ),
@@ -832,6 +887,7 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 						),
 						'default'   => 'screen_sm_min',
 						'compiler'  => true,
+						'required'  => array( 'options_mode', '=', array( 'advanced' ) ),
 					),
 					array(
 						'title'       => __( 'Display social links in the NavBar.', 'shoestrap' ),
@@ -849,6 +905,7 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 						'off'         => __( 'Dropdown', 'shoestrap' ),
 						'type'        => 'switch',
 						'required'    => array('navbar_social','=',array('1')),
+						'required'    => array( 'options_mode', '=', array( 'advanced' ) ),
 					),
 					array(
 						'title'       => __( 'Search form on the NavBar', 'shoestrap' ),
@@ -969,6 +1026,7 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 						'step'        => 1,
 						'max'         => 200,
 						'type'        => 'slider',
+						'required'    => array( 'options_mode', '=', array( 'advanced' ) ),
 					),
 				) ),
 			);
@@ -1000,6 +1058,7 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 						'min'         => 0,
 						'max'         => 200,
 						'type'        => 'slider',
+						'required'    => array( 'options_mode', '=', array( 'advanced' ) ),
 					),
 				) ),
 			);
@@ -1011,10 +1070,20 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 				'subsection' => true,
 				'fields'  => apply_filters( 'shoestrap_module_menus_secondary_options_modifier', array(
 					array(
+						'title'     => 'Looking for Advanced Layout Options?',
+						'desc'      => '',
+						'id'        => 'help6541128',
+						'default'   => __( 'Please switch to Anvanced Setup Mode from the "General" section to see more options.', 'shoestrap' ),
+						'type'      => 'info',
+						'style'     => 'warning',
+						'required'  => array( 'options_mode', '=', array( 'easy' ) ),
+					),
+					array(
 						'id'          => 'helpsidebarmenus',
 						'title'       => __( 'Sidebar Menus', 'shoestrap' ),
 						'desc'        => __( 'If you\'re using the "Custom Menu" widgets in your sidebars, you can control their styling here', 'shoestrap' ),
 						'type'        => 'info',
+						'required'    => array( 'options_mode', '=', array( 'advanced' ) ),
 					),
 					array(
 						'title'       => __( 'Color for sidebar menus', 'shoestrap' ),
@@ -1030,6 +1099,7 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 							'info'    => __( 'Branding-Info', 'shoestrap' ),
 							'danger'  => __( 'Branding-Danger', 'shoestrap' ),
 						),
+						'required'    => array( 'options_mode', '=', array( 'advanced' ) ),
 					),
 					array(
 						'title'       => __( 'Inverse Sidebar_menus.', 'shoestrap' ),
@@ -1037,6 +1107,7 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 						'id'          => 'inverse_navlist',
 						'default'     => 0,
 						'type'        => 'switch',
+						'required'    => array( 'options_mode', '=', array( 'advanced' ) ),
 					),
 				) ),
 			);
@@ -1108,6 +1179,7 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 						'max'         => 200,
 						'type'        => 'slider',
 						'required'    => array( 'header_toggle', '=', array('1') ),
+						'required'    => array( 'options_mode', '=', array( 'advanced' ) ),
 					),
 					array(
 						'title'       => __( 'Header Bottom Margin', 'shoestrap' ),
@@ -1118,6 +1190,7 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 						'max'         => 200,
 						'type'        => 'slider',
 						'required'    => array( 'header_toggle', '=', array('1') ),
+						'required'    => array( 'options_mode', '=', array( 'advanced' ) ),
 					),
 				) ),
 			);
@@ -1143,7 +1216,7 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 						'min'         => 0,
 						'max'         => 100,
 						'type'        => 'slider',
-						'required'    => array('retina_toggle','=',array('1')),
+						'required'    => array( 'options_mode', '=', array( 'advanced' ) ),
 					),
 					array(
 						'title'       => __( 'Footer Text Color', 'shoestrap' ),
@@ -1184,6 +1257,7 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 						'min'         => 0,
 						'max'         => 200,
 						'type'        => 'slider',
+						'required'    => array( 'options_mode', '=', array( 'advanced' ) ),
 					),
 					array(
 						'title'       => __( 'Show social icons in footer', 'shoestrap' ),
@@ -1210,6 +1284,7 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 						'required'    => array( 'footer_social_toggle','=',array('1') ),
 						'default'     => 1,
 						'type'        => 'switch',
+						'required'    => array( 'options_mode', '=', array( 'advanced' ) ),
 					),
 				) ),
 			);
@@ -1250,7 +1325,7 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 						'default'   => array(
 							'font-family' => 'Arial, Helvetica, sans-serif',
 							'font-size'   => '260%',
-							'color'       => '#333333',
+							'color'       => $settings['font_base']['color'],
 							'google'      => 'false',
 							'font-style'  => 400,
 
@@ -1261,6 +1336,7 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 						),
 						'type'      => 'typography',
 						'output'    => 'h1, .h1',
+						'required'  => array( 'options_mode', '=', array( 'advanced' ) ),
 					),
 					array(
 						'id'        => 'font_h2',
@@ -1271,7 +1347,7 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 						'default'   => array(
 							'font-family' => 'Arial, Helvetica, sans-serif',
 							'font-size'   => '215%',
-							'color'       => '#333333',
+							'color'       => $settings['font_base']['color'],
 							'google'      => 'false',
 							'font-style'  => 400,
 						),
@@ -1281,6 +1357,7 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 						),
 						'type'      => 'typography',
 						'output'    => 'h2, .h2',
+						'required'  => array( 'options_mode', '=', array( 'advanced' ) ),
 					),
 					array(
 						'id'        => 'font_h3',
@@ -1291,7 +1368,7 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 						'default'   => array(
 							'font-family' => 'Arial, Helvetica, sans-serif',
 							'font-size'   => '170%',
-							'color'       => '#333333',
+							'color'       => $settings['font_base']['color'],
 							'google'      => 'false',
 							'font-style'  => 400,
 						),
@@ -1301,6 +1378,7 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 						),
 						'type'      => 'typography',
 						'output'    => 'h3, .h3',
+						'required'  => array( 'options_mode', '=', array( 'advanced' ) ),
 					),
 					array(
 						'title'     => __( 'H4 Font', 'shoestrap' ),
@@ -1311,7 +1389,7 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 						'default'   => array(
 							'font-family' => 'Arial, Helvetica, sans-serif',
 							'font-size'   => '125%',
-							'color'       => '#333333',
+							'color'       => $settings['font_base']['color'],
 							'google'      => 'false',
 							'font-style'  => 400,
 						),
@@ -1321,6 +1399,7 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 						),
 						'type'      => 'typography',
 						'output'    => 'h4, .h4',
+						'required'  => array( 'options_mode', '=', array( 'advanced' ) ),
 					),
 					array(
 						'title'     => __( 'H5 Font', 'shoestrap' ),
@@ -1331,7 +1410,7 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 						'default'   => array(
 							'font-family' => 'Arial, Helvetica, sans-serif',
 							'font-size'   => '100%',
-							'color'       => '#333333',
+							'color'       => $settings['font_base']['color'],
 							'google'      => 'false',
 							'font-style'  => 400,
 						),
@@ -1341,6 +1420,7 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 						),
 						'type'      => 'typography',
 						'output'    => 'h5, .h5',
+						'required'  => array( 'options_mode', '=', array( 'advanced' ) ),
 					),
 					array(
 						'title'     => __( 'H6 Font', 'shoestrap' ),
@@ -1351,7 +1431,7 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 						'default'   => array(
 							'font-family' => 'Arial, Helvetica, sans-serif',
 							'font-size'   => '85%',
-							'color'       => '#333333',
+							'color'       => $settings['font_base']['color'],
 							'google'      => 'false',
 							'font-weight' => 400,
 							'font-style'  => 'normal',
@@ -1362,6 +1442,7 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 						),
 						'type'      => 'typography',
 						'output'    => 'h6, .h6',
+						'required'  => array( 'options_mode', '=', array( 'advanced' ) ),
 					),
 				) ),
 			);
@@ -1688,14 +1769,16 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 						'desc'      => __( 'Return URLs such as <em>/assets/css/style.css</em> instead of <em>http://example.com/assets/css/style.css</em>. Default: ON', 'shoestrap' ),
 						'id'        => 'root_relative_urls',
 						'default'   => 0,
-						'type'      => 'switch'
+						'type'      => 'switch',
+						'required'  => array( 'options_mode', '=', array( 'advanced' ) ),
 					),
 					array(
 						'title'     => __( 'Enable Nice Search', 'shoestrap' ),
 						'desc'      => __( 'Redirects /?s=query to /search/query/, convert %20 to +. Default: ON', 'shoestrap' ),
 						'id'        => 'nice_search',
 						'default'   => 1,
-						'type'      => 'switch'
+						'type'      => 'switch',
+						'required'  => array( 'options_mode', '=', array( 'advanced' ) ),
 					),
 					array(
 						'title'     => __( 'Custom CSS', 'shoestrap' ),
@@ -1705,6 +1788,7 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 						'type'      => 'ace_editor',
 						'mode'      => 'css',
 						'theme'     => 'monokai',
+						'required'  => array( 'options_mode', '=', array( 'advanced' ) ),
 					),
 					array(
 						'title'     => __( 'Custom LESS', 'shoestrap' ),
@@ -1715,6 +1799,7 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 						'mode'      => 'less',
 						'theme'     => 'monokai',
 						'compiler'  => true,
+						'required'  => array( 'options_mode', '=', array( 'advanced' ) ),
 					),
 					array(
 						'title'     => __( 'Custom JS', 'shoestrap' ),
@@ -1724,6 +1809,7 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 						'type'      => 'ace_editor',
 						'mode'      => 'javascript',
 						'theme'     => 'monokai',
+						'required'  => array( 'options_mode', '=', array( 'advanced' ) ),
 					),
 					array(
 						'title'     => __( 'Minimize CSS', 'shoestrap' ),
@@ -1732,6 +1818,7 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 						'default'   => 1,
 						'compiler'  => true,
 						'type'      => 'switch',
+						'required'  => array( 'options_mode', '=', array( 'advanced' ) ),
 					),
 					array(
 						'title'     => __( 'Toggle adminbar On/Off', 'shoestrap' ),
@@ -1739,6 +1826,7 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 						'id'        => 'advanced_wordpress_disable_admin_bar_toggle',
 						'default'   => 1,
 						'type'      => 'switch',
+						'required'  => array( 'options_mode', '=', array( 'advanced' ) ),
 					),
 					array(
 						'title'     => __( 'Use Google CDN for jQuery', 'shoestrap' ),
@@ -1746,6 +1834,7 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 						'id'        => 'jquery_cdn_toggler',
 						'default'   => 0,
 						'type'      => 'switch',
+						'required'  => array( 'options_mode', '=', array( 'advanced' ) ),
 					),
 				) ),
 			);
