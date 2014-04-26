@@ -11,7 +11,7 @@ if ( ! class_exists( 'SS_Framework' ) ) {
 		 * Class constructor
 		 */
 		function __construct() {
-			global $ss_settings, $ss_active_framework;
+			global $ss_settings;
 
 			require_once dirname( __FILE__ ) . '/core/class-SS_Framework_Core.php';
 
@@ -26,18 +26,7 @@ if ( ! class_exists( 'SS_Framework' ) ) {
 				require_once 'bootstrap/framework.php';
 			}
 
-
-			// On Windows servers and XAMPP there seems to be an issue with this
-			// and it returns empty. In that case, specify a default array for the
-			// Bootstrap Framework.
-			if ( ! is_array( $ss_active_framework ) ) {
-				$ss_active_framework = array(
-					'shortname' => 'bootstrap',
-					'name'      => 'Bootstrap',
-					'classname' => 'SS_Framework_Bootstrap',
-					'compiler'  => 'less_php',
-				);
-			}
+			global $ss_active_framework;
 
 			$compiler = false;
 			// Return the classname of the active framework.
