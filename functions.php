@@ -42,7 +42,7 @@ require_once locate_template( '/lib/class-Shoestrap_Image.php' );
 require_once locate_template( '/lib/functions-core.php' );
 
 // Get the framework
-require_once locate_template( '/framework/framework.php' );
+require_once locate_template( '/framework/class-SS_Framework.php' );
 
 require_once locate_template( '/lib/template.php' );     // Custom get_template_part function.
 require_once locate_template( '/lib/utils.php' );        // Utility functions
