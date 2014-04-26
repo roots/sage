@@ -1,3 +1,13 @@
+### HEAD
+
+* Fix: Undefined index notices on theme activation
+* Fix: Deprecated functions compatibility
+* Fix: Featured Image dimentions for archives
+* New: Post Format meta element
+* New: Moved all Redux options to a single file
+* New: Implemented Redux SubSections (requires Redux 3.2.3)
+* New: Started work on an "Easy" mode. Will be completed on the next Redux Update.
+
 ### 3.2.5
 
 * Fix: Compatibility with WordPress 3.9
