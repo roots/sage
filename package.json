@@ -1,29 +1,35 @@
 {
-  "name": "roots",
-  "version": "6.5.2",
-  "author": "Ben Word <ben@benword.com>",
-  "homepage": "http://roots.io",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/roots/roots.git"
-  },
-  "bugs": {
-    "url" : "https://github.com/roots/roots/issues"
-  },
-  "licenses": [{
-    "type": "MIT",
-    "url": "http://opensource.org/licenses/MIT"
-  }],
-  "engines": {
-    "node": ">= 0.10.0"
+  "name": "gromf",
+  "version": "0.0.1",
+  "description": "Wordpress starter theme, based on Roots",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "gulp": "~3.6.2"
   },
   "devDependencies": {
-    "grunt": "~0.4.2",
-    "grunt-contrib-clean": "~0.5.0",
-    "grunt-contrib-jshint": "~0.6.4",
-    "grunt-contrib-uglify": "~0.2.4",
-    "grunt-contrib-watch": "~0.5.3",
-    "grunt-contrib-less": "~0.8.1",
-    "grunt-wp-version": "~0.1.0"
-  }
+    "gulp-sass": "^0.7.1",
+    "gulp-minify-css": "^0.3.4",
+    "gulp-uglify": "^0.2.1",
+    "gulp-size": "^0.3.0",
+    "gulp-autoprefixer": "0.0.7",
+    "gulp-svgmin": "^0.4.5",
+    "gulp-imagemin": "^0.5.0",
+    "gulp-concat": "^2.2.0",
+    "gulp-rename": "^1.2.0",
+    "gulp-notify": "^1.2.5",
+    "gulp-util": "^2.2.14"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/schikulski/gromf.git"
+  },
+  "author": "Simen Schikulski",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/schikulski/gromf/issues"
+  },
+  "homepage": "https://github.com/schikulski/gromf"
 }

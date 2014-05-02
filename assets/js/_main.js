@@ -1,3 +1,4 @@
+
 /* ========================================================================
  * DOM-based Routing
  * Based on http://goo.gl/EUTi53 by Paul Irish
@@ -28,7 +29,7 @@ var Roots = {
   // Home page
   home: {
     init: function() {
-      // JavaScript to be fired on the home page
+      // JavaScript to be fired on home page
     }
   },
   // About us page, note the change from about-us to about_us.
