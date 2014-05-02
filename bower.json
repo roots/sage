@@ -1,0 +1,26 @@
+{
+  "name": "gromf",
+  "version": "0.1",
+  "homepage": "https://github.com/schikulski/gromf",
+  "authors": [
+    "Simen Schikulski <schikulski@gmail.com>"
+  ],
+  "description": "WordPress starter theme, based on Roots.",
+  "keywords": [
+    "wordpress",
+    "theme",
+    "roots"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "foundation": "~5.2.2"
+  }
+}
