@@ -31,5 +31,6 @@ Since Gromf is heavily based on [Roots](https://github.com/roots/roots), 90% of 
 
 ## Todo
 
+* Fix markup that fits more with foundation than bootstrap
 * Fix WordPress menu bar overlapping foundation menu
 * Fix livereload for PHP files (Or consider using brower-sync)
