@@ -1,7 +1,0 @@
-#!/bin/bash
-
-script/bootstrap
-
-export SASS_LIBSASS_PATH="$( cd "$( dirname "${BASH_SOURCE[0]}" )"/../ && pwd )"
-
-make test_build

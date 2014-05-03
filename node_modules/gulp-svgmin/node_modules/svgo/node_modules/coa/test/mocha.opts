@@ -1,3 +1,0 @@
---reporter spec
---timeout 0
---require test/common.js
