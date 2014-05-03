@@ -1,66 +1,101 @@
-// Gulp
-var gulp = require('gulp');
+var gulp = require('gulp');								// Gulp!
 
-// Sass/CSS stuff
-var sass = require('gulp-sass');
-var prefix = require('gulp-autoprefixer');
-var minifycss = require('gulp-minify-css');
-var concat = require('gulp-concat');
+var sass = require('gulp-sass');						// Sass
+var prefix = require('gulp-autoprefixer');				// Autoprefixr
+var minifycss = require('gulp-minify-css');				// Minify CSS
+var concat = require('gulp-concat');					// Concat files
+var uglify = require('gulp-uglify');					// Uglify javascript
+var svgmin = require('gulp-svgmin');					// SVG minify
+var imagemin = require('gulp-imagemin');				// Image minify
+var rename = require('gulp-rename');					// Rename files
+var util = require('gulp-util');						// Writing stuff
 
-// JavaScript
-var uglify = require('gulp-uglify');
 
-// Images
-var svgmin = require('gulp-svgmin');
-var imagemin = require('gulp-imagemin');
 
-// Stats and Things
-var size = require('gulp-size');
-var rename = require('gulp-rename');
-var util = require('gulp-util');
 
 //
+//		Compile all CSS for the site
+//
+//////////////////////////////////////////////////////////////////////
 
-// compile all your Sass from Foundation and app.scss
+
 	gulp.task('sass', function (){
-		gulp.src(['bower_components/foundation/scss/normalize.scss', 'bower_components/foundation/scss/foundation.scss', 'assets/scss/app.scss'])
-			.pipe(sass({style: 'compressed'}))
-			.pipe(concat('main.css'))
-			.pipe(rename({suffix: '.min'}))
-			.pipe(minifycss())
-			.pipe(gulp.dest('assets/css/'));
-			util.log('Sass compiled & stored.');
-	});
-
-// Uglify JS
-	gulp.task('uglify', function(){
 		gulp.src([
-			'bower_components/jquery/dist/jquery.min.js',
-			'bower_components/modernizr/modernizr.js',
-			'bower_components/foundation/js/foundation.min.js',
-			'bower_components/foundation/js/foundation/foundation.offcanvas.js',
-			'assets/js/_*.js'])
-			.pipe(concat('scripts.js'))
-			.pipe(rename({suffix: '.min'}))
-			.pipe(uglify())
-			.pipe(gulp.dest('assets/js/'));
-			util.log('Javascript compiled and minified');
+			'bower_components/foundation/scss/normalize.scss',		// Gets normalize
+			'bower_components/foundation/scss/foundation.scss',		// Gets foundation
+			'assets/scss/app.scss']) 								// Gets the apps scss
+			.pipe(sass({style: 'compressed'}))						// Compile sass
+			.pipe(concat('main.css'))								// Concat all css
+			.pipe(rename({suffix: '.min'}))							// Rename it
+			.pipe(minifycss())										// Minify the CSS
+			.pipe(gulp.dest('assets/css/'));						// Set the destination to assets/css
+			util.log('Sass compiled & stored.');					// Output to terminal
 	});
 
 
-// Images
+
+
+
+//
+//		Get all the JS, concat and uglify
+//
+//////////////////////////////////////////////////////////////////////
+
+
+	gulp.task('javascripts', function(){
+		gulp.src([
+			'bower_components/jquery/dist/jquery.min.js',			// Gets Jquery
+			'bower_components/fastclick/lib/fastclick.js',			// Gets fastclick
+			'bower_components/foundation/js/foundation.js',			// Gets Foundation (includes ALL foundation js, change to only include the scripts you'll need)
+			'assets/js/_*.js'])										// Gets all the user JS _*.js from assets/js
+			.pipe(concat('scripts.js'))								// Concat all the scripts
+			.pipe(rename({suffix: '.min'}))							// Rename it
+			.pipe(uglify())											// Uglify(minify)
+			.pipe(gulp.dest('assets/js/'));							// Set destination to assets/js
+			util.log('Javascript compiled and minified');			// Output to terminal
+	});
+
+
+
+
+
+//
+//		Copy bower components to assets-folder
+//
+//////////////////////////////////////////////////////////////////////
+
+
+	gulp.task('copy', function(){
+		gulp.src('bower_components/modernizr/modernizr.js')			// Gets Modernizr.js
+		.pipe(uglify())												// Uglify(minify)
+		.pipe(rename({suffix: '.min'}))								// Rename it
+		.pipe(gulp.dest('assets/js/'));								// Set destination to assets/js
+		util.log('Files copied')									// Output to terminal
+	});
+
+
+
+
+
+
+//
+//		Minify all SVGs and images
+//
+//////////////////////////////////////////////////////////////////////
+
+
 	gulp.task('svgmin', function() {
-		gulp.src('assets/img/svg/*.svg')
-		.pipe(svgmin())
-		.pipe(gulp.dest('assets/img/svg'));
-		util.log('SVG images minified');
+		gulp.src('assets/img/*.svg')								// Gets all SVGs
+		.pipe(svgmin())												// Minifies SVG
+		.pipe(gulp.dest('assets/img_min/'));						// Set destination to assets/img_min/
+		util.log('SVG images minified');							// Output to terminal
 	});
 
 	gulp.task('imagemin', function () {
-		gulp.src('assets/img/*')
-		.pipe(imagemin())
-		.pipe(gulp.dest('assets/img'));
-		util.log('Images minified');
+		gulp.src(['assets/img/*', '!assets/img/*.svg'])				// Gets all images except SVGs
+		.pipe(imagemin())											// Minifies
+		.pipe(gulp.dest('assets/img_min/'));						// Set destination to assets/img_min/
+		util.log('Images minified');								// Output to terminal
 	});
 
 
@@ -69,19 +104,20 @@ var util = require('gulp-util');
 
 
 
-gulp.task('default', function(){
 
-	// watch me getting Sassy
-	gulp.watch("assets/scss/**/*.scss", function(event){
-		gulp.run('sass');
-	});
-	// make my JavaScript ugly
-	gulp.watch("assets/js/_*.js", function(event){
-		gulp.run('uglify');
-	});
-	// images
-	gulp.watch("assets/img/**/*", function(event){
-		gulp.run('imagemin');
-		gulp.run('svgmin');
-	});
+
+
+//
+//		Default gulp task.
+//
+//////////////////////////////////////////////////////////////////////
+
+
+gulp.task('default', ['sass', 'javascripts', 'copy', 'svgmin', 'imagemin'], function(){
+	gulp.watch("assets/scss/**/*.scss", ['sass']);				// Watch and run sass on changes
+	gulp.watch("assets/js/_*.js", ['javascripts']);				// Watch and run javascripts on changes
+	gulp.watch("assets/img/*", ['imagemin', 'svgmin']);		// Watch and minify images on changes
 });
+
+
+

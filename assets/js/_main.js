@@ -24,6 +24,7 @@ var Roots = {
   common: {
     init: function() {
       // JavaScript to be fired on all pages
+      $(document).foundation(); // Initialize foundation JS for all pages
     }
   },
   // Home page
