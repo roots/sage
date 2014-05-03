@@ -1,0 +1,57 @@
+{
+  "name": "decompress",
+  "version": "0.2.3",
+  "description": "Easily extract zip, tar and tar.gz archives",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/kevva/decompress"
+  },
+  "author": {
+    "name": "Kevin Mårtensson",
+    "email": "kevinmartensson@gmail.com",
+    "url": "https://github.com/kevva"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "bin": {
+    "decompress": "cli.js"
+  },
+  "scripts": {
+    "test": "mocha --reporter list"
+  },
+  "files": [
+    "cli.js",
+    "index.js"
+  ],
+  "keywords": [
+    "extract",
+    "tar",
+    "tar.gz",
+    "zip"
+  ],
+  "dependencies": {
+    "adm-zip": "^0.4.3",
+    "extname": "^0.1.1",
+    "get-stdin": "^0.1.0",
+    "map-key": "^0.1.1",
+    "mkdirp": "^0.3.5",
+    "nopt": "^2.2.0",
+    "rimraf": "^2.2.2",
+    "stream-combiner": "^0.0.4",
+    "tar": "^0.1.18",
+    "tempfile": "^0.1.2"
+  },
+  "devDependencies": {
+    "mocha": "^1.18.2"
+  },
+  "readme": "# decompress [![Build Status](https://travis-ci.org/kevva/decompress.svg?branch=master)](https://travis-ci.org/kevva/decompress)\n\n> Easily extract `.zip`, `.tar` and `.tar.gz` archives. Based on the extract utility in [Bower](https://github.com/bower/bower).\n\n## Install\n\n```bash\n$ npm install --save decompress\n```\n\n## Usage\n\nYou'll only need to pass a type into `ext` and it'll figure the rest out for\nyou.\n\n```js\nvar decompress = require('decompress');\nvar fs = require('fs');\n\nfs.createReadStream('foo.tar.gz').pipe(decompress({ ext: '.tar.gz' }));\n```\n\n## API\n\n### decompress(opts)\n\nExtract an archive using the `ext` option to determine which extractor to use.\nIf no `path` is specified it'll extract it to your current location.\n\n### decompress.canExtract(src, mime)\n\nDetermine if a file can be extracted or not by checking the file extension\nand/or the MIME type.\n\n```js\ndecompress.canExtract('foo.zip');\n// => true\n\ndecompress.canExtract('application/zip');\n// => true\n```\n\n## Options\n\n### `ext`\n\nType: `String`  \nDefault: `''`\n\nString that can be a file name, URL, MIME type etc.\n\n### `path`\n\nType: `String`  \nDefault: `process.cwd()`\n\nPath to extract the archive to. If no `path` is defined it'll extract it to your\ncurrent location.\n\n### `strip`\n\nType: `Number`  \nDefault: `0`\n\nEquivalent to `--strip-components` for tar.\n\n## CLI\n\nYou can also use it as a CLI app by installing it globally:\n\n```bash\n$ npm install --global decompress\n```\n\n### Usage\n\n```bash\n$ decompress --help\n\nUsage\n  $ decompress <file>\n  $ cat <file> | decompress\n\nExample\n  $ decompress --out dist --strip 1 archive.zip\n  $ cat files.txt | decompress --out dist\n\nOptions\n  -o, --out <path>        Path to extract the archive to\n  -s, --strip <number>    Strip path segments from root when extracting\n```\n\n## License\n\n[MIT License](http://en.wikipedia.org/wiki/MIT_License) © [Kevin Mårtensson](http://kevinmartensson.com)\n",
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/kevva/decompress/issues"
+  },
+  "homepage": "https://github.com/kevva/decompress",
+  "_id": "decompress@0.2.3",
+  "_from": "decompress@^0.2.0"
+}

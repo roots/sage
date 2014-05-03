@@ -1,0 +1,10 @@
+docs
+examples
+test
+.editorconfig
+.jshintignore
+.jshintrc
+.travis.yml
+lcov.info
+logo.svg
+CHANGELOG.MD

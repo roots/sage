@@ -1,0 +1,42 @@
+{
+  "name": "tildify",
+  "version": "0.2.0",
+  "description": "Convert an absolute path to tilde path: /Users/sindresorhus/dev => ~/dev",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/sindresorhus/tildify"
+  },
+  "author": {
+    "name": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "http://sindresorhus.com"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "files": [
+    "index.js"
+  ],
+  "keywords": [
+    "tilde",
+    "path",
+    "home",
+    "dir",
+    "directory"
+  ],
+  "devDependencies": {
+    "mocha": "*"
+  },
+  "readme": "# tildify [![Build Status](https://travis-ci.org/sindresorhus/tildify.svg?branch=master)](https://travis-ci.org/sindresorhus/tildify)\n\n> Convert an absolute path to tilde path: `/Users/sindresorhus/dev` => `~/dev`\n\n\n## Install\n\n```bash\n$ npm install --save tildify\n```\n\n\n## Usage\n\n```js\nvar tildify  = require('tildify');\n\ntildify('/Users/sindresorhus/dev');\n//=> ~/dev\n```\n\n\n## License\n\n[MIT](http://opensource.org/licenses/MIT) © [Sindre Sorhus](http://sindresorhus.com)\n",
+  "readmeFilename": "readme.md",
+  "bugs": {
+    "url": "https://github.com/sindresorhus/tildify/issues"
+  },
+  "homepage": "https://github.com/sindresorhus/tildify",
+  "_id": "tildify@0.2.0",
+  "_from": "tildify@^0.2.0"
+}

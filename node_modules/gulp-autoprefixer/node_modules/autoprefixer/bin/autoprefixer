@@ -1,0 +1,13 @@
+#!/usr/bin/env node
+(function() {
+  var Binary, binary;
+
+  Binary = require('../lib/binary');
+
+  binary = new Binary(process);
+
+  binary.run(function() {
+    return process.exit(binary.status);
+  });
+
+}).call(this);

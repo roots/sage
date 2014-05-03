@@ -1,0 +1,72 @@
+{
+  "name": "coa",
+  "description": "Command-Option-Argument: Yet another parser for command line options.",
+  "version": "0.4.0",
+  "homepage": "http://github.com/veged/coa",
+  "author": {
+    "name": "Sergey Berezhnoy",
+    "email": "veged@ya.ru",
+    "url": "http://github.com/veged"
+  },
+  "maintainers": [
+    {
+      "name": "Sergey Berezhnoy",
+      "email": "veged@ya.ru",
+      "url": "http://github.com/veged"
+    },
+    {
+      "name": "Sergey Belov",
+      "email": "peimei@ya.ru",
+      "url": "http://github.com/arikon"
+    }
+  ],
+  "contributors": [
+    {
+      "name": "Sergey Belov",
+      "email": "peimei@ya.ru",
+      "url": "http://github.com/arikon"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/veged/coa.git"
+  },
+  "directories": {
+    "lib": "./lib"
+  },
+  "dependencies": {
+    "q": "~0.9.6"
+  },
+  "devDependencies": {
+    "coffee-script": "~1.6.3",
+    "istanbul": "~0.1.40",
+    "mocha-as-promised": "*",
+    "mocha-istanbul": "*",
+    "mocha": "~1.12.0",
+    "chai": "~1.7.2"
+  },
+  "scripts": {
+    "test": "make test",
+    "coverage": "make coverage"
+  },
+  "engines": {
+    "node": ">= 0.6.0"
+  },
+  "licenses": [
+    {
+      "type": "MIT"
+    }
+  ],
+  "optionalDependencies": {},
+  "readme": "# Command-Option-Argument\n[![build status](https://secure.travis-ci.org/veged/coa.png)](http://travis-ci.org/veged/coa)\n\n## What is it?\n\nCOA is a parser for command line options that aim to get maximum profit from formalization your program API.\nOnce you write definition in terms of commands, options and arguments you automaticaly get:\n\n* Command line help text\n* Program API for use COA-based programs as modules\n* Shell completion\n\n### Other features\n\n* Rich types for options and arguments, such as arrays, boolean flags and required\n* Commands can be async throught using promising (powered by [Q](https://github.com/kriskowal/q))\n* Easy submoduling some existing commands to new top-level one\n* Combined validation and complex parsing of values\n\n### TODO\n\n* Localization\n* Shell-mode\n* Configs\n * Aliases\n * Defaults\n\n## Examples\n\n````javascript\nrequire('coa').Cmd() // main (top level) command declaration\n    .name(process.argv[1]) // set top level command name from program name\n    .title('My awesome command line util') // title for use in text messages\n    .helpful() // make command \"helpful\", i.e. options -h --help with usage message\n    .opt() // add some option\n        .name('version') // name for use in API\n        .title('Version') // title for use in text messages\n        .short('v') // short key: -v\n        .long('version') // long key: --version\n        .flag() // for options without value\n        .act(function(opts) { // add action for option\n            // return message as result of action\n            return JSON.parse(require('fs').readFileSync(__dirname + '/package.json'))\n                .version;\n        })\n        .end() // end option chain and return to main command\n    .cmd().name('subcommand').apply(require('./subcommand').COA).end() // load subcommand from module\n    .cmd() // inplace subcommand declaration\n        .name('othercommand').title('Awesome other subcommand').helpful()\n        .opt()\n            .name('input').title('input file, required')\n            .short('i').long('input')\n            .val(function(v) { // validator function, also for translate simple values\n                return require('fs').createReadStream(v) })\n            .req() // make option required\n            .end() // end option chain and return to command\n        .end() // end subcommand chain and return to parent command\n    .run(process.argv.slice(2)); // parse and run on process.argv\n````\n\n````javascript\n// subcommand.js\nexports.COA = function() {\n    this\n        .title('Awesome subcommand').helpful()\n        .opt()\n            .name('output').title('output file')\n            .short('o').long('output')\n            .output() // use default preset for \"output\" option declaration\n            .end()\n};\n````\n\n## API reference\n\n### Cmd\nCommand is a top level entity. Commands may have options and arguments.\n\n#### Cmd.api\nReturns object containing all its subcommands as methods to use from other programs.<br>\n**@returns** *{Object}*\n\n#### Cmd.name\nSet a canonical command identifier to be used anywhere in the API.<br>\n**@param** *String* `_name` command name<br>\n**@returns** *COA.Cmd* `this` instance (for chainability)\n\n#### Cmd.title\nSet a long description for command to be used anywhere in text messages.<br>\n**@param** *String* `_title` command title<br>\n**@returns** *COA.Cmd* `this` instance (for chainability)\n\n#### Cmd.cmd\nCreate new or add existing subcommand for current command.<br>\n**@param** *COA.Cmd* `[cmd]` existing command instance<br>\n**@returns** *COA.Cmd* new or added subcommand instance\n\n#### Cmd.opt\nCreate option for current command.<br>\n**@returns** *COA.Opt* `new` option instance\n\n#### Cmd.arg\nCreate argument for current command.<br>\n**@returns** *COA.Opt* `new` argument instance\n\n#### Cmd.act\nAdd (or set) action for current command.<br>\n**@param** *Function* `act` action function,\n    invoked in the context of command instance\n    and has the parameters:<br>\n        - *Object* `opts` parsed options<br>\n        - *Array* `args` parsed arguments<br>\n        - *Object* `res` actions result accumulator<br>\n    It can return rejected promise by Cmd.reject (in case of error)\n    or any other value treated as result.<br>\n**@param** *{Boolean}* [force=false] flag for set action instead add to existings<br>\n**@returns** *COA.Cmd* `this` instance (for chainability)\n\n#### Cmd.apply\nApply function with arguments in context of command instance.<br>\n**@param** *Function* `fn`<br>\n**@param** *Array* `args`<br>\n**@returns** *COA.Cmd* `this` instance (for chainability)\n\n#### Cmd.comp\nSet custom additional completion for current command.<br>\n**@param** *Function* `fn` completion generation function,\n    invoked in the context of command instance.\n    Accepts parameters:<br>\n        - *Object* `opts` completion options<br>\n    It can return promise or any other value treated as result.<br>\n**@returns** *COA.Cmd* `this` instance (for chainability)\n\n#### Cmd.helpful\nMake command \"helpful\", i.e. add -h --help flags for print usage.<br>\n**@returns** *COA.Cmd* `this` instance (for chainability)\n\n#### Cmd.completable\nAdds shell completion to command, adds \"completion\" subcommand, that makes all the magic.<br>\nMust be called only on root command.<br>\n**@returns** *COA.Cmd* `this` instance (for chainability)\n\n#### Cmd.usage\nBuild full usage text for current command instance.<br>\n**@returns** *String* `usage` text\n\n#### Cmd.run\nParse arguments from simple format like NodeJS process.argv\nand run ahead current program, i.e. call process.exit when all actions done.<br>\n**@param** *Array* `argv`<br>\n**@returns** *COA.Cmd* `this` instance (for chainability)\n\n#### Cmd.invoke\nInvoke specified (or current) command using provided options and arguments.<br>\n**@param** *String|Array* `cmds`  subcommand to invoke (optional)<br>\n**@param** *Object* `opts`  command options (optional)<br>\n**@param** *Object* `args`  command arguments (optional)<br>\n**@returns** *Q.Promise*\n\n#### Cmd.reject\nReturn reject of actions results promise.<br>\nUse in .act() for return with error.<br>\n**@param** *Object* `reason` reject reason<br>\n    You can customize toString() method and exitCode property\n    of reason object.<br>\n**@returns** *Q.promise* rejected promise\n\n#### Cmd.end\nFinish chain for current subcommand and return parent command instance.<br>\n**@returns** *COA.Cmd* `parent` command\n\n### Opt\nOption is a named entity. Options may have short and long keys for use from command line.<br>\n**@namespace**<br>\n**@class** Presents option\n\n#### Opt.name\nSet a canonical option identifier to be used anywhere in the API.<br>\n**@param** *String* `_name` option name<br>\n**@returns** *COA.Opt* `this` instance (for chainability)\n\n#### Opt.title\nSet a long description for option to be used anywhere in text messages.<br>\n**@param** *String* `_title` option title<br>\n**@returns** *COA.Opt* `this` instance (for chainability)\n\n#### Opt.short\nSet a short key for option to be used with one hyphen from command line.<br>\n**@param** *String* `_short`<br>\n**@returns** *COA.Opt* `this` instance (for chainability)\n\n#### Opt.long\nSet a short key for option to be used with double hyphens from command line.<br>\n**@param** *String* `_long`<br>\n**@returns** *COA.Opt* `this` instance (for chainability)\n\n#### Opt.flag\nMake an option boolean, i.e. option without value.<br>\n**@returns** *COA.Opt* `this` instance (for chainability)\n\n#### Opt.arr\nMakes an option accepts multiple values.<br>\nOtherwise, the value will be used by the latter passed.<br>\n**@returns** *COA.Opt* `this` instance (for chainability)\n\n#### Opt.req\nMakes an option req.<br>\n**@returns** *COA.Opt* `this` instance (for chainability)\n\n#### Opt.only\nMakes an option to act as a command,\ni.e. program will exit just after option action.<br>\n**@returns** *COA.Opt* `this` instance (for chainability)\n\n#### Opt.val\nSet a validation (or value) function for argument.<br>\nValue from command line passes through before becoming available from API.<br>\nUsing for validation and convertion simple types to any values.<br>\n**@param** *Function* `_val` validating function,\n    invoked in the context of option instance\n    and has one parameter with value from command line<br>\n**@returns** *COA.Opt* `this` instance (for chainability)\n\n#### Opt.def\nSet a default value for option.\nDefault value passed through validation function as ordinary value.<br>\n**@param** *Object* `_def`<br>\n**@returns** *COA.Opt* `this` instance (for chainability)\n\n#### Opt.input\nMake option value inputting stream.\nIt's add useful validation and shortcut for STDIN.\n**@returns** *{COA.Opt}* `this` instance (for chainability)\n\n#### Opt.output\nMake option value outputing stream.<br>\nIt's add useful validation and shortcut for STDOUT.<br>\n**@returns** *COA.Opt* `this` instance (for chainability)\n\n#### Opt.act\nAdd action for current option command.\nThis action is performed if the current option\nis present in parsed options (with any value).<br>\n**@param** *Function* `act` action function,\n    invoked in the context of command instance\n    and has the parameters:<br>\n        - *Object* `opts` parsed options<br>\n        - *Array* `args` parsed arguments<br>\n        - *Object* `res` actions result accumulator<br>\n    It can return rejected promise by Cmd.reject (in case of error)\n    or any other value treated as result.<br>\n**@returns** *COA.Opt* `this` instance (for chainability)\n\n#### Opt.comp\nSet custom additional completion for current option.<br>\n**@param** *Function* `fn` completion generation function,\n    invoked in the context of command instance.\n    Accepts parameters:<br>\n        - *Object* `opts` completion options<br>\n    It can return promise or any other value treated as result.<br>\n**@returns** *COA.Opt* `this` instance (for chainability)\n\n#### Opt.end\nFinish chain for current option and return parent command instance.<br>\n**@returns** *COA.Cmd* `parent` command\n\n\n### Arg\nArgument is a unnamed entity.<br>\nFrom command line arguments passed as list of unnamed values.\n\n#### Arg.name\nSet a canonical argument identifier to be used anywhere in text messages.<br>\n**@param** *String* `_name` argument name<br>\n**@returns** *COA.Arg* `this` instance (for chainability)\n\n#### Arg.title\nSet a long description for argument to be used anywhere in text messages.<br>\n**@param** *String* `_title` argument title<br>\n**@returns** *COA.Arg* `this` instance (for chainability)\n\n#### Arg.arr\nMakes an argument accepts multiple values.<br>\nOtherwise, the value will be used by the latter passed.<br>\n**@returns** *COA.Arg* `this` instance (for chainability)\n\n#### Arg.req\nMakes an argument req.<br>\n**@returns** *COA.Arg* `this` instance (for chainability)\n\n#### Arg.val\nSet a validation (or value) function for argument.<br>\nValue from command line passes through before becoming available from API.<br>\nUsing for validation and convertion simple types to any values.<br>\n**@param** *Function* `_val` validating function,\n    invoked in the context of argument instance\n    and has one parameter with value from command line<br>\n**@returns** *COA.Arg* `this` instance (for chainability)\n\n#### Arg.def\nSet a default value for argument.\nDefault value passed through validation function as ordinary value.<br>\n**@param** *Object* `_def`<br>\n**@returns** *COA.Arg* `this` instance (for chainability)\n\n#### Arg.output\nMake argument value outputing stream.<br>\nIt's add useful validation and shortcut for STDOUT.<br>\n**@returns** *COA.Arg* `this` instance (for chainability)\n\n#### Opt.comp\nSet custom additional completion for current argument.<br>\n**@param** *Function* `fn` completion generation function,\n    invoked in the context of command instance.\n    Accepts parameters:<br>\n        - *Object* `opts` completion options<br>\n    It can return promise or any other value treated as result.<br>\n**@returns** *COA.Arg* `this` instance (for chainability)\n\n#### Arg.end\nFinish chain for current option and return parent command instance.<br>\n**@returns** *COA.Cmd* `parent` command\n",
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/veged/coa/issues"
+  },
+  "_id": "coa@0.4.0",
+  "dist": {
+    "shasum": "71f3777c07b8c4f3861a43e96f91e68e68cd16d0"
+  },
+  "_from": "coa@~0.4.0",
+  "_resolved": "https://registry.npmjs.org/coa/-/coa-0.4.0.tgz"
+}

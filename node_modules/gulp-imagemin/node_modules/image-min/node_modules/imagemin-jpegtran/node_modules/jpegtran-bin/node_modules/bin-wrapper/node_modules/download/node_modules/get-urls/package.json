@@ -1,0 +1,54 @@
+{
+  "name": "get-urls",
+  "version": "0.1.2",
+  "description": "Get all urls in a string",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/sindresorhus/get-urls"
+  },
+  "main": "get-urls.js",
+  "bin": {
+    "get-urls": "cli.js"
+  },
+  "author": {
+    "name": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "http://sindresorhus.com"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "files": [
+    "get-urls.js",
+    "cli.js"
+  ],
+  "keywords": [
+    "urls",
+    "url",
+    "uri",
+    "get",
+    "extract",
+    "find",
+    "scrape",
+    "text",
+    "string",
+    "bin",
+    "cli",
+    "browser"
+  ],
+  "devDependencies": {
+    "mocha": "*"
+  },
+  "readme": "# get-urls [![Build Status](https://travis-ci.org/sindresorhus/get-urls.svg?branch=master)](https://travis-ci.org/sindresorhus/get-urls)\n\n> Get all urls in a string\n\nThe urls will be normalized and uniquified.\n\n\n## Install\n\nDownload [manually](https://github.com/sindresorhus/get-urls/releases) or with a package-manager.\n\n```bash\n$ npm install --save get-urls\n```\n\n```bash\n$ bower install --save get-urls\n```\n\n```bash\n$ component install sindresorhus/get-urls\n```\n\n\n## Usage\n\n```js\nvar text = 'Lorem ipsum dolor sit amet, sindresorhus.com consectetuer adipiscing http://yeoman.io elit.';\n\ngetUrls(text);\n//=> ['http://sindresorhus.com', 'http://yeoman.io']\n```\n\n\n## CLI\n\nYou can also use it as a CLI app by installing it globally:\n\n```bash\n$ npm install --global get-urls\n```\n\n#### Usage\n\n```bash\n$ get-urls -h\n\nget-urls <input-file>\nor\ncat <input-file> | get-urls\n```\n\n\n## License\n\n[MIT](http://opensource.org/licenses/MIT) © [Sindre Sorhus](http://sindresorhus.com)\n",
+  "readmeFilename": "readme.md",
+  "bugs": {
+    "url": "https://github.com/sindresorhus/get-urls/issues"
+  },
+  "homepage": "https://github.com/sindresorhus/get-urls",
+  "_id": "get-urls@0.1.2",
+  "_from": "get-urls@^0.1.1"
+}

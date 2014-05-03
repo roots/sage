@@ -1,0 +1,10 @@
+.error, .badError {
+  border: #f00;
+  background: #fdd; }
+
+.error.intrusion {
+  font-size: 1.3em;
+  font-weight: bold; }
+
+.badError {
+  border-width: 3px; }

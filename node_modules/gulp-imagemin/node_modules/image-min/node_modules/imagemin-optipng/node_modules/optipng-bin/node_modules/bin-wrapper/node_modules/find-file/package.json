@@ -1,0 +1,42 @@
+{
+  "name": "find-file",
+  "version": "0.1.4",
+  "description": "Search for a file in an array of paths",
+  "keywords": [
+    "find",
+    "file",
+    "path",
+    "search"
+  ],
+  "homepage": "https://github.com/kevva/find-file",
+  "bugs": {
+    "url": "https://github.com/kevva/find-file/issues"
+  },
+  "author": {
+    "name": "Kevin Mårtensson",
+    "email": "kevinmartensson@gmail.com",
+    "url": "https://github.com/kevva"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/kevva/find-file.git"
+  },
+  "scripts": {
+    "test": "mocha --reporter list"
+  },
+  "main": "index.js",
+  "files": [
+    "index.js"
+  ],
+  "devDependencies": {
+    "mocha": "~1.17.0"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "readme": "# find-file [![Build Status](https://travis-ci.org/kevva/find-file.png?branch=master)](http://travis-ci.org/kevva/find-file)\n\nSearch for a file in an array of paths using Node.js.\n\n## Getting started\n\nInstall with npm: `npm install find-file`\n\n## Examples\n\n```js\nvar findFile = require('find-file');\n\n// search for gifsicle in `vendor` and `../bin`\nfindFile('gifsicle', { path: ['vendor', '../bin'] });\n\n// search for gifsicle in `vendor` and `../bin` but exclude `PATH`\nfindFile('gifsicle', { path: ['vendor', '../bin'], global: false });\n\n// search for gifsicle in `vendor` and `PATH` but only return the first one\nfindFile('gifsicle', { path: 'vendor' })[0];\n```\n\n## API\n\n### findFile(name, opts)\n\nSearch for a file in an array of paths. By default it will also search for\nfiles in `PATH`.\n\n## Options\n\n### path\n\nType: `String|Array`  \nDefault: `undefined`\n\nPaths to search in.\n\n### exclude\n\nType: `String|Array`  \nDefault: `undefined`\n\nPaths to exclude.\n\n### global\n\nType: `Boolean`  \nDefault: `true`\n\nWhether to search in `PATH`.\n\n## License\n\n[MIT License](http://en.wikipedia.org/wiki/MIT_License) (c) [Kevin Mårtensson](https://github.com/kevva)\n",
+  "readmeFilename": "README.md",
+  "_id": "find-file@0.1.4",
+  "_from": "find-file@^0.1.2"
+}
