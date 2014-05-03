@@ -1,3 +1,5 @@
+![Gromf](http://gfx.nrk.no/8gjVcNbGJF453RegYzZtzAJySRdSV_2RS9khstDHldpw)
+
 # Gromf
 
 Gromf is a WordPress starter theme based on [Roots](https://github.com/roots/roots), using [Foundation](http://foundation.zurb.com) & [Gulp](http://gulpjs.com) instead of Bootstrap & Grunt.
