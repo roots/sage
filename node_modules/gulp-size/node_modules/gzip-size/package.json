@@ -1,0 +1,59 @@
+{
+  "name": "gzip-size",
+  "version": "0.1.1",
+  "description": "Get the gzipped size of a string or buffer",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/sindresorhus/gzip-size"
+  },
+  "bin": {
+    "gzip-size": "cli.js"
+  },
+  "author": {
+    "name": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "http://sindresorhus.com"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "files": [
+    "index.js",
+    "cli.js"
+  ],
+  "keywords": [
+    "cli",
+    "bin",
+    "app",
+    "tool",
+    "zlib",
+    "gzip",
+    "compressed",
+    "size",
+    "string",
+    "buffer"
+  ],
+  "dependencies": {
+    "concat-stream": "^1.4.1",
+    "zlib-browserify": "^0.0.3"
+  },
+  "devDependencies": {
+    "mocha": "*"
+  },
+  "readme": "# gzip-size [![Build Status](https://travis-ci.org/sindresorhus/gzip-size.svg?branch=master)](https://travis-ci.org/sindresorhus/gzip-size)\n\n> Get the gzipped size of a string or buffer\n\n\n## Install\n\n```bash\n$ npm install --save gzip-size\n```\n\n\n## Usage\n\n```js\nvar gzipSize = require('gzip-size');\n\nvar string = 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.';\n\nconsole.log(string.length);\n//=> 191\n\nconsole.log(gzipSize.sync(string));\n//=> 78\n```\n\n\n## API\n\n### gzipSize(input, callback)\n\n#### input\n\n*Required*  \nType: `String`|`Buffer`\n\n#### callback(err, size)\n\n*Required*  \nType: `Function`\n\n### gzipSize.sync(input)\n\n*Required*  \nType: `String`|`Buffer`  \nReturns: size\n\n\n## CLI\n\nYou can also use it as a CLI app by installing it globally:\n\n```bash\n$ npm install --global gzip-size\n```\n\n#### Usage\n\n```bash\n$ gzip-size --help\n\ngzip-size <input-file>\nor\ncat <input-file> | gzip-size\n```\n\n#### Example\n\n```bash\n$ gzip-size jquery.min.js\n29344\n```\n\nor with [pretty-bytes](https://github.com/sindresorhus/pretty-bytes):\n\n```bash\n$ pretty-bytes $(gzip-size jquery.min.js)\n29.34 kB\n```\n\n\n## License\n\n[MIT](http://opensource.org/licenses/MIT) © [Sindre Sorhus](http://sindresorhus.com)\n",
+  "readmeFilename": "readme.md",
+  "bugs": {
+    "url": "https://github.com/sindresorhus/gzip-size/issues"
+  },
+  "homepage": "https://github.com/sindresorhus/gzip-size",
+  "_id": "gzip-size@0.1.1",
+  "dist": {
+    "shasum": "92c9a1a2e1cf67ae3cec157dc6314b85ac4d20eb"
+  },
+  "_from": "gzip-size@^0.1.0",
+  "_resolved": "https://registry.npmjs.org/gzip-size/-/gzip-size-0.1.1.tgz"
+}

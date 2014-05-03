@@ -1,3 +1,49 @@
-body {
-	background: blue;
-}
+/*==========  
+
+	Do your SASS awesomeness here! Goodspeed :)
+
+==========*/
+
+
+
+
+
+
+/*==========  Overwriting Foundation variables goes before including foundation itself  ==========*/
+
+$primary-color: #008CBA !default;
+
+/*==========  Import Foundation  ==========*/
+
+@import "bower_components/foundation/scss/foundation.scss";
+
+
+
+
+/*==========  General styling  ==========*/
+
+
+
+
+
+
+
+
+
+/*==========  Foundation Media Queries  ==========*/
+
+
+@media #{$small-up} { }
+@media #{$small-only} { }
+
+@media #{$medium-up} { }
+@media #{$medium-only} { }
+
+@media #{$large-up} { }
+@media #{$large-only} { }
+
+@media #{$xlarge-up} { }
+@media #{$xlarge-only} { }
+
+@media #{$xxlarge-up} { }
+@media #{$xxlarge-only} { }

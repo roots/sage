@@ -9,7 +9,9 @@ var svgmin = require('gulp-svgmin');					// SVG minify
 var imagemin = require('gulp-imagemin');				// Image minify
 var rename = require('gulp-rename');					// Rename files
 var util = require('gulp-util');						// Writing stuff
-
+var livereload = require('gulp-livereload');			// LiveReload
+var lr = require('tiny-lr');							// tiny server
+	var	server = lr();
 
 
 
@@ -22,13 +24,13 @@ var util = require('gulp-util');						// Writing stuff
 	gulp.task('sass', function (){
 		gulp.src([
 			'bower_components/foundation/scss/normalize.scss',		// Gets normalize
-			'bower_components/foundation/scss/foundation.scss',		// Gets foundation
 			'assets/scss/app.scss']) 								// Gets the apps scss
 			.pipe(sass({style: 'compressed'}))						// Compile sass
 			.pipe(concat('main.css'))								// Concat all css
 			.pipe(rename({suffix: '.min'}))							// Rename it
 			.pipe(minifycss())										// Minify the CSS
-			.pipe(gulp.dest('assets/css/'));						// Set the destination to assets/css
+			.pipe(gulp.dest('assets/css/'))							// Set the destination to assets/css
+			.pipe(livereload(server));								// Reloads server
 			util.log('Sass compiled & stored.');					// Output to terminal
 	});
 
@@ -51,7 +53,8 @@ var util = require('gulp-util');						// Writing stuff
 			.pipe(concat('scripts.js'))								// Concat all the scripts
 			.pipe(rename({suffix: '.min'}))							// Rename it
 			.pipe(uglify())											// Uglify(minify)
-			.pipe(gulp.dest('assets/js/'));							// Set destination to assets/js
+			.pipe(gulp.dest('assets/js/'))							// Set destination to assets/js
+			.pipe(livereload(server));								// Reloads server
 			util.log('Javascript compiled and minified');			// Output to terminal
 	});
 
@@ -107,17 +110,32 @@ var util = require('gulp-util');						// Writing stuff
 
 
 
+
+
+
+
 //
 //		Default gulp task.
 //
 //////////////////////////////////////////////////////////////////////
 
 
-gulp.task('default', ['sass', 'javascripts', 'copy', 'svgmin', 'imagemin'], function(){
-	gulp.watch("assets/scss/**/*.scss", ['sass']);				// Watch and run sass on changes
-	gulp.watch("assets/js/_*.js", ['javascripts']);				// Watch and run javascripts on changes
-	gulp.watch("assets/img/*", ['imagemin', 'svgmin']);		// Watch and minify images on changes
+gulp.task('watch', function(){
+
+	// Listen on port 35729 for LiveReload
+	server.listen(35729, function (err) {if (err) {return console.log(err) };
+		gulp.watch("assets/scss/**/*.scss", ['sass']);				// Watch and run sass on changes
+		gulp.watch("assets/js/_*.js", ['javascripts']);				// Watch and run javascripts on changes
+		gulp.watch("assets/img/*", ['imagemin', 'svgmin']);		// Watch and minify images on changes
+
+		gulp.watch('**/*.php').on('change', function(file) {
+			util.log('PHP FILES CHANGED!');
+		    server.changed(file.path);
+		});
+
+	});
 });
 
+gulp.task('default', ['sass', 'javascripts', 'copy', 'svgmin', 'imagemin', 'watch']);
 
 

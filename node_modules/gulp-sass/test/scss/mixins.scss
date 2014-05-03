@@ -1,0 +1,17 @@
+@mixin table-base {
+  th {
+    text-align: center;
+    font-weight: bold;
+  }
+  td, th {padding: 2px}
+}
+
+@mixin left($dist) {
+  float: left;
+  margin-left: $dist;
+}
+
+#data {
+  @include left(10px);
+  @include table-base;
+}

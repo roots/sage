@@ -1,0 +1,9 @@
+.brand-logo {
+	display: block;
+	width: 170px;
+	height: 25px;
+	margin-top: 8px;
+	background: url("../img/logo.svg") no-repeat;
+	background-size: contain;
+	margin-left: 10px;
+}

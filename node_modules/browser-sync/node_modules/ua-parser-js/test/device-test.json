@@ -1,0 +1,31 @@
+[
+    {
+        "desc"    : "HTC Evo Shift 4G",
+        "ua"      : "Mozilla/5.0 (Linux; U; Android 2.3.4; en-us; Sprint APA7373KT Build/GRJ22) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0",
+        "expect"  :
+        {
+            "vendor"  : "HTC",
+            "model"   : "Evo Shift 4G",
+            "type"    : "mobile"
+        }
+    },
+    {
+        "desc"    : "LG Nexus 4",
+        "ua"      : "Mozilla/5.0 (Linux; Android 4.2.1; Nexus 4 Build/JOP40D) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166 Mobile Safari/535.19",
+        "expect"  :
+        {
+            "vendor"  : "LG",
+            "model"   : "Nexus 4",
+            "type"    : "mobile"
+        }
+    },
+    {
+        "desc"    : "Motorola Droid RAZR 4G",
+        "ua"      : "Mozilla/5.0 (Linux; U; Android 2.3; xx-xx; DROID RAZR 4G Build/6.5.1-73_DHD-11_M1-29) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1",
+        "expect"  :
+        {
+            "vendor"  : "Motorola",
+            "model"   : "DROID RAZR 4G",
+            "type"    : "mobile"
+        }
+}]

@@ -1,4 +1,6 @@
 # Include your project-specific ignores in this file
 # Read about how to use .gitignore: https://help.github.com/articles/ignoring-files
-node_modules
+node_modules # wont need that stuff
+bower_components # wont need that stuff
+assets/img # since images gets minified into img_min
 assets/css/main.min.css.map

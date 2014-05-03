@@ -3,7 +3,6 @@
  * Enable theme features
  */
 add_theme_support('root-relative-urls');    // Enable relative URLs
-add_theme_support('bootstrap-top-navbar');  // Enable Bootstrap's top navbar
 add_theme_support('bootstrap-gallery');     // Enable Bootstrap's thumbnails component on [gallery]
 add_theme_support('nice-search');           // Enable /?s= to /search/ redirect
 
@@ -18,10 +17,10 @@ define('POST_EXCERPT_LENGTH', 40); // Length in words for excerpt_length filter 
 function roots_main_class() {
   if (roots_display_sidebar()) {
     // Classes on pages with the sidebar
-    $class = 'col-sm-8';
+    $class = 'small-8 columns';
   } else {
     // Classes on full width pages
-    $class = 'col-sm-12';
+    $class = 'small-12 columns';
   }
 
   return $class;
@@ -31,7 +30,7 @@ function roots_main_class() {
  * .sidebar classes
  */
 function roots_sidebar_class() {
-  return 'col-sm-4';
+  return 'small-4 columns';
 }
 
 /**

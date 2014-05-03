@@ -1,0 +1,9 @@
+#!/bin/sh
+
+for x in `find run -name '*.js'`
+do
+  echo Starting benchmark $x
+  echo
+  node $x
+  echo
+done

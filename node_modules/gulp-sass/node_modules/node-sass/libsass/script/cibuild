@@ -1,0 +1,15 @@
+#!/bin/bash
+
+set -e
+
+script/bootstrap
+
+if [ "x$AUTOTOOLS" == "xyes" ]; then
+  autoreconf -i
+  ./configure --enable-tests \
+    --prefix=$TRAVIS_BUILD_DIR
+  make install
+  cp $TRAVIS_BUILD_DIR/lib/libsass.a $TRAVIS_BUILD_DIR
+fi
+
+script/spec

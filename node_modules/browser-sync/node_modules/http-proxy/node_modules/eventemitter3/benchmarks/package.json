@@ -1,0 +1,17 @@
+{
+  "name": "benchmarks",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "BSD",
+  "dependencies": {
+    "benchmark": "~1.0.0",
+    "devnull": "0.0.10",
+    "microtime": "~0.4.0",
+    "eventemitter2": "~0.4.13"
+  }
+}

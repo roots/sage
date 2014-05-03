@@ -1,0 +1,2865 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="cdf746db-a182-4cd7-a0bb-6197e3e3b9b5" name="DO NOT COMMIT" comment="Extract Snippet regex for easier testing">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example.js" afterPath="$PROJECT_DIR$/example.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/fixtures/assets/style.css" afterPath="$PROJECT_DIR$/test/fixtures/assets/style.css" />
+    </list>
+    <list id="9586812f-8483-4705-8aad-9dbe8d50a66e" name="features/gulp" comment="Added a public `notify` method for sending messages to the browser">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/fixtures/css/bootstrap-scss.css" afterPath="$PROJECT_DIR$/test/fixtures/css/bootstrap-scss.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/fixtures/scss/bootstrap-scss.scss" afterPath="$PROJECT_DIR$/test/fixtures/scss/bootstrap-scss.scss" />
+    </list>
+    <ignored path="si.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <file path="$PROJECT_DIR$/test/fixtures/scss/bootstrap-scss.scss" ignored="false" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="DaemonCodeAnalyzer">
+    <disable_hints />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="si" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="index.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/lib/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.12269939" vertical-offset="1395" max-vertical-offset="2205">
+              <caret line="97" column="10" selection-start-line="97" selection-start-column="10" selection-end-line="97" selection-end-column="10" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindManager">
+    <FindUsagesManager>
+      <setting name="OPEN_NEW_TAB" value="false" />
+    </FindUsagesManager>
+  </component>
+  <component name="Git.Settings">
+    <option name="UPDATE_TYPE" value="MERGE" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="features/minify" />
+      </map>
+    </option>
+  </component>
+  <component name="GitLogSettings">
+    <option name="myStructureFilterPaths" />
+    <option name="myDateState">
+      <MyDateState />
+    </option>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="changedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/test/specs/control-panel/cp.launch.js" />
+        <option value="$PROJECT_DIR$/test/specs/cli/cli.messages.js" />
+        <option value="$PROJECT_DIR$/lib/messages.js" />
+        <option value="$PROJECT_DIR$/node_modules/resp-modifier/index.js" />
+        <option value="$PROJECT_DIR$/lib/control-panel.js" />
+        <option value="$PROJECT_DIR$/lib/browser-sync-control-panel.js" />
+        <option value="$PROJECT_DIR$/../browser-sync-modules/browser-sync-cp/index.js" />
+        <option value="$PROJECT_DIR$/examples/plugin.logger.js" />
+        <option value="$PROJECT_DIR$/lib/utils.js" />
+        <option value="$PROJECT_DIR$/test/specs/utils/utils.getUrl.js" />
+        <option value="$PROJECT_DIR$/test/specs/cli/cli.options.proxy.js" />
+        <option value="$PROJECT_DIR$/test/specs/server/server.utils.js" />
+        <option value="$PROJECT_DIR$/test/specs/cli/cli.options.server.js" />
+        <option value="$PROJECT_DIR$/lib/cli-options.js" />
+        <option value="$PROJECT_DIR$/test/specs/control-panel/cp.socket.setup.js" />
+        <option value="/HTML Fragment (proxy.js:1042).html" />
+        <option value="$PROJECT_DIR$/test/specs/proxy/proxy.js" />
+        <option value="$PROJECT_DIR$/test/specs/proxy/proxy.remove.headers.js" />
+        <option value="$PROJECT_DIR$/test/specs/proxy/proxy.rewrite.links.js" />
+        <option value="$PROJECT_DIR$/test/specs/proxy/proxy.snippets.js" />
+        <option value="$PROJECT_DIR$/test/specs/cli/cli.parse.js" />
+        <option value="$PROJECT_DIR$/lib/cli-init.js" />
+        <option value="$PROJECT_DIR$/lib/services.js" />
+        <option value="$PROJECT_DIR$/lib/logger.js" />
+        <option value="$PROJECT_DIR$/lib/sockets.js" />
+        <option value="$PROJECT_DIR$/test/fixtures/scrolling.html" />
+        <option value="$PROJECT_DIR$/test/fixtures/scss/bootstrap.scss" />
+        <option value="$PROJECT_DIR$/test/specs/server/server.nav.callback.js" />
+        <option value="$PROJECT_DIR$/lib/server.js" />
+        <option value="$PROJECT_DIR$/lib/file-watcher.js" />
+        <option value="$PROJECT_DIR$/test/specs/files/files.watching.js" />
+        <option value="$PROJECT_DIR$/test/fixtures/index.html" />
+        <option value="$PROJECT_DIR$/LICENSE-MIT" />
+        <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/test/fixtures/forms.html" />
+        <option value="$PROJECT_DIR$/lib/default-config.js" />
+        <option value="$PROJECT_DIR$/test/fixtures/assets/style.css" />
+        <option value="$PROJECT_DIR$/test/specs/server/server.snippet.js" />
+        <option value="$PROJECT_DIR$/test/specs/snippet/snippet.js" />
+        <option value="$PROJECT_DIR$/lib/snippet.js" />
+        <option value="$PROJECT_DIR$/test/specs/init/init.reload.js" />
+        <option value="$PROJECT_DIR$/test/fixtures/sass.html" />
+        <option value="$PROJECT_DIR$/lib/proxy.js" />
+        <option value="$PROJECT_DIR$/test/specs/proxy/proxy.utils.js" />
+        <option value="$PROJECT_DIR$/test/specs/init/init.notify.js" />
+        <option value="$PROJECT_DIR$/lib/index.js" />
+        <option value="$PROJECT_DIR$/lib/browser-sync.js" />
+        <option value="$PROJECT_DIR$/example.js" />
+        <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/gulpfile.js" />
+        <option value="$PROJECT_DIR$/test/fixtures/scss/bootstrap-scss.scss" />
+      </list>
+    </option>
+  </component>
+  <component name="JsGruntFileManager">
+    <initial>false</initial>
+  </component>
+  <component name="JsKarmaPackageDirSetting">
+    <data>$PROJECT_DIR$/node_modules/karma</data>
+  </component>
+  <component name="NodeJsMochaPackageDirSetting">
+    <data>/usr/local/lib/node_modules/mocha</data>
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
+  <component name="ProjectFrameBounds">
+    <option name="y" value="22" />
+    <option name="width" value="1440" />
+    <option name="height" value="878" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+          <State>
+            <id>Cucumber</id>
+          </State>
+          <State>
+            <id>File Watchers</id>
+          </State>
+          <State>
+            <id>PHP</id>
+          </State>
+          <State>
+            <id>Probably bugPHP</id>
+          </State>
+          <State>
+            <id>Type compatibilityPHP</id>
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>Bash</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectReloadState">
+    <option name="STATE" value="0" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+    </navigator>
+    <panes>
+      <pane id="Scope">
+        <subPane subId="Default">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="os-browser-sync">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="test">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="utils">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="os-browser-sync">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="test">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+        <subPane subId="mocha">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+        <subPane subId="Problems" />
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="os-browser-sync">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="os-browser-sync">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="test">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="specs">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="os-browser-sync">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="test">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="si" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="si" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="os-browser-sync" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="GoToFile.includeJavaFiles" value="false" />
+    <property name="options.splitter.main.proportions" value="0.3" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
+    <property name="recentsLimit" value="5" />
+    <property name="options.lastSelected" value="preferences.keymap" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../os-browser-sync-wiki/browser-sync.wiki" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
+    <property name="restartRequiresConfirmation" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
+    <property name="FullScreen" value="false" />
+    <property name="last.edited.regexp" value="&quot;http://example.com'" />
+    <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="DefaultHtmlFileTemplate" value="Html5" />
+    <property name="SearchEverywhereHistory" value="O&#10;&quot;Called&#10;&quot;&#10;}&#10;+" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="144" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="153" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="156" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="944" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="349" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="349" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="350" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="349" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/test/specs/cli-new" />
+      <recent name="$PROJECT_DIR$/test/server" />
+      <recent name="$PROJECT_DIR$/lib/control-panel/img" />
+      <recent name="$PROJECT_DIR$/lib/control-panel" />
+      <recent name="$PROJECT_DIR$/lib/control-panel/fonts" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/test" />
+      <recent name="$PROJECT_DIR$/test/fixtures" />
+      <recent name="$PROJECT_DIR$/test/specs/control-panel" />
+      <recent name="$PROJECT_DIR$/test/specs/cli" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Node.js.Gulp watch">
+    <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
+      <option name="VMOptions" />
+      <option name="arguments" />
+      <option name="filePath" />
+      <option name="name" value="Dart" />
+      <option name="saveOutputToFile" value="false" />
+      <option name="showConsoleOnStdErr" value="false" />
+      <option name="showConsoleOnStdOut" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
+      <option name="VMOptions" />
+      <option name="arguments" />
+      <option name="filePath" />
+      <option name="scope" value="ALL" />
+      <option name="testName" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" config-file="">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JSTestDriver:ConfigurationType" factoryName="JsTestDriver">
+      <setting name="configLocationType" value="CONFIG_FILE" />
+      <setting name="settingsFile" value="" />
+      <setting name="serverType" value="INTERNAL" />
+      <setting name="preferredDebugBrowser" value="Chrome" />
+      <method />
+    </configuration>
+    <configuration default="true" type="CucumberJavaScriptRunConfigurationType" factoryName="Cucumber.js">
+      <option name="cucumberJsArguments" />
+      <option name="executablePath" />
+      <option name="filePath" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="mocha-javascript-test-runner" factoryName="Mocha">
+      <node-options />
+      <working-directory>$PROJECT_DIR$</working-directory>
+      <pass-parent-env>true</pass-parent-env>
+      <envs />
+      <ui>BDD</ui>
+      <extra-mocha-options />
+      <test-directory />
+      <recursive>false</recursive>
+      <method />
+    </configuration>
+    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" working-dir="">
+      <method />
+    </configuration>
+    <configuration default="false" name="Karma Client-Side Tests" type="JavaScriptTestRunnerKarma" factoryName="Karma" singleton="true" config-file="$PROJECT_DIR$/test/karma.conf.js">
+      <envs />
+      <RunnerSettings RunnerId="KarmaCoverageProgramRunner" />
+      <RunnerSettings RunnerId="KarmaJavaScriptTestRunnerRun" />
+      <ConfigurationWrapper RunnerId="KarmaCoverageProgramRunner" />
+      <ConfigurationWrapper RunnerId="KarmaJavaScriptTestRunnerRun" />
+      <method />
+    </configuration>
+    <configuration default="false" name="mocha server tests" type="mocha-javascript-test-runner" factoryName="Mocha">
+      <node-options />
+      <working-directory>$PROJECT_DIR$</working-directory>
+      <pass-parent-env>true</pass-parent-env>
+      <envs />
+      <ui>BDD</ui>
+      <extra-mocha-options />
+      <test-directory>$PROJECT_DIR$/test/specs</test-directory>
+      <recursive>true</recursive>
+      <RunnerSettings RunnerId="MochaDebugRunner" />
+      <RunnerSettings RunnerId="RunnerForMochaJavaScript" />
+      <ConfigurationWrapper RunnerId="MochaDebugRunner" />
+      <ConfigurationWrapper RunnerId="RunnerForMochaJavaScript" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Browser Tests" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="/usr/local/bin/node" path-to-js-file="/usr/local/bin/karma" application-parameters="start test/karma.conf.js" working-dir="$PROJECT_DIR$">
+      <RunnerSettings RunnerId="NodeJS.run" />
+      <ConfigurationWrapper RunnerId="NodeJS.run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Browser-sync INIT" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="/usr/local/bin/node" path-to-js-file="/usr/local/bin/browser-sync" application-parameters="init" working-dir="$PROJECT_DIR$/test/fixtures">
+      <RunnerSettings RunnerId="NodeJS.debug" />
+      <ConfigurationWrapper RunnerId="NodeJS.debug" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Browser-sync PROXY" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="/usr/local/bin/node" path-to-js-file="/usr/local/bin/browser-sync" application-parameters="--proxy 172.22.22.22" working-dir="$PROJECT_DIR$/test/fixtures">
+      <RunnerSettings RunnerId="NodeJS.debug" />
+      <RunnerSettings RunnerId="NodeJS.run" />
+      <ConfigurationWrapper RunnerId="NodeJS.debug" />
+      <ConfigurationWrapper RunnerId="NodeJS.run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Browser-sync SERVER (devmode)" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="/usr/local/bin/node" path-to-js-file="/usr/local/bin/browser-sync" application-parameters="--server --files=&quot;**/*.css&quot; --devMode" working-dir="$PROJECT_DIR$/test/fixtures">
+      <RunnerSettings RunnerId="NodeJS.debug" />
+      <RunnerSettings RunnerId="NodeJS.run" />
+      <ConfigurationWrapper RunnerId="NodeJS.debug" />
+      <ConfigurationWrapper RunnerId="NodeJS.run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Browser-sync SERVER (devmode) (config)" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="/usr/local/bin/node" path-to-js-file="/usr/local/bin/browser-sync" application-parameters="--config test/fixtures/si-config.js --devMode" working-dir="$PROJECT_DIR$">
+      <RunnerSettings RunnerId="NodeJS.run" />
+      <ConfigurationWrapper RunnerId="NodeJS.run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="EXAMPLE" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="/usr/local/bin/node" path-to-js-file="example.js" working-dir="$PROJECT_DIR$">
+      <RunnerSettings RunnerId="NodeJS.debug" />
+      <RunnerSettings RunnerId="NodeJS.run" />
+      <ConfigurationWrapper RunnerId="NodeJS.debug" />
+      <ConfigurationWrapper RunnerId="NodeJS.run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="EXAMPLE CMD" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="/usr/local/bin/node" path-to-js-file="/usr/local/bin/browser-sync" application-parameters="start --server --directory" working-dir="$PROJECT_DIR$">
+      <RunnerSettings RunnerId="NodeJS.debug" />
+      <RunnerSettings RunnerId="NodeJS.run" />
+      <ConfigurationWrapper RunnerId="NodeJS.debug" />
+      <ConfigurationWrapper RunnerId="NodeJS.run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Tests Debug" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="/usr/local/bin/node" path-to-js-file="/usr/local/bin/browser-sync" application-parameters="start" working-dir="$PROJECT_DIR$/../untitled5">
+      <RunnerSettings RunnerId="NodeJS.debug" />
+      <RunnerSettings RunnerId="NodeJS.run" />
+      <ConfigurationWrapper RunnerId="NodeJS.debug" />
+      <ConfigurationWrapper RunnerId="NodeJS.run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Unnamed" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="/usr/local/bin/node" path-to-js-file="browser-sync" application-parameters="--proxy &quot;192.168.0.4:8000&quot;" working-dir="$PROJECT_DIR$">
+      <RunnerSettings RunnerId="NodeJS.run" />
+      <ConfigurationWrapper RunnerId="NodeJS.run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Watch Tests Server" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="/usr/local/bin/node" path-to-js-file="/usr/local/bin/grunt" application-parameters="watch" working-dir="$PROJECT_DIR$">
+      <RunnerSettings RunnerId="NodeJS.debug" />
+      <RunnerSettings RunnerId="NodeJS.run" />
+      <ConfigurationWrapper RunnerId="NodeJS.debug" />
+      <ConfigurationWrapper RunnerId="NodeJS.run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="CLI PROXY" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="/usr/local/bin/node" path-to-js-file="/usr/local/bin/browser-sync" application-parameters="start --proxy cb.dev/redirect" working-dir="$PROJECT_DIR$">
+      <RunnerSettings RunnerId="NodeJS.debug" />
+      <RunnerSettings RunnerId="NodeJS.run" />
+      <ConfigurationWrapper RunnerId="NodeJS.debug" />
+      <ConfigurationWrapper RunnerId="NodeJS.run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Gulp watch" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="/usr/local/bin/node" path-to-js-file="/usr/local/bin/gulp" application-parameters="watch" working-dir="$PROJECT_DIR$">
+      <RunnerSettings RunnerId="NodeJS.debug" />
+      <ConfigurationWrapper RunnerId="NodeJS.debug" />
+      <method />
+    </configuration>
+    <list size="14">
+      <item index="0" class="java.lang.String" itemvalue="Karma.Karma Client-Side Tests" />
+      <item index="1" class="java.lang.String" itemvalue="Mocha.mocha server tests" />
+      <item index="2" class="java.lang.String" itemvalue="Node.js.Browser Tests" />
+      <item index="3" class="java.lang.String" itemvalue="Node.js.Browser-sync INIT" />
+      <item index="4" class="java.lang.String" itemvalue="Node.js.Browser-sync PROXY" />
+      <item index="5" class="java.lang.String" itemvalue="Node.js.Browser-sync SERVER (devmode)" />
+      <item index="6" class="java.lang.String" itemvalue="Node.js.Browser-sync SERVER (devmode) (config)" />
+      <item index="7" class="java.lang.String" itemvalue="Node.js.EXAMPLE" />
+      <item index="8" class="java.lang.String" itemvalue="Node.js.EXAMPLE CMD" />
+      <item index="9" class="java.lang.String" itemvalue="Node.js.Tests Debug" />
+      <item index="10" class="java.lang.String" itemvalue="Node.js.Unnamed" />
+      <item index="11" class="java.lang.String" itemvalue="Node.js.Watch Tests Server" />
+      <item index="12" class="java.lang.String" itemvalue="Node.js.CLI PROXY" />
+      <item index="13" class="java.lang.String" itemvalue="Node.js.Gulp watch" />
+    </list>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <changelist date="1389962132384">
+      <option name="PATH" value="$USER_HOME$/Library/Preferences/WebIde70/shelf/add_injectChanges_option_to_config_file_.patch" />
+      <option name="DESCRIPTION" value="add injectChanges option to config file " />
+    </changelist>
+    <changelist date="1391775753120">
+      <option name="PATH" value="$USER_HOME$/Library/Preferences/WebIde70/shelf/Switch_file_watching_to_use_event_emitter_.patch" />
+      <option name="DESCRIPTION" value="Switch file watching to use event emitter " />
+    </changelist>
+    <changelist date="1391899892337">
+      <option name="PATH" value="$USER_HOME$/Library/Preferences/WebIde70/shelf/Ensure_url_is_correctly_set_in_the_options_.patch" />
+      <option name="DESCRIPTION" value="Ensure url is correctly set in the options " />
+    </changelist>
+    <changelist date="1392049233113">
+      <option name="PATH" value="$USER_HOME$/Library/Preferences/WebIde70/shelf/Version_rev_for_update_.patch" />
+      <option name="DESCRIPTION" value="Version rev for update " />
+    </changelist>
+    <changelist date="1393142350701">
+      <option name="PATH" value="$USER_HOME$/Library/Preferences/WebIde70/shelf/0_6_1_release.patch" />
+      <option name="DESCRIPTION" value="0.6.1 release" />
+    </changelist>
+    <changelist date="1396509977967">
+      <option name="PATH" value="$USER_HOME$/Library/Preferences/WebIde80/shelf/add_minify_option_for_client_script.patch" />
+      <option name="DESCRIPTION" value="Added fix for proxy" />
+    </changelist>
+    <changelist date="1397028663086">
+      <option name="PATH" value="$USER_HOME$/Library/Preferences/WebIde80/shelf/Clean1.patch" />
+      <option name="DESCRIPTION" value="Clean" />
+    </changelist>
+    <recycled_changelist date="1385077048725">
+      <option name="PATH" value="$USER_HOME$/Library/Preferences/WebIde70/shelf/1.patch" />
+      <option name="DESCRIPTION" value="1" />
+    </recycled_changelist>
+    <recycled_changelist date="1385847892140">
+      <option name="PATH" value="$USER_HOME$/Library/Preferences/WebIde70/shelf/Limit_output_of_watchers_.patch" />
+      <option name="DESCRIPTION" value="Limit output of watchers " />
+    </recycled_changelist>
+    <recycled_changelist date="1387761234259">
+      <option name="PATH" value="$USER_HOME$/Library/Preferences/WebIde70/shelf/remove_protocol_from_script_URLS_-_fixes_https___github_com_shakyShane_grunt-browser-sync_.patch" />
+      <option name="DESCRIPTION" value="remove protocol from script URLS - fixes https://github.com/shakyShane/grunt-browser-sync/issues/5 " />
+    </recycled_changelist>
+    <recycled_changelist date="1388103260885">
+      <option name="PATH" value="$USER_HOME$/Library/Preferences/WebIde70/shelf/Add__eot_&amp;__ttf_to_exclude_list_fix_#38_.patch" />
+      <option name="DESCRIPTION" value="Add .eot &amp; .ttf to exclude list fix #38 " />
+    </recycled_changelist>
+    <recycled_changelist date="1391258413822">
+      <option name="PATH" value="$USER_HOME$/Library/Preferences/WebIde70/shelf/Add_favico_&amp;_spec_for_URl_rendering_.patch" />
+      <option name="DESCRIPTION" value="Add favico &amp; spec for URl rendering " />
+    </recycled_changelist>
+    <recycled_changelist date="1391263485281">
+      <option name="PATH" value="$USER_HOME$/Library/Preferences/WebIde70/shelf/Add_favico_&amp;_spec_for_URl_rendering_1.patch" />
+      <option name="DESCRIPTION" value="Add favico &amp; spec for URl rendering " />
+    </recycled_changelist>
+    <recycled_changelist date="1391264155567">
+      <option name="PATH" value="$USER_HOME$/Library/Preferences/WebIde70/shelf/Add_favico_&amp;_spec_for_URl_rendering_2.patch" />
+      <option name="DESCRIPTION" value="Add favico &amp; spec for URl rendering " />
+    </recycled_changelist>
+    <recycled_changelist date="1391757063134">
+      <option name="PATH" value="$USER_HOME$/Library/Preferences/WebIde70/shelf/Ensure_devMode_flag_is_correctly_passed__.patch" />
+      <option name="DESCRIPTION" value="Ensure devMode flag is correctly passed. " />
+    </recycled_changelist>
+    <recycled_changelist date="1392417885511">
+      <option name="PATH" value="$USER_HOME$/Library/Preferences/WebIde70/shelf/jshint_cleanup_.patch" />
+      <option name="DESCRIPTION" value="jshint cleanup " />
+    </recycled_changelist>
+    <recycled_changelist date="1393030093290">
+      <option name="PATH" value="$USER_HOME$/Library/Preferences/WebIde70/shelf/Upgrade_cl-strings,_dealing_with_some_es6_problems.patch" />
+      <option name="DESCRIPTION" value="Upgrade cl-strings, dealing with some es6 problems" />
+    </recycled_changelist>
+    <recycled_changelist date="1396509798563">
+      <option name="PATH" value="$USER_HOME$/Library/Preferences/WebIde80/shelf/Clean.patch" />
+      <option name="DESCRIPTION" value="Clean" />
+    </recycled_changelist>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="cdf746db-a182-4cd7-a0bb-6197e3e3b9b5" name="DO NOT COMMIT" comment="" />
+      <changelist id="9586812f-8483-4705-8aad-9dbe8d50a66e" name="features/gulp" comment="" />
+      <created>1380656706981</created>
+      <updated>1380656706981</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Initial">
+      <created>1380833511575</created>
+      <updated>1380833511576</updated>
+    </task>
+    <task id="LOCAL-00002" summary="force build">
+      <created>1380833932954</created>
+      <updated>1380833932954</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Add custom task to run server + client tests">
+      <created>1380872258300</created>
+      <updated>1380872258300</updated>
+    </task>
+    <task id="LOCAL-00004" summary="configure dependencies&#10;">
+      <created>1380872339683</created>
+      <updated>1380872339692</updated>
+    </task>
+    <task id="LOCAL-00005" summary="output note if no files being watched&#10;">
+      <created>1380872376850</created>
+      <updated>1380872376850</updated>
+    </task>
+    <task id="LOCAL-00006" summary="More tests &amp; refactorings">
+      <created>1380891474501</created>
+      <updated>1380891474501</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Add test for getHostIp fallback to 0.0.0.0">
+      <created>1381129998458</created>
+      <updated>1381129998458</updated>
+    </task>
+    <task id="LOCAL-00008" summary="make getHostIp return 0.0.0.0 as a default">
+      <created>1381130072804</created>
+      <updated>1381130072804</updated>
+    </task>
+    <task id="LOCAL-00009" summary="remove some setTimeout wrappers">
+      <created>1381130103474</created>
+      <updated>1381130103474</updated>
+    </task>
+    <task id="LOCAL-00010" summary="remove IDE files">
+      <created>1381130111668</created>
+      <updated>1381130111668</updated>
+    </task>
+    <task id="LOCAL-00011" summary="remove IDE files">
+      <created>1381130118858</created>
+      <updated>1381130118858</updated>
+    </task>
+    <task id="LOCAL-00012" summary="refactor tests">
+      <created>1381149059326</created>
+      <updated>1381149059326</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Add reset button">
+      <created>1381605779774</created>
+      <updated>1381605779774</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Switch port checking to regex">
+      <created>1381605799407</created>
+      <updated>1381605799407</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Add tests &amp; refactor">
+      <created>1381605842411</created>
+      <updated>1381605842411</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Change name to browser-sync&#10;">
+      <created>1381661517446</created>
+      <updated>1381661517446</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Version bump for patch">
+      <created>1381666690373</created>
+      <updated>1381666690373</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Add tests for disabling ghostMode">
+      <created>1381669771370</created>
+      <updated>1381669771370</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Check if ghostmode has been disabled">
+      <created>1381669800152</created>
+      <updated>1381669800152</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Update Readme">
+      <created>1381672348416</created>
+      <updated>1381672348416</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Ensure test argvs are the same as those received from command-line">
+      <created>1381672652537</created>
+      <updated>1381672652537</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Fix problem with Scroll">
+      <created>1382444322092</created>
+      <updated>1382444322092</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Add dev-ip as dependency">
+      <created>1382549798551</created>
+      <updated>1382549798551</updated>
+    </task>
+    <task id="LOCAL-00024" summary="remove code to get IP &amp; use dev-ip instead">
+      <created>1382549818287</created>
+      <updated>1382549818287</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Fix bug with scroll">
+      <created>1382915102960</created>
+      <updated>1382915102960</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Add note about Grunt Plugin">
+      <created>1382984661920</created>
+      <updated>1382984661920</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Increase wait-time for glob return">
+      <created>1382985527305</created>
+      <updated>1382985527305</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Increase wait-time for glob return">
+      <created>1382986639960</created>
+      <updated>1382986639960</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Increase wait-time for glob return">
+      <created>1382987599939</created>
+      <updated>1382987599939</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Increase wait-time for glob return">
+      <created>1382988242981</created>
+      <updated>1382988242981</updated>
+    </task>
+    <task id="LOCAL-00031" summary="                Increase wait-time for glob return">
+      <created>1382988586260</created>
+      <updated>1382988586260</updated>
+    </task>
+    <task id="LOCAL-00032" summary="                Increase wait-time for glob return">
+      <created>1383165618209</created>
+      <updated>1383165618209</updated>
+    </task>
+    <task id="LOCAL-00033" summary="Add &quot;index&quot; option for server + spec">
+      <created>1383167387724</created>
+      <updated>1383167387724</updated>
+    </task>
+    <task id="LOCAL-00034" summary="Add &quot;index&quot; option for server + spec&#10;">
+      <created>1383167785493</created>
+      <updated>1383167785493</updated>
+    </task>
+    <task id="LOCAL-00035" summary="allow multiple files/globs in command-line mode. fix #3">
+      <created>1383168657714</created>
+      <updated>1383168657714</updated>
+    </task>
+    <task id="LOCAL-00036" summary="Allow an index to be specified in command-line options">
+      <created>1383171392142</created>
+      <updated>1383171392142</updated>
+    </task>
+    <task id="LOCAL-00037" summary="Allow an index to be specified in command-line options">
+      <created>1383171987522</created>
+      <updated>1383171987522</updated>
+    </task>
+    <task id="LOCAL-00038" summary="Refactor tests">
+      <created>1383172661749</created>
+      <updated>1383172661749</updated>
+    </task>
+    <task id="LOCAL-00039" summary="Refactor tests">
+      <created>1383172939249</created>
+      <updated>1383172939249</updated>
+    </task>
+    <task id="LOCAL-00040" summary="version bump for patch">
+      <created>1383173236176</created>
+      <updated>1383173236176</updated>
+    </task>
+    <task id="LOCAL-00041" summary="Fix long fous when used with sass/compass">
+      <created>1383206599547</created>
+      <updated>1383206599547</updated>
+    </task>
+    <task id="LOCAL-00042" summary="Add watch option for tests">
+      <created>1383339481966</created>
+      <updated>1383339481966</updated>
+    </task>
+    <task id="LOCAL-00043" summary="Update readme with test info">
+      <created>1383339500680</created>
+      <updated>1383339500680</updated>
+    </task>
+    <task id="LOCAL-00044" summary="    Update readme with test info">
+      <created>1383339919348</created>
+      <updated>1383339919348</updated>
+    </task>
+    <task id="LOCAL-00045" summary="remove 0.8">
+      <created>1383687480885</created>
+      <updated>1383687480885</updated>
+    </task>
+    <task id="LOCAL-00046" summary="Add spec for ensuring swapFile is not called if the element doesn't exist">
+      <created>1383687571086</created>
+      <updated>1383687571086</updated>
+    </task>
+    <task id="LOCAL-00047" summary="Added second css fixture for testing">
+      <created>1383724398354</created>
+      <updated>1383724398354</updated>
+    </task>
+    <task id="LOCAL-00048" summary="version rev for patch">
+      <created>1383724449860</created>
+      <updated>1383724449860</updated>
+    </task>
+    <task id="LOCAL-00049" summary="Fix tests to allow for new fixture">
+      <created>1383725042977</created>
+      <updated>1383725042977</updated>
+    </task>
+    <task id="LOCAL-00050" summary="1">
+      <created>1385077049065</created>
+      <updated>1385077049065</updated>
+    </task>
+    <task id="LOCAL-00051" summary="Switch to Gaze for file watching">
+      <created>1385419144439</created>
+      <updated>1385419144440</updated>
+    </task>
+    <task id="LOCAL-00052" summary="Only perform actions on changes">
+      <created>1385419489169</created>
+      <updated>1385419489169</updated>
+    </task>
+    <task id="LOCAL-00053" summary="Limit output of watchers">
+      <created>1385420322372</created>
+      <updated>1385420322372</updated>
+    </task>
+    <task id="LOCAL-00054" summary="Limit output of watchers&#10;">
+      <created>1385847892526</created>
+      <updated>1385847892526</updated>
+    </task>
+    <task id="LOCAL-00055" summary="Add proxy for injecting scripts">
+      <created>1386026611771</created>
+      <updated>1386026611771</updated>
+    </task>
+    <task id="LOCAL-00056" summary="Add color + underscore templating">
+      <created>1386097439600</created>
+      <updated>1386097439600</updated>
+    </task>
+    <task id="LOCAL-00057" summary="Add templating for console output">
+      <created>1386317374409</created>
+      <updated>1386317374409</updated>
+    </task>
+    <task id="LOCAL-00058" summary="Add command-line support for proxy">
+      <created>1386326717504</created>
+      <updated>1386326717504</updated>
+    </task>
+    <task id="LOCAL-00059" summary="Add bootstrap files for testing">
+      <created>1386338438356</created>
+      <updated>1386338438356</updated>
+    </task>
+    <task id="LOCAL-00060" summary="Add bootstrap files for testing&#10;">
+      <created>1386338448908</created>
+      <updated>1386338448908</updated>
+    </task>
+    <task id="LOCAL-00061" summary="remove glob from deps as GAZE does globbing for us">
+      <created>1386340847147</created>
+      <updated>1386340847147</updated>
+    </task>
+    <task id="LOCAL-00062" summary="Rename back to proxy">
+      <created>1386340870606</created>
+      <updated>1386340870606</updated>
+    </task>
+    <task id="LOCAL-00063" summary="Update readme with proxy info">
+      <created>1386340982940</created>
+      <updated>1386340982940</updated>
+    </task>
+    <task id="LOCAL-00064" summary="Reformat messages">
+      <created>1386341400193</created>
+      <updated>1386341400193</updated>
+    </task>
+    <task id="LOCAL-00065" summary="Reformat messages&#10;">
+      <created>1386341542476</created>
+      <updated>1386341542476</updated>
+    </task>
+    <task id="LOCAL-00066" summary="Version rev for new features">
+      <created>1386341604402</created>
+      <updated>1386341604402</updated>
+    </task>
+    <task id="LOCAL-00067" summary="Version rev for new features&#10;">
+      <created>1386343399669</created>
+      <updated>1386343399670</updated>
+    </task>
+    <task id="LOCAL-00068" summary="fixes #14">
+      <created>1386350782548</created>
+      <updated>1386350782548</updated>
+    </task>
+    <task id="LOCAL-00069" summary="fixes #24&#10;">
+      <created>1386354501948</created>
+      <updated>1386354501948</updated>
+    </task>
+    <task id="LOCAL-00070" summary="Add notifier for CSS injection - fix #1">
+      <created>1386358309010</created>
+      <updated>1386358309010</updated>
+    </task>
+    <task id="LOCAL-00071" summary="Extract command-line colour templates to separate npm module">
+      <created>1386544936113</created>
+      <updated>1386544936113</updated>
+    </task>
+    <task id="LOCAL-00072" summary="Add cli-color for dev">
+      <created>1386545563894</created>
+      <updated>1386545563894</updated>
+    </task>
+    <task id="LOCAL-00073" summary="Add large HTML file for testing snippet insertion">
+      <created>1387058579710</created>
+      <updated>1387058579710</updated>
+    </task>
+    <task id="LOCAL-00074" summary="remove content-length header when inserting snippet">
+      <created>1387058669142</created>
+      <updated>1387058669143</updated>
+    </task>
+    <task id="LOCAL-00075" summary="Refactor server spec to allow for large HTML file tests to fails">
+      <created>1387058821767</created>
+      <updated>1387058821767</updated>
+    </task>
+    <task id="LOCAL-00076" summary="Add hasOwnProperty check before trying to delete">
+      <created>1387059017082</created>
+      <updated>1387059017082</updated>
+    </task>
+    <task id="LOCAL-00077" summary="Add proxy specs">
+      <created>1387063535879</created>
+      <updated>1387063535879</updated>
+    </task>
+    <task id="LOCAL-00078" summary="Exclude trailing slashes on proxy argument from command-line">
+      <created>1387064070211</created>
+      <updated>1387064070211</updated>
+    </task>
+    <task id="LOCAL-00079" summary="Remove redundant function">
+      <created>1387064615372</created>
+      <updated>1387064615373</updated>
+    </task>
+    <task id="LOCAL-00080" summary="Remove redundant function&#10;">
+      <created>1387064670368</created>
+      <updated>1387064670368</updated>
+    </task>
+    <task id="LOCAL-00081" summary="Add specs for external server + proxy (not suitable for CI :( )">
+      <created>1387099574987</created>
+      <updated>1387099574987</updated>
+    </task>
+    <task id="LOCAL-00082" summary="Cleanup">
+      <created>1387101636333</created>
+      <updated>1387101636333</updated>
+    </task>
+    <task id="LOCAL-00083" summary="Split server &amp; script injecting specs">
+      <created>1387102325860</created>
+      <updated>1387102325861</updated>
+    </task>
+    <task id="LOCAL-00084" summary="Add server message spec">
+      <created>1387105427616</created>
+      <updated>1387105427617</updated>
+    </task>
+    <task id="LOCAL-00085" summary="Add missing messages spec">
+      <created>1387109567437</created>
+      <updated>1387109567437</updated>
+    </task>
+    <task id="LOCAL-00086" summary="Add missing messages spec&#10;">
+      <created>1387109589948</created>
+      <updated>1387109589948</updated>
+    </task>
+    <task id="LOCAL-00087" summary="Add missing messages spec&#10;">
+      <created>1387109975180</created>
+      <updated>1387109975180</updated>
+    </task>
+    <task id="LOCAL-00088" summary="Remove code duplication from dev-proxy &amp; load snippet">
+      <created>1387118216269</created>
+      <updated>1387118216269</updated>
+    </task>
+    <task id="LOCAL-00089" summary="Cleanup">
+      <created>1387120869807</created>
+      <updated>1387120869807</updated>
+    </task>
+    <task id="LOCAL-00090" summary="Cleanup&#10;">
+      <created>1387120935862</created>
+      <updated>1387120935862</updated>
+    </task>
+    <task id="LOCAL-00091" summary="Cleanup&#10;">
+      <created>1387120977160</created>
+      <updated>1387120977160</updated>
+    </task>
+    <task id="LOCAL-00092" summary="Version rev for patch">
+      <created>1387121007679</created>
+      <updated>1387121007679</updated>
+    </task>
+    <task id="LOCAL-00093" summary="Initial work for adding control panel">
+      <created>1387140596782</created>
+      <updated>1387140596782</updated>
+    </task>
+    <task id="LOCAL-00094" summary="Add spec for appending socket connector">
+      <created>1387146506471</created>
+      <updated>1387146506471</updated>
+    </task>
+    <task id="LOCAL-00095" summary="Add angular">
+      <created>1387146517842</created>
+      <updated>1387146517842</updated>
+    </task>
+    <task id="LOCAL-00096" summary="Add angular &amp; initial Socket code">
+      <created>1387146542747</created>
+      <updated>1387146542747</updated>
+    </task>
+    <task id="LOCAL-00097" summary="Add spec for control panel script">
+      <created>1387146596248</created>
+      <updated>1387146596248</updated>
+    </task>
+    <task id="LOCAL-00098" summary="Use different script tags for control panel">
+      <created>1387146633273</created>
+      <updated>1387146633273</updated>
+    </task>
+    <task id="LOCAL-00099" summary="initial ideas for control panel">
+      <created>1387151144320</created>
+      <updated>1387151144320</updated>
+    </task>
+    <task id="LOCAL-00100" summary="exclude test dir for installs">
+      <created>1387222744829</created>
+      <updated>1387222744829</updated>
+    </task>
+    <task id="LOCAL-00101" summary="ignore png &amp; gif">
+      <created>1387222778742</created>
+      <updated>1387222778742</updated>
+    </task>
+    <task id="LOCAL-00102" summary="version rev for patch">
+      <created>1387222793972</created>
+      <updated>1387222793972</updated>
+    </task>
+    <task id="LOCAL-00103" summary="version rev for patch&#10;">
+      <created>1387223461152</created>
+      <updated>1387223461152</updated>
+    </task>
+    <task id="LOCAL-00104" summary="Add pay-pal donate &amp; gittip">
+      <created>1387226527088</created>
+      <updated>1387226527088</updated>
+    </task>
+    <task id="LOCAL-00105" summary="Add pay-pal donate &amp; gittip&#10;">
+      <created>1387226543423</created>
+      <updated>1387226543423</updated>
+    </task>
+    <task id="LOCAL-00106" summary="Add pay-pal donate &amp; gittip&#10;">
+      <created>1387226613451</created>
+      <updated>1387226613451</updated>
+    </task>
+    <task id="LOCAL-00107" summary="fix client-side spec">
+      <created>1387350070008</created>
+      <updated>1387350070008</updated>
+    </task>
+    <task id="LOCAL-00108" summary="Add npm module badge + built with grunt badge">
+      <created>1387354576787</created>
+      <updated>1387354576787</updated>
+    </task>
+    <task id="LOCAL-00109" summary="        Add npm module badge + built with grunt badge&#10;">
+      <created>1387354614919</created>
+      <updated>1387354614919</updated>
+    </task>
+    <task id="LOCAL-00110" summary="only modify the JS with socket connector once.">
+      <created>1387356173453</created>
+      <updated>1387356173453</updated>
+    </task>
+    <task id="LOCAL-00111" summary="Clean for JS hint">
+      <created>1387357819235</created>
+      <updated>1387357819235</updated>
+    </task>
+    <task id="LOCAL-00112" summary="Clean &amp; integrate jshint into CI builds">
+      <created>1387358149665</created>
+      <updated>1387358149665</updated>
+    </task>
+    <task id="LOCAL-00113" summary="merge master">
+      <created>1387358525691</created>
+      <updated>1387358525691</updated>
+    </task>
+    <task id="LOCAL-00114" summary="Add release task">
+      <created>1387358796900</created>
+      <updated>1387358796900</updated>
+    </task>
+    <task id="LOCAL-00115" summary="Add release task&#10;">
+      <created>1387358853074</created>
+      <updated>1387358853074</updated>
+    </task>
+    <task id="LOCAL-00116" summary="remove failing spec from #31">
+      <created>1387359329077</created>
+      <updated>1387359329077</updated>
+    </task>
+    <task id="LOCAL-00117" summary="remove failing spec from #31&#10;">
+      <created>1387359381958</created>
+      <updated>1387359381958</updated>
+    </task>
+    <task id="LOCAL-00118" summary="Add client tests to CI">
+      <created>1387369517563</created>
+      <updated>1387369517563</updated>
+    </task>
+    <task id="LOCAL-00119" summary="version rev for patch &#10;">
+      <created>1387370526018</created>
+      <updated>1387370526018</updated>
+    </task>
+    <task id="LOCAL-00120" summary="return both proxy &amp; static server, add spec for logging correctly when using proxy">
+      <created>1387459514690</created>
+      <updated>1387459514690</updated>
+    </task>
+    <task id="LOCAL-00121" summary="version rev for patch">
+      <created>1387475413977</created>
+      <updated>1387475413977</updated>
+    </task>
+    <task id="LOCAL-00122" summary="switch to mocha">
+      <created>1387475742558</created>
+      <updated>1387475742559</updated>
+    </task>
+    <task id="LOCAL-00123" summary="Switch to mocha for server-side unit tests">
+      <created>1387634933598</created>
+      <updated>1387634933598</updated>
+    </task>
+    <task id="LOCAL-00124" summary="Switch to mocha for server-side unit tests">
+      <created>1387634947285</created>
+      <updated>1387634947285</updated>
+    </task>
+    <task id="LOCAL-00125" summary="Switch to mocha for server-side unit tests&#10;">
+      <created>1387634997317</created>
+      <updated>1387634997317</updated>
+    </task>
+    <task id="LOCAL-00126" summary="Switch to mocha for server-side unit tests&#10;&#10;">
+      <created>1387635142527</created>
+      <updated>1387635142527</updated>
+    </task>
+    <task id="LOCAL-00127" summary="Switch to mocha for client-side tests">
+      <created>1387648885207</created>
+      <updated>1387648885207</updated>
+    </task>
+    <task id="LOCAL-00128" summary="Switch to mocha for client-side tests&#10;">
+      <created>1387655057838</created>
+      <updated>1387655057838</updated>
+    </task>
+    <task id="LOCAL-00129" summary="Switch to mocha for client-side tests&#10;">
+      <created>1387656901947</created>
+      <updated>1387656901947</updated>
+    </task>
+    <task id="LOCAL-00130" summary="Switch to mocha for client-side tests&#10;">
+      <created>1387661054610</created>
+      <updated>1387661054611</updated>
+    </task>
+    <task id="LOCAL-00131" summary="Switch to mocha for client-side tests&#10;">
+      <created>1387661700043</created>
+      <updated>1387661700043</updated>
+    </task>
+    <task id="LOCAL-00132" summary="Switch to mocha for client-side tests&#10;">
+      <created>1387661901863</created>
+      <updated>1387661901863</updated>
+    </task>
+    <task id="LOCAL-00133" summary="Add option to supply the PORT RANGE https://github.com/shakyShane/grunt-browser-sync/issues/9">
+      <created>1387668025925</created>
+      <updated>1387668025926</updated>
+    </task>
+    <task id="LOCAL-00134" summary="Add option to supply the PORT RANGE https://github.com/shakyShane/grunt-browser-sync/issues/9&#10;">
+      <created>1387668200113</created>
+      <updated>1387668200113</updated>
+    </task>
+    <task id="LOCAL-00135" summary="Add option to supply the PORT RANGE https://github.com/shakyShane/grunt-browser-sync/issues/9&#10;">
+      <created>1387668389443</created>
+      <updated>1387668389443</updated>
+    </task>
+    <task id="LOCAL-00136" summary="Add option to supply the PORT RANGE https://github.com/shakyShane/grunt-browser-sync/issues/9&#10;">
+      <created>1387668500538</created>
+      <updated>1387668500538</updated>
+    </task>
+    <task id="LOCAL-00137" summary="Add indentation level for JShint">
+      <created>1387718719337</created>
+      <updated>1387718719337</updated>
+    </task>
+    <task id="LOCAL-00138" summary="More cleanup for jshint">
+      <created>1387719467833</created>
+      <updated>1387719467833</updated>
+    </task>
+    <task id="LOCAL-00139" summary="More cleanup for jshint  fix #35&#10;">
+      <created>1387720523064</created>
+      <updated>1387720523064</updated>
+    </task>
+    <task id="LOCAL-00140" summary="More cleanup for jshint  fix #35&#10;">
+      <created>1387720631244</created>
+      <updated>1387720631244</updated>
+    </task>
+    <task id="LOCAL-00141" summary="fix #35&#10;">
+      <created>1387721004838</created>
+      <updated>1387721004838</updated>
+    </task>
+    <task id="LOCAL-00142" summary="fix #35&#10;">
+      <created>1387721398634</created>
+      <updated>1387721398634</updated>
+    </task>
+    <task id="LOCAL-00143" summary="fix #35&#10;">
+      <created>1387721439709</created>
+      <updated>1387721439709</updated>
+    </task>
+    <task id="LOCAL-00144" summary="remove protocol from script URLS - fixes https://github.com/shakyShane/grunt-browser-sync/issues/5">
+      <created>1387759155404</created>
+      <updated>1387759155405</updated>
+    </task>
+    <task id="LOCAL-00145" summary="remove protocol from script URLS - fixes https://github.com/shakyShane/grunt-browser-sync/issues/5&#10;">
+      <created>1387759477892</created>
+      <updated>1387759477892</updated>
+    </task>
+    <task id="LOCAL-00146" summary="remove protocol from script URLS - fixes https://github.com/shakyShane/grunt-browser-sync/issues/5&#10;">
+      <created>1387761234653</created>
+      <updated>1387761234653</updated>
+    </task>
+    <task id="LOCAL-00147" summary="Initial Idea for re-writing urls with proxy">
+      <created>1387762165645</created>
+      <updated>1387762165645</updated>
+    </task>
+    <task id="LOCAL-00148" summary="Add video links">
+      <created>1387768065664</created>
+      <updated>1387768065664</updated>
+    </task>
+    <task id="LOCAL-00149" summary="Add video links&#10;">
+      <created>1387768203785</created>
+      <updated>1387768203785</updated>
+    </task>
+    <task id="LOCAL-00150" summary="Add video links&#10;">
+      <created>1387768447705</created>
+      <updated>1387768447705</updated>
+    </task>
+    <task id="LOCAL-00151" summary="Add version number support - fix #36">
+      <created>1387799639001</created>
+      <updated>1387799639001</updated>
+    </task>
+    <task id="LOCAL-00152" summary="Cleanup + add password field syncing">
+      <created>1387842449251</created>
+      <updated>1387842449251</updated>
+    </task>
+    <task id="LOCAL-00153" summary="Add spec for init">
+      <created>1387845725618</created>
+      <updated>1387845725618</updated>
+    </task>
+    <task id="LOCAL-00154" summary="Cleanup init">
+      <created>1387896834552</created>
+      <updated>1387896834552</updated>
+    </task>
+    <task id="LOCAL-00155" summary="version rev for patches">
+      <created>1387897859824</created>
+      <updated>1387897859824</updated>
+    </task>
+    <task id="LOCAL-00156" summary="Move file watching + server into separate files.&#10;Add missing specs&#10;Use Sinon for assertions where possible (better error msgs)">
+      <created>1387938460997</created>
+      <updated>1387938460997</updated>
+    </task>
+    <task id="LOCAL-00157" summary="Remove file watcher from main file &amp; update specs to match.">
+      <created>1387940961030</created>
+      <updated>1387940961030</updated>
+    </task>
+    <task id="LOCAL-00158" summary="Add font fixtures fix #38">
+      <created>1388066330031</created>
+      <updated>1388066330031</updated>
+    </task>
+    <task id="LOCAL-00159" summary="Add .eot &amp; .ttf to exclude list fix #38&#10;">
+      <created>1388066359181</created>
+      <updated>1388066359181</updated>
+    </task>
+    <task id="LOCAL-00160" summary="Add .eot &amp; .ttf to exclude list fix #38&#10;">
+      <created>1388103261500</created>
+      <updated>1388103261500</updated>
+    </task>
+    <task id="LOCAL-00161" summary="initial work on filewatchers with individual tasks">
+      <created>1388157906257</created>
+      <updated>1388157906257</updated>
+    </task>
+    <task id="LOCAL-00162" summary="rewrite links when using proxy">
+      <created>1388166411703</created>
+      <updated>1388166411703</updated>
+    </task>
+    <task id="LOCAL-00163" summary="Remove click events">
+      <created>1388185332377</created>
+      <updated>1388185332377</updated>
+    </task>
+    <task id="LOCAL-00164" summary="Keep track of clients manually">
+      <created>1388185356227</created>
+      <updated>1388185356227</updated>
+    </task>
+    <task id="LOCAL-00165" summary="Use &quot;calledWithExactly&quot; to ensure correct args">
+      <created>1388185385066</created>
+      <updated>1388185385066</updated>
+    </task>
+    <task id="LOCAL-00166" summary="Use calledWithExactly">
+      <created>1388185410830</created>
+      <updated>1388185410830</updated>
+    </task>
+    <task id="LOCAL-00167" summary="Use latest Connect">
+      <created>1388185453453</created>
+      <updated>1388185453453</updated>
+    </task>
+    <task id="LOCAL-00168" summary="Add navigateCallback for both server &amp; proxy to allow navigation via server requests">
+      <created>1388185624035</created>
+      <updated>1388185624035</updated>
+    </task>
+    <task id="LOCAL-00169" summary="Allow file timeout to be changed, remove click events from client JS">
+      <created>1388189870382</created>
+      <updated>1388189870382</updated>
+    </task>
+    <task id="LOCAL-00170" summary="Add devMode flag to command-line options to make client-script easier to work on">
+      <created>1388244224809</created>
+      <updated>1388244224809</updated>
+    </task>
+    <task id="LOCAL-00171" summary="Put the old click events behind a deprecated option for now">
+      <created>1388247526346</created>
+      <updated>1388247526346</updated>
+    </task>
+    <task id="LOCAL-00172" summary="Add browser-sync init command">
+      <created>1388274709781</created>
+      <updated>1388274709781</updated>
+    </task>
+    <task id="LOCAL-00173" summary="Add coverage for retrieving config files">
+      <created>1388278596583</created>
+      <updated>1388278596583</updated>
+    </task>
+    <task id="LOCAL-00174" summary="Move default config file-name into messages&#10;">
+      <created>1388278903144</created>
+      <updated>1388278903144</updated>
+    </task>
+    <task id="LOCAL-00175" summary="Version rev for update">
+      <created>1388283856880</created>
+      <updated>1388283856880</updated>
+    </task>
+    <task id="LOCAL-00176" summary="Move options to github wiki">
+      <created>1388286272275</created>
+      <updated>1388286272275</updated>
+    </task>
+    <task id="LOCAL-00177" summary="uglified&#10;">
+      <created>1388286317454</created>
+      <updated>1388286317454</updated>
+    </task>
+    <task id="LOCAL-00178" summary="restore injectfile types">
+      <created>1388286552272</created>
+      <updated>1388286552272</updated>
+    </task>
+    <task id="LOCAL-00179" summary="Use lower default value for file timeout">
+      <created>1388286766253</created>
+      <updated>1388286766253</updated>
+    </task>
+    <task id="LOCAL-00180" summary="Only notify if a match is found on the page">
+      <created>1388288128811</created>
+      <updated>1388288128811</updated>
+    </task>
+    <task id="LOCAL-00181" summary="First idea - working in IE9&gt;">
+      <created>1388352114587</created>
+      <updated>1388352114587</updated>
+    </task>
+    <task id="LOCAL-00182" summary="ie8 support">
+      <created>1388355061511</created>
+      <updated>1388355061511</updated>
+    </task>
+    <task id="LOCAL-00183" summary="remove ie8 support&#10;">
+      <created>1388362652862</created>
+      <updated>1388362652862</updated>
+    </task>
+    <task id="LOCAL-00184" summary="Move client code into separate sub-dir">
+      <created>1388367783141</created>
+      <updated>1388367783141</updated>
+    </task>
+    <task id="LOCAL-00185" summary="Move client code into separate sub-dir&#10;">
+      <created>1388367790536</created>
+      <updated>1388367790536</updated>
+    </task>
+    <task id="LOCAL-00186" summary="Add shims as separate file">
+      <created>1388367829921</created>
+      <updated>1388367829921</updated>
+    </task>
+    <task id="LOCAL-00187" summary="Add clicks as default">
+      <created>1388368622052</created>
+      <updated>1388368622052</updated>
+    </task>
+    <task id="LOCAL-00188" summary="Version rev">
+      <created>1388368680140</created>
+      <updated>1388368680140</updated>
+    </task>
+    <task id="LOCAL-00189" summary="Add first batch of Laravel related screencasts">
+      <created>1388374411896</created>
+      <updated>1388374411896</updated>
+    </task>
+    <task id="LOCAL-00190" summary="Add first batch of Laravel related screencasts&#10;">
+      <created>1388374785543</created>
+      <updated>1388374785543</updated>
+    </task>
+    <task id="LOCAL-00191" summary="Change the INIT message">
+      <created>1388412961440</created>
+      <updated>1388412961440</updated>
+    </task>
+    <task id="LOCAL-00192" summary="Add gzip support for proxy + spec">
+      <created>1388504978349</created>
+      <updated>1388504978349</updated>
+    </task>
+    <task id="LOCAL-00193" summary="Add gzip support for proxy + spec&#10;">
+      <created>1388505079732</created>
+      <updated>1388505079732</updated>
+    </task>
+    <task id="LOCAL-00194" summary="Add gzip support for proxy + spec&#10;">
+      <created>1388505205963</created>
+      <updated>1388505205963</updated>
+    </task>
+    <task id="LOCAL-00195" summary="Add Vagrant Screencast to readme">
+      <created>1388507632165</created>
+      <updated>1388507632165</updated>
+    </task>
+    <task id="LOCAL-00196" summary="Only sync GET requests">
+      <created>1388512309705</created>
+      <updated>1388512309705</updated>
+    </task>
+    <task id="LOCAL-00197" summary="Only sync GET requests&#10;">
+      <created>1388512357574</created>
+      <updated>1388512357574</updated>
+    </task>
+    <task id="LOCAL-00198" summary="Only sync GET requests&#10;">
+      <created>1388512427032</created>
+      <updated>1388512427032</updated>
+    </task>
+    <task id="LOCAL-00199" summary="Add twitter link to readme">
+      <created>1388709302536</created>
+      <updated>1388709302536</updated>
+    </task>
+    <task id="LOCAL-00200" summary="Add twitter link to readme&#10;">
+      <created>1388736867826</created>
+      <updated>1388736867826</updated>
+    </task>
+    <task id="LOCAL-00201" summary="Merge branch 'master' into features/control-panel&#10;&#10;Conflicts:&#10;&#9;lib/browser-sync-client.js&#10;&#9;lib/browser-sync.js&#10;&#9;lib/client/browser-sync-client.js&#10;&#9;lib/control-panel/browser-sync-client.js&#10;&#9;lib/control-panel/browser-sync-client.min.js&#10;&#9;lib/dev-proxy.js&#10;&#9;lib/loadSnippet.js&#10;&#9;lib/messages.js&#10;&#9;test/new-server/findingPortsSpec.js&#10;&#9;test/new-server/proxySpec.js&#10;&#9;test/new-server/serverSnippetsSpec.js&#10;&#9;test/new-server/serverSpec.js&#10;&#9;test/server/cli-messagesSpec.js&#10;">
+      <created>1388737147735</created>
+      <updated>1388737147735</updated>
+    </task>
+    <task id="LOCAL-00202" summary="Rework control panel specs">
+      <created>1388738426064</created>
+      <updated>1388738426064</updated>
+    </task>
+    <task id="LOCAL-00203" summary="Separate server &amp; control panel functionality">
+      <created>1388936891608</created>
+      <updated>1388936891608</updated>
+    </task>
+    <task id="LOCAL-00204" summary="Update proxy specs for external servers">
+      <created>1388941577284</created>
+      <updated>1388941577284</updated>
+    </task>
+    <task id="LOCAL-00205" summary="Don't add socket connector automatically">
+      <created>1388942562715</created>
+      <updated>1388942562716</updated>
+    </task>
+    <task id="LOCAL-00206" summary="Make the control panel always open automatically">
+      <created>1388943547526</created>
+      <updated>1388943547526</updated>
+    </task>
+    <task id="LOCAL-00207" summary="Fix command-line link">
+      <created>1389185605760</created>
+      <updated>1389185605760</updated>
+    </task>
+    <task id="LOCAL-00208" summary="Export `init` method for cleaner API including default config">
+      <created>1389257566256</created>
+      <updated>1389257566256</updated>
+    </task>
+    <task id="LOCAL-00209" summary="Add json to excluded request list - fixes https://github.com/shakyShane/grunt-browser-sync/issues/29">
+      <created>1389297072744</created>
+      <updated>1389297072744</updated>
+    </task>
+    <task id="LOCAL-00210" summary="add injectChanges option. fix https://github.com/shakyShane/grunt-browser-sync/issues/27">
+      <created>1389303664944</created>
+      <updated>1389303664944</updated>
+    </task>
+    <task id="LOCAL-00211" summary="add injectChanges option. fix https://github.com/shakyShane/grunt-browser-sync/issues/27&#10;">
+      <created>1389304359280</created>
+      <updated>1389304359280</updated>
+    </task>
+    <task id="LOCAL-00212" summary="add injectChanges option to config file&#10;">
+      <created>1389305569404</created>
+      <updated>1389305569404</updated>
+    </task>
+    <task id="LOCAL-00213" summary="add injectChanges option to config file&#10;">
+      <created>1389962132958</created>
+      <updated>1389962132958</updated>
+    </task>
+    <task id="LOCAL-00214" summary="Remove content-encoding header from proxy response">
+      <created>1389983397491</created>
+      <updated>1389983397491</updated>
+    </task>
+    <task id="LOCAL-00215" summary="Remove content-encoding header from proxy response&#10;">
+      <created>1389993370150</created>
+      <updated>1389993370150</updated>
+    </task>
+    <task id="LOCAL-00216" summary="Code cleanup">
+      <created>1390132395337</created>
+      <updated>1390132395337</updated>
+    </task>
+    <task id="LOCAL-00217" summary="Add an 'exclude' option for file patterns - fixes #45">
+      <created>1390138964337</created>
+      <updated>1390138964338</updated>
+    </task>
+    <task id="LOCAL-00218" summary="Add an 'exclude' option for file patterns - fixes #45&#10;">
+      <created>1390139103755</created>
+      <updated>1390139103755</updated>
+    </task>
+    <task id="LOCAL-00219" summary="Version rev for multiple patches&#10;">
+      <created>1390140161827</created>
+      <updated>1390140161827</updated>
+    </task>
+    <task id="LOCAL-00220" summary="Update readme with link to gulp">
+      <created>1390338503558</created>
+      <updated>1390338503559</updated>
+    </task>
+    <task id="LOCAL-00221" summary="fixes #48 fixes #47&#10;">
+      <created>1390345101549</created>
+      <updated>1390345101549</updated>
+    </task>
+    <task id="LOCAL-00222" summary="Add website to readme&#10;">
+      <created>1390345189874</created>
+      <updated>1390345189874</updated>
+    </task>
+    <task id="LOCAL-00223" summary="fixes https://github.com/shakyShane/grunt-browser-sync/issues/31">
+      <created>1390380315536</created>
+      <updated>1390380315536</updated>
+    </task>
+    <task id="LOCAL-00224" summary="Add prefix">
+      <created>1390680115982</created>
+      <updated>1390680115982</updated>
+    </task>
+    <task id="LOCAL-00225" summary="Improve command-line output">
+      <created>1390762873826</created>
+      <updated>1390762873826</updated>
+    </task>
+    <task id="LOCAL-00226" summary="Improve command-line output, merge #51&#10;">
+      <created>1390764996525</created>
+      <updated>1390764996526</updated>
+    </task>
+    <task id="LOCAL-00227" summary="Merge control panel socket events with ghostmode events">
+      <created>1390776783330</created>
+      <updated>1390776783330</updated>
+    </task>
+    <task id="LOCAL-00228" summary="Merge control panel socket events with ghostmode events&#10;">
+      <created>1390776873689</created>
+      <updated>1390776873689</updated>
+    </task>
+    <task id="LOCAL-00229" summary="Add testing setup for angular">
+      <created>1390829606952</created>
+      <updated>1390829606952</updated>
+    </task>
+    <task id="LOCAL-00230" summary="Add testing setup for angular&#10;">
+      <created>1390829624184</created>
+      <updated>1390829624184</updated>
+    </task>
+    <task id="LOCAL-00231" summary="Final Configuration for control-panel testing env">
+      <created>1390949141334</created>
+      <updated>1390949141334</updated>
+    </task>
+    <task id="LOCAL-00232" summary="Final Configuration for control-panel testing env&#10;">
+      <created>1390951270904</created>
+      <updated>1390951270904</updated>
+    </task>
+    <task id="LOCAL-00233" summary="Add control-panel asset &amp; initial specs">
+      <created>1391086999305</created>
+      <updated>1391086999305</updated>
+    </task>
+    <task id="LOCAL-00234" summary="Add control-panel asset &amp; initial specs&#10;">
+      <created>1391087069445</created>
+      <updated>1391087069445</updated>
+    </task>
+    <task id="LOCAL-00235" summary="Add favico &amp; spec for URl rendering">
+      <created>1391089563483</created>
+      <updated>1391089563483</updated>
+    </task>
+    <task id="LOCAL-00236" summary="Add favico &amp; spec for URl rendering&#10;">
+      <created>1391089619642</created>
+      <updated>1391089619642</updated>
+    </task>
+    <task id="LOCAL-00237" summary="Add favico &amp; spec for URl rendering&#10;">
+      <created>1391258414150</created>
+      <updated>1391258414150</updated>
+    </task>
+    <task id="LOCAL-00238" summary="Add favico &amp; spec for URl rendering&#10;">
+      <created>1391263485627</created>
+      <updated>1391263485627</updated>
+    </task>
+    <task id="LOCAL-00239" summary="Add favico &amp; spec for URl rendering&#10;">
+      <created>1391264155859</created>
+      <updated>1391264155860</updated>
+    </task>
+    <task id="LOCAL-00240" summary="Ensure more file extensions are respected">
+      <created>1391264436306</created>
+      <updated>1391264436306</updated>
+    </task>
+    <task id="LOCAL-00241" summary="Make excluded file extentions part of the options.">
+      <created>1391359259038</created>
+      <updated>1391359259038</updated>
+    </task>
+    <task id="LOCAL-00242" summary="Fixes https://github.com/shakyShane/grunt-browser-sync/issues/33#issuecomment-33874346&#10;Fixes #43">
+      <created>1391359657972</created>
+      <updated>1391359657972</updated>
+    </task>
+    <task id="LOCAL-00243" summary="Cleanup config file &amp; add links to wiki">
+      <created>1391374156331</created>
+      <updated>1391374156332</updated>
+    </task>
+    <task id="LOCAL-00244" summary="Organise tests into sub-dirs">
+      <created>1391412798710</created>
+      <updated>1391412798710</updated>
+    </task>
+    <task id="LOCAL-00245" summary="Organise tests into sub-dirs&#10;">
+      <created>1391415780272</created>
+      <updated>1391415780272</updated>
+    </task>
+    <task id="LOCAL-00246" summary="First pass at implementing update checker">
+      <created>1391432101590</created>
+      <updated>1391432101590</updated>
+    </task>
+    <task id="LOCAL-00247" summary="First pass at implementing update checker&#10;">
+      <created>1391432132991</created>
+      <updated>1391432132991</updated>
+    </task>
+    <task id="LOCAL-00248" summary="Fixes bug with proxy + command line usage">
+      <created>1391433157932</created>
+      <updated>1391433157932</updated>
+    </task>
+    <task id="LOCAL-00249" summary="Fixes #58">
+      <created>1391447720832</created>
+      <updated>1391447720832</updated>
+    </task>
+    <task id="LOCAL-00250" summary="add update messages&#10;">
+      <created>1391501849637</created>
+      <updated>1391501849637</updated>
+    </task>
+    <task id="LOCAL-00251" summary="Ensure devMode flag is correctly passed.">
+      <created>1391720609632</created>
+      <updated>1391720609633</updated>
+    </task>
+    <task id="LOCAL-00252" summary="Ensure devMode flag is correctly passed.&#10;">
+      <created>1391757064369</created>
+      <updated>1391757064369</updated>
+    </task>
+    <task id="LOCAL-00253" summary="Ensure devMode flag is correctly passed.&#10;">
+      <created>1391757110138</created>
+      <updated>1391757110138</updated>
+    </task>
+    <task id="LOCAL-00254" summary="Return an event Emitter with the API">
+      <created>1391767452989</created>
+      <updated>1391767452989</updated>
+    </task>
+    <task id="LOCAL-00255" summary="Switch file watching to use event emitter&#10;">
+      <created>1391775325159</created>
+      <updated>1391775325159</updated>
+    </task>
+    <task id="LOCAL-00256" summary="Switch file watching to use event emitter&#10;">
+      <created>1391775753465</created>
+      <updated>1391775753465</updated>
+    </task>
+    <task id="LOCAL-00257" summary="Add browser:add event to control panel">
+      <created>1391782567358</created>
+      <updated>1391782567358</updated>
+    </task>
+    <task id="LOCAL-00258" summary="Add browser:add event">
+      <created>1391789205960</created>
+      <updated>1391789205961</updated>
+    </task>
+    <task id="LOCAL-00259" summary="Add browser:add event&#10;">
+      <created>1391793196075</created>
+      <updated>1391793196075</updated>
+    </task>
+    <task id="LOCAL-00260" summary="Ensure url is correctly set in the options">
+      <created>1391898899606</created>
+      <updated>1391898899606</updated>
+    </task>
+    <task id="LOCAL-00261" summary="Ensure url is correctly set in the options&#10;">
+      <created>1391899070388</created>
+      <updated>1391899070388</updated>
+    </task>
+    <task id="LOCAL-00262" summary="Ensure url is correctly set in the options&#10;">
+      <created>1391899892771</created>
+      <updated>1391899892771</updated>
+    </task>
+    <task id="LOCAL-00263" summary="Use fake timer for tests">
+      <created>1391904306857</created>
+      <updated>1391904306857</updated>
+    </task>
+    <task id="LOCAL-00264" summary="Remove redundant code RE wachers">
+      <created>1391904785732</created>
+      <updated>1391904785732</updated>
+    </task>
+    <task id="LOCAL-00265" summary="Remove redundant code RE wachers&#10;">
+      <created>1391908339690</created>
+      <updated>1391908339690</updated>
+    </task>
+    <task id="LOCAL-00266" summary="Keep jsdocs in order">
+      <created>1391909447485</created>
+      <updated>1391909447485</updated>
+    </task>
+    <task id="LOCAL-00267" summary="Add example of using reloadDelay">
+      <created>1391909856249</created>
+      <updated>1391909856249</updated>
+    </task>
+    <task id="LOCAL-00268" summary="Add contribution message to control panel">
+      <created>1391913098487</created>
+      <updated>1391913098487</updated>
+    </task>
+    <task id="LOCAL-00269" summary="Cleanup event emitter stubs">
+      <created>1391915676194</created>
+      <updated>1391915676195</updated>
+    </task>
+    <task id="LOCAL-00270" summary="Fix dependency tree">
+      <created>1391961587353</created>
+      <updated>1391961587353</updated>
+    </task>
+    <task id="LOCAL-00271" summary="Version rev for update">
+      <created>1391962266794</created>
+      <updated>1391962266794</updated>
+    </task>
+    <task id="LOCAL-00272" summary="Version rev for update&#10;">
+      <created>1392049233450</created>
+      <updated>1392049233450</updated>
+    </task>
+    <task id="LOCAL-00273" summary="Add heartbeat monitor">
+      <created>1392363599615</created>
+      <updated>1392363599615</updated>
+    </task>
+    <task id="LOCAL-00274" summary="Add start path option">
+      <created>1392386054861</created>
+      <updated>1392386054862</updated>
+    </task>
+    <task id="LOCAL-00275" summary="Add start path option&#10;">
+      <created>1392386089092</created>
+      <updated>1392386089092</updated>
+    </task>
+    <task id="LOCAL-00276" summary="Add start path option&#10;">
+      <created>1392386168115</created>
+      <updated>1392386168115</updated>
+    </task>
+    <task id="LOCAL-00277" summary="Add warning when multiple IPS are found">
+      <created>1392401925777</created>
+      <updated>1392401925777</updated>
+    </task>
+    <task id="LOCAL-00278" summary="Add warning when multiple IPS are found&#10;&#10;">
+      <created>1392401976825</created>
+      <updated>1392401976825</updated>
+    </task>
+    <task id="LOCAL-00279" summary="Remove the use of uglified file">
+      <created>1392402346873</created>
+      <updated>1392402346873</updated>
+    </task>
+    <task id="LOCAL-00280" summary="jshint cleanup">
+      <created>1392410152266</created>
+      <updated>1392410152266</updated>
+    </task>
+    <task id="LOCAL-00281" summary="jshint cleanup&#10;">
+      <created>1392417885822</created>
+      <updated>1392417885822</updated>
+    </task>
+    <task id="LOCAL-00282" summary="Update proxy">
+      <created>1392420838586</created>
+      <updated>1392420838586</updated>
+    </task>
+    <task id="LOCAL-00283" summary="Update proxy&#10;">
+      <created>1392420900817</created>
+      <updated>1392420900817</updated>
+    </task>
+    <task id="LOCAL-00284" summary="Update file watchers">
+      <created>1392577826723</created>
+      <updated>1392577826723</updated>
+    </task>
+    <task id="LOCAL-00285" summary="Add contributors to readme + version bump&#10;">
+      <created>1392583635892</created>
+      <updated>1392583635893</updated>
+    </task>
+    <task id="LOCAL-00286" summary="Added versioning to client-script">
+      <created>1392587562390</created>
+      <updated>1392587562390</updated>
+    </task>
+    <task id="LOCAL-00287" summary="Remove IP from multiple IP warnings">
+      <created>1392619902028</created>
+      <updated>1392619902028</updated>
+    </task>
+    <task id="LOCAL-00288" summary="REmove ports specs">
+      <created>1392626977401</created>
+      <updated>1392626977401</updated>
+    </task>
+    <task id="LOCAL-00289" summary="Uses promises to resolve ports">
+      <created>1392661472255</created>
+      <updated>1392661472255</updated>
+    </task>
+    <task id="LOCAL-00290" summary="Move tests">
+      <created>1392662186798</created>
+      <updated>1392662186798</updated>
+    </task>
+    <task id="LOCAL-00291" summary="Tests running with one kicking off the app - which it shouldn't">
+      <created>1392710761073</created>
+      <updated>1392710761073</updated>
+    </task>
+    <task id="LOCAL-00292" summary="Add .map files to auto-excluded">
+      <created>1392714331980</created>
+      <updated>1392714331980</updated>
+    </task>
+    <task id="LOCAL-00293" summary="Upgrade cl-strings, dealing with some es6 problems">
+      <created>1392714353348</created>
+      <updated>1392714353348</updated>
+    </task>
+    <task id="LOCAL-00294" summary="Upgrade cl-strings, dealing with some es6 problems">
+      <created>1393030093868</created>
+      <updated>1393030093868</updated>
+    </task>
+    <task id="LOCAL-00295" summary="Simplify event callbacks">
+      <created>1393030140298</created>
+      <updated>1393030140298</updated>
+    </task>
+    <task id="LOCAL-00296" summary="Simplify event callbacks">
+      <created>1393030176865</created>
+      <updated>1393030176867</updated>
+    </task>
+    <task id="LOCAL-00297" summary="Fix broken tests with new event names">
+      <created>1393031770677</created>
+      <updated>1393031770678</updated>
+    </task>
+    <task id="LOCAL-00298" summary="Add spec for testing paths">
+      <created>1393032620581</created>
+      <updated>1393032620581</updated>
+    </task>
+    <task id="LOCAL-00299" summary="Add in-browser notification when connected">
+      <created>1393073711460</created>
+      <updated>1393073711460</updated>
+    </task>
+    <task id="LOCAL-00300" summary="Add connect-livereload as dependency">
+      <created>1393073760751</created>
+      <updated>1393073760751</updated>
+    </task>
+    <task id="LOCAL-00301" summary="Add Remove connect-livereload and create separate module">
+      <created>1393083187227</created>
+      <updated>1393083187227</updated>
+    </task>
+    <task id="LOCAL-00302" summary="add respmodifier">
+      <created>1393088114837</created>
+      <updated>1393088114837</updated>
+    </task>
+    <task id="LOCAL-00303" summary="Switch to new snippet module &amp; update tests to suit">
+      <created>1393096575989</created>
+      <updated>1393096575989</updated>
+    </task>
+    <task id="LOCAL-00304" summary="Fix UA problems with IE">
+      <created>1393107561929</created>
+      <updated>1393107561929</updated>
+    </task>
+    <task id="LOCAL-00305" summary="fixes #80">
+      <created>1393111041126</created>
+      <updated>1393111041126</updated>
+    </task>
+    <task id="LOCAL-00306" summary="Add extra specs for IE header  problems">
+      <created>1393111785286</created>
+      <updated>1393111785286</updated>
+    </task>
+    <task id="LOCAL-00307" summary="Add script tags to body again">
+      <created>1393112454332</created>
+      <updated>1393112454332</updated>
+    </task>
+    <task id="LOCAL-00308" summary="Allow up to 10 digits for scroll sync">
+      <created>1393113225686</created>
+      <updated>1393113225686</updated>
+    </task>
+    <task id="LOCAL-00309" summary="0.6.1 release">
+      <created>1393115104238</created>
+      <updated>1393115104238</updated>
+    </task>
+    <task id="LOCAL-00310" summary="0.6.1 release">
+      <created>1393142351156</created>
+      <updated>1393142351156</updated>
+    </task>
+    <task id="LOCAL-00311" summary="Add position:relative to HTML when using notify elem">
+      <created>1393365335716</created>
+      <updated>1393365335716</updated>
+    </task>
+    <task id="LOCAL-00312" summary="Fixes #87 https://github.com/shakyShane/grunt-browser-sync/issues/36">
+      <created>1393451028178</created>
+      <updated>1393451028178</updated>
+    </task>
+    <task id="LOCAL-00313" summary="Fixes #87 https://github.com/shakyShane/grunt-browser-sync/issues/36">
+      <created>1393451140884</created>
+      <updated>1393451140885</updated>
+    </task>
+    <task id="LOCAL-00314" summary="Remove client scripts from core">
+      <created>1393538071955</created>
+      <updated>1393538071955</updated>
+    </task>
+    <task id="LOCAL-00315" summary="Use port scanner dep">
+      <created>1393613557328</created>
+      <updated>1393613557328</updated>
+    </task>
+    <task id="LOCAL-00316" summary="Clean up init method">
+      <created>1393613982779</created>
+      <updated>1393613982779</updated>
+    </task>
+    <task id="LOCAL-00317" summary="Clean up callback code">
+      <created>1393615195448</created>
+      <updated>1393615195448</updated>
+    </task>
+    <task id="LOCAL-00318" summary="Remove deps">
+      <created>1393626204702</created>
+      <updated>1393626204702</updated>
+    </task>
+    <task id="LOCAL-00319" summary="Move Event emitter int emit method">
+      <created>1393626706378</created>
+      <updated>1393626706378</updated>
+    </task>
+    <task id="LOCAL-00320" summary="Move default config into separate">
+      <created>1393627855828</created>
+      <updated>1393627855828</updated>
+    </task>
+    <task id="LOCAL-00321" summary="Updated CLI tests">
+      <created>1393628826227</created>
+      <updated>1393628826227</updated>
+    </task>
+    <task id="LOCAL-00322" summary="Update cli files specs">
+      <created>1393628982877</created>
+      <updated>1393628982877</updated>
+    </task>
+    <task id="LOCAL-00323" summary="Update merge configs cli specs">
+      <created>1393629167879</created>
+      <updated>1393629167879</updated>
+    </task>
+    <task id="LOCAL-00324" summary="Add cli init specs">
+      <created>1393631528825</created>
+      <updated>1393631528825</updated>
+    </task>
+    <task id="LOCAL-00325" summary="Wrap messages Spec">
+      <created>1393631584649</created>
+      <updated>1393631584649</updated>
+    </task>
+    <task id="LOCAL-00326" summary="All CLI tests updated">
+      <created>1393631775895</created>
+      <updated>1393631775895</updated>
+    </task>
+    <task id="LOCAL-00327" summary="Add super-test for control panel specs">
+      <created>1393681761803</created>
+      <updated>1393681761803</updated>
+    </task>
+    <task id="LOCAL-00328" summary="Added specs for INIT">
+      <created>1393684751031</created>
+      <updated>1393684751031</updated>
+    </task>
+    <task id="LOCAL-00329" summary="Update proxy specs">
+      <created>1393687037439</created>
+      <updated>1393687037439</updated>
+    </task>
+    <task id="LOCAL-00330" summary="Remove control panel from core">
+      <created>1393687051955</created>
+      <updated>1393687051955</updated>
+    </task>
+    <task id="LOCAL-00331" summary="Update paths">
+      <created>1393687329064</created>
+      <updated>1393687329064</updated>
+    </task>
+    <task id="LOCAL-00332" summary="Use super test in specs">
+      <created>1393689688224</created>
+      <updated>1393689688224</updated>
+    </task>
+    <task id="LOCAL-00333" summary="Tests refactored">
+      <created>1393691322765</created>
+      <updated>1393691322765</updated>
+    </task>
+    <task id="LOCAL-00334" summary="Proxy Spec cleanup">
+      <created>1393704236129</created>
+      <updated>1393704236129</updated>
+    </task>
+    <task id="LOCAL-00335" summary="Proxy Spec cleanup">
+      <created>1393705458310</created>
+      <updated>1393705458310</updated>
+    </task>
+    <task id="LOCAL-00336" summary="Rename specs">
+      <created>1393705988169</created>
+      <updated>1393705988169</updated>
+    </task>
+    <task id="LOCAL-00337" summary="Cleanup for CI">
+      <created>1393709607020</created>
+      <updated>1393709607020</updated>
+    </task>
+    <task id="LOCAL-00338" summary="Switch to Gulp &amp; Mocha for CI">
+      <created>1393709790853</created>
+      <updated>1393709790853</updated>
+    </task>
+    <task id="LOCAL-00339" summary="Fix depens">
+      <created>1393710103381</created>
+      <updated>1393710103381</updated>
+    </task>
+    <task id="LOCAL-00340" summary="Fix depens">
+      <created>1393710804255</created>
+      <updated>1393710804255</updated>
+    </task>
+    <task id="LOCAL-00341" summary="Use read stream to ensure file is greater than 0 bytes">
+      <created>1393719040157</created>
+      <updated>1393719040157</updated>
+    </task>
+    <task id="LOCAL-00342" summary="Use read stream to ensure file is greater than 0 bytes">
+      <created>1393719439264</created>
+      <updated>1393719439265</updated>
+    </task>
+    <task id="LOCAL-00343" summary="Use read stream to ensure file is greater than 0 bytes">
+      <created>1393719551227</created>
+      <updated>1393719551227</updated>
+    </task>
+    <task id="LOCAL-00344" summary="Consistent naming conventions for tests">
+      <created>1393719886614</created>
+      <updated>1393719886614</updated>
+    </task>
+    <task id="LOCAL-00345" summary="Add gulp-contribs for readme">
+      <created>1393725674970</created>
+      <updated>1393725674970</updated>
+    </task>
+    <task id="LOCAL-00346" summary="Add methods for merging config options&#10;">
+      <created>1393969405406</created>
+      <updated>1393969405406</updated>
+    </task>
+    <task id="LOCAL-00347" summary="Add proxy option merge">
+      <created>1393972540811</created>
+      <updated>1393972540811</updated>
+    </task>
+    <task id="LOCAL-00348" summary="Add proxy option merge">
+      <created>1394009355413</created>
+      <updated>1394009355413</updated>
+    </task>
+    <task id="LOCAL-00349" summary="Add proxy option merge">
+      <created>1394032193133</created>
+      <updated>1394032193133</updated>
+    </task>
+    <task id="LOCAL-00350" summary="Finish spec for merging proxy option">
+      <created>1394131271737</created>
+      <updated>1394131271737</updated>
+    </task>
+    <task id="LOCAL-00351" summary="Add hostname option spec">
+      <created>1394131988196</created>
+      <updated>1394131988197</updated>
+    </task>
+    <task id="LOCAL-00352" summary="Add specs for post option merging">
+      <created>1394133721819</created>
+      <updated>1394133721819</updated>
+    </task>
+    <task id="LOCAL-00353" summary="Add ghostmode option merge">
+      <created>1394139829757</created>
+      <updated>1394139829757</updated>
+    </task>
+    <task id="LOCAL-00354" summary="Add file merging option">
+      <created>1394140663457</created>
+      <updated>1394140663457</updated>
+    </task>
+    <task id="LOCAL-00355" summary="Add hostname option spec">
+      <created>1394140674984</created>
+      <updated>1394140674984</updated>
+    </task>
+    <task id="LOCAL-00356" summary="Add file option merging spec">
+      <created>1394286254232</created>
+      <updated>1394286254232</updated>
+    </task>
+    <task id="LOCAL-00357" summary="Extract socket methods">
+      <created>1394296945288</created>
+      <updated>1394296945288</updated>
+    </task>
+    <task id="LOCAL-00358" summary="Remove socket.io log">
+      <created>1394298373148</created>
+      <updated>1394298373148</updated>
+    </task>
+    <task id="LOCAL-00359" summary="Add callback helper for alternative API usage">
+      <created>1394301049865</created>
+      <updated>1394301049865</updated>
+    </task>
+    <task id="LOCAL-00360" summary="Extract start services into separate file">
+      <created>1394302792027</created>
+      <updated>1394302792027</updated>
+    </task>
+    <task id="LOCAL-00361" summary="Clean files for consistent var usage">
+      <created>1394303519488</created>
+      <updated>1394303519488</updated>
+    </task>
+    <task id="LOCAL-00362" summary="Add plugins">
+      <created>1394308268425</created>
+      <updated>1394308268425</updated>
+    </task>
+    <task id="LOCAL-00363" summary="Add file watcher plugin">
+      <created>1394310071861</created>
+      <updated>1394310071861</updated>
+    </task>
+    <task id="LOCAL-00364" summary="Add sockets as plugin">
+      <created>1394311141639</created>
+      <updated>1394311141639</updated>
+    </task>
+    <task id="LOCAL-00365" summary="bring back init method">
+      <created>1394312252492</created>
+      <updated>1394312252492</updated>
+    </task>
+    <task id="LOCAL-00366" summary="Add spec for comma separated files arg">
+      <created>1394315818617</created>
+      <updated>1394315818617</updated>
+    </task>
+    <task id="LOCAL-00367" summary="Cleanup consistency">
+      <created>1394316265692</created>
+      <updated>1394316265692</updated>
+    </task>
+    <task id="LOCAL-00368" summary="Cleanup specs">
+      <created>1394317124479</created>
+      <updated>1394317124480</updated>
+    </task>
+    <task id="LOCAL-00369" summary="Cleanup specs">
+      <created>1394317161159</created>
+      <updated>1394317161159</updated>
+    </task>
+    <task id="LOCAL-00370" summary="Add specs for init">
+      <created>1394321881715</created>
+      <updated>1394321881715</updated>
+    </task>
+    <task id="LOCAL-00371" summary="Fix CI build">
+      <created>1394323139297</created>
+      <updated>1394323139297</updated>
+    </task>
+    <task id="LOCAL-00372" summary="Remove gulp-mocha depen">
+      <created>1394323327626</created>
+      <updated>1394323327626</updated>
+    </task>
+    <task id="LOCAL-00373" summary="Add plugin interface for logging">
+      <created>1394360546433</created>
+      <updated>1394360546433</updated>
+    </task>
+    <task id="LOCAL-00374" summary="Update specs to suit new plugins">
+      <created>1394362256894</created>
+      <updated>1394362256894</updated>
+    </task>
+    <task id="LOCAL-00375" summary="Add specs for redirect url replacement">
+      <created>1394372665707</created>
+      <updated>1394372665708</updated>
+    </task>
+    <task id="LOCAL-00376" summary="Add support for xip.io">
+      <created>1394374325944</created>
+      <updated>1394374325944</updated>
+    </task>
+    <task id="LOCAL-00377" summary="Add multiple base dir support for server">
+      <created>1394376607233</created>
+      <updated>1394376607233</updated>
+    </task>
+    <task id="LOCAL-00378" summary="Add middlewares to server option">
+      <created>1394378740426</created>
+      <updated>1394378740426</updated>
+    </task>
+    <task id="LOCAL-00379" summary="Add hostnameSuffix option">
+      <created>1394379068411</created>
+      <updated>1394379068411</updated>
+    </task>
+    <task id="LOCAL-00380" summary="Add hostnameSuffix option">
+      <created>1394379403311</created>
+      <updated>1394379403311</updated>
+    </task>
+    <task id="LOCAL-00381" summary="Make un-versioned client script return the latest">
+      <created>1394379734789</created>
+      <updated>1394379734789</updated>
+    </task>
+    <task id="LOCAL-00382" summary="Make un-versioned client script return the latest">
+      <created>1394379941902</created>
+      <updated>1394379941903</updated>
+    </task>
+    <task id="LOCAL-00383" summary="Updated readme">
+      <created>1394380070129</created>
+      <updated>1394380070130</updated>
+    </task>
+    <task id="LOCAL-00384" summary="Version bump for minor release">
+      <created>1394389982612</created>
+      <updated>1394389982612</updated>
+    </task>
+    <task id="LOCAL-00385" summary="make 'start from command line' testable&#10;&#10;">
+      <created>1394614965874</created>
+      <updated>1394614965875</updated>
+    </task>
+    <task id="LOCAL-00386" summary="bring back --config option">
+      <created>1395130766734</created>
+      <updated>1395130766735</updated>
+    </task>
+    <task id="LOCAL-00387" summary="Add examples&#10;">
+      <created>1395130797498</created>
+      <updated>1395130797499</updated>
+    </task>
+    <task id="LOCAL-00388" summary="Add examples&#10;">
+      <created>1395131031347</created>
+      <updated>1395131031348</updated>
+    </task>
+    <task id="LOCAL-00389" summary="fixes #100&#10;added plugin interface for upcoming control panel">
+      <created>1395183037268</created>
+      <updated>1395183037268</updated>
+    </task>
+    <task id="LOCAL-00390" summary="Add fixes from browser-sync-client lib">
+      <created>1395183920917</created>
+      <updated>1395183920917</updated>
+    </task>
+    <task id="LOCAL-00391" summary="Add snippet to options object">
+      <created>1395306752033</created>
+      <updated>1395306752033</updated>
+    </task>
+    <task id="LOCAL-00392" summary="Added logger plugin example">
+      <created>1395731475924</created>
+      <updated>1395731475924</updated>
+    </task>
+    <task id="LOCAL-00393" summary="Revert to pre 0.9.0 release of Socket.io.">
+      <created>1395731504877</created>
+      <updated>1395731504877</updated>
+    </task>
+    <task id="LOCAL-00394" summary="Only call plugins when needed">
+      <created>1395786108255</created>
+      <updated>1395786108255</updated>
+    </task>
+    <task id="LOCAL-00395" summary="Fixes #91 - https://github.com/shakyShane/browser-sync/issues/91">
+      <created>1395786401596</created>
+      <updated>1395786401596</updated>
+    </task>
+    <task id="LOCAL-00396" summary="Fixes #75 - https://github.com/shakyShane/browser-sync/issues/75">
+      <created>1395786435086</created>
+      <updated>1395786435087</updated>
+    </task>
+    <task id="LOCAL-00397" summary="Fixes #106 - https://github.com/shakyShane/browser-sync/issues/106">
+      <created>1395789543186</created>
+      <updated>1395789543186</updated>
+    </task>
+    <task id="LOCAL-00398" summary="Fix CI problem">
+      <created>1395822419650</created>
+      <updated>1395822419650</updated>
+    </task>
+    <task id="LOCAL-00399" summary="Add specs for program flow through parse">
+      <created>1396210862799</created>
+      <updated>1396210862799</updated>
+    </task>
+    <task id="LOCAL-00400" summary="use function exports">
+      <created>1396210880154</created>
+      <updated>1396210880154</updated>
+    </task>
+    <task id="LOCAL-00401" summary="Allow directory listing + server option">
+      <created>1396210901039</created>
+      <updated>1396210901039</updated>
+    </task>
+    <task id="LOCAL-00402" summary="Cleanup and remove unused modules">
+      <created>1396211042723</created>
+      <updated>1396211042723</updated>
+    </task>
+    <task id="LOCAL-00403" summary="add minify option for client script">
+      <created>1396212682210</created>
+      <updated>1396212682210</updated>
+    </task>
+    <task id="LOCAL-00404" summary="Added logConnections Option">
+      <created>1396219135686</created>
+      <updated>1396219135686</updated>
+    </task>
+    <task id="LOCAL-00405" summary="add minify option for client script">
+      <created>1396219149225</created>
+      <updated>1396219149225</updated>
+    </task>
+    <task id="LOCAL-00406" summary="Use latest client-scripts">
+      <created>1396219539205</created>
+      <updated>1396219539206</updated>
+    </task>
+    <task id="LOCAL-00407" summary="contribs">
+      <created>1396219690988</created>
+      <updated>1396219690988</updated>
+    </task>
+    <task id="LOCAL-00408" summary="Clean">
+      <created>1396509799193</created>
+      <updated>1396509799193</updated>
+    </task>
+    <task id="LOCAL-00409" summary="add minify option for client script">
+      <created>1396509978612</created>
+      <updated>1396509978612</updated>
+    </task>
+    <task id="LOCAL-00410" summary="Clean">
+      <created>1397028663471</created>
+      <updated>1397028663471</updated>
+    </task>
+    <task id="LOCAL-00411" summary="Updated readme">
+      <created>1397028873836</created>
+      <updated>1397028873837</updated>
+    </task>
+    <task id="LOCAL-00412" summary="Use latest control panel">
+      <created>1397311467284</created>
+      <updated>1397311467284</updated>
+    </task>
+    <task id="LOCAL-00413" summary="Version bump for patch">
+      <created>1397311542506</created>
+      <updated>1397311542506</updated>
+    </task>
+    <task id="LOCAL-00414" summary="do not gzip socket.io script windows users. fixes https://github.com/shakyShane/gulp-browser-sync/issues/8. fixes #136">
+      <created>1397385287996</created>
+      <updated>1397385287996</updated>
+    </task>
+    <task id="LOCAL-00415" summary="Added support for new client">
+      <created>1397420632217</created>
+      <updated>1397420632217</updated>
+    </task>
+    <task id="LOCAL-00416" summary="Added support for streams with reload() method">
+      <created>1397425975884</created>
+      <updated>1397425975884</updated>
+    </task>
+    <task id="LOCAL-00417" summary="Add reload example">
+      <created>1397457593378</created>
+      <updated>1397457593378</updated>
+    </task>
+    <task id="LOCAL-00418" summary="Dont assume stream as default">
+      <created>1397457630057</created>
+      <updated>1397457630057</updated>
+    </task>
+    <task id="LOCAL-00419" summary="cleanup">
+      <created>1397458478057</created>
+      <updated>1397458478057</updated>
+    </task>
+    <task id="LOCAL-00420" summary="jshint errors">
+      <created>1397458673734</created>
+      <updated>1397458673735</updated>
+    </task>
+    <task id="LOCAL-00421" summary="Disable location sync by default">
+      <created>1397458976512</created>
+      <updated>1397458976512</updated>
+    </task>
+    <task id="LOCAL-00422" summary="Use new client scripts">
+      <created>1397461383793</created>
+      <updated>1397461383793</updated>
+    </task>
+    <task id="LOCAL-00423" summary="Change links options to 'location'">
+      <created>1397508332230</created>
+      <updated>1397508332230</updated>
+    </task>
+    <task id="LOCAL-00424" summary="Merged master">
+      <created>1397508424739</created>
+      <updated>1397508424739</updated>
+    </task>
+    <task id="LOCAL-00425" summary="Clean for tests">
+      <created>1397508941730</created>
+      <updated>1397508941730</updated>
+    </task>
+    <task id="LOCAL-00426" summary="added debounce option for file watching">
+      <created>1397509084354</created>
+      <updated>1397509084354</updated>
+    </task>
+    <task id="LOCAL-00427" summary="added new contributors">
+      <created>1397509129716</created>
+      <updated>1397509129716</updated>
+    </task>
+    <task id="LOCAL-00428" summary="GPL + 0.8.0">
+      <created>1397510187344</created>
+      <updated>1397510187344</updated>
+    </task>
+    <task id="LOCAL-00429" summary="Only match domains once inside of attributes. fixes #138">
+      <created>1397734363986</created>
+      <updated>1397734363986</updated>
+    </task>
+    <task id="LOCAL-00430" summary="Allow individual form syncing, + fix issue with link re-writing in proxy">
+      <created>1397752448340</created>
+      <updated>1397752448341</updated>
+    </task>
+    <task id="LOCAL-00431" summary="Keep timestamps option as default, fixes #142">
+      <created>1397851830968</created>
+      <updated>1397851830968</updated>
+    </task>
+    <task id="LOCAL-00432" summary="0.8.1">
+      <created>1397851877352</created>
+      <updated>1397851877352</updated>
+    </task>
+    <task id="LOCAL-00433" summary="Extract Snippet regex for easier testing">
+      <created>1397979182893</created>
+      <updated>1397979182893</updated>
+    </task>
+    <task id="LOCAL-00434" summary="Extract Snippet regex for easier testing">
+      <created>1397979211673</created>
+      <updated>1397979211673</updated>
+    </task>
+    <task id="LOCAL-00435" summary="fixes https://github.com/shakyShane/gulp-browser-sync/issues/11">
+      <created>1398021405471</created>
+      <updated>1398021405471</updated>
+    </task>
+    <task id="LOCAL-00436" summary="Added a public `notify` method for sending messages to the browser">
+      <created>1398021969035</created>
+      <updated>1398021969035</updated>
+    </task>
+    <task id="LOCAL-00437" summary="added public notify method">
+      <created>1398025004036</created>
+      <updated>1398025004036</updated>
+    </task>
+    <option name="localTasksCounter" value="438" />
+    <servers />
+  </component>
+  <component name="TodoView" selected-index="0">
+    <todo-panel id="selected-file">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
+      <todo-filter name="Custom Todos" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
+      <todo-filter name="Custom Todos" />
+    </todo-panel>
+    <todo-panel id="default-changelist">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="22" width="1440" height="878" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.34390864" sideWeight="0.4641834" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.34390864" sideWeight="0.5358166" order="9" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30612245" sideWeight="0.35744986" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2875" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.40482235" sideWeight="0.6568768" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3653295" sideWeight="0.71967655" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3689441" sideWeight="0.58055556" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.56377554" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15433674" sideWeight="0.49928367" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24498567" sideWeight="0.7751323" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="FLOATING" visible="true" weight="0.20993789" sideWeight="0.5709169" order="3" side_tool="false" content_ui="tabs" x="1440" y="22" width="1680" height="869" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3297568" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Grunt" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+    </layout>
+    <layout-to-restore>
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41836736" sideWeight="0.53594774" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3125" sideWeight="0.47661692" order="9" side_tool="true" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3297568" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5950249" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2875" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3125" sideWeight="0.5233831" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.36103153" sideWeight="0.71967655" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.375" sideWeight="0.5630373" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32908162" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15433674" sideWeight="0.49928367" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.34626865" sideWeight="0.7751323" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21556123" sideWeight="0.559204" order="3" side_tool="false" content_ui="tabs" />
+    </layout-to-restore>
+  </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+      <collection />
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
+    <option name="myTodoPanelSettings">
+      <TodoPanelSettings>
+        <option name="todoFilterName" value="Custom Todos" />
+        <option name="myTodoFilterName" value="Custom Todos" />
+      </TodoPanelSettings>
+    </option>
+    <MESSAGE value="Use latest control panel" />
+    <MESSAGE value="Version bump for patch" />
+    <MESSAGE value="do not gzip socket.io script windows users. fixes https://github.com/shakyShane/gulp-browser-sync/issues/8. fixes #136" />
+    <MESSAGE value="Added support for new client" />
+    <MESSAGE value="Added support for streams with reload() method" />
+    <MESSAGE value="Add reload example" />
+    <MESSAGE value="Dont assume stream as default" />
+    <MESSAGE value="cleanup" />
+    <MESSAGE value="jshint errors" />
+    <MESSAGE value="Disable location sync by default" />
+    <MESSAGE value="Use new client scripts" />
+    <MESSAGE value="Change links options to 'location'" />
+    <MESSAGE value="Merged master" />
+    <MESSAGE value="Clean for tests" />
+    <MESSAGE value="added debounce option for file watching" />
+    <MESSAGE value="added new contributors" />
+    <MESSAGE value="GPL + 0.8.0" />
+    <MESSAGE value="Only match domains once inside of attributes. fixes #138" />
+    <MESSAGE value="Allow individual form syncing, + fix issue with link re-writing in proxy" />
+    <MESSAGE value="Keep timestamps option as default, fixes #142" />
+    <MESSAGE value="0.8.1" />
+    <MESSAGE value="Extract Snippet regex for easier testing" />
+    <MESSAGE value="fixes https://github.com/shakyShane/gulp-browser-sync/issues/11" />
+    <MESSAGE value="Added a public `notify` method for sending messages to the browser" />
+    <MESSAGE value="added public notify method" />
+    <option name="LAST_COMMIT_MESSAGE" value="added public notify method" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints-dialog>
+        <breakpoints-dialog />
+      </breakpoints-dialog>
+      <option name="time" value="462" />
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/lib/cli-init.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/socket.io/lib/socket.io.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/control-panel.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/socket.io-client/lib/io.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/socket.io-client/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/socket.io-client/bin/builder.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/http-proxy/lib/http-proxy.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/specs/control-panel/cp.socket.setup.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="296" max-vertical-offset="735">
+          <caret line="38" column="37" selection-start-line="38" selection-start-column="37" selection-end-line="38" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/sockets.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1125">
+          <caret line="8" column="37" selection-start-line="8" selection-start-column="37" selection-end-line="8" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/fixtures/scrolling.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.958333" vertical-offset="2812" max-vertical-offset="3630">
+          <caret line="205" column="0" selection-start-line="205" selection-start-column="0" selection-end-line="205" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/specs/utils/utils.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.7951318" vertical-offset="120" max-vertical-offset="1665">
+          <caret line="67" column="57" selection-start-line="67" selection-start-column="57" selection-end-line="67" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/logger.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.29069766" vertical-offset="90" max-vertical-offset="885">
+          <caret line="16" column="6" selection-start-line="16" selection-start-column="6" selection-end-line="16" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/services.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33527133" vertical-offset="37" max-vertical-offset="915">
+          <caret line="14" column="25" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/specs/api/init.event.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="765">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/specs/cli/cli.init.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.14534883" vertical-offset="75" max-vertical-offset="1095">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/specs/init/init.launch.server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3060">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/messages.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4455">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/specs/init/init.returns.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1545">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/specs/cli/cli.messages.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5416667" vertical-offset="2836" max-vertical-offset="3645">
+          <caret line="209" column="57" selection-start-line="209" selection-start-column="36" selection-end-line="209" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/browser-sync-client/dist/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="19200">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/browser-sync-client/dist/index.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="472">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/sinon/lib/sinon/assert.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33268103" vertical-offset="910" max-vertical-offset="2790">
+          <caret line="75" column="16" selection-start-line="75" selection-start-column="16" selection-end-line="75" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/specs/server/server.nav.callback.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.72" vertical-offset="981" max-vertical-offset="2565">
+          <caret line="93" column="19" selection-start-line="93" selection-start-column="19" selection-end-line="93" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/specs/files/files.watching.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="239" max-vertical-offset="1245">
+          <caret line="30" column="11" selection-start-line="30" selection-start-column="11" selection-end-line="30" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/fixtures/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33482143" vertical-offset="30" max-vertical-offset="675">
+          <caret line="12" column="73" selection-start-line="12" selection-start-column="73" selection-end-line="12" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/fixtures/inputs.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="585">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/file-watcher.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.9050505" vertical-offset="842" max-vertical-offset="1455">
+          <caret line="86" column="23" selection-start-line="86" selection-start-column="23" selection-end-line="86" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="352" max-vertical-offset="2820">
+          <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider editor-type-id="MarkdownPreviewEditor">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="30" max-vertical-offset="1155">
+          <caret line="36" column="79" selection-start-line="36" selection-start-column="79" selection-end-line="36" selection-end-column="79" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/browser-sync-client/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1005">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/LICENSE-GPL">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4586331" vertical-offset="0" max-vertical-offset="9015">
+          <caret line="17" column="41" selection-start-line="0" selection-start-column="0" selection-end-line="595" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/fixtures/assets/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.19699812" vertical-offset="0" max-vertical-offset="533">
+          <caret line="7" column="1" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/specs/server/server.snippet.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.51724136" vertical-offset="0" max-vertical-offset="3420">
+          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/specs/snippet/snippet.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.18108653" vertical-offset="0" max-vertical-offset="675">
+          <caret line="6" column="53" selection-start-line="6" selection-start-column="53" selection-end-line="6" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/fixtures/forms.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.44397464" vertical-offset="375" max-vertical-offset="990">
+          <caret line="39" column="61" selection-start-line="39" selection-start-column="61" selection-end-line="39" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/specs/init/init.reload.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5404814" vertical-offset="698" max-vertical-offset="1155">
+          <caret line="63" column="0" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/fixtures/sass.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.25" vertical-offset="0" max-vertical-offset="450">
+          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/specs/proxy/proxy.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="200" max-vertical-offset="1305">
+          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/specs/proxy/proxy.snippets.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="645" max-vertical-offset="1155">
+          <caret line="62" column="39" selection-start-line="62" selection-start-column="39" selection-end-line="62" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/snippet.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="547" max-vertical-offset="1335">
+          <caret line="45" column="31" selection-start-line="45" selection-start-column="25" selection-end-line="45" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/specs/proxy/proxy.utils.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.53368795" vertical-offset="1079" max-vertical-offset="3150">
+          <caret line="92" column="11" selection-start-line="92" selection-start-column="11" selection-end-line="92" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/proxy.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.1559792" vertical-offset="135" max-vertical-offset="2085">
+          <caret line="15" column="24" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/default-config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1065">
+          <caret line="7" column="21" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/specs/init/init.notify.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="570">
+          <caret line="29" column="29" selection-start-line="29" selection-start-column="29" selection-end-line="29" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gulpfile.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="335" max-vertical-offset="1140">
+          <caret line="40" column="0" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/fixtures/scss/bootstrap-scss.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7108434" vertical-offset="106505" max-vertical-offset="106920">
+          <caret line="7120" column="22" selection-start-line="7120" selection-start-column="22" selection-end-line="7120" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="466">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8731183" vertical-offset="644" max-vertical-offset="1185">
+          <caret line="70" column="34" selection-start-line="70" selection-start-column="34" selection-end-line="70" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/example.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.73619634" vertical-offset="0" max-vertical-offset="630">
+          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/browser-sync.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.80981594" vertical-offset="2004" max-vertical-offset="3645">
+          <caret line="160" column="37" selection-start-line="160" selection-start-column="37" selection-end-line="160" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.12269939" vertical-offset="1395" max-vertical-offset="2205">
+          <caret line="97" column="10" selection-start-line="97" selection-start-column="10" selection-end-line="97" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
+

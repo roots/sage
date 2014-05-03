@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html ng-app="BrowserSync">
+<head>
+    <title>Browser Sync - Control Panel</title>
+    <link rel="stylesheet" href="css/styles.css"/>
+    <link rel="stylesheet" href="css/custom.css"/>
+    <script src="js/vendor/angular.min.js"></script>
+    <link href="img/favicon.ico" rel="shortcut icon" type="image/ico">
+</head>
+<body>
+
+<header class="navbar navbar-inverse navbar-fixed-top" role="banner">
+    <a id="leftmenu-trigger" class="tooltips" data-toggle="tooltip" data-placement="right"
+       title="Toggle Sidebar"></a>
+
+    <a id="rightmenu-trigger" class="tooltips" data-toggle="tooltip" data-placement="left"
+       title="Toggle Infobar"></a>
+
+    <div class="navbar-header pull-left">
+        <a class="brand-logo" href="http://browsersync.io" target="_blank"></a>
+    </div>
+
+    <ul class="nav navbar-nav pull-right toolbar">
+        <li>
+            <a href="#" id="headerbardropdown"><span><i class="fa fa-level-down"></i></span></a>
+        </li>
+        <li class="dropdown demodrop">
+            <a href="#" class="dropdown-toggle tooltips" data-toggle="dropdown">
+                <i class="fa fa-cogs"></i></a>
+        </li>
+    </ul>
+</header>
+
+<div id="page-container">
+    <!-- BEGIN SIDEBAR -->
+    <nav id="page-leftbar" role="navigation">
+        <!-- BEGIN SIDEBAR MENU -->
+        <ul class="acc-menu" id="sidebar">
+            <li></li>
+            <li class="active"><a href="index.html"><i class="fa fa-home"></i>
+                <span>Dashboard</span></a></li>
+        </ul>
+        <!-- END SIDEBAR MENU -->
+    </nav>
+    <!-- END RIGHTBAR -->
+    <div id="page-content" ng-controller="MainCtrl">
+
+        <div id='wrap'>
+            <div id="page-heading">
+                <ol class="breadcrumb">
+                    <li>Dashboard</li>
+                </ol>
+
+                <url-info ng-if="options.server || options.proxy" options="options"></url-info>
+
+                <h1 ng-if="!options.server && !options.proxy"><small>Using: </small>
+                    <a href="" title="Show Snippet" ng-click="toggleSnippet()">Snippet</a>
+                </h1>
+
+            </div>
+
+            <div class="container" ng-if="ui.snippet">
+                <div class="row">
+                    <div class="col-md-12">
+                        <p>Place this snippet somewhere before the closing <code>&lt;/body&gt;</code> tag</p>
+                        <pre><code>{{options.snippet}}</code></pre>
+                    </div>
+                </div>
+                <button ng-click="toggleSnippet()">Close</button>
+            </div>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h4>Control Panel - ComingSoon</h4>
+                                <div class="options">
+
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                <p>The BrowserSync Control Panel is a WIP & isn't quite ready for prime-time yet.
+                                    While you wait though, have you considered supporting BrowserSync?
+                                </p>
+                                <p>
+                                    This tool will always be free & open-source, but projects like this take a huge
+                                    amount of time & effort to maintain, support & improve - so contributions of any
+                                    size would be very much welcomed.
+                                </p>
+                                <!--<div class="containter well">-->
+                                    <!--<div class="row">-->
+                                        <!--<div class="col-xs-4">-->
+                                            <!--<h5 class="text-right">-->
+                                               <!--{{options.url}}/-->
+                                            <!--</h5>-->
+                                        <!--</div>-->
+                                        <!--<div class="col-xs-8">-->
+                                            <!--<div class="input-group ">-->
+                                                <!--<input ng-model="data.url" type="text" placeholder="Enter path eg: about-us" class="form-control">-->
+                                                  <!--<span class="input-group-btn">-->
+                                                    <!--<button ng-click="goTo(data.url)" type="button" class="btn btn-primary"><i class="fa fa-share"></i> Send All Here</button>-->
+                                                  <!--</span>-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <p><a href="https://www.gittip.com/shakyshane">
+                                            <img src="https://rawgithub.com/chris---/Donation-Badges/master/gittip.jpeg" alt="Support via Gittip" style="max-width:100%;"></a>
+                                            <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_donations&amp;business=shakyshane%40gmail%2ecom&amp;lc=US&amp;item_name=browser%2dsync"><img src="https://rawgithub.com/chris---/Donation-Badges/master/paypal.jpeg" alt="Support via PayPal" style="max-width:100%;"></a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- container -->
+        </div><!--wrap -->
+    </div><!-- page-content -->
+
+    <footer role="contentinfo">
+        <div class="clearfix">
+            <ul class="list-unstyled list-inline">
+                <button class="pull-right btn btn-inverse-alt btn-xs hidden-print" id="back-to-top">
+                    <i class="fa fa-arrow-up"></i></button>
+            </ul>
+        </div>
+    </footer>
+
+</div>
+
+<!-- BrowserSync:scripts -->
+
+<script src="js/scripts/app.js"></script>
+
+</body>
+</html>

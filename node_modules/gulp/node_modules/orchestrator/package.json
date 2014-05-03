@@ -1,0 +1,50 @@
+{
+  "name": "orchestrator",
+  "description": "A module for sequencing and executing tasks and dependencies in maximum concurrency",
+  "version": "0.3.3",
+  "homepage": "https://github.com/robrich/orchestrator",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/robrich/orchestrator.git"
+  },
+  "author": {
+    "name": "Rob Richardson",
+    "url": "http://robrich.org/"
+  },
+  "main": "./index.js",
+  "keywords": [
+    "async",
+    "task",
+    "parallel",
+    "compose"
+  ],
+  "dependencies": {
+    "sequencify": "~0.0.7"
+  },
+  "devDependencies": {
+    "mocha": "~1.17.0",
+    "should": "~2.1.1",
+    "q": "~1.0.0",
+    "event-stream": "~3.1.0",
+    "map-stream": "~0.1.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "engines": {
+    "node": ">= 0.8"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://github.com/robrich/orchestrator/raw/master/LICENSE"
+    }
+  ],
+  "readme": "[![Build Status](https://secure.travis-ci.org/robrich/orchestrator.png?branch=master)](https://travis-ci.org/robrich/orchestrator)\r\n[![Dependency Status](https://david-dm.org/robrich/orchestrator.png)](https://david-dm.org/robrich/orchestrator)\r\n\r\nOrchestrator\r\n============\r\n\r\nA module for sequencing and executing tasks and dependencies in maximum concurrency\r\n\r\nUsage\r\n-----\r\n\r\n### 1. Get a reference:\r\n\r\n```javascript\r\nvar Orchestrator = require('orchestrator');\r\nvar orchestrator = new Orchestrator();\r\n```\r\n\r\n### 2. Load it up with stuff to do:\r\n\r\n```javascript\r\norchestrator.add('thing1', function(){\r\n  // do stuff\r\n});\r\norchestrator.add('thing2', function(){\r\n  // do stuff\r\n});\r\n```\r\n\r\n### 3. Run the tasks:\r\n\r\n```javascript\r\norchestrator.start('thing1', 'thing2', function (err) {\r\n  // all done\r\n});\r\n```\r\n\r\nAPI\r\n---\r\n\r\n### orchestrator.add(name[, deps][, function]);\r\n\r\nDefine a task\r\n\r\n```javascript\r\norchestrator.add('thing1', function(){\r\n  // do stuff\r\n});\r\n```\r\n\r\n#### name\r\nType: `String`\r\n\r\nThe name of the task.\r\n\r\n#### deps\r\nType: `Array`\r\n\r\nAn array of task names to be executed and completed before your task will run.\r\n\r\n```javascript\r\norchestrator.add('mytask', ['array', 'of', 'task', 'names'], function() {\r\n  // Do stuff\r\n});\r\n```\r\n\r\n**Note:** Are your tasks running before the dependencies are complete?  Make sure your dependency tasks\r\nare correctly using the async run hints: take in a callback or return a promise or event stream.\r\n\r\n#### fn\r\nType: `function`\r\n\r\nThe function that performs the task's operations.  For asynchronous tasks, you need to provide a hint when the task is complete:\r\n\r\n- Take in a callback\r\n- Return a stream or a promise\r\n\r\n#### examples:\r\n\r\n**Accept a callback:**\r\n\r\n```javascript\r\norchestrator.add('thing2', function(callback){\r\n  // do stuff\r\n  callback(err);\r\n});\r\n```\r\n\r\n**Return a promise:**\r\n\r\n```javascript\r\nvar Q = require('q');\r\n\r\norchestrator.add('thing3', function(){\r\n  var deferred = Q.defer();\r\n\r\n  // do async stuff\r\n  setTimeout(function () {\r\n    deferred.resolve();\r\n  }, 1);\r\n\r\n  return deferred.promise;\r\n});\r\n```\r\n\r\n**Return a stream:** (task is marked complete when stream ends)\r\n\r\n```javascript\r\nvar map = require('map-stream');\r\n\r\norchestrator.add('thing4', function(){\r\n  var stream = map(function (args, cb) {\r\n    cb(null, args);\r\n  });\r\n  // do stream stuff\r\n  return stream;\r\n});\r\n```\r\n\r\n**Note:** By default, tasks run with maximum concurrency -- e.g. it launches all the tasks at once and waits for nothing.\r\nIf you want to create a series where tasks run in a particular order, you need to do two things:\r\n\r\n- give it a hint to tell it when the task is done,\r\n- and give it a hint that a task depends on completion of another.\r\n\r\nFor these examples, let's presume you have two tasks, \"one\" and \"two\" that you specifically want to run in this order:\r\n\r\n1. In task \"one\" you add a hint to tell it when the task is done.  Either take in a callback and call it when you're\r\ndone or return a promise or stream that the engine should wait to resolve or end respectively.\r\n\r\n2. In task \"two\" you add a hint telling the engine that it depends on completion of the first task.\r\n\r\nSo this example would look like this:\r\n\r\n```javascript\r\nvar Orchestrator = require('orchestrator');\r\nvar orchestrator = new Orchestrator();\r\n\r\n// takes in a callback so the engine knows when it'll be done\r\norchestrator.add('one', function (cb) {\r\n    // do stuff -- async or otherwise\r\n    cb(err); // if err is not null or undefined, the orchestration will stop, and note that it failed\r\n});\r\n\r\n// identifies a dependent task must be complete before this one begins\r\norchestrator.add('two', ['one'], function () {\r\n    // task 'one' is done now\r\n});\r\n\r\norchestrator.start('one', 'two');\r\n```\r\n\r\n### orchestrator.hasTask(name);\r\n\r\nHave you defined a task with this name?\r\n\r\n#### name\r\nType: `String`\r\n\r\nThe task name to query\r\n\r\n### orchestrator.start(tasks...[, cb]);\r\n\r\nStart running the tasks\r\n\r\n#### tasks\r\nType: `String` or `Array` of `String`s\r\n\r\nTasks to be executed. You may pass any number of tasks as individual arguments.\r\n\r\n#### cb\r\nType: `function`: `function (err) {`\r\n\r\nCallback to call after run completed.\r\n\r\nPasses single argument: `err`: did the orchestration succeed?\r\n\r\n**Note:** Tasks run concurrently and therefore may not complete in order.\r\n**Note:** Orchestrator uses `sequencify` to resolve dependencies before running, and therefore may not start in order.\r\nListen to orchestration events to watch task running.\r\n\r\n```javascript\r\norchestrator.start('thing1', 'thing2', 'thing3', 'thing4', function (err) {\r\n  // all done\r\n});\r\n```\r\n```javascript\r\norchestrator.start(['thing1','thing2'], ['thing3','thing4']);\r\n```\r\n\r\n**FRAGILE:** Orchestrator catches exceptions on sync runs to pass to your callback\r\nbut doesn't hook to process.uncaughtException so it can't pass those exceptions\r\nto your callback\r\n\r\n**FRAGILE:** Orchestrator will ensure each task and each dependency is run once during an orchestration run\r\neven if you specify it to run more than once. (e.g. `orchestrator.start('thing1', 'thing1')`\r\nwill only run 'thing1' once.) If you need it to run a task multiple times, wait for\r\nthe orchestration to end (start's callback) then call start again.\r\n(e.g. `orchestrator.start('thing1', function () {orchestrator.start('thing1');})`.)\r\nAlternatively create a second orchestrator instance.\r\n\r\n### orchestrator.stop()\r\n\r\nStop an orchestration run currently in process\r\n\r\n**Note:** It will call the `start()` callback with an `err` noting the orchestration was aborted\r\n\r\n### orchestrator.on(event, cb);\r\n\r\nListen to orchestrator internals\r\n\r\n#### event\r\nType: `String`\r\n\r\nEvent name to listen to:\r\n- start: from start() method, shows you the task sequence\r\n- stop: from stop() method, the queue finished successfully\r\n- err: from stop() method, the queue was aborted due to a task error\r\n- task_start: from _runTask() method, task was started\r\n- task_stop: from _runTask() method, task completed successfully\r\n- task_err: from _runTask() method, task errored\r\n- task_not_found: from start() method, you're trying to start a task that doesn't exist\r\n- task_recursion: from start() method, there are recursive dependencies in your task list\r\n\r\n#### cb\r\nType: `function`: `function (e) {`\r\n\r\nPasses single argument: `e`: event details\r\n\r\n```javascript\r\norchestrator.on('task_start', function (e) {\r\n  // e.message is the log message\r\n  // e.task is the task name if the message applies to a task else `undefined`\r\n  // e.err is the error if event is 'err' else `undefined`\r\n});\r\n// for task_end and task_err:\r\norchestrator.on('task_stop', function (e) {\r\n  // e is the same object from task_start\r\n  // e.message is updated to show how the task ended\r\n  // e.duration is the task run duration (in seconds)\r\n});\r\n```\r\n\r\n**Note:** fires either *stop or *err but not both.\r\n\r\n### orchestrator.onAll(cb);\r\n\r\nListen to all orchestrator events from one callback\r\n\r\n#### cb\r\nType: `function`: `function (e) {`\r\n\r\nPasses single argument: `e`: event details\r\n\r\n```javascript\r\norchestrator.onAll(orchestrator, function (e) {\r\n  // e is the original event args\r\n  // e.src is event name\r\n});\r\n```\r\n\r\nLICENSE\r\n-------\r\n\r\n(MIT License)\r\n\r\nCopyright (c) 2013 [Richardson & Sons, LLC](http://richardsonandsons.com/)\r\n\r\nPermission is hereby granted, free of charge, to any person obtaining\r\na copy of this software and associated documentation files (the\r\n\"Software\"), to deal in the Software without restriction, including\r\nwithout limitation the rights to use, copy, modify, merge, publish,\r\ndistribute, sublicense, and/or sell copies of the Software, and to\r\npermit persons to whom the Software is furnished to do so, subject to\r\nthe following conditions:\r\n\r\nThe above copyright notice and this permission notice shall be\r\nincluded in all copies or substantial portions of the Software.\r\n\r\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND,\r\nEXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF\r\nMERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND\r\nNONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE\r\nLIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION\r\nOF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION\r\nWITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\r\n",
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/robrich/orchestrator/issues"
+  },
+  "_id": "orchestrator@0.3.3",
+  "_from": "orchestrator@^0.3.0"
+}

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="WEB_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$" />
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="sass-stdlib" level="application" />
+    <orderEntry type="library" name="Node.js Dependencies for si" level="project" />
+    <orderEntry type="library" name="Node.js v0.10.12 Core Modules" level="application" />
+    <orderEntry type="library" name="chai-DefinitelyTyped" level="application" />
+    <orderEntry type="library" name="mocha-DefinitelyTyped" level="application" />
+    <orderEntry type="library" name="should-DefinitelyTyped" level="application" />
+    <orderEntry type="library" name="lodash-DefinitelyTyped" level="application" />
+    <orderEntry type="library" name="sinon-chai-DefinitelyTyped" level="application" />
+    <orderEntry type="library" name="yui-DefinitelyTyped" level="application" />
+  </component>
+</module>
+
