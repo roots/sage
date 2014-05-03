@@ -16,9 +16,7 @@
     "gulp-imagemin": "^0.5.0",
     "gulp-concat": "^2.2.0",
     "gulp-rename": "^1.2.0",
-    "gulp-notify": "^1.2.5",
-    "gulp-util": "^2.2.14",
-    "browser-sync": "^0.8.2"
+    "gulp-util": "^2.2.14"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

@@ -1,1 +1,0 @@
-var html = '<html><head></head><body><p>default test </p></body></html>';
