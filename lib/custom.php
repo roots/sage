@@ -21,6 +21,30 @@ function embed_oembed($html, $url, $attr, $post_id) {
 
 
 
+
+
+//
+//		Fixes overlapping adminbar for Foundations top-bar
+//
+//////////////////////////////////////////////////////////////////////
+
+
+add_action('wp_head', 'admin_bar_fix', 5);
+function admin_bar_fix() {
+  if( is_admin_bar_showing() ) {
+    $output  = '<style type="text/css">'."\n\t";
+    $output .= '@media screen and (max-width: 600px) {#wpadminbar { position: fixed !important; } }'."\n";
+    $output .= '</style>'."\n";
+    echo $output;
+  }
+}
+
+
+
+
+
+
+
 //
 //		Adds Foundation classes to next/prev buttons
 //
