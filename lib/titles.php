@@ -30,7 +30,7 @@ function roots_title() {
   } elseif (is_search()) {
     return sprintf(__('Search Results for %s', 'roots'), get_search_query());
   } elseif (is_404()) {
-    return __('Not Found', 'roots');
+    return __('Oh no!', 'roots');
   } else {
     return get_the_title();
   }
