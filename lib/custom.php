@@ -62,6 +62,37 @@ function posts_link_attributes() {
 
 
 
+
+
+
+
+
+
+
+
+//
+//    Adds the livereload script. Primarily for testing other devices on same network as web server
+//    Change the IP address to your servers local IP!    
+//
+//////////////////////////////////////////////////////////////////////
+
+
+// function livereload() {
+//   wp_register_script('livereload', 'http://192.168.0.100:35729/livereload.js?snipver=1', array(), null, true);
+//   wp_enqueue_script('livereload');
+// }
+// add_action('wp_enqueue_scripts', 'livereload');
+
+
+
+
+
+
+
+
+
+
+
 //
 //		Removes default dashboard widgets
 //
