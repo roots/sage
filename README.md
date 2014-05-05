@@ -2,6 +2,17 @@
 
 Gromf is a WordPress starter theme based on [Roots](https://github.com/roots/roots), using [Foundation](http://foundation.zurb.com) & [Gulp](http://gulpjs.com) instead of Bootstrap & Grunt.
 
+## Features
+
+* HTML5 Boilerplate along with ARIA roles and microformats
+* [Roots Theme Wrapper](http://roots.io/an-introduction-to-the-roots-theme-wrapper/)
+* Roots clean URLs
+* Roots nice search
+* Foundation 5 CSS Framework, with a menu walker that fits Foundations top-bar
+* Gulp.js - SASS compiling, CSS, JS & images minifying & LiveReload(See ya later CMD+R) 
+* WordPress clean up - Roots cleaning in addition to dashboard & widgets cleanup (see lib/custom.php)
+
+
 ## Installation
 
 Before you start using Gromf make sure you have [NodeJS](http://nodejs.org), [Bower](http://bower.io) and [Gulp](http://gulpjs.com) installed.
