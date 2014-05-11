@@ -1,6 +1,6 @@
 # Gromf
 
-Gromf is a WordPress starter theme based on [Roots](https://github.com/roots/roots), using [Foundation](http://foundation.zurb.com) & [Gulp](http://gulpjs.com) instead of Bootstrap & Grunt.
+Gromf is a WordPress starter theme based on [Roots](https://github.com/roots/roots) 6.5, using [Foundation](http://foundation.zurb.com) & [Gulp](http://gulpjs.com) instead of Bootstrap & Grunt.
 
 ## Features
 

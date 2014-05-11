@@ -139,6 +139,6 @@ gulp.task('watch', function(){
 
 });
 
-gulp.task('default', ['sass', 'javascripts', 'copy', 'svgmin', 'imagemin', 'watch']);
+gulp.task('default', ['sass', 'javascripts', 'copy', 'imagemin', 'watch']);
 
 
