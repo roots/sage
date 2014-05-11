@@ -1,21 +1,83 @@
-/*==========  
-
-	Do your SASS awesomeness here! Goodspeed :)
-
-==========*/
 
 
 
+/*==========  Overwriting Foundation variables goes before including foundation itself.
+			  See settings.scss from Foundation for examples ==========*/
+
+$primary-color: #008CBA;
+$body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
 
 
 
-/*==========  Overwriting Foundation variables goes before including foundation itself  ==========*/
 
-$primary-color: #008CBA !default;
 
-/*==========  Import Foundation  ==========*/
 
-@import "bower_components/foundation/scss/foundation.scss";
+
+
+
+
+/*==========  Import Foundation Components - REMOVE what you don't use to save the CSS size  ==========*/
+
+
+@import
+  "bower_components/foundation/scss/foundation/components/grid",
+  "bower_components/foundation/scss/foundation/components/accordion",
+  "bower_components/foundation/scss/foundation/components/alert-boxes",
+  "bower_components/foundation/scss/foundation/components/block-grid",
+  "bower_components/foundation/scss/foundation/components/breadcrumbs",
+  "bower_components/foundation/scss/foundation/components/button-groups",
+  "bower_components/foundation/scss/foundation/components/buttons",
+  "bower_components/foundation/scss/foundation/components/clearing",
+  "bower_components/foundation/scss/foundation/components/dropdown",
+  "bower_components/foundation/scss/foundation/components/dropdown-buttons",
+  "bower_components/foundation/scss/foundation/components/flex-video",
+  "bower_components/foundation/scss/foundation/components/forms",
+  "bower_components/foundation/scss/foundation/components/inline-lists",
+  "bower_components/foundation/scss/foundation/components/joyride",
+  "bower_components/foundation/scss/foundation/components/keystrokes",
+  "bower_components/foundation/scss/foundation/components/labels",
+  "bower_components/foundation/scss/foundation/components/magellan",
+  "bower_components/foundation/scss/foundation/components/orbit",
+  "bower_components/foundation/scss/foundation/components/pagination",
+  "bower_components/foundation/scss/foundation/components/panels",
+  "bower_components/foundation/scss/foundation/components/pricing-tables",
+  "bower_components/foundation/scss/foundation/components/progress-bars",
+  "bower_components/foundation/scss/foundation/components/range-slider",
+  "bower_components/foundation/scss/foundation/components/reveal",
+  "bower_components/foundation/scss/foundation/components/side-nav",
+  "bower_components/foundation/scss/foundation/components/split-buttons",
+  "bower_components/foundation/scss/foundation/components/sub-nav",
+  "bower_components/foundation/scss/foundation/components/switch",
+  "bower_components/foundation/scss/foundation/components/tables",
+  "bower_components/foundation/scss/foundation/components/tabs",
+  "bower_components/foundation/scss/foundation/components/thumbs",
+  "bower_components/foundation/scss/foundation/components/tooltips",
+  "bower_components/foundation/scss/foundation/components/top-bar",
+  "bower_components/foundation/scss/foundation/components/type",
+  "bower_components/foundation/scss/foundation/components/offcanvas",
+  "bower_components/foundation/scss/foundation/components/visibility";
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*=================================================================  
+
+	Do your SASS awesomeness here! Goodspeed young traveler :)
+
+=================================================================*/
+
+
+
+
 
 
 
@@ -27,7 +89,27 @@ $primary-color: #008CBA !default;
 
 
 
-/*==========  Foundation Media Queries  ==========*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*==========  Foundation Media Queries - copy/paste from here if needed  ==========*/
 
 
 @media #{$small-up} { }
