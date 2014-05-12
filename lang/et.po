@@ -1,16 +1,17 @@
 msgid ""
 msgstr ""
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "Project-Id-Version: \n"
-"POT-Creation-Date: \n"
+"Report-Msgid-Bugs-To: http://wordpress.org/support/theme/roots\n"
+"POT-Creation-Date: 2014-04-25 08:52:00+00:00\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Illimar Tambek\n"
 "Language-Team: \n"
+"Language: et\n"
 "MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.6.4\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Language: et\n"
 
 #: 404.php:4
 msgid "Sorry, but the page you were trying to view does not exist."
@@ -111,13 +112,18 @@ msgstr "Lisa lehed menüüsse?"
 msgid "Add all current published pages to the Primary Navigation"
 msgstr "Lisa kõik hetkel avaldatud lehed peamenüüsse"
 
-#: lib/cleanup.php:193
-msgid "Continued"
-msgstr "Jätkub"
+#: lib/activation.php:126 lib/activation.php:147
+msgid "Home"
+msgstr "Avaleht"
 
+#: lib/activation.php:173 lib/activation.php:176 lib/activation.php:190
 #: lib/init.php:11
 msgid "Primary Navigation"
 msgstr "Peamanüü"
+
+#: lib/cleanup.php:193
+msgid "Continued"
+msgstr "Jätkub"
 
 #: lib/titles.php:10
 msgid "Latest Posts"
@@ -260,3 +266,33 @@ msgstr "Otsing"
 #: templates/searchform.php:4
 msgid "Search for:"
 msgstr "Otsi:"
+
+#. Theme Name of the plugin/theme
+msgid "Roots"
+msgstr "Roots"
+
+#. Theme URI of the plugin/theme
+msgid "http://roots.io/"
+msgstr "http://roots.io/"
+
+#. Description of the plugin/theme
+msgid ""
+"Roots is a WordPress starter theme based on HTML5 Boilerplate & Bootstrap. "
+"<a href=\"https://github.com/roots/roots/contributors\">Contribute on "
+"GitHub</a>"
+msgstr ""
+"Roots on HTML5 Boilerplatel ja Bootstrapil baseeruv starditeema "
+"WordPressile. <a href=\"https://github.com/roots/roots/contributors\">Löö "
+"kaasa GitHubis</a>"
+
+#. Author of the plugin/theme
+msgid "Ben Word"
+msgstr "Ben Word"
+
+#. Author URI of the plugin/theme
+msgid "http://benword.com/"
+msgstr "http://benword.com/"
+
+#. Template Name of the plugin/theme
+msgid "Custom Template"
+msgstr "Kohandatud mall"
