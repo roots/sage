@@ -20,7 +20,7 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 			if (  true == Redux_Helpers::isTheme( __FILE__ ) ) {
 				$this->initSettings();
 			} else {
-				add_action( 'plugins_loaded', array( $this, 'initSettings' ), 10 );
+				add_action( 'plugins_loaded', array( $this, 'initSettings' ) );
 			}
 		}
 
@@ -208,28 +208,6 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 				) ),
 			);
 
-			// Layout Settings
-			$post_types = get_post_types( array( 'public' => true ), 'names' );
-			$layout = isset( $ss_settings['layout'] ) ? $ss_settings['layout'] : 1;
-			$layout_ppt_fields = array();
-			foreach ( $post_types as $post_type ) {
-				$layout_ppt_fields[] = array(
-					'title'     => __( $post_type . ' Layout', 'shoestrap' ),
-					'desc'      => __( 'Override your default stylings. Choose between 1, 2 or 3 column layout.', 'shoestrap' ),
-					'id'        => $post_type . '_layout',
-					'default'   => $layout,
-					'type'      => 'image_select',
-					'required'  => array( 'cpt_layout_toggle','=',array( '1' ) ),
-					'options'   => array(
-						0         => ReduxFramework::$_url . '/assets/img/1c.png',
-						1         => ReduxFramework::$_url . '/assets/img/2cr.png',
-						2         => ReduxFramework::$_url . '/assets/img/2cl.png',
-						3         => ReduxFramework::$_url . '/assets/img/3cl.png',
-						4         => ReduxFramework::$_url . '/assets/img/3cr.png',
-						5         => ReduxFramework::$_url . '/assets/img/3cm.png',
-					)
-				);
-			}
 
 			$this->sections[] = array(
 				'title'       => __( 'Layout', 'shoestrap' ),
@@ -303,12 +281,8 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 				) ),
 			);
 
-			$this->sections[] = array(
-				'title'       => __( 'Advanced Layout', 'shoestrap' ),
-				'icon'        => 'el-icon-chevron-right',
-				'subsection'  => true,
-				'fields'  => apply_filters( 'shoestrap_module_layout_options_modifier', array(
-					array(
+			$std = array(
+				array(
 						'title'     => 'Looking for Advanced Layout Options?',
 						'desc'      => '',
 						'id'        => 'help632165',
@@ -318,17 +292,6 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 						'style'     => 'warning',
 						'required'  => array( 'options_mode', '=', array( 'easy' ) ),
 					),
-					array(
-						'title'     => __( 'Custom Layouts per Post Type', 'shoestrap' ),
-						'desc'      => __( 'Set a default layout for each post type on your site.', 'shoestrap' ),
-						'id'        => 'cpt_layout_toggle',
-						'default'   => 0,
-						'type'      => 'switch',
-						'required'  => array( 'options_mode', '=', array( 'advanced' ) ),
-					),
-
-					$layout_ppt_fields,
-
 					array(
 						'title'     => __( 'Margin from top ( Works only in \'Boxed\' mode )', 'shoestrap' ),
 						'desc'      => __( 'This will add a margin above the navbar. Useful if you\'ve enabled the \'Boxed\' mode above. Default: 0px', 'shoestrap' ),
@@ -391,7 +354,6 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 						'title'     => __( 'Small Screen / Tablet view', 'shoestrap' ),
 						'desc'      => __( 'The width of Tablet screens. Default: 768px', 'shoestrap' ),
 						'id'        => 'screen_tablet',
-						'required'  => array('custom_grid','=',array('1')),
 						'default'   => 768,
 						'min'       => 620,
 						'step'      => 2,
@@ -399,13 +361,15 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 						'advanced'  => true,
 						'compiler'  => true,
 						'type'      => 'slider',
-						'required'  => array( 'options_mode', '=', array( 'advanced' ) ),
+						'required'  => array( 
+							array ( 'options_mode', '=', array( 'advanced' ) ),
+							array ( 'custom_grid',  '=', array( '1' ) ) 
+						),
 					),
 					array(
 						'title'     => __( 'Desktop Container Width', 'shoestrap' ),
 						'desc'      => __( 'The width of normal screens. Default: 992px', 'shoestrap' ),
 						'id'        => 'screen_desktop',
-						'required'  => array('custom_grid','=',array('1')),
 						'default'   => 992,
 						'min'       => 620,
 						'step'      => 2,
@@ -413,13 +377,15 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 						'advanced'  => true,
 						'compiler'  => true,
 						'type'      => 'slider',
-						'required'  => array( 'options_mode', '=', array( 'advanced' ) ),
+						'required'  => array( 
+							array ( 'options_mode', '=', array( 'advanced' ) ),
+							array ( 'custom_grid',  '=', array( '1' ) ) 
+						),
 					),
 					array(
 						'title'     => __( 'Large Desktop Container Width', 'shoestrap' ),
 						'desc'      => __( 'The width of Large Desktop screens. Default: 1200px', 'shoestrap' ),
 						'id'        => 'screen_large_desktop',
-						'required'  => array('custom_grid','=',array('1')),
 						'default'   => 1200,
 						'min'       => 620,
 						'step'      => 2,
@@ -427,13 +393,15 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 						'advanced'  => true,
 						'compiler'  => true,
 						'type'      => 'slider',
-						'required'  => array( 'options_mode', '=', array( 'advanced' ) ),
+						'required'  => array( 
+							array ( 'options_mode', '=', array( 'advanced' ) ),
+							array ( 'custom_grid',  '=', array( '1' ) ) 
+						),
 					),
 					array(
 						'title'     => __( 'Columns Gutter', 'shoestrap' ),
 						'desc'      => __( 'The space between the columns in your grid. Default: 30px', 'shoestrap' ),
 						'id'        => 'layout_gutter',
-						'required'  => array('custom_grid','=',array('1')),
 						'default'   => 30,
 						'min'       => 2,
 						'step'      => 2,
@@ -441,9 +409,49 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 						'advanced'  => true,
 						'compiler'  => true,
 						'type'      => 'slider',
-						'required'  => array( 'options_mode', '=', array( 'advanced' ) ),
+						'required'  => array( 
+							array ( 'options_mode', '=', array( 'advanced' ) ),
+							array ( 'custom_grid',  '=', array( '1' ) ) 
+						),
 					),
-				) ),
+					array(
+						'title'     => __( 'Custom Layouts per Post Type', 'shoestrap' ),
+						'desc'      => __( 'Set a default layout for each post type on your site.', 'shoestrap' ),
+						'id'        => 'cpt_layout_toggle',
+						'default'   => 0,
+						'type'      => 'switch',
+						'required'  => array( 'options_mode', '=', array( 'advanced' ) ),
+					)
+			);
+
+			// Layout Settings
+			$post_types = get_post_types( array( 'public' => true ), 'names' );
+			$layout = isset( $ss_settings['layout'] ) ? $ss_settings['layout'] : 1;
+			$layout_ppt_fields = array();
+			foreach ( $post_types as $post_type ) {
+				$layout_ppt_fields[] = array(
+					'title'     => __( $post_type . ' Layout', 'shoestrap' ),
+					'desc'      => __( 'Override your default stylings. Choose between 1, 2 or 3 column layout.', 'shoestrap' ),
+					'id'        => $post_type . '_layout',
+					'default'   => $layout,
+					'type'      => 'image_select',
+					'required'  => array( 'cpt_layout_toggle','=',array( '1' ) ),
+					'options'   => array(
+						0         => ReduxFramework::$_url . '/assets/img/1c.png',
+						1         => ReduxFramework::$_url . '/assets/img/2cr.png',
+						2         => ReduxFramework::$_url . '/assets/img/2cl.png',
+						3         => ReduxFramework::$_url . '/assets/img/3cl.png',
+						4         => ReduxFramework::$_url . '/assets/img/3cr.png',
+						5         => ReduxFramework::$_url . '/assets/img/3cm.png',
+					)
+				);
+			}
+
+			$this->sections[] = array(
+				'title'       => __( 'Advanced Layout', 'shoestrap' ),
+				'icon'        => 'el-icon-chevron-right',
+				'subsection'  => true,
+				'fields'  => apply_filters( 'shoestrap_module_layout_advanced_options_modifier', array_merge($std, $layout_ppt_fields) )
 			);
 
 			// Blog Settings
@@ -1910,11 +1918,13 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 			}
 		}
 	}
+}
 
+function shoestrap_init_options(){
 	global $ss_options;
 	$ss_options = new Shoestrap_Options();
-
 }
+add_action( 'init', 'shoestrap_init_options' );
 
 /**
  * Adds tracking parameters for Redux settings. Outside of the main class as the class could also be in use in other plugins.
