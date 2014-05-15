@@ -1,5 +1,5 @@
-<?php get_template_part('templates/head'); ?>
-<body <?php body_class(); ?>>
+<?php get_template_part('templates/head', Roots_Wrapping::$base); ?>
+<body <?php body_class(Roots_Wrapping::$base); ?>>
 
   <!--[if lt IE 8]>
     <div class="alert alert-warning">
@@ -11,9 +11,9 @@
     do_action('get_header');
     // Use Bootstrap's navbar if enabled in config.php
     if (current_theme_supports('bootstrap-top-navbar')) {
-      get_template_part('templates/header-top-navbar');
+      get_template_part('templates/header-top-navbar', Roots_Wrapping::$base);
     } else {
-      get_template_part('templates/header');
+      get_template_part('templates/header', Roots_Wrapping::$base);
     }
   ?>
 
@@ -24,13 +24,13 @@
       </main><!-- /.main -->
       <?php if (roots_display_sidebar()) : ?>
         <aside class="sidebar <?php echo roots_sidebar_class(); ?>" role="complementary">
-          <?php include roots_sidebar_path(); ?>
+          <?php get_template_part( 'templates/sidebar', Roots_Wrapping::$base ); ?>
         </aside><!-- /.sidebar -->
       <?php endif; ?>
     </div><!-- /.content -->
   </div><!-- /.wrap -->
 
-  <?php get_template_part('templates/footer'); ?>
+  <?php get_template_part('templates/footer', Roots_Wrapping::$base); ?>
 
 </body>
 </html>
