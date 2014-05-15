@@ -1,0 +1,16 @@
+{
+  "name": "roots",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "assets/vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+      "jquery": "1.*",
+      "bootstrap": "",
+      "modernizr": ""
+  }
+}
