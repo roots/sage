@@ -9,7 +9,7 @@
     "tests"
   ],
   "dependencies": {
-      "jquery": "",
+      "jquery": "1.*",
       "bootstrap": "",
       "modernizr": ""
   }

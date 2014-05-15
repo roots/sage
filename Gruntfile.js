@@ -2,6 +2,8 @@
 module.exports = function(grunt) {
 
   grunt.initConfig({
+    // Metadata.
+    pkg: grunt.file.readJSON('package.json'),
     jshint: {
       options: {
         jshintrc: '.jshintrc'
@@ -20,12 +22,18 @@ module.exports = function(grunt) {
           ]
         },
         options: {
+	      paths: [
+			'assets/less',
+			'assets/vendor'
+		  ],
           compress: true,
+		  cleancss: false,
+		  ieCompat: true,
           // LESS source map
           // To enable, set sourceMap to true and update sourceMapRootpath based on your install
           sourceMap: false,
           sourceMapFilename: 'assets/css/main.min.css.map',
-          sourceMapRootpath: '/app/themes/roots/'
+          sourceMapRootpath: '/app/themes/<%= pkg.name %>/'
         }
       }
     },
@@ -33,26 +41,24 @@ module.exports = function(grunt) {
       dist: {
         files: {
           'assets/js/scripts.min.js': [
-            'assets/js/plugins/bootstrap/transition.js',
-            'assets/js/plugins/bootstrap/alert.js',
-            'assets/js/plugins/bootstrap/button.js',
-            'assets/js/plugins/bootstrap/carousel.js',
-            'assets/js/plugins/bootstrap/collapse.js',
-            'assets/js/plugins/bootstrap/dropdown.js',
-            'assets/js/plugins/bootstrap/modal.js',
-            'assets/js/plugins/bootstrap/tooltip.js',
-            'assets/js/plugins/bootstrap/popover.js',
-            'assets/js/plugins/bootstrap/scrollspy.js',
-            'assets/js/plugins/bootstrap/tab.js',
-            'assets/js/plugins/bootstrap/affix.js',
+            'assets/vendor/bootstrap/js/transition.js',
+            'assets/vendor/bootstrap/js/alert.js',
+            'assets/vendor/bootstrap/js/button.js',
+            'assets/vendor/bootstrap/js/carousel.js',
+            'assets/vendor/bootstrap/js/collapse.js',
+            'assets/vendor/bootstrap/js/dropdown.js',
+            'assets/vendor/bootstrap/js/modal.js',
+            'assets/vendor/bootstrap/js/tooltip.js',
+            'assets/vendor/bootstrap/js/popover.js',
+            'assets/vendor/bootstrap/js/scrollspy.js',
+            'assets/vendor/bootstrap/js/tab.js',
+            'assets/vendor/bootstrap/js/affix.js',
             'assets/js/plugins/*.js',
             'assets/js/_*.js'
           ]
         },
         options: {
-          // JS source map: to enable, uncomment the lines below and update sourceMappingURL based on your install
-          // sourceMap: 'assets/js/scripts.min.js.map',
-          // sourceMappingURL: '/app/themes/roots/assets/js/scripts.min.js.map'
+          sourceMap: false
         }
       }
     },
@@ -60,9 +66,9 @@ module.exports = function(grunt) {
       options: {
         file: 'lib/scripts.php',
         css: 'assets/css/main.min.css',
-        cssHandle: 'roots_main',
+        cssHandle: '<%= pkg.name %>_main',
         js: 'assets/js/scripts.min.js',
-        jsHandle: 'roots_scripts'
+        jsHandle: '<%= pkg.name %>_scripts'
       }
     },
     watch: {
