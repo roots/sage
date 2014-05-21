@@ -6,7 +6,7 @@
  * 1. /theme/assets/css/main.css
  *
  * Enqueue scripts in the following order:
- * 1. jquery-1.11.0.min.js via Google CDN
+ * 1. jquery-1.11.1.min.js via Google CDN
  * 2. /theme/assets/js/vendor/modernizr.min.js
  * 3. /theme/assets/js/scripts.js (in footer)
  *
@@ -26,14 +26,14 @@ function roots_scripts() {
       'css'       => '/assets/css/main.min.css' . '?' . $assets['assets/css/main.min.css']['hash'],
       'js'        => '/assets/js/scripts.min.js' . '?' . $assets['assets/js/scripts.min.js']['hash'],
       'modernizr' => '/assets/js/vendor/modernizr.min.js',
-      'jquery'    => '//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js'
+      'jquery'    => '//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'
     );
   } else {
     $assets = array(
       'css'       => '/assets/css/main.css',
       'js'        => '/assets/js/scripts.js',
       'modernizr' => '/assets/vendor/modernizr/modernizr.js',
-      'jquery'    => '//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.js'
+      'jquery'    => '//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.js'
     );
   }
 
@@ -65,7 +65,7 @@ function roots_jquery_local_fallback($src, $handle = null) {
   static $add_jquery_fallback = false;
 
   if ($add_jquery_fallback) {
-    echo '<script>window.jQuery || document.write(\'<script src="' . get_template_directory_uri() . '/assets/vendor/jquery/jquery.min.js"><\/script>\')</script>' . "\n";
+    echo '<script>window.jQuery || document.write(\'<script src="' . get_template_directory_uri() . '/assets/vendor/jquery/dist/jquery.min.js?1.11.1"><\/script>\')</script>' . "\n";
     $add_jquery_fallback = false;
   }
 
