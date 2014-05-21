@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html class="no-js" <?php language_attributes(); ?>>
 <head>
   <meta charset="utf-8">
