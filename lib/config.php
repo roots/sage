@@ -77,3 +77,27 @@ function roots_display_sidebar() {
  * Default: 1140px is the default Bootstrap container width.
  */
 if (!isset($content_width)) { $content_width = 1140; }
+
+ /**
+  * Better image handling when adding new image in WYSIWYG editor. Prevents users having to add "img-responsive" to an uploaded image
+  * in WYSIWYG editor
+  */ 
+add_filter( 'image_send_to_editor', 'roots_responsive_images', 10, 8);
+   function roots_responsive_images($html, $id, $caption, $title, $align, $url, $size, $alt ) {
+	   
+     $src = wp_get_attachment_url($id); // Grab the current image URL
+
+     if($url && !$caption){ //Linked image without a caption
+       $html = '<a href="' . $src .  '" title="'.$title.'"><img class="img-responsive align'.$align.'" src="'.$src.'" alt="'.$alt.'"/></a>';
+     }
+     elseif( $url && $caption ){  //Linked image with a caption
+      $html = '<figure id="'.$id.'" class="align'.$align.'"><a href="' . $src .  '" title="'.$title.'"><img class="img-responsive align'.$align.'" src="'.$src.'" alt="'.$alt.'"/></a>';
+      $html .= '<figcaption class="wp-caption-text">'.$caption.'</figcaption>';
+      $html .= '</figure>';
+     }
+     else{
+       $html = '<img class="img-responsive align'.$align.'" src="'.$src.'" alt="'.$alt.'"/>';
+     }
+
+	   return $html;
+   }
