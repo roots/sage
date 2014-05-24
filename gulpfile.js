@@ -46,7 +46,27 @@ var livereload = require('gulp-livereload');			// LiveReload
 		gulp.src([
 			'bower_components/jquery/dist/jquery.min.js',			// Gets Jquery
 			'bower_components/fastclick/lib/fastclick.js',			// Gets fastclick
-			'bower_components/foundation/js/foundation.js',			// Gets Foundation (includes ALL foundation js, change to only include the scripts you'll need)
+
+			// Gets Foundation JS change to only include the scripts you'll need
+			'bower_components/foundation/js/foundation/foundation.js',
+			'bower_components/foundation/js/foundation/foundation.abide.js',
+			'bower_components/foundation/js/foundation/foundation.accordion.js',
+			'bower_components/foundation/js/foundation/foundation.alert.js',
+			'bower_components/foundation/js/foundation/foundation.clearing.js',
+			'bower_components/foundation/js/foundation/foundation.dropdown.js',
+			'bower_components/foundation/js/foundation/foundation.equalizer.js',
+			'bower_components/foundation/js/foundation/foundation.interchange.js',
+			'bower_components/foundation/js/foundation/foundation.joyride.js',
+			'bower_components/foundation/js/foundation/foundation.magellan.js',
+			'bower_components/foundation/js/foundation/foundation.offcanvas.js',
+			'bower_components/foundation/js/foundation/foundation.orbit.js',
+			'bower_components/foundation/js/foundation/foundation.reveal.js',
+			'bower_components/foundation/js/foundation/foundation.slider.js',
+			'bower_components/foundation/js/foundation/foundation.tab.js',
+			'bower_components/foundation/js/foundation/foundation.tooltip.js',
+			'bower_components/foundation/js/foundation/foundation.topbar.js',
+
+			// moving on...
 			'assets/js/_*.js'])										// Gets all the user JS _*.js from assets/js
 			.pipe(concat('scripts.js'))								// Concat all the scripts
 			.pipe(rename({suffix: '.min'}))							// Rename it

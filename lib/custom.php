@@ -77,14 +77,16 @@ function posts_link_attributes() {
 //////////////////////////////////////////////////////////////////////
 
 
-// function livereload() {
-//   wp_register_script('livereload', 'http://192.168.1.102:35729/livereload.js?snipver=1', array(), null, true);
-//   wp_enqueue_script('livereload');
-// }
-// add_action('wp_enqueue_scripts', 'livereload');
+function livereload() {
+  wp_register_script('livereload', 'http://localhost:35729/livereload.js?snipver=1', array(), null, true);
+  wp_enqueue_script('livereload');
+}
 
-
-
+// Run the livereload function if domain contains .dev
+$host = $_SERVER['HTTP_HOST']; 
+if (strpos($host,'.dev') !== false) {
+    add_action('wp_enqueue_scripts', 'livereload');
+}
 
 
 
