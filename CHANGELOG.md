@@ -1,5 +1,14 @@
+<<<<<<< HEAD
+### 7.0.0: TBD
+* Updated Grunt workflow
+* Move clean up, relative URLs, and nice search to [Soil](https://github.com/roots/soil)
+* Update LESS organization
+* Use grunt-modernizr to make a lean Modernizr build
+* Use Bower for front-end package management
+=======
 ### HEAD
 * Update to Bootstrap 3.1.1
+>>>>>>> f411b8d0c83f95ca04ade1b1d041da9538bc6208
 
 ### 6.5.2: February 4th, 2014
 * Update to Bootstrap 3.1.0

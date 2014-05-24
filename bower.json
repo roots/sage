@@ -1,0 +1,21 @@
+{
+  "name": "roots",
+  "version": "6.5.1",
+  "homepage": "http://roots.io",
+  "authors": [
+    "Ben Word <ben@benword.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "assets/vendor"
+  ],
+  "dependencies": {
+    "modernizr": "2.7.0",
+    "jquery": "1.11.0",
+    "bootstrap": "3.1.1",
+    "respond": "1.4.2"
+  }
+}
