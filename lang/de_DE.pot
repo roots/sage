@@ -1,0 +1,244 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: 404.php:4
+msgid "Sorry, but the page you were trying to view does not exist."
+msgstr "Die aufgerufene Seite existiert leider nicht."
+
+#: 404.php:7
+msgid "It looks like this was the result of either:"
+msgstr "Es scheint das Resultat zu sein von entweder:"
+
+#: 404.php:9
+msgid "a mistyped address"
+msgstr "eine falsch eingetippte Adresse"
+
+#: 404.php:10
+msgid "an out-of-date link"
+msgstr "ein veralteter link"
+
+#: base.php:6
+msgid "You are using an <strong>outdated</strong> browser. Please <a href=\"http://browsehappy.com/\">upgrade your browser</a> to improve your experience."
+msgstr "Du nutzt einen <strong>veralteten</strong> Browser. Bitte <a href=\"http://browsehappy.com/\">aktualisiere deinen Browser</a>, um das Surf-Erlebnis zu verbessern."
+
+#: index.php:5
+msgid "Sorry, no results were found."
+msgstr "Es wurden leider keine Ergebnisse gefunden."
+
+#: index.php:17
+msgid "&larr; Older posts"
+msgstr "&larr; Ältere Artikel"
+
+#: index.php:18
+msgid "Newer posts &rarr;"
+msgstr "Neuere Artikel &rarr;""
+
+#: lib/activation.php:28 lib/activation.php:29
+msgid "Theme Activation"
+msgstr "Theme-Aktivierung"
+
+#: lib/activation.php:50
+msgid "%s Theme Activation"
+msgstr "%s Theme-Aktivierung"
+
+#: lib/activation.php:52
+msgid "These settings are optional and should usually be used only on a fresh installation"
+msgstr "Diese Einstellungen sind optional und sollten normalerweise nur für Neuinstallationen genutzt werden"
+
+#: lib/activation.php:59 lib/activation.php:62
+msgid "Create static front page?"
+msgstr "Erstelle statische Startseite?"
+
+#: lib/activation.php:64 lib/activation.php:76 lib/activation.php:88
+#: lib/activation.php:100
+msgid "Yes"
+msgstr "Ja"
+
+#: lib/activation.php:65 lib/activation.php:77 lib/activation.php:89
+#: lib/activation.php:101
+msgid "No"
+msgstr "Nein"
+
+#: lib/activation.php:67
+msgid "Create a page called Home and set it to be the static front page"
+msgstr "Erstelle eine Seite Home und lege diese als statische Startseite fest"
+
+#: lib/activation.php:71
+msgid "Change permalink structure?"
+msgstr "Verändere Permalinkstruktur?"
+
+#: lib/activation.php:74
+msgid "Update permalink structure?"
+msgstr "Erneuere Permalinkstruktur?"
+
+#: lib/activation.php:79
+msgid "Change permalink structure to /&#37;postname&#37;/"
+msgstr "Verändere Permalinkstruktur zu /&#37;postname&#37;/"
+
+#: lib/activation.php:83 lib/activation.php:86
+msgid "Create navigation menu?"
+msgstr "Erstelle Navigationsmenüs?"
+
+#: lib/activation.php:91
+msgid "Create the Primary Navigation menu and set the location"
+msgstr "Erstelle die Hauptnavigation und setze einen Standort"
+
+#: lib/activation.php:95 lib/activation.php:98
+msgid "Add pages to menu?"
+msgstr "Füge Seiten zum Menü hinzu?"
+
+#: lib/activation.php:103
+msgid "Add all current published pages to the Primary Navigation"
+msgstr "Füge alle aktuell veröffentlichten Seiten zur Hauptnavigation hinzu"
+
+#: lib/cleanup.php:193
+msgid "Continued"
+msgstr "Weiterlesen"
+
+#: lib/init.php:11
+msgid "Primary Navigation"
+msgstr "Hauptnavigation"
+
+#: lib/titles.php:10
+msgid "Latest Posts"
+msgstr "Neuste Artikel"
+
+#: lib/titles.php:19
+msgid "Daily Archives: %s"
+msgstr "Tägliche Archive: %s"
+
+#: lib/titles.php:21
+msgid "Monthly Archives: %s"
+msgstr "Monatliche Archive: %s"
+
+#: lib/titles.php:23
+msgid "Yearly Archives: %s"
+msgstr "Jährliche Archive: %s"
+
+#: lib/titles.php:26
+msgid "Author Archives: %s"
+msgstr "Autoren Archive: %s"
+
+#: lib/titles.php:31
+msgid "Search Results for %s"
+msgstr "Suchergebnisse für %s"
+
+#: lib/titles.php:33
+msgid "Not Found"
+msgstr "Nicht gefunden"
+
+#: lib/widgets.php:8
+msgid "Primary"
+msgstr "Primär"
+
+#: lib/widgets.php:17
+msgid "Footer"
+msgstr "Fußzeile"
+
+#: lib/widgets.php:45
+msgid "Use this widget to add a vCard"
+msgstr "Benutze dieses Widget um eine vCard hinzu zufügen."
+
+#: lib/widgets.php:47
+msgid "Roots: vCard"
+msgstr "Roots: vCard"
+
+#: lib/widgets.php:74
+msgid "vCard"
+msgstr ""
+
+#: templates/comment.php:4
+msgid "%1$s"
+msgstr "%1$s"
+
+#: templates/comment.php:5
+msgid "(Edit)"
+msgstr "(Bearbeiten)"
+
+#: templates/comment.php:9
+msgid "Your comment is awaiting moderation."
+msgstr "Dein Kommentar wartet auf Freischaltung."
+
+#: templates/comments.php:8
+msgid "One Response to &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s Responses to &ldquo;%2$s&rdquo;"
+msgstr[0] "Eine Antwort auf &ldquo;%2$s&rdquo;"
+msgstr[1] "%1$s Antworten auf &ldquo;%2$s&rdquo;"
+
+#: templates/comments.php:18
+msgid "&larr; Older comments"
+msgstr "&larr; Ältere Kommentare"
+
+#: templates/comments.php:21
+msgid "Newer comments &rarr;"
+msgstr "Neuere Kommentare &rarr;"
+
+#: templates/comments.php:29 templates/comments.php:38
+msgid "Comments are closed."
+msgstr "Kommentare sind geschlossen."
+
+#: templates/comments.php:45
+msgid "Leave a Reply"
+msgstr "Hinterlasse eine Antwort"
+
+#: templates/comments.php:45
+msgid "Leave a Reply to %s"
+msgstr "Hinterlasse eine Antwort auf %s"
+
+#: templates/comments.php:48
+msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
+msgstr "Du musst <a href=\"%s\">angemeldet</a> sein, um einen Kommentar schreiben zu können."
+
+#: templates/comments.php:53
+msgid "Logged in as <a href=\"%s/wp-admin/profile.php\">%s</a>."
+msgstr "Angemeldet als <a href=\"%s/wp-admin/profile.php\">%s</a>."
+
+#: templates/comments.php:54
+msgid "Log out of this account"
+msgstr "Melde dich von diesem Benutzerkonto ab"
+
+#: templates/comments.php:54
+msgid "Log out &raquo;"
+msgstr "Abmelden &raquo;"
+
+#: templates/comments.php:58
+msgid "Name"
+msgstr "Name"
+
+#: templates/comments.php:58 templates/comments.php:62
+msgid " (required)"
+msgstr "(benötigt)"
+
+#: templates/comments.php:62
+msgid "Email (will not be published)"
+msgstr "E-Mail (wird nicht veröffentlich)"
+
+#: templates/comments.php:66
+msgid "Website"
+msgstr "Webseite"
+
+#: templates/comments.php:71
+msgid "Comment"
+msgstr "Kommentar"
+
+#: templates/comments.php:74
+msgid "Submit Comment"
+msgstr "Kommentar abschicken"
+
+#: templates/content-single.php:11
+msgid "Pages:"
+msgstr "Seiten"
+
+#: templates/entry-meta.php:2
+msgid "By"
+msgstr "Von"
+
+#: templates/searchform.php:3 templates/searchform.php:6
+msgid "Search"
+msgstr "Suche"
+
+#: templates/searchform.php:4
+msgid "Search for:"
+msgstr "Suche nach:"
