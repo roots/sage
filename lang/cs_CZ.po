@@ -1,11 +1,15 @@
 msgid ""
 msgstr ""
+"Project-Id-Version: Roots.io\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Pavel Tajduš <tajdik@gmail.com>\n"
+"Language-Team:  <tajdik@gmail.com>\n"
+"Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: POEditor.com\n"
-"Project-Id-Version: Roots.io\n"
-"Language: cs\n"
+"X-Generator: Poedit 1.6.5\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
 #: 404.php:4
@@ -25,8 +29,13 @@ msgid "an out-of-date link"
 msgstr "starý (neplatný) odkaz"
 
 #: base.php:4
-msgid "You are using an <strong>outdated</strong> browser. Please <a href=\"http://browsehappy.com/\">upgrade your browser</a> to improve your experience."
-msgstr "Používáte <strong>neaktuální</strong> prohlížeč. <a href=\"http://browsehappy.com/\">Aktualizujte svůj prohlížeč</a> pro lepší zážitky ze surfování po webu."
+msgid ""
+"You are using an <strong>outdated</strong> browser. Please <a href=\"http://"
+"browsehappy.com/\">upgrade your browser</a> to improve your experience."
+msgstr ""
+"Používáte <strong>neaktuální</strong> prohlížeč. <a href=\"http://"
+"browsehappy.com/\">Aktualizujte svůj prohlížeč</a> pro lepší zážitky ze "
+"surfování po webu."
 
 #: index.php:5
 msgid "Sorry, no results were found."
@@ -46,7 +55,7 @@ msgstr "Aktivace šablony"
 
 #: lib/activation.php:51
 msgid "%s Theme Activation"
-msgstr "Aktivace šablony %s"
+msgstr "%s Aktivace šablony"
 
 #: lib/activation.php:62 lib/activation.php:64
 msgid "Create static front page?"
@@ -80,19 +89,20 @@ msgstr "Změnit strukturu odkazů na /&#37;postname&#37;/"
 
 #: lib/activation.php:88
 msgid "Change uploads folder?"
-msgstr "Změnit složky pro nahrávání souborů?"
+msgstr "Změnit složku pro nahrávání souborů?"
 
 #: lib/activation.php:90
 msgid "Update uploads folder?"
-msgstr "Aktualizovat složky pro nahravání souborů?"
+msgstr "Aktualizovat složku pro nahravání souborů?"
 
 #: lib/activation.php:96
 msgid "Change uploads folder to /media/ instead of /wp-content/uploads/"
-msgstr "Změnit slošky pro nahrávání souborů na /media/ namísto /wp-content/uploads/"
+msgstr ""
+"Změnit složku pro nahrávání souborů na /media/ namísto /wp-content/uploads/"
 
 #: lib/activation.php:101 lib/activation.php:103
 msgid "Create navigation menu?"
-msgstr "Vytvořit hlavní navigaci?"
+msgstr "Vytvořit hlavní menu?"
 
 #: lib/activation.php:109
 msgid "Create the Primary Navigation menu and set the location"
@@ -256,4 +266,3 @@ msgstr "Vyhledat:"
 #: templates/searchform.php:3 templates/searchform.php:4
 msgid "Search"
 msgstr "Hledat"
-
