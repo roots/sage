@@ -265,17 +265,19 @@ if ( ! class_exists( 'Shoestrap_Blog' ) ) {
 
 				if ( $ss_settings['feat_img_post_custom_toggle'] == 1 ) {
 					$data['width']  = $ss_settings['feat_img_post_width'];
-					$data['height'] = $ss_settings['feat_img_post_height'];
 				}
+
+				$data['height'] = $ss_settings['feat_img_post_height'];
+				
 			} else {
 				// Do not process if we don't want images on post archives
-				if ( $ss_settings['feat_img_archive'] == 0 ) {
+				if ( $ss_settings['feat_img_archive'] != 1 ) {
 					return;
 				}
 
 				$data['url'] = wp_get_attachment_url( get_post_thumbnail_id() );
 
-				if ( $ss_settings['feat_img_archive_custom_toggle'] == 'on' ) {
+				if ( $ss_settings['feat_img_archive_custom_toggle'] == 1 ) {
 					$data['width']  = $ss_settings['feat_img_archive_width'];
 				}
 
