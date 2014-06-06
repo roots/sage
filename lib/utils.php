@@ -107,7 +107,7 @@ function shoestrap_transliterate( $str ) {
 
 	} else {
 
-		return $srt;
+		return $str;
 
 	}
 }
