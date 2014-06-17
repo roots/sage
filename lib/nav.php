@@ -55,14 +55,17 @@ class Roots_Nav_Walker extends Walker_Nav_Menu {
  */
 function roots_nav_menu_css_class($classes, $item) {
   $slug = sanitize_title($item->title);
-  $classes = preg_replace('/(current(-menu-|[-_]page[-_])(item|parent|ancestor))/', 'active', $classes);
-  $classes = preg_replace('/^((menu|page)[-_\w+]+)+/', '', $classes);
+  $new_classes = preg_replace('/(current(-menu-|[-_]page[-_])(item|parent|ancestor))/', 'active', $classes);
+  $new_classes = preg_replace('/^((menu|page)[-_\w+]+)+/', '', $new_classes);
 
-  $classes[] = 'menu-' . $slug;
-
-  $classes = array_unique($classes);
-
-  return array_filter($classes, 'is_element_empty');
+  $new_classes[] = 'menu-' . $slug;
+  $new_class_counts = array_count_values($new_classes);
+  $new_classes = array_unique($new_classes);
+  if($new_class_counts['active'] < 2 && array_search('current-menu-item', $classes) === false)
+  {
+    unset($new_classes[array_search('active', $new_classes)]);
+  }
+  return array_filter($new_classes, 'is_element_empty');
 }
 add_filter('nav_menu_css_class', 'roots_nav_menu_css_class', 10, 2);
 add_filter('nav_menu_item_id', '__return_null');
