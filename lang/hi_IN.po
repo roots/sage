@@ -1,0 +1,260 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: Ismail Fazal <ismail@ismailfazal.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"X-Generator: Poedit 1.6.5\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: hi_IN\n"
+
+#: 404.php:4
+msgid "Sorry, but the page you were trying to view does not exist."
+msgstr "क्षमा करें, आप जो पृष्ठ देखने की कोशिश कर रहे है वह मौजूद नहीं है."
+
+#: 404.php:7
+msgid "It looks like this was the result of either:"
+msgstr "ऐसा लगता है कि यह परिणाम इसका हो सकता था:"
+
+#: 404.php:9
+msgid "a mistyped address"
+msgstr "एक गलत टाइप किया पता"
+
+#: 404.php:10
+msgid "an out-of-date link"
+msgstr "एक अप्रचलित लिंक"
+
+#: base.php:6
+msgid ""
+"You are using an <strong>outdated</strong> browser. Please <a href=\"http://"
+"browsehappy.com/\">upgrade your browser</a> to improve your experience."
+msgstr ""
+"आप किसी <strong>पुराने</strong> ब्राउज़र का उपयोग कर रहे हैं. अपने अनुभव को बेहतर बनाने "
+"के लिए <a href=\"http://browsehappy.com/\">अपने ब्राउज़र को अपग्रेड करें</a>."
+
+#: index.php:5
+msgid "Sorry, no results were found."
+msgstr "खेद है, कोई परिणाम नहीं मिला."
+
+#: index.php:17
+msgid "&larr; Older posts"
+msgstr "&larr; पुराने प्रकाशन"
+
+#: index.php:18
+msgid "Newer posts &rarr;"
+msgstr "नए प्रकाशन &rarr;"
+
+#: lib/activation.php:28 lib/activation.php:29
+msgid "Theme Activation"
+msgstr "थीम सक्रियण"
+
+#: lib/activation.php:50
+msgid "%s Theme Activation"
+msgstr "%s थीम सक्रियण"
+
+#: lib/activation.php:52
+msgid ""
+"These settings are optional and should usually be used only on a fresh "
+"installation"
+msgstr ""
+"ये सेटिंग वैकल्पिक हैं और आमतौर पर एक ताजा स्थापना पर ही इस्तेमाल किया जाना चाहिए"
+
+#: lib/activation.php:59 lib/activation.php:62
+msgid "Create static front page?"
+msgstr "स्थिर मुख पृष्ठ बनाएं?"
+
+#: lib/activation.php:64 lib/activation.php:76 lib/activation.php:88
+#: lib/activation.php:100
+msgid "Yes"
+msgstr "हां"
+
+#: lib/activation.php:65 lib/activation.php:77 lib/activation.php:89
+#: lib/activation.php:101
+msgid "No"
+msgstr "नहीं"
+
+#: lib/activation.php:67
+msgid "Create a page called Home and set it to be the static front page"
+msgstr "होम नामक एक पृष्ठ बनाएँ और इसे स्थिर मुख पृष्ठ निर्धारित करे"
+
+#: lib/activation.php:71
+msgid "Change permalink structure?"
+msgstr "पर्मालिंक संरचना को बदले ?"
+
+#: lib/activation.php:74
+msgid "Update permalink structure?"
+msgstr "पर्मालिंक संरचना को अपडेट करें ?"
+
+#: lib/activation.php:79
+msgid "Change permalink structure to /&#37;postname&#37;/"
+msgstr "पर्मालिंक संरचना को /&#37;postname&#37;/ बदले "
+
+#: lib/activation.php:83 lib/activation.php:86
+msgid "Create navigation menu?"
+msgstr "नेविगेशन मेनू बनाएँ ?"
+
+#: lib/activation.php:91
+msgid "Create the Primary Navigation menu and set the location"
+msgstr "प्राथमिक नेविगेशन मेनू बनाएँ और स्थान निर्धारित करे "
+
+#: lib/activation.php:95 lib/activation.php:98
+msgid "Add pages to menu?"
+msgstr "मेनू में पृष्ठों को जोड़े ?"
+
+#: lib/activation.php:103
+msgid "Add all current published pages to the Primary Navigation"
+msgstr "प्राथमिक नेविगेशन में सभी मौजूदा प्रकाशित पृष्ठों को जोड़ें"
+
+#: lib/cleanup.php:193
+msgid "Continued"
+msgstr "निरंतर"
+
+#: lib/init.php:11
+msgid "Primary Navigation"
+msgstr "प्राथमिक नेविगेशन"
+
+#: lib/titles.php:10
+msgid "Latest Posts"
+msgstr "नवीनतम प्रकाशन"
+
+#: lib/titles.php:19
+msgid "Daily Archives: %s"
+msgstr "दैनिक अभिलेखागार: %s"
+
+#: lib/titles.php:21
+msgid "Monthly Archives: %s"
+msgstr "मासिक अभिलेखागार: %s"
+
+#: lib/titles.php:23
+msgid "Yearly Archives: %s"
+msgstr "वार्षिक अभिलेखागार: %s"
+
+#: lib/titles.php:26
+msgid "Author Archives: %s"
+msgstr "लेखक अभिलेखागार: %s"
+
+#: lib/titles.php:31
+msgid "Search Results for %s"
+msgstr "%s के लिए खोज परिणाम"
+
+#: lib/titles.php:33
+msgid "Not Found"
+msgstr "नहीं मिला"
+
+#: lib/widgets.php:8
+msgid "Primary"
+msgstr "प्राथमिक"
+
+#: lib/widgets.php:17
+msgid "Footer"
+msgstr "पाद लेख"
+
+#: lib/widgets.php:45
+msgid "Use this widget to add a vCard"
+msgstr "वीकार्ड को जोड़ने के लिए इस विजेट का उपयोग करे  "
+
+#: lib/widgets.php:47
+msgid "Roots: vCard"
+msgstr "रूट्स : वीकार्ड"
+
+#: lib/widgets.php:74
+msgid "vCard"
+msgstr "वीकार्ड"
+
+#: templates/comment.php:4
+msgid "%1$s"
+msgstr "%1$s"
+
+#: templates/comment.php:5
+msgid "(Edit)"
+msgstr "(संपादित करें)"
+
+#: templates/comment.php:9
+msgid "Your comment is awaiting moderation."
+msgstr "आपकी टिप्पणी परिनियमन की प्रतीक्षा में है."
+
+#: templates/comments.php:8
+msgid "One Response to &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s Responses to &ldquo;%2$s&rdquo;"
+msgstr[0] "&ldquo;%2$s&rdquo; के लिए एक प्रतिक्रिया "
+msgstr[1] "&ldquo;%2$s&rdquo; के लिए  %1$s प्रतिक्रिया  "
+
+#: templates/comments.php:18
+msgid "&larr; Older comments"
+msgstr "&larr; पुरानी टिप्पणियां"
+
+#: templates/comments.php:21
+msgid "Newer comments &rarr;"
+msgstr "नई टिप्पणियाँ &rarr;"
+
+#: templates/comments.php:29 templates/comments.php:38
+msgid "Comments are closed."
+msgstr "टिप्पणियाँ बंद हैं."
+
+#: templates/comments.php:45
+msgid "Leave a Reply"
+msgstr "एक उत्तर छोड़ दें"
+
+#: templates/comments.php:45
+msgid "Leave a Reply to %s"
+msgstr "%s के लिए एक उत्तर छोड़ दें "
+
+#: templates/comments.php:48
+msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
+msgstr "आपको एक टिप्पणी करने के लिए <a href=\"%s\">लॉग इन</a> होना चाहिए"
+
+#: templates/comments.php:53
+msgid "Logged in as <a href=\"%s/wp-admin/profile.php\">%s</a>."
+msgstr "<a href=\"%s/wp-admin/profile.php\">%s</a> के रूप में लॉग इन."
+
+#: templates/comments.php:54
+msgid "Log out of this account"
+msgstr "इस खाते से लॉग आउट करें"
+
+#: templates/comments.php:54
+msgid "Log out &raquo;"
+msgstr "लॉग आउट &raquo;"
+
+#: templates/comments.php:58
+msgid "Name"
+msgstr "नाम"
+
+#: templates/comments.php:58 templates/comments.php:62
+msgid " (required)"
+msgstr "(अपेक्षित)"
+
+#: templates/comments.php:62
+msgid "Email (will not be published)"
+msgstr "ईमेल (प्रकाशित नहीं किया जाएगा)"
+
+#: templates/comments.php:66
+msgid "Website"
+msgstr "वेबसाइट"
+
+#: templates/comments.php:71
+msgid "Comment"
+msgstr "टिप्पणी"
+
+#: templates/comments.php:74
+msgid "Submit Comment"
+msgstr "टिप्पणी भेजें"
+
+#: templates/content-single.php:11
+msgid "Pages:"
+msgstr "पन्ने:"
+
+#: templates/entry-meta.php:2
+msgid "By"
+msgstr "द्वारा"
+
+#: templates/searchform.php:3 templates/searchform.php:6
+msgid "Search"
+msgstr "खोज"
+
+#: templates/searchform.php:4
+msgid "Search for:"
+msgstr "खोजें:"
