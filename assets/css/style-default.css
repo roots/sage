@@ -2358,8 +2358,8 @@ input[type="button"].btn-block {
 }
 @font-face {
   font-family: 'Glyphicons Halflings';
-  src: url('http://local.wordpress.dev/wp-content/themes/shoestrap-3/assets/fonts/glyphicons-halflings-regular.eot');
-  src: url('http://local.wordpress.dev/wp-content/themes/shoestrap-3/assets/fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('http://local.wordpress.dev/wp-content/themes/shoestrap-3/assets/fonts/glyphicons-halflings-regular.woff') format('woff'), url('http://local.wordpress.dev/wp-content/themes/shoestrap-3/assets/fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('http://local.wordpress.dev/wp-content/themes/shoestrap-3/assets/fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+  src: url('../fonts/glyphicons-halflings-regular.eot');
+  src: url('../fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/glyphicons-halflings-regular.woff') format('woff'), url('../fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
 }
 .glyphicon {
   position: relative;
