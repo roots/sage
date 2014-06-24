@@ -74,9 +74,3 @@ if ( file_exists( locate_template( '/lib/updater/updater.php' ) ) ) {
 if ( class_exists( 'bbPress' ) ) {
 	require_once locate_template( '/lib/bbpress.php' );
 }
-
-function theme_name_scripts() {
-	wp_enqueue_style( 'theme-style', get_stylesheet_uri());
-}
-
-add_action( 'wp_enqueue_scripts', 'theme_name_scripts' );
