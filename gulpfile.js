@@ -21,15 +21,15 @@ var livereload = require('gulp-livereload');			// LiveReload
 
 	gulp.task('sass', function (){
 		gulp.src([
-			'bower_components/foundation/scss/normalize.scss',		// Gets normalize
-			'assets/scss/app.scss']) 								// Gets the apps scss
-			.pipe(sass({style: 'compressed'}))						// Compile sass
-			.pipe(concat('main.css'))								// Concat all css
-			.pipe(rename({suffix: '.min'}))							// Rename it
-			.pipe(minifycss())										// Minify the CSS
-			.pipe(gulp.dest('assets/css/'))							// Set the destination to assets/css
-			.pipe(livereload());									// Reloads server
-			util.log(util.colors.yellow('Sass compiled & minified'));		// Output to terminal
+			'bower_components/foundation/scss/normalize.scss',         // Gets normalize
+			'assets/scss/app.scss'])                                   // Gets the apps scss
+			.pipe(sass({style: 'compressed', errLogToConsole: true}))  // Compile sass
+			.pipe(concat('main.css'))                                  // Concat all css
+			.pipe(rename({suffix: '.min'}))                            // Rename it
+			.pipe(minifycss())                                         // Minify the CSS
+			.pipe(gulp.dest('assets/css/'))                            // Set the destination to assets/css
+			.pipe(livereload());                                       // Reloads server
+			util.log(util.colors.yellow('Sass compiled & minified'));  // Output to terminal
 	});
 
 
