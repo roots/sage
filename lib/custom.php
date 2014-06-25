@@ -1,7 +1,8 @@
 <?php
 /**
  * Custom functions, all this is optional
- * Mosly cleaning up the admin interface
+ * Mosly cleaning up the admin interface.
+ * Comment out what you don't need, and uncomment what you want.
  */
 
 
@@ -119,18 +120,19 @@ add_action('wp_dashboard_setup', 'remove_dashboard_widgets' );
 
 
 //
-//		Removes meta boxes from post
+//		Remove meta boxes from post & pages. Uncomment if you want
+//    cleaner post and pages(like the attributes, tags and category)
 //
 //////////////////////////////////////////////////////////////////////
 
 
 
-function remove_meta_boxes() {
-	remove_meta_box( 'pageparentdiv' , 'page', 'normal');
-	remove_meta_box( 'tagsdiv-post_tag', 'post', 'normal');
-	remove_meta_box( 'categorydiv', 'post', 'normal');
-}
-add_action('admin_menu', 'remove_meta_boxes');
+// function remove_meta_boxes() {
+// 	remove_meta_box( 'pageparentdiv' , 'page', 'normal'); // Removes attributes page
+// 	remove_meta_box( 'tagsdiv-post_tag', 'post', 'normal'); // Removes tags for post
+// 	remove_meta_box( 'categorydiv', 'post', 'normal'); // Removes category for posts
+// }
+// add_action('admin_menu', 'remove_meta_boxes');
 
 
 
