@@ -16,10 +16,14 @@ $body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
 
 
 
-/*==========  Import Foundation Components - REMOVE what you don't use to keep the CSS as little as possible  ==========*/
+/*=================================================================  
+  
+    Import Foundation Components - REMOVE what you don't use to keep the CSS as little as possible
+
+=================================================================*/
 
 
-@import
+@import 
   "bower_components/foundation/scss/foundation/components/grid",
   "bower_components/foundation/scss/foundation/components/accordion",
   "bower_components/foundation/scss/foundation/components/alert-boxes",
@@ -32,6 +36,7 @@ $body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
   "bower_components/foundation/scss/foundation/components/dropdown-buttons",
   "bower_components/foundation/scss/foundation/components/flex-video",
   "bower_components/foundation/scss/foundation/components/forms",
+  "bower_components/foundation/scss/foundation/components/icon-bar",
   "bower_components/foundation/scss/foundation/components/inline-lists",
   "bower_components/foundation/scss/foundation/components/joyride",
   "bower_components/foundation/scss/foundation/components/keystrokes",
@@ -47,7 +52,7 @@ $body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
   "bower_components/foundation/scss/foundation/components/side-nav",
   "bower_components/foundation/scss/foundation/components/split-buttons",
   "bower_components/foundation/scss/foundation/components/sub-nav",
-  "bower_components/foundation/scss/foundation/components/switch",
+  "bower_components/foundation/scss/foundation/components/switches",
   "bower_components/foundation/scss/foundation/components/tables",
   "bower_components/foundation/scss/foundation/components/tabs",
   "bower_components/foundation/scss/foundation/components/thumbs",
@@ -56,7 +61,6 @@ $body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
   "bower_components/foundation/scss/foundation/components/type",
   "bower_components/foundation/scss/foundation/components/offcanvas",
   "bower_components/foundation/scss/foundation/components/visibility";
-
 
 
 
