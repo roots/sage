@@ -10,6 +10,8 @@ var imagemin = require('gulp-imagemin');				// Image minify
 var rename = require('gulp-rename');					// Rename files
 var util = require('gulp-util');						// Writing stuff
 var livereload = require('gulp-livereload');			// LiveReload
+var jshint = require("gulp-jshint");					// jshint
+
 
 
 
@@ -96,10 +98,24 @@ var livereload = require('gulp-livereload');			// LiveReload
 
 
 
+
+
+
+
+
+
 //
-//		PHP refresh
+//		JS hint
 //
 //////////////////////////////////////////////////////////////////////
+
+
+
+gulp.task('jshint', function() {
+    gulp.src('assets/js/_*.js')
+        .pipe(jshint())
+        .pipe(jshint.reporter('jshint-stylish'));
+});
 
 
 
@@ -154,11 +170,11 @@ gulp.task('watch', function(){
 	  });
 
 	gulp.watch("assets/scss/**/*.scss", ['sass']);				// Watch and run sass on changes
-	gulp.watch("assets/js/_*.js", ['javascripts']);				// Watch and run javascripts on changes
+	gulp.watch("assets/js/_*.js", ['jshint', 'javascripts']);				// Watch and run javascripts on changes
 	gulp.watch("assets/img/*", ['imagemin', 'svgmin']);		// Watch and minify images on changes
 
 });
 
-gulp.task('default', ['sass', 'javascripts', 'copy', 'imagemin', 'watch']);
+gulp.task('default', ['sass', 'jshint', 'javascripts', 'copy', 'watch']);
 
 
