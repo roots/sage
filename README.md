@@ -1,4 +1,4 @@
-# [Roots Theme](http://roots.io/)
+# [Roots Starter Theme](http://roots.io/)
 
 [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
 
@@ -6,7 +6,7 @@ Roots is a WordPress starter theme based on [HTML5 Boilerplate](http://html5boil
 
 * Source: [https://github.com/roots/roots](https://github.com/roots/roots)
 * Home Page: [http://roots.io/](http://roots.io/)
-* Twitter: [@retlehs](https://twitter.com/retlehs)
+* Twitter: [@rootswp](https://twitter.com/rootswp), [@retlehs](https://twitter.com/retlehs), [@swalkinshaw](https://twitter.com/swalkinshaw), [@Foxaii](https://twitter.com/Foxaii), [@c2foryou](https://twitter.com/c2foryou)
 * Newsletter: [Subscribe](http://roots.io/subscribe/)
 * Forum: [http://discourse.roots.io/](http://discourse.roots.io/)
 
@@ -68,14 +68,16 @@ Edit `lib/init.php` to setup navigation menus, post thumbnail sizes, post format
 * HTML5 Boilerplate's markup along with ARIA roles and microformat
 * Bootstrap
 * [Grunt build script](http://roots.io/using-grunt-for-wordpress-theme-development/)
-* Bower for front-end package management
+* [Bower](http://bower.io/) for front-end package management
 * [Theme activation](http://roots.io/roots-101/#theme-activation)
 * [Theme wrapper](http://roots.io/an-introduction-to-the-roots-theme-wrapper/)
 * Cleaner HTML output of navigation menus
 * Posts use the [hNews](http://microformats.org/wiki/hnews) microformat
 * [Multilingual ready](http://roots.io/wpml/) and over 30 available [community translations](https://github.com/roots/roots-translations)
 
-### Features from [Soil](https://github.com/roots/soil)
+### Additional features
+
+We recommend that you install [Soil](https://github.com/roots/soil) to enable these additional features:
 
 * Root relative URLs
 * Nice search (`/search/query/`)
