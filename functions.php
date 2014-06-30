@@ -2,15 +2,26 @@
 /**
  * Roots includes
  */
-require_once locate_template('/lib/utils.php');           // Utility functions
-require_once locate_template('/lib/init.php');            // Initial theme setup and constants
-require_once locate_template('/lib/wrapper.php');         // Theme wrapper class
-require_once locate_template('/lib/sidebar.php');         // Sidebar class
-require_once locate_template('/lib/config.php');          // Configuration
-require_once locate_template('/lib/activation.php');      // Theme activation
-require_once locate_template('/lib/titles.php');          // Page titles
-require_once locate_template('/lib/nav.php');             // Custom nav modifications
-require_once locate_template('/lib/gallery.php');         // Custom [gallery] modifications
-require_once locate_template('/lib/comments.php');        // Custom comments modifications
-require_once locate_template('/lib/scripts.php');         // Scripts and stylesheets
-require_once locate_template('/lib/extras.php');          // Custom functions
+$roots_includes = array(
+  '/lib/utils.php',           // Utility functions
+  '/lib/init.php',            // Initial theme setup and constants
+  '/lib/wrapper.php',         // Theme wrapper class
+  '/lib/sidebar.php',         // Sidebar class
+  '/lib/config.php',          // Configuration
+  '/lib/activation.php',      // Theme activation
+  '/lib/titles.php',          // Page titles
+  '/lib/nav.php',             // Custom nav modifications
+  '/lib/gallery.php',         // Custom [gallery] modifications
+  '/lib/comments.php',        // Custom comments modifications
+  '/lib/scripts.php',         // Scripts and stylesheets
+  '/lib/extras.php',          // Custom functions
+);
+
+foreach ($roots_includes as $file) {
+  if (!$filepath = locate_template($file)) {
+    trigger_error("Error locating `$file` for inclusion!", E_USER_ERROR);
+  }
+
+  require_once $filepath;
+}
+unset($file, $filepath);

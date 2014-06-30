@@ -38,6 +38,7 @@ class Roots_Walker_Comment extends Walker_Comment {
       call_user_func($args['end-callback'], $comment, $args, $depth);
       return;
     }
+    // Close ".media-body" <div> located in templates/comment.php, and then the comment's <li>
     echo "</div></li>\n";
   }
 }
