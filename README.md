@@ -5,10 +5,37 @@
 Roots is a WordPress starter theme based on [HTML5 Boilerplate](http://html5boilerplate.com/) & [Bootstrap](http://getbootstrap.com/) that will help you make better themes.
 
 * Source: [https://github.com/roots/roots](https://github.com/roots/roots)
-* Home Page: [http://roots.io/](http://roots.io/)
+* Homepage: [http://roots.io/](http://roots.io/)
+* Documentation: [http://roots.io/docs/](http://roots.io/docs/)
 * Twitter: [@rootswp](https://twitter.com/rootswp), [@retlehs](https://twitter.com/retlehs), [@swalkinshaw](https://twitter.com/swalkinshaw), [@Foxaii](https://twitter.com/Foxaii), [@c2foryou](https://twitter.com/c2foryou)
 * Newsletter: [Subscribe](http://roots.io/subscribe/)
 * Forum: [http://discourse.roots.io/](http://discourse.roots.io/)
+
+## Features
+
+* [Grunt](http://roots.io/using-grunt-for-wordpress-theme-development/) for compiling LESS to CSS, checking for JS errors, live reloading, concatenating and minifying files, versioning assets, and generating lean Modernizr builds
+* [Bower](http://bower.io/) for front-end package management
+* [HTML5 Boilerplate](http://html5boilerplate.com/)
+  * The latest [jQuery](http://jquery.com/) via Google CDN, with a local fallback
+  * The latest [Modernizr](http://modernizr.com/) build for feature detection, with lean builds with Grunt
+  * An optimized Google Analytics snippet
+* Bootstrap
+* Organized file and template structure
+* ARIA roles and microformats
+* [Theme activation](http://roots.io/roots-101/#theme-activation)
+* [Theme wrapper](http://roots.io/an-introduction-to-the-roots-theme-wrapper/)
+* Cleaner HTML output of navigation menus
+* Posts use the [hNews](http://microformats.org/wiki/hnews) microformat
+* [Multilingual ready](http://roots.io/wpml/) and over 30 available [community translations](https://github.com/roots/roots-translations)
+
+### Additional features
+
+Install the [Soil](https://github.com/roots/soil) plugin to enable additional features:
+
+* Root relative URLs
+* Nice search (`/search/query/`)
+* Cleaner output of `wp_head` and enqueued assets markup
+* Image captions use `<figure>` and `<figcaption>`
 
 ## Installation
 
@@ -24,22 +51,26 @@ define('WP_ENV', 'development');
 
 Reference the [theme activation](http://roots.io/roots-101/#theme-activation) documentation to understand everything that happens once you activate Roots.
 
-## Compiling CSS and JavaScript
+## Configuration
+
+Edit `lib/config.php` to enable or disable theme features and to define a Google Analytics ID.
+
+Edit `lib/init.php` to setup navigation menus, post thumbnail sizes, post formats, and sidebars.
+
+## Theme development
 
 Roots uses [Grunt](http://gruntjs.com/) for compiling LESS to CSS, checking for JS errors, live reloading, concatenating and minifying files, versioning assets, and generating lean Modernizr builds.
 
-To use it, install the required dependencies as directed and then run some Grunt commands.
-
 ### Install Grunt
+
+**Unfamiliar with npm? Don't have node installed?** [Download and install node.js](http://nodejs.org/download/) before proceeding.
 
 From the command line:
 
 1. Install `grunt-cli` globally with `npm install -g grunt-cli`.
-2. Navigate to the theme directory, then run `npm install`. npm will look at `package.json` and automatically install the necessary dependencies. It will also automatically run `bower install`, which references dependencies in `bower.json`.
+2. Navigate to the theme directory, then run `npm install`. npm will look at `package.json` and automatically install the necessary dependencies. It will also automatically run `bower install`, which installs front-end packages defined in `bower.json`.
 
 When completed, you'll be able to run the various Grunt commands provided from the command line.
-
-**Unfamiliar with npm? Don't have node installed?** [Download and install node.js](http://nodejs.org/download/) before proceeding.
 
 ### Available Grunt commands
 
@@ -47,42 +78,12 @@ When completed, you'll be able to run the various Grunt commands provided from t
 * `grunt watch` — Compile assets when file changes are made
 * `grunt build` — Create minified assets that are used on non-development environments
 
-## Configuration
-
-Edit `lib/config.php` to enable or disable support for various theme functions and to define constants.
-
-Edit `lib/init.php` to setup navigation menus, post thumbnail sizes, post formats, and sidebars.
-
 ## Documentation
 
-### [Roots Docs](http://roots.io/docs/)
-
-* [Roots 101](http://roots.io/roots-101/) — A guide to installing Roots, the files and theme organization
+* [Roots 101](http://roots.io/roots-101/) — A guide to installing Roots, the files, and theme organization
 * [Theme Wrapper](http://roots.io/an-introduction-to-the-roots-theme-wrapper/) — Learn all about the theme wrapper
-* [Build Script](http://roots.io/using-grunt-for-wordpress-theme-development/) — A look into the Roots build script powered by Grunt
+* [Build Script](http://roots.io/using-grunt-for-wordpress-theme-development/) — A look into how Roots uses Grunt
 * [Roots Sidebar](http://roots.io/the-roots-sidebar/) — Understand how to display or hide the sidebar in Roots
-
-## Features
-
-* Organized file and template structure
-* HTML5 Boilerplate's markup along with ARIA roles and microformat
-* Bootstrap
-* [Grunt build script](http://roots.io/using-grunt-for-wordpress-theme-development/)
-* [Bower](http://bower.io/) for front-end package management
-* [Theme activation](http://roots.io/roots-101/#theme-activation)
-* [Theme wrapper](http://roots.io/an-introduction-to-the-roots-theme-wrapper/)
-* Cleaner HTML output of navigation menus
-* Posts use the [hNews](http://microformats.org/wiki/hnews) microformat
-* [Multilingual ready](http://roots.io/wpml/) and over 30 available [community translations](https://github.com/roots/roots-translations)
-
-### Additional features
-
-We recommend that you install [Soil](https://github.com/roots/soil) to enable these additional features:
-
-* Root relative URLs
-* Nice search (`/search/query/`)
-* Cleaner output of `wp_head` and enqueued scripts/styles
-* Image captions use `<figure>` and `<figcaption>`
 
 ## Contributing
 
