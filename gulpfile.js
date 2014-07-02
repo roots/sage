@@ -169,6 +169,8 @@ gulp.task('watch', function(){
 	      util.log(util.colors.yellow('PHP file changed' + ' (' + file.path + ')'));
 	  });
 
+
+    gulp.watch("bower_components/foundation/scss/**/*.scss", ['sass']); // Runs sass on foundation components change
 	gulp.watch("assets/scss/**/*.scss", ['sass']);				// Watch and run sass on changes
 	gulp.watch("assets/js/_*.js", ['jshint', 'javascripts']);				// Watch and run javascripts on changes
 	gulp.watch("assets/img/*", ['imagemin', 'svgmin']);		// Watch and minify images on changes
