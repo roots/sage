@@ -3,7 +3,7 @@
 * Use grunt-modernizr to make a lean Modernizr build
 * Use Bower for front-end package management
 * Update to Bootstrap 3.2.0
-* Updage to Modernizr 2.8.2
+* Update to Modernizr 2.8.2
 * Update to jQuery 1.11.1
 * Move clean up, relative URLs, and nice search to [Soil](https://github.com/roots/soil)
 * Update LESS organization
