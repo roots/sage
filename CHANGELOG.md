@@ -1,4 +1,4 @@
-### 7.0.0: TBD
+### 7.0.0: July 3rd, 2014
 * Updated Grunt workflow
 * Use grunt-modernizr to make a lean Modernizr build
 * Use Bower for front-end package management
