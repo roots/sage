@@ -7,6 +7,7 @@ module.exports = {
 	all : [
 		'Gruntfile.js',
 		'assets/js/*.js',
-		'!assets/js/scripts.min.js'
+    '!assets/js/scripts.js',
+    '!assets/**/*.min.*'
 	]
 };

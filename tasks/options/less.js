@@ -1,17 +1,25 @@
 'use strict';
 
 module.exports = {
-	dist : {
+	dev : {
 		files : {
-			'assets/css/main.min.css' : ['assets/less/app.less']
+			'assets/css/main.css' : ['assets/less/main.less']
 		},
 		options : {
-			compress : true,
+			compress : false,
 			// LESS source map
 			// To enable, set sourceMap to true and update sourceMapRootpath based on your install
-			sourceMap : false,
-			sourceMapFilename : 'assets/css/main.min.css.map',
+			sourceMap : true,
+			sourceMapFilename : 'assets/css/main.css.map',
 			sourceMapRootpath : '/app/themes/roots/'
+		}
+	},
+	build : {
+		files : {
+			'assets/css/main.min.css' : ['assets/less/main.less']
+		},
+		options : {
+			compress : true
 		}
 	}
 };

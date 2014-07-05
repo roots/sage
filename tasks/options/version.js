@@ -1,11 +1,18 @@
 'use strict';
 
 module.exports = {
-	options : {
-		file : 'lib/scripts.php',
-		css : 'assets/css/main.min.css',
-		cssHandle : 'roots_main',
-		js : 'assets/js/scripts.min.js',
-		jsHandle : 'roots_scripts'
+	default: {
+		options: {
+			format: true,
+			length: 32,
+			manifest: 'assets/manifest.json',
+			querystring: {
+				style: 'roots_css',
+				script: 'roots_js'
+			}
+		},
+		files: {
+			'lib/scripts.php': 'assets/{css,js}/{main,scripts}.min.{css,js}'
+		}
 	}
 };
