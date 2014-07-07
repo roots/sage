@@ -1,4 +1,5 @@
 'use strict';
+var jsFileList = require("../files.js").jsFileList;
 
 module.exports = {
 	dist : {

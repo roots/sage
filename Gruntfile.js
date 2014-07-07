@@ -5,27 +5,11 @@
 'use strict';
 
 module.exports = function (grunt) {
+	
 	// Load all tasks
 	require('load-grunt-tasks')(grunt);
 	// Show elapsed time
 	require('time-grunt')(grunt);
-
-	var jsFileList = [
-		'assets/vendor/bootstrap/js/transition.js',
-		'assets/vendor/bootstrap/js/alert.js',
-		'assets/vendor/bootstrap/js/button.js',
-		'assets/vendor/bootstrap/js/carousel.js',
-		'assets/vendor/bootstrap/js/collapse.js',
-		'assets/vendor/bootstrap/js/dropdown.js',
-		'assets/vendor/bootstrap/js/modal.js',
-		'assets/vendor/bootstrap/js/tooltip.js',
-		'assets/vendor/bootstrap/js/popover.js',
-		'assets/vendor/bootstrap/js/scrollspy.js',
-		'assets/vendor/bootstrap/js/tab.js',
-		'assets/vendor/bootstrap/js/affix.js',
-		'assets/js/plugins/*.js',
-		'assets/js/_*.js'
-	];
 
 	// Set and then load configurable variables we can use in our grunt file
 	var config = {
