@@ -83,7 +83,9 @@ module.exports = function(grunt) {
       },
       dev: {
         options: {
-          map: 'assets/css/'
+          map: {
+            prev: 'assets/css/'
+          }
         },
         src: 'assets/css/main.css'
       },
