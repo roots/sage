@@ -4,14 +4,51 @@
 // Comment out any unused components
 // --------------------------------------------------
 
-// Core variables and mixins
+// Variables
 @import "../vendor/bootstrap/less/variables";
 @import "_variables"; // Bootstrap variable overrides and custom variables
-@import "../vendor/bootstrap/less/mixins";
+
+// Mixins: Utilities
+@import "../vendor/bootstrap/less/mixins/hide-text";
+@import "../vendor/bootstrap/less/mixins/opacity";
+@import "../vendor/bootstrap/less/mixins/image";
+@import "../vendor/bootstrap/less/mixins/labels";
+@import "../vendor/bootstrap/less/mixins/reset-filter";
+@import "../vendor/bootstrap/less/mixins/resize";
+@import "../vendor/bootstrap/less/mixins/responsive-visibility";
+@import "../vendor/bootstrap/less/mixins/size";
+@import "../vendor/bootstrap/less/mixins/tab-focus";
+@import "../vendor/bootstrap/less/mixins/text-emphasis";
+@import "../vendor/bootstrap/less/mixins/text-overflow";
+@import "../vendor/bootstrap/less/mixins/vendor-prefixes";
+
+// Mixins: Components
+@import "../vendor/bootstrap/less/mixins/alerts";
+@import "../vendor/bootstrap/less/mixins/buttons";
+@import "../vendor/bootstrap/less/mixins/panels";
+@import "../vendor/bootstrap/less/mixins/pagination";
+@import "../vendor/bootstrap/less/mixins/list-group";
+@import "../vendor/bootstrap/less/mixins/nav-divider";
+@import "../vendor/bootstrap/less/mixins/forms";
+@import "../vendor/bootstrap/less/mixins/progress-bar";
+@import "../vendor/bootstrap/less/mixins/table-row";
+
+// Mixins: Skins
+@import "../vendor/bootstrap/less/mixins/background-variant";
+@import "../vendor/bootstrap/less/mixins/border-radius";
+@import "../vendor/bootstrap/less/mixins/gradients";
+
+// Mixins: Layout
+@import "../vendor/bootstrap/less/mixins/clearfix";
+@import "../vendor/bootstrap/less/mixins/center-block";
+@import "../vendor/bootstrap/less/mixins/nav-vertical-align";
+@import "../vendor/bootstrap/less/mixins/grid-framework";
+@import "../vendor/bootstrap/less/mixins/grid";
 
 // Reset
 @import "../vendor/bootstrap/less/normalize";
 @import "../vendor/bootstrap/less/print";
+@import "../vendor/bootstrap/less/glyphicons";
 
 // Core CSS
 @import "../vendor/bootstrap/less/scaffolding";
@@ -24,7 +61,6 @@
 
 // Components
 @import "../vendor/bootstrap/less/component-animations";
-@import "../vendor/bootstrap/less/glyphicons";
 @import "../vendor/bootstrap/less/dropdowns";
 @import "../vendor/bootstrap/less/button-groups";
 @import "../vendor/bootstrap/less/input-groups";
@@ -42,6 +78,7 @@
 @import "../vendor/bootstrap/less/media";
 @import "../vendor/bootstrap/less/list-group";
 @import "../vendor/bootstrap/less/panels";
+@import "../vendor/bootstrap/less/responsive-embed";
 @import "../vendor/bootstrap/less/wells";
 @import "../vendor/bootstrap/less/close";
 
@@ -53,5 +90,4 @@
 
 // Utility classes
 @import "../vendor/bootstrap/less/utilities";
-@import "../vendor/bootstrap/less/responsive-embed";
 @import "../vendor/bootstrap/less/responsive-utilities";
