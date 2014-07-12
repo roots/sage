@@ -1,5 +1,5 @@
 {
-  "name": "roots",
+  "name": "roots-foundation",
   "version": "7.0.0",
   "homepage": "http://roots.io",
   "authors": [
@@ -14,8 +14,8 @@
   ],
   "dependencies": {
     "modernizr": "2.8.2",
-    "jquery": "1.11.1",
-    "bootstrap": "3.2.0",
+    "jquery": "2.1.1",
+    "foundation": "5.3.0",
     "respond": "1.4.2"
   }
 }

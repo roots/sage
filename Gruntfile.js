@@ -6,18 +6,23 @@ module.exports = function(grunt) {
   require('time-grunt')(grunt);
 
   var jsFileList = [
-    'assets/vendor/bootstrap/js/transition.js',
-    'assets/vendor/bootstrap/js/alert.js',
-    'assets/vendor/bootstrap/js/button.js',
-    'assets/vendor/bootstrap/js/carousel.js',
-    'assets/vendor/bootstrap/js/collapse.js',
-    'assets/vendor/bootstrap/js/dropdown.js',
-    'assets/vendor/bootstrap/js/modal.js',
-    'assets/vendor/bootstrap/js/tooltip.js',
-    'assets/vendor/bootstrap/js/popover.js',
-    'assets/vendor/bootstrap/js/scrollspy.js',
-    'assets/vendor/bootstrap/js/tab.js',
-    'assets/vendor/bootstrap/js/affix.js',
+    'assets/vendor/foundation/js/foundation/foundation.js',
+    'assets/vendor/foundation/js/foundation/foundation.abide.js',
+    'assets/vendor/foundation/js/foundation/foundation.accordian.js',
+    'assets/vendor/foundation/js/foundation/foundation.alert.js',
+    'assets/vendor/foundation/js/foundation/foundation.clearing.js',
+    'assets/vendor/foundation/js/foundation/foundation.dropdown.js',
+    'assets/vendor/foundation/js/foundation/foundation.equalizer.js',
+    'assets/vendor/foundation/js/foundation/foundation.interchange.js',
+    'assets/vendor/foundation/js/foundation/foundation.joyride.js',
+    'assets/vendor/foundation/js/foundation/foundation.magellan.js',
+    'assets/vendor/foundation/js/foundation/foundation.offcanvas.js',
+    'assets/vendor/foundation/js/foundation/foundation.orbit.js',
+    'assets/vendor/foundation/js/foundation/foundation.reveal.js',
+    'assets/vendor/foundation/js/foundation/foundation.slider.js',
+    'assets/vendor/foundation/js/foundation/foundation.tab.js',
+    'assets/vendor/foundation/js/foundation/foundation.tooltip.js',
+    'assets/vendor/foundation/js/foundation/foundation.topbar.js',
     'assets/js/plugins/*.js',
     'assets/js/_*.js'
   ];
@@ -34,26 +39,24 @@ module.exports = function(grunt) {
         '!assets/**/*.min.*'
       ]
     },
-    less: {
+    sass: {
       dev: {
         files: {
           'assets/css/main.css': [
-            'assets/less/main.less'
+            'assets/scss/main.scss'
           ]
         },
         options: {
           compress: false,
           // LESS source map
           // To enable, set sourceMap to true and update sourceMapRootpath based on your install
-          sourceMap: true,
-          sourceMapFilename: 'assets/css/main.css.map',
-          sourceMapRootpath: '/app/themes/roots/'
+          sourcemap: true
         }
       },
       build: {
         files: {
           'assets/css/main.min.css': [
-            'assets/less/main.less'
+            'assets/scss/main.scss'
           ]
         },
         options: {
@@ -83,9 +86,7 @@ module.exports = function(grunt) {
       },
       dev: {
         options: {
-          map: {
-            prev: 'assets/css/'
-          }
+          map: 'assets/css/'
         },
         src: 'assets/css/main.css'
       },
@@ -124,12 +125,12 @@ module.exports = function(grunt) {
       }
     },
     watch: {
-      less: {
+      sass: {
         files: [
-          'assets/less/*.less',
-          'assets/less/**/*.less'
+          'assets/sass/*.sass',
+          'assets/sass/**/*.sass'
         ],
-        tasks: ['less:dev', 'autoprefixer:dev']
+        tasks: ['sass:dev', 'autoprefixer:dev']
       },
       js: {
         files: [
@@ -160,13 +161,13 @@ module.exports = function(grunt) {
   ]);
   grunt.registerTask('dev', [
     'jshint',
-    'less:dev',
+    'sass:dev',
     'autoprefixer:dev',
     'concat'
   ]);
   grunt.registerTask('build', [
     'jshint',
-    'less:build',
+    'sass:build',
     'autoprefixer:build',
     'uglify',
     'modernizr',

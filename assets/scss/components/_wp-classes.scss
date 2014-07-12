@@ -3,11 +3,11 @@
 
 .aligncenter {
   display: block;
-  margin: (@line-height-computed / 2) auto;
+  margin: ($base-line-height / 2) auto;
 }
 .alignleft,
 .alignright {
-  margin-bottom: (@line-height-computed / 2);
+  margin-bottom: ($base-line-height / 2);
 }
 figure.alignnone {
   margin-left: 0;
@@ -15,14 +15,14 @@ figure.alignnone {
   max-width: 100%;
 }
 
-@media (min-width: @screen-sm-min) {
+@media #{$small-only} {
   // Only float images if not on an extra small device like smartphones
   .alignleft {
     float: left;
-    margin-right: (@line-height-computed / 2);
+    margin-right: ($base-line-height / 2);
   }
   .alignright {
     float: right;
-    margin-left: (@line-height-computed / 2);
+    margin-left: ($base-line-height / 2);
   }
 }

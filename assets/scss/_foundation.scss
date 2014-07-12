@@ -1,0 +1,48 @@
+// Foundation by ZURB
+// foundation.zurb.com
+// Licensed under MIT Open Source
+
+// Make sure the charset is set appropriately
+@charset "UTF-8";
+
+// Behold, here are all the Foundation components.
+// Delete the ones you don't want
+@import
+  "../vendor/foundation/scss/foundation/functions",
+  "../vendor/foundation/scss/foundation/components/grid",
+  "../vendor/foundation/scss/foundation/components/accordion",
+  "../vendor/foundation/scss/foundation/components/alert-boxes",
+  "../vendor/foundation/scss/foundation/components/block-grid",
+  "../vendor/foundation/scss/foundation/components/breadcrumbs",
+  "../vendor/foundation/scss/foundation/components/button-groups",
+  "../vendor/foundation/scss/foundation/components/buttons",
+  "../vendor/foundation/scss/foundation/components/clearing",
+  "../vendor/foundation/scss/foundation/components/dropdown",
+  "../vendor/foundation/scss/foundation/components/dropdown-buttons",
+  "../vendor/foundation/scss/foundation/components/flex-video",
+  "../vendor/foundation/scss/foundation/components/forms",
+  "../vendor/foundation/scss/foundation/components/icon-bar",
+  "../vendor/foundation/scss/foundation/components/inline-lists",
+  "../vendor/foundation/scss/foundation/components/joyride",
+  "../vendor/foundation/scss/foundation/components/keystrokes",
+  "../vendor/foundation/scss/foundation/components/labels",
+  "../vendor/foundation/scss/foundation/components/magellan",
+  "../vendor/foundation/scss/foundation/components/orbit",
+  "../vendor/foundation/scss/foundation/components/pagination",
+  "../vendor/foundation/scss/foundation/components/panels",
+  "../vendor/foundation/scss/foundation/components/pricing-tables",
+  "../vendor/foundation/scss/foundation/components/progress-bars",
+  "../vendor/foundation/scss/foundation/components/range-slider",
+  "../vendor/foundation/scss/foundation/components/reveal",
+  "../vendor/foundation/scss/foundation/components/side-nav",
+  "../vendor/foundation/scss/foundation/components/split-buttons",
+  "../vendor/foundation/scss/foundation/components/sub-nav",
+  "../vendor/foundation/scss/foundation/components/switches",
+  "../vendor/foundation/scss/foundation/components/tables",
+  "../vendor/foundation/scss/foundation/components/tabs",
+  "../vendor/foundation/scss/foundation/components/thumbs",
+  "../vendor/foundation/scss/foundation/components/tooltips",
+  "../vendor/foundation/scss/foundation/components/top-bar",
+  "../vendor/foundation/scss/foundation/components/type",
+  "../vendor/foundation/scss/foundation/components/offcanvas",
+  "../vendor/foundation/scss/foundation/components/visibility";
