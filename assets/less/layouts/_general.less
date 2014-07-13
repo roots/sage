@@ -2,4 +2,9 @@
 .wrap { }
 
 // Main content area
-.main { }
+.main {
+  .make-sm-column(@main-sm-columns);
+  .sidebar-primary & {
+    .make-sm-column(@main-sm-columns - @sidebar-sm-columns);
+  }
+}
