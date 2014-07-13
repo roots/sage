@@ -7,3 +7,4 @@ assets/css/*main*.css
 assets/js/*scripts*.js
 assets/js/vendor/modernizr.min.js
 assets/manifest.json
+.sass-cache
