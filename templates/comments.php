@@ -45,7 +45,10 @@
       <p><?php printf(__('You must be <a href="%s">logged in</a> to post a comment.', 'roots'), wp_login_url(get_permalink())); ?></p>
     <?php else : ?>
       <form action="<?php echo get_option('siteurl'); ?>/wp-comments-post.php" method="post" id="commentform">
-        <?php if (is_user_logged_in()) : ?>
+        <?php if (is_user_logged_in()) : 
+        $user = wp_get_current_user();
+        $user_identity = $user->exists() ? $user->display_name : '';
+        ?>
           <p>
             <?php printf(__('Logged in as <a href="%s/wp-admin/profile.php">%s</a>.', 'roots'), get_option('siteurl'), $user_identity); ?>
             <a href="<?php echo wp_logout_url(get_permalink()); ?>" title="<?php _e('Log out of this account', 'roots'); ?>"><?php _e('Log out &raquo;', 'roots'); ?></a>
