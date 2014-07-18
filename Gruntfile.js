@@ -61,16 +61,19 @@ module.exports = function(grunt) {
         }
       }
     },
-    concat: {
-      options: {
-        separator: ';',
-      },
-      dist: {
-        src: [jsFileList],
-        dest: 'assets/js/scripts.js',
-      },
-    },
     uglify: {
+      dev: {
+        options: {
+          beautify: true,
+          compress: false,
+          mangle: false,
+          preserveComments: 'all',
+          report: false,
+        },
+        files: {
+          'assets/js/scripts.js': [jsFileList]
+        }
+      },
       dist: {
         files: {
           'assets/js/scripts.min.js': [jsFileList]
@@ -162,7 +165,7 @@ module.exports = function(grunt) {
     'jshint',
     'less:dev',
     'autoprefixer:dev',
-    'concat'
+    'uglify:dev'
   ]);
   grunt.registerTask('build', [
     'jshint',
