@@ -97,7 +97,7 @@ if ( ! class_exists( 'Shoestrap_Social' ) ) {
 
 			$networks = null;
 
-			if ( isset( $nets['fb'] ) ) {
+			if ( $nets['fb'] == 1 ) {
 				$networks['facebook'] = array(
 					'icon'      => 'facebook',
 					'fullname'  => 'Facebook',
@@ -105,7 +105,7 @@ if ( ! class_exists( 'Shoestrap_Social' ) ) {
 				);
 			}
 
-			if ( isset( $nets['tw'] ) ) {
+			if ( $nets['tw'] == 1 ) {
 				$networks['twitter'] = array(
 					'icon'      => 'twitter',
 					'fullname'  => 'Twitter',
@@ -120,7 +120,7 @@ if ( ! class_exists( 'Shoestrap_Social' ) ) {
 				}
 			}
 
-			if ( isset( $nets['rd'] ) ) {
+			if ( $nets['rd'] == 1 ) {
 				$networks['reddit'] = array(
 					'icon'      => 'reddit',
 					'fullname'  => 'Reddit',
@@ -128,7 +128,7 @@ if ( ! class_exists( 'Shoestrap_Social' ) ) {
 				);
 			}
 
-			if ( isset( $nets['li'] ) ) {
+			if ( $nets['li'] == 1 ) {
 				$networks['linkedin'] = array(
 					'icon'      => 'linkedin',
 					'fullname'  => 'LinkedIn',
@@ -136,7 +136,7 @@ if ( ! class_exists( 'Shoestrap_Social' ) ) {
 				);
 			}
 
-			if ( isset( $nets['gp'] ) ) {
+			if ( $nets['gp'] == 1 ) {
 				$networks['googleplus'] = array(
 					'icon'      => 'googleplus',
 					'fullname'  => 'Google+',
@@ -144,7 +144,7 @@ if ( ! class_exists( 'Shoestrap_Social' ) ) {
 				);
 			}
 
-			if ( isset( $nets['tu'] ) ) {
+			if ( $nets['tu'] == 1 ) {
 				$networks['tumblr'] = array(
 					'icon'      => 'tumblr',
 					'fullname'  => 'Tumblr',
@@ -152,7 +152,7 @@ if ( ! class_exists( 'Shoestrap_Social' ) ) {
 				);
 			}
 
-			if ( isset( $nets['pi'] ) ) {
+			if ( $nets['pi'] == 1 ) {
 				$networks['pinterest'] = array(
 					'icon'      => 'pinterest',
 					'fullname'  => 'Pinterest',
@@ -160,7 +160,7 @@ if ( ! class_exists( 'Shoestrap_Social' ) ) {
 				);
 			}
 
-			if ( isset( $nets['em'] ) ) {
+			if ( $nets['em'] == 1 ) {
 				$networks['email'] = array(
 					'icon'      => 'envelope',
 					'fullname'  => 'Email',
