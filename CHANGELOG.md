@@ -1,12 +1,19 @@
-### HEAD
+### 3.2.6
 
 * Fix: Undefined index notices on theme activation
 * Fix: Deprecated functions compatibility
 * Fix: Featured Image dimentions for archives
 * New: Post Format meta element
 * New: Moved all Redux options to a single file
-* New: Implemented Redux SubSections (requires Redux 3.2.3)
-* New: Started work on an "Easy" mode. Will be completed on the next Redux Update.
+* New: Implemented Redux SubSections
+* Fix: Allow adding subsections fia a filter
+* Fix: Allow adding options via a filter
+* Fix: Code cleanups
+* Fix: Share links
+* Fix: Layouts per post type
+* Fix: Removed absolute link to local.wordpress.dev in the stylesheet
+* Fix: typos
+* Fix: Socail Share Networks compatibility with latest Redux
 
 ### 3.2.5
 
