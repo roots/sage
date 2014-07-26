@@ -14,3 +14,11 @@ function roots_get_search_form($form) {
   return $form;
 }
 add_filter('get_search_form', 'roots_get_search_form');
+
+// Tell WordPress to use passwordform.php from the templates/ directory
+function roots_get_the_password_form($output) {
+  $output = '';
+  locate_template('/templates/passwordform.php', true, false);
+  return $output;
+}
+add_filter('the_password_form', 'roots_get_the_password_form');
