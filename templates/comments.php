@@ -45,23 +45,26 @@
       <p><?php printf(__('You must be <a href="%s">logged in</a> to post a comment.', 'roots'), wp_login_url(get_permalink())); ?></p>
     <?php else : ?>
       <form action="<?php echo get_option('siteurl'); ?>/wp-comments-post.php" method="post" id="commentform">
-        <?php if (is_user_logged_in()) : ?>
+        <?php if (is_user_logged_in()) : 
+        $user = wp_get_current_user();
+        $user_identity = $user->exists() ? $user->display_name : '';
+        ?>
           <p>
             <?php printf(__('Logged in as <a href="%s/wp-admin/profile.php">%s</a>.', 'roots'), get_option('siteurl'), $user_identity); ?>
             <a href="<?php echo wp_logout_url(get_permalink()); ?>" title="<?php _e('Log out of this account', 'roots'); ?>"><?php _e('Log out &raquo;', 'roots'); ?></a>
           </p>
-        <?php else : ?>
+        <?php else : $req = get_option( 'require_name_email' ); $commenter = wp_get_current_commenter(); ?>
           <div class="form-group">
             <label for="author"><?php _e('Name', 'roots'); if ($req) _e(' (required)', 'roots'); ?></label>
-            <input type="text" class="form-control" name="author" id="author" value="<?php echo esc_attr($comment_author); ?>" size="22" <?php if ($req) echo 'aria-required="true"'; ?>>
+            <input type="text" class="form-control" name="author" id="author" value="<?php echo esc_attr(((isset($commenter['comment_author'])) ? $commenter['comment_author'] : '' )); ?>" size="22" <?php if ($req) echo 'aria-required="true"'; ?>>
           </div>
           <div class="form-group">
             <label for="email"><?php _e('Email (will not be published)', 'roots'); if ($req) _e(' (required)', 'roots'); ?></label>
-            <input type="email" class="form-control" name="email" id="email" value="<?php echo esc_attr($comment_author_email); ?>" size="22" <?php if ($req) echo 'aria-required="true"'; ?>>
+            <input type="email" class="form-control" name="email" id="email" value="<?php echo esc_attr(((isset($commenter['comment_author_email'])) ? $commenter['comment_author_email'] : '' )); ?>" size="22" <?php if ($req) echo 'aria-required="true"'; ?>>
           </div>
           <div class="form-group">
             <label for="url"><?php _e('Website', 'roots'); ?></label>
-            <input type="url" class="form-control" name="url" id="url" value="<?php echo esc_attr($comment_author_url); ?>" size="22">
+            <input type="url" class="form-control" name="url" id="url" value="<?php echo esc_attr(((isset($commenter['comment_author_url'])) ? $commenter['comment_author_url'] : '' )); ?>" size="22">
           </div>
         <?php endif; ?>
         <div class="form-group">
