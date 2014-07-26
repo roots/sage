@@ -126,8 +126,7 @@ module.exports = function(grunt) {
     watch: {
       less: {
         files: [
-          'assets/less/*.less',
-          'assets/less/**/*.less'
+          'assets/**/*.less'
         ],
         tasks: ['less:dev', 'autoprefixer:dev']
       },
