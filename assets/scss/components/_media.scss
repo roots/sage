@@ -1,6 +1,10 @@
 // Captions
 .wp-caption {
-  // @extend .thumbnail;
+  @extend .thumbnail;
+}
+
+.wp-caption-text {
+  @extend .thumbnail .caption;
 }
 
 // Gallery shortcode
