@@ -2,8 +2,9 @@
   if (post_password_required()) {
     return;
   }
+?>
 
- if (have_comments()) : ?>
+<?php if (have_comments()) : ?>
   <section id="comments" class="panel">
     <h3><?php printf(_n('One Response to &ldquo;%2$s&rdquo;', '%1$s Responses to &ldquo;%2$s&rdquo;', get_comments_number(), 'roots'), number_format_i18n(get_comments_number()), get_the_title()); ?></h3>
 
@@ -12,16 +13,16 @@
     </ul>
 
     <?php if (get_comment_pages_count() > 1 && get_option('page_comments')) : ?>
-    <nav>
-      <ul class="pager">
-        <?php if (get_previous_comments_link()) : ?>
-          <li class="previous"><?php previous_comments_link(__('&larr; Older comments', 'roots')); ?></li>
-        <?php endif; ?>
-        <?php if (get_next_comments_link()) : ?>
-          <li class="next"><?php next_comments_link(__('Newer comments &rarr;', 'roots')); ?></li>
-        <?php endif; ?>
-      </ul>
-    </nav>
+      <nav>
+        <ul class="pager">
+          <?php if (get_previous_comments_link()) : ?>
+            <li class="previous"><?php previous_comments_link(__('&larr; Older comments', 'roots')); ?></li>
+          <?php endif; ?>
+          <?php if (get_next_comments_link()) : ?>
+            <li class="next"><?php next_comments_link(__('Newer comments &rarr;', 'roots')); ?></li>
+          <?php endif; ?>
+        </ul>
+      </nav>
     <?php endif; ?>
 
     <?php if (!comments_open() && !is_page() && post_type_supports(get_post_type(), 'comments')) : ?>
@@ -37,8 +38,8 @@
     <div class="panel">
       <?php _e('Comments are closed.', 'roots'); ?>
     </div>
-  </section><!-- /#comments -->
-<?php endif; ?>
+  <?php endif; ?>
+</section><!-- /#comments -->
 
 <?php if (comments_open()) : ?>
   <section id="respond" class="panel">
@@ -81,5 +82,5 @@
         <?php do_action('comment_form', $post->ID); ?>
       </form>
     <?php endif; ?>
-  </section><!-- /#respond -->
-<?php endif; ?>
+  <?php endif; ?>
+</section><!-- /#respond -->
