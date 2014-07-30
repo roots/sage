@@ -30,7 +30,7 @@ var Roots = {
   // Home page
   home: {
     init: function() {
-      // JavaScript to be fired on home page
+      // JavaScript to be fired on the home page
     }
   },
   // About us page, note the change from about-us to about_us.
