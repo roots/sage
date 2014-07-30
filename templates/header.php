@@ -2,7 +2,7 @@
   <header>
     <nav class="top-bar" data-topbar>
       <ul class="title-area">
-        <li class="name"> <h1><a href="<?php echo home_url(); ?>/"><?php bloginfo('name'); ?></a></h1> </li>
+        <li class="name"> <h1><a href="<?php echo esc_url(home_url()); ?>"><?php bloginfo('name'); ?></a></h1> </li>
         <li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
       </ul>
 
