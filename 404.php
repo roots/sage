@@ -1,8 +1,8 @@
 <?php get_template_part('templates/page', 'header'); ?>
 
-<h3>
+<div data-alert class="alert-box warning">
   <?php _e('Looks like the page you were trying to view does not exist.', 'roots'); ?>
-</h3>
+</div>
 
 <p><?php _e('It looks like this was the result of either:', 'roots'); ?></p>
 <ul>

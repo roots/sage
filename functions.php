@@ -18,6 +18,7 @@ $roots_includes = array(
   'lib/activation.php',      // Theme activation
   'lib/titles.php',          // Page titles
   'lib/nav.php',             // Custom nav modifications
+  'lib/pagination.php',      // Custom pagination
   'lib/gallery.php',         // Custom [gallery] modifications
   'lib/comments.php',        // Custom comments modifications
   'lib/scripts.php',         // Scripts and stylesheets

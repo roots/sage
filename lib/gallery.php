@@ -49,7 +49,7 @@ function roots_gallery($attr) {
 
   $id = intval($id);
   $columns = (12 % $columns == 0) ? $columns: 4;
-  $grid = sprintf('col-sm-%1$s col-lg-%1$s', 12/$columns);
+  $grid = sprintf('small-%1$s large-%1$s columns', 12/$columns);
 
   if ($order === 'RAND') {
     $orderby = 'none';

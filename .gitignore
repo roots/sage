@@ -2,3 +2,6 @@ node_modules/** # wont need that stuff
 bower_components/** # wont need that stuff
 assets/img/** # since images gets minified into img_min
 assets/css/main.min.css.map
+.sass-cache
+
+assets/js/_main.js # gets concatenated in the scripts.min.js

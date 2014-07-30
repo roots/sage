@@ -16,6 +16,11 @@ $body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
 
 
 
+
+
+
+
+
 /*=================================================================  
   
     Import Foundation Components - REMOVE what you don't use to keep the CSS as little as possible
@@ -23,7 +28,8 @@ $body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
 =================================================================*/
 
 
-@import 
+@import
+  "bower_components/foundation/scss/foundation/functions", 
   "bower_components/foundation/scss/foundation/components/grid",
   "bower_components/foundation/scss/foundation/components/accordion",
   "bower_components/foundation/scss/foundation/components/alert-boxes",
@@ -73,6 +79,16 @@ $body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
 
 
 
+
+
+
+
+
+
+
+
+
+
 /*=================================================================  
 
 	Do your SASS awesomeness here! Goodspeed young traveler :)
@@ -89,6 +105,21 @@ $body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
 /*==========  General styling  ==========*/
 
 .entry-meta {margin-bottom: 1em; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -127,3 +158,165 @@ $body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
 
 @media #{$xxlarge-up} { }
 @media #{$xxlarge-only} { }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*=================================================================  
+
+  WordPress media CSS
+
+=================================================================*/
+
+
+
+
+
+
+
+// Media objects
+// Source: http://stubbornella.org/content/?p=497
+// Adapted from bootstrap for use with Foundation
+// --------------------------------------------------
+
+// Options for margins
+$media-spacing: 15px;
+$media-heading-bottom-margin: 5px;
+$media-image-alignment-margin: 10px;
+
+// Clear the floats
+.media,
+.media-body {
+    overflow: hidden;
+    zoom: 1;
+}
+
+// Proper spacing between instances of .media
+.media,
+.media .media {
+  margin-top: $media-spacing;
+}
+.media:first-child {
+  margin-top: 0;
+}
+
+// For images and videos, set to block
+.media-object {
+  display: block;
+}
+
+// Reset margins on headings for tighter default spacing
+.media-heading {
+  margin-bottom: $media-heading-bottom-margin;
+}
+
+
+// Media image alignment
+// -------------------------
+
+.media {
+  .left {
+    margin-right: $media-image-alignment-margin;
+  }
+  .right {
+    margin-left: $media-image-alignment-margin;
+  }
+}
+
+
+// Media list variation
+// -------------------------
+
+// Undo default ul/ol styles
+.media-list {
+  padding-left: 0;
+  list-style: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*=================================================================  
+
+  WordPress Generated Classes
+
+=================================================================*/
+
+
+// http://codex.wordpress.org/CSS#WordPress_Generated_Classes
+
+
+figure.alignnone {
+  margin-left: 0;
+  margin-right: 0;
+  max-width: 100%;
+}
+
+.alignleft,
+.alignright,
+.aligncenter {
+  margin-right: 0;
+  margin-left: 0;
+}
+
+@media #{$medium-up} {
+  
+  .aligncenter {
+    display: block;
+    margin: 0 auto;
+  }
+
+  .alignleft {
+    float: left;
+    margin-right: ($base-line-height / 2);
+  }
+  .alignright {
+    float: right;
+    margin-left: ($base-line-height / 2);
+  }
+}
+

@@ -21,6 +21,6 @@
     "tests"
   ],
   "dependencies": {
-    "foundation": "*"
+    "foundation": "5.3.0"
   }
 }
