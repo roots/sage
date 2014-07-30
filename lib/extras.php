@@ -1,5 +1,40 @@
 <?php
 /**
+ * Clean up the_excerpt()
+ */
+function roots_excerpt_more($more) {
+  return ' &hellip; <a href="' . get_permalink() . '">' . __('Continued', 'roots') . '</a>';
+}
+add_filter('excerpt_more', 'roots_excerpt_more');
+
+/**
+ * Manage output of wp_title()
+ */
+function roots_wp_title($title) {
+  if (is_feed()) {
+    return $title;
+  }
+
+  $title .= get_bloginfo('name');
+
+  return $title;
+}
+add_filter('wp_title', 'roots_wp_title', 10);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
  * Custom functions, all this is optional
  * Mosly cleaning up the admin interface.
  * Comment out what you don't need, and uncomment what you want.
@@ -83,7 +118,7 @@ function livereload() {
   wp_enqueue_script('livereload');
 }
 
-// Run the livereload function if domain contains .dev
+// Runs the livereload function if domain contains .dev — edit to fit your own needs
 $host = $_SERVER['HTTP_HOST']; 
 if (strpos($host,'.dev') !== false) {
     add_action('wp_enqueue_scripts', 'livereload');

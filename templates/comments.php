@@ -2,8 +2,9 @@
   if (post_password_required()) {
     return;
   }
+?>
 
- if (have_comments()) : ?>
+<?php if (have_comments()) : ?>
   <section id="comments" class="panel">
     <h3><?php printf(_n('One Response to &ldquo;%2$s&rdquo;', '%1$s Responses to &ldquo;%2$s&rdquo;', get_comments_number(), 'roots'), number_format_i18n(get_comments_number()), get_the_title()); ?></h3>
 
@@ -12,33 +13,29 @@
     </ul>
 
     <?php if (get_comment_pages_count() > 1 && get_option('page_comments')) : ?>
-    <nav>
-      <ul class="pager">
-        <?php if (get_previous_comments_link()) : ?>
-          <li class="previous"><?php previous_comments_link(__('&larr; Older comments', 'roots')); ?></li>
-        <?php endif; ?>
-        <?php if (get_next_comments_link()) : ?>
-          <li class="next"><?php next_comments_link(__('Newer comments &rarr;', 'roots')); ?></li>
-        <?php endif; ?>
-      </ul>
-    </nav>
+      <nav>
+        <ul class="pager">
+          <?php if (get_previous_comments_link()) : ?>
+            <li class="previous"><?php previous_comments_link(__('&larr; Older comments', 'roots')); ?></li>
+          <?php endif; ?>
+          <?php if (get_next_comments_link()) : ?>
+            <li class="next"><?php next_comments_link(__('Newer comments &rarr;', 'roots')); ?></li>
+          <?php endif; ?>
+        </ul>
+      </nav>
     <?php endif; ?>
 
     <?php if (!comments_open() && !is_page() && post_type_supports(get_post_type(), 'comments')) : ?>
-    <div class="alert-box info">
-      <?php _e('Comments are closed.', 'roots'); ?>
-    </div>
+      <div class="alert-box warning">
+        <?php _e('Comments are closed.', 'roots'); ?>
+      </div>
     <?php endif; ?>
-  </section><!-- /#comments -->
-<?php endif; ?>
-
-<?php if (!have_comments() && !comments_open() && !is_page() && post_type_supports(get_post_type(), 'comments')) : ?>
-  <section id="comments">
-    <div class="panel">
+  <?php elseif(!comments_open() && !is_page() && post_type_supports(get_post_type(), 'comments')) : ?>
+    <div class="alert-box warning">
       <?php _e('Comments are closed.', 'roots'); ?>
     </div>
-  </section><!-- /#comments -->
-<?php endif; ?>
+  <?php endif; ?>
+</section><!-- /#comments -->
 
 <?php if (comments_open()) : ?>
   <section id="respond" class="panel">
@@ -55,31 +52,26 @@
           </h5>
         <?php else : ?>
           <div class="row">
-            <div class="medium-6 columns">
-              <label for="author"><?php _e('Name', 'roots'); if ($req) _e(' <small>required</small>', 'roots'); ?></label>
-              <input placeholder="<?php _e('John Smith', 'roots');?>" type="text" name="author" id="author" value="<?php echo esc_attr($comment_author); ?>" size="22" <?php if ($req) echo 'aria-required="true" required pattern="[a-åA-Å][a-åA-Å ]+"'; ?>>
-              <?php if ($req) echo '<small class="error">Name is required, and can only contain characters.</small>'; ?>
-            </div>
-            <div class="medium-6 columns">
-              <label for="email"><?php _e('Email', 'roots'); if ($req) _e(' <small>required</small>', 'roots'); ?></label>
-              <input placeholder="<?php _e('john@smith.com', 'roots');?>" type="email" name="email" id="email" value="<?php echo esc_attr($comment_author_email); ?>" size="22" <?php if ($req) echo 'aria-required="true" required'; ?>>
-              <?php if ($req) echo '<small class="error">An email address is required.</small>'; ?>
-            </div>
+            <label for="author"><?php _e('Name', 'roots'); if ($req) _e(' (required)', 'roots'); ?></label>
+            <input type="text" name="author" id="author" value="<?php echo esc_attr($comment_author); ?>" size="22" <?php if ($req) echo 'aria-required="true"'; ?>>
           </div>
-          <div class="row collapse">
+          <div class="row">
+            <label for="email"><?php _e('Email (will not be published)', 'roots'); if ($req) _e(' (required)', 'roots'); ?></label>
+            <input type="email" name="email" id="email" value="<?php echo esc_attr($comment_author_email); ?>" size="22" <?php if ($req) echo 'aria-required="true"'; ?>>
+          </div>
+          <div class="row">
             <label for="url"><?php _e('Website', 'roots'); ?></label>
-            <input placeholder="<?php _e('http://johnsmith.com', 'roots');?>"  type="url" name="url" id="url" value="<?php echo esc_attr($comment_author_url); ?>" size="22">
-            <small class="error">Not a valid URL. (http://example.com)</small>
+            <input type="url" name="url" id="url" value="<?php echo esc_attr($comment_author_url); ?>" size="22">
           </div>
         <?php endif; ?>
-        <div class="row collapse">
+        <div class="row">
           <label for="comment"><?php _e('Comment', 'roots'); ?></label>
-          <textarea placeholder="<?php _e('Say, say say...', 'roots'); ?>" name="comment" id="comment" rows="5" aria-required="true"></textarea>
+          <textarea name="comment" id="comment" rows="5" aria-required="true"></textarea>
         </div>
-        <input name="submit" class="button small" type="submit" id="submit" value="<?php _e('Submit Comment', 'roots'); ?>">
+        <p class="row"><input name="submit" class="button" type="submit" id="submit" value="<?php _e('Submit Comment', 'roots'); ?>"></p>
         <?php comment_id_fields(); ?>
         <?php do_action('comment_form', $post->ID); ?>
       </form>
     <?php endif; ?>
-  </section><!-- /#respond -->
-<?php endif; ?>
+  <?php endif; ?>
+</section><!-- /#respond -->

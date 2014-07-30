@@ -23,7 +23,7 @@ function roots_title() {
       return sprintf(__('Yearly Archives: %s', 'roots'), get_the_date('Y'));
     } elseif (is_author()) {
       $author = get_queried_object();
-      return sprintf(__('Author Archives: %s', 'roots'), $author->display_name);
+      return sprintf(__('Author Archives: %s', 'roots'), apply_filters('the_author', is_object($author) ? $author->display_name : null));
     } else {
       return single_cat_title('', false);
     }
