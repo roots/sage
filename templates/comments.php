@@ -4,8 +4,8 @@
   }
 ?>
 
-<?php if (have_comments()) : ?>
-  <section id="comments" class="panel">
+<section id="comments">
+  <?php if (have_comments()) : ?>
     <h3><?php printf(_n('One Response to &ldquo;%2$s&rdquo;', '%1$s Responses to &ldquo;%2$s&rdquo;', get_comments_number(), 'roots'), number_format_i18n(get_comments_number()), get_the_title()); ?></h3>
 
     <ul class="no-bullet">
@@ -30,15 +30,11 @@
         <?php _e('Comments are closed.', 'roots'); ?>
       </div>
     <?php endif; ?>
-  <?php elseif(!comments_open() && !is_page() && post_type_supports(get_post_type(), 'comments')) : ?>
-    <div class="alert-box warning">
-      <?php _e('Comments are closed.', 'roots'); ?>
-    </div>
   <?php endif; ?>
 </section><!-- /#comments -->
 
-<?php if (comments_open()) : ?>
-  <section id="respond" class="panel">
+<section id="respond">
+  <?php if (comments_open()) : ?>
     <h3><?php comment_form_title(__('Leave a Reply', 'roots'), __('Leave a Reply to %s', 'roots')); ?></h3>
     <p class="cancel-comment-reply"><?php cancel_comment_reply_link(); ?></p>
     <?php if (get_option('comment_registration') && !is_user_logged_in()) : ?>
