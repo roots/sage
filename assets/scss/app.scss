@@ -1,147 +1,40 @@
+/*=================================================================
+Include the Foundation settings
+=================================================================*/
 
-
-
-/*==========  Overwriting Foundation variables goes before including foundation itself.
-			  See settings.scss from Foundation for examples ==========*/
-
-$primary-color: #008CBA;
-$body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+@import "_settings";
 
 /*=================================================================  
   
-    Import Foundation Components - REMOVE what you don't use to keep the CSS as little as possible
+    Import Foundation Components
+    REMOVE what you don't use in _foundation to keep the CSS as small as possible :)
 
 =================================================================*/
 
-
-@import
-  "bower_components/foundation/scss/foundation/functions", 
-  "bower_components/foundation/scss/foundation/components/grid",
-  "bower_components/foundation/scss/foundation/components/accordion",
-  "bower_components/foundation/scss/foundation/components/alert-boxes",
-  "bower_components/foundation/scss/foundation/components/block-grid",
-  "bower_components/foundation/scss/foundation/components/breadcrumbs",
-  "bower_components/foundation/scss/foundation/components/button-groups",
-  "bower_components/foundation/scss/foundation/components/buttons",
-  "bower_components/foundation/scss/foundation/components/clearing",
-  "bower_components/foundation/scss/foundation/components/dropdown",
-  "bower_components/foundation/scss/foundation/components/dropdown-buttons",
-  "bower_components/foundation/scss/foundation/components/flex-video",
-  "bower_components/foundation/scss/foundation/components/forms",
-  "bower_components/foundation/scss/foundation/components/icon-bar",
-  "bower_components/foundation/scss/foundation/components/inline-lists",
-  "bower_components/foundation/scss/foundation/components/joyride",
-  "bower_components/foundation/scss/foundation/components/keystrokes",
-  "bower_components/foundation/scss/foundation/components/labels",
-  "bower_components/foundation/scss/foundation/components/magellan",
-  "bower_components/foundation/scss/foundation/components/orbit",
-  "bower_components/foundation/scss/foundation/components/pagination",
-  "bower_components/foundation/scss/foundation/components/panels",
-  "bower_components/foundation/scss/foundation/components/pricing-tables",
-  "bower_components/foundation/scss/foundation/components/progress-bars",
-  "bower_components/foundation/scss/foundation/components/range-slider",
-  "bower_components/foundation/scss/foundation/components/reveal",
-  "bower_components/foundation/scss/foundation/components/side-nav",
-  "bower_components/foundation/scss/foundation/components/split-buttons",
-  "bower_components/foundation/scss/foundation/components/sub-nav",
-  "bower_components/foundation/scss/foundation/components/switches",
-  "bower_components/foundation/scss/foundation/components/tables",
-  "bower_components/foundation/scss/foundation/components/tabs",
-  "bower_components/foundation/scss/foundation/components/thumbs",
-  "bower_components/foundation/scss/foundation/components/tooltips",
-  "bower_components/foundation/scss/foundation/components/top-bar",
-  "bower_components/foundation/scss/foundation/components/type",
-  "bower_components/foundation/scss/foundation/components/offcanvas",
-  "bower_components/foundation/scss/foundation/components/visibility";
+@import "_foundation";
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*=================================================================  
-
-	Do your SASS awesomeness here! Goodspeed young traveler :)
-
+/*=================================================================
+Import Roots Components - Do your SASS awesomeness here! Goodspeed young traveler :)
 =================================================================*/
 
 
-
-
-
-
-
-
-/*==========  General styling  ==========*/
-
-.entry-meta {margin-bottom: 1em; }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+@import "_global";                   // Base styling & custom mixins
+@import "components/_buttons";       // Button tweaks
+@import "components/_forms";         // Form tweaks
+@import "components/_media";         // WordPress media
+@import "components/_wp-classes";    // WordPress generated classes
+@import "layouts/_general";          // General styling
+@import "layouts/_header";           // Header styling
+@import "layouts/_sidebar";          // Sidebar styling
+@import "layouts/_footer";           // Footer styling
+@import "layouts/_pages";            // Page styling
+@import "layouts/pages/_home";       // Home page styling
+@import "layouts/_posts";            // Post styling
 
 
 /*==========  Foundation Media Queries - copy/paste from here if needed  ==========*/
-
 
 @media #{$small-up} { }
 @media #{$small-only} { }
@@ -157,165 +50,3 @@ $body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
 
 @media #{$xxlarge-up} { }
 @media #{$xxlarge-only} { }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*=================================================================  
-
-  WordPress media CSS
-
-=================================================================*/
-
-
-
-
-
-
-
-// Media objects
-// Source: http://stubbornella.org/content/?p=497
-// Adapted from bootstrap for use with Foundation
-// --------------------------------------------------
-
-// Options for margins
-$media-spacing: 15px;
-$media-heading-bottom-margin: 5px;
-$media-image-alignment-margin: 10px;
-
-// Clear the floats
-.media,
-.media-body {
-    overflow: hidden;
-    zoom: 1;
-}
-
-// Proper spacing between instances of .media
-.media,
-.media .media {
-  margin-top: $media-spacing;
-}
-.media:first-child {
-  margin-top: 0;
-}
-
-// For images and videos, set to block
-.media-object {
-  display: block;
-}
-
-// Reset margins on headings for tighter default spacing
-.media-heading {
-  margin-bottom: $media-heading-bottom-margin;
-}
-
-
-// Media image alignment
-// -------------------------
-
-.media {
-  .left {
-    margin-right: $media-image-alignment-margin;
-  }
-  .right {
-    margin-left: $media-image-alignment-margin;
-  }
-}
-
-
-// Media list variation
-// -------------------------
-
-// Undo default ul/ol styles
-.media-list {
-  padding-left: 0;
-  list-style: none;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*=================================================================  
-
-  WordPress Generated Classes
-
-=================================================================*/
-
-
-// http://codex.wordpress.org/CSS#WordPress_Generated_Classes
-
-
-figure.alignnone {
-  margin-left: 0;
-  margin-right: 0;
-  max-width: 100%;
-}
-
-.alignleft,
-.alignright,
-.aligncenter {
-  margin-right: 0;
-  margin-left: 0;
-}
-
-@media #{$medium-up} {
-  
-  .aligncenter {
-    display: block;
-    margin: 0 auto;
-  }
-
-  .alignleft {
-    float: left;
-    margin-right: ($base-line-height / 2);
-  }
-  .alignright {
-    float: right;
-    margin-left: ($base-line-height / 2);
-  }
-}
-
