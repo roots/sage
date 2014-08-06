@@ -1844,6 +1844,14 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 						'type'      => 'switch',
 						'required'  => array( 'options_mode', '=', array( 'advanced' ) ),
 					),
+					array(
+						'title'     => __( 'Use Title attribute in menus', 'shoestrap' ),
+						'desc'      => 'By enabling this option, the title attribute in menu items outputs the actual title attribute. The description field is in use by the Elusive icons in this case.',
+						'id'        => 'menu_title_attribute',
+						'default'   => 0,
+						'type'      => 'switch',
+						'required'  => array( 'options_mode', '=', array( 'advanced' ) ),
+					),
 				) ),
 			);
 		}
