@@ -23,7 +23,7 @@
     "node": ">= 0.10.0"
   },
   "devDependencies": {
-    "bower": "~1.3.5",
+    "bower": ">=1.3.9",
     "grunt": "~0.4.5",
     "grunt-autoprefixer": "~0.8.1",
     "grunt-contrib-concat": "~0.4.0",
