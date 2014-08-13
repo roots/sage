@@ -18,8 +18,10 @@ function shoestrap_head_cleanup() {
 	remove_action( 'wp_head', 'wp_shortlink_wp_head', 10, 0 );
 
 	global $wp_widget_factory;
-	remove_action( 'wp_head', array( $wp_widget_factory->widgets['WP_Widget_Recent_Comments'], 'recent_comments_style' ) );
-
+        if(array_key_exists('WP_Widget_Recent_Comments', $wp_widget_factory->widgets)) {
+            remove_action( 'wp_head', array( $wp_widget_factory->widgets['WP_Widget_Recent_Comments'], 'recent_comments_style' ) );
+        }
+	
 	if ( ! class_exists( 'WPSEO_Frontend' ) ) {
 		remove_action( 'wp_head', 'rel_canonical' );
 		add_action( 'wp_head', 'shoestrap_rel_canonical' );
