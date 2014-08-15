@@ -1,3 +1,8 @@
+### 7.0.1: August 15th, 2014
+* Move `<main>` and `.sidebar` markup out of PHP and into LESS
+* Define `WP_ENV` if it is not already defined
+* Only load Google Analytics in production environment
+
 ### 7.0.0: July 3rd, 2014
 * Updated Grunt workflow
 * Use grunt-modernizr to make a lean Modernizr build
