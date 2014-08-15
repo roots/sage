@@ -18,26 +18,15 @@ if (!defined('WP_ENV')) {
 }
 
 /**
- * .main classes
+ * Add body class if sidebar is active
  */
-function roots_main_class() {
+function roots_sidebar_body_class($classes) {
   if (roots_display_sidebar()) {
-    // Classes on pages with the sidebar
-    $class = 'col-sm-8';
-  } else {
-    // Classes on full width pages
-    $class = 'col-sm-12';
+    $classes[] = 'sidebar-primary';
   }
-
-  return apply_filters('roots/main_class', $class);
+  return $classes;
 }
-
-/**
- * .sidebar classes
- */
-function roots_sidebar_class() {
-  return apply_filters('roots/sidebar_class', 'col-sm-4');
-}
+add_filter('body_class', 'roots_sidebar_body_class');
 
 /**
  * Define which pages shouldn't have the sidebar
