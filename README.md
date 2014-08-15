@@ -34,7 +34,6 @@ Install the [Soil](https://github.com/roots/soil) plugin to enable additional fe
 * Root relative URLs
 * Nice search (`/search/query/`)
 * Cleaner output of `wp_head` and enqueued assets markup
-* Image captions use `<figure>` and `<figcaption>`
 
 ## Installation
 
