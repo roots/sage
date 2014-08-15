@@ -32,6 +32,9 @@ class Roots_Wrapping {
 
   public function __toString() {
     $this->templates = apply_filters('roots/wrap_' . $this->slug, $this->templates);
+    if (self::$base) {
+      $this->templates = apply_filters('roots/wrap_' . self::$base, $this->templates);
+    }
     return locate_template($this->templates);
   }
 
