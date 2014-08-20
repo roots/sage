@@ -1,4 +1,20 @@
-### HEAD
+### 7.0.1: August 15th, 2014
+* Move `<main>` and `.sidebar` markup out of PHP and into LESS
+* Define `WP_ENV` if it is not already defined
+* Only load Google Analytics in production environment
+
+### 7.0.0: July 3rd, 2014
+* Updated Grunt workflow
+* Use grunt-modernizr to make a lean Modernizr build
+* Use Bower for front-end package management
+* Update to Bootstrap 3.2.0
+* Update to Modernizr 2.8.2
+* Update to jQuery 1.11.1
+* Move clean up, relative URLs, and nice search to [Soil](https://github.com/roots/soil)
+* Update LESS organization
+* Move [community translations](https://github.com/roots/roots-translations) to separate repository
+
+### 6.5.2: February 4th, 2014
 * Update to Bootstrap 3.1.0
 * Move DOM routing into an anonymous function to support jQuery noConflict
 * Update to jQuery 1.11.0

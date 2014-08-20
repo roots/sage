@@ -1,0 +1,13 @@
+// Captions
+.wp-caption {
+  &:extend(.thumbnail all);
+}
+
+.wp-caption-text {
+    &:extend(.thumbnail .caption);
+}
+
+// Gallery shortcode
+.gallery-row {
+  padding: (@line-height-computed / 2) 0;
+}

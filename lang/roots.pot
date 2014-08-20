@@ -23,6 +23,10 @@ msgstr ""
 msgid "You are using an <strong>outdated</strong> browser. Please <a href=\"http://browsehappy.com/\">upgrade your browser</a> to improve your experience."
 msgstr ""
 
+#: functions.php:29
+msgid "Error locating %s for inclusion"
+msgstr ""
+
 #: index.php:5
 msgid "Sorry, no results were found."
 msgstr ""
@@ -93,12 +97,25 @@ msgstr ""
 msgid "Add all current published pages to the Primary Navigation"
 msgstr ""
 
-#: lib/cleanup.php:193
+#: lib/activation.php:126 lib/activation.php:147
+msgid "Home"
+msgstr ""
+
+#: lib/activation.php:173 lib/activation.php:176 lib/activation.php:190
+#: lib/init.php:13
+msgid "Primary Navigation"
+msgstr ""
+
+#: lib/extras.php:6
 msgid "Continued"
 msgstr ""
 
-#: lib/init.php:11
-msgid "Primary Navigation"
+#: lib/init.php:36
+msgid "Primary"
+msgstr ""
+
+#: lib/init.php:45
+msgid "Footer"
 msgstr ""
 
 #: lib/titles.php:10
@@ -129,26 +146,6 @@ msgstr ""
 msgid "Not Found"
 msgstr ""
 
-#: lib/widgets.php:8
-msgid "Primary"
-msgstr ""
-
-#: lib/widgets.php:17
-msgid "Footer"
-msgstr ""
-
-#: lib/widgets.php:45
-msgid "Use this widget to add a vCard"
-msgstr ""
-
-#: lib/widgets.php:47
-msgid "Roots: vCard"
-msgstr ""
-
-#: lib/widgets.php:74
-msgid "vCard"
-msgstr ""
-
 #: templates/comment.php:4
 msgid "%1$s"
 msgstr ""
@@ -161,69 +158,69 @@ msgstr ""
 msgid "Your comment is awaiting moderation."
 msgstr ""
 
-#: templates/comments.php:8
+#: templates/comments.php:9
 msgid "One Response to &ldquo;%2$s&rdquo;"
 msgid_plural "%1$s Responses to &ldquo;%2$s&rdquo;"
 msgstr[0] ""
 msgstr[1] ""
 
-#: templates/comments.php:18
+#: templates/comments.php:19
 msgid "&larr; Older comments"
 msgstr ""
 
-#: templates/comments.php:21
+#: templates/comments.php:22
 msgid "Newer comments &rarr;"
 msgstr ""
 
-#: templates/comments.php:29 templates/comments.php:38
+#: templates/comments.php:30 templates/comments.php:35
 msgid "Comments are closed."
 msgstr ""
 
-#: templates/comments.php:45
+#: templates/comments.php:42
 msgid "Leave a Reply"
 msgstr ""
 
-#: templates/comments.php:45
+#: templates/comments.php:42
 msgid "Leave a Reply to %s"
 msgstr ""
 
-#: templates/comments.php:48
+#: templates/comments.php:45
 msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
 msgstr ""
 
-#: templates/comments.php:53
+#: templates/comments.php:50
 msgid "Logged in as <a href=\"%s/wp-admin/profile.php\">%s</a>."
 msgstr ""
 
-#: templates/comments.php:54
+#: templates/comments.php:51
 msgid "Log out of this account"
 msgstr ""
 
-#: templates/comments.php:54
+#: templates/comments.php:51
 msgid "Log out &raquo;"
 msgstr ""
 
-#: templates/comments.php:58
+#: templates/comments.php:55
 msgid "Name"
 msgstr ""
 
-#: templates/comments.php:58 templates/comments.php:62
+#: templates/comments.php:55 templates/comments.php:59
 msgid " (required)"
 msgstr ""
 
-#: templates/comments.php:62
+#: templates/comments.php:59
 msgid "Email (will not be published)"
 msgstr ""
 
-#: templates/comments.php:66
+#: templates/comments.php:63
 msgid "Website"
 msgstr ""
 
-#: templates/comments.php:71
+#: templates/comments.php:68
 msgid "Comment"
 msgstr ""
 
-#: templates/comments.php:74
+#: templates/comments.php:71
 msgid "Submit Comment"
 msgstr ""
 
@@ -235,10 +232,33 @@ msgstr ""
 msgid "By"
 msgstr ""
 
-#: templates/searchform.php:3 templates/searchform.php:6
-msgid "Search"
+#: templates/searchform.php:2
+msgid "Search for:"
 msgstr ""
 
-#: templates/searchform.php:4
-msgid "Search for:"
+#: templates/searchform.php:4 templates/searchform.php:6
+msgid "Search"
+msgstr ""
+#. Theme Name of the plugin/theme
+msgid "Roots Starter Theme"
+msgstr ""
+
+#. Theme URI of the plugin/theme
+msgid "http://roots.io/starter-theme/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Roots is a WordPress starter theme based on HTML5 Boilerplate & Bootstrap. <a href=\"https://github.com/roots/roots/contributors\">Contribute on GitHub</a>"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Roots"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://roots.io/"
+msgstr ""
+
+#. Template Name of the plugin/theme
+msgid "Custom Template"
 msgstr ""
