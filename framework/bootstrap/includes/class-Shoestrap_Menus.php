@@ -271,7 +271,7 @@ if ( ! class_exists( 'Shoestrap_Menus' ) ) {
 			global $ss_settings;
 
 			$secondary_navbar_margin = $ss_settings['secondary_navbar_margin'];
-			$style = '.secondary { margin-top:' . $secondary_navbar_margin . 'px !important; margin-bottom:'. $secondary_navbar_margin .'px !important; }';
+			$style = '.secondary.navbar { margin-top:' . $secondary_navbar_margin . 'px !important; margin-bottom:'. $secondary_navbar_margin .'px !important; }';
 
 			wp_add_inline_style( 'shoestrap_css', $style );
 		}
