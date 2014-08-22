@@ -93,10 +93,10 @@ module.exports = function(grunt) {
             prev: 'assets/css/'
           }
         },
-        src: 'assets/css/*.css'
+        src: ['assets/css/main.css','assets/css/rtl.css']
       },
       build: {
-        src: 'assets/css/*.min.css'
+        src: ['assets/css/main.min.css','assets/css/rtl.min.css']
       }
     },
     modernizr: {
