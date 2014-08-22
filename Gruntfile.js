@@ -39,6 +39,9 @@ module.exports = function(grunt) {
         files: {
           'assets/css/main.css': [
             'assets/less/main.less'
+          ],
+          'assets/css/rtl.css': [
+            'assets/less/rtl.less'
           ]
         },
         options: {
@@ -54,6 +57,9 @@ module.exports = function(grunt) {
         files: {
           'assets/css/main.min.css': [
             'assets/less/main.less'
+          ],
+          'assets/css/rtl.min.css': [
+            'assets/less/rtl.less'
           ]
         },
         options: {
@@ -87,10 +93,10 @@ module.exports = function(grunt) {
             prev: 'assets/css/'
           }
         },
-        src: 'assets/css/main.css'
+        src: 'assets/css/*.css'
       },
       build: {
-        src: 'assets/css/main.min.css'
+        src: 'assets/css/*.min.css'
       }
     },
     modernizr: {
