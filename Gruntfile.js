@@ -120,7 +120,7 @@ module.exports = function(grunt) {
           length: 32,
           manifest: 'assets/manifest.json',
           querystring: {
-            style: 'roots_css',
+            style: ['roots_css','roots_rtl'],
             script: 'roots_js'
           }
         },
