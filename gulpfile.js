@@ -46,10 +46,10 @@ var destination = {
   vendor: 'assets/js/vendor'
 };
 
-gulp.task('less', function () {
+gulp.task('less', function() {
   return gulp.src(paths.less)
     .pipe(sourcemaps.init())
-      .pipe(less()).on('error', function(err){
+      .pipe(less()).on('error', function(err) {
         console.warn(err.message);
       })
       .pipe(autoprefix('last 2 versions', 'ie 8', 'ie 9', 'android 2.3', 'android 4', 'opera 12'))
@@ -98,13 +98,11 @@ gulp.task('version', function() {
 
 gulp.task('watch', function() {
   livereload.listen();
-
   gulp.watch('assets/less/**/*.less', ['less']).on('change', livereload.changed);
   gulp.watch('assets/js/**/*.js', ['jshint', 'js']).on('change', livereload.changed);
   gulp.watch('**/*.php').on('change', function(file) {
     livereload.changed(file.path);
   });
-
 });
 
 gulp.task('default', ['less', 'jshint', 'js', 'modernizr']);
