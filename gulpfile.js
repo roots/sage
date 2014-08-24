@@ -33,6 +33,7 @@ var paths = {
     'gulpfile.js',
     'assets/js/*.js',
     '!assets/js/scripts.js',
+    '!assets/js/scripts.min.js',
     '!assets/**/*.min-*'
   ],
   less: 'assets/less/main.less'
