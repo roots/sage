@@ -12,11 +12,11 @@ Roots is a WordPress starter theme based on [HTML5 Boilerplate](http://html5boil
 
 ## Features
 
-* [Grunt](http://roots.io/using-grunt-for-wordpress-theme-development/) for compiling LESS to CSS, checking for JS errors, live reloading, concatenating and minifying files, versioning assets, and generating lean Modernizr builds
+* [Gulp](http://gulpjs.com/) for compiling LESS to CSS, checking for JS errors, live reloading, concatenating and minifying files, versioning assets, and generating lean Modernizr builds
 * [Bower](http://bower.io/) for front-end package management
 * [HTML5 Boilerplate](http://html5boilerplate.com/)
   * The latest [jQuery](http://jquery.com/) via Google CDN, with a local fallback
-  * The latest [Modernizr](http://modernizr.com/) build for feature detection, with lean builds with Grunt
+  * The latest [Modernizr](http://modernizr.com/) build for feature detection, with lean builds with Gulp
   * An optimized Google Analytics snippet
 * [Bootstrap](http://getbootstrap.com/)
 * Organized file and template structure
@@ -57,32 +57,32 @@ Edit `lib/init.php` to setup navigation menus, post thumbnail sizes, post format
 
 ## Theme development
 
-Roots uses [Grunt](http://gruntjs.com/) for compiling LESS to CSS, checking for JS errors, live reloading, concatenating and minifying files, versioning assets, and generating lean Modernizr builds.
+Roots uses [Gulp](http://gulpjs.com/) for compiling LESS to CSS, checking for JS errors, live reloading, concatenating and minifying files, versioning assets, and generating lean Modernizr builds.
 
 If you'd like to use Bootstrap Sass, look at the [Roots Sass](https://github.com/roots/roots-sass) fork.
 
-### Install Grunt
+### Install Gulp
 
 **Unfamiliar with npm? Don't have node installed?** [Download and install node.js](http://nodejs.org/download/) before proceeding.
 
 From the command line:
 
-1. Install `grunt-cli` globally with `npm install -g grunt-cli`.
+1. Install `gulp` globally with `npm install -g gulp`.
 2. Navigate to the theme directory, then run `npm install`. npm will look at `package.json` and automatically install the necessary dependencies. It will also automatically run `bower install`, which installs front-end packages defined in `bower.json`.
 
-When completed, you'll be able to run the various Grunt commands provided from the command line.
+When completed, you'll be able to run the various Gulp commands provided from the command line.
 
-### Available Grunt commands
+### Available Gulp commands
 
-* `grunt dev` — Compile LESS to CSS, concatenate and validate JS
-* `grunt watch` — Compile assets when file changes are made
-* `grunt build` — Create minified assets that are used on non-development environments
+* `gulp dev` — Compile LESS to CSS, concatenate and validate JS
+* `gulp watch` — Compile assets when file changes are made
+* `gulp build` — Create minified assets that are used on non-development environments
 
 ## Documentation
 
 * [Roots 101](http://roots.io/roots-101/) — A guide to installing Roots, the files, and theme organization
 * [Theme Wrapper](http://roots.io/an-introduction-to-the-roots-theme-wrapper/) — Learn all about the theme wrapper
-* [Build Script](http://roots.io/using-grunt-for-wordpress-theme-development/) — A look into how Roots uses Grunt
+* [Build Script](http://roots.io/using-gulp-for-wordpress-theme-development/) — A look into how Roots uses Gulp
 * [Roots Sidebar](http://roots.io/the-roots-sidebar/) — Understand how to display or hide the sidebar in Roots
 
 ## Contributing
