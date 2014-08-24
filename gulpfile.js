@@ -9,10 +9,8 @@ var gulp = require('gulp'),
   uglify = require('gulp-uglify'),
   livereload = require('gulp-livereload'),
   stylish = require('jshint-stylish'),
+  rev = require('gulp-rev');
   modernizr = require('gulp-modernizr');
-
-// add all the gruntfile tasks to gulp
-require('gulp-grunt')(gulp);
 
 var paths = {
   scripts: [
@@ -35,7 +33,7 @@ var paths = {
     'gulpfile.js',
     'assets/js/*.js',
     '!assets/js/scripts.js',
-    '!assets/**/*.min.*'
+    '!assets/**/*.min-*'
   ],
   less: 'assets/less/main.less'
 };
@@ -44,9 +42,8 @@ var destination = {
   css: 'assets/css',
   scripts: 'assets/js',
   modernizr: 'assets/vendor/modernizr',
-  vendor: 'assets/vendor'
+  vendor: 'assets/js/vendor'
 };
-
 
 gulp.task('less', function () {
   return gulp.src(paths.less)
@@ -91,7 +88,11 @@ gulp.task('modernizr', function() {
 });
 
 gulp.task('version', function() {
-  gulp.run('grunt-version');
+  return gulp.src(['assets/css/main.min.css', 'assets/js/scripts.min.js'], { base: 'assets' })
+    .pipe(rev())
+    .pipe(gulp.dest('assets'))
+    .pipe(rev.manifest())
+    .pipe(gulp.dest('assets'));
 });
 
 gulp.task('watch', function() {

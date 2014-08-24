@@ -27,11 +27,11 @@ function roots_scripts() {
       'jquery'    => '//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.js'
     );
   } else {
-    $get_assets = file_get_contents(get_template_directory() . '/assets/manifest.json');
+    $get_assets = file_get_contents(get_template_directory() . '/assets/rev-manifest.json');
     $assets     = json_decode($get_assets, true);
     $assets     = array(
-      'css'       => '/assets/css/main.min.css?' . $assets['assets/css/main.min.css']['hash'],
-      'js'        => '/assets/js/scripts.min.js?' . $assets['assets/js/scripts.min.js']['hash'],
+      'css'       => '/assets/' . $assets[get_template_directory() . '/assets/css/main.min.css'],
+      'js'       => '/assets/' . $assets[get_template_directory() . '/assets/js/scripts.min.js'],
       'modernizr' => '/assets/js/vendor/modernizr.min.js',
       'jquery'    => '//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'
     );
@@ -79,7 +79,7 @@ add_action('wp_head', 'roots_jquery_local_fallback');
 
 /**
  * Google Analytics snippet from HTML5 Boilerplate
- * 
+ *
  * Cookie domain is 'auto' configured. See: http://goo.gl/VUCHKM
  */
 function roots_google_analytics() { ?>
