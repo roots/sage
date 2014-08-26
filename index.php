@@ -1,6 +1,9 @@
-<?php
+<header>
+	<title><?php echo shoestrap_title(); ?></title>
+	<h1 class="entry-title"><?php echo shoestrap_title(); ?></h1>
+</header>
 
-echo apply_filters( 'shoestrap_title_section', '<header><title>' . shoestrap_title() . '</title><h1 class="entry-title">' . shoestrap_title() . '</h1></header>' );
+<?php
 
 do_action( 'shoestrap_index_begin' );
 
