@@ -8766,3 +8766,7 @@ h6,
 .label.label-default a {
   color: #fff;
 }
+#content {
+	padding: 0 0 25px 0;
+	margin: 0 0 25px;
+}
