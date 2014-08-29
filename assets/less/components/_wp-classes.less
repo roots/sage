@@ -3,7 +3,6 @@
 
 body.admin-bar .navbar-fixed-top { top: 32px !important; }
 
-
 .aligncenter {
   display: block;
   margin: (@line-height-computed / 2) auto;
@@ -18,9 +17,11 @@ figure.alignnone {
   max-width: 100%;
 }
 
-@media (min-width: @screen-sm-min) {
+@media (max-width: @screen-sm-max) {
   body.admin-bar .navbar-fixed-top { top: 46px !important; }
+}
 
+@media (min-width: @screen-sm-min) {  
   // Only float images if not on an extra small device like smartphones
   .alignleft {
     float: left;
