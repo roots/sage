@@ -61,13 +61,13 @@ Roots uses [Grunt](http://gruntjs.com/) for compiling LESS to CSS, checking for 
 
 If you'd like to use Bootstrap Sass, look at the [Roots Sass](https://github.com/roots/roots-sass) fork.
 
-### Install Grunt
+### Install Grunt and Bower
 
 **Unfamiliar with npm? Don't have node installed?** [Download and install node.js](http://nodejs.org/download/) before proceeding.
 
 From the command line:
 
-1. Install `grunt-cli` globally with `npm install -g grunt-cli`.
+1. Install `grunt-cli` and `bower` globally with `npm install -g grunt-cli bower`.
 2. Navigate to the theme directory, then run `npm install`. npm will look at `package.json` and automatically install the necessary dependencies. It will also automatically run `bower install`, which installs front-end packages defined in `bower.json`.
 
 When completed, you'll be able to run the various Grunt commands provided from the command line.
