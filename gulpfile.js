@@ -58,7 +58,8 @@ gulp.task('less', function() {
     .pipe(gulp.dest(destination.css))
     .pipe(minifyCSS())
     .pipe(rename('./main.min.css'))
-    .pipe(gulp.dest(destination.css));
+    .pipe(gulp.dest(destination.css))
+    .pipe(livereload({ auto: false }));
 });
 
 gulp.task('jshint', function() {
@@ -73,7 +74,8 @@ gulp.task('js', ['jshint'], function() {
     .pipe(gulp.dest(destination.scripts))
     .pipe(uglify())
     .pipe(rename('./scripts.min.js'))
-    .pipe(gulp.dest(destination.scripts));
+    .pipe(gulp.dest(destination.scripts))
+    .pipe(livereload({ auto: false }));
 });
 
 gulp.task('modernizr', function() {
@@ -98,8 +100,8 @@ gulp.task('version', function() {
 
 gulp.task('watch', function() {
   livereload.listen();
-  gulp.watch('assets/less/**/*.less', ['less']).on('change', livereload.changed);
-  gulp.watch('assets/js/**/*.js', ['jshint', 'js']).on('change', livereload.changed);
+  gulp.watch('assets/less/**/*.less', ['less']);
+  gulp.watch('assets/js/**/*.js', ['jshint', 'js']);
   gulp.watch('**/*.php').on('change', function(file) {
     livereload.changed(file.path);
   });
