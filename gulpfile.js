@@ -1,23 +1,13 @@
 /*global $:true*/
 var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
+var mainBowerFiles = require('main-bower-files');
 
 var paths = {
   scripts: [
-    'assets/vendor/bootstrap/js/transition.js',
-    'assets/vendor/bootstrap/js/alert.js',
-    'assets/vendor/bootstrap/js/button.js',
-    'assets/vendor/bootstrap/js/carousel.js',
-    'assets/vendor/bootstrap/js/collapse.js',
-    'assets/vendor/bootstrap/js/dropdown.js',
-    'assets/vendor/bootstrap/js/modal.js',
-    'assets/vendor/bootstrap/js/tooltip.js',
-    'assets/vendor/bootstrap/js/popover.js',
-    'assets/vendor/bootstrap/js/scrollspy.js',
-    'assets/vendor/bootstrap/js/tab.js',
-    'assets/vendor/bootstrap/js/affix.js',
-    'assets/js/plugins/*.js',
-    'assets/js/_*.js'
+    'assets/js/**/*.js',
+    '!assets/js/vendor/**/*',
+    '!assets/js/scripts*.js'
   ],
   jshint: [
     'gulpfile.js',
@@ -26,7 +16,8 @@ var paths = {
     '!assets/js/scripts.min.js',
     '!assets/**/*.min-*'
   ],
-  less: 'assets/less/main.less'
+  less: 'assets/less/main.less',
+  bower: mainBowerFiles()
 };
 
 var destination = {
@@ -38,6 +29,7 @@ var destination = {
 
 gulp.task('less', function() {
   return gulp.src(paths.less)
+    .pipe($.plumber())
     .pipe($.sourcemaps.init())
       .pipe($.less()).on('error', function(err) {
         console.warn(err.message);
@@ -60,7 +52,8 @@ gulp.task('jshint', function() {
 });
 
 gulp.task('js', ['jshint'], function() {
-  return gulp.src(paths.scripts)
+  return gulp.src(paths.bower.concat(paths.scripts))
+    .pipe($.filter(['**/*.js', '!jquery.js', '!modernizr.js']))
     .pipe($.concat('./scripts.js'))
     .pipe(gulp.dest(destination.scripts))
     .pipe($.uglify())
