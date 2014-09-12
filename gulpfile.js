@@ -1,6 +1,7 @@
 /*global $:true*/
 var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
+var pngcrush = require('imagemin-pngcrush');
 var mainBowerFiles = require('main-bower-files');
 
 var paths = {
@@ -14,6 +15,7 @@ var paths = {
     'assets/js/*.js',
     '!assets/js/scripts.js',
     '!assets/js/scripts.min.js',
+    '!assets/js/vendor/**/*',
     '!assets/**/*.min-*'
   ],
   less: 'assets/less/main.less',
@@ -72,6 +74,20 @@ gulp.task('modernizr', function() {
     .pipe($.uglify())
     .pipe($.rename('./modernizr.min.js'))
     .pipe(gulp.dest(destination.vendor));
+});
+
+gulp.task('images', function () {
+  return gulp.src('assets/img/**/*')
+    .pipe($.imagemin({
+      progressive: true,
+      interlaced: true,
+      use: [pngcrush()]
+    }))
+    .pipe(gulp.dest('assets/img'));
+});
+
+gulp.task('bust', function () {
+  $.cache.clearAll();
 });
 
 gulp.task('version', function() {
