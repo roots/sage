@@ -719,26 +719,6 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 						'default'   => 1,
 						'type'      => 'switch'
 					),
-					array(
-						'title'     => __( 'Jumbotron Font', 'shoestrap' ),
-						'desc'      => __( 'The font used in jumbotron.', 'shoestrap' ),
-						'id'        => 'font_jumbotron',
-						'compiler'  => true,
-						'default'   => array(
-							'font-family'   => 'Arial, Helvetica, sans-serif',
-							'font-size'     => '20px',
-							'google'        => 'false',
-							'weight'        => 'inherit',
-							'color'         => '#333333',
-							'font-style'    => 400,
-						),
-						'preview'   => array(
-							'text'  => __( 'This is my preview text!', 'shoestrap' ), //this is the text from preview box
-							'size'  => '30px' //this is the text size from preview box
-						),
-						'type'      => 'typography',
-						'output'    => '.jumbotron',
-					),
 				) ),
 			);
 
