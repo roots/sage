@@ -9,7 +9,7 @@ var gulp = require('gulp'),
   uglify = require('gulp-uglify'),
   livereload = require('gulp-livereload'),
   stylish = require('jshint-stylish'),
-  rev = require('gulp-rev');
+  rev = require('gulp-rev'),
   modernizr = require('gulp-modernizr');
 
 var paths = {
