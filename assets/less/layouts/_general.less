@@ -1,5 +1,10 @@
 // Content wrapper
-.wrap { }
+.wrap {
+  &:extend(.container all, .clearfix all);
+  > .content {
+    .make-row();
+  }
+}
 
 // Main content area
 .main {
