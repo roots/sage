@@ -839,11 +839,16 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 						'type'        => 'button_set'
 					),
 					array(
-						'title'       => __( 'Display Branding ( Sitename or Logo ) on the NavBar', 'shoestrap' ),
+						'title'       => __( 'Display Branding ( Sitename, Logo or Both ) on the NavBar', 'shoestrap' ),
 						'desc'        => __( 'Default: ON', 'shoestrap' ),
 						'id'          => 'navbar_brand',
 						'default'     => 1,
-						'type'        => 'switch'
+						'options'     => array(
+							'off'  	  => __( 'Off', 'shoestrap' ),
+							'on' 	  => __( 'On', 'shoestrap' ),
+							'both'    => __( 'Both', 'shoestrap' ),
+						),
+						'type'        => 'button_set'
 					),
 					array(
 						'title'       => __( 'Use Logo ( if available ) for branding on the NavBar', 'shoestrap' ),

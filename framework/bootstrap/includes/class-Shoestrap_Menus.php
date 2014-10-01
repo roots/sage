@@ -186,13 +186,19 @@ if ( ! class_exists( 'Shoestrap_Menus' ) ) {
 
 			$logo           = $ss_settings['logo'];
 			$branding_class = ! empty( $logo['url'] ) ? 'logo' : 'text';
+			$branding = '';
 
-			if ( $ss_settings['navbar_brand'] != 0 ) {
+			if ( $ss_settings['navbar_brand'] === 'on' ) {
 				$branding  = '<a class="navbar-brand ' . $branding_class . '" href="' . home_url('/') . '">';
 				$branding .= $ss_settings['navbar_logo'] == 1 ? $ss_framework->logo() : get_bloginfo( 'name' );
 				$branding .= '</a>';
-			} else {
+			} elseif ( $ss_settings['navbar_brand'] === 'off' ){
 				$branding = '';
+			} elseif ( $ss_settings['navbar_brand'] === 'both' ){
+				$branding  = '<a class="navbar-brand ' . $branding_class . '" href="' . home_url('/') . '">';
+				$branding .= $ss_framework->logo();
+				$branding .= '</a>';
+				$branding .= '<span class="navbar-sitename">' .get_bloginfo( 'name' ) .'</span>';
 			}
 			return $branding;
 		}
