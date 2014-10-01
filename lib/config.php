@@ -18,17 +18,6 @@ if (!defined('WP_ENV')) {
 }
 
 /**
- * Add body class if sidebar is active
- */
-function roots_sidebar_body_class($classes) {
-  if (roots_display_sidebar()) {
-    $classes[] = 'sidebar-primary';
-  }
-  return $classes;
-}
-add_filter('body_class', 'roots_sidebar_body_class');
-
-/**
  * Define which pages shouldn't have the sidebar
  *
  * See lib/sidebar.php for more details
