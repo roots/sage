@@ -129,14 +129,14 @@ module.exports = function(grunt) {
           'assets/less/*.less',
           'assets/less/**/*.less'
         ],
-        tasks: ['less:dev', 'autoprefixer:dev']
+        tasks: ['notify:watch_less_start', 'less:dev', 'autoprefixer:dev', 'notify:watch_less_complete']
       },
       js: {
         files: [
           jsFileList,
           '<%= jshint.all %>'
         ],
-        tasks: ['jshint', 'concat']
+        tasks: ['notify:watch_js_start', 'jshint', 'concat', 'notify:watch_js_complete']
       },
       livereload: {
         // Browser live reloading
@@ -150,6 +150,32 @@ module.exports = function(grunt) {
           'templates/*.php',
           '*.php'
         ]
+      }
+    },
+    notify: {
+      watch_less_start: {
+        options: {
+          title: 'Watch LESS',
+          message: 'Compiling LESS...'
+        }
+      },
+      watch_less_complete: {
+        options: {
+          title: 'Watch LESS',
+          message: 'All done!'
+        }
+      },
+      watch_js_start: {
+        options: {
+          title: 'Watch JS',
+          message: 'Compiling JS...'
+        }
+      },
+      watch_js_complete: {
+        options: {
+          title: 'Watch JS',
+          message: 'All done!'
+        }
       }
     }
   });
