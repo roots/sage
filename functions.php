@@ -2,7 +2,7 @@
 
 // Define the theme version
 if ( ! defined( 'SHOESTRAP_VERSION' ) ) {
-	define( 'SHOESTRAP_VERSION', '3.2.6' );
+	define( 'SHOESTRAP_VERSION', '3.2.7' );
 }
 
 if ( class_exists( 'BuddyPress' ) ) {
