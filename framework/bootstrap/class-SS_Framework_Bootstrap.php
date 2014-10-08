@@ -155,7 +155,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 				add_filter( 'nav_menu_item_id',   '__return_null' );
 			}
 
-			if ( ! class_exists( 'WooCommerce' ) && ! function_exists( 'shoestrap_woo_include_files' ) && ! is_woocommerce() ) {
+			if ( ! class_exists( 'WooCommerce' ) && ! function_exists( 'shoestrap_woo_include_files' ) ) {
 				add_action( 'shoestrap_pre_wrap', array( $this, 'breadcrumbs' ), 99 );
 			}
 			add_filter( 'wp_nav_menu_args',   array( $this, 'nav_menu_args' ) );
