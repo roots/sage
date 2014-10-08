@@ -1,3 +1,7 @@
+### 3.2.8
+* Fix: No breadcrumbs if Woo Child is activated
+
+
 ### 3.2.7
 
 * Fix: Remove breadcrumbs if Woo Child is activated
