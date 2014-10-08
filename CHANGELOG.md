@@ -1,3 +1,17 @@
+### 3.2.7
+
+* Fix: Remove breadcrumbs if Woo Child is activated
+* Fix: LESS compiler conditionals (props @marc.boyer)
+* New: Ability to display both logo & sitename in navbar brand area
+* Fix: Remove duplicate control
+* Fix: Removed Reference to Local.Wordpress.Dev (props @marceux)
+* Fix: Adding separate blog template
+* Fix: bugfix Secondary NavBar Margin
+* Fix: Glyphicons fail to render (props @François Moreau)
+* Fix: remove Transparent option in Jumbotron Background Color
+* New: enable the title attribute in Nav Walker
+* New: updating Bootstrap v.3.2.0
+
 ### 3.2.6
 
 * Fix: Undefined index notices on theme activation
