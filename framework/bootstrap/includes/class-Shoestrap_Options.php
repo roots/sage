@@ -842,7 +842,7 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 						'title'       => __( 'Display Branding ( Sitename, Logo or Both ) on the NavBar', 'shoestrap' ),
 						'desc'        => __( 'Default: ON', 'shoestrap' ),
 						'id'          => 'navbar_brand',
-						'default'     => 1,
+						'default'     => 'on',
 						'options'     => array(
 							'off'  	  => __( 'Off', 'shoestrap' ),
 							'on' 	  => __( 'On', 'shoestrap' ),
