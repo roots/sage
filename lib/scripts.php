@@ -6,7 +6,7 @@
  * 1. /theme/assets/css/main.css
  *
  * Enqueue scripts in the following order:
- * 1. jquery-1.11.1.min.js via Google CDN
+ * 1. jQuery via Google CDN (defaults to v1.11.1)
  * 2. /theme/assets/js/vendor/modernizr.min.js
  * 3. /theme/assets/js/scripts.js (in footer)
  *
@@ -15,6 +15,9 @@
  * - You're not logged in as an administrator
  */
 function roots_scripts() {
+
+  $jquery_version = '1.11.1';
+
   /**
    * The build task in Grunt renames production assets with a hash
    * Read the asset names from assets-manifest.json
@@ -24,7 +27,7 @@ function roots_scripts() {
       'css'       => '/assets/css/main.css',
       'js'        => '/assets/js/scripts.js',
       'modernizr' => '/assets/vendor/modernizr/modernizr.js',
-      'jquery'    => '//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.js'
+      'jquery'    => '//ajax.googleapis.com/ajax/libs/jquery/'.$jquery_version.'/jquery.js'
     );
   } else {
     $get_assets = file_get_contents(get_template_directory() . '/assets/manifest.json');
@@ -33,7 +36,7 @@ function roots_scripts() {
       'css'       => '/assets/css/main.min.css?' . $assets['assets/css/main.min.css']['hash'],
       'js'        => '/assets/js/scripts.min.js?' . $assets['assets/js/scripts.min.js']['hash'],
       'modernizr' => '/assets/js/vendor/modernizr.min.js',
-      'jquery'    => '//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'
+      'jquery'    => '//ajax.googleapis.com/ajax/libs/jquery/'.$jquery_version.'/jquery.min.js'
     );
   }
 
