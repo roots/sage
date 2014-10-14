@@ -57,6 +57,11 @@ function roots_scripts() {
   wp_enqueue_script('modernizr', get_template_directory_uri() . $assets['modernizr'], array(), null, false);
   wp_enqueue_script('jquery');
   wp_enqueue_script('roots_js', get_template_directory_uri() . $assets['js'], array(), null, true);
+
+  $localized_vars = apply_filters('roots_localized_vars', array());
+  if($localized_vars) {
+    wp_localize_script('roots_js', 'roots', $localized_vars);
+  }
 }
 add_action('wp_enqueue_scripts', 'roots_scripts', 100);
 
