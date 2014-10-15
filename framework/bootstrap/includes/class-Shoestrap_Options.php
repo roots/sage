@@ -690,8 +690,20 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 							'background-image'    => isset( $ss_settings['jumbotron_background_image']['url'] ) ? $ss_settings['jumbotron_background_image']['url'] : NULL,
 						),
 						'compiler'    => true,
+						'transparent' => false,
 						'output'      => '.jumbotron',
 						'type'        => 'background',
+					),
+					array(
+						'title'       => __( 'Jumbotron Background Opacity', 'shoestrap' ),
+						'desc'        => __( 'Select the background opacity for your jumbotron. Default: 100%.', 'shoestrap' ),
+						'id'          => 'jumbotron_bg_opacity',
+						'default'     => 100,
+						'min'         => 0,
+						'step'        => 1,
+						'max'         => 100,
+						'compiler'    => true,
+						'type'        => 'slider',
 					),
 					array(
 						'title'     => __( 'Display Jumbotron only on the Frontpage.', 'shoestrap' ),
@@ -706,26 +718,6 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 						'id'        => 'jumbotron_nocontainer',
 						'default'   => 1,
 						'type'      => 'switch'
-					),
-					array(
-						'title'     => __( 'Jumbotron Font', 'shoestrap' ),
-						'desc'      => __( 'The font used in jumbotron.', 'shoestrap' ),
-						'id'        => 'font_jumbotron',
-						'compiler'  => true,
-						'default'   => array(
-							'font-family'   => 'Arial, Helvetica, sans-serif',
-							'font-size'     => '20px',
-							'google'        => 'false',
-							'weight'        => 'inherit',
-							'color'         => '#333333',
-							'font-style'    => 400,
-						),
-						'preview'   => array(
-							'text'  => __( 'This is my preview text!', 'shoestrap' ), //this is the text from preview box
-							'size'  => '30px' //this is the text size from preview box
-						),
-						'type'      => 'typography',
-						'output'    => '.jumbotron',
 					),
 				) ),
 			);
@@ -847,11 +839,16 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 						'type'        => 'button_set'
 					),
 					array(
-						'title'       => __( 'Display Branding ( Sitename or Logo ) on the NavBar', 'shoestrap' ),
+						'title'       => __( 'Display Branding ( Sitename, Logo or Both ) on the NavBar', 'shoestrap' ),
 						'desc'        => __( 'Default: ON', 'shoestrap' ),
 						'id'          => 'navbar_brand',
-						'default'     => 1,
-						'type'        => 'switch'
+						'default'     => 'on',
+						'options'     => array(
+							'off'  	  => __( 'Off', 'shoestrap' ),
+							'on' 	  => __( 'On', 'shoestrap' ),
+							'both'    => __( 'Both', 'shoestrap' ),
+						),
+						'type'        => 'button_set'
 					),
 					array(
 						'title'       => __( 'Use Logo ( if available ) for branding on the NavBar', 'shoestrap' ),
@@ -1840,6 +1837,14 @@ if ( ! class_exists( 'Shoestrap_Options' ) ) {
 						'title'     => __( 'Use Google CDN for jQuery', 'shoestrap' ),
 						'desc'      => '',
 						'id'        => 'jquery_cdn_toggler',
+						'default'   => 0,
+						'type'      => 'switch',
+						'required'  => array( 'options_mode', '=', array( 'advanced' ) ),
+					),
+					array(
+						'title'     => __( 'Use Title attribute in menus', 'shoestrap' ),
+						'desc'      => 'By enabling this option, the title attribute in menu items outputs the actual title attribute. The description field is in use by the Elusive icons in this case.',
+						'id'        => 'menu_title_attribute',
 						'default'   => 0,
 						'type'      => 'switch',
 						'required'  => array( 'options_mode', '=', array( 'advanced' ) ),

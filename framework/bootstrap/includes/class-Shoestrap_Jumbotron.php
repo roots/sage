@@ -84,6 +84,15 @@ if ( ! class_exists( 'Shoestrap_Jumbotron' ) ) {
 
 			$center = $ss_settings['jumbotron_center'];
 			$border = $ss_settings['jumbotron_border'];
+			$opacity  = ( intval( $ss_settings['jumbotron_bg_opacity'] ) ) / 100;
+
+			if ( is_array( $ss_settings['jumbo_bg'] ) ) {
+				$bg = Shoestrap_Color::sanitize_hex( $ss_settings['jumbo_bg']['background-color'] );
+			} else {
+				$bg = Shoestrap_Color::sanitize_hex( $ss_settings['jumbo_bg'] );
+			}
+
+			$rgb = Shoestrap_Color::get_rgb( $bg, true );
 
 			$style = '';
 
@@ -93,6 +102,10 @@ if ( ! class_exists( 'Shoestrap_Jumbotron' ) ) {
 
 			if ( ! empty( $border ) && $border['border-bottom'] > 0 && ! empty( $border['border-color'] ) ) {
 				$style .= 'border-bottom:' . $border['border-bottom'] . ' ' . $border['border-style'] . ' ' . $border['border-color'] . ';';
+			}
+
+			if ( $opacity < 1 && ! $ss_settings['jumbo_bg']['background-image'] ) {
+				$style .= 'background: rgb(' . $rgb . '); background: rgba(' . $rgb . ', ' . $opacity . ') !important;';
 			}
 
 			$style .= 'margin-bottom: 0px;';

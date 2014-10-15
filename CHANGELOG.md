@@ -1,12 +1,37 @@
-### HEAD
+### 3.2.8
+* Fix: No breadcrumbs if Woo Child is activated
+
+
+### 3.2.7
+
+* Fix: Remove breadcrumbs if Woo Child is activated
+* Fix: LESS compiler conditionals (props @marc.boyer)
+* New: Ability to display both logo & sitename in navbar brand area
+* Fix: Remove duplicate control
+* Fix: Removed Reference to Local.Wordpress.Dev (props @marceux)
+* Fix: Adding separate blog template
+* Fix: bugfix Secondary NavBar Margin
+* Fix: Glyphicons fail to render (props @François Moreau)
+* Fix: remove Transparent option in Jumbotron Background Color
+* New: enable the title attribute in Nav Walker
+* New: updating Bootstrap v.3.2.0
+
+### 3.2.6
 
 * Fix: Undefined index notices on theme activation
 * Fix: Deprecated functions compatibility
 * Fix: Featured Image dimentions for archives
 * New: Post Format meta element
 * New: Moved all Redux options to a single file
-* New: Implemented Redux SubSections (requires Redux 3.2.3)
-* New: Started work on an "Easy" mode. Will be completed on the next Redux Update.
+* New: Implemented Redux SubSections
+* Fix: Allow adding subsections fia a filter
+* Fix: Allow adding options via a filter
+* Fix: Code cleanups
+* Fix: Share links
+* Fix: Layouts per post type
+* Fix: Removed absolute link to local.wordpress.dev in the stylesheet
+* Fix: typos
+* Fix: Socail Share Networks compatibility with latest Redux
 
 ### 3.2.5
 
