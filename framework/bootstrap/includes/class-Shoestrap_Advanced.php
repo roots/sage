@@ -156,7 +156,11 @@ if ( !class_exists( 'Shoestrap_Advanced' ) ) {
 		}
 
 		function enable_root_relative_urls() {
-			return !( is_admin() || in_array( $GLOBALS['pagenow'], array( 'wp-login.php', 'wp-register.php' ) ) );
+			$settings = get_option( SHOESTRAP_OPT_NAME );
+
+			if ( $settings['root_relative_urls'] == 1 ) {
+				return !( is_admin() || in_array( $GLOBALS['pagenow'], array( 'wp-login.php', 'wp-register.php' ) ) );
+			}
 		}
 
 		/**
