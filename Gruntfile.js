@@ -22,7 +22,8 @@ module.exports = function(grunt) {
     'assets/js/_*.js'
   ];
 
-  grunt.initConfig({
+  var gruntConfig = {
+    cssProcessor: 'less',
     jshint: {
       options: {
         jshintrc: '.jshintrc'
@@ -58,6 +59,33 @@ module.exports = function(grunt) {
         },
         options: {
           compress: true
+        }
+      }
+    },
+    sass: {
+      dev: {
+        files: {
+          'assets/css/main.css': [
+            'assets/sass/main.scss'
+          ]
+        },
+        options: {
+          style: 'compressed',
+          compass: true,
+          // Source maps are available, but require Sass 3.3.0 to be installed
+          // https://github.com/gruntjs/grunt-contrib-sass#sourcemap
+          sourcemap: false
+        }
+      },
+      build: {
+        files: {
+          'assets/css/main.min.css': [
+            'assets/sass/main.scss'
+          ]
+        },
+        options: {
+          style: 'compressed',
+          compass: true,
         }
       }
     },
@@ -152,7 +180,22 @@ module.exports = function(grunt) {
         ]
       }
     }
-  });
+  };
+
+  var sassWatch = {
+    files: [
+      'assets/sass/*.scss',
+      'assets/sass/**/*.scss'
+    ],
+    tasks: ['sass:dev', 'autoprefixer:dev']
+  };
+
+  if(gruntConfig.cssProcessor === 'sass') {
+    delete gruntConfig.watch.less;
+    gruntConfig.watch.sass = sassWatch;
+  }
+
+  grunt.initConfig(gruntConfig);
 
   // Register tasks
   grunt.registerTask('default', [
@@ -160,13 +203,13 @@ module.exports = function(grunt) {
   ]);
   grunt.registerTask('dev', [
     'jshint',
-    'less:dev',
+    gruntConfig.cssProcessor + ':dev',
     'autoprefixer:dev',
     'concat'
   ]);
   grunt.registerTask('build', [
     'jshint',
-    'less:build',
+    gruntConfig.cssProcessor + ':build',
     'autoprefixer:build',
     'uglify',
     'modernizr',
