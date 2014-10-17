@@ -1,4 +1,11 @@
+### 3.2.9
+
+* Fix: Forgotten filter in base.php file
+* Fix: Relative URLs checks
+* Fix: double title attributes in menus
+
 ### 3.2.8
+
 * Fix: No breadcrumbs if Woo Child is activated
 
 
