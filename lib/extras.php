@@ -24,8 +24,7 @@ add_filter('wp_title', 'roots_wp_title', 10);
 /**
  * Manage responsive Bootstrap embeds
  */
-add_filter('embed_oembed_html', 'roots_embed_wrap', 10, 3);
-
 function roots_embed_wrap($html, $url, $attr) {
   return "<div class=\"embed-responsive embed-responsive-16by9\">" . $html . "</div>";
 }
+add_filter('embed_oembed_html', 'roots_embed_wrap', 10, 3);
