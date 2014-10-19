@@ -21,9 +21,9 @@ add_filter('get_search_form', 'roots_get_search_form');
 function roots_body_class($classes) {
   // Add post/page slug
   if (is_single() || is_page() && !is_front_page()) {
-  	if (!in_array(basename(get_permalink()), $classes)) {
-  		$classes[] = basename(get_permalink());
-  	}
+    if (!in_array(basename(get_permalink()), $classes)) {
+      $classes[] = basename(get_permalink());
+    }
   }
   return $classes;
 }
