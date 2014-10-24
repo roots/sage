@@ -19,7 +19,6 @@ $roots_includes = array(
   'lib/titles.php',          // Page titles
   'lib/nav.php',             // Custom nav modifications
   'lib/gallery.php',         // Custom [gallery] modifications
-  'lib/comments.php',        // Custom comments modifications
   'lib/scripts.php',         // Scripts and stylesheets
   'lib/extras.php',          // Custom functions
 );
