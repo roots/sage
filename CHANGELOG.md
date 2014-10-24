@@ -1,4 +1,5 @@
 ### HEAD
+* Move JavaScript to footer
 * Update hEntry schema to use `updated` instead of `published`
 * Move variables into `main.less`
 * Add `roots_body_class` function that checks for page slug in `body_class`
