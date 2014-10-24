@@ -1,4 +1,4 @@
-### HEAD
+### 7.0.2: October 24th, 2014
 * Simplify comments, use core comment form and list
 * Remove HTML5 shiv from Modernizr build
 * Move JavaScript to footer

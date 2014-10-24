@@ -1,5 +1,4 @@
 msgid ""
-msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
@@ -20,10 +19,12 @@ msgid "an out-of-date link"
 msgstr ""
 
 #: base.php:6
-msgid "You are using an <strong>outdated</strong> browser. Please <a href=\"http://browsehappy.com/\">upgrade your browser</a> to improve your experience."
+msgid ""
+"You are using an <strong>outdated</strong> browser. Please <a href=\"http://"
+"browsehappy.com/\">upgrade your browser</a> to improve your experience."
 msgstr ""
 
-#: functions.php:29
+#: functions.php:28
 msgid "Error locating %s for inclusion"
 msgstr ""
 
@@ -48,7 +49,9 @@ msgid "%s Theme Activation"
 msgstr ""
 
 #: lib/activation.php:52
-msgid "These settings are optional and should usually be used only on a fresh installation"
+msgid ""
+"These settings are optional and should usually be used only on a fresh "
+"installation"
 msgstr ""
 
 #: lib/activation.php:59 lib/activation.php:62
@@ -110,11 +113,11 @@ msgstr ""
 msgid "Continued"
 msgstr ""
 
-#: lib/init.php:36
+#: lib/init.php:40
 msgid "Primary"
 msgstr ""
 
-#: lib/init.php:45
+#: lib/init.php:49
 msgid "Footer"
 msgstr ""
 
@@ -146,21 +149,10 @@ msgstr ""
 msgid "Not Found"
 msgstr ""
 
-#: templates/comment.php:4
-msgid "%1$s"
-msgstr ""
-
-#: templates/comment.php:5
-msgid "(Edit)"
-msgstr ""
-
-#: templates/comment.php:9
-msgid "Your comment is awaiting moderation."
-msgstr ""
-
 #: templates/comments.php:9
-msgid "One Response to &ldquo;%2$s&rdquo;"
-msgid_plural "%1$s Responses to &ldquo;%2$s&rdquo;"
+msgctxt "comments title"
+msgid "One response to &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s responses to &ldquo;%2$s&rdquo;"
 msgstr[0] ""
 msgstr[1] ""
 
@@ -172,56 +164,8 @@ msgstr ""
 msgid "Newer comments &rarr;"
 msgstr ""
 
-#: templates/comments.php:30 templates/comments.php:35
+#: templates/comments.php:31
 msgid "Comments are closed."
-msgstr ""
-
-#: templates/comments.php:42
-msgid "Leave a Reply"
-msgstr ""
-
-#: templates/comments.php:42
-msgid "Leave a Reply to %s"
-msgstr ""
-
-#: templates/comments.php:45
-msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
-msgstr ""
-
-#: templates/comments.php:50
-msgid "Logged in as <a href=\"%s/wp-admin/profile.php\">%s</a>."
-msgstr ""
-
-#: templates/comments.php:51
-msgid "Log out of this account"
-msgstr ""
-
-#: templates/comments.php:51
-msgid "Log out &raquo;"
-msgstr ""
-
-#: templates/comments.php:55
-msgid "Name"
-msgstr ""
-
-#: templates/comments.php:55 templates/comments.php:59
-msgid " (required)"
-msgstr ""
-
-#: templates/comments.php:59
-msgid "Email (will not be published)"
-msgstr ""
-
-#: templates/comments.php:63
-msgid "Website"
-msgstr ""
-
-#: templates/comments.php:68
-msgid "Comment"
-msgstr ""
-
-#: templates/comments.php:71
-msgid "Submit Comment"
 msgstr ""
 
 #: templates/content-single.php:11
@@ -239,6 +183,7 @@ msgstr ""
 #: templates/searchform.php:4 templates/searchform.php:6
 msgid "Search"
 msgstr ""
+
 #. Theme Name of the plugin/theme
 msgid "Roots Starter Theme"
 msgstr ""
@@ -248,7 +193,10 @@ msgid "http://roots.io/starter-theme/"
 msgstr ""
 
 #. Description of the plugin/theme
-msgid "Roots is a WordPress starter theme based on HTML5 Boilerplate & Bootstrap. <a href=\"https://github.com/roots/roots/contributors\">Contribute on GitHub</a>"
+msgid ""
+"Roots is a WordPress starter theme based on HTML5 Boilerplate & Bootstrap. "
+"<a href=\"https://github.com/roots/roots/contributors\">Contribute on "
+"GitHub</a>"
 msgstr ""
 
 #. Author of the plugin/theme
