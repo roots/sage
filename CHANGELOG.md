@@ -1,3 +1,9 @@
+### HEAD
+* Update hEntry schema to use `updated` instead of `published`
+* Move variables into `main.less`
+* Add `roots_body_class` function that checks for page slug in `body_class`
+* Move `wp_footer` from footer template into `base.php`
+
 ### 7.0.1: August 15th, 2014
 * Move `<main>` and `.sidebar` markup out of PHP and into LESS
 * Define `WP_ENV` if it is not already defined
