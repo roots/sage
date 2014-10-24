@@ -1,4 +1,6 @@
 ### HEAD
+* Simplify comments, use core comment form and list
+* Remove HTML5 shiv from Modernizr build
 * Move JavaScript to footer
 * Update hEntry schema to use `updated` instead of `published`
 * Move variables into `main.less`
