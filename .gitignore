@@ -1,6 +1,7 @@
 # Include your project-specific ignores in this file
 # Read about how to use .gitignore: https://help.github.com/articles/ignoring-files
 node_modules
+.sass-cache
 assets/vendor/*
 assets/css/main.css.map
 assets/css/*main*.css
