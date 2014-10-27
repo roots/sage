@@ -15,11 +15,11 @@ $roots_includes = array(
   'lib/wrapper.php',         // Theme wrapper class
   'lib/sidebar.php',         // Sidebar class
   'lib/config.php',          // Configuration
+  'lib/assets.php',          // Scripts and stylesheets
   'lib/activation.php',      // Theme activation
   'lib/titles.php',          // Page titles
   'lib/nav.php',             // Custom nav modifications
   'lib/gallery.php',         // Custom [gallery] modifications
-  'lib/scripts.php',         // Scripts and stylesheets
   'lib/extras.php',          // Custom functions
 );
 
