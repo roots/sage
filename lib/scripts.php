@@ -3,12 +3,12 @@
  * Scripts and stylesheets
  *
  * Enqueue stylesheets in the following order:
- * 1. /theme/assets/css/main.css
+ * 1. /theme/assets/dist/css/main.css
  *
  * Enqueue scripts in the following order:
  * 1. jquery-1.11.1.min.js via Google CDN
- * 2. /theme/assets/js/vendor/modernizr.min.js
- * 3. /theme/assets/js/scripts.js
+ * 2. /theme/assets/dist/js/modernizr.min.js
+ * 3. /theme/assets/dist/js/scripts.js
  *
  * Google Analytics is loaded after enqueued scripts if:
  * - An ID has been defined in config.php
@@ -21,18 +21,18 @@ function roots_scripts() {
    */
   if (WP_ENV === 'development') {
     $assets = array(
-      'css'       => '/assets/css/main.css',
-      'js'        => '/assets/js/scripts.js',
-      'modernizr' => '/assets/vendor/modernizr/modernizr.js',
+      'css'       => '/assets/dist/css/main.css',
+      'js'        => '/assets/dist/js/scripts.js',
+      'modernizr' => '/assets/dist/js/modernizr.min.js',
       'jquery'    => '//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.js'
     );
   } else {
     $get_assets = file_get_contents(get_template_directory() . '/assets/rev-manifest.json');
     $assets     = json_decode($get_assets, true);
     $assets     = array(
-      'css'       => '/assets/' . $assets[get_template_directory() . '/assets/css/main.min.css'],
-      'js'       => '/assets/' . $assets[get_template_directory() . '/assets/js/scripts.min.js'],
-      'modernizr' => '/assets/js/vendor/modernizr.min.js',
+      'css'       => '/assets/' . $assets[get_template_directory() . '/assets/dist/css/main.min.css'],
+      'js'        => '/assets/' . $assets[get_template_directory() . '/assets/dist/js/scripts.min.js'],
+      'modernizr' => '/assets/dist/js/modernizr.min.js',
       'jquery'    => '//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'
     );
   }
@@ -65,7 +65,7 @@ function roots_jquery_local_fallback($src, $handle = null) {
   static $add_jquery_fallback = false;
 
   if ($add_jquery_fallback) {
-    echo '<script>window.jQuery || document.write(\'<script src="' . get_template_directory_uri() . '/assets/vendor/jquery/dist/jquery.min.js?1.11.1"><\/script>\')</script>' . "\n";
+    echo '<script>window.jQuery || document.write(\'<script src="' . get_template_directory_uri() . '/assets/dist/js/jquery-1.11.1.min.js"><\/script>\')</script>' . "\n";
     $add_jquery_fallback = false;
   }
 

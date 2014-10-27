@@ -27,7 +27,6 @@
     "gulp": "^3.8.7",
     "gulp-autoprefixer": "^0.0.7",
     "gulp-concat": "^2.3.4",
-    "gulp-filter": "^0.5.0",
     "gulp-grunt": "^0.5.2",
     "gulp-imagemin": "^0.6.0",
     "gulp-jshint": "^1.8.4",
@@ -38,11 +37,13 @@
     "gulp-modernizr": "https://github.com/doctyper/gulp-modernizr/tarball/develop",
     "gulp-plumber": "^0.6.3",
     "gulp-rename": "^1.2.0",
-    "gulp-rev": "^1.1.0",
+    "gulp-rev": "^2.0.1",
     "gulp-sourcemaps": "^1.1.1",
     "gulp-uglify": "^0.3.1",
     "imagemin-pngcrush": "^1.0.0",
     "jshint-stylish": "^0.4.0",
+    "jquery": "1.11.1",
+    "lodash": "^2.4.1",
     "main-bower-files": "^1.0.1"
   }
 }
