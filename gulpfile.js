@@ -29,9 +29,9 @@ gulp.task('less:dev', function() {
         console.warn(err.message);
       })
       .pipe($.autoprefixer('last 2 versions', 'ie 8', 'ie 9', 'android 2.3', 'android 4', 'opera 12'))
-      .pipe($.rename('./main.css'))
-      .pipe(gulp.dest('assets/dist/css'))
     .pipe($.sourcemaps.write())
+    .pipe($.rename('./main.css'))
+    .pipe(gulp.dest('assets/dist/css'))
     .pipe($.livereload({ auto: false }));
 });
 
