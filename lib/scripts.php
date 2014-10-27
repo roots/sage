@@ -23,7 +23,7 @@ function roots_scripts() {
     $assets = array(
       'css'       => '/assets/dist/css/main.css',
       'js'        => '/assets/dist/js/scripts.js',
-      'modernizr' => '/assets/dist/js/modernizr.min.js',
+      'modernizr' => '/bower_components/modernizr/modernizr.js',
       'jquery'    => '//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.js'
     );
   } else {

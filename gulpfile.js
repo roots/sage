@@ -79,6 +79,13 @@ gulp.task('copy:jquery', function() {
     .pipe(gulp.dest('assets/dist/js'));
 });
 
+gulp.task('copy:modernizr', function() {
+  return gulp.src(['bower_components/modernizr/modernizr.js'])
+    .pipe($.uglify())
+    .pipe($.rename('modernizr.min.js'))
+    .pipe(gulp.dest('assets/dist/js'));
+});
+
 gulp.task('images', function() {
   return gulp.src('assets/src/img/**/*')
     .pipe($.imagemin({
@@ -87,16 +94,6 @@ gulp.task('images', function() {
       use: [pngcrush()]
     }))
     .pipe(gulp.dest('assets/dist/img'));
-});
-
-gulp.task('modernizr', function() {
-  return gulp.src(
-    ['assets/dist/js/scripts.min.js'],
-    ['assets/dist/css/main.min.css']
-  )
-    .pipe($.modernizr('modernizr.min.js'))
-    .pipe($.uglify())
-    .pipe(gulp.dest('assets/dist/js'));
 });
 
 gulp.task('version', function() {
@@ -118,4 +115,4 @@ gulp.task('watch', function() {
 
 gulp.task('default', ['less:dev', 'jshint', 'js:dev']);
 gulp.task('dev', ['default']);
-gulp.task('build', ['less:build', 'js:build', 'copy:fonts', 'copy:jquery', 'images', 'modernizr', 'version']);
+gulp.task('build', ['less:build', 'js:build', 'copy:fonts', 'copy:jquery', 'copy:modernizr', 'images', 'version']);
