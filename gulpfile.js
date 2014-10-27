@@ -97,11 +97,12 @@ gulp.task('images', function() {
 });
 
 gulp.task('version', function() {
-  return gulp.src(['assets/dist/css/main.min.css', 'assets/dist/js/scripts.min.js'], { base: 'assets' })
+  return gulp.src(['assets/dist/css/main.min.css', 'assets/dist/js/scripts.min.js'], { base: 'assets/dist' })
+    .pipe(gulp.dest('assets/dist'))
     .pipe($.rev())
-    .pipe(gulp.dest('assets'))
+    .pipe(gulp.dest('assets/dist'))
     .pipe($.rev.manifest())
-    .pipe(gulp.dest('assets'));
+    .pipe(gulp.dest('assets/dist'));
 });
 
 gulp.task('watch', function() {
