@@ -100,5 +100,5 @@ function roots_google_analytics() { ?>
 
 <?php }
 if (GOOGLE_ANALYTICS_ID && (WP_ENV !== 'production' || !current_user_can('manage_options'))) {
-  add_action('wp_footer', 'roots_google_analytics', 20);
+  add_action('wp_head', 'roots_google_analytics', 20);
 }
