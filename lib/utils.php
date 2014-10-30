@@ -8,7 +8,7 @@ function is_element_empty($element) {
 }
 
 // Tell WordPress to use searchform.php from the templates/ directory
-function roots_get_search_form($form) {
+function roots_get_search_form() {
   $form = '';
   locate_template('/templates/searchform.php', true, false);
   return $form;
