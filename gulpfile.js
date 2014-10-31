@@ -43,8 +43,8 @@ gulp.task('less:build', function() {
       })
       .pipe($.autoprefixer('last 2 versions', 'ie 9', 'android 2.3', 'android 4', 'opera 12'))
       .pipe($.rename('./main.min.css'))
-    .pipe(gulp.dest('assets/dist/css'))
-    .pipe($.minifyCss());
+    .pipe($.minifyCss())
+    .pipe(gulp.dest('assets/dist/css'));
 });
 
 gulp.task('jshint', function() {
