@@ -48,7 +48,10 @@ if ( !class_exists( 'Shoestrap_Branding' ) ) {
 		public static function logo() {
 			global $ss_settings;
 			$logo  = $ss_settings['logo'];
-
+			
+			$protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https:" : "http:";
+			$logo['url'] = $protocol. str_replace(array('http:', 'https:'), '', $logo['url']);
+			
 			if ( ! empty( $logo['url'] ) ) {
 				$branding = '<img id="site-logo" src="' . $logo['url'] . '" alt="' . get_bloginfo( 'name' ) . '">';
 			} else {
