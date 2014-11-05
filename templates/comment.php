@@ -6,7 +6,7 @@ echo get_avatar( $comment, $size = '64' );
 
 echo '<div class="media-body">';
 	echo '<h4 class="media-heading">' . get_comment_author_link() . '</h4>';
-	echo '<time datetime="' . comment_date( 'c' ) . '"><a href="' . htmlspecialchars( get_comment_link( $comment->comment_ID ) ) . '">';
+	echo '<time datetime="' . get_comment_date( 'c' ) . '"><a href="' . htmlspecialchars( get_comment_link( $comment->comment_ID ) ) . '">';
 		printf( __( '%1$s', 'shoestrap' ), get_comment_date(),  get_comment_time() );
 	echo '</a></time>';
 
