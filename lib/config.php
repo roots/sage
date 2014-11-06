@@ -18,6 +18,17 @@ if (!defined('WP_ENV')) {
 }
 
 /**
+ * Add body class if using avatars
+ */
+function roots_avatars_body_class($classes) {
+  if (get_option('show_avatars')) {
+    $classes[] = 'comments-avatars';
+  }
+  return $classes;
+}
+add_filter('body_class', 'roots_avatars_body_class');
+
+/**
  * Add body class if sidebar is active
  */
 function roots_sidebar_body_class($classes) {

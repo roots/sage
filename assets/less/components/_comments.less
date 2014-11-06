@@ -1,0 +1,44 @@
+#comments {
+  ol.comment-list {
+    &:extend(.media-list);
+    > li {
+      &:extend(.media all);
+      &:first-child {
+        &:extend(.media:first-child);
+      }
+      ol.children {
+        &:extend(.list-unstyled, .media);
+        padding-left: (@avatar-width + 10);
+      }
+    }
+  }
+  .avatar {
+    &:extend(.media-object, .pull-left, .media > .pull-left);
+  }
+  b.fn, span.says {
+    &:extend(.h4, .media-heading);
+    display: inline-block;
+  }
+  .comments-avatars & .comment-content {
+    &:extend(.media-body);
+    padding-left: (@avatar-width + 10);
+  }
+}
+
+#respond {
+  form > p:not(.comment-notes) {
+    &:extend(.form-group);
+  }
+  input:not(#submit) {
+    &:extend(.form-control all);
+    width: 50%;
+  }
+  textarea {
+    &:extend(.form-control all);
+    height: auto;
+  }
+  input#submit {
+    .btn();
+    .btn-primary();
+  }
+}
