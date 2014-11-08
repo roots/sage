@@ -34,6 +34,7 @@ class Shoestrap_Nav_Walker extends Walker_Nav_Menu {
 	 * @param object $args
 	 */
 	public function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
+		global $ss_settings;
 		$indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
 
 		/**
@@ -94,6 +95,14 @@ class Shoestrap_Nav_Walker extends Walker_Nav_Menu {
 			$atts = apply_filters( 'nav_menu_link_attributes', $atts, $item, $args );
 
 			$attributes = '';
+
+			if ( $ss_settings['menu_title_attribute'] == 1 ) {
+				$attributes  .= ! empty( $item->attr_title ) ? ' title="'  . esc_attr( $item->attr_title ) .'"' : '';
+			}
+			else {
+				$attributes  .= ! empty( $item->title ) ? ' title="'  . esc_attr( $item->title ) .'"' : '';
+			}
+
 			foreach ( $atts as $attr => $value ) {
 				if ( ! empty( $value ) ) {
 					$value = ( 'href' === $attr ) ? esc_url( $value ) : esc_attr( $value );
@@ -110,9 +119,13 @@ class Shoestrap_Nav_Walker extends Walker_Nav_Menu {
 			 * if there is a value in the attr_title property. If the attr_title
 			 * property is NOT null we apply it as the class name for the el-icon.
 			 */
-			if ( ! empty( $item->attr_title ) ) {
+			if ( ! empty( $item->attr_title ) && $ss_settings['menu_title_attribute'] != 1 ) {
 				$item_output .= '<a'. $attributes .'><span class="el-icon-' . esc_attr( $item->attr_title ) . '"></span>&nbsp;';
-			} else {
+			} 
+			elseif ( ! empty( $item->description ) && $ss_settings['menu_title_attribute'] == 1 ) {
+				$item_output .= '<a'. $attributes .'><span class="el-icon-' . esc_attr( $item->description ) . '"></span>&nbsp;';
+			}
+			else {
 				$item_output .= '<a'. $attributes .'>';
 			}
 

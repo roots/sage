@@ -2358,8 +2358,8 @@ input[type="button"].btn-block {
 }
 @font-face {
   font-family: 'Glyphicons Halflings';
-  src: url('http://local.wordpress.dev/wp-content/themes/shoestrap-3/assets/fonts/glyphicons-halflings-regular.eot');
-  src: url('http://local.wordpress.dev/wp-content/themes/shoestrap-3/assets/fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('http://local.wordpress.dev/wp-content/themes/shoestrap-3/assets/fonts/glyphicons-halflings-regular.woff') format('woff'), url('http://local.wordpress.dev/wp-content/themes/shoestrap-3/assets/fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('http://local.wordpress.dev/wp-content/themes/shoestrap-3/assets/fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+  src: url('../fonts/glyphicons-halflings-regular.eot');
+  src: url('../fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/glyphicons-halflings-regular.woff') format('woff'), url('../fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
 }
 .glyphicon {
   position: relative;
@@ -6999,8 +6999,8 @@ fieldset[disabled] .contact-form .pushbutton-wide.active {
 }
 @font-face {
   font-family: 'Elusive-Icons';
-  src: url('http://local.wordpress.dev/wp-content/themes/shoestrap-3/assets/fonts/Elusive-Icons.eot?ver=2');
-  src: url('http://local.wordpress.dev/wp-content/themes/shoestrap-3/assets/fonts/Elusive-Icons.eot?#iefix&ver=2') format('embedded-opentype'), url('http://local.wordpress.dev/wp-content/themes/shoestrap-3/assets/fonts/Elusive-Icons.svg#Elusive-Icons?ver=2') format('svg'), url('http://local.wordpress.dev/wp-content/themes/shoestrap-3/assets/fonts/Elusive-Icons.woff?ver=2') format('woff'), url('http://local.wordpress.dev/wp-content/themes/shoestrap-3/assets/fonts/Elusive-Icons.ttf?ver=2') format('truetype');
+  src: url('../fonts/Elusive-Icons.eot?ver=2');
+  src: url('../fonts/Elusive-Icons.eot?#iefix&ver=2') format('embedded-opentype'), url('../fonts/Elusive-Icons.svg#Elusive-Icons?ver=2') format('svg'), url('../fonts/Elusive-Icons.woff?ver=2') format('woff'), url('../fonts/Elusive-Icons.ttf?ver=2') format('truetype');
   font-weight: normal;
   font-style: normal;
 }

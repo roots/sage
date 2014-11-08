@@ -154,7 +154,10 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 				add_filter( 'nav_menu_css_class', array( $this, 'nav_menu_css_class' ), 10, 2 );
 				add_filter( 'nav_menu_item_id',   '__return_null' );
 			}
-			add_action( 'shoestrap_pre_wrap', array( $this, 'breadcrumbs' ), 99 );
+
+			if ( ! class_exists( 'WooCommerce' ) && ! function_exists( 'shoestrap_woo_include_files' ) ) {
+				add_action( 'shoestrap_pre_wrap', array( $this, 'breadcrumbs' ), 99 );
+			}
 			add_filter( 'wp_nav_menu_args',   array( $this, 'nav_menu_args' ) );
 		}
 
@@ -985,7 +988,10 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 			try {
 
 				$parser = new Less_Parser( $options );
-
+                                $parser->ModifyVars(array(
+                                   'assets-url' =>  '"' . SHOESTRAP_ASSETS_URL . '"'
+                                ));
+                                
 				// The main app.less file
 				$parser->parseFile( $bootstrap_location . 'app.less', $bootstrap_uri );
 
@@ -1013,11 +1019,12 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 
 				// Add a filter to the compiler
 				$parser->parse( apply_filters( 'shoestrap_compiler', '' ) );
-
+                                
 				$css = $parser->getCss();
-
+                                
 			} catch( Exception $e ) {
 				$error_message = $e->getMessage();
+                                die($error_message);
 			}
 
 			// Below are just some ugly hacks.
