@@ -106,7 +106,7 @@ if ( ! class_exists( 'Shoestrap_Less_PHP' ) ) {
 				// If a style.css file exists in the assets/css folder, use that file instead.
 				// This is mostly for backwards-compatibility with previous versions.
 				// Also if the stylesheet is compiled using grunt, this will make sure the correct file is used.
-				if ( ! file_exists( $file_path . $file_name ) && file_exists( $def_folder_path . $file_name) ) {
+				if ( ! file_exists( $file_path ) && file_exists( $def_folder_path . $file_name) ) {
 					$css_uri   = get_template_directory_uri() . '/assets/css/style' . $cssid . '.css';
 					$file_path = $def_folder_path . '/style' . $cssid . '.css';
 				}
@@ -205,6 +205,18 @@ if ( ! class_exists( 'Shoestrap_Less_PHP' ) ) {
 			';
 
 			$content .= $ss_framework->compiler();
+
+			// Take care of domain mapping
+			if ( defined( 'DOMAIN_MAPPING' ) && 1 == DOMAIN_MAPPING ) {
+				if ( function_exists( 'domain_mapping_siteurl' ) && function_exists( 'get_original_url' ) ) {
+
+					$mapped_domain   = domain_mapping_siteurl( false );
+					$original_domain = get_original_url( 'siteurl' );
+
+					$content = str_replace( $original_domain, $mapped_domain, $content );
+
+				}
+			}
 
 			// Strip protocols
 			$content = str_replace( 'https://', '//', $content );
