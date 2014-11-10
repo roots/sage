@@ -24,7 +24,7 @@
 
 				<?php do_action( 'shoestrap_pre_main' ); ?>
 
-				<main class="main <?php shoestrap_section_class( 'main', true ); ?>" <?php if ( is_home() ) { echo 'id="home-blog"'; } ?> role="main">
+				<main class="main <?php echo apply_filters( 'shoestrap_section_class_main', 'col-md-7' ); ?>" <?php if (is_home()){ echo 'id="home-blog"';} ?> role="main">
 					<?php include shoestrap_template_path(); ?>
 				</main><!-- /.main -->
 
