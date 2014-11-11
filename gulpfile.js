@@ -18,6 +18,7 @@ var paths = {
     'assets/src/js/**/*'
   ],
   less: 'assets/src/less/main.less',
+  editorStyle: 'assets/src/less/editor-style.less',
   bower: mainBowerFiles()
 };
 
@@ -44,6 +45,17 @@ gulp.task('less:build', function() {
       .pipe($.autoprefixer('last 2 versions', 'ie 9', 'android 2.3', 'android 4', 'opera 12'))
       .pipe($.rename('./main.min.css'))
     .pipe($.minifyCss())
+    .pipe(gulp.dest('assets/dist/css'));
+});
+
+gulp.task('less:editorStyle', function() {
+  return gulp.src(paths.editorStyle)
+    .pipe($.plumber())
+    .pipe($.less()).on('error', function(err) {
+      console.warn(err.message);
+    })
+    .pipe($.autoprefixer('last 2 versions', 'ie 9', 'android 2.3', 'android 4', 'opera 12'))
+    .pipe($.rename('./editor-style.css'))
     .pipe(gulp.dest('assets/dist/css'));
 });
 
@@ -114,6 +126,6 @@ gulp.task('watch', function() {
   });
 });
 
-gulp.task('default', ['less:dev', 'jshint', 'js:dev']);
+gulp.task('default', ['less:dev', 'less:editorStyle', 'jshint', 'js:dev']);
 gulp.task('dev', ['default']);
-gulp.task('build', ['less:build', 'js:build', 'copy:fonts', 'copy:jquery', 'copy:modernizr', 'images', 'version']);
+gulp.task('build', ['less:build', 'less:editorStyle', 'js:build', 'copy:fonts', 'copy:jquery', 'copy:modernizr', 'images', 'version']);
