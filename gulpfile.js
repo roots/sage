@@ -126,6 +126,6 @@ gulp.task('watch', function() {
   });
 });
 
-gulp.task('default', ['less:dev', 'less:editorStyle', 'jshint', 'js:dev']);
+gulp.task('default', ['less:dev', 'less:editorStyle', 'jshint', 'js:dev', 'copy:fonts', 'images']);
 gulp.task('dev', ['default']);
 gulp.task('build', ['less:build', 'less:editorStyle', 'js:build', 'copy:fonts', 'copy:jquery', 'copy:modernizr', 'images', 'version']);
