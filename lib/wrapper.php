@@ -36,6 +36,11 @@ class Roots_Wrapping {
   }
 
   static function wrap($main) {
+    // Check for other filters returning null
+    if (!is_string($main)) {
+      return $main;
+    }
+
     self::$main_template = $main;
     self::$base = basename(self::$main_template, '.php');
 
