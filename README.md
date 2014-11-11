@@ -43,6 +43,8 @@ If you don't use [Bedrock](https://github.com/roots/bedrock), you'll need to add
 
 ```php
 define('WP_ENV', 'development');
+
+/* That's all, stop editing! Happy blogging. */
 ```
 
 ## Theme activation
