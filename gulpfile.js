@@ -68,6 +68,7 @@ var jshint = require("gulp-jshint");					// jshint
 			'bower_components/foundation/js/foundation/foundation.topbar.js',
 
 			// moving on...
+			'assets/js/plugins/*.js',							// Gets all the user plugins
 			'assets/js/_*.js'])										// Gets all the user JS _*.js from assets/js
 			.pipe(concat('scripts.js'))								// Concat all the scripts
 			.pipe(rename({suffix: '.min'}))							// Rename it
