@@ -11,6 +11,7 @@
     "gulp-jshint": "*",
     "gulp-livereload": "*",
     "gulp-minify-css": "*",
+    "gulp-notify": "^2.0.1",
     "gulp-rename": "*",
     "gulp-sass": "*",
     "gulp-size": "*",
