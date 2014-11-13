@@ -4,3 +4,5 @@ assets/css/main.min.css.map
 .sass-cache
 assets/css/main.min.css
 assets/js/scripts.min.js
+assets/js/modernizr.min.js
+assets/js/jquery.min.js
