@@ -119,10 +119,10 @@ function livereload() {
 }
 
 // Runs the livereload function if domain contains .dev — edit to fit your own needs
-$host = $_SERVER['HTTP_HOST']; 
-if (strpos($host,'.dev') !== false) {
+// $host = $_SERVER['HTTP_HOST']; 
+// if (strpos($host,'.dev') !== false) {
     add_action('wp_enqueue_scripts', 'livereload');
-}
+// }
 
 
 
@@ -167,7 +167,7 @@ add_action('wp_dashboard_setup', 'remove_dashboard_widgets' );
 // 	remove_meta_box( 'tagsdiv-post_tag', 'post', 'normal'); // Removes tags for post
 // 	remove_meta_box( 'categorydiv', 'post', 'normal'); // Removes category for posts
 // }
-// add_action('admin_menu', 'remove_meta_boxes');
+// add_action('do_meta_boxes', 'remove_meta_boxes');
 
 
 
