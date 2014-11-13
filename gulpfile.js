@@ -14,6 +14,7 @@ var paths = {
     'assets/src/js/**/*'
   ],
   jshint: [
+    'bower.json',
     'gulpfile.js',
     'assets/src/js/**/*'
   ],
@@ -117,10 +118,14 @@ gulp.task('version', function() {
     .pipe(gulp.dest('assets/dist'));
 });
 
+gulp.task('mainBowerFilesRefresh', function() {
+  return (paths.bower = mainBowerFiles());
+});
+
 gulp.task('watch', function() {
   $.livereload.listen();
-  gulp.watch('assets/src/less/**/*', ['less:dev']);
-  gulp.watch('assets/src/js/**/*', ['jshint', 'js:dev']);
+  gulp.watch(['assets/src/less/**/*', 'bower.json'], ['mainBowerFilesRefresh', 'less:dev']);
+  gulp.watch(['assets/src/js/**/*', 'bower.json'], ['mainBowerFilesRefresh', 'jshint', 'js:dev']);
   gulp.watch('**/*.php').on('change', function(file) {
     $.livereload.changed(file.path);
   });
