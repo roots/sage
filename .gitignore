@@ -1,5 +1,8 @@
-node_modules/** # wont need that stuff
-bower_components/** # wont need that stuff
+node_modules/**
+bower_components/**
 assets/css/main.min.css.map
 .sass-cache
-
+assets/css/main.min.css
+assets/js/scripts.min.js
+assets/js/modernizr.min.js
+assets/js/jquery.min.js
