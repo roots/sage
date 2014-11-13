@@ -14,12 +14,12 @@ var paths = {
     'assets/src/js/**/*'
   ],
   jshint: [
+    'bower.json',
     'gulpfile.js',
     'assets/src/js/**/*'
   ],
   less: 'assets/src/less/main.less',
-  editorStyle: 'assets/src/less/editor-style.less',
-  bower: mainBowerFiles()
+  editorStyle: 'assets/src/less/editor-style.less'
 };
 
 gulp.task('less:dev', function() {
@@ -67,14 +67,14 @@ gulp.task('jshint', function() {
 });
 
 gulp.task('js:dev', ['jshint'], function() {
-  return gulp.src(paths.bower.concat(paths.scripts))
+  return gulp.src(mainBowerFiles().concat(paths.scripts))
     .pipe($.concat('./scripts.js'))
     .pipe(gulp.dest('assets/dist/js'))
     .pipe($.livereload({ auto: false }));
 });
 
 gulp.task('js:build', ['jshint'], function() {
-  return gulp.src(paths.bower.concat(paths.scripts))
+  return gulp.src(mainBowerFiles().concat(paths.scripts))
     .pipe($.concat('./scripts.min.js'))
     .pipe($.uglify())
     .pipe(gulp.dest('assets/dist/js'));
@@ -119,8 +119,8 @@ gulp.task('version', function() {
 
 gulp.task('watch', function() {
   $.livereload.listen();
-  gulp.watch('assets/src/less/**/*', ['less:dev']);
-  gulp.watch('assets/src/js/**/*', ['jshint', 'js:dev']);
+  gulp.watch(['assets/src/less/**/*', 'bower.json'], ['less:dev']);
+  gulp.watch(['assets/src/js/**/*', 'bower.json'], ['jshint', 'js:dev']);
   gulp.watch('**/*.php').on('change', function(file) {
     $.livereload.changed(file.path);
   });
