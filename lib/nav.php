@@ -74,6 +74,8 @@ add_filter('nav_menu_item_id', '__return_null');
  * Use Roots_Nav_Walker() by default
  */
 function roots_nav_menu_args($args = '') {
+  $roots_nav_menu_args = array();
+
   $roots_nav_menu_args['container'] = false;
 
   if (!$args['items_wrap']) {
