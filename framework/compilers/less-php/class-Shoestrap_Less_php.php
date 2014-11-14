@@ -206,6 +206,18 @@ if ( ! class_exists( 'Shoestrap_Less_PHP' ) ) {
 
 			$content .= $ss_framework->compiler();
 
+			// Take care of domain mapping
+			if ( defined( 'DOMAIN_MAPPING' ) && 1 == DOMAIN_MAPPING ) {
+				if ( function_exists( 'domain_mapping_siteurl' ) && function_exists( 'get_original_url' ) ) {
+
+					$mapped_domain   = domain_mapping_siteurl( false );
+					$original_domain = get_original_url( 'siteurl' );
+
+					$content = str_replace( $original_domain, $mapped_domain, $content );
+
+				}
+			}
+
 			// Strip protocols
 			$content = str_replace( 'https://', '//', $content );
 			$content = str_replace( 'http://', '//', $content );

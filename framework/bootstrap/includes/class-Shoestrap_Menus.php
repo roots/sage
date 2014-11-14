@@ -228,7 +228,7 @@ if ( ! class_exists( 'Shoestrap_Menus' ) ) {
 				'name'          => __( 'In-Navbar Widget Area', 'shoestrap' ),
 				'id'            => 'navbar',
 				'description'   => __( 'This widget area will show up in your NavBars. This is most useful when using a static-left navbar.', 'shoestrap' ),
-				'before_widget' => '<div id="in-navbar">',
+				'before_widget' => '<div id="%1$s" class="in-navbar">',
 				'after_widget'  => '</div>',
 				'before_title'  => '<h1>',
 				'after_title'   => '</h1>',

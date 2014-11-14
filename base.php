@@ -30,7 +30,7 @@
 
 				<?php do_action( 'shoestrap_after_main' ); ?>
 
-				<?php if ( shoestrap_display_primary_sidebar() ) : ?>
+				<?php if ( shoestrap_display_primary_sidebar() && is_active_sidebar('sidebar-primary')) : ?>
 					<aside id="sidebar-primary" class="sidebar <?php shoestrap_section_class( 'primary', true ); ?>" role="complementary">
 						<?php if ( ! has_action( 'shoestrap_sidebar_override' ) ) {
 							include shoestrap_sidebar_path();
