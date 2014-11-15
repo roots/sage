@@ -1,13 +1,7 @@
 /*global $:true*/
 var gulp = require('gulp');
+
 var $ = require('gulp-load-plugins')();
-var plugins = require('gulp-load-plugins')();
-
-var pngcrush = require('imagemin-pngcrush');
-
-var mainBowerFiles = require('main-bower-files');
-
-var pkg = require('./package.json');
 
 var paths = {
   scripts: [
@@ -67,27 +61,30 @@ gulp.task('jshint', function() {
 });
 
 gulp.task('js:dev', ['jshint'], function() {
-  return gulp.src(mainBowerFiles().concat(paths.scripts))
+  return gulp.src(require('main-bower-files')().concat(paths.scripts))
+    .pipe($.filter('**/*.js'))
     .pipe($.concat('./scripts.js'))
     .pipe(gulp.dest('assets/dist/js'))
     .pipe($.livereload({ auto: false }));
 });
 
 gulp.task('js:build', ['jshint'], function() {
-  return gulp.src(mainBowerFiles().concat(paths.scripts))
+  return gulp.src(require('main-bower-files')().concat(paths.scripts))
+    .pipe($.filter('**/*.js'))
     .pipe($.concat('./scripts.min.js'))
     .pipe($.uglify())
     .pipe(gulp.dest('assets/dist/js'));
 });
 
 gulp.task('copy:fonts', function() {
-  return gulp.src(['bower_components/bootstrap/fonts/*', 'assets/src/fonts/*'])
+  return gulp.src(require('main-bower-files')().concat('asset/src/fonts/**/*'))
+    .pipe($.filter('**/*.{eot,svg,ttf,woff}'))
     .pipe(gulp.dest('assets/dist/fonts'));
 });
 
 gulp.task('copy:jquery', function() {
   return gulp.src(['bower_components/jquery/dist/jquery.min.js'])
-    .pipe($.rename('jquery-' + pkg.devDependencies.jquery + '.min.js'))
+    .pipe($.rename('jquery-1.11.1.min.js'))
     .pipe(gulp.dest('assets/dist/js'));
 });
 
@@ -102,8 +99,7 @@ gulp.task('images', function() {
   return gulp.src('assets/src/img/**/*')
     .pipe($.imagemin({
       progressive: true,
-      interlaced: true,
-      use: [pngcrush()]
+      interlaced: true
     }))
     .pipe(gulp.dest('assets/dist/img'));
 });

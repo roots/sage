@@ -31,7 +31,11 @@
         "./js/popover.js",
         "./js/scrollspy.js",
         "./js/tab.js",
-        "./js/affix.js"
+        "./js/affix.js",
+        "./fonts/glyphicons-halflings-regular.eot",
+        "./fonts/glyphicons-halflings-regular.svg",
+        "./fonts/glyphicons-halflings-regular.ttf",
+        "./fonts/glyphicons-halflings-regular.woff"
       ]
     }
   }
