@@ -117,6 +117,11 @@ gulp.task('version', function() {
     .pipe(gulp.dest('assets/dist'));
 });
 
+gulp.task('clean', function() {
+  return gulp.src(['assets/dist/css/main.min*', 'assets/dist/js/scripts.min*'], { read: false })
+    .pipe($.clean());
+});
+
 gulp.task('watch', function() {
   $.livereload.listen();
   gulp.watch(['assets/src/less/**/*', 'bower.json'], ['less:dev']);
@@ -128,4 +133,4 @@ gulp.task('watch', function() {
 
 gulp.task('default', ['less:dev', 'less:editorStyle', 'jshint', 'js:dev', 'copy:fonts', 'images']);
 gulp.task('dev', ['default']);
-gulp.task('build', ['less:build', 'less:editorStyle', 'js:build', 'copy:fonts', 'copy:jquery', 'copy:modernizr', 'images', 'version']);
+gulp.task('build', ['clean', 'less:build', 'less:editorStyle', 'js:build', 'copy:fonts', 'copy:jquery', 'copy:modernizr', 'images', 'version']);
