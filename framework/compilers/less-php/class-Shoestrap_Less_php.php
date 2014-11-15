@@ -113,6 +113,17 @@ if ( ! class_exists( 'Shoestrap_Less_PHP' ) ) {
 
 				$css_path = $file_path;
 
+				// Take care of domain mapping
+				if ( defined( 'DOMAIN_MAPPING' ) && 1 == DOMAIN_MAPPING ) {
+					if ( function_exists( 'domain_mapping_siteurl' ) && function_exists( 'get_original_url' ) ) {
+	
+						$mapped_domain   = domain_mapping_siteurl( false );	
+						$original_domain = get_original_url( 'siteurl' );
+						$css_uri = str_replace( $original_domain, $mapped_domain, $css_uri );
+	
+					}
+				}
+
 				// Strip protocols
 				$css_uri = str_replace( 'https://', '//', $css_uri );
 				$css_uri = str_replace( 'http://', '//', $css_uri );
@@ -211,7 +222,12 @@ if ( ! class_exists( 'Shoestrap_Less_PHP' ) ) {
 				if ( function_exists( 'domain_mapping_siteurl' ) && function_exists( 'get_original_url' ) ) {
 
 					$mapped_domain   = domain_mapping_siteurl( false );
+					$mapped_domain   = str_replace( 'https://', '//', $domain_mapping );
+					$mapped_domain   = str_replace( 'http://', '//', $mapped_domain );
+
 					$original_domain = get_original_url( 'siteurl' );
+					$original_domain = str_replace( 'https://', '//', $original_domain );
+					$original_domain = str_replace( 'http://', '//', $original_domain );
 
 					$content = str_replace( $original_domain, $mapped_domain, $content );
 
