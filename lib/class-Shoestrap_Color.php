@@ -19,7 +19,11 @@ if ( ! class_exists( 'Shoestrap_Color' ) ) {
 
 			// If there are more than 6 characters, only keep the first 6.
 			if ( strlen( $color ) > 6 ) {
-				$color = substr( $color, 0, 6 );
+				 if ( strpos( $color, 'transparent' ) === false ) {
+					$color = substr( $color, 0, 6 );
+				} else {
+					$color = 'ffffff';
+				}
 			}
 
 			if ( strlen( $color ) == 6 ) {
