@@ -1,5 +1,6 @@
 /*global $:true*/
 var gulp = require('gulp');
+var del = require('del');
 
 var $ = require('gulp-load-plugins')();
 
@@ -113,9 +114,8 @@ gulp.task('version', function() {
     .pipe(gulp.dest('assets/dist'));
 });
 
-gulp.task('clean', function() {
-  return gulp.src(['assets/dist/css/main.min*', 'assets/dist/js/scripts.min*'], { read: false })
-    .pipe($.clean());
+gulp.task('clean', function (callback) {
+  del(['assets/dist/css/main.min*', 'assets/dist/js/scripts.min*'], callback);
 });
 
 gulp.task('watch', function() {
