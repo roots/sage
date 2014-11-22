@@ -16,14 +16,10 @@
       "url": "http://opensource.org/licenses/MIT"
     }
   ],
-  "scripts": {
-    "postinstall": "node node_modules/bower/bin/bower install && gulp dev"
-  },
   "engines": {
     "node": ">= 0.10.0"
   },
   "devDependencies": {
-    "bower": ">=1.3.9",
     "gulp": "^3.8.7",
     "gulp-autoprefixer": "^0.0.7",
     "gulp-clean": "^0.3.1",
