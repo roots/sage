@@ -61,14 +61,17 @@ Roots uses [Gulp](http://gulpjs.com/) for compiling LESS to CSS, checking for JS
 
 If you'd like to use Bootstrap Sass, look at the [Roots Sass](https://github.com/roots/roots-sass) fork.
 
-### Install Gulp
+### Install Gulp & Bower
 
 **Unfamiliar with npm? Don't have node installed?** [Download and install node.js](http://nodejs.org/download/) before proceeding.
 
 From the command line:
 
 1. Install `gulp` globally with `npm install -g gulp`.
-2. Navigate to the theme directory, then run `npm install`. npm will look at `package.json` and automatically install the necessary dependencies. It will also automatically run `bower install`, which installs front-end packages defined in `bower.json`.
+2. Install `bower` globally with `npm install -g bower`.
+3. Navigate to the theme directory, then run `npm install`. This installs all the tools needed for the build process.
+4. Run `bower install`, which installs front-end packages defined in `bower.json`.
+5. Run `gulp dev`. Refer to the section below for more information regarding gulp commands.
 
 When completed, you'll be able to run the various Gulp commands provided from the command line.
 
