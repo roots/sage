@@ -14,9 +14,9 @@
  * - An ID has been defined in config.php
  * - You're not logged in as an administrator
  */
-function roots_asset_path($filename_dev, $filename) {
+function roots_asset_path($filename) {
   if (WP_ENV === 'development') {
-    return get_template_directory_uri() . '/dist/' . $filename_dev;
+    return get_template_directory_uri() . '/dist/' . $filename;
   }
 
   $manifest_path = get_template_directory() . '/dist/rev-manifest.json';
@@ -33,7 +33,7 @@ function roots_asset_path($filename_dev, $filename) {
 }
 
 function roots_assets() {
-  wp_enqueue_style('roots_css', roots_asset_path('styles/main.css', 'styles/main.css'), false, null);
+  wp_enqueue_style('roots_css', roots_asset_path('styles/main.css'), false, null);
 
   /**
    * jQuery is loaded using the same method from HTML5 Boilerplate:
@@ -43,11 +43,7 @@ function roots_assets() {
   if (!is_admin() && current_theme_supports('jquery-cdn')) {
     wp_deregister_script('jquery');
 
-    if (WP_ENV === 'development') {
-      wp_register_script('jquery', '//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.js', array(), null, true);
-    } else {
-      wp_register_script('jquery', '//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.js', array(), null, true);
-    }
+    wp_register_script('jquery', '//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.js', array(), null, true);
 
     add_filter('script_loader_src', 'roots_jquery_local_fallback', 10, 2);
   }
@@ -56,9 +52,9 @@ function roots_assets() {
     wp_enqueue_script('comment-reply');
   }
 
-  wp_enqueue_script('modernizr', roots_asset_path('scripts/modernizr.js', 'scripts/modernizr.js'), array(), null, true);
+  wp_enqueue_script(roots_asset_path('scripts/modernizr.js'), array(), null, true);
   wp_enqueue_script('jquery');
-  wp_enqueue_script('roots_js', roots_asset_path('scripts/scripts.js', 'scripts/scripts.js'), array(), null, true);
+  wp_enqueue_script('roots_js', roots_asset_path('scripts/scripts.js'), array(), null, true);
 }
 add_action('wp_enqueue_scripts', 'roots_assets', 100);
 

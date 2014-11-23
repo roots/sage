@@ -1,7 +1,6 @@
 /*global $:true*/
 var gulp = require('gulp');
-
-var $ = require('gulp-load-plugins')();
+var $    = require('gulp-load-plugins')();
 
 var build = {
   src: 'assets/',
@@ -21,7 +20,7 @@ var paths = {
   editorStyle: build.src + 'styles/editor-style.less'
 };
 
-gulp.task('styles:dev', function() {
+gulp.task('styles', function() {
   return gulp.src(paths.styles)
     .pipe($.plumber())
     .pipe($.sourcemaps.init())
@@ -29,21 +28,9 @@ gulp.task('styles:dev', function() {
         console.warn(err.message);
       })
       .pipe($.autoprefixer('last 2 versions', 'ie 8', 'ie 9', 'android 2.3', 'android 4', 'opera 12'))
+    .pipe($.minifyCss())
     .pipe($.sourcemaps.write())
     .pipe($.rename('main.css'))
-    .pipe(gulp.dest(build.dist + 'styles'))
-    .pipe($.livereload({ auto: false }));
-});
-
-gulp.task('styles:build', function() {
-  return gulp.src(paths.styles)
-    .pipe($.plumber())
-      .pipe($.less()).on('error', function(err) {
-        console.warn(err.message);
-      })
-      .pipe($.autoprefixer('last 2 versions', 'ie 9', 'android 2.3', 'android 4', 'opera 12'))
-      .pipe($.rename('main.css'))
-    .pipe($.minifyCss())
     .pipe(gulp.dest(build.dist + 'styles'));
 });
 
@@ -65,15 +52,7 @@ gulp.task('jshint', function() {
     .pipe($.jshint.reporter('fail'));
 });
 
-gulp.task('scripts:dev', ['jshint'], function() {
-  return gulp.src(require('main-bower-files')().concat(paths.scripts))
-    .pipe($.filter('**/*.js'))
-    .pipe($.concat('scripts.js'))
-    .pipe(gulp.dest(build.dist + 'scripts'))
-    .pipe($.livereload({ auto: false }));
-});
-
-gulp.task('scripts:build', ['jshint'], function() {
+gulp.task('scripts', ['jshint'], function() {
   return gulp.src(require('main-bower-files')().concat(paths.scripts))
     .pipe($.filter('**/*.js'))
     .pipe($.concat('scripts.js'))
@@ -110,7 +89,7 @@ gulp.task('images', function() {
 });
 
 gulp.task('version', function() {
-  return gulp.src([build.dist + 'styles/main.css', build.dist + 'js/scripts.js'], { base: build.dist })
+  return gulp.src([build.dist + 'styles/main.css', build.dist + 'scripts/scripts.js'], { base: build.dist })
     .pipe(gulp.dest(build.dist))
     .pipe($.rev())
     .pipe(gulp.dest(build.dist))
@@ -125,13 +104,17 @@ gulp.task('clean', function() {
 
 gulp.task('watch', function() {
   $.livereload.listen();
-  gulp.watch([build.src + 'styles/**/*', 'bower.json'], ['styles:dev']);
-  gulp.watch([build.src + 'scripts/**/*', 'bower.json'], ['jshint', 'scripts:dev']);
+  gulp.watch([build.src + 'styles/**/*', 'bower.json'], ['styles']);
+  gulp.watch([build.src + 'scripts/**/*', 'bower.json'], ['jshint', 'scripts']);
   gulp.watch('**/*.php').on('change', function(file) {
     $.livereload.changed(file.path);
   });
 });
 
-gulp.task('default', ['styles:dev', 'styles:editorStyle', 'jshint', 'scripts:dev', 'copy:fonts', 'images']);
-gulp.task('dev', ['default']);
-gulp.task('build', ['styles:build', 'styles:editorStyle', 'scripts:build', 'copy:fonts', 'copy:jquery', 'copy:modernizr', 'images', 'version']);
+gulp.task('build', ['styles', 'styles:editorStyle', 'scripts', 'copy:fonts', 'copy:jquery', 'copy:modernizr', 'images'], function () {
+  gulp.start('version');
+});
+
+gulp.task('default', ['clean'], function () {
+  gulp.start('build');
+});
