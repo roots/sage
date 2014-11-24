@@ -5,84 +5,11 @@ var gulp           = require('gulp');
 var lazypipe       = require('lazypipe');
 var mainBowerFiles = require('main-bower-files');
 var obj            = require('object-path');
-var traverse       = require('traverse');
-var util           = require('util');
 
-function getManifest(path) {
-  var m = require(path);
-  var defaults = {
-    buildPaths: {
-      appendSrc: ['theme'],
-      src: 'assets/',
-      dist: 'dist/'
-    }
-  };
-  var err = function (msg) {
-    msg = msg || 'file seems to be malformed';
-    console.error('Manifest File Error: %s: %s', path, msg);
-    process.exit(1);
-  };
-  var required = ['dependencies', 'buildPaths'];
-
-  if(_.isPlainObject(m)) {
-    m = _.defaults(m, defaults);
-
-    _.forEach(required, function (req) {
-      if(!obj.has(m, req)) {
-        err('missing "'+req+'" property');
-      }
-    });
-
-    traverse(m.dependencies).forEach(function (node) {
-      if(this.isLeaf && !_.isArray(node) && !_.isArray(this.parent.node)) {
-        this.update([node]);
-      }
-    });
-
-    if(m.buildPaths.appendSrc) {
-      _.forOwn(m.dependencies, function (dependency, name) {
-        if(m.buildPaths.appendSrc.indexOf(name) >= 0) {
-          traverse(m.dependencies[name]).forEach(function (node) {
-            if(this.isLeaf) {
-              this.update(m.buildPaths.src + node);
-            }
-          });
-        }
-      });
-    }
-
-    return m;
-  } else {
-    err();
-  }
-}
-
-var manifest = getManifest('./assets/manifest.json');
+var manifest = require('asset-builder')('./assets/manifest.json');
 
 var path = manifest.buildPaths;
-
-var bower = require('wiredep')({
-  exclude: obj.get(manifest, 'ignoreDependencies.bower')
-});
-
-var globs = (function buildGlobs() {
-  return {
-    scripts: (bower.js || [])
-      .concat(obj.get(manifest, 'dependencies.vendor.scripts', []))
-      .concat(obj.get(manifest, 'dependencies.theme.scripts', [])),
-    scriptsIgnored: _.reduce(obj.get(manifest, 'ignoreDependencies.bower', []), 
-      function (paths, depName) {
-        return paths.concat(obj.get(bower, 'packages.'+depName+'.main', []));
-      }, []),
-    styles: (bower.css || [])
-      .concat(obj.get(manifest, 'dependencies.vendor.styles', []))
-      .concat(obj.get(manifest, 'dependencies.theme.styles', [])),
-    editorStyle: obj.get(manifest, 'dependencies.theme.editorStyle', []),
-    fonts: mainBowerFiles({ filter: /\.(eot|svg|ttf|woff)$/i })
-      .concat(manifest.buildPaths.src + 'fonts/**/*.{eot,svg,ttf,woff}'),
-    images: path.src + 'images/**/*'
-  };
-})();
+var globs = manifest.globs;
 
 var cssTasks = function(filename) {
   return lazypipe()
