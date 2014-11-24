@@ -1,117 +1,184 @@
 /*global $:true*/
-var gulp = require('gulp');
-var $    = require('gulp-load-plugins')();
+var $              = require('gulp-load-plugins')();
+var _              = require('lodash');
+var gulp           = require('gulp');
+var lazypipe       = require('lazypipe');
+var mainBowerFiles = require('main-bower-files');
+var obj            = require('object-path');
+var traverse       = require('traverse');
+var util           = require('util');
 
-var build = {
-  src: 'assets/',
-  dist: 'dist/'
-};
+function getManifest(path) {
+  var m = require(path);
+  var defaults = {
+    buildPaths: {
+      appendSrc: ['theme'],
+      src: 'assets/',
+      dist: 'dist/'
+    }
+  };
+  var err = function (msg) {
+    msg = msg || 'file seems to be malformed';
+    console.error('Manifest File Error: %s: %s', path, msg);
+    process.exit(1);
+  };
+  var required = ['dependencies', 'buildPaths'];
 
-var paths = {
-  scripts: [
-    build.src + 'scripts/**/*'
-  ],
-  jshint: [
-    'bower.json',
-    'gulpfile.js',
-    build.src + 'scripts/**/*'
-  ],
-  styles: build.src + 'styles/main.less',
-  editorStyle: build.src + 'styles/editor-style.less'
-};
+  if(_.isPlainObject(m)) {
+    m = _.defaults(m, defaults);
 
-gulp.task('styles', function() {
-  return gulp.src(paths.styles)
-    .pipe($.plumber())
-    .pipe($.sourcemaps.init())
-      .pipe($.less()).on('error', function(err) {
-        console.warn(err.message);
+    _.forEach(required, function (req) {
+      if(!obj.has(m, req)) {
+        err('missing "'+req+'" property');
+      }
+    });
+
+    traverse(m.dependencies).forEach(function (node) {
+      if(this.isLeaf && !_.isArray(node) && !_.isArray(this.parent.node)) {
+        this.update([node]);
+      }
+    });
+
+    if(m.buildPaths.appendSrc) {
+      _.forOwn(m.dependencies, function (dependency, name) {
+        if(m.buildPaths.appendSrc.indexOf(name) >= 0) {
+          traverse(m.dependencies[name]).forEach(function (node) {
+            if(this.isLeaf) {
+              this.update(m.buildPaths.src + node);
+            }
+          });
+        }
+      });
+    }
+
+    return m;
+  } else {
+    err();
+  }
+}
+
+var manifest = getManifest('./assets/manifest.json');
+
+var path = manifest.buildPaths;
+
+var bower = require('wiredep')({
+  exclude: obj.get(manifest, 'ignoreDependencies.bower')
+});
+
+var globs = (function buildGlobs() {
+  return {
+    scripts: (bower.js || [])
+      .concat(obj.get(manifest, 'dependencies.vendor.scripts', []))
+      .concat(obj.get(manifest, 'dependencies.theme.scripts', [])),
+    scriptsIgnored: _.reduce(obj.get(manifest, 'ignoreDependencies.bower', []), 
+      function (paths, depName) {
+        return paths.concat(obj.get(bower, 'packages.'+depName+'.main', []));
+      }, []),
+    styles: (bower.css || [])
+      .concat(obj.get(manifest, 'dependencies.vendor.styles', []))
+      .concat(obj.get(manifest, 'dependencies.theme.styles', [])),
+    editorStyle: obj.get(manifest, 'dependencies.theme.editorStyle', []),
+    fonts: mainBowerFiles({ filter: /\.(eot|svg|ttf|woff)$/i })
+      .concat(manifest.buildPaths.src + 'fonts/**/*.{eot,svg,ttf,woff}'),
+    images: path.src + 'images/**/*'
+  };
+})();
+
+var cssTasks = function(filename) {
+  return lazypipe()
+    .pipe($.plumber)
+    .pipe($.sourcemaps.init)
+      .pipe(function () {
+        return $.if('*.less', $.less().on('error', function(err) {
+          console.warn(err.message);
+        }));
       })
-      .pipe($.autoprefixer('last 2 versions', 'ie 8', 'ie 9', 'android 2.3', 'android 4', 'opera 12'))
-    .pipe($.minifyCss())
-    .pipe($.sourcemaps.write())
-    .pipe($.rename('main.css'))
-    .pipe(gulp.dest(build.dist + 'styles'));
+      .pipe(function () {
+        return $.if('*.scss', $.sass());
+      })
+      .pipe($.autoprefixer, 'last 2 versions', 'ie 8', 'ie 9', 'android 2.3', 'android 4', 'opera 12')
+      .pipe($.concat, filename)
+    .pipe($.sourcemaps.write, '.')
+    .pipe(gulp.dest, path.dist + 'styles')();
+};
+
+gulp.task('styles', ['styles:editorStyle'], function() {
+  return gulp.src(globs.styles)
+    .pipe(cssTasks('main.css'));
 });
 
 gulp.task('styles:editorStyle', function() {
-  return gulp.src(paths.editorStyle)
-    .pipe($.plumber())
-    .pipe($.less()).on('error', function(err) {
-      console.warn(err.message);
-    })
-    .pipe($.autoprefixer('last 2 versions', 'ie 9', 'android 2.3', 'android 4', 'opera 12'))
-    .pipe($.rename('editor-style.css'))
-    .pipe(gulp.dest(build.dist + 'styles'));
+  return gulp.src(globs.editorStyle)
+    .pipe(cssTasks('editor-style.css'));
 });
 
 gulp.task('jshint', function() {
-  return gulp.src(paths.jshint)
+  return gulp.src([
+    'bower.json', 'gulpfile.js'
+  ].concat(obj.get(manifest, 'dependencies.theme.scripts', [])))
     .pipe($.jshint())
     .pipe($.jshint.reporter('jshint-stylish'))
     .pipe($.jshint.reporter('fail'));
 });
 
-gulp.task('scripts', ['jshint'], function() {
-  return gulp.src(require('main-bower-files')().concat(paths.scripts))
-    .pipe($.filter('**/*.js'))
-    .pipe($.concat('scripts.js'))
-    .pipe($.uglify())
-    .pipe(gulp.dest(build.dist + 'scripts'));
+var jsTasks = function(filename) {
+  var fn = filename;
+  return lazypipe()
+    .pipe($.sourcemaps.init)
+    .pipe(function () {
+      return $.if(!!fn, $.concat(fn || 'all.js'));
+    })
+    .pipe($.uglify)
+    .pipe($.sourcemaps.write, '.')
+    .pipe(gulp.dest, path.dist + 'scripts')();
+};
+
+gulp.task('scripts', ['jshint', 'scripts:ignored'], function() {
+  return gulp.src(globs.scripts)
+    .pipe(jsTasks('app.js'));
 });
 
-gulp.task('copy:fonts', function() {
-  return gulp.src(require('main-bower-files')().concat(build.src + 'fonts/**/*'))
-    .pipe($.filter('**/*.{eot,svg,ttf,woff}'))
-    .pipe(gulp.dest(build.dist + 'fonts'));
+gulp.task('scripts:ignored', function () {
+  return gulp.src(globs.scriptsIgnored)
+    .pipe(jsTasks());
 });
 
-gulp.task('copy:jquery', function() {
-  return gulp.src(['bower_components/jquery/dist/jquery.js'])
-    .pipe($.rename('jquery.js'))
-    .pipe(gulp.dest(build.dist + 'scripts'));
-});
-
-gulp.task('copy:modernizr', function() {
-  return gulp.src(['bower_components/modernizr/modernizr.js'])
-    .pipe($.uglify())
-    .pipe($.rename('modernizr.js'))
-    .pipe(gulp.dest(build.dist + 'scripts'));
+gulp.task('fonts', function() {
+  return gulp.src(globs.fonts)
+    .pipe($.flatten())
+    .pipe(gulp.dest(path.dist + 'fonts'));
 });
 
 gulp.task('images', function() {
-  return gulp.src(build.src + 'src/images/**/*')
+  return gulp.src(globs.images)
     .pipe($.imagemin({
       progressive: true,
       interlaced: true
     }))
-    .pipe(gulp.dest(build.dist + 'images'));
+    .pipe(gulp.dest(path.dist + 'images'));
 });
 
 gulp.task('version', function() {
-  return gulp.src([build.dist + 'styles/main.css', build.dist + 'scripts/scripts.js'], { base: build.dist })
-    .pipe(gulp.dest(build.dist))
+  return gulp.src([path.dist + '**/*.{js,css}'], { base: path.dist })
+    .pipe(gulp.dest(path.dist))
     .pipe($.rev())
-    .pipe(gulp.dest(build.dist))
+    .pipe(gulp.dest(path.dist))
     .pipe($.rev.manifest())
-    .pipe(gulp.dest(build.dist));
+    .pipe(gulp.dest(path.dist));
 });
 
-gulp.task('clean', function() {
-  return gulp.src(build.dist, { read: false })
-    .pipe($.clean());
-});
+gulp.task('clean', require('del').bind(null, [path.dist]));
 
 gulp.task('watch', function() {
   $.livereload.listen();
-  gulp.watch([build.src + 'styles/**/*', 'bower.json'], ['styles']);
-  gulp.watch([build.src + 'scripts/**/*', 'bower.json'], ['jshint', 'scripts']);
+  gulp.watch([path.src + 'styles/**/*', 'bower.json'], ['styles']);
+  gulp.watch([path.src + 'scripts/**/*', 'bower.json'], ['jshint', 'scripts']);
   gulp.watch('**/*.php').on('change', function(file) {
     $.livereload.changed(file.path);
   });
 });
 
-gulp.task('build', ['styles', 'styles:editorStyle', 'scripts', 'copy:fonts', 'copy:jquery', 'copy:modernizr', 'images'], function () {
+gulp.task('build', ['styles', 'scripts', 'fonts', 'images'], function () {
   gulp.start('version');
 });
 

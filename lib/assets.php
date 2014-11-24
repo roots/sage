@@ -8,7 +8,7 @@
  * Enqueue scripts in the following order:
  * 1. jquery-1.11.1.js via Google CDN
  * 2. /theme/dist/scripts/modernizr.js
- * 3. /theme/dist/scripts/scripts.js
+ * 3. /theme/dist/scripts/app.js
  *
  * Google Analytics is loaded after enqueued scripts if:
  * - An ID has been defined in config.php
@@ -54,7 +54,7 @@ function roots_assets() {
 
   wp_enqueue_script(roots_asset_path('scripts/modernizr.js'), array(), null, true);
   wp_enqueue_script('jquery');
-  wp_enqueue_script('roots_js', roots_asset_path('scripts/scripts.js'), array(), null, true);
+  wp_enqueue_script('roots_js', roots_asset_path('scripts/app.js'), array(), null, true);
 }
 add_action('wp_enqueue_scripts', 'roots_assets', 100);
 

@@ -74,9 +74,8 @@ When completed, you'll be able to run the various Gulp commands provided from th
 
 ### Available Gulp commands
 
-* `gulp` — Compile LESS to CSS, concatenate and validate JS
+* `gulp` — Compile and optimize the files in your assets directory
 * `gulp watch` — Compile assets when file changes are made
-* `gulp images` — Lossless compression of PNG, JPEG, GIF and SVG images
 * `gulp --tasks` - Lists all the available tasks and what they do
 
 ## Documentation
