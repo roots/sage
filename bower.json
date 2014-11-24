@@ -20,6 +20,7 @@
   "overrides": {
     "bootstrap": {
       "main": [
+        "./less/bootstrap.less",
         "./js/transition.js",
         "./js/alert.js",
         "./js/button.js",

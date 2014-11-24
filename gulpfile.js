@@ -102,7 +102,7 @@ var cssTasks = function(filename) {
     .pipe(gulp.dest, path.dist + 'styles')();
 };
 
-gulp.task('styles', ['styles:editorStyle'], function() {
+gulp.task('styles', ['wiredep', 'styles:editorStyle'], function() {
   return gulp.src(globs.styles)
     .pipe(cssTasks('main.css'));
 });
@@ -173,6 +173,7 @@ gulp.task('watch', function() {
   $.livereload.listen();
   gulp.watch([path.src + 'styles/**/*', 'bower.json'], ['styles']);
   gulp.watch([path.src + 'scripts/**/*', 'bower.json'], ['jshint', 'scripts']);
+  gulp.watch(['bower.json'], ['wiredep']);
   gulp.watch('**/*.php').on('change', function(file) {
     $.livereload.changed(file.path);
   });
@@ -180,6 +181,13 @@ gulp.task('watch', function() {
 
 gulp.task('build', ['styles', 'scripts', 'fonts', 'images'], function () {
   gulp.start('version');
+});
+
+gulp.task('wiredep', function () {
+  var wiredep = require('wiredep').stream;
+  gulp.src(obj.get(manifest, 'dependencies.theme.styles'))
+    .pipe(wiredep())
+    .pipe(gulp.dest(manifest.buildPaths.src + 'styles/'));
 });
 
 gulp.task('default', ['clean'], function () {
