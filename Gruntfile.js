@@ -1,4 +1,7 @@
+/* jshint node:true */
+
 'use strict';
+
 module.exports = function(grunt) {
   // Load all tasks
   require('load-grunt-tasks')(grunt);
@@ -63,12 +66,12 @@ module.exports = function(grunt) {
     },
     concat: {
       options: {
-        separator: ';',
+        separator: ';'
       },
       dist: {
         src: [jsFileList],
-        dest: 'assets/js/scripts.js',
-      },
+        dest: 'assets/js/scripts.js'
+      }
     },
     uglify: {
       dist: {
