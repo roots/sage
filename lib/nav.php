@@ -86,10 +86,6 @@ function roots_nav_menu_args($args = '') {
     $roots_nav_menu_args['depth'] = 2;
   }
 
-  if (!$args['walker']) {
-    $roots_nav_menu_args['walker'] = new Roots_Nav_Walker();
-  }
-
   return array_merge($args, $roots_nav_menu_args);
 }
 add_filter('wp_nav_menu_args', 'roots_nav_menu_args');
