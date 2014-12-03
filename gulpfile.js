@@ -1,6 +1,8 @@
 /*global $:true*/
 var $              = require('gulp-load-plugins')();
 var _              = require('lodash');
+var autoprefixer   = require('autoprefixer-core');
+var csswring       = require('csswring');
 var gulp           = require('gulp');
 var lazypipe       = require('lazypipe');
 var mainBowerFiles = require('main-bower-files');
@@ -12,6 +14,11 @@ var path = manifest.buildPaths;
 var globs = manifest.globs;
 
 var cssTasks = function(filename) {
+  var processors = [
+    autoprefixer({browsers: ['last 2 versions', 'ie 8', 'ie 9', 'android 2.3', 'android 4', 'opera 12']}),
+    csswring
+  ];
+
   return lazypipe()
     .pipe($.plumber)
     .pipe($.sourcemaps.init)
@@ -23,8 +30,8 @@ var cssTasks = function(filename) {
       .pipe(function () {
         return $.if('*.scss', $.sass());
       })
-      .pipe($.autoprefixer, 'last 2 versions', 'ie 8', 'ie 9', 'android 2.3', 'android 4', 'opera 12')
       .pipe($.concat, filename)
+    .pipe($.postcss, processors)
     .pipe($.sourcemaps.write, '.')
     .pipe(gulp.dest, path.dist + 'styles')();
 };
