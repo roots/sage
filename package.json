@@ -47,5 +47,9 @@
     "object-path": "^0.8.0",
     "traverse": "^0.6.6",
     "wiredep": "^2.1.0"
+  },
+  "dependencies": {
+    "csswring": "^2.0.0",
+    "gulp-postcss": "^3.0.0"
   }
 }
