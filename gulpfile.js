@@ -12,6 +12,9 @@ var path = manifest.buildPaths;
 var globs = manifest.globs;
 
 var cssTasks = function(filename) {
+  var processors = [
+    require('csswring')
+  ];
   return lazypipe()
     .pipe($.plumber)
     .pipe($.sourcemaps.init)
@@ -25,6 +28,7 @@ var cssTasks = function(filename) {
       })
       .pipe($.autoprefixer, 'last 2 versions', 'ie 8', 'ie 9', 'android 2.3', 'android 4', 'opera 12')
       .pipe($.concat, filename)
+    .pipe($.postcss, processors)
     .pipe($.sourcemaps.write, '.')
     .pipe(gulp.dest, path.dist + 'styles')();
 };
