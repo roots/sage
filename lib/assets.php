@@ -52,7 +52,7 @@ function roots_assets() {
     wp_enqueue_script('comment-reply');
   }
 
-  wp_enqueue_script(roots_asset_path('scripts/modernizr.js'), array(), null, true);
+  wp_enqueue_script('modernizr', roots_asset_path('scripts/modernizr.js'), array(), null, true);
   wp_enqueue_script('jquery');
   wp_enqueue_script('roots_js', roots_asset_path('scripts/app.js'), array(), null, true);
 }
