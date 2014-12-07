@@ -22,12 +22,12 @@ var cssTasks = function(filename) {
   return lazypipe()
     .pipe($.plumber)
     .pipe($.sourcemaps.init)
-      .pipe(function () {
+      .pipe(function() {
         return $.if('*.less', $.less().on('error', function(err) {
           console.warn(err.message);
         }));
       })
-      .pipe(function () {
+      .pipe(function() {
         return $.if('*.scss', $.sass());
       })
       .pipe($.concat, filename)
@@ -59,7 +59,7 @@ var jsTasks = function(filename) {
   var fn = filename;
   return lazypipe()
     .pipe($.sourcemaps.init)
-    .pipe(function () {
+    .pipe(function() {
       return $.if(!!fn, $.concat(fn || 'all.js'));
     })
     .pipe($.uglify)
@@ -72,7 +72,7 @@ gulp.task('scripts', ['jshint', 'scripts:ignored'], function() {
     .pipe(jsTasks('app.js'));
 });
 
-gulp.task('scripts:ignored', function () {
+gulp.task('scripts:ignored', function() {
   return gulp.src(globs.scriptsIgnored)
     .pipe(jsTasks());
 });
@@ -113,17 +113,17 @@ gulp.task('watch', function() {
   });
 });
 
-gulp.task('build', ['styles', 'scripts', 'fonts', 'images'], function () {
+gulp.task('build', ['styles', 'scripts', 'fonts', 'images'], function() {
   gulp.start('version');
 });
 
-gulp.task('wiredep', function () {
+gulp.task('wiredep', function() {
   var wiredep = require('wiredep').stream;
   gulp.src(obj.get(manifest, 'dependencies.theme.styles'))
     .pipe(wiredep())
     .pipe(gulp.dest(manifest.buildPaths.src + 'styles/'));
 });
 
-gulp.task('default', ['clean'], function () {
+gulp.task('default', ['clean'], function() {
   gulp.start('build');
 });
