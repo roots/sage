@@ -24,7 +24,11 @@ function roots_body_class($classes) {
     if (!in_array(basename(get_permalink()), $classes)) {
       $classes[] = basename(get_permalink());
     }
+    //Clean Up Page Template Class
+    $remove = array("page-template-", "-php"); 
+    $classes = str_replace($remove, "", $classes);
   }
   return $classes;
 }
 add_filter('body_class', 'roots_body_class');
+
