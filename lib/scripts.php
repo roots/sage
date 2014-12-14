@@ -99,6 +99,6 @@ function roots_google_analytics() { ?>
 </script>
 
 <?php }
-if (GOOGLE_ANALYTICS_ID && (WP_ENV !== 'production' || !current_user_can('manage_options'))) {
+if (GOOGLE_ANALYTICS_ID && (WP_ENV === 'production' || current_user_can('manage_options'))) {
   add_action('wp_footer', 'roots_google_analytics', 20);
 }
