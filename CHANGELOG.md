@@ -1,3 +1,11 @@
+### 7.0.3: December 18th, 2014
+* Use `get_the_archive_title`
+* Remove `wp_title`, add title-tag theme support
+* Remove `Roots_Nav_Walker` as default for all menus
+* Update to Bootstrap 3.3.1
+* Add some base comment styling
+* Make search tearm `required` in search form
+
 ### 7.0.2: October 24th, 2014
 * Simplify comments, use core comment form and list
 * Remove HTML5 shiv from Modernizr build
