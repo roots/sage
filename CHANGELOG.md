@@ -4,7 +4,7 @@
 * Remove `Roots_Nav_Walker` as default for all menus
 * Update to Bootstrap 3.3.1
 * Add some base comment styling
-* Make search tearm `required` in search form
+* Make search term `required` in search form
 
 ### 7.0.2: October 24th, 2014
 * Simplify comments, use core comment form and list
