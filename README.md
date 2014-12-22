@@ -1,4 +1,6 @@
 # [Roots Starter Theme](http://roots.io/)
+
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/roots/roots?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![devDependency Status](https://david-dm.org/roots/roots/dev-status.svg)](https://david-dm.org/roots/roots#info=devDependencies)
 
 Roots is a WordPress starter theme based on [HTML5 Boilerplate](http://html5boilerplate.com/) & [Bootstrap](http://getbootstrap.com/) that will help you make better themes.
