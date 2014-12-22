@@ -16,6 +16,11 @@ if ( ! class_exists( 'Shoestrap_Color' ) ) {
 
 			// Remove any trailing '#' symbols from the color value
 			$color = str_replace( '#', '', $color );
+			
+			// Check if this is a valid hex color
+			if ( empty( $color ) || ctype_xdigit( $color ) ) {
+				return '#ffffff';
+			}
 
 			// If there are more than 6 characters, only keep the first 6.
 			if ( strlen( $color ) > 6 ) {
