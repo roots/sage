@@ -1070,7 +1070,7 @@ if ( ! class_exists( 'SS_Framework_Bootstrap' ) ) {
 		/**
 		 * Build the social links for the navbar
 		 */
-		public function navbar_social_links() {
+		public static function navbar_social_links() {
 			global $ss_social;
 
 			// Get all the social networks the user is using
