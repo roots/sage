@@ -12,7 +12,7 @@ if ( ! class_exists( 'Shoestrap_Color' ) ) {
 
 		public static function sanitize_hex( $color ) {
 			// Remove any spaces and special characters before and after the string
-			$color = trim( $color. ' \t\n\r\0\x0B' );
+			$color = trim( $color, ' \t\n\r\0\x0B' );
 
 			// Remove any trailing '#' symbols from the color value
 			$color = str_replace( '#', '', $color );
