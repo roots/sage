@@ -1,0 +1,11 @@
+sudo: false
+language: php
+php:
+- '5.5'
+- '5.4'
+before_install:
+  - npm install -g bower
+  - npm install
+script:
+  - npm run build
+  - npm run jshint
