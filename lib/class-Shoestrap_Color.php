@@ -18,7 +18,7 @@ if ( ! class_exists( 'Shoestrap_Color' ) ) {
 			$color = str_replace( '#', '', $color );
 			
 			// Check if this is a valid hex color
-			if ( empty( $color ) || ctype_xdigit( $color ) ) {
+			if ( empty( $color ) || ! ctype_xdigit( $color ) ) {
 				return '#ffffff';
 			}
 
