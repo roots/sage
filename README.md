@@ -2,12 +2,12 @@
 [![Build Status](https://travis-ci.org/roots/roots.svg)](https://travis-ci.org/roots/roots)
 [![devDependency Status](https://david-dm.org/roots/roots/dev-status.svg)](https://david-dm.org/roots/roots#info=devDependencies)
 
-Roots is a WordPress starter theme based on [HTML5 Boilerplate](http://html5boilerplate.com/) & [Bootstrap](http://getbootstrap.com/) that will help you make better themes.
+Roots is a WordPress starter theme based on [HTML5 Boilerplate](http://html5boilerplate.com/) that will help you make better themes.
 
 * Source: [https://github.com/roots/roots](https://github.com/roots/roots)
 * Homepage: [http://roots.io/](http://roots.io/)
 * Documentation: [http://roots.io/docs/](http://roots.io/docs/)
-* Twitter: [@rootswp](https://twitter.com/rootswp), [@retlehs](https://twitter.com/retlehs), [@swalkinshaw](https://twitter.com/swalkinshaw), [@Foxaii](https://twitter.com/Foxaii), [@c2foryou](https://twitter.com/c2foryou) [@austinpray](https://twitter.com/austinpray)
+* Twitter: [@rootswp](https://twitter.com/rootswp), [@retlehs](https://twitter.com/retlehs), [@swalkinshaw](https://twitter.com/swalkinshaw), [@Foxaii](https://twitter.com/Foxaii), [@c2foryou](https://twitter.com/c2foryou), [@austinpray](https://twitter.com/austinpray)
 * Newsletter: [Subscribe](http://roots.io/subscribe/)
 * Forum: [http://discourse.roots.io/](http://discourse.roots.io/)
 
@@ -32,12 +32,12 @@ Roots is a WordPress starter theme based on [HTML5 Boilerplate](http://html5boil
 #### Clean up WordPress
 Install the [Soil](https://github.com/roots/soil) plugin to enable additional features:
 
+* Cleaner output of `wp_head` and enqueued assets
 * Root relative URLs
 * Nice search (`/search/query/`)
-* Cleaner output of `wp_head` and enqueued assets markup
 
 #### Modernize your WordPress stack
-[Bedrock](https://github.com/roots/bedrock) gets you started with the best development tools, practices, and project structure.
+[Bedrock](https://github.com/roots/bedrock) gets you started with the best development tools, practices, and project structure:
 
 * Dependency management with Composer
 * Automated deployments with Capistrano
@@ -45,7 +45,7 @@ Install the [Soil](https://github.com/roots/soil) plugin to enable additional fe
 
 ## Installation
 
-Clone the git repo - `git clone git://github.com/roots/roots.git` - or [download it](https://github.com/roots/roots/zipball/master) and then rename the directory to the name of your theme or website.
+Clone the git repo - `git clone https://github.com/roots/roots.git` - or [download it](https://github.com/roots/roots/zipball/master) and then rename the directory to the name of your theme or website.
 
 If you don't use [Bedrock](https://github.com/roots/bedrock), you'll need to add the following to your `wp-config.php` on your development installation:
 
@@ -73,8 +73,8 @@ Roots uses [gulp](http://gulpjs.com/) as its build system.
 
 From the command line:
 
-1. Install [gulp](http://gulpjs.com) and [bower](http://bower.io) globally with `npm install -g gulp bower`.
-2. Navigate to the theme directory, then run `npm install`. 
+1. Install [gulp](http://gulpjs.com) and [Bower](http://bower.io) globally with `npm install -g gulp bower`
+2. Navigate to the theme directory, then run `npm install`
 
 You now have all the necessary dependencies to run the build process.
 
@@ -86,20 +86,16 @@ You now have all the necessary dependencies to run the build process.
 
 ## Documentation
 
-* [Roots 101](http://roots.io/roots-101/) — A guide to installing Roots, the files, and theme organization
-* [Theme Wrapper](http://roots.io/an-introduction-to-the-roots-theme-wrapper/) — Learn all about the theme wrapper
-* [Build Script](http://roots.io/using-gulp-for-wordpress-theme-development/) — A look into how Roots uses gulp
-* [Roots Sidebar](http://roots.io/the-roots-sidebar/) — Understand how to display or hide the sidebar in Roots
+Roots documentation is available at [http://roots.io/docs/](http://roots.io/docs/).
 
 ## Contributing
 
-Contributions are welcome from everyone. We have [contributing guidelines](CONTRIBUTING.md) to help you get started. You can help out by:
+Contributions are welcome from everyone. We have [contributing guidelines](CONTRIBUTING.md) to help you get started.
 
-* Reporting issues (please follow the [issue guidelines](https://github.com/necolas/issue-guidelines))
-* Fixing [issues](https://github.com/roots/roots/issues)
-* Suggesting new features
-* Answering questions on the [forum](http://discourse.roots.io/)
+## Community
 
-## Support
+Keep track of development and community news.
 
-Use the [Roots Discourse](http://discourse.roots.io/) to ask questions and get support.
+* Participate on the [Roots Discourse](http://discourse.roots.io/)
+* Follow [@rootswp on Twitter](https://twitter.com/rootswp)
+* Read and subscribe to the [Roots Blog](http://roots.io/blog/)
