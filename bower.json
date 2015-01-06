@@ -9,7 +9,7 @@
   "private": true,
   "dependencies": {
     "modernizr": "2.8.2",
-    "jquery": "1.11.1",
+    "jquery": "1.11.2",
     "bootstrap": "3.3.1"
   },
   "overrides": {

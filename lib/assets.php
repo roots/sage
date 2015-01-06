@@ -6,7 +6,7 @@
  * 1. /theme/dist/styles/main.css
  *
  * Enqueue scripts in the following order:
- * 1. jquery-1.11.1.js via Google CDN
+ * 1. jquery-1.11.2.js via Google CDN
  * 2. /theme/dist/scripts/modernizr.js
  * 3. /theme/dist/scripts/app.js
  *
@@ -44,7 +44,7 @@ function roots_assets() {
   if (!is_admin() && current_theme_supports('jquery-cdn')) {
     wp_deregister_script('jquery');
 
-    wp_register_script('jquery', '//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.js', array(), null, true);
+    wp_register_script('jquery', '//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.js', array(), null, true);
 
     add_filter('script_loader_src', 'roots_jquery_local_fallback', 10, 2);
   }
