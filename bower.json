@@ -7,11 +7,6 @@
   ],
   "license": "MIT",
   "private": true,
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "assets/vendor"
-  ],
   "dependencies": {
     "modernizr": "2.8.2",
     "jquery": "1.11.1",
