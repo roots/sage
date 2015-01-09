@@ -33,6 +33,27 @@
         "./fonts/glyphicons-halflings-regular.ttf",
         "./fonts/glyphicons-halflings-regular.woff"
       ]
+    },
+    "bootstrap-sass-official": {
+      "main": [
+        "./assets/stylesheets/_bootstrap.scss",
+        "./assets/javascripts/transition.js",
+        "./assets/javascripts/alert.js",
+        "./assets/javascripts/button.js",
+        "./assets/javascripts/carousel.js",
+        "./assets/javascripts/collapse.js",
+        "./assets/javascripts/dropdown.js",
+        "./assets/javascripts/modal.js",
+        "./assets/javascripts/tooltip.js",
+        "./assets/javascripts/popover.js",
+        "./assets/javascripts/scrollspy.js",
+        "./assets/javascripts/tab.js",
+        "./assets/javascripts/affix.js",
+        "./assets/fonts/glyphicons-halflings-regular.eot",
+        "./assets/fonts/glyphicons-halflings-regular.svg",
+        "./assets/fonts/glyphicons-halflings-regular.ttf",
+        "./assets/fonts/glyphicons-halflings-regular.woff"
+      ]
     }
   }
 }
