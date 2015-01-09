@@ -119,9 +119,9 @@ gulp.task('build', ['styles', 'scripts', 'fonts', 'images'], function() {
 
 gulp.task('wiredep', function() {
   var wiredep = require('wiredep').stream;
-  gulp.src(obj.get(manifest, 'dependencies.theme.styles'))
+  gulp.src(globs.styles)
     .pipe(wiredep())
-    .pipe(gulp.dest(manifest.buildPaths.src + 'styles/'));
+    .pipe(gulp.dest(path.dist + 'styles'));
 });
 
 gulp.task('default', ['clean'], function() {
