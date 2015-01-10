@@ -21,7 +21,6 @@ Sage is a WordPress starter theme based on [HTML5 Boilerplate](http://html5boile
   * An optimized Google Analytics snippet
 * [Bootstrap](http://getbootstrap.com/)
 * ARIA roles and microformats
-* [Theme activation](http://roots.io/roots-101/#theme-activation)
 * [Theme wrapper](http://roots.io/sage/getting-started/theme-wrapper/)
 * Cleaner HTML output of navigation menus
 * Posts use the [hNews](http://microformats.org/wiki/hnews) microformat
@@ -52,10 +51,6 @@ If you don't use [Bedrock](https://github.com/roots/bedrock), you'll need to add
 ```php
 define('WP_ENV', 'development');
 ```
-
-## Theme activation
-
-Reference the [theme activation](http://roots.io/roots-101/#theme-activation) documentation to understand everything that happens once you activate Sage.
 
 ## Configuration
 
