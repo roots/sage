@@ -65,15 +65,15 @@ Edit `lib/init.php` to setup navigation menus, post thumbnail sizes, post format
 
 ## Theme development
 
-Roots uses [gulp](http://gulpjs.com/) as its build system.
+Roots uses [gulp](http://gulpjs.com/) as its build system and [Bower](http://bower.io/) to manage front-end packages.
 
-### Install gulp
+### Install gulp and Bower
 
 **Unfamiliar with npm? Don't have node installed?** [Download and install node.js](http://nodejs.org/download/) before proceeding.
 
 From the command line:
 
-1. Install [gulp](http://gulpjs.com) and [Bower](http://bower.io) globally with `npm install -g gulp bower`
+1. Install [gulp](http://gulpjs.com) and [Bower](http://bower.io/) globally with `npm install -g gulp bower`
 2. Navigate to the theme directory, then run `npm install`
 
 You now have all the necessary dependencies to run the build process.
