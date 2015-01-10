@@ -15,7 +15,7 @@ function roots_theme_activation_options_init() {
 }
 add_action('admin_init', 'roots_theme_activation_options_init');
 
-function roots_activation_options_page_capability($capability) {
+function roots_activation_options_page_capability() {
   return 'edit_theme_options';
 }
 add_filter('option_page_capability_roots_activation_options', 'roots_activation_options_page_capability');
@@ -24,7 +24,7 @@ function roots_theme_activation_options_add_page() {
   $roots_activation_options = roots_get_theme_activation_options();
 
   if (!$roots_activation_options) {
-    $theme_page = add_theme_page(
+    add_theme_page(
       __('Theme Activation', 'roots'),
       __('Theme Activation', 'roots'),
       'edit_theme_options',
@@ -141,7 +141,7 @@ function roots_theme_activation_action() {
         'post_type' => 'page'
       );
 
-      $result = wp_insert_post($add_default_pages);
+      wp_insert_post($add_default_pages);
     }
 
     $home = get_page_by_title(__('Home', 'roots'));

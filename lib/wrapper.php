@@ -15,7 +15,13 @@ function roots_sidebar_path() {
 
 class Roots_Wrapping {
   // Stores the full path to the main template file
-  static $main_template;
+  public static $main_template;
+
+  // basename of template file
+  public $slug;
+
+  // array of templates
+  public $templates;
 
   // Stores the base name of the template file; e.g. 'page' for 'page.php' etc.
   static $base;
@@ -36,6 +42,11 @@ class Roots_Wrapping {
   }
 
   static function wrap($main) {
+    // Check for other filters returning null
+    if (!is_string($main)) {
+      return $main;
+    }
+
     self::$main_template = $main;
     self::$base = basename(self::$main_template, '.php');
 
