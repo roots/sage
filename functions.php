@@ -16,7 +16,6 @@ $sage_includes = array(
   'lib/sidebar.php',         // Sidebar class
   'lib/config.php',          // Configuration
   'lib/assets.php',          // Scripts and stylesheets
-  'lib/activation.php',      // Theme activation
   'lib/titles.php',          // Page titles
   'lib/nav.php',             // Custom nav modifications
   'lib/gallery.php',         // Custom [gallery] modifications
