@@ -2,18 +2,18 @@
 /**
  * Theme wrapper
  *
- * @link http://roots.io/an-introduction-to-the-roots-theme-wrapper/
+ * @link http://roots.io/getting-started/theme-wrapper/
  * @link http://scribu.net/wordpress/theme-wrappers.html
  */
-function roots_template_path() {
-  return Roots_Wrapping::$main_template;
+function sage_template_path() {
+  return Sage_Wrapping::$main_template;
 }
 
-function roots_sidebar_path() {
-  return new Roots_Wrapping('templates/sidebar.php');
+function sage_sidebar_path() {
+  return new Sage_Wrapping('templates/sidebar.php');
 }
 
-class Roots_Wrapping {
+class Sage_Wrapping {
   // Stores the full path to the main template file
   public static $main_template;
 
@@ -37,7 +37,7 @@ class Roots_Wrapping {
   }
 
   public function __toString() {
-    $this->templates = apply_filters('roots/wrap_' . $this->slug, $this->templates);
+    $this->templates = apply_filters('sage/wrap_' . $this->slug, $this->templates);
     return locate_template($this->templates);
   }
 
@@ -54,7 +54,7 @@ class Roots_Wrapping {
       self::$base = false;
     }
 
-    return new Roots_Wrapping();
+    return new Sage_Wrapping();
   }
 }
-add_filter('template_include', array('Roots_Wrapping', 'wrap'), 99);
+add_filter('template_include', array('Sage_Wrapping', 'wrap'), 99);

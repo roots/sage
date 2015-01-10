@@ -1,14 +1,14 @@
 {
-  "name": "roots",
-  "version": "7.0.3",
+  "name": "sage",
+  "version": "8.0.0",
   "author": "Ben Word <ben@benword.com>",
-  "homepage": "http://roots.io",
+  "homepage": "http://roots.io/sage/",
   "repository": {
     "type": "git",
-    "url": "git://github.com/roots/roots.git"
+    "url": "git://github.com/roots/sage.git"
   },
   "bugs": {
-    "url": "https://github.com/roots/roots/issues"
+    "url": "https://github.com/roots/sage/issues"
   },
   "licenses": [
     {
