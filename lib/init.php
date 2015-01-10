@@ -1,8 +1,11 @@
 <?php
+
+namespace Roots\Sage\Init;
+
 /**
  * Sage initial setup and constants
  */
-function sage_setup() {
+function setup() {
   // Make theme available for translation
   // Community translations can be found at https://github.com/roots/sage-translations
   load_theme_textdomain('sage', get_template_directory() . '/lang');
@@ -34,12 +37,12 @@ function sage_setup() {
   // Tell the TinyMCE editor to use a custom stylesheet
   add_editor_style('/dist/css/editor-style.css');
 }
-add_action('after_setup_theme', 'sage_setup');
+add_action('after_setup_theme', __NAMESPACE__ . '\\setup');
 
 /**
  * Register sidebars
  */
-function sage_widgets_init() {
+function widgets_init() {
   register_sidebar(array(
     'name'          => __('Primary', 'sage'),
     'id'            => 'sidebar-primary',
@@ -58,4 +61,4 @@ function sage_widgets_init() {
     'after_title'   => '</h3>',
   ));
 }
-add_action('widgets_init', 'sage_widgets_init');
+add_action('widgets_init', __NAMESPACE__ . '\\widgets_init');

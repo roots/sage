@@ -1,4 +1,7 @@
 <?php
+
+namespace Roots\Sage\Nav;
+
 /**
  * Cleaner walker for wp_nav_menu()
  *
@@ -10,7 +13,7 @@
  *   <li class="menu-home"><a href="/">Home</a></li>
  *   <li class="menu-sample-page"><a href="/sample-page/">Sample Page</a></li>
  */
-class Sage_Nav_Walker extends Walker_Nav_Menu {
+class Sage_Nav_Walker extends \Walker_Nav_Menu {
   function check_current($classes) {
     return preg_match('/(current[-_])|active|dropdown/', $classes);
   }
@@ -53,7 +56,7 @@ class Sage_Nav_Walker extends Walker_Nav_Menu {
  * Remove the id="" on nav menu items
  * Return 'menu-slug' for nav menu classes
  */
-function sage_nav_menu_css_class($classes, $item) {
+function nav_menu_css_class($classes, $item) {
   $slug = sanitize_title($item->title);
   $classes = preg_replace('/(current(-menu-|[-_]page[-_])(item|parent|ancestor))/', 'active', $classes);
   $classes = preg_replace('/^((menu|page)[-_\w+]+)+/', '', $classes);
@@ -62,9 +65,9 @@ function sage_nav_menu_css_class($classes, $item) {
 
   $classes = array_unique($classes);
 
-  return array_filter($classes, 'is_element_empty');
+  return array_filter($classes, 'Roots\\Sage\\Utils\\is_element_empty');
 }
-add_filter('nav_menu_css_class', 'sage_nav_menu_css_class', 10, 2);
+add_filter('nav_menu_css_class', __NAMESPACE__ . '\\nav_menu_css_class', 10, 2);
 add_filter('nav_menu_item_id', '__return_null');
 
 /**
@@ -73,19 +76,19 @@ add_filter('nav_menu_item_id', '__return_null');
  * Remove the container
  * Use Sage_Nav_Walker() by default
  */
-function sage_nav_menu_args($args = '') {
-  $sage_nav_menu_args = array();
+function nav_menu_args($args = '') {
+  $nav_menu_args = array();
 
-  $sage_nav_menu_args['container'] = false;
+  $nav_menu_args['container'] = false;
 
   if (!$args['items_wrap']) {
-    $sage_nav_menu_args['items_wrap'] = '<ul class="%2$s">%3$s</ul>';
+    $nav_menu_args['items_wrap'] = '<ul class="%2$s">%3$s</ul>';
   }
 
   if (!$args['depth']) {
-    $sage_nav_menu_args['depth'] = 2;
+    $nav_menu_args['depth'] = 2;
   }
 
-  return array_merge($args, $sage_nav_menu_args);
+  return array_merge($args, $nav_menu_args);
 }
-add_filter('wp_nav_menu_args', 'sage_nav_menu_args');
+add_filter('wp_nav_menu_args', __NAMESPACE__ . '\\nav_menu_args');

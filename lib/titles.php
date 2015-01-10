@@ -1,8 +1,11 @@
 <?php
+
+namespace Roots\Sage\Titles;
+
 /**
  * Page titles
  */
-function sage_title() {
+function title() {
   if (is_home()) {
     if (get_option('page_for_posts', true)) {
       return get_the_title(get_option('page_for_posts', true));

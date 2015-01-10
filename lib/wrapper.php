@@ -1,15 +1,19 @@
 <?php
+
+namespace Roots\Sage\Wrapper;
+
 /**
  * Theme wrapper
  *
  * @link http://roots.io/getting-started/theme-wrapper/
  * @link http://scribu.net/wordpress/theme-wrappers.html
  */
-function sage_template_path() {
+
+function template_path() {
   return Sage_Wrapping::$main_template;
 }
 
-function sage_sidebar_path() {
+function sidebar_path() {
   return new Sage_Wrapping('templates/sidebar.php');
 }
 
@@ -57,4 +61,4 @@ class Sage_Wrapping {
     return new Sage_Wrapping();
   }
 }
-add_filter('template_include', array('Sage_Wrapping', 'wrap'), 99);
+add_filter('template_include', array(__NAMESPACE__ . '\\Sage_Wrapping', 'wrap'), 99);

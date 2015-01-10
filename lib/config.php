@@ -1,4 +1,8 @@
 <?php
+
+namespace Roots\Sage\Config;
+use Roots\Sage\Sidebar;
+
 /**
  * Enable theme features
  */
@@ -20,24 +24,24 @@ if (!defined('WP_ENV')) {
 /**
  * Add body class if sidebar is active
  */
-function sage_sidebar_body_class($classes) {
-  if (sage_display_sidebar()) {
+function sidebar_body_class($classes) {
+  if (display_sidebar()) {
     $classes[] = 'sidebar-primary';
   }
   return $classes;
 }
-add_filter('body_class', 'sage_sidebar_body_class');
+add_filter('body_class', __NAMESPACE__ . '\\sidebar_body_class');
 
 /**
  * Define which pages shouldn't have the sidebar
  *
  * See lib/sidebar.php for more details
  */
-function sage_display_sidebar() {
+function display_sidebar() {
   static $display;
 
   if (!isset($display)) {
-    $sidebar_config = new Sage_Sidebar(
+    $sidebar_config = new Sidebar\Sage_Sidebar(
       /**
        * Conditional tag checks (http://codex.wordpress.org/Conditional_Tags)
        * Any of these conditional tags that return true won't show the sidebar
