@@ -1,3 +1,15 @@
+### 8.0.0: TBD
+* Change theme name from Roots to Sage
+* Add namespace
+* Switch from Grunt to gulp, new workflow
+* Use wiredep for Sass and Less injection
+* Implement JSON file based asset pipeline
+* Re-organize asset file structure
+* Remove theme activation, move to [wp-cli-theme-activation](https://github.com/roots/wp-cli-theme-activation)
+* Add Travis CI
+* Update to jQuery 1.11.2
+* Update sidebar to fix default template check
+
 ### 7.0.3: December 18th, 2014
 * Use `get_the_archive_title`
 * Remove `wp_title`, add title-tag theme support
