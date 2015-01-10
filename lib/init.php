@@ -1,11 +1,14 @@
 <?php
+
+namespace Roots\Sage\Init;
+
 /**
- * Roots initial setup and constants
+ * Sage initial setup and constants
  */
-function roots_setup() {
+function setup() {
   // Make theme available for translation
-  // Community translations can be found at https://github.com/roots/roots-translations
-  load_theme_textdomain('roots', get_template_directory() . '/lang');
+  // Community translations can be found at https://github.com/roots/sage-translations
+  load_theme_textdomain('sage', get_template_directory() . '/lang');
 
   // Enable plugins to manage the document title
   // http://codex.wordpress.org/Function_Reference/add_theme_support#Title_Tag
@@ -14,7 +17,7 @@ function roots_setup() {
   // Register wp_nav_menu() menus
   // http://codex.wordpress.org/Function_Reference/register_nav_menus
   register_nav_menus(array(
-    'primary_navigation' => __('Primary Navigation', 'roots')
+    'primary_navigation' => __('Primary Navigation', 'sage')
   ));
 
   // Add post thumbnails
@@ -32,16 +35,16 @@ function roots_setup() {
   add_theme_support('html5', array('caption', 'comment-form', 'comment-list'));
 
   // Tell the TinyMCE editor to use a custom stylesheet
-  add_editor_style('/assets/css/editor-style.css');
+  add_editor_style('/dist/css/editor-style.css');
 }
-add_action('after_setup_theme', 'roots_setup');
+add_action('after_setup_theme', __NAMESPACE__ . '\\setup');
 
 /**
  * Register sidebars
  */
-function roots_widgets_init() {
+function widgets_init() {
   register_sidebar(array(
-    'name'          => __('Primary', 'roots'),
+    'name'          => __('Primary', 'sage'),
     'id'            => 'sidebar-primary',
     'before_widget' => '<section class="widget %1$s %2$s">',
     'after_widget'  => '</section>',
@@ -50,7 +53,7 @@ function roots_widgets_init() {
   ));
 
   register_sidebar(array(
-    'name'          => __('Footer', 'roots'),
+    'name'          => __('Footer', 'sage'),
     'id'            => 'sidebar-footer',
     'before_widget' => '<section class="widget %1$s %2$s">',
     'after_widget'  => '</section>',
@@ -58,4 +61,4 @@ function roots_widgets_init() {
     'after_title'   => '</h3>',
   ));
 }
-add_action('widgets_init', 'roots_widgets_init');
+add_action('widgets_init', __NAMESPACE__ . '\\widgets_init');

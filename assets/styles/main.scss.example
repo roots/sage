@@ -1,0 +1,12 @@
+// How to get started using Bootstrap Sass:
+//
+// 1. Run `bower install bootstrap-sass-official --save`
+// 2. Rename this file to `main.scss` and remove `main.less`
+// 3. Update the `assets/manifest.json` styles dependenies to change `main.less` to `main.scss`
+//
+// Feel free to remove this file if you're using LESS
+
+
+// bower:sass
+@import "../../bower_components/bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
+// endbower

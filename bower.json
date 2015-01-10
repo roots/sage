@@ -1,21 +1,59 @@
 {
-  "name": "roots",
-  "version": "7.0.3",
-  "homepage": "http://roots.io",
+  "name": "sage",
+  "version": "8.0.0",
+  "homepage": "http://roots.io/sage/",
   "authors": [
     "Ben Word <ben@benword.com>"
   ],
   "license": "MIT",
   "private": true,
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "assets/vendor"
-  ],
   "dependencies": {
     "modernizr": "2.8.2",
-    "jquery": "1.11.1",
-    "bootstrap": "3.3.1",
-    "respond": "1.4.2"
+    "jquery": "1.11.2",
+    "bootstrap": "3.3.1"
+  },
+  "overrides": {
+    "bootstrap": {
+      "main": [
+        "./less/bootstrap.less",
+        "./js/transition.js",
+        "./js/alert.js",
+        "./js/button.js",
+        "./js/carousel.js",
+        "./js/collapse.js",
+        "./js/dropdown.js",
+        "./js/modal.js",
+        "./js/tooltip.js",
+        "./js/popover.js",
+        "./js/scrollspy.js",
+        "./js/tab.js",
+        "./js/affix.js",
+        "./fonts/glyphicons-halflings-regular.eot",
+        "./fonts/glyphicons-halflings-regular.svg",
+        "./fonts/glyphicons-halflings-regular.ttf",
+        "./fonts/glyphicons-halflings-regular.woff"
+      ]
+    },
+    "bootstrap-sass-official": {
+      "main": [
+        "./assets/stylesheets/_bootstrap.scss",
+        "./assets/javascripts/transition.js",
+        "./assets/javascripts/alert.js",
+        "./assets/javascripts/button.js",
+        "./assets/javascripts/carousel.js",
+        "./assets/javascripts/collapse.js",
+        "./assets/javascripts/dropdown.js",
+        "./assets/javascripts/modal.js",
+        "./assets/javascripts/tooltip.js",
+        "./assets/javascripts/popover.js",
+        "./assets/javascripts/scrollspy.js",
+        "./assets/javascripts/tab.js",
+        "./assets/javascripts/affix.js",
+        "./assets/fonts/glyphicons-halflings-regular.eot",
+        "./assets/fonts/glyphicons-halflings-regular.svg",
+        "./assets/fonts/glyphicons-halflings-regular.ttf",
+        "./assets/fonts/glyphicons-halflings-regular.woff"
+      ]
+    }
   }
 }

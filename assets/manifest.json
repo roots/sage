@@ -1,0 +1,22 @@
+{
+  "dependencies": {
+    "theme": {
+      "scripts": [
+        "scripts/**/*",
+        "scripts/main.js"
+      ],
+      "styles": "styles/main.less",
+      "editorStyle": "styles/editor-style.less"
+    },
+    "vendor": {
+      "scripts": [],
+      "styles": []
+    }
+  },
+  "ignoreDependencies": {
+    "bower": [
+      "jquery",
+      "modernizr"
+    ]
+  }
+}
