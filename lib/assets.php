@@ -14,7 +14,7 @@
  * - An ID has been defined in config.php
  * - You're not logged in as an administrator
  */
-function roots_asset_path($filename) {
+function sage_asset_path($filename) {
   if (WP_ENV === 'development') {
     return get_template_directory_uri() . '/dist/' . $filename;
   }
@@ -32,8 +32,8 @@ function roots_asset_path($filename) {
   }
 }
 
-function roots_assets() {
-  wp_enqueue_style('roots_css', roots_asset_path('styles/main.css'), false, null);
+function sage_assets() {
+  wp_enqueue_style('sage_css', sage_asset_path('styles/main.css'), false, null);
 
   /**
    * Grab Google CDN's latest jQuery with a protocol relative URL; fallback to local if offline
@@ -46,21 +46,21 @@ function roots_assets() {
 
     wp_register_script('jquery', '//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.js', array(), null, true);
 
-    add_filter('script_loader_src', 'roots_jquery_local_fallback', 10, 2);
+    add_filter('script_loader_src', 'sage_jquery_local_fallback', 10, 2);
   }
 
   if (is_single() && comments_open() && get_option('thread_comments')) {
     wp_enqueue_script('comment-reply');
   }
 
-  wp_enqueue_script('modernizr', roots_asset_path('scripts/modernizr.js'), array(), null, true);
+  wp_enqueue_script('modernizr', sage_asset_path('scripts/modernizr.js'), array(), null, true);
   wp_enqueue_script('jquery');
-  wp_enqueue_script('roots_js', roots_asset_path('scripts/app.js'), array(), null, true);
+  wp_enqueue_script('sage_js', sage_asset_path('scripts/app.js'), array(), null, true);
 }
-add_action('wp_enqueue_scripts', 'roots_assets', 100);
+add_action('wp_enqueue_scripts', 'sage_assets', 100);
 
 // http://wordpress.stackexchange.com/a/12450
-function roots_jquery_local_fallback($src, $handle = null) {
+function sage_jquery_local_fallback($src, $handle = null) {
   static $add_jquery_fallback = false;
 
   if ($add_jquery_fallback) {
@@ -74,14 +74,14 @@ function roots_jquery_local_fallback($src, $handle = null) {
 
   return $src;
 }
-add_action('wp_head', 'roots_jquery_local_fallback');
+add_action('wp_head', 'sage_jquery_local_fallback');
 
 /**
  * Google Analytics snippet from HTML5 Boilerplate
  *
  * Cookie domain is 'auto' configured. See: http://goo.gl/VUCHKM
  */
-function roots_google_analytics() { ?>
+function sage_google_analytics() { ?>
 <script>
   <?php if (WP_ENV === 'production') : ?>
     (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
@@ -99,5 +99,5 @@ function roots_google_analytics() { ?>
 
 <?php }
 if (GOOGLE_ANALYTICS_ID && (WP_ENV !== 'production' || !current_user_can('manage_options'))) {
-  add_action('wp_footer', 'roots_google_analytics', 20);
+  add_action('wp_footer', 'sage_google_analytics', 20);
 }

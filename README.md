@@ -1,12 +1,12 @@
-# [Roots Starter Theme](http://roots.io/)
+# [Sage Starter Theme](http://roots.io/sage/)
 [![Build Status](https://travis-ci.org/roots/roots.svg)](https://travis-ci.org/roots/roots)
 [![devDependency Status](https://david-dm.org/roots/roots/dev-status.svg)](https://david-dm.org/roots/roots#info=devDependencies)
 
-Roots is a WordPress starter theme based on [HTML5 Boilerplate](http://html5boilerplate.com/) that will help you make better themes.
+Sage is a WordPress starter theme based on [HTML5 Boilerplate](http://html5boilerplate.com/) that will help you make better themes.
 
-* Source: [https://github.com/roots/roots](https://github.com/roots/roots)
-* Homepage: [http://roots.io/](http://roots.io/)
-* Documentation: [http://roots.io/docs/](http://roots.io/docs/)
+* Source: [https://github.com/roots/sage](https://github.com/roots/sage)
+* Homepage: [http://roots.io/sage/](http://roots.io/sage/)
+* Documentation: [http://roots.io/sage/getting-started/](http://roots.io/sage/getting-started/)
 * Twitter: [@rootswp](https://twitter.com/rootswp), [@retlehs](https://twitter.com/retlehs), [@swalkinshaw](https://twitter.com/swalkinshaw), [@Foxaii](https://twitter.com/Foxaii), [@c2foryou](https://twitter.com/c2foryou), [@austinpray](https://twitter.com/austinpray)
 * Newsletter: [Subscribe](http://roots.io/subscribe/)
 * Forum: [http://discourse.roots.io/](http://discourse.roots.io/)
@@ -22,12 +22,12 @@ Roots is a WordPress starter theme based on [HTML5 Boilerplate](http://html5boil
 * [Bootstrap](http://getbootstrap.com/)
 * ARIA roles and microformats
 * [Theme activation](http://roots.io/roots-101/#theme-activation)
-* [Theme wrapper](http://roots.io/an-introduction-to-the-roots-theme-wrapper/)
+* [Theme wrapper](http://roots.io/sage/getting-started/theme-wrapper/)
 * Cleaner HTML output of navigation menus
 * Posts use the [hNews](http://microformats.org/wiki/hnews) microformat
-* [Multilingual ready](http://roots.io/wpml/) and over 30 available [community translations](https://github.com/roots/roots-translations)
+* [Multilingual ready](http://roots.io/wpml/) and over 30 available [community translations](https://github.com/roots/sage-translations)
 
-### Go further with Roots
+### Go further with Sage
 
 #### Clean up WordPress
 Install the [Soil](https://github.com/roots/soil) plugin to enable additional features:
@@ -45,7 +45,7 @@ Install the [Soil](https://github.com/roots/soil) plugin to enable additional fe
 
 ## Installation
 
-Clone the git repo - `git clone https://github.com/roots/roots.git` - or [download it](https://github.com/roots/roots/zipball/master) and then rename the directory to the name of your theme or website.
+Clone the git repo - `git clone https://github.com/roots/sage.git` and then rename the directory to the name of your theme or website.
 
 If you don't use [Bedrock](https://github.com/roots/bedrock), you'll need to add the following to your `wp-config.php` on your development installation:
 
@@ -55,7 +55,7 @@ define('WP_ENV', 'development');
 
 ## Theme activation
 
-Reference the [theme activation](http://roots.io/roots-101/#theme-activation) documentation to understand everything that happens once you activate Roots.
+Reference the [theme activation](http://roots.io/roots-101/#theme-activation) documentation to understand everything that happens once you activate Sage.
 
 ## Configuration
 
@@ -65,7 +65,7 @@ Edit `lib/init.php` to setup navigation menus, post thumbnail sizes, post format
 
 ## Theme development
 
-Roots uses [gulp](http://gulpjs.com/) as its build system and [Bower](http://bower.io/) to manage front-end packages.
+Sage uses [gulp](http://gulpjs.com/) as its build system and [Bower](http://bower.io/) to manage front-end packages.
 
 ### Install gulp and Bower
 
@@ -86,7 +86,7 @@ You now have all the necessary dependencies to run the build process.
 
 ## Documentation
 
-Roots documentation is available at [http://roots.io/docs/](http://roots.io/docs/).
+Sage documentation is available at [http://roots.io/sage/getting-started/](http://roots.io/sage/getting-started/).
 
 ## Contributing
 

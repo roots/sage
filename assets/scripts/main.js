@@ -6,7 +6,7 @@
  * replace the dash with an underscore when adding it to the object below.
  *
  * .noConflict()
- * The routing is enclosed within an anonymous function so that you can 
+ * The routing is enclosed within an anonymous function so that you can
  * always reference jQuery with $, even when in .noConflict() mode.
  *
  * Google CDN, Latest jQuery
@@ -16,9 +16,9 @@
 
 (function($) {
 
-// Use this variable to set up the common and page specific functions. If you 
+// Use this variable to set up the common and page specific functions. If you
 // rename this variable, you will also need to rename the namespace below.
-var Roots = {
+var Sage = {
   // All pages
   common: {
     init: function() {
@@ -43,7 +43,7 @@ var Roots = {
 // Add additional events for more control over timing e.g. a finalize event
 var UTIL = {
   fire: function(func, funcname, args) {
-    var namespace = Roots;
+    var namespace = Sage;
     funcname = (funcname === undefined) ? 'init' : funcname;
     if (func !== '' && namespace[func] && typeof namespace[func][funcname] === 'function') {
       namespace[func][funcname](args);
