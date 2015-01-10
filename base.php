@@ -1,3 +1,10 @@
+<?php
+
+namespace Roots\Sage;
+use Roots\Sage\Config;
+use Roots\Sage\Wrapper;
+?>
+
 <?php get_template_part('templates/head'); ?>
 <body <?php body_class(); ?>>
 
@@ -15,11 +22,11 @@
   <div class="wrap container" role="document">
     <div class="content row">
       <main class="main" role="main">
-        <?php include sage_template_path(); ?>
+        <?php include Wrapper\template_path(); ?>
       </main><!-- /.main -->
-      <?php if (sage_display_sidebar()) : ?>
+      <?php if (Config\display_sidebar()) : ?>
         <aside class="sidebar" role="complementary">
-          <?php include sage_sidebar_path(); ?>
+          <?php include Wrapper\sidebar_path(); ?>
         </aside><!-- /.sidebar -->
       <?php endif; ?>
     </div><!-- /.content -->

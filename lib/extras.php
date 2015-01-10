@@ -1,8 +1,11 @@
 <?php
+
+namespace Roots\Sage\Extras;
+
 /**
  * Clean up the_excerpt()
  */
-function sage_excerpt_more() {
+function excerpt_more() {
   return ' &hellip; <a href="' . get_permalink() . '">' . __('Continued', 'sage') . '</a>';
 }
-add_filter('excerpt_more', 'sage_excerpt_more');
+add_filter('excerpt_more', __NAMESPACE__ . '\\excerpt_more');

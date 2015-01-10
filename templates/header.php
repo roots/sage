@@ -1,3 +1,5 @@
+<?php use Roots\Sage\Nav; ?>
+
 <header class="banner navbar navbar-default navbar-static-top" role="banner">
   <div class="container">
     <div class="navbar-header">
@@ -13,7 +15,7 @@
     <nav class="collapse navbar-collapse" role="navigation">
       <?php
         if (has_nav_menu('primary_navigation')) :
-          wp_nav_menu(array('theme_location' => 'primary_navigation', 'walker' => new Sage_Nav_Walker(), 'menu_class' => 'nav navbar-nav'));
+          wp_nav_menu(array('theme_location' => 'primary_navigation', 'walker' => new Nav\Sage_Nav_Walker(), 'menu_class' => 'nav navbar-nav'));
         endif;
       ?>
     </nav>
