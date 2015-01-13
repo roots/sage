@@ -6766,7 +6766,7 @@ fieldset[disabled] .button.active {
   border-radius: 4px;
 }
 @media screen and (min-width: 1007px) {
-  .main-float-right main.main {
+  .main-float-right .main {
     float: right;
   }
 }

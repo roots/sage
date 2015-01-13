@@ -9,7 +9,7 @@ function shoestrap_scripts() {
 
 	wp_enqueue_style( 'shoestrap_css', $stylesheet_url, false, $stylesheet_ver );
 
-	wp_register_script( 'modernizr', SHOESTRAP_ASSETS_URL . '/js/vendor/modernizr-2.7.0.min.js', false, null, false );
+	wp_register_script( 'modernizr', SHOESTRAP_ASSETS_URL . '/js/vendor/modernizr.min.js', false, null, false );
 	wp_register_script( 'fitvids', SHOESTRAP_ASSETS_URL . '/js/vendor/jquery.fitvids.js',false, null, true  );
 
 	wp_enqueue_script( 'jquery' );
