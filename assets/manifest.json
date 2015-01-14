@@ -1,22 +1,28 @@
 {
   "dependencies": {
-    "theme": {
-      "scripts": [
+    "app.js": {
+      "files": [
         "scripts/**/*",
         "scripts/main.js"
       ],
-      "styles": "styles/main.less",
-      "editorStyle": "styles/editor-style.less"
+      "main": true
     },
-    "vendor": {
-      "scripts": [],
-      "styles": []
+    "main.css": {
+      "files": [
+        "styles/main.less"
+      ],
+      "main": true
+    },
+    "editor-style.css": {
+      "files": [
+        "styles/editor-style.less"
+      ]
+    },
+    "jquery.js": {
+      "bower": ["jquery"]
+    },
+    "modernizr.js": {
+      "bower": ["modernizr"]
     }
-  },
-  "ignoreDependencies": {
-    "bower": [
-      "jquery",
-      "modernizr"
-    ]
   }
 }

@@ -77,6 +77,7 @@ You now have all the necessary dependencies to run the build process.
 
 * `gulp` — Compile and optimize the files in your assets directory
 * `gulp watch` — Compile assets when file changes are made
+* `gulp --production` — Compile assets for production (no source maps).
 * `gulp --tasks` — Lists all the available tasks and what they do
 
 ## Documentation
