@@ -13,7 +13,7 @@
   ?>
 
   <div class="wrap container" role="document">
-    <div class="content row">
+    <div class="content">
       <main class="main" role="main">
         <?php include roots_template_path(); ?>
       </main><!-- /.main -->
