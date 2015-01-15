@@ -66,6 +66,9 @@ Sage uses [gulp](http://gulpjs.com/) as its build system and [Bower](http://bowe
 
 **Unfamiliar with npm? Don't have node installed?** [Download and install node.js](http://nodejs.org/download/) before proceeding.
 
+`sudo` **is not be needed, for the following tasks:** [NPM throws error without sudo](http://stackoverflow.com/a/16151707/199565)
+
+
 From the command line:
 
 1. Install [gulp](http://gulpjs.com) and [Bower](http://bower.io/) globally with `npm install -g gulp bower`
