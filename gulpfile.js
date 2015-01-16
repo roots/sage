@@ -1,55 +1,63 @@
 /*global $:true*/
-var $              = require('gulp-load-plugins')();
-var _              = require('lodash');
-var autoprefixer   = require('autoprefixer-core');
-var csswring       = require('csswring');
-var gulp           = require('gulp');
-var lazypipe       = require('lazypipe');
-var mainBowerFiles = require('main-bower-files');
-var obj            = require('object-path');
-
+var $        = require('gulp-load-plugins')();
+var _        = require('lodash');
+var argv     = require('yargs').argv;
+var gulp     = require('gulp');
+var lazypipe = require('lazypipe');
 var manifest = require('asset-builder')('./assets/manifest.json');
+var merge    = require('merge-stream');
 
-var path = manifest.buildPaths;
+var mapsEnabled = !argv.production;
+var path = manifest.paths;
 var globs = manifest.globs;
+var project = manifest.getProjectGlobs();
 
 var cssTasks = function(filename) {
-  var processors = [
-    autoprefixer({browsers: ['last 2 versions', 'ie 8', 'ie 9', 'android 2.3', 'android 4', 'opera 12']}),
-    csswring
-  ];
-
   return lazypipe()
     .pipe($.plumber)
-    .pipe($.sourcemaps.init)
+    .pipe(function () {
+      return $.if(mapsEnabled, $.sourcemaps.init());
+    })
       .pipe(function() {
         return $.if('*.less', $.less().on('error', function(err) {
           console.warn(err.message);
         }));
       })
       .pipe(function() {
-        return $.if('*.scss', $.sass());
+        return $.if('*.scss', $.sass({
+          outputStyle: 'nested', // libsass doesn't support expanded yet
+          precision: 10,
+          includePaths: ['.'],
+          onError: console.error.bind(console, 'Sass error:')
+        }));
       })
       .pipe($.concat, filename)
-    .pipe($.postcss, processors)
-    .pipe($.sourcemaps.write, '.')
+      .pipe($.pleeease, {
+        autoprefixer: {
+          browsers: [
+            'last 2 versions', 'ie 8', 'ie 9', 'android 2.3', 'android 4', 'opera 12'
+          ]
+        }
+      })
+    .pipe(function () {
+      return $.if(mapsEnabled, $.sourcemaps.write('.'));
+    })
     .pipe(gulp.dest, path.dist + 'styles')();
 };
 
-gulp.task('styles', ['wiredep', 'styles:editorStyle'], function() {
-  return gulp.src(globs.styles)
-    .pipe(cssTasks('main.css'));
-});
-
-gulp.task('styles:editorStyle', function() {
-  return gulp.src(globs.editorStyle)
-    .pipe(cssTasks('editor-style.css'));
+gulp.task('styles', ['wiredep'], function() {
+  var merged = merge();
+  manifest.forEachDependency('css', function (dep) {
+    merged.add(gulp.src(dep.globs)
+      .pipe(cssTasks(dep.name)));
+  });
+  return merged;
 });
 
 gulp.task('jshint', function() {
   return gulp.src([
     'bower.json', 'gulpfile.js'
-  ].concat(obj.get(manifest, 'dependencies.theme.scripts', [])))
+  ].concat(project.js))
     .pipe($.jshint())
     .pipe($.jshint.reporter('jshint-stylish'))
     .pipe($.jshint.reporter('fail'));
@@ -58,23 +66,26 @@ gulp.task('jshint', function() {
 var jsTasks = function(filename) {
   var fn = filename;
   return lazypipe()
-    .pipe($.sourcemaps.init)
+    .pipe(function () {
+      return $.if(mapsEnabled, $.sourcemaps.init());
+    })
     .pipe(function() {
       return $.if(!!fn, $.concat(fn || 'all.js'));
     })
     .pipe($.uglify)
-    .pipe($.sourcemaps.write, '.')
+    .pipe(function () {
+      return $.if(mapsEnabled, $.sourcemaps.write('.'));
+    })
     .pipe(gulp.dest, path.dist + 'scripts')();
 };
 
-gulp.task('scripts', ['jshint', 'scripts:ignored'], function() {
-  return gulp.src(globs.scripts)
-    .pipe(jsTasks('app.js'));
-});
-
-gulp.task('scripts:ignored', function() {
-  return gulp.src(globs.scriptsIgnored)
-    .pipe(jsTasks());
+gulp.task('scripts', ['jshint'], function() {
+  var merged = merge();
+  manifest.forEachDependency('js', function (dep) {
+    merged.add(gulp.src(dep.globs)
+      .pipe(jsTasks(dep.name)));
+  });
+  return merged;
 });
 
 gulp.task('fonts', function() {
@@ -119,9 +130,9 @@ gulp.task('build', ['styles', 'scripts', 'fonts', 'images'], function() {
 
 gulp.task('wiredep', function() {
   var wiredep = require('wiredep').stream;
-  gulp.src(globs.styles)
+  gulp.src(project.css)
     .pipe(wiredep())
-    .pipe(gulp.dest(path.dist + 'styles'));
+    .pipe(gulp.dest(path.source + 'styles'));
 });
 
 gulp.task('default', ['clean'], function() {

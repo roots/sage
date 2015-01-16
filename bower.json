@@ -13,6 +13,9 @@
     "bootstrap": "3.3.1"
   },
   "overrides": {
+    "modernizr": {
+      "main": "./modernizr.js"
+    },
     "bootstrap": {
       "main": [
         "./less/bootstrap.less",
