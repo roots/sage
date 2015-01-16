@@ -42,7 +42,8 @@ var cssTasks = function(filename) {
     .pipe(function () {
       return $.if(mapsEnabled, $.sourcemaps.write('.'));
     })
-    .pipe(gulp.dest, path.dist + 'styles')();
+    .pipe(gulp.dest, path.dist + 'styles')
+    .pipe($.livereload)();
 };
 
 gulp.task('styles', ['wiredep'], function() {
@@ -76,7 +77,8 @@ var jsTasks = function(filename) {
     .pipe(function () {
       return $.if(mapsEnabled, $.sourcemaps.write('.'));
     })
-    .pipe(gulp.dest, path.dist + 'scripts')();
+    .pipe(gulp.dest, path.dist + 'scripts')
+    .pipe($.livereload)();
 };
 
 gulp.task('scripts', ['jshint'], function() {
