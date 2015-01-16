@@ -118,8 +118,8 @@ gulp.task('clean', require('del').bind(null, [path.dist]));
 
 gulp.task('watch', function() {
   $.livereload.listen();
-  gulp.watch([path.src + 'styles/**/*', 'bower.json'], ['styles']);
-  gulp.watch([path.src + 'scripts/**/*', 'bower.json'], ['jshint', 'scripts']);
+  gulp.watch([path.source + 'styles/**/*'], ['styles']);
+  gulp.watch([path.source + 'scripts/**/*'], ['jshint', 'scripts']);
   gulp.watch(['bower.json'], ['wiredep']);
   gulp.watch('**/*.php').on('change', function(file) {
     $.livereload.changed(file.path);
