@@ -23,12 +23,18 @@ var Sage = {
   common: {
     init: function() {
       // JavaScript to be fired on all pages
+    },
+    finalize: function() {
+      // JavaScript to be fired on all pages, after page specific JS is fired
     }
   },
   // Home page
   home: {
     init: function() {
       // JavaScript to be fired on the home page
+    },
+    finalize: function() {
+      // JavaScript to be fired on the home page, after the init JS
     }
   },
   // About us page, note the change from about-us to about_us.
@@ -50,14 +56,21 @@ var UTIL = {
     }
   },
   loadEvents: function() {
+    // Fire common init JS
     UTIL.fire('common');
 
+    // Fire page-specific init JS, and then finalize JS
     $.each(document.body.className.replace(/-/g, '_').split(/\s+/),function(i,classnm) {
       UTIL.fire(classnm);
+      UTIL.fire(classnm, 'finalize');
     });
+
+    // Fire common finalize JS
+    UTIL.fire('common', 'finalize');
   }
 };
 
+// Load Events
 $(document).ready(UTIL.loadEvents);
 
 })(jQuery); // Fully reference jQuery after this point.
