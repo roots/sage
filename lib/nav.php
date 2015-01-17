@@ -74,6 +74,8 @@ add_filter('nav_menu_item_id', '__return_null');
  * Use Roots_Nav_Walker() by default
  */
 function roots_nav_menu_args($args = '') {
+  $roots_nav_menu_args = array();
+
   $roots_nav_menu_args['container'] = false;
 
   if (!$args['items_wrap']) {
@@ -82,10 +84,6 @@ function roots_nav_menu_args($args = '') {
 
   if (!$args['depth']) {
     $roots_nav_menu_args['depth'] = 2;
-  }
-
-  if (!$args['walker']) {
-    $roots_nav_menu_args['walker'] = new Roots_Nav_Walker();
   }
 
   return array_merge($args, $roots_nav_menu_args);
