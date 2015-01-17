@@ -46,7 +46,7 @@ var cssTasks = function(filename) {
     .pipe($.livereload)();
 };
 
-gulp.task('styles', ['wiredep'], function() {
+gulp.task('styles', function() {
   var merged = merge();
   manifest.forEachDependency('css', function (dep) {
     merged.add(gulp.src(dep.globs)
@@ -132,8 +132,9 @@ gulp.task('build', ['styles', 'scripts', 'fonts', 'images'], function() {
 
 gulp.task('wiredep', function() {
   var wiredep = require('wiredep').stream;
-  gulp.src(project.css)
+  return gulp.src(project.css)
     .pipe(wiredep())
+    .pipe($.changed(path.source + 'styles'))
     .pipe(gulp.dest(path.source + 'styles'));
 });
 
