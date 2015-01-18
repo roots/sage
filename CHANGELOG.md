@@ -1,6 +1,8 @@
 ### 8.0.0: TBD
 * Change theme name from Roots to Sage
+* Bump required PHP version to >=5.4
 * Add namespace
+* Use short echo syntax
 * Switch from Grunt to gulp, new workflow
 * Use wiredep for Sass and Less injection
 * Implement JSON file based asset pipeline
