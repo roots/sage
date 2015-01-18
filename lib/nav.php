@@ -53,6 +53,14 @@ class Sage_Nav_Walker extends \Walker_Nav_Menu {
 }
 
 /**
+ * Check if element is empty
+ */
+function is_element_empty($element) {
+  $element = trim($element);
+  return !empty($element);
+}
+
+/**
  * Remove the id="" on nav menu items
  * Return 'menu-slug' for nav menu classes
  */
@@ -65,7 +73,7 @@ function nav_menu_css_class($classes, $item) {
 
   $classes = array_unique($classes);
 
-  return array_filter($classes, 'Roots\\Sage\\Utils\\is_element_empty');
+  return array_filter($classes, __NAMESPACE__ . '\\is_element_empty');
 }
 add_filter('nav_menu_css_class', __NAMESPACE__ . '\\nav_menu_css_class', 10, 2);
 add_filter('nav_menu_item_id', '__return_null');
