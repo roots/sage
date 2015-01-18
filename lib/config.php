@@ -48,21 +48,21 @@ function display_sidebar() {
        *
        * To use a function that accepts arguments, use the following format:
        *
-       * array('function_name', array('arg1', 'arg2'))
+       * ['function_name', ['arg1', 'arg2']]
        *
        * The second element must be an array even if there's only 1 argument.
        */
-      array(
+      [
         'is_404',
         'is_front_page'
-      ),
+      ],
       /**
        * Page template checks (via is_page_template())
        * Any of these page templates that return true won't show the sidebar
        */
-      array(
+      [
         'template-custom.php'
-      )
+      ]
     );
     $display = apply_filters('sage/display_sidebar', $sidebar_config->display);
   }

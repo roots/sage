@@ -20,12 +20,12 @@ class Sage_Sidebar {
 
   public $display = true;
 
-  function __construct($conditionals = array(), $templates = array()) {
+  function __construct($conditionals = [], $templates = []) {
     $this->conditionals = $conditionals;
     $this->templates    = $templates;
 
-    $conditionals = array_map(array($this, 'check_conditional_tag'), $this->conditionals);
-    $templates    = array_map(array($this, 'check_page_template'), $this->templates);
+    $conditionals = array_map([$this, 'check_conditional_tag'], $this->conditionals);
+    $templates    = array_map([$this, 'check_page_template'], $this->templates);
 
     if (in_array(true, $conditionals) || in_array(true, $templates)) {
       $this->display = false;

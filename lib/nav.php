@@ -18,11 +18,11 @@ class Sage_Nav_Walker extends \Walker_Nav_Menu {
     return preg_match('/(current[-_])|active|dropdown/', $classes);
   }
 
-  function start_lvl(&$output, $depth = 0, $args = array()) {
+  function start_lvl(&$output, $depth = 0, $args = []) {
     $output .= "\n<ul class=\"dropdown-menu\">\n";
   }
 
-  function start_el(&$output, $item, $depth = 0, $args = array(), $id = 0) {
+  function start_el(&$output, $item, $depth = 0, $args = [], $id = 0) {
     $item_html = '';
     parent::start_el($item_html, $item, $depth, $args);
 
@@ -85,7 +85,7 @@ add_filter('nav_menu_item_id', '__return_null');
  * Use Sage_Nav_Walker() by default
  */
 function nav_menu_args($args = '') {
-  $nav_menu_args = array();
+  $nav_menu_args = [];
 
   $nav_menu_args['container'] = false;
 
