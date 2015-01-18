@@ -97,7 +97,7 @@ function google_analytics() { ?>
       console.log('GoogleAnalytics: ' + [].slice.call(arguments));
     }
   <?php endif; ?>
-  ga('create','<?php echo GOOGLE_ANALYTICS_ID; ?>','auto');ga('send','pageview');
+  ga('create','<?= GOOGLE_ANALYTICS_ID; ?>','auto');ga('send','pageview');
 </script>
 
 <?php }
