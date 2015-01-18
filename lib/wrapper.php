@@ -21,10 +21,10 @@ class Sage_Wrapping {
   // Stores the full path to the main template file
   public static $main_template;
 
-  // basename of template file
+  // Basename of template file
   public $slug;
 
-  // array of templates
+  // Array of templates
   public $templates;
 
   // Stores the base name of the template file; e.g. 'page' for 'page.php' etc.
@@ -32,7 +32,7 @@ class Sage_Wrapping {
 
   public function __construct($template = 'base.php') {
     $this->slug = basename($template, '.php');
-    $this->templates = array($template);
+    $this->templates = [$template];
 
     if (self::$base) {
       $str = substr($template, 0, -4);
@@ -61,4 +61,4 @@ class Sage_Wrapping {
     return new Sage_Wrapping();
   }
 }
-add_filter('template_include', array(__NAMESPACE__ . '\\Sage_Wrapping', 'wrap'), 99);
+add_filter('template_include', [__NAMESPACE__ . '\\Sage_Wrapping', 'wrap'], 99);

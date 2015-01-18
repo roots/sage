@@ -15,7 +15,7 @@
     <nav class="collapse navbar-collapse" role="navigation">
       <?php
         if (has_nav_menu('primary_navigation')) :
-          wp_nav_menu(array('theme_location' => 'primary_navigation', 'walker' => new Nav\Sage_Nav_Walker(), 'menu_class' => 'nav navbar-nav'));
+          wp_nav_menu(['theme_location' => 'primary_navigation', 'walker' => new Nav\Sage_Nav_Walker(), 'menu_class' => 'nav navbar-nav']);
         endif;
       ?>
     </nav>
