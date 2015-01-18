@@ -14,7 +14,7 @@ Sage is a WordPress starter theme based on [HTML5 Boilerplate](http://html5boile
 ## Requirements
 
 * PHP >= 5.4
-* Node.js >= 0.10.0
+* Node.js >= 0.10
 * gulp (`npm install -g gulp`)
 * Bower (`npm install -g bower`)
 
