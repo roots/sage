@@ -8,6 +8,7 @@
 * Remove theme activation, move to [wp-cli-theme-activation](https://github.com/roots/wp-cli-theme-activation)
 * Add Travis CI
 * Update to jQuery 1.11.2
+* Use new core navigation template tag
 * Update sidebar to fix default template check
 
 ### 7.0.3: December 18th, 2014

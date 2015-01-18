@@ -9,12 +9,6 @@
 .alignright {
   margin-bottom: (@line-height-computed / 2);
 }
-figure.alignnone {
-  margin-left: 0;
-  margin-right: 0;
-  max-width: 100%;
-}
-
 @media (min-width: @screen-sm-min) {
   // Only float images if not on an extra small device like smartphones
   .alignleft {
@@ -25,4 +19,15 @@ figure.alignnone {
     float: right;
     margin-left: (@line-height-computed / 2);
   }
+}
+
+figure.alignnone {
+  margin-left: 0;
+  margin-right: 0;
+  max-width: 100%;
+}
+
+.screen-reader-text {
+  &:extend(.sr-only all);
+  &:extend(.sr-only-focusable all);
 }
