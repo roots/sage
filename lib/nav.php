@@ -18,11 +18,11 @@ class Sage_Nav_Walker extends \Walker_Nav_Menu {
     return preg_match('/(current[-_])|active|dropdown/', $classes);
   }
 
-  function start_lvl(&$output, $depth = 0, $args = array()) {
+  function start_lvl(&$output, $depth = 0, $args = []) {
     $output .= "\n<ul class=\"dropdown-menu\">\n";
   }
 
-  function start_el(&$output, $item, $depth = 0, $args = array(), $id = 0) {
+  function start_el(&$output, $item, $depth = 0, $args = [], $id = 0) {
     $item_html = '';
     parent::start_el($item_html, $item, $depth, $args);
 
@@ -53,6 +53,14 @@ class Sage_Nav_Walker extends \Walker_Nav_Menu {
 }
 
 /**
+ * Check if element is empty
+ */
+function is_element_empty($element) {
+  $element = trim($element);
+  return !empty($element);
+}
+
+/**
  * Remove the id="" on nav menu items
  * Return 'menu-slug' for nav menu classes
  */
@@ -65,7 +73,7 @@ function nav_menu_css_class($classes, $item) {
 
   $classes = array_unique($classes);
 
-  return array_filter($classes, 'Roots\\Sage\\Utils\\is_element_empty');
+  return array_filter($classes, __NAMESPACE__ . '\\is_element_empty');
 }
 add_filter('nav_menu_css_class', __NAMESPACE__ . '\\nav_menu_css_class', 10, 2);
 add_filter('nav_menu_item_id', '__return_null');
@@ -77,7 +85,7 @@ add_filter('nav_menu_item_id', '__return_null');
  * Use Sage_Nav_Walker() by default
  */
 function nav_menu_args($args = '') {
-  $nav_menu_args = array();
+  $nav_menu_args = [];
 
   $nav_menu_args['container'] = false;
 

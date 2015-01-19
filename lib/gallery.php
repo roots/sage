@@ -36,7 +36,7 @@ function gallery($attr) {
     }
   }
 
-  extract(shortcode_atts(array(
+  extract(shortcode_atts([
     'order'      => 'ASC',
     'orderby'    => 'menu_order ID',
     'id'         => $post->ID,
@@ -48,7 +48,7 @@ function gallery($attr) {
     'include'    => '',
     'exclude'    => '',
     'link'       => ''
-  ), $attr));
+  ], $attr));
 
   $id = intval($id);
   $columns = (12 % $columns == 0) ? $columns: 4;
@@ -59,16 +59,16 @@ function gallery($attr) {
   }
 
   if (!empty($include)) {
-    $_attachments = get_posts(array('include' => $include, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby));
+    $_attachments = get_posts(['include' => $include, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby]);
 
-    $attachments = array();
+    $attachments = [];
     foreach ($_attachments as $key => $val) {
       $attachments[$val->ID] = $_attachments[$key];
     }
   } elseif (!empty($exclude)) {
-    $attachments = get_children(array('post_parent' => $id, 'exclude' => $exclude, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby));
+    $attachments = get_children(['post_parent' => $id, 'exclude' => $exclude, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby]);
   } else {
-    $attachments = get_children(array('post_parent' => $id, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby));
+    $attachments = get_children(['post_parent' => $id, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby]);
   }
 
   if (empty($attachments)) {
@@ -93,7 +93,7 @@ function gallery($attr) {
         $image = wp_get_attachment_link($id, $size, false, false);
         break;
       case 'none':
-        $image = wp_get_attachment_image($id, $size, false, array('class' => 'thumbnail img-thumbnail'));
+        $image = wp_get_attachment_image($id, $size, false, ['class' => 'thumbnail img-thumbnail']);
         break;
       default:
         $image = wp_get_attachment_link($id, $size, true, false);
