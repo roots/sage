@@ -22,7 +22,7 @@ function asset_path($filename) {
     return get_template_directory_uri() . '/dist/' . $filename;
   }
 
-  $manifest_path = get_template_directory() . '/dist/rev-manifest.json';
+  $manifest_path = get_template_directory() . '/dist/assets.json';
 
   if (file_exists($manifest_path)) {
     $manifest = json_decode(file_get_contents($manifest_path), true);
