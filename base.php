@@ -1,5 +1,4 @@
 <?php
-
 namespace Roots\Sage;
 use Roots\Sage\Config;
 use Roots\Sage\Wrapper;
@@ -19,8 +18,8 @@ use Roots\Sage\Wrapper;
     get_template_part('templates/header');
   ?>
 
-  <div class="wrap" role="document">
-    <div class="content">
+  <div class="wrap container" role="document">
+    <div class="content row">
       <main class="main" role="main">
         <?php include Wrapper\template_path(); ?>
       </main><!-- /.main -->
