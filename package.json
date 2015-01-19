@@ -18,7 +18,7 @@
   ],
   "scripts": {
     "build": "bower install && gulp",
-    "docs": "docco gulpfile.js",
+    "docs": "docco -o docco gulpfile.js",
     "jshint": "gulp jshint"
   },
   "engines": {
