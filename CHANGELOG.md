@@ -8,6 +8,7 @@
 * Use wiredep for Sass and Less injection
 * Implement JSON file based asset pipeline
 * Re-organize asset file structure
+* Use the theme styles for the editor stylesheet
 * Remove theme activation, move to [wp-cli-theme-activation](https://github.com/roots/wp-cli-theme-activation)
 * Add Travis CI
 * Update to jQuery 1.11.2
