@@ -95,7 +95,9 @@ function google_analytics() {
       r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
     <?php else: ?>
       function ga() {
-        console.log('Google Analytics: ' + [].slice.call(arguments));
+        if (window.console) {
+          console.log('Google Analytics: ' + [].slice.call(arguments));
+        }
       }
     <?php endif; ?>
     ga('create','<?= GOOGLE_ANALYTICS_ID; ?>','auto');ga('send','pageview');
