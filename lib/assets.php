@@ -18,8 +18,10 @@ namespace Roots\Sage\Assets;
  * - You're not logged in as an administrator
  */
 function asset_path($filename) {
+  $dist_path = get_template_directory_uri() . '/dist/';
+
   if (WP_ENV === 'development') {
-    return get_template_directory_uri() . '/dist/' . $filename;
+    return $dist_path . $filename;
   }
 
   $manifest_path = get_template_directory() . '/dist/assets.json';
@@ -30,8 +32,13 @@ function asset_path($filename) {
     $manifest = [];
   }
 
-  if (array_key_exists($filename, $manifest)) {
-    return get_template_directory_uri() . '/dist/' . $manifest[$filename];
+  $directory = dirname($filename) . '/';
+  $file = basename($filename);
+
+  if (array_key_exists($file, $manifest)) {
+    return $dist_path . $directory . $manifest[$file];
+  } else {
+    return $dist_path . $directory . $file;
   }
 }
 

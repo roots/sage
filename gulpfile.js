@@ -82,7 +82,9 @@ var cssTasks = function(filename) {
           ]
         }
       })
-    .pipe($.rev)
+    .pipe(function () {
+      return $.if(enabled.rev, $.rev());
+    })
     .pipe(function () {
       return $.if(enabled.maps, $.sourcemaps.write('.'));
     })();
@@ -102,10 +104,27 @@ var jsTasks = function(filename) {
     })
     .pipe($.concat, filename)
     .pipe($.uglify)
-    .pipe($.rev)
+    .pipe(function () {
+      return $.if(enabled.rev, $.rev());
+    })
     .pipe(function () {
       return $.if(enabled.maps, $.sourcemaps.write('.'));
     })();
+};
+
+// ### Write to Rev Manifest
+// If `--production` then write the revved assets to the manifest.
+var writeToManifest = function (directory) {
+  return lazypipe()
+    .pipe(gulp.dest, path.dist + directory)
+    .pipe(require('gulp-debug'))
+    .pipe($.livereload)
+    .pipe($.rev.manifest, revManifest, {
+      base: path.dist,
+      merge: true
+    })
+    .pipe(require('gulp-debug'))
+    .pipe(gulp.dest, path.dist)();
 };
 
 // ## Gulp Tasks
@@ -116,16 +135,11 @@ var jsTasks = function(filename) {
 gulp.task('styles', function() {
   var merged = merge();
   manifest.forEachDependency('css', function (dep) {
-    merged.add(gulp.src(dep.globs, { base: path.source })
+    merged.add(gulp.src(dep.globs)
       .pipe(cssTasks(dep.name)));
   });
   return merged
-    .pipe(gulp.dest(path.dist + 'styles'))
-    .pipe($.rev.manifest(revManifest, {
-      base: path.dist,
-      merge: true
-    }))
-    .pipe(gulp.dest(path.dist));
+    .pipe(writeToManifest('styles'));
 });
 
 // ### Scripts
@@ -135,17 +149,12 @@ gulp.task('scripts', ['jshint'], function() {
   var merged = merge();
   manifest.forEachDependency('js', function (dep) {
     merged.add(
-      gulp.src(dep.globs, { base: path.source })
+      gulp.src(dep.globs)
         .pipe(jsTasks(dep.name))
     );
   });
   return merged
-    .pipe(gulp.dest(path.dist + 'scripts'))
-    .pipe($.rev.manifest(revManifest, {
-      base: path.dist,
-      merge: true
-    }))
-    .pipe(gulp.dest(path.dist));
+    .pipe(writeToManifest('scripts'));
 });
 
 // ### Fonts
