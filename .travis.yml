@@ -6,8 +6,9 @@ php:
   - 5.5
   - 5.4
 before_install:
-  - npm install -g bower
+  - npm install -g bower gulp jscs
   - npm install
 script:
   - npm run build
   - npm run jshint
+  - npm run jscs
