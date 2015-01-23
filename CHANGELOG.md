@@ -1,3 +1,15 @@
+### 3.3.0
+
+* Fix: Added check for HTTPS to brand image (props @rchq)
+* Fix: Replace comment_date() with get_comments_date(). (props @aplatanado)
+* Fix: Compiler compatibility issues when the site is a multisite using domain-mapping
+* Fix: Remove title tag from posts' titles
+* Fix: Transparent value in color controls
+* Fix: navbar_social_links function should be static (props @cadr-sa)
+* Fix: Color validations causing error evaluating function `darken`.
+* Fix: Updating modernizr
+* Fix: Branding URL HTTPS (props @rchq)
+
 ### 3.2.9
 
 * Fix: Forgotten filter in base.php file
