@@ -2,6 +2,10 @@
 <ruleset name="Roots">
   <description>Roots Coding Standards</description>
 
+  <!-- Ignore node_modules and bower_components directories -->
+  <exclude-pattern>node_modules/*</exclude-pattern>
+  <exclude-pattern>bower_components/*</exclude-pattern>
+
   <!-- Use PSR-2 as a base -->
   <rule ref="PSR2">
     <!-- Allow closing braces for functions and classes to be on the same line -->
