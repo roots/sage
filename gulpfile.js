@@ -114,7 +114,8 @@ var jsTasks = function(filename) {
 };
 
 // ### Write to Rev Manifest
-// If `--production` then write the revved assets to the manifest.
+// If there are any revved files then write them to the rev manifest.
+// See https://github.com/sindresorhus/gulp-rev
 var writeToManifest = function(directory) {
   return lazypipe()
     .pipe(gulp.dest, path.dist + directory)
