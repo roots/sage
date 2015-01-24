@@ -15,7 +15,7 @@ var project = manifest.getProjectGlobs();
 var cssTasks = function(filename) {
   return lazypipe()
     .pipe($.plumber)
-    .pipe(function () {
+    .pipe(function() {
       return $.if(mapsEnabled, $.sourcemaps.init());
     })
       .pipe(function() {
@@ -35,11 +35,12 @@ var cssTasks = function(filename) {
       .pipe($.pleeease, {
         autoprefixer: {
           browsers: [
-            'last 2 versions', 'ie 8', 'ie 9', 'android 2.3', 'android 4', 'opera 12'
+            'last 2 versions', 'ie 8', 'ie 9', 'android 2.3', 'android 4',
+            'opera 12'
           ]
         }
       })
-    .pipe(function () {
+    .pipe(function() {
       return $.if(mapsEnabled, $.sourcemaps.write('.'));
     })
     .pipe(gulp.dest, path.dist + 'styles')
@@ -48,7 +49,7 @@ var cssTasks = function(filename) {
 
 gulp.task('styles', function() {
   var merged = merge();
-  manifest.forEachDependency('css', function (dep) {
+  manifest.forEachDependency('css', function(dep) {
     merged.add(gulp.src(dep.globs)
       .pipe(cssTasks(dep.name)));
   });
@@ -67,14 +68,14 @@ gulp.task('jshint', function() {
 var jsTasks = function(filename) {
   var fn = filename;
   return lazypipe()
-    .pipe(function () {
+    .pipe(function() {
       return $.if(mapsEnabled, $.sourcemaps.init());
     })
     .pipe(function() {
       return $.if(!!fn, $.concat(fn || 'all.js'));
     })
     .pipe($.uglify)
-    .pipe(function () {
+    .pipe(function() {
       return $.if(mapsEnabled, $.sourcemaps.write('.'));
     })
     .pipe(gulp.dest, path.dist + 'scripts')
@@ -83,7 +84,7 @@ var jsTasks = function(filename) {
 
 gulp.task('scripts', ['jshint'], function() {
   var merged = merge();
-  manifest.forEachDependency('js', function (dep) {
+  manifest.forEachDependency('js', function(dep) {
     merged.add(gulp.src(dep.globs)
       .pipe(jsTasks(dep.name)));
   });
@@ -106,7 +107,7 @@ gulp.task('images', function() {
 });
 
 gulp.task('version', function() {
-  return gulp.src([path.dist + '**/*.{js,css}'], { base: path.dist })
+  return gulp.src([path.dist + '**/*.{js,css}'], {base: path.dist})
     .pipe(gulp.dest(path.dist))
     .pipe($.rev())
     .pipe(gulp.dest(path.dist))

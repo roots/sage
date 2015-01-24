@@ -7,7 +7,7 @@ php:
 - '5.4'
 
 before_install:
-  - npm install -g bower
+  - npm install -g bower gulp jscs
   - npm install
   - pyrus install pear/PHP_CodeSniffer
   - phpenv rehash
@@ -15,4 +15,5 @@ before_install:
 script:
   - npm run build
   - npm run jshint
+  - npm run jscs
   - phpcs --standard=ruleset.xml --extensions=php -n -s .
