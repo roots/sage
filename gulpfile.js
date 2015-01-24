@@ -58,7 +58,7 @@ var revManifest = path.dist + 'assets.json';
 var cssTasks = function(filename) {
   return lazypipe()
     .pipe($.plumber)
-    .pipe(function () {
+    .pipe(function() {
       return $.if(enabled.maps, $.sourcemaps.init());
     })
       .pipe(function() {
@@ -78,14 +78,15 @@ var cssTasks = function(filename) {
       .pipe($.pleeease, {
         autoprefixer: {
           browsers: [
-            'last 2 versions', 'ie 8', 'ie 9', 'android 2.3', 'android 4', 'opera 12'
+            'last 2 versions', 'ie 8', 'ie 9', 'android 2.3', 'android 4',
+            'opera 12'
           ]
         }
       })
-    .pipe(function () {
+    .pipe(function() {
       return $.if(enabled.rev, $.rev());
     })
-    .pipe(function () {
+    .pipe(function() {
       return $.if(enabled.maps, $.sourcemaps.write('.'));
     })();
 };
@@ -99,22 +100,22 @@ var cssTasks = function(filename) {
 // ```
 var jsTasks = function(filename) {
   return lazypipe()
-    .pipe(function () {
+    .pipe(function() {
       return $.if(enabled.maps, $.sourcemaps.init());
     })
     .pipe($.concat, filename)
     .pipe($.uglify)
-    .pipe(function () {
+    .pipe(function() {
       return $.if(enabled.rev, $.rev());
     })
-    .pipe(function () {
+    .pipe(function() {
       return $.if(enabled.maps, $.sourcemaps.write('.'));
     })();
 };
 
 // ### Write to Rev Manifest
 // If `--production` then write the revved assets to the manifest.
-var writeToManifest = function (directory) {
+var writeToManifest = function(directory) {
   return lazypipe()
     .pipe(gulp.dest, path.dist + directory)
     .pipe(require('gulp-debug'))
@@ -134,7 +135,7 @@ var writeToManifest = function (directory) {
 // `gulp styles` - compiles, combines, and optimizes bower css and project css.
 gulp.task('styles', function() {
   var merged = merge();
-  manifest.forEachDependency('css', function (dep) {
+  manifest.forEachDependency('css', function(dep) {
     merged.add(gulp.src(dep.globs)
       .pipe(cssTasks(dep.name)));
   });
@@ -147,7 +148,7 @@ gulp.task('styles', function() {
 // javascript and project javascript
 gulp.task('scripts', ['jshint'], function() {
   var merged = merge();
-  manifest.forEachDependency('js', function (dep) {
+  manifest.forEachDependency('js', function(dep) {
     merged.add(
       gulp.src(dep.globs)
         .pipe(jsTasks(dep.name))

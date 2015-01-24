@@ -9,7 +9,7 @@
  *
  * @link https://github.com/roots/sage/pull/1042
  */
-$sage_includes = array(
+$sage_includes = [
   'lib/utils.php',           // Utility functions
   'lib/init.php',            // Initial theme setup and constants
   'lib/wrapper.php',         // Theme wrapper class
@@ -20,7 +20,7 @@ $sage_includes = array(
   'lib/nav.php',             // Custom nav modifications
   'lib/gallery.php',         // Custom [gallery] modifications
   'lib/extras.php',          // Custom functions
-);
+];
 
 foreach ($sage_includes as $file) {
   if (!$filepath = locate_template($file)) {

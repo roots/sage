@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "app.js": {
+    "main.js": {
       "files": [
         "scripts/**/*",
         "scripts/main.js"

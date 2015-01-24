@@ -9,9 +9,9 @@ namespace Roots\Sage\Assets;
  * 1. /theme/dist/styles/main.css
  *
  * Enqueue scripts in the following order:
- * 1. jquery-1.11.2.js via Google CDN
+ * 1. Latest jQuery via Google CDN (if enabled in config.php)
  * 2. /theme/dist/scripts/modernizr.js
- * 3. /theme/dist/scripts/app.js
+ * 3. /theme/dist/scripts/main.js
  *
  * Google Analytics is loaded after enqueued scripts if:
  * - An ID has been defined in config.php
@@ -54,7 +54,7 @@ function assets() {
   if (!is_admin() && current_theme_supports('jquery-cdn')) {
     wp_deregister_script('jquery');
 
-    wp_register_script('jquery', '//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.js', array(), null, true);
+    wp_register_script('jquery', '//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js', [], null, true);
 
     add_filter('script_loader_src', __NAMESPACE__ . '\\jquery_local_fallback', 10, 2);
   }
@@ -63,9 +63,9 @@ function assets() {
     wp_enqueue_script('comment-reply');
   }
 
-  wp_enqueue_script('modernizr', asset_path('scripts/modernizr.js'), array(), null, true);
+  wp_enqueue_script('modernizr', asset_path('scripts/modernizr.js'), [], null, true);
   wp_enqueue_script('jquery');
-  wp_enqueue_script('sage_js', asset_path('scripts/app.js'), array(), null, true);
+  wp_enqueue_script('sage_js', asset_path('scripts/main.js'), [], null, true);
 }
 add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\assets', 100);
 
@@ -91,23 +91,27 @@ add_action('wp_head', __NAMESPACE__ . '\\jquery_local_fallback');
  *
  * Cookie domain is 'auto' configured. See: http://goo.gl/VUCHKM
  */
-function google_analytics() { ?>
-<script>
-  <?php if (WP_ENV === 'production') : ?>
-    (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-    function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-    e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-    e.src='//www.google-analytics.com/analytics.js';
-    r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-  <?php else : ?>
-    function ga() {
-      console.log('GoogleAnalytics: ' + [].slice.call(arguments));
-    }
-  <?php endif; ?>
-  ga('create','<?php echo GOOGLE_ANALYTICS_ID; ?>','auto');ga('send','pageview');
-</script>
+function google_analytics() {
+  ?>
+  <script>
+    <?php if (WP_ENV === 'production' && !current_user_can('manage_options')) : ?>
+      (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+      function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+      e.src='//www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+    <?php else : ?>
+      function ga() {
+        if (window.console) {
+          console.log('Google Analytics: ' + [].slice.call(arguments));
+        }
+      }
+    <?php endif; ?>
+    ga('create','<?= GOOGLE_ANALYTICS_ID; ?>','auto');ga('send','pageview');
+  </script>
+  <?php
+}
 
-<?php }
-if (GOOGLE_ANALYTICS_ID && (WP_ENV !== 'production' || !current_user_can('manage_options'))) {
+if (GOOGLE_ANALYTICS_ID) {
   add_action('wp_footer', __NAMESPACE__ . '\\google_analytics', 20);
 }
