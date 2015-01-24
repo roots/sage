@@ -118,13 +118,11 @@ var jsTasks = function(filename) {
 var writeToManifest = function(directory) {
   return lazypipe()
     .pipe(gulp.dest, path.dist + directory)
-    .pipe(require('gulp-debug'))
     .pipe($.livereload)
     .pipe($.rev.manifest, revManifest, {
       base: path.dist,
       merge: true
     })
-    .pipe(require('gulp-debug'))
     .pipe(gulp.dest, path.dist)();
 };
 

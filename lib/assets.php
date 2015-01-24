@@ -19,10 +19,8 @@ namespace Roots\Sage\Assets;
  */
 function asset_path($filename) {
   $dist_path = get_template_directory_uri() . '/dist/';
-
-  if (WP_ENV === 'development') {
-    return $dist_path . $filename;
-  }
+  $directory = dirname($filename) . '/';
+  $file = basename($filename);
 
   $manifest_path = get_template_directory() . '/dist/assets.json';
 
@@ -32,10 +30,7 @@ function asset_path($filename) {
     $manifest = [];
   }
 
-  $directory = dirname($filename) . '/';
-  $file = basename($filename);
-
-  if (array_key_exists($file, $manifest)) {
+  if (WP_ENV !== 'development' && array_key_exists($file, $manifest)) {
     return $dist_path . $directory . $manifest[$file];
   } else {
     return $dist_path . $directory . $file;
@@ -57,6 +52,15 @@ function assets() {
     wp_register_script('jquery', '//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js', [], null, true);
 
     add_filter('script_loader_src', __NAMESPACE__ . '\\jquery_local_fallback', 10, 2);
+  }
+
+  /**
+   * Livereload client
+   * https://github.com/livereload/livereload-js
+   */
+  if (WP_ENV === 'development') {
+    wp_register_script('livereload', 'http://localhost:35729/livereload.js?snipver=1', null, false, true);
+    wp_enqueue_script('livereload');
   }
 
   if (is_single() && comments_open() && get_option('thread_comments')) {
@@ -115,3 +119,4 @@ function google_analytics() {
 if (GOOGLE_ANALYTICS_ID) {
   add_action('wp_footer', __NAMESPACE__ . '\\google_analytics', 20);
 }
+
