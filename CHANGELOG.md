@@ -1,6 +1,7 @@
 ### 8.0.0: TBD
 * Change theme name from Roots to Sage
 * Bump required PHP version to >=5.4
+* Add coding standards based on PSR-2
 * Add namespace
 * Use short array syntax
 * Use short echo syntax

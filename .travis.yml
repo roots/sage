@@ -2,12 +2,17 @@ sudo: false
 language: php
 cache: npm
 php:
-  - 5.6
-  - 5.5
-  - 5.4
+- '5.6'
+- '5.5'
+- '5.4'
+
 before_install:
   - npm install -g bower
   - npm install
+  - pyrus install pear/PHP_CodeSniffer
+  - phpenv rehash
+
 script:
   - npm run build
   - npm run jshint
+  - phpcs --standard=ruleset.xml --extensions=php -n -s .

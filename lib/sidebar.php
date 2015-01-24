@@ -14,25 +14,25 @@ namespace Roots\Sage\Sidebar;
  *
  * @return boolean True will display the sidebar, False will not
  */
-class Sage_Sidebar {
+class SageSidebar {
   private $conditionals;
   private $templates;
 
   public $display = true;
 
-  function __construct($conditionals = [], $templates = []) {
+  public function __construct($conditionals = [], $templates = []) {
     $this->conditionals = $conditionals;
     $this->templates    = $templates;
 
-    $conditionals = array_map([$this, 'check_conditional_tag'], $this->conditionals);
-    $templates    = array_map([$this, 'check_page_template'], $this->templates);
+    $conditionals = array_map([$this, 'checkConditionalTag'], $this->conditionals);
+    $templates    = array_map([$this, 'checkPageTemplate'], $this->templates);
 
     if (in_array(true, $conditionals) || in_array(true, $templates)) {
       $this->display = false;
     }
   }
 
-  private function check_conditional_tag($conditional_tag) {
+  private function checkConditionalTag($conditional_tag) {
     $conditional_arg = is_array($conditional_tag) ? $conditional_tag[1] : false;
     $conditional_tag = $conditional_arg ? $conditional_tag[0] : $conditional_tag;
 
@@ -43,7 +43,7 @@ class Sage_Sidebar {
     }
   }
 
-  private function check_page_template($page_template) {
+  private function checkPageTemplate($page_template) {
     return is_page_template($page_template);
   }
 }
