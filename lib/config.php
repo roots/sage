@@ -1,6 +1,7 @@
 <?php
 
 namespace Roots\Sage\Config;
+
 use Roots\Sage\Sidebar;
 
 /**
@@ -41,7 +42,7 @@ function display_sidebar() {
   static $display;
 
   if (!isset($display)) {
-    $sidebar_config = new Sidebar\Sage_Sidebar(
+    $sidebar_config = new Sidebar\SageSidebar(
       /**
        * Conditional tag checks (http://codex.wordpress.org/Conditional_Tags)
        * Any of these conditional tags that return true won't show the sidebar

@@ -1,7 +1,7 @@
 <?php
-  if (post_password_required()) {
-    return;
-  }
+if (post_password_required()) {
+  return;
+}
 ?>
 
 <section id="comments" class="comments">
