@@ -135,7 +135,7 @@ var writeToManifest = function(directory) {
 gulp.task('styles', function() {
   var merged = merge();
   manifest.forEachDependency('css', function(dep) {
-    merged.add(gulp.src(dep.globs)
+    merged.add(gulp.src(dep.globs, {base: 'styles'})
       .pipe(cssTasks(dep.name)));
   });
   return merged
@@ -149,7 +149,7 @@ gulp.task('scripts', ['jshint'], function() {
   var merged = merge();
   manifest.forEachDependency('js', function(dep) {
     merged.add(
-      gulp.src(dep.globs)
+      gulp.src(dep.globs, {base: 'scripts'})
         .pipe(jsTasks(dep.name))
     );
   });
