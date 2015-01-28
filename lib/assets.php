@@ -54,15 +54,6 @@ function assets() {
     add_filter('script_loader_src', __NAMESPACE__ . '\\jquery_local_fallback', 10, 2);
   }
 
-  /**
-   * Livereload client
-   * https://github.com/livereload/livereload-js
-   */
-  if (WP_ENV === 'development') {
-    wp_register_script('livereload', 'http://localhost:35729/livereload.js?snipver=1', null, false, true);
-    wp_enqueue_script('livereload');
-  }
-
   if (is_single() && comments_open() && get_option('thread_comments')) {
     wp_enqueue_script('comment-reply');
   }
