@@ -15,6 +15,7 @@
 * Update to jQuery 1.11.2
 * Use new core navigation template tag
 * Update sidebar to fix default template check
+* Switch from livereload to browsersync.io
 
 ### 7.0.3: December 18th, 2014
 * Use `get_the_archive_title`
