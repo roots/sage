@@ -48,7 +48,6 @@
     "imagemin-pngcrush": "^4.0.0",
     "jshint-stylish": "^1.0.0",
     "lazypipe": "^0.2.2",
-    "lodash": "^2.4.1",
     "merge-stream": "^0.1.7",
     "traverse": "^0.6.6",
     "wiredep": "^2.1.0",

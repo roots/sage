@@ -1,7 +1,6 @@
 // ## Globals
 /*global $:true*/
 var $           = require('gulp-load-plugins')();
-var _           = require('lodash');
 var argv        = require('yargs').argv;
 var browserSync = require('browser-sync');
 var gulp        = require('gulp');
