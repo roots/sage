@@ -24,5 +24,8 @@
     "modernizr.js": {
       "bower": ["modernizr"]
     }
+  },
+  "config": {
+    "devUrl": "example.dev"
   }
 }
