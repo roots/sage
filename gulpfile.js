@@ -131,7 +131,7 @@ var writeToManifest = function(directory) {
 // Start the server
 gulp.task('browser-sync', function() {
     browserSync({
-        proxy: "aubonsite"
+        proxy: "localhost"
     });
 });
 
