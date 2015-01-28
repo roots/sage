@@ -3,6 +3,7 @@
 var $        = require('gulp-load-plugins')();
 var _        = require('lodash');
 var argv     = require('yargs').argv;
+var browserSync = require('browser-sync');
 var gulp     = require('gulp');
 var lazypipe = require('lazypipe');
 var merge    = require('merge-stream');
@@ -127,6 +128,13 @@ var writeToManifest = function(directory) {
     .pipe(gulp.dest, path.dist)();
 };
 
+// Start the server
+gulp.task('browser-sync', function() {
+    browserSync({
+        proxy: "aubonsite"
+    });
+});
+
 // ## Gulp Tasks
 // Run `gulp -T` for a task summary
 
@@ -139,7 +147,8 @@ gulp.task('styles', function() {
       .pipe(cssTasks(dep.name)));
   });
   return merged
-    .pipe(writeToManifest('styles'));
+    .pipe(writeToManifest('styles'))
+    .pipe(browserSync.reload({stream:true}));
 });
 
 // ### Scripts
@@ -194,13 +203,12 @@ gulp.task('clean', require('del').bind(null, [path.dist]));
 
 // ### Watch
 // `gulp watch` - recompile assets whenever they change
-gulp.task('watch', function() {
-  $.livereload.listen();
+gulp.task('watch', ['browser-sync'], function() {
   gulp.watch([path.source + 'styles/**/*'], ['styles']);
-  gulp.watch([path.source + 'scripts/**/*'], ['jshint', 'scripts']);
+  gulp.watch([path.source + 'scripts/**/*'], ['jshint', 'scripts', browserSync.reload]);
   gulp.watch(['bower.json'], ['wiredep']);
-  gulp.watch('**/*.php').on('change', function(file) {
-    $.livereload.changed(file.path);
+  gulp.watch('**/*.php', function () {
+    browserSync.reload();
   });
 });
 
