@@ -27,6 +27,7 @@
   },
   "devDependencies": {
     "asset-builder": "~0.3.0",
+    "browser-sync": "^1.9.1",
     "del": "^1.1.1",
     "gulp": "^3.8.10",
     "gulp-changed": "^1.1.0",
@@ -36,7 +37,6 @@
     "gulp-imagemin": "^2.0.0",
     "gulp-jshint": "^1.8.4",
     "gulp-less": "^2.0.1",
-    "gulp-livereload": "^3.4.0",
     "gulp-load-plugins": "^0.8.0",
     "gulp-pleeease": "^1.1.0",
     "gulp-plumber": "^0.6.3",

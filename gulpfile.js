@@ -1,11 +1,12 @@
 // ## Globals
 /*global $:true*/
-var $        = require('gulp-load-plugins')();
-var _        = require('lodash');
-var argv     = require('yargs').argv;
-var gulp     = require('gulp');
-var lazypipe = require('lazypipe');
-var merge    = require('merge-stream');
+var $           = require('gulp-load-plugins')();
+var _           = require('lodash');
+var argv        = require('yargs').argv;
+var browserSync = require('browser-sync');
+var gulp        = require('gulp');
+var lazypipe    = require('lazypipe');
+var merge       = require('merge-stream');
 
 // See https://github.com/austinpray/asset-builder
 var manifest = require('asset-builder')('./assets/manifest.json');
@@ -14,6 +15,9 @@ var manifest = require('asset-builder')('./assets/manifest.json');
 // - `path.source` - Path to the source files. default: `assets/`
 // - `path.dist` - Path to the build directory. default: `dist/`
 var path = manifest.paths;
+
+// `config` - Store arbitrary configuration values here.
+var config = manifest.config || {};
 
 // `globs` - These ultimately end up in their respective `gulp.src`.
 // - `globs.js` - array of asset-builder js Depenency objects. Example:
@@ -119,7 +123,7 @@ var jsTasks = function(filename) {
 var writeToManifest = function(directory) {
   return lazypipe()
     .pipe(gulp.dest, path.dist + directory)
-    .pipe($.livereload)
+    .pipe(browserSync.reload, {stream:true})
     .pipe($.rev.manifest, revManifest, {
       base: path.dist,
       merge: true
@@ -195,12 +199,14 @@ gulp.task('clean', require('del').bind(null, [path.dist]));
 // ### Watch
 // `gulp watch` - recompile assets whenever they change
 gulp.task('watch', function() {
-  $.livereload.listen();
+  browserSync({
+    proxy: config.devUrl
+  });
   gulp.watch([path.source + 'styles/**/*'], ['styles']);
   gulp.watch([path.source + 'scripts/**/*'], ['jshint', 'scripts']);
   gulp.watch(['bower.json'], ['wiredep']);
-  gulp.watch('**/*.php').on('change', function(file) {
-    $.livereload.changed(file.path);
+  gulp.watch('**/*.php', function() {
+    browserSync.reload();
   });
 });
 
