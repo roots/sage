@@ -19,11 +19,11 @@ var path = manifest.paths;
 var config = manifest.config || {};
 
 // `globs` - These ultimately end up in their respective `gulp.src`.
-// - `globs.js` - array of asset-builder js Depenency objects. Example:
+// - `globs.js` - array of asset-builder js Dependency objects. Example:
 //   ```
 //   { type: 'js', name: 'main.js', globs: [] }
 //   ```
-// - `globs.css` an array of asset-builder css Depenency objects. Example:
+// - `globs.css` an array of asset-builder css Dependency objects. Example:
 //   ```
 //   { type: 'css', name: 'main.css', globs: [] }
 //   ```
@@ -34,7 +34,7 @@ var globs = manifest.globs;
 
 // `project` - paths to first-party assets.
 // - `project.js` - array of first-party js assets
-// - `project.css` - array of first-party js assets
+// - `project.css` - array of first-party css assets
 var project = manifest.getProjectGlobs();
 
 // CLI options
