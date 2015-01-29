@@ -19,22 +19,22 @@ var path = manifest.paths;
 var config = manifest.config || {};
 
 // `globs` - These ultimately end up in their respective `gulp.src`.
-// - `globs.js` - array of asset-builder js Dependency objects. Example:
+// - `globs.js` - Array of asset-builder js Dependency objects. Example:
 //   ```
-//   { type: 'js', name: 'main.js', globs: [] }
+//   {type: 'js', name: 'main.js', globs: []}
 //   ```
-// - `globs.css` an array of asset-builder css Dependency objects. Example:
+// - `globs.css` - Array of asset-builder css Dependency objects. Example:
 //   ```
-//   { type: 'css', name: 'main.css', globs: [] }
+//   {type: 'css', name: 'main.css', globs: []}
 //   ```
-// - `globs.fonts` - array of font path globs
-// - `globs.images` - array of image path globs
-// - `globs.bower` - array of all the bower main files
+// - `globs.fonts` - Array of font path globs.
+// - `globs.images` - Array of image path globs.
+// - `globs.bower` - Array of all the bower main files.
 var globs = manifest.globs;
 
 // `project` - paths to first-party assets.
-// - `project.js` - array of first-party js assets
-// - `project.css` - array of first-party css assets
+// - `project.js` - Array of first-party js assets.
+// - `project.css` - Array of first-party css assets.
 var project = manifest.getProjectGlobs();
 
 // CLI options
@@ -134,7 +134,7 @@ var writeToManifest = function(directory) {
 // Run `gulp -T` for a task summary
 
 // ### Styles
-// `gulp styles` - compiles, combines, and optimizes bower css and project css.
+// `gulp styles` - Compiles, combines, and optimizes bower css and project css.
 gulp.task('styles', function() {
   var merged = merge();
   manifest.forEachDependency('css', function(dep) {
@@ -146,8 +146,8 @@ gulp.task('styles', function() {
 });
 
 // ### Scripts
-// `gulp scripts` - runs jshint then compiles, combines, and optimizes bower
-// javascript and project javascript
+// `gulp scripts` - Runs jshint then compiles, combines, and optimizes bower
+// javascript and project javascript.
 gulp.task('scripts', ['jshint'], function() {
   var merged = merge();
   manifest.forEachDependency('js', function(dep) {
@@ -161,7 +161,7 @@ gulp.task('scripts', ['jshint'], function() {
 });
 
 // ### Fonts
-// `gulp fonts` - grabs all the fonts and outputs them in a flattened directory
+// `gulp fonts` - Grabs all the fonts and outputs them in a flattened directory
 // structure. See: https://github.com/armed/gulp-flatten
 gulp.task('fonts', function() {
   return gulp.src(globs.fonts)
@@ -170,7 +170,7 @@ gulp.task('fonts', function() {
 });
 
 // ### Images
-// `gulp images` - run lossless compression on all the images.
+// `gulp images` - Run lossless compression on all the images.
 gulp.task('images', function() {
   return gulp.src(globs.images)
     .pipe($.imagemin({
@@ -181,7 +181,7 @@ gulp.task('images', function() {
 });
 
 // ### JsHint
-// `gulp jshint` - lints configuration JSON and project javascript
+// `gulp jshint` - Lints configuration JSON and project javascript.
 gulp.task('jshint', function() {
   return gulp.src([
     'bower.json', 'gulpfile.js'
@@ -192,11 +192,15 @@ gulp.task('jshint', function() {
 });
 
 // ### Clean
-// `gulp clean` - deletes the build folder entirely
+// `gulp clean` - Deletes the build folder entirely.
 gulp.task('clean', require('del').bind(null, [path.dist]));
 
 // ### Watch
-// `gulp watch` - recompile assets whenever they change
+// `gulp watch` - Use BrowserSync to proxy your dev server and synchronize code
+// changes across devices. Specify the hostname of your dev server at
+// `manifest.config.devUrl`. When a modification is made to an asset, run the
+// build step for that asset and inject the changes into the page.
+// See: http://www.browsersync.io
 gulp.task('watch', function() {
   browserSync({
     proxy: config.devUrl
