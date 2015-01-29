@@ -4,7 +4,7 @@
 
   <!-- Use PSR-2 as a base -->
   <rule ref="PSR2">
-    <!-- Allow closing braces for functions and classes to be on the same line -->
+    <!-- Allow opening and closing braces for functions and classes to be on the same line -->
     <exclude name="Squiz.Functions.MultiLineFunctionDeclaration.BraceOnSameLine"/>
     <exclude name="PSR2.Classes.ClassDeclaration.OpenBraceNewLine"/>
     <exclude name="Squiz.WhiteSpace.ScopeClosingBrace"/>
