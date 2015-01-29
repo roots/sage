@@ -1,5 +1,4 @@
 <?php
-
 namespace Roots\Sage;
 
 use Roots\Sage\Config;
