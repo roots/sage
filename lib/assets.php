@@ -17,17 +17,34 @@ namespace Roots\Sage\Assets;
  * - An ID has been defined in config.php
  * - You're not logged in as an administrator
  */
+
+class JsonManifest {
+  private $manifest;
+
+  public function __construct($manifest_path) {
+    if (file_exists($manifest_path)) {
+      $this->manifest = json_decode(file_get_contents($manifest_path), true);
+    } else {
+      $this->manifest = [];
+    }
+  }
+
+  public function get() {
+    return $this->manifest;
+  }
+}
+
 function asset_path($filename) {
   $dist_path = get_template_directory_uri() . '/dist/';
   $directory = dirname($filename) . '/';
   $file = basename($filename);
 
-  $manifest_path = get_template_directory() . '/dist/assets.json';
+  static $manifest;
 
-  if (file_exists($manifest_path)) {
-    $manifest = json_decode(file_get_contents($manifest_path), true);
-  } else {
-    $manifest = [];
+  if (empty($manifest)) {
+    $manifest_path = get_template_directory() . '/dist/assets.json';
+    $manifest = new JsonManifest($manifest_path);
+    $manifest = $manifest->get();
   }
 
   if (WP_ENV !== 'development' && array_key_exists($file, $manifest)) {
