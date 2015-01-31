@@ -32,6 +32,24 @@ class JsonManifest {
   public function get() {
     return $this->manifest;
   }
+
+  public function getPath($key = '', $default = null) {
+    $collection = $this->manifest;
+    if (is_null($key)) {
+      return $collection;
+    }
+    if (isset($collection[$key])) {
+      return $collection[$key];
+    }
+    foreach (explode('.', $key) as $segment) {
+      if (!isset($collection[$segment])) {
+        return $default;
+      } else {
+        $collection = $collection[$segment];
+      }
+    }
+    return $collection;
+  }
 }
 
 function asset_path($filename) {
@@ -43,11 +61,10 @@ function asset_path($filename) {
   if (empty($manifest)) {
     $manifest_path = get_template_directory() . '/dist/assets.json';
     $manifest = new JsonManifest($manifest_path);
-    $manifest = $manifest->get();
   }
 
-  if (WP_ENV !== 'development' && array_key_exists($file, $manifest)) {
-    return $dist_path . $directory . $manifest[$file];
+  if (WP_ENV !== 'development' && array_key_exists($file, $manifest->get())) {
+    return $dist_path . $directory . $manifest->get()[$file];
   } else {
     return $dist_path . $directory . $file;
   }
@@ -59,14 +76,13 @@ function bower_map_to_cdn($dependency, $fallback) {
   if (empty($bower)) {
     $bower_path = get_template_directory() . '/bower.json';
     $bower = new JsonManifest($bower_path);
-    $bower = $bower->get();
   }
 
   $templates = [
     'google' => '//ajax.googleapis.com/ajax/libs/%name%/%version%/%file%'
   ];
 
-  $version = $bower['dependencies'][$dependency['name']];
+  $version = $bower->getPath('dependencies.' . $dependency['name']);
 
   if (isset($version) && preg_match('/^(\d+\.){2}\d+$/', $version)) {
     $search = ['%name%', '%version%', '%file%'];
