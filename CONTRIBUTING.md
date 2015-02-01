@@ -119,3 +119,22 @@ included in Sage:
 
 10. [Open a Pull Request](https://help.github.com/articles/using-pull-requests/)
     with a clear title and description.
+
+## Code Style Guides
+
+Every PHP contribution is run against a [PSR-2][] based ruleset. You can check if your contribution passes the styleguide by installing [phpcs][] and running the following in your project directory:
+
+```bash
+phpcs --standard=ruleset.xml --extensions=php -n -s .
+```
+
+Every JavaScript contribution is run against the [Google JavaScript Styleguide][google-js]. You can check if your contribution passes the styleguide by installing [jscs][] and running the following in your project directory:
+
+```bash
+npm run jscs
+```
+
+[PSR-2]: https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md
+[phpcs]: https://github.com/squizlabs/PHP_CodeSniffer
+[google-js]: https://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml
+[jscs]: http://jscs.info/
