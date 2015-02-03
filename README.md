@@ -1,4 +1,4 @@
-# [Roots Starter Theme](http://roots.io/)
+# [Roots Starter Theme - RTL](http://roots.io/)
 [![devDependency Status](https://david-dm.org/roots/roots/dev-status.svg)](https://david-dm.org/roots/roots#info=devDependencies)
 
 Roots is a WordPress starter theme based on [HTML5 Boilerplate](http://html5boilerplate.com/) & [Bootstrap](http://getbootstrap.com/) that will help you make better themes.
@@ -37,7 +37,7 @@ Install the [Soil](https://github.com/roots/soil) plugin to enable additional fe
 
 ## Installation
 
-Clone the git repo - `git clone git://github.com/roots/roots.git` - or [download it](https://github.com/roots/roots/zipball/master) and then rename the directory to the name of your theme or website.
+Clone the git repo - `git clone git://github.com/yakidahan/roots-rtl.git` - or [download it](https://github.com/yakidahan/roots-rtl/zipball/master) and then rename the directory to the name of your theme or website.
 
 If you don't use [Bedrock](https://github.com/roots/bedrock), you'll need to add the following to your `wp-config.php` on your development installation:
 
