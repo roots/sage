@@ -15,6 +15,7 @@ Sage is a WordPress starter theme based on [HTML5 Boilerplate](http://html5boile
 
 * PHP >= 5.4
 * Node.js >= 0.10
+* npm >= 2.1.5
 * gulp (`npm install -g gulp`)
 * Bower (`npm install -g bower`)
 
@@ -71,7 +72,7 @@ Sage uses [gulp](http://gulpjs.com/) as its build system and [Bower](http://bowe
 
 ### Install gulp and Bower
 
-**Unfamiliar with npm? Don't have node installed?** [Download and install node.js](http://nodejs.org/download/) before proceeding.
+Building the theme requires [node.js](http://nodejs.org/download/). We recommend you update to the latest version of npm: `npm install -g npm@latest`.
 
 From the command line:
 

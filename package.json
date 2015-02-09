@@ -23,7 +23,8 @@
     "jscs": "jscs gulpfile.js assets/scripts/*.js"
   },
   "engines": {
-    "node": ">= 0.10.0"
+    "node": ">= 0.10.0",
+    "npm": ">=2.1.5"
   },
   "devDependencies": {
     "asset-builder": "^0.3.5",
