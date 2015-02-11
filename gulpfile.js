@@ -207,7 +207,8 @@ gulp.task('watch', function() {
   browserSync({
     proxy: config.devUrl,
     snippetOptions: {
-      ignorePaths: 'wp-admin/**'
+      whitelist: ['/wp-admin/admin-ajax.php'],
+      blacklist: ['/wp-admin/**']
     }
   });
   gulp.watch([path.source + 'styles/**/*'], ['styles']);
