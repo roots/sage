@@ -28,7 +28,7 @@
   },
   "devDependencies": {
     "asset-builder": "^0.3.5",
-    "browser-sync": "^1.9.1",
+    "browser-sync": "^2.0.1",
     "del": "^1.1.1",
     "gulp": "^3.8.10",
     "gulp-changed": "^1.1.0",
