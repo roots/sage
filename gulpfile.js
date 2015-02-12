@@ -177,7 +177,8 @@ gulp.task('images', function() {
   return gulp.src(globs.images)
     .pipe($.imagemin({
       progressive: true,
-      interlaced: true
+      interlaced: true,
+      svgoPlugins: [{removeUnknownsAndDefaults: false}]
     }))
     .pipe(gulp.dest(path.dist + 'images'));
 });
