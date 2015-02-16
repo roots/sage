@@ -1,0 +1,326 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"back",
+				"background-color"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+			[
+				"ssma",
+				"Set Syntax: Markdown"
+			],
+			[
+				"rena",
+				"File: Rename"
+			],
+			[
+				"pacins",
+				"Package Control: Install Package"
+			],
+			[
+				"proje",
+				"Project: Save As"
+			],
+			[
+				"renam",
+				"File: Rename"
+			],
+			[
+				"rename",
+				"File: Rename"
+			],
+			[
+				"packins",
+				"Package Control: Install Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"ssLe",
+				"Set Syntax: LESS"
+			],
+			[
+				"mkpre",
+				"Markdown Preview: Open Markdown Cheat sheet"
+			],
+			[
+				"map",
+				"Markdown Preview: Preview in Browser"
+			],
+			[
+				"packin",
+				"Package Control: Install Package"
+			],
+			[
+				"mkdown",
+				"Set Syntax: Markdown GFM"
+			],
+			[
+				"markdown",
+				"MarkdownEditing: Fix Underlined Headers"
+			],
+			[
+				"pacin",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 400.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '2deb499853c4371624f5a07e27c334aa' + 'bf8c4e67d14fb0525ba4f89698a6d7e1'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/D/Bitnami/wordpress-4.1-0/apps/wordpress/htdocs/wp-content/themes/captain-roots"
+	],
+	"file_history":
+	[
+		"/D/dzspace/captain-wp-theme/bulid/styles/main.css",
+		"/D/dzspace/captain-wp-theme/bulid/index.html",
+		"/D/dzspace/Dropbox/Public/dezang-net/money]credit-card-guide.md",
+		"/D/dzspace/Dropbox/Public/dezang-net/wordpress]theme_제작_가이드.md",
+		"/D/dzspace/Dropbox/Public/dezang-net/tool]sublime-guide.md",
+		"/D/dzspace/Dropbox/Public/dezang-net/[tool-728]sublime-project.md",
+		"/D/dzspace/Dropbox/Public/dezang-net/dzposts.sublime-project",
+		"/D/dzspace/Dropbox/Public/dezang-net/.gitignore",
+		"/D/dzspace/Dropbox/Public/dezang-net/tool]yeoman.md",
+		"/D/dzspace/Dropbox/Public/dezang-net/sublime install package list.md",
+		"/D/dzspace/Dropbox/Public/dezang-net/setting-up-a-coustom-domain-with-pages.html.md",
+		"/D/dzspace/Dropbox/Public/dezang-net/server]아파치.md",
+		"/D/dzspace/Dropbox/Public/dezang-net/learning-sublime.html.md",
+		"/D/dzspace/Dropbox/Public/dezang-net/learning-bootstrap.html.md",
+		"/D/dzspace/Dropbox/Public/dezang-net/launchy.md",
+		"/D/dzspace/Dropbox/Public/dezang-net/make-snippet-on-sublime.html.md",
+		"/D/dzspace/Dropbox/Public/dezang-net/sublime의 필수품 package control 설치와 사용법.md",
+		"/D/dzspace/Dropbox/Public/dezang-net/sublime에서 markdown 편리하게 사용하는 방법.md",
+		"/D/dzspace/Dropbox/Public/dezang-net/tool]grunt_guide.md",
+		"/D/dzspace/Dropbox/Public/dezang-net/tool]sublime_공부하기.md",
+		"/D/dzspace/Dropbox/Public/dezang-net/tool]sublime_환경설정.md",
+		"/D/dzspace/Dropbox/Public/dezang-net/tool]sublime 추천 플러그인.md",
+		"/D/dzspace/Dropbox/Public/dezang-net/git-real.md",
+		"/D/dzspace/Dropbox/Public/dezang-net/git.md",
+		"/D/dzspace/Dropbox/Public/dezang-net/[wordpress-600]FTP_인증_오류_해결_방법.md",
+		"/D/dzspace/Dropbox/Public/dezang-net/tip]generating_ssh_keys_for_github.md",
+		"/D/dzspace/Dropbox/Public/dezang-net/tool]chrome-extension-window-resizer.md",
+		"/D/dzspace/Dropbox/Public/dezang-net/web]Docpad 공부하기.md",
+		"/D/dzspace/Dropbox/Public/dezang-net/php.md",
+		"/D/Bitnami/wordpress-4.1-0/apache2/conf/httpd.conf",
+		"/D/dzspace/Dropbox/Public/dezang-net/[review-157]비긴어게인.md",
+		"/D/Wnmp/logs/error.log",
+		"/D/Wnmp/conf/nginx.conf",
+		"/D/dzspace/Dropbox/Public/dezang-net/[think-66]회사에서_자유롭게_여행을_갈수있다는것.md",
+		"/D/dzspace/Dropbox/Public/dezang-net/[server-61]서브도메인_가상호스트_설정.md",
+		"/D/dzspace/Dropbox/Public/dezang-net/[server-52]phps_가상서버호스팅_후기.md",
+		"/D/dzspace/Dropbox/Public/dezang-net/[linux-59]alias사용법과_추천설정.md",
+		"/D/dzspace/Dropbox/Public/dezang-net/[linux-38]user_group_목록조회.md",
+		"/D/dzspace/Dropbox/Public/dezang-net/[linux-582]GPG_공개키_인증_오류_해결.md",
+		"/D/dzspace/Dropbox/Public/dezang-net/[linux-489]우분투초기설정.md",
+		"/D/dzspace/Dropbox/Public/dezang-net/blog]트래픽이필요해.md",
+		"/D/dzspace/Dropbox/Public/dezang-net/[java-22]spring 초기화 중복 문제 해결.md",
+		"/D/dzspace/Dropbox/dezang-net/.gitignore",
+		"/D/dezang-net/web]부트스트랩 배우기.md",
+		"/D/dezang-net/tool]서브라임 공부하기.md",
+		"/D/dezang-net/think]것같은 시기.md",
+		"/D/dezang-net/아이폰화면녹화하기.md",
+		"/D/dezang-net/아이폰 화면 녹화하기.md",
+		"/C/Users/IMinvestib/Dropbox/Public/dezang-net/Docpad.md",
+		"/D/util/Cloud SDK/google-cloud-sdk/lib/googlecloudsdk/compute/lib/ssh_utils.py",
+		"/D/check.py",
+		"/D/dzspace/testyo/app/styles/main.less",
+		"/D/dzspace/testyo/app/index.html",
+		"/D/util/Cloud SDK/google-cloud-sdk/lib/googlecloudsdk/compute/lib/ssh_utils.pyc",
+		"/D/dzspace/setEncoding.py",
+		"/C/python27_x64/Lib/site.pyc",
+		"/C/python27_x64/Lib/site.py",
+		"/D/dzspace/testyo/gulpfile.js",
+		"/D/dzspace/testyo/.gitignore",
+		"/D/dzspace/testyo/consolas_맑은고딕.md",
+		"/C/Users/IMinvestib/Dropbox/article/Notes & Settings",
+		"/C/Users/IMinvestib/AppData/Roaming/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
+		"/C/Users/IMinvestib/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/D/dzspace/dzconfig/Preferences.sublime-settings",
+		"/C/Users/IMinvestib/AppData/Roaming/Sublime Text 3/Packages/User/Default (Windows).sublime-keymap",
+		"/D/dezang-net/sublime.md",
+		"/C/Users/IMinvestib/Desktop/RegionalSystemSoundsThatShareBehaviour.plist"
+	],
+	"find":
+	{
+		"height": 26.0
+	},
+	"find_in_files":
+	{
+		"height": 90.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"myad",
+			"php",
+			"phpmy",
+			"wordpress",
+			"asc",
+			"decode",
+			"scss"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 26.0
+	},
+	"input":
+	{
+		"height": 34.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.markdown":
+	{
+		"height": 100.0
+	},
+	"project": "captain-on-roots.sublime-project",
+	"replace":
+	{
+		"height": 48.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"sublgi",
+				"tool]sublime-guide.md"
+			],
+			[
+				"lear",
+				"learning-sublime.html.md"
+			],
+			[
+				"sublime",
+				"tool]sublime_공부하기.md"
+			],
+			[
+				"grunt",
+				"tool]grunt_guide.md"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 37.0,
+		"selected_items":
+		[
+			[
+				"트래픽",
+				"# 트래픽이 필요해"
+			],
+			[
+				"비밀번호",
+				"## 2 단계 - 비밀번호 변경"
+			]
+		],
+		"width": 529.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 199.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

@@ -1,9 +1,9 @@
 {
-  "name": "roots",
+  "name": "captain",
   "version": "7.0.3",
-  "homepage": "http://roots.io",
+  "homepage": "https://dezang.net",
   "authors": [
-    "Ben Word <ben@benword.com>"
+    "Dezang <dezang@dezang.net>"
   ],
   "license": "MIT",
   "private": true,
