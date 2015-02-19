@@ -2,6 +2,8 @@
 
 namespace Roots\Sage\Sidebar;
 
+use Roots\Sage\Wrapper;
+
 /**
  * Determines whether or not to display the sidebar based on an array of conditional tags or page templates.
  *
@@ -44,6 +46,6 @@ class SageSidebar {
   }
 
   private function checkPageTemplate($page_template) {
-    return is_page_template($page_template);
+    return is_page_template($page_template) || Wrapper\SageWrapping::$base . '.php' === $page_template;
   }
 }
