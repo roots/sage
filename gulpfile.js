@@ -11,30 +11,30 @@ var merge       = require('merge-stream');
 var manifest = require('asset-builder')('./assets/manifest.json');
 
 // `path` - Paths to base asset directories. With trailing slashes.
-// - `path.source` - Path to the source files. default: `assets/`
-// - `path.dist` - Path to the build directory. default: `dist/`
+// - `path.source` - Path to the source files. Default: `assets/`
+// - `path.dist` - Path to the build directory. Default: `dist/`
 var path = manifest.paths;
 
 // `config` - Store arbitrary configuration values here.
 var config = manifest.config || {};
 
 // `globs` - These ultimately end up in their respective `gulp.src`.
-// - `globs.js` - Array of asset-builder js Dependency objects. Example:
+// - `globs.js` - Array of asset-builder JS dependency objects. Example:
 //   ```
 //   {type: 'js', name: 'main.js', globs: []}
 //   ```
-// - `globs.css` - Array of asset-builder css Dependency objects. Example:
+// - `globs.css` - Array of asset-builder CSS dependency objects. Example:
 //   ```
 //   {type: 'css', name: 'main.css', globs: []}
 //   ```
 // - `globs.fonts` - Array of font path globs.
 // - `globs.images` - Array of image path globs.
-// - `globs.bower` - Array of all the bower main files.
+// - `globs.bower` - Array of all the main Bower files.
 var globs = manifest.globs;
 
 // `project` - paths to first-party assets.
-// - `project.js` - Array of first-party js assets.
-// - `project.css` - Array of first-party css assets.
+// - `project.js` - Array of first-party JS assets.
+// - `project.css` - Array of first-party CSS assets.
 var project = manifest.getProjectGlobs();
 
 // CLI options
@@ -49,7 +49,7 @@ var enabled = {
 var revManifest = path.dist + 'assets.json';
 
 // ## Reusable Pipelines
-// see https://github.com/OverZealous/lazypipe
+// See https://github.com/OverZealous/lazypipe
 
 // ### CSS processing pipeline
 // Example
@@ -116,7 +116,7 @@ var jsTasks = function(filename) {
     })();
 };
 
-// ### Write to Rev Manifest
+// ### Write to rev manifest
 // If there are any revved files then write them to the rev manifest.
 // See https://github.com/sindresorhus/gulp-rev
 var writeToManifest = function(directory) {
@@ -132,11 +132,11 @@ var writeToManifest = function(directory) {
     .pipe(gulp.dest, path.dist)();
 };
 
-// ## Gulp Tasks
+// ## Gulp tasks
 // Run `gulp -T` for a task summary
 
 // ### Styles
-// `gulp styles` - Compiles, combines, and optimizes bower css and project css.
+// `gulp styles` - Compiles, combines, and optimizes Bower CSS and project CSS.
 gulp.task('styles', function() {
   var merged = merge();
   manifest.forEachDependency('css', function(dep) {
@@ -148,8 +148,8 @@ gulp.task('styles', function() {
 });
 
 // ### Scripts
-// `gulp scripts` - Runs jshint then compiles, combines, and optimizes bower
-// javascript and project javascript.
+// `gulp scripts` - Runs JSHint then compiles, combines, and optimizes Bower JS
+// and project JS.
 gulp.task('scripts', ['jshint'], function() {
   var merged = merge();
   manifest.forEachDependency('js', function(dep) {
@@ -183,8 +183,8 @@ gulp.task('images', function() {
     .pipe(gulp.dest(path.dist + 'images'));
 });
 
-// ### JsHint
-// `gulp jshint` - Lints configuration JSON and project javascript.
+// ### JSHint
+// `gulp jshint` - Lints configuration JSON and project JS.
 gulp.task('jshint', function() {
   return gulp.src([
     'bower.json', 'gulpfile.js'
@@ -228,7 +228,7 @@ gulp.task('watch', function() {
 gulp.task('build', ['styles', 'scripts', 'fonts', 'images']);
 
 // ### Wiredep
-// `gulp wiredep` - Automatically inject less and Sass bower dependencies. See
+// `gulp wiredep` - Automatically inject Less and Sass Bower dependencies. See
 // https://github.com/taptapship/wiredep
 gulp.task('wiredep', function() {
   var wiredep = require('wiredep').stream;
