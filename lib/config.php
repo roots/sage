@@ -2,7 +2,7 @@
 
 namespace Roots\Sage\Config;
 
-use Roots\Sage\Sidebar;
+use Roots\Sage;
 
 /**
  * Enable theme features
@@ -42,30 +42,33 @@ function display_sidebar() {
   static $display;
 
   if (!isset($display)) {
-    $sidebar_config = new Sidebar\SageSidebar(
+    $conditionalCheck = new ConditionalTagCheck(
       /**
-       * Conditional tag checks (http://codex.wordpress.org/Conditional_Tags)
-       * Any of these conditional tags that return true won't show the sidebar
+       * Any of these conditional tags that return true won't show the sidebar.
+       * You can also specify your own custom function as long as it returns a boolean.
        *
        * To use a function that accepts arguments, use the following format:
        *
        * ['function_name', ['arg1', 'arg2']]
        *
-       * The second element must be an array even if there's only 1 argument.
+       * Note: The second element must be an array even if there's only 1 argument.
+       *
+       * Examples:
+       *
+       * 'is_single'
+       * ['is_page', ['about-me']]
+       * ['is_tax', ['flavor', 'mild']]
+       * ['is_page_template', ['about.php']]
+       * ['is_post_type_archive', [['foo', 'bar', 'baz']]]
+       *
        */
       [
         'is_404',
         'is_front_page'
-      ],
-      /**
-       * Page template checks (via is_page_template())
-       * Any of these page templates that return true won't show the sidebar
-       */
-      [
-        'template-custom.php'
       ]
     );
-    $display = apply_filters('sage/display_sidebar', $sidebar_config->display);
+
+    $display = apply_filters('sage/display_sidebar', $conditionalCheck->result);
   }
 
   return $display;
