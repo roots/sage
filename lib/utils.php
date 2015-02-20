@@ -13,19 +13,6 @@ function get_search_form() {
 add_filter('get_search_form', __NAMESPACE__ . '\\get_search_form');
 
 /**
- * Add page slug to body_class() classes if it doesn't exist
- */
-function body_class($classes) {
-  if (is_single() || is_page() && !is_front_page()) {
-    if (!in_array(basename(get_permalink()), $classes)) {
-      $classes[] = basename(get_permalink());
-    }
-  }
-  return $classes;
-}
-add_filter('body_class', __NAMESPACE__ . '\\body_class');
-
-/**
  * Make a URL relative
  */
 function root_relative_url($input) {
