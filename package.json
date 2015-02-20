@@ -2,7 +2,7 @@
   "name": "sage",
   "version": "8.0.0",
   "author": "Ben Word <ben@benword.com>",
-  "homepage": "http://roots.io/sage/",
+  "homepage": "https://roots.io/sage/",
   "private": true,
   "repository": {
     "type": "git",

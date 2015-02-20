@@ -1,15 +1,15 @@
-# [Sage Starter Theme](http://roots.io/sage/)
+# [Sage](https://roots.io/sage/)
 [![Build Status](https://travis-ci.org/roots/roots.svg)](https://travis-ci.org/roots/roots)
 [![devDependency Status](https://david-dm.org/roots/roots/dev-status.svg)](https://david-dm.org/roots/roots#info=devDependencies)
 
 Sage is a WordPress starter theme based on [HTML5 Boilerplate](http://html5boilerplate.com/) that will help you make better themes.
 
 * Source: [https://github.com/roots/sage](https://github.com/roots/sage)
-* Homepage: [http://roots.io/sage/](http://roots.io/sage/)
-* Documentation: [http://roots.io/sage/getting-started/](http://roots.io/sage/getting-started/)
+* Homepage: [https://roots.io/sage/](https://roots.io/sage/)
+* Documentation: [https://roots.io/sage/docs/](https://roots.io/sage/docs/)
 * Twitter: [@rootswp](https://twitter.com/rootswp), [@retlehs](https://twitter.com/retlehs), [@swalkinshaw](https://twitter.com/swalkinshaw), [@Foxaii](https://twitter.com/Foxaii), [@c2foryou](https://twitter.com/c2foryou), [@austinpray](https://twitter.com/austinpray)
 * Newsletter: [Subscribe](http://roots.io/subscribe/)
-* Forum: [http://discourse.roots.io/](http://discourse.roots.io/)
+* Forum: [https://discourse.roots.io/](https://discourse.roots.io/)
 
 ## Requirements
 
@@ -29,10 +29,10 @@ Sage is a WordPress starter theme based on [HTML5 Boilerplate](http://html5boile
   * An optimized Google Analytics snippet
 * [Bootstrap](http://getbootstrap.com/)
 * ARIA roles and microformats
-* [Theme wrapper](http://roots.io/sage/getting-started/theme-wrapper/)
+* [Theme wrapper](https://roots.io/sage/docs/theme-wrapper/)
 * Cleaner HTML output of navigation menus
 * Posts use the [hNews](http://microformats.org/wiki/hnews) microformat
-* [Multilingual ready](http://roots.io/wpml/) and over 30 available [community translations](https://github.com/roots/sage-translations)
+* [Multilingual ready](https://roots.io/wpml/) and over 30 available [community translations](https://github.com/roots/sage-translations)
 
 ### Go further with Sage
 
@@ -91,7 +91,7 @@ You now have all the necessary dependencies to run the build process.
 
 ## Documentation
 
-Sage documentation is available at [http://roots.io/sage/getting-started/](http://roots.io/sage/getting-started/).
+Sage documentation is available at [https://roots.io/sage/docs/](https://roots.io/sage/docs/).
 
 ## Contributing
 
@@ -101,6 +101,6 @@ Contributions are welcome from everyone. We have [contributing guidelines](CONTR
 
 Keep track of development and community news.
 
-* Participate on the [Roots Discourse](http://discourse.roots.io/)
+* Participate on the [Roots Discourse](https://discourse.roots.io/)
 * Follow [@rootswp on Twitter](https://twitter.com/rootswp)
-* Read and subscribe to the [Roots Blog](http://roots.io/blog/)
+* Read and subscribe to the [Roots Blog](https://roots.io/blog/)

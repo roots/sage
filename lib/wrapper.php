@@ -5,7 +5,7 @@ namespace Roots\Sage\Wrapper;
 /**
  * Theme wrapper
  *
- * @link http://roots.io/getting-started/theme-wrapper/
+ * @link https://roots.io/sage/docs/theme-wrapper/
  * @link http://scribu.net/wordpress/theme-wrappers.html
  */
 
