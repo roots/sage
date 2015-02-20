@@ -9,40 +9,32 @@ use Roots\Sage;
  */
 add_theme_support('soil-clean-up');         // Enable clean up from Soil
 add_theme_support('soil-relative-urls');    // Enable relative URLs from Soil
-add_theme_support('soil-nice-search');      // Enable /?s= to /search/ redirect from Soil
+add_theme_support('soil-nice-search');      // Enable nice search from Soil
 add_theme_support('bootstrap-gallery');     // Enable Bootstrap's thumbnails component on [gallery]
 add_theme_support('jquery-cdn');            // Enable to load jQuery from the Google CDN
 
 /**
  * Configuration values
  */
-define('GOOGLE_ANALYTICS_ID', ''); // UA-XXXXX-Y (Note: Universal Analytics only, not Classic Analytics)
+if (!defined('GOOGLE_ANALYTICS_ID')) {
+  // Format: UA-XXXXX-Y (Note: Universal Analytics only)
+  define('GOOGLE_ANALYTICS_ID', '');
+}
 
 if (!defined('WP_ENV')) {
-  define('WP_ENV', 'production');  // assets.php checks for values 'production' or 'development'
+  // Fallback if WP_ENV isn't defined in your WordPress config
+  // Used in lib/assets.php to check for 'development' or 'production'
+  define('WP_ENV', 'production');
 }
-
-/**
- * Add body class if sidebar is active
- */
-function sidebar_body_class($classes) {
-  if (display_sidebar()) {
-    $classes[] = 'sidebar-primary';
-  }
-  return $classes;
-}
-add_filter('body_class', __NAMESPACE__ . '\\sidebar_body_class');
 
 /**
  * Define which pages shouldn't have the sidebar
- *
- * See lib/sidebar.php for more details
  */
 function display_sidebar() {
   static $display;
 
   if (!isset($display)) {
-    $conditionalCheck = new ConditionalTagCheck(
+    $conditionalCheck = new Sage\ConditionalTagCheck(
       /**
        * Any of these conditional tags that return true won't show the sidebar.
        * You can also specify your own custom function as long as it returns a boolean.
@@ -56,6 +48,7 @@ function display_sidebar() {
        * Examples:
        *
        * 'is_single'
+       * 'is_archive'
        * ['is_page', ['about-me']]
        * ['is_tax', ['flavor', 'mild']]
        * ['is_page_template', ['about.php']]
@@ -81,4 +74,6 @@ function display_sidebar() {
  * Example: If the content area is 640px wide, set $content_width = 620; so images and videos will not overflow.
  * Default: 1140px is the default Bootstrap container width.
  */
-if (!isset($content_width)) { $content_width = 1140; }
+if (!isset($content_width)) {
+  $content_width = 1140;
+}
