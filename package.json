@@ -52,6 +52,6 @@
     "merge-stream": "^0.1.7",
     "traverse": "^0.6.6",
     "wiredep": "^2.1.0",
-    "yargs": "^2.3.0"
+    "yargs": "^3.2.1"
   }
 }
