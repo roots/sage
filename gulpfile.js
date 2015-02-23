@@ -234,7 +234,9 @@ gulp.task('wiredep', function() {
   var wiredep = require('wiredep').stream;
   return gulp.src(project.css)
     .pipe(wiredep())
-    .pipe($.changed(path.source + 'styles'))
+    .pipe($.changed(path.source + 'styles', {
+      hasChanged: $.changed.compareSha1Digest
+    }))
     .pipe(gulp.dest(path.source + 'styles'));
 });
 
