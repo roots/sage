@@ -137,7 +137,7 @@ var writeToManifest = function(directory) {
 
 // ### Styles
 // `gulp styles` - Compiles, combines, and optimizes Bower CSS and project CSS.
-gulp.task('styles', function() {
+gulp.task('styles', ['wiredep'], function() {
   var merged = merge();
   manifest.forEachDependency('css', function(dep) {
     merged.add(gulp.src(dep.globs, {base: 'styles'})
