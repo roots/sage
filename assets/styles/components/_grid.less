@@ -1,10 +1,10 @@
-// Content wrapper
-.wrap { }
-
-// Main content area
+// Grid system
 .main {
   .make-sm-column(@main-sm-columns);
   .sidebar-primary & {
     .make-sm-column(@main-sm-columns - @sidebar-sm-columns);
   }
+}
+.sidebar {
+  .make-sm-column(@sidebar-sm-columns);
 }

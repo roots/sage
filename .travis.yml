@@ -1,0 +1,19 @@
+sudo: false
+language: php
+php:
+- '5.6'
+- '5.5'
+- '5.4'
+
+before_install:
+  - npm install -g npm@latest
+  - npm install -g bower gulp jscs
+  - npm install
+  - pyrus install pear/PHP_CodeSniffer
+  - phpenv rehash
+
+script:
+  - npm run build
+  - npm run jshint
+  - npm run jscs
+  - phpcs --standard=ruleset.xml --extensions=php -n -s .

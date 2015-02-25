@@ -1,67 +1,68 @@
 <?php
+
+namespace Roots\Sage\Config;
+
+use Roots\Sage;
+
 /**
  * Enable theme features
  */
 add_theme_support('soil-clean-up');         // Enable clean up from Soil
 add_theme_support('soil-relative-urls');    // Enable relative URLs from Soil
-add_theme_support('soil-nice-search');      // Enable /?s= to /search/ redirect from Soil
+add_theme_support('soil-nice-search');      // Enable nice search from Soil
 add_theme_support('bootstrap-gallery');     // Enable Bootstrap's thumbnails component on [gallery]
 add_theme_support('jquery-cdn');            // Enable to load jQuery from the Google CDN
 
 /**
  * Configuration values
  */
-define('GOOGLE_ANALYTICS_ID', ''); // UA-XXXXX-Y (Note: Universal Analytics only, not Classic Analytics)
+if (!defined('GOOGLE_ANALYTICS_ID')) {
+  // Format: UA-XXXXX-Y (Note: Universal Analytics only)
+  define('GOOGLE_ANALYTICS_ID', '');
+}
 
 if (!defined('WP_ENV')) {
-  define('WP_ENV', 'production');  // scripts.php checks for values 'production' or 'development'
+  // Fallback if WP_ENV isn't defined in your WordPress config
+  // Used in lib/assets.php to check for 'development' or 'production'
+  define('WP_ENV', 'production');
 }
-
-/**
- * Add body class if sidebar is active
- */
-function roots_sidebar_body_class($classes) {
-  if (roots_display_sidebar()) {
-    $classes[] = 'sidebar-primary';
-  }
-  return $classes;
-}
-add_filter('body_class', 'roots_sidebar_body_class');
 
 /**
  * Define which pages shouldn't have the sidebar
- *
- * See lib/sidebar.php for more details
  */
-function roots_display_sidebar() {
+function display_sidebar() {
   static $display;
 
   if (!isset($display)) {
-    $sidebar_config = new Roots_Sidebar(
+    $conditionalCheck = new Sage\ConditionalTagCheck(
       /**
-       * Conditional tag checks (http://codex.wordpress.org/Conditional_Tags)
-       * Any of these conditional tags that return true won't show the sidebar
+       * Any of these conditional tags that return true won't show the sidebar.
+       * You can also specify your own custom function as long as it returns a boolean.
        *
        * To use a function that accepts arguments, use the following format:
        *
-       * array('function_name', array('arg1', 'arg2'))
+       * ['function_name', ['arg1', 'arg2']]
        *
-       * The second element must be an array even if there's only 1 argument.
+       * Note: The second element must be an array even if there's only 1 argument.
+       *
+       * Examples:
+       *
+       * 'is_single'
+       * 'is_archive'
+       * ['is_page', ['about-me']]
+       * ['is_tax', ['flavor', 'mild']]
+       * ['is_page_template', ['about.php']]
+       * ['is_post_type_archive', [['foo', 'bar', 'baz']]]
+       *
        */
-      array(
+      [
         'is_404',
         'is_front_page'
-      ),
-      /**
-       * Page template checks (via is_page_template())
-       * Any of these page templates that return true won't show the sidebar
-       */
-      array(
-        'template-custom.php'
-      )
+      ]
     );
-    $display = apply_filters('roots/display_sidebar', $sidebar_config->display);
-  }  
+
+    $display = apply_filters('sage/display_sidebar', $conditionalCheck->result);
+  }
 
   return $display;
 }
@@ -73,4 +74,6 @@ function roots_display_sidebar() {
  * Example: If the content area is 640px wide, set $content_width = 620; so images and videos will not overflow.
  * Default: 1140px is the default Bootstrap container width.
  */
-if (!isset($content_width)) { $content_width = 1140; }
+if (!isset($content_width)) {
+  $content_width = 1140;
+}

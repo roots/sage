@@ -1,21 +1,63 @@
 {
-  "name": "roots",
-  "version": "7.0.3",
-  "homepage": "http://roots.io",
+  "name": "sage",
+  "homepage": "https://roots.io/sage/",
   "authors": [
     "Ben Word <ben@benword.com>"
   ],
   "license": "MIT",
   "private": true,
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "assets/vendor"
-  ],
   "dependencies": {
     "modernizr": "2.8.2",
-    "jquery": "1.11.1",
-    "bootstrap": "3.3.1",
-    "respond": "1.4.2"
+    "jquery": "1.11.2",
+    "bootstrap": "3.3.2"
+  },
+  "overrides": {
+    "modernizr": {
+      "main": "./modernizr.js"
+    },
+    "bootstrap": {
+      "main": [
+        "./less/bootstrap.less",
+        "./js/transition.js",
+        "./js/alert.js",
+        "./js/button.js",
+        "./js/carousel.js",
+        "./js/collapse.js",
+        "./js/dropdown.js",
+        "./js/modal.js",
+        "./js/tooltip.js",
+        "./js/popover.js",
+        "./js/scrollspy.js",
+        "./js/tab.js",
+        "./js/affix.js",
+        "./fonts/glyphicons-halflings-regular.eot",
+        "./fonts/glyphicons-halflings-regular.svg",
+        "./fonts/glyphicons-halflings-regular.ttf",
+        "./fonts/glyphicons-halflings-regular.woff",
+        "./fonts/glyphicons-halflings-regular.woff2"
+      ]
+    },
+    "bootstrap-sass-official": {
+      "main": [
+        "./assets/stylesheets/_bootstrap.scss",
+        "./assets/javascripts/bootstrap/transition.js",
+        "./assets/javascripts/bootstrap/alert.js",
+        "./assets/javascripts/bootstrap/button.js",
+        "./assets/javascripts/bootstrap/carousel.js",
+        "./assets/javascripts/bootstrap/collapse.js",
+        "./assets/javascripts/bootstrap/dropdown.js",
+        "./assets/javascripts/bootstrap/modal.js",
+        "./assets/javascripts/bootstrap/tooltip.js",
+        "./assets/javascripts/bootstrap/popover.js",
+        "./assets/javascripts/bootstrap/scrollspy.js",
+        "./assets/javascripts/bootstrap/tab.js",
+        "./assets/javascripts/bootstrap/affix.js",
+        "./assets/fonts/bootstrap/glyphicons-halflings-regular.eot",
+        "./assets/fonts/bootstrap/glyphicons-halflings-regular.svg",
+        "./assets/fonts/bootstrap/glyphicons-halflings-regular.ttf",
+        "./assets/fonts/bootstrap/glyphicons-halflings-regular.woff",
+        "./assets/fonts/bootstrap/glyphicons-halflings-regular.woff2"
+      ]
+    }
   }
 }

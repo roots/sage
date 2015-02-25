@@ -1,4 +1,7 @@
 <?php
+
+namespace Roots\Sage\Gallery;
+
 /**
  * Clean up gallery_shortcode()
  *
@@ -7,7 +10,7 @@
  *
  * @link http://getbootstrap.com/components/#thumbnails
  */
-function roots_gallery($attr) {
+function gallery($attr) {
   $post = get_post();
 
   static $instance = 0;
@@ -33,7 +36,7 @@ function roots_gallery($attr) {
     }
   }
 
-  extract(shortcode_atts(array(
+  extract(shortcode_atts([
     'order'      => 'ASC',
     'orderby'    => 'menu_order ID',
     'id'         => $post->ID,
@@ -45,7 +48,7 @@ function roots_gallery($attr) {
     'include'    => '',
     'exclude'    => '',
     'link'       => ''
-  ), $attr));
+  ], $attr));
 
   $id = intval($id);
   $columns = (12 % $columns == 0) ? $columns: 4;
@@ -56,16 +59,16 @@ function roots_gallery($attr) {
   }
 
   if (!empty($include)) {
-    $_attachments = get_posts(array('include' => $include, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby));
+    $_attachments = get_posts(['include' => $include, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby]);
 
-    $attachments = array();
+    $attachments = [];
     foreach ($_attachments as $key => $val) {
       $attachments[$val->ID] = $_attachments[$key];
     }
   } elseif (!empty($exclude)) {
-    $attachments = get_children(array('post_parent' => $id, 'exclude' => $exclude, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby));
+    $attachments = get_children(['post_parent' => $id, 'exclude' => $exclude, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby]);
   } else {
-    $attachments = get_children(array('post_parent' => $id, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby));
+    $attachments = get_children(['post_parent' => $id, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby]);
   }
 
   if (empty($attachments)) {
@@ -90,7 +93,7 @@ function roots_gallery($attr) {
         $image = wp_get_attachment_link($id, $size, false, false);
         break;
       case 'none':
-        $image = wp_get_attachment_image($id, $size, false, array('class' => 'thumbnail img-thumbnail'));
+        $image = wp_get_attachment_image($id, $size, false, ['class' => 'thumbnail img-thumbnail']);
         break;
       default:
         $image = wp_get_attachment_link($id, $size, true, false);
@@ -115,15 +118,15 @@ function roots_gallery($attr) {
 }
 if (current_theme_supports('bootstrap-gallery')) {
   remove_shortcode('gallery');
-  add_shortcode('gallery', 'roots_gallery');
+  add_shortcode('gallery', __NAMESPACE__ . '\\gallery');
   add_filter('use_default_gallery_style', '__return_null');
 }
 
 /**
  * Add class="thumbnail img-thumbnail" to attachment items
  */
-function roots_attachment_link_class($html) {
+function attachment_link_class($html) {
   $html = str_replace('<a', '<a class="thumbnail img-thumbnail"', $html);
   return $html;
 }
-add_filter('wp_get_attachment_link', 'roots_attachment_link_class', 10, 1);
+add_filter('wp_get_attachment_link', __NAMESPACE__ . '\\attachment_link_class', 10, 1);

@@ -1,53 +1,56 @@
-# [Roots Starter Theme](http://roots.io/)
-[![devDependency Status](https://david-dm.org/roots/roots/dev-status.svg)](https://david-dm.org/roots/roots#info=devDependencies)
+# [Sage](https://roots.io/sage/)
+[![Build Status](https://travis-ci.org/roots/sage.svg)](https://travis-ci.org/roots/sage)
+[![devDependency Status](https://david-dm.org/roots/sage/dev-status.svg)](https://david-dm.org/roots/sage#info=devDependencies)
 
-Roots is a WordPress starter theme based on [HTML5 Boilerplate](http://html5boilerplate.com/) & [Bootstrap](http://getbootstrap.com/) that will help you make better themes.
+Sage is a WordPress starter theme based on HTML5 Boilerplate, gulp, Bower, and Bootstrap, that will help you make better themes.
 
-* Source: [https://github.com/roots/roots](https://github.com/roots/roots)
-* Homepage: [http://roots.io/](http://roots.io/)
-* Documentation: [http://roots.io/docs/](http://roots.io/docs/)
-* Twitter: [@rootswp](https://twitter.com/rootswp), [@retlehs](https://twitter.com/retlehs), [@swalkinshaw](https://twitter.com/swalkinshaw), [@Foxaii](https://twitter.com/Foxaii), [@c2foryou](https://twitter.com/c2foryou)
+* Source: [https://github.com/roots/sage](https://github.com/roots/sage)
+* Homepage: [https://roots.io/sage/](https://roots.io/sage/)
+* Documentation: [https://roots.io/sage/docs/](https://roots.io/sage/docs/)
+* Twitter: [@rootswp](https://twitter.com/rootswp), [@retlehs](https://twitter.com/retlehs), [@swalkinshaw](https://twitter.com/swalkinshaw), [@Foxaii](https://twitter.com/Foxaii), [@c2foryou](https://twitter.com/c2foryou), [@austinpray](https://twitter.com/austinpray)
 * Newsletter: [Subscribe](http://roots.io/subscribe/)
-* Forum: [http://discourse.roots.io/](http://discourse.roots.io/)
+* Forum: [https://discourse.roots.io/](https://discourse.roots.io/)
+
+## Requirements
+
+* PHP >= 5.4
+* Node.js >= 0.10
+* npm >= 2.1.5 (`npm install -g npm@latest`)
+* gulp (`npm install -g gulp`)
+* Bower (`npm install -g bower`)
 
 ## Features
 
-* [Grunt](http://roots.io/using-grunt-for-wordpress-theme-development/) for compiling LESS to CSS, checking for JS errors, live reloading, concatenating and minifying files, versioning assets, and generating lean Modernizr builds
+* [gulp](http://gulpjs.com/) build script that compiles both Less and Sass, checks for JavaScript errors, optimizes images, and concatenates and minifies files
+* [BrowserSync](http://www.browsersync.io/) for keeping multiple browsers and devices synchronized while testing, along with injecting updated CSS and JS into your browser while you're developing
 * [Bower](http://bower.io/) for front-end package management
+* [asset-builder](https://github.com/austinpray/asset-builder) for the JSON file based asset pipeline
+* [Bootstrap](http://getbootstrap.com/)
+* [Theme wrapper](https://roots.io/sage/docs/theme-wrapper/)
 * [HTML5 Boilerplate](http://html5boilerplate.com/)
   * The latest [jQuery](http://jquery.com/) via Google CDN, with a local fallback
-  * The latest [Modernizr](http://modernizr.com/) build for feature detection, with lean builds with Grunt
+  * The latest [Modernizr](http://modernizr.com/) build for feature detection
   * An optimized Google Analytics snippet
-* [Bootstrap](http://getbootstrap.com/)
-* Organized file and template structure
 * ARIA roles and microformats
-* [Theme activation](http://roots.io/roots-101/#theme-activation)
-* [Theme wrapper](http://roots.io/an-introduction-to-the-roots-theme-wrapper/)
 * Cleaner HTML output of navigation menus
 * Posts use the [hNews](http://microformats.org/wiki/hnews) microformat
-* [Multilingual ready](http://roots.io/wpml/) and over 30 available [community translations](https://github.com/roots/roots-translations)
-
-### Additional features
+* [Multilingual ready](https://roots.io/wpml/) and over 30 available [community translations](https://github.com/roots/sage-translations)
 
 Install the [Soil](https://github.com/roots/soil) plugin to enable additional features:
 
+* Cleaner output of `wp_head` and enqueued assets
 * Root relative URLs
 * Nice search (`/search/query/`)
-* Cleaner output of `wp_head` and enqueued assets markup
 
 ## Installation
 
-Clone the git repo - `git clone git://github.com/roots/roots.git` - or [download it](https://github.com/roots/roots/zipball/master) and then rename the directory to the name of your theme or website.
+Clone the git repo - `git clone https://github.com/roots/sage.git` and then rename the directory to the name of your theme or website.
 
 If you don't use [Bedrock](https://github.com/roots/bedrock), you'll need to add the following to your `wp-config.php` on your development installation:
 
 ```php
 define('WP_ENV', 'development');
 ```
-
-## Theme activation
-
-Reference the [theme activation](http://roots.io/roots-101/#theme-activation) documentation to understand everything that happens once you activate Roots.
 
 ## Configuration
 
@@ -57,49 +60,41 @@ Edit `lib/init.php` to setup navigation menus, post thumbnail sizes, post format
 
 ## Theme development
 
-Roots uses [Grunt](http://gruntjs.com/) for compiling LESS to CSS, checking for JS errors, live reloading, concatenating and minifying files, versioning assets, and generating lean Modernizr builds.
+Sage uses [gulp](http://gulpjs.com/) as its build system and [Bower](http://bower.io/) to manage front-end packages.
 
-If you'd like to use Bootstrap Sass, look at the [Roots Sass](https://github.com/roots/roots-sass) fork.
+### Install gulp and Bower
 
-### Install Grunt and Bower
-
-**Unfamiliar with npm? Don't have node installed?** [Download and install node.js](http://nodejs.org/download/) before proceeding.
+Building the theme requires [node.js](http://nodejs.org/download/). We recommend you update to the latest version of npm: `npm install -g npm@latest`.
 
 From the command line:
 
-1. Install `grunt-cli` and `bower` globally with `npm install -g grunt-cli bower`.
-2. Navigate to the theme directory, then run `npm install`. npm will look at `package.json` and automatically install the necessary dependencies. It will also automatically run `bower install`, which installs front-end packages defined in `bower.json`.
+1. Install [gulp](http://gulpjs.com) and [Bower](http://bower.io/) globally with `npm install -g gulp bower`
+2. Navigate to the theme directory, then run `npm install`
+3. Run `bower install`
 
-When completed, you'll be able to run the various Grunt commands provided from the command line.
+You now have all the necessary dependencies to run the build process.
 
-**N.B.** 
-You will need write permission to the global npm directory to install `grunt-cli` and `bower`. You will also likely have to be using an elevated terminal or prefix the command with `sudo`, i.e., `sudo npm install -g grunt-cli bower`. 
+### Available gulp commands
 
-We also advise against running as root user. NPM deliberately uses limited privileges when executing certain commands such as those included in the Roots post-install process, and when this happens to the root user, any file system objects that are not expressly writable by the root user will fail to write during the execution of the command. These might include directories such as `/var/www` or `/home/someotheruser`. If you're running as root and have problems, don't say we didn't warn you.
+* `gulp` — Compile and optimize the files in your assets directory
+* `gulp watch` — Compile assets when file changes are made
+* `gulp --production` — Compile assets for production (no source maps).
 
-### Available Grunt commands
-
-* `grunt dev` — Compile LESS to CSS, concatenate and validate JS
-* `grunt watch` — Compile assets when file changes are made
-* `grunt build` — Create minified assets that are used on non-development environments
+To use BrowserSync during `gulp watch` you need update `devUrl` at the bottom of `assets/manifest.json` to reflect your local development hostname.
 
 ## Documentation
 
-* [Roots 101](http://roots.io/roots-101/) — A guide to installing Roots, the files, and theme organization
-* [Theme Wrapper](http://roots.io/an-introduction-to-the-roots-theme-wrapper/) — Learn all about the theme wrapper
-* [Build Script](http://roots.io/using-grunt-for-wordpress-theme-development/) — A look into how Roots uses Grunt
-* [Roots Sidebar](http://roots.io/the-roots-sidebar/) — Understand how to display or hide the sidebar in Roots
+Sage documentation is available at [https://roots.io/sage/docs/](https://roots.io/sage/docs/).
 
 ## Contributing
 
-Everyone is welcome to help [contribute](CONTRIBUTING.md) and improve this project. There are several ways you can contribute:
+Contributions are welcome from everyone. We have [contributing guidelines](CONTRIBUTING.md) to help you get started.
 
-* Reporting issues (please read [issue guidelines](https://github.com/necolas/issue-guidelines))
-* Suggesting new features
-* Writing or refactoring code
-* Fixing [issues](https://github.com/roots/roots/issues)
-* Replying to questions on the [forum](http://discourse.roots.io/)
+## Community
 
-## Support
+Keep track of development and community news.
 
-Use the [Roots Discourse](http://discourse.roots.io/) to ask questions and get support.
+* Participate on the [Roots Discourse](https://discourse.roots.io/)
+* Follow [@rootswp on Twitter](https://twitter.com/rootswp)
+* Read and subscribe to the [Roots Blog](https://roots.io/blog/)
+* Subscribe to the [Roots Newsletter](https://roots.io/subscribe/)
