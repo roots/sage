@@ -7,6 +7,6 @@
 //
 // Feel free to remove this file if you're using Less
 
-// bower:sass
+// bower:scss
 @import "../../bower_components/bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 // endbower
