@@ -1,4 +1,4 @@
-### 8.0.0: TBD
+### 8.0.0: February 25th, 2015
 * Change theme name from Roots to Sage
 * Bump required PHP version to >=5.4
 * Add coding standards based on PSR-2
