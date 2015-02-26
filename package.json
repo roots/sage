@@ -27,7 +27,7 @@
     "npm": ">=2.1.5"
   },
   "devDependencies": {
-    "asset-builder": "^0.4.1",
+    "asset-builder": "^1.0.1",
     "browser-sync": "^2.0.1",
     "del": "^1.1.1",
     "gulp": "^3.8.10",
