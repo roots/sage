@@ -1,6 +1,6 @@
-### HEAD
+### 8.0.1: February 26th, 2015
+* Update asset-builder 1.0.1 to fix Windows compatibility
 * Fixes broken wiredep imports with main.scss.example ([original issue](https://discourse.roots.io/t/issue-with-sage-sass-version/2962))
-* Adds windows compatibility via asset-builder@1.0.1
 
 ### 8.0.0: February 25th, 2015
 * Change theme name from Roots to Sage
