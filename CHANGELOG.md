@@ -1,3 +1,6 @@
+### HEAD
+* Fixes broken wiredep imports with main.scss.example ([original issue](https://discourse.roots.io/t/issue-with-sage-sass-version/2962))
+
 ### 8.0.0: February 25th, 2015
 * Change theme name from Roots to Sage
 * Bump required PHP version to >=5.4
