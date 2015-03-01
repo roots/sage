@@ -11,6 +11,11 @@ matrix:
   allow_failures:
     - php: nightly
 
+cache:
+  directories:
+    - bower_components
+    - node_modules
+
 install:
   - npm install -g npm@latest
   - npm install -g bower gulp jscs
