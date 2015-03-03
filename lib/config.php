@@ -27,6 +27,11 @@ if (!defined('WP_ENV')) {
   define('WP_ENV', 'production');
 }
 
+if (!defined('DIST_DIR')) {
+  // Path to the build directory for front-end assets
+  define('DIST_DIR', '/dist/');
+}
+
 /**
  * Define which pages shouldn't have the sidebar
  */
