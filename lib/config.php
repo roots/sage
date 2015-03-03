@@ -39,26 +39,22 @@ function display_sidebar() {
        * Any of these conditional tags that return true won't show the sidebar.
        * You can also specify your own custom function as long as it returns a boolean.
        *
-       * To use a function that accepts arguments, use the following format:
-       *
-       * ['function_name', ['arg1', 'arg2']]
-       *
-       * Note: The second element must be an array even if there's only 1 argument.
+       * To use a function that accepts arguments, use an array instead of just the function name as a string.
        *
        * Examples:
        *
        * 'is_single'
        * 'is_archive'
-       * ['is_page', ['about-me']]
+       * ['is_page', 'about-me']
        * ['is_tax', ['flavor', 'mild']]
-       * ['is_page_template', ['about.php']]
-       * ['is_post_type_archive', [['foo', 'bar', 'baz']]]
+       * ['is_page_template', 'about.php']
+       * ['is_post_type_archive', ['foo', 'bar', 'baz']]
        *
        */
       [
         'is_404',
         'is_front_page',
-        ['is_page_template', ['template-custom.php']]
+        ['is_page_template', 'template-custom.php']
       ]
     );
 
