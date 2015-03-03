@@ -26,12 +26,16 @@ class ConditionalTagCheck {
     }
   }
 
-  private function checkConditionalTag($conditional_tag) {
-    $conditional_arg = is_array($conditional_tag) ? $conditional_tag[1] : false;
-    $conditional_tag = $conditional_arg ? $conditional_tag[0] : $conditional_tag;
+  private function checkConditionalTag($conditional) {
+    if (is_array($conditional)) {
+      list($tag, $args) = $conditional;
+    } else {
+      $tag = $conditional;
+      $args = false;
+    }
 
-    if (function_exists($conditional_tag)) {
-      return $conditional_arg ? $conditional_tag($conditional_arg) : $conditional_tag();
+    if (function_exists($tag)) {
+      return $args ? $tag($args) : $tag();
     } else {
       return false;
     }
