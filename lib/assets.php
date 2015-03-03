@@ -53,14 +53,13 @@ class JsonManifest {
 }
 
 function asset_path($filename) {
-  $dist_dir = '/dist/';
-  $dist_path = get_template_directory_uri() . $dist_dir;
+  $dist_path = get_template_directory_uri() . DIST_DIR;
   $directory = dirname($filename) . '/';
   $file = basename($filename);
   static $manifest;
 
   if (empty($manifest)) {
-    $manifest_path = get_template_directory() . $dist_dir . 'assets.json';
+    $manifest_path = get_template_directory() . DIST_DIR . 'assets.json';
     $manifest = new JsonManifest($manifest_path);
   }
 
@@ -131,7 +130,7 @@ function jquery_local_fallback($src, $handle = null) {
   static $add_jquery_fallback = false;
 
   if ($add_jquery_fallback) {
-    echo '<script>window.jQuery || document.write(\'<script src="' . get_template_directory_uri() . $dist_dir . 'scripts/jquery.js"><\/script>\')</script>' . "\n";
+    echo '<script>window.jQuery || document.write(\'<script src="' . get_template_directory_uri() . DIST_DIR . 'scripts/jquery.js"><\/script>\')</script>' . "\n";
     $add_jquery_fallback = false;
   }
 
