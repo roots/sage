@@ -1,6 +1,11 @@
+### HEAD
+* Allow build directory to be customized ([#1352](https://github.com/roots/sage/issues/1352), [#1366](https://github.com/roots/sage/issues/1366))
+* Update ConditionalTagCheck and usage docs ([#1365](https://github.com/roots/sage/issues/1365))
+* Change default gallery columns to 3 ([#1364](https://github.com/roots/sage/issues/1364))
+
 ### 8.0.1: February 26th, 2015
-* Update asset-builder 1.0.1 to fix Windows compatibility
-* Fixes broken wiredep imports with main.scss.example ([original issue](https://discourse.roots.io/t/issue-with-sage-sass-version/2962))
+* Update asset-builder version to fix Windows compatibility ([#1351](https://github.com/roots/sage/issues/1351))
+* Fix broken wiredep imports with main.scss.example ([Discussion](https://discourse.roots.io/t/issue-with-sage-sass-version/2962))
 
 ### 8.0.0: February 25th, 2015
 * Change theme name from Roots to Sage
