@@ -43,7 +43,7 @@ function gallery($attr) {
     'itemtag'    => '',
     'icontag'    => '',
     'captiontag' => '',
-    'columns'    => 4,
+    'columns'    => 3,
     'size'       => 'thumbnail',
     'include'    => '',
     'exclude'    => '',
@@ -51,7 +51,7 @@ function gallery($attr) {
   ], $attr));
 
   $id = intval($id);
-  $columns = (12 % $columns == 0) ? $columns: 4;
+  $columns = (12 % $columns == 0) ? $columns: 3;
   $grid = sprintf('col-sm-%1$s col-lg-%1$s', 12/$columns);
 
   if ($order === 'RAND') {
