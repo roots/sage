@@ -1,9 +1,10 @@
 // How to get started using Sass instead of Less:
 //
-// 1. Run `bower install bootstrap-sass-official --save`
-// 2. Rename this file to `main.scss` and remove `main.less`
-// 3. Rename `editor-style.less` to `editor-style.scss`
-// 4. Update the `assets/manifest.json` styles dependenies from `.less` to `.scss`
+// 1  Remove Bootstrap for Less: `bower uninstall bootstrap --save`
+// 2. Install Bootstrap for Sass: `bower install bootstrap-sass-official --save`
+// 3. Rename this file to `main.scss` and remove `main.less`
+// 4. Rename `editor-style.less` to `editor-style.scss`
+// 5. Update the `assets/manifest.json` styles dependencies from `.less` to `.scss`
 //
 // Feel free to remove this file if you're using Less
 
