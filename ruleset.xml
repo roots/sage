@@ -26,7 +26,7 @@
   </rule>
 
   <!-- Allow PHP closing tags on templates -->
-  <rule ref="Zend.Files.ClosingTag.NotAllowed">
+  <rule ref="PSR2.Files.ClosingTag.NotAllowed">
     <exclude-pattern>templates/*</exclude-pattern>
     <exclude-pattern>404.php</exclude-pattern>
     <exclude-pattern>index.php</exclude-pattern>
