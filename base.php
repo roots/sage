@@ -1,7 +1,5 @@
 <?php
 
-namespace Roots\Sage;
-
 use Roots\Sage\Config;
 use Roots\Sage\Wrapper;
 
