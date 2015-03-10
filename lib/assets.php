@@ -96,6 +96,10 @@ function bower_map_to_cdn($dependency, $fallback) {
 
 function assets() {
   wp_enqueue_style('sage_css', asset_path('styles/main.css'), false, null);
+  
+  if (is_rtl()) {
+    wp_enqueue_style('sage_rtl_css', asset_path('styles/rtl.css'), false, null);
+  }
 
   /**
    * Grab Google CDN's latest jQuery with a protocol relative URL; fallback to local if offline
