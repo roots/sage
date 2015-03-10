@@ -12,6 +12,12 @@
       ],
       "main": true
     },
+    "rtl.css": {
+      "files": [
+        "styles/rtl.less"
+      ],
+      "main": true
+    },
     "editor-style.css": {
       "files": [
         "styles/editor-style.less"
