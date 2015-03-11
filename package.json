@@ -40,7 +40,7 @@
     "gulp-less": "^3.0.1",
     "gulp-load-plugins": "^0.8.0",
     "gulp-pleeease": "^1.1.0",
-    "gulp-plumber": "^0.6.3",
+    "gulp-plumber": "^1.0.0",
     "gulp-rename": "^1.2.0",
     "gulp-rev": "^3.0.0",
     "gulp-sass": "^1.2.4",
