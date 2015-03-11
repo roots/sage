@@ -25,6 +25,6 @@
     }
   },
   "config": {
-    "devUrl": "example.dev"
+    "devUrl": "http://example.dev"
   }
 }
