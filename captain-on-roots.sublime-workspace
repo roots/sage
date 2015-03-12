@@ -11,6 +11,112 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "gulpfile.js",
+			"settings":
+			{
+				"buffer_size": 1299,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "base.php",
+			"settings":
+			{
+				"buffer_size": 1173,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "assets/less/main.less",
+			"settings":
+			{
+				"buffer_size": 852,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "templates/content-single.php",
+			"settings":
+			{
+				"buffer_size": 539,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "templates/head.php",
+			"settings":
+			{
+				"buffer_size": 408,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "assets/less/layouts/_posts.less",
+			"settings":
+			{
+				"buffer_size": 102,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "assets/less/layouts/_general.less",
+			"settings":
+			{
+				"buffer_size": 188,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "assets/less/_variables.less",
+			"settings":
+			{
+				"buffer_size": 299,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "assets/less/layouts/_footer.less",
+			"settings":
+			{
+				"buffer_size": 18,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "assets/vendor/bootstrap/less/variables.less",
+			"settings":
+			{
+				"buffer_size": 26792,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "templates/header.php",
+			"settings":
+			{
+				"buffer_size": 876,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": ".sidebar {\n  .make-sm-column(@sidebar-sm-columns);\n}\n",
+			"file": "assets/less/layouts/_sidebar.less",
+			"file_size": 53,
+			"file_write_time": 130685700000000000,
+			"settings":
+			{
+				"buffer_size": 53,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -79,7 +185,7 @@
 				"Package Control: Install Package"
 			]
 		],
-		"width": 400.0
+		"width": 376.0
 	},
 	"console":
 	{
@@ -100,10 +206,31 @@
 	},
 	"expanded_folders":
 	[
-		"/D/Bitnami/wordpress-4.1-0/apps/wordpress/htdocs/wp-content/themes/captain-roots"
+		"/Volumes/DATA/webRoot/wordpress/wp-content/themes/captain-roots",
+		"/Volumes/DATA/webRoot/wordpress/wp-content/themes/captain-roots/assets",
+		"/Volumes/DATA/webRoot/wordpress/wp-content/themes/captain-roots/assets/css",
+		"/Volumes/DATA/webRoot/wordpress/wp-content/themes/captain-roots/assets/fonts",
+		"/Volumes/DATA/webRoot/wordpress/wp-content/themes/captain-roots/assets/img",
+		"/Volumes/DATA/webRoot/wordpress/wp-content/themes/captain-roots/assets/js",
+		"/Volumes/DATA/webRoot/wordpress/wp-content/themes/captain-roots/assets/less",
+		"/Volumes/DATA/webRoot/wordpress/wp-content/themes/captain-roots/assets/less/components",
+		"/Volumes/DATA/webRoot/wordpress/wp-content/themes/captain-roots/assets/less/layouts",
+		"/Volumes/DATA/webRoot/wordpress/wp-content/themes/captain-roots/lang",
+		"/Volumes/DATA/webRoot/wordpress/wp-content/themes/captain-roots/node_modules",
+		"/Volumes/DATA/webRoot/wordpress/wp-content/themes/captain-roots/templates"
 	],
 	"file_history":
 	[
+		"/Volumes/DATA/webRoot/wordpress/wp-content/themes/captain-roots/assets/less/layouts/_header.less",
+		"/Volumes/DATA/webRoot/wordpress/wp-content/themes/captain-roots/assets/less/main.less",
+		"/Volumes/DATA/webRoot/wordpress/wp-content/themes/captain-roots/assets/less/layouts/_posts.less",
+		"/Volumes/DATA/webRoot/wordpress/wp-content/themes/captain-roots/index.php",
+		"/Volumes/DATA/webRoot/wordpress/wp-content/themes/captain-roots/templates/content-single.php",
+		"/Volumes/DATA/webRoot/wordpress/wp-content/themes/captain-roots/gulpfile.js",
+		"/Volumes/DATA/webRoot/wordpress/wp-content/themes/captain-roots/package.json",
+		"/Volumes/DATA/webRoot/wordpress/wp-content/themes/captain-roots/templates/page-header.php",
+		"/Volumes/DATA/webRoot/wordpress/wp-content/themes/captain-roots/templates/header.php",
+		"/Volumes/DATA/webRoot/wordpress/wp-content/themes/captain-roots/node_modules/browser-sync/node_modules/socket.io/node_modules/socket.io-client/node_modules/engine.io-client/node_modules/has-cors/node_modules/global/test/mocha.js",
 		"/D/dzspace/captain-wp-theme/bulid/styles/main.css",
 		"/D/dzspace/captain-wp-theme/bulid/index.html",
 		"/D/dzspace/Dropbox/Public/dezang-net/money]credit-card-guide.md",
@@ -188,6 +315,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"browserSync",
 			"myad",
 			"php",
 			"phpmy",
@@ -212,8 +340,385 @@
 	"groups":
 	[
 		{
+			"selected": 3,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "gulpfile.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1299,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								835,
+								835
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 174.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "base.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1173,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								471,
+								471
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "assets/less/main.less",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 852,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/LESS/LESS.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "templates/content-single.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 539,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								143,
+								143
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 12,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 2,
+			"sheets":
+			[
+				{
+					"buffer": 5,
+					"file": "templates/head.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 408,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								399,
+								399
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 11,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "assets/less/layouts/_posts.less",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 102,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								17,
+								17
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/LESS/LESS.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "assets/less/layouts/_general.less",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 188,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								179,
+								179
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/LESS/LESS.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "assets/less/_variables.less",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 299,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								111,
+								111
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/LESS/LESS.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "assets/less/layouts/_footer.less",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 18,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/LESS/LESS.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "assets/vendor/bootstrap/less/variables.less",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 26792,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								10417,
+								10417
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/LESS/LESS.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 338.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "templates/header.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 876,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								584,
+								584
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 10,
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"file": "assets/less/layouts/_sidebar.less",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 53,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								53,
+								53
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/LESS/LESS.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -234,11 +739,18 @@
 				0,
 				1,
 				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
 			]
 		],
 		"cols":
 		[
 			0.0,
+			0.511366495228,
 			1.0
 		],
 		"rows":
@@ -291,14 +803,30 @@
 		"height": 500.0,
 		"selected_items":
 		[
+			[
+				"",
+				"/Volumes/DATA/Dropbox/Public/dezang-net/dzposts.sublime-project"
+			]
 		],
 		"width": 380.0
 	},
 	"select_symbol":
 	{
-		"height": 37.0,
+		"height": 48.0,
 		"selected_items":
 		[
+			[
+				"@grid-columns",
+				"@grid-columns"
+			],
+			[
+				"@main-sm-columns",
+				"@main-sm-columns"
+			],
+			[
+				"html",
+				"HTML"
+			],
 			[
 				"트래픽",
 				"# 트래픽이 필요해"
@@ -308,7 +836,7 @@
 				"## 2 단계 - 비밀번호 변경"
 			]
 		],
-		"width": 529.0
+		"width": 448.0
 	},
 	"selected_group": 0,
 	"settings":

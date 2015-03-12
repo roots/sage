@@ -17,7 +17,6 @@
     }
   ],
   "scripts": {
-    "postinstall": "node node_modules/bower/bin/bower install && grunt dev"
   },
   "engines": {
     "node": ">= 0.10.0"

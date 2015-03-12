@@ -33,11 +33,27 @@ gulp.task('js', function() {
 		.pipe(gulp.dest(paths.js.dest));
 });
 
-//var watcher = gulp.watch('assets/less/**/*.less', ['less']);
-/*watcher.on('change', function(event) {
-	console.log('Event type: ' + event.type);
-	console.log('Event path: ' + event.path);
-});
-*/
+gulp.task('browser-sync', function() {
+	var files = [
+		'assets/less/**/*.less',
+		'templates/*.php',
+		'*.php'
+	];
 
-gulp.task('default', ['less','js']);
+	browserSync.init(files, {
+		proxy: "localhost:7888/wordpress/",
+		notify: false
+	});
+});
+
+gulp.task('watch', function() {
+	var watcher = gulp.watch('assets/less/**/*.less', ['less']);
+	watcher.on('change', function(event) {
+		console.log('Event type: ' + event.type);
+		console.log('Event path: ' + event.path);
+	});
+})
+
+gulp.task('default', ['less','js', 'browser-sync'], function() {
+	gulp.watch('assets/less/**/*.less', ['less']);
+});
