@@ -1,7 +1,10 @@
 ### HEAD
+* Run `gulp build` if `bower.json` is changed ([#1378](https://github.com/roots/sage/issues/1378))
+* Remove namespace from base.php ([#1372](https://github.com/roots/sage/issues/1372))
 * Allow build directory to be customized ([#1352](https://github.com/roots/sage/issues/1352), [#1366](https://github.com/roots/sage/issues/1366))
 * Update ConditionalTagCheck and usage docs ([#1365](https://github.com/roots/sage/issues/1365))
 * Change default gallery columns to 3 ([#1364](https://github.com/roots/sage/issues/1364))
+* Apply `script_loader_src` filter to jQuery fallback ([#1363](https://github.com/roots/sage/issues/1363))
 
 ### 8.0.1: February 26th, 2015
 * Update asset-builder version to fix Windows compatibility ([#1351](https://github.com/roots/sage/issues/1351))
