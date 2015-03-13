@@ -227,7 +227,7 @@ gulp.task('watch', function() {
   gulp.watch([path.source + 'scripts/**/*'], ['jshint', 'scripts']);
   gulp.watch([path.source + 'fonts/**/*'], ['fonts']);
   gulp.watch([path.source + 'images/**/*'], ['images']);
-  gulp.watch(['bower.json'], ['build']);
+  gulp.watch(['bower.json', 'assets/manifest.json'], ['build']);
   gulp.watch('**/*.php', function() {
     browserSync.reload();
   });
