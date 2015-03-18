@@ -2,7 +2,7 @@
 
 namespace Roots\Sage\Config;
 
-use Roots\Sage;
+use Roots\Sage\ConditionalTagCheck;
 
 /**
  * Enable theme features
@@ -40,7 +40,7 @@ function display_sidebar() {
   static $display;
 
   if (!isset($display)) {
-    $conditionalCheck = new Sage\ConditionalTagCheck(
+    $conditionalCheck = new ConditionalTagCheck(
       /**
        * Any of these conditional tags that return true won't show the sidebar.
        * You can also specify your own custom function as long as it returns a boolean.
