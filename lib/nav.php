@@ -15,7 +15,7 @@ use Roots\Sage\Utils;
  *   <li class="menu-home"><a href="/">Home</a></li>
  *   <li class="menu-sample-page"><a href="/sample-page/">Sample Page</a></li>
  */
-class SageNavWalker extends \Walker_Nav_Menu {
+class NavWalker extends \Walker_Nav_Menu {
   private $cpt; // Boolean, is current post a custom post type
   private $archive; // Stores the archive page for current URL
 
