@@ -1,3 +1,6 @@
+### HEAD
+* Update to Bootstrap 3.3.4
+
 ### 8.1.0: March 13th, 2015
 * Move HTML5 Boilerplate's Google Analytics snippet to Soil ([#1382](https://github.com/roots/sage/issues/1382))
 * Run `gulp build` if `bower.json` is changed ([#1378](https://github.com/roots/sage/issues/1378))
