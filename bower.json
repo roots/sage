@@ -9,7 +9,7 @@
   "dependencies": {
     "modernizr": "2.8.2",
     "jquery": "1.11.2",
-    "bootstrap": "3.3.2"
+    "bootstrap": "3.3.4"
   },
   "overrides": {
     "modernizr": {
