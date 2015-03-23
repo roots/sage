@@ -85,7 +85,7 @@ You now have all the necessary dependencies to run the build process.
 
 ### Using BrowserSync
 
-To use BrowserSync during `gulp watch` you need update `devUrl` at the bottom of `assets/manifest.json` to reflect your local development hostname.
+To use BrowserSync during `gulp watch` you need to update `devUrl` at the bottom of `assets/manifest.json` to reflect your local development hostname.
 
 For example, if your local development URL is `http://project-name.dev` you would update the file to read:
 ```json
