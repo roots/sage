@@ -51,6 +51,7 @@
     "jshint-stylish": "^1.0.1",
     "lazypipe": "^0.2.2",
     "merge-stream": "^0.1.7",
+    "run-sequence": "^1.0.2",
     "traverse": "^0.6.6",
     "wiredep": "^2.2.2",
     "yargs": "^3.6.0"
