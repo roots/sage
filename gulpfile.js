@@ -81,14 +81,13 @@ var cssTasks = function(filename) {
         }));
       })
       .pipe($.concat, filename)
-      .pipe($.pleeease, {
-        autoprefixer: {
-          browsers: [
-            'last 2 versions', 'ie 8', 'ie 9', 'android 2.3', 'android 4',
-            'opera 12'
-          ]
-        }
+      .pipe($.autoprefixer, {
+        browsers: [
+          'last 2 versions', 'ie 8', 'ie 9', 'android 2.3', 'android 4',
+          'opera 12'
+        ]
       })
+      .pipe($.minifyCss)
     .pipe(function() {
       return $.if(enabled.rev, $.rev());
     })
