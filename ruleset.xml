@@ -42,4 +42,7 @@
       <property name="tabIndent" value="false"/>
     </properties>
   </rule>
+
+  <!-- Verify that operators have valid spacing surrounding them -->
+  <rule ref="Squiz.WhiteSpace.OperatorSpacing"></rule>
 </ruleset>
