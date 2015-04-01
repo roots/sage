@@ -51,8 +51,8 @@ function gallery($attr) {
   ], $attr));
 
   $id = intval($id);
-  $columns = (12 % $columns == 0) ? $columns: 3;
-  $grid = sprintf('col-sm-%1$s col-lg-%1$s', 12/$columns);
+  $columns = (12 % $columns == 0) ? $columns : 3;
+  $grid = sprintf('col-sm-%1$s col-lg-%1$s', 12 / $columns);
 
   if ($order === 'RAND') {
     $orderby = 'none';
@@ -83,7 +83,7 @@ function gallery($attr) {
     return $output;
   }
 
-  $unique = (get_query_var('page')) ? $instance . '-p' . get_query_var('page'): $instance;
+  $unique = (get_query_var('page')) ? $instance . '-p' . get_query_var('page') : $instance;
   $output = '<div class="gallery gallery-' . $id . '-' . $unique . '">';
 
   $i = 0;
@@ -99,7 +99,7 @@ function gallery($attr) {
         $image = wp_get_attachment_link($id, $size, true, false);
         break;
     }
-    $output .= ($i % $columns == 0) ? '<div class="row gallery-row">': '';
+    $output .= ($i % $columns == 0) ? '<div class="row gallery-row">' : '';
     $output .= '<div class="' . $grid .'">' . $image;
 
     if (trim($attachment->post_excerpt)) {
