@@ -1,4 +1,5 @@
 ### HEAD
+* Lowercase `X-UA-Compatible` ([#1409](https://github.com/roots/sage/issues/1409))
 * Remove mention of Google Analytics from the config ([#1384](https://github.com/roots/sage/issues/1384))
 
 ### 8.1.1: March 31st, 2015
