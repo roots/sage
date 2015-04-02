@@ -1,3 +1,6 @@
+### HEAD
+* Remove mention of Google Analytics from the config ([#1384](https://github.com/roots/sage/issues/1384))
+
 ### 8.1.1: March 31st, 2015
 * Remove pleeease dependency in favor of vanilla gulp-autoprefixer and gulp-minify-css ([#1402](https://github.com/roots/sage/issues/1402))
 * Fix `gulp --production` race condition ([#1398](https://github.com/roots/sage/issues/1398))
