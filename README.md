@@ -33,7 +33,6 @@ For more installation notes, refer to the [Install gulp and Bower](#install-gulp
 * [HTML5 Boilerplate](http://html5boilerplate.com/)
   * The latest [jQuery](http://jquery.com/) via Google CDN, with a local fallback
   * The latest [Modernizr](http://modernizr.com/) build for feature detection
-  * An optimized Google Analytics snippet
 * ARIA roles and microformats
 * Cleaner HTML output of navigation menus
 * Posts use the [hNews](http://microformats.org/wiki/hnews) microformat
@@ -57,7 +56,7 @@ define('WP_ENV', 'development');
 
 ## Configuration
 
-Edit `lib/config.php` to enable or disable theme features and to define a Google Analytics ID.
+Edit `lib/config.php` to enable or disable theme features
 
 Edit `lib/init.php` to setup navigation menus, post thumbnail sizes, post formats, and sidebars.
 

@@ -10,18 +10,12 @@ use Roots\Sage\ConditionalTagCheck;
 add_theme_support('soil-clean-up');         // Enable clean up from Soil
 add_theme_support('soil-relative-urls');    // Enable relative URLs from Soil
 add_theme_support('soil-nice-search');      // Enable nice search from Soil
-add_theme_support('soil-google-analytics'); // Enable H5BP's Google Analytics snippet
 add_theme_support('bootstrap-gallery');     // Enable Bootstrap's thumbnails component on [gallery]
 add_theme_support('jquery-cdn');            // Enable to load jQuery from the Google CDN
 
 /**
  * Configuration values
  */
-if (!defined('GOOGLE_ANALYTICS_ID')) {
-  // Format: UA-XXXXX-Y (Note: Universal Analytics only)
-  define('GOOGLE_ANALYTICS_ID', '');
-}
-
 if (!defined('WP_ENV')) {
   // Fallback if WP_ENV isn't defined in your WordPress config
   // Used in lib/assets.php to check for 'development' or 'production'
