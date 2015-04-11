@@ -1,4 +1,5 @@
 ### HEAD
+* Remove `$content_width` ([#1417](https://github.com/roots/sage/issues/1417))
 * Lowercase `X-UA-Compatible` ([#1409](https://github.com/roots/sage/issues/1409))
 * Remove mention of Google Analytics from the config ([#1384](https://github.com/roots/sage/issues/1384))
 
