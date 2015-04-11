@@ -1,7 +1,7 @@
 // ## Globals
 /*global $:true*/
 var $           = require('gulp-load-plugins')();
-var argv        = require('yargs').argv;
+var argv        = require('minimist')(process.argv.slice(2));
 var browserSync = require('browser-sync');
 var gulp        = require('gulp');
 var lazypipe    = require('lazypipe');
