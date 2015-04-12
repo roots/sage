@@ -3,6 +3,7 @@
 * Lowercase `X-UA-Compatible` ([#1409](https://github.com/roots/sage/issues/1409))
 * Remove mention of Google Analytics from the config ([#1384](https://github.com/roots/sage/issues/1384))
 * Switch from [yargs](https://github.com/bcoe/yargs) to [minimist](https://github.com/substack/minimist)
+* Bump `gulp-load-plugins` to 0.10.0
 
 ### 8.1.1: March 31st, 2015
 * Remove pleeease dependency in favor of vanilla gulp-autoprefixer and gulp-minify-css ([#1402](https://github.com/roots/sage/issues/1402))
