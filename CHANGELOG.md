@@ -1,4 +1,5 @@
 ### HEAD
+* Remove hardcoded feed link ([#1426](https://github.com/roots/sage/issues/1426))
 * Move jQuery CDN feature to Soil ([#1422](https://github.com/roots/sage/issues/1422))
 * Bump `gulp-load-plugins` to 0.10.0 ([#1419](https://github.com/roots/sage/issues/1419))
 * Switch from [yargs](https://github.com/bcoe/yargs) to [minimist](https://github.com/substack/minimist) ([#1418](https://github.com/roots/sage/issues/1418))
