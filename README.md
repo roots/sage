@@ -93,7 +93,7 @@ For example, if your local development URL is `http://project-name.dev` you woul
   }
 ...
 ```
-If your local develoment URL looks like `http://localhost:8888/project-name/` you would update the file to read:
+If your local development URL looks like `http://localhost:8888/project-name/` you would update the file to read:
 ```json
 ...
   "config": {
