@@ -215,7 +215,7 @@ gulp.task('clean', require('del').bind(null, [path.dist]));
 // `manifest.config.devUrl`. When a modification is made to an asset, run the
 // build step for that asset and inject the changes into the page.
 // See: http://www.browsersync.io
-gulp.task('watch', function() {
+gulp.task('watch', ['build'], function() {
   browserSync({
     files: [path.dist, '{lib,templates}/**/*.php', '*.php'],
     proxy: config.devUrl,
@@ -232,10 +232,10 @@ gulp.task('watch', function() {
 });
 
 // ### Build
-// `gulp build` - Run all the build tasks but don't clean up beforehand.
-// Generally you should be running `gulp` instead of `gulp build`.
+// `gulp build` - Run all the build tasks
 gulp.task('build', function(callback) {
-  runSequence('styles',
+  runSequence('clean',
+              'styles',
               'scripts',
               ['fonts', 'images'],
               callback);
@@ -256,6 +256,6 @@ gulp.task('wiredep', function() {
 
 // ### Gulp
 // `gulp` - Run a complete build. To compile for production run `gulp --production`.
-gulp.task('default', ['clean'], function() {
+gulp.task('default', function() {
   gulp.start('build');
 });
