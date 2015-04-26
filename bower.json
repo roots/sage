@@ -9,33 +9,11 @@
   "dependencies": {
     "modernizr": "2.8.2",
     "jquery": "1.11.2",
-    "bootstrap": "3.3.4"
+    "bootstrap-sass-official": "3.3.4"
   },
   "overrides": {
     "modernizr": {
       "main": "./modernizr.js"
-    },
-    "bootstrap": {
-      "main": [
-        "./less/bootstrap.less",
-        "./js/transition.js",
-        "./js/alert.js",
-        "./js/button.js",
-        "./js/carousel.js",
-        "./js/collapse.js",
-        "./js/dropdown.js",
-        "./js/modal.js",
-        "./js/tooltip.js",
-        "./js/popover.js",
-        "./js/scrollspy.js",
-        "./js/tab.js",
-        "./js/affix.js",
-        "./fonts/glyphicons-halflings-regular.eot",
-        "./fonts/glyphicons-halflings-regular.svg",
-        "./fonts/glyphicons-halflings-regular.ttf",
-        "./fonts/glyphicons-halflings-regular.woff",
-        "./fonts/glyphicons-halflings-regular.woff2"
-      ]
     },
     "bootstrap-sass-official": {
       "main": [

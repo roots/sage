@@ -1,19 +1,19 @@
 .comment-list {
-  &:extend(.list-unstyled all);
+  @include list-unstyled;
 }
 .comment-list ol {
   list-style: none;
 }
 .comment-form p {
-  &:extend(.form-group all);
+  @extend .form-group;
 }
 .comment-form input[type="text"],
 .comment-form input[type="email"],
 .comment-form input[type="url"],
 .comment-form textarea {
-  &:extend(.form-control all);
+  @extend .form-control;
 }
 .comment-form input[type="submit"] {
-  &:extend(.btn all);
-  &:extend(.btn-primary all);
+  @extend .btn;
+  @extend .btn-primary;
 }
