@@ -1,4 +1,4 @@
-### HEAD
+### 8.2.0: April 29th, 2015
 * Use Sass Bootstrap by default ([#1437](https://github.com/roots/sage/issues/1437))
 * Remove nav walker and Bootstrap navbar ([#1427](https://github.com/roots/sage/issues/1427))
 * Remove Bootstrap gallery ([#1421](https://github.com/roots/sage/issues/1421))
