@@ -1,4 +1,7 @@
 ### HEAD
+* Use Sass Bootstrap by default ([#1437](https://github.com/roots/sage/issues/1437))
+* Remove nav walker and Bootstrap navbar ([#1427](https://github.com/roots/sage/issues/1427))
+* Remove Bootstrap gallery ([#1421](https://github.com/roots/sage/issues/1421))
 * Remove hardcoded feed link ([#1426](https://github.com/roots/sage/issues/1426))
 * Move jQuery CDN feature to Soil ([#1422](https://github.com/roots/sage/issues/1422))
 * Bump `gulp-load-plugins` to 0.10.0 ([#1419](https://github.com/roots/sage/issues/1419))

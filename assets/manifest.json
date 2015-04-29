@@ -8,13 +8,13 @@
     },
     "main.css": {
       "files": [
-        "styles/main.less"
+        "styles/main.scss"
       ],
       "main": true
     },
     "editor-style.css": {
       "files": [
-        "styles/editor-style.less"
+        "styles/editor-style.scss"
       ]
     },
     "jquery.js": {
