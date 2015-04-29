@@ -17,7 +17,6 @@ $sage_includes = [
   'lib/config.php',                // Configuration
   'lib/assets.php',                // Scripts and stylesheets
   'lib/titles.php',                // Page titles
-  'lib/nav.php',                   // Custom nav modifications
   'lib/extras.php',                // Custom functions
 ];
 
