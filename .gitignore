@@ -1,9 +1,6 @@
 # Include your project-specific ignores in this file
 # Read about how to use .gitignore: https://help.github.com/articles/ignoring-files
+dist
+bower_components
 node_modules
-assets/vendor/*
-assets/css/main.css.map
-assets/css/*main*.css
-assets/js/*scripts*.js
-assets/js/vendor/modernizr.min.js
-assets/manifest.json
+npm-debug.log
