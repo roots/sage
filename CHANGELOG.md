@@ -2,6 +2,7 @@
 * Allow revved files to resolve in development if they exist ([#1456](https://github.com/roots/sage/issues/1456))
 * Disable advanced minification features to fix incorrect file path in compiled CSS ([#1452](https://github.com/roots/sage/issues/1452))
 * Fix Glyphicon font path ([#1455](https://github.com/roots/sage/issues/1455))
+* Bump BrowserSync to [2.7.1](https://github.com/BrowserSync/browser-sync/compare/v2.5.0...v2.7.1) and gulp-sass to [2.0.0](https://github.com/dlmanning/gulp-sass/issues/247)
 
 ### 8.2.0: April 29th, 2015
 * Use Sass Bootstrap by default ([#1437](https://github.com/roots/sage/issues/1437))
