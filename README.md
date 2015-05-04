@@ -1,6 +1,5 @@
 # [Sage](https://roots.io/sage/)
-[![Build Status](https://travis-ci.org/roots/sage.svg)](https://travis-ci.org/roots/sage)
-[![devDependency Status](https://david-dm.org/roots/sage/dev-status.svg)](https://david-dm.org/roots/sage#info=devDependencies)
+[![Build Status](https://travis-ci.org/roots/sage.svg)](https://travis-ci.org/roots/sage) [![HHVM Status](https://img.shields.io/hhvm/roots/sage.svg)](https://travis-ci.org/roots/sage) [![devDependency Status](https://img.shields.io/david/dev/roots/sage.svg)](https://david-dm.org/roots/sage#info=devDependencies) [![Latest Release](https://img.shields.io/github/release/roots/sage.svg)](https://github.com/roots/sage/releases) [![License](https://img.shields.io/github/license/roots/sage.svg)](https://github.com/roots/sage/blob/badges/LICENSE.md) [![Total Downloads](https://img.shields.io/github/stars/roots/sage.svg)](https://github.com/roots/sage/stargazers)
 
 Sage is a WordPress starter theme based on HTML5 Boilerplate, gulp, Bower, and Bootstrap Sass, that will help you make better themes.
 
