@@ -12,7 +12,7 @@ if ( ! class_exists( 'Shoestrap_Less_PHP' ) ) {
 
 			// Require the less parser
 			if ( ! class_exists( 'Less_Parser' ) ) {
-				require_once( 'less.php' );
+				require_once( 'Less.php' );
 			}
 
 			add_filter( 'shoestrap_main_stylesheet_url', array( $this, 'stylesheet_url' ) );
@@ -116,11 +116,11 @@ if ( ! class_exists( 'Shoestrap_Less_PHP' ) ) {
 				// Take care of domain mapping
 				if ( defined( 'DOMAIN_MAPPING' ) && 1 == DOMAIN_MAPPING ) {
 					if ( function_exists( 'domain_mapping_siteurl' ) && function_exists( 'get_original_url' ) ) {
-	
-						$mapped_domain   = domain_mapping_siteurl( false );	
+
+						$mapped_domain   = domain_mapping_siteurl( false );
 						$original_domain = get_original_url( 'siteurl' );
 						$css_uri = str_replace( $original_domain, $mapped_domain, $css_uri );
-	
+
 					}
 				}
 
