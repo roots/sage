@@ -1,3 +1,9 @@
+### HEAD
+
+* Allow revved files to resolve in development if they exist [discussion](https://discourse.roots.io/t/sage-assets-php-production-vs-development/3693/6) [pr#145](https://github.com/roots/sage/pull/1456)
+* Disable advanced minification features to fix incorrect file path in compiled CSS [#1449](https://github.com/roots/sage/issues/1449)
+* Fix glyphicon font path [#1449](https://github.com/roots/sage/issues/1449)
+
 ### 8.2.0: April 29th, 2015
 * Use Sass Bootstrap by default ([#1437](https://github.com/roots/sage/issues/1437))
 * Remove nav walker and Bootstrap navbar ([#1427](https://github.com/roots/sage/issues/1427))
