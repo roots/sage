@@ -1,8 +1,7 @@
 ### HEAD
-
-* Allow revved files to resolve in development if they exist [discussion](https://discourse.roots.io/t/sage-assets-php-production-vs-development/3693/6) [pr#145](https://github.com/roots/sage/pull/1456)
-* Disable advanced minification features to fix incorrect file path in compiled CSS [#1449](https://github.com/roots/sage/issues/1449)
-* Fix glyphicon font path [#1449](https://github.com/roots/sage/issues/1449)
+* Allow revved files to resolve in development if they exist ([#1456](https://github.com/roots/sage/issues/1456))
+* Disable advanced minification features to fix incorrect file path in compiled CSS ([#1452](https://github.com/roots/sage/issues/1452))
+* Fix Glyphicon font path ([#1455](https://github.com/roots/sage/issues/1455))
 
 ### 8.2.0: April 29th, 2015
 * Use Sass Bootstrap by default ([#1437](https://github.com/roots/sage/issues/1437))
