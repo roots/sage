@@ -1,12 +1,12 @@
 <?php
 
 if ( ! class_exists( 'EDD_SL_Theme_Updater' ) ) {
-	include( dirname( __FILE__ ) . '/EDD_SL_Theme_Updater.php' );
+	include( dirname( __FILE__ ) . '/EDD_Theme_Updater.php' );
 }
 
 function shoestrap_theme_updater() {
 
-	$edd_updater = new EDD_SL_Theme_Updater( array(
+	$edd_updater = new EDD_Theme_Updater( array(
 			'remote_api_url' 	=> 'https://press.codes',
 			'version' 			=> SHOESTRAP_VERSION,
 			'license' 			=> 'c5305a091a9e61268c5be6096bfa3d38',
