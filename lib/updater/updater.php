@@ -7,7 +7,7 @@ if ( ! class_exists( 'EDD_SL_Theme_Updater' ) ) {
 function shoestrap_theme_updater() {
 
 	$edd_updater = new EDD_SL_Theme_Updater( array(
-			'remote_api_url' 	=> 'http://shoestrap.org',
+			'remote_api_url' 	=> 'https://press.codes',
 			'version' 			=> SHOESTRAP_VERSION,
 			'license' 			=> 'c5305a091a9e61268c5be6096bfa3d38',
 			'item_name' 		=> 'Shoestrap 3',
