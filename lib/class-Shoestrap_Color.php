@@ -7,99 +7,73 @@ if ( ! class_exists( 'Shoestrap_Color' ) ) {
 	*/
 	class Shoestrap_Color {
 
-		function __construct() {
-		}
+	    /**
+		 * Sanitises a HEX value.
+		 * The way this works is by splitting the string in 6 substrings.
+		 * Each sub-string is individually sanitized, and the result is then returned.
+		 *
+	     * @var     string      The hex value of a color
+	     * @param   boolean     Whether we want to include a hash (#) at the beginning or not
+	     * @return  string      The sanitized hex color.
+	     */
+	     public static function sanitize_hex( $color = '#FFFFFF', $hash = true ) {
 
-		public static function sanitize_hex( $color ) {
 			// Remove any spaces and special characters before and after the string
-			$color = trim( $color, ' \t\n\r\0\x0B' );
+			$color = trim( $color. ' \t\n\r\0\x0B' );
 
 			// Remove any trailing '#' symbols from the color value
 			$color = str_replace( '#', '', $color );
-			
-			// Check if this is a valid hex color
-			if ( empty( $color ) || ! ctype_xdigit( $color ) ) {
-				return '#ffffff';
+
+			// If the string is 6 characters long then use it in pairs.
+			if ( 3 == strlen( $color ) ) {
+				$color = substr( $color, 0, 1 ) . substr( $color, 0, 1 ) . substr( $color, 1, 1 ) . substr( $color, 1, 1 ) . substr( $color, 2, 1 ) . substr( $color, 2, 1 );
 			}
 
-			// If there are more than 6 characters, only keep the first 6.
-			if ( strlen( $color ) > 6 ) {
-				 if ( strpos( $color, 'transparent' ) === false ) {
-					$color = substr( $color, 0, 6 );
-				} else {
-					$color = 'ffffff';
-				}
+			$substr = array();
+			for ( $i = 0; $i <= 5; $i++ ) {
+				$default    = ( 0 == $i ) ? 'F' : ( $substr[$i-1] );
+				$substr[$i] = substr( $color, $i, 1 );
+				$substr[$i] = ( false === $substr[$i] || ! ctype_xdigit( $substr[$i] ) ) ? $default : $substr[$i];
 			}
+			$hex = implode( '', $substr );
 
-			if ( strlen( $color ) == 6 ) {
-				$hex = $color; // If string consists of 6 characters, then this is our color
-			} else {
-				// String is shorter than 6 characters.
-				// We will have to do some calculations below to get the actual 6-digit hex value.
+			return ( ! $hash ) ? $hex : '#' . $hex;
 
-				// If the string is longer than 3 characters, only keep the first 3.
-				if ( strlen( $color ) > 3 ) {
-					$color = substr( $color, 0, 3 );
-				}
-
-				// If this is a 3-character string, format it to 6 characters.
-				if ( strlen( $color ) == 3 ) {
-					$red    = substr( $color, 0, 1 ) . substr( $color, 0, 1 );
-					$green  = substr( $color, 1, 1 ) . substr( $color, 1, 1 );
-					$blue   = substr( $color, 2, 1 ) . substr( $color, 2, 1 );
-
-					$hex = $red . $green . $blue;
-				}
-
-				// If this is shorter than 3 characters, do some voodoo.
-				if ( strlen( $color ) == 2 ) {
-					$hex = $color . $color . $color;
-				}
-
-				if ( strlen( $color ) == 1 ) {
-					$hex = $color . $color . $color . $color . $color . $color;
-				}
-			}
-
-			return '#' . $hex;
 		}
 
-		/*
-		 * Gets the rgb value of the $hex color.
-		 * Returns an array.
-		 */
+	    /**
+	     * Gets the rgb value of the $hex color.
+	     *
+	     * @var     string      The hex value of a color
+	     * @param   boolean     Whether we want to implode the values or not
+	     * @return  mixed       array|string
+	     */
 		public static function get_rgb( $hex, $implode = false ) {
-			// Remove any trailing '#' symbols from the color value
-			$hex = str_replace( '#', '', self::sanitize_hex( $hex ) );
 
-			if ( strlen( $hex ) == 3 ) {
-				// If the color is entered using a short, 3-character format,
-				// then find the rgb values from them
-				$red    = hexdec( substr( $hex, 0, 1 ) . substr( $hex, 0, 1 ) );
-				$green  = hexdec( substr( $hex, 1, 1 ) . substr( $hex, 1, 1 ) );
-				$blue   = hexdec( substr( $hex, 2, 1 ) . substr( $hex, 2, 1 ) );
-			} else {
-				// If the color is entered using a 6-character format,
-				// then find the rgb values from them
-				$red    = hexdec( substr( $hex, 0, 2 ) );
-				$green  = hexdec( substr( $hex, 2, 2 ) );
-				$blue   = hexdec( substr( $hex, 4, 2 ) );
-			}
+			// Remove any trailing '#' symbols from the color value
+			$hex = self::sanitize_hex( $hex, false );
+
+			$red    = hexdec( substr( $hex, 0, 2 ) );
+			$green  = hexdec( substr( $hex, 2, 2 ) );
+			$blue   = hexdec( substr( $hex, 4, 2 ) );
 
 			// rgb is an array
 			$rgb = array( $red, $green, $blue );
-			if ( $implode ) {
-				return implode( ',', $rgb );
-			} else {
-				return $rgb;
-			}
+
+			return ( $implode ) ? implode( ',', $rgb ) : $rgb;
+
 		}
 
-		/*
-		 * Gets the rgba value of a color.
-		 */
+	    /**
+	     * Gets the rgb value of the $hex color.
+	     *
+	     * @var     string      The hex value of a color
+	     * @param   int         Opacity level (1-100)
+	     * @return  string
+	     */
 		public static function get_rgba( $hex = '#fff', $opacity = 100, $echo = false ) {
-			$hex = self::sanitize_hex( $hex );
+
+			$hex = self::sanitize_hex( $hex, false );
 			// Make sure that opacity is properly formatted :
 			// Set the opacity to 100 if a larger value has been entered by mistake.
 			// If a negative value is used, then set to 0.
@@ -119,8 +93,7 @@ if ( ! class_exists( 'Shoestrap_Color' ) ) {
 
 			$color = 'rgba(' . self::get_rgb( $hex, true ) . ', ' . $opacity . ')';
 
-			// Echo or Return the value
-			if ( $echo == true ) {
+			if ( $echo ) {
 				echo $color;
 			} else {
 				return $color;
@@ -128,37 +101,37 @@ if ( ! class_exists( 'Shoestrap_Color' ) ) {
 
 		}
 
-		/*
-		 * Gets the brightness of the $hex color.
-		 * Returns a value between 0 and 255
-		 */
+	    /**
+	     * Gets the brightness of the $hex color.
+	     *
+	     * @var     string      The hex value of a color
+	     * @return  int         value between 0 and 255
+	     */
 		public static function get_brightness( $hex ) {
-			$hex = self::sanitize_hex( $hex );
+
+			$hex = self::sanitize_hex( $hex, false );
 			// returns brightness value from 0 to 255
-			// strip off any leading #
-			$hex = str_replace( '#', '', $hex );
 
 			$red    = hexdec( substr( $hex, 0, 2 ) );
 			$green  = hexdec( substr( $hex, 2, 2 ) );
 			$blue   = hexdec( substr( $hex, 4, 2 ) );
 
 			return ( ( $red * 299 ) + ( $green * 587 ) + ( $blue * 114 ) ) / 1000;
+
 		}
 
-		/*
-		 * Adjexts brightness of the $hex color.
-		 * the $steps variable is a value between -255 (darken) and 255 (lighten)
-		 */
+	    /**
+	     * Adjusts brightness of the $hex color.
+	     *
+	     * @var     string      The hex value of a color
+	     * @param   int         a value between -255 (darken) and 255 (lighten)
+	     * @return  string      returns hex color
+	     */
 		public static function adjust_brightness( $hex, $steps ) {
-			$hex = self::sanitize_hex( $hex );
+
+			$hex = self::sanitize_hex( $hex, false );
 			// Steps should be between -255 and 255. Negative = darker, positive = lighter
 			$steps = max( -255, min( 255, $steps ) );
-
-			// Format the hex color string
-			$hex = str_replace( '#', '', $hex );
-			if ( strlen( $hex ) == 3 ) {
-				$hex = str_repeat( substr( $hex, 0, 1 ), 2 ) . str_repeat( substr( $hex, 1, 1 ), 2 ) . str_repeat( substr( $hex, 2, 1 ), 2 );
-			}
 
 			// Get decimal values
 			$red    = hexdec( substr( $hex, 0, 2 ) );
@@ -174,63 +147,67 @@ if ( ! class_exists( 'Shoestrap_Color' ) ) {
 			$green_hex  = str_pad( dechex( $green ), 2, '0', STR_PAD_LEFT );
 			$blue_hex   = str_pad( dechex( $blue ), 2, '0', STR_PAD_LEFT );
 
-			return '#' . $red_hex . $green_hex . $blue_hex;
+			return self::sanitize_hex( $red_hex . $green_hex . $blue_hex );
+
 		}
 
-		/*
-		 * Mixes 2 hex colors.
-		 * the "percentage" variable is the percent of the first color
-		 * to be used it the mix. default is 50 (equal mix)
-		 */
+	    /**
+	     * Mixes 2 hex colors.
+	     * the "percentage" variable is the percent of the first color
+	     * to be used it the mix. default is 50 (equal mix)
+	     *
+	     * @var     string      The hex value of color 1
+	     * @var     string      The hex value of color 2
+	     * @param   int         a value between 0 and 100
+	     * @return  string      returns hex color
+	     */
 		public static function mix_colors( $hex1, $hex2, $percentage ) {
-			$hex1 = self::sanitize_hex( $hex1 );
-			$hex2 = self::sanitize_hex( $hex2 );
 
-			// Format the hex color string
-			$hex1 = str_replace( '#', '', $hex1 );
-			if ( strlen( $hex1 ) == 3 ) {
-				$hex1 = str_repeat( substr( $hex1, 0, 1 ), 2 ) . str_repeat( substr( $hex1, 1, 1 ), 2 ) . str_repeat( substr( $hex1, 2, 1 ), 2 );
-			}
-
-			$hex2 = str_replace( '#', '', $hex2 );
-			if ( strlen( $hex2 ) == 3 ) {
-				str_repeat( substr( $hex2, 0, 1 ), 2 ) . str_repeat( substr( $hex2, 1, 1 ), 2 ) . str_repeat( substr( $hex2, 2, 1 ), 2 );
-			}
+			$hex1 = self::sanitize_hex( $hex1, false );
+			$hex2 = self::sanitize_hex( $hex2, false );
 
 			// Get decimal values
-			$red_1    = hexdec( substr( $hex1, 0, 2 ) );
-			$green_1  = hexdec( substr( $hex1, 2, 2 ) );
-			$blue_1   = hexdec( substr( $hex1, 4, 2 ) );
-			$red_2    = hexdec( substr( $hex2, 0, 2 ) );
-			$green_2  = hexdec( substr( $hex2, 2, 2 ) );
-			$blue_2   = hexdec( substr( $hex2, 4, 2 ) );
+			$red_1   = hexdec( substr( $hex1, 0, 2 ) );
+			$green_1 = hexdec( substr( $hex1, 2, 2 ) );
+			$blue_1  = hexdec( substr( $hex1, 4, 2 ) );
+			$red_2   = hexdec( substr( $hex2, 0, 2 ) );
+			$green_2 = hexdec( substr( $hex2, 2, 2 ) );
+			$blue_2  = hexdec( substr( $hex2, 4, 2 ) );
 
-			$red      = ( $percentage * $red_1 + ( 100 - $percentage ) * $red_2 ) / 100;
-			$green    = ( $percentage * $green_1 + ( 100 - $percentage ) * $green_2 ) / 100;
-			$blue     = ( $percentage * $blue_1 + ( 100 - $percentage ) * $blue_2 ) / 100;
+			$red   = ( $percentage * $red_1 + ( 100 - $percentage ) * $red_2 ) / 100;
+			$green = ( $percentage * $green_1 + ( 100 - $percentage ) * $green_2 ) / 100;
+			$blue  = ( $percentage * $blue_1 + ( 100 - $percentage ) * $blue_2 ) / 100;
 
-			$red_hex    = str_pad( dechex( $red ), 2, '0', STR_PAD_LEFT );
-			$green_hex  = str_pad( dechex( $green ), 2, '0', STR_PAD_LEFT );
-			$blue_hex   = str_pad( dechex( $blue ), 2, '0', STR_PAD_LEFT );
+			$red_hex   = str_pad( dechex( $red ), 2, '0', STR_PAD_LEFT );
+			$green_hex = str_pad( dechex( $green ), 2, '0', STR_PAD_LEFT );
+			$blue_hex  = str_pad( dechex( $blue ), 2, '0', STR_PAD_LEFT );
 
-			return '#' . $red_hex . $green_hex . $blue_hex;
+			return self::sanitize_hex( $red_hex . $green_hex . $blue_hex );
+
 		}
 
-		/*
-		 * Convert a hex color to HSV
-		 */
+	    /**
+	     * Convert hex color to hsv
+	     *
+	     * @var     string      The hex value of color 1
+	     * @return  array       returns array( 'h', 's', 'v' )
+	     */
 		public static function hex_to_hsv( $hex ) {
-			$hex = self::sanitize_hex( $hex );
-			$hex = str_replace( '#', '', $hex );
+
+			$hex = self::sanitize_hex( $hex, false );
 			$rgb = self::get_rgb( $hex );
 			$hsv = self::rgb_to_hsv( $rgb );
 
 			return $hsv;
+
 		}
 
-		/*
-		 * Convert an RGB array to HSV
-		 */
+	    /**
+	     * Convert hex color to hsv
+	     *
+	     * @var     array       The rgb color to conver array( 'r', 'g', 'b' )
+	     * @return  array       returns array( 'h', 's', 'v' )
+	     */
 		public static function rgb_to_hsv( $color = array() ) {
 			$r = $color[0];
 			$g = $color[1];
@@ -266,11 +243,11 @@ if ( ! class_exists( 'Shoestrap_Color' ) ) {
 					$h = ( 2 / 3 ) + $del_g - $del_r;
 				}
 
-				if ( $h<0 ) {
+				if ( $h < 0 ) {
 					$h++;
 				}
 
-				if ( $h>1 ) {
+				if ( $h > 1 ) {
 					$h--;
 				}
 			}
@@ -282,21 +259,25 @@ if ( ! class_exists( 'Shoestrap_Color' ) ) {
 			return $hsl;
 		}
 
-		/*
-		 * Get the brightest color from an array of colors.
-		 * Return the key of the array if $context = 'key'
-		 * Return the hex value of the color if $context = 'value'
-		 */
+	    /**
+	     * Get the brightest color from an array of colors.
+	     * Return the key of the array if $context = 'key'
+	     * Return the hex value of the color if $context = 'value'
+	     *
+	     * @var     array       flat array of hex colors
+	     * @param   string      'key' or 'value'
+	     * @return  mixed       int|string
+	     */
 		public static function brightest_color( $colors = array(), $context = 'key' ) {
+
 			$brightest = false;
 
 			foreach ( $colors as $color ) {
-				$color      = self::sanitize_hex( $color );
-				$hex        = str_replace( '#', '', $color );
-				$brightness = self::get_brightness( $hex );
+				$color      = self::sanitize_hex( $color, false );
+				$brightness = self::get_brightness( $color );
 
-				if ( ! $brightest || self::get_brightness( $hex ) > self::get_brightness( $brightest ) ) {
-					$brightest = $hex;
+				if ( ! $brightest || self::get_brightness( $color ) > self::get_brightness( $brightest ) ) {
+					$brightest = $color;
 				}
 			}
 
@@ -305,6 +286,7 @@ if ( ! class_exists( 'Shoestrap_Color' ) ) {
 			} elseif ( $context == 'value' ) {
 				return $brightest;
 			}
+
 		}
 
 		/*
@@ -313,11 +295,11 @@ if ( ! class_exists( 'Shoestrap_Color' ) ) {
 		 * Return the hex value of the color if $context = 'value'
 		 */
 		public static function most_saturated_color( $colors = array(), $context = 'key' ) {
+
 			$most_saturated = false;
 
 			foreach ( $colors as $color ) {
-				$color      = self::sanitize_hex( $color );
-				$hex        = str_replace( '#', '', $color );
+				$color      = self::sanitize_hex( $color, false );
 				$hsv        = self::hex_to_hsv( $hex );
 				$saturation = $hsv['s'];
 
@@ -335,6 +317,7 @@ if ( ! class_exists( 'Shoestrap_Color' ) ) {
 			} elseif ( $context == 'value' ) {
 				return $most_saturated;
 			}
+
 		}
 
 		/*
@@ -343,11 +326,11 @@ if ( ! class_exists( 'Shoestrap_Color' ) ) {
 		 * Return the hex value of the color if $context = 'value'
 		 */
 		public static function most_intense_color( $colors = array(), $context = 'key' ) {
+
 			$most_intense = false;
 
 			foreach ( $colors as $color ) {
-				$color      = self::sanitize_hex( $color );
-				$hex        = str_replace( '#', '', $color );
+				$color      = self::sanitize_hex( $color, false );
 				$hsv        = self::hex_to_hsv( $hex );
 				$saturation = $hsv['s'];
 
@@ -365,6 +348,7 @@ if ( ! class_exists( 'Shoestrap_Color' ) ) {
 			} elseif ( $context == 'value' ) {
 				return $most_intense;
 			}
+
 		}
 
 		/*
@@ -373,11 +357,11 @@ if ( ! class_exists( 'Shoestrap_Color' ) ) {
 		 * Return the hex value of the color if $context = 'value'
 		 */
 		public static function brightest_dull_color( $colors = array(), $context = 'key' ) {
+
 			$brightest_dull = false;
 
 			foreach ( $colors as $color ) {
-				$color        = self::sanitize_hex( $color );
-				$hex          = str_replace( '#', '', $color );
+				$color        = self::sanitize_hex( $color, false );
 				$hsv          = self::hex_to_hsv( $hex );
 
 				$brightness   = self::get_brightness( $hex );
@@ -402,6 +386,7 @@ if ( ! class_exists( 'Shoestrap_Color' ) ) {
 			} elseif ( $context == 'value' ) {
 				return $brightest_dull;
 			}
+
 		}
 
 		/*
@@ -409,8 +394,9 @@ if ( ! class_exists( 'Shoestrap_Color' ) ) {
 		 * A value higher than 500 is recommended for good readability.
 		 */
 		public static function color_difference( $color_1 = '#ffffff', $color_2 = '#000000' ) {
-			$color_1 = self::sanitize_hex( $color_1 );
-			$color_2 = self::sanitize_hex( $color_2 );
+
+			$color_1 = self::sanitize_hex( $color_1, false );
+			$color_2 = self::sanitize_hex( $color_2, flase );
 
 			$color_1_rgb = self::get_rgb( $color_1 );
 			$color_2_rgb = self::get_rgb( $color_2 );
@@ -430,6 +416,7 @@ if ( ! class_exists( 'Shoestrap_Color' ) ) {
 			$color_diff = $r_diff + $g_diff + $b_diff;
 
 			return $color_diff;
+
 		}
 
 		/*
@@ -438,8 +425,9 @@ if ( ! class_exists( 'Shoestrap_Color' ) ) {
 		 * Combining it with the color_difference function above might make sense.
 		 */
 		public static function brightness_difference( $color_1 = '#ffffff', $color_2 = '#000000' ) {
-			$color_1 = self::sanitize_hex( $color_1 );
-			$color_2 = self::sanitize_hex( $color_2 );
+
+			$color_1 = self::sanitize_hex( $color_1, false );
+			$color_2 = self::sanitize_hex( $color_2, false );
 
 			$color_1_rgb = self::get_rgb( $color_1 );
 			$color_2_rgb = self::get_rgb( $color_2 );
@@ -456,6 +444,7 @@ if ( ! class_exists( 'Shoestrap_Color' ) ) {
 			$br_2 = ( 299 * $r2 + 587 * $g2 + 114 * $b2 ) / 1000;
 
 			return abs( $br_1 - $br_2 );
+
 		}
 
 		/*
@@ -463,8 +452,9 @@ if ( ! class_exists( 'Shoestrap_Color' ) ) {
 		 * The returned value should be bigger than 5 for best readability.
 		 */
 		public static function lumosity_difference( $color_1 = '#ffffff', $color_2 = '#000000' ) {
-			$color_1 = self::sanitize_hex( $color_1 );
-			$color_2 = self::sanitize_hex( $color_2 );
+
+			$color_1 = self::sanitize_hex( $color_1, false );
+			$color_2 = self::sanitize_hex( $color_2, false );
 
 			$color_1_rgb = self::get_rgb( $color_1 );
 			$color_2_rgb = self::get_rgb( $color_2 );
@@ -485,5 +475,7 @@ if ( ! class_exists( 'Shoestrap_Color' ) ) {
 			return $lum_diff;
 
 		}
+
 	}
+
 }
