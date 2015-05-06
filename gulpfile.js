@@ -1,7 +1,7 @@
 // ## Globals
 var argv         = require('minimist')(process.argv.slice(2));
 var autoprefixer = require('gulp-autoprefixer');
-var browserSync  = require('browser-sync');
+var browserSync  = require('browser-sync').create();
 var changed      = require('gulp-changed');
 var concat       = require('gulp-concat');
 var flatten      = require('gulp-flatten');
@@ -143,9 +143,7 @@ var jsTasks = function(filename) {
 var writeToManifest = function(directory) {
   return lazypipe()
     .pipe(gulp.dest, path.dist + directory)
-    .pipe(function() {
-      return gulpif('**/*.{js,css}', browserSync.reload({stream:true}));
-    })
+    .pipe(browserSync.stream, {match: '**/*.{js,css}'})
     .pipe(rev.manifest, revManifest, {
       base: path.dist,
       merge: true
@@ -235,7 +233,7 @@ gulp.task('clean', require('del').bind(null, [path.dist]));
 // build step for that asset and inject the changes into the page.
 // See: http://www.browsersync.io
 gulp.task('watch', function() {
-  browserSync({
+  browserSync.init({
     files: [path.dist, '{lib,templates}/**/*.php', '*.php'],
     proxy: config.devUrl,
     snippetOptions: {
