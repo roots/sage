@@ -196,7 +196,8 @@ gulp.task('scripts', ['jshint'], function() {
 gulp.task('fonts', function() {
   return gulp.src(globs.fonts)
     .pipe(flatten())
-    .pipe(gulp.dest(path.dist + 'fonts'));
+    .pipe(gulp.dest(path.dist + 'fonts'))
+    .pipe(browserSync.stream());
 });
 
 // ### Images
@@ -208,7 +209,8 @@ gulp.task('images', function() {
       interlaced: true,
       svgoPlugins: [{removeUnknownsAndDefaults: false}]
     }))
-    .pipe(gulp.dest(path.dist + 'images'));
+    .pipe(gulp.dest(path.dist + 'images'))
+    .pipe(browserSync.stream());
 });
 
 // ### JSHint
@@ -234,7 +236,7 @@ gulp.task('clean', require('del').bind(null, [path.dist]));
 // See: http://www.browsersync.io
 gulp.task('watch', function() {
   browserSync.init({
-    files: [path.dist, '{lib,templates}/**/*.php', '*.php'],
+    files: ['{lib,templates}/**/*.php', '*.php'],
     proxy: config.devUrl,
     snippetOptions: {
       whitelist: ['/wp-admin/admin-ajax.php'],
