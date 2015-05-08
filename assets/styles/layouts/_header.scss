@@ -1,0 +1,14 @@
+.brand {
+  background: url(../images/logo.png) no-repeat;
+  width: 436px;
+  height: 272px;
+  margin: 30px auto;
+  display: block;
+  text-indent: -9999px;
+
+  @media screen and (max-width: $screen-md-min) {
+    background: url(../images/logo-small.png) no-repeat;
+  width: 257px;
+  height: 115px;
+  }
+}

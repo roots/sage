@@ -5,7 +5,12 @@
 @import "../../bower_components/bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 // endbower
 
+// Inject Open Sans font
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700);
+
 @import "common/_global";
+@import "common/_utilities";
+@import "components/_type";
 @import "components/_buttons";
 @import "components/_comments";
 @import "components/_forms";
@@ -16,3 +21,4 @@
 @import "layouts/_footer";
 @import "layouts/_pages";
 @import "layouts/_posts";
+@import "layouts/_single";
