@@ -18,7 +18,7 @@ use Roots\Sage\Wrapper;
     ?>
     <div class="wrap container" role="document">
       <div class="content row">
-        <main class="main" role="main">
+        <main class="main col-xs-12 col-lg-8" role="main">
           <?php include Wrapper\template_path(); ?>
         </main><!-- /.main -->
         <?php if (Config\display_sidebar()) : ?>

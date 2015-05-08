@@ -7,8 +7,23 @@ p, li, address, abbr, pre {
   font-family: 'Open Sans', Helvetica, Arial, sans-serif;
 }
 
-.post p {
-  font-size: 18px;
-  line-height: 30px;
+body, p {
+  font-size: 16px;
+  line-height: 28px;
   color: $grey;
+  @media screen and (min-width: $screen-sm-min) {
+    font-size: 18px;
+    line-height: 30px;
+  }
+}
+
+.entry-title,
+.entry-title a {
+  margin: 0;
+  font-size: 42px;
+  font-weight: bold;
+  color: $white;
+  @media screen and (min-width: $screen-sm-min) {
+    font-size: 66px;
+  }
 }

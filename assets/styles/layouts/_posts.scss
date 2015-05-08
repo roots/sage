@@ -1,21 +1,34 @@
 .blog .post {
   background: #fff;
-  border-radius: $radius;
-  margin-bottom: 60px;
+  border-radius: 0;
+  margin: 0;
+  @media screen and (min-width: $screen-sm-min) {
+    border-radius: 5px;
+  }
+  @media screen and (min-width: $screen-sm-min) {
+    margin-bottom: 60px;
+  }
 }
 
 .blog .post header {
+  border-top: 10px solid $brand-primary + 75%;
   background-color: $brand-primary;
   position: relative;
-  border-radius: $radius $radius 0 0;
   min-height: 300px;
+  border-radius: 0;
+  @media screen and (min-width: $screen-sm-min) {
+    border-radius: 5px 5px 0 0;
+  }
 }
 
 .blog .post header img {
   width: 100%;
   height: auto;
   z-index: 10;
-  border-radius: $radius $radius 0 0;
+  border-radius: 0;
+  @media screen and (min-width: $screen-sm-min) {
+    border-radius: 5px 5px 0 0;
+  }
 }
 
 .overlay {
@@ -27,23 +40,28 @@
   z-index: 20;
   background: $brand-primary;
   opacity: 0.75;
-  border-radius: $radius $radius 0 0;
+  border-radius: 0;
+  @media screen and (min-width: $screen-sm-min) {
+    border-radius: 5px 5px 0 0;
+  }
 }
 
 .blog .post .entry-title a {
   position: absolute;
-  top: 60px;
-  left: 40px;
+  top: 0;
+  left: 0;
   z-index: 30;
-  font-size: 68px;
-  font-weight: bold;
-  color: $white;
   margin: 0;
+  padding: 40px 20px;
+  @media screen and (min-width: $screen-sm-min) {
+    padding: 40px;
+  }
 }
 
 .blog .post .entry-summary {
-  padding: 30px 40px;
-  font-size: 18px;
   line-height: 30px;
-  color: $grey;
+  padding: 10px 20px;
+  @media screen and (min-width: $screen-sm-min) {
+    padding: 40px;
+  }
 }
