@@ -1,0 +1,33 @@
+  .day-nav {
+    text-align: right;
+    padding: 0;
+    display: none;
+
+    a.change-day {
+      color: #fff;
+      background: $brand-primary;
+      padding: 10px;
+      font-size: 12px;
+      i.glyphicon { font-size: 12px; }
+      @media screen and (min-width: $screen-sm-min) {
+        font-size: 16px;
+        i.glyphicon { font-size: 16px; }
+      }
+
+      &:hover {
+        text-decoration: none;
+        background: $brand-secondary;
+      }
+      &:active {
+        text-decoration: none;
+        background: $brand-primary - 50%;
+        top: 1px;
+      }
+      &:focus {
+        text-decoration: none;
+      }
+    }
+
+    .prev { text-align: left; }
+    .next { text-align: right; }
+  }

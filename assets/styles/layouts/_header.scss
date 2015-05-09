@@ -1,21 +1,43 @@
-.brand {
-  background: url(../images/logo.png) no-repeat;
-  width: 270px;
-  height: 130px;
-  margin: 30px auto 20px;
-  display: block;
-  text-indent: -9999px;
+header.banner {
+  position: relative;
+  .center { text-align: center; }
+
+  .brand {
+    max-width: 253px;
+    max-height: 116px;
+    width: 100%;
+    height: auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    display: block;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  h2.brand-description {
+    color: $brand-secondary;
+    font-family: 'Homemade Apple', cursive;
+    text-shadow: 0 3px 15px rgba(0,0,0,1);
+    text-align: center;
+    margin: 0 20px 30px;
+    font-size: 34px;
+    line-height: 44px;
+    @media screen and (min-width: $screen-md-min) {
+      margin: 0 100px 30px;
+      font-size: 44px;
+      line-height: 58px;
+    }
+    @media screen and (min-width: $screen-lg-min) {
+      margin: 0 0 30px;
+    }
+  }
 }
 
-h2.brand-description {
-  color: $brand-secondary;
-  font-family: 'Homemade Apple', cursive;
-  text-shadow: 0 3px 15px rgba(0,0,0,1);
-  text-align: center;
-  margin: 0 0 35px;
-  font-size: 30px;
-  line-height: 36px;
-  @media screen and (min-width: $screen-sm-min) {
-    font-size: 44px;
-  }
+.blog .brand {
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
 }
