@@ -1,44 +1,45 @@
-// .single article {
-//   background: $white;
-//   border-radius: $radius;
-//   margin-bottom: 40px;
+.single article {
+  background: $white;
+  border-radius: 5px;
+  margin-bottom: 40px;
 
-//   header {
-//     background-color: $brand-primary;
-//     position: relative;
-//     border-radius: $radius $radius 0 0;
-//     min-height: 300px;
-//     overflow: hidden;
+  header {
+    border-top: 10px solid $brand-primary + 75%;
+    background-color: $brand-primary;
+    position: relative;
+    border-radius: 5px 5px 0 0;
+    min-height: 300px;
+    overflow: hidden;
 
-//     img {
-//       width: 100%;
-//       height: auto;
-//       z-index: 10;
-//       border-radius: $radius $radius 0 0;
-//     }
+    img {
+      width: 100%;
+      height: auto;
+      z-index: 10;
+      border-radius: 5px 5px 0 0;
+    }
 
-//     .title {
-//       position: absolute;
-//       top: $padding;
-//       left: $padding;
-//       z-index: 30;
-//     }
+    .title {
+      position: absolute;
+      top: 40px;
+      left: 40px;
+      z-index: 30;
+    }
 
-//     .entry-title {
-//       color: $white;
-//       font-size: 68px;
-//     }
+    .entry-title {
+      color: $white;
+      font-size: 68px;
+    }
 
-//     time, .author, .author a {
-//       color: $white;
-//     }
-//   }
+    time, .author, .author a {
+      color: $white;
+    }
+  }
 
-//   .entry-content {
-//     padding: $padding;
-//   }
+  .entry-content {
+    padding: 40px;
+  }
 
-//   .comments {
-//     padding: $padding;
-//   }
-// }
+  .comments {
+    padding: 40px;
+  }
+}
