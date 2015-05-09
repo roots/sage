@@ -10,14 +10,15 @@
   }
 }
 
-.home .post header {
+.blog .post header {
   overflow: hidden;
-  min-height: 100px;
-  max-height: 300px;
+  min-height: 220px;
 }
 
 .post header {
-  border-top: 10px solid $brand-primary + 75%;
+  @media screen and (max-width: $screen-sm-min) {
+    border-top: 10px solid $brand-primary + 75%;
+  }
   background-color: $brand-primary;
   position: relative;
   border-radius: 0;
@@ -51,7 +52,7 @@
   }
 }
 
-.post .entry-title a {
+.blog .post .entry-title {
   position: absolute;
   top: 0;
   left: 0;
