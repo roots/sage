@@ -2,7 +2,20 @@
   background: url(../images/logo.png) no-repeat;
   width: 270px;
   height: 130px;
-  margin: 20px auto 15px;
+  margin: 30px auto 20px;
   display: block;
   text-indent: -9999px;
+}
+
+h2.brand-description {
+  color: $brand-secondary;
+  font-family: 'Homemade Apple', cursive;
+  text-shadow: 0 3px 15px rgba(0,0,0,1);
+  text-align: center;
+  margin: 0 0 35px;
+  font-size: 30px;
+  line-height: 36px;
+  @media screen and (min-width: $screen-sm-min) {
+    font-size: 44px;
+  }
 }

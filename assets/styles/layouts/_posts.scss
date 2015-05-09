@@ -1,4 +1,4 @@
-.blog .post {
+.post {
   background: #fff;
   border-radius: 0;
   margin: 0;
@@ -10,18 +10,23 @@
   }
 }
 
-.blog .post header {
+.home .post header {
+  overflow: hidden;
+  min-height: 100px;
+  max-height: 300px;
+}
+
+.post header {
   border-top: 10px solid $brand-primary + 75%;
   background-color: $brand-primary;
   position: relative;
-  min-height: 300px;
   border-radius: 0;
   @media screen and (min-width: $screen-sm-min) {
     border-radius: 5px 5px 0 0;
   }
 }
 
-.blog .post header img {
+.post header img {
   width: 100%;
   height: auto;
   z-index: 10;
@@ -46,7 +51,7 @@
   }
 }
 
-.blog .post .entry-title a {
+.post .entry-title a {
   position: absolute;
   top: 0;
   left: 0;
@@ -58,9 +63,9 @@
   }
 }
 
-.blog .post .entry-summary {
+.post .entry-summary {
   line-height: 30px;
-  padding: 10px 20px;
+  padding: 20px 20px 10px 20px;
   @media screen and (min-width: $screen-sm-min) {
     padding: 40px;
   }

@@ -20,10 +20,10 @@ body, p {
 .entry-title,
 .entry-title a {
   margin: 0;
-  font-size: 42px;
+  font-size: 40px;
   font-weight: bold;
   color: $white;
   @media screen and (min-width: $screen-sm-min) {
-    font-size: 66px;
+    font-size: 60px;
   }
 }
