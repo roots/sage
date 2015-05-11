@@ -5,17 +5,17 @@
     margin-bottom: 40px;
   }
 
-  header { background: $brand-primary; }
-
-  .title {
-    padding: 20px;
-    @media screen and (min-width: $screen-sm-min) {
-      padding: 40px;
+  header {
+    background: $brand-primary;
+    .title {
+      padding: 20px;
+      @media screen and (min-width: $screen-sm-min) {
+        padding: 40px;
+      }
     }
-  }
-
-  time, .author, .author a {
-    color: $white;
+    time, .author, .author a {
+      color: $white;
+    }
   }
 
   .entry-content {

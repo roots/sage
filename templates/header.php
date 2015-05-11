@@ -11,10 +11,17 @@
       <?php endif; ?>
     </div>
 
-    <?php if (is_single()): ?>
+    <?php if (is_single() && !is_attachment()): ?>
       <div class="day-nav col-xs-6 col-md-8">
         <?php previous_post_link('%link', '<i class="glyphicon glyphicon-chevron-left"></i> <span>Previous Day</span>'); ?>
         <?php next_post_link('%link', '<span>Next Day</span> <i class="glyphicon glyphicon-chevron-right"></i>'); ?>
+      </div>
+    <?php endif; ?>
+
+    <?php if (is_attachment()): ?>
+      <div class="attachment-nav col-xs-6 col-md-8">
+        <?php previous_image_link('full', '<i class="glyphicon glyphicon-chevron-left"></i> <span>Previous Image</span>'); ?>
+        <?php next_image_link('full', '<span>Next Image</span> <i class="glyphicon glyphicon-chevron-right"></i>'); ?>
       </div>
     <?php endif; ?>
   </div>

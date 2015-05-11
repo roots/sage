@@ -25,6 +25,6 @@
     }
   },
   "config": {
-    "devUrl": "http://pistrips.co.uk"
+    "devUrl": "http://pistrips.dev"
   }
 }

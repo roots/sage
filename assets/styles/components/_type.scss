@@ -10,10 +10,12 @@ p, li, address, abbr, pre {
 body, p {
   font-size: 16px;
   line-height: 28px;
+  margin-bottom: 15px;
   color: $grey;
   @media screen and (min-width: $screen-sm-min) {
     font-size: 18px;
     line-height: 30px;
+    margin-bottom: 25px;
   }
 }
 
