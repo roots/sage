@@ -31,13 +31,13 @@ For more installation notes, refer to the [Install gulp and Bower](#install-gulp
 * [Sass](https://github.com/twbs/bootstrap-sass) [Bootstrap](http://getbootstrap.com/)
 * [Theme wrapper](https://roots.io/sage/docs/theme-wrapper/)
 * ARIA roles and microformats
-* Cleaner HTML output of navigation menus
 * Posts use the [hNews](http://microformats.org/wiki/hnews) microformat
 * [Multilingual ready](https://roots.io/wpml/) and over 30 available [community translations](https://github.com/roots/sage-translations)
 
 Install the [Soil](https://github.com/roots/soil) plugin to enable additional features:
 
 * Cleaner output of `wp_head` and enqueued assets
+* Cleaner HTML output of navigation menus
 * Root relative URLs
 * Nice search (`/search/query/`)
 * Google CDN jQuery snippet from [HTML5 Boilerplate](http://html5boilerplate.com/)
