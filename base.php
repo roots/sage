@@ -30,6 +30,7 @@ use Roots\Sage\Wrapper;
     </div><!-- /.wrap -->
     <?php
       get_template_part('templates/footer');
+      get_template_part('templates/analytics');
       wp_footer();
     ?>
   </body>
