@@ -23,7 +23,7 @@
   position: relative;
   border-radius: 0;
   @media screen and (min-width: $screen-sm-min) {
-    border-radius: 5px 5px 0 0;
+    border-radius: $radius $radius 0 0;
   }
 }
 
@@ -33,7 +33,7 @@
   z-index: 10;
   border-radius: 0;
   @media screen and (min-width: $screen-sm-min) {
-    border-radius: 5px 5px 0 0;
+    border-radius: $radius $radius 0 0;
   }
 }
 
@@ -48,7 +48,7 @@
   opacity: 0.75;
   border-radius: 0;
   @media screen and (min-width: $screen-sm-min) {
-    border-radius: 5px 5px 0 0;
+    border-radius: $radius $radius 0 0;
   }
 }
 
