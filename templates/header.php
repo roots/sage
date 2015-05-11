@@ -13,8 +13,8 @@
 
     <?php if (is_single()): ?>
       <div class="day-nav col-xs-6 col-md-8">
-        <a href="#prev" class="change-day prev"><i class="glyphicon glyphicon-chevron-left"></i> Previous Day</a>
-        <a href="#next" class="change-day next">Next Day <i class="glyphicon glyphicon-chevron-right"></i></a>
+        <?php previous_post_link('%link', '<i class="glyphicon glyphicon-chevron-left"></i> <span>Previous Day</span>'); ?>
+        <?php next_post_link('%link', '<span>Next Day</span> <i class="glyphicon glyphicon-chevron-right"></i>'); ?>
       </div>
     <?php endif; ?>
   </div>
