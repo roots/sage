@@ -1,3 +1,10 @@
+# [Pi's Trips](http://pistrips.co.uk) — Mississippi theme
+[ ![Codeship Status for danielmorgan/mississippi](https://codeship.com/projects/05d335f0-d806-0132-1b9c-56577b4e3777/status?branch=master)](https://codeship.com/projects/78825)
+
+A WordPress theme for a May 2015 road trip around the American Deep South.
+
+----------
+
 # [Sage](https://roots.io/sage/)
 [![Build Status](https://travis-ci.org/roots/sage.svg)](https://travis-ci.org/roots/sage)
 [![devDependency Status](https://david-dm.org/roots/sage/dev-status.svg)](https://david-dm.org/roots/sage#info=devDependencies)

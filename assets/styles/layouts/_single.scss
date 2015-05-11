@@ -1,0 +1,34 @@
+.single article {
+  background: $white;
+  @media screen and (min-width: $screen-sm-min) {
+    border-radius: 5px;
+    margin-bottom: 40px;
+  }
+
+  header {
+    background: $brand-primary;
+    .title {
+      padding: 20px;
+      @media screen and (min-width: $screen-sm-min) {
+        padding: 40px;
+      }
+    }
+    time, .author, .author a {
+      color: $white;
+    }
+  }
+
+  .entry-content {
+    padding: 20px;
+    @media screen and (min-width: $screen-sm-min) {
+      padding: 40px;
+    }
+  }
+
+  .comments {
+    padding: 20px;
+    @media screen and (min-width: $screen-sm-min) {
+      padding: 40px;
+    }
+  }
+}

@@ -1,0 +1,31 @@
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+  font-weight: bold;
+}
+
+p, li, address, abbr, pre {
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+}
+
+body, p {
+  font-size: 16px;
+  line-height: 28px;
+  margin-bottom: 15px;
+  color: $grey;
+  @media screen and (min-width: $screen-sm-min) {
+    font-size: 18px;
+    line-height: 30px;
+    margin-bottom: 25px;
+  }
+}
+
+.entry-title,
+.entry-title a {
+  margin: 0;
+  font-size: 40px;
+  font-weight: bold;
+  color: $white;
+  @media screen and (min-width: $screen-sm-min) {
+    font-size: 60px;
+  }
+}

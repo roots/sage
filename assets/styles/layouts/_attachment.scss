@@ -1,0 +1,34 @@
+article.attachment {
+  header {
+    position: relative;
+    @media screen and (max-width: $screen-sm-min) {
+      border-top: 10px solid $brand-primary + 75%;
+    }
+    @media screen and (min-width: $screen-sm-min) {
+      border-radius: $radius $radius 0 0;
+    }
+
+    img {
+    	width: 100%;
+	    @media screen and (min-width: $screen-sm-min) {
+	      border-radius: $radius $radius 0 0;
+	    }
+    }
+
+    .btn {
+      @media screen and (max-width: $screen-sm) {
+        width: 100%;
+        border-radius: 0;
+        border: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      @media screen and (min-width: $screen-sm-min) {
+        position: absolute;
+        bottom: 40px;
+        left: 40px;
+      }
+    }
+  }
+}

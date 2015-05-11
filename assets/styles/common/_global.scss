@@ -1,1 +1,10 @@
+body {
+  background: url(../images/background.jpg) #0a0907;
+}
 
+@media screen and (max-width: $screen-sm-min) {
+  .main {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}

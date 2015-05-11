@@ -1,11 +1,7 @@
 sudo: false
 language: php
 php:
-  - nightly
-  - 5.6
   - 5.5
-  - 5.4
-  - hhvm
 
 matrix:
   allow_failures:
@@ -18,14 +14,10 @@ cache:
 
 install:
   - npm install -g npm@latest
-  - npm install -g bower gulp jscs
+  - npm install -g bower gulp
   - npm install
-  - composer self-update && composer --version
-  - export PATH="$HOME/.composer/vendor/bin:$PATH"
-  - composer global require squizlabs/php_codesniffer
+  - bower install
+  - gulp --production
 
 script:
-  - npm run build
-  - npm run jshint
-  - npm run jscs
-  - phpcs --standard=ruleset.xml --extensions=php -n -s .
+  - gulp --production

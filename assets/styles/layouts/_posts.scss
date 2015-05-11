@@ -1,0 +1,73 @@
+.post {
+  background: #fff;
+  border-radius: 0;
+  margin: 0;
+  @media screen and (min-width: $screen-sm-min) {
+    border-radius: 5px;
+  }
+  @media screen and (min-width: $screen-sm-min) {
+    margin-bottom: 60px;
+  }
+}
+
+.blog .post header {
+  overflow: hidden;
+  min-height: 220px;
+}
+
+.post header {
+  @media screen and (max-width: $screen-sm-min) {
+    border-top: 10px solid $brand-primary + 75%;
+  }
+  background-color: $brand-primary;
+  position: relative;
+  border-radius: 0;
+  @media screen and (min-width: $screen-sm-min) {
+    border-radius: $radius $radius 0 0;
+  }
+}
+
+.post header img {
+  width: 100%;
+  height: auto;
+  z-index: 10;
+  border-radius: 0;
+  @media screen and (min-width: $screen-sm-min) {
+    border-radius: $radius $radius 0 0;
+  }
+}
+
+.overlay {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 20;
+  background: $brand-primary;
+  opacity: 0.75;
+  border-radius: 0;
+  @media screen and (min-width: $screen-sm-min) {
+    border-radius: $radius $radius 0 0;
+  }
+}
+
+.blog .post .entry-title {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 30;
+  margin: 0;
+  padding: 40px 20px;
+  @media screen and (min-width: $screen-sm-min) {
+    padding: 40px;
+  }
+}
+
+.post .entry-summary {
+  line-height: 30px;
+  padding: 20px 20px 10px 20px;
+  @media screen and (min-width: $screen-sm-min) {
+    padding: 40px;
+  }
+}

@@ -31,3 +31,26 @@ function excerpt_more() {
   return ' &hellip; <a href="' . get_permalink() . '">' . __('Continued', 'sage') . '</a>';
 }
 add_filter('excerpt_more', __NAMESPACE__ . '\\excerpt_more');
+
+/**
+ * Make tiled galleries wider
+ */
+if ( ! isset( $content_width ) )
+  $content_width = 1060;
+
+/**
+ * Add class to next and previous post links
+ */
+function previous_post_link_attributes($output)
+{
+  return str_replace('<a', '<a class="change-day prev"', $output);
+}
+function next_post_link_attributes($output)
+{
+  return str_replace('<a', '<a class="change-day next"', $output);
+}
+
+add_filter('previous_post_link', __NAMESPACE__ . '\\previous_post_link_attributes');
+add_filter('next_post_link', __NAMESPACE__ . '\\next_post_link_attributes');
+add_filter('previous_image_link', __NAMESPACE__ . '\\previous_post_link_attributes');
+add_filter('next_image_link', __NAMESPACE__ . '\\next_post_link_attributes');
