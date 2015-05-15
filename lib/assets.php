@@ -65,7 +65,7 @@ function asset_path($filename) {
   }
 }
 
-add_action('wp_enqueue_scripts', function() {
+add_action('wp_enqueue_scripts', function () {
   wp_enqueue_style('sage_css', asset_path('styles/main.css'), false, null);
 
   if (is_single() && comments_open() && get_option('thread_comments')) {
