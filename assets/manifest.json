@@ -17,9 +17,6 @@
         "styles/editor-style.scss"
       ]
     },
-    "jquery.js": {
-      "bower": ["jquery"]
-    },
     "modernizr.js": {
       "bower": ["modernizr"]
     }
