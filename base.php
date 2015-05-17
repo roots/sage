@@ -5,7 +5,9 @@ use Roots\Sage\Wrapper;
 
 ?>
 
-<?php get_template_part('templates/head'); ?>
+<!doctype html>
+<html class="no-js" <?php language_attributes(); ?>>
+  <?php get_template_part('templates/head'); ?>
   <body <?php body_class(); ?>>
     <!--[if lt IE 9]>
       <div class="alert alert-warning">
