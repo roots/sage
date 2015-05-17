@@ -7,7 +7,7 @@ use Roots\Sage\Assets;
 /**
  * Theme setup
  */
-function setup() {
+add_action('after_setup_theme', function () {
   // Make theme available for translation
   // Community translations can be found at https://github.com/roots/sage-translations
   load_theme_textdomain('sage', get_template_directory() . '/lang');
@@ -38,13 +38,12 @@ function setup() {
 
   // Tell the TinyMCE editor to use a custom stylesheet
   add_editor_style(Assets\asset_path('styles/editor-style.css'));
-}
-add_action('after_setup_theme', __NAMESPACE__ . '\\setup');
+});
 
 /**
  * Register sidebars
  */
-function widgets_init() {
+add_action('widgets_init', function () {
   register_sidebar([
     'name'          => __('Primary', 'sage'),
     'id'            => 'sidebar-primary',
@@ -62,5 +61,4 @@ function widgets_init() {
     'before_title'  => '<h3>',
     'after_title'   => '</h3>'
   ]);
-}
-add_action('widgets_init', __NAMESPACE__ . '\\widgets_init');
+});
