@@ -63,3 +63,21 @@ function display_sidebar() {
 
   return $display;
 }
+
+/**
+ * Display custom sidebars for these post types
+ */
+function custom_sidebar() {
+  $cpt_sidebars = [
+    /**
+     * Any post type slug entered as an array value here will display a custom sidebar template.
+     * eg.
+     * 'gizmos'
+     * would display `templates/sidebar-gizmos.php`
+     */
+  ];
+  if(in_array(get_post_type(), $cpt_sidebars)) {
+    return '-'.get_post_type();
+  } 
+}
+
