@@ -4,7 +4,7 @@ namespace Roots\Sage;
 
 /**
  * Utility class which takes an array of conditional tags (or any function which returns a boolean)
- * and returns `true` if *any* of them are `true`, and `false` otherwise.
+ * and returns `false` if *any* of them are `true`, and `true` otherwise.
  *
  * @param array list of conditional tags (http://codex.wordpress.org/Conditional_Tags)
  *        or custom function which returns a boolean
