@@ -60,19 +60,19 @@ if ( ! class_exists( 'Shoestrap_Header' ) ) {
 
 				echo '<div' . $pullclass . '>';
 				dynamic_sidebar( 'header-area' );
-				echo '</div >';
+				echo '</div>';
 
 				if ( $ss_settings['site_style'] == 'wide' ) {
-					echo '</div >';
+					echo '</div>';
 				}
 
-				echo '</div >';
+				echo '</div>';
 
 				if ( $ss_settings['site_style'] == 'boxed' ) {
-					echo '</div >';
+					echo '</div>';
 				}
 
-				echo '</div >';
+				echo '</div>';
 			}
 		}
 
