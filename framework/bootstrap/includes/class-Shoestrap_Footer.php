@@ -181,8 +181,6 @@ if( ! class_exists( 'Shoestrap_Footer' ) ) {
 							echo $ss_framework->close_col( 'div' );
 						}
 
-					echo $ss_framework->close_col( 'div' );
-
 					echo $ss_framework->clearfix();
 				echo $ss_framework->close_row( 'div' );
 			echo '</div>';
