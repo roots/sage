@@ -1,6 +1,7 @@
 ### HEAD
 * Add search templates ([#1459](https://github.com/roots/sage/issues/1459))
 * Allow `debugger` statements in development JavaScript ([#1487](https://github.com/roots/sage/issues/1487))
+* Ensures gulp sources are in correct order in output ([#1476](https://github.com/roots/sage/issues/1476))
 
 ### 8.2.1: May 7th, 2015
 * Update BrowserSync ([#1457](https://github.com/roots/sage/issues/1457))
