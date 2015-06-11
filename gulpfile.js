@@ -8,6 +8,7 @@ var flatten      = require('gulp-flatten');
 var gulp         = require('gulp');
 var gulpif       = require('gulp-if');
 var imagemin     = require('gulp-imagemin');
+var inject       = require('gulp-inject');
 var jshint       = require('gulp-jshint');
 var lazypipe     = require('lazypipe');
 var less         = require('gulp-less');
@@ -18,6 +19,9 @@ var rev          = require('gulp-rev');
 var runSequence  = require('run-sequence');
 var sass         = require('gulp-sass');
 var sourcemaps   = require('gulp-sourcemaps');
+var svg2Png      = require('gulp-svg2png');
+var svgMin       = require('gulp-svgmin');
+var svgStore     = require('gulp-svgstore');
 var uglify       = require('gulp-uglify');
 
 // See https://github.com/austinpray/asset-builder
@@ -213,6 +217,28 @@ gulp.task('images', function() {
     .pipe(browserSync.stream());
 });
 
+// ### Svg
+// `gulp svg` - Minifies, injects and create fallbacks all svg files
+gulp.task('svg', function () {
+  var svgPath = path.source + 'svg/*.svg';
+  var svg = gulp.src(svgPath)
+    .pipe(svgMin())
+    .pipe(svgStore({ inlineSvg: true }));
+
+  function fileContents (filePath, file) {
+    return file.contents.toString();
+  }
+
+  gulp.src(svgPath)
+    .pipe(svg2Png())
+    .pipe(gulp.dest(path.source + 'svg/fallback'));
+
+  return gulp.src(path.source + 'svg/content-svg.php')
+    .pipe(inject(svg, { transform: fileContents }))
+    .pipe(gulp.dest('templates'));
+});
+
+
 // ### JSHint
 // `gulp jshint` - Lints configuration JSON and project JS.
 gulp.task('jshint', function() {
@@ -247,6 +273,7 @@ gulp.task('watch', function() {
   gulp.watch([path.source + 'scripts/**/*'], ['jshint', 'scripts']);
   gulp.watch([path.source + 'fonts/**/*'], ['fonts']);
   gulp.watch([path.source + 'images/**/*'], ['images']);
+  gulp.watch([path.source + 'svg/*.svg'], ['svg']);
   gulp.watch(['bower.json', 'assets/manifest.json'], ['build']);
 });
 
@@ -256,7 +283,7 @@ gulp.task('watch', function() {
 gulp.task('build', function(callback) {
   runSequence('styles',
               'scripts',
-              ['fonts', 'images'],
+              ['fonts', 'images', 'svg'],
               callback);
 });
 
