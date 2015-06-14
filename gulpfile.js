@@ -111,7 +111,9 @@ var cssTasks = function(filename) {
       return gulpif(enabled.rev, rev());
     })
     .pipe(function() {
-      return gulpif(enabled.maps, sourcemaps.write('.'));
+      return gulpif(enabled.maps, sourcemaps.write('.', {
+        sourceRoot: 'assets/styles/'
+      }));
     })();
 };
 
@@ -133,7 +135,9 @@ var jsTasks = function(filename) {
       return gulpif(enabled.rev, rev());
     })
     .pipe(function() {
-      return gulpif(enabled.maps, sourcemaps.write('.'));
+      return gulpif(enabled.maps, sourcemaps.write('.', {
+        sourceRoot: 'assets/scripts/'
+      }));
     })();
 };
 
