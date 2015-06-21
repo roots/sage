@@ -19,6 +19,10 @@ var runSequence  = require('run-sequence');
 var sass         = require('gulp-sass');
 var sourcemaps   = require('gulp-sourcemaps');
 var uglify       = require('gulp-uglify');
+var dotenv       = require('dotenv');
+
+// DOTENV
+dotenv.config({path: '../../../../.env'});
 
 // See https://github.com/austinpray/asset-builder
 var manifest = require('asset-builder')('./assets/manifest.json');
@@ -247,9 +251,14 @@ gulp.task('clean', require('del').bind(null, [path.dist]));
 // build step for that asset and inject the changes into the page.
 // See: http://www.browsersync.io
 gulp.task('watch', function() {
+  var configDevUrl
+  if(process.env.WP_HOME)
+    configDevUrl = process.env.WP_HOME;
+  else
+    configDevUrl = config.devUrl;
   browserSync.init({
     files: ['{lib,templates}/**/*.php', '*.php'],
-    proxy: config.devUrl,
+    proxy: configDevUrl,
     snippetOptions: {
       whitelist: ['/wp-admin/admin-ajax.php'],
       blacklist: ['/wp-admin/**']
