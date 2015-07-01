@@ -1,1 +1,5 @@
-<h1><?php echo roots_title(); ?></h1>
+<?php use Roots\Sage\Titles; ?>
+
+<div class="page-header">
+  <h1><?= Titles\title(); ?></h1>
+</div>

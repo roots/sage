@@ -1,26 +1,40 @@
 {
-  "name": "gromf",
-  "version": "0.2",
-  "homepage": "https://github.com/schikulski/gromf",
+  "name": "sage",
+  "homepage": "https://roots.io/sage/",
   "authors": [
-    "Simen Schikulski <schikulski@gmail.com>"
-  ],
-  "description": "WordPress starter theme, based on Roots.",
-  "keywords": [
-    "wordpress",
-    "theme",
-    "roots"
+    "Ben Word <ben@benword.com>"
   ],
   "license": "MIT",
   "private": true,
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "test",
-    "tests"
-  ],
   "dependencies": {
-    "foundation": "5.4.7"
+    "modernizr": "2.8.2",
+    "bootstrap-sass-official": "3.3.5"
+  },
+  "overrides": {
+    "modernizr": {
+      "main": "./modernizr.js"
+    },
+    "bootstrap-sass-official": {
+      "main": [
+        "./assets/stylesheets/_bootstrap.scss",
+        "./assets/javascripts/bootstrap/transition.js",
+        "./assets/javascripts/bootstrap/alert.js",
+        "./assets/javascripts/bootstrap/button.js",
+        "./assets/javascripts/bootstrap/carousel.js",
+        "./assets/javascripts/bootstrap/collapse.js",
+        "./assets/javascripts/bootstrap/dropdown.js",
+        "./assets/javascripts/bootstrap/modal.js",
+        "./assets/javascripts/bootstrap/tooltip.js",
+        "./assets/javascripts/bootstrap/popover.js",
+        "./assets/javascripts/bootstrap/scrollspy.js",
+        "./assets/javascripts/bootstrap/tab.js",
+        "./assets/javascripts/bootstrap/affix.js",
+        "./assets/fonts/bootstrap/glyphicons-halflings-regular.eot",
+        "./assets/fonts/bootstrap/glyphicons-halflings-regular.svg",
+        "./assets/fonts/bootstrap/glyphicons-halflings-regular.ttf",
+        "./assets/fonts/bootstrap/glyphicons-halflings-regular.woff",
+        "./assets/fonts/bootstrap/glyphicons-halflings-regular.woff2"
+      ]
+    }
   }
 }

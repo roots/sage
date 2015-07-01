@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<ruleset name="Roots">
+  <description>Roots Coding Standards</description>
+
+  <!-- Use PSR-2 as a base -->
+  <rule ref="PSR2">
+    <!-- Allow opening and closing braces for functions and classes to be on the same line -->
+    <exclude name="Squiz.Functions.MultiLineFunctionDeclaration.BraceOnSameLine"/>
+    <exclude name="PSR2.Classes.ClassDeclaration.OpenBraceNewLine"/>
+    <exclude name="Squiz.WhiteSpace.ScopeClosingBrace"/>
+
+    <!-- Disable newline after opening brace -->
+    <exclude name="Squiz.ControlStructures.ControlSignature.NewlineAfterOpenBrace"/>
+
+    <!-- Allow multiple PHP statements in the same line (usually in template files) -->
+    <exclude name="Generic.Formatting.DisallowMultipleStatements.SameLine"/>
+
+    <!-- Disable PSR-2 indentation rules that are buggy with 2 spaces -->
+    <exclude name="PSR2.ControlStructures.SwitchDeclaration.BreakIndent"/>
+    <exclude name="PSR2.Methods.FunctionCallSignature.Indent"/>
+  </rule>
+
+  <!-- Don't require a blank line after the last `use` in templates/ directory -->
+  <rule ref="PSR2.Namespaces.UseDeclaration.SpaceAfterLastUse">
+    <exclude-pattern>templates/*</exclude-pattern>
+  </rule>
+
+  <!-- Allow PHP closing tags on templates -->
+  <rule ref="PSR2.Files.ClosingTag.NotAllowed">
+    <exclude-pattern>templates/*</exclude-pattern>
+    <exclude-pattern>404.php</exclude-pattern>
+    <exclude-pattern>index.php</exclude-pattern>
+    <exclude-pattern>page.php</exclude-pattern>
+    <exclude-pattern>single.php</exclude-pattern>
+    <exclude-pattern>template-custom.php</exclude-pattern>
+  </rule>
+
+  <!-- Force 2 spaces indentation -->
+  <rule ref="Generic.WhiteSpace.ScopeIndent">
+    <properties>
+      <property name="indent" value="2"/>
+      <property name="tabIndent" value="false"/>
+    </properties>
+  </rule>
+
+  <!-- Verify that operators have valid spacing surrounding them -->
+  <rule ref="Squiz.WhiteSpace.OperatorSpacing"></rule>
+</ruleset>

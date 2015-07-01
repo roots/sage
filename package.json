@@ -1,35 +1,58 @@
 {
-  "name": "gromf",
-  "version": "0.0.2",
-  "description": "Wordpress starter theme, based on Roots",
-  "main": "gulpfile.js",
-  "devDependencies": {
-    "gulp": "~3.8.9",
-    "gulp-autoprefixer": "~1.0.1",
-    "gulp-concat": "~2.4.1",
-    "gulp-imagemin": "~1.2.1",
-    "gulp-jshint": "~1.8.6",
-    "gulp-livereload": "~2.1.1",
-    "gulp-minify-css": "~0.3.11",
-    "gulp-notify": "~2.0.1",
-    "gulp-rename": "~1.2.0",
-    "gulp-sass": "~1.1.0",
-    "gulp-size": "~1.1.0",
-    "gulp-svgmin": "~0.4.7",
-    "gulp-uglify": "~1.0.1",
-    "jshint-stylish": "~1.0.0"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "name": "sage",
+  "version": "8.2.1",
+  "author": "Ben Word <ben@benword.com>",
+  "homepage": "https://roots.io/sage/",
+  "private": true,
   "repository": {
     "type": "git",
-    "url": "https://github.com/schikulski/gromf.git"
+    "url": "git://github.com/roots/sage.git"
   },
-  "author": "Simen Schikulski",
-  "license": "ISC",
   "bugs": {
-    "url": "https://github.com/schikulski/gromf/issues"
+    "url": "https://github.com/roots/sage/issues"
   },
-  "homepage": "https://github.com/schikulski/gromf"
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://opensource.org/licenses/MIT"
+    }
+  ],
+  "scripts": {
+    "build": "bower install && gulp",
+    "jshint": "gulp jshint",
+    "jscs": "jscs gulpfile.js assets/scripts/*.js"
+  },
+  "engines": {
+    "node": ">= 0.12.0",
+    "npm": ">=2.1.5"
+  },
+  "devDependencies": {
+    "asset-builder": "^1.0.2",
+    "browser-sync": "^2.7.1",
+    "del": "^1.1.1",
+    "gulp": "^3.8.11",
+    "gulp-autoprefixer": "^2.1.0",
+    "gulp-changed": "^1.2.1",
+    "gulp-concat": "^2.5.2",
+    "gulp-flatten": "0.0.4",
+    "gulp-if": "^1.2.5",
+    "gulp-imagemin": "^2.2.1",
+    "gulp-jshint": "^1.9.4",
+    "gulp-less": "^3.0.2",
+    "gulp-minify-css": "^1.0.0",
+    "gulp-plumber": "^1.0.0",
+    "gulp-rename": "^1.2.0",
+    "gulp-rev": "^3.0.1",
+    "gulp-sass": "^2.0.0",
+    "gulp-sourcemaps": "^1.5.1",
+    "gulp-uglify": "^1.1.0",
+    "imagemin-pngcrush": "^4.0.0",
+    "jshint-stylish": "^1.0.1",
+    "lazypipe": "^0.2.2",
+    "merge-stream": "^0.1.7",
+    "minimist": "^1.1.1",
+    "run-sequence": "^1.0.2",
+    "traverse": "^0.6.6",
+    "wiredep": "^2.2.2"
+  }
 }
