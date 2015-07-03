@@ -219,11 +219,11 @@ gulp.task('images', function() {
 
 // ### Svg
 // `gulp svg` - Minifies, injects and create fallbacks all svg files
-gulp.task('svg', function () {
+gulp.task('svg', function() {
   var svgPath = path.source + 'svg/*.svg';
   var svg = gulp.src(svgPath)
     .pipe(svgMin())
-    .pipe(svgStore({ inlineSvg: true }));
+    .pipe(svgStore({inlineSvg: true}));
 
   function fileContents (filePath, file) {
     return file.contents.toString();
@@ -234,10 +234,9 @@ gulp.task('svg', function () {
     .pipe(gulp.dest(path.source + 'svg/fallback'));
 
   return gulp.src(path.source + 'svg/content-svg.php')
-    .pipe(inject(svg, { transform: fileContents }))
+    .pipe(inject(svg, {transform: fileContents}))
     .pipe(gulp.dest('templates'));
 });
-
 
 // ### JSHint
 // `gulp jshint` - Lints configuration JSON and project JS.
