@@ -4,6 +4,9 @@
       "files": [
         "scripts/main.js"
       ],
+      "bower": [
+        "bootstrap-sass-official"
+      ],
       "main": true
     },
     "main.css": {
