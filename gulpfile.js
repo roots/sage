@@ -61,7 +61,9 @@ var enabled = {
   // Fail due to JSHint warnings only when `--production`
   failJSHint: argv.production,
   // Strip debug statments from javascript when `--production`
-  stripJSDebug: argv.production
+  stripJSDebug: argv.production,
+  // Minify CSS, JS, and Images
+  minify: !argv.fast
 };
 
 // Path to the compiled assets manifest in the dist directory
@@ -107,9 +109,11 @@ var cssTasks = function(filename) {
         'opera 12'
       ]
     })
-    .pipe(minifyCss, {
-      advanced: false,
-      rebase: false
+    .pipe(function() {
+      return gulpif(enabled.minify, minifyCss({
+        advanced: false,
+        rebase: false
+      }));
     })
     .pipe(function() {
       return gulpif(enabled.rev, rev());
@@ -134,10 +138,12 @@ var jsTasks = function(filename) {
       return gulpif(enabled.maps, sourcemaps.init());
     })
     .pipe(concat, filename)
-    .pipe(uglify, {
-      compress: {
-        'drop_debugger': enabled.stripJSDebug
-      }
+    .pipe(function() {
+      return gulpif(enabled.minify, uglify({
+        compress: {
+          'drop_debugger': enabled.stripJSDebug
+        }
+      }));
     })
     .pipe(function() {
       return gulpif(enabled.rev, rev());
@@ -216,11 +222,11 @@ gulp.task('fonts', function() {
 // `gulp images` - Run lossless compression on all the images.
 gulp.task('images', function() {
   return gulp.src(globs.images)
-    .pipe(imagemin({
+    .pipe(gulpif(enabled.minify, imagemin({
       progressive: true,
       interlaced: true,
       svgoPlugins: [{removeUnknownsAndDefaults: false}, {cleanupIDs: false}]
-    }))
+    })))
     .pipe(gulp.dest(path.dist + 'images'))
     .pipe(browserSync.stream());
 });
