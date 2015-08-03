@@ -14,11 +14,25 @@
 
   // Use this variable to set up the common and page specific functions. If you
   // rename this variable, you will also need to rename the namespace below.
-  var Sage = {
+  var Shaba = {
     // All pages
     'common': {
       init: function() {
         // JavaScript to be fired on all pages
+
+        // Web Font Loader
+        // Documentation: https://github.com/typekit/webfontloader
+        // WebFontConfig = {
+        //   google: { families: [ 'Lato' ] }
+        // };
+        // (function() {
+        //   var wf = document.createElement('script');
+        //   wf.src = '//ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+        //   wf.type = 'text/javascript';
+        //   wf.async = 'true';
+        //   var s = document.getElementsByTagName('script')[0];
+        //   s.parentNode.insertBefore(wf, s);
+        // })();
       },
       finalize: function() {
         // JavaScript to be fired on all pages, after page specific JS is fired
@@ -46,7 +60,7 @@
   var UTIL = {
     fire: function(func, funcname, args) {
       var fire;
-      var namespace = Sage;
+      var namespace = Shaba;
       funcname = (funcname === undefined) ? 'init' : funcname;
       fire = func !== '';
       fire = fire && namespace[func];

@@ -1,14 +1,16 @@
 {
-  "name": "sage",
-  "homepage": "https://roots.io/sage/",
+  "name": "shaba",
+  "homepage": "http://ensoul.it",
   "authors": [
-    "Ben Word <ben@benword.com>"
+    "Ensoul <hello@ensoul.it>"
   ],
   "license": "MIT",
   "private": true,
   "dependencies": {
     "modernizr": "2.8.2",
-    "bootstrap-sass-official": "3.3.5"
+    "bootstrap-sass-official": "3.3.5",
+    "respond": "1.4.2",
+    "font-awesome": "4.3.0"
   },
   "overrides": {
     "modernizr": {
@@ -34,6 +36,29 @@
         "./assets/fonts/bootstrap/glyphicons-halflings-regular.ttf",
         "./assets/fonts/bootstrap/glyphicons-halflings-regular.woff",
         "./assets/fonts/bootstrap/glyphicons-halflings-regular.woff2"
+      ]
+    },
+    "font-awesome": {
+      "main": [
+        "./scss/font-awesome.scss",
+        "./scss/_animated.scss",
+        "./scss/_bordered-pulled.scss",
+        "./scss/_core.scss",
+        "./scss/_fixed-width.scss",
+        "./scss/_icons.scss",
+        "./scss/_larger.scss",
+        "./scss/_list.scss",
+        "./scss/_mixins.scss",
+        "./scss/_path.scss",
+        "./scss/_rotated-flipped.scss",
+        "./scss/_stacked.scss",
+        "./scss/_variables.scss",
+        "./fonts/FontAwesome.otf",
+        "./fonts/fontawesome-webfont.eot",
+        "./fonts/fontawesome-webfont.svg",
+        "./fonts/fontawesome-webfont.ttf",
+        "./fonts/fontawesome-webfont.woff",
+        "./fonts/fontawesome-webfont.woff2"
       ]
     }
   }

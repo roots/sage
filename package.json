@@ -1,15 +1,15 @@
 {
-  "name": "sage",
-  "version": "8.2.1",
-  "author": "Ben Word <ben@benword.com>",
-  "homepage": "https://roots.io/sage/",
+  "name": "shaba",
+  "version": "1.1.0",
+  "author": "Ensoul <hello@ensoul.it>",
+  "homepage": "http://ensoul.it",
   "private": true,
   "repository": {
     "type": "git",
-    "url": "git://github.com/roots/sage.git"
+    "url": "git://github.com/itsensoul/shaba.git"
   },
   "bugs": {
-    "url": "https://github.com/roots/sage/issues"
+    "url": "https://github.com/itsensoul/shaba/issues"
   },
   "licenses": [
     {

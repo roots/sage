@@ -8,3 +8,25 @@
 .sidebar {
   @include make-sm-column($sidebar-sm-columns);
 }
+// Start custom breakpoint
+$screen-sm-min: ($screen-is-max + 1);
+// Intermediate small grid
+@media (min-width: $screen-is-min) and (max-width: $screen-is-max) {
+  @include make-grid(is);
+}
+// Add visibility "visible-is" class for the custom grid
+@media (min-width: $screen-is-min) and (max-width: $screen-is-max) {
+  @include responsive-visibility('.visible-is');
+}
+// Add hidden "hidden-is" class for the custom grid
+@media (min-width: $screen-is-min) and (max-width: $screen-is-max) {
+  @include responsive-invisibility('.hidden-is');
+}
+// Define the "visible-is" class as hidden in all other grid widths (Except in the custom grid).
+@media (min-width: $screen-sm-min) {
+  @include responsive-invisibility('.visible-is');
+}
+@media (max-width: $screen-xs-max) {
+  @include responsive-invisibility('.visible-is');
+}
+// End custom breakpoint

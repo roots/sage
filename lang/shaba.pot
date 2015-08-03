@@ -85,25 +85,20 @@ msgid "Search"
 msgstr ""
 
 #. Theme Name of the plugin/theme
-msgid "Sage Starter Theme"
-msgstr ""
-
-#. Theme URI of the plugin/theme
-msgid "https://roots.io/sage/"
+msgid "Shaba"
 msgstr ""
 
 #. Description of the plugin/theme
 msgid ""
-"Sage is a WordPress starter theme. <a href=\"https://github.com/roots/sage"
-"\">Contribute on GitHub</a>"
+"Shaba is a WordPress theme built by Ensoul."
 msgstr ""
 
 #. Author of the plugin/theme
-msgid "Roots"
+msgid "Ensoul"
 msgstr ""
 
 #. Author URI of the plugin/theme
-msgid "https://roots.io/"
+msgid "http://ensoul.it/"
 msgstr ""
 
 #. Template Name of the plugin/theme

@@ -1,6 +1,8 @@
 <header class="banner" role="banner">
   <div class="container">
-    <a class="brand" href="<?= esc_url(home_url('/')); ?>"><?php bloginfo('name'); ?></a>
+    <a class="navbar-brand" href="<?= esc_url(home_url('/')); ?>">
+      <img src="<?php echo get_template_directory_uri(); ?>/dist/images/logo.svg" onerror="this.onerror=null; this.src='<?php echo get_template_directory_uri(); ?>/dist/images/logo.png'" alt="<?php bloginfo('name'); ?>" title="<?php bloginfo('name'); ?>">
+    </a>
     <nav role="navigation">
       <?php
       if (has_nav_menu('primary_navigation')) :

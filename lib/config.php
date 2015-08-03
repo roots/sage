@@ -1,17 +1,20 @@
 <?php
 
-namespace Roots\Sage\Config;
+namespace Ensoul\Shaba\Config;
 
-use Roots\Sage\ConditionalTagCheck;
+use Ensoul\Shaba\ConditionalTagCheck;
 
 /**
  * Enable theme features
  */
-add_theme_support('soil-clean-up');         // Enable clean up from Soil
-add_theme_support('soil-nav-walker');       // Enable cleaner nav walker from Soil
-add_theme_support('soil-relative-urls');    // Enable relative URLs from Soil
-add_theme_support('soil-nice-search');      // Enable nice search from Soil
-add_theme_support('soil-jquery-cdn');       // Enable to load jQuery from the Google CDN
+add_theme_support('soil-clean-up');                         // Enable clean up from Soil
+add_theme_support('soil-nav-walker');                       // Enable cleaner nav walker from Soil
+add_theme_support('soil-relative-urls');                    // Enable relative URLs from Soil
+add_theme_support('soil-nice-search');                      // Enable nice search from Soil
+add_theme_support('soil-jquery-cdn');                       // Enable to load jQuery from the Google CDN
+add_theme_support('soil-google-analytics', 'UA-XXXXX-Y');   // Enable H5BP's Google Analytics snippet
+add_theme_support('soil-disable-trackbacks');               // Remove trackback/pingback functionality
+add_theme_support('soil-disable-asset-versioning');         // Disable ver query string from all styles and scripts
 
 /**
  * Configuration values
@@ -31,6 +34,7 @@ if (!defined('DIST_DIR')) {
  * Define which pages shouldn't have the sidebar
  */
 function display_sidebar() {
+  return false; // Disables the sidebar on whole website
   static $display;
 
   if (!isset($display)) {
@@ -58,7 +62,7 @@ function display_sidebar() {
       ]
     );
 
-    $display = apply_filters('sage/display_sidebar', $conditionalCheck->result);
+    $display = apply_filters('shaba/display_sidebar', $conditionalCheck->result);
   }
 
   return $display;

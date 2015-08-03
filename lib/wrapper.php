@@ -1,6 +1,6 @@
 <?php
 
-namespace Roots\Sage\Wrapper;
+namespace Ensoul\Shaba\Wrapper;
 
 /**
  * Theme wrapper
@@ -10,14 +10,14 @@ namespace Roots\Sage\Wrapper;
  */
 
 function template_path() {
-  return SageWrapping::$main_template;
+  return ShabaWrapping::$main_template;
 }
 
 function sidebar_path() {
-  return new SageWrapping('templates/sidebar.php');
+  return new ShabaWrapping('templates/sidebar.php');
 }
 
-class SageWrapping {
+class ShabaWrapping {
   // Stores the full path to the main template file
   public static $main_template;
 
@@ -41,7 +41,7 @@ class SageWrapping {
   }
 
   public function __toString() {
-    $this->templates = apply_filters('sage/wrap_' . $this->slug, $this->templates);
+    $this->templates = apply_filters('shaba/wrap_' . $this->slug, $this->templates);
     return locate_template($this->templates);
   }
 
@@ -58,7 +58,7 @@ class SageWrapping {
       self::$base = false;
     }
 
-    return new SageWrapping();
+    return new ShabaWrapping();
   }
 }
-add_filter('template_include', [__NAMESPACE__ . '\\SageWrapping', 'wrap'], 99);
+add_filter('template_include', [__NAMESPACE__ . '\\ShabaWrapping', 'wrap'], 99);

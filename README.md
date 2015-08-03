@@ -1,8 +1,8 @@
 # Shaba
 
-Shaba is a WordPress starter theme based on HTML5 Boilerplate, gulp, Bower, and Bootstrap Sass, that will help you make better themes.
+Shaba is a WordPress theme based on HTML5 Boilerplate, gulp, Bower, and Bootstrap Sass, that will help you make better themes.
 
-* [Documentation](https://roots.io/sage/docs/)
+* [Documentation](https://roots.io/shaba/docs/)
 * [Forum](https://discourse.roots.io/)
 * [Blog](https://roots.io/blog)
 
@@ -24,14 +24,14 @@ For more installation notes, refer to the [Install gulp and Bower](#install-gulp
 * [Bower](http://bower.io/) for front-end package management
 * [asset-builder](https://github.com/austinpray/asset-builder) for the JSON file based asset pipeline
 * [Sass](https://github.com/twbs/bootstrap-sass) [Bootstrap](http://getbootstrap.com/)
-* [Theme wrapper](https://roots.io/sage/docs/theme-wrapper/)
-* Over 30 available [community translations](https://github.com/roots/sage-translations)
+* [Theme wrapper](https://roots.io/shaba/docs/theme-wrapper/)
+* Over 30 available [community translations](https://github.com/roots/shaba-translations)
 
 Install the [Soil](https://github.com/roots/soil) plugin to enable additional features.
 
 ## Installation
 
-Clone the git repo - `git clone https://github.com/valentinocossar/shaba.git` and then rename the directory to the name of your theme or website.
+Clone the git repo - `git clone https://github.com/itsensoul/shaba.git` and then rename the directory to the name of your theme or website.
 
 If you don't use [Bedrock](https://github.com/roots/bedrock), you'll need to add the following to your `wp-config.php` on your development installation:
 

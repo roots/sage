@@ -1,6 +1,6 @@
 <?php
 
-namespace Roots\Sage;
+namespace Ensoul\Shaba;
 
 /**
  * Utility class which takes an array of conditional tags (or any function which returns a boolean)
