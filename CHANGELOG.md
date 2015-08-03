@@ -4,7 +4,7 @@
 * Added new screenshot.png
 * Added custom media query breakpoint
 * Added .DS_Store to .gitignore
-* Added italian translation
+* Added english and italian translation
 * Added Web Font Loader script
 * Added respond.js dependence
 * Added font-awesome dependence
