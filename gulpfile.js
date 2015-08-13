@@ -109,7 +109,7 @@ var cssTasks = function(filename) {
     })
     .pipe(minifyCss, {
       advanced: false,
-      rebase: false
+      rebase: false,
       keepSpecialComments: 0
     })
     .pipe(function() {
