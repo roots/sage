@@ -2,13 +2,17 @@
 .main {
   @include make-col();
 
-  @include make-col-span($main-sm-columns);
-  .sidebar-primary & {
-    @include make-col-span($main-sm-columns - $sidebar-sm-columns);
+  @include media-breakpoint-up(sm) {
+    @include make-col-span($main-sm-columns);
+    .sidebar-primary & {
+      @include make-col-span($main-sm-columns - $sidebar-sm-columns);
+    }
   }
 }
 .sidebar {
   @include make-col();
 
-  @include make-col-span($sidebar-sm-columns);
+  @include media-breakpoint-up(sm) {
+    @include make-col-span($sidebar-sm-columns);
+  }
 }
