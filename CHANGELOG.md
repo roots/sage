@@ -12,6 +12,7 @@
 * Added navbar-brand logo instead of website title
 * Added new file to add custom post types
 * Added other Soil's functions in config.php
+* Added composer.json
 * Updated README.md
 * Updated _variables.scss with bootstrap's variables.scss rules
 * Updated shaba.pot
