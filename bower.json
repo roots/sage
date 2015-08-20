@@ -10,7 +10,7 @@
     "modernizr": "2.8.2",
     "bootstrap-sass-official": "3.3.5",
     "respond": "1.4.2",
-    "font-awesome": "4.3.0"
+    "font-awesome": "4.4.0"
   },
   "overrides": {
     "modernizr": {
