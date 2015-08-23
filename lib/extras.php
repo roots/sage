@@ -39,13 +39,6 @@ add_filter('excerpt_more', __NAMESPACE__ . '\\excerpt_more');
 require_once('cpt.php');
 
 
-// Add WooCommerce Support
-add_action( 'after_setup_theme', 'woocommerce_support' );
-function woocommerce_support() {
-    add_theme_support( 'woocommerce' );
-}
-
-
 // Remove default WooCommerce styling
 add_filter( 'woocommerce_enqueue_styles', '__return_empty_array' );
 
