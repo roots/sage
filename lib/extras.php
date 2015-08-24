@@ -38,17 +38,19 @@ add_filter('excerpt_more', __NAMESPACE__ . '\\excerpt_more');
 // load custom post types here
 require_once('cpt.php');
 
+// Remove Admin bar
+add_filter('show_admin_bar', '__return_false');
+
+
+
+// WOOCOMMERCE STUFF HERE
 
 // Remove default WooCommerce styling
 add_filter( 'woocommerce_enqueue_styles', '__return_empty_array' );
 
+// Remove WooCommerce header
+add_filter('woocommerce_show_page_title', '__return_false');
+remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_title', 5);
 
-// Remove Admin bar
-add_filter('show_admin_bar', 'remove_admin_bar'); // Remove Admin bar
-function remove_admin_bar()
-{
-    return false;
-}
-
-
-
+// Add WooCommerce theme support
+add_theme_support('woocommerce');

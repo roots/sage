@@ -10,6 +10,7 @@
     "modernizr": "2.8.2",
     "jquery": "*",
     "susy": "*",
+    "sassline": "*",
     "bourbon": "*"
   },
   "overrides": {
