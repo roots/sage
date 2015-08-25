@@ -26,6 +26,7 @@ function setup() {
   // http://codex.wordpress.org/Post_Thumbnails
   // http://codex.wordpress.org/Function_Reference/set_post_thumbnail_size
   // http://codex.wordpress.org/Function_Reference/add_image_size
+  // add_image_size requires php5-hd module (http://www.bluthemes.com/blog/11/wordpress-not-creating-images)
   add_theme_support('post-thumbnails');
 
   // Add post formats
