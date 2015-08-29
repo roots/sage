@@ -9,6 +9,7 @@
   "dependencies": {
     "modernizr": "2.8.2",
     "jquery": "*",
+    "normalize-scss": "*",
     "susy": "*",
     "sassline": "*",
     "bourbon": "*"

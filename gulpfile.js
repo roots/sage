@@ -20,6 +20,46 @@ var sass         = require('gulp-sass');
 var sourcemaps   = require('gulp-sourcemaps');
 var uglify       = require('gulp-uglify');
 
+
+
+// Add debounce to gulp watch for FTP
+(function ftp_debounce_fix(){
+
+  var watch = gulp.watch;
+
+  // Overwrite the local gulp.watch function
+  gulp.watch = function(glob, opt, fn){
+    var _this = this, _fn, timeout;
+
+    // This is taken from the gulpjs file, but needed to
+    // qualify the "fn" variable
+    if ( typeof opt === 'function' || Array.isArray(opt) ) {
+      fn = opt;
+      opt = null;
+    }
+
+    // Make a copy of the callback function for reference
+    _fn = fn;
+
+    // Create a new delayed callback function
+    fn = function(){
+
+      if( timeout ){
+        clearTimeout( timeout );
+      }
+
+      timeout = setTimeout( Array.isArray(_fn) ? function(){
+        _this.start.call(_this, _fn);
+      } : _fn, 150 );
+
+    };
+
+    return watch.call( this, glob, opt, fn );
+  };
+
+})();
+
+
 // See https://github.com/austinpray/asset-builder
 var manifest = require('asset-builder')('./assets/manifest.json');
 
