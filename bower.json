@@ -12,7 +12,7 @@
     "normalize-scss": "*",
     "susy": "*",
     "sassline": "*",
-    "bourbon": "*"
+    "bourbon": "*",
   },
   "overrides": {
     "modernizr": {

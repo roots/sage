@@ -5,13 +5,12 @@
 
 // endbower
 
-@import "../../bower_components/normalize-scss/_normalize.scss";
-@import "../../bower_components/susy/sass/susy";
-@import "../../bower_components/bourbon/app/assets/stylesheets/_bourbon";
+@import '../../bower_components/normalize-scss/normalize';
+@import '../../bower_components/fontawesome/scss/font-awesome';
+@import '../../bower_components/bourbon/app/assets/stylesheets/bourbon';
+@import '../../bower_components/susy/sass/susy';
 
-@import "common/_global";
-@import "layouts/_header";
-@import "layouts/_sidebar";
-@import "layouts/_footer";
-@import "layouts/_pages";
-@import "layouts/_posts";
+@import 'common/base';
+@import 'design/layout';
+@import 'design/modules';
+@import 'design/typography';
