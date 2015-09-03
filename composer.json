@@ -3,12 +3,12 @@
   "type": "wordpress-theme",
   "license": "MIT",
   "description": "Shaba is a WordPress theme based on HTML5 Boilerplate, gulp, Bower, and Bootstrap Sass, that will help you make better themes.",
-  "homepage": "http://ensoul.it/",
+  "homepage": "https://github.com/itsensoul/shaba",
   "authors": [
     {
       "name": "Ensoul",
       "email": "hello@ensoul.it",
-      "homepage": "https://github.com/itsensoul"
+      "homepage": "http://ensoul.it/"
     }
   ],
   "keywords": [
