@@ -14,26 +14,37 @@ use Roots\Sage\Wrapper;
         <?php _e('You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.', 'sage'); ?>
       </div>
     <![endif]-->
-    <?php
-      do_action('get_header');
-      get_template_part('templates/header');
-    ?>
-    <div class="wrap container" role="document">
-      <div class="content row">
-        <main class="main" role="main">
-          <?php include Wrapper\template_path(); ?>
-        </main><!-- /.main -->
-        <?php if (Config\display_sidebar()) : ?>
-          <aside class="sidebar" role="complementary">
-            <?php include Wrapper\sidebar_path(); ?>
-          </aside><!-- /.sidebar -->
-        <?php endif; ?>
-      </div><!-- /.content -->
-    </div><!-- /.wrap -->
-    <?php
-      do_action('get_footer');
-      get_template_part('templates/footer');
-      wp_footer();
-    ?>
+    <div class="mdl-layout__container">
+      <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <?php
+          do_action('get_header');
+          get_template_part('templates/header');
+        ?>
+        <div class="mdl-layout__content" role="document">
+          <div class="mdl-grid">
+            <?php
+            if (Config\display_sidebar()) :
+              $col = 'mdl-cell--8-col';
+            else :
+              $col = 'mdl-cell--12-col';
+            endif;
+            ?>
+            <main class="mdl-cell <?php echo $col; ?>" role="main">
+              <?php include Wrapper\template_path(); ?>
+            </main><!-- main -->
+            <?php if (Config\display_sidebar()) : ?>
+              <aside class="mdl-cell mdl-cell--4-col" role="complementary">
+                <?php include Wrapper\sidebar_path(); ?>
+              </aside><!-- sidebar -->
+            <?php endif; ?>
+          </div><!-- /.page-content.mdl-grid -->
+          <?php
+            do_action('get_footer');
+            get_template_part('templates/footer');
+            wp_footer();
+          ?>
+        </div><!-- /.mdl-layout__content -->
+      </div><!-- /.mdl-layout -->
+    </div>
   </body>
 </html>
