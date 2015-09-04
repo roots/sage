@@ -67,6 +67,19 @@ var enabled = {
 // Path to the compiled assets manifest in the dist directory
 var revManifest = path.dist + 'assets.json';
 
+// Lifted from MDL's gulpfile
+var AUTOPREFIXER_BROWSERS = [
+  'ie >= 10',
+  'ie_mob >= 10',
+  'ff >= 30',
+  'chrome >= 34',
+  'safari >= 7',
+  'opera >= 23',
+  'ios >= 7',
+  'android >= 4.4',
+  'bb >= 10'
+];
+
 // ## Reusable Pipelines
 // See https://github.com/OverZealous/lazypipe
 
@@ -98,14 +111,7 @@ var cssTasks = function(filename) {
     })
     .pipe(concat, filename)
     .pipe(autoprefixer, {
-      browsers: [
-        'last 2 versions',
-        'ie 8',
-        'ie 9',
-        'android 2.3',
-        'android 4',
-        'opera 12'
-      ]
+      browsers: AUTOPREFIXER_BROWSERS
     })
     .pipe(minifyCss, {
       advanced: false,

@@ -9,21 +9,18 @@
 }
 .aligncenter {
   display: block;
-  margin: ($line-height-computed / 2) auto;
+  margin: auto;
 }
 .alignleft,
 .alignright {
-  margin-bottom: ($line-height-computed / 2);
 }
-@media (min-width: $screen-sm-min) {
+@media (min-width: $grid-tablet-breakpoint) {
   // Only float if not on an extra small device
   .alignleft {
     float: left;
-    margin-right: ($line-height-computed / 2);
   }
   .alignright {
     float: right;
-    margin-left: ($line-height-computed / 2);
   }
 }
 
@@ -32,7 +29,6 @@
   @extend .thumbnail;
 }
 .wp-caption-text {
-  padding: $thumbnail-caption-padding;
 }
 
 // Text meant only for screen readers
