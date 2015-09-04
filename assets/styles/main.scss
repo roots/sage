@@ -1,8 +1,9 @@
 @import "common/_variables";
+@import "common/_mixins";
 
 // Automatically injected Bower dependencies via wiredep (never manually edit this block)
 // bower:scss
-@import "../../bower_components/bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
+@import "../../bower_components/material-design-lite/src/material-design-lite.scss";
 // endbower
 
 @import "common/_global";
