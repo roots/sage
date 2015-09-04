@@ -1,0 +1,9 @@
+.mdl-mini-footer {
+  ul {
+    @extend .mdl-mini-footer__link-list;
+  }
+
+  .textwidget {
+    line-height: $footer-btn-size;
+  }
+}

@@ -1,0 +1,8 @@
+.mdl-layout-title {
+  color: inherit;
+  text-decoration: none;
+}
+
+.menu-item {
+  @extend .mdl-navigation__link;
+}
