@@ -59,9 +59,27 @@
 // Columns
 @include make-grid-columns;
 
+// Extra small grid
+@include make-grid(xs);
+
 // Intermediate grid
 @media (min-width: $screen-is-min) {
   @include make-grid(is);
+}
+
+// Small grid
+@media (min-width: $screen-sm-min) {
+  @include make-grid(sm);
+}
+
+// Medium grid
+@media (min-width: $screen-md-min) {
+  @include make-grid(md);
+}
+
+// Large grid
+@media (min-width: $screen-lg-min) {
+  @include make-grid(lg);
 }
 
 // Visibility utilities
