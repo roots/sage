@@ -7,6 +7,7 @@
 * Added english and italian translation
 * Added Web Font Loader script
 * Added respond.js dependence
+* Added animate.css dependence
 * Added font-awesome dependence
 * Added link to generate and add favicons
 * Added navbar-brand logo instead of website title
