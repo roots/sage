@@ -13,6 +13,8 @@ var lazypipe     = require('lazypipe');
 var less         = require('gulp-less');
 var merge        = require('merge-stream');
 var minifyCss    = require('gulp-minify-css');
+var order        = require('gulp-order');
+var path         = require('path');
 var plumber      = require('gulp-plumber');
 var rev          = require('gulp-rev');
 var runSequence  = require('run-sequence');
@@ -23,10 +25,10 @@ var uglify       = require('gulp-uglify');
 // See https://github.com/austinpray/asset-builder
 var manifest = require('asset-builder')('./assets/manifest.json');
 
-// `path` - Paths to base asset directories. With trailing slashes.
-// - `path.source` - Path to the source files. Default: `assets/`
-// - `path.dist` - Path to the build directory. Default: `dist/`
-var path = manifest.paths;
+// `paths` - Paths to base asset directories. With trailing slashes.
+// - `paths.source` - Path to the source files. Default: `assets/`
+// - `paths.dist` - Path to the build directory. Default: `dist/`
+var paths = manifest.paths;
 
 // `config` - Store arbitrary configuration values here.
 var config = manifest.config || {};
@@ -65,7 +67,15 @@ var enabled = {
 };
 
 // Path to the compiled assets manifest in the dist directory
-var revManifest = path.dist + 'assets.json';
+var revManifest = paths.dist + 'assets.json';
+
+// Transform absolute paths into project relative paths.
+// This is needed due to https://github.com/sirlantis/gulp-order/issues/11
+var makeRelative = function(globs) {
+  return globs.map(function(glob) {
+    return path.relative(__dirname, glob);
+  });
+};
 
 // ## Reusable Pipelines
 // See https://github.com/OverZealous/lazypipe
@@ -74,10 +84,11 @@ var revManifest = path.dist + 'assets.json';
 // Example
 // ```
 // gulp.src(cssFiles)
-//   .pipe(cssTasks('main.css')
-//   .pipe(gulp.dest(path.dist + 'styles'))
+//   .pipe(cssTasks('main.css', cssFiles)
+//   .pipe(order(cssFiles))
+//   .pipe(gulp.dest(paths.dist + 'styles'))
 // ```
-var cssTasks = function(filename) {
+var cssTasks = function(filename, globs) {
   return lazypipe()
     .pipe(function() {
       return gulpif(!enabled.failStyleTask, plumber());
@@ -96,6 +107,7 @@ var cssTasks = function(filename) {
         errLogToConsole: !enabled.failStyleTask
       }));
     })
+    .pipe(order, makeRelative(globs))
     .pipe(concat, filename)
     .pipe(autoprefixer, {
       browsers: [
@@ -125,14 +137,16 @@ var cssTasks = function(filename) {
 // Example
 // ```
 // gulp.src(jsFiles)
-//   .pipe(jsTasks('main.js')
-//   .pipe(gulp.dest(path.dist + 'scripts'))
+//   .pipe(jsTasks('main.js', jsFiles)
+//   .pipe(order(jsFiles))
+//   .pipe(gulp.dest(paths.dist + 'scripts'))
 // ```
-var jsTasks = function(filename) {
+var jsTasks = function(filename, globs) {
   return lazypipe()
     .pipe(function() {
       return gulpif(enabled.maps, sourcemaps.init());
     })
+    .pipe(order, makeRelative(globs))
     .pipe(concat, filename)
     .pipe(uglify, {
       compress: {
@@ -154,13 +168,13 @@ var jsTasks = function(filename) {
 // See https://github.com/sindresorhus/gulp-rev
 var writeToManifest = function(directory) {
   return lazypipe()
-    .pipe(gulp.dest, path.dist + directory)
+    .pipe(gulp.dest, paths.dist + directory)
     .pipe(browserSync.stream, {match: '**/*.{js,css}'})
     .pipe(rev.manifest, revManifest, {
-      base: path.dist,
+      base: paths.dist,
       merge: true
     })
-    .pipe(gulp.dest, path.dist)();
+    .pipe(gulp.dest, paths.dist)();
 };
 
 // ## Gulp tasks
@@ -173,14 +187,14 @@ var writeToManifest = function(directory) {
 gulp.task('styles', ['wiredep'], function() {
   var merged = merge();
   manifest.forEachDependency('css', function(dep) {
-    var cssTasksInstance = cssTasks(dep.name);
+    var cssTasksInstance = cssTasks(dep.name, dep.globs);
     if (!enabled.failStyleTask) {
       cssTasksInstance.on('error', function(err) {
         console.error(err.message);
         this.emit('end');
       });
     }
-    merged.add(gulp.src(dep.globs, {base: 'styles'})
+    merged.add(gulp.src(dep.globs, {base: './'})
       .pipe(cssTasksInstance));
   });
   return merged
@@ -194,8 +208,8 @@ gulp.task('scripts', ['jshint'], function() {
   var merged = merge();
   manifest.forEachDependency('js', function(dep) {
     merged.add(
-      gulp.src(dep.globs, {base: 'scripts'})
-        .pipe(jsTasks(dep.name))
+      gulp.src(dep.globs, {base: './'})
+        .pipe(jsTasks(dep.name, dep.globs))
     );
   });
   return merged
@@ -208,7 +222,7 @@ gulp.task('scripts', ['jshint'], function() {
 gulp.task('fonts', function() {
   return gulp.src(globs.fonts)
     .pipe(flatten())
-    .pipe(gulp.dest(path.dist + 'fonts'))
+    .pipe(gulp.dest(paths.dist + 'fonts'))
     .pipe(browserSync.stream());
 });
 
@@ -221,7 +235,7 @@ gulp.task('images', function() {
       interlaced: true,
       svgoPlugins: [{removeUnknownsAndDefaults: false}, {cleanupIDs: false}]
     }))
-    .pipe(gulp.dest(path.dist + 'images'))
+    .pipe(gulp.dest(paths.dist + 'images'))
     .pipe(browserSync.stream());
 });
 
@@ -238,7 +252,7 @@ gulp.task('jshint', function() {
 
 // ### Clean
 // `gulp clean` - Deletes the build folder entirely.
-gulp.task('clean', require('del').bind(null, [path.dist]));
+gulp.task('clean', require('del').bind(null, [paths.dist]));
 
 // ### Watch
 // `gulp watch` - Use BrowserSync to proxy your dev server and synchronize code
@@ -255,10 +269,10 @@ gulp.task('watch', function() {
       blacklist: ['/wp-admin/**']
     }
   });
-  gulp.watch([path.source + 'styles/**/*'], ['styles']);
-  gulp.watch([path.source + 'scripts/**/*'], ['jshint', 'scripts']);
-  gulp.watch([path.source + 'fonts/**/*'], ['fonts']);
-  gulp.watch([path.source + 'images/**/*'], ['images']);
+  gulp.watch([paths.source + 'styles/**/*'], ['styles']);
+  gulp.watch([paths.source + 'scripts/**/*'], ['jshint', 'scripts']);
+  gulp.watch([paths.source + 'fonts/**/*'], ['fonts']);
+  gulp.watch([paths.source + 'images/**/*'], ['images']);
   gulp.watch(['bower.json', 'assets/manifest.json'], ['build']);
 });
 
@@ -279,10 +293,10 @@ gulp.task('wiredep', function() {
   var wiredep = require('wiredep').stream;
   return gulp.src(project.css)
     .pipe(wiredep())
-    .pipe(changed(path.source + 'styles', {
+    .pipe(changed(paths.source + 'styles', {
       hasChanged: changed.compareSha1Digest
     }))
-    .pipe(gulp.dest(path.source + 'styles'));
+    .pipe(gulp.dest(paths.source + 'styles'));
 });
 
 // ### Gulp
