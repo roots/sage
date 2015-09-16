@@ -18,7 +18,6 @@ add_theme_support('soil-disable-asset-versioning');               // Disable ver
 add_theme_support('rankz-init');                                  // Rankz first setup
 add_theme_support('rankz-clean-up');                              // Enable clean up from Rankz
 add_theme_support('rankz-disable-comments');                      // Disable comments
-add_theme_support('rankz-disable-editors');                       // Disable editors
 add_theme_support('rankz-disable-widgets');                       // Disable widgets
 add_theme_support('rankz-remove-default-image-sizes');            // Remove default WordPress image sizes
 add_theme_support('rankz-admin-login', 'ensoul.it', '#E41B44');   // Customize admin login page, remember to change login-logo.png in assets/images
