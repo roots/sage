@@ -8,8 +8,13 @@ php:
   - hhvm
 
 matrix:
+  fast_finish: true
   allow_failures:
     - php: nightly
+
+env:
+  - TRAVIS_NODE_VERSION="0.12"
+  - TRAVIS_NODE_VERSION="4"
 
 cache:
   directories:
@@ -17,9 +22,10 @@ cache:
     - node_modules
 
 install:
+  - rm -rf ~/.nvm && git clone https://github.com/creationix/nvm.git ~/.nvm && (cd ~/.nvm && git checkout `git describe --abbrev=0 --tags`) && source ~/.nvm/nvm.sh && nvm install $TRAVIS_NODE_VERSION
   - npm install -g npm@latest
   - npm install -g bower gulp jscs
-  - npm install
+  - npm update
   - composer self-update && composer --version
   - export PATH="$HOME/.composer/vendor/bin:$PATH"
   - composer global require squizlabs/php_codesniffer
