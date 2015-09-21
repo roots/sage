@@ -27,7 +27,7 @@ For more installation notes, refer to the [Install gulp and Bower](#install-gulp
 * [Theme wrapper](https://roots.io/shaba/docs/theme-wrapper/)
 * Over 30 available [community translations](https://github.com/roots/shaba-translations)
 
-Install the [Soil](https://github.com/roots/soil) plugin to enable additional features.
+Install [Soil](https://github.com/roots/soil) and [Rankz](https://github.com/itsensoul/rankz) plugins to enable additional features.
 
 ## Installation
 

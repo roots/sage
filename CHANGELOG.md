@@ -1,3 +1,14 @@
+### 1.1.1: Sept 19th, 2015
+* Removed composer.json
+* Added rankz-google-analytics instead of soil-google-analytics
+* Updated bootstrap sass
+* Updated main.scss
+* Updated newer versions of dependencies in package.json
+* Updated to version 1.1.1
+* Updated assets.php with slash instead of underscore
+* Updated to Sage 15.09.2015
+* Updated README.md
+
 ### 1.1.0: Aug 3rd, 2015
 * Forked from Sage 8.2.1
 * Re-branded all theme from Roots/Sage to Ensoul/Shaba

@@ -12,11 +12,11 @@ add_theme_support('soil-nav-walker');                             // Enable clea
 add_theme_support('soil-relative-urls');                          // Enable relative URLs from Soil
 add_theme_support('soil-nice-search');                            // Enable nice search from Soil
 add_theme_support('soil-jquery-cdn');                             // Enable to load jQuery from the Google CDN
-add_theme_support('soil-google-analytics', 'UA-XXXXX-Y');         // Enable H5BP's Google Analytics snippet
 add_theme_support('soil-disable-trackbacks');                     // Remove trackback/pingback functionality
 add_theme_support('soil-disable-asset-versioning');               // Disable ver query string from all styles and scripts
 add_theme_support('rankz-init');                                  // Rankz first setup
 add_theme_support('rankz-clean-up');                              // Enable clean up from Rankz
+add_theme_support('rankz-google-analytics', 'UA-XXXXX-Y');        // Enable H5BP's Google Analytics snippet
 add_theme_support('rankz-disable-comments');                      // Disable comments
 add_theme_support('rankz-disable-widgets');                       // Disable widgets
 add_theme_support('rankz-remove-default-image-sizes');            // Remove default WordPress image sizes
