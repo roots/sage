@@ -1,4 +1,4 @@
-### 1.1.1: Sept 19th, 2015
+### 1.1.1: Sept 21th, 2015
 * Removed composer.json
 * Added rankz-google-analytics instead of soil-google-analytics
 * Updated bootstrap sass
