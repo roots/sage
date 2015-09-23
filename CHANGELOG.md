@@ -1,4 +1,5 @@
 ### HEAD
+* Remove ConditionalTagCheck class ([#1494](https://github.com/roots/sage/pull/1494))
 * Add search templates ([#1459](https://github.com/roots/sage/issues/1459))
 * Allow `debugger` statements in development JavaScript ([#1487](https://github.com/roots/sage/issues/1487))
 
