@@ -1,5 +1,5 @@
 <?php
 /**
  * Shaba post types
+ * visit: http://generatewp.com/post-type/
  */
-// visit: http://generatewp.com/post-type/

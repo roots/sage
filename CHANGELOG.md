@@ -1,3 +1,7 @@
+### HEAD
+* Remove ConditionalTagCheck class
+* Update to Sage 8.2.1 Sep 23, 2015
+
 ### 1.1.1: Sept 21th, 2015
 * Removed composer.json
 * Added rankz-google-analytics instead of soil-google-analytics

@@ -61,4 +61,4 @@ class ShabaWrapping {
     return new ShabaWrapping();
   }
 }
-add_filter('template_include', [__NAMESPACE__ . '\\ShabaWrapping', 'wrap'], 99);
+add_filter('template_include', [__NAMESPACE__ . '\\ShabaWrapping', 'wrap'], 109);
