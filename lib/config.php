@@ -21,7 +21,6 @@ add_theme_support('rankz-disable-comments');                      // Disable com
 add_theme_support('rankz-disable-widgets');                       // Disable widgets
 add_theme_support('rankz-remove-default-image-sizes');            // Remove default WordPress image sizes
 add_theme_support('rankz-admin-login', 'ensoul.it', '#E41B44');   // Customize admin login page, remember to change login-logo.png in assets/images
-add_theme_support('rankz-menu-humility');                         // Enable Menu Humility plugin
 
 /**
  * Configuration values
