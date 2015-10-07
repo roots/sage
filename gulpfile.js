@@ -13,6 +13,7 @@ var lazypipe     = require('lazypipe');
 var less         = require('gulp-less');
 var merge        = require('merge-stream');
 var minifyCss    = require('gulp-minify-css');
+var ngAnnotate   = require('gulp-ng-annotate');
 var plumber      = require('gulp-plumber');
 var rev          = require('gulp-rev');
 var runSequence  = require('run-sequence');
@@ -134,6 +135,7 @@ var jsTasks = function(filename) {
       return gulpif(enabled.maps, sourcemaps.init());
     })
     .pipe(concat, filename)
+    .pipe(ngAnnotate)
     .pipe(uglify, {
       compress: {
         'drop_debugger': enabled.stripJSDebug

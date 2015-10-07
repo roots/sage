@@ -19,6 +19,11 @@ use Roots\Sage\Wrapper;
       get_template_part('templates/header');
     ?>
     <div class="wrap container" role="document">
+      <div class="angular-wrap" ng-app="sageApp">
+        <div class="angular" ng-controller="sageAppController">
+          {{hello}}
+        </div>
+      </div>
       <div class="content row">
         <main class="main" role="main">
           <?php include Wrapper\template_path(); ?>
