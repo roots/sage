@@ -1,4 +1,11 @@
 ### HEAD
+* Move init.php to config.php ([#1555](https://github.com/roots/sage/pull/1555))
+* Use Sass to style search form, remove search template ([#1545](https://github.com/roots/sage/pull/1545))
+* Remove Modernizr ([#1541](https://github.com/roots/sage/pull/1541))
+* Remove references to WP_ENV ([#1554](https://github.com/roots/sage/pull/1554))
+* Use WP core's HTML5 gallery markup ([#1546](https://github.com/roots/sage/pull/1546))
+* Use slash in handle names for theme CSS and JS ([#1537](https://github.com/roots/sage/pull/1537))
+* Add compatibility with WooCommerce Multilingual plugin ([#1530](https://github.com/roots/sage/pull/1530))
 * Remove ConditionalTagCheck class ([#1494](https://github.com/roots/sage/pull/1494))
 * Add search templates ([#1459](https://github.com/roots/sage/issues/1459))
 * Allow `debugger` statements in development JavaScript ([#1487](https://github.com/roots/sage/issues/1487))
