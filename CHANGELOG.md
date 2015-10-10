@@ -1,4 +1,5 @@
 ### HEAD
+* Remove redundancy with WAI-ARIA in HTML ([#1557](https://github.com/roots/sage/pull/1557))
 * Rename config.php to setup.php ([#1556](https://github.com/roots/sage/pull/1556))
 * Move init.php to config.php ([#1555](https://github.com/roots/sage/pull/1555))
 * Use Sass to style search form, remove search template ([#1545](https://github.com/roots/sage/pull/1545))
