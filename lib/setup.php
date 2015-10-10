@@ -1,6 +1,6 @@
 <?php
 
-namespace Roots\Sage\Config;
+namespace Roots\Sage\Setup;
 
 use Roots\Sage\Assets;
 
