@@ -43,13 +43,13 @@ Install the [Soil](https://github.com/roots/soil) plugin to enable additional fe
 * Google CDN jQuery snippet from [HTML5 Boilerplate](http://html5boilerplate.com/)
 * Google Analytics snippet from [HTML5 Boilerplate](http://html5boilerplate.com/)
 
-## Installation
+## Theme installation
 
 Clone the git repo - `git clone https://github.com/roots/sage.git` and then rename the directory to the name of your theme or website.
 
-## Configuration
+## Theme setup
 
-Edit `lib/config.php` to enable or disable theme features, setup navigation menus, post thumbnail sizes, post formats, and sidebars.
+Edit `lib/setup.php` to enable or disable theme features, setup navigation menus, post thumbnail sizes, post formats, and sidebars.
 
 ## Theme development
 
