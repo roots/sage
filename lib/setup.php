@@ -5,18 +5,17 @@ namespace Roots\Sage\Setup;
 use Roots\Sage\Assets;
 
 /**
- * Enable theme features
- */
-add_theme_support('soil-clean-up');         // Enable clean up from Soil
-add_theme_support('soil-nav-walker');       // Enable cleaner nav walker from Soil
-add_theme_support('soil-relative-urls');    // Enable relative URLs from Soil
-add_theme_support('soil-nice-search');      // Enable nice search from Soil
-add_theme_support('soil-jquery-cdn');       // Enable to load jQuery from the Google CDN
-
-/**
  * Theme setup
  */
 function setup() {
+  // Enable features from Soil when plugin is activated
+  // https://roots.io/plugins/soil/
+  add_theme_support('soil-clean-up');
+  add_theme_support('soil-nav-walker');
+  add_theme_support('soil-nice-search');
+  add_theme_support('soil-jquery-cdn');
+  add_theme_support('soil-relative-urls');
+
   // Make theme available for translation
   // Community translations can be found at https://github.com/roots/sage-translations
   load_theme_textdomain('sage', get_template_directory() . '/lang');
@@ -31,21 +30,21 @@ function setup() {
     'primary_navigation' => __('Primary Navigation', 'sage')
   ]);
 
-  // Add post thumbnails
+  // Enable post thumbnails
   // http://codex.wordpress.org/Post_Thumbnails
   // http://codex.wordpress.org/Function_Reference/set_post_thumbnail_size
   // http://codex.wordpress.org/Function_Reference/add_image_size
   add_theme_support('post-thumbnails');
 
-  // Add post formats
+  // Enable post formats
   // http://codex.wordpress.org/Post_Formats
   add_theme_support('post-formats', ['aside', 'gallery', 'link', 'image', 'quote', 'video', 'audio']);
 
-  // Add HTML5 markup for captions
+  // Enable HTML5 markup support
   // http://codex.wordpress.org/Function_Reference/add_theme_support#HTML5
   add_theme_support('html5', ['caption', 'comment-form', 'comment-list', 'gallery', 'search-form']);
 
-  // Tell the TinyMCE editor to use a custom stylesheet
+  // Custom stylesheet for visual editor
   add_editor_style(Assets\asset_path('styles/editor-style.css'));
 }
 add_action('after_setup_theme', __NAMESPACE__ . '\\setup');
