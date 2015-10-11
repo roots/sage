@@ -14,14 +14,6 @@ add_theme_support('soil-nice-search');      // Enable nice search from Soil
 add_theme_support('soil-jquery-cdn');       // Enable to load jQuery from the Google CDN
 
 /**
- * Configuration values
- */
-if (!defined('DIST_DIR')) {
-  // Path to the build directory for front-end assets
-  define('DIST_DIR', '/dist/');
-}
-
-/**
  * Theme setup
  */
 function setup() {
