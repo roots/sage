@@ -43,6 +43,8 @@ Install the [Soil](https://github.com/roots/soil) plugin to enable additional fe
 * Google CDN jQuery snippet from [HTML5 Boilerplate](http://html5boilerplate.com/)
 * Google Analytics snippet from [HTML5 Boilerplate](http://html5boilerplate.com/)
 
+See a complete working example in the [roots-example-project.com repo](https://github.com/roots/roots-example-project.com).
+
 ## Theme installation
 
 Clone the git repo - `git clone https://github.com/roots/sage.git` and then rename the directory to the name of your theme or website.
