@@ -45,7 +45,7 @@ function setup() {
   add_theme_support('html5', ['caption', 'comment-form', 'comment-list', 'gallery', 'search-form']);
 
   // Custom stylesheet for visual editor
-  add_editor_style(Assets\asset_path('styles/editor-style.css'));
+  add_editor_style(Assets\asset_path('styles/main.css'));
 }
 add_action('after_setup_theme', __NAMESPACE__ . '\\setup');
 
