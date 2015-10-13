@@ -1,4 +1,5 @@
-### HEAD
+### 8.3.0: October 13th, 2015
+* Setup organization ([#1558](https://github.com/roots/sage/pull/1558))
 * Remove redundancy with WAI-ARIA in HTML ([#1557](https://github.com/roots/sage/pull/1557))
 * Rename config.php to setup.php ([#1556](https://github.com/roots/sage/pull/1556))
 * Move init.php to config.php ([#1555](https://github.com/roots/sage/pull/1555))
