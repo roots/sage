@@ -12,11 +12,6 @@
       ],
       "main": true
     },
-    "editor-style.css": {
-      "files": [
-        "styles/editor-style.scss"
-      ]
-    },
     "jquery.js": {
       "bower": ["jquery"]
     }
