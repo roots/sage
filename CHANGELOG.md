@@ -1,3 +1,7 @@
+### HEAD
+* Remove extraneous no-js ([#1562](https://github.com/roots/sage/pull/1562))
+* Simplify/speed up editor style process ([#1560](https://github.com/roots/sage/pull/1560))
+
 ### 8.3.0: October 13th, 2015
 * Setup organization ([#1558](https://github.com/roots/sage/pull/1558))
 * Remove redundancy with WAI-ARIA in HTML ([#1557](https://github.com/roots/sage/pull/1557))
