@@ -30,7 +30,7 @@ For more installation notes, refer to the [Install gulp and Bower](#install-gulp
 * [asset-builder](https://github.com/austinpray/asset-builder) for the JSON file based asset pipeline
 * [Bootstrap](http://getbootstrap.com/)
 * [Theme wrapper](https://roots.io/sage/docs/theme-wrapper/)
-* ARIA roles and microformats
+* Microformats
 * Posts use the [hNews](http://microformats.org/wiki/hnews) microformat
 * [Multilingual ready](https://roots.io/wpml/) and over 30 available [community translations](https://github.com/roots/sage-translations)
 
