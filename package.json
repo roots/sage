@@ -54,5 +54,8 @@
     "run-sequence": "^1.1.2",
     "traverse": "^0.6.6",
     "wiredep": "^2.2.2"
+  },
+  "dependencies": {
+    "gulp-stylus": "^2.1.0"
   }
 }
