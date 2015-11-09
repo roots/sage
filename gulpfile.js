@@ -18,6 +18,7 @@ var rev          = require('gulp-rev');
 var runSequence  = require('run-sequence');
 var sass         = require('gulp-sass');
 var sourcemaps   = require('gulp-sourcemaps');
+var stylus       = require('gulp-stylus');
 var uglify       = require('gulp-uglify');
 
 // See https://github.com/austinpray/asset-builder
@@ -95,6 +96,9 @@ var cssTasks = function(filename) {
         includePaths: ['.'],
         errLogToConsole: !enabled.failStyleTask
       }));
+    })
+    .pipe(function() {
+      return gulpif('*.styl', stylus());
     })
     .pipe(concat, filename)
     .pipe(autoprefixer, {
