@@ -1,0 +1,13 @@
+<header class="banner">
+    <div class="container">
+        <a class="brand" href="{{ function('home_url', '/') }}">{{ function('bloginfo', 'name') }}</a>
+        <nav class="nav-primary">
+            Menu via Twig
+            {#<?php#}
+      {#if (has_nav_menu('primary_navigation')) :#}
+        {#wp_nav_menu(['theme_location' => 'primary_navigation', 'menu_class' => 'nav']);#}
+            {#endif;#}
+            {#?>#}
+        </nav>
+    </div>
+</header>
