@@ -1,0 +1,11 @@
+<article {{ function('post_class') }}>
+
+    <header>
+        <h2 class="entry-title"><a href="{{ post.permalink }}">{{ post.title }}</a></h2>
+        {#<?php get_template_part('templates/entry-meta'); ?>#}
+    </header>
+    <div class="entry-summary">
+        {{ post.post_excerpt }}
+    </div>
+
+</article>
