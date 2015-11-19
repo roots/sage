@@ -5,15 +5,15 @@
 @import "../../bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
 // endbower
 
-@import "common/_global";
-@import "components/_buttons";
-@import "components/_comments";
-@import "components/_forms";
-@import "components/_grid";
-@import "components/_wp-classes";
-@import "layouts/_header";
-@import "layouts/_sidebar";
-@import "layouts/_footer";
-@import "layouts/_pages";
-@import "layouts/_posts";
-@import "layouts/_tinymce";
+@import "common/global";
+@import "components/buttons";
+@import "components/comments";
+@import "components/forms";
+@import "components/grid";
+@import "components/wp-classes";
+@import "layouts/header";
+@import "layouts/sidebar";
+@import "layouts/footer";
+@import "layouts/pages";
+@import "layouts/posts";
+@import "layouts/tinymce";
