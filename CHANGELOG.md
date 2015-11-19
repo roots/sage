@@ -1,4 +1,5 @@
 ### HEAD
+* Remove unnecessary underscore ([#1577](https://github.com/roots/sage/pull/1577))
 * Drop support for older browsers ([#1571](https://github.com/roots/sage/pull/1571))
 * Add support for theme customizer ([#1573](https://github.com/roots/sage/pull/1573))
 * Remove extraneous no-js ([#1562](https://github.com/roots/sage/pull/1562))
