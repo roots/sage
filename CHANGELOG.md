@@ -2,6 +2,7 @@
 * Remove ConditionalTagCheck class
 * Update to Sage 8.2.1 Sep 23, 2015
 * Remove `add_theme_support('rankz-menu-humility);`
+* Fix for visible-* bootstrap class with is media query
 
 ### 1.1.1: Sept 21th, 2015
 * Removed composer.json
