@@ -1,3 +1,6 @@
+### HEAD
+* Add `composer.json` and update installation instructions ([#1583](https://github.com/roots/sage/issues/1583))
+
 ### 8.4.0: December 1st, 2015
 * Update to Bootstrap 3.3.6 ([#1578](https://github.com/roots/sage/pull/1578))
 * Remove unnecessary underscore ([#1577](https://github.com/roots/sage/pull/1577))
