@@ -127,6 +127,7 @@ var cssTasks = function(filename) {
 // ```
 var jsTasks = function(filename) {
   return lazypipe()
+    .pipe(plumber)
     .pipe(function() {
       return gulpif(enabled.maps, sourcemaps.init());
     })
@@ -192,6 +193,7 @@ gulp.task('scripts', ['jshint'], function() {
   manifest.forEachDependency('js', function(dep) {
     merged.add(
       gulp.src(dep.globs, {base: 'scripts'})
+        .pipe(plumber())
         .pipe(jsTasks(dep.name))
     );
   });
