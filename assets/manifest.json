@@ -21,7 +21,7 @@
       "bower": ["jquery"]
     },
     "modernizr.js": {
-      "bower": ["modernizr"]
+      "bower": ["modernizr-built"]
     }
   },
   "config": {

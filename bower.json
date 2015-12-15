@@ -7,16 +7,13 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "modernizr": "2.8.2",
-    "bootstrap-sass": "3.3.5",
+    "modernizr-built": "3.2.0",
+    "bootstrap-sass": "3.3.6",
     "respond": "1.4.2",
-    "font-awesome": "4.4.0",
-    "animate.css": "3.4.0"
+    "font-awesome": "4.5.0",
+    "animate.css": "3.5.0"
   },
   "overrides": {
-    "modernizr": {
-      "main": "./modernizr.js"
-    },
     "bootstrap-sass": {
       "main": [
         "./assets/stylesheets/_bootstrap.scss",
