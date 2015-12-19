@@ -23,9 +23,12 @@ install:
   - composer self-update && composer --version
   - export PATH="$HOME/.composer/vendor/bin:$PATH"
   - composer global require squizlabs/php_codesniffer
+  - composer global require phpmd/phpmd
+  - composer install -o
 
 script:
   - npm run build
   - npm run jshint
   - npm run jscs
-  - phpcs --standard=ruleset.xml --extensions=php -n -s .
+  - phpcs --standard=ruleset.xml --extensions=php --ignore=node_modules,bower_components,vendor -n -s .
+  - phpmd app text cleancode,codesize,controversial,design,naming,unusedcode

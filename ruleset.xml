@@ -28,11 +28,6 @@
   <!-- Allow PHP closing tags on templates -->
   <rule ref="PSR2.Files.ClosingTag.NotAllowed">
     <exclude-pattern>templates/*</exclude-pattern>
-    <exclude-pattern>404.php</exclude-pattern>
-    <exclude-pattern>index.php</exclude-pattern>
-    <exclude-pattern>page.php</exclude-pattern>
-    <exclude-pattern>single.php</exclude-pattern>
-    <exclude-pattern>template-custom.php</exclude-pattern>
   </rule>
 
   <!-- Force 2 spaces indentation -->

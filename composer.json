@@ -23,8 +23,19 @@
     "issues": "https://github.com/roots/sage/issues",
     "forum": "https://discourse.roots.io/"
   },
+  "autoload": {
+    "psr-4": {
+      "Roots\\Sage\\": "app/lib/Sage/"
+    },
+    "files": [
+      "app/helpers.php",
+      "app/setup.php",
+      "app/filters.php",
+      "app/admin.php"
+    ]
+  },
   "require": {
-    "php": ">=5.4.0",
+    "php": ">=5.5.0",
     "composer/installers": "~1.0"
   }
 }
