@@ -5,7 +5,7 @@
  * @package Roots\Sage
  * @author QWp6t
  */
-class JsonManifest implements IManifest {
+class JsonManifest implements ManifestInterface {
   /** @var array */
   protected $manifest = [];
 
