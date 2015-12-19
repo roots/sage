@@ -1,6 +1,6 @@
 <?php namespace Roots\Sage;
 
-use Roots\Sage\Assets\IManifest;
+use Roots\Sage\Assets\ManifestInterface;
 
 /**
  * Class Template
@@ -11,14 +11,14 @@ class Asset {
 
   public static $dist = '/dist';
 
-  /** @var IManifest Currently used manifest */
+  /** @var ManifestInterface Currently used manifest */
   protected $manifest;
 
   protected $asset;
 
   protected $dir;
 
-  public function __construct($file, IManifest $manifest = null) {
+  public function __construct($file, ManifestInterface $manifest = null) {
     $this->manifest = $manifest;
     $this->asset = basename($file);
     $this->dir = dirname($file) != '.' ? dirname($file) : '';

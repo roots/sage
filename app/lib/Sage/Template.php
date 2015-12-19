@@ -1,6 +1,6 @@
 <?php namespace Roots\Sage;
 
-use Roots\Sage\Template\IWrapper;
+use Roots\Sage\Template\WrapperInterface;
 
 /**
  * Class Template
@@ -10,7 +10,7 @@ use Roots\Sage\Template\IWrapper;
 class Template {
   protected static $root = 'templates/';
 
-  /** @var IWrapper[] */
+  /** @var WrapperInterface[] */
   protected static $wrappers = [];
 
   protected $templates = [];
@@ -20,11 +20,11 @@ class Template {
   protected $html = '';
 
   /**
-   * @param IWrapper $wrapper
+   * @param WrapperInterface $wrapper
    * @param array $context Variables to pass to wrapper
    * @return static Template instance of wrapper
    */
-  public static function wrap(IWrapper $wrapper, $context = []) {
+  public static function wrap(WrapperInterface $wrapper, $context = []) {
     self::$wrappers[$wrapper->getSlug()] = $wrapper;
     return new static($wrapper->getWrappers(), $context);
   }
@@ -40,7 +40,9 @@ class Template {
       end(self::$wrappers);
       $slug = key(self::$wrappers);
     }
-    return new static(self::$wrappers[$slug]->getTemplate(), $context);
+    $template = new static(self::$wrappers[$slug]->getTemplate(), $context);
+    unset(self::$wrappers[$slug]);
+    return $template;
   }
 
   /**

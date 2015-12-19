@@ -1,11 +1,11 @@
 <?php namespace Roots\Sage\Template;
 
 /**
- * Interface IWrapper
+ * Interface WrapperInterface
  * @package Roots\Sage
  * @author QWp6t
  */
-interface IWrapper {
+interface WrapperInterface {
 
   /**
    * Get a list of potential wrappers
@@ -21,7 +21,7 @@ interface IWrapper {
   public function getTemplate();
 
   /**
-   * @return string Slug of the Wrapper; e.g., `base`
+   * @return string Slug of the WrapperInterface; e.g., `base`
    */
   public function getSlug();
 }

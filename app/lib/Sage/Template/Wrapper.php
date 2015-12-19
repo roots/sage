@@ -1,11 +1,11 @@
 <?php namespace Roots\Sage\Template;
 
 /**
- * Interface Wrapper
+ * Class Wrapper
  * @package Roots\Sage
  * @author QWp6t
  */
-class Wrapper implements IWrapper {
+class Wrapper implements WrapperInterface {
   /** @var string Wrapper slug */
   protected $slug;
 

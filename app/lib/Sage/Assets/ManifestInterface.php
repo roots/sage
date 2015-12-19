@@ -1,11 +1,11 @@
 <?php namespace Roots\Sage\Assets;
 
 /**
- * Interface IManifest
+ * Interface ManifestInterface
  * @package Roots\Sage
  * @author QWp6t
  */
-interface IManifest {
+interface ManifestInterface {
 
   /**
    * Get the cache-busted filename
