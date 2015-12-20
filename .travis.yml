@@ -18,7 +18,7 @@ cache:
 
 install:
   - npm install -g npm@latest
-  - npm install -g bower gulp jscs
+  - npm install -g bower gulp eslint
   - npm install
   - composer self-update && composer --version
   - export PATH="$HOME/.composer/vendor/bin:$PATH"
@@ -28,7 +28,6 @@ install:
 
 script:
   - npm run build
-  - npm run jshint
-  - npm run jscs
+  - npm run lint
   - phpcs --standard=ruleset.xml --extensions=php --ignore=node_modules,bower_components,vendor -n -s .
   - phpmd src text cleancode,codesize,controversial,design,naming,unusedcode
