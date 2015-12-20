@@ -1,0 +1,16 @@
+{
+  "root": true,
+  "extends": "eslint:recommended",
+  "globals": {
+    "wp": true,
+  },
+  "env": {
+    "browser": true,
+    "jquery": true,
+    "node": true,
+    "amd": true
+  },
+  "rules": {
+    "no-console": 0
+  }
+}
