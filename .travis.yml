@@ -31,4 +31,4 @@ script:
   - npm run jshint
   - npm run jscs
   - phpcs --standard=ruleset.xml --extensions=php --ignore=node_modules,bower_components,vendor -n -s .
-  - phpmd app text cleancode,codesize,controversial,design,naming,unusedcode
+  - phpmd src text cleancode,codesize,controversial,design,naming,unusedcode
