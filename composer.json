@@ -25,13 +25,13 @@
   },
   "autoload": {
     "psr-4": {
-      "Roots\\Sage\\": "app/lib/Sage/"
+      "Roots\\Sage\\": "src/lib/Sage/"
     },
     "files": [
-      "app/helpers.php",
-      "app/setup.php",
-      "app/filters.php",
-      "app/admin.php"
+      "src/helpers.php",
+      "src/setup.php",
+      "src/filters.php",
+      "src/admin.php"
     ]
   },
   "require": {
