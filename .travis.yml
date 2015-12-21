@@ -1,24 +1,37 @@
 sudo: false
 language: php
 php:
-  - nightly
+  - 7.0
   - 5.6
   - 5.5
-  - 5.4
-  - hhvm
+
+env:
+  - TRAVIS_NODE_VERSION="4.2" CXX="g++-4.8"
+  - TRAVIS_NODE_VERSION="5.3" CXX="g++-4.8"
 
 matrix:
   allow_failures:
-    - php: nightly
+    - php: 5.5
+
+addons:
+  apt:
+    sources:
+    - ubuntu-toolchain-r-test
+    packages:
+    - g++-4.8
 
 cache:
   directories:
     - bower_components
     - node_modules
+    - vendor
 
 install:
+  - source ~/.nvm/nvm.sh && nvm install $TRAVIS_NODE_VERSION
   - npm install -g npm@latest
-  - npm install -g bower gulp jscs
+  - npm install -g bower gulp eslint
+  - node -v && npm -v && bower -v && gulp -v
+  - npm rebuild
   - npm install
   - composer self-update && composer --version
   - export PATH="$HOME/.composer/vendor/bin:$PATH"
@@ -28,7 +41,5 @@ install:
 
 script:
   - npm run build
-  - npm run jshint
-  - npm run jscs
   - phpcs --standard=ruleset.xml --extensions=php --ignore=node_modules,bower_components,vendor -n -s .
   - phpmd src text cleancode,codesize,controversial,design,naming,unusedcode
