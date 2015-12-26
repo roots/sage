@@ -41,8 +41,7 @@ class Wrapper implements WrapperInterface {
   }
 
   /** {@inheritdoc} */
-  public function getTemplate()
-  {
+  public function getTemplate() {
     return $this->template;
   }
 }

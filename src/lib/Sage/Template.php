@@ -40,6 +40,7 @@ class Template {
       end(self::$wrappers);
       $slug = key(self::$wrappers);
     }
+
     $template = new static(self::$wrappers[$slug]->getTemplate(), $context);
     unset(self::$wrappers[$slug]);
     return $template;
@@ -61,9 +62,11 @@ class Template {
   public static function convertParts($template, $delimeter = '-') {
     $templateParts = explode($delimeter, str_replace('.php', '', (string) $template));
     $templates[] = array_shift($templateParts);
+
     foreach ($templateParts as $i => $templatePart) {
       $templates[] = $templates[$i] . $delimeter . $templatePart;
     }
+
     return array_reverse($templates);
   }
 
@@ -102,10 +105,12 @@ class Template {
     $context = $this->context;
     extract($this->context);
     ob_start();
+
     if ($template = $this->locate()) {
       /** @noinspection PhpIncludeInspection */
       include $template;
     }
+
     $this->html = ob_get_clean() ?: '';
     return $this->html;
   }
@@ -118,9 +123,11 @@ class Template {
       $this->templates = self::format($template);
       return;
     }
+
     if (!is_string($template) || !(string) $template) {
       return;
     }
+
     // At this point, we assume it's something like `content-single.php` or `content-single-audio.php`
     $this->templates = self::format(self::convertParts($template));
   }
@@ -135,6 +142,7 @@ class Template {
       if (substr($template, -4, 4) === '.php') {
         return $template;
       }
+
       return $template . '.php';
     }, $templates);
   }
@@ -147,6 +155,7 @@ class Template {
     $templates = array_map(function ($template) use ($templateDir) {
       return ($templateDir ?: self::$root) . $template;
     }, $this->templates);
+
     $template = locate_template($templates);
     return apply_filters('sage/locate_template', $template, $templates) ?: $template;
   }

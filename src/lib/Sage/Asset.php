@@ -8,7 +8,6 @@ use Roots\Sage\Assets\ManifestInterface;
  * @author QWp6t
  */
 class Asset {
-
   public static $dist = '/dist';
 
   /** @var ManifestInterface Currently used manifest */

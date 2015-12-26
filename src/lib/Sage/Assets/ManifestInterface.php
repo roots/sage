@@ -6,7 +6,6 @@
  * @author QWp6t
  */
 interface ManifestInterface {
-
   /**
    * Get the cache-busted filename
    *

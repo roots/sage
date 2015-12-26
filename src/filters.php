@@ -8,7 +8,7 @@ use Roots\Sage\Template\Wrapper;
  * @link https://codex.wordpress.org/Conditional_Tags
  */
 add_filter('sage/display_sidebar', function ($display) {
-  /** The sidebar will NOT be displayed if ANY of the following return true. */
+  // The sidebar will NOT be displayed if ANY of the following return true
   return $display ? !in_array(true, [
     is_404(),
     is_front_page(),
@@ -36,15 +36,14 @@ add_filter('body_class', function (array $classes) {
 });
 
 /**
- * Clean up the_excerpt()
+ * Add "… Continued" to the excerpt
  */
 add_filter('excerpt_more', function () {
   return ' &hellip; <a href="' . get_permalink() . '">' . __('Continued', 'sage') . '</a>';
 });
 
-
 /**
- * Use Wrapper by default
+ * Use theme wrapper
  */
 add_filter('template_include', function ($main) {
   if (!is_string($main) || !(string) $main) {

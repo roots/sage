@@ -6,7 +6,6 @@
  * @author QWp6t
  */
 interface WrapperInterface {
-
   /**
    * Get a list of potential wrappers
    * Useful for passing to WordPress's locate_template()

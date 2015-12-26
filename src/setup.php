@@ -3,6 +3,14 @@
 use Roots\Sage\Template;
 
 /**
+ * Theme assets
+ */
+add_action('wp_enqueue_scripts', function () {
+  wp_enqueue_style('sage/main.css', asset_path('styles/main.css'), false, null);
+  wp_enqueue_script('sage/main.js', asset_path('scripts/main.js'), ['jquery'], null, true);
+}, 100);
+
+/**
  * Theme setup
  */
 add_action('after_setup_theme', function () {
@@ -29,7 +37,7 @@ add_action('after_setup_theme', function () {
   add_theme_support('title-tag');
 
   /**
-   * Register wp_nav_menu() menus
+   * Register navigation menus
    * @link http://codex.wordpress.org/Function_Reference/register_nav_menus
    */
   register_nav_menus([
@@ -58,7 +66,7 @@ add_action('after_setup_theme', function () {
 
   /**
    * Use main stylesheet for visual editor
-   * @see /assets/styles/layouts/_tinymce.scss
+   * @see assets/styles/layouts/_tinymce.scss
    */
   add_editor_style(asset_path('styles/main.css'));
 });
@@ -82,10 +90,3 @@ add_action('widgets_init', function () {
   register_sidebar($config('Footer'));
 });
 
-/**
- * Theme assets
- */
-add_action('wp_enqueue_scripts', function () {
-  wp_enqueue_style('sage/main.css', asset_path('styles/main.css'), false, null);
-  wp_enqueue_script('sage/main.js', asset_path('scripts/main.js'), ['jquery'], null, true);
-}, 100);
