@@ -16,24 +16,6 @@ function template_unwrap($slug = '', $context = []) {
 }
 
 /**
- * @param array $context
- */
-function template_sidebar($context = []) {
-  template_part('sidebar', $context);
-}
-
-/**
- * @param $template
- * @param array $context
- */
-function template_part($template, $context = []) {
-  if ($file = (new Template($template, $context))->locate()) {
-    /** @noinspection PhpIncludeInspection */
-    include $file;
-  }
-}
-
-/**
  * @param $filename
  * @return string
  */
