@@ -25,12 +25,6 @@ add_action('after_setup_theme', function () {
   add_theme_support('soil-relative-urls');
 
   /**
-   * Make theme available for translation
-   * @link https://github.com/roots/sage-translations Community translations
-   */
-  load_theme_textdomain('sage', get_template_directory() . '/lang');
-
-  /**
    * Enable plugins to manage the document title
    * @link http://codex.wordpress.org/Function_Reference/add_theme_support#Title_Tag
    */
