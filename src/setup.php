@@ -89,4 +89,3 @@ add_action('widgets_init', function () {
   register_sidebar($config('Primary'));
   register_sidebar($config('Footer'));
 });
-
