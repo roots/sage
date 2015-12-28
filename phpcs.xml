@@ -2,8 +2,9 @@
 <ruleset name="Roots">
   <description>Roots Coding Standards</description>
 
-  <!-- Use PSR-2 as a base -->
-  <rule ref="PSR2"/>
+  <!-- Scan these files -->
+ <file>functions.php</file>
+ <file>src</file>
 
   <!-- Show colors in console -->
   <arg value="-colors"/>
@@ -11,7 +12,9 @@
   <!-- Show sniff codes in all reports -->
   <arg value="s"/>
 
-  <!-- Scan these files -->
- <file>functions.php</file>
- <file>src</file>
+  <!-- Use PSR-2 as a base -->
+  <rule ref="PSR2">
+    <!-- Allow braces on same line for procedural functions -->
+    <exclude name="Squiz.Functions.MultiLineFunctionDeclaration.BraceOnSameLine"/>
+  </rule>
 </ruleset>
