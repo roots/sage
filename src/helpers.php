@@ -5,11 +5,22 @@ use Roots\Sage\Assets\JsonManifest;
 use Roots\Sage\Template\WrapperCollection;
 use Roots\Sage\Template\WrapperInterface;
 
+/**
+ * @param WrapperInterface $wrapper
+ * @param string $slug
+ * @return string
+ * @throws \Exception
+ * @SuppressWarnings(PHPMD.StaticAccess) This is a helper function, so we can suppress this warning
+ */
 function template_wrap(WrapperInterface $wrapper, $slug = 'base') {
     WrapperCollection::add($wrapper, $slug);
     return $wrapper->getWrapper();
 }
 
+/**
+ * @param string $slug
+ * @return string
+ */
 function template_unwrap($slug = 'base') {
     return WrapperCollection::get($slug)->getTemplate();
 }

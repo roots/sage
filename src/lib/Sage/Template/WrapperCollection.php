@@ -30,14 +30,13 @@ class WrapperCollection
     /**
      * @param WrapperInterface $wrapper
      * @param string $slug
-     * @param bool $overwriteIfExists
      * @return $this
      * @throws \Exception
      */
-    public static function add(WrapperInterface $wrapper, $slug = '', $overwriteIfExists = false)
+    public static function add(WrapperInterface $wrapper, $slug = '')
     {
         $slug = $slug ?: $wrapper->getSlug();
-        if (self::instance()->exists($slug) && !$overwriteIfExists) {
+        if (self::instance()->exists($slug)) {
             throw new \Exception("Wrapper $slug already exists.");
         }
         self::instance()->wrappers[$slug] = $wrapper;
