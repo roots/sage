@@ -1,0 +1,6 @@
+# editorconfig.org
+
+root = false
+
+[*.php]
+indent_size = 2

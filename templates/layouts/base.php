@@ -14,7 +14,7 @@
     <div class="wrap container" role="document">
       <div class="content row">
         <main class="main">
-          <?php App\template_unwrap(); ?>
+          <?php include App\template_unwrap(); ?>
         </main><!-- /.main -->
         <?php if (App\display_sidebar()) : ?>
           <aside class="sidebar">
