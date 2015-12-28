@@ -49,6 +49,5 @@ add_filter('template_include', function ($main) {
   if (!is_string($main) || !(string) $main) {
     return $main;
   }
-  $main = basename($main, '.php');
-  return Template::wrap(new Wrapper($main, 'layouts/base.php'))->locate();
+  return template_wrap(new Wrapper(basename($main)));
 }, 109);

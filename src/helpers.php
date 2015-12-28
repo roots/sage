@@ -2,17 +2,16 @@
 
 use Roots\Sage\Asset;
 use Roots\Sage\Assets\JsonManifest;
-use Roots\Sage\Template;
+use Roots\Sage\Template\WrapperCollection;
+use Roots\Sage\Template\WrapperInterface;
 
-/**
- * @param string $slug
- * @param array $context
- */
-function template_unwrap($slug = '', $context = []) {
-  if ($file = Template::unwrap($slug, $context)->locate()) {
-    /** @noinspection PhpIncludeInspection */
-    include $file;
-  }
+function template_wrap(WrapperInterface $wrapper, $slug = 'base') {
+  WrapperCollection::add($wrapper, $slug);
+  return $wrapper->getWrapper();
+}
+
+function template_unwrap($slug = 'base') {
+  return WrapperCollection::get($slug)->getTemplate();
 }
 
 /**

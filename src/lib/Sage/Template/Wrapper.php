@@ -13,26 +13,37 @@ class Wrapper implements WrapperInterface {
   protected $template = '';
 
   /** @var string[] Array of template wrappers; e.g., `base-singular.php`, `base-page.php`, `base.php` */
-  protected $wrappers = [];
+  protected $wrapper = [];
+
+  /** @var string[] Cache template locations */
+  protected static $locations = [];
 
   /**
    * Wrapper constructor
    *
-   * @param string $templateSlug Template slug, typically from Template Heirarchy; e.g., `page`, `single`, `singular`
+   * @param string $template Template file, as from Template Heirarchy; e.g., `page.php`, `single.php`, `singular.php`
    * @param string $base Wrapper's base template, this is what will wrap around $template
    */
-  public function __construct($templateSlug, $base = 'layouts/base.php') {
+  public function __construct($template, $base = 'layouts/base.php') {
     $this->slug = sanitize_title(basename($base, '.php'));
-    $this->wrappers = [$base];
-    $this->template = $templateSlug;
+    $this->wrapper = [$base];
+    $this->template = $template;
     $str = substr($base, 0, -4);
-    array_unshift($this->wrappers, sprintf($str . '-%s.php', $templateSlug));
+    array_unshift($this->wrapper, sprintf($str . '-%s.php', basename($template, '.php')));
+  }
+
+  /**
+   * @return string
+   * @see getTemplate
+   */
+  public function __toString() {
+    return $this->getTemplate();
   }
 
   /** {@inheritdoc} */
-  public function getWrappers() {
-    $this->wrappers = apply_filters('sage/wrap_' . $this->slug, $this->wrappers) ?: $this->wrappers;
-    return $this->wrappers;
+  public function getWrapper() {
+    $wrappers = apply_filters('sage/wrap_' . $this->slug, $this->wrapper) ?: $this->wrapper;
+    return locate_template($wrappers);
   }
 
   /** {@inheritdoc} */
@@ -42,6 +53,7 @@ class Wrapper implements WrapperInterface {
 
   /** {@inheritdoc} */
   public function getTemplate() {
-    return $this->template;
+    $template = apply_filters('sage/unwrap_' . $this->slug, $this->template) ?: $this->template;
+    return locate_template($template);
   }
 }
