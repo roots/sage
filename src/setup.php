@@ -69,17 +69,18 @@ add_action('after_setup_theme', function () {
  * Register sidebars
  */
 add_action('widgets_init', function () {
-  $config = function ($name, $id = '') {
-    return [
-      'name'          => __($name, 'sage'),
-      'id'            => 'sidebar-' . $id ?: sanitize_title($name),
-      'before_widget' => '<section class="widget %1$s %2$s">',
-      'after_widget'  => '</section>',
-      'before_title'  => '<h3>',
-      'after_title'   => '</h3>'
-    ];
-  };
-
-  register_sidebar($config('Primary'));
-  register_sidebar($config('Footer'));
+  $config = [
+    'before_widget' => '<section class="widget %1$s %2$s">',
+    'after_widget'  => '</section>',
+    'before_title'  => '<h3>',
+    'after_title'   => '</h3>'
+  ];
+  register_sidebar([
+    'name'          => __('Primary', 'sage'),
+    'id'            => 'sidebar-primary'
+  ] + $config);
+  register_sidebar([
+    'name'          => __('Footer', 'sage'),
+    'id'            => 'sidebar-footer'
+  ] + $config);
 });
