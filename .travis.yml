@@ -43,5 +43,6 @@ install:
 
 script:
   - npm run build
-  - phpcs --standard=ruleset.xml --extensions=php --ignore=node_modules,bower_components,vendor -n -s .
+  - phpcs --report=summary
+  - phpcs --report=summary --standard=phpcs-templates.xml -n
   - phpmd src text cleancode,codesize,controversial,design,naming,unusedcode
