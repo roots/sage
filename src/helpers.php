@@ -6,12 +6,12 @@ use Roots\Sage\Template\WrapperCollection;
 use Roots\Sage\Template\WrapperInterface;
 
 function template_wrap(WrapperInterface $wrapper, $slug = 'base') {
-  WrapperCollection::add($wrapper, $slug);
-  return $wrapper->getWrapper();
+    WrapperCollection::add($wrapper, $slug);
+    return $wrapper->getWrapper();
 }
 
 function template_unwrap($slug = 'base') {
-  return WrapperCollection::get($slug)->getTemplate();
+    return WrapperCollection::get($slug)->getTemplate();
 }
 
 /**
@@ -19,9 +19,9 @@ function template_unwrap($slug = 'base') {
  * @return string
  */
 function asset_path($filename) {
-  static $manifest;
-  isset($manifest) || $manifest = new JsonManifest(get_template_directory() . '/' . Asset::$dist . '/assets.json');
-  return (string) new Asset($filename, $manifest);
+    static $manifest;
+    isset($manifest) || $manifest = new JsonManifest(get_template_directory() . '/' . Asset::$dist . '/assets.json');
+    return (string) new Asset($filename, $manifest);
 }
 
 /**
@@ -29,9 +29,9 @@ function asset_path($filename) {
  * @return bool
  */
 function display_sidebar() {
-  static $display;
-  isset($display) || $display = apply_filters('sage/display_sidebar', true);
-  return $display;
+    static $display;
+    isset($display) || $display = apply_filters('sage/display_sidebar', true);
+    return $display;
 }
 
 /**
@@ -39,20 +39,20 @@ function display_sidebar() {
  * @return string
  */
 function title() {
-  if (is_home()) {
-    if ($home = get_option('page_for_posts', true)) {
-      return get_the_title($home);
+    if (is_home()) {
+        if ($home = get_option('page_for_posts', true)) {
+            return get_the_title($home);
+        }
+        return __('Latest Posts', 'sage');
     }
-    return __('Latest Posts', 'sage');
-  }
-  if (is_archive()) {
-    return get_the_archive_title();
-  }
-  if (is_search()) {
-    return sprintf(__('Search Results for %s', 'sage'), get_search_query());
-  }
-  if (is_404()) {
-    return __('Not Found', 'sage');
-  }
-  return get_the_title();
+    if (is_archive()) {
+        return get_the_archive_title();
+    }
+    if (is_search()) {
+        return sprintf(__('Search Results for %s', 'sage'), get_search_query());
+    }
+    if (is_404()) {
+        return __('Not Found', 'sage');
+    }
+    return get_the_title();
 }
