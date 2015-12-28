@@ -41,6 +41,6 @@
   <!-- Verify that operators have valid spacing surrounding them -->
   <rule ref="Squiz.WhiteSpace.OperatorSpacing"/>
   
-  <!-- Force braces to be on the same lines in fuction declarations -->
+  <!-- Force braces to be on the same lines in function declarations -->
   <rule ref="Generic.Functions.OpeningFunctionBraceKernighanRitchie"/>
 </ruleset>
