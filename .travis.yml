@@ -42,5 +42,4 @@ install:
 script:
   - npm run build
   - phpcs --report=summary
-  - phpcs --report=summary --standard=phpcs-templates.xml -n
   - phpmd src text cleancode,codesize,controversial,design,naming,unusedcode
