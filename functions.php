@@ -15,11 +15,12 @@
  *
  * themes/sage/index.php also contains some self-correcting code, just in case the template option gets reset
  */
-add_filter('template', function ($template) {
-    return dirname($template);
+add_filter('stylesheet', function ($stylesheet) {
+  return dirname($stylesheet);
 });
 add_action('after_switch_theme', function () {
-    update_option('template', get_option('template') . '/templates');
+  $stylesheet = get_option('stylesheet');
+  basename($stylesheet) == 'templates' || update_option('stylesheet', $stylesheet . '/templates');
 });
 
 /**
