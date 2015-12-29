@@ -3,9 +3,10 @@
   <description>Roots Coding Standards</description>
 
   <!-- Scan these files -->
-  <file>templates</file>
   <file>functions.php</file>
+  <file>index.php</file>
   <file>src</file>
+  <file>templates</file>
 
   <!-- Show colors in console -->
   <arg value="-colors"/>

@@ -43,5 +43,5 @@ install:
 
 script:
   - npm run build
-  - phpcs --report=summary
+  - phpcs -n
   - phpmd src text cleancode,codesize,controversial,design,naming,unusedcode
