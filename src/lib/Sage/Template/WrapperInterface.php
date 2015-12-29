@@ -5,22 +5,23 @@
  * @package Roots\Sage
  * @author QWp6t
  */
-interface WrapperInterface {
+interface WrapperInterface
+{
 
-  /**
-   * Get wrapper template file
-   *
-   * @return string Wrapper template (FQPN of, e.g., `base-page.php`, `base.php`)
-   */
-  public function getWrapper();
+    /**
+     * Get wrapper template file
+     *
+     * @return string Wrapper template (FQPN of, e.g., `base-page.php`, `base.php`)
+     */
+    public function getWrapper();
 
-  /**
-   * @return string Wrapped template (FQPN of, e.g., `page.php`, `single.php`, `singular.php`)
-   */
-  public function getTemplate();
+    /**
+     * @return string Wrapped template (FQPN of, e.g., `page.php`, `single.php`, `singular.php`)
+     */
+    public function getTemplate();
 
-  /**
-   * @return string Slug of the WrapperInterface; e.g., `base`
-   */
-  public function getSlug();
+    /**
+     * @return string Slug of the WrapperInterface; e.g., `base`
+     */
+    public function getSlug();
 }
