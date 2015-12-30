@@ -12,7 +12,8 @@ use Roots\Sage\Template\WrapperInterface;
  * @throws \Exception
  * @SuppressWarnings(PHPMD.StaticAccess) This is a helper function, so we can suppress this warning
  */
-function template_wrap(WrapperInterface $wrapper, $slug = 'base') {
+function template_wrap(WrapperInterface $wrapper, $slug = 'base')
+{
     WrapperCollection::add($wrapper, $slug);
     return $wrapper->getWrapper();
 }
@@ -21,7 +22,8 @@ function template_wrap(WrapperInterface $wrapper, $slug = 'base') {
  * @param string $slug
  * @return string
  */
-function template_unwrap($slug = 'base') {
+function template_unwrap($slug = 'base')
+{
     return WrapperCollection::get($slug)->getTemplate();
 }
 
@@ -29,7 +31,8 @@ function template_unwrap($slug = 'base') {
  * @param $filename
  * @return string
  */
-function asset_path($filename) {
+function asset_path($filename)
+{
     static $manifest;
     isset($manifest) || $manifest = new JsonManifest(get_template_directory() . '/' . Asset::$dist . '/assets.json');
     return (string) new Asset($filename, $manifest);
@@ -39,7 +42,8 @@ function asset_path($filename) {
  * Determine whether to show the sidebar
  * @return bool
  */
-function display_sidebar() {
+function display_sidebar()
+{
     static $display;
     isset($display) || $display = apply_filters('sage/display_sidebar', true);
     return $display;
@@ -49,7 +53,8 @@ function display_sidebar() {
  * Page titles
  * @return string
  */
-function title() {
+function title()
+{
     if (is_home()) {
         if ($home = get_option('page_for_posts', true)) {
             return get_the_title($home);

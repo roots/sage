@@ -18,17 +18,20 @@ class Asset
 
     protected $dir;
 
-    public function __construct($file, ManifestInterface $manifest = null) {
+    public function __construct($file, ManifestInterface $manifest = null)
+    {
         $this->manifest = $manifest;
         $this->asset = basename($file);
         $this->dir = dirname($file) != '.' ? dirname($file) : '';
     }
 
-    public function __toString() {
+    public function __toString()
+    {
         return $this->getUri();
     }
 
-    public function getUri() {
+    public function getUri()
+    {
         $file = ($this->manifest ? $this->manifest->get($this->asset) : $this->asset);
         return get_template_directory_uri() . self::$dist . '/' . $this->dir . '/' . $file;
     }
