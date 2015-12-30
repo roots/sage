@@ -98,17 +98,10 @@ var cssTasks = function(filename) {
       }));
     })
     .pipe(concat, filename)
-    .pipe(autoprefixer, {
-      browsers: [
-        'last 2 versions',
-        'android 4',
-        'opera 12'
-      ]
-    })
-    .pipe(minifyCss, {
-      advanced: false,
-      rebase: false
-    })
+    .pipe(postcss, [
+      autoprefixer({browsers: ['last 2 version', 'android 4', 'opera 12']}),
+      cssNano
+    ])
     .pipe(function() {
       return gulpif(enabled.rev, rev());
     })
