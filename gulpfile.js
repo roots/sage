@@ -10,7 +10,6 @@ var imagemin     = require('gulp-imagemin');
 var eslint       = require('gulp-eslint');
 var lazypipe     = require('lazypipe');
 var merge        = require('merge-stream');
-var minifyCss    = require('gulp-minify-css');
 var plumber      = require('gulp-plumber');
 var rev          = require('gulp-rev');
 var runSequence  = require('run-sequence');
