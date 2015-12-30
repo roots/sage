@@ -1,6 +1,5 @@
 // ## Globals
 var argv         = require('minimist')(process.argv.slice(2));
-var autoprefixer = require('gulp-autoprefixer');
 var browserSync  = require('browser-sync').create();
 var changed      = require('gulp-changed');
 var concat       = require('gulp-concat');
@@ -10,15 +9,17 @@ var gulpif       = require('gulp-if');
 var imagemin     = require('gulp-imagemin');
 var eslint       = require('gulp-eslint');
 var lazypipe     = require('lazypipe');
-var less         = require('gulp-less');
 var merge        = require('merge-stream');
-var minifyCss    = require('gulp-minify-css');
 var plumber      = require('gulp-plumber');
 var rev          = require('gulp-rev');
 var runSequence  = require('run-sequence');
-var sass         = require('gulp-sass');
 var sourcemaps   = require('gulp-sourcemaps');
 var uglify       = require('gulp-uglify');
+var less         = require('gulp-less');
+var sass         = require('gulp-sass');
+var postcss      = require('gulp-postcss');
+var autoprefixer = require('autoprefixer');
+var cssNano      = require('cssnano');
 
 // See https://github.com/austinpray/asset-builder
 var manifest = require('asset-builder')('./assets/manifest.json');
@@ -97,17 +98,10 @@ var cssTasks = function(filename) {
       }));
     })
     .pipe(concat, filename)
-    .pipe(autoprefixer, {
-      browsers: [
-        'last 2 versions',
-        'android 4',
-        'opera 12'
-      ]
-    })
-    .pipe(minifyCss, {
-      advanced: false,
-      rebase: false
-    })
+    .pipe(postcss, [
+      autoprefixer({browsers: ['last 2 version', 'android 4', 'opera 12']}),
+      cssNano
+    ])
     .pipe(function() {
       return gulpif(enabled.rev, rev());
     })
