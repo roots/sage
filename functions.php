@@ -16,11 +16,11 @@
  * themes/sage/index.php also contains some self-correcting code, just in case the template option gets reset
  */
 add_filter('stylesheet', function ($stylesheet) {
-  return dirname($stylesheet);
+    return dirname($stylesheet);
 });
 add_action('after_switch_theme', function () {
-  $stylesheet = get_option('stylesheet');
-  basename($stylesheet) == 'templates' || update_option('stylesheet', $stylesheet . '/templates');
+    $stylesheet = get_option('stylesheet');
+    basename($stylesheet) == 'templates' || update_option('stylesheet', $stylesheet . '/templates');
 });
 
 /**
