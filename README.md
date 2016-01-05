@@ -56,7 +56,7 @@ If you're already [using Composer to manage WordPress](https://roots.io/using-co
 The example below assumes you're using Bedrock. If you're not, simply change the target path accordingly.
 
 ```sh
-composer create-project roots/sage web/app/themes/your-theme-name-here
+composer create-project roots/sage web/app/themes/your-theme-name-here --stability dev
 ```
 
 Then activate the theme via [wp-cli](http://wp-cli.org/commands/theme/activate/).
