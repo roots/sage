@@ -23,23 +23,25 @@ addons:
     - g++-4.8
 
 cache:
+  apt: true
   directories:
+    - $HOME/.composer/cache
     - bower_components
     - node_modules
     - vendor
 
 install:
   - source ~/.nvm/nvm.sh && nvm install $TRAVIS_NODE_VERSION
-  - npm install -g npm@latest
-  - npm install -g bower gulp eslint
+  - travis_retry npm install -g npm@latest
+  - travis_retry npm install -g bower gulp eslint
   - node -v && npm -v && bower -v && gulp -v
   - npm rebuild
-  - npm install
-  - composer self-update && composer --version
+  - travis_retry npm install
+  - travis_retry composer self-update && composer --version
   - export PATH="$HOME/.composer/vendor/bin:$PATH"
-  - composer global require squizlabs/php_codesniffer
-  - composer global require phpmd/phpmd
-  - composer install -o
+  - travis_retry composer global require squizlabs/php_codesniffer --prefer-dist
+  - travis_retry composer global require phpmd/phpmd --prefer-dist
+  - travis_retry composer install -o --prefer-dist --no-interaction
 
 script:
   - npm run build
