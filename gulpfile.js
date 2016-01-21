@@ -132,6 +132,7 @@ var jsTasks = function(filename) {
     })
     .pipe(concat, filename)
     .pipe(uglify, {
+      mangle: !enabled.maps,
       compress: {
         'drop_debugger': enabled.stripJSDebug
       }
