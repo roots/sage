@@ -1,1 +1,27 @@
+html,
+body {
+    height: 100%;
+    min-height: 100%;
+    -webkit-font-smoothing: antialiased;
+    font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
 
+}
+
+textarea,
+input[type="text"],
+input[type="button"],
+input[type="number"],
+input[type="submit"] {
+    -webkit-appearance: none;
+    border-radius: 0;
+    border: none;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+*:focus {
+    outline: 0;
+}
