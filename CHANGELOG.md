@@ -1,4 +1,4 @@
-### HEAD
+### 8.4.1: January 27th, 2016
 * Add `composer.json` and update installation instructions ([#1583](https://github.com/roots/sage/issues/1583))
 
 ### 8.4.0: December 1st, 2015
