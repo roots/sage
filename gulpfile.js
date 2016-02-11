@@ -104,7 +104,9 @@ var cssTasks = function(filename) {
         'opera 12'
       ]
     })
-    .pipe(cssNano)
+    .pipe(cssNano, {
+      safe: true 
+    })
     .pipe(function() {
       return gulpif(enabled.rev, rev());
     })
