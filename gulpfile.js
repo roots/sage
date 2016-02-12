@@ -105,7 +105,7 @@ var cssTasks = function(filename) {
       ]
     })
     .pipe(cssNano, {
-      safe: true 
+      safe: true
     })
     .pipe(function() {
       return gulpif(enabled.rev, rev());
