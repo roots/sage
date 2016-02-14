@@ -1,5 +1,5 @@
 .comment-list {
-  @include list-unstyled;
+  @extend .list-unstyled;
 }
 .comment-list ol {
   list-style: none;
