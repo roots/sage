@@ -289,9 +289,9 @@ gulp.task('watch', function () {
     browserSync.init({
         files         : ['{lib,templates}/**/*.php', '*.php'],
         proxy         : config.devUrl,
-        port          : 8880,
+        port          : 3000,
         ui: {
-            port      : 8443
+            port      : 3001
         },
         snippetOptions: {
             whitelist: ['/wp-admin/admin-ajax.php'],
