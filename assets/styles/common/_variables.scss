@@ -1,10 +1,20 @@
 $susy: (
-    gutters: .05,
+    gutters: .15,
+    gutter-position: inside,
+    use-custom: (
+        box-sizing: false
+    )
+);
+
+$no-gutters: (
+    gutters: 0,
     gutter-position: outside,
     use-custom: (
         box-sizing: false
     )
 );
 
+// eg usage:  @include span(1 of 2 $no-gutters);
+
 // Colors
-$brand-primary:         #EA2240;
+$black: #000000;
