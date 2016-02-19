@@ -1,3 +1,8 @@
+### 8.4.2: February 19th, 2016
+* Add Composer vendor directory to gitignore ([#1618](https://github.com/roots/sage/issues/1618))
+* Fix build test by removing trailing space ([#1617](https://github.com/roots/sage/issues/1617))
+* Replace deprecated gulp-minify-css with gulp-cssnano ([#1610](https://github.com/roots/sage/issues/1610))
+
 ### 8.4.1: January 27th, 2016
 * Add `composer.json` and update installation instructions ([#1583](https://github.com/roots/sage/issues/1583))
 
