@@ -58,3 +58,6 @@ remove_action('woocommerce_single_product_summary', 'woocommerce_template_single
 
 // Add WooCommerce theme support
 add_theme_support('woocommerce');
+
+add_filter('woocommerce_widget_cart_is_hidden', '__return_false');
+//Show Mini Cart on Cart & Checkout pages
