@@ -5,9 +5,12 @@
 
 // endbower
 
+// Automatically injected Bower dependencies via wiredep (never manually edit this block)
+// bower:scss
 @import '../../bower_components/normalize-scss/normalize';
 @import '../../bower_components/bourbon/app/assets/stylesheets/bourbon';
 @import '../../bower_components/susy/sass/susy';
+// endbower
 
 @import 'common/base';
 @import 'design/layout';
