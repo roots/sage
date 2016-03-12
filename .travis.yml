@@ -11,8 +11,8 @@ env:
   - TRAVIS_NODE_VERSION="5.3" CXX="g++-4.8"
 
 matrix:
+  fast_finish: true
   allow_failures:
-    - php: 5.5
     - php: nightly
 
 addons:
