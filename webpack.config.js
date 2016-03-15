@@ -98,15 +98,15 @@ webpackConfig = {
       },
       {
         test: /\.(ttf|eot|svg)$/,
-        loader: 'url?limit=10000&name=fonts/[hash].[ext]'
+        loader: 'url?limit=10000&name=fonts/[name].[ext]'
       },
       {
         test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: 'url?limit=10000&mimetype=application/font-woff&name=fonts/[hash].[ext]'
+        loader: 'url?limit=10000&mimetype=application/font-woff&name=fonts/[name].[ext]'
       },
       {
         test: /\.(png|jpg|jpeg|gif)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: 'file-loader?name=images/[hash].[ext]'
+        loader: 'file-loader?name=images/[name].[ext]'
       }
     ],
   },
