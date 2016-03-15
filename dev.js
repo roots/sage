@@ -6,11 +6,12 @@ var webpack = require('webpack'),
     browserSync = require('browser-sync');
 
 var devBuildConfig = require('./webpack.config'),
+    config = require('./config'),
     compiler = webpack(devBuildConfig);
 
 browserSync.init({
   proxy: {
-    target: 'http://example.dev', // change to dev server
+    target: config.devUrl,
     middleware: [
       webpackDevMiddleware(compiler, {
         publicPath: devBuildConfig.output.publicPath,

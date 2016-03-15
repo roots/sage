@@ -7,33 +7,56 @@ var webpack = require('webpack'),
     OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin'),
     cssnano = require('cssnano');
 
-var SAGE_ENV = process.env.SAGE_ENV || 'development',
+var config = require('./config'),
     webpackConfig;
 
-var sage = {
-  publicPath: '/app/themes/sage/dist/',
-  dist: path.join(__dirname, 'dist'),
-  manifest: 'assets.json',
-  // set to true to extract css in dev mode (prevents "hot" update)
-  extractStyles: false
-};
-
-// format output for Sage : { "name.ext": "hash.ext" }
+/**
+ * Process AssetsPlugin output
+ * and format for Sage: {"[name].[ext]":"[hash].[ext]"}
+ * @param  {Object} assets passed by processOutput
+ * @return {String}        JSON
+ */
 var assetsPluginProcessOutput = function (assets) {
-  var results = {},
-      name,
-      ext;
+  var name,
+      ext,
+      filename,
+      results = {};
 
   for (name in assets) {
     if (assets.hasOwnProperty(name)) {
       for (ext in assets[name]) {
         if (assets[name].hasOwnProperty(ext)) {
-          results[name + '.' + ext] = assets[name][ext];
+          filename = name + '.' + ext;
+          results[filename] = path.basename(assets[name][ext]);
         }
       }
     }
   }
   return JSON.stringify(results);
+}
+
+/**
+ * Loop through webpack entry
+ * and add the hot middleware
+ * @param  {Object} entry webpack entry
+ * @return {Object}       entry with hot middleware
+ */
+var addHotMiddleware = function (entry) {
+  var name,
+      results = {},
+      hotMiddlewareScript = 'webpack-hot-middleware/client?reload=true';
+
+  for (name in entry) {
+    if (entry.hasOwnProperty(name)) {
+      if (entry[name] instanceof Array !== true) {
+        results[name] = [entry[name]];
+      } else {
+        results[name] = entry[name].slice(0);
+      };
+      results[name].push(hotMiddlewareScript);
+    }
+  }
+  return results;
 }
 
 webpackConfig = {
@@ -46,8 +69,8 @@ webpackConfig = {
     ]
   },
   output: {
-    path: sage.dist,
-    publicPath: sage.publicPath
+    path: path.join(__dirname, config.output.path),
+    publicPath: config.output.publicPath,
   },
   module: {
     preLoaders: [
@@ -75,15 +98,15 @@ webpackConfig = {
       },
       {
         test: /\.(ttf|eot|svg)$/,
-        loader: 'url?limit=10000'
+        loader: 'url?limit=10000&name=fonts/[hash].[ext]'
       },
       {
         test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: 'url?limit=10000&mimetype=application/font-woff'
+        loader: 'url?limit=10000&mimetype=application/font-woff&name=fonts/[hash].[ext]'
       },
       {
         test: /\.(png|jpg|jpeg|gif)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: 'file-loader'
+        loader: 'file-loader?name=images/[hash].[ext]'
       }
     ],
   },
@@ -92,7 +115,7 @@ webpackConfig = {
     jquery: 'jQuery'
   },
   plugins: [
-    new Clean([sage.dist]),
+    new Clean([config.output.path]),
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery',
@@ -100,8 +123,8 @@ webpackConfig = {
       'window.Tether': 'tether'
     }),
     new AssetsPlugin({
-      path: sage.dist,
-      filename: sage.manifest,
+      path: config.output.path,
+      filename: 'assets.json',
       fullPath: false,
       processOutput: assetsPluginProcessOutput,
     })
@@ -113,30 +136,36 @@ webpackConfig = {
   }
 };
 
-if ( SAGE_ENV === 'development' ) {
+if (process.argv.lastIndexOf('-d') !== -1 ||
+    process.env.NODE_ENV === 'development') {
   // development
-  webpackConfig.entry.main.push('webpack-hot-middleware/client?reload=true');
-  webpackConfig.entry.customizer.push('webpack-hot-middleware/client?reload=true');
-  webpackConfig.output.filename = '[name].js';
-  webpackConfig.output.sourceMapFilename = '[file].map';
-  webpackConfig.output.pathinfo = true;
-  webpackConfig.debug = true;
-  webpackConfig.devtool = '#cheap-module-source-map';
+  webpackConfig.output.filename = 'scripts/[name].js';
   webpackConfig.plugins.push(new webpack.optimize.OccurenceOrderPlugin());
   webpackConfig.plugins.push(new webpack.HotModuleReplacementPlugin());
   webpackConfig.plugins.push(new webpack.NoErrorsPlugin());
-  webpackConfig.plugins.push(new ExtractTextPlugin('[name].css', { disable: !sage.extractStyles }));
+  webpackConfig.plugins.push(new ExtractTextPlugin('styles/[name].css', {
+    // disable if webpack is called from the node.js api or set to false in config file
+    disable: (process.env.NODE_ENV === 'development' || config.options.extractStyles === false)
+  }));
 } else {
-  // production
-  webpackConfig.output.filename = '[name].[hash].js';
+  // default or production
+  webpackConfig.output.filename = 'scripts/[name].[hash].js';
   webpackConfig.output.sourceMapFilename = '[file].[hash].map';
-  webpackConfig.plugins.push(new ExtractTextPlugin('[name].[hash].css'));
+  webpackConfig.plugins.push(new ExtractTextPlugin('styles/[name].[hash].css'));
   webpackConfig.plugins.push(new webpack.optimize.UglifyJsPlugin());
   webpackConfig.plugins.push(new OptimizeCssAssetsPlugin({
     cssProcessor: cssnano,
     cssProcessorOptions: { discardComments: { removeAll: true } },
     canPrint: true
   }));
+}
+
+if (process.env.NODE_ENV === 'development') {
+  // development settings when called from the node.js api by the watch script
+  webpackConfig.entry = addHotMiddleware(webpackConfig.entry);
+  webpackConfig.output.pathinfo = true;
+  webpackConfig.debug = true;
+  webpackConfig.devtool = 'source-map';
 }
 
 module.exports = webpackConfig;

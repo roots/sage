@@ -18,9 +18,9 @@
     }
   ],
   "scripts": {
-    "build:production": "export SAGE_ENV=production && webpack",
-    "build": "export SAGE_ENV=development && webpack",
-    "watch": "export SAGE_ENV=development && node dev.js"
+    "build:production": "webpack -p",
+    "build": "webpack -d",
+    "watch": "NODE_ENV=development node dev.js"
   },
   "engines": {
     "node": ">= 0.12.0",
