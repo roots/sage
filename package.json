@@ -20,7 +20,7 @@
   "scripts": {
     "build:production": "webpack -p",
     "build": "webpack -d",
-    "watch": "NODE_ENV=development node dev.js"
+    "watch": "node watch.js"
   },
   "engines": {
     "node": ">= 0.12.0",

@@ -1,5 +1,7 @@
 /* eslint no-console: 0 */
 
+process.env.SCRIPT = 'watch';
+
 var webpack = require('webpack'),
     webpackDevMiddleware = require('webpack-dev-middleware'),
     webpackHotMiddleware = require('webpack-hot-middleware'),

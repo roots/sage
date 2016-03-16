@@ -137,7 +137,7 @@ webpackConfig = {
 };
 
 if (process.argv.lastIndexOf('-d') !== -1 ||
-    process.env.NODE_ENV === 'development') {
+    process.env.SCRIPT === 'watch') {
   // development
   webpackConfig.output.filename = 'scripts/[name].js';
   webpackConfig.plugins.push(new webpack.optimize.OccurenceOrderPlugin());
@@ -145,7 +145,7 @@ if (process.argv.lastIndexOf('-d') !== -1 ||
   webpackConfig.plugins.push(new webpack.NoErrorsPlugin());
   webpackConfig.plugins.push(new ExtractTextPlugin('styles/[name].css', {
     // disable if webpack is called from the node.js api or set to false in config file
-    disable: (process.env.NODE_ENV === 'development' || config.options.extractStyles === false)
+    disable: (process.env.SCRIPT === 'watch' || config.options.extractStyles === false)
   }));
 } else {
   // default or production
@@ -159,8 +159,7 @@ if (process.argv.lastIndexOf('-d') !== -1 ||
     canPrint: true
   }));
 }
-
-if (process.env.NODE_ENV === 'development') {
+if (process.env.SCRIPT === 'watch') {
   // development settings when called from the node.js api by the watch script
   webpackConfig.entry = addHotMiddleware(webpackConfig.entry);
   webpackConfig.output.pathinfo = true;
