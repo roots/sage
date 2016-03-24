@@ -18,9 +18,11 @@
     }
   ],
   "scripts": {
-    "build:production": "export SAGE_ENV=production && webpack",
-    "build": "export SAGE_ENV=development && webpack",
-    "watch": "export SAGE_ENV=development && node dev.js"
+    "build:production": "webpack -p",
+    "build": "webpack -d",
+    "watch": "node watch.js",
+    "lint": "eslint -c .eslintrc assets/scripts",
+    "install": "composer install"
   },
   "engines": {
     "node": ">= 0.12.0",
@@ -45,6 +47,7 @@
     "eslint-loader": "^1.3.0",
     "extract-text-webpack-plugin": "^0.9.1",
     "file-loader": "^0.8.5",
+    "image-webpack-loader": "^1.6.3",
     "imagemin-pngcrush": "^4.1.0",
     "imports-loader": "^0.6.5",
     "monkey-hot-loader": "0.0.3",

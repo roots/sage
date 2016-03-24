@@ -1,0 +1,10 @@
+{
+  "output": {
+    "path": "dist",
+    "publicPath": "/app/themes/sage/dist/"
+  },
+  "options": {
+    "extractStyles": true
+  },
+  "devUrl" : "http://example.dev"
+}
