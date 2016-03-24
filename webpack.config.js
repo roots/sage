@@ -10,6 +10,9 @@ var webpack = require('webpack'),
 var config = require('./config'),
     webpackConfig;
 
+const DEBUG = (process.argv.lastIndexOf('-d') !== -1),
+      WATCH = (process.env.SCRIPT === 'watch');
+
 /**
  * Process AssetsPlugin output
  * and format for Sage: {"[name].[ext]":"[hash].[ext]"}
@@ -84,30 +87,47 @@ webpackConfig = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loaders: ['monkey-hot', 'babel']
+        loaders: [
+          'monkey-hot',
+          'babel'
+        ],
       },
       {
         test: /\.css$/,
         exclude: /node_modules/,
-        loader: ExtractTextPlugin.extract('style', 'css?sourceMap!postcss')
+        loader: (WATCH) ?
+                  'style!css?sourceMap!postcss' :
+                  ExtractTextPlugin.extract('style', 'css?sourceMap!postcss'),
       },
       {
         test: /\.scss$/,
         exclude: /node_modules/,
-        loader: ExtractTextPlugin.extract('style', 'css?sourceMap!postcss!sass?sourceMap')
+        loader: (WATCH) ?
+                  'style!css?sourceMap!postcss!sass?sourceMap' :
+                  ExtractTextPlugin.extract('style', 'css?sourceMap!postcss!sass?sourceMap'),
+      },
+
+      {
+        test: /\.(png|jpg|jpeg|gif)(\?v=[0-9]+\.?[0-9]+?\.?[0-9]+?)?$/,
+        loaders: [
+          'file?name=[path][name].[ext]&context=assets/',
+          'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false'
+        ],
       },
       {
-        test: /\.(ttf|eot|svg)$/,
-        loader: 'url?limit=10000&name=fonts/[name].[ext]'
+        test: /\.(ttf|eot|svg)(\?v=[0-9]+\.?[0-9]+?\.?[0-9]+?)?$/,
+        loader: 'file?name=[path][name].[ext]&context=assets/',
       },
       {
-        test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: 'url?limit=10000&mimetype=application/font-woff&name=fonts/[name].[ext]'
+        test: /\.woff(2)?(\?v=[0-9]+\.?[0-9]+?\.?[0-9]+?)?$/,
+        loader: 'url',
+        query: {
+          limit: 10000,
+          mimetype: "application/font-woff",
+          name: "[path][name].[ext]",
+          context: "assets/",
+        }
       },
-      {
-        test: /\.(png|jpg|jpeg|gif)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: 'file-loader?name=images/[name].[ext]'
-      }
     ],
   },
   resolve: { extensions: [ '', '.js', '.json' ] },
@@ -136,8 +156,7 @@ webpackConfig = {
   }
 };
 
-if (process.argv.lastIndexOf('-d') !== -1 ||
-    process.env.SCRIPT === 'watch') {
+if (DEBUG || WATCH) {
   // development
   webpackConfig.output.filename = 'scripts/[name].js';
   webpackConfig.plugins.push(new webpack.optimize.OccurenceOrderPlugin());
@@ -145,13 +164,12 @@ if (process.argv.lastIndexOf('-d') !== -1 ||
   webpackConfig.plugins.push(new webpack.NoErrorsPlugin());
   webpackConfig.plugins.push(new ExtractTextPlugin('styles/[name].css', {
     // disable if webpack is called from the node.js api or set to false in config file
-    disable: (process.env.SCRIPT === 'watch' || config.options.extractStyles === false)
+    disable: (WATCH || config.options.extractStyles === false)
   }));
 } else {
   // default or production
-  webpackConfig.output.filename = 'scripts/[name].[hash].js';
-  webpackConfig.output.sourceMapFilename = '[file].[hash].map';
-  webpackConfig.plugins.push(new ExtractTextPlugin('styles/[name].[hash].css'));
+  webpackConfig.output.filename = 'scripts/[name]-[hash].js';
+  webpackConfig.plugins.push(new ExtractTextPlugin('styles/[name]-[hash].css'));
   webpackConfig.plugins.push(new webpack.optimize.UglifyJsPlugin());
   webpackConfig.plugins.push(new OptimizeCssAssetsPlugin({
     cssProcessor: cssnano,
@@ -159,12 +177,13 @@ if (process.argv.lastIndexOf('-d') !== -1 ||
     canPrint: true
   }));
 }
-if (process.env.SCRIPT === 'watch') {
+
+if (WATCH) {
   // development settings when called from the node.js api by the watch script
   webpackConfig.entry = addHotMiddleware(webpackConfig.entry);
   webpackConfig.output.pathinfo = true;
   webpackConfig.debug = true;
-  webpackConfig.devtool = 'source-map';
+  webpackConfig.devtool = '#cheap-module-source-map';
 }
 
 module.exports = webpackConfig;
