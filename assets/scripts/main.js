@@ -1,5 +1,3 @@
-import "../styles/main.scss";
-
 import $ from 'jquery';
 import Router from './util/router';
 
