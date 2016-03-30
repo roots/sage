@@ -47,6 +47,10 @@ function setup() {
   // Use main stylesheet for visual editor
   // To add custom styles edit /assets/styles/layouts/_tinymce.scss
   add_editor_style(Assets\asset_path('styles/main.css'));
+
+  // Enable custom logos
+  // http://codex.wordpress.org/Theme_Logo
+  add_theme_support( 'custom-logo' );
 }
 add_action('after_setup_theme', __NAMESPACE__ . '\\setup');
 
