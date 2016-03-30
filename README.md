@@ -7,7 +7,7 @@ Sage is a WordPress starter theme based on HTML5 Boilerplate, gulp, Bower, and B
 * Source: [https://github.com/roots/sage](https://github.com/roots/sage)
 * Homepage: [https://roots.io/sage/](https://roots.io/sage/)
 * Documentation: [https://roots.io/sage/docs/](https://roots.io/sage/docs/)
-* Twitter: [@rootswp](https://twitter.com/rootswp), [@retlehs](https://twitter.com/retlehs), [@swalkinshaw](https://twitter.com/swalkinshaw), [@Foxaii](https://twitter.com/Foxaii), [@c2foryou](https://twitter.com/c2foryou), [@austinpray](https://twitter.com/austinpray)
+* Twitter: [@rootswp](https://twitter.com/rootswp)
 * Newsletter: [Subscribe](http://roots.io/subscribe/)
 * Forum: [https://discourse.roots.io/](https://discourse.roots.io/)
 
@@ -28,7 +28,7 @@ For more installation notes, refer to the [Install gulp and Bower](#install-gulp
 * [BrowserSync](http://www.browsersync.io/) for keeping multiple browsers and devices synchronized while testing, along with injecting updated CSS and JS into your browser while you're developing
 * [Bower](http://bower.io/) for front-end package management
 * [asset-builder](https://github.com/austinpray/asset-builder) for the JSON file based asset pipeline
-* [Sass](https://github.com/twbs/bootstrap-sass) [Bootstrap](http://getbootstrap.com/)
+* [Bootstrap](http://getbootstrap.com/)
 * [Theme wrapper](https://roots.io/sage/docs/theme-wrapper/)
 * ARIA roles and microformats
 * Posts use the [hNews](http://microformats.org/wiki/hnews) microformat
@@ -43,21 +43,39 @@ Install the [Soil](https://github.com/roots/soil) plugin to enable additional fe
 * Google CDN jQuery snippet from [HTML5 Boilerplate](http://html5boilerplate.com/)
 * Google Analytics snippet from [HTML5 Boilerplate](http://html5boilerplate.com/)
 
-## Installation
+See a complete working example in the [roots-example-project.com repo](https://github.com/roots/roots-example-project.com).
 
-Clone the git repo - `git clone https://github.com/roots/sage.git` and then rename the directory to the name of your theme or website.
+## Theme installation
 
-If you don't use [Bedrock](https://github.com/roots/bedrock), you'll need to add the following to your `wp-config.php` on your development installation:
+Bottom line is you want to get the files in this repo into your local development environment. There are many ways to do this, two of which we will cover here.
 
-```php
-define('WP_ENV', 'development');
+### via Command-line
+
+If you're already [using Composer to manage WordPress](https://roots.io/using-composer-with-wordpress/), then you might consider using composer's `create-project` command to download Sage.
+
+The example below assumes you're using Bedrock. If you're not, simply change the target path accordingly.
+
+```sh
+composer create-project roots/sage web/app/themes/your-theme-name-here
 ```
 
-## Configuration
+Then activate the theme via [wp-cli](http://wp-cli.org/commands/theme/activate/).
 
-Edit `lib/config.php` to enable or disable theme features
+```sh
+wp theme activate your-theme-name-here
+```
 
-Edit `lib/init.php` to setup navigation menus, post thumbnail sizes, post formats, and sidebars.
+### via WordPress Admin Panel
+
+1. [Download the latest release](https://github.com/roots/sage/releases/latest) of Sage.
+2. In your WordPress admin panel, navigate to Appearance->Themes
+3. Click Add New
+4. Click Upload Theme
+5. Upload the zip file that you downloaded.
+
+## Theme setup
+
+Edit `lib/setup.php` to enable or disable theme features, setup navigation menus, post thumbnail sizes, post formats, and sidebars.
 
 ## Theme development
 

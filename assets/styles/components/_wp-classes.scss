@@ -6,14 +6,17 @@
   margin-left: 0;
   margin-right: 0;
   max-width: 100%;
+  height: auto;
 }
 .aligncenter {
   display: block;
   margin: ($line-height-computed / 2) auto;
+  height: auto;
 }
 .alignleft,
 .alignright {
   margin-bottom: ($line-height-computed / 2);
+  height: auto;
 }
 @media (min-width: $screen-sm-min) {
   // Only float if not on an extra small device

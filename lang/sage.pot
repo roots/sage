@@ -7,17 +7,17 @@ msgstr ""
 msgid "Sorry, but the page you were trying to view does not exist."
 msgstr ""
 
-#: base.php:12
+#: base.php:14
 msgid ""
 "You are using an <strong>outdated</strong> browser. Please <a href=\"http://"
 "browsehappy.com/\">upgrade your browser</a> to improve your experience."
 msgstr ""
 
-#: functions.php:25
+#: functions.php:22
 msgid "Error locating %s for inclusion"
 msgstr ""
 
-#: index.php:5
+#: index.php:5 search.php:5
 msgid "Sorry, no results were found."
 msgstr ""
 
@@ -25,15 +25,15 @@ msgstr ""
 msgid "Continued"
 msgstr ""
 
-#: lib/init.php:22
+#: lib/setup.php:30
 msgid "Primary Navigation"
 msgstr ""
 
-#: lib/init.php:49
+#: lib/setup.php:57
 msgid "Primary"
 msgstr ""
 
-#: lib/init.php:58
+#: lib/setup.php:66
 msgid "Footer"
 msgstr ""
 
@@ -74,14 +74,6 @@ msgstr ""
 
 #: templates/entry-meta.php:2
 msgid "By"
-msgstr ""
-
-#: templates/searchform.php:2
-msgid "Search for:"
-msgstr ""
-
-#: templates/searchform.php:4 templates/searchform.php:6
-msgid "Search"
 msgstr ""
 
 #. Theme Name of the plugin/theme

@@ -12,16 +12,13 @@
       ],
       "main": true
     },
-    "editor-style.css": {
+    "customizer.js": {
       "files": [
-        "styles/editor-style.scss"
+        "scripts/customizer.js"
       ]
     },
     "jquery.js": {
       "bower": ["jquery"]
-    },
-    "modernizr.js": {
-      "bower": ["modernizr"]
     }
   },
   "config": {

@@ -12,7 +12,7 @@ var jshint       = require('gulp-jshint');
 var lazypipe     = require('lazypipe');
 var less         = require('gulp-less');
 var merge        = require('merge-stream');
-var minifyCss    = require('gulp-minify-css');
+var cssNano      = require('gulp-cssnano');
 var plumber      = require('gulp-plumber');
 var rev          = require('gulp-rev');
 var runSequence  = require('run-sequence');
@@ -100,16 +100,12 @@ var cssTasks = function(filename) {
     .pipe(autoprefixer, {
       browsers: [
         'last 2 versions',
-        'ie 8',
-        'ie 9',
-        'android 2.3',
         'android 4',
         'opera 12'
       ]
     })
-    .pipe(minifyCss, {
-      advanced: false,
-      rebase: false
+    .pipe(cssNano, {
+      safe: true
     })
     .pipe(function() {
       return gulpif(enabled.rev, rev());
