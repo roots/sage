@@ -26,13 +26,7 @@
   "autoload": {
     "psr-4": {
       "Roots\\Sage\\": "src/lib/Sage/"
-    },
-    "files": [
-      "src/helpers.php",
-      "src/setup.php",
-      "src/filters.php",
-      "src/admin.php"
-    ]
+    }
   },
   "require": {
     "php": ">=5.5.0",
