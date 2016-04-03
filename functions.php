@@ -49,6 +49,8 @@ foreach ($sage_includes as $file) {
 unset($file, $filepath);
 
 /**
- * Require composer autoloader
+ * Require Composer autoloader if installed on it's own
  */
-require_once __DIR__ . '/vendor/autoload.php';
+if (file_exists($composer = __DIR__ . '/vendor/autoload.php')) {
+    require_once $composer;
+}
