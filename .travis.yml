@@ -26,9 +26,12 @@ cache:
   apt: true
   directories:
     - $HOME/.composer/cache
-    - bower_components
     - node_modules
     - vendor
+
+before_install:
+  - composer self-update
+  - git config --global github.accesstoken $GITHUB_OAUTH_TOKEN
 
 install:
   - source ~/.nvm/nvm.sh && nvm install $TRAVIS_NODE_VERSION
@@ -37,13 +40,8 @@ install:
   - node -v && npm -v
   - npm rebuild
   - travis_retry npm install
-  - travis_retry composer self-update && composer --version
-  - export PATH="$HOME/.composer/vendor/bin:$PATH"
-  - travis_retry composer global require squizlabs/php_codesniffer --prefer-dist
-  - travis_retry composer global require phpmd/phpmd --prefer-dist
-  - travis_retry composer install -o --prefer-dist --no-interaction
+  - composer install -o --prefer-dist --no-interaction
 
 script:
   - npm run build
-  - phpcs -n
-  - phpmd src text cleancode,codesize,controversial,design,naming,unusedcode
+  - composer test
