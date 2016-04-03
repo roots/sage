@@ -33,8 +33,8 @@ cache:
 install:
   - source ~/.nvm/nvm.sh && nvm install $TRAVIS_NODE_VERSION
   - travis_retry npm install -g npm@latest
-  - travis_retry npm install -g bower gulp eslint
-  - node -v && npm -v && bower -v && gulp -v
+  - travis_retry npm install -g eslint
+  - node -v && npm -v
   - npm rebuild
   - travis_retry npm install
   - travis_retry composer self-update && composer --version
