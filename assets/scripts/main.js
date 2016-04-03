@@ -2,17 +2,17 @@ import $ from 'jquery';
 import Router from './util/router';
 
 // Import Bootstrap
-import "bootstrap/dist/js/umd/util.js";
-import "bootstrap/dist/js/umd/alert.js";
-import "bootstrap/dist/js/umd/button.js";
-import "bootstrap/dist/js/umd/carousel.js";
-import "bootstrap/dist/js/umd/collapse.js";
-import "bootstrap/dist/js/umd/dropdown.js";
-import "bootstrap/dist/js/umd/modal.js";
-import "bootstrap/dist/js/umd/scrollspy.js";
-import "bootstrap/dist/js/umd/tab.js";
-import "bootstrap/dist/js/umd/tooltip.js";
-import "bootstrap/dist/js/umd/popover.js";
+import 'bootstrap/dist/js/umd/util.js';
+import 'bootstrap/dist/js/umd/alert.js';
+import 'bootstrap/dist/js/umd/button.js';
+import 'bootstrap/dist/js/umd/carousel.js';
+import 'bootstrap/dist/js/umd/collapse.js';
+import 'bootstrap/dist/js/umd/dropdown.js';
+import 'bootstrap/dist/js/umd/modal.js';
+import 'bootstrap/dist/js/umd/scrollspy.js';
+import 'bootstrap/dist/js/umd/tab.js';
+import 'bootstrap/dist/js/umd/tooltip.js';
+import 'bootstrap/dist/js/umd/popover.js';
 
 // Use this variable to set up the common and page specific functions. If you
 // rename this variable, you will also need to rename the namespace below.
@@ -44,6 +44,6 @@ var Sage = {
 };
 
 // Load Events
-$(document).ready(function () {
+$(document).ready(function() {
   new Router(Sage).loadEvents();
 });
