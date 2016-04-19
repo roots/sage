@@ -46,6 +46,14 @@ require_once('cpt.php');
 // Remove Admin bar
 add_filter('show_admin_bar', '__return_false');
 
+// Remove Author URL's for security
+
+function author_page_redirect() {
+    if ( is_author() ) {
+        wp_redirect( home_url() );
+    }
+}
+add_action( 'template_redirect', 'author_page_redirect' );
 
 // WOOCOMMERCE STUFF HERE
 
