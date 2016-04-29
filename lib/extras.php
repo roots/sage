@@ -53,7 +53,7 @@ function author_page_redirect() {
         wp_redirect( home_url() );
     }
 }
-add_action( 'template_redirect', 'author_page_redirect' );
+add_action( 'template_redirect', __NAMESPACE__ . '\\author_page_redirect' );
 
 // WOOCOMMERCE STUFF HERE
 
