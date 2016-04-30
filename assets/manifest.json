@@ -20,8 +20,5 @@
     "jquery.js": {
       "bower": ["jquery"]
     }
-  },
-  "config": {
-    "devUrl": "http://example.dev"
   }
 }
