@@ -34,9 +34,6 @@
 .wp-caption {
   @extend .figure-img;
   @extend .img-fluid;
-
-  // alternative styles
-  // @extend .img-thumbnail;
 }
 .wp-caption-text {
   @extend .figure-caption;
