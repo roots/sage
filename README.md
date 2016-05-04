@@ -117,6 +117,18 @@ For example, if your local development URL is `https://project-name.dev` you wou
 ...
 ```
 
+If you are not using [Bedrock](https://roots.io/bedrock/), you should also update `publicPatch` to reflect your folder strutcture.
+
+If your theme is placed in folder called `sage` in a standard wordpress setup it should look like this:
+```json
+...
+  "output": {
+    "path": "dist",
+    "publicPath": "/wp-content/themes/sage/dist/"
+  }
+...
+```
+
 ## Documentation
 
 Sage documentation is available at [https://roots.io/sage/docs/](https://roots.io/sage/docs/).
