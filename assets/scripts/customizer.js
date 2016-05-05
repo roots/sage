@@ -2,7 +2,7 @@
   // Site title
   wp.customize('blogname', function(value) {
     value.bind(function(to) {
-      $('.brand').text(to);
+      $('.navbar-brand').text(to);
     });
   });
 })(jQuery);
