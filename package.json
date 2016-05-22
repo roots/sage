@@ -36,7 +36,7 @@
     "gulp-concat": "^2.6.0",
     "gulp-cssnano": "^2.1.0",
     "gulp-flatten": "0.1.1",
-    "gulp-if": "^1.2.5",
+    "gulp-if": "^2.0.1",
     "gulp-imagemin": "^2.3.0",
     "gulp-jshint": "^1.11.2",
     "gulp-less": "^3.0.3",
