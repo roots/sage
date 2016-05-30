@@ -1,0 +1,3 @@
+<?php
+// Load Custom Post Type's here...
+?>

@@ -1,9 +1,20 @@
-// Glyphicons font path
-$icon-font-path:        "../fonts/";
+$susy: (
+    gutters: .15,
+    gutter-position: inside,
+    use-custom: (
+        box-sizing: false
+    )
+);
 
-// Grid settings
-$main-sm-columns:       12;
-$sidebar-sm-columns:    4;
+$no-gutters: (
+    gutters: 0,
+    gutter-position: outside,
+    use-custom: (
+        box-sizing: false
+    )
+);
+
+// eg usage:  @include span(1 of 2 $no-gutters);
 
 // Colors
-$brand-primary:         #27ae60;
+$black: #000000;
