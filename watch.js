@@ -2,18 +2,22 @@
 var webpack = require('webpack'),
     webpackDevMiddleware = require('webpack-dev-middleware'),
     webpackHotMiddleware = require('webpack-hot-middleware'),
-    browserSync = require('browser-sync');
+    browserSync = require('browser-sync'),
+    devIp = require("dev-ip")();
 
 // Internal dependencies
 var webpackConfig = require('./webpack.config'),
     config = require('./assets/config');
 
 // Internal variables
-var host = 'http://localhost',
-    port = config.devPort || '3000',
+var host = devIp.length ? devIp[0] : false,
+    port = config.devPort || 3000,
     compiler;
 
-webpackConfig.output.publicPath = host + ':' + port + config.output.publicPath;
+if (host !== false) {
+  webpackConfig.output.publicPath = 'http://' + host + ':' + port + config.output.publicPath;
+}
+
 compiler = webpack(webpackConfig);
 
 browserSync.init({
