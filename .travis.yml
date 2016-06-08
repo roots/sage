@@ -39,6 +39,7 @@ install:
   - node -v && npm -v
   - npm rebuild
   - travis_retry npm install
+  - npm prune
   - composer install -o --prefer-dist --no-interaction
 
 script:
