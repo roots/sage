@@ -11,6 +11,7 @@ var imagemin     = require('gulp-imagemin');
 var jshint       = require('gulp-jshint');
 var lazypipe     = require('lazypipe');
 var less         = require('gulp-less');
+var notify       = require("gulp-notify");
 var merge        = require('merge-stream');
 var cssNano      = require('gulp-cssnano');
 var plumber      = require('gulp-plumber');
@@ -80,7 +81,9 @@ var revManifest = path.dist + 'assets.json';
 var cssTasks = function(filename) {
   return lazypipe()
     .pipe(function() {
-      return gulpif(!enabled.failStyleTask, plumber());
+      return gulpif(!enabled.failStyleTask, plumber({
+				errorHandler: notify.onError("<%= error.message %>")
+			}));
     })
     .pipe(function() {
       return gulpif(enabled.maps, sourcemaps.init());
@@ -126,6 +129,11 @@ var cssTasks = function(filename) {
 // ```
 var jsTasks = function(filename) {
   return lazypipe()
+    .pipe(function () {
+      return gulpif(!enabled.failJSHint, plumber({
+        errorHandler: notify.onError("<%= error.message %>")
+      }));
+    })
     .pipe(function() {
       return gulpif(enabled.maps, sourcemaps.init());
     })
