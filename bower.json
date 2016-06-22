@@ -5,7 +5,7 @@
     "Ben Word <ben@benword.com>"
   ],
   "license": "MIT",
-  "private": true,
+  "private": false,
   "dependencies": {
     "bootstrap-sass": "3.3.6"
   },
