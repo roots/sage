@@ -37,7 +37,8 @@ $sage_includes = [
     'src/helpers.php',    // Helper functions
     'src/setup.php',      // Theme setup
     'src/filters.php',    // Filters
-    'src/admin.php'       // Admin
+    'src/admin.php',      // Admin
+    'src/entry.php'      // Base entry for extending Sage
 ];
 
 foreach ($sage_includes as $file) {
