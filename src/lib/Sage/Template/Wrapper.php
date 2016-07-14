@@ -60,6 +60,6 @@ class Wrapper implements WrapperInterface
     public function getTemplate()
     {
         $template = apply_filters('sage/unwrap_' . $this->slug, $this->template) ?: $this->template;
-        return locate_template($template);
+        return locate_template($template) ?: $template;
     }
 }
