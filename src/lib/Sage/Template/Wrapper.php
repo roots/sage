@@ -16,9 +16,6 @@ class Wrapper implements WrapperInterface
     /** @var string[] Array of template wrappers; e.g., `base-singular.php`, `base-page.php`, `base.php` */
     protected $wrapper = [];
 
-    /** @var string[] Cache template locations */
-    protected static $locations = [];
-
     /**
      * Wrapper constructor
      *
