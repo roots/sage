@@ -13,15 +13,15 @@ interface WrapperInterface
      *
      * @return string Wrapper template (FQPN of, e.g., `base-page.php`, `base.php`)
      */
-    public function getWrapper();
+    public function wrap();
 
     /**
      * @return string Wrapped template (FQPN of, e.g., `page.php`, `single.php`, `singular.php`)
      */
-    public function getTemplate();
+    public function unwrap();
 
     /**
      * @return string Slug of the WrapperInterface; e.g., `base`
      */
-    public function getSlug();
+    public function slug();
 }
