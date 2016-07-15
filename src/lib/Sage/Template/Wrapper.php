@@ -19,7 +19,7 @@ class Wrapper implements WrapperInterface
     /**
      * Wrapper constructor
      *
-     * @param string $template Template file, as from Template Heirarchy; e.g., `page.php`, `single.php`, `singular.php`
+     * @param string $template Template file, as from Template Hierarchy; e.g., `page.php`, `single.php`, `singular.php`
      * @param string $base Wrapper's base template, this is what will wrap around $template
      */
     public function __construct($template, $base = 'layouts/base.php')
