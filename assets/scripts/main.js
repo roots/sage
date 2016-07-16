@@ -4,7 +4,7 @@ import common from './routes/Common';
 import home from './routes/Home';
 import about_us from './routes/About';
 
-// Import Bootstrap
+// Import npm dependencies
 import 'bootstrap/dist/js/umd/util.js';
 import 'bootstrap/dist/js/umd/alert.js';
 import 'bootstrap/dist/js/umd/button.js';
