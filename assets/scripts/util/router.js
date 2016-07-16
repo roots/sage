@@ -11,18 +11,18 @@ import $ from 'jquery';
 // The routing fires all common scripts, followed by the page specific scripts.
 // Add additional events for more control over timing e.g. a finalize event
 export default class Router {
-  constructor(namespace) {
-    this.namespace = namespace;
+  constructor(routes) {
+    this.routes = routes;
   }
 
   fire(func, funcname, args) {
     funcname = (funcname === undefined) ? 'init' : funcname;
     let fire = func !== '';
-    fire = fire && this.namespace[func];
-    fire = fire && typeof this.namespace[func][funcname] === 'function';
+    fire = fire && this.routes[func];
+    fire = fire && typeof this.routes[func][funcname] === 'function';
 
     if (fire) {
-      this.namespace[func][funcname](args);
+      this.routes[func][funcname](args);
     }
   }
 

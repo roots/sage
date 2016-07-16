@@ -1,5 +1,8 @@
 import $ from 'jquery';
 import Router from './util/router';
+import Common from './routes/Common';
+import Home from './routes/Home';
+import About from './routes/About';
 
 // Import Bootstrap
 import 'bootstrap/dist/js/umd/util.js';
@@ -16,34 +19,14 @@ import 'bootstrap/dist/js/umd/popover.js';
 
 // Use this variable to set up the common and page specific functions. If you
 // rename this variable, you will also need to rename the namespace below.
-var Sage = {
+const routes = {
   // All pages
-  'common': {
-    init: function() {
-      // JavaScript to be fired on all pages
-    },
-    finalize: function() {
-      // JavaScript to be fired on all pages, after page specific JS is fired
-    }
-  },
+  'common': Common,
   // Home page
-  'home': {
-    init: function() {
-      // JavaScript to be fired on the home page
-    },
-    finalize: function() {
-      // JavaScript to be fired on the home page, after the init JS
-    }
-  },
+  'home': Home,
   // About us page, note the change from about-us to about_us.
-  'about_us': {
-    init: function() {
-      // JavaScript to be fired on the about us page
-    }
-  }
+  'about_us': About
 };
 
 // Load Events
-$(document).ready(function() {
-  new Router(Sage).loadEvents();
-});
+$(document).ready(() => new Router(routes).loadEvents());
