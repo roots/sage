@@ -1,8 +1,8 @@
 import $ from 'jquery';
 import Router from './util/router';
-import Common from './routes/Common';
-import Home from './routes/Home';
-import About from './routes/About';
+import common from './routes/Common';
+import home from './routes/Home';
+import about_us from './routes/About';
 
 // Import Bootstrap
 import 'bootstrap/dist/js/umd/util.js';
@@ -21,11 +21,11 @@ import 'bootstrap/dist/js/umd/popover.js';
 // rename this variable, you will also need to rename the namespace below.
 const routes = {
   // All pages
-  common: Common,
+  common,
   // Home page
-  home: Home,
+  home,
   // About us page, note the change from about-us to about_us.
-  about_us: About
+  about_us
 };
 
 // Load Events
