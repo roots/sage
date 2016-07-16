@@ -37,24 +37,24 @@ class Wrapper implements WrapperInterface
      */
     public function __toString()
     {
-        return $this->getTemplate();
+        return $this->unwrap();
     }
 
     /** {@inheritdoc} */
-    public function getWrapper()
+    public function wrap()
     {
         $wrappers = apply_filters('sage/wrap_' . $this->slug, $this->wrapper) ?: $this->wrapper;
         return locate_template($wrappers);
     }
 
     /** {@inheritdoc} */
-    public function getSlug()
+    public function slug()
     {
         return $this->slug;
     }
 
     /** {@inheritdoc} */
-    public function getTemplate()
+    public function unwrap()
     {
         $template = apply_filters('sage/unwrap_' . $this->slug, $this->template) ?: $this->template;
         return locate_template($template) ?: $template;

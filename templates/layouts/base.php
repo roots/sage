@@ -14,11 +14,11 @@
     <div class="wrap container" role="document">
       <div class="content row">
         <main class="main">
-          <?php include App\template_unwrap(); ?>
+          <?php include App\template()->main(); ?>
         </main><!-- /.main -->
         <?php if (App\display_sidebar()) : ?>
           <aside class="sidebar">
-            <?php get_template_part('partials/sidebar'); ?>
+            <?php App\template_part('partials/sidebar'); ?>
           </aside><!-- /.sidebar -->
         <?php endif; ?>
       </div><!-- /.content -->
