@@ -5,6 +5,13 @@
  */
 
 /**
+ * Require Composer autoloader if installed on it's own
+ */
+if (file_exists($composer = __DIR__ . '/vendor/autoload.php')) {
+    require_once $composer;
+}
+
+/**
  * Here's what's happening with these hooks:
  * 1. WordPress detects theme in themes/sage
  * 2. When we activate, we tell WordPress that the theme is actually in themes/sage/templates
@@ -20,7 +27,9 @@ add_filter('stylesheet', function ($stylesheet) {
 });
 add_action('after_switch_theme', function () {
     $stylesheet = get_option('stylesheet');
-    basename($stylesheet) == 'templates' || update_option('stylesheet', $stylesheet . '/templates');
+    if (basename($stylesheet) !== 'templates') {
+        update_option('stylesheet', $stylesheet . '/templates');
+    }
 });
 
 /**
@@ -30,27 +39,15 @@ add_action('after_switch_theme', function () {
  * Add or remove files to the array as needed. Supports child theme overrides.
  *
  * Please note that missing files will produce a fatal error.
- *
- * @link https://github.com/roots/sage/pull/1042
  */
 $sage_includes = [
-    'src/helpers.php',    // Helper functions
-    'src/setup.php',      // Theme setup
-    'src/filters.php',    // Filters
-    'src/admin.php'       // Admin
+    'src/helpers.php',     // Helper functions
+    'src/setup.php',       // Theme setup
+    'src/filters.php',     // Filters
+    'src/admin.php'        // Admin
 ];
-
-foreach ($sage_includes as $file) {
-    if (!$filepath = locate_template($file)) {
+array_walk($sage_includes, function ($file) {
+    if (!locate_template($file, true, true)) {
         trigger_error(sprintf(__('Error locating %s for inclusion', 'sage'), $file), E_USER_ERROR);
     }
-    require_once $filepath;
-}
-unset($file, $filepath);
-
-/**
- * Require Composer autoloader if installed on it's own
- */
-if (file_exists($composer = __DIR__ . '/vendor/autoload.php')) {
-    require_once $composer;
-}
+});
