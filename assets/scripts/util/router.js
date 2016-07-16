@@ -1,5 +1,3 @@
-import $ from 'jquery';
-
 /* ========================================================================
  * DOM-based Routing
  * Based on http://goo.gl/EUTi53 by Paul Irish
@@ -15,14 +13,10 @@ export default class Router {
     this.routes = routes;
   }
 
-  fire(func, funcname, args) {
-    funcname = (funcname === undefined) ? 'init' : funcname;
-    let fire = func !== '';
-    fire = fire && this.routes[func];
-    fire = fire && typeof this.routes[func][funcname] === 'function';
-
+  fire(route, fn = 'init', args) {
+    let fire = route !== '' && this.routes[route] && typeof this.routes[route][fn] === 'function';
     if (fire) {
-      this.routes[func][funcname](args);
+      this.routes[route][fn](args);
     }
   }
 
@@ -31,13 +25,10 @@ export default class Router {
     this.fire('common');
 
     // Fire page-specific init JS, and then finalize JS
-    $.each(
-      document.body.className.replace(/-/g, '_').split(/\s+/),
-      (i, className) => {
-        this.fire(className);
-        this.fire(className, 'finalize');
-      }
-    );
+    document.body.className.replace(/-/g, '_').split(/\s+/).forEach((className) => {
+      this.fire(className);
+      this.fire(className, 'finalize');
+    });
 
     // Fire common finalize JS
     this.fire('common', 'finalize');

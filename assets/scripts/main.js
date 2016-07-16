@@ -21,11 +21,11 @@ import 'bootstrap/dist/js/umd/popover.js';
 // rename this variable, you will also need to rename the namespace below.
 const routes = {
   // All pages
-  'common': Common,
+  common: Common,
   // Home page
-  'home': Home,
+  home: Home,
   // About us page, note the change from about-us to about_us.
-  'about_us': About
+  about_us: About
 };
 
 // Load Events
