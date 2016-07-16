@@ -39,6 +39,17 @@ function asset_path($filename)
 }
 
 /**
+ * Determine whether to show the page header
+ * @return bool
+ */
+function display_page_header()
+{
+    static $display;
+    isset($display) || $display = apply_filters('sage/display_page_header', true);
+    return $display;
+}
+
+/**
  * Determine whether to show the sidebar
  * @return bool
  */
