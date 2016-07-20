@@ -1,5 +1,5 @@
 
-# Wordpress Theme Demo 
+# Big Room Studios - Wordpress Starter Theme
 
 Forked at version 8.4.2 from https://roots.io/sage/. Thank you Roots and Sage team for your awesome work!
 
