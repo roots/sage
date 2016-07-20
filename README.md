@@ -1,15 +1,47 @@
-# [Sage](https://roots.io/sage/)
-[![Build Status](https://travis-ci.org/roots/sage.svg)](https://travis-ci.org/roots/sage)
-[![devDependency Status](https://david-dm.org/roots/sage/dev-status.svg)](https://david-dm.org/roots/sage#info=devDependencies)
+
+# Big Room Studios - Wordpress Starter Theme
+
+Forked at version 8.4.2 from https://roots.io/sage/. Thank you Roots and Sage team for your awesome work!
+
+## Starting a Custom Theme Project
+
+* Setup a Wordpress environment, whether it be local or on a server.
+* Create a new folder `$ mkdir Your-Project-Name`
+* Change to the new directory `$ cd Your-Project-Name`
+* Clone the BRS Fork `$ git clone git@github.com:BigRoomStudios/sage.git .`
+* Create Github repository
+* Set the Github remote address to the new repository `$ git remote origin git@github.com:BigRoomStudios/Your-Project-Name.git`
+* Go to the README.md and update the header to Your-Project-Name
+* Run gulp
+* Add changes `$ git add .`
+* Make the initial commit `$ git commit -m "Initial commit"`
+* Push that commit to the new repo `$ git push`
+
+## Development Workflow
+
+* For each template, or chunk of work create a branch `$ git checkout -b Your-Branch-Name`
+* Add and commit your changes with a human readable description
+* Push the repo up to Git `$ git push --set-upstream origin Your-Branch-Name`
+* Create a pull request and add your peers to code review.
+
+*Enjoy the amazing starting point and have fun developing the custom theme for your client!*
+
+### Install the build tools
+
+Building the theme requires [node.js](http://nodejs.org/download/). We recommend you update to the latest version of npm: `$ npm install -g npm@latest`.
+
+From the command line:
+
+1. Install [gulp](http://gulpjs.com) and [Bower](http://bower.io/) globally with `$ npm install -g gulp bower`
+2. Navigate to the theme directory, then run `$ npm install`
+3. Run `$ bower install`
+
+You now have all the necessary dependencies to run the build process.
 
 Sage is a WordPress starter theme based on HTML5 Boilerplate, gulp, Bower, and Bootstrap Sass, that will help you make better themes.
 
-* Source: [https://github.com/roots/sage](https://github.com/roots/sage)
 * Homepage: [https://roots.io/sage/](https://roots.io/sage/)
 * Documentation: [https://roots.io/sage/docs/](https://roots.io/sage/docs/)
-* Twitter: [@rootswp](https://twitter.com/rootswp)
-* Newsletter: [Subscribe](http://roots.io/subscribe/)
-* Forum: [https://discourse.roots.io/](https://discourse.roots.io/)
 
 ## Requirements
 
@@ -22,76 +54,9 @@ Sage is a WordPress starter theme based on HTML5 Boilerplate, gulp, Bower, and B
 
 For more installation notes, refer to the [Install gulp and Bower](#install-gulp-and-bower) section in this document.
 
-## Features
-
-* [gulp](http://gulpjs.com/) build script that compiles both Sass and Less, checks for JavaScript errors, optimizes images, and concatenates and minifies files
-* [BrowserSync](http://www.browsersync.io/) for keeping multiple browsers and devices synchronized while testing, along with injecting updated CSS and JS into your browser while you're developing
-* [Bower](http://bower.io/) for front-end package management
-* [asset-builder](https://github.com/austinpray/asset-builder) for the JSON file based asset pipeline
-* [Bootstrap](http://getbootstrap.com/)
-* [Theme wrapper](https://roots.io/sage/docs/theme-wrapper/)
-* ARIA roles and microformats
-* Posts use the [hNews](http://microformats.org/wiki/hnews) microformat
-* [Multilingual ready](https://roots.io/wpml/) and over 30 available [community translations](https://github.com/roots/sage-translations)
-
-Install the [Soil](https://github.com/roots/soil) plugin to enable additional features:
-
-* Cleaner output of `wp_head` and enqueued assets
-* Cleaner HTML output of navigation menus
-* Root relative URLs
-* Nice search (`/search/query/`)
-* Google CDN jQuery snippet from [HTML5 Boilerplate](http://html5boilerplate.com/)
-* Google Analytics snippet from [HTML5 Boilerplate](http://html5boilerplate.com/)
-
-See a complete working example in the [roots-example-project.com repo](https://github.com/roots/roots-example-project.com).
-
-## Theme installation
-
-Bottom line is you want to get the files in this repo into your local development environment. There are many ways to do this, two of which we will cover here.
-
-### via Command-line
-
-If you're already [using Composer to manage WordPress](https://roots.io/using-composer-with-wordpress/), then you might consider using composer's `create-project` command to download Sage.
-
-The example below assumes you're using Bedrock. If you're not, simply change the target path accordingly.
-
-```sh
-composer create-project roots/sage web/app/themes/your-theme-name-here
-```
-
-Then activate the theme via [wp-cli](http://wp-cli.org/commands/theme/activate/).
-
-```sh
-wp theme activate your-theme-name-here
-```
-
-### via WordPress Admin Panel
-
-1. [Download the latest release](https://github.com/roots/sage/releases/latest) of Sage.
-2. In your WordPress admin panel, navigate to Appearance->Themes
-3. Click Add New
-4. Click Upload Theme
-5. Upload the zip file that you downloaded.
-
-## Theme setup
-
-Edit `lib/setup.php` to enable or disable theme features, setup navigation menus, post thumbnail sizes, post formats, and sidebars.
-
 ## Theme development
 
 Sage uses [gulp](http://gulpjs.com/) as its build system and [Bower](http://bower.io/) to manage front-end packages.
-
-### Install gulp and Bower
-
-Building the theme requires [node.js](http://nodejs.org/download/). We recommend you update to the latest version of npm: `npm install -g npm@latest`.
-
-From the command line:
-
-1. Install [gulp](http://gulpjs.com) and [Bower](http://bower.io/) globally with `npm install -g gulp bower`
-2. Navigate to the theme directory, then run `npm install`
-3. Run `bower install`
-
-You now have all the necessary dependencies to run the build process.
 
 ### Available gulp commands
 
@@ -119,21 +84,3 @@ If your local development URL looks like `http://localhost:8888/project-name/` y
   }
 ...
 ```
-
-## Documentation
-
-Sage documentation is available at [https://roots.io/sage/docs/](https://roots.io/sage/docs/).
-
-## Contributing
-
-Contributions are welcome from everyone. We have [contributing guidelines](https://github.com/roots/guidelines/blob/master/CONTRIBUTING.md) to help you get started.
-
-## Community
-
-Keep track of development and community news.
-
-* Participate on the [Roots Discourse](https://discourse.roots.io/)
-* Follow [@rootswp on Twitter](https://twitter.com/rootswp)
-* Read and subscribe to the [Roots Blog](https://roots.io/blog/)
-* Subscribe to the [Roots Newsletter](https://roots.io/subscribe/)
-* Listen to the [Roots Radio podcast](https://roots.io/podcast/)
