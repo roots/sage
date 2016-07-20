@@ -17,7 +17,26 @@ Forked at version 8.4.2 from https://roots.io/sage/. Thank you Roots and Sage te
 * Make the initial commit `$ git commit -m "Initial commit"`
 * Push that commit to the new repo `$ git push`
 
+## Development Workflow
+
+* For each template, or chunk of work create a branch `$ git checkout -b Your-Branch-Name`
+* Add and commit your changes with a human readable description
+* Push the repo up to Git `$ git push --set-upstream origin Your-Branch-Name`
+* Create a pull request and add your peers to code review.
+
 *Enjoy the amazing starting point and have fun developing the custom theme for your client!*
+
+### Install the build tools
+
+Building the theme requires [node.js](http://nodejs.org/download/). We recommend you update to the latest version of npm: `$ npm install -g npm@latest`.
+
+From the command line:
+
+1. Install [gulp](http://gulpjs.com) and [Bower](http://bower.io/) globally with `$ npm install -g gulp bower`
+2. Navigate to the theme directory, then run `$ npm install`
+3. Run `$ bower install`
+
+You now have all the necessary dependencies to run the build process.
 
 Sage is a WordPress starter theme based on HTML5 Boilerplate, gulp, Bower, and Bootstrap Sass, that will help you make better themes.
 
@@ -38,18 +57,6 @@ For more installation notes, refer to the [Install gulp and Bower](#install-gulp
 ## Theme development
 
 Sage uses [gulp](http://gulpjs.com/) as its build system and [Bower](http://bower.io/) to manage front-end packages.
-
-### Install gulp and Bower
-
-Building the theme requires [node.js](http://nodejs.org/download/). We recommend you update to the latest version of npm: `npm install -g npm@latest`.
-
-From the command line:
-
-1. Install [gulp](http://gulpjs.com) and [Bower](http://bower.io/) globally with `npm install -g gulp bower`
-2. Navigate to the theme directory, then run `npm install`
-3. Run `bower install`
-
-You now have all the necessary dependencies to run the build process.
 
 ### Available gulp commands
 
