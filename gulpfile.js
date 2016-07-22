@@ -31,6 +31,10 @@ var path = manifest.paths;
 // `config` - Store arbitrary configuration values here.
 var config = manifest.config || {};
 
+// Use the URL defined in Bedrock's .env (if it exists)
+require('dotenv').config({silent: true, path: '../../../../.env'});
+config.devUrl = process.env.WP_HOME || config.devUrl;
+
 // `globs` - These ultimately end up in their respective `gulp.src`.
 // - `globs.js` - Array of asset-builder JS dependency objects. Example:
 //   ```
