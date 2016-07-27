@@ -1,5 +1,3 @@
-import $ from 'jquery';
-
 /* ========================================================================
  * DOM-based Routing
  * Based on http://goo.gl/EUTi53 by Paul Irish
@@ -11,18 +9,14 @@ import $ from 'jquery';
 // The routing fires all common scripts, followed by the page specific scripts.
 // Add additional events for more control over timing e.g. a finalize event
 export default class Router {
-  constructor(namespace) {
-    this.namespace = namespace;
+  constructor(routes) {
+    this.routes = routes;
   }
 
-  fire(func, funcname, args) {
-    funcname = (funcname === undefined) ? 'init' : funcname;
-    let fire = func !== '';
-    fire = fire && this.namespace[func];
-    fire = fire && typeof this.namespace[func][funcname] === 'function';
-
+  fire(route, fn = 'init', args) {
+    const fire = route !== '' && this.routes[route] && typeof this.routes[route][fn] === 'function';
     if (fire) {
-      this.namespace[func][funcname](args);
+      this.routes[route][fn](args);
     }
   }
 
@@ -31,13 +25,10 @@ export default class Router {
     this.fire('common');
 
     // Fire page-specific init JS, and then finalize JS
-    $.each(
-      document.body.className.replace(/-/g, '_').split(/\s+/),
-      (i, className) => {
-        this.fire(className);
-        this.fire(className, 'finalize');
-      }
-    );
+    document.body.className.replace(/-/g, '_').split(/\s+/).forEach((className) => {
+      this.fire(className);
+      this.fire(className, 'finalize');
+    });
 
     // Fire common finalize JS
     this.fire('common', 'finalize');

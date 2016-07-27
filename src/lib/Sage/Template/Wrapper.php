@@ -16,13 +16,10 @@ class Wrapper implements WrapperInterface
     /** @var string[] Array of template wrappers; e.g., `base-singular.php`, `base-page.php`, `base.php` */
     protected $wrapper = [];
 
-    /** @var string[] Cache template locations */
-    protected static $locations = [];
-
     /**
      * Wrapper constructor
      *
-     * @param string $template Template file, as from Template Heirarchy; e.g., `page.php`, `single.php`, `singular.php`
+     * @param string $template Template file, as from Template Hierarchy; e.g., `page.php`, `single.php`, `singular.php`
      * @param string $base Wrapper's base template, this is what will wrap around $template
      */
     public function __construct($template, $base = 'layouts/base.php')
@@ -40,26 +37,26 @@ class Wrapper implements WrapperInterface
      */
     public function __toString()
     {
-        return $this->getTemplate();
+        return $this->unwrap();
     }
 
     /** {@inheritdoc} */
-    public function getWrapper()
+    public function wrap()
     {
         $wrappers = apply_filters('sage/wrap_' . $this->slug, $this->wrapper) ?: $this->wrapper;
         return locate_template($wrappers);
     }
 
     /** {@inheritdoc} */
-    public function getSlug()
+    public function slug()
     {
         return $this->slug;
     }
 
     /** {@inheritdoc} */
-    public function getTemplate()
+    public function unwrap()
     {
         $template = apply_filters('sage/unwrap_' . $this->slug, $this->template) ?: $this->template;
-        return locate_template($template);
+        return locate_template($template) ?: $template;
     }
 }

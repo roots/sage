@@ -44,12 +44,10 @@ var assetsPluginProcessOutput = function (assets) {
 
   for (name in assets) {
     if (assets.hasOwnProperty(name)) {
-      if (path.extname(assets[name]) === '') {
-        for (ext in assets[name]) {
-          if (assets[name].hasOwnProperty(ext)) {
-            filename = name + '.' + ext;
-            results[filename] = path.basename(assets[name][ext]);
-          }
+      for (ext in assets[name]) {
+        if (assets[name].hasOwnProperty(ext)) {
+          filename = name + '.' + ext;
+          results[filename] = path.basename(assets[name][ext]);
         }
       }
     }
