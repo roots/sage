@@ -13,6 +13,11 @@
     ?>
     <div class="wrap container" role="document">
       <div class="content row">
+        <?php if (App\display_page_header()) : ?>
+          <div class="page-header">
+            <?php get_template_part('partials/page-header'); ?>
+          </div><!-- /.page-header -->
+        <?php endif; ?>
         <main class="main">
           <?php include App\template()->main(); ?>
         </main><!-- /.main -->

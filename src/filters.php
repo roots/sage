@@ -4,6 +4,17 @@ use Roots\Sage\Template;
 use Roots\Sage\Template\Wrapper;
 
 /**
+ * Determine which pages should NOT display the page header
+ * @link https://codex.wordpress.org/Conditional_Tags
+ */
+add_filter('sage/display_page_header', function ($display) {
+    // The page header will NOT be displayed if ANY of the following return true
+    return $display ? !in_array(true, [
+        is_front_page(),
+    ]) : $display;
+});
+
+/**
  * Determine which pages should NOT display the sidebar
  * @link https://codex.wordpress.org/Conditional_Tags
  */
