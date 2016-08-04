@@ -21,8 +21,8 @@ class Asset
     public function __construct($file, ManifestInterface $manifest = null)
     {
         $this->manifest = $manifest;
-        $this->asset = basename($file);
         $this->dir = dirname($file) != '.' ? dirname($file) : '';
+        $this->asset = strpos($this->dir, "/") !== false ? trailingslashit(basename($this->dir)) . basename($file) : basename($file);
     }
 
     public function __toString()
@@ -33,6 +33,6 @@ class Asset
     public function getUri()
     {
         $file = ($this->manifest ? $this->manifest->get($this->asset) : $this->asset);
-        return get_template_directory_uri() . self::$dist . '/' . $this->dir . '/' . $file;
+        return get_template_directory_uri() . self::$dist . '/' . $this->dir . '/' . basename($file);
     }
 }
