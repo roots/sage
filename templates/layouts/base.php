@@ -15,14 +15,14 @@
       <div class="content row">
         <main class="main">
           <?php include App\template()->main(); ?>
-        </main><!-- /.main -->
+        </main>
         <?php if (App\display_sidebar()) : ?>
           <aside class="sidebar">
             <?php App\template_part('partials/sidebar'); ?>
-          </aside><!-- /.sidebar -->
+          </aside>
         <?php endif; ?>
-      </div><!-- /.content -->
-    </div><!-- /.wrap -->
+      </div>
+    </div>
     <?php
       do_action('get_footer');
       get_template_part('partials/footer');
