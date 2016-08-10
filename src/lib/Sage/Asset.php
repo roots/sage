@@ -22,7 +22,9 @@ class Asset
     {
         $this->manifest = $manifest;
         $this->dir = dirname($file) != '.' ? dirname($file) : '';
-        $this->asset = strpos($this->dir, "/") !== false ? trailingslashit(basename($this->dir)) . basename($file) : basename($file);
+        $this->asset = strpos($this->dir, "/") !== false ?
+            trailingslashit(basename($this->dir)) . basename($file)
+            : basename($file);
     }
 
     public function __toString()
