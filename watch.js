@@ -10,12 +10,13 @@ var webpackConfig = require('./webpack.config'),
     config = require('./assets/config');
 
 // Internal variables
-var host = devIp.length ? devIp[0] : false,
-    port = config.devPort || 3000,
+var scheme = (config.devScheme) ? config.devScheme : 'http',
+    host = devIp.length ? devIp[0] : false,
+    port = config.devPort || '3000',
     compiler;
 
 if (host !== false) {
-  webpackConfig.output.publicPath = 'http://' + host + ':' + port + config.output.publicPath;
+  webpackConfig.output.publicPath = scheme + '://' + host + ':' + port + config.output.publicPath;
 }
 
 compiler = webpack(webpackConfig);
