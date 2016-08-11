@@ -5,6 +5,13 @@
  */
 
 /**
+ * Require Composer autoloader if installed on it's own
+ */
+if (file_exists($composer = __DIR__ . '/vendor/autoload.php')) {
+    require_once $composer;
+}
+
+/**
  * Here's what's happening with these hooks:
  * 1. WordPress detects theme in themes/sage
  * 2. When we activate, we tell WordPress that the theme is actually in themes/sage/templates
@@ -20,10 +27,32 @@ add_filter('stylesheet', function ($stylesheet) {
 });
 add_action('after_switch_theme', function () {
     $stylesheet = get_option('stylesheet');
-    basename($stylesheet) == 'templates' || update_option('stylesheet', $stylesheet . '/templates');
+    if (basename($stylesheet) !== 'templates') {
+        update_option('stylesheet', $stylesheet . '/templates');
+    }
 });
+add_action('customize_render_section', function ($section) {
+    if ($section->type === 'themes') {
+        $section->title = wp_get_theme(basename(__DIR__))->display('Name');
+    }
+}, 10, 2);
 
 /**
- * Require composer autoloader
+ * Sage includes
+ *
+ * The $sage_includes array determines the code library included in your theme.
+ * Add or remove files to the array as needed. Supports child theme overrides.
+ *
+ * Please note that missing files will produce a fatal error.
  */
-require_once __DIR__ . '/vendor/autoload.php';
+$sage_includes = [
+    'src/helpers.php',     // Helper functions
+    'src/setup.php',       // Theme setup
+    'src/filters.php',     // Filters
+    'src/admin.php'        // Admin
+];
+array_walk($sage_includes, function ($file) {
+    if (!locate_template($file, true, true)) {
+        trigger_error(sprintf(__('Error locating %s for inclusion', 'sage'), $file), E_USER_ERROR);
+    }
+});

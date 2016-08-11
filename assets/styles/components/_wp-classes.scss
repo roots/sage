@@ -32,10 +32,11 @@
 
 // Captions
 .wp-caption {
-  @extend .thumbnail;
+  @extend .figure-img;
+  @extend .img-fluid;
 }
 .wp-caption-text {
-  padding: $thumbnail-padding;
+  @extend .figure-caption;
 }
 
 // Text meant only for screen readers

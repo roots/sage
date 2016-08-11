@@ -26,24 +26,22 @@ cache:
   apt: true
   directories:
     - $HOME/.composer/cache
-    - bower_components
     - node_modules
     - vendor
+
+before_install:
+  - composer self-update
 
 install:
   - source ~/.nvm/nvm.sh && nvm install $TRAVIS_NODE_VERSION
   - travis_retry npm install -g npm@latest
-  - travis_retry npm install -g bower gulp eslint
-  - node -v && npm -v && bower -v && gulp -v
+  - travis_retry npm install -g eslint
+  - node -v && npm -v
   - npm rebuild
   - travis_retry npm install
-  - travis_retry composer self-update && composer --version
-  - export PATH="$HOME/.composer/vendor/bin:$PATH"
-  - travis_retry composer global require squizlabs/php_codesniffer --prefer-dist
-  - travis_retry composer global require phpmd/phpmd --prefer-dist
-  - travis_retry composer install -o --prefer-dist --no-interaction
+  - npm prune
+  - composer install -o --prefer-dist --no-interaction
 
 script:
   - npm run build
-  - phpcs -n
-  - phpmd src text cleancode,codesize,controversial,design,naming,unusedcode
+  - composer test

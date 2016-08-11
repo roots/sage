@@ -12,7 +12,7 @@ add_filter('sage/display_sidebar', function ($display) {
     return $display ? !in_array(true, [
         is_404(),
         is_front_page(),
-        is_page_template('template-custom.php'),
+        is_page_template('templates/template-custom.php'),
     ]) : $display;
 });
 
@@ -46,8 +46,8 @@ add_filter('excerpt_more', function () {
  * Use theme wrapper
  */
 add_filter('template_include', function ($main) {
-    if (!is_string($main) || !(string) $main) {
+    if (!is_string($main) && !(is_object($main) && method_exists($main, '__toString'))) {
         return $main;
     }
-    return template_wrap(new Wrapper(basename($main)));
+    return ((new Template(new Wrapper($main)))->layout());
 }, 109);

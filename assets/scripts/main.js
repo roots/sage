@@ -1,49 +1,22 @@
 import $ from 'jquery';
 import Router from './util/router';
+import common from './routes/Common';
+import home from './routes/Home';
+import about_us from './routes/About';
 
-// Import Bootstrap
-import "bootstrap/dist/js/umd/util.js";
-import "bootstrap/dist/js/umd/alert.js";
-import "bootstrap/dist/js/umd/button.js";
-import "bootstrap/dist/js/umd/carousel.js";
-import "bootstrap/dist/js/umd/collapse.js";
-import "bootstrap/dist/js/umd/dropdown.js";
-import "bootstrap/dist/js/umd/modal.js";
-import "bootstrap/dist/js/umd/scrollspy.js";
-import "bootstrap/dist/js/umd/tab.js";
-import "bootstrap/dist/js/umd/tooltip.js";
-import "bootstrap/dist/js/umd/popover.js";
+// Import npm dependencies
+import 'bootstrap/dist/js/bootstrap';
 
 // Use this variable to set up the common and page specific functions. If you
 // rename this variable, you will also need to rename the namespace below.
-var Sage = {
+const routes = {
   // All pages
-  'common': {
-    init: function() {
-      // JavaScript to be fired on all pages
-    },
-    finalize: function() {
-      // JavaScript to be fired on all pages, after page specific JS is fired
-    }
-  },
+  common,
   // Home page
-  'home': {
-    init: function() {
-      // JavaScript to be fired on the home page
-    },
-    finalize: function() {
-      // JavaScript to be fired on the home page, after the init JS
-    }
-  },
+  home,
   // About us page, note the change from about-us to about_us.
-  'about_us': {
-    init: function() {
-      // JavaScript to be fired on the about us page
-    }
-  }
+  about_us
 };
 
 // Load Events
-$(document).ready(function () {
-  new Router(Sage).loadEvents();
-});
+$(document).ready(() => new Router(routes).loadEvents());

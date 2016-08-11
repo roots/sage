@@ -26,16 +26,20 @@
   "autoload": {
     "psr-4": {
       "Roots\\Sage\\": "src/lib/Sage/"
-    },
-    "files": [
-      "src/helpers.php",
-      "src/setup.php",
-      "src/filters.php",
-      "src/admin.php"
-    ]
+    }
   },
   "require": {
     "php": ">=5.5.0",
     "composer/installers": "~1.0"
+  },
+  "require-dev": {
+    "squizlabs/php_codesniffer": "^2.5.1",
+    "phpmd/phpmd": "^2.4.2"
+  },
+  "scripts": {
+    "test": [
+      "vendor/bin/phpcs",
+      "vendor/bin/phpmd src text cleancode,codesize,controversial,design,naming,unusedcode"
+    ]
   }
 }
