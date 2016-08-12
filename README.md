@@ -11,8 +11,10 @@ Forked at version 8.4.2 from https://roots.io/sage/. Thank you Roots and Sage te
 * Clone the BRS Fork `$ git clone git@github.com:BigRoomStudios/sage.git .`
 * Create Github repository
 * Set the Github remote address to the new repository `$ git remote set-url origin git@github.com:BigRoomStudios/Your-Project-Name.git`
-* Go to the README.md and update the header to Your-Project-Name
-* Run gulp
+* Go to the README.md and update the header to Your-Project-Name\
+* Run `$ npm install`
+* Run `$ bower install`
+* Run `$ gulp`
 * Add changes `$ git add .`
 * Make the initial commit `$ git commit -m "Initial commit"`
 * Push that commit to the new repo `$ git push`
