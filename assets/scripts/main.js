@@ -1,11 +1,12 @@
-import $ from 'jquery';
+// import external dependencies
+import 'jquery'
+import 'bootstrap/dist/js/bootstrap'
+
+// import local dependencies
 import Router from './util/router';
 import common from './routes/Common';
 import home from './routes/Home';
 import about_us from './routes/About';
-
-// Import npm dependencies
-import 'bootstrap/dist/js/bootstrap';
 
 // Use this variable to set up the common and page specific functions. If you
 // rename this variable, you will also need to rename the namespace below.

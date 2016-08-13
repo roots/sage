@@ -2,7 +2,7 @@
   "root": true,
   "extends": "eslint:recommended",
   "globals": {
-    "wp": true,
+    "wp": true
   },
   "env": {
     "browser": true,
