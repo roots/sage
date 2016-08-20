@@ -2,6 +2,7 @@
   "context": "assets",
   "entry": {
     "main": [
+      "./scripts/util/public-path.js",
       "./scripts/main.js",
       "./styles/main.scss"
     ],
@@ -13,6 +14,5 @@
     "path": "dist",
     "publicPath": "/app/themes/sage/dist/"
   },
-  "devUrl": "http://example.dev",
-  "devPort": 3000
+  "devUrl": "http://example.dev"
 }
