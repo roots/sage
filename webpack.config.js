@@ -193,7 +193,7 @@ webpackConfig = {
       'window.Tether': 'tether'
     }),
     new webpack.DefinePlugin({
-      WEBPACK_PUBLIC_PATH: (argv.watch === true) ? JSON.stringify(config.output.publicPath) : false
+      WEBPACK_PUBLIC_PATH: (argv.watch === true) ? JSON.stringify(path.join(config.publicPath, dist)) : false
     })
   ],
   postcss: [
