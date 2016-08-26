@@ -191,6 +191,9 @@ webpackConfig = {
       'window.jQuery': 'jquery',
       'Tether': 'tether',
       'window.Tether': 'tether'
+    }),
+    new webpack.DefinePlugin({
+      WEBPACK_PUBLIC_PATH: (argv.watch === true) ? JSON.stringify(path.join(config.publicPath, dist)) : false
     })
   ],
   postcss: [

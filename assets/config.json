@@ -1,6 +1,7 @@
 {
   "entry": {
     "main": [
+      "./scripts/util/public-path.js",
       "./scripts/main.js",
       "./styles/main.scss"
     ],
