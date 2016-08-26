@@ -1,5 +1,4 @@
 {
-  "context": "assets",
   "entry": {
     "main": [
       "./scripts/util/public-path.js",
@@ -10,9 +9,6 @@
       "./scripts/customizer.js"
     ]
   },
-  "output": {
-    "path": "dist",
-    "publicPath": "/app/themes/sage/dist/"
-  },
+  "publicPath": "/app/themes/sage",
   "devUrl": "http://example.dev"
 }
