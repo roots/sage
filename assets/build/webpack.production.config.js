@@ -17,8 +17,8 @@ const assetsPluginProcessOutput = (assets) => {
   const results = {};
   Object.keys(assets).forEach(name => {
     Object.keys(assets[name]).forEach(ext => {
-      const filename = `${name}.${ext}`;
-      results[filename] = path.basename(assets[name][ext]);
+      const filename = `${path.dirname(assets[name][ext])}/${path.basename(`${name}.${ext}`)}`;
+      results[filename] = assets[name][ext];
     });
   });
   return JSON.stringify(results);
