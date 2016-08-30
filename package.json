@@ -1,7 +1,9 @@
+
+
 {
   "name": "sage",
-  "version": "8.4.2",
-  "author": "Ben Word <ben@benword.com>",
+  "version": "9.0.0",
+  "author": "Roots <team@roots.io>",
   "homepage": "https://roots.io/sage/",
   "private": true,
   "repository": {
@@ -18,41 +20,55 @@
     }
   ],
   "scripts": {
-    "build": "bower install && gulp",
-    "jshint": "gulp jshint",
-    "jscs": "jscs gulpfile.js assets/scripts/*.js"
+    "build:production": "webpack -p --progress --release",
+    "build": "webpack -d --progress",
+    "watch": "node watch.js --watch",
+    "lint": "eslint -c .eslintrc assets/scripts watch.js webpack.config.js"
   },
   "engines": {
-    "node": ">= 0.12.0",
-    "npm": ">=2.1.5"
+    "node": ">=4"
   },
   "devDependencies": {
-    "asset-builder": "^1.1.0",
-    "browser-sync": "^2.8.2",
-    "del": "^1.2.1",
-    "gulp": "^3.9.0",
-    "gulp-autoprefixer": "^2.3.1",
-    "gulp-changed": "^1.3.0",
-    "gulp-concat": "^2.6.0",
-    "gulp-cssnano": "^2.1.0",
-    "gulp-flatten": "0.1.1",
-    "gulp-if": "^2.0.1",
-    "gulp-imagemin": "^2.3.0",
-    "gulp-jshint": "^1.11.2",
-    "gulp-less": "^3.0.3",
-    "gulp-plumber": "^1.0.1",
-    "gulp-rename": "^1.2.2",
-    "gulp-rev": "^6.0.0",
-    "gulp-sass": "^2.0.1",
-    "gulp-sourcemaps": "^1.5.2",
-    "gulp-uglify": "^1.2.0",
-    "imagemin-pngcrush": "^4.1.0",
-    "jshint-stylish": "^2.0.1",
-    "lazypipe": "^1.0.1",
-    "merge-stream": "^1.0.0",
-    "minimist": "^1.1.3",
-    "run-sequence": "^1.1.2",
-    "traverse": "^0.6.6",
-    "wiredep": "^2.2.2"
+    "assets-webpack-plugin": "^3.4.0",
+    "autoprefixer": "^6.1.0",
+    "babel-cli": "^6.6.5",
+    "babel-core": "^6.7.4",
+    "babel-eslint": "^6.0.0",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.13.2",
+    "babel-register": "^6.5.2",
+    "babel-runtime": "^6.5.0",
+    "body-parser": "^1.14.1",
+    "browser-sync": "^2.11.2",
+    "clean-webpack-plugin": "^0.1.8",
+    "css-loader": "^0.23.1",
+    "cssnano": "^3.5.2",
+    "eslint": "^3.2.2",
+    "eslint-loader": "^1.3.0",
+    "eslint-plugin-react": "^6.0.0",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.9.0",
+    "image-webpack-loader": "^2.0.0",
+    "imagemin-pngcrush": "^5.0.0",
+    "imports-loader": "^0.6.5",
+    "minimist": "^1.2.0",
+    "monkey-hot-loader": "0.0.3",
+    "node-sass": "^3.4.2",
+    "optimize-css-assets-webpack-plugin": "^1.3.0",
+    "postcss": "^5.0.18",
+    "postcss-loader": "^0.9.1",
+    "qs": "^6.1.0",
+    "resolve-url-loader": "^1.4.3",
+    "sass-loader": "^4.0.0",
+    "style-loader": "^0.13.0",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.12.14",
+    "webpack-dev-middleware": "^1.6",
+    "webpack-hot-middleware": "^2.10.0"
+  },
+  "dependencies": {
+    "bootstrap": "github:twbs/bootstrap#v4-dev",
+    "font-awesome": "^4.6.3",
+    "jquery": "^1.12.4"
   }
 }
