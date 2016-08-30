@@ -1,6 +1,7 @@
 # [Sage](https://roots.io/sage/)
-[![Build Status](https://travis-ci.org/roots/sage.svg)](https://travis-ci.org/roots/sage)
-[![devDependency Status](https://david-dm.org/roots/sage/dev-status.svg)](https://david-dm.org/roots/sage#info=devDependencies)
+[![Packagist](https://img.shields.io/packagist/vpre/roots/sage.svg?style=flat-square)](https://packagist.org/packages/roots/sage)
+[![devDependency Status](https://img.shields.io/david/dev/roots/sage.svg?style=flat-square)](https://david-dm.org/roots/sage#info=devDependencies)
+[![Build Status](https://img.shields.io/travis/roots/sage.svg?style=flat-square)](https://travis-ci.org/roots/sage)
 
 Sage is a WordPress starter theme with a modern development workflow.
 
@@ -43,7 +44,7 @@ From the command line, run the following commands from the root of your WordPres
 
 ```shell
 # @ example.com/site
-$ composer create-project roots/sage web/app/themes/your-theme-name dev-sage-9
+$ composer create-project roots/sage web/app/themes/your-theme-name 9.0.0-alpha.1
 ```
 
 Then activate the theme via [wp-cli](http://wp-cli.org/commands/theme/activate/):
