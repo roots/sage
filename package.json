@@ -18,8 +18,8 @@
     }
   ],
   "scripts": {
-    "build": "webpack -d --progress --config assets/build/webpack.build.config.js",
-    "build:production": "npm run build -s -- --env.production",
+    "build": "webpack --progress --config assets/build/webpack.config.js",
+    "build:production": "npm run build -s -- -p",
     "start": "npm run build -s -- --watch",
     "clean": "node node_modules/rimraf/bin.js dist",
     "lint": "node node_modules/eslint/bin/eslint.js assets/scripts assets/build",
@@ -40,7 +40,9 @@
     "babel-runtime": "^6.11.6",
     "body-parser": "^1.15.2",
     "browser-sync": "^2.14.0",
+    "browser-sync-webpack-plugin": "^1.1.2",
     "clean-webpack-plugin": "^0.1.10",
+    "copy-webpack-plugin": "^3.0.1",
     "css-loader": "^0.24.0",
     "cssnano": "^3.7.4",
     "eslint": "^3.4.0",
@@ -52,8 +54,9 @@
     "eslint-plugin-react": "^6.2.0",
     "extract-text-webpack-plugin": "^2.0.0-beta.3",
     "file-loader": "^0.9.0",
-    "image-webpack-loader": "^2.0.0",
-    "imagemin-pngcrush": "^5.0.0",
+    "glob-all": "^3.1.0",
+    "imagemin-mozjpeg": "^6.0.0",
+    "imagemin-webpack-plugin": "^1.0.8",
     "imports-loader": "^0.6.5",
     "lodash": "^4.15.0",
     "minimist": "^1.2.0",
@@ -68,9 +71,7 @@
     "sass-loader": "^4.0.0",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
-    "webpack": "^2.1.0-beta.21",
-    "webpack-dev-middleware": "^1.6",
-    "webpack-hot-middleware": "^2.12.2"
+    "webpack": "^2.1.0-beta.21"
   },
   "dependencies": {
     "bootstrap": "github:twbs/bootstrap#v4-dev",

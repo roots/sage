@@ -3,15 +3,19 @@ const webpack = require('webpack');
 const path = require('path');
 const qs = require('qs');
 const autoprefixer = require('autoprefixer');
-const Clean = require('clean-webpack-plugin');
+const CleanPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const ImageminPlugin = require('imagemin-webpack-plugin').default;
+const imageminMozjpeg = require('imagemin-mozjpeg');
 
-const webpackProduction = require('./webpack.production.config');
+const mergeWithConcat = require('./util/mergeWithConcat');
+const webpackConfigProduction = require('./webpack.config.production');
+const webpackConfigWatch = require('./webpack.config.watch');
 const config = require('./config');
 
 const publicPath = `${config.publicPath}/${path.basename(config.paths.dist)}/`;
 const assetsFilenames = (config.enabled.cacheBusting) ? config.cacheBusting : '[name]';
-const sourceMapQueryStr = (config.enabled.sourceMaps) ? '-sourceMap' : '+sourceMap';
+const sourceMapQueryStr = (config.enabled.sourceMaps) ? '+sourceMap' : '-sourceMap';
 
 const jsLoader = {
   test: /\.js$/,
@@ -19,13 +23,14 @@ const jsLoader = {
   loaders: [`babel?presets[]=${path.resolve('./node_modules/babel-preset-es2015')}&cacheDirectory`],
 };
 
-if (config.enabled.watch) {
+if (config.enabled.watcher) {
   jsLoader.loaders.unshift('monkey-hot');
 }
 
-const webpackConfig = {
+let webpackConfig = {
   context: config.paths.assets,
   entry: config.entry,
+  devtool: (config.enabled.sourceMaps ? '#source-map' : undefined),
   output: {
     path: config.paths.dist,
     publicPath,
@@ -66,25 +71,11 @@ const webpackConfig = {
         }),
       },
       {
-        test: /\.(png|jpg|jpeg|gif|svg)$/,
+        test: /\.(png|jpe?g|gif|svg)$/,
         include: config.paths.assets,
         loaders: [
           `file?${qs.stringify({
             name: '[path][name].[ext]',
-          })}`,
-          `image-webpack?${JSON.stringify({
-            bypassOnDebug: true,
-            progressive: true,
-            optimizationLevel: 7,
-            interlaced: true,
-            pngquant: {
-              quality: '65-90',
-              speed: 4,
-            },
-            svgo: {
-              removeUnknownsAndDefaults: false,
-              cleanupIDs: false,
-            },
           })}`,
         ],
       },
@@ -96,7 +87,7 @@ const webpackConfig = {
         })}`,
       },
       {
-        test: /\.woff(2)?$/,
+        test: /\.woff2?$/,
         include: config.paths.assets,
         loader: `url?${qs.stringify({
           limit: 10000,
@@ -104,9 +95,8 @@ const webpackConfig = {
           name: `[path]${assetsFilenames}.[ext]`,
         })}`,
       },
-      // Use file-loader for node_modules/ assets
       {
-        test: /\.(ttf|eot|woff(2)?|png|jpg|jpeg|gif|svg)$/,
+        test: /\.(ttf|eot|woff2?|png|jpe?g|gif|svg)$/,
         include: /node_modules|bower_components/,
         loader: 'file',
         query: {
@@ -125,11 +115,32 @@ const webpackConfig = {
     jquery: 'jQuery',
   },
   plugins: [
-    new Clean([config.paths.dist], process.cwd()),
+    new CleanPlugin([config.paths.dist], process.cwd()),
+    new ImageminPlugin({
+      optipng: {
+        optimizationLevel: 7,
+      },
+      gifsicle: {
+        optimizationLevel: 3,
+      },
+      pngquant: {
+        quality: '65-90',
+        speed: 4,
+      },
+      svgo: {
+        removeUnknownsAndDefaults: false,
+        cleanupIDs: false,
+      },
+      jpegtran: null,
+      plugins: [imageminMozjpeg({
+        quality: 75,
+      })],
+      disable: (config.enabled.watcher),
+    }),
     new ExtractTextPlugin({
       filename: `styles/${assetsFilenames}.css`,
       allChunks: true,
-      disable: (config.enabled.watch),
+      disable: (config.enabled.watcher),
     }),
     new webpack.ProvidePlugin({
       $: 'jquery',
@@ -139,27 +150,51 @@ const webpackConfig = {
       'window.Tether': 'tether',
     }),
     new webpack.DefinePlugin({
-      WEBPACK_PUBLIC_PATH: (config.enabled.watch)
+      WEBPACK_PUBLIC_PATH: (config.enabled.watcher)
         ? JSON.stringify(publicPath)
         : false,
     }),
-  ],
-  postcss: [
-    autoprefixer({
-      browsers: [
-        'last 2 versions',
-        'android 4',
-        'opera 12',
+    new webpack.LoaderOptionsPlugin({
+      minimize: config.enabled.minify,
+      debug: config.enabled.watcher,
+      stats: { colors: true },
+      postcss: [
+        autoprefixer({
+          browsers: [
+            'last 2 versions',
+            'android 4',
+            'opera 12',
+          ],
+        }),
       ],
+      eslint: {
+        failOnWarning: false,
+        failOnError: true,
+      },
     }),
   ],
-  eslint: {
-    failOnWarning: false,
-    failOnError: true,
-  },
-  stats: {
-    colors: true,
-  },
 };
 
-module.exports = config.env.production ? webpackProduction(webpackConfig) : webpackConfig;
+if (config.env.production) {
+  webpackConfig = mergeWithConcat(webpackConfig, webpackConfigProduction);
+}
+
+if (config.enabled.watcher) {
+  webpackConfig = mergeWithConcat(webpackConfig, webpackConfigWatch);
+}
+
+if (config.enabled.uglifyJs) {
+  webpackConfig.plugins.push(
+    new webpack.optimize.UglifyJsPlugin({
+      compress: config.enabled.minify ? {
+        drop_debugger: true,
+        dead_code: true,
+        warnings: false,
+      } : false,
+      sourceMap: config.enabled.sourceMaps,
+      output: { comments: false },
+    })
+  );
+}
+
+module.exports = webpackConfig;

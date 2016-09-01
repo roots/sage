@@ -2,7 +2,6 @@
 const AssetsPlugin = require('assets-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const cssnano = require('cssnano');
-const webpack = require('webpack');
 const path = require('path');
 
 const config = require('./config');
@@ -24,18 +23,18 @@ const assetsPluginProcessOutput = (assets) => {
   return JSON.stringify(results);
 };
 
-module.exports = (webpackConfig) => {
-  webpackConfig.plugins.push(new AssetsPlugin({
-    path: config.paths.dist,
-    filename: 'assets.json',
-    fullPath: false,
-    processOutput: assetsPluginProcessOutput,
-  }));
-  webpackConfig.plugins.push(new webpack.optimize.UglifyJsPlugin());
-  webpackConfig.plugins.push(new OptimizeCssAssetsPlugin({
-    cssProcessor: cssnano,
-    cssProcessorOptions: { discardComments: { removeAll: true } },
-    canPrint: true,
-  }));
-  return webpackConfig;
+module.exports = {
+  plugins: [
+    new AssetsPlugin({
+      path: config.paths.dist,
+      filename: 'assets.json',
+      fullPath: false,
+      processOutput: assetsPluginProcessOutput,
+    }),
+    new OptimizeCssAssetsPlugin({
+      cssProcessor: cssnano,
+      cssProcessorOptions: { discardComments: { removeAll: true } },
+      canPrint: true,
+    }),
+  ],
 };

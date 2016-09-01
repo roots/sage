@@ -9,7 +9,7 @@
     ]
   },
   "publicPath": "/app/themes/sage",
-  "devUrl": "http://example.dev",
-  "proxyUrl": "http://localhost:3000",
+  "devUrl": "https://example.dev",
+  "proxyUrl": "https://localhost:3000",
   "cacheBusting": "[name]_[hash]"
 }
