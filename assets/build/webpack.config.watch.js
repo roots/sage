@@ -13,6 +13,10 @@ module.exports = {
       host: url.parse(config.proxyUrl).hostname,
       port: url.parse(config.proxyUrl).port,
       proxy: config.devUrl,
+      files: [
+        'templates/**/*.php',
+        'src/**/*.php',
+      ],
     }),
   ],
 };

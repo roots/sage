@@ -100,7 +100,7 @@ let webpackConfig = {
         include: /node_modules|bower_components/,
         loader: 'file',
         query: {
-          name: `vendor/${assetsFilenames}.[ext]`,
+          name: `vendor/${config.cacheBusting}.[ext]`,
         },
       },
     ],
@@ -115,7 +115,7 @@ let webpackConfig = {
     jquery: 'jQuery',
   },
   plugins: [
-    new CleanPlugin([config.paths.dist], process.cwd()),
+    new CleanPlugin([config.paths.dist], config.paths.root),
     new ImageminPlugin({
       optipng: {
         optimizationLevel: 7,

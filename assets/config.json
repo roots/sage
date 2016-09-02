@@ -11,5 +11,5 @@
   "publicPath": "/app/themes/sage",
   "devUrl": "https://example.dev",
   "proxyUrl": "https://localhost:3000",
-  "cacheBusting": "[name]_[hash]"
+  "cacheBusting": "[name]_[hash:8]"
 }
