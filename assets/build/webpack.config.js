@@ -175,6 +175,8 @@ const webpackConfig = {
   ],
 };
 
+module.exports = webpackConfig;
+
 if (config.env.production) {
   module.exports = mergeWithConcat(webpackConfig, webpackConfigProduction);
 }

@@ -2,9 +2,13 @@
 
 const mergeWith = require('lodash/mergeWith');
 
-module.exports = (...args) => mergeWith(...args, (a, b) => {
-  if (Array.isArray(a) && Array.isArray(b)) {
-    return a.concat(b);
-  }
-  return undefined;
-});
+module.exports = function mergeWithConcat() {
+  const args = [].slice.call(arguments);
+  args.push((a, b) => {
+    if (Array.isArray(a) && Array.isArray(b)) {
+      return a.concat(b);
+    }
+    return undefined;
+  });
+  return mergeWith.apply(this, args);
+};

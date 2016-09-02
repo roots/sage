@@ -2,6 +2,7 @@
   "root": false,
   "extends": "airbnb",
   "rules": {
-    "import/no-extraneous-dependencies": 0
+    "import/no-extraneous-dependencies": 0,
+    "prefer-rest-params": 0
   }
 }
