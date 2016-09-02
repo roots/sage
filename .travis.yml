@@ -7,8 +7,8 @@ php:
   - nightly
 
 env:
-  - TRAVIS_NODE_VERSION="4.2" CXX="g++-4.8"
-  - TRAVIS_NODE_VERSION="5.3" CXX="g++-4.8"
+  - TRAVIS_NODE_VERSION="4" CXX="g++-4.8"
+  - TRAVIS_NODE_VERSION="6" CXX="g++-4.8"
 
 matrix:
   fast_finish: true
@@ -33,7 +33,7 @@ before_install:
   - composer self-update
 
 install:
-  - source ~/.nvm/nvm.sh && nvm install $TRAVIS_NODE_VERSION
+  - source ~/.nvm/nvm.sh && nvm install $TRAVIS_NODE_VERSION && nvm use $TRAVIS_NODE_VERSION 
   - travis_retry npm install -g npm@latest
   - travis_retry npm install -g eslint
   - node -v && npm -v
@@ -43,5 +43,8 @@ install:
   - composer install -o --prefer-dist --no-interaction
 
 script:
+  - npm run test
   - npm run build
+  - npm run clean
+  - npm run "build:production"
   - composer test

@@ -27,7 +27,7 @@ if (config.enabled.watcher) {
   jsLoader.loaders.unshift('monkey-hot');
 }
 
-let webpackConfig = {
+const webpackConfig = {
   context: config.paths.assets,
   entry: config.entry,
   devtool: (config.enabled.sourceMaps ? '#source-map' : undefined),
@@ -176,15 +176,15 @@ let webpackConfig = {
 };
 
 if (config.env.production) {
-  webpackConfig = mergeWithConcat(webpackConfig, webpackConfigProduction);
+  module.exports = mergeWithConcat(webpackConfig, webpackConfigProduction);
 }
 
 if (config.enabled.watcher) {
-  webpackConfig = mergeWithConcat(webpackConfig, webpackConfigWatch);
+  module.exports = mergeWithConcat(webpackConfig, webpackConfigWatch);
 }
 
 if (config.enabled.uglifyJs) {
-  webpackConfig.plugins.push(
+  module.exports.plugins.push(
     new webpack.optimize.UglifyJsPlugin({
       compress: config.enabled.minify ? {
         drop_debugger: true,
@@ -196,5 +196,3 @@ if (config.enabled.uglifyJs) {
     })
   );
 }
-
-module.exports = webpackConfig;
