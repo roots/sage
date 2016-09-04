@@ -104,7 +104,7 @@ You now have all the necessary dependencies to run the build process.
 ### Available build commands
 
 * `npm run build` — Compile and optimize the files in your assets directory
-* `npm run watch` — Compile assets when file changes are made, start BrowerSync session
+* `npm run watch` — Compile assets when file changes are made, start BrowserSync session
 * `npm run build:production` — Compile assets for production
 
 ### Using BrowserSync
@@ -118,9 +118,9 @@ For example, if your local development URL is `https://project-name.dev` you wou
 ...
 ```
 
-If you are not using [Bedrock](https://roots.io/bedrock/), you should also update `publicPatch` to reflect your folder strutcture.
+If you are not using [Bedrock](https://roots.io/bedrock/), you should also update `publicPatch` to reflect your folder structure.
 
-If your theme is placed in folder called `sage` in a standard wordpress setup it should look like this:
+If your theme is placed in a folder called `sage` then in a standard wordpress setup it should look like this:
 ```json
 ...
   "output": {
