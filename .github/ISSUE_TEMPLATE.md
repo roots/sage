@@ -1,5 +1,6 @@
 ## Submit a feature request or bug report
 
+- [ ] I've read the [guidelines for Contributing to Roots Projects](https://github.com/roots/guidelines/blob/master/CONTRIBUTING.md)
 - [ ] This is a feature request
 - [ ] This is a bug report
 - [ ] This request isn't a duplicate of an [existing issue](https://github.com/roots/sage/issues)
