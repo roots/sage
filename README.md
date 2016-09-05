@@ -5,30 +5,16 @@
 
 Sage is a WordPress starter theme with a modern development workflow.
 
-Write stylesheets with Sass, automatically check your JavaScript for errors, optimize images, enable synchronized browser testing, and more.
-
 ## Features
 
-* [Webpack](https://webpack.github.io/) is used as a build tool for compiling stylesheets, checking for JavaScript errors, optimizing images, and concatenating and minifying files
-* [BrowserSync](http://www.browsersync.io/) for keeping multiple browsers and devices synchronized while testing, along with injecting updated CSS and JS into your browser while you're developing
-* [Bootstrap](http://getbootstrap.com/)
+* Sass for stylesheets
+* ES6 for JavaScript
+* [Webpack](https://webpack.github.io/) for compiling assets, optimizing images, and concatenating and minifying files
+* [BrowserSync](http://www.browsersync.io/) for synchronized browser testing
+* [Bootstrap 4](http://getbootstrap.com/) for a front-end framework (can be removed or replaced)
 * Template inheritance with the [theme wrapper](https://roots.io/sage/docs/theme-wrapper/)
-* ARIA roles and microformats
-* Posts use the [hNews](http://microformats.org/wiki/hnews) microformat
-* [Multilingual ready](https://roots.io/wpml/) and over 30 available [community translations](https://github.com/roots/sage-translations)
 
-Install the [Soil](https://roots.io/plugins/soil/) plugin to enable additional recommended features:
-
-* Load jQuery from the jQuery CDN
-* Cleaner WordPress markup
-* Cleaner HTML output of navigation menus
-* Root relative URLs
-* Nice search
-* Google Analytics snippet from [HTML5 Boilerplate](http://html5boilerplate.com/)
-* Move all JS to the footer
-* Disable trackbacks and pingbacks
-
-See a complete working example in the [roots-example-project.com repo](https://github.com/roots/roots-example-project.com).
+See a working example at [roots-example-project.com](https://roots-example-project.com/).
 
 ## Requirements
 
@@ -40,18 +26,11 @@ Make sure all dependencies have been installed before moving on:
 
 ## Theme installation
 
-From the command line, run the following commands from the root of your WordPress site (where `composer.json` exists). These instructions assume you're using a [Bedrock](https://roots.io/bedrock/)-based WordPress setup. If you're using Vagrant, make sure to run these commands from the Vagrant box (`vagrant ssh`). Create a new theme based on Sage by using Composer's [`create-project`](https://getcomposer.org/doc/03-cli.md#create-project):
+Install Sage using Composer from your WordPress themes directory (replace `your-theme-name` below with the name of your theme):
 
 ```shell
-# @ example.com/site
-$ composer create-project roots/sage web/app/themes/your-theme-name 9.0.0-alpha.2
-```
-
-Then activate the theme via [wp-cli](http://wp-cli.org/commands/theme/activate/):
-
-```shell
-# @ example.com/site
-$ wp theme activate your-theme-name
+# @ example.com/site/web/app/themes/
+$ composer create-project roots/sage your-theme-name dev-master
 ```
 
 ## Theme structure
@@ -104,7 +83,7 @@ You now have all the necessary dependencies to run the build process.
 ### Available build commands
 
 * `npm run build` — Compile and optimize the files in your assets directory
-* `npm run watch` — Compile assets when file changes are made, start BrowserSync session
+* `npm run start` — Compile assets when file changes are made, start BrowserSync session
 * `npm run build:production` — Compile assets for production
 
 ### Using BrowserSync
@@ -118,9 +97,8 @@ For example, if your local development URL is `https://project-name.dev` you wou
 ...
 ```
 
-If you are not using [Bedrock](https://roots.io/bedrock/), you should also update `publicPatch` to reflect your folder structure.
+If you are not using [Bedrock](https://roots.io/bedrock/), you should also update `publicPatch` to reflect your folder structure:
 
-If your theme is placed in a folder called `sage` then in a standard wordpress setup it should look like this:
 ```json
 ...
   "output": {
@@ -132,7 +110,9 @@ If your theme is placed in a folder called `sage` then in a standard wordpress s
 
 ## Documentation
 
-Sage documentation is available at [https://roots.io/sage/docs/](https://roots.io/sage/docs/).
+Sage 8 documentation is available at [https://roots.io/sage/docs/](https://roots.io/sage/docs/).
+
+Sage 9 documention is currently in progress and can be viewed at [https://github.com/roots/docs/tree/sage-9/sage](https://github.com/roots/docs/tree/sage-9/sage).
 
 ## Contributing
 
