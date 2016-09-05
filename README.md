@@ -36,7 +36,7 @@ Make sure all dependencies have been installed before moving on:
 
 * [PHP](http://php.net/manual/en/install.php) >= 5.5.x
 * [Composer](https://getcomposer.org/download/)
-* [Node.js](http://nodejs.org/) >= 0.12.x
+* [Node.js](http://nodejs.org/) >= 4.5
 
 ## Theme installation
 
@@ -44,7 +44,7 @@ From the command line, run the following commands from the root of your WordPres
 
 ```shell
 # @ example.com/site
-$ composer create-project roots/sage web/app/themes/your-theme-name 9.0.0-alpha.1
+$ composer create-project roots/sage web/app/themes/your-theme-name 9.0.0-alpha.2
 ```
 
 Then activate the theme via [wp-cli](http://wp-cli.org/commands/theme/activate/):

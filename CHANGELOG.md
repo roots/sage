@@ -1,3 +1,7 @@
+### 9.0.0-alpha.2: September 4th, 2016
+* Refactor build routine ([#1703](https://github.com/roots/sage/pull/1703))
+* Update `_grid.scss` to use `@include make-col-ready()` mixin ([#1706](https://github.com/roots/sage/pull/1706))
+
 ### 9.0.0-alpha.1: August 30th, 2016
 * Move assets found in `node_modules/` to `dist/vendor`, simpler `assets/config.json` ([#1697](https://github.com/roots/sage/pull/1697))
 * Set dynamically absolute public path ([#1696](https://github.com/roots/sage/pull/1696))

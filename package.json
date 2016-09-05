@@ -26,7 +26,7 @@
     "test": "npm run lint -s"
   },
   "engines": {
-    "node": ">=5"
+    "node": ">= 4.5"
   },
   "devDependencies": {
     "assets-webpack-plugin": "^3.4.0",
