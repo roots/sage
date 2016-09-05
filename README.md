@@ -67,7 +67,7 @@ themes/your-theme-name/   # → Root of your Sage based theme
 
 ## Theme setup
 
-Edit `src/lib/setup.php` to enable or disable theme features, setup navigation menus, post thumbnail sizes, post formats, and sidebars.
+Edit `src/setup.php` to enable or disable theme features, setup navigation menus, post thumbnail sizes, post formats, and sidebars.
 
 ## Theme development
 
