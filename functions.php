@@ -46,10 +46,10 @@ add_action('customize_render_section', function ($section) {
  * Please note that missing files will produce a fatal error.
  */
 $sage_includes = [
-    'src/helpers.php',     // Helper functions
-    'src/setup.php',       // Theme setup
-    'src/filters.php',     // Filters
-    'src/admin.php'        // Admin
+    'src/helpers.php',
+    'src/setup.php',
+    'src/filters.php',
+    'src/admin.php'
 ];
 array_walk($sage_includes, function ($file) {
     if (!locate_template($file, true, true)) {

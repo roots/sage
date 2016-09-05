@@ -36,29 +36,33 @@ $ composer create-project roots/sage your-theme-name dev-master
 ## Theme structure
 
 ```shell
-themes/theme-name/        # → Root of your Sage based theme
+themes/your-theme-name/   # → Root of your Sage based theme
 ├── assets                # → Front-end assets
 │   ├── config.json       # → Settings for compiled assets
+│   ├── build/            # → Webpack and ESLint config
 │   ├── fonts/            # → Theme fonts
 │   ├── images/           # → Theme images
 │   ├── scripts/          # → Theme JS
 │   └── styles/           # → Theme stylesheets
 ├── composer.json         # → Autoloading for `src/` files
-├── composer.lock         # → Composer lock file (never manually edit)
-├── dist/                 # → Built theme assets (never manually edit)
-├── functions.php         # → Never manually edit
+├── composer.lock         # → Composer lock file (never edit)
+├── dist/                 # → Built theme assets (never edit)
+├── functions.php         # → Composer autoloader, theme includes
 ├── index.php             # → Never manually edit
-├── node_modules/         # → Node.js packages (never manually edit)
+├── node_modules/         # → Node.js packages (never edit)
 ├── package.json          # → Node.js dependencies and scripts
 ├── screenshot.png        # → Theme screenshot for WP admin
 ├── src/                  # → Theme PHP
+│   ├── lib/Sage/         # → Theme wrapper, asset manifest
+│   ├── admin.php         # → Theme customizer setup
+│   ├── filters.php       # → Theme filters
+│   ├── helpers.php       # → Helper functions
+│   └── setup.php         # → Theme setup
 ├── style.css             # → Theme meta information
 ├── templates/            # → Theme templates
 │   ├── layouts/          # → Base templates
 │   └── partials/         # → Partial templates
-├── vendor/               # → Composer packages (never manually edit)
-├── watch.js              # → Webpack/BrowserSync watch config
-└── webpack.config.js     # → Webpack config
+└── vendor/               # → Composer packages (never edit)
 ```
 
 ## Theme setup
@@ -80,7 +84,7 @@ $ npm install
 
 You now have all the necessary dependencies to run the build process.
 
-### Available build commands
+### Build commands
 
 * `npm run build` — Compile and optimize the files in your assets directory
 * `npm run start` — Compile assets when file changes are made, start BrowserSync session
@@ -88,16 +92,16 @@ You now have all the necessary dependencies to run the build process.
 
 ### Using BrowserSync
 
-To use BrowserSync during `npm watch` you need to update `devUrl` at the bottom of `assets/config.json` to reflect your local development hostname.
+To use BrowserSync during `npm run start` you need to update `devUrl` at the bottom of `assets/config.json` to reflect your local development hostname.
 
-For example, if your local development URL is `https://project-name.dev` you would update the file to read:
+If your local development URL is `https://project-name.dev`, update the file to read:
 ```json
 ...
   "devUrl": "https://project-name.dev",
 ...
 ```
 
-If you are not using [Bedrock](https://roots.io/bedrock/), you should also update `publicPath` to reflect your folder structure:
+If you are not using [Bedrock](https://roots.io/bedrock/), update `publicPath` to reflect your folder structure:
 
 ```json
 ...
