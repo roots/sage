@@ -97,7 +97,7 @@ For example, if your local development URL is `https://project-name.dev` you wou
 ...
 ```
 
-If you are not using [Bedrock](https://roots.io/bedrock/), you should also update `publicPatch` to reflect your folder structure:
+If you are not using [Bedrock](https://roots.io/bedrock/), you should also update `publicPath` to reflect your folder structure:
 
 ```json
 ...
