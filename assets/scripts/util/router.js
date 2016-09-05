@@ -6,6 +6,8 @@
  * replace the dash with an underscore when adding it to the object below.
  * ======================================================================== */
 
+import camelCase from './camelCase';
+
 // The routing fires all common scripts, followed by the page specific scripts.
 // Add additional events for more control over timing e.g. a finalize event
 export default class Router {
@@ -25,10 +27,15 @@ export default class Router {
     this.fire('common');
 
     // Fire page-specific init JS, and then finalize JS
-    document.body.className.replace(/-/g, '_').split(/\s+/).forEach((className) => {
-      this.fire(className);
-      this.fire(className, 'finalize');
-    });
+    document.body.className
+      .toLowerCase()
+      .replace(/-/g, '_')
+      .split(/\s+/)
+      .map(camelCase)
+      .forEach((className) => {
+        this.fire(className);
+        this.fire(className, 'finalize');
+      });
 
     // Fire common finalize JS
     this.fire('common', 'finalize');

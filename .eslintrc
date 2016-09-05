@@ -1,17 +1,14 @@
 {
   "root": true,
-  "extends": "eslint:recommended",
+  "extends": "airbnb",
   "globals": {
     "wp": true
   },
   "env": {
+    "amd": true,
     "browser": true,
     "jquery": true,
-    "node": true,
-    "amd": true
+    "node": true
   },
-  "parser": "babel-eslint",
-  "rules": {
-    "no-console": 0
-  }
+  "parser": "babel-eslint"
 }

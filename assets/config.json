@@ -1,7 +1,6 @@
 {
   "entry": {
     "main": [
-      "./scripts/util/public-path.js",
       "./scripts/main.js",
       "./styles/main.scss"
     ],
@@ -10,5 +9,7 @@
     ]
   },
   "publicPath": "/app/themes/sage",
-  "devUrl": "http://example.dev"
+  "devUrl": "https://example.dev",
+  "proxyUrl": "https://localhost:3000",
+  "cacheBusting": "[name]_[hash:8]"
 }
