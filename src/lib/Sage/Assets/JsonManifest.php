@@ -1,4 +1,6 @@
-<?php namespace Roots\Sage\Assets;
+<?php
+
+namespace Roots\Sage\Assets;
 
 /**
  * Class JsonManifest
