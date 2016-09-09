@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const url = require('url');
 

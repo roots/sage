@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 const webpack = require('webpack');
 const path = require('path');
 const qs = require('qs');

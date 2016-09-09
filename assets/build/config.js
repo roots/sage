@@ -1,5 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
-
 const path = require('path');
 const argv = require('minimist')(process.argv.slice(2));
 const glob = require('glob-all');

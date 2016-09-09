@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 const AssetsPlugin = require('assets-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const cssnano = require('cssnano');
