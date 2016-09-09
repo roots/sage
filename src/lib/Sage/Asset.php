@@ -1,4 +1,6 @@
-<?php namespace Roots\Sage;
+<?php
+
+namespace Roots\Sage;
 
 use Roots\Sage\Assets\ManifestInterface;
 

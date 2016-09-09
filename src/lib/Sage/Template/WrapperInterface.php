@@ -1,4 +1,6 @@
-<?php namespace Roots\Sage\Template;
+<?php
+
+namespace Roots\Sage\Template;
 
 /**
  * Interface WrapperInterface

@@ -1,4 +1,6 @@
-<?php namespace App;
+<?php
+
+namespace App;
 
 use Roots\Sage\Asset;
 use Roots\Sage\Assets\JsonManifest;
