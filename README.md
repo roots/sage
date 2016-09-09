@@ -90,6 +90,12 @@ You now have all the necessary dependencies to run the build process.
 * `npm run start` — Compile assets when file changes are made, start BrowserSync session
 * `npm run build:production` — Compile assets for production
 
+#### Additional commands
+
+* `npm run clean` — Remove your `dist/` folder
+* `npm run lint` — Run eslint against your assets and build scripts
+* `composer test` — Check your PHP for code smells with `phpmd` and PSR-2 compliance with `phpcs`
+
 ### Using BrowserSync
 
 To use BrowserSync during `npm run start` you need to update `devUrl` at the bottom of `assets/config.json` to reflect your local development hostname.
@@ -105,10 +111,7 @@ If you are not using [Bedrock](https://roots.io/bedrock/), update `publicPath` t
 
 ```json
 ...
-  "output": {
-    "path": "dist",
-    "publicPath": "/wp-content/themes/sage/dist/"
-  }
+  "publicPath": "/wp-content/themes/sage/"
 ...
 ```
 
