@@ -5,6 +5,8 @@
 
 Sage is a WordPress starter theme with a modern development workflow.
 
+**Sage 9 is in active development and is only currently in alpha. The `master` branch tracks Sage 9 development. If you want a stable version, use [Sage 8](https://github.com/roots/sage/releases/latest).**
+
 ## Features
 
 * Sass for stylesheets
