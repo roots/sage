@@ -1,3 +1,7 @@
+### 9.0.0-alpha.3: September 11th, 2016
+* Fix webpack HMR ([#1713](https://github.com/roots/sage/issues/1713))
+* Remove minor edits from CHANGELOG.md ([3516629](https://github.com/roots/sage/commit/3516629))
+
 ### 9.0.0-alpha.2: September 4th, 2016
 * Refactor build routine ([#1703](https://github.com/roots/sage/pull/1703))
 * Update `_grid.scss` to use `@include make-col-ready()` mixin ([#1706](https://github.com/roots/sage/pull/1706))
@@ -16,7 +20,7 @@
 * Refactor functions.php ([eae36be](https://github.com/roots/sage/commit/eae36be))
 * Rework template wrapper, bring back template_part() ([#1678](https://github.com/roots/sage/pull/1678))
 * Remove unused static variable in Wrapper ([9bfdd5a](https://github.com/roots/sage/commit/9bfdd5a))
-* Remove path.extname() check ([#1673](https://github.com/roots/sage/pull/1673))
+* Remove `path.extname()` check ([#1673](https://github.com/roots/sage/pull/1673))
 * Updated to align with the Bootstrap 4 docs ([#1667](https://github.com/roots/sage/pull/1667))
 * Add `npm prune` to Travis CI ([#1663](https://github.com/roots/sage/pull/1663))
 * Bootstrap NPM ^4.0.0-alpha.2 ([#1650](https://github.com/roots/sage/pull/1650))

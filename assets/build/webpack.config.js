@@ -8,22 +8,28 @@ const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const imageminMozjpeg = require('imagemin-mozjpeg');
 
 const mergeWithConcat = require('./util/mergeWithConcat');
+const addHotMiddleware = require('./util/addHotMiddleware');
 const webpackConfigProduction = require('./webpack.config.production');
 const webpackConfigWatch = require('./webpack.config.watch');
 const config = require('./config');
 
-const publicPath = `${config.publicPath}/${path.basename(config.paths.dist)}/`;
 const assetsFilenames = (config.enabled.cacheBusting) ? config.cacheBusting : '[name]';
 const sourceMapQueryStr = (config.enabled.sourceMaps) ? '+sourceMap' : '-sourceMap';
 
 const jsLoader = {
   test: /\.js$/,
   exclude: [/(node_modules|bower_components)(?![/|\\](bootstrap|foundation-sites))/],
-  loaders: [`babel?presets[]=${path.resolve('./node_modules/babel-preset-es2015')}&cacheDirectory`],
+  loaders: [{
+    loader: 'babel',
+    query: {
+      presets: [[path.resolve('./node_modules/babel-preset-es2015'), { modules: false }]],
+      cacheDirectory: true,
+    },
+  }],
 };
 
 if (config.enabled.watcher) {
-  jsLoader.loaders.unshift('monkey-hot');
+  jsLoader.loaders.unshift('monkey-hot?sourceType=module');
 }
 
 const webpackConfig = {
@@ -32,7 +38,7 @@ const webpackConfig = {
   devtool: (config.enabled.sourceMaps ? '#source-map' : undefined),
   output: {
     path: config.paths.dist,
-    publicPath,
+    publicPath: config.publicPath,
     filename: `scripts/${assetsFilenames}.js`,
   },
   module: {
@@ -148,11 +154,6 @@ const webpackConfig = {
       Tether: 'tether',
       'window.Tether': 'tether',
     }),
-    new webpack.DefinePlugin({
-      WEBPACK_PUBLIC_PATH: (config.enabled.watcher)
-        ? JSON.stringify(publicPath)
-        : false,
-    }),
     new webpack.LoaderOptionsPlugin({
       minimize: config.enabled.minify,
       debug: config.enabled.watcher,
@@ -181,19 +182,15 @@ if (config.env.production) {
 }
 
 if (config.enabled.watcher) {
-  module.exports = mergeWithConcat(webpackConfig, webpackConfigWatch);
+  module.exports = mergeWithConcat(webpackConfig, webpackConfigWatch, {
+    entry: addHotMiddleware(webpackConfig.entry),
+  });
 }
 
 if (config.enabled.uglifyJs) {
   module.exports.plugins.push(
     new webpack.optimize.UglifyJsPlugin({
-      compress: config.enabled.minify ? {
-        drop_debugger: true,
-        dead_code: true,
-        warnings: false,
-      } : false,
       sourceMap: config.enabled.sourceMaps,
-      output: { comments: false },
     })
   );
 }

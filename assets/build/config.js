@@ -47,4 +47,5 @@ module.exports = mergeWithConcat(config, {
         .map(file => path.join(config.paths.assets, file));
     },
   },
+  publicPath: `${config.publicPath}/${path.basename(config.paths.dist)}/`,
 });

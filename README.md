@@ -86,8 +86,8 @@ You now have all the necessary dependencies to run the build process.
 
 ### Build commands
 
+* `npm start` — Compile assets when file changes are made, start BrowserSync session
 * `npm run build` — Compile and optimize the files in your assets directory
-* `npm run start` — Compile assets when file changes are made, start BrowserSync session
 * `npm run build:production` — Compile assets for production
 
 #### Additional commands
@@ -98,7 +98,7 @@ You now have all the necessary dependencies to run the build process.
 
 ### Using BrowserSync
 
-To use BrowserSync during `npm run start` you need to update `devUrl` at the bottom of `assets/config.json` to reflect your local development hostname.
+To use BrowserSync during `npm start` you need to update `devUrl` at the bottom of `assets/config.json` to reflect your local development hostname.
 
 If your local development URL is `https://project-name.dev`, update the file to read:
 ```json
@@ -112,6 +112,20 @@ If you are not using [Bedrock](https://roots.io/bedrock/), update `publicPath` t
 ```json
 ...
   "publicPath": "/wp-content/themes/sage/"
+...
+```
+
+By default, BrowserSync will use webpack's [HMR](https://webpack.github.io/docs/hot-module-replacement.html), which won't trigger a page reload in your browser.
+
+If you would like to force BrowserSync to reload the page whenever certain file types are edited, then add them to `watch` in `assets/config.json`.
+
+```json
+...
+  "watch": [
+    "assets/scripts/**/*.js",
+    "templates/**/*.php",
+    "src/**/*.php"
+  ],
 ...
 ```
 

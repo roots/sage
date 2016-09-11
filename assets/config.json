@@ -8,6 +8,10 @@
       "./scripts/customizer.js"
     ]
   },
+  "watch": [
+    "templates/**/*.php",
+    "src/**/*.php"
+  ],
   "publicPath": "/app/themes/sage",
   "devUrl": "https://example.dev",
   "proxyUrl": "https://localhost:3000",
