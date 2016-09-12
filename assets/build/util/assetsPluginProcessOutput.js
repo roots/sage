@@ -8,8 +8,8 @@ const path = require('path');
  */
 module.exports = (assets) => {
   const results = {};
-  Object.keys(assets).forEach(name => {
-    Object.keys(assets[name]).forEach(ext => {
+  Object.keys(assets).forEach((name) => {
+    Object.keys(assets[name]).forEach((ext) => {
       const filename = `${path.dirname(assets[name][ext])}/${path.basename(`${name}.${ext}`)}`;
       results[filename] = assets[name][ext];
     });

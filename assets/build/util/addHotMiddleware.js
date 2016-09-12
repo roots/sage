@@ -13,7 +13,7 @@ module.exports = (entry) => {
     reload: false,
   })}`;
 
-  Object.keys(entry).forEach(name => {
+  Object.keys(entry).forEach((name) => {
     results[name] = Array.isArray(entry[name]) ? entry[name].slice(0) : [entry[name]];
     results[name].push(hotMiddlewareScript);
   });
