@@ -21,15 +21,14 @@ module.exports = class {
       return;
     }
     this.compiler = compiler;
-    compiler.plugin('done', this.doneCompiling);
-  }
-  doneCompiling() {
-    if (!this.watcher) {
-      this.watcher = browserSync.create();
-      this.compiler.plugin('compilation', () => this.watcher.notify('Rebuilding...'));
-      this.start();
-    }
-    // Optionally add logic for this.watcher.reload()
+    compiler.plugin('done', () => {
+      if (!this.watcher) {
+        this.watcher = browserSync.create();
+        compiler.plugin('compilation', () => this.watcher.notify('Rebuilding...'));
+        this.start();
+      }
+      // Optionally add logic for this.watcher.reload()
+    });
   }
   start() {
     const watcherConfig = mergeWithConcat({
