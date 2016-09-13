@@ -11,9 +11,6 @@ module.exports = {
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
-    new webpack.DefinePlugin({
-      WEBPACK_PUBLIC_PATH: JSON.stringify(config.publicPath),
-    }),
     new BrowserSyncPlugin({
       target: config.devUrl,
       publicPath: config.publicPath,

@@ -154,6 +154,11 @@ const webpackConfig = {
       Tether: 'tether',
       'window.Tether': 'tether',
     }),
+    new webpack.DefinePlugin({
+      WEBPACK_PUBLIC_PATH: (config.enabled.watcher)
+        ? JSON.stringify(config.publicPath)
+        : false,
+    }),
     new webpack.LoaderOptionsPlugin({
       minimize: config.enabled.minify,
       debug: config.enabled.watcher,
