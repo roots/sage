@@ -1,3 +1,8 @@
+### 8.5.0: September 20th, 2016
+* Update installation instructions
+* Update dependencies
+* Update to Bootstrap 4.0.0-alpha.4
+
 ### 8.4.2: February 19th, 2016
 * Add Composer vendor directory to gitignore ([#1618](https://github.com/roots/sage/issues/1618))
 * Fix build test by removing trailing space ([#1617](https://github.com/roots/sage/issues/1617))

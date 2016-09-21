@@ -16,7 +16,7 @@ Sage is a WordPress starter theme based on HTML5 Boilerplate, gulp, Bower, and B
 | Prerequisite    | How to check | How to install
 | --------------- | ------------ | ------------- |
 | PHP >= 5.4.x    | `php -v`     | [php.net](http://php.net/manual/en/install.php) |
-| Node.js 0.12.x  | `node -v`    | [nodejs.org](http://nodejs.org/) |
+| Node.js >= 4.5  | `node -v`    | [nodejs.org](http://nodejs.org/) |
 | gulp >= 3.8.10  | `gulp -v`    | `npm install -g gulp` |
 | Bower >= 1.3.12 | `bower -v`   | `npm install -g bower` |
 
@@ -47,31 +47,16 @@ See a complete working example in the [roots-example-project.com repo](https://g
 
 ## Theme installation
 
-Bottom line is you want to get the files in this repo into your local development environment. There are many ways to do this, two of which we will cover here.
+Install Sage by copying the project into a new folder within your WordPress themes directory.
 
-### via Command-line
+Make sure [Composer](https://getcomposer.org/download/) has been installed before moving on.
 
-If you're already [using Composer to manage WordPress](https://roots.io/using-composer-with-wordpress/), then you might consider using composer's `create-project` command to download Sage.
+Install Sage using Composer from your WordPress themes directory (replace `your-theme-name` below with the name of your theme):
 
-The example below assumes you're using Bedrock. If you're not, simply change the target path accordingly.
-
-```sh
-composer create-project roots/sage web/app/themes/your-theme-name-here
+```shell
+# @ example.com/site/web/app/themes/
+$ composer create-project roots/sage your-theme-name 8.5.0
 ```
-
-Then activate the theme via [wp-cli](http://wp-cli.org/commands/theme/activate/).
-
-```sh
-wp theme activate your-theme-name-here
-```
-
-### via WordPress Admin Panel
-
-1. [Download the latest release](https://github.com/roots/sage/releases/latest) of Sage.
-2. In your WordPress admin panel, navigate to Appearance->Themes
-3. Click Add New
-4. Click Upload Theme
-5. Upload the zip file that you downloaded.
 
 ## Theme setup
 
