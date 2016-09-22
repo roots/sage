@@ -1,12 +1,12 @@
 {
-  "name": "sage",
+  "name": "sage-fork",
   "version": "8.4.2",
-  "author": "Ben Word <ben@benword.com>",
-  "homepage": "https://roots.io/sage/",
+  "author": "Jerry Garcia",
+  "homepage": "bigroomstudios.com",
   "private": true,
   "repository": {
     "type": "git",
-    "url": "git://github.com/roots/sage.git"
+    "url": "git://github.com/BigRoomStudios/sage.git"
   },
   "bugs": {
     "url": "https://github.com/roots/sage/issues"
@@ -41,10 +41,12 @@
     "gulp-jshint": "^1.11.2",
     "gulp-less": "^3.0.3",
     "gulp-plumber": "^1.0.1",
+    "gulp-raster": "^0.1.0",
     "gulp-rename": "^1.2.2",
     "gulp-rev": "^6.0.0",
     "gulp-sass": "^2.0.1",
     "gulp-sourcemaps": "^1.5.2",
+    "gulp-svgmin": "^1.2.2",
     "gulp-uglify": "^1.2.0",
     "imagemin-pngcrush": "^4.1.0",
     "jshint-stylish": "^2.0.1",

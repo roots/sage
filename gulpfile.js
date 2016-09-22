@@ -19,6 +19,9 @@ var runSequence  = require('run-sequence');
 var sass         = require('gulp-sass');
 var sourcemaps   = require('gulp-sourcemaps');
 var uglify       = require('gulp-uglify');
+var svgmin       = require('gulp-svgmin');
+var raster       = require('gulp-raster');
+var rename       = require('gulp-rename');
 
 // See https://github.com/austinpray/asset-builder
 var manifest = require('asset-builder')('./assets/manifest.json');
@@ -215,6 +218,7 @@ gulp.task('images', function() {
     .pipe(imagemin({
       progressive: true,
       interlaced: true,
+      optimizationLevel: 1,
       svgoPlugins: [{removeUnknownsAndDefaults: false}, {cleanupIDs: false}]
     }))
     .pipe(gulp.dest(path.dist + 'images'))
@@ -255,6 +259,7 @@ gulp.task('watch', function() {
   gulp.watch([path.source + 'scripts/**/*'], ['jshint', 'scripts']);
   gulp.watch([path.source + 'fonts/**/*'], ['fonts']);
   gulp.watch([path.source + 'images/**/*'], ['images']);
+  gulp.watch([path.source + 'icons/*'], ['svg']);
   gulp.watch(['bower.json', 'assets/manifest.json'], ['build']);
 });
 
@@ -262,10 +267,7 @@ gulp.task('watch', function() {
 // `gulp build` - Run all the build tasks but don't clean up beforehand.
 // Generally you should be running `gulp` instead of `gulp build`.
 gulp.task('build', function(callback) {
-  runSequence('styles',
-              'scripts',
-              ['fonts', 'images'],
-              callback);
+  runSequence('styles', 'scripts', ['fonts', 'images', 'svg'], callback);
 });
 
 // ### Wiredep
@@ -279,6 +281,25 @@ gulp.task('wiredep', function() {
       hasChanged: changed.compareSha1Digest
     }))
     .pipe(gulp.dest(path.source + 'styles'));
+});
+
+// ### SVG / PNG
+gulp.task('svg', function(callback) {
+  runSequence('svgmin', ['png'], callback);
+});
+
+// `gulp svgmin` - Minify SVG files
+gulp.task('svgmin', function() {
+  return gulp.src(path.source + 'icons/*.svg')
+    .pipe(svgmin())
+    .pipe(gulp.dest(path.dist + 'icons/svg'));
+});
+
+gulp.task('png', function() {
+  gulp.src(path.dist + 'icons/svg/*.svg')
+    .pipe(raster({format: 'png', scale: 0.75}))
+    .pipe(rename({extname: '.png'}))
+    .pipe(gulp.dest(path.dist + 'icons/png'));
 });
 
 // ### Gulp
