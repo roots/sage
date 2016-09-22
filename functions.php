@@ -15,7 +15,9 @@ $sage_includes = [
   'lib/setup.php',     // Theme setup
   'lib/titles.php',    // Page titles
   'lib/wrapper.php',   // Theme wrapper class
-  'lib/customizer.php' // Theme customizer
+  'lib/customizer.php', // Theme customizer
+  'lib/brs/img-helpers.php',    // Img Helpers
+  'lib/brs/admin-info-helpers.php'  // Admin Info Helpers
 ];
 
 foreach ($sage_includes as $file) {
