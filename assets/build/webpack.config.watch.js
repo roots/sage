@@ -17,7 +17,7 @@ module.exports = {
       publicPath: config.publicPath,
       proxyUrl: config.proxyUrl,
       browserSyncOptions: mergeWithConcat({
-        files: config.watch
+        files: config.watch,
       }, config.browserSyncOptions),
     }),
   ],
