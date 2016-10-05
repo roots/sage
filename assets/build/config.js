@@ -27,10 +27,7 @@ const config = mergeWithConcat({
     watcher: !!argv.watch,
     uglifyJs: !(argv.p || argv.optimizeMinimize),
   },
-  watch: [
-    'templates/**/*.php',
-    'src/**/*.php',
-  ],
+  watch: [],
 }, userConfig);
 
 Object.keys(config.entry).forEach(id =>
