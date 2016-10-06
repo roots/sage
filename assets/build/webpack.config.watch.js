@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const BrowserSyncPlugin = require('./webpack.plugin.browsersync');
+const mergeWithConcat = require('./util/mergeWithConcat');
 
 const config = require('./config');
 
@@ -15,7 +16,9 @@ module.exports = {
       target: config.devUrl,
       publicPath: config.publicPath,
       proxyUrl: config.proxyUrl,
-      browserSyncOptions: { files: config.watch },
+      browserSyncOptions: mergeWithConcat({
+        files: config.watch,
+      }, config.browserSyncOptions),
     }),
   ],
 };
