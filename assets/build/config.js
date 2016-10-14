@@ -27,6 +27,7 @@ const config = mergeWithConcat({
     watcher: !!argv.watch,
     uglifyJs: !(argv.p || argv.optimizeMinimize),
   },
+  publicPath: `/${path.dirname(process.cwd()).split(path.sep).slice(-2).concat(path.basename(process.cwd())).join('/')}`,
   watch: [],
 }, userConfig);
 
