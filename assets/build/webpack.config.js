@@ -76,7 +76,7 @@ const webpackConfig = {
         }),
       },
       {
-        test: /\.(png|jpe?g|gif|svg)$/,
+        test: /\.(png|jpe?g|gif|svg|ico)$/,
         include: config.paths.assets,
         loaders: [
           `file?${qs.stringify({
