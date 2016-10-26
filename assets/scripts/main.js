@@ -20,4 +20,9 @@ const routes = {
 };
 
 // Load Events
-document.addEventListener('DOMContentLoaded', () => new Router(routes).loadEvents());
+// Ensures that the callback will always run
+if (document.readyState === 'complete' || (document.readyState !== 'loading' && !document.documentElement.doScroll)) {
+  new Router(routes).loadEvents();
+} else {
+  document.addEventListener('DOMContentLoaded', () => new Router(routes).loadEvents());
+}
