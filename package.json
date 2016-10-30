@@ -76,6 +76,7 @@
   "dependencies": {
     "bootstrap": "github:twbs/bootstrap#v4-dev",
     "font-awesome": "^4.6.3",
-    "jquery": "1.12.4 - 3"
+    "jquery": "1.12.4 - 3",
+    "yarn": "^0.16.1"
   }
 }
