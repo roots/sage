@@ -1,7 +1,7 @@
 
 # Big Room Studios - Wordpress Starter Theme
 
-Forked at version 8.4.2 from https://roots.io/sage/. Thank you Roots and Sage team for your awesome work!
+Forked at version 8.5.0 from https://roots.io/sage/. Thank you Roots and Sage team for your awesome work!
 
 ## Starting a Custom Theme Project
 
@@ -50,7 +50,7 @@ Sage is a WordPress starter theme based on HTML5 Boilerplate, gulp, Bower, and B
 | Prerequisite    | How to check | How to install
 | --------------- | ------------ | ------------- |
 | PHP >= 5.4.x    | `php -v`     | [php.net](http://php.net/manual/en/install.php) |
-| Node.js 0.12.x  | `node -v`    | [nodejs.org](http://nodejs.org/) |
+| Node.js >= 4.5.x  | `node -v`    | [nodejs.org](http://nodejs.org/) |
 | gulp >= 3.8.10  | `gulp -v`    | `npm install -g gulp` |
 | Bower >= 1.3.12 | `bower -v`   | `npm install -g bower` |
 

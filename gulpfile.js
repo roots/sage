@@ -20,8 +20,6 @@ var sass         = require('gulp-sass');
 var sourcemaps   = require('gulp-sourcemaps');
 var uglify       = require('gulp-uglify');
 var svgmin       = require('gulp-svgmin');
-var raster       = require('gulp-raster');
-var rename       = require('gulp-rename');
 
 // See https://github.com/austinpray/asset-builder
 var manifest = require('asset-builder')('./assets/manifest.json');
@@ -283,9 +281,9 @@ gulp.task('wiredep', function() {
     .pipe(gulp.dest(path.source + 'styles'));
 });
 
-// ### SVG / PNG
+// ### SVG
 gulp.task('svg', function(callback) {
-  runSequence('svgmin', ['png'], callback);
+  runSequence('svgmin', callback);
 });
 
 // `gulp svgmin` - Minify SVG files
@@ -293,13 +291,6 @@ gulp.task('svgmin', function() {
   return gulp.src(path.source + 'icons/*.svg')
     .pipe(svgmin())
     .pipe(gulp.dest(path.dist + 'icons/svg'));
-});
-
-gulp.task('png', function() {
-  gulp.src(path.dist + 'icons/svg/*.svg')
-    .pipe(raster({format: 'png', scale: 0.75}))
-    .pipe(rename({extname: '.png'}))
-    .pipe(gulp.dest(path.dist + 'icons/png'));
 });
 
 // ### Gulp

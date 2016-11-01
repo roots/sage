@@ -1,6 +1,6 @@
 {
   "name": "sage-fork",
-  "version": "8.4.2",
+  "version": "8.5.0",
   "author": "Jerry Garcia",
   "homepage": "bigroomstudios.com",
   "private": true,
@@ -23,38 +23,37 @@
     "jscs": "jscs gulpfile.js assets/scripts/*.js"
   },
   "engines": {
-    "node": ">= 0.12.0",
-    "npm": ">=2.1.5"
+   "node": ">= 4.5"
   },
   "devDependencies": {
     "asset-builder": "^1.1.0",
     "browser-sync": "^2.8.2",
-    "del": "^1.2.1",
+    "del": "^2.2.2",
     "gulp": "^3.9.0",
-    "gulp-autoprefixer": "^2.3.1",
+    "gulp-autoprefixer": "^3.1.1",
     "gulp-changed": "^1.3.0",
     "gulp-concat": "^2.6.0",
     "gulp-cssnano": "^2.1.0",
-    "gulp-flatten": "0.1.1",
+    "gulp-flatten": "0.3.1",
     "gulp-if": "^2.0.1",
-    "gulp-imagemin": "^2.3.0",
-    "gulp-jshint": "^1.11.2",
+    "gulp-imagemin": "^3.0.3",
+    "gulp-jshint": "^2.0.1",
     "gulp-less": "^3.0.3",
     "gulp-plumber": "^1.0.1",
-    "gulp-raster": "^0.1.0",
     "gulp-rename": "^1.2.2",
-    "gulp-rev": "^6.0.0",
+    "gulp-rev": "^7.1.2",
     "gulp-sass": "^2.0.1",
-    "gulp-sourcemaps": "^1.5.2",
     "gulp-svgmin": "^1.2.2",
-    "gulp-uglify": "^1.2.0",
-    "imagemin-pngcrush": "^4.1.0",
+    "gulp-sourcemaps": "^1.5.2",
+    "gulp-uglify": "^2.0.0",
+    "imagemin-pngcrush": "^5.0.0",
+    "jshint": "^2.9.3",
     "jshint-stylish": "^2.0.1",
     "lazypipe": "^1.0.1",
     "merge-stream": "^1.0.0",
     "minimist": "^1.1.3",
     "run-sequence": "^1.1.2",
     "traverse": "^0.6.6",
-    "wiredep": "^2.2.2"
+    "wiredep": "^4.0.0"
   }
 }
