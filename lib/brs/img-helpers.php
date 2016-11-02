@@ -6,8 +6,7 @@ function svg($icon_name, $height, $width){
   $url = "{$dir_name}/dist/icons/svg/icon-{$icon_name}.svg";
   $url_png = "{$dir_name}/dist/icons/png/icon-{$icon_name}.png";
   $svg = file_get_contents($url);
-  $fallback = "onerror='this.onerror=null; this.src=".$url_png."'";
-  echo "<div class='svg-icon {$icon_name}' style='height:{$height}; width:{$width};'>" . $svg . "</div>";
+  echo "<div class='svg-icon {$icon_name}' style='height:{$height}; width:{$width};'>{$svg}</div>";
 }
 
 // Use imgSrc like imgSrc('image-name.jpg') to access images in the dist/images/ folder
