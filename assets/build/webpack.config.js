@@ -1,5 +1,4 @@
 const webpack = require('webpack');
-const path = require('path');
 const qs = require('qs');
 const autoprefixer = require('autoprefixer');
 const CleanPlugin = require('clean-webpack-plugin');
@@ -20,11 +19,8 @@ const jsLoader = {
   test: /\.js$/,
   exclude: [/(node_modules|bower_components)(?![/|\\](bootstrap|foundation-sites))/],
   loaders: [{
-    loader: 'babel',
-    query: {
-      presets: [[path.resolve('./node_modules/babel-preset-es2015'), { modules: false }]],
-      cacheDirectory: true,
-    },
+    loader: 'buble',
+    query: { objectAssign: 'Object.assign' },
   }],
 };
 

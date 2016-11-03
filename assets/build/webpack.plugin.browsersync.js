@@ -1,4 +1,4 @@
-'use strict'; // eslint-disable-line strict
+'use strict'; // eslint-disable-line
 
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
