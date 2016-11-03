@@ -44,7 +44,10 @@ module.exports = class {
   middleware() {
     this.webpackDevMiddleware = webpackDevMiddleware(this.compiler, {
       publicPath: this.options.publicPath,
-      stats: { colors: true },
+      stats: { 
+        colors: true,
+        chunks: false
+      },
     });
     this.webpackHotMiddleware = webpackHotMiddleware(this.compiler, {
       log: this.watcher.notify.bind(this.watcher),
