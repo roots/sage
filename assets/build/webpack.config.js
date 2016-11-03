@@ -42,15 +42,14 @@ const webpackConfig = {
     filename: `scripts/${assetsFilenames}.js`,
   },
   module: {
-    preLoaders: [
+    rules: [
+      jsLoader,
       {
+        enforce: 'pre',
         test: /\.js?$/,
         include: config.paths.assets,
         loader: 'eslint',
       },
-    ],
-    loaders: [
-      jsLoader,
       {
         test: /\.css$/,
         include: config.paths.assets,
@@ -110,12 +109,14 @@ const webpackConfig = {
       },
     ],
   },
-  modules: [
-    config.paths.assets,
-    'node_modules',
-    'bower_components',
-  ],
-  enforceExtensions: false,
+  resolve: {
+    modules: [
+      config.paths.assets,
+      'node_modules',
+      'bower_components',
+    ],
+    enforceExtension: false,
+  },
   externals: {
     jquery: 'jQuery',
   },
@@ -163,18 +164,21 @@ const webpackConfig = {
       minimize: config.enabled.minify,
       debug: config.enabled.watcher,
       stats: { colors: true },
-      postcss: [
-        autoprefixer({
-          browsers: [
-            'last 2 versions',
-            'android 4',
-            'opera 12',
-          ],
-        }),
-      ],
-      eslint: {
-        failOnWarning: false,
-        failOnError: true,
+    }),
+    new webpack.LoaderOptionsPlugin({
+      test: /\.s?css$/,
+      options: {
+        output: { path: config.paths.dist },
+        context: config.paths.assets,
+        postcss: [
+          autoprefixer({ browsers: ['last 2 versions', 'android 4', 'opera 12'] }),
+        ],
+      },
+    }),
+    new webpack.LoaderOptionsPlugin({
+      test: /\.js$/,
+      options: {
+        eslint: { failOnWarning: false, failOnError: true },
       },
     }),
   ],
@@ -187,9 +191,8 @@ if (config.env.production) {
 }
 
 if (config.enabled.watcher) {
-  module.exports = mergeWithConcat(webpackConfig, webpackConfigWatch, {
-    entry: addHotMiddleware(webpackConfig.entry),
-  });
+  module.exports.entry = addHotMiddleware(webpackConfig.entry);
+  module.exports = mergeWithConcat(webpackConfig, webpackConfigWatch);
 }
 
 if (config.enabled.uglifyJs) {
