@@ -6,6 +6,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const imageminMozjpeg = require('imagemin-mozjpeg');
 
+const CopyGlobsPlugin = require('./webpack.plugin.copyglobs');
 const mergeWithConcat = require('./util/mergeWithConcat');
 const addHotMiddleware = require('./util/addHotMiddleware');
 const webpackConfigProduction = require('./webpack.config.production');
@@ -75,7 +76,7 @@ const webpackConfig = {
         include: config.paths.assets,
         loaders: [
           `file?${qs.stringify({
-            name: '[path][name].[ext]',
+            name: `[path]${assetsFilenames}.[ext]`,
           })}`,
         ],
       },
@@ -118,25 +119,19 @@ const webpackConfig = {
   },
   plugins: [
     new CleanPlugin([config.paths.dist], config.paths.root),
+    new CopyGlobsPlugin({
+      // It would be nice to switch to copy-webpack-plugin, but unfortunately it doesn't
+      // provide a reliable way of tracking the before/after file names
+      pattern: config.copy,
+      output: `[path]${assetsFilenames}.[ext]`,
+      manifest: config.manifest,
+    }),
     new ImageminPlugin({
-      optipng: {
-        optimizationLevel: 7,
-      },
-      gifsicle: {
-        optimizationLevel: 3,
-      },
-      pngquant: {
-        quality: '65-90',
-        speed: 4,
-      },
-      svgo: {
-        removeUnknownsAndDefaults: false,
-        cleanupIDs: false,
-      },
-      jpegtran: null,
-      plugins: [imageminMozjpeg({
-        quality: 75,
-      })],
+      optipng: { optimizationLevel: 7 },
+      gifsicle: { optimizationLevel: 3 },
+      pngquant: { quality: '65-90', speed: 4 },
+      svgo: { removeUnknownsAndDefaults: false, cleanupIDs: false },
+      plugins: [imageminMozjpeg({ quality: 75 })],
       disable: (config.enabled.watcher),
     }),
     new ExtractTextPlugin({

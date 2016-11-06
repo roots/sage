@@ -11,7 +11,9 @@ module.exports = {
       path: config.paths.dist,
       filename: 'assets.json',
       fullPath: false,
-      processOutput,
+      processOutput(assets) {
+        return JSON.stringify(Object.assign(processOutput(assets), config.manifest));
+      },
     }),
     new OptimizeCssAssetsPlugin({
       cssProcessor: cssnano,

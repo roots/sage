@@ -1,3 +1,4 @@
+
 const path = require('path');
 
 /**
@@ -7,12 +8,12 @@ const path = require('path');
  * @return {String}        JSON
  */
 module.exports = (assets) => {
-  const results = {};
+  const manifest = {};
   Object.keys(assets).forEach((name) => {
     Object.keys(assets[name]).forEach((ext) => {
       const filename = `${path.dirname(assets[name][ext])}/${path.basename(`${name}.${ext}`)}`;
-      results[filename] = assets[name][ext];
+      manifest[filename] = assets[name][ext];
     });
   });
-  return JSON.stringify(results);
+  return manifest;
 };
