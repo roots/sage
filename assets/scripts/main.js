@@ -20,4 +20,4 @@ const routes = {
 };
 
 // Load Events
-document.addEventListener('DOMContentLoaded', () => new Router(routes).loadEvents());
+jQuery(document).ready(() => new Router(routes).loadEvents());
