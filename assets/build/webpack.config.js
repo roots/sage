@@ -1,16 +1,13 @@
+'use strict'; // eslint-disable-line
+
 const webpack = require('webpack');
 const qs = require('qs');
 const autoprefixer = require('autoprefixer');
 const CleanPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const ImageminPlugin = require('imagemin-webpack-plugin').default;
-const imageminMozjpeg = require('imagemin-mozjpeg');
 
 const CopyGlobsPlugin = require('./webpack.plugin.copyglobs');
 const mergeWithConcat = require('./util/mergeWithConcat');
-const addHotMiddleware = require('./util/addHotMiddleware');
-const webpackConfigProduction = require('./webpack.config.production');
-const webpackConfigWatch = require('./webpack.config.watch');
 const config = require('./config');
 
 const assetsFilenames = (config.enabled.cacheBusting) ? config.cacheBusting : '[name]';
@@ -29,7 +26,7 @@ if (config.enabled.watcher) {
   jsLoader.loaders.unshift('monkey-hot?sourceType=module');
 }
 
-const webpackConfig = {
+let webpackConfig = {
   context: config.paths.assets,
   entry: config.entry,
   devtool: (config.enabled.sourceMaps ? '#source-map' : undefined),
@@ -118,21 +115,16 @@ const webpackConfig = {
     jquery: 'jQuery',
   },
   plugins: [
-    new CleanPlugin([config.paths.dist], config.paths.root),
+    new CleanPlugin([config.paths.dist], {
+      root: config.paths.root,
+      verbose: false,
+    }),
     new CopyGlobsPlugin({
       // It would be nice to switch to copy-webpack-plugin, but unfortunately it doesn't
       // provide a reliable way of tracking the before/after file names
       pattern: config.copy,
       output: `[path]${assetsFilenames}.[ext]`,
       manifest: config.manifest,
-    }),
-    new ImageminPlugin({
-      optipng: { optimizationLevel: 7 },
-      gifsicle: { optimizationLevel: 3 },
-      pngquant: { quality: '65-90', speed: 4 },
-      svgo: { removeUnknownsAndDefaults: false, cleanupIDs: false },
-      plugins: [imageminMozjpeg({ quality: 75 })],
-      disable: (config.enabled.watcher),
     }),
     new ExtractTextPlugin({
       filename: `styles/${assetsFilenames}.css`,
@@ -152,7 +144,7 @@ const webpackConfig = {
         : false,
     }),
     new webpack.LoaderOptionsPlugin({
-      minimize: config.enabled.minify,
+      minimize: config.enabled.optimize,
       debug: config.enabled.watcher,
       stats: { colors: true },
     }),
@@ -175,21 +167,33 @@ const webpackConfig = {
   ],
 };
 
-module.exports = webpackConfig;
+/* eslint-disable global-require */ /** Let's only load dependencies as needed */
+
+if (config.env.optimize) {
+  webpackConfig = mergeWithConcat(webpackConfig, require('./webpack.config.optimize'));
+}
 
 if (config.env.production) {
-  module.exports = mergeWithConcat(webpackConfig, webpackConfigProduction);
+  webpackConfig.plugins.push(new webpack.NoErrorsPlugin());
 }
 
-if (config.enabled.watcher) {
-  module.exports.entry = addHotMiddleware(webpackConfig.entry);
-  module.exports = mergeWithConcat(webpackConfig, webpackConfigWatch);
-}
+if (config.enabled.cacheBusting) {
+  const WebpackAssetsManifest = require('webpack-assets-manifest');
 
-if (config.enabled.uglifyJs) {
-  module.exports.plugins.push(
-    new webpack.optimize.UglifyJsPlugin({
-      sourceMap: config.enabled.sourceMaps,
+  webpackConfig.plugins.push(
+    new WebpackAssetsManifest({
+      output: 'assets.json',
+      space: 2,
+      writeToDisk: false,
+      assets: config.manifest,
+      replacer: require('./util/assetManifestsFormatter'),
     })
   );
 }
+
+if (config.enabled.watcher) {
+  webpackConfig.entry = require('./util/addHotMiddleware')(webpackConfig.entry);
+  webpackConfig = mergeWithConcat(webpackConfig, require('./webpack.config.watch'));
+}
+
+module.exports = webpackConfig;

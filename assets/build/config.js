@@ -21,15 +21,14 @@ const config = mergeWithConcat({
   },
   enabled: {
     sourceMaps: !isProduction,
-    minify: isProduction,
+    optimize: isProduction,
     cacheBusting: isProduction,
     watcher: !!argv.watch,
-    uglifyJs: !(argv.p || argv.optimizeMinimize),
   },
   watch: [],
 }, userConfig);
 
-config.watch.push(config.copy);
+config.watch.push(`${path.basename(config.paths.assets)}/${config.copy}`);
 config.watch = uniq(config.watch);
 
 Object.keys(config.entry).forEach(id =>
