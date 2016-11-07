@@ -20,22 +20,21 @@ if (file_exists($composer = __DIR__ . '/vendor/autoload.php')) {
  * We do this so that the Template Hierarchy will look in themes/sage/templates for core WordPress themes
  * But functions.php, style.css, and index.php are all still located in themes/sage
  *
- * themes/sage/index.php also contains some self-correcting code, just in case the template option gets reset
+ * get_template_directory()   -> /srv/www/example.com/current/web/app/themes/sage
+ * get_stylesheet_directory() -> /srv/www/example.com/current/web/app/themes/sage
+ * locate_template()
+ * ├── STYLESHEETPATH         -> /srv/www/example.com/current/web/app/themes/sage
+ * └── TEMPLATEPATH           -> /srv/www/example.com/current/web/app/themes/sage/templates
  */
-add_filter('stylesheet', function ($stylesheet) {
+add_filter('template', function ($stylesheet) {
     return dirname($stylesheet);
 });
 add_action('after_switch_theme', function () {
-    $stylesheet = get_option('stylesheet');
+    $stylesheet = get_option('template');
     if (basename($stylesheet) !== 'templates') {
-        update_option('stylesheet', $stylesheet . '/templates');
+        update_option('template', $stylesheet . '/templates');
     }
 });
-add_action('customize_render_section', function ($section) {
-    if ($section->type === 'themes') {
-        $section->title = wp_get_theme(basename(__DIR__))->display('Name');
-    }
-}, 10, 2);
 
 /**
  * Sage includes
