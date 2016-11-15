@@ -16,14 +16,14 @@ const sourceMapQueryStr = (config.enabled.sourceMaps) ? '+sourceMap' : '-sourceM
 const jsLoader = {
   test: /\.js$/,
   exclude: [/(node_modules|bower_components)(?![/|\\](bootstrap|foundation-sites))/],
-  loaders: [{
+  use: [{
     loader: 'buble',
-    query: { objectAssign: 'Object.assign' },
+    options: { objectAssign: 'Object.assign' },
   }],
 };
 
 if (config.enabled.watcher) {
-  jsLoader.loaders.unshift('monkey-hot?sourceType=module');
+  jsLoader.use.unshift('monkey-hot?sourceType=module');
 }
 
 let webpackConfig = {
@@ -71,7 +71,7 @@ let webpackConfig = {
       {
         test: /\.(png|jpe?g|gif|svg|ico)$/,
         include: config.paths.assets,
-        loaders: [
+        use: [
           `file?${qs.stringify({
             name: `[path]${assetsFilenames}.[ext]`,
           })}`,
@@ -97,7 +97,7 @@ let webpackConfig = {
         test: /\.(ttf|eot|woff2?|png|jpe?g|gif|svg)$/,
         include: /node_modules|bower_components/,
         loader: 'file',
-        query: {
+        options: {
           name: `vendor/${config.cacheBusting}.[ext]`,
         },
       },
