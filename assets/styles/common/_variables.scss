@@ -1,10 +1,12 @@
-// Grid settings
-$enable-flex:           true;
-$main-sm-columns:       12;
-$sidebar-sm-columns:    4;
-
 // Colors
 $brand-primary:         #27ae60;
 
-// Font Awesome | see: http://fontawesome.io/get-started/
+// Global options
+$enable-flex:           true;
+
+// Grid settings
+$main-sm-columns:       12;
+$sidebar-sm-columns:    4;
+
+// Vendor variables
 $fa-font-path:          '~font-awesome/fonts';
