@@ -111,6 +111,9 @@ let webpackConfig = {
     ],
     enforceExtension: false,
   },
+  resolveLoader: {
+    moduleExtensions: ['-loader'],
+  },
   externals: {
     jquery: 'jQuery',
   },
