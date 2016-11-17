@@ -1,4 +1,6 @@
-### 9.0.0-alpha.4: TBD
+### 9.0.0-alpha.4: November 16th, 2016
+* Use new webpack api schema ([8ac5f15](https://github.com/roots/sage/commit/e6e60aa))
+* Update dependencies ([70ebba7](https://github.com/roots/sage/commit/70ebba7))
 * Variables organization ([8ac5f15](https://github.com/roots/sage/commit/8ac5f15))
 * Use $.fn.ready() (reverts 724d550) ([e7fccbe](https://github.com/roots/sage/commit/e7fccbe))
 * Theme activation updates 'stylesheet' option instead of 'template' ([fb19145](https://github.com/roots/sage/commit/fb19145))
