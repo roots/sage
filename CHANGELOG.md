@@ -1,3 +1,16 @@
+### 9.0.0-alpha.4: November 16th, 2016
+* Use new webpack api schema ([8ac5f15](https://github.com/roots/sage/commit/e6e60aa))
+* Update dependencies ([70ebba7](https://github.com/roots/sage/commit/70ebba7))
+* Variables organization ([8ac5f15](https://github.com/roots/sage/commit/8ac5f15))
+* Use $.fn.ready() (reverts 724d550) ([e7fccbe](https://github.com/roots/sage/commit/e7fccbe))
+* Theme activation updates 'stylesheet' option instead of 'template' ([fb19145](https://github.com/roots/sage/commit/fb19145))
+* Reorganize and refactor build routine ([8c9ba05](https://github.com/roots/sage/commit/8c9ba05))
+* Switch assets manifest plugin ([c1bb2b3](https://github.com/roots/sage/commit/c1bb2b3))
+* Add images to assets manifest ([c49793c](https://github.com/roots/sage/commit/c49793c))
+* Switch from babel to buble ([0d38ab8](https://github.com/roots/sage/commit/0d38ab8))
+* Update dependencies & webpack compatibility (BREAKING CHANGES) ([eae52fd](https://github.com/roots/sage/commit/eae52fd))
+* Use http by default (not https) to be consistent with Trellis ([e6f2f49](https://github.com/roots/sage/commit/e6f2f49))
+
 ### 9.0.0-alpha.3: September 11th, 2016
 * Fix webpack HMR ([#1713](https://github.com/roots/sage/issues/1713))
 * Remove minor edits from CHANGELOG.md ([3516629](https://github.com/roots/sage/commit/3516629))
@@ -52,6 +65,11 @@
 * Fix: page title not displaying ([9283bbb](https://github.com/roots/sage/commit/9283bbb))
 * Rename interfaces, unset after unwrapping ([97906e9](https://github.com/roots/sage/commit/97906e9))
 * Restructure theme, use autoloader ([9eaffa3](https://github.com/roots/sage/commit/9eaffa3a2d4df462dd8020a10551334208bd32a3))
+
+### 8.5.0: September 20th, 2016
+* Update installation instructions
+* Update dependencies
+* Update to Bootstrap 4.0.0-alpha.4 ([5eb01fd](https://github.com/roots/sage/commit/5eb01fd0319a7b6576e31579dc50e16b023abb74))
 
 ### 8.4.2: February 19th, 2016
 * Add Composer vendor directory to gitignore ([#1618](https://github.com/roots/sage/issues/1618))

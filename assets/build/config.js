@@ -1,7 +1,6 @@
 const path = require('path');
 const argv = require('minimist')(process.argv.slice(2));
-const glob = require('glob-all');
-const merge = require('lodash/merge');
+const uniq = require('lodash/uniq');
 
 const mergeWithConcat = require('./util/mergeWithConcat');
 const userConfig = require('../config');
@@ -12,7 +11,7 @@ const rootPath = (userConfig.paths && userConfig.paths.root)
   : process.cwd();
 
 const config = mergeWithConcat({
-  copy: ['images/**/*'],
+  copy: 'images/**/*',
   proxyUrl: 'http://localhost:3000',
   cacheBusting: '[name]_[hash]',
   paths: {
@@ -22,27 +21,22 @@ const config = mergeWithConcat({
   },
   enabled: {
     sourceMaps: !isProduction,
-    minify: isProduction,
+    optimize: isProduction,
     cacheBusting: isProduction,
     watcher: !!argv.watch,
-    uglifyJs: !(argv.p || argv.optimizeMinimize),
   },
   watch: [],
 }, userConfig);
+
+config.watch.push(`${path.basename(config.paths.assets)}/${config.copy}`);
+config.watch = uniq(config.watch);
 
 Object.keys(config.entry).forEach(id =>
   config.entry[id].unshift(path.join(__dirname, 'public-path.js')));
 
 module.exports = mergeWithConcat(config, {
-  env: merge({ production: isProduction, development: !isProduction }, argv.env),
-  entry: {
-    get files() {
-      return glob.sync(config.copy, {
-        cwd: config.paths.assets,
-        mark: true,
-      }).filter(file => !((file.slice(-1) === '/') || (!file.indexOf('*') === -1)))
-        .map(file => path.join(config.paths.assets, file));
-    },
-  },
+  env: Object.assign({ production: isProduction, development: !isProduction }, argv.env),
   publicPath: `${config.publicPath}/${path.basename(config.paths.dist)}/`,
+  manifest: {},
 });
+

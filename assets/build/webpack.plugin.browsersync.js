@@ -1,9 +1,10 @@
-'use strict'; // eslint-disable-line strict
+'use strict'; // eslint-disable-line
 
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
 const browserSync = require('browser-sync');
 const url = require('url');
+const uniq = require('lodash/uniq');
 
 const mergeWithConcat = require('./util/mergeWithConcat');
 
@@ -13,6 +14,7 @@ module.exports = class {
     this.compiler = null;
     this.options = mergeWithConcat({
       proxyUrl: 'https://localhost:3000',
+      watch: [],
       callback() {},
     }, options);
   }
@@ -27,7 +29,9 @@ module.exports = class {
         compiler.plugin('compilation', () => this.watcher.notify('Rebuilding...'));
         this.start();
       }
-      // Optionally add logic for this.watcher.reload()
+      /* You may optionally add custom logic here to trigger either of the following */
+      // this.watcher.reload()
+      // this.watcher.reload({ stream: true })
     });
   }
   start() {
@@ -38,13 +42,16 @@ module.exports = class {
         target: this.options.target,
         middleware: this.middleware(),
       },
+      files: [],
     }, this.options.browserSyncOptions);
+    watcherConfig.files = uniq(watcherConfig.files.concat(this.options.watch));
     this.watcher.init(watcherConfig, this.options.callback.bind(this));
   }
   middleware() {
     this.webpackDevMiddleware = webpackDevMiddleware(this.compiler, {
       publicPath: this.options.publicPath,
-      stats: { colors: true },
+      stats: false,
+      noInfo: true,
     });
     this.webpackHotMiddleware = webpackHotMiddleware(this.compiler, {
       log: this.watcher.notify.bind(this.watcher),
