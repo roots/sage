@@ -205,7 +205,7 @@ async-foreach@^0.1.3:
   version "0.1.3"
   resolved "https://registry.yarnpkg.com/async-foreach/-/async-foreach-0.1.3.tgz#36121f845c0578172de419a97dbeb1d16ec34542"
 
-"async-throttle@github:zeit/async-throttle#596dc23b4ac2598cfed4d30289fb75c29f8d57fe":
+async-throttle@zeit/async-throttle#596dc23b4ac2598cfed4d30289fb75c29f8d57fe:
   version "0.0.1"
   resolved "https://codeload.github.com/zeit/async-throttle/tar.gz/596dc23b4ac2598cfed4d30289fb75c29f8d57fe"
 
