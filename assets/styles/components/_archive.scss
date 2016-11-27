@@ -1,0 +1,12 @@
+.archive {
+  &__term {}
+  &__title {}
+  &__content-wrapper {}
+  &__content {}
+  &__listing {}
+  &__post {}
+
+  &--category {
+    .archive__title {}
+  }
+}

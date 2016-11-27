@@ -1,0 +1,10 @@
+.button {
+  // Provide BEM classes.
+  @each $name, $color in $foundation-palette {
+    &--#{$name} {
+      @include button-style($color, auto, auto);
+    }
+  }
+  &--primary {}
+  &--secondary {}
+}

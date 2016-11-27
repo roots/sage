@@ -1,0 +1,58 @@
+{% set object = post ? post : (term ? term : false) %}
+{% set slides = object.get_field('hero_slide') %}
+{% set force_crop = object.get_field('hero_crop') or (slides|length == 0) %}
+
+{% if slides|length == 0 %}
+  {%
+    set slides = post.get_thumbnail ?
+      [{ slide_image: post.thumbnail,             slide_title: post.title,               slide_theme: 'cover' }] :
+      [{ slide_image: options.hero_default_image, slide_title: object.title ?: wp_title, slide_theme: 'cover' }]
+  %}
+{% endif %}
+<div
+  class="orbit orbit--hero"
+  role="region"
+  data-orbit
+  data-auto-play="false"
+>
+  <ul class="orbit-container">
+
+  {% if slides|length > 1 %}
+    <button class="orbit-previous"><span class="show-for-sr">{{__('Previous Slide', 'theme')}}</span>&#xFE0E;</button>
+    <button class="orbit-next"><span class="show-for-sr">{{__('Next Slide', 'theme')}}</span>&#xFE0E;</button>
+  {% endif %}
+
+  {% for slide in slides %}
+    {% set image = TimberImage(slide.slide_image) %}
+    {% set image_desktop = force_crop ? image.src|resize(1400, 350) : image.src|resize(1400) %}
+    {% set image_tablet  = force_crop ? image.src|resize(768, 300)  : image.src|resize(768) %}
+    {% set image_mobile  = force_crop ? image.src|resize(400, 300)  : image.src|resize(400, 350) %}
+    {% set image_retina  = force_crop ? image.src|resize(800, 600)  : image.src|resize(800, 700) %}
+
+    <li class="orbit-slide {{loop.first ? 'is-active'}}" style="{{loop.first ?: 'display: none;'}}" id="orbit-slide-{{loop.index}}">
+      <picture class="orbit-image">
+        <source srcset="{{image_desktop|tojpg}}" media="(min-width: 1000px)" />
+        <source srcset="{{image_tablet|tojpg}}" media="(min-width: 700px)" />
+        <img src="{{image_mobile|tojpg}}"
+          srcset="
+            {{image_mobile|tojpg }} 1x,
+            {{image_retina|tojpg }} 2x
+          " />
+      </picture>
+      {% if slide.slide_title or slide.slide_content %}
+        <figcaption class="orbit-caption orbit-caption--{{slide.slide_theme}} u-bg--{{slide.slide_overlay}}">
+          {% if slide.slide_title %}
+            {% if loop.first %}
+              <h1>{{slide.slide_title}}</h1>
+            {% else %}
+              <h3 class="h1">{{slide.slide_title}}</h3>
+            {% endif %}
+          {% endif %}
+
+          {{slide.slide_content}}
+        </figcaption>
+      {% endif %}
+    </li>
+  {% endfor %}
+  </ul>
+</div>

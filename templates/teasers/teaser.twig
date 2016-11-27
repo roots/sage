@@ -1,0 +1,24 @@
+{% from 'macros/image.twig' import image as image %}
+
+<article class="teaser teaser--{{post.post_type}}" id="teaser-{{post.ID}}">
+  {% block content %}
+    <a class="teaser__link" href="{{post.link}}">
+      {% block thumbnail %}
+        {% if post.thumbnail %}
+          <div class="teaser__image">
+            {{image(post.thumbnail, 'teaser')}}
+          </div>
+        {% endif %}
+      {% endblock %}
+      <div class="teaser__content-wrapper">
+        <h6 class="teaser__title">{{post.title}}</h6>
+      {% if post.get_preview %}
+        <div class="teaser__content">
+          <p>{{post.get_preview(30, false, false, true)}}</p>
+          <p class="teaser__readmore">{{__('Read more', 'theme')}}</p>
+        </div>
+      {% endif %}
+      </div>
+    </a>
+  {% endblock %}
+</article>

@@ -1,0 +1,12 @@
+.teaser {
+  &__link {}
+  &__image {}
+  &__content-wrapper {}
+  &__content {}
+  &__title {}
+  &__readmore {}
+
+  &--post {
+    .teaser__title {}
+  }
+}

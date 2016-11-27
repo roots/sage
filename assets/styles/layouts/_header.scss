@@ -1,6 +1,43 @@
-.banner .nav li {
-  @extend .nav-item;
-}
-.banner .nav a {
-  @extend .nav-link;
+.l-header {
+  a { outline: none; }
+
+  &__bar--mobile {
+    position: relative;
+    z-index: 2;
+  }
+  &__bar--desktop {}
+
+  &__nav--mobile {
+    position: absolute;
+    left: 0;
+    right: 0;
+    background-color: $titlebar-background;
+    z-index: 1;
+  }
+
+  &__nav-toggle {
+    outline: none;
+
+    &.menu-icon:after { display: none; }
+
+    > span {
+      @include burger(
+        $width: rem-calc(20px),
+        $height: rem-calc(2px),
+        $gutter: $titlebar-icon-spacing,
+        $color: $titlebar-icon-color
+      );
+    }
+    &.active > span {
+      @include burger-to-cross();
+    }
+  }
+
+  .primary-menu {
+    &__item {
+      &--current {}
+    }
+    &__link {}
+  }
+  .language-menu {}
 }

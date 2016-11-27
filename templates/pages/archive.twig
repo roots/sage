@@ -1,0 +1,33 @@
+{% extends 'layout/base.twig' %}
+
+{% block content %}
+  <div class="archive archive--{{term.taxonomy}}" id="archive-{{term.ID}}">
+    {% block term %}
+      <section class="archive__term archive__term--{{term.taxonomy}}">
+        <div class="archive__content-wrapper">
+          {% block term__title %}
+            <h1 class="archive__title">{{term.name|default(wp_title)}}</h1>
+          {% endblock %}
+          {% block term__content %}
+            {% if term.description %}
+                <div class="archive__content">
+                  {{term.description}}
+                </div>
+              </div>
+            {% endif %}
+          {% endblock %}
+        </div>
+      </section>
+    {% endblock %}
+
+    {% block listing %}
+      <div class="archive__listing row grid small-up-1 medium-up-3">
+      {% for post in posts %}
+        <div class="archive__post column grid__column">
+          {% include ['teasers/teaser-'~post.post_type~'.twig', 'teasers/teaser.twig'] %}
+        </div>
+      {% endfor %}
+      </div>
+    {% endblock %}
+  </div>
+{% endblock %}

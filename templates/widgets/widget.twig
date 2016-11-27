@@ -1,0 +1,10 @@
+<section class="{{widget.class}}" id="{{widget.id}}">
+  {% if widget.title %}
+    <h3 class="widget__title">{{widget.title}}</h3>
+  {% endif %}
+  {% if widget.content %}
+  <div class="widget__content">
+    {{widget.content}}
+  </div>
+  {% endif %}
+</section>

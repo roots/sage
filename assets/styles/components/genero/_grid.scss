@@ -1,0 +1,28 @@
+/**
+ * Add a gutter below each column to make the grid work with multiple rows.
+ * @example
+ * <div class="row small-up-1 medium-up-2 grid">
+ *   <div class="column grid__column"></div>
+ *   <div class="column grid__column"></div>
+ *   <div class="column grid__column"></div>
+ *   <div class="column grid__column"></div>
+ * </div>
+ */
+.grid {
+  &__column {
+    @each $breakpoint, $value in $grid-column-gutter {
+      @include breakpoint($breakpoint) {
+        margin-top: $value;
+      }
+    }
+  }
+
+  // Remove spacing from the top row.
+  @include -zf-each-breakpoint() {
+    @for $i from 1 through $block-grid-max {
+      &.#{$-zf-size}-up-#{$i} .column:nth-child(-n+#{$i}) {
+        margin-top: 0;
+      }
+    }
+  }
+}

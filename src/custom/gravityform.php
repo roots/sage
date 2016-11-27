@@ -1,0 +1,5 @@
+<?php
+
+/**
+ * @todo provide examples.
+ */

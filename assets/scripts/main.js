@@ -1,6 +1,8 @@
 // import external dependencies
 import 'jquery';
-import 'bootstrap/dist/js/bootstrap';
+import 'picturefill';
+import 'foundation-sites/dist/js/foundation';
+import 'motion-ui/dist/motion-ui';
 
 // import local dependencies
 import Router from './util/router';
@@ -19,5 +21,9 @@ const routes = {
   aboutUs,
 };
 
+// Ensure correct images are set before plugins such as orbit begins measuring
+// dimensions.
+picturefill();
+jQuery(document).foundation();
 // Load Events
 jQuery(document).ready(() => new Router(routes).loadEvents());

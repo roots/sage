@@ -1,0 +1,23 @@
+// Fix for our forms as the label is larger than the input.
+input[type="radio"], input[type="checkbox"] {
+  margin-top: .25em;
+  margin-bottom: 0;
+}
+
+textarea[rows] { height: 100px; }
+
+/**
+ * Horizontally aligned gravity form with the submit button on the same level
+ * as the fields.
+ */
+.form--horizontal {
+  display: flex;
+  .gform_body {
+    flex: 1 0 auto;
+  }
+  .gform_footer .gform_button {
+    border-radius: 0 $button-radius $button-radius 0;
+    border-left-width: 1px;
+  }
+}
+

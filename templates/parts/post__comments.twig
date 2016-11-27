@@ -1,0 +1,18 @@
+{% if post.get_comments() %}
+  <section class="post__comments comments--{{template_type}} comments--type-{{post.post_type}}" id="comments">
+    <h3 class="post__comments_title">{{__('Comments', 'theme')}}</h3>
+      <div class="post__comments_form">
+        {# @see https://codex.wordpress.org/Function_Reference/comment_form #}
+        {# @see https://github.com/mgmartel/timber-foundation/blob/master/views/partials/comments.twig #}
+        {{function('comment_form')}}
+      </div>
+    </div>
+    <div class="post__comments_listing row grid">
+      {% for cmt in post.get_comments() %}
+        <div class="post__comment column small-12 grid__column">
+          {% include "parts/comment.twig" with { comment: cmt } %}
+        </div>
+      {% endfor %}
+    </div>
+  </section>
+{% endif %}

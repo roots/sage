@@ -1,0 +1,45 @@
+$c-text-palette: map-merge($foundation-palette, (
+  white: $white,
+  black: $black
+)) !default;
+
+%u-color-inherit {
+  a { color: inherit; }
+}
+
+/**
+ * Text colors should be component specific and tied to specific background
+ * colors rather than user definable.
+ * @example
+ * .u-bg--black { @extend %u-text--white; }
+ */
+@each $name, $color in $c-text-palette {
+  %u-text--#{$name} {
+    color: $color;
+    @extend %u-color-inherit;
+  }
+}
+
+/**
+ * Background colors can be both extended for specific components or user
+ * configurable.
+ * @example
+ * <div class="section u-bg--primary"></div>
+ * .contact-form { @extend %u-bg--secondary; }
+ */
+@each $name, $color in $foundation-palette {
+  %u-bg--#{$name} {
+    background-color: $color;
+  }
+  .u-bg--#{$name} {
+    @extend %u-bg--#{$name};
+  }
+}
+
+.u-bg {
+  &--primary,
+  &--secondary,
+  &--black {
+    @extend %u-text--white;
+  }
+}

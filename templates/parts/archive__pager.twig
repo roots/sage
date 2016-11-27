@@ -1,0 +1,27 @@
+{% if pager.prev.link or pager.next.link %}
+  <ul class="pager pagination" role="navigation">
+    <li class="pager__item pager__item--previous pagination-previous {{pager.prev.link ? '' : 'disabled'}}">
+      {% if pager.prev %}
+        <a href="{{pager.prev.link}}" class="pager__link button button--secondary">{{__('Previous', 'theme')}}</a>
+      {% else %}
+        {{__('Previous', 'theme')}}
+      {% endif %}
+    </li>
+    {% for page in pager.pages %}
+      <li class="pager__item {{page.link ?: 'pager__item--current'}}">
+        {% if page.link %}
+          <a href="{{page.link}}#listing" class="pager__link {{page.class}}">{{page.title}}</a>
+        {% else %}
+          <span class="current">{{page.title}}</span>
+        {% endif %}
+      </li>
+    {% endfor %}
+    <li class="pager__item pager__item--next pagination-next {{pager.next.link ? '' : 'disabled'}}">
+      {% if pager.next %}
+        <a href="{{pager.next.link}}" class="pager__link button button--secondary">{{__('Next', 'theme')}}</a>
+      {% else %}
+        {{__('Next', 'theme')}}
+      {% endif %}
+    </li>
+  </ul>
+{% endif %}

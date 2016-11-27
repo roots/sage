@@ -47,8 +47,19 @@ add_action('after_switch_theme', function () {
 $sage_includes = [
     'src/helpers.php',
     'src/setup.php',
-    'src/filters.php',
-    'src/admin.php'
+    # Disable wrapper logic in favour of Timber and wp-timber-extended.
+    # 'src/filters.php',
+    'src/admin.php',
+
+    // Site specific.
+    'src/custom/setup.php',
+    'src/custom/images.php',
+    'src/custom/timber.php',
+    'src/custom/utils.php',
+    'src/custom/acf.php',
+    'src/custom/widgets.php',
+    // 'src/custom/facetwp.php',
+    // 'src/custom/gravityform.php',
 ];
 array_walk($sage_includes, function ($file) {
     if (!locate_template($file, true, true)) {

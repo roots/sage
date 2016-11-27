@@ -1,0 +1,21 @@
+/**
+ * Make a sticky footer layout.
+ * @example
+ * <body class="sticky-footer">
+ *   <header></header>
+ *   <div class="sticky-footer__content" role="document">
+ *     ...
+ *   </div>
+ *   <footer></footer>
+ * </body>
+ */
+.sticky-footer {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+
+  &__content {
+    flex: 1 0 auto;
+    width: 100%;
+  }
+}

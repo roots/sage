@@ -1,0 +1,17 @@
+/**
+ * Add the responsive font sizes for the specified heading.
+ */
+@mixin heading-size($heading) {
+  @each $size, $headers in $header-sizes {
+    @include breakpoint($size) {
+      $font-size: map-get($headers, $heading);
+      font-size: rem-calc($font-size);
+    }
+  }
+  @each $size, $headers in $c-header-lineheights {
+    @include breakpoint($size) {
+      $line-height: map-get($headers, $heading);
+      line-height: $line-height;
+    }
+  }
+}

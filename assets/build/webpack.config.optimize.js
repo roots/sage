@@ -10,7 +10,7 @@ const config = require('./config');
 module.exports = {
   plugins: [
     new OptimizeCssAssetsPlugin({
-      cssProcessor: cssnano,
+      cssProcessor: cssnano, // @todo safe mode.
       cssProcessorOptions: { discardComments: { removeAll: true } },
       canPrint: true,
     }),

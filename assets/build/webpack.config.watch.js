@@ -16,6 +16,11 @@ module.exports = {
       publicPath: config.publicPath,
       proxyUrl: config.proxyUrl,
       watch: config.watch,
+      rsync: config.rsync,
+      browserSyncOptions: {
+        reloadDebounce: 800,
+        open: false,
+      },
     }),
   ],
 };

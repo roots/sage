@@ -1,0 +1,54 @@
+/**
+ * @note: Turn off Gravity Form CSS output in settings.
+ */
+ul.gform_fields,
+ul.gfield_radio,
+ul.gfield_checkbox {
+  margin-left: 0;
+  list-style-type: none;
+}
+
+img.gform_ajax_spinner {
+  width: auto;
+  margin-left: 1rem;
+}
+
+// Align radio lists other alternative
+ul.gfield_radio {
+  > li { display: flex; }
+  input[value="gf_other_choice"] {
+    margin-right: $form-spacing/2;
+    // Rought estimate to center it vertically with the input
+    margin-top: .9em;
+  }
+}
+
+ul.gfield_checkbox,
+ul.gfield_radio {
+  margin-bottom: 1rem;
+}
+
+table.gfield_list {
+  border: 0;
+  width: 100%;
+  td:first-child { padding-left: 0; }
+  input { margin-bottom: 0; }
+}
+
+// Style the input-field
+.gfield_error input {
+  @include form-input-error();
+}
+
+// Style eg. the address-components validation message.
+.gfield_description.validation_message {
+  @include form-error();
+  display: block;
+}
+
+// Honeypot
+.gform_validation_container {
+  display: none;
+}
+
+.hidden_label .gfield_label { display: none; }
