@@ -1,3 +1,6 @@
+### HEAD
+* Remove post formats ([#1759](https://github.com/roots/sage/pull/1759))
+
 ### 9.0.0-alpha.4: November 16th, 2016
 * Use new webpack api schema ([8ac5f15](https://github.com/roots/sage/commit/e6e60aa))
 * Update dependencies ([70ebba7](https://github.com/roots/sage/commit/70ebba7))
