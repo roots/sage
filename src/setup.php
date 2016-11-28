@@ -2,8 +2,6 @@
 
 namespace App;
 
-use Roots\Sage\Template;
-
 /**
  * Theme assets
  */
