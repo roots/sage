@@ -1,4 +1,5 @@
 ### HEAD
+* Remove sidebar defaults ([#1760](https://github.com/roots/sage/pull/1760))
 * Remove post formats ([#1759](https://github.com/roots/sage/pull/1759))
 
 ### 9.0.0-alpha.4: November 16th, 2016
