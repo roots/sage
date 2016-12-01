@@ -172,7 +172,7 @@ let webpackConfig = {
 
 /* eslint-disable global-require */ /** Let's only load dependencies as needed */
 
-if (config.env.optimize) {
+if (config.enabled.optimize) {
   webpackConfig = mergeWithConcat(webpackConfig, require('./webpack.config.optimize'));
 }
 
