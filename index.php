@@ -1,3 +1,3 @@
 <?php
 
-include __DIR__ . '/templates/index.php';
+include __DIR__ . '/templates/index.blade.php';
