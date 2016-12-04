@@ -37,12 +37,13 @@ add_filter('excerpt_more', function () {
 /**
  * Use Blade template engine
  */
-foreach(['index', '404', 'archive', 'author', 'category', 'tag', 'taxonomy', 'date', 'home', 'front_page', 'page', 'paged', 'search', 'single', 'singular', 'attachment'] as $type) {
-    add_filter("{$type}_template_hierarchy", function($templates) {
-       foreach ($templates as $template) {
-           $templates[] = str_replace('.php', '.blade.php', $template);
-       }
-       return $templates;
+foreach (['index', '404', 'archive', 'author', 'category', 'tag', 'taxonomy', 'date', 'home', 'front_page',
+             'page', 'paged', 'search', 'single', 'singular', 'attachment'] as $type) {
+    add_filter("{$type}_template_hierarchy", function ($templates) {
+        foreach ($templates as $template) {
+            $templates[] = str_replace('.php', '.blade.php', $template);
+        }
+        return $templates;
     });
 }
 add_filter('template_include', function ($template) {
