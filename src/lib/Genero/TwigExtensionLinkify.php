@@ -10,9 +10,10 @@ use Twig_Filter_Method;
  * @example
  * {{footnote|linkify}}
  */
-class Twig_Extension_Linkify extends Twig_Extension
+class TwigExtensionLinkify extends Twig_Extension
 {
-    public function getFilters() {
+    public function getFilters()
+    {
         return [
             'linkify' => new Twig_Filter_Method($this, 'linkify', [
                 'is_safe' => ['html'],
@@ -20,11 +21,13 @@ class Twig_Extension_Linkify extends Twig_Extension
         ];
     }
 
-    public function getName() {
+    public function getName()
+    {
         return 'twig_extension_linkify';
     }
 
-    static public function linkify($string) {
+    public static function linkify($string)
+    {
         $regexp = "/(<a.*?>)?(https?)(:\/\/)(\w+\.)?(\w+)\.(\w+)([^ ]*)?(<\/a.*?>)?/i";
         $anchorMarkup = "<a href=\"%s://%s\" target=\"_blank\" >%s</a>";
         preg_match_all($regexp, $string, $matches, \PREG_SET_ORDER);

@@ -5,7 +5,8 @@ namespace App\Utils;
 /**
  * Format a phone number according to finnish system. Not perfect.
  */
-function format_phone($number) {
+function format_phone($number)
+{
     // Remove all separators (except for parenthesis)
     $number = str_replace(['-', ' '], '', $number);
     // Format the ending numbers with spacing:

@@ -40,7 +40,7 @@ add_action('after_setup_theme', function () {
 /**
  * Expose our custom image sizes to the Admin UI.
  */
-add_filter('image_size_names_choose', function($sizes) {
+add_filter('image_size_names_choose', function ($sizes) {
     return array_merge($sizes, [
         'mobile' => __('Mobile', 'theme-admin'),
         'tablet' => __('Tablet', 'theme-admin'),
@@ -50,7 +50,7 @@ add_filter('image_size_names_choose', function($sizes) {
 /**
  * Remove all srcset sizes larger than the content width.
  */
-add_filter('max_srcset_image_width', function() {
+add_filter('max_srcset_image_width', function () {
     global $content_width;
     return $content_width;
 });
@@ -58,7 +58,7 @@ add_filter('max_srcset_image_width', function() {
 /**
  * Sort srcset according to sizes so it's be more readable.
  */
-add_filter('wp_calculate_image_srcset', function($sources, $size_array, $image_src, $image_meta) {
+add_filter('wp_calculate_image_srcset', function ($sources, $size_array, $image_src, $image_meta) {
     ksort($sources, SORT_NUMERIC);
     return $sources;
 }, 10, 4);

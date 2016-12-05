@@ -6,7 +6,7 @@ use Timber;
 use TimberExtended;
 use Twig_SimpleFunction;
 use Twig_SimpleFilter;
-use Genero\Sage\Twig_Extension_Linkify;
+use Genero\Sage\TwigExtensionLinkify;
 use Genero\Sage\PostTypeConnection;
 
 /**
@@ -20,7 +20,7 @@ Timber::$dirname = ['templates', 'templates/pages'];
 /**
  * Site components injected into every timber context.
  */
-add_filter('timber/context', function($context) {
+add_filter('timber/context', function ($context) {
     // Add your menus.
     $context['primary_menu'] = new PostTypeConnection\Menu('primary_navigation');
     $context['language_menu'] = new TimberExtended\LanguageMenu('language-menu');
@@ -39,7 +39,7 @@ add_filter('timber/context', function($context) {
 /**
  * Preprocess meta data to be used in TimberPost objects.
  */
-// add_filter('timber_post_get_meta', function($customs, $pid, $post) {
+// add_filter('timber_post_get_meta', function ($customs, $pid, $post) {
 //     foreach ($customs as $key => $value) {
 //         switch ($key) {
 //             case 'background_image':
@@ -54,7 +54,7 @@ add_filter('timber/context', function($context) {
 /**
  * Configure twig with functions and filters.
  */
-add_filter('get_twig', function($twig) {
+add_filter('get_twig', function ($twig) {
     // Provide a `linkify` filter which transforms URL addresses to HTML links.
     // @example
     // {{ footnote|linkify }}
@@ -68,21 +68,21 @@ add_filter('get_twig', function($twig) {
     // Get the asset path using Sage logic
     // @example
     // {{ asset_path('images/foo.svg') }}
-    $twig->addFunction('asset_path', new Twig_SimpleFunction('asset_path', function($filename) {
+    $twig->addFunction('asset_path', new Twig_SimpleFunction('asset_path', function ($filename) {
         return asset_path($filename);
     }));
 
     // Wrap the asset in a TimberImage object.
     // @example
     // {{ asset_image('images/foo.svg') }}
-    $twig->addFunction('asset_image', new Twig_SimpleFunction('asset_image', function($filename) {
+    $twig->addFunction('asset_image', new Twig_SimpleFunction('asset_image', function ($filename) {
         return new Timber\Image(asset_path($filename));
     }));
 
     // Format a phone number string.
     // @example
     // {{ post.phone|format_number }}
-    $twig->addFilter('format_phone', new Twig_SimpleFilter('format_phone', function($number) {
+    $twig->addFilter('format_phone', new Twig_SimpleFilter('format_phone', function ($number) {
         return App\Utils\format_phone($number);
     }));
 

@@ -7,7 +7,7 @@ namespace App;
  * @example
  * blog/%category%/my-post -> blog/action/my-post
  */
-add_filter('post_type_link', function($post_link, $post, $leavename, $sample) {
+add_filter('post_type_link', function ($post_link, $post, $leavename, $sample) {
     if (preg_match('/%([^%]+)%/', $post_link, $matches)) {
         list($replace, $category) = $matches;
         $term = get_the_terms($post->ID, $category);

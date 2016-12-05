@@ -3,8 +3,6 @@
 /**
  * Unregister all default widgets.
  */
-function remove_default_widgets() {
-}
 add_action('widgets_init', function () {
     $widgets = [
         'WP_Widget_Pages',

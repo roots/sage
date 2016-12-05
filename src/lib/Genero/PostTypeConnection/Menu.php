@@ -10,10 +10,11 @@ use TimberExtended;
  */
 class Menu extends TimberExtended\Menu
 {
+    // @codingStandardsIgnoreLine
     protected function is_childpage($pid, $post = NULL) {
-        $is_child = parent::is_childpage($pid, $post);
+        $isChild = parent::is_childpage($pid, $post);
         // This has already been checked.
-        if ($is_child || is_page()) {
+        if ($isChild || is_page()) {
             return true;
         }
         if (is_null($post)) {

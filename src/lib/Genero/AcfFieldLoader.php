@@ -7,17 +7,18 @@ namespace Genero\Sage;
  */
 class AcfFieldLoader
 {
-    protected static function saveFieldgroupToDatabase($group_key) {
-        $field_group = acf_get_field_group($group_key);
-        $fields = acf_get_fields($field_group);
+    protected static function saveFieldgroupToDatabase($groupKey)
+    {
+        $fieldGroup = acf_get_field_group($groupKey);
+        $fields = acf_get_fields($fieldGroup);
         // Remove the attribute that says this is a synced fieldgroup.
-        unset($field_group['local']);
+        unset($fieldGroup['local']);
 
         // Save the group to get a post id.
-        $field_group = acf_update_field_group($field_group);
+        $fieldGroup = acf_update_field_group($fieldGroup);
         // Create the fields.
         foreach ($fields as $field) {
-            $field['parent'] = $field_group['ID'];
+            $field['parent'] = $fieldGroup['ID'];
             $subfields = acf_get_fields($field);
             // Save the field to get the post id from the subfields.
             $field = acf_update_field($field);
