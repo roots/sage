@@ -1,0 +1,42 @@
+/**
+ * A section component. Useful in combination with the overlay component.
+ * @example
+ * <section class="section">
+ *   <h3 class="section__title"></h3>
+ *   <div class="section__content">
+ *     <p>Lorem ipsum</p>
+ *   </div>
+ *   <div class="section__button">
+ *     <a href="#" class="button button--primary">Read more</a>
+ *   </div>
+ * </section>
+ */
+.section {
+  @extend %u-spacing-section;
+
+  position: relative;
+  text-align: center;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+
+  // if it's a row, make the columns stack.
+  > .column {
+    flex: 0 0 100%;
+  }
+
+  &__content {
+    > p:last-child { margin-bottom: 0; }
+  }
+
+  &__button {
+    .button { margin-bottom: 0; }
+  }
+
+  &__title {}
+
+  &--text {}
+  &--background {}
+}

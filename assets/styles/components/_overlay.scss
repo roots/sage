@@ -1,0 +1,68 @@
+/**
+ * Create colored overlays on top of background images.
+ * For simple background colors use .u-bg--{{color}} instead.
+ * @example:
+ * <div class="overlay" style="background-image: url('{{ section.background.src }}');">
+ *   <a class="overlay__link">
+ *     <div class="overlay__background">
+ *     </div>
+ *     <div class="overlay__foreground">
+ *       <p>Lorem ipsum</p>
+ *     </div>
+ *   </a>
+ * </div>
+ */
+
+$c-overlay-palette: (
+  primary: rgba(get-color(primary), 0.85),
+  secondary: rgba(get-color(secondary), 0.85),
+  white: rgba($white, 0.75),
+  black: rgba($black, 0.5),
+) !default;
+
+.overlay {
+  position: relative;
+  background-size: cover;
+
+  &__background {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
+
+  &__link {
+    @extend %u-link-no-state;
+    display: block;
+
+    .overlay__background {
+      transition: $c-global-transition;
+    }
+  }
+
+  &__foreground {
+    z-index: 1;
+    position: relative;
+  }
+
+  // Provide solid background colors and most importantly, their text coloring
+  // rules.
+  @each $name, $color in $foundation-palette {
+    &--#{$name} {
+      @extend %u-bg--#{$name};
+    }
+  }
+
+  // Provide transparent overlays.
+  @each $name, $color in $c-overlay-palette {
+    &--#{$name} {
+      .overlay__background {
+        background-color: $color;
+      }
+      &:hover .overlay__link .overlay__background {
+        background-color: adjust-color($color, $alpha: 0.1);
+      }
+    }
+  }
+}

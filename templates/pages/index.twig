@@ -1,0 +1,11 @@
+{% extends 'pages/archive.twig' %}
+
+{% block content %}
+  <div class="archive archive--index" id="archive-index">
+    {% block term %}{% endblock %}
+
+    {% block listing %}
+      {{parent()}}
+    {% endblock %}
+  </div>
+{% endblock %}

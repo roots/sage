@@ -1,0 +1,81 @@
+/**
+ * Responsive spacing placeholders. Spacing should be component specific, and
+ * not user definable. Therefore it's only available as placeholders rather
+ * than classes.
+ * @example
+ * .section__content { @extend %u-spacing-section--vertical; }
+ */
+
+$c-spacings: (
+  section: (
+    small: rem-calc(40) rem-calc(10),
+    medium: rem-calc(60) rem-calc(10),
+    large: rem-calc(75) rem-calc(60),
+  ),
+  gutter: $grid-column-gutter,
+) !default;
+
+/**
+ * Add a responsive spacing defined in the $spacings variable.
+ */
+@mixin spacing(
+  $type,
+  $side: all,
+  $property: padding
+) {
+  @each $size, $spacing in map-get($c-spacings, $type) {
+    @include breakpoint($size) {
+      @if ($side == all) {
+        #{$property}: $spacing;
+      }
+      @else if ($side == vertical) {
+        #{$property}-top: get-side($spacing, top);
+        #{$property}-bottom: get-side($spacing, bottom);
+      }
+      @else if ($side == horizontal) {
+        #{$property}-left: get-side($spacing, left);
+        #{$property}-right: get-side($spacing, right);
+      }
+      @else {
+        #{$property}-#{$side}: get-side($spacing, $side);
+      }
+    }
+  }
+}
+
+@each $name, $breakpoints in $c-spacings {
+  %u-spacing-#{$name}--top    { @include spacing($name, top); }
+  %u-spacing-#{$name}--bottom { @include spacing($name, bottom); }
+  %u-spacing-#{$name}--left   { @include spacing($name, left); }
+  %u-spacing-#{$name}--right  { @include spacing($name, right); }
+  %u-spacing-#{$name}--vertical {
+    @extend %u-spacing-#{$name}--top;
+    @extend %u-spacing-#{$name}--bottom;
+  }
+  %u-spacing-#{$name}--horizontal {
+    @extend %u-spacing-#{$name}--left;
+    @extend %u-spacing-#{$name}--right;
+  }
+  %u-spacing-#{$name} {
+    @extend %u-spacing-#{$name}--vertical;
+    @extend %u-spacing-#{$name}--horizontal;
+  }
+}
+
+@each $side in top, bottom, left, right {
+  %u-no-spacing--#{$side} {
+    padding-#{$side}: 0;
+  }
+}
+%u-no-spacing--vertical {
+  @extend %u-no-spacing--top;
+  @extend %u-no-spacing--bottom;
+}
+%u-no-spacing--horizontal {
+  @extend %u-no-spacing--left;
+  @extend %u-no-spacing--right;
+}
+%u-no-spacing {
+  @extend %u-no-spacing--vertical;
+  @extend %u-no-spacing--horizontal;
+}

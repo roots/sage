@@ -1,0 +1,36 @@
+<!doctype html>
+<html class="no-js" {{site.language_attributes}}>
+{% block html_head_container %}
+  <head>
+    {% include 'layout/head.twig' %}
+    {% block head %}
+    {% endblock %}
+  </head>
+{% endblock %}
+  <body class="{{body_class}} sticky-footer" data-template="base.twig">
+
+    {% include 'layout/header.twig' %}
+    {% include 'layout/hero.twig' %}
+
+    <div class="sticky-footer__content row" role="document">
+      <section id="content" role="main" class="l-content-wrapper column small-12">
+      {% if password_required %}
+        {% block password %}
+          {% include 'parts/password.twig' %}
+        {% endblock %}
+      {% else %}
+        {% block content %}
+          {{__('Sorry, no content', 'theme')}}
+        {% endblock %}
+      {% endif %}
+      </section>
+    </div>
+    <div class="l-siderbar-content-below row collapse expanded align-center">
+      {{sidebar_content_below}}
+    </div>
+    {% block footer_container %}
+      {% include 'layout/footer.twig' %}
+    {% endblock %}
+    {{ function('wp_footer') }}
+  </body>
+</html>

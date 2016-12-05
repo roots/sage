@@ -1,0 +1,21 @@
+{% if post.prev.link or post.next.link %}
+  <ul class="post__nav menu expanded">
+  {% if post.prev %}
+    <li class="post__nav_item--prev">
+      <a class="post__nav_link" href="{{post.prev.link}}">
+      <i class="icon-chevron-left"></i>
+      <span class="show-for-large">{{post.prev.title}}</span>
+      <span class="hide-for-large">{{__('Previous', 'theme')}}</span>
+    </a></li>
+  {% endif %}
+  {% if post.next %}
+    <li class="post__nav_item--next">
+      <a class="post__nav_link" href="{{post.next.link}}">
+        <span class="show-for-large">{{post.next.title}}</span>
+        <span class="hide-for-large">{{__('Next', 'theme')}}</span>
+        <i class="icon-chevron-right"></i>
+      </a>
+    </li>
+  {% endif %}
+  </ul>
+{% endif %}

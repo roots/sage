@@ -1,0 +1,9 @@
+{% extends 'pages/page.twig' %}
+
+{% block post__after %}
+  <div class="post__footer">
+    {% include 'parts/post__terms.twig' with { terms: post.terms('category') } %}
+    {% include 'parts/post__nav.twig' %}
+    {% include 'parts/post__comments.twig' %}
+  </div>
+{% endblock %}

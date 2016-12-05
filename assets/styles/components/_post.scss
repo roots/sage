@@ -1,0 +1,26 @@
+.post {
+  &__title {}
+  &__content-wrapper {}
+  &__content {}
+  &__footer {}
+
+  &__nav {}
+  &__nav_item {}
+  &__nav_link {}
+  &__nav_link--prev {}
+  &__nav_link--next {}
+
+  &__terms {}
+  &__term {}
+
+  &__comments {}
+  &__comments_title {}
+  &__comments_form {}
+  &__comments_listing {}
+
+  &--404 {}
+  &--page {}
+  &--single {
+    .post__title {}
+  }
+}

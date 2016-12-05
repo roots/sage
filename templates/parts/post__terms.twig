@@ -1,0 +1,7 @@
+{% if terms %}
+  <div class="post__terms button-group">
+  {% for term in terms %}
+    <a class="post__term button button--secondary" href="{{term.link}}">{{term.name}}</a>
+  {% endfor %}
+  </div>
+{% endif %}

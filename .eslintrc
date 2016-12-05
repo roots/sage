@@ -2,7 +2,10 @@
   "root": true,
   "extends": "airbnb",
   "globals": {
-    "wp": true
+    "wp": true,
+    "picturefill": true,
+    "Foundation": true,
+    "fastdom": true
   },
   "env": {
     "amd": true,
@@ -12,6 +15,13 @@
   },
   "rules": {
     "react/require-extension": 0,
-    "import/extensions": [1, { "js": "never" }]
+    "import/extensions": [1, { "js": "never" }],
+    "new-cap": ["error", {
+      "newIsCap": true,
+      "newIsCapExceptions": [],
+      "capIsNew": false,
+      "capIsNewExceptions": ["Immutable.Map", "Immutable.Set", "Immutable.List"],
+      "properties": false
+    }]
   }
 }

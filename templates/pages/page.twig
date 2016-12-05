@@ -1,0 +1,17 @@
+{% extends 'layout/base.twig' %}
+
+{% block content %}
+  <div class="post post--{{template_type}} post--type-{{post.post_type}}" id="post-{{post.ID}}">
+    <div class="post__content-wrapper">
+      {% block post__title %}
+        <h1 class="post__title">{{post.title|default(wp_title)}}</h1>
+      {% endblock %}
+      {% block post__content %}
+        <div class="post__content">
+          {{post.content}}
+        </div>
+      {% endblock %}
+    </div>
+    {% block post__after %}{% endblock %}
+  </div>
+{% endblock %}

@@ -1,0 +1,27 @@
+// Responsive font size.
+// @see utils/_typography.scss
+html { @extend %u-text; }
+body, h1, h2, h3, h4, h5, h6 { font-size-adjust: $c-size-adjustment; }
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+  @extend %u-heading;
+
+  > a {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+.h1 { @extend %h1; }
+.h2 { @extend %h2; }
+.h3 { @extend %h3; }
+.h4 { @extend %h4; }
+.h5 { @extend %h5; }
+.h6 { @extend %h6; }
+
+// ---------
+
+blockquote {
+  > p { line-height: inherit; }
+  > p:last-child { margin-bottom: 0; }
+}

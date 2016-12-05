@@ -1,0 +1,79 @@
+{% set primary_menu %}
+  <ul class="{{primary_menu.class}} vertical medium-horizontal menu">
+    {% for item in primary_menu.get_items %}
+      <li class="{{item.class}}">
+        <a href="{{item.get_link}}" class="{{item.link_class}}">{{item.title}}</a>
+      </li>
+    {% endfor %}
+  </ul>
+{% endset %}
+
+{% set language_menu %}
+  <ul class="{{language_menu.class}} menu">
+  {% for item in language_menu.get_items|filter('active', false) %}
+    <li class="{{item.class}}">
+      <a href="{{item.url}}" class="{{item.link_class}}">{{item.native_name}}</a>
+    </li>
+  {% endfor %}
+  </ul>
+{% endset %}
+
+<header id="header" class="l-header">
+
+  {# Mobile title bar #}
+  <div class="l-header__bar--mobile title-bar hide-for-medium row">
+    <div class="column align-middle">
+      <a href="/" class="site-logo" rel="home">
+        <img src="{{asset_path('images/logo.svg')}}" height="30" width="90" alt="{{site.name}}" title="{{site.name}}">
+      </a>
+    </div>
+
+    <div class="column shrink align-middle">
+      {{language_menu}}
+    </div>
+
+    <div class="column shrink align-middle">
+      <button
+        id="nav-toggler"
+        data-toggler=".active"
+        class="l-header__nav-toggle menu-icon"
+        type="button"
+        data-toggle="primary-menu--mobile nav-toggler"
+      >
+        <span></span>
+      </button>
+    </div>
+  </div>
+
+  {# Mobile menu #}
+  <div
+    id="primary-menu--mobile"
+    class="l-header__nav--mobile hide-for-medium"
+    role="navigation"
+    data-toggler
+    data-animate="slide-in-down slide-out-up fast"
+    style="display: none;"
+  >
+    {{ primary_menu }}
+  </div>
+
+  {# Desktop menu #}
+  <div class="l-header__bar--desktop top-bar show-for-medium" role="navigation">
+    <div class="row">
+      <div class="column align-middle">
+        <a href="/" class="site-logo" rel="home">
+          <img src="{{asset_path('images/logo.svg')}}" height="30" width="90" alt="{{site.name}}" title="{{site.name}}">
+        </a>
+      </div>
+      <div class="column shrink align-middle">
+        {{ language_menu }}
+      </div>
+      <div class="column shrink align-middle">
+        <div class="l-header__nav--desktop top-bar-right">
+          {{ primary_menu }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>

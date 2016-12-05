@@ -1,0 +1,12 @@
+{% macro image(thumbnail, size) %}
+  <img src="{{thumbnail.src(size)}}"
+    alt="{{thumbnail._wp_attachment_image_alt|default(thumbnail.title)}}"
+    title="{{thumbnail.title}}"
+    width="{{thumbnail.sizes[size].width}}"
+    height="{{thumbnail.sizes[size].height}}"
+    srcset="
+      {# @see https://github.com/timber/timber/issues/404 #}
+      {{thumbnail.src|resize(thumbnail.sizes[size].width,     thumbnail.sizes[sizel].height)}} 1x,
+      {{thumbnail.src|resize(thumbnail.sizes[size].width * 2, thumbnail.sizes[size].height * 2)}} 2x
+  " />
+{% endmacro %}

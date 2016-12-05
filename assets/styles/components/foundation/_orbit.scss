@@ -1,0 +1,47 @@
+.orbit {
+  z-index: 0;
+
+  &-image {
+    display: block;
+  }
+
+  &-slide {
+    display: flex;
+    justify-content: center;
+  }
+
+  &-previous,
+  &-next {
+    @include fa-icon();
+    outline: none;
+    color: $black;
+    font-size: 1rem;
+    @include breakpoint(medium) {
+      font-size: 2rem;
+    }
+  }
+  &-previous:before { content: $fa-var-chevron-left; }
+  &-next:before { content: $fa-var-chevron-right; }
+
+  &-caption {
+    p:last-child { margin-bottom: 0; }
+
+    &--cover {
+      top: 0;
+      left: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+  }
+
+  &--hero {
+    // Span full width.
+    .orbit-image img {
+      max-width: none;
+      width: 100%;
+    }
+  }
+}

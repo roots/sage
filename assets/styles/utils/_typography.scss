@@ -1,0 +1,99 @@
+/*
+ * The font-size-adjust CSS property specifies that font size should be chosen
+ * based on the height of lowercase letters rather than the height of capital
+ * letters.
+ */
+$c-size-adjustment: 0.5;
+
+/**
+ * Responsive base font sizes.
+ * @note: Changing this from $global-font-size, resize a lot of elements.
+ */
+$c-font-styles: (
+  small:  ('font-size': 16px, 'line-height': 1.25),
+  medium: ('font-size': 16px, 'line-height': 1.375),
+  large:  ('font-size': 18px, 'line-height': 1.375),
+) !default;
+
+/**
+ * Based on http://typecast.com/blog/a-more-modern-scale-for-web-typography.
+ * If you choose to use this, move it to _variables().
+ */
+$header-styles: (
+  small: (
+    'h1':         ('font-size': 2rem,     'line-height': 1.25),
+    'h2':         ('font-size': 1.625rem, 'line-height': 1.15384615),
+    'h3':         ('font-size': 1.375rem, 'line-height': 1.13636364),
+    'h4':         ('font-size': 1.125rem, 'line-height': 1.111),
+    'h5':         ('font-size': 1rem,     'line-height': 1.111),
+    'h6':         ('font-size': 1rem,     'line-height': 1.111),
+    'blockquote': ('font-size': 1.25rem,  'line-height': 1.25),
+  ),
+  medium: (
+    'h1':         ('font-size': 2.5rem,   'line-height': 1.125),
+    'h2':         ('font-size': 2rem,     'line-height': 1.25),
+    'h3':         ('font-size': 1.5rem,   'line-height': 1.25),
+    'h4':         ('font-size': 1.125rem, 'line-height': 1.222),
+    'h5':         ('font-size': 1rem,     'line-height': 1.222),
+    'h6':         ('font-size': 1rem,     'line-height': 1.222),
+    'blockquote': ('font-size': 1.5rem,   'line-height': 1.25),
+  ),
+  large: (
+    'h1':         ('font-size': 3rem,     'line-height': 1.05),
+    'h2':         ('font-size': 2.25rem,  'line-height': 1.25),
+    'h3':         ('font-size': 1.75rem,  'line-height': 1.25),
+    'h4':         ('font-size': 1.125rem, 'line-height': 1.222),
+    'h5':         ('font-size': 1rem,     'line-height': 1.222),
+    'h6':         ('font-size': 1rem,     'line-height': 1.222),
+    'blockquote': ('font-size': 1.5rem,   'line-height': 1.25),
+  ),
+) !default;
+
+@each $breakpoint, $font-defs in $c-font-styles {
+  @include breakpoint($breakpoint) {
+    %u-text {
+      $font-size-temp: 1rem;
+      @if map-has-key($font-defs, font-size) {
+        $font-size-temp: rem-calc(map-get($font-defs, font-size));
+        font-size: $font-size-temp;
+      }
+      @if map-has-key($font-defs, line-height) {
+        line-height: unitless-calc(map-get($font-defs, line-height), $font-size-temp);
+      }
+    }
+  }
+}
+
+%u-link-no-state {
+  text-decoration: none;
+  color: inherit !important;
+
+  &:hover,
+  &:focus {
+    color: inherit !important;
+    text-decoration: none;
+  }
+}
+
+/**
+ * Heading styles as defined by foundation 6.3.0
+ */
+%u-heading {
+  font-family: $header-font-family;
+  font-style: $header-font-style;
+  font-weight: $header-font-weight;
+  color: $header-color;
+  text-rendering: $header-text-rendering;
+
+  small {
+    line-height: 0;
+    color: $header-small-font-color;
+  }
+}
+
+%h1 { @extend h1; }
+%h2 { @extend h2; }
+%h3 { @extend h3; }
+%h4 { @extend h4; }
+%h5 { @extend h5; }
+%h6 { @extend h6; }

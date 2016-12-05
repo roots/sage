@@ -7,6 +7,7 @@ const url = require('url');
 const uniq = require('lodash/uniq');
 
 const mergeWithConcat = require('./util/mergeWithConcat');
+const RsyncWatcher = require('./rsync-watcher.js');
 
 module.exports = class {
   constructor(options) {
@@ -29,9 +30,8 @@ module.exports = class {
         compiler.plugin('compilation', () => this.watcher.notify('Rebuilding...'));
         this.start();
       }
-      /* You may optionally add custom logic here to trigger either of the following */
-      // this.watcher.reload()
-      // this.watcher.reload({ stream: true })
+
+      (new RsyncWatcher(this.watcher, this.options.rsync)).watch();
     });
   }
   start() {
