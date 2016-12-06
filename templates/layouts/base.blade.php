@@ -1,28 +1,28 @@
 <!doctype html>
-<html {!! language_attributes() !!}>
+<html @php language_attributes() @endphp>
   @include('partials.head')
-  <body {!! body_class() !!}>
+  <body @php body_class() @endphp>
     <!--[if IE]>
       <div class="alert alert-warning">
-        {!! _e('You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.', 'sage') !!}
+        {!! __('You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.', 'sage') !!}
       </div>
     <![endif]-->
-    {!! do_action('get_header') !!}
+    @php do_action('get_header') @endphp
     @include('partials.header')
     <div class="wrap container" role="document">
       <div class="content row">
         <main class="main">
           @yield('content')
         </main>
-        @if(App\display_sidebar())
+        @if (App\display_sidebar())
           <aside class="sidebar">
             @include('partials.sidebar')
           </aside>
         @endif
       </div>
     </div>
-    {!! do_action('get_footer') !!}
+    @php do_action('get_footer') @endphp
     @include('partials.footer')
-    {!! wp_footer() !!}
+    @php wp_footer() @endphp
   </body>
 </html>
