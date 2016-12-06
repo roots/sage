@@ -2,6 +2,37 @@
 
 namespace App;
 
+use Roots\Sage\Assets\JsonManifest;
+use Roots\Sage\Template\BladeProvider;
+
+/**
+ * Add JsonManifest to Sage container
+ */
+sage()->singleton('sage.assets', function () {
+    return new JsonManifest(
+        get_stylesheet_directory().'/dist/assets.json',
+        get_stylesheet_directory_uri().'/dist'
+    );
+});
+
+/**
+ * Add Blade to Sage container
+ */
+sage()->singleton('sage.blade', function () {
+    $cachePath = wp_upload_dir()['basedir'].'/cache/compiled';
+    if (!file_exists($cachePath)) {
+        wp_mkdir_p($cachePath);
+    }
+    return new BladeProvider(TEMPLATEPATH, $cachePath, sage());
+});
+
+/**
+ * Create @asset() Blade directive
+ */
+sage('blade')->compiler()->directive('asset', function ($asset) {
+    return '<?= App\\asset_path(\''.trim($asset, '\'"').'\'); ?>';
+});
+
 /**
  * Theme assets
  */

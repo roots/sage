@@ -2,10 +2,6 @@
 
 namespace App;
 
-use Illuminate\Container\Container;
-use Illuminate\Filesystem\Filesystem;
-use Roots\Sage\Template\ViewServiceProvider;
-
 /**
  * Add <body> classes
  */
@@ -33,62 +29,28 @@ add_filter('excerpt_more', function () {
 });
 
 /**
- * Use Blade template engine
+ * Template Hierarchy should search for .blade.php files
  */
 array_map(function ($tag) {
-    add_filter("{$tag}_template_hierarchy", function($templates) {
+    add_filter("{$tag}_template_hierarchy", function ($templates) {
         return array_merge(str_replace('.php', '.blade.php', $templates), $templates);
     });
 }, [
     'index', '404', 'archive', 'author', 'category', 'tag', 'taxonomy', 'date', 'home',
     'front_page', 'page', 'paged', 'search', 'single', 'singular', 'attachment'
 ]);
+
+/**
+ * Render page using Blade
+ */
 add_filter('template_include', function ($template) {
-    $blade_template = (!strpos($template, '.blade.php')) ? str_replace('.php', '.blade.php', $template) : $template;
-    $blade_template = locate_template(basename($blade_template));
+    echo template($template);
 
-    if (!file_exists($blade_template)) {
-        return $template;
-    }
-
-    $container = Container::getInstance();
-
-    $container->singleton('files', function () {
-        return new Filesystem;
-    });
-
-    $provider = new ViewServiceProvider($container);
-    $provider->register();
-
-    $template_engine = $container->make('view');
-
-    $template_name = basename(str_replace('.blade', '', $blade_template));
-    $template_name = str_replace('.php', '', $template_name);
-    $html = $template_engine->make($template_name, apply_filters('laravel/blade/template_data', []))->render();
-
-    if (!$html) {
-        return $template;
-    }
-
-    echo $html;
-
-    return false;
+    // Return a blank file to make WordPress happy
+    return get_template_directory() . '/index.php';
 }, 1000);
 
-add_filter('comments_template', function ($theme_template) {
-    $container = Container::getInstance();
-    $template_engine = $container->make('view');
-
-    $template_name = basename(str_replace('.blade.php', '', $theme_template));
-    $html = $template_engine->make('partials/'.$template_name, []);
-    var_dump($template_engine->exists('partials/'.$template_name));
-    $engine = $html->getEngine();
-    $compiler = $engine->getCompiler();
-    $template = $compiler->getCompiledPath($compiler->getPath());
-
-    if ($compiler->isExpired($template)) {
-        $compiler->compile($theme_template);
-    }
-
-    return $template;
-});
+/**
+ * Tell WordPress how to find the compiled path of comments.blade.php
+ */
+add_filter('comments_template', 'App\\template_path');

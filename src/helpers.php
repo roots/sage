@@ -2,30 +2,50 @@
 
 namespace App;
 
-use Roots\Sage\Asset;
-use Roots\Sage\Assets\JsonManifest;
-use Roots\Sage\Template;
+use Roots\Sage\Container;
 
-function template($layout = 'base')
+/**
+ * @param string $name
+ * @return Container|mixed
+ */
+function sage($name = '')
 {
-    return Template::$instances[$layout];
-}
-
-function template_part($template, array $context = [], $layout = 'base')
-{
-    extract($context);
-    include template($layout)->partial($template);
+    static $container;
+    if (!$container) {
+        $container = new Container;
+    }
+    return $name ? (isset($container[$name]) ? $container[$name] : $container["sage.{$name}"]) : $container;
 }
 
 /**
- * @param $filename
+ *
+ * @param string $file
+ * @param array $data
  * @return string
  */
-function asset_path($filename)
+function template($file, $data = [])
 {
-    static $manifest;
-    isset($manifest) || $manifest = new JsonManifest(get_stylesheet_directory() . '/' . Asset::$dist . '/assets.json');
-    return (string) new Asset($filename, $manifest);
+    return sage('blade')->render($file, $data);
+}
+
+/**
+ * Retrieve path to a compiled blade view
+ * @param $file
+ * @param array $data
+ * @return string
+ */
+function template_path($file, $data = [])
+{
+    return sage('blade')->compiledPath($file, $data);
+}
+
+/**
+ * @param $asset
+ * @return string
+ */
+function asset_path($asset)
+{
+    return sage('assets')->getUri($asset);
 }
 
 /**
