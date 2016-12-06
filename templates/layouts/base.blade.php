@@ -14,11 +14,11 @@
         <main class="main">
           @yield('content')
         </main>
-        {{--@if(App\display_sidebar())--}}
-          {{--<aside class="sidebar">--}}
-            {{--{!! App\template_part('partials/sidebar') !!}--}}
-          {{--</aside>--}}
-        {{--@endif--}}
+        @if(App\display_sidebar())
+          <aside class="sidebar">
+            @include('partials/sidebar')
+          </aside>
+        @endif
       </div>
     </div>
     {!! do_action('get_footer') !!}
