@@ -14,7 +14,7 @@ Sage is a WordPress starter theme with a modern development workflow.
 * [Webpack](https://webpack.github.io/) for compiling assets, optimizing images, and concatenating and minifying files
 * [BrowserSync](http://www.browsersync.io/) for synchronized browser testing
 * [Bootstrap 4](http://getbootstrap.com/) for a front-end framework (can be removed or replaced)
-* Template inheritance with the [theme wrapper](https://roots.io/sage/docs/theme-wrapper/)
+* [Laravel Blade](https://laravel.com/docs/5.3/blade) as a templating engine
 
 See a working example at [roots-example-project.com](https://roots-example-project.com/).
 
@@ -22,16 +22,16 @@ See a working example at [roots-example-project.com](https://roots-example-proje
 
 Make sure all dependencies have been installed before moving on:
 
-* [PHP](http://php.net/manual/en/install.php) >= 5.5.x
+* [PHP](http://php.net/manual/en/install.php) >= 5.6.4
 * [Composer](https://getcomposer.org/download/)
-* [Node.js](http://nodejs.org/) >= 4.5
+* [Node.js](http://nodejs.org/) >= 6.9.x
 
 ## Theme installation
 
 Install Sage using Composer from your WordPress themes directory (replace `your-theme-name` below with the name of your theme):
 
 ```shell
-# @ example.com/site/web/app/themes/
+# @ app/themes/ or wp-content/themes/
 $ composer create-project roots/sage your-theme-name dev-master
 ```
 
@@ -55,7 +55,7 @@ themes/your-theme-name/   # → Root of your Sage based theme
 ├── package.json          # → Node.js dependencies and scripts
 ├── screenshot.png        # → Theme screenshot for WP admin
 ├── src/                  # → Theme PHP
-│   ├── lib/Sage/         # → Theme wrapper, asset manifest
+│   ├── lib/Sage/         # → Blade implementation, asset manifest
 │   ├── admin.php         # → Theme customizer setup
 │   ├── filters.php       # → Theme filters
 │   ├── helpers.php       # → Helper functions
@@ -98,9 +98,9 @@ You now have all the necessary dependencies to run the build process.
 * `npm run lint` — Run eslint against your assets and build scripts
 * `composer test` — Check your PHP for code smells with `phpmd` and PSR-2 compliance with `phpcs`
 
-### Using BrowserSync
+### Using Browsersync
 
-To use BrowserSync during `npm start` you need to update `devUrl` at the bottom of `assets/config.json` to reflect your local development hostname.
+To use Browsersync during `npm start` you need to update `devUrl` at the bottom of `assets/config.json` to reflect your local development hostname.
 
 If your local development URL is `https://project-name.dev`, update the file to read:
 ```json
@@ -117,9 +117,9 @@ If you are not using [Bedrock](https://roots.io/bedrock/), update `publicPath` t
 ...
 ```
 
-By default, BrowserSync will use webpack's [HMR](https://webpack.github.io/docs/hot-module-replacement.html), which won't trigger a page reload in your browser.
+By default, Browsersync will use webpack's [HMR](https://webpack.github.io/docs/hot-module-replacement.html), which won't trigger a page reload in your browser.
 
-If you would like to force BrowserSync to reload the page whenever certain file types are edited, then add them to `watch` in `assets/config.json`.
+If you would like to force Browsersync to reload the page whenever certain file types are edited, then add them to `watch` in `assets/config.json`.
 
 ```json
 ...
