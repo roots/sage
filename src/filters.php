@@ -2,9 +2,6 @@
 
 namespace App;
 
-use Roots\Sage\Template;
-use Roots\Sage\Template\Wrapper;
-
 /**
  * Add <body> classes
  */
@@ -32,11 +29,28 @@ add_filter('excerpt_more', function () {
 });
 
 /**
- * Use theme wrapper
+ * Template Hierarchy should search for .blade.php files
  */
-add_filter('template_include', function ($main) {
-    if (!is_string($main) && !(is_object($main) && method_exists($main, '__toString'))) {
-        return $main;
-    }
-    return ((new Template(new Wrapper($main)))->layout());
-}, 109);
+array_map(function ($tag) {
+    add_filter("{$tag}_template_hierarchy", function ($templates) {
+        return array_merge(str_replace('.php', '.blade.php', $templates), $templates);
+    });
+}, [
+    'index', '404', 'archive', 'author', 'category', 'tag', 'taxonomy', 'date', 'home',
+    'front_page', 'page', 'paged', 'search', 'single', 'singular', 'attachment'
+]);
+
+/**
+ * Render page using Blade
+ */
+add_filter('template_include', function ($template) {
+    echo template($template);
+
+    // Return a blank file to make WordPress happy
+    return get_template_directory() . '/index.php';
+}, 1000);
+
+/**
+ * Tell WordPress how to find the compiled path of comments.blade.php
+ */
+add_filter('comments_template', 'App\\template_path');

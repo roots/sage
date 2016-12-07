@@ -3,7 +3,6 @@ language: php
 php:
   - 7.0
   - 5.6
-  - 5.5
   - nightly
 
 env:
@@ -33,7 +32,7 @@ before_install:
   - composer self-update
 
 install:
-  - source ~/.nvm/nvm.sh && nvm install $TRAVIS_NODE_VERSION && nvm use $TRAVIS_NODE_VERSION 
+  - source ~/.nvm/nvm.sh && nvm install $TRAVIS_NODE_VERSION && nvm use $TRAVIS_NODE_VERSION
   - travis_retry npm install -g npm@latest
   - travis_retry npm install -g eslint
   - node -v && npm -v

@@ -12,17 +12,20 @@ interface ManifestInterface
     /**
      * Get the cache-busted filename
      *
-     * If the manifest does not have an entry for $file, then return $file
+     * If the manifest does not have an entry for $asset, then return $asset
      *
-     * @param string $file The original name of the file before cache-busting
+     * @param string $asset The original name of the file before cache-busting
      * @return string
      */
-    public function get($file);
+    public function get($asset);
 
     /**
-     * Get the asset manifest
+     * Get the cache-busted URI
      *
-     * @return array
+     * If the manifest does not have an entry for $asset, then return URI for $asset
+     *
+     * @param string $asset The original name of the file before cache-busting
+     * @return string
      */
-    public function getAll();
+    public function getUri($asset);
 }

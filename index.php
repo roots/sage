@@ -1,3 +1,3 @@
 <?php
 
-include __DIR__ . '/templates/index.php';
+// this file is deliberately blank

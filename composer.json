@@ -29,8 +29,10 @@
     }
   },
   "require": {
-    "php": ">=5.5.0",
-    "composer/installers": "~1.0"
+    "php": ">=5.6.4",
+    "composer/installers": "~1.0",
+    "illuminate/view": "^5.3",
+    "jenssegers/blade": "dev-master#59ba2cc"
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "^2.5.1",

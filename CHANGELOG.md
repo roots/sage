@@ -1,4 +1,5 @@
 ### HEAD
+* Add Blade ([#1765](https://github.com/roots/sage/pull/1765))
 * Remove sidebar defaults ([#1760](https://github.com/roots/sage/pull/1760))
 * Remove post formats ([#1759](https://github.com/roots/sage/pull/1759))
 
