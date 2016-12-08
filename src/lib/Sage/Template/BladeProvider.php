@@ -4,6 +4,7 @@ namespace Roots\Sage\Template;
 
 use Jenssegers\Blade\Blade;
 use Illuminate\View\Engines\CompilerEngine;
+use Illuminate\Contracts\Container\Container as ContainerContract;
 
 class BladeProvider extends Blade
 {
@@ -12,6 +13,19 @@ class BladeProvider extends Blade
 
     /** @var string */
     protected $cachePath;
+
+    /**
+     * Constructor.
+     *
+     * @param array             $viewPaths
+     * @param string            $cachePath
+     * @param ContainerContract $container
+     */
+    public function __construct($viewPaths, $cachePath, ContainerContract $container = null)
+    {
+        parent::__construct($viewPaths, $cachePath, $container);
+        $this->registerViewFinder();
+    }
 
     /**
      * @param string $view
@@ -57,6 +71,20 @@ class BladeProvider extends Blade
             $compiler->compile($file);
         }
         return $compiledPath;
+    }
+
+    /**
+     * Register the view finder implementation.
+     *
+     * @return void
+     */
+    public function registerViewFinder()
+    {
+        $this->container->bind('view.finder', function ($app) {
+            $paths = $app['config']['view.paths'];
+
+            return new FileViewFinder($app['files'], $paths);
+        });
     }
 
     /**
