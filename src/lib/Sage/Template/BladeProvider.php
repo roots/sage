@@ -23,7 +23,7 @@ class BladeProvider extends Blade
      */
     public function __construct($viewPaths, $cachePath, ContainerContract $container = null)
     {
-        parent::__construct($viewPaths, $cachePath, $container);
+        parent::__construct((array) $viewPaths, $cachePath, $container);
         $this->registerViewFinder();
     }
 
@@ -97,7 +97,8 @@ class BladeProvider extends Blade
         $view = str_replace('\\', '/', $file);
 
         // Remove unnecessary parts of the path
-        $view = str_replace(array_merge((array) $this->viewPaths, ['.blade.php', '.php']), '', $view);
+        $remove = array_merge($this->viewPaths, array_map('basename', $this->viewPaths), ['.blade.php', '.php']);
+        $view = str_replace($remove, '', $view);
 
         // Remove leading slashes
         $view = ltrim($view, '/');

@@ -31,9 +31,12 @@ add_filter('excerpt_more', function () {
 /**
  * Template Hierarchy should search for .blade.php files
  */
-array_map(function ($tag) {
-    add_filter("{$tag}_template_hierarchy", function ($templates) {
-        return array_merge(str_replace('.php', '.blade.php', $templates), $templates);
+array_map(function ($type) {
+    add_filter("{$type}_template_hierarchy", function ($templates) {
+        return call_user_func_array('array_merge', array_map(function ($template) {
+            $normalizedTemplate = str_replace('.', '/', sage('blade')->normalizeViewPath($template));
+            return ["{$normalizedTemplate}.blade.php", "{$normalizedTemplate}.php"];
+        }, $templates));
     });
 }, [
     'index', '404', 'archive', 'author', 'category', 'tag', 'taxonomy', 'date', 'home',
