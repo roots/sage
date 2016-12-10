@@ -1,13 +1,11 @@
-@php
-/**
- * Template Name: Custom Template
- */
-@endphp
+{{--
+  Template Name: Custom Template
+--}}
 
 @extends('layouts.base')
 
 @section('content')
-  @while(have_posts()) @php the_post() @endphp
+  @while(have_posts()) @php(the_post())
     @include('partials.page-header')
     @include('partials.content-page')
   @endwhile
