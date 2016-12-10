@@ -1,49 +1,41 @@
-sudo: false
 language: php
+sudo: false
+dist: trusty
 php:
+  - 7.1
   - 7.0
   - 5.6
   - nightly
 
 env:
-  - TRAVIS_NODE_VERSION="4" CXX="g++-4.8"
-  - TRAVIS_NODE_VERSION="6" CXX="g++-4.8"
+  - TRAVIS_NODE_VERSION="6"
+  - TRAVIS_NODE_VERSION="7"
 
 matrix:
   fast_finish: true
   allow_failures:
     - php: nightly
 
-addons:
-  apt:
-    sources:
-    - ubuntu-toolchain-r-test
-    packages:
-    - g++-4.8
-
 cache:
   apt: true
   directories:
     - $HOME/.composer/cache
-    - node_modules
+    - $HOME/.yarn-cache
     - vendor
 
 before_install:
   - composer self-update
+  - source ~/.nvm/nvm.sh && nvm install $TRAVIS_NODE_VERSION && nvm use $TRAVIS_NODE_VERSION
+  - export PATH=$HOME/.yarn/bin:$PATH && travis_retry curl -o- -L https://yarnpkg.com/install.sh | bash
 
 install:
-  - source ~/.nvm/nvm.sh && nvm install $TRAVIS_NODE_VERSION && nvm use $TRAVIS_NODE_VERSION
-  - travis_retry npm install -g npm@latest
-  - travis_retry npm install -g eslint
-  - node -v && npm -v
-  - npm rebuild
-  - travis_retry npm install
-  - npm prune
+  - node -v && yarn -V
+  - travis_retry yarn
   - composer install -o --prefer-dist --no-interaction
 
 script:
-  - npm run test
-  - npm run build
-  - npm run clean
-  - npm run "build:production"
+  - yarn run test
+  - yarn run build
+  - yarn run clean
+  - yarn run "build:production"
   - composer test
