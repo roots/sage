@@ -24,7 +24,7 @@
     "start": "webpack --hide-modules --watch --config assets/build/webpack.config.js",
     "clean": "rimraf dist",
     "lint": "eslint assets/scripts assets/build",
-    "test": "npm run lint"
+    "test": "yarn run lint"
   },
   "engines": {
     "node": ">= 4.5"
