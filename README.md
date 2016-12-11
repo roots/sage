@@ -25,6 +25,7 @@ Make sure all dependencies have been installed before moving on:
 * [PHP](http://php.net/manual/en/install.php) >= 5.6.4
 * [Composer](https://getcomposer.org/download/)
 * [Node.js](http://nodejs.org/) >= 6.9.x
+* [Yarn](https://yarnpkg.com/en/docs/install)
 
 ## Theme installation
 
@@ -77,30 +78,30 @@ Sage uses [Webpack](https://webpack.github.io/) as a build tool and [npm](https:
 
 ### Install dependencies
 
-From the command line on your host machine (not on your Vagrant development box), navigate to the theme directory then run `npm install`:
+From the command line on your host machine (not on your Vagrant development box), navigate to the theme directory then run `yarn`:
 
 ```shell
 # @ example.com/site/web/app/themes/your-theme-name
-$ npm install
+$ yarn
 ```
 
 You now have all the necessary dependencies to run the build process.
 
 ### Build commands
 
-* `npm start` — Compile assets when file changes are made, start BrowserSync session
-* `npm run build` — Compile and optimize the files in your assets directory
-* `npm run build:production` — Compile assets for production
+* `yarn run start` — Compile assets when file changes are made, start Browsersync session
+* `yarn run build` — Compile and optimize the files in your assets directory
+* `yarn run build:production` — Compile assets for production
 
 #### Additional commands
 
-* `npm run clean` — Remove your `dist/` folder
-* `npm run lint` — Run eslint against your assets and build scripts
+* `yarn run clean` — Remove your `dist/` folder
+* `yarn run lint` — Run eslint against your assets and build scripts
 * `composer test` — Check your PHP for code smells with `phpmd` and PSR-2 compliance with `phpcs`
 
 ### Using Browsersync
 
-To use Browsersync during `npm start` you need to update `devUrl` at the bottom of `assets/config.json` to reflect your local development hostname.
+To use Browsersync you need to update `devUrl` at the bottom of `assets/config.json` to reflect your local development hostname.
 
 If your local development URL is `https://project-name.dev`, update the file to read:
 ```json
