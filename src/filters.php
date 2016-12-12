@@ -40,7 +40,7 @@ array_map(function ($type) {
     });
 }, [
     'index', '404', 'archive', 'author', 'category', 'tag', 'taxonomy', 'date', 'home',
-    'front_page', 'page', 'paged', 'search', 'single', 'singular', 'attachment'
+    'frontpage', 'page', 'paged', 'search', 'single', 'singular', 'attachment'
 ]);
 
 /**
