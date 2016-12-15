@@ -1,142 +1,113 @@
 # [Sage](https://roots.io/sage/)
-[![Packagist](https://img.shields.io/packagist/vpre/roots/sage.svg?style=flat-square)](https://packagist.org/packages/roots/sage)
-[![devDependency Status](https://img.shields.io/david/dev/roots/sage.svg?style=flat-square)](https://david-dm.org/roots/sage#info=devDependencies)
-[![Build Status](https://img.shields.io/travis/roots/sage.svg?style=flat-square)](https://travis-ci.org/roots/sage)
 
-Sage is a WordPress starter theme with a modern development workflow.
+Sage is a WordPress starter theme based on HTML5 Boilerplate, gulp, Bower, and Bootstrap Sass, that will help you make better themes.
 
-**Sage 9 is in active development and is only currently in alpha. The `master` branch tracks Sage 9 development. If you want a stable version, use the [latest Sage 8 release](https://github.com/roots/sage/releases/latest).**
+**Note: This is a modified version of sage based on [v8.5.0](https://github.com/roots/sage/tree/8.5.0). The main difference is that the frontend uses [browserify](http://browserify.org/) for JavaScript, which is written using the latest ES6 spec (parsed using [babel](https://babeljs.io/)) and [yarn](https://yarnpkg.com/) for dependency management. I hope to document these changes more fully, but then again I might not.**
 
-## Features
-
-* Sass for stylesheets
-* ES6 for JavaScript
-* [Webpack](https://webpack.github.io/) for compiling assets, optimizing images, and concatenating and minifying files
-* [BrowserSync](http://www.browsersync.io/) for synchronized browser testing
-* [Bootstrap 4](http://getbootstrap.com/) for a front-end framework (can be removed or replaced)
-* [Laravel Blade](https://laravel.com/docs/5.3/blade) as a templating engine
-
-See a working example at [roots-example-project.com](https://roots-example-project.com/).
+* Source: [https://github.com/andyinabox/sage](https://github.com/andyinabox/sage)
+* Homepage: [https://github.com/andyinabox/sage](https://github.com/andyinabox/sage)
+* Documentation: [https://roots.io/sage/docs/](https://roots.io/sage/docs/)
+* Twitter: [@rootswp](https://twitter.com/rootswp)
+* Newsletter: [Subscribe](http://roots.io/subscribe/)
+* Forum: [https://discourse.roots.io/](https://discourse.roots.io/)
 
 ## Requirements
 
-Make sure all dependencies have been installed before moving on:
+| Prerequisite    | How to check | How to install
+| --------------- | ------------ | ------------- |
+| PHP >= 5.4.x    | `php -v`     | [php.net](http://php.net/manual/en/install.php) |
+| Node.js >= 4.5  | `node -v`    | [nodejs.org](http://nodejs.org/) |
+| gulp >= 3.8.10  | `gulp -v`    | `npm install -g gulp` |
+| Bower >= 1.3.12 | `bower -v`   | `npm install -g bower` |
 
-* [PHP](http://php.net/manual/en/install.php) >= 5.6.4
-* [Composer](https://getcomposer.org/download/)
-* [Node.js](http://nodejs.org/) >= 6.9.x
-* [Yarn](https://yarnpkg.com/en/docs/install)
+For more installation notes, refer to the [Install gulp and Bower](#install-gulp-and-bower) section in this document.
+
+## Features
+
+* [gulp](http://gulpjs.com/) build script that compiles both Sass and Less, checks for JavaScript errors, optimizes images, and concatenates and minifies files
+* [BrowserSync](http://www.browsersync.io/) for keeping multiple browsers and devices synchronized while testing, along with injecting updated CSS and JS into your browser while you're developing
+* [yarn](https://yarnpkg.com/) for dependancy management
+* [browserify](http://browserify.org/) for module management
+* [babel](https://babeljs.io/) to parse ES6
+* [Theme wrapper](https://roots.io/sage/docs/theme-wrapper/)
+* ARIA roles and microformats
+* Posts use the [hNews](http://microformats.org/wiki/hnews) microformat
+* [Multilingual ready](https://roots.io/wpml/) and over 30 available [community translations](https://github.com/roots/sage-translations)
+
+Install the [Soil](https://github.com/roots/soil) plugin to enable additional features:
+
+* Cleaner output of `wp_head` and enqueued assets
+* Cleaner HTML output of navigation menus
+* Root relative URLs
+* Nice search (`/search/query/`)
+* Google CDN jQuery snippet from [HTML5 Boilerplate](http://html5boilerplate.com/)
+* Google Analytics snippet from [HTML5 Boilerplate](http://html5boilerplate.com/)
+
+See a complete working example in the [roots-example-project.com repo](https://github.com/roots/roots-example-project.com).
 
 ## Theme installation
+
+Install Sage by copying the project into a new folder within your WordPress themes directory.
+
+Make sure [Composer](https://getcomposer.org/download/) has been installed before moving on.
 
 Install Sage using Composer from your WordPress themes directory (replace `your-theme-name` below with the name of your theme):
 
 ```shell
-# @ app/themes/ or wp-content/themes/
-$ composer create-project roots/sage your-theme-name dev-master
-```
-
-## Theme structure
-
-```shell
-themes/your-theme-name/   # → Root of your Sage based theme
-├── assets                # → Front-end assets
-│   ├── config.json       # → Settings for compiled assets
-│   ├── build/            # → Webpack and ESLint config
-│   ├── fonts/            # → Theme fonts
-│   ├── images/           # → Theme images
-│   ├── scripts/          # → Theme JS
-│   └── styles/           # → Theme stylesheets
-├── composer.json         # → Autoloading for `src/` files
-├── composer.lock         # → Composer lock file (never edit)
-├── dist/                 # → Built theme assets (never edit)
-├── functions.php         # → Composer autoloader, theme includes
-├── index.php             # → Never manually edit
-├── node_modules/         # → Node.js packages (never edit)
-├── package.json          # → Node.js dependencies and scripts
-├── screenshot.png        # → Theme screenshot for WP admin
-├── src/                  # → Theme PHP
-│   ├── lib/Sage/         # → Blade implementation, asset manifest
-│   ├── admin.php         # → Theme customizer setup
-│   ├── filters.php       # → Theme filters
-│   ├── helpers.php       # → Helper functions
-│   └── setup.php         # → Theme setup
-├── style.css             # → Theme meta information
-├── templates/            # → Theme templates
-│   ├── layouts/          # → Base templates
-│   └── partials/         # → Partial templates
-└── vendor/               # → Composer packages (never edit)
+# @ example.com/site/web/app/themes/
+$ composer create-project roots/sage your-theme-name 8.5.0
 ```
 
 ## Theme setup
 
-Edit `src/setup.php` to enable or disable theme features, setup navigation menus, post thumbnail sizes, post formats, and sidebars.
+Edit `lib/setup.php` to enable or disable theme features, setup navigation menus, post thumbnail sizes, post formats, and sidebars.
 
 ## Theme development
 
-Sage uses [Webpack](https://webpack.github.io/) as a build tool and [npm](https://www.npmjs.com/) to manage front-end packages.
+Sage uses [gulp](http://gulpjs.com/) as its build system and [Bower](http://bower.io/) to manage front-end packages.
 
-### Install dependencies
+### Install gulp and Bower
 
-From the command line on your host machine (not on your Vagrant development box), navigate to the theme directory then run `yarn`:
+Building the theme requires [node.js](http://nodejs.org/download/). We recommend you update to the latest version of npm: `npm install -g npm@latest`.
 
-```shell
-# @ example.com/site/web/app/themes/your-theme-name
-$ yarn
-```
+From the command line:
+
+1. Install [gulp](http://gulpjs.com) and [Bower](http://bower.io/) globally with `npm install -g gulp bower`
+2. Navigate to the theme directory, then run `npm install`
+3. Run `bower install`
 
 You now have all the necessary dependencies to run the build process.
 
-### Build commands
+### Available gulp commands
 
-* `yarn run start` — Compile assets when file changes are made, start Browsersync session
-* `yarn run build` — Compile and optimize the files in your assets directory
-* `yarn run build:production` — Compile assets for production
+* `gulp` — Compile and optimize the files in your assets directory
+* `gulp watch` — Compile assets when file changes are made
+* `gulp --production` — Compile assets for production (no source maps).
 
-#### Additional commands
+### Using BrowserSync
 
-* `yarn run clean` — Remove your `dist/` folder
-* `yarn run lint` — Run eslint against your assets and build scripts
-* `composer test` — Check your PHP for code smells with `phpmd` and PSR-2 compliance with `phpcs`
+To use BrowserSync during `gulp watch` you need to update `devUrl` at the bottom of `assets/manifest.json` to reflect your local development hostname.
 
-### Using Browsersync
-
-To use Browsersync you need to update `devUrl` at the bottom of `assets/config.json` to reflect your local development hostname.
-
-If your local development URL is `https://project-name.dev`, update the file to read:
+For example, if your local development URL is `http://project-name.dev` you would update the file to read:
 ```json
 ...
-  "devUrl": "https://project-name.dev",
+  "config": {
+    "devUrl": "http://project-name.dev"
+  }
 ...
 ```
-
-If you are not using [Bedrock](https://roots.io/bedrock/), update `publicPath` to reflect your folder structure:
-
+If your local development URL looks like `http://localhost:8888/project-name/` you would update the file to read:
 ```json
 ...
-  "publicPath": "/wp-content/themes/sage/"
-...
-```
-
-By default, Browsersync will use webpack's [HMR](https://webpack.github.io/docs/hot-module-replacement.html), which won't trigger a page reload in your browser.
-
-If you would like to force Browsersync to reload the page whenever certain file types are edited, then add them to `watch` in `assets/config.json`.
-
-```json
-...
-  "watch": [
-    "assets/scripts/**/*.js",
-    "templates/**/*.php",
-    "src/**/*.php"
-  ],
+  "config": {
+    "devUrl": "http://localhost:8888/project-name/"
+  }
 ...
 ```
 
 ## Documentation
 
-Sage 8 documentation is available at [https://roots.io/sage/docs/](https://roots.io/sage/docs/).
-
-Sage 9 documention is currently in progress and can be viewed at [https://github.com/roots/docs/tree/sage-9/sage](https://github.com/roots/docs/tree/sage-9/sage).
+Sage documentation is available at [https://roots.io/sage/docs/](https://roots.io/sage/docs/).
 
 ## Contributing
 
