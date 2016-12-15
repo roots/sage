@@ -2,14 +2,18 @@
   "name": "sage",
   "version": "8.5.0",
   "author": "Ben Word <ben@benword.com>",
-  "homepage": "https://roots.io/sage/",
+  "contributers": [{
+    "name": "Andy Dayton",
+    "email": "amdayton@gmail.com"
+  }],
+  "homepage": "https://github.com/andyinabox/sage/",
   "private": true,
   "repository": {
     "type": "git",
-    "url": "git://github.com/roots/sage.git"
+    "url": "git://github.com/andyinabox/sage.git"
   },
   "bugs": {
-    "url": "https://github.com/roots/sage/issues"
+    "url": "https://github.com/andyinabox/sage/issues"
   },
   "licenses": [
     {
@@ -18,26 +22,28 @@
     }
   ],
   "scripts": {
-    "build": "bower install && gulp",
-    "jshint": "gulp jshint",
-    "jscs": "jscs gulpfile.js assets/scripts/*.js"
+    "start": "gulp watch",
+    "build": "gulp build"
   },
   "engines": {
     "node": ">= 4.5"
   },
   "dependencies": {},
   "devDependencies": {
+    "babel-preset-latest": "^6.16.0",
+    "babelify": "^7.3.0",
     "browser-sync": "^2.18.5",
     "browserify": "^13.1.1",
-    "es6ify": "^1.6.0",
     "gulp": "^3.9.1",
     "gulp-clean-css": "^2.3.0",
     "gulp-sass": "^3.0.0",
+    "gulp-sourcemaps": "^1.9.1",
     "gulp-uglify": "^2.0.0",
     "pump": "^1.0.1",
+    "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0"
   },
-  "sage": {
+  "sageConfig": {
     "devUrl": "http://example.dev",
     "paths": {
       "source": "assets/",

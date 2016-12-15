@@ -1,11 +1,11 @@
 # [Sage](https://roots.io/sage/)
-[![Build Status](https://travis-ci.org/roots/sage.svg)](https://travis-ci.org/roots/sage)
-[![devDependency Status](https://david-dm.org/roots/sage/dev-status.svg)](https://david-dm.org/roots/sage#info=devDependencies)
 
 Sage is a WordPress starter theme based on HTML5 Boilerplate, gulp, Bower, and Bootstrap Sass, that will help you make better themes.
 
-* Source: [https://github.com/roots/sage](https://github.com/roots/sage)
-* Homepage: [https://roots.io/sage/](https://roots.io/sage/)
+**Note: This is a modified version of sage based on [v8.5.0](https://github.com/roots/sage/tree/8.5.0). The main difference is that the frontend uses [browserify](http://browserify.org/) for JavaScript, which is written using the latest ES6 spec (parsed using [babel](https://babeljs.io/)) and [yarn](https://yarnpkg.com/) for dependency management. I hope to document these changes more fully, but then again I might not.**
+
+* Source: [https://github.com/andyinabox/sage](https://github.com/andyinabox/sage)
+* Homepage: [https://github.com/andyinabox/sage](https://github.com/andyinabox/sage)
 * Documentation: [https://roots.io/sage/docs/](https://roots.io/sage/docs/)
 * Twitter: [@rootswp](https://twitter.com/rootswp)
 * Newsletter: [Subscribe](http://roots.io/subscribe/)
@@ -26,9 +26,9 @@ For more installation notes, refer to the [Install gulp and Bower](#install-gulp
 
 * [gulp](http://gulpjs.com/) build script that compiles both Sass and Less, checks for JavaScript errors, optimizes images, and concatenates and minifies files
 * [BrowserSync](http://www.browsersync.io/) for keeping multiple browsers and devices synchronized while testing, along with injecting updated CSS and JS into your browser while you're developing
-* [Bower](http://bower.io/) for front-end package management
-* [asset-builder](https://github.com/austinpray/asset-builder) for the JSON file based asset pipeline
-* [Bootstrap](http://getbootstrap.com/)
+* [yarn](https://yarnpkg.com/) for dependancy management
+* [browserify](http://browserify.org/) for module management
+* [babel](https://babeljs.io/) to parse ES6
 * [Theme wrapper](https://roots.io/sage/docs/theme-wrapper/)
 * ARIA roles and microformats
 * Posts use the [hNews](http://microformats.org/wiki/hnews) microformat

@@ -1,28 +1,39 @@
+// config
 var pkg = require('./package.json');
-var config = pkg.sage;
+var config = pkg.sageConfig;
 var paths = config.paths;
 
-var gulp = require('gulp');
-var browserify = require('browserify');
-var es6ify = require('es6ify');
-var source = require('vinyl-source-stream');
 var pump = require('pump');
+var browserify = require('browserify');
+var babelify = require('babelify');
+
+var gulp = require('gulp');
+var source = require('vinyl-source-stream');
+var buffer = require('vinyl-buffer');
+
+var sourcemaps = require('gulp-sourcemaps');
 var sass = require('gulp-sass');
 var uglify = require('gulp-uglify');
 var cleancss = require('gulp-clean-css');
 var browserSync = require('browser-sync');
 
 
+
+
 gulp.task('js', function(cb) {
 
-  var bundler = browserify(es6ify.runtime)
-    .transform(es6ify)
-    .add(paths.source + 'scripts/index.js');
+  var bundler = browserify({
+	  	entries: paths.source + 'scripts/index.js',
+	  	debug: true
+	  }).transform("babelify")
 
   pump([
     bundler.bundle(),
     source('index.js'),
-    // uglify(),
+    buffer(),
+    sourcemaps.init(),
+    uglify(),
+    sourcemaps.write('./maps'),
     gulp.dest(paths.dist + 'scripts'),
     browserSync.stream()
   ], cb);
@@ -35,7 +46,7 @@ gulp.task('css', function(cb) {
     gulp.src(paths.source + 'styles/main.scss'),
     sass(),
     cleancss(),
-    gulp.dest(paths.dist + 'styles/main.css'),
+    gulp.dest(paths.dist + 'styles'),
     browserSync.stream(),
   ], cb);
 
@@ -61,5 +72,3 @@ gulp.task('watch', function() {
 });
 
 gulp.task('build', ['js', 'css']);
-
-gulp.task('dev', []);
