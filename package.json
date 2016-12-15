@@ -2,10 +2,12 @@
   "name": "sage",
   "version": "8.5.0",
   "author": "Ben Word <ben@benword.com>",
-  "contributers": [{
-    "name": "Andy Dayton",
-    "email": "amdayton@gmail.com"
-  }],
+  "contributers": [
+    {
+      "name": "Andy Dayton",
+      "email": "amdayton@gmail.com"
+    }
+  ],
   "homepage": "https://github.com/andyinabox/sage/",
   "private": true,
   "repository": {
@@ -36,9 +38,11 @@
     "browserify": "^13.1.1",
     "gulp": "^3.9.1",
     "gulp-clean-css": "^2.3.0",
+    "gulp-postcss": "^6.2.0",
     "gulp-sass": "^3.0.0",
     "gulp-sourcemaps": "^1.9.1",
     "gulp-uglify": "^2.0.0",
+    "postcss-cssnext": "^2.9.0",
     "pump": "^1.0.1",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0"

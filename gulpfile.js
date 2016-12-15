@@ -14,6 +14,7 @@ var buffer = require('vinyl-buffer');
 var sourcemaps = require('gulp-sourcemaps');
 var sass = require('gulp-sass');
 var uglify = require('gulp-uglify');
+var postcss = require('gulp-postcss');
 var cleancss = require('gulp-clean-css');
 var browserSync = require('browser-sync');
 
@@ -44,8 +45,11 @@ gulp.task('css', function(cb) {
 
   pump([
     gulp.src(paths.source + 'styles/main.scss'),
+    sourcemaps.init(),
     sass(),
+    postcss([ require('postcss-cssnext') ]),
     cleancss(),
+    sourcemaps.write('./maps'),
     gulp.dest(paths.dist + 'styles'),
     browserSync.stream(),
   ], cb);
