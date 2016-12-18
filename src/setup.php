@@ -3,35 +3,8 @@
 namespace App;
 
 use Roots\Sage\Assets\JsonManifest;
+use Roots\Sage\Template\Blade;
 use Roots\Sage\Template\BladeProvider;
-
-/**
- * Add JsonManifest to Sage container
- */
-sage()->singleton('sage.assets', function () {
-    return new JsonManifest(
-        get_stylesheet_directory().'/dist/assets.json',
-        get_stylesheet_directory_uri().'/dist'
-    );
-});
-
-/**
- * Add Blade to Sage container
- */
-sage()->singleton('sage.blade', function () {
-    $cachePath = wp_upload_dir()['basedir'].'/cache/compiled';
-    if (!file_exists($cachePath)) {
-        wp_mkdir_p($cachePath);
-    }
-    return new BladeProvider(TEMPLATEPATH, $cachePath, sage());
-});
-
-/**
- * Create @asset() Blade directive
- */
-sage('blade')->compiler()->directive('asset', function ($asset) {
-    return '<?= App\\asset_path(\''.trim($asset, '\'"').'\'); ?>';
-});
 
 /**
  * Theme assets
@@ -86,7 +59,7 @@ add_action('after_setup_theme', function () {
      * @see assets/styles/layouts/_tinymce.scss
      */
     add_editor_style(asset_path('styles/main.css'));
-});
+}, 20);
 
 /**
  * Register sidebars
@@ -106,4 +79,50 @@ add_action('widgets_init', function () {
         'name'          => __('Footer', 'sage'),
         'id'            => 'sidebar-footer'
     ] + $config);
+});
+
+/**
+ * Setup Sage options
+ */
+add_action('after_setup_theme', function () {
+    /**
+     * Sage config
+     */
+    sage()->bindIf('config', function () {
+        return [
+            'view.paths'      => [TEMPLATEPATH, STYLESHEETPATH],
+            'view.compiled'   => wp_upload_dir()['basedir'].'/cache/compiled',
+            'view.namespaces' => ['App' => WP_CONTENT_DIR],
+            'assets.manifest' => get_stylesheet_directory().'/dist/assets.json',
+            'assets.uri'      => get_stylesheet_directory_uri().'/dist'
+        ];
+    });
+
+    /**
+     * Add JsonManifest to Sage container
+     */
+    sage()->singleton('sage.assets', function ($app) {
+        $config = $app['config'];
+        return new JsonManifest($config['assets.manifest'], $config['assets.uri']);
+    });
+
+    /**
+     * Add Blade to Sage container
+     */
+    sage()->singleton('sage.blade', function ($app) {
+        $config = $app['config'];
+        $cachePath = $config['view.compiled'];
+        if (!file_exists($cachePath)) {
+            wp_mkdir_p($cachePath);
+        }
+        (new BladeProvider($app))->register();
+        return new Blade($app['view'], $app);
+    });
+
+    /**
+     * Create @asset() Blade directive
+     */
+    sage('blade')->compiler()->directive('asset', function ($asset) {
+        return '<?= App\\asset_path(\''.trim($asset, '\'"').'\'); ?>';
+    });
 });

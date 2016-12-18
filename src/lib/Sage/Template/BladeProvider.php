@@ -2,108 +2,93 @@
 
 namespace Roots\Sage\Template;
 
-use Jenssegers\Blade\Blade;
-use Illuminate\View\Engines\CompilerEngine;
+use Illuminate\Container\Container;
 use Illuminate\Contracts\Container\Container as ContainerContract;
+use Illuminate\Events\Dispatcher;
+use Illuminate\Filesystem\Filesystem;
+use Illuminate\View\ViewServiceProvider;
 
-class BladeProvider extends Blade
+/**
+ * Class BladeProvider
+ */
+class BladeProvider extends ViewServiceProvider
 {
-    /** @var Blade */
-    public $blade;
-
-    /** @var string */
-    protected $cachePath;
-
     /**
-     * Constructor.
-     *
-     * @param array             $viewPaths
-     * @param string            $cachePath
      * @param ContainerContract $container
+     * @param array             $config
      */
-    public function __construct($viewPaths, $cachePath, ContainerContract $container = null)
+    public function __construct(ContainerContract $container = null, $config = [])
     {
-        parent::__construct((array) $viewPaths, $cachePath, $container);
+        /** @noinspection PhpParamsInspection */
+        parent::__construct($container ?: new Container);
+
+        $this->app->bindIf('config', function () use ($config) {
+            return $config;
+        }, true);
+    }
+
+    /**
+     * Bind required instances for the service provider.
+     */
+    public function register()
+    {
+        $this->registerFilesystem();
+        $this->registerEvents();
+        $this->registerEngineResolver();
         $this->registerViewFinder();
+        $this->registerFactory();
+        return $this;
     }
 
     /**
-     * @param string $view
-     * @param array $data
-     * @param array $mergeData
-     * @return \Illuminate\View\View
+     * Register Filesystem
      */
-    public function make($view, $data = [], $mergeData = [])
+    public function registerFilesystem()
     {
-        return $this->container['view']->make($this->normalizeViewPath($view), $data, $mergeData);
+        $this->app->bindIf('files', function () {
+            return new Filesystem;
+        }, true);
+        return $this;
     }
 
     /**
-     * @param string $view
-     * @param array $data
-     * @param array $mergeData
-     * @return string
+     * Register the events dispatcher
      */
-    public function render($view, $data = [], $mergeData = [])
+    public function registerEvents()
     {
-        return $this->make($view, $data, $mergeData)->render();
+        $this->app->bindIf('events', function () {
+            return new Dispatcher;
+        }, true);
+        return $this;
     }
 
-    /**
-     * @param string $file
-     * @param array $data
-     * @param array $mergeData
-     * @return string
-     */
-    public function compiledPath($file, $data = [], $mergeData = [])
+    /** @inheritdoc */
+    public function registerEngineResolver()
     {
-        $rendered = $this->make($file, $data, $mergeData);
-        $engine = $rendered->getEngine();
+        parent::registerEngineResolver();
+        return $this;
+    }
 
-        if (!($engine instanceof CompilerEngine)) {
-            // Using PhpEngine, so just return the file
-            return $file;
-        }
-
-        $compiler = $engine->getCompiler();
-        $compiledPath = $compiler->getCompiledPath($rendered->getPath());
-        if ($compiler->isExpired($compiledPath)) {
-            $compiler->compile($file);
-        }
-        return $compiledPath;
+    /** @inheritdoc */
+    public function registerFactory()
+    {
+        parent::registerFactory();
+        return $this;
     }
 
     /**
      * Register the view finder implementation.
-     *
-     * @return void
      */
     public function registerViewFinder()
     {
-        $this->container->bind('view.finder', function ($app) {
-            $paths = $app['config']['view.paths'];
-
-            return new FileViewFinder($app['files'], $paths);
-        });
-    }
-
-    /**
-     * @param string $file
-     * @return string
-     */
-    public function normalizeViewPath($file)
-    {
-        // Convert `\` to `/`
-        $view = str_replace('\\', '/', $file);
-
-        // Remove unnecessary parts of the path
-        $remove = array_merge($this->viewPaths, array_map('basename', $this->viewPaths), ['.blade.php', '.php']);
-        $view = str_replace($remove, '', $view);
-
-        // Remove leading slashes
-        $view = ltrim($view, '/');
-
-        // Convert `/` to `.`
-        return str_replace('/', '.', $view);
+        $this->app->bindIf('view.finder', function ($app) {
+            $config = $this->app['config'];
+            $paths = $config['view.paths'];
+            $namespaces = $config['view.namespaces'];
+            $finder = new FileViewFinder($app['files'], $paths);
+            array_map([$finder, 'addNamespace'], array_keys($namespaces), $namespaces);
+            return $finder;
+        }, true);
+        return $this;
     }
 }
