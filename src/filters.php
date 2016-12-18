@@ -47,7 +47,10 @@ array_map(function ($type) {
  * Render page using Blade
  */
 add_filter('template_include', function ($template) {
-    echo template($template, apply_filters('sage/template_data', []));
+    $data = array_reduce(get_body_class(), function ($data, $class) {
+        return apply_filters("sage/template/{$class}/data", $data);
+    }, []);
+    echo template($template, $data);
 
     // Return a blank file to make WordPress happy
     return get_template_directory() . '/index.php';
