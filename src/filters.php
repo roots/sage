@@ -54,7 +54,7 @@ add_filter('template_include', function ($template) {
 
     // Return a blank file to make WordPress happy
     return get_template_directory() . '/index.php';
-}, 1000);
+}, PHP_INT_MAX);
 
 /**
  * Tell WordPress how to find the compiled path of comments.blade.php
