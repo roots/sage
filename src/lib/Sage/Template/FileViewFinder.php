@@ -12,7 +12,7 @@ class FileViewFinder extends \Illuminate\View\FileViewFinder
      * @param  string  $name
      * @return array
      */
-    protected function getPossibleViewFiles($name)
+    public function getPossibleViewFiles($name)
     {
         $parts = explode(self::FALLBACK_PARTS_DELIMITER, $name);
         $templates[] = array_shift($parts);
