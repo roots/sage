@@ -1,5 +1,5 @@
 ### HEAD
-* Add Blade ([#1765](https://github.com/roots/sage/pull/1765))
+* Add Blade ([#1765](https://github.com/roots/sage/pull/1765) and [#1777](https://github.com/roots/sage/pull/1777))
 * Remove sidebar defaults ([#1760](https://github.com/roots/sage/pull/1760))
 * Remove post formats ([#1759](https://github.com/roots/sage/pull/1759))
 
@@ -7,13 +7,13 @@
 * Use new webpack api schema ([8ac5f15](https://github.com/roots/sage/commit/e6e60aa))
 * Update dependencies ([70ebba7](https://github.com/roots/sage/commit/70ebba7))
 * Variables organization ([8ac5f15](https://github.com/roots/sage/commit/8ac5f15))
-* Use $.fn.ready() (reverts 724d550) ([e7fccbe](https://github.com/roots/sage/commit/e7fccbe))
+* Use `$.fn.ready()` (reverts [724d550](https://github.com/roots/sage/commit/724d550)) ([e7fccbe](https://github.com/roots/sage/commit/e7fccbe))
 * Theme activation updates 'stylesheet' option instead of 'template' ([fb19145](https://github.com/roots/sage/commit/fb19145))
 * Reorganize and refactor build routine ([8c9ba05](https://github.com/roots/sage/commit/8c9ba05))
 * Switch assets manifest plugin ([c1bb2b3](https://github.com/roots/sage/commit/c1bb2b3))
 * Add images to assets manifest ([c49793c](https://github.com/roots/sage/commit/c49793c))
 * Switch from babel to buble ([0d38ab8](https://github.com/roots/sage/commit/0d38ab8))
-* Update dependencies & webpack compatibility (BREAKING CHANGES) ([eae52fd](https://github.com/roots/sage/commit/eae52fd))
+* Update dependencies & webpack compatibility ([eae52fd](https://github.com/roots/sage/commit/eae52fd))
 * Use http by default (not https) to be consistent with Trellis ([e6f2f49](https://github.com/roots/sage/commit/e6f2f49))
 
 ### 9.0.0-alpha.3: September 11th, 2016
