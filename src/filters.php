@@ -47,8 +47,8 @@ array_map(function ($type) {
  * Render page using Blade
  */
 add_filter('template_include', function ($template) {
-    $data = array_reduce(get_body_class(), function ($data, $class) {
-        return apply_filters("sage/template/{$class}/data", $data);
+    $data = array_reduce(get_body_class(), function ($data, $class) use ($template) {
+        return apply_filters("sage/template/{$class}/data", $data, $template);
     }, []);
     echo template($template, $data);
 
