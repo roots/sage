@@ -172,16 +172,15 @@ var writeToManifest = function(directory) {
 // `gulp styles` - Compiles, combines, and optimizes Bower CSS and project CSS.
 // By default this task will only log a warning if a precompiler error is
 // raised. If the `--production` flag is set: this task will fail outright.
-
 gulp.task('styles', ['wiredep'], function () {
-	var merged = merge();
-	manifest.forEachDependency('css', function (dep) {
+  var merged = merge();
+  manifest.forEachDependency('css', function (dep) {
     var cssTasksInstance = cssTasks(dep.name);
     if (!enabled.failStyleTask) {
-        cssTasksInstance.on('error', function (err) {
-            console.error(err.message);
-            this.emit('end');
-        });
+      cssTasksInstance.on('error', function (err) {
+        console.error(err.message);
+        this.emit('end');
+      });
     }
     merged.add(gulp.src(dep.globs, {base: 'styles'})
         .pipe(plumber({errorHandler: onError}))
@@ -194,7 +193,6 @@ gulp.task('styles', ['wiredep'], function () {
 // ### Scripts
 // `gulp scripts` - Runs JSHint then compiles, combines, and optimizes Bower JS
 // and project JS.
-
 gulp.task('scripts', ['jshint'], function() {
   var merged = merge();
   manifest.forEachDependency('js', function(dep) {
