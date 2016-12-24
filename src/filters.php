@@ -34,7 +34,7 @@ add_filter('excerpt_more', function () {
 array_map(function ($type) {
     add_filter("{$type}_template_hierarchy", function ($templates) {
         return call_user_func_array('array_merge', array_map(function ($template) {
-            $normalizedTemplate = preg_replace('%(\.blade)?(\.php)?$%', '', $template);
+            $normalizedTemplate = preg_replace(['%^/?(templates)?/?%', '%(\.blade)?(\.php)?$%'], '', $template);
             return ["{$normalizedTemplate}.blade.php", "{$normalizedTemplate}.php"];
         }, $templates));
     });
