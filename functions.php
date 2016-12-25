@@ -42,7 +42,7 @@ array_map(function ($file) {
  * ├── STYLESHEETPATH         -> /srv/www/example.com/current/web/app/themes/sage
  * └── TEMPLATEPATH           -> /srv/www/example.com/current/web/app/themes/sage/templates
  */
-if (is_customize_preview()) {
+if (App\config('sage.disable_option_hack')) {
     return;
 }
 add_filter('template', function ($stylesheet) {
