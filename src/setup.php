@@ -57,6 +57,12 @@ add_action('after_setup_theme', function () {
     add_theme_support('html5', ['caption', 'comment-form', 'comment-list', 'gallery', 'search-form']);
 
     /**
+     * Enable selective refresh for widgets in customizer
+     * @link https://developer.wordpress.org/themes/advanced-topics/customizer-api/#theme-support-in-sidebars
+     */
+    add_theme_support('customize-selective-refresh-widgets');
+
+    /**
      * Use main stylesheet for visual editor
      * @see assets/styles/layouts/_tinymce.scss
      */

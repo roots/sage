@@ -57,7 +57,7 @@ add_filter('template_include', function ($template) {
     echo template($template, $data);
 
     // Return a blank file to make WordPress happy
-    return dirname(__DIR__).'/index.php';
+    return get_theme_file_path('index.php');
 }, PHP_INT_MAX);
 
 /**

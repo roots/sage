@@ -16,11 +16,12 @@ class BladeProvider extends ViewServiceProvider
     /**
      * @param ContainerContract $container
      * @param array             $config
+     * @SuppressWarnings(PHPMD.StaticAccess)
      */
     public function __construct(ContainerContract $container = null, $config = [])
     {
         /** @noinspection PhpParamsInspection */
-        parent::__construct($container ?: new Container);
+        parent::__construct($container ?: Container::getInstance());
 
         $this->app->bindIf('config', function () use ($config) {
             return $config;
@@ -45,9 +46,7 @@ class BladeProvider extends ViewServiceProvider
      */
     public function registerFilesystem()
     {
-        $this->app->bindIf('files', function () {
-            return new Filesystem;
-        }, true);
+        $this->app->bindIf('files', Filesystem::class, true);
         return $this;
     }
 
@@ -56,9 +55,7 @@ class BladeProvider extends ViewServiceProvider
      */
     public function registerEvents()
     {
-        $this->app->bindIf('events', function () {
-            return new Dispatcher;
-        }, true);
+        $this->app->bindIf('events', Dispatcher::class, true);
         return $this;
     }
 
