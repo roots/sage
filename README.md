@@ -42,7 +42,6 @@ $ composer create-project roots/sage your-theme-name dev-master
 themes/your-theme-name/   # → Root of your Sage based theme
 ├── assets                # → Front-end assets
 │   ├── config.json       # → Settings for compiled assets
-│   ├── build/            # → Webpack and ESLint config
 │   ├── fonts/            # → Theme fonts
 │   ├── images/           # → Theme images
 │   ├── scripts/          # → Theme JS

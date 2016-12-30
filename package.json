@@ -18,12 +18,12 @@
     }
   ],
   "scripts": {
-    "build": "webpack --progress --config assets/build/webpack.config.js",
-    "build:production": "webpack --progress -p --config assets/build/webpack.config.js",
-    "build:profile": "webpack --progress --profile --json --config assets/build/webpack.config.js",
-    "start": "webpack --hide-modules --watch --config assets/build/webpack.config.js",
+    "build": "webpack --progress --env.config=assets/config --config node_modules/sage-webpack-utils/webpack.config.js",
+    "build:production": "webpack --progress -p --env.config=assets/config --config node_modules/sage-webpack-utils/webpack.config.js",
+    "build:profile": "webpack --progress --profile --json --env.config=assets/config --config node_modules/sage-webpack-utils/webpack.config.js",
+    "start": "webpack --hide-modules --watch --env.config=assets/config --config node_modules/sage-webpack-utils/webpack.config.js",
     "clean": "rimraf dist",
-    "lint": "eslint assets/scripts assets/build",
+    "lint": "eslint assets/scripts",
     "test": "yarn run lint"
   },
   "engines": {
@@ -61,6 +61,7 @@
     "qs": "^6.3.0",
     "resolve-url-loader": "^1.6.0",
     "rimraf": "^2.5.4",
+    "sage-webpack-utils": "^0.1.1",
     "sass-loader": "^4.0.2",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
