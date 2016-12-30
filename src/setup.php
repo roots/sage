@@ -2,7 +2,9 @@
 
 namespace App;
 
+use Illuminate\Contracts\Container\Container as ContainerContract;
 use Roots\Sage\Assets\JsonManifest;
+use Roots\Sage\Config;
 use Roots\Sage\Template\Blade;
 use Roots\Sage\Template\BladeProvider;
 
@@ -94,30 +96,37 @@ add_action('after_setup_theme', function () {
     /**
      * Sage config
      */
-    sage()->bindIf('config', function () {
-        return [
-            'view.paths'      => [TEMPLATEPATH, STYLESHEETPATH],
-            'view.compiled'   => wp_upload_dir()['basedir'].'/cache/compiled',
-            'view.namespaces' => ['App' => WP_CONTENT_DIR],
-            'assets.manifest' => get_stylesheet_directory().'/dist/assets.json',
-            'assets.uri'      => get_stylesheet_directory_uri().'/dist'
-        ];
-    });
+    $paths = [
+        'dir.stylesheet' => get_stylesheet_directory(),
+        'dir.template'   => get_template_directory(),
+        'dir.upload'     => wp_upload_dir()['basedir'],
+        'uri.stylesheet' => get_stylesheet_directory_uri(),
+        'uri.template'   => get_template_directory_uri(),
+    ];
+    $viewPaths = collect(preg_replace('%[\/]?(templates)?[\/.]*?$%', '', [STYLESHEETPATH, TEMPLATEPATH]))
+        ->flatMap(function ($path) {
+            return ["{$path}/templates", $path];
+        })->unique()->toArray();
+    config([
+        'assets.manifest' => "{$paths['dir.stylesheet']}/dist/assets.json",
+        'assets.uri'      => "{$paths['uri.stylesheet']}/dist",
+        'view.compiled'   => "{$paths['dir.upload']}/cache/compiled",
+        'view.namespaces' => ['App' => WP_CONTENT_DIR],
+        'view.paths'      => $viewPaths,
+    ] + $paths);
 
     /**
      * Add JsonManifest to Sage container
      */
-    sage()->singleton('sage.assets', function ($app) {
-        $config = $app['config'];
-        return new JsonManifest($config['assets.manifest'], $config['assets.uri']);
+    sage()->singleton('sage.assets', function () {
+        return new JsonManifest(config('assets.manifest'), config('assets.uri'));
     });
 
     /**
      * Add Blade to Sage container
      */
-    sage()->singleton('sage.blade', function ($app) {
-        $config = $app['config'];
-        $cachePath = $config['view.compiled'];
+    sage()->singleton('sage.blade', function (ContainerContract $app) {
+        $cachePath = config('view.compiled');
         if (!file_exists($cachePath)) {
             wp_mkdir_p($cachePath);
         }
@@ -132,3 +141,13 @@ add_action('after_setup_theme', function () {
         return '<?= App\\asset_path(\''.trim($asset, '\'"').'\'); ?>';
     });
 });
+
+/**
+ * Init config
+ */
+sage()->bindIf('config', Config::class, true);
+
+/**
+ * Disable option hack if we're in Customizer preview
+ */
+config(['sage.disable_option_hack' => is_customize_preview()]);
