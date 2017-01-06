@@ -1,5 +1,5 @@
 const webpack = require('webpack');
-const BrowserSyncPlugin = require('./webpack.plugin.browsersync');
+const BrowserSyncPlugin = require('browsersync-webpack-plugin');
 
 const config = require('./config');
 
