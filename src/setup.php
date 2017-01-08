@@ -146,8 +146,3 @@ add_action('after_setup_theme', function () {
  * Init config
  */
 sage()->bindIf('config', Config::class, true);
-
-/**
- * Disable option hack if we're in Customizer preview
- */
-config(['sage.disable_option_hack' => is_customize_preview()]);
