@@ -1,4 +1,5 @@
 ### HEAD
+* Update to Bootstrap 4 Alpha 6 ([#1792](https://github.com/roots/sage/pull/1792))
 * Add Blade ([#1765](https://github.com/roots/sage/pull/1765) and [#1777](https://github.com/roots/sage/pull/1777))
 * Remove sidebar defaults ([#1760](https://github.com/roots/sage/pull/1760))
 * Remove post formats ([#1759](https://github.com/roots/sage/pull/1759))
