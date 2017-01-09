@@ -40,3 +40,6 @@ module.exports = mergeWithConcat(config, {
   manifest: {},
 });
 
+if (config.enabled.watcher && !process.env.WEBPACK_PUBLIC_PATH) {
+  process.env.WEBPACK_PUBLIC_PATH = config.publicPath;
+}

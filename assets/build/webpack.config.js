@@ -49,6 +49,7 @@ let webpackConfig = {
         include: config.paths.assets,
         loader: ExtractTextPlugin.extract({
           fallbackLoader: 'style',
+          publicPath: '../',
           loader: [
             `css?${sourceMapQueryStr}`,
             'postcss',
@@ -60,6 +61,7 @@ let webpackConfig = {
         include: config.paths.assets,
         loader: ExtractTextPlugin.extract({
           fallbackLoader: 'style',
+          publicPath: '../',
           loader: [
             `css?${sourceMapQueryStr}`,
             'postcss',
@@ -140,8 +142,8 @@ let webpackConfig = {
       'window.Tether': 'tether',
     }),
     new webpack.DefinePlugin({
-      WEBPACK_PUBLIC_PATH: (config.enabled.watcher)
-        ? JSON.stringify(config.publicPath)
+      WEBPACK_PUBLIC_PATH: (process.env.WEBPACK_PUBLIC_PATH)
+        ? JSON.stringify(process.env.WEBPACK_PUBLIC_PATH)
         : false,
     }),
     new webpack.LoaderOptionsPlugin({
