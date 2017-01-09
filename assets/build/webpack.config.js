@@ -71,11 +71,9 @@ let webpackConfig = {
       {
         test: /\.(png|jpe?g|gif|svg|ico)$/,
         include: config.paths.assets,
-        use: [
-          `file?${qs.stringify({
-            name: `[path]${assetsFilenames}.[ext]`,
-          })}`,
-        ],
+        loader: `file?${qs.stringify({
+          name: `[path]${assetsFilenames}.[ext]`,
+        })}`,
       },
       {
         test: /\.(ttf|eot)$/,
