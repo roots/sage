@@ -11,7 +11,12 @@
     "node": true
   },
   "rules": {
-    "react/require-extension": 0,
-    "import/extensions": [1, { "js": "never" }]
+    "comma-dangle": ["error", {
+      "arrays": "always-multiline",
+      "objects": "always-multiline",
+      "imports": "always-multiline",
+      "exports": "always-multiline",
+      "functions": "ignore"
+    }]
   }
 }

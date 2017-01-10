@@ -71,6 +71,7 @@ module.exports = class {
     this.globOptions.nodir = true;
     this.manifest = options.manifest || {};
     this.files = [];
+    this.started = false;
   }
   apply(compiler) {
     if (this.disable) {
@@ -78,8 +79,12 @@ module.exports = class {
     }
     this.compiler = compiler;
     this.resolveWorkingDirectory();
-    compiler.plugin('emit', this.emitHandler.bind(this));
-    compiler.plugin('after-emit', this.afterEmitHandler.bind(this));
+    if (!this.started) {
+      compiler.plugin('emit', this.emitHandler.bind(this));
+      compiler.plugin('after-emit', this.afterEmitHandler.bind(this));
+      compiler.plugin('after-emit', this.afterEmitHandler.bind(this));
+      this.started = true;
+    }
   }
   emitHandler(compilation, callback) {
     this.compilation = compilation;

@@ -49,6 +49,7 @@ let webpackConfig = {
         include: config.paths.assets,
         loader: ExtractTextPlugin.extract({
           fallbackLoader: 'style',
+          publicPath: '../',
           loader: [
             `css?${sourceMapQueryStr}`,
             'postcss',
@@ -60,6 +61,7 @@ let webpackConfig = {
         include: config.paths.assets,
         loader: ExtractTextPlugin.extract({
           fallbackLoader: 'style',
+          publicPath: '../',
           loader: [
             `css?${sourceMapQueryStr}`,
             'postcss',
@@ -71,11 +73,9 @@ let webpackConfig = {
       {
         test: /\.(png|jpe?g|gif|svg|ico)$/,
         include: config.paths.assets,
-        use: [
-          `file?${qs.stringify({
-            name: `[path]${assetsFilenames}.[ext]`,
-          })}`,
-        ],
+        loader: `file?${qs.stringify({
+          name: `[path]${assetsFilenames}.[ext]`,
+        })}`,
       },
       {
         test: /\.(ttf|eot)$/,
@@ -122,9 +122,12 @@ let webpackConfig = {
       root: config.paths.root,
       verbose: false,
     }),
+    /**
+     * It would be nice to switch to copy-webpack-plugin, but
+     * unfortunately it doesn't provide a reliable way of
+     * tracking the before/after file names
+     */
     new CopyGlobsPlugin({
-      // It would be nice to switch to copy-webpack-plugin, but unfortunately it doesn't
-      // provide a reliable way of tracking the before/after file names
       pattern: config.copy,
       output: `[path]${assetsFilenames}.[ext]`,
       manifest: config.manifest,
@@ -140,11 +143,6 @@ let webpackConfig = {
       'window.jQuery': 'jquery',
       Tether: 'tether',
       'window.Tether': 'tether',
-    }),
-    new webpack.DefinePlugin({
-      WEBPACK_PUBLIC_PATH: (config.enabled.watcher)
-        ? JSON.stringify(config.publicPath)
-        : false,
     }),
     new webpack.LoaderOptionsPlugin({
       minimize: config.enabled.optimize,
