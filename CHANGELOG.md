@@ -1,4 +1,4 @@
-### HEAD
+### 9.0.0-beta.1: January 10th, 2016
 * Update to Bootstrap 4 Alpha 6 ([#1792](https://github.com/roots/sage/pull/1792))
 * Add Blade ([#1765](https://github.com/roots/sage/pull/1765) and [#1777](https://github.com/roots/sage/pull/1777))
 * Remove sidebar defaults ([#1760](https://github.com/roots/sage/pull/1760))
