@@ -122,9 +122,12 @@ let webpackConfig = {
       root: config.paths.root,
       verbose: false,
     }),
+    /**
+     * It would be nice to switch to copy-webpack-plugin, but
+     * unfortunately it doesn't provide a reliable way of
+     * tracking the before/after file names
+     */
     new CopyGlobsPlugin({
-      // It would be nice to switch to copy-webpack-plugin, but unfortunately it doesn't
-      // provide a reliable way of tracking the before/after file names
       pattern: config.copy,
       output: `[path]${assetsFilenames}.[ext]`,
       manifest: config.manifest,
@@ -140,11 +143,6 @@ let webpackConfig = {
       'window.jQuery': 'jquery',
       Tether: 'tether',
       'window.Tether': 'tether',
-    }),
-    new webpack.DefinePlugin({
-      WEBPACK_PUBLIC_PATH: (process.env.WEBPACK_PUBLIC_PATH)
-        ? JSON.stringify(process.env.WEBPACK_PUBLIC_PATH)
-        : false,
     }),
     new webpack.LoaderOptionsPlugin({
       minimize: config.enabled.optimize,
