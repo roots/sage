@@ -155,7 +155,7 @@ let webpackConfig = {
         output: { path: config.paths.dist },
         context: config.paths.assets,
         postcss: [
-          autoprefixer({ browsers: ['last 2 versions', 'android 4', 'opera 12'] }),
+          autoprefixer({ browsers: config.browsers }),
         ],
       },
     }),
