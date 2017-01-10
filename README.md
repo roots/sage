@@ -95,7 +95,7 @@ You now have all the necessary dependencies to run the build process.
 
 #### Additional commands
 
-* `yarn run clean` — Remove your `dist/` folder
+* `yarn run rmdist` — Remove your `dist/` folder
 * `yarn run lint` — Run eslint against your assets and build scripts
 * `composer test` — Check your PHP for code smells with `phpmd` and PSR-2 compliance with `phpcs`
 
