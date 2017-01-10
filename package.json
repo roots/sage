@@ -1,6 +1,6 @@
 {
   "name": "sage",
-  "version": "9.0.0-alpha.4",
+  "version": "9.0.0-beta.1",
   "author": "Roots <team@roots.io>",
   "homepage": "https://roots.io/sage/",
   "private": true,
@@ -27,7 +27,7 @@
     "test": "yarn run lint"
   },
   "engines": {
-    "node": ">= 4.5"
+    "node": ">= 6.9.4"
   },
   "devDependencies": {
     "autoprefixer": "^6.6.1",
