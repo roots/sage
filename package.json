@@ -22,7 +22,7 @@
     "build:production": "webpack --progress -p --config assets/build/webpack.config.js",
     "build:profile": "webpack --progress --profile --json --config assets/build/webpack.config.js",
     "start": "webpack --hide-modules --watch --config assets/build/webpack.config.js",
-    "clean": "rimraf dist",
+    "rmdist": "rimraf dist",
     "lint": "eslint assets/scripts assets/build",
     "test": "yarn run lint"
   },
