@@ -175,7 +175,7 @@ if (config.enabled.optimize) {
 }
 
 if (config.env.production) {
-  webpackConfig.plugins.push(new webpack.NoEmitOnErrorsPlugin());
+  webpackConfig.plugins.push(new webpack.NoErrorsPlugin());
 }
 
 if (config.enabled.cacheBusting) {
