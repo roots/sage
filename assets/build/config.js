@@ -26,6 +26,7 @@ const config = mergeWithConcat({
     watcher: !!argv.watch,
   },
   watch: [],
+  browsers: [],
 }, userConfig);
 
 config.watch.push(`${path.basename(config.paths.assets)}/${config.copy}`);
