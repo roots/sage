@@ -1,3 +1,9 @@
+### 9.0.0-beta.2: January 11th, 2016
+* Fix for `publicPath` ([#1806](https://github.com/roots/sage/pull/1806))
+* Update clean task name ([#1800](https://github.com/roots/sage/pull/1800))
+* Allow browser versions to be configured in `config.json` ([#1798](https://github.com/roots/sage/pull/1798))
+* Use stock ESLint ([#1796](https://github.com/roots/sage/pull/1796))
+
 ### 9.0.0-beta.1: January 10th, 2016
 * Update to Bootstrap 4 Alpha 6 ([#1792](https://github.com/roots/sage/pull/1792))
 * Add Blade ([#1765](https://github.com/roots/sage/pull/1765) and [#1777](https://github.com/roots/sage/pull/1777))
