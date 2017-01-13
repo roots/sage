@@ -1,4 +1,5 @@
 ### 9.0.0-beta.2: January 11th, 2016
+* Remove Font Awesome ([#1809](https://github.com/roots/sage/pull/1809))
 * Remove grid defaults ([#1808](https://github.com/roots/sage/pull/1808))
 * Fix for `publicPath` ([#1806](https://github.com/roots/sage/pull/1806))
 * Update clean task name ([#1800](https://github.com/roots/sage/pull/1800))
