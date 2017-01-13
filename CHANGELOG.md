@@ -1,4 +1,5 @@
 ### 9.0.0-beta.2: January 11th, 2016
+* Remove grid defaults ([#1808](https://github.com/roots/sage/pull/1808))
 * Fix for `publicPath` ([#1806](https://github.com/roots/sage/pull/1806))
 * Update clean task name ([#1800](https://github.com/roots/sage/pull/1800))
 * Allow browser versions to be configured in `config.json` ([#1798](https://github.com/roots/sage/pull/1798))
