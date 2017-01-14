@@ -42,6 +42,7 @@
     "test": [
       "vendor/bin/phpcs",
       "vendor/bin/phpmd src text cleancode,codesize,controversial,design,naming,unusedcode"
-    ]
+    ],
+    "post-create-project-cmd": "Roots\\Sage\\PostCreateProject::removeBootstrap"
   }
 }
