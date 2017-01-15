@@ -41,6 +41,9 @@
     "test": [
       "vendor/bin/phpcs"
     ],
-    "post-create-project-cmd": "Roots\\Sage\\PostCreateProject::removeBootstrap"
+    "post-create-project-cmd": [
+        "Roots\\Sage\\PostCreateProject::updateHeaders",
+        "Roots\\Sage\\PostCreateProject::removeBootstrap"
+    ]
   }
 }
