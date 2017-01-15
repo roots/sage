@@ -10,6 +10,7 @@ class PostCreateProject
     {
         $io = $event->getIO();
 
+        // @codingStandardsIgnoreStart
         if ($io->isInteractive()) {
             if ($io->askConfirmation('<info>Remove Bootstrap?</info> [<comment>y,N</comment>]? ', false)) {
                 file_put_contents('package.json', str_replace('    "bootstrap": "^4.0.0-alpha.6",' . "\n", '', file_get_contents('package.json')));
@@ -22,5 +23,6 @@ class PostCreateProject
                 file_put_contents('assets/styles/layouts/_header.scss', '');
             }
         }
+        // @codingStandardsIgnoreEnd
     }
 }
