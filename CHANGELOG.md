@@ -1,4 +1,5 @@
 ### 9.0.0-beta.2: TBD
+* Add option to select CSS framework, add Foundation as an option ([#1813](https://github.com/roots/sage/pull/1813))
 * Add option to add Font Awesome ([#1812](https://github.com/roots/sage/pull/1812))
 * Add option to change theme file headers ([#1811](https://github.com/roots/sage/pull/1811))
 * Add option to remove Bootstrap ([#1810](https://github.com/roots/sage/pull/1810))

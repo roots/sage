@@ -43,7 +43,7 @@
     ],
     "post-create-project-cmd": [
         "Roots\\Sage\\PostCreateProject::updateHeaders",
-        "Roots\\Sage\\PostCreateProject::removeBootstrap",
+        "Roots\\Sage\\PostCreateProject::selectFramework",
         "Roots\\Sage\\PostCreateProject::addFontAwesome"
     ]
   }

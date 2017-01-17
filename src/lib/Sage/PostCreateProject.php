@@ -35,19 +35,39 @@ class PostCreateProject
         }
     }
 
-    public static function removeBootstrap(Event $event)
+    public static function selectFramework(Event $event)
     {
         $io = $event->getIO();
 
         if ($io->isInteractive()) {
-            if ($io->askConfirmation('<info>Remove Bootstrap?</info> [<comment>y,N</comment>]? ', false)) {
-                file_put_contents('package.json', str_replace('    "bootstrap": "^4.0.0-alpha.6",' . "\n", '', file_get_contents('package.json')));
-                file_put_contents('assets/styles/main.scss', str_replace('@import "~bootstrap/scss/bootstrap";' . "\n", '', file_get_contents('assets/styles/main.scss')));
-                file_put_contents('assets/scripts/main.js', str_replace('import \'bootstrap/dist/js/bootstrap\';' . "\n", '', file_get_contents('assets/scripts/main.js')));
-                file_put_contents('assets/styles/components/_comments.scss', '');
-                file_put_contents('assets/styles/components/_forms.scss', '');
-                file_put_contents('assets/styles/components/_wp-classes.scss', '');
-                file_put_contents('assets/styles/layouts/_header.scss', '');
+            $frameworks = [
+                'Bootstrap',
+                'Foundation',
+                'None'
+            ];
+            $framework = $io->select('<info>Select a CSS framework</info> <comment>(Default: Bootstrap)</comment>', $frameworks, 0);
+
+            switch($framework) {
+                case 0:
+                    break;
+                case 1:
+                    file_put_contents('package.json', str_replace('    "bootstrap": "^4.0.0-alpha.6",' . "\n", '    "foundation-sites": "6.3.0",' . "\n", file_get_contents('package.json')));
+                    file_put_contents('assets/styles/main.scss', str_replace('@import "~bootstrap/scss/bootstrap";' . "\n", '@import "~foundation-sites/scss/foundation";' . "\n" . '@include foundation-everything;' . "\n", file_get_contents('assets/styles/main.scss')));
+                    file_put_contents('assets/scripts/main.js', str_replace('import \'bootstrap/dist/js/bootstrap\';' . "\n", 'import \'foundation-sites/dist/js/foundation\';' . "\n", file_get_contents('assets/scripts/main.js')));
+                    file_put_contents('assets/styles/components/_comments.scss', '');
+                    file_put_contents('assets/styles/components/_forms.scss', '');
+                    file_put_contents('assets/styles/components/_wp-classes.scss', '');
+                    file_put_contents('assets/styles/layouts/_header.scss', '');
+                    break;
+                case 2:
+                    file_put_contents('package.json', str_replace('    "bootstrap": "^4.0.0-alpha.6",' . "\n", '', file_get_contents('package.json')));
+                    file_put_contents('assets/styles/main.scss', str_replace('@import "~bootstrap/scss/bootstrap";' . "\n", '', file_get_contents('assets/styles/main.scss')));
+                    file_put_contents('assets/scripts/main.js', str_replace('import \'bootstrap/dist/js/bootstrap\';' . "\n", '', file_get_contents('assets/scripts/main.js')));
+                    file_put_contents('assets/styles/components/_comments.scss', '');
+                    file_put_contents('assets/styles/components/_forms.scss', '');
+                    file_put_contents('assets/styles/components/_wp-classes.scss', '');
+                    file_put_contents('assets/styles/layouts/_header.scss', '');
+                    break;
             }
         }
     }
