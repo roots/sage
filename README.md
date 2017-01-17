@@ -13,8 +13,12 @@ Sage is a WordPress starter theme with a modern development workflow.
 * ES6 for JavaScript
 * [Webpack](https://webpack.github.io/) for compiling assets, optimizing images, and concatenating and minifying files
 * [Browsersync](http://www.browsersync.io/) for synchronized browser testing
-* [Bootstrap 4](http://getbootstrap.com/) for a front-end framework (option to remove during installation)
 * [Laravel's Blade](https://laravel.com/docs/5.3/blade) as a templating engine
+* CSS framework options:
+  * [Bootstrap 4](http://getbootstrap.com/)
+  * [Foundation](http://foundation.zurb.com/)
+  * None (blank slate)
+
 
 See a working example at [roots-example-project.com](https://roots-example-project.com/).
 
@@ -39,7 +43,8 @@ $ composer create-project roots/sage your-theme-name dev-master
 During theme installation you will have the options to:
 
 * Update theme headers (theme name, description, author, etc.)
-* Remove Bootstrap
+* Select a CSS framework (Bootstrap, Foundation, none)
+* Add Font Awesome
 
 ## Theme structure
 
