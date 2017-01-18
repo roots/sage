@@ -38,7 +38,8 @@ class PostCreateProject
     public static function selectFramework(Event $event)
     {
         $io = $event->getIO();
-        $default_framework_pattern = '/"bootstrap": ".*"/';
+        $default_framework_pattern = '"bootstrap": ".*"';
+
         $files_to_clear = [
           'assets/styles/components/_comments.scss',
           'assets/styles/components/_forms.scss',
@@ -59,18 +60,17 @@ class PostCreateProject
                 case 0:
                     break;
                 case 1:
-                    file_put_contents('package.json', preg_replace($default_framework_pattern, '"foundation-sites": "6.3.0"', file_get_contents('package.json')));
+                    file_put_contents('package.json', preg_replace("/{$default_framework_pattern}/", '"foundation-sites": "6.3.0"', file_get_contents('package.json')));
                     file_put_contents('assets/styles/main.scss', str_replace('@import "~bootstrap/scss/bootstrap";' . "\n", '@import "~foundation-sites/scss/foundation";' . "\n" . '@include foundation-everything;' . "\n", file_get_contents('assets/styles/main.scss')));
-                    file_put_contents('assets/scripts/main.js', str_replace('import \'bootstrap/dist/js/bootstrap\';' . "\n", 'import \'foundation-sites/dist/js/foundation\';' . "\n", file_get_contents('assets/scripts/main.js')));
+                    file_put_contents('assets/scripts/main.js', str_replace("import 'bootstrap/dist/js/bootstrap'\n", "import 'foundation-sites/dist/js/foundation';\n", file_get_contents('assets/scripts/main.js')));
                     foreach($files_to_clear as $file) {
                         file_put_contents($file, '');
                     }
                     break;
                 case 2:
-                    file_put_contents('package.json', preg_replace("~/$default_framework_pattern,\n/~", '', file_get_contents('package.json')));
-                    file_put_contents('package.json', str_replace('    "bootstrap": "^4.0.0-alpha.6",' . "\n", '', file_get_contents('package.json')));
+                    file_put_contents('package.json', preg_replace("/\s+{$default_framework_pattern},/", '', file_get_contents('package.json')));
                     file_put_contents('assets/styles/main.scss', str_replace('@import "~bootstrap/scss/bootstrap";' . "\n", '', file_get_contents('assets/styles/main.scss')));
-                    file_put_contents('assets/scripts/main.js', str_replace('import \'bootstrap/dist/js/bootstrap\';' . "\n", '', file_get_contents('assets/scripts/main.js')));
+                    file_put_contents('assets/scripts/main.js', str_replace("import 'bootstrap/dist/js/bootstrap';\n", '', file_get_contents('assets/scripts/main.js')));
                     foreach($files_to_clear as $file) {
                         file_put_contents($file, '');
                     }
