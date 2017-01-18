@@ -6,6 +6,13 @@ use Composer\Script\Event;
 
 class PostCreateProject
 {
+    protected static $files_to_clear = [
+      'assets/styles/components/_comments.scss',
+      'assets/styles/components/_forms.scss',
+      'assets/styles/components/_wp-classes.scss',
+      'assets/styles/layouts/_header.scss',
+    ];
+
     public static function updateHeaders(Event $event)
     {
         // @codingStandardsIgnoreStart
@@ -54,19 +61,17 @@ class PostCreateProject
                     file_put_contents('package.json', str_replace('    "bootstrap": "^4.0.0-alpha.6",' . "\n", '    "foundation-sites": "6.3.0",' . "\n", file_get_contents('package.json')));
                     file_put_contents('assets/styles/main.scss', str_replace('@import "~bootstrap/scss/bootstrap";' . "\n", '@import "~foundation-sites/scss/foundation";' . "\n" . '@include foundation-everything;' . "\n", file_get_contents('assets/styles/main.scss')));
                     file_put_contents('assets/scripts/main.js', str_replace('import \'bootstrap/dist/js/bootstrap\';' . "\n", 'import \'foundation-sites/dist/js/foundation\';' . "\n", file_get_contents('assets/scripts/main.js')));
-                    file_put_contents('assets/styles/components/_comments.scss', '');
-                    file_put_contents('assets/styles/components/_forms.scss', '');
-                    file_put_contents('assets/styles/components/_wp-classes.scss', '');
-                    file_put_contents('assets/styles/layouts/_header.scss', '');
+                    foreach(self::$files_to_clear as $file) {
+                        file_put_contents($file, '');
+                    }
                     break;
                 case 2:
                     file_put_contents('package.json', str_replace('    "bootstrap": "^4.0.0-alpha.6",' . "\n", '', file_get_contents('package.json')));
                     file_put_contents('assets/styles/main.scss', str_replace('@import "~bootstrap/scss/bootstrap";' . "\n", '', file_get_contents('assets/styles/main.scss')));
                     file_put_contents('assets/scripts/main.js', str_replace('import \'bootstrap/dist/js/bootstrap\';' . "\n", '', file_get_contents('assets/scripts/main.js')));
-                    file_put_contents('assets/styles/components/_comments.scss', '');
-                    file_put_contents('assets/styles/components/_forms.scss', '');
-                    file_put_contents('assets/styles/components/_wp-classes.scss', '');
-                    file_put_contents('assets/styles/layouts/_header.scss', '');
+                    foreach(self::$files_to_clear as $file) {
+                        file_put_contents($file, '');
+                    }
                     break;
             }
         }
