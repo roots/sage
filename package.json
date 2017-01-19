@@ -33,7 +33,7 @@
     "autoprefixer": "^6.6.1",
     "body-parser": "^1.16.0",
     "browser-sync": "^2.18.6",
-    "browsersync-webpack-plugin": "^0.3.2",
+    "browsersync-webpack-plugin": "^0.3.3",
     "buble": "^0.15.2",
     "buble-loader": "^0.4.0",
     "clean-webpack-plugin": "^0.1.15",

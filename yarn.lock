@@ -523,9 +523,9 @@ browserslist@^1.0.1, browserslist@^1.5.2, browserslist@~1.5.1:
   dependencies:
     caniuse-db "^1.0.30000604"
 
-browsersync-webpack-plugin@^0.3.2:
-  version "0.3.2"
-  resolved "https://registry.yarnpkg.com/browsersync-webpack-plugin/-/browsersync-webpack-plugin-0.3.2.tgz#c1419a466693112252206624ca7b7d6a1c7488d4"
+browsersync-webpack-plugin@^0.3.3:
+  version "0.3.3"
+  resolved "https://registry.yarnpkg.com/browsersync-webpack-plugin/-/browsersync-webpack-plugin-0.3.3.tgz#34ce7014d0fb141d4c1e4b30abde35f145aa1153"
   dependencies:
     lodash.mergewith "^4.6.0"
   optionalDependencies:
@@ -2596,7 +2596,7 @@ is-png@^1.0.0:
 
 is-posix-bracket@^0.1.0:
   version "0.1.1"
-  resolved "https://registry.yarnpkg.com/is-posix-bracket/-/is-posix-bracket-0.1.1.tgz#3334dc79774368e92f016e6fbc0a88f5cd6e6bc4"
+  resolved "http://registry.npmjs.org/is-posix-bracket/-/is-posix-bracket-0.1.1.tgz#3334dc79774368e92f016e6fbc0a88f5cd6e6bc4"
 
 is-primitive@^2.0.0:
   version "2.0.0"
