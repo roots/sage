@@ -2,29 +2,16 @@
 
 const webpack = require('webpack');
 const qs = require('qs');
+const merge = require('webpack-merge');
 const autoprefixer = require('autoprefixer');
 const CleanPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const CopyGlobsPlugin = require('./webpack.plugin.copyglobs');
-const mergeWithConcat = require('./util/mergeWithConcat');
 const config = require('./config');
 
 const assetsFilenames = (config.enabled.cacheBusting) ? config.cacheBusting : '[name]';
 const sourceMapQueryStr = (config.enabled.sourceMaps) ? '+sourceMap' : '-sourceMap';
-
-const jsLoader = {
-  test: /\.js$/,
-  exclude: [/(node_modules|bower_components)(?![/|\\](bootstrap|foundation-sites))/],
-  use: [{
-    loader: 'buble',
-    options: { objectAssign: 'Object.assign' },
-  }],
-};
-
-if (config.enabled.watcher) {
-  jsLoader.use.unshift('monkey-hot?sourceType=module');
-}
 
 let webpackConfig = {
   context: config.paths.assets,
@@ -37,12 +24,17 @@ let webpackConfig = {
   },
   module: {
     rules: [
-      jsLoader,
       {
         enforce: 'pre',
         test: /\.js?$/,
         include: config.paths.assets,
         loader: 'eslint',
+      },
+      {
+        test: /\.js$/,
+        exclude: [/(node_modules|bower_components)(?![/|\\](bootstrap|foundation-sites))/],
+        loader: 'buble',
+        options: { objectAssign: 'Object.assign' },
       },
       {
         test: /\.css$/,
@@ -171,11 +163,11 @@ let webpackConfig = {
 /* eslint-disable global-require */ /** Let's only load dependencies as needed */
 
 if (config.enabled.optimize) {
-  webpackConfig = mergeWithConcat(webpackConfig, require('./webpack.config.optimize'));
+  webpackConfig = merge(webpackConfig, require('./webpack.config.optimize'));
 }
 
 if (config.env.production) {
-  webpackConfig.plugins.push(new webpack.NoErrorsPlugin());
+  webpackConfig.plugins.push(new webpack.NoEmitOnErrorsPlugin());
 }
 
 if (config.enabled.cacheBusting) {
@@ -194,7 +186,7 @@ if (config.enabled.cacheBusting) {
 
 if (config.enabled.watcher) {
   webpackConfig.entry = require('./util/addHotMiddleware')(webpackConfig.entry);
-  webpackConfig = mergeWithConcat(webpackConfig, require('./webpack.config.watch'));
+  webpackConfig = merge(webpackConfig, require('./webpack.config.watch'));
 }
 
 module.exports = webpackConfig;

@@ -10,12 +10,12 @@ module.exports = (entry) => {
   const results = {};
   const hotMiddlewareScript = `webpack-hot-middleware/client?${qs.stringify({
     timeout: 20000,
-    reload: false,
+    reload: true,
   })}`;
 
   Object.keys(entry).forEach((name) => {
     results[name] = Array.isArray(entry[name]) ? entry[name].slice(0) : [entry[name]];
-    results[name].push(hotMiddlewareScript);
+    results[name].unshift(hotMiddlewareScript);
   });
   return results;
 };

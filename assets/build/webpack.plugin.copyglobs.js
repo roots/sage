@@ -82,7 +82,6 @@ module.exports = class {
     if (!this.started) {
       compiler.plugin('emit', this.emitHandler.bind(this));
       compiler.plugin('after-emit', this.afterEmitHandler.bind(this));
-      compiler.plugin('after-emit', this.afterEmitHandler.bind(this));
       this.started = true;
     }
   }
