@@ -13,19 +13,6 @@ const config = require('./config');
 const assetsFilenames = (config.enabled.cacheBusting) ? config.cacheBusting : '[name]';
 const sourceMapQueryStr = (config.enabled.sourceMaps) ? '+sourceMap' : '-sourceMap';
 
-const jsLoader = {
-  test: /\.js$/,
-  exclude: [/(node_modules|bower_components)(?![/|\\](bootstrap|foundation-sites))/],
-  use: [{
-    loader: 'buble',
-    options: { objectAssign: 'Object.assign' },
-  }],
-};
-
-if (config.enabled.watcher) {
-  jsLoader.use.unshift('monkey-hot?sourceType=module');
-}
-
 let webpackConfig = {
   context: config.paths.assets,
   entry: config.entry,
@@ -37,12 +24,17 @@ let webpackConfig = {
   },
   module: {
     rules: [
-      jsLoader,
       {
         enforce: 'pre',
         test: /\.js?$/,
         include: config.paths.assets,
         loader: 'eslint',
+      },
+      {
+        test: /\.js$/,
+        exclude: [/(node_modules|bower_components)(?![/|\\](bootstrap|foundation-sites))/],
+        loader: 'buble',
+        options: { objectAssign: 'Object.assign' },
       },
       {
         test: /\.css$/,
