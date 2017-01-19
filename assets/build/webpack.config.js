@@ -2,12 +2,12 @@
 
 const webpack = require('webpack');
 const qs = require('qs');
+const merge = require('webpack-merge');
 const autoprefixer = require('autoprefixer');
 const CleanPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const CopyGlobsPlugin = require('./webpack.plugin.copyglobs');
-const mergeWithConcat = require('./util/mergeWithConcat');
 const config = require('./config');
 
 const assetsFilenames = (config.enabled.cacheBusting) ? config.cacheBusting : '[name]';
@@ -163,7 +163,7 @@ let webpackConfig = {
 /* eslint-disable global-require */ /** Let's only load dependencies as needed */
 
 if (config.enabled.optimize) {
-  webpackConfig = mergeWithConcat(webpackConfig, require('./webpack.config.optimize'));
+  webpackConfig = merge(webpackConfig, require('./webpack.config.optimize'));
 }
 
 if (config.env.production) {
@@ -186,7 +186,7 @@ if (config.enabled.cacheBusting) {
 
 if (config.enabled.watcher) {
   webpackConfig.entry = require('./util/addHotMiddleware')(webpackConfig.entry);
-  webpackConfig = mergeWithConcat(webpackConfig, require('./webpack.config.watch'));
+  webpackConfig = merge(webpackConfig, require('./webpack.config.watch'));
 }
 
 module.exports = webpackConfig;
