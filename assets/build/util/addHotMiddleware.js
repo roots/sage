@@ -15,7 +15,7 @@ module.exports = (entry) => {
 
   Object.keys(entry).forEach((name) => {
     results[name] = Array.isArray(entry[name]) ? entry[name].slice(0) : [entry[name]];
-    results[name].push(hotMiddlewareScript);
+    results[name].unshift(hotMiddlewareScript);
   });
   return results;
 };
