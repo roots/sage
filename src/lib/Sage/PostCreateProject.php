@@ -90,7 +90,8 @@ class PostCreateProject
                 $dependencies = array_merge($dependencies, ['font-awesome' => '^4.7.0']);
                 $package['dependencies'] = $dependencies;
                 $package = str_replace('    ', '  ', json_encode($package, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES) . "\n");
-
+                file_put_contents('package.json', $package);
+                
                 $import_dep_str = '// Import npm dependencies' . "\n";
                 file_put_contents('assets/styles/main.scss', str_replace($import_dep_str, $import_dep_str . '@import "~font-awesome/scss/font-awesome";' . "\n", file_get_contents('assets/styles/main.scss')));
                 file_put_contents('assets/styles/common/_variables.scss', "\n" . '$fa-font-path:          \'~font-awesome/fonts\';' . "\n", FILE_APPEND);
