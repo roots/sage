@@ -18,6 +18,7 @@ module.exports = {
       target: config.devUrl,
       proxyUrl: config.proxyUrl,
       watch: config.watch,
+      delay: 500,
     }),
   ],
 };
