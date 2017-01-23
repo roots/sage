@@ -2,6 +2,7 @@
 [![Packagist](https://img.shields.io/packagist/vpre/roots/sage.svg?style=flat-square)](https://packagist.org/packages/roots/sage)
 [![devDependency Status](https://img.shields.io/david/dev/roots/sage.svg?style=flat-square)](https://david-dm.org/roots/sage#info=devDependencies)
 [![Build Status](https://img.shields.io/travis/roots/sage.svg?style=flat-square)](https://travis-ci.org/roots/sage)
+[![Sponsored by ES6.io](https://img.shields.io/badge/%F0%9F%92%9A_Sponsored_by-ES6.io%20Tutorials-brightgreen.svg?style=flat-square)](https://roots.io/r/es6)
 
 Sage is a WordPress starter theme with a modern development workflow.
 
@@ -18,7 +19,7 @@ Sage is a WordPress starter theme with a modern development workflow.
   * [Bootstrap 4](http://getbootstrap.com/)
   * [Foundation](http://foundation.zurb.com/)
   * None (blank slate)
-
+* Font Awesome (optional)
 
 See a working example at [roots-example-project.com](https://roots-example-project.com/).
 
@@ -91,7 +92,7 @@ Sage uses [Webpack](https://webpack.github.io/) as a build tool and [npm](https:
 From the command line on your host machine (not on your Vagrant development box), navigate to the theme directory then run `yarn`:
 
 ```shell
-# @ example.com/site/web/app/themes/your-theme-name
+# @ themes/your-theme-name/
 $ yarn
 ```
 
@@ -106,8 +107,8 @@ You now have all the necessary dependencies to run the build process.
 #### Additional commands
 
 * `yarn run rmdist` — Remove your `dist/` folder
-* `yarn run lint` — Run eslint against your assets and build scripts
-* `composer test` — Check your PHP for code smells with `phpmd` and PSR-2 compliance with `phpcs`
+* `yarn run lint` — Run ESLint against your assets and build scripts
+* `composer test` — Check your PHP for PSR-2 compliance with `phpcs`
 
 ### Using Browsersync
 
