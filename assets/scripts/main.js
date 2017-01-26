@@ -3,10 +3,10 @@ import 'jquery';
 import 'bootstrap';
 
 /** import local dependencies */
-import Router from './util/Router';
-import common from './routes/common';
-import home from './routes/home';
-import aboutUs from './routes/about';
+import Router from './util/router';
+import common from './routes/Common';
+import home from './routes/Home';
+import aboutUs from './routes/About';
 
 /**
  * Populate Router instance with DOM routes
