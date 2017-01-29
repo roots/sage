@@ -91,11 +91,33 @@ class PostCreateProject
                 $package['dependencies'] = $dependencies;
                 $package = str_replace('    ', '  ', json_encode($package, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES) . "\n");
                 file_put_contents('package.json', $package);
-                
+
                 $import_dep_str = '// Import npm dependencies' . "\n";
                 file_put_contents('assets/styles/main.scss', str_replace($import_dep_str, $import_dep_str . '@import "~font-awesome/scss/font-awesome";' . "\n", file_get_contents('assets/styles/main.scss')));
                 file_put_contents('assets/styles/common/_variables.scss', "\n" . '$fa-font-path:          \'~font-awesome/fonts\';' . "\n", FILE_APPEND);
             }
+        }
+    }
+
+    public static function configureBrowsersync(Event $event)
+    {
+        $io = $event->getIO();
+
+        if ($io->isInteractive()) {
+            $io->write('<info>Configure Browsersync. Press enter key for default.</info>');
+
+            $browsersync_settings_default = [
+                'publicPath'  => '/app/themes/'.basename(getcwd()),
+                'devUrl'      => 'http://example.dev'
+            ];
+
+            $browsersync_settings = [
+                'publicPath'  => $io->ask('<info>Path to theme directory (eg. /wp-content/themes/sage) [<comment>'.$browsersync_settings_default['publicPath'].'</comment>]:</info> ', $browsersync_settings_default['publicPath']),
+                'devUrl'      => $io->ask('<info>Local development URL of WP site [<comment>'.$browsersync_settings_default['devUrl'].'</comment>]:</info> ', $browsersync_settings_default['devUrl'])
+            ];
+
+            file_put_contents('assets/config.json', str_replace('/app/themes/sage', $browsersync_settings['publicPath'], file_get_contents('assets/config.json')));
+            file_put_contents('assets/config.json', str_replace($browsersync_settings_default['devUrl'], $browsersync_settings['devUrl'], file_get_contents('assets/config.json')));
         }
     }
     // @codingStandardsIgnoreEnd

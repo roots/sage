@@ -46,6 +46,7 @@ During theme installation you will have the options to:
 * Update theme headers (theme name, description, author, etc.)
 * Select a CSS framework (Bootstrap, Foundation, none)
 * Add Font Awesome
+* Configure Browsersync (path to theme, local development URL)
 
 ## Theme structure
 
