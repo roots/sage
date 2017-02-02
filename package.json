@@ -69,6 +69,7 @@
     "webpack-merge": "^2.4.0"
   },
   "dependencies": {
+    "babel-eslint": "^7.1.1",
     "bootstrap": "^4.0.0-alpha.6",
     "jquery": "1.12.4 - 3"
   }
