@@ -99,12 +99,12 @@ class PostCreateProject
         }
     }
 
-    public static function configureBrowsersync(Event $event)
+    public static function buildOptions(Event $event)
     {
         $io = $event->getIO();
 
         if ($io->isInteractive()) {
-            $io->write('<info>Configure Browsersync. Press enter key for default.</info>');
+            $io->write('<info>Configure build settings. Press enter key for default.</info>');
 
             $browsersync_settings_default = [
                 'publicPath'  => '/app/themes/'.basename(getcwd()),

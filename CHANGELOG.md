@@ -1,5 +1,5 @@
 ### HEAD
-* Add option to configure Browsersync ([#1822](https://github.com/roots/sage/pull/1822))
+* Add option to configure build settings ([#1822](https://github.com/roots/sage/pull/1822))
 * Add support for HTML injection ([#1817](https://github.com/roots/sage/pull/1817))
 
 ### 9.0.0-beta.2: January 19th, 2016

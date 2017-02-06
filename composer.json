@@ -45,7 +45,7 @@
         "Roots\\Sage\\PostCreateProject::updateHeaders",
         "Roots\\Sage\\PostCreateProject::selectFramework",
         "Roots\\Sage\\PostCreateProject::addFontAwesome",
-        "Roots\\Sage\\PostCreateProject::configureBrowsersync"
+        "Roots\\Sage\\PostCreateProject::buildOptions"
     ]
   }
 }
