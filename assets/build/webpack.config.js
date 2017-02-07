@@ -7,7 +7,7 @@ const autoprefixer = require('autoprefixer');
 const CleanPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-const CopyGlobsPlugin = require('./webpack.plugin.copyglobs');
+const CopyGlobsPlugin = require('copy-globs-webpack-plugin');
 const config = require('./config');
 
 const assetsFilenames = (config.enabled.cacheBusting) ? config.cacheBusting : '[name]';

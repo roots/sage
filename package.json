@@ -38,6 +38,7 @@
     "buble": "^0.15.2",
     "buble-loader": "^0.4.0",
     "clean-webpack-plugin": "^0.1.15",
+    "copy-globs-webpack-plugin": "^0.1.0",
     "css-loader": "^0.26.1",
     "cssnano": "^3.10.0",
     "eslint": "^3.14.0",
