@@ -7,7 +7,7 @@
 - [ ] I've read the [docs](https://roots.io/sage/docs) and [NPM Debugging Guidelines post](https://discourse.roots.io/t/npm-debugging-guidelines-failed-npm-install-bower-install-or-gulp-build-read-this/3060) and followed them (if applicable)
 - [ ] This is not a personal support request that should be posted on the [Roots Discourse](https://discourse.roots.io/c/sage) forums
 
-Replace any `X` with your information.
+<!-- Replace any `X` with your information. -->
 
 ---
 
@@ -24,7 +24,7 @@ X
 
 ## Bug report
 
-(delete this section if not applicable)
+<!-- (delete this section if not applicable) -->
 
 **Please provide steps to reproduce, including full log output:**
 
@@ -51,7 +51,7 @@ X
 
 ## Feature Request
 
-(delete this section if not applicable)
+<!-- (delete this section if not applicable) -->
 
 **Please provide use cases for changing the current behavior:**
 
