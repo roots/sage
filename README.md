@@ -148,7 +148,7 @@ If you would like to force Browsersync to reload the page whenever certain file 
 
 Sage 8 documentation is available at [https://roots.io/sage/docs/](https://roots.io/sage/docs/).
 
-Sage 9 documention is currently in progress and can be viewed at [https://github.com/roots/docs/tree/sage-9/sage](https://github.com/roots/docs/tree/sage-9/sage).
+Sage 9 documentation is currently in progress and can be viewed at [https://github.com/roots/docs/tree/sage-9/sage](https://github.com/roots/docs/tree/sage-9/sage).
 
 ## Contributing
 
