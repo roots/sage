@@ -55,7 +55,7 @@ Install Sage using Composer from your WordPress themes directory (replace `your-
 
 ```shell
 # @ example.com/site/web/app/themes/
-$ composer create-project roots/sage your-theme-name 8.5.0
+$ composer create-project roots/sage your-theme-name 8.5.1
 ```
 
 ## Theme setup
