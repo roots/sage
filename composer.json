@@ -39,7 +39,7 @@
   },
   "scripts": {
     "test": [
-      "vendor/bin/phpcs"
+      "phpcs"
     ],
     "post-create-project-cmd": [
         "Roots\\Sage\\PostCreateProject::updateHeaders",
