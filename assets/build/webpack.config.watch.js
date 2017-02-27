@@ -15,7 +15,7 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
     new BrowserSyncPlugin({
-      target: config.devUrl,
+      target: process.env.DEVURL || config.devUrl,
       proxyUrl: config.proxyUrl,
       watch: config.watch,
       delay: 500,
