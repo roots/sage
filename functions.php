@@ -25,6 +25,13 @@ if (version_compare('5.6.4', phpversion(), '>=')) {
 }
 
 /**
+ * Ensure compatible version of WordPress is used
+ */
+if (version_compare('4.7.0', get_bloginfo('version'), '>=')) {
+    $sage_error(__('You must be using WordPress 4.7.0 or greater.', 'sage'), __('Invalid WordPress version', 'sage'));
+}
+
+/**
  * Ensure dependencies are loaded
  */
 if (!class_exists('Roots\\Sage\\Container')) {
