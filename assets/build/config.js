@@ -1,6 +1,5 @@
 const path = require('path');
-const argv = require('minimist')(process.argv.slice(2));
-const uniq = require('lodash/uniq');
+const { argv } = require('yargs');
 const merge = require('webpack-merge');
 
 const userConfig = require('../config');
