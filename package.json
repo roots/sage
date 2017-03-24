@@ -18,6 +18,8 @@
     }
   ],
   "scripts": {
+    "requirements-check": "node check-node-version.js",
+    "preinstall": "npm run requirements-check",
     "build": "webpack --progress --config assets/build/webpack.config.js",
     "build:production": "webpack --progress -p --config assets/build/webpack.config.js",
     "build:profile": "webpack --progress --profile --json --config assets/build/webpack.config.js",
@@ -61,6 +63,7 @@
     "resolve-url-loader": "^1.6.1",
     "rimraf": "^2.5.4",
     "sass-loader": "^4.1.1",
+    "semver": "^5.3.0",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "webpack": "^2.2.0",
