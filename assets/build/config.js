@@ -29,9 +29,6 @@ const config = merge({
   browsers: [],
 }, userConfig);
 
-config.watch.push(`${path.basename(config.paths.assets)}/${config.copy}`);
-config.watch = uniq(config.watch);
-
 module.exports = merge(config, {
   env: Object.assign({ production: isProduction, development: !isProduction }, argv.env),
   publicPath: `${config.publicPath}/${path.basename(config.paths.dist)}/`,
