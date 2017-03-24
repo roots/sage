@@ -1,7 +1,6 @@
 'use strict'; // eslint-disable-line
 
 const webpack = require('webpack');
-const qs = require('qs');
 const merge = require('webpack-merge');
 const autoprefixer = require('autoprefixer');
 const CleanPlugin = require('clean-webpack-plugin');
@@ -28,7 +27,7 @@ let webpackConfig = {
         enforce: 'pre',
         test: /\.js?$/,
         include: config.paths.assets,
-        loader: 'eslint',
+        use: 'eslint',
       },
       {
         test: /\.js$/,
@@ -39,10 +38,10 @@ let webpackConfig = {
       {
         test: /\.css$/,
         include: config.paths.assets,
-        loader: ExtractTextPlugin.extract({
-          fallbackLoader: 'style',
+        use: ExtractTextPlugin.extract({
+          fallback: 'style',
           publicPath: '../',
-          loader: [
+          use: [
             `css?${sourceMapQueryStr}`,
             'postcss',
           ],
@@ -51,10 +50,10 @@ let webpackConfig = {
       {
         test: /\.scss$/,
         include: config.paths.assets,
-        loader: ExtractTextPlugin.extract({
-          fallbackLoader: 'style',
+        use: ExtractTextPlugin.extract({
+          fallback: 'style',
           publicPath: '../',
-          loader: [
+          use: [
             `css?${sourceMapQueryStr}`,
             'postcss',
             `resolve-url?${sourceMapQueryStr}`,
@@ -63,27 +62,22 @@ let webpackConfig = {
         }),
       },
       {
-        test: /\.(png|jpe?g|gif|svg|ico)$/,
+        test: /\.(ttf|eot|png|jpe?g|gif|svg|ico)$/,
         include: config.paths.assets,
-        loader: `file?${qs.stringify({
+        loader: 'file',
+        options: {
           name: `[path]${assetsFilenames}.[ext]`,
-        })}`,
-      },
-      {
-        test: /\.(ttf|eot)$/,
-        include: config.paths.assets,
-        loader: `file?${qs.stringify({
-          name: `[path]${assetsFilenames}.[ext]`,
-        })}`,
+        },
       },
       {
         test: /\.woff2?$/,
         include: config.paths.assets,
-        loader: `url?${qs.stringify({
+        loader: 'url',
+        options: {
           limit: 10000,
           mimetype: 'application/font-woff',
           name: `[path]${assetsFilenames}.[ext]`,
-        })}`,
+        },
       },
       {
         test: /\.(ttf|eot|woff2?|png|jpe?g|gif|svg)$/,
