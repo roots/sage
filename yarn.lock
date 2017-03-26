@@ -535,9 +535,9 @@ browserslist@^1.0.1, browserslist@^1.5.2, browserslist@^1.7.6:
     caniuse-db "^1.0.30000639"
     electron-to-chromium "^1.2.7"
 
-browsersync-webpack-plugin@^0.5.0:
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/browsersync-webpack-plugin/-/browsersync-webpack-plugin-0.5.0.tgz#2abfb72f452ab8a399559893ff24acae1cefe219"
+browsersync-webpack-plugin@^0.5.1:
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/browsersync-webpack-plugin/-/browsersync-webpack-plugin-0.5.1.tgz#8cc763400f3266e3bfea132680b936073f4a9ec0"
   dependencies:
     webpack-merge "^4.1.0"
   optionalDependencies:
