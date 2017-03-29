@@ -1,7 +1,17 @@
+const url = require('url');
 const webpack = require('webpack');
 const BrowserSyncPlugin = require('browsersync-webpack-plugin');
 
 const config = require('./config');
+
+const target = process.env.DEVURL || config.devUrl;
+
+/**
+ * We do this to enable injection over SSL.
+ */
+if (url.parse(target).protocol === 'https:') {
+  process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;
+}
 
 module.exports = {
   output: {
@@ -15,7 +25,7 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
     new BrowserSyncPlugin({
-      target: process.env.DEVURL || config.devUrl,
+      target,
       proxyUrl: config.proxyUrl,
       watch: config.watch,
       delay: 500,
