@@ -87,6 +87,13 @@ let webpackConfig = {
           name: `vendor/${config.cacheBusting}.[ext]`,
         },
       },
+      {
+        test: /\.(json|xml)$/,
+        include: config.paths.assets,
+        loader: `file?${qs.stringify({
+          name: '[path][name].[ext]',
+        })}`,
+      },
     ],
   },
   resolve: {
