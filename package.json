@@ -32,7 +32,7 @@
   "devDependencies": {
     "autoprefixer": "^6.7.7",
     "browser-sync": "^2.18.8",
-    "browsersync-webpack-plugin": "^0.5.1",
+    "browsersync-webpack-plugin": "^0.5.3",
     "bs-html-injector": "^3.0.3",
     "buble-loader": "^0.4.1",
     "clean-webpack-plugin": "^0.1.16",
