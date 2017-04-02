@@ -18,6 +18,7 @@ Sage is a WordPress starter theme with a modern development workflow.
 * CSS framework options:
   * [Bootstrap 4](http://getbootstrap.com/)
   * [Foundation](http://foundation.zurb.com/)
+  * [Tachyons](http://tachyons.io/)
   * None (blank slate)
 * Font Awesome (optional)
 
@@ -45,7 +46,7 @@ $ composer create-project roots/sage your-theme-name dev-master
 During theme installation you will have the options to:
 
 * Update theme headers (theme name, description, author, etc.)
-* Select a CSS framework (Bootstrap, Foundation, none)
+* Select a CSS framework (Bootstrap, Foundation, Tachyons, none)
 * Add Font Awesome
 * Configure Browsersync (path to theme, local development URL)
 
