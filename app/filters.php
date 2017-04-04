@@ -64,3 +64,12 @@ add_filter('template_include', function ($template) {
  * Tell WordPress how to find the compiled path of comments.blade.php
  */
 add_filter('comments_template', 'App\\template_path');
+
+/**
+ * Tell WordPress to ignore the vendor directory when searching for templates
+ */
+add_filter('theme_scandir_exclusions', function (array $exclusions) {
+    $exclusions[] = 'vendor';
+
+    return $exclusions;
+});
