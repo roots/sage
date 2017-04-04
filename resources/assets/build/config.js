@@ -15,7 +15,7 @@ const config = merge({
   cacheBusting: '[name]_[hash]',
   paths: {
     root: rootPath,
-    assets: path.join(rootPath, 'assets'),
+    assets: path.join(rootPath, 'resources/assets'),
     dist: path.join(rootPath, 'dist'),
   },
   enabled: {

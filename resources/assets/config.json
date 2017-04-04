@@ -13,7 +13,7 @@
   "proxyUrl": "http://localhost:3000",
   "cacheBusting": "[name]_[hash:8]",
   "watch": [
-    "{src,templates}/**/*.php"
+    "{src,resources/views}/**/*.php"
   ],
   "browsers": [
     "last 2 versions",
