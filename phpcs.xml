@@ -5,7 +5,7 @@
   <!-- Scan these files -->
   <file>functions.php</file>
   <file>index.php</file>
-  <file>src</file>
+  <file>app</file>
   <file>resources/views</file>
 
   <!-- Show colors in console -->
