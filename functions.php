@@ -80,8 +80,8 @@ if (is_customize_preview() && isset($_GET['theme'])) {
 add_filter('template', function ($stylesheet) {
     return dirname(dirname($stylesheet));
 });
-if (basename($stylesheet = get_option('template')) !== 'resources/views') {
-    update_option('template', "{$stylesheet}/resources/views");
+if (($sage_views = basename(__DIR__).'/resources/views') !== get_option('template')) {
+    update_option('template', $sage_views);
     wp_redirect($_SERVER['REQUEST_URI']);
     exit();
 }
