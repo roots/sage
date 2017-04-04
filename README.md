@@ -53,13 +53,6 @@ During theme installation you will have the options to:
 
 ```shell
 themes/your-theme-name/   # → Root of your Sage based theme
-├── assets                # → Front-end assets
-│   ├── config.json       # → Settings for compiled assets
-│   ├── build/            # → Webpack and ESLint config
-│   ├── fonts/            # → Theme fonts
-│   ├── images/           # → Theme images
-│   ├── scripts/          # → Theme JS
-│   └── styles/           # → Theme stylesheets
 ├── composer.json         # → Autoloading for `src/` files
 ├── composer.lock         # → Composer lock file (never edit)
 ├── dist/                 # → Built theme assets (never edit)
@@ -75,9 +68,17 @@ themes/your-theme-name/   # → Root of your Sage based theme
 │   ├── helpers.php       # → Helper functions
 │   └── setup.php         # → Theme setup
 ├── style.css             # → Theme meta information
-├── templates/            # → Theme templates
-│   ├── layouts/          # → Base templates
-│   └── partials/         # → Partial templates
+├── resources/            # → Theme assets and templates
+├── ├── assets/           # → Front-end assets
+│   │   ├── config.json   # → Settings for compiled assets
+│   │   ├── build/        # → Webpack and ESLint config
+│   │   ├── fonts/        # → Theme fonts
+│   │   ├── images/       # → Theme images
+│   │   ├── scripts/      # → Theme JS
+│   │   └── styles/       # → Theme stylesheets
+│   └── views/            # → Theme templates
+│       ├── layouts/      # → Base templates
+│       └── partials/     # → Partial templates
 └── vendor/               # → Composer packages (never edit)
 ```
 

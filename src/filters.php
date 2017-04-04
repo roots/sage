@@ -35,7 +35,7 @@ array_map(function ($type) {
     add_filter("{$type}_template_hierarchy", function ($templates) {
         return call_user_func_array('array_merge', array_map(function ($template) {
             $transforms = [
-                '%^/?(templates)?/?%' => config('sage.disable_option_hack') ? 'templates/' : '',
+                '%^/?(resources/views)?/?%' => config('sage.disable_option_hack') ? 'resources/views/' : '',
                 '%(\.blade)?(\.php)?$%' => ''
             ];
             $normalizedTemplate = preg_replace(array_keys($transforms), array_values($transforms), $template);
@@ -44,7 +44,7 @@ array_map(function ($type) {
     });
 }, [
     'index', '404', 'archive', 'author', 'category', 'tag', 'taxonomy', 'date', 'home',
-    'frontpage', 'page', 'paged', 'search', 'single', 'singular', 'attachment'
+    'front_page', 'page', 'paged', 'search', 'single', 'singular', 'attachment'
 ]);
 
 /**
