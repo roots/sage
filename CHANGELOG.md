@@ -1,4 +1,5 @@
 ### HEAD
+* Move `src/` to `app/` ([#1868](https://github.com/roots/sage/pull/1868))
 * Move `templates/` to `resources/views/`, move `assets/` to `resources/assets/`, rename `base.blade.php` to `app.blade.php` ([#1864](https://github.com/roots/sage/pull/1864))
 * Add option to configure build settings ([#1822](https://github.com/roots/sage/pull/1822))
 * Add support for HTML injection ([#1817](https://github.com/roots/sage/pull/1817))

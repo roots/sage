@@ -53,7 +53,13 @@ During theme installation you will have the options to:
 
 ```shell
 themes/your-theme-name/   # → Root of your Sage based theme
-├── composer.json         # → Autoloading for `src/` files
+├── app/                  # → Theme PHP
+│   ├── lib/Sage/         # → Blade implementation, asset manifest
+│   ├── admin.php         # → Theme customizer setup
+│   ├── filters.php       # → Theme filters
+│   ├── helpers.php       # → Helper functions
+│   └── setup.php         # → Theme setup
+├── composer.json         # → Autoloading for `app/` files
 ├── composer.lock         # → Composer lock file (never edit)
 ├── dist/                 # → Built theme assets (never edit)
 ├── functions.php         # → Composer autoloader, theme includes
@@ -61,12 +67,6 @@ themes/your-theme-name/   # → Root of your Sage based theme
 ├── node_modules/         # → Node.js packages (never edit)
 ├── package.json          # → Node.js dependencies and scripts
 ├── screenshot.png        # → Theme screenshot for WP admin
-├── src/                  # → Theme PHP
-│   ├── lib/Sage/         # → Blade implementation, asset manifest
-│   ├── admin.php         # → Theme customizer setup
-│   ├── filters.php       # → Theme filters
-│   ├── helpers.php       # → Helper functions
-│   └── setup.php         # → Theme setup
 ├── style.css             # → Theme meta information
 ├── resources/            # → Theme assets and templates
 ├── ├── assets/           # → Front-end assets
@@ -84,7 +84,7 @@ themes/your-theme-name/   # → Root of your Sage based theme
 
 ## Theme setup
 
-Edit `src/setup.php` to enable or disable theme features, setup navigation menus, post thumbnail sizes, and sidebars.
+Edit `app/setup.php` to enable or disable theme features, setup navigation menus, post thumbnail sizes, and sidebars.
 
 ## Theme development
 
@@ -134,14 +134,14 @@ If you are not using [Bedrock](https://roots.io/bedrock/), update `publicPath` t
 
 By default, Browsersync will use webpack's [HMR](https://webpack.github.io/docs/hot-module-replacement.html), which won't trigger a page reload in your browser.
 
-If you would like to force Browsersync to reload the page whenever certain file types are edited, then add them to `watch` in `assets/config.json`.
+If you would like to force Browsersync to reload the page whenever certain file types are edited, then add them to `watch` in `resources/assets/config.json`.
 
 ```json
 ...
   "watch": [
-    "assets/scripts/**/*.js",
-    "templates/**/*.php",
-    "src/**/*.php"
+    "resources/assets/scripts/**/*.js",
+    "resources/views/**/*.php",
+    "app/**/*.php"
   ],
 ...
 ```
