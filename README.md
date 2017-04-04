@@ -2,7 +2,6 @@
 [![Packagist](https://img.shields.io/packagist/vpre/roots/sage.svg?style=flat-square)](https://packagist.org/packages/roots/sage)
 [![devDependency Status](https://img.shields.io/david/dev/roots/sage.svg?style=flat-square)](https://david-dm.org/roots/sage#info=devDependencies)
 [![Build Status](https://img.shields.io/travis/roots/sage.svg?style=flat-square)](https://travis-ci.org/roots/sage)
-[![Sponsored by ES6.io](https://img.shields.io/badge/%F0%9F%92%9A_Sponsored_by-ES6.io%20Tutorials-brightgreen.svg?style=flat-square)](https://roots.io/r/es6)
 
 Sage is a WordPress starter theme with a modern development workflow.
 
@@ -69,7 +68,7 @@ themes/your-theme-name/   # → Root of your Sage based theme
 ├── screenshot.png        # → Theme screenshot for WP admin
 ├── style.css             # → Theme meta information
 ├── resources/            # → Theme assets and templates
-├── ├── assets/           # → Front-end assets
+│   ├── assets/           # → Front-end assets
 │   │   ├── config.json   # → Settings for compiled assets
 │   │   ├── build/        # → Webpack and ESLint config
 │   │   ├── fonts/        # → Theme fonts
@@ -88,63 +87,16 @@ Edit `app/setup.php` to enable or disable theme features, setup navigation menus
 
 ## Theme development
 
-Sage uses [Webpack](https://webpack.github.io/) as a build tool and [npm](https://www.npmjs.com/) to manage front-end packages.
-
-### Install dependencies
-
-From the command line on your host machine (not on your Vagrant development box), navigate to the theme directory then run `yarn`:
-
-```shell
-# @ themes/your-theme-name/
-$ yarn
-```
-
-You now have all the necessary dependencies to run the build process.
+* Run `yarn` from the theme directory to install dependencies
+* Update `resources/assets/config.json` settings:
+  * `devUrl` should reflect your local development hostname
+  * `publicPath` should reflect your WordPress folder structure (`/wp-content/themes/sage` for non-[Bedrock](https://roots.io/bedrock/) installs)
 
 ### Build commands
 
 * `yarn run start` — Compile assets when file changes are made, start Browsersync session
 * `yarn run build` — Compile and optimize the files in your assets directory
 * `yarn run build:production` — Compile assets for production
-
-#### Additional commands
-
-* `yarn run rmdist` — Remove your `dist/` folder
-* `yarn run lint` — Run ESLint against your assets and build scripts
-* `composer test` — Check your PHP for PSR-2 compliance with `phpcs`
-
-### Using Browsersync
-
-To use Browsersync you need to update `devUrl` at the bottom of `assets/config.json` to reflect your local development hostname.
-
-If your local development URL is `https://project-name.dev`, update the file to read:
-```json
-...
-  "devUrl": "https://project-name.dev",
-...
-```
-
-If you are not using [Bedrock](https://roots.io/bedrock/), update `publicPath` to reflect your folder structure:
-
-```json
-...
-  "publicPath": "/wp-content/themes/sage"
-...
-```
-
-By default, Browsersync will use webpack's [HMR](https://webpack.github.io/docs/hot-module-replacement.html), which won't trigger a page reload in your browser.
-
-If you would like to force Browsersync to reload the page whenever certain file types are edited, then add them to `watch` in `resources/assets/config.json`.
-
-```json
-...
-  "watch": [
-    "resources/assets/scripts/**/*.js",
-    "resources/views/**/*.php",
-    "app/**/*.php"
-  ],
-...
-```
 
 ## Documentation
 
