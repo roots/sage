@@ -1,4 +1,5 @@
 ### HEAD
+* Move required theme files to `sage/resources` ([#1877](https://github.com/roots/sage/pull/1877))
 * Move `src/` to `app/` ([#1868](https://github.com/roots/sage/pull/1868))
 * Move `templates/` to `resources/views/`, move `assets/` to `resources/assets/`, rename `base.blade.php` to `app.blade.php` ([#1864](https://github.com/roots/sage/pull/1864))
 * Add option to configure build settings ([#1822](https://github.com/roots/sage/pull/1822))
