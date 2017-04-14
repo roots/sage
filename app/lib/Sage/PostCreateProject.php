@@ -31,7 +31,7 @@ class PostCreateProject
               'author_uri'  => $io->ask('<info>Theme Author URI [<comment>'.$theme_headers_default['author_uri'].'</comment>]:</info> ', $theme_headers_default['author_uri'])
             ];
 
-            file_put_contents('style.css', str_replace($theme_headers_default, $theme_headers, file_get_contents('style.css')));
+            file_put_contents('resources/style.css', str_replace($theme_headers_default, $theme_headers, file_get_contents('resources/style.css')));
         }
     }
 
