@@ -118,7 +118,7 @@ add_action('after_setup_theme', function () {
 
         // die(var_dump($viewPaths));
     config([
-        'assets.manifest' => "{$paths['dir.stylesheet']}/dist/assets.json",
+        'assets.manifest' => "{$paths['dir.stylesheet']}/../dist/assets.json",
         'assets.uri'      => "{$paths['uri.stylesheet']}/dist",
         'view.compiled'   => "{$paths['dir.upload']}/cache/compiled",
         'view.namespaces' => ['App' => WP_CONTENT_DIR],
