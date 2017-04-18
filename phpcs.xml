@@ -3,8 +3,8 @@
   <description>Roots Coding Standards</description>
 
   <!-- Scan these files -->
-  <file>functions.php</file>
-  <file>index.php</file>
+  <file>resources/functions.php</file>
+  <file>resources/index.php</file>
   <file>app</file>
   <file>resources/views</file>
 
