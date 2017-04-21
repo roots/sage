@@ -22,6 +22,10 @@ Sage is a WordPress starter theme with a modern development workflow.
 
 See a working example at [roots-example-project.com](https://roots-example-project.com/).
 
+### Recommended extensions
+
+* [Controller](https://github.com/soberwp/controller) — WordPress plugin to enable a basic controller when using Blade with Sage 9
+
 ## Requirements
 
 Make sure all dependencies have been installed before moving on:
