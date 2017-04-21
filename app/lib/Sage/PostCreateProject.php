@@ -18,7 +18,7 @@ class PostCreateProject
                 'name'        => 'Sage Starter Theme',
                 'uri'         => 'https://roots.io/sage/',
                 'description' => 'Sage is a WordPress starter theme.',
-                'version'     => '9.0.0-beta.2',
+                'version'     => '9.0.0-beta.3',
                 'author'      => 'Roots',
                 'author_uri'  => 'https://roots.io/'
             ];
