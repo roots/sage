@@ -8,22 +8,26 @@
   max-width: 100%;
   height: auto;
 }
+
 .aligncenter {
   display: block;
   margin: ($spacer / 2) auto;
   height: auto;
 }
+
 .alignleft,
 .alignright {
   margin-bottom: ($spacer / 2);
   height: auto;
 }
+
 @include media-breakpoint-up(sm) {
   // Only float if not on an extra small device
   .alignleft {
     float: left;
     margin-right: ($spacer / 2);
   }
+
   .alignright {
     float: right;
     margin-left: ($spacer / 2);
@@ -34,10 +38,12 @@
 .wp-caption {
   @extend .figure;
 }
+
 .wp-caption img {
   @extend .figure-img;
   @extend .img-fluid;
 }
+
 .wp-caption-text {
   @extend .figure-caption;
 }
