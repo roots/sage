@@ -116,7 +116,6 @@ add_action('after_setup_theme', function () {
             return ["{$path}/resources/views", $path];
         })->unique()->toArray();
 
-        // die(var_dump($viewPaths));
     config([
         'assets.manifest' => "{$paths['dir.stylesheet']}/../dist/assets.json",
         'assets.uri'      => "{$paths['uri.stylesheet']}/dist",
