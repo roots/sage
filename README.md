@@ -102,6 +102,18 @@ Edit `app/setup.php` to enable or disable theme features, setup navigation menus
 * `yarn run build` — Compile and optimize the files in your assets directory
 * `yarn run build:production` — Compile assets for production
 
+## Folder Structure
+
+Folder structure is similar to other WordPress themes, with a few key differences.
+
+`assets` - This is where all assets should be placed. This includes CSS, JavaScript, Images, Fonts. Anything that is not installed with Bower.
+`bower_components` - Where Bower installs any packages for the theme.
+`dist` - Compiled assets go here. *Do not place anything in here manually*. This folder is generated from `assets` when running `gulp`, so the next time you run `gulp` any manually placed files will be destroyed.
+`lang` - Translation files
+`lib` - PHP libraries, basically `functions.php` but better separated and sorted.
+`node_modules` - packages installed from npm.
+`templates` - Theme templates, better separated for re-usable templates
+
 ## Documentation
 
 Sage 8 documentation is available at [https://roots.io/sage/docs/](https://roots.io/sage/docs/).
