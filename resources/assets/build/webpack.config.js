@@ -141,7 +141,7 @@ let webpackConfig = {
         output: { path: config.paths.dist },
         context: config.paths.assets,
         postcss: [
-          autoprefixer({ browsers: config.browsers }),
+          autoprefixer(),
         ],
       },
     }),

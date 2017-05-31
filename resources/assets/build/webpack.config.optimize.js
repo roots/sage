@@ -13,7 +13,7 @@ module.exports = {
       cssProcessor: cssnano,
       cssProcessorOptions: {
         discardComments: { removeAll: true },
-        autoprefixer: { browsers: config.browsers },
+        autoprefixer: {},
       },
       canPrint: true,
     }),
