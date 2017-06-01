@@ -105,3 +105,17 @@ add_filter('get_search_form', function($form) {
 
     <?php return ob_get_clean();
 });
+
+/**
+ * Add a body class for custom posts types
+ */
+add_filter('body_class', function($classes) {
+    global $post;
+
+    if (is_single() && $post->post_type !== 'post') {
+        $classes[] = $post->post_type;
+    }
+
+    return $classes;
+});
+
