@@ -120,8 +120,8 @@ function title()
  * @return Echoed Post Pagination HTML
  */
 function the_post_pagination($before = '', $after = '') {
-    $wpdb = get_the_DB();
-    $wp_query = get_the_query();
+    $wpdb = \get_the_DB();
+    $wp_query = \get_the_query();
     $request = $wp_query->request;
     $posts_per_page = intval(get_query_var('posts_per_page'));
     $paged = intval(get_query_var('paged'));
