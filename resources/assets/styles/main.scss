@@ -1,7 +1,9 @@
 @import "common/variables";
+@import "common/mixins";
 
 // Import npm dependencies
-@import "~bootstrap/scss/bootstrap";
+@import "~font-awesome/scss/font-awesome";
+@import "~foundation-sites/scss/foundation";
 
 @import "common/global";
 @import "components/buttons";

@@ -1,0 +1,159 @@
+// Horizontally center using position: relative
+@mixin horizontal-center-relative {
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+// Vertically center using position: relative
+@mixin vertical-center-relative {
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+// Rem output with px fallback
+@mixin font-size($sizeValue: 1) {
+	font-size: ($sizeValue * 16) * 1px;
+	font-size: $sizeValue * 1rem;
+}
+
+// Center block
+@mixin center-block {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+// Clearfix
+@mixin clearfix() {
+	content: "";
+	display: table;
+	table-layout: fixed;
+}
+
+// Clear after (not all clearfix need this also)
+@mixin clearfix-after() {
+	clear: both;
+}
+
+// Create CSS gradient
+@mixin css-gradient($from: #dfdfdf, $to: #f8f8f8) {
+	background-color: $to;
+	background-image: -webkit-gradient(linear, left top, left bottom, from($from), to($to));
+	background-image: -webkit-linear-gradient(top, $from, $to);
+	background-image: -moz-linear-gradient(top, $from, $to);
+	background-image: -o-linear-gradient(top, $from, $to);
+	background-image: linear-gradient(to bottom, $from, $to);
+}
+
+// Mixin for creating box shadows based on material design
+@mixin box-shadow($level: 1) {
+	@if $level == 1 {
+		box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+	}
+	@else if $level == 2 {
+		box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+	}
+	@else if $level == 3 {
+		box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+	}
+	@else if $level == 4 {
+		box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+	}
+	@else if $level == 5 {
+		box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+	}
+}
+
+// Apply cubic transistion to all properties, or optionally just one
+@mixin transition-all($prop: all) {
+	transition: $prop 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+// Apply a bounce trasition to the transform property
+@mixin transition-transform-bounce() {
+	transition: transform 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+}
+
+// Apply a text potection layer to the element
+@mixin image-scrim() {
+	background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6));
+}
+
+// Apply text shadow
+@mixin text-shadow() {
+	text-shadow: 0 1px 10px rgba(0,0,0,0.35);
+}
+
+// Remove overflow and add ellipses
+@mixin chop-text() {
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+	display: block;
+	width: 100%;
+}
+
+@mixin radial-in($old-color, $new-color) {
+	display: inline-block;
+	vertical-align: middle;
+
+	transform: perspective(1px) translateZ(0);
+	box-shadow: 0 0 1px transparent;
+	position: relative;
+	overflow: hidden;
+	background: $new-color;
+
+	transition-property: color;
+	transition-duration: 0.3s;
+
+	&::before {
+		content: "";
+		position: absolute;
+		z-index: -1;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: $old-color;
+		border-radius: 100%;
+
+		transform: scale(2);
+
+		transition-property: transform;
+
+		transition-duration: 0.3s;
+
+		transition-timing-function: ease-out;
+	}
+
+	&:hover, &:focus, &:active {
+		color: $white;
+
+		&::before {
+			transform: scale(0);
+		}
+	}
+}
+
+// Break text based with ellipses on max lines to show, with fallback
+@mixin multi-line-ellipse($font-size, $line-height, $lines-to-show) {
+	padding-left: 1px;
+	padding-right: 1px;
+
+	display: block; /* Fallback for non-webkit */
+
+	display: -webkit-box;
+
+	height: $font-size*$line-height*$lines-to-show; /* Fallback for non-webkit */
+
+	font-size: $font-size;
+	line-height: $line-height;
+
+	-webkit-line-clamp: $lines-to-show;
+	-webkit-box-orient: vertical;
+	overflow-y: hidden;
+
+	text-overflow: ellipsis;
+}
