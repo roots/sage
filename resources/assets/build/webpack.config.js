@@ -151,6 +151,14 @@ let webpackConfig = {
         eslint: { failOnWarning: false, failOnError: true },
       },
     }),
+    /**
+     * This hack removes all other locals except en from moment.js,
+     * significantly reducing the final bundle size
+     */
+    new webpack.ContextReplacementPlugin(
+      /moment[\/\\]locale$/,
+      /en/
+    ),
   ],
 };
 
