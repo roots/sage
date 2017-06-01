@@ -127,3 +127,11 @@ add_filter('image_size_names_choose', function($sizes) {
         'xlarge' => __( 'HD' ),
     ) );
 });
+
+/**
+ * Allow SVGs to be uploaded through the Wordpress Media Library
+ */
+add_filter('upload_mimes', function($mimes) {
+    $mimes['svg'] = 'image/svg+xml';
+    return $mimes;
+});
