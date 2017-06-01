@@ -6,11 +6,11 @@
     @include('partials.header')
     <div class="wrap container" role="document">
       <div class="content">
-        <main class="main">
+        <main class="main column small-12 {{ App\display_sidebar() ? 'large-8' : '' }}">
           @yield('content')
         </main>
         @if (App\display_sidebar())
-          <aside class="sidebar">
+          <aside class="sidebar column large-4">
             @include('partials.sidebar')
           </aside>
         @endif

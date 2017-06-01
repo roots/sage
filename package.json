@@ -67,8 +67,9 @@
     "yargs": "^7.1.0"
   },
   "dependencies": {
+    "font-awesome": "^4.7.0",
     "foundation-sites": "6.3.0",
     "jquery": "1.12.4 - 3",
-    "font-awesome": "^4.7.0"
+    "motion-ui": "^1.2.2"
   }
 }
