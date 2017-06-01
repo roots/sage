@@ -68,3 +68,19 @@ add_filter('template_include', function ($template) {
  * Tell WordPress how to find the compiled path of comments.blade.php
  */
 add_filter('comments_template', 'App\\template_path');
+
+/**
+ * Define which conditions to enable the primary sidebar on
+ */
+add_filter('sage/display_sidebar', function ($display) {
+    static $display;
+
+    isset($display) || $display = in_array(true, [
+      // The sidebar will be displayed if any of the following return true
+      is_single(),
+      is_404(),
+      is_page_template('template-custom.php')
+    ]);
+
+    return $display;
+});
