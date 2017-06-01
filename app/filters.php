@@ -86,3 +86,22 @@ add_filter('template_include', function ($template) {
  * Tell WordPress how to find the compiled path of comments.blade.php
  */
 add_filter('comments_template', 'App\\template_path');
+
+/**
+ * Repace default search form with Foundation search form
+ */
+add_filter('get_search_form', function($form) {
+    ob_start(); ?>
+
+    <form role="search" method="get" class="search-form" action="<?=home_url('/');?>">
+        <div class="input-group">
+            <span class="input-group-label"><i class="fa fa-search"></i></span>
+            <input class="search-field input-group-field" type="text" value="<?=get_search_query();?>" name="s" id="s" placeholder="Search..." />
+            <div class="input-group-button">
+                <input type="submit" class="search-submit button" value="<?=esc_attr__('Search');?>" />
+            </div>
+        </div>
+    </form>
+
+    <?php return ob_get_clean();
+});
