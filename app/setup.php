@@ -59,6 +59,12 @@ add_action('after_setup_theme', function () {
      * @see resources/assets/styles/layouts/_tinymce.scss
      */
     add_editor_style(asset_path('styles/main.css'));
+
+    /**
+    * Add custom image sizes
+    * @link https://developer.wordpress.org/reference/functions/add_image_size/
+    */
+    add_image_size('xlarge', 1920);
 }, 20);
 
 /**
