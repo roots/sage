@@ -1,0 +1,2 @@
+# List directories and files below to be ignored by JSHint
+# eg. node_modules & bower_components
