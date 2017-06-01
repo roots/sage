@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Use this file for registering new filters
+ */
+
 namespace App;
 
 /**
