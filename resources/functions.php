@@ -63,6 +63,7 @@ array_map(function ($file) use ($sage_error) {
 	'cleanup',
 	'globals',
 	'acf_settings',
+	'menus',
 	'sidebars',
 	'shortcodes',
 ]);

@@ -1,10 +1,10 @@
 <?php
 
 /**
- * Returns global variables for use in namespaced functions
- *
- * @return Instance of global variable
+ * This file is for creating getters to access Wordpress global
+ * variables that dont otherwise have getters
  */
+
 function get_the_query() {
 	global $wp_query;
 	return $wp_query;
@@ -24,7 +24,6 @@ function get_shortcode_tags() {
 	global $shortcode_tags;
 	return $shortcode_tags;
 }
-
 
 function global_post_setup($new_post) {
 	global $post;
