@@ -107,6 +107,16 @@ add_filter('get_search_form', function($form) {
 });
 
 /**
+ * Add attributes to post links
+ */
+function post_link_attributes($output) {
+        $code = 'class="button"';
+        return str_replace('<a href=', '<a '.$code.' href=', $output);
+}
+add_filter('next_post_link', 'App\\post_link_attributes');
+add_filter('previous_post_link', 'App\\post_link_attributes');
+
+/**
  * Add a body class for custom posts types
  */
 add_filter('body_class', function($classes) {
