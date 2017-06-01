@@ -9,9 +9,9 @@
         <main class="main column small-12 {{ App\display_sidebar() ? 'large-8' : '' }}">
           @yield('content')
         </main>
-        @if (App\display_sidebar())
-          <aside class="sidebar column large-4">
-            @include('partials.sidebar')
+        @if(App\display_sidebar())
+          <aside class="sidebar column large-4 show-for-large">
+            @include('partials.sidebar-'.((get_post_type() !== 'page') ? get_post_type() : get_post()->post_name))
           </aside>
         @endif
       </div>
