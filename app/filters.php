@@ -145,3 +145,14 @@ add_filter('upload_mimes', function($mimes) {
     $mimes['svg'] = 'image/svg+xml';
     return $mimes;
 });
+
+/**
+ * Add 'async' and 'defer' attributes to specified
+ * script tags
+ */
+add_filter('script_loader_tag', function($tag, $handle) {
+    if (false) {
+        return str_replace(' src', 'async defer src', $tag);   
+    }
+    return $tag;
+}, 10, 2);
