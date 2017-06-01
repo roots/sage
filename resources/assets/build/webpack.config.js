@@ -54,7 +54,7 @@ let webpackConfig = {
           fallback: 'style',
           publicPath: '../',
           use: [
-            `css?${sourceMapQueryStr}`,
+            `css?${sourceMapQueryStr}?importLoaders=1`,
             'postcss',
             `resolve-url?${sourceMapQueryStr}`,
             `sass?${sourceMapQueryStr}`,
