@@ -18,6 +18,20 @@ add_filter('body_class', function (array $classes) {
         $classes[] = 'sidebar-primary';
     }
 
+    /** Add shortcodes to body classes */
+    if($current = get_post()) {
+        
+        $shortcodes = get_shortcode_tags();
+
+        // Use key for shortcode name, value for shortcode
+        // callback function name
+        foreach ($shortcodes as $shortcode => $value) {
+            if(has_shortcode($current->content, $shortcode)) {
+                $classes[] = $shortcode;
+            }
+        }
+    }
+
     /** Clean up class names for custom templates */
     $classes = array_map(function ($class) {
         return preg_replace(['/-blade(-php)?$/', '/^page-template-views/'], '', $class);
