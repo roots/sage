@@ -37,14 +37,6 @@ add_action('after_setup_theme', function () {
     add_theme_support('title-tag');
 
     /**
-     * Register navigation menus
-     * @link https://developer.wordpress.org/reference/functions/register_nav_menus/
-     */
-    register_nav_menus([
-        'primary_navigation' => __('Primary Navigation', 'sage')
-    ]);
-
-    /**
      * Enable post thumbnails
      * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
      */
