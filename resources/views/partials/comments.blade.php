@@ -34,5 +34,5 @@ if (post_password_required()) {
     </div>
   @endif
 
-  @php(comment_form())
+  @php(comment_form(['class_submit' => 'button']))
 </section>
