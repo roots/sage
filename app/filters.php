@@ -119,3 +119,11 @@ add_filter('body_class', function($classes) {
     return $classes;
 });
 
+/**
+ * Add custom image size to the list of selectable sizes
+ */
+add_filter('image_size_names_choose', function($sizes) {
+    return array_merge( $sizes, array(
+        'xlarge' => __( 'HD' ),
+    ) );
+});
