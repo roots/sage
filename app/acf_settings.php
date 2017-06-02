@@ -2,18 +2,6 @@
 
 namespace App;
 
-/**
- * Display warning if ACF is not installed
- */
-add_action('admin_notices', function() {
-	if(!class_exists('acf')) {
-		$class = 'notice notice-error';
-		$message = __( 'Could not locate Advanced Custom Fields Pro. This theme may not function correctly until these files are added.', 'sage' );
-
-		printf('<div class="%1$s"><p>%2$s</p></div>', esc_attr($class), esc_html($message));
-	}
-});
-
 
 /**
  * Create a Theme Options page for ACF fields

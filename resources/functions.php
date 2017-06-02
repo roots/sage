@@ -131,3 +131,22 @@ if(!class_exists('acf') &&  file_exists(get_stylesheet_directory() . '/../vendor
 		add_filter('acf/settings/show_admin', '__return_false');
 	}
 }
+else if(!class_exists('acf')) {
+	/**
+	 * Display warning if ACF is not installed
+	 */
+	add_action('admin_notices', function() {
+		$class = 'notice notice-error';
+		$message = __( 'ACF not activated. Make sure you activate the Advanced Custom Fields plugin in the WordPress admin area, or include the files in the vendor folder.', 'sage' );
+
+		printf('<div class="%1$s"><p>%2$s</p></div>', esc_attr($class), esc_html($message));
+	});
+
+	add_filter('template_include', function($template) use ($sage_error) {
+		$sage_error(
+			__('Make sure you activate the Advanced Custom Fields plugin in the WordPress admin area, or include the files in the vendor folder.', 'sage'),
+			__('ACF not activated', 'sage')
+		);
+	});
+}
+
