@@ -30,7 +30,7 @@ add_filter('body_class', function (array $classes) {
         // Use key for shortcode name, value for shortcode
         // callback function name
         foreach ($shortcodes as $shortcode => $value) {
-            if(has_shortcode($current->content, $shortcode)) {
+            if(has_shortcode($current->post_content, $shortcode)) {
                 $classes[] = $shortcode;
             }
         }
