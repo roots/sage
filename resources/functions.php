@@ -131,10 +131,10 @@ if(!class_exists('acf') &&  file_exists(get_stylesheet_directory() . '/../vendor
 		add_filter('acf/settings/show_admin', '__return_false');
 	}
 }
+/**
+ * Display warning if ACF is not installed
+ */
 else if(!class_exists('acf')) {
-	/**
-	 * Display warning if ACF is not installed
-	 */
 	add_action('admin_notices', function() {
 		$class = 'notice notice-error';
 		$message = __( 'ACF not activated. Make sure you activate the Advanced Custom Fields plugin in the WordPress admin area, or include the files in the vendor folder.', 'sage' );
