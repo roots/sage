@@ -27,6 +27,7 @@
     "build:production": "webpack --progress -p --config resources/assets/build/webpack.config.js",
     "build:profile": "webpack --progress --profile --json --config resources/assets/build/webpack.config.js",
     "start": "webpack --hide-modules --watch --config resources/assets/build/webpack.config.js",
+    "bundle": "zip -r $npm_package_name-$npm_package_version.zip app dist vendor resources/acf-json resources/views resources/index.php resources/functions.php resources/style.css resources/screenshot.png",
     "rmdist": "rimraf dist",
     "lint": "eslint resources/assets/scripts resources/assets/build",
     "test": "yarn run lint"
