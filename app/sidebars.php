@@ -2,7 +2,6 @@
 
 namespace App;
 
-
 /**
  * Determine which pages display a sidebar
  */

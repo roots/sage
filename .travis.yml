@@ -1,15 +1,27 @@
 language: php
+
 sudo: false
-dist: trusty
+
 php:
-  - 7.1
   - 7.0
   - 5.6
   - nightly
 
+branches:
+  only:
+    - master
+    - develop
+    - add-unit-tests
+
 env:
-  - TRAVIS_NODE_VERSION="6"
-  - TRAVIS_NODE_VERSION="7"
+  global:
+    - WP_VERSION=latest
+    - WP_MULTISITE=0
+  matrix:
+    - TRAVIS_NODE_VERSION="6"
+
+services:
+  - mysql
 
 matrix:
   fast_finish: true
@@ -33,9 +45,13 @@ install:
   - travis_retry yarn
   - composer install -o --prefer-dist --no-interaction
 
+before_script:
+  - bash bin/install-wp-tests.sh wordpress_test root '' localhost $WP_VERSION
+
 script:
   - yarn run test
   - yarn run build
   - yarn run rmdist
   - yarn run "build:production"
   - composer test
+  - phpunit

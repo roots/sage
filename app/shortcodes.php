@@ -6,7 +6,6 @@
 
 namespace App;
 
-
 // add_shortcode('shortcode-name', function(){
 // 	return $value;
 // });

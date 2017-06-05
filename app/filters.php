@@ -23,14 +23,13 @@ add_filter('body_class', function (array $classes) {
     }
 
     /** Add shortcodes to body classes */
-    if($current = get_post()) {
-        
+    if ($current = get_post()) {
         $shortcodes = get_shortcode_tags();
 
         // Use key for shortcode name, value for shortcode
         // callback function name
         foreach ($shortcodes as $shortcode => $value) {
-            if(has_shortcode($current->post_content, $shortcode)) {
+            if (has_shortcode($current->post_content, $shortcode)) {
                 $classes[] = $shortcode;
             }
         }
@@ -90,15 +89,21 @@ add_filter('comments_template', 'App\\template_path');
 /**
  * Repace default search form with Foundation search form
  */
-add_filter('get_search_form', function($form) {
+add_filter('get_search_form', function ($form) {
     ob_start(); ?>
 
-    <form role="search" method="get" class="search-form" action="<?=home_url('/');?>">
+    <form role="search" method="get" class="search-form" action="<?=home_url('/'); ?>">
         <div class="input-group">
             <span class="input-group-label"><i class="fa fa-search"></i></span>
-            <input class="search-field input-group-field" type="text" value="<?=get_search_query();?>" name="s" id="s" placeholder="Search..." />
+            <input 
+                class="search-field input-group-field" 
+                type="text" 
+                value="<?=get_search_query(); ?>" 
+                name="s" 
+                id="s" 
+                placeholder="Search..." />
             <div class="input-group-button">
-                <input type="submit" class="search-submit button" value="<?=esc_attr__('Search');?>" />
+                <input type="submit" class="search-submit button" value="<?=esc_attr__('Search'); ?>" />
             </div>
         </div>
     </form>
@@ -109,17 +114,13 @@ add_filter('get_search_form', function($form) {
 /**
  * Add attributes to post links
  */
-function post_link_attributes($output) {
-        $code = 'class="button"';
-        return str_replace('<a href=', '<a '.$code.' href=', $output);
-}
 add_filter('next_post_link', 'App\\post_link_attributes');
 add_filter('previous_post_link', 'App\\post_link_attributes');
 
 /**
  * Add a body class for custom posts types
  */
-add_filter('body_class', function($classes) {
+add_filter('body_class', function ($classes) {
     global $post;
 
     if (is_single() && $post->post_type !== 'post') {
@@ -132,16 +133,16 @@ add_filter('body_class', function($classes) {
 /**
  * Add custom image size to the list of selectable sizes
  */
-add_filter('image_size_names_choose', function($sizes) {
-    return array_merge( $sizes, array(
-        'xlarge' => __( 'HD' ),
-    ) );
+add_filter('image_size_names_choose', function ($sizes) {
+    return array_merge($sizes, array(
+        'xlarge' => __('HD'),
+    ));
 });
 
 /**
  * Allow SVGs to be uploaded through the Wordpress Media Library
  */
-add_filter('upload_mimes', function($mimes) {
+add_filter('upload_mimes', function ($mimes) {
     $mimes['svg'] = 'image/svg+xml';
     return $mimes;
 });
@@ -150,9 +151,19 @@ add_filter('upload_mimes', function($mimes) {
  * Add 'async' and 'defer' attributes to specified
  * script tags
  */
-add_filter('script_loader_tag', function($tag, $handle) {
+add_filter('script_loader_tag', function ($tag, $handle) {
     if (false) {
-        return str_replace(' src', 'async defer src', $tag);   
+        return str_replace(' src', 'async defer src', $tag);
     }
     return $tag;
+}, 10, 2);
+
+/**
+* Add Foundation active class to menu
+*/
+add_filter('nav_menu_css_class', function ($classes, $item) {
+    if ($item->current == 1 || $item->current_item_ancestor == true) {
+        $classes[] = 'active';
+    }
+    return $classes;
 }, 10, 2);

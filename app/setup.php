@@ -61,6 +61,14 @@ add_action('after_setup_theme', function () {
     add_editor_style(asset_path('styles/main.css'));
 
     /**
+    * Register navigation menus
+    * @link https://developer.wordpress.org/reference/functions/register_nav_menus/
+    */
+    register_nav_menus([
+        'primary_navigation' => __('Primary Navigation', 'sage')
+    ]);
+
+    /**
     * Add custom image sizes
     * @link https://developer.wordpress.org/reference/functions/add_image_size/
     */

@@ -56,14 +56,14 @@ class PostCreateProject
             ];
             $framework = $io->select('<info>Select a CSS framework</info> <comment>(Default: Bootstrap)</comment>', $frameworks, 0);
 
-            switch($framework) {
+            switch ($framework) {
                 case 0:
                     break;
                 case 1:
                     file_put_contents('package.json', preg_replace("/{$default_framework_pattern}/", '"foundation-sites": "6.3.0"', file_get_contents('package.json')));
                     file_put_contents('resources/assets/styles/main.scss', str_replace('@import "~bootstrap/scss/bootstrap";' . "\n", '@import "~foundation-sites/scss/foundation";' . "\n" . '@include foundation-everything;' . "\n", file_get_contents('resources/assets/styles/main.scss')));
                     file_put_contents('resources/assets/scripts/main.js', str_replace("import 'bootstrap';\n", "import 'foundation-sites/dist/js/foundation';\n", file_get_contents('resources/assets/scripts/main.js')));
-                    foreach($files_to_clear as $file) {
+                    foreach ($files_to_clear as $file) {
                         file_put_contents($file, '');
                     }
                     break;
@@ -71,7 +71,7 @@ class PostCreateProject
                     file_put_contents('package.json', preg_replace("/\s+{$default_framework_pattern},/", '', file_get_contents('package.json')));
                     file_put_contents('resources/assets/styles/main.scss', str_replace('@import "~bootstrap/scss/bootstrap";' . "\n", '', file_get_contents('resources/assets/styles/main.scss')));
                     file_put_contents('resources/assets/scripts/main.js', str_replace("import 'bootstrap';\n", '', file_get_contents('resources/assets/scripts/main.js')));
-                    foreach($files_to_clear as $file) {
+                    foreach ($files_to_clear as $file) {
                         file_put_contents($file, '');
                     }
                     break;
