@@ -14,6 +14,7 @@ module.exports = {
       cssProcessorOptions: {
         discardComments: { removeAll: true },
         autoprefixer: {},
+        safe: true,
       },
       canPrint: true,
     }),
