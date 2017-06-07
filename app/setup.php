@@ -155,3 +155,37 @@ add_action('after_setup_theme', function () {
  * Init config
  */
 sage()->bindIf('config', Config::class, true);
+
+/**
+ * Overwrite WP cache to allow 2 level deep templates
+ */
+add_action('admin_init', function () {
+    $templateRoot = trailingslashit(get_template_directory());
+    $cache_hash = md5(trailingslashit(dirname($templateRoot)) . basename($templateRoot));
+    $post_templates = [];
+    $path = $templateRoot . 'resources/views/';
+    $files = scandir($path);
+    foreach ($files as $file) {
+        if (is_dir($path . $file)) {
+            continue;
+        }
+        if (!preg_match('|Template Name:(.*)$|mi', file_get_contents($path . $file), $header)) {
+            continue;
+        }
+
+        $types = array('page');
+        if (preg_match('|Template Post Type:(.*)$|mi', file_get_contents($path . $file), $type)) {
+            $types = explode(',', _cleanup_header_comment($type[1]));
+        }
+
+        foreach ($types as $type) {
+            $type = sanitize_key($type);
+            if (!isset($post_templates[$type])) {
+                $post_templates[$type] = array();
+            }
+
+            $post_templates[$type][$file] = trim(preg_replace("/\s*(?:\*\/|\?>).*/", '', $header[1]));
+        }
+    }
+    wp_cache_add('post_templates-' . $cache_hash, $post_templates, 'themes', 1800);
+}, 1);
