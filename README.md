@@ -13,7 +13,8 @@ Sage is a WordPress starter theme with a modern development workflow.
 * ES6 for JavaScript
 * [Webpack](https://webpack.github.io/) for compiling assets, optimizing images, and concatenating and minifying files
 * [Browsersync](http://www.browsersync.io/) for synchronized browser testing
-* [Laravel's Blade](https://laravel.com/docs/5.3/blade) as a templating engine
+* [Laravel Blade](https://laravel.com/docs/5.3/blade) as a templating engine
+* [Controller](https://github.com/soberwp/controller) for passing data to Blade templates
 * CSS framework options:
   * [Bootstrap 4](http://getbootstrap.com/)
   * [Foundation](http://foundation.zurb.com/)
@@ -21,10 +22,6 @@ Sage is a WordPress starter theme with a modern development workflow.
 * Font Awesome (optional)
 
 See a working example at [roots-example-project.com](https://roots-example-project.com/).
-
-### Recommended extensions
-
-* [Controller](https://github.com/soberwp/controller) — WordPress plugin to enable a basic controller when using Blade with Sage 9
 
 ## Requirements
 
@@ -75,6 +72,7 @@ themes/your-theme-name/   # → Root of your Sage based theme
 │   │   ├── images/       # → Theme images
 │   │   ├── scripts/      # → Theme JS
 │   │   └── styles/       # → Theme stylesheets
+│   ├── controllers/      # → Controller files
 │   ├── functions.php     # → Composer autoloader, theme includes
 │   ├── index.php         # → Never manually edit
 │   ├── screenshot.png    # → Theme screenshot for WP admin
@@ -107,6 +105,8 @@ Edit `app/setup.php` to enable or disable theme features, setup navigation menus
 Sage 8 documentation is available at [https://roots.io/sage/docs/](https://roots.io/sage/docs/).
 
 Sage 9 documentation is currently in progress and can be viewed at [https://github.com/roots/docs/tree/sage-9/sage](https://github.com/roots/docs/tree/sage-9/sage).
+
+Controller documentation is available at [https://github.com/soberwp/controller#usage](https://github.com/soberwp/controller#usage).
 
 ## Contributing
 
