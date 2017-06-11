@@ -21,8 +21,8 @@ function sage($abstract = null, $parameters = [], ContainerContract $container =
         return $container;
     }
     return $container->bound($abstract)
-        ? $container->make($abstract, $parameters)
-        : $container->make("sage.{$abstract}", $parameters);
+        ? $container->makeWith($abstract, $parameters)
+        : $container->makeWith("sage.{$abstract}", $parameters);
 }
 
 /**

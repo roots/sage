@@ -17,6 +17,11 @@
       "url": "http://opensource.org/licenses/MIT"
     }
   ],
+  "browserslist": [
+    "last 2 versions",
+    "android 4",
+    "opera 12"
+  ],
   "scripts": {
     "build": "webpack --progress --config resources/assets/build/webpack.config.js",
     "build:production": "webpack --progress -p --config resources/assets/build/webpack.config.js",
@@ -30,7 +35,7 @@
     "node": ">= 6.9.4"
   },
   "devDependencies": {
-    "autoprefixer": "^6.7.7",
+    "autoprefixer": "^7.1.1",
     "browser-sync": "^2.18.8",
     "browsersync-webpack-plugin": "^0.5.3",
     "bs-html-injector": "^3.0.3",

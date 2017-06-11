@@ -59,12 +59,12 @@ array_map(function ($file) use ($sage_error) {
 
 /**
  * Here's what's happening with these hooks:
- * 1. WordPress initially detects theme in themes/sage
+ * 1. WordPress initially detects theme in themes/sage/resources
  * 2. Upon activation, we tell WordPress that the theme is actually in themes/sage/resources/views
- * 3. When we call get_template_directory() or get_template_directory_uri(), we point it back to themes/sage
+ * 3. When we call get_template_directory() or get_template_directory_uri(), we point it back to themes/sage/resources
  *
  * We do this so that the Template Hierarchy will look in themes/sage/resources/views for core WordPress themes
- * But functions.php, style.css, and index.php are all still located in themes/sage
+ * But functions.php, style.css, and index.php are all still located in themes/sage/resources
  *
  * This is not compatible with the WordPress Customizer theme preview prior to theme activation
  *
@@ -86,6 +86,9 @@ add_filter('stylesheet_directory_uri', function ($uri) {
 });
 if ($sage_views !== get_option('stylesheet')) {
     update_option('stylesheet', $sage_views);
+    if (php_sapi_name() === 'cli') {
+        return;
+    }
     wp_redirect($_SERVER['REQUEST_URI']);
     exit();
 }
