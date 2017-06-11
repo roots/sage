@@ -2,13 +2,17 @@
 .search-form {
   @extend .form-inline;
 }
+
 .search-form label {
-  font-weight: normal;
   @extend .form-group;
+
+  font-weight: normal;
 }
+
 .search-form .search-field {
   @extend .form-control;
 }
+
 .search-form .search-submit {
   @extend .btn;
   @extend .btn-secondary;
