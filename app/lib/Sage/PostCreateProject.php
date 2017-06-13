@@ -70,8 +70,8 @@ class PostCreateProject
                     break;
                 case 2:
                     file_put_contents('package.json', preg_replace("/{$default_framework_pattern}/", '"tachyons-sass": "^4.7.1"', file_get_contents('package.json')));
-                    file_put_contents('assets/styles/main.scss', str_replace('@import "~bootstrap/scss/bootstrap";' . "\n", '@import "~tachyons-sass/tachyons";' . "\n", file_get_contents('assets/styles/main.scss')));
-                    file_put_contents('assets/scripts/main.js', str_replace("import 'bootstrap';\n", '', file_get_contents('assets/scripts/main.js')));
+                    file_put_contents('resources/assets/styles/main.scss', str_replace('@import "~bootstrap/scss/bootstrap";' . "\n", '@import "~tachyons-sass/tachyons";' . "\n", file_get_contents('resources/assets/styles/main.scss')));
+                    file_put_contents('resources/assets/scripts/main.js', str_replace("import 'bootstrap';\n", '', file_get_contents('resources/assets/scripts/main.js')));
                     foreach($files_to_clear as $file) {
                         file_put_contents($file, '');
                     }
