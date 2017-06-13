@@ -35,11 +35,12 @@
     "illuminate/config": "~5.4.0"
   },
   "require-dev": {
-    "squizlabs/php_codesniffer": "^2.8.0"
+    "squizlabs/php_codesniffer": "^2.8.0",
+    "phpunit/phpunit": "^6.2"
   },
   "scripts": {
     "test": [
-      "phpcs"
+      "phpcs && phpunit"
     ],
     "post-create-project-cmd": [
         "Roots\\Sage\\PostCreateProject::updateHeaders",
