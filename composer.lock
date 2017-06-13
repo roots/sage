@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "e1b60e480a0c3c964418f9f47cb49faf",
+    "content-hash": "0b1470920d1b38f8ed13b807488e729e",
     "packages": [
         {
             "name": "brain/hierarchy",
@@ -719,16 +719,16 @@
         },
         {
             "name": "soberwp/controller",
-            "version": "9.0.0-beta.3",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/soberwp/controller.git",
-                "reference": "54cfd29e8695960421d9dda1b177a04c9e76aa9f"
+                "reference": "6b3a28840845261822cdc31c2359db6901e9e209"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/soberwp/controller/zipball/54cfd29e8695960421d9dda1b177a04c9e76aa9f",
-                "reference": "54cfd29e8695960421d9dda1b177a04c9e76aa9f",
+                "url": "https://api.github.com/repos/soberwp/controller/zipball/6b3a28840845261822cdc31c2359db6901e9e209",
+                "reference": "6b3a28840845261822cdc31c2359db6901e9e209",
                 "shasum": ""
             },
             "require": {
@@ -767,7 +767,7 @@
             "keywords": [
                 "wordpress"
             ],
-            "time": "2017-06-03T21:30:54+00:00"
+            "time": "2017-06-12 18:41:19"
         },
         {
             "name": "symfony/debug",
@@ -1014,7 +1014,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "soberwp/controller": 10
+        "soberwp/controller": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
