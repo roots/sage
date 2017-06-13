@@ -1,0 +1,34 @@
+image: php:7.1
+pipelines:
+    branches:
+        master:
+            - step:
+                script:
+                    # Install nvm
+                    - curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.1/install.sh | bash && source ~/.nvm/nvm.sh
+                    - nvm --version
+                    # Install node 6
+                    - nvm install 6 && nvm use 6
+                    - node -v
+                    # Install yarn
+                    - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 0.18.1
+                    - export PATH=$HOME/.yarn/bin:$PATH
+                    - yarn -V
+                    # Install yarn dependencies
+                    - yarn
+                    - yarn run test
+                    - yarn run build
+                    - yarn run rmdist
+                    - yarn run build:production
+                    # Configure php
+                    - php -m
+                    - docker-php-ext-install mysqli
+                    # Get dependencies
+                    - apt-get update && apt-get install -y unzip subversion
+                    # Install composer
+                    - curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+                    # Install composer dependencies
+                    - composer install --no-interaction --no-progress --prefer-dist
+                    # Run phpcs
+                    - ./vendor/bin/phpcs
+                    # TODO: Configure setup script and phpunit to run on Pipelines
