@@ -12,7 +12,7 @@ class PostCreateProject
         $io = $event->getIO();
 
         if ($io->isInteractive()) {
-            $io->write('<info>Define theme headers. Press enter key for default.</info>');
+            $io->write('<info>Define theme headers. Press enter key for default. (sam)</info>');
 
             $theme_headers_default = [
                 'name'        => 'Sage Starter Theme',
@@ -64,27 +64,42 @@ class PostCreateProject
                     file_put_contents('package.json', preg_replace("/{$default_framework_pattern}/", '"foundation-sites": "6.3.0"', file_get_contents('package.json')));
                     file_put_contents('resources/assets/styles/main.scss', str_replace('@import "~bootstrap/scss/bootstrap";' . "\n", '@import "~foundation-sites/scss/foundation";' . "\n" . '@include foundation-everything;' . "\n", file_get_contents('resources/assets/styles/main.scss')));
                     file_put_contents('resources/assets/scripts/main.js', str_replace("import 'bootstrap';\n", "import 'foundation-sites/dist/js/foundation';\n", file_get_contents('resources/assets/scripts/main.js')));
-                    foreach($files_to_clear as $file) {
-                        file_put_contents($file, '');
-                    }
+
+                    static::clearFiles($files_to_clear);
+
                     break;
                 case 2:
                     file_put_contents('package.json', preg_replace("/{$default_framework_pattern}/", '"tachyons-sass": "^4.7.1"', file_get_contents('package.json')));
                     file_put_contents('resources/assets/styles/main.scss', str_replace('@import "~bootstrap/scss/bootstrap";' . "\n", '@import "~tachyons-sass/tachyons";' . "\n", file_get_contents('resources/assets/styles/main.scss')));
                     file_put_contents('resources/assets/scripts/main.js', str_replace("import 'bootstrap';\n", '', file_get_contents('resources/assets/scripts/main.js')));
-                    foreach($files_to_clear as $file) {
-                        file_put_contents($file, '');
-                    }
+
+                    static::clearFiles($files_to_clear);
+
                     break;
                 case 3:
                     file_put_contents('package.json', preg_replace("/\s+{$default_framework_pattern},/", '', file_get_contents('package.json')));
                     file_put_contents('resources/assets/styles/main.scss', str_replace('@import "~bootstrap/scss/bootstrap";' . "\n", '', file_get_contents('resources/assets/styles/main.scss')));
                     file_put_contents('resources/assets/scripts/main.js', str_replace("import 'bootstrap';\n", '', file_get_contents('resources/assets/scripts/main.js')));
-                    foreach($files_to_clear as $file) {
-                        file_put_contents($file, '');
-                    }
+
+                    static::clearFiles($files_to_clear);
+
                     break;
             }
+        }
+    }
+
+    public static function clearFiles(array $files)
+    {
+        foreach($files as $file) {
+            // First, we will pull the comment from the first line of each file
+            // we want to empty. Stylelint does not allow empty files.
+            if ($handle = fopen($file, 'r')) {
+                $comment = fgets($handle);
+                fclose($handle);
+            }
+
+            // Finally, we will replace the file's contents with just the comment.
+            file_put_contents($file, $comment);
         }
     }
 
