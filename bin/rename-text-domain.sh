@@ -9,4 +9,4 @@ NEW_NAME=$1
 NEW_SLUG=$2
 
 echo "Searching for files containing ${NEW_SLUG}..."
-git grep -l ${NEW_SLUG} -- './*' ':(exclude)*.md'
+git grep -lw ${NEW_SLUG} -- './*.php' './*.js' './resources/assets/config.json' ':!/app/lib/'
