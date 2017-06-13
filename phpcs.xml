@@ -3,10 +3,10 @@
   <description>Roots Coding Standards</description>
 
   <!-- Scan these files -->
-  <file>functions.php</file>
-  <file>index.php</file>
-  <file>src</file>
-  <file>templates</file>
+  <file>resources/functions.php</file>
+  <file>resources/index.php</file>
+  <file>app</file>
+  <file>resources/views</file>
 
   <!-- Show colors in console -->
   <arg value="-colors"/>
@@ -17,55 +17,55 @@
   <!-- Use PSR-2 as a base -->
   <rule ref="PSR2"/>
 
-  <!-- Exclusions below are for templates/ folder -->
-  
+  <!-- Exclusions below are for resources/views/ folder -->
+
   <!-- Allow php files without any PHP in them -->
   <rule ref="Internal.NoCodeFound">
-    <exclude-pattern>templates</exclude-pattern>
+    <exclude-pattern>resources/views</exclude-pattern>
   </rule>
 
   <!-- Allow braces on same line for named functions -->
   <rule ref="Squiz.Functions.MultiLineFunctionDeclaration.BraceOnSameLine">
-    <exclude-pattern>templates</exclude-pattern>
+    <exclude-pattern>resources/views</exclude-pattern>
   </rule>
 
   <!-- Allow closing braces to be on the same line -->
   <rule ref="Squiz.WhiteSpace.ScopeClosingBrace">
-    <exclude-pattern>templates</exclude-pattern>
+    <exclude-pattern>resources/views</exclude-pattern>
   </rule>
 
   <!-- Disable newline after opening brace -->
   <rule ref="Squiz.ControlStructures.ControlSignature.NewlineAfterOpenBrace">
-    <exclude-pattern>templates</exclude-pattern>
+    <exclude-pattern>resources/views</exclude-pattern>
   </rule>
 
   <!-- Allow multiple PHP statements in the same line -->
   <rule ref="Generic.Formatting.DisallowMultipleStatements.SameLine">
-    <exclude-pattern>templates</exclude-pattern>
+    <exclude-pattern>resources/views</exclude-pattern>
   </rule>
 
   <!-- Disable PSR-2 indentation rules that are buggy with 2 spaces -->
   <rule ref="PSR2.ControlStructures.SwitchDeclaration.BreakIndent">
-    <exclude-pattern>templates</exclude-pattern>
+    <exclude-pattern>resources/views</exclude-pattern>
   </rule>
 
   <!-- Don't require a blank line after the last `use` -->
   <rule ref="PSR2.Namespaces.UseDeclaration.SpaceAfterLastUse">
-    <exclude-pattern>templates</exclude-pattern>
+    <exclude-pattern>resources/views</exclude-pattern>
   </rule>
-  
+
   <!-- Allow long lines -->
   <rule ref="Generic.Files.LineLength.TooLong">
-    <exclude-pattern>templates</exclude-pattern>
+    <exclude-pattern>resources/views</exclude-pattern>
   </rule>
 
   <!-- Ignore indentation rules -->
   <rule ref="Generic.WhiteSpace.ScopeIndent">
-    <exclude-pattern>templates</exclude-pattern>
-  </rule>  
+    <exclude-pattern>resources/views</exclude-pattern>
+  </rule>
 
   <!-- Allow PHP closing tags -->
   <rule ref="PSR2.Files.ClosingTag.NotAllowed">
-    <exclude-pattern>templates</exclude-pattern>
+    <exclude-pattern>resources/views</exclude-pattern>
   </rule>
 </ruleset>

@@ -25,7 +25,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Roots\\Sage\\": "src/lib/Sage/"
+      "Roots\\Sage\\": "app/lib/Sage/"
     }
   },
   "require": {
@@ -35,7 +35,7 @@
     "illuminate/config": "~5.4.0"
   },
   "require-dev": {
-    "squizlabs/php_codesniffer": "^2.5.1"
+    "squizlabs/php_codesniffer": "^2.8.0"
   },
   "scripts": {
     "test": [

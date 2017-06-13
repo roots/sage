@@ -1,9 +1,12 @@
-### HEAD
+### 9.0.0-beta.3: April 21st, 2017
+* Move required theme files to `sage/resources` ([#1877](https://github.com/roots/sage/pull/1877))
+* Move `src/` to `app/` ([#1868](https://github.com/roots/sage/pull/1868))
+* Move `templates/` to `resources/views/`, move `assets/` to `resources/assets/`, rename `base.blade.php` to `app.blade.php` ([#1864](https://github.com/roots/sage/pull/1864))
 * Add option to configure build settings ([#1822](https://github.com/roots/sage/pull/1822))
 * Add support for HTML injection ([#1817](https://github.com/roots/sage/pull/1817))
 * Add Tachyons as a CSS framework option ([#1867](https://github.com/roots/sage/pull/1867))
 
-### 9.0.0-beta.2: January 19th, 2016
+### 9.0.0-beta.2: January 19th, 2017
 * Fix Browersync ([#1815](https://github.com/roots/sage/pull/1815))
 * Add option to select CSS framework, add Foundation as an option ([#1813](https://github.com/roots/sage/pull/1813))
 * Add option to add Font Awesome ([#1812](https://github.com/roots/sage/pull/1812))
@@ -16,7 +19,7 @@
 * Allow browser versions to be configured in `config.json` ([#1798](https://github.com/roots/sage/pull/1798))
 * Use stock ESLint ([#1796](https://github.com/roots/sage/pull/1796))
 
-### 9.0.0-beta.1: January 10th, 2016
+### 9.0.0-beta.1: January 10th, 2017
 * Update to Bootstrap 4 Alpha 6 ([#1792](https://github.com/roots/sage/pull/1792))
 * Add Blade ([#1765](https://github.com/roots/sage/pull/1765) and [#1777](https://github.com/roots/sage/pull/1777))
 * Remove sidebar defaults ([#1760](https://github.com/roots/sage/pull/1760))
