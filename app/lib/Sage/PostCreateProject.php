@@ -12,7 +12,7 @@ class PostCreateProject
         $io = $event->getIO();
 
         if ($io->isInteractive()) {
-            $io->write('<info>Define theme headers. Press enter key for default. (sam)</info>');
+            $io->write('<info>Define theme headers. Press enter key for default.</info>');
 
             $theme_headers_default = [
                 'name'        => 'Sage Starter Theme',
