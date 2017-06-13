@@ -4,6 +4,7 @@
 * Move `templates/` to `resources/views/`, move `assets/` to `resources/assets/`, rename `base.blade.php` to `app.blade.php` ([#1864](https://github.com/roots/sage/pull/1864))
 * Add option to configure build settings ([#1822](https://github.com/roots/sage/pull/1822))
 * Add support for HTML injection ([#1817](https://github.com/roots/sage/pull/1817))
+* Add Tachyons as a CSS framework option ([#1867](https://github.com/roots/sage/pull/1867))
 
 ### 9.0.0-beta.2: January 19th, 2017
 * Fix Browersync ([#1815](https://github.com/roots/sage/pull/1815))
