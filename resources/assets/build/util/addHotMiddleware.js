@@ -6,11 +6,15 @@
  */
 module.exports = (entry) => {
   const results = {};
-  const hotMiddlewareScript = 'webpack-hot-middleware/client?timeout=20000&reload=true';
 
   Object.keys(entry).forEach((name) => {
     results[name] = Array.isArray(entry[name]) ? entry[name].slice(0) : [entry[name]];
-    results[name].unshift(hotMiddlewareScript);
+    results[name].unshift('webpack-hot-middleware/client?timeout=20000&reload=true');
+    // Fix HMR resources URLs in external clients (working with BrowserSync)
+    results[name].unshift('./scripts/util/fixBSHMR.js');
+    // Polyfills for Internet Explorer
+    results[name].unshift('eventsource-polyfill');
+    results[name].unshift('es6-promise-promise');
   });
   return results;
 };
