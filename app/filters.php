@@ -23,6 +23,23 @@ add_filter('body_class', function (array $classes) {
         return preg_replace(['/-blade(-php)?$/', '/^page-template-views/'], '', $class);
     }, $classes);
 
+    /** Add browser class */
+    global $is_iphone, $is_chrome, $is_safari, $is_NS4, $is_opera, $is_gecko, $is_lynx, $is_IE, $is_edge;
+            
+    $browser = collect([
+        'iPhone-Safari'     => $is_iphone,
+        'Google-Chrome'     => $is_chrome,
+        'Safari'            => $is_safari,
+        'Netscape-4'        => $is_NS4,
+        'Opera'             => $is_opera,
+        'FireFox'           => $is_gecko,
+        'Lynx'              => $is_lynx,
+        'Internet-Explorer' => $is_IE,
+        'Microsoft-Edge'    => $is_edge
+    ])->search(true);
+    
+    $classes[] = $browser ? $browser : 'Browser-Not-Defined';
+
     return array_filter($classes);
 });
 
