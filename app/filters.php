@@ -56,13 +56,14 @@ collect([
  * Render page using Blade
  */
 add_filter('template_include', function ($template) {
-    if (is_woocommerce()) {
-        $template = 'woocommerce';
-    }
     $data = collect(get_body_class())->reduce(function ($data, $class) use ($template) {
         return apply_filters("sage/template/{$class}/data", $data, $template);
     }, []);
     echo template($template, $data);
+    // Echo the data to 'woocommerce' for Controller if a WooCommerce template
+    if (function_exists('is_woocommerce') && is_woocommerce()) {
+        echo template('woocommerce', $data);
+    }
     // Return a blank file to make WordPress happy
     return get_theme_file_path('index.php');
 }, PHP_INT_MAX);
