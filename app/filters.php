@@ -56,6 +56,9 @@ collect([
  * Render page using Blade
  */
 add_filter('template_include', function ($template) {
+    if (is_woocommerce()) {
+        $template = 'woocommerce';
+    }
     $data = collect(get_body_class())->reduce(function ($data, $class) use ($template) {
         return apply_filters("sage/template/{$class}/data", $data, $template);
     }, []);
