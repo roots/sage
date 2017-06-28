@@ -14,5 +14,8 @@
   "cacheBusting": "[name]_[hash:8]",
   "watch": [
     "{app,resources/views}/**/*.php"
-  ]
+  ],
+  "browserSync": {
+    "open": true
+  }
 }
