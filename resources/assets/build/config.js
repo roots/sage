@@ -25,6 +25,9 @@ const config = merge({
     watcher: !!argv.watch,
   },
   watch: [],
+  browserSync: {
+    open: true,
+  },
 }, userConfig);
 
 module.exports = merge(config, {
