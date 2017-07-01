@@ -46,7 +46,6 @@ let webpackConfig = {
         include: config.paths.assets,
         use: ExtractTextPlugin.extract({
           fallback: 'style',
-          publicPath: '../',
           use: [
             { loader: 'css', options: { sourceMap: config.enabled.sourceMaps } },
             {
@@ -63,7 +62,6 @@ let webpackConfig = {
         include: config.paths.assets,
         use: ExtractTextPlugin.extract({
           fallback: 'style',
-          publicPath: '../',
           use: [
             { loader: 'css', options: { sourceMap: config.enabled.sourceMaps } },
             {
@@ -78,7 +76,7 @@ let webpackConfig = {
         }),
       },
       {
-        test: /\.(ttf|eot|png|jpe?g|gif|svg|ico)$/,
+        test: /\.(ttf|eot|woff2?|png|jpe?g|gif|svg|ico)$/,
         include: config.paths.assets,
         loader: 'file',
         options: {
@@ -86,20 +84,11 @@ let webpackConfig = {
         },
       },
       {
-        test: /\.woff2?$/,
-        include: config.paths.assets,
-        loader: 'url',
-        options: {
-          limit: 10000,
-          mimetype: 'application/font-woff',
-          name: `[path]${assetsFilenames}.[ext]`,
-        },
-      },
-      {
-        test: /\.(ttf|eot|woff2?|png|jpe?g|gif|svg)$/,
+        test: /\.(ttf|eot|woff2?|png|jpe?g|gif|svg|ico)$/,
         include: /node_modules|bower_components/,
         loader: 'file',
         options: {
+          publicPath: '../',
           name: `vendor/${config.cacheBusting}.[ext]`,
         },
       },
