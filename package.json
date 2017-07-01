@@ -69,7 +69,10 @@
     }
   },
   "stylelint": {
-    "extends": "stylelint-config-standard"
+    "extends": "stylelint-config-standard",
+    "rules": {
+      "no-empty-source": null
+    }
   },
   "scripts": {
     "build": "webpack --progress --config resources/assets/build/webpack.config.js",
