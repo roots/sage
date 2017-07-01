@@ -11,7 +11,6 @@ const CopyGlobsPlugin = require('copy-globs-webpack-plugin');
 const config = require('./config');
 
 const assetsFilenames = (config.enabled.cacheBusting) ? config.cacheBusting : '[name]';
-const sourceMapQueryStr = (config.enabled.sourceMaps) ? '+sourceMap' : '-sourceMap';
 
 let webpackConfig = {
   context: config.paths.assets,
@@ -26,9 +25,15 @@ let webpackConfig = {
     rules: [
       {
         enforce: 'pre',
-        test: /\.js?$/,
+        test: /\.js$/,
         include: config.paths.assets,
         use: 'eslint',
+      },
+      {
+        enforce: 'pre',
+        test: /\.(js|s?[ca]ss)$/,
+        include: config.paths.assets,
+        loader: 'import-glob',
       },
       {
         test: /\.js$/,

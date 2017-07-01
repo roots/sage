@@ -103,6 +103,7 @@
     "file-loader": "~1.0.0-beta.1",
     "imagemin-mozjpeg": "~6.0",
     "imagemin-webpack-plugin": "~1.5.0-beta.0",
+    "import-glob": "~1.5",
     "node-sass": "~4.5",
     "optimize-css-assets-webpack-plugin": "~2.0",
     "postcss-loader": "~2.0",
