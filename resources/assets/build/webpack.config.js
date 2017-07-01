@@ -43,8 +43,13 @@ let webpackConfig = {
           fallback: 'style',
           publicPath: '../',
           use: [
-            `css?${sourceMapQueryStr}`,
-            'postcss',
+            { loader: 'css', options: { sourceMap: config.enabled.sourceMaps } },
+            {
+              loader: 'postcss', options: {
+                sourceMap: config.enabled.sourceMaps,
+                plugins: [autoprefixer()],
+              },
+            },
           ],
         }),
       },
@@ -55,10 +60,15 @@ let webpackConfig = {
           fallback: 'style',
           publicPath: '../',
           use: [
-            `css?${sourceMapQueryStr}`,
-            'postcss',
-            `resolve-url?${sourceMapQueryStr}`,
-            `sass?${sourceMapQueryStr}`,
+            { loader: 'css', options: { sourceMap: config.enabled.sourceMaps } },
+            {
+              loader: 'postcss', options: {
+                sourceMap: config.enabled.sourceMaps,
+                plugins: [autoprefixer()],
+              },
+            },
+            { loader: 'resolve-url', options: { sourceMap: config.enabled.sourceMaps } },
+            { loader: 'sass', options: { sourceMap: config.enabled.sourceMaps } },
           ],
         }),
       },
@@ -141,9 +151,6 @@ let webpackConfig = {
       options: {
         output: { path: config.paths.dist },
         context: config.paths.assets,
-        postcss: [
-          autoprefixer(),
-        ],
       },
     }),
     new webpack.LoaderOptionsPlugin({
@@ -153,7 +160,7 @@ let webpackConfig = {
       },
     }),
     new StyleLintPlugin({
-      failOnError: ! config.enabled.watcher,
+      failOnError: !config.enabled.watcher,
       syntax: 'scss',
     }),
   ],
