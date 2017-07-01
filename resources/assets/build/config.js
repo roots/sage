@@ -2,7 +2,9 @@ const path = require('path');
 const { argv } = require('yargs');
 const merge = require('webpack-merge');
 
-const userConfig = require('../config');
+const desire = require('./util/desire');
+
+const userConfig = merge(desire(`${__dirname}/../config`), desire(`${__dirname}/../config-local`));
 
 const isProduction = !!((argv.env && argv.env.production) || argv.p);
 const rootPath = (userConfig.paths && userConfig.paths.root)
