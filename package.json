@@ -80,8 +80,10 @@
     "build:profile": "webpack --progress --profile --json --config resources/assets/build/webpack.config.js",
     "start": "webpack --hide-modules --watch --config resources/assets/build/webpack.config.js",
     "rmdist": "rimraf dist",
-    "lint": "eslint resources/assets/scripts resources/assets/build",
-    "test": "npm run lint"
+    "lint": "npm run -s lint:scripts && npm run -s lint:styles",
+    "lint:scripts": "eslint resources/assets/scripts resources/assets/build",
+    "lint:styles": "stylelint resources/assets/styles/**/*.{css,sass,scss,sss,less}",
+    "test": "npm run -s lint"
   },
   "engines": {
     "node": ">= 6.9.4"
@@ -105,8 +107,8 @@
     "imagemin-webpack-plugin": "~1.5.0-beta.0",
     "import-glob": "~1.5",
     "node-sass": "~4.5",
-    "optimize-css-assets-webpack-plugin": "~2.0",
     "postcss-loader": "~2.0",
+    "postcss-safe-parser": "^3.0.0",
     "resolve-url-loader": "~2.1",
     "rimraf": "~2.6",
     "sass-loader": "~6.0",

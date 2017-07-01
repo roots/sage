@@ -2,12 +2,11 @@
 
 const webpack = require('webpack');
 const merge = require('webpack-merge');
-const autoprefixer = require('autoprefixer');
 const CleanPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
-
 const CopyGlobsPlugin = require('copy-globs-webpack-plugin');
+
 const config = require('./config');
 
 const assetsFilenames = (config.enabled.cacheBusting) ? config.cacheBusting : '[name]';
@@ -50,8 +49,8 @@ let webpackConfig = {
             { loader: 'css', options: { sourceMap: config.enabled.sourceMaps } },
             {
               loader: 'postcss', options: {
+                config: { path: __dirname, ctx: config },
                 sourceMap: config.enabled.sourceMaps,
-                plugins: [autoprefixer()],
               },
             },
           ],
@@ -66,8 +65,8 @@ let webpackConfig = {
             { loader: 'css', options: { sourceMap: config.enabled.sourceMaps } },
             {
               loader: 'postcss', options: {
+                config: { path: __dirname, ctx: config },
                 sourceMap: config.enabled.sourceMaps,
-                plugins: [autoprefixer()],
               },
             },
             { loader: 'resolve-url', options: { sourceMap: config.enabled.sourceMaps } },
@@ -78,16 +77,18 @@ let webpackConfig = {
       {
         test: /\.(ttf|eot|woff2?|png|jpe?g|gif|svg|ico)$/,
         include: config.paths.assets,
-        loader: 'file',
+        loader: 'url',
         options: {
+          limit: 4096,
           name: `[path]${assetsFilenames}.[ext]`,
         },
       },
       {
         test: /\.(ttf|eot|woff2?|png|jpe?g|gif|svg|ico)$/,
         include: /node_modules|bower_components/,
-        loader: 'file',
+        loader: 'url',
         options: {
+          limit: 4096,
           publicPath: '../',
           name: `vendor/${config.cacheBusting}.[ext]`,
         },

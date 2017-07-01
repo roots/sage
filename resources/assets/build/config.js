@@ -35,6 +35,10 @@ module.exports = merge(config, {
   manifest: {},
 });
 
+if (process.env.NODE_ENV === undefined) {
+  process.env.NODE_ENV = isProduction ? 'production' : 'development';
+}
+
 /**
  * If your publicPath differs between environments, but you know it at compile time,
  * then set SAGE_DIST_PATH as an environment variable before compiling.
