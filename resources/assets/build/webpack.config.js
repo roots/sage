@@ -32,7 +32,7 @@ let webpackConfig = {
     modules: false,
     reasons: false,
     source: false,
-    publicPath: false
+    publicPath: false,
   },
   module: {
     rules: [
