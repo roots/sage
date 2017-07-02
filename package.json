@@ -91,7 +91,7 @@
   "devDependencies": {
     "autoprefixer": "~7.1",
     "browser-sync": "~2.18",
-    "browsersync-webpack-plugin": "^0.5.3",
+    "browsersync-webpack-plugin": "^0.6.0",
     "bs-html-injector": "~3.0",
     "buble-loader": "^0.4.1",
     "clean-webpack-plugin": "^0.1.16",
