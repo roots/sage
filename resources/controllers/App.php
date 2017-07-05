@@ -11,10 +11,6 @@ class App extends Controller
         return get_bloginfo('name');
     }
 
-    /**
-     * Page titles
-     * @return string
-     */
     public static function title()
     {
         if (is_home()) {
