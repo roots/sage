@@ -3,16 +3,14 @@
 namespace App;
 
 use Roots\Sage\Container;
-use Illuminate\Contracts\Container\Container as ContainerContract;
 
 /**
  * Get the sage container.
  *
  * @param string $abstract
  * @param array  $parameters
- * @param ContainerContract $container
- * @return ContainerContract|mixed
- * @SuppressWarnings(PHPMD.StaticAccess)
+ * @param Container $container
+ * @return Container|mixed
  */
 function sage($abstract = null, $parameters = [], ContainerContract $container = null)
 {
@@ -75,6 +73,42 @@ function template_path($file, $data = [])
 function asset_path($asset)
 {
     return sage('assets')->getUri($asset);
+}
+
+/**
+ * @param string|string[] $templates Possible template files
+ * @return array
+ */
+function filter_templates($templates)
+{
+    return collect($templates)
+        ->map(function ($template) {
+            return preg_replace('#\.(blade\.)?php$#', '', ltrim($template));
+        })
+        ->flatMap(function ($template) {
+            $paths = apply_filters('sage/filter_templates/paths', ['views', 'resources/views']);
+            return collect($paths)
+                ->flatMap(function ($path) use ($template) {
+                    return [
+                        "{$path}/{$template}.blade.php",
+                        "{$path}/{$template}.php",
+                        "{$template}.blade.php",
+                        "{$template}.php",
+                    ];
+                });
+        })
+        ->filter()
+        ->unique()
+        ->all();
+}
+
+/**
+ * @param string|string[] $templates Relative path to possible template files
+ * @return string Location of the template
+ */
+function locate_template($templates)
+{
+    return \locate_template(filter_templates($templates));
 }
 
 /**
