@@ -51,8 +51,10 @@ let webpackConfig = {
       {
         test: /\.js$/,
         exclude: [/(node_modules|bower_components)(?![/|\\](bootstrap|foundation-sites))/],
-        loader: 'buble',
-        options: { objectAssign: 'Object.assign' },
+        use: [
+          { loader: 'cache' },
+          { loader: 'buble', options: { objectAssign: 'Object.assign' } },
+        ],
       },
       {
         test: /\.css$/,
@@ -60,6 +62,7 @@ let webpackConfig = {
         use: ExtractTextPlugin.extract({
           fallback: 'style',
           use: [
+            { loader: 'cache' },
             { loader: 'css', options: { sourceMap: config.enabled.sourceMaps } },
             {
               loader: 'postcss', options: {
@@ -76,6 +79,7 @@ let webpackConfig = {
         use: ExtractTextPlugin.extract({
           fallback: 'style',
           use: [
+            { loader: 'cache' },
             { loader: 'css', options: { sourceMap: config.enabled.sourceMaps } },
             {
               loader: 'postcss', options: {
@@ -103,8 +107,8 @@ let webpackConfig = {
         loader: 'url',
         options: {
           limit: 4096,
-          publicPath: '../',
-          name: `vendor/${config.cacheBusting}.[ext]`,
+          outputPath: 'vendor/',
+          name: `${config.cacheBusting}.[ext]`,
         },
       },
     ],

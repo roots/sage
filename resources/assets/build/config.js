@@ -57,4 +57,4 @@ if (process.env.SAGE_DIST_PATH) {
  *   wp_localize_script('sage/main.js', 'SAGE_DIST_PATH', get_theme_file_uri('dist/'))
  */
 // Object.keys(module.exports.entry).forEach(id =>
-//   module.exports.entry[id].unshift(path.join(__dirname, 'public-path.js')));
+//   module.exports.entry[id].unshift(path.join(__dirname, 'helpers/public-path.js')));
