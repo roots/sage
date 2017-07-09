@@ -12,7 +12,7 @@ use Roots\Sage\Container;
  * @param Container $container
  * @return Container|mixed
  */
-function sage($abstract = null, $parameters = [], ContainerContract $container = null)
+function sage($abstract = null, $parameters = [], Container $container = null)
 {
     $container = $container ?: Container::getInstance();
     if (!$abstract) {
