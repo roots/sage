@@ -15,7 +15,7 @@
   "watch": [
     "app/**/*.php",
     "config/**/*.php",
-    "resoruces/controllers/**/*.php",
+    "resources/controllers/**/*.php",
     "resources/views/**/*.php"
   ]
 }
