@@ -1,12 +1,7 @@
 {
   "entry": {
-    "main": [
-      "./scripts/main.js",
-      "./styles/main.scss"
-    ],
-    "customizer": [
-      "./scripts/customizer.js"
-    ]
+    "main": ["./scripts/main.js", "./styles/main.scss"],
+    "customizer": ["./scripts/customizer.js"]
   },
   "publicPath": "/app/themes/sage",
   "devUrl": "http://example.dev",

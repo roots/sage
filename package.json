@@ -17,62 +17,14 @@
       "url": "http://opensource.org/licenses/MIT"
     }
   ],
-  "browserslist": [
-    "last 2 versions",
-    "android 4",
-    "opera 12"
-  ],
-  "eslintConfig": {
-    "root": true,
-    "extends": "eslint:recommended",
-    "globals": {
-      "wp": true
-    },
-    "env": {
-      "node": true,
-      "es6": true,
-      "amd": true,
-      "browser": true,
-      "jquery": true
-    },
-    "parserOptions": {
-      "ecmaFeatures": {
-        "globalReturn": true,
-        "generators": false,
-        "objectLiteralDuplicateProperties": false,
-        "experimentalObjectRestSpread": true
-      },
-      "ecmaVersion": 2017,
-      "sourceType": "module"
-    },
-    "plugins": [
-      "import"
-    ],
-    "settings": {
-      "import/core-modules": [],
-      "import/ignore": [
-        "node_modules",
-        "\\.(coffee|scss|css|less|hbs|svg|json)$"
-      ]
-    },
-    "rules": {
-      "comma-dangle": [
-        "error",
-        {
-          "arrays": "always-multiline",
-          "objects": "always-multiline",
-          "imports": "always-multiline",
-          "exports": "always-multiline",
-          "functions": "ignore"
-        }
-      ]
-    }
+  "browserslist": ["last 2 versions", "android 4", "opera 12"],
+  "prettier": {
+    "singleQuote": true,
+    "trailingComma": "es5"
   },
-  "stylelint": {
-    "extends": "stylelint-config-standard",
-    "rules": {
-      "no-empty-source": null
-    }
+  "lint-staged": {
+    "*.js": ["lint:scripts", "git add"],
+    "*.{css,sass,scss,sss,less}": ["lint:styles", "git add"]
   },
   "scripts": {
     "build": "webpack --progress --config resources/assets/build/webpack.config.js",
@@ -81,9 +33,10 @@
     "start": "webpack --hide-modules --watch --config resources/assets/build/webpack.config.js",
     "rmdist": "rimraf dist",
     "lint": "npm run -s lint:scripts && npm run -s lint:styles",
-    "lint:scripts": "eslint resources/assets/scripts resources/assets/build",
-    "lint:styles": "stylelint resources/assets/styles/**/*.{css,sass,scss,sss,less}",
-    "test": "npm run -s lint"
+    "lint:scripts": "prettier --single-quote --trailing-comma=es5 --write resources/assets/**/*.js",
+    "lint:styles": "prettier --write resources/assets/styles/**/*.{css,sass,scss,sss,less}",
+    "test": "npm run -s lint:scripts -- --list-different && npm run -s lint:styles -- --list-different",
+    "precommit": "lint-staged"
   },
   "engines": {
     "node": ">= 6.9.4"
@@ -99,24 +52,21 @@
     "copy-globs-webpack-plugin": "^0.2.0",
     "css-loader": "^0.28.4",
     "cssnano": "~4.0.0-rc.1",
-    "eslint": "~4.2",
-    "eslint-loader": "~1.9",
-    "eslint-plugin-import": "~2.7",
     "extract-text-webpack-plugin": "~3.0",
     "file-loader": "^0.11.2",
+    "husky": "^0.14.3",
     "imagemin-mozjpeg": "~6.0",
     "imagemin-webpack-plugin": "~1.5.0-beta.0",
     "import-glob": "~1.5",
+    "lint-staged": "^4.0.2",
     "node-sass": "~4.5",
     "postcss-loader": "~2.0",
     "postcss-safe-parser": "~3.0",
+    "prettier": "^1.5.3",
     "resolve-url-loader": "~2.1",
     "rimraf": "~2.6",
     "sass-loader": "~6.0",
     "style-loader": "^0.18.2",
-    "stylelint": "~7.12",
-    "stylelint-config-standard": "~16.0",
-    "stylelint-webpack-plugin": "^0.8.0",
     "url-loader": "^0.5.9",
     "webpack": "~3.3",
     "webpack-assets-manifest": "^0.7.0",

@@ -21,7 +21,7 @@ module.exports = (key, value) => {
    *     "styles/main.css": "styles/main_abcdef.css"
    *   }
    */
-  Object.keys(manifest).forEach((src) => {
+  Object.keys(manifest).forEach(src => {
     const sourcePath = path.basename(path.dirname(src));
     const targetPath = path.basename(path.dirname(manifest[src]));
     if (sourcePath === targetPath) {
