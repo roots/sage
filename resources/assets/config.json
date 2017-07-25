@@ -13,6 +13,9 @@
   "proxyUrl": "http://localhost:3000",
   "cacheBusting": "[name]_[hash:8]",
   "watch": [
-    "{app,resources/views}/**/*.php"
+    "app/**/*.php",
+    "config/**/*.php",
+    "resources/controllers/**/*.php",
+    "resources/views/**/*.php"
   ]
 }
