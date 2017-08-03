@@ -16,9 +16,7 @@
       "homepage": "https://github.com/swalkinshaw"
     }
   ],
-  "keywords": [
-    "wordpress"
-  ],
+  "keywords": ["wordpress"],
   "support": {
     "issues": "https://github.com/roots/sage/issues",
     "forum": "https://discourse.roots.io/"
@@ -37,12 +35,10 @@
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "^2.8.0",
-    "roots/sage-installer": "~1.1"
+    "roots/sage-installer": "~1.2"
   },
   "scripts": {
-    "test": [
-      "phpcs"
-    ],
+    "test": ["phpcs"],
     "post-create-project-cmd": [
       "Roots\\Sage\\Installer\\ComposerScript::postCreateProject"
     ]
