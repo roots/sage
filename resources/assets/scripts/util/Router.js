@@ -1,27 +1,45 @@
-/* ========================================================================
- * DOM-based Routing
- * Based on http://goo.gl/EUTi53 by Paul Irish
- *
- * Only fires on body classes that match. If a body class contains a dash,
- * replace the dash with an underscore when adding it to the object below.
- * ======================================================================== */
-
 import camelCase from './camelCase';
 
-// The routing fires all common scripts, followed by the page specific scripts.
-// Add additional events for more control over timing e.g. a finalize event
-export default class Router {
+/**
+ * DOM-based Routing
+ *
+ * Based on {@link http://goo.gl/EUTi53|Markup-based Unobtrusive Comprehensive DOM-ready Execution} by Paul Irish
+ *
+ * The routing fires all common scripts, followed by the page specific scripts.
+ * Add additional events for more control over timing e.g. a finalize event
+ */
+class Router {
+
+  /**
+   * Create a new Router
+   * @param {Object} routes
+   */
   constructor(routes) {
     this.routes = routes;
   }
 
-  fire(route, fn = 'init', args) {
-    const fire = route !== '' && this.routes[route] && typeof this.routes[route][fn] === 'function';
+  /**
+   * Fire Router events
+   * @param {string} route DOM-based route derived from body classes (`<body class="...">`)
+   * @param {string} [event] Events on the route. By default, `init` and `finalize` events are called.
+   * @param {string} [arg] Any custom argument to be passed to the event.
+   */
+  fire(route, event = 'init', arg) {
+    const fire = route !== '' && this.routes[route] && typeof this.routes[route][event] === 'function';
     if (fire) {
-      this.routes[route][fn](args);
+      this.routes[route][event](arg);
     }
   }
 
+  /**
+   * Automatically load and fire Router events
+   *
+   * Events are fired in the following order:
+   *  * common init
+   *  * page-specific init
+   *  * page-specific finalize
+   *  * common finalize
+   */
   loadEvents() {
     // Fire common init JS
     this.fire('common');
@@ -41,3 +59,5 @@ export default class Router {
     this.fire('common', 'finalize');
   }
 }
+
+export default Router

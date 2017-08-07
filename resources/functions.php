@@ -4,6 +4,9 @@
  * Do not edit anything in this file unless you know what you're doing
  */
 
+use Roots\Sage\Config;
+use Roots\Sage\Container;
+
 /**
  * Helper function for prettying up errors
  * @param string $message
@@ -74,21 +77,16 @@ array_map(function ($file) use ($sage_error) {
  * ├── STYLESHEETPATH         -> /srv/www/example.com/current/web/app/themes/sage/resources/views
  * └── TEMPLATEPATH           -> /srv/www/example.com/current/web/app/themes/sage/resources
  */
-if (is_customize_preview() && isset($_GET['theme'])) {
-    $sage_error(__('Theme must be activated prior to using the customizer.', 'sage'));
-}
-$sage_views = basename(dirname(__DIR__)).'/'.basename(__DIR__).'/views';
-add_filter('stylesheet', function () use ($sage_views) {
-    return dirname($sage_views);
-});
-add_filter('stylesheet_directory_uri', function ($uri) {
-    return dirname($uri);
-});
-if ($sage_views !== get_option('stylesheet')) {
-    update_option('stylesheet', $sage_views);
-    if (php_sapi_name() === 'cli') {
-        return;
-    }
-    wp_redirect($_SERVER['REQUEST_URI']);
-    exit();
-}
+array_map(
+    'add_filter',
+    ['theme_file_path', 'theme_file_uri', 'parent_theme_file_path', 'parent_theme_file_uri'],
+    array_fill(0, 4, 'dirname')
+);
+Container::getInstance()
+    ->bindIf('config', function () {
+        return new Config([
+            'assets' => require dirname(__DIR__).'/config/assets.php',
+            'theme' => require dirname(__DIR__).'/config/theme.php',
+            'view' => require dirname(__DIR__).'/config/view.php',
+        ]);
+    }, true);

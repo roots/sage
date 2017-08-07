@@ -22,52 +22,108 @@
     "android 4",
     "opera 12"
   ],
+  "eslintConfig": {
+    "root": true,
+    "extends": "eslint:recommended",
+    "globals": {
+      "wp": true
+    },
+    "env": {
+      "node": true,
+      "es6": true,
+      "amd": true,
+      "browser": true,
+      "jquery": true
+    },
+    "parserOptions": {
+      "ecmaFeatures": {
+        "globalReturn": true,
+        "generators": false,
+        "objectLiteralDuplicateProperties": false,
+        "experimentalObjectRestSpread": true
+      },
+      "ecmaVersion": 2017,
+      "sourceType": "module"
+    },
+    "plugins": [
+      "import"
+    ],
+    "settings": {
+      "import/core-modules": [],
+      "import/ignore": [
+        "node_modules",
+        "\\.(coffee|scss|css|less|hbs|svg|json)$"
+      ]
+    },
+    "rules": {
+      "comma-dangle": [
+        "error",
+        {
+          "arrays": "always-multiline",
+          "objects": "always-multiline",
+          "imports": "always-multiline",
+          "exports": "always-multiline",
+          "functions": "ignore"
+        }
+      ]
+    }
+  },
+  "stylelint": {
+    "extends": "stylelint-config-standard",
+    "rules": {
+      "no-empty-source": null
+    }
+  },
   "scripts": {
     "build": "webpack --progress --config resources/assets/build/webpack.config.js",
     "build:production": "webpack --progress -p --config resources/assets/build/webpack.config.js",
     "build:profile": "webpack --progress --profile --json --config resources/assets/build/webpack.config.js",
     "start": "webpack --hide-modules --watch --config resources/assets/build/webpack.config.js",
     "rmdist": "rimraf dist",
-    "lint": "eslint resources/assets/scripts resources/assets/build",
-    "test": "yarn run lint"
+    "lint": "npm run -s lint:scripts && npm run -s lint:styles",
+    "lint:scripts": "eslint resources/assets/scripts resources/assets/build",
+    "lint:styles": "stylelint resources/assets/styles/**/*.{css,sass,scss,sss,less}",
+    "test": "npm run -s lint"
   },
   "engines": {
     "node": ">= 6.9.4"
   },
   "devDependencies": {
-    "autoprefixer": "^7.1.1",
-    "browser-sync": "^2.18.8",
-    "browsersync-webpack-plugin": "^0.5.3",
-    "bs-html-injector": "^3.0.3",
+    "autoprefixer": "~7.1",
+    "browser-sync": "~2.18",
+    "browsersync-webpack-plugin": "^0.6.0",
+    "bs-html-injector": "~3.0",
     "buble-loader": "^0.4.1",
+    "cache-loader": "~1.0",
     "clean-webpack-plugin": "^0.1.16",
     "copy-globs-webpack-plugin": "^0.2.0",
-    "css-loader": "^0.28.0",
-    "cssnano": "^3.10.0",
-    "eslint": "^3.19.0",
-    "eslint-loader": "^1.7.1",
-    "eslint-plugin-import": "^2.2.0",
-    "extract-text-webpack-plugin": "^2.1.0",
-    "file-loader": "^0.11.1",
-    "imagemin-mozjpeg": "^6.0.0",
-    "imagemin-webpack-plugin": "^1.4.4",
-    "node-sass": "^4.5.1",
-    "optimize-css-assets-webpack-plugin": "^1.3.1",
-    "postcss-loader": "^1.3.3",
-    "resolve-url-loader": "^2.0.2",
-    "rimraf": "^2.6.1",
-    "sass-loader": "^6.0.3",
-    "style-loader": "^0.16.0",
-    "stylelint": "^7.10.1",
-    "stylelint-config-standard": "^16.0.0",
-    "stylelint-webpack-plugin": "^0.5.1",
-    "url-loader": "^0.5.8",
-    "webpack": "^2.4.1",
-    "webpack-assets-manifest": "^0.6.2",
-    "webpack-dev-middleware": "^1.10.1",
-    "webpack-hot-middleware": "^2.18.0",
-    "webpack-merge": "^4.1.0",
-    "yargs": "^7.1.0"
+    "css-loader": "^0.28.4",
+    "cssnano": "~4.0.0-rc.1",
+    "eslint": "~4.2",
+    "eslint-loader": "~1.9",
+    "eslint-plugin-import": "~2.7",
+    "extract-text-webpack-plugin": "~3.0",
+    "file-loader": "^0.11.2",
+    "imagemin-mozjpeg": "~6.0",
+    "imagemin-webpack-plugin": "~1.5.0-beta.0",
+    "import-glob": "~1.5",
+    "node-sass": "~4.5",
+    "postcss-loader": "~2.0",
+    "postcss-safe-parser": "~3.0",
+    "resolve-url-loader": "~2.1",
+    "rimraf": "~2.6",
+    "sass-loader": "~6.0",
+    "style-loader": "^0.18.2",
+    "stylelint": "~7.12",
+    "stylelint-config-standard": "~16.0",
+    "stylelint-webpack-plugin": "^0.8.0",
+    "url-loader": "^0.5.9",
+    "webpack": "~3.3",
+    "webpack-assets-manifest": "^0.7.0",
+    "webpack-dev-middleware": "~1.11",
+    "webpack-hot-middleware": "~2.18",
+    "webpack-merge": "~4.1",
+    "yargs": "~8.0"
   },
   "dependencies": {
     "bootstrap": "^4.0.0-alpha.6",
