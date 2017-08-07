@@ -89,6 +89,18 @@ function filter_templates($templates)
             $paths = apply_filters('sage/filter_templates/paths', ['views', 'resources/views']);
             return collect($paths)
                 ->flatMap(function ($path) use ($template) {
+                    // only need one .blade!
+                    if (strpos($template, '.blade')) :
+                        $template = str_replace('.blade', '', $template);
+                    endif;
+
+                    // let's not duplicate paths!
+                    if (strpos($template, "{$path}/{$template}") === 0) :
+                        $template = str_replace("{$path}/{$template}", '', $template);
+                    elseif (strpos($template, "{$path}/") === 0) :
+                        $template = str_replace("{$path}/", '', $template);
+                    endif;
+
                     return [
                         "{$path}/{$template}.blade.php",
                         "{$path}/{$template}.php",
