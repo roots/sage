@@ -1,4 +1,6 @@
-### HEAD
+### 9.0.0-beta.4: August 11th, 2017
+* Update to Bootstrap 4.0.0-beta ([#1943](https://github.com/roots/sage/pull/1943))
+* PHP 7+ is now required ([#1935](https://github.com/roots/sage/pull/1935))
 * Update dependencies, support `config-local.json`, implement autoload system for styles/scripts, use `roots/sage-installer`, use `roots/sage-lib` ([#1919](https://github.com/roots/sage/pull/1919))
 * Add soberwp/controller ([#1903](https://github.com/roots/sage/pull/1903))
 * Change syntax of template call to match other files in views ([#1908](https://github.com/roots/sage/pull/1908))
