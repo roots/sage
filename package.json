@@ -126,7 +126,7 @@
     "yargs": "~8.0"
   },
   "dependencies": {
-    "bootstrap": "^4.0.0-alpha.6",
+    "bootstrap": "^4.0.0-beta",
     "jquery": "1.12.4 - 3"
   }
 }
