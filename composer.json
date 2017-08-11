@@ -30,7 +30,7 @@
     "php": ">=7",
     "composer/installers": "~1.0",
     "illuminate/support": "~5.4",
-    "roots/sage-lib": "~9.0.0-beta.3",
+    "roots/sage-lib": "~9.0.0-beta.4",
     "soberwp/controller": "dev-master"
   },
   "require-dev": {
