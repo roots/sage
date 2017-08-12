@@ -151,7 +151,7 @@ let webpackConfig = {
       $: 'jquery',
       jQuery: 'jquery',
       'window.jQuery': 'jquery',
-      Popper: 'popper.js'
+      Popper: 'popper.js',
     }),
     new webpack.LoaderOptionsPlugin({
       minimize: config.enabled.optimize,
