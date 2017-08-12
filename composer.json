@@ -14,6 +14,11 @@
       "name": "Scott Walkinshaw",
       "email": "scott.walkinshaw@gmail.com",
       "homepage": "https://github.com/swalkinshaw"
+    },
+    {
+      "name": "QWp6t",
+      "email": "hi@qwp6t.me",
+      "homepage": "https://github.com/qwp6t"
     }
   ],
   "keywords": ["wordpress"],
@@ -30,12 +35,12 @@
     "php": ">=7",
     "composer/installers": "~1.0",
     "illuminate/support": "~5.4",
-    "roots/sage-lib": "~9.0.0-beta.3",
+    "roots/sage-lib": "~9.0.0-beta.4",
     "soberwp/controller": "dev-master"
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "^2.8.0",
-    "roots/sage-installer": "~1.2"
+    "roots/sage-installer": "~1.3"
   },
   "scripts": {
     "test": ["phpcs"],

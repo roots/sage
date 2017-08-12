@@ -4,7 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "1df1cc8effa8af96eaf4c2ebaea87a45",
+    "hash": "3b5ec6db6f1d65c1102e7617961a9b6d",
+    "content-hash": "5baee523a1f1729eb6eb338a48a1fdf7",
     "packages": [
         {
             "name": "brain/hierarchy",
@@ -60,20 +61,20 @@
             "keywords": [
                 "wordpress"
             ],
-            "time": "2016-09-15T13:33:53+00:00"
+            "time": "2016-09-15 13:33:53"
         },
         {
             "name": "composer/installers",
-            "version": "v1.3.0",
+            "version": "v1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/installers.git",
-                "reference": "79ad876c7498c0bbfe7eed065b8651c93bfd6045"
+                "reference": "9ce17fb70e9a38dd8acff0636a29f5cf4d575c1b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/installers/zipball/79ad876c7498c0bbfe7eed065b8651c93bfd6045",
-                "reference": "79ad876c7498c0bbfe7eed065b8651c93bfd6045",
+                "url": "https://api.github.com/repos/composer/installers/zipball/9ce17fb70e9a38dd8acff0636a29f5cf4d575c1b",
+                "reference": "9ce17fb70e9a38dd8acff0636a29f5cf4d575c1b",
                 "shasum": ""
             },
             "require": {
@@ -119,6 +120,7 @@
                 "Hurad",
                 "ImageCMS",
                 "Kanboard",
+                "Lan Management System",
                 "MODX Evo",
                 "Mautic",
                 "Maya",
@@ -142,6 +144,7 @@
                 "croogo",
                 "dokuwiki",
                 "drupal",
+                "eZ Platform",
                 "elgg",
                 "expressionengine",
                 "fuelphp",
@@ -158,6 +161,7 @@
                 "mediawiki",
                 "modulework",
                 "moodle",
+                "osclass",
                 "phpbb",
                 "piwik",
                 "ppi",
@@ -174,7 +178,7 @@
                 "zend",
                 "zikula"
             ],
-            "time": "2017-04-24T06:37:16+00:00"
+            "time": "2017-08-09 07:53:48"
         },
         {
             "name": "doctrine/inflector",
@@ -241,7 +245,7 @@
                 "singularize",
                 "string"
             ],
-            "time": "2017-07-22T12:18:28+00:00"
+            "time": "2017-07-22 12:18:28"
         },
         {
             "name": "hassankhan/config",
@@ -298,7 +302,7 @@
                 "yaml",
                 "yml"
             ],
-            "time": "2016-02-11T16:21:17+00:00"
+            "time": "2016-02-11 16:21:17"
         },
         {
             "name": "illuminate/config",
@@ -342,7 +346,7 @@
             ],
             "description": "The Illuminate Config package.",
             "homepage": "https://laravel.com",
-            "time": "2017-02-04T20:27:32+00:00"
+            "time": "2017-02-04 20:27:32"
         },
         {
             "name": "illuminate/container",
@@ -385,7 +389,7 @@
             ],
             "description": "The Illuminate Container package.",
             "homepage": "https://laravel.com",
-            "time": "2017-05-24T14:15:53+00:00"
+            "time": "2017-05-24 14:15:53"
         },
         {
             "name": "illuminate/contracts",
@@ -427,7 +431,7 @@
             ],
             "description": "The Illuminate Contracts package.",
             "homepage": "https://laravel.com",
-            "time": "2017-04-19T20:17:43+00:00"
+            "time": "2017-04-19 20:17:43"
         },
         {
             "name": "illuminate/events",
@@ -472,7 +476,7 @@
             ],
             "description": "The Illuminate Events package.",
             "homepage": "https://laravel.com",
-            "time": "2017-05-02T12:57:00+00:00"
+            "time": "2017-05-02 12:57:00"
         },
         {
             "name": "illuminate/filesystem",
@@ -522,7 +526,7 @@
             ],
             "description": "The Illuminate Filesystem package.",
             "homepage": "https://laravel.com",
-            "time": "2017-05-18T14:37:58+00:00"
+            "time": "2017-05-18 14:37:58"
         },
         {
             "name": "illuminate/support",
@@ -579,7 +583,7 @@
             ],
             "description": "The Illuminate Support package.",
             "homepage": "https://laravel.com",
-            "time": "2017-06-15T12:35:32+00:00"
+            "time": "2017-06-15 12:35:32"
         },
         {
             "name": "illuminate/view",
@@ -627,7 +631,7 @@
             ],
             "description": "The Illuminate View package.",
             "homepage": "https://laravel.com",
-            "time": "2017-06-07T13:32:57+00:00"
+            "time": "2017-06-07 13:32:57"
         },
         {
             "name": "paragonie/random_compat",
@@ -675,7 +679,7 @@
                 "pseudorandom",
                 "random"
             ],
-            "time": "2017-03-13T16:27:32+00:00"
+            "time": "2017-03-13 16:27:32"
         },
         {
             "name": "psr/log",
@@ -722,30 +726,30 @@
                 "psr",
                 "psr-3"
             ],
-            "time": "2016-10-10T12:19:37+00:00"
+            "time": "2016-10-10 12:19:37"
         },
         {
             "name": "roots/sage-lib",
-            "version": "9.0.0-beta.3",
+            "version": "9.0.0-beta.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/roots/sage-lib.git",
-                "reference": "d7789609eae857e910812cf62ae55355b836ad58"
+                "reference": "71ed6e54e831fd1ced5bae028f0515d277e8c1c1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/roots/sage-lib/zipball/d7789609eae857e910812cf62ae55355b836ad58",
-                "reference": "d7789609eae857e910812cf62ae55355b836ad58",
+                "url": "https://api.github.com/repos/roots/sage-lib/zipball/71ed6e54e831fd1ced5bae028f0515d277e8c1c1",
+                "reference": "71ed6e54e831fd1ced5bae028f0515d277e8c1c1",
                 "shasum": ""
             },
             "require": {
                 "composer/installers": "~1.0",
                 "illuminate/config": "~5.4",
                 "illuminate/view": "~5.4",
-                "php": ">=5.6.4"
+                "php": ">=7"
             },
             "require-dev": {
-                "squizlabs/php_codesniffer": "^2.8.0"
+                "squizlabs/php_codesniffer": "~3.0"
             },
             "type": "library",
             "autoload": {
@@ -774,7 +778,7 @@
             "keywords": [
                 "wordpress"
             ],
-            "time": "2017-07-09T11:48:17+00:00"
+            "time": "2017-08-11 23:38:23"
         },
         {
             "name": "soberwp/controller",
@@ -782,12 +786,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/soberwp/controller.git",
-                "reference": "f45eddf3427b5a4d9e487d1f3e2e4e3785531d14"
+                "reference": "220d88a8e2e4ca8dc97364f913defac4d8e82c1d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/soberwp/controller/zipball/f45eddf3427b5a4d9e487d1f3e2e4e3785531d14",
-                "reference": "f45eddf3427b5a4d9e487d1f3e2e4e3785531d14",
+                "url": "https://api.github.com/repos/soberwp/controller/zipball/220d88a8e2e4ca8dc97364f913defac4d8e82c1d",
+                "reference": "220d88a8e2e4ca8dc97364f913defac4d8e82c1d",
                 "shasum": ""
             },
             "require": {
@@ -826,7 +830,7 @@
             "keywords": [
                 "wordpress"
             ],
-            "time": "2017-08-02T10:59:14+00:00"
+            "time": "2017-08-04 18:38:48"
         },
         {
             "name": "symfony/debug",
@@ -882,7 +886,7 @@
             ],
             "description": "Symfony Debug Component",
             "homepage": "https://symfony.com",
-            "time": "2017-07-28T15:27:31+00:00"
+            "time": "2017-07-28 15:27:31"
         },
         {
             "name": "symfony/finder",
@@ -931,7 +935,7 @@
             ],
             "description": "Symfony Finder Component",
             "homepage": "https://symfony.com",
-            "time": "2017-06-01T21:01:25+00:00"
+            "time": "2017-06-01 21:01:25"
         },
         {
             "name": "symfony/yaml",
@@ -986,7 +990,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2017-07-23T12:43:26+00:00"
+            "time": "2017-07-23 12:43:26"
         }
     ],
     "packages-dev": [
@@ -1039,7 +1043,7 @@
             ],
             "description": "The Illuminate Console package.",
             "homepage": "https://laravel.com",
-            "time": "2017-06-10T13:11:18+00:00"
+            "time": "2017-06-10 13:11:18"
         },
         {
             "name": "nesbot/carbon",
@@ -1092,20 +1096,20 @@
                 "datetime",
                 "time"
             ],
-            "time": "2017-01-16T07:55:07+00:00"
+            "time": "2017-01-16 07:55:07"
         },
         {
             "name": "roots/sage-installer",
-            "version": "1.2.0",
+            "version": "1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/roots/sage-installer.git",
-                "reference": "2407e3c24c1050c1769c18f2d45d561fa2c67f90"
+                "reference": "250c74a935f9aba19f90d45d92884b7b56bc989c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/roots/sage-installer/zipball/2407e3c24c1050c1769c18f2d45d561fa2c67f90",
-                "reference": "2407e3c24c1050c1769c18f2d45d561fa2c67f90",
+                "url": "https://api.github.com/repos/roots/sage-installer/zipball/250c74a935f9aba19f90d45d92884b7b56bc989c",
+                "reference": "250c74a935f9aba19f90d45d92884b7b56bc989c",
                 "shasum": ""
             },
             "require": {
@@ -1151,7 +1155,7 @@
                 "theme",
                 "wordpress"
             ],
-            "time": "2017-08-03T22:59:11+00:00"
+            "time": "2017-08-12 00:03:02"
         },
         {
             "name": "squizlabs/php_codesniffer",
@@ -1229,7 +1233,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2017-05-22T02:43:20+00:00"
+            "time": "2017-05-22 02:43:20"
         },
         {
             "name": "symfony/console",
@@ -1298,7 +1302,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2017-07-29T21:27:59+00:00"
+            "time": "2017-07-29 21:27:59"
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -1357,7 +1361,7 @@
                 "portable",
                 "shim"
             ],
-            "time": "2017-06-09T14:24:12+00:00"
+            "time": "2017-06-09 14:24:12"
         },
         {
             "name": "symfony/process",
@@ -1406,7 +1410,7 @@
             ],
             "description": "Symfony Process Component",
             "homepage": "https://symfony.com",
-            "time": "2017-07-13T13:05:09+00:00"
+            "time": "2017-07-13 13:05:09"
         },
         {
             "name": "symfony/translation",
@@ -1471,7 +1475,7 @@
             ],
             "description": "Symfony Translation Component",
             "homepage": "https://symfony.com",
-            "time": "2017-06-24T16:45:30+00:00"
+            "time": "2017-06-24 16:45:30"
         }
     ],
     "aliases": [],
@@ -1483,7 +1487,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=5.6.4"
+        "php": ">=7"
     },
     "platform-dev": []
 }
