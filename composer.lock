@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "6fe5448e3999bb133bc70ce1c15a9f79",
-    "content-hash": "cd5cf9602fac09301364ed8a27b9cb15",
+    "hash": "3b5ec6db6f1d65c1102e7617961a9b6d",
+    "content-hash": "5baee523a1f1729eb6eb338a48a1fdf7",
     "packages": [
         {
             "name": "brain/hierarchy",
@@ -1100,16 +1100,16 @@
         },
         {
             "name": "roots/sage-installer",
-            "version": "1.2.0",
+            "version": "1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/roots/sage-installer.git",
-                "reference": "2407e3c24c1050c1769c18f2d45d561fa2c67f90"
+                "reference": "250c74a935f9aba19f90d45d92884b7b56bc989c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/roots/sage-installer/zipball/2407e3c24c1050c1769c18f2d45d561fa2c67f90",
-                "reference": "2407e3c24c1050c1769c18f2d45d561fa2c67f90",
+                "url": "https://api.github.com/repos/roots/sage-installer/zipball/250c74a935f9aba19f90d45d92884b7b56bc989c",
+                "reference": "250c74a935f9aba19f90d45d92884b7b56bc989c",
                 "shasum": ""
             },
             "require": {
@@ -1155,7 +1155,7 @@
                 "theme",
                 "wordpress"
             ],
-            "time": "2017-08-03 22:59:11"
+            "time": "2017-08-12 00:03:02"
         },
         {
             "name": "squizlabs/php_codesniffer",
