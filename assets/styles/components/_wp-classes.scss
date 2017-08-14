@@ -32,8 +32,14 @@
 
 // Captions
 .wp-caption {
+  @extend .figure;
+}
+.wp-caption > img {
   @extend .figure-img;
   @extend .img-fluid;
+}
+.wp-caption-text {
+  @extend .figure-caption;
 }
 .wp-caption-text {
   @extend .figure-caption;
