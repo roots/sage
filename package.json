@@ -82,7 +82,7 @@
     "rmdist": "rimraf dist",
     "lint": "npm run -s lint:scripts && npm run -s lint:styles",
     "lint:scripts": "eslint resources/assets/scripts resources/assets/build",
-    "lint:styles": "stylelint resources/assets/styles/**/*.{css,sass,scss,sss,less}",
+    "lint:styles": "stylelint 'resources/assets/styles/**/*.{css,sass,scss,sss,less}'",
     "test": "npm run -s lint"
   },
   "engines": {
