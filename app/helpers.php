@@ -85,12 +85,25 @@ function asset_path($asset)
  */
 function filter_templates($templates)
 {
+    $paths = apply_filters('sage/filter_templates/paths', [
+        'views',
+        'resources/views'
+    ]);
+    $paths_pattern = "#^(" . implode('|', $paths) . ")/#";
+
     return collect($templates)
-        ->map(function ($template) {
-            return preg_replace('#\.(blade\.)?php$#', '', ltrim($template));
+        ->map(function ($template) use ($paths_pattern) {
+            /** Remove .blade.php/.blade/.php from template names */
+            $template = preg_replace('#\.(blade\.?)?(php)?$#', '', ltrim($template));
+
+            /** Remove partial $paths from the beginning of template names */
+            if (strpos($template, '/')) {
+                $template = preg_replace($paths_pattern, '', $template);
+            }
+
+            return $template;
         })
-        ->flatMap(function ($template) {
-            $paths = apply_filters('sage/filter_templates/paths', ['views', 'resources/views']);
+        ->flatMap(function ($template) use ($paths) {
             return collect($paths)
                 ->flatMap(function ($path) use ($template) {
                     return [
