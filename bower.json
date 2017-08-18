@@ -8,16 +8,6 @@
   "private": true,
   "dependencies": {
     "bootstrap": "git://github.com/twbs/bootstrap.git#v4.0.0-beta",
-    "popper.js": "https://unpkg.com/popper.js"
-  },
-  "overrides": {
-    "popper.js": {
-      "main": [
-        "./index.js"
-      ]
-    }
-  },
-  "resolutions": {
-    "popper.js": "e-tag:W/\"13b6b-1"
+    "popper.js": "^1.12.3"
   }
 }
