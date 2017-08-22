@@ -4,8 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "3b5ec6db6f1d65c1102e7617961a9b6d",
-    "content-hash": "5baee523a1f1729eb6eb338a48a1fdf7",
+    "content-hash": "b58fbe0c86d06990c1c7ef7414df19e6",
     "packages": [
         {
             "name": "brain/hierarchy",
@@ -61,7 +60,7 @@
             "keywords": [
                 "wordpress"
             ],
-            "time": "2016-09-15 13:33:53"
+            "time": "2016-09-15T13:33:53+00:00"
         },
         {
             "name": "composer/installers",
@@ -178,7 +177,7 @@
                 "zend",
                 "zikula"
             ],
-            "time": "2017-08-09 07:53:48"
+            "time": "2017-08-09T07:53:48+00:00"
         },
         {
             "name": "doctrine/inflector",
@@ -245,7 +244,7 @@
                 "singularize",
                 "string"
             ],
-            "time": "2017-07-22 12:18:28"
+            "time": "2017-07-22T12:18:28+00:00"
         },
         {
             "name": "hassankhan/config",
@@ -302,7 +301,7 @@
                 "yaml",
                 "yml"
             ],
-            "time": "2016-02-11 16:21:17"
+            "time": "2016-02-11T16:21:17+00:00"
         },
         {
             "name": "illuminate/config",
@@ -346,7 +345,7 @@
             ],
             "description": "The Illuminate Config package.",
             "homepage": "https://laravel.com",
-            "time": "2017-02-04 20:27:32"
+            "time": "2017-02-04T20:27:32+00:00"
         },
         {
             "name": "illuminate/container",
@@ -389,7 +388,7 @@
             ],
             "description": "The Illuminate Container package.",
             "homepage": "https://laravel.com",
-            "time": "2017-05-24 14:15:53"
+            "time": "2017-05-24T14:15:53+00:00"
         },
         {
             "name": "illuminate/contracts",
@@ -431,7 +430,7 @@
             ],
             "description": "The Illuminate Contracts package.",
             "homepage": "https://laravel.com",
-            "time": "2017-04-19 20:17:43"
+            "time": "2017-04-19T20:17:43+00:00"
         },
         {
             "name": "illuminate/events",
@@ -476,7 +475,7 @@
             ],
             "description": "The Illuminate Events package.",
             "homepage": "https://laravel.com",
-            "time": "2017-05-02 12:57:00"
+            "time": "2017-05-02T12:57:00+00:00"
         },
         {
             "name": "illuminate/filesystem",
@@ -526,7 +525,7 @@
             ],
             "description": "The Illuminate Filesystem package.",
             "homepage": "https://laravel.com",
-            "time": "2017-05-18 14:37:58"
+            "time": "2017-05-18T14:37:58+00:00"
         },
         {
             "name": "illuminate/support",
@@ -583,7 +582,7 @@
             ],
             "description": "The Illuminate Support package.",
             "homepage": "https://laravel.com",
-            "time": "2017-06-15 12:35:32"
+            "time": "2017-06-15T12:35:32+00:00"
         },
         {
             "name": "illuminate/view",
@@ -631,7 +630,7 @@
             ],
             "description": "The Illuminate View package.",
             "homepage": "https://laravel.com",
-            "time": "2017-06-07 13:32:57"
+            "time": "2017-06-07T13:32:57+00:00"
         },
         {
             "name": "paragonie/random_compat",
@@ -679,7 +678,7 @@
                 "pseudorandom",
                 "random"
             ],
-            "time": "2017-03-13 16:27:32"
+            "time": "2017-03-13T16:27:32+00:00"
         },
         {
             "name": "psr/log",
@@ -726,7 +725,7 @@
                 "psr",
                 "psr-3"
             ],
-            "time": "2016-10-10 12:19:37"
+            "time": "2016-10-10T12:19:37+00:00"
         },
         {
             "name": "roots/sage-lib",
@@ -778,20 +777,20 @@
             "keywords": [
                 "wordpress"
             ],
-            "time": "2017-08-11 23:38:23"
+            "time": "2017-08-11T23:38:23+00:00"
         },
         {
             "name": "soberwp/controller",
-            "version": "dev-master",
+            "version": "9.0.0-beta.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/soberwp/controller.git",
-                "reference": "220d88a8e2e4ca8dc97364f913defac4d8e82c1d"
+                "reference": "2b6c8450f4a3100b16bfc482c825d89422b6adc6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/soberwp/controller/zipball/220d88a8e2e4ca8dc97364f913defac4d8e82c1d",
-                "reference": "220d88a8e2e4ca8dc97364f913defac4d8e82c1d",
+                "url": "https://api.github.com/repos/soberwp/controller/zipball/2b6c8450f4a3100b16bfc482c825d89422b6adc6",
+                "reference": "2b6c8450f4a3100b16bfc482c825d89422b6adc6",
                 "shasum": ""
             },
             "require": {
@@ -830,7 +829,7 @@
             "keywords": [
                 "wordpress"
             ],
-            "time": "2017-08-04 18:38:48"
+            "time": "2017-08-22T17:35:30+00:00"
         },
         {
             "name": "symfony/debug",
@@ -886,7 +885,7 @@
             ],
             "description": "Symfony Debug Component",
             "homepage": "https://symfony.com",
-            "time": "2017-07-28 15:27:31"
+            "time": "2017-07-28T15:27:31+00:00"
         },
         {
             "name": "symfony/finder",
@@ -935,7 +934,7 @@
             ],
             "description": "Symfony Finder Component",
             "homepage": "https://symfony.com",
-            "time": "2017-06-01 21:01:25"
+            "time": "2017-06-01T21:01:25+00:00"
         },
         {
             "name": "symfony/yaml",
@@ -990,7 +989,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2017-07-23 12:43:26"
+            "time": "2017-07-23T12:43:26+00:00"
         }
     ],
     "packages-dev": [
@@ -1043,7 +1042,7 @@
             ],
             "description": "The Illuminate Console package.",
             "homepage": "https://laravel.com",
-            "time": "2017-06-10 13:11:18"
+            "time": "2017-06-10T13:11:18+00:00"
         },
         {
             "name": "nesbot/carbon",
@@ -1096,20 +1095,20 @@
                 "datetime",
                 "time"
             ],
-            "time": "2017-01-16 07:55:07"
+            "time": "2017-01-16T07:55:07+00:00"
         },
         {
             "name": "roots/sage-installer",
-            "version": "1.3.0",
+            "version": "1.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/roots/sage-installer.git",
-                "reference": "250c74a935f9aba19f90d45d92884b7b56bc989c"
+                "reference": "dca019cfa6f1f2cb2e155dfc6574829b80c689b7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/roots/sage-installer/zipball/250c74a935f9aba19f90d45d92884b7b56bc989c",
-                "reference": "250c74a935f9aba19f90d45d92884b7b56bc989c",
+                "url": "https://api.github.com/repos/roots/sage-installer/zipball/dca019cfa6f1f2cb2e155dfc6574829b80c689b7",
+                "reference": "dca019cfa6f1f2cb2e155dfc6574829b80c689b7",
                 "shasum": ""
             },
             "require": {
@@ -1155,7 +1154,7 @@
                 "theme",
                 "wordpress"
             ],
-            "time": "2017-08-12 00:03:02"
+            "time": "2017-08-12T00:16:45+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
@@ -1233,7 +1232,7 @@
                 "phpcs",
                 "standards"
             ],
-            "time": "2017-05-22 02:43:20"
+            "time": "2017-05-22T02:43:20+00:00"
         },
         {
             "name": "symfony/console",
@@ -1302,20 +1301,20 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2017-07-29 21:27:59"
+            "time": "2017-07-29T21:27:59+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "v1.4.0",
+            "version": "v1.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-mbstring.git",
-                "reference": "f29dca382a6485c3cbe6379f0c61230167681937"
+                "reference": "7c8fae0ac1d216eb54349e6a8baa57d515fe8803"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/f29dca382a6485c3cbe6379f0c61230167681937",
-                "reference": "f29dca382a6485c3cbe6379f0c61230167681937",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/7c8fae0ac1d216eb54349e6a8baa57d515fe8803",
+                "reference": "7c8fae0ac1d216eb54349e6a8baa57d515fe8803",
                 "shasum": ""
             },
             "require": {
@@ -1327,7 +1326,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.4-dev"
+                    "dev-master": "1.5-dev"
                 }
             },
             "autoload": {
@@ -1361,7 +1360,7 @@
                 "portable",
                 "shim"
             ],
-            "time": "2017-06-09 14:24:12"
+            "time": "2017-06-14T15:44:48+00:00"
         },
         {
             "name": "symfony/process",
@@ -1410,7 +1409,7 @@
             ],
             "description": "Symfony Process Component",
             "homepage": "https://symfony.com",
-            "time": "2017-07-13 13:05:09"
+            "time": "2017-07-13T13:05:09+00:00"
         },
         {
             "name": "symfony/translation",
@@ -1475,14 +1474,14 @@
             ],
             "description": "Symfony Translation Component",
             "homepage": "https://symfony.com",
-            "time": "2017-06-24 16:45:30"
+            "time": "2017-06-24T16:45:30+00:00"
         }
     ],
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
         "roots/sage-lib": 10,
-        "soberwp/controller": 20
+        "soberwp/controller": 10
     },
     "prefer-stable": false,
     "prefer-lowest": false,
