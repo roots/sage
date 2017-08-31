@@ -14,8 +14,8 @@
   "cacheBusting": "[name]_[hash:8]",
   "watch": [
     "app/**/*.php",
+    "app/controllers/**/*.php",
     "config/**/*.php",
-    "resources/controllers/**/*.php",
     "resources/views/**/*.php"
   ]
 }
