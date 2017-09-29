@@ -71,7 +71,8 @@
   "stylelint": {
     "extends": "stylelint-config-standard",
     "rules": {
-      "no-empty-source": null
+      "no-empty-source": null,
+      "function-name-case": ["lower", { "ignoreFunctions": ["/^find.*$/"] }]
     }
   },
   "scripts": {
