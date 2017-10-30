@@ -4,7 +4,7 @@ namespace App;
 
 use Sober\Controller\Controller;
 
-class Home extends Controller
+class FrontPage extends Controller
 {
 
 }
