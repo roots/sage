@@ -47,7 +47,7 @@ $ composer create-project roots/sage your-theme-name dev-master
 During theme installation you will have the options to:
 
 * Update theme headers (theme name, description, author, etc.)
-* Select a CSS framework (Bootstrap, Foundation, Tachyons, none)
+* Select a CSS framework (Bootstrap, Bulma, Foundation, Tachyons, none)
 * Add Font Awesome
 * Configure Browsersync (path to theme, local development URL)
 
