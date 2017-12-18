@@ -41,7 +41,10 @@ let webpackConfig = {
         enforce: 'pre',
         test: /\.js$/,
         include: config.paths.assets,
-        use: 'eslint',
+        loader: 'eslint-loader',
+        options: {
+          configFile: config.env.production ? config.paths.eslintProd : null,
+        },
       },
       {
         enforce: 'pre',
