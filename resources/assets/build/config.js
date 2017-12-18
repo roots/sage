@@ -20,7 +20,7 @@ const config = merge({
     root: rootPath,
     assets: path.join(rootPath, 'resources/assets'),
     dist: path.join(rootPath, 'dist'),
-    eslintProd: path.join(rootPath, '.eslintrcProd'),
+    eslintProd: path.join(rootPath, '.eslintrc.production.json'),
   },
   enabled: {
     sourceMaps: !isProduction,
