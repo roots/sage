@@ -48,6 +48,20 @@ if (!class_exists('Roots\\Sage\\Container')) {
 }
 
 /**
+ * Ensure Customizer works works with BrowserSync
+ */
+add_action( 'wp_headers', function($headers) {
+
+    if ( isset($_SERVER['HTTP_REFERER']) && strstr($_SERVER['HTTP_REFERER'],'customize.php') && strstr($_SERVER['REQUEST_URI'],'localhost:3000') ) {
+        $customize_url = str_replace(get_bloginfo('url'),'//localhost:3000',admin_url( 'customize.php' ));
+        $headers['X-Frame-Options'] = 'ALLOW-FROM ' . $customize_url;
+        $headers['Content-Security-Policy'] = 'frame-ancestors ' . preg_replace( '#^(\w+://[^/]+).+?$#', '$1', $customize_url );
+        return $headers;
+    }
+
+} , 20 );
+
+/**
  * Sage required files
  *
  * The mapped array determines the code library included in your theme.
