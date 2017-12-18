@@ -1,8 +1,0 @@
-{
-  "extends": [
-    "./package.json"
-  ],
-  "rules": {
-      "no-console": ["error"]
-  }
-}
