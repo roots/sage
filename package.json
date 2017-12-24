@@ -17,47 +17,13 @@
       "url": "http://opensource.org/licenses/MIT"
     }
   ],
-  "browserslist": [
-    "last 2 versions",
-    "android 4",
-    "opera 12"
-  ],
-  "stylelint": {
-    "extends": "stylelint-config-standard",
-    "rules": {
-      "no-empty-source": null,
-      "at-rule-no-unknown": [
-        true,
-        {
-          "ignoreAtRules": [
-            "extend",
-            "at-root",
-            "debug",
-            "warn",
-            "error",
-            "if",
-            "else",
-            "for",
-            "each",
-            "while",
-            "mixin",
-            "include",
-            "content",
-            "return",
-            "function"
-          ]
-        }
-      ]
-    }
-  },
   "scripts": {
-    "build": "webpack --progress --config resources/assets/build/webpack.config.js",
-    "build:production": "webpack --progress -p --config resources/assets/build/webpack.config.js",
-    "build:profile": "webpack --progress --profile --json --config resources/assets/build/webpack.config.js",
-    "start": "webpack --hide-modules --watch --config resources/assets/build/webpack.config.js",
-    "rmdist": "rimraf dist",
+    "prebuild": "npm run -s lint",
+    "build": "webpack --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "build:production": "webpack --progress --hide-modules -p --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "start": "webpack --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
     "lint": "npm run -s lint:scripts && npm run -s lint:styles",
-    "lint:scripts": "eslint resources/assets/scripts resources/assets/build",
+    "lint:scripts": "eslint *.js resources/assets/scripts resources/assets/build",
     "lint:styles": "stylelint \"resources/assets/styles/**/*.{css,sass,scss,sss,less}\"",
     "test": "npm run -s lint"
   },
@@ -65,42 +31,17 @@
     "node": ">= 6.9.4"
   },
   "devDependencies": {
-    "autoprefixer": "~8.2.0",
-    "browser-sync": "~2.23.6",
-    "browsersync-webpack-plugin": "^0.6.0",
+    "browser-sync": "~2.21",
+    "browser-sync-webpack-plugin": "~1.2",
     "bs-html-injector": "~3.0",
-    "buble-loader": "^0.4.1",
-    "cache-loader": "~1.2.0",
-    "clean-webpack-plugin": "^0.1.18",
-    "copy-globs-webpack-plugin": "^0.2.0",
-    "css-loader": "^0.28.9",
-    "cssnano": "~v4.0.0-rc.2",
-    "eslint": "~4.19.1",
-    "eslint-loader": "~1.9",
-    "eslint-plugin-import": "~2.11.0",
-    "extract-text-webpack-plugin": "~3.0.2",
-    "file-loader": "^1.1.6",
-    "friendly-errors-webpack-plugin": "^1.6.1",
-    "imagemin-mozjpeg": "~7.0.0",
-    "imagemin-webpack-plugin": "~2.1.1",
+    "eslint": "~4.14",
+    "eslint-plugin-import": "~2.8",
     "import-glob": "~1.5",
-    "node-sass": "~4.8.3",
-    "postcss-loader": "~2.1.0",
-    "postcss-safe-parser": "~3.0",
-    "resolve-url-loader": "~2.3.0",
+    "laravel-mix": "~1.7",
     "rimraf": "~2.6",
-    "sass-loader": "~6.0",
-    "style-loader": "^0.20.1",
-    "stylelint": "^8.4.0",
-    "stylelint-config-standard": "~18.2.0",
-    "stylelint-webpack-plugin": "^0.10.1",
-    "url-loader": "^0.6.2",
-    "webpack": "~3.10.0",
-    "webpack-assets-manifest": "^1.0.0",
-    "webpack-dev-middleware": "~2.0.4",
-    "webpack-hot-middleware": "~2.22.0",
-    "webpack-merge": "~4.1.1",
-    "yargs": "~11.0.0"
+    "stylelint": "~8.4",
+    "stylelint-config-standard": "~18.0",
+    "webpack": "~3.10"
   },
   "dependencies": {
     "bootstrap": "v4.1.0",
