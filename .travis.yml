@@ -34,6 +34,5 @@ install:
 script:
   - yarn run test
   - yarn run build
-  - yarn run rmdist
   - yarn run "build:production"
   - composer test
