@@ -7,11 +7,20 @@ Sage is a WordPress starter theme with a modern development workflow.
 
 ## Features
 
+<<<<<<< HEAD
 * Sass for stylesheets
 * Modern JavaScript
 * [Webpack](https://webpack.github.io/) for compiling assets, optimizing images, and concatenating and minifying files
 * [Browsersync](http://www.browsersync.io/) for synchronized browser testing
 * [Blade](https://laravel.com/docs/5.5/blade) as a templating engine
+=======
+* [Laravel Mix](https://laravel.com/docs/5.5/mix) as a [Webpack](https://webpack.github.io/) wrapper
+  * Compiles Sass and ES6
+  * Image optimization
+  * Concatenates and minifies files
+  * [Browsersync](https://browsersync.io/) for synchronized browser testing
+* [Laravel Blade](https://laravel.com/docs/5.5/blade) as a templating engine
+>>>>>>> Update README [ci skip]
 * [Controller](https://github.com/soberwp/controller) for passing data to Blade templates
 * CSS framework (optional): [Bootstrap 4](https://getbootstrap.com/), [Bulma](https://bulma.io/), [Foundation](https://foundation.zurb.com/), [Tachyons](http://tachyons.io/)
 * Font Awesome (optional)
@@ -23,7 +32,11 @@ See a working example at [roots-example-project.com](https://roots-example-proje
 Make sure all dependencies have been installed before moving on:
 
 * [WordPress](https://wordpress.org/) >= 4.7
+<<<<<<< HEAD
 * [PHP](https://secure.php.net/manual/en/install.php) >= 7.1.3 (with [`php-mbstring`](https://secure.php.net/manual/en/book.mbstring.php) enabled)
+=======
+* [PHP](https://secure.php.net/manual/en/install.php) >= 7.0
+>>>>>>> Update README [ci skip]
 * [Composer](https://getcomposer.org/download/)
 * [Node.js](http://nodejs.org/) >= 6.9.x
 * [Yarn](https://yarnpkg.com/en/docs/install)
@@ -37,12 +50,15 @@ Install Sage using Composer from your WordPress themes directory (replace `your-
 $ composer create-project roots/sage your-theme-name
 ```
 
+<<<<<<< HEAD
 To install the latest development version of Sage, add `dev-master` to the end of the command:
 
 ```shell
 $ composer create-project roots/sage your-theme-name dev-master
 ```
 
+=======
+>>>>>>> Update README [ci skip]
 During theme installation you will have options to update `style.css` theme headers, select a CSS framework, add Font Awesome, and configure Browsersync.
 
 ## Theme structure
@@ -99,6 +115,7 @@ Edit `app/setup.php` to enable or disable theme features, setup navigation menus
 
 * [Sage documentation](https://roots.io/sage/docs/)
 * [Controller documentation](https://github.com/soberwp/controller#usage)
+* [Laravel Mix documentation](https://github.com/JeffreyWay/laravel-mix/tree/master/docs)
 
 ## Contributing
 
