@@ -103,8 +103,8 @@
     "yargs": "~9.0.1"
   },
   "dependencies": {
-    "bootstrap": "v4.0.0-beta.2",
+    "bootstrap": "v4.0.0",
     "jquery": "1.12.4 - 3",
-    "popper.js": "^1.12.3"
+    "popper.js": "^1.12.9"
   }
 }
