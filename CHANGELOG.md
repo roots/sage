@@ -1,4 +1,8 @@
 ### HEAD
+* Update to Bootstrap 4 ([#2015](https://github.com/roots/sage/pull/2015))
+* Allow `no-console` development ([#2008](https://github.com/roots/sage/pull/2008))
+* Move variables and Bootstrap lines to autoload ([#1993](https://github.com/roots/sage/pull/1993))
+* Update controller examples ([#1986](https://github.com/roots/sage/pull/1986))
 * Update to Bootstrap 4 Beta 2 ([#1981](https://github.com/roots/sage/pull/1981))
 * Add friendly-errors-webpack-plugin ([#1961](https://github.com/roots/sage/pull/1961))
 * Update to Controller 9.0.0-beta.4 ([#1959](https://github.com/roots/sage/pull/1959))
