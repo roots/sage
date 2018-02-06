@@ -10,17 +10,12 @@ Sage is a WordPress starter theme with a modern development workflow.
 ## Features
 
 * Sass for stylesheets
-* ES6 for JavaScript
+* Modern JavaScript
 * [Webpack](https://webpack.github.io/) for compiling assets, optimizing images, and concatenating and minifying files
 * [Browsersync](http://www.browsersync.io/) for synchronized browser testing
 * [Laravel Blade](https://laravel.com/docs/5.3/blade) as a templating engine
 * [Controller](https://github.com/soberwp/controller) for passing data to Blade templates
-* CSS framework options:
-  * [Bootstrap 4](http://getbootstrap.com/)
-  * [Bulma](http://bulma.io/)
-  * [Foundation](http://foundation.zurb.com/)
-  * [Tachyons](http://tachyons.io/)
-  * None (blank slate)
+* CSS framework (optional): [Bootstrap 4](https://getbootstrap.com/), [Bulma](https://bulma.io/), [Foundation](https://foundation.zurb.com/), [Tachyons](http://tachyons.io/)
 * Font Awesome (optional)
 
 See a working example at [roots-example-project.com](https://roots-example-project.com/).
@@ -30,7 +25,7 @@ See a working example at [roots-example-project.com](https://roots-example-proje
 Make sure all dependencies have been installed before moving on:
 
 * [WordPress](https://wordpress.org/) >= 4.7
-* [PHP](http://php.net/manual/en/install.php) >= 7.0 (with [`php-mbstring`](http://php.net/manual/en/book.mbstring.php) enabled)
+* [PHP](https://secure.php.net/manual/en/install.php) >= 7.0 (with [`php-mbstring`](https://secure.php.net/manual/en/book.mbstring.php) enabled)
 * [Composer](https://getcomposer.org/download/)
 * [Node.js](http://nodejs.org/) >= 6.9.x
 * [Yarn](https://yarnpkg.com/en/docs/install)
@@ -44,12 +39,7 @@ Install Sage using Composer from your WordPress themes directory (replace `your-
 $ composer create-project roots/sage your-theme-name dev-master
 ```
 
-During theme installation you will have the options to:
-
-* Update theme headers (theme name, description, author, etc.)
-* Select a CSS framework (Bootstrap, Bulma, Foundation, Tachyons, none)
-* Add Font Awesome
-* Configure Browsersync (path to theme, local development URL)
+During theme installation you will have options to update `style.css` theme headers, select a CSS framework, add Font Awesome, and configure Browsersync.
 
 ## Theme structure
 
@@ -103,11 +93,9 @@ Edit `app/setup.php` to enable or disable theme features, setup navigation menus
 
 ## Documentation
 
-Sage 8 documentation is available at [https://roots.io/sage/docs/](https://roots.io/sage/docs/).
-
-Sage 9 documentation is currently in progress and can be viewed at [https://github.com/roots/docs/tree/sage-9/sage](https://github.com/roots/docs/tree/sage-9/sage).
-
-Controller documentation is available at [https://github.com/soberwp/controller#usage](https://github.com/soberwp/controller#usage).
+* [Sage 8 documentation](https://roots.io/sage/docs/) (stable version of Sage 8, _not_ this repo)
+* [Sage 9 documentation](https://github.com/roots/docs/tree/sage-9/sage) (in progress)
+* [Controller documentation](https://github.com/soberwp/controller#usage)
 
 ## Contributing
 
