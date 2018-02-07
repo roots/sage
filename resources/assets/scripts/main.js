@@ -21,4 +21,13 @@ const routes = new Router({
 });
 
 // Load Events
-jQuery(document).ready(() => routes.loadEvents());
+var callback = () => routes.loadEvents();
+
+if (
+  document.readyState === "complete" ||
+  (document.readyState !== "loading" && !document.documentElement.doScroll)
+) {
+  callback();
+} else {
+  document.addEventListener("DOMContentLoaded", callback);
+}
