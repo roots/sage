@@ -5,15 +5,13 @@
 
 Sage is a WordPress starter theme with a modern development workflow.
 
-**Sage 9 is in active development and is currently in beta. The `master` branch tracks Sage 9 development. If you want a stable version, use the [latest Sage 8 release](https://github.com/roots/sage/releases/latest).**
-
 ## Features
 
 * Sass for stylesheets
 * Modern JavaScript
 * [Webpack](https://webpack.github.io/) for compiling assets, optimizing images, and concatenating and minifying files
 * [Browsersync](http://www.browsersync.io/) for synchronized browser testing
-* [Laravel Blade](https://laravel.com/docs/5.3/blade) as a templating engine
+* [Blade](https://laravel.com/docs/5.5/blade) as a templating engine
 * [Controller](https://github.com/soberwp/controller) for passing data to Blade templates
 * CSS framework (optional): [Bootstrap 4](https://getbootstrap.com/), [Bulma](https://bulma.io/), [Foundation](https://foundation.zurb.com/), [Tachyons](http://tachyons.io/)
 * Font Awesome (optional)
@@ -93,8 +91,7 @@ Edit `app/setup.php` to enable or disable theme features, setup navigation menus
 
 ## Documentation
 
-* [Sage 8 documentation](https://roots.io/sage/docs/) (stable version of Sage 8, _not_ this repo)
-* [Sage 9 documentation](https://github.com/roots/docs/tree/sage-9/sage) (in progress)
+* [Sage documentation](https://roots.io/sage/docs/)
 * [Controller documentation](https://github.com/soberwp/controller#usage)
 
 ## Contributing
