@@ -1,4 +1,4 @@
-### 9.0.0: February 7th, 2017
+### 9.0.0: February 7th, 2018
 * Update to Bootstrap 4 ([#2015](https://github.com/roots/sage/pull/2015))
 * Allow `no-console` development ([#2008](https://github.com/roots/sage/pull/2008))
 * Move variables and Bootstrap lines to autoload ([#1993](https://github.com/roots/sage/pull/1993))
