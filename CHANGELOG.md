@@ -1,3 +1,6 @@
+### 8.5.4: February 15th, 2018
+* Update to Bootstrap 4 ([#2027](https://github.com/roots/sage/pull/2027))
+
 ### 8.5.3: August 18th, 2017
 * Popper.js now properly supports Bower ([#1953](https://github.com/roots/sage/pull/1953))
 
