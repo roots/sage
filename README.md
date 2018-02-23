@@ -121,7 +121,7 @@ Current bladified woocommerce templates are the following. I always use custom m
 
 
 ## YAML settings
-I've added some common configs into a YAML file. From there you can easily enable/disable features Google Analytics, Facebook Pixel Code, and something that took me some hours to implement: basic hooks and actions manipulation! Look bellow for more info.
+I've added some common configs into a YAML file. From there you can easily enable/disable features like Google Analytics and basic hooks and actions manipulation! Look bellow for more info.
 
 ## Misc Settings
 You can tweak some usual settings easily by using sage-woo.yml
@@ -175,7 +175,7 @@ single_product:
 		- slug
 ```
 
-How it works? Because I avoid tweaking core files and templates whenever is possible, I decided to use an alternative method for rendering radio buttons. Behind the scenes DOMDocument parses the html of the `woocommerce_dropdown_variation_attribute_options_html` filter and using its values, renders the appropriate html. One thing which I couldn't interfere was the JS section. I was forced to fork the `add-to-cart-variation.js` so be careful on your woo updates! There is a high possibility to break things so test everything!
+How it works? Because I avoid tweaking core files or override functions, I decided to use an alternative method for rendering radio buttons. Behind the scenes DOMDocument parses the html of the `woocommerce_dropdown_variation_attribute_options_html` filter and using its values, renders the appropriate html. One thing which I couldn't interfere was the JS section. I was forced to fork the `add-to-cart-variation.js` so be careful on your woo updates! There is a high possibility to break things so test everything!
 
 And also after each enable/disable don't forget to clear the cache!
 
