@@ -17,6 +17,8 @@ Sage 9 and Bedrock made me stay in the Wordpress/PHP world for website projects 
 
 
 ## What's in the box?
+
+* [Some screenshots](https://i.imgur.com/6z97MWT.jpg)
 * Woocommerce support out of the box with working Controller (for `single-product`, `archive-product`)
 * Radio/Select switcher for product options!
 * Decluttered markup in common templates for best flexibility (eg checkout, single product, archive-product etc)
