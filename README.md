@@ -1,115 +1,351 @@
-# [Sage](https://roots.io/sage/)
-[![Packagist](https://img.shields.io/packagist/vpre/roots/sage.svg?style=flat-square)](https://packagist.org/packages/roots/sage)
-[![devDependency Status](https://img.shields.io/david/dev/roots/sage.svg?style=flat-square)](https://david-dm.org/roots/sage#info=devDependencies)
-[![Build Status](https://img.shields.io/travis/roots/sage.svg?style=flat-square)](https://travis-ci.org/roots/sage)
+# SageWoo - The ultimate boilerplate
+A Sage fork ready for Woocommerce, with Bootstrap and automation in common tasks. Stop being a robot by customising common templates again & again and make your life easier with this boilerplate.
 
-Sage is a WordPress starter theme with a modern development workflow.
 
-## Features
+## Why?
+Despite the organised backend code and the abstraction on top of abastraction, the Woocommerce frontend has many issues. Its been made for Woocommerce default styling, has difficult markup, countless classes and name collisions with the Bootstrap framework (`col-1`, `form-row` classes etc). Many of its classes are not name spaced and I had issues a few times with that. I need more flexibility on my workflow. Also with the new Sage 9, to setup Woocommerce it's a pain in the ass and the amount of boilerplate code it's big and confusing.
 
-* Sass for stylesheets
-* Modern JavaScript
-* [Webpack](https://webpack.github.io/) for compiling assets, optimizing images, and concatenating and minifying files
-* [Browsersync](http://www.browsersync.io/) for synchronized browser testing
-* [Blade](https://laravel.com/docs/5.5/blade) as a templating engine
-* [Controller](https://github.com/soberwp/controller) for passing data to Blade templates
-* CSS framework (optional): [Bootstrap 4](https://getbootstrap.com/), [Bulma](https://bulma.io/), [Foundation](https://foundation.zurb.com/), [Tachyons](http://tachyons.io/)
-* Font Awesome (optional)
+> In this boilerplate, I didn't use the `woocommerce.blade.php` with the `App\template('woocommerce')` method. I just override `single-product` and `archive-product` with blade ones. So now the controller works flawlessly on top of them, and we can have total flexibility on markup.
 
-See a working example at [roots-example-project.com](https://roots-example-project.com/).
+## ⚠️⚠️ This isn't the usual Wordpress template!
+This template is **NOT** for non-developers. It doesn't have any styling! Each one component has the least minimal design for flexibility reasons.
 
-## Requirements
+This boilerplate uses Sage 9 starter theme, which in turn provides the latest best practices in PHP world (eg composer, Blade Template Engine, Webpack etc)
+This is NOT for classic Wordpress developers who prefer plain PHP or obsolete JS. Everything here is highly coupled with Sage 9 and modern practices. 
 
-Make sure all dependencies have been installed before moving on:
+Sage 9 and Bedrock made me stay in the Wordpress/PHP world for website projects and I strongly recommend it to you. Your workflow speed will increase at unimaginable levels.
 
-* [WordPress](https://wordpress.org/) >= 4.7
-* [PHP](https://secure.php.net/manual/en/install.php) >= 7.0 (with [`php-mbstring`](https://secure.php.net/manual/en/book.mbstring.php) enabled)
-* [Composer](https://getcomposer.org/download/)
-* [Node.js](http://nodejs.org/) >= 6.9.x
-* [Yarn](https://yarnpkg.com/en/docs/install)
 
-## Theme installation
+## What's in the box?
+* Woocommerce support out of the box with working Controller (for `single-product`, `archive-product`)
+* Radio/Select switcher for product options!
+* Decluttered markup in common templates for best flexibility (eg checkout, single product, archive-product etc)
+* Whenever the markup is dangerous to change (like common updated templates or very difficult to read code), a graceful css styling provided (eg the `form-pay.php`)
+* Responsive!
+* Organised SCSS code
+* Namespaced classes `sw-**` for rapid styling
+* BEM methodology for very very clean SCSS code
+* Webpack dashboard
 
-Install Sage using Composer from your WordPress themes directory (replace `your-theme-name` below with the name of your theme):
+## Caveats
 
-```shell
-# @ app/themes/ or wp-content/themes/
-$ composer create-project roots/sage your-theme-name dev-master
-```
+* Controller is not working inside woocommerce templates which are not included with blade (eg `form-billing.blade.php`)
+* System status on woocommerce settings doesn't show override templates. If you know a fix, it would be awesome!
+* In the scss files you'll see some very, VERY dirty code. It's like that because of the graceful reset styling on vanilla Woo markup
 
-During theme installation you will have options to update `style.css` theme headers, select a CSS framework, add Font Awesome, and configure Browsersync.
 
-## Theme structure
+## Installation
+
+###Instructions
 
 ```shell
-themes/your-theme-name/   # → Root of your Sage based theme
-├── app/                  # → Theme PHP
-│   ├── controllers/      # → Controller files
-│   ├── admin.php         # → Theme customizer setup
-│   ├── filters.php       # → Theme filters
-│   ├── helpers.php       # → Helper functions
-│   └── setup.php         # → Theme setup
-├── composer.json         # → Autoloading for `app/` files
-├── composer.lock         # → Composer lock file (never edit)
-├── dist/                 # → Built theme assets (never edit)
-├── node_modules/         # → Node.js packages (never edit)
-├── package.json          # → Node.js dependencies and scripts
-├── resources/            # → Theme assets and templates
-│   ├── assets/           # → Front-end assets
-│   │   ├── config.json   # → Settings for compiled assets
-│   │   ├── build/        # → Webpack and ESLint config
-│   │   ├── fonts/        # → Theme fonts
-│   │   ├── images/       # → Theme images
-│   │   ├── scripts/      # → Theme JS
-│   │   └── styles/       # → Theme stylesheets
-│   ├── functions.php     # → Composer autoloader, theme includes
-│   ├── index.php         # → Never manually edit
-│   ├── screenshot.png    # → Theme screenshot for WP admin
-│   ├── style.css         # → Theme meta information
-│   └── views/            # → Theme templates
-│       ├── layouts/      # → Base templates
-│       └── partials/     # → Partial templates
-└── vendor/               # → Composer packages (never edit)
+cd themes-directory
+git clone https://github.com/hambos22/sage-woo.git theme-name
+cd theme-name
+yarn
+composer install
+composer run-script sage-woo-setup
 ```
 
-## Theme setup
+### Some notes
+I extended `Roots\Sage\Installer\ComposerScript` and modified it a little bit to disable Bootstrap initialisation, keeping everything else intact. The `composer run-script sage-woo-setup` gives you the ability to set via cli the theme's credentials as Sage does. I was thinking to make a shell script for those simple operations but I prefer to use the official way for future compatibility reasons
 
-Edit `app/setup.php` to enable or disable theme features, setup navigation menus, post thumbnail sizes, and sidebars.
+You can find it here:
 
-## Theme development
+```shell
+app
+├── SageWoo
+│   └── SageInstallerMod.php
+```
 
-* Run `yarn` from the theme directory to install dependencies
-* Update `resources/assets/config.json` settings:
-  * `devUrl` should reflect your local development hostname
-  * `publicPath` should reflect your WordPress folder structure (`/wp-content/themes/sage` for non-[Bedrock](https://roots.io/bedrock/) installs)
+Also, I have disabled the style lint because is very annoying. If you want it enabled you can uncomment the relevant code in webpack config.
 
-### Build commands
+### Todo
 
-* `yarn run start` — Compile assets when file changes are made, start Browsersync session
-* `yarn run build` — Compile and optimize the files in your assets directory
-* `yarn run build:production` — Compile assets for production
+- [x] Single Product
+- [x] Archive Product
+- [x] Breadcrumbs
+- [x] Radio Buttons
+- [x] Notices
+- [x] Forms
+- [x] Cart
+- [x] Checkout
+- [x] Pagination
+- [ ] Form validation
+- [ ] Tabs<sup>*</sup>
+- [ ] Sale badge (varies by design so on consideration)<sup>*</sup>
+- [ ] Up-sells<sup>*</sup>
+- [ ] Reviews<sup>*</sup>
 
-## Documentation
+<sup>*</sup>rarely used, on consideration, PRs are welcomed :)
 
-* [Sage documentation](https://roots.io/sage/docs/)
-* [Controller documentation](https://github.com/soberwp/controller#usage)
+## Templates
+Current bladified woocommerce templates are the following. I always use custom markup on these. They are already filled up with their default actions so feel free to create awesomeness fast. You can find them at `resources/views/woocommerce`. Controller only works on `content-product` and `content-single-product` because they got included via Blade
 
-## Contributing
+```shell
+├── cart
+│   └── cart-empty.blade.php
+├── checkout
+│   ├── cart-errors.blade.php
+│   ├── form-billing.blade.php
+│   ├── form-checkout.blade.php
+│   ├── form-coupon.blade.php
+│   └── form-shipping.blade.php
+├── content-product.blade.php
+├── content-single-product.blade.php
+├── global
+│   ├── breadcrumb.blade.php
+│   └── form-login.blade.php
+├── myaccount
+│   ├── form-edit-account.blade.php
+│   ├── form-edit-address.blade.php
+│   ├── form-login.blade.php
+│   ├── form-lost-password.blade.php
+│   ├── form-reset-password.blade.php
+│   ├── lost-password-confirmation.blade.php
+│   ├── my-account.blade.php
+│   ├── my-address.blade.php
+│   └── navigation.blade.php
+├── notices
+│   └── error.blade.php
+├── order
+│   └── order-details-customer.blade.php
+├── single-product
+│   └── add-to-cart
+│       └── variable.blade.php
+└── sw-components
+    └── woo-radio.blade.php
+``` 
 
-Contributions are welcome from everyone. We have [contributing guidelines](https://github.com/roots/guidelines/blob/master/CONTRIBUTING.md) to help you get started.
 
-## Gold sponsors
+## YAML settings
+I've added some common configs into a YAML file. From there you can easily enable/disable features Google Analytics, Facebook Pixel Code, and something that took me some hours to implement: basic hooks and actions manipulation! Look bellow for more info.
 
-Help support our open-source development efforts by [contributing to Sage on OpenCollective](https://opencollective.com/sage).
+## Misc Settings
+You can tweak some usual settings easily by using sage-woo.yml
 
-<a href="https://kinsta.com/?kaid=OFDHAJIXUDIV"><img src="https://roots.io/app/uploads/kinsta.svg" alt="Kinsta" width="200" height="150"></a> <a href="https://k-m.com/"><img src="https://roots.io/app/uploads/km-digital.svg" alt="KM Digital" width="200" height="150"></a>
+```yaml
+general:
+	remove_woo_styles: true # removes all Woocommerce css files
+	remove_woo_scripts: #removes selected woo scripts, if all provided everything will be dequeued 
+		- handler
+		- handler #etc 
+	analytics_id: 'UA-xxxxxx-Y' # add analytics script on footer
+```
 
-## Community
+<details>
+<summary>**Handlers reference**</summary>
 
-Keep track of development and community news.
+```
+'wc_price_slider',
+'wc-single-product',
+'wc-add-to-cart',
+'wc-cart-fragments',
+'wc-checkout',
+'wc-add-to-cart-variation',
+'wc-single-product',
+'wc-cart',
+'wc-chosen',
+'woocommerce',
+'prettyPhoto',
+'prettyPhoto-init',
+'jquery-blockui',
+'jquery-placeholder',
+'fancybox',
+'jqueryui',
+'selectWoo',
+```
+</details>
 
-* Participate on the [Roots Discourse](https://discourse.roots.io/)
-* Follow [@rootswp on Twitter](https://twitter.com/rootswp)
-* Read and subscribe to the [Roots Blog](https://roots.io/blog/)
-* Subscribe to the [Roots Newsletter](https://roots.io/subscribe/)
-* Listen to the [Roots Radio podcast](https://roots.io/podcast/)
+## Single Product Settings
+```yaml
+single_product:
+```
+
+### Radio for product options in variable products!
+One awesome feature of Sage Woo is the ability to use radio buttons instead of select boxes for product options in variable products! And of-course for selected attributes so you can have multiple form patterns! You can use the `views/woocommerce/sw-components/woo-radio.blade.php` for total customization and endless creative design!
+To enable it 
+
+```yaml
+single_product:
+	radio_variations:
+		- slug
+		- slug
+```
+
+How it works? Because I avoid tweaking core files and templates whenever is possible, I decided to use an alternative method for rendering radio buttons. Behind the scenes DOMDocument parses the html of the `woocommerce_dropdown_variation_attribute_options_html` filter and using its values, renders the appropriate html. One thing which I couldn't interfere was the JS section. I was forced to fork the `add-to-cart-variation.js` so be careful on your woo updates! There is a high possibility to break things so test everything!
+
+And also after each enable/disable don't forget to clear the cache!
+
+
+## Actions & Hooks
+You can add or remove actions easily by using sage-woo.yml
+The format is the following:
+
+```yaml
+actions:
+	# 1st method
+	remove: # selected actions
+		hook_name:
+			namespace\action_name: order
+			namespace\action_name: order
+			# etc..
+		hook_name: all # if 'all' provided every action which belongs to this hook is being removed
+	# 2nd method, if you want total customisation just remove all actions
+	remove_all: # removes all actions from every hook
+		template_name: true #currently only single_product and product_archive.
+
+```
+Example
+
+```yaml
+actions:
+	remove:
+		woocommerce_before_main_content:
+			breadcrumb: 10
+		woocommerce_archive_description: all 
+```
+
+Example 2
+
+```yaml
+actions:
+	remove_all:
+		single_product: true
+```
+
+### Reference
+Every action here has usually the prefix `woocommerce_` except those who starts with `WC` or `wc`. I put them without prefixes for better readability. Numbers on the right are the order.
+
+<details>
+<summary>**Product Archive**</summary>
+
+* `before_main_content`
+
+```
+'output_content_wrapper' - 10
+'breadcrumb' - 20
+'WC_Structured_Data::generate_website_data()' - 30
+```
+
+* `archive_description`
+
+```
+'taxonomy_archive_description' - 10
+'product_archive_description' - 10
+```
+ 
+
+* `before_shop_loop`
+
+```
+wc_print_notices - 10
+result_count - 20
+catalog_ordering - 30
+```
+
+* `shop_loop`
+
+```
+'WC_Structured_Data::generate_product_data()' - 10
+
+```
+
+* `after_shop_loop`
+
+```
+'pagination' - 10
+```
+
+* `no_products_found`
+
+```
+'no_products_found' - 10
+```
+
+* `before_shop_loop_item`
+
+```
+'template_loop_product_link_open' - 10
+```
+
+* `before_shop_loop_item_title`
+
+```
+'show_product_loop_sale_flash' - 10,
+'template_loop_product_thumbnail' - 10
+```
+
+* `shop_loop_item_title`
+
+```
+'template_loop_product_title' - 10
+```
+
+* `after_shop_loop_item_title`
+
+```
+'template_loop_rating' - 5,
+'template_loop_price' - 10
+```
+
+* `after_shop_loop_item`
+
+```
+'template_loop_product_link_close' - 5,
+'template_loop_add_to_cart' - 10
+```
+</details>
+<details>
+<summary>**Single Product**</summary>
+
+* `before_main_content`
+
+```
+'output_content_wrapper' - 10,
+'breadcrumb' - 20,
+```
+
+* `after_main_content`
+
+```
+'output_content_wrapper_end' - 10
+```
+
+* `sidebar`
+
+```
+'get_sidebar' - 10
+```
+
+* `before_single_product_summary`
+
+```
+'show_product_sale_flash' - 10,
+'show_product_images' - 20
+```
+
+* `single_product_summary`
+
+```
+'template_single_title' - 5,
+'template_single_rating' - 10,
+'template_single_price' - 10,
+'template_single_excerpt' - 20,
+'template_single_add_to_cart' - 30,
+'template_single_meta' - 40,
+'template_single_sharing - 50',
+'WC_Structured_Data::generate_product_data()' - 60
+```
+
+* `after_single_product_summary`
+
+```
+'output_product_data_tabs' - 10,
+'upsell_display' - 15,
+'output_related_products - 20'
+```
+</details>
+
+
+

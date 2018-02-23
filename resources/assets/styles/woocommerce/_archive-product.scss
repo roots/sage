@@ -1,0 +1,23 @@
+.sw-product-archive {
+  &__product {
+    margin-bottom: $grid-gutter-width;
+    img {
+      @extend .img-fluid;
+      @extend .mb-1;
+    }
+    h2 {
+      @extend .h5;
+    }
+    .price {
+      display: block;
+      font-weight: bold;
+    }
+    .button {
+      margin-top: rem-calc(10);
+    }
+  }
+}
+
+.woocommerce-ordering {
+  margin-bottom: rem-calc(20);
+}

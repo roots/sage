@@ -1,0 +1,10 @@
+@mixin woo-as-row() {
+  .main > .woocommerce {
+    @include make-row();
+  }
+}
+
+@function rem-calc($size) {
+  $remSize: $size / 16;
+  @return #{$remSize}rem;
+}

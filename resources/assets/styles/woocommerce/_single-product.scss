@@ -1,0 +1,28 @@
+a.reset_variations {
+  //display: none !important;
+}
+
+.product {
+  .quantity {
+    @extend .form-group;
+    width: 60px;
+  }
+}
+
+.woocommerce-variation-price {
+  @extend .mb-1;
+}
+
+.woocommerce-product-gallery {
+  img {
+    @extend .img-fluid;
+  }
+}
+
+.product_meta {
+  @extend .mt-2;
+  @extend small;
+ & > span {
+    display: block;
+  }
+}

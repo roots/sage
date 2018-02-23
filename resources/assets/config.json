@@ -1,5 +1,8 @@
 {
   "entry": {
+    "add-to-cart-variation": [
+      "./scripts/util/add-to-cart-variation.js"
+    ],
     "main": [
       "./scripts/main.js",
       "./styles/main.scss"
@@ -8,8 +11,8 @@
       "./scripts/customizer.js"
     ]
   },
-  "publicPath": "/app/themes/sage",
-  "devUrl": "http://example.test",
+  "publicPath": "/app/themes/sage-woo",
+  "devUrl": "http://woo.test/",
   "proxyUrl": "http://localhost:3000",
   "cacheBusting": "[name]_[hash:8]",
   "watch": [
