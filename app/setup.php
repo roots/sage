@@ -120,9 +120,9 @@ add_action('after_setup_theme', function () {
     });
 
     /**
-     * Create @asset() Blade directive
+     * Register Directives with Blade
      */
-    sage('blade')->compiler()->directive('asset', function ($asset) {
-        return "<?= " . __NAMESPACE__ . "\\asset_path({$asset}); ?>";
+    collect(config('directives'))->each(function ($directive, $function) {
+        sage('blade')->compiler()->directive($function, $directive);
     });
 });
