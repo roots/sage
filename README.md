@@ -27,7 +27,6 @@ Sage 9 and Bedrock made me stay in the Wordpress/PHP world for website projects 
 * Organised SCSS code
 * Namespaced classes `sw-**` for rapid styling
 * BEM methodology for very very clean SCSS code
-* Webpack dashboard
 
 ## Caveats
 
@@ -38,7 +37,7 @@ Sage 9 and Bedrock made me stay in the Wordpress/PHP world for website projects 
 
 ## Installation
 
-###Instructions
+### Instructions
 
 ```shell
 cd themes-directory
@@ -136,7 +135,7 @@ general:
 ```
 
 <details>
-<summary>**Handlers reference**</summary>
+<summary>Handlers reference</summary>
 
 ```
 'wc_price_slider',
@@ -220,7 +219,7 @@ actions:
 Every action here has usually the prefix `woocommerce_` except those who starts with `WC` or `wc`. I put them without prefixes for better readability. Numbers on the right are the order.
 
 <details>
-<summary>**Product Archive**</summary>
+<summary>Product Archive</summary>
 
 * `before_main_content`
 
@@ -299,7 +298,7 @@ catalog_ordering - 30
 ```
 </details>
 <details>
-<summary>**Single Product**</summary>
+<summary>Single Product</summary>
 
 * `before_main_content`
 

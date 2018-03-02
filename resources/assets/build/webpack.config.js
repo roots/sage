@@ -7,7 +7,6 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 // const StyleLintPlugin = require('stylelint-webpack-plugin');
 const CopyGlobsPlugin = require('copy-globs-webpack-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
-const DashboardPlugin = require('webpack-dashboard/plugin');
 
 const config = require('./config');
 
@@ -129,7 +128,6 @@ let webpackConfig = {
     jquery: 'jQuery',
   },
   plugins: [
-    new DashboardPlugin(),
     new CleanPlugin([config.paths.dist], {
       root: config.paths.root,
       verbose: false,
