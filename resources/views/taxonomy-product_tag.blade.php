@@ -1,1 +1,1 @@
-@include('archive-product');
+@include('archive-product')
