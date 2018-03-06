@@ -15,7 +15,7 @@
 <form class="sw-variations variations_form cart" action="{{ esc_url( get_permalink() ) }}" method="post"
       enctype='multipart/form-data'
       data-product_id="{{ absint( $product->get_id()) }}"
-      data-product_variations="{{ htmlspecialchars( wp_json_encode( $available_variations ) ) }}">
+      data-product_variations="{!! htmlspecialchars( wp_json_encode( $available_variations ) ) !!}">
     @php(do_action( 'woocommerce_before_variations_form' ))
     @if( empty( $available_variations ) && false !== $available_variations )
         <p class="stock out-of-stock"><em>{{ __( 'This product is currently out of stock and unavailable.', 'woocommerce' ) }}</em></p>
