@@ -23,7 +23,7 @@ See a working example at [roots-example-project.com](https://roots-example-proje
 Make sure all dependencies have been installed before moving on:
 
 * [WordPress](https://wordpress.org/) >= 4.7
-* [PHP](https://secure.php.net/manual/en/install.php) >= 7.0 (with [`php-mbstring`](https://secure.php.net/manual/en/book.mbstring.php) enabled)
+* [PHP](https://secure.php.net/manual/en/install.php) >= 7.1 (with [`php-mbstring`](https://secure.php.net/manual/en/book.mbstring.php) enabled)
 * [Composer](https://getcomposer.org/download/)
 * [Node.js](http://nodejs.org/) >= 6.9.x
 * [Yarn](https://yarnpkg.com/en/docs/install)
