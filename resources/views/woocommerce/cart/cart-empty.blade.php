@@ -10,7 +10,7 @@ wc_print_notices();
 @endphp
 <div class="sw-cart__empty flex-column">
 
-	@php(do_action( 'woocommerce_cart_is_empty' );)
+	@php(do_action( 'woocommerce_cart_is_empty' ))
 
 	@if ( wc_get_page_id( 'shop' ) > 0 )
 		<p class="return-to-shop">
