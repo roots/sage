@@ -122,7 +122,7 @@ add_action('after_setup_theme', function () {
     /**
      * Register Directives with Blade
      */
-    collect(config('directives'))->each(function ($directive, $function) {
-        sage('blade')->compiler()->directive($function, $directive);
+    collect(config('directives'))->each(function ($handler, $name) {
+        sage('blade')->compiler()->directive($name, $handler);
     });
 });
