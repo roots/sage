@@ -1,5 +1,5 @@
 ### HEAD
-* PHP 7.1+ is now required ([#2037](https://github.com/roots/sage/pull/2037))
+* PHP 7.1.3+ is now required ([#2037](https://github.com/roots/sage/pull/2037))
 
 ### 9.0.0: February 7th, 2018
 * Update to Bootstrap 4 ([#2015](https://github.com/roots/sage/pull/2015))
