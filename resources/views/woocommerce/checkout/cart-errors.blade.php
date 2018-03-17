@@ -4,7 +4,7 @@
 @package WooCommerce/Templates
 @version 2.4.0
 --}}
-@php(wc_print_notices())
+@php wc_print_notices() @endphp
 
 <div class="alert alert-danger">{{ __( 'There are some issues with the items in your cart (shown above). Please go back to the cart page and resolve these issues before checking out.', 'woocommerce' ) }}</div>
 

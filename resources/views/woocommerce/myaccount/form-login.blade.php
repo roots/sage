@@ -15,7 +15,7 @@
     <div class="sw-login__login col" id="customer-login">
         <h2>{{__( 'Login', 'woocommerce' )}}</h2>
         <form class="sw-login__form login" method="post">
-            @php(do_action( 'woocommerce_login_form_start' ))
+            @php do_action( 'woocommerce_login_form_start' ) @endphp
             <div class="form-group">
                 <label for="username">{{ __( 'Username or email', 'woocommerce' ) }} <sup>*</sup></label>
                 <input type="text" class="form-control" name="username" id="username"
@@ -26,7 +26,7 @@
                 <input class="form-control" type="password" name="password" id="password"/>
             </div>
 
-            @php(do_action( 'woocommerce_login_form' ))
+            @php do_action( 'woocommerce_login_form' ) @endphp
 
             <div class="form-group form-inline">
                 {!! wp_nonce_field( 'woocommerce-login', 'woocommerce-login-nonce' ) !!}
@@ -48,7 +48,7 @@
                 <small class="lost_password text-muded ml-auto">
                     <a href="{{ esc_url( wp_lostpassword_url() ) }}">{{  __( 'Lost your password?', 'woocommerce' ) }}</a>
                 </small>
-                @php(do_action( 'woocommerce_login_form_end' ))
+                @php do_action( 'woocommerce_login_form_end' ) @endphp
             </div>
         </form>
     </div>
@@ -58,7 +58,7 @@
 
             <form method="post" class="register">
 
-                @php(do_action( 'woocommerce_register_form_start' ))
+                @php do_action( 'woocommerce_register_form_start' ) @endphp
 
                 @if('no' === get_option( 'woocommerce_registration_generate_username' ) ))
                 <div class="form-group">
@@ -85,15 +85,15 @@
                     </div>
                 @endif
 
-                @php(do_action( 'woocommerce_register_form' ))
+                @php do_action( 'woocommerce_register_form' ) @endphp
                 <div class="form-group">
-                    @php(wp_nonce_field( 'woocommerce-register', 'woocommerce-register-nonce' ))
+                    @php wp_nonce_field( 'woocommerce-register', 'woocommerce-register-nonce' ) @endphp
                     <button type="submit" class="btn btn-primary" name="register"
                             value="@php(esc_attr_e( 'Register', 'woocommerce' ))">{{ __( 'Register', 'woocommerce' ) }}</button>
                 </div>
-                @php(do_action( 'woocommerce_register_form_end' ))
+                @php do_action( 'woocommerce_register_form_end' ) @endphp
             </form>
         </div>
     @endif
 </div>
-@php(do_action( 'woocommerce_after_customer_login_form' ))
+@php do_action( 'woocommerce_after_customer_login_form' ) @endphp

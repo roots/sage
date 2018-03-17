@@ -4,7 +4,7 @@
 @package WooCommerce/Templates
 @version 3.3.0
 --}}
-@php(wc_print_notices())
+@php wc_print_notices() @endphp
 
 
 <div class="sw-reset-pass">
@@ -24,7 +24,7 @@
 	<input type="hidden" name="reset_key" value="@php(esc_attr( $args['key'] ))" />
 	<input type="hidden" name="reset_login" value="@php(esc_attr( $args['login'] ))" />
 
-	@php(do_action( 'woocommerce_resetpassword_form' ))
+	@php do_action( 'woocommerce_resetpassword_form' ) @endphp
 
 	<div class="col-12">
 		<input type="hidden" name="wc_reset_password" value="true" />
@@ -33,5 +33,5 @@
         </button>
 	</div>
 </form>
-	@php(wp_nonce_field( 'reset_password' ))
+	@php wp_nonce_field( 'reset_password' ) @endphp
 </div>

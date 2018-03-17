@@ -19,21 +19,21 @@
       action="{{ esc_url( wc_get_checkout_url() ) }}" enctype="multipart/form-data">
 
     @if( $checkout->get_checkout_fields())
-        @php(do_action( 'woocommerce_checkout_before_customer_details' ))
+        @php do_action( 'woocommerce_checkout_before_customer_details' ) @endphp
 
         <div class="sw-checkout__customer-details col-xs-12 col-md-7" id="customer_details">
-            @php(do_action( 'woocommerce_checkout_billing' ))
-            @php(do_action( 'woocommerce_checkout_shipping' ))
+            @php do_action( 'woocommerce_checkout_billing' ) @endphp
+            @php do_action( 'woocommerce_checkout_shipping' ) @endphp
         </div>
-        @php(do_action( 'woocommerce_checkout_after_customer_details' ))
+        @php do_action( 'woocommerce_checkout_after_customer_details' ) @endphp
 
     @endif
-    @php(do_action( 'woocommerce_checkout_before_order_review' ))
+    @php do_action( 'woocommerce_checkout_before_order_review' ) @endphp
     <div class="sw-checkout__order-review col-xs-12 col-md-5" id="order_review">
         <h3 id="order_review_heading">{{ __( 'Your order', 'woocommerce' ) }}</h3>
-        @php(do_action( 'woocommerce_checkout_order_review' ))
+        @php do_action( 'woocommerce_checkout_order_review' ) @endphp
     </div>
-    @php(do_action( 'woocommerce_checkout_after_order_review' ))
+    @php do_action( 'woocommerce_checkout_after_order_review' ) @endphp
 </form>
 
-@php(do_action( 'woocommerce_after_checkout_form', $checkout ))
+@php do_action( 'woocommerce_after_checkout_form', $checkout ) @endphp

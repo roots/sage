@@ -15,10 +15,10 @@
 
 
     <div class="form-row sw-billing-fields__wrapper woocommerce-billing-fields__field-wrapper">
-        @php( \App\alterWooFields('billing'))
+        @php  \App\alterWooFields('billing') @endphp
     </div>
 
-    @php(do_action( 'woocommerce_after_checkout_billing_form', $checkout ))
+    @php do_action( 'woocommerce_after_checkout_billing_form', $checkout ) @endphp
 </div>
 
 @if(! is_user_logged_in() && $checkout->is_registration_enabled() )
@@ -31,20 +31,20 @@
                 </label>
 		<input class="form-check-input"
                        id="createaccount"
-                       @php( checked( ( true === $checkout->get_value( 'createaccount' ) || ( true === apply_filters( 'woocommerce_create_account_default_checked', false ) ) ), true ))
+                       @php  checked( ( true === $checkout->get_value( 'createaccount' ) || ( true === apply_filters( 'woocommerce_create_account_default_checked', false ) ) ), true ) @endphp
                        type="checkbox" name="createaccount" value="1"/>
 
             </p>
         @endif
 
-        @php(do_action( 'woocommerce_before_checkout_registration_form', $checkout ))
+        @php do_action( 'woocommerce_before_checkout_registration_form', $checkout ) @endphp
 
         @if($checkout->get_checkout_fields( 'account' ))
                 <div class="create-account">
-                    @php(\App\alterWooFields('account'))
+                    @php \App\alterWooFields('account') @endphp
                 </div>
         @endif
 
-        @php(do_action( 'woocommerce_after_checkout_registration_form', $checkout ))
+        @php do_action( 'woocommerce_after_checkout_registration_form', $checkout ) @endphp
     </div>
 @endif

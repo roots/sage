@@ -19,19 +19,19 @@
 
 		<div class="shipping_address">
 
-			@php(do_action( 'woocommerce_before_checkout_shipping_form', $checkout ))
+			@php do_action( 'woocommerce_before_checkout_shipping_form', $checkout ) @endphp
 
 			<div class="form-row mt-2">
-				@php(\App\alterWooFields('shipping'))
+				@php \App\alterWooFields('shipping') @endphp
 			</div>
 
-			@php(do_action( 'woocommerce_after_checkout_shipping_form', $checkout ))
+			@php do_action( 'woocommerce_after_checkout_shipping_form', $checkout ) @endphp
 
 		</div>
     @endif
 </div>
 <div class="sw-additional-fields mt-3">
-	@php(do_action( 'woocommerce_before_order_notes', $checkout ))
+	@php do_action( 'woocommerce_before_order_notes', $checkout ) @endphp
 
 	@if( apply_filters( 'woocommerce_enable_order_notes_field', 'yes' === get_option( 'woocommerce_enable_order_comments', 'yes' ) ) )
 	@if(( ! WC()->cart->needs_shipping() || wc_ship_to_billing_address_only() ))
@@ -39,8 +39,8 @@
    <h3>{{ __( 'Additional information', 'woocommerce' ) }}</h3>
 
 	@endif
-		@php(\App\alterWooFields('order'))
+		@php \App\alterWooFields('order') @endphp
 	@endif
 
-	@php(do_action( 'woocommerce_after_order_notes', $checkout ))
+	@php do_action( 'woocommerce_after_order_notes', $checkout ) @endphp
 </div>

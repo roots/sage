@@ -16,7 +16,7 @@
       enctype='multipart/form-data'
       data-product_id="{{ absint( $product->get_id()) }}"
       data-product_variations="{!! htmlspecialchars( wp_json_encode( $available_variations ) ) !!}">
-    @php(do_action( 'woocommerce_before_variations_form' ))
+    @php do_action( 'woocommerce_before_variations_form' ) @endphp
     @if( empty( $available_variations ) && false !== $available_variations )
         <p class="stock out-of-stock"><em>{{ __( 'This product is currently out of stock and unavailable.', 'woocommerce' ) }}</em></p>
     @else
@@ -41,7 +41,7 @@
             <?php endforeach; ?>
         </div>
 
-        @php(do_action( 'woocommerce_before_add_to_cart_button' ))
+        @php do_action( 'woocommerce_before_add_to_cart_button' ) @endphp
 
         <div class="sw-variations__add-to-cart mt-1 single_variation_wrap">
             @php
@@ -65,11 +65,11 @@
             @endphp
         </div>
 
-        @php(do_action( 'woocommerce_after_add_to_cart_button' ))
+        @php do_action( 'woocommerce_after_add_to_cart_button' ) @endphp
     @endif
 
-    @php(do_action( 'woocommerce_after_variations_form' ))
+    @php do_action( 'woocommerce_after_variations_form' ) @endphp
 </form>
 
-@php(do_action( 'woocommerce_after_add_to_cart_form' ))
+@php do_action( 'woocommerce_after_add_to_cart_form' ) @endphp
 

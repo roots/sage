@@ -9,8 +9,8 @@ wc_print_notices();
 @endphp
 
 <div class="sw-myaccount row">
-	@php(do_action( 'woocommerce_account_navigation' ))
+	@php do_action( 'woocommerce_account_navigation' ) @endphp
 	<div class="sw-myaccount__content col-sm-12 col-lg">
-		@php(do_action( 'woocommerce_account_content' ))
+		@php do_action( 'woocommerce_account_content' ) @endphp
 	</div>
 </div>

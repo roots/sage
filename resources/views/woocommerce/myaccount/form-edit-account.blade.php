@@ -4,11 +4,11 @@
 @package WooCommerce/Templates
 @version 3.3.0
 --}}
-@php(do_action( 'woocommerce_before_edit_account_form' ))
+@php do_action( 'woocommerce_before_edit_account_form' ) @endphp
 
 <form class="sw-myaccount__edit-account form-row" action="" method="post">
 
-	@php(do_action( 'woocommerce_edit_account_form_start' ))
+	@php do_action( 'woocommerce_edit_account_form_start' ) @endphp
 	<div class="form-group col-6">
 		<label for="account_first_name"><?php esc_html_e( 'First name', 'woocommerce' ); ?> <sup>*</sup></label>
 		<input type="text" class="form-control" name="account_first_name" id="account_first_name" value="<?php echo esc_attr( $user->first_name ); ?>" />
@@ -37,13 +37,13 @@
 			<input type="password" class="form-control" name="password_2" id="password_2" />
 		</p>
 	</fieldset>
-	@php(do_action( 'woocommerce_edit_account_form' ))
+	@php do_action( 'woocommerce_edit_account_form' ) @endphp
 	<div class="col-12">
-		@php(wp_nonce_field( 'save_account_details' ))
+		@php wp_nonce_field( 'save_account_details' ) @endphp
 		<button type="submit" class="btn btn-primary" name="save_account_details" value="@php(esc_attr_e( 'Save changes', 'woocommerce' ))">{{ __( 'Save changes', 'woocommerce' ) }}</button>
 		<input type="hidden" name="action" value="save_account_details" />
 	</div>
-	@php( do_action( 'woocommerce_edit_account_form_end' ))
+	@php  do_action( 'woocommerce_edit_account_form_end' ) @endphp
 </form>
 
-@php(do_action( 'woocommerce_after_edit_account_form' ))
+@php do_action( 'woocommerce_after_edit_account_form' ) @endphp

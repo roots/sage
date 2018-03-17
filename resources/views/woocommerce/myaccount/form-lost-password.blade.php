@@ -4,7 +4,7 @@
 @package WooCommerce/Templates
 @version 3.3.0
 --}}
-@php(wc_print_notices())
+@php wc_print_notices() @endphp
 
 
 <div class="sw-lost-pass">
@@ -18,14 +18,14 @@
                id="user_login"/>
 
 
-        @php(do_action( 'woocommerce_lostpassword_form' ))
+        @php do_action( 'woocommerce_lostpassword_form' ) @endphp
 
         <input type="hidden" name="wc_reset_password" value="true"/>
         <button type="submit" class="btn btn-primary"
                 value="@php(esc_attr_e( 'Reset password', 'woocommerce' ))">{{ __( 'Reset password', 'woocommerce' ) }}</button>
 
 
-        @php(wp_nonce_field( 'lost_password' ))
+        @php wp_nonce_field( 'lost_password' ) @endphp
 
     </form>
 </div>

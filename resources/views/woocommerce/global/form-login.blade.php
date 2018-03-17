@@ -29,7 +29,7 @@
 <form class="woocommerce-form woocommerce-form-login login"
       method="post" {!! ( $hidden ) ? 'style="display:none;"' : '' !!}>
 
-    @php(do_action( 'woocommerce_login_form_start' ))
+    @php do_action( 'woocommerce_login_form_start' ) @endphp
     <small>{!! ( $message ) ? wpautop( wptexturize( $message ) ) : '' !!}</small>
     <div class="form-group">
         <label for="username">{{ __( 'Username or email', 'woocommerce' ) }} <span class="required">*</span></label>
@@ -40,7 +40,7 @@
         <input class="input-text form-control" type="password" name="password" id="password"/>
     </div>
 
-	@php(do_action( 'woocommerce_login_form' ))
+	@php do_action( 'woocommerce_login_form' ) @endphp
     <div class="form-group form-inline">
         {!! wp_nonce_field( 'woocommerce-login', 'woocommerce-login-nonce' ) !!}
 
@@ -64,6 +64,6 @@
             <a href="{{ esc_url( wp_lostpassword_url() ) }}">{{  __( 'Lost your password?', 'woocommerce' ) }}</a>
         </small>
     </div>
-    @php(do_action( 'woocommerce_login_form_end' ))
+    @php do_action( 'woocommerce_login_form_end' ) @endphp
 
 </form>
