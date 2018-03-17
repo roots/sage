@@ -3,7 +3,6 @@ sudo: false
 dist: trusty
 php:
   - 7.1
-  - 7.0
   - nightly
 
 env:
