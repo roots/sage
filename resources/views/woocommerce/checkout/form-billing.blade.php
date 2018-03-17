@@ -26,13 +26,13 @@
         @if(! $checkout->is_registration_required())
 
             <p class="form-check-inline">
-                <input class="form-check-input"
-                       id="createaccount"
-                       @php( checked( ( true === $checkout->get_value( 'createaccount' ) || ( true === apply_filters( 'woocommerce_create_account_default_checked', false ) ) ), true ))
-                       type="checkbox" name="createaccount" value="1"/>
                 <label class="form-check-label">
                     <span>{{ __( 'Create an account?', 'woocommerce' ) }}</span>
                 </label>
+		<input class="form-check-input"
+                       id="createaccount"
+                       @php( checked( ( true === $checkout->get_value( 'createaccount' ) || ( true === apply_filters( 'woocommerce_create_account_default_checked', false ) ) ), true ))
+                       type="checkbox" name="createaccount" value="1"/>
 
             </p>
         @endif
