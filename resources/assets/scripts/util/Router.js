@@ -25,9 +25,25 @@ class Router {
    * @param {string} [arg] Any custom argument to be passed to the event.
    */
   fire(route, event = 'init', arg) {
-    const fire = route !== '' && this.routes[route] && typeof this.routes[route][event] === 'function';
+    const fire = route !== '' && this.routes[route];
+
     if (fire) {
-      this.routes[route][event](arg);
+      let routeInstance = this.routes[route];
+      let isDynamic = false;
+
+      if (typeof routeInstance === 'function') {
+        routeInstance = routeInstance();
+        isDynamic = true;
+      }
+
+      Promise.resolve(routeInstance).then((resolvedRoute) => {
+        if (isDynamic) {
+          resolvedRoute = resolvedRoute.default;
+        }
+        if (typeof resolvedRoute[event] === 'function') {
+          resolvedRoute[event](arg);
+        }
+      });
     }
   }
 

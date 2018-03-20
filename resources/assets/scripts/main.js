@@ -8,7 +8,21 @@ import "./autoload/**/*"
 import Router from './util/Router';
 import common from './routes/common';
 import home from './routes/home';
-import aboutUs from './routes/about';
+
+/**
+ * Import  the `about` route only when <body> contains 'about-us' class
+ * using dynamic import technique
+ *
+ * NOTE: if your build system supports `import()` function
+ * then you could use this construction instead:
+ * const aboutUs = () => import('./routes/about');
+ */
+
+const aboutUs = () =>  new Promise((resolve) => require.ensure('./routes/about', (require) => {
+    const about = require('./routes/about');
+    resolve(about);
+  })
+);
 
 /** Populate Router instance with DOM routes */
 const routes = new Router({
