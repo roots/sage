@@ -6,13 +6,12 @@
 --}}
 @php
     do_action( 'woocommerce_before_single_product' );
-    $id = the_ID();
     if ( post_password_required() ) {
         echo get_the_password_form();
         return;
     }
 @endphp
-<div id="product-{{ $id }}"
+<div id="product-@php the_ID() @endphp"
         @php post_class('sw-single-product row') @endphp>
     <div class="sw-single-product__images col-sm-6">
         @php do_action( 'woocommerce_before_single_product_summary' ) @endphp
