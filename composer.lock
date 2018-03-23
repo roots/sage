@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "504a606e7b7b5d1bb9e7760133d581e0",
+    "content-hash": "857720204979ff95c232973d46def872",
     "packages": [
         {
             "name": "brain/hierarchy",
@@ -727,32 +727,30 @@
         },
         {
             "name": "soberwp/controller",
-            "version": "v2.0.0",
+            "version": "v2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/soberwp/controller.git",
-                "reference": "72022fda59f109adf04b0502bf36c85e23f9ca78"
+                "reference": "2dda8d69035ab724c9820cab39ca14cc6688315c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/soberwp/controller/zipball/72022fda59f109adf04b0502bf36c85e23f9ca78",
-                "reference": "72022fda59f109adf04b0502bf36c85e23f9ca78",
+                "url": "https://api.github.com/repos/soberwp/controller/zipball/2dda8d69035ab724c9820cab39ca14cc6688315c",
+                "reference": "2dda8d69035ab724c9820cab39ca14cc6688315c",
                 "shasum": ""
             },
             "require": {
                 "brain/hierarchy": "^2.3",
                 "composer/installers": "~1.0",
-                "php": ">=5.6.0",
-                "symfony/yaml": "^3.2"
+                "php": ">=5.6.0"
             },
             "require-dev": {
-                "squizlabs/php_codesniffer": "2.*"
+                "squizlabs/php_codesniffer": "^3.2"
             },
             "type": "package",
             "autoload": {
                 "psr-4": {
-                    "Sober\\Controller\\": "src/",
-                    "Sober\\Controller\\Module\\": "src/Module/"
+                    "Sober\\Controller\\": "src/"
                 },
                 "files": [
                     "controller.php"
@@ -774,7 +772,7 @@
             "keywords": [
                 "wordpress"
             ],
-            "time": "2018-01-19T12:43:41+00:00"
+            "time": "2018-03-12T09:06:46+00:00"
         },
         {
             "name": "symfony/debug",
@@ -994,16 +992,16 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "1.24.2",
+            "version": "1.25.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "bba6c6e410c6b4317e37a9474aeaa753808c3875"
+                "reference": "cbcf13da0b531767e39eb86e9687f5deba9857b4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/bba6c6e410c6b4317e37a9474aeaa753808c3875",
-                "reference": "bba6c6e410c6b4317e37a9474aeaa753808c3875",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/cbcf13da0b531767e39eb86e9687f5deba9857b4",
+                "reference": "cbcf13da0b531767e39eb86e9687f5deba9857b4",
                 "shasum": ""
             },
             "require": {
@@ -1043,7 +1041,7 @@
                 "datetime",
                 "time"
             ],
-            "time": "2018-03-10T10:10:14+00:00"
+            "time": "2018-03-19T15:50:49+00:00"
         },
         {
             "name": "roots/sage-installer",
@@ -1436,7 +1434,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=7"
+        "php": ">=7.1"
     },
     "platform-dev": []
 }
