@@ -59,7 +59,8 @@
     "lint": "npm run -s lint:scripts && npm run -s lint:styles",
     "lint:scripts": "eslint resources/assets/scripts resources/assets/build",
     "lint:styles": "stylelint \"resources/assets/styles/**/*.{css,sass,scss,sss,less}\"",
-    "test": "npm run -s lint"
+    "test": "npm run -s lint",
+    "postinstall": "opencollective postinstall"
   },
   "engines": {
     "node": ">= 6.9.4"
@@ -105,6 +106,11 @@
   "dependencies": {
     "bootstrap": "v4.0.0",
     "jquery": "^3.3.1",
+    "opencollective": "^1.0.3",
     "popper.js": "^1.12.9"
+  },
+  "collective": {
+    "type": "opencollective",
+    "url": "https://opencollective.com/sage"
   }
 }
