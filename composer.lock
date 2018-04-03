@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "1362ee4cc0fbe465df47aeb15838a178",
+    "content-hash": "e05f6ac52b2f5cc0b29091b9602efd36",
     "packages": [
         {
             "name": "brain/hierarchy",
@@ -248,63 +248,6 @@
                 "string"
             ],
             "time": "2018-01-09T20:05:19+00:00"
-        },
-        {
-            "name": "hassankhan/config",
-            "version": "0.10.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/hassankhan/config.git",
-                "reference": "06ac500348af033f1a2e44dc357ca86282626d4a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/hassankhan/config/zipball/06ac500348af033f1a2e44dc357ca86282626d4a",
-                "reference": "06ac500348af033f1a2e44dc357ca86282626d4a",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~4.0",
-                "scrutinizer/ocular": "~1.1",
-                "squizlabs/php_codesniffer": "~2.2"
-            },
-            "suggest": {
-                "symfony/yaml": "~2.5"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Noodlehaus\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Hassan Khan",
-                    "homepage": "http://hassankhan.me/",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Lightweight configuration file loader that supports PHP, INI, XML, JSON, and YAML files",
-            "homepage": "http://hassankhan.me/config/",
-            "keywords": [
-                "config",
-                "configuration",
-                "ini",
-                "json",
-                "microphp",
-                "unframework",
-                "xml",
-                "yaml",
-                "yml"
-            ],
-            "time": "2016-02-11T16:21:17+00:00"
         },
         {
             "name": "illuminate/config",
@@ -784,33 +727,30 @@
         },
         {
             "name": "soberwp/controller",
-            "version": "9.0.0-beta.4",
+            "version": "v2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/soberwp/controller.git",
-                "reference": "2b6c8450f4a3100b16bfc482c825d89422b6adc6"
+                "reference": "2dda8d69035ab724c9820cab39ca14cc6688315c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/soberwp/controller/zipball/2b6c8450f4a3100b16bfc482c825d89422b6adc6",
-                "reference": "2b6c8450f4a3100b16bfc482c825d89422b6adc6",
+                "url": "https://api.github.com/repos/soberwp/controller/zipball/2dda8d69035ab724c9820cab39ca14cc6688315c",
+                "reference": "2dda8d69035ab724c9820cab39ca14cc6688315c",
                 "shasum": ""
             },
             "require": {
                 "brain/hierarchy": "^2.3",
                 "composer/installers": "~1.0",
-                "hassankhan/config": "^0.10.0",
-                "php": ">=5.6.0",
-                "symfony/yaml": "^3.2"
+                "php": ">=5.6.0"
             },
             "require-dev": {
-                "squizlabs/php_codesniffer": "2.*"
+                "squizlabs/php_codesniffer": "^3.2"
             },
             "type": "package",
             "autoload": {
                 "psr-4": {
-                    "Sober\\Controller\\": "src/",
-                    "Sober\\Controller\\Module\\": "src/Module/"
+                    "Sober\\Controller\\": "src/"
                 },
                 "files": [
                     "controller.php"
@@ -832,7 +772,7 @@
             "keywords": [
                 "wordpress"
             ],
-            "time": "2017-08-22T17:35:30+00:00"
+            "time": "2018-03-12T09:06:46+00:00"
         },
         {
             "name": "symfony/debug",
@@ -938,64 +878,6 @@
             "description": "Symfony Finder Component",
             "homepage": "https://symfony.com",
             "time": "2018-03-05T18:28:11+00:00"
-        },
-        {
-            "name": "symfony/yaml",
-            "version": "v3.4.6",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/yaml.git",
-                "reference": "6af42631dcf89e9c616242c900d6c52bd53bd1bb"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/6af42631dcf89e9c616242c900d6c52bd53bd1bb",
-                "reference": "6af42631dcf89e9c616242c900d6c52bd53bd1bb",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^5.5.9|>=7.0.8"
-            },
-            "conflict": {
-                "symfony/console": "<3.4"
-            },
-            "require-dev": {
-                "symfony/console": "~3.4|~4.0"
-            },
-            "suggest": {
-                "symfony/console": "For validating YAML files using the lint command"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.4-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\Component\\Yaml\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Symfony Yaml Component",
-            "homepage": "https://symfony.com",
-            "time": "2018-02-16T09:50:28+00:00"
         }
     ],
     "packages-dev": [
@@ -1052,20 +934,20 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "1.23.0",
+            "version": "1.25.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "4a874a39b2b00d7e0146cd46fab6f47c41ce9e65"
+                "reference": "cbcf13da0b531767e39eb86e9687f5deba9857b4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/4a874a39b2b00d7e0146cd46fab6f47c41ce9e65",
-                "reference": "4a874a39b2b00d7e0146cd46fab6f47c41ce9e65",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/cbcf13da0b531767e39eb86e9687f5deba9857b4",
+                "reference": "cbcf13da0b531767e39eb86e9687f5deba9857b4",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.0",
+                "php": ">=5.3.9",
                 "symfony/translation": "~2.6 || ~3.0 || ~4.0"
             },
             "require-dev": {
@@ -1101,7 +983,7 @@
                 "datetime",
                 "time"
             ],
-            "time": "2018-02-28T09:22:05+00:00"
+            "time": "2018-03-19T15:50:49+00:00"
         },
         {
             "name": "roots/sage-installer",
@@ -1489,8 +1371,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "roots/sage-lib": 10,
-        "soberwp/controller": 10
+        "roots/sage-lib": 10
     },
     "prefer-stable": false,
     "prefer-lowest": false,
