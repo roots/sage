@@ -12,7 +12,7 @@
     ]
   },
   "publicPath": "/app/themes/sage-woo",
-  "devUrl": "http://woo.test/",
+  "devUrl": "http://woo.test",
   "proxyUrl": "http://localhost:3000",
   "cacheBusting": "[name]_[hash:8]",
   "watch": [
