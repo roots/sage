@@ -181,6 +181,7 @@ And also after each enable/disable don't forget to clear the cache!
 
 ## Actions & Hooks
 You can add or remove actions easily by using sage-woo.yml
+Use namespaces for your functions! `namespace\func_name`
 The format is the following:
 
 ```yaml
@@ -188,8 +189,8 @@ actions:
 	# 1st method
 	remove: # selected actions
 		hook_name:
-			namespace\action_name: order
-			namespace\action_name: order
+			namespace\func_name: order
+			namespace\func_name: order
 			# etc..
 		hook_name: all # if 'all' provided every action which belongs to this hook is being removed
 	# 2nd method, if you want total customisation just remove all actions
