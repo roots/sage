@@ -1,4 +1,6 @@
 ### HEAD
+* Update to Boostrap 4.1.0 ([#2056](https://github.com/roots/sage/pull/2056))
+* Change inline `@php` directive to full form ([#2042](https://github.com/roots/sage/pull/2042))
 * PHP 7.1.3+ is now required ([#2037](https://github.com/roots/sage/pull/2037))
 
 ### 9.0.0: February 7th, 2018
