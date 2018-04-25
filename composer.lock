@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "fa23aa33e6dd0ad71e1959f0e01a1ec3",
+    "content-hash": "1387af18b4df853db96edd5d561c8545",
     "packages": [
         {
             "name": "brain/hierarchy",
@@ -1535,7 +1535,6 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "roots/sage-lib": 10,
         "soberwp/controller": 10
     },
     "prefer-stable": false,
