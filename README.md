@@ -14,7 +14,6 @@ Sage is a WordPress starter theme with a modern development workflow.
 * [Blade](https://laravel.com/docs/5.5/blade) as a templating engine
 * [Controller](https://github.com/soberwp/controller) for passing data to Blade templates
 * CSS framework (optional): [Bootstrap 4](https://getbootstrap.com/), [Bulma](https://bulma.io/), [Foundation](https://foundation.zurb.com/), [Tachyons](http://tachyons.io/)
-* Font Awesome (optional)
 
 See a working example at [roots-example-project.com](https://roots-example-project.com/).
 
@@ -43,7 +42,7 @@ To install the latest development version of Sage, add `dev-master` to the end o
 $ composer create-project roots/sage your-theme-name dev-master
 ```
 
-During theme installation you will have options to update `style.css` theme headers, select a CSS framework, add Font Awesome, and configure Browsersync.
+During theme installation you will have options to update `style.css` theme headers, select a CSS framework, and configure Browsersync.
 
 ## Theme structure
 
