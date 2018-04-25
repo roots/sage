@@ -1,4 +1,5 @@
 ### HEAD
+* Auto-detect `proxyUrl` scheme ([#2062](https://github.com/roots/sage/pull/2062))
 * Bump to Laravel 5.6 ([#2061](https://github.com/roots/sage/pull/2061))
 * Update to Boostrap 4.1.0 ([#2056](https://github.com/roots/sage/pull/2056))
 * Change inline `@php` directive to full form ([#2042](https://github.com/roots/sage/pull/2042))
