@@ -3,8 +3,8 @@
 namespace App\SageWoo\Modules;
 
 class Actions extends Module {
-    
-    const ARCHIVE_PRODUCT_HOOKS = [
+
+	const ARCHIVE_PRODUCT_HOOKS = [
 		'woocommerce_before_main_content',
 		'woocommerce_archive_description',
 		'woocommerce_before_shop_loop',
@@ -59,9 +59,11 @@ class Actions extends Module {
 		}
 		if ( isset( $this->config['remove_all'] ) && ! empty( $this->config['remove_all'] ) ) {
 			$remove_all = $this->config['remove_all'];
-			foreach ( $remove_all as $action ) {
-				$hooks = constant( 'self::' . strtoupper( $action ) . '_HOOKS' );
-				$this->removeAllActions( $hooks );
+			foreach ( $remove_all as $action => $state ) {
+				if ($state) {
+					$hooks = constant( 'self::' . strtoupper( $action ) . '_HOOKS' );
+					$this->removeAllActions( $hooks );
+				}
 			}
 		}
 	}
