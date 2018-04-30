@@ -1,4 +1,4 @@
-### HEAD
+### 9.0.1: April 30th, 2018
 * Update to Bootstrap 4.1.1 ([#2065](https://github.com/roots/sage/pull/2065))
 * Auto-detect `proxyUrl` scheme ([#2062](https://github.com/roots/sage/pull/2062))
 * Bump to Laravel 5.6 ([#2061](https://github.com/roots/sage/pull/2061))
