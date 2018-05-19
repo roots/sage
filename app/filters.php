@@ -65,11 +65,7 @@ add_filter( 'template_include', function ( $template ) {
 		return apply_filters( "sage/template/{$class}/data", $data, $template );
 	}, [] );
 	if ( $template ) {
-	/*	if ( function_exists( 'is_woocommerce' ) && is_woocommerce() ) {
-			echo template( 'woocommerce', $data );
-		} else {*/
-			echo template( $template, $data );
-		//}
+		echo template( $template, $data );
 
 		return get_stylesheet_directory() . '/index.php';
 	}
