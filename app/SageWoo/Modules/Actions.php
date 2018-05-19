@@ -4,6 +4,28 @@ namespace App\SageWoo\Modules;
 
 class Actions extends Module {
 
+	const ARCHIVE_PRODUCT_HOOKS = [
+		'woocommerce_before_main_content',
+		'woocommerce_archive_description',
+		'woocommerce_before_shop_loop',
+		'woocommerce_shop_loop',
+		'woocommerce_after_shop_loop',
+		'woocommerce_no_products_found',
+		'woocommerce_before_shop_loop_item',
+		'woocommerce_before_shop_loop_item_title',
+		'woocommerce_shop_loop_item_title',
+		'woocommerce_after_shop_loop_item_title',
+		'woocommerce_after_shop_loop_item',
+	];
+
+	const SINGLE_PRODUCT_HOOKS = [
+		'woocommerce_before_main_content',
+		'woocommerce_after_main_content',
+		'woocommerce_before_single_product_summary',
+		'woocommerce_single_product_summary',
+		'woocommerce_after_single_product_summary',
+	];
+
 	private $config = [
 
 	];
@@ -37,9 +59,11 @@ class Actions extends Module {
 		}
 		if ( isset( $this->config['remove_all'] ) && ! empty( $this->config['remove_all'] ) ) {
 			$remove_all = $this->config['remove_all'];
-			foreach ( $remove_all as $action ) {
-				$hooks = constant( 'self::' . strtoupper( $action ) . '_HOOKS' );
-				$this->removeAllActions( $hooks );
+			foreach ( $remove_all as $action => $state ) {
+				if ($state) {
+					$hooks = constant( 'self::' . strtoupper( $action ) . '_HOOKS' );
+					$this->removeAllActions( $hooks );
+				}
 			}
 		}
 	}
