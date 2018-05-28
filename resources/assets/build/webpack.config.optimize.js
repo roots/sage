@@ -15,7 +15,7 @@ module.exports = {
         plugins: [
           { removeUnknownsAndDefaults: false },
           { cleanupIDs: false },
-          { removeViewBox: false }
+          { removeViewBox: false },
         ],
       },
       plugins: [imageminMozjpeg({ quality: 75 })],
