@@ -136,7 +136,6 @@
     var form              = event.data.variationForm,
         attributes        = form.getChosenAttributes(),
         currentAttributes = attributes.data;
-
     if (attributes.count === attributes.chosenCount) {
       if (form.useAjax) {
         if (form.xhr) {
@@ -196,7 +195,6 @@
         variation_id   = '',
         template       = false,
         $template_html = '';
-
     if (variation.sku) {
       $sku.wc_set_content(variation.sku);
     } else {
@@ -437,17 +435,20 @@
     var count = 0;
     var chosen = 0;
     this.$attributeFields.each(function () {
-      var attribute_name = $(this).data('attribute_name') || $(this).attr('name');
-      var value = '';
-      if ($(this).is('select') || ($(this).is('[type="radio"]') && $(this).is(':checked'))) {
+      var attribute_name = $(this).data('attribute_name') || $(this).attr('name'),
+          value          = '';
+      if ($(this).is('select')) {
         value = $(this).val() || '';
-        if (value.length > 0) {
-          chosen++;
-        }
-        count++;
-        data[attribute_name] = value;
+      } else if ($(this).is('[type="radio"]')) {
+        value = $(this).closest('form.variations_form').find(`[data-attribute_name="${attribute_name}"]`).filter(':checked').val() || '';
       }
+      if (value.length > 0) {
+        chosen++;
+      }
+      count++;
+      data[attribute_name] = value;
     });
+
     return {
       'count': count,
       'chosenCount': chosen,
@@ -462,7 +463,6 @@
     var matching = [];
     for (var i = 0; i < variations.length; i++) {
       var variation = variations[i];
-
       if (this.isMatch(variation.attributes, attributes)) {
         matching.push(variation);
       }
@@ -481,6 +481,7 @@
         var val1 = variation_attributes[attr_name];
         var val2 = attributes[attr_name];
         if (val1 !== undefined && val2 !== undefined && val1.length !== 0 && val2.length !== 0 && val1 !== val2) {
+
           match = false;
         }
       }
