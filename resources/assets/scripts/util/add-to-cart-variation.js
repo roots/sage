@@ -164,10 +164,8 @@
         });
       } else {
         form.$form.trigger('update_variation_values');
-
         var matching_variations = form.findMatchingVariations(form.variationData, currentAttributes),
             variation           = matching_variations.shift();
-
         if (variation) {
           form.$form.trigger('found_variation', [variation]);
         } else {
@@ -312,8 +310,7 @@
           selected_attr_val_valid = true,
           isSelect                = current_attr_select.is('select'),
           isRadio                 = current_attr_select.is('input[type="radio"]'),
-          $radios,
-          radio_checked_attr_val;
+          $radios;
 
       if (isRadio) {
         $radios = form.$form
@@ -439,25 +436,18 @@
     var data = {};
     var count = 0;
     var chosen = 0;
-
     this.$attributeFields.each(function () {
       var attribute_name = $(this).data('attribute_name') || $(this).attr('name');
-      var $radios = $(this).closest('form.variations_form').find('input[type="radio"]');
       var value = '';
-      if ($(this).is('[type=radio]')) {
-        value = $radios.filter(':checked').val() || '';
-      }
-      else {
+      if ($(this).is('select') || ($(this).is('[type="radio"]') && $(this).is(':checked'))) {
         value = $(this).val() || '';
+        if (value.length > 0) {
+          chosen++;
+        }
+        count++;
+        data[attribute_name] = value;
       }
-      if (value.length > 0) {
-        chosen++;
-      }
-
-      count++;
-      data[attribute_name] = value;
     });
-
     return {
       'count': count,
       'chosenCount': chosen,
