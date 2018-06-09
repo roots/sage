@@ -92,8 +92,8 @@ let webpackConfig = {
             {
               loader: 'sass', options: {
                 sourceMap: config.enabled.sourceMaps,
-                sourceComments: true
-              }
+                sourceComments: true,
+              },
             },
           ],
         }),
