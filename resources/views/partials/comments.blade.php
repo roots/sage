@@ -5,13 +5,13 @@ if (post_password_required()) {
 @endphp
 
 <section id="comments" class="comments">
-  @if (have_comments())
+  @if ((int)get_comments_number() > 0)
     <h2>
       {!! sprintf(_nx('One response to &ldquo;%2$s&rdquo;', '%1$s responses to &ldquo;%2$s&rdquo;', get_comments_number(), 'comments title', 'sage'), number_format_i18n(get_comments_number()), '<span>' . get_the_title() . '</span>') !!}
     </h2>
 
     <ol class="comment-list">
-      {!! wp_list_comments(['style' => 'ol', 'short_ping' => true]) !!}
+      {!! wp_list_comments(['style' => 'ol', 'short_ping' => true], get_comments([ 'post_id' => get_the_ID(), 'status' => 'approve'])) !!}
     </ol>
 
     @if (get_comment_pages_count() > 1 && get_option('page_comments'))
