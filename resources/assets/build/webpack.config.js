@@ -89,7 +89,12 @@ let webpackConfig = {
               },
             },
             { loader: 'resolve-url', options: { sourceMap: config.enabled.sourceMaps } },
-            { loader: 'sass', options: { sourceMap: config.enabled.sourceMaps } },
+            {
+              loader: 'sass', options: {
+                sourceMap: config.enabled.sourceMaps,
+                sourceComments: true,
+              },
+            },
           ],
         }),
       },
