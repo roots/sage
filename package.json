@@ -81,6 +81,7 @@
     "extract-text-webpack-plugin": "~3.0.2",
     "file-loader": "^1.1.6",
     "friendly-errors-webpack-plugin": "^1.6.1",
+    "html-loader": "^0.5.5",
     "imagemin-mozjpeg": "~7.0.0",
     "imagemin-webpack-plugin": "~2.1.1",
     "import-glob": "~1.5",
