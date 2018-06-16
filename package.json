@@ -52,7 +52,7 @@
   },
   "scripts": {
     "build": "webpack --progress --config resources/assets/build/webpack.config.js",
-    "build:production": "webpack --progress -p --config resources/assets/build/webpack.config.js",
+    "build:production": "webpack --env.production --progress --config resources/assets/build/webpack.config.js",
     "build:profile": "webpack --progress --profile --json --config resources/assets/build/webpack.config.js",
     "start": "webpack --hide-modules --watch --config resources/assets/build/webpack.config.js",
     "rmdist": "rimraf dist",
@@ -94,6 +94,7 @@
     "stylelint": "^8.4.0",
     "stylelint-config-standard": "~18.2.0",
     "stylelint-webpack-plugin": "^0.10.1",
+    "uglifyjs-webpack-plugin": "^1.2.5",
     "url-loader": "^0.6.2",
     "webpack": "~3.10.0",
     "webpack-assets-manifest": "^1.0.0",
