@@ -29,7 +29,7 @@ class Router {
       bubbles: true,
       detail: {
         route,
-        fn
+        fn: event
       }
     }));
     
