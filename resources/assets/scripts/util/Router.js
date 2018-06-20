@@ -29,8 +29,8 @@ class Router {
       bubbles: true,
       detail: {
         route,
-        fn: event
-      }
+        fn: event,
+      },
     }));
     
     const fire = route !== '' && this.routes[route] && typeof this.routes[route][event] === 'function';
