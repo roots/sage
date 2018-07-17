@@ -8,6 +8,7 @@ const StyleLintPlugin = require('stylelint-webpack-plugin');
 const CopyGlobsPlugin = require('copy-globs-webpack-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 
+const desire = require('./util/desire');
 const config = require('./config');
 
 const assetsFilenames = (config.enabled.cacheBusting) ? config.cacheBusting : '[name]';
@@ -213,4 +214,4 @@ if (config.enabled.watcher) {
   webpackConfig = merge(webpackConfig, require('./webpack.config.watch'));
 }
 
-module.exports = webpackConfig;
+module.exports = merge(webpackConfig, desire(`${__dirname}/webpack.config.preset`));
