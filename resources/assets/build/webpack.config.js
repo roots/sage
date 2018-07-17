@@ -2,6 +2,7 @@
 
 const webpack = require('webpack');
 const merge = require('webpack-merge');
+const desire = require('./util/desire');
 const CleanPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
@@ -213,4 +214,4 @@ if (config.enabled.watcher) {
   webpackConfig = merge(webpackConfig, require('./webpack.config.watch'));
 }
 
-module.exports = webpackConfig;
+module.exports = merge(webpackConfig, desire(`${__dirname}/webpack.config.preset`));
