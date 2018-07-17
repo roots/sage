@@ -2,13 +2,13 @@
 
 const webpack = require('webpack');
 const merge = require('webpack-merge');
-const desire = require('./util/desire');
 const CleanPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 const CopyGlobsPlugin = require('copy-globs-webpack-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 
+const desire = require('./util/desire');
 const config = require('./config');
 
 const assetsFilenames = (config.enabled.cacheBusting) ? config.cacheBusting : '[name]';
