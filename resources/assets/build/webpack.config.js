@@ -214,4 +214,6 @@ if (config.enabled.watcher) {
   webpackConfig = merge(webpackConfig, require('./webpack.config.watch'));
 }
 
-module.exports = merge(webpackConfig, desire(`${__dirname}/webpack.config.preset`));
+module.exports = merge.smartStrategy({
+  'module.loaders': 'replace',
+})(webpackConfig, desire(`${__dirname}/webpack.config.preset`));
