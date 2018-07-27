@@ -2,14 +2,15 @@
 
 namespace App;
 
-if(defined('WC_ABSPATH')) {
+if (defined('WC_ABSPATH')) {
     add_action('after_setup_theme', function () {
         add_theme_support('woocommerce');
     });
 
     add_filter('template_include', function ($template) {
-        if(strpos($template, WC_ABSPATH) === 0) {
-            $template = locate_template('woocommerce/' . str_replace(WC_ABSPATH . 'templates/', '', $template)) ?: $template;
+        if (strpos($template, WC_ABSPATH) === 0) {
+            $check_template = 'woocommerce/' . str_replace(WC_ABSPATH . 'templates/', '', $template);
+            $template = locate_template($check_template) ?: $template;
         }
         return $template;
     }, 100, 1);
