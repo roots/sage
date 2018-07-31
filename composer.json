@@ -28,7 +28,8 @@
   },
   "autoload": {
     "psr-4": {
-      "App\\": "app/"
+      "App\\": "app/",
+      "App\\Controllers\\": "app/controllers/"
     }
   },
   "require": {
@@ -36,7 +37,8 @@
     "composer/installers": "~1.0",
     "illuminate/support": "~5.6",
     "roots/sage-lib": "~9.0.1",
-    "soberwp/controller": "~9.0.0-beta.4"
+    "soberwp/controller": "~2.0.1",
+    "symfony/yaml": "^3.2"
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "^2.8.0",
@@ -44,8 +46,8 @@
   },
   "scripts": {
     "test": ["phpcs"],
-    "post-create-project-cmd": [
-      "Roots\\Sage\\Installer\\ComposerScript::postCreateProject"
+    "sage-woo-setup": [
+      "App\\SageWoo\\SageInstallerMod::postCreateProjectMod"
     ]
   }
 }

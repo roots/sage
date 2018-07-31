@@ -1,0 +1,77 @@
+.sw-billing-fields {
+  &__wrapper {
+    &.woocommerce-validated {
+      input {
+        @extend .is-valid;
+      }
+    }
+  }
+}
+
+/*=============================================
+Woocommerce overrides
+=============================================*/
+.wc_payment_methods {
+  @extend .list-unstyled;
+  background-color: $gray-300;
+}
+
+.wc_payment_method {
+  font-size: rem-calc(12);
+  [type="radio"] {
+    display: none;
+    &:checked + label {
+      background-color: $gray-100;
+    }
+  }
+  label {
+    cursor: pointer;
+    display: block;
+    padding: 10px;
+    font-weight: bold;
+    margin-bottom: 0;
+    &:hover {
+      background-color: $gray-100;
+    }
+  }
+  .payment_box {
+    padding: 10px;
+  }
+}
+
+#payment {
+  .form-row {
+    margin-left: 0;
+    margin-right: 0;
+    display: block;
+  }
+}
+
+.wc-terms-and-conditions {
+  span {
+    font-size: rem-calc(12);
+  }
+}
+
+#place_order {
+  display: block;
+  width: 100%;
+}
+
+.woocommerce-order-overview {
+  @extend .list-group;
+  li {
+    @extend .list-group-item;
+  }
+
+  & + p {
+    margin-top: 10px;
+  }
+}
+
+.woocommerce-table--order-details {
+  @extend .table-striped;
+  tfoot {
+    background-color: $gray-100;
+  }
+}

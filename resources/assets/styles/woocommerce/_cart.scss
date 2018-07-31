@@ -1,0 +1,74 @@
+body.woocommerce-cart {
+  @include woo-as-row;
+}
+
+.woocommerce-cart-form {
+  @include make-col-ready;
+  @extend .table-responsive-lg;
+  @include media-breakpoint-up(xs) {
+    @include make-col(12);
+    .coupon, [name="update_cart"] {
+      width: 100%;
+    }
+    [name="update_cart"] {
+      width: 100%;
+    }
+    .coupon {
+      width: 100%;
+      margin: rem-calc(10) 0;
+      input, button {
+        width: 50%;
+      }
+    }
+    .product-thumbnail {
+      display: none;
+    }
+  }
+  @include media-breakpoint-up(lg) {
+    @include make-col(8);
+    .coupon {
+      width: auto;
+      float: left;
+      margin-top: 0;
+      margin-bottom: 0;
+      input {
+        width: auto;
+      }
+    }
+    [name="update_cart"] {
+      width: auto;
+      float: right;
+    }
+    .product-thumbnail {
+      display: table-cell;
+    }
+  }
+  .actions {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+}
+
+.cart-collaterals {
+  @include make-col-ready;
+  h2 {
+    @extend .h5;
+  }
+  @include media-breakpoint-up(xs) {
+    @include make-col(12);
+  }
+  @include media-breakpoint-up(lg) {
+    @include make-col(3);
+    @include make-col-offset(1);
+  }
+}
+
+.wc-proceed-to-checkout .button {
+  @extend .btn-block;
+}
+
+.sw-cart {
+  &__empty {
+  }
+}

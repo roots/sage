@@ -1,0 +1,132 @@
+/*=============================================
+Woocommerce Messages
+=============================================*/
+.woocommerce-NoticeGroup {
+  @include make-col-ready;
+  @include make-col(12);
+}
+.woocommerce-notice, .woocommerce-success, .woocommerce-error, .woocommerce-message, .woocommerce-info {
+  @extend .alert;
+  @include make-col-ready;
+  @include make-col(12);
+
+  a.wc-forward {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    border-radius: $alert-border-radius;
+    background-color: transparent;
+    border: 0;
+    color: $black;
+    line-height: 2;
+    &:hover {
+      background-color: transparent;
+      color: $gray-500;
+    }
+  }
+
+}
+
+.woocommerce-info {
+  @extend .alert-info;
+}
+
+.woocommerce-notice {
+  @extend .alert-info;
+}
+
+.woocommerce-success {
+  @extend .alert-success;
+}
+
+.woocommerce-message {
+  @extend .alert-info;
+}
+
+.woocommerce-error {
+  @extend .alert-danger;
+  ul {
+    margin-bottom: 0;
+  }
+}
+
+/*=============================================
+Woocommerce Shop Table
+=============================================*/
+.shop_table {
+  @extend .table;
+  @include media-breakpoint-down(lg) {
+    td, th {
+      padding: $table-cell-padding-sm;
+    }
+  }
+  td {
+    vertical-align: middle;
+  }
+  .qty {
+    width: 60px;
+  }
+}
+
+.wc-item-meta {
+  @extend .list-unstyled;
+  li {
+    font-size: rem-calc(12);
+    color: $gray-700;
+  }
+}
+
+/*=============================================
+Woocommerce Forms
+=============================================*/
+
+.woocommerce-password-strength {
+  @extend small;
+  @extend .form-text;
+  @extend .text-muted;
+}
+
+.coupon {
+  @extend .form-inline;
+  // Hide the label for aesthetics reasons but keep it readable from screenreaders
+  label {
+    @extend .sr-only;
+  }
+}
+
+.sw-form {
+  &.woocommerce-invalid {
+    input {
+      @extend .is-invalid;
+    }
+  }
+}
+
+/*=============================================
+Pagination
+=============================================*/
+
+// woo override
+.woocommerce-pagination {
+  ul {
+    @extend .pagination;
+    li {
+      @extend .page-item;
+    }
+    .page-numbers {
+      @extend .page-link;
+      &.current {
+        z-index: 1;
+        color: #fff;
+        background-color: $primary;
+        border-color: $primary;
+        cursor: default !important;
+      }
+    }
+  }
+}
+
+.sw-breadcrumbs {
+  margin-top: rem-calc(20);
+}

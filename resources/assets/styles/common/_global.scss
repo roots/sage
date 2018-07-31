@@ -1,0 +1,16 @@
+html {
+  font-size: 1rem;
+}
+
+@include media-breakpoint-up(xs) {
+  html {
+    font-size: 0.875rem;
+  }
+}
+
+
+@include media-breakpoint-up(xl) {
+  html {
+    font-size: 1rem;
+  }
+}

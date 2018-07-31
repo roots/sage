@@ -52,11 +52,10 @@ function config($key = null, $default = null)
  */
 function template($file, $data = [])
 {
-    if (!is_admin() && remove_action('wp_head', 'wp_enqueue_scripts', 1)) {
-        wp_enqueue_scripts();
-    }
-
-    return sage('blade')->render($file, $data);
+	if (!is_admin() && remove_action('wp_head', 'wp_enqueue_scripts', 1)) {
+		wp_enqueue_scripts();
+	}
+	return sage('blade')->render($file, $data);
 }
 
 /**
@@ -87,7 +86,8 @@ function filter_templates($templates)
 {
     $paths = apply_filters('sage/filter_templates/paths', [
         'views',
-        'resources/views'
+        'resources/views',
+	    'resources/views/woocommerce',
     ]);
     $paths_pattern = "#^(" . implode('|', $paths) . ")/#";
 
@@ -103,22 +103,22 @@ function filter_templates($templates)
 
             return $template;
         })
-        ->flatMap(function ($template) use ($paths) {
-            return collect($paths)
-                ->flatMap(function ($path) use ($template) {
-                    return [
-                        "{$path}/{$template}.blade.php",
-                        "{$path}/{$template}.php",
-                    ];
-                })
-                ->concat([
-                    "{$template}.blade.php",
-                    "{$template}.php",
-                ]);
-        })
-        ->filter()
-        ->unique()
-        ->all();
+	    ->flatMap(function ($template) use ($paths) {
+		    return collect($paths)
+			    ->flatMap(function ($path) use ($template) {
+				    return [
+					    "{$path}/{$template}.blade.php",
+					    "{$path}/{$template}.php",
+				    ];
+			    })
+			    ->concat([
+				    "{$template}.blade.php",
+				    "{$template}.php",
+			    ]);
+	    })
+	    ->filter()
+	    ->unique()
+	    ->all();
 }
 
 /**
@@ -140,3 +140,95 @@ function display_sidebar()
     isset($display) || $display = apply_filters('sage/display_sidebar', false);
     return $display;
 }
+
+/**
+ * Parses the woocommerce_form_field and replaces:
+ * form-row with form-group,
+ * form-row-first and form-row-last with col-md-6,
+ * form-row-wide with col-sm-12
+ * Allowed values are
+ * 'billing',
+ * 'account',
+ * 'shipping',
+ * 'order',
+ * 'myaccount-address'
+ * @param string $fields_type
+ * @param array $address_fields
+ */
+function alterWooFields(string $fields_type, array $address_fields = []) {
+	$checkout_types = [
+		'billing',
+		'account',
+		'shipping',
+		'order',
+	];
+
+	$isCheckout =  in_array($fields_type, $checkout_types);
+	$isEditAccount = $fields_type === 'myaccount-address';
+	$checkout = '';
+	$fields = [];
+
+	if ($isCheckout) {
+		$checkout = \WC_Checkout::instance();
+		$fields = $checkout->get_checkout_fields( $fields_type );
+	}
+
+	if ($isEditAccount) {
+		if (empty($address_fields)) {
+			trigger_error('Address fields must be provided');
+			return;
+		}
+		$fields = $address_fields;
+	}
+
+	foreach ( $fields as $key => $field ) {
+		$value = '';
+		$field['return'] = true;
+
+		if ($isCheckout) {
+			if ( isset( $field['country_field'], $fields[ $field['country_field'] ] ) ) {
+				$field['country'] = $checkout->get_value( $field['country_field'] );
+			}
+			$value = $checkout->get_value( $key );
+		}
+
+		if ($isEditAccount) {
+			if ( isset( $field['country_field'], $address[ $field['country_field'] ] ) ) {
+				$field['country'] = wc_get_post_data_by_key( $field['country_field'], $fields[ $field['country_field'] ]['value'] );
+			}
+			$value = wc_get_post_data_by_key( $key, $field['value'] );
+		}
+
+		$output = woocommerce_form_field( $key, $field, $value );
+
+		$output = str_replace(
+			['form-row ', 'form-row-first', 'form-row-last', 'form-row-wide'],
+			['form-group sw-form ', 'col-sm-6 sw-form', 'col-sm-6 sw-form', 'col-sm-12 sw-form'], $output);
+		echo $output;
+	}
+}
+
+/**
+ * @param $haystack
+ * @param $needle
+ *
+ * @return bool
+ * @link https://stackoverflow.com/a/10473026
+ */
+function startsWith($haystack, $needle) {
+	// search backwards starting from haystack length characters from the end
+	return $needle === "" || strrpos($haystack, $needle, -strlen($haystack)) !== false;
+}
+
+/**
+ * @param $haystack
+ * @param $needle
+ *
+ * @return bool
+ * @link https://stackoverflow.com/a/10473026
+ */
+function endsWith($haystack, $needle) {
+	// search forward starting from end minus needle length characters
+	return $needle === "" || (($temp = strlen($haystack) - strlen($needle)) >= 0 && strpos($haystack, $needle, $temp) !== false);
+}
+

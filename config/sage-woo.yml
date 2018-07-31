@@ -1,0 +1,4 @@
+misc:
+  remove_woo_styles: true
+  remove_woo_scripts:
+    - selectWoo

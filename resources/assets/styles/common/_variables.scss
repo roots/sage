@@ -1,6 +1,54 @@
 /** Import Bootstrap functions */
 @import "~bootstrap/scss/functions";
 
-$theme-colors: (
-  primary: #525ddc
-);
+/*=============================================
+Most common usage of variables for bootstrap
+Comment out whatever you need, delete whatever you don't need
+=============================================*/
+
+$primary: #000;
+$secondary: #666;
+
+/*=============================================
+Buttons
+=============================================*/
+
+//$btn-padding-y:
+//$btn-padding-x:
+//$btn-line-height:
+
+//$btn-padding-y-sm:
+//$btn-padding-x-sm:
+//$btn-line-height-sm:
+
+//$btn-padding-y-lg:
+//$btn-padding-x-lg:
+//$btn-line-height-lg:
+
+//$btn-border-width:
+
+//$btn-font-weight:
+$btn-box-shadow: none;
+$btn-focus-width: 0;
+$btn-focus-box-shadow: none;
+//$btn-disabled-opacity:
+$btn-active-box-shadow: none;
+
+//$btn-link-disabled-color:
+
+//$btn-block-spacing-y:
+
+$btn-border-radius: 0;
+$btn-border-radius-lg: 0;
+$btn-border-radius-sm: 0;
+
+//$btn-transition:
+
+/*=============================================
+Forms
+=============================================*/
+
+$input-border-radius:                   0;
+$input-border-radius-lg:                0;
+$input-border-radius-sm:                0;
+$input-focus-box-shadow:                none;
