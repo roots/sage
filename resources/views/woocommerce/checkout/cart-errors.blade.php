@@ -10,4 +10,4 @@
 
 <?php do_action( 'woocommerce_cart_has_errors' ); ?>
 
-<p><a class="btn btn-large button wc-backward" href="{{ __esc_url( wc_get_page_permalink( 'cart' ) ) }}">{{ __( 'Return to cart', 'woocommerce' ) }}</a></p>
+<p><a class="btn btn-large button wc-backward" href="{{ esc_url( wc_get_page_permalink( 'cart' ) ) }}">{{ __( 'Return to cart', 'woocommerce' ) }}</a></p>
