@@ -84,11 +84,12 @@ add_filter('get_search_form', function () {
 /**
  * Collect data for searchform.
  */
-add_filter('sage/template/app/data', function ($data) {
-    $data['sf_action'] = esc_url(home_url('/'));
-    $data['sf_screen_reader_text'] = _x('Search for:', 'label', 'sage');
-    $data['sf_placeholder'] = esc_attr_x('Search &hellip;', 'placeholder', 'sage');
-    $data['sf_current_query'] = get_search_query();
-    $data['sf_submit_text'] = esc_attr_x('Search', 'submit button', 'sage');
-    return $data;
+ add_filter('sage/template/app/data', function ($data) {
+  return $data + [
+    'sf_action' => esc_url(home_url('/')),
+    'sf_screen_reader_text' => _x('Search for:', 'label', 'sage'),
+    'sf_placeholder' => esc_attr_x('Search &hellip;', 'placeholder', 'sage'),
+    'sf_current_query' => get_search_query(),
+    'sf_submit_text' => esc_attr_x('Search', 'submit button', 'sage'),
+  ];
 });
