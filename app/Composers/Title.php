@@ -1,18 +1,27 @@
 <?php
 
-namespace App;
+namespace App\Composers;
 
-use Sober\Controller\Controller;
+use Roots\Acorn\View\Composer;
 
-class App extends Controller
+class Title extends Composer
 {
-    public function siteName()
+    protected static $views = [
+        'partials.page-header',
+        'partials.content',
+        'partials.content-*'
+    ];
+
+    public function with($data, $view)
     {
-        return get_bloginfo('name');
+        return ['title' => $this->title($view->getName())];
     }
 
-    public static function title()
+    public function title($view)
     {
+        if ($view !== 'partials.page-header') {
+            return get_the_title();
+        }
         if (is_home()) {
             if ($home = get_option('page_for_posts', true)) {
                 return get_the_title($home);
