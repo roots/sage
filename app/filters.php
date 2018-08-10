@@ -93,3 +93,19 @@ add_filter('sage/template/app/data', function ($data) {
         'sf_submit_text' => esc_attr_x('Search', 'submit button', 'sage'),
     ];
 });
+
+/**
+ * Collect data for comments.
+ */
+add_filter('sage/template/app/data', function ($data) {
+    return $data + [
+    'password_required' => post_password_required(),
+    'has_comments' => have_comments(),
+    'comments_title' => sprintf(_nx('One response to &ldquo;%2$s&rdquo;', '%1$s responses to &ldquo;%2$s&rdquo;', get_comments_number(), 'comments title', 'sage'), number_format_i18n(get_comments_number()), '<span>' . get_the_title() . '</span>'),
+    'comments_list' => wp_list_comments(['style' => 'ol', 'short_ping' => true]),
+    'show_comments' => get_comment_pages_count() > 1 && get_option('page_comments'),
+    'previous_comments_link' => (get_previous_comments_link()) ? get_previous_comments_link(__('&larr; Older comments', 'sage')) : null,
+    'next_comments_link' => (get_next_comments_link()) ? get_next_comments_link(__('&larr; Newer comments', 'sage')) : null,
+    'comments_closed' => (!comments_open() && get_comments_number() != '0' && post_type_supports(get_post_type(), 'comments')) ? true : false,
+];
+});
