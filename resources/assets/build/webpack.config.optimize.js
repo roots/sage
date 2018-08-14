@@ -24,7 +24,7 @@ module.exports = {
     }),
     new UglifyJsPlugin({
       uglifyOptions: {
-        ecma: 8,
+        ecma: 5,
         compress: {
           warnings: true,
           drop_console: true,
