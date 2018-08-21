@@ -63,7 +63,7 @@ add_filter('template_include', function ($template) {
 }, PHP_INT_MAX);
 
 /**
- * Tell WordPress how to find the compiled path of comments.blade.php
+ * Render comments.blade.php
  */
 add_filter('comments_template', function ($comments_template) {
     $comments_template = str_replace(
@@ -71,8 +71,16 @@ add_filter('comments_template', function ($comments_template) {
         '',
         $comments_template
     );
-    return template_path(locate_template(["views/{$comments_template}", $comments_template]) ?: $comments_template);
-}, 100);
+
+    $theme_template = locate_template(["views/{$comments_template}", $comments_template]);
+
+    if ($theme_template) {
+        echo template($theme_template);
+        return get_stylesheet_directory().'/index.php';
+    }
+
+    return $comments_template;
+}, PHP_INT_MAX);
 
 /**
  * Render WordPress searchform using Blade
