@@ -84,7 +84,7 @@ add_filter('comments_template', function ($comments_template) {
     }
 
     return $comments_template;
-}, 100);
+}, PHP_INT_MAX);
 
 /**
  * Render WordPress searchform using Blade
