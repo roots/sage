@@ -72,14 +72,10 @@ add_filter('comments_template', function ($comments_template) {
         $comments_template
     );
 
-    $data = collect(get_body_class())->reduce(function ($data, $class) use ($template) {
-        return apply_filters("sage/template/{$class}/data", $data, $template);
-    }, []);
-
     $theme_template = locate_template(["views/{$comments_template}", $comments_template]);
 
     if ($theme_template) {
-        echo template($theme_template, $data);
+        echo template($theme_template);
         return get_stylesheet_directory().'/index.php';
     }
 
