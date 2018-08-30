@@ -51,14 +51,14 @@
     }
   },
   "scripts": {
-    "build": "webpack --progress --config resources/assets/build/webpack.config.js",
-    "build:production": "webpack --env.production --progress --config resources/assets/build/webpack.config.js",
-    "build:profile": "webpack --progress --profile --json --config resources/assets/build/webpack.config.js",
-    "start": "webpack --hide-modules --watch --config resources/assets/build/webpack.config.js",
+    "build": "webpack --progress --config resources/build/webpack.config.js",
+    "build:production": "webpack --env.production --progress --config resources/build/webpack.config.js",
+    "build:profile": "webpack --progress --profile --json --config resources/build/webpack.config.js",
+    "start": "webpack --hide-modules --watch --config resources/build/webpack.config.js",
     "rmdist": "rimraf dist",
     "lint": "npm run -s lint:scripts && npm run -s lint:styles",
-    "lint:scripts": "eslint resources/assets/scripts resources/assets/build",
-    "lint:styles": "stylelint \"resources/assets/styles/**/*.{css,sass,scss,sss,less}\"",
+    "lint:scripts": "eslint resources/scripts resources/build",
+    "lint:styles": "stylelint \"resources/styles/**/*.{css,sass,scss,sss,less}\"",
     "test": "npm run -s lint"
   },
   "engines": {
