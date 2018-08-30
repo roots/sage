@@ -60,13 +60,12 @@ themes/your-theme-name/   # → Root of your Sage based theme
 ├── node_modules/         # → Node.js packages (never edit)
 ├── package.json          # → Node.js dependencies and scripts
 ├── resources/            # → Theme assets and templates
-│   ├── assets/           # → Front-end assets
-│   │   ├── config.json   # → Settings for compiled assets
-│   │   ├── build/        # → Webpack and ESLint config
-│   │   ├── fonts/        # → Theme fonts
-│   │   ├── images/       # → Theme images
-│   │   ├── scripts/      # → Theme JS
-│   │   └── styles/       # → Theme stylesheets
+│   ├── config.json       # → Settings for compiled assets
+│   ├── build/            # → Webpack and ESLint config
+│   ├── fonts/            # → Theme fonts
+│   ├── images/           # → Theme images
+│   ├── scripts/          # → Theme JS
+│   ├── styles/           # → Theme stylesheets
 │   ├── functions.php     # → Composer autoloader, theme includes
 │   ├── index.php         # → Never manually edit
 │   ├── screenshot.png    # → Theme screenshot for WP admin
@@ -84,7 +83,7 @@ Edit `app/setup.php` to enable or disable theme features, setup navigation menus
 ## Theme development
 
 * Run `yarn` from the theme directory to install dependencies
-* Update `resources/assets/config.json` settings:
+* Update `resources/config.json` settings:
   * `devUrl` should reflect your local development hostname
   * `publicPath` should reflect your WordPress folder structure (`/wp-content/themes/sage` for non-[Bedrock](https://roots.io/bedrock/) installs)
 
