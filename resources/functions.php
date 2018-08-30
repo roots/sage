@@ -88,5 +88,6 @@ Container::getInstance()
             'assets' => require dirname(__DIR__).'/config/assets.php',
             'theme' => require dirname(__DIR__).'/config/theme.php',
             'view' => require dirname(__DIR__).'/config/view.php',
+            'directives' => require dirname(__DIR__).'/config/directives.php',
         ]);
     }, true);
