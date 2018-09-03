@@ -72,8 +72,8 @@ add_filter('comments_template', function ($comments_template) {
         $comments_template
     );
 
-    $data = collect(get_body_class())->reduce(function ($data, $class) use ($template) {
-        return apply_filters("sage/template/{$class}/data", $data, $template);
+    $data = collect(get_body_class())->reduce(function ($data, $class) use ($comments_template) {
+        return apply_filters("sage/template/{$class}/data", $data, $comments_template);
     }, []);
 
     $theme_template = locate_template(["views/{$comments_template}", $comments_template]);
