@@ -52,12 +52,9 @@ collect([
  * Render page using Blade
  */
 add_filter('template_include', function ($template) {
-    $data = collect(get_body_class())->reduce(function ($data, $class) use ($template) {
-        return apply_filters("sage/template/{$class}/data", $data, $template);
-    }, []);
     if ($template) {
-        echo template($template, $data);
-        return get_stylesheet_directory().'/index.php';
+        echo template($template, collect_template_data($template));
+        return get_stylesheet_directory() . '/index.php';
     }
     return $template;
 }, PHP_INT_MAX);
@@ -75,8 +72,8 @@ add_filter('comments_template', function ($comments_template) {
     $theme_template = locate_template(["views/{$comments_template}", $comments_template]);
 
     if ($theme_template) {
-        echo template($theme_template);
-        return get_stylesheet_directory().'/index.php';
+        echo template($theme_template, collect_template_data($comments_template));
+        return get_stylesheet_directory() . '/index.php';
     }
 
     return $comments_template;
@@ -86,7 +83,7 @@ add_filter('comments_template', function ($comments_template) {
  * Render WordPress searchform using Blade
  */
 add_filter('get_search_form', function () {
-    return template('partials.searchform');
+    return template('partials.searchform', collect_template_data('/partials/searchform.blade.php'));
 });
 
 /**
