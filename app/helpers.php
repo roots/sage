@@ -140,3 +140,14 @@ function display_sidebar()
     isset($display) || $display = apply_filters('sage/display_sidebar', false);
     return $display;
 }
+
+/**
+ * @param string $template Path to the template file
+ * @return array Data to be provided to template
+ */
+function collect_template_data($template = '')
+{
+    return collect(get_body_class())->reduce(function ($data, $class) use ($template) {
+        return apply_filters("sage/template/{$class}/data", $data, $template);
+    }, []);
+}
