@@ -1,3 +1,6 @@
+### 9.0.4: September 7th, 2018
+* Force `illuminate/support` to `5.6.*` ([#2112](https://github.com/roots/sage/pull/2112))
+
 ### 9.0.3: September 7th, 2018
 * Revert "Add searchform partial and function to replace default WordPress functionality" ([#2110](https://github.com/roots/sage/pull/2110))
 * Unescape get_language_attributes() ([#2108](https://github.com/roots/sage/pull/2108))
