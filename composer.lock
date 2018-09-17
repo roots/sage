@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "db7f6f35aa4520323248a8b629de0646",
+    "content-hash": "2535b3b47ef47a3b146a488b73081199",
     "packages": [
         {
             "name": "brain/hierarchy",
@@ -64,16 +64,16 @@
         },
         {
             "name": "composer/installers",
-            "version": "v1.5.0",
+            "version": "v1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/installers.git",
-                "reference": "049797d727261bf27f2690430d935067710049c2"
+                "reference": "cfcca6b1b60bc4974324efb5783c13dca6932b5b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/installers/zipball/049797d727261bf27f2690430d935067710049c2",
-                "reference": "049797d727261bf27f2690430d935067710049c2",
+                "url": "https://api.github.com/repos/composer/installers/zipball/cfcca6b1b60bc4974324efb5783c13dca6932b5b",
+                "reference": "cfcca6b1b60bc4974324efb5783c13dca6932b5b",
                 "shasum": ""
             },
             "require": {
@@ -180,7 +180,7 @@
                 "zend",
                 "zikula"
             ],
-            "time": "2017-12-29T09:13:20+00:00"
+            "time": "2018-08-27T06:10:37+00:00"
         },
         {
             "name": "doctrine/inflector",
@@ -785,7 +785,7 @@
         },
         {
             "name": "roots/sage-lib",
-            "version": "9.0.4",
+            "version": "9.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/roots/sage-lib.git",
@@ -1171,16 +1171,16 @@
         },
         {
             "name": "roots/sage-installer",
-            "version": "1.4.2",
+            "version": "1.4.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/roots/sage-installer.git",
-                "reference": "5906db283b5b0a6117d87e2cc971afb9a66b135d"
+                "reference": "290e17d20da6566eda339f1ee448ada4a9bc3b1d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/roots/sage-installer/zipball/5906db283b5b0a6117d87e2cc971afb9a66b135d",
-                "reference": "5906db283b5b0a6117d87e2cc971afb9a66b135d",
+                "url": "https://api.github.com/repos/roots/sage-installer/zipball/290e17d20da6566eda339f1ee448ada4a9bc3b1d",
+                "reference": "290e17d20da6566eda339f1ee448ada4a9bc3b1d",
                 "shasum": ""
             },
             "require": {
@@ -1226,7 +1226,7 @@
                 "theme",
                 "wordpress"
             ],
-            "time": "2018-08-24T00:01:10+00:00"
+            "time": "2018-09-17T17:09:42+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
