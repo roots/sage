@@ -5,8 +5,6 @@ $theme-colors: (
   primary: #525ddc
 );
 
-/** Fix Bootstrap navbar incompatibility with webpack
-* See https://github.com/roots/sage/issues/2017
-*/
+/** Bootstrap navbar fix (https://git.io/fADqW) */
 $navbar-dark-toggler-icon-bg: none;
 $navbar-light-toggler-icon-bg: none;
