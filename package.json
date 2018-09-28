@@ -66,7 +66,7 @@
   },
   "devDependencies": {
     "autoprefixer": "~8.2.0",
-    "browser-sync": "~2.24.6",
+    "browser-sync": "~2.24.7",
     "browsersync-webpack-plugin": "^0.6.0",
     "bs-html-injector": "~3.0",
     "buble-loader": "^0.4.1",
