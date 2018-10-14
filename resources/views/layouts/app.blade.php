@@ -10,9 +10,7 @@
           @yield('content')
         </main>
         @if (App\display_sidebar())
-          <aside class="sidebar">
-            @include('partials.sidebar')
-          </aside>
+          @yield('sidebar')
         @endif
       </div>
     </div>

@@ -2,6 +2,8 @@
 
 namespace App;
 
+use function Roots\view;
+
 /**
  * Add <body> classes
  */
@@ -11,11 +13,6 @@ add_filter('body_class', function (array $classes) {
         if (!in_array(basename(get_permalink()), $classes)) {
             $classes[] = basename(get_permalink());
         }
-    }
-
-    /** Add class if sidebar is active */
-    if (display_sidebar()) {
-        $classes[] = 'sidebar-primary';
     }
 
     /** Clean up class names for custom templates */
@@ -32,3 +29,11 @@ add_filter('body_class', function (array $classes) {
 add_filter('excerpt_more', function () {
     return ' &hellip; <a href="' . get_permalink() . '">' . __('Continued', 'sage') . '</a>';
 });
+
+/**
+ * Render WordPress searchform using Blade
+ */
+add_filter('get_search_form', function () {
+    return view('forms.search');
+});
+

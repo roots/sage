@@ -16,3 +16,9 @@
 
   {!! get_the_posts_navigation() !!}
 @endsection
+
+@section('sidebar')
+  <aside class="sidebar">
+    @include('partials.sidebar')
+  </aside>
+@endsection
