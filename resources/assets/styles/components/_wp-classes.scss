@@ -1,6 +1,6 @@
 /**
  * WordPress Generated Classes
- * @see http://codex.wordpress.org/CSS#WordPress_Generated_Classes
+ * @link http://codex.wordpress.org/CSS#WordPress_Generated_Classes
  */
 
 /** Media alignment */
@@ -9,6 +9,26 @@
   margin-right: 0;
   max-width: 100%;
   height: auto;
+}
+
+.alignwide {
+  margin-left: -($grid-gutter-width / 2);
+  margin-right: -($grid-gutter-width / 2);
+  max-width: none;
+
+  @include media-breakpoint-up(sm) {
+    margin-left: -$grid-gutter-width;
+    margin-right: -$grid-gutter-width;
+  }
+}
+
+.alignfull {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
 }
 
 .aligncenter {
@@ -36,16 +56,16 @@
 }
 
 /** Captions */
-.wp-caption {
+.wp-block-image {
   @extend .figure;
 }
 
-.wp-caption img {
+.wp-block-image img {
   @extend .figure-img;
   @extend .img-fluid;
 }
 
-.wp-caption-text {
+.wp-block-image figcaption {
   @extend .figure-caption;
 }
 
@@ -53,4 +73,10 @@
 .screen-reader-text {
   @extend .sr-only;
   @extend .sr-only-focusable;
+}
+
+/** Gutenberg image blocks */
+.alignwide.wp-block-image img,
+.alignfull.wp-block-image img {
+  width: 100vw;
 }

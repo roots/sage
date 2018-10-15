@@ -66,6 +66,13 @@ add_action('after_setup_theme', function () {
     add_theme_support('customize-selective-refresh-widgets');
 
     /**
+     * Gutenberg support
+     * @link https://wordpress.org/gutenberg/handbook/extensibility/theme-support/
+     */
+    add_theme_support('editor-styles');
+    add_theme_support('align-wide');
+
+    /**
      * Use main stylesheet for visual editor
      * @see resources/assets/styles/layouts/_tinymce.scss
      */
