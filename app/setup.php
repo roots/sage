@@ -130,3 +130,13 @@ add_action('after_setup_theme', function () {
         return "<?= " . __NAMESPACE__ . "\\asset_path({$asset}); ?>";
     });
 });
+
+/**
+ * Remove any old blades when we activate this theme.
+ */
+add_action('after_switch_theme', __NAMESPACE__.'\\remove_rendered_blades');
+
+/**
+ * Be nice and remove our blades when the theme is removed.
+ */
+add_action('switch_theme', __NAMESPACE__.'\\remove_rendered_blades');
