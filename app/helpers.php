@@ -140,3 +140,36 @@ function display_sidebar()
     isset($display) || $display = apply_filters('sage/display_sidebar', false);
     return $display;
 }
+
+/**
+ * Returns an array of SPLFileInfo objects representing all rendered Blades.
+ *
+ * @return array
+ */
+function get_rendered_blades()
+{
+    return collect(
+        \iterator_to_array(
+            new \RecursiveIteratorIterator(
+                new \RecursiveDirectoryIterator(
+                    realpath(config('view.compiled')),
+                    \FilesystemIterator::SKIP_DOTS))))
+        ->filter(function($file) {
+            /** This is an approximation of what a Blade filename should look like. */
+            return preg_match('/([a-z0-9]{40})(\.php)/m', $file->getFilename()) === 1;
+        })
+        ->all();
+}
+
+/**
+ * Removes all rendered Blades from the cache.
+ *
+ * @return void
+ */
+function remove_rendered_blades()
+{
+    collect(get_rendered_blades())
+        ->map(function($file) {
+            unlink($file->getRealPath());
+        });
+}
