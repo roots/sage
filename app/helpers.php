@@ -153,8 +153,12 @@ function get_rendered_blades()
             new \RecursiveIteratorIterator(
                 new \RecursiveDirectoryIterator(
                     realpath(config('view.compiled')),
-                    \FilesystemIterator::SKIP_DOTS))))
-        ->filter(function($file) {
+                    \FilesystemIterator::SKIP_DOTS
+                )
+            )
+        )
+    )
+        ->filter(function ($file) {
             /** This is an approximation of what a Blade filename should look like. */
             return preg_match('/([a-z0-9]{40})(\.php)/m', $file->getFilename()) === 1;
         })
@@ -169,7 +173,7 @@ function get_rendered_blades()
 function remove_rendered_blades()
 {
     collect(get_rendered_blades())
-        ->map(function($file) {
+        ->map(function ($file) {
             unlink($file->getRealPath());
         });
 }
