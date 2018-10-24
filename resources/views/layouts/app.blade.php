@@ -9,9 +9,7 @@
         <main class="main">
           @yield('content')
         </main>
-        @if (App\display_sidebar())
-          @yield('sidebar')
-        @endif
+        @yield('sidebar')
       </div>
     </div>
     @php do_action('get_footer') @endphp
