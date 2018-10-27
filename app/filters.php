@@ -47,6 +47,15 @@ collect([
  * Render page using Blade
  */
 add_filter('template_include', function ($template) {
+    collect(['get_header', 'wp_head'])->each(function ($tag) {
+        ob_start();
+        do_action($tag);
+        $c = ob_get_clean();
+        remove_all_actions($tag);
+        add_action($tag, function () use ($c) {
+            echo $c;
+        });
+    });
     $data = collect(get_body_class())->reduce(function ($data, $class) use ($template) {
         return apply_filters("sage/template/{$class}/data", $data, $template);
     }, []);
