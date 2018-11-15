@@ -214,6 +214,15 @@ if (config.enabled.watcher) {
   webpackConfig = merge(webpackConfig, require('./webpack.config.watch'));
 }
 
+/**
+ * During installation via sage-installer (i.e. composer create-project) some
+ * presets may generate a preset specific config (webpack.config.preset.js) to
+ * override some of the default options set here. We use webpack-merge to merge
+ * them in. If you need to modify Sage's default webpack config, we recommend
+ * that you modify this file directly, instead of creating your own preset
+ * file, as there are limitations to using webpack-merge which can hinder your
+ * ability to change certain options.
+ */
 module.exports = merge.smartStrategy({
   'module.loaders': 'replace',
 })(webpackConfig, desire(`${__dirname}/webpack.config.preset`));
