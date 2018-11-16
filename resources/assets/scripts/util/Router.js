@@ -25,7 +25,15 @@ class Router {
    * @param {string} [arg] Any custom argument to be passed to the event.
    */
   fire(route, event = 'init', arg) {
-    const fire = route !== '' && this.routes[route];
+    document.dispatchEvent(new CustomEvent('routed', {
+      bubbles: true,
+      detail: {
+        route,
+        fn: event,
+      },
+    }));
+    
+    const fire = route !== '' && this.routes[route] && typeof this.routes[route][event] === 'function';
 
     if (fire) {
       let routeInstance = this.routes[route];
@@ -76,4 +84,4 @@ class Router {
   }
 }
 
-export default Router
+export default Router;

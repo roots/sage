@@ -52,10 +52,6 @@ function config($key = null, $default = null)
  */
 function template($file, $data = [])
 {
-    if (remove_action('wp_head', 'wp_enqueue_scripts', 1)) {
-        wp_enqueue_scripts();
-    }
-
     return sage('blade')->render($file, $data);
 }
 
@@ -109,10 +105,12 @@ function filter_templates($templates)
                     return [
                         "{$path}/{$template}.blade.php",
                         "{$path}/{$template}.php",
-                        "{$template}.blade.php",
-                        "{$template}.php",
                     ];
-                });
+                })
+                ->concat([
+                    "{$template}.blade.php",
+                    "{$template}.php",
+                ]);
         })
         ->filter()
         ->unique()
