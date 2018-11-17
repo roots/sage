@@ -92,6 +92,7 @@ let webpackConfig = {
             { loader: 'resolve-url', options: { sourceMap: config.enabled.sourceMaps } },
             {
               loader: 'sass', options: {
+                implementation: require('sass'),
                 sourceMap: config.enabled.sourceMaps,
                 sourceComments: true,
               },
