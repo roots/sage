@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2535b3b47ef47a3b146a488b73081199",
+    "content-hash": "a04663aa2f9583e0f3b675361af4d8e5",
     "packages": [
         {
             "name": "brain/hierarchy",
@@ -1171,16 +1171,16 @@
         },
         {
             "name": "roots/sage-installer",
-            "version": "1.4.3",
+            "version": "1.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/roots/sage-installer.git",
-                "reference": "290e17d20da6566eda339f1ee448ada4a9bc3b1d"
+                "reference": "c45ccd2a12aa15cd71804e4cf640c6e3cf0b925c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/roots/sage-installer/zipball/290e17d20da6566eda339f1ee448ada4a9bc3b1d",
-                "reference": "290e17d20da6566eda339f1ee448ada4a9bc3b1d",
+                "url": "https://api.github.com/repos/roots/sage-installer/zipball/c45ccd2a12aa15cd71804e4cf640c6e3cf0b925c",
+                "reference": "c45ccd2a12aa15cd71804e4cf640c6e3cf0b925c",
                 "shasum": ""
             },
             "require": {
@@ -1226,7 +1226,7 @@
                 "theme",
                 "wordpress"
             ],
-            "time": "2018-09-17T17:09:42+00:00"
+            "time": "2018-11-27T01:17:47+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
