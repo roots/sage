@@ -114,17 +114,17 @@ if (function_exists('pll_home_url') &&
     isset(get_option('polylang', false)['force_lang']) &&
     get_option('polylang', false)['force_lang'] === 3
 ) {
-    function tf_filter_polylang_url($url)
+    function filter_polylang_url($url)
     {
         return str_replace(untrailingslashit(get_option('home')), 'http://' . $_SERVER['HTTP_HOST'], $url);
     }
 
-    add_filter('stylesheet_directory_uri', 'tf_filter_polylang_url');
-    add_filter('template_directory_uri', 'tf_filter_polylang_url');
-    add_filter('plugins_url', 'tf_filter_polylang_url');
+    add_filter('stylesheet_directory_uri', 'filter_polylang_url');
+    add_filter('template_directory_uri', 'filter_polylang_url');
+    add_filter('plugins_url', 'filter_polylang_url');
     add_filter('upload_dir', function ($wp_upload_dir) {
-        $wp_upload_dir['url'] = tf_filter_polylang_url($wp_upload_dir['url']);
-        $wp_upload_dir['baseurl'] = tf_filter_polylang_url($wp_upload_dir['baseurl']);
+        $wp_upload_dir['url'] = filter_polylang_url($wp_upload_dir['url']);
+        $wp_upload_dir['baseurl'] = filter_polylang_url($wp_upload_dir['baseurl']);
 
         return $wp_upload_dir;
     });
@@ -152,7 +152,7 @@ function get_fontello_classes($for_select = false)
     }
 
     // Fetch modification times
-    $saved_modification_time = get_option('tf_fontello_config_modification_time', false);
+    $saved_modification_time = get_option('fontello_config_modification_time', false);
     $file_modification_time = filemtime($config_path);
 
     if (false === $saved_modification_time ||
@@ -175,10 +175,10 @@ function get_fontello_classes($for_select = false)
             }
         }
 
-        update_option('tf_fontello_classes', $classes, false);
-        update_option('tf_fontello_config_modification_time', $file_modification_time, false);
+        update_option('fontello_classes', $classes, false);
+        update_option('fontello_config_modification_time', $file_modification_time, false);
     } else {
-        $classes = get_option('tf_fontello_classes', []);
+        $classes = get_option('fontello_classes', []);
     }
 
     if (true === $for_select &&
