@@ -26,7 +26,7 @@ export default {
       }
 
       if (element) {
-        element.each((i, el) => {
+        element.each((index, el) => {
           const instance = new partials[i].default();
           instance.element = $(el);
 
