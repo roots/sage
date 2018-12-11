@@ -6,13 +6,6 @@ $fields = [
         'type' => 'tab',
     ],
     [
-        'key' => 'field_theme_settings_404_title',
-        'name' => 'settings_404_title',
-        'label' => esc_html__('Heading', 'sage'),
-        'type' => 'text',
-        'required' => true,
-    ],
-    [
         'key' => 'field_theme_settings_404_content',
         'name' => 'settings_404_content',
         'label' => esc_html__('Content', 'sage'),
