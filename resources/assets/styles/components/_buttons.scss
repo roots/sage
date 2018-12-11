@@ -1,0 +1,32 @@
+.btn {
+  display: inline-block;
+
+  &.btn-loading {
+    min-height: 1.2em;
+    position: relative;
+    color: transparent !important;
+    pointer-events: none;
+
+    &::selection {
+      background-color: transparent;
+      color: transparent !important;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      display: block;
+      width: 1.2em;
+      height: 1.2em;
+      margin-left: -0.6em;
+      margin-top: -0.6em;
+      border-radius: 50%;
+      border: 2px solid #fff;
+      border-right-color: transparent;
+      border-top-color: transparent;
+      animation: rotate 0.5s infinite linear;
+    }
+  }
+}

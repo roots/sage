@@ -30,5 +30,6 @@ module.exports = {
         ],
       },
     ],
+    'no-descending-specificity': null,
   },
 };

@@ -1,0 +1,42 @@
+@import "~sanitize.css";
+
+/* Theme resets */
+:root {
+  -webkit-font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+ul,
+ol {
+  list-style-type: none;
+}
+
+a:hover,
+a:active,
+a:focus {
+  outline: 0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*:focus {
+  outline: none;
+}
+
+em,
+i {
+  font-style: italic;
+}
+
+[type="search"] {
+  box-sizing: border-box;
+}
+
+table {
+  width: 100%;
+}

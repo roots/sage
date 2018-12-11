@@ -4,8 +4,8 @@
       "./scripts/main.js",
       "./styles/main.scss"
     ],
-    "customizer": [
-      "./scripts/customizer.js"
+    "login": [
+      "./styles/login.scss"
     ]
   },
   "publicPath": "/app/themes/sage",

@@ -1,10 +1,56 @@
-/** Import Bootstrap functions */
-@import "~bootstrap/scss/functions";
+/**
+ * Bootstrap variables
+ */
 
-$theme-colors: (
-  primary: #525ddc
+$grid-gutter-width: 30px;
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
 );
 
-/** Bootstrap navbar fix (https://git.io/fADqW) */
-$navbar-dark-toggler-icon-bg: none;
-$navbar-light-toggler-icon-bg: none;
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1200px,
+  xxl: 1400px
+);
+
+/**
+ * Helper variables
+ */
+
+$all-text-inputs:
+  'input[type="color"]',
+  'input[type="date"]',
+  'input[type="datetime"]',
+  'input[type="datetime-local"]',
+  'input[type="email"]',
+  'input[type="month"]',
+  'input[type="number"]',
+  'input[type="password"]',
+  'input[type="search"]',
+  'input[type="tel"]',
+  'input[type="text"]',
+  'input[type="time"]',
+  'input[type="url"]',
+  'input[type="week"]',
+  "input:not([type])",
+  "textarea";
+
+$element-margin: 20px;
+
+/**
+ * Color variables
+ */
+
+$white: #fff;
+$black: #000;
+
+$link-color: #369;
+$text-color: #222;

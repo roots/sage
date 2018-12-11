@@ -1,0 +1,22 @@
+#cookie-bar {
+  padding: $spacer;
+  background: $dark;
+  color: $light;
+  text-align: center;
+
+  &.fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+
+  &.bottom {
+    bottom: 0;
+    top: auto;
+  }
+
+  .cb-enable {
+    //
+  }
+}

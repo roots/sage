@@ -1,19 +1,187 @@
-/** Search form */
-.search-form {
-  @extend .form-inline;
+#{$all-text-inputs} {
+  width: 100%;
+  padding: 0 20px;
+  font-size: 0.9rem;
+  color: inherit;
+  background-color: $light;
+  border-radius: 0;
+  height: 50px;
+  border: 1px solid rgba($dark, 0.1);
+  transition: border-color 0.2s;
+
+  &:focus {
+    border-color: rgba($dark, 0.2);
+  }
+
+  &::placeholder {
+    //
+  }
+
+  .gfield_error & {
+    //
+  }
 }
 
-.search-form label {
-  @extend .form-group;
+select {
+  width: 100%;
+  background-color: $light;
+  padding: 0 $spacer;
+  height: $spacer * 2.5;
+  border-radius: 0;
+  border: 1px solid rgba($dark, 0.1);
 
-  font-weight: normal;
+  &:not([multiple]) {
+    background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAABGdBTUEAALGPC/xhBQAAAG9JREFUKBWt0rsNgDAMBFCstGnjediMsBnzpHdtOCQkPvkYwkmWXPheZWLmqKrT8EOIaHYisnjvafPGHhNYSik6IL3ogcHawR70jF3AL+gde4Bv0ByWBS1oCSuCNbSGodcM/jSEoBjszYLlAJAVWwH660DHksNTUgAAAABJRU5ErkJggg==");
+    background-position: right $spacer center;
+    background-size: ($spacer / 2) ($spacer / 4);
+  }
+
+  &[multiple] {
+    padding-top: $spacer;
+    padding-bottom: $spacer;
+    height: 100px;
+  }
 }
 
-.search-form .search-field {
-  @extend .form-control;
+[type="radio"],
+[type="checkbox"] {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+
+  &:checked + label::before {
+    box-shadow: inset 0 0 0 18px $dark;
+  }
+
+  + label {
+    padding-left: $spacer * 1.5;
+    position: relative;
+    display: block;
+
+    &::before {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 3px;
+      left: 0;
+      box-shadow: inset 0 0 0 1px $dark;
+      width: 18px;
+      height: 18px;
+      transition: box-shadow 0.2s;
+    }
+  }
 }
 
-.search-form .search-submit {
-  @extend .btn;
-  @extend .btn-secondary;
+[type="radio"] {
+  &:checked + label::before {
+    box-shadow: inset 0 0 0 6px $dark;
+  }
+
+  + label::before {
+    border-radius: 100%;
+  }
+}
+
+textarea {
+  height: 200px;
+  padding: 10px 20px;
+  resize: vertical;
+}
+
+/**
+ * Gravity Forms
+ */
+
+.gform_heading {
+  margin-bottom: $spacer;
+}
+
+.gform_fields {
+  ul,
+  .entry-content & {
+    list-style: none;
+    margin-left: 0;
+  }
+
+  .gfield-type-radio,
+  .gfield-type-checkbox {
+    li {
+      margin-bottom: $spacer / 4;
+    }
+  }
+}
+
+.gfield_label {
+  margin-bottom: $spacer / 4;
+
+  .gfield-has-placeholder & {
+    display: none;
+  }
+
+  // .gfield-force-label-display & {
+  //  display: block;
+  // }
+}
+
+.gfield_description {
+  font-size: 0.8rem;
+  margin-top: $spacer / 4;
+}
+
+.validation_error {
+  margin-bottom: $spacer;
+}
+
+.gform_ajax_spinner {
+  display: none;
+}
+
+.gform_drop_area {
+  text-align: center;
+  padding: $spacer * 1.5;
+  border: 2px dashed #ccc;
+}
+
+.gfield-type-list {
+  tr:not(:last-child) td {
+    padding-bottom: $spacer;
+  }
+}
+
+.gfield-type-time {
+  .clear-multi {
+    display: flex;
+
+    .ginput_container_time {
+      width: 100%;
+      margin: 0 $spacer / 2;
+
+      &:first-child {
+        margin-left: 0;
+      }
+
+      &:last-child {
+        margin-right: 0;
+      }
+
+      label {
+        font-size: 0.8rem;
+      }
+    }
+
+    @include media-breakpoint-down(xs) {
+      display: block;
+
+      .ginput_container_time {
+        margin: 0 0 $spacer - 10 0;
+      }
+    }
+  }
+}
+
+@media screen and (-webkit-min-device-pixel-ratio: 0) and (max-width: 767px) {
+  #{ $all-text-inputs },
+  select {
+    font-size: 16px;
+  }
 }

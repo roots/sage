@@ -1,0 +1,16 @@
+:root {
+  font-size: 16px;
+  line-height: 1.7;
+  color: $text-color;
+}
+
+body {
+  &.is-loaded {
+    opacity: 1;
+    transition: opacity 0.2s linear;
+  }
+}
+
+a {
+  color: $link-color;
+}

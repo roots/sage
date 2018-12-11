@@ -1,0 +1,60 @@
+.entry-content {
+  img,
+  iframe,
+  object,
+  embed,
+  video,
+  param {
+    max-width: 100%;
+    height: auto;
+  }
+
+  ul,
+  ol {
+    list-style-position: inside;
+    margin: 0 0 $spacer $spacer;
+    padding: 0;
+
+    li {
+      margin: 0 0 $spacer / 2;
+      padding: 0;
+    }
+  }
+
+  ul {
+    list-style: disc;
+  }
+
+  ol {
+    list-style: decimal;
+  }
+
+  p {
+    margin-bottom: $spacer;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+blockquote,
+cite {
+  margin: 0 0 $spacer;
+  padding: 0 $spacer * 2;
+  font-size: 1.6rem;
+
+  p {
+    &::before {
+      content: '" ';
+    }
+
+    &::after {
+      content: ' "';
+    }
+  }
+}
+
+.preamble {
+  font-size: 1.25rem;
+}
