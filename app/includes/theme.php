@@ -28,3 +28,13 @@ add_filter('wp_get_attachment_image_attributes', function ($attr) {
 
     return $attr;
 });
+
+/**
+ * Unregisters all registered sidebars.
+ * Uncomment this if you need sidebars.
+ */
+add_action('register_sidebar', function ($sidebar) {
+    unregister_sidebar($sidebar['id']);
+
+    _remove_theme_support('widgets');
+}, 100);
