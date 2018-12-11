@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bundle>
+  <domain name="sage">
+    <project slug="sage">
+      <target>
+        <directory>lang</directory>
+      </target>
+      <template>
+        <file>lang/sage.pot</file>
+      </template>
+    </project>
+  </domain>
+</bundle>
