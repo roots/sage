@@ -36,7 +36,7 @@ add_action('acf/init', function () {
         acf_add_options_page([
             'page_title' => esc_html__('Theme Settings', 'sage'),
             'menu_title' => esc_html__('Theme Settings', 'sage'),
-            'menu_slug' => 'sage_options',
+            'menu_slug' => 'theme_options',
             'capability' => 'manage_options',
             'redirect' => false,
             'icon_url' => 'dashicons-welcome-widgets-menus',
@@ -47,8 +47,8 @@ add_action('acf/init', function () {
         //     'page_title' => esc_html__('Footer', 'sage'),
         //     'menu_title' => esc_html__('Footer', 'sage'),
         //     'capability' => 'manage_options',
-        //     'menu_slug' => 'sage_options_footer',
-        //     'parent' => 'sage_options',
+        //     'menu_slug' => 'theme_options_footer',
+        //     'parent' => 'theme_options',
         // ]);
     }
 });

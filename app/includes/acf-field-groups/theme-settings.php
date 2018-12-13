@@ -26,7 +26,7 @@ acf_add_local_field_group([
             [
                 'param' => 'options_page',
                 'operator' => '==',
-                'value' => 'hembla_options',
+                'value' => 'theme_options',
             ],
         ],
     ],
