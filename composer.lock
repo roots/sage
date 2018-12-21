@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a04663aa2f9583e0f3b675361af4d8e5",
+    "content-hash": "9de6687a4463d57df7d76ef77a37da2f",
     "packages": [
         {
             "name": "brain/hierarchy",
@@ -783,7 +783,7 @@
         },
         {
             "name": "roots/sage-lib",
-            "version": "9.0.5",
+            "version": "9.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/roots/sage-lib.git",
