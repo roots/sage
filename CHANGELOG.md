@@ -1,3 +1,11 @@
+### 9.0.6: December 21st, 2018
+* Update to Bootstrap 4.2.1 ([#2136](https://github.com/roots/sage/pull/2136))
+* Do not ignore vendors for plugins ([#2132](https://github.com/roots/sage/pull/2132))
+* Fix stylelint and eslint validation errors ([#2131](https://github.com/roots/sage/pull/2131))
+* Hook run sequence fix ([#2123](https://github.com/roots/sage/pull/2123))
+* Dispatch event when firing routes ([#2080](https://github.com/roots/sage/pull/2080))
+* Normalize and enforce single quotes ([#2076](https://github.com/roots/sage/pull/2076))
+
 ### 9.0.5: September 17th, 2018
 * Workaround for Bootstrap incompatibility with webpack. Fixes #2017 ([e72b490](https://github.com/roots/sage/commit/e72b4906264551dc00cd0890de74ae2bce0d77c8))
 
