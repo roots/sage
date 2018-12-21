@@ -34,7 +34,7 @@
     "test": "npm run -s lint"
   },
   "engines": {
-    "node": ">= 6.9.4"
+    "node": ">= 8.0.0"
   },
   "devDependencies": {
     "autoprefixer": "~8.2.0",
