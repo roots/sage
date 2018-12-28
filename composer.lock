@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9de6687a4463d57df7d76ef77a37da2f",
+    "content-hash": "14976d36e5b451824b6c69857c0f2870",
     "packages": [
         {
             "name": "brain/hierarchy",
@@ -783,16 +783,16 @@
         },
         {
             "name": "roots/sage-lib",
-            "version": "9.0.6",
+            "version": "9.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/roots/sage-lib.git",
-                "reference": "b85bf4e3bf4a766dbc956acb535a2ceb799f3ca4"
+                "reference": "b9adfbd72faf997b226d5a9f06b8ea74260e72fd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/roots/sage-lib/zipball/b85bf4e3bf4a766dbc956acb535a2ceb799f3ca4",
-                "reference": "b85bf4e3bf4a766dbc956acb535a2ceb799f3ca4",
+                "url": "https://api.github.com/repos/roots/sage-lib/zipball/b9adfbd72faf997b226d5a9f06b8ea74260e72fd",
+                "reference": "b9adfbd72faf997b226d5a9f06b8ea74260e72fd",
                 "shasum": ""
             },
             "require": {
@@ -802,7 +802,7 @@
                 "php": ">=7.1"
             },
             "require-dev": {
-                "squizlabs/php_codesniffer": "~3.0"
+                "squizlabs/php_codesniffer": "~3.3.1"
             },
             "type": "library",
             "autoload": {
@@ -831,7 +831,7 @@
             "keywords": [
                 "wordpress"
             ],
-            "time": "2018-06-03T02:04:14+00:00"
+            "time": "2018-12-28T01:46:28+00:00"
         },
         {
             "name": "soberwp/controller",
@@ -1240,26 +1240,154 @@
             "time": "2018-09-03T13:49:38+00:00"
         },
         {
-            "name": "roots/sage-installer",
-            "version": "1.5.1",
+            "name": "paragonie/random_compat",
+            "version": "v9.99.99",
             "source": {
                 "type": "git",
-                "url": "https://github.com/roots/sage-installer.git",
-                "reference": "b5f9b2f2175b4c61dc98cd2523b2e87ea1b4ecbb"
+                "url": "https://github.com/paragonie/random_compat.git",
+                "reference": "84b4dfb120c6f9b4ff7b3685f9b8f1aa365a0c95"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/roots/sage-installer/zipball/b5f9b2f2175b4c61dc98cd2523b2e87ea1b4ecbb",
-                "reference": "b5f9b2f2175b4c61dc98cd2523b2e87ea1b4ecbb",
+                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/84b4dfb120c6f9b4ff7b3685f9b8f1aa365a0c95",
+                "reference": "84b4dfb120c6f9b4ff7b3685f9b8f1aa365a0c95",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.*|5.*",
+                "vimeo/psalm": "^1"
+            },
+            "suggest": {
+                "ext-libsodium": "Provides a modern crypto API that can be used to generate random bytes."
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Paragon Initiative Enterprises",
+                    "email": "security@paragonie.com",
+                    "homepage": "https://paragonie.com"
+                }
+            ],
+            "description": "PHP 5.x polyfill for random_bytes() and random_int() from PHP 7",
+            "keywords": [
+                "csprng",
+                "polyfill",
+                "pseudorandom",
+                "random"
+            ],
+            "time": "2018-07-02T15:55:56+00:00"
+        },
+        {
+            "name": "ramsey/uuid",
+            "version": "3.8.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ramsey/uuid.git",
+                "reference": "d09ea80159c1929d75b3f9c60504d613aeb4a1e3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ramsey/uuid/zipball/d09ea80159c1929d75b3f9c60504d613aeb4a1e3",
+                "reference": "d09ea80159c1929d75b3f9c60504d613aeb4a1e3",
+                "shasum": ""
+            },
+            "require": {
+                "paragonie/random_compat": "^1.0|^2.0|9.99.99",
+                "php": "^5.4 || ^7.0",
+                "symfony/polyfill-ctype": "^1.8"
+            },
+            "replace": {
+                "rhumsaa/uuid": "self.version"
+            },
+            "require-dev": {
+                "codeception/aspect-mock": "^1.0 | ~2.0.0",
+                "doctrine/annotations": "~1.2.0",
+                "goaop/framework": "1.0.0-alpha.2 | ^1.0 | ~2.1.0",
+                "ircmaxell/random-lib": "^1.1",
+                "jakub-onderka/php-parallel-lint": "^0.9.0",
+                "mockery/mockery": "^0.9.9",
+                "moontoast/math": "^1.1",
+                "php-mock/php-mock-phpunit": "^0.3|^1.1",
+                "phpunit/phpunit": "^4.7|^5.0|^6.5",
+                "squizlabs/php_codesniffer": "^2.3"
+            },
+            "suggest": {
+                "ext-ctype": "Provides support for PHP Ctype functions",
+                "ext-libsodium": "Provides the PECL libsodium extension for use with the SodiumRandomGenerator",
+                "ext-uuid": "Provides the PECL UUID extension for use with the PeclUuidTimeGenerator and PeclUuidRandomGenerator",
+                "ircmaxell/random-lib": "Provides RandomLib for use with the RandomLibAdapter",
+                "moontoast/math": "Provides support for converting UUID to 128-bit integer (in string form).",
+                "ramsey/uuid-console": "A console application for generating UUIDs with ramsey/uuid",
+                "ramsey/uuid-doctrine": "Allows the use of Ramsey\\Uuid\\Uuid as Doctrine field type."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Ramsey\\Uuid\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Marijn Huizendveld",
+                    "email": "marijn.huizendveld@gmail.com"
+                },
+                {
+                    "name": "Thibaud Fabre",
+                    "email": "thibaud@aztech.io"
+                },
+                {
+                    "name": "Ben Ramsey",
+                    "email": "ben@benramsey.com",
+                    "homepage": "https://benramsey.com"
+                }
+            ],
+            "description": "Formerly rhumsaa/uuid. A PHP 5.4+ library for generating RFC 4122 version 1, 3, 4, and 5 universally unique identifiers (UUID).",
+            "homepage": "https://github.com/ramsey/uuid",
+            "keywords": [
+                "guid",
+                "identifier",
+                "uuid"
+            ],
+            "time": "2018-07-19T23:38:55+00:00"
+        },
+        {
+            "name": "roots/sage-installer",
+            "version": "1.6.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/roots/sage-installer.git",
+                "reference": "60c329d6f5d750f78804b9577f2944c05b3a24dc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/roots/sage-installer/zipball/60c329d6f5d750f78804b9577f2944c05b3a24dc",
+                "reference": "60c329d6f5d750f78804b9577f2944c05b3a24dc",
                 "shasum": ""
             },
             "require": {
                 "illuminate/console": "~5.6",
                 "illuminate/filesystem": "~5.6",
+                "ramsey/uuid": "^3.8",
                 "symfony/process": "~3.3"
             },
             "require-dev": {
-                "squizlabs/php_codesniffer": "~3.0"
+                "squizlabs/php_codesniffer": "~3.3.1"
             },
             "bin": [
                 "bin/sage"
@@ -1296,7 +1424,7 @@
                 "theme",
                 "wordpress"
             ],
-            "time": "2018-12-21T19:32:27+00:00"
+            "time": "2018-12-28T17:48:45+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
@@ -1444,6 +1572,64 @@
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
             "time": "2018-11-27T07:40:44+00:00"
+        },
+        {
+            "name": "symfony/polyfill-ctype",
+            "version": "v1.10.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-ctype.git",
+                "reference": "e3d826245268269cd66f8326bd8bc066687b4a19"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/polyfill-ctype/zipball/e3d826245268269cd66f8326bd8bc066687b4a19",
+                "reference": "e3d826245268269cd66f8326bd8bc066687b4a19",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "suggest": {
+                "ext-ctype": "For best performance"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.9-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Polyfill\\Ctype\\": ""
+                },
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                },
+                {
+                    "name": "Gert de Pagter",
+                    "email": "BackEndTea@gmail.com"
+                }
+            ],
+            "description": "Symfony polyfill for ctype functions",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "compatibility",
+                "ctype",
+                "polyfill",
+                "portable"
+            ],
+            "time": "2018-08-06T14:22:27+00:00"
         },
         {
             "name": "symfony/process",

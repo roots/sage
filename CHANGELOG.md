@@ -1,3 +1,6 @@
+### 9.0.7: December 28th, 2018
+* Update sage-installer which now allows to opt-in for sending framework selection data ([#2137](https://github.com/roots/sage/pull/2137))
+
 ### 9.0.6: December 21st, 2018
 * Update to Bootstrap 4.2.1 ([#2136](https://github.com/roots/sage/pull/2136))
 * Do not ignore vendors for plugins ([#2132](https://github.com/roots/sage/pull/2132))
