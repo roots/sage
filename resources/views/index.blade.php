@@ -11,8 +11,14 @@
   @endif
 
   @while (have_posts()) @php the_post() @endphp
-    @include('partials.content-'.get_post_type())
+    @includeFirst(['partials.content-'.get_post_type(), 'partials.content'])
   @endwhile
 
   {!! get_the_posts_navigation() !!}
+@endsection
+
+@section('sidebar')
+  <aside class="sidebar">
+    @include('partials.sidebar')
+  </aside>
 @endsection

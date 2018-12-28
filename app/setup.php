@@ -2,20 +2,28 @@
 
 namespace App;
 
-use Roots\Sage\Container;
-use Roots\Sage\Assets\JsonManifest;
-use Roots\Sage\Template\Blade;
-use Roots\Sage\Template\BladeProvider;
+use function Roots\asset;
+use function Roots\view;
 
 /**
  * Theme assets
  */
 add_action('wp_enqueue_scripts', function () {
-    wp_enqueue_style('sage/main.css', asset_path('styles/main.css'), false, null);
-    wp_enqueue_script('sage/main.js', asset_path('scripts/main.js'), ['jquery'], null, true);
+    wp_enqueue_script('sage/vendor', asset('scripts/vendor.js'), ['jquery'], null, true);
+    wp_enqueue_script('sage/main', asset('scripts/main.js'), ['sage/vendor', 'jquery'], null, true);
+
+    wp_add_inline_script('sage/vendor', asset('scripts/manifest.js')->contents(), 'before');
 
     if (is_single() && comments_open() && get_option('thread_comments')) {
         wp_enqueue_script('comment-reply');
+    }
+
+    $styles = ['styles/main.css'];
+
+    foreach ($styles as $stylesheet) {
+        if (($asset = asset($stylesheet)->exists())) {
+            wp_enqueue_style('sage/'.basename($stylesheet, '.css'), asset($stylesheet)->uri(), false, null);
+        }
     }
 }, 100);
 
@@ -69,7 +77,7 @@ add_action('after_setup_theme', function () {
      * Use main stylesheet for visual editor
      * @see resources/assets/styles/layouts/_tinymce.scss
      */
-    add_editor_style(asset_path('styles/main.css'));
+    add_editor_style(asset('styles/admin.css')->uri());
 }, 20);
 
 /**
@@ -78,55 +86,16 @@ add_action('after_setup_theme', function () {
 add_action('widgets_init', function () {
     $config = [
         'before_widget' => '<section class="widget %1$s %2$s">',
-        'after_widget'  => '</section>',
-        'before_title'  => '<h3>',
-        'after_title'   => '</h3>'
+        'after_widget' => '</section>',
+        'before_title' => '<h3>',
+        'after_title' => '</h3>'
     ];
     register_sidebar([
-        'name'          => __('Primary', 'sage'),
-        'id'            => 'sidebar-primary'
+        'name' => __('Primary', 'sage'),
+        'id' => 'sidebar-primary'
     ] + $config);
     register_sidebar([
-        'name'          => __('Footer', 'sage'),
-        'id'            => 'sidebar-footer'
+        'name' => __('Footer', 'sage'),
+        'id' => 'sidebar-footer'
     ] + $config);
-});
-
-/**
- * Updates the `$post` variable on each iteration of the loop.
- * Note: updated value is only available for subsequently loaded views, such as partials
- */
-add_action('the_post', function ($post) {
-    sage('blade')->share('post', $post);
-});
-
-/**
- * Setup Sage options
- */
-add_action('after_setup_theme', function () {
-    /**
-     * Add JsonManifest to Sage container
-     */
-    sage()->singleton('sage.assets', function () {
-        return new JsonManifest(config('assets.manifest'), config('assets.uri'));
-    });
-
-    /**
-     * Add Blade to Sage container
-     */
-    sage()->singleton('sage.blade', function (Container $app) {
-        $cachePath = config('view.compiled');
-        if (!file_exists($cachePath)) {
-            wp_mkdir_p($cachePath);
-        }
-        (new BladeProvider($app))->register();
-        return new Blade($app['view']);
-    });
-
-    /**
-     * Create @asset() Blade directive
-     */
-    sage('blade')->compiler()->directive('asset', function ($asset) {
-        return "<?= " . __NAMESPACE__ . "\\asset_path({$asset}); ?>";
-    });
 });
