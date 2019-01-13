@@ -1,0 +1,15 @@
+.wp-block-table {
+  @extend .table;
+
+  display: block;
+
+  tbody {
+    display: table;
+  }
+
+  tr:first-child {
+    td {
+      @extend .col;
+    }
+  }
+}

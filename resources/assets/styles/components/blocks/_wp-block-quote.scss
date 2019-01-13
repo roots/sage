@@ -1,0 +1,88 @@
+.wp-block-quote {
+  @extend .blockquote;
+
+  margin-top: $gutenberg-spacing;
+  margin-bottom: $gutenberg-spacing;
+
+  &.is-large {
+    > * {
+      @extend .lead;
+    }
+  }
+}
+
+.wp-block-pullquote {
+  margin-top: $gutenberg-spacing;
+  margin-bottom: $gutenberg-spacing;
+
+  > blockquote {
+    > p {
+      margin-top: 0;
+    }
+  }
+
+  &.alignwide,
+  &.alignfull {
+    display: block;
+    width: 100vw;
+
+    > blockquote {
+      @extend .blockquote;
+
+      > p,
+      > cite {
+        display: block;
+        text-align: center;
+      }
+
+      > p {
+        @extend .lead;
+      }
+
+      > cite {
+        text-transform: uppercase;
+        font-style: normal;
+      }
+
+      @media (min-width: #{$gutenberg-breakpoint-large}) {
+        padding-left: $gutenberg-spacing;
+        padding-right: $gutenberg-spacing;
+      }
+    }
+
+    @media (min-width: #{$gutenberg-breakpoint-large}) {
+      padding-left: 5vw;
+      padding-right: 5vw;
+    }
+  }
+
+  &.alignleft blockquote,
+  &.alignright blockquote {
+    > cite {
+      text-transform: uppercase;
+    }
+  }
+
+  &.alignleft {
+    text-align: left;
+
+    > blockquote {
+      float: left;
+      margin-right: ($gutenberg-spacing * 2);
+    }
+  }
+
+  &.alignright {
+    text-align: right;
+
+    > blockquote {
+      float: right;
+      margin-left: ($gutenberg-spacing * 2);
+    }
+  }
+
+  figure:not(.alignleft, .alignright) {
+    padding-left: $gutenberg-spacing;
+    padding-right: $gutenberg-spacing;
+  }
+}

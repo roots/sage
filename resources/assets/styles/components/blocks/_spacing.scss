@@ -1,0 +1,32 @@
+> *:not(.gutenberg-wrap) {
+  @include gutenberg-contain();
+}
+
+> .gutenberg-wrap {
+  width: 100vw;
+  max-width: none;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+> .gutenberg-wrap > .alignfull,
+> .gutenberg-wrap > .alignwide {
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+> .gutenberg-wrap > .alignfull {
+  width: 100vw;
+}
+
+@media (min-width: #{$gutenberg-breakpoint-medium}) {
+  > .gutenberg-wrap > .alignwide {
+    max-width: 90vw;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

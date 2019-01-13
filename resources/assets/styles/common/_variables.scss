@@ -8,3 +8,16 @@ $theme-colors: (
 /** Bootstrap navbar fix (https://git.io/fADqW) */
 $navbar-dark-toggler-icon-bg: none;
 $navbar-light-toggler-icon-bg: none;
+
+/** Gutenberg */
+$gutenberg-container-medium: 600px;
+$gutenberg-container-large: 768px;
+$gutenberg-container-xlarge: 900px;
+
+/** Gutenberg breakpoints */
+$gutenberg-breakpoint-medium: 576px;
+$gutenberg-breakpoint-large: 676px;
+$gutenberg-breakpoint-xlarge: 992px;
+
+/** Gutenberg spacing unit */
+$gutenberg-spacing: 30px;

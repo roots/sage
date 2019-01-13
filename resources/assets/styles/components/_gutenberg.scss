@@ -1,0 +1,19 @@
+@import "blocks/utilities";
+
+/** styles */
+.gutenberg {
+  @import "blocks/spacing";
+  @import "blocks/wp-block-columns";
+  @import "blocks/wp-block-cover";
+  @import "blocks/wp-block-image";
+  @import "blocks/wp-block-video";
+  @import "blocks/wp-block-audio";
+  @import "blocks/wp-block-embed";
+  @import "blocks/wp-block-gallery";
+  @import "blocks/wp-block-separator";
+  @import "blocks/wp-block-button";
+  @import "blocks/wp-block-quote";
+  @import "blocks/wp-block-table";
+  @import "blocks/lists";
+  @import "blocks/preformatted";
+}

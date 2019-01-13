@@ -1,0 +1,24 @@
+.wp-block-columns,
+.is-grid {
+  @for $columns from 1 to 12 {
+    &.has-#{$columns}-columns,
+    > li {
+      display: grid;
+      grid-column-gap: $spacer;
+
+      @media (min-width: #{$gutenberg-breakpoint-medium}) {
+        @if $columns <= 3 {
+          grid-template-columns: repeat($columns, 1fr);
+        }
+
+        @else if $columns > 3 {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+    }
+  }
+
+  .wp-block-column {
+    grid-column: (auto, 1fr);
+  }
+}

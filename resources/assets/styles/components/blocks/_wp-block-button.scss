@@ -1,0 +1,33 @@
+.wp-block-button {
+  > .wp-block-button__link {
+    display: inline-block;
+
+    @extend .btn, .btn-primary;
+  }
+
+  &.alignleft {
+    text-align: left;
+
+    > .wp-block-button__link {
+      float: left;
+      margin: $gutenberg-spacing $gutenberg-spacing $gutenberg-spacing 0;
+    }
+  }
+
+  &.alignright {
+    text-align: right;
+
+    > .wp-block-button__link {
+      float: right;
+      margin: $gutenberg-spacing 0 $gutenberg-spacing $gutenberg-spacing;
+    }
+  }
+
+  &.aligncenter {
+    text-align: center;
+
+    > .wp-block-button__link {
+      margin-bottom: ($gutenberg-spacing/2);
+    }
+  }
+}

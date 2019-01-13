@@ -1,0 +1,31 @@
+> .wp-block-separator {
+  display: block;
+  clear: both;
+  padding: 0;
+  margin: $gutenberg-spacing auto $gutenberg-spacing auto;
+  border: 0 0 1px 0 solid $secondary;
+  background: transparent;
+  opacity: 0.6;
+
+  &.is-style-wide {
+    max-width: 80vw;
+    width: 80vw;
+  }
+
+  &.is-style-dots {
+    background: none; // Override any background themes often set on the hr tag for this style.
+    border: none;
+    text-align: center;
+    max-width: none;
+    line-height: 0;
+    height: auto;
+
+    &::before {
+      content: "\00b7 \00b7 \00b7";
+      color: rgba(0, 0, 0, 0.8);
+      font-size: 2rem;
+      letter-spacing: $gutenberg-spacing;
+      font-family: serif;
+    }
+  }
+}

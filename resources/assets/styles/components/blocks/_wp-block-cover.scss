@@ -1,0 +1,90 @@
+.wp-block-cover {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  justify-content: center;
+  position: relative;
+  margin-top: $gutenberg-spacing;
+  margin-bottom: $gutenberg-spacing;
+  padding-top: ($gutenberg-spacing * 3);
+  padding-bottom: ($gutenberg-spacing * 3);
+
+  h2,
+  .wp-block-cover-text {
+    @extend .display-4;
+
+    position: relative;
+    display: inline-block;
+    margin-bottom: 0;
+    padding-top: ($gutenberg-spacing * 3);
+    padding-bottom: ($gutenberg-spacing * 3);
+    z-index: 20;
+    text-align: center;
+    color: white;
+
+    a {
+      color: white;
+    }
+  }
+
+  &.has-parallax {
+    background-position: fixed;
+  }
+
+  &.has-background-dim::before {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.5);
+    content: "";
+  }
+
+  @for $i from 1 through 10 {
+    &.has-background-dim.has-background-dim-#{ $i * 10 }::before {
+      background-color: rgba($black, $i * 0.1);
+    }
+  }
+
+  @media (min-width: #{$gutenberg-breakpoint-large}) {
+    &.alignleft {
+      float: left;
+      clear: left;
+      width: 40%;
+      margin-top: 0;
+      margin-right: $gutenberg-spacing;
+
+      > p {
+        text-align: center;
+      }
+    }
+
+    &.alignright {
+      float: right;
+      clear: right;
+      width: 40%;
+      margin-top: 0;
+      margin-left: $gutenberg-spacing;
+
+      > p {
+        text-align: center;
+      }
+    }
+
+    &.aligncenter {
+      clear: both;
+      width: 100%;
+    }
+  }
+
+  @media (max-width: #{$gutenberg-breakpoint-medium}) {
+    &.alignwide {
+      max-width: 100vw;
+      width: 100vw;
+    }
+  }
+}

@@ -1,0 +1,18 @@
+ol:not([class^="wp-block-"]),
+ol:not([class^="wp-block-"]) * {
+  list-style-position: inside;
+  list-style-type: lower-roman;
+}
+
+ul:not([class^="wp-block-"]),
+ul:not([class^="wp-block-"]) * {
+  list-style-position: inside;
+  list-style-type: square;
+}
+
+ol:not([class^="wp-block-"]) li,
+ol:not([class^="wp-block-"]) li *,
+ul:not([class^="wp-block-"]) li,
+ul:not([class^="wp-block-"]) li * {
+  padding-left: ($spacer / 2);
+}

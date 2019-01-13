@@ -1,0 +1,28 @@
+@mixin gutenberg-contain(
+  $container-medium: $gutenberg-container-medium,
+  $container-large: $gutenberg-container-large,
+  $container-xlarge: $gutenberg-container-xlarge,
+  $breakpoint-medium: $gutenberg-breakpoint-medium,
+  $breakpoint-large: $gutenberg-breakpoint-large,
+  $breakpoint-xlarge: $gutenberg-breakpoint-xlarge,
+  $padding: $gutenberg-spacing,
+) {
+  width: 100%;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $padding;
+  padding-right: $padding;
+
+  @media (min-width: #{$breakpoint-large}) {
+    max-width: $container-large;
+    padding-left: initial;
+    padding-right: initial;
+  }
+
+  @media (min-width: #{$breakpoint-xlarge}) {
+    max-width: $container-large;
+    padding-left: initial;
+    padding-right: initial;
+  }
+}
