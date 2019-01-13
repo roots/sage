@@ -37,44 +37,44 @@ add_action('after_setup_theme', function () {
      * Add theme support for Wide Alignment
      * @link https://wordpress.org/gutenberg/handbook/designers-developers/developers/themes/theme-support/#wide-alignment
      */
-    add_theme_support( 'align-wide' );
+    add_theme_support('align-wide');
 
     /**
      * Add editor styles
      * @link https://wordpress.org/gutenberg/handbook/designers-developers/developers/themes/theme-support/#editor-styles
      */
     add_theme_support('editor-styles');
-    // add_theme_support( 'dark-editor-styles');
-    // add_editor_style( 'style-editor.css' );
+    // add_theme_support('dark-editor-styles');
+    // add_editor_style('style-editor.css');
 
     /**
      * Enable responsive embeds
      * @link https://wordpress.org/gutenberg/handbook/designers-developers/developers/themes/theme-support/#responsive-embedded-content
      */
-    add_theme_support( 'responsive-embeds' );
+    add_theme_support('responsive-embeds');
 
     /**
      * Enable Editor color palette support
      * @link https://wordpress.org/gutenberg/handbook/designers-developers/developers/themes/theme-support/#block-color-palettes
      */
-    add_theme_support( 'editor-color-palette', array(
+    add_theme_support('editor-color-palette', array(
         array(
-            'name' => __( 'strong magenta', 'sage' ),
+            'name' => __('strong magenta', 'sage'),
             'slug' => 'strong-magenta',
             'color' => '#a156b4',
         ),
         array(
-            'name' => __( 'light grayish magenta', 'sage' ),
+            'name' => __('light grayish magenta', 'sage'),
             'slug' => 'light-grayish-magenta',
             'color' => '#d0a5db',
         ),
         array(
-            'name' => __( 'very light gray', 'sage' ),
+            'name' => __('very light gray', 'sage'),
             'slug' => 'very-light-gray',
             'color' => '#eee',
         ),
         array(
-            'name' => __( 'very dark gray', 'sage' ),
+            'name' => __('very dark gray', 'sage'),
             'slug' => 'very-dark-gray',
             'color' => '#444',
         ),
@@ -84,24 +84,24 @@ add_action('after_setup_theme', function () {
      * Enable Editor font size support
      * @link https://wordpress.org/gutenberg/handbook/designers-developers/developers/themes/theme-support/#block-color-palettes
      */
-    add_theme_support( 'editor-font-sizes', array(
+    add_theme_support('editor-font-sizes', array(
         array(
-            'name' => __( 'Small', 'sage' ),
+            'name' => __('Small', 'sage'),
             'size' => 12,
             'slug' => 'small'
         ),
         array(
-            'name' => __( 'Normal', 'sage' ),
+            'name' => __('Normal', 'sage'),
             'size' => 16,
             'slug' => 'normal'
         ),
         array(
-            'name' => __( 'Large', 'sage' ),
+            'name' => __('Large', 'sage'),
             'size' => 36,
             'slug' => 'large'
         ),
         array(
-            'name' => __( 'Huge', 'sage' ),
+            'name' => __('Huge', 'sage'),
             'size' => 50,
             'slug' => 'huge'
         )
@@ -111,7 +111,7 @@ add_action('after_setup_theme', function () {
      * Dequeue Gutenberg CSS
      * @link https://wordpress.org/gutenberg/?s=dequeue (404)
      */
-    add_action( 'wp_enqueue_scripts', function() {
+    add_action('wp_enqueue_scripts', function () {
         wp_dequeue_style('wp-block-library');
     }, 100);
 
