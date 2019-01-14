@@ -1,40 +1,37 @@
 .wp-block-image {
   > img {
-    display: block;
-    max-width: 100%;
-    width: 100%;
-    margin-left: 0;
-    margin-right: 0;
+    @extend .d-block, .mw-100, .w-100, .mx-0;
   }
 
   figcaption {
-    font-style: italic;
+    @extend .font-italic;
   }
 
   > figure {
-    display: inline-block;
-    padding: 0;
+    @extend .d-inline-block, .p-0;
 
     &.alignleft,
     &.alignright {
-      display: inline;
+      @extend .d-inline;
 
       > img,
       > figcaption {
-        margin-top: 0;
+        @extend .mt-0;
       }
     }
 
     &.alignleft {
       > img,
       > figcaption {
-        float: left;
+        @extend .float-left;
+
         margin-right: $gutenberg-spacing;
       }
 
       > figcaption {
+        @extend .mt-0;
+
         clear: left;
-        margin-top: 0;
         margin-bottom: $gutenberg-spacing;
       }
     }
@@ -42,13 +39,15 @@
     &.alignright {
       > img,
       > figcaption {
-        float: right;
+        @extend .float-right;
+
         margin-left: $gutenberg-spacing;
       }
 
       > figcaption {
+        @extend .mt-0;
+
         clear: right;
-        margin-top: 0;
         margin-bottom: $gutenberg-spacing;
       }
     }
@@ -56,13 +55,12 @@
     &.aligncenter {
       > img,
       > figcaption {
-        width: 100%;
+        @extend .w-100;
       }
 
       > figcaption {
-        width: 100%;
-        text-align: center;
-        margin-top: 0;
+        @extend .w-100, .text-center, .mt-0;
+
         margin-bottom: $gutenberg-spacing;
       }
     }

@@ -1,30 +1,30 @@
 .wp-block-button {
   > .wp-block-button__link {
-    display: inline-block;
-
-    @extend .btn, .btn-primary;
+    @extend .d-inline-block, .btn, .btn-primary;
   }
 
   &.alignleft {
-    text-align: left;
+    @extend .text-left;
 
     > .wp-block-button__link {
-      float: left;
+      @extend .float-left;
+
       margin: $gutenberg-spacing $gutenberg-spacing $gutenberg-spacing 0;
     }
   }
 
   &.alignright {
-    text-align: right;
+    @extend .text-right;
 
     > .wp-block-button__link {
-      float: right;
+      @extend .float-right;
+
       margin: $gutenberg-spacing 0 $gutenberg-spacing $gutenberg-spacing;
     }
   }
 
   &.aligncenter {
-    text-align: center;
+    @extend .text-center;
 
     > .wp-block-button__link {
       margin-bottom: ($gutenberg-spacing/2);

@@ -1,9 +1,11 @@
 > .wp-block-separator {
+  @extend .d-block, .p-0, .mx-auto, .border-bottom;
+
   display: block;
   clear: both;
   padding: 0;
-  margin: $gutenberg-spacing auto $gutenberg-spacing auto;
-  border: 0 0 1px 0 solid $secondary;
+  margin-top: $gutenberg-spacing;
+  margin-bottom: $gutenberg-spacing;
   background: transparent;
   opacity: 0.6;
 
@@ -13,17 +15,17 @@
   }
 
   &.is-style-dots {
+    @extend .border-0, .text-center;
+
     background: none; // Override any background themes often set on the hr tag for this style.
-    border: none;
-    text-align: center;
     max-width: none;
     line-height: 0;
     height: auto;
 
     &::before {
       content: "\00b7 \00b7 \00b7";
-      color: rgba(0, 0, 0, 0.8);
-      font-size: 2rem;
+      color: rgba($black, 0.8);
+      font-size: $font-size-base*2;
       letter-spacing: $gutenberg-spacing;
       font-family: serif;
     }

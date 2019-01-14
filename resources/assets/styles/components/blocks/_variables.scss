@@ -1,9 +1,9 @@
-$gutenberg-container-medium: 500px;
-$gutenberg-container-large: 768px;
-$gutenberg-container-xlarge: 900px;
+$gutenberg-container-medium: map-get($container-max-widths, "md");
+$gutenberg-container-large: map-get($container-max-widths, "lg");
+$gutenberg-container-xlarge: map-get($container-max-widths, "xl");
 
-$gutenberg-breakpoint-medium: 576px;
-$gutenberg-breakpoint-large: 676px;
-$gutenberg-breakpoint-xlarge: 992px;
+$gutenberg-breakpoint-medium: map-get($grid-breakpoints, "md");
+$gutenberg-breakpoint-large: map-get($grid-breakpoints, "lg");
+$gutenberg-breakpoint-xlarge: map-get($grid-breakpoints, "xl");
 
-$gutenberg-spacing: 30px;
+$gutenberg-spacing: $grid-gutter-width;

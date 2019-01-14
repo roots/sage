@@ -3,30 +3,24 @@
 }
 
 > .gutenberg-wrap {
-  width: 100vw;
+  @extend .mx-0, .px-0, .vw-100;
+
   max-width: none;
-  margin-left: 0;
-  margin-right: 0;
-  padding-left: 0;
-  padding-right: 0;
 }
 
 > .gutenberg-wrap > .alignfull,
 > .gutenberg-wrap > .alignwide {
-  margin-left: 0;
-  margin-right: 0;
-  padding-left: 0;
-  padding-right: 0;
+  @extend .mx-0, .px-0;
 }
 
 > .gutenberg-wrap > .alignfull {
-  width: 100vw;
+  @extend .vw-100;
 }
 
-@media (min-width: #{$gutenberg-breakpoint-medium}) {
-  > .gutenberg-wrap > .alignwide {
+> .gutenberg-wrap > .alignwide {
+  @extend .mx-md-0;
+
+  @media (min-width: #{$gutenberg-breakpoint-medium}) {
     max-width: 90vw;
-    margin-left: auto;
-    margin-right: auto;
   }
 }

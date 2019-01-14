@@ -1,15 +1,13 @@
 .wp-block-table {
-  @extend .table;
-
-  display: block;
+  @extend .table, .d-block;
 
   tbody {
-    display: table;
+    @extend .d-table;
   }
 
   tr:first-child {
     td {
-      @extend .col;
+      @include make-col-ready();
     }
   }
 }

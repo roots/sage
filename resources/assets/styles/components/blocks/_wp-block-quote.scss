@@ -17,22 +17,20 @@
 
   > blockquote {
     > p {
-      margin-top: 0;
+      @extend .mt-0;
     }
   }
 
   &.alignwide,
   &.alignfull {
-    display: block;
-    width: 100vw;
+    @extend .d-block, .vw-100;
 
     > blockquote {
       @extend .blockquote;
 
       > p,
       > cite {
-        display: block;
-        text-align: center;
+        @extend .d-block, .text-center;
       }
 
       > p {
@@ -40,7 +38,8 @@
       }
 
       > cite {
-        text-transform: uppercase;
+        @extend .text-uppercase;
+
         font-style: normal;
       }
 
@@ -59,24 +58,26 @@
   &.alignleft blockquote,
   &.alignright blockquote {
     > cite {
-      text-transform: uppercase;
+      @extend .text-uppercase;
     }
   }
 
   &.alignleft {
-    text-align: left;
+    @extend .text-left;
 
     > blockquote {
-      float: left;
+      @extend .float-left;
+
       margin-right: ($gutenberg-spacing * 2);
     }
   }
 
   &.alignright {
-    text-align: right;
+    @extend .text-right;
 
     > blockquote {
-      float: right;
+      @extend .float-right;
+
       margin-left: ($gutenberg-spacing * 2);
     }
   }
