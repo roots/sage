@@ -1,13 +1,10 @@
 .wp-block-quote {
-  @extend .blockquote;
-
   margin-top: $gutenberg-spacing;
   margin-bottom: $gutenberg-spacing;
+  font-size: $gutenberg-font-md;
 
-  &.is-large {
-    > * {
-      @extend .lead;
-    }
+  &.is-large > * {
+    font-size: $gutenberg-font-lg;
   }
 }
 
@@ -15,71 +12,62 @@
   margin-top: $gutenberg-spacing;
   margin-bottom: $gutenberg-spacing;
 
-  > blockquote {
-    > p {
-      @extend .mt-0;
-    }
+  > blockquote > p {
+    @extend .mt-0;
   }
 
   &.alignwide,
   &.alignfull {
-    @extend .d-block, .vw-100;
-
-    > blockquote {
-      @extend .blockquote;
-
-      > p,
-      > cite {
-        @extend .d-block, .text-center;
-      }
-
-      > p {
-        @extend .lead;
-      }
-
-      > cite {
-        @extend .text-uppercase;
-
-        font-style: normal;
-      }
-
-      @media (min-width: #{$gutenberg-container-lg}) {
-        padding-left: $gutenberg-spacing;
-        padding-right: $gutenberg-spacing;
-      }
-    }
-
-    @media (min-width: #{$gutenberg-container-lg}) {
-      padding-left: 5vw;
-      padding-right: 5vw;
-    }
+    display: block;
+    padding-left: $gutenberg-spacing;
+    padding-right: $gutenberg-spacing;
   }
 
-  &.alignleft blockquote,
-  &.alignright blockquote {
-    > cite {
-      @extend .text-uppercase;
-    }
+  &.alignwide > p,
+  &.alignfull > p {
+    font-size: $gutenberg-font-lg;
+  }
+
+  &.alignwide > blockquote,
+  &.alignfull > blockquote {
+    @extend .wp-block-quote; // defined above
+  }
+
+  &.alignwide > p,
+  &.alignfull > p,
+  &.alignwide > cite,
+  &.alignfull > cite {
+    display: block;
+    text-align: center;
+  }
+
+  &.alignwide > cite,
+  &.alignfull > cite {
+    font-style: normal;
+    text-transform: uppercase;
+  }
+
+  &.alignleft blockquote > cite,
+  &.alignright blockquote > cite {
+    text-transform: uppercase;
   }
 
   &.alignleft {
-    @extend .text-left;
+    text-align: left;
+  }
 
-    > blockquote {
-      @extend .float-left;
-
-      margin-right: ($gutenberg-spacing * 2);
-    }
+  &.alignleft > blockquote {
+    float: left;
+    margin-right: ($gutenberg-spacing * 2);
   }
 
   &.alignright {
-    @extend .text-right;
+    text-align: right;
+  }
 
-    > blockquote {
-      @extend .float-right;
-
-      margin-left: ($gutenberg-spacing * 2);
-    }
+  &.alignright > blockquote {
+    float: right;
+    margin-left: ($gutenberg-spacing * 2);
   }
 
   figure:not(.alignleft, .alignright) {

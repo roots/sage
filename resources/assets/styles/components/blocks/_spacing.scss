@@ -3,23 +3,22 @@
 }
 
 > .gutenberg-wrap {
-  @extend .mx-0, .px-0, .vw-100;
+  @extend .mx-0, .px-0;
 
+  width: 100%;
   max-width: none;
 }
 
 > .gutenberg-wrap > .alignfull,
 > .gutenberg-wrap > .alignwide {
-  @extend .mx-0, .px-0;
+  @extend .mx-auto;
 }
 
 > .gutenberg-wrap > .alignfull {
-  @extend .vw-100;
+  width: 100vw;
 }
 
 > .gutenberg-wrap > .alignwide {
-  @extend .mx-md-0;
-
   @media (min-width: #{$gutenberg-container-md}) {
     max-width: 90vw;
   }
