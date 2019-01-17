@@ -1,12 +1,13 @@
 > .wp-block-separator {
-  @extend .d-block, .p-0, .mx-auto, .border-bottom;
+  @extend .p-0, .mx-auto;
 
   display: block;
   clear: both;
-  padding: 0;
   margin-top: $gutenberg-spacing;
   margin-bottom: $gutenberg-spacing;
+  padding: 0;
   background: transparent;
+  border-bottom: 1px solid $gutenberg-color-muted;
   opacity: 0.6;
 
   &.is-style-wide {
@@ -15,19 +16,19 @@
   }
 
   &.is-style-dots {
-    @extend .border-0, .text-center;
-
-    background: none; // Override any background themes often set on the hr tag for this style.
     max-width: none;
-    line-height: 0;
     height: auto;
+    line-height: 0;
+    background: none; // Override any background themes often set on the hr tag for this style.
+    border: none;
+    text-align: center;
+  }
 
-    &::before {
-      content: "\00b7 \00b7 \00b7";
-      color: rgba($black, 0.8);
-      font-size: $font-size-base*2;
-      letter-spacing: $gutenberg-spacing;
-      font-family: serif;
-    }
+  &.is-style-dots::before {
+    content: "\00b7 \00b7 \00b7";
+    color: $gutenberg-color-muted;
+    font-size: $font-size-base*2;
+    letter-spacing: $gutenberg-spacing;
+    font-family: serif;
   }
 }

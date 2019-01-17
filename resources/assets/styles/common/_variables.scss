@@ -15,9 +15,12 @@ $gutenberg-container-lg: 768px;
 $gutenberg-container-xl: 900px;
 
 /** Gutenberg breakpoints */
-$gutenberg-container-md: 576px;
-$gutenberg-container-lg: 676px;
-$gutenberg-container-xl: 992px;
+$gutenberg-breakpoint-md: 576px;
+$gutenberg-breakpoint-lg: 676px;
+$gutenberg-breakpoint-xl: 992px;
 
 /** Gutenberg spacing unit */
 $gutenberg-spacing: 30px;
+
+/** Gutenberg colors */
+$gutenberg-color-muted: rgba(0, 0, 0, 0.2); // used on elements like hr
