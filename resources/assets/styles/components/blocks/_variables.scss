@@ -1,9 +1,9 @@
-$gutenberg-container-medium: map-get($container-max-widths, "md");
-$gutenberg-container-large: map-get($container-max-widths, "lg");
-$gutenberg-container-xlarge: map-get($container-max-widths, "xl");
+$gutenberg-container-md: map-get($container-max-widths, "md");
+$gutenberg-container-lg: map-get($container-max-widths, "lg");
+$gutenberg-container-xl: map-get($container-max-widths, "xl");
 
-$gutenberg-breakpoint-medium: map-get($grid-breakpoints, "md");
-$gutenberg-breakpoint-large: map-get($grid-breakpoints, "lg");
-$gutenberg-breakpoint-xlarge: map-get($grid-breakpoints, "xl");
+$gutenberg-container-md: map-get($grid-breakpoints, "md");
+$gutenberg-container-lg: map-get($grid-breakpoints, "lg");
+$gutenberg-container-xl: map-get($grid-breakpoints, "xl");
 
 $gutenberg-spacing: $grid-gutter-width;

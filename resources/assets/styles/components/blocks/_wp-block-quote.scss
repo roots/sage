@@ -43,13 +43,13 @@
         font-style: normal;
       }
 
-      @media (min-width: #{$gutenberg-breakpoint-large}) {
+      @media (min-width: #{$gutenberg-container-lg}) {
         padding-left: $gutenberg-spacing;
         padding-right: $gutenberg-spacing;
       }
     }
 
-    @media (min-width: #{$gutenberg-breakpoint-large}) {
+    @media (min-width: #{$gutenberg-container-lg}) {
       padding-left: 5vw;
       padding-right: 5vw;
     }

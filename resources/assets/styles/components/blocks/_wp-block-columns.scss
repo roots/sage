@@ -6,7 +6,7 @@
       display: grid;
       grid-column-gap: $spacer;
 
-      @media (min-width: #{$gutenberg-breakpoint-medium}) {
+      @media (min-width: #{$gutenberg-container-md}) {
         @if $columns <= 3 {
           grid-template-columns: repeat($columns, 1fr);
         }

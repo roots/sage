@@ -10,14 +10,14 @@ $navbar-dark-toggler-icon-bg: none;
 $navbar-light-toggler-icon-bg: none;
 
 /** Gutenberg */
-$gutenberg-container-medium: 600px;
-$gutenberg-container-large: 768px;
-$gutenberg-container-xlarge: 900px;
+$gutenberg-container-md: 600px;
+$gutenberg-container-lg: 768px;
+$gutenberg-container-xl: 900px;
 
 /** Gutenberg breakpoints */
-$gutenberg-breakpoint-medium: 576px;
-$gutenberg-breakpoint-large: 676px;
-$gutenberg-breakpoint-xlarge: 992px;
+$gutenberg-container-md: 576px;
+$gutenberg-container-lg: 676px;
+$gutenberg-container-xl: 992px;
 
 /** Gutenberg spacing unit */
 $gutenberg-spacing: 30px;

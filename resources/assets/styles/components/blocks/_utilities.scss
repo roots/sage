@@ -1,10 +1,10 @@
 @mixin gutenberg-contain(
-  $container-medium: $gutenberg-container-medium,
-  $container-large: $gutenberg-container-large,
-  $container-xlarge: $gutenberg-container-xlarge,
-  $breakpoint-medium: $gutenberg-breakpoint-medium,
-  $breakpoint-large: $gutenberg-breakpoint-large,
-  $breakpoint-xlarge: $gutenberg-breakpoint-xlarge,
+  $container-medium: $gutenberg-container-md,
+  $container-large: $gutenberg-container-lg,
+  $container-xlarge: $gutenberg-container-xl,
+  $breakpoint-medium: $gutenberg-container-md,
+  $breakpoint-large: $gutenberg-container-lg,
+  $breakpoint-xlarge: $gutenberg-container-xl,
   $padding: $gutenberg-spacing,
 ) {
   width: 100%;

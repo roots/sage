@@ -20,7 +20,7 @@
 > .gutenberg-wrap > .alignwide {
   @extend .mx-md-0;
 
-  @media (min-width: #{$gutenberg-breakpoint-medium}) {
+  @media (min-width: #{$gutenberg-container-md}) {
     max-width: 90vw;
   }
 }

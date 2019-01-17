@@ -44,7 +44,7 @@
   &.alignleft {
     @extend .mt-lg-0;
 
-    @media (min-width: #{$gutenberg-breakpoint-large}) {
+    @media (min-width: #{$gutenberg-container-lg}) {
       float: left;
       clear: left;
       width: 40%;
@@ -59,7 +59,7 @@
   &.alignright {
     @extend .mt-lg-0;
 
-    @media (min-width: #{$gutenberg-breakpoint-large}) {
+    @media (min-width: #{$gutenberg-container-lg}) {
       float: right;
       clear: right;
       width: 40%;
@@ -78,7 +78,7 @@
   }
 }
 
-@media (max-width: #{$gutenberg-breakpoint-medium}) {
+@media (max-width: #{$gutenberg-container-md}) {
   &.alignwide {
     width: 100vw;
     max-width: 100vw;

@@ -43,7 +43,7 @@
     }
   }
 
-  @media (min-width: #{$gutenberg-breakpoint-medium}) {
+  @media (min-width: #{$gutenberg-container-md}) {
     @for $i from 3 through 8 {
       &.columns-#{ $i } .blocks-gallery-image,
       &.columns-#{ $i } .blocks-gallery-item {
@@ -52,7 +52,7 @@
     }
   }
 
-  @media (min-width: #{$gutenberg-breakpoint-medium}) {
+  @media (min-width: #{$gutenberg-container-md}) {
     padding-left: $gutenberg-spacing;
     padding-right: $gutenberg-spacing;
   }
