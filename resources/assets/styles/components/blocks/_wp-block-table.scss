@@ -1,13 +1,16 @@
 .wp-block-table {
-  @extend .table, .d-block;
+  display: block;
+  width: 100%;
+  margin-bottom: $gutenberg-spacing;
 
   tbody {
-    @extend .d-table;
+    display: table;
   }
 
-  tr:first-child {
-    td {
-      @include make-col-ready();
-    }
+  tr:first-child > td {
+    position: relative;
+    width: 100%;
+    padding-left: ($gutenberg-spacing / 2);
+    padding-right: ($gutenberg-spacing / 2);
   }
 }
