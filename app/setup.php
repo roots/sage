@@ -54,60 +54,6 @@ add_action('after_setup_theme', function () {
     add_theme_support('responsive-embeds');
 
     /**
-     * Enable Editor color palette support
-     * @link https://wordpress.org/gutenberg/handbook/designers-developers/developers/themes/theme-support/#block-color-palettes
-     */
-    add_theme_support('editor-color-palette', array(
-        array(
-            'name' => __('strong magenta', 'sage'),
-            'slug' => 'strong-magenta',
-            'color' => '#a156b4',
-        ),
-        array(
-            'name' => __('light grayish magenta', 'sage'),
-            'slug' => 'light-grayish-magenta',
-            'color' => '#d0a5db',
-        ),
-        array(
-            'name' => __('very light gray', 'sage'),
-            'slug' => 'very-light-gray',
-            'color' => '#eee',
-        ),
-        array(
-            'name' => __('very dark gray', 'sage'),
-            'slug' => 'very-dark-gray',
-            'color' => '#444',
-        ),
-    ));
-
-    /**
-     * Enable Editor font size support
-     * @link https://wordpress.org/gutenberg/handbook/designers-developers/developers/themes/theme-support/#block-color-palettes
-     */
-    add_theme_support('editor-font-sizes', array(
-        array(
-            'name' => __('Small', 'sage'),
-            'size' => 12,
-            'slug' => 'small'
-        ),
-        array(
-            'name' => __('Normal', 'sage'),
-            'size' => 16,
-            'slug' => 'normal'
-        ),
-        array(
-            'name' => __('Large', 'sage'),
-            'size' => 36,
-            'slug' => 'large'
-        ),
-        array(
-            'name' => __('Huge', 'sage'),
-            'size' => 50,
-            'slug' => 'huge'
-        )
-    ));
-
-    /**
      * Dequeue Gutenberg CSS
      * @link https://wordpress.org/gutenberg/?s=dequeue (404)
      */
