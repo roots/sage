@@ -4,7 +4,7 @@
     &.has-#{$columns}-columns,
     > li {
       display: grid;
-      grid-column-gap: $spacer;
+      grid-column-gap: $gutenberg-spacing;
 
       @media (min-width: #{$gutenberg-container-md}) {
         @if $columns <= 3 {
