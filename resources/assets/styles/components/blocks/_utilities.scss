@@ -12,7 +12,7 @@
     padding-right: initial;
   }
 
-  @media (min-width: #{$breakpoint-breakpoint-xl}) {
+  @media (min-width: #{$gutenberg-breakpoint-xl}) {
     max-width: $gutenberg-container-xl;
     padding-left: initial;
     padding-right: initial;
