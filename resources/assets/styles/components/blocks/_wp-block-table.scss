@@ -6,11 +6,4 @@
   tbody {
     display: table;
   }
-
-  tr:first-child > td {
-    position: relative;
-    width: 100%;
-    padding-left: ($gutenberg-spacing / 2);
-    padding-right: ($gutenberg-spacing / 2);
-  }
 }
