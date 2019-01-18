@@ -6,4 +6,9 @@
   tbody {
     display: table;
   }
+
+  tr:first-child > td {
+    position: relative;
+    padding-right: $gutenberg-spacing;
+  }
 }
