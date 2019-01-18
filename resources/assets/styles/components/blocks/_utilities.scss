@@ -3,8 +3,8 @@
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
-  padding-left: $padding;
-  padding-right: $padding;
+  padding-left: $gutenberg-spacing;
+  padding-right: $gutenberg-spacing;
 
   @media (min-width: #{$gutenberg-breakpoint-lg}) {
     max-width: $gutenberg-container-lg;
@@ -12,8 +12,8 @@
     padding-right: initial;
   }
 
-  @media (min-width: #{$breakpoint-breakpoint-xlarge}) {
-    max-width: $gutenberg-container-large;
+  @media (min-width: #{$breakpoint-breakpoint-xl}) {
+    max-width: $gutenberg-container-xl;
     padding-left: initial;
     padding-right: initial;
   }
