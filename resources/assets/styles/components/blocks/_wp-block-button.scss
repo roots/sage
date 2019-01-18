@@ -7,24 +7,23 @@
     @extend .text-left;
 
     > .wp-block-button__link {
-      @extend .float-left;
-
+      float: left;
       margin: $gutenberg-spacing $gutenberg-spacing $gutenberg-spacing 0;
     }
   }
 
   &.alignright {
-    @extend .text-right;
+    text-align: right;
 
     > .wp-block-button__link {
-      @extend .float-right;
+      float: right;
 
       margin: $gutenberg-spacing 0 $gutenberg-spacing $gutenberg-spacing;
     }
   }
 
   &.aligncenter {
-    @extend .text-center;
+    text-align: center;
 
     > .wp-block-button__link {
       margin-bottom: ($gutenberg-spacing/2);
