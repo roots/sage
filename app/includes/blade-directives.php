@@ -24,7 +24,7 @@ if (! post_password_required()) {
     while(have_rows( 'page_components' )) {
         the_row();
 
-        $class_name = \Illuminate\Support\Str::title( str_replace( '_', '', get_row_layout() ) );
+        $class_name = \Illuminate\Support\Str::studly( get_row_layout() );
 
         $full_class_name = '\\App\PageComponents\\' . $class_name;
 
