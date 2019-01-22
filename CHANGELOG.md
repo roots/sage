@@ -1,3 +1,7 @@
+### 8.6.0: December 4th, 2018
+* Update dependencies and gulpfile - notably, update to Gulp 4
+* Remove unnecessary jQuery entry from manifest
+
 ### 8.5.4: February 15th, 2018
 * Update to Bootstrap 4 ([#2027](https://github.com/roots/sage/pull/2027))
 

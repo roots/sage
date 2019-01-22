@@ -13,12 +13,12 @@ Sage is a WordPress starter theme based on HTML5 Boilerplate, gulp, Bower, and B
 
 ## Requirements
 
-| Prerequisite    | How to check | How to install
-| --------------- | ------------ | ------------- |
-| PHP >= 5.4.x    | `php -v`     | [php.net](http://php.net/manual/en/install.php) |
-| Node.js >= 4.5  | `node -v`    | [nodejs.org](http://nodejs.org/) |
-| gulp >= 3.8.10  | `gulp -v`    | `npm install -g gulp` |
-| Bower >= 1.3.12 | `bower -v`   | `npm install -g bower` |
+| Prerequisite       | How to check | How to install
+| ------------------ | ------------ | ------------- |
+| PHP >= 5.4.x       | `php -v`     | [php.net](http://php.net/manual/en/install.php) |
+| Node.js >= 6.9     | `node -v`    | [nodejs.org](http://nodejs.org/) |
+| gulp-cli >= 2.0.0  | `gulp -v`    | `npm install -g gulp-cli` |
+| Bower >= 1.3.12    | `bower -v`   | `npm install -g bower` |
 
 For more installation notes, refer to the [Install gulp and Bower](#install-gulp-and-bower) section in this document.
 
@@ -55,7 +55,7 @@ Install Sage using Composer from your WordPress themes directory (replace `your-
 
 ```shell
 # @ example.com/site/web/app/themes/
-$ composer create-project roots/sage your-theme-name 8.5.4
+$ composer create-project roots/sage your-theme-name 8.6.0
 ```
 
 ## Theme setup
@@ -72,7 +72,7 @@ Building the theme requires [node.js](http://nodejs.org/download/). We recommend
 
 From the command line:
 
-1. Install [gulp](http://gulpjs.com) and [Bower](http://bower.io/) globally with `npm install -g gulp bower`
+1. Install [gulp-cli](http://gulpjs.com) and [Bower](http://bower.io/) globally with `npm install -g gulp-cli bower`
 2. Navigate to the theme directory, then run `npm install`
 3. Run `bower install`
 
@@ -88,11 +88,11 @@ You now have all the necessary dependencies to run the build process.
 
 To use BrowserSync during `gulp watch` you need to update `devUrl` at the bottom of `assets/manifest.json` to reflect your local development hostname.
 
-For example, if your local development URL is `http://project-name.dev` you would update the file to read:
+For example, if your local development URL is `http://project-name.test` you would update the file to read:
 ```json
 ...
   "config": {
-    "devUrl": "http://project-name.dev"
+    "devUrl": "http://project-name.test"
   }
 ...
 ```

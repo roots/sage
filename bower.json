@@ -9,7 +9,7 @@
   "dependencies": {
     "bootstrap": "^4.0.0"
   },
-    "overrides": {
+  "overrides": {
     "bootstrap": {
       "main": [
         "./scss/bootstrap.scss",
