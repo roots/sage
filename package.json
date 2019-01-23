@@ -26,7 +26,7 @@
     "node": ">= 6.9"
   },
   "devDependencies": {
-    "asset-builder": "github:mmirus/asset-builder",
+    "asset-builder": "^2.0.0",
     "browser-sync": "^2.8.2",
     "del": "^2.2.2",
     "gulp": "^4.0.0",
