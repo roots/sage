@@ -196,6 +196,7 @@ if (config.env.production) {
 }
 
 if (config.enabled.cacheBusting) {
+  const path = require('path');
   const WebpackAssetsManifest = require('webpack-assets-manifest');
 
   webpackConfig.plugins.push(
@@ -204,7 +205,11 @@ if (config.enabled.cacheBusting) {
       space: 2,
       writeToDisk: false,
       assets: config.manifest,
-      replacer: require('./util/assetManifestsFormatter'),
+      customize(key, value, originalValue) {
+        return {
+          key: `${path.dirname(originalValue).split(path.sep).shift()}/${key}`,
+        };
+      },
     })
   );
 }
