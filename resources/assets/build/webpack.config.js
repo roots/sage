@@ -207,7 +207,7 @@ if (config.enabled.cacheBusting) {
       assets: config.manifest,
       customize(key, value, originalValue) {
         return {
-          key: `${path.dirname(originalValue).split(path.sep).shift()}/${key}`,
+          key: `${path.dirname(originalValue).split('/').shift()}/${key}`,
         };
       },
     })
