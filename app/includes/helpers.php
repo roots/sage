@@ -239,7 +239,15 @@ function pr_log($var, $label = '')
         $value = print_r($var, true);
     }
 
-    error_log(sprintf('%s%s', $label ? $label . ' ' : '', $value));
+    if (getenv('WP_ENV') !== 'production') {
+        error_log(
+            sprintf('%s%s', $label ? $label . ' ' : '', $value),
+            3,
+            \wp_get_upload_dir()['basedir'] . '/error_log.log'
+        );
+    } else {
+        error_log(sprintf('%s%s', $label ? $label . ' ' : '', $value));
+    }
 }
 
 /**
