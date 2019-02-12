@@ -1,3 +1,9 @@
+### 9.0.8: February 11th, 2019
+* Update to Bootstrap 4.3.0 ([#2152](https://github.com/roots/sage/pull/2152))
+* Filter template hierarchy for embed templates ([#2145](https://github.com/roots/sage/pull/2145))
+* Decrease optipng level ([#2143](https://github.com/roots/sage/pull/2143))
+* Unescape post titles ([#2141](https://github.com/roots/sage/pull/2141))
+
 ### 9.0.7: December 28th, 2018
 * Update sage-installer which now allows to opt-in for sending framework selection data ([#2137](https://github.com/roots/sage/pull/2137))
 
