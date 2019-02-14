@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c3a087cb8d6e9f4231869cb179fa6142",
+    "content-hash": "f31f679ab253b90c13366000decce59b",
     "packages": [
         {
             "name": "brain/hierarchy",
@@ -783,7 +783,7 @@
         },
         {
             "name": "roots/sage-lib",
-            "version": "9.0.8",
+            "version": "9.0.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/roots/sage-lib.git",
@@ -1368,16 +1368,16 @@
         },
         {
             "name": "roots/sage-installer",
-            "version": "1.6.1",
+            "version": "1.6.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/roots/sage-installer.git",
-                "reference": "4be68fc1f4d39c521fb3e6ca441fbb29636fc166"
+                "reference": "bff412234f9852a73d3c2f2e49bfb959f7f732e8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/roots/sage-installer/zipball/4be68fc1f4d39c521fb3e6ca441fbb29636fc166",
-                "reference": "4be68fc1f4d39c521fb3e6ca441fbb29636fc166",
+                "url": "https://api.github.com/repos/roots/sage-installer/zipball/bff412234f9852a73d3c2f2e49bfb959f7f732e8",
+                "reference": "bff412234f9852a73d3c2f2e49bfb959f7f732e8",
                 "shasum": ""
             },
             "require": {
@@ -1424,7 +1424,7 @@
                 "theme",
                 "wordpress"
             ],
-            "time": "2019-02-12T02:41:05+00:00"
+            "time": "2019-02-14T01:13:25+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",

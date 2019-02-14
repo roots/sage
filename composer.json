@@ -35,12 +35,12 @@
     "php": ">=7.1",
     "composer/installers": "~1.0",
     "illuminate/support": "5.6.*",
-    "roots/sage-lib": "~9.0.8",
+    "roots/sage-lib": "~9.0.9",
     "soberwp/controller": "~2.1.0"
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "^2.8.0",
-    "roots/sage-installer": "~1.6.1"
+    "roots/sage-installer": "~1.6"
   },
   "scripts": {
     "test": ["phpcs"],
