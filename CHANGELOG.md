@@ -1,3 +1,6 @@
+### 9.0.9: February 13th, 2019
+* Update to Bootstrap 4.3.1 ([#2153](https://github.com/roots/sage/pull/2153))
+
 ### 9.0.8: February 11th, 2019
 * Update to Bootstrap 4.3.0 ([#2152](https://github.com/roots/sage/pull/2152))
 * Filter template hierarchy for embed templates ([#2145](https://github.com/roots/sage/pull/2145))
