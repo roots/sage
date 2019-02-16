@@ -153,7 +153,7 @@ function debug($data) {
   $log_path = join(DIRECTORY_SEPARATOR, [ABSPATH, 'debug.log']);
 
   // unless specified in wp-config
-  if (SAGE_DEBUG_LOG_PATH) {
+  if (defined(SAGE_DEBUG_LOG_PATH)) {
     $log_path = SAGE_DEBUG_LOG_PATH;
   }
 
