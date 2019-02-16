@@ -136,3 +136,39 @@ function display_sidebar()
     isset($display) || $display = apply_filters('sage/display_sidebar', false);
     return $display;
 }
+
+/**
+ * Debug to debug.log in public dir or the file specified in wp-config SAGE_DEBUG_LOG_PATH
+ * @param  mixed $data String, array or any object supported by var_export
+ * @return bool  true if successful
+ */
+function debug($data) {
+
+  // Only works on debug
+  if (!WP_DEBUG) {
+    return false;
+  }
+
+  // debug.log file
+  $log_path = join(DIRECTORY_SEPARATOR, [ABSPATH, 'debug.log']);
+
+  // unless specified in wp-config
+  if (SAGE_DEBUG_LOG_PATH) {
+    $log_path = SAGE_DEBUG_LOG_PATH;
+  }
+
+  // create line
+  $string = "";
+  if (is_string($data)) {
+    $string = $data;
+  } else {
+    $string = var_export($data, true);
+  }
+
+  // add end of line
+  $line = $string . PHP_EOL;
+
+  // append to file
+  file_put_contents($log_path, $line, FILE_APPEND);
+  return true;
+}
