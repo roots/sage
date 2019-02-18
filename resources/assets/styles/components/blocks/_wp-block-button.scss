@@ -8,7 +8,7 @@
 
     > .wp-block-button__link {
       float: left;
-      margin: $gutenberg-spacing $gutenberg-spacing $gutenberg-spacing 0;
+      margin: $wp-blocks-spacing $wp-blocks-spacing $wp-blocks-spacing 0;
     }
   }
 
@@ -17,7 +17,7 @@
 
     > .wp-block-button__link {
       float: right;
-      margin: $gutenberg-spacing 0 $gutenberg-spacing $gutenberg-spacing;
+      margin: $wp-blocks-spacing 0 $wp-blocks-spacing $wp-blocks-spacing;
     }
   }
 
@@ -25,7 +25,7 @@
     text-align: center;
 
     > .wp-block-button__link {
-      margin-bottom: ($gutenberg-spacing/2);
+      margin-bottom: ($wp-blocks-spacing/2);
     }
   }
 }

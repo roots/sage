@@ -25,14 +25,14 @@
       > figcaption {
         @extend .float-left;
 
-        margin-right: $gutenberg-spacing;
+        margin-right: $wp-blocks-spacing;
       }
 
       > figcaption {
         @extend .mt-0;
 
         clear: left;
-        margin-bottom: $gutenberg-spacing;
+        margin-bottom: $wp-blocks-spacing;
       }
     }
 
@@ -41,14 +41,14 @@
       > figcaption {
         @extend .float-right;
 
-        margin-left: $gutenberg-spacing;
+        margin-left: $wp-blocks-spacing;
       }
 
       > figcaption {
         @extend .mt-0;
 
         clear: right;
-        margin-bottom: $gutenberg-spacing;
+        margin-bottom: $wp-blocks-spacing;
       }
     }
 
@@ -61,7 +61,7 @@
       > figcaption {
         @extend .w-100, .text-center, .mt-0;
 
-        margin-bottom: $gutenberg-spacing;
+        margin-bottom: $wp-blocks-spacing;
       }
     }
   }

@@ -1,16 +1,16 @@
 .wp-block-quote {
-  margin-top: $gutenberg-spacing;
-  margin-bottom: $gutenberg-spacing;
-  font-size: $gutenberg-font-md;
+  margin-top: $wp-blocks-spacing;
+  margin-bottom: $wp-blocks-spacing;
+  font-size: $wp-blocks-font-md;
 
   &.is-large > * {
-    font-size: $gutenberg-font-lg;
+    font-size: $wp-blocks-font-lg;
   }
 }
 
 .wp-block-pullquote {
-  margin-top: $gutenberg-spacing;
-  margin-bottom: $gutenberg-spacing;
+  margin-top: $wp-blocks-spacing;
+  margin-bottom: $wp-blocks-spacing;
 
   > blockquote > p {
     @extend .mt-0;
@@ -19,13 +19,13 @@
   &.alignwide,
   &.alignfull {
     display: block;
-    padding-left: $gutenberg-spacing;
-    padding-right: $gutenberg-spacing;
+    padding-left: $wp-blocks-spacing;
+    padding-right: $wp-blocks-spacing;
   }
 
   &.alignwide > p,
   &.alignfull > p {
-    font-size: $gutenberg-font-lg;
+    font-size: $wp-blocks-font-lg;
   }
 
   &.alignwide > blockquote,
@@ -58,7 +58,7 @@
 
   &.alignleft > blockquote {
     float: left;
-    margin-right: ($gutenberg-spacing * 2);
+    margin-right: ($wp-blocks-spacing * 2);
   }
 
   &.alignright {
@@ -67,11 +67,11 @@
 
   &.alignright > blockquote {
     float: right;
-    margin-left: ($gutenberg-spacing * 2);
+    margin-left: ($wp-blocks-spacing * 2);
   }
 
   figure:not(.alignleft, .alignright) {
-    padding-left: $gutenberg-spacing;
-    padding-right: $gutenberg-spacing;
+    padding-left: $wp-blocks-spacing;
+    padding-right: $wp-blocks-spacing;
   }
 }

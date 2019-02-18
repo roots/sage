@@ -10,21 +10,21 @@ $navbar-dark-toggler-icon-bg: none;
 $navbar-light-toggler-icon-bg: none;
 
 /** Gutenberg */
-$gutenberg-container-md: 600px;
-$gutenberg-container-lg: 768px;
-$gutenberg-container-xl: 900px;
+$wp-blocks-container-md: 600px;
+$wp-blocks-container-lg: 768px;
+$wp-blocks-container-xl: 900px;
 
 /** Gutenberg breakpoints */
-$gutenberg-breakpoint-md: 576px;
-$gutenberg-breakpoint-lg: 676px;
-$gutenberg-breakpoint-xl: 992px;
+$wp-blocks-breakpoint-md: 576px;
+$wp-blocks-breakpoint-lg: 676px;
+$wp-blocks-breakpoint-xl: 992px;
 
 /** Gutenberg spacing unit */
-$gutenberg-spacing: 30px;
+$wp-blocks-spacing: 30px;
 
 /** Gutenberg font-sizes */
-$gutenberg-font-md: 1rem;
-$gutenberg-font-lg: 1.25rem;
+$wp-blocks-font-md: 1rem;
+$wp-blocks-font-lg: 1.25rem;
 
 /** Gutenberg colors */
-$gutenberg-color-muted: rgba(0, 0, 0, 0.2); // used on elements like hr
+$wp-blocks-color-muted: rgba(0, 0, 0, 0.2); // used on elements like hr

@@ -1,17 +1,17 @@
 .wp-block-cover {
   @extend .d-flex, .flex-column, .justify-content-center, .align-items-center, .position-relative;
 
-  margin-top: $gutenberg-spacing;
-  margin-bottom: $gutenberg-spacing;
-  padding-top: ($gutenberg-spacing * 3);
-  padding-bottom: ($gutenberg-spacing * 3);
+  margin-top: $wp-blocks-spacing;
+  margin-bottom: $wp-blocks-spacing;
+  padding-top: ($wp-blocks-spacing * 3);
+  padding-bottom: ($wp-blocks-spacing * 3);
 
   h2,
   .wp-block-cover-text {
     @extend .display-4, .position-relative, .d-inline-block, .mb-0, .text-center, .text-white;
 
-    padding-top: ($gutenberg-spacing * 3);
-    padding-bottom: ($gutenberg-spacing * 3);
+    padding-top: ($wp-blocks-spacing * 3);
+    padding-bottom: ($wp-blocks-spacing * 3);
     z-index: 20;
 
     a {
@@ -44,11 +44,11 @@
   &.alignleft {
     @extend .mt-lg-0;
 
-    @media (min-width: #{$gutenberg-container-lg}) {
+    @media (min-width: #{$wp-blocks-container-lg}) {
       float: left;
       clear: left;
       width: 40%;
-      margin-right: $gutenberg-spacing;
+      margin-right: $wp-blocks-spacing;
     }
 
     > p {
@@ -59,11 +59,11 @@
   &.alignright {
     @extend .mt-lg-0;
 
-    @media (min-width: #{$gutenberg-container-lg}) {
+    @media (min-width: #{$wp-blocks-container-lg}) {
       float: right;
       clear: right;
       width: 40%;
-      margin-left: $gutenberg-spacing;
+      margin-left: $wp-blocks-spacing;
     }
 
     > p {
@@ -78,7 +78,7 @@
   }
 }
 
-@media (max-width: #{$gutenberg-container-md}) {
+@media (max-width: #{$wp-blocks-container-md}) {
   &.alignwide {
     width: 100vw;
     max-width: 100vw;

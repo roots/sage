@@ -31,7 +31,7 @@ add_filter('body_class', function (array $classes) {
  */
 add_filter('post_class', function ($classes) {
     global $post;
-    $classes[] = 'gutenberg';
+    $classes[] = 'wp-blocks';
     return $classes;
 });
 
@@ -49,7 +49,7 @@ add_filter('the_content', function ($content) {
     $blocks = $qp->find('.alignwide, .alignfull');
     // Add wrap
     foreach ($blocks as $block) :
-        $block->wrap('<div class="gutenberg-wrap"></div>');
+        $block->wrap('<div class="wp-blocks-wrap"></div>');
     endforeach;
     // Return the modified post content
     return $qp->find('body')->html5();

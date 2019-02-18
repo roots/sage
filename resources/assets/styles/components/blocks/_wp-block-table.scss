@@ -1,14 +1,14 @@
 .wp-block-table {
   display: block;
   width: 100%;
-  margin-bottom: $gutenberg-spacing;
+  margin-bottom: $wp-blocks-spacing;
 
   tbody {
     display: table;
   }
 
-  tr:first-child > td {
+  tr:first-child td {
     position: relative;
-    padding-right: $gutenberg-spacing;
+    padding-right: $wp-blocks-spacing;
   }
 }

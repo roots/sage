@@ -23,7 +23,7 @@
     figcaption {
       @extend .position-absolute, .justify-content-center, .w-100, .m-0, .text-white, .text-center;
 
-      padding: ($gutenberg-spacing / 3) ($gutenberg-spacing / 2);
+      padding: ($wp-blocks-spacing / 3) ($wp-blocks-spacing / 2);
       opacity: 80%;
       background: rgba($black, 0.4);
 
@@ -43,7 +43,7 @@
     }
   }
 
-  @media (min-width: #{$gutenberg-container-md}) {
+  @media (min-width: #{$wp-blocks-container-md}) {
     @for $i from 3 through 8 {
       &.columns-#{ $i } .blocks-gallery-image,
       &.columns-#{ $i } .blocks-gallery-item {
@@ -52,8 +52,8 @@
     }
   }
 
-  @media (min-width: #{$gutenberg-container-md}) {
-    padding-left: $gutenberg-spacing;
-    padding-right: $gutenberg-spacing;
+  @media (min-width: #{$wp-blocks-container-md}) {
+    padding-left: $wp-blocks-spacing;
+    padding-right: $wp-blocks-spacing;
   }
 }

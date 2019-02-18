@@ -1,25 +1,28 @@
-> *:not(.gutenberg-wrap) {
-  @include gutenberg-contain();
+> header:first-child,
+.entry-summary,
+.entry-content > *:not(.wp-blocks-wrap),
+> .comments {
+  @include wp-blocks-contain();
 }
 
-> .gutenberg-wrap {
+.wp-blocks-wrap {
   @extend .mx-0, .px-0;
 
   width: 100%;
   max-width: none;
 }
 
-> .gutenberg-wrap > .alignfull,
-> .gutenberg-wrap > .alignwide {
+.wp-blocks-wrap > .alignfull,
+.wp-blocks-wrap > .alignwide {
   @extend .mx-auto;
 }
 
-> .gutenberg-wrap > .alignfull {
+.wp-blocks-wrap > .alignfull {
   width: 100vw;
 }
 
-> .gutenberg-wrap > .alignwide {
-  @media (min-width: #{$gutenberg-container-md}) {
+.wp-blocks-wrap > .alignwide {
+  @media (min-width: #{$wp-blocks-container-md}) {
     max-width: 90vw;
   }
 }

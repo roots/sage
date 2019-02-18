@@ -1,13 +1,13 @@
-> .wp-block-separator {
+.wp-block-separator {
   @extend .p-0, .mx-auto;
 
   display: block;
   clear: both;
-  margin-top: $gutenberg-spacing;
-  margin-bottom: $gutenberg-spacing;
+  margin-top: $wp-blocks-spacing;
+  margin-bottom: $wp-blocks-spacing;
   padding: 0;
   background: transparent;
-  border-bottom: 1px solid $gutenberg-color-muted;
+  border-bottom: 1px solid $wp-blocks-color-muted;
   opacity: 0.6;
 
   &.is-style-wide {
@@ -26,9 +26,9 @@
 
   &.is-style-dots::before {
     content: "\00b7 \00b7 \00b7";
-    color: $gutenberg-color-muted;
+    color: $wp-blocks-color-muted;
     font-size: $font-size-base*2;
-    letter-spacing: $gutenberg-spacing;
+    letter-spacing: $wp-blocks-spacing;
     font-family: serif;
   }
 }

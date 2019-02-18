@@ -4,9 +4,9 @@
     &.has-#{$columns}-columns,
     > li {
       display: grid;
-      grid-column-gap: $gutenberg-spacing;
+      grid-column-gap: $wp-blocks-spacing;
 
-      @media (min-width: #{$gutenberg-container-md}) {
+      @media (min-width: #{$wp-blocks-container-md}) {
         @if $columns <= 3 {
           grid-template-columns: repeat($columns, 1fr);
         }
