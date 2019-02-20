@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7dfd07600bc154fb95cb06051f9835ba",
+    "content-hash": "14976d36e5b451824b6c69857c0f2870",
     "packages": [
         {
             "name": "brain/hierarchy",
@@ -585,73 +585,6 @@
             "time": "2018-10-02T13:27:20+00:00"
         },
         {
-            "name": "masterminds/html5",
-            "version": "2.5.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Masterminds/html5-php.git",
-                "reference": "b5d892a4bd058d61f736935d32a9c248f11ccc93"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Masterminds/html5-php/zipball/b5d892a4bd058d61f736935d32a9c248f11ccc93",
-                "reference": "b5d892a4bd058d61f736935d32a9c248f11ccc93",
-                "shasum": ""
-            },
-            "require": {
-                "ext-ctype": "*",
-                "ext-dom": "*",
-                "ext-libxml": "*",
-                "php": ">=5.3.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^4.8.35",
-                "sami/sami": "~2.0",
-                "satooshi/php-coveralls": "1.0.*"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.4-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Masterminds\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Matt Butcher",
-                    "email": "technosophos@gmail.com"
-                },
-                {
-                    "name": "Asmir Mustafic",
-                    "email": "goetas@gmail.com"
-                },
-                {
-                    "name": "Matt Farina",
-                    "email": "matt@mattfarina.com"
-                }
-            ],
-            "description": "An HTML5 parser and serializer.",
-            "homepage": "http://masterminds.github.io/html5-php",
-            "keywords": [
-                "HTML5",
-                "dom",
-                "html",
-                "parser",
-                "querypath",
-                "serializer",
-                "xml"
-            ],
-            "time": "2018-12-27T22:03:43+00:00"
-        },
-        {
             "name": "nesbot/carbon",
             "version": "1.25.0",
             "source": {
@@ -849,50 +782,8 @@
             "time": "2017-10-23T01:57:42+00:00"
         },
         {
-            "name": "querypath/querypath",
-            "version": "3.0.5",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/technosophos/querypath.git",
-                "reference": "6b8e2395fac61fac25bbe962f94def556cb85f7d"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/technosophos/querypath/zipball/6b8e2395fac61fac25bbe962f94def556cb85f7d",
-                "reference": "6b8e2395fac61fac25bbe962f94def556cb85f7d",
-                "shasum": ""
-            },
-            "require": {
-                "masterminds/html5": "2.*",
-                "php": ">=5.3.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "QueryPath": "src/"
-                },
-                "files": [
-                    "src/qp_functions.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "HTML/XML querying (CSS 4 or XPath) and processing (like jQuery)",
-            "homepage": "https://github.com/technosophos/querypath",
-            "keywords": [
-                "css",
-                "html",
-                "jquery",
-                "xml",
-                "xslt"
-            ],
-            "time": "2016-08-01T22:40:30+00:00"
-        },
-        {
             "name": "roots/sage-lib",
-            "version": "9.0.7",
+            "version": "9.0.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/roots/sage-lib.git",
@@ -1061,16 +952,16 @@
         },
         {
             "name": "symfony/debug",
-            "version": "v4.2.2",
+            "version": "v4.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/debug.git",
-                "reference": "64cb33c81e37d19b7715d4a6a4d49c1c382066dd"
+                "reference": "cf9b2e33f757deb884ce474e06d2647c1c769b65"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/debug/zipball/64cb33c81e37d19b7715d4a6a4d49c1c382066dd",
-                "reference": "64cb33c81e37d19b7715d4a6a4d49c1c382066dd",
+                "url": "https://api.github.com/repos/symfony/debug/zipball/cf9b2e33f757deb884ce474e06d2647c1c769b65",
+                "reference": "cf9b2e33f757deb884ce474e06d2647c1c769b65",
                 "shasum": ""
             },
             "require": {
@@ -1113,20 +1004,20 @@
             ],
             "description": "Symfony Debug Component",
             "homepage": "https://symfony.com",
-            "time": "2019-01-03T09:07:35+00:00"
+            "time": "2019-01-25T14:35:16+00:00"
         },
         {
             "name": "symfony/finder",
-            "version": "v4.2.2",
+            "version": "v4.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/finder.git",
-                "reference": "9094d69e8c6ee3fe186a0ec5a4f1401e506071ce"
+                "reference": "ef71816cbb264988bb57fe6a73f610888b9aa70c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/finder/zipball/9094d69e8c6ee3fe186a0ec5a4f1401e506071ce",
-                "reference": "9094d69e8c6ee3fe186a0ec5a4f1401e506071ce",
+                "url": "https://api.github.com/repos/symfony/finder/zipball/ef71816cbb264988bb57fe6a73f610888b9aa70c",
+                "reference": "ef71816cbb264988bb57fe6a73f610888b9aa70c",
                 "shasum": ""
             },
             "require": {
@@ -1162,7 +1053,7 @@
             ],
             "description": "Symfony Finder Component",
             "homepage": "https://symfony.com",
-            "time": "2019-01-03T09:07:35+00:00"
+            "time": "2019-01-16T20:35:37+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -1225,16 +1116,16 @@
         },
         {
             "name": "symfony/translation",
-            "version": "v4.2.2",
+            "version": "v4.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/translation.git",
-                "reference": "939fb792d73f2ce80e6ae9019d205fc480f1c9a0"
+                "reference": "23fd7aac70d99a17a8e6473a41fec8fab3331050"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/translation/zipball/939fb792d73f2ce80e6ae9019d205fc480f1c9a0",
-                "reference": "939fb792d73f2ce80e6ae9019d205fc480f1c9a0",
+                "url": "https://api.github.com/repos/symfony/translation/zipball/23fd7aac70d99a17a8e6473a41fec8fab3331050",
+                "reference": "23fd7aac70d99a17a8e6473a41fec8fab3331050",
                 "shasum": ""
             },
             "require": {
@@ -1294,7 +1185,7 @@
             ],
             "description": "Symfony Translation Component",
             "homepage": "https://symfony.com",
-            "time": "2019-01-03T09:07:35+00:00"
+            "time": "2019-01-27T23:11:39+00:00"
         }
     ],
     "packages-dev": [
@@ -1477,16 +1368,16 @@
         },
         {
             "name": "roots/sage-installer",
-            "version": "1.6.0",
+            "version": "1.6.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/roots/sage-installer.git",
-                "reference": "60c329d6f5d750f78804b9577f2944c05b3a24dc"
+                "reference": "bff412234f9852a73d3c2f2e49bfb959f7f732e8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/roots/sage-installer/zipball/60c329d6f5d750f78804b9577f2944c05b3a24dc",
-                "reference": "60c329d6f5d750f78804b9577f2944c05b3a24dc",
+                "url": "https://api.github.com/repos/roots/sage-installer/zipball/bff412234f9852a73d3c2f2e49bfb959f7f732e8",
+                "reference": "bff412234f9852a73d3c2f2e49bfb959f7f732e8",
                 "shasum": ""
             },
             "require": {
@@ -1533,7 +1424,7 @@
                 "theme",
                 "wordpress"
             ],
-            "time": "2018-12-28T17:48:45+00:00"
+            "time": "2019-02-14T01:13:25+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
@@ -1615,16 +1506,16 @@
         },
         {
             "name": "symfony/console",
-            "version": "v4.2.2",
+            "version": "v4.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "b0a03c1bb0fcbe288629956cf2f1dd3f1dc97522"
+                "reference": "1f0ad51dfde4da8a6070f06adc58b4e37cbb37a4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/b0a03c1bb0fcbe288629956cf2f1dd3f1dc97522",
-                "reference": "b0a03c1bb0fcbe288629956cf2f1dd3f1dc97522",
+                "url": "https://api.github.com/repos/symfony/console/zipball/1f0ad51dfde4da8a6070f06adc58b4e37cbb37a4",
+                "reference": "1f0ad51dfde4da8a6070f06adc58b4e37cbb37a4",
                 "shasum": ""
             },
             "require": {
@@ -1636,6 +1527,9 @@
                 "symfony/dependency-injection": "<3.4",
                 "symfony/process": "<3.3"
             },
+            "provide": {
+                "psr/log-implementation": "1.0"
+            },
             "require-dev": {
                 "psr/log": "~1.0",
                 "symfony/config": "~3.4|~4.0",
@@ -1645,7 +1539,7 @@
                 "symfony/process": "~3.4|~4.0"
             },
             "suggest": {
-                "psr/log-implementation": "For using the console logger",
+                "psr/log": "For using the console logger",
                 "symfony/event-dispatcher": "",
                 "symfony/lock": "",
                 "symfony/process": ""
@@ -1680,7 +1574,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2019-01-04T15:13:53+00:00"
+            "time": "2019-01-25T14:35:16+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",
@@ -1742,16 +1636,16 @@
         },
         {
             "name": "symfony/process",
-            "version": "v3.4.21",
+            "version": "v3.4.22",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/process.git",
-                "reference": "0d41dd7d95ed179aed6a13393b0f4f97bfa2d25c"
+                "reference": "009f8dda80930e89e8344a4e310b08f9ff07dd2e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/process/zipball/0d41dd7d95ed179aed6a13393b0f4f97bfa2d25c",
-                "reference": "0d41dd7d95ed179aed6a13393b0f4f97bfa2d25c",
+                "url": "https://api.github.com/repos/symfony/process/zipball/009f8dda80930e89e8344a4e310b08f9ff07dd2e",
+                "reference": "009f8dda80930e89e8344a4e310b08f9ff07dd2e",
                 "shasum": ""
             },
             "require": {
@@ -1787,7 +1681,7 @@
             ],
             "description": "Symfony Process Component",
             "homepage": "https://symfony.com",
-            "time": "2019-01-02T21:24:08+00:00"
+            "time": "2019-01-16T13:27:11+00:00"
         }
     ],
     "aliases": [],

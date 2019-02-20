@@ -4,6 +4,9 @@
       "./scripts/main.js",
       "./styles/main.scss"
     ],
+    "wp-blocks": [
+      "./scripts/wp-hooks.js"
+    ],
     "customizer": [
       "./scripts/customizer.js"
     ]

@@ -1,11 +1,11 @@
 > header:first-child,
 .entry-summary,
-.entry-content > *:not(.wp-blocks-wrap),
+.entry-content > *:not(.wp-block-wrap),
 > .comments {
   @include wp-blocks-contain();
 }
 
-.wp-blocks-wrap {
+.wp-block-wrap {
   margin-left: 0;
   margin-right: 0;
   padding-left: 0;
@@ -14,13 +14,13 @@
   max-width: none;
 }
 
-.wp-blocks-wrap > .alignfull {
+.wp-block-wrap > .alignfull {
   width: 100vw;
   margin-left: 0;
   margin-right: 0;
 }
 
-.wp-blocks-wrap > .alignwide {
+.wp-block-wrap > .alignwide {
   margin-left: auto;
   margin-right: auto;
 

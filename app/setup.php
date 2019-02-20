@@ -19,6 +19,10 @@ add_action('wp_enqueue_scripts', function () {
     }
 }, 100);
 
+add_action('admin_init', function () {
+    wp_enqueue_script('sage-wp-blocks', asset_path('scripts/wp-blocks.js'), ['wp-hooks'], null, true);
+});
+
 /**
  * Theme setup
  */
