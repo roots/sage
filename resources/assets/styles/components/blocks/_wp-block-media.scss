@@ -1,0 +1,28 @@
+.wp-block-media-text {
+  display: flex;
+  align-items: flex-start;
+
+  .wp-block-media-text__media {
+    margin-bottom: 0;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .wp-block-media-text__content {
+    flex: 1;
+  }
+
+  &.has-media-on-the-right {
+    .wp-block-media-text__media {
+      -ms-flex-order: 2;
+      order: 2;
+    }
+
+    .wp-block-media-text__content {
+      -ms-flex-order: 1;
+      order: 1;
+    }
+  }
+}

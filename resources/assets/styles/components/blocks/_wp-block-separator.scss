@@ -1,10 +1,7 @@
 .wp-block-separator {
-  @extend .p-0, .mx-auto;
-
   display: block;
   clear: both;
-  margin-top: $wp-blocks-spacing;
-  margin-bottom: $wp-blocks-spacing;
+  margin: $wp-blocks-spacing auto;
   padding: 0;
   background: transparent;
   border-bottom: 1px solid $wp-blocks-color-muted;

@@ -1,6 +1,9 @@
 .wp-block-cover {
-  @extend .d-flex, .flex-column, .justify-content-center, .align-items-center, .position-relative;
-
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
   margin-top: $wp-blocks-spacing;
   margin-bottom: $wp-blocks-spacing;
   padding-top: ($wp-blocks-spacing * 3);
@@ -8,14 +11,18 @@
 
   h2,
   .wp-block-cover-text {
-    @extend .display-4, .position-relative, .d-inline-block, .mb-0, .text-center, .text-white;
-
+    position: relative;
+    display: inline-block;
+    margin-bottom: 0;
     padding-top: ($wp-blocks-spacing * 3);
     padding-bottom: ($wp-blocks-spacing * 3);
+    font-size: $wp-blocks-font-xl;
+    text-align: center;
+    color: $wp-blocks-color-white;
     z-index: 20;
 
     a {
-      @extend .text-white;
+      color: $wp-blocks-color-white;
     }
   }
 
@@ -24,56 +31,54 @@
   }
 
   &.has-background-dim::before {
-    @extend .position-absolute, .w-100, .h-100;
-
+    position: absolute;
+    width: 100%;
+    height: 100%;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
     z-index: 10;
-    background-color: rgba($black, 0.5);
+    background-color: rgba($wp-blocks-color-black, 0.5);
     content: "";
   }
 
   @for $i from 1 through 10 {
     &.has-background-dim.has-background-dim-#{ $i * 10 }::before {
-      background-color: rgba($black, $i * 0.1);
+      background-color: rgba($wp-blocks-color-black, $i * 0.1);
     }
   }
 
   &.alignleft {
-    @extend .mt-lg-0;
-
     @media (min-width: #{$wp-blocks-container-lg}) {
       float: left;
       clear: left;
       width: 40%;
+      margin-top: 0;
       margin-right: $wp-blocks-spacing;
-    }
 
-    > p {
-      @extend .text-lg-center;
+      > p {
+        text-align: center;
+      }
     }
   }
 
   &.alignright {
-    @extend .mt-lg-0;
-
     @media (min-width: #{$wp-blocks-container-lg}) {
       float: right;
       clear: right;
       width: 40%;
+      margin-top: 0;
       margin-left: $wp-blocks-spacing;
-    }
 
-    > p {
-      @extend .text-lg-center;
+      > p {
+        text-align: center;
+      }
     }
   }
 
   &.aligncenter {
-    @extend .w-100;
-
+    width: 100%;
     clear: both;
   }
 }

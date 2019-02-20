@@ -6,23 +6,25 @@
 }
 
 .wp-blocks-wrap {
-  @extend .mx-0, .px-0;
-
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 0;
+  padding-right: 0;
   width: 100%;
   max-width: none;
 }
 
-.wp-blocks-wrap > .alignfull,
-.wp-blocks-wrap > .alignwide {
-  @extend .mx-auto;
-}
-
 .wp-blocks-wrap > .alignfull {
   width: 100vw;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 .wp-blocks-wrap > .alignwide {
+  margin-left: auto;
+  margin-right: auto;
+
   @media (min-width: #{$wp-blocks-container-md}) {
-    max-width: 90vw;
+    max-width: $wp-blocks-wide-align-max-width;
   }
 }

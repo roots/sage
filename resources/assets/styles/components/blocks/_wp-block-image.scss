@@ -1,67 +1,87 @@
 .wp-block-image {
   > img {
-    @extend .d-block, .mw-100, .w-100, .mx-0;
+    display: block;
+    max-width: 100%;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
   }
 
-  figcaption {
-    @extend .font-italic;
+  &.alignfull > figcaption,
+  &.alignwide > figcaption {
+    text-align: center;
   }
 
   > figure {
-    @extend .d-inline-block, .p-0;
+    display: inline-block;
+    padding: 0;
 
     &.alignleft,
     &.alignright {
-      @extend .d-inline;
+      display: inline;
 
       > img,
       > figcaption {
-        @extend .mt-0;
+        margin-top: 0;
       }
     }
 
-    &.alignleft {
-      > img,
-      > figcaption {
-        @extend .float-left;
+    @media (min-width: $wp-blocks-breakpoint-lg) {
+      &.alignleft {
+        > img,
+        > figcaption {
+          float: left;
+          margin-right: $wp-blocks-spacing;
+        }
 
-        margin-right: $wp-blocks-spacing;
+        > figcaption {
+          clear: left;
+          margin-top: 0;
+          margin-bottom: $wp-blocks-spacing;
+        }
       }
 
-      > figcaption {
-        @extend .mt-0;
+      &.alignright {
+        > img,
+        > figcaption {
+          float: right;
+          margin-left: $wp-blocks-spacing;
+        }
 
-        clear: left;
-        margin-bottom: $wp-blocks-spacing;
-      }
-    }
-
-    &.alignright {
-      > img,
-      > figcaption {
-        @extend .float-right;
-
-        margin-left: $wp-blocks-spacing;
-      }
-
-      > figcaption {
-        @extend .mt-0;
-
-        clear: right;
-        margin-bottom: $wp-blocks-spacing;
+        > figcaption {
+          clear: right;
+          margin-top: 0;
+          margin-bottom: $wp-blocks-spacing;
+        }
       }
     }
 
     &.aligncenter {
       > img,
       > figcaption {
-        @extend .w-100;
+        width: 100%;
       }
 
       > figcaption {
-        @extend .w-100, .text-center, .mt-0;
-
+        width: 100%;
+        margin-top: 0;
         margin-bottom: $wp-blocks-spacing;
+        text-align: center;
+      }
+    }
+
+    @media screen and (max-width: $wp-blocks-container-lg) {
+      margin: $wp-blocks-spacing 0 0 0;
+
+      > img {
+        width: 100%;
+        margin-bottom: ($wp-blocks-spacing / 2);
+      }
+
+      > figcaption {
+        width: 100%;
+        text-align: center;
+        margin-bottom: ($wp-blocks-spacing / 2);
       }
     }
   }

@@ -1,11 +1,13 @@
 .wp-block-audio {
   audio {
-    @extend .d-block, .mx-auto;
-
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
     border-radius: $border-radius-lg;
   }
 
   figcaption {
-    @extend .text-center, .font-italic;
+    text-align: center;
+    font-style: italic;
   }
 }

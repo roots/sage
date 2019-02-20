@@ -1,10 +1,30 @@
 .wp-block-button {
   > .wp-block-button__link {
-    @extend .d-inline-block, .btn, .btn-primary;
+    display: inline-block;
+    padding: ($wp-blocks-spacing / 2) $wp-blocks-spacing;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    user-select: none;
+    cursor: pointer;
+    color: $wp-blocks-color-white;
+    background-color: $wp-blocks-color-primary;
+    border-color: $wp-blocks-color-primary;
+  }
+
+  &,
+  &:active,
+  &.active {
+    &:focus,
+    &.focus {
+      outline: thin dotted; // Default
+      outline: 5px auto -webkit-focus-ring-color; // WebKit
+      outline-offset: -2px;
+    }
   }
 
   &.alignleft {
-    @extend .text-left;
+    text-align: left;
 
     > .wp-block-button__link {
       float: left;

@@ -22,9 +22,16 @@ $wp-blocks-breakpoint-xl: 992px;
 /** Gutenberg spacing unit */
 $wp-blocks-spacing: 30px;
 
+/** Gutenberg widealign max-width */
+$wp-blocks-wide-align-max-width: 90%;
+
 /** Gutenberg font-sizes */
 $wp-blocks-font-md: 1rem;
 $wp-blocks-font-lg: 1.25rem;
+$wp-blocks-font-xl: 2rem;
 
 /** Gutenberg colors */
+$wp-blocks-color-primary: map-get($theme-colors, "primary");
+$wp-blocks-color-white: rgb(255, 255, 255);
+$wp-blocks-color-black: rgb(0, 0, 0);
 $wp-blocks-color-muted: rgba(0, 0, 0, 0.2); // used on elements like hr

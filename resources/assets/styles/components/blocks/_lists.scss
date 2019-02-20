@@ -14,5 +14,5 @@ ol:not([class^="wp-block-"]) li,
 ol:not([class^="wp-block-"]) li *,
 ul:not([class^="wp-block-"]) li,
 ul:not([class^="wp-block-"]) li * {
-  padding-left: ($spacer / 2);
+  padding-left: ($wp-blocks-spacing / 2);
 }
