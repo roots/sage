@@ -1,5 +1,5 @@
 <div class="page-header">
-  <div class="gutenberg">
+  <div>
     <h1>{!! App::title() !!}</h1>
   </div>
 </div>

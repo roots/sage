@@ -1,3 +1,7 @@
+.banner > div {
+  @include wp-blocks-contain();
+}
+
 .banner .nav li {
   @extend .nav-item;
 }

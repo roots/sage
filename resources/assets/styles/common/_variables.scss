@@ -9,28 +9,28 @@ $theme-colors: (
 $navbar-dark-toggler-icon-bg: none;
 $navbar-light-toggler-icon-bg: none;
 
-/** Gutenberg */
+/** WP Blocks */
 $wp-blocks-container-md: 600px;
 $wp-blocks-container-lg: 768px;
 $wp-blocks-container-xl: 900px;
 
-/** Gutenberg breakpoints */
+/** WP Blocks breakpoints */
 $wp-blocks-breakpoint-md: 576px;
 $wp-blocks-breakpoint-lg: 676px;
 $wp-blocks-breakpoint-xl: 992px;
 
-/** Gutenberg spacing unit */
+/** WP Blocks spacing unit */
 $wp-blocks-spacing: 30px;
 
-/** Gutenberg widealign max-width */
+/** WP Blocks widealign max-width */
 $wp-blocks-wide-align-max-width: 90%;
 
-/** Gutenberg font-sizes */
+/** WP Blocks font-sizes */
 $wp-blocks-font-md: 1rem;
 $wp-blocks-font-lg: 1.25rem;
 $wp-blocks-font-xl: 2rem;
 
-/** Gutenberg colors */
+/** WP Blocks colors */
 $wp-blocks-color-primary: map-get($theme-colors, "primary");
 $wp-blocks-color-white: rgb(255, 255, 255);
 $wp-blocks-color-black: rgb(0, 0, 0);

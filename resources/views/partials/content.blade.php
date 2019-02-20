@@ -5,5 +5,5 @@
   </header>
   <main class="entry-summary">
     @php the_excerpt() @endphp
-</main>
+  </main>
 </article>

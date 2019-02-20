@@ -1,5 +1,5 @@
 <footer class="content-info">
-  <div class="gutenberg">
+  <div>
     @php dynamic_sidebar('sidebar-footer') @endphp
   </div>
 </footer>
