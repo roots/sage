@@ -12,7 +12,7 @@
     ]
   },
   "publicPath": "/app/themes/sage",
-  "devUrl": "http://example.com",
+  "devUrl": "http://example.test",
   "proxyUrl": "http://localhost:3000",
   "cacheBusting": "[name]_[hash:8]",
   "watch": [
