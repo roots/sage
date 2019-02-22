@@ -27,47 +27,41 @@
     }
 
     @media (min-width: $wp-blocks-breakpoint-lg) {
-      &.alignleft {
-        > img,
-        > figcaption {
-          float: left;
-          margin-right: $wp-blocks-spacing;
-        }
-
-        > figcaption {
-          clear: left;
-          margin-top: 0;
-          margin-bottom: $wp-blocks-spacing;
-        }
+      &.alignleft > img,
+      &.alignleft > figcaption {
+        float: left;
+        margin-right: $wp-blocks-spacing;
       }
 
-      &.alignright {
-        > img,
-        > figcaption {
-          float: right;
-          margin-left: $wp-blocks-spacing;
-        }
+      &.alignleft > figcaption {
+        clear: left;
+        margin-top: 0;
+        margin-bottom: $wp-blocks-spacing;
+      }
 
-        > figcaption {
-          clear: right;
-          margin-top: 0;
-          margin-bottom: $wp-blocks-spacing;
-        }
+      &.alignright > img,
+      &.alignright > figcaption {
+        float: right;
+        margin-left: $wp-blocks-spacing;
+      }
+
+      &.alignright > figcaption {
+        clear: right;
+        margin-top: 0;
+        margin-bottom: $wp-blocks-spacing;
       }
     }
 
-    &.aligncenter {
-      > img,
-      > figcaption {
-        width: 100%;
-      }
+    &.aligncenter > img,
+    &.aligncenter > figcaption {
+      width: 100%;
+    }
 
-      > figcaption {
-        width: 100%;
-        margin-top: 0;
-        margin-bottom: $wp-blocks-spacing;
-        text-align: center;
-      }
+    &.aligncenter > figcaption {
+      width: 100%;
+      margin-top: 0;
+      margin-bottom: $wp-blocks-spacing;
+      text-align: center;
     }
 
     @media screen and (max-width: $wp-blocks-container-lg) {

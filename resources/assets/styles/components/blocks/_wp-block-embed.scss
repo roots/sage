@@ -7,23 +7,23 @@
 .wp-has-aspect-ratio {
   > .wp-block-embed__wrapper {
     position: relative;
+  }
 
-    &::before {
-      display: block;
-      content: "";
-    }
+  > .wp-block-embed__wrapper::before {
+    display: block;
+    content: "";
+  }
 
-    iframe {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      margin-left: auto;
-      margin-right: auto;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-    }
+  iframe {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
   }
 
   figcaption {

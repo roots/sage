@@ -1,5 +1,5 @@
 .wp-block-button {
-  > .wp-block-button__link {
+  .wp-block-button__link {
     display: inline-block;
     padding: ($wp-blocks-spacing / 2) $wp-blocks-spacing;
     text-align: center;
@@ -7,45 +7,48 @@
     vertical-align: middle;
     user-select: none;
     cursor: pointer;
+    text-decoration: none;
     color: $wp-blocks-color-white;
     background-color: $wp-blocks-color-primary;
     border-color: $wp-blocks-color-primary;
   }
 
-  &,
-  &:active,
-  &.active {
-    &:focus,
-    &.focus {
-      outline: thin dotted; // Default
-      outline: 5px auto -webkit-focus-ring-color; // WebKit
-      outline-offset: -2px;
-    }
-  }
-
   &.alignleft {
     text-align: left;
-
-    > .wp-block-button__link {
-      float: left;
-      margin: $wp-blocks-spacing $wp-blocks-spacing $wp-blocks-spacing 0;
-    }
   }
 
   &.alignright {
     text-align: right;
-
-    > .wp-block-button__link {
-      float: right;
-      margin: $wp-blocks-spacing 0 $wp-blocks-spacing $wp-blocks-spacing;
-    }
   }
 
   &.aligncenter {
     text-align: center;
+  }
 
-    > .wp-block-button__link {
-      margin-bottom: ($wp-blocks-spacing/2);
-    }
+  &.alignleft .wp-block-button__link {
+    float: left;
+    margin: $wp-blocks-spacing $wp-blocks-spacing $wp-blocks-spacing 0;
+  }
+
+  &.alignright .wp-block-button__link {
+    float: right;
+    margin: $wp-blocks-spacing 0 $wp-blocks-spacing $wp-blocks-spacing;
+  }
+
+  &.aligncenter .wp-block-button__link {
+    margin-bottom: ($wp-blocks-spacing / 2);
+  }
+
+  .wp-block-button__link:active,
+  .wp-block-button__link.active,
+  .wp-block-button__link:hover,
+  .wp-block-button__link.hover,
+  .wp-block-button__link:focus,
+  .wp-block-button__link.focus {
+    outline: thin dotted; // Default
+    outline: 5px auto -webkit-focus-ring-color; // WebKit
+    outline-offset: -2px;
+    text-decoration: none;
+    background-color: darken($wp-blocks-color-primary, 10%);
   }
 }

@@ -1,3 +1,7 @@
+.comments {
+  @include wp-blocks-contain();
+}
+
 .comment-list {
   @extend .list-unstyled;
 }

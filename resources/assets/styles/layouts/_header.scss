@@ -1,4 +1,4 @@
-.banner > div {
+.banner > :first-child {
   @include wp-blocks-contain();
 }
 

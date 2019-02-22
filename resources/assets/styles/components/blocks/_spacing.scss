@@ -1,7 +1,4 @@
-> header:first-child,
-.entry-summary,
-.entry-content > *:not(.wp-block-wrap),
-> .comments {
+.entry-content > *:not(.wp-block-wrap) {
   @include wp-blocks-contain();
 }
 
@@ -25,6 +22,7 @@
   margin-right: auto;
 
   @media (min-width: #{$wp-blocks-container-md}) {
+    width: $wp-blocks-wide-align-width;
     max-width: $wp-blocks-wide-align-max-width;
   }
 }

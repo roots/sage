@@ -1,3 +1,3 @@
-footer.content-info {
+footer.content-info > :first-child {
   @include wp-blocks-contain();
 }

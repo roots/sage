@@ -10,10 +10,11 @@
     position: relative;
     flex-grow: 1;
     flex-direction: column;
-    align-items: center;
+    align-items: justify;
     overflow: hidden;
-    margin: 5px;
+    justify-content: space-evenly;
     width: calc((100% / 2) - 1rem);
+    margin: 2.5px;
 
     figure {
       display: flex;
@@ -42,10 +43,10 @@
       text-align: center;
       opacity: 80%;
       background: rgba($wp-blocks-color-black, 0.4);
+    }
 
-      img {
-        display: inline;
-      }
+    figcaption img {
+      display: inline;
     }
   }
 

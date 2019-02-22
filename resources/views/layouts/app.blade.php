@@ -3,9 +3,7 @@
   @include('partials.head')
   <body @php body_class() @endphp>
     @php do_action('get_header') @endphp
-    <header class="header banner">
-      @include('partials.header')
-    </header>
+    @include('partials.header')
     <main class="main">
       @yield('content')
     </main>

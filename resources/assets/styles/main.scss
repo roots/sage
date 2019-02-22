@@ -13,9 +13,9 @@
 
 /** Import theme styles */
 @import "common/global";
+@import "components/wp-blocks";
 @import "components/comments";
 @import "components/forms";
-@import "components/wp-blocks";
 @import "layouts/header";
 @import "layouts/sidebar";
 @import "layouts/footer";
