@@ -9,7 +9,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin'); // writes css f
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin'); // fancy console notifications
 
 /** dependencies used during optimizations */
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin'); // minify js
+const TerserPlugin = require('terser-webpack-plugin'); // minify js
 
 /** dependencies used for manifest/cache-busting */
 const WebpackAssetsManifest = require('webpack-assets-manifest');
@@ -80,11 +80,11 @@ const webpackConfig = {
     },
     minimize: config.enabled.optimization,
     minimizer: [
-      new UglifyJsPlugin({
+      new TerserPlugin({
         cache: true,
         parallel: true,
         sourceMap: config.enabled.sourceMaps,
-        uglifyOptions: {
+        terserOptions: {
           ecma: 8,
           compress: {
             warnings: true,
