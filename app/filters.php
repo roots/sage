@@ -40,17 +40,17 @@ add_filter('post_class', function ($classes) {
  */
 add_filter('render_block', function ($block_content, $block) {
     // Only on the frontend and only for blocks that have an alignment
-    if (!is_admin() && isset($block['attrs']['align'])) {
-        if ($block['attrs']['align']=='wide') {
-            return $block_content = '<div class="wp-block-wrap wp-block-wide-wrap">'. $block_content .'</div>';
-        } elseif ($block['attrs']['align']=='full') {
-            return $block_content = '<div class="wp-block-wrap wp-block-full-wrap">'. $block_content .'</div>';
-        } else {
-            return $block_content;
-        }
-    } else {
+    if (is_admin() || !isset($block['attrs']['align'])) {
         return $block_content;
     }
+
+    if ($block['attrs']['align']=='wide') {
+        return $block_content = '<div class="wp-block-wrap wp-block-wide-wrap">'. $block_content .'</div>';
+    } elseif ($block['attrs']['align']=='full') {
+        return $block_content = '<div class="wp-block-wrap wp-block-full-wrap">'. $block_content .'</div>';
+    }
+
+    return $block_content;
 }, 10, 2);
 
 /**
