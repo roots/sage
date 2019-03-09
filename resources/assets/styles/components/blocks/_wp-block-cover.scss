@@ -19,13 +19,13 @@
     padding-bottom: ($wp-blocks-spacing * 3);
     font-size: $wp-blocks-font-xl;
     text-align: center;
-    color: $wp-blocks-color-white;
+    color: wp-blocks-color(white);
     z-index: 20;
   }
 
   h2 a,
   .wp-block-cover-text a {
-    color: $wp-blocks-color-white;
+    color: wp-blocks-color(white);
   }
 
   &.has-parallax {
@@ -42,6 +42,7 @@
     left: 0;
     z-index: 10;
     content: "";
+    background-color: rgba(wp-blocks-color(black), 0.6);
   }
 
   @media (min-width: #{$wp-blocks-container-lg}) {

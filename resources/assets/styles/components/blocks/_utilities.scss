@@ -18,3 +18,33 @@
     padding-right: initial;
   }
 }
+
+@function wp-blocks-color($color) {
+  @return map-get($wp-blocks-colors, $color);
+}
+
+@mixin bootstrap-else($bootstrap, $fallback) {
+  @if $wp-blocks-bootstrap-enabled == true {
+    @if (type-of($bootstrap)=="list") {
+      @each $extend in $bootstrap {
+        @extend .#{$extend} !optional;
+      }
+    }
+
+    @else {
+      @extend .#{$bootstrap} !optional;
+    }
+  }
+
+  @else {
+    @if (type-of($fallback)=="list") {
+      @each $extend in $fallback {
+        @extend %#{$extend} !optional;
+      }
+    }
+
+    @else {
+      @extend %#{$fallback} !optional;
+    }
+  }
+}

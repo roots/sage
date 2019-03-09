@@ -2,7 +2,10 @@
 @import "~bootstrap/scss/functions";
 
 $theme-colors: (
-  primary: #525ddc
+  primary: #525ddc,
+  secondary: #6c757d,
+  light: #f8f9fa,
+  dark:  #343a40,
 );
 
 /** Bootstrap navbar fix (https://git.io/fADqW) */
@@ -31,8 +34,15 @@ $wp-blocks-font-md: 1rem;
 $wp-blocks-font-lg: 1.25rem;
 $wp-blocks-font-xl: 2rem;
 
+/** When true, blocks assume existence of Bootstrap */
+$wp-blocks-bootstrap-enabled: true;
+
 /** WP Blocks colors */
-$wp-blocks-color-primary: map-get($theme-colors, "primary");
-$wp-blocks-color-white: rgb(255, 255, 255);
-$wp-blocks-color-black: rgb(0, 0, 0);
-$wp-blocks-color-muted: rgba(0, 0, 0, 0.2); // used on elements like hr
+$wp-blocks-colors: (
+  primary:   map-get($theme-colors, "primary"),
+  secondary: map-get($theme-colors, "secondary"),
+  light:     map-get($theme-colors, "light"), // used on subdued elements like hr
+  dark:      map-get($theme-colors, "dark"),
+  white:     #fff,
+  black:     #000,
+);

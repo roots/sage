@@ -1,5 +1,5 @@
 .wp-block-button {
-  .wp-block-button__link {
+  %wp-block-button__link {
     display: inline-block;
     padding: ($wp-blocks-spacing / 2) $wp-blocks-spacing;
     text-align: center;
@@ -8,9 +8,26 @@
     user-select: none;
     cursor: pointer;
     text-decoration: none;
-    color: $wp-blocks-color-white;
-    background-color: $wp-blocks-color-primary;
-    border-color: $wp-blocks-color-primary;
+    color: wp-blocks-color(white);
+    background-color: wp-blocks-color(primary);
+    border-color: wp-blocks-color(primary);
+
+    &:active,
+    &.active,
+    &:hover,
+    &.hover,
+    &:focus,
+    &.focus {
+      outline: thin dotted; // Default
+      outline: 5px auto -webkit-focus-ring-color; // WebKit
+      outline-offset: -2px;
+      text-decoration: none;
+      background-color: darken(wp-blocks-color(primary), 3%);
+    }
+  }
+
+  .wp-block-button__link {
+    @include bootstrap-else(("btn" "btn-primary"), wp-block-button__link);
   }
 
   &.alignleft {
@@ -37,18 +54,5 @@
 
   &.aligncenter .wp-block-button__link {
     margin-bottom: ($wp-blocks-spacing / 2);
-  }
-
-  .wp-block-button__link:active,
-  .wp-block-button__link.active,
-  .wp-block-button__link:hover,
-  .wp-block-button__link.hover,
-  .wp-block-button__link:focus,
-  .wp-block-button__link.focus {
-    outline: thin dotted; // Default
-    outline: 5px auto -webkit-focus-ring-color; // WebKit
-    outline-offset: -2px;
-    text-decoration: none;
-    background-color: darken($wp-blocks-color-primary, 10%);
   }
 }

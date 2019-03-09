@@ -48,6 +48,8 @@ add_filter('render_block', function ($block_content, $block) {
         else :
             return $block_content;
         endif;
+    else :
+        return $block_content;
     endif;
 }, 10, 2);
 

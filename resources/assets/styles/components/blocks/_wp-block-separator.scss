@@ -4,7 +4,7 @@
   margin: $wp-blocks-spacing auto;
   padding: 0;
   background: transparent;
-  border-bottom: 1px solid $wp-blocks-color-muted;
+  border-bottom: 1px solid wp-blocks-color(light);
   opacity: 0.6;
 
   &.is-style-wide {
@@ -23,7 +23,7 @@
 
   &.is-style-dots::before {
     content: "\00b7 \00b7 \00b7";
-    color: $wp-blocks-color-muted;
+    color: wp-blocks-color(light);
     font-size: $font-size-base*2;
     letter-spacing: $wp-blocks-spacing;
     font-family: serif;

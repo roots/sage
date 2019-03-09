@@ -1,4 +1,4 @@
-@each $name, $color in $theme-colors {
+@each $name, $color in $wp-blocks-colors {
   .has-#{$name}-color {
     color: $color;
   }
@@ -9,7 +9,7 @@
 
   @for $i from 1 through 10 {
     .has-background-dim.has-background-dim-#{ $i * 10 }::before {
-      background-color: rgba($color, $i * 0.1);
+      background-color: rgba($color, $i * 0.1) !important;
     }
   }
 }
