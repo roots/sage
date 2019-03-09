@@ -39,7 +39,7 @@
       width: 100%;
       margin: 0;
       padding: ($wp-blocks-spacing * 3) ($wp-blocks-spacing / 2) ($wp-blocks-spacing / 3);
-      color: wp-blocks-color(white);
+      color: wp-blocks-color("white");
       text-align: center;
       opacity: 80%;
 
@@ -47,19 +47,19 @@
       background:
         linear-gradient(
           to top,
-          wp-blocks-color(dark) 0%,
-          rgba(wp-blocks-color(dark), 0.738) 19%,
-          rgba(wp-blocks-color(dark), 0.541) 34%,
-          rgba(wp-blocks-color(dark), 0.382) 47%,
-          rgba(wp-blocks-color(dark), 0.278) 56.5%,
-          rgba(wp-blocks-color(dark), 0.194) 65%,
-          rgba(wp-blocks-color(dark), 0.126) 73%,
-          rgba(wp-blocks-color(dark), 0.075) 80.2%,
-          rgba(wp-blocks-color(dark), 0.042) 86.1%,
-          rgba(wp-blocks-color(dark), 0.021) 91%,
-          rgba(wp-blocks-color(dark), 0.008) 95.2%,
-          rgba(wp-blocks-color(dark), 0.002) 98.2%,
-          rgba(wp-blocks-color(dark), 0) 100%,
+          wp-blocks-color("dark") 0%,
+          rgba(wp-blocks-color("dark"), 0.738) 19%,
+          rgba(wp-blocks-color("dark"), 0.541) 34%,
+          rgba(wp-blocks-color("dark"), 0.382) 47%,
+          rgba(wp-blocks-color("dark"), 0.278) 56.5%,
+          rgba(wp-blocks-color("dark"), 0.194) 65%,
+          rgba(wp-blocks-color("dark"), 0.126) 73%,
+          rgba(wp-blocks-color("dark"), 0.075) 80.2%,
+          rgba(wp-blocks-color("dark"), 0.042) 86.1%,
+          rgba(wp-blocks-color("dark"), 0.021) 91%,
+          rgba(wp-blocks-color("dark"), 0.008) 95.2%,
+          rgba(wp-blocks-color("dark"), 0.002) 98.2%,
+          rgba(wp-blocks-color("dark"), 0) 100%,
         );
     }
 
