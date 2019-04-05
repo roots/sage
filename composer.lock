@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f31f679ab253b90c13366000decce59b",
+    "content-hash": "22151bc7d4938629c8d715ad86f32995",
     "packages": [
         {
             "name": "brain/hierarchy",
@@ -834,6 +834,50 @@
             "time": "2018-12-28T01:46:28+00:00"
         },
         {
+            "name": "roots/wp-blade-check",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/roots/wp-blade-check.git",
+                "reference": "61a84692619ca6bcfb203289cee4a0f55a876565"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/roots/wp-blade-check/zipball/61a84692619ca6bcfb203289cee4a0f55a876565",
+                "reference": "61a84692619ca6bcfb203289cee4a0f55a876565",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1"
+            },
+            "type": "package",
+            "autoload": {
+                "files": [
+                    "src/BladeCheck.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Brandon Nifong",
+                    "email": "brandon@tendency.me"
+                }
+            ],
+            "description": "Simple Composer package that checks and displays an admin notice if your uncompiled Blade templates are publicly accessible.",
+            "homepage": "https://github.com/roots/wp-blade-check",
+            "keywords": [
+                "blade",
+                "roots",
+                "sage",
+                "security",
+                "wordpress"
+            ],
+            "time": "2019-03-26T08:42:12+00:00"
+        },
+        {
             "name": "soberwp/controller",
             "version": "2.1.1",
             "source": {
@@ -1621,7 +1665,7 @@
                 },
                 {
                     "name": "Gert de Pagter",
-                    "email": "BackEndTea@gmail.com"
+                    "email": "backendtea@gmail.com"
                 }
             ],
             "description": "Symfony polyfill for ctype functions",
