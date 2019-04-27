@@ -9,6 +9,7 @@
   padding-top: ($wp-blocks-spacing * 3);
   padding-bottom: ($wp-blocks-spacing * 3);
   background-size: cover;
+  background-color: rgba(wp-blocks-color("black"), 0.6);
 
   h2,
   .wp-block-cover-text {
@@ -29,7 +30,11 @@
   }
 
   &.has-parallax {
-    background-position: fixed;
+    background-attachment: fixed;
+
+    @supports (-webkit-overflow-scrolling: touch) {
+      background-attachment: scroll;
+    }
   }
 
   &.has-background-dim::before {
@@ -42,7 +47,7 @@
     left: 0;
     z-index: 10;
     content: "";
-    background-color: rgba(wp-blocks-color("black"), 0.6);
+    background-color: inherit;
   }
 
   @media (min-width: #{$wp-blocks-container-lg}) {
