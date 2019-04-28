@@ -62,6 +62,16 @@ add_action('after_setup_theme', function () {
     }, 100);
 
     /**
+     * Add color palette support
+     */
+    add_theme_support('editor-color-palette', (block_vars())->colors);
+
+    /**
+     * Add font size support
+     */
+    add_theme_support('editor-font-sizes', (block_vars())->font_sizes);
+
+    /**
      * Enable plugins to manage the document title
      * @link https://developer.wordpress.org/reference/functions/add_theme_support/#title-tag
      */

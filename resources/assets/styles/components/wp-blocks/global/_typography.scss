@@ -1,0 +1,5 @@
+@each $name, $size in $wp-blocks-font-sizes {
+  .has-#{$name}-font-size {
+    font-size: $size;
+  }
+}

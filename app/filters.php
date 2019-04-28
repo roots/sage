@@ -54,6 +54,47 @@ add_filter('render_block', function ($block_content, $block) {
 }, 10, 2);
 
 /**
+ * Block Editor Whitelist
+ *
+ * @link https://wordpress.org/gutenberg/handbook/designers-developers/developers/filters/block-filters/
+ */
+add_filter('allowed_block_types', function ($allowed_block_types, $post) {
+    $whitelist = (object) (block_vars())->whitelist;
+
+    /** Return early if no whitelist set */
+    if (!$whitelist || empty($whitelist)) {
+        return $allowed_block_types;
+    }
+
+    /** Handle the global whitelist */
+    if (count($whitelist->global) > 0) {
+        $allowed_block_types = $whitelist->global;
+    }
+
+    /** Handle the page whitelist */
+    if ($post->post_type === 'page' && count($whitelist->page) > 0) {
+        return array_values(array_merge(
+            $allowed_block_types,
+            $whitelist->page
+        ));
+    }
+
+    /** Handle the post whitelist */
+    if ($post->post_type === 'post' && count($whitelist->post) > 0) {
+        return array_values(array_merge(
+            $allowed_block_types,
+            $whitelist->post
+        ));
+    }
+
+    if (is_array($allowed_block_types)) {
+        return array_values($allowed_block_types);
+    }
+
+    return $allowed_block_types;
+}, 10, 2);
+
+/**
  * Add "… Continued" to the excerpt
  */
 add_filter('excerpt_more', function () {

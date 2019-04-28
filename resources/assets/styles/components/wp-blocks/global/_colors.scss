@@ -7,6 +7,10 @@
     background-color: $color;
   }
 
+  .has-#{$name}-background-color.has-background-dim::before {
+    background-color: rgba($color, 0.5) !important;
+  }
+
   @for $i from 1 through 10 {
     .has-#{$name}-background-color.has-background-dim-#{ $i * 10 }::before {
       background-color: rgba($color, $i * 0.1) !important;

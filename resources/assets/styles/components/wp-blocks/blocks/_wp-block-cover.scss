@@ -18,7 +18,7 @@
     margin-bottom: 0;
     padding-top: ($wp-blocks-spacing * 3);
     padding-bottom: ($wp-blocks-spacing * 3);
-    font-size: $wp-blocks-font-xl;
+    font-size: wp-blocks-font-size("larger");
     text-align: center;
     color: wp-blocks-color("white");
     z-index: 20;

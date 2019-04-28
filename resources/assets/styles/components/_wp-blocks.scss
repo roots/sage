@@ -1,20 +1,31 @@
-@import "blocks/utilities";
+/**
+ * Block utilities
+ **/
+@import "wp-blocks/base/all";
 
-/** styles */
 .wp-blocks {
-  @import "blocks/spacing";
-  @import "blocks/colors";
-  @import "blocks/wp-block-audio";
-  @import "blocks/wp-block-button";
-  @import "blocks/wp-block-columns";
-  @import "blocks/wp-block-cover";
-  @import "blocks/wp-block-embed";
-  @import "blocks/wp-block-gallery";
-  @import "blocks/wp-block-image";
-  @import "blocks/wp-block-media";
-  @import "blocks/wp-block-separator";
-  @import "blocks/wp-block-quote";
-  @import "blocks/wp-block-table";
-  @import "blocks/lists";
-  @import "blocks/preformatted";
+  /**
+   * Base styles
+   **/
+  @import "wp-blocks/global/spacing";
+  @import "wp-blocks/global/colors";
+  @import "wp-blocks/global/typography";
+  @import "wp-blocks/global/lists";
+  @import "wp-blocks/global/preformatted";
+
+  /**
+   * Block-specific styles
+   **/
+  @import "wp-blocks/blocks/wp-block-audio";
+  @import "wp-blocks/blocks/wp-block-button";
+  @import "wp-blocks/blocks/wp-block-columns";
+  @import "wp-blocks/blocks/wp-block-cover";
+  @import "wp-blocks/blocks/wp-block-embed";
+  @import "wp-blocks/blocks/wp-block-gallery";
+  @import "wp-blocks/blocks/wp-block-image";
+  @import "wp-blocks/blocks/wp-block-media";
+  @import "wp-blocks/blocks/wp-block-separator";
+  @import "wp-blocks/blocks/wp-block-quote";
+  @import "wp-blocks/blocks/wp-block-table";
+  @import "wp-blocks/blocks/wp-block-latest-posts";
 }

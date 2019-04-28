@@ -136,3 +136,16 @@ function display_sidebar()
     isset($display) || $display = apply_filters('sage/display_sidebar', false);
     return $display;
 }
+
+/**
+ * Block variables
+ * @return object
+ */
+function block_vars()
+{
+    return (object) [
+        'colors'     => collect(config('blocks.colors'))->toArray(),
+        'font_sizes' => collect(config('blocks.font_sizes'))->toArray(),
+        'whitelist'  => (object) collect(config('blocks.whitelist'))->toArray(),
+    ];
+}

@@ -15,7 +15,7 @@
 
   &.alignwide p,
   &.alignfull p {
-    font-size: $wp-blocks-font-lg;
+    font-size: wp-blocks-font-size("normal");
     text-align: center;
   }
 
@@ -23,7 +23,7 @@
   &.alignfull blockquote {
     margin-top: $wp-blocks-spacing;
     margin-bottom: $wp-blocks-spacing;
-    font-size: $wp-blocks-font-md;
+    font-size: wp-blocks-font-size("normal");
   }
 
   &.alignwide blockquote p,
@@ -73,23 +73,23 @@
 .wp-block-quote {
   margin-top: $wp-blocks-spacing;
   margin-bottom: $wp-blocks-spacing;
-  font-size: $wp-blocks-font-md;
+  font-size: wp-blocks-font-size("normal");
 
   &.is-large blockquote p {
-    font-size: $wp-blocks-font-lg;
+    font-size: wp-blocks-font-size("large");
   }
 
   &.is-large blockquote cite {
-    font-size: $wp-blocks-font-md;
+    font-size: wp-blocks-font-size("normal");
   }
 
   &.alignwide blockquote p,
   &.alignfull blockquote p {
-    font-size: $wp-blocks-font-lg;
+    font-size: wp-blocks-font-size("large");
     text-align: center;
   }
 
   &.alignwide blockquote cite {
-    font-size: $wp-blocks-font-md;
+    font-size: wp-blocks-font-size("normal");
   }
 }

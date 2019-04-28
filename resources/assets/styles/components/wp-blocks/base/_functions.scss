@@ -1,0 +1,9 @@
+/** Helper util for color map */
+@function wp-blocks-color($color) {
+  @return map-get($wp-blocks-colors, $color);
+}
+
+/** Helper util for font-size map */
+@function wp-blocks-font-size($fontsize) {
+  @return map-get($wp-blocks-font-sizes, $fontsize);
+}

@@ -1,0 +1,13 @@
+ul.wp-block-categories-list,
+ul.wp-block-archives-list,
+ul.wp-block-categories-list *,
+ul.wp-block-archives-list * {
+  list-style-position: inside;
+  list-style-type: square;
+}
+
+ul[class^="wp-block-latest-posts"]:not(.is-grid),
+ul[class^="wp-block-latest-posts"]:not(.is-grid) * {
+  list-style-position: inside;
+  list-style-type: square;
+}
