@@ -109,9 +109,7 @@ add_action('widgets_init', function () {
  */
 add_actions(['after_switch_theme', 'switch_theme'], function () {
     return collect(glob(config('view.compiled') . '/*.php'))
-        ->filter(function ($file) {
-            return preg_match('/([a-z0-9]{40})(\.php)/m', $file) === 1;
-        })
+        ->filter()
         ->map(function ($file) {
             unlink($file);
         });
