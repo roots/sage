@@ -11,8 +11,8 @@ use function Roots\view;
  * Theme assets
  */
 add_action('wp_enqueue_scripts', function () {
-    wp_enqueue_script('sage/vendor', asset('scripts/vendor.js'), ['jquery'], null, true);
-    wp_enqueue_script('sage/app', asset('scripts/app.js'), ['sage/vendor', 'jquery'], null, true);
+    wp_enqueue_script('sage/vendor', asset('scripts/vendor.js')->uri(), ['jquery'], null, true);
+    wp_enqueue_script('sage/app', asset('scripts/vendor.js')->uri(), ['sage/vendor', 'jquery'], null, true);
 
     wp_add_inline_script('sage/vendor', asset('scripts/manifest.js')->contents(), 'before');
 
@@ -24,7 +24,7 @@ add_action('wp_enqueue_scripts', function () {
 
     foreach ($styles as $stylesheet) {
         if ($asset = asset($stylesheet)->exists()) {
-            wp_enqueue_style('sage/'.basename($stylesheet, '.css'), asset($stylesheet), false, null);
+            wp_enqueue_style('sage/'.basename($stylesheet, '.css'), asset($stylesheet)->uri(), false, null);
         }
     }
 }, 100);
@@ -79,7 +79,7 @@ add_action('after_setup_theme', function () {
      * Use main stylesheet for visual editor
      * @see resources/assets/styles/layouts/tinymce.scss
      */
-    add_editor_style(asset('styles/app.css'));
+    add_editor_style(asset('styles/app.css')->uri());
 }, 20);
 
 /**
