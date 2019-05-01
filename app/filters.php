@@ -36,4 +36,3 @@ add_filter('excerpt_more', function () {
 add_filter('get_search_form', function () {
     return view('forms.search');
 });
-

@@ -35,7 +35,7 @@
     "test": "npm run -s lint"
   },
   "engines": {
-    "node": ">= 6.9.4"
+    "node": ">= 8.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.2",
@@ -84,7 +84,7 @@
     "write-file-webpack-plugin": "^4.4"
   },
   "dependencies": {
-    "bootstrap": "^4.2",
+    "bootstrap": "^4.3",
     "jquery": "^3.3",
     "popper.js": "^1.14"
   }
