@@ -41,7 +41,7 @@ return [
     |
     */
 
-    'preflight' => true,
+    'preflight' => env('WP_ENV', 'production') !== 'production',
 
     /*
     |--------------------------------------------------------------------------

@@ -35,8 +35,7 @@
   },
   "require": {
     "php": "^7.1.3",
-    "roots/acorn": "dev-master",
-    "roots/wp-blade-check": "^1.0"
+    "roots/acorn": "dev-master"
   },
   "require-dev": {
     "roots/sage-installer": "^1.6",
