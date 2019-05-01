@@ -20,8 +20,8 @@ $sage_error = function ($message, $subtitle = '', $title = '') {
 /**
  * Ensure compatible version of PHP is used
  */
-if (version_compare('7.1', phpversion(), '>=')) {
-    $sage_error(__('You must be using PHP 7.1 or greater.', 'sage'), __('Invalid PHP version', 'sage'));
+if (version_compare('7.1.3', phpversion(), '>=')) {
+    $sage_error(__('You must be using PHP 7.1.3 or greater.', 'sage'), __('Invalid PHP version', 'sage'));
 }
 
 /**
@@ -50,7 +50,7 @@ require_once $composer;
  */
 array_map(function ($file) use ($sage_error) {
     $file = "../app/{$file}.php";
-    if (!locate_template($file, true, true)) {
+    if (! locate_template($file, true, true)) {
         $sage_error(
             sprintf(__('Error locating <code>%s</code> for inclusion.', 'sage'), $file),
             __('File not found', 'sage')

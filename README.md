@@ -49,11 +49,16 @@ During theme installation you will have options to update `style.css` theme head
 ```shell
 themes/your-theme-name/   # → Root of your Sage based theme
 ├── app/                  # → Theme PHP
-│   ├── Controllers/      # → Controller files
+│   ├── Composers/        # → Composer files
 │   ├── admin.php         # → Theme customizer setup
 │   ├── filters.php       # → Theme filters
 │   ├── helpers.php       # → Helper functions
 │   └── setup.php         # → Theme setup
+├── config/               # → Config files
+│   ├── app.php           # → Application configuration
+│   ├── assets.php        # → Asset configuration
+│   ├── filesystems.php   # → Filesystems configuration
+│   └── view.php          # → View configuration
 ├── composer.json         # → Autoloading for `app/` files
 ├── composer.lock         # → Composer lock file (never edit)
 ├── dist/                 # → Built theme assets (never edit)
@@ -97,7 +102,6 @@ Edit `app/setup.php` to enable or disable theme features, setup navigation menus
 ## Documentation
 
 * [Sage documentation](https://roots.io/sage/docs/)
-* [Controller documentation](https://github.com/soberwp/controller#usage)
 
 ## Contributing
 
@@ -107,7 +111,7 @@ Contributions are welcome from everyone. We have [contributing guidelines](https
 
 Help support our open-source development efforts by [becoming a patron](https://www.patreon.com/rootsdev).
 
-<a href="https://kinsta.com/?kaid=OFDHAJIXUDIV"><img src="https://cdn.roots.io/app/uploads/kinsta.svg" alt="Kinsta" width="200" height="150"></a> <a href="https://k-m.com/"><img src="https://cdn.roots.io/app/uploads/km-digital.svg" alt="KM Digital" width="200" height="150"></a>
+<a href="https://kinsta.com/?kaid=OFDHAJIXUDIV"><img src="https://cdn.roots.io/app/uploads/kinsta.svg" alt="Kinsta" width="200" height="150"></a> <a href="https://k-m.com/"><img src="https://cdn.roots.io/app/uploads/km-digital.svg" alt="KM Digital" width="200" height="150"></a> <a href="https://www.itineris.co.uk/"><img src="https://cdn.roots.io/app/uploads/itineris.svg" alt="itineris" width="200" height="150"></a>
 
 ## Community
 
