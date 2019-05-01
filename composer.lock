@@ -702,16 +702,17 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/roots/acorn.git",
-                "reference": "bb3a96f323457b18289eecd6989cce7ddb8b8806"
+                "reference": "4b1875faeac27e99d70cf5d3fb3740114c4a3be8"
             },
             "require": {
-                "illuminate/config": "^5.7",
-                "illuminate/container": "^5.7",
-                "illuminate/contracts": "^5.7",
-                "illuminate/events": "^5.7",
-                "illuminate/filesystem": "^5.7",
-                "illuminate/support": "^5.7",
-                "illuminate/view": "^5.7",
+                "illuminate/config": "^5.8",
+                "illuminate/container": "^5.8",
+                "illuminate/contracts": "^5.8",
+                "illuminate/database": "^5.8",
+                "illuminate/events": "^5.8",
+                "illuminate/filesystem": "^5.8",
+                "illuminate/support": "^5.8",
+                "illuminate/view": "^5.8",
                 "league/flysystem": "^1.0",
                 "php": "^7.1.3",
                 "roots/support": "dev-master"

@@ -2,7 +2,9 @@
 
 namespace App;
 
+use function Roots\add_actions;
 use function Roots\asset;
+use function Roots\config;
 use function Roots\view;
 
 /**
@@ -10,7 +12,7 @@ use function Roots\view;
  */
 add_action('wp_enqueue_scripts', function () {
     wp_enqueue_script('sage/vendor', asset('scripts/vendor.js'), ['jquery'], null, true);
-    wp_enqueue_script('sage/main', asset('scripts/main.js'), ['sage/vendor', 'jquery'], null, true);
+    wp_enqueue_script('sage/app', asset('scripts/app.js'), ['sage/vendor', 'jquery'], null, true);
 
     wp_add_inline_script('sage/vendor', asset('scripts/manifest.js')->contents(), 'before');
 
@@ -18,11 +20,11 @@ add_action('wp_enqueue_scripts', function () {
         wp_enqueue_script('comment-reply');
     }
 
-    $styles = ['styles/main.css'];
+    $styles = ['styles/app.css'];
 
     foreach ($styles as $stylesheet) {
-        if (($asset = asset($stylesheet)->exists())) {
-            wp_enqueue_style('sage/'.basename($stylesheet, '.css'), asset($stylesheet)->uri(), false, null);
+        if ($asset = asset($stylesheet)->exists()) {
+            wp_enqueue_style('sage/'.basename($stylesheet, '.css'), asset($stylesheet), false, null);
         }
     }
 }, 100);
@@ -75,7 +77,7 @@ add_action('after_setup_theme', function () {
 
     /**
      * Use main stylesheet for visual editor
-     * @see resources/assets/styles/layouts/_tinymce.scss
+     * @see resources/assets/styles/layouts/tinymce.scss
      */
     add_editor_style(asset('styles/admin.css')->uri());
 }, 20);
@@ -100,4 +102,17 @@ add_action('widgets_init', function () {
         'name' => __('Footer', 'sage'),
         'id' => 'sidebar-footer'
     ] + $config);
+});
+
+/**
+ * Remove Blade cache when theme is activated, changed, or removed.
+ */
+add_actions(['after_switch_theme', 'switch_theme'], function () {
+    return collect(glob(config('view.compiled') . '/*.php'))
+        ->filter(function ($file) {
+            return preg_match('/([a-z0-9]{40})(\.php)/m', $file) === 1;
+        })
+        ->map(function ($file) {
+            unlink($file);
+        });
 });

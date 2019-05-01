@@ -1,0 +1,22 @@
+/**
+ * Search Form
+ */
+
+.search-form {
+  @extend .form-inline;
+
+  label {
+    @extend .form-group;
+
+    font-weight: normal;
+  }
+
+  .search-field {
+    @extend .form-control;
+  }
+
+  .search-submit {
+    @extend .btn;
+    @extend .btn-secondary;
+  }
+}
