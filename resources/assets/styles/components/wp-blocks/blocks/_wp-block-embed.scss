@@ -1,7 +1,7 @@
 .wp-block-embed.alignleft,
 .wp-block-embed.alignright {
   width: 100%;
-  max-width: $wp-blocks-wide-align-max-width; // #TODO codify max-width to better surface for users
+  max-width: wp-editor-wide-align("max-width"); // #TODO codify max-width to better surface for users
 }
 
 .wp-has-aspect-ratio {

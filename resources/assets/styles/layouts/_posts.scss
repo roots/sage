@@ -1,5 +1,5 @@
 article > header:first-child,
 .entry-summary,
 .posts-navigation {
-  @include wp-blocks-contain();
+  @include wp-editor-contain();
 }

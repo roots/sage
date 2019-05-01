@@ -1,5 +1,5 @@
 .banner > :first-child {
-  @include wp-blocks-contain();
+  @include wp-editor-contain();
 }
 
 .banner .nav li {

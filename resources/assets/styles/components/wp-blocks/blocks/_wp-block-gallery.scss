@@ -38,8 +38,8 @@
       justify-content: center;
       width: 100%;
       margin: 0;
-      padding: ($wp-blocks-spacing * 3) ($wp-blocks-spacing / 2) ($wp-blocks-spacing / 3);
-      color: wp-blocks-color("white");
+      padding: (wp-editor-spacing() * 3) (wp-editor-spacing() / 2) (wp-editor-spacing() / 3);
+      color: wp-editor-color("theme-white");
       text-align: center;
       opacity: 80%;
 
@@ -47,19 +47,19 @@
       background:
         linear-gradient(
           to top,
-          wp-blocks-color("dark") 0%,
-          rgba(wp-blocks-color("dark"), 0.738) 19%,
-          rgba(wp-blocks-color("dark"), 0.541) 34%,
-          rgba(wp-blocks-color("dark"), 0.382) 47%,
-          rgba(wp-blocks-color("dark"), 0.278) 56.5%,
-          rgba(wp-blocks-color("dark"), 0.194) 65%,
-          rgba(wp-blocks-color("dark"), 0.126) 73%,
-          rgba(wp-blocks-color("dark"), 0.075) 80.2%,
-          rgba(wp-blocks-color("dark"), 0.042) 86.1%,
-          rgba(wp-blocks-color("dark"), 0.021) 91%,
-          rgba(wp-blocks-color("dark"), 0.008) 95.2%,
-          rgba(wp-blocks-color("dark"), 0.002) 98.2%,
-          rgba(wp-blocks-color("dark"), 0) 100%,
+          wp-editor-color("dark") 0%,
+          rgba(wp-editor-color("dark"), 0.738) 19%,
+          rgba(wp-editor-color("dark"), 0.541) 34%,
+          rgba(wp-editor-color("dark"), 0.382) 47%,
+          rgba(wp-editor-color("dark"), 0.278) 56.5%,
+          rgba(wp-editor-color("dark"), 0.194) 65%,
+          rgba(wp-editor-color("dark"), 0.126) 73%,
+          rgba(wp-editor-color("dark"), 0.075) 80.2%,
+          rgba(wp-editor-color("dark"), 0.042) 86.1%,
+          rgba(wp-editor-color("dark"), 0.021) 91%,
+          rgba(wp-editor-color("dark"), 0.008) 95.2%,
+          rgba(wp-editor-color("dark"), 0.002) 98.2%,
+          rgba(wp-editor-color("dark"), 0) 100%,
         );
     }
 
@@ -79,7 +79,7 @@
     }
   }
 
-  @media (min-width: #{$wp-blocks-container-md}) {
+  @media (min-width: #{wp-editor-container("medium")}) {
     @for $i from 3 through 8 {
       &.columns-#{ $i } .blocks-gallery-image,
       &.columns-#{ $i } .blocks-gallery-item {

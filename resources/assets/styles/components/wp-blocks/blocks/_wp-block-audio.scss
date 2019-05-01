@@ -3,7 +3,7 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
-    border-radius: $border-radius-lg;
+    border-radius: wp-editor-border-radius("slight");
   }
 
   figcaption {

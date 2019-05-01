@@ -1,9 +1,47 @@
-/** Helper util for color map */
-@function wp-blocks-color($color) {
-  @return map-get($wp-blocks-colors, $color);
+/** bootstrap check */
+@function wp-editor-bootstrap-enabled() {
+  @return map-get($wp-editor, "bootstrap-enabled");
 }
 
-/** Helper util for font-size map */
-@function wp-blocks-font-size($fontsize) {
-  @return map-get($wp-blocks-font-sizes, $fontsize);
+/** spacing */
+@function wp-editor-spacing() {
+  @return map-get($wp-editor, "spacing");
+}
+
+/** Helper utils for color map */
+@function wp-editor-colors() {
+  @return map-get($wp-editor, "colors");
+}
+
+@function wp-editor-color($color) {
+  @return map-get(map-get($wp-editor, "colors"), $color);
+}
+
+/** Helper utils for font-size map */
+@function wp-editor-font-sizes() {
+  @return map-get($wp-editor, "fontSizes");
+}
+
+@function wp-editor-font-size($fontsize) {
+  @return #{map-get(map-get($wp-editor, "fontSizes"), $fontsize)}px;
+}
+
+/** Border radius */
+@function wp-editor-border-radius($radius) {
+  @return map-get(map-get($wp-editor, "border-radii"), $radius);
+}
+
+/** containers */
+@function wp-editor-container($size) {
+  @return map-get(map-get($wp-editor, "containers"), $size);
+}
+
+/** breakpoints */
+@function wp-editor-breakpoint($bp) {
+  @return map-get(map-get($wp-editor, "breakpoints"), $bp);
+}
+
+/** wide blocks */
+@function wp-editor-wide-align($property) {
+  @return map-get(map-get($wp-editor, "wide-align"), $property);
 }

@@ -4,9 +4,9 @@
     &.has-#{$columns}-columns,
     > li {
       display: grid;
-      grid-column-gap: $wp-blocks-spacing;
+      grid-column-gap: wp-editor-spacing();
 
-      @media (min-width: #{$wp-blocks-container-md}) {
+      @media (min-width: #{wp-editor-container("medium")}) {
         @if $columns <= 3 {
           grid-template-columns: repeat($columns, 1fr);
         }

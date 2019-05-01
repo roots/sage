@@ -1,5 +1,5 @@
-@each $name, $size in $wp-blocks-font-sizes {
+@each $name, $size in wp-editor-font-sizes() {
   .has-#{$name}-font-size {
-    font-size: $size;
+    font-size: wp-editor-font-size($name);
   }
 }

@@ -1,4 +1,4 @@
-@each $name, $color in $wp-blocks-colors {
+@each $name, $color in wp-editor-colors() {
   .has-#{$name}-color {
     color: $color;
   }

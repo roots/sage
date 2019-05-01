@@ -3,22 +3,22 @@
  *
  * General container unit
  **/
-@mixin wp-blocks-contain() {
+@mixin wp-editor-contain() {
   width: 100%;
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
-  padding-left: $wp-blocks-spacing;
-  padding-right: $wp-blocks-spacing;
+  padding-left: wp-editor-spacing();
+  padding-right: wp-editor-spacing();
 
-  @media (min-width: #{$wp-blocks-breakpoint-lg}) {
-    max-width: $wp-blocks-container-lg;
+  @media (min-width: #{wp-editor-breakpoint("large")}) {
+    max-width: wp-editor-container("large");
     padding-left: initial;
     padding-right: initial;
   }
 
-  @media (min-width: #{$wp-blocks-breakpoint-xl}) {
-    max-width: $wp-blocks-container-xl;
+  @media (min-width: #{wp-editor-breakpoint("extra-large")}) {
+    max-width: wp-editor-container("extra-large");
     padding-left: initial;
     padding-right: initial;
   }
@@ -31,7 +31,7 @@
  * Else utilize the given fallback(s)
  **/
 @mixin bootstrap-else($bootstrap, $fallback) {
-  @if $wp-blocks-bootstrap-enabled == true {
+  @if wp-editor-bootstrap-enabled() == true {
     @if (type-of($bootstrap)=="list") {
       @each $extend in $bootstrap {
         @extend .#{$extend} !optional;

@@ -1,4 +1,4 @@
-<section class="wp-blocks">
+<section class="wp-editor">
   <div class="entry-content">
     @php the_content() @endphp
   </div>

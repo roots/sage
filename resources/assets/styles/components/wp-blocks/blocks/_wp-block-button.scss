@@ -1,16 +1,16 @@
 .wp-block-button {
   %wp-block-button__link {
     display: inline-block;
-    padding: ($wp-blocks-spacing / 2) $wp-blocks-spacing;
+    padding: (wp-editor-spacing() / 2) wp-editor-spacing();
     text-align: center;
     white-space: nowrap;
     vertical-align: middle;
     user-select: none;
     cursor: pointer;
     text-decoration: none;
-    color: wp-blocks-color("white");
-    background-color: wp-blocks-color("primary");
-    border-color: wp-blocks-color("primary");
+    color: wp-editor-color("theme-white");
+    background-color: wp-editor-color("primary");
+    border-color: wp-editor-color("primary");
 
     &:active,
     &.active,
@@ -22,7 +22,7 @@
       outline: 5px auto -webkit-focus-ring-color; // WebKit
       outline-offset: -2px;
       text-decoration: none;
-      background-color: darken(wp-blocks-color("primary"), 3%);
+      background-color: darken(wp-editor-color("primary"), 3%);
     }
   }
 
@@ -44,15 +44,15 @@
 
   &.alignleft .wp-block-button__link {
     float: left;
-    margin: $wp-blocks-spacing $wp-blocks-spacing $wp-blocks-spacing 0;
+    margin: wp-editor-spacing() wp-editor-spacing() wp-editor-spacing() 0;
   }
 
   &.alignright .wp-block-button__link {
     float: right;
-    margin: $wp-blocks-spacing 0 $wp-blocks-spacing $wp-blocks-spacing;
+    margin: wp-editor-spacing() 0 wp-editor-spacing() wp-editor-spacing();
   }
 
   &.aligncenter .wp-block-button__link {
-    margin-bottom: ($wp-blocks-spacing / 2);
+    margin-bottom: (wp-editor-spacing() / 2);
   }
 }

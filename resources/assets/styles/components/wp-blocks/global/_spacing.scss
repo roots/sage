@@ -1,5 +1,5 @@
 .entry-content > *:not(.wp-block-wrap) {
-  @include wp-blocks-contain();
+  @include wp-editor-contain();
 }
 
 .wp-block-wrap {
@@ -21,8 +21,8 @@
   margin-left: auto;
   margin-right: auto;
 
-  @media (min-width: #{$wp-blocks-container-md}) {
-    width: $wp-blocks-wide-align-width;
-    max-width: $wp-blocks-wide-align-max-width;
+  @media (min-width: #{wp-editor-container("medium")}) {
+    width: wp-editor-wide-align("width");
+    max-width: wp-editor-wide-align("max-width");
   }
 }

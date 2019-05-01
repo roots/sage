@@ -26,29 +26,29 @@
       }
     }
 
-    @media (min-width: $wp-blocks-breakpoint-lg) {
+    @media (min-width: wp-editor-breakpoint("large")) {
       &.alignleft > img,
       &.alignleft > figcaption {
         float: left;
-        margin-right: $wp-blocks-spacing;
+        margin-right: wp-editor-spacing();
       }
 
       &.alignleft > figcaption {
         clear: left;
         margin-top: 0;
-        margin-bottom: $wp-blocks-spacing;
+        margin-bottom: wp-editor-spacing();
       }
 
       &.alignright > img,
       &.alignright > figcaption {
         float: right;
-        margin-left: $wp-blocks-spacing;
+        margin-left: wp-editor-spacing();
       }
 
       &.alignright > figcaption {
         clear: right;
         margin-top: 0;
-        margin-bottom: $wp-blocks-spacing;
+        margin-bottom: wp-editor-spacing();
       }
     }
 
@@ -60,22 +60,22 @@
     &.aligncenter > figcaption {
       width: 100%;
       margin-top: 0;
-      margin-bottom: $wp-blocks-spacing;
+      margin-bottom: wp-editor-spacing();
       text-align: center;
     }
 
-    @media screen and (max-width: $wp-blocks-container-lg) {
-      margin: $wp-blocks-spacing 0 0 0;
+    @media screen and (max-width: wp-editor-container("large")) {
+      margin: wp-editor-spacing() 0 0 0;
 
       > img {
         width: 100%;
-        margin-bottom: ($wp-blocks-spacing / 2);
+        margin-bottom: (wp-editor-spacing() / 2);
       }
 
       > figcaption {
         width: 100%;
         text-align: center;
-        margin-bottom: ($wp-blocks-spacing / 2);
+        margin-bottom: (wp-editor-spacing() / 2);
       }
     }
   }

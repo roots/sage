@@ -20,6 +20,22 @@ add_action('wp_enqueue_scripts', function () {
 }, 100);
 
 /**
+ * Block Editor Scripts
+ */
+add_action('enqueue_block_editor_assets', function () {
+    /**
+     * Register block blacklist
+     */
+    wp_enqueue_script(
+        'sage/editor.js',
+        asset_path('scripts/editor.js'),
+        ['wp-editor', 'wp-dom-ready', 'wp-edit-post'],
+        null,
+        true,
+    );
+});
+
+/**
  * Theme setup
  */
 add_action('after_setup_theme', function () {

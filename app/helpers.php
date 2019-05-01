@@ -143,9 +143,49 @@ function display_sidebar()
  */
 function block_vars()
 {
-    return (object) [
-        'colors'     => collect(config('blocks.colors'))->toArray(),
-        'font_sizes' => collect(config('blocks.font_sizes'))->toArray(),
-        'whitelist'  => (object) collect(config('blocks.whitelist'))->toArray(),
+    $editorConfig = json_decode(file_get_contents(__DIR__ .'/../resources/assets/editor.json'));
+
+    $values = (object) [
+        'colors' => gather_colors($editorConfig),
+        'font_sizes' => gather_font_sizes($editorConfig),
     ];
+
+    return $values;
+}
+
+/**
+ * Gather Colors
+ * @param  object config
+ * @return array colors
+ */
+function gather_colors($editorConfig)
+{
+    $colors = [];
+    foreach ($editorConfig->colors as $name => $color) {
+        $colors[] = [
+            'name'  => $name,
+            'slug'  => $name,
+            'color' => $color,
+        ];
+    }
+    return $colors;
+}
+
+/**
+ * Gather font sizes
+ * @param  object config
+ * @return array sizes
+ */
+function gather_font_sizes($editorConfig)
+{
+    $sizes = [];
+    foreach ($editorConfig->fontSizes as $name => $size) {
+        $sizes[] = [
+            'name'      => $name,
+            'shortName' => $name,
+            'size'      => $size,
+            'slug'      => $name
+        ];
+    }
+    return $sizes;
 }

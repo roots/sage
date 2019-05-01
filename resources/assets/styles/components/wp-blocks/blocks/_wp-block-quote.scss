@@ -1,29 +1,29 @@
 .wp-block-pullquote {
-  margin-top: $wp-blocks-spacing;
-  margin-bottom: $wp-blocks-spacing;
+  margin-top: wp-editor-spacing();
+  margin-bottom: wp-editor-spacing();
 
   blockquote > p {
-    @extend .mt-0;
+    margin-top: 0;
   }
 
   &.alignwide,
   &.alignfull {
     display: block;
-    padding-left: $wp-blocks-spacing;
-    padding-right: $wp-blocks-spacing;
+    padding-left: wp-editor-spacing();
+    padding-right: wp-editor-spacing();
   }
 
   &.alignwide p,
   &.alignfull p {
-    font-size: wp-blocks-font-size("normal");
+    font-size: wp-editor-font-size("normal");
     text-align: center;
   }
 
   &.alignwide blockquote,
   &.alignfull blockquote {
-    margin-top: $wp-blocks-spacing;
-    margin-bottom: $wp-blocks-spacing;
-    font-size: wp-blocks-font-size("normal");
+    margin-top: wp-editor-spacing();
+    margin-bottom: wp-editor-spacing();
+    font-size: wp-editor-font-size("normal");
   }
 
   &.alignwide blockquote p,
@@ -52,7 +52,7 @@
 
   &.alignleft > blockquote {
     float: left;
-    margin-right: ($wp-blocks-spacing * 2);
+    margin-right: (wp-editor-spacing() * 2);
   }
 
   &.alignright {
@@ -61,35 +61,35 @@
 
   &.alignright blockquote {
     float: right;
-    margin-left: ($wp-blocks-spacing * 2);
+    margin-left: (wp-editor-spacing() * 2);
   }
 
   figure:not(.alignleft, .alignright) {
-    padding-left: $wp-blocks-spacing;
-    padding-right: $wp-blocks-spacing;
+    padding-left: wp-editor-spacing();
+    padding-right: wp-editor-spacing();
   }
 }
 
 .wp-block-quote {
-  margin-top: $wp-blocks-spacing;
-  margin-bottom: $wp-blocks-spacing;
-  font-size: wp-blocks-font-size("normal");
+  margin-top: wp-editor-spacing();
+  margin-bottom: wp-editor-spacing();
+  font-size: wp-editor-font-size("normal");
 
   &.is-large blockquote p {
-    font-size: wp-blocks-font-size("large");
+    font-size: wp-editor-font-size("large");
   }
 
   &.is-large blockquote cite {
-    font-size: wp-blocks-font-size("normal");
+    font-size: wp-editor-font-size("normal");
   }
 
   &.alignwide blockquote p,
   &.alignfull blockquote p {
-    font-size: wp-blocks-font-size("large");
+    font-size: wp-editor-font-size("large");
     text-align: center;
   }
 
   &.alignwide blockquote cite {
-    font-size: wp-blocks-font-size("normal");
+    font-size: wp-editor-font-size("normal");
   }
 }
