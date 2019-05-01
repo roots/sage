@@ -12,7 +12,7 @@ use function Roots\view;
  */
 add_action('wp_enqueue_scripts', function () {
     wp_enqueue_script('sage/vendor', asset('scripts/vendor.js')->uri(), ['jquery'], null, true);
-    wp_enqueue_script('sage/app', asset('scripts/vendor.js')->uri(), ['sage/vendor', 'jquery'], null, true);
+    wp_enqueue_script('sage/app', asset('scripts/app.js')->uri(), ['sage/vendor', 'jquery'], null, true);
 
     wp_add_inline_script('sage/vendor', asset('scripts/manifest.js')->contents(), 'before');
 
