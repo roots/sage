@@ -38,8 +38,7 @@
     "roots/acorn": "dev-master"
   },
   "require-dev": {
-    "roots/sage-installer": "^1.6",
-    "squizlabs/php_codesniffer": "^3.3"
+    "squizlabs/php_codesniffer": "^3.4"
   },
   "config": {
     "optimize-autoloader": true,
@@ -51,9 +50,6 @@
   "scripts": {
     "test": [
       "phpcs"
-    ],
-    "post-create-project-cmd": [
-      "Roots\\Sage\\Installer\\ComposerScript::postCreateProject"
     ]
   }
 }
