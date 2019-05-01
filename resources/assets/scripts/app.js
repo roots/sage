@@ -1,14 +1,14 @@
-// External Dependencies
+// External dependencies
 import 'jquery';
 import 'bootstrap';
 
-// Local Dependencies
+// Local dependencies
 import Router from './util/Router';
 import common from './routes/common';
 import home from './routes/home';
 import aboutUs from './routes/about';
 
-/** Populate Router instance with DOM routes */
+// Populate Router instance with DOM routes
 const routes = new Router({
   // All pages
   common,

@@ -8,8 +8,8 @@
     "clean": "npm run -s clean:dist",
     "clean:dist": "rimraf dist",
     "lint": "npm run -s lint:scripts && npm run -s lint:styles",
-    "lint:scripts": "eslint resources/assets/styles",
-    "lint:styles": "stylelint 'resources/assets/**/*.{vue,css,sass,scss,sss,less}'",
+    "lint:scripts": "eslint resources/assets/scripts",
+    "lint:styles": "stylelint \"resources/assets/**/*.{vue,css,sass,scss,sss,less}\"",
     "test": "npm run -s lint"
   },
   "devDependencies": {

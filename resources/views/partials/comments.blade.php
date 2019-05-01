@@ -13,11 +13,15 @@
         <nav>
           <ul class="pager">
             @if (get_previous_comments_link())
-              <li class="previous">{!! get_previous_comments_link(__('&larr; Older comments', 'sage')) !!}</li>
+              <li class="previous">
+                {!! get_previous_comments_link(__('&larr; Older comments', 'sage')) !!}
+              </li>
             @endif
 
             @if (get_next_comments_link())
-              <li class="next">{!! get_next_comments_link(__('Newer comments &rarr;', 'sage')) !!}</li>
+              <li class="next">
+                {!! get_next_comments_link(__('Newer comments &rarr;', 'sage')) !!}
+              </li>
             @endif
           </ul>
         </nav>

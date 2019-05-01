@@ -58,6 +58,3 @@ if (!mix.inProduction()) {
 if (mix.inProduction()) {
   mix.version();
 }
-
-// Hash and version files in production.
-mix.version();
