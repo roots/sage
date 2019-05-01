@@ -33,21 +33,21 @@
       "App\\": "app/"
     }
   },
-  "repositories": [
-    {
-      "type": "git",
-      "url": "https://github.com/qwp6t/acorn"
-    }
-  ],
-  "minimum-stability": "dev",
   "require": {
-    "php": ">=7.1",
+    "php": "^7.1.3",
     "roots/acorn": "dev-master"
   },
   "require-dev": {
-    "squizlabs/php_codesniffer": "^3.3",
-    "roots/sage-installer": "~1.3"
+    "roots/sage-installer": "^1.6",
+    "squizlabs/php_codesniffer": "^3.3"
   },
+  "config": {
+    "optimize-autoloader": true,
+    "preferred-install": "dist",
+    "sort-packages": true
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
   "scripts": {
     "test": [
       "phpcs"

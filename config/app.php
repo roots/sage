@@ -40,8 +40,8 @@ return [
     | or doing any other checks to ensure the service is functional.
     |
     */
-    
-    'preflight' => false,
+
+    'preflight' => true,
 
     /*
     |--------------------------------------------------------------------------
