@@ -2,15 +2,16 @@
   "private": true,
   "scripts": {
     "build": "cross-env NODE_ENV=development webpack --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "build:production": "npm run -s clean && cross-env NODE_ENV=production webpack --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "start": "cross-env NODE_ENV=development webpack --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "build:production": "run-s clean build:production:*",
+    "build:production:mix": "cross-env NODE_ENV=production webpack --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "start": "run-s \"build --watch\"",
     "hot": "cross-env NODE_ENV=development webpack-dev-server --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "clean": "npm run -s clean:dist",
+    "clean": "run-p clean:*",
     "clean:dist": "rimraf dist",
     "lint": "run-s -c lint:*",
     "lint:scripts": "eslint resources/assets/scripts",
     "lint:styles": "stylelint \"resources/assets/**/*.{vue,css,sass,scss,sss,less}\"",
-    "test": "npm run -s lint"
+    "test": "run-s -c lint"
   },
   "devDependencies": {
     "browser-sync": "^2.26.5",
