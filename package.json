@@ -1,9 +1,9 @@
 {
   "private": true,
   "scripts": {
-    "build": "cross-env NODE_ENV=development webpack --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "build:production": "run-s clean build:production:*",
-    "build:production:mix": "cross-env NODE_ENV=production webpack --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "build": "cross-env NODE_ENV=development run-s build:mix",
+    "build:production": "cross-env NODE_ENV=production run-s clean build:mix",
+    "build:mix": "webpack --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
     "start": "run-s \"build --watch\"",
     "hot": "cross-env NODE_ENV=development webpack-dev-server --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
     "clean": "run-p clean:*",
