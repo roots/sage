@@ -161,7 +161,7 @@ function block_vars()
 function gather_colors($editorConfig)
 {
     $colors = [];
-    foreach ($editorConfig->colors as $name => $color) {
+    foreach ($editorConfig->styles->colors as $name => $color) {
         $colors[] = [
             'name'  => $name,
             'slug'  => $name,
@@ -179,7 +179,7 @@ function gather_colors($editorConfig)
 function gather_font_sizes($editorConfig)
 {
     $sizes = [];
-    foreach ($editorConfig->fontSizes as $name => $size) {
+    foreach ($editorConfig->styles->fontSizes as $name => $size) {
         $sizes[] = [
             'name'      => $name,
             'shortName' => $name,

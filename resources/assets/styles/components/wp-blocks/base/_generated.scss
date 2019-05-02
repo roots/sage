@@ -1,35 +1,36 @@
 $wp-editor: (
-  bootstrap-enabled: true,
-  containers: (
-    medium: 600px,
-    large: 768px,
-    extra-large: 900px
+  "bootstrap-enabled": true,
+  "fontSizes": (
+    "small": 12,
+    "normal": 16,
+    "large": 20,
+    "larger": 36
   ),
-  breakpoints: (
-    medium: 576px,
-    large: 676px,
-    extra-large: 992px
+  "colors": (
+    "primary": #525ddc,
+    "secondary": #6c757d,
+    "light": #f8f9fa,
+    "dark": #343a40,
+    "theme-white": rgb(255, 255, 255),
+    "theme-black": rgb(0, 0, 0)
   ),
-  wide-align: (
-    width: 80%,
-    max-width: 1400px
+  "border-radii": (
+    "slight": 15px,
+    "round": 50%
   ),
-  spacing: 30px,
-  fontSizes: (
-    small: 12,
-    normal: 16,
-    large: 20,
-    larger: 36
+  "containers": (
+    "medium": 600px,
+    "large": 768px,
+    "extra-large": 900px
   ),
-  colors: (
-    primary: #525ddc,
-    secondary: #6c757d,
-    light: #f8f9fa,
-    dark: #343a40,
-    theme-white: #fff,
-    theme-black: #000
+  "breakpoints": (
+    "medium": 576px,
+    "large": 676px,
+    "extra-large": 992px
   ),
-  border-radii: (
-    slight: 15px
-  )
+  "wide-align": (
+    "width": 80%,
+    "max-width": 1400px
+  ),
+  "spacing": 30px
 );

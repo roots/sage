@@ -1,42 +1,68 @@
 {
-  "bootstrap-enabled": "true",
-
-  "containers": {
-    "medium": "600px",
-    "large": "768px",
-    "extra-large": "900px"
+  "styles": {
+    "bootstrap-enabled": "true",
+    "fontSizes": {
+      "small": "12",
+      "normal": "16",
+      "large": "20",
+      "larger": "36"
+    },
+    "colors": {
+      "primary": "#525ddc",
+      "secondary": "#6c757d",
+      "light": "#f8f9fa",
+      "dark": "#343a40",
+      "theme-white": "rgb(255, 255, 255)",
+      "theme-black": "rgb(0, 0, 0)"
+    },
+    "border-radii": {
+      "slight": "15px",
+      "round": "50%"
+    },
+    "containers": {
+      "medium": "600px",
+      "large": "768px",
+      "extra-large": "900px"
+    },
+    "breakpoints": {
+      "medium": "576px",
+      "large": "676px",
+      "extra-large": "992px"
+    },
+    "wide-align": {
+      "width": "80%",
+      "max-width": "1400px"
+    },
+    "spacing": "30px"
   },
-
-  "breakpoints": {
-    "medium": "576px",
-    "large": "676px",
-    "extra-large": "992px"
-  },
-
-  "wide-align": {
-    "width": "80%",
-    "max-width": "1400px"
-  },
-
-  "spacing": "30px",
-
-  "fontSizes": {
-    "small": "12",
-    "normal": "16",
-    "large": "20",
-    "larger": "36"
-  },
-
-  "colors": {
-    "primary": "#525ddc",
-    "secondary": "#6c757d",
-    "light": "#f8f9fa",
-    "dark": "#343a40",
-    "theme-white": "#fff",
-    "theme-black": "#000"
-  },
-
-  "border-radii": {
-    "slight": "15px"
-  }
+  "blacklist": [
+    "core/archives",
+    "core/categories",
+    "core/latest-comments",
+    "core/latest-posts",
+    "core/verse",
+    "core-embed/animoto",
+    "core-embed/cloudup",
+    "core-embed/collegehumor",
+    "core-embed/crowdsignal",
+    "core-embed/dailymotion",
+    "core-embed/funnyordie",
+    "core-embed/hulu",
+    "core-embed/issuu",
+    "core-embed/kickstarter",
+    "core-embed/meetup-com",
+    "core-embed/mixcloud",
+    "core-embed/photobucket",
+    "core-embed/polldaddy",
+    "core-embed/reverbnation",
+    "core-embed/screencast",
+    "core-embed/scribd",
+    "core-embed/slideshare",
+    "core-embed/smugmug",
+    "core-embed/speaker-deck",
+    "core-embed/ted",
+    "core-embed/tumblr",
+    "core-embed/videopress",
+    "core-embed/wordpress-tv"
+  ]
 }

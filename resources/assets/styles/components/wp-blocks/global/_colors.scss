@@ -1,19 +1,19 @@
 @each $name, $color in wp-editor-colors() {
   .has-#{$name}-color {
-    color: $color;
+    color: wp-editor-color($name);
   }
 
   .has-#{$name}-background-color::before {
-    background-color: $color;
+    background-color: wp-editor-color($name);
   }
 
   .has-#{$name}-background-color.has-background-dim::before {
-    background-color: rgba($color, 0.5) !important;
+    background-color: rgba(wp-editor-color($name), 0.5) !important;
   }
 
   @for $i from 1 through 10 {
     .has-#{$name}-background-color.has-background-dim-#{ $i * 10 }::before {
-      background-color: rgba($color, $i * 0.1) !important;
+      background-color: rgba(wp-editor-color($name), $i * 0.1) !important;
     }
   }
 }
