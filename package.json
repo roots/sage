@@ -7,7 +7,7 @@
     "hot": "cross-env NODE_ENV=development webpack-dev-server --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
     "clean": "npm run -s clean:dist",
     "clean:dist": "rimraf dist",
-    "lint": "run-s lint:*",
+    "lint": "run-s -c lint:*",
     "lint:scripts": "eslint resources/assets/scripts",
     "lint:styles": "stylelint \"resources/assets/**/*.{vue,css,sass,scss,sss,less}\"",
     "test": "npm run -s lint"
