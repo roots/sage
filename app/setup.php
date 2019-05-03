@@ -22,7 +22,7 @@ add_action('wp_enqueue_scripts', function () {
     $styles = ['styles/app.css'];
 
     foreach ($styles as $stylesheet) {
-        if ($asset = asset($stylesheet)->exists()) {
+        if (asset($stylesheet)->exists()) {
             wp_enqueue_style('sage/'.basename($stylesheet, '.css'), asset($stylesheet)->uri(), false, null);
         }
     }
