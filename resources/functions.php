@@ -6,6 +6,7 @@
 
 /**
  * Helper function for prettying up errors
+ *
  * @param string $message
  * @param string $subtitle
  * @param string $title

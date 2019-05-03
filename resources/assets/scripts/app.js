@@ -1,22 +1,28 @@
-// External dependencies
+/**
+ * External Dependencies
+ */
 import 'jquery';
 import 'bootstrap';
 
-// Local dependencies
+/**
+ * Local Dependencies
+ */
 import Router from './util/Router';
 import common from './routes/common';
-import home from './routes/home';
 import aboutUs from './routes/about';
 
-// Populate Router instance with DOM routes
+/**
+ * Populate the Router instance with DOM routes.
+ *
+ * common – Fired on all pages.
+ * aboutUs – Fired on the About Us page, note the change from about-us to aboutUs (camelCase).
+ */
 const routes = new Router({
-  // All pages
   common,
-  // Home page
-  home,
-  // About Us page, note the change from about-us to aboutUs.
   aboutUs,
 });
 
-// Load Events
+/**
+ * Load Events
+ */
 jQuery(document).ready(() => routes.loadEvents());

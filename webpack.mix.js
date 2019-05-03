@@ -31,9 +31,8 @@ mix.sass('resources/assets/styles/app.scss', 'styles');
 
 // Javascript
 mix.js('resources/assets/scripts/app.js', 'scripts')
+   .js('resources/assets/scripts/customizer.js', 'scripts')
    .extract();
-
-mix.js('resources/assets/scripts/customizer.js', 'scripts');
 
 // Assets
 mix.copyDirectory('resources/assets/images', 'dist/images')

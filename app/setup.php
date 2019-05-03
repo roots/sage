@@ -2,7 +2,6 @@
 
 namespace App;
 
-use function Roots\add_actions;
 use function Roots\asset;
 use function Roots\config;
 use function Roots\view;
@@ -102,15 +101,4 @@ add_action('widgets_init', function () {
         'name' => __('Footer', 'sage'),
         'id' => 'sidebar-footer'
     ] + $config);
-});
-
-/**
- * Remove Blade cache when theme is activated, changed, or removed.
- */
-add_actions(['after_switch_theme', 'switch_theme'], function () {
-    return collect(glob(config('view.compiled') . '/*.php'))
-        ->filter()
-        ->map(function ($file) {
-            unlink($file);
-        });
 });
