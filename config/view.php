@@ -14,7 +14,7 @@ return [
 
     'paths' => [
         get_theme_file_path('/resources/views'),
-        get_parent_theme_file_path('/resources/views')
+        get_parent_theme_file_path('/resources/views'),
     ],
 
     /*
@@ -28,7 +28,7 @@ return [
     |
     */
 
-    'compiled' => wp_upload_dir()['basedir'] . '/acorn/cache',
+    'compiled' => get_theme_file_path('/storage/framework/views'),
 
     /*
     |--------------------------------------------------------------------------
@@ -90,6 +90,6 @@ return [
     */
 
     'directives' => [
-        'asset'  => Roots\Acorn\Assets\AssetDirective::class
+        'asset'  => Roots\Acorn\Assets\AssetDirective::class,
     ],
 ];

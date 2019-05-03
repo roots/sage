@@ -2,7 +2,6 @@
 
 namespace App;
 
-use function Roots\add_actions;
 use function Roots\asset;
 use function Roots\config;
 use function Roots\view;
@@ -23,7 +22,7 @@ add_action('wp_enqueue_scripts', function () {
     $styles = ['styles/app.css'];
 
     foreach ($styles as $stylesheet) {
-        if ($asset = asset($stylesheet)->exists()) {
+        if (asset($stylesheet)->exists()) {
             wp_enqueue_style('sage/'.basename($stylesheet, '.css'), asset($stylesheet)->uri(), false, null);
         }
     }
@@ -102,15 +101,4 @@ add_action('widgets_init', function () {
         'name' => __('Footer', 'sage'),
         'id' => 'sidebar-footer'
     ] + $config);
-});
-
-/**
- * Remove Blade cache when theme is activated, changed, or removed.
- */
-add_actions(['after_switch_theme', 'switch_theme'], function () {
-    return collect(glob(config('view.compiled') . '/*.php'))
-        ->filter()
-        ->map(function ($file) {
-            unlink($file);
-        });
 });

@@ -11,7 +11,7 @@ const mix = require('laravel-mix');
  |
  */
 
-// Settings
+// Public Path
 mix.setPublicPath('./dist');
 
 // Browsersync
@@ -29,11 +29,10 @@ mix.browserSync({
 // Styles
 mix.sass('resources/assets/styles/app.scss', 'styles');
 
-// Javascript
+// JavaScript
 mix.js('resources/assets/scripts/app.js', 'scripts')
+   .js('resources/assets/scripts/customizer.js', 'scripts')
    .extract();
-
-mix.js('resources/assets/scripts/customizer.js', 'scripts');
 
 // Assets
 mix.copyDirectory('resources/assets/images', 'dist/images')
