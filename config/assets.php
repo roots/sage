@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'uri' => get_theme_file_uri('/dist'),
+    'uri' => get_theme_file_uri('/storage/theme/assets'),
 
     /*
     |--------------------------------------------------------------------------
@@ -25,7 +25,7 @@ return [
     |
     */
 
-    'path' => get_theme_file_path('/dist'),
+    'path' => get_theme_file_path('/storage/theme/assets'),
 
     /*
     |--------------------------------------------------------------------------
@@ -39,5 +39,5 @@ return [
     |
     */
 
-    'manifest' => get_theme_file_path('/dist/mix-manifest.json'),
+    'manifest' => get_theme_file_path('/storage/theme/assets/mix-manifest.json'),
 ];

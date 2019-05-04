@@ -8,7 +8,7 @@
     "mix": "webpack --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
     "mix:hot": "webpack-dev-server --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
     "clean": "run-p clean:*",
-    "clean:dist": "rimraf dist",
+    "clean:assets": "rimraf storage/theme/assets",
     "clean:views": "rimraf storage/framwork/views/*.php",
     "lint": "run-s -c lint:*",
     "lint:scripts": "eslint resources/assets/scripts",

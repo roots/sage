@@ -18,7 +18,7 @@ const src = path => `resources/assets/${path}`;
  */
 
 // Public Path
-mix.setPublicPath('./dist');
+mix.setPublicPath('./storage/theme/assets');
 
 // Browsersync
 mix.browserSync({
@@ -27,8 +27,8 @@ mix.browserSync({
     'app/**/*.php',
     'config/**/*.php',
     'resources/views/**/*.php',
-    'dist/styles/**/*.css',
-    'dist/scripts/**/*.js'
+    public('styles/**/*.css'),
+    public('scripts/**/*.js'),
   ],
 });
 
