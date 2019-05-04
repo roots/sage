@@ -9,7 +9,7 @@
     "mix:hot": "webpack-dev-server --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
     "clean": "run-p clean:*",
     "clean:dist": "rimraf dist",
-    "clean:views": "rimraf storage/framwork/views/*.php",
+    "clean:views": "rimraf storage/framework/views/*.php",
     "lint": "run-s -c lint:*",
     "lint:scripts": "eslint resources/assets/scripts",
     "lint:styles": "stylelint \"resources/assets/**/*.{vue,css,sass,scss,sss,less}\"",
