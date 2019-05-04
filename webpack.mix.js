@@ -1,5 +1,11 @@
 const mix = require('laravel-mix');
 
+// Public path helper
+const public = path => `${mix.config.publicPath}/${path}`;
+
+// Source path helper
+const src = path => `resources/assets/${path}`;
+
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -27,16 +33,16 @@ mix.browserSync({
 });
 
 // Styles
-mix.sass('resources/assets/styles/app.scss', 'styles');
+mix.sass(src('styles/app.scss'), 'styles');
 
 // JavaScript
-mix.js('resources/assets/scripts/app.js', 'scripts')
-   .js('resources/assets/scripts/customizer.js', 'scripts')
+mix.js(src('scripts/app.js'), 'scripts')
+   .js(src('scripts/customizer.js'), 'scripts')
    .extract();
 
 // Assets
-mix.copyDirectory('resources/assets/images', 'dist/images')
-   .copyDirectory('resources/assets/fonts', 'dist/fonts');
+mix.copyDirectory(src('images'), public('images'))
+   .copyDirectory(src('fonts'), public('fonts'));
 
 // Autoload
 mix.autoload({
