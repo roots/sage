@@ -9,7 +9,7 @@
   padding-top: (wp-editor-spacing() * 3);
   padding-bottom: (wp-editor-spacing() * 3);
   background-size: cover;
-  background-color: rgba(#000, 0.6);
+  background-color: rgba(wp-editor-color("black"), 0.6);
 
   h2,
   .wp-block-cover-text {
@@ -20,13 +20,19 @@
     padding-bottom: (wp-editor-spacing() * 3);
     font-size: wp-editor-font-size("larger");
     text-align: center;
-    color: wp-editor-color("theme-white");
+    color: wp-editor-color("white");
     z-index: 20;
   }
 
   h2 a,
   .wp-block-cover-text a {
-    color: wp-editor-color("theme-white");
+    color: wp-editor-color("white");
+  }
+
+  .wp-block-cover__inner-container {
+    width: wp-editor-contain();
+    z-index: 20;
+    color: wp-editor-color("white");
   }
 
   &.has-parallax {
