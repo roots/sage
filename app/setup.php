@@ -56,14 +56,6 @@ add_action('after_setup_theme', function () {
     add_theme_support('align-wide');
 
     /**
-     * Add editor styles
-     * @link https://wordpress.org/gutenberg/handbook/designers-developers/developers/themes/theme-support/#editor-styles
-     */
-    add_theme_support('editor-styles');
-    // add_theme_support('dark-editor-styles');
-    // add_editor_style('style-editor.css');
-
-    /**
      * Enable responsive embeds
      * @link https://wordpress.org/gutenberg/handbook/designers-developers/developers/themes/theme-support/#responsive-embedded-content
      */
@@ -86,6 +78,13 @@ add_action('after_setup_theme', function () {
      * Add font size support
      */
     add_theme_support('editor-font-sizes', (block_vars())->font_sizes);
+
+    /**
+     * Add editor styles
+     * @link https://wordpress.org/gutenberg/handbook/designers-developers/developers/themes/theme-support/#editor-styles
+     */
+    add_theme_support('editor-styles');
+    add_editor_style(asset_path('styles/main.css'));
 
     /**
      * Enable plugins to manage the document title
@@ -118,12 +117,6 @@ add_action('after_setup_theme', function () {
      * @link https://developer.wordpress.org/themes/advanced-topics/customizer-api/#theme-support-in-sidebars
      */
     add_theme_support('customize-selective-refresh-widgets');
-
-    /**
-     * Use main stylesheet for visual editor
-     * @see resources/assets/styles/layouts/_tinymce.scss
-     */
-    add_editor_style(asset_path('styles/main.css'));
 }, 20);
 
 /**

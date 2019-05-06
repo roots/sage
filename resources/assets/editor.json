@@ -35,7 +35,7 @@
     },
     "spacing": "30px"
   },
-  "blacklist": [
+  "unregisterBlocks": [
     "core/archives",
     "core/categories",
     "core/latest-comments",
@@ -64,5 +64,14 @@
     "core-embed/tumblr",
     "core-embed/videopress",
     "core-embed/wordpress-tv"
-  ]
+  ],
+  "unregisterBlockStyles": {
+    "core/separator": "dots"
+  },
+  "registerBlockStyles": {
+    "core/separator": {
+      "name": "dots",
+      "label": "Dots"
+    }
+  }
 }
