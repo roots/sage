@@ -1,7 +1,7 @@
 const mix = require('laravel-mix');
 
 // Public path helper
-const public = path => `${mix.config.publicPath}/${path}`;
+const publicPath = path => `${mix.config.publicPath}/${path}`;
 
 // Source path helper
 const src = path => `resources/assets/${path}`;
@@ -24,25 +24,22 @@ mix.setPublicPath('./dist');
 mix.browserSync({
   proxy: 'https://example.test',
   files: [
-    'app/**/*.php',
-    'config/**/*.php',
-    'resources/views/**/*.php',
-    'dist/styles/**/*.css',
-    'dist/scripts/**/*.js'
+    '(app|config|resources)/**/*.php',
+    publicPath`(styles|scripts)/**/*.(css|js)`,
   ],
 });
 
 // Styles
-mix.sass(src('styles/app.scss'), 'styles');
+mix.sass(src`styles/app.scss`, 'styles');
 
 // JavaScript
-mix.js(src('scripts/app.js'), 'scripts')
-   .js(src('scripts/customizer.js'), 'scripts')
+mix.js(src`scripts/app.js`, 'scripts')
+   .js(src`scripts/customizer.js`, 'scripts')
    .extract();
 
 // Assets
-mix.copyDirectory(src('images'), public('images'))
-   .copyDirectory(src('fonts'), public('fonts'));
+mix.copyDirectory(src`images`, publicPath`images`)
+   .copyDirectory(src`fonts`, publicPath`fonts`);
 
 // Autoload
 mix.autoload({
