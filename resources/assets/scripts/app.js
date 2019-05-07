@@ -12,6 +12,14 @@ import common from './routes/common';
 import aboutUs from './routes/about';
 
 /**
+ * Helper function for document readiness
+ */
+function ready(fn) {
+  if (document.readyState !== 'loading') return fn();
+  document.addEventListener('DOMContentLoaded', fn);
+}
+
+/**
  * Populate the Router instance with DOM routes.
  *
  * common – Fired on all pages.
@@ -25,4 +33,4 @@ const routes = new Router({
 /**
  * Load Events
  */
-document.addEventListener('DOMContentLoaded', () => routes.loadEvents());
+ready(() => routes.loadEvents());
