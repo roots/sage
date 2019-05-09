@@ -10,14 +10,7 @@ import 'bootstrap';
 import Router from './util/Router';
 import common from './routes/common';
 import aboutUs from './routes/about';
-
-/**
- * Helper function for document readiness
- */
-function ready(fn) {
-  if (document.readyState !== 'loading') return fn();
-  document.addEventListener('DOMContentLoaded', fn);
-}
+import { ready } from './utils';
 
 /**
  * Populate the Router instance with DOM routes.
