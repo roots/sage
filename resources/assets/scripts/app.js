@@ -10,6 +10,7 @@ import 'bootstrap';
 import Router from './util/Router';
 import common from './routes/common';
 import aboutUs from './routes/about';
+import { ready } from './utils';
 
 /**
  * Populate the Router instance with DOM routes.
@@ -25,4 +26,4 @@ const routes = new Router({
 /**
  * Load Events
  */
-jQuery(document).ready(() => routes.loadEvents());
+ready(() => routes.loadEvents());
