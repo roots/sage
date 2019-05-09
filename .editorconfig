@@ -16,3 +16,6 @@ indent_size = 4
 
 [*.blade.php]
 indent_size = 2
+
+[resources/views/**.php]
+indent_size = 2
