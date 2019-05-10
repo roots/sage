@@ -3,6 +3,7 @@
   @include('partials.head')
 
   <body @php(body_class())>
+    @php(wp_body_open())
     @php(do_action('get_header'))
     @include('partials.header')
 
