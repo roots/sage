@@ -9,10 +9,9 @@ Sage is a WordPress starter theme with a modern development workflow.
 
 * Sass for stylesheets
 * Modern JavaScript
-* [Webpack](https://webpack.github.io/) for compiling assets, optimizing images, and concatenating and minifying files
+* [Laravel Mix](https://github.com/JeffreyWay/laravel-mix) for compiling assets and concatenating and minifying files
 * [Browsersync](http://www.browsersync.io/) for synchronized browser testing
-* [Blade](https://laravel.com/docs/5.6/blade) as a templating engine
-* [Controller](https://github.com/soberwp/controller) for passing data to Blade templates
+* [Blade](https://laravel.com/docs/5.8/blade) as a templating engine
 * CSS framework (optional): [Bootstrap 4](https://getbootstrap.com/), [Bulma](https://bulma.io/), [Foundation](https://foundation.zurb.com/), [Tachyons](http://tachyons.io/), [Tailwind](https://tailwindcss.com/)
 
 See a working example at [roots-example-project.com](https://roots-example-project.com/).
@@ -31,7 +30,7 @@ Make sure all dependencies have been installed before moving on:
 
 Install Sage using Composer from your WordPress themes directory (replace `your-theme-name` below with the name of your theme):
 
-```shell
+```sh
 # @ app/themes/ or wp-content/themes/
 $ composer create-project roots/sage your-theme-name
 ```
@@ -46,14 +45,19 @@ During theme installation you will have options to update `style.css` theme head
 
 ## Theme structure
 
-```shell
+```sh
 themes/your-theme-name/   # → Root of your Sage based theme
 ├── app/                  # → Theme PHP
-│   ├── Controllers/      # → Controller files
+│   ├── Composers/        # → Composer files
 │   ├── admin.php         # → Theme customizer setup
 │   ├── filters.php       # → Theme filters
 │   ├── helpers.php       # → Helper functions
 │   └── setup.php         # → Theme setup
+├── config/               # → Config files
+│   ├── app.php           # → Application configuration
+│   ├── assets.php        # → Asset configuration
+│   ├── filesystems.php   # → Filesystems configuration
+│   └── view.php          # → View configuration
 ├── composer.json         # → Autoloading for `app/` files
 ├── composer.lock         # → Composer lock file (never edit)
 ├── dist/                 # → Built theme assets (never edit)
@@ -74,6 +78,7 @@ themes/your-theme-name/   # → Root of your Sage based theme
 │   └── views/            # → Theme templates
 │       ├── layouts/      # → Base templates
 │       └── partials/     # → Partial templates
+├── storage/              # → Storage location for cache (never edit)
 └── vendor/               # → Composer packages (never edit)
 ```
 
@@ -84,9 +89,7 @@ Edit `app/setup.php` to enable or disable theme features, setup navigation menus
 ## Theme development
 
 * Run `yarn` from the theme directory to install dependencies
-* Update `resources/assets/config.json` settings:
-  * `devUrl` should reflect your local development hostname
-  * `publicPath` should reflect your WordPress folder structure (`/wp-content/themes/sage` for non-[Bedrock](https://roots.io/bedrock/) installs)
+* Update `webpack.mix.js` with your local dev URL
 
 ### Build commands
 
@@ -97,7 +100,6 @@ Edit `app/setup.php` to enable or disable theme features, setup navigation menus
 ## Documentation
 
 * [Sage documentation](https://roots.io/sage/docs/)
-* [Controller documentation](https://github.com/soberwp/controller#usage)
 
 ## Contributing
 

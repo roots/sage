@@ -12,6 +12,7 @@ class Router {
 
   /**
    * Create a new Router
+   *
    * @param {Object} routes
    */
   constructor(routes) {
@@ -20,19 +21,12 @@ class Router {
 
   /**
    * Fire Router events
+   *
    * @param {string} route DOM-based route derived from body classes (`<body class="...">`)
    * @param {string} [event] Events on the route. By default, `init` and `finalize` events are called.
    * @param {string} [arg] Any custom argument to be passed to the event.
    */
   fire(route, event = 'init', arg) {
-    document.dispatchEvent(new CustomEvent('routed', {
-      bubbles: true,
-      detail: {
-        route,
-        fn: event,
-      },
-    }));
-    
     const fire = route !== '' && this.routes[route] && typeof this.routes[route][event] === 'function';
     if (fire) {
       this.routes[route][event](arg);
@@ -68,4 +62,4 @@ class Router {
   }
 }
 
-export default Router;
+export default Router

@@ -9,7 +9,6 @@ php:
 
 env:
   - TRAVIS_NODE_VERSION="8"
-  - TRAVIS_NODE_VERSION="10"
 
 matrix:
   fast_finish: true
@@ -36,6 +35,6 @@ install:
 script:
   - yarn run test
   - yarn run build
-  - yarn run rmdist
+  - yarn run clean
   - yarn run "build:production"
   - composer test

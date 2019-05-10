@@ -1,83 +1,38 @@
 {
-  "name": "sage",
-  "version": "9.0.9",
-  "author": "Roots <team@roots.io>",
-  "homepage": "https://roots.io/sage/",
   "private": true,
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/roots/sage.git"
-  },
-  "bugs": {
-    "url": "https://github.com/roots/sage/issues"
-  },
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "http://opensource.org/licenses/MIT"
-    }
-  ],
-  "browserslist": [
-    "last 2 versions",
-    "android 4",
-    "opera 12"
-  ],
   "scripts": {
-    "build": "webpack --progress --config resources/assets/build/webpack.config.js",
-    "build:production": "webpack --env.production --progress --config resources/assets/build/webpack.config.js",
-    "build:profile": "webpack --progress --profile --json --config resources/assets/build/webpack.config.js",
-    "start": "webpack --hide-modules --watch --config resources/assets/build/webpack.config.js",
-    "rmdist": "rimraf dist",
-    "lint": "npm run -s lint:scripts && npm run -s lint:styles",
-    "lint:scripts": "eslint resources/assets/scripts resources/assets/build",
-    "lint:styles": "stylelint \"resources/assets/styles/**/*.{css,sass,scss,sss,less}\"",
-    "test": "npm run -s lint"
-  },
-  "engines": {
-    "node": ">= 8.0.0"
+    "build": "cross-env NODE_ENV=development run-s mix",
+    "build:production": "cross-env NODE_ENV=production run-s clean mix",
+    "start": "cross-env NODE_ENV=development run-s \"mix --watch\"",
+    "hot": "cross-env NODE_ENV=development run-s build mix:hot",
+    "mix": "webpack --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "mix:hot": "webpack-dev-server --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "clean": "run-p clean:*",
+    "clean:dist": "rimraf dist",
+    "clean:views": "rimraf storage/framework/views/*.php",
+    "lint": "run-s -c lint:*",
+    "lint:scripts": "eslint resources/assets/scripts",
+    "lint:styles": "stylelint \"resources/assets/**/*.{vue,css,sass,scss,sss,less}\"",
+    "test": "run-s -c lint"
   },
   "devDependencies": {
-    "autoprefixer": "~8.2.0",
-    "browser-sync": "~2.24.7",
-    "browsersync-webpack-plugin": "^0.6.0",
-    "bs-html-injector": "~3.0",
-    "buble-loader": "^0.4.1",
-    "cache-loader": "~1.2.5",
-    "clean-webpack-plugin": "^0.1.18",
-    "copy-globs-webpack-plugin": "^0.2.0",
-    "css-loader": "^0.28.9",
-    "cssnano": "~4.0.5",
-    "eslint": "~4.19.1",
-    "eslint-loader": "~1.9",
-    "eslint-plugin-import": "~2.14.0",
-    "extract-text-webpack-plugin": "~3.0.2",
-    "file-loader": "^1.1.6",
-    "friendly-errors-webpack-plugin": "^1.6.1",
-    "imagemin-mozjpeg": "~7.0.0",
-    "imagemin-webpack-plugin": "~2.2.0",
-    "import-glob": "~1.5",
-    "node-sass": "~4.9.4",
-    "postcss-loader": "~2.1.0",
-    "postcss-safe-parser": "~3.0",
-    "resolve-url-loader": "~2.3.1",
-    "rimraf": "~2.6",
-    "sass-loader": "~6.0",
-    "style-loader": "^0.22.1",
-    "stylelint": "^8.4.0",
-    "stylelint-config-standard": "~18.2.0",
-    "stylelint-webpack-plugin": "^0.10.5",
-    "uglifyjs-webpack-plugin": "^1.3.0",
-    "url-loader": "^0.6.2",
-    "webpack": "~3.10.0",
-    "webpack-assets-manifest": "^1.0.0",
-    "webpack-dev-middleware": "~2.0.4",
-    "webpack-hot-middleware": "~2.22.3",
-    "webpack-merge": "~4.1.4",
-    "yargs": "~11.0.0"
+    "browser-sync": "^2.26.5",
+    "browser-sync-webpack-plugin": "2.0.1",
+    "cross-env": "^5.2.0",
+    "eslint": "^5.11",
+    "eslint-plugin-import": "^2.14",
+    "laravel-mix": "^4.0.15",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^2.6",
+    "sass": "^1.19.0",
+    "sass-loader": "7.*",
+    "stylelint": "^9.9",
+    "stylelint-config-standard": "^18.2",
+    "vue-template-compiler": "^2.6.10"
   },
   "dependencies": {
-    "bootstrap": "v4.3.1",
-    "jquery": "^3.3.1",
-    "popper.js": "^1.14.7"
+    "bootstrap": "^4.3.1",
+    "jquery": "^3.4.0",
+    "popper.js": "^1.15.0"
   }
 }
