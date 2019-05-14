@@ -5,19 +5,19 @@ jobs:
       - image: rootsdev/ubuntu18.04-php7.3-composer-nvm-yarn:0.0.1
     steps:
       - checkout
-      - run: yarn && yarn test && yarn build && yarn build:production && composer test
+      - run: yarn && yarn test && yarn build && yarn build:production && composer install && composer test
   build-php72:
     docker:
       - image: rootsdev/ubuntu18.04-php7.2-composer-nvm-yarn:0.0.1
     steps:
       - checkout
-      - run: yarn && yarn test && yarn build && yarn build:production && composer test
+      - run: yarn && yarn test && yarn build && yarn build:production && composer install && composer test
   build-php71:
     docker:
       - image: rootsdev/ubuntu18.04-php7.1-composer-nvm-yarn:0.0.1
     steps:
       - checkout
-      - run: yarn && yarn test && yarn build && yarn build:production && composer test
+      - run: yarn && yarn test && yarn build && yarn build:production && composer install && composer test
 
 workflows:
   version: 2
