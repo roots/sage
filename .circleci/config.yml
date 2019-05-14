@@ -6,20 +6,20 @@ job-template: &job-template
       - checkout
       - restore_cache:
           keys:
-            - dependencies-v1-{{ checksum "composer.json" }}
-            - dependencies-v1- 
+            - composer-v1-{{ checksum "composer.json" }}
+            - composer-v1- 
       - run: composer install -n && composer test
       - save_cache:
-          key: dependencies-v1-{{ checksum "composer.json" }}
+          key: composer-v1-{{ checksum "composer.json" }}
           paths:
             - vendor
       - restore_cache:
           keys:
-            - node-v4-{{ checksum "package.json" }}
-            - node-v4-
+            - node-v1-{{ checksum "package.json" }}
+            - node-v1-
       - run: yarn install && yarn run test && yarn run build:production
       - save_cache:
-          key: node-v4-{{ checksum "package.json" }}
+          key: node-v1-{{ checksum "package.json" }}
           paths:
             - node_modules
 
