@@ -1,23 +1,41 @@
-version: 2
+version: 2.1
+
+job-template: &job-template
+    working_directory: ~/circleci
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - dependencies-v1-{{ checksum "composer.json" }}
+            - dependencies-v1- 
+      - run: composer install -n && composer test
+      - save_cache:
+          key: dependencies-v1-{{ checksum "composer.json" }}
+          paths:
+            - vendor
+      - restore_cache:
+          keys:
+            - node-v4-{{ checksum "package.json" }}
+            - node-v4-
+      - run: yarn install && yarn run test && yarn run build:production
+      - save_cache:
+          key: node-v4-{{ checksum "package.json" }}
+          paths:
+            - node_modules
+
 jobs:
   build-php73:
     docker:
-      - image: rootsdev/ubuntu18.04-php7.3-composer-nvm-yarn:0.0.1
-    steps:
-      - checkout
-      - run: yarn && yarn test && yarn build && yarn build:production && composer install && composer test
+      - image: circleci/php:7.3-stretch-node-browsers
+    <<: *job-template
   build-php72:
     docker:
-      - image: rootsdev/ubuntu18.04-php7.2-composer-nvm-yarn:0.0.1
-    steps:
-      - checkout
-      - run: yarn && yarn test && yarn build && yarn build:production && composer install && composer test
+      - image: circleci/php:7.2-stretch-node-browsers
+    <<: *job-template
   build-php71:
     docker:
-      - image: rootsdev/ubuntu18.04-php7.1-composer-nvm-yarn:0.0.1
-    steps:
-      - checkout
-      - run: yarn && yarn test && yarn build && yarn build:production && composer install && composer test
+      - image: circleci/php:7.1-stretch-node-browsers
+    <<: *job-template
 
 workflows:
   version: 2
