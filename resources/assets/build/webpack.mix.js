@@ -34,7 +34,6 @@ for(let style of project.entry.styles) {
 
 // JavaScript
 for(let script of project.entry.scripts) {
-  console.log([src(script), 'script'])
   mix.js(src(script), 'scripts')
      .extract();
 }
