@@ -1,9 +1,9 @@
 module.exports = {
   browsersync: {
-  proxy: 'https://example.test',
+  proxy: 'http://fleek.valet',
     files: [
       '(app|config|resources)/**/*.php',
-      '(styles|scripts)/**/*.(css|js)',
+      'dist/(styles|scripts)/**/*.(css|js)',
     ],
   },
   entry: {
