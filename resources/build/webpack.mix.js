@@ -1,10 +1,11 @@
 const mix = require('laravel-mix');
+const project = require('./../../sage.config.js')
 
 // Public path helper
 const publicPath = path => `${mix.config.publicPath}/${path}`;
 
 // Source path helper
-const src = path => `resources/assets/${path}`;
+const src = path => `${project.entry.root}/${path}`;
 
 /*
  |--------------------------------------------------------------------------
@@ -18,33 +19,35 @@ const src = path => `resources/assets/${path}`;
  */
 
 // Public Path
-mix.setPublicPath('./dist');
+mix.setPublicPath('dist');
 
 // Browsersync
 mix.browserSync({
-  proxy: 'https://example.test',
-  files: [
-    '(app|config|resources)/**/*.php',
-    publicPath`(styles|scripts)/**/*.(css|js)`,
-  ],
+  proxy: project.browsersync.proxy,
+  files: project.browsersync.files,
 });
 
 // Styles
-mix.sass(src`styles/app.scss`, 'styles');
+for(let style of project.entry.styles) {
+  mix.sass(src(style), 'styles');
+}
 
 // JavaScript
-mix.js(src`scripts/app.js`, 'scripts')
-   .js(src`scripts/customizer.js`, 'scripts')
-   .extract();
+for(let script of project.entry.scripts) {
+  console.log([src(script), 'script'])
+  mix.js(src(script), 'scripts')
+     .extract();
+}
 
 // Assets
-mix.copyDirectory(src`images`, publicPath`images`)
-   .copyDirectory(src`fonts`, publicPath`fonts`);
+for(let dir of project.entry.dirs) {
+  mix.copyDirectory(src(dir), publicPath(dir));
+}
 
 // Autoload
-mix.autoload({
+project.autoload.jQuery && mix.autoload({
   jquery: ['$', 'window.jQuery'],
-});
+})
 
 // Options
 mix.options({
