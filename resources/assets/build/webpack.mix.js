@@ -1,5 +1,5 @@
 const mix = require('laravel-mix');
-const project = require('./../../sage.config.js')
+const project = require('../../../sage.config.js')
 
 // Public path helper
 const publicPath = path => `${mix.config.publicPath}/${path}`;
