@@ -5,7 +5,7 @@ const project = require('../../../sage.config.js')
 const publicPath = path => `${mix.config.publicPath}/${path}`;
 
 // Source path helper
-const src = path => `${project.entry.root}/${path}`;
+const src = path => `${mix.config.resourceRoot}/${path}`;
 
 /*
  |--------------------------------------------------------------------------
@@ -19,7 +19,8 @@ const src = path => `${project.entry.root}/${path}`;
  */
 
 // Public Path
-mix.setPublicPath('dist');
+mix.setPublicPath('dist')
+   .setResourceRoot(project.entry.root)
 
 // Browsersync
 mix.browserSync({
@@ -28,20 +29,19 @@ mix.browserSync({
 });
 
 // Styles
-for(let style of project.entry.styles) {
+project.entry.styles.forEach(style => {
   mix.sass(src(style), 'styles');
-}
+});
 
 // JavaScript
-for(let script of project.entry.scripts) {
-  mix.js(src(script), 'scripts')
-     .extract();
-}
+project.entry.scripts.forEach(script => {
+  mix.js(src(script), 'scripts').extract();
+});
 
 // Assets
-for(let dir of project.entry.dirs) {
+project.entry.dirs.forEach(dir => {
   mix.copyDirectory(src(dir), publicPath(dir));
-}
+});
 
 // Autoload
 project.autoload.jQuery && mix.autoload({
