@@ -52,7 +52,7 @@ return [
 
     'inline_scripts' => [
         [
-            'handle'   => 'scripts/manifest',
+            'handle'   => 'sage/vendor',
             'data'     => 'scripts/manifest.js',
             'position' => 'before',
         ],
