@@ -98,12 +98,30 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Add Widget Areas
+    | Register Nav Menus
     |--------------------------------------------------------------------------
     |
-    | Use main stylesheet for visual editor
+    | Registers multiple custom navigation menus in the custom menu
+    | editor.
     |
-    | @link https://developer.wordpress.org/themes/customize-api/
+    | @link https://developer.wordpress.org/reference/functions/register_nav_menus/
+    |
+    */
+
+    'nav_menus' => [
+         'primary_navigation' => __('Primary Navigation', 'sage')
+    ],
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Register Widgets
+    |--------------------------------------------------------------------------
+    |
+    | Registering a sidebar tells WordPress that you’re creating a new widget
+    | area in Appearance > Widgets that users can drag their widgets to.
+    |
+    | https://developer.wordpress.org/themes/functionality/sidebars/#registering-a-sidebar
     |
     */
 

@@ -102,6 +102,24 @@ class ThemeBaseServiceProvider extends ServiceProvider
                 ? add_theme_support($feature, $options)
                 : add_theme_support($feature);
         });
+
+        // Add nav menus
+        $navs = config('theme.nav_menus')
+                ? config('theme.nav_menus')
+                : null;
+
+        if (isset($navs) && !empty($navs)) {
+            register_nav_menus($navs);
+        }
+
+        // Add editor style
+        $editor_style = config('theme.editor_style')
+                        ? config('theme.editor_style')
+                        : null;
+
+        if (isset($editor_style)) {
+            add_editor_style(asset($editor_style)->uri());
+        }
     }
 
     /**
@@ -112,11 +130,13 @@ class ThemeBaseServiceProvider extends ServiceProvider
     public function widgetsInit()
     {
         // register_sidebar calls
-        collect(config('theme.widget_areas'))->each(function ($area) {
+        $widget_config = config('theme.widget_config');
+
+        collect(config('theme.widget_areas'))->each(function ($area) use ($widget_config) {
             register_sidebar([
                 'name' => $area['name'],
                 'id'   => $area['id'],
-            ] + config('theme.widget_config'));
+            ] + $widget_config);
         });
     }
 
