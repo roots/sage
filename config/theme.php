@@ -4,21 +4,6 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | i18n Text Domain
-    |--------------------------------------------------------------------------
-    |
-    | The text domain is a unique identifier, which makes sure WordPress
-    | can distinguish between all loaded translations.
-    |
-    | @link https://codex.wordpress.org/I18n_for_WordPress_Developers
-    |
-    */
-
-    'text_domain' => 'sage',
-
-
-    /*
-    |--------------------------------------------------------------------------
     | JavaScript
     |--------------------------------------------------------------------------
     |
@@ -67,7 +52,7 @@ return [
 
     'inline_scripts' => [
         [
-            'handle'   => 'scripts/manifest.js',
+            'handle'   => 'scripts/manifest',
             'data'     => 'scripts/manifest.js',
             'position' => 'before',
         ],
@@ -131,11 +116,11 @@ return [
 
     'widget_areas' => [
         [
-            'name' => 'Primary',
+            'name' => __('Primary', 'sage'),
             'id'   => 'sidebar-primary',
         ],
         [
-            'name' => 'Footer',
+            'name' => __('Footer', 'sage'),
             'id'   => 'sidebar-footer',
         ]
     ],

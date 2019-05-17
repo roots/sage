@@ -114,8 +114,8 @@ class ThemeBaseServiceProvider extends ServiceProvider
         // register_sidebar calls
         collect(config('theme.widget_areas'))->each(function ($area) {
             register_sidebar([
-                'name' => __($area['name'], config('theme.text_domain')),
-                'id' => $area['id'],
+                'name' => $area['name'],
+                'id'   => $area['id'],
             ] + config('theme.widget_config'));
         });
     }
