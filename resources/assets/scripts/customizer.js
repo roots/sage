@@ -11,5 +11,5 @@
  * @param {string} value
  */
 wp.customize('blogname', (value) => {
-  value.bind(to => $('.brand').text(to));
+  value.bind(to => document.querySelector('.brand').textContent = to);
 });

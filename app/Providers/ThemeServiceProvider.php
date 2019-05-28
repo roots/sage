@@ -23,6 +23,6 @@ class ThemeServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $this->app['blade.compiler']->component('components.alert', 'alert');
     }
 }

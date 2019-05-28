@@ -24,18 +24,20 @@
     "eslint": "^5.11",
     "eslint-plugin-import": "^2.17",
     "laravel-mix": "^4.0",
+    "laravel-mix-purgecss": "^4.1.0",
+    "mix-tailwindcss": "^1.0.2",
+    "purgecss-with-wordpress": "knowler/purgecss-with-wordpress#more-wp-generated-classes",
     "npm-run-all": "^4.1",
     "rimraf": "^2.6",
     "sass": "^1.21",
     "sass-loader": "7.*",
     "stylelint": "^10.1",
     "stylelint-config-standard": "^18.2",
+    "tailwindcss": "^1.0",
+    "tailwindcss-wordpress": "^0.1",
     "vue-template-compiler": "^2.6"
   },
   "dependencies": {
-    "bootstrap": "^4.3",
-    "jquery": "^3.4",
-    "js-dom-router": "^1.0",
-    "popper.js": "^1.15"
+    "js-dom-router": "^1.0"
   }
 }

@@ -1,8 +1,6 @@
 /**
  * External Dependencies
  */
-import 'jquery';
-import 'bootstrap';
 import { router } from 'js-dom-router';
 
 /**

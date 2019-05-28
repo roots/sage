@@ -1,20 +1,22 @@
-/** Config */
-@import 'config/functions';
-@import 'config/variables';
-@import 'config/external';
+/**
+ * Tailwind’s preflight styles are built on top of normalize.css and include
+ * opinionated resets for a number of elements (notably headings and lists).
+ *
+ * @see https://tailwindcss.com/docs/preflight
+ * @see https://tailwindcss.com/docs/adding-base-styles
+ */
+@tailwind base;
 
-/** Common */
-@import 'common/global';
+/**
+ * Tailwind components. Define your own below or use/write a plugin.
+ *
+ * @see https://tailwindcss.com/docs/extracting-components
+ */
+@tailwind components;
 
-/** Components */
-@import 'components/buttons';
-@import 'components/comments';
-@import 'components/forms';
-@import 'components/wp-classes';
-
-/** Layouts */
-@import 'layouts/header';
-@import 'layouts/footer';
-@import 'layouts/pages';
-@import 'layouts/posts';
-@import 'layouts/tinymce';
+/**
+ * Tailwind utilities. Define your own below or use/write a plugin.
+ *
+ * @see https://tailwindcss.com/docs/adding-new-utilities
+ */
+@tailwind utilities;
