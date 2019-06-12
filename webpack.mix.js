@@ -21,13 +21,7 @@ const src = path => `resources/assets/${path}`;
 mix.setPublicPath('./dist');
 
 // Browsersync
-mix.browserSync({
-  proxy: 'https://example.test',
-  files: [
-    '(app|config|resources)/**/*.php',
-    publicPath`(styles|scripts)/**/*.(css|js)`,
-  ],
-});
+mix.browserSync('example.test');
 
 // Styles
 mix.sass(src`styles/app.scss`, 'styles');
