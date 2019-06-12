@@ -23,7 +23,7 @@ add_action('wp_enqueue_scripts', function () {
 
     foreach ($styles as $stylesheet) {
         if (asset($stylesheet)->exists()) {
-            wp_enqueue_style('sage/'.basename($stylesheet, '.css'), asset($stylesheet)->uri(), false, null);
+            wp_enqueue_style('sage/' . basename($stylesheet, '.css'), asset($stylesheet)->uri(), false, null);
         }
     }
 }, 100);

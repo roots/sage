@@ -35,7 +35,7 @@ if (version_compare('5.2', get_bloginfo('version'), '>=')) {
 /**
  * Ensure dependencies are loaded
  */
-if (! file_exists($composer = __DIR__ . '/../vendor/autoload.php')) {
+if (! file_exists($composer = __DIR__ . '/vendor/autoload.php')) {
     $sage_error(
         __('You must run <code>composer install</code> from the Sage directory.', 'sage'),
         __('Autoloader not found.', 'sage')
@@ -50,7 +50,7 @@ require_once $composer;
  * Add or remove files to the array as needed. Supports child theme overrides.
  */
 array_map(function ($file) use ($sage_error) {
-    $file = "../app/{$file}.php";
+    $file = "app/{$file}.php";
     if (! locate_template($file, true, true)) {
         $sage_error(
             sprintf(__('Error locating <code>%s</code> for inclusion.', 'sage'), $file),
