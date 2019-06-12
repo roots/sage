@@ -3,9 +3,10 @@
   <description>Roots Coding Standards</description>
 
   <!-- Scan these files -->
-  <file>resources/functions.php</file>
-  <file>resources/index.php</file>
+  <file>functions.php</file>
+  <file>index.php</file>
   <file>app</file>
+  <file>config</file>
   <file>resources/views</file>
 
   <!-- Show colors in console -->
@@ -15,7 +16,7 @@
   <arg value="s"/>
 
   <!-- Use PSR-2 as a base -->
-  <rule ref="PSR2"/>
+  <rule ref="PSR12"/>
 
   <!-- Exclusions below are for resources/views/ folder -->
 
