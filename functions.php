@@ -21,14 +21,14 @@ $sage_error = function ($message, $subtitle = '', $title = '') {
 /**
  * Ensure compatible version of PHP is used
  */
-if (version_compare('7.1.3', phpversion(), '>=')) {
+if (version_compare('7.1.3', phpversion(), '>')) {
     $sage_error(__('You must be using PHP 7.1.3 or greater.', 'sage'), __('Invalid PHP version', 'sage'));
 }
 
 /**
  * Ensure compatible version of WordPress is used
  */
-if (version_compare('5.2', get_bloginfo('version'), '>=')) {
+if (version_compare('5.2', get_bloginfo('version'), '>')) {
     $sage_error(__('You must be using WordPress 5.2 or greater.', 'sage'), __('Invalid WordPress version', 'sage'));
 }
 
