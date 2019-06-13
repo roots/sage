@@ -1,5 +1,5 @@
 /**
- * About Us
+ * Home
  */
 export default () => {
   //--
