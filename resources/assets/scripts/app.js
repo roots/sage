@@ -15,7 +15,7 @@ import about from './routes/about';
  *
  * See: {@link https://webpack.js.org/guides/code-splitting/#dynamic-imports | Dynamic Imports}
  */
-const home = async () => import(/* webpackChunkName: "home-page" */ './routes/home');
+const home = async () => import(/* webpackChunkName: "scripts/routes/home" */ './routes/home');
 
 /**
  * Set up DOM router
