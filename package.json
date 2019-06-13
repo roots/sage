@@ -16,23 +16,25 @@
     "test": "run-s -c lint"
   },
   "devDependencies": {
-    "browser-sync": "^2.26.5",
-    "browser-sync-webpack-plugin": "2.0.1",
-    "cross-env": "^5.2.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.2",
+    "browser-sync": "^2.26",
+    "browser-sync-webpack-plugin": "2.2",
+    "cross-env": "^5.2",
     "eslint": "^5.11",
-    "eslint-plugin-import": "^2.14",
-    "laravel-mix": "^4.0.16",
-    "npm-run-all": "^4.1.5",
+    "eslint-plugin-import": "^2.17",
+    "laravel-mix": "^4.0",
+    "npm-run-all": "^4.1",
     "rimraf": "^2.6",
-    "sass": "^1.19.0",
+    "sass": "^1.21",
     "sass-loader": "7.*",
-    "stylelint": "^9.9",
+    "stylelint": "^10.1",
     "stylelint-config-standard": "^18.2",
-    "vue-template-compiler": "^2.6.10"
+    "vue-template-compiler": "^2.6"
   },
   "dependencies": {
-    "bootstrap": "^4.3.1",
-    "jquery": "^3.4.0",
-    "popper.js": "^1.15.0"
+    "bootstrap": "^4.3",
+    "jquery": "^3.4",
+    "js-dom-router": "^1.0",
+    "popper.js": "^1.15"
   }
 }

@@ -18,7 +18,12 @@ const src = path => `resources/assets/${path}`;
  */
 
 // Public Path
-mix.setPublicPath('./dist');
+mix
+  .setPublicPath('./dist')
+  .setResourceRoot(`/app/themes/sage/${mix.config.publicPath}/`)
+  .webpackConfig({
+    output: { publicPath: mix.config.resourceRoot }
+  });
 
 // Browsersync
 mix.browserSync('example.test');
