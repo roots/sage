@@ -60,7 +60,6 @@ mix.version();
 // Remove unused styles in production
 mix.purgeCss({
   content: [
-    './app/Composers/**/*.php',
     './resources/views/**/*.php',
     './resources/assets/**/*.js',
   ],
