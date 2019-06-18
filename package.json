@@ -3,7 +3,7 @@
   "scripts": {
     "build": "cross-env NODE_ENV=development run-s mix",
     "build:production": "cross-env NODE_ENV=production run-s clean mix",
-    "start": "cross-env NODE_ENV=development run-s \"mix --watch\"",
+    "start": "cross-env NODE_ENV=development run-s \"mix -- --watch\"",
     "hot": "cross-env NODE_ENV=development run-s build mix:hot",
     "mix": "webpack --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
     "mix:hot": "webpack-dev-server --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
