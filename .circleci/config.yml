@@ -43,7 +43,7 @@ orbs:
               keys:
                 - node-v1-{{ checksum "yarn.lock" }}
                 - node-v1-
-          - run: yarn install
+          - run: yarn install --frozen-lockfile
           - run: yarn run test
           - run: yarn run build:production
           - save_cache:
