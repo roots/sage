@@ -77,7 +77,7 @@ let webpackConfig = {
       },
       {
         test: /\.scss$/,
-        include: config.paths.assets,
+        include: [config.paths.assets, /node_modules/],
         use: ExtractTextPlugin.extract({
           fallback: 'style',
           use: [
