@@ -52,7 +52,7 @@ mix.options({
 });
 
 // Generate source maps when not in production
-mix.sourceMaps(false);
+mix.sourceMaps(false, 'source-map');
 
 // Hash and version files in production
 mix.version();
