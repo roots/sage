@@ -1,8 +1,7 @@
 {
   "private": true,
   "browserslist": [
-    "defaults",
-    "not IE 11"
+    "extends @wordpress/browserslist-config"
   ],
   "scripts": {
     "build": "cross-env NODE_ENV=development run-s mix",
@@ -21,6 +20,7 @@
   },
   "devDependencies": {
     "@babel/plugin-syntax-dynamic-import": "^7.2",
+    "@wordpress/browserslist-config": "^2.5.0",
     "babel-eslint": "^10.0.2",
     "browser-sync": "^2.26",
     "browser-sync-webpack-plugin": "2.2",
