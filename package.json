@@ -1,5 +1,9 @@
 {
   "private": true,
+  "browserslist": [
+    "defaults",
+    "not IE 11"
+  ],
   "scripts": {
     "build": "cross-env NODE_ENV=development run-s mix",
     "build:production": "cross-env NODE_ENV=production run-s clean mix",
