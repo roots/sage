@@ -4,40 +4,39 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Assets Directory URI
+    | Default Assets Manifest
     |--------------------------------------------------------------------------
     |
-    | The asset manifest contains relative paths to your assets. This URI will
-    | be prepended when using Sage's asset management system. Change this if
-    | you are pushing to a CDN.
+    | Here you may specify the default asset manifest that should be used.
+    | The "theme" manifest is recommended as the default as it cedes ultimate
+    | authority of your application's assets to the theme.
     |
     */
 
-    'uri' => get_theme_file_uri('/dist'),
+    'default' => 'theme',
 
     /*
     |--------------------------------------------------------------------------
-    | Assets Directory Path
+    | Assets Manifests
     |--------------------------------------------------------------------------
     |
-    | The asset manifest contains relative paths to your assets. This path will
-    | be prepended when using Sage's asset management system.
+    | Manifests contain lists of assets that are referenced by static keys that
+    | point to dynamic locations, such as a cache-busted location. A manifest
+    | may employ any number of strategies for determining absolute local and
+    | remote paths to assets.
+    |
+    | Supported Strategies: "relative"
+    |
+    | Note: We will add first-party support for more strategies in the future.
     |
     */
 
-    'path' => get_theme_file_path('/dist'),
-
-    /*
-    |--------------------------------------------------------------------------
-    | Assets Manifest
-    |--------------------------------------------------------------------------
-    |
-    | Your asset manifest is used by Sage to assist WordPress and your views
-    | with rendering the correct URLs for your assets. This is especially
-    | useful for statically referencing assets with dynamically changing names
-    | as in the case of cache-busting.
-    |
-    */
-
-    'manifest' => get_theme_file_path('/dist/mix-manifest.json'),
+    'manifests' => [
+        'theme' => [
+            'strategy' => 'relative',
+            'path' => get_theme_file_path('/dist'),
+            'uri' => get_theme_file_uri('/dist'),
+            'manifest' => get_theme_file_path('/dist/assets.json'),
+        ]
+    ]
 ];
