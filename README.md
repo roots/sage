@@ -2,6 +2,7 @@
 [![Packagist](https://img.shields.io/packagist/vpre/roots/sage.svg?style=flat-square)](https://packagist.org/packages/roots/sage)
 [![devDependency Status](https://img.shields.io/david/dev/roots/sage.svg?style=flat-square)](https://david-dm.org/roots/sage#info=devDependencies)
 [![Build Status](https://img.shields.io/circleci/project/github/roots/sage/10.0.0-dev.svg?style=flat-square)](https://circleci.com/gh/roots/sage)
+[![Follow Roots](https://img.shields.io/twitter/follow/rootswp.svg?style=flat-square)](https://twitter.com/rootswp)
 
 Sage is a WordPress starter theme with a modern development workflow.
 
