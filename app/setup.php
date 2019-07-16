@@ -73,12 +73,6 @@ add_action('after_setup_theme', function () {
      * @link https://developer.wordpress.org/themes/advanced-topics/customizer-api/#theme-support-in-sidebars
      */
     add_theme_support('customize-selective-refresh-widgets');
-
-    /**
-     * Use main stylesheet for visual editor
-     * @see resources/assets/styles/layouts/tinymce.scss
-     */
-    add_editor_style(asset('styles/app.css')->uri());
 }, 20);
 
 /**
