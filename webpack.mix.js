@@ -51,11 +51,7 @@ mix.options({
 });
 
 // Source maps when not in production.
-if (!mix.inProduction()) {
-  mix.sourceMaps();
-}
+mix.sourceMaps(false, 'source-map');
 
 // Hash and version files in production.
-if (mix.inProduction()) {
-  mix.version();
-}
+mix.version();
