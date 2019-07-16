@@ -29,9 +29,9 @@
     @endif
 
     @if (! comments_open() && get_comments_number() != '0' && post_type_supports(get_post_type(), 'comments'))
-      <div class="alert alert-warning">
+      @alert(['type' => 'warning'])
         {{ __('Comments are closed.', 'sage') }}
-      </div>
+      @endalert
     @endif
 
     @php(comment_form())

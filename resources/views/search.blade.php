@@ -4,9 +4,9 @@
   @include('partials.page-header')
 
   @if (! have_posts())
-    <div class="alert alert-warning">
+    @alert(['type' => 'warning'])
       {{ __('Sorry, no results were found.', 'sage') }}
-    </div>
+    @endalert
 
     {!! get_search_form(false) !!}
   @endif
