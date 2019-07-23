@@ -1,4 +1,5 @@
 # [Sage](https://roots.io/sage/)
+
 [![Packagist](https://img.shields.io/packagist/vpre/roots/sage.svg?style=flat-square)](https://packagist.org/packages/roots/sage)
 [![devDependency Status](https://img.shields.io/david/dev/roots/sage.svg?style=flat-square)](https://david-dm.org/roots/sage#info=devDependencies)
 [![Build Status](https://img.shields.io/circleci/project/github/roots/sage/10.0.0-dev.svg?style=flat-square)](https://circleci.com/gh/roots/sage)
@@ -48,8 +49,18 @@ During theme installation you will have options to update `style.css` theme head
 
 ```sh
 themes/your-theme-name/   # → Root of your Sage based theme
+├── composer.json         # → Autoloading for `app/` files
+├── composer.lock         # → Composer lock file (never edit)
+├── dist/                 # → Built theme assets (never edit)
+├── functions.php         # → Composer autoloader, Acorn bootloader
+├── index.php             # → Never manually edit
+├── node_modules/         # → Node.js packages (never edit)
+├── package.json          # → Node.js dependencies and scripts
+├── screenshot.png        # → Theme screenshot for WP admin
+├── style.css             # → Theme meta information
 ├── app/                  # → Theme PHP
-│   ├── Composers/        # → Composer files
+│   ├── Composers/        # → View composers
+│   ├── Providers/        # → Service providers
 │   ├── admin.php         # → Theme customizer setup
 │   ├── filters.php       # → Theme filters
 │   ├── helpers.php       # → Helper functions
@@ -58,24 +69,15 @@ themes/your-theme-name/   # → Root of your Sage based theme
 │   ├── app.php           # → Application configuration
 │   ├── assets.php        # → Asset configuration
 │   ├── filesystems.php   # → Filesystems configuration
+│   ├── logging.php       # → Logging configuration
 │   └── view.php          # → View configuration
-├── composer.json         # → Autoloading for `app/` files
-├── composer.lock         # → Composer lock file (never edit)
 ├── dist/                 # → Built theme assets (never edit)
-├── node_modules/         # → Node.js packages (never edit)
-├── package.json          # → Node.js dependencies and scripts
 ├── resources/            # → Theme assets and templates
 │   ├── assets/           # → Front-end assets
-│   │   ├── config.json   # → Settings for compiled assets
-│   │   ├── build/        # → Webpack and ESLint config
 │   │   ├── fonts/        # → Theme fonts
 │   │   ├── images/       # → Theme images
 │   │   ├── scripts/      # → Theme JS
 │   │   └── styles/       # → Theme stylesheets
-│   ├── functions.php     # → Composer autoloader, theme includes
-│   ├── index.php         # → Never manually edit
-│   ├── screenshot.png    # → Theme screenshot for WP admin
-│   ├── style.css         # → Theme meta information
 │   └── views/            # → Theme templates
 │       ├── layouts/      # → Base templates
 │       └── partials/     # → Partial templates
