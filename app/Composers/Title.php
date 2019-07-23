@@ -32,12 +32,12 @@ class Title extends Composer
     /**
      * Returns the post title.
      *
-     * @param  \Illuminate\View\View $view
+     * @param  string $viewName
      * @return string
      */
-    public function title($view)
+    public function title($viewName)
     {
-        if ($view !== 'partials.page-header') {
+        if ($viewName !== 'partials.page-header') {
             return get_the_title();
         }
 
