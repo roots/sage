@@ -76,8 +76,7 @@ return [
     */
 
     'composers' => [
-        App\Composers\Alert::class,
-        App\Composers\Title::class,
+        //
     ],
 
     /*
