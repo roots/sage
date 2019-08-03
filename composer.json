@@ -35,6 +35,8 @@
   },
   "require": {
     "php": "^7.1.3",
+    "log1x/sage-directives": "^1.0",
+    "log1x/sage-svg": "^1.0",
     "roots/acorn": "dev-master"
   },
   "require-dev": {
@@ -49,7 +51,7 @@
   "prefer-stable": true,
   "scripts": {
     "lint": [
-      "phpcs"
+      "phpcs --ignore=vendor,resources,storage --extensions=php --standard=PSR12 ."
     ],
     "post-autoload-dump": [
       "Roots\\Acorn\\ComposerScripts::postAutoloadDump"
