@@ -704,16 +704,16 @@
         },
         {
             "name": "log1x/sage-directives",
-            "version": "v1.0.9",
+            "version": "v1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Log1x/sage-directives.git",
-                "reference": "05bf2130f6e174313b299f6747d58e697d7d2de7"
+                "reference": "a2d02bd2c2965c6054238ad2ed5c7ada33dfdc43"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Log1x/sage-directives/zipball/05bf2130f6e174313b299f6747d58e697d7d2de7",
-                "reference": "05bf2130f6e174313b299f6747d58e697d7d2de7",
+                "url": "https://api.github.com/repos/Log1x/sage-directives/zipball/a2d02bd2c2965c6054238ad2ed5c7ada33dfdc43",
+                "reference": "a2d02bd2c2965c6054238ad2ed5c7ada33dfdc43",
                 "shasum": ""
             },
             "require": {
@@ -748,7 +748,7 @@
                 "sage",
                 "wordpress"
             ],
-            "time": "2019-07-22T21:03:59+00:00"
+            "time": "2019-08-07T10:19:57+00:00"
         },
         {
             "name": "log1x/sage-svg",
@@ -1096,12 +1096,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/roots/acorn.git",
-                "reference": "bd9e84d4a4df7b38ece762c02e360bd7a9db8321"
+                "reference": "b21abc0cd642ecf018305d5ee5b2270fa7eab7a2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/roots/acorn/zipball/bd9e84d4a4df7b38ece762c02e360bd7a9db8321",
-                "reference": "bd9e84d4a4df7b38ece762c02e360bd7a9db8321",
+                "url": "https://api.github.com/repos/roots/acorn/zipball/b21abc0cd642ecf018305d5ee5b2270fa7eab7a2",
+                "reference": "b21abc0cd642ecf018305d5ee5b2270fa7eab7a2",
                 "shasum": ""
             },
             "require": {
@@ -1153,7 +1153,7 @@
                 "sage",
                 "wordpress"
             ],
-            "time": "2019-08-03T10:35:42+00:00"
+            "time": "2019-08-03T13:22:51+00:00"
         },
         {
             "name": "roots/support",
