@@ -93,5 +93,4 @@ return [
             'level' => 'debug',
         ],
     ],
-
 ];
