@@ -1,6 +1,6 @@
 ### 10.0.0-alpha.1: TBA
 * Move from `sage-lib` to [`Acorn`](https://github.com/roots/acorn) ([#2122](https://github.com/roots/sage/pull/2122))
-* Change to [Laravel Mix](https://github.com/JeffreyWay/laravel-mix) for handling Webpack and compiling/concatnating assets ([#2172](https://github.com/roots/sage/pull/2172))
+* Change to [Laravel Mix](https://github.com/JeffreyWay/laravel-mix) for handling webpack and compiling/concatnating assets ([#2172](https://github.com/roots/sage/pull/2172))
 * Sage now ships with Blade Composers which are native, robust, more powerful solution to "Controllers" from Sage 9
 * Clean up starter Blade views
 * Move mandatory filters such as the template include, body class, comments template, search form, etc. to Acorn
