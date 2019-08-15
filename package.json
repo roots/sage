@@ -29,7 +29,7 @@
     "eslint-plugin-import": "^2.18",
     "laravel-mix": "^4.1",
     "npm-run-all": "^4.1",
-    "rimraf": "^2.6",
+    "rimraf": "^3.0",
     "sass": "^1.22",
     "sass-loader": "7.*",
     "stylelint": "^10.1",
