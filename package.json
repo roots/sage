@@ -16,7 +16,11 @@
     "lint": "run-s -c lint:*",
     "lint:scripts": "eslint resources/assets/scripts",
     "lint:styles": "stylelint \"resources/assets/**/*.{vue,css,sass,scss,sss,less}\"",
-    "test": "run-s -c lint"
+    "test": "run-s -c lint",
+    "translate": "run-s translate:pot translate:js",
+    "translate:pot": "wp i18n make-pot . ./resources/languages/sage.pot --ignore-domain --include=\"app,resources/assets,resources/views\"",
+    "translate:js": "wp i18n make-json ./resources/languages --no-purge --pretty-print"
+
   },
   "devDependencies": {
     "@babel/plugin-syntax-dynamic-import": "^7.2",

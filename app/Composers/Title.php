@@ -54,6 +54,7 @@ class Title extends Composer
         }
 
         if (is_search()) {
+            /* translators: %s is replaced with the search query */
             return sprintf(__('Search Results for %s', 'sage'), get_search_query());
         }
 
