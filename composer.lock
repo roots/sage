@@ -704,16 +704,16 @@
         },
         {
             "name": "log1x/sage-directives",
-            "version": "v1.1.2",
+            "version": "v1.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Log1x/sage-directives.git",
-                "reference": "0f6752c2166f4bdd5b6158abde7d1825eec697ed"
+                "reference": "7faa87e2a0a9ca554f3e2cee3ccaba7e30617a0f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Log1x/sage-directives/zipball/0f6752c2166f4bdd5b6158abde7d1825eec697ed",
-                "reference": "0f6752c2166f4bdd5b6158abde7d1825eec697ed",
+                "url": "https://api.github.com/repos/Log1x/sage-directives/zipball/7faa87e2a0a9ca554f3e2cee3ccaba7e30617a0f",
+                "reference": "7faa87e2a0a9ca554f3e2cee3ccaba7e30617a0f",
                 "shasum": ""
             },
             "require": {
@@ -721,6 +721,9 @@
             },
             "require-dev": {
                 "squizlabs/php_codesniffer": "^3.4"
+            },
+            "suggest": {
+                "log1x/sage-svg": "Required to use the @svg directive (Sage 10)."
             },
             "type": "package",
             "autoload": {
@@ -743,12 +746,13 @@
             "homepage": "https://github.com/log1x/sage-directives",
             "keywords": [
                 "blade",
+                "blade-directives",
                 "directives",
                 "roots",
                 "sage",
                 "wordpress"
             ],
-            "time": "2019-08-07T17:49:39+00:00"
+            "time": "2019-08-25T19:26:32+00:00"
         },
         {
             "name": "log1x/sage-svg",
@@ -1122,7 +1126,7 @@
                 "symfony/var-dumper": "^4.3"
             },
             "require-dev": {
-                "filp/whoops": "^2.4",
+                "filp/whoops": "^2.5",
                 "mikey179/vfsstream": "^1.6",
                 "phpunit/phpunit": "^7.5|^8.0",
                 "roave/security-advisories": "dev-master",
