@@ -21,7 +21,7 @@
   "devDependencies": {
     "@babel/plugin-syntax-dynamic-import": "^7.2",
     "@wordpress/browserslist-config": "^2.6.0",
-    "babel-eslint": "^10.0.2",
+    "babel-eslint": "^10.0.3",
     "browser-sync": "^2.26",
     "browser-sync-webpack-plugin": "2.2",
     "cross-env": "^5.2",
