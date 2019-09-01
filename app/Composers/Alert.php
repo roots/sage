@@ -34,6 +34,6 @@ class Alert extends Composer
      */
     public function type()
     {
-        return $this->view->getData()['type'] ?? 'primary';
+        return $this->data->get('type', 'primary');
     }
 }
