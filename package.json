@@ -17,10 +17,9 @@
     "lint:scripts": "eslint resources/assets/scripts",
     "lint:styles": "stylelint \"resources/assets/**/*.{vue,css,sass,scss,sss,less}\"",
     "test": "run-s -c lint",
-    "translate": "run-s translate:pot translate:js",
+    "translate": "run-s translate:*",
     "translate:pot": "wp i18n make-pot . ./resources/languages/sage.pot --ignore-domain --include=\"app,resources/assets,resources/views\"",
     "translate:js": "wp i18n make-json ./resources/languages --no-purge --pretty-print"
-
   },
   "devDependencies": {
     "@babel/plugin-syntax-dynamic-import": "^7.2",
@@ -28,8 +27,8 @@
     "babel-eslint": "^10.0.3",
     "browser-sync": "^2.26",
     "browser-sync-webpack-plugin": "2.2",
-    "cross-env": "^5.2",
-    "eslint": "^6.2",
+    "cross-env": "^5.2.1",
+    "eslint": "^6.3.0",
     "eslint-plugin-import": "^2.18",
     "laravel-mix": "^4.1",
     "npm-run-all": "^4.1",

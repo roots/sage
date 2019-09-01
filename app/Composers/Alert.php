@@ -18,14 +18,22 @@ class Alert extends Composer
     /**
      * Data to be passed to view before rendering.
      *
-     * @param  array $data
-     * @param  \Illuminate\View\View $view
      * @return array
      */
-    public function with($data, $view)
+    public function with()
     {
         return [
-            'type' => $data['type'] ?? 'primary',
+            'type' => $this->type(),
         ];
+    }
+
+    /**
+     * Returns the alert type.
+     *
+     * @return string
+     */
+    public function type()
+    {
+        return $this->view->getData()['type'] ?? 'primary';
     }
 }
