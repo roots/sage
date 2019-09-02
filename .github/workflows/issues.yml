@@ -8,7 +8,7 @@ jobs:
       uses: roots/issue-closer@v1.1
       with:
         repo-token: ${{ secrets.GITHUB_TOKEN }}
-        issue-close-message: Hi @${issue.user.login},
+        issue-close-message: "Hi @${issue.user.login},
 
 It looks like the issue template is missing from this issue. Please take a look at the [Contribution Guidelines](https://github.com/roots/guidelines/blob/master/CONTRIBUTING.md), which will tell you **exactly** what your ticket has to contain in order to be processable.
 
