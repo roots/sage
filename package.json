@@ -36,7 +36,7 @@
     "sass": "^1.22",
     "sass-loader": "7.*",
     "stylelint": "^10.1",
-    "stylelint-config-standard": "^18.2",
+    "stylelint-config-standard": "^19.0",
     "vue-template-compiler": "^2.6"
   },
   "dependencies": {
