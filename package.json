@@ -30,7 +30,7 @@
     "cross-env": "^5.2.1",
     "eslint": "^6.3.0",
     "eslint-plugin-import": "^2.18",
-    "laravel-mix": "^4.1",
+    "laravel-mix": "^5.0",
     "npm-run-all": "^4.1",
     "rimraf": "^3.0",
     "sass": "^1.22",
