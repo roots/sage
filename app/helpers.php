@@ -9,8 +9,8 @@ use Roots\Sage\Container;
  *
  * @param string $abstract
  * @param array  $parameters
- * @param Container $container
- * @return Container|mixed
+ * @param \Roots\Sage\Container $container
+ * @return \Roots\Sage\Container|mixed
  */
 function sage($abstract = null, $parameters = [], Container $container = null)
 {
