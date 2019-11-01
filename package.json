@@ -33,7 +33,7 @@
     "laravel-mix": "^4.1",
     "npm-run-all": "^4.1",
     "rimraf": "^3.0",
-    "sass": "^1.22",
+    "sass": "^1.23",
     "sass-loader": "7.*",
     "stylelint": "^10.1",
     "stylelint-config-standard": "^18.2",
