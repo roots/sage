@@ -12,9 +12,6 @@ orbs:
       php-72:
         docker:
           - image: 'circleci/php:7.2-stretch'
-      php-71:
-        docker:
-          - image: 'circleci/php:7.1-stretch'
     jobs:
       build-php:
         parameters:
@@ -61,6 +58,3 @@ workflows:
       - sage/build-php:
           name: build-php-72
           executor: sage/php-72
-      - sage/build-php:
-          name: build-php-71
-          executor: sage/php-71
