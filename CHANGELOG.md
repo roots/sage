@@ -1,4 +1,6 @@
 ### 10.0.0-alpha.1: TBA
+* Change PHP requirement to 7.2.
+* Change WordPress requirement to 5.2.
 * Move from `sage-lib` to [`Acorn`](https://github.com/roots/acorn) ([#2122](https://github.com/roots/sage/pull/2122))
 * Change to [Laravel Mix](https://github.com/JeffreyWay/laravel-mix) for handling webpack and compiling/concatnating assets ([#2172](https://github.com/roots/sage/pull/2172))
 * Sage now ships with Blade Composers which are native, robust, more powerful solution to "Controllers" from Sage 9
