@@ -4,7 +4,7 @@ namespace App\Composers;
 
 use Roots\Acorn\View\Composer;
 
-class Alert extends Composer
+class App extends Composer
 {
     /**
      * List of views served by this composer.
@@ -12,7 +12,7 @@ class Alert extends Composer
      * @var array
      */
     protected static $views = [
-        'components.alert'
+        '*',
     ];
 
     /**
@@ -23,17 +23,17 @@ class Alert extends Composer
     public function with()
     {
         return [
-            'type' => $this->type(),
+            'siteName' => $this->siteName(),
         ];
     }
 
     /**
-     * Returns the alert type.
+     * Returns the site name.
      *
      * @return string
      */
-    public function type()
+    public function siteName()
     {
-        return $this->data->get('type', 'primary');
+        return get_bloginfo('name', 'display');
     }
 }

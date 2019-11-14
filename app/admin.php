@@ -1,14 +1,25 @@
 <?php
 
+/**
+ * Theme admin.
+ *
+ * @copyright https://roots.io/ Roots
+ * @license   http://opensource.org/licenses/MIT MIT
+ */
+
 namespace App;
+
+use WP_Customize_Manager;
 
 use function Roots\asset;
 
 /**
- * Theme customizer
+ * Register the `.brand` selector as the blogname.
+ *
+ * @param  \WP_Customize_Manager $wp_customize
+ * @return void
  */
-add_action('customize_register', function (\WP_Customize_Manager $wp_customize) {
-    // Add postMessage support
+add_action('customize_register', function (WP_Customize_Manager $wp_customize) {
     $wp_customize->get_setting('blogname')->transport = 'postMessage';
     $wp_customize->selective_refresh->add_partial('blogname', [
         'selector' => '.brand',
@@ -19,8 +30,10 @@ add_action('customize_register', function (\WP_Customize_Manager $wp_customize) 
 });
 
 /**
- * Customizer JS
+ * Register the customizer assets.
+ *
+ * @return void
  */
 add_action('customize_preview_init', function () {
-    wp_enqueue_script('sage/customizer.js', asset('scripts/customizer.js'), ['customize-preview'], null, true);
+    wp_enqueue_script('sage/customizer.js', asset('scripts/customizer.js')->uri(), ['customize-preview'], null, true);
 });

@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0f7df86a0d81dd51dda7d6da66f4bc22",
+    "content-hash": "48d1202a28af3ab72597bbac2b79b5e3",
     "packages": [
         {
             "name": "doctrine/inflector",
-            "version": "v1.3.0",
+            "version": "1.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/inflector.git",
-                "reference": "5527a48b7313d15261292c149e55e26eae771b0a"
+                "reference": "ec3a55242203ffa6a4b27c58176da97ff0a7aec1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/inflector/zipball/5527a48b7313d15261292c149e55e26eae771b0a",
-                "reference": "5527a48b7313d15261292c149e55e26eae771b0a",
+                "url": "https://api.github.com/repos/doctrine/inflector/zipball/ec3a55242203ffa6a4b27c58176da97ff0a7aec1",
+                "reference": "ec3a55242203ffa6a4b27c58176da97ff0a7aec1",
                 "shasum": ""
             },
             "require": {
@@ -43,16 +43,16 @@
             ],
             "authors": [
                 {
+                    "name": "Guilherme Blanco",
+                    "email": "guilhermeblanco@gmail.com"
+                },
+                {
                     "name": "Roman Borschel",
                     "email": "roman@code-factory.org"
                 },
                 {
                     "name": "Benjamin Eberlei",
                     "email": "kontakt@beberlei.de"
-                },
-                {
-                    "name": "Guilherme Blanco",
-                    "email": "guilhermeblanco@gmail.com"
                 },
                 {
                     "name": "Jonathan Wage",
@@ -71,20 +71,20 @@
                 "singularize",
                 "string"
             ],
-            "time": "2018-01-09T20:05:19+00:00"
+            "time": "2019-10-30T19:59:35+00:00"
         },
         {
             "name": "illuminate/cache",
-            "version": "v6.5.0",
+            "version": "v6.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/cache.git",
-                "reference": "573ee1f673fa8a0a5fb56dee2714b440192201f6"
+                "reference": "b7121bc6c2f345beae396bf7081c566b17d335d4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/cache/zipball/573ee1f673fa8a0a5fb56dee2714b440192201f6",
-                "reference": "573ee1f673fa8a0a5fb56dee2714b440192201f6",
+                "url": "https://api.github.com/repos/illuminate/cache/zipball/b7121bc6c2f345beae396bf7081c566b17d335d4",
+                "reference": "b7121bc6c2f345beae396bf7081c566b17d335d4",
                 "shasum": ""
             },
             "require": {
@@ -122,11 +122,11 @@
             ],
             "description": "The Illuminate Cache package.",
             "homepage": "https://laravel.com",
-            "time": "2019-10-14T13:10:05+00:00"
+            "time": "2019-11-11T13:48:22+00:00"
         },
         {
             "name": "illuminate/config",
-            "version": "v6.5.0",
+            "version": "v6.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/config.git",
@@ -170,7 +170,7 @@
         },
         {
             "name": "illuminate/console",
-            "version": "v6.5.0",
+            "version": "v6.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/console.git",
@@ -221,21 +221,20 @@
         },
         {
             "name": "illuminate/container",
-            "version": "v6.5.0",
+            "version": "v6.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/container.git",
-                "reference": "b36888780c1c483b3a9c2e6aa3d7545a969eb237"
+                "reference": "54f4bb37652076cdd4f518f1acc123a235fccdac"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/container/zipball/b36888780c1c483b3a9c2e6aa3d7545a969eb237",
-                "reference": "b36888780c1c483b3a9c2e6aa3d7545a969eb237",
+                "url": "https://api.github.com/repos/illuminate/container/zipball/54f4bb37652076cdd4f518f1acc123a235fccdac",
+                "reference": "54f4bb37652076cdd4f518f1acc123a235fccdac",
                 "shasum": ""
             },
             "require": {
                 "illuminate/contracts": "^6.0",
-                "illuminate/support": "^6.0",
                 "php": "^7.2",
                 "psr/container": "^1.0"
             },
@@ -262,11 +261,11 @@
             ],
             "description": "The Illuminate Container package.",
             "homepage": "https://laravel.com",
-            "time": "2019-10-02T12:56:51+00:00"
+            "time": "2019-11-06T13:26:31+00:00"
         },
         {
             "name": "illuminate/contracts",
-            "version": "v6.5.0",
+            "version": "v6.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
@@ -310,7 +309,7 @@
         },
         {
             "name": "illuminate/events",
-            "version": "v6.5.0",
+            "version": "v6.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/events.git",
@@ -355,7 +354,7 @@
         },
         {
             "name": "illuminate/filesystem",
-            "version": "v6.5.0",
+            "version": "v6.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/filesystem.git",
@@ -407,7 +406,7 @@
         },
         {
             "name": "illuminate/log",
-            "version": "v6.5.0",
+            "version": "v6.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/log.git",
@@ -452,7 +451,7 @@
         },
         {
             "name": "illuminate/support",
-            "version": "v6.5.0",
+            "version": "v6.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
@@ -513,16 +512,16 @@
         },
         {
             "name": "illuminate/view",
-            "version": "v6.5.0",
+            "version": "v6.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/view.git",
-                "reference": "0757d4d55adc938dee12f1c8b11dfbdc8a07227d"
+                "reference": "f45bdea63c2b78a321b25d0f543f2f037f1dbca9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/view/zipball/0757d4d55adc938dee12f1c8b11dfbdc8a07227d",
-                "reference": "0757d4d55adc938dee12f1c8b11dfbdc8a07227d",
+                "url": "https://api.github.com/repos/illuminate/view/zipball/f45bdea63c2b78a321b25d0f543f2f037f1dbca9",
+                "reference": "f45bdea63c2b78a321b25d0f543f2f037f1dbca9",
                 "shasum": ""
             },
             "require": {
@@ -558,7 +557,7 @@
             ],
             "description": "The Illuminate View package.",
             "homepage": "https://laravel.com",
-            "time": "2019-11-01T12:59:54+00:00"
+            "time": "2019-11-08T13:18:30+00:00"
         },
         {
             "name": "league/flysystem",
@@ -645,123 +644,17 @@
             "time": "2019-10-16T21:01:05+00:00"
         },
         {
-            "name": "log1x/sage-directives",
-            "version": "v1.1.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Log1x/sage-directives.git",
-                "reference": "7faa87e2a0a9ca554f3e2cee3ccaba7e30617a0f"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Log1x/sage-directives/zipball/7faa87e2a0a9ca554f3e2cee3ccaba7e30617a0f",
-                "reference": "7faa87e2a0a9ca554f3e2cee3ccaba7e30617a0f",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.1.3"
-            },
-            "require-dev": {
-                "squizlabs/php_codesniffer": "^3.4"
-            },
-            "suggest": {
-                "log1x/sage-svg": "Required to use the @svg directive (Sage 10)."
-            },
-            "type": "package",
-            "autoload": {
-                "files": [
-                    "src/Directives.php",
-                    "src/Utilities.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Brandon Nifong",
-                    "email": "brandon@tendency.me"
-                }
-            ],
-            "description": "A set of Blade directives for use with Roots Sage.",
-            "homepage": "https://github.com/log1x/sage-directives",
-            "keywords": [
-                "blade",
-                "blade-directives",
-                "directives",
-                "roots",
-                "sage",
-                "wordpress"
-            ],
-            "time": "2019-08-25T19:26:32+00:00"
-        },
-        {
-            "name": "log1x/sage-svg",
-            "version": "v1.0.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Log1x/sage-svg.git",
-                "reference": "2b6722da8a393dbaa07b5aecbc2a916bf0752145"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Log1x/sage-svg/zipball/2b6722da8a393dbaa07b5aecbc2a916bf0752145",
-                "reference": "2b6722da8a393dbaa07b5aecbc2a916bf0752145",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.1.3"
-            },
-            "require-dev": {
-                "squizlabs/php_codesniffer": "^3.4"
-            },
-            "type": "package",
-            "extra": {
-                "acorn": {
-                    "providers": [
-                        "Log1x\\SageSvg\\SageSvgServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Log1x\\SageSvg\\": "src/"
-                },
-                "files": [
-                    "src/helpers.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Brandon Nifong",
-                    "email": "brandon@tendency.me"
-                }
-            ],
-            "description": "A simple package for using inline SVGs in Sage 10 projects.",
-            "keywords": [
-                "sage",
-                "svg",
-                "wordpress"
-            ],
-            "time": "2019-09-25T10:12:58+00:00"
-        },
-        {
             "name": "monolog/monolog",
-            "version": "2.0.0",
+            "version": "2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "68545165e19249013afd1d6f7485aecff07a2d22"
+                "reference": "f9d56fd2f5533322caccdfcddbb56aedd622ef1c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/68545165e19249013afd1d6f7485aecff07a2d22",
-                "reference": "68545165e19249013afd1d6f7485aecff07a2d22",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/f9d56fd2f5533322caccdfcddbb56aedd622ef1c",
+                "reference": "f9d56fd2f5533322caccdfcddbb56aedd622ef1c",
                 "shasum": ""
             },
             "require": {
@@ -829,7 +722,7 @@
                 "logging",
                 "psr-3"
             ],
-            "time": "2019-08-30T09:56:44+00:00"
+            "time": "2019-11-13T10:27:43+00:00"
         },
         {
             "name": "nesbot/carbon",
@@ -1048,12 +941,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/roots/acorn.git",
-                "reference": "fc4b1457199585094d2f35d2cc83ee3d172a08b9"
+                "reference": "bcd41746ee224eb13f6806472379f0362c73f71f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/roots/acorn/zipball/fc4b1457199585094d2f35d2cc83ee3d172a08b9",
-                "reference": "fc4b1457199585094d2f35d2cc83ee3d172a08b9",
+                "url": "https://api.github.com/repos/roots/acorn/zipball/bcd41746ee224eb13f6806472379f0362c73f71f",
+                "reference": "bcd41746ee224eb13f6806472379f0362c73f71f",
                 "shasum": ""
             },
             "require": {
@@ -1111,7 +1004,7 @@
                 "sage",
                 "wordpress"
             ],
-            "time": "2019-11-07T01:26:30+00:00"
+            "time": "2019-11-09T04:59:19+00:00"
         },
         {
             "name": "roots/support",
@@ -1155,16 +1048,16 @@
         },
         {
             "name": "symfony/console",
-            "version": "v4.3.6",
+            "version": "v4.3.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "136c4bd62ea871d00843d1bc0316de4c4a84bb78"
+                "reference": "831424efae0a1fe6642784bd52aae14ece6538e6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/136c4bd62ea871d00843d1bc0316de4c4a84bb78",
-                "reference": "136c4bd62ea871d00843d1bc0316de4c4a84bb78",
+                "url": "https://api.github.com/repos/symfony/console/zipball/831424efae0a1fe6642784bd52aae14ece6538e6",
+                "reference": "831424efae0a1fe6642784bd52aae14ece6538e6",
                 "shasum": ""
             },
             "require": {
@@ -1226,11 +1119,11 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2019-10-30T12:58:49+00:00"
+            "time": "2019-11-13T07:29:07+00:00"
         },
         {
             "name": "symfony/debug",
-            "version": "v4.3.6",
+            "version": "v4.3.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/debug.git",
@@ -1286,7 +1179,7 @@
         },
         {
             "name": "symfony/finder",
-            "version": "v4.3.6",
+            "version": "v4.3.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/finder.git",
@@ -1507,7 +1400,7 @@
         },
         {
             "name": "symfony/process",
-            "version": "v4.3.6",
+            "version": "v4.3.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/process.git",
@@ -1556,16 +1449,16 @@
         },
         {
             "name": "symfony/service-contracts",
-            "version": "v1.1.7",
+            "version": "v1.1.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/service-contracts.git",
-                "reference": "ffcde9615dc5bb4825b9f6aed07716f1f57faae0"
+                "reference": "ffc7f5692092df31515df2a5ecf3b7302b3ddacf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/service-contracts/zipball/ffcde9615dc5bb4825b9f6aed07716f1f57faae0",
-                "reference": "ffcde9615dc5bb4825b9f6aed07716f1f57faae0",
+                "url": "https://api.github.com/repos/symfony/service-contracts/zipball/ffc7f5692092df31515df2a5ecf3b7302b3ddacf",
+                "reference": "ffc7f5692092df31515df2a5ecf3b7302b3ddacf",
                 "shasum": ""
             },
             "require": {
@@ -1610,20 +1503,20 @@
                 "interoperability",
                 "standards"
             ],
-            "time": "2019-09-17T11:12:18+00:00"
+            "time": "2019-10-14T12:27:06+00:00"
         },
         {
             "name": "symfony/translation",
-            "version": "v4.3.6",
+            "version": "v4.3.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/translation.git",
-                "reference": "a3aa590ce944afb3434d7a55f81b00927144d5ec"
+                "reference": "bbce239b35b0cd47bd75848b23e969f17dd970e7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/translation/zipball/a3aa590ce944afb3434d7a55f81b00927144d5ec",
-                "reference": "a3aa590ce944afb3434d7a55f81b00927144d5ec",
+                "url": "https://api.github.com/repos/symfony/translation/zipball/bbce239b35b0cd47bd75848b23e969f17dd970e7",
+                "reference": "bbce239b35b0cd47bd75848b23e969f17dd970e7",
                 "shasum": ""
             },
             "require": {
@@ -1686,7 +1579,7 @@
             ],
             "description": "Symfony Translation Component",
             "homepage": "https://symfony.com",
-            "time": "2019-10-30T12:53:54+00:00"
+            "time": "2019-11-06T23:21:49+00:00"
         },
         {
             "name": "symfony/translation-contracts",
@@ -1747,7 +1640,7 @@
         },
         {
             "name": "symfony/var-dumper",
-            "version": "v4.3.6",
+            "version": "v4.3.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/var-dumper.git",
