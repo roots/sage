@@ -646,16 +646,16 @@
         },
         {
             "name": "log1x/sage-directives",
-            "version": "v1.1.3",
+            "version": "v1.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Log1x/sage-directives.git",
-                "reference": "7faa87e2a0a9ca554f3e2cee3ccaba7e30617a0f"
+                "reference": "d187dcd2516115bc676a6b71aa04e353a4dd399b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Log1x/sage-directives/zipball/7faa87e2a0a9ca554f3e2cee3ccaba7e30617a0f",
-                "reference": "7faa87e2a0a9ca554f3e2cee3ccaba7e30617a0f",
+                "url": "https://api.github.com/repos/Log1x/sage-directives/zipball/d187dcd2516115bc676a6b71aa04e353a4dd399b",
+                "reference": "d187dcd2516115bc676a6b71aa04e353a4dd399b",
                 "shasum": ""
             },
             "require": {
@@ -694,7 +694,7 @@
                 "sage",
                 "wordpress"
             ],
-            "time": "2019-08-25T19:26:32+00:00"
+            "time": "2019-11-14T01:02:07+00:00"
         },
         {
             "name": "log1x/sage-svg",
