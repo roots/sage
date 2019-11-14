@@ -4,7 +4,7 @@
  * Theme admin.
  *
  * @copyright https://roots.io/ Roots
- * @license   http://opensource.org/licenses/MIT MIT
+ * @license   https://opensource.org/licenses/MIT MIT
  */
 
 namespace App;
