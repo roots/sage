@@ -26,6 +26,8 @@
     "@babel/plugin-syntax-dynamic-import": "^7.2",
     "@wordpress/browserslist-config": "^2.6.0",
     "babel-eslint": "^10.0.3",
+    "browser-sync": "^2.26.7",
+    "browser-sync-webpack-plugin": "^2.0.1",
     "cross-env": "^6.0.3",
     "eslint": "^6.3.0",
     "eslint-plugin-import": "^2.18.2",
