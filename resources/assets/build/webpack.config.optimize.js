@@ -1,8 +1,11 @@
-'use strict'; // eslint-disable-line
+"use strict"; // eslint-disable-line
 
 const { default: ImageminPlugin } = require('imagemin-webpack-plugin');
 const imageminMozjpeg = require('imagemin-mozjpeg');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const Glob = require('glob-all');
+const PurgecssPlugin = require('purgecss-webpack-plugin');
+const purgecssWordpress = require('purgecss-with-wordpress');
 
 const config = require('./config');
 
@@ -20,16 +23,25 @@ module.exports = {
         ],
       },
       plugins: [imageminMozjpeg({ quality: 75 })],
-      disable: (config.enabled.watcher),
+      disable: config.enabled.watcher,
     }),
     new UglifyJsPlugin({
       uglifyOptions: {
         ecma: 5,
+        warnings: true,
         compress: {
-          warnings: true,
           drop_console: true,
         },
       },
+    }),
+    new PurgecssPlugin({
+      paths: Glob.sync([
+        'app/**/*.php',
+        'resources/views/**/*.php',
+        'resources/assets/scripts/**/*.js',
+      ]),
+      whitelist: [...purgecssWordpress.whitelist],
+      whitelistPatterns: [...purgecssWordpress.whitelistPatterns],
     }),
   ],
 };
