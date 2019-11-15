@@ -941,12 +941,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/roots/acorn.git",
-                "reference": "bcd41746ee224eb13f6806472379f0362c73f71f"
+                "reference": "b2c38d97af07d879b07f2648bc12f92a3b58c950"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/roots/acorn/zipball/bcd41746ee224eb13f6806472379f0362c73f71f",
-                "reference": "bcd41746ee224eb13f6806472379f0362c73f71f",
+                "url": "https://api.github.com/repos/roots/acorn/zipball/b2c38d97af07d879b07f2648bc12f92a3b58c950",
+                "reference": "b2c38d97af07d879b07f2648bc12f92a3b58c950",
                 "shasum": ""
             },
             "require": {
@@ -1004,7 +1004,7 @@
                 "sage",
                 "wordpress"
             ],
-            "time": "2019-11-09T04:59:19+00:00"
+            "time": "2019-11-15T16:34:48+00:00"
         },
         {
             "name": "roots/support",

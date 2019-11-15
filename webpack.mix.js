@@ -1,6 +1,7 @@
-const mix = require('laravel-mix')
-            require('laravel-mix-purgecss')
-            require('laravel-mix-copy-watched')
+const mix = require('laravel-mix');
+            require('laravel-mix-wp-blocks');
+            require('laravel-mix-purgecss');
+            require('laravel-mix-copy-watched');
 
 /*
  |--------------------------------------------------------------------------
@@ -14,25 +15,27 @@ const mix = require('laravel-mix')
  */
 
 mix.setPublicPath('./dist')
-   .browserSync('sage.test')
+   .browserSync('sage.test');
 
 mix.sass('resources/assets/styles/app.scss', 'styles')
-   .purgeCss()
+   .sass('resources/assets/styles/editor.scss', 'styles')
+   .purgeCss();
 
 mix.js('resources/assets/scripts/app.js', 'scripts')
    .js('resources/assets/scripts/customizer.js', 'scripts')
-   .extract()
+   .blocks('resources/assets/scripts/editor.js', 'scripts')
+   .extract();
 
 mix.copyWatched('resources/assets/images', 'dist/images')
-   .copyWatched('resources/assets/fonts', 'dist/fonts')
+   .copyWatched('resources/assets/fonts', 'dist/fonts');
 
 mix.autoload({
   jquery: ['$', 'window.jQuery'],
-})
+});
 
 mix.options({
   processCssUrls: false,
-})
+});
 
 mix.sourceMaps(false, 'source-map')
-   .version()
+   .version();
