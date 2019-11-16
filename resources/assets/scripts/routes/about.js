@@ -1,6 +1,0 @@
-/**
- * About Us
- */
-export default () => {
-  //--
-};

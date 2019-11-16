@@ -12,10 +12,11 @@
     "mix:hot": "webpack-dev-server --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
     "clean": "run-p clean:*",
     "clean:dist": "rimraf dist",
+    "clean:cache": "rimraf storage/framework/cache/*.php storage/framework/cache/data/*.php",
     "clean:views": "rimraf storage/framework/views/*.php",
     "lint": "run-s -c lint:*",
     "lint:scripts": "eslint resources/assets/scripts",
-    "lint:styles": "stylelint \"resources/assets/**/*.{vue,css,sass,scss,sss,less}\"",
+    "lint:styles": "stylelint \"resources/assets/**/*.{vue,css,sass,scss,less}\"",
     "test": "run-s -c lint",
     "translate": "run-s -c translate:*",
     "translate:pot": "wp i18n make-pot . ./resources/languages/sage.pot --ignore-domain --include=\"app,resources/assets,resources/views\"",
@@ -23,14 +24,19 @@
   },
   "devDependencies": {
     "@babel/plugin-syntax-dynamic-import": "^7.2",
+    "@wordpress/babel-preset-default": "^4.7.0",
     "@wordpress/browserslist-config": "^2.6.0",
+    "@wordpress/dependency-extraction-webpack-plugin": "^2.1.0",
     "babel-eslint": "^10.0.3",
     "browser-sync": "^2.26.7",
     "browser-sync-webpack-plugin": "^2.0.1",
     "cross-env": "^6.0.3",
     "eslint": "^6.3.0",
-    "eslint-plugin-import": "^2.18",
+    "eslint-plugin-import": "^2.18.2",
     "laravel-mix": "^5.0.0",
+    "laravel-mix-copy-watched": "^2.2.1",
+    "laravel-mix-purgecss": "^4.2.0",
+    "laravel-mix-wp-blocks": "^0.2.0",
     "npm-run-all": "^4.1",
     "rimraf": "^3.0",
     "sass": "^1.23.3",
@@ -40,9 +46,8 @@
     "vue-template-compiler": "^2.6.10"
   },
   "dependencies": {
-    "bootstrap": "^4.3",
-    "jquery": "^3.4",
-    "js-dom-router": "^1.0",
-    "popper.js": "^1.15"
+    "bootstrap": "^4.3.1",
+    "jquery": "^3.4.1",
+    "popper.js": "^1.16.0"
   }
 }

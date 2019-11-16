@@ -1,35 +1,56 @@
 <?php
 
+/**
+ * Theme setup.
+ *
+ * @copyright https://roots.io/ Roots
+ * @license   https://opensource.org/licenses/MIT MIT
+ */
+
 namespace App;
 
 use function Roots\asset;
-use function Roots\config;
-use function Roots\view;
 
 /**
- * Theme assets
+ * Register the theme assets.
+ *
+ * @return void
  */
 add_action('wp_enqueue_scripts', function () {
-    wp_enqueue_script('sage/vendor', asset('scripts/vendor.js')->uri(), ['jquery'], null, true);
-    wp_enqueue_script('sage/app', asset('scripts/app.js')->uri(), ['sage/vendor', 'jquery'], null, true);
+    wp_enqueue_script('sage/vendor.js', asset('scripts/vendor.js')->uri(), ['jquery'], null, true);
+    wp_enqueue_script('sage/app.js', asset('scripts/app.js')->uri(), ['sage/vendor.js', 'jquery'], null, true);
 
-    wp_add_inline_script('sage/vendor', asset('scripts/manifest.js')->contents(), 'before');
+    wp_add_inline_script('sage/vendor.js', asset('scripts/manifest.js')->contents(), 'before');
 
     if (is_single() && comments_open() && get_option('thread_comments')) {
         wp_enqueue_script('comment-reply');
     }
 
-    $styles = ['styles/app.css'];
-
-    foreach ($styles as $stylesheet) {
-        if (asset($stylesheet)->exists()) {
-            wp_enqueue_style('sage/' . basename($stylesheet, '.css'), asset($stylesheet)->uri(), false, null);
-        }
-    }
+    wp_enqueue_style('sage/app.css', asset('styles/app.css')->uri(), false, null);
 }, 100);
 
 /**
- * Theme setup
+ * Register the theme assets with the block editor.
+ *
+ * @return void
+ */
+add_action('enqueue_block_editor_assets', function () {
+    if ($manifest = asset('scripts/manifest.asset.php')->get()) {
+        wp_enqueue_script(
+            'sage/editor.js',
+            asset('scripts/editor.js')->uri(),
+            $manifest['dependencies'],
+            $manifest['version']
+        );
+    }
+
+    wp_enqueue_style('sage/editor.css', asset('styles/editor.css')->uri(), false, null);
+}, 100);
+
+/**
+ * Register the initial theme setup.
+ *
+ * @return void
  */
 add_action('after_setup_theme', function () {
     /**
@@ -37,7 +58,6 @@ add_action('after_setup_theme', function () {
      * @link https://roots.io/plugins/soil/
      */
     add_theme_support('soil-clean-up');
-    add_theme_support('soil-jquery-cdn');
     add_theme_support('soil-nav-walker');
     add_theme_support('soil-nice-search');
     add_theme_support('soil-relative-urls');
@@ -63,6 +83,18 @@ add_action('after_setup_theme', function () {
     add_theme_support('post-thumbnails');
 
     /**
+     * Add theme support for Wide Alignment
+     * @link https://wordpress.org/gutenberg/handbook/designers-developers/developers/themes/theme-support/#wide-alignment
+     */
+    add_theme_support('align-wide');
+
+    /**
+     * Enable responsive embeds
+     * @link https://wordpress.org/gutenberg/handbook/designers-developers/developers/themes/theme-support/#responsive-embedded-content
+     */
+    add_theme_support('responsive-embeds');
+
+    /**
      * Enable HTML5 markup support
      * @link https://developer.wordpress.org/reference/functions/add_theme_support/#html5
      */
@@ -73,16 +105,12 @@ add_action('after_setup_theme', function () {
      * @link https://developer.wordpress.org/themes/advanced-topics/customizer-api/#theme-support-in-sidebars
      */
     add_theme_support('customize-selective-refresh-widgets');
-
-    /**
-     * Use main stylesheet for visual editor
-     * @see resources/assets/styles/layouts/tinymce.scss
-     */
-    add_editor_style(asset('styles/app.css')->uri());
 }, 20);
 
 /**
- * Register sidebars
+ * Register the theme sidebars.
+ *
+ * @return void
  */
 add_action('widgets_init', function () {
     $config = [

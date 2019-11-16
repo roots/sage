@@ -3,12 +3,12 @@
   @include('partials.head')
 
   <body @php(body_class())>
-    @php(wp_body_open())
-    @php(do_action('get_header'))
-    @include('partials.header')
+    <div id="app">
+      @php(wp_body_open())
+      @php(do_action('get_header'))
+      @include('partials.header')
 
-    <div class="wrap container">
-      <div class="content">
+      <div class="container">
         <main class="main">
           @yield('content')
         </main>
@@ -19,10 +19,10 @@
           </aside>
         @endif
       </div>
-    </div>
 
-    @php(do_action('get_footer'))
-    @include('partials.footer')
+      @php(do_action('get_footer'))
+      @include('partials.footer')
+    </div>
 
     @php(wp_footer())
   </body>

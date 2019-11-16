@@ -1,6 +1,0 @@
-/**
- * Home
- */
-export default () => {
-  //--
-};

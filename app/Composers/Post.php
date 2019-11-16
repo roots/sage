@@ -4,7 +4,7 @@ namespace App\Composers;
 
 use Roots\Acorn\View\Composer;
 
-class Title extends Composer
+class Post extends Composer
 {
     /**
      * List of views served by this composer.
@@ -14,15 +14,15 @@ class Title extends Composer
     protected static $views = [
         'partials.page-header',
         'partials.content',
-        'partials.content-*'
+        'partials.content-*',
     ];
 
     /**
-     * Data to be passed to view before rendering.
+     * Data to be passed to view before rendering, but after merging.
      *
      * @return array
      */
-    public function with()
+    public function override()
     {
         return [
             'title' => $this->title(),
@@ -36,7 +36,7 @@ class Title extends Composer
      */
     public function title()
     {
-        if ($this->view !== 'partials.page-header') {
+        if ($this->view->name() !== 'partials.page-header') {
             return get_the_title();
         }
 

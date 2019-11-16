@@ -19,6 +19,11 @@
       "name": "QWp6t",
       "email": "hi@qwp6t.me",
       "homepage": "https://github.com/qwp6t"
+    },
+    {
+      "name": "Brandon Nifong",
+      "email": "brandon@tendency.me",
+      "homepage": "https://github.com/log1x"
     }
   ],
   "keywords": [
@@ -35,13 +40,15 @@
   },
   "require": {
     "php": "^7.2",
-    "log1x/sage-directives": "^1.0",
-    "log1x/sage-svg": "^1.0",
     "roots/acorn": "dev-master"
   },
   "require-dev": {
     "filp/whoops": "^2.5",
-    "squizlabs/php_codesniffer": "^3.4"
+    "squizlabs/php_codesniffer": "^3.5"
+  },
+  "suggest": {
+    "log1x/sage-directives": "A collection of useful Blade directives for WordPress and Sage (^1.0).",
+    "log1x/sage-svg": "Provides a useful SVG directive for properly inlining SVG's within your Blade views (^1.0)."
   },
   "config": {
     "optimize-autoloader": true,
@@ -52,7 +59,7 @@
   "prefer-stable": true,
   "scripts": {
     "lint": [
-      "phpcs --ignore=vendor,resources,storage --extensions=php --standard=PSR12 ."
+      "phpcs --ignore=vendor,resources,storage,dist --extensions=php --standard=PSR12 ."
     ],
     "post-autoload-dump": [
       "Roots\\Acorn\\ComposerScripts::postAutoloadDump"

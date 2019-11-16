@@ -1,5 +1,4 @@
 /** Config */
-@import 'config/functions';
 @import 'config/variables';
 @import 'config/external';
 
@@ -7,14 +6,7 @@
 @import 'common/global';
 
 /** Components */
-@import 'components/buttons';
-@import 'components/comments';
-@import 'components/forms';
-@import 'components/wp-classes';
+@import 'components/button';
 
-/** Layouts */
-@import 'layouts/header';
-@import 'layouts/footer';
-@import 'layouts/pages';
-@import 'layouts/posts';
-@import 'layouts/tinymce';
+/** Partials */
+@import 'partials/header';

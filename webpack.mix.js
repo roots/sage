@@ -1,10 +1,7 @@
 const mix = require('laravel-mix');
-
-// Public path helper
-const publicPath = path => `${mix.config.publicPath}/${path}`;
-
-// Source path helper
-const src = path => `resources/assets/${path}`;
+            require('laravel-mix-wp-blocks');
+            require('laravel-mix-purgecss');
+            require('laravel-mix-copy-watched');
 
 /*
  |--------------------------------------------------------------------------
@@ -17,41 +14,28 @@ const src = path => `resources/assets/${path}`;
  |
  */
 
-// Public Path
-mix
-  .setPublicPath('./dist')
-  .setResourceRoot(`/app/themes/sage/${mix.config.publicPath}/`)
-  .webpackConfig({
-    output: { publicPath: mix.config.resourceRoot }
-  });
+mix.setPublicPath('./dist')
+   .browserSync('sage.test');
 
-// Browsersync
-mix.browserSync('example.test');
+mix.sass('resources/assets/styles/app.scss', 'styles')
+   .sass('resources/assets/styles/editor.scss', 'styles')
+   .purgeCss();
 
-// Styles
-mix.sass(src`styles/app.scss`, 'styles');
-
-// JavaScript
-mix.js(src`scripts/app.js`, 'scripts')
-   .js(src`scripts/customizer.js`, 'scripts')
+mix.js('resources/assets/scripts/app.js', 'scripts')
+   .js('resources/assets/scripts/customizer.js', 'scripts')
+   .blocks('resources/assets/scripts/editor.js', 'scripts')
    .extract();
 
-// Assets
-mix.copyDirectory(src`images`, publicPath`images`)
-   .copyDirectory(src`fonts`, publicPath`fonts`);
+mix.copyWatched('resources/assets/images', 'dist/images')
+   .copyWatched('resources/assets/fonts', 'dist/fonts');
 
-// Autoload
 mix.autoload({
   jquery: ['$', 'window.jQuery'],
 });
 
-// Options
 mix.options({
   processCssUrls: false,
 });
 
-// Source maps when not in production.
-mix.sourceMaps(false, 'source-map');
-
-// Hash and version files in production.
-mix.version();
+mix.sourceMaps(false, 'source-map')
+   .version();
