@@ -2,8 +2,12 @@
  * Editor
  */
 
+ @import 'config/variables';
+
 .editor-styles-wrapper > * {
+  @import 'common/global';
+
   [example-block] {
-    color: #111;
+    @import 'components/button';
   }
 }
