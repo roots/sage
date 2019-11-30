@@ -1,24 +1,39 @@
-.is-style-ghost {
-  .wp-block-button__link,
-  .wp-block-button__link.has-background,
-  .wp-block-button__link.has-text-color {
-    @include transition($transition-background);
+.wp-block-button {
+  &.is-style-ghost {
+    .wp-block-button__link {
+      @include button-size(
+        $btn-padding-y,
+        $btn-padding-x,
+        $btn-font-size,
+        $btn-line-height,
+        $btn-border-radius
+      );
 
-    background-color: map-get($theme-colors, 'light');
-    border: solid 2px map-get($theme-colors, 'primary');
-    color: map-get($theme-colors, 'primary');
+      background: map-get($theme-colors, 'light');
+      border-color: map-get($theme-colors, 'primary');
+      border-style: solid;
+      border-width: $btn-border-width;
+      box-shadow: $btn-box-shadow;
+      color: map-get($theme-colors, 'primary');
+      font-family: $btn-font-family;
+      transition: $btn-transition;
 
-    &:hover,
-    &:active,
-    &:focus {
-      background-color: map-get($theme-colors, 'primary');
-      border-color: map-get($theme-colors, 'light');
-      color: map-get($theme-colors, 'light');
-      text-decoration: none;
-    }
+      &:hover,
+      &:active,
+      &:focus {
+        background: map-get($theme-colors, 'primary');
+        border-color: map-get($theme-colors, 'light');
+        color: map-get($theme-colors, 'light');
+        text-decoration: none;
+      }
 
-    &:hover {
-      @include transition($transition-background);
+      &:active {
+        box-shadow: $btn-active-box-shadow;
+      }
+
+      &:hover {
+        transition: $btn-transition;
+      }
     }
   }
 }

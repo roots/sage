@@ -1,10 +1,15 @@
 import '@wordpress/edit-post';
 import domReady from '@wordpress/dom-ready';
-import { registerBlockStyle } from '@wordpress/blocks';
+import {
+  unregisterBlockStyle,
+  registerBlockStyle,
+} from '@wordpress/blocks';
 
 domReady(() => {
+  unregisterBlockStyle('core/button', 'outline');
+
   registerBlockStyle('core/button', {
-    name: 'ghost',
-    label: 'Ghost',
+    name: 'outline',
+    label: 'Outline',
   });
 });
