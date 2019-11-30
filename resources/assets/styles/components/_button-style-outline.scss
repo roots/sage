@@ -1,5 +1,5 @@
 .wp-block-button {
-  &.is-style-ghost {
+  &.is-style-outline {
     .wp-block-button__link {
       @include button-size(
         $btn-padding-y,
