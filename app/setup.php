@@ -42,7 +42,7 @@ add_action('enqueue_block_editor_assets', function () {
             $manifest['dependencies'],
             $manifest['version']
         );
-        
+
         wp_add_inline_script('sage/editor.js', asset('scripts/manifest.js')->contents(), 'before');
     }
 
@@ -107,6 +107,18 @@ add_action('after_setup_theme', function () {
      * @link https://developer.wordpress.org/themes/advanced-topics/customizer-api/#theme-support-in-sidebars
      */
     add_theme_support('customize-selective-refresh-widgets');
+
+    /**
+     * Enable theme color palette support
+     * @link https://developer.wordpress.org/block-editor/developers/themes/theme-support/#block-color-palettes
+     */
+    add_theme_support('editor-color-palette', [
+        [
+            'name'  => __('Primary', 'sage'),
+            'slug'  => 'primary',
+            'color'	=> '#525ddc',
+        ]
+    ]);
 }, 20);
 
 /**
