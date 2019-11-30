@@ -42,7 +42,7 @@ add_action('enqueue_block_editor_assets', function () {
             $manifest['dependencies'],
             $manifest['version']
         );
-        
+
         wp_add_inline_script('sage/editor.js', asset('scripts/manifest.js')->contents(), 'before');
     }
 

@@ -11,4 +11,10 @@
 .editor-styles-wrapper > * {
   @import 'common/global';
   @import 'components';
+
+  .wp-block {
+    max-width: 1110px;
+    padding-left: 43px;
+    padding-right: 43px;
+  }
 }
