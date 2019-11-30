@@ -1,0 +1,24 @@
+.is-style-ghost {
+  .wp-block-button__link,
+  .wp-block-button__link.has-background,
+  .wp-block-button__link.has-text-color {
+    @include transition($transition-background);
+
+    background-color: map-get($theme-colors, 'light');
+    border: solid 2px map-get($theme-colors, 'primary');
+    color: map-get($theme-colors, 'primary');
+
+    &:hover,
+    &:active,
+    &:focus {
+      background-color: map-get($theme-colors, 'primary');
+      border-color: map-get($theme-colors, 'light');
+      color: map-get($theme-colors, 'light');
+      text-decoration: none;
+    }
+
+    &:hover {
+      @include transition($transition-background);
+    }
+  }
+}
