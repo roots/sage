@@ -42,7 +42,7 @@ add_action('enqueue_block_editor_assets', function () {
             $manifest['dependencies'],
             $manifest['version']
         );
-        
+
         wp_add_inline_script('sage/editor.js', asset('scripts/manifest.js')->contents(), 'before');
     }
 
@@ -85,10 +85,28 @@ add_action('after_setup_theme', function () {
     add_theme_support('post-thumbnails');
 
     /**
-     * Add theme support for Wide Alignment
-     * @link https://wordpress.org/gutenberg/handbook/designers-developers/developers/themes/theme-support/#wide-alignment
+     * Disable block editor color palettes
+     * @link https://developer.wordpress.org/block-editor/developers/themes/theme-support/#disabling-custom-colors-in-block-color-palettes
      */
-    add_theme_support('align-wide');
+    add_theme_support('disable-custom-colors');
+
+    /**
+     * Set color palette for the editor
+     * @link https://github.com/WordPress/gutenberg/blob/master/docs/designers-developers/developers/themes/theme-support.md#block-font-sizes
+     */
+    add_theme_support('editor-color-palette', []);
+
+    /**
+     * Disable custom block editor font sizes
+     * @link https://developer.wordpress.org/block-editor/developers/themes/theme-support/#disabling-custom-font-sizes
+     */
+    add_theme_support('disable-custom-font-sizes');
+
+    /**
+     * Set font sizes for the editor
+     * @link https://github.com/WordPress/gutenberg/blob/master/docs/designers-developers/developers/themes/theme-support.md#block-font-sizes
+     */
+    add_theme_support('editor-font-sizes', []);
 
     /**
      * Enable responsive embeds
