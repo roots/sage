@@ -10,7 +10,8 @@
 
 .editor-styles-wrapper > * {
   @import 'common/global';
-  @import 'components';
+  @import 'components/block';
+  @import 'components/button';
 
   .wp-block,
   .wp-block .editor-post-title__input {
