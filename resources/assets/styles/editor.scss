@@ -12,17 +12,4 @@
   @import 'common/global';
   @import 'components/block';
   @import 'components/button';
-
-  .wp-block,
-  .wp-block .editor-post-title__input {
-    font-family: $font-family-base;
-    max-width: 1110px;
-  }
-
-  .editor-block-list__layout {
-    .wp-block {
-      padding-left: 43px;
-      padding-right: 43px;
-    }
-  }
 }
