@@ -85,16 +85,22 @@ add_action('after_setup_theme', function () {
     add_theme_support('post-thumbnails');
 
     /**
-     * Disable block editor color palettes
-     * @link https://developer.wordpress.org/block-editor/developers/themes/theme-support/#disabling-custom-colors-in-block-color-palettes
+     * Enable HTML5 markup support
+     * @link https://developer.wordpress.org/reference/functions/add_theme_support/#html5
      */
-    add_theme_support('disable-custom-colors');
+    add_theme_support('html5', ['caption', 'comment-form', 'comment-list', 'gallery', 'search-form']);
 
     /**
-     * Set color palette for the editor
-     * @link https://github.com/WordPress/gutenberg/blob/master/docs/designers-developers/developers/themes/theme-support.md#block-font-sizes
+     * Enable selective refresh for widgets in customizer
+     * @link https://developer.wordpress.org/themes/advanced-topics/customizer-api/#theme-support-in-sidebars
      */
-    add_theme_support('editor-color-palette', []);
+    add_theme_support('customize-selective-refresh-widgets');
+
+    /**
+     * Enable responsive embeds
+     * @link https://wordpress.org/gutenberg/handbook/designers-developers/developers/themes/theme-support/#responsive-embedded-content
+     */
+    add_theme_support('responsive-embeds');
 
     /**
      * Disable custom block editor font sizes
@@ -109,22 +115,22 @@ add_action('after_setup_theme', function () {
     add_theme_support('editor-font-sizes', []);
 
     /**
-     * Enable responsive embeds
-     * @link https://wordpress.org/gutenberg/handbook/designers-developers/developers/themes/theme-support/#responsive-embedded-content
+     * Enable theme color palette support
+     * @link https://developer.wordpress.org/block-editor/developers/themes/theme-support/#block-color-palettes
      */
-    add_theme_support('responsive-embeds');
+    add_theme_support('editor-color-palette', [
+        [
+            'name'  => __('Primary', 'sage'),
+            'slug'  => 'primary',
+            'color'	=> '#525ddc',
+        ]
+    ]);
 
     /**
-     * Enable HTML5 markup support
-     * @link https://developer.wordpress.org/reference/functions/add_theme_support/#html5
+     * Disable block editor color palettes
+     * @link https://developer.wordpress.org/block-editor/developers/themes/theme-support/#disabling-custom-colors-in-block-color-palettes
      */
-    add_theme_support('html5', ['caption', 'comment-form', 'comment-list', 'gallery', 'search-form']);
-
-    /**
-     * Enable selective refresh for widgets in customizer
-     * @link https://developer.wordpress.org/themes/advanced-topics/customizer-api/#theme-support-in-sidebars
-     */
-    add_theme_support('customize-selective-refresh-widgets');
+    add_theme_support('disable-custom-colors');
 }, 20);
 
 /**

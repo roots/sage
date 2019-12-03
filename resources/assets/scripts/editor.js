@@ -1,7 +1,10 @@
 import { __ } from '@wordpress/i18n';
 import { filterCategories } from './hooks/inserter'
 import { whitelistBlocks } from './hooks/whitelist';
-import { registerBlockStyles, unregisterBlockStyles } from './hooks/styles'
+import {
+  registerBlockStyles,
+  unregisterBlockStyles,
+} from './hooks/styles'
 
 /**
  * Restricts blocks to the following list.
@@ -42,11 +45,26 @@ filterCategories('blocks');
  * Unregister core block default styles.
 */
 unregisterBlockStyles([
-  {block: 'core/button',    styles: ['outline', 'fill']},
-  {block: 'core/image',     styles: ['default', 'circle-mask']},
-  {block: 'core/pullquote', styles: ['default', 'solid-color']},
-  {block: 'core/table',     styles: ['regular', 'stripes']},
-  {block: 'core/quote',     styles: ['default', 'large']},
+  {
+    block: 'core/button',
+    styles: ['outline', 'fill'],
+  },
+  {
+    block: 'core/image',
+    styles: ['default', 'circle-mask'],
+  },
+  {
+    block: 'core/pullquote',
+    styles: ['default', 'solid-color'],
+  },
+  {
+    block: 'core/table',
+    styles: ['regular', 'stripes'],
+  },
+  {
+    block: 'core/quote',
+    styles: ['default', 'large'],
+  },
 ]);
 
 /**
@@ -56,8 +74,14 @@ registerBlockStyles([
   {
     block: 'core/button',
     styles: [
-      {name: 'solid',   label: __('Solid', 'sage')},
-      {name: 'outline', label: __('Outline', 'sage')},
+      {
+        name: 'solid',
+        label: __('Solid', 'sage'),
+      },
+      {
+        name: 'outline',
+        label: __('Outline', 'sage'),
+      },
     ],
   },
 ]);
