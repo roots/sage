@@ -5,12 +5,12 @@
 .wp-block-button {
   // Base
   &__link {
+    font-size: $btn-font-size;
+    line-height: $btn-line-height;
     padding-bottom: $btn-padding-y;
     padding-left: $btn-padding-x;
     padding-right: $btn-padding-x;
     padding-top: $btn-padding-y;
-    font-size: $btn-font-size;
-    line-height: $btn-line-height;
 
     &:hover {
       text-decoration: none;

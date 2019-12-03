@@ -1,3 +1,7 @@
+/**
+ * Block
+ */
+
 @each $color-name, $color-value in $theme-colors {
   .has-#{$color-name}-color {
     color: $color-value;

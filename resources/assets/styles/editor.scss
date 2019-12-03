@@ -10,6 +10,5 @@
 
 .editor-styles-wrapper > * {
   @import 'common/global';
-  @import 'components/block';
-  @import 'components/button';
+  @import 'components';
 }
