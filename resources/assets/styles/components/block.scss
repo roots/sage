@@ -1,11 +1,9 @@
-[class^="wp-block-"] {
-  @each $color-name, $color-value in $theme-colors {
-    .has-#{$color-name}-color {
-      color: $color-value;
-    }
+@each $color-name, $color-value in $theme-colors {
+  .has-#{$color-name}-color {
+    color: $color-value;
+  }
 
-    .has-#{$color-name}-background-color {
-      background-color: $color-value;
-    }
+  .has-#{$color-name}-background-color {
+    background-color: $color-value;
   }
 }
