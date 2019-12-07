@@ -7,6 +7,8 @@
 
 Sage is a WordPress starter theme with a modern development workflow.
 
+**Sage 10 is in active development and is currently in alpha. The `master` branch tracks Sage 10 development. If you want a stable version, use the [latest Sage 9 release](https://github.com/roots/sage/releases/latest).**
+
 ## Features
 
 * Sass for stylesheets
@@ -14,7 +16,7 @@ Sage is a WordPress starter theme with a modern development workflow.
 * [Laravel Mix](https://github.com/JeffreyWay/laravel-mix) for compiling assets and concatenating and minifying files
 * [Browsersync](http://www.browsersync.io/) for synchronized browser testing
 * [Blade](https://laravel.com/docs/5.8/blade) as a templating engine
-* CSS framework (optional): [Bootstrap 4](https://getbootstrap.com/), [Bulma](https://bulma.io/), [Foundation](https://foundation.zurb.com/), [Tachyons](http://tachyons.io/), [Tailwind](https://tailwindcss.com/)
+* [Bootstrap 4](https://getbootstrap.com/) (optional)
 
 See a working example at [roots-example-project.com](https://roots-example-project.com/).
 
@@ -49,15 +51,6 @@ During theme installation you will have options to update `style.css` theme head
 
 ```sh
 themes/your-theme-name/   # → Root of your Sage based theme
-├── composer.json         # → Autoloading for `app/` files
-├── composer.lock         # → Composer lock file (never edit)
-├── dist/                 # → Built theme assets (never edit)
-├── functions.php         # → Composer autoloader, Acorn bootloader
-├── index.php             # → Never manually edit
-├── node_modules/         # → Node.js packages (never edit)
-├── package.json          # → Node.js dependencies and scripts
-├── screenshot.png        # → Theme screenshot for WP admin
-├── style.css             # → Theme meta information
 ├── app/                  # → Theme PHP
 │   ├── Composers/        # → View composers
 │   ├── Providers/        # → Service providers
@@ -69,9 +62,14 @@ themes/your-theme-name/   # → Root of your Sage based theme
 │   ├── app.php           # → Application configuration
 │   ├── assets.php        # → Asset configuration
 │   ├── filesystems.php   # → Filesystems configuration
-│   ├── logging.php       # → Logging configuration
 │   └── view.php          # → View configuration
+├── composer.json         # → Autoloading for `app/` files
+├── composer.lock         # → Composer lock file (never edit)
 ├── dist/                 # → Built theme assets (never edit)
+├── functions.php         # → Composer autoloader, Acorn bootloader
+├── index.php             # → Never manually edit
+├── node_modules/         # → Node.js packages (never edit)
+├── package.json          # → Node.js dependencies and scripts
 ├── resources/            # → Theme assets and templates
 │   ├── assets/           # → Front-end assets
 │   │   ├── fonts/        # → Theme fonts
@@ -79,10 +77,14 @@ themes/your-theme-name/   # → Root of your Sage based theme
 │   │   ├── scripts/      # → Theme JS
 │   │   └── styles/       # → Theme stylesheets
 │   └── views/            # → Theme templates
+│       ├── components/   # → Component templates
 │       ├── layouts/      # → Base templates
 │       └── partials/     # → Partial templates
+├── screenshot.png        # → Theme screenshot for WP admin
 ├── storage/              # → Storage location for cache (never edit)
-└── vendor/               # → Composer packages (never edit)
+├── style.css             # → Theme meta information
+├── vendor/               # → Composer packages (never edit)
+└── webpack.mix.js        # → Laravel Mix configuration
 ```
 
 ## Theme setup
