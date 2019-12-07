@@ -2,7 +2,38 @@
  * Button
  */
 
-.button {
-  background-color: map-get($theme-colors, 'primary');
-  color: #fff;
+.wp-block-button {
+  // Base
+  &__link {
+    font-size: $btn-font-size;
+    line-height: $btn-line-height;
+    padding-bottom: $btn-padding-y;
+    padding-left: $btn-padding-x;
+    padding-right: $btn-padding-x;
+    padding-top: $btn-padding-y;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  // Button style: outline
+  &.is-style-outline {
+    .wp-block-button__link {
+      @include button-outline-variant(
+        map-get($theme-colors, 'primary'),
+        map-get($theme-colors, 'light')
+      );
+    }
+  }
+
+  // Button style: solid
+  &.is-style-solid {
+    .wp-block-button__link {
+      @include button-variant(
+        map-get($theme-colors, 'primary'),
+        map-get($theme-colors, 'light')
+      );
+    }
+  }
 }
