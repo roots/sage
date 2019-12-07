@@ -17,20 +17,20 @@
     }
   }
 
-  // Button style: solid
-  &.is-style-solid {
+  // Button style: outline
+  &.is-style-outline {
     .wp-block-button__link {
-      @include button-variant(
+      @include button-outline-variant(
         map-get($theme-colors, 'primary'),
         map-get($theme-colors, 'light')
       );
     }
   }
 
-  // Button style: outline
-  &.is-style-outline {
+  // Button style: solid
+  &.is-style-solid {
     .wp-block-button__link {
-      @include button-outline-variant(
+      @include button-variant(
         map-get($theme-colors, 'primary'),
         map-get($theme-colors, 'light')
       );
