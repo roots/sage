@@ -4,7 +4,7 @@ namespace App\Composers;
 
 use Roots\Acorn\View\Composer;
 
-class Title extends Composer
+class Post extends Composer
 {
     /**
      * List of views served by this composer.
@@ -14,30 +14,29 @@ class Title extends Composer
     protected static $views = [
         'partials.page-header',
         'partials.content',
-        'partials.content-*'
+        'partials.content-*',
     ];
 
     /**
-     * Data to be passed to view before rendering.
+     * Data to be passed to view before rendering, but after merging.
      *
-     * @param  array $data
-     * @param  \Illuminate\View\View $view
      * @return array
      */
-    public function with($data, $view)
+    public function override()
     {
-        return ['title' => $this->title($view->getName())];
+        return [
+            'title' => $this->title(),
+        ];
     }
 
     /**
      * Returns the post title.
      *
-     * @param  \Illuminate\View\View $view
      * @return string
      */
-    public function title($view)
+    public function title()
     {
-        if ($view !== 'partials.page-header') {
+        if ($this->view->name() !== 'partials.page-header') {
             return get_the_title();
         }
 
@@ -54,7 +53,11 @@ class Title extends Composer
         }
 
         if (is_search()) {
-            return sprintf(__('Search Results for %s', 'sage'), get_search_query());
+            /* translators: %s is replaced with the search query */
+            return sprintf(
+                __('Search Results for %s', 'sage'),
+                get_search_query()
+            );
         }
 
         if (is_404()) {

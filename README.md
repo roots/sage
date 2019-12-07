@@ -1,4 +1,5 @@
 # [Sage](https://roots.io/sage/)
+
 [![Packagist](https://img.shields.io/packagist/vpre/roots/sage.svg?style=flat-square)](https://packagist.org/packages/roots/sage)
 [![devDependency Status](https://img.shields.io/david/dev/roots/sage.svg?style=flat-square)](https://david-dm.org/roots/sage#info=devDependencies)
 [![Build Status](https://img.shields.io/circleci/project/github/roots/sage/10.0.0-dev.svg?style=flat-square)](https://circleci.com/gh/roots/sage)
@@ -65,7 +66,7 @@ themes/your-theme-name/   # → Root of your Sage based theme
 ├── composer.json         # → Autoloading for `app/` files
 ├── composer.lock         # → Composer lock file (never edit)
 ├── dist/                 # → Built theme assets (never edit)
-├── functions.php         # → Composer autoloader, theme includes
+├── functions.php         # → Composer autoloader, Acorn bootloader
 ├── index.php             # → Never manually edit
 ├── node_modules/         # → Node.js packages (never edit)
 ├── package.json          # → Node.js dependencies and scripts
