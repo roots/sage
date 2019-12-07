@@ -116,7 +116,7 @@ add_action('after_setup_theme', function () {
         [
             'name'  => __('Primary', 'sage'),
             'slug'  => 'primary',
-            'color'	=> '#525ddc',
+            'color' => '#525ddc',
         ]
     ]);
 }, 20);
