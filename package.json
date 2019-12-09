@@ -34,7 +34,7 @@
     "eslint": "^6.7.2",
     "eslint-plugin-import": "^2.18.2",
     "laravel-mix": "^5.0.0",
-    "laravel-mix-copy-watched": "^2.2.1",
+    "laravel-mix-copy-watched": "^2.2.2",
     "laravel-mix-purgecss": "^4.2.0",
     "laravel-mix-wp-blocks": "^0.2.0",
     "npm-run-all": "^4.1",
