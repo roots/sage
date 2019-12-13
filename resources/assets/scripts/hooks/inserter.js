@@ -10,7 +10,7 @@ import { addFilter } from '@wordpress/hooks'
  * @param array  categories which should not be overwritten
  */
 const filterCategories = (newCategory, exceptions = []) => {
-  addFilter('blocks.registerBlockType', 'sage/inserter', (props) => {
+  addFilter('blocks.registerBlockType', 'sage/inserter', props => {
     props.category = exceptions.includes(props.category)
       ? props.category
       : props.category = newCategory;

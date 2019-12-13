@@ -11,4 +11,6 @@
 .editor-styles-wrapper > * {
   @import 'common/global';
   @import 'components';
+
+  font-family: $font-family-base;
 }
