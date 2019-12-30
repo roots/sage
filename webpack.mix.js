@@ -26,8 +26,8 @@ mix.js('resources/assets/scripts/app.js', 'scripts')
    .blocks('resources/assets/scripts/editor.js', 'scripts')
    .extract();
 
-mix.copyWatched('resources/assets/images', 'dist/images')
-   .copyWatched('resources/assets/fonts', 'dist/fonts');
+mix.copyWatched('resources/assets/images/**', 'dist/images')
+   .copyWatched('resources/assets/fonts/**', 'dist/fonts');
 
 mix.autoload({
   jquery: ['$', 'window.jQuery'],
