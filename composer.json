@@ -43,7 +43,7 @@
     "roots/acorn": "dev-master"
   },
   "require-dev": {
-    "filp/whoops": "^2.5",
+    "filp/whoops": "^2.7",
     "squizlabs/php_codesniffer": "^3.5"
   },
   "suggest": {
