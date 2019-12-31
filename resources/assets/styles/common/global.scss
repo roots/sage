@@ -6,11 +6,11 @@ a {
   color: map-get($theme-colors, 'primary');
 }
 
-
 /**
  * Block editor color palette utilities
  * @see https://git.io/JeyD6
  */
+
 @each $color-name, $color-value in $theme-colors {
   .has-#{$color-name}-color {
     color: $color-value;

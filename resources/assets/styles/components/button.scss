@@ -3,7 +3,6 @@
  */
 
 .wp-block-button {
-  // Base
   &__link {
     font-size: $btn-font-size;
     line-height: $btn-line-height;
@@ -17,7 +16,6 @@
     }
   }
 
-  // Button style: outline
   &.is-style-outline {
     .wp-block-button__link {
       @include button-outline-variant(
@@ -27,7 +25,6 @@
     }
   }
 
-  // Button style: solid
   &.is-style-solid {
     .wp-block-button__link {
       @include button-variant(
