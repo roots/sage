@@ -1,5 +1,5 @@
 const mix = require('laravel-mix');
-            require('laravel-mix-wp-blocks');
+            require('@tinypixelco/laravel-mix-wp-blocks');
             require('laravel-mix-purgecss');
             require('laravel-mix-copy-watched');
 
