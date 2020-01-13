@@ -930,15 +930,15 @@
     "@webassemblyjs/wast-parser" "1.8.5"
     "@xtuc/long" "4.2.2"
 
-"@wordpress/babel-plugin-import-jsx-pragma@^2.3.0":
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-2.3.0.tgz#330b736fa383437ce1abc442f6cf61cd46437ee9"
-  integrity sha512-b45c4x1+OvQm1f6egrBruO8eVF4bRVRZ8ojM1ttDcMi+K/qXfun3J6O8xXpSnA5eeNCZaJL3DhIk/aoNBbpwzw==
+"@wordpress/babel-plugin-import-jsx-pragma@^2.4.0":
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/@wordpress/babel-plugin-import-jsx-pragma/-/babel-plugin-import-jsx-pragma-2.4.0.tgz#01835191cf14047898518ff47a7b6914cece5d19"
+  integrity sha512-52ZN4cWHF/Ts9UPk4urhzonz4s9e4jvhUQ96cs8UWkqvuTjli+YZhYjSl/eFX8yIP4Xk8V54NvW4C/VRilAk5g==
 
-"@wordpress/babel-preset-default@^4.8.0":
-  version "4.8.0"
-  resolved "https://registry.yarnpkg.com/@wordpress/babel-preset-default/-/babel-preset-default-4.8.0.tgz#8b990e09fe6066197d33ed5bae7cecb459612cad"
-  integrity sha512-8Yo7vplkcJbfr6W85fByt9fkKOKWrEq3i2ezwdMcT0+2cGIA9eMxDz9vZb999NJ77IBY3IgIb3JNuaE0OBCGVw==
+"@wordpress/babel-preset-default@^4.9.0":
+  version "4.9.0"
+  resolved "https://registry.yarnpkg.com/@wordpress/babel-preset-default/-/babel-preset-default-4.9.0.tgz#80d2b2fe2a1c8e4e3d0be443c7d6291a4dea99eb"
+  integrity sha512-G1HJ5IzpWDUr2LJbs7egD9SLdurRsAcdrqodHY+w5qc4BazSI8IAYcqmt9yybCxL1byHKztzNNy6RxSLpcLSmQ==
   dependencies:
     "@babel/core" "^7.4.5"
     "@babel/plugin-proposal-async-generator-functions" "^7.2.0"
@@ -947,7 +947,7 @@
     "@babel/plugin-transform-runtime" "^7.4.4"
     "@babel/preset-env" "^7.4.5"
     "@babel/runtime" "^7.4.5"
-    "@wordpress/babel-plugin-import-jsx-pragma" "^2.3.0"
+    "@wordpress/babel-plugin-import-jsx-pragma" "^2.4.0"
     "@wordpress/browserslist-config" "^2.6.0"
     "@wordpress/element" "^2.10.0"
     core-js "^3.1.4"
