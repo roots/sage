@@ -23,7 +23,7 @@
     "translate:js": "wp i18n make-json ./resources/languages --no-purge --pretty-print"
   },
   "devDependencies": {
-    "@babel/plugin-syntax-dynamic-import": "^7.7.4",
+    "@babel/plugin-syntax-dynamic-import": "^7.8.0",
     "@tinypixelco/laravel-mix-wp-blocks": "^1.0.0",
     "@wordpress/babel-preset-default": "^4.8.0",
     "@wordpress/browserslist-config": "^2.6.0",
