@@ -2,9 +2,6 @@
 
 /**
  * Theme setup.
- *
- * @copyright https://roots.io/ Roots
- * @license   https://opensource.org/licenses/MIT MIT
  */
 
 namespace App;
@@ -36,14 +33,10 @@ add_action('wp_enqueue_scripts', function () {
  */
 add_action('enqueue_block_editor_assets', function () {
     if ($manifest = asset('scripts/manifest.asset.php')->get()) {
-        wp_enqueue_script(
-            'sage/editor.js',
-            asset('scripts/editor.js')->uri(),
-            $manifest['dependencies'],
-            $manifest['version']
-        );
+        wp_enqueue_script('sage/vendor.js', asset('scripts/vendor.js')->uri(), $manifest['dependencies'], null, true);
+        wp_enqueue_script('sage/editor.js', asset('scripts/editor.js')->uri(), ['sage/vendor.js'], null, true);
 
-        wp_add_inline_script('sage/editor.js', asset('scripts/manifest.js')->contents(), 'before');
+        wp_add_inline_script('sage/vendor.js', asset('scripts/manifest.js')->contents(), 'before');
     }
 
     wp_enqueue_style('sage/editor.css', asset('styles/editor.css')->uri(), false, null);
