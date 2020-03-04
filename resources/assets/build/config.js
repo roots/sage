@@ -26,6 +26,7 @@ const config = merge({
     optimize: isProduction,
     cacheBusting: isProduction,
     watcher: !!argv.watch,
+    browserSync: !!argv.watch,
   },
   watch: [],
 }, userConfig);

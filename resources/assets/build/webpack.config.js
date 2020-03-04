@@ -151,7 +151,7 @@ let webpackConfig = {
     new ExtractTextPlugin({
       filename: `styles/${assetsFilenames}.css`,
       allChunks: true,
-      //disable: (config.enabled.watcher),
+      disable: (config.enabled.watcher && config.enabled.browserSync),
     }),
     new webpack.ProvidePlugin({
       $: 'jquery',
@@ -209,10 +209,10 @@ if (config.enabled.cacheBusting) {
   );
 }
 
-//if (config.enabled.watcher) {
-//  webpackConfig.entry = require('./util/addHotMiddleware')(webpackConfig.entry);
-//  webpackConfig = merge(webpackConfig, require('./webpack.config.watch'));
-//}
+if (config.enabled.watcher && config.enabled.browserSync) {
+  webpackConfig.entry = require('./util/addHotMiddleware')(webpackConfig.entry);
+  webpackConfig = merge(webpackConfig, require('./webpack.config.watch'));
+}
 
 /**
  * During installation via sage-installer (i.e. composer create-project) some
