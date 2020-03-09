@@ -57,6 +57,13 @@ return [
             'url' => site_url(),
             'visibility' => 'public',
         ],
+        
+        'sage' => [
+            'driver' => 'local',
+            'root' => get_theme_file_path(),
+            'url' => site_url(),
+            'visibility' => 'public',
+        ],
 
         's3' => [
             'driver' => 's3',
