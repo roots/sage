@@ -1,7 +1,7 @@
 const mix = require('laravel-mix');
-            require('@tinypixelco/laravel-mix-wp-blocks');
-            require('laravel-mix-purgecss');
-            require('laravel-mix-copy-watched');
+require('@tinypixelco/laravel-mix-wp-blocks');
+require('laravel-mix-purgecss');
+require('laravel-mix-copy-watched');
 
 /*
  |--------------------------------------------------------------------------
@@ -19,7 +19,10 @@ mix.setPublicPath('./dist')
 
 mix.sass('resources/assets/styles/app.scss', 'styles')
    .sass('resources/assets/styles/editor.scss', 'styles')
-   .purgeCss();
+   .purgeCss({
+     whitelist: require('purgecss-with-wordpress').whitelist,
+     whitelistPatterns: require('purgecss-with-wordpress').whitelistPatterns,
+   });
 
 mix.js('resources/assets/scripts/app.js', 'scripts')
    .js('resources/assets/scripts/customizer.js', 'scripts')
