@@ -21,8 +21,8 @@ $sage_error = function ($message, $subtitle = '', $title = '') {
 /**
  * Ensure a compatible version of PHP is being used.
  */
-if (version_compare('7.2', phpversion(), '>')) {
-    $sage_error(__('You must be using PHP 7.2 or greater.', 'sage'), __('Invalid PHP version', 'sage'));
+if (version_compare('7.2.5', phpversion(), '>')) {
+    $sage_error(__('You must be using PHP 7.2.5 or greater.', 'sage'), __('Invalid PHP version', 'sage'));
 }
 
 /**
