@@ -66,21 +66,6 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | View Composers
-    |--------------------------------------------------------------------------
-    |
-    | View composers allow data to always be passed to certain views. This can
-    | be useful when passing data to components such as hero elements,
-    | navigation, banners, etc.
-    |
-    */
-
-    'composers' => [
-        // App\Composers\Alert::class,
-    ],
-
-    /*
-    |--------------------------------------------------------------------------
     | View Directives
     |--------------------------------------------------------------------------
     |
@@ -91,32 +76,5 @@ return [
 
     'directives' => [
         'asset'  => Roots\Acorn\Assets\AssetDirective::class,
-    ],
-
-   /*
-    |--------------------------------------------------------------------------
-    | Blade Component Aliases
-    |--------------------------------------------------------------------------
-    |
-    | Component aliases allow you to use a shorthand to call a Blade component.
-    | Instead of referencing your components like this:
-    |
-    | @component('components.alert', ['type' => 'warning'])
-    |   {{ __('Page not found') }}
-    | @endcomponent
-    |
-    | You can use an alias instead:
-    |
-    | @alert(['type' => 'error'])
-    |   {{ __('Page not found') }}
-    | @endalert
-    |
-    | Use the key to set the alias and the value to set the path to the
-    | view.
-    |
-    */
-
-    'components' => [
-        'alert'  => 'components.alert',
     ],
 ];

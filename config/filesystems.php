@@ -9,9 +9,9 @@ return [
     | Default Filesystem Disk
     |--------------------------------------------------------------------------
     |
-    | Here you may specify the default filesystem disk that should be used.
-    | The "local" disk, as well as a variety of cloud-based disks are
-    | available to your application. Just store away!
+    | Here you may specify the default filesystem disk that should be used
+    | by the framework. The "local" disk, as well as a variety of cloud
+    | based disks are available to your application. Just store away!
     |
     */
 
@@ -39,7 +39,7 @@ return [
     | may even configure multiple disks of the same driver. Defaults have
     | been setup for each driver as an example of the required options.
     |
-    | Supported Drivers: "local", "ftp", "sftp", "s3", "rackspace"
+    | Supported Drivers: "local", "ftp", "sftp", "s3"
     |
     */
 
