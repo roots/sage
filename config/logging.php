@@ -1,5 +1,6 @@
 <?php
 
+use Monolog\Handler\NullHandler;
 use Monolog\Handler\StreamHandler;
 use Monolog\Handler\SyslogUdpHandler;
 
@@ -27,7 +28,7 @@ return [
     |--------------------------------------------------------------------------
     |
     | Here you may configure the log channels for your application. Out of
-    | the box, Acorn uses the Monolog PHP logging library. This gives
+    | the box, the framework uses the Monolog PHP logging library. This gives
     | you a variety of powerful log handlers / formatters to utilize.
     |
     | Available Drivers: "single", "daily", "slack", "syslog",
@@ -39,7 +40,7 @@ return [
     'channels' => [
         'stack' => [
             'driver' => 'stack',
-            'channels' => ['daily'],
+            'channels' => ['single'],
             'ignore_exceptions' => false,
         ],
 
@@ -59,7 +60,7 @@ return [
         'slack' => [
             'driver' => 'slack',
             'url' => env('LOG_SLACK_WEBHOOK_URL'),
-            'username' => 'Sage Log',
+            'username' => 'App Log',
             'emoji' => ':boom:',
             'level' => 'critical',
         ],
@@ -91,6 +92,15 @@ return [
         'errorlog' => [
             'driver' => 'errorlog',
             'level' => 'debug',
+        ],
+
+        'null' => [
+            'driver' => 'monolog',
+            'handler' => NullHandler::class,
+        ],
+
+        'emergency' => [
+            'path' => storage_path('logs/sage.log'),
         ],
     ],
 ];

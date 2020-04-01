@@ -39,8 +39,8 @@
     }
   },
   "require": {
-    "php": "^7.2",
-    "roots/acorn": "dev-master"
+    "php": "^7.2.5",
+    "roots/acorn": "^1.0.1"
   },
   "require-dev": {
     "filp/whoops": "^2.7",
@@ -59,7 +59,7 @@
   "prefer-stable": true,
   "scripts": {
     "lint": [
-      "phpcs --ignore=vendor,resources,storage,dist --extensions=php --standard=PSR12 ."
+      "phpcs --ignore=index.php,vendor,resources,storage,dist --extensions=php --standard=PSR12 ."
     ],
     "post-autoload-dump": [
       "Roots\\Acorn\\ComposerScripts::postAutoloadDump"
