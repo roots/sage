@@ -19,20 +19,6 @@ $sage_error = function ($message, $subtitle = '', $title = '') {
 };
 
 /**
- * Ensure a compatible version of PHP is being used.
- */
-if (version_compare('7.2.5', phpversion(), '>')) {
-    $sage_error(__('You must be using PHP 7.2.5 or greater.', 'sage'), __('Invalid PHP version', 'sage'));
-}
-
-/**
- * Ensure a compatible version of WordPress is being used.
- */
-if (version_compare('5.2', get_bloginfo('version'), '>')) {
-    $sage_error(__('You must be using WordPress 5.2 or greater.', 'sage'), __('Invalid WordPress version', 'sage'));
-}
-
-/**
  * Ensure dependencies are loaded.
  */
 if (! file_exists($composer = __DIR__ . '/vendor/autoload.php')) {
