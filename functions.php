@@ -65,15 +65,4 @@ add_theme_support('sage');
 |
 */
 
-$app = new Roots\Acorn\Bootloader();
-
-/*
-|--------------------------------------------------------------------------
-| Run The Application
-|--------------------------------------------------------------------------
-|
-| Once we have the application, we can move forward and simply return.
-|
-*/
-
-return $app;
+new Roots\Acorn\Bootloader();
