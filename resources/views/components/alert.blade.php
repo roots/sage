@@ -1,3 +1,3 @@
-<div class="alert alert-{{ $type ?? 'primary' }}">
-  {!! __($message, 'sage') !!}
+<div class="alert alert-{{ $type }}">
+  {!! $message ?? $slot !!}
 </div>
