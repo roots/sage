@@ -12,7 +12,7 @@
 */
 
 if (! file_exists($composer = __DIR__ . '/vendor/autoload.php')) {
-    wp_die('Error locating autoloader. Please run <code>composer install</code>.');
+    wp_die(__('Error locating autoloader. Please run <code>composer install</code>.', 'sage'));
 }
 
 require $composer;
@@ -35,7 +35,7 @@ collect(['helpers', 'setup', 'filters', 'admin'])
 
         if (! locate_template($file, true, true)) {
             wp_die(
-                sprintf('Error locating <code>%s</code> for inclusion.', $file)
+                sprintf(__('Error locating <code>%s</code> for inclusion.', 'sage'), $file)
             );
         }
     });
