@@ -20,7 +20,7 @@ mix.setPublicPath('./dist')
 mix.sass('resources/assets/styles/app.scss', 'styles')
    .sass('resources/assets/styles/editor.scss', 'styles')
    .purgeCss({
-     whitelist: require('purgecss-with-wordpress').whitelist,
+     whitelist: ['html', 'body', require('purgecss-with-wordpress').whitelist],
      whitelistPatterns: require('purgecss-with-wordpress').whitelistPatterns,
    });
 
