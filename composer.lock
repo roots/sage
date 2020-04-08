@@ -75,7 +75,7 @@
         },
         {
             "name": "illuminate/cache",
-            "version": "v7.4.0",
+            "version": "v7.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/cache.git",
@@ -126,7 +126,7 @@
         },
         {
             "name": "illuminate/config",
-            "version": "v7.4.0",
+            "version": "v7.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/config.git",
@@ -170,7 +170,7 @@
         },
         {
             "name": "illuminate/console",
-            "version": "v7.4.0",
+            "version": "v7.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/console.git",
@@ -224,16 +224,16 @@
         },
         {
             "name": "illuminate/container",
-            "version": "v7.4.0",
+            "version": "v7.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/container.git",
-                "reference": "9108edffa95b34df94dc36721d92f380dd59bea3"
+                "reference": "10c5802e360595f5f2a8b6afa176b9542851e580"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/container/zipball/9108edffa95b34df94dc36721d92f380dd59bea3",
-                "reference": "9108edffa95b34df94dc36721d92f380dd59bea3",
+                "url": "https://api.github.com/repos/illuminate/container/zipball/10c5802e360595f5f2a8b6afa176b9542851e580",
+                "reference": "10c5802e360595f5f2a8b6afa176b9542851e580",
                 "shasum": ""
             },
             "require": {
@@ -264,20 +264,20 @@
             ],
             "description": "The Illuminate Container package.",
             "homepage": "https://laravel.com",
-            "time": "2020-03-18T13:25:12+00:00"
+            "time": "2020-04-06T13:33:36+00:00"
         },
         {
             "name": "illuminate/contracts",
-            "version": "v7.4.0",
+            "version": "v7.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
-                "reference": "f13c89509345ceee05f3527a83f38c77c0f74579"
+                "reference": "2db7e8a936cc09e396d14902178ea177f4dc42ac"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/contracts/zipball/f13c89509345ceee05f3527a83f38c77c0f74579",
-                "reference": "f13c89509345ceee05f3527a83f38c77c0f74579",
+                "url": "https://api.github.com/repos/illuminate/contracts/zipball/2db7e8a936cc09e396d14902178ea177f4dc42ac",
+                "reference": "2db7e8a936cc09e396d14902178ea177f4dc42ac",
                 "shasum": ""
             },
             "require": {
@@ -308,11 +308,11 @@
             ],
             "description": "The Illuminate Contracts package.",
             "homepage": "https://laravel.com",
-            "time": "2020-03-31T14:24:32+00:00"
+            "time": "2020-04-04T15:13:36+00:00"
         },
         {
             "name": "illuminate/events",
-            "version": "v7.4.0",
+            "version": "v7.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/events.git",
@@ -357,7 +357,7 @@
         },
         {
             "name": "illuminate/filesystem",
-            "version": "v7.4.0",
+            "version": "v7.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/filesystem.git",
@@ -410,7 +410,7 @@
         },
         {
             "name": "illuminate/log",
-            "version": "v7.4.0",
+            "version": "v7.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/log.git",
@@ -455,16 +455,16 @@
         },
         {
             "name": "illuminate/support",
-            "version": "v7.4.0",
+            "version": "v7.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
-                "reference": "6b5a135637bf901e5dd9c0e3d906a97d550d4cee"
+                "reference": "99b3538c63b3ce5374d5f8fad181fac07efaedec"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/support/zipball/6b5a135637bf901e5dd9c0e3d906a97d550d4cee",
-                "reference": "6b5a135637bf901e5dd9c0e3d906a97d550d4cee",
+                "url": "https://api.github.com/repos/illuminate/support/zipball/99b3538c63b3ce5374d5f8fad181fac07efaedec",
+                "reference": "99b3538c63b3ce5374d5f8fad181fac07efaedec",
                 "shasum": ""
             },
             "require": {
@@ -513,20 +513,20 @@
             ],
             "description": "The Illuminate Support package.",
             "homepage": "https://laravel.com",
-            "time": "2020-03-30T13:52:20+00:00"
+            "time": "2020-04-06T13:34:26+00:00"
         },
         {
             "name": "illuminate/view",
-            "version": "v7.4.0",
+            "version": "v7.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/view.git",
-                "reference": "506317ae4c8e3f14a3b9b82882a2141156bcaf1f"
+                "reference": "617d19b00ff8372401debe1df4eb5829b99fed9a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/view/zipball/506317ae4c8e3f14a3b9b82882a2141156bcaf1f",
-                "reference": "506317ae4c8e3f14a3b9b82882a2141156bcaf1f",
+                "url": "https://api.github.com/repos/illuminate/view/zipball/617d19b00ff8372401debe1df4eb5829b99fed9a",
+                "reference": "617d19b00ff8372401debe1df4eb5829b99fed9a",
                 "shasum": ""
             },
             "require": {
@@ -561,7 +561,7 @@
             ],
             "description": "The Illuminate View package.",
             "homepage": "https://laravel.com",
-            "time": "2020-03-31T14:12:04+00:00"
+            "time": "2020-04-06T01:34:32+00:00"
         },
         {
             "name": "league/flysystem",
@@ -945,16 +945,16 @@
         },
         {
             "name": "roots/acorn",
-            "version": "v1.0.4",
+            "version": "v1.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/roots/acorn.git",
-                "reference": "3176bcafa479d2fa06041e82df04323db6f4f595"
+                "reference": "7056a801a19834d837b92728f08fcf68b4217dae"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/roots/acorn/zipball/3176bcafa479d2fa06041e82df04323db6f4f595",
-                "reference": "3176bcafa479d2fa06041e82df04323db6f4f595",
+                "url": "https://api.github.com/repos/roots/acorn/zipball/7056a801a19834d837b92728f08fcf68b4217dae",
+                "reference": "7056a801a19834d837b92728f08fcf68b4217dae",
                 "shasum": ""
             },
             "require": {
@@ -1012,7 +1012,7 @@
                 "sage",
                 "wordpress"
             ],
-            "time": "2020-04-05T21:57:40+00:00"
+            "time": "2020-04-08T09:29:53+00:00"
         },
         {
             "name": "roots/support",
