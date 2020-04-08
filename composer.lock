@@ -945,16 +945,16 @@
         },
         {
             "name": "roots/acorn",
-            "version": "v1.0.3",
+            "version": "v1.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/roots/acorn.git",
-                "reference": "3c81ead4000d49e413ef39963e9486bac5d1039c"
+                "reference": "3176bcafa479d2fa06041e82df04323db6f4f595"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/roots/acorn/zipball/3c81ead4000d49e413ef39963e9486bac5d1039c",
-                "reference": "3c81ead4000d49e413ef39963e9486bac5d1039c",
+                "url": "https://api.github.com/repos/roots/acorn/zipball/3176bcafa479d2fa06041e82df04323db6f4f595",
+                "reference": "3176bcafa479d2fa06041e82df04323db6f4f595",
                 "shasum": ""
             },
             "require": {
@@ -1012,7 +1012,7 @@
                 "sage",
                 "wordpress"
             ],
-            "time": "2020-04-03T01:21:19+00:00"
+            "time": "2020-04-05T21:57:40+00:00"
         },
         {
             "name": "roots/support",
