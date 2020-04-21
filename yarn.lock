@@ -1091,10 +1091,10 @@
   resolved "https://registry.yarnpkg.com/@wordpress/browserslist-config/-/browserslist-config-2.6.0.tgz#00074a1cb1ba979ba7ac5afc4e322bc8447035d1"
   integrity sha512-vRgzGoxhcNVChBP30XZlyK4w6r/9ZpO+Fi1dzmButp31lUEb1pT5WBxTIQl3HE0JZ9YTEJ00WWGO5sjGi5MHZA==
 
-"@wordpress/dependency-extraction-webpack-plugin@^2.4.0":
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/@wordpress/dependency-extraction-webpack-plugin/-/dependency-extraction-webpack-plugin-2.4.0.tgz#81f7e132271ef65ae74101a388422edb68decce0"
-  integrity sha512-wU6HrroDCKbXUt3L39C+1WHt54wY71wW44U+kokQrO8ogVqrv5MeJ22r7Wx0MbbNPUJNi2pH3cbSF18S9ggJWQ==
+"@wordpress/dependency-extraction-webpack-plugin@^2.5.0":
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/@wordpress/dependency-extraction-webpack-plugin/-/dependency-extraction-webpack-plugin-2.5.0.tgz#b13f3634e74120f9b24a48650dad31f331a68b06"
+  integrity sha512-cJ3imk7D7WtSkJoolHdeTecQmWgHBnFJ6L/R8DizGkfMEta/mRN8g23E4vJ1LbZJfLqTo8GWjTIp0kN2V9HLWA==
   dependencies:
     json2php "^0.0.4"
     webpack "^4.8.3"
