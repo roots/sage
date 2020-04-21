@@ -34,7 +34,7 @@
     "eslint": "^6.8.0",
     "eslint-plugin-import": "^2.20.2",
     "laravel-mix": "^5.0.4",
-    "laravel-mix-copy-watched": "^2.2.3",
+    "laravel-mix-copy-watched": "^2.2.4",
     "laravel-mix-purgecss": "^5.0.0-rc.1",
     "npm-run-all": "^4.1",
     "purgecss-with-wordpress": "^2.1.0",
