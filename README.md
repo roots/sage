@@ -7,7 +7,7 @@
 
 Sage is a WordPress starter theme with a modern development workflow.
 
-**Sage 10 is in active development and is currently in alpha. The `master` branch tracks Sage 10 development. If you want a stable version, use the [latest Sage 9 release](https://github.com/roots/sage/releases/latest).**
+**Sage 10 is in active development and is currently in alpha. The `10.0.0-dev` branch tracks Sage 10 development. If you want a stable version, use the [latest Sage 9 release](https://github.com/roots/sage/releases/latest).**
 
 ## Features
 
@@ -39,10 +39,10 @@ Install Sage using Composer from your WordPress themes directory (replace `your-
 $ composer create-project roots/sage your-theme-name
 ```
 
-To install the latest development version of Sage, add `dev-master` to the end of the command:
+To install the latest development version of Sage, add `dev-10.0.0-dev` to the end of the command:
 
 ```shell
-$ composer create-project roots/sage your-theme-name dev-master
+$ composer create-project roots/sage your-theme-name dev-10.0.0-dev
 ```
 
 During theme installation you will have options to update `style.css` theme headers, select a CSS framework, and configure Browsersync.
