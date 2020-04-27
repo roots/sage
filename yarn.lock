@@ -818,13 +818,13 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
-"@fullhuman/postcss-purgecss@^2.0.5":
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/@fullhuman/postcss-purgecss/-/postcss-purgecss-2.1.0.tgz#955fc2e3f69b0d0c84367eeee4f85c01238a65dc"
-  integrity sha512-zmV+cK8pAo/suKMQk1fKzDdols5ltOy86Hk51qwkiJJt4olm3t1MaUrm4U4MlA9fiYeRpLqsNop2xNoEm8DV+w==
+"@fullhuman/postcss-purgecss@^2.1.2":
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/@fullhuman/postcss-purgecss/-/postcss-purgecss-2.1.2.tgz#8fe4d4ae2b58214b5452cb490a31c7146517442f"
+  integrity sha512-Jf34YVBK9GtXTblpu0svNUJdA7rTQoRMz+yEJe6mwTnXDIGipWLzaX/VgU/x6IPC6WvU5SY/XlawwqhxoyFPTg==
   dependencies:
     postcss "7.0.27"
-    purgecss "^2.1.0"
+    purgecss "^2.1.2"
 
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
@@ -2299,10 +2299,10 @@ commander@^2.19.0, commander@^2.2.0, commander@^2.20.0:
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.20.3.tgz#fd485e84c03eb4881c20722ba48035e8531aeb33"
   integrity sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==
 
-commander@^4.0.0:
-  version "4.1.1"
-  resolved "https://registry.yarnpkg.com/commander/-/commander-4.1.1.tgz#9fd602bd936294e9e9ef46a3f4d6964044b18068"
-  integrity sha512-NOKm8xhkzAjzFx8B2v5OAHT+u5pRQc2UCa2Vq9jYL/31o2wi9mxBA7LIFs3sV5VSC49z6pEhfbMULvShKj26WA==
+commander@^5.0.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/commander/-/commander-5.1.0.tgz#46abbd1652f8e059bddaef99bbdcb2ad9cf179ae"
+  integrity sha512-P0CysNDQ7rtVw4QIQtm+MRxV66vKFSvlsQvGYXZWR3qFU0jlMKHZZZgw8e+8DSah4UDKMqnknRDQz+xuQXQ/Zg==
 
 commander@~2.19.0:
   version "2.19.0"
@@ -5099,12 +5099,12 @@ laravel-mix-copy-watched@^2.2.4:
     fs-extra "^7.0.1"
     globby "^8.0.1"
 
-laravel-mix-purgecss@^5.0.0-rc.1:
-  version "5.0.0-rc.1"
-  resolved "https://registry.yarnpkg.com/laravel-mix-purgecss/-/laravel-mix-purgecss-5.0.0-rc.1.tgz#e83fd2556353c9fd59a42274c8791d1216eab3fc"
-  integrity sha512-N80/4Jn/yHyKK/P1CbzGXC3tYQ9b7I/nYZw45rW2z0QXkXxnPWAWDMaIW1+Da74cz/cPWneRoDYg8ZSj4pvUcg==
+laravel-mix-purgecss@^5.0.0-rc.3:
+  version "5.0.0-rc.3"
+  resolved "https://registry.yarnpkg.com/laravel-mix-purgecss/-/laravel-mix-purgecss-5.0.0-rc.3.tgz#8523e87b05e37de911d8185653ff10bf7444d913"
+  integrity sha512-snBoFmJKGDubb97s0ijNtU5a94PBJZzy/YuHCFR/AR4drn4pR5NqynIzOlk8iZPzcMxZMHMIq6CYbaKpA0QYQQ==
   dependencies:
-    "@fullhuman/postcss-purgecss" "^2.0.5"
+    postcss-purgecss-laravel "^0.1.1"
 
 laravel-mix@^5.0.4:
   version "5.0.4"
@@ -6773,6 +6773,13 @@ postcss-ordered-values@^4.1.2:
     postcss "^7.0.0"
     postcss-value-parser "^3.0.0"
 
+postcss-purgecss-laravel@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/postcss-purgecss-laravel/-/postcss-purgecss-laravel-0.1.1.tgz#fa896104bd56319911f7859c86c6faf48d6ed01e"
+  integrity sha512-fOUKVV38LcHJ/hWk1xGoxPFKKqCrMAyNCFd2yf/kp8i65CbtBHzNm46Xe+ZjejPzhIuQUtrH1Asg9VFPzqyGEA==
+  dependencies:
+    "@fullhuman/postcss-purgecss" "^2.1.2"
+
 postcss-reduce-initial@^4.0.3:
   version "4.0.3"
   resolved "https://registry.yarnpkg.com/postcss-reduce-initial/-/postcss-reduce-initial-4.0.3.tgz#7fd42ebea5e9c814609639e2c2e84ae270ba48df"
@@ -7019,12 +7026,12 @@ purgecss-with-wordpress@^2.1.0:
   resolved "https://registry.yarnpkg.com/purgecss-with-wordpress/-/purgecss-with-wordpress-2.1.0.tgz#6a811e0d74f100c06f3271bdb9ae219cced38a5b"
   integrity sha512-/JUdUkQfzgUXFTb96/PDnY30SAp4WsMMWLjeEIWmTWpbXf0U4tT4ZVm0bM4rvLapBnNQUeyeeymwqVXEgfM7/g==
 
-purgecss@^2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/purgecss/-/purgecss-2.1.0.tgz#6da655d166073824efe2532b0c6466c740d939d6"
-  integrity sha512-QnXhowNjeWo9vNnGES2LVzDXdRR/8EvG/O03m4bYOWfAX0ShmG/Pmj7brVtVBy2eaaRAmNy23L+GBc4SpDFUeQ==
+purgecss@^2.1.2:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/purgecss/-/purgecss-2.1.2.tgz#96f666d04c56705208aaa1a544b5f22e13828955"
+  integrity sha512-5oDBxiT9VonwKmEMohPFRFZrj8fdSVKxHPwq7G5Rx/2pXicZFJu+D4m5bb3NuV0sSK3ooNxq5jFIwwHzifP5FA==
   dependencies:
-    commander "^4.0.0"
+    commander "^5.0.0"
     glob "^7.0.0"
     postcss "7.0.27"
     postcss-selector-parser "^6.0.2"
