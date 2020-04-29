@@ -7,6 +7,8 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 const CopyGlobsPlugin = require('copy-globs-webpack-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
+const svgToMiniDataURI = require('mini-svg-data-uri');
+
 
 const desire = require('./util/desire');
 const config = require('./config');
@@ -100,7 +102,18 @@ let webpackConfig = {
         }),
       },
       {
-        test: /\.(ttf|otf|eot|woff2?|png|jpe?g|gif|svg|ico)$/,
+        test: /\.svg$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              generator: (content) => svgToMiniDataURI(content.toString()),
+            },
+          },
+        ],
+      },
+      {
+        test: /\.(ttf|otf|eot|woff2?|png|jpe?g|gif|ico)$/,
         include: config.paths.assets,
         loader: 'url',
         options: {
@@ -109,7 +122,7 @@ let webpackConfig = {
         },
       },
       {
-        test: /\.(ttf|otf|eot|woff2?|png|jpe?g|gif|svg|ico)$/,
+        test: /\.(ttf|otf|eot|woff2?|png|jpe?g|gif|ico)$/,
         include: /node_modules/,
         loader: 'url',
         options: {
