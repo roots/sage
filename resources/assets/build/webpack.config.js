@@ -107,6 +107,7 @@ let webpackConfig = {
           {
             loader: 'url-loader',
             options: {
+              limit: 4096,
               generator: (content) => svgToMiniDataURI(content.toString()),
             },
           },
