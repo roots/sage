@@ -1,5 +1,15 @@
-import $ from 'jquery';
+/**
+ * This file allows you to add functionality to the Theme Customizer
+ * live preview. jQuery is readily available.
+ *
+ * {@link https://codex.wordpress.org/Theme_Customization_API}
+ */
 
-wp.customize('blogname', (value) => {
+/**
+ * Change the blog name value.
+ *
+ * @param {string} value
+ */
+wp.customize('blogname', value => {
   value.bind(to => $('.brand').text(to));
 });
