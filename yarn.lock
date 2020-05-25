@@ -875,10 +875,10 @@
     remark "^12.0.0"
     unist-util-find-all-after "^3.0.1"
 
-"@tinypixelco/laravel-mix-wp-blocks@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@tinypixelco/laravel-mix-wp-blocks/-/laravel-mix-wp-blocks-1.0.0.tgz#fbca789ab0ca1202cdc3644f6edebf25a0bdbc7c"
-  integrity sha512-vmX7vBbEYY4wU9dYoQTUDhE6Xn8ZlY8OV1Rxk+kh6ckiSyy1jfQGT79YvIrIvysOgOf3mxs2WDOiS4/dKg+xJg==
+"@tinypixelco/laravel-mix-wp-blocks@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@tinypixelco/laravel-mix-wp-blocks/-/laravel-mix-wp-blocks-1.1.0.tgz#ef382a746803c3f164d6b9cc5c49abc8fb970d8d"
+  integrity sha512-lmTlM/VXK3GDre78Is1kMY9SuzG97v5vO7WfVr7VjY2e+r1/UjPYw6G5wNcR8nIw3gOXgMpPw8WvRi/d3v6Tww==
 
 "@types/color-name@^1.1.1":
   version "1.1.1"
