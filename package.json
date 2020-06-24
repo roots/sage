@@ -25,7 +25,7 @@
   "devDependencies": {
     "@tinypixelco/laravel-mix-wp-blocks": "^1.0.0",
     "@wordpress/babel-preset-default": "^4.13.0",
-    "@wordpress/browserslist-config": "^2.6.0",
+    "@wordpress/browserslist-config": "^2.7.0",
     "@wordpress/dependency-extraction-webpack-plugin": "^2.5.0",
     "babel-eslint": "^10.1.0",
     "browser-sync": "^2.26.7",
