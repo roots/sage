@@ -1,60 +1,23 @@
 version: 2.1
 
 orbs:
-  sage:
-    executors:
-      node-10:
-        docker:
-          - image: 'circleci/node:10-stretch'
-      php-73:
-        docker:
-          - image: 'circleci/php:7.3-stretch'
-      php-72:
-        docker:
-          - image: 'circleci/php:7.2-stretch'
-    jobs:
-      build-php:
-        parameters:
-          executor:
-            type: executor
-        executor: << parameters.executor >>
-        steps:
-          - run: php -v
-          - checkout
-          - restore_cache:
-              keys:
-                - composer-v1-{{ checksum "composer.lock" }}
-                - composer-v1-
-          - run: composer install -n --prefer-dist --no-scripts --no-suggest
-          - run: composer lint
-          - save_cache:
-              key: composer-v1-{{ checksum "composer.lock" }}
-              paths:
-                - vendor
-      build-node:
-        executor: node-10
-        steps:
-          - run: yarn versions
-          - checkout
-          - restore_cache:
-              keys:
-                - node-v1-{{ checksum "yarn.lock" }}
-                - node-v1-
-          - run: yarn install --frozen-lockfile
-          - run: yarn run test
-          - run: yarn run build:production
-          - save_cache:
-              key: node-v1-{{ checksum "yarn.lock" }}
-              paths:
-                - node_modules
+  node: circleci/node@3
+  php: circleci/php@1
 
 workflows:
   build:
     jobs:
-      - sage/build-node
-      - sage/build-php:
-          name: build-php-73
-          executor: sage/php-73
-      - sage/build-php:
-          name: build-php-72
-          executor: sage/php-72
+      - node/test:
+          name: node-<< matrix.version >>
+          pkg-manager: yarn
+          post-steps:
+            - run: yarn run build:production
+          matrix:
+            parameters:
+              version: ["10.21", "12.18", "14.4"]
+      - php/test:
+          name: php-<< matrix.version >>
+          test-command: lint
+          matrix:
+            parameters:
+              version: ["7.2", "7.3", "7.4"]
