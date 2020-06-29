@@ -32,7 +32,7 @@
     "browser-sync-webpack-plugin": "^2.0.1",
     "cross-env": "^7.0.2",
     "eslint": "^6.8.0",
-    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-import": "^2.22.0",
     "laravel-mix": "^5.0.4",
     "laravel-mix-copy-watched": "^2.2.4",
     "laravel-mix-purgecss": "^5.0.0-rc.1",
