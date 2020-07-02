@@ -3,11 +3,11 @@
 * Change PHP requirement to 7.2
 * Change WordPress requirement to 5.2
 * Move from `sage-lib` to [`Acorn`](https://github.com/roots/acorn) ([#2122](https://github.com/roots/sage/pull/2122))
-* Change to [Laravel Mix](https://github.com/JeffreyWay/laravel-mix) for handling webpack and compiling/concatnating assets ([#2172](https://github.com/roots/sage/pull/2172))
+* Change to [Laravel Mix](https://github.com/JeffreyWay/laravel-mix) for handling webpack and compiling/concatenating assets ([#2172](https://github.com/roots/sage/pull/2172))
 * Sage now ships with Blade Composers which are native, robust, more powerful solution to "Controllers" from Sage 9
 * Clean up starter Blade views
 * Move mandatory filters such as the template include, body class, comments template, search form, etc. to Acorn
-* Move core theme files back to the theme root (`index.php`, `functions.php`, etc.) to allow better child theme compatability
+* Move core theme files back to the theme root (`index.php`, `functions.php`, etc.) to allow better child theme compatibility
 * Create a default `storage/` directory for cache, logs, etc.
 * Update config files to reflect Acorn
 
