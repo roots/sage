@@ -4,12 +4,9 @@
     "extends @wordpress/browserslist-config"
   ],
   "scripts": {
-    "build": "cross-env NODE_ENV=development run-s mix",
-    "build:production": "cross-env NODE_ENV=production run-s clean mix",
-    "start": "cross-env NODE_ENV=development run-s \"mix -- --watch\"",
-    "hot": "cross-env NODE_ENV=development run-s build mix:hot",
-    "mix": "webpack --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "mix:hot": "webpack-dev-server --inline --hot --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "dev": "budpack --env development",
+    "build": "budpack --env production",
+    "build:production": "run-s clean compile",
     "clean": "run-p clean:*",
     "clean:dist": "rimraf dist",
     "clean:cache": "rimraf storage/framework/cache/*.php storage/framework/cache/data/*.php",
@@ -23,27 +20,12 @@
     "translate:js": "wp i18n make-json ./resources/languages --no-purge --pretty-print"
   },
   "devDependencies": {
-    "@tinypixelco/laravel-mix-wp-blocks": "^1.0.0",
-    "@wordpress/babel-preset-default": "^4.13.0",
-    "@wordpress/browserslist-config": "^2.6.0",
-    "@wordpress/dependency-extraction-webpack-plugin": "^2.5.0",
-    "babel-eslint": "^10.1.0",
-    "browser-sync": "^2.26.7",
-    "browser-sync-webpack-plugin": "^2.0.1",
+    "@roots/budpack": "^0.0.19",
     "cross-env": "^7.0.2",
-    "eslint": "^6.8.0",
-    "eslint-plugin-import": "^2.20.2",
-    "laravel-mix": "^5.0.4",
-    "laravel-mix-copy-watched": "^2.2.4",
-    "laravel-mix-purgecss": "^5.0.0-rc.1",
+    "eslint": "^7.3.1",
+    "eslint-plugin-import": "^2.22.0",
     "npm-run-all": "^4.1",
-    "purgecss-with-wordpress": "^2.1.0",
-    "rimraf": "^3.0.2",
-    "sass": "^1.26.3",
-    "sass-loader": "^8.0.2",
-    "stylelint": "^13.3.3",
-    "stylelint-config-standard": "^20.0.0",
-    "vue-template-compiler": "^2.6.11"
+    "rimraf": "^3.0.2"
   },
   "dependencies": {
     "bootstrap": "^4.5.0",
