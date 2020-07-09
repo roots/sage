@@ -1,5 +1,6 @@
 /**
- * Build theme assets.
+ * Bud: asset management framework.
+ * @see https://roots.github.io/bud-support
  */
 
 const bud = require('@roots/budpack');
@@ -46,7 +47,6 @@ bud.hash(false);
 
 /**
  * Generate a WordPress dependency manifest.
- * @see  @wordpress/dependency-manifest-webpack-plugin
  * @todo splitChunks breaks this
  */
 
@@ -101,7 +101,7 @@ bud
 bud.translate('resources/languages/sage.pot');
 
 /**
- * Purge unused CSS from production builds.
+ * Purge unused CSS from bundles.
  */
 
 bud.purge({
