@@ -2,19 +2,16 @@
  * Bud: asset management framework.
  * @see https://roots.github.io/bud-support
  */
-
 const bud = require('@roots/budpack');
 
 /**
  * Set source directory.
  */
-
 bud.srcPath('resources/assets');
 
 /**
  * Set webpack aliases.
  */
-
 bud.alias({
   '@fonts':   bud.src('fonts'),
   '@images':  bud.src('images'),
@@ -25,7 +22,6 @@ bud.alias({
 /**
  * Autoload modules.
  */
-
 bud.auto({
   jquery: ['$', 'window.jQuery'],
 });
@@ -33,55 +29,49 @@ bud.auto({
 /**
  * Configure live reload.
  */
-
 bud.sync({
   enabled: !bud.inProduction,
-  proxy: 'http://bud-sandbox.valet',
 });
 
 /**
  * Filename hashing.
  */
-
 bud.hash(false);
 
 /**
- * Generate a WordPress dependency manifest.
- * @todo splitChunks breaks this
+ * Compile application scripts.
  */
-
-bud.dependencyManifest()
-
-/**
- * Optimize performance by inlining code split from bundles.
- */
-
-bud.inlineManifest({
-  enabled: true,
-  name: 'runtime',
-});
-
-/**
- * Compile application JavaScript.
- */
-
 bud
   .bundle('scripts/editor', [bud.src('scripts/editor.js')])
   .bundle('scripts/app', [bud.src('scripts/app.js')])
   .bundle('scripts/customizer', [bud.src('scripts/customizer.js')])
 
 /**
- * Compile application SCSS.
+ * Compile application styles.
  */
-
 bud
   .bundle('styles/editor', [bud.src('styles/editor.scss')])
   .bundle('styles/app', [bud.src('styles/app.scss')])
 
 /**
+ * Extract dependencies.
+ */
+bud.vendor('scripts/vendor');
+
+/**
+ * Inline runtime manifest.
+ */
+bud.inlineManifest('scripts/manifest');
+
+/**
+ * Generate a WordPress dependency manifest.
+ * @todo splitChunks breaks this
+ */
+bud.dependencyManifest()
+
+/**
  * Copy static assets.
  */
-
 bud
   .copyAll(bud.src('images'), bud.dist('images'))
   .copyAll(bud.src('fonts'), bud.dist('fonts'));
@@ -89,7 +79,6 @@ bud
 /**
  * Configure Babel and PostCSS.
  */
-
 bud
   .babel(bud.preset('babel/preset-wp'))
   .postCss(bud.preset('postcss'));
@@ -97,13 +86,13 @@ bud
 /**
  * Translate strings from JS source assets.
  */
-
-bud.translate('resources/languages/sage.pot');
+bud.translate(
+  bud.project('resources/languages/sage.pot')
+);
 
 /**
  * Purge unused CSS from bundles.
  */
-
 bud.purge({
   enabled: bud.inProduction,
   content: [bud.project('resources/views/**/*.blade.php')],
@@ -114,5 +103,4 @@ bud.purge({
 /**
  * Export finalized configuration.
  */
-
 module.exports = bud;
