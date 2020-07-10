@@ -78,7 +78,7 @@ bud
  * Purge unused application styles.
  */
 bud.purge({
-  enabled: !bud.inProduction,
+  enabled: bud.inProduction,
   content: [bud.project('resources/views/**/*.blade.php')],
   allow: require('purgecss-with-wordpress').whitelist,
   allowPatterns: require('purgecss-with-wordpress').whitelistPatterns,

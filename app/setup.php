@@ -19,7 +19,7 @@ add_action('wp_enqueue_scripts', function () {
     wp_enqueue_script('sage/vendor.js', asset($manifest['vendor.js'])->uri(), ['jquery'], null, true);
     wp_enqueue_script('sage/app.js', asset($manifest['app.js'])->uri(), ['sage/vendor.js', 'jquery'], null, true);
 
-    wp_add_inline_script('sage/vendor.js', asset($manifest['runtime~app.js'])->contents(), 'before');
+    wp_add_inline_script('sage/vendor.js', asset($manifest['runtime/app.js'])->contents(), 'before');
 
     if (is_single() && comments_open() && get_option('thread_comments')) {
         wp_enqueue_script('comment-reply');
@@ -37,7 +37,7 @@ add_action('enqueue_block_editor_assets', function () {
     if ($manifest = asset('dependencies.json')->get()) {
         wp_enqueue_script('sage/vendor.js', asset($manifest['vendor.js'])->uri(), json_decode($manifest)->dependencies, null, true);
         wp_enqueue_script('sage/editor.js', asset($manifest['editor.js'])->uri(), ['sage/vendor.js'], null, true);
-        wp_add_inline_script('sage/vendor.js', asset($manifest['runtime~editor.js'])->contents(), 'before');
+        wp_add_inline_script('sage/vendor.js', asset($manifest['runtime/editor.js'])->contents(), 'before');
     }
 
     wp_enqueue_style('sage/editor.css', asset($manifest['editor.css'])->uri(), false, null);
