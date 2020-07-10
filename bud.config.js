@@ -7,7 +7,9 @@ const bud = require('@roots/budpack');
 /**
  * Set source directory.
  */
-bud.srcPath('resources/assets');
+bud
+  .srcPath('resources/assets')
+  .distPath('dist');
 
 /**
  * Set webpack aliases.
@@ -20,7 +22,7 @@ bud.alias({
 });
 
 /**
- * Autoload modules.
+ * Autoload common modules.
  */
 bud.auto({
   jquery: ['$', 'window.jQuery'],
@@ -34,40 +36,29 @@ bud.sync({
 });
 
 /**
- * Filename hashing.
- */
-bud.hash(false);
-
-/**
- * Compile application scripts.
+ * Compile application assets.
  */
 bud
-  .bundle('scripts/editor', [bud.src('scripts/editor.js')])
-  .bundle('scripts/app', [bud.src('scripts/app.js')])
-  .bundle('scripts/customizer', [bud.src('scripts/customizer.js')])
+  .bundle('app', [
+    bud.src('scripts/app.js'),
+    bud.src('styles/app.scss'),
+  ])
+  .bundle('editor', [
+    bud.src('scripts/editor.js'),
+    bud.src('styles/editor.scss'),
+  ])
+  .bundle('customizer', [
+    bud.src('scripts/customizer.js'),
+  ])
 
 /**
- * Compile application styles.
+ * Group vendored scripts, generate manifests and version assets.
  */
 bud
-  .bundle('styles/editor', [bud.src('styles/editor.scss')])
-  .bundle('styles/app', [bud.src('styles/app.scss')])
-
-/**
- * Extract dependencies.
- */
-bud.vendor('scripts/vendor');
-
-/**
- * Inline runtime manifest.
- */
-bud.inlineManifest('scripts/manifest');
-
-/**
- * Generate a WordPress dependency manifest.
- * @todo splitChunks breaks this
- */
-bud.dependencyManifest()
+  .dependencyManifest()
+  .inlineManifest()
+  .vendor()
+  .hash();
 
 /**
  * Copy static assets.
@@ -77,24 +68,17 @@ bud
   .copyAll(bud.src('fonts'), bud.dist('fonts'));
 
 /**
- * Configure Babel and PostCSS.
+ * Configure transpilers.
  */
 bud
   .babel(bud.preset('babel/preset-wp'))
   .postCss(bud.preset('postcss'));
 
 /**
- * Translate strings from JS source assets.
- */
-bud.translate(
-  bud.project('resources/languages/sage.pot')
-);
-
-/**
- * Purge unused CSS from bundles.
+ * Purge unused application styles.
  */
 bud.purge({
-  enabled: bud.inProduction,
+  enabled: !bud.inProduction,
   content: [bud.project('resources/views/**/*.blade.php')],
   allow: require('purgecss-with-wordpress').whitelist,
   allowPatterns: require('purgecss-with-wordpress').whitelistPatterns,

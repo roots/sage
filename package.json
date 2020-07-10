@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "budpack --env development",
     "build": "budpack --env production",
-    "build:production": "run-s clean compile",
+    "build:production": "run-s clean:* build",
     "clean": "run-p clean:*",
     "clean:dist": "rimraf dist",
     "clean:cache": "rimraf storage/framework/cache/*.php storage/framework/cache/data/*.php",
