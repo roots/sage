@@ -1,11 +1,8 @@
-/**
- * Bud: asset management framework.
- * @see https://roots.github.io/bud-support
- */
-const bud = require('@roots/budpack');
+// @ts-check
+const {bud} = require('@roots/bud');
 
 /**
- * Set source directory.
+ * Define project paths.
  */
 bud
   .srcPath('resources/assets')
@@ -33,6 +30,9 @@ bud.auto({
  */
 bud.sync({
   enabled: !bud.inProduction,
+  options: {
+    proxy: 'http://sage.test',
+  },
 });
 
 /**
