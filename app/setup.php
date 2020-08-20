@@ -107,8 +107,8 @@ add_action('after_setup_theme', function () {
      */
     add_theme_support('editor-color-palette', [
         [
-            'name'  => __('Primary', 'sage'),
-            'slug'  => 'primary',
+            'name' => __('Primary', 'sage'),
+            'slug' => 'primary',
             'color' => '#525ddc',
         ]
     ]);

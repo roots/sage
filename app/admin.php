@@ -11,7 +11,7 @@ use WP_Customize_Manager;
 use function Roots\asset;
 
 /**
- * Register the `.brand` selector as the blogname.
+ * Register the `.brand` selector to the blogname.
  *
  * @param  \WP_Customize_Manager $wp_customize
  * @return void
