@@ -69,7 +69,7 @@ Make sure all dependencies have been installed before moving on:
 - [WordPress](https://wordpress.org/) >= 5.4
 - [PHP](https://secure.php.net/manual/en/install.php) >= 7.2.5 (with [`php-mbstring`](https://secure.php.net/manual/en/book.mbstring.php) enabled)
 - [Composer](https://getcomposer.org/download/)
-- [Node.js](http://nodejs.org/) >= 8.0.0
+- [Node.js](http://nodejs.org/) >= 12.0.0
 - [Yarn](https://yarnpkg.com/en/docs/install)
 
 ## Theme installation
@@ -154,7 +154,7 @@ Contributions are welcome from everyone. We have [contributing guidelines](https
 
 ## Sage sponsors
 
-Help support our open-source development efforts by [becoming a patron](https://www.patreon.com/rootsdev).
+Help support our open-source development efforts by [becoming a sponsor](https://github.com/sponsors/roots).
 
 <a href="https://kinsta.com/?kaid=OFDHAJIXUDIV"><img src="https://cdn.roots.io/app/uploads/kinsta.svg" alt="Kinsta" width="200" height="150"></a> <a href="https://k-m.com/"><img src="https://cdn.roots.io/app/uploads/km-digital.svg" alt="KM Digital" width="200" height="150"></a> <a href="https://carrot.com/"><img src="https://cdn.roots.io/app/uploads/carrot.svg" alt="Carrot" width="200" height="150"></a>
 
