@@ -58,6 +58,13 @@ return [
             'visibility' => 'public',
         ],
 
+        'sage' => [
+            'driver' => 'local',
+            'root' => get_theme_file_path(),
+            'url' => get_theme_file_uri(),
+            'visibility' => 'public',
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),
