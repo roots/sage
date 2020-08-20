@@ -7,6 +7,6 @@ domReady(() => {
 
   registerBlockStyle('core/button', {
     name: 'outline',
-    label: 'Outline'
+    label: 'Outline',
   });
 });
