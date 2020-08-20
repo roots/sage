@@ -45,20 +45,19 @@ However, the amount of effort needed to maintain and develop new features and pr
 
 </div>
 
-## Overview
+## About Sage
 
-Sage is a WordPress starter theme with a modern development workflow.
+Sage is a productivity-driven WordPress starter theme with a modern development workflow.
 
 **Sage 10 is in active development and is currently in alpha. The `master` branch tracks Sage 10 development. If you want a stable version, use the [latest Sage 9 release](https://github.com/roots/sage/releases/latest).**
 
 ## Features
 
-* Sass for stylesheets
-* Modern JavaScript
-* [Laravel Mix](https://github.com/JeffreyWay/laravel-mix) for compiling assets and concatenating and minifying files
-* [Browsersync](http://www.browsersync.io/) for synchronized browser testing
-* [Blade](https://laravel.com/docs/5.8/blade) as a templating engine
-* [Bootstrap 4](https://getbootstrap.com/) (optional)
+- Harness the power of [Laravel](https://laravel.com) and it's available packages thanks to [Acorn](https://github.com/roots/acorn).
+- Clean, efficient theme templating utilizing [Laravel Blade](https://laravel.com/docs/latest/blade).
+- Easy [Browsersync](http://www.browsersync.io/) support alongside asset compilation, concatenating, and minification powered by [Laravel Mix](https://github.com/JeffreyWay/laravel-mix).
+- Out of the box support for [Bootstrap 5](https://getbootstrap.com/) and [jQuery](https://jquery.com).
+- A clean starting point for theme styles using [Sass](https://sass-lang.com/).
 
 See a working example at [roots-example-project.com](https://roots-example-project.com/).
 
@@ -66,11 +65,11 @@ See a working example at [roots-example-project.com](https://roots-example-proje
 
 Make sure all dependencies have been installed before moving on:
 
-* [WordPress](https://wordpress.org/) >= 5.4
-* [PHP](https://secure.php.net/manual/en/install.php) >= 7.2.0 (with [`php-mbstring`](https://secure.php.net/manual/en/book.mbstring.php) enabled)
-* [Composer](https://getcomposer.org/download/)
-* [Node.js](http://nodejs.org/) >= 8.0.0
-* [Yarn](https://yarnpkg.com/en/docs/install)
+- [WordPress](https://wordpress.org/) >= 5.4
+- [PHP](https://secure.php.net/manual/en/install.php) >= 7.2.5 (with [`php-mbstring`](https://secure.php.net/manual/en/book.mbstring.php) enabled)
+- [Composer](https://getcomposer.org/download/)
+- [Node.js](http://nodejs.org/) >= 8.0.0
+- [Yarn](https://yarnpkg.com/en/docs/install)
 
 ## Theme installation
 
@@ -83,18 +82,16 @@ $ composer create-project roots/sage your-theme-name
 
 To install the latest development version of Sage, add `dev-master` to the end of the command:
 
-```shell
+```sh
 $ composer create-project roots/sage your-theme-name dev-master
 ```
-
-During theme installation you will have options to update `style.css` theme headers, select a CSS framework, and configure Browsersync.
 
 ## Theme structure
 
 ```sh
 themes/your-theme-name/   # → Root of your Sage based theme
 ├── app/                  # → Theme PHP
-│   ├── Composers/        # → View composers
+│   ├── View/             # → View models
 │   ├── Providers/        # → Service providers
 │   ├── admin.php         # → Theme customizer setup
 │   ├── filters.php       # → Theme filters
@@ -104,22 +101,24 @@ themes/your-theme-name/   # → Root of your Sage based theme
 │   ├── app.php           # → Application configuration
 │   ├── assets.php        # → Asset configuration
 │   ├── filesystems.php   # → Filesystems configuration
+│   ├── logging.php       # → Logging configuration
 │   └── view.php          # → View configuration
 ├── composer.json         # → Autoloading for `app/` files
 ├── composer.lock         # → Composer lock file (never edit)
 ├── dist/                 # → Built theme assets (never edit)
-├── functions.php         # → Composer autoloader, Acorn bootloader
-├── index.php             # → Never manually edit
+├── functions.php         # → Theme bootloader
+├── index.php             # → Theme template wrapper
 ├── node_modules/         # → Node.js packages (never edit)
 ├── package.json          # → Node.js dependencies and scripts
 ├── resources/            # → Theme assets and templates
 │   ├── assets/           # → Front-end assets
 │   │   ├── fonts/        # → Theme fonts
 │   │   ├── images/       # → Theme images
-│   │   ├── scripts/      # → Theme JS
+│   │   ├── scripts/      # → Theme javascript
 │   │   └── styles/       # → Theme stylesheets
 │   └── views/            # → Theme templates
 │       ├── components/   # → Component templates
+│       ├── form/         # → Form templates
 │       ├── layouts/      # → Base templates
 │       └── partials/     # → Partial templates
 ├── screenshot.png        # → Theme screenshot for WP admin
@@ -135,18 +134,18 @@ Edit `app/setup.php` to enable or disable theme features, setup navigation menus
 
 ## Theme development
 
-* Run `yarn` from the theme directory to install dependencies
-* Update `webpack.mix.js` with your local dev URL
+- Run `yarn` from the theme directory to install dependencies
+- Update `webpack.mix.js` with your local dev URL
 
 ### Build commands
 
-* `yarn start` — Compile assets when file changes are made, start Browsersync session
-* `yarn build` — Compile and optimize the files in your assets directory
-* `yarn build:production` — Compile assets for production
+- `yarn start` — Compile assets when file changes are made, start Browsersync session
+- `yarn build` — Compile and optimize the files in your assets directory
+- `yarn build:production` — Compile assets for production
 
 ## Documentation
 
-* [Sage documentation](https://roots.io/sage/docs/)
+- [Sage documentation](https://roots.io/sage/docs/)
 
 ## Contributing
 
@@ -162,8 +161,8 @@ Help support our open-source development efforts by [becoming a patron](https://
 
 Keep track of development and community news.
 
-* Participate on the [Roots Discourse](https://discourse.roots.io/)
-* Follow [@rootswp on Twitter](https://twitter.com/rootswp)
-* Read and subscribe to the [Roots Blog](https://roots.io/blog/)
-* Subscribe to the [Roots Newsletter](https://roots.io/subscribe/)
-* Listen to the [Roots Radio podcast](https://roots.io/podcast/)
+- Participate on the [Roots Discourse](https://discourse.roots.io/)
+- Follow [@rootswp on Twitter](https://twitter.com/rootswp)
+- Read and subscribe to the [Roots Blog](https://roots.io/blog/)
+- Subscribe to the [Roots Newsletter](https://roots.io/subscribe/)
+- Listen to the [Roots Radio podcast](https://roots.io/podcast/)
