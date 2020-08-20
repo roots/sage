@@ -29,7 +29,7 @@
 </p>
 
 <p align="center">
-  <a href="https://roots.io">Official Website</a> | <a href="https://roots.io/docs/sage/9.x/installation/">Documentation</a> | <a href="CHANGELOG.md">Change Log</a>
+  <a href="https://roots.io">Official Website</a> | <a href="https://roots.io/docs/sage/">Documentation</a> | <a href="CHANGELOG.md">Change Log</a>
 </p>
 
 ## Supporting
@@ -40,7 +40,8 @@ However, the amount of effort needed to maintain and develop new features and pr
 
 <div align="center">
 
-[![Donate via Patreon](https://img.shields.io/badge/donate-patreon-orange.svg?style=flat-square&logo=patreon")](https://www.patreon.com/rootsdev)
+[![Sponsor on GitHub](https://img.shields.io/static/v1?label=Sponsor&message=%E2%9D%A4&logo=GitHub)](https://github.com/sponsors/roots)
+[![Sponsor on Patreon](https://img.shields.io/badge/donate-patreon-orange.svg?style=flat-square&logo=patreon")](https://www.patreon.com/rootsdev)
 [![Donate via PayPal](https://img.shields.io/badge/donate-paypal-blue.svg?style=flat-square&logo=paypal)](https://www.paypal.me/rootsdev)
 
 </div>
@@ -49,7 +50,7 @@ However, the amount of effort needed to maintain and develop new features and pr
 
 Sage is a productivity-driven WordPress starter theme with a modern development workflow.
 
-**The `master` branch currently tracks Sage 10 which is in active development. Looking for [Sage 9](https://github.com/roots/sage/releases)?**
+**The `master` branch currently tracks Sage 10 which is in active development. Looking for Sage 9? [See releases](https://github.com/roots/sage/releases).**
 
 ## Features
 
