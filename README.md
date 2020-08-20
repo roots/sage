@@ -49,7 +49,7 @@ However, the amount of effort needed to maintain and develop new features and pr
 
 Sage is a productivity-driven WordPress starter theme with a modern development workflow.
 
-**Sage 10 is in active development and is currently in alpha. The `master` branch tracks Sage 10 development. If you want a stable version, use the [latest Sage 9 release](https://github.com/roots/sage/releases/latest).**
+**The `master` branch currently tracks Sage 10 which is in active development. Looking for [Sage 9](https://github.com/roots/sage/releases)?**
 
 ## Features
 
