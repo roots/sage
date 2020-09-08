@@ -4,8 +4,8 @@
     "extends @wordpress/browserslist-config"
   ],
   "scripts": {
-    "dev": "budpack --env development",
-    "build": "budpack --env production",
+    "dev": "node sage.config.js --env development",
+    "build": "node sage.config.js --env production",
     "build:production": "run-s clean:* build",
     "clean": "run-p clean:*",
     "clean:dist": "rimraf dist",
@@ -20,10 +20,14 @@
     "translate:js": "wp i18n make-json ./resources/languages --no-purge --pretty-print"
   },
   "devDependencies": {
-    "@roots/budpack": "^0.0.19",
+    "@roots/bud": "^2.0.0-next.8",
+    "@roots/bud-eslint": "^2.0.0-next.8",
+    "@roots/bud-purgecss": "^2.0.0-next.8",
+    "@roots/bud-sass": "^2.0.0-next.8",
+    "@roots/bud-stylelint": "^2.0.0-next.8",
+    "@roots/bud-wordpress-manifests": "^2.0.0-next.8",
+    "@wordpress/browserslist-config": "^2.7.0",
     "cross-env": "^7.0.2",
-    "eslint": "^7.3.1",
-    "eslint-plugin-import": "^2.22.0",
     "npm-run-all": "^4.1",
     "rimraf": "^3.0.2"
   },
