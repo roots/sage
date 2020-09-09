@@ -1738,13 +1738,6 @@
     stylelint-webpack-plugin "^2.1.0"
     webpack "^4.44.1"
 
-"@roots/bud-tailwindcss@2.0.0-next.13":
-  version "2.0.0-next.13"
-  resolved "https://registry.yarnpkg.com/@roots/bud-tailwindcss/-/bud-tailwindcss-2.0.0-next.13.tgz#1e111eba5cc6063c167d4605a2859aa130c961c8"
-  integrity sha512-ZhOc7bot7ckrPDzyQpcANRImDMPzBlKnx1RR3w5t1cFk+sqgjF+CzGWTeqprJXLEcrCiyqPi1uZIbNycb66dCQ==
-  dependencies:
-    tailwindcss "^1.6.2"
-
 "@roots/bud-wordpress-manifests@2.0.0-next.13":
   version "2.0.0-next.13"
   resolved "https://registry.yarnpkg.com/@roots/bud-wordpress-manifests/-/bud-wordpress-manifests-2.0.0-next.13.tgz#c3d4f4deb804b17cdd7007b8cba2cf19f85cc65b"
