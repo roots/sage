@@ -20,15 +20,15 @@
     "translate:js": "wp i18n make-json ./resources/languages --no-purge --pretty-print"
   },
   "devDependencies": {
-    "@roots/bud": "2.0.0-next.14",
-    "@roots/bud-cli": "2.0.0-next.14",
-    "@roots/bud-eslint": "2.0.0-next.14",
-    "@roots/bud-purgecss": "2.0.0-next.14",
-    "@roots/bud-sass": "2.0.0-next.14",
-    "@roots/bud-stylelint": "2.0.0-next.14",
-    "@roots/bud-wordpress-manifests": "2.0.0-next.14",
+    "@roots/bud": "2.0.0-next.17",
+    "@roots/bud-eslint": "2.0.0-next.16",
+    "@roots/bud-purgecss": "2.0.0-next.17",
+    "@roots/bud-sass": "2.0.0-next.17",
+    "@roots/bud-stylelint": "2.0.0-next.17",
+    "@roots/bud-wordpress-manifests": "2.0.0-next.17",
     "@wordpress/browserslist-config": "^2.7.0",
     "cross-env": "^7.0.2",
+    "node-sass": "^4.14.1",
     "npm-run-all": "^4.1",
     "rimraf": "^3.0.2"
   },
