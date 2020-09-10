@@ -49,8 +49,9 @@ bud
  */
 bud.when(bud.inDevelopment, () =>
   bud.dev({
-    host: bud.env.get('APP_DEV_HOST'),
-    port: bud.env.get('APP_DEV_PORT'),
+    from: {
+      host: bud.env.get('APP_HOST'),
+    },
   })
   .devtool('inline-cheap-module-source-map')
 )
