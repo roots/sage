@@ -16,9 +16,8 @@ bud
  * Project paths.
  */
 bud
-  .distPath('dist')
   .srcPath('resources/assets')
-  .publicPath('app/themes/sage/dist')
+  .publicPath(bud.env.get('APP_PUBLIC_PATH'))
 
 /**
  * Application assets
@@ -45,34 +44,28 @@ bud
   .runtimeManifest()
 
 /**
- * Applied to development builds.
+ * Production builds.
  */
-bud.when(bud.inDevelopment, () =>
-  bud.dev({
-    from: {
-      host: bud.env.get('APP_HOST'),
-    },
-  })
-  .devtool('inline-cheap-module-source-map')
-)
+if (bud.mode.is('production')) {
+  bud
+    .gzip()
+    .hash()
+    .mini()
+    .devtool('hidden-source-map')
+    .purgecss(require('@roots/bud-purgecss').preset)
+}
 
 /**
- * Applied to production builds.
+ * Development builds.
  */
-bud.when(bud.inProduction, () =>
-  bud
-    .hash()
-    .devtool('hidden-source-map')
-    .mini()
-    .purgecss(
-      require('@roots/bud-purgecss').preset
-    )
-)
+if (bud.mode.is('development')) {
+  bud.dev({
+    host: bud.env.get('APP_HOST'),
+  })
+  .devtool('inline-cheap-module-source-map')
+}
 
 /**
  * Compile build.
  */
 bud.compile()
-
-// Alternatiely, export to webpack:
-// module.exports = bud.config(bud)

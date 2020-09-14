@@ -16,16 +16,20 @@ use function Roots\asset;
 add_action('wp_enqueue_scripts', function () {
     $manifest = json_decode(asset('manifest.json')->contents(), true);
 
-    wp_enqueue_script('sage/vendor.js', asset($manifest['vendor.js'])->uri(), ['jquery'], null, true);
-    wp_enqueue_script('sage/app.js', asset($manifest['app.js'])->uri(), ['sage/vendor.js', 'jquery'], null, true);
-
-    wp_add_inline_script('sage/vendor.js', asset($manifest['runtime/app.js'])->contents(), 'before');
+    /**
+     * Needs working out.
+     */
+    wp_enqueue_script('sage/vendor/app', get_home_url() . $manifest['vendor/app.js'], ['jquery'], null, true);
+    wp_add_inline_script('sage/vendor/app', asset('runtime/app.js')->contents(), 'before');
+    wp_enqueue_script('sage/vendor/app~customizer', get_home_url() . $manifest['vendor/app~customizer.js'], ['sage/vendor/app'], null, true);
+    wp_enqueue_script('sage/vendor/app~editor~customizer', get_home_url() . $manifest['vendor/app~editor~customizer.js'], ['sage/vendor/app~customizer'], null, true);
+    wp_enqueue_script('sage/app', get_home_url() . $manifest['app.js'], ['sage/vendor/app~customizer'], null, true);
 
     if (is_single() && comments_open() && get_option('thread_comments')) {
         wp_enqueue_script('comment-reply');
     }
 
-    wp_enqueue_style('sage/app.css', asset($manifest['app.css'])->uri(), false, null);
+    wp_enqueue_style('sage/app.css', get_home_url() . $manifest['app.css'], false, null);
 }, 100);
 
 /**

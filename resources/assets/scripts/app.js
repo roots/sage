@@ -15,7 +15,7 @@ $(document).ready(() => {
  * @see https://webpack.js.org/api/hot-module-replacement/#accept-self
  */
 if (module.hot) {
-  module.hot.accept(err =>
+  module.hot.accept(err => {
     console.err(err)
-  );
+  });
 }
