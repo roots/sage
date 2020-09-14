@@ -34,6 +34,7 @@ bud
   .bundle('customizer', [
     bud.src('scripts/customizer.js'),
   ])
+  .copy('{images,fonts}/**/*')
 
 /**
  * Applied to all builds.

@@ -21,12 +21,12 @@
     "translate:js": "wp i18n make-json ./resources/languages --no-purge --pretty-print"
   },
   "devDependencies": {
-    "@roots/bud": "2.0.0-next.23",
-    "@roots/bud-eslint": "2.0.0-next.23",
-    "@roots/bud-purgecss": "2.0.0-next.23",
-    "@roots/bud-sass": "2.0.0-next.23",
-    "@roots/bud-stylelint": "2.0.0-next.23",
-    "@roots/bud-wordpress-manifests": "2.0.0-next.23",
+    "@roots/bud": "2.0.0-next.24",
+    "@roots/bud-eslint": "2.0.0-next.24",
+    "@roots/bud-purgecss": "2.0.0-next.24",
+    "@roots/bud-sass": "2.0.0-next.24",
+    "@roots/bud-stylelint": "2.0.0-next.24",
+    "@roots/bud-wordpress-manifests": "2.0.0-next.24",
     "@wordpress/browserslist-config": "^2.7.0",
     "cross-env": "^7.0.2",
     "node-sass": "^4.14.1",
