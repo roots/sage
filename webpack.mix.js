@@ -1,4 +1,5 @@
 const mix = require('laravel-mix');
+const path = require('path');
 require('@tinypixelco/laravel-mix-wp-blocks');
 require('laravel-mix-purgecss');
 require('laravel-mix-copy-watched');
