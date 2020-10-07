@@ -33,7 +33,7 @@
     "cross-env": "^7.0.2",
     "eslint": "^7.7.0",
     "eslint-plugin-import": "^2.22.0",
-    "laravel-mix": "^5.0.4",
+    "laravel-mix": "^5.0.6",
     "laravel-mix-copy-watched": "^2.2.4",
     "laravel-mix-purgecss": "^5.0.0",
     "npm-run-all": "^4.1",
