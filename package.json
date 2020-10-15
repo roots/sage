@@ -3,6 +3,9 @@
   "browserslist": [
     "extends @wordpress/browserslist-config"
   ],
+  "engines" : {
+    "node" : ">=12.0.0"
+  },
   "scripts": {
     "build": "cross-env NODE_ENV=development run-s mix",
     "build:production": "cross-env NODE_ENV=production run-s clean mix",
