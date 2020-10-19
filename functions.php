@@ -11,7 +11,10 @@
 |
 */
 
-if (! file_exists($composer = __DIR__ . '/vendor/autoload.php')) {
+if (
+    ! file_exists($composer = __DIR__ . '/vendor/autoload.php')
+    && ! file_exists($composer = dirname(__DIR__, 4) . '/vendor/autoload.php')
+) {
     wp_die(__('Error locating autoloader. Please run <code>composer install</code>.', 'sage'));
 }
 
