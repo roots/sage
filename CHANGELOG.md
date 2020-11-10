@@ -1,3 +1,7 @@
+### 9.0.10: November 9th, 2020
+* Update Node dependencies ([#2572](https://github.com/roots/sage/pull/2572))
+* Composer 2 compatibility ([#2569](https://github.com/roots/sage/pull/2569))
+
 ### 9.0.9: February 13th, 2019
 * Update to Bootstrap 4.3.1 ([#2153](https://github.com/roots/sage/pull/2153))
 
