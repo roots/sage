@@ -46,7 +46,7 @@
     "sass-loader": "^9.0.3",
     "stylelint": "^13.6.1",
     "stylelint-config-standard": "^20.0.0",
-    "vue-template-compiler": "^2.6.11"
+    "vue-template-compiler": "^2.6.12"
   },
   "dependencies": {
     "bootstrap": "^4.5.3",
