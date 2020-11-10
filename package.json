@@ -31,7 +31,7 @@
     "@wordpress/browserslist-config": "^2.7.0",
     "@wordpress/dependency-extraction-webpack-plugin": "^2.8.0",
     "babel-eslint": "^10.1.0",
-    "browser-sync": "^2.26.12",
+    "browser-sync": "^2.26.13",
     "browser-sync-webpack-plugin": "^2.0.1",
     "cross-env": "^7.0.2",
     "eslint": "^7.7.0",
