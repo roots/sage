@@ -2,6 +2,8 @@ const mix = require('laravel-mix');
 require('@tinypixelco/laravel-mix-wp-blocks');
 require('laravel-mix-purgecss');
 require('laravel-mix-copy-watched');
+require('laravel-mix-postcss-config');
+
 
 /*
  |--------------------------------------------------------------------------
@@ -19,13 +21,9 @@ mix
   .browserSync('sage.test');
 
 mix
-  .sass('resources/assets/styles/app.scss', 'styles')
-  .sass('resources/assets/styles/editor.scss', 'styles')
-  .purgeCss({
-    extend: { content: [path.join(__dirname, 'index.php')] },
-    whitelist: require('purgecss-with-wordpress').whitelist,
-    whitelistPatterns: require('purgecss-with-wordpress').whitelistPatterns,
-  });
+  .postCss('resources/assets/styles/app.scss', 'styles')
+  .postCss('resources/assets/styles/editor.scss', 'styles')
+  .postCssConfig();
 
 mix
   .js('resources/assets/scripts/app.js', 'scripts')

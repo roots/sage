@@ -26,6 +26,7 @@
     "translate:js": "wp i18n make-json ./resources/languages --no-purge --pretty-print"
   },
   "devDependencies": {
+    "@tailwindcss/custom-forms": "^0.2.1",
     "@tinypixelco/laravel-mix-wp-blocks": "^1.1.0",
     "@wordpress/babel-preset-default": "^4.17.0",
     "@wordpress/browserslist-config": "^2.7.0",
@@ -50,8 +51,10 @@
     "vue-template-compiler": "^2.6.11"
   },
   "dependencies": {
+    "@tailwindcss/typography": "^0.3.1",
     "alpinejs": "^2.7.3",
     "autoprefixer": "^10.0.2",
+    "laravel-mix-postcss-config": "^1.4.0",
     "postcss": "^8.1.10"
   }
 }
