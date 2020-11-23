@@ -147,3 +147,16 @@ add_action('widgets_init', function () {
         'id' => 'sidebar-footer'
     ] + $config);
 });
+
+/**
+ * remove jquery
+ */
+
+add_filter('init', function () {
+    if (is_admin()) {
+        return;
+    }
+
+    wp_deregister_script('jquery');
+    wp_register_script('jquery', false);
+});

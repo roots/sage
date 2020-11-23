@@ -2,15 +2,3 @@
  * Editor
  */
 
-@import 'config/variables';
-
-@import '~bootstrap/scss/functions';
-@import '~bootstrap/scss/variables';
-@import '~bootstrap/scss/mixins';
-
-.editor-styles-wrapper > * {
-  @import 'common/global';
-  @import 'components';
-
-  font-family: $font-family-base;
-}

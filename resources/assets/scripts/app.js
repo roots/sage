@@ -1,9 +1,5 @@
 /**
  * External Dependencies
  */
-import 'jquery';
+import 'alpinejs';
 import 'bootstrap';
-
-$(document).ready(() => {
-  // console.log('Hello world');
-});
