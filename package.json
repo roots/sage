@@ -4,8 +4,8 @@
     "extends @wordpress/browserslist-config"
   ],
   "scripts": {
-    "dev": "node sage.config.js --env development --hot --fix",
-    "build": "node sage.config.js --env production",
+    "dev": "node sage.config.js --mode development",
+    "build": "node sage.config.js --mode production",
     "build:production": "run-s clean:* build",
     "build:ci": "node sage.config.js --env production --ci",
     "clean": "run-p clean:*",
@@ -21,15 +21,16 @@
     "translate:js": "wp i18n make-json ./resources/languages --no-purge --pretty-print"
   },
   "devDependencies": {
-    "@roots/bud": "2.0.0-next.24",
-    "@roots/bud-eslint": "2.0.0-next.24",
-    "@roots/bud-purgecss": "2.0.0-next.24",
-    "@roots/bud-sass": "2.0.0-next.24",
-    "@roots/bud-stylelint": "2.0.0-next.24",
-    "@roots/bud-wordpress-manifests": "2.0.0-next.24",
+    "@roots/bud": "^2.0.3",
+    "@roots/bud-eslint": "^2.0.3",
+    "@roots/bud-postcss": "^2.0.3",
+    "@roots/bud-purgecss": "^2.0.3",
+    "@roots/bud-react": "^2.0.3",
+    "@roots/bud-sass": "^2.0.3",
+    "@roots/bud-stylelint": "^2.0.3",
+    "@roots/bud-wordpress-manifests": "^2.0.3",
     "@wordpress/browserslist-config": "^2.7.0",
     "cross-env": "^7.0.2",
-    "node-sass": "^4.14.1",
     "npm-run-all": "^4.1",
     "rimraf": "^3.0.2"
   },

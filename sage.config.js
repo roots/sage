@@ -1,72 +1,59 @@
-const bud = require('@roots/bud')
+require('@roots/bud').pipe([
+  ({use}) => use([
+    '@roots/bud-react',
+    '@roots/bud-postcss',
+    '@roots/bud-sass',
+    '@roots/bud-eslint',
+    '@roots/bud-purgecss',
+    '@roots/bud-stylelint',
+    '@roots/bud-wordpress-manifests',
+  ]),
 
-/**
- * Extensions
- */
-bud
-  .extend([
-    require('@roots/bud-sass'),
-    require('@roots/bud-eslint').plugin,
-    require('@roots/bud-stylelint').plugin,
-    require('@roots/bud-purgecss').plugin,
-    require('@roots/bud-wordpress-manifests'),
-  ])
+  ({env, srcPath, publicPath, provide, alias}) => {
+    srcPath('resources/assets');
 
-/**
- * Project paths.
- */
-bud
-  .srcPath('resources/assets')
-  .publicPath(bud.env.get('APP_PUBLIC_PATH'))
+    publicPath(env.get('APP_PUBLIC_PATH'));
 
-/**
- * Application assets
- */
-bud
-  .bundle('app', [
-    bud.src('scripts/app.js'),
-    bud.src('styles/app.scss'),
-  ])
-  .bundle('editor', [
-    bud.src('scripts/editor.js'),
-    bud.src('styles/editor.scss'),
-  ])
-  .bundle('customizer', [
-    bud.src('scripts/customizer.js'),
-  ])
-  .copy('{images,fonts}/**/*')
+    provide({jquery: ['$', 'jQuery'] });
 
-/**
- * Applied to all builds.
- */
-bud
-  .provide({jquery: ['$', 'jQuery']})
-  .vendor()
-  .runtimeManifest()
+    alias({
+      '@scripts': './scripts',
+      '@styles': './styles',
+      '@fonts': './fonts',
+      '@images': './images',
+    });
+  },
 
-/**
- * Production builds.
- */
-if (bud.mode.is('production')) {
-  bud
-    .gzip()
-    .hash()
-    .mini()
-    .devtool('hidden-source-map')
-    .purgecss(require('@roots/bud-purgecss').preset)
-}
+  ({copy, entry}) => {
+    entry('app', [
+      '@styles/app.scss',
+      '@scripts/app.js',
+    ]);
 
-/**
- * Development builds.
- */
-if (bud.mode.is('development')) {
-  bud.dev({
-    host: bud.env.get('APP_HOST'),
-  })
-  .devtool('inline-cheap-module-source-map')
-}
+    entry('editor', [
+      '@scripts/editor.js',
+      '@styles/editor.scss',
+    ]);
 
-/**
- * Compile build.
- */
-bud.compile()
+    entry('customizer', [
+      '@scripts/customizer.js',
+    ]);
+
+    copy('images/*');
+  },
+
+  ({mode, when}) => {
+    when(mode.is('production'), bud => {
+      bud.minify();
+      bud.hash();
+      bud.vendor();
+      bud.runtime();
+      bud.devtool('hidden-source-map');
+      bud.purge(bud.presets.get('purgecss.wp'));
+    })
+
+    when(mode.is('development'), ({dev, env}) =>
+      dev({host: env.get('APP_HOST')})
+    );
+  },
+]).run();

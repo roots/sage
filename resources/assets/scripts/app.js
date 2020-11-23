@@ -1,21 +1,17 @@
 /**
- * External Dependencies
+ * External dependencies.
  */
-import 'jquery';
 import 'bootstrap';
 
-$(document).ready(() => {
-  // console.log('Hello world');
-});
+$(() => {
+  console.log('edit: sage/resources/assets/scripts/app.js');
+})
 
 /**
  * Accept module updates
  *
  * @see https://webpack.js.org/api/hot-module-replacement
- * @see https://webpack.js.org/api/hot-module-replacement/#accept-self
  */
-if (module.hot) {
-  module.hot.accept(err => {
-    console.err(err)
-  });
-}
+module.hot && module.hot.accept(err => {
+  console.err(err)
+});
