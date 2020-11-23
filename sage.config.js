@@ -1,59 +1,45 @@
-require('@roots/bud').pipe([
-  ({use}) => use([
-    '@roots/bud-react',
-    '@roots/bud-postcss',
-    '@roots/bud-sass',
-    '@roots/bud-eslint',
-    '@roots/bud-purgecss',
-    '@roots/bud-stylelint',
-    '@roots/bud-wordpress-manifests',
-  ]),
+const bud = require('@roots/bud')
 
-  ({env, srcPath, publicPath, provide, alias}) => {
-    srcPath('resources/assets');
+bud.use([
+  '@roots/bud-react',
+  '@roots/bud-postcss',
+  '@roots/bud-sass',
+  '@roots/bud-eslint',
+  '@roots/bud-purgecss',
+  '@roots/bud-stylelint',
+  '@roots/bud-wordpress-manifests',
+]);
 
-    publicPath(env.get('APP_PUBLIC_PATH'));
+bud.srcPath('resources/assets');
+bud.publicPath(bud.env.get('APP_PUBLIC_PATH'));
+bud.buildCache(bud.project('storage/bud/records.json'))
 
-    provide({jquery: ['$', 'jQuery'] });
+bud.alias({
+  '@scripts': bud.src('scripts'),
+  '@styles': bud.src('styles'),
+  '@fonts': bud.src('fonts'),
+  '@images': bud.src('images'),
+});
 
-    alias({
-      '@scripts': './scripts',
-      '@styles': './styles',
-      '@fonts': './fonts',
-      '@images': './images',
-    });
-  },
+bud.provide({jquery: ['$', 'jQuery']});
 
-  ({copy, entry}) => {
-    entry('app', [
-      '@styles/app.scss',
-      '@scripts/app.js',
-    ]);
+bud.entry('app', ['@styles/app.scss', '@scripts/app.js']);
+bud.entry('editor', ['@scripts/editor.js', '@styles/editor.scss']);
+bud.entry('customizer', ['@scripts/customizer.js']);
 
-    entry('editor', [
-      '@scripts/editor.js',
-      '@styles/editor.scss',
-    ]);
+bud.copy('images/*');
 
-    entry('customizer', [
-      '@scripts/customizer.js',
-    ]);
+bud.when(bud.mode.is('production'), bud => {
+  bud.minify();
+  bud.hash();
+  bud.vendor();
+  bud.runtime();
+  bud.devtool('hidden-source-map');
+  bud.purge(bud.presets.get('purgecss.wp'));
+})
 
-    copy('images/*');
-  },
+bud.when(bud.mode.is('development'), bud =>
+  bud.dev({host: bud.env.get('APP_HOST')})
+);
 
-  ({mode, when}) => {
-    when(mode.is('production'), bud => {
-      bud.minify();
-      bud.hash();
-      bud.vendor();
-      bud.runtime();
-      bud.devtool('hidden-source-map');
-      bud.purge(bud.presets.get('purgecss.wp'));
-    })
-
-    when(mode.is('development'), ({dev, env}) =>
-      dev({host: env.get('APP_HOST')})
-    );
-  },
-]).run();
+bud.run();

@@ -1,0 +1,98 @@
+{
+  "mini-css-extract-plugin ../../node_modules/css-loader/dist/cjs.js??css!../../node_modules/@roots/bud-postcss/node_modules/postcss-loader/dist/cjs.js??postcss!../../node_modules/sass-loader/dist/cjs.js??sass!../../node_modules/resolve-url-loader/index.js??resolve-url!styles/app.scss": [
+    {
+      "modules": {
+        "byIdentifier": {
+          "../../node_modules/css-loader/dist/cjs.js??css!../../node_modules/@roots/bud-postcss/node_modules/postcss-loader/dist/cjs.js??postcss!../../node_modules/sass-loader/dist/cjs.js??sass!../../node_modules/resolve-url-loader/index.js??resolve-url!styles/app.scss": 0,
+          "../../node_modules/css-loader/dist/runtime/api.js": 1
+        },
+        "usedIds": {
+          "0": 0,
+          "1": 1
+        }
+      },
+      "chunks": {
+        "byName": {
+          "mini-css-extract-plugin": 0
+        },
+        "bySource": {
+          "0 mini-css-extract-plugin": 0
+        },
+        "usedIds": [
+          0
+        ]
+      }
+    }
+  ],
+  "mini-css-extract-plugin ../../node_modules/css-loader/dist/cjs.js??css!../../node_modules/@roots/bud-postcss/node_modules/postcss-loader/dist/cjs.js??postcss!../../node_modules/sass-loader/dist/cjs.js??sass!../../node_modules/resolve-url-loader/index.js??resolve-url!styles/editor.scss": [
+    {
+      "modules": {
+        "byIdentifier": {
+          "../../node_modules/css-loader/dist/cjs.js??css!../../node_modules/@roots/bud-postcss/node_modules/postcss-loader/dist/cjs.js??postcss!../../node_modules/sass-loader/dist/cjs.js??sass!../../node_modules/resolve-url-loader/index.js??resolve-url!styles/editor.scss": 0,
+          "../../node_modules/css-loader/dist/runtime/api.js": 1
+        },
+        "usedIds": {
+          "0": 0,
+          "1": 1
+        }
+      },
+      "chunks": {
+        "byName": {
+          "mini-css-extract-plugin": 0
+        },
+        "bySource": {
+          "0 mini-css-extract-plugin": 0
+        },
+        "usedIds": [
+          0
+        ]
+      }
+    }
+  ],
+  "modules": {
+    "byIdentifier": {
+      "multi @styles/app.scss @scripts/app.js": 0,
+      "../../node_modules/mini-css-extract-plugin/dist/loader.js!../../node_modules/css-loader/dist/cjs.js??css!../../node_modules/@roots/bud-postcss/node_modules/postcss-loader/dist/cjs.js??postcss!../../node_modules/sass-loader/dist/cjs.js??sass!../../node_modules/resolve-url-loader/index.js??resolve-url!styles/app.scss": 1,
+      "../../node_modules/thread-loader/dist/cjs.js!../../node_modules/cache-loader/dist/cjs.js!../../node_modules/raw-loader/dist/cjs.js!scripts/app.js": 2,
+      "multi @scripts/editor.js @styles/editor.scss": 3,
+      "../../node_modules/thread-loader/dist/cjs.js!../../node_modules/cache-loader/dist/cjs.js!../../node_modules/raw-loader/dist/cjs.js!scripts/editor.js": 4,
+      "../../node_modules/mini-css-extract-plugin/dist/loader.js!../../node_modules/css-loader/dist/cjs.js??css!../../node_modules/@roots/bud-postcss/node_modules/postcss-loader/dist/cjs.js??postcss!../../node_modules/sass-loader/dist/cjs.js??sass!../../node_modules/resolve-url-loader/index.js??resolve-url!styles/editor.scss": 5,
+      "../../node_modules/thread-loader/dist/cjs.js!../../node_modules/cache-loader/dist/cjs.js!../../node_modules/raw-loader/dist/cjs.js!scripts/customizer.js": 6
+    },
+    "usedIds": {
+      "0": 0,
+      "1": 1,
+      "2": 2,
+      "3": 3,
+      "4": 4,
+      "5": 5,
+      "6": 6
+    }
+  },
+  "chunks": {
+    "byName": {
+      "app": 0,
+      "app/runtime": 1,
+      "customizer": 2,
+      "customizer/runtime": 3,
+      "editor": 4,
+      "editor/runtime": 5
+    },
+    "bySource": {
+      "1 app": 0,
+      "0 app": 1,
+      "1 customizer": 2,
+      "0 customizer": 3,
+      "1 editor": 4,
+      "0 editor": 5
+    },
+    "usedIds": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
+  }
+}
