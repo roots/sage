@@ -1,4 +1,4 @@
-const bud = require('@roots/bud')
+const {bud} = require('@roots/bud')
 
 bud.use([
   '@roots/bud-react',
@@ -32,6 +32,7 @@ bud.copy('images/*');
 bud.when(bud.mode.is('production'), bud => {
   bud.minify();
   bud.hash();
+  bud.imagemin();
   bud.vendor();
   bud.runtime();
   bud.devtool('hidden-source-map');
