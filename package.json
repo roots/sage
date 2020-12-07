@@ -42,7 +42,7 @@
     "npm-run-all": "^4.1",
     "purgecss-with-wordpress": "^2.3.0",
     "rimraf": "^3.0.2",
-    "sass": "^1.26.10",
+    "sass": "^1.30.0",
     "sass-loader": "^9.0.3",
     "stylelint": "^13.6.1",
     "stylelint-config-standard": "^20.0.0",
