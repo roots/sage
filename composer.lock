@@ -1710,16 +1710,16 @@
         },
         {
             "name": "roots/sage-installer",
-            "version": "1.6.3",
+            "version": "1.6.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/roots/sage-installer.git",
-                "reference": "6d8c105a290f9bd44d4e52b17eac7fd065cb2ad1"
+                "reference": "f832afcb913417f9d25525b7885f6350da36009a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/roots/sage-installer/zipball/6d8c105a290f9bd44d4e52b17eac7fd065cb2ad1",
-                "reference": "6d8c105a290f9bd44d4e52b17eac7fd065cb2ad1",
+                "url": "https://api.github.com/repos/roots/sage-installer/zipball/f832afcb913417f9d25525b7885f6350da36009a",
+                "reference": "f832afcb913417f9d25525b7885f6350da36009a",
                 "shasum": ""
             },
             "require": {
@@ -1746,14 +1746,14 @@
             ],
             "authors": [
                 {
-                    "name": "Ben Word",
-                    "email": "ben@benword.com",
-                    "homepage": "https://github.com/retlehs"
-                },
-                {
                     "name": "QWp6t",
                     "email": "hi@qwp6t.me",
                     "homepage": "https://github.com/qwp6t"
+                },
+                {
+                    "name": "Ben Word",
+                    "email": "ben@benword.com",
+                    "homepage": "https://github.com/retlehs"
                 }
             ],
             "description": "Sage starter theme installer",
@@ -1768,9 +1768,19 @@
             ],
             "support": {
                 "issues": "https://github.com/roots/sage-installer/issues",
-                "source": "https://github.com/roots/sage-installer/tree/master"
+                "source": "https://github.com/roots/sage-installer/tree/1.6.4"
             },
-            "time": "2019-05-13T22:05:28+00:00"
+            "funding": [
+                {
+                    "url": "https://github.com/roots",
+                    "type": "github"
+                },
+                {
+                    "url": "https://www.patreon.com/rootsdev",
+                    "type": "patreon"
+                }
+            ],
+            "time": "2020-12-09T05:26:59+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
