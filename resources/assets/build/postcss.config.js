@@ -1,15 +1,17 @@
 /* eslint-disable */
 
-const cssnanoConfig = {
-  preset: ['default', { discardComments: { removeAll: true } }]
-};
+module.exports = (api) => {
 
-module.exports = ({ file, options }) => {
+  const cssnanoConfig = {
+    preset: ['default', { discardComments: { removeAll: true } }]
+  };
+
   return {
-    parser: options.enabled.optimize ? 'postcss-safe-parser' : undefined,
+    parser: api.options.ctx.enabled.optimize ? 'postcss-safe-parser' : undefined,
     plugins: {
       autoprefixer: true,
-      cssnano: options.enabled.optimize ? cssnanoConfig : false,
+      cssnano: api.options.ctx.enabled.optimize ? cssnanoConfig : false,
     },
   };
+
 };

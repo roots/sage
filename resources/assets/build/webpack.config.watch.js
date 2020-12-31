@@ -1,6 +1,6 @@
 const url = require('url');
 const webpack = require('webpack');
-const BrowserSyncPlugin = require('browsersync-webpack-plugin');
+const BrowserSyncPlugin = require('browser-sync-webpack-plugin')
 
 const config = require('./config');
 
@@ -20,16 +20,14 @@ module.exports = {
     pathinfo: true,
     publicPath: config.proxyUrl + config.publicPath,
   },
-  devtool: '#cheap-module-source-map',
+  devtool: 'cheap-module-source-map',
   stats: false,
   plugins: [
-    new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoEmitOnErrorsPlugin(),
     new BrowserSyncPlugin({
       target,
       open: config.open,
-      proxyUrl: config.proxyUrl,
+      proxy: config.proxyUrl,
       watch: config.watch,
       delay: 500,
     }),
