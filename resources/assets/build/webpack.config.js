@@ -168,7 +168,7 @@ let webpackConfig = {
       },
     }),
 	new MiniCssExtractPlugin({
-      filename: `styles/${config.cacheBusting}.css`,
+      filename: `styles/[name].css`,
     }),
     new StyleLintPlugin({
       failOnError: !config.enabled.watcher,

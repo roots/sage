@@ -5,15 +5,7 @@ const BrowserSyncPlugin = require('browser-sync-webpack-plugin')
 const config = require('./config');
 
 const target = process.env.DEVURL || config.devUrl;
-
-/**
- * We do this to enable injection over SSL.
- */
-if (url.parse(target).protocol === 'https:') {
-  process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;
-
-  config.proxyUrl = config.proxyUrl.replace('http:', 'https:');
-}
+const proxyUrlObj = url.parse(config.proxyUrl);
 
 module.exports = {
   output: {
@@ -23,13 +15,32 @@ module.exports = {
   devtool: 'cheap-module-source-map',
   stats: false,
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
     new BrowserSyncPlugin({
-      target,
-      open: config.open,
-      proxy: config.proxyUrl,
+      host:  proxyUrlObj.hostname,
+      port:  proxyUrlObj.port,
+
+      proxy: target,
+      https: (url.parse(target).protocol === 'https:'),
+
+      files: [
+        '**/*.php',
+        '**/*.css',
+        {
+           match: '**/*.js',
+           options:{
+              ignored: 'dist/**/*.js',
+           },
+        },
+     ],
+
       watch: config.watch,
-      delay: 500,
+      open:  config.open,
+      reloadDelay: 500,
+    },{
+      reload: false,
+      injectChanges: false,
     }),
+
+    new webpack.HotModuleReplacementPlugin(),
   ],
 };
