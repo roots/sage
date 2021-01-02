@@ -47,5 +47,10 @@
     "post-create-project-cmd": [
       "Roots\\Sage\\Installer\\ComposerScript::postCreateProject"
     ]
+  },
+  "config": {
+    "platform": {
+      "php": "7.1.3"
+    }
   }
 }
