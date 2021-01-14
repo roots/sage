@@ -98,6 +98,8 @@ themes/your-theme-name/   # → Root of your Sage based theme
 │   ├── filters.php       # → Theme filters
 │   ├── helpers.php       # → Helper functions
 │   └── setup.php         # → Theme setup
+├── bootstrap/            # → Acorn bootstrap
+│   ├── cache/            # → Acorn cache location (never edit)
 ├── config/               # → Config files
 │   ├── app.php           # → Application configuration
 │   ├── assets.php        # → Asset configuration
@@ -106,17 +108,16 @@ themes/your-theme-name/   # → Root of your Sage based theme
 │   └── view.php          # → View configuration
 ├── composer.json         # → Autoloading for `app/` files
 ├── composer.lock         # → Composer lock file (never edit)
-├── dist/                 # → Built theme assets (never edit)
+├── public/               # → Built theme assets (never edit)
 ├── functions.php         # → Theme bootloader
 ├── index.php             # → Theme template wrapper
 ├── node_modules/         # → Node.js packages (never edit)
 ├── package.json          # → Node.js dependencies and scripts
 ├── resources/            # → Theme assets and templates
-│   ├── assets/           # → Front-end assets
-│   │   ├── fonts/        # → Theme fonts
-│   │   ├── images/       # → Theme images
-│   │   ├── scripts/      # → Theme javascript
-│   │   └── styles/       # → Theme stylesheets
+│   ├── fonts/            # → Theme fonts
+│   ├── images/           # → Theme images
+│   ├── js/               # → Theme javascript
+│   ├── css/              # → Theme stylesheets
 │   └── views/            # → Theme templates
 │       ├── components/   # → Component templates
 │       ├── form/         # → Form templates

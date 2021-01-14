@@ -1,5 +1,5 @@
 <header class="banner">
-  <div class="container">
+  <div class="max-w-3xl mx-auto">
     <a class="brand" href="{{ home_url('/') }}">
       {{ $siteName }}
     </a>

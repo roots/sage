@@ -39,11 +39,11 @@
     }
   },
   "require": {
-    "php": "^7.2.5",
-    "roots/acorn": "^1.1"
+    "php": "^7.3|^8.0",
+    "roots/acorn": "dev-laravel-85"
   },
   "require-dev": {
-    "filp/whoops": "^2.7",
+    "filp/whoops": "^2.9",
     "squizlabs/php_codesniffer": "^3.5"
   },
   "suggest": {
@@ -59,7 +59,7 @@
   "prefer-stable": true,
   "scripts": {
     "lint": [
-      "phpcs --ignore=index.php,vendor,resources,storage,dist --extensions=php --standard=PSR12 ."
+      "phpcs --ignore=index.php,bootstrap,public,resources,storage,vendor,node_modules --extensions=php --standard=PSR12 ."
     ],
     "post-autoload-dump": [
       "Roots\\Acorn\\ComposerScripts::postAutoloadDump"
