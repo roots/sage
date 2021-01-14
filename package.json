@@ -28,7 +28,6 @@
     "babel-eslint": "^10.1.0",
     "browser-sync": "^2.26.13",
     "browser-sync-webpack-plugin": "^2.3.0",
-    "cross-env": "^7.0.3",
     "eslint": "^7.17.0",
     "eslint-plugin-import": "^2.22.1",
     "laravel-mix": "^6.0.9",
