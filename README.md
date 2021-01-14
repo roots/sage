@@ -100,6 +100,7 @@ themes/your-theme-name/   # → Root of your Sage based theme
 │   └── setup.php         # → Theme setup
 ├── bootstrap/            # → Acorn bootstrap
 │   ├── cache/            # → Acorn cache location (never edit)
+│   └── app.php           # → Acorn application bootloader
 ├── config/               # → Config files
 │   ├── app.php           # → Application configuration
 │   ├── assets.php        # → Asset configuration
