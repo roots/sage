@@ -89,7 +89,7 @@ add_action('after_setup_theme', function () {
      * Register relative length units in the editor.
      * @link https://developer.wordpress.org/block-editor/developers/themes/theme-support/#support-custom-units
      */
-    add_theme_support('custom-units', 'rem', 'vw');
+    add_theme_support('custom-units');
 
     /**
      * Enable support for custom line heights in the editor.
