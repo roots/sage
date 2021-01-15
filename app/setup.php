@@ -92,7 +92,13 @@ add_action('after_setup_theme', function () {
     add_theme_support('custom-units', 'rem', 'vw');
 
     /**
-     * Enable support for custom block spacing controls.
+     * Enable support for custom line heights in the editor.
+     * @link https://developer.wordpress.org/block-editor/developers/themes/theme-support/#supporting-custom-line-heights
+     */
+    add_theme_support('custom-line-height');
+
+    /**
+     * Enable support for custom block spacing control in the editor.
      * @link https://developer.wordpress.org/block-editor/developers/themes/theme-support/#spacing-control
      */
     add_theme_support('custom-spacing');
