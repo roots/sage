@@ -49,7 +49,7 @@ add_action('enqueue_block_editor_assets', function () {
  */
 add_action('after_setup_theme', function () {
     /**
-     * Enable features from Soil when plugin is activated
+     * Enable features from Soil when plugin is activated.
      * @link https://roots.io/plugins/soil/
      */
     add_theme_support('soil', [
@@ -60,13 +60,7 @@ add_action('after_setup_theme', function () {
     ]);
 
     /**
-     * Enable plugins to manage the document title
-     * @link https://developer.wordpress.org/reference/functions/add_theme_support/#title-tag
-     */
-    add_theme_support('title-tag');
-
-    /**
-     * Register navigation menus
+     * Register the navigation menus.
      * @link https://developer.wordpress.org/reference/functions/register_nav_menus/
      */
     register_nav_menus([
@@ -74,25 +68,79 @@ add_action('after_setup_theme', function () {
     ]);
 
     /**
-     * Enable post thumbnails
+     * Register the editor color palette.
+     * @link https://developer.wordpress.org/block-editor/developers/themes/theme-support/#block-color-palettes
+     */
+    add_theme_support('editor-color-palette', []);
+
+    /**
+     * Register the editor color gradient presets.
+     * @link https://developer.wordpress.org/block-editor/developers/themes/theme-support/#block-color-palettes
+     */
+    add_theme_support('editor-gradient-presets', []);
+
+    /**
+     * Register the editor font sizes.
+     * @link https://developer.wordpress.org/block-editor/developers/themes/theme-support/#block-font-sizes
+     */
+    add_theme_support('editor-font-sizes', []);
+
+    /**
+     * Disable custom colors in the editor.
+     * @link https://developer.wordpress.org/block-editor/developers/themes/theme-support/#disabling-custom-colors-in-block-color-palettes
+     */
+    add_theme_support('disable-custom-colors');
+
+    /**
+     * Disable custom color gradients in the editor.
+     * @link https://developer.wordpress.org/block-editor/developers/themes/theme-support/#disabling-custom-gradients
+     */
+    add_theme_support('disable-custom-gradients');
+
+    /**
+     * Disable custom font sizes in the editor.
+     * @link https://developer.wordpress.org/block-editor/developers/themes/theme-support/#disabling-custom-font-sizes
+     */
+    add_theme_support('disable-custom-font-sizes');
+
+    /**
+     * Disable the default block patterns.
+     * @link https://developer.wordpress.org/block-editor/developers/themes/theme-support/#disabling-the-default-block-patterns
+     */
+    remove_theme_support('core-block-patterns');
+
+    /**
+     * Enable support for custom block spacing controls.
+     * @link https://developer.wordpress.org/block-editor/developers/themes/theme-support/#spacing-control
+     */
+    add_theme_support('custom-spacing');
+
+    /**
+     * Enable plugins to manage the document title.
+     * @link https://developer.wordpress.org/reference/functions/add_theme_support/#title-tag
+     */
+    add_theme_support('title-tag');
+
+    /**
+     * Enable post thumbnail support.
      * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
      */
     add_theme_support('post-thumbnails');
 
     /**
-     * Add theme support for Wide Alignment
+     * Enable wide alignment support.
      * @link https://wordpress.org/gutenberg/handbook/designers-developers/developers/themes/theme-support/#wide-alignment
      */
     add_theme_support('align-wide');
 
     /**
-     * Enable responsive embeds
+     * Enable responsive embed support.
      * @link https://wordpress.org/gutenberg/handbook/designers-developers/developers/themes/theme-support/#responsive-embedded-content
      */
     add_theme_support('responsive-embeds');
 
     /**
-     * Enable HTML5 markup support
+     * Enable HTML5 markup support.
      * @link https://developer.wordpress.org/reference/functions/add_theme_support/#html5
      */
     add_theme_support('html5', [
@@ -106,22 +154,10 @@ add_action('after_setup_theme', function () {
     ]);
 
     /**
-     * Enable selective refresh for widgets in customizer
+     * Enable selective refresh for widgets in customizer.
      * @link https://developer.wordpress.org/themes/advanced-topics/customizer-api/#theme-support-in-sidebars
      */
     add_theme_support('customize-selective-refresh-widgets');
-
-    /**
-     * Enable theme color palette support
-     * @link https://developer.wordpress.org/block-editor/developers/themes/theme-support/#block-color-palettes
-     */
-    add_theme_support('editor-color-palette', [
-        [
-            'name' => __('Brand', 'sage'),
-            'slug' => 'brand',
-            'color' => '#525ddc',
-        ]
-    ]);
 }, 20);
 
 /**
