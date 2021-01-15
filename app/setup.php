@@ -75,7 +75,7 @@ add_action('after_setup_theme', function () {
 
     /**
      * Register the editor color gradient presets.
-     * @link https://developer.wordpress.org/block-editor/developers/themes/theme-support/#block-color-palettes
+     * @link https://developer.wordpress.org/block-editor/developers/themes/theme-support/#block-gradient-presets
      */
     add_theme_support('editor-gradient-presets', []);
 
