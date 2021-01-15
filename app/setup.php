@@ -92,6 +92,12 @@ add_action('after_setup_theme', function () {
     add_theme_support('custom-units', 'rem', 'vw');
 
     /**
+     * Enable support for custom block spacing controls.
+     * @link https://developer.wordpress.org/block-editor/developers/themes/theme-support/#spacing-control
+     */
+    add_theme_support('custom-spacing');
+
+    /**
      * Disable custom colors in the editor.
      * @link https://developer.wordpress.org/block-editor/developers/themes/theme-support/#disabling-custom-colors-in-block-color-palettes
      */
@@ -114,12 +120,6 @@ add_action('after_setup_theme', function () {
      * @link https://developer.wordpress.org/block-editor/developers/themes/theme-support/#disabling-the-default-block-patterns
      */
     remove_theme_support('core-block-patterns');
-
-    /**
-     * Enable support for custom block spacing controls.
-     * @link https://developer.wordpress.org/block-editor/developers/themes/theme-support/#spacing-control
-     */
-    add_theme_support('custom-spacing');
 
     /**
      * Enable plugins to manage the document title.
