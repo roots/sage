@@ -86,6 +86,12 @@ add_action('after_setup_theme', function () {
     add_theme_support('editor-font-sizes', []);
 
     /**
+     * Register relative length units in the editor.
+     * @link https://developer.wordpress.org/block-editor/developers/themes/theme-support/#support-custom-units
+     */
+    add_theme_support('custom-units', 'rem', 'vw');
+
+    /**
      * Disable custom colors in the editor.
      * @link https://developer.wordpress.org/block-editor/developers/themes/theme-support/#disabling-custom-colors-in-block-color-palettes
      */
