@@ -1,10 +1,16 @@
 name: Main
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
 
 jobs:
   node:
-    name: Node ${{ matrix.node }} - ${{ runner.os }}
+    name: Test Node ${{ matrix.node }}
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -14,7 +20,7 @@ jobs:
       - name: Checkout the project
         uses: actions/checkout@v2
 
-      - name: Setup the Node ${{ matrix.node }} environment
+      - name: Setup the Node ${{ matrix.node }} environment on ${{ runner.os }}
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node }}
@@ -43,7 +49,7 @@ jobs:
           cat public/mix-manifest.json
 
   php:
-    name: PHP ${{ matrix.php }} - ${{ runner.os }}
+    name: Test PHP ${{ matrix.php }}
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -53,7 +59,7 @@ jobs:
       - name: Checkout the project
         uses: actions/checkout@v2
 
-      - name: Setup the PHP ${{ matrix.php }} environment
+      - name: Setup the PHP ${{ matrix.php }} environment on ${{ runner.os }}
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php }}
