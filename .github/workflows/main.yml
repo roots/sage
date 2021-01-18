@@ -1,0 +1,65 @@
+name: Main
+
+on: [pull_request]
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: ['12.18', '14.4']
+        php: ['7.3', '7.4', '8.0']
+
+    steps:
+      - name: Checkout the project
+        uses: actions/checkout@v2
+
+      - name: Setup the Node ${{ matrix.node }} environment
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node }}
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Retrieve the Yarn cache directory
+        id: yarncache
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+
+      - uses: actions/cache@v2
+        with:
+          path: ${{ steps.yarncache.outputs.dir }}
+          key: ${{ runner.os }}-${{ matrix.node }}-yarn-${{ hashFiles('**/package.json') }}
+          restore-keys: ${{ runner.os }}-${{ matrix.node }}-yarn-
+
+      - name: Setup the PHP ${{ matrix.php }} environment
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          coverage: xdebug
+        env:
+          COMPOSER_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Retrieve the Composer cache directory
+        id: composercache
+        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+
+      - uses: actions/cache@v2
+        with:
+          path: ${{ steps.composercache.outputs.dir }}
+          key: ${{ runner.os }}-${{ matrix.php }}-composer-${{ hashFiles('**/composer.json') }}
+          restore-keys: ${{ runner.os }}-${{ matrix.php }}-composer-
+
+      - name: Install Node dependencies
+        run: yarn install
+
+      - name: Run linting on styles and scripts
+        run: yarn test
+
+      - name: Run the build process in production mode
+        run: yarn build:production
+
+      - name: Install Composer dependencies
+        run: composer install --no-progress --prefer-dist --optimize-autoloader --no-suggest
+
+      - name: Run linting on PHP
+        run: composer run-script lint
