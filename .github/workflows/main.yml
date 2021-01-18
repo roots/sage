@@ -1,14 +1,14 @@
 name: Main
 
-on: [pull_request]
+on: [push, pull_request]
 
 jobs:
-  main:
+  node:
+    name: Node ${{ matrix.node }} - ${{ runner.os }}
     runs-on: ubuntu-latest
     strategy:
       matrix:
         node: ['12.18', '14.4']
-        php: ['7.3', '7.4', '8.0']
 
     steps:
       - name: Checkout the project
@@ -21,7 +21,7 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Retrieve the Yarn cache directory
+      - name: Restore the Yarn cache directory
         id: yarncache
         run: echo "::set-output name=dir::$(yarn cache dir)"
 
@@ -31,6 +31,28 @@ jobs:
           key: ${{ runner.os }}-${{ matrix.node }}-yarn-${{ hashFiles('**/package.json') }}
           restore-keys: ${{ runner.os }}-${{ matrix.node }}-yarn-
 
+      - name: Install dependencies using Yarn
+        run: yarn install
+
+      - name: Execute the test scripts
+        run: yarn test
+
+      - name: Verify that assets are built successfully
+        run: |
+          yarn build:production
+          cat public/mix-manifest.json
+
+  php:
+    name: PHP ${{ matrix.php }} - ${{ runner.os }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php: ['7.3', '7.4', '8.0']
+
+    steps:
+      - name: Checkout the project
+        uses: actions/checkout@v2
+
       - name: Setup the PHP ${{ matrix.php }} environment
         uses: shivammathur/setup-php@v2
         with:
@@ -39,7 +61,7 @@ jobs:
         env:
           COMPOSER_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Retrieve the Composer cache directory
+      - name: Restore the Composer cache directory
         id: composercache
         run: echo "::set-output name=dir::$(composer config cache-files-dir)"
 
@@ -49,17 +71,8 @@ jobs:
           key: ${{ runner.os }}-${{ matrix.php }}-composer-${{ hashFiles('**/composer.json') }}
           restore-keys: ${{ runner.os }}-${{ matrix.php }}-composer-
 
-      - name: Install Node dependencies
-        run: yarn install
-
-      - name: Run linting on styles and scripts
-        run: yarn test
-
-      - name: Run the build process in production mode
-        run: yarn build:production
-
       - name: Install Composer dependencies
         run: composer install --no-progress --prefer-dist --optimize-autoloader --no-suggest
 
-      - name: Run linting on PHP
+      - name: Execute the lint script
         run: composer run-script lint
