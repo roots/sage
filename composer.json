@@ -59,7 +59,7 @@
   "prefer-stable": true,
   "scripts": {
     "lint": [
-      "phpcs --ignore=index.php,bootstrap,public,resources,storage,vendor,node_modules --extensions=php --standard=PSR12 ."
+      "phpcs --extensions=php --standard=PSR12 app config"
     ],
     "post-autoload-dump": [
       "Roots\\Acorn\\ComposerScripts::postAutoloadDump"
