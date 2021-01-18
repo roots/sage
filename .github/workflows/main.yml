@@ -39,7 +39,7 @@ jobs:
           restore-keys: ${{ runner.os }}-${{ matrix.node }}-yarn-
 
       - name: Install dependencies using Yarn
-        run: yarn install
+        run: yarn install --frozen-lockfile
 
       - name: Execute the Node test scripts
         run: yarn test
