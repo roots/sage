@@ -1,20 +1,15 @@
 name: Main
 
-on:
-  push:
-    branches:
-      - master
-  pull_request:
-    branches:
-      - master
+on: [push, pull_request]
 
 jobs:
   node:
-    name: Test Node ${{ matrix.node }}
+    name: Node ${{ matrix.node }}
     runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, '[ci skip]')"
     strategy:
       matrix:
-        node: ['12.18', '14.4']
+        node: ['12.14.0', '14']
 
     steps:
       - name: Checkout the project
@@ -40,7 +35,7 @@ jobs:
       - name: Install dependencies using Yarn
         run: yarn install
 
-      - name: Execute the test scripts
+      - name: Execute the Node test scripts
         run: yarn test
 
       - name: Verify that assets are built successfully
@@ -49,8 +44,9 @@ jobs:
           cat public/mix-manifest.json
 
   php:
-    name: Test PHP ${{ matrix.php }}
+    name: PHP ${{ matrix.php }}
     runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, '[ci skip]')"
     strategy:
       matrix:
         php: ['7.3', '7.4', '8.0']
@@ -80,5 +76,5 @@ jobs:
       - name: Install Composer dependencies
         run: composer install --no-progress --prefer-dist --optimize-autoloader --no-suggest
 
-      - name: Execute the lint script
+      - name: Execute the PHP lint script
         run: composer run-script lint
