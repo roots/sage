@@ -14,7 +14,7 @@
   </a>
 
   <a href="https://circleci.com/gh/roots/sage">
-    <img alt="Build Status" src="https://img.shields.io/circleci/build/gh/roots/sage?style=flat-square" />
+    <img alt="Build Status" src="https://img.shields.io/github/workflow/status/roots/sage/Main" />
   </a>
 
   <a href="https://twitter.com/rootswp">
