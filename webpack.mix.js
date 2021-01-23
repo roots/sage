@@ -21,20 +21,20 @@ mix
   .sass('resources/css/editor.scss', 'css')
   .options({
     processCssUrls: false,
-    postCss: [require('tailwindcss')('./tailwind.config.js')],
+    postCss: [require('tailwindcss')],
   });
 
 mix
   .js('resources/js/app.js', 'js')
   .js('resources/js/customizer.js', 'js')
-  .blocks('resources/js/editor.js', 'js');
-
-mix
-  .copyDirectory('resources/images/**', 'public/images')
-  .copyDirectory('resources/fonts/**', 'public/fonts');
-
-mix
+  .blocks('resources/js/editor.js', 'js')
   .autoload({ jquery: ['$', 'window.jQuery'] })
-  .extract()
+  .extract();
+
+mix
+  .copyDirectory('resources/images', 'public/images')
+  .copyDirectory('resources/fonts', 'public/fonts');
+
+mix
   .sourceMaps()
   .version();
