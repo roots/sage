@@ -49,7 +49,7 @@ add_action('enqueue_block_editor_assets', function () {
  */
 add_action('after_setup_theme', function () {
     /**
-     * Enable features from Soil when plugin is activated.
+     * Enable features from the Soil plugin if activated.
      * @link https://roots.io/plugins/soil/
      */
     add_theme_support('soil', [
