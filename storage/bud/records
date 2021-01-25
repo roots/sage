@@ -1,0 +1,83 @@
+{
+  "mini-css-extract-plugin node_modules/css-loader/dist/cjs.js!node_modules/sass-loader/dist/cjs.js!node_modules/resolve-url-loader/index.js??ref--4-oneOf-6-3!resources/assets/styles/app.scss": [
+    {
+      "modules": {
+        "byIdentifier": {},
+        "usedIds": {}
+      },
+      "chunks": {
+        "byName": {
+          "mini-css-extract-plugin": 0
+        },
+        "bySource": {
+          "0 mini-css-extract-plugin": 0
+        },
+        "usedIds": [
+          0
+        ]
+      }
+    }
+  ],
+  "mini-css-extract-plugin node_modules/css-loader/dist/cjs.js!node_modules/sass-loader/dist/cjs.js!node_modules/resolve-url-loader/index.js??ref--4-oneOf-6-3!resources/assets/styles/editor.scss": [
+    {
+      "modules": {
+        "byIdentifier": {},
+        "usedIds": {}
+      },
+      "chunks": {
+        "byName": {
+          "mini-css-extract-plugin": 0
+        },
+        "bySource": {
+          "0 mini-css-extract-plugin": 0
+        },
+        "usedIds": [
+          0
+        ]
+      }
+    }
+  ],
+  "modules": {
+    "byIdentifier": {
+      "multi styles/app.scss scripts/app.js": 0,
+      "multi styles/editor.scss scripts/editor.js": 1
+    },
+    "usedIds": {
+      "0": 0,
+      "1": 1
+    }
+  },
+  "chunks": {
+    "byName": {
+      "app": 0,
+      "editor": 1,
+      "vendor/harmony-module": 2,
+      "runtime/app": 3,
+      "runtime/editor": 4,
+      "vendor/bootstrap": 5,
+      "vendor/global": 6,
+      "vendor/popper": 7
+    },
+    "bySource": {
+      "0 app": 3,
+      "0 editor": 4,
+      "5 app": 0,
+      "2 editor": 1,
+      "1 app": 2,
+      "1 editor": 2,
+      "2 app": 5,
+      "4 app": 6,
+      "3 app": 7
+    },
+    "usedIds": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ]
+  }
+}
