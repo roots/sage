@@ -6,7 +6,7 @@ domReady(() => {
   blocks.unregisterBlockStyle("core/button", "outline");
   blocks.registerBlockStyle("core/button", {
     name: "outline",
-    label: "Outline!!",
+    label: "Outline",
   });
 });
 
