@@ -55,8 +55,7 @@ Sage is a WordPress starter theme with a modern development workflow.
 
 - Sass for stylesheets
 - Modern JavaScript
-- [Laravel Mix](https://github.com/JeffreyWay/laravel-mix) for compiling assets and concatenating and minifying files
-- [Browsersync](http://www.browsersync.io/) for synchronized browser testing
+- Hot module reloading for lightning fast development builds
 - [Blade](https://laravel.com/docs/5.8/blade) as a templating engine
 - [Bootstrap 4](https://getbootstrap.com/) (optional)
 
@@ -126,7 +125,7 @@ themes/your-theme-name/   # → Root of your Sage based theme
 ├── storage/              # → Storage location for cache (never edit)
 ├── style.css             # → Theme meta information
 ├── vendor/               # → Composer packages (never edit)
-└── webpack.mix.js        # → Laravel Mix configuration
+└── sage.config.js        # → Build configuration
 ```
 
 ## Theme setup
@@ -140,11 +139,15 @@ Edit `app/setup.php` to enable or disable theme features, setup navigation menus
 
 ### Build commands
 
-- `yarn dev` (`yarn sage build --mode development`) — Compile assets when changes are made (HMR)
-- `yarn build` (`yarn sage build --mode production`) — Compile and optimize the files in your assets directory
-- `yarn build:production` (`yarn sage build --mode production --ci`) — Compile assets for production
+- `yarn dev` — Compile assets when changes are made (HMR)
+- `yarn build` — Compile and optimize the files in your assets directory
+- `yarn debug` — Compile assets with logging enabled. A final config summary is saved to `storage/bud/webpack.debug.js`.
 
-Type `q` on the compilation dashboard to quit the process.
+### Compilation dashboard
+
+- Enter `q` to quit the process. Pass the `--ci` flag during tests/deployments.
+- Unchanged assets are shown in a lighter color.
+- Current git status is shown in the lower right.
 
 ### Other commands
 
@@ -154,6 +157,8 @@ Type `q` on the compilation dashboard to quit the process.
 
 ### Flags
 
+CLI arguments can be passed in any combination.
+
 - `--minify` — Minify assets
 - `--hash` — Hash filename output
 - `--devtool` — Specify source-map
@@ -162,6 +167,10 @@ Type `q` on the compilation dashboard to quit the process.
 - `--ci` — Show standard Webpack compilation output
 - `--debug` — Writes a webpack.config.js artifact to the `storage/bud` directory.
 - `--log` — Output build logs to terminal
+
+### Dependencies
+
+You may utilize any `@wordpress/*` package, `lodash`, `react`, `react-dom` and/or `jquery` without installing from NPM. You can use `import` syntax as though they were JS modules. Those import statements will be mapped to the `window.wp` global during compilation.
 
 ## Documentation
 

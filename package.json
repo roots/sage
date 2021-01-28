@@ -6,15 +6,14 @@
   "scripts": {
     "dev": "sage build --mode development",
     "build": "sage build --mode production",
-    "production": "sage build --mode production --ci"
+    "debug": "sage build --mode production --log --debug --ci"
   },
   "devDependencies": {
-    "@roots/sage": "^3.0.18-alpha.0",
+    "@roots/sage": "^3.0.19-alpha.0",
     "@wordpress/browserslist-config": "^2.7.0"
   },
   "dependencies": {
     "bootstrap": "^4.5.0",
-    "jquery": "^3.5.0",
     "popper.js": "^1.16.1"
   }
 }
