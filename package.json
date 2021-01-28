@@ -4,43 +4,13 @@
     "extends @wordpress/browserslist-config"
   ],
   "scripts": {
-    "dev": "bud build --config sage.config.js --mode development",
-    "build": "bud build --config sage.config.js --mode production",
-    "build:production": "run-s clean:* build",
-    "build:ci": "bud build --config sage.config.js --mode production --ci",
-    "clean": "run-p clean:*",
-    "clean:dist": "rimraf dist",
-    "clean:cache": "rimraf storage/framework/cache/*.php storage/framework/cache/data/*.php",
-    "clean:views": "rimraf storage/framework/views/*.php",
-    "lint": "run-s -c lint:*",
-    "lint:scripts": "eslint resources/assets/scripts",
-    "lint:styles": "stylelint \"resources/assets/**/*.{vue,css,sass,scss,less}\"",
-    "test": "run-s -c lint",
-    "translate": "run-s -c translate:*",
-    "translate:pot": "wp i18n make-pot . ./resources/languages/sage.pot --ignore-domain --include=\"app,resources/assets,resources/views\"",
-    "translate:js": "wp i18n make-json ./resources/languages --no-purge --pretty-print"
+    "dev": "sage build --mode development",
+    "build": "sage build --mode production",
+    "production": "sage build --mode production --ci"
   },
   "devDependencies": {
-    "@roots/bud": "^3.0.10-alpha.0",
-    "@roots/bud-babel": "^3.0.10-alpha.0",
-    "@roots/bud-entrypoints": "^3.0.10-alpha.0",
-    "@roots/bud-eslint": "^3.0.10-alpha.0",
-    "@roots/bud-imagemin": "^3.0.10-alpha.0",
-    "@roots/bud-postcss": "^3.0.10-alpha.0",
-    "@roots/bud-purgecss": "^3.0.10-alpha.0",
-    "@roots/bud-react": "^3.0.10-alpha.0",
-    "@roots/bud-sass": "^3.0.10-alpha.0",
-    "@roots/bud-stylelint": "^3.0.10-alpha.0",
-    "@roots/bud-terser": "^3.0.10-alpha.0",
-    "@roots/bud-wordpress-externals": "^3.0.10-alpha.0",
-    "@roots/bud-wordpress-manifests": "^3.0.10-alpha.0",
-    "@wordpress/blocks": "^6.25.2",
-    "@wordpress/browserslist-config": "^2.7.0",
-    "@wordpress/dom-ready": "^2.12.0",
-    "@wordpress/edit-post": "^3.26.2",
-    "cross-env": "^7.0.2",
-    "npm-run-all": "^4.1",
-    "rimraf": "^3.0.2"
+    "@roots/sage": "^3.0.18-alpha.0",
+    "@wordpress/browserslist-config": "^2.7.0"
   },
   "dependencies": {
     "bootstrap": "^4.5.0",

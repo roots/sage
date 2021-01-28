@@ -19,8 +19,8 @@
   &.is-style-outline {
     .wp-block-button__link {
       @include button-outline-variant(
-        map-get($theme-colors, 'primary'),
-        map-get($theme-colors, 'light')
+        map-get($theme-colors, "primary"),
+        map-get($theme-colors, "light")
       );
     }
   }
@@ -28,8 +28,8 @@
   &.is-style-solid {
     .wp-block-button__link {
       @include button-variant(
-        map-get($theme-colors, 'primary'),
-        map-get($theme-colors, 'light')
+        map-get($theme-colors, "primary"),
+        map-get($theme-colors, "light")
       );
     }
   }

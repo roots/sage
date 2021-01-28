@@ -53,12 +53,12 @@ Sage is a WordPress starter theme with a modern development workflow.
 
 ## Features
 
-* Sass for stylesheets
-* Modern JavaScript
-* [Laravel Mix](https://github.com/JeffreyWay/laravel-mix) for compiling assets and concatenating and minifying files
-* [Browsersync](http://www.browsersync.io/) for synchronized browser testing
-* [Blade](https://laravel.com/docs/5.8/blade) as a templating engine
-* [Bootstrap 4](https://getbootstrap.com/) (optional)
+- Sass for stylesheets
+- Modern JavaScript
+- [Laravel Mix](https://github.com/JeffreyWay/laravel-mix) for compiling assets and concatenating and minifying files
+- [Browsersync](http://www.browsersync.io/) for synchronized browser testing
+- [Blade](https://laravel.com/docs/5.8/blade) as a templating engine
+- [Bootstrap 4](https://getbootstrap.com/) (optional)
 
 See a working example at [roots-example-project.com](https://roots-example-project.com/).
 
@@ -66,11 +66,11 @@ See a working example at [roots-example-project.com](https://roots-example-proje
 
 Make sure all dependencies have been installed before moving on:
 
-* [WordPress](https://wordpress.org/) >= 5.4
-* [PHP](https://secure.php.net/manual/en/install.php) >= 7.2.0 (with [`php-mbstring`](https://secure.php.net/manual/en/book.mbstring.php) enabled)
-* [Composer](https://getcomposer.org/download/)
-* [Node.js](http://nodejs.org/) >= 8.0.0
-* [Yarn](https://yarnpkg.com/en/docs/install)
+- [WordPress](https://wordpress.org/) >= 5.4
+- [PHP](https://secure.php.net/manual/en/install.php) >= 7.2.0 (with [`php-mbstring`](https://secure.php.net/manual/en/book.mbstring.php) enabled)
+- [Composer](https://getcomposer.org/download/)
+- [Node.js](http://nodejs.org/) >= 8.0.0
+- [Yarn](https://yarnpkg.com/en/docs/install)
 
 ## Theme installation
 
@@ -135,18 +135,37 @@ Edit `app/setup.php` to enable or disable theme features, setup navigation menus
 
 ## Theme development
 
-* Run `yarn` from the theme directory to install dependencies
-* Update `webpack.mix.js` with your local dev URL
+- Run `yarn` from the theme directory to install dependencies
+- Update `.env` with your local dev information.
 
 ### Build commands
 
-* `yarn start` — Compile assets when file changes are made, start Browsersync session
-* `yarn build` — Compile and optimize the files in your assets directory
-* `yarn build:production` — Compile assets for production
+- `yarn dev` (`yarn sage build --mode development`) — Compile assets when changes are made (HMR)
+- `yarn build` (`yarn sage build --mode production`) — Compile and optimize the files in your assets directory
+- `yarn build:production` (`yarn sage build --mode production --ci`) — Compile assets for production
+
+Type `q` on the compilation dashboard to quit the process.
+
+### Other commands
+
+- `yarn sage clean` — Clean compiled assets, caches and build artifacts
+- `yarn sage lint` — Lint scripts and styles
+- `yarn sage translate` — Translate assets and theme templates
+
+### Flags
+
+- `--minify` — Minify assets
+- `--hash` — Hash filename output
+- `--devtool` — Specify source-map
+- `--vendor` — Code split vendor assets
+- `--runtime` — Code split runtime chunk
+- `--ci` — Show standard Webpack compilation output
+- `--debug` — Writes a webpack.config.js artifact to the `storage/bud` directory.
+- `--log` — Output build logs to terminal
 
 ## Documentation
 
-* [Sage documentation](https://roots.io/sage/docs/)
+- [Sage documentation](https://roots.io/sage/docs/)
 
 ## Contributing
 
@@ -162,8 +181,8 @@ Help support our open-source development efforts by [becoming a patron](https://
 
 Keep track of development and community news.
 
-* Participate on the [Roots Discourse](https://discourse.roots.io/)
-* Follow [@rootswp on Twitter](https://twitter.com/rootswp)
-* Read and subscribe to the [Roots Blog](https://roots.io/blog/)
-* Subscribe to the [Roots Newsletter](https://roots.io/subscribe/)
-* Listen to the [Roots Radio podcast](https://roots.io/podcast/)
+- Participate on the [Roots Discourse](https://discourse.roots.io/)
+- Follow [@rootswp on Twitter](https://twitter.com/rootswp)
+- Read and subscribe to the [Roots Blog](https://roots.io/blog/)
+- Subscribe to the [Roots Newsletter](https://roots.io/subscribe/)
+- Listen to the [Roots Radio podcast](https://roots.io/podcast/)
