@@ -22,22 +22,6 @@
         map-get($theme-colors, 'primary'),
         map-get($theme-colors, 'light')
       );
-
-      @include hasBg {
-        background: none;
-        background-color: transparent;
-      }
-
-      @include hasColor {
-        color: map-get($theme-colors, 'primary');
-      }
-
-      &:hover {
-        @include button-outline-variant(
-          map-get($theme-colors, 'primary'),
-          map-get($theme-colors, 'light')
-        );
-      }
     }
   }
 
