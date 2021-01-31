@@ -14,10 +14,10 @@ workflows:
             - run: yarn run build:production
           matrix:
             parameters:
-              version: ["10.21", "12.18", "14.4"]
+              version: ['10.21', '12.18', '14.4']
       - php/test:
           name: php-<< matrix.version >>
           test-command: lint
           matrix:
             parameters:
-              version: ["7.2", "7.3", "7.4"]
+              version: ['7.2', '7.3', '7.4']

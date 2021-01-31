@@ -2,7 +2,7 @@
  * Has background applied
  */
 @mixin hasBg {
-  &[class*="has-"][class$="-background"] {
+  &[class*='has-'][class$='-background'] {
     @content;
   }
 }
@@ -11,7 +11,7 @@
  * Has color applied
  */
 @mixin hasColor {
-  &[class*="has-"][class$="-color"] {
+  &[class*='has-'][class$='-color'] {
     @content;
   }
 }

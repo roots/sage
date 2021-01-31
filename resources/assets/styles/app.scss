@@ -1,12 +1,12 @@
 /** Config */
-@import "config/variables";
-@import "config/external";
+@import 'config/variables';
+@import 'config/external';
 
 /** Common */
-@import "common/global";
+@import 'common/global';
 
 /** Components */
-@import "components";
+@import 'components';
 
 /** Partials */
-@import "partials/header";
+@import 'partials/header';

@@ -1,0 +1,7 @@
+vendor
+node_modules
+dist
+*.lock
+storage
+.circleci
+.github
