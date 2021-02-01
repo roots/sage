@@ -1,17 +1,13 @@
 // @ts-check
-const {sage} = require('@roots/sage');
+const Sage = require('@roots/sage');
 
-sage.when(sage.isProduction, () => {
-  sage.purge({
-    content: [
-      'resources/views/**/*',
-      'resources/assets/scripts/**/*',
-    ],
-    css: ['resources/assets/styles/**/*'],
-  });
-});
+/**
+ * Sage theme
+ */
+const theme = Sage.bootstrap();
 
-sage
+theme
   .entry('app', ['styles/app.scss', 'scripts/app.js'])
   .entry('editor', ['styles/editor.scss', 'scripts/editor.js'])
+  .entry('customizer', ['scripts/customizer.js'])
   .run();

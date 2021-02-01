@@ -5,6 +5,8 @@
  * {@link https://codex.wordpress.org/Theme_Customization_API}
  */
 
+import $ from 'jquery';
+
 /**
  * Change the blog name value.
  *

@@ -5,7 +5,7 @@ import $ from 'jquery';
 import 'bootstrap';
 
 $(() => {
-  console.log('edit: sage/resources/assets/scripts/app.js');
+  console.log('edit me.');
 });
 
 /**
