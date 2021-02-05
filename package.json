@@ -43,7 +43,7 @@
     "purgecss-with-wordpress": "^2.3.0",
     "rimraf": "^3.0.2",
     "sass": "^1.26.10",
-    "sass-loader": "^9.0.3",
+    "sass-loader": "^11.0.0",
     "stylelint": "^13.6.1",
     "stylelint-config-standard": "^20.0.0",
     "vue-template-compiler": "^2.6.11"
