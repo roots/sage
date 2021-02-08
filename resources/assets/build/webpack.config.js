@@ -168,7 +168,7 @@ let webpackConfig = {
       },
     }),
 	new MiniCssExtractPlugin({
-      filename: 'styles/[name].css',
+      filename: `styles/${assetsFilenames}.css`,
     }),
     new StyleLintPlugin({
       failOnError: !config.enabled.watcher,
