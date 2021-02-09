@@ -40,7 +40,7 @@
   },
   "require": {
     "php": "^7.3|^8.0",
-    "roots/acorn": "dev-laravel-85"
+    "roots/acorn": "dev-master"
   },
   "require-dev": {
     "filp/whoops": "^2.9",
@@ -48,7 +48,7 @@
   },
   "suggest": {
     "log1x/sage-directives": "A collection of useful Blade directives for WordPress and Sage (^1.0).",
-    "log1x/sage-svg": "Provides a useful SVG directive for properly inlining SVG's within your Blade views (^1.0)."
+    "log1x/sage-svg": "A useful SVG directive for inlining SVG's within Blade views (^1.0)."
   },
   "config": {
     "optimize-autoloader": true,
