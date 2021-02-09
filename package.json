@@ -23,21 +23,21 @@
   "devDependencies": {
     "@tailwindcss/typography": "^0.4.0",
     "@tinypixelco/laravel-mix-wp-blocks": "^1.1.0",
-    "@wordpress/babel-preset-default": "^5.0.0",
-    "@wordpress/browserslist-config": "^3.0.0",
-    "@wordpress/dependency-extraction-webpack-plugin": "^3.0.0",
+    "@wordpress/babel-preset-default": "^5.0.1",
+    "@wordpress/browserslist-config": "^3.0.1",
+    "@wordpress/dependency-extraction-webpack-plugin": "^3.0.1",
     "babel-eslint": "^10.1.0",
-    "browser-sync": "^2.26.13",
+    "browser-sync": "^2.26.14",
     "browser-sync-webpack-plugin": "^2.3.0",
-    "eslint": "^7.18.0",
+    "eslint": "^7.19.0",
     "eslint-plugin-import": "^2.22.1",
-    "laravel-mix": "^6.0.10",
-    "postcss": "^8.1",
-    "sass": "^1.32.5",
-    "sass-loader": "10.1.1",
+    "laravel-mix": "^6.0.11",
+    "postcss": "^8.2.5",
+    "sass": "^1.32.6",
+    "sass-loader": "11.0.1",
     "stylelint": "^13.9.0",
     "stylelint-config-standard": "^20.0.0",
-    "tailwindcss": "^2.0.2"
+    "tailwindcss": "^2.0.3"
   },
   "dependencies": {
     "jquery": "^3.5.1"
