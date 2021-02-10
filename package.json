@@ -9,8 +9,7 @@
     "debug": "sage build --mode production --log --debug --ci"
   },
   "devDependencies": {
-    "@roots/sage": "^3.0.28-alpha.0",
-    "@types/webpack-env": "^1.16.0",
+    "@roots/sage": "^3.0.31-alpha.0",
     "@wordpress/browserslist-config": "^2.7.0"
   },
   "dependencies": {

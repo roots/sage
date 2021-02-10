@@ -17,6 +17,6 @@
     "resolveJsonModule": true,
     "jsx": "preserve"
   },
-  "include": ["**/*.ts", "**/*.tsx"],
+  "include": ["resources/assets/scripts/**/*"],
   "exclude": ["node_modules"]
 }
