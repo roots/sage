@@ -7,6 +7,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 const CopyGlobsPlugin = require('copy-globs-webpack-plugin');
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
 
 const desire = require('./util/desire');
@@ -173,6 +174,7 @@ let webpackConfig = {
       failOnError: !config.enabled.watcher,
       syntax: 'scss',
     }),
+	new FriendlyErrorsWebpackPlugin(),
   ],
 };
 
