@@ -50,7 +50,6 @@
     "eslint-plugin-import": "^2.14.0",
     "eslint-webpack-plugin": "^2.4.1",
     "file-loader": "^6.2.0",
-    "friendly-errors-webpack-plugin": "^1.6.1",
     "imagemin-mozjpeg": "^9.0.0",
     "imagemin-webpack-plugin": "^2.4.2",
     "import-glob": "~1.5",
