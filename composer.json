@@ -31,6 +31,9 @@
       "App\\": "app/"
     }
   },
+  "repositories": [
+    { "type": "vcs", "url": "https://github.com/strarsis/sage-installer" }
+  ],
   "require": {
     "php": ">=7.1",
     "composer/installers": "~1.9",
@@ -40,7 +43,7 @@
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "^2.8.0",
-    "roots/sage-installer": "~1.6"
+    "roots/sage-installer": "dev-webpack5"
   },
   "scripts": {
     "test": ["phpcs"],
