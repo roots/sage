@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4cf007eaf66f5d2254692b8d8731b38e",
+    "content-hash": "c46b9828c77f0d325fe2a0e54271c346",
     "packages": [
         {
             "name": "brick/math",
@@ -1873,16 +1873,16 @@
         },
         {
             "name": "roots/acorn",
-            "version": "dev-master",
+            "version": "dev-main",
             "source": {
                 "type": "git",
                 "url": "https://github.com/roots/acorn.git",
-                "reference": "0024cd551a36580f8c46a70b4fbb5f223a31a472"
+                "reference": "2b493f34af79d37d8920f45ee0e995522e462b9c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/roots/acorn/zipball/0024cd551a36580f8c46a70b4fbb5f223a31a472",
-                "reference": "0024cd551a36580f8c46a70b4fbb5f223a31a472",
+                "url": "https://api.github.com/repos/roots/acorn/zipball/2b493f34af79d37d8920f45ee0e995522e462b9c",
+                "reference": "2b493f34af79d37d8920f45ee0e995522e462b9c",
                 "shasum": ""
             },
             "require": {
@@ -1955,7 +1955,7 @@
             "support": {
                 "forum": "https://discourse.roots.io/",
                 "issues": "https://github.com/roots/acorn/issues",
-                "source": "https://github.com/roots/acorn/tree/master"
+                "source": "https://github.com/roots/acorn/tree/main"
             },
             "funding": [
                 {
@@ -1967,7 +1967,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2021-02-04T19:23:56+00:00"
+            "time": "2021-02-11T10:28:15+00:00"
         },
         {
             "name": "roots/support",
