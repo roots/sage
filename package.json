@@ -11,7 +11,7 @@
     "build:production": "mix --production",
     "start": "mix watch",
     "hot": "mix watch --hot",
-    "clean": "wp acorn optimize:clean",
+    "clear": "wp acorn optimize:clear",
     "test": "npm run lint",
     "lint": "npm run lint:js && npm run lint:css",
     "lint:js": "eslint resources/js",
