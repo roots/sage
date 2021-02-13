@@ -138,12 +138,15 @@ let webpackConfig = {
       cleanOnceBeforeBuildPatterns: [config.paths.dist],
       verbose: false,
     }),
-    new CopyPlugin([
-		{
-			from: config.copy,
-			to: `[path]${assetsFilenames}.[ext]`,
-		},
-	]),
+    new CopyPlugin({
+      patterns: [
+        {
+          from: config.copy,
+		  noErrorOnMissing: true,
+          to: `[path]${assetsFilenames}.[ext]`,
+        },
+      ],
+    }),
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery',
