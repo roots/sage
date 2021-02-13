@@ -15,7 +15,7 @@ const config = merge({
   open: true,
   copy: 'images/**/*',
   proxyUrl: 'http://localhost:3000',
-  cacheBusting: '[name]_[fullhash]',
+  cacheBusting: '[name]_[hash]',
   paths: {
     root: rootPath,
     assets: path.join(rootPath, 'resources/assets'),
