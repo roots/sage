@@ -1,3 +1,7 @@
+### 9.0.2: February, 2021
+* Update Webpack v3 to v5
+* Update Node dependencies
+
 ### 9.0.10: November 9th, 2020
 * Update Node dependencies ([#2572](https://github.com/roots/sage/pull/2572))
 * Composer 2 compatibility ([#2569](https://github.com/roots/sage/pull/2569))
