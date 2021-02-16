@@ -13,8 +13,8 @@
     <img alt="Packagist" src="https://img.shields.io/packagist/v/roots/sage.svg?style=flat-square" />
   </a>
 
-  <a href="https://circleci.com/gh/roots/sage">
-    <img alt="Build Status" src="https://img.shields.io/github/workflow/status/roots/sage/Main" />
+  <a href="https://github.com/roots/sage/actions">
+    <img alt="Build Status" src="https://img.shields.io/github/workflow/status/roots/sage/Main?style=flat-square" />
   </a>
 
   <a href="https://twitter.com/rootswp">
