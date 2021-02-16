@@ -55,7 +55,7 @@ Sage is a productivity-driven WordPress starter theme with a modern development 
 ## Features
 
 - Harness the power of [Laravel](https://laravel.com) and its available packages thanks to [Acorn](https://github.com/roots/acorn).
-- Clean, efficient theme templating utilizing [Laravel Blade](https://laravel.com/docs/latest/blade).
+- Clean, efficient theme templating utilizing [Laravel Blade](https://laravel.com/docs/master/blade).
 - Easy [Browsersync](http://www.browsersync.io/) support alongside asset compilation, concatenating, and minification powered by [Laravel Mix](https://github.com/JeffreyWay/laravel-mix).
 - Out of the box support for [TailwindCSS](https://tailwindcss.com/) and [jQuery](https://jquery.com).
 - A clean starting point for theme styles using [Sass](https://sass-lang.com/).
