@@ -14,7 +14,7 @@
     "clear": "wp acorn optimize:clear",
     "test": "npm run lint",
     "lint": "npm run lint:js && npm run lint:css",
-    "lint:js": "eslint resources/js",
+    "lint:js": "eslint resources/scripts",
     "lint:css": "stylelint \"resources/**/*.{css,scss,vue}\"",
     "translate": "npm run translate:pot && npm run translate:js",
     "translate:pot": "wp i18n make-pot . ./resources/lang/sage.pot --ignore-domain --include=\"app,resources\"",
