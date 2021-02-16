@@ -17,17 +17,17 @@ mix
   .browserSync('sage.test');
 
 mix
-  .sass('resources/css/app.scss', 'css')
-  .sass('resources/css/editor.scss', 'css')
+  .sass('resources/styles/app.scss', 'styles')
+  .sass('resources/styles/editor.scss', 'styles')
   .options({
     processCssUrls: false,
     postCss: [require('tailwindcss')],
   });
 
 mix
-  .js('resources/js/app.js', 'js')
-  .js('resources/js/customizer.js', 'js')
-  .blocks('resources/js/editor.js', 'js')
+  .js('resources/scripts/app.js', 'scripts')
+  .js('resources/scripts/customizer.js', 'scripts')
+  .blocks('resources/scripts/editor.js', 'scripts')
   .autoload({ jquery: ['$', 'window.jQuery'] })
   .extract();
 

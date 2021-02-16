@@ -117,8 +117,8 @@ themes/your-theme-name/   # → Root of your Sage based theme
 ├── resources/            # → Theme assets and templates
 │   ├── fonts/            # → Theme fonts
 │   ├── images/           # → Theme images
-│   ├── js/               # → Theme javascript
-│   ├── css/              # → Theme stylesheets
+│   ├── scripts/               # → Theme javascript
+│   ├── styles/              # → Theme stylesheets
 │   └── views/            # → Theme templates
 │       ├── components/   # → Component templates
 │       ├── form/         # → Form templates

@@ -32,5 +32,5 @@ add_action('customize_register', function (WP_Customize_Manager $wp_customize) {
  * @return void
  */
 add_action('customize_preview_init', function () {
-    wp_enqueue_script('sage/customizer.js', asset('js/customizer.js')->uri(), ['customize-preview'], null, true);
+    wp_enqueue_script('sage/customizer.js', asset('scripts/customizer.js')->uri(), ['customize-preview'], null, true);
 });
