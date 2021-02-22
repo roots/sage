@@ -192,6 +192,7 @@ if (config.enabled.cacheBusting) {
       writeToDisk: false,
       assets: config.manifest,
       replacer: require('./util/assetManifestsFormatter'),
+      contextRelativeKeys: true,
     })
   );
 }
