@@ -25,7 +25,7 @@ $app = new Roots\Acorn\Bootloader();
 |
 */
 
-collect(['helpers', 'setup', 'filters', 'admin'])
+collect(['helpers', 'setup', 'filters', 'admin', 'assets'])
     ->each(function ($file) {
         if (! locate_template($file = "app/{$file}.php", true, true)) {
             wp_die(

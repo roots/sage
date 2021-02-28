@@ -1,4 +1,5 @@
 {
+  "name": "sage-framework",
   "private": true,
   "browserslist": [
     "extends @wordpress/browserslist-config"
@@ -7,12 +8,12 @@
     "node": ">=12.14.0"
   },
   "scripts": {
-    "dev": "sage build --mode development",
-    "build": "sage build --mode production",
-    "debug": "sage build --mode production --log --debug --ci"
+    "dev": "sage build development",
+    "build": "sage build production",
+    "debug": "sage build production --log --debug --ci"
   },
   "devDependencies": {
-    "@roots/sage": "^3.0.37-alpha.0",
+    "@roots/sage": "^3.0.60-alpha.0",
     "@tailwindcss/typography": "^0.4.0",
     "@wordpress/browserslist-config": "^2.7.0"
   }

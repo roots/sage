@@ -5,6 +5,7 @@
       "@scripts/*": ["scripts/*"],
       "@styles/*": ["styles/*"]
     },
+    "outDir": "./public",
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
@@ -17,6 +18,6 @@
     "resolveJsonModule": true,
     "jsx": "preserve"
   },
-  "include": ["resources/scripts/**/*"],
+  "include": ["resources/**/*"],
   "exclude": ["node_modules"]
 }
