@@ -1,5 +1,8 @@
 <?php
 
+use function Roots\resource_path;
+use function Roots\storage_path;
+
 return [
 
     /*
@@ -15,6 +18,7 @@ return [
     'paths' => [
         get_theme_file_path('/resources/views'),
         get_parent_theme_file_path('/resources/views'),
+        resource_path('views'),
     ],
 
     /*
@@ -28,7 +32,7 @@ return [
     |
     */
 
-    'compiled' => get_theme_file_path('/storage/framework/views'),
+    'compiled' => storage_path('framework/views'),
 
     /*
     |--------------------------------------------------------------------------
