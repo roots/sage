@@ -40,19 +40,19 @@ return [
     'channels' => [
         'stack' => [
             'driver' => 'stack',
-            'channels' => ['single'],
+            'channels' => ['daily'],
             'ignore_exceptions' => false,
         ],
 
         'single' => [
             'driver' => 'single',
-            'path' => storage_path('logs/acorn.log'),
+            'path' => storage_path('logs/application.log'),
             'level' => env('LOG_LEVEL', 'debug'),
         ],
 
         'daily' => [
             'driver' => 'daily',
-            'path' => storage_path('logs/acorn.log'),
+            'path' => storage_path('logs/application.log'),
             'level' => env('LOG_LEVEL', 'debug'),
             'days' => 14,
         ],
@@ -60,7 +60,7 @@ return [
         'slack' => [
             'driver' => 'slack',
             'url' => env('LOG_SLACK_WEBHOOK_URL'),
-            'username' => 'Acorn Log',
+            'username' => 'Application Log',
             'emoji' => ':boom:',
             'level' => env('LOG_LEVEL', 'critical'),
         ],
@@ -100,7 +100,7 @@ return [
         ],
 
         'emergency' => [
-            'path' => storage_path('logs/acorn.log'),
+            'path' => storage_path('logs/application.log'),
         ],
     ],
 
