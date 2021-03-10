@@ -1,4 +1,4 @@
-### 9.0.11: February, 2021
+### 9.1.0: February, 2021
 * Update Webpack v3 to v5
 * Update Node dependencies
 * Minor change: Paths (as `@import`s) in assets are now resolved relative to `resources/` directory,
