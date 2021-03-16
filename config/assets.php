@@ -1,5 +1,7 @@
 <?php
 
+use function Roots\public_path;
+
 return [
 
     /*
@@ -31,8 +33,8 @@ return [
 
     'manifests' => [
         'theme' => [
-            'path' => get_theme_file_path('public'),
-            'url' => get_theme_file_uri('public'),
+            'path' => get_theme_file_path(),
+            'url' => get_theme_file_uri(),
             'assets' => public_path('manifest.json'),
             'bundles' => public_path('entrypoints.json'),
         ]
