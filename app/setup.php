@@ -14,8 +14,7 @@ use function Roots\bundle;
  * @return void
  */
 add_action('wp_enqueue_scripts', function () {
-    bundle('app')->enqueueJs();
-    bundle('app')->enqueueCss();
+    bundle('app')->enqueue();
 }, 100);
 
 /**
@@ -24,8 +23,7 @@ add_action('wp_enqueue_scripts', function () {
  * @return void
  */
 add_action('enqueue_block_editor_assets', function () {
-    bundle('editor')->enqueueJs();
-    bundle('editor')->enqueueCss();
+    bundle('editor')->enqueue();
 }, 100);
 
 /**
