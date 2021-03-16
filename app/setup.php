@@ -6,7 +6,7 @@
 
 namespace App;
 
-use function App\bundle;
+use function Roots\bundle;
 
 /**
  * Register the theme assets.
@@ -14,7 +14,8 @@ use function App\bundle;
  * @return void
  */
 add_action('wp_enqueue_scripts', function () {
-    bundle('app');
+    bundle('app')->enqueueJs();
+    bundle('app')->enqueueCss();
 }, 100);
 
 /**
@@ -23,7 +24,8 @@ add_action('wp_enqueue_scripts', function () {
  * @return void
  */
 add_action('enqueue_block_editor_assets', function () {
-    bundle('editor');
+    bundle('editor')->enqueueJs();
+    bundle('editor')->enqueueCss();
 }, 100);
 
 /**

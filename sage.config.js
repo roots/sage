@@ -8,4 +8,5 @@ sage
     customizer: ['scripts/customizer.(j|t)s'],
   })
   .copy({'assets/': 'resources/{images,fonts}/**/*'})
+  .runtime('single')
   .run();
