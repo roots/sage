@@ -143,7 +143,7 @@ let webpackConfig = {
         {
           from: config.copy,
 		  noErrorOnMissing: true,
-          to: `[path]${assetsFilenames}.[ext]`,
+          to: `[path]${assetsFilenames}[ext]`, // Note: since 8.0.0 no dot in placeholder needed
         },
       ],
     }),

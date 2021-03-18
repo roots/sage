@@ -44,7 +44,7 @@
     "buble": "^0.20.0",
     "buble-loader": "^0.5.1",
     "clean-webpack-plugin": "^3.0.0",
-    "copy-webpack-plugin": "^7.0.0",
+    "copy-webpack-plugin": "^8.0.0",
     "css-loader": "^5.0.1",
     "cssnano": "^4.0.5",
     "eslint": "^7.16.0",
