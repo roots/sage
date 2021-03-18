@@ -39,7 +39,7 @@ let webpackConfig = {
   },
   performance: {
     maxEntrypointSize: 512000,
-    maxAssetSize: 	   512000,
+    maxAssetSize:        512000,
   },
   module: {
     rules: [
@@ -142,7 +142,7 @@ let webpackConfig = {
       patterns: [
         {
           from: config.copy,
-		  noErrorOnMissing: true,
+          noErrorOnMissing: true,
           to: `[path]${assetsFilenames}[ext]`, // Note: since 8.0.0 no dot in placeholder needed
         },
       ],
@@ -165,7 +165,7 @@ let webpackConfig = {
         context: config.paths.assets,
       },
     }),
-	new MiniCssExtractPlugin({
+    new MiniCssExtractPlugin({
       filename: `styles/${assetsFilenames}.css`,
     }),
     new StyleLintPlugin({
