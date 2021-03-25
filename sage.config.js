@@ -1,11 +1,18 @@
-// @ts-check
-const {sage} = require('@roots/sage');
+/**
+ * Sage Theme
+ *
+ * @typedef {import('@roots/sage/lib/types').Sage} Sage
+ * @type {(sage: Sage) => Sage}
+ */
 
-sage
-  .entry({
-    app: ['**/app.{(j|t)s(x)?,(s)?css}'],
-    editor: ['**/editor.{(j|t)s(x)?,(s)?css}'],
-    customizer: ['scripts/customizer.(j|t)s'],
-  })
-  .copy({'assets/': 'resources/{images,fonts}/**/*'})
-  .run();
+module.exports = (sage) =>
+  sage
+    .entry({
+      app: ['**/app.{js,css}'],
+      editor: ['**/editor.{js,css}'],
+      customizer: ['**/customizer.{js,css}'],
+    })
+    .copy({
+      'assets/images': 'resources/images/**/*',
+      'assets/fonts': 'resources/fonts/**/*',
+    });

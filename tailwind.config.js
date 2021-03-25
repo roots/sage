@@ -1,11 +1,8 @@
 module.exports = {
   purge: {
-    content: [
-      './{app|resources}/**/*.php',
-      './resources/**/*.{js,css,scss,ts,tsx,vue}',
-    ],
+    content: ['./{app,resources}/**/*.php', './resources/**/*.{js,css}'],
   },
-  darkMode: false, // or 'media' or 'class'
+  darkMode: false,
   theme: {
     extend: {
       colors: {},
