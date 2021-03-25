@@ -7,7 +7,7 @@
     <?php wp_head(); ?>
   </head>
 
-  <body <?php body_class(); ?>>
+  <body <?php body_class('no-js'); ?>>
     <?php wp_body_open(); ?>
     <?php do_action('get_header'); ?>
 

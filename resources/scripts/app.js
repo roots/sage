@@ -1,17 +1,20 @@
-/**
- * External Dependencies
- */
-import 'jquery';
+import {main} from '@scripts/components/main';
 
-$(() => {
-  // console.log('Hello world');
-});
+/**
+ * Initialize scripts
+ */
+const init = () =>
+  window.requestAnimationFrame(function ready() {
+    return document.body ? main() : window.requestAnimationFrame(ready);
+  });
+
+init();
 
 /**
  * Accept module updates
  *
  * @see https://webpack.js.org/api/hot-module-replacement
  */
-module?.hot?.accept((err) => {
-  console.err(err);
-});
+if (module) {
+  module.hot?.accept('./components/main.js', init);
+}
