@@ -10,7 +10,11 @@
   "scripts": {
     "dev": "sage build development",
     "build": "sage build production",
-    "debug": "sage build production --log --debug --ci"
+    "debug": "sage build production --log --debug --ci",
+    "test": "npm run lint",
+    "lint": "npm run lint:js && npm run lint:css",
+    "lint:js": "eslint resources/scripts",
+    "lint:css": "stylelint \"resources/**/*.{css,scss,vue}\""
   },
   "devDependencies": {
     "@roots/sage": "3.0.98-alpha.0",

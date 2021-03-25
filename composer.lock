@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c46b9828c77f0d325fe2a0e54271c346",
+    "content-hash": "30f288023831f78f16e152f804e630e5",
     "packages": [
         {
             "name": "brick/math",
@@ -1874,16 +1874,16 @@
         },
         {
             "name": "roots/acorn",
-            "version": "dev-main",
+            "version": "dev-assets",
             "source": {
                 "type": "git",
                 "url": "https://github.com/roots/acorn.git",
-                "reference": "70452f2cf768aaea7c452df32db27a1162e7c515"
+                "reference": "fdbad9afb0b20fd16b83c195fc7b4759112eedc7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/roots/acorn/zipball/70452f2cf768aaea7c452df32db27a1162e7c515",
-                "reference": "70452f2cf768aaea7c452df32db27a1162e7c515",
+                "url": "https://api.github.com/repos/roots/acorn/zipball/fdbad9afb0b20fd16b83c195fc7b4759112eedc7",
+                "reference": "fdbad9afb0b20fd16b83c195fc7b4759112eedc7",
                 "shasum": ""
             },
             "require": {
@@ -1916,13 +1916,13 @@
                 "pestphp/pest": "^1.0",
                 "phpcompatibility/php-compatibility": "^9.3",
                 "roave/security-advisories": "dev-master",
+                "spatie/pest-plugin-snapshots": "^1.0",
                 "spatie/temporary-directory": "^1.3",
                 "squizlabs/php_codesniffer": "^3.5"
             },
             "suggest": {
                 "filp/whoops": "Required for friendly error pages in development (^2.9)."
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -1956,7 +1956,7 @@
             "support": {
                 "forum": "https://discourse.roots.io/",
                 "issues": "https://github.com/roots/acorn/issues",
-                "source": "https://github.com/roots/acorn/tree/main"
+                "source": "https://github.com/roots/acorn/tree/assets"
             },
             "funding": [
                 {
@@ -1968,7 +1968,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2021-02-14T04:52:44+00:00"
+            "time": "2021-03-16T02:56:07+00:00"
         },
         {
             "name": "roots/support",

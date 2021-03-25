@@ -8,7 +8,7 @@ namespace App;
 
 use WP_Customize_Manager;
 
-use function Roots\asset;
+use function Roots\bundle;
 
 /**
  * Register the `.brand` selector to the blogname.
@@ -32,5 +32,5 @@ add_action('customize_register', function (WP_Customize_Manager $wp_customize) {
  * @return void
  */
 add_action('customize_preview_init', function () {
-    wp_enqueue_script('sage/customizer.js', asset('scripts/customizer.js')->uri(), ['customize-preview'], null, true);
+    bundle('customizer')->enqueueJs(true, ['customize-preview']);
 });

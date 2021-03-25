@@ -6,6 +6,6 @@
   @apply max-w-screen-md;
 
   &.editor-post-title__block .editor-post-title__input {
-    @apply font-sans !important;
+    @apply font-sans;
   }
 }
