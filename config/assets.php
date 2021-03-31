@@ -1,5 +1,7 @@
 <?php
 
+use function Roots\public_path;
+
 return [
 
     /*
@@ -21,22 +23,20 @@ return [
     |--------------------------------------------------------------------------
     |
     | Manifests contain lists of assets that are referenced by static keys that
-    | point to dynamic locations, such as a cache-busted location. A manifest
-    | may employ any number of strategies for determining absolute local and
-    | remote paths to assets.
+    | point to dynamic locations, such as a cache-busted location. We currently
+    | support two types of manifest:
     |
-    | Supported Strategies: "relative"
+    | assets: key-value pairs to match assets to their revved counterparts
     |
-    | Note: We will add first-party support for more strategies in the future.
+    | bundles: a series of entrypoints for loading bundles
     |
     */
 
     'manifests' => [
         'theme' => [
-            'strategy' => 'relative',
-            'path' => get_theme_file_path('/public'),
-            'uri' => get_theme_file_uri('/public'),
-            'manifest' => get_theme_file_path('/public/mix-manifest.json'),
+            'path' => get_theme_file_path('public'),
+            'url' => get_theme_file_uri('public'),
+            'assets' => public_path('mix-manifest.json'),
         ]
     ]
 ];
