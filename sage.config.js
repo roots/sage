@@ -12,7 +12,4 @@ module.exports = (sage) =>
       editor: ['**/editor.{js,css}'],
       customizer: ['**/customizer.{js,css}'],
     })
-    .copy({
-      'assets/images': 'resources/images/**/*',
-      'assets/fonts': 'resources/fonts/**/*',
-    });
+    .assets(['assets/images']);

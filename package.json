@@ -17,7 +17,7 @@
     "lint:css": "stylelint \"resources/**/*.{css,scss,vue}\""
   },
   "devDependencies": {
-    "@roots/sage": "3.0.98-alpha.0",
+    "@roots/sage": "3.0.104-alpha.0",
     "@tailwindcss/jit": "^0.1.5",
     "@tailwindcss/typography": "^0.4.0",
     "@wordpress/browserslist-config": "^2.7.0",
