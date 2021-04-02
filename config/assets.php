@@ -24,9 +24,10 @@ return [
     |
     | Manifests contain lists of assets that are referenced by static keys that
     | point to dynamic locations, such as a cache-busted location. We currently
-    | support two types of manifests:
+    | support two types of manifest:
     |
     | assets: key-value pairs to match assets to their revved counterparts
+    |
     | bundles: a series of entrypoints for loading bundles
     |
     */
