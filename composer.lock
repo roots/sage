@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "30f288023831f78f16e152f804e630e5",
+    "content-hash": "6df33c071d30bb6f8425603747516212",
     "packages": [
         {
             "name": "brick/math",
@@ -1874,16 +1874,16 @@
         },
         {
             "name": "roots/acorn",
-            "version": "dev-assets",
+            "version": "2.0.0-alpha.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/roots/acorn.git",
-                "reference": "fdbad9afb0b20fd16b83c195fc7b4759112eedc7"
+                "reference": "eb238de53431d300b567a295962170831581b43c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/roots/acorn/zipball/fdbad9afb0b20fd16b83c195fc7b4759112eedc7",
-                "reference": "fdbad9afb0b20fd16b83c195fc7b4759112eedc7",
+                "url": "https://api.github.com/repos/roots/acorn/zipball/eb238de53431d300b567a295962170831581b43c",
+                "reference": "eb238de53431d300b567a295962170831581b43c",
                 "shasum": ""
             },
             "require": {
@@ -1956,7 +1956,7 @@
             "support": {
                 "forum": "https://discourse.roots.io/",
                 "issues": "https://github.com/roots/acorn/issues",
-                "source": "https://github.com/roots/acorn/tree/assets"
+                "source": "https://github.com/roots/acorn/tree/2.0.0-alpha.0"
             },
             "funding": [
                 {
@@ -1968,7 +1968,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2021-03-16T02:56:07+00:00"
+            "time": "2021-03-31T10:47:07+00:00"
         },
         {
             "name": "roots/support",
@@ -4237,9 +4237,7 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "roots/acorn": 20
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
