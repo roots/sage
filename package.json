@@ -24,7 +24,7 @@
     "@tailwindcss/typography": "^0.4.0",
     "@tinypixelco/laravel-mix-wp-blocks": "^1.1.0",
     "@wordpress/babel-preset-default": "^5.0.1",
-    "@wordpress/browserslist-config": "^3.0.1",
+    "@wordpress/browserslist-config": "^4.0.0",
     "@wordpress/dependency-extraction-webpack-plugin": "^3.0.1",
     "babel-eslint": "^10.1.0",
     "browser-sync": "^2.26.14",
