@@ -1,6 +1,9 @@
 module.exports = {
   purge: {
-    content: ['./{app,resources}/**/*.php', './resources/**/*.{js,css}'],
+    content: [
+      './{app,resources}/**/*.{html,php}',
+      './resources/**/*.{js,ts,css}',
+    ],
   },
   darkMode: false,
   theme: {
