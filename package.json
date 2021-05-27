@@ -39,7 +39,7 @@
     "stylelint-config-standard": "^22.0.0",
     "tailwindcss": "^2.1.2"
   },
-  "dependencies": {
-    "jquery": "^3.6.0"
+  "peerDependencies": {
+    "jquery": "^3.5.1"
   }
 }
