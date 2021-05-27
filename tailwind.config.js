@@ -2,9 +2,7 @@ module.exports = {
   purge: {
     content: [
       './app/**/*.php',
-      './resources/**/*.php',
-      './resources/**/*.vue',
-      './resources/**/*.js',
+      './resources/**/*.{php,vue,js}',
     ],
   },
   darkMode: false, // or 'media' or 'class'
