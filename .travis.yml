@@ -8,8 +8,10 @@ php:
   - nightly
 
 env:
-  - TRAVIS_NODE_VERSION="8"
-  - TRAVIS_NODE_VERSION="10"
+  - TRAVIS_NODE_VERSION="12"
+  - TRAVIS_NODE_VERSION="14"
+  - TRAVIS_NODE_VERSION="15"
+  - TRAVIS_NODE_VERSION="16"
 
 matrix:
   fast_finish: true
