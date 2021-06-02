@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "16cef430757f1f86aa690621fc9c1497",
+    "content-hash": "598a8a7159888a0da8ed5281b5ebc4dc",
     "packages": [
         {
             "name": "brain/hierarchy",
@@ -1151,12 +1151,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/strarsis/sage-installer.git",
-                "reference": "c9603c3"
+                "reference": "f4a07cb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/strarsis/sage-installer/zipball/c9603c3",
-                "reference": "c9603c3",
+                "url": "https://api.github.com/repos/strarsis/sage-installer/zipball/f4a07cb",
+                "reference": "f4a07cb",
                 "shasum": ""
             },
             "require": {
@@ -1212,7 +1212,7 @@
             "support": {
                 "source": "https://github.com/strarsis/sage-installer/tree/webpack5"
             },
-            "time": "2021-06-02T14:16:52+00:00"
+            "time": "2021-06-02T14:28:58+00:00"
         },
         {
             "name": "roots/sage-lib",
