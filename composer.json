@@ -43,7 +43,8 @@
     "roots/sage-installer": "dev-webpack5#f4a07cb"
   },
   "require-dev": {
-    "squizlabs/php_codesniffer": "^2.8.0"
+    "squizlabs/php_codesniffer": "^2.8.0",
+    "filp/whoops": "^2.12"
   },
   "scripts": {
     "test": ["phpcs"],
