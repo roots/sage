@@ -8,6 +8,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
+const FriendlyErrorsWebpackPlugin = require('@soda/friendly-errors-webpack-plugin'); // maintained fork for webpack 5
 
 const desire = require('./util/desire');
 const config = require('./config');
@@ -28,9 +29,11 @@ let webpackConfig = {
     version: false,
     timings: false,
     children: false,
-    errors: true,
-    errorDetails: true,
-    warnings: true,
+    // disable errors, errorDetails and warnings for Friendly-errors-webpack-plugin
+    errors: false,
+    errorDetails: false,
+    warnings: false,
+    //
     chunks: false,
     modules: false,
     reasons: false,
@@ -172,6 +175,7 @@ let webpackConfig = {
       failOnError: !config.enabled.watcher,
       syntax: 'scss',
     }),
+    new FriendlyErrorsWebpackPlugin(),
   ],
 };
 

@@ -41,6 +41,8 @@ module.exports = {
       injectChanges: false,
     }),
 
-    new webpack.HotModuleReplacementPlugin(),
+    new webpack.HotModuleReplacementPlugin({
+      quiet: true, // for Friendly-errors-webpack-plugin
+    }),
   ],
 };

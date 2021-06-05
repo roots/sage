@@ -37,6 +37,7 @@
     "node": ">= 12.18"
   },
   "devDependencies": {
+    "@soda/friendly-errors-webpack-plugin": "^1.8.0",
     "autoprefixer": "^10.0.1",
     "browser-sync": "^2.26.13",
     "browser-sync-webpack-plugin": "^2.3.0",
