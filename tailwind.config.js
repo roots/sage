@@ -1,9 +1,6 @@
 module.exports = {
   purge: {
-    content: [
-      './{app,resources}/**/*.{html,php}',
-      './resources/**/*.{js,ts,css}',
-    ],
+    content: ['./app/**/*.php', './resources/**/*.{php,vue,js}'],
   },
   darkMode: false,
   theme: {

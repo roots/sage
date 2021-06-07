@@ -43,8 +43,8 @@
     "roots/acorn": "dev-next"
   },
   "require-dev": {
-    "filp/whoops": "^2.9",
-    "squizlabs/php_codesniffer": "^3.5"
+    "filp/whoops": "^2.12",
+    "squizlabs/php_codesniffer": "^3.6"
   },
   "suggest": {
     "log1x/sage-directives": "A collection of useful Blade directives for WordPress and Sage (^1.0).",
