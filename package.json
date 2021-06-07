@@ -10,11 +10,10 @@
   "scripts": {
     "dev": "bud dev",
     "build": "bud build",
-    "debug": "bud build production --log --debug --ci",
-    "test": "npm run lint",
     "lint": "npm run lint:js && npm run lint:css",
     "lint:js": "eslint resources/scripts",
-    "lint:css": "stylelint \"resources/**/*.{css,scss,vue}\""
+    "lint:css": "stylelint \"resources/**/*.{css,scss,vue}\"",
+    "test": "npm run lint"
   },
   "devDependencies": {
     "@roots/bud": "^4.4.0",
