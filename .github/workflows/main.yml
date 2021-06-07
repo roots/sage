@@ -15,7 +15,7 @@ jobs:
     if: "!contains(github.event.head_commit.message, '[ci skip]')"
     strategy:
       matrix:
-        node: ['12.14.0', '14']
+        node: ['14', '16']
 
     steps:
       - name: Checkout the project
