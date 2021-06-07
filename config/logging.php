@@ -5,7 +5,6 @@ use Monolog\Handler\StreamHandler;
 use Monolog\Handler\SyslogUdpHandler;
 
 use function Roots\env;
-use function Roots\storage_path;
 
 return [
 

@@ -58,19 +58,6 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Global Helpers
-    |--------------------------------------------------------------------------
-    |
-    | This value enables the usage of various Acorn helpers without the need
-    | to specify a namespace. This defaults to false as to not pollute the
-    | global namespace.
-    |
-    */
-
-    'globals' => false,
-
-    /*
-    |--------------------------------------------------------------------------
     | Application Locale Configuration
     |--------------------------------------------------------------------------
     |

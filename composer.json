@@ -40,7 +40,7 @@
   },
   "require": {
     "php": "^7.3|^8.0",
-    "roots/acorn": "2.0.0-alpha.0"
+    "roots/acorn": "dev-next"
   },
   "require-dev": {
     "filp/whoops": "^2.9",
