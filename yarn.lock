@@ -1978,20 +1978,20 @@ brorand@^1.0.1, brorand@^1.1.0:
   resolved "https://registry.yarnpkg.com/brorand/-/brorand-1.1.0.tgz#12c25efe40a45e3c323eb8675a0a0ce57b22371f"
   integrity sha1-EsJe/kCkXjwyPrhnWgoM5XsiNx8=
 
-browser-sync-client@^2.26.14:
-  version "2.26.14"
-  resolved "https://registry.yarnpkg.com/browser-sync-client/-/browser-sync-client-2.26.14.tgz#f2f0a8e5febc65b725fb38c8d648389214a38947"
-  integrity sha512-be0m1MchmKv/26r/yyyolxXcBi052aYrmaQep5nm8YNMjFcEyzv0ZoOKn/c3WEXNlEB/KeXWaw70fAOJ+/F1zQ==
+browser-sync-client@^2.27.3:
+  version "2.27.3"
+  resolved "https://registry.yarnpkg.com/browser-sync-client/-/browser-sync-client-2.27.3.tgz#6525466f819d5672c5b7fbc65465050a1428326b"
+  integrity sha512-GaadUAfO0hmueUi5hikJQhv1Qdak4qc62WFWl+0MQcqWTKDFG4fFbjnXs/W/sDpcOHclXVbNZqx2l+LLwuNz5Q==
   dependencies:
     etag "1.8.1"
     fresh "0.5.2"
     mitt "^1.1.3"
     rxjs "^5.5.6"
 
-browser-sync-ui@^2.26.14:
-  version "2.26.14"
-  resolved "https://registry.yarnpkg.com/browser-sync-ui/-/browser-sync-ui-2.26.14.tgz#96632c38dda72560a3be8e985716d7a735e94749"
-  integrity sha512-6oT1sboM4KVNnWCCJDMGbRIeTBw97toMFQ+srImvwQ6J5t9KMgizaIX8HcKLiemsUMSJkgGM9RVKIpq2UblgOA==
+browser-sync-ui@^2.27.3:
+  version "2.27.3"
+  resolved "https://registry.yarnpkg.com/browser-sync-ui/-/browser-sync-ui-2.27.3.tgz#d37c1c93e022cd6e3bab1828dcd914b8f10ec724"
+  integrity sha512-va7dNwF+BC9gBVuVYa07wZPWEp4mTgi8/08oXiAzH0aSXOciu7II/Pu0V1fOFhRWcoFQxP8EzRJ4JP9Drx8evQ==
   dependencies:
     async-each-series "0.1.1"
     connect-history-api-fallback "^1"
@@ -2007,13 +2007,13 @@ browser-sync-webpack-plugin@^2.3.0:
   dependencies:
     lodash "^4"
 
-browser-sync@^2.26.14:
-  version "2.26.14"
-  resolved "https://registry.yarnpkg.com/browser-sync/-/browser-sync-2.26.14.tgz#716c13ef91e72dfe092ff84bec3ddf62ea9d81fd"
-  integrity sha512-3TtpsheGolJT6UFtM2CZWEcGJmI4ZEvoCKiKE2bvcDnPxRkhQT4nIGVtfiyPcoHKXGM0LwMOZmYJNWfiNfVXWA==
+browser-sync@^2.27.3:
+  version "2.27.3"
+  resolved "https://registry.yarnpkg.com/browser-sync/-/browser-sync-2.27.3.tgz#a6759502e53de7fee43ba5e35e1bce1c3e1ef1dd"
+  integrity sha512-kyU5t5Sbm0lwCZTM4r2TKO9opznOT/P8eorkwWF4leZkbIZGyZohbSBiifYEWWlElM/vCRRhN/AqBH/3sSfOUw==
   dependencies:
-    browser-sync-client "^2.26.14"
-    browser-sync-ui "^2.26.14"
+    browser-sync-client "^2.27.3"
+    browser-sync-ui "^2.27.3"
     bs-recipes "1.3.4"
     bs-snippet-injector "^2.0.1"
     chokidar "^3.5.1"
