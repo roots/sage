@@ -5,6 +5,7 @@ module.exports = {
       './resources/**/*.{js,ts,css}',
     ],
   },
+  jit: true,
   darkMode: false,
   theme: {
     extend: {

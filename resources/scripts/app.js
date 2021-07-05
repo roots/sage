@@ -1,20 +1,17 @@
-import {main} from '@scripts/components/main';
+import {domReady} from '@scripts/components';
 
 /**
- * Initialize scripts
+ * Remove `.no-js` from document body
+ * when DOM has loaded.
  */
-const init = () =>
-  window.requestAnimationFrame(function ready() {
-    return document.body ? main() : window.requestAnimationFrame(ready);
-  });
-
-init();
+domReady(() => {
+  document.body.classList.contains('no-js') &&
+    document.body.classList.remove('no-js');
+});
 
 /**
  * Accept module updates
  *
  * @see https://webpack.js.org/api/hot-module-replacement
  */
-if (module) {
-  module.hot?.accept('./components/main.js', init);
-}
+import.meta.webpackHot?.accept(console.error);

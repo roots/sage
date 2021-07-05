@@ -10,25 +10,21 @@
   "scripts": {
     "dev": "bud dev",
     "build": "bud build",
-    "debug": "bud build production --log --debug --ci",
     "test": "npm run lint",
     "lint": "npm run lint:js && npm run lint:css",
     "lint:js": "eslint resources/scripts",
     "lint:css": "stylelint \"resources/**/*.{css,scss,vue}\""
   },
   "devDependencies": {
-    "@roots/bud": "^4.1.0",
-    "@roots/bud-cli": "^4.1.0",
-    "@roots/sage": "^4.1.0",
-    "tailwindcss": "^2.1.2",
-    "@tailwindcss/jit": "^0.1.5",
-    "@tailwindcss/typography": "^0.4.0",
-    "@wordpress/browserslist-config": "^2.7.0",
-    "postcss": "^8.2.8",
-    "typescript": "^4.2.3"
-  },
-  "dependencies": {
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "@roots/bud": "4.7.0-9",
+    "@roots/bud-cli": "4.7.0-9",
+    "@roots/sage": "4.7.0-9",
+    "@tailwindcss/typography": "^0.4.1",
+    "@wordpress/browserslist-config": "^4.0.1",
+    "eslint": "^7.30.0",
+    "postcss": "^8.3.5",
+    "postcss-import": "^14.0.2",
+    "postcss-preset-env": "^6.7.0",
+    "tailwindcss": "^2.2.4"
   }
 }
