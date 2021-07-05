@@ -15,7 +15,7 @@ jobs:
     if: "!contains(github.event.head_commit.message, '[ci skip]')"
     strategy:
       matrix:
-        node: ['12.14.0', '14']
+        node: ['14', '16']
 
     steps:
       - name: Checkout the project
@@ -35,19 +35,21 @@ jobs:
       - uses: actions/cache@v2
         with:
           path: ${{ steps.yarncache.outputs.dir }}
-          key: ${{ runner.os }}-${{ matrix.node }}-yarn-${{ hashFiles('**/package.json') }}
+          key: ${{ runner.os }}-${{ matrix.node }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: ${{ runner.os }}-${{ matrix.node }}-yarn-
 
       - name: Install dependencies using Yarn
         run: yarn install --frozen-lockfile
 
-      - name: Execute the Node test scripts
-        run: yarn test
+      - name: Lint scripts and styles
+        run: yarn lint
 
-      - name: Verify that assets are built successfully
+      - name: Build and compile assets
         run: |
-          yarn build:production
-          cat public/mix-manifest.json
+          yarn build --ci
+          cat public/entrypoints.json
+          cat public/manifest.json
+          cat public/wordpress.json
 
   php:
     name: PHP ${{ matrix.php }}

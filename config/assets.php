@@ -1,7 +1,5 @@
 <?php
 
-use function Roots\public_path;
-
 return [
 
     /*
