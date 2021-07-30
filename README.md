@@ -139,6 +139,7 @@ Edit `app/setup.php` to enable or disable theme features, setup navigation menus
 
 - Run `yarn` from the theme directory to install dependencies
 - Update `webpack.mix.js` with your local dev URL
+- Add to wp-config.php `define('WP_ENV', 'development');`
 
 ### Build commands
 
