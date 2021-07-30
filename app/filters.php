@@ -61,7 +61,7 @@ add_filter('template_include', function ($template) {
     }, []);
     if ($template) {
         echo template($template, $data);
-        return get_stylesheet_directory().'/index.php';
+        return get_stylesheet_directory() . DIRECTORY_SEPARATOR .'index.php';
     }
     return $template;
 }, PHP_INT_MAX);
@@ -84,7 +84,7 @@ add_filter('comments_template', function ($comments_template) {
 
     if ($theme_template) {
         echo template($theme_template, $data);
-        return get_stylesheet_directory().'/index.php';
+        return get_stylesheet_directory() . DIRECTORY_SEPARATOR . 'index.php';
     }
 
     return $comments_template;

@@ -83,7 +83,7 @@ function filter_templates($templates)
 {
     $paths = apply_filters('sage/filter_templates/paths', [
         'views',
-        'resources/views'
+        'resources' . DIRECTORY_SEPARATOR . 'views'
     ]);
     $paths_pattern = "#^(" . implode('|', $paths) . ")/#";
 
@@ -103,8 +103,8 @@ function filter_templates($templates)
             return collect($paths)
                 ->flatMap(function ($path) use ($template) {
                     return [
-                        "{$path}/{$template}.blade.php",
-                        "{$path}/{$template}.php",
+                        $path . DIRECTORY_SEPARATOR . "{$template}.blade.php",
+                        $path . DIRECTORY_SEPARATOR . "{$template}.php",
                     ];
                 })
                 ->concat([
