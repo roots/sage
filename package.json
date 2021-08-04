@@ -1,4 +1,5 @@
 {
+  "name": "sage",
   "private": true,
   "browserslist": [
     "extends @wordpress/browserslist-config"
