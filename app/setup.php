@@ -26,7 +26,7 @@ add_action('after_setup_theme', function () {
 
 	/**
      * Enable features from the Soil plugin if activated.
-	 * for Soil 4.x
+     * for Soil 4.x
      * @link https://roots.io/plugins/soil/
      */
     add_theme_support('soil', [
