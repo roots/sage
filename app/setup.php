@@ -24,7 +24,7 @@ add_action('wp_enqueue_scripts', function () {
  */
 add_action('after_setup_theme', function () {
 
-	/**
+    /**
      * Enable features from the Soil plugin if activated.
      * for Soil 4.x
      * @link https://roots.io/plugins/soil/
