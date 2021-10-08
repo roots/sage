@@ -3,9 +3,9 @@
     {{ $siteName }}
   </a>
 
-  <nav class="nav-primary">
-    @if (has_nav_menu('primary_navigation'))
+  @if (has_nav_menu('primary_navigation'))
+    <nav class="nav-primary">
       {!! wp_nav_menu(['theme_location' => 'primary_navigation', 'menu_class' => 'nav', 'echo' => false]) !!}
-    @endif
-  </nav>
+    </nav>
+  @endif
 </header>
