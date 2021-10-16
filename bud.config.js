@@ -1,10 +1,13 @@
+const {Bud} = require('@roots/bud');
+
 /**
  * Client assets build configuration
+ *
+ * @param {Bud} config
+ * @returns {Bud}
  */
-
 module.exports = (config) =>
   config
-
     /**
      * Use sage preset
      */
