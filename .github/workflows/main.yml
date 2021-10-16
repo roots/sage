@@ -46,7 +46,7 @@ jobs:
 
       - name: Build and compile assets
         run: |
-          yarn build --ci
+          yarn build
           cat public/entrypoints.json
           cat public/manifest.json
           cat public/wordpress.json
