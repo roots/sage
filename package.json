@@ -8,7 +8,7 @@
     "node": ">=14.0.0"
   },
   "scripts": {
-    "dev": "bud dev",
+    "dev": "bud build development",
     "build": "bud build",
     "lint": "npm run lint:js && npm run lint:css",
     "lint:js": "eslint resources/scripts",
@@ -16,8 +16,8 @@
     "test": "npm run lint"
   },
   "devDependencies": {
-    "@roots/bud": "5.0.0-next.0",
-    "@roots/sage": "5.0.0-next.0",
+    "@roots/bud": "5.0.0-next.5",
+    "@roots/sage": "5.0.0-next.5",
     "@tailwindcss/typography": "^0.4.1",
     "@wordpress/browserslist-config": "^4.1.0",
     "eslint": "^7.0.0",
