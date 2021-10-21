@@ -1,5 +1,34 @@
-### 10.0.0-beta.1: TBA
+### 10.0.0-beta.1: October 21st, 2021
 
+- Use menu name as accessible name of `<nav>` ([#2814](https://github.com/roots/sage/pull/2814))
+- Enable Webpack 5's automatic unique naming ([#2745](https://github.com/roots/sage/pull/2745))
+- Remove redundant x-ua-compatible meta tag ([#2742](https://github.com/roots/sage/pull/2742))
+- Remove deprecated jQuery `.ready()` syntax ([#2738](https://github.com/roots/sage/pull/2738))
+- Fix/add translators comment ([#2716](https://github.com/roots/sage/pull/2716))
+- enhance(theme): Disable full-site editing support ([#2692](https://github.com/roots/sage/pull/2692))
+- Make jQuery 3.5.1 a peer dependency ([#2721](https://github.com/roots/sage/pull/2721))
+- enhance(assets): Shorter pattern for purge files ([#2722](https://github.com/roots/sage/pull/2722))
+- fix(assets): use PhpAsset::load()
+- chore(deps): update acorn to 2.0.0-alpha.0
+- chore(config-log): use generic application.log
+- fix(config-view): use acorn helper functions
+- fix(bootstrap): use static bootloader to prevent rebooting
+- fix(composer): use proper wp cli command name ([#2636](https://github.com/roots/sage/pull/2636))
+- chore(deps): optimize tailwind's purgecss dirs
+- enhance(view): Add "skip to content" link ([#2622](https://github.com/roots/sage/pull/2622))
+- fix(deps): Remove wildcards from `.copyDirectory()` in `webpack.mix.js`
+- enhance(ci): Change from CircleCI to GitHub actions
+- chore(theme): Remove specificity from `custom-units` theme support
+- enhance(theme): Add theme support for `custom-line-height`
+- chore(theme): Fix docblock link
+- chore(theme): Move `custom-spacing` up for visibility
+- enhance(theme): Add theme support for `custom-units`
+- enhance(theme): Add theme support for editor-gradient-presets, `editor-font-sizes`, `disable-custom-colors`, `disable-custom-gradients`, `disable-custom-font-sizes`, `custom-spacing`
+- enhance(theme): Remove theme support for default block patterns
+- chore(theme): Reorder actions inside of the `after_setup_theme` hook by usefulness
+- chore(ci): Add `8.0` to version matrix
+- chore(readme): Update theme structure example
+- feat(assets): Change default CSS framework to Tailwind
 - feat(deps): Sunset `sage-lib` and transition over to [`Acorn`](https://github.com/roots/acorn). ([#2122](https://github.com/roots/sage/pull/2122))
 - feat(view): Implement Blade Composers – a native, robust, more powerful solution to "Controllers" used in Sage 9.
 - feat(assets): Change asset build system to [Laravel Mix](https://github.com/JeffreyWay/laravel-mix). ([#2172](https://github.com/roots/sage/pull/2172))
