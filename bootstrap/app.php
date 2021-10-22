@@ -13,7 +13,7 @@
 
 try {
     \Roots\bootloader();
-} catch ( Throwable $e ) {
+} catch (Throwable $e) {
     wp_die(
         __('You need to install Acorn to use this theme.', 'sage')
     );
