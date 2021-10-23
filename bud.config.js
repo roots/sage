@@ -1,10 +1,10 @@
-const {Bud} = require('@roots/bud');
-
 /**
  * Client assets build configuration
  *
- * @param {Bud} config
- * @returns {Bud}
+ * @typedef {import('@roots/bud').Framework} Config
+ *
+ * @param {Config} config
+ * @returns {Config}
  */
 module.exports = (config) =>
   config
