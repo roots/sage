@@ -8,7 +8,7 @@
     "node": ">=14.0.0"
   },
   "scripts": {
-    "dev": "bud build development",
+    "dev": "bud dev",
     "build": "bud build",
     "lint": "npm run lint:js && npm run lint:css",
     "lint:js": "eslint resources/scripts",
