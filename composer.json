@@ -40,10 +40,16 @@
   },
   "require": {
     "php": "^7.3|^8.0",
+    "log1x/acf-composer": "^2.0",
+    "log1x/navi": "^2.0",
+    "log1x/poet": "^2.0",
+    "log1x/sage-directives": "^1.1",
+    "log1x/sage-svg": "^1.0",
     "roots/acorn": "2.0.0-alpha.0"
   },
   "require-dev": {
     "filp/whoops": "^2.12",
+    "paulthewalton/acf-stubs": "^5.8",
     "squizlabs/php_codesniffer": "^3.6"
   },
   "suggest": {
