@@ -32,7 +32,7 @@ return [
     |
     */
 
-    'compiled' => storage_path('framework/views'),
+    'compiled' => wp_upload_dir()['basedir'] . '/cache',
 
     /*
     |--------------------------------------------------------------------------
