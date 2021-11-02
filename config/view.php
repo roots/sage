@@ -1,7 +1,6 @@
 <?php
 
 use function Roots\resource_path;
-use function Roots\storage_path;
 
 return [
 
@@ -32,7 +31,7 @@ return [
     |
     */
 
-    'compiled' => wp_upload_dir()['basedir'] . '/cache',
+    'compiled' => WP_CONTENT_DIR . '/cache/acorn/views',
 
     /*
     |--------------------------------------------------------------------------
