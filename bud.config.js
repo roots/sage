@@ -1,25 +1,20 @@
 /**
- * Client assets build configuration
+ * @typedef {import('@roots/bud').Bud} Bud
  *
- * @typedef {import('@roots/bud').Framework} Config
- *
- * @param {Config} config
- * @returns {Config}
+ * @param {Bud} config
  */
-module.exports = (config) =>
+
+module.exports = async (config) =>
   config
     /**
-     * Use sage preset
-     */
-    .use(require('@roots/sage'))
-
-    /**
      * Application entrypoints
+     *
+     * Paths are relative to your resources directory
      */
     .entry({
-      app: '**/app.{js,css}',
-      editor: '**/editor.{js,css}',
-      customizer: '**/customizer.{js,css}',
+      app: ['scripts/app.js', 'styles/app.css'],
+      editor: ['scripts/editor.js', 'styles/editor.css'],
+      customizer: 'scripts/customizer.js',
     })
 
     /**
@@ -36,4 +31,11 @@ module.exports = (config) =>
       'tailwind.config.js',
       'resources/views/*.blade.php',
       'app/View/**/*.php',
-    ]);
+    ])
+
+    /**
+     * Target URL to be proxied by the dev server.
+     *
+     * This is your local dev server.
+     */
+    .proxy('http://example.test');
