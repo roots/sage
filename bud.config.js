@@ -38,4 +38,4 @@ module.exports = async (config) =>
      *
      * This is your local dev server.
      */
-    .proxy('http://example.test');
+    .proxy({target: 'http://example.test'});
