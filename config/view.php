@@ -29,7 +29,7 @@ return [
     |
     */
 
-    'compiled' => storage_path('framework/views'),
+    'compiled' => WP_CONTENT_DIR . '/cache/acorn/views',
 
     /*
     |--------------------------------------------------------------------------
