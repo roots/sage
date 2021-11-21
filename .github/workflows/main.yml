@@ -49,7 +49,6 @@ jobs:
           yarn build
           cat public/entrypoints.json
           cat public/manifest.json
-          cat public/wordpress.json
 
   php:
     name: PHP ${{ matrix.php }}
