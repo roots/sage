@@ -1,7 +1,5 @@
 <?php
 
-use function Roots\resource_path;
-
 return [
 
     /*

@@ -41,7 +41,7 @@ return [
     |
     */
 
-    'debug' => WP_DEBUG,
+    'debug' => WP_DEBUG && WP_DEBUG_DISPLAY,
 
     /*
     |--------------------------------------------------------------------------
@@ -55,19 +55,6 @@ return [
     */
 
     'timezone' => get_option('timezone_string', 'UTC'),
-
-    /*
-    |--------------------------------------------------------------------------
-    | Global Helpers
-    |--------------------------------------------------------------------------
-    |
-    | This value enables the usage of various Acorn helpers without the need
-    | to specify a namespace. This defaults to false as to not pollute the
-    | global namespace.
-    |
-    */
-
-    'globals' => false,
 
     /*
     |--------------------------------------------------------------------------

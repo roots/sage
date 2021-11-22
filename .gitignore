@@ -1,5 +1,7 @@
 /node_modules
 /vendor
 /public
+.env
+.budfiles
 npm-debug.log
 yarn-error.log

@@ -1,7 +1,11 @@
 import '@wordpress/edit-post';
-import domReady from '@wordpress/dom-ready';
-import { unregisterBlockStyle, registerBlockStyle } from '@wordpress/blocks';
+import {registerBlockStyle, unregisterBlockStyle} from '@wordpress/blocks';
 
+import {domReady} from '@scripts/components';
+
+/**
+ * Customize block styles
+ */
 domReady(() => {
   unregisterBlockStyle('core/button', 'outline');
 
@@ -10,3 +14,10 @@ domReady(() => {
     label: 'Outline',
   });
 });
+
+/**
+ * Accept module updates
+ *
+ * @see https://webpack.js.org/api/hot-module-replacement
+ */
+import.meta.webpackHot?.accept(console.error);
