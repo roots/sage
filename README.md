@@ -56,8 +56,8 @@ Sage is a productivity-driven WordPress starter theme with a modern development 
 
 - Harness the power of [Laravel](https://laravel.com) and its available packages thanks to [Acorn](https://github.com/roots/acorn).
 - Clean, efficient theme templating utilizing [Laravel Blade](https://laravel.com/docs/master/blade).
-- Easy [Browsersync](http://www.browsersync.io/) support alongside asset compilation, concatenating, and minification powered by [Laravel Mix](https://github.com/JeffreyWay/laravel-mix).
-- Out of the box support for [TailwindCSS](https://tailwindcss.com/) and [jQuery](https://jquery.com).
+- Lightning fast frontend development workflow powered by [Bud](https://budjs.netlify.app/).
+- Out of the box support for [TailwindCSS](https://tailwindcss.com/).
 - A clean starting point for theme styles using [Sass](https://sass-lang.com/).
 
 See a working example at [roots-example-project.com](https://roots-example-project.com/).
@@ -92,8 +92,8 @@ $ composer create-project roots/sage your-theme-name dev-master
 ```sh
 themes/your-theme-name/   # → Root of your Sage based theme
 ├── app/                  # → Theme PHP
-│   ├── View/             # → View models
 │   ├── Providers/        # → Service providers
+│   ├── View/             # → View models
 │   ├── admin.php         # → Theme customizer setup
 │   ├── filters.php       # → Theme filters
 │   ├── helpers.php       # → Helper functions
@@ -117,8 +117,8 @@ themes/your-theme-name/   # → Root of your Sage based theme
 ├── resources/            # → Theme assets and templates
 │   ├── fonts/            # → Theme fonts
 │   ├── images/           # → Theme images
-│   ├── scripts/               # → Theme javascript
-│   ├── styles/              # → Theme stylesheets
+│   ├── scripts/          # → Theme javascript
+│   ├── styles/           # → Theme stylesheets
 │   └── views/            # → Theme templates
 │       ├── components/   # → Component templates
 │       ├── form/         # → Form templates
@@ -128,7 +128,7 @@ themes/your-theme-name/   # → Root of your Sage based theme
 ├── storage/              # → Storage location for cache (never edit)
 ├── style.css             # → Theme meta information
 ├── vendor/               # → Composer packages (never edit)
-└── webpack.mix.js        # → Laravel Mix configuration
+└── bud.config.js         # → Bud configuration
 ```
 
 ## Theme setup
@@ -138,13 +138,12 @@ Edit `app/setup.php` to enable or disable theme features, setup navigation menus
 ## Theme development
 
 - Run `yarn` from the theme directory to install dependencies
-- Update `webpack.mix.js` with your local dev URL
+- Update `bud.config.js` with your local dev URL
 
 ### Build commands
 
-- `yarn start` — Compile assets when file changes are made, start Browsersync session
-- `yarn build` — Compile and optimize the files in your assets directory
-- `yarn build:production` — Compile assets for production
+- `yarn dev` — Compile assets when file changes are made, start Browsersync session
+- `yarn build` — Compile assets for production
 
 ## Documentation
 
