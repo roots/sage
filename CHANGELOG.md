@@ -1,6 +1,6 @@
 ### HEAD
 - Replace Laravel Mix with Bud ([#2643](https://github.com/roots/sage/pull/2643))
-- chore(deps): Bump roots/acorn to v2.0.0-beta.4 ([#2844](https://github.com/roots/sage/pull/2844))
+- chore(deps): Bump roots/acorn to v2.0.0-beta.5 ([#2861](https://github.com/roots/sage/pull/2861))
 - Move compiled views back to cache dir by default ([#2837](https://github.com/roots/sage/pull/2837))
 
 ### 10.0.0-beta.1: October 21st, 2021
