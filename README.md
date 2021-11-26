@@ -58,9 +58,6 @@ Sage is a productivity-driven WordPress starter theme with a modern development 
 - Clean, efficient theme templating utilizing [Laravel Blade](https://laravel.com/docs/master/blade).
 - Lightning fast frontend development workflow powered by [Bud](https://budjs.netlify.app/).
 - Out of the box support for [TailwindCSS](https://tailwindcss.com/).
-- A clean starting point for theme styles using [Sass](https://sass-lang.com/).
-
-See a working example at [roots-example-project.com](https://roots-example-project.com/).
 
 ## Requirements
 
@@ -69,7 +66,7 @@ Make sure all dependencies have been installed before moving on:
 - [WordPress](https://wordpress.org/) >= 5.4
 - [PHP](https://secure.php.net/manual/en/install.php) >= 7.3.0 (with [`php-mbstring`](https://secure.php.net/manual/en/book.mbstring.php) enabled)
 - [Composer](https://getcomposer.org/download/)
-- [Node.js](http://nodejs.org/) >= 12.14.0
+- [Node.js](http://nodejs.org/) >= 16
 - [Yarn](https://yarnpkg.com/en/docs/install)
 
 ## Theme installation
@@ -121,7 +118,7 @@ themes/your-theme-name/   # → Root of your Sage based theme
 │   ├── styles/           # → Theme stylesheets
 │   └── views/            # → Theme templates
 │       ├── components/   # → Component templates
-│       ├── form/         # → Form templates
+│       ├── forms/        # → Form templates
 │       ├── layouts/      # → Base templates
 │       └── partials/     # → Partial templates
 ├── screenshot.png        # → Theme screenshot for WP admin
