@@ -2,14 +2,16 @@ language: php
 sudo: false
 dist: trusty
 php:
+  - 7.4
   - 7.3
   - 7.2
-  - 7.1
   - nightly
 
 env:
-  - TRAVIS_NODE_VERSION="8"
-  - TRAVIS_NODE_VERSION="10"
+  - TRAVIS_NODE_VERSION="12"
+  - TRAVIS_NODE_VERSION="14"
+  - TRAVIS_NODE_VERSION="15"
+  - TRAVIS_NODE_VERSION="16"
 
 matrix:
   fast_finish: true
