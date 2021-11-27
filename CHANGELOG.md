@@ -1,8 +1,7 @@
-### 9.1.0: February, 2021
+### 9.1.0: TBD, 2021
 * Update Webpack v3 to v5
 * Update Node dependencies
-* Minor change: Paths (as `@import`s) in assets are now resolved relative to `resources/` directory,
-                instead to the entrypoint stylesheet (main.scss).
+* Minor change: Paths (as `@import`s) in assets are now resolved relative to `resources/` directory, instead to the entrypoint stylesheet (main.scss).
 
 ### 9.0.10: November 9th, 2020
 * Update Node dependencies ([#2572](https://github.com/roots/sage/pull/2572))
