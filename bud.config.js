@@ -21,7 +21,7 @@ module.exports = async (config) =>
      * These files should be processed as part of the build
      * even if they are not explicitly imported in application assets.
      */
-    .assets(['assets/images'])
+    .assets(['resources/images'])
 
     /**
      * These files will trigger a full page reload
