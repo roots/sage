@@ -2,6 +2,8 @@
 
 namespace App\View\Components;
 
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Roots\Acorn\View\Component;
 
 class Alert extends Component
@@ -11,21 +13,21 @@ class Alert extends Component
      *
      * @var string
      */
-    public $type;
+    public string $type;
 
     /**
      * The alert message.
      *
      * @var string
      */
-    public $message;
+    public string $message;
 
     /**
      * The alert types.
      *
      * @var array
      */
-    public $types = [
+    public array $types = [
         'default' => 'text-indigo-50 bg-indigo-400',
         'success' => 'text-green-50 bg-green-400',
         'caution' => 'text-yellow-50 bg-yellow-400',
@@ -34,12 +36,8 @@ class Alert extends Component
 
     /**
      * Create the component instance.
-     *
-     * @param  string  $type
-     * @param  string  $message
-     * @return void
      */
-    public function __construct($type = 'default', $message = null)
+    public function __construct(string $type = 'default', ?string $message = null)
     {
         $this->type = $this->types[$type] ?? $this->types['default'];
         $this->message = $message;
@@ -48,7 +46,7 @@ class Alert extends Component
     /**
      * Get the view / contents that represent the component.
      *
-     * @return \Illuminate\View\View|string
+     * @return Factory|View
      */
     public function render()
     {

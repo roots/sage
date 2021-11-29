@@ -10,28 +10,22 @@ use function Roots\bundle;
 
 /**
  * Register the theme assets.
- *
- * @return void
  */
-add_action('wp_enqueue_scripts', function () {
+add_action('wp_enqueue_scripts', function (): void {
     bundle('app')->enqueue();
 }, 100);
 
 /**
  * Register the theme assets with the block editor.
- *
- * @return void
  */
-add_action('enqueue_block_editor_assets', function () {
+add_action('enqueue_block_editor_assets', function (): void {
     bundle('editor')->enqueue();
 }, 100);
 
 /**
  * Register the initial theme setup.
- *
- * @return void
  */
-add_action('after_setup_theme', function () {
+add_action('after_setup_theme', function (): void {
     /**
      * Enable features from the Soil plugin if activated.
      * @link https://roots.io/plugins/soil/
@@ -168,7 +162,7 @@ add_action('after_setup_theme', function () {
  *
  * @return void
  */
-add_action('widgets_init', function () {
+add_action('widgets_init', function (): void {
     $config = [
         'before_widget' => '<section class="widget %1$s %2$s">',
         'after_widget' => '</section>',

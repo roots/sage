@@ -64,7 +64,7 @@ Sage is a productivity-driven WordPress starter theme with a modern development 
 Make sure all dependencies have been installed before moving on:
 
 - [WordPress](https://wordpress.org/) >= 5.4
-- [PHP](https://secure.php.net/manual/en/install.php) >= 7.3.0 (with [`php-mbstring`](https://secure.php.net/manual/en/book.mbstring.php) enabled)
+- [PHP](https://secure.php.net/manual/en/install.php) >= 7.4.0 (with [`php-mbstring`](https://secure.php.net/manual/en/book.mbstring.php) enabled)
 - [Composer](https://getcomposer.org/download/)
 - [Node.js](http://nodejs.org/) >= 16
 - [Yarn](https://yarnpkg.com/en/docs/install)

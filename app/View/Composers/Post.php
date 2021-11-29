@@ -9,7 +9,7 @@ class Post extends Composer
     /**
      * List of views served by this composer.
      *
-     * @var array
+     * @var string[]
      */
     protected static $views = [
         'partials.page-header',
@@ -19,10 +19,8 @@ class Post extends Composer
 
     /**
      * Data to be passed to view before rendering, but after merging.
-     *
-     * @return array
      */
-    public function override()
+    public function override(): array
     {
         return [
             'title' => $this->title(),
@@ -31,10 +29,8 @@ class Post extends Composer
 
     /**
      * Returns the post title.
-     *
-     * @return string
      */
-    public function title()
+    public function title(): string
     {
         if ($this->view->name() !== 'partials.page-header') {
             return get_the_title();
