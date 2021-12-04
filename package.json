@@ -28,7 +28,7 @@
     "@wordpress/browserslist-config": "4.1.0",
     "autoprefixer": "^10.4.0",
     "eslint": "7.32.0",
-    "postcss": "8.4.1",
+    "postcss": "8.4.4",
     "postcss-import": "14.0.2",
     "postcss-nested": "5.0.6",
     "postcss-preset-env": "7.0.1",
