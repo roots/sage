@@ -50,17 +50,14 @@ However, the amount of effort needed to maintain and develop new features and pr
 
 Sage is a productivity-driven WordPress starter theme with a modern development workflow.
 
-**The `main` branch currently tracks Sage 10 which is in active development. Looking for Sage 9? [See releases](https://github.com/roots/sage/releases).**
+**The `main` branch currently tracks Sage 10 which is in active development. Looking for Sage 9 or the latest Sage 10 beta release? [See releases](https://github.com/roots/sage/releases).**
 
 ## Features
 
 - Harness the power of [Laravel](https://laravel.com) and its available packages thanks to [Acorn](https://github.com/roots/acorn).
 - Clean, efficient theme templating utilizing [Laravel Blade](https://laravel.com/docs/master/blade).
-- Easy [Browsersync](http://www.browsersync.io/) support alongside asset compilation, concatenating, and minification powered by [Laravel Mix](https://github.com/JeffreyWay/laravel-mix).
-- Out of the box support for [TailwindCSS](https://tailwindcss.com/) and [jQuery](https://jquery.com).
-- A clean starting point for theme styles using [Sass](https://sass-lang.com/).
-
-See a working example at [roots-example-project.com](https://roots-example-project.com/).
+- Lightning fast frontend development workflow powered by [Bud](https://budjs.netlify.app/).
+- Out of the box support for [TailwindCSS](https://tailwindcss.com/).
 
 ## Requirements
 
@@ -69,7 +66,7 @@ Make sure all dependencies have been installed before moving on:
 - [WordPress](https://wordpress.org/) >= 5.4
 - [PHP](https://secure.php.net/manual/en/install.php) >= 7.3.0 (with [`php-mbstring`](https://secure.php.net/manual/en/book.mbstring.php) enabled)
 - [Composer](https://getcomposer.org/download/)
-- [Node.js](http://nodejs.org/) >= 12.14.0
+- [Node.js](http://nodejs.org/) >= 16
 - [Yarn](https://yarnpkg.com/en/docs/install)
 
 ## Theme installation
@@ -92,8 +89,8 @@ $ composer create-project roots/sage your-theme-name dev-main
 ```sh
 themes/your-theme-name/   # → Root of your Sage based theme
 ├── app/                  # → Theme PHP
-│   ├── View/             # → View models
 │   ├── Providers/        # → Service providers
+│   ├── View/             # → View models
 │   ├── admin.php         # → Theme customizer setup
 │   ├── filters.php       # → Theme filters
 │   ├── helpers.php       # → Helper functions
@@ -117,18 +114,18 @@ themes/your-theme-name/   # → Root of your Sage based theme
 ├── resources/            # → Theme assets and templates
 │   ├── fonts/            # → Theme fonts
 │   ├── images/           # → Theme images
-│   ├── scripts/               # → Theme javascript
-│   ├── styles/              # → Theme stylesheets
+│   ├── scripts/          # → Theme javascript
+│   ├── styles/           # → Theme stylesheets
 │   └── views/            # → Theme templates
 │       ├── components/   # → Component templates
-│       ├── form/         # → Form templates
+│       ├── forms/        # → Form templates
 │       ├── layouts/      # → Base templates
 │       └── partials/     # → Partial templates
 ├── screenshot.png        # → Theme screenshot for WP admin
 ├── storage/              # → Storage location for cache (never edit)
 ├── style.css             # → Theme meta information
 ├── vendor/               # → Composer packages (never edit)
-└── webpack.mix.js        # → Laravel Mix configuration
+└── bud.config.js         # → Bud configuration
 ```
 
 ## Theme setup
@@ -138,13 +135,12 @@ Edit `app/setup.php` to enable or disable theme features, setup navigation menus
 ## Theme development
 
 - Run `yarn` from the theme directory to install dependencies
-- Update `webpack.mix.js` with your local dev URL
+- Update `bud.config.js` with your local dev URL
 
 ### Build commands
 
-- `yarn start` — Compile assets when file changes are made, start Browsersync session
-- `yarn build` — Compile and optimize the files in your assets directory
-- `yarn build:production` — Compile assets for production
+- `yarn dev` — Compile assets when file changes are made, start Browsersync session
+- `yarn build` — Compile assets for production
 
 ## Documentation
 

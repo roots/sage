@@ -31,7 +31,10 @@
           "responsive",
           "variants",
           "screen",
-          "function"
+          "function",
+          "use",
+          "forward",
+          "layer"
         ]
       }
     ]
