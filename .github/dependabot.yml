@@ -7,7 +7,7 @@ updates:
     time: "08:00"
     timezone: US/Central
   open-pull-requests-limit: 10
-  target-branch: master
+  target-branch: main
   ignore:
   - dependency-name: filp/whoops
     versions:
@@ -26,7 +26,7 @@ updates:
     time: "08:00"
     timezone: US/Central
   open-pull-requests-limit: 10
-  target-branch: master
+  target-branch: main
   ignore:
   - dependency-name: postcss
     versions:

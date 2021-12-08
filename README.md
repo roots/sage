@@ -50,7 +50,7 @@ However, the amount of effort needed to maintain and develop new features and pr
 
 Sage is a productivity-driven WordPress starter theme with a modern development workflow.
 
-**The `master` branch currently tracks Sage 10 which is in active development. Looking for Sage 9 or the latest Sage 10 beta release? [See releases](https://github.com/roots/sage/releases).**
+**The `main` branch currently tracks Sage 10 which is in active development. Looking for Sage 9 or the latest Sage 10 beta release? [See releases](https://github.com/roots/sage/releases).**
 
 ## Features
 
@@ -78,10 +78,10 @@ Install Sage using Composer from your WordPress themes directory (replace `your-
 $ composer create-project roots/sage your-theme-name
 ```
 
-To install the latest development version of Sage, add `dev-master` to the end of the command:
+To install the latest development version of Sage, add `dev-main` to the end of the command:
 
 ```sh
-$ composer create-project roots/sage your-theme-name dev-master
+$ composer create-project roots/sage your-theme-name dev-main
 ```
 
 ## Theme structure
@@ -144,7 +144,7 @@ Edit `app/setup.php` to enable or disable theme features, setup navigation menus
 
 ## Documentation
 
-- [Sage documentation](https://roots.io/sage/docs/)
+- [Sage documentation](https://docs.roots.io/sage/10.x/installation/)
 
 ## Contributing
 
