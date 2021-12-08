@@ -144,7 +144,7 @@ Edit `app/setup.php` to enable or disable theme features, setup navigation menus
 
 ## Documentation
 
-- [Sage documentation](https://roots.io/sage/docs/)
+- [Sage documentation](https://docs.roots.io/sage/10.x/installation/)
 
 ## Contributing
 
