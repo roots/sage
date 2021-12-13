@@ -40,6 +40,7 @@
   },
   "require": {
     "php": "^7.3|^8.0",
+    "htmlburger/carbon-fields": "^3.3",
     "roots/acorn": "2.0.0-beta.5"
   },
   "require-dev": {

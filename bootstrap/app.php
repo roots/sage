@@ -15,6 +15,14 @@
 
 /*
 |--------------------------------------------------------------------------
+| Register Carbon Fields
+|--------------------------------------------------------------------------
+*/
+
+\Carbon_Fields\Carbon_Fields::boot();
+
+/*
+|--------------------------------------------------------------------------
 | Register Sage Theme Files
 |--------------------------------------------------------------------------
 |
@@ -25,7 +33,7 @@
 |
 */
 
-collect(['helpers', 'setup', 'filters', 'admin'])
+collect(['helpers', 'setup', 'filters', 'admin', 'Models/ThemeOptions'])
     ->each(function ($file) {
         if (! locate_template($file = "app/{$file}.php", true, true)) {
             wp_die(
