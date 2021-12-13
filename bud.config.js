@@ -29,7 +29,7 @@ module.exports = async (config) =>
      */
     .watch([
       'tailwind.config.js',
-      'resources/views/*.blade.php',
+      'resources/views/**/*.blade.php',
       'app/View/**/*.php',
     ])
 
