@@ -2,6 +2,7 @@
 /vendor
 /public
 .env
+/.idea
 .budfiles
 npm-debug.log
 yarn-error.log

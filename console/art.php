@@ -10,7 +10,7 @@ $console = new Application();
 
 $console
     ->register('make:model')
-    ->addArgument('name', InputArgument::REQUIRED, 'The view name')
+    ->addArgument('name', InputArgument::REQUIRED, 'The model name')
     ->setCode(function ($input) {
         $model = __DIR__ . '\\..\\app\\Models\\' . $input->getArgument('name') . '.php';
 
