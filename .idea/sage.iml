@@ -67,6 +67,8 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/illuminate/view" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/composer" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/htmlburger/carbon-fields" />
+      <excludeFolder url="file://$MODULE_DIR$/.budfiles" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

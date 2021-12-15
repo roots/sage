@@ -57,7 +57,6 @@ Sage is a productivity-driven WordPress starter theme with a modern development 
 - Harness the power of [Laravel](https://laravel.com) and its available packages thanks to [Acorn](https://github.com/roots/acorn).
 - Clean, efficient theme templating utilizing [Laravel Blade](https://laravel.com/docs/master/blade).
 - Lightning fast frontend development workflow powered by [Bud](https://budjs.netlify.app/).
-- Out of the box support for [TailwindCSS](https://tailwindcss.com/).
 
 ## Requirements
 
@@ -71,24 +70,14 @@ Make sure all dependencies have been installed before moving on:
 
 ## Theme installation
 
-Install Sage using Composer from your WordPress themes directory (replace `your-theme-name` below with the name of your theme):
-
-```sh
-# @ app/themes/ or wp-content/themes/
-$ composer create-project roots/sage your-theme-name
-```
-
-To install the latest development version of Sage, add `dev-main` to the end of the command:
-
-```sh
-$ composer create-project roots/sage your-theme-name dev-main
-```
+Install dependencies using Composer from theme directory.
 
 ## Theme structure
 
 ```sh
 themes/your-theme-name/   # → Root of your Sage based theme
 ├── app/                  # → Theme PHP
+│   ├── Models/           # → Custom fields
 │   ├── Providers/        # → Service providers
 │   ├── View/             # → View models
 │   ├── admin.php         # → Theme customizer setup
@@ -141,6 +130,15 @@ Edit `app/setup.php` to enable or disable theme features, setup navigation menus
 
 - `yarn dev` — Compile assets when file changes are made, start Browsersync session
 - `yarn build` — Compile assets for production
+
+
+#### Possible bug "scripts/styles not compiled on Win 10/11"
+"ValidationError: Invalid configuration object. Webpack has been initialized using a configuration object that does not match the API schema.
+- configuration[0].resolve.modules[2] should be a non-empty string.
+-> Folder name or directory path where to find modules."
+
+Fix: "wsl --install"
+
 
 ## Documentation
 

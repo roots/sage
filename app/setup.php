@@ -14,9 +14,9 @@ use function Roots\bundle;
  * @return void
  */
 add_action('wp_enqueue_scripts', function () {
-//    bundle('app')->enqueue();
-    wp_register_script('main-js',get_stylesheet_directory_uri().'/public/js/app.js');
-});
+    wp_enqueue_style('app.css', get_template_directory_uri() . '/public/styles/app.css', false, null);
+    wp_enqueue_script('app.js', get_template_directory_uri() . '/public/scripts/app.js', null, null, true);
+}, 100);
 
 /**
  * Register the theme assets with the block editor.
