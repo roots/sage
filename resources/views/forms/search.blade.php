@@ -6,7 +6,7 @@
 
     <input
       type="search"
-      class="px-3 py-1 border"
+      class=""
       placeholder="{!! esc_attr_x('Search &hellip;', 'placeholder', 'sage') !!}"
       value="{{ get_search_query() }}"
       name="s"
@@ -15,7 +15,7 @@
 
   <input
     type="submit"
-    class="px-3 py-1 text-white bg-indigo-500 cursor-pointer"
+    class=""
     value="{{ esc_attr_x('Search', 'submit button', 'sage') }}"
   >
 </form>
