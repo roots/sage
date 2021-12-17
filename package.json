@@ -22,7 +22,7 @@
     "test": "npm run lint"
   },
   "devDependencies": {
-    "@roots/bud": "5.0.0-next.19",
+    "@roots/bud": "5.0.0-next.20",
     "@roots/sage": "5.0.0-next.19",
     "@wordpress/browserslist-config": "4.1.0",
     "autoprefixer": "^10.4.0",
