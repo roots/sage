@@ -6,8 +6,6 @@
 
 namespace App;
 
-use function Roots\bundle;
-
 /**
  * Register the theme assets.
  *
@@ -17,15 +15,6 @@ add_action('wp_enqueue_scripts', function () {
     wp_enqueue_style('app.css', get_template_directory_uri().'/public/styles/app.css', false, null);
     wp_enqueue_script('app.js', get_template_directory_uri().'/public/scripts/app.js', null, null, true);
 }, 100);
-
-/**
- * Register the theme assets with the block editor.
- *
- * @return void
- */
-//add_action('enqueue_block_editor_assets', function () {
-//    bundle('editor')->enqueue();
-//}, 100);
 
 /**
  * Register the initial theme setup.

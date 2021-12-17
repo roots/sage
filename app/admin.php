@@ -6,7 +6,7 @@
 
 namespace App;
 
-use function Roots\bundle;
+//use function Roots\bundle;
 use WP_Customize_Manager;
 
 /**
@@ -24,13 +24,4 @@ add_action('customize_register', function (WP_Customize_Manager $wp_customize) {
             bloginfo('name');
         },
     ]);
-});
-
-/**
- * Register the customizer assets.
- *
- * @return void
- */
-add_action('customize_preview_init', function () {
-    bundle('customizer')->enqueueJs(true, ['customize-preview']);
 });
