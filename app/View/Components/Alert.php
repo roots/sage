@@ -35,8 +35,9 @@ class Alert extends Component
     /**
      * Create the component instance.
      *
-     * @param  string  $type
-     * @param  string  $message
+     * @param string $type
+     * @param string $message
+     *
      * @return void
      */
     public function __construct($type = 'default', $message = null)

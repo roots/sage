@@ -29,7 +29,7 @@ return [
     |
     */
 
-    'compiled' => WP_CONTENT_DIR . '/cache/acorn/views',
+    'compiled' => WP_CONTENT_DIR.'/cache/acorn/views',
 
     /*
     |--------------------------------------------------------------------------

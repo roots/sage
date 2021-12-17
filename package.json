@@ -24,7 +24,7 @@
     "test": "npm run lint"
   },
   "devDependencies": {
-    "@roots/sage": "5.0.0-next.18",
+    "@roots/sage": "5.0.0-next.19",
     "browser-sync": "^2.27.7",
     "browser-sync-webpack-plugin": "2.3.0",
     "eslint": "7.32.0",
