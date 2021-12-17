@@ -131,15 +131,6 @@ Edit `app/setup.php` to enable or disable theme features, setup navigation menus
 - `yarn dev` — Compile assets when file changes are made, start Browsersync session
 - `yarn build` — Compile assets for production
 
-
-#### Possible bug "scripts/styles not compiled on Win 10/11"
-"ValidationError: Invalid configuration object. Webpack has been initialized using a configuration object that does not match the API schema.
-- configuration[0].resolve.modules[2] should be a non-empty string.
--> Folder name or directory path where to find modules."
-
-Fix: "wsl --install"
-
-
 ## Documentation
 
 - [Sage documentation](https://docs.roots.io/sage/10.x/installation/)
