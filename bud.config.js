@@ -14,7 +14,6 @@ module.exports = async (config) =>
     .entry({
       app: ['scripts/app.js', 'styles/app.css'],
       editor: ['scripts/editor.js', 'styles/editor.css'],
-      customizer: 'scripts/customizer.js',
     })
 
     /**
