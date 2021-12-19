@@ -1,7 +1,16 @@
-### HEAD
+### 10.0.0-beta.2: December 21st, 2021
+- chore(deps): Bump roots/acorn to v2.0.0-beta.6 ([#2911](https://github.com/roots/sage/pull/2911))
+- Remove customizer starter ([#2904](https://github.com/roots/sage/pull/2904))
+- Update watch glob for views directory ([#2892](https://github.com/roots/sage/pull/2892))
+- Remove all base styles followup ([#2900](https://github.com/roots/sage/pull/2900))
+- Remove all base styles ([#2889](https://github.com/roots/sage/pull/2889))
+- Tailwind CSS v3.0 ([#2882](https://github.com/roots/sage/pull/2882))
+- Switch primary branch from master to main ([#2851](https://github.com/roots/sage/pull/2851))
+- feat(theme-wrapper): remove `shrink-to-fit=no` ([#2870](https://github.com/roots/sage/pull/2870))
+- chore(theme): misc cleanup ([#2862](https://github.com/roots/sage/pull/2862))
 - Replace Laravel Mix with Bud ([#2643](https://github.com/roots/sage/pull/2643))
-- chore(deps): Bump roots/acorn to v2.0.0-beta.5 ([#2861](https://github.com/roots/sage/pull/2861))
 - Move compiled views back to cache dir by default ([#2837](https://github.com/roots/sage/pull/2837))
+- fix(lint): Add additional known at-rules ([#2811](https://github.com/roots/sage/pull/2811))
 
 ### 10.0.0-beta.1: October 21st, 2021
 
