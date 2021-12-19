@@ -1092,20 +1092,20 @@
     schema-utils "^3.0.0"
     source-map "^0.7.3"
 
-"@roots/bud-api@5.0.0-next.20":
-  version "5.0.0-next.20"
-  resolved "https://registry.yarnpkg.com/@roots/bud-api/-/bud-api-5.0.0-next.20.tgz#6737a9082ac336fa306664825aea5b7fe01851d0"
-  integrity sha512-Si3hcsRoUj34bOwgV/RIlnt+/PrIlVre4fhG47klZhoY2UDH0s0TIJCc1gsRg54iCmMMsHLWyUCwLasBIH16rw==
+"@roots/bud-api@5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@roots/bud-api/-/bud-api-5.0.0.tgz#4568013f434f5300a6dc42ceadb2f7b7524fc3bd"
+  integrity sha512-q67Hx3/gvnkyRNXsxvOr9rYUSq624vah7c8BHuESdhHGqN6DrL1oHZZI7CghzAYOyoK7LanYkrecrWSbveD7qA==
   dependencies:
-    "@roots/bud-support" "5.0.0-next.20"
+    "@roots/bud-support" "5.0.0"
     copy-webpack-plugin "10.0.0"
     css-minimizer-webpack-plugin "3.3.0"
     tslib "^2.3.1"
 
-"@roots/bud-babel@5.0.0-next.20":
-  version "5.0.0-next.20"
-  resolved "https://registry.yarnpkg.com/@roots/bud-babel/-/bud-babel-5.0.0-next.20.tgz#78d62fb22a82cb75a0a462b237abee888f88f49b"
-  integrity sha512-uSM+hmaVS4SnyZqoE7hIEByUKLzK/5LPFBJ1QHbTfVCS7L7SHNkeJaF1nd3XitK6mRIhabUOLR6EtPQZ3DnlAg==
+"@roots/bud-babel@5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@roots/bud-babel/-/bud-babel-5.0.0.tgz#7a4a2c06693b2c4c5ea07927a2b9b13fce43d31d"
+  integrity sha512-RzcAxrIi1BkIwyhogyaWQ85ywmjnA27nt2qbu6qDlaw8l5H7vvxIY1P7/5Jz6TZM4KO+M3r2tYQdCvTIGZyjJA==
   dependencies:
     "@babel/core" "^7.16.0"
     "@babel/plugin-proposal-class-properties" "^7.16.0"
@@ -1117,13 +1117,13 @@
     babel-plugin-add-module-exports "^1.0.4"
     tslib "^2.3.1"
 
-"@roots/bud-build@5.0.0-next.20":
-  version "5.0.0-next.20"
-  resolved "https://registry.yarnpkg.com/@roots/bud-build/-/bud-build-5.0.0-next.20.tgz#407864445946a5107cbc94f32ad2d91b05dcc229"
-  integrity sha512-H/Q/33qu2TDfwW6FyEwSOEKI1xH+b7PiSYZju1cA4Wcmt6pVzSSpizpqv5wzy9I4+GFWbfgwvnJilkj4PIfycQ==
+"@roots/bud-build@5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@roots/bud-build/-/bud-build-5.0.0.tgz#cc20908fb4bfe1b20287cb189e6d744163364a4b"
+  integrity sha512-mwLOCrZV/uxt3+i0UQbn+74arv/FMZjUFmqEFqAdNMmwsqjfbXF3y4ZUGW5EFIUGiB6x07vVjvuj9woAKicwdg==
   dependencies:
-    "@roots/bud-framework" "5.0.0-next.20"
-    "@roots/bud-support" "5.0.0-next.20"
+    "@roots/bud-framework" "5.0.0"
+    "@roots/bud-support" "5.0.0"
     autobind-decorator "^2.4.0"
     css-loader "^6.5.1"
     csv-loader "^3.0.3"
@@ -1143,45 +1143,45 @@
     url-loader "^4.1.1"
     xml-loader "^1.2.1"
 
-"@roots/bud-cache@5.0.0-next.20":
-  version "5.0.0-next.20"
-  resolved "https://registry.yarnpkg.com/@roots/bud-cache/-/bud-cache-5.0.0-next.20.tgz#c1eede878863b9f05c36079d8ede39aa1c0c5594"
-  integrity sha512-jpChNBiyCvQ0EPhas3fjhDdLnYKDIs5KGTmPqvb7MGb2BAD5tUQuwr/3Ow7RaN0k2o8OihRZKUlkh9Obb9mOlg==
+"@roots/bud-cache@5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@roots/bud-cache/-/bud-cache-5.0.0.tgz#3993f7ab20b113e51abf39f1327974da50fada6a"
+  integrity sha512-ZvR9vJtjZ/OzQiP8SFqF1jNQxmqQX37Qk9FYMpjFXiGD1v5jJVZhcAygcGqL6RN7BcZsvZuGhDmpSyIOcoHjTw==
   dependencies:
-    "@roots/bud-support" "5.0.0-next.20"
+    "@roots/bud-support" "5.0.0"
     tslib "^2.3.1"
 
-"@roots/bud-compiler@5.0.0-next.20":
-  version "5.0.0-next.20"
-  resolved "https://registry.yarnpkg.com/@roots/bud-compiler/-/bud-compiler-5.0.0-next.20.tgz#02edf14f13c74699973ef200c88dd3bb791fb334"
-  integrity sha512-Zolo0KWLbSGp/xLo/3SHt3BllY81zCUSsRltHPz8HsOoTg3MGb0jm3uaG0zbm6eJearrVq2ru2JfBBA8klTiGA==
+"@roots/bud-compiler@5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@roots/bud-compiler/-/bud-compiler-5.0.0.tgz#876a37aa0f3fd385d3c3bb9bc3b65652a928cb9b"
+  integrity sha512-c1Dlf8m0s465ZYCBqAIiksxyxlsLUI/TPcysgKcK99K5GiwcG5Pe77/gCYZCyTq+MBk4vnJmu4X6h+oyacWu3A==
   dependencies:
-    "@roots/bud-support" "^5.0.0-next.20"
+    "@roots/bud-support" "^5.0.0"
     helpful-decorators "^2.1.0"
     tslib "^2.3.1"
     webpack "5.65.0"
 
-"@roots/bud-dashboard@5.0.0-next.20":
-  version "5.0.0-next.20"
-  resolved "https://registry.yarnpkg.com/@roots/bud-dashboard/-/bud-dashboard-5.0.0-next.20.tgz#3ba75dabfdf7adb5b52471ed0aa2295c5185d42b"
-  integrity sha512-AOPy+4xtB0Hi2fWo7zFmZP6/U8SeheGxDFa63EQ51EAoJhELngZqG8pp363aomeKL8C+qyCmypo/oK70K0VtWQ==
+"@roots/bud-dashboard@5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@roots/bud-dashboard/-/bud-dashboard-5.0.0.tgz#8c1487bbcb0f393d9706a537fec4eb944c3e3ab9"
+  integrity sha512-Krb91AXy09iPNNjbcyUfiBhL5KkSsVrAIVplrfvprBqnHB641p+bLMQR/9Vath/aMuTpnMFHVpgbXkKezOCKow==
   dependencies:
     trim-newlines "^4.0.2"
     tslib "^2.3.1"
 
-"@roots/bud-entrypoints@5.0.0-next.20":
-  version "5.0.0-next.20"
-  resolved "https://registry.yarnpkg.com/@roots/bud-entrypoints/-/bud-entrypoints-5.0.0-next.20.tgz#f66ded04454630ea8287a89ceb4d69a257b76cf5"
-  integrity sha512-20cU9bs/MqAacUxm0khogwJFO9deETNJpMA3Sjq/li4AVDPapZIXYuVj0D5BrAjqghTXOZy52IK7n06Zr+oAMQ==
+"@roots/bud-entrypoints@5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@roots/bud-entrypoints/-/bud-entrypoints-5.0.0.tgz#663348579933b071f8a505edc690f85e0572e4ff"
+  integrity sha512-RcwbAGWtJh3x2Xi6GDTmxG9Y0vuO7k3qPcrAxoDZjQBszrJM5vSQ52/JQTTWSdJSHxuQJC+c+oLuIAGvoSP6Vw==
   dependencies:
-    "@roots/entrypoints-webpack-plugin" "5.0.0-next.20"
+    "@roots/entrypoints-webpack-plugin" "5.0.0"
     autobind-decorator "^2.4.0"
     tslib "^2.3.1"
 
-"@roots/bud-eslint@5.0.0-next.20":
-  version "5.0.0-next.20"
-  resolved "https://registry.yarnpkg.com/@roots/bud-eslint/-/bud-eslint-5.0.0-next.20.tgz#f09a803efbce8f1ca5793b4d55dfb1488bc993a8"
-  integrity sha512-gIbj7kvb3e+25PU684d9D/2EfYHk3EsXLEL+baXjO5nx9gkhtLLfZPhF5F78rGVfJXJ37S+c+/eciiLomoB/lA==
+"@roots/bud-eslint@5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@roots/bud-eslint/-/bud-eslint-5.0.0.tgz#843a26e796c9dd1d43a723e216daf88f63a9081f"
+  integrity sha512-3dcVEg1h6dqy+3iGX+GkT86IPtdNnfJn8nN1MK30wuQWoPQ3PkH4lzCifwpZjJShAjqJmm0kFKnWVCEzjsFYUA==
   dependencies:
     babel-eslint "^10.1.0"
     eslint-config-prettier "^8.3.0"
@@ -1193,22 +1193,22 @@
     eslint-webpack-plugin "^3.1.1"
     tslib "^2.3.1"
 
-"@roots/bud-extensions@5.0.0-next.20":
-  version "5.0.0-next.20"
-  resolved "https://registry.yarnpkg.com/@roots/bud-extensions/-/bud-extensions-5.0.0-next.20.tgz#4e75b42de5f79e51906417182cf6619d01be8a94"
-  integrity sha512-Npfx5wSWzqswcjL+WuVTrufVw7aNVQDogmZ+Pw+aQN2lmp2e5/aRCn+j/GIpL2Aavb98PcAtw2n+GBb+k4lKtw==
+"@roots/bud-extensions@5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@roots/bud-extensions/-/bud-extensions-5.0.0.tgz#31b5ba18dfd85ab76ce47aa8e2be38c6f87acb9a"
+  integrity sha512-tTY7NCdhHqAIRo6ejJ9i1FzO20LaWV+Y4lStON6Di4zpSmUFSHqKjDepZT4ZMM2J6kZ7TmAil/i0ksp/pn5HsA==
   dependencies:
-    "@roots/bud-support" "5.0.0-next.20"
+    "@roots/bud-support" "5.0.0"
     autobind-decorator "^2.4.0"
     tslib "^2.3.1"
 
-"@roots/bud-framework@5.0.0-next.20":
-  version "5.0.0-next.20"
-  resolved "https://registry.yarnpkg.com/@roots/bud-framework/-/bud-framework-5.0.0-next.20.tgz#6b6f68024dcfe008aaacff8f11844e1dafacdd79"
-  integrity sha512-4Jq1LbtnuH82E843XmQKGQGY5c/KQ9IxJbc6zavY0wN2FnzZMdupD7QvLv890nNGqHO2kgE7Kkv2qAzJmzIpug==
+"@roots/bud-framework@5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@roots/bud-framework/-/bud-framework-5.0.0.tgz#895da6cffd4000bafe860c5b569b7a8475dcf6d4"
+  integrity sha512-QoDbIf0hcdv7M6wBOZboZsfL9/xNngUD8QsnBd0dyZ3dMxZ7MXZ4g5QNedCZUeB8s/IBXQgEqV7m38r6S2RzrQ==
   dependencies:
-    "@roots/bud-support" "5.0.0-next.20"
-    "@roots/container" "5.0.0-next.20"
+    "@roots/bud-support" "5.0.0"
+    "@roots/container" "5.0.0"
     cli-highlight "^2.1.11"
     js-yaml "^4.1.0"
     json5 "^2.2.0"
@@ -1216,63 +1216,63 @@
     ts-node "^10.4.0"
     tslib "^2.3.1"
 
-"@roots/bud-hooks@5.0.0-next.20":
-  version "5.0.0-next.20"
-  resolved "https://registry.yarnpkg.com/@roots/bud-hooks/-/bud-hooks-5.0.0-next.20.tgz#e57786982edd645fce889e962299b0907ee0a553"
-  integrity sha512-K8WuYy7e0waI9vONNjFq5LJaGw3KQ2xx6HNZxbxN1TyU2My8S6XFZh/f0EYV27P/78s6sMiy9bhn/z8f7mMdEw==
+"@roots/bud-hooks@5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@roots/bud-hooks/-/bud-hooks-5.0.0.tgz#c289eacbb839eb4443f2d37dfea97a8305a260af"
+  integrity sha512-SEj4442yREjgYY4Lv4chw5aUbNlKM+slDC/88hvJfwIw/WGyVyAGAwEBhnLL0X69njVGiF31rqtj+yRM786SDA==
   dependencies:
-    "@roots/bud-framework" "5.0.0-next.20"
-    "@roots/bud-support" "5.0.0-next.20"
+    "@roots/bud-framework" "5.0.0"
+    "@roots/bud-support" "5.0.0"
     autobind-decorator "^2.4.0"
     lodash "^4.17.21"
     pretty-format "^27.3.1"
     tslib "^2.3.1"
 
-"@roots/bud-postcss@5.0.0-next.20":
-  version "5.0.0-next.20"
-  resolved "https://registry.yarnpkg.com/@roots/bud-postcss/-/bud-postcss-5.0.0-next.20.tgz#11ab8c29181df210d66aa0e47893ade63e4e2967"
-  integrity sha512-8Sc5uVeNY5UNxZOXetQ4P74hfy4xm1wIxfQlCscQ244pju7TtdXB2VrNsrXHABLOLxlWvaXC7taj9/GYNW8aHA==
+"@roots/bud-postcss@5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@roots/bud-postcss/-/bud-postcss-5.0.0.tgz#0f79eaa4e5dbae25121078c6d89e2fa7fc753ce2"
+  integrity sha512-NNZgGM/9xgV5VhUbYH0UNj9JRKcl6opJjf4ktORt/JnP9PLqXIYekyHts9Necs8BQGnoZ6BMIRp8e+KSJR9RxQ==
   dependencies:
-    "@roots/bud-build" "5.0.0-next.20"
+    "@roots/bud-build" "5.0.0"
     postcss-loader "6.2.1"
     tslib "2.3.1"
 
-"@roots/bud-preset-recommend@5.0.0-next.20":
-  version "5.0.0-next.20"
-  resolved "https://registry.yarnpkg.com/@roots/bud-preset-recommend/-/bud-preset-recommend-5.0.0-next.20.tgz#8d27df4407f396a17af25fad47ae181abfd89f93"
-  integrity sha512-DENj+LSsjfcQtuytCzxYBtjHLoM0TuTuVsUeDNktoqn9Rnzyc7/C+tL5ddhr4ljoRS2wR1U7u0LlljKIZOP8Ew==
+"@roots/bud-preset-recommend@5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@roots/bud-preset-recommend/-/bud-preset-recommend-5.0.0.tgz#41c63307970a1aa48784524e318ff05ca4720f3f"
+  integrity sha512-YFSRFgnoFnQJblxG9DVk7HSw68LX3vJe50VVD6hcZE/wlWZPVaaONUP8km0UBZb+d0JcSNRz2RX8ujpQxhZ1TA==
   dependencies:
-    "@roots/bud-babel" "5.0.0-next.20"
-    "@roots/bud-entrypoints" "5.0.0-next.20"
-    "@roots/bud-postcss" "5.0.0-next.20"
+    "@roots/bud-babel" "5.0.0"
+    "@roots/bud-entrypoints" "5.0.0"
+    "@roots/bud-postcss" "5.0.0"
     tslib "2.3.1"
 
-"@roots/bud-preset-wordpress@5.0.0-next.20":
-  version "5.0.0-next.20"
-  resolved "https://registry.yarnpkg.com/@roots/bud-preset-wordpress/-/bud-preset-wordpress-5.0.0-next.20.tgz#29e53a5b4cbf5e741be3ca1931d6347c34651e64"
-  integrity sha512-Jn0AvqmQLbcV/is4JK9kPyDQWuQ6vU8ZRFKLbS8kOtxxVF9Kt+Cn2S8C453VNNQtYuxFC+2v+qNigPkP8W3GLw==
+"@roots/bud-preset-wordpress@5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@roots/bud-preset-wordpress/-/bud-preset-wordpress-5.0.0.tgz#79578342c2acdbac681870cc4d35eec871e5e0a9"
+  integrity sha512-OPqQ6AorrWNaIK9d9PQwUXLhnvmZRHMKjRhLi/8EeahgYyT0Ig33gnsUuJ3WmCtjKw68uNE95BFmZAuYe+S3Sw==
   dependencies:
-    "@roots/bud-entrypoints" "5.0.0-next.20"
-    "@roots/bud-preset-recommend" "5.0.0-next.20"
-    "@roots/bud-react" "5.0.0-next.20"
-    "@roots/bud-wordpress-dependencies" "5.0.0-next.20"
-    "@roots/bud-wordpress-externals" "5.0.0-next.20"
-    "@roots/bud-wordpress-manifests" "5.0.0-next.20"
+    "@roots/bud-entrypoints" "5.0.0"
+    "@roots/bud-preset-recommend" "5.0.0"
+    "@roots/bud-react" "5.0.0"
+    "@roots/bud-wordpress-dependencies" "5.0.0"
+    "@roots/bud-wordpress-externals" "5.0.0"
+    "@roots/bud-wordpress-manifests" "5.0.0"
     tslib "2.3.1"
 
-"@roots/bud-prettier@5.0.0-next.20":
-  version "5.0.0-next.20"
-  resolved "https://registry.yarnpkg.com/@roots/bud-prettier/-/bud-prettier-5.0.0-next.20.tgz#56de9072eac000925d9e70720c5e49679c07ae2a"
-  integrity sha512-lCVqhFLrk10klFctJCklDV/y1jTD/2MXAUTEESTFyZVz1u7ZbY2625TksjAEEXQEGVuqVCvl4v2eZrReRxBe+A==
+"@roots/bud-prettier@5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@roots/bud-prettier/-/bud-prettier-5.0.0.tgz#e80a11e4e3f169988c978d4fa2ff9bc96bc2edc1"
+  integrity sha512-i8XGyUYvL54me0yEZwgKQLgSsofFvaKDcs2e1FPamZUUoBn5VSycomjzz6Yq//E3YbFKnG42x6r2iZ57sivkVg==
   dependencies:
     autobind-decorator "2.4.0"
     prettier "2.5.1"
     tslib "2.3.1"
 
-"@roots/bud-react@5.0.0-next.20":
-  version "5.0.0-next.20"
-  resolved "https://registry.yarnpkg.com/@roots/bud-react/-/bud-react-5.0.0-next.20.tgz#138ef6e15bf1ca8bd699b70ab26566e59a51fa35"
-  integrity sha512-G9J2DJOagUu7gMQsd2abFmv/ElEH5alFGlNQa2LUco1sjTcuCgDWOJLfa3CEhcTnCGuyIEpwjx4JlGXxkh/YEg==
+"@roots/bud-react@5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@roots/bud-react/-/bud-react-5.0.0.tgz#3056e620ca0c0a01fc28de61ed0774882ece8f53"
+  integrity sha512-mqJJ1Bs5I62YWKKOZg7nLiuIQ2GQroNPqiQ3F/NnNYIAJGK5P497qCdBLu2JMV79sq06Bf4IzbiZFJL/+68S0Q==
   dependencies:
     "@babel/plugin-syntax-jsx" "^7.16.0"
     "@babel/preset-react" "^7.16.0"
@@ -1282,14 +1282,14 @@
     react-refresh "0.11.0"
     tslib "2.3.1"
 
-"@roots/bud-server@5.0.0-next.20":
-  version "5.0.0-next.20"
-  resolved "https://registry.yarnpkg.com/@roots/bud-server/-/bud-server-5.0.0-next.20.tgz#07f2eaa5590b1877cb3291e3a601f013a91185f8"
-  integrity sha512-gkWeOODrz2dsrLPbJpyO9MB4Td7OcBmTMjewO9F0P+dt7apPREInUR5o8u1tS9zkq4l19IetwUdzP1Lbqt9Wqg==
+"@roots/bud-server@5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@roots/bud-server/-/bud-server-5.0.0.tgz#65124d8a6a8c07c09eea22e6f2813ea7818ae304"
+  integrity sha512-+Rl9BPGWx/SMKOQv72yNicWZXY/HLE+Dx2Xh6sRRTPeMcYr3rWKHFTnVo/G1HIfKQFs0hvW3wWuStukJmmgaqA==
   dependencies:
-    "@roots/bud-framework" "5.0.0-next.20"
-    "@roots/bud-support" "5.0.0-next.20"
-    "@roots/container" "5.0.0-next.20"
+    "@roots/bud-framework" "5.0.0"
+    "@roots/bud-support" "5.0.0"
+    "@roots/container" "5.0.0"
     chokidar "^3.5.2"
     express "^4.17.1"
     http-proxy-middleware "2.0.1"
@@ -1297,10 +1297,10 @@
     webpack-dev-middleware "5.2.2"
     webpack-hot-middleware "^2.25.1"
 
-"@roots/bud-stylelint@5.0.0-next.20":
-  version "5.0.0-next.20"
-  resolved "https://registry.yarnpkg.com/@roots/bud-stylelint/-/bud-stylelint-5.0.0-next.20.tgz#bf5f3d644cbf140b76aac543f9b903a47e92060a"
-  integrity sha512-E6fELPHDe3JuTVvbBxb1Fo/HFpUEvHBwbYGAGEBeBxJpeqrlfLBCZz6pGuNbNqhJS5O1wJZ1qA59t5W/2xYurg==
+"@roots/bud-stylelint@5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@roots/bud-stylelint/-/bud-stylelint-5.0.0.tgz#6ed62ec6da20e5950d08295712bb89531037c339"
+  integrity sha512-aVCpCInDW2V9O33SOYGXIWIDNiB/iPI6W73T+QPboUt9IQ5mqgorktjYsY4f85A4GqBAvpyiI+OIt0f5kFEMfQ==
   dependencies:
     autobind-decorator "^2.4.0"
     stylelint "^14.1.0"
@@ -1308,65 +1308,65 @@
     stylelint-webpack-plugin "^3.1.0"
     tslib "^2.3.1"
 
-"@roots/bud-support@5.0.0-next.20", "@roots/bud-support@^5.0.0-next.20":
-  version "5.0.0-next.20"
-  resolved "https://registry.yarnpkg.com/@roots/bud-support/-/bud-support-5.0.0-next.20.tgz#78bbf1cc17c3aee5f38061e4305e4120387657a6"
-  integrity sha512-3gACbp5FWpO6k7VP6atPOt7ibvID2BM7H5ijFqLEKhX20iLpGQeumKvJcraONNbxNQWQuBZXGvUOL5UcYnBb0g==
+"@roots/bud-support@5.0.0", "@roots/bud-support@^5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@roots/bud-support/-/bud-support-5.0.0.tgz#ef9f291f73d6b562ae8d641e4c829dc0d9a53069"
+  integrity sha512-GiwOBUFO/FdPEHNkC30BBrUSRnLM+u359VFYhIWBTX7SQLfbbzGqYJBsMoCloeu2fvYf9BWJyAu0QuT0sX/0Cw==
 
-"@roots/bud-tailwindcss@5.0.0-next.20":
-  version "5.0.0-next.20"
-  resolved "https://registry.yarnpkg.com/@roots/bud-tailwindcss/-/bud-tailwindcss-5.0.0-next.20.tgz#5b5b90ed891f033df659b31b0298e696f4275233"
-  integrity sha512-CFhyJMmdzJVYbSvrIEAgRvlJFlKecq1dmamupAsedHu++l3UckWYhwXbQ/CajGaUZkNvmGvw969PHCnQdal6oQ==
+"@roots/bud-tailwindcss@5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@roots/bud-tailwindcss/-/bud-tailwindcss-5.0.0.tgz#a710f96e2167e69804959acacf78243a551f305e"
+  integrity sha512-QCaNpmPSy/w2pySOhdNLQuCytInC+6QcTjfXHiKxBMHPVno82/cmYZd4Xk3eaCcBHnJrHwvtwNBq2egUh+ONJQ==
   dependencies:
     autoprefixer "^10.4.0"
     tslib "^2.3.1"
 
-"@roots/bud-wordpress-dependencies@5.0.0-next.20":
-  version "5.0.0-next.20"
-  resolved "https://registry.yarnpkg.com/@roots/bud-wordpress-dependencies/-/bud-wordpress-dependencies-5.0.0-next.20.tgz#ade91a31461bf492786f00fcbc8c8f05dbea1045"
-  integrity sha512-2m9rlYV5SFQWkii3mqK2f5P4tdE2zII3OYvzK7/HTJbV4P3htq1RnQOmSLTN/pp3TjuzwFom+z+p4SW0gHwk9A==
+"@roots/bud-wordpress-dependencies@5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@roots/bud-wordpress-dependencies/-/bud-wordpress-dependencies-5.0.0.tgz#b77976382f2c12a1d80bb1f51b59f5cbbf4e82aa"
+  integrity sha512-j86k0ybCpZqEXAgeW7cJqpbSrj/ygmWXAGw3CQFJ+6ir/dH1Wc3E0FlCyYaED0vJtDYrKw1MNJEfb00rsOMrsg==
   dependencies:
-    "@roots/wordpress-dependencies-webpack-plugin" "5.0.0-next.20"
+    "@roots/wordpress-dependencies-webpack-plugin" "5.0.0"
     autobind-decorator "^2.4.0"
     lodash "^4.17.21"
     tslib "^2.3.1"
 
-"@roots/bud-wordpress-externals@5.0.0-next.20":
-  version "5.0.0-next.20"
-  resolved "https://registry.yarnpkg.com/@roots/bud-wordpress-externals/-/bud-wordpress-externals-5.0.0-next.20.tgz#9807602f29ab2eb273ea3e1acfe4f72f9a31948a"
-  integrity sha512-kklTS+GOv2+uxqh7pmr+kX0v1bhr8WxZGPcgtQx9KID7S0tDN1HHRV3fiNgpMzD8p6Wmb5gPmRdAm/IlWBNzCg==
+"@roots/bud-wordpress-externals@5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@roots/bud-wordpress-externals/-/bud-wordpress-externals-5.0.0.tgz#3b68d173cbb56a3f988ca04288d58bc65347af2b"
+  integrity sha512-jOziAENinZBW3bkoBjSknSq8WAeeIXMXbiFWMRQj7/ErK4xwhccqgn4qLXIZSyl72Uu8i1cNCzuaX6h/pXNniA==
   dependencies:
-    "@roots/wordpress-externals-webpack-plugin" "5.0.0-next.20"
+    "@roots/wordpress-externals-webpack-plugin" "5.0.0"
     autobind-decorator "^2.4.0"
     tslib "^2.3.1"
 
-"@roots/bud-wordpress-manifests@5.0.0-next.20":
-  version "5.0.0-next.20"
-  resolved "https://registry.yarnpkg.com/@roots/bud-wordpress-manifests/-/bud-wordpress-manifests-5.0.0-next.20.tgz#5a81b0b118f9d745daedebf54505c406bcdb227c"
-  integrity sha512-7ydI29uvNFQuta7WezaH3TOGX57ThJ4ehBxlpCxXrxZ6i1FD6HtUs6vPcRIP7hwRG0lK3Xpjr2ZnG69wDJ0zuA==
+"@roots/bud-wordpress-manifests@5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@roots/bud-wordpress-manifests/-/bud-wordpress-manifests-5.0.0.tgz#ee10ab78379e8fcd1415926e4c2dc7bdf62e3a21"
+  integrity sha512-eV6N374JooHpew9Cww4eUXUYwfLOA8eMc0oVJTJq03eMZWs9rlpsqhCIwxyg2stvYzIGBgms0GSLghCGV3nsFg==
   dependencies:
-    "@roots/merged-manifest-webpack-plugin" "5.0.0-next.20"
+    "@roots/merged-manifest-webpack-plugin" "5.0.0"
     autobind-decorator "^2.4.0"
     tslib "^2.3.1"
 
-"@roots/bud@5.0.0-next.20":
-  version "5.0.0-next.20"
-  resolved "https://registry.yarnpkg.com/@roots/bud/-/bud-5.0.0-next.20.tgz#7f7ab9f8d509113caefa43753e4147d57a5f7648"
-  integrity sha512-tZYsLvs0HBhyvAjEVwQJPbIpjEo0/KTh+larbxDwGmjDUZybIwMHKoe+vreacBJ882QXNy0lNx4NHHiiK34QmQ==
+"@roots/bud@^5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@roots/bud/-/bud-5.0.0.tgz#51e162036f193bae45f233a2a2495d12d68fe0fc"
+  integrity sha512-jtS8YW+JkIBYcONC2RJW7HaJ9roZ4GIQQ5Vt4uvg5W3M9hdqkdmx9SQvHS1CVYQ0WMkAEi2Ypnk2rrikosl2Yg==
   dependencies:
     "@oclif/core" "^1.0.4"
-    "@roots/bud-api" "5.0.0-next.20"
-    "@roots/bud-build" "5.0.0-next.20"
-    "@roots/bud-cache" "5.0.0-next.20"
-    "@roots/bud-compiler" "5.0.0-next.20"
-    "@roots/bud-dashboard" "5.0.0-next.20"
-    "@roots/bud-extensions" "5.0.0-next.20"
-    "@roots/bud-framework" "5.0.0-next.20"
-    "@roots/bud-hooks" "5.0.0-next.20"
-    "@roots/bud-server" "5.0.0-next.20"
-    "@roots/bud-support" "5.0.0-next.20"
-    "@roots/container" "5.0.0-next.20"
-    "@roots/dependencies" "5.0.0-next.20"
+    "@roots/bud-api" "5.0.0"
+    "@roots/bud-build" "5.0.0"
+    "@roots/bud-cache" "5.0.0"
+    "@roots/bud-compiler" "5.0.0"
+    "@roots/bud-dashboard" "5.0.0"
+    "@roots/bud-extensions" "5.0.0"
+    "@roots/bud-framework" "5.0.0"
+    "@roots/bud-hooks" "5.0.0"
+    "@roots/bud-server" "5.0.0"
+    "@roots/bud-support" "5.0.0"
+    "@roots/container" "5.0.0"
+    "@roots/dependencies" "5.0.0"
     clean-webpack-plugin "^4.0.0"
     copy-webpack-plugin "^10.0.0"
     execa "5.1.1"
@@ -1381,63 +1381,63 @@
     webpack-cli "^4.9.1"
     webpack-manifest-plugin "^4.0.2"
 
-"@roots/container@5.0.0-next.20":
-  version "5.0.0-next.20"
-  resolved "https://registry.yarnpkg.com/@roots/container/-/container-5.0.0-next.20.tgz#62ea0eb30d10e16baeef91e92d26717ef318baed"
-  integrity sha512-pbLuUg2hosQJVAl+vHa3vlyqtw2brb5I/5aF16wGUGW9rodjWT01Uw1xsJzDLsHL3xu9EpXOpUXvozluijh/NA==
+"@roots/container@5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@roots/container/-/container-5.0.0.tgz#361cc6599bf6347cb3b0df7f0f5176d0799ea45b"
+  integrity sha512-LDvQhYONFZusJuHzQREqgv8BTAO3cUXvy5zGIjGt1nWkJME1CrtAK7q3tJYtMPSJ5DEQ2cOfNtBmdPEWMIKgzA==
   dependencies:
     tslib "^2.3.1"
 
-"@roots/dependencies@5.0.0-next.20":
-  version "5.0.0-next.20"
-  resolved "https://registry.yarnpkg.com/@roots/dependencies/-/dependencies-5.0.0-next.20.tgz#0762b572dea1016a19470908cd6a5219e24bd036"
-  integrity sha512-vxvxV15qR0XP52RENLalhQluxk1RSsdlQL3VDkuavAKQAqe9WdMaeIf8QSgoxlEdTMOVclxfdL6kaHkrKirjyA==
+"@roots/dependencies@5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@roots/dependencies/-/dependencies-5.0.0.tgz#02e9cd832fdef23c3b25d12027418d78134c95c0"
+  integrity sha512-EAu9uxTuE0WegwG8dhUHMQBIk9LJrdKubys9NYSxNTlq3PcyEoLTvg9pFHiQVQ9lmAAdoLNyXuUAMWccxZhlPA==
   dependencies:
     autobind-decorator "^2.4.0"
     helpful-decorators "^2.1.0"
     tslib "^2.3.1"
 
-"@roots/entrypoints-webpack-plugin@5.0.0-next.20":
-  version "5.0.0-next.20"
-  resolved "https://registry.yarnpkg.com/@roots/entrypoints-webpack-plugin/-/entrypoints-webpack-plugin-5.0.0-next.20.tgz#f6bb34162c3da457b3ec3d011b80e71869f479eb"
-  integrity sha512-euWzN5CTqxRS5GfnPqxu5B3BD2QkR4Gn/CqEgaPTYwc+CkurwuZot1EWxG+V1TcU38i5uBcYNz5S+8oqZKDqww==
+"@roots/entrypoints-webpack-plugin@5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@roots/entrypoints-webpack-plugin/-/entrypoints-webpack-plugin-5.0.0.tgz#179149653f26bdd7d4716aec80f0b11103f9b42d"
+  integrity sha512-xOEvLgJ41s6HyutyyEYfxaJzTmiV3v8ofg9gPOS/PWzo7WaQEU9oe4BDfBtofOcaXAFdGMvx9oTx12N7jyJWWg==
   dependencies:
     tslib "^2.3.1"
 
-"@roots/merged-manifest-webpack-plugin@5.0.0-next.20":
-  version "5.0.0-next.20"
-  resolved "https://registry.yarnpkg.com/@roots/merged-manifest-webpack-plugin/-/merged-manifest-webpack-plugin-5.0.0-next.20.tgz#0c162360b4325ac1b8d6e85990b41e76f02a71dc"
-  integrity sha512-SFiILoEL5b8O8IJOVSF0Q3Qa+hz0hC4Xpa9A7Fj+qc0VpvNLfuevSxhIyaosAFcpeJQWxGGDwfZYufTSQNIVtQ==
+"@roots/merged-manifest-webpack-plugin@5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@roots/merged-manifest-webpack-plugin/-/merged-manifest-webpack-plugin-5.0.0.tgz#bd84885e447dea8ed45c320070ffd46290a8d2ee"
+  integrity sha512-J33uViab8Q4/B9uVAnOh7EswJRcA2iiBn17+Yp4ddYIhaimhSrd3yGYH25GLPnl/A2zsKSn9npMGQv3G3ScvMQ==
   dependencies:
     fs-extra "^10.0.0"
     helpful-decorators "^2.1.0"
     tslib "^2.3.1"
 
-"@roots/sage@5.0.0-next.20":
-  version "5.0.0-next.20"
-  resolved "https://registry.yarnpkg.com/@roots/sage/-/sage-5.0.0-next.20.tgz#57655d23fff06324db209cebafed40a149b9d706"
-  integrity sha512-DTtZ9YgbYxFhxzoamMMVLw8AlLJaB81L8EWRDhpkh+KB9sCcLjKdULK4Q1IulCowuQ1IYnJnYzK3pxRqhpENww==
+"@roots/sage@^5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@roots/sage/-/sage-5.0.0.tgz#2db0ed22e76846390753dbc28777eb84219e22d1"
+  integrity sha512-npqJCHduWexGDkTjlUFhNqT1kjYvbjeUA8s3VWwPl1yHa6PQU8iTP4AAovPUDEozE/odA016cuUhNAiaeZgVoA==
   dependencies:
-    "@roots/bud-eslint" "5.0.0-next.20"
-    "@roots/bud-preset-wordpress" "5.0.0-next.20"
-    "@roots/bud-prettier" "5.0.0-next.20"
-    "@roots/bud-stylelint" "5.0.0-next.20"
-    "@roots/bud-support" "5.0.0-next.20"
-    "@roots/bud-tailwindcss" "5.0.0-next.20"
+    "@roots/bud-eslint" "5.0.0"
+    "@roots/bud-preset-wordpress" "5.0.0"
+    "@roots/bud-prettier" "5.0.0"
+    "@roots/bud-stylelint" "5.0.0"
+    "@roots/bud-support" "5.0.0"
+    "@roots/bud-tailwindcss" "5.0.0"
     helpful-decorators "^2.1.0"
     tslib "^2.3.1"
 
-"@roots/wordpress-dependencies-webpack-plugin@5.0.0-next.20":
-  version "5.0.0-next.20"
-  resolved "https://registry.yarnpkg.com/@roots/wordpress-dependencies-webpack-plugin/-/wordpress-dependencies-webpack-plugin-5.0.0-next.20.tgz#d06668307b80b8b2d8daeeb33cf11ecc9b10922a"
-  integrity sha512-buzTWHJj0xCIJr5f8U65LK/8it/cxY7ONE3U05X3fx9isYy49bpuBWNV4brioYuR9nTw+KSsS4wLiPmHTtdO/A==
+"@roots/wordpress-dependencies-webpack-plugin@5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@roots/wordpress-dependencies-webpack-plugin/-/wordpress-dependencies-webpack-plugin-5.0.0.tgz#b06dcefca37e3d2ed703c252cc81f338b8b272aa"
+  integrity sha512-tk5Qap3SnJxOiQdklAa+ayMEEsXhjiw0JXRxE+ByjfH1+OpQYmATJ7gGL7Dkuy7XdpJsk0oEnTPN/riNW5CI4g==
   dependencies:
     tslib "^2.3.1"
 
-"@roots/wordpress-externals-webpack-plugin@5.0.0-next.20":
-  version "5.0.0-next.20"
-  resolved "https://registry.yarnpkg.com/@roots/wordpress-externals-webpack-plugin/-/wordpress-externals-webpack-plugin-5.0.0-next.20.tgz#e15ddcb1a0b11028d7cba6474c761e99326fcbd5"
-  integrity sha512-PtJu/WsqsyYsfxYVhx+c5/1oG1ABcPaEYv6i5r9uJXMIIzCCb4a4n9wmicrtHmgoxENwhsgOQ+/VwO1R0Bc2QQ==
+"@roots/wordpress-externals-webpack-plugin@5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@roots/wordpress-externals-webpack-plugin/-/wordpress-externals-webpack-plugin-5.0.0.tgz#30c1636b8c30152566c7926ac8f07a9a921c7082"
+  integrity sha512-5JkyV69ghA1uC6JvCa9fxp5PxjQjWKdEjzjOMC1XTda0d8JBsjY/zXNHZD8l/EhOoTvgjTwbwGzfBi87+EOifQ==
   dependencies:
     tslib "^2.3.1"
 
