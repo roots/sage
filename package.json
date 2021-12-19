@@ -26,7 +26,7 @@
     "@roots/sage": "^5.0.0",
     "@wordpress/browserslist-config": "4.1.0",
     "autoprefixer": "^10.4.0",
-    "eslint": "7.32.0",
+    "eslint": "8.5.0",
     "postcss": "8.4.5",
     "postcss-import": "14.0.2",
     "postcss-nested": "5.0.6",
