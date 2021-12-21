@@ -12,6 +12,7 @@ javascript:
 - resources/scripts/**/*.js
 
 php:
+- functions.php
 - app/**/*.php
 - resources/views/**/*.php
 
