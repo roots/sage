@@ -1,0 +1,21 @@
+build:
+- .eslintrc.js
+- .prettierrc
+- .stylelintrc
+- bud.config.js
+- tsconfig.json
+
+dependencies:
+- yarn.lock
+
+javascript:
+- resources/scripts/**/*.js
+
+php:
+- functions.php
+- app/**/*.php
+- resources/views/**/*.php
+
+views:
+- index.php
+- resources/views/**/*.php
