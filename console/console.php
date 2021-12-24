@@ -14,9 +14,7 @@ $console
         $model = __DIR__.'\\..\\app\\Models\\'.$input->getArgument('name').'.php';
 
         if (!file_exists($model)) {
-            $content = "<?php \n\n use Carbon_Fields\Container; \n use Carbon_Fields\Field;";
-
-            file_put_contents($model, $content);
+            file_put_contents($model, "<?php \n\n use Carbon_Fields\Container; \n use Carbon_Fields\Field;");
         }
     });
 
