@@ -33,7 +33,7 @@
 |
 */
 
-collect(['helpers', 'setup', 'filters', 'admin', 'Models/ThemeOptions'])
+collect(['helpers', 'setup', 'filters', 'Models/ThemeOptions'])
     ->each(function ($file) {
         if (!locate_template($file = "app/{$file}.php", true, true)) {
             wp_die(

@@ -25,7 +25,6 @@ themes/your-theme-name/   # → Root of your Sage based theme
 │   ├── Models/           # → Custom fields
 │   ├── Providers/        # → Service providers
 │   ├── View/             # → View models
-│   ├── admin.php         # → Theme customizer setup
 │   ├── filters.php       # → Theme filters
 │   ├── helpers.php       # → Helper functions
 │   └── setup.php         # → Theme setup
