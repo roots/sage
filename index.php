@@ -6,7 +6,7 @@
     <?php wp_head(); ?>
   </head>
 
-  <body <?php body_class('no-js'); ?>>
+  <body <?php body_class(); ?>>
     <?php wp_body_open(); ?>
     <?php do_action('get_header'); ?>
 
