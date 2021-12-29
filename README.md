@@ -58,7 +58,6 @@ themes/your-theme-name/   # → Root of your Sage based theme
 ├── storage/              # → Storage location for cache (never edit)
 ├── style.css             # → Theme meta information
 ├── vendor/               # → Composer packages (never edit)
-└── bud.config.js         # → Bud configuration
 ```
 
 ## Theme setup
@@ -68,11 +67,10 @@ Edit `app/setup.php` to enable or disable theme features, setup navigation menus
 ## Theme development
 
 - Run `yarn` from the theme directory to install dependencies
-- Update `bud.config.js` with your local dev URL
 
 ### Build commands
 
-- `yarn dev` — Compile assets when file changes are made, start Browsersync session
+- `yarn dev` — Compile assets when file changes are made
 - `yarn build` — Compile assets for production
 
 ## Documentation
