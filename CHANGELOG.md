@@ -1,3 +1,8 @@
+### HEAD
+- Remove `config` and `bootstrap` directories ([#2839](https://github.com/roots/sage/pull/2839))
+- chore(deps): Bump roots/acorn to v2.0.0-beta.7 ([#2913](https://github.com/roots/sage/pull/2913))
+- chore(deps-dev): bump tailwindcss from 3.0.7 to 3.0.8 ([#2914](https://github.com/roots/sage/pull/2914))
+
 ### 10.0.0-beta.2: December 21st, 2021
 - chore(deps): Bump roots/acorn to v2.0.0-beta.6 ([#2911](https://github.com/roots/sage/pull/2911))
 - Remove customizer starter ([#2904](https://github.com/roots/sage/pull/2904))

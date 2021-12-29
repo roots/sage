@@ -111,7 +111,6 @@ themes/your-theme-name/   # → Root of your Sage based theme
 │       ├── layouts/      # → Base templates
 │       └── partials/     # → Partial templates
 ├── screenshot.png        # → Theme screenshot for WP admin
-├── storage/              # → Storage location for cache (never edit)
 ├── style.css             # → Theme meta information
 ├── vendor/               # → Composer packages (never edit)
 └── bud.config.js         # → Bud configuration
