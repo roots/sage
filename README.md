@@ -91,21 +91,10 @@ themes/your-theme-name/   # → Root of your Sage based theme
 ├── app/                  # → Theme PHP
 │   ├── Providers/        # → Service providers
 │   ├── View/             # → View models
-│   ├── admin.php         # → Theme customizer setup
 │   ├── filters.php       # → Theme filters
 │   ├── helpers.php       # → Helper functions
 │   └── setup.php         # → Theme setup
-├── bootstrap/            # → Acorn bootstrap
-│   ├── cache/            # → Acorn cache location (never edit)
-│   └── app.php           # → Acorn application bootloader
-├── config/               # → Config files
-│   ├── app.php           # → Application configuration
-│   ├── assets.php        # → Asset configuration
-│   ├── filesystems.php   # → Filesystems configuration
-│   ├── logging.php       # → Logging configuration
-│   └── view.php          # → View configuration
 ├── composer.json         # → Autoloading for `app/` files
-├── composer.lock         # → Composer lock file (never edit)
 ├── public/               # → Built theme assets (never edit)
 ├── functions.php         # → Theme bootloader
 ├── index.php             # → Theme template wrapper
