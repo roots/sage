@@ -92,7 +92,6 @@ themes/your-theme-name/   # → Root of your Sage based theme
 │   ├── Providers/        # → Service providers
 │   ├── View/             # → View models
 │   ├── filters.php       # → Theme filters
-│   ├── helpers.php       # → Helper functions
 │   └── setup.php         # → Theme setup
 ├── composer.json         # → Autoloading for `app/` files
 ├── public/               # → Built theme assets (never edit)
