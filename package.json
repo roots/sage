@@ -1,30 +1,22 @@
 {
   "name": "sage",
   "private": true,
-  "bud": {
-    "location": {
-      "src": "resources",
-      "dist": "public"
-    }
+  "scripts": {
+    "build": "bud build",
+    "dev": "bud dev",
+    "lint": "npm run lint:js && npm run lint:css",
+    "lint:css": "stylelint \"resources/**/*.{css,scss,vue}\"",
+    "lint:js": "eslint resources/scripts",
+    "test": "npm run lint"
   },
   "browserslist": [
     "extends @wordpress/browserslist-config"
   ],
-  "engines": {
-    "node": ">=16.0.0"
-  },
-  "scripts": {
-    "dev": "bud dev",
-    "build": "bud build",
-    "lint": "npm run lint:js && npm run lint:css",
-    "lint:js": "eslint resources/scripts",
-    "lint:css": "stylelint \"resources/**/*.{css,scss,vue}\"",
-    "test": "npm run lint"
-  },
   "devDependencies": {
     "@roots/bud": "^5.0.0",
     "@roots/sage": "^5.0.0",
     "@wordpress/browserslist-config": "4.1.0",
+    "@yarnpkg/plugin-dlx": "^3.1.1",
     "autoprefixer": "^10.4.1",
     "eslint": "7.32.0",
     "postcss": "8.4.5",
@@ -35,5 +27,15 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "tailwindcss": "^3.0.8"
-  }
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "bud": {
+    "location": {
+      "src": "resources",
+      "dist": "public"
+    }
+  },
+  "packageManager": "yarn@3.2.0-rc.9"
 }
