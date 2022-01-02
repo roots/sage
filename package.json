@@ -12,6 +12,9 @@
   "browserslist": [
     "extends @wordpress/browserslist-config"
   ],
+  "resolutions": {
+    "globby": "^11.0.0"
+  },
   "devDependencies": {
     "@roots/bud": "^5.0.0",
     "@roots/sage": "^5.0.0",
