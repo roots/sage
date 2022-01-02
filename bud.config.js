@@ -1,15 +1,14 @@
 /**
  * @typedef {import('@roots/bud').Bud} Bud
- *
- * @param {Bud} config
+ * @param   {Bud}                      config
  */
 
 module.exports = async (config) =>
   config
     /**
-     * Application entrypoints
+     * @description Application entrypoints.
      *
-     * Paths are relative to your resources directory
+     * Paths are relative to your resources directory.
      */
     .entry({
       app: ['scripts/app.js', 'styles/app.css'],
@@ -17,14 +16,13 @@ module.exports = async (config) =>
     })
 
     /**
-     * These files should be processed as part of the build
-     * even if they are not explicitly imported in application assets.
+     * @description These files should be processed as part of the build even if
+     * they are not explicitly imported in application assets.
      */
     .assets(['resources/images'])
 
     /**
-     * These files will trigger a full page reload
-     * when modified.
+     * @description These files will trigger a full page reload when modified.
      */
     .watch([
       'tailwind.config.js',
@@ -33,7 +31,7 @@ module.exports = async (config) =>
     ])
 
     /**
-     * Target URL to be proxied by the dev server.
+     * @description Target URL to be proxied by the dev server.
      *
      * This is your local dev server.
      */

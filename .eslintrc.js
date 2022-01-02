@@ -1,6 +1,6 @@
 module.exports = {
   root: true,
-  extends: ['eslint:recommended', 'plugin:react/recommended'],
+  extends: ['eslint:recommended', 'prettier', 'plugin:react/recommended'],
   globals: {
     wp: true,
   },
@@ -24,7 +24,7 @@ module.exports = {
     ecmaVersion: 2017,
     sourceType: 'module',
   },
-  plugins: ['import', 'react-hooks'],
+  plugins: ['import', 'prettier', 'jsdoc', 'react-hooks'],
   settings: {
     react: {
       version: 'detect',
@@ -36,6 +36,7 @@ module.exports = {
     ],
   },
   rules: {
+    'prettier/prettier': 'error',
     'no-console': 0,
     'comma-dangle': [
       'error',

@@ -1,0 +1,8 @@
+{
+  "recommendations": [
+    "oderwat.indent-rainbow",
+    "bmewburn.vscode-intelephense-client",
+    "esbenp.prettier-vscode",
+    "editorconfig.editorconfig"
+  ]
+}

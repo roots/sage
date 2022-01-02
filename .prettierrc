@@ -5,5 +5,13 @@
   "singleQuote": true,
   "tabWidth": 2,
   "trailingComma": "all",
-  "useTabs": false
+  "useTabs": false,
+  "jsdocDescriptionWithDot": true,
+  "tsdoc": true,
+  "plugins": ["prettier-plugin-jsdoc"],
+  "jsdocDescriptionTag": true,
+  "jsdocVerticalAlignment": true,
+  "jsdocSingleLineComment": false,
+  "jsdocSeparateReturnsFromParam": true,
+  "jsdocSpaces": 1
 }
