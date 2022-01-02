@@ -43,7 +43,7 @@ require $composer;
 |
 */
 
-collect(['helpers', 'setup', 'filters'])
+collect(['setup', 'filters'])
     ->each(function ($file) {
         if (! locate_template($file = "app/{$file}.php", true, true)) {
             wp_die(
