@@ -1,6 +1,12 @@
 {
   "name": "sage",
   "private": true,
+  "bud": {
+    "location": {
+      "src": "resources",
+      "dist": "public"
+    }
+  },
   "scripts": {
     "build": "bud build",
     "dev": "bud dev",
@@ -33,12 +39,6 @@
   },
   "engines": {
     "node": ">=16.0.0"
-  },
-  "bud": {
-    "location": {
-      "src": "resources",
-      "dist": "public"
-    }
   },
   "packageManager": "yarn@3.2.0-rc.9"
 }
