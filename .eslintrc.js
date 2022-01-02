@@ -11,7 +11,7 @@ module.exports = {
     browser: true,
     jquery: true,
   },
-  parser: 'babel-eslint',
+  parser: '@babel/eslint-parser',
   parserOptions: {
     ecmaFeatures: {
       experimentalObjectRestSpread: true,
@@ -22,6 +22,7 @@ module.exports = {
       jsx: true,
     },
     ecmaVersion: 2017,
+    requireConfigFile: false,
     sourceType: 'module',
   },
   plugins: ['import', 'react-hooks'],
