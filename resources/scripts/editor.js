@@ -1,4 +1,3 @@
-import '@wordpress/edit-post';
 import {registerBlockStyle, unregisterBlockStyle} from '@wordpress/blocks';
 
 import {domReady} from '@scripts/components';
