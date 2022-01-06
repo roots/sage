@@ -12,12 +12,12 @@
   @endif
 
   @while(have_posts()) @php(the_post())
-    @includeFirst(['partials.content-' . get_post_type(), 'partials.content'])
+    @includeFirst(['loops.content-' . get_post_type(), 'loops.content'])
   @endwhile
 
   {!! get_the_posts_navigation() !!}
 @endsection
 
 @section('sidebar')
-  @include('partials.sidebar')
+  @include('sections.sidebar')
 @endsection
