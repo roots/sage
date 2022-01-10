@@ -108,7 +108,8 @@ themes/your-theme-name/   # → Root of your Sage based theme
 │       ├── components/   # → Component templates
 │       ├── forms/        # → Form templates
 │       ├── layouts/      # → Base templates
-│       └── partials/     # → Partial templates
+│       ├── partials/     # → Partial templates
+        └── sections/     # → Section templates
 ├── screenshot.png        # → Theme screenshot for WP admin
 ├── style.css             # → Theme meta information
 ├── vendor/               # → Composer packages (never edit)
