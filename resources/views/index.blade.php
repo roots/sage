@@ -19,5 +19,5 @@
 @endsection
 
 @section('sidebar')
-  @include('partials.sidebar')
+  @include('sections.sidebar')
 @endsection

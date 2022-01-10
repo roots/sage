@@ -2,7 +2,7 @@
   {{ __('Skip to content') }}
 </a>
 
-@include('partials.header')
+@include('sections.header')
 
   <main id="main" class="main">
     @yield('content')
@@ -14,4 +14,4 @@
     </aside>
   @endif
 
-@include('partials.footer')
+@include('sections.footer')
