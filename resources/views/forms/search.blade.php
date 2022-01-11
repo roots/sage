@@ -6,16 +6,11 @@
 
     <input
       type="search"
-      class=""
       placeholder="{!! esc_attr_x('Search &hellip;', 'placeholder', 'sage') !!}"
       value="{{ get_search_query() }}"
       name="s"
     >
   </label>
 
-  <input
-    type="submit"
-    class=""
-    value="{{ esc_attr_x('Search', 'submit button', 'sage') }}"
-  >
+  <button>{{ _x('Search', 'submit button', 'sage') }}</button>
 </form>
