@@ -2054,7 +2054,7 @@ autobind-decorator@2.4.0, autobind-decorator@^2.4.0:
   resolved "https://registry.yarnpkg.com/autobind-decorator/-/autobind-decorator-2.4.0.tgz#ea9e1c98708cf3b5b356f7cf9f10f265ff18239c"
   integrity sha512-OGYhWUO72V6DafbF8PM8rm3EPbfuyMZcJhtm5/n26IDwO18pohE4eNazLoCGhPiXOCD0gEGmrbU3849QvM8bbw==
 
-autoprefixer@^10.4.0, autoprefixer@^10.4.1, autoprefixer@^10.4.2:
+autoprefixer@^10.4.0, autoprefixer@^10.4.2:
   version "10.4.2"
   resolved "https://registry.yarnpkg.com/autoprefixer/-/autoprefixer-10.4.2.tgz#25e1df09a31a9fba5c40b578936b90d35c9d4d3b"
   integrity sha512-9fOPpHKuDW1w/0EKfRmVnxTDt8166MAnLI3mgZ1JCnhNtYWxcJ6Ud5CO/AVOZi/AvFa8DY9RTy3h3+tFBlrrdQ==
@@ -2266,10 +2266,10 @@ caniuse-api@^3.0.0:
     lodash.memoize "^4.1.2"
     lodash.uniq "^4.5.0"
 
-caniuse-lite@^1.0.0, caniuse-lite@^1.0.30001286, caniuse-lite@^1.0.30001295, caniuse-lite@^1.0.30001297:
-  version "1.0.30001298"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001298.tgz#0e690039f62e91c3ea581673d716890512e7ec52"
-  integrity sha512-AcKqikjMLlvghZL/vfTHorlQsLDhGRalYf1+GmWCf5SCMziSGjRYQW/JEksj14NaYHIR6KIhrFAy0HV5C25UzQ==
+caniuse-lite@^1.0.0, caniuse-lite@^1.0.30001286, caniuse-lite@^1.0.30001297, caniuse-lite@^1.0.30001299:
+  version "1.0.30001299"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001299.tgz#d753bf6444ed401eb503cbbe17aa3e1451b5a68c"
+  integrity sha512-iujN4+x7QzqA2NCSrS5VUy+4gLmRd4xv6vbBBsmfVqTx8bLAD8097euLqQgKxSVLvxjSDcvF1T/i9ocgnUFexw==
 
 cardinal@^2.1.1:
   version "2.1.1"
@@ -2604,7 +2604,7 @@ cross-spawn@^7.0.2, cross-spawn@^7.0.3:
     shebang-command "^2.0.0"
     which "^2.0.1"
 
-css-blank-pseudo@^3.0.1:
+css-blank-pseudo@^3.0.2:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/css-blank-pseudo/-/css-blank-pseudo-3.0.2.tgz#f8660f6a48b17888a9277e53f25cc5abec1f0169"
   integrity sha512-hOb1LFjRR+8ocA071xUSmg5VslJ8NGo/I2qpUpdeAYyBVCgupS5O8SEVo4SxEMYyFBNodBkzG3T1iqW9HCXxew==
@@ -2618,10 +2618,10 @@ css-declaration-sorter@^6.0.3:
   dependencies:
     timsort "^0.3.0"
 
-css-has-pseudo@^3.0.2:
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/css-has-pseudo/-/css-has-pseudo-3.0.2.tgz#00dff8ce80757c53f260e36987f0cf32646c6911"
-  integrity sha512-L11waKbVuSf5WVrj1Qtij91OH8BN37Q3HlL+ojUUAa1Ywd53CYxJ8+0gs5cNbRXkqBwchE1Cq0cjgYjYEw24RA==
+css-has-pseudo@^3.0.3:
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/css-has-pseudo/-/css-has-pseudo-3.0.3.tgz#4824a34cb92dae7e09ea1d3fd19691b653412098"
+  integrity sha512-0gDYWEKaGacwxCqvQ3Ypg6wGdD1AztbMm5h1JsactG2hP2eiflj808QITmuWBpE7sjSEVrAlZhPTVd/nNMj/hQ==
   dependencies:
     postcss-selector-parser "^6.0.8"
 
@@ -5265,10 +5265,10 @@ postcss-color-hex-alpha@^8.0.2:
   dependencies:
     postcss-value-parser "^4.2.0"
 
-postcss-color-rebeccapurple@^7.0.1:
-  version "7.0.1"
-  resolved "https://registry.yarnpkg.com/postcss-color-rebeccapurple/-/postcss-color-rebeccapurple-7.0.1.tgz#59a9f5493dd7912079eac2aaeebccb076a6abdf8"
-  integrity sha512-uA5MAOoCwCK32VgYXWwPD3vBDDOi1oMOkLnO+U1Af6ex7JOE0xHVJqnc9w5QS+fPJ9yveXeHKVtdVqzP2WiCsQ==
+postcss-color-rebeccapurple@^7.0.2:
+  version "7.0.2"
+  resolved "https://registry.yarnpkg.com/postcss-color-rebeccapurple/-/postcss-color-rebeccapurple-7.0.2.tgz#5d397039424a58a9ca628762eb0b88a61a66e079"
+  integrity sha512-SFc3MaocHaQ6k3oZaFwH8io6MdypkUtEy/eXzXEB1vEQlO3S3oDc/FSZA8AsS04Z25RirQhlDlHLh3dn7XewWw==
   dependencies:
     postcss-value-parser "^4.2.0"
 
@@ -5294,10 +5294,10 @@ postcss-custom-media@^8.0.0:
   resolved "https://registry.yarnpkg.com/postcss-custom-media/-/postcss-custom-media-8.0.0.tgz#1be6aff8be7dc9bf1fe014bde3b71b92bb4552f1"
   integrity sha512-FvO2GzMUaTN0t1fBULDeIvxr5IvbDXcIatt6pnJghc736nqNgsGao5NT+5+WVLAQiTt6Cb3YUms0jiPaXhL//g==
 
-postcss-custom-properties@^12.0.2:
-  version "12.0.4"
-  resolved "https://registry.yarnpkg.com/postcss-custom-properties/-/postcss-custom-properties-12.0.4.tgz#5a4c76ae7e9b826f9e4555bd4e0d1999ce93b454"
-  integrity sha512-8kEK8k1cMIR0XLGyg0PtTS+dEY3iUcilbwvwr2gjxexNAgV6ADNg7rZOpdE+DOhrgZU+n4Q48jUWNxGDl0SgxQ==
+postcss-custom-properties@^12.1.2:
+  version "12.1.2"
+  resolved "https://registry.yarnpkg.com/postcss-custom-properties/-/postcss-custom-properties-12.1.2.tgz#066ecdb03779178ad60b8153755e79a2e70d17a9"
+  integrity sha512-Zvd+k66PHBYYPiXtdjNVx2l54Y9kQC7K1eUHzBND97RW/ayNxfaPOW+9NL3r0nsVbX1asPLdkDj585Wg0NBJCA==
   dependencies:
     postcss-value-parser "^4.2.0"
 
@@ -5308,10 +5308,10 @@ postcss-custom-selectors@^6.0.0:
   dependencies:
     postcss-selector-parser "^6.0.4"
 
-postcss-dir-pseudo-class@^6.0.2:
-  version "6.0.2"
-  resolved "https://registry.yarnpkg.com/postcss-dir-pseudo-class/-/postcss-dir-pseudo-class-6.0.2.tgz#ba93f17f1a3ba27e79db9d66bbc4bbd3aa902796"
-  integrity sha512-0X8kO0ICu+iuaQlXy8K9PBK1dpGpaMTqJ5P9BhEz/I9bMj0jD2/NeMpfYOeMnxhqgUfSjdZYXVWzucVtW3xvtg==
+postcss-dir-pseudo-class@^6.0.3:
+  version "6.0.3"
+  resolved "https://registry.yarnpkg.com/postcss-dir-pseudo-class/-/postcss-dir-pseudo-class-6.0.3.tgz#febfe305e75267913a53bf5094c7679f5cfa9b55"
+  integrity sha512-qiPm+CNAlgXiMf0J5IbBBEXA9l/Q5HGsNGkL3znIwT2ZFRLGY9U2fTUpa4lqCUXQOxaLimpacHeQC80BD2qbDw==
   dependencies:
     postcss-selector-parser "^6.0.8"
 
@@ -5426,10 +5426,10 @@ postcss-loader@6.2.1:
     klona "^2.0.5"
     semver "^7.3.5"
 
-postcss-logical@^5.0.2:
-  version "5.0.2"
-  resolved "https://registry.yarnpkg.com/postcss-logical/-/postcss-logical-5.0.2.tgz#a7e66c8e9880c1ac98177f5a2d6353affcb59172"
-  integrity sha512-gmhdJ5ZWYAqAI06kzhpKC3E4UddBc1dlQKi3HHYbVHTvgr8CQJW9O+SLdihrEYZ8LsqVqFe0av8RC8HcFF8ghQ==
+postcss-logical@^5.0.3:
+  version "5.0.3"
+  resolved "https://registry.yarnpkg.com/postcss-logical/-/postcss-logical-5.0.3.tgz#9934e0fb16af70adbd94217b24d2f315ceb5c2f0"
+  integrity sha512-P5NcHWYrif0vK8rgOy/T87vg0WRIj3HSknrvp1wzDbiBeoDPVmiVRmkown2eSQdpPveat/MC1ess5uhzZFVnqQ==
 
 postcss-media-minmax@^5.0.0:
   version "5.0.0"
@@ -5528,10 +5528,10 @@ postcss-nested@5.0.6:
   dependencies:
     postcss-selector-parser "^6.0.6"
 
-postcss-nesting@^10.1.1:
-  version "10.1.1"
-  resolved "https://registry.yarnpkg.com/postcss-nesting/-/postcss-nesting-10.1.1.tgz#d5574e69f66b9f44f73143ce1e161d32b917df87"
-  integrity sha512-Hs1pziyg47PBphISBWsCuSDeyNrk8xItFvT2r8F4L35Mcq0uQmz1yt+o/oq6oYkVAUlXadRXf4qH97wLKKznbA==
+postcss-nesting@^10.1.2:
+  version "10.1.2"
+  resolved "https://registry.yarnpkg.com/postcss-nesting/-/postcss-nesting-10.1.2.tgz#2e5f811b3d75602ea18a95dd445bde5297145141"
+  integrity sha512-dJGmgmsvpzKoVMtDMQQG/T6FSqs6kDtUDirIfl4KnjMCiY9/ETX8jdKyCd20swSRAbUYkaBKV20pxkzxoOXLqQ==
   dependencies:
     postcss-selector-parser "^6.0.8"
 
@@ -5627,26 +5627,26 @@ postcss-place@^7.0.3:
   dependencies:
     postcss-value-parser "^4.2.0"
 
-postcss-preset-env@7.2.0:
-  version "7.2.0"
-  resolved "https://registry.yarnpkg.com/postcss-preset-env/-/postcss-preset-env-7.2.0.tgz#5cec14807f2663667f674f436e4e39359e9d6616"
-  integrity sha512-OO8RDLrx3iPnXx8YlGgWJHwLel/NQfgJFx4dONfM2dpFJfmIKrAHhpWCtqHIaIPPPEVkGKIhzPZlT3m+xT0GKA==
+postcss-preset-env@7.2.3:
+  version "7.2.3"
+  resolved "https://registry.yarnpkg.com/postcss-preset-env/-/postcss-preset-env-7.2.3.tgz#01b9b6eea0ff16c27a3d514f10105d56363428a6"
+  integrity sha512-Ok0DhLfwrcNGrBn8sNdy1uZqWRk/9FId0GiQ39W4ILop5GHtjJs8bu1MY9isPwHInpVEPWjb4CEcEaSbBLpfwA==
   dependencies:
-    autoprefixer "^10.4.1"
+    autoprefixer "^10.4.2"
     browserslist "^4.19.1"
-    caniuse-lite "^1.0.30001295"
-    css-blank-pseudo "^3.0.1"
-    css-has-pseudo "^3.0.2"
+    caniuse-lite "^1.0.30001299"
+    css-blank-pseudo "^3.0.2"
+    css-has-pseudo "^3.0.3"
     css-prefers-color-scheme "^6.0.2"
     cssdb "^5.0.0"
     postcss-attribute-case-insensitive "^5.0.0"
     postcss-color-functional-notation "^4.2.1"
     postcss-color-hex-alpha "^8.0.2"
-    postcss-color-rebeccapurple "^7.0.1"
+    postcss-color-rebeccapurple "^7.0.2"
     postcss-custom-media "^8.0.0"
-    postcss-custom-properties "^12.0.2"
+    postcss-custom-properties "^12.1.2"
     postcss-custom-selectors "^6.0.0"
-    postcss-dir-pseudo-class "^6.0.2"
+    postcss-dir-pseudo-class "^6.0.3"
     postcss-double-position-gradients "^3.0.4"
     postcss-env-function "^4.0.4"
     postcss-focus-visible "^6.0.3"
@@ -5656,9 +5656,9 @@ postcss-preset-env@7.2.0:
     postcss-image-set-function "^4.0.4"
     postcss-initial "^4.0.1"
     postcss-lab-function "^4.0.3"
-    postcss-logical "^5.0.2"
+    postcss-logical "^5.0.3"
     postcss-media-minmax "^5.0.0"
-    postcss-nesting "^10.1.1"
+    postcss-nesting "^10.1.2"
     postcss-overflow-shorthand "^3.0.2"
     postcss-page-break "^3.0.4"
     postcss-place "^7.0.3"
