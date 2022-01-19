@@ -1,11 +1,11 @@
 /**
  * @typedef {import('@roots/bud').Bud} Bud
  *
- * @param {Bud} config
+ * @param {Bud} app
  */
 
-module.exports = async (config) =>
-  config
+module.exports = (app) =>
+  app
     /**
      * Application entrypoints
      *
@@ -20,7 +20,7 @@ module.exports = async (config) =>
      * These files should be processed as part of the build
      * even if they are not explicitly imported in application assets.
      */
-    .assets(['resources/images'])
+    .assets([app.path('src', 'images')])
 
     /**
      * These files will trigger a full page reload
@@ -37,4 +37,9 @@ module.exports = async (config) =>
      *
      * This is your local dev server.
      */
-    .proxy('http://example.test');
+    .proxy('http://example.test')
+
+    /**
+     * Public path of application assets
+     */
+    .setPublicPath('/app/themes/sage/public/');
