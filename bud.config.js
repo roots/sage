@@ -42,4 +42,4 @@ module.exports = (app) =>
     /**
      * Public path of application assets
      */
-    .setPublicPath('/app/themes/sage/public/');
+    .setPublicPath(__dirname + '/public/');
