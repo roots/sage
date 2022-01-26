@@ -1,9 +1,8 @@
 /**
- * @typedef {import('@roots/bud').Bud} Bud
+ * @typedef {import('@roots/bud').Bud} bud
  *
- * @param {Bud} app
+ * @param {bud} app
  */
-
 module.exports = (app) =>
   app
     /**
