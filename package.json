@@ -26,8 +26,11 @@
     "@roots/bud-eslint": "^5.2.0",
     "@roots/bud-postcss": "^5.2.0",
     "@roots/bud-prettier": "^5.2.0",
+    "@roots/bud-sass": "^5.2.0",
     "@roots/bud-stylelint": "^5.2.0",
     "@roots/bud-tailwindcss": "^5.2.0",
-    "@roots/sage": "^5.2.0"
+    "@roots/sage": "^5.2.0",
+    "@tsconfig/recommended": "^1.0.1",
+    "@types/wordpress__blocks": "^9.1.1"
   }
 }

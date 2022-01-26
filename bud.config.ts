@@ -1,9 +1,6 @@
-/**
- * @typedef {import('@roots/bud').Bud} bud
- *
- * @param {bud} app
- */
-module.exports = (app) =>
+import type {Bud} from '@roots/bud';
+
+export default (app: Bud) =>
   app
     /**
      * Application entrypoints
@@ -11,7 +8,7 @@ module.exports = (app) =>
      * Paths are relative to your resources directory
      */
     .entry({
-      app: ['scripts/app.js', 'styles/app.css'],
+      app: ['scripts/app.js', 'styles/app.scss'],
       editor: ['scripts/editor.js', 'styles/editor.css'],
     })
 
@@ -36,4 +33,4 @@ module.exports = (app) =>
      *
      * This is your local dev server.
      */
-    .proxy('http://example.test');
+    .proxy(new URL('http://example.test'));

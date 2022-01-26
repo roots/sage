@@ -1,0 +1,19 @@
+{
+  "extends": "@tsconfig/recommended",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "lib": ["DOM", "DOM.Iterable", "esnext"],
+    "allowJs": true,
+    "jsx": "preserve",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "paths": {
+      "@scripts/*": ["resources/scripts/*"],
+      "@styles/*": ["resources/styles/*"]
+    },
+    "strict": false,
+    "types": ["@roots/sage", "webpack", "node"]
+  },
+  "include": ["resources/types/sage.d.ts", "resources/**/*.ts"],
+  "exclude": ["public"]
+}
