@@ -1,5 +1,4 @@
 /**
- * @typedef {import('@roots/sage')} sage
  * @typedef {import('@roots/bud').Bud} bud
  *
  * @param {bud} app
