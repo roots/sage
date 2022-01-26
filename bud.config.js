@@ -37,9 +37,4 @@ module.exports = (app) =>
      *
      * This is your local dev server.
      */
-    .proxy('http://example.test')
-
-    /**
-     * Public path of application assets
-     */
-    .setPublicPath('/app/themes/sage/public/');
+    .proxy('http://example.test');
