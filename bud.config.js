@@ -1,9 +1,9 @@
 /**
- * @typedef {import('@roots/bud').Bud} Bud
+ * @typedef {import('@roots/sage')} sage
+ * @typedef {import('@roots/bud').Bud} bud
  *
- * @param {Bud} app
+ * @param {bud} app
  */
-
 module.exports = (app) =>
   app
     /**
@@ -37,9 +37,4 @@ module.exports = (app) =>
      *
      * This is your local dev server.
      */
-    .proxy('http://example.test')
-
-    /**
-     * Public path of application assets
-     */
-    .setPublicPath('/app/themes/sage/public/');
+    .proxy('http://example.test');
