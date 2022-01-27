@@ -1,5 +1,10 @@
 import {domReady} from '@scripts/components';
 
+/**
+ * @todo
+ * This import is just a check that @roots/bud-typescript is processing
+ * javascript files correctly and can be removed before merging anything
+ */
 import test from './test';
 
 /**

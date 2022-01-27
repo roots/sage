@@ -8,8 +8,8 @@ export default (app: Bud) =>
      * Paths are relative to your resources directory
      */
     .entry({
-      app: ['scripts/app.js', 'styles/app.scss'],
-      editor: ['scripts/editor.js', 'styles/editor.css'],
+      app: ['scripts/app.ts', 'styles/app.scss'],
+      editor: ['scripts/editor.ts', 'styles/editor.css'],
     })
 
     /**
