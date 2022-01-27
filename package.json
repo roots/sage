@@ -22,15 +22,15 @@
     "test": "npm run lint"
   },
   "devDependencies": {
-    "@roots/bud": "^5.2.1",
-    "@roots/bud-eslint": "^5.2.1",
-    "@roots/bud-postcss": "^5.2.1",
-    "@roots/bud-prettier": "^5.2.1",
-    "@roots/bud-sass": "^5.2.1",
-    "@roots/bud-stylelint": "^5.2.1",
-    "@roots/bud-tailwindcss": "^5.2.1",
+    "@roots/bud": "5.2.1",
+    "@roots/bud-eslint": "5.2.1",
+    "@roots/bud-postcss": "5.2.1",
+    "@roots/bud-prettier": "5.2.1",
+    "@roots/bud-sass": "5.2.1",
+    "@roots/bud-stylelint": "5.2.1",
+    "@roots/bud-tailwindcss": "5.2.1",
     "@roots/bud-typescript": "^5.2.1",
-    "@roots/sage": "^5.2.1",
-    "@types/wordpress__blocks": "^9.1.1"
+    "@roots/sage": "5.2.1",
+    "@types/wordpress__blocks": "9.1.1"
   }
 }
