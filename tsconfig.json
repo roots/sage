@@ -12,7 +12,8 @@
       "@scripts/*": ["resources/scripts/*"],
       "@styles/*": ["resources/styles/*"]
     },
-    "strict": false
+    "strict": false,
+    "types": ["webpack"]
   },
   "include": ["resources/types/sage.d.ts", "resources/**/*.ts"],
   "exclude": ["public"]
