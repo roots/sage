@@ -59,60 +59,6 @@ add_action('after_setup_theme', function () {
     ]);
 
     /**
-     * Register the editor color palette.
-     * @link https://developer.wordpress.org/block-editor/developers/themes/theme-support/#block-color-palettes
-     */
-    add_theme_support('editor-color-palette', []);
-
-    /**
-     * Register the editor color gradient presets.
-     * @link https://developer.wordpress.org/block-editor/developers/themes/theme-support/#block-gradient-presets
-     */
-    add_theme_support('editor-gradient-presets', []);
-
-    /**
-     * Register the editor font sizes.
-     * @link https://developer.wordpress.org/block-editor/developers/themes/theme-support/#block-font-sizes
-     */
-    add_theme_support('editor-font-sizes', []);
-
-    /**
-     * Register relative length units in the editor.
-     * @link https://developer.wordpress.org/block-editor/developers/themes/theme-support/#support-custom-units
-     */
-    add_theme_support('custom-units');
-
-    /**
-     * Enable support for custom line heights in the editor.
-     * @link https://developer.wordpress.org/block-editor/developers/themes/theme-support/#supporting-custom-line-heights
-     */
-    add_theme_support('custom-line-height');
-
-    /**
-     * Enable support for custom block spacing control in the editor.
-     * @link https://developer.wordpress.org/block-editor/developers/themes/theme-support/#spacing-control
-     */
-    add_theme_support('custom-spacing');
-
-    /**
-     * Disable custom colors in the editor.
-     * @link https://developer.wordpress.org/block-editor/developers/themes/theme-support/#disabling-custom-colors-in-block-color-palettes
-     */
-    add_theme_support('disable-custom-colors');
-
-    /**
-     * Disable custom color gradients in the editor.
-     * @link https://developer.wordpress.org/block-editor/developers/themes/theme-support/#disabling-custom-gradients
-     */
-    add_theme_support('disable-custom-gradients');
-
-    /**
-     * Disable custom font sizes in the editor.
-     * @link https://developer.wordpress.org/block-editor/developers/themes/theme-support/#disabling-custom-font-sizes
-     */
-    add_theme_support('disable-custom-font-sizes');
-
-    /**
      * Disable the default block patterns.
      * @link https://developer.wordpress.org/block-editor/developers/themes/theme-support/#disabling-the-default-block-patterns
      */
