@@ -23,13 +23,11 @@
 </p>
 
 <p align="center">
-  <strong>WordPress starter theme with a modern development workflow</strong>
-  <br />
-  Built with ❤️
+  <strong>WordPress starter theme with Laravel Blade components and templates, Tailwind CSS, and a modern development workflow</strong>
 </p>
 
 <p align="center">
-  <a href="https://roots.io">Official Website</a> | <a href="https://docs.roots.io/sage/10.x/installation/">Documentation</a> | <a href="CHANGELOG.md">Change Log</a>
+  <a href="https://roots.io/"><strong><code>Website</code></strong></a> &nbsp;&nbsp; <a href="https://docs.roots.io/sage/10.x/installation/"><strong><code>Documentation</code></strong></a> &nbsp;&nbsp; <a href="https://github.com/roots/sage/releases"><strong><code>Releases</code></strong></a> &nbsp;&nbsp; <a href="https://discourse.roots.io/"><strong><code>Support</code></strong></a>
 </p>
 
 ## Supporting
@@ -40,24 +38,18 @@ However, the amount of effort needed to maintain and develop new features and pr
 
 <div align="center">
 
-[![Sponsor on GitHub](https://img.shields.io/static/v1?label=sponsor&message=%E2%9D%A4&logo=GitHub)](https://github.com/sponsors/roots)
+[![Sponsor on GitHub](https://img.shields.io/static/v1?label=sponsor&message=%E2%9D%A4&logo=GitHub&style=flat-square)](https://github.com/sponsors/roots)
 [![Sponsor on Patreon](https://img.shields.io/badge/sponsor-patreon-orange.svg?style=flat-square&logo=patreon")](https://www.patreon.com/rootsdev)
 [![Donate via PayPal](https://img.shields.io/badge/donate-paypal-blue.svg?style=flat-square&logo=paypal)](https://www.paypal.me/rootsdev)
 
 </div>
-
-## About Sage
-
-Sage is a productivity-driven WordPress starter theme with a modern development workflow.
-
-**The `main` branch currently tracks Sage 10 which is in active development. Looking for Sage 9 or the latest Sage 10 beta release? [See releases](https://github.com/roots/sage/releases).**
 
 ## Features
 
 - Harness the power of [Laravel](https://laravel.com) and its available packages thanks to [Acorn](https://github.com/roots/acorn).
 - Clean, efficient theme templating utilizing [Laravel Blade](https://laravel.com/docs/master/blade).
 - Lightning fast frontend development workflow powered by [Bud](https://budjs.netlify.app/).
-- Out of the box support for [TailwindCSS](https://tailwindcss.com/).
+- Out of the box support for [Tailwind CSS](https://tailwindcss.com/).
 
 ## Requirements
 
@@ -70,6 +62,8 @@ Make sure all dependencies have been installed before moving on:
 - [Yarn](https://yarnpkg.com/en/docs/install)
 
 ## Theme installation
+
+**The `main` branch currently tracks Sage 10 which is in active development. Looking for Sage 9 or the latest Sage 10 beta release? [See releases](https://github.com/roots/sage/releases).**
 
 Install Sage using Composer from your WordPress themes directory (replace `your-theme-name` below with the name of your theme):
 
@@ -130,26 +124,18 @@ Edit `app/setup.php` to enable or disable theme features, setup navigation menus
 - `yarn dev` — Compile assets when file changes are made, start Browsersync session
 - `yarn build` — Compile assets for production
 
-## Documentation
-
-- [Sage documentation](https://docs.roots.io/sage/10.x/installation/)
-
-## Contributing
-
-Contributions are welcome from everyone. We have [contributing guidelines](https://github.com/roots/guidelines/blob/master/CONTRIBUTING.md) to help you get started.
-
 ## Sage sponsors
 
-Help support our open-source development efforts by [becoming a sponsor](https://github.com/sponsors/roots).
+Help support our open-source development efforts by [becoming a GitHub sponsor](https://github.com/sponsors/roots) or [patron](https://www.patreon.com/rootsdev).
 
-<a href="https://kinsta.com/?kaid=OFDHAJIXUDIV"><img src="https://cdn.roots.io/app/uploads/kinsta.svg" alt="Kinsta" width="200" height="150"></a> <a href="https://k-m.com/"><img src="https://cdn.roots.io/app/uploads/km-digital.svg" alt="KM Digital" width="200" height="150"></a> <a href="https://carrot.com/"><img src="https://cdn.roots.io/app/uploads/carrot.svg" alt="Carrot" width="200" height="150"></a> <a href="https://www.c21redwood.com/"><img src="https://cdn.roots.io/app/uploads/c21redwood.svg" alt="C21 Redwood Realty" width="200" height="150"></a> <a href="https://wordpress.com/"><img src="https://cdn.roots.io/app/uploads/wordpress.svg" alt="WordPress.com" width="200" height="150"></a> <a href="https://icons8.com/"><img src="https://cdn.roots.io/app/uploads/icons8.svg" alt="Icons8" width="200" height="150"></a> <a href="https://www.harnessup.com/"><img src="https://cdn.roots.io/app/uploads/harness-software.svg" alt="Harness Software" width="200" height="150"></a> <a href="https://www.airfleet.co/careers?utm_source=roots&utm_content=sage-page"><img src="https://cdn.roots.io/app/uploads/airfleet.svg" alt="Airfleet" width="200" height="150"></a> <a href="https://generodigital.com/"><img src="https://cdn.roots.io/app/uploads/genero.svg" alt="Genero" width="200" height="150"></a> <a href="https://40q.agency/"><img src="https://cdn.roots.io/app/uploads/40q.svg" alt="40Q" width="200" height="150"></a> <a href="https://pantheon.io/"><img src="https://cdn.roots.io/app/uploads/pantheon.svg" alt="Pantheon" width="200" height="150"></a>
+<a href="https://k-m.com/"><img src="https://cdn.roots.io/app/uploads/km-digital.svg" alt="KM Digital" width="200" height="150"></a> <a href="https://carrot.com/"><img src="https://cdn.roots.io/app/uploads/carrot.svg" alt="Carrot" width="200" height="150"></a> <a href="https://www.c21redwood.com/"><img src="https://cdn.roots.io/app/uploads/c21redwood.svg" alt="C21 Redwood Realty" width="200" height="150"></a> <a href="https://wordpress.com/"><img src="https://cdn.roots.io/app/uploads/wordpress.svg" alt="WordPress.com" width="200" height="150"></a> <a href="https://icons8.com/"><img src="https://cdn.roots.io/app/uploads/icons8.svg" alt="Icons8" width="200" height="150"></a> <a href="https://generodigital.com/"><img src="https://cdn.roots.io/app/uploads/genero.svg" alt="Genero" width="200" height="150"></a> <a href="https://40q.agency/"><img src="https://cdn.roots.io/app/uploads/40q.svg" alt="40Q" width="200" height="150"></a> <a href="https://pantheon.io/"><img src="https://cdn.roots.io/app/uploads/pantheon.svg" alt="Pantheon" width="200" height="150"></a>
 
 ## Community
 
 Keep track of development and community news.
 
+- Join us on Roots Slack by becoming a [GitHub sponsor](https://github.com/sponsors/roots) or [patron](https://www.patreon.com/rootsdev)
 - Participate on the [Roots Discourse](https://discourse.roots.io/)
 - Follow [@rootswp on Twitter](https://twitter.com/rootswp)
 - Read and subscribe to the [Roots Blog](https://roots.io/blog/)
 - Subscribe to the [Roots Newsletter](https://roots.io/subscribe/)
-- Listen to the [Roots Radio podcast](https://roots.io/podcast/)
