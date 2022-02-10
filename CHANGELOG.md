@@ -1,5 +1,6 @@
 ### HEAD
 
+- ⬆️ bump bud to v5.3.2 ([#2976](https://github.com/roots/sage/pull/2976))
 - ⬆️ bump roots/acorn to v2.0.0-beta.9 ([#2968](https://github.com/roots/sage/pull/2968))
 - 🔧 migrate global settings to `theme.json` ([#2964](https://github.com/roots/sage/pull/2964)) @retlehs
 - Re-add i18n related scripts/tasks ([#2958](https://github.com/roots/sage/pull/2958)) @strarsis
