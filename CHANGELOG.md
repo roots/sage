@@ -1,9 +1,21 @@
 ### HEAD
-- Remove `config` and `bootstrap` directories ([#2839](https://github.com/roots/sage/pull/2839))
-- chore(deps): Bump roots/acorn to v2.0.0-beta.7 ([#2913](https://github.com/roots/sage/pull/2913))
-- chore(deps-dev): bump tailwindcss from 3.0.7 to 3.0.8 ([#2914](https://github.com/roots/sage/pull/2914))
+
+- ⬆️ bump roots/acorn to v2.0.0-beta.9 ([#2968](https://github.com/roots/sage/pull/2968))
+- 🔧 migrate global settings to `theme.json` ([#2964](https://github.com/roots/sage/pull/2964)) @retlehs
+- Re-add i18n related scripts/tasks ([#2958](https://github.com/roots/sage/pull/2958)) @strarsis
+- chore(header): allow unescaped siteName data ([#2967](https://github.com/roots/sage/pull/2967)) @Akiletour
+- Switch to zero-config setup, remove `config` and `bootstrap` directories ([#2839](https://github.com/roots/sage/pull/2839)) @retlehs @QWp6t
+- chore: remove helpers.php ([#2917](https://github.com/roots/sage/pull/2917)) @Log1x
+- refactor: remove JavaScript detection ([#2916](https://github.com/roots/sage/pull/2916)) @knowler
+- chore(php): bump minimum PHP version to 7.4 ([#2925](https://github.com/roots/sage/pull/2925)) @knowler
+- fix: app/setup.php doesn’t need to be executable ([#2933](https://github.com/roots/sage/pull/2933)) @knowler
+- enhance(views): Move page section views to a sections directory ([#2936](https://github.com/roots/sage/pull/2936)) @retlehs @Log1x
+- fix(views): Use dot notation on entry-meta view includes ([#2941](https://github.com/roots/sage/pull/2941)) @Log1x
+- feat(search): use a button element ([#2943](https://github.com/roots/sage/pull/2943)) @knowler
+- fix(bundle-editor): remove `@wordpress/edit-post` ([#2932](https://github.com/roots/sage/pull/2932)) @retlehs
 
 ### 10.0.0-beta.2: December 21st, 2021
+
 - chore(deps): Bump roots/acorn to v2.0.0-beta.6 ([#2911](https://github.com/roots/sage/pull/2911))
 - Remove customizer starter ([#2904](https://github.com/roots/sage/pull/2904))
 - Update watch glob for views directory ([#2892](https://github.com/roots/sage/pull/2892))
