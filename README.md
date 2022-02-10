@@ -61,6 +61,17 @@ Make sure all dependencies have been installed before moving on:
 - [Node.js](http://nodejs.org/) >= 16
 - [Yarn](https://yarnpkg.com/en/docs/install)
 
+### Acorn
+
+Although Sage makes use of Acorn, it doesn't ship with it included. This is to give you the flexibility to include it in a way that works best for your environment.
+
+- **[Bedrock](https://github.com/roots/bedrock)** is the recommended way to manage your WordPress installation, themes, and plugins. If you're using Bedrock, you only need to require Acorn as a composer dependency in your Bedrock `composer.json`:
+  ```sh
+  $ composer require roots/acorn
+  ```
+- If Bedrock isn't feasible, then the next best approach is to install Acorn as an **mu-plugin**. This guarantees that it will always be available and someone won't accidentally disable it and break your site. Add the Acorn directory to your `mu-plugins` directory, and make sure you have something to load it automatically, like our [`bedrock-autoloader`](https://github.com/roots/bedrock-autoloader).
+- If neither of the preceding options is workable for you, then Acorn can always be installed as a **normal plugin** by putting the Acorn directory in your `plugins` folder. Just remember to activate it!
+
 ## Theme installation
 
 **The `main` branch currently tracks Sage 10 which is in active development. Looking for Sage 9 or the latest Sage 10 beta release? [See releases](https://github.com/roots/sage/releases).**
@@ -77,6 +88,8 @@ To install the latest development version of Sage, add `dev-main` to the end of 
 ```sh
 $ composer create-project roots/sage your-theme-name dev-main
 ```
+
+Make sure that you have Acorn installed. See the "Acorn" section above for instructions.
 
 ## Theme structure
 

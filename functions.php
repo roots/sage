@@ -29,7 +29,13 @@ require $composer;
 |
 */
 
-\Roots\bootloader();
+try {
+    \Roots\bootloader();
+} catch (Throwable $e) {
+    wp_die(
+        __('You need to install Acorn to use this theme.', 'sage')
+    );
+}
 
 /*
 |--------------------------------------------------------------------------
