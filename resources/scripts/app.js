@@ -1,4 +1,4 @@
-import {domReady} from '@scripts/components';
+import {domReady} from '@roots/sage/client';
 
 /**
  * Run the application when the DOM is ready.

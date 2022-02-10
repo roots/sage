@@ -19,7 +19,7 @@ module.exports = (app) =>
      * These files should be processed as part of the build
      * even if they are not explicitly imported in application assets.
      */
-    .assets([app.path('src', 'images')])
+    .assets(['images'])
 
     /**
      * These files will trigger a full page reload
