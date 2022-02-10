@@ -25,7 +25,7 @@
     "translate:js": "wp i18n make-json ./resources/lang --pretty-print"
   },
   "devDependencies": {
-    "@roots/bud": "^5.2.0",
+    "@roots/bud": "^5.3.1",
     "@roots/bud-eslint": "^5.2.0",
     "@roots/bud-postcss": "^5.2.0",
     "@roots/bud-prettier": "^5.2.0",
