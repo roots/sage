@@ -1,6 +1,6 @@
 import {registerBlockStyle, unregisterBlockStyle} from '@wordpress/blocks';
 
-import {domReady} from '@scripts/components';
+import {domReady} from '@roots/sage/client';
 
 /**
  * Customize block styles
