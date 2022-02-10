@@ -31,6 +31,6 @@
     "@roots/bud-prettier": "^5.2.0",
     "@roots/bud-stylelint": "^5.2.0",
     "@roots/bud-tailwindcss": "^5.2.0",
-    "@roots/sage": "^5.2.0"
+    "@roots/sage": "^5.3.1"
   }
 }
