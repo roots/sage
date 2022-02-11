@@ -42,7 +42,6 @@
     "php": "^7.4|^8.0"
   },
   "require-dev": {
-    "filp/whoops": "^2.12",
     "squizlabs/php_codesniffer": "^3.6"
   },
   "suggest": {
@@ -59,9 +58,6 @@
   "scripts": {
     "lint": [
       "phpcs --extensions=php --standard=PSR12 app"
-    ],
-    "post-autoload-dump": [
-      "Roots\\Acorn\\ComposerScripts::postAutoloadDump"
     ]
   },
   "extra": {
