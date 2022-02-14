@@ -48,7 +48,7 @@ However, the amount of effort needed to maintain and develop new features and pr
 
 - Harness the power of [Laravel](https://laravel.com) and its available packages thanks to [Acorn](https://github.com/roots/acorn).
 - Clean, efficient theme templating utilizing [Laravel Blade](https://laravel.com/docs/master/blade).
-- Lightning fast frontend development workflow powered by [Bud](https://budjs.netlify.app/).
+- Lightning fast frontend development workflow powered by [Bud](https://bud.js.org/).
 - Out of the box support for [Tailwind CSS](https://tailwindcss.com/).
 
 ## Requirements
