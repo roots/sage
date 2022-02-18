@@ -11,15 +11,15 @@ module.exports = (app) =>
      * Paths are relative to your resources directory
      */
     .entry({
-      app: ['scripts/app.js', 'styles/app.css'],
-      editor: ['scripts/editor.js', 'styles/editor.css'],
+      app: ['@scripts/app', '@styles/app'],
+      editor: ['@scripts/editor', '@styles/editor'],
     })
 
     /**
      * These files should be processed as part of the build
      * even if they are not explicitly imported in application assets.
      */
-    .assets(['images'])
+    .assets('@images')
 
     /**
      * These files will trigger a full page reload
@@ -36,4 +36,4 @@ module.exports = (app) =>
      *
      * This is your local dev server.
      */
-    .proxy('http://example.test');
+    .proxy('http://tinypixel.sabo');

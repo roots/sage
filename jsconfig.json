@@ -1,15 +1,14 @@
 {
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
-    "baseUrl": ".",
+    "jsx": "preserve",
     "lib": ["dom", "dom.iterable", "esnext"],
     "module": "commonjs",
     "moduleResolution": "node",
     "paths": {
       "@scripts/*": ["./resources/scripts/*"],
       "@styles/*": ["./resources/styles/*"]
-    },
-    "target": "es5"
+    }
   },
-  "exclude": ["./public"]
+  "exclude": ["./public", "./node_modules"]
 }
