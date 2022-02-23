@@ -21,7 +21,6 @@
   "devDependencies": {
     "@roots/bud": "0.0.0",
     "@roots/bud-eslint": "0.0.0",
-    "@roots/bud-postcss": "0.0.0",
     "@roots/bud-prettier": "0.0.0",
     "@roots/bud-stylelint": "0.0.0",
     "@roots/bud-tailwindcss": "0.0.0",
