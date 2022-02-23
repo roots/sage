@@ -1365,13 +1365,13 @@
   resolved "https://registry.npmjs.org/@roots/bud-support/-/bud-support-5.3.2.tgz#c716121f316bfea39fb50479d7d9812e81213a83"
   integrity sha512-wdzUQvNOrOHuEoOdkdyJ2V5UB1W0WoKIlzzzJPJrxEnExwApYts8jiGsRokLvc3FC8aj32o3ODfxO3rHc9e3Bg==
 
-"@roots/bud-tailwindcss@5.3.2":
-  version "5.3.2"
-  resolved "https://registry.npmjs.org/@roots/bud-tailwindcss/-/bud-tailwindcss-5.3.2.tgz#ea9e8f8740fe12ddc2e40ca95a80c9ac138269ee"
-  integrity sha512-eNwkc7zkg2zzk0bCDE8OJ9JYmAlCSLvKNB3uubNK+za/I8fhZHJskXh3UVy56NYZtdXiL+kji0dP7Qm7A+NyBg==
+"@roots/bud-tailwindcss@5.4.0":
+  version "5.4.0"
+  resolved "https://registry.yarnpkg.com/@roots/bud-tailwindcss/-/bud-tailwindcss-5.4.0.tgz#1aa9160de8af96d50853151730c584eaa0edcca3"
+  integrity sha512-kYwZTpH4+93ldVhnK3FUtIPHsEY26TAnG3svS2TnENb7dJZRL8rRvgDGU/4Skx+z/1qt8Ps4pa1Yh1/FUNRarw==
   dependencies:
     autoprefixer "^10.4.0"
-    tailwindcss "3.0.19"
+    tailwindcss "3.0.23"
     tslib "^2.3.1"
 
 "@roots/bud-wordpress-dependencies@5.3.2":
@@ -7009,10 +7009,10 @@ table@^6.8.0:
     string-width "^4.2.3"
     strip-ansi "^6.0.1"
 
-tailwindcss@3.0.19:
-  version "3.0.19"
-  resolved "https://registry.npmjs.org/tailwindcss/-/tailwindcss-3.0.19.tgz#cd789953e6762af2e80c5a3e5d6da3a975ee8215"
-  integrity sha512-rjsdfz/qZya5xQ0OVynEMETgWq1CacmftgMYeXXh6bRM5vxsNwRSbMJsCCIjq/w67om9VP/AFMolOwiE+5VKig==
+tailwindcss@3.0.23:
+  version "3.0.23"
+  resolved "https://registry.yarnpkg.com/tailwindcss/-/tailwindcss-3.0.23.tgz#c620521d53a289650872a66adfcb4129d2200d10"
+  integrity sha512-+OZOV9ubyQ6oI2BXEhzw4HrqvgcARY38xv3zKcjnWtMIZstEsXdI9xftd1iB7+RbOnj2HOEzkA0OyB5BaSxPQA==
   dependencies:
     arg "^5.0.1"
     chalk "^4.1.2"
@@ -7027,6 +7027,7 @@ tailwindcss@3.0.19:
     is-glob "^4.0.3"
     normalize-path "^3.0.0"
     object-hash "^2.2.0"
+    postcss "^8.4.6"
     postcss-js "^4.0.0"
     postcss-load-config "^3.1.0"
     postcss-nested "5.0.6"
