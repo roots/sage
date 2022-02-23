@@ -1,22 +1,27 @@
+import {domReady} from '@roots/sage/client';
 import {registerBlockStyle, unregisterBlockStyle} from '@wordpress/blocks';
 
-import {domReady} from '@roots/sage/client';
-
 /**
- * Customize block styles
+ * editor.main
  */
-domReady(() => {
+const main = (err) => {
+  if (err) {
+    // handle hmr errors
+    console.error(err);
+  }
+
   unregisterBlockStyle('core/button', 'outline');
 
   registerBlockStyle('core/button', {
     name: 'outline',
     label: 'Outline',
   });
-});
+};
 
 /**
- * Accept module updates
+ * Initialize
  *
  * @see https://webpack.js.org/api/hot-module-replacement
  */
-import.meta.webpackHot?.accept(console.error);
+domReady(main);
+import.meta.webpackHot?.accept(main);

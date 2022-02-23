@@ -22,14 +22,7 @@
     },
     "spacing": {
       "padding": true,
-      "units": [
-        "px",
-        "%",
-        "em",
-        "rem",
-        "vw",
-        "vh"
-      ]
+      "units": ["px", "%", "em", "rem", "vw", "vh"]
     },
     "typography": {
       "customFontSize": false
