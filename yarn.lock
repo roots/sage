@@ -1304,10 +1304,10 @@
     "@wordpress/browserslist-config" "4.1.0"
     tslib "2.3.1"
 
-"@roots/bud-prettier@5.3.2":
-  version "5.3.2"
-  resolved "https://registry.npmjs.org/@roots/bud-prettier/-/bud-prettier-5.3.2.tgz#8a96035611705a87d208f178ec784515846ac064"
-  integrity sha512-b1EvqwHEPwMw3VSf2GcWVqSIR+jC+CXpi0LMkVf4ggePlQEN4bXxbE3z5iWHcIUG3WiAtgPuVbXlgl+z3kAVbg==
+"@roots/bud-prettier@5.4.0":
+  version "5.4.0"
+  resolved "https://registry.yarnpkg.com/@roots/bud-prettier/-/bud-prettier-5.4.0.tgz#7ee6688874e5f1debebbff5f4d0d51b91c6be751"
+  integrity sha512-0LB14QNzR2SWtUl/RMrlt+6l37PicFgG+5Yx/YIKACIA3ZkLXs3a4oci12jSwi0ZRV5j6jdZwNzmYuF2RcPp4g==
   dependencies:
     autobind-decorator "2.4.0"
     eslint-config-prettier "^8.3.0"
