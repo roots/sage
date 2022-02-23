@@ -25,7 +25,7 @@ module.exports = async (app) => {
      * These files will trigger a full page reload
      * when modified.
      */
-    .watch(['{resources,app}**/*.php'])
+    .watch(['{resources,app}/**/*.php'])
 
     /**
      * Target URL to be proxied by the dev server.
