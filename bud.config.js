@@ -25,21 +25,17 @@ module.exports = async (app) => {
      * These files will trigger a full page reload
      * when modified.
      */
-    .watch([
-      'tailwind.config.js',
-      'resources/views/**/*.blade.php',
-      'app/View/**/*.php',
-    ])
+    .watch(['{resources,app}**/*.php'])
 
     /**
      * Target URL to be proxied by the dev server.
      *
      * This is your local dev server.
      */
-    .proxy('http://example.test')
+    .proxy('http://tinypixel.sabo')
 
     /**
      * Development URL
      */
-    .serve('http://example.test:3000');
+    .serve('http://tinypixel.sabo:3000');
 };
