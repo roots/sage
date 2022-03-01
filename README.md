@@ -64,8 +64,6 @@ Make sure all dependencies have been installed before moving on:
 
 ## Theme installation
 
-**The `main` branch currently tracks Sage 10 which is in active development. Looking for Sage 9 or the latest Sage 10 beta release? [See releases](https://github.com/roots/sage/releases).**
-
 Install Sage using Composer from your WordPress themes directory (replace `your-theme-name` below with the name of your theme):
 
 ```sh
