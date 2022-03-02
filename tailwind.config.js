@@ -5,8 +5,5 @@ module.exports = {
       colors: {},
     },
   },
-  variants: {
-    extend: {},
-  },
   plugins: [],
 };
