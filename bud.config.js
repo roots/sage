@@ -41,5 +41,15 @@ module.exports = async (app) => {
     /**
      * Development URL
      */
-    .serve('http://example.test:3000');
+    .serve('http://example.test:3000')
+
+    /**
+     * Generate a WordPress theme.json
+     */
+    .themeJson()
+
+    /**
+     * Use extended tailwind colors as theme.json color.palette
+     */
+    .useTailwindColors();
 };
