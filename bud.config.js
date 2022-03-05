@@ -25,11 +25,7 @@ module.exports = async (app) => {
      * These files will trigger a full page reload
      * when modified.
      */
-    .watch([
-      'tailwind.config.js',
-      'resources/views/**/*.blade.php',
-      'app/View/**/*.php',
-    ])
+    .watch('resources/views/**/*', 'app/**/*')
 
     /**
      * Target URL to be proxied by the dev server.
