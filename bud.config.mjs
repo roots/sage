@@ -39,5 +39,36 @@ export default async (app) => {
     /**
      * URI of the `public` directory
      */
-    .setPublicPath("/app/themes/sage/public/");
+    .setPublicPath("/app/themes/sage/public/")
+
+    /**
+     * Generate WordPress `theme.json`
+     *
+     * @note This overwrites `theme.json` on every build.
+     */
+    .themeJson({
+      color: {
+        custom: false,
+        customGradient: false,
+      },
+      custom: {
+        spacing: {},
+        typography: {
+          'font-size': {},
+          'line-height': {},
+        },
+      },
+      spacing: {
+        padding: true,
+        units: ['px', '%', 'em', 'rem', 'vw', 'vh'],
+      },
+      typography: {
+        customFontSize: false,
+      },
+    })
+
+    /**
+     * Set `theme.json` colors from `tailwind.config.js` values
+     */
+    .useTailwindColors();
 };

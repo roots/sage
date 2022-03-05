@@ -3,17 +3,15 @@
   "version": 2,
   "settings": {
     "color": {
-      "palette": [
-        {
-          "slug": "primary",
-          "color": "#525ddc",
-          "name": "Primary"
-        }
-      ],
       "custom": false,
       "customGradient": false,
-      "defaultPalette": false,
-      "defaultGradients": false
+      "palette": [
+        {
+          "name": "Primary",
+          "slug": "primary",
+          "color": "#525ddc"
+        }
+      ]
     },
     "custom": {
       "spacing": {},
