@@ -19,12 +19,12 @@
     "translate:js": "wp i18n make-json ./resources/lang --pretty-print"
   },
   "devDependencies": {
-    "@roots/bud": "5.4.0",
-    "@roots/bud-eslint": "5.4.0",
-    "@roots/bud-prettier": "5.4.0",
-    "@roots/bud-stylelint": "5.4.0",
-    "@roots/bud-tailwindcss": "5.4.0",
-    "@roots/eslint-config": "5.4.0",
-    "@roots/sage": "5.4.0"
+    "@roots/bud": "5.5.0",
+    "@roots/bud-eslint": "5.5.0",
+    "@roots/bud-prettier": "5.5.0",
+    "@roots/bud-stylelint": "5.5.0",
+    "@roots/bud-tailwindcss": "5.5.0",
+    "@roots/eslint-config": "5.5.0",
+    "@roots/sage": "5.5.0"
   }
 }
