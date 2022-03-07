@@ -41,9 +41,6 @@ jobs:
       - name: Install dependencies using Yarn
         run: yarn install --frozen-lockfile
 
-      - name: Lint scripts and styles
-        run: yarn lint
-
       - name: Build and compile assets
         run: |
           yarn build
