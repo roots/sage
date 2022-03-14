@@ -1,0 +1,18 @@
+name: Post release topic on Discourse
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: roots/discourse-topic-github-release-action@main
+      with:
+        discourse-api-key: ${{ secrets.DISCOURSE_RELEASES_API_KEY }}
+        discourse-base-url: ${{ secrets.DISCOURSE_BASE_URL }}
+        discourse-author-username: ben
+        discourse-category: 11
+        discourse-tags:
+          releases
