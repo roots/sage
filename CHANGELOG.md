@@ -1,11 +1,12 @@
-## HEAD
+## 10.1.2: March 17th, 2022
 
-* [Full changelog](https://github.com/roots/sage/compare/v10.1.1...main)
+* [Release notes](https://github.com/roots/sage/releases/tag/v10.1.2)
+* [Full changelog](https://github.com/roots/sage/compare/v10.1.1...v10.1.2)
 
 ## 10.1.1: March 9th, 2022
 
 * [Release notes](https://github.com/roots/sage/releases/tag/v10.1.1)
-* [Full changelog](https://github.com/roots/sage/compare/v10.0.0...v10.1.1)
+* [Full changelog](https://github.com/roots/sage/compare/v10.0.1...v10.1.1)
 
 ## 10.1.0: March 8th, 2022
 
