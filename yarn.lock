@@ -1062,12 +1062,12 @@
     schema-utils "^3.0.0"
     source-map "^0.7.3"
 
-"@roots/bud-api@5.6.2":
-  version "5.6.2"
-  resolved "https://registry.npmjs.org/@roots/bud-api/-/bud-api-5.6.2.tgz#c815330e578bdb8d97d3c384b5daa9f4b8744f9a"
-  integrity sha512-rq+niqqRCPS1DjQa30a4Ffnmzcxl920lxv3Fm3P3Z+L1nJexd8gj2BKcPxAQRrdU37heOZ0XvKYNepHRMqH3xA==
+"@roots/bud-api@5.7.0":
+  version "5.7.0"
+  resolved "https://registry.yarnpkg.com/@roots/bud-api/-/bud-api-5.7.0.tgz#ee8bf25d0e4b2d15f325367e3f2efd25fe0e683d"
+  integrity sha512-bG9eBu4E7RlYeP4B/1WM8uaSx4k5r/HR5p0JXXsw0rspz1UJvX/on4VAH40sJieqGBLb0PjTek9YpoFfd5ZAFg==
   dependencies:
-    "@roots/bud-support" "5.6.2"
+    "@roots/bud-support" "5.7.0"
     copy-webpack-plugin "10.2.4"
     css-minimizer-webpack-plugin "3.4.1"
     tslib "^2.3.1"
@@ -1113,20 +1113,46 @@
     url-loader "^4.1.1"
     xml-loader "^1.2.1"
 
-"@roots/bud-cache@5.6.2":
-  version "5.6.2"
-  resolved "https://registry.npmjs.org/@roots/bud-cache/-/bud-cache-5.6.2.tgz#ca2c05370e969e35bacfc5fb65c7a18baab5a47c"
-  integrity sha512-Ep8JEK9k8NvLH1csYdKolXgPiD5IDM+LQjgOnmPAPGxcizREgs/rQnPuCc3Un2VYEY5N+fLCh2V/x0+vih+ZLA==
+"@roots/bud-build@5.7.0":
+  version "5.7.0"
+  resolved "https://registry.yarnpkg.com/@roots/bud-build/-/bud-build-5.7.0.tgz#9a3792f98cf30583d04e75340c1644f661bbfec4"
+  integrity sha512-CbuW0EPAisKXk4DAxs9fLFcX7X2uGCTiQaqw5bqQZvEGoFi6QHKIskoegNdQmGsW+2aEm26yX6dfyRD1G9hVqA==
+  dependencies:
+    "@roots/bud-framework" "5.7.0"
+    "@roots/bud-support" "5.7.0"
+    autobind-decorator "^2.4.0"
+    css-loader "^6.5.1"
+    csv-loader "^3.0.3"
+    file-loader "^6.2.0"
+    html-loader "^3.0.1"
+    lodash "^4.17.21"
+    mini-css-extract-plugin "^2.4.5"
+    mini-svg-data-uri "^1.4.3"
+    pretty-format "^27.3.1"
+    remark "^14.0.2"
+    remark-html "^15.0.0"
+    remark-loader "4.0.0"
+    resolve-url-loader "^5.0.0"
+    style-loader "^3.3.1"
+    svgo "^2.8.0"
+    tslib "^2.3.1"
+    url-loader "^4.1.1"
+    xml-loader "^1.2.1"
 
-"@roots/bud-compiler@5.6.2":
-  version "5.6.2"
-  resolved "https://registry.npmjs.org/@roots/bud-compiler/-/bud-compiler-5.6.2.tgz#2dfcdb29fa7efacfaf76af482483d73cf5e2b4fb"
-  integrity sha512-tv9WM01j/oc93M8WytJuzZXIhsZCQZttn1pN8VEnmAIq9UfDBFclEyIzfaL1b+qaApxghyat+FivTaMKT6edLA==
+"@roots/bud-cache@5.7.0":
+  version "5.7.0"
+  resolved "https://registry.yarnpkg.com/@roots/bud-cache/-/bud-cache-5.7.0.tgz#553378647561353d59deef0dbfa2ea8682b9f560"
+  integrity sha512-WpZHHyb6t02I1eeVLOTV+H+XiqzIo+rD+Tx6hHpBcamwtHmfNTEyNPIprI+Haea7N1aIhYV0vxzAclJEOMczLg==
 
-"@roots/bud-dashboard@5.6.2":
-  version "5.6.2"
-  resolved "https://registry.npmjs.org/@roots/bud-dashboard/-/bud-dashboard-5.6.2.tgz#5937c31a4d28a12e141adb8a2b7a8fe519c1426f"
-  integrity sha512-U5aqITje1n3wD8gmgiF8EdivqLpcri8IdChuq1qNkdNiaVRi4ejgw4FPEpXhSwqwUxBlxAhRuZqEDjE5TAax7A==
+"@roots/bud-compiler@5.7.0":
+  version "5.7.0"
+  resolved "https://registry.yarnpkg.com/@roots/bud-compiler/-/bud-compiler-5.7.0.tgz#7c362785b7f5be0f231bf25c303d8aedce120bd8"
+  integrity sha512-9CyDAKWw0EhsFHmfalYRXQUwEWDcu//Q0ODm+bSDwGjhnQ8YYqrwMT0fO+pX8lA618PcSAMmEfHCi8Haop2g9Q==
+
+"@roots/bud-dashboard@5.7.0":
+  version "5.7.0"
+  resolved "https://registry.yarnpkg.com/@roots/bud-dashboard/-/bud-dashboard-5.7.0.tgz#dd007751a6e89cb0711bb570a3be3734cb944601"
+  integrity sha512-PfD+D0H/dYWRSnIPn31XxZsflzsAgFMo5Qi5aFvQL6mYPQes4JRzcMkBTNnTPx/erYWTfSp7dOH11/AsRaYUVw==
 
 "@roots/bud-entrypoints@5.6.2":
   version "5.6.2"
@@ -1137,10 +1163,10 @@
     autobind-decorator "^2.4.0"
     tslib "^2.3.1"
 
-"@roots/bud-extensions@5.6.2":
-  version "5.6.2"
-  resolved "https://registry.npmjs.org/@roots/bud-extensions/-/bud-extensions-5.6.2.tgz#4732c3696eec2ac7ce2aba6f9799eaccc3d6e56d"
-  integrity sha512-QO0e326yWpvDQbW7qYoJKVw3ypaK3Cc8MnM8JhI0aBOrOiNT6+Aj/WA+spzHxj8YXFPiwUH/RlPMrh6RUArFqw==
+"@roots/bud-extensions@5.7.0":
+  version "5.7.0"
+  resolved "https://registry.yarnpkg.com/@roots/bud-extensions/-/bud-extensions-5.7.0.tgz#cff3f625efcc74c58adb4f599088f5101264516b"
+  integrity sha512-0JS8pLBhUNF9k1esW5XIB0ZmcMrmZoTUJyQ+A+MpUl/XOjSNJv+ld7f3q9KlD6jNf9keJ6ZIw7jEdf0HOpyaug==
 
 "@roots/bud-framework@5.6.2":
   version "5.6.2"
@@ -1151,10 +1177,19 @@
     "@roots/container" "5.6.2"
     tslib "^2.3.1"
 
-"@roots/bud-hooks@5.6.2":
-  version "5.6.2"
-  resolved "https://registry.npmjs.org/@roots/bud-hooks/-/bud-hooks-5.6.2.tgz#df6c23c900dc273f898af483e823f0b8e0e54a59"
-  integrity sha512-1tPipz4o+oPtXA/BoaqMEOOEIPs3X6LGzeNtdcktMND2KM2a1fVRDsWWbYoq8Ad+B0FnkayNAzguhLMsJ5trDA==
+"@roots/bud-framework@5.7.0":
+  version "5.7.0"
+  resolved "https://registry.yarnpkg.com/@roots/bud-framework/-/bud-framework-5.7.0.tgz#7200a359c75a8a29541ebe3a2c1bee34a3ac9ccb"
+  integrity sha512-pER1vmDaFXDjYkqPZF3CWpcwoTeiykOAwmu94aZPa7hr0o4KMpW+R4jxA6jv8XJeomw8dvgJpiLg6Ipfg5v0jg==
+  dependencies:
+    "@roots/bud-support" "5.7.0"
+    "@roots/container" "5.7.0"
+    tslib "^2.3.1"
+
+"@roots/bud-hooks@5.7.0":
+  version "5.7.0"
+  resolved "https://registry.yarnpkg.com/@roots/bud-hooks/-/bud-hooks-5.7.0.tgz#422efbda79a14ffdfc19d98b3ca16cf3eb3e5802"
+  integrity sha512-GUM7kE+r7PgVyfsfzBwXJ4+ZZ1bMHcK4hlPJFYoH1W2Yr+9SFvXym76BTrZHot6tLRMMBhqV/phcCP8woM6/FQ==
 
 "@roots/bud-postcss@5.6.2":
   version "5.6.2"
@@ -1208,24 +1243,34 @@
     react-refresh "^0.11.0"
     tslib "2.3.1"
 
-"@roots/bud-server@5.6.2":
-  version "5.6.2"
-  resolved "https://registry.npmjs.org/@roots/bud-server/-/bud-server-5.6.2.tgz#691a1eb05f6da46fa737b944057ee03b9d2de82a"
-  integrity sha512-dZY2tyL5ba7ayoNNW0dMAQcjecQlnexq7ZIhCOqm3mi/JqjGc1vFNYEiwf3+T8XH2jN5EXz5GnMFaeGzPmgNvw==
+"@roots/bud-server@5.7.0":
+  version "5.7.0"
+  resolved "https://registry.yarnpkg.com/@roots/bud-server/-/bud-server-5.7.0.tgz#7bd31b0c76ef6bb9934130a5d15b463e48b2aa06"
+  integrity sha512-mClT/5bnISGJAuroT0k6TtEZKMej8OAogXckgapvgYgKVWkqIlviP8RzTLao4GmzCACzpznGlXZh8TAxmwQRyg==
   dependencies:
-    "@roots/bud-framework" "5.6.2"
-    "@roots/bud-support" "5.6.2"
-    "@roots/container" "5.6.2"
+    "@roots/bud-framework" "5.7.0"
+    "@roots/bud-support" "5.7.0"
+    "@roots/container" "5.7.0"
+    ansi-html-community "0.0.8"
+    cookie-parser "1.4.6"
+    cors "2.8.5"
     express "^4.17.1"
-    http-proxy-middleware "2.0.3"
+    html-entities "^2.1.0"
+    http-proxy-middleware "2.0.4"
+    querystring "^0.2.0"
+    strip-ansi "^6.0.0"
     tslib "^2.3.1"
     webpack-dev-middleware "5.3.1"
-    webpack-hot-middleware "^2.25.1"
 
 "@roots/bud-support@5.6.2":
   version "5.6.2"
   resolved "https://registry.npmjs.org/@roots/bud-support/-/bud-support-5.6.2.tgz#e183167b42486c953d2f0f0076677231605dce42"
   integrity sha512-sfkXqFYygK44JuSakaJjDKB/Nt82XGRgDGH0t+yWIF+lVVTNNUokHNRRruOVejJCl7gfPGQl/FW1zAF8R1oXXw==
+
+"@roots/bud-support@5.7.0":
+  version "5.7.0"
+  resolved "https://registry.yarnpkg.com/@roots/bud-support/-/bud-support-5.7.0.tgz#f91cfa8f5c72569e65233d1ec0e4bdf443b8113f"
+  integrity sha512-Q1vrcR0rI0xg+UbMwuVGEiTgbGqt9cn74w+44MWNCrFclW5ykH08DnL9ckg2H1eR9W6VPbw4XAd9KbOBLcEMpg==
 
 "@roots/bud-tailwindcss@5.6.2":
   version "5.6.2"
@@ -1264,23 +1309,23 @@
     autobind-decorator "^2.4.0"
     tslib "^2.3.1"
 
-"@roots/bud@5.6.2":
-  version "5.6.2"
-  resolved "https://registry.npmjs.org/@roots/bud/-/bud-5.6.2.tgz#ea0213fb78df48a5991c299eba280388062fcfc3"
-  integrity sha512-7V7uO9o4Oqb2EHJDMo5dpFr9+6Muq0QUscZnHfOWETJGtZL4NYeFelpPA3lOD4KzA4xKKxavKTiciMfwJHIjtA==
+"@roots/bud@5.7.0":
+  version "5.7.0"
+  resolved "https://registry.yarnpkg.com/@roots/bud/-/bud-5.7.0.tgz#2fe42a474ffb4ab6be7fb9855d8e1d9be99094bb"
+  integrity sha512-wGrgr09fswAu9Y59EBHgx0KfzWeMqydzoELklqntY7vOqyw9wO/OCAsKFkc9Nt9e0hpmw/mppIha1xUeOSv9Jg==
   dependencies:
-    "@roots/bud-api" "5.6.2"
-    "@roots/bud-build" "5.6.2"
-    "@roots/bud-cache" "5.6.2"
-    "@roots/bud-compiler" "5.6.2"
-    "@roots/bud-dashboard" "5.6.2"
-    "@roots/bud-extensions" "5.6.2"
-    "@roots/bud-framework" "5.6.2"
-    "@roots/bud-hooks" "5.6.2"
-    "@roots/bud-server" "5.6.2"
-    "@roots/bud-support" "5.6.2"
-    "@roots/container" "5.6.2"
-    "@roots/dependencies" "5.6.2"
+    "@roots/bud-api" "5.7.0"
+    "@roots/bud-build" "5.7.0"
+    "@roots/bud-cache" "5.7.0"
+    "@roots/bud-compiler" "5.7.0"
+    "@roots/bud-dashboard" "5.7.0"
+    "@roots/bud-extensions" "5.7.0"
+    "@roots/bud-framework" "5.7.0"
+    "@roots/bud-hooks" "5.7.0"
+    "@roots/bud-server" "5.7.0"
+    "@roots/bud-support" "5.7.0"
+    "@roots/container" "5.7.0"
+    "@roots/dependencies" "5.7.0"
     clean-webpack-plugin "^4.0.0"
     clipanion "3.2.0-rc.10"
     copy-webpack-plugin "^10.0.0"
@@ -1291,9 +1336,9 @@
     tslib "^2.3.1"
     typanion "3.7.1"
     type-fest "^2.5.4"
-    webpack "5.68.0"
+    webpack "5.70.0"
     webpack-cli "^4.9.1"
-    webpack-manifest-plugin "^4.0.2"
+    webpack-manifest-plugin "^5.0.0"
 
 "@roots/container@5.6.2":
   version "5.6.2"
@@ -1302,10 +1347,17 @@
   dependencies:
     tslib "^2.3.1"
 
-"@roots/dependencies@5.6.2":
-  version "5.6.2"
-  resolved "https://registry.npmjs.org/@roots/dependencies/-/dependencies-5.6.2.tgz#fa2ffee97722a30709a8fdf6615a2d26c845ebf8"
-  integrity sha512-dFHbwRwspBSDI3pxLREruhXDsi8308JtXemvPMeywRpTgeigS0gp2BvqIS2qX7Fuxmr1Qgfb4s/g4+WAY9ZRAA==
+"@roots/container@5.7.0":
+  version "5.7.0"
+  resolved "https://registry.yarnpkg.com/@roots/container/-/container-5.7.0.tgz#2f0f5f4e097d585c25a1804ad0cdbc75b746b104"
+  integrity sha512-YXHPZvrZ6RVsg4UQHyvaduQ2fhYIQYU1qfoqVveVNj8z0iBUXfWIus3jMMe26EO1C6SYTURE1oimmLbGC2Hkmg==
+  dependencies:
+    tslib "^2.3.1"
+
+"@roots/dependencies@5.7.0":
+  version "5.7.0"
+  resolved "https://registry.yarnpkg.com/@roots/dependencies/-/dependencies-5.7.0.tgz#a728bf80dfa1c5a4e0985b2a18c865adf9244659"
+  integrity sha512-w0srJE80xPvhq2CxxkNJ/ELA2CE3HndDKCJEFA2aylECdq8ANGGFkbmvNgUCMIsu1dID7gwALatkN29Vk2ZFcA==
   dependencies:
     autobind-decorator "^2.4.0"
     helpful-decorators "^2.1.0"
@@ -1360,10 +1412,10 @@
   dependencies:
     "@types/ms" "*"
 
-"@types/eslint-scope@^3.7.0":
-  version "3.7.1"
-  resolved "https://registry.npmjs.org/@types/eslint-scope/-/eslint-scope-3.7.1.tgz"
-  integrity sha512-SCFeogqiptms4Fg29WpOTk5nHIzfpKCemSN63ksBQYKTcXoJEmJagV+DhVmbapZzY4/5YaOV1nZwrsU79fFm1g==
+"@types/eslint-scope@^3.7.3":
+  version "3.7.3"
+  resolved "https://registry.yarnpkg.com/@types/eslint-scope/-/eslint-scope-3.7.3.tgz#125b88504b61e3c8bc6f870882003253005c3224"
+  integrity sha512-PB3ldyrcnAicT35TWPs5IcwKD8S333HMaa2VVv4+wdvebJkjWuW/xESoB8IwRcog8HYVYamb1g/R31Qv5Bx03g==
   dependencies:
     "@types/eslint" "*"
     "@types/estree" "*"
@@ -1376,10 +1428,15 @@
     "@types/estree" "*"
     "@types/json-schema" "*"
 
-"@types/estree@*", "@types/estree@^0.0.50":
+"@types/estree@*":
   version "0.0.50"
   resolved "https://registry.npmjs.org/@types/estree/-/estree-0.0.50.tgz"
   integrity sha512-C6N5s2ZFtuZRj54k2/zyRhNDjJwwcViAM3Nbm8zjBpbqAdZ00mr0CFxvSKeO8Y/e03WVFLpQMdHYVfUd6SB+Hw==
+
+"@types/estree@^0.0.51":
+  version "0.0.51"
+  resolved "https://registry.yarnpkg.com/@types/estree/-/estree-0.0.51.tgz#cfd70924a25a3fd32b218e5e420e6897e1ac4f40"
+  integrity sha512-CuPgU6f3eT/XgKKPqKd/gLZV1Xmvf1a2R5POBOGQa6uv82xpls89HU5zKeVoyR8XzHd1RGNOlQlvUe3CFkjWNQ==
 
 "@types/glob@^7.1.1":
   version "7.2.0"
@@ -2166,6 +2223,14 @@ convert-source-map@^1.7.0:
   dependencies:
     safe-buffer "~5.1.1"
 
+cookie-parser@1.4.6:
+  version "1.4.6"
+  resolved "https://registry.yarnpkg.com/cookie-parser/-/cookie-parser-1.4.6.tgz#3ac3a7d35a7a03bbc7e365073a26074824214594"
+  integrity sha512-z3IzaNjdwUC2olLIB5/ITd0/setiaFMLYiZJle7xg5Fe9KWAceil7xszYfHHBtDFYLSgJduS2Ty0P1uJdPDJeA==
+  dependencies:
+    cookie "0.4.1"
+    cookie-signature "1.0.6"
+
 cookie-signature@1.0.6:
   version "1.0.6"
   resolved "https://registry.npmjs.org/cookie-signature/-/cookie-signature-1.0.6.tgz"
@@ -2176,22 +2241,15 @@ cookie@0.4.0:
   resolved "https://registry.npmjs.org/cookie/-/cookie-0.4.0.tgz"
   integrity sha512-+Hp8fLp57wnUSt0tY0tHEXh4voZRDnoIrZPqlo3DPiI4y9lwg/jqx+1Om94/W6ZaPDOUbnjOt/99w66zk+l1Xg==
 
-copy-webpack-plugin@10.2.4:
+cookie@0.4.1:
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/cookie/-/cookie-0.4.1.tgz#afd713fe26ebd21ba95ceb61f9a8116e50a537d1"
+  integrity sha512-ZwrFkGJxUR3EIoXtO+yVE69Eb7KlixbaeAWfBQB9vVsNn/o+Yw69gBWSSDK825hQNdN+wF8zELf3dFNl/kxkUA==
+
+copy-webpack-plugin@10.2.4, copy-webpack-plugin@^10.0.0:
   version "10.2.4"
   resolved "https://registry.npmjs.org/copy-webpack-plugin/-/copy-webpack-plugin-10.2.4.tgz#6c854be3fdaae22025da34b9112ccf81c63308fe"
   integrity sha512-xFVltahqlsRcyyJqQbDY6EYTtyQZF9rf+JPjwHObLdPFMEISqkFkr7mFoVOC6BfYS/dNThyoQKvziugm+OnwBg==
-  dependencies:
-    fast-glob "^3.2.7"
-    glob-parent "^6.0.1"
-    globby "^12.0.2"
-    normalize-path "^3.0.0"
-    schema-utils "^4.0.0"
-    serialize-javascript "^6.0.0"
-
-copy-webpack-plugin@^10.0.0:
-  version "10.1.0"
-  resolved "https://registry.npmjs.org/copy-webpack-plugin/-/copy-webpack-plugin-10.1.0.tgz"
-  integrity sha512-dPGo+zoW77wiF5LlwkQcZTY7FsrSm7dmovhLDHsjYyciiJ+ZhLFt2EQbw9LRUHJ586JXN0K1A70Kbudclvt00Q==
   dependencies:
     fast-glob "^3.2.7"
     glob-parent "^6.0.1"
@@ -2212,6 +2270,14 @@ core-js-pure@^3.8.1:
   version "3.19.3"
   resolved "https://registry.npmjs.org/core-js-pure/-/core-js-pure-3.19.3.tgz"
   integrity sha512-N3JruInmCyt7EJj5mAq3csCgGYgiSqu7p7TQp2KOztr180/OAIxyIvL1FCjzgmQk/t3Yniua50Fsak7FShI9lA==
+
+cors@2.8.5:
+  version "2.8.5"
+  resolved "https://registry.yarnpkg.com/cors/-/cors-2.8.5.tgz#eac11da51592dd86b9f06f6e7ac293b3df875d29"
+  integrity sha512-KIHbLJqu73RGr/hnbrO9uBeixNGuvSQjul/jdFvS/KFSIH1hWVd1ng7zOHx+YrEfInLG7q4n6GHQ9cDtxv/P6g==
+  dependencies:
+    object-assign "^4"
+    vary "^1"
 
 cosmiconfig@^7.0.0, cosmiconfig@^7.0.1:
   version "7.0.1"
@@ -2556,10 +2622,10 @@ encodeurl@~1.0.2:
   resolved "https://registry.npmjs.org/encodeurl/-/encodeurl-1.0.2.tgz"
   integrity sha1-rT/0yG7C0CkyL1oCw6mmBslbP1k=
 
-enhanced-resolve@^5.8.3:
-  version "5.8.3"
-  resolved "https://registry.npmjs.org/enhanced-resolve/-/enhanced-resolve-5.8.3.tgz"
-  integrity sha512-EGAbGvH7j7Xt2nc0E7D99La1OiEs8LnyimkRgwExpUMScN6O+3x9tIWs7PLQZVNx4YD+00skHXPXi1yQHpAmZA==
+enhanced-resolve@^5.9.2:
+  version "5.9.2"
+  resolved "https://registry.yarnpkg.com/enhanced-resolve/-/enhanced-resolve-5.9.2.tgz#0224dcd6a43389ebfb2d55efee517e5466772dd9"
+  integrity sha512-GIm3fQfwLJ8YZx2smuHpBKkXC1yOk+OBEmKckVyL0i/ea8mqDEykK3ld5dgH1QYPNyT/lIllxV2LULnxCHaHkA==
   dependencies:
     graceful-fs "^4.2.4"
     tapable "^2.2.0"
@@ -3117,10 +3183,10 @@ http-errors@1.7.2, http-errors@~1.7.2:
     statuses ">= 1.5.0 < 2"
     toidentifier "1.0.0"
 
-http-proxy-middleware@2.0.3:
-  version "2.0.3"
-  resolved "https://registry.npmjs.org/http-proxy-middleware/-/http-proxy-middleware-2.0.3.tgz#5df04f69a89f530c2284cd71eeaa51ba52243289"
-  integrity sha512-1bloEwnrHMnCoO/Gcwbz7eSVvW50KPES01PecpagI+YLNLci4AcuKJrujW4Mc3sBLpFxMSlsLNHS5Nl/lvrTPA==
+http-proxy-middleware@2.0.4:
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/http-proxy-middleware/-/http-proxy-middleware-2.0.4.tgz#03af0f4676d172ae775cb5c33f592f40e1a4e07a"
+  integrity sha512-m/4FxX17SUvz4lJ5WPXOHDUuCwIqXLfLHs1s0uZ3oYjhoXlx9csYxaOa0ElDEJ+h8Q4iJ1s+lTMbiCa4EXIJqg==
   dependencies:
     "@types/http-proxy" "^1.17.8"
     http-proxy "^1.18.1"
@@ -4006,7 +4072,7 @@ nth-check@^2.0.1:
   dependencies:
     boolbase "^1.0.0"
 
-object-assign@^4.0.1, object-assign@^4.1.1:
+object-assign@^4, object-assign@^4.0.1, object-assign@^4.1.1:
   version "4.1.1"
   resolved "https://registry.npmjs.org/object-assign/-/object-assign-4.1.1.tgz"
   integrity sha1-IQmtx5ZYh8/AXLvUQsrIv7s2CGM=
@@ -5682,7 +5748,7 @@ uvu@^0.5.0:
     kleur "^4.0.3"
     sade "^1.7.3"
 
-vary@~1.1.2:
+vary@^1, vary@~1.1.2:
   version "1.1.2"
   resolved "https://registry.npmjs.org/vary/-/vary-1.1.2.tgz"
   integrity sha1-IpnwLG3tMNSllhsLn3RSShj2NPw=
@@ -5764,20 +5830,10 @@ webpack-dev-middleware@5.3.1:
     range-parser "^1.2.1"
     schema-utils "^4.0.0"
 
-webpack-hot-middleware@^2.25.1:
-  version "2.25.1"
-  resolved "https://registry.npmjs.org/webpack-hot-middleware/-/webpack-hot-middleware-2.25.1.tgz"
-  integrity sha512-Koh0KyU/RPYwel/khxbsDz9ibDivmUbrRuKSSQvW42KSDdO4w23WI3SkHpSUKHE76LrFnnM/L7JCrpBwu8AXYw==
-  dependencies:
-    ansi-html-community "0.0.8"
-    html-entities "^2.1.0"
-    querystring "^0.2.0"
-    strip-ansi "^6.0.0"
-
-webpack-manifest-plugin@^4.0.2:
-  version "4.0.2"
-  resolved "https://registry.npmjs.org/webpack-manifest-plugin/-/webpack-manifest-plugin-4.0.2.tgz"
-  integrity sha512-Ld6j05pRblXAVoX8xdXFDsc/s97cFnR1FOmQawhTSlp6F6aeU1Jia5aqTmDpkueaAz8g9sXpgSOqmEgVAR61Xw==
+webpack-manifest-plugin@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/webpack-manifest-plugin/-/webpack-manifest-plugin-5.0.0.tgz#084246c1f295d1b3222d36e955546433ca8df803"
+  integrity sha512-8RQfMAdc5Uw3QbCQ/CBV/AXqOR8mt03B6GJmRbhWopE8GzRfEpn+k0ZuWywxW+5QZsffhmFDY1J6ohqJo+eMuw==
   dependencies:
     tapable "^2.0.0"
     webpack-sources "^2.2.0"
@@ -5803,13 +5859,13 @@ webpack-sources@^3.2.3:
   resolved "https://registry.npmjs.org/webpack-sources/-/webpack-sources-3.2.3.tgz#2d4daab8451fd4b240cc27055ff6a0c2ccea0cde"
   integrity sha512-/DyMEOrDgLKKIG0fmvtz+4dUX/3Ghozwgm6iPp8KRhvn+eQf9+Q7GWxVNMk3+uCPWfdXYC4ExGBckIXdFEfH1w==
 
-webpack@5.68.0:
-  version "5.68.0"
-  resolved "https://registry.npmjs.org/webpack/-/webpack-5.68.0.tgz#a653a58ed44280062e47257f260117e4be90d560"
-  integrity sha512-zUcqaUO0772UuuW2bzaES2Zjlm/y3kRBQDVFVCge+s2Y8mwuUTdperGaAv65/NtRL/1zanpSJOq/MD8u61vo6g==
+webpack@5.70.0:
+  version "5.70.0"
+  resolved "https://registry.yarnpkg.com/webpack/-/webpack-5.70.0.tgz#3461e6287a72b5e6e2f4872700bc8de0d7500e6d"
+  integrity sha512-ZMWWy8CeuTTjCxbeaQI21xSswseF2oNOwc70QSKNePvmxE7XW36i7vpBMYZFAUHPwQiEbNGCEYIOOlyRbdGmxw==
   dependencies:
-    "@types/eslint-scope" "^3.7.0"
-    "@types/estree" "^0.0.50"
+    "@types/eslint-scope" "^3.7.3"
+    "@types/estree" "^0.0.51"
     "@webassemblyjs/ast" "1.11.1"
     "@webassemblyjs/wasm-edit" "1.11.1"
     "@webassemblyjs/wasm-parser" "1.11.1"
@@ -5817,7 +5873,7 @@ webpack@5.68.0:
     acorn-import-assertions "^1.7.6"
     browserslist "^4.14.5"
     chrome-trace-event "^1.0.2"
-    enhanced-resolve "^5.8.3"
+    enhanced-resolve "^5.9.2"
     es-module-lexer "^0.9.0"
     eslint-scope "5.1.1"
     events "^3.2.0"
