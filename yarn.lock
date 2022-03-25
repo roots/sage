@@ -1231,10 +1231,10 @@
   resolved "https://registry.yarnpkg.com/@roots/bud-support/-/bud-support-5.7.0.tgz#f91cfa8f5c72569e65233d1ec0e4bdf443b8113f"
   integrity sha512-Q1vrcR0rI0xg+UbMwuVGEiTgbGqt9cn74w+44MWNCrFclW5ykH08DnL9ckg2H1eR9W6VPbw4XAd9KbOBLcEMpg==
 
-"@roots/bud-tailwindcss@5.6.2":
-  version "5.6.2"
-  resolved "https://registry.npmjs.org/@roots/bud-tailwindcss/-/bud-tailwindcss-5.6.2.tgz#f16cf87452aba237f909270d3754f9821d8f7b55"
-  integrity sha512-4hZB8UrZx4iPAOuLoFwe3L410PiWJB0B9IW4+DUeSXr3nbYXRGON8yh66bVDqTeYM4J5tGqrrNJipaBDDnrnzA==
+"@roots/bud-tailwindcss@5.7.0":
+  version "5.7.0"
+  resolved "https://registry.yarnpkg.com/@roots/bud-tailwindcss/-/bud-tailwindcss-5.7.0.tgz#3c5b49af9fb98544c0c089c2e63907945b24569e"
+  integrity sha512-QWweebzTBoLmap2cBw9gJeoUIsxJwXnpTXVAiKF7ibmVnQjO4wIu4FGBW5LEMGxm8zpR7urSMOuCUzGbY2YB3w==
   dependencies:
     autoprefixer "^10.4.0"
     tailwindcss "3.0.23"
