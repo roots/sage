@@ -30,5 +30,6 @@ module.exports = async (app) => {
     /**
      * Bud dev server configuration
      */
+    .proxy('http://example.test')
     .serve('http://0.0.0.0:3000');
 };
