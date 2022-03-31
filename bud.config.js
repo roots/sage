@@ -28,8 +28,14 @@ module.exports = async (app) => {
     .watch('resources/views/**/*', 'app/**/*')
 
     /**
-     * Bud dev server configuration
+     * Target URL to be proxied by the dev server.
+     *
+     * This should be the URL you use to visit your local development server.
      */
-    .proxy('http://example.test')
-    .serve('http://0.0.0.0:3000');
+     .proxy('http://example.test')
+
+     /**
+      * Development URL to be used in the browser.
+      */
+     .serve('http://0.0.0.0:3000');
 };
