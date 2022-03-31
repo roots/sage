@@ -30,12 +30,12 @@ module.exports = async (app) => {
     /**
      * Target URL to be proxied by the dev server.
      *
-     * This is your local dev server.
+     * This should be the URL you use to visit your local development server.
      */
     .proxy('http://example.test')
 
     /**
-     * Development URL
+     * Development URL to be used in the browser.
      */
-    .serve('http://example.test:3000');
+    .serve('http://0.0.0.0:3000');
 };
