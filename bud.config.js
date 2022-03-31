@@ -34,8 +34,8 @@ module.exports = async (app) => {
      */
     .proxy('http://example.test')
 
-     /**
-      * Development URL to be used in the browser.
-      */
+    /**
+     * Development URL to be used in the browser.
+     */
     .serve('http://0.0.0.0:3000');
 };
