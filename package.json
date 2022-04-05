@@ -15,8 +15,8 @@
     "translate:js": "wp i18n make-json ./resources/lang --pretty-print"
   },
   "devDependencies": {
-    "@roots/bud": "5.7.6",
-    "@roots/bud-tailwindcss": "5.7.6",
-    "@roots/sage": "5.7.6"
+    "@roots/bud": "5.7.7",
+    "@roots/bud-tailwindcss": "5.7.7",
+    "@roots/sage": "5.7.7"
   }
 }
