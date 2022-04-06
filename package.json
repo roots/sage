@@ -10,7 +10,7 @@
   "scripts": {
     "dev": "bud dev",
     "build": "bud build",
-    "translate": "npm run translate:pot && npm run translate:update",
+    "translate": "yarn translate:pot && yarn translate:update",
     "translate:pot": "wp i18n make-pot . ./resources/lang/sage.pot --include=\"app,resources\"",
     "translate:update": "for filename in ./resources/lang/*.po; do msgmerge -U $filename ./resources/lang/sage.pot; done; rm -f ./resources/lang/*.po~",
     "translate:compile": "npm run translate:mo && npm run translate:js",
