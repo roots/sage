@@ -1,0 +1,17 @@
+{
+  "baseBranches": ["main"],
+  "commitMessageAction": "Bump",
+  "commitMessageTopic": "📦 update {{depName}}",
+  "extends": ["config:base", "schedule:daily"],
+  "packageRules": [
+    {
+      "automerge": true,
+      "matchUpdateTypes": ["minor", "patch", "pin"]
+    },
+    {
+      "groupName": "roots",
+      "matchPackagePrefixes": ["@roots/"]
+    }
+  ],
+  "timezone": "America/Los_Angeles"
+}
