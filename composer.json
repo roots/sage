@@ -39,7 +39,8 @@
     }
   },
   "require": {
-    "php": "^7.4|^8.0"
+    "php": "^7.4|^8.0",
+    "roots/acorn": "^2.0"
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "^3.6"
