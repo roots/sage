@@ -37,5 +37,10 @@ module.exports = async (app) => {
     /**
      * Development URL to be used in the browser.
      */
-    .serve('http://0.0.0.0:3000');
+    .serve('http://0.0.0.0:3000')
+
+    /**
+     * Relative path to the public directory.
+     */
+    .setPublicPath('/app/themes/sage/public/');
 };
