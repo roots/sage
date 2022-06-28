@@ -1,11 +1,10 @@
 {
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
-    "baseUrl": "./resources",
+    "baseUrl": "resources",
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
-    "module": "ESNext",
+    "module": "esnext",
     "moduleResolution": "node",
-    "target": "ES5",
     "jsx": "preserve",
     "paths": {
       "@fonts/*": ["fonts/*"],
@@ -13,8 +12,8 @@
       "@scripts/*": ["scripts/*"],
       "@styles/*": ["styles/*"]
     },
-    "types": ["@roots/bud", "@roots/sage"]
+    "target": "es5"
   },
-  "include": ["./bud.config.mjs", "./resources/**/*"],
-  "exclude": ["./public"]
+  "include": ["bud.config.mjs", "resources"],
+  "exclude": ["public"]
 }

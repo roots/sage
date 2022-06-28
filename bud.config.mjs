@@ -16,8 +16,6 @@ export default async (app) => {
       editor: ["@scripts/editor", "@styles/editor"],
     })
 
-    .entry(62)
-
     /**
      * Directory contents to be included in the compilation
      */
