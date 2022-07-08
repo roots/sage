@@ -11,7 +11,7 @@
     "dev": "bud dev",
     "build": "bud build",
     "translate": "yarn translate:pot && yarn translate:update",
-    "translate:pot": "wp i18n make-pot . ./resources/lang/sage.pot --include=\"app,resources\"",
+    "translate:pot": "wp i18n make-pot . ./resources/lang/sage.pot --include=\"theme.json,app,resources\"",
     "translate:update": "for filename in ./resources/lang/*.po; do msgmerge -U $filename ./resources/lang/sage.pot; done; rm -f ./resources/lang/*.po~",
     "translate:compile": "yarn translate:mo && yarn translate:js",
     "translate:js": "wp i18n make-json ./resources/lang --pretty-print",
