@@ -19,7 +19,7 @@ jobs:
 
     steps:
       - name: Checkout the project
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Setup the Node ${{ matrix.node }} environment on ${{ runner.os }}
         uses: actions/setup-node@v2
@@ -57,7 +57,7 @@ jobs:
 
     steps:
       - name: Checkout the project
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Setup the PHP ${{ matrix.php }} environment on ${{ runner.os }}
         uses: shivammathur/setup-php@v2
