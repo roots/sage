@@ -2,7 +2,7 @@
   "name": "sage",
   "private": true,
   "browserslist": [
-    "extends @wordpress/browserslist-config"
+    "extends @roots/browserslist-config/current"
   ],
   "engines": {
     "node": ">=16.0.0"
@@ -18,8 +18,8 @@
     "translate:mo": "wp i18n make-mo ./resources/lang ./resources/lang"
   },
   "devDependencies": {
-    "@roots/bud": "6.2.0",
-    "@roots/bud-tailwindcss": "6.2.0",
-    "@roots/sage": "6.2.0"
+    "@roots/bud": "6.3.1",
+    "@roots/bud-tailwindcss": "6.3.1",
+    "@roots/sage": "6.3.1"
   }
 }
