@@ -34,6 +34,7 @@ add_action('enqueue_block_editor_assets', function () {
 add_action('after_setup_theme', function () {
     /**
      * Enable features from the Soil plugin if activated.
+     *
      * @link https://roots.io/plugins/soil/
      */
     add_theme_support('soil', [
@@ -52,6 +53,7 @@ add_action('after_setup_theme', function () {
 
     /**
      * Register the navigation menus.
+     *
      * @link https://developer.wordpress.org/reference/functions/register_nav_menus/
      */
     register_nav_menus([
@@ -60,30 +62,35 @@ add_action('after_setup_theme', function () {
 
     /**
      * Disable the default block patterns.
+     *
      * @link https://developer.wordpress.org/block-editor/developers/themes/theme-support/#disabling-the-default-block-patterns
      */
     remove_theme_support('core-block-patterns');
 
     /**
      * Enable plugins to manage the document title.
+     *
      * @link https://developer.wordpress.org/reference/functions/add_theme_support/#title-tag
      */
     add_theme_support('title-tag');
 
     /**
      * Enable post thumbnail support.
+     *
      * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
      */
     add_theme_support('post-thumbnails');
 
     /**
      * Enable responsive embed support.
+     *
      * @link https://wordpress.org/gutenberg/handbook/designers-developers/developers/themes/theme-support/#responsive-embedded-content
      */
     add_theme_support('responsive-embeds');
 
     /**
      * Enable HTML5 markup support.
+     *
      * @link https://developer.wordpress.org/reference/functions/add_theme_support/#html5
      */
     add_theme_support('html5', [
@@ -98,6 +105,7 @@ add_action('after_setup_theme', function () {
 
     /**
      * Enable selective refresh for widgets in customizer.
+     *
      * @link https://developer.wordpress.org/themes/advanced-topics/customizer-api/#theme-support-in-sidebars
      */
     add_theme_support('customize-selective-refresh-widgets');
