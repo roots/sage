@@ -1,14 +1,19 @@
 {
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
-    "jsx": "preserve",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "module": "commonjs",
+    "baseUrl": "resources",
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "module": "esnext",
     "moduleResolution": "node",
+    "jsx": "preserve",
     "paths": {
-      "@scripts/*": ["./resources/scripts/*"],
-      "@styles/*": ["./resources/styles/*"]
-    }
+      "@fonts/*": ["fonts/*"],
+      "@images/*": ["images/*"],
+      "@scripts/*": ["scripts/*"],
+      "@styles/*": ["styles/*"]
+    },
+    "target": "es5"
   },
-  "exclude": ["./public", "./node_modules"]
+  "include": ["bud.config.mjs", "resources"],
+  "exclude": ["public"]
 }
