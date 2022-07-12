@@ -2,7 +2,7 @@
   "name": "sage",
   "private": true,
   "browserslist": [
-    "extends @wordpress/browserslist-config"
+    "extends @roots/browserslist-config/current"
   ],
   "engines": {
     "node": ">=16.0.0"
