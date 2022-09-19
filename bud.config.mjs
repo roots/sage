@@ -3,7 +3,7 @@
 /**
  * Build configuration
  *
- * @see {@link https://bud.js.org/guides/getting-started/configure}
+ * @see {@link https://bud.js.org/guides/configure}
  * @param {import('@roots/bud').Bud} app
  */
 export default async (app) => {
