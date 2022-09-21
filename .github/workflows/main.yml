@@ -9,6 +9,27 @@ on:
       - main
 
 jobs:
+  format:
+    name: Formatting
+    runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, '[ci skip]')"
+    steps:
+      - name: Checkout the project
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.head_ref }}
+
+      - name: Run Laravel Pint
+        uses: aglipanci/laravel-pint-action@1.0.0
+        with:
+          preset: laravel
+
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: 🎨 Run Pint
+          skip_fetch: true
+
   node:
     name: Node ${{ matrix.node }}
     runs-on: ubuntu-latest
