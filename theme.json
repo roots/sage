@@ -1,17 +1,13 @@
 {
+  "__generated__": "⚠️ This file is generated. Do not edit.",
   "$schema": "https://schemas.wp.org/trunk/theme.json",
   "version": 2,
   "settings": {
     "color": {
       "custom": false,
       "customGradient": false,
-      "palette": [
-        {
-          "name": "Primary",
-          "slug": "primary",
-          "color": "#525ddc"
-        }
-      ]
+      "defaultPalette": false,
+      "defaultGradients": false
     },
     "custom": {
       "spacing": {},
@@ -22,7 +18,14 @@
     },
     "spacing": {
       "padding": true,
-      "units": ["px", "%", "em", "rem", "vw", "vh"]
+      "units": [
+        "px",
+        "%",
+        "em",
+        "rem",
+        "vw",
+        "vh"
+      ]
     },
     "typography": {
       "customFontSize": false

@@ -46,31 +46,31 @@ export default async (app) => {
      *
      * @note This overwrites `theme.json` on every build.
      */
-    .themeJson({
-      color: {
-        custom: false,
-        customGradient: false,
-        defaultPalette: false,
-        defaultGradients: false,
-      },
-      custom: {
-        spacing: {},
-        typography: {
-          'font-size': {},
-          'line-height': {},
+    .wpjson
+      .useTailwindColors()
+      .useTailwindFontFamily()
+      .useTailwindFontSize()
+      .settings({
+        color: {
+          custom: false,
+          customGradient: false,
+          defaultPalette: false,
+          defaultGradients: false,
         },
-      },
-      spacing: {
-        padding: true,
-        units: ['px', '%', 'em', 'rem', 'vw', 'vh'],
-      },
-      typography: {
-        customFontSize: false,
-      },
-    })
-
-    /**
-     * Set `theme.json` colors from `tailwind.config.js` values
-     */
-    .useTailwindColors();
+        custom: {
+          spacing: {},
+          typography: {
+            'font-size': {},
+            'line-height': {},
+          },
+        },
+        spacing: {
+          padding: true,
+          units: ['px', '%', 'em', 'rem', 'vw', 'vh'],
+        },
+        typography: {
+          customFontSize: false,
+        },
+      })
+      .enable()
 };
