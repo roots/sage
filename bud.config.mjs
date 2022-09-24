@@ -47,9 +47,6 @@ export default async (app) => {
      * @note This overwrites `theme.json` on every build.
      */
     .wpjson
-      .useTailwindColors()
-      .useTailwindFontFamily()
-      .useTailwindFontSize()
       .settings({
         color: {
           custom: false,
@@ -72,5 +69,8 @@ export default async (app) => {
           customFontSize: false,
         },
       })
+      .useTailwindColors()
+      .useTailwindFontFamily()
+      .useTailwindFontSize()
       .enable()
 };
