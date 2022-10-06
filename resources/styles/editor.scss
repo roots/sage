@@ -1,0 +1,22 @@
+/**
+ * Editor
+ */
+
+/** Config */
+@import 'config';
+
+@import '~bootstrap/scss/functions';
+@import '~bootstrap/scss/variables';
+@import '~bootstrap/scss/mixins';
+
+.editor-styles-wrapper > * {
+  /** Common */
+  @import 'common';
+
+  /** Components */
+  @import 'components';
+
+  /** Partials */
+  @import 'partials';
+}
+

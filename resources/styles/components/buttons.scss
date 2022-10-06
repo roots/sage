@@ -1,0 +1,31 @@
+/**
+ * Buttons
+ */
+
+@each $color-name,
+$color-value in $theme-colors {
+  .btn-#{$color-name} {
+    @include button-variant($color-value, $color-value);
+  }
+
+  .btn-outline-#{$color-name} {
+    @include button-outline-variant($color-value);
+  }
+}
+
+.wp-block-button {
+
+  .wp-block-button__link {
+    @extend .fw-bold, .px-5, .py-3;
+  }
+
+  &.is-style-btn-red {
+    .wp-block-button__link {
+      @extend .text-white, .bg-red;
+
+      &:hover {
+        @extend .bg-white, .border;
+      }
+    }
+  }
+}

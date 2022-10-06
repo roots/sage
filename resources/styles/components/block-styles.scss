@@ -1,0 +1,7 @@
+.is-style-full-width-container-group {
+  @extend .container-fluid, .px-0;
+}
+
+.is-style-container-group {
+  @extend .container;
+}

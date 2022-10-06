@@ -1,0 +1,50 @@
+// Bootstrap pagination
+.pagination {
+  @extend .mx-auto, .align-items-center, .justify-content-center;
+
+  text-align: center;
+  .page-item {
+    border-radius: 0;
+  }
+  .page-link {
+    font-size: 1.25rem;
+    position: relative;
+    display: block;
+    padding: 0.5rem 0.75rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    color: $body-color;
+    background-color: #fff;
+    border: none;
+    border-radius: 0!important;
+
+    &.current {
+      @extend .border, .border-danger, .border-2;
+      color: $body-color;
+      background-color: white;
+      text-decoration: none;
+      border-radius: 0!important;
+    }
+
+    &.prev, 
+    &.next {
+      font-size: 3rem;
+      line-height: 3rem;
+      top: -2px;
+      opacity: 0.7;
+      transition: opacity 0.25s ease;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+
+  .page-item.active & {
+    // @extend .fw-bold;
+
+    // color: theme-color('primary');
+    // background-color: white;
+    // border-color: none;
+  }
+}
