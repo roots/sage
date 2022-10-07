@@ -2,33 +2,23 @@
  * Variables
  */
 
-// Import Bootstrap functions
-@import '~bootstrap/scss/functions';
+$primary: #0074d9;
+$secondary: #aa41e6;
+$danger: #ff4136;
 
 // Colors
 $theme-colors: (
-  'primary': #036,
-  'secondary': #0098ca,
-  'third': #b9906b,
-  'fourth': #6991b0,
-  'blue': #48b8e7,
-  'yellow': #f3e564,
-  'green' : #73c92d,
-  'navy' : #022160,
-  'gray' : #615d59,
-  'periwinkle': #eaedf6,
-  'white': #fff,
-  'black': #000,
-  'dark-blue' : #263b77,
-  'light-gray' : #f7f7f7,
-  'border-gray' : #e9e9e9,
-  'border-blue' : #a5bdcf,
-  'text-blue' : #1b4766,
-  'text-gray' : #3d3d3d,
-  'text-dark' : #2b231d
+  "primary": $primary,
+  "secondary": $secondary,
+  "danger": $danger,
 );
-
-$black: #000;
+$custom-colors: (
+  'periwinkle': #eaedf6,
+  'dark-blue' : #263b77,
+  'light-gray' : #f7f7f7
+);
+// Merge the maps
+$theme-colors: map-merge($theme-colors, $custom-colors);
 
 // Shadows
 $shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
@@ -38,16 +28,14 @@ $enable-gradients: true;
 $gradient: linear-gradient(180deg, rgba(map-get($theme-colors, 'primary'), 0.15), rgba(map-get($theme-colors, 'secondary'), 0));
 
 // Global Variables
-$body-color: $black;
 $link-color: map-get($theme-colors, 'primary');
 $link-hover-decoration: none;
 $spacer: 1rem;
 $border-radius: 0;
-$enable-transitions: true !default;
+
 $transition-base: all 0.2s ease-in-out;
 
 // Typography
-$enable-responsive-font-sizes: true;
 $font-size-base: 1rem !default;
 
 // Fonts
@@ -65,7 +53,7 @@ $h5-font-size: $font-size-base * 1.125; //18px
 $h6-font-size: $font-size-base * 1; //16px
 
 // Headings Styles
-$headings-margin-bottom: $spacer / 2 !default;
+$headings-margin-bottom: calc($spacer / 2) !default;
 $headings-font-family: $font-family-base;
 $headings-line-height: 1.8;
 
@@ -74,14 +62,14 @@ $lead-font-size: $font-size-base * 1.5; //24px
 $lead-font-weight: 500;
 
 //Input & Button
-$input-btn-padding-y: $spacer*0.8;
+$input-btn-padding-y: $spacer * 0.8;
 $input-btn-padding-x: 0.75rem !default;
 
 // Button
 $input-btn-font-family: $font-family-base;
-$input-btn-font-size: $h5-font-size;
+$input-btn-font-size: $font-size-base;
 $btn-border-width: 2px;
-$btn-width: $spacer*14;
+$btn-width: $spacer * 14;
 $btn-font-weight: 600;
 $btn-font-size: 1rem !important;
 $btn-link-hover-color: map-get($theme-colors, 'grey-700');
@@ -92,8 +80,8 @@ $btn-border-radius-lg: 0;
 // Navigation
 $hamburger-padding-x: 0;
 $hamburger-padding-y: 0;
-$hamburger-layer-width: $spacer*1.5;
-$hamburger-layer-height: $spacer*0.175;
-$hamburger-layer-spacing: $spacer*0.25;
+$hamburger-layer-width: $spacer * 1.5;
+$hamburger-layer-height: $spacer * 0.175;
+$hamburger-layer-spacing: $spacer * 0.25;
 $hamburger-layer-color: map-get($theme-colors, 'primary');
 $hamburger-types: (spin, arrow);

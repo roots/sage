@@ -38,8 +38,67 @@
       "App\\": "app/"
     }
   },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://wpackagist.org",
+      "only": ["wpackagist-plugin/*", "wpackagist-theme/*"]
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "advanced-custom-fields/advanced-custom-fields-pro",
+        "version": "6.0.2",
+        "type": "wordpress-muplugin",
+        "dist": {
+          "type": "zip",
+          "url": "https://connect.advancedcustomfields.com/index.php?a=download&p=pro&k={%ACF_PRO_KEY}&t={%version}"
+        },
+        "require": {
+          "composer/installers": "^1.8",
+          "ffraenz/private-composer-installer": "^5.0.1"
+        }
+      }
+    },
+    {
+      "type": "vcs",
+      "url": "git@github.com:rebelinteractivegroup/rebel-branding.git"
+    },
+    {
+      "type": "vcs",
+      "url": "git@github.com:mwdelaney/google-tag-manager-snippets.git"
+    },
+		{
+			"type": "vcs",
+			"url": "git@github.com:rebelinteractivegroup/gravityforms.git"
+    },
+    {
+      "type": "vcs",
+      "url": "git@github.com:rebelinteractivegroup/facetwp.git"
+    }
+  ],
   "require": {
-    "php": "^7.4|^8.0"
+    "php": "^7.4|^8.0",
+    "garrettweinberg/sage-bootstrap5-navwalker": "*",
+    "mwdelaney/sage-acf-gutenberg-blocks": "*",
+    "mwdelaney/sage-acf-menu-icons": "*",
+    "mwdelaney/sage-advanced-custom-fields": "*",
+    "mwdelaney/sage-fonts-preload": "*",
+    "mwdelaney/sage-wp-nav-submenu": "*",
+    "mwdelaney/google-tag-manager-snippets": "*",
+    "mwdelaney/add-sitemap-to-robots": "*",
+    "advanced-custom-fields/advanced-custom-fields-pro": "^6.0.2",
+    "wpackagist-plugin/favicon-by-realfavicongenerator": "*",
+    "wpackagist-plugin/resmushit-image-optimizer": "*",
+    "wpackagist-plugin/regenerate-thumbnails": "*",
+    "wpackagist-plugin/disable-comments": "*",
+    "wpackagist-plugin/wordpress-seo": "*",
+    "wpackagist-plugin/yoast-test-helper":"*",
+    "wpackagist-plugin/redirection": "*",
+    "wpackagist-plugin/safe-svg": "*",
+    "rebelinteractivegroup/facetwp": "*",
+    "rebelinteractivegroup/gravityforms": "*",
+    "rebelinteractivegroup/rebel-branding": "*"
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "3.7.1"
@@ -51,6 +110,11 @@
   "config": {
     "optimize-autoloader": true,
     "preferred-install": "dist",
+    "allow-plugins": {
+      "composer/installers": true,
+      "roots/wordpress-core-installer": true,
+      "ffraenz/private-composer-installer": true
+    },
     "sort-packages": true
   },
   "minimum-stability": "dev",
@@ -61,6 +125,10 @@
     ]
   },
   "extra": {
+    "installer-paths": {
+      "../../mu-plugins/{$name}/": ["type:wordpress-muplugin"],
+      "../../plugins/{$name}/": ["type:wordpress-plugin"]
+    },
     "acorn": {
       "providers": [
         "App\\Providers\\ThemeServiceProvider"

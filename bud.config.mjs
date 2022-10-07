@@ -29,7 +29,7 @@ export default async (app) => {
     /**
      * Proxy origin (`WP_HOME`)
      */
-    .proxy("http://example.test")
+    .proxy("http://rebeltheme.test")
 
     /**
      * Development origin
@@ -39,7 +39,7 @@ export default async (app) => {
     /**
      * URI of the `public` directory
      */
-    .setPublicPath("/app/themes/sage/public/")
+    .setPublicPath("/app/themes/rig-sage/public/")
 
     /**
      * Generate WordPress `theme.json`
@@ -69,8 +69,11 @@ export default async (app) => {
           customFontSize: false,
         },
       })
-      .useTailwindColors()
-      .useTailwindFontFamily()
-      .useTailwindFontSize()
       .enable()
+
+    app.sass
+      .importGlobal([
+        '@src/styles/config',
+      ])
+
 };

@@ -2,21 +2,20 @@
  * Block editor color palette utilities
  * @see https://git.io/JeyD6
  */
-@each $color-name,
-$color-value in $theme-colors {
-  .has-#{$color-name}-color {
-    color: $color-value !important;
+@each $color, $value in $theme-colors {
+  .has-#{$color}-color {
+    color: $value;
   }
 
-  .has-#{$color-name}-background-color {
-    background-color: $color-value !important;
+  .has-#{$color}-background-color {
+    background-color: $value;
   }
 
-  .bg-#{$color-name} {
-    background-color: $color-value !important;
+  .bg-#{$color} {
+    background-color: $value;
   }
 
-  .contrast-#{$color-name} {
-    color: color-contrast($color-value) !important;
+  .contrast-#{$color} {
+    color: color-contrast($value);
   }
 }

@@ -27,6 +27,16 @@ add_action('enqueue_block_editor_assets', function () {
 }, 100);
 
 /**
+ * Disable full screen editor.
+ *
+ * @return void
+ */
+add_action( 'enqueue_block_editor_assets', function() {
+    $script = "window.onload = function() { const isFullscreenMode = wp.data.select( 'core/edit-post' ).isFeatureActive( 'fullscreenMode' ); if ( isFullscreenMode ) { wp.data.dispatch( 'core/edit-post' ).toggleFeature( 'fullscreenMode' ); } }";
+  wp_add_inline_script( 'wp-blocks', $script );
+});
+
+/**
  * Register the initial theme setup.
  *
  * @return void
@@ -58,6 +68,8 @@ add_action('after_setup_theme', function () {
      */
     register_nav_menus([
         'primary_navigation' => __('Primary Navigation', 'sage'),
+        'utility_navigation' => __('Utility Navigation', 'sage'),
+        'footer_navigation' => __('Footer Navigation', 'sage'),
     ]);
 
     /**

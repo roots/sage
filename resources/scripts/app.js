@@ -1,4 +1,6 @@
 import {domReady} from '@roots/sage/client';
+// Import Bootstrap
+import 'bootstrap';
 
 /**
  * app.main

@@ -12,20 +12,3 @@ $color-value in $theme-colors {
     @include button-outline-variant($color-value);
   }
 }
-
-.wp-block-button {
-
-  .wp-block-button__link {
-    @extend .fw-bold, .px-5, .py-3;
-  }
-
-  &.is-style-btn-red {
-    .wp-block-button__link {
-      @extend .text-white, .bg-red;
-
-      &:hover {
-        @extend .bg-white, .border;
-      }
-    }
-  }
-}
