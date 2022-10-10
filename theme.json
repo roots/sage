@@ -3,7 +3,26 @@
   "$schema": "https://schemas.wp.org/trunk/theme.json",
   "version": 2,
   "settings": {
+    "blocks": {
+      "core/button": {
+        "border": {
+          "radius": false
+        }
+      }
+    },
     "color": {
+      "palette": [
+        {
+          "slug": "cnc-red",
+          "color": "#D11141",
+          "name": "CNC Red"
+        },
+        {
+          "slug": "cnc-black",
+          "color": "#111111",
+          "name": "CNC Black"
+        }
+      ],
       "custom": false,
       "customGradient": false,
       "defaultPalette": false,
@@ -28,7 +47,51 @@
       ]
     },
     "typography": {
-      "customFontSize": false
+      "customFontSize": false,
+      "fontSizes": [
+        {
+          "name": "Heading 1",
+          "size": "56px",
+          "slug": "heading-1"
+        },
+        {
+          "name": "Heading 2",
+          "size": "34px",
+          "slug": "heading-2"
+        },
+        {
+          "name": "Heading 3",
+          "size": "24px",
+          "slug": "heading-3"
+        },
+        {
+          "name": "Normal",
+          "size": "1rem",
+          "slug": "normal-font-size"
+        },
+        {
+          "name": "Primary Navigation",
+          "size": "1rem",
+          "slug": "primary-navigation-font-size"
+        },
+        {
+          "name": "Utility Navigation",
+          "size": "0.75rem",
+          "slug": "utility-navigation-font-size"
+        },
+        {
+          "name": "CTA",
+          "size": "0.875rem",
+          "slug": "cta-font-size"
+        }
+      ],
+      "fontFamilies": [
+        {
+          "fontFamily": "Noto Sans",
+          "slug": "noto-sans",
+          "name": "Noto Sans"
+        }
+      ]
     }
   }
 }
