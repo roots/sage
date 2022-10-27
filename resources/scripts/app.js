@@ -16,6 +16,13 @@ const main = async (err) => {
  * Initialize
  *
  * @see https://webpack.js.org/api/hot-module-replacement
+ * @returns { void }
  */
-domReady(main);
-import.meta.webpackHot?.accept(main);
+if (module.hot) {
+  window.addEventListener('load', (event) => {
+    main();
+    import.meta.webpackHot?.accept(main);
+  });
+} else {
+  domReady(main);
+}
