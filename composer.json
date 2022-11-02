@@ -1,8 +1,8 @@
 {
-  "name": "roots/sage",
+  "name": "rebelinteractivegroup/rig-sage",
   "type": "wordpress-theme",
   "license": "MIT",
-  "description": "WordPress starter theme with a modern development workflow",
+  "description": "WordPress starter theme.",
   "homepage": "https://roots.io/sage/",
   "authors": [
     {
@@ -24,6 +24,11 @@
       "name": "Brandon Nifong",
       "email": "brandon@tendency.me",
       "homepage": "https://github.com/log1x"
+    },
+    {
+      "name": "Rob Voss",
+      "email": "rob.voss@digerati.io",
+      "homepage": "https://github.com/Rob-Voss"
     }
   ],
   "keywords": [
