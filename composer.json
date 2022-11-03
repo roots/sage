@@ -51,19 +51,7 @@
     },
     {
       "type": "vcs",
-      "url": "git@github.com:rebelinteractivegroup/rebel-branding.git"
-    },
-    {
-      "type": "vcs",
       "url": "git@github.com:mwdelaney/google-tag-manager-snippets.git"
-    },
-		{
-			"type": "vcs",
-			"url": "git@github.com:rebelinteractivegroup/gravityforms.git"
-    },
-    {
-      "type": "vcs",
-      "url": "git@github.com:rebelinteractivegroup/facetwp.git"
     }
   ],
   "require": {
@@ -83,10 +71,7 @@
     "wpackagist-plugin/wordpress-seo": "*",
     "wpackagist-plugin/yoast-test-helper":"*",
     "wpackagist-plugin/redirection": "*",
-    "wpackagist-plugin/safe-svg": "*",
-    "rebelinteractivegroup/facetwp": "*",
-    "rebelinteractivegroup/gravityforms": "*",
-    "rebelinteractivegroup/rebel-branding": "*"
+    "wpackagist-plugin/safe-svg": "*"
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "3.7.1"
