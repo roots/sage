@@ -50,22 +50,6 @@
       "only": ["wpackagist-plugin/*", "wpackagist-theme/*"]
     },
     {
-      "type": "package",
-      "package": {
-        "name": "advanced-custom-fields/advanced-custom-fields-pro",
-        "version": "6.0.2",
-        "type": "wordpress-muplugin",
-        "dist": {
-          "type": "zip",
-          "url": "https://connect.advancedcustomfields.com/index.php?a=download&p=pro&k={%ACF_PRO_KEY}&t={%version}"
-        },
-        "require": {
-          "composer/installers": "^1.8",
-          "ffraenz/private-composer-installer": "^5.0.1"
-        }
-      }
-    },
-    {
       "type": "vcs",
       "url": "git@github.com:rebelinteractivegroup/rebel-branding.git"
     },
@@ -92,7 +76,6 @@
     "mwdelaney/sage-wp-nav-submenu": "*",
     "mwdelaney/google-tag-manager-snippets": "*",
     "mwdelaney/add-sitemap-to-robots": "*",
-    "advanced-custom-fields/advanced-custom-fields-pro": "^6.0.2",
     "wpackagist-plugin/favicon-by-realfavicongenerator": "*",
     "wpackagist-plugin/resmushit-image-optimizer": "*",
     "wpackagist-plugin/regenerate-thumbnails": "*",
