@@ -50,9 +50,12 @@ export default async (app) => {
       .settings({
         color: {
           custom: false,
+          customDuotone: false,
           customGradient: false,
+          defaultDuotone: false,
           defaultPalette: false,
-          defaultGradients: false,
+          duotone: [],
+          gradients: [],
         },
         custom: {
           spacing: {},
