@@ -55,7 +55,6 @@ export default async (app) => {
           defaultDuotone: false,
           defaultPalette: false,
           duotone: [],
-          gradients: [],
         },
         custom: {
           spacing: {},
