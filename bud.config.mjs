@@ -47,37 +47,22 @@ export default async (app) => {
      * @note This overwrites `theme.json` on every build.
      */
     .wpjson
-    .settings({
-      blocks: {
-        'core/button': {
-          border: {
-            radius: false
-          }
-        }
-      },
-      color: {
-        palette: [
-          {
-            slug: 'red',
-            color: '#D11141',
-            name: 'Red'
+      .settings({
+        color: {
+          custom: false,
+          customDuotone: false,
+          customGradient: false,
+          defaultDuotone: false,
+          defaultGradients: false,
+          defaultPalette: false,
+          duotone: [],
+        },
+        custom: {
+          spacing: {},
+          typography: {
+            'font-size': {},
+            'line-height': {},
           },
-          {
-            slug: 'black',
-            color: '#111111',
-            name: 'Black'
-          }
-        ],
-        custom: false,
-        customGradient: false,
-        defaultPalette: false,
-        defaultGradients: false,
-      },
-      custom: {
-        spacing: {},
-        typography: {
-          'font-size': {},
-          'line-height': {},
         },
       },
       spacing: {
