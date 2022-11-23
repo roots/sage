@@ -1,5 +1,5 @@
 <header class="banner">
-  <a class="brand" href="{{ home_url('/') }}">
+  <a class="brand" href="{{ home_url('/') }}" aria-label="{!! __('Home page', 'sage') !!}">
     {!! $siteName !!}
   </a>
 
