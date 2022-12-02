@@ -39,7 +39,9 @@
     }
   },
   "require": {
-    "php": "^7.4|^8.0"
+    "php": "^7.4|^8.0",
+    "mwdelaney/sage-acf-gutenberg-blocks": "^0.7.0",
+    "mwdelaney/sage-advanced-custom-fields": "^1.6"
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "3.7.1"
