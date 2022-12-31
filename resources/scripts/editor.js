@@ -1,4 +1,4 @@
-import { domReady } from '@roots/sage/client';
+import domReady from '@roots/sage/client/dom-ready';
 import { registerBlockStyle, unregisterBlockStyle } from '@wordpress/blocks';
 
 /**
