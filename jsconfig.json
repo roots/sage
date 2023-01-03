@@ -1,19 +1,15 @@
 {
+  "extends": "@roots/sage/config/jsconfig.json",
   "compilerOptions": {
-    "allowSyntheticDefaultImports": true,
     "baseUrl": "resources",
-    "lib": ["DOM", "DOM.Iterable", "ESNext"],
-    "module": "esnext",
-    "moduleResolution": "node",
-    "jsx": "preserve",
     "paths": {
       "@fonts/*": ["fonts/*"],
       "@images/*": ["images/*"],
       "@scripts/*": ["scripts/*"],
       "@styles/*": ["styles/*"]
     },
-    "target": "es5"
+    "types": ["@roots/bud", "@roots/sage", "@roots/bud-tailwindcss"]
   },
-  "include": ["bud.config.mjs", "resources"],
-  "exclude": ["public"]
+  "include": ["bud.config.js", "resources"],
+  "exclude": ["node_modules", "public"]
 }

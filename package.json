@@ -2,11 +2,12 @@
   "name": "sage",
   "private": true,
   "browserslist": [
-    "extends @roots/browserslist-config/current"
+    "extends @roots/browserslist-config"
   ],
   "engines": {
     "node": ">=16.0.0"
   },
+  "type": "module",
   "scripts": {
     "dev": "bud dev",
     "build": "bud build",
@@ -18,8 +19,8 @@
     "translate:mo": "wp i18n make-mo ./resources/lang ./resources/lang"
   },
   "devDependencies": {
-    "@roots/bud": "6.6.2",
-    "@roots/bud-tailwindcss": "6.6.2",
-    "@roots/sage": "6.6.2"
+    "@roots/bud": "6.6.9",
+    "@roots/bud-tailwindcss": "6.6.9",
+    "@roots/sage": "6.6.9"
   }
 }
