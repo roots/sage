@@ -1,0 +1,11 @@
+{
+  "extends": [
+    "stylelint-config-standard-scss",
+    "stylelint-config-prettier-scss"
+  ],
+  "rules": {
+    "no-invalid-position-at-import-rule": null,
+    "scss/no-global-function-names": null,
+    "scss/at-extend-no-missing-placeholder": null
+  }
+}
