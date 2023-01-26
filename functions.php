@@ -36,7 +36,7 @@ try {
         __('You need to install Acorn to use this theme.', 'sage'),
         '',
         [
-            'link_url' => 'https://docs.roots.io/acorn/3.x/installation/',
+            'link_url' => 'https://roots.io/acorn/docs/installation/',
             'link_text' => __('Acorn Docs: Installation', 'sage'),
         ]
     );
