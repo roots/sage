@@ -1,3 +1,7 @@
+## HEAD
+
+* [Full changelog](https://github.com/roots/sage/compare/v10.5.0...main)
+
 ## 10.5.0: January 27th, 2023
 
 * [Release notes](https://github.com/roots/sage/releases/tag/v10.5.0)
