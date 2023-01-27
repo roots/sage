@@ -30,13 +30,13 @@ require $composer;
 */
 
 try {
-    \Roots\bootloader();
+    \Roots\bootloader()->boot();
 } catch (Throwable $e) {
     wp_die(
         __('You need to install Acorn to use this theme.', 'sage'),
         '',
         [
-            'link_url' => 'https://docs.roots.io/acorn/2.x/installation/',
+            'link_url' => 'https://roots.io/acorn/docs/installation/',
             'link_text' => __('Acorn Docs: Installation', 'sage'),
         ]
     );
@@ -63,17 +63,3 @@ collect(['setup', 'filters'])
             );
         }
     });
-
-/*
-|--------------------------------------------------------------------------
-| Enable Sage Theme Support
-|--------------------------------------------------------------------------
-|
-| Once our theme files are registered and available for use, we are almost
-| ready to boot our application. But first, we need to signal to Acorn
-| that we will need to initialize the necessary service providers built in
-| for Sage when booting.
-|
-*/
-
-add_theme_support('sage');
