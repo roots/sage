@@ -29,9 +29,7 @@ require $composer;
 |
 */
 
-try {
-    \Roots\bootloader()->boot();
-} catch (Throwable $e) {
+if (! function_exists('\Roots\bootloader')) {
     wp_die(
         __('You need to install Acorn to use this theme.', 'sage'),
         '',
@@ -41,6 +39,8 @@ try {
         ]
     );
 }
+
+\Roots\bootloader()->boot();
 
 /*
 |--------------------------------------------------------------------------
