@@ -40,7 +40,7 @@ export default async (app) => {
      * Development origin
      * @see {@link https://bud.js.org/docs/bud.serve/}
      */
-    .serve('http://0.0.0.0:3000')
+    .serve('http://localhost:3000')
 
     /**
      * URI of the `public` directory
