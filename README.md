@@ -53,7 +53,7 @@ However, the amount of effort needed to maintain and develop new features and pr
 
 Make sure all dependencies have been installed before moving on:
 
-- [Acorn](https://docs.roots.io/acorn/2.x/installation/) v2
+- [Acorn](https://roots.io/acorn/docs/installation/) v3
 - [WordPress](https://wordpress.org/) >= 5.9
 - [PHP](https://secure.php.net/manual/en/install.php) >= 8.0 (with [`php-mbstring`](https://secure.php.net/manual/en/book.mbstring.php) enabled)
 - [Composer](https://getcomposer.org/download/)
