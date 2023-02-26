@@ -1,14 +1,15 @@
 {
+  "extends": "@roots/sage/config/jsconfig.json",
   "compilerOptions": {
-    "allowSyntheticDefaultImports": true,
-    "jsx": "preserve",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "module": "commonjs",
-    "moduleResolution": "node",
+    "baseUrl": "resources",
     "paths": {
-      "@scripts/*": ["./resources/scripts/*"],
-      "@styles/*": ["./resources/styles/*"]
-    }
+      "@fonts/*": ["fonts/*"],
+      "@images/*": ["images/*"],
+      "@scripts/*": ["scripts/*"],
+      "@styles/*": ["styles/*"]
+    },
+    "types": ["@roots/bud", "@roots/sage", "@roots/bud-tailwindcss"]
   },
-  "exclude": ["./public", "./node_modules"]
+  "include": ["bud.config.js", "resources"],
+  "exclude": ["node_modules", "public"]
 }

@@ -1,46 +1,88 @@
 /**
- * @typedef {import('@roots/bud').Bud} bud
+ * Build configuration
  *
- * @param {bud} app
+ * @see {@link https://roots.io/docs/sage/ sage documentation}
+ * @see {@link https://bud.js.org/guides/configure/ bud.js configuration guide}
+ *
+ * @typedef {import('@roots/bud').Bud} Bud
+ * @param {Bud} app
  */
-module.exports = async (app) => {
+export default async (app) => {
+  /**
+   * Application entrypoints
+   * @see {@link https://bud.js.org/docs/bud.entry/}
+   */
   app
-    /**
-     * Application entrypoints
-     *
-     * Paths are relative to your resources directory
-     */
     .entry({
       app: ['@scripts/app', '@styles/app'],
       editor: ['@scripts/editor', '@styles/editor'],
     })
 
     /**
-     * These files should be processed as part of the build
-     * even if they are not explicitly imported in application assets.
+     * Directory contents to be included in the compilation
+     * @see {@link https://bud.js.org/docs/bud.assets/}
      */
-    .assets('images')
+    .assets(['images'])
 
     /**
-     * These files will trigger a full page reload
-     * when modified.
+     * Matched files trigger a page reload when modified
+     * @see {@link https://bud.js.org/docs/bud.watch/}
      */
-    .watch('resources/views/**/*', 'app/**/*')
+    .watch(['resources/views', 'app'])
 
     /**
-     * Target URL to be proxied by the dev server.
-     *
-     * This should be the URL you use to visit your local development server.
+     * Proxy origin (`WP_HOME`)
+     * @see {@link https://bud.js.org/docs/bud.proxy/}
      */
     .proxy('http://example.test')
 
     /**
-     * Development URL to be used in the browser.
+     * Development origin
+     * @see {@link https://bud.js.org/docs/bud.serve/}
      */
-    .serve('http://0.0.0.0:3000')
+    .serve('http://localhost:3000')
 
     /**
-     * Relative path to the public directory.
+     * URI of the `public` directory
+     * @see {@link https://bud.js.org/docs/bud.setPublicPath/}
      */
-    .setPublicPath('/app/themes/sage/public/');
+    .setPublicPath('/app/themes/sage/public/')
+
+    /**
+     * Generate WordPress `theme.json`
+     *
+     * @note This overwrites `theme.json` on every build.
+     *
+     * @see {@link https://bud.js.org/extensions/sage/theme.json/}
+     * @see {@link https://developer.wordpress.org/block-editor/how-to-guides/themes/theme-json/}
+     */
+    .wpjson.settings({
+      color: {
+        custom: false,
+        customDuotone: false,
+        customGradient: false,
+        defaultDuotone: false,
+        defaultGradients: false,
+        defaultPalette: false,
+        duotone: [],
+      },
+      custom: {
+        spacing: {},
+        typography: {
+          'font-size': {},
+          'line-height': {},
+        },
+      },
+      spacing: {
+        padding: true,
+        units: ['px', '%', 'em', 'rem', 'vw', 'vh'],
+      },
+      typography: {
+        customFontSize: false,
+      },
+    })
+    .useTailwindColors()
+    .useTailwindFontFamily()
+    .useTailwindFontSize()
+    .enable();
 };

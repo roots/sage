@@ -14,7 +14,7 @@
   </a>
 
   <a href="https://github.com/roots/sage/actions">
-    <img alt="Build Status" src="https://img.shields.io/github/workflow/status/roots/sage/Main?style=flat-square" />
+    <img alt="Build Status" src="https://img.shields.io/github/actions/workflow/status/roots/sage/main.yml?branch=master&style=flat-square" />
   </a>
 
   <a href="https://twitter.com/rootswp">
@@ -39,11 +39,8 @@ However, the amount of effort needed to maintain and develop new features and pr
 <p align="center"><a href="https://github.com/sponsors/roots"><img height="32" src="https://img.shields.io/badge/sponsor%20roots-525ddc?logo=github&logoColor=ffffff&message=" alt="Sponsor Roots"></a></p>
 
 <div align="center">
-<a href="https://k-m.com/"><img src="https://cdn.roots.io/app/uploads/km-digital.svg" alt="KM Digital" width="148" height="111"></a> <a href="https://carrot.com/"><img src="https://cdn.roots.io/app/uploads/carrot.svg" alt="Carrot" width="148" height="111"></a> <a href="https://www.c21redwood.com/"><img src="https://cdn.roots.io/app/uploads/c21redwood.svg" alt="C21 Redwood Realty" width="148" height="111"></a> <a href="https://wordpress.com/"><img src="https://cdn.roots.io/app/uploads/wordpress.svg" alt="WordPress.com" width="148" height="111"></a>
-
-<a href="https://icons8.com/"><img src="https://cdn.roots.io/app/uploads/icons8.svg" alt="Icons8" width="148" height="111"></a> <a href="https://generodigital.com/"><img src="https://cdn.roots.io/app/uploads/genero.svg" alt="Genero" width="148" height="111"></a> <a href="https://40q.agency/"><img src="https://cdn.roots.io/app/uploads/40q.svg" alt="40Q" width="148" height="111"></a> <a href="https://pantheon.io/"><img src="https://cdn.roots.io/app/uploads/pantheon.svg" alt="Pantheon" width="148" height="111"></a>
+<a href="https://k-m.com/"><img src="https://cdn.roots.io/app/uploads/km-digital.svg" alt="KM Digital" width="148" height="111"></a> <a href="https://carrot.com/"><img src="https://cdn.roots.io/app/uploads/carrot.svg" alt="Carrot" width="148" height="111"></a> <a href="https://wordpress.com/"><img src="https://cdn.roots.io/app/uploads/wordpress.svg" alt="WordPress.com" width="148" height="111"></a> <a href="https://pantheon.io/"><img src="https://cdn.roots.io/app/uploads/pantheon.svg" alt="Pantheon" width="148" height="111"></a> <a href="https://worksitesafety.ca/careers/"><img src="https://cdn.roots.io/app/uploads/worksite-safety.svg" alt="Worksite Safety" width="148" height="111"></a> <br> <a href="https://generodigital.com/"><img src="https://cdn.roots.io/app/uploads/genero.svg" alt="Genero" width="148" height="111"></a> <a href="https://40q.agency/"><img src="https://cdn.roots.io/app/uploads/40q.svg" alt="40Q" width="148" height="111"></a> <a href="https://jobpress.io/"><img src="https://cdn.roots.io/app/uploads/jobpress.png" alt="JobPress" width="148" height="111"></a>
 </div>
-
 
 ## Features
 
@@ -56,9 +53,9 @@ However, the amount of effort needed to maintain and develop new features and pr
 
 Make sure all dependencies have been installed before moving on:
 
-- [Acorn](https://docs.roots.io/acorn/2.x/installation/) v2
+- [Acorn](https://roots.io/acorn/docs/installation/) v3
 - [WordPress](https://wordpress.org/) >= 5.9
-- [PHP](https://secure.php.net/manual/en/install.php) >= 7.4.0 (with [`php-mbstring`](https://secure.php.net/manual/en/book.mbstring.php) enabled)
+- [PHP](https://secure.php.net/manual/en/install.php) >= 8.0 (with [`php-mbstring`](https://secure.php.net/manual/en/book.mbstring.php) enabled)
 - [Composer](https://getcomposer.org/download/)
 - [Node.js](http://nodejs.org/) >= 16
 - [Yarn](https://yarnpkg.com/en/docs/install)

@@ -1,17 +1,17 @@
 {
   "baseBranches": ["main"],
-  "commitMessageAction": "Bump",
-  "commitMessageTopic": "📦 update {{depName}}",
-  "extends": ["config:base", "schedule:daily"],
+  "commitMessageAction": "⬆️ Bump",
+  "commitMessageTopic": "{{depName}}",
+  "extends": ["config:base", "schedule:weekly"],
   "packageRules": [
     {
-      "automerge": true,
       "matchUpdateTypes": ["minor", "patch", "pin"]
     },
     {
-      "groupName": "roots",
-      "matchPackagePrefixes": ["@roots/"]
+      "groupName": "Bud",
+      "matchPackagePrefixes": ["@roots/"],
+      "schedule": ["at any time"]
     }
   ],
-  "timezone": "America/Los_Angeles"
+  "timezone": "America/Chicago"
 }
