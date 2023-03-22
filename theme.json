@@ -5,8 +5,8 @@
   "settings": {
     "color": {
       "custom": false,
-      "customDuotone": false,
       "customGradient": false,
+      "customDuotone": false,
       "defaultDuotone": false,
       "defaultGradients": false,
       "defaultPalette": false,
@@ -1159,6 +1159,7 @@
     },
     "typography": {
       "customFontSize": false,
+      "dropCap": false,
       "fontFamilies": [
         {
           "name": "Ui-sans-serif",
