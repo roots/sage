@@ -2,12 +2,18 @@
   "extends": "@roots/sage/config/jsconfig.json",
   "compilerOptions": {
     "baseUrl": "resources",
+    /**
+     * Resolve aliases
+     */
     "paths": {
       "@fonts/*": ["fonts/*"],
       "@images/*": ["images/*"],
       "@scripts/*": ["scripts/*"],
       "@styles/*": ["styles/*"]
     },
+    /**
+     * Type definitions
+     */
     "types": ["@roots/bud", "@roots/sage", "@roots/bud-tailwindcss"]
   },
   "include": ["bud.config.js", "resources"],
