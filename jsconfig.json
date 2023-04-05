@@ -14,7 +14,16 @@
     /**
      * Type definitions
      */
-    "types": ["@roots/bud", "@roots/sage", "@roots/bud-tailwindcss"]
+    "types": [
+      "@roots/bud",
+      "@roots/bud-react",
+      "@roots/bud-postcss",
+      "@roots/bud-preset-recommend",
+      "@roots/bud-preset-wordpress",
+      "@roots/bud-tailwindcss",
+      "@roots/bud-wordpress-theme-json",
+      "@roots/sage"
+    ]
   },
   "include": ["bud.config.js", "resources"],
   "exclude": ["node_modules", "public"]
