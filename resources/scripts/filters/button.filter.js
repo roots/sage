@@ -6,7 +6,7 @@ export const hook = `blocks.registerBlockType`;
 /**
  * Filter handle
  */
-export const name = `sage-plugin/button`;
+export const name = `sage/button`;
 
 /**
  * Filter callback
