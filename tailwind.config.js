@@ -1,5 +1,5 @@
-// https://tailwindcss.com/docs/configuration
-module.exports = {
+/** @type {import('tailwindcss').Config} config */
+const config = {
   content: ['./index.php', './app/**/*.php', './resources/**/*.{php,vue,js}'],
   theme: {
     extend: {
@@ -8,3 +8,5 @@ module.exports = {
   },
   plugins: [],
 };
+
+export default config;
