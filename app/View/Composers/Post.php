@@ -48,6 +48,13 @@ class Post extends Composer
             return __('Latest Posts', 'sage');
         }
 
+        // CPT: "My post type" instead of "Archives: MyPostTypes"
+        if (is_post_type_archive()) {
+            $labels = get_post_type_labels(get_post_type_object(get_post_type()));
+            if ($labels->name)
+                return $labels->name;
+        }
+
         if (is_archive()) {
             return get_the_archive_title();
         }
