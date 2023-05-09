@@ -5,8 +5,8 @@
   "settings": {
     "color": {
       "custom": false,
-      "customDuotone": false,
       "customGradient": false,
+      "customDuotone": false,
       "defaultDuotone": false,
       "defaultGradients": false,
       "defaultPalette": false,
@@ -88,6 +88,11 @@
           "color": "#0f172a"
         },
         {
+          "name": "Slate 950",
+          "slug": "slate-950",
+          "color": "#020617"
+        },
+        {
           "name": "Gray 50",
           "slug": "gray-50",
           "color": "#f9fafb"
@@ -136,6 +141,11 @@
           "name": "Gray 900",
           "slug": "gray-900",
           "color": "#111827"
+        },
+        {
+          "name": "Gray 950",
+          "slug": "gray-950",
+          "color": "#030712"
         },
         {
           "name": "Zinc 50",
@@ -188,6 +198,11 @@
           "color": "#18181b"
         },
         {
+          "name": "Zinc 950",
+          "slug": "zinc-950",
+          "color": "#09090b"
+        },
+        {
           "name": "Neutral 50",
           "slug": "neutral-50",
           "color": "#fafafa"
@@ -236,6 +251,11 @@
           "name": "Neutral 900",
           "slug": "neutral-900",
           "color": "#171717"
+        },
+        {
+          "name": "Neutral 950",
+          "slug": "neutral-950",
+          "color": "#0a0a0a"
         },
         {
           "name": "Stone 50",
@@ -288,6 +308,11 @@
           "color": "#1c1917"
         },
         {
+          "name": "Stone 950",
+          "slug": "stone-950",
+          "color": "#0c0a09"
+        },
+        {
           "name": "Red 50",
           "slug": "red-50",
           "color": "#fef2f2"
@@ -336,6 +361,11 @@
           "name": "Red 900",
           "slug": "red-900",
           "color": "#7f1d1d"
+        },
+        {
+          "name": "Red 950",
+          "slug": "red-950",
+          "color": "#450a0a"
         },
         {
           "name": "Orange 50",
@@ -388,6 +418,11 @@
           "color": "#7c2d12"
         },
         {
+          "name": "Orange 950",
+          "slug": "orange-950",
+          "color": "#431407"
+        },
+        {
           "name": "Amber 50",
           "slug": "amber-50",
           "color": "#fffbeb"
@@ -436,6 +471,11 @@
           "name": "Amber 900",
           "slug": "amber-900",
           "color": "#78350f"
+        },
+        {
+          "name": "Amber 950",
+          "slug": "amber-950",
+          "color": "#451a03"
         },
         {
           "name": "Yellow 50",
@@ -488,6 +528,11 @@
           "color": "#713f12"
         },
         {
+          "name": "Yellow 950",
+          "slug": "yellow-950",
+          "color": "#422006"
+        },
+        {
           "name": "Lime 50",
           "slug": "lime-50",
           "color": "#f7fee7"
@@ -536,6 +581,11 @@
           "name": "Lime 900",
           "slug": "lime-900",
           "color": "#365314"
+        },
+        {
+          "name": "Lime 950",
+          "slug": "lime-950",
+          "color": "#1a2e05"
         },
         {
           "name": "Green 50",
@@ -588,6 +638,11 @@
           "color": "#14532d"
         },
         {
+          "name": "Green 950",
+          "slug": "green-950",
+          "color": "#052e16"
+        },
+        {
           "name": "Emerald 50",
           "slug": "emerald-50",
           "color": "#ecfdf5"
@@ -636,6 +691,11 @@
           "name": "Emerald 900",
           "slug": "emerald-900",
           "color": "#064e3b"
+        },
+        {
+          "name": "Emerald 950",
+          "slug": "emerald-950",
+          "color": "#022c22"
         },
         {
           "name": "Teal 50",
@@ -688,6 +748,11 @@
           "color": "#134e4a"
         },
         {
+          "name": "Teal 950",
+          "slug": "teal-950",
+          "color": "#042f2e"
+        },
+        {
           "name": "Cyan 50",
           "slug": "cyan-50",
           "color": "#ecfeff"
@@ -736,6 +801,11 @@
           "name": "Cyan 900",
           "slug": "cyan-900",
           "color": "#164e63"
+        },
+        {
+          "name": "Cyan 950",
+          "slug": "cyan-950",
+          "color": "#083344"
         },
         {
           "name": "Sky 50",
@@ -788,6 +858,11 @@
           "color": "#0c4a6e"
         },
         {
+          "name": "Sky 950",
+          "slug": "sky-950",
+          "color": "#082f49"
+        },
+        {
           "name": "Blue 50",
           "slug": "blue-50",
           "color": "#eff6ff"
@@ -836,6 +911,11 @@
           "name": "Blue 900",
           "slug": "blue-900",
           "color": "#1e3a8a"
+        },
+        {
+          "name": "Blue 950",
+          "slug": "blue-950",
+          "color": "#172554"
         },
         {
           "name": "Indigo 50",
@@ -888,6 +968,11 @@
           "color": "#312e81"
         },
         {
+          "name": "Indigo 950",
+          "slug": "indigo-950",
+          "color": "#1e1b4b"
+        },
+        {
           "name": "Violet 50",
           "slug": "violet-50",
           "color": "#f5f3ff"
@@ -936,6 +1021,11 @@
           "name": "Violet 900",
           "slug": "violet-900",
           "color": "#4c1d95"
+        },
+        {
+          "name": "Violet 950",
+          "slug": "violet-950",
+          "color": "#2e1065"
         },
         {
           "name": "Purple 50",
@@ -988,6 +1078,11 @@
           "color": "#581c87"
         },
         {
+          "name": "Purple 950",
+          "slug": "purple-950",
+          "color": "#3b0764"
+        },
+        {
           "name": "Fuchsia 50",
           "slug": "fuchsia-50",
           "color": "#fdf4ff"
@@ -1036,6 +1131,11 @@
           "name": "Fuchsia 900",
           "slug": "fuchsia-900",
           "color": "#701a75"
+        },
+        {
+          "name": "Fuchsia 950",
+          "slug": "fuchsia-950",
+          "color": "#4a044e"
         },
         {
           "name": "Pink 50",
@@ -1088,6 +1188,11 @@
           "color": "#831843"
         },
         {
+          "name": "Pink 950",
+          "slug": "pink-950",
+          "color": "#500724"
+        },
+        {
           "name": "Rose 50",
           "slug": "rose-50",
           "color": "#fff1f2"
@@ -1136,6 +1241,11 @@
           "name": "Rose 900",
           "slug": "rose-900",
           "color": "#881337"
+        },
+        {
+          "name": "Rose 950",
+          "slug": "rose-950",
+          "color": "#4c0519"
         }
       ]
     },
@@ -1159,6 +1269,7 @@
     },
     "typography": {
       "customFontSize": false,
+      "dropCap": false,
       "fontFamilies": [
         {
           "name": "Ui-sans-serif",
