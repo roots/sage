@@ -17,7 +17,7 @@ jobs:
           ref: ${{ github.head_ref }}
 
       - name: Run Laravel Pint
-        uses: aglipanci/laravel-pint-action@1.0.0
+        uses: aglipanci/laravel-pint-action@2.3.0
         with:
           preset: laravel
 
