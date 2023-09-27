@@ -1,5 +1,8 @@
 {
-  "extends": "@roots/sage/config/jsconfig.json",
+  "extends": [
+    "@roots/bud/config/jsconfig.json",
+    "@roots/sage/config/jsconfig.json"
+  ],
   "compilerOptions": {
     "baseUrl": "resources",
     /**
@@ -25,6 +28,7 @@
       "@roots/sage"
     ]
   },
-  "include": ["bud.config.js", "resources"],
+  "files": ["bud.config.js"],
+  "include": ["resources"],
   "exclude": ["node_modules", "public"]
 }
