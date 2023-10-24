@@ -1,7 +1,7 @@
 /**
  * Compiler configuration
  *
- * @see {@link https://roots.io/sage/ sage documentation}
+ * @see {@link https://roots.io/sage/docs sage documentation}
  * @see {@link https://bud.js.org/learn/config bud.js configuration guide}
  *
  * @type {import('@roots/bud').Config}
