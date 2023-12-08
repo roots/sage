@@ -11,15 +11,11 @@
     @php(the_content())
   </div>
 
-  @php($pagination_links = wp_link_pages([
-    'echo' => 0,
-    'before' => '<nav class="page-nav"><p>' . __('Pages:', 'sage'),
-    'after' => '</p></nav>'
-  ]))
-
-  @if ($pagination_links)
+  @if ($pagination)
     <footer>
-      {!! $pagination_links !!}
+      <nav class="page-nav">
+        {!! $pagination !!}
+      </nav>
     </footer>
   @endif
 
