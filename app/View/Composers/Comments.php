@@ -25,8 +25,8 @@ class Comments extends Composer
         return [
             'title' => $this->title(),
             'comments' => $this->comments(),
-            'next' => $this->next(),
             'previous' => $this->previous(),
+            'next' => $this->next(),
             'paginated' => $this->paginated(),
             'closed' => $this->closed(),
         ];
@@ -65,22 +65,6 @@ class Comments extends Composer
     }
 
     /**
-     * The next comments link.
-     *
-     * @return string
-     */
-    public function next()
-    {
-        if (! get_next_comments_link()) {
-            return;
-        }
-
-        return get_next_comments_link(
-            __('Newer comments &rarr;', 'sage')
-        );
-    }
-
-    /**
      * The previous comments link.
      *
      * @return string
@@ -93,6 +77,22 @@ class Comments extends Composer
 
         return get_previous_comments_link(
             __('&larr; Older comments', 'sage')
+        );
+    }
+
+    /**
+     * The next comments link.
+     *
+     * @return string
+     */
+    public function next()
+    {
+        if (! get_next_comments_link()) {
+            return;
+        }
+
+        return get_next_comments_link(
+            __('Newer comments &rarr;', 'sage')
         );
     }
 
