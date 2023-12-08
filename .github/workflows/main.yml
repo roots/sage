@@ -80,5 +80,5 @@ jobs:
       - name: Install Composer dependencies
         run: composer install --no-progress --prefer-dist --optimize-autoloader --no-suggest
 
-      - name: Execute the PHP lint script
-        run: composer run-script lint
+      - name: Run Pint
+        run: vendor/bin/pint --test
