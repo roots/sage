@@ -47,6 +47,9 @@ export default async (app) => {
    */
   app.wpjson
     .setSettings({
+      background: {
+        backgroundImage: true,
+      },
       color: {
         custom: false,
         customDuotone: false,
