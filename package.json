@@ -11,10 +11,10 @@
   "scripts": {
     "dev": "bud dev",
     "build": "bud build",
-    "translate": "yarn translate:pot && yarn translate:update",
+    "translate": "npm run translate:pot && npm run translate:update",
     "translate:pot": "wp i18n make-pot . ./resources/lang/sage.pot --include=\"theme.json,patterns,app,resources\"",
     "translate:update": "wp i18n update-po ./resources/lang/sage.pot ./resources/lang/*.po",
-    "translate:compile": "yarn translate:mo && yarn translate:js",
+    "translate:compile": "npm run translate:mo && npm run translate:js",
     "translate:js": "wp i18n make-json ./resources/lang --pretty-print",
     "translate:mo": "wp i18n make-mo ./resources/lang ./resources/lang"
   },
