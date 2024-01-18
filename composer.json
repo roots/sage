@@ -39,7 +39,7 @@
     }
   },
   "require": {
-    "php": "^8.0"
+    "php": ">=8.1"
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "3.7.2"
