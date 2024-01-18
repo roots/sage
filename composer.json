@@ -42,7 +42,7 @@
     "php": ">=8.1"
   },
   "require-dev": {
-    "squizlabs/php_codesniffer": "3.7.2"
+    "squizlabs/php_codesniffer": "3.8.1"
   },
   "suggest": {
     "log1x/sage-directives": "A collection of useful Blade directives for WordPress and Sage (^1.0).",
