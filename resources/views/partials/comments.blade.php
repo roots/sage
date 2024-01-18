@@ -10,7 +10,7 @@
       </ol>
 
       @if ($paginated)
-        <nav>
+        <nav aria-label="Comment navigation">
           <ul class="pager">
             @if ($previous)
               <li class="previous">
