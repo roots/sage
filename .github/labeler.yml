@@ -1,21 +1,27 @@
 build:
-- .eslintrc.js
-- .prettierrc
-- .stylelintrc
-- bud.config.js
-- tsconfig.json
-
+  - changed-files:
+      - any-glob-to-any-file:
+          - .eslintrc.js
+          - .prettierrc
+          - .stylelintrc
+          - bud.config.js
+          - tsconfig.json
 dependencies:
-- yarn.lock
-
+  - changed-files:
+      - any-glob-to-any-file:
+          - yarn.lock
 javascript:
-- resources/scripts/**/*.js
-
+  - changed-files:
+      - any-glob-to-any-file:
+          - resources/scripts/**/*.js
 php:
-- functions.php
-- app/**/*.php
-- resources/views/**/*.php
-
+  - changed-files:
+      - any-glob-to-any-file:
+          - functions.php
+          - app/**/*.php
+          - resources/views/**/*.php
 views:
-- index.php
-- resources/views/**/*.php
+  - changed-files:
+      - any-glob-to-any-file:
+          - index.php
+          - resources/views/**/*.php
