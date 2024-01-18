@@ -42,7 +42,7 @@
     "php": ">=8.1"
   },
   "require-dev": {
-    "squizlabs/php_codesniffer": "3.8.1"
+    "laravel/pint": "^1.13"
   },
   "suggest": {
     "log1x/sage-directives": "A collection of useful Blade directives for WordPress and Sage (^1.0).",
@@ -55,11 +55,6 @@
   },
   "minimum-stability": "dev",
   "prefer-stable": true,
-  "scripts": {
-    "lint": [
-      "phpcs --extensions=php --standard=PSR12 app"
-    ]
-  },
   "extra": {
     "acorn": {
       "providers": [
