@@ -32,7 +32,7 @@ jobs:
         id: yarncache
         run: echo "::set-output name=dir::$(yarn cache dir)"
 
-      - uses: actions/cache@v3
+      - uses: actions/cache@v4
         with:
           path: ${{ steps.yarncache.outputs.dir }}
           key: ${{ runner.os }}-${{ matrix.node }}-yarn-${{ hashFiles('**/yarn.lock') }}
@@ -71,7 +71,7 @@ jobs:
         id: composercache
         run: echo "::set-output name=dir::$(composer config cache-files-dir)"
 
-      - uses: actions/cache@v3
+      - uses: actions/cache@v4
         with:
           path: ${{ steps.composercache.outputs.dir }}
           key: ${{ runner.os }}-${{ matrix.php }}-composer-${{ hashFiles('**/composer.json') }}
