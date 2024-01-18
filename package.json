@@ -5,23 +5,23 @@
     "extends @roots/browserslist-config"
   ],
   "engines": {
-    "node": ">=16.0.0"
+    "node": ">=20.0.0"
   },
   "type": "module",
   "scripts": {
     "dev": "bud dev",
     "build": "bud build",
-    "translate": "yarn translate:pot && yarn translate:update",
-    "translate:pot": "wp i18n make-pot . ./resources/lang/sage.pot --include=\"app,resources\"",
+    "translate": "npm run translate:pot && npm run translate:update",
+    "translate:pot": "wp i18n make-pot . ./resources/lang/sage.pot --include=\"theme.json,patterns,app,resources\"",
     "translate:update": "for file in ./resources/lang/*.po; do wp i18n update-po ./resources/lang/sage.pot $file; done",
-    "translate:compile": "yarn translate:mo && yarn translate:js",
+    "translate:compile": "npm run translate:mo && npm run translate:js",
     "translate:js": "wp i18n make-json ./resources/lang --pretty-print",
     "translate:mo": "wp i18n make-mo ./resources/lang ./resources/lang"
   },
   "devDependencies": {
-    "@roots/bud": "6.16.1",
-    "@roots/bud-tailwindcss": "6.16.1",
-    "@roots/sage": "6.16.1"
+    "@roots/bud": "6.20.0",
+    "@roots/bud-tailwindcss": "6.20.0",
+    "@roots/sage": "6.20.0"
   },
   "dependencies": {}
 }
