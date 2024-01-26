@@ -45,8 +45,7 @@
     "laravel/pint": "^1.13"
   },
   "suggest": {
-    "log1x/sage-directives": "A collection of useful Blade directives for WordPress and Sage (^1.0).",
-    "log1x/sage-svg": "A useful SVG directive for inlining SVG's within Blade views (^1.0)."
+    "log1x/sage-directives": "A collection of useful Blade directives for WordPress and Sage (^1.0)."
   },
   "config": {
     "optimize-autoloader": true,
