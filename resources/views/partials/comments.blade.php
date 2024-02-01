@@ -6,7 +6,7 @@
       </h2>
 
       <ol class="comment-list">
-        {!! $comments !!}
+        @php($comments)
       </ol>
 
       @if ($paginated)
