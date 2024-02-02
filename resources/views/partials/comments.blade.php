@@ -1,12 +1,12 @@
 @if (! post_password_required())
   <section id="comments" class="comments">
-    @if ($comments)
+    @if ($responses)
       <h2>
         {!! $title !!}
       </h2>
 
       <ol class="comment-list">
-        @php($comments)
+        {!! $responses !!}
       </ol>
 
       @if ($paginated)
