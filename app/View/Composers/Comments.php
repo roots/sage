@@ -24,7 +24,7 @@ class Comments extends Composer
     {
         return [
             'title' => $this->title(),
-            'comments' => $this->comments(),
+            'responses' => $this->responses(),
             'previous' => $this->previous(),
             'next' => $this->next(),
             'paginated' => $this->paginated(),
@@ -43,7 +43,7 @@ class Comments extends Composer
             /* translators: %1$s is replaced with the number of comments and %2$s with the post title */
             _nx('%1$s response to &ldquo;%2$s&rdquo;', '%1$s responses to &ldquo;%2$s&rdquo;', get_comments_number(), 'comments title', 'sage'),
             get_comments_number() === 1 ? _x('One', 'comments title', 'sage') : number_format_i18n(get_comments_number()),
-            '<span>'.get_the_title().'</span>'
+            get_the_title()
         );
     }
 
@@ -52,7 +52,7 @@ class Comments extends Composer
      *
      * @return string
      */
-    public function comments()
+    public function responses()
     {
         if (! have_comments()) {
             return;
@@ -61,6 +61,7 @@ class Comments extends Composer
         return wp_list_comments([
             'style' => 'ol',
             'short_ping' => true,
+            'echo' => false,
         ]);
     }
 
