@@ -7,8 +7,7 @@ WordPress starter theme with block editor support and Vite builder.
 ## Requirements
 
 - [Acorn](https://roots.io/acorn/docs/installation/) v3
-- [PHP](https://secure.php.net/manual/en/install.php) >= 8.0 (
-  with [`php-mbstring`](https://secure.php.net/manual/en/book.mbstring.php) enabled)
+- [PHP](https://secure.php.net/manual/en/install.php) >= 8.0 (with [`php-mbstring`](https://secure.php.net/manual/en/book.mbstring.php) enabled)
 - [Composer](https://getcomposer.org/download/)
 - [Vite](https://vitejs.dev) >= 3.1.0
 - [Node.js](http://nodejs.org/) >= 18.0.0
@@ -25,10 +24,10 @@ WordPress starter theme with block editor support and Vite builder.
 $ composer create-project onepixnet/sage-vite your-theme-name
 ```
 
-To install the latest development version of Sage, add `dev-develop` to the end of the command:
+To install the latest development version of Sage, add `dev-main` to the end of the command:
 
 ```shell
-$ composer create-project onepixnet/sage-vite your-theme-name dev-develop
+$ composer create-project onepixnet/sage-vite your-theme-name dev-main
 ```
 
 ## Theme structure
