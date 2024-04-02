@@ -21,7 +21,7 @@
     }
   },
   "require": {
-    "php": ">=8.1",
+    "php": "^8.0",
     "roots/acorn": "^4.2"
   },
   "require-dev": {
