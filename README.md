@@ -15,19 +15,54 @@ WordPress starter theme with block editor support and Vite builder.
 
 ## Theme installation
 
-- **Make sure that you have [Acorn installed](https://roots.io/acorn/docs/installation/)**
-- Install Sage using Composer from your WordPress themes directory (replace `your-theme-name` below with the name of
-  your theme):
+Install Sage using Composer from your WordPress themes directory (replace `theme-name` below with the name of
+your theme):
 
 ```shell
-# @ app/themes/ or wp-content/themes/
-$ composer create-project onepixnet/sage-vite your-theme-name
+# /wp-content/themes/
+$ composer create-project onepixnet/sage-vite theme-name
 ```
 
 To install the latest development version of Sage, add `dev-main` to the end of the command:
 
 ```shell
-$ composer create-project onepixnet/sage-vite your-theme-name dev-main
+# /wp-content/themes/
+$ composer create-project onepixnet/sage-vite theme-name dev-main
+```
+
+Then jump to your `theme-name` and install [Acorn](https://roots.io/acorn/docs/installation/)
+
+```shell
+# /wp-content/themes/theme-name
+$ composer require roots/acorn
+```
+
+Then install dependencies and compile assets
+
+```shell
+$ yarn
+$ yarn build
+```
+
+You're ready to go!
+
+To start dev server update proxy url in `bud.config.js:37` (setProxyUrl) and run
+
+```shell
+$ yarn dev
+```
+
+### Full list of commands
+
+```shell
+# /wp-content/themes/
+$ composer create-project onepixnet/sage-vite theme-name dev-main
+
+# /wp-content/themes/theme-name
+$ composer require roots/acorn
+$ yarn
+$ yarn build
+$ yarn dev
 ```
 
 ## Theme structure
