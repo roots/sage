@@ -1,54 +1,107 @@
-<p align="center">
-  <a href="https://roots.io/sage/">
-    <img alt="Sage" src="https://cdn.roots.io/app/uploads/logo-sage.svg" height="100">
-  </a>
-</p>
-
-<p align="center">
-  <a href="https://packagist.org/packages/roots/sage">
-    <img alt="Packagist Installs" src="https://img.shields.io/packagist/dt/roots/sage?label=projects%20created&colorB=2b3072&colorA=525ddc&style=flat-square">
-  </a>
-
-  <a href="https://github.com/roots/sage/actions/workflows/main.yml">
-    <img alt="Build Status" src="https://img.shields.io/github/actions/workflow/status/roots/sage/main.yml?branch=main&logo=github&label=CI&style=flat-square">
-  </a>
-
-  <a href="https://twitter.com/rootswp">
-    <img alt="Follow Roots" src="https://img.shields.io/badge/follow%20@rootswp-1da1f2?logo=twitter&logoColor=ffffff&message=&style=flat-square">
-  </a>
-</p>
-
-<p align="center">Advanced WordPress starter theme with Tailwind CSS and Laravel Blade</p>
-
-<p align="center">
-  <a href="https://roots.io/sage/">Website</a> &nbsp;&nbsp; <a href="https://roots.io/sage/docs/installation/">Documentation</a> &nbsp;&nbsp; <a href="https://github.com/roots/sage/releases">Releases</a> &nbsp;&nbsp; <a href="https://discourse.roots.io/">Community</a>
-</p>
-
-## Sponsors
-
-Sage is an open source project and completely free to use. If you've benefited from our projects and would like to support our future endeavors, please consider [sponsoring Roots](https://github.com/sponsors/roots).
-
-<div align="center">
-<a href="https://k-m.com/"><img src="https://cdn.roots.io/app/uploads/km-digital.svg" alt="KM Digital" width="120" height="90"></a> <a href="https://carrot.com/"><img src="https://cdn.roots.io/app/uploads/carrot.svg" alt="Carrot" width="120" height="90"></a> <a href="https://wordpress.com/"><img src="https://cdn.roots.io/app/uploads/wordpress.svg" alt="WordPress.com" width="120" height="90"></a> <a href="https://worksitesafety.ca/careers/"><img src="https://cdn.roots.io/app/uploads/worksite-safety.svg" alt="Worksite Safety" width="120" height="90"></a> <a href="https://www.copiadigital.com/"><img src="https://cdn.roots.io/app/uploads/copia-digital.svg" alt="Copia Digital" width="120" height="90"></a> <a href="https://www.freave.com/"><img src="https://cdn.roots.io/app/uploads/freave.svg" alt="Freave" width="120" height="90"></a> <a href="https://40q.agency/"><img src="https://cdn.roots.io/app/uploads/40q.svg" alt="40Q" width="120" height="90"></a>
-</div>
+# Wordpress Starter Theme with Sage and Vite
 
 ## Overview
 
-Sage is a WordPress starter theme with block editor support.
+WordPress starter theme with block editor support and Vite builder.
 
-- Harness the power of [Laravel](https://laravel.com) and its available packages thanks to [Acorn](https://github.com/roots/acorn)
-- Clean, efficient theme templating utilizing [Laravel Blade](https://laravel.com/docs/master/blade)
-- Modern frontend development workflow powered by [Bud](https://bud.js.org/)
-- Out of the box support for [Tailwind CSS](https://tailwindcss.com/)
+## Requirements
 
-## Getting Started
+- [Acorn](https://roots.io/acorn/docs/installation/) v3
+- [PHP](https://secure.php.net/manual/en/install.php) >= 8.0 (
+  with [`php-mbstring`](https://secure.php.net/manual/en/book.mbstring.php) enabled)
+- [Composer](https://getcomposer.org/download/)
+- [Vite](https://vitejs.dev) >= 3.1.0
+- [Node.js](http://nodejs.org/) >= 18.0.0
+- [Yarn](https://yarnpkg.com/en/docs/install)
 
-See the [Sage installation documentation](https://roots.io/sage/docs/installation/).
+## Theme installation
 
-## Stay Connected
+- **Make sure that you have [Acorn installed](https://roots.io/acorn/docs/installation/)**
+- Install Sage using Composer from your WordPress themes directory (replace `your-theme-name` below with the name of
+  your theme):
 
-- Join us on Discord by [sponsoring us on GitHub](https://github.com/sponsors/roots)
-- Participate on [Roots Discourse](https://discourse.roots.io/)
-- Follow [@rootswp on Twitter](https://twitter.com/rootswp)
-- Read the [Roots Blog](https://roots.io/blog/)
-- Subscribe to the [Roots Newsletter](https://roots.io/newsletter/)
+```shell
+# @ app/themes/ or wp-content/themes/
+$ composer create-project onepixnet/sage-vite your-theme-name
+```
+
+To install the latest development version of Sage, add `dev-develop` to the end of the command:
+
+```shell
+$ composer create-project onepixnet/sage-vite your-theme-name dev-develop
+```
+
+## Theme structure
+
+```sh
+themes/your-theme-name/   # → Root of your Sage based theme
+├── app/                  # → Theme PHP
+│   ├── Providers/        # → Service providers
+│   ├── View/             # → View models
+│   ├── filters.php       # → Theme filters
+│   ├── helpers.php       # → Global helpers
+│   ├── medias.php        # → Medias helper
+│   └── setup.php         # → Theme setup
+├── composer.json         # → Autoloading for `app/` files
+├── public/               # → Built theme assets (never edit)
+├── functions.php         # → Theme bootloader
+├── index.php             # → Theme template wrapper
+├── node_modules/         # → Node.js packages (never edit)
+├── package.json          # → Node.js dependencies and scripts
+├── resources/            # → Theme assets and templates
+│   ├── fonts/            # → Theme fonts
+│   ├── images/           # → Theme images
+│   ├── scripts/          # → Theme javascript
+│   ├── styles/           # → Theme stylesheets
+│   ├── svg/              # → Theme svgs
+│   └── views/            # → Theme templates
+│       ├── components/   # → Component templates
+│       ├── forms/        # → Form templates
+│       ├── layouts/      # → Base templates
+│       ├── partials/     # → Partial templates
+        └── sections/     # → Section templates
+├── screenshot.png        # → Theme screenshot for WP admin
+├── style.css             # → Theme meta information
+├── vendor/               # → Composer packages (never edit)
+└── vite.config.ts        # → Vite configuration
+```
+
+## Theme development
+
+- Run `yarn` from the theme directory to install dependencies
+- Update `vite.config.ts` for bundler fine tuning
+
+### Build commands
+
+- `yarn dev` — Start dev server and hot module replacement
+- `yarn build` — Compile assets
+- `yarn lint` — Lint stylesheets & javascripts
+- `yarn lint:css` — Lint stylesheets
+- `yarn lint:js` — Lint javascripts
+
+### Hot Module Replacement
+
+#### Project Side
+
+Add the following variables in your project `.env`
+
+```sh
+# Endpoint where the bundler serve your assets
+HMR_ENTRYPOINT=http://localhost:5173
+```
+
+#### Theme side
+
+For advanced dev server configuration, copy `.env.example` according
+to [Vite naming convention and loading order](https://vitejs.dev/guide/env-and-mode.html#env-files) and update variables
+
+#### FYI
+
+Running HMR Mode remove the `public/manifest.json` file, so do not forget to re-run the assets compilation
+with `yarn build` if needed.
+
+## Documentation
+
+- [Sage documentation](https://roots.io/sage/docs/)
+- [Controller documentation](https://github.com/soberwp/controller#usage)
+- [Vite](https://vitejs.dev/guide/)
