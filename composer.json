@@ -1,37 +1,19 @@
 {
-  "name": "roots/sage",
+  "name": "onepixnet/sage-vite",
   "type": "wordpress-theme",
   "license": "MIT",
-  "description": "WordPress starter theme with a modern development workflow",
-  "homepage": "https://roots.io/sage/",
+  "description": "WordPress starter theme with block editor support and Vite builder",
   "authors": [
     {
-      "name": "Ben Word",
-      "email": "ben@benword.com",
-      "homepage": "https://github.com/retlehs"
-    },
-    {
-      "name": "Scott Walkinshaw",
-      "email": "scott.walkinshaw@gmail.com",
-      "homepage": "https://github.com/swalkinshaw"
-    },
-    {
-      "name": "QWp6t",
-      "email": "hi@qwp6t.me",
-      "homepage": "https://github.com/qwp6t"
-    },
-    {
-      "name": "Brandon Nifong",
-      "email": "brandon@tendency.me",
-      "homepage": "https://github.com/log1x"
+      "name": "OnePix",
+      "email": "expert@onepix.net"
     }
   ],
   "keywords": [
     "wordpress"
   ],
   "support": {
-    "issues": "https://github.com/roots/sage/issues",
-    "forum": "https://discourse.roots.io/"
+    "issues": "https://github.com/onepixnet/sage-vite/issues"
   },
   "autoload": {
     "psr-4": {
@@ -39,7 +21,8 @@
     }
   },
   "require": {
-    "php": ">=8.1"
+    "php": ">=8.1",
+    "roots/acorn": "^4.2"
   },
   "require-dev": {
     "laravel/pint": "^1.13"
