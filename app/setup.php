@@ -29,7 +29,7 @@ add_action('wp_enqueue_scripts', function (): void {
      * Enqueue theme stylesheets
      */
     if (hmr_enabled()) {
-        $asset = 'resources/scripts/main.ts';
+        $asset = 'resources/index.js';
         $namespace = strtolower(wp_get_theme()->get('Name'));
 
         wp_enqueue_script($namespace, hmr_assets($asset), array (), null, true);
@@ -46,7 +46,7 @@ add_action('wp_enqueue_scripts', function (): void {
  */
 add_action('enqueue_block_editor_assets', function (): void {
     if (hmr_enabled()) {
-        $asset = 'resources/scripts/editor.ts';
+        $asset = 'resources/scripts/editor.js';
         $namespace = strtolower(wp_get_theme()->get('Name'));
 
         wp_enqueue_script($namespace, hmr_assets($asset), array (), null, true);

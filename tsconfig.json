@@ -27,8 +27,7 @@
         }
     },
     "include": [
-        "resources/**/*.ts",
-        "resources/**/*.d.ts",
+        "resources/**/*.js",
         "vite.config.ts"
     ],
     "references": [

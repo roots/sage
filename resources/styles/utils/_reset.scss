@@ -1,0 +1,70 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  outline: none;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-block;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  user-select: none;
+  color: inherit;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+  background: none;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-weight: 700;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+ul,
+ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  font-family: inherit;
+  color: inherit;
+  background-color: #fff;
+  border: none;
+  cursor: none;
+
+  &:hover,
+  &:focus {
+    outline: none;
+  }
+}

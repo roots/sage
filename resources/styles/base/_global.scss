@@ -1,0 +1,35 @@
+body {
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+  font-family: $font;
+  line-height: 1.5;
+  color: $color-main;
+  min-width: 320px;
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+main {
+  flex: 1;
+  width: 100%;
+  overflow: hidden;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}

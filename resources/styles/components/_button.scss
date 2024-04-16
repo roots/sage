@@ -1,0 +1,47 @@
+.button {
+  display: inline-block;
+  width: 100%;
+  padding: 10px 20px;
+  font-family: $font;
+  background: $color-main;
+  color: #fff;
+  user-select: none;
+  text-align: center;
+  transition: background-color 0.3s;
+  border-radius: 24px;
+  cursor: pointer;
+
+  @include media-up(md) {
+    width: fit-content;
+    min-width: 160px;
+    padding: 10px 25px;
+  }
+
+  @include media-up(lg) {
+    padding: 10px 40px;
+  }
+
+  &--icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &--plus {
+    position: relative;
+
+    &:after {
+      // example of using icons alias
+      content: url(@icons/plus.svg);
+      position: absolute;
+      z-index: 1;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: block;
+      width: 20px;
+      height: 20px;
+    }
+  }
+}

@@ -15,6 +15,7 @@ const assets = {
   scripts: 'resources/scripts',
   styles: 'resources/styles',
   images: 'resources/images',
+  icons: 'resources/images/icons',
   fonts: 'resources/fonts',
 }
 
@@ -35,6 +36,7 @@ export default defineConfig(({ mode }: ConfigEnv) => {
         '@styles': path.resolve(__dirname, assets.styles),
         '@fonts': path.resolve(__dirname, assets.fonts),
         '@images': path.resolve(__dirname, assets.images),
+        '@icons': path.resolve(__dirname, assets.icons),
       },
     },
     css: {
@@ -47,8 +49,8 @@ export default defineConfig(({ mode }: ConfigEnv) => {
       assetsDir: '',
       rollupOptions: {
         input: {
-          main: path.resolve(__dirname, `${assets.scripts}/main.ts`),
-          editor: path.resolve(__dirname, `${assets.scripts}/editor.ts`),
+          main: path.resolve(__dirname, `${assets.scripts}/index.js`),
+          editor: path.resolve(__dirname, `${assets.scripts}/editor.js`),
         },
         plugins: [
           outputManifest({

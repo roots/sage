@@ -4,7 +4,6 @@ build:
           - .eslintrc.js
           - .prettierrc
           - .stylelintrc
-          - bud.config.js
           - tsconfig.json
 dependencies:
   - changed-files:

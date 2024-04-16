@@ -46,7 +46,7 @@ $ yarn build
 
 You're ready to go!
 
-To start dev server update proxy url in `bud.config.js:37` (setProxyUrl) and run
+To start dev server and HMR just run
 
 ```shell
 $ yarn dev
@@ -85,8 +85,8 @@ themes/your-theme-name/   # → Root of your Sage based theme
 ├── resources/            # → Theme assets and templates
 │   ├── fonts/            # → Theme fonts
 │   ├── images/           # → Theme images
-│   ├── scripts/          # → Theme javascript
-│   ├── styles/           # → Theme stylesheets
+│   ├── scripts/          # → Theme scripts
+│   ├── styles/           # → Theme styles
 │   ├── svg/              # → Theme svgs
 │   └── views/            # → Theme templates
 │       ├── components/   # → Component templates

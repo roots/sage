@@ -1,24 +1,14 @@
-/**
- * Shared
- */
-@import 'shared';
+/* UTILS */
+@import "utils";
 
-/**
- * Reset
- */
-@import 'normalize';
+/* BASE */
+@import "base";
 
-/**
- * Components
- */
-@import 'components';
+/* COMPONENTS */
+@import "components";
 
-/**
- * Layout
- */
-@import 'layouts';
+/* LAYOUT */
+@import "layouts";
 
-/**
- * Tools
- */
-@import 'tools';
+/* PAGES */
+@import "pages";

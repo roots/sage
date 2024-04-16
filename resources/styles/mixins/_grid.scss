@@ -1,9 +1,0 @@
-/**
- * Base grid
- */
-@mixin grid {
-    display: grid;
-    grid-template-columns: repeat(var(--grid-size), 1fr);
-    gap: var(--grid-gap, #{spacer(4)});
-    margin: 0 auto;
-}
