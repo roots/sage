@@ -1,0 +1,39 @@
+{
+    "compilerOptions": {
+        "target": "esnext",
+        "useDefineForClassFields": true,
+        "module": "esnext",
+        "moduleResolution": "node",
+        "strict": true,
+        "jsx": "preserve",
+        "sourceMap": true,
+        "resolveJsonModule": true,
+        "esModuleInterop": true,
+        "noImplicitAny": true,
+        "noImplicitThis": true,
+        "noImplicitReturns": true,
+        "baseUrl": ".",
+        "lib": [
+            "esnext",
+            "dom"
+        ],
+        "paths": {
+            "@scripts/*": [
+                "resources/scripts/*"
+            ],
+            "@types/*": [
+                "resources/types/*"
+            ]
+        }
+    },
+    "include": [
+        "resources/**/*.ts",
+        "resources/**/*.d.ts",
+        "vite.config.ts"
+    ],
+    "references": [
+        {
+            "path": "tsconfig.node.json"
+        }
+    ]
+}

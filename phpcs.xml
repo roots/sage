@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+
+<ruleset name="Roots">
+  <description>Roots Coding Standards</description>
+
+  <!-- Scan these files -->
+  <file>functions.php</file>
+  <file>index.php</file>
+  <file>app</file>
+
+  <!-- Show colors in console -->
+  <arg value="-colors" />
+
+  <!-- Show sniff codes in all reports -->
+  <arg value="s" />
+
+  <!-- Use PSR-12 as a base -->
+  <rule ref="PSR12" />
+</ruleset>

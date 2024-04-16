@@ -121,7 +121,7 @@ Add the following variables in your project `.env`
 
 ```sh
 # Endpoint where the bundler serve your assets
-HMR_ENTRYPOINT=http://localhost:5173
+HMR_ENTRYPOINT=http://localhost:3000
 ```
 
 #### Theme side

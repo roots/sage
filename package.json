@@ -1,27 +1,39 @@
 {
-  "name": "sage",
-  "private": true,
-  "browserslist": [
-    "extends @roots/browserslist-config"
-  ],
-  "engines": {
-    "node": ">=20.0.0"
-  },
+  "name": "@onepixnet/sage",
+  "version": "4.3.1",
+  "description": "Wordpress theme based on Sage starter theme using Vite",
+  "license": "MIT",
   "type": "module",
   "scripts": {
-    "dev": "bud dev",
-    "build": "bud build",
-    "translate": "npm run translate:pot && npm run translate:update",
-    "translate:pot": "wp i18n make-pot . ./resources/lang/sage.pot --include=\"theme.json,patterns,app,resources\"",
-    "translate:update": "for file in ./resources/lang/*.po; do wp i18n update-po ./resources/lang/sage.pot $file; done",
-    "translate:compile": "npm run translate:mo && npm run translate:js",
-    "translate:js": "wp i18n make-json ./resources/lang --pretty-print",
-    "translate:mo": "wp i18n make-mo ./resources/lang ./resources/lang"
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview",
+    "lint:js": "eslint .",
+    "lint:css": "stylelint **/*.{scss,css}",
+    "lint": "yarn lint:js && yarn lint:css"
   },
   "devDependencies": {
-    "@roots/bud": "6.20.0",
-    "@roots/bud-tailwindcss": "6.20.0",
-    "@roots/sage": "6.20.0"
+    "@eslint/js": "^9.0.0",
+    "@types/node": "^20.12.5",
+    "autoprefixer": "^10.4.14",
+    "dotenv": "^16.0.0",
+    "eslint": "^9.0.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.1.3",
+    "postcss": "^8.4.38",
+    "postcss-custom-media": "^10.0.4",
+    "postcss-inline-svg": "^6.0.0",
+    "postcss-scss": "^4.0.6",
+    "prettier": "^3.2.5",
+    "rollup-plugin-copy": "^3.4.0",
+    "rollup-plugin-output-manifest": "^2.0.0",
+    "sass": "^1.62.0",
+    "stylelint": "^16.3.1",
+    "stylelint-config-recommended-scss": "^14.0.0",
+    "stylelint-config-standard": "^36.0.0",
+    "typescript": "^5.0.4",
+    "typescript-eslint": "^7.5.0",
+    "vite": "^5.2.8"
   },
   "dependencies": {}
 }

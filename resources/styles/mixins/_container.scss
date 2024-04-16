@@ -1,0 +1,5 @@
+@mixin container {
+    max-width: var(--grid-max, rem(1400));
+    width: calc(100% - (var(--grid-gap, rem(20)) * 2));
+    margin: 0 auto;
+}

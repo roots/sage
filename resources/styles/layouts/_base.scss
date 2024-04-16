@@ -1,0 +1,13 @@
+body {
+    @include typo-base;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.whatsapp {
+    background: svg-load('whatsapp.svg');
+}
+
+.container {
+    @include container;
+}

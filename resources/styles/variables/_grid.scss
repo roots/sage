@@ -1,0 +1,24 @@
+:root {
+    --grid-max: #{rem(1400)};
+    --grid-gap: #{spacer()};
+    --grid-size: 6;
+}
+
+@media (--md) {
+    :root {
+        --grid-gap: #{spacer(2)};
+    }
+}
+
+@media (--lg) {
+    :root {
+        --grid-size: 12;
+    }
+}
+
+@media (--xl) {
+    :root {
+        --grid-size: 12;
+        --grid-gap: #{spacer(3)};
+    }
+}

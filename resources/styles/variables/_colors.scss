@@ -1,0 +1,9 @@
+$colors: (
+    'dark': #333
+);
+
+:root {
+    @each $name, $color in $colors {
+        --color-#{$name}: #{$color};
+    }
+}

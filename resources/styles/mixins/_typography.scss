@@ -1,0 +1,4 @@
+@mixin typo-base {
+    @include font-whyte;
+    line-height: $line-height;
+}
