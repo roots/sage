@@ -61,5 +61,10 @@
         "App\\Providers\\ThemeServiceProvider"
       ]
     }
+  },
+  "scripts": {
+    "post-autoload-dump": [
+      "Roots\\Acorn\\ComposerScripts::postAutoloadDump"
+    ]
   }
 }
