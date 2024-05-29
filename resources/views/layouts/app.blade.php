@@ -12,7 +12,7 @@
 
     <div id="app">
       <a class="sr-only focus:not-sr-only" href="#main">
-        {{ __('Skip to content') }}
+        {{ __('Skip to content', 'sage') }}
       </a>
 
       @include('sections.header')
