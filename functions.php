@@ -31,7 +31,7 @@ require $composer;
 
 if (! function_exists('\Roots\bootloader')) {
     wp_die(
-        __('You need to install Acorn to use this theme.', 'sage'),
+        __('You need to install Acorn to use this theme. Run <code>composer install</code> in your theme directory to fix this.', 'sage'),
         '',
         [
             'link_url' => 'https://roots.io/acorn/docs/installation/',
