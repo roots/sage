@@ -22,7 +22,7 @@ add_action('wp_enqueue_scripts', function () {
  *
  * @return void
  */
-add_action('enqueue_block_editor_assets', function () {
+add_action('enqueue_block_assets', function () {
     bundle('editor')->enqueue();
 }, 100);
 
