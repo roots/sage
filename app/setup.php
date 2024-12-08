@@ -51,13 +51,13 @@ add_filter('admin_head', function () {
 /**
  * Use theme.json from the build directory
  *
- * @param  string $path
- * @param  string $file
+ * @param  string  $path
+ * @param  string  $file
  * @return string
  */
 add_filter('theme_file_path', function (string $path, string $file): string {
     if ($file === 'theme.json') {
-        return public_path() . '/build/theme.json';
+        return public_path().'/build/theme.json';
     }
 
     return $path;
