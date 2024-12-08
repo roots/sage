@@ -4,17 +4,17 @@ import {
   wordpressPlugin,
   wordpressRollupPlugin,
   wordPressThemeJson,
-} from './resources/scripts/build/wordpress'
+} from './resources/js/build/wordpress'
 import tailwindConfig from './tailwind.config.js'
 
 export default defineConfig({
   plugins: [
     laravel({
       input: [
-        'resources/styles/app.css',
-        'resources/scripts/app.js',
-        'resources/styles/editor.css',
-        'resources/scripts/editor.js',
+        'resources/css/app.css',
+        'resources/js/app.js',
+        'resources/css/editor.css',
+        'resources/js/editor.js',
       ],
       refresh: true,
     }),

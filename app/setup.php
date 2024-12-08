@@ -17,8 +17,8 @@ use Illuminate\Support\Str;
  */
 add_filter('wp_head', function () {
     echo Str::wrap(app('assets.vite')([
-        'resources/styles/app.css',
-        'resources/scripts/app.js',
+        'resources/css/app.css',
+        'resources/js/app.js',
     ]), "\n");
 });
 
@@ -43,8 +43,8 @@ add_filter('admin_head', function () {
     }
 
     echo Str::wrap(app('assets.vite')([
-        'resources/styles/editor.css',
-        'resources/scripts/editor.js',
+        'resources/css/editor.css',
+        'resources/js/editor.js',
     ]), "\n");
 });
 
