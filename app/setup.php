@@ -6,25 +6,62 @@
 
 namespace App;
 
-use function Roots\bundle;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Vite;
+use Illuminate\Support\Str;
 
 /**
- * Register the theme assets.
+ * Inject the Vite assets into the head.
  *
  * @return void
  */
-add_action('wp_enqueue_scripts', function () {
-    bundle('app')->enqueue();
-}, 100);
+add_filter('wp_head', function () {
+    echo Str::wrap(app('assets.vite')([
+        'resources/styles/app.css',
+        'resources/scripts/app.js',
+    ]), "\n");
+});
 
 /**
- * Register the theme assets with the block editor.
+ * Inject assets into the block editor.
  *
  * @return void
  */
-add_action('enqueue_block_editor_assets', function () {
-    bundle('editor')->enqueue();
-}, 100);
+add_filter('admin_head', function () {
+    $screen = get_current_screen();
+
+    if (! $screen?->is_block_editor()) {
+        return;
+    }
+
+    $dependencies = File::json(public_path('build/editor.deps.json')) ?? [];
+
+    foreach ($dependencies as $dependency) {
+        if (! wp_script_is($dependency)) {
+            wp_enqueue_script($dependency);
+        }
+    }
+
+    echo Str::wrap(app('assets.vite')([
+        'resources/styles/editor.css',
+        'resources/scripts/editor.js',
+    ]), "\n");
+});
+
+/**
+ * Use theme.json from the build directory
+ *
+ * @param  string $path
+ * @param  string $file
+ * @return string
+ */
+add_filter('theme_file_path', function (string $path, string $file): string {
+    if ($file === 'theme.json') {
+        return public_path() . '/build/theme.json';
+    }
+
+    return $path;
+}, 10, 2);
 
 /**
  * Register the initial theme setup.
