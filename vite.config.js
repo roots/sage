@@ -3,8 +3,8 @@ import laravel from 'laravel-vite-plugin'
 import {
   wordpressPlugin,
   wordpressRollupPlugin,
+  wordPressThemeJson,
 } from './resources/scripts/build/wordpress'
-import wordPressThemeJson from './resources/scripts/build/theme-json'
 import tailwindConfig from './tailwind.config.js'
 
 export default defineConfig({
