@@ -1,4 +1,4 @@
-import type { Plugin } from 'vite'
+import { defineConfig } from 'vite'
 import resolveConfig from 'tailwindcss/resolveConfig'
 import {
   defaultRequestToExternal,
@@ -8,7 +8,7 @@ import fs from 'fs'
 import path from 'path'
 
 // WordPress Plugin Helper Functions
-function extractNamedImports(imports: string): string[] {
+function extractNamedImports(imports) {
   const match = imports.match(/{([^}]+)}/)
   if (!match) return []
   return match[1]
@@ -16,7 +16,7 @@ function extractNamedImports(imports: string): string[] {
     .map((s) => s.trim())
 }
 
-function handleNamedReplacement(namedImports: string[], external: string[]): string {
+function handleNamedReplacement(namedImports, external) {
   return namedImports
     .map((imports) => {
       const [name, alias = name] = imports
@@ -28,28 +28,26 @@ function handleNamedReplacement(namedImports: string[], external: string[]): str
     .join('\n')
 }
 
-function handleReplacements(imports: string[], external: string[]): string {
-  if (typeof imports === 'string') {
-    imports = [imports]
-  }
+function handleReplacements(imports, external) {
+  const importStr = Array.isArray(imports) ? imports[0] : imports
 
-  if (imports[0].includes('{')) {
-    const namedImports = extractNamedImports(imports[0])
+  if (importStr.includes('{')) {
+    const namedImports = extractNamedImports(importStr)
     return handleNamedReplacement(namedImports, external)
   }
 
-  if (imports[0].includes('* as')) {
-    const match = imports[0].match(/\*\s+as\s+(\w+)/)
+  if (importStr.includes('* as')) {
+    const match = importStr.match(/\*\s+as\s+(\w+)/)
     if (!match) return ''
     const alias = match[1]
     return `const ${alias} = ${external.join('.')};`
   }
 
-  const name = imports[0].trim()
+  const name = importStr.trim()
   return `const ${name} = ${external.join('.')};`
 }
 
-function flattenColors(colors: Record<string, any>, prefix = '') {
+function flattenColors(colors, prefix = '') {
   return Object.entries(colors).reduce((acc, [name, value]) => {
     const formattedName = name.charAt(0).toUpperCase() + name.slice(1)
 
@@ -63,20 +61,18 @@ function flattenColors(colors: Record<string, any>, prefix = '') {
       acc.push(...flattenColors(value, name))
     }
     return acc
-  }, [] as Array<{ name: string; slug: string; color: string }>)
+  }, [])
 }
 
 // Plugin Exports
-export function wordpressPlugin(): Plugin {
-  const dependencies = new Set<string>()
+export function wordpressPlugin() {
+  const dependencies = new Set()
 
   return {
     name: 'wordpress-plugin',
     enforce: 'post',
-    transform(code: string, id: string) {
-      if (!id.endsWith('.js')) {
-        return
-      }
+    transform(code, id) {
+      if (!id.endsWith('.js')) return
 
       const imports = [
         ...(code.match(/^import .+ from ['"]@wordpress\/[^'"]+['"]/gm) || []),
@@ -88,27 +84,19 @@ export function wordpressPlugin(): Plugin {
           statement.match(/^import (.+) from ['"]@wordpress\/([^'"]+)['"]/) ||
           statement.match(/^import ['"]@wordpress\/([^'"]+)['"]/)
 
-        if (!match) {
-          return
-        }
+        if (!match) return
 
         const [, imports, pkg] = match
-
-        if (!pkg) {
-          return
-        }
+        if (!pkg) return
 
         const external = defaultRequestToExternal(`@wordpress/${pkg}`)
         const handle = defaultRequestToHandle(`@wordpress/${pkg}`)
 
         if (external && handle) {
           dependencies.add(handle)
-
           const replacement = imports
             ? handleReplacements(imports, external)
-            : `const ${pkg.replace(/-([a-z])/g, (_, letter) =>
-                letter.toUpperCase()
-              )} = ${external.join('.')};`
+            : `const ${pkg.replace(/-([a-z])/g, (_, letter) => letter.toUpperCase())} = ${external.join('.')};`
 
           code = code.replace(statement, replacement)
         }
@@ -126,18 +114,16 @@ export function wordpressPlugin(): Plugin {
   }
 }
 
-export function wordpressRollupPlugin(): Plugin {
+export function wordpressRollupPlugin() {
   return {
     name: 'wordpress-rollup-plugin',
-    options(opts: any) {
-      opts.external = (id: string) => id.startsWith('@wordpress/')
+    options(opts) {
+      opts.external = (id) => id.startsWith('@wordpress/')
       opts.output = opts.output || {}
-      opts.output.globals = (id: string) => {
+      opts.output.globals = (id) => {
         if (id.startsWith('@wordpress/')) {
           const packageName = id.replace('@wordpress/', '')
-          return `wp.${packageName.replace(/-([a-z])/g, (_, letter) =>
-            letter.toUpperCase()
-          )}`
+          return `wp.${packageName.replace(/-([a-z])/g, (_, letter) => letter.toUpperCase())}`
         }
       }
       return opts
@@ -170,8 +156,7 @@ export function wordpressThemeJson({
               ...baseThemeJson.settings?.color,
               palette: flattenColors(resolvedConfig.theme.colors),
             },
-          }) ||
-            {}),
+          }) || {}),
           ...((!disableFonts && resolvedConfig.theme?.fontFamily && {
             typography: {
               ...baseThemeJson.settings?.typography,
@@ -182,8 +167,7 @@ export function wordpressThemeJson({
                   fontFamily: Array.isArray(value) ? value.join(',') : value,
                 })),
             },
-          }) ||
-            {}),
+          }) || {}),
           ...((!disableFontSizes && resolvedConfig.theme?.fontSize && {
             typography: {
               ...baseThemeJson.settings?.typography,
@@ -194,8 +178,7 @@ export function wordpressThemeJson({
                   size: Array.isArray(value) ? value[0] : value,
                 })),
             },
-          }) ||
-            {}),
+          }) || {}),
         },
       }
 
