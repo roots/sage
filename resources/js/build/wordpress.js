@@ -64,7 +64,16 @@ function flattenColors(colors, prefix = '') {
   }, [])
 }
 
-// Plugin Exports
+/**
+ * Vite plugin that handles WordPress dependencies and generates a dependency manifest.
+ *
+ * This plugin:
+ * 1. Transforms @wordpress/* imports into global wp.* references
+ * 2. Tracks WordPress script dependencies
+ * 3. Generates an editor.deps.json file listing all WordPress dependencies
+ *
+ * @returns {import('vite').Plugin} Vite plugin
+ */
 export function wordpressPlugin() {
   const dependencies = new Set()
 
@@ -114,6 +123,18 @@ export function wordpressPlugin() {
   }
 }
 
+/**
+ * Rollup plugin that configures external WordPress dependencies.
+ *
+ * This plugin:
+ * 1. Marks all @wordpress/* packages as external dependencies
+ * 2. Maps external @wordpress/* imports to wp.* global variables
+ *
+ * This prevents WordPress core libraries from being bundled and ensures
+ * they are loaded from WordPress's global scope instead.
+ *
+ * @returns {import('rollup').Plugin} Rollup plugin
+ */
 export function wordpressRollupPlugin() {
   return {
     name: 'wordpress-rollup-plugin',
@@ -131,6 +152,21 @@ export function wordpressRollupPlugin() {
   }
 }
 
+/**
+ * Generates a WordPress theme.json file by combining:
+ * - Base theme.json settings
+ * - Tailwind configuration (colors, fonts, font sizes)
+ *
+ * The generated theme.json is emitted to public/build/assets/theme.json
+ * and provides WordPress with theme settings that match your Tailwind configuration.
+ *
+ * @param {Object} options Plugin options
+ * @param {Object} options.tailwindConfig - The resolved Tailwind configuration object
+ * @param {boolean} [options.disableTailwindColors=false] - Disable including Tailwind colors in theme.json
+ * @param {boolean} [options.disableTailwindFonts=false] - Disable including Tailwind fonts in theme.json
+ * @param {boolean} [options.disableTailwindFontSizes=false] - Disable including Tailwind font sizes in theme.json
+ * @returns {import('vite').Plugin} Vite plugin
+ */
 export function wordpressThemeJson({
   tailwindConfig,
   disableTailwindColors = false,
