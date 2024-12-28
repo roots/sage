@@ -1,4 +1,3 @@
-import { defineConfig } from 'vite'
 import resolveConfig from 'tailwindcss/resolveConfig'
 import {
   defaultRequestToExternal,
@@ -6,63 +5,6 @@ import {
 } from '@wordpress/dependency-extraction-webpack-plugin/lib/util'
 import fs from 'fs'
 import path from 'path'
-
-// WordPress Plugin Helper Functions
-function extractNamedImports(imports) {
-  const match = imports.match(/{([^}]+)}/)
-  if (!match) return []
-  return match[1]
-    .split(',')
-    .map((s) => s.trim())
-}
-
-function handleNamedReplacement(namedImports, external) {
-  return namedImports
-    .map((imports) => {
-      const [name, alias = name] = imports
-        .split(' as ')
-        .map((script) => script.trim())
-
-      return `const ${alias} = ${external.join('.')}.${name};`
-    })
-    .join('\n')
-}
-
-function handleReplacements(imports, external) {
-  const importStr = Array.isArray(imports) ? imports[0] : imports
-
-  if (importStr.includes('{')) {
-    const namedImports = extractNamedImports(importStr)
-    return handleNamedReplacement(namedImports, external)
-  }
-
-  if (importStr.includes('* as')) {
-    const match = importStr.match(/\*\s+as\s+(\w+)/)
-    if (!match) return ''
-    const alias = match[1]
-    return `const ${alias} = ${external.join('.')};`
-  }
-
-  const name = importStr.trim()
-  return `const ${name} = ${external.join('.')};`
-}
-
-function flattenColors(colors, prefix = '') {
-  return Object.entries(colors).reduce((acc, [name, value]) => {
-    const formattedName = name.charAt(0).toUpperCase() + name.slice(1)
-
-    if (typeof value === 'string') {
-      acc.push({
-        name: prefix ? `${prefix.charAt(0).toUpperCase() + prefix.slice(1)}-${formattedName}` : formattedName,
-        slug: prefix ? `${prefix}-${name}`.toLowerCase() : name.toLowerCase(),
-        color: value,
-      })
-    } else if (typeof value === 'object') {
-      acc.push(...flattenColors(value, name))
-    }
-    return acc
-  }, [])
-}
 
 /**
  * Vite plugin that handles WordPress dependencies and generates a dependency manifest.
@@ -76,6 +18,43 @@ function flattenColors(colors, prefix = '') {
  */
 export function wordpressPlugin() {
   const dependencies = new Set()
+
+  // Helper functions for import handling
+  function extractNamedImports(imports) {
+    const match = imports.match(/{([^}]+)}/)
+    if (!match) return []
+    return match[1].split(',').map((s) => s.trim())
+  }
+
+  function handleNamedReplacement(namedImports, external) {
+    return namedImports
+      .map((imports) => {
+        const [name, alias = name] = imports
+          .split(' as ')
+          .map((script) => script.trim())
+        return `const ${alias} = ${external.join('.')}.${name};`
+      })
+      .join('\n')
+  }
+
+  function handleReplacements(imports, external) {
+    const importStr = Array.isArray(imports) ? imports[0] : imports
+
+    if (importStr.includes('{')) {
+      const namedImports = extractNamedImports(importStr)
+      return handleNamedReplacement(namedImports, external)
+    }
+
+    if (importStr.includes('* as')) {
+      const match = importStr.match(/\*\s+as\s+(\w+)/)
+      if (!match) return ''
+      const alias = match[1]
+      return `const ${alias} = ${external.join('.')};`
+    }
+
+    const name = importStr.trim()
+    return `const ${name} = ${external.join('.')};`
+  }
 
   return {
     name: 'wordpress-plugin',
@@ -173,6 +152,23 @@ export function wordpressThemeJson({
   disableTailwindFonts = false,
   disableTailwindFontSizes = false,
 }) {
+  function flattenColors(colors, prefix = '') {
+    return Object.entries(colors).reduce((acc, [name, value]) => {
+      const formattedName = name.charAt(0).toUpperCase() + name.slice(1)
+
+      if (typeof value === 'string') {
+        acc.push({
+          name: prefix ? `${prefix.charAt(0).toUpperCase() + prefix.slice(1)}-${formattedName}` : formattedName,
+          slug: prefix ? `${prefix}-${name}`.toLowerCase() : name.toLowerCase(),
+          color: value,
+        })
+      } else if (typeof value === 'object') {
+        acc.push(...flattenColors(value, name))
+      }
+      return acc
+    }, [])
+  }
+
   const resolvedConfig = resolveConfig(tailwindConfig)
 
   return {
