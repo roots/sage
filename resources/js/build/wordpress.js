@@ -133,9 +133,9 @@ export function wordpressRollupPlugin() {
 
 export function wordpressThemeJson({
   tailwindConfig,
-  disableColors = false,
-  disableFonts = false,
-  disableFontSizes = false,
+  disableTailwindColors = false,
+  disableTailwindFonts = false,
+  disableTailwindFontSizes = false,
 }) {
   const resolvedConfig = resolveConfig(tailwindConfig)
 
@@ -151,13 +151,13 @@ export function wordpressThemeJson({
         ...baseThemeJson,
         settings: {
           ...baseThemeJson.settings,
-          ...((!disableColors && resolvedConfig.theme?.colors && {
+          ...((!disableTailwindColors && resolvedConfig.theme?.colors && {
             color: {
               ...baseThemeJson.settings?.color,
               palette: flattenColors(resolvedConfig.theme.colors),
             },
           }) || {}),
-          ...((!disableFonts && resolvedConfig.theme?.fontFamily && {
+          ...((!disableTailwindFonts && resolvedConfig.theme?.fontFamily && {
             typography: {
               ...baseThemeJson.settings?.typography,
               fontFamilies: Object.entries(resolvedConfig.theme.fontFamily)
@@ -168,7 +168,7 @@ export function wordpressThemeJson({
                 })),
             },
           }) || {}),
-          ...((!disableFontSizes && resolvedConfig.theme?.fontSize && {
+          ...((!disableTailwindFontSizes && resolvedConfig.theme?.fontSize && {
             typography: {
               ...baseThemeJson.settings?.typography,
               fontSizes: Object.entries(resolvedConfig.theme.fontSize)

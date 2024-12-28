@@ -26,9 +26,9 @@ export default defineConfig({
     // based on the Tailwind config and the theme.json file from base theme folder
     wordpressThemeJson({
       tailwindConfig,
-      disableColors: false,
-      disableFonts: false,
-      disableFontSizes: false,
+      disableTailwindColors: false,
+      disableTailwindFonts: false,
+      disableTailwindFontSizes: false,
     }),
   ],
 })
