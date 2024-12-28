@@ -7,84 +7,6 @@ import {
 import fs from 'fs'
 import path from 'path'
 
-// Theme JSON Types
-interface ThemeJsonColor {
-  name: string
-  slug: string
-  color: string
-}
-
-interface ThemeJsonFontFamily {
-  name: string
-  slug: string
-  fontFamily: string
-}
-
-interface ThemeJsonFontSize {
-  name: string
-  slug: string
-  size: string
-}
-
-interface ThemeJsonSettings {
-  background?: {
-    backgroundImage?: boolean
-  }
-  color?: {
-    custom?: boolean
-    customDuotone?: boolean
-    customGradient?: boolean
-    defaultDuotone?: boolean
-    defaultGradients?: boolean
-    defaultPalette?: boolean
-    duotone?: any[]
-    palette?: ThemeJsonColor[]
-  }
-  custom?: {
-    spacing?: Record<string, any>
-    typography?: {
-      'font-size'?: Record<string, any>
-      'line-height'?: Record<string, any>
-    }
-  }
-  spacing?: {
-    padding?: boolean
-    units?: string[]
-  }
-  typography?: {
-    customFontSize?: boolean
-    dropCap?: boolean
-    fontFamilies?: ThemeJsonFontFamily[]
-    fontSizes?: ThemeJsonFontSize[]
-  }
-}
-
-interface ThemeJsonOptions {
-  tailwindConfig?: any
-  settings?: ThemeJsonSettings
-  fileName?: string
-  version?: number
-  disableColors?: boolean
-  disableFonts?: boolean
-  disableFontSizes?: boolean
-  customTemplates?: Array<{
-    name: string
-    title: string
-  }>
-  patterns?: Array<{
-    name: string
-    title: string
-    content: string
-  }>
-  styles?: Record<string, any>
-  templateParts?: Array<{
-    name: string
-    title: string
-    area: string
-  }>
-  title?: string
-}
-
 // WordPress Plugin Helper Functions
 function extractNamedImports(imports: string): string[] {
   const match = imports.match(/{([^}]+)}/)
@@ -127,66 +49,22 @@ function handleReplacements(imports: string[], external: string[]): string {
   return `const ${name} = ${external.join('.')};`
 }
 
-// Theme JSON Helper Functions
-const toTitleCase = (slug: string): string =>
-  slug
-    .split('-')
-    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(' ')
+function flattenColors(colors: Record<string, any>, prefix = '') {
+  return Object.entries(colors).reduce((acc, [name, value]) => {
+    const formattedName = name.charAt(0).toUpperCase() + name.slice(1)
 
-const isValidColor = (value: any): boolean =>
-  typeof value === 'string' && (value.startsWith('#') || value.startsWith('rgb'))
-
-const processColors = (
-  obj: Record<string, any>,
-  prefix = ''
-): ThemeJsonColor[] => {
-  const palette: ThemeJsonColor[] = []
-
-  for (const [key, value] of Object.entries(obj)) {
-    const name = prefix ? `${prefix} ${key}` : key
-    const slug = name.toLowerCase().replace(/\s+/g, '-')
-
-    if (isValidColor(value)) {
-      palette.push({ name: toTitleCase(name), slug, color: value })
-      continue
+    if (typeof value === 'string') {
+      acc.push({
+        name: prefix ? `${prefix.charAt(0).toUpperCase() + prefix.slice(1)}-${formattedName}` : formattedName,
+        slug: prefix ? `${prefix}-${name}`.toLowerCase() : name.toLowerCase(),
+        color: value,
+      })
+    } else if (typeof value === 'object') {
+      acc.push(...flattenColors(value, name))
     }
-
-    if (value && typeof value === 'object' && !Array.isArray(value)) {
-      const nestedColors = processColors(value, name)
-      palette.push(...nestedColors)
-    }
-  }
-
-  return palette
+    return acc
+  }, [] as Array<{ name: string; slug: string; color: string }>)
 }
-
-// Conversion Functions
-const convertTailwindColorsToThemeJson = (config: any): ThemeJsonColor[] =>
-  processColors(resolveConfig(config).theme.colors)
-
-const convertTailwindFontFamiliesToThemeJson = (
-  config: any
-): ThemeJsonFontFamily[] =>
-  Object.entries(resolveConfig(config).theme.fontFamily).map(([name, value]) => ({
-    name: toTitleCase(name),
-    slug: name.toLowerCase(),
-    fontFamily: Array.isArray(value) ? value.join(', ') : String(value),
-  }))
-
-const convertTailwindFontSizesToThemeJson = (
-  config: any
-): ThemeJsonFontSize[] =>
-  Object.entries(resolveConfig(config).theme.fontSize).map(([name, value]) => ({
-    name: toTitleCase(name),
-    slug: name.toLowerCase(),
-    size: Array.isArray(value) ? value[0] : value,
-  }))
-
-const mergeSettings = (
-  defaults: ThemeJsonSettings,
-  overrides: ThemeJsonSettings | undefined
-): ThemeJsonSettings => ({ ...defaults, ...overrides })
 
 // Plugin Exports
 export function wordpressPlugin(): Plugin {
@@ -265,23 +143,6 @@ export function wordpressRollupPlugin(): Plugin {
       return opts
     },
   }
-}
-
-function flattenColors(colors: Record<string, any>, prefix = '') {
-  return Object.entries(colors).reduce((acc, [name, value]) => {
-    const formattedName = name.charAt(0).toUpperCase() + name.slice(1)
-
-    if (typeof value === 'string') {
-      acc.push({
-        name: prefix ? `${prefix.charAt(0).toUpperCase() + prefix.slice(1)}-${formattedName}` : formattedName,
-        slug: prefix ? `${prefix}-${name}`.toLowerCase() : name.toLowerCase(),
-        color: value,
-      })
-    } else if (typeof value === 'object') {
-      acc.push(...flattenColors(value, name))
-    }
-    return acc
-  }, [] as Array<{ name: string; slug: string; color: string }>)
 }
 
 export function wordpressThemeJson({
