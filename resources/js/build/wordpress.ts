@@ -85,8 +85,9 @@ interface ThemeJsonOptions {
 
 // WordPress Plugin Helper Functions
 function extractNamedImports(imports: string): string[] {
-  return imports
-    .match(/{([^}]+)}/)[1]
+  const match = imports.match(/{([^}]+)}/)
+  if (!match) return []
+  return match[1]
     .split(',')
     .map((s) => s.trim())
 }
@@ -103,18 +104,24 @@ function handleNamedReplacement(namedImports: string[], external: string[]): str
     .join('\n')
 }
 
-function handleReplacements(imports: string, external: string[]): string {
-  if (imports.includes('{')) {
-    const namedImports = extractNamedImports(imports)
+function handleReplacements(imports: string[], external: string[]): string {
+  if (typeof imports === 'string') {
+    imports = [imports]
+  }
+
+  if (imports[0].includes('{')) {
+    const namedImports = extractNamedImports(imports[0])
     return handleNamedReplacement(namedImports, external)
   }
 
-  if (imports.includes('* as')) {
-    const alias = imports.match(/\*\s+as\s+(\w+)/)[1]
+  if (imports[0].includes('* as')) {
+    const match = imports[0].match(/\*\s+as\s+(\w+)/)
+    if (!match) return ''
+    const alias = match[1]
     return `const ${alias} = ${external.join('.')};`
   }
 
-  const name = imports.trim()
+  const name = imports[0].trim()
   return `const ${name} = ${external.join('.')};`
 }
 
@@ -258,7 +265,7 @@ export function wordpressRollupPlugin(): Plugin {
   }
 }
 
-export function wordPressThemeJson(options: ThemeJsonOptions = {}): Plugin {
+export function wordpressThemeJson(options: ThemeJsonOptions = {}): Plugin {
   const defaultSettings: ThemeJsonSettings = {
     background: { backgroundImage: true },
     color: {
@@ -328,4 +335,4 @@ export function wordPressThemeJson(options: ThemeJsonOptions = {}): Plugin {
       })
     },
   }
-} 
+}

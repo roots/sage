@@ -3,7 +3,7 @@ import laravel from 'laravel-vite-plugin'
 import {
   wordpressPlugin,
   wordpressRollupPlugin,
-  wordPressThemeJson,
+  wordpressThemeJson,
 } from './resources/js/build/wordpress'
 import tailwindConfig from './tailwind.config.js'
 
@@ -20,7 +20,7 @@ export default defineConfig({
     }),
     wordpressPlugin(),
     wordpressRollupPlugin(),
-    wordPressThemeJson({
+    wordpressThemeJson({
       tailwindConfig,
       settings: {
         background: {
@@ -51,7 +51,7 @@ export default defineConfig({
         },
       },
       disableColors: false,
-      disableFonts: false, 
+      disableFonts: false,
       disableFontSizes: false,
     }),
   ],
