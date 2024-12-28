@@ -57,7 +57,7 @@ add_filter('admin_head', function () {
  */
 add_filter('theme_file_path', function (string $path, string $file): string {
     if ($file === 'theme.json') {
-        return public_path().'/build/theme.json';
+        return public_path().'/build/assets/theme.json';
     }
 
     return $path;

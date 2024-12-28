@@ -18,38 +18,14 @@ export default defineConfig({
       ],
       refresh: true,
     }),
+
     wordpressPlugin(),
     wordpressRollupPlugin(),
+
+    // Generate the theme.json file in the public/build/assets directory
+    // based on the Tailwind config and the theme.json file from base theme folder
     wordpressThemeJson({
       tailwindConfig,
-      settings: {
-        background: {
-          backgroundImage: true,
-        },
-        color: {
-          custom: false,
-          customDuotone: false,
-          customGradient: false,
-          defaultDuotone: false,
-          defaultGradients: false,
-          defaultPalette: false,
-          duotone: [],
-        },
-        custom: {
-          spacing: {},
-          typography: {
-            'font-size': {},
-            'line-height': {},
-          },
-        },
-        spacing: {
-          padding: true,
-          units: ['px', '%', 'em', 'rem', 'vw', 'vh'],
-        },
-        typography: {
-          customFontSize: false,
-        },
-      },
       disableColors: false,
       disableFonts: false,
       disableFontSizes: false,

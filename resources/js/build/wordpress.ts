@@ -4,6 +4,8 @@ import {
   defaultRequestToExternal,
   defaultRequestToHandle,
 } from '@wordpress/dependency-extraction-webpack-plugin/lib/util'
+import fs from 'fs'
+import path from 'path'
 
 // Theme JSON Types
 interface ThemeJsonColor {
@@ -265,73 +267,83 @@ export function wordpressRollupPlugin(): Plugin {
   }
 }
 
-export function wordpressThemeJson(options: ThemeJsonOptions = {}): Plugin {
-  const defaultSettings: ThemeJsonSettings = {
-    background: { backgroundImage: true },
-    color: {
-      custom: false,
-      customDuotone: false,
-      customGradient: false,
-      defaultDuotone: false,
-      defaultGradients: false,
-      defaultPalette: false,
-      duotone: [],
-    },
-    custom: {
-      spacing: {},
-      typography: { 'font-size': {}, 'line-height': {} },
-    },
-    spacing: { padding: true, units: ['px', '%', 'em', 'rem', 'vw', 'vh'] },
-    typography: { customFontSize: false },
-  }
+function flattenColors(colors: Record<string, any>, prefix = '') {
+  return Object.entries(colors).reduce((acc, [name, value]) => {
+    const formattedName = name.charAt(0).toUpperCase() + name.slice(1)
 
-  const mergedSettings = mergeSettings(defaultSettings, options.settings)
+    if (typeof value === 'string') {
+      acc.push({
+        name: prefix ? `${prefix.charAt(0).toUpperCase() + prefix.slice(1)}-${formattedName}` : formattedName,
+        slug: prefix ? `${prefix}-${name}`.toLowerCase() : name.toLowerCase(),
+        color: value,
+      })
+    } else if (typeof value === 'object') {
+      acc.push(...flattenColors(value, name))
+    }
+    return acc
+  }, [] as Array<{ name: string; slug: string; color: string }>)
+}
+
+export function wordpressThemeJson({
+  tailwindConfig,
+  disableColors = false,
+  disableFonts = false,
+  disableFontSizes = false,
+}) {
+  const resolvedConfig = resolveConfig(tailwindConfig)
 
   return {
     name: 'wordpress-theme-json',
-    generateBundle() {
-      const themeJson: Record<string, any> = {
-        __generated__: '⚠️ This file is generated. Do not edit.',
-        $schema: 'https://schemas.wp.org/trunk/theme.json',
-        version: options.version ?? 3,
-        settings: mergedSettings,
+    async generateBundle() {
+      const baseThemeJson = JSON.parse(
+        fs.readFileSync(path.resolve('./theme.json'), 'utf8')
+      )
+
+      const themeJson = {
+        __processed__: "This file was generated from the Vite build",
+        ...baseThemeJson,
+        settings: {
+          ...baseThemeJson.settings,
+          ...((!disableColors && resolvedConfig.theme?.colors && {
+            color: {
+              ...baseThemeJson.settings?.color,
+              palette: flattenColors(resolvedConfig.theme.colors),
+            },
+          }) ||
+            {}),
+          ...((!disableFonts && resolvedConfig.theme?.fontFamily && {
+            typography: {
+              ...baseThemeJson.settings?.typography,
+              fontFamilies: Object.entries(resolvedConfig.theme.fontFamily)
+                .map(([name, value]) => ({
+                  name,
+                  slug: name,
+                  fontFamily: Array.isArray(value) ? value.join(',') : value,
+                })),
+            },
+          }) ||
+            {}),
+          ...((!disableFontSizes && resolvedConfig.theme?.fontSize && {
+            typography: {
+              ...baseThemeJson.settings?.typography,
+              fontSizes: Object.entries(resolvedConfig.theme.fontSize)
+                .map(([name, value]) => ({
+                  name,
+                  slug: name,
+                  size: Array.isArray(value) ? value[0] : value,
+                })),
+            },
+          }) ||
+            {}),
+        },
       }
 
-      if (options.tailwindConfig) {
-        const tailwindConfig = options.tailwindConfig
-
-        if (!options.disableColors) {
-          themeJson.settings.color = {
-            ...(themeJson.settings.color || {}),
-            palette: convertTailwindColorsToThemeJson(tailwindConfig),
-          }
-        }
-
-        if (!options.disableFonts) {
-          themeJson.settings.typography = {
-            ...(themeJson.settings.typography || {}),
-            fontFamilies: convertTailwindFontFamiliesToThemeJson(tailwindConfig),
-          }
-        }
-
-        if (!options.disableFontSizes) {
-          themeJson.settings.typography = {
-            ...(themeJson.settings.typography || {}),
-            fontSizes: convertTailwindFontSizesToThemeJson(tailwindConfig),
-          }
-        }
-      }
-
-      if (options.customTemplates) themeJson.customTemplates = options.customTemplates
-      if (options.patterns) themeJson.patterns = options.patterns
-      if (options.styles) themeJson.styles = options.styles
-      if (options.templateParts) themeJson.templateParts = options.templateParts
-      if (options.title) themeJson.title = options.title
+      delete themeJson.__preprocessed__
 
       this.emitFile({
         type: 'asset',
-        fileName: options.fileName || 'theme.json',
-        source: JSON.stringify(themeJson, null, 2),
+        fileName: 'assets/theme.json',
+        source: JSON.stringify(themeJson, null, 2)
       })
     },
   }
