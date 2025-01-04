@@ -25,18 +25,17 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
-          cache: 'yarn'
+          cache: 'npm'
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Install dependencies using Yarn
-        run: yarn install --frozen-lockfile
+      - name: Install dependencies using npm
+        run: npm ci
 
       - name: Build and compile assets
         run: |
-          yarn build
-          cat public/entrypoints.json
-          cat public/manifest.json
+          npm run build
+          cat public/build/manifest.json
 
   php:
     name: PHP ${{ matrix.php }}

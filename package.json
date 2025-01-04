@@ -1,16 +1,13 @@
 {
   "name": "sage",
   "private": true,
-  "browserslist": [
-    "extends @roots/browserslist-config"
-  ],
   "engines": {
     "node": ">=20.0.0"
   },
   "type": "module",
   "scripts": {
-    "dev": "bud dev",
-    "build": "bud build",
+    "dev": "vite",
+    "build": "vite build",
     "translate": "npm run translate:pot && npm run translate:update",
     "translate:pot": "wp i18n make-pot . ./resources/lang/sage.pot --include=\"theme.json,patterns,app,resources\"",
     "translate:update": "for file in ./resources/lang/*.po; do wp i18n update-po ./resources/lang/sage.pot $file; done",
@@ -19,9 +16,11 @@
     "translate:mo": "wp i18n make-mo ./resources/lang ./resources/lang"
   },
   "devDependencies": {
-    "@roots/bud": "6.23.3",
-    "@roots/bud-tailwindcss": "6.23.3",
-    "@roots/sage": "6.23.3"
-  },
-  "dependencies": {}
+    "@wordpress/dependency-extraction-webpack-plugin": "^6.13.0",
+    "autoprefixer": "^10.4.20",
+    "laravel-vite-plugin": "^1.1.1",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.16",
+    "vite": "^6.0.3"
+  }
 }
