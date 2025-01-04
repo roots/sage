@@ -1,8 +1,6 @@
 <?php
 
 use Roots\Acorn\Application;
-use Roots\Acorn\Configuration\Exceptions;
-use Roots\Acorn\Configuration\Middleware;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,12 +32,9 @@ require $composer;
 */
 
 Application::configure()
-    ->withMiddleware(function (Middleware $middleware) {
-        //
-    })
-    ->withExceptions(function (Exceptions $exceptions) {
-        //
-    })
+    ->withProviders([
+        App\Providers\ThemeServiceProvider::class,
+    ])
     ->boot();
 
 /*
