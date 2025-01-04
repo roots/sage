@@ -33,16 +33,14 @@ require $composer;
 |
 */
 
-add_action('after_setup_theme', function () {
-    Application::configure()
-        ->withMiddleware(function (Middleware $middleware) {
-            //
-        })
-        ->withExceptions(function (Exceptions $exceptions) {
-            //
-        })
-        ->boot();
-}, 0);
+Application::configure()
+    ->withMiddleware(function (Middleware $middleware) {
+        //
+    })
+    ->withExceptions(function (Exceptions $exceptions) {
+        //
+    })
+    ->boot();
 
 /*
 |--------------------------------------------------------------------------
