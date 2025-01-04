@@ -34,11 +34,11 @@ Sage is an open source project and completely free to use. If you've benefited f
 
 ## Overview
 
-Sage is a WordPress starter theme with block editor support.
+Sage is a hybrid WordPress starter theme with block editor support.
 
-- Harness the power of [Laravel](https://laravel.com) and its available packages thanks to [Acorn](https://github.com/roots/acorn)
 - Clean, efficient theme templating utilizing [Laravel Blade](https://laravel.com/docs/master/blade)
-- Modern frontend development workflow powered by [Bud](https://bud.js.org/)
+- Harness the power of [Laravel](https://laravel.com) and its available packages thanks to [Acorn](https://github.com/roots/acorn)
+- Modern frontend development workflow powered by [Vite](https://vite.dev/)
 - Out of the box support for [Tailwind CSS](https://tailwindcss.com/)
 
 ## Getting Started
