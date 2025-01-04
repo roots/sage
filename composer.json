@@ -54,12 +54,5 @@
     "sort-packages": true
   },
   "minimum-stability": "dev",
-  "prefer-stable": true,
-  "extra": {
-    "acorn": {
-      "providers": [
-        "App\\Providers\\ThemeServiceProvider"
-      ]
-    }
-  }
+  "prefer-stable": true
 }
