@@ -1,5 +1,9 @@
 <?php
 
+use Roots\Acorn\Application;
+use Roots\Acorn\Configuration\Exceptions;
+use Roots\Acorn\Configuration\Middleware;
+
 /*
 |--------------------------------------------------------------------------
 | Register The Auto Loader
@@ -29,18 +33,16 @@ require $composer;
 |
 */
 
-if (! function_exists('\Roots\bootloader')) {
-    wp_die(
-        __('You need to install Acorn to use this theme.', 'sage'),
-        '',
-        [
-            'link_url' => 'https://roots.io/acorn/docs/installation/',
-            'link_text' => __('Acorn Docs: Installation', 'sage'),
-        ]
-    );
-}
-
-\Roots\bootloader()->boot();
+add_action('after_setup_theme', function () {
+    Application::configure()
+        ->withMiddleware(function (Middleware $middleware) {
+            //
+        })
+        ->withExceptions(function (Exceptions $exceptions) {
+            //
+        })
+        ->boot();
+}, 0);
 
 /*
 |--------------------------------------------------------------------------
