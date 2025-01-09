@@ -1,133 +1,61 @@
 import resolveConfig from 'tailwindcss/resolveConfig'
-import {
-  defaultRequestToExternal,
-  defaultRequestToHandle,
-} from '@wordpress/dependency-extraction-webpack-plugin/lib/util'
+import { defaultRequestToExternal, defaultRequestToHandle } from '@wordpress/dependency-extraction-webpack-plugin/lib/util'
 import fs from 'fs'
 import path from 'path'
 
 /**
- * Vite plugin that handles WordPress dependencies and generates a dependency manifest.
+ * WordPress dependency extraction for Vite.
  *
- * This plugin:
- * 1. Transforms @wordpress/* imports into global wp.* references
- * 2. Tracks WordPress script dependencies
- * 3. Generates an editor.deps.json file listing all WordPress dependencies
+ * This plugin configures Vite to exclude WordPress packages from your bundle
+ * and instead load them from the `window.wp` global. It also generates a
+ * dependency file that is read by Sage's setup.php to enqueue required
+ * WordPress scripts.
  *
- * @returns {import('vite').Plugin} Vite plugin
+ * @returns {import('vite').Plugin}
  */
-export function wordpressPlugin() {
-  const dependencies = new Set()
 
-  // Helper functions for import handling
-  function extractNamedImports(imports) {
-    const match = imports.match(/{([^}]+)}/)
-    if (!match) return []
-    return match[1].split(',').map((s) => s.trim())
-  }
+const externalMap = new Map()
 
-  function handleNamedReplacement(namedImports, external) {
-    return namedImports
-      .map((imports) => {
-        const [name, alias = name] = imports
-          .split(' as ')
-          .map((script) => script.trim())
-        return `const ${alias} = ${external.join('.')}.${name};`
-      })
-      .join('\n')
-  }
-
-  function handleReplacements(imports, external) {
-    const importStr = Array.isArray(imports) ? imports[0] : imports
-
-    if (importStr.includes('{')) {
-      const namedImports = extractNamedImports(importStr)
-      return handleNamedReplacement(namedImports, external)
-    }
-
-    if (importStr.includes('* as')) {
-      const match = importStr.match(/\*\s+as\s+(\w+)/)
-      if (!match) return ''
-      const alias = match[1]
-      return `const ${alias} = ${external.join('.')};`
-    }
-
-    const name = importStr.trim()
-    return `const ${name} = ${external.join('.')};`
-  }
-
+export function extractWordPressDependencies() {
   return {
-    name: 'wordpress-plugin',
-    enforce: 'post',
-    transform(code, id) {
-      if (!id.endsWith('.js')) return
-
-      const imports = [
-        ...(code.match(/^import .+ from ['"]@wordpress\/[^'"]+['"]/gm) || []),
-        ...(code.match(/^import ['"]@wordpress\/[^'"]+['"]/gm) || []),
-      ]
-
-      imports.forEach((statement) => {
-        const match =
-          statement.match(/^import (.+) from ['"]@wordpress\/([^'"]+)['"]/) ||
-          statement.match(/^import ['"]@wordpress\/([^'"]+)['"]/)
-
-        if (!match) return
-
-        const [, imports, pkg] = match
-        if (!pkg) return
-
-        const external = defaultRequestToExternal(`@wordpress/${pkg}`)
-        const handle = defaultRequestToHandle(`@wordpress/${pkg}`)
-
-        if (external && handle) {
-          dependencies.add(handle)
-          const replacement = imports
-            ? handleReplacements(imports, external)
-            : `const ${pkg.replace(/-([a-z])/g, (_, letter) => letter.toUpperCase())} = ${external.join('.')};`
-
-          code = code.replace(statement, replacement)
-        }
-      })
-
-      return { code, map: null }
-    },
-    generateBundle() {
-      this.emitFile({
-        type: 'asset',
-        fileName: 'editor.deps.json',
-        source: JSON.stringify([...dependencies]),
-      })
-    },
-  }
-}
-
-/**
- * Rollup plugin that configures external WordPress dependencies.
- *
- * This plugin:
- * 1. Marks all @wordpress/* packages as external dependencies
- * 2. Maps external @wordpress/* imports to wp.* global variables
- *
- * This prevents WordPress core libraries from being bundled and ensures
- * they are loaded from WordPress's global scope instead.
- *
- * @returns {import('rollup').Plugin} Rollup plugin
- */
-export function wordpressRollupPlugin() {
-  return {
-    name: 'wordpress-rollup-plugin',
-    options(opts) {
-      opts.external = (id) => id.startsWith('@wordpress/')
-      opts.output = opts.output || {}
-      opts.output.globals = (id) => {
-        if (id.startsWith('@wordpress/')) {
-          const packageName = id.replace('@wordpress/', '')
-          return `wp.${packageName.replace(/-([a-z])/g, (_, letter) => letter.toUpperCase())}`
+    name: 'wordpress-dependencies',
+    config() {
+      return {
+        build: {
+          rollupOptions: {
+            external(id) {
+              const result = defaultRequestToExternal(id)
+              if (result) {
+                externalMap.set(id, result)
+                return true
+              }
+              return false
+            },
+            output: {
+              globals(id) {
+                const global = externalMap.get(id)
+                return Array.isArray(global) ? global.join('.') : global
+              }
+            }
+          }
         }
       }
-      return opts
     },
+    generateBundle(options, bundle) {
+      const deps = Object.values(bundle)
+        .filter(chunk => chunk.type === 'chunk' && chunk.isEntry)
+        .flatMap(chunk => chunk.imports)
+        .map(defaultRequestToHandle)
+        .filter(Boolean)
+
+      if (deps.length) {
+        this.emitFile({
+          type: 'asset',
+          fileName: 'editor.deps.json',
+          source: JSON.stringify(deps, null, 2)
+        })
+      }
+    }
   }
 }
 
@@ -146,7 +74,7 @@ export function wordpressRollupPlugin() {
  * @param {boolean} [options.disableTailwindFontSizes=false] - Disable including Tailwind font sizes in theme.json
  * @returns {import('vite').Plugin} Vite plugin
  */
-export function wordpressThemeJson({
+export function processThemeJson({
   tailwindConfig,
   disableTailwindColors = false,
   disableTailwindFonts = false,
