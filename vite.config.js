@@ -4,6 +4,7 @@ import { extractWordPressDependencies, processThemeJson } from './resources/js/b
 import tailwindConfig from './tailwind.config.js'
 
 export default defineConfig({
+  base: '/app/themes/sage/public/build/',
   plugins: [
     laravel({
       input: [
@@ -25,5 +26,4 @@ export default defineConfig({
       disableTailwindFontSizes: false,
     }),
   ],
-  base: '/app/themes/sage/public/build/',
 })
