@@ -25,4 +25,5 @@ export default defineConfig({
       disableTailwindFontSizes: false,
     }),
   ],
+  base: '/app/themes/sage/public/build/',
 })
