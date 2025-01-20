@@ -8,7 +8,6 @@ namespace App;
 
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Vite;
-use Illuminate\Support\Str;
 
 /**
  * Enqueue the Vite assets.
