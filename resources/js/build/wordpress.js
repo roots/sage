@@ -1,4 +1,3 @@
-// import resolveConfig from 'tailwindcss/resolveConfig'
 import {
   defaultRequestToExternal,
   defaultRequestToHandle,
@@ -172,81 +171,121 @@ export function wordpressRollupPlugin() {
  * @param {boolean} [options.disableTailwindFontSizes=false] - Disable including Tailwind font sizes in theme.json
  * @returns {import('vite').Plugin} Vite plugin
  */
-// export function wordpressThemeJson({
-//   tailwindConfig,
-//   disableTailwindColors = false,
-//   disableTailwindFonts = false,
-//   disableTailwindFontSizes = false,
-// }) {
-//   function flattenColors(colors, prefix = '') {
-//     return Object.entries(colors).reduce((acc, [name, value]) => {
-//       const formattedName = name.charAt(0).toUpperCase() + name.slice(1)
+export function wordpressThemeJson({
+  tailwindConfig,
+  disableTailwindColors = false,
+  disableTailwindFonts = false,
+  disableTailwindFontSizes = false,
+}) {
+  let cssContent = null
 
-//       if (typeof value === 'string') {
-//         acc.push({
-//           name: prefix ? `${prefix.charAt(0).toUpperCase() + prefix.slice(1)}-${formattedName}` : formattedName,
-//           slug: prefix ? `${prefix}-${name}`.toLowerCase() : name.toLowerCase(),
-//           color: value,
-//         })
-//       } else if (typeof value === 'object') {
-//         acc.push(...flattenColors(value, name))
-//       }
-//       return acc
-//     }, [])
-//   }
+  return {
+    name: 'wordpress-theme-json',
+    // Hook into Tailwind's transformed CSS
+    transform(code, id) {
+      if (id.endsWith('.css') && code.includes('@layer theme')) {
+        cssContent = code
+      }
+      return null
+    },
 
-//   const resolvedConfig = resolveConfig(tailwindConfig)
+    async generateBundle() {
+      if (!cssContent) {
+        console.warn('No Tailwind CSS content found for theme.json generation')
+        return
+      }
 
-//   return {
-//     name: 'wordpress-theme-json',
-//     async generateBundle() {
-//       const baseThemeJson = JSON.parse(
-//         fs.readFileSync(path.resolve('./theme.json'), 'utf8')
-//       )
+      const baseThemeJson = JSON.parse(
+        fs.readFileSync(path.resolve('./theme.json'), 'utf8')
+      )
 
-//       const themeJson = {
-//         __processed__: "This file was generated from the Vite build",
-//         ...baseThemeJson,
-//         settings: {
-//           ...baseThemeJson.settings,
-//           ...((!disableTailwindColors && resolvedConfig.theme?.colors && {
-//             color: {
-//               ...baseThemeJson.settings?.color,
-//               palette: flattenColors(resolvedConfig.theme.colors),
-//             },
-//           }) || {}),
-//           ...((!disableTailwindFonts && resolvedConfig.theme?.fontFamily && {
-//             typography: {
-//               ...baseThemeJson.settings?.typography,
-//               fontFamilies: Object.entries(resolvedConfig.theme.fontFamily)
-//                 .map(([name, value]) => ({
-//                   name,
-//                   slug: name,
-//                   fontFamily: Array.isArray(value) ? value.join(',') : value,
-//                 })),
-//             },
-//           }) || {}),
-//           ...((!disableTailwindFontSizes && resolvedConfig.theme?.fontSize && {
-//             typography: {
-//               ...baseThemeJson.settings?.typography,
-//               fontSizes: Object.entries(resolvedConfig.theme.fontSize)
-//                 .map(([name, value]) => ({
-//                   name,
-//                   slug: name,
-//                   size: Array.isArray(value) ? value[0] : value,
-//                 })),
-//             },
-//           }) || {}),
-//         },
-//       }
+      // Extract variables from the theme layer
+      const themeLayer = cssContent.match(/@layer theme\s*{[^}]*}/s)?.[0] || ''
+      const rootVars = themeLayer.match(/:root\s*{([^}]*)}/s)?.[1] || ''
 
-//       delete themeJson.__preprocessed__
+      const variables = {}
+      const varRegex = /--([^:]+):\s*([^;]+);/g
+      let match
 
-//       this.emitFile({
-//         type: 'asset',
-//         fileName: 'assets/theme.json',
-//         source: JSON.stringify(themeJson, null, 2)
-//       })
-//     },
-//   }
-// }
+      while ((match = varRegex.exec(rootVars)) !== null) {
+        const [, name, value] = match
+        variables[name] = value.trim()
+      }
+
+      // Process colors
+      const colors = []
+      Object.entries(variables).forEach(([name, value]) => {
+        if (name.startsWith('color-') && !name.includes('--line-height')) {
+          const [, colorName, shade] = name.match(/^color-([^-]+)-(\d+)$/) || []
+          if (colorName && shade) {
+            colors.push({
+              name: `${colorName}-${shade}`,
+              slug: `${colorName}-${shade}`.toLowerCase(),
+              color: `var(--${name})`,
+            })
+          }
+        }
+      })
+
+      // Process font families
+      const fontFamilies = []
+      Object.entries(variables).forEach(([name, value]) => {
+        if (name.startsWith('font-') && !name.includes('-feature-settings') && !name.includes('-variation-settings')) {
+          const fontName = name.replace('font-', '')
+          fontFamilies.push({
+            name: fontName,
+            slug: fontName.toLowerCase(),
+            fontFamily: value,
+          })
+        }
+      })
+
+      // Process font sizes
+      const fontSizes = []
+      Object.entries(variables).forEach(([name, value]) => {
+        if (name.startsWith('text-') && !name.includes('--line-height')) {
+          const sizeName = name.replace('text-', '')
+          fontSizes.push({
+            name: sizeName,
+            slug: sizeName.toLowerCase(),
+            size: value,
+          })
+        }
+      })
+
+      const themeJson = {
+        __processed__: "This file was generated from Tailwind v4 CSS variables",
+        ...baseThemeJson,
+        settings: {
+          ...baseThemeJson.settings,
+          ...((!disableTailwindColors && {
+            color: {
+              ...baseThemeJson.settings?.color,
+              palette: colors,
+            },
+          })),
+          ...((!disableTailwindFonts && {
+            typography: {
+              ...baseThemeJson.settings?.typography,
+              fontFamilies,
+            },
+          })),
+          ...((!disableTailwindFontSizes && {
+            typography: {
+              ...baseThemeJson.settings?.typography,
+              fontSizes,
+            },
+          })),
+        },
+      }
+
+      delete themeJson.__preprocessed__
+
+      this.emitFile({
+        type: 'asset',
+        fileName: 'assets/theme.json',
+        source: JSON.stringify(themeJson, null, 2)
+      })
+    },
+  }
+}

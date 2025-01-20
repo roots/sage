@@ -4,7 +4,7 @@ import laravel from 'laravel-vite-plugin'
 import {
   wordpressPlugin,
   wordpressRollupPlugin,
-  // wordpressThemeJson,
+  wordpressThemeJson,
 } from './resources/js/build/wordpress'
 
 export default defineConfig({
@@ -26,11 +26,10 @@ export default defineConfig({
 
     // Generate the theme.json file in the public/build/assets directory
     // based on the Tailwind config and the theme.json file from base theme folder
-    // wordpressThemeJson({
-    //   tailwindConfig,
-    //   disableTailwindColors: false,
-    //   disableTailwindFonts: false,
-    //   disableTailwindFontSizes: false,
-    // }),
+    wordpressThemeJson({
+      disableTailwindColors: false,
+      disableTailwindFonts: false,
+      disableTailwindFontSizes: false,
+    }),
   ],
 })
