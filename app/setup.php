@@ -17,7 +17,7 @@ use Illuminate\Support\Str;
  */
 add_filter('wp_head', function () {
     echo Str::wrap(app('assets.vite')([
-        'resources/css/app.css',
+        'resources/styles/app.scss',
         'resources/js/app.js',
     ]), "\n");
 });
@@ -43,7 +43,7 @@ add_filter('admin_head', function () {
     }
 
     echo Str::wrap(app('assets.vite')([
-        'resources/css/editor.css',
+        'resources/styles/editor.scss',
         'resources/js/editor.js',
     ]), "\n");
 });
@@ -134,6 +134,11 @@ add_action('after_setup_theme', function () {
      * @link https://developer.wordpress.org/reference/functions/add_theme_support/#customize-selective-refresh-widgets
      */
     add_theme_support('customize-selective-refresh-widgets');
+
+    /**
+     * Set textdomain.
+     */
+    load_theme_textdomain('sage', get_template_directory() . '/languages');
 }, 20);
 
 /**

@@ -1,20 +1,20 @@
-import { defineConfig } from 'vite'
-import laravel from 'laravel-vite-plugin'
+import { defineConfig } from 'vite';
+import laravel from 'laravel-vite-plugin';
 import {
   wordpressPlugin,
   wordpressRollupPlugin,
   wordpressThemeJson,
-} from './resources/js/build/wordpress'
-import tailwindConfig from './tailwind.config.js'
+} from './resources/js/build/wordpress';
+import tailwindConfig from './tailwind.config.js';
 
 export default defineConfig({
   plugins: [
     laravel({
       input: [
-        'resources/css/app.css',
         'resources/js/app.js',
-        'resources/css/editor.css',
         'resources/js/editor.js',
+        'resources/styles/app.scss',
+        'resources/styles/editor.scss',
       ],
       refresh: true,
     }),
@@ -22,8 +22,6 @@ export default defineConfig({
     wordpressPlugin(),
     wordpressRollupPlugin(),
 
-    // Generate the theme.json file in the public/build/assets directory
-    // based on the Tailwind config and the theme.json file from base theme folder
     wordpressThemeJson({
       tailwindConfig,
       disableTailwindColors: false,
@@ -31,4 +29,11 @@ export default defineConfig({
       disableTailwindFontSizes: false,
     }),
   ],
-})
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@use "settings/_variables.scss";`,
+      },
+    },
+  },
+});
