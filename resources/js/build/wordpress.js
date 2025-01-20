@@ -85,7 +85,7 @@ export function wordpressPlugin() {
       }
     },
     transform(code, id) {
-      if (!id.endsWith('.js')) return
+      if ((!id.endsWith('.js')) && !id.endsWith('.jsx')) return
 
       const imports = [
         ...(code.match(/^import .+ from ['"]@wordpress\/[^'"]+['"]/gm) || []),
