@@ -10,48 +10,41 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Vite;
 
 /**
- * Enqueue the Vite assets.
+ * Inject the Vite assets into the head.
  *
  * @return void
  */
-add_action('wp_enqueue_scripts', function () {
-    $manifest = app('assets.manifest');
-
-    $css = Vite::asset('resources/css/app.css');
-    $js = Vite::asset('resources/js/app.js');
-
-    if ($css) {
-        wp_enqueue_style('sage/app', $css, [], $manifest->version ?? null);
-    }
-
-    if ($js) {
-        wp_enqueue_script('sage/app', $js, [], $manifest->version ?? null, true);
-    }
+add_filter('wp_head', function () {
+    echo Str::wrap(app('assets.vite')([
+        'resources/css/app.css',
+        'resources/js/app.js',
+    ]), "\n");
 });
 
 /**
- * Enqueue the Vite assets for the block editor.
+ * Inject assets into the block editor.
  *
  * @return void
  */
-add_action('enqueue_block_assets', function () {
-    if (! is_admin()) {
+add_filter('admin_head', function () {
+    $screen = get_current_screen();
+
+    if (! $screen?->is_block_editor()) {
         return;
     }
 
-    $manifest = app('assets.manifest');
     $dependencies = File::json(public_path('build/editor.deps.json')) ?? [];
 
-    $css = Vite::asset('resources/css/editor.css');
-    $js = Vite::asset('resources/js/editor.js');
-
-    if ($css) {
-        wp_enqueue_style('sage/editor', $css, [], $manifest->version ?? null);
+    foreach ($dependencies as $dependency) {
+        if (! wp_script_is($dependency)) {
+            wp_enqueue_script($dependency);
+        }
     }
 
-    if ($js) {
-        wp_enqueue_script('sage/editor', $js, $dependencies, $manifest->version ?? null, true);
-    }
+    echo Str::wrap(app('assets.vite')([
+        'resources/css/editor.css',
+        'resources/js/editor.js',
+    ]), "\n");
 });
 
 /**
