@@ -58,7 +58,33 @@ export function wordpressPlugin() {
 
   return {
     name: 'wordpress-plugin',
-    enforce: 'post',
+    enforce: 'pre',
+    config(config) {
+      return {
+        ...config,
+        resolve: {
+          ...config.resolve,
+          alias: {
+            ...config.resolve?.alias,
+          }
+        },
+      }
+    },
+    resolveId(id) {
+      if (id.startsWith('@wordpress/')) {
+        const pkg = id.replace('@wordpress/', '')
+        const external = defaultRequestToExternal(id)
+        const handle = defaultRequestToHandle(id)
+
+        if (external && handle) {
+          dependencies.add(handle)
+          return {
+            id,
+            external: true,
+          }
+        }
+      }
+    },
     transform(code, id) {
       if (!id.endsWith('.js')) return
 
