@@ -8,6 +8,7 @@ namespace App;
 
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Vite;
+use Illuminate\Support\Str;
 
 /**
  * Inject the Vite assets into the head.
