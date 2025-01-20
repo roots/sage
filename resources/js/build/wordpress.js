@@ -1,4 +1,4 @@
-import resolveConfig from 'tailwindcss/resolveConfig'
+// import resolveConfig from 'tailwindcss/resolveConfig'
 import {
   defaultRequestToExternal,
   defaultRequestToHandle,
@@ -172,81 +172,81 @@ export function wordpressRollupPlugin() {
  * @param {boolean} [options.disableTailwindFontSizes=false] - Disable including Tailwind font sizes in theme.json
  * @returns {import('vite').Plugin} Vite plugin
  */
-export function wordpressThemeJson({
-  tailwindConfig,
-  disableTailwindColors = false,
-  disableTailwindFonts = false,
-  disableTailwindFontSizes = false,
-}) {
-  function flattenColors(colors, prefix = '') {
-    return Object.entries(colors).reduce((acc, [name, value]) => {
-      const formattedName = name.charAt(0).toUpperCase() + name.slice(1)
+// export function wordpressThemeJson({
+//   tailwindConfig,
+//   disableTailwindColors = false,
+//   disableTailwindFonts = false,
+//   disableTailwindFontSizes = false,
+// }) {
+//   function flattenColors(colors, prefix = '') {
+//     return Object.entries(colors).reduce((acc, [name, value]) => {
+//       const formattedName = name.charAt(0).toUpperCase() + name.slice(1)
 
-      if (typeof value === 'string') {
-        acc.push({
-          name: prefix ? `${prefix.charAt(0).toUpperCase() + prefix.slice(1)}-${formattedName}` : formattedName,
-          slug: prefix ? `${prefix}-${name}`.toLowerCase() : name.toLowerCase(),
-          color: value,
-        })
-      } else if (typeof value === 'object') {
-        acc.push(...flattenColors(value, name))
-      }
-      return acc
-    }, [])
-  }
+//       if (typeof value === 'string') {
+//         acc.push({
+//           name: prefix ? `${prefix.charAt(0).toUpperCase() + prefix.slice(1)}-${formattedName}` : formattedName,
+//           slug: prefix ? `${prefix}-${name}`.toLowerCase() : name.toLowerCase(),
+//           color: value,
+//         })
+//       } else if (typeof value === 'object') {
+//         acc.push(...flattenColors(value, name))
+//       }
+//       return acc
+//     }, [])
+//   }
 
-  const resolvedConfig = resolveConfig(tailwindConfig)
+//   const resolvedConfig = resolveConfig(tailwindConfig)
 
-  return {
-    name: 'wordpress-theme-json',
-    async generateBundle() {
-      const baseThemeJson = JSON.parse(
-        fs.readFileSync(path.resolve('./theme.json'), 'utf8')
-      )
+//   return {
+//     name: 'wordpress-theme-json',
+//     async generateBundle() {
+//       const baseThemeJson = JSON.parse(
+//         fs.readFileSync(path.resolve('./theme.json'), 'utf8')
+//       )
 
-      const themeJson = {
-        __processed__: "This file was generated from the Vite build",
-        ...baseThemeJson,
-        settings: {
-          ...baseThemeJson.settings,
-          ...((!disableTailwindColors && resolvedConfig.theme?.colors && {
-            color: {
-              ...baseThemeJson.settings?.color,
-              palette: flattenColors(resolvedConfig.theme.colors),
-            },
-          }) || {}),
-          ...((!disableTailwindFonts && resolvedConfig.theme?.fontFamily && {
-            typography: {
-              ...baseThemeJson.settings?.typography,
-              fontFamilies: Object.entries(resolvedConfig.theme.fontFamily)
-                .map(([name, value]) => ({
-                  name,
-                  slug: name,
-                  fontFamily: Array.isArray(value) ? value.join(',') : value,
-                })),
-            },
-          }) || {}),
-          ...((!disableTailwindFontSizes && resolvedConfig.theme?.fontSize && {
-            typography: {
-              ...baseThemeJson.settings?.typography,
-              fontSizes: Object.entries(resolvedConfig.theme.fontSize)
-                .map(([name, value]) => ({
-                  name,
-                  slug: name,
-                  size: Array.isArray(value) ? value[0] : value,
-                })),
-            },
-          }) || {}),
-        },
-      }
+//       const themeJson = {
+//         __processed__: "This file was generated from the Vite build",
+//         ...baseThemeJson,
+//         settings: {
+//           ...baseThemeJson.settings,
+//           ...((!disableTailwindColors && resolvedConfig.theme?.colors && {
+//             color: {
+//               ...baseThemeJson.settings?.color,
+//               palette: flattenColors(resolvedConfig.theme.colors),
+//             },
+//           }) || {}),
+//           ...((!disableTailwindFonts && resolvedConfig.theme?.fontFamily && {
+//             typography: {
+//               ...baseThemeJson.settings?.typography,
+//               fontFamilies: Object.entries(resolvedConfig.theme.fontFamily)
+//                 .map(([name, value]) => ({
+//                   name,
+//                   slug: name,
+//                   fontFamily: Array.isArray(value) ? value.join(',') : value,
+//                 })),
+//             },
+//           }) || {}),
+//           ...((!disableTailwindFontSizes && resolvedConfig.theme?.fontSize && {
+//             typography: {
+//               ...baseThemeJson.settings?.typography,
+//               fontSizes: Object.entries(resolvedConfig.theme.fontSize)
+//                 .map(([name, value]) => ({
+//                   name,
+//                   slug: name,
+//                   size: Array.isArray(value) ? value[0] : value,
+//                 })),
+//             },
+//           }) || {}),
+//         },
+//       }
 
-      delete themeJson.__preprocessed__
+//       delete themeJson.__preprocessed__
 
-      this.emitFile({
-        type: 'asset',
-        fileName: 'assets/theme.json',
-        source: JSON.stringify(themeJson, null, 2)
-      })
-    },
-  }
-}
+//       this.emitFile({
+//         type: 'asset',
+//         fileName: 'assets/theme.json',
+//         source: JSON.stringify(themeJson, null, 2)
+//       })
+//     },
+//   }
+// }
