@@ -23,9 +23,28 @@ add_filter('wp_head', function () {
 });
 
 /**
- * Inject assets into the block editor.
+ * Inject CSS into the block editor iframe.
  *
- * @return void
+ * @return array
+ */
+add_filter('block_editor_settings_all', function ($settings) {
+    $manifest = File::json(public_path('build/manifest.json')) ?? [];
+
+    if (isset($manifest['resources/css/editor.css'])) {
+        $css_path = public_path("build/{$manifest['resources/css/editor.css']['file']}");
+
+        if (file_exists($css_path)) {
+            $settings['styles'][] = [
+                'css' => file_get_contents($css_path),
+            ];
+        }
+    }
+
+    return $settings;
+});
+
+/**
+ * Inject JS into the block editor.
  */
 add_filter('admin_head', function () {
     $screen = get_current_screen();
@@ -43,7 +62,6 @@ add_filter('admin_head', function () {
     }
 
     echo Str::wrap(app('assets.vite')([
-        'resources/css/editor.css',
         'resources/js/editor.js',
     ]), "\n");
 });
