@@ -39,6 +39,7 @@ add_filter('block_editor_settings_all', function ($settings) {
         $settings['styles'][] = [
             'css' => "@import url('{$dev_url}/@vite/client')",
         ];
+
         return $settings;
     }
 
