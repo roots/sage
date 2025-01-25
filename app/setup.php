@@ -29,6 +29,18 @@ add_filter('wp_head', function () {
  */
 add_filter('block_editor_settings_all', function ($settings) {
     $manifest = File::json(public_path('build/manifest.json')) ?? [];
+    $hot = File::exists(public_path('hot'));
+
+    if ($hot) {
+        $dev_url = trim(File::get(public_path('hot')));
+        $settings['styles'][] = [
+            'css' => "@import url('{$dev_url}/resources/css/editor.css')",
+        ];
+        $settings['styles'][] = [
+            'css' => "@import url('{$dev_url}/@vite/client')",
+        ];
+        return $settings;
+    }
 
     if (isset($manifest['resources/css/editor.css'])) {
         $css_path = public_path("build/{$manifest['resources/css/editor.css']['file']}");
@@ -45,6 +57,8 @@ add_filter('block_editor_settings_all', function ($settings) {
 
 /**
  * Inject JS into the block editor.
+ *
+ * @return void
  */
 add_filter('admin_head', function () {
     $screen = get_current_screen();
