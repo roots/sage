@@ -178,104 +178,120 @@ export function wordpressThemeJson({
   disableTailwindFontSizes = false,
 }) {
   let cssContent = null
+  let hasProcessedTheme = false
 
   return {
     name: 'wordpress-theme-json',
-    // Hook into Tailwind's transformed CSS
+    enforce: 'post',
+
     transform(code, id) {
-      if (id.endsWith('.css') && code.includes('@layer theme')) {
+      if (id.endsWith('.css') && !hasProcessedTheme) {
         cssContent = code
       }
       return null
     },
 
     async generateBundle() {
-      if (!cssContent) {
-        console.warn('No Tailwind CSS content found for theme.json generation')
-        return
-      }
+      if (!cssContent) return
 
       const baseThemeJson = JSON.parse(
         fs.readFileSync(path.resolve('./theme.json'), 'utf8')
       )
 
-      // Extract variables from the theme layer
-      const themeLayer = cssContent.match(/@layer theme\s*{[^}]*}/s)?.[0] || ''
-      const rootVars = themeLayer.match(/:root\s*{([^}]*)}/s)?.[1] || ''
+      const themeMatch = cssContent.match(/@(?:layer\s+)?theme\s*{([^}]*)}/s)
+      if (!themeMatch) return
 
-      const variables = {}
-      const varRegex = /--([^:]+):\s*([^;]+);/g
+      const themeContent = themeMatch[1]
+      if (!themeContent.startsWith(':root{')) return
+
+      const rootContent = themeContent.slice(themeContent.indexOf('{') + 1, themeContent.lastIndexOf('}'))
+      const colorVariables = {}
+
+      const colorVarRegex = /--color-([^:]+):\s*([^;]+);/g
       let match
 
-      while ((match = varRegex.exec(rootVars)) !== null) {
+      while ((match = colorVarRegex.exec(rootContent)) !== null) {
         const [, name, value] = match
-        variables[name] = value.trim()
+        colorVariables[name] = value.trim()
       }
 
-      // Process colors
       const colors = []
-      Object.entries(variables).forEach(([name, value]) => {
-        if (name.startsWith('color-') && !name.includes('--line-height')) {
-          const [, colorName, shade] = name.match(/^color-([^-]+)-(\d+)$/) || []
-          if (colorName && shade) {
+      Object.entries(colorVariables).forEach(([name, value]) => {
+        if (name.endsWith('-*')) return
+
+        if (name.includes('-')) {
+          const [colorName, shade] = name.split('-')
+          if (shade && !isNaN(shade)) {
             colors.push({
               name: `${colorName}-${shade}`,
               slug: `${colorName}-${shade}`.toLowerCase(),
-              color: `var(--${name})`,
+              color: value,
+            })
+          } else {
+            colors.push({
+              name: name,
+              slug: name.toLowerCase(),
+              color: value,
             })
           }
+        } else {
+          colors.push({
+            name: name,
+            slug: name.toLowerCase(),
+            color: value,
+          })
         }
       })
 
-      // Process font families
       const fontFamilies = []
-      Object.entries(variables).forEach(([name, value]) => {
-        if (name.startsWith('font-') && !name.includes('-feature-settings') && !name.includes('-variation-settings')) {
-          const fontName = name.replace('font-', '')
+      const fontVarRegex = /--font-([^:]+):\s*([^;]+);/g
+      while ((match = fontVarRegex.exec(rootContent)) !== null) {
+        const [, name, value] = match
+        if (!name.includes('-feature-settings') && !name.includes('-variation-settings')) {
           fontFamilies.push({
-            name: fontName,
-            slug: fontName.toLowerCase(),
-            fontFamily: value,
+            name: name,
+            slug: name.toLowerCase(),
+            fontFamily: value.trim(),
           })
         }
-      })
+      }
 
-      // Process font sizes
       const fontSizes = []
-      Object.entries(variables).forEach(([name, value]) => {
-        if (name.startsWith('text-') && !name.includes('--line-height')) {
-          const sizeName = name.replace('text-', '')
+      const fontSizeVarRegex = /--text-([^:]+):\s*([^;]+);/g
+      while ((match = fontSizeVarRegex.exec(rootContent)) !== null) {
+        const [, name, value] = match
+        if (!name.includes('--line-height')) {
           fontSizes.push({
-            name: sizeName,
-            slug: sizeName.toLowerCase(),
-            size: value,
+            name: name,
+            slug: name.toLowerCase(),
+            size: value.trim(),
           })
         }
-      })
+      }
 
       const themeJson = {
         __processed__: "This file was generated from Tailwind v4 CSS variables",
         ...baseThemeJson,
         settings: {
           ...baseThemeJson.settings,
-          ...((!disableTailwindColors && {
+          ...((!disableTailwindColors && colors.length > 0) && {
             color: {
               ...baseThemeJson.settings?.color,
               palette: colors,
             },
-          })),
-          ...((!disableTailwindFonts && {
+          }),
+          ...((!disableTailwindFonts && fontFamilies.length > 0) && {
             typography: {
               ...baseThemeJson.settings?.typography,
               fontFamilies,
             },
-          })),
-          ...((!disableTailwindFontSizes && {
+          }),
+          ...((!disableTailwindFontSizes && fontSizes.length > 0) && {
             typography: {
               ...baseThemeJson.settings?.typography,
               fontSizes,
             },
-          })),
+          }),
         },
       }
 
@@ -286,6 +302,8 @@ export function wordpressThemeJson({
         fileName: 'assets/theme.json',
         source: JSON.stringify(themeJson, null, 2)
       })
+
+      hasProcessedTheme = true
     },
   }
 }
