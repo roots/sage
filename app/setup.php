@@ -90,26 +90,15 @@ add_action('enqueue_block_assets', function () {
     }
 
     $devUrl = trim(File::get(Vite::hotFile()));
-    $devUrl = str_replace('http://[::1]', 'ws://localhost', $devUrl);
 
     wp_register_script('vite-hmr', false);
     wp_enqueue_script('vite-hmr');
     wp_add_inline_script('vite-hmr', "
         if (window.self !== window.top) {
-            const wsUrl = '{$devUrl}/';
-            const client = new WebSocket(wsUrl, 'vite-hmr');
-            window.top.console.log('WS attempting connection');
-
-            client.addEventListener('open', () => window.top.console.log('WS connected'));
-            client.addEventListener('close', (e) => window.top.console.log('WS closed:', e.code, e.reason));
-            client.addEventListener('error', (e) => window.top.console.log('WS error'));
-            client.addEventListener('message', ({data}) => {
-                window.top.console.log('WS message:', data);
-                const msg = JSON.parse(data);
-                if (msg.type === 'update' && msg.updates.some(u => u.path.includes('editor.css'))) {
-                    window.top.location.reload();
-                }
-            });
+            const script = document.createElement('script');
+            script.type = 'module';
+            script.src = '{$devUrl}/@vite/client';
+            document.head.appendChild(script);
         }
     ");
 });
