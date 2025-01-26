@@ -23,32 +23,31 @@ add_filter('wp_head', function () {
 });
 
 /**
- * Inject CSS into the block editor iframe.
+ * Inject CSS into the block editor.
  *
  * @return array
  */
 add_filter('block_editor_settings_all', function ($settings) {
     $manifest = File::json(public_path('build/manifest.json')) ?? [];
-    $hot = File::exists(public_path('hot'));
 
-    if ($hot) {
-        $dev_url = trim(File::get(public_path('hot')));
+    if (Vite::isRunningHot()) {
+        $devUrl = trim(File::get(Vite::hotFile()));
         $settings['styles'][] = [
-            'css' => "@import url('{$dev_url}/resources/css/editor.css')",
+            'css' => "@import url('{$devUrl}/resources/css/editor.css')",
         ];
         $settings['styles'][] = [
-            'css' => "@import url('{$dev_url}/@vite/client')",
+            'css' => "@import url('{$devUrl}/@vite/client')",
         ];
 
         return $settings;
     }
 
     if (isset($manifest['resources/css/editor.css'])) {
-        $css_path = public_path("build/{$manifest['resources/css/editor.css']['file']}");
+        $cssPath = public_path("build/{$manifest['resources/css/editor.css']['file']}");
 
-        if (file_exists($css_path)) {
+        if (file_exists($cssPath)) {
             $settings['styles'][] = [
-                'css' => file_get_contents($css_path),
+                'css' => file_get_contents($cssPath),
             ];
         }
     }
@@ -62,9 +61,7 @@ add_filter('block_editor_settings_all', function ($settings) {
  * @return void
  */
 add_filter('admin_head', function () {
-    $screen = get_current_screen();
-
-    if (! $screen?->is_block_editor()) {
+    if (! get_current_screen()?->is_block_editor()) {
         return;
     }
 
@@ -79,6 +76,45 @@ add_filter('admin_head', function () {
     echo Str::wrap(app('assets.vite')([
         'resources/js/editor.js',
     ]), "\n");
+});
+
+/**
+ * Add Vite's HMR client to iframed block editor.
+ *
+ * @return void
+ */
+add_action('enqueue_block_assets', function () {
+    if (! is_admin() || ! get_current_screen()?->is_block_editor()) {
+        return;
+    }
+
+    if (! Vite::isRunningHot()) {
+        return;
+    }
+
+    $devUrl = trim(File::get(Vite::hotFile()));
+    $devUrl = str_replace('http://[::1]', 'ws://localhost', $devUrl);
+
+    wp_register_script('vite-hmr', false);
+    wp_enqueue_script('vite-hmr');
+    wp_add_inline_script('vite-hmr', "
+        if (window.self !== window.top) {
+            const wsUrl = '{$devUrl}/';
+            const client = new WebSocket(wsUrl, 'vite-hmr');
+            window.top.console.log('WS attempting connection');
+
+            client.addEventListener('open', () => window.top.console.log('WS connected'));
+            client.addEventListener('close', (e) => window.top.console.log('WS closed:', e.code, e.reason));
+            client.addEventListener('error', (e) => window.top.console.log('WS error'));
+            client.addEventListener('message', ({data}) => {
+                window.top.console.log('WS message:', data);
+                const msg = JSON.parse(data);
+                if (msg.type === 'update' && msg.updates.some(u => u.path.includes('editor.css'))) {
+                    window.top.location.reload();
+                }
+            });
+        }
+    ");
 });
 
 /**
