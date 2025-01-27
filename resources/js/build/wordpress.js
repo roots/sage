@@ -178,31 +178,36 @@ export function wordpressThemeJson({
   disableTailwindFontSizes = false,
 }) {
   let cssContent = null
-  let hasProcessedTheme = false
 
   return {
     name: 'wordpress-theme-json',
     enforce: 'post',
 
     transform(code, id) {
-      if (id.endsWith('.css') && !hasProcessedTheme) {
+      if (id.includes('app.css')) {
         cssContent = code
       }
       return null
     },
 
     async generateBundle() {
-      if (!cssContent) return
+      if (!cssContent) {
+        return;
+      }
 
       const baseThemeJson = JSON.parse(
         fs.readFileSync(path.resolve('./theme.json'), 'utf8')
       )
 
       const themeMatch = cssContent.match(/@(?:layer\s+)?theme\s*{([^}]*)}/s)
-      if (!themeMatch) return
+      if (!themeMatch) {
+        return;
+      }
 
       const themeContent = themeMatch[1]
-      if (!themeContent.startsWith(':root{')) return
+      if (!themeContent.startsWith(':root{')) {
+        return;
+      }
 
       const rootContent = themeContent.slice(themeContent.indexOf('{') + 1, themeContent.lastIndexOf('}'))
       const colorVariables = {}
@@ -302,8 +307,6 @@ export function wordpressThemeJson({
         fileName: 'assets/theme.json',
         source: JSON.stringify(themeJson, null, 2)
       })
-
-      hasProcessedTheme = true
     },
   }
 }
