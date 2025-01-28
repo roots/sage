@@ -62,7 +62,7 @@ add_filter('admin_head', function () {
 });
 
 /**
- * Add Vite's HMR client to iframed block editor.
+ * Add Vite's HMR client to the block editor.
  *
  * @return void
  */
