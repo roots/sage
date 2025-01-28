@@ -213,7 +213,7 @@ export function wordpressThemeJson({
       const rootContent = themeContent.slice(themeContent.indexOf('{') + 1, themeContent.lastIndexOf('}'))
       const colorVariables = {}
 
-      const colorVarRegex = /--color-([^:]+):\s*([^;]+);/g
+      const colorVarRegex = /--color-([^:]+):\s*([^;}]+)[;}]?/g
       let match
 
       while ((match = colorVarRegex.exec(rootContent)) !== null) {
@@ -250,7 +250,7 @@ export function wordpressThemeJson({
       })
 
       const fontFamilies = []
-      const fontVarRegex = /--font-([^:]+):\s*([^;]+);/g
+      const fontVarRegex = /--font-([^:]+):\s*([^;}]+)[;}]?/g
       while ((match = fontVarRegex.exec(rootContent)) !== null) {
         const [, name, value] = match
         if (!name.includes('-feature-settings') && !name.includes('-variation-settings')) {
@@ -263,7 +263,7 @@ export function wordpressThemeJson({
       }
 
       const fontSizes = []
-      const fontSizeVarRegex = /--text-([^:]+):\s*([^;]+);/g
+      const fontSizeVarRegex = /--text-([^:]+):\s*([^;}]+)[;}]?/g
       while ((match = fontSizeVarRegex.exec(rootContent)) !== null) {
         const [, name, value] = match
         if (!name.includes('--line-height')) {
