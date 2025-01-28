@@ -94,6 +94,7 @@ add_action('enqueue_block_assets', function () {
     wp_register_script('vite-hmr', false);
     wp_enqueue_script('vite-hmr');
     wp_add_inline_script('vite-hmr', "
+        window.__vite_client_url = '{$devUrl}';
         if (window.self !== window.top) {
             const script = document.createElement('script');
             script.type = 'module';
