@@ -80,8 +80,10 @@ add_action('enqueue_block_assets', function () {
 
 /**
  * Use the generated theme.json file.
+ *
+ * @return string
  */
-add_filter('theme_file_path', function (string $path, string $file): string {
+add_filter('theme_file_path', function ($path, $file) {
     return $file === 'theme.json'
         ? public_path('build/assets/theme.json')
         : $path;
