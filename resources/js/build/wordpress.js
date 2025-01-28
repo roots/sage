@@ -120,6 +120,7 @@ export function wordpressPlugin() {
     generateBundle() {
       this.emitFile({
         type: 'asset',
+        name: 'editor.deps.json',
         fileName: 'editor.deps.json',
         source: JSON.stringify([...dependencies]),
       })
