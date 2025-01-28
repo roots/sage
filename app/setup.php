@@ -10,19 +10,7 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Vite;
 
 /**
- * Inject the Vite assets into the head.
- *
- * @return void
- */
-add_filter('wp_head', function () {
-    echo Vite::withEntryPoints([
-        'resources/css/app.css',
-        'resources/js/app.js',
-    ])->toHtml();
-});
-
-/**
- * Inject CSS into the block editor.
+ * Inject styles into the block editor.
  *
  * @return array
  */
@@ -39,7 +27,7 @@ add_filter('block_editor_settings_all', function ($settings) {
 });
 
 /**
- * Inject JS into the block editor.
+ * Inject scripts into the block editor.
  *
  * @return void
  */
