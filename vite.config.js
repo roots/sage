@@ -32,4 +32,12 @@ export default defineConfig({
       disableTailwindFontSizes: false,
     }),
   ],
+  resolve: {
+    alias: {
+      '@scripts': 'resources/js',
+      '@styles': 'resources/css',
+      '@fonts': 'resources/fonts',
+      '@images': 'resources/images',
+    },
+  },
 })
