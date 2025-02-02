@@ -17,9 +17,9 @@
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.0.0",
-    "@wordpress/dependency-extraction-webpack-plugin": "^6.15.0",
-    "laravel-vite-plugin": "^1.1.1",
+    "@wordpress/dependency-extraction-webpack-plugin": "^6.17.0",
+    "laravel-vite-plugin": "^1.2.0",
     "tailwindcss": "^4.0.0",
-    "vite": "^6.0.7"
+    "vite": "^6.0.11"
   }
 }
