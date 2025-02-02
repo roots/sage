@@ -6,12 +6,7 @@
   "packageRules": [
     {
       "matchUpdateTypes": ["minor", "patch", "pin"]
-    },
-    {
-      "groupName": "Bud",
-      "matchPackagePrefixes": ["@roots/"],
-      "schedule": ["at any time"]
     }
   ],
-  "timezone": "America/Chicago"
+  "timezone": "America/Detroit"
 }
