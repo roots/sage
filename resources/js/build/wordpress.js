@@ -206,7 +206,7 @@ export function wordpressThemeJson({
       }
 
       const themeContent = themeMatch[1]
-      if (!themeContent.startsWith(':root{')) {
+      if (!themeContent.trim().startsWith(':root')) {
         return;
       }
 
