@@ -8,33 +8,35 @@ namespace App;
 
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Vite;
-use Illuminate\Support\Str;
 
 /**
- * Inject the Vite assets into the head.
+ * Inject styles into the block editor.
  *
- * @return void
+ * @return array
  */
-add_filter('wp_head', function () {
-    echo Str::wrap(app('assets.vite')([
-        'resources/css/app.css',
-        'resources/js/app.js',
-    ]), "\n");
+add_filter('block_editor_settings_all', function ($settings) {
+    $style = Vite::asset('resources/css/editor.css');
+
+    $settings['styles'][] = [
+        'css' => Vite::isRunningHot()
+            ? "@import url('{$style}')"
+            : Vite::content('resources/css/editor.css'),
+    ];
+
+    return $settings;
 });
 
 /**
- * Inject assets into the block editor.
+ * Inject scripts into the block editor.
  *
  * @return void
  */
 add_filter('admin_head', function () {
-    $screen = get_current_screen();
-
-    if (! $screen?->is_block_editor()) {
+    if (! get_current_screen()?->is_block_editor()) {
         return;
     }
 
-    $dependencies = File::json(public_path('build/editor.deps.json')) ?? [];
+    $dependencies = json_decode(Vite::content('_editor.deps.json'));
 
     foreach ($dependencies as $dependency) {
         if (! wp_script_is($dependency)) {
@@ -42,25 +44,49 @@ add_filter('admin_head', function () {
         }
     }
 
-    echo Str::wrap(app('assets.vite')([
-        'resources/css/editor.css',
+    echo Vite::withEntryPoints([
         'resources/js/editor.js',
-    ]), "\n");
+    ])->toHtml();
 });
 
 /**
- * Use theme.json from the build directory
+ * Add Vite's HMR client to the block editor.
  *
- * @param  string  $path
- * @param  string  $file
- * @return string
+ * @return void
  */
-add_filter('theme_file_path', function (string $path, string $file): string {
-    if ($file === 'theme.json') {
-        return public_path().'/build/assets/theme.json';
+add_action('enqueue_block_assets', function () {
+    if (! is_admin() || ! get_current_screen()?->is_block_editor()) {
+        return;
     }
 
-    return $path;
+    if (! Vite::isRunningHot()) {
+        return;
+    }
+
+    $script = sprintf(
+        <<<'JS'
+        window.__vite_client_url = '%s';
+
+        window.self !== window.top && document.head.appendChild(
+            Object.assign(document.createElement('script'), { type: 'module', src: '%s' })
+        );
+        JS,
+        untrailingslashit(Vite::asset('')),
+        Vite::asset('@vite/client')
+    );
+
+    wp_add_inline_script('wp-blocks', $script);
+});
+
+/**
+ * Use the generated theme.json file.
+ *
+ * @return string
+ */
+add_filter('theme_file_path', function ($path, $file) {
+    return $file === 'theme.json'
+        ? public_path('build/assets/theme.json')
+        : $path;
 }, 10, 2);
 
 /**

@@ -1,4 +1,3 @@
-import resolveConfig from 'tailwindcss/resolveConfig'
 import {
   defaultRequestToExternal,
   defaultRequestToHandle,
@@ -121,6 +120,7 @@ export function wordpressPlugin() {
     generateBundle() {
       this.emitFile({
         type: 'asset',
+        name: 'editor.deps.json',
         fileName: 'editor.deps.json',
         source: JSON.stringify([...dependencies]),
       })
@@ -178,65 +178,126 @@ export function wordpressThemeJson({
   disableTailwindFonts = false,
   disableTailwindFontSizes = false,
 }) {
-  function flattenColors(colors, prefix = '') {
-    return Object.entries(colors).reduce((acc, [name, value]) => {
-      const formattedName = name.charAt(0).toUpperCase() + name.slice(1)
-
-      if (typeof value === 'string') {
-        acc.push({
-          name: prefix ? `${prefix.charAt(0).toUpperCase() + prefix.slice(1)}-${formattedName}` : formattedName,
-          slug: prefix ? `${prefix}-${name}`.toLowerCase() : name.toLowerCase(),
-          color: value,
-        })
-      } else if (typeof value === 'object') {
-        acc.push(...flattenColors(value, name))
-      }
-      return acc
-    }, [])
-  }
-
-  const resolvedConfig = resolveConfig(tailwindConfig)
+  let cssContent = null
 
   return {
     name: 'wordpress-theme-json',
+    enforce: 'post',
+
+    transform(code, id) {
+      if (id.includes('app.css')) {
+        cssContent = code
+      }
+      return null
+    },
+
     async generateBundle() {
+      if (!cssContent) {
+        return;
+      }
+
       const baseThemeJson = JSON.parse(
         fs.readFileSync(path.resolve('./theme.json'), 'utf8')
       )
 
+      const themeMatch = cssContent.match(/@(?:layer\s+)?theme\s*{([^}]*)}/s)
+      if (!themeMatch) {
+        return;
+      }
+
+      const themeContent = themeMatch[1]
+      if (!themeContent.trim().startsWith(':root')) {
+        return;
+      }
+
+      const rootContent = themeContent.slice(themeContent.indexOf('{') + 1, themeContent.lastIndexOf('}'))
+      const colorVariables = {}
+
+      const colorVarRegex = /--color-([^:]+):\s*([^;}]+)[;}]?/g
+      let match
+
+      while ((match = colorVarRegex.exec(rootContent)) !== null) {
+        const [, name, value] = match
+        colorVariables[name] = value.trim()
+      }
+
+      const colors = []
+      Object.entries(colorVariables).forEach(([name, value]) => {
+        if (name.endsWith('-*')) return
+
+        if (name.includes('-')) {
+          const [colorName, shade] = name.split('-')
+          if (shade && !isNaN(shade)) {
+            colors.push({
+              name: `${colorName}-${shade}`,
+              slug: `${colorName}-${shade}`.toLowerCase(),
+              color: value,
+            })
+          } else {
+            colors.push({
+              name: name,
+              slug: name.toLowerCase(),
+              color: value,
+            })
+          }
+        } else {
+          colors.push({
+            name: name,
+            slug: name.toLowerCase(),
+            color: value,
+          })
+        }
+      })
+
+      const fontFamilies = []
+      const fontVarRegex = /--font-([^:]+):\s*([^;}]+)[;}]?/g
+      while ((match = fontVarRegex.exec(rootContent)) !== null) {
+        const [, name, value] = match
+        if (!name.includes('-feature-settings') && !name.includes('-variation-settings')) {
+          fontFamilies.push({
+            name: name,
+            slug: name.toLowerCase(),
+            fontFamily: value.trim(),
+          })
+        }
+      }
+
+      const fontSizes = []
+      const fontSizeVarRegex = /--text-([^:]+):\s*([^;}]+)[;}]?/g
+      while ((match = fontSizeVarRegex.exec(rootContent)) !== null) {
+        const [, name, value] = match
+        if (!name.includes('--line-height')) {
+          fontSizes.push({
+            name: name,
+            slug: name.toLowerCase(),
+            size: value.trim(),
+          })
+        }
+      }
+
       const themeJson = {
-        __processed__: "This file was generated from the Vite build",
+        __processed__: "This file was generated from Tailwind v4 CSS variables",
         ...baseThemeJson,
         settings: {
           ...baseThemeJson.settings,
-          ...((!disableTailwindColors && resolvedConfig.theme?.colors && {
+          ...((!disableTailwindColors && colors.length > 0) && {
             color: {
               ...baseThemeJson.settings?.color,
-              palette: flattenColors(resolvedConfig.theme.colors),
+              palette: colors,
             },
-          }) || {}),
-          ...((!disableTailwindFonts && resolvedConfig.theme?.fontFamily && {
+          }),
+          ...((!disableTailwindFonts && fontFamilies.length > 0) && {
             typography: {
               ...baseThemeJson.settings?.typography,
-              fontFamilies: Object.entries(resolvedConfig.theme.fontFamily)
-                .map(([name, value]) => ({
-                  name,
-                  slug: name,
-                  fontFamily: Array.isArray(value) ? value.join(',') : value,
-                })),
+              fontFamilies,
             },
-          }) || {}),
-          ...((!disableTailwindFontSizes && resolvedConfig.theme?.fontSize && {
+          }),
+          ...((!disableTailwindFontSizes && fontSizes.length > 0) && {
             typography: {
               ...baseThemeJson.settings?.typography,
-              fontSizes: Object.entries(resolvedConfig.theme.fontSize)
-                .map(([name, value]) => ({
-                  name,
-                  slug: name,
-                  size: Array.isArray(value) ? value[0] : value,
-                })),
+              fontSizes,
             },
-          }) || {}),
+          }),
         },
       }
 
