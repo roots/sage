@@ -34,10 +34,10 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      '@scripts': 'resources/js',
-      '@styles': 'resources/css',
-      '@fonts': 'resources/fonts',
-      '@images': 'resources/images',
+      '@scripts': '/resources/js',
+      '@styles': '/resources/css',
+      '@fonts': '/resources/fonts',
+      '@images': '/resources/images',
     },
   },
 })
