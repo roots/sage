@@ -210,7 +210,9 @@ export function wordpressThemeJson({
         return;
       }
 
-      const rootContent = themeContent.slice(themeContent.indexOf('{') + 1, themeContent.lastIndexOf('}'))
+      const startIndex = themeContent.indexOf('{') + 1;
+      const endIndex = themeContent.lastIndexOf('}'); // This may not be present - if not, just slice to the end
+      const rootContent = endIndex === -1 ? themeContent.slice(startIndex) : themeContent.slice(startIndex, endIndex);
       const colorVariables = {}
 
       const colorVarRegex = /--color-([^:]+):\s*([^;}]+)[;}]?/g
