@@ -22,7 +22,10 @@ export function wordpressPlugin() {
   function extractNamedImports(imports) {
     const match = imports.match(/{([^}]+)}/)
     if (!match) return []
-    return match[1].split(',').map((s) => s.trim())
+    return match[1]
+      .split(',')
+      .map((s) => s.trim())
+      .filter((s) => s !== '')
   }
 
   function handleNamedReplacement(namedImports, external) {
@@ -85,17 +88,19 @@ export function wordpressPlugin() {
       }
     },
     transform(code, id) {
-      if ((!id.endsWith('.js')) && !id.endsWith('.jsx')) return
+      if ((!id.endsWith('.js')) && !id.endsWith('.jsx') && !id.endsWith('.ts') && !id.endsWith('.tsx')) return
 
       const imports = [
-        ...(code.match(/^import .+ from ['"]@wordpress\/[^'"]+['"]/gm) || []),
-        ...(code.match(/^import ['"]@wordpress\/[^'"]+['"]/gm) || []),
+        ...(code.match(/^import[\s\n]+(?:[^;]+?)[\s\n]+from[\s\n]+['"]@wordpress\/[^'"]+['"]/gm) || []),
+        ...(code.match(/^import[\s\n]+['"]@wordpress\/[^'"]+['"]/gm) || []),
       ]
 
       imports.forEach((statement) => {
         const match =
-          statement.match(/^import (.+) from ['"]@wordpress\/([^'"]+)['"]/) ||
-          statement.match(/^import ['"]@wordpress\/([^'"]+)['"]/)
+          statement
+            .replace(/[\s\n]+/g, ' ')
+            .match(/^import (.+) from ['"]@wordpress\/([^'"]+)['"]/) ||
+          statement.match(/^import ['"]@wordpress\/([^'"]+)['"]/);
 
         if (!match) return
 
@@ -226,7 +231,8 @@ export function wordpressThemeJson({
         return;
       }
 
-      const rootContent = themeContent.slice(themeContent.indexOf('{') + 1, themeContent.lastIndexOf('}'))
+      const endIndex = themeContent.lastIndexOf('}');
+      const rootContent = themeContent.slice(themeContent.indexOf('{') + 1, endIndex === -1 ? undefined : endIndex);
       const colorVariables = {}
 
       const colorVarRegex = /--color-([^:]+):\s*([^;}]+)[;}]?/g
