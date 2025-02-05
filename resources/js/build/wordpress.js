@@ -396,4 +396,4 @@ export function wordpressThemeJson({
       }
     },
   }
- }
+}
