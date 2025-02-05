@@ -200,12 +200,28 @@ export function wordpressThemeJson({
         fs.readFileSync(path.resolve('./theme.json'), 'utf8')
       )
 
-      const themeMatch = cssContent.match(/@(?:layer\s+)?theme\s*{([^}]*)}/s)
-      if (!themeMatch) {
+      const themeContent = (() => {
+        const match = cssContent.match(/@(?:layer\s+)?theme\s*{/s)
+        
+        if (!match[0]) {
+          return null
+        }
+        const startIndex = match.index + match[0].length;
+        let braceCount = 1;
+        for (let i = startIndex; i < cssContent.length; i++) { 
+          if (cssContent[i] === "{") braceCount++;
+          if (cssContent[i] === "}") braceCount--;
+          if (braceCount === 0) {
+            return cssContent.substring(startIndex, i );
+          }
+        }
+        return null
+      })()
+      
+      if (!themeContent) {
         return;
       }
-
-      const themeContent = themeMatch[1]
+      
       if (!themeContent.trim().startsWith(':root')) {
         return;
       }
