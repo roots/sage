@@ -37,6 +37,24 @@ jobs:
           npm run build
           cat public/build/manifest.json
 
+      - name: Validate theme.json
+        run: |
+          THEME_JSON="public/build/assets/theme.json"
+
+          if [ ! -f "$THEME_JSON" ]; then
+            echo "❌ theme.json not found"
+            exit 1
+          fi
+
+          jq -e '
+            (.settings.color.palette | map(select(.name == "black")) | length > 0) and
+            (.settings.typography.fontFamilies | map(select(.name == "sans")) | length > 0) and
+            (.settings.typography.fontSizes | map(select(.name == "xl")) | length > 0)
+          ' "$THEME_JSON" 2>&1 || {
+            echo "❌ Invalid theme.json structure or missing required values"
+            exit 1
+          }
+
   php:
     name: PHP ${{ matrix.php }}
     runs-on: ubuntu-latest

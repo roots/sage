@@ -163,20 +163,28 @@ export function wordpressRollupPlugin() {
 }
 
 /**
- * Generates a WordPress theme.json file by combining:
- * - Base theme.json settings
- * - Tailwind configuration (colors, fonts, font sizes)
- *
- * The generated theme.json is emitted to public/build/assets/theme.json
- * and provides WordPress with theme settings that match your Tailwind configuration.
- *
- * @param {Object} options Plugin options
- * @param {Object} options.tailwindConfig - The resolved Tailwind configuration object
- * @param {boolean} [options.disableTailwindColors=false] - Disable including Tailwind colors in theme.json
- * @param {boolean} [options.disableTailwindFonts=false] - Disable including Tailwind fonts in theme.json
- * @param {boolean} [options.disableTailwindFontSizes=false] - Disable including Tailwind font sizes in theme.json
- * @returns {import('vite').Plugin} Vite plugin
- */
+* Vite plugin that generates a WordPress theme.json file based on Tailwind v4 CSS variables.
+* This allows theme.json settings to stay in sync with your Tailwind design tokens.
+*
+* CSS variables defined in an @theme block will be transformed into theme.json format:
+*
+* @example
+* ```css
+* @theme {
+*   --color-primary: #000000; -> { name: "primary", color: "#000000" }
+*   --color-red-500: #ef4444; -> { name: "red-500", color: "#ef4444" }
+*   --font-inter: "Inter";      -> { name: "inter", fontFamily: "Inter" }
+*   --text-lg: 1.125rem;        -> { name: "lg", size: "1.125rem" }
+* }
+* ```
+*
+* @param {Object} options Plugin options
+* @param {Object} options.tailwindConfig - The resolved Tailwind configuration object
+* @param {boolean} [options.disableTailwindColors=false] - Disable including Tailwind colors in theme.json
+* @param {boolean} [options.disableTailwindFonts=false] - Disable including Tailwind fonts in theme.json
+* @param {boolean} [options.disableTailwindFontSizes=false] - Disable including Tailwind font sizes in theme.json
+* @returns {import('vite').Plugin} Vite plugin
+*/
 export function wordpressThemeJson({
   tailwindConfig,
   disableTailwindColors = false,
@@ -184,6 +192,74 @@ export function wordpressThemeJson({
   disableTailwindFontSizes = false,
 }) {
   let cssContent = null
+
+  /**
+   * Safely extracts content between matched braces, handling:
+   * - Nested braces
+   * - String literals (both single and double quotes)
+   * - CSS comments
+   * - Escaped characters
+   */
+  function extractThemeContent(css) {
+    const themeMatch = css.match(/@(?:layer\s+)?theme\s*{/s)
+    if (!themeMatch) {
+      return null // No @theme block - that's fine
+    }
+
+    const startIndex = themeMatch.index + themeMatch[0].length
+    let braceCount = 1
+
+    for (let i = startIndex; i < css.length; i++) {
+      // Skip escaped characters
+      if (css[i] === '\\') {
+        i++
+        continue
+      }
+
+      // Skip string literals
+      if (css[i] === '"' || css[i] === "'") {
+        const quote = css[i]
+        i++
+        while (i < css.length) {
+          if (css[i] === '\\') {
+            i++
+          } else if (css[i] === quote) {
+            break
+          }
+          i++
+        }
+        if (i >= css.length) {
+          throw new Error('Unclosed string literal in CSS')
+        }
+        continue
+      }
+
+      // Skip CSS comments
+      if (css[i] === '/' && css[i + 1] === '*') {
+        i += 2
+        while (i < css.length) {
+          if (css[i] === '*' && css[i + 1] === '/') {
+            i++
+            break
+          }
+          i++
+        }
+        if (i >= css.length) {
+          throw new Error('Unclosed comment in CSS')
+        }
+        continue
+      }
+
+      if (css[i] === '{') braceCount++
+      if (css[i] === '}') braceCount--
+
+      if (braceCount === 0) {
+        return css.substring(startIndex, i)
+      }
+    }
+
+    throw new Error('Unclosed @theme block - missing closing brace')
+  }
 
   return {
     name: 'wordpress-theme-json',
@@ -198,63 +274,49 @@ export function wordpressThemeJson({
 
     async generateBundle() {
       if (!cssContent) {
-        return;
+        return // No CSS file to process
       }
 
-      const baseThemeJson = JSON.parse(
-        fs.readFileSync(path.resolve('./theme.json'), 'utf8')
-      )
+      try {
+        const baseThemeJson = JSON.parse(
+          fs.readFileSync(path.resolve('./theme.json'), 'utf8')
+        )
 
-      const themeContent = (() => {
-        const match = cssContent.match(/@(?:layer\s+)?theme\s*{/s)
-        
-        if (!match[0]) {
-          return null
+        const themeContent = extractThemeContent(cssContent)
+        if (!themeContent) {
+          return // No @theme block to process
         }
-        const startIndex = match.index + match[0].length;
-        let braceCount = 1;
-        for (let i = startIndex; i < cssContent.length; i++) { 
-          if (cssContent[i] === "{") braceCount++;
-          if (cssContent[i] === "}") braceCount--;
-          if (braceCount === 0) {
-            return cssContent.substring(startIndex, i );
-          }
+
+        // Process any CSS variables in whatever format they exist
+        const colorVariables = {}
+        const colorVarRegex = /--color-([^:]+):\s*([^;}]+)[;}]?/g
+        let match
+
+        while ((match = colorVarRegex.exec(themeContent)) !== null) {
+          const [, name, value] = match
+          colorVariables[name] = value.trim()
         }
-        return null
-      })()
-      
-      if (!themeContent) {
-        return;
-      }
-      
-      if (!themeContent.trim().startsWith(':root')) {
-        return;
-      }
 
-      const endIndex = themeContent.lastIndexOf('}');
-      const rootContent = themeContent.slice(themeContent.indexOf('{') + 1, endIndex === -1 ? undefined : endIndex);
-      const colorVariables = {}
+        // Transform colors to theme.json format
+        const colors = []
+        Object.entries(colorVariables).forEach(([name, value]) => {
+          if (name.endsWith('-*')) return
 
-      const colorVarRegex = /--color-([^:]+):\s*([^;}]+)[;}]?/g
-      let match
-
-      while ((match = colorVarRegex.exec(rootContent)) !== null) {
-        const [, name, value] = match
-        colorVariables[name] = value.trim()
-      }
-
-      const colors = []
-      Object.entries(colorVariables).forEach(([name, value]) => {
-        if (name.endsWith('-*')) return
-
-        if (name.includes('-')) {
-          const [colorName, shade] = name.split('-')
-          if (shade && !isNaN(shade)) {
-            colors.push({
-              name: `${colorName}-${shade}`,
-              slug: `${colorName}-${shade}`.toLowerCase(),
-              color: value,
-            })
+          if (name.includes('-')) {
+            const [colorName, shade] = name.split('-')
+            if (shade && !isNaN(shade)) {
+              colors.push({
+                name: `${colorName}-${shade}`,
+                slug: `${colorName}-${shade}`.toLowerCase(),
+                color: value,
+              })
+            } else {
+              colors.push({
+                name: name,
+                slug: name.toLowerCase(),
+                color: value,
+              })
+            }
           } else {
             colors.push({
               name: name,
@@ -262,74 +324,76 @@ export function wordpressThemeJson({
               color: value,
             })
           }
-        } else {
-          colors.push({
-            name: name,
-            slug: name.toLowerCase(),
-            color: value,
-          })
-        }
-      })
+        })
 
-      const fontFamilies = []
-      const fontVarRegex = /--font-([^:]+):\s*([^;}]+)[;}]?/g
-      while ((match = fontVarRegex.exec(rootContent)) !== null) {
-        const [, name, value] = match
-        if (!name.includes('-feature-settings') && !name.includes('-variation-settings')) {
-          fontFamilies.push({
-            name: name,
-            slug: name.toLowerCase(),
-            fontFamily: value.trim(),
-          })
+        // Process any font families
+        const fontFamilies = []
+        const fontVarRegex = /--font-([^:]+):\s*([^;}]+)[;}]?/g
+        while ((match = fontVarRegex.exec(themeContent)) !== null) {
+          const [, name, value] = match
+          // Skip feature settings, variation settings, and any font-* properties
+          if (!name.includes('feature-settings') &&
+              !name.includes('variation-settings') &&
+              !['family', 'size', 'smoothing', 'style', 'weight', 'stretch']
+                .some(prop => name.includes(prop))) {
+            fontFamilies.push({
+              name: name,
+              slug: name.toLowerCase(),
+              fontFamily: value.trim(),
+            })
+          }
         }
-      }
 
-      const fontSizes = []
-      const fontSizeVarRegex = /--text-([^:]+):\s*([^;}]+)[;}]?/g
-      while ((match = fontSizeVarRegex.exec(rootContent)) !== null) {
-        const [, name, value] = match
-        if (!name.includes('--line-height')) {
-          fontSizes.push({
-            name: name,
-            slug: name.toLowerCase(),
-            size: value.trim(),
-          })
+        // Process any font sizes
+        const fontSizes = []
+        const fontSizeVarRegex = /--text-([^:]+):\s*([^;}]+)[;}]?/g
+        while ((match = fontSizeVarRegex.exec(themeContent)) !== null) {
+          const [, name, value] = match
+          // Skip line-height entries
+          if (!name.includes('line-height')) {
+            fontSizes.push({
+              name: name,
+              slug: name.toLowerCase(),
+              size: value.trim(),
+            })
+          }
         }
-      }
 
-      const themeJson = {
-        __processed__: "This file was generated from Tailwind v4 CSS variables",
-        ...baseThemeJson,
-        settings: {
-          ...baseThemeJson.settings,
-          ...((!disableTailwindColors && colors.length > 0) && {
-            color: {
-              ...baseThemeJson.settings?.color,
-              palette: colors,
-            },
-          }),
-          ...((!disableTailwindFonts && fontFamilies.length > 0) && {
+        // Build theme.json with whatever variables were found
+        const themeJson = {
+          __processed__: "This file was generated from Tailwind v4 CSS variables",
+          ...baseThemeJson,
+          settings: {
+            ...baseThemeJson.settings,
+            ...((!disableTailwindColors && colors.length > 0) && {
+              color: {
+                ...baseThemeJson.settings?.color,
+                palette: colors,
+              },
+            }),
             typography: {
-              ...baseThemeJson.settings?.typography,
-              fontFamilies,
+              defaultFontSizes: false,
+              customFontSize: false,
+              ...((!disableTailwindFonts && fontFamilies.length > 0) && {
+                fontFamilies,
+              }),
+              ...(!disableTailwindFontSizes && fontSizes.length > 0 && {
+                fontSizes,
+              }),
             },
-          }),
-          ...((!disableTailwindFontSizes && fontSizes.length > 0) && {
-            typography: {
-              ...baseThemeJson.settings?.typography,
-              fontSizes,
-            },
-          }),
-        },
+          },
+        }
+
+        delete themeJson.__preprocessed__
+
+        this.emitFile({
+          type: 'asset',
+          fileName: 'assets/theme.json',
+          source: JSON.stringify(themeJson, null, 2)
+        })
+      } catch (error) {
+        this.error(error.message)
       }
-
-      delete themeJson.__preprocessed__
-
-      this.emitFile({
-        type: 'asset',
-        fileName: 'assets/theme.json',
-        source: JSON.stringify(themeJson, null, 2)
-      })
     },
   }
 }
