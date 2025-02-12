@@ -8,6 +8,7 @@
     "config:recommended",
     "schedule:weekly"
   ],
+  "rangeStrategy": "bump",
   "packageRules": [
     {
       "matchUpdateTypes": [
@@ -15,8 +16,7 @@
         "patch",
         "pin"
       ],
-      "enabled": true,
-      "rangeStrategy": "bump"
+      "enabled": true
     }
   ],
   "timezone": "America/Detroit"
