@@ -14,7 +14,9 @@
         "minor",
         "patch",
         "pin"
-      ]
+      ],
+      "enabled": true,
+      "rangeStrategy": "bump"
     }
   ],
   "timezone": "America/Detroit"
