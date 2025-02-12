@@ -1,11 +1,20 @@
 {
-  "baseBranches": ["main"],
+  "baseBranches": [
+    "main"
+  ],
   "commitMessageAction": "⬆️ Bump",
   "commitMessageTopic": "{{depName}}",
-  "extends": ["config:base", "schedule:weekly"],
+  "extends": [
+    "config:recommended",
+    "schedule:weekly"
+  ],
   "packageRules": [
     {
-      "matchUpdateTypes": ["minor", "patch", "pin"]
+      "matchUpdateTypes": [
+        "minor",
+        "patch",
+        "pin"
+      ]
     }
   ],
   "timezone": "America/Detroit"
