@@ -16,8 +16,8 @@
     "translate:mo": "wp i18n make-mo ./resources/lang ./resources/lang"
   },
   "devDependencies": {
-    "@tailwindcss/vite": "^4.0.6",
-    "@wordpress/dependency-extraction-webpack-plugin": "^6.18.0",
+    "@roots/vite-plugin": "^1.0.0",
+    "@tailwindcss/vite": "4.0.7",
     "laravel-vite-plugin": "^1.2.0",
     "tailwindcss": "^4.0.6",
     "vite": "^6.1.0"
