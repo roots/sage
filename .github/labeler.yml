@@ -1,19 +1,15 @@
 build:
   - changed-files:
       - any-glob-to-any-file:
-          - .eslintrc.js
-          - .prettierrc
-          - .stylelintrc
-          - bud.config.js
-          - tsconfig.json
+          - vite.config.js
 dependencies:
   - changed-files:
       - any-glob-to-any-file:
-          - yarn.lock
+          - package-lock.json
 javascript:
   - changed-files:
       - any-glob-to-any-file:
-          - resources/scripts/**/*.js
+          - resources/js/**/*.js
 php:
   - changed-files:
       - any-glob-to-any-file:
