@@ -19,10 +19,8 @@ class Post extends Composer
 
     /**
      * Data to be passed to view before rendering, but after merging.
-     *
-     * @return array
      */
-    public function override()
+    public function override(): array
     {
         return [
             'title' => $this->title(),
@@ -32,10 +30,8 @@ class Post extends Composer
 
     /**
      * Retrieve the post title.
-     *
-     * @return string
      */
-    public function title()
+    public function title(): string
     {
         if ($this->view->name() !== 'partials.page-header') {
             return get_the_title();
@@ -70,12 +66,10 @@ class Post extends Composer
 
     /**
      * Retrieve the pagination links.
-     *
-     * @return string
      */
-    public function pagination()
+    public function pagination(): string
     {
-        return wp_link_pages([
+        return (string) wp_link_pages([
             'echo' => 0,
             'before' => '<p>'.__('Pages:', 'sage'),
             'after' => '</p>',
