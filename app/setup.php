@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Vite;
 /**
  * Inject styles into the block editor.
  */
-add_filter('block_editor_settings_all', function ($settings): array {
+add_filter('block_editor_settings_all', function (array $settings): array {
     $style = Vite::asset('resources/css/editor.css');
 
     $settings['styles'][] = [
@@ -75,7 +75,7 @@ add_action('enqueue_block_assets', function (): void {
 /**
  * Use the generated theme.json file.
  */
-add_filter('theme_file_path', function ($path, $file): string {
+add_filter('theme_file_path', function (string $path, string $file): string {
     return $file === 'theme.json'
         ? public_path('build/assets/theme.json')
         : $path;
