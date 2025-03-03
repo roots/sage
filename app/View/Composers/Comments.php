@@ -8,10 +8,8 @@ class Comments extends Composer
 {
     /**
      * List of views served by this composer.
-     *
-     * @var array
      */
-    protected static $views = [
+    protected static array $views = [
         'partials.comments',
     ];
 
