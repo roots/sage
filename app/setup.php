@@ -6,7 +6,6 @@
 
 namespace App;
 
-use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Vite;
 
 /**
