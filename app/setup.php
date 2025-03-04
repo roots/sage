@@ -10,10 +10,8 @@ use Illuminate\Support\Facades\Vite;
 
 /**
  * Inject styles into the block editor.
- *
- * @return array
  */
-add_filter('block_editor_settings_all', function ($settings) {
+add_filter('block_editor_settings_all', function (array $settings): array {
     $style = Vite::asset('resources/css/editor.css');
 
     $settings['styles'][] = [
@@ -27,10 +25,8 @@ add_filter('block_editor_settings_all', function ($settings) {
 
 /**
  * Inject scripts into the block editor.
- *
- * @return void
  */
-add_filter('admin_head', function () {
+add_filter('admin_head', function (): void {
     if (! get_current_screen()?->is_block_editor()) {
         return;
     }
@@ -50,10 +46,8 @@ add_filter('admin_head', function () {
 
 /**
  * Add Vite's HMR client to the block editor.
- *
- * @return void
  */
-add_action('enqueue_block_assets', function () {
+add_action('enqueue_block_assets', function (): void {
     if (! is_admin() || ! get_current_screen()?->is_block_editor()) {
         return;
     }
@@ -79,10 +73,8 @@ add_action('enqueue_block_assets', function () {
 
 /**
  * Use the generated theme.json file.
- *
- * @return string
  */
-add_filter('theme_file_path', function ($path, $file) {
+add_filter('theme_file_path', function (string $path, string $file): string {
     return $file === 'theme.json'
         ? public_path('build/assets/theme.json')
         : $path;
@@ -90,10 +82,8 @@ add_filter('theme_file_path', function ($path, $file) {
 
 /**
  * Register the initial theme setup.
- *
- * @return void
  */
-add_action('after_setup_theme', function () {
+add_action('after_setup_theme', function (): void {
     /**
      * Disable full-site editing support.
      *
@@ -163,10 +153,8 @@ add_action('after_setup_theme', function () {
 
 /**
  * Register the theme sidebars.
- *
- * @return void
  */
-add_action('widgets_init', function () {
+add_action('widgets_init', function (): void {
     $config = [
         'before_widget' => '<section class="widget %1$s %2$s">',
         'after_widget' => '</section>',

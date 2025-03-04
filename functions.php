@@ -50,7 +50,7 @@ Application::configure()
 */
 
 collect(['setup', 'filters'])
-    ->each(function ($file) {
+    ->each(function ($file): void {
         if (! locate_template($file = "app/{$file}.php", true, true)) {
             wp_die(
                 /* translators: %s is replaced with the relative file path */
