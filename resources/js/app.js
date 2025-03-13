@@ -1,4 +1,1 @@
-import.meta.glob([
-  '../images/**',
-  '../fonts/**',
-]);
+const assets = import.meta.glob(['../images/**', '../fonts/**'], { eager: true });
