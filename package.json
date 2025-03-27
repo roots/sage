@@ -17,9 +17,9 @@
   },
   "devDependencies": {
     "@roots/vite-plugin": "^1.0.2",
-    "@tailwindcss/vite": "^4.0.9",
+    "@tailwindcss/vite": "^4.0.17",
     "laravel-vite-plugin": "^1.2.0",
-    "tailwindcss": "^4.0.9",
+    "tailwindcss": "^4.0.17",
     "vite": "^6.2.0"
   }
 }
