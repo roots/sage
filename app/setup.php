@@ -47,35 +47,6 @@ add_filter('admin_head', function () {
 });
 
 /**
- * Add Vite's HMR client to the block editor.
- *
- * @return void
- */
-add_action('enqueue_block_assets', function () {
-    if (! is_admin() || ! get_current_screen()?->is_block_editor()) {
-        return;
-    }
-
-    if (! Vite::isRunningHot()) {
-        return;
-    }
-
-    $script = sprintf(
-        <<<'JS'
-        window.__vite_client_url = '%s';
-
-        window.self !== window.top && document.head.appendChild(
-            Object.assign(document.createElement('script'), { type: 'module', src: '%s' })
-        );
-        JS,
-        untrailingslashit(Vite::asset('')),
-        Vite::asset('@vite/client')
-    );
-
-    wp_add_inline_script('wp-blocks', $script);
-});
-
-/**
  * Use the generated theme.json file.
  *
  * @return string
