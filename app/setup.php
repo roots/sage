@@ -6,7 +6,6 @@
 
 namespace App;
 
-use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Vite;
 
 /**
@@ -18,9 +17,7 @@ add_filter('block_editor_settings_all', function ($settings) {
     $style = Vite::asset('resources/css/editor.css');
 
     $settings['styles'][] = [
-        'css' => Vite::isRunningHot()
-            ? "@import url('{$style}')"
-            : Vite::content('resources/css/editor.css'),
+        'css' => "@import url('{$style}')",
     ];
 
     return $settings;

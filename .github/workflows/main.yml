@@ -25,12 +25,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
-          cache: 'npm'
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Install dependencies using npm
-        run: npm ci
+        run: npm install
 
       - name: Build and compile assets
         run: |

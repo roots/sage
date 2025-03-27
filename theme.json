@@ -3,6 +3,9 @@
   "$schema": "https://schemas.wp.org/trunk/theme.json",
   "version": 3,
   "settings": {
+    "layout": {
+      "contentSize": "48rem"
+    },
     "background": {
       "backgroundImage": true
     },
