@@ -43,7 +43,7 @@
     "roots/acorn": "^5.0"
   },
   "require-dev": {
-    "laravel/pint": "^1.20"
+    "laravel/pint": "^1.24.0"
   },
   "suggest": {
     "log1x/sage-directives": "A collection of useful Blade directives for WordPress and Sage (^1.0)."
