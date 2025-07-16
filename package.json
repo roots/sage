@@ -2,7 +2,7 @@
   "name": "sage",
   "private": true,
   "engines": {
-    "node": ">=20.0.0"
+    "node": ">=22.17.1"
   },
   "type": "module",
   "scripts": {
