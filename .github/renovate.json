@@ -1,5 +1,5 @@
 {
-  "baseBranches": [
+  "baseBranchPatterns": [
     "main"
   ],
   "commitMessageAction": "⬆️ Bump",
@@ -9,7 +9,22 @@
     "schedule:weekly"
   ],
   "rangeStrategy": "bump",
+  "ignoreDeps": ["php"],
   "packageRules": [
+    {
+      "matchUpdateTypes": ["major"],
+      "enabled": false
+    },
+    {
+      "matchPackageNames": ["node"],
+      "enabled": false
+    },
+    {
+      "matchManagers": ["composer"],
+      "matchDepTypes": ["require"],
+      "matchPackageNames": ["php"],
+      "enabled": false
+    },
     {
       "matchUpdateTypes": [
         "minor",
