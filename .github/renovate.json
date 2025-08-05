@@ -8,7 +8,7 @@
     "config:recommended",
     "schedule:weekly"
   ],
-  "rangeStrategy": "bump",
+  "rangeStrategy": "replace",
   "ignoreDeps": ["php"],
   "packageRules": [
     {
