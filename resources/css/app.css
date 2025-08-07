@@ -1,3 +1,4 @@
 @import "tailwindcss" theme(static);
-@source "../views/";
-@source "../../app/";
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
