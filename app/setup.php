@@ -33,14 +33,15 @@ add_filter('admin_head', function () {
         return;
     }
 
-    $dependencies = json_decode(Vite::content('editor.deps.json'));
-
-    foreach ($dependencies as $dependency) {
-        if (! wp_script_is($dependency)) {
-            wp_enqueue_script($dependency);
+    if(!Vite::isRunningHot()) {
+        $dependencies = json_decode(Vite::content('editor.deps.json'));
+    
+        foreach ($dependencies as $dependency) {
+            if (! wp_script_is($dependency)) {
+                wp_enqueue_script($dependency);
+            }
         }
     }
-
     echo Vite::withEntryPoints([
         'resources/js/editor.js',
     ])->toHtml();
