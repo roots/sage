@@ -28,7 +28,7 @@ add_filter('block_editor_settings_all', function ($settings) {
  *
  * @return void
  */
-add_filter('admin_head', function () {
+add_action('admin_head', function () {
     if (! get_current_screen()?->is_block_editor()) {
         return;
     }
