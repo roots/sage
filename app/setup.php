@@ -58,6 +58,13 @@ add_filter('theme_file_path', function ($path, $file) {
 }, 10, 2);
 
 /**
+ * Disable on-demand block asset loading.
+ *
+ * @link https://core.trac.wordpress.org/ticket/61965
+ */
+add_filter('should_load_separate_core_block_assets', '__return_false');
+
+/**
  * Register the initial theme setup.
  *
  * @return void
