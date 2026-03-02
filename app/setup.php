@@ -53,9 +53,14 @@ add_action('admin_head', function () {
  * @return string
  */
 add_filter('theme_file_path', function ($path, $file) {
-    return $file === 'theme.json'
-        ? public_path('build/assets/theme.json')
-        : $path;
+
+    if ($file !== 'theme.json') {
+        return $path;
+    }
+
+    $buildPath = public_path('build/assets/theme.json');
+
+    return file_exists($buildPath) ? $buildPath : $path;
 }, 10, 2);
 
 /**
