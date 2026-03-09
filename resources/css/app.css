@@ -1,4 +1,4 @@
 @import "tailwindcss" theme(static);
-@source '../../../../cache/acorn/framework/views/*.php';
-@source '../**/*.blade.php';
-@source '../**/*.js';
+@source "../../app/**/*.php";
+@source "../**/*.blade.php";
+@source "../**/*.js";
