@@ -12,7 +12,7 @@ jobs:
       with:
         discourse-api-key: ${{ secrets.DISCOURSE_RELEASES_API_KEY }}
         discourse-base-url: ${{ secrets.DISCOURSE_BASE_URL }}
-        discourse-author-username: ben
+        github-token: ${{ github.token }}
         discourse-category: 11
         discourse-tags:
           releases
