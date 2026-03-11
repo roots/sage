@@ -30,6 +30,7 @@ export default defineConfig({
       disableTailwindColors: false,
       disableTailwindFonts: false,
       disableTailwindFontSizes: false,
+      disableTailwindBorderRadius: false,
     }),
   ],
   resolve: {
