@@ -1,5 +1,6 @@
 <?php
 
+use App\Providers\ThemeServiceProvider;
 use Roots\Acorn\Application;
 
 /*
@@ -33,7 +34,7 @@ require $composer;
 
 Application::configure()
     ->withProviders([
-        App\Providers\ThemeServiceProvider::class,
+        ThemeServiceProvider::class,
     ])
     ->boot();
 
