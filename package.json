@@ -2,7 +2,7 @@
   "name": "sage",
   "private": true,
   "engines": {
-    "node": ">=20.0.0"
+    "node": "^20.19.0 || >=22.12.0"
   },
   "type": "module",
   "scripts": {
@@ -16,10 +16,10 @@
     "translate:mo": "wp i18n make-mo ./resources/lang ./resources/lang"
   },
   "devDependencies": {
-    "@roots/vite-plugin": "^1.0.0",
+    "@roots/vite-plugin": "^2.0.0",
     "@tailwindcss/vite": "^4.0.0",
-    "laravel-vite-plugin": "^2.0.0",
+    "laravel-vite-plugin": "^3.0.0",
     "tailwindcss": "^4.0.0",
-    "vite": "^7.0.0"
+    "vite": "^8.0.0"
   }
 }
