@@ -39,8 +39,8 @@
     }
   },
   "require": {
-    "php": ">=8.2",
-    "roots/acorn": "^5.0"
+    "php": ">=8.3",
+    "roots/acorn": "dev-laravel-v13"
   },
   "require-dev": {
     "laravel/pint": "^1.20"
