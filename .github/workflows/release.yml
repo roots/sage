@@ -33,7 +33,8 @@ jobs:
         fi
 
     - name: Update style.css version
-      run: sed -i "s/Version:            .*/Version:            ${{ github.event.inputs.version }}/" style.css
+      run: |
+        sed -i "s/Version:            .*/Version:            ${{ github.event.inputs.version }}/" style.css
 
     - name: Create release commit and tag
       run: |
