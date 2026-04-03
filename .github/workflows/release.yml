@@ -1,0 +1,45 @@
+name: Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version (e.g. 11.1.1)'
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v6
+      with:
+        ref: main
+
+    - name: Validate version
+      run: |
+        if [[ ! "${{ github.event.inputs.version }}" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+          echo "❌ Invalid version format. Use semver (e.g. 11.1.1)"
+          exit 1
+        fi
+
+    - name: Check tag does not exist
+      run: |
+        if git ls-remote --tags origin "refs/tags/v${{ github.event.inputs.version }}" | grep -q .; then
+          echo "❌ Tag v${{ github.event.inputs.version }} already exists"
+          exit 1
+        fi
+
+    - name: Update style.css version
+      run: sed -i "s/Version:            .*/Version:            ${{ github.event.inputs.version }}/" style.css
+
+    - name: Create release commit and tag
+      run: |
+        git config user.name "github-actions[bot]"
+        git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git add style.css
+        git commit --message "🔖 v${{ github.event.inputs.version }}"
+        git tag "v${{ github.event.inputs.version }}"
+        git push origin "refs/tags/v${{ github.event.inputs.version }}"
